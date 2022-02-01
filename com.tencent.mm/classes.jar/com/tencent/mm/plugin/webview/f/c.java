@@ -1,21 +1,23 @@
 package com.tencent.mm.plugin.webview.f;
 
 import android.text.TextUtils;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.c;
+import com.tencent.mm.an.d.c;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.b;
+import com.tencent.mm.modelsimple.l;
 import com.tencent.mm.modelsimple.l.a;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
 import com.tencent.mm.protocal.c.g;
-import com.tencent.mm.protocal.protobuf.bhi;
-import com.tencent.mm.protocal.protobuf.bhj;
-import com.tencent.mm.protocal.protobuf.ccc;
-import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.protocal.protobuf.bos;
+import com.tencent.mm.protocal.protobuf.bot;
+import com.tencent.mm.protocal.protobuf.bov;
+import com.tencent.mm.protocal.protobuf.ckf;
+import com.tencent.mm.protocal.protobuf.eaf;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
@@ -29,344 +31,347 @@ import java.util.regex.Pattern;
 
 public final class c
 {
-  private static final Pattern JbU;
-  private static final IPCRunCgi.b JbV;
-  private int AOS;
-  public boolean IJS;
-  private final HashSet<String> JbJ;
-  private int JbK;
-  private boolean JbL;
-  private boolean JbM;
-  private int JbN;
-  private String JbO;
-  private bhj JbP;
-  private d JbQ;
-  private String JbR;
-  private String JbS;
-  private final HashMap<String, String> JbT;
+  private static final Pattern PYC;
+  private static final IPCRunCgi.b PYD;
+  private String EOD;
+  private byte[] EfT;
+  private int GIg;
+  public boolean PFQ;
+  private bov PYA;
+  private final HashMap<String, String> PYB;
+  private final HashSet<String> PYp;
+  private int PYq;
+  private boolean PYr;
+  private boolean PYs;
+  private int PYt;
+  private String PYu;
+  private bot PYv;
+  private String PYw;
+  private d PYx;
+  private String PYy;
+  private String PYz;
   private String mAppId;
-  private String mRa;
   private int mScene;
-  private byte[] yEg;
-  private String zjn;
+  private String pRV;
   
   static
   {
-    AppMethodBeat.i(224481);
-    JbU = Pattern.compile(".*#.*wechat_redirect");
-    JbV = new IPCRunCgi.b()
+    AppMethodBeat.i(206169);
+    PYC = Pattern.compile(".*#.*wechat_redirect");
+    PYD = new IPCRunCgi.b()
     {
-      public final com.tencent.mm.ak.d a(com.tencent.mm.ak.d paramAnonymousd)
+      public final com.tencent.mm.an.d a(com.tencent.mm.an.d paramAnonymousd)
       {
-        AppMethodBeat.i(224456);
-        paramAnonymousd = l.a.f(paramAnonymousd);
-        AppMethodBeat.o(224456);
+        AppMethodBeat.i(205715);
+        paramAnonymousd = l.a.g(paramAnonymousd);
+        AppMethodBeat.o(205715);
         return paramAnonymousd;
       }
     };
-    AppMethodBeat.o(224481);
+    AppMethodBeat.o(206169);
   }
   
   public c()
   {
-    AppMethodBeat.i(224461);
-    this.JbJ = new HashSet();
+    AppMethodBeat.i(206124);
+    this.PYp = new HashSet();
     this.mScene = 0;
-    this.AOS = 0;
-    this.mRa = "";
+    this.GIg = 0;
+    this.pRV = "";
     this.mAppId = "";
-    this.zjn = "";
-    this.yEg = new byte[0];
-    this.JbL = true;
-    this.JbM = false;
-    this.JbN = 0;
-    this.IJS = false;
-    this.JbO = null;
-    this.JbP = null;
-    this.JbR = "";
-    this.JbS = "";
-    this.JbT = new HashMap();
-    this.JbK = ((int)System.currentTimeMillis());
-    this.JbQ = new d();
-    AppMethodBeat.o(224461);
+    this.EOD = "";
+    this.EfT = new byte[0];
+    this.PYr = true;
+    this.PYs = false;
+    this.PYt = 0;
+    this.PFQ = false;
+    this.PYu = null;
+    this.PYv = null;
+    this.PYw = null;
+    this.PYy = "";
+    this.PYz = "";
+    this.PYA = null;
+    this.PYB = new HashMap();
+    this.PYq = l.boo();
+    this.PYx = new d();
+    AppMethodBeat.o(206124);
   }
   
-  private static void a(String paramString, int paramInt, boolean paramBoolean, bhj parambhj, a<bhj> parama)
+  private static void a(String paramString, int paramInt, boolean paramBoolean, bot parambot, a<bot> parama)
   {
-    AppMethodBeat.i(224478);
-    int i = parambhj.KCD;
-    String str = parambhj.iAc;
+    AppMethodBeat.i(206163);
+    int i = parambot.SZN;
+    String str = parambot.lpy;
     switch (i)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(224478);
+      AppMethodBeat.o(206163);
       return;
       if ((str == null) || (str.length() == 0))
       {
         Log.e("MicroMsg.LuggageGetA8Key", "getA8key-text fail, invalid content");
-        AppMethodBeat.o(224478);
+        AppMethodBeat.o(206163);
         return;
       }
-      parama.C(paramInt, paramString, str);
-      AppMethodBeat.o(224478);
+      parama.F(paramInt, paramString, str);
+      AppMethodBeat.o(206163);
       return;
-      parama.a(paramInt, paramBoolean, paramString, parambhj.LRH, parambhj);
+      parama.a(paramInt, paramBoolean, paramString, parambot.Tao, parambot);
     }
-  }
-  
-  public static int aZG(String paramString)
-  {
-    AppMethodBeat.i(224467);
-    paramString = com.tencent.mm.protocal.c.bgb(paramString);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(224467);
-      return -1;
-    }
-    int i = paramString.gtt();
-    AppMethodBeat.o(224467);
-    return i;
   }
   
   /* Error */
-  private com.tencent.mm.ak.d at(String paramString, int paramInt)
+  private com.tencent.mm.an.d aL(String paramString, int paramInt)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 290
-    //   5: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 282
+    //   5: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_1
     //   9: iload_2
-    //   10: invokestatic 294	com/tencent/mm/modelsimple/l$a:at	(Ljava/lang/String;I)Lcom/tencent/mm/ak/d;
+    //   10: invokestatic 286	com/tencent/mm/modelsimple/l$a:aL	(Ljava/lang/String;I)Lcom/tencent/mm/an/d;
     //   13: astore 4
     //   15: aload 4
-    //   17: getfield 300	com/tencent/mm/ak/d:iLK	Lcom/tencent/mm/ak/d$b;
-    //   20: getfield 306	com/tencent/mm/ak/d$b:iLR	Lcom/tencent/mm/bw/a;
-    //   23: checkcast 308	com/tencent/mm/protocal/protobuf/bhi
+    //   17: getfield 292	com/tencent/mm/an/d:lBR	Lcom/tencent/mm/an/d$b;
+    //   20: invokestatic 297	com/tencent/mm/an/d$b:b	(Lcom/tencent/mm/an/d$b;)Lcom/tencent/mm/cd/a;
+    //   23: checkcast 299	com/tencent/mm/protocal/protobuf/bos
     //   26: astore 5
     //   28: aload 5
     //   30: iconst_2
-    //   31: putfield 311	com/tencent/mm/protocal/protobuf/bhi:OpCode	I
+    //   31: putfield 302	com/tencent/mm/protocal/protobuf/bos:RLe	I
     //   34: aload 5
-    //   36: new 313	com/tencent/mm/protocal/protobuf/dqi
+    //   36: new 304	com/tencent/mm/protocal/protobuf/eaf
     //   39: dup
-    //   40: invokespecial 314	com/tencent/mm/protocal/protobuf/dqi:<init>	()V
+    //   40: invokespecial 305	com/tencent/mm/protocal/protobuf/eaf:<init>	()V
     //   43: aload_1
-    //   44: invokevirtual 318	com/tencent/mm/protocal/protobuf/dqi:bhy	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/dqi;
-    //   47: putfield 322	com/tencent/mm/protocal/protobuf/bhi:LRx	Lcom/tencent/mm/protocal/protobuf/dqi;
+    //   44: invokevirtual 309	com/tencent/mm/protocal/protobuf/eaf:btQ	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/eaf;
+    //   47: putfield 313	com/tencent/mm/protocal/protobuf/bos:Tac	Lcom/tencent/mm/protocal/protobuf/eaf;
     //   50: aload 5
     //   52: aload_0
-    //   53: getfield 82	com/tencent/mm/plugin/webview/f/c:mScene	I
-    //   56: putfield 325	com/tencent/mm/protocal/protobuf/bhi:Scene	I
+    //   53: getfield 85	com/tencent/mm/plugin/webview/f/c:mScene	I
+    //   56: putfield 316	com/tencent/mm/protocal/protobuf/bos:CPw	I
     //   59: aload 5
     //   61: aload_0
-    //   62: getfield 88	com/tencent/mm/plugin/webview/f/c:mRa	Ljava/lang/String;
-    //   65: putfield 328	com/tencent/mm/protocal/protobuf/bhi:UserName	Ljava/lang/String;
+    //   62: getfield 91	com/tencent/mm/plugin/webview/f/c:pRV	Ljava/lang/String;
+    //   65: putfield 319	com/tencent/mm/protocal/protobuf/bos:UserName	Ljava/lang/String;
     //   68: aload 5
     //   70: aload_0
-    //   71: getfield 108	com/tencent/mm/plugin/webview/f/c:JbR	Ljava/lang/String;
-    //   74: putfield 331	com/tencent/mm/protocal/protobuf/bhi:LRF	Ljava/lang/String;
+    //   71: getfield 113	com/tencent/mm/plugin/webview/f/c:PYy	Ljava/lang/String;
+    //   74: putfield 322	com/tencent/mm/protocal/protobuf/bos:Tak	Ljava/lang/String;
     //   77: aload 5
     //   79: aload_0
-    //   80: getfield 110	com/tencent/mm/plugin/webview/f/c:JbS	Ljava/lang/String;
-    //   83: putfield 334	com/tencent/mm/protocal/protobuf/bhi:LRG	Ljava/lang/String;
+    //   80: getfield 115	com/tencent/mm/plugin/webview/f/c:PYz	Ljava/lang/String;
+    //   83: putfield 325	com/tencent/mm/protocal/protobuf/bos:Tal	Ljava/lang/String;
     //   86: aload 5
     //   88: iload_2
-    //   89: putfield 337	com/tencent/mm/protocal/protobuf/bhi:KMd	I
+    //   89: putfield 328	com/tencent/mm/protocal/protobuf/bos:RNa	I
     //   92: aload 5
     //   94: aload_0
-    //   95: getfield 84	com/tencent/mm/plugin/webview/f/c:AOS	I
-    //   98: putfield 340	com/tencent/mm/protocal/protobuf/bhi:KHa	I
-    //   101: invokestatic 346	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
-    //   104: ldc_w 348
-    //   107: invokevirtual 354	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   110: checkcast 356	android/net/ConnectivityManager
+    //   95: getfield 87	com/tencent/mm/plugin/webview/f/c:GIg	I
+    //   98: putfield 331	com/tencent/mm/protocal/protobuf/bos:RIs	I
+    //   101: invokestatic 337	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   104: ldc_w 339
+    //   107: invokevirtual 345	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   110: checkcast 347	android/net/ConnectivityManager
     //   113: astore_3
     //   114: aload_3
-    //   115: ifnull +248 -> 363
+    //   115: ifnull +271 -> 386
     //   118: aload_3
-    //   119: invokevirtual 360	android/net/ConnectivityManager:getActiveNetworkInfo	()Landroid/net/NetworkInfo;
+    //   119: invokevirtual 351	android/net/ConnectivityManager:getActiveNetworkInfo	()Landroid/net/NetworkInfo;
     //   122: astore_3
     //   123: aload_3
-    //   124: ifnull +239 -> 363
+    //   124: ifnull +262 -> 386
     //   127: aload_3
-    //   128: invokevirtual 365	android/net/NetworkInfo:getType	()I
+    //   128: invokevirtual 356	android/net/NetworkInfo:getType	()I
     //   131: iconst_1
-    //   132: if_icmpne +213 -> 345
-    //   135: ldc_w 367
+    //   132: if_icmpne +236 -> 368
+    //   135: ldc_w 358
     //   138: astore_3
     //   139: aload 5
     //   141: aload_3
-    //   142: putfield 370	com/tencent/mm/protocal/protobuf/bhi:pLm	Ljava/lang/String;
+    //   142: putfield 361	com/tencent/mm/protocal/protobuf/bos:sSU	Ljava/lang/String;
     //   145: aload 5
     //   147: aload_0
-    //   148: getfield 123	com/tencent/mm/plugin/webview/f/c:JbK	I
-    //   151: putfield 373	com/tencent/mm/protocal/protobuf/bhi:LRB	I
+    //   148: getfield 130	com/tencent/mm/plugin/webview/f/c:PYq	I
+    //   151: putfield 364	com/tencent/mm/protocal/protobuf/bos:Tag	I
     //   154: aload 5
     //   156: aload_0
-    //   157: getfield 92	com/tencent/mm/plugin/webview/f/c:zjn	Ljava/lang/String;
-    //   160: putfield 376	com/tencent/mm/protocal/protobuf/bhi:LRC	Ljava/lang/String;
+    //   157: getfield 95	com/tencent/mm/plugin/webview/f/c:EOD	Ljava/lang/String;
+    //   160: putfield 367	com/tencent/mm/protocal/protobuf/bos:Tah	Ljava/lang/String;
     //   163: aload 5
     //   165: aload_0
-    //   166: getfield 100	com/tencent/mm/plugin/webview/f/c:JbN	I
-    //   169: putfield 379	com/tencent/mm/protocal/protobuf/bhi:LRD	I
+    //   166: getfield 103	com/tencent/mm/plugin/webview/f/c:PYt	I
+    //   169: putfield 370	com/tencent/mm/protocal/protobuf/bos:Tai	I
     //   172: aload 5
-    //   174: new 313	com/tencent/mm/protocal/protobuf/dqi
+    //   174: new 304	com/tencent/mm/protocal/protobuf/eaf
     //   177: dup
-    //   178: invokespecial 314	com/tencent/mm/protocal/protobuf/dqi:<init>	()V
+    //   178: invokespecial 305	com/tencent/mm/protocal/protobuf/eaf:<init>	()V
     //   181: aload_0
-    //   182: getfield 90	com/tencent/mm/plugin/webview/f/c:mAppId	Ljava/lang/String;
-    //   185: invokevirtual 318	com/tencent/mm/protocal/protobuf/dqi:bhy	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/dqi;
-    //   188: putfield 382	com/tencent/mm/protocal/protobuf/bhi:LRu	Lcom/tencent/mm/protocal/protobuf/dqi;
+    //   182: getfield 93	com/tencent/mm/plugin/webview/f/c:mAppId	Ljava/lang/String;
+    //   185: invokevirtual 309	com/tencent/mm/protocal/protobuf/eaf:btQ	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/eaf;
+    //   188: putfield 373	com/tencent/mm/protocal/protobuf/bos:SZZ	Lcom/tencent/mm/protocal/protobuf/eaf;
     //   191: aload 5
-    //   193: new 384	com/tencent/mm/protocal/protobuf/SKBuiltinBuffer_t
+    //   193: new 375	com/tencent/mm/protocal/protobuf/eae
     //   196: dup
-    //   197: invokespecial 385	com/tencent/mm/protocal/protobuf/SKBuiltinBuffer_t:<init>	()V
+    //   197: invokespecial 376	com/tencent/mm/protocal/protobuf/eae:<init>	()V
     //   200: aload_0
-    //   201: getfield 94	com/tencent/mm/plugin/webview/f/c:yEg	[B
-    //   204: invokevirtual 389	com/tencent/mm/protocal/protobuf/SKBuiltinBuffer_t:setBuffer	([B)Lcom/tencent/mm/protocal/protobuf/SKBuiltinBuffer_t;
-    //   207: putfield 390	com/tencent/mm/protocal/protobuf/bhi:LRE	Lcom/tencent/mm/protocal/protobuf/SKBuiltinBuffer_t;
-    //   210: ldc 133
-    //   212: ldc_w 392
-    //   215: bipush 13
-    //   217: anewarray 4	java/lang/Object
-    //   220: dup
-    //   221: iconst_0
-    //   222: aload_1
-    //   223: aastore
-    //   224: dup
-    //   225: iconst_1
+    //   201: getfield 97	com/tencent/mm/plugin/webview/f/c:EfT	[B
+    //   204: invokevirtual 380	com/tencent/mm/protocal/protobuf/eae:dc	([B)Lcom/tencent/mm/protocal/protobuf/eae;
+    //   207: putfield 381	com/tencent/mm/protocal/protobuf/bos:Taj	Lcom/tencent/mm/protocal/protobuf/eae;
+    //   210: aload 5
+    //   212: aload_0
+    //   213: getfield 117	com/tencent/mm/plugin/webview/f/c:PYA	Lcom/tencent/mm/protocal/protobuf/bov;
+    //   216: putfield 384	com/tencent/mm/protocal/protobuf/bos:Tan	Lcom/tencent/mm/protocal/protobuf/bov;
+    //   219: iconst_5
+    //   220: iload_2
+    //   221: if_icmpne +12 -> 233
+    //   224: aload 5
     //   226: aload_0
-    //   227: getfield 88	com/tencent/mm/plugin/webview/f/c:mRa	Ljava/lang/String;
-    //   230: aastore
-    //   231: dup
-    //   232: iconst_2
-    //   233: aload_0
-    //   234: getfield 82	com/tencent/mm/plugin/webview/f/c:mScene	I
-    //   237: invokestatic 146	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   240: aastore
-    //   241: dup
-    //   242: iconst_3
-    //   243: iload_2
-    //   244: invokestatic 146	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   247: aastore
-    //   248: dup
-    //   249: iconst_4
-    //   250: aload_0
-    //   251: getfield 84	com/tencent/mm/plugin/webview/f/c:AOS	I
-    //   254: invokestatic 146	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   257: aastore
-    //   258: dup
-    //   259: iconst_5
-    //   260: aload 5
-    //   262: getfield 370	com/tencent/mm/protocal/protobuf/bhi:pLm	Ljava/lang/String;
-    //   265: aastore
-    //   266: dup
-    //   267: bipush 6
-    //   269: aload_0
-    //   270: getfield 123	com/tencent/mm/plugin/webview/f/c:JbK	I
-    //   273: invokestatic 146	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   276: aastore
-    //   277: dup
-    //   278: bipush 7
-    //   280: aload_0
-    //   281: getfield 90	com/tencent/mm/plugin/webview/f/c:mAppId	Ljava/lang/String;
-    //   284: aastore
-    //   285: dup
-    //   286: bipush 8
-    //   288: aload_0
-    //   289: getfield 92	com/tencent/mm/plugin/webview/f/c:zjn	Ljava/lang/String;
-    //   292: aastore
-    //   293: dup
-    //   294: bipush 9
-    //   296: aload_0
-    //   297: getfield 100	com/tencent/mm/plugin/webview/f/c:JbN	I
-    //   300: invokestatic 146	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   303: aastore
-    //   304: dup
-    //   305: bipush 10
-    //   307: aload_0
-    //   308: getfield 94	com/tencent/mm/plugin/webview/f/c:yEg	[B
-    //   311: invokestatic 396	com/tencent/mm/sdk/platformtools/Util:encodeHexString	([B)Ljava/lang/String;
-    //   314: aastore
-    //   315: dup
-    //   316: bipush 11
-    //   318: aload_0
-    //   319: getfield 108	com/tencent/mm/plugin/webview/f/c:JbR	Ljava/lang/String;
-    //   322: aastore
-    //   323: dup
-    //   324: bipush 12
-    //   326: aload_0
-    //   327: getfield 110	com/tencent/mm/plugin/webview/f/c:JbS	Ljava/lang/String;
-    //   330: aastore
-    //   331: invokestatic 171	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   334: ldc_w 290
-    //   337: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   340: aload_0
-    //   341: monitorexit
-    //   342: aload 4
-    //   344: areturn
-    //   345: aload_3
-    //   346: invokevirtual 399	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
-    //   349: ifnull +14 -> 363
-    //   352: aload_3
-    //   353: invokevirtual 399	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
-    //   356: invokevirtual 402	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   359: astore_3
-    //   360: goto -221 -> 139
-    //   363: ldc_w 404
-    //   366: astore_3
-    //   367: goto -228 -> 139
-    //   370: astore_1
-    //   371: aload_0
-    //   372: monitorexit
-    //   373: aload_1
-    //   374: athrow
+    //   227: getfield 111	com/tencent/mm/plugin/webview/f/c:PYw	Ljava/lang/String;
+    //   230: putfield 387	com/tencent/mm/protocal/protobuf/bos:SZI	Ljava/lang/String;
+    //   233: ldc 140
+    //   235: ldc_w 389
+    //   238: bipush 13
+    //   240: anewarray 4	java/lang/Object
+    //   243: dup
+    //   244: iconst_0
+    //   245: aload_1
+    //   246: aastore
+    //   247: dup
+    //   248: iconst_1
+    //   249: aload_0
+    //   250: getfield 91	com/tencent/mm/plugin/webview/f/c:pRV	Ljava/lang/String;
+    //   253: aastore
+    //   254: dup
+    //   255: iconst_2
+    //   256: aload_0
+    //   257: getfield 85	com/tencent/mm/plugin/webview/f/c:mScene	I
+    //   260: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   263: aastore
+    //   264: dup
+    //   265: iconst_3
+    //   266: iload_2
+    //   267: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   270: aastore
+    //   271: dup
+    //   272: iconst_4
+    //   273: aload_0
+    //   274: getfield 87	com/tencent/mm/plugin/webview/f/c:GIg	I
+    //   277: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   280: aastore
+    //   281: dup
+    //   282: iconst_5
+    //   283: aload 5
+    //   285: getfield 361	com/tencent/mm/protocal/protobuf/bos:sSU	Ljava/lang/String;
+    //   288: aastore
+    //   289: dup
+    //   290: bipush 6
+    //   292: aload_0
+    //   293: getfield 130	com/tencent/mm/plugin/webview/f/c:PYq	I
+    //   296: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   299: aastore
+    //   300: dup
+    //   301: bipush 7
+    //   303: aload_0
+    //   304: getfield 93	com/tencent/mm/plugin/webview/f/c:mAppId	Ljava/lang/String;
+    //   307: aastore
+    //   308: dup
+    //   309: bipush 8
+    //   311: aload_0
+    //   312: getfield 95	com/tencent/mm/plugin/webview/f/c:EOD	Ljava/lang/String;
+    //   315: aastore
+    //   316: dup
+    //   317: bipush 9
+    //   319: aload_0
+    //   320: getfield 103	com/tencent/mm/plugin/webview/f/c:PYt	I
+    //   323: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   326: aastore
+    //   327: dup
+    //   328: bipush 10
+    //   330: aload_0
+    //   331: getfield 97	com/tencent/mm/plugin/webview/f/c:EfT	[B
+    //   334: invokestatic 393	com/tencent/mm/sdk/platformtools/Util:encodeHexString	([B)Ljava/lang/String;
+    //   337: aastore
+    //   338: dup
+    //   339: bipush 11
+    //   341: aload_0
+    //   342: getfield 113	com/tencent/mm/plugin/webview/f/c:PYy	Ljava/lang/String;
+    //   345: aastore
+    //   346: dup
+    //   347: bipush 12
+    //   349: aload_0
+    //   350: getfield 115	com/tencent/mm/plugin/webview/f/c:PYz	Ljava/lang/String;
+    //   353: aastore
+    //   354: invokestatic 178	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   357: ldc_w 282
+    //   360: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   363: aload_0
+    //   364: monitorexit
+    //   365: aload 4
+    //   367: areturn
+    //   368: aload_3
+    //   369: invokevirtual 396	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
+    //   372: ifnull +14 -> 386
+    //   375: aload_3
+    //   376: invokevirtual 396	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
+    //   379: invokevirtual 399	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   382: astore_3
+    //   383: goto -244 -> 139
+    //   386: ldc_w 401
+    //   389: astore_3
+    //   390: goto -251 -> 139
+    //   393: astore_1
+    //   394: aload_0
+    //   395: monitorexit
+    //   396: aload_1
+    //   397: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	375	0	this	c
-    //   0	375	1	paramString	String
-    //   0	375	2	paramInt	int
-    //   113	254	3	localObject	Object
-    //   13	330	4	locald	com.tencent.mm.ak.d
-    //   26	235	5	localbhi	bhi
+    //   0	398	0	this	c
+    //   0	398	1	paramString	String
+    //   0	398	2	paramInt	int
+    //   113	277	3	localObject	Object
+    //   13	353	4	locald	com.tencent.mm.an.d
+    //   26	258	5	localbos	bos
     // Exception table:
     //   from	to	target	type
-    //   2	114	370	finally
-    //   118	123	370	finally
-    //   127	135	370	finally
-    //   139	340	370	finally
-    //   345	360	370	finally
+    //   2	114	393	finally
+    //   118	123	393	finally
+    //   127	135	393	finally
+    //   139	219	393	finally
+    //   224	233	393	finally
+    //   233	363	393	finally
+    //   368	383	393	finally
   }
   
-  private void b(final String paramString, final int paramInt, final a<bhj> parama)
+  private void b(final String paramString, final int paramInt, final a<bot> parama)
   {
     try
     {
-      AppMethodBeat.i(224476);
+      AppMethodBeat.i(206160);
       a(paramString, paramInt, new IPCRunCgi.a()
       {
-        public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.d paramAnonymousd)
+        public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.an.d paramAnonymousd)
         {
-          AppMethodBeat.i(224457);
+          AppMethodBeat.i(209603);
           Log.i("MicroMsg.LuggageGetA8Key", "ipcGetA8Key errType:%d, errCode:%d, errMsg:%s, destroyCalled:%b", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Boolean.valueOf(c.c(c.this)) });
           c.d(c.this).remove(paramString);
-          if ((paramAnonymousd.iLL.iLR instanceof bhj))
+          if ((d.c.b(paramAnonymousd.lBS) instanceof bot))
           {
-            paramAnonymousd = (bhj)paramAnonymousd.iLL.iLR;
+            paramAnonymousd = (bot)d.c.b(paramAnonymousd.lBS);
             c.a(c.this, paramString, paramInt, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, paramAnonymousd, parama);
-            AppMethodBeat.o(224457);
+            AppMethodBeat.o(209603);
             return;
           }
           c.a(c.this, paramString, paramInt, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, null, parama);
           Log.e("MicroMsg.LuggageGetA8Key", "ipcGetA8Key call back resp is null");
-          AppMethodBeat.o(224457);
+          AppMethodBeat.o(209603);
         }
       });
-      AppMethodBeat.o(224476);
+      AppMethodBeat.o(206160);
       return;
     }
     finally
@@ -376,42 +381,56 @@ public final class c
     }
   }
   
-  public static Map<String, String> ij(List<ccc> paramList)
+  public static int blB(String paramString)
   {
-    AppMethodBeat.i(224479);
+    AppMethodBeat.i(206139);
+    paramString = com.tencent.mm.protocal.c.bst(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(206139);
+      return -1;
+    }
+    int i = paramString.hoG();
+    AppMethodBeat.o(206139);
+    return i;
+  }
+  
+  public static Map<String, String> iZ(List<ckf> paramList)
+  {
+    AppMethodBeat.i(206165);
     HashMap localHashMap = new HashMap();
     if (paramList == null)
     {
-      AppMethodBeat.o(224479);
+      AppMethodBeat.o(206165);
       return localHashMap;
     }
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      ccc localccc = (ccc)paramList.next();
-      localHashMap.put(localccc.xMX, localccc.Cyk);
+      ckf localckf = (ckf)paramList.next();
+      localHashMap.put(localckf.CRg, localckf.Izj);
     }
-    AppMethodBeat.o(224479);
+    AppMethodBeat.o(206165);
     return localHashMap;
   }
   
-  private static boolean kg(int paramInt1, int paramInt2)
+  private static boolean ly(int paramInt1, int paramInt2)
   {
     return (paramInt1 == 4) && (paramInt2 == -2005);
   }
   
-  public final void DU(int paramInt)
+  public final void Ht(int paramInt)
   {
-    this.JbK = paramInt;
+    this.PYq = paramInt;
   }
   
-  public final a a(String paramString, int paramInt, a<bhj> parama)
+  public final a a(String paramString, int paramInt, a<bot> parama)
   {
     try
     {
-      AppMethodBeat.i(224473);
+      AppMethodBeat.i(206150);
       paramString = a(paramString, false, paramInt, parama);
-      AppMethodBeat.o(224473);
+      AppMethodBeat.o(206150);
       return paramString;
     }
     finally
@@ -421,13 +440,13 @@ public final class c
     }
   }
   
-  public final a a(String paramString, a<bhj> parama)
+  public final a a(String paramString, a<bot> parama)
   {
     try
     {
-      AppMethodBeat.i(224472);
+      AppMethodBeat.i(206149);
       paramString = a(paramString, -1, parama);
-      AppMethodBeat.o(224472);
+      AppMethodBeat.o(206149);
       return paramString;
     }
     finally
@@ -437,104 +456,96 @@ public final class c
     }
   }
   
-  public final a a(String paramString, boolean paramBoolean, int paramInt, final a<bhj> parama)
+  public final a a(String paramString, boolean paramBoolean, int paramInt, final a<bot> parama)
   {
     for (;;)
     {
-      d locald;
       try
       {
-        AppMethodBeat.i(224474);
-        if ((!paramBoolean) && (aZI(paramString)))
+        AppMethodBeat.i(206153);
+        if ((!paramBoolean) && (blD(paramString)))
         {
-          paramString = a.Jcb;
-          AppMethodBeat.o(224474);
+          paramString = a.PYJ;
+          AppMethodBeat.o(206153);
           return paramString;
         }
-        if (paramBoolean) {
-          break label146;
-        }
-        locald = this.JbQ;
-        if (!Util.isNullOrNil(paramString)) {
-          break label86;
-        }
-        Log.e("MicroMsg.LuggageGetA8KeyPermission", "has fail, url is null");
-      }
-      finally {}
-      if (i != 0)
-      {
-        paramString = a.Jca;
-        AppMethodBeat.o(224474);
-        continue;
-        label86:
-        Object localObject = d.aYy(paramString);
-        localObject = (d.a)locald.Jce.get(localObject);
-        if ((localObject != null) && (((d.a)localObject).IBv != locald.Jch) && (((d.a)localObject).Jcj != locald.Jci))
+        if ((!paramBoolean) && (this.PYx.has(paramString)))
         {
-          i = 1;
+          paramString = a.PYI;
+          AppMethodBeat.o(206153);
           continue;
         }
+        if (paramInt != 5) {
+          break label100;
+        }
+      }
+      finally {}
+      if (this.PYs)
+      {
+        Log.w("MicroMsg.LuggageGetA8Key", "disable iframe request");
+        paramString = a.PYI;
+        AppMethodBeat.o(206153);
       }
       else
       {
-        label146:
-        if ((paramInt == 5) && (this.JbM))
+        label100:
+        if ((!paramBoolean) && (this.PYp.contains(paramString)))
         {
-          Log.w("MicroMsg.LuggageGetA8Key", "disable iframe request");
-          paramString = a.Jca;
-          AppMethodBeat.o(224474);
-          continue;
+          paramString = a.PYJ;
+          AppMethodBeat.o(206153);
         }
-        if ((!paramBoolean) && (this.JbJ.contains(paramString)))
+        else
         {
-          paramString = a.Jcb;
-          AppMethodBeat.o(224474);
-          continue;
-        }
-        this.JbJ.add(paramString);
-        if (parama != null) {
-          parama.by(paramInt, paramString);
-        }
-        i = paramInt;
-        if (paramInt == -1) {
-          i = cO(paramString, false);
-        }
-        paramBoolean = this.JbL;
-        this.JbL = false;
-        Log.i("MicroMsg.LuggageGetA8Key", "WebView-Trace startGetA8Key, url: %s", new Object[] { paramString });
-        if ((paramBoolean) && (this.JbP != null) && (paramString.equals(this.JbP.LRH)))
-        {
-          Log.i("MicroMsg.LuggageGetA8Key", "WebView-Trace Use Outer GetA8key Result");
-          h.RTc.aX(new Runnable()
+          this.PYp.add(paramString);
+          if (parama != null) {
+            parama.bv(paramInt, paramString);
+          }
+          final int i = paramInt;
+          if (paramInt == -1) {
+            i = dc(paramString, false);
+          }
+          boolean bool = this.PYr;
+          this.PYr = false;
+          Log.i("MicroMsg.LuggageGetA8Key", "WebView-Trace startGetA8Key, url: %s, force=%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+          if ((bool) && (this.PYv != null) && (paramString.equals(this.PYv.Tao)))
           {
-            public final void run()
+            Log.i("MicroMsg.LuggageGetA8Key", "WebView-Trace Use Outer GetA8key Result");
+            h.ZvG.be(new Runnable()
             {
-              AppMethodBeat.i(224455);
-              Log.i("MicroMsg.LuggageGetA8Key", "WebView-Trace Use Outer GetA8key Result CallBack");
-              c.a(c.this, c.a(c.this), i, 0, 0, "", c.b(c.this), parama);
-              AppMethodBeat.o(224455);
-            }
-          });
-          paramString = a.Jcb;
-          AppMethodBeat.o(224474);
-          continue;
+              public final void run()
+              {
+                AppMethodBeat.i(206268);
+                Log.i("MicroMsg.LuggageGetA8Key", "WebView-Trace Use Outer GetA8key Result CallBack");
+                c.a(c.this, c.a(c.this), i, 0, 0, "", c.b(c.this), parama);
+                AppMethodBeat.o(206268);
+              }
+            });
+            paramString = a.PYJ;
+            AppMethodBeat.o(206153);
+          }
+          else
+          {
+            b(paramString, i, parama);
+            paramString = a.PYJ;
+            AppMethodBeat.o(206153);
+          }
         }
-        b(paramString, i, parama);
-        paramString = a.Jcb;
-        AppMethodBeat.o(224474);
-        continue;
       }
-      final int i = 0;
     }
+  }
+  
+  public final void a(bov parambov)
+  {
+    this.PYA = parambov;
   }
   
   public final void a(String paramString, int paramInt, IPCRunCgi.a parama)
   {
     try
     {
-      AppMethodBeat.i(224477);
-      IPCRunCgi.a(at(paramString, paramInt), JbV, parama);
-      AppMethodBeat.o(224477);
+      AppMethodBeat.i(206162);
+      IPCRunCgi.a(aL(paramString, paramInt), PYD, parama, null);
+      AppMethodBeat.o(206162);
       return;
     }
     finally
@@ -544,79 +555,58 @@ public final class c
     }
   }
   
-  public final void aZB(String paramString)
+  public final void aG(byte[] paramArrayOfByte)
   {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.zjn = str;
+    this.EfT = paramArrayOfByte;
   }
   
-  public final void aZC(String paramString)
+  public final void anT(int paramInt)
   {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.JbR = str;
+    this.PYt = paramInt;
   }
   
-  public final void aZD(String paramString)
+  public final GeneralControlWrapper blA(String paramString)
   {
-    this.JbS = paramString;
-  }
-  
-  public final JsapiPermissionWrapper aZE(String paramString)
-  {
-    AppMethodBeat.i(224463);
-    paramString = this.JbQ.aZE(paramString);
-    AppMethodBeat.o(224463);
+    AppMethodBeat.i(206134);
+    paramString = this.PYx.blA(paramString);
+    AppMethodBeat.o(206134);
     return paramString;
   }
   
-  public final GeneralControlWrapper aZF(String paramString)
+  public final int blC(String paramString)
   {
-    AppMethodBeat.i(224464);
-    paramString = this.JbQ.aZF(paramString);
-    AppMethodBeat.o(224464);
-    return paramString;
-  }
-  
-  public final int aZH(String paramString)
-  {
-    AppMethodBeat.i(258655);
-    int i = cO(paramString, false);
-    AppMethodBeat.o(258655);
+    AppMethodBeat.i(292842);
+    int i = dc(paramString, false);
+    AppMethodBeat.o(292842);
     return i;
   }
   
-  public final boolean aZI(String paramString)
+  public final boolean blD(String paramString)
   {
-    AppMethodBeat.i(224470);
-    boolean bool = this.JbJ.contains(paramString);
-    AppMethodBeat.o(224470);
+    AppMethodBeat.i(206145);
+    boolean bool = this.PYp.contains(paramString);
+    AppMethodBeat.o(206145);
     return bool;
   }
   
-  public final String aZj(String paramString)
+  public final String bld(String paramString)
   {
-    AppMethodBeat.i(224466);
-    synchronized (this.JbT)
+    AppMethodBeat.i(206137);
+    synchronized (this.PYB)
     {
       Log.i("MicroMsg.LuggageGetA8Key", "getShareUrl, fullUrl = %s", new Object[] { paramString });
-      localObject1 = this.JbT.keySet().iterator();
+      localObject1 = this.PYB.keySet().iterator();
       if (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
-        Log.i("MicroMsg.LuggageGetA8Key", "getShareUrl, Key = %s, value = %s", new Object[] { localObject2, this.JbT.get(localObject2) });
+        Log.i("MicroMsg.LuggageGetA8Key", "getShareUrl, Key = %s, value = %s", new Object[] { localObject2, this.PYB.get(localObject2) });
       }
     }
-    Object localObject2 = (String)this.JbT.get(paramString);
+    Object localObject2 = (String)this.PYB.get(paramString);
     Object localObject1 = localObject2;
     if (Util.isNullOrNil((String)localObject2))
     {
-      localObject2 = this.JbT;
+      localObject2 = this.PYB;
       if (!Util.isNullOrNil(paramString)) {
         break label175;
       }
@@ -626,7 +616,7 @@ public final class c
     {
       localObject1 = (String)((HashMap)localObject2).get(localObject1);
       paramString = Util.nullAs((String)localObject1, paramString);
-      AppMethodBeat.o(224466);
+      AppMethodBeat.o(206137);
       return paramString;
       label175:
       int i = paramString.indexOf("#");
@@ -638,102 +628,159 @@ public final class c
     }
   }
   
-  public final void age(int paramInt)
+  public final void blu(String paramString)
   {
-    this.JbN = paramInt;
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.EOD = str;
   }
   
-  public final void av(byte[] paramArrayOfByte)
+  public final void blv(String paramString)
   {
-    this.yEg = paramArrayOfByte;
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.PYy = str;
   }
   
-  public final int cO(String paramString, boolean paramBoolean)
+  public final void blw(String paramString)
   {
-    AppMethodBeat.i(224469);
+    this.PYz = paramString;
+  }
+  
+  public final void blx(String paramString)
+  {
+    AppMethodBeat.i(206128);
+    Log.i("MicroMsg.LuggageGetA8Key", "setOuterUrlForIframe(%s)", new Object[] { paramString });
+    this.PYw = paramString;
+    AppMethodBeat.o(206128);
+  }
+  
+  public final JsapiPermissionWrapper bly(String paramString)
+  {
+    AppMethodBeat.i(206130);
+    paramString = this.PYx.blE(paramString);
+    AppMethodBeat.o(206130);
+    return paramString;
+  }
+  
+  public final boolean blz(String paramString)
+  {
+    AppMethodBeat.i(206132);
+    boolean bool = this.PYx.has(paramString);
+    AppMethodBeat.o(206132);
+    return bool;
+  }
+  
+  public final int dc(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(206143);
     if (TextUtils.isEmpty(paramString))
     {
       Log.e("MicroMsg.LuggageGetA8Key", "getReason fail, url is null");
-      AppMethodBeat.o(224469);
+      AppMethodBeat.o(206143);
       return 0;
     }
-    if (this.JbL)
+    if (this.PYr)
     {
-      AppMethodBeat.o(224469);
+      AppMethodBeat.o(206143);
       return 0;
     }
-    if (JbU.matcher(paramString).find())
+    if (PYC.matcher(paramString).find())
     {
-      AppMethodBeat.o(224469);
+      AppMethodBeat.o(206143);
       return 2;
     }
-    if ((!paramBoolean) && (b.aZA(paramString)))
+    if ((!paramBoolean) && (b.blt(paramString)))
     {
-      AppMethodBeat.o(224469);
+      AppMethodBeat.o(206143);
       return 8;
     }
-    AppMethodBeat.o(224469);
+    AppMethodBeat.o(206143);
     return 1;
   }
   
   public final void destroy()
   {
-    this.IJS = true;
+    this.PFQ = true;
   }
   
-  public final boolean gbE()
+  public final boolean gUz()
   {
-    AppMethodBeat.i(224471);
-    if (this.JbJ.size() > 0)
+    AppMethodBeat.i(206146);
+    if (this.PYp.size() > 0)
     {
-      AppMethodBeat.o(224471);
+      AppMethodBeat.o(206146);
       return true;
     }
-    AppMethodBeat.o(224471);
+    AppMethodBeat.o(206146);
     return false;
   }
   
-  public final boolean gs(String paramString, int paramInt)
+  public final String gWG()
   {
-    AppMethodBeat.i(224465);
-    if (aZE(paramString).aiW(paramInt) == 1)
+    return this.PYy;
+  }
+  
+  public final String gWH()
+  {
+    return this.PYz;
+  }
+  
+  public final int getSessionId()
+  {
+    return this.PYq;
+  }
+  
+  public final String getUsername()
+  {
+    return this.pRV;
+  }
+  
+  public final boolean ha(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(206135);
+    if (bly(paramString).arj(paramInt) == 1)
     {
-      AppMethodBeat.o(224465);
+      AppMethodBeat.o(206135);
       return true;
     }
-    AppMethodBeat.o(224465);
+    AppMethodBeat.o(206135);
     return false;
   }
   
-  public final void k(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public final void m(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    AppMethodBeat.i(224462);
+    AppMethodBeat.i(206127);
     if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null))
     {
-      AppMethodBeat.o(224462);
+      AppMethodBeat.o(206127);
       return;
     }
     if ((paramArrayOfByte1.length <= 0) || (paramArrayOfByte2.length <= 0))
     {
-      AppMethodBeat.o(224462);
+      AppMethodBeat.o(206127);
       return;
     }
-    bhi localbhi = new bhi();
-    bhj localbhj = new bhj();
+    bos localbos = new bos();
+    bot localbot = new bot();
     try
     {
-      localbhi.parseFrom(paramArrayOfByte1);
-      localbhj.parseFrom(paramArrayOfByte2);
-      this.JbO = localbhi.LRx.MTo;
+      localbos.parseFrom(paramArrayOfByte1);
+      localbot.parseFrom(paramArrayOfByte2);
+      this.PYu = localbos.Tac.Ufy;
       label80:
-      if ((Util.isNullOrNil(this.JbO)) || (localbhj.LRH == null))
+      if ((Util.isNullOrNil(this.PYu)) || (localbot.Tao == null))
       {
         Log.e("MicroMsg.LuggageGetA8Key", "ReqUrl or FullUrl is null");
-        AppMethodBeat.o(224462);
+        AppMethodBeat.o(206127);
         return;
       }
-      this.JbP = localbhj;
-      AppMethodBeat.o(224462);
+      this.PYv = localbot;
+      AppMethodBeat.o(206127);
       return;
     }
     catch (Exception paramArrayOfByte1)
@@ -749,7 +796,7 @@ public final class c
   
   public final void setFlag(int paramInt)
   {
-    this.AOS = paramInt;
+    this.GIg = paramInt;
   }
   
   public final void setScene(int paramInt)
@@ -763,20 +810,20 @@ public final class c
     if (paramString == null) {
       str = "";
     }
-    this.mRa = str;
+    this.pRV = str;
   }
   
   public static enum a
   {
     static
     {
-      AppMethodBeat.i(224460);
-      JbZ = new a("INTERCEPTED", 0);
-      Jca = new a("NO_NEED", 1);
-      Jcb = new a("WILL_GET", 2);
-      Jcc = new a("FAILED", 3);
-      Jcd = new a[] { JbZ, Jca, Jcb, Jcc };
-      AppMethodBeat.o(224460);
+      AppMethodBeat.i(216294);
+      PYH = new a("INTERCEPTED", 0);
+      PYI = new a("NO_NEED", 1);
+      PYJ = new a("WILL_GET", 2);
+      PYK = new a("FAILED", 3);
+      PYL = new a[] { PYH, PYI, PYJ, PYK };
+      AppMethodBeat.o(216294);
     }
     
     private a() {}

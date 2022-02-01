@@ -11,71 +11,71 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 11}, hxE={""}, hxF={"Lcom/tencent/mm/dynamicbackground/model/DefaultDynamicBgServiceImpl;", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "()V", "isEnable", "", "getDisplayRealSize", "Landroid/graphics/Point;", "context", "Landroid/content/Context;", "getSleepTimeInMsPerFrame", "", "isEnableNativeDynamicBackground", "isInitCrash", "loadDynamicBgLibrary", "", "markDrawEndPoint", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "setEnableNativeDynamicBackground", "enable", "willCrash", "Companion", "dynamicbg_release"})
+@l(iBK={1, 1, 11}, iBL={""}, iBM={"Lcom/tencent/mm/dynamicbackground/model/DefaultDynamicBgServiceImpl;", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "()V", "isEnable", "", "getDisplayRealSize", "Landroid/graphics/Point;", "context", "Landroid/content/Context;", "getSleepTimeInMsPerFrame", "", "isEnableNativeDynamicBackground", "isInitCrash", "loadDynamicBgLibrary", "", "markDrawEndPoint", "markDrawStartPoint", "markWillCrash", "needMarkDrawPoint", "onInitCrash", "onInitEnd", "onInitStart", "setEnableNativeDynamicBackground", "enable", "willCrash", "Companion", "dynamicbg_release"})
 public final class a
   implements c
 {
-  public static final a.a gRf;
-  private boolean ded = true;
+  public static final a.a jBy;
+  private boolean dih = true;
   
   static
   {
     AppMethodBeat.i(103076);
-    gRf = new a.a((byte)0);
+    jBy = new a.a((byte)0);
     AppMethodBeat.o(103076);
   }
   
-  public final boolean atB()
+  public final boolean aAA()
   {
-    return this.ded;
+    return false;
   }
   
-  public final void atC()
+  public final boolean aAB()
   {
-    this.ded = false;
+    return false;
   }
   
-  public final void atD()
+  public final void aAC() {}
+  
+  public final void aAD() {}
+  
+  public final float aAE()
+  {
+    return 16.0F;
+  }
+  
+  public final boolean aAt()
+  {
+    return this.dih;
+  }
+  
+  public final void aAu()
+  {
+    this.dih = false;
+  }
+  
+  public final void aAv()
   {
     AppMethodBeat.i(103075);
     System.loadLibrary("dynamicBg");
     AppMethodBeat.o(103075);
   }
   
-  public final boolean atE()
+  public final boolean aAw()
   {
     return false;
   }
   
-  public final void atF() {}
+  public final void aAx() {}
   
-  public final void atG() {}
+  public final void aAy() {}
   
-  public final void atH() {}
+  public final void aAz() {}
   
-  public final boolean atI()
-  {
-    return false;
-  }
-  
-  public final boolean atJ()
-  {
-    return false;
-  }
-  
-  public final void atK() {}
-  
-  public final void atL() {}
-  
-  public final float atM()
-  {
-    return 16.0F;
-  }
-  
-  public final Point az(Context paramContext)
+  public final Point au(Context paramContext)
   {
     AppMethodBeat.i(103074);
-    p.h(paramContext, "context");
+    p.k(paramContext, "context");
     Point localPoint = new Point();
     paramContext = paramContext.getSystemService("window");
     if (paramContext == null)
@@ -128,7 +128,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.dynamicbackground.model.a
  * JD-Core Version:    0.7.0.1
  */

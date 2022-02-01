@@ -9,92 +9,98 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelsns.SnsAdClick;
-import com.tencent.mm.plugin.sns.ad.i.i;
-import com.tencent.mm.plugin.sns.ad.i.i.a;
+import com.tencent.mm.plugin.sns.ad.adxml.AdClickActionInfo;
+import com.tencent.mm.plugin.sns.ad.d.l;
 import com.tencent.mm.plugin.sns.ad.i.j;
+import com.tencent.mm.plugin.sns.ad.i.j.a;
+import com.tencent.mm.plugin.sns.ad.i.k;
 import com.tencent.mm.plugin.sns.ad.timeline.a.d;
 import com.tencent.mm.plugin.sns.ad.widget.b.c.1;
 import com.tencent.mm.plugin.sns.ad.widget.b.c.2;
-import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.data.t;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.mm.plugin.sns.i.j;
 import com.tencent.mm.plugin.sns.storage.ADXml;
-import com.tencent.mm.plugin.sns.storage.ADXml.AdCardActionBtnInfo;
 import com.tencent.mm.plugin.sns.storage.SnsInfo;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.q;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.s;
 import com.tencent.mm.ui.widget.a.e;
 
 public final class b
   extends com.tencent.mm.plugin.sns.ad.timeline.a.a.a
 {
-  public final boolean a(View paramView, int paramInt, SnsInfo paramSnsInfo, ADXml.AdCardActionBtnInfo paramAdCardActionBtnInfo, d paramd)
+  public final boolean a(View paramView, int paramInt, SnsInfo paramSnsInfo, AdClickActionInfo paramAdClickActionInfo, d paramd)
   {
-    AppMethodBeat.i(202097);
+    AppMethodBeat.i(267358);
     Log.d("SnsAd.AdFinderLiveNotice", "the AdFinderLiveSubscriptionClick button is clicked");
-    if ((paramView == null) || (paramView.getContext() == null) || (paramAdCardActionBtnInfo == null))
+    if ((paramView == null) || (paramView.getContext() == null) || (paramAdClickActionInfo == null))
     {
-      AppMethodBeat.o(202097);
+      AppMethodBeat.o(267358);
       return false;
     }
-    j.a((SnsAdClick)paramd.z("snsAdClick", null), 43);
-    paramView = new com.tencent.mm.plugin.sns.ad.widget.b.c(paramView.getContext(), paramSnsInfo, new a(paramView.getContext(), paramAdCardActionBtnInfo));
-    if (paramView.DBG == null) {
+    k.a((SnsAdClick)paramd.y("snsAdClick", null), 43);
+    paramView = new com.tencent.mm.plugin.sns.ad.widget.b.c(paramView.getContext(), paramSnsInfo, new a(paramView.getContext(), paramAdClickActionInfo));
+    if (paramView.JNr == null) {
       Log.w("SnsAd.SemiDialogManager", "the adapter is null , can't show dialog!!!");
     }
     for (;;)
     {
-      com.tencent.mm.plugin.expt.hellhound.a.b.b.c.gr(com.tencent.mm.plugin.sns.ad.e.h.jU(paramSnsInfo.getUxinfo(), r.v(paramSnsInfo)), paramAdCardActionBtnInfo.finderUsername);
-      AppMethodBeat.o(202097);
+      paramInt = l.aeJ(paramAdClickActionInfo.scene);
+      com.tencent.mm.plugin.expt.hellhound.a.b.b.c.gF(l.an(paramSnsInfo.getUxinfo(), t.w(paramSnsInfo), paramInt), paramAdClickActionInfo.finderUsername);
+      AppMethodBeat.o(267358);
       return true;
       try
       {
-        if (paramView.oXS == null)
+        if (paramView.rZT == null)
         {
-          paramView.mContentView = LayoutInflater.from(paramView.mContext).inflate(2131496418, null);
-          if ((paramView.DBG != null) && (!TextUtils.isEmpty(paramView.DBG.eXB())))
+          paramView.mContentView = LayoutInflater.from(paramView.mContext).inflate(i.g.sns_bottom_subscribe_layout, null);
+          if ((paramView.JNr != null) && (!TextUtils.isEmpty(paramView.JNr.fLe())))
           {
-            paramd = (ImageView)paramView.mContentView.findViewById(2131310360);
-            com.tencent.mm.plugin.sns.a.c.k(paramView.DBG.eXB(), paramd);
+            paramd = (ImageView)paramView.mContentView.findViewById(i.f.we_app_icon);
+            com.tencent.mm.plugin.sns.a.c.a(i.f.sns_ad_subscribe_url, paramView.JNr.fLe(), paramd);
           }
-          if ((paramView.DBG != null) && (!TextUtils.isEmpty(paramView.DBG.eXC())))
+          if ((paramView.JNr != null) && (!TextUtils.isEmpty(paramView.JNr.fLf())))
           {
-            paramd = (TextView)paramView.mContentView.findViewById(2131310361);
+            paramd = (TextView)paramView.mContentView.findViewById(i.f.we_app_title);
             if (paramd != null) {
-              paramd.setText(paramView.DBG.eXC());
+              paramd.setText(paramView.JNr.fLf());
             }
           }
-          if ((paramView.DBG != null) && (!TextUtils.isEmpty(paramView.DBG.eXD())))
+          if ((paramView.JNr != null) && (!TextUtils.isEmpty(paramView.JNr.fLg())))
           {
-            paramd = (TextView)paramView.mContentView.findViewById(2131308744);
+            paramd = (TextView)paramView.mContentView.findViewById(i.f.subscribe_title);
             if (paramd != null) {
-              paramd.setText(paramView.DBG.eXD());
+              paramd.setText(paramView.JNr.fLg());
             }
           }
-          if ((paramView.DBG != null) && (!TextUtils.isEmpty(paramView.DBG.eXE())))
+          if ((paramView.JNr != null) && (!TextUtils.isEmpty(paramView.JNr.fLh())))
           {
-            paramd = (TextView)paramView.mContentView.findViewById(2131308737);
+            paramd = (TextView)paramView.mContentView.findViewById(i.f.subscribe_content);
             if (paramd != null) {
-              paramd.setText(paramView.DBG.eXE());
+              paramd.setText(paramView.JNr.fLh());
             }
           }
-          if ((paramView.DBG != null) && (!TextUtils.isEmpty(paramView.DBG.eXF())))
+          if ((paramView.JNr != null) && (!TextUtils.isEmpty(paramView.JNr.fLi())))
           {
-            paramd = (TextView)paramView.mContentView.findViewById(2131308733);
+            paramd = (TextView)paramView.mContentView.findViewById(i.f.subscribe);
             if (paramd != null)
             {
-              paramd.setText(paramView.DBG.eXF());
-              paramd.setOnClickListener(new c.2(paramView, paramView.DBG.eXG()));
+              paramd.setText(paramView.JNr.fLi());
+              paramd.setOnClickListener(new c.2(paramView, paramView.JNr.fLj()));
             }
           }
-          paramd = paramView.mContentView.findViewById(2131298763);
+          paramd = paramView.mContentView.findViewById(i.f.close);
           if (paramd != null) {
             paramd.setOnClickListener(new c.1(paramView));
           }
-          paramView.oXS = new e(paramView.mContext, true, 0);
-          paramView.oXS.V(paramView.mContentView, true);
-          paramView.oXS.Dm(true);
+          paramView.rZT = new e(paramView.mContext, true, 0);
+          paramView.rZT.Z(paramView.mContentView, true);
+          paramView.rZT.rn(true);
         }
-        if ((paramView.oXS != null) && (!paramView.oXS.isShowing())) {
-          paramView.oXS.dGm();
+        if ((paramView.rZT != null) && (!paramView.rZT.isShowing())) {
+          paramView.rZT.eik();
         }
       }
       catch (Throwable paramView) {}
@@ -104,56 +110,56 @@ public final class b
   static final class a
     implements com.tencent.mm.plugin.sns.ad.widget.b.a, com.tencent.mm.plugin.sns.ad.widget.b.b
   {
-    ADXml.AdCardActionBtnInfo DxE;
+    AdClickActionInfo JHz;
     Context context;
     
-    a(Context paramContext, ADXml.AdCardActionBtnInfo paramAdCardActionBtnInfo)
+    a(Context paramContext, AdClickActionInfo paramAdClickActionInfo)
     {
       this.context = paramContext;
-      this.DxE = paramAdCardActionBtnInfo;
+      this.JHz = paramAdClickActionInfo;
     }
     
     public final boolean a(final com.tencent.mm.plugin.sns.ad.widget.b.c paramc, final View paramView, final SnsInfo paramSnsInfo)
     {
       final String str1 = null;
-      AppMethodBeat.i(202096);
-      if ((paramc == null) || (paramView == null) || (paramSnsInfo == null) || (this.DxE == null))
+      AppMethodBeat.i(217101);
+      if ((paramc == null) || (paramView == null) || (paramSnsInfo == null) || (this.JHz == null))
       {
-        AppMethodBeat.o(202096);
+        AppMethodBeat.o(217101);
         return false;
       }
       final Context localContext = paramView.getContext();
       if (localContext == null)
       {
-        AppMethodBeat.o(202096);
+        AppMethodBeat.o(217101);
         return false;
       }
       paramView = str1;
       if ((localContext instanceof Activity)) {
-        paramView = com.tencent.mm.ui.base.h.a(localContext, localContext.getString(2131762443), true, null);
+        paramView = h.a(localContext, localContext.getString(i.j.loading), true, null);
       }
-      str1 = r.v(paramSnsInfo);
-      final String str2 = this.DxE.finderUsername;
-      final String str3 = this.DxE.finderLiveNoticeId;
-      com.tencent.mm.plugin.sns.ad.c.b.b(str1, str2, str3, new com.tencent.mm.plugin.sns.ad.c.b.a()
+      str1 = t.w(paramSnsInfo);
+      final String str2 = this.JHz.finderUsername;
+      final String str3 = this.JHz.JxY;
+      com.tencent.mm.plugin.sns.ad.b.b.b(str1, str2, str3, new com.tencent.mm.plugin.sns.ad.b.b.a()
       {
-        public final void b(String paramAnonymousString, int paramAnonymousInt, Object paramAnonymousObject)
+        public final void b(String paramAnonymousString, int paramAnonymousInt1, int paramAnonymousInt2, Object paramAnonymousObject)
         {
-          AppMethodBeat.i(202095);
+          AppMethodBeat.i(225289);
           Log.i("SnsAd.AdFinderLiveNotice", "AdFinderLiveNoticeClick:: the out snsid is " + str1 + ", inner snsid = " + paramAnonymousString);
           if ((paramView != null) && (paramView.isShowing())) {
             paramView.dismiss();
           }
-          if (paramAnonymousInt == 0) {
-            com.tencent.mm.plugin.sns.ad.widget.living.b.fv(paramAnonymousString, 513);
+          if (paramAnonymousInt2 == 0) {
+            com.tencent.mm.plugin.sns.ad.widget.living.b.fY(paramAnonymousString, 513);
           }
           paramAnonymousObject = paramc;
-          switch (paramAnonymousInt)
+          switch (paramAnonymousInt2)
           {
           }
           for (;;)
           {
-            com.tencent.mm.plugin.sns.ad.c.b.ao(localContext, paramAnonymousInt);
+            com.tencent.mm.plugin.sns.ad.b.b.aG(localContext, paramAnonymousInt2);
             SnsInfo localSnsInfo = paramSnsInfo;
             String str3 = str2;
             String str4 = str3;
@@ -171,10 +177,10 @@ public final class b
                 str1 = localSnsInfo.getUxinfo();
               }
             }
-            localObject = new com.tencent.mm.plugin.sns.ad.c.a();
-            ((com.tencent.mm.plugin.sns.ad.c.a)localObject).c(paramAnonymousString, str1, paramAnonymousObject, str3, str4, paramAnonymousInt, 1);
-            i.a((i.a)localObject);
-            AppMethodBeat.o(202095);
+            localObject = new com.tencent.mm.plugin.sns.ad.b.a();
+            ((com.tencent.mm.plugin.sns.ad.b.a)localObject).c(paramAnonymousString, str1, paramAnonymousObject, str3, str4, paramAnonymousInt2, 1);
+            j.a((j.a)localObject);
+            AppMethodBeat.o(225289);
             return;
             if (paramAnonymousObject != null) {
               paramAnonymousObject.dismiss();
@@ -182,45 +188,45 @@ public final class b
           }
         }
       });
-      AppMethodBeat.o(202096);
+      AppMethodBeat.o(217101);
       return true;
     }
     
-    public final String eXB()
+    public final String fLe()
     {
-      if (this.DxE != null) {
-        return this.DxE.finderAvatar;
+      if (this.JHz != null) {
+        return this.JHz.JxZ;
       }
       return "";
     }
     
-    public final String eXC()
+    public final String fLf()
     {
-      if (this.DxE != null) {
-        return this.DxE.finderNickName;
+      if (this.JHz != null) {
+        return this.JHz.Jya;
       }
       return "";
     }
     
-    public final String eXD()
+    public final String fLg()
     {
-      if (this.DxE != null) {
-        return this.DxE.finderLiveTitle;
+      if (this.JHz != null) {
+        return this.JHz.Jyb;
       }
       return null;
     }
     
-    public final String eXE()
+    public final String fLh()
     {
       return "预约成功后，在活动开始前以服务通知的形式，提醒您准时参与";
     }
     
-    public final String eXF()
+    public final String fLi()
     {
       return "预约直播";
     }
     
-    public final com.tencent.mm.plugin.sns.ad.widget.b.a eXG()
+    public final com.tencent.mm.plugin.sns.ad.widget.b.a fLj()
     {
       return this;
     }
@@ -228,7 +234,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.timeline.a.a.a.b
  * JD-Core Version:    0.7.0.1
  */

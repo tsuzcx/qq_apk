@@ -76,7 +76,7 @@ public class music_close_detail_icon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.music_close_detail_icon
  * JD-Core Version:    0.7.0.1
  */

@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static volatile b UgO = b.UgR;
-  private final StringBuffer UgP;
-  private final b UgQ;
+  private static volatile b abKd = b.abKg;
+  private final StringBuffer abKe;
+  private final b abKf;
   private final Object object;
   
   public a(Object paramObject, b paramb)
@@ -19,32 +19,32 @@ public final class a
     AppMethodBeat.i(40695);
     b localb = paramb;
     if (paramb == null) {
-      localb = UgO;
+      localb = abKd;
     }
     paramb = new StringBuffer(512);
-    this.UgP = paramb;
-    this.UgQ = localb;
+    this.abKe = paramb;
+    this.abKf = localb;
     this.object = paramObject;
     if (paramObject != null) {
-      if ((localb.UgY) && (paramObject != null))
+      if ((localb.abKn) && (paramObject != null))
       {
-        b.gD(paramObject);
-        if (!localb.UgZ) {
+        b.gV(paramObject);
+        if (!localb.abKo) {
           break label153;
         }
-        paramb.append(org.apache.commons.b.b.bE(paramObject.getClass()));
+        paramb.append(org.apache.commons.b.b.cd(paramObject.getClass()));
       }
     }
     for (;;)
     {
-      if ((localb.Uha) && (paramObject != null))
+      if ((localb.abKp) && (paramObject != null))
       {
-        b.gD(paramObject);
+        b.gV(paramObject);
         paramb.append('@');
         paramb.append(Integer.toHexString(System.identityHashCode(paramObject)));
       }
-      paramb.append(localb.But);
-      if (localb.Uhc) {
+      paramb.append(localb.HoN);
+      if (localb.abKr) {
         localb.c(paramb);
       }
       AppMethodBeat.o(40695);
@@ -54,10 +54,10 @@ public final class a
     }
   }
   
-  public final a gB(Object paramObject)
+  public final a gT(Object paramObject)
   {
     AppMethodBeat.i(40696);
-    this.UgQ.b(this.UgP, paramObject);
+    this.abKf.b(this.abKe, paramObject);
     AppMethodBeat.o(40696);
     return this;
   }
@@ -68,20 +68,20 @@ public final class a
     AppMethodBeat.i(40697);
     if (this.object == null)
     {
-      this.UgP.append(this.UgQ.Uhk);
-      localObject1 = this.UgP.toString();
+      this.abKe.append(this.abKf.abKz);
+      localObject1 = this.abKe.toString();
       AppMethodBeat.o(40697);
       return localObject1;
     }
-    Object localObject1 = this.UgQ;
-    StringBuffer localStringBuffer = this.UgP;
+    Object localObject1 = this.abKf;
+    StringBuffer localStringBuffer = this.abKe;
     Object localObject2 = this.object;
     int k;
     int m;
-    if (!((b)localObject1).Uhd)
+    if (!((b)localObject1).abKs)
     {
       k = localStringBuffer.length();
-      m = ((b)localObject1).Uhe.length();
+      m = ((b)localObject1).abKt.length();
       if ((k > 0) && (m > 0) && (k >= m))
       {
         i = 0;
@@ -89,7 +89,7 @@ public final class a
         if (i >= m) {
           break label179;
         }
-        if (localStringBuffer.charAt(k - 1 - i) == ((b)localObject1).Uhe.charAt(m - 1 - i)) {
+        if (localStringBuffer.charAt(k - 1 - i) == ((b)localObject1).abKt.charAt(m - 1 - i)) {
           break label172;
         }
       }
@@ -101,8 +101,8 @@ public final class a
       if (i != 0) {
         localStringBuffer.setLength(k - m);
       }
-      localStringBuffer.append(((b)localObject1).Buu);
-      b.gE(localObject2);
+      localStringBuffer.append(((b)localObject1).HoO);
+      b.gW(localObject2);
       break;
       i += 1;
       break label105;
@@ -111,7 +111,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.apache.commons.b.a.a
  * JD-Core Version:    0.7.0.1
  */

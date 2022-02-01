@@ -1,36 +1,33 @@
 package com.tencent.wxa;
 
-import io.flutter.plugin.a.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import io.flutter.embedding.engine.plugins.b;
+import java.util.HashSet;
+import java.util.Iterator;
 
-public abstract class a
+final class a
 {
-  public static a eI(Object paramObject)
+  public static void a(io.flutter.embedding.engine.a parama, HashSet<io.flutter.embedding.engine.plugins.a> paramHashSet)
   {
-    return new a(true, paramObject);
-  }
-  
-  public static a hrG()
-  {
-    return new a(false, null);
-  }
-  
-  public abstract a a(j paramj);
-  
-  public static final class a
-  {
-    Object SxC;
-    boolean result;
-    
-    public a(boolean paramBoolean, Object paramObject)
+    AppMethodBeat.i(224752);
+    if (paramHashSet != null)
     {
-      this.result = paramBoolean;
-      this.SxC = paramObject;
+      paramHashSet = paramHashSet.iterator();
+      while (paramHashSet.hasNext())
+      {
+        io.flutter.embedding.engine.plugins.a locala = (io.flutter.embedding.engine.plugins.a)paramHashSet.next();
+        if (parama.aapV.bK(locala.getClass())) {
+          parama.aapV.bM(locala.getClass());
+        }
+        parama.aapV.a(locala);
+      }
     }
+    AppMethodBeat.o(224752);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.wxa.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.os.Looper;
 import android.os.MessageQueue;
 import android.os.MessageQueue.IdleHandler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cr.d;
+import com.tencent.mm.xwebutil.c;
 
 final class BizConversationUI$BizConversationFmUI$11
   implements MessageQueue.IdleHandler
@@ -15,7 +15,7 @@ final class BizConversationUI$BizConversationFmUI$11
   {
     AppMethodBeat.i(38246);
     Looper.myQueue().removeIdleHandler(this);
-    d.hiy();
+    c.ikh();
     AppMethodBeat.o(38246);
     return false;
   }

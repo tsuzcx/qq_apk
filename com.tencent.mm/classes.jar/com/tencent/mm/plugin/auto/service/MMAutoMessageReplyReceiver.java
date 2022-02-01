@@ -34,15 +34,15 @@ public class MMAutoMessageReplyReceiver
     {
       paramContext = RemoteInput.getResultsFromIntent(paramIntent);
       if (paramContext == null) {
-        break label166;
+        break label171;
       }
     }
-    label161:
     label166:
+    label171:
     for (paramContext = paramContext.getCharSequence("key_voice_reply_text");; paramContext = null)
     {
       if (paramContext != null) {
-        break label171;
+        break label176;
       }
       Log.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "username %s reply null", new Object[] { str });
       AppMethodBeat.o(21162);
@@ -56,14 +56,14 @@ public class MMAutoMessageReplyReceiver
         for (;;)
         {
           if (paramContext == null) {
-            break label161;
+            break label166;
           }
           paramContext = (Bundle)paramContext.getExtras().getParcelable("android.remoteinput.resultsData");
           break;
           paramIntent = paramContext.getDescription();
           if (!paramIntent.hasMimeType("text/vnd.android.intent")) {
             paramContext = null;
-          } else if (!paramIntent.getLabel().equals("android.remoteinput.results")) {
+          } else if (!paramIntent.getLabel().toString().contentEquals("android.remoteinput.results")) {
             paramContext = null;
           } else {
             paramContext = paramContext.getItemAt(0).getIntent();
@@ -73,34 +73,34 @@ public class MMAutoMessageReplyReceiver
       paramContext = null;
       break;
     }
-    label171:
-    if (!a.ceB())
+    label176:
+    if (!a.crO())
     {
       AppMethodBeat.o(21162);
       return;
     }
-    if (!a.ceC())
+    if (!a.crP())
     {
       Log.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "not open car mode");
       AppMethodBeat.o(21162);
       return;
     }
-    if (!a.ceD())
+    if (!a.crQ())
     {
       Log.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "not install auto app");
       AppMethodBeat.o(21162);
       return;
     }
-    paramIntent = b.oIG;
-    b.Bt(1L);
+    paramIntent = b.rKw;
+    b.HG(1L);
     Log.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "username %s reply %s", new Object[] { str, paramContext.toString() });
-    g.eir().ad(str, paramContext.toString(), ab.JG(str));
+    g.eRW().ai(str, paramContext.toString(), ab.QZ(str));
     AppMethodBeat.o(21162);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.auto.service.MMAutoMessageReplyReceiver
  * JD-Core Version:    0.7.0.1
  */

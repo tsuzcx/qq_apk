@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.View.OnLongClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.gallery.b.e;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
 import com.tencent.mm.sdk.platformtools.ClipboardHelper;
 
@@ -16,15 +17,15 @@ final class a$1
   {
     AppMethodBeat.i(111387);
     b localb = new b();
-    localb.bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gallery/ui/AlbumAdapter$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
-    paramView = paramView.getTag(2131302847);
+    localb.bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/gallery/ui/AlbumAdapter$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
+    paramView = paramView.getTag(b.e.item_position);
     if ((paramView instanceof Integer))
     {
       int i = ((Integer)paramView).intValue();
-      paramView = this.xnx.NK(i);
+      paramView = this.BZP.SY(i);
       if (paramView != null) {
-        ClipboardHelper.setText(a.a(this.xnx), "media info", paramView.toString());
+        ClipboardHelper.setText(a.a(this.BZP), "media info", paramView.toString());
       }
     }
     com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/gallery/ui/AlbumAdapter$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
@@ -34,7 +35,7 @@ final class a$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.a.1
  * JD-Core Version:    0.7.0.1
  */

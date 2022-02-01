@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.expt.hellhound.a.h;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/submenu/SubMenuMonitor$Companion;", "", "()V", "CLICK_EVENT_BaseScanUI", "", "HELP_ENTRANCE", "TAG", "", "isClickEvent_BaseScanUI", "", "()Z", "setClickEvent_BaseScanUI", "(Z)V", "isClickHelper", "setClickHelper", "mListener", "Lcom/tencent/mm/plugin/expt/hellhound/ext/submenu/SubMenuMonitor$SubMenuListener;", "startMonitor", "", "stopMonitor", "plugin-expt_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/ext/submenu/SubMenuMonitor$Companion;", "", "()V", "CLICK_EVENT_BaseScanUI", "", "HELP_ENTRANCE", "TAG", "", "isClickEvent_BaseScanUI", "", "()Z", "setClickEvent_BaseScanUI", "(Z)V", "isClickHelper", "setClickHelper", "mListener", "Lcom/tencent/mm/plugin/expt/hellhound/ext/submenu/SubMenuMonitor$SubMenuListener;", "startMonitor", "", "stopMonitor", "plugin-expt_release"})
 public final class a$a {}
 
 

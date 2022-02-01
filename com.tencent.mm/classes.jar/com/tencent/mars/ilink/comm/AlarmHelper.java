@@ -5,10 +5,12 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.mars.ilink.xlog.Log;
+import com.tencent.mm.hellhoundlib.b.c;
 
 public class AlarmHelper
 {
   private static final String TAG = "MicroMsg.AlarmHelper";
+  private byte _hellAccFlag_;
   
   public static void cancel(Context paramContext, int paramInt, PendingIntent paramPendingIntent)
   {
@@ -28,7 +30,10 @@ public class AlarmHelper
       Log.e("MicroMsg.AlarmHelper", "cancel(requestCode:%s): am == null", new Object[] { Integer.valueOf(paramInt) });
       return;
     }
-    paramContext.cancel(paramPendingIntent);
+    paramPendingIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramPendingIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramPendingIntent.aFh(), "com/tencent/mars/ilink/comm/AlarmHelper", "cancel", "(Landroid/content/Context;ILandroid/app/PendingIntent;)V", "android/app/AlarmManager_EXEC_", "cancel", "(Landroid/app/PendingIntent;)V");
+    paramContext.cancel((PendingIntent)paramPendingIntent.sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mars/ilink/comm/AlarmHelper", "cancel", "(Landroid/content/Context;ILandroid/app/PendingIntent;)V", "android/app/AlarmManager_EXEC_", "cancel", "(Landroid/app/PendingIntent;)V");
   }
   
   public static void cancel(Context paramContext, int paramInt1, Intent paramIntent, int paramInt2)
@@ -49,7 +54,11 @@ public class AlarmHelper
       Log.e("MicroMsg.AlarmHelper", "cancel(requestCode:%s): am == null", new Object[] { Integer.valueOf(paramInt1) });
       return;
     }
-    ((AlarmManager)localObject).cancel(getPendingIntent(paramContext, paramInt1, paramIntent, paramInt2));
+    paramContext = getPendingIntent(paramContext, paramInt1, paramIntent, paramInt2);
+    paramContext = new com.tencent.mm.hellhoundlib.b.a().bm(paramContext);
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, paramContext.aFh(), "com/tencent/mars/ilink/comm/AlarmHelper", "cancel", "(Landroid/content/Context;ILandroid/content/Intent;I)V", "android/app/AlarmManager_EXEC_", "cancel", "(Landroid/app/PendingIntent;)V");
+    ((AlarmManager)localObject).cancel((PendingIntent)paramContext.sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mars/ilink/comm/AlarmHelper", "cancel", "(Landroid/content/Context;ILandroid/content/Intent;I)V", "android/app/AlarmManager_EXEC_", "cancel", "(Landroid/app/PendingIntent;)V");
   }
   
   public static void cancel(Context paramContext, PendingIntent paramPendingIntent)
@@ -70,7 +79,10 @@ public class AlarmHelper
       Log.e("MicroMsg.AlarmHelper", "cancel: am == null");
       return;
     }
-    paramContext.cancel(paramPendingIntent);
+    paramPendingIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramPendingIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramPendingIntent.aFh(), "com/tencent/mars/ilink/comm/AlarmHelper", "cancel", "(Landroid/content/Context;Landroid/app/PendingIntent;)V", "android/app/AlarmManager_EXEC_", "cancel", "(Landroid/app/PendingIntent;)V");
+    paramContext.cancel((PendingIntent)paramPendingIntent.sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mars/ilink/comm/AlarmHelper", "cancel", "(Landroid/content/Context;Landroid/app/PendingIntent;)V", "android/app/AlarmManager_EXEC_", "cancel", "(Landroid/app/PendingIntent;)V");
   }
   
   public static PendingIntent getPendingIntent(Context paramContext, int paramInt1, Intent paramIntent, int paramInt2)
@@ -122,7 +134,10 @@ public class AlarmHelper
       return null;
     }
     paramContext = PendingIntent.getBroadcast(paramContext, paramInt1, paramIntent, paramInt3);
-    ((AlarmManager)localObject).set(paramInt2, paramLong, paramContext);
+    paramIntent = c.a(paramInt2, c.a(paramLong, new com.tencent.mm.hellhoundlib.b.a().bm(paramContext)));
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, paramIntent.aFh(), "com/tencent/mars/ilink/comm/AlarmHelper", "set", "(Landroid/content/Context;IIJLandroid/content/Intent;I)Landroid/app/PendingIntent;", "android/app/AlarmManager_EXEC_", "set", "(IJLandroid/app/PendingIntent;)V");
+    ((AlarmManager)localObject).set(((Integer)paramIntent.sf(0)).intValue(), ((Long)c.a(paramIntent).sf(1)).longValue(), (PendingIntent)c.aFj().sf(2));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mars/ilink/comm/AlarmHelper", "set", "(Landroid/content/Context;IIJLandroid/content/Intent;I)Landroid/app/PendingIntent;", "android/app/AlarmManager_EXEC_", "set", "(IJLandroid/app/PendingIntent;)V");
     return paramContext;
   }
   
@@ -150,7 +165,10 @@ public class AlarmHelper
       return null;
     }
     paramContext = PendingIntent.getBroadcast(paramContext, paramInt1, paramIntent, paramInt3);
-    ((AlarmManager)localObject).set(paramInt2, paramLong, paramContext);
+    paramIntent = c.a(paramInt2, c.a(paramLong, new com.tencent.mm.hellhoundlib.b.a().bm(paramContext)));
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, paramIntent.aFh(), "com/tencent/mars/ilink/comm/AlarmHelper", "setExact", "(Landroid/content/Context;IIJLandroid/content/Intent;I)Landroid/app/PendingIntent;", "android/app/AlarmManager_EXEC_", "set", "(IJLandroid/app/PendingIntent;)V");
+    ((AlarmManager)localObject).set(((Integer)paramIntent.sf(0)).intValue(), ((Long)c.a(paramIntent).sf(1)).longValue(), (PendingIntent)c.aFj().sf(2));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mars/ilink/comm/AlarmHelper", "setExact", "(Landroid/content/Context;IIJLandroid/content/Intent;I)Landroid/app/PendingIntent;", "android/app/AlarmManager_EXEC_", "set", "(IJLandroid/app/PendingIntent;)V");
     return paramContext;
   }
   
@@ -178,13 +196,16 @@ public class AlarmHelper
       return null;
     }
     paramContext = PendingIntent.getBroadcast(paramContext, paramInt1, paramIntent, paramInt3);
-    ((AlarmManager)localObject).set(paramInt2, paramLong1, paramContext);
+    paramIntent = c.a(paramInt2, c.a(paramLong1, new com.tencent.mm.hellhoundlib.b.a().bm(paramContext)));
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, paramIntent.aFh(), "com/tencent/mars/ilink/comm/AlarmHelper", "setRepeating", "(Landroid/content/Context;IIJJLandroid/content/Intent;I)Landroid/app/PendingIntent;", "android/app/AlarmManager_EXEC_", "set", "(IJLandroid/app/PendingIntent;)V");
+    ((AlarmManager)localObject).set(((Integer)paramIntent.sf(0)).intValue(), ((Long)c.a(paramIntent).sf(1)).longValue(), (PendingIntent)c.aFj().sf(2));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mars/ilink/comm/AlarmHelper", "setRepeating", "(Landroid/content/Context;IIJJLandroid/content/Intent;I)Landroid/app/PendingIntent;", "android/app/AlarmManager_EXEC_", "set", "(IJLandroid/app/PendingIntent;)V");
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mars.ilink.comm.AlarmHelper
  * JD-Core Version:    0.7.0.1
  */

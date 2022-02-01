@@ -3,20 +3,20 @@ package com.tencent.mm.plugin.wallet_payu.balance.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.plugin.wallet.a.s;
 import com.tencent.mm.plugin.wallet.balance.ui.WalletBalanceManagerUI;
 import com.tencent.mm.plugin.wallet_core.c.b.a;
-import com.tencent.mm.plugin.wallet_core.model.an;
+import com.tencent.mm.plugin.wallet_core.model.ao;
 
 public class WalletPayUBalanceManagerUI
   extends WalletBalanceManagerUI
 {
-  public final void fNn()
+  public final void gFR()
   {
     AppMethodBeat.i(71966);
-    s.fOg();
-    if (s.fOh().Hwc == null) {}
+    s.gGL();
+    if (s.gGM().OnP == null) {}
     for (boolean bool = true;; bool = false)
     {
       doSceneProgress(new a(), bool);
@@ -25,7 +25,7 @@ public class WalletPayUBalanceManagerUI
     }
   }
   
-  public final void fNo()
+  public final void gFS()
   {
     AppMethodBeat.i(71968);
     startActivity(WalletPayUBalanceSaveUI.class);
@@ -43,7 +43,7 @@ public class WalletPayUBalanceManagerUI
   {
     AppMethodBeat.i(71967);
     if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramq instanceof a))) {
-      is(false);
+      jq(false);
     }
     AppMethodBeat.o(71967);
     return false;

@@ -3,30 +3,30 @@ package com.tencent.xweb.x5.sdk;
 import android.content.Context;
 import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.aj;
+import com.tencent.xweb.al;
 import java.util.HashMap;
 import java.util.Map;
 import org.xwalk.core.Log;
 
 public final class d
 {
-  static a SFG;
-  static boolean SFH;
+  static a aagV;
+  static boolean aagW;
   
   static
   {
     AppMethodBeat.i(157148);
-    aj.initInterface();
-    SFH = false;
+    al.initInterface();
+    aagW = false;
     AppMethodBeat.o(157148);
   }
   
   public static void a(Context paramContext, String paramString, ValueCallback<Boolean> paramValueCallback)
   {
     AppMethodBeat.i(157141);
-    if (SFG != null)
+    if (aagV != null)
     {
-      SFG.a(paramContext, paramString, paramValueCallback);
+      aagV.a(paramContext, paramString, paramValueCallback);
       AppMethodBeat.o(157141);
       return;
     }
@@ -36,15 +36,15 @@ public final class d
   
   public static void a(a parama)
   {
-    SFG = parama;
+    aagV = parama;
   }
   
   public static void a(h paramh)
   {
     AppMethodBeat.i(157138);
-    if (SFG != null)
+    if (aagV != null)
     {
-      SFG.a(paramh);
+      aagV.a(paramh);
       AppMethodBeat.o(157138);
       return;
     }
@@ -52,26 +52,12 @@ public final class d
     AppMethodBeat.o(157138);
   }
   
-  public static boolean a(Context paramContext, String paramString, HashMap<String, String> paramHashMap, ValueCallback<String> paramValueCallback)
-  {
-    AppMethodBeat.i(157140);
-    if (SFG != null)
-    {
-      boolean bool = SFG.a(paramContext, paramString, paramHashMap, paramValueCallback);
-      AppMethodBeat.o(157140);
-      return bool;
-    }
-    Log.e("TbsDownloader", "startQbOrMiniQBToLoadUrl: sImp is null");
-    AppMethodBeat.o(157140);
-    return false;
-  }
-  
   public static boolean canOpenWebPlus(Context paramContext)
   {
     AppMethodBeat.i(157144);
-    if (SFG != null)
+    if (aagV != null)
     {
-      boolean bool = SFG.canOpenWebPlus(paramContext);
+      boolean bool = aagV.canOpenWebPlus(paramContext);
       AppMethodBeat.o(157144);
       return bool;
     }
@@ -83,9 +69,9 @@ public final class d
   public static void closeFileReader(Context paramContext)
   {
     AppMethodBeat.i(157145);
-    if (SFG != null)
+    if (aagV != null)
     {
-      SFG.closeFileReader(paramContext);
+      aagV.closeFileReader(paramContext);
       AppMethodBeat.o(157145);
       return;
     }
@@ -95,24 +81,37 @@ public final class d
   
   public static void disableAutoCreateX5Webview()
   {
-    AppMethodBeat.i(219098);
-    if (SFG != null)
+    AppMethodBeat.i(197066);
+    if (aagV != null)
     {
-      SFG.disableAutoCreateX5Webview();
-      AppMethodBeat.o(219098);
+      aagV.disableAutoCreateX5Webview();
+      AppMethodBeat.o(197066);
       return;
     }
     Log.e("TbsDownloader", "disableAutoCreateX5Webview: sImp is null");
-    AppMethodBeat.o(219098);
+    AppMethodBeat.o(197066);
+  }
+  
+  public static void disableSensitiveApi()
+  {
+    AppMethodBeat.i(197070);
+    if (aagV != null)
+    {
+      aagV.disableSensitiveApi();
+      AppMethodBeat.o(197070);
+      return;
+    }
+    Log.e("TbsDownloader", "disableSensitiveApi: sImp is null");
+    AppMethodBeat.o(197070);
   }
   
   public static void forceSysWebView()
   {
     AppMethodBeat.i(157146);
-    SFH = true;
-    if (SFG != null)
+    aagW = true;
+    if (aagV != null)
     {
-      SFG.forceSysWebView();
+      aagV.forceSysWebView();
       AppMethodBeat.o(157146);
       return;
     }
@@ -122,24 +121,24 @@ public final class d
   
   public static String getMiniQBVersion(Context paramContext)
   {
-    AppMethodBeat.i(219099);
-    if (SFG != null)
+    AppMethodBeat.i(197076);
+    if (aagV != null)
     {
-      paramContext = SFG.getMiniQBVersion(paramContext);
-      AppMethodBeat.o(219099);
+      paramContext = aagV.getMiniQBVersion(paramContext);
+      AppMethodBeat.o(197076);
       return paramContext;
     }
     Log.e("TbsDownloader", "forceSysWebView: sImp is null");
-    AppMethodBeat.o(219099);
+    AppMethodBeat.o(197076);
     return null;
   }
   
   public static boolean getTBSInstalling()
   {
     AppMethodBeat.i(157136);
-    if (SFG != null)
+    if (aagV != null)
     {
-      boolean bool = SFG.getTBSInstalling();
+      boolean bool = aagV.getTBSInstalling();
       AppMethodBeat.o(157136);
       return bool;
     }
@@ -151,9 +150,9 @@ public final class d
   public static int getTbsVersion(Context paramContext)
   {
     AppMethodBeat.i(157137);
-    if (SFG != null)
+    if (aagV != null)
     {
-      int i = SFG.getTbsVersion(paramContext);
+      int i = aagV.getTbsVersion(paramContext);
       AppMethodBeat.o(157137);
       return i;
     }
@@ -162,17 +161,12 @@ public final class d
     return 0;
   }
   
-  public static boolean huK()
-  {
-    return true;
-  }
-  
   public static void initTbsSettings(Map<String, Object> paramMap)
   {
     AppMethodBeat.i(157143);
-    if (SFG != null)
+    if (aagV != null)
     {
-      SFG.initTbsSettings(paramMap);
+      aagV.initTbsSettings(paramMap);
       AppMethodBeat.o(157143);
       return;
     }
@@ -180,12 +174,17 @@ public final class d
     AppMethodBeat.o(157143);
   }
   
+  public static boolean iyx()
+  {
+    return true;
+  }
+  
   public static void reset(Context paramContext)
   {
     AppMethodBeat.i(157135);
-    if (SFG != null)
+    if (aagV != null)
     {
-      SFG.reset(paramContext);
+      aagV.reset(paramContext);
       AppMethodBeat.o(157135);
       return;
     }
@@ -195,23 +194,23 @@ public final class d
   
   public static void setNewDnsHostList(String paramString)
   {
-    AppMethodBeat.i(219101);
-    if (SFG != null)
+    AppMethodBeat.i(197085);
+    if (aagV != null)
     {
-      SFG.setNewDnsHostList(paramString);
-      AppMethodBeat.o(219101);
+      aagV.setNewDnsHostList(paramString);
+      AppMethodBeat.o(197085);
       return;
     }
     Log.e("TbsDownloader", "setNewDnsHostList: sImp is null");
-    AppMethodBeat.o(219101);
+    AppMethodBeat.o(197085);
   }
   
   public static void setUploadCode(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(157147);
-    if (SFG != null)
+    if (aagV != null)
     {
-      SFG.setUploadCode(paramContext, paramInt);
+      aagV.setUploadCode(paramContext, paramInt);
       AppMethodBeat.o(157147);
       return;
     }
@@ -221,23 +220,23 @@ public final class d
   
   public static void setWebContentsDebuggingEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(219100);
-    if (SFG != null)
+    AppMethodBeat.i(197081);
+    if (aagV != null)
     {
-      SFG.setWebContentsDebuggingEnabled(paramBoolean);
-      AppMethodBeat.o(219100);
+      aagV.setWebContentsDebuggingEnabled(paramBoolean);
+      AppMethodBeat.o(197081);
       return;
     }
     Log.e("TbsDownloader", "setWebContentsDebuggingEnabled: sImp is null");
-    AppMethodBeat.o(219100);
+    AppMethodBeat.o(197081);
   }
   
   public static int startMiniQBToLoadUrl(Context paramContext, String paramString, HashMap<String, String> paramHashMap, ValueCallback<String> paramValueCallback)
   {
     AppMethodBeat.i(157139);
-    if (SFG != null)
+    if (aagV != null)
     {
-      int i = SFG.startMiniQBToLoadUrl(paramContext, paramString, paramHashMap, paramValueCallback);
+      int i = aagV.startMiniQBToLoadUrl(paramContext, paramString, paramHashMap, paramValueCallback);
       AppMethodBeat.o(157139);
       return i;
     }
@@ -248,7 +247,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.x5.sdk.d
  * JD-Core Version:    0.7.0.1
  */

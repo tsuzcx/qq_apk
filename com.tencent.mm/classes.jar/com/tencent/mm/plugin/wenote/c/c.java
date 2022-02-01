@@ -1,452 +1,373 @@
 package com.tencent.mm.plugin.wenote.c;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.BitmapFactory.Options;
-import android.text.Spanned;
+import android.os.Bundle;
+import android.util.Base64;
+import android.view.View;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fav.a.ao;
-import com.tencent.mm.plugin.fav.ui.e;
-import com.tencent.mm.plugin.wenote.model.a.d;
-import com.tencent.mm.plugin.wenote.model.a.h;
-import com.tencent.mm.plugin.wenote.model.a.i;
-import com.tencent.mm.plugin.wenote.model.a.k;
-import com.tencent.mm.plugin.wenote.model.a.l;
-import com.tencent.mm.plugin.wenote.model.a.o;
-import com.tencent.mm.plugin.wenote.model.a.r;
-import com.tencent.mm.plugin.wenote.model.nativenote.a.a;
-import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.R.l;
+import com.tencent.mm.f.a.oz;
+import com.tencent.mm.f.a.oz.a;
+import com.tencent.mm.f.a.px;
+import com.tencent.mm.f.a.px.a;
+import com.tencent.mm.plugin.fav.a.ag;
+import com.tencent.mm.plugin.fav.a.y;
+import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
+import com.tencent.mm.plugin.multitask.ui.a.b;
+import com.tencent.mm.plugin.secdata.ui.a;
+import com.tencent.mm.plugin.secdata.ui.a.a;
+import com.tencent.mm.plugin.wenote.b.b;
+import com.tencent.mm.plugin.wenote.model.a.q;
+import com.tencent.mm.plugin.wenote.model.j;
+import com.tencent.mm.protocal.protobuf.aco;
+import com.tencent.mm.protocal.protobuf.anw;
+import com.tencent.mm.protocal.protobuf.aoc;
+import com.tencent.mm.protocal.protobuf.aoe;
+import com.tencent.mm.protocal.protobuf.dal;
+import com.tencent.mm.protocal.protobuf.daq;
+import com.tencent.mm.protocal.protobuf.dcy;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.LongBitmapHandler;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
-import java.util.HashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.tencent.mm.ui.base.w;
+import java.util.Iterator;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
+import org.json.JSONObject;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/wenote/multitask/NoteMultiTaskUIC;", "Lcom/tencent/mm/plugin/multitask/ui/MultiTaskUIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "fragment", "Landroidx/fragment/app/Fragment;", "(Landroidx/fragment/app/Fragment;)V", "bundleToJson", "", "bundle", "Landroid/os/Bundle;", "getMultiTaskMode", "Lcom/tencent/mm/plugin/multitask/ui/IMultiTaskUIComponent$MultiTaskMode;", "jsonToBundle", "json", "onMultiTaskInit", "", "obj", "", "onMultiTaskItemClick", "view", "Landroid/view/View;", "info", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "animateData", "Lcom/tencent/mm/protocal/protobuf/MultiTaskAnimData;", "callback", "openNoteFromTopItem", "topItem", "Lcom/tencent/mm/plugin/wenote/model/datamodel/WNNoteKeepTopItem;", "parseNotifyWNNoteOperationEventData", "Lcom/tencent/mm/autogen/events/NotifyWNNoteOperationEvent$Data;", "parseOpenNoteFromSessionEventData", "Lcom/tencent/mm/autogen/events/OpenNoteFromSessionEvent$Data;", "parseWNNoteKeepTopItem", "supportMultiTaskType", "", "multiTaskType", "", "Companion", "app_release"})
 public final class c
+  extends com.tencent.mm.plugin.multitask.ui.c
 {
-  public static HashMap<String, String> JJr;
-  public static HashMap<String, r> JJs;
-  public static c JJt;
-  private static com.tencent.mm.b.f<String, Integer> qOh;
+  public static final c.a QII;
   
   static
   {
-    AppMethodBeat.i(30687);
-    JJr = new HashMap();
-    JJs = new HashMap();
-    JJt = null;
-    qOh = new com.tencent.mm.memory.a.c(30);
-    AppMethodBeat.o(30687);
+    AppMethodBeat.i(269835);
+    QII = new c.a((byte)0);
+    AppMethodBeat.o(269835);
   }
   
-  public static String a(Context paramContext, com.tencent.mm.plugin.wenote.model.a.c paramc)
+  public c(AppCompatActivity paramAppCompatActivity)
   {
-    AppMethodBeat.i(30685);
-    if (paramc == null)
-    {
-      AppMethodBeat.o(30685);
-      return "";
-    }
-    int i = paramc.getType();
-    if (i == 1)
-    {
-      paramContext = ((i)paramc).content;
-      AppMethodBeat.o(30685);
-      return paramContext;
-    }
-    if (i == 3)
-    {
-      paramContext = paramContext.getString(2131768725);
-      AppMethodBeat.o(30685);
-      return paramContext;
-    }
-    if (i == 2)
-    {
-      paramContext = paramContext.getString(2131768724);
-      AppMethodBeat.o(30685);
-      return paramContext;
-    }
-    if (i == 6)
-    {
-      paramContext = paramContext.getString(2131768726);
-      AppMethodBeat.o(30685);
-      return paramContext;
-    }
-    if (i == 4)
-    {
-      paramContext = paramContext.getString(2131768727);
-      AppMethodBeat.o(30685);
-      return paramContext;
-    }
-    if (i == 5)
-    {
-      paramContext = paramContext.getString(2131768723);
-      AppMethodBeat.o(30685);
-      return paramContext;
-    }
-    AppMethodBeat.o(30685);
-    return "";
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(269832);
+    AppMethodBeat.o(269832);
   }
   
-  public static Bitmap alI(String paramString)
+  public c(Fragment paramFragment)
   {
-    AppMethodBeat.i(30677);
-    paramString = e.bd(paramString, false);
-    if (paramString != null)
+    super(paramFragment);
+    AppMethodBeat.i(269833);
+    AppMethodBeat.o(269833);
+  }
+  
+  private static px.a bnK(String paramString)
+  {
+    AppMethodBeat.i(269829);
+    try
     {
-      AppMethodBeat.o(30677);
-      return paramString;
+      paramString = new JSONObject(paramString);
+      px.a locala = new px.a();
+      locala.msgId = paramString.getLong("msgId");
+      locala.fOE = paramString.getString("noteXmlStr");
+      locala.fNQ = paramString.getBoolean("showShare");
+      locala.scene = paramString.getInt("scene");
+      locala.context = MMApplicationContext.getContext();
+      AppMethodBeat.o(269829);
+      return locala;
     }
-    if (Util.isNullOrNil(null))
+    catch (Exception paramString)
     {
-      AppMethodBeat.o(30677);
+      Log.printErrStackTrace("MicroMsg.NoteMultiTaskUIC", (Throwable)paramString, "parseOpenNoteFromSessionEventData", new Object[0]);
+      AppMethodBeat.o(269829);
+    }
+    return null;
+  }
+  
+  private static oz.a bnL(String paramString)
+  {
+    AppMethodBeat.i(269827);
+    try
+    {
+      Object localObject = new JSONObject(paramString);
+      paramString = new oz.a();
+      paramString.type = ((JSONObject)localObject).getInt("type");
+      paramString.fNI = ((JSONObject)localObject).getString("editorId");
+      paramString.field_localId = ((JSONObject)localObject).getLong("field_localId");
+      paramString.fNK = ((JSONObject)localObject).getString("insertJsonData");
+      paramString.fNL = ((JSONObject)localObject).getString("exportJsonData");
+      paramString.fNM = ((JSONObject)localObject).getBoolean("isInsert");
+      String str = ((JSONObject)localObject).getString("bundleData");
+      if (p.h(str, "")) {}
+      for (paramString.fNN = null;; paramString.fNN = bnM(str))
+      {
+        paramString.fNO = ((JSONObject)localObject).getInt("itemType");
+        paramString.path = ((JSONObject)localObject).getString("path");
+        paramString.fNP = ((JSONObject)localObject).getInt("intdata");
+        paramString.fNQ = ((JSONObject)localObject).getBoolean("showShare");
+        paramString.field_favProto = new aoc();
+        str = ((JSONObject)localObject).getString("field_favProto");
+        if (!Util.isNullOrNil(str)) {
+          paramString.field_favProto.parseFrom(Base64.decode(str, 0));
+        }
+        paramString.fNR = new aoe();
+        localObject = ((JSONObject)localObject).getString("reportInfo");
+        if (!Util.isNullOrNil((String)localObject)) {
+          paramString.fNR.parseFrom(Base64.decode((String)localObject, 0));
+        }
+        paramString.context = MMApplicationContext.getContext();
+        AppMethodBeat.o(269827);
+        return paramString;
+        p.j(str, "bd");
+      }
       return null;
     }
-    paramString = e.bd(null, false);
-    AppMethodBeat.o(30677);
-    return paramString;
+    catch (Exception paramString)
+    {
+      Log.printErrStackTrace("MicroMsg.NoteMultiTaskUIC", (Throwable)paramString, "parse NotifyWNNoteOperationEvent", new Object[0]);
+      AppMethodBeat.o(269827);
+    }
   }
   
-  public static int alJ(String paramString)
+  private static Bundle bnM(String paramString)
   {
-    AppMethodBeat.i(30681);
-    if (Util.isNullOrNil(paramString))
+    AppMethodBeat.i(269828);
+    Bundle localBundle = new Bundle();
+    for (;;)
     {
-      AppMethodBeat.o(30681);
-      return 0;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        Iterator localIterator = paramString.keys();
+        p.j(localIterator, "jsonObject.keys()");
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject = localIterator.next();
+        if (localObject == null)
+        {
+          paramString = new t("null cannot be cast to non-null type kotlin.String");
+          AppMethodBeat.o(269828);
+          throw paramString;
+        }
+      }
+      catch (Exception paramString)
+      {
+        Log.printErrStackTrace("MicroMsg.NoteMultiTaskUIC", (Throwable)paramString, "jsonToBundle", new Object[0]);
+        AppMethodBeat.o(269828);
+        return null;
+      }
+      Object localObject = (String)localObject;
+      localBundle.putString((String)localObject, paramString.getString((String)localObject));
     }
-    int i = alL(b.alO(paramString));
-    AppMethodBeat.o(30681);
-    return i;
+    AppMethodBeat.o(269828);
+    return localBundle;
   }
   
-  public static int alK(String paramString)
+  private static q bnN(String paramString)
   {
-    AppMethodBeat.i(30683);
-    if (Util.isNullOrNil(paramString))
+    AppMethodBeat.i(269830);
+    try
     {
-      AppMethodBeat.o(30683);
-      return 0;
+      q localq = new q();
+      paramString = new JSONObject(paramString);
+      localq.QHj = paramString.getBoolean("topIsOpenFromSession");
+      localq.QHk = paramString.getLong("topLocalId");
+      localq.QHl = paramString.getLong("topMsgId");
+      localq.wIg = paramString.getBoolean("isChatRoom");
+      localq.QHm = paramString.getString("topTitle");
+      localq.QHn = paramString.getString("topNoteXml");
+      localq.QHo = paramString.getInt("topLastPosition");
+      localq.QHp = paramString.getInt("topLastOffset");
+      AppMethodBeat.o(269830);
+      return localq;
     }
-    if (qOh.check(paramString))
+    catch (Exception paramString)
     {
-      i = ((Integer)qOh.get(paramString)).intValue();
-      AppMethodBeat.o(30683);
-      return i;
+      Log.printErrStackTrace("MicroMsg.NoteMultiTaskUIC", (Throwable)paramString, "parseWNNoteKeepTopItem", new Object[0]);
+      AppMethodBeat.o(269830);
     }
-    int i = alL(paramString);
-    qOh.put(paramString, Integer.valueOf(i));
-    AppMethodBeat.o(30683);
-    return i;
+    return null;
   }
   
-  private static int alL(String paramString)
+  public final boolean Of(int paramInt)
   {
-    AppMethodBeat.i(30684);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(30684);
-      return 0;
-    }
-    int j = 0;
-    int k;
-    for (int i = 0; j < paramString.length(); i = k + i)
-    {
-      k = z(paramString.charAt(j));
-      j += 1;
-    }
-    AppMethodBeat.o(30684);
-    return i;
+    return paramInt == 3;
   }
   
-  public static String alM(String paramString)
+  public final void a(View paramView, MultiTaskInfo paramMultiTaskInfo, dal paramdal, Object paramObject)
   {
-    AppMethodBeat.i(30686);
-    paramString = Pattern.compile("wx-b>", 2).matcher(paramString).replaceAll("wa-b>");
-    paramString = Pattern.compile("</wx-li>", 2).matcher(paramString).replaceAll("<br/>");
-    paramString = Pattern.compile("</wn-todo>", 2).matcher(paramString).replaceAll("<br/>");
-    paramString = Pattern.compile("<[/]?w(x|n)-[^>]*>", 2).matcher(paramString).replaceAll("");
-    paramString = Pattern.compile("wa-b>", 2).matcher(paramString).replaceAll("wx-b>");
-    AppMethodBeat.o(30686);
-    return paramString;
-  }
-  
-  public static int b(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    AppMethodBeat.i(30682);
-    if (Util.isNullOrNil(paramString))
+    AppMethodBeat.i(269826);
+    p.k(paramMultiTaskInfo, "info");
+    p.k(paramdal, "animateData");
+    paramObject = new aco();
+    paramObject.Soh = paramdal;
+    if (paramView != null)
     {
-      AppMethodBeat.o(30682);
-      return 0;
+      paramdal = a.JbV;
+      paramView = paramView.getContext();
+      p.j(paramView, "view.context");
+      paramView = a.a.hU(paramView);
+      if (paramView != null)
+      {
+        paramView = (daq)paramView.aef(5);
+        if (paramView == null) {
+          break label156;
+        }
+        paramView = paramView.wmL;
+        label82:
+        paramObject.wmL = paramView;
+      }
     }
-    paramString = a.alS(paramString);
-    if (paramString == null)
+    else
     {
-      AppMethodBeat.o(30682);
-      return 0;
-    }
-    if (paramBoolean) {
-      paramInt2 = paramString.length();
-    }
-    if ((paramInt1 < 0) || (paramInt1 > paramString.length()) || (paramInt2 < 0) || (paramInt2 > paramString.length()) || (paramInt1 > paramInt2))
-    {
-      AppMethodBeat.o(30682);
-      return 0;
-    }
-    paramString = (Spanned)paramString.subSequence(paramInt1, paramInt2);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(30682);
-      return 0;
-    }
-    paramInt1 = alL(paramString.toString());
-    AppMethodBeat.o(30682);
-    return paramInt1;
-  }
-  
-  public static com.tencent.mm.plugin.wenote.model.a.c c(com.tencent.mm.plugin.wenote.model.a.c paramc)
-  {
-    AppMethodBeat.i(30678);
-    if (paramc == null)
-    {
-      AppMethodBeat.o(30678);
-      return null;
-    }
-    Object localObject1;
-    switch (paramc.getType())
-    {
-    case 0: 
-    default: 
-      localObject1 = null;
-    }
-    while (localObject1 == null)
-    {
-      AppMethodBeat.o(30678);
-      return null;
-      localObject1 = new i();
-      ((i)localObject1).content = ((i)paramc).content;
-      continue;
-      localObject1 = new com.tencent.mm.plugin.wenote.model.a.g();
-      Object localObject2 = (com.tencent.mm.plugin.wenote.model.a.g)localObject1;
-      Object localObject3 = (com.tencent.mm.plugin.wenote.model.a.g)paramc;
-      ((com.tencent.mm.plugin.wenote.model.a.g)localObject2).lat = ((com.tencent.mm.plugin.wenote.model.a.g)localObject3).lat;
-      ((com.tencent.mm.plugin.wenote.model.a.g)localObject2).lng = ((com.tencent.mm.plugin.wenote.model.a.g)localObject3).lng;
-      ((com.tencent.mm.plugin.wenote.model.a.g)localObject2).JIb = ((com.tencent.mm.plugin.wenote.model.a.g)localObject3).JIb;
-      ((com.tencent.mm.plugin.wenote.model.a.g)localObject2).iUO = ((com.tencent.mm.plugin.wenote.model.a.g)localObject3).iUO;
-      ((com.tencent.mm.plugin.wenote.model.a.g)localObject2).kHV = ((com.tencent.mm.plugin.wenote.model.a.g)localObject3).kHV;
-      continue;
-      localObject1 = new com.tencent.mm.plugin.wenote.model.a.f();
-      ((com.tencent.mm.plugin.wenote.model.a.f)localObject1).qPL = ((com.tencent.mm.plugin.wenote.model.a.f)paramc).qPL;
-      continue;
-      localObject1 = new k();
-      localObject2 = (k)localObject1;
-      localObject3 = (k)paramc;
-      ((k)localObject2).thumbPath = ((k)localObject3).thumbPath;
-      ((k)localObject2).duration = ((k)localObject3).duration;
-      ((k)localObject2).qPP = ((k)localObject3).qPP;
-      continue;
-      localObject1 = new l();
-      localObject2 = (l)localObject1;
-      localObject3 = (l)paramc;
-      ((l)localObject2).qPS = ((l)localObject3).qPS;
-      ((l)localObject2).length = ((l)localObject3).length;
-      ((l)localObject2).qPR = ((l)localObject3).qPR;
-      ((l)localObject2).mav = ((l)localObject3).mav;
-      ((l)localObject2).dLu = ((l)localObject3).dLu;
-      ((l)localObject2).dLt = ((l)localObject3).dLt;
-      ((l)localObject2).qPP = ((l)localObject3).qPP;
-      continue;
-      localObject1 = new d();
-      localObject2 = (d)localObject1;
-      localObject3 = (d)paramc;
-      ((d)localObject2).title = ((d)localObject3).title;
-      ((d)localObject2).content = ((d)localObject3).content;
-      ((d)localObject2).mav = ((d)localObject3).mav;
-      ((d)localObject2).qPP = ((d)localObject3).qPP;
-      continue;
-      localObject1 = new h();
-    }
-    ((o)localObject1).type = ((o)paramc).type;
-    ((o)localObject1).qPO = ((o)paramc).qPO;
-    ((o)localObject1).dUs = ((o)paramc).dUs;
-    AppMethodBeat.o(30678);
-    return localObject1;
-  }
-  
-  public static String d(com.tencent.mm.plugin.wenote.model.a.c paramc)
-  {
-    AppMethodBeat.i(30679);
-    if (paramc == null)
-    {
-      AppMethodBeat.o(30679);
-      return "";
-    }
-    if (paramc.getType() == 2)
-    {
-      paramc = ((com.tencent.mm.plugin.wenote.model.a.f)paramc).qPL;
-      AppMethodBeat.o(30679);
-      return paramc;
-    }
-    paramc = ((o)paramc).dUs;
-    AppMethodBeat.o(30679);
-    return paramc;
-  }
-  
-  public static String e(com.tencent.mm.plugin.wenote.model.a.c paramc)
-  {
-    AppMethodBeat.i(30680);
-    if (paramc == null)
-    {
-      AppMethodBeat.o(30680);
-      return "";
-    }
-    if (paramc.getType() == 2)
-    {
-      paramc = ((com.tencent.mm.plugin.wenote.model.a.f)paramc).dUs;
-      AppMethodBeat.o(30680);
-      return paramc;
-    }
-    if (paramc.getType() == 6)
-    {
-      paramc = ((k)paramc).thumbPath;
-      AppMethodBeat.o(30680);
-      return paramc;
-    }
-    AppMethodBeat.o(30680);
-    return "";
-  }
-  
-  public static String fJ(String paramString1, String paramString2)
-  {
-    int j = 1280;
-    AppMethodBeat.i(30675);
-    if (Util.isNullOrNil(paramString2))
-    {
-      paramString2 = com.tencent.mm.b.g.getMessageDigest(new StringBuilder().append(paramString1).append(System.currentTimeMillis()).toString().getBytes()) + "_HD";
-      paramString2 = ao.cVk() + "/" + paramString2;
+      paramView = new dcy();
     }
     for (;;)
     {
-      BitmapFactory.Options localOptions;
-      int k;
-      int i;
-      if (!s.YS(paramString2))
+      try
       {
-        localOptions = BitmapUtil.getImageOptions(paramString1);
-        if ((localOptions == null) || (localOptions.outWidth <= 0) || (localOptions.outHeight <= 0))
+        paramView.parseFrom(paramMultiTaskInfo.field_data);
+        int i = paramView.fKG;
+        paramView = paramView.TKK;
+        switch (i)
         {
-          Log.e("MicroMsg.WNNoteUtil", "GetImageOptions Error");
-          AppMethodBeat.o(30675);
-          return null;
-        }
-        k = localOptions.outHeight;
-        int m = localOptions.outWidth;
-        i = m;
-        if (m > 1280) {
-          i = 1280;
-        }
-        if (k <= 1280) {
-          break label243;
+        default: 
+          AppMethodBeat.o(269826);
+          return;
         }
       }
-      for (;;)
+      catch (Exception paramView)
       {
-        if (localOptions.outHeight < localOptions.outWidth)
+        label156:
+        Log.e("MicroMsg.NoteMultiTaskUIC", paramView.getMessage());
+        AppMethodBeat.o(269826);
+        return;
+      }
+      paramView = null;
+      break;
+      paramView = null;
+      break label82;
+      paramView = bnL(paramView);
+      if (paramView == null)
+      {
+        Log.e("MicroMsg.NoteMultiTaskUIC", "NotifyWNNoteOperationEvent data is null");
+        AppMethodBeat.o(269826);
+        return;
+      }
+      paramView.fNN.putByteArray("key_multi_task_common_info", paramObject.toByteArray());
+      if (paramView.type == 9)
+      {
+        paramdal = ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavItemInfoStorage().Km(paramView.field_localId);
+        if (paramdal != null)
         {
-          k = i;
-          i = j;
-          j = k;
-        }
-        for (;;)
-        {
-          if (LongBitmapHandler.isLongPicture(paramString1) > 0)
+          paramView.fNI = paramdal.field_xml;
+          paramObject = new Bundle();
+          anw localanw = paramdal.field_favProto.hpF();
+          p.j(localanw, "favItemInfo.field_favProto.getNoteInfo()");
+          if (localanw != null)
           {
-            j = localOptions.outHeight;
-            i = localOptions.outWidth;
+            paramObject.putString("noteauthor", localanw.SAu);
+            paramObject.putString("noteeditor", localanw.SAv);
           }
-          BitmapUtil.createThumbNail(paramString1, j, i, Bitmap.CompressFormat.JPEG, 95, paramString2, true);
-          AppMethodBeat.o(30675);
-          return paramString2;
+          paramObject.putLong("edittime", paramdal.field_updateTime);
+          paramView.fNN = paramObject;
+          paramView.field_favProto = paramdal.field_favProto;
+          paramView.type = 2;
         }
-        label243:
-        j = k;
       }
-    }
-  }
-  
-  public static String fK(String paramString1, String paramString2)
-  {
-    int m = 800;
-    AppMethodBeat.i(30676);
-    if (Util.isNullOrNil(paramString2))
-    {
-      paramString2 = com.tencent.mm.b.g.getMessageDigest(new StringBuilder().append(paramString1).append(System.currentTimeMillis()).toString().getBytes()) + "_TH";
-      paramString2 = ao.cVk() + "/" + paramString2;
-    }
-    for (;;)
-    {
-      BitmapFactory.Options localOptions;
-      int j;
-      int k;
-      int i;
-      if (!s.YS(paramString2))
+      paramdal = new oz();
+      paramObject = com.tencent.mm.kernel.h.ag(ag.class);
+      p.j(paramObject, "MMKernel.plugin(IPluginFav::class.java)");
+      if (((ag)paramObject).getFavItemInfoStorage().Km(paramView.field_localId) != null)
       {
-        localOptions = BitmapUtil.getImageOptions(paramString1);
-        if ((localOptions == null) || (localOptions.outWidth <= 0) || (localOptions.outHeight <= 0))
-        {
-          Log.e("MicroMsg.WNNoteUtil", "GetImageOptions Error,use orignal file");
-          AppMethodBeat.o(30676);
-          return null;
-        }
-        j = localOptions.outHeight;
-        k = localOptions.outWidth;
-        while (k * j > 2764800)
-        {
-          k >>= 1;
-          j >>= 1;
-        }
-        i = k;
-        if (k > 800) {
-          i = 800;
-        }
-        if (j <= 800) {
-          break label250;
-        }
-        j = m;
+        paramdal.fNG = paramView;
+        EventCenter.instance.publish((IEvent)paramdal);
+        AppMethodBeat.o(269826);
+        return;
       }
-      label250:
-      for (;;)
+      Log.e("MicroMsg.NoteMultiTaskUIC", "favItemInfo id deleted");
+      w.makeText(MMApplicationContext.getContext(), R.l.eMR, 0).show();
+      ((com.tencent.mm.plugin.multitask.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.multitask.d.class)).removeTaskInfoAndCoverImg(paramMultiTaskInfo.field_id);
+      AppMethodBeat.o(269826);
+      return;
+      paramView = bnK(paramView);
+      if (paramView == null)
       {
-        if (localOptions.outHeight < localOptions.outWidth)
-        {
-          k = j;
-          j = i;
+        Log.e("MicroMsg.NoteMultiTaskUIC", "OpenNoteFromSessionEvent data is null");
+        AppMethodBeat.o(269826);
+        return;
+      }
+      paramView.fNN = new Bundle();
+      paramView.fNN.putByteArray("key_multi_task_common_info", paramObject.toByteArray());
+      paramMultiTaskInfo = new px();
+      paramMultiTaskInfo.fOD = paramView;
+      EventCenter.instance.publish((IEvent)paramMultiTaskInfo);
+      AppMethodBeat.o(269826);
+      return;
+      Log.i("MicroMsg.NoteMultiTaskUIC", "click WNNoteBanner");
+      paramView = bnN(paramView);
+      if (paramView == null)
+      {
+        Log.e("MicroMsg.NoteMultiTaskUIC", "WNNoteKeepTopItem data is null");
+        AppMethodBeat.o(269826);
+        return;
+      }
+      paramMultiTaskInfo = new Bundle();
+      paramMultiTaskInfo.putByteArray("key_multi_task_common_info", paramObject.toByteArray());
+      if (paramView.QHj)
+      {
+        if (paramView.wIg) {
+          com.tencent.mm.plugin.report.service.h.IzE.a(14789, new Object[] { Integer.valueOf(3) });
         }
         for (;;)
         {
-          BitmapUtil.createThumbNail(paramString1, j, k, Bitmap.CompressFormat.JPEG, 95, paramString2, true);
-          AppMethodBeat.o(30676);
-          return paramString2;
-          k = i;
+          Log.i("MicroMsg.NoteMultiTaskUIC", "isOpenFromSession: true");
+          paramdal = new j();
+          paramdal.QGq = b.b(paramView);
+          paramdal.QGr = 3;
+          paramObject = com.tencent.mm.plugin.wenote.model.c.hdm();
+          p.j(paramObject, "SubCoreWNNoteMsg.getCore()");
+          paramObject.a((com.tencent.mm.plugin.wenote.model.d)paramdal);
+          paramObject = new aoe();
+          paramObject.scene = 8;
+          paramdal.a(paramView.QHn, Long.valueOf(paramView.QHl), true, MMApplicationContext.getContext(), paramView.QHo, paramView.QHp, paramObject, paramMultiTaskInfo);
+          AppMethodBeat.o(269826);
+          return;
+          com.tencent.mm.plugin.report.service.h.IzE.a(14789, new Object[] { Integer.valueOf(2) });
         }
       }
+      com.tencent.mm.plugin.report.service.h.IzE.a(14789, new Object[] { Integer.valueOf(1) });
+      Log.i("MicroMsg.NoteMultiTaskUIC", "isOpenFromSession: false");
+      paramdal = new com.tencent.mm.plugin.wenote.model.g();
+      paramdal.QGq = b.b(paramView);
+      paramdal.QGr = 3;
+      paramObject = com.tencent.mm.plugin.wenote.model.c.hdm();
+      p.j(paramObject, "SubCoreWNNoteMsg.getCore()");
+      paramObject.a((com.tencent.mm.plugin.wenote.model.d)paramdal);
+      paramObject = new aoe();
+      paramObject.scene = 8;
+      paramMultiTaskInfo = paramMultiTaskInfo.getByteArray("key_multi_task_common_info");
+      paramdal.a(paramView.QHk, MMApplicationContext.getContext(), Boolean.TRUE, paramView.QHo, paramView.QHp, paramObject, null, paramMultiTaskInfo);
     }
   }
   
-  private static int z(char paramChar)
+  public final a.b dKp()
   {
-    if (paramChar <= '') {
-      return 1;
-    }
-    return 2;
+    return a.b.FHX;
   }
+  
+  public final void dp(Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.c.c
  * JD-Core Version:    0.7.0.1
  */

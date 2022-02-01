@@ -1,65 +1,61 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class add
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int Loq;
-  public int Lor;
-  public String Los;
-  public String dFb;
-  public String dFc;
-  public int version;
+  public LinkedList<String> SpC;
+  public int SpD;
+  public boolean SpE;
+  public int SpF;
+  public String SpG;
+  
+  public add()
+  {
+    AppMethodBeat.i(203626);
+    this.SpC = new LinkedList();
+    AppMethodBeat.o(203626);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32169);
+    AppMethodBeat.i(203636);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.version);
-      paramVarArgs.aM(2, this.Loq);
-      paramVarArgs.aM(3, this.Lor);
-      if (this.dFc != null) {
-        paramVarArgs.e(4, this.dFc);
+      paramVarArgs.e(1, 1, this.SpC);
+      paramVarArgs.aY(2, this.SpD);
+      paramVarArgs.co(3, this.SpE);
+      paramVarArgs.aY(4, this.SpF);
+      if (this.SpG != null) {
+        paramVarArgs.f(5, this.SpG);
       }
-      if (this.Los != null) {
-        paramVarArgs.e(5, this.Los);
-      }
-      if (this.dFb != null) {
-        paramVarArgs.e(6, this.dFb);
-      }
-      AppMethodBeat.o(32169);
+      AppMethodBeat.o(203636);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bu(1, this.version) + 0 + g.a.a.b.b.a.bu(2, this.Loq) + g.a.a.b.b.a.bu(3, this.Lor);
+      int i = g.a.a.a.c(1, 1, this.SpC) + 0 + g.a.a.b.b.a.bM(2, this.SpD) + (g.a.a.b.b.a.gL(3) + 1) + g.a.a.b.b.a.bM(4, this.SpF);
       paramInt = i;
-      if (this.dFc != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.dFc);
+      if (this.SpG != null) {
+        paramInt = i + g.a.a.b.b.a.g(5, this.SpG);
       }
-      i = paramInt;
-      if (this.Los != null) {
-        i = paramInt + g.a.a.b.b.a.f(5, this.Los);
-      }
-      paramInt = i;
-      if (this.dFb != null) {
-        paramInt = i + g.a.a.b.b.a.f(6, this.dFb);
-      }
-      AppMethodBeat.o(32169);
+      AppMethodBeat.o(203636);
       return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.SpC.clear();
+      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      AppMethodBeat.o(32169);
+      AppMethodBeat.o(203636);
       return 0;
     }
     if (paramInt == 3)
@@ -69,40 +65,36 @@ public final class add
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(32169);
+        AppMethodBeat.o(203636);
         return -1;
       case 1: 
-        localadd.version = locala.UbS.zi();
-        AppMethodBeat.o(32169);
+        localadd.SpC.add(locala.abFh.readString());
+        AppMethodBeat.o(203636);
         return 0;
       case 2: 
-        localadd.Loq = locala.UbS.zi();
-        AppMethodBeat.o(32169);
+        localadd.SpD = locala.abFh.AK();
+        AppMethodBeat.o(203636);
         return 0;
       case 3: 
-        localadd.Lor = locala.UbS.zi();
-        AppMethodBeat.o(32169);
+        localadd.SpE = locala.abFh.AB();
+        AppMethodBeat.o(203636);
         return 0;
       case 4: 
-        localadd.dFc = locala.UbS.readString();
-        AppMethodBeat.o(32169);
-        return 0;
-      case 5: 
-        localadd.Los = locala.UbS.readString();
-        AppMethodBeat.o(32169);
+        localadd.SpF = locala.abFh.AK();
+        AppMethodBeat.o(203636);
         return 0;
       }
-      localadd.dFb = locala.UbS.readString();
-      AppMethodBeat.o(32169);
+      localadd.SpG = locala.abFh.readString();
+      AppMethodBeat.o(203636);
       return 0;
     }
-    AppMethodBeat.o(32169);
+    AppMethodBeat.o(203636);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.add
  * JD-Core Version:    0.7.0.1
  */

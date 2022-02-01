@@ -11,9 +11,9 @@ public final class a
   
   public final void onAppForeground(String paramString)
   {
-    AppMethodBeat.i(198850);
+    AppMethodBeat.i(233824);
     Log.d("MicroMsg.AppLite.LiteAppAppForegroundListener", "onAppForeground");
-    AppMethodBeat.o(198850);
+    AppMethodBeat.o(233824);
   }
 }
 

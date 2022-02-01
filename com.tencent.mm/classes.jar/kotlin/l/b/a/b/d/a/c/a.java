@@ -19,11 +19,11 @@ public final class a
   public static final d a(h paramh, kotlin.l.b.a.b.b.a.g paramg)
   {
     AppMethodBeat.i(57737);
-    p.h(paramh, "$this$computeNewDefaultTypeQualifiers");
-    p.h(paramg, "additionalAnnotations");
-    if (paramh.Trv.Trd.HIg)
+    p.k(paramh, "$this$computeNewDefaultTypeQualifiers");
+    p.k(paramg, "additionalAnnotations");
+    if (paramh.aaUp.aaTX.Dlq)
     {
-      paramh = paramh.hDJ();
+      paramh = paramh.iIc();
       AppMethodBeat.o(57737);
       return paramh;
     }
@@ -38,9 +38,9 @@ public final class a
     while (((Iterator)localObject3).hasNext())
     {
       c localc1 = (c)((Iterator)localObject3).next();
-      localObject4 = paramh.Trv.Trd;
-      p.h(localc1, "annotationDescriptor");
-      if (((kotlin.l.b.a.b.d.a.a)localObject4).Tob.hLT())
+      localObject4 = paramh.aaUp.aaTX;
+      p.k(localc1, "annotationDescriptor");
+      if (((kotlin.l.b.a.b.d.a.a)localObject4).aaQV.iQl())
       {
         paramg = null;
         localObject1 = paramg;
@@ -60,13 +60,13 @@ public final class a
         }
         ((Collection)localObject2).add(localObject1);
         break;
-        paramg = (k)kotlin.l.b.a.b.d.a.b.hDq().get(localc1.hBk());
+        paramg = (k)kotlin.l.b.a.b.d.a.b.iHJ().get(localc1.iFy());
         if (paramg != null)
         {
-          localObject1 = paramg.TrC;
-          localObject5 = paramg.TrD;
+          localObject1 = paramg.aaUw;
+          localObject5 = paramg.aaUx;
           paramg = ((kotlin.l.b.a.b.d.a.a)localObject4).f(localc1);
-          if (paramg != kotlin.l.b.a.b.o.g.TRU)
+          if (paramg != kotlin.l.b.a.b.o.g.abut)
           {
             i = 1;
             if (i == 0) {
@@ -86,29 +86,29 @@ public final class a
             paramg = null;
           }
           label228:
-          paramg = new k(kotlin.l.b.a.b.d.a.f.h.a((kotlin.l.b.a.b.d.a.f.h)localObject1, paramg.hLU()), (Collection)localObject5);
+          paramg = new k(kotlin.l.b.a.b.d.a.f.h.a((kotlin.l.b.a.b.d.a.f.h)localObject1, paramg.iQm()), (Collection)localObject5);
           break label118;
         }
         paramg = null;
         break label118;
         label254:
-        c localc2 = paramg.Toh;
-        Object localObject5 = paramg.hDm();
+        c localc2 = paramg.aaRb;
+        Object localObject5 = paramg.component2();
         localObject1 = ((kotlin.l.b.a.b.d.a.a)localObject4).g(localc1);
         paramg = (kotlin.l.b.a.b.b.a.g)localObject1;
         if (localObject1 == null) {
           paramg = ((kotlin.l.b.a.b.d.a.a)localObject4).f(localc2);
         }
-        if (paramg.hLV())
+        if (paramg.dLi())
         {
           localObject1 = null;
         }
         else
         {
-          localObject1 = paramh.Trv.Tre.i(localc2);
+          localObject1 = paramh.aaUp.aaTY.i(localc2);
           if (localObject1 != null)
           {
-            paramg = kotlin.l.b.a.b.d.a.f.h.a((kotlin.l.b.a.b.d.a.f.h)localObject1, paramg.hLU());
+            paramg = kotlin.l.b.a.b.d.a.f.h.a((kotlin.l.b.a.b.d.a.f.h)localObject1, paramg.iQm());
             if (paramg != null) {}
           }
           else
@@ -123,14 +123,14 @@ public final class a
     Object localObject1 = (List)localObject2;
     if (((List)localObject1).isEmpty())
     {
-      paramh = paramh.hDJ();
+      paramh = paramh.iIc();
       AppMethodBeat.o(57737);
       return paramh;
     }
-    paramg = paramh.hDJ();
+    paramg = paramh.iIc();
     if (paramg != null)
     {
-      paramg = paramg.Trl;
+      paramg = paramg.aaUf;
       if (paramg != null)
       {
         paramg = new EnumMap(paramg);
@@ -144,8 +144,8 @@ public final class a
         break label511;
       }
       localObject3 = (k)((Iterator)localObject1).next();
-      localObject2 = ((k)localObject3).TrC;
-      localObject3 = ((k)localObject3).TrD.iterator();
+      localObject2 = ((k)localObject3).aaUw;
+      localObject3 = ((k)localObject3).aaUx.iterator();
       for (;;)
       {
         if (((Iterator)localObject3).hasNext())
@@ -162,7 +162,7 @@ public final class a
     label511:
     if (i == 0)
     {
-      paramh = paramh.hDJ();
+      paramh = paramh.iIc();
       AppMethodBeat.o(57737);
       return paramh;
     }
@@ -174,10 +174,10 @@ public final class a
   public static final h a(h paramh, kotlin.l.b.a.b.b.l paraml, x paramx, int paramInt)
   {
     AppMethodBeat.i(57739);
-    p.h(paramh, "$this$childForMethod");
-    p.h(paraml, "containingDeclaration");
-    p.h(paramx, "typeParameterOwner");
-    paramh = a(paramh, paraml, paramx, paramInt, paramh.Trx);
+    p.k(paramh, "$this$childForMethod");
+    p.k(paraml, "containingDeclaration");
+    p.k(paramx, "typeParameterOwner");
+    paramh = a(paramh, paraml, paramx, paramInt, paramh.aaUr);
     AppMethodBeat.o(57739);
     return paramh;
   }
@@ -185,9 +185,9 @@ public final class a
   private static final h a(h paramh, kotlin.l.b.a.b.b.l paraml, x paramx, int paramInt, f<d> paramf)
   {
     AppMethodBeat.i(57738);
-    b localb = paramh.Trv;
+    b localb = paramh.aaUp;
     if (paramx != null) {}
-    for (paramh = (m)new i(paramh, paraml, paramx, paramInt);; paramh = paramh.Trw)
+    for (paramh = (m)new i(paramh, paraml, paramx, paramInt);; paramh = paramh.aaUq)
     {
       paramh = new h(localb, paramh, paramf);
       AppMethodBeat.o(57738);
@@ -198,14 +198,14 @@ public final class a
   public static final h b(h paramh, final kotlin.l.b.a.b.b.a.g paramg)
   {
     AppMethodBeat.i(57741);
-    p.h(paramh, "$this$copyWithNewDefaultTypeQualifiers");
-    p.h(paramg, "additionalAnnotations");
+    p.k(paramh, "$this$copyWithNewDefaultTypeQualifiers");
+    p.k(paramg, "additionalAnnotations");
     if (paramg.isEmpty())
     {
       AppMethodBeat.o(57741);
       return paramh;
     }
-    paramh = new h(paramh.Trv, paramh.Trw, kotlin.g.a(kotlin.k.SWR, (kotlin.g.a.a)new b(paramh, paramg)));
+    paramh = new h(paramh.aaUp, paramh.aaUq, kotlin.g.a(kotlin.k.aazD, (kotlin.g.a.a)new b(paramh, paramg)));
     AppMethodBeat.o(57741);
     return paramh;
   }
@@ -232,7 +232,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.c.a
  * JD-Core Version:    0.7.0.1
  */

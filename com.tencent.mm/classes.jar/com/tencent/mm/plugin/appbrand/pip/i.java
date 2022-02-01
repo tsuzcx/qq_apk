@@ -6,21 +6,21 @@ import com.tencent.mm.plugin.appbrand.widget.AppBrandPipContainerView;
 import com.tencent.mm.plugin.appbrand.widget.AppBrandPipContainerView.a;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipStablePosLogic;", "", "appId", "", "pipContainerView", "Lcom/tencent/mm/plugin/appbrand/widget/AppBrandPipContainerView;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/widget/AppBrandPipContainerView;)V", "getAppId", "()Ljava/lang/String;", "getStablePosAsync", "", "callback", "Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipStablePosCallback;", "saveStablePos", "point", "Landroid/graphics/Point;", "luggage-wxa-app_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipStablePosLogic;", "", "appId", "", "pipContainerView", "Lcom/tencent/mm/plugin/appbrand/widget/AppBrandPipContainerView;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/widget/AppBrandPipContainerView;)V", "getAppId", "()Ljava/lang/String;", "getStablePosAsync", "", "callback", "Lcom/tencent/mm/plugin/appbrand/pip/AppBrandPipStablePosCallback;", "saveStablePos", "point", "Landroid/graphics/Point;", "luggage-wxa-app_release"})
 public abstract class i
 {
-  final String appId;
+  private final String appId;
   
   public i(String paramString, AppBrandPipContainerView paramAppBrandPipContainerView)
   {
     this.appId = paramString;
     paramAppBrandPipContainerView.a((AppBrandPipContainerView.a)new AppBrandPipContainerView.a()
     {
-      public final void ev(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void eU(int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(219750);
-        this.nDO.g(new Point(paramAnonymousInt1, paramAnonymousInt2));
-        AppMethodBeat.o(219750);
+        AppMethodBeat.i(244422);
+        this.qFZ.g(new Point(paramAnonymousInt1, paramAnonymousInt2));
+        AppMethodBeat.o(244422);
       }
     });
   }
@@ -28,10 +28,15 @@ public abstract class i
   public abstract void a(h paramh);
   
   protected abstract void g(Point paramPoint);
+  
+  protected final String getAppId()
+  {
+    return this.appId;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.pip.i
  * JD-Core Version:    0.7.0.1
  */

@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.exdevice.ui;
 
 public abstract interface c
 {
-  public abstract void anW(String paramString);
+  public abstract void avU(String paramString);
   
-  public abstract boolean anX(String paramString);
+  public abstract boolean avV(String paramString);
   
-  public abstract void cMa();
+  public abstract void dD(String paramString, int paramInt);
   
-  public abstract void di(String paramString, int paramInt);
+  public abstract void daN();
 }
 
 

@@ -32,18 +32,18 @@ public class ApplicationGlobal
     {
       try
       {
-        AppMethodBeat.i(230278);
+        AppMethodBeat.i(187668);
         Application localApplication;
         if (sAttachedApp != null)
         {
           localApplication = sAttachedApp;
-          AppMethodBeat.o(230278);
+          AppMethodBeat.o(187668);
           return localApplication;
         }
         if (sActivityThreadApp != null)
         {
           localApplication = sActivityThreadApp;
-          AppMethodBeat.o(230278);
+          AppMethodBeat.o(187668);
           continue;
         }
         localObject2 = getActivityThreadApplication();
@@ -54,22 +54,22 @@ public class ApplicationGlobal
         break;
       }
       localObject2 = sActivityThreadApp;
-      AppMethodBeat.o(230278);
+      AppMethodBeat.o(187668);
     }
     Object localObject2 = new IllegalStateException("Please make sure you do not call Applications#context() before or inside Application#attachBaseContext(Context). If you have to, please call Applications#attach(Application) first.");
-    AppMethodBeat.o(230278);
+    AppMethodBeat.o(187668);
     throw ((Throwable)localObject2);
   }
   
   private static Application getActivityThreadApplication()
   {
-    AppMethodBeat.i(230279);
+    AppMethodBeat.i(187670);
     try
     {
       localObject1 = Class.forName("android.app.AppGlobals").getDeclaredMethod("getInitialApplication", new Class[0]);
       ((Method)localObject1).setAccessible(true);
       localObject1 = (Application)((Method)localObject1).invoke(null, new Object[0]);
-      AppMethodBeat.o(230279);
+      AppMethodBeat.o(187670);
       return localObject1;
     }
     catch (Exception localException2)
@@ -93,7 +93,7 @@ public class ApplicationGlobal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.ApplicationGlobal
  * JD-Core Version:    0.7.0.1
  */

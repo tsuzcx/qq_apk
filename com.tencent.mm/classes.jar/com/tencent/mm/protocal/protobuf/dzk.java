@@ -1,112 +1,116 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class dzk
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String LRU;
-  public String MZd;
-  public int MZe;
-  public int MZf;
-  public int MmV;
-  public String UserName;
+  public dlc UeU;
+  public fbg UeV;
+  public int type;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125773);
+    AppMethodBeat.i(50111);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.MZd != null) {
-        paramVarArgs.e(1, this.MZd);
+      paramVarArgs.aY(1, this.type);
+      if (this.UeU != null)
+      {
+        paramVarArgs.oE(2, this.UeU.computeSize());
+        this.UeU.writeFields(paramVarArgs);
       }
-      paramVarArgs.aM(2, this.MZe);
-      if (this.UserName != null) {
-        paramVarArgs.e(3, this.UserName);
+      if (this.UeV != null)
+      {
+        paramVarArgs.oE(3, this.UeV.computeSize());
+        this.UeV.writeFields(paramVarArgs);
       }
-      if (this.LRU != null) {
-        paramVarArgs.e(4, this.LRU);
-      }
-      paramVarArgs.aM(5, this.MmV);
-      paramVarArgs.aM(6, this.MZf);
-      AppMethodBeat.o(125773);
+      AppMethodBeat.o(50111);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.MZd == null) {
-        break label470;
-      }
-    }
-    label470:
-    for (paramInt = g.a.a.b.b.a.f(1, this.MZd) + 0;; paramInt = 0)
+    int i;
+    if (paramInt == 1)
     {
-      int i = paramInt + g.a.a.b.b.a.bu(2, this.MZe);
+      i = g.a.a.b.b.a.bM(1, this.type) + 0;
       paramInt = i;
-      if (this.UserName != null) {
-        paramInt = i + g.a.a.b.b.a.f(3, this.UserName);
+      if (this.UeU != null) {
+        paramInt = i + g.a.a.a.oD(2, this.UeU.computeSize());
       }
       i = paramInt;
-      if (this.LRU != null) {
-        i = paramInt + g.a.a.b.b.a.f(4, this.LRU);
+      if (this.UeV != null) {
+        i = paramInt + g.a.a.a.oD(3, this.UeV.computeSize());
       }
-      paramInt = g.a.a.b.b.a.bu(5, this.MmV);
-      int j = g.a.a.b.b.a.bu(6, this.MZf);
-      AppMethodBeat.o(125773);
-      return i + paramInt + j;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
-          }
-        }
-        AppMethodBeat.o(125773);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-        dzk localdzk = (dzk)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(125773);
-          return -1;
-        case 1: 
-          localdzk.MZd = locala.UbS.readString();
-          AppMethodBeat.o(125773);
-          return 0;
-        case 2: 
-          localdzk.MZe = locala.UbS.zi();
-          AppMethodBeat.o(125773);
-          return 0;
-        case 3: 
-          localdzk.UserName = locala.UbS.readString();
-          AppMethodBeat.o(125773);
-          return 0;
-        case 4: 
-          localdzk.LRU = locala.UbS.readString();
-          AppMethodBeat.o(125773);
-          return 0;
-        case 5: 
-          localdzk.MmV = locala.UbS.zi();
-          AppMethodBeat.o(125773);
-          return 0;
-        }
-        localdzk.MZf = locala.UbS.zi();
-        AppMethodBeat.o(125773);
-        return 0;
-      }
-      AppMethodBeat.o(125773);
-      return -1;
+      AppMethodBeat.o(50111);
+      return i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.iUs();
+        }
+      }
+      AppMethodBeat.o(50111);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+      dzk localdzk = (dzk)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      Object localObject2;
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(50111);
+        return -1;
+      case 1: 
+        localdzk.type = ((g.a.a.a.a)localObject1).abFh.AK();
+        AppMethodBeat.o(50111);
+        return 0;
+      case 2: 
+        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new dlc();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((dlc)localObject2).parseFrom((byte[])localObject1);
+          }
+          localdzk.UeU = ((dlc)localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(50111);
+        return 0;
+      }
+      paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+      i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        localObject1 = (byte[])paramVarArgs.get(paramInt);
+        localObject2 = new fbg();
+        if ((localObject1 != null) && (localObject1.length > 0)) {
+          ((fbg)localObject2).parseFrom((byte[])localObject1);
+        }
+        localdzk.UeV = ((fbg)localObject2);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(50111);
+      return 0;
+    }
+    AppMethodBeat.o(50111);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dzk
  * JD-Core Version:    0.7.0.1
  */

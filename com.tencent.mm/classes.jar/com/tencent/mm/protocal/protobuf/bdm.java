@@ -1,127 +1,159 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
-public final class bdm
-  extends dop
+public class bdm
+  extends com.tencent.mm.cd.a
 {
-  public String GLT;
-  public aov LCA;
-  public String finderUsername;
+  public String KFu;
+  public int KFw;
+  public String SOz;
+  public String city;
+  public String country;
+  public float latitude;
+  public float longitude;
+  public String poiName;
+  public String province;
+  public String region;
+  public int source;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(196095);
+    AppMethodBeat.i(169004);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs.i(1, this.longitude);
+      paramVarArgs.i(2, this.latitude);
+      if (this.city != null) {
+        paramVarArgs.f(3, this.city);
       }
-      if (this.LCA != null)
-      {
-        paramVarArgs.ni(2, this.LCA.computeSize());
-        this.LCA.writeFields(paramVarArgs);
+      if (this.poiName != null) {
+        paramVarArgs.f(4, this.poiName);
       }
-      if (this.finderUsername != null) {
-        paramVarArgs.e(3, this.finderUsername);
+      if (this.KFu != null) {
+        paramVarArgs.f(5, this.KFu);
       }
-      if (this.GLT != null) {
-        paramVarArgs.e(4, this.GLT);
+      if (this.SOz != null) {
+        paramVarArgs.f(6, this.SOz);
       }
-      AppMethodBeat.o(196095);
+      paramVarArgs.aY(7, this.KFw);
+      if (this.province != null) {
+        paramVarArgs.f(8, this.province);
+      }
+      if (this.region != null) {
+        paramVarArgs.f(9, this.region);
+      }
+      if (this.country != null) {
+        paramVarArgs.f(10, this.country);
+      }
+      paramVarArgs.aY(11, this.source);
+      AppMethodBeat.o(169004);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label586;
-      }
-    }
-    label586:
-    for (int i = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    if (paramInt == 1)
     {
+      int i = g.a.a.b.b.a.gL(1) + 4 + 0 + (g.a.a.b.b.a.gL(2) + 4);
       paramInt = i;
-      if (this.LCA != null) {
-        paramInt = i + g.a.a.a.nh(2, this.LCA.computeSize());
+      if (this.city != null) {
+        paramInt = i + g.a.a.b.b.a.g(3, this.city);
       }
       i = paramInt;
-      if (this.finderUsername != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.finderUsername);
+      if (this.poiName != null) {
+        i = paramInt + g.a.a.b.b.a.g(4, this.poiName);
       }
       paramInt = i;
-      if (this.GLT != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.GLT);
+      if (this.KFu != null) {
+        paramInt = i + g.a.a.b.b.a.g(5, this.KFu);
       }
-      AppMethodBeat.o(196095);
-      return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
-          }
-        }
-        AppMethodBeat.o(196095);
-        return 0;
+      i = paramInt;
+      if (this.SOz != null) {
+        i = paramInt + g.a.a.b.b.a.g(6, this.SOz);
       }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
-        bdm localbdm = (bdm)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(196095);
-          return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localbdm.BaseRequest = ((jr)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(196095);
-          return 0;
-        case 2: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new aov();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((aov)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localbdm.LCA = ((aov)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(196095);
-          return 0;
-        case 3: 
-          localbdm.finderUsername = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(196095);
-          return 0;
-        }
-        localbdm.GLT = ((g.a.a.a.a)localObject1).UbS.readString();
-        AppMethodBeat.o(196095);
-        return 0;
+      i += g.a.a.b.b.a.bM(7, this.KFw);
+      paramInt = i;
+      if (this.province != null) {
+        paramInt = i + g.a.a.b.b.a.g(8, this.province);
       }
-      AppMethodBeat.o(196095);
-      return -1;
+      i = paramInt;
+      if (this.region != null) {
+        i = paramInt + g.a.a.b.b.a.g(9, this.region);
+      }
+      paramInt = i;
+      if (this.country != null) {
+        paramInt = i + g.a.a.b.b.a.g(10, this.country);
+      }
+      i = g.a.a.b.b.a.bM(11, this.source);
+      AppMethodBeat.o(169004);
+      return paramInt + i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.iUs();
+        }
+      }
+      AppMethodBeat.o(169004);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      bdm localbdm = (bdm)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(169004);
+        return -1;
+      case 1: 
+        localbdm.longitude = Float.intBitsToFloat(locala.abFh.AO());
+        AppMethodBeat.o(169004);
+        return 0;
+      case 2: 
+        localbdm.latitude = Float.intBitsToFloat(locala.abFh.AO());
+        AppMethodBeat.o(169004);
+        return 0;
+      case 3: 
+        localbdm.city = locala.abFh.readString();
+        AppMethodBeat.o(169004);
+        return 0;
+      case 4: 
+        localbdm.poiName = locala.abFh.readString();
+        AppMethodBeat.o(169004);
+        return 0;
+      case 5: 
+        localbdm.KFu = locala.abFh.readString();
+        AppMethodBeat.o(169004);
+        return 0;
+      case 6: 
+        localbdm.SOz = locala.abFh.readString();
+        AppMethodBeat.o(169004);
+        return 0;
+      case 7: 
+        localbdm.KFw = locala.abFh.AK();
+        AppMethodBeat.o(169004);
+        return 0;
+      case 8: 
+        localbdm.province = locala.abFh.readString();
+        AppMethodBeat.o(169004);
+        return 0;
+      case 9: 
+        localbdm.region = locala.abFh.readString();
+        AppMethodBeat.o(169004);
+        return 0;
+      case 10: 
+        localbdm.country = locala.abFh.readString();
+        AppMethodBeat.o(169004);
+        return 0;
+      }
+      localbdm.source = locala.abFh.AK();
+      AppMethodBeat.o(169004);
+      return 0;
+    }
+    AppMethodBeat.o(169004);
+    return -1;
   }
 }
 

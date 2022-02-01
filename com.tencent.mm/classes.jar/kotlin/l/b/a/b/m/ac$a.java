@@ -8,12 +8,12 @@ final class ac$a
   extends q
   implements b
 {
-  public static final a TOj;
+  public static final a abqJ;
   
   static
   {
     AppMethodBeat.i(60762);
-    TOj = new a();
+    abqJ = new a();
     AppMethodBeat.o(60762);
   }
   
@@ -24,7 +24,7 @@ final class ac$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlin.l.b.a.b.m.ac.a
  * JD-Core Version:    0.7.0.1
  */

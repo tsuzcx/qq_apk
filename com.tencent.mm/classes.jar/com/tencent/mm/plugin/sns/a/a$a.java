@@ -7,12 +7,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a$a
 {
-  public static String by(Context paramContext, String paramString)
+  public static String bM(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(202551);
+    AppMethodBeat.i(259927);
     if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
     {
-      AppMethodBeat.o(202551);
+      AppMethodBeat.o(259927);
       return "";
     }
     try
@@ -22,20 +22,20 @@ public final class a$a
       if (paramContext != null)
       {
         paramContext = paramContext.toString();
-        AppMethodBeat.o(202551);
+        AppMethodBeat.o(259927);
         return paramContext;
       }
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(202551);
+      AppMethodBeat.o(259927);
     }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.a.a.a
  * JD-Core Version:    0.7.0.1
  */

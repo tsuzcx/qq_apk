@@ -6,86 +6,110 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.support.a.c;
-import android.support.a.e;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.view.animation.LinearInterpolator;
+import androidx.d.a.c;
+import androidx.d.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
+import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationHelper;", "", "()V", "TAG", "", "animateCustomSuccessView", "", "successView", "Landroid/view/View;", "animateDefaultSuccessView", "successMarkView", "successAnimationListener", "Lcom/tencent/mm/plugin/scanner/view/ScanResultAnimationListener;", "animateScanTipsImage", "Landroid/support/animation/SpringAnimation;", "view", "doSpringAnimation", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationHelper;", "", "()V", "TAG", "", "animateCustomSuccessView", "", "successView", "Landroid/view/View;", "animateDefaultSuccessView", "successMarkView", "successAnimationListener", "Lcom/tencent/mm/plugin/scanner/view/ScanResultAnimationListener;", "animateScanTipsImage", "Landroidx/dynamicanimation/animation/SpringAnimation;", "view", "doSpringAnimation", "plugin-scan_release"})
 public final class h
 {
-  public static final h CPK;
+  public static final h IVm;
   
   static
   {
-    AppMethodBeat.i(240596);
-    CPK = new h();
-    AppMethodBeat.o(240596);
+    AppMethodBeat.i(217228);
+    IVm = new h();
+    AppMethodBeat.o(217228);
   }
   
   public static final void a(View paramView, com.tencent.mm.plugin.scanner.view.d paramd)
   {
-    AppMethodBeat.i(240593);
-    p.h(paramView, "successMarkView");
+    AppMethodBeat.i(217225);
+    p.k(paramView, "successMarkView");
     paramView.setAlpha(0.0F);
     paramView.setScaleX(0.0F);
     paramView.setScaleY(0.0F);
     paramView.animate().alpha(1.0F).scaleX(1.0F).scaleY(1.0F).setDuration(300L).setListener((Animator.AnimatorListener)new b(paramd)).setInterpolator((TimeInterpolator)new LinearInterpolator()).start();
-    AppMethodBeat.o(240593);
+    AppMethodBeat.o(217225);
   }
   
-  public static final void eS(View paramView)
+  public static final void fW(View paramView)
   {
-    AppMethodBeat.i(240594);
-    p.h(paramView, "successView");
+    AppMethodBeat.i(217226);
+    p.k(paramView, "successView");
     paramView.setAlpha(1.0F);
-    Object localObject1 = new android.support.a.d(paramView, (c)android.support.a.d.fN, (byte)0);
-    Object localObject2 = ((android.support.a.d)localObject1).aJ();
-    p.g(localObject2, "animationX.spring");
-    ((e)localObject2).g(200.0F);
-    localObject2 = ((android.support.a.d)localObject1).aJ();
-    p.g(localObject2, "animationX.spring");
-    ((e)localObject2).h(0.5F);
-    ((android.support.a.d)localObject1).e(0.0F);
-    localObject2 = new android.support.a.d(paramView, (c)android.support.a.d.fO, (byte)0);
-    e locale = ((android.support.a.d)localObject2).aJ();
-    p.g(locale, "animationY.spring");
-    locale.g(200.0F);
-    locale = ((android.support.a.d)localObject2).aJ();
-    p.g(locale, "animationY.spring");
-    locale.h(0.5F);
-    ((android.support.a.d)localObject2).e(0.0F);
-    ((android.support.a.d)localObject1).start();
-    ((android.support.a.d)localObject2).start();
+    Object localObject1 = new androidx.d.a.d(paramView, (c)androidx.d.a.d.SM, (byte)0);
+    Object localObject2 = ((androidx.d.a.d)localObject1).hZ();
+    p.j(localObject2, "animationX.spring");
+    ((e)localObject2).p(200.0F);
+    localObject2 = ((androidx.d.a.d)localObject1).hZ();
+    p.j(localObject2, "animationX.spring");
+    ((e)localObject2).q(0.5F);
+    ((androidx.d.a.d)localObject1).n(0.0F);
+    localObject2 = new androidx.d.a.d(paramView, (c)androidx.d.a.d.SN, (byte)0);
+    e locale = ((androidx.d.a.d)localObject2).hZ();
+    p.j(locale, "animationY.spring");
+    locale.p(200.0F);
+    locale = ((androidx.d.a.d)localObject2).hZ();
+    p.j(locale, "animationY.spring");
+    locale.q(0.5F);
+    ((androidx.d.a.d)localObject2).n(0.0F);
+    ((androidx.d.a.d)localObject1).start();
+    ((androidx.d.a.d)localObject2).start();
     localObject1 = ValueAnimator.ofFloat(new float[] { 15.0F, 0.0F });
     ((ValueAnimator)localObject1).setDuration(300L);
     ((ValueAnimator)localObject1).setInterpolator((TimeInterpolator)new LinearInterpolator());
-    ((ValueAnimator)localObject1).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new h.a(paramView));
+    ((ValueAnimator)localObject1).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new a(paramView));
     ((ValueAnimator)localObject1).start();
-    AppMethodBeat.o(240594);
+    AppMethodBeat.o(217226);
   }
   
-  public static final android.support.a.d eT(View paramView)
+  public static final androidx.d.a.d fX(View paramView)
   {
-    AppMethodBeat.i(240595);
-    p.h(paramView, "view");
-    paramView = new android.support.a.d(paramView, (c)android.support.a.d.fK);
-    paramView.aH();
+    AppMethodBeat.i(217227);
+    p.k(paramView, "view");
+    paramView = new androidx.d.a.d(paramView, (c)androidx.d.a.d.SJ);
+    paramView.hW();
     e locale = new e(0.0F);
-    locale.g(3000.0F);
-    locale.h(0.05F);
+    locale.p(3000.0F);
+    locale.q(0.05F);
     paramView.a(locale);
-    paramView.e(-10.0F);
+    paramView.n(-10.0F);
     paramView.start();
-    AppMethodBeat.o(240595);
+    AppMethodBeat.o(217227);
     return paramView;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationHelper$animateDefaultSuccessView$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "onAnimationStart", "plugin-scan_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationHelper$animateCustomSuccessView$1$1"})
+  static final class a
+    implements ValueAnimator.AnimatorUpdateListener
+  {
+    a(View paramView) {}
+    
+    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
+    {
+      AppMethodBeat.i(221491);
+      p.j(paramValueAnimator, "animation");
+      paramValueAnimator = paramValueAnimator.getAnimatedValue();
+      if (paramValueAnimator == null)
+      {
+        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
+        AppMethodBeat.o(221491);
+        throw paramValueAnimator;
+      }
+      float f = ((Float)paramValueAnimator).floatValue();
+      this.IVn.setRotation(360.0F - Math.abs(f));
+      AppMethodBeat.o(221491);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationHelper$animateDefaultSuccessView$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "onAnimationStart", "plugin-scan_release"})
   public static final class b
     extends AnimatorListenerAdapter
   {
@@ -93,15 +117,15 @@ public final class h
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(240592);
-      paramAnimator = this.CPM;
+      AppMethodBeat.i(222218);
+      paramAnimator = this.IVo;
       if (paramAnimator != null)
       {
-        paramAnimator.eQG();
-        AppMethodBeat.o(240592);
+        paramAnimator.xs(false);
+        AppMethodBeat.o(222218);
         return;
       }
-      AppMethodBeat.o(240592);
+      AppMethodBeat.o(222218);
     }
     
     public final void onAnimationStart(Animator paramAnimator) {}
@@ -109,7 +133,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.scangoods.widget.h
  * JD-Core Version:    0.7.0.1
  */

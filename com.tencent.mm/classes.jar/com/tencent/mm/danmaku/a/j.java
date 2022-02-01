@@ -17,11 +17,11 @@ import java.util.TreeSet;
 public final class j
   extends a
 {
-  protected int gOE;
-  private int gOF;
-  private int[] gOG;
-  private com.tencent.mm.danmaku.b.a[] gOH;
-  private List<List<com.tencent.mm.danmaku.b.a>> gOI;
+  protected int jyY;
+  private int jyZ;
+  private int[] jza;
+  private com.tencent.mm.danmaku.b.a[] jzb;
+  private List<List<com.tencent.mm.danmaku.b.a>> jzc;
   
   protected j(com.tencent.mm.danmaku.c.a parama, b paramb, Comparator<com.tencent.mm.danmaku.b.a> paramComparator, f paramf, com.tencent.mm.danmaku.d.c paramc)
   {
@@ -30,15 +30,15 @@ public final class j
   
   private void a(com.tencent.mm.danmaku.b.a parama, int paramInt)
   {
-    AppMethodBeat.i(241672);
-    parama.asI();
-    parama.a(paramInt, this.gNv.gQA, this.gNw.gQv);
-    AppMethodBeat.o(241672);
+    AppMethodBeat.i(280724);
+    parama.azw();
+    parama.a(paramInt, this.jxQ.jAT, this.jxR.jAO);
+    AppMethodBeat.o(280724);
   }
   
   private void a(List<List<com.tencent.mm.danmaku.b.a>> paramList, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(241670);
+    AppMethodBeat.i(280722);
     int j = paramList.size();
     int i = 0;
     while (i < j)
@@ -47,69 +47,69 @@ public final class j
       while (localIterator.hasNext())
       {
         com.tencent.mm.danmaku.b.d locald = (com.tencent.mm.danmaku.b.d)localIterator.next();
-        locald.asu();
-        long l = this.gNw.gQv;
+        locald.azi();
+        long l = this.jxR.jAO;
         int k = (int)locald.mLeft;
         b(locald);
-        locald.ze(l - (int)((com.tencent.mm.danmaku.b.d.getScreenWidth() - k) / --locald.gPj));
+        locald.Fi(l - (int)((com.tencent.mm.danmaku.b.d.getScreenWidth() - k) / --locald.jzC));
         locald.mTop = paramArrayOfInt[i];
         locald.mLeft = k;
       }
       i += 1;
     }
-    AppMethodBeat.o(241670);
+    AppMethodBeat.o(280722);
   }
   
-  private void ast()
+  private void azh()
   {
-    AppMethodBeat.i(241673);
-    int j = this.gOI.size();
+    AppMethodBeat.i(280725);
+    int j = this.jzc.size();
     int i = 0;
     while (i < j)
     {
-      Iterator localIterator = ((List)this.gOI.get(i)).iterator();
+      Iterator localIterator = ((List)this.jzc.get(i)).iterator();
       while (localIterator.hasNext())
       {
         com.tencent.mm.danmaku.b.a locala = (com.tencent.mm.danmaku.b.a)localIterator.next();
-        if ((locala.yZ(this.gNw.gQv)) || (!locala.isShown()))
+        if ((locala.Fd(this.jxR.jAO)) || (!locala.isShown()))
         {
-          if (locala == this.gOH[i]) {
-            this.gOH[i] = null;
+          if (locala == this.jzb[i]) {
+            this.jzb[i] = null;
           }
           localIterator.remove();
-          this.gNo -= 1;
-          this.gNq.add(locala);
+          this.jxJ -= 1;
+          this.jxL.add(locala);
         }
       }
       i += 1;
     }
-    AppMethodBeat.o(241673);
+    AppMethodBeat.o(280725);
   }
   
   public final com.tencent.mm.danmaku.b.a a(com.tencent.mm.danmaku.d.h paramh)
   {
-    AppMethodBeat.i(241676);
-    int k = this.gOI.size();
+    AppMethodBeat.i(280728);
+    int k = this.jzc.size();
     int i = 0;
     while (i < k)
     {
-      Iterator localIterator = ((List)this.gOI.get(i)).iterator();
+      Iterator localIterator = ((List)this.jzc.get(i)).iterator();
       while (localIterator.hasNext())
       {
         com.tencent.mm.danmaku.b.a locala = (com.tencent.mm.danmaku.b.a)localIterator.next();
-        if (com.tencent.mm.danmaku.b.a.asF())
+        if (com.tencent.mm.danmaku.b.a.azt())
         {
           float f1 = paramh.mPoint.x;
           float f2 = paramh.mPoint.y;
-          float f3 = paramh.gQF;
-          float[] arrayOfFloat = locala.zd(paramh.mTime);
+          float f3 = paramh.jAY;
+          float[] arrayOfFloat = locala.Fh(paramh.mTime);
           if ((arrayOfFloat != null) && (arrayOfFloat[0] <= f1) && (f1 <= f3 + arrayOfFloat[2]) && (arrayOfFloat[1] <= f2) && (f2 <= arrayOfFloat[3])) {}
           for (int j = 1; j != 0; j = 0)
           {
-            if (e.gQV >= 5) {
+            if (e.jBo >= 5) {
               e.v("Danmaku_R2LWindow", new Object[] { "onClick:", locala, "[left:", Float.valueOf(locala.getLeft()), ",top:", Float.valueOf(locala.getTop()), "]" });
             }
-            AppMethodBeat.o(241676);
+            AppMethodBeat.o(280728);
             return locala;
           }
         }
@@ -117,66 +117,66 @@ public final class j
       i += 1;
     }
     e.v("Danmaku_R2LWindow", "onClick:null");
-    AppMethodBeat.o(241676);
+    AppMethodBeat.o(280728);
     return null;
   }
   
-  public final void arP()
+  public final void ayA()
   {
-    AppMethodBeat.i(241669);
-    Object localObject = com.tencent.mm.danmaku.c.a.asO();
-    this.gOE = ((m)localObject).gPH;
+    AppMethodBeat.i(280721);
+    Object localObject = com.tencent.mm.danmaku.c.a.azC();
+    this.jyY = ((m)localObject).jAa;
     int i;
-    if ((this.gOG == null) || (this.gOF != ((m)localObject).gOF))
+    if ((this.jza == null) || (this.jyZ != ((m)localObject).jyZ))
     {
-      this.gOF = ((m)localObject).gOF;
-      this.gOG = new int[this.gOF];
-      localObject = new com.tencent.mm.danmaku.b.a[this.gOF];
-      if (this.gOH != null) {
-        System.arraycopy(this.gOH, 0, localObject, 0, Math.min(localObject.length, this.gOH.length));
+      this.jyZ = ((m)localObject).jyZ;
+      this.jza = new int[this.jyZ];
+      localObject = new com.tencent.mm.danmaku.b.a[this.jyZ];
+      if (this.jzb != null) {
+        System.arraycopy(this.jzb, 0, localObject, 0, Math.min(localObject.length, this.jzb.length));
       }
-      this.gOH = ((com.tencent.mm.danmaku.b.a[])localObject);
-      if (this.gOI != null)
+      this.jzb = ((com.tencent.mm.danmaku.b.a[])localObject);
+      if (this.jzc != null)
       {
-        i = this.gOI.size();
-        if (i < this.gOF) {
-          while (i < this.gOF)
+        i = this.jzc.size();
+        if (i < this.jyZ) {
+          while (i < this.jyZ)
           {
-            this.gOI.add(new LinkedList());
+            this.jzc.add(new LinkedList());
             i += 1;
           }
         }
         i -= 1;
-        while (i >= this.gOF)
+        while (i >= this.jyZ)
         {
-          this.gOI.remove(i);
+          this.jzc.remove(i);
           i -= 1;
         }
       }
-      this.gOI = new ArrayList(this.gOF);
+      this.jzc = new ArrayList(this.jyZ);
       i = 0;
-      while (i < this.gOF)
+      while (i < this.jyZ)
       {
-        this.gOI.add(new LinkedList());
+        this.jzc.add(new LinkedList());
         i += 1;
       }
     }
-    localObject = this.gNt;
+    localObject = this.jxO;
     StringBuilder localStringBuilder1;
     int j;
     label265:
     StringBuilder localStringBuilder2;
-    if (((com.tencent.mm.danmaku.c.a)localObject).gPy != null)
+    if (((com.tencent.mm.danmaku.c.a)localObject).jzR != null)
     {
-      i = ((com.tencent.mm.danmaku.c.a)localObject).gPy.asU();
+      i = ((com.tencent.mm.danmaku.c.a)localObject).jzR.azI();
       localStringBuilder1 = new StringBuilder("[");
       j = 0;
-      if (j >= this.gOF) {
+      if (j >= this.jyZ) {
         break label350;
       }
-      this.gOG[j] = (j * i + this.gOE);
-      localStringBuilder2 = localStringBuilder1.append(this.gOG[j]);
-      if (j == this.gOF - 1) {
+      this.jza[j] = (j * i + this.jyY);
+      localStringBuilder2 = localStringBuilder1.append(this.jza[j]);
+      if (j == this.jyZ - 1) {
         break label343;
       }
     }
@@ -186,73 +186,52 @@ public final class j
       localStringBuilder2.append((String)localObject);
       j += 1;
       break label265;
-      i = (int)Math.ceil(com.tencent.mm.danmaku.e.d.a(com.tencent.mm.danmaku.c.a.asO()));
+      i = (int)Math.ceil(com.tencent.mm.danmaku.e.d.a(com.tencent.mm.danmaku.c.a.azC()));
       break;
     }
     label350:
     localStringBuilder1.append("]");
-    e.d("Danmaku_R2LWindow", new Object[] { "reloadConfig, mRowCount = %d, mMarginTop = %d, lineHeight = %d, lineTops = %s", Integer.valueOf(this.gOF), Integer.valueOf(this.gOE), Integer.valueOf(i), localStringBuilder1 });
-    a(this.gOI, this.gOG);
-    a(this.gOI, this.gOG);
-    AppMethodBeat.o(241669);
+    e.d("Danmaku_R2LWindow", new Object[] { "reloadConfig, mRowCount = %d, mMarginTop = %d, lineHeight = %d, lineTops = %s", Integer.valueOf(this.jyZ), Integer.valueOf(this.jyY), Integer.valueOf(i), localStringBuilder1 });
+    a(this.jzc, this.jza);
+    a(this.jzc, this.jza);
+    AppMethodBeat.o(280721);
   }
   
-  public final void arQ()
+  public final void ayB()
   {
     int j = 0;
-    AppMethodBeat.i(241675);
+    AppMethodBeat.i(280727);
     int i = 0;
-    while (i < this.gOF)
+    while (i < this.jyZ)
     {
-      this.gOH[i] = null;
+      this.jzb[i] = null;
       i += 1;
     }
-    int k = this.gOI.size();
+    int k = this.jzc.size();
     i = j;
     while (i < k)
     {
-      Iterator localIterator = ((List)this.gOI.get(i)).iterator();
+      Iterator localIterator = ((List)this.jzc.get(i)).iterator();
       while (localIterator.hasNext())
       {
         com.tencent.mm.danmaku.b.a locala = (com.tencent.mm.danmaku.b.a)localIterator.next();
         localIterator.remove();
-        this.gNo -= 1;
-        this.gNq.add(locala);
+        this.jxJ -= 1;
+        this.jxL.add(locala);
       }
       i += 1;
     }
-    AppMethodBeat.o(241675);
+    AppMethodBeat.o(280727);
   }
   
-  public final void i(Canvas paramCanvas)
+  public final void fP()
   {
-    AppMethodBeat.i(241674);
-    int j = this.gOI.size();
-    int i = 0;
-    while (i < j)
-    {
-      Iterator localIterator = ((List)this.gOI.get(i)).iterator();
-      while (localIterator.hasNext())
-      {
-        com.tencent.mm.danmaku.b.a locala = (com.tencent.mm.danmaku.b.a)localIterator.next();
-        locala.x(this.gNw.gQw, this.gNw.gQv);
-        if (!locala.za(this.gNw.gQv)) {
-          a(paramCanvas, locala);
-        }
-      }
-      i += 1;
+    AppMethodBeat.i(280723);
+    com.tencent.mm.danmaku.c.a.azC();
+    if (e.jBo >= 5) {
+      e.d("Danmaku_R2LWindow", new Object[] { Integer.valueOf(this.jxK.size()) });
     }
-    AppMethodBeat.o(241674);
-  }
-  
-  public final void layout()
-  {
-    AppMethodBeat.i(241671);
-    com.tencent.mm.danmaku.c.a.asO();
-    if (e.gQV >= 5) {
-      e.d("Danmaku_R2LWindow", new Object[] { Integer.valueOf(this.gNp.size()) });
-    }
-    Iterator localIterator = this.gNp.iterator();
+    Iterator localIterator = this.jxK.iterator();
     int j = 0;
     com.tencent.mm.danmaku.b.a locala;
     int i;
@@ -266,9 +245,9 @@ public final class j
       locala = (com.tencent.mm.danmaku.b.a)localIterator.next();
       localIterator.remove();
       Object localObject;
-      if ((!locala.yZ(this.gNw.gQv)) && (!locala.yY(this.gNv.gQA)))
+      if ((!locala.Fd(this.jxR.jAO)) && (!locala.Fc(this.jxQ.jAT)))
       {
-        localObject = this.gOI.iterator();
+        localObject = this.jzc.iterator();
         while (((Iterator)localObject).hasNext()) {
           if (((List)((Iterator)localObject).next()).contains(locala)) {
             e.d("Danmaku_R2LWindow", new Object[] { locala, " is repeat" });
@@ -280,16 +259,16 @@ public final class j
         if (i == 0) {
           break label223;
         }
-        if (e.gQV >= 5) {
+        if (e.jBo >= 5) {
           e.d("Danmaku_R2LWindow", new Object[] { locala, " is out side" });
         }
-        this.gNq.add(locala);
+        this.jxL.add(locala);
         break;
       }
-      if (!locala.asx()) {
-        h.a(this.gNt, locala);
+      if (!locala.azl()) {
+        h.a(this.jxO, locala);
       }
-      i = locala.oY(this.gOF);
+      i = locala.rt(this.jyZ);
       if (i >= 0)
       {
         k = i;
@@ -298,7 +277,7 @@ public final class j
           break label362;
         }
       }
-      for (int n = k + 1;; n = this.gOF + k)
+      for (int n = k + 1;; n = this.jyZ + k)
       {
         e.d("Danmaku_R2LWindow", "startLayout, startLine = " + k + ", maxLine = " + n + ", danmaku = " + locala);
         i = j;
@@ -307,21 +286,21 @@ public final class j
           break label1035;
         }
         m = k;
-        while (m >= this.gOF) {
-          m -= this.gOF;
+        while (m >= this.jyZ) {
+          m -= this.jyZ;
         }
-        k = locala.oX(this.gOF);
+        k = locala.rs(this.jyZ);
         break;
       }
-      if (e.gQV >= 5)
+      if (e.jBo >= 5)
       {
         e.d("Danmaku_R2LWindow", new Object[] { locala, " try layout" });
         i1 = 0;
-        if (i1 < this.gOF)
+        if (i1 < this.jyZ)
         {
           StringBuilder localStringBuilder = new StringBuilder("row ").append(i1);
-          if (this.gOH[i1] == null) {}
-          for (localObject = " null";; localObject = this.gOH[i1])
+          if (this.jzb[i1] == null) {}
+          for (localObject = " null";; localObject = this.jzb[i1])
           {
             e.d("Danmaku_R2LWindow", localObject);
             i1 += 1;
@@ -329,14 +308,14 @@ public final class j
           }
         }
       }
-      if (this.gOH[m] == null)
+      if (this.jzb[m] == null)
       {
-        this.gOH[m] = locala;
-        ((List)this.gOI.get(m)).add(locala);
-        this.gNo += 1;
-        a(locala, this.gOG[m]);
-        if (e.gQV >= 4) {
-          e.d("Danmaku_R2LWindow", new Object[] { locala, " layout success:", Integer.valueOf(m), ",top:", Integer.valueOf(this.gOG[m]) });
+        this.jzb[m] = locala;
+        ((List)this.jzc.get(m)).add(locala);
+        this.jxJ += 1;
+        a(locala, this.jza[m]);
+        if (e.jBo >= 4) {
+          e.d("Danmaku_R2LWindow", new Object[] { locala, " layout success:", Integer.valueOf(m), ",top:", Integer.valueOf(this.jza[m]) });
         }
         k = 1;
       }
@@ -347,27 +326,27 @@ public final class j
       if (k == 0)
       {
         m = k;
-        if (locala.oW(j))
+        if (locala.rr(j))
         {
-          this.gOH[i] = locala;
-          ((List)this.gOI.get(i)).add(locala);
-          this.gNo += 1;
-          a(locala, this.gOG[i]);
-          if (e.gQV >= 4) {
-            e.d("Danmaku_R2LWindow", new Object[] { locala, " layout success:", Integer.valueOf(i), ",top:", this.gOG[i] + ", danmakuRepeatTime = " + locala.asD() });
+          this.jzb[i] = locala;
+          ((List)this.jzc.get(i)).add(locala);
+          this.jxJ += 1;
+          a(locala, this.jza[i]);
+          if (e.jBo >= 4) {
+            e.d("Danmaku_R2LWindow", new Object[] { locala, " layout success:", Integer.valueOf(i), ",top:", this.jza[i] + ", danmakuRepeatTime = " + locala.azr() });
           }
           m = 1;
         }
       }
       if (m == 0)
       {
-        this.gNq.add(locala);
-        if (e.gQV >= 4) {
+        this.jxL.add(locala);
+        if (e.jBo >= 4) {
           e.d("Danmaku_R2LWindow", new Object[] { locala, " can not in window" });
         }
       }
       j = i;
-      if (!locala.asM()) {
+      if (!locala.azA()) {
         break;
       }
       j = i;
@@ -377,9 +356,9 @@ public final class j
       e.d("Danmaku_R2LWindow", "must show danmaku layout success :".concat(String.valueOf(locala)));
       j = i;
       break;
-      if (!this.gOH[m].isPaused())
+      if (!this.jzb[m].isPaused())
       {
-        i1 = com.tencent.mm.danmaku.e.c.a(this.gOH[m], locala, this.gNw.gQv);
+        i1 = com.tencent.mm.danmaku.e.c.a(this.jzb[m], locala, this.jxR.jAO);
         if (i1 < j)
         {
           i = m;
@@ -387,12 +366,12 @@ public final class j
           label875:
           if (j < 0)
           {
-            this.gOH[m] = locala;
-            ((List)this.gOI.get(m)).add(locala);
-            this.gNo += 1;
-            a(locala, this.gOG[m]);
-            if (e.gQV >= 4) {
-              e.d("Danmaku_R2LWindow", new Object[] { locala, " layout success:", Integer.valueOf(m), ",top:", this.gOG[m] + ", hitTime = " + j });
+            this.jzb[m] = locala;
+            ((List)this.jzc.get(m)).add(locala);
+            this.jxJ += 1;
+            a(locala, this.jza[m]);
+            if (e.jBo >= 4) {
+              e.d("Danmaku_R2LWindow", new Object[] { locala, " layout success:", Integer.valueOf(m), ",top:", this.jza[m] + ", hitTime = " + j });
             }
             k = 1;
             continue;
@@ -403,14 +382,35 @@ public final class j
       {
         k += 1;
         break;
-        ast();
-        AppMethodBeat.o(241671);
+        azh();
+        AppMethodBeat.o(280723);
         return;
         break label875;
       }
       label1035:
       k = 0;
     }
+  }
+  
+  public final void j(Canvas paramCanvas)
+  {
+    AppMethodBeat.i(280726);
+    int j = this.jzc.size();
+    int i = 0;
+    while (i < j)
+    {
+      Iterator localIterator = ((List)this.jzc.get(i)).iterator();
+      while (localIterator.hasNext())
+      {
+        com.tencent.mm.danmaku.b.a locala = (com.tencent.mm.danmaku.b.a)localIterator.next();
+        locala.x(this.jxR.jAP, this.jxR.jAO);
+        if (!locala.Fe(this.jxR.jAO)) {
+          a(paramCanvas, locala);
+        }
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(280726);
   }
 }
 

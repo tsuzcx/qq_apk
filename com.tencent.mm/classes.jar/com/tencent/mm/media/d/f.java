@@ -4,9 +4,8 @@ import android.media.MediaCodec.BufferInfo;
 import android.media.MediaFormat;
 import android.os.Looper;
 import android.view.Surface;
-import com.tencent.mm.compatible.deviceinfo.z;
+import com.tencent.mm.compatible.deviceinfo.aa;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.sight.base.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.nio.ByteBuffer;
@@ -24,32 +23,32 @@ import kotlin.l;
 import kotlin.o;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/decoder/IMediaCodecTransDecoder;", "", "startTimeMs", "", "endTimeMs", "mediaExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "decodeSurface", "Landroid/view/Surface;", "outputFps", "", "enableHevc", "", "(JJLcom/tencent/mm/media/extractor/MediaExtractorWrapper;Landroid/view/Surface;IZ)V", "TAG", "", "bFrameNum", "decodeHelper", "Lcom/tencent/mm/media/decoder/DecodeHelper;", "getDecodeHelper", "()Lcom/tencent/mm/media/decoder/DecodeHelper;", "setDecodeHelper", "(Lcom/tencent/mm/media/decoder/DecodeHelper;)V", "decodePts", "getDecodeSurface", "()Landroid/view/Surface;", "setDecodeSurface", "(Landroid/view/Surface;)V", "decoder", "Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;", "getDecoder", "()Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;", "setDecoder", "(Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;)V", "decoderLock", "Ljava/lang/Object;", "getDecoderLock", "()Ljava/lang/Object;", "getEndTimeMs", "()J", "setEndTimeMs", "(J)V", "frameCount", "frameDropInterval", "frameDuration", "", "getFrameDuration", "()F", "setFrameDuration", "(F)V", "hasBFrame", "isFinished", "()Z", "setFinished", "(Z)V", "isPause", "setPause", "lastDecodePts", "getMediaExtractorWrapper", "()Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "mediaFormat", "Landroid/media/MediaFormat;", "getMediaFormat", "()Landroid/media/MediaFormat;", "setMediaFormat", "(Landroid/media/MediaFormat;)V", "onDecodeDataCallback", "Lkotlin/Function4;", "Ljava/nio/ByteBuffer;", "Lkotlin/ParameterName;", "name", "decodeData", "pts", "Landroid/media/MediaCodec$BufferInfo;", "bufferInfo", "duplicate", "", "getOnDecodeDataCallback", "()Lkotlin/jvm/functions/Function4;", "setOnDecodeDataCallback", "(Lkotlin/jvm/functions/Function4;)V", "onDecodeEnd", "Lkotlin/Function0;", "getOnDecodeEnd", "()Lkotlin/jvm/functions/Function0;", "setOnDecodeEnd", "(Lkotlin/jvm/functions/Function0;)V", "onDecodeError", "getOnDecodeError", "setOnDecodeError", "onFormatChanged", "Lkotlin/Function1;", "getOnFormatChanged", "()Lkotlin/jvm/functions/Function1;", "setOnFormatChanged", "(Lkotlin/jvm/functions/Function1;)V", "pauseSemaphore", "Ljava/util/concurrent/Semaphore;", "ptsList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getStartTimeMs", "setStartTimeMs", "useInRemuxer", "getUseInRemuxer", "setUseInRemuxer", "videoFps", "getVideoFps", "()I", "setVideoFps", "(I)V", "getBFrameNum", "getFrameCount", "getFrameDropInterval", "getVideoFormat", "isDecoderPause", "onDecode", "callback", "processDecodeOutputBuffer", "bufferIndex", "releaseDecoder", "setFrameDropInterval", "interval", "setPauseDecoder", "pause", "startDecode", "useInRemux", "plugin-mediaeditor_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/decoder/IMediaCodecTransDecoder;", "", "startTimeMs", "", "endTimeMs", "mediaExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "decodeSurface", "Landroid/view/Surface;", "outputFps", "", "enableHevc", "", "(JJLcom/tencent/mm/media/extractor/MediaExtractorWrapper;Landroid/view/Surface;IZ)V", "TAG", "", "bFrameNum", "decodeHelper", "Lcom/tencent/mm/media/decoder/DecodeHelper;", "getDecodeHelper", "()Lcom/tencent/mm/media/decoder/DecodeHelper;", "setDecodeHelper", "(Lcom/tencent/mm/media/decoder/DecodeHelper;)V", "decodePts", "getDecodeSurface", "()Landroid/view/Surface;", "setDecodeSurface", "(Landroid/view/Surface;)V", "decoder", "Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;", "getDecoder", "()Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;", "setDecoder", "(Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;)V", "decoderLock", "Ljava/lang/Object;", "getDecoderLock", "()Ljava/lang/Object;", "getEndTimeMs", "()J", "setEndTimeMs", "(J)V", "frameCount", "frameDropInterval", "frameDuration", "", "getFrameDuration", "()F", "setFrameDuration", "(F)V", "hasBFrame", "isFinished", "()Z", "setFinished", "(Z)V", "isPause", "setPause", "lastDecodePts", "getMediaExtractorWrapper", "()Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "mediaFormat", "Landroid/media/MediaFormat;", "getMediaFormat", "()Landroid/media/MediaFormat;", "setMediaFormat", "(Landroid/media/MediaFormat;)V", "onDecodeDataCallback", "Lkotlin/Function4;", "Ljava/nio/ByteBuffer;", "Lkotlin/ParameterName;", "name", "decodeData", "pts", "Landroid/media/MediaCodec$BufferInfo;", "bufferInfo", "duplicate", "", "getOnDecodeDataCallback", "()Lkotlin/jvm/functions/Function4;", "setOnDecodeDataCallback", "(Lkotlin/jvm/functions/Function4;)V", "onDecodeEnd", "Lkotlin/Function0;", "getOnDecodeEnd", "()Lkotlin/jvm/functions/Function0;", "setOnDecodeEnd", "(Lkotlin/jvm/functions/Function0;)V", "onDecodeError", "getOnDecodeError", "setOnDecodeError", "onFormatChanged", "Lkotlin/Function1;", "getOnFormatChanged", "()Lkotlin/jvm/functions/Function1;", "setOnFormatChanged", "(Lkotlin/jvm/functions/Function1;)V", "pauseSemaphore", "Ljava/util/concurrent/Semaphore;", "ptsList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getStartTimeMs", "setStartTimeMs", "useInRemuxer", "getUseInRemuxer", "setUseInRemuxer", "videoFps", "getVideoFps", "()I", "setVideoFps", "(I)V", "getBFrameNum", "getFrameCount", "getFrameDropInterval", "getVideoFormat", "invokeDecodeCallback", "callbackPts", "isDecoderPause", "onDecode", "callback", "processDecodeOutputBuffer", "bufferIndex", "releaseDecoder", "setFrameDropInterval", "interval", "setPauseDecoder", "pause", "startDecode", "useInRemux", "plugin-mediaeditor_release"})
 public abstract class f
 {
   public final String TAG;
-  protected volatile boolean dLD;
   long endTimeMs;
+  private volatile boolean fEs;
   private int frameCount;
-  private volatile boolean ieA;
-  private volatile int ieB;
-  private ArrayList<Long> ieC;
-  protected Surface ieD;
-  z iec;
-  final com.tencent.mm.media.f.a iei;
-  public r<? super ByteBuffer, ? super Long, ? super MediaCodec.BufferInfo, ? super Boolean, x> ieo;
-  public kotlin.g.a.a<x> iep;
-  public kotlin.g.a.b<? super MediaFormat, x> ieq;
-  public kotlin.g.a.a<x> ier;
-  public int ies;
-  private final Semaphore iet;
-  final Object ieu;
-  private float iev;
-  private b iew;
-  public boolean iex;
-  private long iey;
-  private long iez;
   volatile boolean isFinished;
+  aa kSN;
+  private final com.tencent.mm.media.f.a kSW;
+  public r<? super ByteBuffer, ? super Long, ? super MediaCodec.BufferInfo, ? super Boolean, x> kTc;
+  public kotlin.g.a.a<x> kTd;
+  public kotlin.g.a.b<? super MediaFormat, x> kTe;
+  public kotlin.g.a.a<x> kTf;
+  public int kTg;
+  private final Semaphore kTh;
+  private final Object kTi;
+  private float kTj;
+  private b kTk;
+  public boolean kTl;
+  private long kTm;
+  private long kTn;
+  private volatile boolean kTo;
+  private volatile int kTp;
+  private ArrayList<Long> kTq;
+  private Surface krL;
   public MediaFormat mediaFormat;
   long startTimeMs;
   private int videoFps;
@@ -58,44 +57,61 @@ public abstract class f
   {
     this.startTimeMs = paramLong1;
     this.endTimeMs = paramLong2;
-    this.iei = parama;
-    this.ieD = paramSurface;
+    this.kSW = parama;
+    this.krL = paramSurface;
     this.TAG = "MicroMsg.IMediaCodecTransDecoder";
-    this.iet = new Semaphore(1);
-    this.ieu = new Object();
-    this.iey = -1L;
-    this.iez = -1L;
-    this.ieC = new ArrayList();
+    this.kTh = new Semaphore(1);
+    this.kTi = new Object();
+    this.kTm = -1L;
+    this.kTn = -1L;
+    this.kTq = new ArrayList();
     Log.i(this.TAG, "create IMediaCodecTransDecoder, startTimeMs:" + this.startTimeMs + ", endTimeMs:" + this.endTimeMs);
-    parama = this.iei;
+    parama = this.kSW;
     if (parama != null) {
-      parama.aMq();
+      parama.aUG();
     }
     if (this.startTimeMs >= 0L)
     {
-      parama = this.iei;
+      parama = this.kSW;
       if (parama != null) {
         parama.seek(this.startTimeMs * 1000L);
       }
     }
-    parama = this.iei;
+    parama = this.kSW;
     if (parama != null) {}
     for (parama = parama.filePath;; parama = null)
     {
-      this.iew = new b(parama, paramInt, this.startTimeMs * 1000L, paramBoolean);
-      this.ieB = 0;
+      this.kTk = new b(parama, paramInt, this.startTimeMs * 1000L, paramBoolean);
+      this.kTp = 0;
       return;
     }
   }
   
+  private final void a(long paramLong1, long paramLong2, MediaCodec.BufferInfo paramBufferInfo)
+  {
+    r localr;
+    if (this.kTq.contains(Long.valueOf(paramLong1)))
+    {
+      localr = this.kTc;
+      if (localr != null) {
+        localr.a(null, Long.valueOf(paramLong2), paramBufferInfo, Boolean.TRUE);
+      }
+    }
+    do
+    {
+      return;
+      this.kTq.add(Long.valueOf(paramLong1));
+      localr = this.kTc;
+    } while (localr == null);
+    localr.a(null, Long.valueOf(paramLong2), paramBufferInfo, Boolean.FALSE);
+  }
+  
   protected final void a(int paramInt, MediaCodec.BufferInfo paramBufferInfo)
   {
-    boolean bool4 = true;
-    boolean bool3 = true;
-    p.h(paramBufferInfo, "bufferInfo");
+    p.k(paramBufferInfo, "bufferInfo");
     Object localObject2;
     Object localObject1;
-    label102:
+    label96:
     int i;
     if (this.videoFps <= 0)
     {
@@ -106,111 +122,109 @@ public abstract class f
         localObject1 = localObject2;
         if (!((MediaFormat)localObject2).containsKey("frame-rate"))
         {
-          localObject1 = this.iei;
+          localObject1 = this.kSW;
           if (localObject1 == null) {
-            break label722;
+            break label684;
           }
-          localObject1 = ((com.tencent.mm.media.f.a)localObject1).igh;
+          localObject1 = ((com.tencent.mm.media.f.a)localObject1).kUV;
         }
       }
       if ((localObject1 == null) || (((MediaFormat)localObject1).containsKey("frame-rate"))) {
-        break label739;
+        break label701;
       }
-      localObject1 = this.iei;
+      localObject1 = this.kSW;
       if (localObject1 == null) {
-        break label728;
+        break label690;
       }
       localObject1 = ((com.tencent.mm.media.f.a)localObject1).filePath;
-      localObject1 = e.aNx((String)localObject1);
+      localObject1 = com.tencent.mm.plugin.sight.base.f.aYg((String)localObject1);
       if (localObject1 == null) {
-        break label734;
+        break label696;
       }
-      i = ((com.tencent.mm.plugin.sight.base.a)localObject1).frameRate;
-      label120:
+      i = ((com.tencent.mm.plugin.sight.base.b)localObject1).frameRate;
+      label114:
       this.videoFps = i;
       if (this.videoFps > 0) {
-        this.iev = (1000.0F / this.videoFps);
+        this.kTj = (1000.0F / this.videoFps);
       }
     }
-    if (this.videoFps <= 0) {
-      h.CyF.F(986L, 104L);
+    boolean bool1;
+    if (this.videoFps <= 0)
+    {
+      bool1 = false;
+      h.IzE.F(986L, 104L);
     }
-    for (boolean bool1 = false;; bool1 = true)
+    label286:
+    label684:
+    label690:
+    label696:
+    label1211:
+    for (;;)
     {
       this.frameCount += 1;
-      this.iey = paramBufferInfo.presentationTimeUs;
+      this.kTm = paramBufferInfo.presentationTimeUs;
       localObject1 = this.TAG;
-      localObject2 = new StringBuilder("processDecodeOutputBuffer, usePts:").append(bool1).append(", pts: ").append(paramBufferInfo.presentationTimeUs).append(", frameDuration:").append(this.iev).append(", frameCount:").append(this.frameCount).append(", startTimeMs:").append(this.startTimeMs).append(", size: ").append(paramBufferInfo.size).append(", isKeyFrame:");
+      localObject2 = new StringBuilder("processDecodeOutputBuffer, usePts:").append(bool1).append(", pts: ").append(paramBufferInfo.presentationTimeUs).append(", frameDuration:").append(this.kTj).append(", frameCount:").append(this.frameCount).append(", startTimeMs:").append(this.startTimeMs).append(", size: ").append(paramBufferInfo.size).append(", isKeyFrame:");
       boolean bool2;
-      label292:
       long l1;
+      int j;
       if ((paramBufferInfo.flags & 0x1) == 1)
       {
         bool2 = true;
-        Log.i((String)localObject1, bool2 + ", isMain:" + p.j(Looper.myLooper(), Looper.getMainLooper()));
-        if ((this.iez > 0L) && (this.iey < this.iez))
+        Log.i((String)localObject1, bool2 + ", isMain:" + p.h(Looper.myLooper(), Looper.getMainLooper()));
+        if ((this.kTn > 0L) && (this.kTm < this.kTn))
         {
-          this.ieA = true;
-          this.ieB += 1;
-          Log.i(this.TAG, "processDecodeOutputBuffer has B Frame, decodePts:" + this.iey + ", lastDecodePts:" + this.iez + ", bFrameNum:" + this.ieB);
+          this.kTo = true;
+          this.kTp += 1;
+          Log.i(this.TAG, "processDecodeOutputBuffer has B Frame, decodePts:" + this.kTm + ", lastDecodePts:" + this.kTn + ", bFrameNum:" + this.kTp);
         }
-        this.iez = this.iey;
+        this.kTn = this.kTm;
         if (!bool1) {
-          break label1371;
+          break label1211;
         }
+        i = 0;
         l1 = paramBufferInfo.presentationTimeUs;
-        localObject1 = this.iew;
-        Log.i("DecodeHelper", "sendPacket, pts:" + l1 + ", recentPts:" + ((b)localObject1).idQ + ", parents[" + l1 + "]:" + (Long)((b)localObject1).idS.get(Long.valueOf(l1)) + ", lastPts:" + ((b)localObject1).idR);
-        if ((l1 == ((b)localObject1).idQ) || ((l1 <= ((b)localObject1).idR) && (!((Map)((b)localObject1).idS).containsKey(Long.valueOf(l1))))) {
-          break label772;
+        localObject1 = this.kTk;
+        Log.i("DecodeHelper", "sendPacket, pts:" + l1 + ", recentPts:" + ((b)localObject1).kSx + ", parents[" + l1 + "]:" + (Long)((b)localObject1).kSz.get(Long.valueOf(l1)) + ", lastPts:" + ((b)localObject1).kSy);
+        if ((l1 == ((b)localObject1).kSx) || ((l1 <= ((b)localObject1).kSy) && (!((Map)((b)localObject1).kSz).containsKey(Long.valueOf(l1))))) {
+          break label734;
         }
-        ((b)localObject1).bHs.add(new o(Long.valueOf(l1), Integer.valueOf(paramInt)));
-        i = 1;
+        ((b)localObject1).kSB.add(new o(Long.valueOf(l1), Integer.valueOf(paramInt)));
+        j = 1;
       }
       int k;
       for (;;)
       {
-        if (i == 0)
+        if (j == 0)
         {
           Log.i(this.TAG, "processDecodeOutputBuffer sendPacket return false");
-          localObject1 = this.iec;
+          localObject1 = this.kSN;
           if (localObject1 != null) {
-            ((z)localObject1).releaseOutputBuffer(paramInt, false);
+            ((aa)localObject1).releaseOutputBuffer(paramInt, false);
           }
           k = 1;
           if (k == 0)
           {
             Log.e(this.TAG, "processDecodeOutputBuffer still not release buffer fallback release it");
-            localObject1 = this.iec;
+            localObject1 = this.kSN;
             if (localObject1 != null)
             {
-              if (this.ieD == null) {
-                break label1322;
+              if (this.krL == null) {
+                break label1205;
               }
-              bool1 = bool3;
-              label669:
-              ((z)localObject1).releaseOutputBuffer(paramInt, bool1);
+              bool1 = true;
+              ((aa)localObject1).releaseOutputBuffer(paramInt, bool1);
             }
-            if (!this.ieC.contains(Long.valueOf(l1))) {
-              break label1328;
-            }
-            localObject1 = this.ieo;
-            if (localObject1 != null) {
-              ((r)localObject1).invoke(null, Long.valueOf(l1), paramBufferInfo, Boolean.TRUE);
-            }
+            a(l1, l1, paramBufferInfo);
           }
-          label721:
           return;
-          label722:
           localObject1 = null;
           break;
-          label728:
           localObject1 = null;
-          break label102;
-          label734:
+          break label96;
           i = 0;
-          break label120;
-          label739:
+          break label114;
+          label701:
           if (localObject1 != null) {}
           for (i = ((MediaFormat)localObject1).getInteger("frame-rate");; i = 0)
           {
@@ -218,167 +232,152 @@ public abstract class f
             break;
           }
           bool2 = false;
-          break label292;
-          label772:
-          i = 0;
+          break label286;
+          label734:
+          j = 0;
           continue;
-          label777:
           i = 1;
         }
       }
+      label1015:
+      label1272:
+      label1278:
       for (;;)
       {
-        localObject1 = this.iew;
-        int j;
+        localObject1 = this.kTk;
+        label767:
         long l2;
-        if (!((Collection)((b)localObject1).bHs).isEmpty())
+        if (!((Collection)((b)localObject1).kSB).isEmpty())
         {
           j = 1;
           if (j == 0) {
-            break label1242;
+            break label1170;
           }
-          l2 = ((Number)((o)((b)localObject1).bHs.peek()).first).longValue();
-          if (l2 <= ((b)localObject1).idR) {
-            break label1212;
+          l2 = ((Number)((o)((b)localObject1).kSB.peek()).Mx).longValue();
+          if (l2 <= ((b)localObject1).kSy) {
+            break label1140;
           }
           j = 1;
-          label845:
           k = i;
           if (j == 0) {
             break;
           }
           Log.i(this.TAG, "decode hasFrame");
-          localObject1 = this.iew;
-          localObject2 = (o)((b)localObject1).bHs.poll();
-          l2 = ((Number)((o)localObject2).first).longValue();
-          j = ((Number)((o)localObject2).second).intValue();
-          ((b)localObject1).idQ = l2;
-          localObject2 = ((Map)((b)localObject1).idT).get(Long.valueOf(l2));
+          localObject1 = this.kTk;
+          localObject2 = (o)((b)localObject1).kSB.poll();
+          l2 = ((Number)((o)localObject2).Mx).longValue();
+          j = ((Number)((o)localObject2).My).intValue();
+          ((b)localObject1).kSx = l2;
+          localObject2 = ((Map)((b)localObject1).kSA).get(Long.valueOf(l2));
           localObject1 = localObject2;
           if (localObject2 == null) {
             localObject1 = j.listOf(Long.valueOf(l2));
           }
           localObject2 = new o(localObject1, Integer.valueOf(j));
-          localObject1 = (List)((o)localObject2).first;
-          k = ((Number)((o)localObject2).second).intValue();
+          localObject1 = (List)((o)localObject2).Mx;
+          k = ((Number)((o)localObject2).My).intValue();
           Log.i(this.TAG, "processDecodeOutputBuffer, duplicate frame size:" + ((List)localObject1).size() + ", bufferInfo pts:" + paramBufferInfo.presentationTimeUs);
           if (((Collection)localObject1).isEmpty()) {
-            break label1265;
+            break label1193;
           }
           j = 1;
-          label1052:
           if (j == 0) {
-            break label1439;
+            break label1278;
           }
-          localObject2 = this.iec;
-          if (localObject2 != null)
-          {
-            if (this.ieD == null) {
-              break label1271;
+          localObject2 = this.kSN;
+          if (localObject2 != null) {
+            if (this.krL == null) {
+              break label1199;
             }
-            bool1 = true;
-            label1078:
-            ((z)localObject2).releaseOutputBuffer(k, bool1);
           }
-          localObject1 = ((Iterable)localObject1).iterator();
         }
-        for (;;)
+        for (bool1 = true;; bool1 = false)
         {
-          if (!((Iterator)localObject1).hasNext()) {
-            break label1320;
-          }
-          l2 = ((Number)((Iterator)localObject1).next()).longValue();
-          Log.i(this.TAG, "processDecodeOutputBuffer, duplicate frame, pts: " + l2 + ", bufferInfo: " + paramBufferInfo);
-          if (this.ieC.contains(Long.valueOf(l1)))
+          ((aa)localObject2).releaseOutputBuffer(k, bool1);
+          localObject1 = ((Iterable)localObject1).iterator();
+          while (((Iterator)localObject1).hasNext())
           {
-            localObject2 = this.ieo;
-            if (localObject2 == null) {
-              continue;
-            }
-            ((r)localObject2).invoke(null, Long.valueOf(l1), paramBufferInfo, Boolean.TRUE);
-            continue;
+            l2 = ((Number)((Iterator)localObject1).next()).longValue();
+            Log.i(this.TAG, "processDecodeOutputBuffer, duplicate frame, pts: " + l2 + ", bufferInfo: " + paramBufferInfo);
+            a(l1, l2, paramBufferInfo);
+          }
+          break;
+          j = 0;
+          break label767;
+          localObject2 = (Long)((b)localObject1).kSz.get(Long.valueOf(l2));
+          l2 = ((b)localObject1).kSx;
+          if (localObject2 == null) {}
+          while (((Long)localObject2).longValue() != l2)
+          {
             j = 0;
             break;
-            label1212:
-            localObject2 = (Long)((b)localObject1).idS.get(Long.valueOf(l2));
-            l2 = ((b)localObject1).idQ;
-            if (localObject2 == null) {}
-            label1242:
-            while (((Long)localObject2).longValue() != l2)
-            {
-              j = 0;
-              break;
-            }
-            j = 1;
-            break label845;
-            label1265:
-            j = 0;
-            break label1052;
-            label1271:
-            bool1 = false;
-            break label1078;
           }
-          this.ieC.add(Long.valueOf(l1));
-          localObject2 = this.ieo;
-          if (localObject2 != null) {
-            ((r)localObject2).invoke(null, Long.valueOf(l1), paramBufferInfo, Boolean.FALSE);
-          }
+          j = 1;
+          break label808;
+          j = 0;
+          break label1015;
         }
-        label1320:
-        break label777;
-        label1322:
         bool1 = false;
-        break label669;
-        label1328:
-        this.ieC.add(Long.valueOf(l1));
-        localObject1 = this.ieo;
-        if (localObject1 == null) {
-          break label721;
-        }
-        ((r)localObject1).invoke(null, Long.valueOf(l1), paramBufferInfo, Boolean.FALSE);
-        return;
-        label1371:
-        localObject1 = this.iec;
+        break label666;
+        localObject1 = this.kSN;
         if (localObject1 != null) {
-          if (this.ieD == null) {
-            break label1433;
+          if (this.krL == null) {
+            break label1272;
           }
         }
-        label1433:
-        for (bool1 = bool4;; bool1 = false)
+        for (bool1 = true;; bool1 = false)
         {
-          ((z)localObject1).releaseOutputBuffer(paramInt, bool1);
-          localObject1 = this.ieo;
+          ((aa)localObject1).releaseOutputBuffer(paramInt, bool1);
+          localObject1 = this.kTc;
           if (localObject1 == null) {
             break;
           }
-          ((r)localObject1).invoke(null, Long.valueOf(paramBufferInfo.presentationTimeUs), paramBufferInfo, Boolean.FALSE);
+          ((r)localObject1).a(null, Long.valueOf(paramBufferInfo.presentationTimeUs), paramBufferInfo, Boolean.FALSE);
           return;
         }
-        label1439:
-        continue;
-        i = 0;
       }
+      label1140:
+      bool1 = true;
     }
   }
   
-  public void eU(boolean paramBoolean)
+  public final com.tencent.mm.media.f.a aUp()
+  {
+    return this.kSW;
+  }
+  
+  protected final Object aUq()
+  {
+    return this.kTi;
+  }
+  
+  protected final Surface aUr()
+  {
+    return this.krL;
+  }
+  
+  public void fB(boolean paramBoolean)
   {
     long l = Util.currentTicks();
-    this.dLD = paramBoolean;
-    Log.d(this.TAG, "setPauseDecoder:" + paramBoolean + ", remain:" + this.iet.availablePermits() + ", thread:" + Thread.currentThread() + ' ' + l);
+    this.fEs = paramBoolean;
+    Log.d(this.TAG, "setPauseDecoder:" + paramBoolean + ", remain:" + this.kTh.availablePermits() + ", thread:" + Thread.currentThread() + ' ' + l);
     if (paramBoolean)
     {
       Log.d(this.TAG, "try acquire, thread:" + Thread.currentThread() + ' ' + l);
-      this.iet.acquire();
+      this.kTh.acquire();
     }
     for (;;)
     {
-      Log.d(this.TAG, "after setPauseDecoder:" + paramBoolean + ", remain:" + this.iet.availablePermits() + ", thread:" + Thread.currentThread() + ' ' + l);
+      Log.d(this.TAG, "after setPauseDecoder:" + paramBoolean + ", remain:" + this.kTh.availablePermits() + ", thread:" + Thread.currentThread() + ' ' + l);
       return;
       Log.d(this.TAG, "release, thread:" + Thread.currentThread() + ' ' + l);
-      this.iet.release();
+      this.kTh.release();
     }
+  }
+  
+  protected final void g(Surface paramSurface)
+  {
+    this.krL = paramSurface;
   }
   
   /* Error */
@@ -386,62 +385,62 @@ public abstract class f
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 188	com/tencent/mm/media/d/f:TAG	Ljava/lang/String;
-    //   4: new 209	java/lang/StringBuilder
+    //   1: getfield 190	com/tencent/mm/media/d/f:TAG	Ljava/lang/String;
+    //   4: new 211	java/lang/StringBuilder
     //   7: dup
-    //   8: ldc_w 575
-    //   11: invokespecial 214	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   8: ldc_w 584
+    //   11: invokespecial 216	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   14: aload_0
-    //   15: invokevirtual 578	com/tencent/mm/media/d/f:hashCode	()I
-    //   18: invokevirtual 330	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   21: invokevirtual 227	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   24: invokestatic 233	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   15: invokevirtual 587	com/tencent/mm/media/d/f:hashCode	()I
+    //   18: invokevirtual 362	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   21: invokevirtual 229	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   24: invokestatic 235	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   27: aload_0
-    //   28: getfield 196	com/tencent/mm/media/d/f:ieu	Ljava/lang/Object;
+    //   28: getfield 198	com/tencent/mm/media/d/f:kTi	Ljava/lang/Object;
     //   31: astore_1
     //   32: aload_1
     //   33: monitorenter
     //   34: aload_0
-    //   35: getfield 253	com/tencent/mm/media/d/f:iew	Lcom/tencent/mm/media/d/b;
-    //   38: getfield 411	com/tencent/mm/media/d/b:bHs	Ljava/util/PriorityQueue;
-    //   41: invokevirtual 581	java/util/PriorityQueue:clear	()V
+    //   35: getfield 255	com/tencent/mm/media/d/f:kTk	Lcom/tencent/mm/media/d/b;
+    //   38: getfield 436	com/tencent/mm/media/d/b:kSB	Ljava/util/PriorityQueue;
+    //   41: invokevirtual 590	java/util/PriorityQueue:clear	()V
     //   44: aload_0
-    //   45: getfield 430	com/tencent/mm/media/d/f:iec	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   45: getfield 453	com/tencent/mm/media/d/f:kSN	Lcom/tencent/mm/compatible/deviceinfo/aa;
     //   48: astore_2
     //   49: aload_2
     //   50: ifnull +7 -> 57
     //   53: aload_2
-    //   54: invokevirtual 584	com/tencent/mm/compatible/deviceinfo/z:stop	()V
+    //   54: invokevirtual 593	com/tencent/mm/compatible/deviceinfo/aa:stop	()V
     //   57: aload_0
-    //   58: getfield 188	com/tencent/mm/media/d/f:TAG	Ljava/lang/String;
-    //   61: ldc_w 586
-    //   64: invokestatic 233	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   58: getfield 190	com/tencent/mm/media/d/f:TAG	Ljava/lang/String;
+    //   61: ldc_w 595
+    //   64: invokestatic 235	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   67: aload_0
-    //   68: getfield 430	com/tencent/mm/media/d/f:iec	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   68: getfield 453	com/tencent/mm/media/d/f:kSN	Lcom/tencent/mm/compatible/deviceinfo/aa;
     //   71: astore_2
     //   72: aload_2
     //   73: ifnull +7 -> 80
     //   76: aload_2
-    //   77: invokevirtual 587	com/tencent/mm/compatible/deviceinfo/z:release	()V
+    //   77: invokevirtual 596	com/tencent/mm/compatible/deviceinfo/aa:release	()V
     //   80: aload_0
-    //   81: getfield 188	com/tencent/mm/media/d/f:TAG	Ljava/lang/String;
-    //   84: ldc_w 589
-    //   87: invokestatic 233	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   81: getfield 190	com/tencent/mm/media/d/f:TAG	Ljava/lang/String;
+    //   84: ldc_w 598
+    //   87: invokestatic 235	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   90: aload_0
     //   91: iconst_1
-    //   92: putfield 591	com/tencent/mm/media/d/f:isFinished	Z
+    //   92: putfield 600	com/tencent/mm/media/d/f:isFinished	Z
     //   95: aload_0
-    //   96: getfield 184	com/tencent/mm/media/d/f:ieD	Landroid/view/Surface;
+    //   96: getfield 186	com/tencent/mm/media/d/f:krL	Landroid/view/Surface;
     //   99: astore_2
     //   100: aload_2
     //   101: ifnull +7 -> 108
     //   104: aload_2
-    //   105: invokevirtual 594	android/view/Surface:release	()V
+    //   105: invokevirtual 603	android/view/Surface:release	()V
     //   108: aload_0
-    //   109: getfield 188	com/tencent/mm/media/d/f:TAG	Ljava/lang/String;
-    //   112: ldc_w 596
-    //   115: invokestatic 233	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   118: getstatic 602	kotlin/x:SXb	Lkotlin/x;
+    //   109: getfield 190	com/tencent/mm/media/d/f:TAG	Ljava/lang/String;
+    //   112: ldc_w 605
+    //   115: invokestatic 235	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   118: getstatic 611	kotlin/x:aazN	Lkotlin/x;
     //   121: astore_2
     //   122: aload_1
     //   123: monitorexit
@@ -478,11 +477,16 @@ public abstract class f
     //   108	118	130	java/lang/Exception
   }
   
+  protected final void setPause(boolean paramBoolean)
+  {
+    this.fEs = paramBoolean;
+  }
+  
   public abstract void startDecode();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.media.d.f
  * JD-Core Version:    0.7.0.1
  */

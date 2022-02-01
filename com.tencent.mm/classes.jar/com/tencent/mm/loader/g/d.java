@@ -8,84 +8,78 @@ import kotlin.l;
 import kotlin.t;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/loader/loader/LoaderCore;", "T", "Lcom/tencent/mm/loader/loader/IWorkTask;", "Lcom/tencent/mm/loader/loader/ITaskLoader;", "configuration", "Lcom/tencent/mm/loader/loader/cfg/ITaskLoaderConfiguration;", "(Lcom/tencent/mm/loader/loader/cfg/ITaskLoaderConfiguration;)V", "callbackQueue", "Ljava/util/LinkedList;", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "getConfiguration", "()Lcom/tencent/mm/loader/loader/cfg/ITaskLoaderConfiguration;", "heavyWork", "Lcom/tencent/mm/loader/loader/ILoaderExecutor;", "lightWork", "mPendingQueue", "Lcom/tencent/mm/loader/loader/LoaderPair;", "mRunningQueue", "addTask", "", "t", "(Lcom/tencent/mm/loader/loader/IWorkTask;)V", "callback", "(Lcom/tencent/mm/loader/loader/IWorkTask;Lcom/tencent/mm/loader/loader/LoaderCoreCallback;)V", "atHead", "", "(Lcom/tencent/mm/loader/loader/IWorkTask;Lcom/tencent/mm/loader/loader/LoaderCoreCallback;Z)V", "addTaskAtHead", "callInUI", "callPrepareInUI", "clean", "dispatch", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "execute", "runnable", "Ljava/lang/Runnable;", "executeHeavy", "initHeavyLoader", "initLoader", "isInRunningTask", "(Lcom/tencent/mm/loader/loader/IWorkTask;)Z", "logHead", "", "register", "removeTask", "unregister", "Companion", "libimageloader_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/loader/loader/LoaderCore;", "T", "Lcom/tencent/mm/loader/loader/IWorkTask;", "Lcom/tencent/mm/loader/loader/ITaskLoader;", "configuration", "Lcom/tencent/mm/loader/loader/cfg/ITaskLoaderConfiguration;", "(Lcom/tencent/mm/loader/loader/cfg/ITaskLoaderConfiguration;)V", "callbackQueue", "Ljava/util/LinkedList;", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "getConfiguration", "()Lcom/tencent/mm/loader/loader/cfg/ITaskLoaderConfiguration;", "heavyWork", "Lcom/tencent/mm/loader/loader/ILoaderExecutor;", "lightWork", "mPendingQueue", "Lcom/tencent/mm/loader/loader/LoaderPair;", "mRunningQueue", "addTask", "", "t", "(Lcom/tencent/mm/loader/loader/IWorkTask;)V", "callback", "(Lcom/tencent/mm/loader/loader/IWorkTask;Lcom/tencent/mm/loader/loader/LoaderCoreCallback;)V", "atHead", "", "(Lcom/tencent/mm/loader/loader/IWorkTask;Lcom/tencent/mm/loader/loader/LoaderCoreCallback;Z)V", "addTaskAtHead", "callInUI", "callPrepareInUI", "clean", "dispatch", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "execute", "runnable", "Ljava/lang/Runnable;", "executeHeavy", "initHeavyLoader", "initLoader", "isInRunningTask", "(Lcom/tencent/mm/loader/loader/IWorkTask;)Z", "logHead", "", "register", "removeTask", "unregister", "Companion", "libimageloader_release"})
 public final class d<T extends c>
   implements b
 {
-  public static final d.a ibc = new d.a((byte)0);
-  private final LinkedList<f<T>> hcR;
-  private a iaX;
-  private a iaY;
-  private final LinkedList<g<c, f<T>>> iaZ;
-  public final LinkedList<g<c, f<T>>> iba;
-  private final com.tencent.mm.loader.g.a.d ibb;
+  public static final d.a kPI = new d.a((byte)0);
+  private final LinkedList<f<T>> jOi;
+  private a kPD;
+  private a kPE;
+  private final LinkedList<g<c, f<T>>> kPF;
+  public final LinkedList<g<c, f<T>>> kPG;
+  private final com.tencent.mm.loader.g.a.d kPH;
   
   public d(com.tencent.mm.loader.g.a.d paramd)
   {
-    this.ibb = paramd;
-    this.hcR = new LinkedList();
-    this.iaZ = new LinkedList();
-    this.iba = new LinkedList();
+    this.kPH = paramd;
+    this.jOi = new LinkedList();
+    this.kPF = new LinkedList();
+    this.kPG = new LinkedList();
   }
   
-  private void a(final T paramT, final f<T> paramf, final boolean paramBoolean)
+  private final String aSa()
   {
-    p.h(paramT, "t");
-    com.tencent.mm.ac.d.h((kotlin.g.a.a)new b(this, paramT, paramf, paramBoolean));
+    return "name:" + this.kPH.name() + "_this:" + hashCode() + '_';
   }
   
-  private final String aJZ()
+  private final void aSb()
   {
-    return "name:" + this.ibb.name() + "_this:" + hashCode() + '_';
-  }
-  
-  private final void aKa()
-  {
-    if (this.iaX != null) {
+    if (this.kPD != null) {
       return;
     }
-    this.iaX = this.ibb.aKd();
+    this.kPD = this.kPH.aSe();
   }
   
-  private final boolean aKb()
+  private final boolean aSc()
   {
-    if (this.iaZ.size() <= 0) {
-      Log.i("MicroMsg.Loader.DefaultTaskLoader", aJZ() + "DefaultTaskLoader mPendingQueue is empty");
+    if (this.kPF.size() <= 0) {
+      Log.i("MicroMsg.Loader.DefaultTaskLoader", aSa() + "DefaultTaskLoader mPendingQueue is empty");
     }
-    while (this.iba.size() >= this.ibb.aKf()) {
+    while (this.kPG.size() >= this.kPH.aSg()) {
       return false;
     }
-    Log.i("MicroMsg.Loader.DefaultTaskLoader", aJZ() + "callPrepare RunningQueue " + this.iba.size() + " max_run_task " + this.ibb.aKf() + " mPendingQueue " + this.iaZ.size());
-    Object localObject1 = this.iaZ.remove(0);
-    p.g(localObject1, "mPendingQueue.removeAt(0)");
+    Log.i("MicroMsg.Loader.DefaultTaskLoader", aSa() + "callPrepare RunningQueue " + this.kPG.size() + " max_run_task " + this.kPH.aSg() + " mPendingQueue " + this.kPF.size());
+    Object localObject1 = this.kPF.remove(0);
+    p.j(localObject1, "mPendingQueue.removeAt(0)");
     Object localObject2 = (g)localObject1;
-    this.iba.add(localObject2);
-    Log.i("MicroMsg.Loader.DefaultTaskLoader", "add task,mediaId:" + ((c)((g)localObject2).first).auK());
-    if (!this.ibb.aKg().a((c)((g)localObject2).first))
+    this.kPG.add(localObject2);
+    Log.i("MicroMsg.Loader.DefaultTaskLoader", "add task,mediaId:" + ((c)((g)localObject2).Mx).aBG());
+    if (!this.kPH.aSh().a((c)((g)localObject2).Mx))
     {
-      Log.w("MicroMsg.Loader.DefaultTaskLoader", aJZ() + " block retryStrategy " + localObject2 + ".first");
-      localObject1 = (f)((g)localObject2).second;
+      Log.w("MicroMsg.Loader.DefaultTaskLoader", aSa() + " block retryStrategy " + localObject2 + ".first");
+      localObject1 = (f)((g)localObject2).My;
       if (localObject1 != null)
       {
-        localObject2 = ((g)localObject2).first;
+        localObject2 = ((g)localObject2).Mx;
         if (localObject2 == null) {
           throw new t("null cannot be cast to non-null type T");
         }
-        ((f)localObject1).a((c)localObject2, j.ibv);
+        ((f)localObject1).a((c)localObject2, j.kQc);
       }
       return true;
     }
-    execute((Runnable)new k((c)((g)localObject2).first, (b)this, (k.a)new c(this, (g)localObject2)));
+    execute((Runnable)new k((c)((g)localObject2).Mx, (b)this, (k.a)new c(this, (g)localObject2)));
     return true;
   }
   
   public final void D(Runnable paramRunnable)
   {
-    p.h(paramRunnable, "runnable");
-    if (this.iaY == null) {
-      this.iaY = this.ibb.aKe();
+    p.k(paramRunnable, "runnable");
+    if (this.kPE == null) {
+      this.kPE = this.kPH.aSf();
     }
-    a locala = this.iaY;
+    a locala = this.kPE;
     if (locala != null) {
       locala.execute(paramRunnable);
     }
@@ -93,56 +87,56 @@ public final class d<T extends c>
   
   public final void a(T paramT, f<T> paramf)
   {
-    p.h(paramT, "t");
+    p.k(paramT, "t");
     a(paramT, paramf, false);
+  }
+  
+  public final void a(final T paramT, final f<T> paramf, final boolean paramBoolean)
+  {
+    p.k(paramT, "t");
+    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new b(this, paramT, paramf, paramBoolean));
   }
   
   public final void a(final f<T> paramf)
   {
-    p.h(paramf, "callback");
-    com.tencent.mm.ac.d.h((kotlin.g.a.a)new f(this, paramf));
+    p.k(paramf, "callback");
+    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new f(this, paramf));
   }
   
   public final void b(T paramT)
   {
-    p.h(paramT, "t");
-    a(paramT, null, true);
+    p.k(paramT, "t");
+    a(paramT, null);
   }
   
   public final void b(final f<T> paramf)
   {
-    p.h(paramf, "callback");
-    com.tencent.mm.ac.d.h((kotlin.g.a.a)new h(this, paramf));
+    p.k(paramf, "callback");
+    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new h(this, paramf));
   }
   
-  public final void c(T paramT)
+  public final void c(final T paramT)
   {
-    p.h(paramT, "t");
-    a(paramT, null);
+    p.k(paramT, "t");
+    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new g(this, paramT));
   }
   
   public final void clean()
   {
-    com.tencent.mm.ac.d.h((kotlin.g.a.a)new d(this));
-  }
-  
-  public final void d(final T paramT)
-  {
-    p.h(paramT, "t");
-    com.tencent.mm.ac.d.h((kotlin.g.a.a)new g(this, paramT));
+    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new d(this));
   }
   
   public final void execute(Runnable paramRunnable)
   {
-    p.h(paramRunnable, "runnable");
-    aKa();
-    a locala = this.iaX;
+    p.k(paramRunnable, "runnable");
+    aSb();
+    a locala = this.kPD;
     if (locala != null) {
       locala.execute(paramRunnable);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "Lcom/tencent/mm/loader/loader/IWorkTask;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/loader/loader/IWorkTask;", "invoke"})
   static final class b
     extends q
     implements kotlin.g.a.a<x>
@@ -153,7 +147,7 @@ public final class d<T extends c>
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "Lcom/tencent/mm/loader/loader/IWorkTask;", "work", "kotlin.jvm.PlatformType", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "onTaskStatusCallback"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/loader/loader/IWorkTask;", "work", "kotlin.jvm.PlatformType", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "onTaskStatusCallback"})
   static final class c
     implements k.a
   {
@@ -161,11 +155,11 @@ public final class d<T extends c>
     
     public final void b(final c paramc, final j paramj)
     {
-      com.tencent.mm.ac.d.h((kotlin.g.a.a)new q(paramc) {});
+      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new q(paramc) {});
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "Lcom/tencent/mm/loader/loader/IWorkTask;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/loader/loader/IWorkTask;", "invoke"})
   static final class d
     extends q
     implements kotlin.g.a.a<x>
@@ -176,7 +170,7 @@ public final class d<T extends c>
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "Lcom/tencent/mm/loader/loader/IWorkTask;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/loader/loader/IWorkTask;", "invoke"})
   static final class e
     extends q
     implements kotlin.g.a.a<x>
@@ -187,7 +181,7 @@ public final class d<T extends c>
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "Lcom/tencent/mm/loader/loader/IWorkTask;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/loader/loader/IWorkTask;", "invoke"})
   static final class f
     extends q
     implements kotlin.g.a.a<x>
@@ -198,7 +192,7 @@ public final class d<T extends c>
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "Lcom/tencent/mm/loader/loader/IWorkTask;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/loader/loader/IWorkTask;", "invoke"})
   static final class g
     extends q
     implements kotlin.g.a.a<x>
@@ -209,7 +203,7 @@ public final class d<T extends c>
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "Lcom/tencent/mm/loader/loader/IWorkTask;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "Lcom/tencent/mm/loader/loader/IWorkTask;", "invoke"})
   static final class h
     extends q
     implements kotlin.g.a.a<x>
@@ -222,7 +216,7 @@ public final class d<T extends c>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.loader.g.d
  * JD-Core Version:    0.7.0.1
  */

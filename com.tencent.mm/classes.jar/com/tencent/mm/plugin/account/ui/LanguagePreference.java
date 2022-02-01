@@ -15,7 +15,7 @@ import com.tencent.mm.ui.widget.imageview.WeImageView;
 public class LanguagePreference
   extends Preference
 {
-  public a kln;
+  public a ndd;
   
   public LanguagePreference(Context paramContext)
   {
@@ -31,21 +31,21 @@ public class LanguagePreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(128055);
-    setLayoutResource(2131495538);
+    setLayoutResource(r.g.mm_preference);
     AppMethodBeat.o(128055);
   }
   
   public final void a(a parama)
   {
     AppMethodBeat.i(128056);
-    if ((parama == null) || (Util.isNullOrNil(parama.klq)))
+    if ((parama == null) || (Util.isNullOrNil(parama.ndg)))
     {
       Log.e("MicroMsg.LanguagePreference", "setInfo info error");
       AppMethodBeat.o(128056);
       return;
     }
-    this.kln = parama;
-    setKey(parama.klq);
+    this.ndd = parama;
+    setKey(parama.ndg);
     AppMethodBeat.o(128056);
   }
   
@@ -54,35 +54,35 @@ public class LanguagePreference
     int j = 1;
     AppMethodBeat.i(128058);
     super.onBindView(paramView);
-    TextView localTextView = (TextView)paramView.findViewById(2131303005);
-    paramView = (WeImageView)paramView.findViewById(2131308377);
+    TextView localTextView = (TextView)paramView.findViewById(r.f.languagename);
+    paramView = (WeImageView)paramView.findViewById(r.f.state_icon);
     if (localTextView != null)
     {
       i = 1;
       if (paramView == null) {
-        break label96;
+        break label98;
       }
-      label44:
+      label46:
       if ((j & i) != 0)
       {
-        localTextView.setText(this.kln.klo);
-        if (!this.kln.isSelected) {
-          break label101;
+        localTextView.setText(this.ndd.nde);
+        if (!this.ndd.isSelected) {
+          break label103;
         }
       }
     }
-    label96:
-    label101:
+    label98:
+    label103:
     for (int i = 0;; i = 8)
     {
       paramView.setVisibility(i);
-      alO(8);
+      auO(8);
       AppMethodBeat.o(128058);
       return;
       i = 0;
       break;
       j = 0;
-      break label44;
+      break label46;
     }
   }
   
@@ -91,9 +91,9 @@ public class LanguagePreference
     AppMethodBeat.i(128057);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(r.f.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2131495569, localViewGroup);
+    localLayoutInflater.inflate(r.g.mm_preference_content_language, localViewGroup);
     AppMethodBeat.o(128057);
     return paramViewGroup;
   }
@@ -101,22 +101,22 @@ public class LanguagePreference
   public static final class a
   {
     public boolean isSelected;
-    String klo;
-    private String klp;
-    public String klq;
+    String nde;
+    private String ndf;
+    public String ndg;
     
     public a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
     {
-      this.klo = paramString1;
-      this.klp = paramString2;
-      this.klq = paramString3;
+      this.nde = paramString1;
+      this.ndf = paramString2;
+      this.ndg = paramString3;
       this.isSelected = paramBoolean;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LanguagePreference
  * JD-Core Version:    0.7.0.1
  */

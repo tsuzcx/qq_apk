@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.wepkg.b;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
@@ -11,49 +11,49 @@ import com.tencent.mm.sdk.storage.MAutoStorage;
 public final class b
   extends MAutoStorage<a>
 {
-  private static b JLU;
+  private static b QLn;
   public static final String[] SQL_CREATE;
   private static final Object lock;
-  private ISQLiteDatabase kLX;
+  private ISQLiteDatabase nFQ;
   
   static
   {
     AppMethodBeat.i(110561);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.iBg, "WePkgDiffPackage") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.lqK, "WePkgDiffPackage") };
     lock = new Object();
     AppMethodBeat.o(110561);
   }
   
   private b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, a.iBg, "WePkgDiffPackage", a.INDEX_CREATE);
-    this.kLX = paramISQLiteDatabase;
+    super(paramISQLiteDatabase, a.lqK, "WePkgDiffPackage", a.INDEX_CREATE);
+    this.nFQ = paramISQLiteDatabase;
   }
   
-  private boolean bAh()
+  private boolean bLz()
   {
-    return this.kLX != null;
+    return this.nFQ != null;
   }
   
-  public static b gkD()
+  public static b heu()
   {
     AppMethodBeat.i(110558);
-    if (JLU == null) {}
+    if (QLn == null) {}
     synchronized (lock)
     {
-      if ((JLU == null) || (!JLU.bAh())) {
-        JLU = new b(g.aAh().hqK);
+      if ((QLn == null) || (!QLn.bLz())) {
+        QLn = new b(h.aHG().kcF);
       }
-      ??? = JLU;
+      ??? = QLn;
       AppMethodBeat.o(110558);
       return ???;
     }
   }
   
-  public final a bcj(String paramString)
+  public final a boj(String paramString)
   {
     AppMethodBeat.i(110559);
-    if ((!bAh()) || (Util.isNullOrNil(paramString)))
+    if ((!bLz()) || (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110559);
       return null;
@@ -77,10 +77,10 @@ public final class b
     return null;
   }
   
-  public final boolean gC(String paramString)
+  public final boolean ho(String paramString)
   {
     AppMethodBeat.i(110560);
-    if ((!bAh()) || (Util.isNullOrNil(paramString)))
+    if ((!bLz()) || (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110560);
       return false;
@@ -92,7 +92,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.b.b
  * JD-Core Version:    0.7.0.1
  */

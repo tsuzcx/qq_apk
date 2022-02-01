@@ -7,20 +7,21 @@ import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.game.report.f;
+import com.tencent.mm.game.report.g;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.game.e.c;
+import com.tencent.mm.plugin.game.d.c;
+import com.tencent.mm.plugin.game.g.e;
 import com.tencent.mm.plugin.game.model.d;
-import com.tencent.mm.plugin.game.protobuf.ao;
-import com.tencent.mm.plugin.game.protobuf.dc;
+import com.tencent.mm.plugin.game.protobuf.ap;
+import com.tencent.mm.plugin.game.protobuf.dd;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public class GameFeedMoreGameEntranceView
   extends RelativeLayout
   implements View.OnClickListener
 {
-  private TextView Ws;
-  private d xOS;
+  private d CTb;
+  private TextView rR;
   
   public GameFeedMoreGameEntranceView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,18 +32,18 @@ public class GameFeedMoreGameEntranceView
   {
     AppMethodBeat.i(42118);
     b localb = new b();
-    localb.bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameFeedMoreGameEntranceView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    if ((this.xOS == null) || (this.xOS.xEq == null))
+    localb.bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/ui/GameFeedMoreGameEntranceView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    if ((this.CTb == null) || (this.CTb.CIr == null))
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameFeedMoreGameEntranceView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(42118);
       return;
     }
-    if (!Util.isNullOrNil(this.xOS.xEq.xIy))
+    if (!Util.isNullOrNil(this.CTb.CIr.CMD))
     {
-      int i = c.aQ(getContext(), this.xOS.xEq.xIy);
-      f.a(getContext(), 10, 1024, this.xOS.position, i, this.xOS.xEq.jfi, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.d.a.as(this.xOS.xEq.xJt, "clickType", "card"));
+      int i = c.aY(getContext(), this.CTb.CIr.CMD);
+      g.a(getContext(), 10, 1024, this.CTb.position, i, this.CTb.CIr.lVG, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.c.a.am(this.CTb.CIr.CNA, "clickType", "card"));
     }
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameFeedMoreGameEntranceView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(42118);
@@ -52,7 +53,7 @@ public class GameFeedMoreGameEntranceView
   {
     AppMethodBeat.i(42116);
     super.onFinishInflate();
-    this.Ws = ((TextView)findViewById(2131304881));
+    this.rR = ((TextView)findViewById(g.e.CkN));
     setOnClickListener(this);
     AppMethodBeat.o(42116);
   }
@@ -60,26 +61,26 @@ public class GameFeedMoreGameEntranceView
   public void setData(d paramd)
   {
     AppMethodBeat.i(42117);
-    if ((paramd == null) || (paramd.xEq == null) || (paramd.xEq.xKx == null))
+    if ((paramd == null) || (paramd.CIr == null) || (paramd.CIr.COE == null))
     {
       setVisibility(8);
       AppMethodBeat.o(42117);
       return;
     }
-    this.xOS = paramd;
+    this.CTb = paramd;
     setVisibility(0);
-    this.Ws.setText(paramd.xEq.xKx.Desc);
-    if (!this.xOS.xEs)
+    this.rR.setText(paramd.CIr.COE.CMB);
+    if (!this.CTb.CIt)
     {
-      com.tencent.mm.plugin.game.d.a.b(getContext(), 10, 1024, this.xOS.position, this.xOS.xEq.jfi, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.d.a.Fh(this.xOS.xEq.xJt));
-      this.xOS.xEs = true;
+      com.tencent.mm.plugin.game.c.a.b(getContext(), 10, 1024, this.CTb.position, this.CTb.CIr.lVG, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.c.a.Md(this.CTb.CIr.CNA));
+      this.CTb.CIt = true;
     }
     AppMethodBeat.o(42117);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameFeedMoreGameEntranceView
  * JD-Core Version:    0.7.0.1
  */

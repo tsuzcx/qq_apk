@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.bvi;
+import com.tencent.mm.an.c.a;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.protocal.protobuf.cda;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
@@ -12,25 +12,25 @@ import com.tencent.mm.storage.ar.a;
 import java.io.IOException;
 
 public final class k
-  extends com.tencent.mm.wallet_core.c.a<bvi, d>
+  extends com.tencent.mm.wallet_core.c.a<cda, d>
 {
-  private static k yUJ;
+  private static k EyG;
   
-  public static k eeZ()
+  public static k eOu()
   {
     AppMethodBeat.i(65165);
-    if (yUJ == null) {
-      yUJ = new k();
+    if (EyG == null) {
+      EyG = new k();
     }
-    k localk = yUJ;
+    k localk = EyG;
     AppMethodBeat.o(65165);
     return localk;
   }
   
-  private static bvi efa()
+  public static cda eOv()
   {
     AppMethodBeat.i(65167);
-    Object localObject = (String)g.aAh().azQ().get(ar.a.Ofg, "");
+    Object localObject = (String)h.aHG().aHp().get(ar.a.Vts, "");
     if (Util.isNullOrNil((String)localObject))
     {
       AppMethodBeat.o(65167);
@@ -39,7 +39,7 @@ public final class k
     localObject = ((String)localObject).getBytes(org.apache.commons.a.a.ISO_8859_1);
     try
     {
-      localObject = (bvi)new bvi().parseFrom((byte[])localObject);
+      localObject = (cda)new cda().parseFrom((byte[])localObject);
       AppMethodBeat.o(65167);
       return localObject;
     }
@@ -51,15 +51,15 @@ public final class k
     return null;
   }
   
-  public final void b(c.a<bvi> parama)
+  public final void b(c.a<cda> parama)
   {
     AppMethodBeat.i(182454);
     Log.i("MicroMsg.GetShowSourceAsyncLoader", "errType: %s, errCode: %s", new Object[] { Integer.valueOf(parama.errCode), Integer.valueOf(parama.errType) });
-    if ((parama.errType == 0) && (parama.errCode == 0) && (((bvi)parama.iLC).dDN == 0)) {
+    if ((parama.errType == 0) && (parama.errCode == 0) && (((cda)parama.lBJ).fwx == 0)) {
       try
       {
-        parama = new String(((bvi)parama.iLC).toByteArray(), org.apache.commons.a.a.ISO_8859_1);
-        g.aAh().azQ().set(ar.a.Ofg, parama);
+        parama = new String(((cda)parama.lBJ).toByteArray(), org.apache.commons.a.a.ISO_8859_1);
+        h.aHG().aHp().set(ar.a.Vts, parama);
         AppMethodBeat.o(182454);
         return;
       }
@@ -73,7 +73,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.k
  * JD-Core Version:    0.7.0.1
  */

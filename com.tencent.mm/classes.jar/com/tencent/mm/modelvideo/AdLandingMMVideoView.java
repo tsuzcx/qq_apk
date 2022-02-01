@@ -11,8 +11,8 @@ import com.tencent.mm.sdk.platformtools.Util;
 public class AdLandingMMVideoView
   extends MMVideoView
 {
-  protected boolean gRx;
-  private i.a jpL;
+  protected boolean jBT;
+  private i.a mfg;
   
   public AdLandingMMVideoView(Context paramContext)
   {
@@ -29,43 +29,65 @@ public class AdLandingMMVideoView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void ax(String paramString, int paramInt)
+  public final boolean a(double paramDouble, boolean paramBoolean)
   {
-    boolean bool = true;
-    AppMethodBeat.i(240840);
+    AppMethodBeat.i(216361);
     try
     {
-      if (Util.isEqual(this.jpT, paramString))
+      if (this.jBT)
       {
-        int i = this.jpV;
+        Log.i(this.TAG, "seekTo adjust needPause[%b]", new Object[] { Boolean.valueOf(this.jBT) });
+        paramBoolean = false;
+      }
+      paramBoolean = super.a(paramDouble, paramBoolean);
+      AppMethodBeat.o(216361);
+      return paramBoolean;
+    }
+    catch (Throwable localThrowable)
+    {
+      Log.e(this.TAG, localThrowable.toString());
+      AppMethodBeat.o(216361);
+    }
+    return false;
+  }
+  
+  public final void aP(String paramString, int paramInt)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(216359);
+    try
+    {
+      if (Util.isEqual(this.mfu, paramString))
+      {
+        int i = this.mfw;
         if (i != 3) {}
       }
       else
       {
-        AppMethodBeat.o(240840);
+        AppMethodBeat.o(216359);
         return;
       }
-      Log.i(this.TAG, "%s download finish [%d] needPause[%b]", new Object[] { bgQ(), Integer.valueOf(paramInt), Boolean.valueOf(this.gRx) });
+      Log.i(this.TAG, "%s download finish [%d] needPause[%b]", new Object[] { bqf(), Integer.valueOf(paramInt), Boolean.valueOf(this.jBT) });
       if (paramInt == 0) {
-        this.jpV = 3;
+        this.mfw = 3;
       }
       String str;
-      if (this.jpL != null)
+      if (this.mfg != null)
       {
-        paramString = this.jpL;
-        str = this.jpU;
-        if (this.jpW <= 0) {
+        paramString = this.mfg;
+        str = this.mfv;
+        if (this.mfx <= 0) {
           break label139;
         }
       }
       for (;;)
       {
-        paramString.aO(str, bool);
-        if (!this.gRx) {
-          fO(true);
+        paramString.aR(str, bool);
+        if (!this.jBT) {
+          gA(true);
         }
-        this.jqf = false;
-        AppMethodBeat.o(240840);
+        this.mfG = false;
+        AppMethodBeat.o(216359);
         return;
         label139:
         bool = false;
@@ -75,73 +97,51 @@ public class AdLandingMMVideoView
     catch (Throwable paramString)
     {
       Log.e(this.TAG, paramString.toString());
-      AppMethodBeat.o(240840);
+      AppMethodBeat.o(216359);
     }
   }
   
-  public final String bgQ()
+  public final String bqf()
   {
-    AppMethodBeat.i(240842);
-    String str = this.jpT + " ";
-    AppMethodBeat.o(240842);
+    AppMethodBeat.i(216363);
+    String str = this.mfu + " ";
+    AppMethodBeat.o(216363);
     return str;
-  }
-  
-  public final boolean c(double paramDouble, boolean paramBoolean)
-  {
-    AppMethodBeat.i(240841);
-    try
-    {
-      if (this.gRx)
-      {
-        Log.i(this.TAG, "seekTo adjust needPause[%b]", new Object[] { Boolean.valueOf(this.gRx) });
-        paramBoolean = false;
-      }
-      paramBoolean = super.c(paramDouble, paramBoolean);
-      AppMethodBeat.o(240841);
-      return paramBoolean;
-    }
-    catch (Throwable localThrowable)
-    {
-      Log.e(this.TAG, localThrowable.toString());
-      AppMethodBeat.o(240841);
-    }
-    return false;
   }
   
   public final void onDataAvailable(String paramString, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(240839);
+    AppMethodBeat.i(216357);
     try
     {
-      this.jqf = false;
+      this.mfG = false;
       if ((paramLong1 <= -1L) || (paramLong2 <= -1L))
       {
-        Log.w(this.TAG, "%s deal data available error offset[%d], length[%d]", new Object[] { bgQ(), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-        AppMethodBeat.o(240839);
+        Log.w(this.TAG, "%s deal data available error offset[%d], length[%d]", new Object[] { bqf(), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+        AppMethodBeat.o(216357);
         return;
       }
-      boolean bool = Util.isEqual(this.jpT, paramString);
+      boolean bool = Util.isEqual(this.mfu, paramString);
       if (!bool)
       {
-        AppMethodBeat.o(240839);
+        AppMethodBeat.o(216357);
         return;
       }
       try
       {
-        this.jqc = this.jpX.dG((int)paramLong1, (int)paramLong2);
-        Log.i(this.TAG, "%s deal data available. offset[%d] length[%d] cachePlayTime[%d] needPause[%b]", new Object[] { bgQ(), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(this.jqc), Boolean.valueOf(this.gRx) });
-        if (!this.gRx) {
-          fO(true);
+        this.mfD = this.mfy.ee((int)paramLong1, (int)paramLong2);
+        Log.i(this.TAG, "%s deal data available. offset[%d] length[%d] cachePlayTime[%d] needPause[%b]", new Object[] { bqf(), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(this.mfD), Boolean.valueOf(this.jBT) });
+        if (!this.jBT) {
+          gA(true);
         }
-        AppMethodBeat.o(240839);
+        AppMethodBeat.o(216357);
         return;
       }
       catch (Exception paramString)
       {
         for (;;)
         {
-          Log.e(this.TAG, "%s deal data available file pos to video time error[%s] ", new Object[] { bgQ(), paramString.toString() });
+          Log.e(this.TAG, "%s deal data available file pos to video time error[%s] ", new Object[] { bqf(), paramString.toString() });
         }
       }
       return;
@@ -149,23 +149,23 @@ public class AdLandingMMVideoView
     catch (Throwable paramString)
     {
       Log.e(this.TAG, paramString.toString());
-      AppMethodBeat.o(240839);
+      AppMethodBeat.o(216357);
     }
   }
   
   public void setIMMDownloadFinish(i.a parama)
   {
-    this.jpL = parama;
+    this.mfg = parama;
   }
   
   public void setNeedPause(boolean paramBoolean)
   {
-    this.gRx = paramBoolean;
+    this.jBT = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelvideo.AdLandingMMVideoView
  * JD-Core Version:    0.7.0.1
  */

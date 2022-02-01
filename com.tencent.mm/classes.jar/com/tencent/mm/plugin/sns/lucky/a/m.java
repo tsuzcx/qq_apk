@@ -7,10 +7,10 @@ import com.tencent.mm.plugin.sns.model.an;
 import com.tencent.mm.plugin.sns.storage.SnsInfo;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.protocal.protobuf.SnsObject;
-import com.tencent.mm.protocal.protobuf.cbd;
-import com.tencent.mm.protocal.protobuf.cnc;
-import com.tencent.mm.protocal.protobuf.dzx;
-import com.tencent.mm.protocal.protobuf.ear;
+import com.tencent.mm.protocal.protobuf.cje;
+import com.tencent.mm.protocal.protobuf.cvu;
+import com.tencent.mm.protocal.protobuf.ejx;
+import com.tencent.mm.protocal.protobuf.ekr;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
@@ -20,12 +20,12 @@ import java.util.List;
 
 public final class m
 {
-  private static final ThreadLocal<HashMap<String, Long>> DGc;
+  private static final ThreadLocal<HashMap<String, Long>> JSY;
   
   static
   {
     AppMethodBeat.i(95195);
-    DGc = new ThreadLocal();
+    JSY = new ThreadLocal();
     AppMethodBeat.o(95195);
   }
   
@@ -37,34 +37,34 @@ public final class m
       AppMethodBeat.o(95191);
       return true;
     }
-    cnc localcnc = paramSnsInfo.getPostInfo();
+    cvu localcvu = paramSnsInfo.getPostInfo();
     if (paramSnsInfo.getTypeFlag() != 21)
     {
       AppMethodBeat.o(95191);
       return true;
     }
-    if (localcnc.egZ == 1)
+    if (localcvu.gbp == 1)
     {
       AppMethodBeat.o(95191);
       return true;
     }
-    if (com.tencent.mm.model.z.aTY().equals(paramSnsInfo.getUserName()))
+    if (com.tencent.mm.model.z.bcZ().equals(paramSnsInfo.getUserName()))
     {
       AppMethodBeat.o(95191);
       return true;
     }
     if (paramSnsObject.SnsRedEnvelops != null)
     {
-      paramSnsObject = paramSnsObject.SnsRedEnvelops.Naf;
+      paramSnsObject = paramSnsObject.SnsRedEnvelops.Umz;
       if ((paramSnsObject == null) || (paramSnsObject.size() == 0))
       {
         AppMethodBeat.o(95191);
         return false;
       }
-      paramSnsInfo = com.tencent.mm.model.z.aTY();
+      paramSnsInfo = com.tencent.mm.model.z.bcZ();
       paramSnsObject = paramSnsObject.iterator();
       while (paramSnsObject.hasNext()) {
-        if (paramSnsInfo.equals(((dzx)paramSnsObject.next()).Username))
+        if (paramSnsInfo.equals(((ejx)paramSnsObject.next()).Username))
         {
           AppMethodBeat.o(95191);
           return true;
@@ -75,11 +75,11 @@ public final class m
     return false;
   }
   
-  public static boolean aOH(String paramString)
+  public static boolean aZC(String paramString)
   {
     AppMethodBeat.i(95189);
-    paramString = aj.faO().aQm(paramString);
-    boolean bool = a(paramString, an.C(paramString));
+    paramString = aj.fOI().bbl(paramString);
+    boolean bool = a(paramString, an.D(paramString));
     AppMethodBeat.o(95189);
     return bool;
   }
@@ -95,7 +95,7 @@ public final class m
     }
     Object localObject1 = paramSnsObject;
     if (paramSnsObject == null) {
-      localObject1 = an.C(paramSnsInfo);
+      localObject1 = an.D(paramSnsInfo);
     }
     if (localObject1 == null)
     {
@@ -108,7 +108,7 @@ public final class m
       AppMethodBeat.o(95194);
       return 0L;
     }
-    Object localObject2 = paramSnsObject.Naf;
+    Object localObject2 = paramSnsObject.Umz;
     if (localObject2 == null)
     {
       AppMethodBeat.o(95194);
@@ -118,7 +118,7 @@ public final class m
     if (Util.isNullOrNil(paramSnsObject)) {}
     for (paramSnsInfo = g.getMessageDigest(paramSnsInfo.field_content) + g.getMessageDigest(paramSnsInfo.field_attrBuf);; paramSnsInfo = paramSnsObject)
     {
-      localObject1 = (HashMap)DGc.get();
+      localObject1 = (HashMap)JSY.get();
       if ((localObject1 != null) && (((HashMap)localObject1).containsKey(paramSnsInfo)))
       {
         l = ((Long)((HashMap)localObject1).get(paramSnsInfo)).longValue();
@@ -130,12 +130,12 @@ public final class m
       {
         if (paramSnsObject.hasNext())
         {
-          dzx localdzx = (dzx)paramSnsObject.next();
-          localObject2 = new cbd();
+          ejx localejx = (ejx)paramSnsObject.next();
+          localObject2 = new cje();
           try
           {
-            ((cbd)localObject2).parseFrom(com.tencent.mm.platformtools.z.a(localdzx.MYW));
-            l += ((cbd)localObject2).eht;
+            ((cje)localObject2).parseFrom(com.tencent.mm.platformtools.z.a(localejx.Ulq));
+            l += ((cje)localObject2).gbJ;
           }
           catch (Exception localException)
           {
@@ -151,21 +151,21 @@ public final class m
         paramSnsObject = new HashMap();
       }
       paramSnsObject.put(paramSnsInfo, Long.valueOf(l));
-      DGc.set(paramSnsObject);
+      JSY.set(paramSnsObject);
       AppMethodBeat.o(95194);
       return l;
     }
   }
   
-  public static boolean w(SnsInfo paramSnsInfo)
+  public static boolean x(SnsInfo paramSnsInfo)
   {
     AppMethodBeat.i(95190);
-    boolean bool = a(paramSnsInfo, an.C(paramSnsInfo));
+    boolean bool = a(paramSnsInfo, an.D(paramSnsInfo));
     AppMethodBeat.o(95190);
     return bool;
   }
   
-  public static int x(SnsInfo paramSnsInfo)
+  public static int y(SnsInfo paramSnsInfo)
   {
     AppMethodBeat.i(95192);
     if (paramSnsInfo == null)
@@ -173,24 +173,24 @@ public final class m
       AppMethodBeat.o(95192);
       return 0;
     }
-    paramSnsInfo = an.C(paramSnsInfo);
+    paramSnsInfo = an.D(paramSnsInfo);
     if (paramSnsInfo == null)
     {
       AppMethodBeat.o(95192);
       return 0;
     }
     paramSnsInfo = paramSnsInfo.SnsRedEnvelops;
-    if ((paramSnsInfo == null) || (paramSnsInfo.Naf.size() == 0))
+    if ((paramSnsInfo == null) || (paramSnsInfo.Umz.size() == 0))
     {
       AppMethodBeat.o(95192);
       return 0;
     }
-    int i = paramSnsInfo.Naf.size();
+    int i = paramSnsInfo.Umz.size();
     AppMethodBeat.o(95192);
     return i;
   }
   
-  public static long y(SnsInfo paramSnsInfo)
+  public static long z(SnsInfo paramSnsInfo)
   {
     AppMethodBeat.i(95193);
     long l = b(paramSnsInfo, null);
@@ -200,7 +200,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.lucky.a.m
  * JD-Core Version:    0.7.0.1
  */

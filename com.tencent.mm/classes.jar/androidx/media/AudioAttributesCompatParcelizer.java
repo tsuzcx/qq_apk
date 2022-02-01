@@ -1,26 +1,23 @@
 package androidx.media;
 
-import android.support.v4.media.AudioAttributesCompat;
-import android.support.v4.media.AudioAttributesImpl;
-import androidx.versionedparcelable.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class AudioAttributesCompatParcelizer
 {
-  public static AudioAttributesCompat read(a parama)
+  public static AudioAttributesCompat read(androidx.versionedparcelable.a parama)
   {
-    AppMethodBeat.i(107784);
+    AppMethodBeat.i(242707);
     AudioAttributesCompat localAudioAttributesCompat = new AudioAttributesCompat();
-    localAudioAttributesCompat.mImpl = ((AudioAttributesImpl)parama.d(localAudioAttributesCompat.mImpl));
-    AppMethodBeat.o(107784);
+    localAudioAttributesCompat.abI = ((a)parama.d(localAudioAttributesCompat.abI));
+    AppMethodBeat.o(242707);
     return localAudioAttributesCompat;
   }
   
-  public static void write(AudioAttributesCompat paramAudioAttributesCompat, a parama)
+  public static void write(AudioAttributesCompat paramAudioAttributesCompat, androidx.versionedparcelable.a parama)
   {
-    AppMethodBeat.i(107785);
-    parama.a(paramAudioAttributesCompat.mImpl);
-    AppMethodBeat.o(107785);
+    AppMethodBeat.i(242708);
+    parama.a(paramAudioAttributesCompat.abI);
+    AppMethodBeat.o(242708);
   }
 }
 

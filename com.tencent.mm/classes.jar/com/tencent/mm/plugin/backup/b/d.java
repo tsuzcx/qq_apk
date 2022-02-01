@@ -10,80 +10,80 @@ public abstract class d
   extends a
 {
   private static String TAG = "MicroMsg.BackupModel";
-  private static boolean hpG = false;
-  private static int oIY = 0;
-  private static byte[] oIZ = "key".getBytes();
-  private static SharedPreferences oJb;
-  public String oIU = "id";
-  public String oIV = "hello";
-  public String oIW = "ok";
-  public e oIX;
-  public byte[] oJa;
+  private static boolean kbA = false;
+  private static int rKO = 0;
+  private static byte[] rKP = "key".getBytes();
+  private static SharedPreferences rKR;
+  public String rKK = "id";
+  public String rKL = "hello";
+  public String rKM = "ok";
+  public e rKN;
+  public byte[] rKQ;
   
-  public static void Bb(int paramInt)
+  public static void EC(int paramInt)
   {
-    oIY = paramInt;
+    rKO = paramInt;
   }
   
-  public static void aS(byte[] paramArrayOfByte)
+  public static void bf(byte[] paramArrayOfByte)
   {
-    oIZ = paramArrayOfByte;
+    rKP = paramArrayOfByte;
   }
   
-  public static int ceP()
+  public static int csc()
   {
-    return oIY;
+    return rKO;
   }
   
-  public static byte[] ceQ()
+  public static byte[] csd()
   {
-    return oIZ;
+    return rKP;
   }
   
-  public static SharedPreferences ceR()
+  public static SharedPreferences cse()
   {
-    if (oJb == null) {
-      oJb = MMApplicationContext.getContext().getSharedPreferences("BACKUP_CONFIG", g.aps());
+    if (rKR == null) {
+      rKR = MMApplicationContext.getContext().getSharedPreferences("BACKUP_CONFIG", g.avK());
     }
-    return oJb;
+    return rKR;
   }
   
-  public static void ceS()
+  public static void csf()
   {
     Log.i(TAG, "holdReset");
-    hpG = true;
+    kbA = true;
   }
   
-  public static boolean ceT()
+  public static boolean csg()
   {
-    return hpG;
+    return kbA;
   }
   
-  public static void ceU()
+  public static void csh()
   {
-    oIZ = "key".getBytes();
-    oIY = 0;
-    oJb = null;
-    hpG = false;
+    rKP = "key".getBytes();
+    rKO = 0;
+    rKR = null;
+    kbA = false;
   }
   
-  public final e ceM()
+  public final e crZ()
   {
-    if (this.oIX == null) {
-      this.oIX = new e();
+    if (this.rKN == null) {
+      this.rKN = new e();
     }
-    return this.oIX;
+    return this.rKN;
   }
   
-  public abstract void ceN();
+  public abstract void csa();
   
-  public abstract void ceO();
+  public abstract void csb();
   
-  public abstract void o(Object... paramVarArgs);
+  public abstract void n(Object... paramVarArgs);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.b.d
  * JD-Core Version:    0.7.0.1
  */

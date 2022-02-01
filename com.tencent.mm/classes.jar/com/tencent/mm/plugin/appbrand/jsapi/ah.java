@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/IReturnCopyUrlWatcher;", "", "onReturnUrl", "", "url", "", "luggage-wechat-full-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/IReturnCopyUrlWatcher;", "", "onReturnUrl", "", "url", "", "luggage-wechat-full-sdk_release"})
 public abstract interface ah
 {
-  public abstract void Zi(String paramString);
+  public abstract void agV(String paramString);
 }
 
 

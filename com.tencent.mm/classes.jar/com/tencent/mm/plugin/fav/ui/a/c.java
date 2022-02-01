@@ -5,12 +5,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.fav.a.af;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.fav.a.ag;
 import com.tencent.mm.plugin.fav.a.l;
 import com.tencent.mm.plugin.fav.a.l.a;
+import com.tencent.mm.plugin.fav.ui.s.b;
+import com.tencent.mm.plugin.fav.ui.s.d;
+import com.tencent.mm.plugin.fav.ui.s.e;
+import com.tencent.mm.plugin.fav.ui.s.f;
 import com.tencent.mm.plugin.fav.ui.widget.FavTagPanel;
-import com.tencent.mm.protocal.protobuf.anl;
+import com.tencent.mm.protocal.protobuf.aom;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.MMTagPanel.a;
 import java.util.HashSet;
@@ -24,76 +28,76 @@ public abstract class c
   implements l.a, MMTagPanel.a
 {
   private Context context;
-  private int thx = 2131100904;
-  private int thy = 2131232386;
-  private Set<String> thz = new HashSet();
+  private int wNO = s.b.normal_text_color;
+  private int wNP = s.d.fav_tag_white_tab_selector;
+  private Set<String> wNQ = new HashSet();
   
   public c(Context paramContext)
   {
     this.context = paramContext;
   }
   
-  public final void E(boolean paramBoolean, int paramInt) {}
+  public final void I(boolean paramBoolean, int paramInt) {}
   
-  public final void anb(String paramString)
+  protected abstract void aAp(String paramString);
+  
+  protected abstract void aAq(String paramString);
+  
+  public final void aAv(String paramString)
   {
-    ast(paramString);
-    asp(paramString);
-  }
-  
-  public final void anc(String paramString)
-  {
-    ass(paramString);
-    aso(paramString);
-  }
-  
-  public final void and(String paramString) {}
-  
-  public final void ane(String paramString) {}
-  
-  public final void anf(String paramString) {}
-  
-  protected abstract void aso(String paramString);
-  
-  protected abstract void asp(String paramString);
-  
-  public final void ass(String paramString)
-  {
-    this.thz.add(paramString);
+    this.wNQ.add(paramString);
     notifyDataSetChanged();
   }
   
-  public final void ast(String paramString)
+  public final void aAw(String paramString)
   {
-    this.thz.remove(paramString);
+    this.wNQ.remove(paramString);
     notifyDataSetChanged();
   }
   
-  public final void cIk() {}
+  public final void auV(String paramString)
+  {
+    aAw(paramString);
+    aAq(paramString);
+  }
   
-  public final void cUG()
+  public final void auW(String paramString)
+  {
+    aAv(paramString);
+    aAp(paramString);
+  }
+  
+  public final void auX(String paramString) {}
+  
+  public final void auY(String paramString) {}
+  
+  public final void auZ(String paramString) {}
+  
+  public final void cWR() {}
+  
+  public final void dQ(List<String> paramList)
+  {
+    this.wNQ.clear();
+    if (paramList != null) {
+      this.wNQ.addAll(paramList);
+    }
+  }
+  
+  public final void djM()
   {
     Log.d("MicroMsg.FavoriteTagPanelAdapter", "on addtag callback");
     notifyDataSetChanged();
   }
   
-  public final void cUH()
+  public final void djN()
   {
     Log.d("MicroMsg.FavoriteTagPanelAdapter", "on removetag callback");
     notifyDataSetChanged();
   }
   
-  public final void dK(List<String> paramList)
-  {
-    this.thz.clear();
-    if (paramList != null) {
-      this.thz.addAll(paramList);
-    }
-  }
-  
   public int getCount()
   {
-    ((af)g.ah(af.class)).getFavTagSetMgr();
+    ((ag)h.ag(ag.class)).getFavTagSetMgr();
     return 1;
   }
   
@@ -107,25 +111,25 @@ public abstract class c
     Set localSet;
     if (paramView == null)
     {
-      paramView = View.inflate(this.context, 2131494151, null);
+      paramView = View.inflate(this.context, s.f.fav_tag_panel_item, null);
       paramViewGroup = new a();
-      paramViewGroup.pnP = ((TextView)paramView.findViewById(2131300491));
-      paramViewGroup.thA = ((FavTagPanel)paramView.findViewById(2131300523));
-      paramViewGroup.thA.setCallBack(this);
-      paramViewGroup.thA.setTagNormalBG(this.thy);
-      paramViewGroup.thA.setTagNormalTextColorRes(this.thx);
+      paramViewGroup.swP = ((TextView)paramView.findViewById(s.e.fav_panel_catalog));
+      paramViewGroup.wNR = ((FavTagPanel)paramView.findViewById(s.e.fav_tag_panel));
+      paramViewGroup.wNR.setCallBack(this);
+      paramViewGroup.wNR.setTagNormalBG(this.wNP);
+      paramViewGroup.wNR.setTagNormalTextColorRes(this.wNO);
       paramView.setTag(paramViewGroup);
-      paramViewGroup = paramViewGroup.thA;
-      localSet = this.thz;
-      localObject = ((af)g.ah(af.class)).getFavTagSetMgr().HW(paramInt);
+      paramViewGroup = paramViewGroup.wNR;
+      localSet = this.wNQ;
+      localObject = ((ag)h.ag(ag.class)).getFavTagSetMgr().LG(paramInt);
       if ((localObject != null) && (!((List)localObject).isEmpty())) {
-        break label175;
+        break label178;
       }
       if (localObject != null) {
-        break label169;
+        break label172;
       }
     }
-    label169:
+    label172:
     for (boolean bool = true;; bool = false)
     {
       Log.e("MicroMsg.FavTagPanel", "setTagListByTagInfo,null == tags ?%B,", new Object[] { Boolean.valueOf(bool) });
@@ -133,12 +137,12 @@ public abstract class c
       paramViewGroup = (a)paramView.getTag();
       break;
     }
-    label175:
+    label178:
     Log.i("MicroMsg.FavTagPanel", "setTagListByTagInfo,tags.size = %d", new Object[] { Integer.valueOf(((List)localObject).size()) });
     LinkedList localLinkedList = new LinkedList();
     Object localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
-      localLinkedList.add(((anl)((Iterator)localObject).next()).FeZ);
+      localLinkedList.add(((aom)((Iterator)localObject).next()).LtE);
     }
     paramViewGroup.a(localSet, localLinkedList);
     return paramView;
@@ -146,13 +150,13 @@ public abstract class c
   
   public static final class a
   {
-    TextView pnP;
-    FavTagPanel thA;
+    TextView swP;
+    FavTagPanel wNR;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.a.c
  * JD-Core Version:    0.7.0.1
  */

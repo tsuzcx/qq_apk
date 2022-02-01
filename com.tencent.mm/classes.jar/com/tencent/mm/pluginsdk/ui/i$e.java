@@ -7,12 +7,12 @@ public enum i$e
   static
   {
     AppMethodBeat.i(134008);
-    KbZ = new e("DEFAULT", 0);
-    Kca = new e("FILL", 1);
-    Kcb = new e("CONTAIN", 2);
-    Kcc = new e("COVER", 3);
-    Kcd = new e("CROP", 4);
-    Kce = new e[] { KbZ, Kca, Kcb, Kcc, Kcd };
+    RcE = new e("DEFAULT", 0);
+    RcF = new e("FILL", 1);
+    RcG = new e("CONTAIN", 2);
+    RcH = new e("COVER", 3);
+    RcI = new e("CROP", 4);
+    RcJ = new e[] { RcE, RcF, RcG, RcH, RcI };
     AppMethodBeat.o(134008);
   }
   
@@ -20,7 +20,7 @@ public enum i$e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.i.e
  * JD-Core Version:    0.7.0.1
  */

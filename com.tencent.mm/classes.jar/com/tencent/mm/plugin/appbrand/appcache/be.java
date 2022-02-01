@@ -1,226 +1,453 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import android.content.Context;
-import android.widget.Toast;
+import android.text.TextUtils;
+import com.tencent.luggage.k.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.c;
-import com.tencent.mm.model.cj.a;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.appbrand.app.n;
-import com.tencent.mm.plugin.appbrand.appusage.x;
-import com.tencent.mm.plugin.appbrand.config.aa;
-import com.tencent.mm.plugin.appbrand.config.q;
-import com.tencent.mm.plugin.appbrand.config.q.c;
-import com.tencent.mm.plugin.appbrand.debugger.DebuggerShell;
-import com.tencent.mm.plugin.appbrand.debugger.d;
-import com.tencent.mm.plugin.appbrand.task.p;
-import com.tencent.mm.protocal.protobuf.de;
-import com.tencent.mm.protocal.protobuf.eqm;
-import com.tencent.mm.protocal.protobuf.fch;
+import com.tencent.mm.plugin.appbrand.ac.d;
+import com.tencent.mm.plugin.appbrand.ac.i;
+import com.tencent.mm.plugin.appbrand.appstorage.FileStructStat;
+import com.tencent.mm.plugin.appbrand.appstorage.IWxaFileSystemWithModularizing;
+import com.tencent.mm.plugin.appbrand.appstorage.j;
+import com.tencent.mm.plugin.appbrand.appstorage.k;
+import com.tencent.mm.plugin.appbrand.appstorage.m;
+import com.tencent.mm.plugin.appbrand.appstorage.o;
+import com.tencent.mm.plugin.appbrand.appstorage.z;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.WeChatHosts;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
+import junit.framework.Assert;
 
 public final class be
-  implements cj.a
+  extends j
+  implements IWxaFileSystemWithModularizing
 {
-  public static final Map<String, c> kNv;
+  private final r nGX;
+  private Map<String, Long> nGY;
   
-  static
+  public be(q paramq)
   {
-    AppMethodBeat.i(44366);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("AppBrandNotify", new b((byte)0));
-    localHashMap.put("AppPublicLibraryNotify", new d((byte)0));
-    localHashMap.put("mmbizwxaconfig", new a((byte)0));
-    localHashMap.put("ForceOpenAppNotify", new com.tencent.mm.plugin.appbrand.debugger.e());
-    localHashMap.put("AppBrandForceKill", new d());
-    if (DebuggerShell.bAx()) {
-      localHashMap.put("AppBrandTestUpdateWxaUsageListNotify", new com.tencent.mm.plugin.appbrand.debugger.i());
-    }
-    kNv = Collections.unmodifiableMap(localHashMap);
-    AppMethodBeat.o(44366);
+    AppMethodBeat.i(178529);
+    this.nGY = new HashMap();
+    Assert.assertTrue(paramq instanceof r);
+    this.nGX = ((r)paramq);
+    AppMethodBeat.o(178529);
   }
   
-  public final void a(final h.a parama)
+  private m acU(String paramString)
   {
-    AppMethodBeat.i(44364);
-    parama = z.a(parama.heO.KHn);
-    if (Util.isNullOrNil(parama))
+    AppMethodBeat.i(178533);
+    if (!this.nGX.acG(paramString))
     {
-      Log.w("MicroMsg.AppBrand.WxaPkgPushingXmlHandler", "msg content is null");
-      AppMethodBeat.o(44364);
-      return;
+      paramString = m.nMX;
+      AppMethodBeat.o(178533);
+      return paramString;
     }
-    com.tencent.f.h.RTc.b(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(44357);
-        be.fV(parama);
-        AppMethodBeat.o(44357);
-      }
-    }, "MicroMsg.AppBrand.WxaPkgPushingXmlHandler");
-    AppMethodBeat.o(44364);
+    paramString = m.nMR;
+    AppMethodBeat.o(178533);
+    return paramString;
   }
   
-  public final void a(h.c paramc) {}
-  
-  static final class a
-    implements be.c
+  public final m a(String paramString, long paramLong1, long paramLong2, i<ByteBuffer> parami)
   {
-    public final void l(final String paramString, Map<String, String> paramMap)
+    AppMethodBeat.i(178536);
+    InputStream localInputStream = this.nGX.acE(paramString);
+    if (localInputStream == null)
     {
-      AppMethodBeat.i(226366);
-      if (paramMap.get(".sysmsg.mmbizwxaconfig") == null)
+      paramString = m.nMX;
+      AppMethodBeat.o(178536);
+      return paramString;
+    }
+    if (paramLong2 == 9223372036854775807L) {}
+    label384:
+    label427:
+    label446:
+    for (;;)
+    {
+      try
       {
-        AppMethodBeat.o(226366);
-        return;
-      }
-      int i = Util.getInt((String)paramMap.get(".sysmsg.mmbizwxaconfig.command"), -1);
-      final int j = Util.getInt((String)paramMap.get(".sysmsg.mmbizwxaconfig.type"), 0);
-      paramString = (String)paramMap.get(".sysmsg.mmbizwxaconfig.appid");
-      int k = Util.getInt((String)paramMap.get(".sysmsg.mmbizwxaconfig.configversion"), 0);
-      Log.i("MicroMsg.AppBrand.WxaPkgPushingXmlHandler", "handle common config, command = %d, type = %d, appid = %s, configversion = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), paramString, Integer.valueOf(k) });
-      paramMap = new LinkedList();
-      eqm localeqm = new eqm();
-      localeqm.version = k;
-      localeqm.type = j;
-      paramMap.add(localeqm);
-      q.a(paramString, paramMap, false);
-      q.a(paramString, j, i, new q.c()
-      {
-        public final void Vo(String paramAnonymousString)
-        {
-          AppMethodBeat.i(44358);
-          Log.i("MicroMsg.AppBrand.WxaPkgPushingXmlHandler", "CommonConfigManager.getConfig config:%s", new Object[] { paramAnonymousString });
-          com.tencent.mm.plugin.appbrand.ipc.e.v(paramString, j, paramAnonymousString);
-          AppMethodBeat.o(44358);
+        paramLong2 = localInputStream.available() - paramLong1;
+        localObject1 = h(paramLong1, paramLong2, localInputStream.available());
+        localObject2 = m.nMR;
+        if (localObject1 != localObject2) {
+          return localObject1;
         }
-      }, true);
-      AppMethodBeat.o(226366);
-    }
-  }
-  
-  static final class b
-    implements be.c
-  {
-    private static final String kNz;
-    
-    static
-    {
-      AppMethodBeat.i(226368);
-      kNz = "<sysmsg type=\"AppBrandNotify\">\n\t<AppBrandNotify> \t\n\t\t<DebugInfoList> \t\t\n\t\t\t<DebugInfo> \t\t\t\n\t\t\t\t<AppID>wx221a6c79f8176f0a</AppID>\n\t\t\t\t<UserName>gh_495fc098f3aa</UserName>\n\t\t\t\t<Type>1</Type>\n\t\t\t\t<URL>https://" + WeChatHosts.domainString(2131761728) + "/weapp-test/debug/E_MGI-1c7F4DvKwqnDNT7VCFLgeSJ6w6GfrdgXutHfo</URL>\n\t\t\t\t<StartTime>1470322794</StartTime>\n\t\t\t\t<EndTime>1470329994</EndTime>\n\t\t\t</DebugInfo>\n\t\t</DebugInfoList>\n\t</AppBrandNotify>\n</sysmsg>";
-      AppMethodBeat.o(226368);
-    }
-    
-    private boolean m(String paramString, Map<String, String> paramMap)
-    {
-      AppMethodBeat.i(44362);
-      Log.d("MicroMsg.AppBrand.WxaPkgPushingXmlHandler", "optDebugInfo, prefix = %s", new Object[] { paramString });
-      if (paramMap.get(paramString) == null)
-      {
-        AppMethodBeat.o(44362);
-        return false;
-      }
-      final String str1 = (String)paramMap.get(paramString + ".AppID");
-      String str2 = (String)paramMap.get(paramString + ".UserName");
-      final int i = Util.getInt((String)paramMap.get(paramString + ".Type"), 1);
-      String str3 = (String)paramMap.get(paramString + ".URL");
-      long l1 = Util.getLong((String)paramMap.get(paramString + ".StartTime"), Util.nowSecond());
-      long l2 = Util.getLong((String)paramMap.get(paramString + ".EndTime"), 7200L + l1);
-      paramString = (String)paramMap.get(paramString + ".MD5");
-      boolean bool = n.buL().a(str1, i, str3, paramString, l1, l2);
-      Log.i("MicroMsg.AppBrand.WxaPkgPushingXmlHandler", "handle debug notify, appId = %s, username = %s, debugType = %d, url = %s, start = %d, end = %d, md5 = %s, updated = %b", new Object[] { str1, str2, Integer.valueOf(i), str3, Long.valueOf(l1), Long.valueOf(l2), paramString, Boolean.valueOf(bool) });
-      if (bool)
-      {
-        if (999 == i) {
-          break label398;
+        if ((paramLong1 != 0L) || (paramLong2 != localInputStream.available())) {
+          continue;
         }
-        aa.XD(str2);
-        MMHandlerThread.postToMainThread(new Runnable()
+        i = 1;
+        if ((i == 0) || (!(localInputStream instanceof a))) {
+          continue;
+        }
+        localObject1 = ByteBuffer.allocateDirect(localInputStream.available());
+        ((ByteBuffer)localObject1).put(((a)localInputStream).cDP);
+        ((ByteBuffer)localObject1).rewind();
+        parami.value = localObject1;
+        if (paramString.startsWith("/")) {
+          break label446;
+        }
+        paramString = "/".concat(String.valueOf(paramString));
+        if (!paramString.contains("\\"))
         {
-          public final void run()
-          {
-            AppMethodBeat.i(44360);
-            com.tencent.mm.plugin.appbrand.task.h.bWb().cl(str1, i);
-            Toast.makeText(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(2131755618, new Object[] { Util.nullAs(this.kNB, str1) }), 1).show();
-            AppMethodBeat.o(44360);
+          parami = paramString;
+          if (!paramString.trim().isEmpty()) {
+            continue;
           }
-        });
+        }
+        Log.e("Luggage.WXA.WxaPkgFileSystemWithModularizingNewImpl", "updateDirAccessTimeRecord: path = [%s] is illegal", new Object[] { paramString });
+      }
+      catch (Exception paramString)
+      {
+        Object localObject1;
+        Object localObject2;
+        int i;
+        Log.printErrStackTrace("Luggage.WXA.WxaPkgFileSystemWithModularizingNewImpl", paramString, "readFile", new Object[0]);
+        Util.qualityClose(localInputStream);
+        paramString = m.nMS;
+        AppMethodBeat.o(178536);
+        return paramString;
+        if (parami.equals("")) {
+          continue;
+        }
+        if (parami.endsWith("/")) {
+          break label427;
+        }
+        parami = parami.substring(0, parami.lastIndexOf("/"));
+        if (!parami.equals("")) {
+          break label384;
+        }
+        this.nGY.put("/", Long.valueOf(System.currentTimeMillis() / 1000L));
+        continue;
+      }
+      finally
+      {
+        Util.qualityClose(localInputStream);
+        AppMethodBeat.o(178536);
+      }
+      paramString = m.nMR;
+      Util.qualityClose(localInputStream);
+      AppMethodBeat.o(178536);
+      return paramString;
+      i = 0;
+      continue;
+      localObject2 = d.a(localInputStream, paramLong1, paramLong2);
+      localObject1 = ByteBuffer.allocateDirect(localObject2.length);
+      ((ByteBuffer)localObject1).put(ByteBuffer.wrap((byte[])localObject2));
+      continue;
+      this.nGY.put(parami + "/", Long.valueOf(System.currentTimeMillis() / 1000L));
+      continue;
+      Log.e("Luggage.WXA.WxaPkgFileSystemWithModularizingNewImpl", "updateDirAccessTimeRecord: path = [%s] is illegal", new Object[] { parami });
+      continue;
+    }
+  }
+  
+  public final m a(String paramString, i<List<k>> parami)
+  {
+    AppMethodBeat.i(178534);
+    if (acU(paramString) == m.nMR)
+    {
+      paramString = m.nMZ;
+      AppMethodBeat.o(178534);
+      return paramString;
+    }
+    String str1 = o.adS(paramString);
+    paramString = this.nGX.bGH();
+    if (paramString == null)
+    {
+      paramString = m.nMX;
+      AppMethodBeat.o(178534);
+      return paramString;
+    }
+    String str2 = Pattern.quote(str1);
+    Iterator localIterator = paramString.iterator();
+    while (localIterator.hasNext())
+    {
+      paramString = (String)localIterator.next();
+      if (Util.nullAsNil(paramString).startsWith(str1))
+      {
+        paramString = paramString.replaceFirst(str2, "");
+        if (paramString.split("/").length <= 1)
+        {
+          k localk = new k();
+          localk.fileName = paramString;
+          if (parami.value == null) {}
+          for (paramString = new LinkedList();; paramString = (List)parami.value)
+          {
+            parami.value = paramString;
+            ((List)parami.value).add(localk);
+            break;
+          }
+        }
+      }
+    }
+    if (parami.value == null)
+    {
+      paramString = m.nMX;
+      AppMethodBeat.o(178534);
+      return paramString;
+    }
+    paramString = m.nMR;
+    AppMethodBeat.o(178534);
+    return paramString;
+  }
+  
+  public final m a(String paramString1, i<Map<String, ByteBuffer>> parami, String paramString2, long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(243403);
+    paramString1 = o.a(ah(paramString1, false).bOF(), parami, paramString2, paramLong1, paramLong2);
+    AppMethodBeat.o(243403);
+    return paramString1;
+  }
+  
+  public final m a(String paramString, FileStructStat paramFileStructStat)
+  {
+    AppMethodBeat.i(178538);
+    Object localObject = this.nGX.acF(paramString);
+    if (localObject == null)
+    {
+      if (paramString.endsWith("/")) {
+        if (!paramString.startsWith("/")) {
+          break label143;
+        }
       }
       for (;;)
       {
-        n.buJ().bo(str2, i);
-        AppMethodBeat.o(44362);
-        return true;
-        label398:
-        y.kLv.gB(false);
+        if (acU(paramString) != m.nMX) {
+          break label156;
+        }
+        localObject = this.nGX.acD(paramString);
+        if (localObject == null) {
+          break label156;
+        }
+        ((WxaPkg)localObject).bHn().fillAnother(paramFileStructStat);
+        paramFileStructStat.makeItIsDir();
+        paramFileStructStat.st_size = 0L;
+        paramString = (Long)this.nGY.get(paramString);
+        if (paramString != null) {
+          paramFileStructStat.st_atime = paramString.longValue();
+        }
+        paramString = m.nMR;
+        AppMethodBeat.o(178538);
+        return paramString;
+        paramString = paramString + "/";
+        break;
+        label143:
+        paramString = "/".concat(String.valueOf(paramString));
       }
+      label156:
+      paramString = m.nMX;
+      AppMethodBeat.o(178538);
+      return paramString;
     }
-    
-    public final void l(String paramString, Map<String, String> paramMap)
+    ((q.a)localObject).nEw.bHn().fillAnother(paramFileStructStat);
+    paramFileStructStat.st_size = ((q.a)localObject).nEz;
+    paramString = m.nMR;
+    AppMethodBeat.o(178538);
+    return paramString;
+  }
+  
+  public final boolean acS(String paramString)
+  {
+    AppMethodBeat.i(178531);
+    try
     {
-      AppMethodBeat.i(226367);
-      m(".sysmsg.AppBrandNotify.DebugInfoList.DebugInfo", paramMap);
-      int i = 0;
-      int j;
+      this.nGX.acH(paramString);
+      AppMethodBeat.o(178531);
+      return true;
+    }
+    catch (IllegalArgumentException paramString)
+    {
+      AppMethodBeat.o(178531);
+    }
+    return false;
+  }
+  
+  public final m acT(String paramString)
+  {
+    AppMethodBeat.i(178532);
+    m localm = acU(paramString);
+    if (localm == m.nMX)
+    {
+      if (paramString.length() == 0)
+      {
+        paramString = m.nMX;
+        AppMethodBeat.o(178532);
+        return paramString;
+      }
+      paramString = o.adS(paramString);
+      if (paramString.substring(paramString.length() - 1).equals("/")) {
+        break label156;
+      }
+      paramString = paramString + "/";
+    }
+    label156:
+    for (;;)
+    {
+      List localList = this.nGX.bGH();
+      Object localObject = localList;
+      if (localList == null) {
+        localObject = Collections.emptyList();
+      }
+      localObject = ((List)localObject).iterator();
       do
       {
-        j = i + 1;
-        i = j;
-      } while (m(".sysmsg.AppBrandNotify.DebugInfoList.DebugInfo".concat(String.valueOf(j)), paramMap));
-      AppMethodBeat.o(226367);
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+      } while (!Util.nullAsNil((String)((Iterator)localObject).next()).startsWith(paramString));
+      for (paramString = m.nMR;; paramString = localm)
+      {
+        AppMethodBeat.o(178532);
+        return paramString;
+      }
     }
   }
   
-  public static abstract interface c
+  public final m acV(String paramString)
   {
-    public abstract void l(String paramString, Map<String, String> paramMap);
+    AppMethodBeat.i(178535);
+    paramString = a(paramString, new i());
+    AppMethodBeat.o(178535);
+    return paramString;
   }
   
-  static final class d
-    implements be.c
+  public final com.tencent.mm.vfs.q ah(String paramString, boolean paramBoolean)
   {
-    public final void l(String paramString, Map<String, String> paramMap)
+    AppMethodBeat.i(178539);
+    if (!paramBoolean)
     {
-      AppMethodBeat.i(226369);
-      if (paramMap.get(".sysmsg.AppPublicLibraryNotify") == null)
+      if (acV(paramString) == m.nMR) {}
+      for (int i = 1; i != 0; i = 0)
       {
-        AppMethodBeat.o(226369);
-        return;
+        AppMethodBeat.o(178539);
+        return null;
       }
-      int i = Util.getInt((String)paramMap.get(".sysmsg.AppPublicLibraryNotify.Version"), 0);
-      paramString = (String)paramMap.get(".sysmsg.AppPublicLibraryNotify.MD5");
-      String str = (String)paramMap.get(".sysmsg.AppPublicLibraryNotify.URL");
-      int j = Util.getInt((String)paramMap.get(".sysmsg.AppPublicLibraryNotify.ForceUpdate"), 0);
-      if ((Util.isNullOrNil(str)) || (Util.isNullOrNil(paramString)) || (i <= 0))
-      {
-        Log.i("MicroMsg.AppBrand.WxaPkgPushingXmlHandler", "handle library notify, invalid params: url = %s, md5 = %s, version = %d", new Object[] { str, paramString, Integer.valueOf(i) });
-        AppMethodBeat.o(226369);
-        return;
-      }
-      Log.i("MicroMsg.AppBrand.WxaPkgPushingXmlHandler", "handle library notify, version = %d, md5 = %s, url = %s, forceUpdate = %d", new Object[] { Integer.valueOf(i), paramString, str, Integer.valueOf(j) });
-      paramMap = new fch();
-      paramMap.version = i;
-      paramMap.md5 = paramString;
-      paramMap.url = str;
-      paramMap.MKJ = j;
-      au.a(paramMap);
-      AppMethodBeat.o(226369);
     }
+    paramString = this.nGX.acF(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(178539);
+      return null;
+    }
+    paramString = ac.a(paramString.nEw, paramString.fileName);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = new com.tencent.mm.vfs.q(paramString);
+      AppMethodBeat.o(178539);
+      return paramString;
+    }
+    AppMethodBeat.o(178539);
+    return null;
+  }
+  
+  public final m b(String paramString, i<ByteBuffer> parami)
+  {
+    AppMethodBeat.i(178537);
+    InputStream localInputStream = this.nGX.acE(paramString);
+    if (localInputStream == null)
+    {
+      paramString = m.nMX;
+      AppMethodBeat.o(178537);
+      return paramString;
+    }
+    try
+    {
+      int i = localInputStream.available();
+      Util.qualityClose(localInputStream);
+      paramString = a(paramString, 0L, i, parami);
+      AppMethodBeat.o(178537);
+      return paramString;
+    }
+    catch (IOException paramString)
+    {
+      Log.printErrStackTrace("Luggage.WXA.WxaPkgFileSystemWithModularizingNewImpl", paramString, "readFile", new Object[0]);
+      paramString = m.nMS;
+      return paramString;
+    }
+    finally
+    {
+      Util.qualityClose(localInputStream);
+      AppMethodBeat.o(178537);
+    }
+  }
+  
+  public final m h(String paramString, List<z> paramList)
+  {
+    AppMethodBeat.i(243402);
+    if (paramString.endsWith("/")) {
+      if (!paramString.startsWith("/")) {
+        break label97;
+      }
+    }
+    for (;;)
+    {
+      if ((!paramString.contains("\\")) && (!paramString.trim().isEmpty())) {
+        break label110;
+      }
+      Log.e("Luggage.WXA.WxaPkgFileSystemWithModularizingNewImpl", "statDir: path = [%s] is illegal", new Object[] { paramString });
+      paramString = super.h(paramString, paramList);
+      AppMethodBeat.o(243402);
+      return paramString;
+      paramString = paramString + "/";
+      break;
+      label97:
+      paramString = "/".concat(String.valueOf(paramString));
+    }
+    label110:
+    Iterator localIterator = this.nGX.bGH().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      if ((str1 != null) && (str1.startsWith(paramString)))
+      {
+        z localz = new z(str1);
+        String str2 = a(str1, localz).name();
+        if (str2.equals(m.nMR.name())) {
+          paramList.add(localz);
+        } else {
+          Log.w("Luggage.WXA.WxaPkgFileSystemWithModularizingNewImpl", "statDir: stat [%s] fail:[%s]", new Object[] { str1, str2 });
+        }
+      }
+    }
+    paramString = m.nMR;
+    AppMethodBeat.o(243402);
+    return paramString;
+  }
+  
+  public final void initialize() {}
+  
+  public final WxaPkg.Info openReadPartialInfo(String paramString)
+  {
+    AppMethodBeat.i(178530);
+    paramString = this.nGX.acF(paramString);
+    if (paramString != null)
+    {
+      paramString = paramString.bGI();
+      AppMethodBeat.o(178530);
+      return paramString;
+    }
+    AppMethodBeat.o(178530);
+    return null;
+  }
+  
+  public final void release()
+  {
+    AppMethodBeat.i(178540);
+    this.nGX.close();
+    AppMethodBeat.o(178540);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.be
  * JD-Core Version:    0.7.0.1
  */

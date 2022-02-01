@@ -8,12 +8,12 @@ import com.tencent.stubs.logger.Log;
 public final class b$h
   extends b.c
 {
-  private f ROm;
+  private f ZqS;
   private int rotation;
   
   public b$h(f paramf, int paramInt)
   {
-    this.ROm = paramf;
+    this.ZqS = paramf;
     this.rotation = paramInt;
   }
   
@@ -23,9 +23,9 @@ public final class b$h
     try
     {
       Log.i("CameraTask.CameraReOpenTask", "reopen camera");
-      this.ROm.close();
-      this.ROm.aqD(this.rotation);
-      this.ROm.a(new Camera.PreviewCallback()
+      this.ZqS.close();
+      this.ZqS.aAq(this.rotation);
+      this.ZqS.c(new Camera.PreviewCallback()
       {
         public final void onPreviewFrame(byte[] paramAnonymousArrayOfByte, Camera paramAnonymousCamera) {}
       });
@@ -43,7 +43,7 @@ public final class b$h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.scanlib.a.b.h
  * JD-Core Version:    0.7.0.1
  */

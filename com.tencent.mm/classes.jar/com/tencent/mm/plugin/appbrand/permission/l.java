@@ -8,23 +8,23 @@ import com.tencent.mm.sdk.system.AndroidContextUtil;
 public class l
   implements j
 {
-  protected final AppBrandRuntime kEc;
+  protected final AppBrandRuntime nxs;
   
   public l(AppBrandRuntime paramAppBrandRuntime)
   {
-    this.kEc = paramAppBrandRuntime;
+    this.nxs = paramAppBrandRuntime;
   }
   
-  public void aep(String paramString)
+  public void amj(String paramString)
   {
     AppMethodBeat.i(147661);
-    Toast.makeText(AndroidContextUtil.castActivityOrNull(this.kEc.mContext), String.format("jsapi banned %s", new Object[] { paramString }), 0).show();
+    Toast.makeText(AndroidContextUtil.castActivityOrNull(this.nxs.mContext), String.format("jsapi banned %s", new Object[] { paramString }), 0).show();
     AppMethodBeat.o(147661);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.l
  * JD-Core Version:    0.7.0.1
  */

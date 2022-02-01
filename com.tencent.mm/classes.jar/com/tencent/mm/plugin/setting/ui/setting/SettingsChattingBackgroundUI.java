@@ -1,91 +1,76 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.a;
-import com.tencent.mm.bb.r;
-import com.tencent.mm.bb.v;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.be.a;
+import com.tencent.mm.be.s;
+import com.tencent.mm.be.w;
 import com.tencent.mm.plugin.image.d;
+import com.tencent.mm.plugin.setting.b.i;
+import com.tencent.mm.plugin.setting.b.k;
 import com.tencent.mm.plugin.setting.c;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.ui.tools.s;
+import com.tencent.mm.pluginsdk.ui.tools.u;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.base.preference.f;
 
 public class SettingsChattingBackgroundUI
   extends MMPreference
 {
-  private boolean Dbz;
-  private f screen;
+  private boolean Jha;
+  private com.tencent.mm.ui.base.preference.f screen;
   private String username;
   
-  private void dRW()
+  private void euy()
   {
     AppMethodBeat.i(74135);
-    if (!s.d(this, com.tencent.mm.loader.j.b.aKV(), "microMsg." + System.currentTimeMillis() + ".jpg", 2)) {
-      Toast.makeText(this, getString(2131765171), 1).show();
+    if (!u.d(this, com.tencent.mm.loader.j.b.aSX(), "microMsg." + System.currentTimeMillis() + ".jpg", 2)) {
+      Toast.makeText(this, getString(b.i.selectcameraapp_none), 1).show();
     }
     AppMethodBeat.o(74135);
   }
   
-  private String ut(boolean paramBoolean)
+  private String xR(boolean paramBoolean)
   {
     AppMethodBeat.i(74137);
-    v.bev();
-    if (this.Dbz)
+    w.bnU();
+    if (this.Jha)
     {
-      str = r.T("default", paramBoolean);
+      str = s.V("default", paramBoolean);
       AppMethodBeat.o(74137);
       return str;
     }
-    String str = r.T(this.username, paramBoolean);
+    String str = s.V(this.username, paramBoolean);
     AppMethodBeat.o(74137);
     return str;
   }
   
   public int getResourceId()
   {
-    return 2132017263;
+    return b.k.settings_chatting_background;
   }
   
   public void initView()
   {
     AppMethodBeat.i(74133);
-    setMMTitle(2131765364);
+    setMMTitle(b.i.settings_chatting_bg);
     this.screen = getPreferenceScreen();
-    this.Dbz = getIntent().getBooleanExtra("isApplyToAll", true);
-    if (!this.Dbz)
+    this.Jha = getIntent().getBooleanExtra("isApplyToAll", true);
+    if (!this.Jha)
     {
-      Preference localPreference = this.screen.bmg("settings_chatting_bg_apply_to_all");
+      Preference localPreference = this.screen.byG("settings_chatting_bg_apply_to_all");
       if (localPreference != null) {
-        this.screen.e(localPreference);
+        this.screen.d(localPreference);
       }
     }
     this.username = getIntent().getStringExtra("username");
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        AppMethodBeat.i(74127);
-        SettingsChattingBackgroundUI.this.hideVKB();
-        SettingsChattingBackgroundUI.this.finish();
-        AppMethodBeat.o(74127);
-        return true;
-      }
-    });
+    setBackBtn(new SettingsChattingBackgroundUI.1(this));
     AppMethodBeat.o(74133);
   }
   
@@ -100,7 +85,7 @@ public class SettingsChattingBackgroundUI
     {
       for (;;)
       {
-        if (!this.Dbz)
+        if (!this.Jha)
         {
           setResult(-1);
           finish();
@@ -114,12 +99,12 @@ public class SettingsChattingBackgroundUI
         }
         Object localObject = new Intent();
         ((Intent)localObject).putExtra("CropImageMode", 2);
-        ((Intent)localObject).putExtra("CropImage_bg_vertical", ut(true));
-        ((Intent)localObject).putExtra("CropImage_bg_horizontal", ut(false));
-        c.jRt.a(this, paramIntent, (Intent)localObject, d.aSY(), 4, null);
+        ((Intent)localObject).putExtra("CropImage_bg_vertical", xR(true));
+        ((Intent)localObject).putExtra("CropImage_bg_horizontal", xR(false));
+        c.mIG.a(this, paramIntent, (Intent)localObject, d.bbW(), 4, null);
         AppMethodBeat.o(74132);
         return;
-        paramIntent = s.h(getApplicationContext(), paramIntent, d.aSY());
+        paramIntent = u.g(getApplicationContext(), paramIntent, d.bbW());
         if (paramIntent == null)
         {
           AppMethodBeat.o(74132);
@@ -128,35 +113,35 @@ public class SettingsChattingBackgroundUI
         localObject = new Intent();
         ((Intent)localObject).putExtra("CropImageMode", 2);
         ((Intent)localObject).putExtra("CropImage_ImgPath", paramIntent);
-        ((Intent)localObject).putExtra("CropImage_bg_vertical", ut(true));
-        ((Intent)localObject).putExtra("CropImage_bg_horizontal", ut(false));
-        c.jRt.a(this, (Intent)localObject, 4);
+        ((Intent)localObject).putExtra("CropImage_bg_vertical", xR(true));
+        ((Intent)localObject).putExtra("CropImage_bg_horizontal", xR(false));
+        c.mIG.a(this, (Intent)localObject, 4);
         AppMethodBeat.o(74132);
         return;
         if (paramInt2 == -1)
         {
-          g.aAh().azQ().set(66820, Integer.valueOf(-1));
-          com.tencent.mm.plugin.report.service.h.CyF.a(10198, new Object[] { Integer.valueOf(-1) });
+          com.tencent.mm.kernel.h.aHG().aHp().i(66820, Integer.valueOf(-1));
+          com.tencent.mm.plugin.report.service.h.IzE.a(10198, new Object[] { Integer.valueOf(-1) });
           Log.i("MicroMsg.SettingsChattingBackgroundUI", "set chating bg id:%d", new Object[] { Integer.valueOf(-1) });
-          if (this.Dbz)
+          if (this.Jha)
           {
-            g.aAh().azQ().set(12311, Integer.valueOf(-1));
-            v.bev().tH(1);
+            com.tencent.mm.kernel.h.aHG().aHp().i(12311, Integer.valueOf(-1));
+            w.bnU().wH(1);
           }
           else
           {
-            paramIntent = v.bew();
-            localObject = paramIntent.Pp(this.username);
+            paramIntent = w.bnV();
+            localObject = paramIntent.WM(this.username);
             if (localObject == null)
             {
               localObject = new a();
               ((a)localObject).username = this.username;
-              ((a)localObject).jgE = -1;
+              ((a)localObject).lXh = -1;
               paramIntent.a((a)localObject);
             }
             else
             {
-              ((a)localObject).jgE = -1;
+              ((a)localObject).lXh = -1;
               paramIntent.b((a)localObject);
             }
           }
@@ -181,7 +166,7 @@ public class SettingsChattingBackgroundUI
     AppMethodBeat.o(74131);
   }
   
-  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
     AppMethodBeat.i(74134);
     paramf = paramPreference.mKey;
@@ -190,7 +175,7 @@ public class SettingsChattingBackgroundUI
     {
       paramf = new Intent();
       paramf.setClass(this, SettingsSelectBgUI.class);
-      paramf.putExtra("isApplyToAll", this.Dbz);
+      paramf.putExtra("isApplyToAll", this.Jha);
       paramf.putExtra("username", this.username);
       startActivityForResult(paramf, 3);
       AppMethodBeat.o(74134);
@@ -198,7 +183,7 @@ public class SettingsChattingBackgroundUI
     }
     if (paramf.equals("settings_chatting_bg_select_from_album"))
     {
-      s.c(this, 1, null);
+      u.d(this, 1, null);
       AppMethodBeat.o(74134);
       return true;
     }
@@ -211,21 +196,13 @@ public class SettingsChattingBackgroundUI
         AppMethodBeat.o(74134);
         return false;
       }
-      dRW();
+      euy();
       AppMethodBeat.o(74134);
       return true;
     }
     if (paramf.equals("settings_chatting_bg_apply_to_all"))
     {
-      com.tencent.mm.ui.base.h.a(getContext(), getString(2131765365), "", new DialogInterface.OnClickListener()
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(74129);
-          SettingsChattingBackgroundUI.eTe();
-          AppMethodBeat.o(74129);
-        }
-      }, null);
+      com.tencent.mm.ui.base.h.a(getContext(), getString(b.i.settings_chatting_bg_apply_to_all), "", new SettingsChattingBackgroundUI.3(this), null);
       AppMethodBeat.o(74134);
       return true;
     }
@@ -252,11 +229,11 @@ public class SettingsChattingBackgroundUI
       return;
       if (paramArrayOfInt[0] == 0)
       {
-        dRW();
+        euy();
         AppMethodBeat.o(74136);
         return;
       }
-      com.tencent.mm.ui.base.h.a(this, getString(2131763864), getString(2131763890), getString(2131762043), getString(2131755761), false, new SettingsChattingBackgroundUI.2(this), null);
+      com.tencent.mm.ui.base.h.a(this, getString(b.i.permission_camera_request_again_msg), getString(b.i.permission_tips_title), getString(b.i.jump_to_settings), getString(b.i.app_cancel), false, new SettingsChattingBackgroundUI.2(this), null);
     }
   }
   
@@ -268,7 +245,7 @@ public class SettingsChattingBackgroundUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsChattingBackgroundUI
  * JD-Core Version:    0.7.0.1
  */

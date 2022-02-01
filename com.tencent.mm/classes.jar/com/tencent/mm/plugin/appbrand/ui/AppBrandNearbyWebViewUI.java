@@ -5,12 +5,13 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.plugin.appbrand.ac;
+import com.tencent.mm.plugin.appbrand.ag;
+import com.tencent.mm.plugin.appbrand.au.c;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 
 public final class AppBrandNearbyWebViewUI
   extends WebViewUI
@@ -29,12 +30,12 @@ public final class AppBrandNearbyWebViewUI
     //   13: astore_2
     //   14: aconst_null
     //   15: astore_1
-    //   16: new 25	com/tencent/mm/vfs/o
+    //   16: new 25	com/tencent/mm/vfs/q
     //   19: dup
     //   20: invokestatic 31	android/os/Environment:getRootDirectory	()Ljava/io/File;
     //   23: ldc 33
-    //   25: invokespecial 36	com/tencent/mm/vfs/o:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   28: invokestatic 42	com/tencent/mm/vfs/s:ao	(Lcom/tencent/mm/vfs/o;)Ljava/io/InputStream;
+    //   25: invokespecial 36	com/tencent/mm/vfs/q:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   28: invokestatic 42	com/tencent/mm/vfs/u:al	(Lcom/tencent/mm/vfs/q;)Ljava/io/InputStream;
     //   31: astore_3
     //   32: aload_3
     //   33: astore_1
@@ -128,35 +129,35 @@ public final class AppBrandNearbyWebViewUI
     //   131	135	147	java/lang/Exception
   }
   
-  public final void bXg()
+  public final void cjK()
   {
     AppMethodBeat.i(21121);
-    super.bXg();
+    super.cjK();
     setActionbarColor(-855310);
     AppMethodBeat.o(21121);
   }
   
-  public final int bXh()
+  public final int cjL()
   {
     AppMethodBeat.i(21122);
     if ((Build.VERSION.SDK_INT >= 23) && ((!g.isMIUI()) || (!isMIUIV8())))
     {
-      ao.d(getWindow(), true);
+      ar.d(getWindow(), true);
       AppMethodBeat.o(21122);
       return -855310;
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
-      i = ac.kEM;
+      i = ag.nym;
       AppMethodBeat.o(21122);
       return i;
     }
-    int i = super.bXh();
+    int i = super.cjL();
     AppMethodBeat.o(21122);
     return i;
   }
   
-  public final boolean bXi()
+  public final boolean cjM()
   {
     return true;
   }
@@ -194,13 +195,13 @@ public final class AppBrandNearbyWebViewUI
   {
     AppMethodBeat.i(21119);
     super.setMMTitle(paramString);
-    setMMTitleColor(getContext().getResources().getColor(2131099746));
+    setMMTitleColor(getContext().getResources().getColor(au.c.FG_0));
     AppMethodBeat.o(21119);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandNearbyWebViewUI
  * JD-Core Version:    0.7.0.1
  */

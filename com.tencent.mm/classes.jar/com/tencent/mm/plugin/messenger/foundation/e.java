@@ -1,50 +1,91 @@
 package com.tencent.mm.plugin.messenger.foundation;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.a.l;
-import com.tencent.mm.plugin.messenger.foundation.a.m;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.t;
+import com.tencent.mm.b.f;
+import com.tencent.mm.bd.a;
+import com.tencent.mm.bd.o;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.storage.ak;
 import com.tencent.mm.storage.ay;
 import com.tencent.mm.storage.ba;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.bw;
+import com.tencent.mm.storage.bd;
+import com.tencent.mm.storage.bm;
+import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.br;
+import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.by;
 import com.tencent.mm.storage.cb;
-import com.tencent.mm.storage.cj;
-import com.tencent.mm.storagebase.h;
+import com.tencent.mm.storage.ck;
+import com.tencent.mm.storage.cn;
+import com.tencent.mm.storage.cp;
+import com.tencent.mm.storage.cu;
+import java.util.HashMap;
 
 public final class e
-  implements m
+  implements com.tencent.mm.kernel.api.bucket.c, n
 {
-  public final i a(h paramh, bv parambv, bw parambw)
+  ay EUU;
+  cp EUV;
+  br EUW;
+  cb EUX;
+  ba EUY;
+  o EUZ;
+  a EVa;
+  ck EVb;
+  bd EVc;
+  bo EVd;
+  bm EVe;
+  by EVf;
+  cn EVg;
+  cu EVh;
+  ak EVi;
+  bu EVj;
+  
+  public final com.tencent.mm.plugin.messenger.foundation.a.a.h eRY()
   {
-    AppMethodBeat.i(116895);
-    paramh = new cb(paramh, parambv, parambw);
-    AppMethodBeat.o(116895);
-    return paramh;
+    AppMethodBeat.i(116879);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHE().aGH();
+    a locala = this.EVa;
+    AppMethodBeat.o(116879);
+    return locala;
   }
   
-  public final bv c(h paramh)
+  public final com.tencent.mm.plugin.messenger.foundation.a.a.b eRZ()
   {
-    AppMethodBeat.i(116893);
-    paramh = new ay(paramh);
-    AppMethodBeat.o(116893);
-    return paramh;
+    AppMethodBeat.i(116880);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHE().aGH();
+    ak localak = this.EVi;
+    AppMethodBeat.o(116880);
+    return localak;
   }
   
-  public final bw d(h paramh)
-  {
-    AppMethodBeat.i(116894);
-    paramh = new ba(paramh);
-    AppMethodBeat.o(116894);
-    return paramh;
-  }
+  public final void onAccountInitialized(f.c paramc) {}
   
-  public final l e(h paramh)
+  public final void onAccountRelease()
   {
-    AppMethodBeat.i(116896);
-    paramh = new cj(paramh);
-    AppMethodBeat.o(116896);
-    return paramh;
+    AppMethodBeat.i(116881);
+    Object localObject;
+    if (this.EUU != null)
+    {
+      localObject = this.EUU;
+      ((ay)localObject).VEA.clear();
+      ((ay)localObject).VEB.clear();
+    }
+    if (this.EUZ != null)
+    {
+      localObject = this.EUZ;
+      ((o)localObject).bqq = new HashMap();
+      com.tencent.mm.kernel.h.aHH();
+      com.tencent.mm.kernel.h.aHF().kcd.b(681, (i)localObject);
+      com.tencent.mm.kernel.h.aHH();
+      com.tencent.mm.kernel.h.aHF().kcd.b(806, (i)localObject);
+    }
+    AppMethodBeat.o(116881);
   }
 }
 

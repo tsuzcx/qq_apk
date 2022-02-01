@@ -9,75 +9,156 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class n
 {
-  private static AtomicInteger mzm;
-  String eby;
-  boolean ifP;
-  private long kNt;
-  private c mxv;
-  String mxw;
-  private int mzA;
-  Future<?> mzk;
-  private int mzn;
-  private int mzo;
-  o mzp;
-  private final Object mzq;
-  int mzr;
-  int mzs;
-  long mzt;
-  long mzu;
-  public boolean mzv;
-  String mzw;
-  public String mzx;
-  String mzy;
-  private int mzz;
+  private static AtomicInteger pxH;
+  String fVx;
+  boolean kUD;
+  private long nHt;
   int priority;
+  private c pvP;
+  String pvQ;
+  Future<?> pxF;
+  private int pxI;
+  private int pxJ;
+  o pxK;
+  private final Object pxL;
+  int pxM;
+  int pxN;
+  long pxO;
+  long pxP;
+  public boolean pxQ;
+  String pxR;
+  public String pxS;
+  String pxT;
+  private int pxU;
+  private int pxV;
   long startTime;
   String uuid;
   
   static
   {
-    AppMethodBeat.i(234824);
-    mzm = new AtomicInteger(10000);
-    AppMethodBeat.o(234824);
+    AppMethodBeat.i(228796);
+    pxH = new AtomicInteger(10000);
+    AppMethodBeat.o(228796);
   }
   
   public n()
   {
-    AppMethodBeat.i(234816);
-    this.mzn = 0;
-    this.mzo = 0;
-    this.mzq = new Object();
-    this.mzs = 0;
+    AppMethodBeat.i(228748);
+    this.pxI = 0;
+    this.pxJ = 0;
+    this.pxL = new Object();
+    this.pxN = 0;
     this.priority = -1;
-    this.kNt = -1L;
-    this.mxw = "";
-    this.mxv = c.myu;
-    this.mzr = mzm.incrementAndGet();
+    this.nHt = -1L;
+    this.pvQ = "";
+    this.pvP = c.pwO;
+    this.pxM = pxH.incrementAndGet();
     this.startTime = System.currentTimeMillis();
-    AppMethodBeat.o(234816);
+    AppMethodBeat.o(228748);
+  }
+  
+  public final void AV(int paramInt)
+  {
+    try
+    {
+      this.pxV = paramInt;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final void AW(int paramInt)
+  {
+    try
+    {
+      this.pxU += paramInt;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final void AX(int paramInt)
+  {
+    if ((this.pxI & paramInt) == 0) {
+      this.pxI += paramInt;
+    }
+  }
+  
+  public final boolean AY(int paramInt)
+  {
+    synchronized (this.pxL)
+    {
+      if (this.pxJ == paramInt)
+      {
+        bool = true;
+        return bool;
+      }
+      boolean bool = false;
+    }
   }
   
   public final void a(long paramLong, c paramc)
   {
     try
     {
-      AppMethodBeat.i(234818);
-      this.kNt = paramLong;
-      this.mxv = paramc;
-      if (this.mxv.equals(c.myw)) {
-        this.mzs |= 0x8;
+      AppMethodBeat.i(228761);
+      this.nHt = paramLong;
+      this.pvP = paramc;
+      if (this.pvP.equals(c.pwQ)) {
+        this.pxN |= 0x8;
       }
-      AppMethodBeat.o(234818);
+      AppMethodBeat.o(228761);
       return;
     }
     finally {}
   }
   
-  public final c bJP()
+  public final long bVF()
+  {
+    AppMethodBeat.i(228773);
+    long l = System.currentTimeMillis();
+    l = ((float)(this.pxU * 1000L) / (float)((l - this.startTime) * 1024L));
+    AppMethodBeat.o(228773);
+    return l;
+  }
+  
+  public final void bVG()
+  {
+    AppMethodBeat.i(228778);
+    if (eE(2, 3))
+    {
+      if (this.pxK != null) {
+        this.pxK.bVI();
+      }
+      if (a.bVt().dal) {
+        h.log(3, getLogTag(), "cancel success, seq=" + this.pxM);
+      }
+    }
+    AppMethodBeat.o(228778);
+  }
+  
+  public final void bVH()
+  {
+    AppMethodBeat.i(228782);
+    if ((eE(1, 2)) && (a.bVt().dal)) {
+      h.log(3, getLogTag(), "cancel proceeding, seq=" + this.pxM);
+    }
+    AppMethodBeat.o(228782);
+  }
+  
+  public final c bVy()
   {
     try
     {
-      c localc = this.mxv;
+      c localc = this.pvP;
       return localc;
     }
     finally
@@ -87,61 +168,28 @@ public final class n
     }
   }
   
-  public final long bJV()
+  final boolean eE(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(234820);
-    long l = System.currentTimeMillis();
-    l = ((float)(this.mzz * 1000L) / (float)((l - this.startTime) * 1024L));
-    AppMethodBeat.o(234820);
-    return l;
-  }
-  
-  public final void bJW()
-  {
-    AppMethodBeat.i(234821);
-    if (eg(2, 3))
+    AppMethodBeat.i(228795);
+    synchronized (this.pxL)
     {
-      if (this.mzp != null) {
-        this.mzp.bJY();
-      }
-      if (a.bJK().cWq) {
-        h.log(3, getLogTag(), "cancel success, seq=" + this.mzr);
-      }
-    }
-    AppMethodBeat.o(234821);
-  }
-  
-  public final void bJX()
-  {
-    AppMethodBeat.i(234822);
-    if ((eg(1, 2)) && (a.bJK().cWq)) {
-      h.log(3, getLogTag(), "cancel proceeding, seq=" + this.mzr);
-    }
-    AppMethodBeat.o(234822);
-  }
-  
-  final boolean eg(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(234823);
-    synchronized (this.mzq)
-    {
-      if (this.mzo == paramInt1)
+      if (this.pxJ == paramInt1)
       {
-        this.mzo = paramInt2;
-        AppMethodBeat.o(234823);
+        this.pxJ = paramInt2;
+        AppMethodBeat.o(228795);
         return true;
       }
-      h.log(5, getLogTag(), String.format(Locale.US, "transState error, current %d, condition %d, newState %d", new Object[] { Integer.valueOf(this.mzo), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-      AppMethodBeat.o(234823);
+      h.log(5, getLogTag(), String.format(Locale.US, "transState error, current %d, condition %d, newState %d", new Object[] { Integer.valueOf(this.pxJ), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+      AppMethodBeat.o(228795);
       return false;
     }
   }
   
   public final String getLogTag()
   {
-    AppMethodBeat.i(234817);
-    String str = this.mxw + "VideoRequest";
-    AppMethodBeat.o(234817);
+    AppMethodBeat.i(228755);
+    String str = this.pvQ + "VideoRequest";
+    AppMethodBeat.o(228755);
     return str;
   }
   
@@ -149,7 +197,7 @@ public final class n
   {
     try
     {
-      long l = this.kNt;
+      long l = this.nHt;
       return l;
     }
     finally
@@ -161,71 +209,20 @@ public final class n
   
   public final String toString()
   {
-    AppMethodBeat.i(234819);
-    StringBuilder localStringBuilder = new StringBuilder().append(super.toString()).append("{seq=").append(this.mzr).append(",priority=").append(this.priority).append(",range=[").append(this.mzt).append(",").append(this.mzu).append("],uuid=").append(this.uuid).append(",contentType=").append(this.mzx).append(",cancelState=").append(this.mzo).append(",sourceUrl=").append(this.eby).append(",videoKey=").append(this.mzw).append(",task=");
-    if (this.mzk == null) {}
-    for (String str = "null";; str = this.mzk.toString())
+    AppMethodBeat.i(228768);
+    StringBuilder localStringBuilder = new StringBuilder().append(super.toString()).append("{seq=").append(this.pxM).append(",priority=").append(this.priority).append(",range=[").append(this.pxO).append(",").append(this.pxP).append("],uuid=").append(this.uuid).append(",contentType=").append(this.pxS).append(",cancelState=").append(this.pxJ).append(",sourceUrl=").append(this.fVx).append(",videoKey=").append(this.pxR).append(",task=");
+    if (this.pxF == null) {}
+    for (String str = "null";; str = this.pxF.toString())
     {
       str = str + "}";
-      AppMethodBeat.o(234819);
+      AppMethodBeat.o(228768);
       return str;
-    }
-  }
-  
-  public final void xA(int paramInt)
-  {
-    if ((this.mzn & paramInt) == 0) {
-      this.mzn += paramInt;
-    }
-  }
-  
-  public final boolean xB(int paramInt)
-  {
-    for (;;)
-    {
-      synchronized (this.mzq)
-      {
-        if (this.mzo == paramInt)
-        {
-          bool = true;
-          return bool;
-        }
-      }
-      boolean bool = false;
-    }
-  }
-  
-  public final void xy(int paramInt)
-  {
-    try
-    {
-      this.mzA = paramInt;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final void xz(int paramInt)
-  {
-    try
-    {
-      this.mzz += paramInt;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.c.n
  * JD-Core Version:    0.7.0.1
  */

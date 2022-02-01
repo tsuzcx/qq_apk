@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.profile.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.i;
-import com.tencent.mm.az.a;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.ad.i;
+import com.tencent.mm.bc.a;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
@@ -14,7 +15,7 @@ import java.util.Map;
 public final class e
   extends a
 {
-  public String BcW = null;
+  public String GWV = null;
   public int status = 0;
   public String username = null;
   
@@ -28,11 +29,11 @@ public final class e
     super(paramMap, paramca);
   }
   
-  public static int aKl(String paramString)
+  public static int aUK(String paramString)
   {
     AppMethodBeat.i(26912);
-    g.aAi();
-    Object localObject1 = (String)g.aAh().azQ().get(ar.a.NTn, "");
+    h.aHH();
+    Object localObject1 = (String)h.aHG().aHp().get(ar.a.Vhn, "");
     Log.i("MicroMsg.OpenIMFriReqAcceptedInWxWorkMsg", "getStateAddContactByWework() climsgid:%s", new Object[] { paramString });
     if (Util.isNullOrNil((String)localObject1))
     {
@@ -84,11 +85,11 @@ public final class e
     return 1;
   }
   
-  public static boolean aKm(String paramString)
+  public static boolean aUL(String paramString)
   {
     AppMethodBeat.i(26913);
-    g.aAi();
-    Object localObject1 = (String)g.aAh().azQ().get(ar.a.NTo, "");
+    h.aHH();
+    Object localObject1 = (String)h.aHG().aHp().get(ar.a.Vho, "");
     Log.i("MicroMsg.OpenIMFriReqAcceptedInWxWorkMsg", "getStateAddContactUsernameByWework() username:%s", new Object[] { paramString });
     if (Util.isNullOrNil((String)localObject1))
     {
@@ -155,11 +156,11 @@ public final class e
     return false;
   }
   
-  private static void fb(String paramString, int paramInt)
+  private static void fD(String paramString, int paramInt)
   {
-    AppMethodBeat.i(231828);
-    g.aAi();
-    Object localObject1 = (String)g.aAh().azQ().get(ar.a.NTn, "");
+    AppMethodBeat.i(281922);
+    h.aHH();
+    Object localObject1 = (String)h.aHG().aHp().get(ar.a.Vhn, "");
     Log.i("MicroMsg.OpenIMFriReqAcceptedInWxWorkMsg", "dealAddContactByWework() climsgid:%s state:%s ", new Object[] { paramString, Integer.valueOf(paramInt) });
     for (;;)
     {
@@ -188,12 +189,12 @@ public final class e
                 {
                   str1 = str1 + "," + paramString;
                   localObject1 = (String)localObject1 + "," + paramInt;
-                  ((i)localObject2).h("svrids", str1);
-                  ((i)localObject2).h("states", localObject1);
+                  ((i)localObject2).g("svrids", str1);
+                  ((i)localObject2).g("states", localObject1);
                   Log.i("MicroMsg.OpenIMFriReqAcceptedInWxWorkMsg", "dealAddContactByWework() result:%s", new Object[] { paramString, Integer.valueOf(paramInt), ((i)localObject2).toString() });
-                  g.aAi();
-                  g.aAh().azQ().set(ar.a.NTn, ((i)localObject2).toString());
-                  AppMethodBeat.o(231828);
+                  h.aHH();
+                  h.aHG().aHp().set(ar.a.Vhn, ((i)localObject2).toString());
+                  AppMethodBeat.o(281922);
                 }
               }
               else
@@ -228,17 +229,17 @@ public final class e
       catch (Exception paramString)
       {
         Log.e("MicroMsg.OpenIMFriReqAcceptedInWxWorkMsg", "dealAddContactByWework() Exception:%s", new Object[] { paramString.getMessage() });
-        AppMethodBeat.o(231828);
+        AppMethodBeat.o(281922);
         return;
       }
     }
   }
   
-  private static void fc(String paramString, int paramInt)
+  private static void fE(String paramString, int paramInt)
   {
     AppMethodBeat.i(26911);
-    g.aAi();
-    Object localObject1 = (String)g.aAh().azQ().get(ar.a.NTo, "");
+    h.aHH();
+    Object localObject1 = (String)h.aHG().aHp().get(ar.a.Vho, "");
     Log.i("MicroMsg.OpenIMFriReqAcceptedInWxWorkMsg", "dealAddContactUsernameByWework() username:%s state:%s ", new Object[] { paramString, Integer.valueOf(paramInt) });
     for (;;)
     {
@@ -267,11 +268,11 @@ public final class e
                 {
                   str1 = str1 + "," + paramString;
                   localObject1 = (String)localObject1 + "," + paramInt;
-                  ((i)localObject2).h("usernames", str1);
-                  ((i)localObject2).h("states", localObject1);
+                  ((i)localObject2).g("usernames", str1);
+                  ((i)localObject2).g("states", localObject1);
                   Log.i("MicroMsg.OpenIMFriReqAcceptedInWxWorkMsg", "dealAddContactUsernameByWework() result:%s", new Object[] { paramString, Integer.valueOf(paramInt), ((i)localObject2).toString() });
-                  g.aAi();
-                  g.aAh().azQ().set(ar.a.NTo, ((i)localObject2).toString());
+                  h.aHH();
+                  h.aHG().aHp().set(ar.a.Vho, ((i)localObject2).toString());
                   AppMethodBeat.o(26911);
                 }
               }
@@ -313,7 +314,7 @@ public final class e
     }
   }
   
-  public final boolean aTA()
+  public final boolean bcz()
   {
     AppMethodBeat.i(26910);
     if (this.values == null)
@@ -329,14 +330,14 @@ public final class e
         this.username = Util.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMFriReqAcceptedInWxWork.username"));
       }
       if (this.values.containsKey(".sysmsg.NewXmlOpenIMFriReqAcceptedInWxWork.climsgid")) {
-        this.BcW = Util.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMFriReqAcceptedInWxWork.climsgid"));
+        this.GWV = Util.nullAsNil((String)this.values.get(".sysmsg.NewXmlOpenIMFriReqAcceptedInWxWork.climsgid"));
       }
       if (this.values.containsKey(".sysmsg.NewXmlOpenIMFriReqAcceptedInWxWork.climsgid")) {
         this.status = Util.getInt((String)this.values.get(".sysmsg.NewXmlOpenIMFriReqAcceptedInWxWork.status"), 0);
       }
-      Log.i("MicroMsg.OpenIMFriReqAcceptedInWxWorkMsg", "username:%s climsgid:%s status:%s", new Object[] { this.username, this.BcW, Integer.valueOf(this.status) });
-      fb(this.BcW, this.status);
-      fc(this.username, this.status);
+      Log.i("MicroMsg.OpenIMFriReqAcceptedInWxWorkMsg", "username:%s climsgid:%s status:%s", new Object[] { this.username, this.GWV, Integer.valueOf(this.status) });
+      fD(this.GWV, this.status);
+      fE(this.username, this.status);
       AppMethodBeat.o(26910);
       return true;
     }
@@ -347,7 +348,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.b.e
  * JD-Core Version:    0.7.0.1
  */

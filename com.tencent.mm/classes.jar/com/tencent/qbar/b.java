@@ -1,7 +1,8 @@
 package com.tencent.qbar;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.ak.a.h;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -13,22 +14,22 @@ import java.util.List;
 
 public final class b
 {
-  private static int RJv;
-  private static List<String> RJw;
-  private static List<String> RJx;
+  private static int Zmd;
+  private static List<String> Zme;
+  private static List<String> Zmf;
   
   static
   {
     AppMethodBeat.i(91140);
-    RJv = 6;
+    Zmd = 6;
     ArrayList localArrayList = new ArrayList();
-    RJw = localArrayList;
+    Zme = localArrayList;
     localArrayList.add("weixin://wxpay/");
-    RJw.add("wxp://");
-    RJw.add("https://wx.tenpay.com/");
-    RJw.add("https://" + WeChatHosts.domainString(2131761732) + "/");
-    RJw.add("https://" + WeChatHosts.domainString(2131761702) + "/");
-    RJx = new ArrayList();
+    Zme.add("wxp://");
+    Zme.add("https://wx.tenpay.com/");
+    Zme.add("https://" + WeChatHosts.domainString(a.h.host_payapp_weixin_qq_com) + "/");
+    Zme.add("https://" + WeChatHosts.domainString(a.h.host_action_weixin_qq_com) + "/");
+    Zmf = new ArrayList();
     AppMethodBeat.o(91140);
   }
   
@@ -41,15 +42,15 @@ public final class b
       AppMethodBeat.o(91139);
       return;
     }
-    Iterator localIterator = RJw.iterator();
+    Iterator localIterator = Zme.iterator();
     while (localIterator.hasNext()) {
-      paramf.bpW((String)localIterator.next());
+      paramf.bCO((String)localIterator.next());
     }
-    localIterator = RJx.iterator();
+    localIterator = Zmf.iterator();
     while (localIterator.hasNext()) {
-      paramf.bpX((String)localIterator.next());
+      paramf.bCP((String)localIterator.next());
     }
-    paramf.aqy(6);
+    paramf.aAl(6);
     AppMethodBeat.o(91139);
   }
   
@@ -63,77 +64,77 @@ public final class b
     }
     Log.i("MicroMsg.QBarAIModHelper", "alvinluo setBlackInterval %d", new Object[] { Integer.valueOf(paramInt) });
     if (paramInt > 0) {
-      paramf.aqy(paramInt);
+      paramf.aAl(paramInt);
     }
     AppMethodBeat.o(176204);
   }
   
-  public static boolean bpU(String paramString)
+  public static boolean bCM(String paramString)
   {
-    AppMethodBeat.i(194821);
+    AppMethodBeat.i(193683);
     if (paramString == null)
     {
-      AppMethodBeat.o(194821);
+      AppMethodBeat.o(193683);
       return false;
     }
     paramString = paramString.toLowerCase();
-    Iterator localIterator = RJw.iterator();
+    Iterator localIterator = Zme.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
       if ((!Util.isNullOrNil(str)) && (paramString.startsWith(str)))
       {
-        AppMethodBeat.o(194821);
+        AppMethodBeat.o(193683);
         return true;
       }
     }
-    AppMethodBeat.o(194821);
+    AppMethodBeat.o(193683);
     return false;
   }
   
-  public static boolean bpV(String paramString)
+  public static boolean bCN(String paramString)
   {
-    AppMethodBeat.i(194822);
+    AppMethodBeat.i(193684);
     if (paramString == null)
     {
-      AppMethodBeat.o(194822);
+      AppMethodBeat.o(193684);
       return false;
     }
     paramString = paramString.toLowerCase();
-    Iterator localIterator = RJx.iterator();
+    Iterator localIterator = Zmf.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
       if ((!Util.isNullOrNil(str)) && (paramString.startsWith(str)))
       {
-        AppMethodBeat.o(194822);
+        AppMethodBeat.o(193684);
         return true;
       }
     }
-    AppMethodBeat.o(194822);
+    AppMethodBeat.o(193684);
     return false;
   }
   
-  public static void hke()
+  public static void inA()
   {
     AppMethodBeat.i(176203);
-    int i = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.sev, 6);
+    int i = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vNZ, 6);
     if (i > 0) {
-      RJv = i;
+      Zmd = i;
     }
-    RJx.clear();
-    RJx.add("https://qr.alipay.com/");
+    Zmf.clear();
+    Zmf.add("https://qr.alipay.com/");
     try
     {
-      String str = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.sew, "");
+      String str = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vOa, "");
       if (!Util.isNullOrNil(str))
       {
         String[] arrayOfString = str.split(";");
         if (arrayOfString.length > 0) {
-          Collections.addAll(RJx, arrayOfString);
+          Collections.addAll(Zmf, arrayOfString);
         }
       }
-      Log.i("MicroMsg.QBarAIModHelper", "alvinluo updateBlackList config: %d, blackListDelayFrames: %d, blackListConfigValue: %s, blackListSize: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(RJv), str, Integer.valueOf(RJx.size()) });
+      Log.i("MicroMsg.QBarAIModHelper", "alvinluo updateBlackList config: %d, blackListDelayFrames: %d, blackListConfigValue: %s, blackListSize: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(Zmd), str, Integer.valueOf(Zmf.size()) });
       AppMethodBeat.o(176203);
       return;
     }
@@ -144,9 +145,9 @@ public final class b
     }
   }
   
-  public static int hkf()
+  public static int inB()
   {
-    return RJv;
+    return Zmd;
   }
 }
 

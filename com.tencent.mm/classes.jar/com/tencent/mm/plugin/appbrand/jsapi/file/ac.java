@@ -1,172 +1,242 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
+import android.app.Activity;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.q;
-import com.tencent.mm.plugin.appbrand.appstorage.z;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.appstorage.r;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.k;
+import com.tencent.mm.plugin.appbrand.k.c;
+import com.tencent.mm.plugin.appbrand.k.d;
+import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
+import com.tencent.mm.protocal.protobuf.apf;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
-import org.json.JSONException;
+import java.util.Iterator;
+import java.util.List;
 import org.json.JSONObject;
 
 public final class ac
-  extends d
+  extends com.tencent.mm.plugin.appbrand.jsapi.c
 {
-  private static final int CTRL_INDEX = 778;
-  private static final String NAME = "private_fileSystemConvert";
+  private static final int CTRL_INDEX = 99;
+  private static final String NAME = "openDocument";
+  private static long oSq = -1L;
+  private String mAppID;
+  private com.tencent.mm.plugin.multitask.c.a oSr;
+  private com.tencent.mm.plugin.multitask.c.a oSs;
+  private com.tencent.mm.plugin.appbrand.q.a orm;
   
-  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
+  public ac()
   {
-    AppMethodBeat.i(174794);
-    Log.i("MicroMsg.AppBrand.JsApiPrivateFileSystem", "hy: %s %s", new Object[] { "private_fileSystemConvert", paramJSONObject.toString() });
-    Object localObject1 = paramJSONObject.optString("operationType", "");
-    Object localObject2;
-    if (((String)localObject1).equalsIgnoreCase("getAbsolutePath"))
+    AppMethodBeat.i(174793);
+    this.oSr = new com.tencent.mm.plugin.multitask.c.a()
     {
-      localObject1 = paramJSONObject.optString("localId");
-      if (Util.isNullOrNil((String)localObject1))
+      public final void bA(List<MultiTaskInfo> paramAnonymousList)
       {
-        paramf.i(paramInt, h(String.format("fail: parmas error %s", new Object[] { paramJSONObject.toString() }), null));
-        AppMethodBeat.o(174794);
-        return;
-      }
-      try
-      {
-        paramJSONObject = new JSONObject();
-        paramJSONObject.put("filePath", localObject1);
-        if (((String)localObject1).contains("wxfile://"))
+        AppMethodBeat.i(282186);
+        paramAnonymousList = paramAnonymousList.iterator();
+        for (;;)
         {
-          localObject2 = paramf.getFileSystem().VY((String)localObject1);
-          if (localObject2 == null)
+          if (paramAnonymousList.hasNext())
           {
-            paramf.i(paramInt, h("fail:file doesn't exist", null));
-            paramf.i(paramInt, h(String.format("fail: %s not exists", new Object[] { localObject1 }), null));
-            AppMethodBeat.o(174794);
-            return;
-          }
-          paramJSONObject.put("filePath", aa.z(((o)localObject2).her()));
-        }
-        paramf.i(paramInt, paramJSONObject.toString());
-        AppMethodBeat.o(174794);
-        return;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        paramf.i(paramInt, h(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() }), null));
-        AppMethodBeat.o(174794);
-        return;
-      }
-    }
-    if (((String)localObject1).equalsIgnoreCase("getWxFilePath")) {}
-    label696:
-    label842:
-    for (;;)
-    {
-      String str2;
-      try
-      {
-        localObject1 = paramJSONObject.optString("fileName");
-        if (!Util.isNullOrNil((String)localObject1)) {
-          break label842;
-        }
-        localObject1 = "private_fileSystemConvert_" + System.currentTimeMillis();
-        localObject2 = paramJSONObject.optString("mimeType");
-        boolean bool2 = paramJSONObject.optBoolean("autoDeleteIfExists", true);
-        if (Util.isNullOrNil((String)localObject2))
-        {
-          paramf.i(paramInt, h(String.format("fail: parmas error %s", new Object[] { paramJSONObject.toString() }), null));
-          AppMethodBeat.o(174794);
-          return;
-        }
-        str2 = (String)localObject1 + "." + (String)localObject2;
-        if ((paramf == null) || (Util.isNullOrNil(str2)))
-        {
-          boolean bool1;
-          if (paramf == null)
-          {
-            bool1 = true;
-            Log.w("MicroMsg.AppBrand.JsApiPrivateFileSystem", "hy: param error %b, %s", new Object[] { Boolean.valueOf(bool1), str2 });
-            paramJSONObject = null;
-            if (Util.isNullOrNil(paramJSONObject))
+            MultiTaskInfo localMultiTaskInfo = (MultiTaskInfo)paramAnonymousList.next();
+            if ((localMultiTaskInfo == null) || (localMultiTaskInfo.field_type != 4) || (localMultiTaskInfo.field_data == null)) {
+              continue;
+            }
+            apf localapf = new apf();
+            try
             {
-              paramf.i(paramInt, h("fail: getAbsoluteFile failed", null));
-              AppMethodBeat.o(174794);
+              localapf.parseFrom(localMultiTaskInfo.field_data);
+              if ((Util.nullAsNil(localapf.appId).equals(ac.d(ac.this))) && (ac.a(ac.this) != null)) {
+                ac.a(ac.this).akK(MMApplicationContext.getProcessName());
+              }
+            }
+            catch (Throwable localThrowable)
+            {
+              for (;;)
+              {
+                Log.e("MicroMsg.AppBrand.JsApiOpenDocument", "handleMultiTaskInfoClicked", new Object[] { localThrowable });
+              }
             }
           }
-          else
-          {
-            bool1 = false;
-            continue;
-          }
         }
-        else
-        {
-          paramJSONObject = (at)paramf.getFileSystem();
-          if (paramJSONObject == null)
-          {
-            Log.w("MicroMsg.AppBrand.JsApiPrivateFileSystem", "hy: fs is null");
-            paramJSONObject = null;
-            continue;
-          }
-          localObject2 = ((z)paramJSONObject.Wj("wxfile://clientdata")).kSr;
-          paramJSONObject = (JSONObject)localObject2;
-          if (!((String)localObject2).endsWith("/")) {
-            paramJSONObject = (String)localObject2 + "/";
-          }
-          localObject2 = new o(paramJSONObject + ".nomedia");
-          if (!((o)localObject2).exists()) {
-            Log.i("MicroMsg.AppBrand.JsApiPrivateFileSystem", "hy: no nomedia file. trigger new");
-          }
-          try
-          {
-            ((o)localObject2).createNewFile();
-            paramJSONObject = paramJSONObject + str2;
-          }
-          catch (IOException localIOException)
-          {
-            Log.printErrStackTrace("MicroMsg.AppBrand.JsApiPrivateFileSystem", localIOException, "hy: create no media file failed!", new Object[0]);
-            continue;
-          }
-        }
-        if (!bool2) {
-          break label696;
-        }
+        AppMethodBeat.o(282186);
       }
-      catch (JSONException paramJSONObject)
+    };
+    this.oSs = new com.tencent.mm.plugin.multitask.c.a()
+    {
+      public final void bA(List<MultiTaskInfo> paramAnonymousList)
       {
-        paramf.i(paramInt, h(String.format("fail: error %s", new Object[] { paramJSONObject.getMessage() }), null));
-        Log.printErrStackTrace("MicroMsg.AppBrand.JsApiPrivateFileSystem", paramJSONObject, "hy: json error!", new Object[0]);
-        AppMethodBeat.o(174794);
-        return;
+        AppMethodBeat.i(272024);
+        paramAnonymousList = paramAnonymousList.iterator();
+        for (;;)
+        {
+          if (paramAnonymousList.hasNext())
+          {
+            MultiTaskInfo localMultiTaskInfo = (MultiTaskInfo)paramAnonymousList.next();
+            if ((localMultiTaskInfo == null) || (localMultiTaskInfo.field_type != 4) || (localMultiTaskInfo.field_data == null)) {
+              continue;
+            }
+            apf localapf = new apf();
+            try
+            {
+              localapf.parseFrom(localMultiTaskInfo.field_data);
+              if ((Util.nullAsNil(localapf.processName).equals(MMApplicationContext.getProcessName())) && (ac.a(ac.this) != null)) {
+                ac.a(ac.this).akK("");
+              }
+            }
+            catch (Throwable localThrowable)
+            {
+              for (;;)
+              {
+                Log.e("MicroMsg.AppBrand.JsApiOpenDocument", "handleMultiTaskInfoClicked", new Object[] { localThrowable });
+              }
+            }
+          }
+        }
+        AppMethodBeat.o(272024);
       }
-      if (s.YS(paramJSONObject)) {
-        s.deleteFile(paramJSONObject);
+    };
+    AppMethodBeat.o(174793);
+  }
+  
+  private static String a(e parame, q paramq, String paramString)
+  {
+    AppMethodBeat.i(277064);
+    if (paramq == null)
+    {
+      AppMethodBeat.o(277064);
+      return null;
+    }
+    if ((parame == null) || (parame.getFileSystem() == null))
+    {
+      AppMethodBeat.o(277064);
+      return null;
+    }
+    String str = paramq.bOF();
+    if (!Util.nullAsNil(str).endsWith(paramString))
+    {
+      Log.i("MicroMsg.AppBrand.JsApiOpenDocument", "create new temp file for suffix");
+      paramString = String.format("%s.%s", new Object[] { paramq.getName(), paramString });
+      parame = parame.getFileSystem().adN(paramString);
+      if ((parame != null) && (parame.ifE())) {}
+    }
+    try
+    {
+      parame.ifM();
+      label109:
+      u.on(str, parame.bOF());
+      if ((parame.ifE()) && (parame.length() == paramq.length()))
+      {
+        parame = parame.bOF();
+        AppMethodBeat.o(277064);
+        return parame;
       }
-      String str1 = s.boZ(paramJSONObject);
-      s.boN(str1);
-      Log.w("MicroMsg.AppBrand.JsApiPrivateFileSystem", "hy: getWxFilePath, fileName: %s, relativeFilePath: %s, relativeFileName: %s, parentAbsolutePath: %s!", new Object[] { localObject1, str2, paramJSONObject, str1 });
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("filePath", paramJSONObject);
-      ((JSONObject)localObject1).put("localId", "wxfile://clientdata/".concat(String.valueOf(str2)));
-      paramf.i(paramInt, ((JSONObject)localObject1).toString());
-      AppMethodBeat.o(174794);
-      return;
-      Log.e("MicroMsg.AppBrand.JsApiPrivateFileSystem", "hy: invalid operate type: %s", new Object[] { localObject1 });
-      paramf.i(paramInt, h(String.format("fail: not valid operate type: %s", new Object[] { localObject1 }), null));
-      AppMethodBeat.o(174794);
+      parame = paramq.bOF();
+      AppMethodBeat.o(277064);
+      return parame;
+    }
+    catch (IOException paramString)
+    {
+      break label109;
+    }
+  }
+  
+  public final void a(final e parame, JSONObject paramJSONObject, final int paramInt)
+  {
+    AppMethodBeat.i(46349);
+    long l = Util.nowMilliSecond();
+    if (l - oSq < 1000L)
+    {
+      parame.j(paramInt, h("fail:document viewer already starting", null));
+      AppMethodBeat.o(46349);
       return;
     }
+    oSq = l;
+    final Context localContext = parame.getContext();
+    if ((localContext == null) || (!(localContext instanceof Activity)))
+    {
+      parame.j(paramInt, h("fail", null));
+      AppMethodBeat.o(46349);
+      return;
+    }
+    boolean bool = paramJSONObject.optBoolean("showMenu");
+    Object localObject = paramJSONObject.optString("filePath");
+    if (Util.isNullOrNil((String)localObject))
+    {
+      parame.j(paramInt, h("fail:invalid data", null));
+      AppMethodBeat.o(46349);
+      return;
+    }
+    q localq = parame.getFileSystem().adL((String)localObject);
+    if (localq == null)
+    {
+      parame.j(paramInt, h("fail:file doesn't exist", null));
+      AppMethodBeat.o(46349);
+      return;
+    }
+    this.mAppID = parame.getAppId();
+    String str = org.apache.commons.a.c.bIf((String)localObject);
+    localObject = new OpenFileRequest();
+    ((OpenFileRequest)localObject).filePath = a(parame, localq, str);
+    ((OpenFileRequest)localObject).jmx = str;
+    ((OpenFileRequest)localObject).appId = this.mAppID;
+    ((OpenFileRequest)localObject).orn = bool;
+    paramJSONObject = paramJSONObject.optString("fileType");
+    if (!Util.isNullOrNil(paramJSONObject)) {
+      ((OpenFileRequest)localObject).jmx = paramJSONObject;
+    }
+    com.tencent.mm.plugin.appbrand.ipc.a.b(localContext, (AppBrandProxyUIProcessTask.ProcessRequest)localObject, new AppBrandProxyUIProcessTask.b() {});
+    k.a(parame.getAppId(), new k.c()
+    {
+      public final void a(k.d paramAnonymousd)
+      {
+        AppMethodBeat.i(174789);
+        if (ac.a(ac.this) != null)
+        {
+          ac.a(ac.this);
+          com.tencent.mm.plugin.appbrand.q.a.a(ac.b(ac.this));
+        }
+        AppMethodBeat.o(174789);
+      }
+      
+      public final void onDestroy()
+      {
+        AppMethodBeat.i(174788);
+        if (ac.a(ac.this) != null)
+        {
+          ac.a(ac.this);
+          ac.a(ac.this, null);
+        }
+        k.b(parame.getAppId(), this);
+        AppMethodBeat.o(174788);
+      }
+      
+      public final void onResume()
+      {
+        AppMethodBeat.i(174790);
+        if (ac.a(ac.this) != null)
+        {
+          ac.a(ac.this);
+          com.tencent.mm.plugin.appbrand.q.a.a(ac.c(ac.this));
+        }
+        AppMethodBeat.o(174790);
+      }
+    });
+    AppMethodBeat.o(46349);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.ac
  * JD-Core Version:    0.7.0.1
  */

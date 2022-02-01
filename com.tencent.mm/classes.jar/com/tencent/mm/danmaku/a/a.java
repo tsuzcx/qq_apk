@@ -15,26 +15,26 @@ import java.util.TreeSet;
 
 public abstract class a
 {
-  protected int gNo;
-  protected final TreeSet<com.tencent.mm.danmaku.b.a> gNp;
-  protected final List<com.tencent.mm.danmaku.b.a> gNq;
-  protected final com.tencent.mm.danmaku.render.b gNr;
-  private ArrayList<Object> gNs;
-  protected com.tencent.mm.danmaku.c.a gNt;
-  protected b gNu;
-  protected f gNv;
-  protected c gNw;
+  protected int jxJ;
+  protected final TreeSet<com.tencent.mm.danmaku.b.a> jxK;
+  protected final List<com.tencent.mm.danmaku.b.a> jxL;
+  protected final com.tencent.mm.danmaku.render.b jxM;
+  private ArrayList<Object> jxN;
+  protected com.tencent.mm.danmaku.c.a jxO;
+  protected b jxP;
+  protected f jxQ;
+  protected c jxR;
   
   protected a(com.tencent.mm.danmaku.c.a parama, b paramb, Comparator<com.tencent.mm.danmaku.b.a> paramComparator, f paramf, c paramc)
   {
-    this.gNt = parama;
-    this.gNu = paramb;
-    this.gNv = paramf;
-    this.gNw = paramc;
-    this.gNr = new com.tencent.mm.danmaku.render.b(paramb);
-    this.gNp = new TreeSet(paramComparator);
-    this.gNq = new LinkedList();
-    arP();
+    this.jxO = parama;
+    this.jxP = paramb;
+    this.jxQ = paramf;
+    this.jxR = paramc;
+    this.jxM = new com.tencent.mm.danmaku.render.b(paramb);
+    this.jxK = new TreeSet(paramComparator);
+    this.jxL = new LinkedList();
+    ayA();
   }
   
   public static a a(com.tencent.mm.danmaku.c.a parama, b paramb, Comparator<com.tencent.mm.danmaku.b.a> paramComparator, f paramf, c paramc)
@@ -46,28 +46,28 @@ public abstract class a
   
   protected final void a(Canvas paramCanvas, com.tencent.mm.danmaku.b.a parama)
   {
-    com.tencent.mm.danmaku.render.a locala = this.gNt.e(parama);
-    com.tencent.mm.danmaku.render.b localb = this.gNr;
-    com.tencent.mm.danmaku.c.a locala1 = this.gNt;
+    com.tencent.mm.danmaku.render.a locala = this.jxO.d(parama);
+    com.tencent.mm.danmaku.render.b localb = this.jxM;
+    com.tencent.mm.danmaku.c.a locala1 = this.jxO;
     b localb1;
     Object localObject2;
     Object localObject1;
     if (paramCanvas != null) {
-      if (parama.asI())
+      if (parama.azw())
       {
-        localb1 = localb.gNu;
+        localb1 = localb.jxP;
         if (parama == null) {
           throw new RuntimeException("fetchBitmapCache NullPointException, BaseDanmaku is null");
         }
-        if (!parama.gPe) {
+        if (!parama.jzy) {
           break label291;
         }
-        localObject2 = parama.asJ();
+        localObject2 = parama.azx();
         if (localObject2 != null) {
           break label150;
         }
-        localObject1 = localb1.gNx.getBitmap((int)parama.asB(), (int)parama.asC());
-        parama.w((Bitmap)localObject1);
+        localObject1 = localb1.jxS.getBitmap((int)parama.azp(), (int)parama.azq());
+        parama.r((Bitmap)localObject1);
         if (localObject1 != null) {
           break label213;
         }
@@ -82,99 +82,99 @@ public abstract class a
     {
       if (i == 0)
       {
-        m.asX();
+        m.azL();
         i = paramCanvas.save();
-        locala.a(paramCanvas, parama, parama.asG(), parama.asH());
+        locala.a(paramCanvas, parama, parama.azu(), parama.azv());
         paramCanvas.restoreToCount(i);
       }
-      parama.ako();
+      parama.aqk();
       return;
       label150:
-      if (((Bitmap)localObject2).getWidth() >= (int)parama.asB())
+      if (((Bitmap)localObject2).getWidth() >= (int)parama.azp())
       {
         localObject1 = localObject2;
-        if (((Bitmap)localObject2).getHeight() >= (int)parama.asC()) {
+        if (((Bitmap)localObject2).getHeight() >= (int)parama.azq()) {
           break;
         }
       }
-      localb1.gNx.x((Bitmap)localObject2);
-      localObject1 = localb1.gNx.getBitmap((int)parama.asB(), (int)parama.asC());
+      localb1.jxS.s((Bitmap)localObject2);
+      localObject1 = localb1.jxS.getBitmap((int)parama.azp(), (int)parama.azq());
       break;
       label213:
-      localObject2 = parama.asK();
+      localObject2 = parama.azy();
       if (localObject2 == null)
       {
         localObject2 = new Canvas((Bitmap)localObject1);
-        parama.m((Canvas)localObject2);
+        parama.n((Canvas)localObject2);
       }
       for (;;)
       {
         ((Bitmap)localObject1).eraseColor(0);
-        parama.gPe = false;
-        locala1.e(parama).a((Canvas)localObject2, parama, com.tencent.mm.danmaku.c.a.asO().gPJ, com.tencent.mm.danmaku.c.a.asO().gPI);
+        parama.jzy = false;
+        locala1.d(parama).a((Canvas)localObject2, parama, com.tencent.mm.danmaku.c.a.azC().jAc, com.tencent.mm.danmaku.c.a.azC().jAb);
         break;
         ((Canvas)localObject2).setBitmap((Bitmap)localObject1);
       }
       label291:
-      localObject1 = parama.asJ();
+      localObject1 = parama.azx();
       break label106;
       label300:
       i = paramCanvas.save();
-      localb.gPU.set(0, 0, (int)parama.asB(), (int)parama.asC());
-      localb.gPV.set((int)parama.getLeft(), (int)parama.getTop(), (int)parama.getRight(), (int)parama.getBottom());
-      paramCanvas.drawBitmap((Bitmap)localObject1, localb.gPU, localb.gPV, localb.gPW);
+      localb.jAn.set(0, 0, (int)parama.azp(), (int)parama.azq());
+      localb.jAo.set((int)parama.getLeft(), (int)parama.getTop(), (int)parama.getRight(), (int)parama.getBottom());
+      paramCanvas.drawBitmap((Bitmap)localObject1, localb.jAn, localb.jAo, localb.jAp);
       paramCanvas.restoreToCount(i);
     }
   }
   
   public final void a(com.tencent.mm.danmaku.b.a parama)
   {
-    this.gNp.add(parama);
+    this.jxK.add(parama);
   }
   
-  public void arP() {}
+  public void ayA() {}
   
-  public abstract void arQ();
+  public abstract void ayB();
   
-  public final int arR()
+  public final int ayC()
   {
-    return this.gNo;
+    return this.jxJ;
   }
   
-  public final List<com.tencent.mm.danmaku.b.a> arS()
+  public final List<com.tencent.mm.danmaku.b.a> ayD()
   {
-    return this.gNq;
+    return this.jxL;
   }
   
-  public final void arT()
+  public final void ayE()
   {
-    this.gNq.clear();
+    this.jxL.clear();
   }
   
   public final void b(com.tencent.mm.danmaku.b.a parama)
   {
-    parama.gPe = true;
-    parama.gPd = true;
-    float f = parama.asB();
-    h.a(this.gNt, parama);
-    parama.aj((parama.asB() + com.tencent.mm.danmaku.b.a.getScreenWidth()) / (f + com.tencent.mm.danmaku.b.a.getScreenWidth()));
+    parama.jzy = true;
+    parama.jzx = true;
+    float f = parama.azp();
+    h.a(this.jxO, parama);
+    parama.ai((parama.azp() + com.tencent.mm.danmaku.b.a.getScreenWidth()) / (f + com.tencent.mm.danmaku.b.a.getScreenWidth()));
   }
   
-  public final void h(Canvas paramCanvas)
+  public abstract void fP();
+  
+  public final void i(Canvas paramCanvas)
   {
-    i(paramCanvas);
-    if ((this.gNs != null) && (paramCanvas != null))
+    j(paramCanvas);
+    if ((this.jxN != null) && (paramCanvas != null))
     {
-      paramCanvas = this.gNs.iterator();
+      paramCanvas = this.jxN.iterator();
       while (paramCanvas.hasNext()) {
         paramCanvas.next();
       }
     }
   }
   
-  public abstract void i(Canvas paramCanvas);
-  
-  public abstract void layout();
+  public abstract void j(Canvas paramCanvas);
 }
 
 

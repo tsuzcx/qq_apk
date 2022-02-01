@@ -13,20 +13,20 @@ import java.util.List;
 public final class k
   extends MAutoStorage<b>
 {
-  public static final String[] iBh;
-  public final ISQLiteDatabase kLX;
+  public static final String[] lqL;
+  public final ISQLiteDatabase nFQ;
   
   static
   {
     AppMethodBeat.i(44488);
-    iBh = new String[] { MAutoStorage.getCreateSQLs(b.iBg, "AppBrandAppLaunchUsernameDuplicateRecord2") };
+    lqL = new String[] { MAutoStorage.getCreateSQLs(b.lqK, "AppBrandAppLaunchUsernameDuplicateRecord2") };
     AppMethodBeat.o(44488);
   }
   
   public k(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, b.iBg, "AppBrandAppLaunchUsernameDuplicateRecord2", b.INDEX_CREATE);
-    this.kLX = paramISQLiteDatabase;
+    super(paramISQLiteDatabase, b.lqK, "AppBrandAppLaunchUsernameDuplicateRecord2", b.INDEX_CREATE);
+    this.nFQ = paramISQLiteDatabase;
   }
   
   public final boolean P(String paramString, long paramLong)
@@ -53,62 +53,59 @@ public final class k
     return bool;
   }
   
-  public final b Ws(String paramString)
+  public final boolean aef(String paramString)
   {
-    AppMethodBeat.i(226387);
-    b localb = new b();
-    localb.field_usernameHash = paramString.hashCode();
-    if ((!get(localb, new String[] { "usernameHash" })) || (localb.field_username == null) || (!localb.field_username.equals(paramString)))
-    {
-      AppMethodBeat.o(226387);
-      return null;
-    }
-    AppMethodBeat.o(226387);
-    return localb;
-  }
-  
-  public final boolean Wt(String paramString)
-  {
-    AppMethodBeat.i(226389);
+    AppMethodBeat.i(279979);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(226389);
+      AppMethodBeat.o(279979);
       return false;
     }
-    paramString = Ws(paramString);
-    if ((paramString != null) && (paramString.field_updateTime > 0L))
+    b localb2 = new b();
+    localb2.field_usernameHash = paramString.hashCode();
+    b localb1;
+    if ((get(localb2, new String[] { "usernameHash" })) && (localb2.field_username != null))
     {
-      AppMethodBeat.o(226389);
+      localb1 = localb2;
+      if (localb2.field_username.equals(paramString)) {}
+    }
+    else
+    {
+      localb1 = null;
+    }
+    if ((localb1 != null) && (localb1.field_updateTime > 0L))
+    {
+      AppMethodBeat.o(279979);
       return true;
     }
-    AppMethodBeat.o(226389);
+    AppMethodBeat.o(279979);
     return false;
   }
   
-  public final boolean Wu(String paramString)
+  public final boolean aeg(String paramString)
   {
-    AppMethodBeat.i(226390);
+    AppMethodBeat.i(279980);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(226390);
+      AppMethodBeat.o(279980);
       return false;
     }
     b localb = new b();
     localb.field_username = paramString;
     localb.field_usernameHash = paramString.hashCode();
     boolean bool = super.delete(localb, new String[] { "usernameHash" });
-    AppMethodBeat.o(226390);
+    AppMethodBeat.o(279980);
     return bool;
   }
   
-  public final List<String> bxT()
+  public final List<String> bJi()
   {
-    AppMethodBeat.i(226388);
+    AppMethodBeat.i(279977);
     Cursor localCursor = rawQuery(String.format("select attributes.appId from %s as duplicate inner join %s as attributes where duplicate.username = attributes.username", new Object[] { "AppBrandAppLaunchUsernameDuplicateRecord2", "WxaAttributesTable" }), new String[0]);
     ArrayList localArrayList = new ArrayList();
     if ((localCursor == null) || (localCursor.getColumnCount() <= 0))
     {
-      AppMethodBeat.o(226388);
+      AppMethodBeat.o(279977);
       return localArrayList;
     }
     for (;;)
@@ -128,17 +125,17 @@ public final class k
       finally
       {
         localCursor.close();
-        AppMethodBeat.o(226388);
+        AppMethodBeat.o(279977);
       }
     }
     localCursor.close();
-    AppMethodBeat.o(226388);
+    AppMethodBeat.o(279977);
     return localList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.k
  * JD-Core Version:    0.7.0.1
  */

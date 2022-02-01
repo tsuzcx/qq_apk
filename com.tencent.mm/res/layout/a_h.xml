@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView android:id="@id/byb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="15.0dip" android:paddingEnd="15.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m"
+<androidx.recyclerview.widget.RecyclerView android:id="@id/byb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="15.0dip" android:paddingEnd="15.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />

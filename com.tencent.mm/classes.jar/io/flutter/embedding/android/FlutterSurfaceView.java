@@ -1,24 +1,26 @@
 package io.flutter.embedding.android;
 
 import android.content.Context;
+import android.graphics.Region;
+import android.graphics.Region.Op;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import io.flutter.embedding.engine.b.b;
-import io.flutter.embedding.engine.b.c;
+import io.flutter.embedding.engine.renderer.a;
+import io.flutter.embedding.engine.renderer.c;
 
 public class FlutterSurfaceView
   extends SurfaceView
   implements c
 {
-  private final b SMD;
-  private io.flutter.embedding.engine.b.a SMT;
-  private boolean SMW;
-  private final boolean SNc;
-  private boolean SNd;
-  private final SurfaceHolder.Callback SNe;
+  private final io.flutter.embedding.engine.renderer.b aaoE;
+  private a aaoR;
+  private boolean aaoU;
+  private final boolean aapa;
+  private boolean aapb;
+  private final SurfaceHolder.Callback aapc;
   
   public FlutterSurfaceView(Context paramContext)
   {
@@ -34,14 +36,14 @@ public class FlutterSurfaceView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(10010);
-    this.SNd = false;
-    this.SMW = false;
-    this.SNe = new SurfaceHolder.Callback()
+    this.aapb = false;
+    this.aaoU = false;
+    this.aapc = new SurfaceHolder.Callback()
     {
       public final void surfaceChanged(SurfaceHolder paramAnonymousSurfaceHolder, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
         AppMethodBeat.i(9968);
-        io.flutter.a.hwd();
+        io.flutter.b.iAd();
         if (FlutterSurfaceView.a(FlutterSurfaceView.this)) {
           FlutterSurfaceView.a(FlutterSurfaceView.this, paramAnonymousInt2, paramAnonymousInt3);
         }
@@ -51,7 +53,7 @@ public class FlutterSurfaceView
       public final void surfaceCreated(SurfaceHolder paramAnonymousSurfaceHolder)
       {
         AppMethodBeat.i(9967);
-        io.flutter.a.hwd();
+        io.flutter.b.iAd();
         FlutterSurfaceView.a(FlutterSurfaceView.this, true);
         if (FlutterSurfaceView.a(FlutterSurfaceView.this)) {
           FlutterSurfaceView.b(FlutterSurfaceView.this);
@@ -62,7 +64,7 @@ public class FlutterSurfaceView
       public final void surfaceDestroyed(SurfaceHolder paramAnonymousSurfaceHolder)
       {
         AppMethodBeat.i(9969);
-        io.flutter.a.hwd();
+        io.flutter.b.iAd();
         FlutterSurfaceView.a(FlutterSurfaceView.this, false);
         if (FlutterSurfaceView.a(FlutterSurfaceView.this)) {
           FlutterSurfaceView.c(FlutterSurfaceView.this);
@@ -70,28 +72,28 @@ public class FlutterSurfaceView
         AppMethodBeat.o(9969);
       }
     };
-    this.SMD = new b()
+    this.aaoE = new io.flutter.embedding.engine.renderer.b()
     {
-      public final void dLt()
+      public final void epX()
       {
-        AppMethodBeat.i(215048);
-        io.flutter.a.hwd();
+        AppMethodBeat.i(254953);
+        io.flutter.b.iAd();
         FlutterSurfaceView.this.setAlpha(1.0F);
         if (FlutterSurfaceView.d(FlutterSurfaceView.this) != null) {
           FlutterSurfaceView.d(FlutterSurfaceView.this).removeIsDisplayingFlutterUiListener(this);
         }
-        AppMethodBeat.o(215048);
+        AppMethodBeat.o(254953);
       }
       
-      public final void dLu() {}
+      public final void epY() {}
     };
-    this.SNc = paramBoolean;
-    if (this.SNc)
+    this.aapa = paramBoolean;
+    if (this.aapa)
     {
       getHolder().setFormat(-2);
       setZOrderOnTop(true);
     }
-    getHolder().addCallback(this.SNe);
+    getHolder().addCallback(this.aapc);
     setAlpha(0.0F);
     AppMethodBeat.o(10010);
   }
@@ -101,91 +103,106 @@ public class FlutterSurfaceView
     this(paramContext, null, paramBoolean);
   }
   
-  private void hww()
+  private void iAB()
   {
     AppMethodBeat.i(10013);
-    if ((this.SMT == null) || (getHolder() == null))
+    if ((this.aaoR == null) || (getHolder() == null))
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("connectSurfaceToRenderer() should only be called when flutterRenderer and getHolder() are non-null.");
       AppMethodBeat.o(10013);
       throw localIllegalStateException;
     }
-    this.SMT.o(getHolder().getSurface());
+    this.aaoR.t(getHolder().getSurface());
     AppMethodBeat.o(10013);
   }
   
-  private void hwx()
+  private void iAC()
   {
     AppMethodBeat.i(10014);
-    if (this.SMT == null)
+    if (this.aaoR == null)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("disconnectSurfaceFromRenderer() should only be called when flutterRenderer is non-null.");
       AppMethodBeat.o(10014);
       throw localIllegalStateException;
     }
-    this.SMT.hwZ();
+    this.aaoR.iBb();
     AppMethodBeat.o(10014);
   }
   
-  public final void a(io.flutter.embedding.engine.b.a parama)
+  public final void a(a parama)
   {
     AppMethodBeat.i(10011);
-    io.flutter.a.hwd();
-    if (this.SMT != null)
+    io.flutter.b.iAd();
+    if (this.aaoR != null)
     {
-      io.flutter.a.hwd();
-      this.SMT.hwZ();
-      this.SMT.removeIsDisplayingFlutterUiListener(this.SMD);
+      io.flutter.b.iAd();
+      this.aaoR.iBb();
+      this.aaoR.removeIsDisplayingFlutterUiListener(this.aaoE);
     }
-    this.SMT = parama;
-    this.SMW = true;
-    this.SMT.addIsDisplayingFlutterUiListener(this.SMD);
-    if (this.SNd)
+    this.aaoR = parama;
+    this.aaoU = true;
+    this.aaoR.addIsDisplayingFlutterUiListener(this.aaoE);
+    if (this.aapb)
     {
-      io.flutter.a.hwd();
-      hww();
+      io.flutter.b.iAd();
+      iAB();
     }
     AppMethodBeat.o(10011);
   }
   
-  public io.flutter.embedding.engine.b.a getAttachedRenderer()
+  public boolean gatherTransparentRegion(Region paramRegion)
   {
-    return this.SMT;
+    AppMethodBeat.i(255111);
+    if (getAlpha() < 1.0F)
+    {
+      AppMethodBeat.o(255111);
+      return false;
+    }
+    int[] arrayOfInt = new int[2];
+    getLocationInWindow(arrayOfInt);
+    paramRegion.op(arrayOfInt[0], arrayOfInt[1], arrayOfInt[0] + getRight() - getLeft(), arrayOfInt[1] + getBottom() - getTop(), Region.Op.DIFFERENCE);
+    AppMethodBeat.o(255111);
+    return true;
   }
   
-  public final void hwu()
+  public a getAttachedRenderer()
+  {
+    return this.aaoR;
+  }
+  
+  public final void iAz()
   {
     AppMethodBeat.i(10012);
-    if (this.SMT != null)
+    if (this.aaoR != null)
     {
       if (getWindowToken() != null)
       {
-        io.flutter.a.hwd();
-        hwx();
+        io.flutter.b.iAd();
+        iAC();
       }
       setAlpha(0.0F);
-      this.SMT.removeIsDisplayingFlutterUiListener(this.SMD);
-      this.SMT = null;
-      this.SMW = false;
+      this.aaoR.removeIsDisplayingFlutterUiListener(this.aaoE);
+      this.aaoR = null;
+      this.aaoU = false;
       AppMethodBeat.o(10012);
       return;
     }
-    io.flutter.a.hwf();
+    io.flutter.b.iAf();
     AppMethodBeat.o(10012);
   }
   
   public final void pause()
   {
-    AppMethodBeat.i(215099);
-    if (this.SMT != null)
+    AppMethodBeat.i(255116);
+    if (this.aaoR != null)
     {
-      this.SMT = null;
-      this.SMW = false;
-      AppMethodBeat.o(215099);
+      this.aaoR = null;
+      this.aaoU = false;
+      AppMethodBeat.o(255116);
       return;
     }
-    io.flutter.a.hwf();
-    AppMethodBeat.o(215099);
+    io.flutter.b.iAf();
+    AppMethodBeat.o(255116);
   }
 }
 

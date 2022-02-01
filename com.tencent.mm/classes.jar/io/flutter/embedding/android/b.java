@@ -6,46 +6,46 @@ import android.view.InputDevice;
 import android.view.InputDevice.MotionRange;
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import io.flutter.embedding.engine.b.a;
+import io.flutter.embedding.engine.renderer.a;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
 public final class b
 {
-  private static final Matrix SMt;
-  private final a SMr;
-  private final h SMs;
-  private final boolean SMu;
+  private static final Matrix aaou;
+  private final a aaos;
+  private final h aaot;
+  private final boolean aaov;
   
   static
   {
-    AppMethodBeat.i(215042);
-    SMt = new Matrix();
-    AppMethodBeat.o(215042);
+    AppMethodBeat.i(255757);
+    aaou = new Matrix();
+    AppMethodBeat.o(255757);
   }
   
   public b(a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(215039);
-    this.SMr = parama;
-    this.SMs = h.hwD();
-    this.SMu = paramBoolean;
-    AppMethodBeat.o(215039);
+    AppMethodBeat.i(255744);
+    this.aaos = parama;
+    this.aaot = h.iAH();
+    this.aaov = paramBoolean;
+    AppMethodBeat.o(255744);
   }
   
   private void a(MotionEvent paramMotionEvent, int paramInt1, int paramInt2, int paramInt3, Matrix paramMatrix, ByteBuffer paramByteBuffer)
   {
-    AppMethodBeat.i(215041);
+    AppMethodBeat.i(255752);
     if (paramInt2 == -1)
     {
-      AppMethodBeat.o(215041);
+      AppMethodBeat.o(255752);
       return;
     }
     long l1 = 0L;
-    if (this.SMu) {
-      l1 = this.SMs.aD(paramMotionEvent).id;
+    if (this.aaov) {
+      l1 = this.aaot.aL(paramMotionEvent).id;
     }
-    int j = ato(paramMotionEvent.getToolType(paramInt1));
+    int j = aDj(paramMotionEvent.getToolType(paramInt1));
     int i;
     if (paramMotionEvent.getActionMasked() == 8)
     {
@@ -133,7 +133,7 @@ public final class b
       }
       paramByteBuffer.putDouble(-paramMotionEvent.getAxisValue(10));
       paramByteBuffer.putDouble(-paramMotionEvent.getAxisValue(9));
-      AppMethodBeat.o(215041);
+      AppMethodBeat.o(255752);
       return;
       i = 0;
       break;
@@ -155,10 +155,10 @@ public final class b
     label586:
     paramByteBuffer.putDouble(0.0D);
     paramByteBuffer.putDouble(0.0D);
-    AppMethodBeat.o(215041);
+    AppMethodBeat.o(255752);
   }
   
-  private static int atn(int paramInt)
+  private static int aDi(int paramInt)
   {
     if (paramInt == 0) {}
     do
@@ -186,7 +186,7 @@ public final class b
     return -1;
   }
   
-  private static int ato(int paramInt)
+  private static int aDj(int paramInt)
   {
     switch (paramInt)
     {
@@ -204,12 +204,12 @@ public final class b
   
   public final boolean a(MotionEvent paramMotionEvent, Matrix paramMatrix)
   {
-    AppMethodBeat.i(215040);
+    AppMethodBeat.i(255747);
     int k = paramMotionEvent.getPointerCount();
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(k * 29 * 8);
     localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
     int j = paramMotionEvent.getActionMasked();
-    int m = atn(paramMotionEvent.getActionMasked());
+    int m = aDi(paramMotionEvent.getActionMasked());
     int i;
     if ((j == 0) || (j == 5))
     {
@@ -230,7 +230,7 @@ public final class b
         break label233;
       }
       paramMotionEvent = new AssertionError("Packet position is not on field boundary");
-      AppMethodBeat.o(215040);
+      AppMethodBeat.o(255747);
       throw paramMotionEvent;
       i = 0;
       break;
@@ -261,8 +261,8 @@ public final class b
       }
     }
     label233:
-    this.SMr.dispatchPointerDataPacket(localByteBuffer, localByteBuffer.position());
-    AppMethodBeat.o(215040);
+    this.aaos.dispatchPointerDataPacket(localByteBuffer, localByteBuffer.position());
+    AppMethodBeat.o(255747);
     return true;
   }
   
@@ -288,17 +288,17 @@ public final class b
       break;
     }
     label70:
-    int i = atn(paramMotionEvent.getActionMasked());
+    int i = aDi(paramMotionEvent.getActionMasked());
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(paramMotionEvent.getPointerCount() * 29 * 8);
     localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
-    a(paramMotionEvent, paramMotionEvent.getActionIndex(), i, 0, SMt, localByteBuffer);
+    a(paramMotionEvent, paramMotionEvent.getActionIndex(), i, 0, aaou, localByteBuffer);
     if (localByteBuffer.position() % 232 != 0)
     {
       paramMotionEvent = new AssertionError("Packet position is not on field boundary.");
       AppMethodBeat.o(9980);
       throw paramMotionEvent;
     }
-    this.SMr.dispatchPointerDataPacket(localByteBuffer, localByteBuffer.position());
+    this.aaos.dispatchPointerDataPacket(localByteBuffer, localByteBuffer.position());
     AppMethodBeat.o(9980);
     return true;
   }
@@ -306,7 +306,7 @@ public final class b
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(9979);
-    boolean bool = a(paramMotionEvent, SMt);
+    boolean bool = a(paramMotionEvent, aaou);
     AppMethodBeat.o(9979);
     return bool;
   }

@@ -5,11 +5,11 @@ import com.tencent.wecall.talkroom.model.f;
 
 public final class b
 {
-  private static int RGP = 2;
-  private static boolean RGQ = false;
+  private static int Ziv = 2;
+  private static boolean Ziw = false;
   public static int level = 0;
   
-  private static String O(Object[] paramArrayOfObject)
+  private static String P(Object[] paramArrayOfObject)
   {
     if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0)) {
       return "";
@@ -39,52 +39,52 @@ public final class b
     return localStringBuffer.toString();
   }
   
-  private static void aa(int paramInt, String paramString1, String paramString2)
+  private static void ae(int paramInt, String paramString1, String paramString2)
   {
-    e locale = f.hrt();
+    e locale = f.ivc();
     if (locale != null) {
-      locale.H(paramInt, "MTSDK".concat(String.valueOf(paramString1)), paramString2);
+      locale.K(paramInt, "MTSDK".concat(String.valueOf(paramString1)), paramString2);
     }
   }
   
   public static void d(String paramString, Object... paramVarArgs)
   {
-    if ((!RGQ) || (RGP > 1)) {}
+    if ((!Ziw) || (Ziv > 1)) {}
     while (paramString == null) {
       return;
     }
-    aa(1, paramString, " ".concat(String.valueOf(O(paramVarArgs))));
+    ae(1, paramString, " ".concat(String.valueOf(P(paramVarArgs))));
   }
   
   public static void e(String paramString, Object... paramVarArgs)
   {
-    if ((!RGQ) || (RGP > 4)) {
+    if ((!Ziw) || (Ziv > 4)) {
       return;
     }
-    aa(4, paramString, " ".concat(String.valueOf(O(paramVarArgs))));
-  }
-  
-  public static void hjo()
-  {
-    RGP = 0;
-    RGQ = true;
+    ae(4, paramString, " ".concat(String.valueOf(P(paramVarArgs))));
   }
   
   public static void i(String paramString, Object... paramVarArgs)
   {
-    if ((!RGQ) || (RGP > 2)) {
+    if ((!Ziw) || (Ziv > 2)) {
       return;
     }
-    aa(2, paramString, " ".concat(String.valueOf(O(paramVarArgs))));
+    ae(2, paramString, " ".concat(String.valueOf(P(paramVarArgs))));
+  }
+  
+  public static void ikY()
+  {
+    Ziv = 0;
+    Ziw = true;
   }
   
   public static void w(String paramString, Object... paramVarArgs)
   {
-    if ((!RGQ) || (RGP > 3)) {}
+    if ((!Ziw) || (Ziv > 3)) {}
     while (paramString == null) {
       return;
     }
-    aa(3, paramString, " ".concat(String.valueOf(O(paramVarArgs))));
+    ae(3, paramString, " ".concat(String.valueOf(P(paramVarArgs))));
   }
 }
 

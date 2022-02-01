@@ -29,7 +29,7 @@ public final class a
       public final boolean queueIdle()
       {
         AppMethodBeat.i(3442);
-        c.lp(a.this.context).hpj();
+        c.mn(a.this.context).isK();
         AppMethodBeat.o(3442);
         return false;
       }
@@ -43,8 +43,8 @@ public final class a
     super.a(paramFile, paramInt, paramBoolean);
     if (paramInt == 1)
     {
-      paramFile = com.tencent.tinker.lib.e.a.lk(this.context).SjZ;
-      if ((paramFile.Ske != null) && ("00000000000000000000000000000000".equals(paramFile.Ske)))
+      paramFile = com.tencent.tinker.lib.e.a.mi(this.context).ZMK;
+      if ((paramFile.ZMP != null) && ("00000000000000000000000000000000".equals(paramFile.ZMP)))
       {
         ShareTinkerLog.v("Tinker.ServerLoadReporter", "Roll back patch when restarting main process, restart all other process also!", new Object[0]);
         ShareTinkerInternals.killAllOtherProcess(this.context);
@@ -69,7 +69,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tinkerboots.sdk.tinker.b.a
  * JD-Core Version:    0.7.0.1
  */

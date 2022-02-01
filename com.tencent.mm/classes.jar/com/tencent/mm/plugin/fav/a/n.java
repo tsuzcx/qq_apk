@@ -1,392 +1,229 @@
 package com.tencent.mm.plugin.fav.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.k;
-import com.tencent.mm.ak.k.a;
-import com.tencent.mm.ak.k.b;
-import com.tencent.mm.ak.l;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.sns.b.d;
+import com.tencent.mm.plugin.sns.b.k;
+import com.tencent.mm.protocal.protobuf.anm;
+import com.tencent.mm.protocal.protobuf.anp;
+import com.tencent.mm.protocal.protobuf.aoc;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.MMEntryLock;
-import com.tencent.mm.sdk.platformtools.SensorController;
-import com.tencent.mm.sdk.platformtools.SensorController.SensorEventCallBack;
-import com.tencent.mm.sdk.platformtools.ShakeManager;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
 public final class n
-  implements k.a, k.b, SensorController.SensorEventCallBack
 {
-  static SensorController qUq;
-  private List<a> callbacks;
-  private int dLt;
-  private long lastShakeTime;
-  public String path;
-  public k qUl;
-  private boolean qUm;
-  private boolean qUn;
-  private boolean qUo;
-  ShakeManager qUp;
-  boolean tbh;
-  private int tbi;
-  
-  public n()
+  public static void a(a parama, g paramg)
   {
-    AppMethodBeat.i(103442);
-    this.qUm = true;
-    this.qUo = false;
-    this.lastShakeTime = -1L;
-    this.callbacks = new LinkedList();
-    this.qUl = ((l)g.af(l.class)).Xa();
-    Boolean localBoolean = (Boolean)g.aAh().azQ().get(26, Boolean.FALSE);
-    this.qUn = localBoolean.booleanValue();
-    boolean bool;
-    if (!localBoolean.booleanValue())
+    AppMethodBeat.i(103438);
+    if ((paramg.field_favProto.syG == null) || (paramg.field_favProto.syG.isEmpty()))
     {
-      bool = true;
-      this.qUm = bool;
-      if (this.qUl == null) {
-        break label185;
-      }
-      this.qUl.a(this);
-      this.qUl.a(this);
-      this.qUl.cU(this.qUm);
-    }
-    for (;;)
-    {
-      if (qUq == null) {
-        qUq = new SensorController(MMApplicationContext.getContext());
-      }
-      if (this.qUp == null) {
-        this.qUp = new ShakeManager(MMApplicationContext.getContext());
-      }
-      AppMethodBeat.o(103442);
-      return;
-      bool = false;
-      break;
-      label185:
-      Log.w("MicroMsg.FavVoiceLogic", "get voice player fail, it is null");
-    }
-  }
-  
-  private void cEE()
-  {
-    AppMethodBeat.i(103454);
-    if (qUq != null) {
-      qUq.removeSensorCallBack();
-    }
-    if (this.qUp != null) {
-      this.qUp.stopShake();
-    }
-    AppMethodBeat.o(103454);
-  }
-  
-  public final void a(a parama)
-  {
-    AppMethodBeat.i(103443);
-    Iterator localIterator = this.callbacks.iterator();
-    while (localIterator.hasNext()) {
-      if (parama == (a)localIterator.next())
-      {
-        AppMethodBeat.o(103443);
-        return;
-      }
-    }
-    this.callbacks.add(parama);
-    AppMethodBeat.o(103443);
-  }
-  
-  public final boolean ab(String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(103447);
-    if (this.qUl == null)
-    {
-      Log.w("MicroMsg.FavVoiceLogic", "start play error, path %s, voiceType %d, player is null", new Object[] { paramString, Integer.valueOf(paramInt1) });
-      AppMethodBeat.o(103447);
-      return false;
-    }
-    this.qUl.stop();
-    Object localObject = this.callbacks.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((a)((Iterator)localObject).next()).dt(paramString, paramInt2);
-    }
-    if ((qUq != null) && (!qUq.hasRegistered()))
-    {
-      qUq.setSensorCallBack(this);
-      localObject = new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(103441);
-          n.a(n.this, Util.currentTicks());
-          AppMethodBeat.o(103441);
-        }
-      };
-      if (!this.qUp.startShake((Runnable)localObject)) {
-        break label199;
-      }
-    }
-    label199:
-    for (this.lastShakeTime = 0L;; this.lastShakeTime = -1L)
-    {
-      this.path = paramString;
-      this.dLt = paramInt1;
-      if ((Util.isNullOrNil(paramString)) || (!this.qUl.a(paramString, this.qUm, paramInt1, paramInt2))) {
-        break;
-      }
-      MMEntryLock.lock("keep_app_silent");
-      com.tencent.mm.plugin.audio.c.a.cea().cV(this.qUm);
-      AppMethodBeat.o(103447);
-      return true;
-    }
-    AppMethodBeat.o(103447);
-    return false;
-  }
-  
-  public final boolean cEF()
-  {
-    AppMethodBeat.i(103448);
-    if (this.qUl == null)
-    {
-      Log.w("MicroMsg.FavVoiceLogic", "check is play, but player is null");
-      AppMethodBeat.o(103448);
-      return false;
-    }
-    boolean bool = this.qUl.isPlaying();
-    AppMethodBeat.o(103448);
-    return bool;
-  }
-  
-  public final boolean cUI()
-  {
-    AppMethodBeat.i(103449);
-    Log.i("MicroMsg.FavVoiceLogic", "resume play");
-    MMEntryLock.lock("keep_app_silent");
-    if (this.qUl == null)
-    {
-      Log.w("MicroMsg.FavVoiceLogic", "resum play error, player is null");
-      AppMethodBeat.o(103449);
-      return false;
-    }
-    boolean bool = this.qUl.resume();
-    AppMethodBeat.o(103449);
-    return bool;
-  }
-  
-  public final boolean cUJ()
-  {
-    AppMethodBeat.i(103450);
-    Log.i("MicroMsg.FavVoiceLogic", "pause play");
-    MMEntryLock.unlock("keep_app_silent");
-    if (this.qUl == null)
-    {
-      Log.w("MicroMsg.FavVoiceLogic", "pause play error, player is null");
-      AppMethodBeat.o(103450);
-      return false;
-    }
-    boolean bool = this.qUl.pause();
-    AppMethodBeat.o(103450);
-    return bool;
-  }
-  
-  public final boolean cZ(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(103446);
-    if (this.qUl == null)
-    {
-      Log.w("MicroMsg.FavVoiceLogic", "start play error, path %s, voiceType %d, player is null", new Object[] { paramString, Integer.valueOf(paramInt) });
-      AppMethodBeat.o(103446);
-      return false;
-    }
-    this.qUl.stop();
-    Object localObject = this.callbacks.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((a)((Iterator)localObject).next()).dt(paramString, 0);
-    }
-    if ((qUq != null) && (!qUq.hasRegistered()))
-    {
-      qUq.setSensorCallBack(this);
-      localObject = new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(103440);
-          n.a(n.this, Util.currentTicks());
-          AppMethodBeat.o(103440);
-        }
-      };
-      if (!this.qUp.startShake((Runnable)localObject)) {
-        break label187;
-      }
-    }
-    label187:
-    for (this.lastShakeTime = 0L;; this.lastShakeTime = -1L)
-    {
-      this.path = paramString;
-      this.dLt = paramInt;
-      if ((Util.isNullOrNil(paramString)) || (!this.qUl.a(paramString, this.qUm, true, paramInt))) {
-        break;
-      }
-      MMEntryLock.lock("keep_app_silent");
-      AppMethodBeat.o(103446);
-      return true;
-    }
-    AppMethodBeat.o(103446);
-    return false;
-  }
-  
-  public final void destroy()
-  {
-    AppMethodBeat.i(103444);
-    pause();
-    cEE();
-    qUq = null;
-    this.callbacks.clear();
-    AppMethodBeat.o(103444);
-  }
-  
-  public final void onCompletion()
-  {
-    AppMethodBeat.i(103453);
-    Log.d("MicroMsg.FavVoiceLogic", "on completion, do stop play");
-    stopPlay();
-    Iterator localIterator = this.callbacks.iterator();
-    while (localIterator.hasNext()) {
-      ((a)localIterator.next()).onFinish();
-    }
-    AppMethodBeat.o(103453);
-  }
-  
-  public final void onError()
-  {
-    AppMethodBeat.i(103452);
-    Log.d("MicroMsg.FavVoiceLogic", "on error, do stop play");
-    stopPlay();
-    Iterator localIterator = this.callbacks.iterator();
-    while (localIterator.hasNext()) {
-      ((a)localIterator.next()).onFinish();
-    }
-    AppMethodBeat.o(103452);
-  }
-  
-  public final void onSensorEvent(boolean paramBoolean)
-  {
-    boolean bool = true;
-    AppMethodBeat.i(103455);
-    if (Util.isNullOrNil(this.path))
-    {
-      AppMethodBeat.o(103455);
+      AppMethodBeat.o(103438);
       return;
     }
-    if (this.qUo)
+    Object localObject = ((anm)paramg.field_favProto.syG.getFirst()).SyM;
+    if (localObject == null)
     {
-      if (!paramBoolean) {}
-      for (paramBoolean = bool;; paramBoolean = false)
-      {
-        this.qUo = paramBoolean;
-        AppMethodBeat.o(103455);
-        return;
-      }
-    }
-    if ((!paramBoolean) && (this.lastShakeTime != -1L) && (Util.ticksToNow(this.lastShakeTime) > 400L))
-    {
-      this.qUo = true;
-      AppMethodBeat.o(103455);
+      AppMethodBeat.o(103438);
       return;
     }
-    this.qUo = false;
-    if ((this.qUl != null) && (this.qUl.isCalling()))
+    com.tencent.mm.modelsns.n localn = new com.tencent.mm.modelsns.n();
+    localn.m("20source_publishid", ((anp)localObject).loy + ",");
+    localn.m("21uxinfo", ((anp)localObject).lox + ",");
+    localn.m("22clienttime", Util.nowMilliSecond() + ",");
+    localn.m("23video_statu", ",");
+    localObject = new StringBuilder();
+    if (paramg.field_type == 16) {}
+    for (int i = 1;; i = 2)
     {
-      AppMethodBeat.o(103455);
+      localn.m("24source_type", i + ",");
+      localn.m("25scene", "5,");
+      localn.m("26action_type", a.a(parama) + ",");
+      localn.m("27scene_chatname", ",");
+      localn.m("28scene_username", paramg.field_fromUser + ",");
+      localn.m("29curr_publishid", ",");
+      localn.m("30curr_msgid", "0,");
+      localn.m("31curr_favid", paramg.field_id + ",");
+      localn.m("32elapsed_time", "0,");
+      localn.m("33load_time", "0,");
+      localn.m("34is_load_complete", "0,");
+      localn.m("35destination", "0,");
+      localn.m("36chatroom_membercount", "0,");
+      Log.i("MicroMsg.FavVideoStatistic", "report snsad_video_action: " + localn.agI());
+      ((d)com.tencent.mm.kernel.h.ae(d.class)).a(12990, new Object[] { localn });
+      AppMethodBeat.o(103438);
       return;
     }
-    if (this.qUn)
-    {
-      if (this.qUl != null) {
-        this.qUl.cU(false);
-      }
-      com.tencent.mm.plugin.audio.c.a.cea().cV(false);
-      this.qUm = false;
-      AppMethodBeat.o(103455);
-      return;
-    }
-    if ((this.qUl != null) && (!this.qUl.isPlaying()) && (!this.tbh))
-    {
-      this.qUl.cU(true);
-      this.qUm = true;
-      AppMethodBeat.o(103455);
-      return;
-    }
-    if (com.tencent.mm.plugin.audio.c.a.ceb())
-    {
-      Log.d("MicroMsg.FavVoiceLogic", "onSensorEvent, connecting bluetooth, omit sensor event");
-      AppMethodBeat.o(103455);
-      return;
-    }
-    if (this.qUl != null) {
-      this.qUl.cU(paramBoolean);
-    }
-    this.qUm = paramBoolean;
-    if ((this.tbh) && (!paramBoolean))
-    {
-      ab(this.path, this.dLt, this.tbi);
-      AppMethodBeat.o(103455);
-      return;
-    }
-    if (!paramBoolean) {
-      cZ(this.path, this.dLt);
-    }
-    AppMethodBeat.o(103455);
   }
   
-  public final void pause()
+  public static void a(c paramc, g paramg, d paramd, int paramInt)
   {
-    AppMethodBeat.i(103445);
-    if (this.qUl == null)
+    AppMethodBeat.i(103439);
+    if ((paramg.field_favProto.syG == null) || (paramg.field_favProto.syG.isEmpty()))
     {
-      Log.w("MicroMsg.FavVoiceLogic", "do pause, but player is null");
-      AppMethodBeat.o(103445);
+      AppMethodBeat.o(103439);
       return;
     }
-    if (this.qUl.isPlaying()) {
-      cUJ();
+    anp localanp = ((anm)paramg.field_favProto.syG.getFirst()).SyM;
+    if (localanp == null)
+    {
+      AppMethodBeat.o(103439);
+      return;
     }
-    Iterator localIterator = this.callbacks.iterator();
-    while (localIterator.hasNext()) {
-      ((a)localIterator.next()).onPause();
+    com.tencent.mm.modelsns.n localn = new com.tencent.mm.modelsns.n();
+    localn.m("20source_publishid", localanp.loy + ",");
+    localn.m("21uxinfo", localanp.lox + ",");
+    localn.m("22clienttime", Util.nowMilliSecond() + ",");
+    localn.m("23video_statu", d.a(paramd) + ",");
+    paramd = new StringBuilder();
+    if (paramg.field_type == 16) {}
+    for (int i = 1;; i = 2)
+    {
+      localn.m("24source_type", i + ",");
+      localn.m("25scene", "5,");
+      localn.m("26action_type", c.a(paramc) + ",");
+      localn.m("27scene_chatname", ",");
+      localn.m("28scene_username", paramg.field_fromUser + ",");
+      localn.m("29curr_publishid", ",");
+      localn.m("30curr_msgid", "0,");
+      localn.m("31curr_favid", paramg.field_id + ",");
+      localn.m("32chatroom_membercount", "0,");
+      localn.m("33chatroom_toMemberCount", paramInt + ",");
+      Log.i("MicroMsg.FavVideoStatistic", "report snsad_video_spread: " + localn.agI());
+      com.tencent.mm.plugin.report.service.h.IzE.a(12991, new Object[] { localn });
+      AppMethodBeat.o(103439);
+      return;
     }
-    AppMethodBeat.o(103445);
   }
   
-  public final void stopPlay()
+  public static void x(g paramg)
   {
-    AppMethodBeat.i(103451);
-    Log.d("MicroMsg.FavVoiceLogic", "stop play");
-    MMEntryLock.unlock("keep_app_silent");
-    if (this.qUl != null) {
-      this.qUl.stop();
+    AppMethodBeat.i(103437);
+    if ((paramg.field_favProto.syG == null) || (paramg.field_favProto.syG.isEmpty()))
+    {
+      AppMethodBeat.o(103437);
+      return;
     }
-    cEE();
-    AppMethodBeat.o(103451);
+    anm localanm = (anm)paramg.field_favProto.syG.getFirst();
+    Object localObject = localanm.SyM;
+    if (localObject == null)
+    {
+      AppMethodBeat.o(103437);
+      return;
+    }
+    com.tencent.mm.modelsns.n localn = new com.tencent.mm.modelsns.n();
+    localn.m("20source_publishid", ((anp)localObject).loy + ",");
+    localn.m("21uxinfo", ((anp)localObject).lox + ",");
+    localn.m("22clienttime", Util.nowMilliSecond() + ",");
+    localObject = new StringBuilder();
+    if (paramg.field_type == 16) {}
+    for (int i = 1;; i = 2)
+    {
+      localn.m("23source_type", i + ",");
+      localn.m("24scene", "5,");
+      localn.m("25scene_chatname", ",");
+      localn.m("26scene_username", paramg.field_fromUser + ",");
+      localn.m("27curr_publishid", ",");
+      localn.m("28curr_msgid", "0,");
+      localn.m("29curr_favid", paramg.field_id + ",");
+      localn.m("30isdownload", "0,");
+      localn.m("31chatroom_membercount", "0,");
+      ((k)com.tencent.mm.kernel.h.ae(k.class)).b(localanm.fUk, localn);
+      Log.i("MicroMsg.FavVideoStatistic", "report snsad_video_exposure: " + localn.agI());
+      com.tencent.mm.plugin.report.service.h.IzE.a(12989, new Object[] { localn });
+      AppMethodBeat.o(103437);
+      return;
+    }
   }
   
-  public static abstract interface a
+  public static enum a
   {
-    public abstract void dt(String paramString, int paramInt);
+    private int value = 0;
     
-    public abstract void onFinish();
+    static
+    {
+      AppMethodBeat.i(103427);
+      wGQ = new a("PlayIcon", 0, 1);
+      wGR = new a("EnterFullScreen", 1, 2);
+      wGS = new a("EnterCompleteVideo", 2, 3);
+      wGT = new a("DetailInVideo", 3, 4);
+      wGU = new a("LeavelFullScreen", 4, 5);
+      wGV = new a("LeaveCompleteVideo", 5, 6);
+      wGW = new a("SightLoaded", 6, 7);
+      wGX = new a[] { wGQ, wGR, wGS, wGT, wGU, wGV, wGW };
+      AppMethodBeat.o(103427);
+    }
     
-    public abstract void onPause();
+    private a(int paramInt)
+    {
+      this.value = paramInt;
+    }
+  }
+  
+  public static enum b
+  {
+    public int value = 0;
+    
+    static
+    {
+      AppMethodBeat.i(103430);
+      wGY = new b("Sight", 0, 1);
+      wGZ = new b("AdUrl", 1, 2);
+      wHa = new b("Chat", 2, 3);
+      wHb = new b("TalkChat", 3, 4);
+      wHc = new b("Fav", 4, 5);
+      wHd = new b[] { wGY, wGZ, wHa, wHb, wHc };
+      AppMethodBeat.o(103430);
+    }
+    
+    private b(int paramInt)
+    {
+      this.value = paramInt;
+    }
+  }
+  
+  public static enum c
+  {
+    private int value = 0;
+    
+    static
+    {
+      AppMethodBeat.i(103433);
+      wHe = new c("Chat", 0, 2);
+      wHf = new c("Chatroom", 1, 3);
+      wHg = new c("Sns", 2, 4);
+      wHh = new c[] { wHe, wHf, wHg };
+      AppMethodBeat.o(103433);
+    }
+    
+    private c(int paramInt)
+    {
+      this.value = paramInt;
+    }
+  }
+  
+  public static enum d
+  {
+    private int value = 0;
+    
+    static
+    {
+      AppMethodBeat.i(103436);
+      wHi = new d("Samll", 0, 1);
+      wHj = new d("Full", 1, 2);
+      wHk = new d("Complete", 2, 3);
+      wHl = new d[] { wHi, wHj, wHk };
+      AppMethodBeat.o(103436);
+    }
+    
+    private d(int paramInt)
+    {
+      this.value = paramInt;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.n
  * JD-Core Version:    0.7.0.1
  */

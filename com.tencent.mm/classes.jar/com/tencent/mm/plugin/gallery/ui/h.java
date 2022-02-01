@@ -8,10 +8,8 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.gallery.a.d;
 import com.tencent.mm.plugin.gallery.model.c;
 import com.tencent.mm.plugin.gallery.model.d.b;
-import com.tencent.mm.plugin.gallery.model.e;
 import com.tencent.mm.plugin.gallery.model.s.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -20,59 +18,59 @@ import java.lang.ref.WeakReference;
 public final class h
   extends Drawable
 {
-  private static final Paint iuG;
-  private ImageView cIN;
+  private static final Paint ljP;
+  private String BUi;
+  private long BUj;
+  private long BUl;
+  private s.e BUm;
+  public h.a CeL;
+  private Rect CeM;
+  private boolean CeN;
+  private boolean CeO;
+  private boolean CeP;
+  private ImageView cJr;
   private Bitmap mBitmap;
   private String mFilePath;
   private int mPosition;
   private int mediaType;
-  private String xhV;
-  private long xhW;
-  private long xhY;
-  private s.e xhZ;
-  public h.a xsp;
-  private Rect xsq;
-  private boolean xsr;
-  private boolean xss;
-  private boolean xst;
   
   static
   {
     AppMethodBeat.i(111733);
     Paint localPaint = new Paint();
-    iuG = localPaint;
+    ljP = localPaint;
     localPaint.setAntiAlias(true);
-    iuG.setFilterBitmap(true);
+    ljP.setFilterBitmap(true);
     AppMethodBeat.o(111733);
   }
   
   private h(ImageView paramImageView)
   {
     AppMethodBeat.i(111722);
-    this.xsq = new Rect();
-    this.xsr = false;
-    this.xss = false;
-    this.xst = false;
-    this.cIN = paramImageView;
+    this.CeM = new Rect();
+    this.CeN = false;
+    this.CeO = false;
+    this.CeP = false;
+    this.cJr = paramImageView;
     this.mFilePath = "";
-    this.xhV = "";
+    this.BUi = "";
     AppMethodBeat.o(111722);
   }
   
-  private void GG(long paramLong)
+  private void NK(long paramLong)
   {
-    if (this.xhY != paramLong)
+    if (this.BUl != paramLong)
     {
-      this.xst = true;
-      this.xhY = paramLong;
+      this.CeP = true;
+      this.BUl = paramLong;
     }
   }
   
-  private void NW(int paramInt)
+  private void Tl(int paramInt)
   {
     if (this.mPosition != paramInt)
     {
-      this.xss = true;
+      this.CeO = true;
       this.mPosition = paramInt;
     }
   }
@@ -92,9 +90,9 @@ public final class h
     for (localObject = (h)localObject;; localObject = new h(paramImageView))
     {
       ((h)localObject).a(parame);
-      ((h)localObject).NW(paramInt2);
-      ((h)localObject).GG(paramLong2);
-      ((h)localObject).xsp = parama;
+      ((h)localObject).Tl(paramInt2);
+      ((h)localObject).NK(paramLong2);
+      ((h)localObject).CeL = parama;
       ((h)localObject).b(paramInt1, paramString1, paramString2, paramLong1);
       paramImageView.setImageDrawable((Drawable)localObject);
       AppMethodBeat.o(179479);
@@ -128,15 +126,15 @@ public final class h
     AppMethodBeat.i(111732);
     if (parame == null)
     {
-      this.xhZ = null;
-      this.xsr = false;
+      this.BUm = null;
+      this.CeN = false;
       AppMethodBeat.o(111732);
       return;
     }
-    if (!parame.equals(this.xhZ))
+    if (!parame.equals(this.BUm))
     {
-      this.xsr = true;
-      this.xhZ = parame;
+      this.CeN = true;
+      this.BUm = parame;
     }
     AppMethodBeat.o(111732);
   }
@@ -154,28 +152,28 @@ public final class h
       AppMethodBeat.o(111723);
       return;
     }
-    if ((!this.mFilePath.equals(str)) || (this.mBitmap == null) || (this.mBitmap.isRecycled()) || (this.xsr) || (this.xss) || (this.xst))
+    if ((!this.mFilePath.equals(str)) || (this.mBitmap == null) || (this.mBitmap.isRecycled()) || (this.CeN) || (this.CeO) || (this.CeP))
     {
-      boolean bool = this.xsr;
-      if (this.xhZ == null)
+      boolean bool = this.CeN;
+      if (this.BUm == null)
       {
         paramString1 = "";
         Log.d("MicroMsg.ThumbDrawable", "setMediaFeature, crop area: %s %s.", new Object[] { Boolean.valueOf(bool), paramString1 });
-        if (this.xsr) {
-          this.xsr = false;
+        if (this.CeN) {
+          this.CeN = false;
         }
-        Log.d("MicroMsg.ThumbDrawable", "setMediaFeature, path equal? [%s] isPositionUpdate? [%s] isDateModified? [%s] mModifyDate [%s].", new Object[] { Boolean.valueOf(this.mFilePath.equals(str)), Boolean.valueOf(this.xss), Boolean.valueOf(this.xst), Long.valueOf(this.xhY) });
-        if (this.xss) {
-          this.xss = false;
+        Log.d("MicroMsg.ThumbDrawable", "setMediaFeature, path equal? [%s] isPositionUpdate? [%s] isDateModified? [%s] mModifyDate [%s].", new Object[] { Boolean.valueOf(this.mFilePath.equals(str)), Boolean.valueOf(this.CeO), Boolean.valueOf(this.CeP), Long.valueOf(this.BUl) });
+        if (this.CeO) {
+          this.CeO = false;
         }
-        if (this.xst) {
-          this.xst = false;
+        if (this.CeP) {
+          this.CeP = false;
         }
         this.mFilePath = str;
-        this.xhV = paramString2;
-        this.xhW = paramLong;
+        this.BUi = paramString2;
+        this.BUj = paramLong;
         this.mediaType = paramInt;
-        this.mBitmap = e.dQJ().a(this.mFilePath, this.xhV, this.xhZ, this.xhY);
+        this.mBitmap = com.tencent.mm.plugin.gallery.model.e.etk().a(this.mFilePath, this.BUi, this.BUm, this.BUl);
         if (this.mBitmap != null) {
           break label529;
         }
@@ -190,10 +188,10 @@ public final class h
         if ((this.mBitmap != null) && (!this.mBitmap.isRecycled())) {
           break label553;
         }
-        paramString1 = d.a(this.mFilePath, this.xhZ, this.mPosition);
+        paramString1 = com.tencent.mm.plugin.gallery.a.e.a(this.mFilePath, this.BUm, this.mPosition);
         Log.d("MicroMsg.ThumbDrawable", "traceGetLis, create & add listener 1: %s.", new Object[] { paramString1 });
-        e.dQJ().a(new c(this.cIN, paramString1));
-        this.mBitmap = e.dQJ().a(this.mFilePath, paramInt, paramString2, paramLong, this.xhZ, this.mPosition, this.xhY);
+        com.tencent.mm.plugin.gallery.model.e.etk().a(new c(this.cJr, paramString1));
+        this.mBitmap = com.tencent.mm.plugin.gallery.model.e.etk().a(this.mFilePath, paramInt, paramString2, paramLong, this.BUm, this.mPosition, this.BUl);
         paramString2 = this.mFilePath;
         if (this.mBitmap != null) {
           break label541;
@@ -214,10 +212,10 @@ public final class h
         if ((this.mBitmap == null) || (this.mBitmap.isRecycled())) {
           break label674;
         }
-        this.cIN.invalidate();
+        this.cJr.invalidate();
         AppMethodBeat.o(111723);
         return;
-        paramString1 = this.xhZ.toString();
+        paramString1 = this.BUm.toString();
         break;
         bool = false;
         break label278;
@@ -271,10 +269,10 @@ public final class h
       {
         bool = true;
         Log.d("MicroMsg.ThumbDrawable", "[duanyi] get bitmap is null: %s.", new Object[] { Boolean.valueOf(bool) });
-        localObject1 = d.a(this.mFilePath, this.xhZ, this.mPosition);
+        localObject1 = com.tencent.mm.plugin.gallery.a.e.a(this.mFilePath, this.BUm, this.mPosition);
         Log.d("MicroMsg.ThumbDrawable", "traceGetLis, create & add listener 3: %s.", new Object[] { localObject1 });
-        e.dQJ().a(new c(this.cIN, (String)localObject1));
-        this.mBitmap = e.dQJ().a(this.mFilePath, this.mediaType, this.xhV, this.xhW, this.xhZ, this.mPosition, this.xhY);
+        com.tencent.mm.plugin.gallery.model.e.etk().a(new c(this.cJr, (String)localObject1));
+        this.mBitmap = com.tencent.mm.plugin.gallery.model.e.etk().a(this.mFilePath, this.mediaType, this.BUi, this.BUj, this.BUm, this.mPosition, this.BUl);
         str = "pennqin, set bitmap 4, filePath:[%s] mBitmap is null:[%s], mBitmap.isRecycled():[%s], this: %s.";
         localObject2 = new Object[4];
         localObject2[0] = this.mFilePath;
@@ -316,9 +314,9 @@ public final class h
       str = "[duanyi test] get bitmap ok: %s crop area id: %s.";
       localObject1 = new Object[2];
       localObject1[0] = this.mFilePath;
-      if (this.xhZ != null)
+      if (this.BUm != null)
       {
-        localObject4 = this.xhZ.id;
+        localObject4 = this.BUm.id;
         i = 1;
         localObject2 = localObject1;
         localObject3 = localObject1;
@@ -334,13 +332,13 @@ public final class h
       }
     }
     label363:
-    if (this.xsp != null)
+    if (this.CeL != null)
     {
-      this.xsp.dSs();
-      this.xsp = null;
+      this.CeL.euT();
+      this.CeL = null;
     }
     Object localObject1 = this.mBitmap;
-    Object localObject2 = this.xsq;
+    Object localObject2 = this.CeM;
     if (((Bitmap)localObject1).getWidth() > ((Bitmap)localObject1).getHeight())
     {
       ((Rect)localObject2).top = 0;
@@ -351,7 +349,7 @@ public final class h
     }
     for (;;)
     {
-      paramCanvas.drawBitmap(this.mBitmap, this.xsq, getBounds(), iuG);
+      paramCanvas.drawBitmap(this.mBitmap, this.CeM, getBounds(), ljP);
       Log.d("MicroMsg.ThumbDrawable", "bounds:%s", new Object[] { getBounds().toString() });
       AppMethodBeat.o(111726);
       return;
@@ -401,19 +399,19 @@ public final class h
   static final class b
     implements Runnable
   {
-    final WeakReference<ImageView> xsu;
+    final WeakReference<ImageView> CeQ;
     
     b(ImageView paramImageView)
     {
       AppMethodBeat.i(111714);
-      this.xsu = new WeakReference(paramImageView);
+      this.CeQ = new WeakReference(paramImageView);
       AppMethodBeat.o(111714);
     }
     
     public final void run()
     {
       AppMethodBeat.i(111715);
-      Object localObject1 = (ImageView)this.xsu.get();
+      Object localObject1 = (ImageView)this.CeQ.get();
       if (localObject1 == null) {}
       for (localObject1 = null; !(localObject1 instanceof h); localObject1 = ((ImageView)localObject1).getDrawable())
       {
@@ -423,7 +421,7 @@ public final class h
       }
       localObject1 = (h)localObject1;
       Log.d("MicroMsg.ThumbDrawable", "invalidateSelf, mFilePath: %s.", new Object[] { h.a((h)localObject1) });
-      Object localObject2 = e.dQJ();
+      Object localObject2 = com.tencent.mm.plugin.gallery.model.e.etk();
       String str1 = h.a((h)localObject1);
       String str2 = h.d((h)localObject1);
       h.e((h)localObject1);
@@ -434,10 +432,10 @@ public final class h
         Log.d("MicroMsg.ThumbDrawable", "pennqin, set bitmap 3, bitmap is null %s filepath: %s.", new Object[] { Boolean.valueOf(bool), h.a((h)localObject1) });
         if ((h.g((h)localObject1) == null) || (h.g((h)localObject1).isRecycled()))
         {
-          localObject2 = d.a(h.a((h)localObject1), h.b((h)localObject1), h.c((h)localObject1));
+          localObject2 = com.tencent.mm.plugin.gallery.a.e.a(h.a((h)localObject1), h.b((h)localObject1), h.c((h)localObject1));
           Log.d("MicroMsg.ThumbDrawable", "traceGetLis, create & add listener 2: %s.", new Object[] { localObject2 });
-          e.dQJ().a(new h.c(h.h((h)localObject1), (String)localObject2));
-          e.dQJ().a(h.a((h)localObject1), h.i((h)localObject1), h.d((h)localObject1), h.e((h)localObject1), h.b((h)localObject1), h.c((h)localObject1), h.f((h)localObject1));
+          com.tencent.mm.plugin.gallery.model.e.etk().a(new h.c(h.h((h)localObject1), (String)localObject2));
+          com.tencent.mm.plugin.gallery.model.e.etk().a(h.a((h)localObject1), h.i((h)localObject1), h.d((h)localObject1), h.e((h)localObject1), h.b((h)localObject1), h.c((h)localObject1), h.f((h)localObject1));
           Log.d("MicroMsg.ThumbDrawable", "invalidateSelf! mBitmap is invalid! path:%s.", new Object[] { h.a((h)localObject1) });
         }
         ((h)localObject1).invalidateSelf();
@@ -450,21 +448,21 @@ public final class h
   static final class c
     implements d.b
   {
-    final WeakReference<ImageView> xsv;
-    final String xsw;
+    final WeakReference<ImageView> CeR;
+    final String CeS;
     
     c(ImageView paramImageView, String paramString)
     {
       AppMethodBeat.i(111716);
-      this.xsv = new WeakReference(paramImageView);
-      this.xsw = paramString;
+      this.CeR = new WeakReference(paramImageView);
+      this.CeS = paramString;
       AppMethodBeat.o(111716);
     }
     
-    private Drawable dSu()
+    private Drawable euW()
     {
       AppMethodBeat.i(111720);
-      Object localObject = (ImageView)this.xsv.get();
+      Object localObject = (ImageView)this.CeR.get();
       if (localObject != null)
       {
         localObject = ((ImageView)localObject).getDrawable();
@@ -475,18 +473,18 @@ public final class h
       return null;
     }
     
-    public final void ayR(String paramString)
+    public final void aIr(String paramString)
     {
       AppMethodBeat.i(111717);
       Log.d("MicroMsg.ThumbDrawable", "onImageGet fileKey: %s.", new Object[] { paramString });
-      Object localObject = dSu();
+      Object localObject = euW();
       if ((localObject instanceof h))
       {
         localObject = (h)localObject;
-        if (d.a(h.a((h)localObject), h.b((h)localObject), h.c((h)localObject)).equals(paramString))
+        if (com.tencent.mm.plugin.gallery.a.e.a(h.a((h)localObject), h.b((h)localObject), h.c((h)localObject)).equals(paramString))
         {
           Log.d("MicroMsg.ThumbDrawable", "match!!! start invalidate, fileKey: %s. ", new Object[] { paramString });
-          paramString = (ImageView)this.xsv.get();
+          paramString = (ImageView)this.CeR.get();
           if (paramString != null) {
             paramString.post(new h.b(paramString));
           }
@@ -494,13 +492,8 @@ public final class h
         AppMethodBeat.o(111717);
         return;
       }
-      Log.w("MicroMsg.ThumbDrawable", "drawable [%s] in ownerRef [%s] is not a ThumbDrawable, ignore.", new Object[] { localObject, this.xsv });
+      Log.w("MicroMsg.ThumbDrawable", "drawable [%s] in ownerRef [%s] is not a ThumbDrawable, ignore.", new Object[] { localObject, this.CeR });
       AppMethodBeat.o(111717);
-    }
-    
-    public final String dQG()
-    {
-      return this.xsw;
     }
     
     public final boolean equals(Object paramObject)
@@ -511,9 +504,9 @@ public final class h
         AppMethodBeat.o(111719);
         return false;
       }
-      Drawable localDrawable = dSu();
+      Drawable localDrawable = euW();
       if ((paramObject instanceof c)) {
-        paramObject = ((c)paramObject).dSu();
+        paramObject = ((c)paramObject).euW();
       }
       while ((localDrawable != null) && (paramObject != null))
       {
@@ -534,10 +527,15 @@ public final class h
       return false;
     }
     
+    public final String eth()
+    {
+      return this.CeS;
+    }
+    
     public final int hashCode()
     {
       AppMethodBeat.i(111718);
-      Drawable localDrawable = dSu();
+      Drawable localDrawable = euW();
       if (localDrawable != null)
       {
         i = localDrawable.hashCode();
@@ -552,7 +550,7 @@ public final class h
     public final String toString()
     {
       AppMethodBeat.i(111721);
-      String str = "decodeTaskKey:" + this.xsw + " ownerRef:" + this.xsv;
+      String str = "decodeTaskKey:" + this.CeS + " ownerRef:" + this.CeR;
       AppMethodBeat.o(111721);
       return str;
     }
@@ -560,7 +558,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.h
  * JD-Core Version:    0.7.0.1
  */

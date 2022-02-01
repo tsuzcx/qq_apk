@@ -14,8 +14,8 @@ public enum a
   static
   {
     AppMethodBeat.i(145940);
-    Fhx = new a("IML");
-    Fhy = new a[] { Fhx };
+    Lwc = new a("IML");
+    Lwd = new a[] { Lwc };
     AppMethodBeat.o(145940);
   }
   
@@ -24,20 +24,20 @@ public enum a
   public static c a(Activity paramActivity, j paramj, k paramk, Handler paramHandler)
   {
     AppMethodBeat.i(145939);
-    if (((paramj.FhV & 0x1) != 0) && (com.tencent.soter.core.a.fN(MMApplicationContext.getContext())))
+    if (((paramj.LwA & 0x1) != 0) && (com.tencent.soter.core.a.gh(MMApplicationContext.getContext())))
     {
       paramActivity = new b(new WeakReference(paramActivity), paramj, paramk, paramHandler);
       AppMethodBeat.o(145939);
       return paramActivity;
     }
-    Log.e("MicroMsg.SoterControllerFactory", "hy: no matching: %d", new Object[] { Byte.valueOf(paramj.FhV) });
+    Log.e("MicroMsg.SoterControllerFactory", "hy: no matching: %d", new Object[] { Byte.valueOf(paramj.LwA) });
     AppMethodBeat.o(145939);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.c.a
  * JD-Core Version:    0.7.0.1
  */

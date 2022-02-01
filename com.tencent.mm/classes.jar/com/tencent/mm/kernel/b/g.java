@@ -5,45 +5,45 @@ import com.tencent.mm.kernel.a.a;
 
 public abstract class g
 {
-  public Application ca;
-  public a hqy;
-  private Boolean hto;
-  public a htp = new a();
+  public Application Zw;
+  public a kct;
+  private Boolean kfj;
+  public g.a kfk = new g.a();
   public String mProcessName;
   
   public g(String paramString, Application paramApplication)
   {
     this.mProcessName = paramString;
-    this.hqy = new a();
-    this.ca = paramApplication;
+    this.kct = new a();
+    this.Zw = paramApplication;
   }
   
-  public final boolean FY(String paramString)
+  public final boolean MY(String paramString)
   {
     return (this.mProcessName != null) && (this.mProcessName.equals(getPackageName() + paramString));
   }
   
-  public final boolean FZ(String paramString)
+  public final boolean MZ(String paramString)
   {
     return (this.mProcessName != null) && (this.mProcessName.contains(getPackageName() + paramString));
   }
   
-  public final Application aAZ()
+  public final Application aIC()
   {
-    return this.ca;
+    return this.Zw;
   }
   
-  public final a aBa()
+  public final g.a aID()
   {
-    return this.htp;
+    return this.kfk;
   }
   
-  public final boolean aBb()
+  public final boolean aIE()
   {
-    if (this.hto == null) {
-      this.hto = Boolean.valueOf(FY(""));
+    if (this.kfj == null) {
+      this.kfj = Boolean.valueOf(MY(""));
     }
-    return this.hto.booleanValue();
+    return this.kfj.booleanValue();
   }
   
   public abstract String getPackageName();
@@ -60,23 +60,10 @@ public abstract class g
     }
     return super.toString();
   }
-  
-  public static final class a
-  {
-    public long htq;
-    public long htr;
-    public long hts;
-    public long htt;
-    public long htu;
-    public long htv;
-    public long htw;
-    public long htx;
-    public long hty;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.kernel.b.g
  * JD-Core Version:    0.7.0.1
  */

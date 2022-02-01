@@ -2,18 +2,15 @@ package com.tencent.mm.storage.emotion;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.GetEmotionRewardResponse;
+import com.tencent.mm.protocal.protobuf.buj;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.storagebase.g;
-import com.tencent.mm.storagebase.g.a;
 import java.io.IOException;
 
 public final class o
   extends MAutoStorage<n>
-  implements g.a
 {
   public static final String[] SQL_CREATE;
   public ISQLiteDatabase db;
@@ -31,13 +28,7 @@ public final class o
     this.db = paramISQLiteDatabase;
   }
   
-  public final int a(g paramg)
-  {
-    this.db = paramg;
-    return 0;
-  }
-  
-  public final GetEmotionRewardResponse blu(String paramString)
+  public final buj bxU(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(105119);
@@ -56,7 +47,7 @@ public final class o
     }
     try
     {
-      paramString = new GetEmotionRewardResponse();
+      paramString = new buj();
       paramString.parseFrom(localCursor.getBlob(0));
       if (localCursor != null) {
         localCursor.close();
@@ -76,7 +67,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.o
  * JD-Core Version:    0.7.0.1
  */

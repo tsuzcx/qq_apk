@@ -8,31 +8,31 @@ import kotlin.l.b.a.c.a;
 import kotlin.l.b.a.c.b;
 import kotlin.l.b.a.c.e;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"K_CLASS_CACHE", "Lkotlin/reflect/jvm/internal/pcollections/HashPMap;", "", "kotlin.jvm.PlatformType", "", "clearKClassCache", "", "getOrCreateKotlinClass", "Lkotlin/reflect/jvm/internal/KClassImpl;", "T", "jClass", "Ljava/lang/Class;", "kotlin-reflection"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"K_CLASS_CACHE", "Lkotlin/reflect/jvm/internal/pcollections/HashPMap;", "", "kotlin.jvm.PlatformType", "", "clearKClassCache", "", "getOrCreateKotlinClass", "Lkotlin/reflect/jvm/internal/KClassImpl;", "T", "jClass", "Ljava/lang/Class;", "kotlin-reflection"})
 public final class f
 {
-  private static b<String, Object> SZU;
+  private static b<String, Object> aaCO;
   
   static
   {
     AppMethodBeat.i(56305);
-    b localb = b.hMb();
-    p.g(localb, "HashPMap.empty<String, Any>()");
-    SZU = localb;
+    b localb = b.iQs();
+    p.j(localb, "HashPMap.empty<String, Any>()");
+    aaCO = localb;
     AppMethodBeat.o(56305);
   }
   
-  public static final <T> g<T> bq(Class<T> paramClass)
+  public static final <T> g<T> bP(Class<T> paramClass)
   {
     Object localObject2 = null;
     AppMethodBeat.i(56304);
-    p.h(paramClass, "jClass");
+    p.k(paramClass, "jClass");
     String str = paramClass.getName();
-    Object localObject1 = SZU.avQ(str.hashCode());
+    Object localObject1 = aaCO.aFK(str.hashCode());
     Object localObject3;
     if ((localObject1 != null) && (((a)localObject1).size > 0))
     {
-      localObject3 = (e)((a)localObject1).first;
+      localObject3 = (e)((a)localObject1).Mx;
       if (!((e)localObject3).key.equals(str)) {}
     }
     for (localObject1 = ((e)localObject3).value;; localObject1 = null)
@@ -43,14 +43,14 @@ public final class f
       localObject3 = (g)((WeakReference)localObject1).get();
       localObject1 = localObject2;
       if (localObject3 != null) {
-        localObject1 = ((g)localObject3).SYp;
+        localObject1 = ((g)localObject3).aaBb;
       }
-      if (!p.j(localObject1, paramClass)) {
+      if (!p.h(localObject1, paramClass)) {
         break label280;
       }
       AppMethodBeat.o(56304);
       return localObject3;
-      localObject1 = ((a)localObject1).TSj;
+      localObject1 = ((a)localObject1).abuI;
       break;
     }
     label133:
@@ -63,7 +63,7 @@ public final class f
       {
         g localg = (g)localObject3[i].get();
         if (localg != null) {}
-        for (localObject2 = localg.SYp; p.j(localObject2, paramClass); localObject2 = null)
+        for (localObject2 = localg.aaBb; p.h(localObject2, paramClass); localObject2 = null)
         {
           AppMethodBeat.o(56304);
           return localg;
@@ -75,24 +75,24 @@ public final class f
       System.arraycopy(localObject1, 0, localObject2, 0, i);
       paramClass = new g(paramClass);
       localObject2[i] = new WeakReference(paramClass);
-      localObject1 = SZU.X(str, localObject2);
-      p.g(localObject1, "K_CLASS_CACHE.plus(name, newArray)");
-      SZU = (b)localObject1;
+      localObject1 = aaCO.P(str, localObject2);
+      p.j(localObject1, "K_CLASS_CACHE.plus(name, newArray)");
+      aaCO = (b)localObject1;
       AppMethodBeat.o(56304);
       return paramClass;
     }
     label280:
     paramClass = new g(paramClass);
-    localObject1 = SZU.X(str, new WeakReference(paramClass));
-    p.g(localObject1, "K_CLASS_CACHE.plus(name, WeakReference(newKClass))");
-    SZU = (b)localObject1;
+    localObject1 = aaCO.P(str, new WeakReference(paramClass));
+    p.j(localObject1, "K_CLASS_CACHE.plus(name, WeakReference(newKClass))");
+    aaCO = (b)localObject1;
     AppMethodBeat.o(56304);
     return paramClass;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.f
  * JD-Core Version:    0.7.0.1
  */

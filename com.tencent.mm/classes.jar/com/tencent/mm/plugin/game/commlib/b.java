@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.game.commlib;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 
 public class b
   implements i
 {
-  private static b xvn;
-  private boolean gYQ = false;
-  private boolean xvm = false;
+  private static b Czd;
+  private boolean Czc = false;
+  private boolean jJQ = false;
   
-  public static b dTd()
+  public static b ewm()
   {
     AppMethodBeat.i(89930);
-    if (xvn == null) {}
+    if (Czd == null) {}
     try
     {
-      if (xvn == null) {
-        xvn = new b();
+      if (Czd == null) {
+        Czd = new b();
       }
-      b localb = xvn;
+      b localb = Czd;
       AppMethodBeat.o(89930);
       return localb;
     }
@@ -41,25 +41,25 @@ public class b
   private void release()
   {
     AppMethodBeat.i(89932);
-    this.gYQ = false;
-    g.azz().b(1311, this);
+    this.jJQ = false;
+    h.aGY().b(1311, this);
     AppMethodBeat.o(89932);
   }
   
-  public final void I(boolean paramBoolean, int paramInt)
+  public final void T(boolean paramBoolean, int paramInt)
   {
     for (;;)
     {
       int i;
       try
       {
-        AppMethodBeat.i(201263);
+        AppMethodBeat.i(188509);
         if (paramBoolean)
         {
           i = 1;
           if (i == 0)
           {
-            if (!s.YS(a.dSR()))
+            if (!u.agG(a.evZ()))
             {
               i = 1;
               break label185;
@@ -67,23 +67,23 @@ public class b
           }
           else
           {
-            if (!this.gYQ)
+            if (!this.jJQ)
             {
               Log.i("MicroMsg.GameConfigUpdater", "Game config start update. force update(%b)", new Object[] { Boolean.valueOf(paramBoolean) });
               release();
-              this.gYQ = true;
-              this.xvm = paramBoolean;
-              g.aAh().azQ().set(ar.a.OcZ, Long.valueOf(0L));
-              g.azz().a(1311, this);
+              this.jJQ = true;
+              this.Czc = paramBoolean;
+              h.aHG().aHp().set(ar.a.Vrg, Long.valueOf(0L));
+              h.aGY().a(1311, this);
               c localc = new c(paramInt);
-              g.azz().a(localc, 0);
+              h.aGY().a(localc, 0);
             }
-            AppMethodBeat.o(201263);
+            AppMethodBeat.o(188509);
           }
         }
         else
         {
-          long l = Math.abs(Util.secondsToNow(Util.nullAsNil((Long)g.aAh().azQ().get(ar.a.NSD, Long.valueOf(0L)))));
+          long l = Math.abs(Util.secondsToNow(Util.nullAsNil((Long)h.aHG().aHp().get(ar.a.VgB, Long.valueOf(0L)))));
           if (l > 86400L)
           {
             i = 1;
@@ -106,7 +106,7 @@ public class b
     if (paramq.getType() == 1311)
     {
       Log.i("MicroMsg.GameConfigUpdater", "getGameCenterGlobalSetting sceneEnd, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      if (g.aAf().azp()) {
+      if (h.aHE().aGM()) {
         break label67;
       }
       Log.w("MicroMsg.GameConfigUpdater", "account not init.");
@@ -117,9 +117,9 @@ public class b
       AppMethodBeat.o(89933);
       return;
       label67:
-      Log.i("MicroMsg.GameConfigUpdater", "updateTime, isForceUpdate: %b", new Object[] { Boolean.valueOf(this.xvm) });
-      if (!this.xvm) {
-        g.aAh().azQ().set(ar.a.NSD, Long.valueOf(Util.nowSecond()));
+      Log.i("MicroMsg.GameConfigUpdater", "updateTime, isForceUpdate: %b", new Object[] { Boolean.valueOf(this.Czc) });
+      if (!this.Czc) {
+        h.aHG().aHp().set(ar.a.VgB, Long.valueOf(Util.nowSecond()));
       }
     }
   }

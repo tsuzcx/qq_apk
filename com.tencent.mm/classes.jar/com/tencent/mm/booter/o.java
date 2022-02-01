@@ -6,7 +6,7 @@ import android.content.SharedPreferences.Editor;
 import android.os.Looper;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -17,9 +17,9 @@ import com.tencent.mm.storage.an;
 
 public final class o
 {
-  static long gmG = 0L;
+  static long iQP = 0L;
   
-  private static void CR(String paramString)
+  private static void JH(String paramString)
   {
     AppMethodBeat.i(19905);
     Object localObject = MMApplicationContext.getContext().getSharedPreferences(paramString, 0);
@@ -32,26 +32,26 @@ public final class o
       return;
     }
     a locala = new a();
-    if (locala.CT(localObject[(localObject.length - 1)]))
+    if (locala.JJ(localObject[(localObject.length - 1)]))
     {
-      locala.gmJ = 2;
+      locala.iQS = 2;
       localObject[(localObject.length - 1)] = locala.toString();
     }
-    localObject = g((String[])localObject);
+    localObject = e((String[])localObject);
     Log.d("MicroMsg.ProcessReport", "uerExit new info %s", new Object[] { localObject });
     paramString.edit().putString("startup_info", (String)localObject).commit();
     AppMethodBeat.o(19905);
   }
   
-  public static void Xe()
+  public static void abH()
   {
     AppMethodBeat.i(19904);
-    CR("mm_proc_startup");
-    CR("push_proc_startup");
+    JH("mm_proc_startup");
+    JH("push_proc_startup");
     AppMethodBeat.o(19904);
   }
   
-  public static void akW()
+  public static void aqS()
   {
     AppMethodBeat.i(19903);
     Object localObject1 = MMApplicationContext.getContext().getSharedPreferences("mm_proc_startup", 0);
@@ -61,17 +61,17 @@ public final class o
     if ((localObject1 != null) && (localObject1.length > 0))
     {
       localObject2 = new a();
-      if (((a)localObject2).CT(localObject1[(localObject1.length - 1)]))
+      if (((a)localObject2).JJ(localObject1[(localObject1.length - 1)]))
       {
-        ((a)localObject2).gmM = Process.myPid();
+        ((a)localObject2).iQV = Process.myPid();
         localObject1[(localObject1.length - 1)] = ((a)localObject2).toString();
       }
     }
     Object localObject2 = new a();
-    ((a)localObject2).gmI = 2;
-    ((a)localObject2).gmK = Process.myPid();
-    ((a)localObject2).gmL = ((int)Util.nowSecond());
-    String str = g((String[])localObject1);
+    ((a)localObject2).iQR = 2;
+    ((a)localObject2).iQT = Process.myPid();
+    ((a)localObject2).iQU = ((int)Util.nowSecond());
+    String str = e((String[])localObject1);
     localObject2 = ((a)localObject2).toString();
     localObject1 = localObject2;
     if (str.length() > 0) {
@@ -82,7 +82,7 @@ public final class o
     AppMethodBeat.o(19903);
   }
   
-  private static String g(String[] paramArrayOfString)
+  private static String e(String[] paramArrayOfString)
   {
     AppMethodBeat.i(19907);
     String str1 = "";
@@ -110,25 +110,25 @@ public final class o
   public static void report()
   {
     AppMethodBeat.i(19906);
-    if ((gmG != 0L) && (Util.ticksToNow(gmG) < 3600000L))
+    if ((iQP != 0L) && (Util.ticksToNow(iQP) < 3600000L))
     {
       AppMethodBeat.o(19906);
       return;
     }
-    int i = ((Integer)bg.aVD().get(37, Integer.valueOf(0))).intValue();
-    if (d.KyO != i)
+    int i = ((Integer)bh.beG().b(37, Integer.valueOf(0))).intValue();
+    if (d.RAD != i)
     {
-      bg.aVD().set(37, Integer.valueOf(d.KyO));
+      bh.beG().i(37, Integer.valueOf(d.RAD));
       new MMHandler(Looper.getMainLooper()).post(new o.1(i));
     }
-    gmG = Util.currentTicks();
+    iQP = Util.currentTicks();
     new MMHandler(Looper.getMainLooper()).post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(19900);
-        o.CS("mm_proc_startup");
-        o.CS("push_proc_startup");
+        o.JI("mm_proc_startup");
+        o.JI("push_proc_startup");
         AppMethodBeat.o(19900);
       }
     });
@@ -137,13 +137,13 @@ public final class o
   
   static final class a
   {
-    int gmI;
-    int gmJ = 1;
-    int gmK;
-    int gmL;
-    int gmM;
+    int iQR;
+    int iQS = 1;
+    int iQT;
+    int iQU;
+    int iQV;
     
-    public final boolean CT(String paramString)
+    public final boolean JJ(String paramString)
     {
       AppMethodBeat.i(19901);
       paramString = paramString.split(",");
@@ -155,11 +155,11 @@ public final class o
       }
       try
       {
-        this.gmI = Util.getInt(paramString[0], 0);
-        this.gmJ = Util.getInt(paramString[1], 0);
-        this.gmK = Util.getInt(paramString[2], 0);
-        this.gmL = Util.getInt(paramString[3], 0);
-        this.gmM = Util.getInt(paramString[4], 0);
+        this.iQR = Util.getInt(paramString[0], 0);
+        this.iQS = Util.getInt(paramString[1], 0);
+        this.iQT = Util.getInt(paramString[2], 0);
+        this.iQU = Util.getInt(paramString[3], 0);
+        this.iQV = Util.getInt(paramString[4], 0);
         AppMethodBeat.o(19901);
         return true;
       }
@@ -175,7 +175,7 @@ public final class o
     public final String toString()
     {
       AppMethodBeat.i(19902);
-      String str = String.format("%d,%d,%d,%d,%d", new Object[] { Integer.valueOf(this.gmI), Integer.valueOf(this.gmJ), Integer.valueOf(this.gmK), Integer.valueOf(this.gmL), Integer.valueOf(this.gmM) });
+      String str = String.format("%d,%d,%d,%d,%d", new Object[] { Integer.valueOf(this.iQR), Integer.valueOf(this.iQS), Integer.valueOf(this.iQT), Integer.valueOf(this.iQU), Integer.valueOf(this.iQV) });
       AppMethodBeat.o(19902);
       return str;
     }
@@ -183,7 +183,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.booter.o
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,28 @@
 package com.tencent.mm.plugin.eggspring.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.t.a.d;
+import com.tencent.mm.an.c;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.t.a.i;
+import com.tencent.mm.t.a.j;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/eggspring/cgi/GetInteractionADCgi;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/eggspring/model/GetInteractionADResp;", "keyword", "", "uxinfo", "source", "", "(Ljava/lang/String;Ljava/lang/String;I)V", "plugin-eggspring_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/eggspring/cgi/GetEggRedEnvelopeCgi;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/eggspring/model/GetRedpacketCoverRecvEntranceResp;", "()V", "plugin-eggspring_release"})
 public final class b
-  extends com.tencent.mm.ak.c<d>
+  extends c<j>
 {
-  public b(String paramString1, String paramString2)
+  public b()
   {
-    AppMethodBeat.i(194565);
-    com.tencent.mm.t.a.c localc = new com.tencent.mm.t.a.c();
-    localc.dDv = paramString1;
-    localc.gTk = paramString2;
-    localc.source = 1;
-    paramString1 = new d.a();
-    paramString1.c((a)localc);
-    paramString1.d((a)new d());
-    paramString1.sI(0);
-    paramString1.sJ(0);
-    paramString1.MB("/cgi-bin/mmoc-bin/interaction/get_interaction_ad");
-    paramString1.sG(4947);
-    c(paramString1.aXF());
-    AppMethodBeat.o(194565);
+    AppMethodBeat.i(249664);
+    i locali = new i();
+    d.a locala = new d.a();
+    locala.c((a)locali);
+    locala.d((a)new j());
+    locala.TW("/cgi-bin/micromsg-bin/getredpacketcoverrecventrance");
+    locala.vD(4074);
+    c(locala.bgN());
+    AppMethodBeat.o(249664);
   }
 }
 

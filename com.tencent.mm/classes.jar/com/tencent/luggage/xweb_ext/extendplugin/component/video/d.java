@@ -4,39 +4,39 @@ import android.graphics.SurfaceTexture;
 import android.view.Surface;
 import com.tencent.luggage.xweb_ext.extendplugin.component.d.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ag.e.b.b;
-import com.tencent.mm.plugin.appbrand.jsapi.ag.e.j;
-import com.tencent.mm.plugin.appbrand.jsapi.s.g;
-import com.tencent.mm.plugin.appbrand.jsapi.s.h.a;
+import com.tencent.mm.plugin.appbrand.jsapi.ai.e.b.b;
+import com.tencent.mm.plugin.appbrand.jsapi.ai.e.j;
+import com.tencent.mm.plugin.appbrand.jsapi.t.g;
+import com.tencent.mm.plugin.appbrand.jsapi.t.h.a;
 import com.tencent.mm.sdk.platformtools.Log;
 
 final class d
   extends com.tencent.luggage.xweb_ext.extendplugin.component.c<j, TextureImageViewLikeImpl>
 {
-  protected static h.a<j, TextureImageViewLikeImpl> cFK;
-  static com.tencent.mm.plugin.appbrand.jsapi.s.c cFL;
-  final g cFM;
+  protected static h.a<j, TextureImageViewLikeImpl> cGq;
+  static com.tencent.mm.plugin.appbrand.jsapi.t.c cGr;
+  final g cGs;
   
   static
   {
     AppMethodBeat.i(177180);
-    cFK = new h.a() {};
-    cFL = new com.tencent.mm.plugin.appbrand.jsapi.s.c()
+    cGq = new h.a() {};
+    cGr = new com.tencent.mm.plugin.appbrand.jsapi.t.c()
     {
-      public final com.tencent.mm.plugin.appbrand.jsapi.s.a hW(int paramAnonymousInt)
+      public final com.tencent.mm.plugin.appbrand.jsapi.t.a iZ(int paramAnonymousInt)
       {
         AppMethodBeat.i(177177);
-        com.tencent.mm.plugin.appbrand.jsapi.ag.e.b.a locala = new com.tencent.mm.plugin.appbrand.jsapi.ag.e.b.a();
-        locala.p("videoPlayerId", Integer.valueOf(paramAnonymousInt));
+        com.tencent.mm.plugin.appbrand.jsapi.ai.e.b.a locala = new com.tencent.mm.plugin.appbrand.jsapi.ai.e.b.a();
+        locala.o("videoPlayerId", Integer.valueOf(paramAnonymousInt));
         AppMethodBeat.o(177177);
         return locala;
       }
       
-      public final com.tencent.mm.plugin.appbrand.jsapi.s.a hX(int paramAnonymousInt)
+      public final com.tencent.mm.plugin.appbrand.jsapi.t.a ja(int paramAnonymousInt)
       {
         AppMethodBeat.i(177178);
         b localb = new b();
-        localb.p("videoPlayerId", Integer.valueOf(paramAnonymousInt));
+        localb.o("videoPlayerId", Integer.valueOf(paramAnonymousInt));
         AppMethodBeat.o(177178);
         return localb;
       }
@@ -48,28 +48,28 @@ final class d
   {
     super(paramc);
     AppMethodBeat.i(177179);
-    this.cFM = new j(paramc);
+    this.cGs = new j(paramc);
     AppMethodBeat.o(177179);
   }
   
-  public final g PI()
+  public final g Th()
   {
-    return this.cFM;
+    return this.cGs;
   }
   
-  public final h.a PJ()
+  public final h.a Ti()
   {
-    return cFK;
+    return cGq;
   }
   
-  public final com.tencent.mm.plugin.appbrand.jsapi.s.c PK()
+  public final com.tencent.mm.plugin.appbrand.jsapi.t.c Tj()
   {
-    return cFL;
+    return cGr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.video.d
  * JD-Core Version:    0.7.0.1
  */

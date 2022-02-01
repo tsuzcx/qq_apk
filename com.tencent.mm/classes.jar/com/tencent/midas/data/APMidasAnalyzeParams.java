@@ -13,7 +13,7 @@ public class APMidasAnalyzeParams
 {
   private void AnalyzeCommParams(APMidasBaseRequest paramAPMidasBaseRequest)
   {
-    AppMethodBeat.i(193023);
+    AppMethodBeat.i(253283);
     try
     {
       APPluginDataInterface localAPPluginDataInterface = APPluginDataInterface.singleton();
@@ -27,38 +27,38 @@ public class APMidasAnalyzeParams
       localAPPluginDataInterface.setZoneId(paramAPMidasBaseRequest.zoneId);
       localAPPluginDataInterface.setDiscountUrl(paramAPMidasBaseRequest.mpInfo.discountUrl);
       localAPPluginDataInterface.setReserv(paramAPMidasBaseRequest.reserv);
-      AppMethodBeat.o(193023);
+      AppMethodBeat.o(253283);
       return;
     }
     catch (Exception paramAPMidasBaseRequest)
     {
       APLog.i("AnalyzeCommParams", paramAPMidasBaseRequest.toString());
-      AppMethodBeat.o(193023);
+      AppMethodBeat.o(253283);
     }
   }
   
   public static APMidasAnalyzeParams getInstance()
   {
-    AppMethodBeat.i(193020);
+    AppMethodBeat.i(253278);
     APMidasAnalyzeParams localAPMidasAnalyzeParams = SingletonHolder.instance;
-    AppMethodBeat.o(193020);
+    AppMethodBeat.o(253278);
     return localAPMidasAnalyzeParams;
   }
   
   public void AnalyzeParams(APMidasBaseRequest paramAPMidasBaseRequest)
   {
-    AppMethodBeat.i(193021);
+    AppMethodBeat.i(253279);
     if (paramAPMidasBaseRequest != null)
     {
       AnalyzeCommParams(paramAPMidasBaseRequest);
       setSaveType(paramAPMidasBaseRequest);
     }
-    AppMethodBeat.o(193021);
+    AppMethodBeat.o(253279);
   }
   
   public void setSaveType(APMidasBaseRequest paramAPMidasBaseRequest)
   {
-    AppMethodBeat.i(193022);
+    AppMethodBeat.i(253281);
     APPluginDataInterface localAPPluginDataInterface = APPluginDataInterface.singleton();
     try
     {
@@ -67,36 +67,36 @@ public class APMidasAnalyzeParams
         if (paramAPMidasBaseRequest.acctType.equals("qb"))
         {
           localAPPluginDataInterface.setSaveType(3);
-          AppMethodBeat.o(193022);
+          AppMethodBeat.o(253281);
           return;
         }
         localAPPluginDataInterface.setSaveType(0);
-        AppMethodBeat.o(193022);
+        AppMethodBeat.o(253281);
         return;
       }
     }
     catch (Exception paramAPMidasBaseRequest)
     {
       APLog.i("setSaveType", paramAPMidasBaseRequest.toString());
-      AppMethodBeat.o(193022);
+      AppMethodBeat.o(253281);
       return;
     }
     if ((paramAPMidasBaseRequest instanceof APMidasGoodsRequest))
     {
       localAPPluginDataInterface.setSaveType(1);
-      AppMethodBeat.o(193022);
+      AppMethodBeat.o(253281);
       return;
     }
     if ((paramAPMidasBaseRequest instanceof APMidasMonthRequest))
     {
       localAPPluginDataInterface.setSaveType(4);
-      AppMethodBeat.o(193022);
+      AppMethodBeat.o(253281);
       return;
     }
     if ((paramAPMidasBaseRequest instanceof APMidasSubscribeRequest)) {
       localAPPluginDataInterface.setSaveType(5);
     }
-    AppMethodBeat.o(193022);
+    AppMethodBeat.o(253281);
   }
   
   static class SingletonHolder
@@ -105,15 +105,15 @@ public class APMidasAnalyzeParams
     
     static
     {
-      AppMethodBeat.i(192996);
+      AppMethodBeat.i(253292);
       instance = new APMidasAnalyzeParams();
-      AppMethodBeat.o(192996);
+      AppMethodBeat.o(253292);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.data.APMidasAnalyzeParams
  * JD-Core Version:    0.7.0.1
  */

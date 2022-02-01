@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.game.luggage.b;
 import android.content.Context;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.downloader_app.api.DownloadWidgetTaskInfo;
 import com.tencent.mm.plugin.downloader_app.api.c;
 import com.tencent.mm.plugin.webview.luggage.jsapi.br;
@@ -22,7 +22,7 @@ public class j
   public final void a(Context paramContext, String paramString, br.a parama)
   {
     AppMethodBeat.i(83064);
-    Object localObject = ((c)g.af(c.class)).cBR();
+    Object localObject = ((c)h.ae(c.class)).cQv();
     if (Util.isNullOrNil((List)localObject))
     {
       parama.i(null, null);
@@ -44,11 +44,11 @@ public class j
       try
       {
         localJSONObject.put("appid", localDownloadWidgetTaskInfo.appId);
-        localJSONObject.put("status", localDownloadWidgetTaskInfo.pJC);
-        localJSONObject.put("download_id", localDownloadWidgetTaskInfo.dCa);
+        localJSONObject.put("status", localDownloadWidgetTaskInfo.sSq);
+        localJSONObject.put("download_id", localDownloadWidgetTaskInfo.fuD);
         localJSONObject.put("progress", localDownloadWidgetTaskInfo.progress);
-        localJSONObject.put("progress_float", localDownloadWidgetTaskInfo.lCT);
-        if (localDownloadWidgetTaskInfo.qJh) {
+        localJSONObject.put("progress_float", localDownloadWidgetTaskInfo.oyv);
+        if (localDownloadWidgetTaskInfo.uik) {
           localJSONObject.put("reserve_for_wifi", 1);
         }
         label177:
@@ -76,7 +76,7 @@ public class j
   
   public final void b(b.a parama) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 1;
   }

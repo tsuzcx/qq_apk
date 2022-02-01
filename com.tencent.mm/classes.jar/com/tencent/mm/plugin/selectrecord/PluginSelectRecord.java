@@ -2,45 +2,44 @@ package com.tencent.mm.plugin.selectrecord;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.api.bucket.c;
-import com.tencent.mm.kernel.b.f;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.model.cj;
-import com.tencent.mm.plugin.messenger.foundation.a.s;
+import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.ck;
 import com.tencent.mm.plugin.messenger.foundation.a.v;
-import com.tencent.mm.plugin.selectrecord.d.b;
+import com.tencent.mm.plugin.messenger.foundation.a.y;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class PluginSelectRecord
-  extends f
+  extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.kernel.api.bucket.a, c, a
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private com.tencent.mm.plugin.selectrecord.c.a CWL;
-  private b CWM;
+  private com.tencent.mm.plugin.selectrecord.c.a Jcr;
+  private com.tencent.mm.plugin.selectrecord.d.b Jcs;
   
   static
   {
-    AppMethodBeat.i(187906);
+    AppMethodBeat.i(255185);
     HashMap localHashMap = new HashMap();
     baseDBFactories = localHashMap;
     localHashMap.put(Integer.valueOf("SELECTRECORD_TABLE".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return b.SQL_CREATE;
+        return com.tencent.mm.plugin.selectrecord.d.b.SQL_CREATE;
       }
     });
-    AppMethodBeat.o(187906);
+    AppMethodBeat.o(255185);
   }
   
   public PluginSelectRecord()
   {
-    AppMethodBeat.i(187901);
-    this.CWL = new com.tencent.mm.plugin.selectrecord.c.a();
-    this.CWM = null;
-    AppMethodBeat.o(187901);
+    AppMethodBeat.i(255177);
+    this.Jcr = new com.tencent.mm.plugin.selectrecord.c.a();
+    this.Jcs = null;
+    AppMethodBeat.o(255177);
   }
   
   public HashMap<Integer, h.b> collectDatabaseFactory()
@@ -48,46 +47,46 @@ public class PluginSelectRecord
     return baseDBFactories;
   }
   
-  public void execute(com.tencent.mm.kernel.b.g paramg)
+  public void execute(g paramg)
   {
-    AppMethodBeat.i(187904);
-    if (paramg.aBb()) {
-      com.tencent.mm.kernel.g.b(v.class, new com.tencent.mm.plugin.selectrecord.a.a());
+    AppMethodBeat.i(255181);
+    if (paramg.aIE()) {
+      h.b(y.class, new com.tencent.mm.plugin.selectrecord.a.a());
     }
-    AppMethodBeat.o(187904);
+    AppMethodBeat.o(255181);
   }
   
-  public b getSelectRecordStorage()
+  public com.tencent.mm.plugin.selectrecord.d.b getSelectRecordStorage()
   {
-    AppMethodBeat.i(187905);
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (this.CWM == null)
+    AppMethodBeat.i(255183);
+    h.aHE().aGH();
+    if (this.Jcs == null)
     {
-      com.tencent.mm.kernel.g.aAi();
-      this.CWM = new b(com.tencent.mm.kernel.g.aAh().hqK);
+      h.aHH();
+      this.Jcs = new com.tencent.mm.plugin.selectrecord.d.b(h.aHG().kcF);
     }
-    b localb = this.CWM;
-    AppMethodBeat.o(187905);
+    com.tencent.mm.plugin.selectrecord.d.b localb = this.Jcs;
+    AppMethodBeat.o(255183);
     return localb;
   }
   
-  public void onAccountInitialized(e.c paramc)
+  public void onAccountInitialized(f.c paramc)
   {
-    AppMethodBeat.i(187902);
-    ((s)com.tencent.mm.kernel.g.ah(s.class)).getSysCmdMsgExtension().a("revokehistoryinjoinroommsg", this.CWL);
-    AppMethodBeat.o(187902);
+    AppMethodBeat.i(255179);
+    ((v)h.ag(v.class)).getSysCmdMsgExtension().a("revokehistoryinjoinroommsg", this.Jcr);
+    AppMethodBeat.o(255179);
   }
   
   public void onAccountRelease()
   {
-    AppMethodBeat.i(187903);
-    ((s)com.tencent.mm.kernel.g.ah(s.class)).getSysCmdMsgExtension().b("revokehistoryinjoinroommsg", this.CWL);
-    AppMethodBeat.o(187903);
+    AppMethodBeat.i(255180);
+    ((v)h.ag(v.class)).getSysCmdMsgExtension().b("revokehistoryinjoinroommsg", this.Jcr);
+    AppMethodBeat.o(255180);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.selectrecord.PluginSelectRecord
  * JD-Core Version:    0.7.0.1
  */

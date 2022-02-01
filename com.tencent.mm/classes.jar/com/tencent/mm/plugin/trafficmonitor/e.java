@@ -4,36 +4,36 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class e
 {
-  f GsO;
-  a GsP;
+  f NfA;
+  a NfB;
   private final String TAG = "MicroMsg.TrafficInspector";
   int currentIndex;
   int id;
   long interval;
   int type;
   
-  static boolean KL(long paramLong)
+  static boolean Si(long paramLong)
   {
-    if (TrafficClickFlowReceiver.KI(paramLong))
+    if (TrafficClickFlowReceiver.Sf(paramLong))
     {
-      boolean bool = TrafficClickFlowReceiver.KJ(paramLong);
+      boolean bool = TrafficClickFlowReceiver.Sg(paramLong);
       Log.i("MicroMsg.TrafficInspector", "hasDownload");
       return bool;
     }
     return false;
   }
   
-  abstract void fAh();
+  abstract void gsi();
   
-  final void fAj()
+  final void gsk()
   {
-    g.fAk();
-    int i = g.fAn();
+    g.gsl();
+    int i = g.gso();
     if (this.id == i)
     {
-      TrafficClickFlowReceiver.fAi();
-      g.fAk();
-      g.fAm();
+      TrafficClickFlowReceiver.gsj();
+      g.gsl();
+      g.gsn();
     }
   }
   
@@ -41,7 +41,7 @@ public abstract class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.trafficmonitor.e
  * JD-Core Version:    0.7.0.1
  */

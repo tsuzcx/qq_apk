@@ -14,26 +14,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   implements LeadingMarginSpan, f<Boolean>, g<Boolean>
 {
-  private static Path qTc = null;
-  private final int qTd;
-  public boolean qTe;
+  private static Path uvi = null;
+  private final int uvj;
+  public boolean uvk;
   
   private d(int paramInt, boolean paramBoolean)
   {
-    this.qTd = paramInt;
-    this.qTe = paramBoolean;
+    this.uvj = paramInt;
+    this.uvk = paramBoolean;
   }
   
   public d(int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     AppMethodBeat.i(30631);
-    this.qTd = paramInt;
+    this.uvj = paramInt;
     if ((paramBoolean1) && (paramBoolean3) && (!paramBoolean2)) {}
     for (paramBoolean1 = true;; paramBoolean1 = false)
     {
-      this.qTe = paramBoolean1;
-      if (qTc == null) {
-        qTc = new Path();
+      this.uvk = paramBoolean1;
+      if (uvi == null) {
+        uvi = new Path();
       }
       AppMethodBeat.o(30631);
       return;
@@ -44,18 +44,18 @@ public final class d
   {
     AppMethodBeat.i(30632);
     paramCharSequence = (Spanned)paramCharSequence;
-    if ((!this.qTe) && (paramCharSequence.getSpanStart(this) == paramInt6))
+    if ((!this.uvk) && (paramCharSequence.getSpanStart(this) == paramInt6))
     {
       paramCharSequence = paramPaint.getStyle();
       paramPaint.setStyle(Paint.Style.FILL);
-      qTc.reset();
-      qTc.addCircle(0.0F, 0.0F, 6.0F, Path.Direction.CW);
+      uvi.reset();
+      uvi.addCircle(0.0F, 0.0F, 6.0F, Path.Direction.CW);
       paramLayout = paramPaint.getFontMetricsInt();
       paramInt3 = paramLayout.descent;
       paramInt3 = (paramLayout.ascent + (paramInt3 + paramInt4 + paramInt4)) / 2;
       paramCanvas.save();
       paramCanvas.translate(paramInt2 * 6 + paramInt1, paramInt3);
-      paramCanvas.drawPath(qTc, paramPaint);
+      paramCanvas.drawPath(uvi, paramPaint);
       paramCanvas.restore();
       paramPaint.setStyle(paramCharSequence);
     }
@@ -64,15 +64,15 @@ public final class d
   
   public final int getLeadingMargin(boolean paramBoolean)
   {
-    if (this.qTe) {
+    if (this.uvk) {
       return 0;
     }
-    return this.qTd;
+    return this.uvj;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.spans.d
  * JD-Core Version:    0.7.0.1
  */

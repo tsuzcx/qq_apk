@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.TimeInterpolator;
-import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
@@ -25,83 +24,83 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.f.i;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.scanner.api.BaseScanRequest;
 import com.tencent.mm.plugin.scanner.api.ScanGoodsRequest;
 import com.tencent.mm.plugin.scanner.box.f;
-import com.tencent.mm.plugin.scanner.model.aa;
-import com.tencent.mm.plugin.scanner.model.ab;
-import com.tencent.mm.plugin.scanner.model.ab.f;
-import com.tencent.mm.plugin.scanner.model.af;
-import com.tencent.mm.plugin.scanner.model.w;
+import com.tencent.mm.plugin.scanner.l.d;
+import com.tencent.mm.plugin.scanner.l.f;
+import com.tencent.mm.plugin.scanner.l.g;
+import com.tencent.mm.plugin.scanner.l.i;
+import com.tencent.mm.plugin.scanner.model.ad;
+import com.tencent.mm.plugin.scanner.model.u;
+import com.tencent.mm.plugin.scanner.model.y;
 import com.tencent.mm.plugin.scanner.model.z;
-import com.tencent.mm.plugin.scanner.util.m;
+import com.tencent.mm.plugin.scanner.model.z.f;
+import com.tencent.mm.plugin.scanner.util.n;
 import com.tencent.mm.plugin.scanner.view.BaseScanMaskView;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.PlaySound;
-import com.tencent.mm.vending.g.d.a;
+import com.tencent.mm.ui.base.s;
 import com.tencent.mm.vending.g.d.b;
-import com.tencent.mm.vending.j.c;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Timer;
 import java.util.TimerTask;
-import kotlin.g.a.b;
 import kotlin.g.b.p;
+import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.t;
-import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanGoodsMaskView;", "Lcom/tencent/mm/plugin/scanner/view/BaseScanMaskView;", "Lcom/tencent/mm/plugin/scanner/api/ScanGoodsRequest;", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundViewModel;", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogMoveListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "animateShowPreviewImage", "", "animationDotsView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationDotsView;", "backgroundView", "Landroid/view/View;", "blurBitmap", "Landroid/graphics/Bitmap;", "blurView", "Landroid/widget/ImageView;", "bottomBlurView", "canShowBlurView", "customMaskView", "customSuccessView", "customTipsContainer", "Landroid/widget/LinearLayout;", "customTipsImage", "customTipsImageContainer", "customTipsWording", "Landroid/widget/TextView;", "enablePlaySound", "enableVibrate", "hideBlurViewInterpolator", "Landroid/view/animation/LinearInterpolator;", "interpolator", "Landroid/view/animation/DecelerateInterpolator;", "maskView", "pendingTasks", "Ljava/util/ArrayList;", "Ljava/lang/Runnable;", "Lkotlin/collections/ArrayList;", "previewBitmap", "previewImage", "progressDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "resourceLoadRequestId", "", "scanTipsImageAnimation", "Landroid/support/animation/SpringAnimation;", "scanTipsImageAnimationTimer", "Ljava/util/Timer;", "scanTipsImageAnimationTimerTask", "Ljava/util/TimerTask;", "showCustomView", "showPreviewImage", "successAnimationListener", "Lcom/tencent/mm/plugin/scanner/view/ScanResultAnimationListener;", "successDecorationView", "successDecorationViewSize", "successMarkView", "successMarkViewSize", "vibrator", "Landroid/os/Vibrator;", "viewHeight", "viewWidth", "addAnimationScanDots", "", "pointsResult", "Lcom/tencent/mm/plugin/scanner/model/ScanPointsInfo;", "animateCustomSuccessView", "center", "Landroid/graphics/PointF;", "animateHideBlurView", "animationEndCallback", "Lkotlin/Function0;", "animateScanDots", "start", "attachBackgroundView", "bitmap", "async", "cancelScanTipsImageAnimation", "computeCropSize", "Landroid/graphics/Point;", "originWidth", "originHeight", "targetWidth", "targetHeight", "doUpdatePreview", "getBackgroundTransY", "", "getMarkViewHeight", "getMarkViewTransY", "getPreviewImageSize", "getRealPosition", "centerX", "centerY", "getRealPositionForImage", "init", "initScanTipsImageAnimation", "request", "isFromCapture", "isFromGallery", "onDialogDismissAnimationEnd", "onDialogDismissAnimationStart", "onDialogShowAnimationEnd", "onDialogShowAnimationStart", "dialogHeight", "startTransY", "endTransY", "onDialogVerticalMoved", "dialogState", "offsetY", "factor", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "onPreviewReady", "isSwitchTab", "onScanSuccess", "data", "", "scanResultAnimationListener", "onSetCustomBackgroundSuccess", "onShowCustomViewFailed", "onTouchMoveBegin", "onTouchMoveEnd", "onViewDestroy", "animatorListener", "Landroid/animation/Animator$AnimatorListener;", "onViewReady", "recycleBlurBitmap", "release", "runPendingTasks", "setBackgroundTransY", "translationY", "setCustomBackgroundBitmap", "setCustomTipsWording", "setMarkViewTransY", "setScanRequest", "showCustomBackground", "imagePath", "", "showLoadingView", "show", "cancelListener", "Landroid/content/DialogInterface$OnCancelListener;", "showSuccessView", "info", "Lcom/tencent/mm/plugin/scanner/model/ScanGoodsRemoteResult;", "updateBlurBitmap", "updatePreview", "updatePreviewBitmap", "textureView", "Landroid/view/TextureView;", "updatePreviewImageAlpha", "updateSuccessViewVisibility", "vibrate", "Companion", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanGoodsMaskView;", "Lcom/tencent/mm/plugin/scanner/view/BaseScanMaskView;", "Lcom/tencent/mm/plugin/scanner/api/ScanGoodsRequest;", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundViewModel;", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogMoveListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "animateShowPreviewImage", "", "animationDotsView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationDotsView;", "backgroundView", "Landroid/view/View;", "blurBitmap", "Landroid/graphics/Bitmap;", "blurView", "Landroid/widget/ImageView;", "bottomBlurView", "canShowBlurView", "customMaskView", "customSuccessView", "customTipsContainer", "Landroid/widget/LinearLayout;", "customTipsImage", "customTipsImageContainer", "customTipsWording", "Landroid/widget/TextView;", "enablePlaySound", "enableVibrate", "hideBlurViewInterpolator", "Landroid/view/animation/LinearInterpolator;", "interpolator", "Landroid/view/animation/DecelerateInterpolator;", "maskView", "pendingTasks", "Ljava/util/ArrayList;", "Ljava/lang/Runnable;", "Lkotlin/collections/ArrayList;", "previewBitmap", "previewImage", "progressDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "resourceLoadRequestId", "", "scanTipsImageAnimation", "Landroidx/dynamicanimation/animation/SpringAnimation;", "scanTipsImageAnimationFuture", "Lcom/tencent/threadpool/runnable/FutureEx;", "scanTipsImageAnimationTimerTask", "Ljava/util/TimerTask;", "showCustomView", "showPreviewImage", "successAnimationListener", "Lcom/tencent/mm/plugin/scanner/view/ScanResultAnimationListener;", "successDecorationView", "successDecorationViewSize", "successMarkView", "successMarkViewSize", "vibrator", "Landroid/os/Vibrator;", "viewHeight", "viewWidth", "addAnimationScanDots", "", "pointsResult", "Lcom/tencent/mm/plugin/scanner/model/ScanPointsInfo;", "animateCustomSuccessView", "center", "Landroid/graphics/PointF;", "animateHideBlurView", "animationEndCallback", "Lkotlin/Function0;", "animateScanDots", "start", "attachBackgroundView", "bitmap", "async", "cancelScanTipsImageAnimation", "computeCropSize", "Landroid/graphics/Point;", "originWidth", "originHeight", "targetWidth", "targetHeight", "doUpdatePreview", "getBackgroundTransY", "", "getMarkViewHeight", "getMarkViewTransY", "getPreviewImageSize", "getRealPosition", "centerX", "centerY", "getRealPositionForImage", "init", "initScanTipsImageAnimation", "request", "isFromCapture", "isFromGallery", "onDialogDismissAnimationEnd", "onDialogDismissAnimationStart", "onDialogShowAnimationEnd", "onDialogShowAnimationStart", "dialogHeight", "startTransY", "endTransY", "onDialogVerticalMoved", "dialogState", "offsetY", "factor", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "onPreviewReady", "isSwitchTab", "onScanSuccess", "data", "", "scanResultAnimationListener", "onSetCustomBackgroundSuccess", "onShowCustomViewFailed", "onTouchMoveBegin", "onTouchMoveEnd", "onViewDestroy", "animatorListener", "Landroid/animation/Animator$AnimatorListener;", "onViewReady", "recycleBlurBitmap", "release", "runPendingTasks", "setBackgroundTransY", "translationY", "setCustomBackgroundBitmap", "setCustomTipsWording", "setMarkViewTransY", "setScanRequest", "showCustomBackground", "imagePath", "", "showLoadingView", "show", "cancelListener", "Landroid/content/DialogInterface$OnCancelListener;", "showSuccessView", "info", "Lcom/tencent/mm/plugin/scanner/model/ScanGoodsRemoteResult;", "updateBlurBitmap", "updatePreview", "updatePreviewBitmap", "textureView", "Landroid/view/TextureView;", "updatePreviewImageAlpha", "updateSuccessViewVisibility", "vibrate", "Companion", "plugin-scan_release"})
 public final class ScanGoodsMaskView
   extends BaseScanMaskView<ScanGoodsRequest>
   implements com.tencent.mm.plugin.scanner.box.d, f
 {
-  public static final ScanGoodsMaskView.a CQs;
-  private Bitmap BQT;
-  public ScanAnimationDotsView CPO;
-  private View CPP;
-  private ImageView CPQ;
-  private ImageView CPR;
-  private ImageView CPS;
-  private ImageView CPT;
-  private View CPU;
-  private boolean CPV;
-  private ImageView CPW;
-  private ImageView CPX;
-  private LinearLayout CPY;
-  private LinearLayout CPZ;
-  private ImageView CQa;
-  private TextView CQb;
-  private ArrayList<Runnable> CQc;
-  private long CQd;
-  private int CQe;
-  private int CQf;
-  private boolean CQg;
-  public boolean CQh;
-  public boolean CQi;
-  private Bitmap CQj;
-  private com.tencent.mm.plugin.scanner.view.d CQk;
-  private LinearInterpolator CQl;
-  private DecelerateInterpolator CQm;
-  private boolean CQn;
-  private boolean CQo;
-  private TimerTask CQp;
-  private Timer CQq;
-  private android.support.a.d CQr;
-  private int gRD;
-  private int gRE;
-  private com.tencent.mm.ui.base.q gut;
+  public static final ScanGoodsMaskView.a IVT;
+  private Bitmap HNJ;
+  private LinearLayout IVA;
+  private LinearLayout IVB;
+  private ImageView IVC;
+  private TextView IVD;
+  private ArrayList<Runnable> IVE;
+  private long IVF;
+  private int IVG;
+  private int IVH;
+  private boolean IVI;
+  public boolean IVJ;
+  public boolean IVK;
+  private com.tencent.mm.plugin.scanner.view.d IVL;
+  private LinearInterpolator IVM;
+  private DecelerateInterpolator IVN;
+  private boolean IVO;
+  private boolean IVP;
+  private TimerTask IVQ;
+  private com.tencent.e.i.d<?> IVR;
+  private androidx.d.a.d IVS;
+  public ScanAnimationDotsView IVq;
+  private View IVr;
+  private ImageView IVs;
+  private ImageView IVt;
+  private ImageView IVu;
+  private ImageView IVv;
+  private View IVw;
+  private boolean IVx;
+  private ImageView IVy;
+  private ImageView IVz;
+  private s iYE;
+  private int jBZ;
+  private int jCa;
+  private Bitmap krJ;
   private View maskView;
-  private Vibrator paT;
+  private Vibrator rqC;
   
   static
   {
     AppMethodBeat.i(52328);
-    CQs = new ScanGoodsMaskView.a((byte)0);
+    IVT = new ScanGoodsMaskView.a((byte)0);
     AppMethodBeat.o(52328);
   }
   
@@ -123,72 +122,72 @@ public final class ScanGoodsMaskView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(52327);
-    this.CQc = new ArrayList();
-    this.CQe = getResources().getDimensionPixelSize(2131166894);
-    this.CQf = getResources().getDimensionPixelSize(2131166884);
-    this.CQl = new LinearInterpolator();
-    this.CQm = new DecelerateInterpolator();
-    this.CQn = true;
-    this.CQo = true;
-    paramAttributeSet = LayoutInflater.from(paramContext).inflate(2131495187, (ViewGroup)this, true);
-    Object localObject = paramAttributeSet.findViewById(2131307229);
-    p.g(localObject, "view.findViewById(R.id.scan_animation_dots_view)");
-    this.CPO = ((ScanAnimationDotsView)localObject);
-    localObject = paramAttributeSet.findViewById(2131307262);
-    p.g(localObject, "view.findViewById(R.id.scan_success_dot_view)");
-    this.CPP = ((View)localObject);
-    localObject = paramAttributeSet.findViewById(2131306104);
-    p.g(localObject, "view.findViewById(R.id.p…ew_blur_view_for_gallery)");
-    this.CPR = ((ImageView)localObject);
-    localObject = paramAttributeSet.findViewById(2131306103);
-    p.g(localObject, "view.findViewById(R.id.preview_blur_view)");
-    this.CPT = ((ImageView)localObject);
-    localObject = paramAttributeSet.findViewById(2131304511);
-    p.g(localObject, "view.findViewById(R.id.mask_view)");
+    this.IVE = new ArrayList();
+    this.IVG = getResources().getDimensionPixelSize(l.d.ICh);
+    this.IVH = getResources().getDimensionPixelSize(l.d.ICc);
+    this.IVM = new LinearInterpolator();
+    this.IVN = new DecelerateInterpolator();
+    this.IVO = true;
+    this.IVP = true;
+    paramAttributeSet = LayoutInflater.from(paramContext).inflate(l.g.IDW, (ViewGroup)this, true);
+    Object localObject = paramAttributeSet.findViewById(l.f.IDi);
+    p.j(localObject, "view.findViewById(R.id.scan_animation_dots_view)");
+    this.IVq = ((ScanAnimationDotsView)localObject);
+    localObject = paramAttributeSet.findViewById(l.f.scan_success_dot_view);
+    p.j(localObject, "view.findViewById(R.id.scan_success_dot_view)");
+    this.IVr = ((View)localObject);
+    localObject = paramAttributeSet.findViewById(l.f.ICQ);
+    p.j(localObject, "view.findViewById(R.id.p…ew_blur_view_for_gallery)");
+    this.IVt = ((ImageView)localObject);
+    localObject = paramAttributeSet.findViewById(l.f.ICP);
+    p.j(localObject, "view.findViewById(R.id.preview_blur_view)");
+    this.IVv = ((ImageView)localObject);
+    localObject = paramAttributeSet.findViewById(l.f.mask_view);
+    p.j(localObject, "view.findViewById(R.id.mask_view)");
     this.maskView = ((View)localObject);
-    localObject = paramAttributeSet.findViewById(2131306110);
-    p.g(localObject, "view.findViewById(R.id.preview_image)");
-    this.CPS = ((ImageView)localObject);
-    localObject = paramAttributeSet.findViewById(2131299382);
-    p.g(localObject, "view.findViewById(R.id.custom_mask_view)");
-    this.CPW = ((ImageView)localObject);
-    localObject = paramAttributeSet.findViewById(2131299391);
-    p.g(localObject, "view.findViewById(R.id.custom_success_view)");
-    this.CPX = ((ImageView)localObject);
-    localObject = paramAttributeSet.findViewById(2131308749);
-    p.g(localObject, "view.findViewById(R.id.success_decoration_view)");
-    this.CPQ = ((ImageView)localObject);
-    localObject = paramAttributeSet.findViewById(2131299385);
-    p.g(localObject, "view.findViewById(R.id.custom_scan_tips_container)");
-    this.CPY = ((LinearLayout)localObject);
-    localObject = paramAttributeSet.findViewById(2131299387);
-    p.g(localObject, "view.findViewById(R.id.c…can_tips_image_container)");
-    this.CPZ = ((LinearLayout)localObject);
-    localObject = paramAttributeSet.findViewById(2131299386);
-    p.g(localObject, "view.findViewById(R.id.custom_scan_tips_image)");
-    this.CQa = ((ImageView)localObject);
-    paramAttributeSet = paramAttributeSet.findViewById(2131299388);
-    p.g(paramAttributeSet, "view.findViewById(R.id.custom_scan_tips_wording)");
-    this.CQb = ((TextView)paramAttributeSet);
-    if (this.paT == null)
+    localObject = paramAttributeSet.findViewById(l.f.ICR);
+    p.j(localObject, "view.findViewById(R.id.preview_image)");
+    this.IVu = ((ImageView)localObject);
+    localObject = paramAttributeSet.findViewById(l.f.ICz);
+    p.j(localObject, "view.findViewById(R.id.custom_mask_view)");
+    this.IVy = ((ImageView)localObject);
+    localObject = paramAttributeSet.findViewById(l.f.ICE);
+    p.j(localObject, "view.findViewById(R.id.custom_success_view)");
+    this.IVz = ((ImageView)localObject);
+    localObject = paramAttributeSet.findViewById(l.f.IDK);
+    p.j(localObject, "view.findViewById(R.id.success_decoration_view)");
+    this.IVs = ((ImageView)localObject);
+    localObject = paramAttributeSet.findViewById(l.f.ICA);
+    p.j(localObject, "view.findViewById(R.id.custom_scan_tips_container)");
+    this.IVA = ((LinearLayout)localObject);
+    localObject = paramAttributeSet.findViewById(l.f.ICC);
+    p.j(localObject, "view.findViewById(R.id.c…can_tips_image_container)");
+    this.IVB = ((LinearLayout)localObject);
+    localObject = paramAttributeSet.findViewById(l.f.ICB);
+    p.j(localObject, "view.findViewById(R.id.custom_scan_tips_image)");
+    this.IVC = ((ImageView)localObject);
+    paramAttributeSet = paramAttributeSet.findViewById(l.f.ICD);
+    p.j(paramAttributeSet, "view.findViewById(R.id.custom_scan_tips_wording)");
+    this.IVD = ((TextView)paramAttributeSet);
+    if (this.rqC == null)
     {
       paramAttributeSet = paramContext.getSystemService("vibrator");
       if (paramAttributeSet != null) {
-        this.paT = ((Vibrator)paramAttributeSet);
+        this.rqC = ((Vibrator)paramAttributeSet);
       }
     }
-    localObject = this.CPY;
+    localObject = this.IVA;
     if (localObject == null) {
-      p.btv("customTipsContainer");
+      p.bGy("customTipsContainer");
     }
-    paramAttributeSet = this.CPY;
+    paramAttributeSet = this.IVA;
     if (paramAttributeSet == null) {
-      p.btv("customTipsContainer");
+      p.bGy("customTipsContainer");
     }
     paramAttributeSet = paramAttributeSet.getLayoutParams();
     if (paramAttributeSet != null) {
       if ((paramAttributeSet instanceof ViewGroup.MarginLayoutParams)) {
-        ((ViewGroup.MarginLayoutParams)paramAttributeSet).bottomMargin = (com.tencent.mm.cb.a.fromDPToPix(paramContext, 154) + getMBottomExtraHeight());
+        ((ViewGroup.MarginLayoutParams)paramAttributeSet).bottomMargin = (com.tencent.mm.ci.a.fromDPToPix(paramContext, 154) + getMBottomExtraHeight());
       }
     }
     for (paramContext = paramAttributeSet;; paramContext = null)
@@ -199,86 +198,86 @@ public final class ScanGoodsMaskView
     }
   }
   
-  private final void ao(final Bitmap paramBitmap)
+  private final void al(final Bitmap paramBitmap)
   {
-    AppMethodBeat.i(240610);
+    AppMethodBeat.i(216915);
     if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
       Log.i("MicroMsg.ScanGoodsMaskView", "alvinluo setPreviewBitmap width: %d, height: %d", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()) });
       ((kotlin.g.a.a)new f(this, paramBitmap)).invoke();
     }
-    AppMethodBeat.o(240610);
+    AppMethodBeat.o(216915);
   }
   
-  private final void eRr()
+  private final void fEs()
   {
     AppMethodBeat.i(52324);
-    if (this.BQT != null)
+    if (this.HNJ != null)
     {
-      Bitmap localBitmap = this.BQT;
+      Bitmap localBitmap = this.HNJ;
       if (localBitmap == null) {
-        p.hyc();
+        p.iCn();
       }
       if (!localBitmap.isRecycled())
       {
-        localBitmap = this.BQT;
+        localBitmap = this.HNJ;
         if (localBitmap == null) {
-          p.hyc();
+          p.iCn();
         }
         localBitmap.recycle();
-        this.BQT = null;
+        this.HNJ = null;
       }
     }
     AppMethodBeat.o(52324);
   }
   
-  private final void eRs()
+  private final void fEt()
   {
-    AppMethodBeat.i(240618);
+    AppMethodBeat.i(216961);
     try
     {
-      Object localObject = this.CQr;
+      Object localObject = this.IVS;
       if (localObject != null) {
-        ((android.support.a.d)localObject).cancel();
+        ((androidx.d.a.d)localObject).cancel();
       }
-      localObject = this.CQp;
+      localObject = this.IVQ;
       if (localObject != null) {
         ((TimerTask)localObject).cancel();
       }
-      localObject = this.CQq;
+      localObject = this.IVR;
       if (localObject != null)
       {
-        ((Timer)localObject).cancel();
-        AppMethodBeat.o(240618);
+        ((com.tencent.e.i.d)localObject).cancel(false);
+        AppMethodBeat.o(216961);
         return;
       }
-      AppMethodBeat.o(240618);
+      AppMethodBeat.o(216961);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(240618);
+      AppMethodBeat.o(216961);
     }
   }
   
-  private final void eRt()
+  private final void fEu()
   {
-    AppMethodBeat.i(240619);
+    AppMethodBeat.i(216962);
     Log.e("MicroMsg.ScanGoodsMaskView", "alvinluo onShowCustomViewFailed");
-    this.CPV = false;
-    Object localObject = this.CPZ;
+    this.IVx = false;
+    Object localObject = this.IVB;
     if (localObject == null) {
-      p.btv("customTipsImageContainer");
+      p.bGy("customTipsImageContainer");
     }
     ((LinearLayout)localObject).setVisibility(8);
-    localObject = this.CPW;
+    localObject = this.IVy;
     if (localObject == null) {
-      p.btv("customMaskView");
+      p.bGy("customMaskView");
     }
     ((ImageView)localObject).setVisibility(8);
-    localObject = this.CPW;
+    localObject = this.IVy;
     if (localObject == null) {
-      p.btv("customMaskView");
+      p.bGy("customMaskView");
     }
     ((ImageView)localObject).setImageBitmap(null);
     if ((getRequest() instanceof ScanGoodsRequest))
@@ -287,50 +286,50 @@ public final class ScanGoodsMaskView
       if (localObject == null)
       {
         localObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.scanner.api.ScanGoodsRequest");
-        AppMethodBeat.o(240619);
+        AppMethodBeat.o(216962);
         throw ((Throwable)localObject);
       }
-      af.f((ScanGoodsRequest)localObject);
+      ad.f((ScanGoodsRequest)localObject);
     }
-    AppMethodBeat.o(240619);
+    AppMethodBeat.o(216962);
   }
   
   private final Point getPreviewImageSize()
   {
-    AppMethodBeat.i(240611);
+    AppMethodBeat.i(216917);
     Object localObject;
-    if (this.CQj != null)
+    if (this.krJ != null)
     {
-      localObject = this.CQj;
+      localObject = this.krJ;
       if (localObject == null) {
-        p.hyc();
+        p.iCn();
       }
       if (!((Bitmap)localObject).isRecycled()) {}
     }
     else
     {
       localObject = new Point(0, 0);
-      AppMethodBeat.o(240611);
+      AppMethodBeat.o(216917);
       return localObject;
     }
     float f;
     try
     {
-      localObject = this.CQj;
+      localObject = this.krJ;
       if (localObject == null) {
-        p.hyc();
+        p.iCn();
       }
       f = ((Bitmap)localObject).getWidth();
-      localObject = this.CQj;
+      localObject = this.krJ;
       if (localObject == null) {
-        p.hyc();
+        p.iCn();
       }
       f = f * 1.0F / ((Bitmap)localObject).getHeight();
       if (f < getMeasuredWidth() * 1.0F / getMeasuredHeight())
       {
         i = getMeasuredHeight();
         localObject = new Point((int)(f * i), i);
-        AppMethodBeat.o(240611);
+        AppMethodBeat.o(216917);
         return localObject;
       }
     }
@@ -338,60 +337,60 @@ public final class ScanGoodsMaskView
     {
       Log.printErrStackTrace("MicroMsg.ScanGoodsMaskView", (Throwable)localException, "alvinluo getPreviewImageSize exception", new Object[0]);
       localPoint = new Point(0, 0);
-      AppMethodBeat.o(240611);
+      AppMethodBeat.o(216917);
       return localPoint;
     }
     int i = getMeasuredWidth();
     Point localPoint = new Point(i, (int)(i / f));
-    AppMethodBeat.o(240611);
+    AppMethodBeat.o(216917);
     return localPoint;
   }
   
   private final void setCustomBackgroundBitmap(final Bitmap paramBitmap)
   {
-    AppMethodBeat.i(240617);
+    AppMethodBeat.i(216959);
     paramBitmap = (Runnable)new p(this, paramBitmap);
-    if ((this.gRD != 0) && (this.gRE != 0))
+    if ((this.jBZ != 0) && (this.jCa != 0))
     {
       paramBitmap.run();
-      AppMethodBeat.o(240617);
+      AppMethodBeat.o(216959);
       return;
     }
-    this.CQc.add(paramBitmap);
-    AppMethodBeat.o(240617);
+    this.IVE.add(paramBitmap);
+    AppMethodBeat.o(216959);
   }
   
   private final void setCustomTipsWording(ScanGoodsRequest paramScanGoodsRequest)
   {
-    AppMethodBeat.i(240616);
-    Object localObject = (CharSequence)paramScanGoodsRequest.CAQ;
+    AppMethodBeat.i(216958);
+    Object localObject = (CharSequence)paramScanGoodsRequest.IGv;
     if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
     for (int i = 1; i == 0; i = 0)
     {
-      localObject = this.CQb;
+      localObject = this.IVD;
       if (localObject == null) {
-        p.btv("customTipsWording");
+        p.bGy("customTipsWording");
       }
-      ((TextView)localObject).setText((CharSequence)paramScanGoodsRequest.CAQ);
-      AppMethodBeat.o(240616);
+      ((TextView)localObject).setText((CharSequence)paramScanGoodsRequest.IGv);
+      AppMethodBeat.o(216958);
       return;
     }
-    paramScanGoodsRequest = this.CQb;
+    paramScanGoodsRequest = this.IVD;
     if (paramScanGoodsRequest == null) {
-      p.btv("customTipsWording");
+      p.bGy("customTipsWording");
     }
     localObject = getContext();
-    p.g(localObject, "context");
-    paramScanGoodsRequest.setText((CharSequence)((Context)localObject).getResources().getString(2131764920));
-    AppMethodBeat.o(240616);
+    p.j(localObject, "context");
+    paramScanGoodsRequest.setText((CharSequence)((Context)localObject).getResources().getString(l.i.IER));
+    AppMethodBeat.o(216958);
   }
   
-  private final void ub(boolean paramBoolean)
+  private final void xz(boolean paramBoolean)
   {
     AppMethodBeat.i(52302);
-    ScanAnimationDotsView localScanAnimationDotsView = this.CPO;
+    ScanAnimationDotsView localScanAnimationDotsView = this.IVq;
     if (localScanAnimationDotsView == null) {
-      p.btv("animationDotsView");
+      p.bGy("animationDotsView");
     }
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
@@ -400,17 +399,17 @@ public final class ScanGoodsMaskView
       if (!paramBoolean) {
         break;
       }
-      localScanAnimationDotsView = this.CPO;
+      localScanAnimationDotsView = this.IVq;
       if (localScanAnimationDotsView == null) {
-        p.btv("animationDotsView");
+        p.bGy("animationDotsView");
       }
       localScanAnimationDotsView.startAnimation();
       AppMethodBeat.o(52302);
       return;
     }
-    localScanAnimationDotsView = this.CPO;
+    localScanAnimationDotsView = this.IVq;
     if (localScanAnimationDotsView == null) {
-      p.btv("animationDotsView");
+      p.bGy("animationDotsView");
     }
     localScanAnimationDotsView.stopAnimation();
     AppMethodBeat.o(52302);
@@ -420,58 +419,58 @@ public final class ScanGoodsMaskView
   {
     AppMethodBeat.i(52311);
     super.a(paramAnimatorListener);
-    eRs();
-    m.a((View)this, 1.0F, 0.0F, 200L, paramAnimatorListener);
+    fEt();
+    n.a((View)this, 1.0F, 0.0F, 200L, paramAnimatorListener);
     AppMethodBeat.o(52311);
   }
   
-  public final void ap(Bitmap paramBitmap)
+  public final void am(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(240612);
-    eRr();
+    AppMethodBeat.i(216935);
+    fEs();
     ImageView localImageView;
     if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      Log.i("MicroMsg.ScanGoodsMaskView", "alvinluo updatePreview bitmap width: %d, height: %d, showPreviewImage: %b, animateShowPreviewImage: %b", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), Boolean.valueOf(this.CQh), Boolean.valueOf(this.CQi) });
-      this.CQj = paramBitmap;
-      localImageView = this.CPS;
+      Log.i("MicroMsg.ScanGoodsMaskView", "alvinluo updatePreview bitmap width: %d, height: %d, showPreviewImage: %b, animateShowPreviewImage: %b", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), Boolean.valueOf(this.IVJ), Boolean.valueOf(this.IVK) });
+      this.krJ = paramBitmap;
+      localImageView = this.IVu;
       if (localImageView == null) {
-        p.btv("previewImage");
+        p.bGy("previewImage");
       }
       localImageView.setImageBitmap(paramBitmap);
-      if (!this.CQh) {
+      if (!this.IVJ) {
         break label188;
       }
-      localImageView = this.CPS;
+      localImageView = this.IVu;
       if (localImageView == null) {
-        p.btv("previewImage");
+        p.bGy("previewImage");
       }
       localImageView.setVisibility(0);
-      if (!this.CQi) {
+      if (!this.IVK) {
         break label165;
       }
-      localImageView = this.CPS;
+      localImageView = this.IVu;
       if (localImageView == null) {
-        p.btv("previewImage");
+        p.bGy("previewImage");
       }
       localImageView.setAlpha(0.0F);
     }
     for (;;)
     {
-      ao(paramBitmap);
-      AppMethodBeat.o(240612);
+      al(paramBitmap);
+      AppMethodBeat.o(216935);
       return;
       label165:
-      localImageView = this.CPS;
+      localImageView = this.IVu;
       if (localImageView == null) {
-        p.btv("previewImage");
+        p.bGy("previewImage");
       }
       localImageView.setAlpha(1.0F);
       continue;
       label188:
-      localImageView = this.CPS;
+      localImageView = this.IVu;
       if (localImageView == null) {
-        p.btv("previewImage");
+        p.bGy("previewImage");
       }
       localImageView.setVisibility(8);
     }
@@ -480,42 +479,42 @@ public final class ScanGoodsMaskView
   public final void b(Object paramObject, com.tencent.mm.plugin.scanner.view.d paramd)
   {
     AppMethodBeat.i(52313);
-    p.h(paramObject, "data");
+    p.k(paramObject, "data");
     Log.i("MicroMsg.ScanGoodsMaskView", "alvinluo onScanSuccess");
-    this.CQk = paramd;
+    this.IVL = paramd;
     int i;
     label132:
     float f1;
     float f2;
     float f3;
     float f4;
-    if ((paramObject instanceof z))
+    if ((paramObject instanceof com.tencent.mm.plugin.scanner.model.x))
     {
-      paramObject = (z)paramObject;
+      paramObject = (com.tencent.mm.plugin.scanner.model.x)paramObject;
       Log.v("MicroMsg.ScanGoodsMaskView", "alvinluo showSuccessView with animation");
-      ub(false);
-      Log.v("MicroMsg.ScanGoodsMaskView", "updateSuccessViewVisibility showCustomView: %b", new Object[] { Boolean.valueOf(this.CPV) });
-      paramd = this.CPX;
+      xz(false);
+      Log.v("MicroMsg.ScanGoodsMaskView", "updateSuccessViewVisibility showCustomView: %b", new Object[] { Boolean.valueOf(this.IVx) });
+      paramd = this.IVz;
       if (paramd == null) {
-        p.btv("customSuccessView");
+        p.bGy("customSuccessView");
       }
-      if (!this.CPV) {
+      if (!this.IVx) {
         break label475;
       }
       i = 0;
       paramd.setVisibility(i);
-      paramd = this.CPQ;
+      paramd = this.IVs;
       if (paramd == null) {
-        p.btv("successDecorationView");
+        p.bGy("successDecorationView");
       }
-      if (!this.CPV) {
+      if (!this.IVx) {
         break label482;
       }
       i = 0;
       paramd.setVisibility(i);
-      eRs();
-      f1 = paramObject.centerX;
-      f2 = paramObject.centerY;
+      fEt();
+      f1 = paramObject.aGt;
+      f2 = paramObject.aGu;
       if (getMScanSource() != 1) {
         break label489;
       }
@@ -524,48 +523,48 @@ public final class ScanGoodsMaskView
       Log.v("MicroMsg.ScanGoodsMaskView", "alvinluo getRealPosition center: %f, %f, result: %f, %f", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(f3), Float.valueOf(f4) });
       paramObject = new PointF(f3, f4);
       label236:
-      paramd = this.CPP;
+      paramd = this.IVr;
       if (paramd == null) {
-        p.btv("successMarkView");
+        p.bGy("successMarkView");
       }
       paramd.setVisibility(0);
-      paramd.setPivotX(this.CQe / 2.0F);
-      paramd.setPivotY(this.CQe / 2.0F);
-      paramd.setTranslationX(paramObject.x - this.CQe / 2);
-      paramd.setTranslationY(paramObject.y - this.CQe / 2);
+      paramd.setPivotX(this.IVG / 2.0F);
+      paramd.setPivotY(this.IVG / 2.0F);
+      paramd.setTranslationX(paramObject.x - this.IVG / 2);
+      paramd.setTranslationY(paramObject.y - this.IVG / 2);
       paramd.setScaleX(0.0F);
       paramd.setScaleY(0.0F);
-      if (this.CPV) {
+      if (this.IVx) {
         break label599;
       }
-      paramObject = this.CPP;
+      paramObject = this.IVr;
       if (paramObject == null) {
-        p.btv("successMarkView");
+        p.bGy("successMarkView");
       }
-      h.a(paramObject, this.CQk);
+      h.a(paramObject, this.IVL);
     }
     for (;;)
     {
       paramObject = this.maskView;
       if (paramObject == null) {
-        p.btv("maskView");
+        p.bGy("maskView");
       }
       paramObject.setAlpha(0.0F);
       paramObject.setVisibility(0);
-      paramObject = this.CPT;
+      paramObject = this.IVv;
       if (paramObject == null) {
-        p.btv("blurView");
+        p.bGy("blurView");
       }
       paramObject.setVisibility(8);
-      uf(false);
+      xD(false);
       paramObject = getScanTips();
       if (paramObject != null) {
         paramObject.setAlpha(1.0F);
       }
-      if (this.CQn) {
-        com.tencent.f.h.RTc.aX((Runnable)new i(this));
+      if (this.IVO) {
+        com.tencent.e.h.ZvG.be((Runnable)new i(this));
       }
-      if (this.CQo) {
+      if (this.IVP) {
         postDelayed((Runnable)new j(this), 100L);
       }
       AppMethodBeat.o(52313);
@@ -588,23 +587,23 @@ public final class ScanGoodsMaskView
       break label236;
       label599:
       Log.d("MicroMsg.ScanGoodsMaskView", "alvinluo animateCustomSuccessView");
-      paramd = this.CPP;
+      paramd = this.IVr;
       if (paramd == null) {
-        p.btv("successMarkView");
+        p.bGy("successMarkView");
       }
-      h.eS(paramd);
-      paramd = this.CPQ;
+      h.fW(paramd);
+      paramd = this.IVs;
       if (paramd == null) {
-        p.btv("successDecorationView");
+        p.bGy("successDecorationView");
       }
       paramd.setVisibility(0);
-      paramd.setPivotX(this.CQf / 2.0F);
-      paramd.setPivotY(this.CQf / 2.0F);
-      paramd.setTranslationX(paramObject.x - this.CQf / 2);
-      paramd.setTranslationY(paramObject.y - this.CQf / 2);
+      paramd.setPivotX(this.IVH / 2.0F);
+      paramd.setPivotY(this.IVH / 2.0F);
+      paramd.setTranslationX(paramObject.x - this.IVH / 2);
+      paramd.setTranslationY(paramObject.y - this.IVH / 2);
       paramd.setScaleX(0.5F);
       paramd.setScaleY(0.5F);
-      paramd.animate().scaleX(1.0F).scaleY(1.0F).setDuration(300L).setInterpolator((TimeInterpolator)new LinearInterpolator()).setListener((Animator.AnimatorListener)new b(this)).setUpdateListener((ValueAnimator.AnimatorUpdateListener)new c(this)).start();
+      paramd.animate().scaleX(1.0F).scaleY(1.0F).setDuration(300L).setInterpolator((TimeInterpolator)new LinearInterpolator()).setListener((Animator.AnimatorListener)new b(this)).setUpdateListener((ValueAnimator.AnimatorUpdateListener)new ScanGoodsMaskView.c(this)).start();
     }
   }
   
@@ -613,15 +612,15 @@ public final class ScanGoodsMaskView
     AppMethodBeat.i(52314);
     if (paramBoolean)
     {
-      com.tencent.mm.ui.base.q localq = this.gut;
-      if (localq != null) {
-        localq.dismiss();
+      s locals = this.iYE;
+      if (locals != null) {
+        locals.dismiss();
       }
-      this.gut = com.tencent.mm.ui.base.h.a(getContext(), getResources().getString(2131764953), true, paramOnCancelListener);
+      this.iYE = com.tencent.mm.ui.base.h.a(getContext(), getResources().getString(l.i.IFc), true, paramOnCancelListener);
       AppMethodBeat.o(52314);
       return;
     }
-    paramOnCancelListener = this.gut;
+    paramOnCancelListener = this.iYE;
     if (paramOnCancelListener != null)
     {
       paramOnCancelListener.dismiss();
@@ -641,36 +640,36 @@ public final class ScanGoodsMaskView
     if ((paramInt == 1) || (paramInt == 2)) {
       if ((f1 >= 0.5F) && (paramInt == 1))
       {
-        bool = this.CQg & true;
+        bool = this.IVI & true;
         f1 = (f1 - 0.5F) / 0.5F;
-        localObject = this.CPT;
+        localObject = this.IVv;
         if (localObject == null) {
-          p.btv("blurView");
+          p.bGy("blurView");
         }
-        ((ImageView)localObject).setAlpha(this.CQm.getInterpolation(f1));
-        localObject = this.CPP;
+        ((ImageView)localObject).setAlpha(this.IVN.getInterpolation(f1));
+        localObject = this.IVr;
         if (localObject == null) {
-          p.btv("successMarkView");
+          p.bGy("successMarkView");
         }
         ((View)localObject).setAlpha(1.0F - f1);
-        localObject = this.CPS;
+        localObject = this.IVu;
         if (localObject == null) {
-          p.btv("previewImage");
+          p.bGy("previewImage");
         }
-        localImageView = this.CPT;
+        localImageView = this.IVv;
         if (localImageView == null) {
-          p.btv("blurView");
+          p.bGy("blurView");
         }
         ((ImageView)localObject).setAlpha(1.0F - localImageView.getAlpha());
         localObject = this.maskView;
         if (localObject == null) {
-          p.btv("maskView");
+          p.bGy("maskView");
         }
         ((View)localObject).setAlpha(0.5F);
         label189:
-        localObject = this.CPT;
+        localObject = this.IVv;
         if (localObject == null) {
-          p.btv("blurView");
+          p.bGy("blurView");
         }
         if (!bool) {
           break label770;
@@ -683,93 +682,93 @@ public final class ScanGoodsMaskView
       ((ImageView)localObject).setVisibility(i);
       localObject = this.maskView;
       if (localObject == null) {
-        p.btv("maskView");
+        p.bGy("maskView");
       }
       ((View)localObject).setVisibility(0);
-      localObject = this.CPT;
+      localObject = this.IVv;
       if (localObject == null) {
-        p.btv("blurView");
+        p.bGy("blurView");
       }
       f1 = ((ImageView)localObject).getAlpha();
-      localObject = this.CPP;
+      localObject = this.IVr;
       if (localObject == null) {
-        p.btv("successMarkView");
+        p.bGy("successMarkView");
       }
       float f2 = ((View)localObject).getAlpha();
       localObject = this.maskView;
       if (localObject == null) {
-        p.btv("maskView");
+        p.bGy("maskView");
       }
       float f3 = ((View)localObject).getAlpha();
-      localObject = this.CPS;
+      localObject = this.IVu;
       if (localObject == null) {
-        p.btv("previewImage");
+        p.bGy("previewImage");
       }
       Log.v("MicroMsg.ScanGoodsMaskView", "alvinluo onDialogMovedY dialogState: %d, offsetY: %s, factor: %f, showBlurView: %b, blurView alpha: %s, markView alpha: %s, maskView alpha: %s, previewImage alpha: %s", new Object[] { Integer.valueOf(paramInt), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Boolean.valueOf(bool), Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(f3), Float.valueOf(((ImageView)localObject).getAlpha()) });
       AppMethodBeat.o(52323);
       return;
       if (paramInt == 2)
       {
-        bool = this.CQg & true;
-        localObject = this.CPT;
+        bool = this.IVI & true;
+        localObject = this.IVv;
         if (localObject == null) {
-          p.btv("blurView");
+          p.bGy("blurView");
         }
-        ((ImageView)localObject).setAlpha(this.CQm.getInterpolation(f1));
-        localObject = this.CPP;
+        ((ImageView)localObject).setAlpha(this.IVN.getInterpolation(f1));
+        localObject = this.IVr;
         if (localObject == null) {
-          p.btv("successMarkView");
+          p.bGy("successMarkView");
         }
         ((View)localObject).setAlpha(1.0F - f1);
-        localObject = this.CPS;
+        localObject = this.IVu;
         if (localObject == null) {
-          p.btv("previewImage");
+          p.bGy("previewImage");
         }
-        localImageView = this.CPT;
+        localImageView = this.IVv;
         if (localImageView == null) {
-          p.btv("blurView");
+          p.bGy("blurView");
         }
         ((ImageView)localObject).setAlpha(1.0F - localImageView.getAlpha());
         break;
       }
-      localObject = this.CPP;
+      localObject = this.IVr;
       if (localObject == null) {
-        p.btv("successMarkView");
+        p.bGy("successMarkView");
       }
       ((View)localObject).setAlpha(1.0F);
-      localObject = this.CPS;
+      localObject = this.IVu;
       if (localObject == null) {
-        p.btv("previewImage");
+        p.bGy("previewImage");
       }
       ((ImageView)localObject).setAlpha(1.0F);
       bool = false;
       break;
       localObject = this.maskView;
       if (localObject == null) {
-        p.btv("maskView");
+        p.bGy("maskView");
       }
       ((View)localObject).setAlpha(Math.max(0.0F, Math.min(0.5F, 1.0F - f1)));
-      if (this.CQh)
+      if (this.IVJ)
       {
-        if (this.CQi)
+        if (this.IVK)
         {
           f1 = Math.max(0.0F, Math.min(1.0F, (paramFloat2 - 0.5F) / 0.5F));
-          localObject = this.CPS;
+          localObject = this.IVu;
           if (localObject == null) {
-            p.btv("previewImage");
+            p.bGy("previewImage");
           }
           ((ImageView)localObject).setAlpha(1.0F - f1);
-          localObject = this.CPS;
+          localObject = this.IVu;
           if (localObject == null) {
-            p.btv("previewImage");
+            p.bGy("previewImage");
           }
           Log.v("MicroMsg.ScanGoodsMaskView", "alvinluo onDialogMovedY previewImage.alpha: %f, targetFactor: %f", new Object[] { Float.valueOf(((ImageView)localObject).getAlpha()), Float.valueOf(f1) });
           bool = false;
           break label189;
         }
-        localObject = this.CPS;
+        localObject = this.IVu;
         if (localObject == null) {
-          p.btv("previewImage");
+          p.bGy("previewImage");
         }
         ((ImageView)localObject).setAlpha(1.0F);
       }
@@ -780,28 +779,28 @@ public final class ScanGoodsMaskView
   
   public final void d(int paramInt, float paramFloat1, float paramFloat2) {}
   
-  public final void ePg() {}
+  public final void fCc() {}
   
-  public final void ePh() {}
+  public final void fCd() {}
   
-  public final void ePi() {}
+  public final void fCe() {}
   
-  public final void ePj() {}
+  public final void fCf() {}
   
-  public final void ePk() {}
+  public final void fCg() {}
   
-  public final void eRq()
+  public final void fEr()
   {
     AppMethodBeat.i(52310);
-    super.eRq();
+    super.fEr();
     AppMethodBeat.o(52310);
   }
   
-  public final void eU(final View paramView)
+  public final void fY(final View paramView)
   {
     int i = 1;
     AppMethodBeat.i(52309);
-    this.CPU = paramView;
+    this.IVw = paramView;
     Log.v("MicroMsg.ScanGoodsMaskView", "alvinluo attachBackgroundView source: %d", new Object[] { Integer.valueOf(getMScanSource()) });
     if ((paramView instanceof TextureView)) {
       if (getMScanSource() != 1) {
@@ -813,7 +812,7 @@ public final class ScanGoodsMaskView
       if (i != 0)
       {
         paramView = (TextureView)paramView;
-        com.tencent.f.h.RTc.aX((Runnable)new r(this, paramView));
+        com.tencent.e.h.ZvG.be((Runnable)new r(this, paramView));
       }
       AppMethodBeat.o(52309);
       return;
@@ -825,7 +824,7 @@ public final class ScanGoodsMaskView
   public final float getBackgroundTransY()
   {
     AppMethodBeat.i(52319);
-    View localView = this.CPU;
+    View localView = this.IVw;
     if (localView != null)
     {
       float f = localView.getTranslationY();
@@ -839,7 +838,7 @@ public final class ScanGoodsMaskView
   public final float getMarkViewHeight()
   {
     AppMethodBeat.i(52322);
-    float f = this.CQe;
+    float f = this.IVG;
     AppMethodBeat.o(52322);
     return f;
   }
@@ -847,9 +846,9 @@ public final class ScanGoodsMaskView
   public final float getMarkViewTransY()
   {
     AppMethodBeat.i(52321);
-    View localView = this.CPP;
+    View localView = this.IVr;
     if (localView == null) {
-      p.btv("successMarkView");
+      p.bGy("successMarkView");
     }
     float f = localView.getTranslationY();
     AppMethodBeat.o(52321);
@@ -858,66 +857,66 @@ public final class ScanGoodsMaskView
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(240613);
+    AppMethodBeat.i(216952);
     super.onMeasure(paramInt1, paramInt2);
-    this.gRD = getMeasuredWidth();
-    this.gRE = getMeasuredHeight();
-    if ((this.gRD != 0) && (this.gRE != 0))
+    this.jBZ = getMeasuredWidth();
+    this.jCa = getMeasuredHeight();
+    if ((this.jBZ != 0) && (this.jCa != 0))
     {
-      Iterator localIterator = ((Iterable)this.CQc).iterator();
+      Iterator localIterator = ((Iterable)this.IVE).iterator();
       while (localIterator.hasNext()) {
         ((Runnable)localIterator.next()).run();
       }
-      this.CQc.clear();
+      this.IVE.clear();
     }
-    AppMethodBeat.o(240613);
+    AppMethodBeat.o(216952);
   }
   
   public final void release()
   {
     AppMethodBeat.i(52315);
     super.release();
-    Object localObject = this.CPO;
+    Object localObject = this.IVq;
     if (localObject == null) {
-      p.btv("animationDotsView");
+      p.bGy("animationDotsView");
     }
     ((ScanAnimationDotsView)localObject).release();
-    localObject = ab.CGu;
-    long l = this.CQd;
-    localObject = (ScanGoodsRequest)ab.CGr.get(Long.valueOf(l));
-    ab.CGr.remove(Long.valueOf(l));
-    ab.hdu.remove(Long.valueOf(l));
+    localObject = z.ILG;
+    long l = this.IVF;
+    localObject = (ScanGoodsRequest)z.ILD.get(Long.valueOf(l));
+    z.ILD.remove(Long.valueOf(l));
+    z.jPb.remove(Long.valueOf(l));
     if (localObject != null)
     {
       Log.d("MicroMsg.ScanGoodsResourceManager", "alvinluo releaseResource requestId: %s", new Object[] { Long.valueOf(l) });
-      String str = ab.c((ScanGoodsRequest)localObject);
-      ((Map)ab.CGt).put(str, Boolean.TRUE);
-      com.tencent.f.h.RTc.b((Runnable)new ab.f(str, (ScanGoodsRequest)localObject), 10000L, "ScanResourceTag");
+      String str = z.c((ScanGoodsRequest)localObject);
+      ((Map)z.ILF).put(str, Boolean.TRUE);
+      com.tencent.e.h.ZvG.b((Runnable)new z.f(str, (ScanGoodsRequest)localObject), 10000L, "ScanResourceTag");
     }
-    eRs();
+    fEt();
     AppMethodBeat.o(52315);
   }
   
   public final void setBackgroundTransY(float paramFloat)
   {
     AppMethodBeat.i(52318);
-    Object localObject = this.CPU;
+    Object localObject = this.IVw;
     if (localObject != null) {
       ((View)localObject).setTranslationY(paramFloat);
     }
-    localObject = this.CPT;
+    localObject = this.IVv;
     if (localObject == null) {
-      p.btv("blurView");
+      p.bGy("blurView");
     }
     ((ImageView)localObject).setTranslationY(paramFloat);
-    localObject = this.CPS;
+    localObject = this.IVu;
     if (localObject == null) {
-      p.btv("previewImage");
+      p.bGy("previewImage");
     }
     ((ImageView)localObject).setTranslationY(paramFloat);
-    localObject = this.CPR;
+    localObject = this.IVt;
     if (localObject == null) {
-      p.btv("bottomBlurView");
+      p.bGy("bottomBlurView");
     }
     ((ImageView)localObject).setTranslationY(paramFloat);
     AppMethodBeat.o(52318);
@@ -926,97 +925,95 @@ public final class ScanGoodsMaskView
   public final void setMarkViewTransY(float paramFloat)
   {
     AppMethodBeat.i(52320);
-    View localView = this.CPP;
+    View localView = this.IVr;
     if (localView == null) {
-      p.btv("successMarkView");
+      p.bGy("successMarkView");
     }
     localView.setTranslationY(paramFloat);
     AppMethodBeat.o(52320);
   }
   
-  public final void setScanRequest(final ScanGoodsRequest paramScanGoodsRequest)
+  public final void setScanRequest(ScanGoodsRequest paramScanGoodsRequest)
   {
-    AppMethodBeat.i(240614);
+    AppMethodBeat.i(216954);
     super.setScanRequest((BaseScanRequest)paramScanGoodsRequest);
     if (paramScanGoodsRequest == null)
     {
-      AppMethodBeat.o(240614);
+      AppMethodBeat.o(216954);
       return;
     }
     if (!paramScanGoodsRequest.isValid())
     {
       Log.w("MicroMsg.ScanGoodsMaskView", "alvinluo setScanRequest request is not valid and ignore");
-      af.e(paramScanGoodsRequest);
-      AppMethodBeat.o(240614);
+      ad.e(paramScanGoodsRequest);
+      AppMethodBeat.o(216954);
       return;
     }
-    Object localObject = this.CPY;
+    Object localObject = this.IVA;
     if (localObject == null) {
-      p.btv("customTipsContainer");
+      p.bGy("customTipsContainer");
     }
     ((LinearLayout)localObject).setVisibility(0);
     setCustomTipsWording(paramScanGoodsRequest);
-    localObject = ab.CGu;
-    this.CQd = ab.a(paramScanGoodsRequest, (aa)new q(this, paramScanGoodsRequest));
-    if (paramScanGoodsRequest.CAS)
+    localObject = z.ILG;
+    this.IVF = z.a(paramScanGoodsRequest, (y)new ScanGoodsMaskView.q(this, paramScanGoodsRequest));
+    if (paramScanGoodsRequest.IGx)
     {
-      paramScanGoodsRequest.CAS = false;
-      this.CQq = new Timer();
-      this.CQp = ((TimerTask)new g(this));
-      paramScanGoodsRequest = this.CQq;
-      if (paramScanGoodsRequest != null)
-      {
-        paramScanGoodsRequest.schedule(this.CQp, 15000L);
-        AppMethodBeat.o(240614);
-        return;
+      paramScanGoodsRequest.IGx = false;
+      this.IVQ = ((TimerTask)new g(this));
+      paramScanGoodsRequest = com.tencent.e.h.ZvG;
+      localObject = this.IVQ;
+      if (localObject == null) {
+        p.iCn();
       }
+      this.IVR = paramScanGoodsRequest.o((Runnable)localObject, 15000L);
     }
-    AppMethodBeat.o(240614);
+    AppMethodBeat.o(216954);
   }
   
-  public final void tY(final boolean paramBoolean)
+  public final void xw(final boolean paramBoolean)
   {
     AppMethodBeat.i(52312);
-    super.tY(paramBoolean);
+    super.xw(paramBoolean);
     Object localObject1 = (kotlin.g.a.a)new h(this, paramBoolean);
-    Object localObject2 = this.CPT;
+    Object localObject2 = this.IVv;
     if (localObject2 == null) {
-      p.btv("blurView");
+      p.bGy("blurView");
     }
     if (((ImageView)localObject2).getVisibility() != 0)
     {
-      localObject2 = this.CPS;
+      localObject2 = this.IVu;
       if (localObject2 == null) {
-        p.btv("previewImage");
+        p.bGy("previewImage");
       }
       if (((ImageView)localObject2).getVisibility() != 0)
       {
-        localObject2 = this.CPR;
+        localObject2 = this.IVt;
         if (localObject2 == null) {
-          p.btv("bottomBlurView");
+          p.bGy("bottomBlurView");
         }
         if (((ImageView)localObject2).getVisibility() != 0) {
           break label256;
         }
       }
     }
-    localObject2 = this.CPS;
+    localObject2 = this.IVu;
     if (localObject2 == null) {
-      p.btv("previewImage");
+      p.bGy("previewImage");
     }
     if (((ImageView)localObject2).getAlpha() == 1.0F)
     {
-      localObject2 = this.CPS;
+      localObject2 = this.IVu;
       if (localObject2 == null) {
-        p.btv("previewImage");
+        p.bGy("previewImage");
       }
       if (((ImageView)localObject2).getVisibility() != 0) {}
     }
     for (paramBoolean = true;; paramBoolean = false)
     {
-      localObject2 = this.CPT;
+      localObject2 = this.IVv;
       if (localObject2 == null) {
-        p.btv("blurView");
+        p.bGy("blurView");
       }
       localObject2 = ((ImageView)localObject2).animate();
       if (localObject2 == null) {
@@ -1030,7 +1027,7 @@ public final class ScanGoodsMaskView
       if (localObject2 == null) {
         break;
       }
-      localObject2 = ((ViewPropertyAnimator)localObject2).setInterpolator((TimeInterpolator)this.CQl);
+      localObject2 = ((ViewPropertyAnimator)localObject2).setInterpolator((TimeInterpolator)this.IVM);
       if (localObject2 == null) {
         break;
       }
@@ -1038,7 +1035,7 @@ public final class ScanGoodsMaskView
       if (localObject1 == null) {
         break;
       }
-      ((ViewPropertyAnimator)localObject1).setUpdateListener((ValueAnimator.AnimatorUpdateListener)new e(this, paramBoolean));
+      ((ViewPropertyAnimator)localObject1).setUpdateListener((ValueAnimator.AnimatorUpdateListener)new ScanGoodsMaskView.e(this, paramBoolean));
       AppMethodBeat.o(52312);
       return;
     }
@@ -1049,15 +1046,15 @@ public final class ScanGoodsMaskView
     AppMethodBeat.o(52312);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanGoodsMaskView$animateCustomSuccessView$2", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "onAnimationStart", "plugin-scan_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanGoodsMaskView$animateCustomSuccessView$2", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "onAnimationStart", "plugin-scan_release"})
   public static final class b
     extends AnimatorListenerAdapter
   {
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(240598);
+      AppMethodBeat.i(219587);
       super.onAnimationEnd(paramAnimator);
-      paramAnimator = ScanGoodsMaskView.a(this.CQt).animate();
+      paramAnimator = ScanGoodsMaskView.a(this.IVU).animate();
       if (paramAnimator != null)
       {
         paramAnimator = paramAnimator.alpha(0.0F);
@@ -1076,7 +1073,7 @@ public final class ScanGoodsMaskView
                 if (paramAnimator != null)
                 {
                   paramAnimator.start();
-                  AppMethodBeat.o(240598);
+                  AppMethodBeat.o(219587);
                   return;
                 }
               }
@@ -1084,112 +1081,51 @@ public final class ScanGoodsMaskView
           }
         }
       }
-      AppMethodBeat.o(240598);
+      AppMethodBeat.o(219587);
     }
     
     public final void onAnimationStart(Animator paramAnimator)
     {
-      AppMethodBeat.i(240599);
+      AppMethodBeat.i(219589);
       super.onAnimationStart(paramAnimator);
-      ScanGoodsMaskView.b(this.CQt);
-      AppMethodBeat.o(240599);
+      ScanGoodsMaskView.b(this.IVU);
+      AppMethodBeat.o(219589);
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanGoodsMaskView$animateCustomSuccessView$2$onAnimationEnd$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-scan_release"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanGoodsMaskView$animateCustomSuccessView$2$onAnimationEnd$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-scan_release"})
     public static final class a
       extends AnimatorListenerAdapter
     {
       public final void onAnimationEnd(Animator paramAnimator)
       {
-        AppMethodBeat.i(240597);
+        AppMethodBeat.i(218463);
         super.onAnimationEnd(paramAnimator);
-        paramAnimator = ScanGoodsMaskView.b(this.CQu.CQt);
+        paramAnimator = ScanGoodsMaskView.b(this.IVV.IVU);
         if (paramAnimator != null)
         {
-          paramAnimator.eQG();
-          AppMethodBeat.o(240597);
+          paramAnimator.xs(false);
+          AppMethodBeat.o(218463);
           return;
         }
-        AppMethodBeat.o(240597);
+        AppMethodBeat.o(218463);
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
-  static final class c
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    c(ScanGoodsMaskView paramScanGoodsMaskView) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(240600);
-      p.g(paramValueAnimator, "animation");
-      paramValueAnimator = paramValueAnimator.getAnimatedValue();
-      if (paramValueAnimator == null)
-      {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(240600);
-        throw paramValueAnimator;
-      }
-      float f = ((Float)paramValueAnimator).floatValue();
-      ScanGoodsMaskView.a(this.CQt).setRotation(360.0F - Math.abs(15.0F + -15.0F * f));
-      ScanGoodsMaskView.a(this.CQt).setAlpha(f);
-      ScanGoodsMaskView.c(this.CQt).setAlpha(1.0F - f);
-      AppMethodBeat.o(240600);
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
-  static final class e
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    e(ScanGoodsMaskView paramScanGoodsMaskView, boolean paramBoolean) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(52290);
-      if (paramValueAnimator == null)
-      {
-        AppMethodBeat.o(52290);
-        return;
-      }
-      paramValueAnimator = paramValueAnimator.getAnimatedValue();
-      if (paramValueAnimator == null)
-      {
-        paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(52290);
-        throw paramValueAnimator;
-      }
-      float f = ((Float)paramValueAnimator).floatValue();
-      ScanGoodsMaskView.d(this.CQt).setAlpha(0.5F - f * 0.5F);
-      if (paramBoolean)
-      {
-        ScanGoodsMaskView.e(this.CQt).setAlpha(1.0F - f);
-        ScanGoodsMaskView.f(this.CQt).setAlpha(1.0F - f);
-      }
-      if (ScanGoodsMaskView.g(this.CQt)) {
-        ScanGoodsMaskView.c(this.CQt).setAlpha(f);
-      }
-      Log.v("MicroMsg.ScanGoodsMaskView", "alvinluo animateBlurView alpha: %s, factor: %f", new Object[] { Float.valueOf(ScanGoodsMaskView.d(this.CQt).getAlpha()), Float.valueOf(f) });
-      AppMethodBeat.o(52290);
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class f
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
+    extends q
+    implements kotlin.g.a.a<kotlin.x>
   {
     f(ScanGoodsMaskView paramScanGoodsMaskView, Bitmap paramBitmap)
     {
       super();
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
     static final class a
-      extends kotlin.g.b.q
-      implements kotlin.g.a.a<x>
+      extends q
+      implements kotlin.g.a.a<kotlin.x>
     {
       a(ScanGoodsMaskView.f paramf, boolean paramBoolean)
       {
@@ -1198,18 +1134,18 @@ public final class ScanGoodsMaskView
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanGoodsMaskView$initScanTipsImageAnimation$1", "Ljava/util/TimerTask;", "run", "", "plugin-scan_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanGoodsMaskView$initScanTipsImageAnimation$1", "Ljava/util/TimerTask;", "run", "", "plugin-scan_release"})
   public static final class g
     extends TimerTask
   {
     public final void run()
     {
-      AppMethodBeat.i(240602);
-      com.tencent.f.h.RTc.aV((Runnable)new a(this));
-      AppMethodBeat.o(240602);
+      AppMethodBeat.i(218371);
+      com.tencent.e.h.ZvG.bc((Runnable)new a(this));
+      AppMethodBeat.o(218371);
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -1217,19 +1153,19 @@ public final class ScanGoodsMaskView
       
       public final void run()
       {
-        AppMethodBeat.i(240601);
-        if ((ScanGoodsMaskView.g(this.CQB.CQt)) && (ScanGoodsMaskView.y(this.CQB.CQt).getVisibility() == 0)) {
-          ScanGoodsMaskView.a(this.CQB.CQt, h.eT((View)ScanGoodsMaskView.y(this.CQB.CQt)));
+        AppMethodBeat.i(221176);
+        if ((ScanGoodsMaskView.g(this.IWc.IVU)) && (ScanGoodsMaskView.y(this.IWc.IVU).getVisibility() == 0)) {
+          ScanGoodsMaskView.a(this.IWc.IVU, h.fX((View)ScanGoodsMaskView.y(this.IWc.IVU)));
         }
-        AppMethodBeat.o(240601);
+        AppMethodBeat.o(221176);
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class h
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
+    extends q
+    implements kotlin.g.a.a<kotlin.x>
   {
     h(ScanGoodsMaskView paramScanGoodsMaskView, boolean paramBoolean)
     {
@@ -1237,7 +1173,7 @@ public final class ScanGoodsMaskView
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class i
     implements Runnable
   {
@@ -1246,12 +1182,12 @@ public final class ScanGoodsMaskView
     public final void run()
     {
       AppMethodBeat.i(52296);
-      PlaySound.play(this.CQt.getContext(), 2131764141);
+      PlaySound.play(this.IVU.getContext(), l.i.qrcode_completed_2);
       AppMethodBeat.o(52296);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class j
     implements Runnable
   {
@@ -1260,42 +1196,19 @@ public final class ScanGoodsMaskView
     public final void run()
     {
       AppMethodBeat.i(52297);
-      ScanGoodsMaskView.q(this.CQt);
+      ScanGoodsMaskView.q(this.IVU);
       AppMethodBeat.o(52297);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/graphics/Bitmap;", "it", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
-  static final class k<_Ret, _Var>
-    implements com.tencent.mm.vending.c.a<_Ret, _Var>
-  {
-    k(ScanGoodsRequest paramScanGoodsRequest) {}
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "invoke", "(Ljava/lang/Boolean;)Z"})
-  static final class m
-    extends kotlin.g.b.q
-    implements b<Boolean, Boolean>
-  {
-    m(ScanGoodsMaskView paramScanGoodsMaskView, ScanGoodsRequest paramScanGoodsRequest)
-    {
-      super();
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanGoodsMaskView$onSetCustomBackgroundSuccess$4", "Lcom/tencent/mm/vending/pipeline/PipeableTerminal$Interrupt;", "Lcom/tencent/mm/vending/tuple/Tuple2;", "", "", "onInterrupt", "", "result", "plugin-scan_release"})
-  public static final class n
-    implements d.a<c<Boolean, String>>
-  {}
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "result", "", "kotlin.jvm.PlatformType", "onTerminate", "(Ljava/lang/Boolean;)V"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "result", "", "kotlin.jvm.PlatformType", "onTerminate", "(Ljava/lang/Boolean;)V"})
   static final class o<T>
     implements d.b<Boolean>
   {
     o(ScanGoodsMaskView paramScanGoodsMaskView) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class p
     implements Runnable
   {
@@ -1303,43 +1216,21 @@ public final class ScanGoodsMaskView
     
     public final void run()
     {
-      AppMethodBeat.i(240608);
-      m localm = m.CUv;
-      if (m.a(paramBitmap, ScanGoodsMaskView.r(this.CQt), ScanGoodsMaskView.s(this.CQt), ScanGoodsMaskView.t(this.CQt)))
+      AppMethodBeat.i(217555);
+      n localn = n.IZP;
+      if (n.a(paramBitmap, ScanGoodsMaskView.r(this.IVU), ScanGoodsMaskView.s(this.IVU), ScanGoodsMaskView.t(this.IVU)))
       {
-        ScanGoodsMaskView.r(this.CQt).setVisibility(0);
-        ScanGoodsMaskView.u(this.CQt);
-        AppMethodBeat.o(240608);
+        ScanGoodsMaskView.r(this.IVU).setVisibility(0);
+        ScanGoodsMaskView.u(this.IVU);
+        AppMethodBeat.o(217555);
         return;
       }
-      ScanGoodsMaskView.v(this.CQt);
-      AppMethodBeat.o(240608);
+      ScanGoodsMaskView.v(this.IVU);
+      AppMethodBeat.o(217555);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanGoodsMaskView$setScanRequest$1", "Lcom/tencent/mm/plugin/scanner/model/ScanGoodsResourceLoadCallback;", "onLoadResult", "", "errCode", "", "errMsg", "", "plugin-scan_release"})
-  public static final class q
-    implements aa
-  {
-    q(ScanGoodsRequest paramScanGoodsRequest) {}
-    
-    public final void cn(int paramInt, String paramString)
-    {
-      AppMethodBeat.i(240609);
-      p.h(paramString, "errMsg");
-      Log.i("MicroMsg.ScanGoodsMaskView", "alvinluo loadResource onLoadResult errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
-      if (paramInt == 0)
-      {
-        paramString = this.CQt;
-        String str = paramScanGoodsRequest.CAN;
-        p.g(str, "request.decorationImagePath");
-        ScanGoodsMaskView.a(paramString, str);
-      }
-      AppMethodBeat.o(240609);
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class r
     implements Runnable
   {
@@ -1350,18 +1241,18 @@ public final class ScanGoodsMaskView
       AppMethodBeat.i(52301);
       try
       {
-        ScanGoodsMaskView.p(this.CQt);
+        ScanGoodsMaskView.p(this.IVU);
         long l = System.currentTimeMillis();
         final Bitmap localBitmap = paramView.getBitmap();
         Log.i("MicroMsg.ScanGoodsMaskView", "alvinluo updatePreviewBitmap getBitmap cost: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-        com.tencent.f.h.RTc.aV((Runnable)new Runnable()
+        com.tencent.e.h.ZvG.bc((Runnable)new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(52300);
-            ScanGoodsMaskView.c(this.CQF.CQt, w.ePU());
-            ScanGoodsMaskView.d(this.CQF.CQt, true);
-            ScanGoodsMaskView.b(this.CQF.CQt, localBitmap);
+            ScanGoodsMaskView.c(this.IWg.IVU, u.fCO());
+            ScanGoodsMaskView.d(this.IWg.IVU, true);
+            ScanGoodsMaskView.b(this.IWg.IVU, localBitmap);
             AppMethodBeat.o(52300);
           }
         });
@@ -1378,7 +1269,7 @@ public final class ScanGoodsMaskView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.scangoods.widget.ScanGoodsMaskView
  * JD-Core Version:    0.7.0.1
  */

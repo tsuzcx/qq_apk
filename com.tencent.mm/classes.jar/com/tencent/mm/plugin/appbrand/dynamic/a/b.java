@@ -4,78 +4,74 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.c;
-import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.ipcinvoker.i;
+import com.tencent.mm.ipcinvoker.j;
+import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.ipcinvoker.wx_extension.service.SupportProcessIPCService;
-import com.tencent.mm.modelappbrand.e;
-import com.tencent.mm.modelappbrand.f;
 import com.tencent.mm.plugin.appbrand.dynamic.widget.IPCDynamicPageView;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.Set;
 
 final class b
-  implements f
+  implements com.tencent.mm.modelappbrand.f
 {
-  e lmA;
-  Runnable lmB;
-  Runnable lmC;
-  Runnable lmD;
+  com.tencent.mm.modelappbrand.e ohm;
+  Runnable ohn;
+  Runnable oho;
+  Runnable ohp;
   
-  b(e parame)
+  b(com.tencent.mm.modelappbrand.e parame)
   {
     AppMethodBeat.i(121219);
-    this.lmB = new Runnable()
+    this.ohn = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(121213);
-        i.Fq(SupportProcessIPCService.dkO);
+        k.Mq(SupportProcessIPCService.PROCESS_NAME);
         AppMethodBeat.o(121213);
       }
     };
-    this.lmC = new Runnable()
+    this.oho = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(121215);
-        String str = SupportProcessIPCService.dkO;
-        if (!c.axW().Fo(str))
+        String str = SupportProcessIPCService.PROCESS_NAME;
+        if (!com.tencent.mm.ipcinvoker.e.aFo().Ml(str))
         {
           AppMethodBeat.o(121215);
           return;
         }
-        h.a(SupportProcessIPCService.dkO, null, b.a.class, new d() {});
+        j.a(SupportProcessIPCService.PROCESS_NAME, null, b.a.class, new com.tencent.mm.ipcinvoker.f() {});
         AppMethodBeat.o(121215);
       }
     };
-    this.lmD = new Runnable()
+    this.ohp = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(121217);
-        Object localObject = SupportProcessIPCService.dkO;
-        if (!c.axW().Fo((String)localObject))
+        Object localObject = SupportProcessIPCService.PROCESS_NAME;
+        if (!com.tencent.mm.ipcinvoker.e.aFo().Ml((String)localObject))
         {
           AppMethodBeat.o(121217);
           return;
         }
         localObject = new Bundle();
         ((Bundle)localObject).putBoolean("forceKillProcess", true);
-        h.a(SupportProcessIPCService.dkO, (Parcelable)localObject, b.a.class, new d() {});
+        j.a(SupportProcessIPCService.PROCESS_NAME, (Parcelable)localObject, b.a.class, new com.tencent.mm.ipcinvoker.f() {});
         AppMethodBeat.o(121217);
       }
     };
-    this.lmA = parame;
+    this.ohm = parame;
     AppMethodBeat.o(121219);
   }
   
-  public final void Ln(String paramString)
+  public final void SG(String paramString)
   {
     AppMethodBeat.i(121222);
-    paramString = this.lmA.ch(paramString);
+    paramString = this.ohm.ch(paramString);
     if ((paramString == null) || (paramString.isEmpty()))
     {
       AppMethodBeat.o(121222);
@@ -94,10 +90,10 @@ final class b
     AppMethodBeat.o(121222);
   }
   
-  public final void Lo(String paramString)
+  public final void SH(String paramString)
   {
     AppMethodBeat.i(121223);
-    paramString = this.lmA.ch(paramString);
+    paramString = this.ohm.ch(paramString);
     if ((paramString == null) || (paramString.isEmpty()))
     {
       AppMethodBeat.o(121223);
@@ -116,24 +112,24 @@ final class b
     AppMethodBeat.o(121223);
   }
   
+  public final void bgP()
+  {
+    AppMethodBeat.i(121221);
+    com.tencent.mm.plugin.appbrand.dynamic.b.postToWorker(this.ohp);
+    com.tencent.mm.plugin.appbrand.dynamic.b.i(this.ohn, 2000L);
+    AppMethodBeat.o(121221);
+  }
+  
   public final void exit()
   {
     AppMethodBeat.i(121220);
-    com.tencent.mm.plugin.appbrand.dynamic.b.postToWorker(this.lmC);
+    com.tencent.mm.plugin.appbrand.dynamic.b.postToWorker(this.oho);
     AppMethodBeat.o(121220);
-  }
-  
-  public final void restart()
-  {
-    AppMethodBeat.i(121221);
-    com.tencent.mm.plugin.appbrand.dynamic.b.postToWorker(this.lmD);
-    com.tencent.mm.plugin.appbrand.dynamic.b.j(this.lmB, 2000L);
-    AppMethodBeat.o(121221);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.a.b
  * JD-Core Version:    0.7.0.1
  */

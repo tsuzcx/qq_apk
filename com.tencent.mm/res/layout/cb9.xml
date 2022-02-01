@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="horizontal" android:id="@id/ay" android:background="@drawable/b7" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content">
+    <LinearLayout android:orientation="horizontal" android:id="@id/ay" android:background="@drawable/b7" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
         <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ax" android:background="@null" android:paddingLeft="@dimen/k5" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/actionbar_icon_dark_back" android:contentDescription="@string/he" />
     </LinearLayout>
     <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/he6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/bt" android:src="@raw/icons_outlined_search" app:iconColor="@color/BW_70" />
     <com.tencent.mm.ui.search.FTSEditTextView android:layout_gravity="center_vertical" android:id="@id/db_" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:textCursorDrawable="@drawable/a70" />
-    <TextView android:textSize="@dimen/is" android:textColor="@color/g_" android:id="@id/aib" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sz" />
+    <TextView android:textSize="@dimen/is" android:textColor="@color/g_" android:gravity="center_vertical" android:id="@id/aib" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/sz" />
 </LinearLayout>

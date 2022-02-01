@@ -12,17 +12,17 @@ import org.json.JSONObject;
 public final class l
   extends m
 {
-  public int HQh;
-  public int HQi;
-  public String[] HSA;
-  public Profession[] HTV;
-  public int HTW;
+  public int OIq;
+  public int OIr;
+  public String[] OKH;
+  public Profession[] OLW;
+  public int OLX;
   
   public l()
   {
     AppMethodBeat.i(70156);
-    this.HTV = null;
-    this.HSA = null;
+    this.OLW = null;
+    this.OKH = null;
     HashMap localHashMap = new HashMap();
     if (!Util.isNullOrNil(null)) {
       localHashMap.put("scene", null);
@@ -52,12 +52,12 @@ public final class l
     AppMethodBeat.i(70157);
     Log.i("MicroMsg.NetSceneTenpayGetUserExInfo", "errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
     Log.d("MicroMsg.NetSceneTenpayGetUserExInfo", "json: %s", new Object[] { paramJSONObject.toString() });
-    this.HQh = paramJSONObject.optInt("need_area");
-    this.HQi = paramJSONObject.optInt("need_profession");
+    this.OIq = paramJSONObject.optInt("need_area");
+    this.OIr = paramJSONObject.optInt("need_profession");
     paramString = paramJSONObject.optJSONArray("array");
     if (paramString != null)
     {
-      this.HTV = new Profession[paramString.length()];
+      this.OLW = new Profession[paramString.length()];
       paramInt = 0;
       if (paramInt < paramString.length())
       {
@@ -70,7 +70,7 @@ public final class l
             break label166;
           }
           localObject = new Profession(str, j);
-          this.HTV[paramInt] = localObject;
+          this.OLW[paramInt] = localObject;
         }
         for (;;)
         {
@@ -81,15 +81,15 @@ public final class l
         }
       }
     }
-    this.HTW = paramJSONObject.optInt("need_nationality");
+    this.OLX = paramJSONObject.optInt("need_nationality");
     paramString = paramJSONObject.optJSONArray("nationality_exclude_array");
     if (paramString != null)
     {
-      this.HSA = new String[paramString.length()];
+      this.OKH = new String[paramString.length()];
       paramInt = i;
       while (paramInt < paramString.length())
       {
-        this.HSA[paramInt] = paramString.optString(paramInt);
+        this.OKH[paramInt] = paramString.optString(paramInt);
         paramInt += 1;
       }
     }

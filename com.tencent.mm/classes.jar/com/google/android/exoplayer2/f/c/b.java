@@ -9,20 +9,20 @@ import java.util.List;
 final class b
   implements d
 {
-  private final com.google.android.exoplayer2.f.a[] bCD;
-  private final long[] bCE;
+  private final com.google.android.exoplayer2.f.a[] bmf;
+  private final long[] bmg;
   
   public b(com.google.android.exoplayer2.f.a[] paramArrayOfa, long[] paramArrayOfLong)
   {
-    this.bCD = paramArrayOfa;
-    this.bCE = paramArrayOfLong;
+    this.bmf = paramArrayOfa;
+    this.bmg = paramArrayOfLong;
   }
   
-  public final int ai(long paramLong)
+  public final int al(long paramLong)
   {
     AppMethodBeat.i(92811);
-    int i = x.a(this.bCE, paramLong, false, false);
-    if (i < this.bCE.length)
+    int i = x.a(this.bmg, paramLong, false, false);
+    if (i < this.bmg.length)
     {
       AppMethodBeat.o(92811);
       return i;
@@ -31,22 +31,22 @@ final class b
     return -1;
   }
   
-  public final List<com.google.android.exoplayer2.f.a> aj(long paramLong)
+  public final List<com.google.android.exoplayer2.f.a> am(long paramLong)
   {
     AppMethodBeat.i(92813);
-    int i = x.a(this.bCE, paramLong, false);
-    if ((i == -1) || (this.bCD[i] == null))
+    int i = x.a(this.bmg, paramLong, false);
+    if ((i == -1) || (this.bmf[i] == null))
     {
       localList = Collections.emptyList();
       AppMethodBeat.o(92813);
       return localList;
     }
-    List localList = Collections.singletonList(this.bCD[i]);
+    List localList = Collections.singletonList(this.bmf[i]);
     AppMethodBeat.o(92813);
     return localList;
   }
   
-  public final long eH(int paramInt)
+  public final long eX(int paramInt)
   {
     boolean bool2 = true;
     AppMethodBeat.i(92812);
@@ -54,7 +54,7 @@ final class b
     {
       bool1 = true;
       com.google.android.exoplayer2.i.a.checkArgument(bool1);
-      if (paramInt >= this.bCE.length) {
+      if (paramInt >= this.bmg.length) {
         break label53;
       }
     }
@@ -62,7 +62,7 @@ final class b
     for (boolean bool1 = bool2;; bool1 = false)
     {
       com.google.android.exoplayer2.i.a.checkArgument(bool1);
-      long l = this.bCE[paramInt];
+      long l = this.bmg[paramInt];
       AppMethodBeat.o(92812);
       return l;
       bool1 = false;
@@ -70,14 +70,14 @@ final class b
     }
   }
   
-  public final int wa()
+  public final int ua()
   {
-    return this.bCE.length;
+    return this.bmg.length;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.f.c.b
  * JD-Core Version:    0.7.0.1
  */

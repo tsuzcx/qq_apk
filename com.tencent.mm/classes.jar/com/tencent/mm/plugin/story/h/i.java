@@ -2,61 +2,31 @@ package com.tencent.mm.plugin.story.h;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.jo;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.b.a.lx;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.plugin.story.f.j;
 import com.tencent.mm.plugin.story.f.j.b;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
 import kotlin.g.b.p;
+import kotlin.l;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/report/StoryReporterUtil;", "", "()V", "Companion", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/report/StoryReporterUtil;", "", "()V", "Companion", "plugin-story_release"})
 public final class i
 {
-  public static final a FuI;
+  public static final a LOK;
   
   static
   {
     AppMethodBeat.i(119467);
-    FuI = new a((byte)0);
+    LOK = new a((byte)0);
     AppMethodBeat.o(119467);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/report/StoryReporterUtil$Companion;", "", "()V", "getContactType", "", "userName", "", "getEnterScene", "", "pageType", "plugin-story_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/report/StoryReporterUtil$Companion;", "", "()V", "getContactType", "", "userName", "", "getEnterScene", "", "pageType", "plugin-story_release"})
   public static final class a
   {
-    public static int aSq(String paramString)
-    {
-      AppMethodBeat.i(119465);
-      p.h(paramString, "userName");
-      if (TextUtils.isEmpty((CharSequence)paramString))
-      {
-        AppMethodBeat.o(119465);
-        return 0;
-      }
-      j.b localb = j.Fmy;
-      if (p.j(j.b.fau(), paramString))
-      {
-        AppMethodBeat.o(119465);
-        return 1;
-      }
-      paramString = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn(paramString);
-      p.g(paramString, "ct");
-      if (paramString.arA())
-      {
-        AppMethodBeat.o(119465);
-        return 3;
-      }
-      if (paramString.arv())
-      {
-        AppMethodBeat.o(119465);
-        return 4;
-      }
-      AppMethodBeat.o(119465);
-      return 5;
-    }
-    
-    public static long aaX(int paramInt)
+    public static long ais(int paramInt)
     {
       AppMethodBeat.i(119466);
       switch (paramInt)
@@ -77,10 +47,41 @@ public final class i
         AppMethodBeat.o(119466);
         return 9L;
       }
-      h localh = h.FuH;
-      long l = h.fqi().ahw();
+      h localh = h.LOJ;
+      long l = h.geE().amS();
       AppMethodBeat.o(119466);
       return l;
+    }
+    
+    public static int bdu(String paramString)
+    {
+      AppMethodBeat.i(119465);
+      p.k(paramString, "userName");
+      if (TextUtils.isEmpty((CharSequence)paramString))
+      {
+        AppMethodBeat.o(119465);
+        return 0;
+      }
+      j.b localb = j.LGA;
+      if (p.h(j.b.fOo(), paramString))
+      {
+        AppMethodBeat.o(119465);
+        return 1;
+      }
+      paramString = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().RG(paramString);
+      p.j(paramString, "ct");
+      if (paramString.ayh())
+      {
+        AppMethodBeat.o(119465);
+        return 3;
+      }
+      if (paramString.axZ())
+      {
+        AppMethodBeat.o(119465);
+        return 4;
+      }
+      AppMethodBeat.o(119465);
+      return 5;
     }
   }
 }

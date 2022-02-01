@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.c;
 import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.ui.l;
-import com.tencent.mm.protocal.protobuf.efk;
+import com.tencent.mm.protocal.protobuf.epl;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,52 +12,67 @@ import java.util.List;
 
 public final class b
 {
+  public long BMI;
+  public int BQA;
+  public int BQB;
+  public int BQC;
+  public int BQD;
+  public int BQE;
+  public int BQF;
+  public int BQG;
+  public int BQH;
+  public int BQI;
+  public int BQJ;
+  public int BQK;
+  public String BQL;
+  public boolean BQM;
+  public int BQN;
+  public List<Integer> BQO;
+  public List<c> BQP;
+  public long BQq;
+  public long BQs;
+  public int BQt;
+  public int BQu;
+  public int BQv;
+  public int BQw;
+  public int BQx;
+  public int BQy;
+  public int BQz;
   public int favCount;
   public String query;
-  public long xaI;
-  public int xeA;
-  public int xeB;
-  public String xeC;
-  public boolean xeD;
-  public int xeE;
-  public List<Integer> xeF;
-  public List<c> xeG;
-  public long xeh;
-  public long xej;
-  public int xek;
-  public int xel;
-  public int xem;
-  public int xen;
-  public int xeo;
-  public int xep;
-  public int xeq;
-  public int xer;
-  public int xes;
-  public int xet;
-  public int xeu;
-  public int xev;
-  public int xew;
-  public int xex;
-  public int xey;
-  public int xez;
   
   public b()
   {
     AppMethodBeat.i(112145);
-    this.xeC = "";
-    this.xej = 0L;
-    this.xeD = false;
-    this.xeE = 0;
-    this.xeF = new ArrayList();
-    this.xeG = new ArrayList();
+    this.BQL = "";
+    this.BQs = 0L;
+    this.BQM = false;
+    this.BQN = 0;
+    this.BQO = new ArrayList();
+    this.BQP = new ArrayList();
     AppMethodBeat.o(112145);
   }
   
-  public final void Nv(int paramInt)
+  public final void A(long paramLong, String paramString)
+  {
+    AppMethodBeat.i(176914);
+    c localc = new c();
+    localc.position = 1;
+    localc.fNO = 28;
+    localc.BHT = (System.currentTimeMillis() - this.BMI);
+    localc.BHU = (paramLong - this.BMI);
+    localc.fND = paramString;
+    if (!this.BQP.contains(localc)) {
+      this.BQP.add(localc);
+    }
+    AppMethodBeat.o(176914);
+  }
+  
+  public final void SJ(int paramInt)
   {
     AppMethodBeat.i(112151);
     Log.i("MicroMsg.FTS.FTSSearchStaticsObj", "addClickItemType %s", new Object[] { Integer.valueOf(paramInt) });
-    this.xeF.add(Integer.valueOf(paramInt));
+    this.BQO.add(Integer.valueOf(paramInt));
     AppMethodBeat.o(112151);
   }
   
@@ -66,14 +81,14 @@ public final class b
     AppMethodBeat.i(112149);
     c localc = new c();
     localc.position = paramInt1;
-    localc.dUm = 27;
-    localc.wVY = (System.currentTimeMillis() - this.xaI);
-    localc.wVZ = (paramLong - this.xaI);
-    localc.wWa = paramInt2;
-    localc.wWb = paramString2;
-    localc.dUb = paramString1;
-    if (!this.xeG.contains(localc)) {
-      this.xeG.add(localc);
+    localc.fNO = 27;
+    localc.BHT = (System.currentTimeMillis() - this.BMI);
+    localc.BHU = (paramLong - this.BMI);
+    localc.BHV = paramInt2;
+    localc.BHW = paramString2;
+    localc.fND = paramString1;
+    if (!this.BQP.contains(localc)) {
+      this.BQP.add(localc);
     }
     AppMethodBeat.o(112149);
   }
@@ -81,40 +96,40 @@ public final class b
   public final void b(a parama)
   {
     AppMethodBeat.i(112150);
-    Nv(l.a(parama));
+    SJ(l.a(parama));
     AppMethodBeat.o(112150);
   }
   
-  public final int dPA()
+  public final int erZ()
   {
-    int i = this.xeB;
-    this.xeB = 2;
+    int i = this.BQK;
+    this.BQK = 2;
     return i;
   }
   
-  public final void dPB()
+  public final void esa()
   {
     AppMethodBeat.i(112147);
     c localc = new c();
-    if ((this.xew > 0) || (this.xex > 0)) {}
-    for (localc.position = (this.xeA + 2);; localc.position = (this.xeA + 1))
+    if ((this.BQF > 0) || (this.BQG > 0)) {}
+    for (localc.position = (this.BQJ + 2);; localc.position = (this.BQJ + 1))
     {
-      localc.dUb = "SOSBar";
-      localc.wVZ = (System.currentTimeMillis() - this.xaI);
-      localc.dUm = 18;
-      if (!this.xeG.contains(localc)) {
-        this.xeG.add(localc);
+      localc.fND = "SOSBar";
+      localc.BHU = (System.currentTimeMillis() - this.BMI);
+      localc.fNO = 18;
+      if (!this.BQP.contains(localc)) {
+        this.BQP.add(localc);
       }
       AppMethodBeat.o(112147);
       return;
     }
   }
   
-  public final String dPC()
+  public final String esb()
   {
     AppMethodBeat.i(112152);
     Object localObject = new StringBuffer();
-    Iterator localIterator = this.xeF.iterator();
+    Iterator localIterator = this.BQO.iterator();
     while (localIterator.hasNext())
     {
       ((StringBuffer)localObject).append(((Integer)localIterator.next()).intValue());
@@ -125,23 +140,23 @@ public final class b
     return localObject;
   }
   
-  public final String dPD()
+  public final String esc()
   {
     AppMethodBeat.i(112153);
     Object localObject = new StringBuffer();
-    Iterator localIterator = this.xeG.iterator();
+    Iterator localIterator = this.BQP.iterator();
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
-      if (localc.dUm != 0)
+      if (localc.fNO != 0)
       {
         ((StringBuffer)localObject).append(localc.position + localc.index);
         ((StringBuffer)localObject).append("#");
-        ((StringBuffer)localObject).append(localc.dUm);
+        ((StringBuffer)localObject).append(localc.fNO);
         ((StringBuffer)localObject).append("#");
-        ((StringBuffer)localObject).append(localc.wVY);
+        ((StringBuffer)localObject).append(localc.BHT);
         ((StringBuffer)localObject).append("#");
-        ((StringBuffer)localObject).append(localc.wVZ);
+        ((StringBuffer)localObject).append(localc.BHU);
         ((StringBuffer)localObject).append("|");
       }
     }
@@ -150,21 +165,21 @@ public final class b
     return localObject;
   }
   
-  public final String dPE()
+  public final String esd()
   {
     AppMethodBeat.i(112154);
     Object localObject = new StringBuffer();
-    Iterator localIterator = this.xeG.iterator();
+    Iterator localIterator = this.BQP.iterator();
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
-      if ((localc.dUm != 0) && (localc.wWa != 0))
+      if ((localc.fNO != 0) && (localc.BHV != 0))
       {
         ((StringBuffer)localObject).append(localc.position);
         ((StringBuffer)localObject).append("#");
-        ((StringBuffer)localObject).append(localc.dUm);
+        ((StringBuffer)localObject).append(localc.fNO);
         ((StringBuffer)localObject).append("#");
-        ((StringBuffer)localObject).append(localc.wWa);
+        ((StringBuffer)localObject).append(localc.BHV);
         ((StringBuffer)localObject).append("|");
       }
     }
@@ -173,16 +188,16 @@ public final class b
     return localObject;
   }
   
-  public final String dPF()
+  public final String ese()
   {
     AppMethodBeat.i(112155);
-    Object localObject = this.xeG.iterator();
+    Object localObject = this.BQP.iterator();
     while (((Iterator)localObject).hasNext())
     {
       c localc = (c)((Iterator)localObject).next();
-      if (localc.dUm == 27)
+      if (localc.fNO == 27)
       {
-        localObject = localc.wWb;
+        localObject = localc.BHW;
         AppMethodBeat.o(112155);
         return localObject;
       }
@@ -191,57 +206,57 @@ public final class b
     return "";
   }
   
-  public final String dPG()
+  public final String esf()
   {
     AppMethodBeat.i(112156);
     Object localObject = new StringBuffer();
-    if (this.xek > 0)
+    if (this.BQt > 0)
     {
       ((StringBuffer)localObject).append(2);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.xek);
+      ((StringBuffer)localObject).append(this.BQt);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.xel > 0)
+    if (this.BQu > 0)
     {
       ((StringBuffer)localObject).append(3);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.xel);
+      ((StringBuffer)localObject).append(this.BQu);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.xem > 0)
+    if (this.BQv > 0)
     {
       ((StringBuffer)localObject).append(4);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.xem);
+      ((StringBuffer)localObject).append(this.BQv);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.xen > 0)
+    if (this.BQw > 0)
     {
       ((StringBuffer)localObject).append(5);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.xen);
+      ((StringBuffer)localObject).append(this.BQw);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.xeo > 0)
+    if (this.BQx > 0)
     {
       ((StringBuffer)localObject).append(11);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.xeo);
+      ((StringBuffer)localObject).append(this.BQx);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.xep > 0)
+    if (this.BQy > 0)
     {
       ((StringBuffer)localObject).append(10);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.xep);
+      ((StringBuffer)localObject).append(this.BQy);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.xer > 0)
+    if (this.BQA > 0)
     {
       ((StringBuffer)localObject).append(19);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.xer);
+      ((StringBuffer)localObject).append(this.BQA);
       ((StringBuffer)localObject).append("|");
     }
     if (this.favCount > 0)
@@ -251,60 +266,60 @@ public final class b
       ((StringBuffer)localObject).append(this.favCount);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.xes > 0)
+    if (this.BQB > 0)
     {
       ((StringBuffer)localObject).append(25);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.xes);
+      ((StringBuffer)localObject).append(this.BQB);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.xet > 0)
+    if (this.BQC > 0)
     {
       ((StringBuffer)localObject).append(26);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.xet);
+      ((StringBuffer)localObject).append(this.BQC);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.xeu > 0)
+    if (this.BQD > 0)
     {
       ((StringBuffer)localObject).append(28);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.xeu);
+      ((StringBuffer)localObject).append(this.BQD);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.xev > 0)
+    if (this.BQE > 0)
     {
       ((StringBuffer)localObject).append(27);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.xev);
+      ((StringBuffer)localObject).append(this.BQE);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.xez > 0)
+    if (this.BQI > 0)
     {
       ((StringBuffer)localObject).append(23);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.xez);
+      ((StringBuffer)localObject).append(this.BQI);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.xey > 0)
+    if (this.BQH > 0)
     {
       ((StringBuffer)localObject).append(18);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.xey);
+      ((StringBuffer)localObject).append(this.BQH);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.xew > 0)
+    if (this.BQF > 0)
     {
       ((StringBuffer)localObject).append(8);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.xew);
+      ((StringBuffer)localObject).append(this.BQF);
       ((StringBuffer)localObject).append("|");
     }
-    if (this.xex > 0)
+    if (this.BQG > 0)
     {
       ((StringBuffer)localObject).append(9);
       ((StringBuffer)localObject).append("#");
-      ((StringBuffer)localObject).append(this.xex);
+      ((StringBuffer)localObject).append(this.BQG);
       ((StringBuffer)localObject).append("|");
     }
     localObject = ((StringBuffer)localObject).toString();
@@ -312,11 +327,11 @@ public final class b
     return localObject;
   }
   
-  public final void eS(List<efk> paramList)
+  public final void fi(List<epl> paramList)
   {
-    AppMethodBeat.i(235409);
-    if ((this.xew > 0) || (this.xex > 0)) {}
-    for (int i = this.xeA + 3;; i = this.xeA + 2)
+    AppMethodBeat.i(190634);
+    if ((this.BQF > 0) || (this.BQG > 0)) {}
+    for (int i = this.BQJ + 3;; i = this.BQJ + 2)
     {
       int j = 0;
       while (j < paramList.size())
@@ -324,77 +339,62 @@ public final class b
         c localc = new c();
         localc.index = j;
         localc.position = i;
-        localc.dUb = ("SOSRelevant-" + ((efk)paramList.get(j)).MEq);
-        localc.wVZ = (System.currentTimeMillis() - this.xaI);
-        localc.dUm = 23;
-        if (!this.xeG.contains(localc)) {
-          this.xeG.add(localc);
+        localc.fND = ("SOSRelevant-" + ((epl)paramList.get(j)).TPZ);
+        localc.BHU = (System.currentTimeMillis() - this.BMI);
+        localc.fNO = 23;
+        if (!this.BQP.contains(localc)) {
+          this.BQP.add(localc);
         }
         j += 1;
       }
     }
-    AppMethodBeat.o(235409);
+    AppMethodBeat.o(190634);
   }
   
-  public final void gF(int paramInt1, int paramInt2)
+  public final void hy(int paramInt1, int paramInt2)
   {
-    this.xeu = paramInt1;
-    this.xev = paramInt2;
+    this.BQD = paramInt1;
+    this.BQE = paramInt2;
   }
   
-  public final void gG(int paramInt1, int paramInt2)
+  public final void hz(int paramInt1, int paramInt2)
   {
-    this.xez = paramInt1;
-    this.xey = paramInt2;
+    this.BQI = paramInt1;
+    this.BQH = paramInt2;
   }
   
   public final void reset()
   {
     AppMethodBeat.i(112146);
     this.query = "";
-    this.xeh = 0L;
-    this.xek = 0;
-    this.xel = 0;
-    this.xem = 0;
-    this.xen = 0;
-    this.xeo = 0;
-    this.xep = 0;
+    this.BQq = 0L;
+    this.BQt = 0;
+    this.BQu = 0;
+    this.BQv = 0;
+    this.BQw = 0;
+    this.BQx = 0;
+    this.BQy = 0;
     this.favCount = 0;
-    this.xeq = 0;
-    this.xer = 0;
-    this.xej = 0L;
-    this.xes = 0;
-    this.xet = 0;
-    this.xeu = 0;
-    this.xew = 0;
-    this.xex = 0;
-    this.xev = 0;
-    this.xey = 0;
-    this.xez = 0;
-    this.xeA = 0;
-    this.xeG.clear();
-    this.xeF.clear();
+    this.BQz = 0;
+    this.BQA = 0;
+    this.BQs = 0L;
+    this.BQB = 0;
+    this.BQC = 0;
+    this.BQD = 0;
+    this.BQF = 0;
+    this.BQG = 0;
+    this.BQE = 0;
+    this.BQH = 0;
+    this.BQI = 0;
+    this.BQJ = 0;
+    this.BQP.clear();
+    this.BQO.clear();
     AppMethodBeat.o(112146);
-  }
-  
-  public final void t(long paramLong, String paramString)
-  {
-    AppMethodBeat.i(176914);
-    c localc = new c();
-    localc.position = 1;
-    localc.dUm = 28;
-    localc.wVY = (System.currentTimeMillis() - this.xaI);
-    localc.wVZ = (paramLong - this.xaI);
-    localc.dUb = paramString;
-    if (!this.xeG.contains(localc)) {
-      this.xeG.add(localc);
-    }
-    AppMethodBeat.o(176914);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.c.b
  * JD-Core Version:    0.7.0.1
  */

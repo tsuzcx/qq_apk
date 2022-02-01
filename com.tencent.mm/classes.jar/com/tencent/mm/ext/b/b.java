@@ -8,14 +8,14 @@ public final class b
 {
   public static boolean oppohasCutOut(Context paramContext)
   {
-    AppMethodBeat.i(197904);
+    AppMethodBeat.i(259085);
     if (paramContext == null)
     {
-      AppMethodBeat.o(197904);
+      AppMethodBeat.o(259085);
       return false;
     }
     boolean bool = paramContext.getPackageManager().hasSystemFeature("com.oppo.feature.screen.heteromorphism");
-    AppMethodBeat.o(197904);
+    AppMethodBeat.o(259085);
     return bool;
   }
 }

@@ -17,6 +17,7 @@ public final class PolylineOptions
   private BitmapDescriptor colorTexture;
   private int edgeColor;
   private float edgeWidth;
+  private boolean enableGradient;
   private int eraseColor;
   private int[] iColors;
   private int[] iIndexs;
@@ -253,6 +254,11 @@ public final class PolylineOptions
     return this.isGeodesic;
   }
   
+  public final boolean isGradientEnable()
+  {
+    return this.enableGradient;
+  }
+  
   public final boolean isVisible()
   {
     return this.isVisible;
@@ -287,6 +293,11 @@ public final class PolylineOptions
   {
     this.isDottedLine = paramBoolean;
     return this;
+  }
+  
+  public final void setEnableGradient(boolean paramBoolean)
+  {
+    this.enableGradient = paramBoolean;
   }
   
   public final PolylineOptions visible(boolean paramBoolean)
@@ -327,7 +338,7 @@ public final class PolylineOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.PolylineOptions
  * JD-Core Version:    0.7.0.1
  */

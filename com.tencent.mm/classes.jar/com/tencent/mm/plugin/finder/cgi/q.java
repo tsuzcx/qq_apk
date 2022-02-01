@@ -1,122 +1,93 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.model.cl;
-import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.report.k;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.c;
-import com.tencent.mm.plugin.finder.upload.action.i;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.aov;
-import com.tencent.mm.protocal.protobuf.auo;
-import com.tencent.mm.protocal.protobuf.aup;
-import com.tencent.mm.protocal.protobuf.bbn;
-import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.an.c.a;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.cd.b;
+import com.tencent.mm.cw.f;
+import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.finder.report.j;
+import com.tencent.mm.plugin.findersdk.b.c;
+import com.tencent.mm.protocal.protobuf.avo;
+import com.tencent.mm.protocal.protobuf.avp;
+import com.tencent.mm.protocal.protobuf.bid;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.component.g;
+import com.tencent.mm.ui.component.g.a;
 import kotlin.l;
+import kotlin.o;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderLikeFeed;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderLikeResponse;", "action", "Lcom/tencent/mm/plugin/finder/upload/action/LikeAction;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/plugin/finder/upload/action/LikeAction;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "TAG", "", "getAction", "()Lcom/tencent/mm/plugin/finder/upload/action/LikeAction;", "likeId", "", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLikeRequest;", "initCommReqResp", "", "onCgiEnd", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetNearbyList;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetNearbyListResp;", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "callback", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetNearbyList$Callback;", "pullType", "", "consume", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderTimelineStream$ConsumeCallback;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/protobuf/ByteString;Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetNearbyList$Callback;ILcom/tencent/mm/plugin/finder/cgi/CgiFinderTimelineStream$ConsumeCallback;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "getType", "isFetchFeedCgi", "", "onCgiEnd", "", "errType", "errCode", "errMsg", "", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "run", "Lcom/tencent/mm/wx/WxPipeline;", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Callback", "Companion", "plugin-finder_release"})
 public final class q
-  extends an<aup>
+  extends c<avp>
 {
-  private static long tsS;
-  public static final a tto;
-  private final String TAG;
-  private long tsR;
-  private auo ttj;
-  private final i ttn;
+  public static final b xaY;
+  private final int pullType;
+  private final ab.c xaU;
+  private final a xaX;
   
   static
   {
-    AppMethodBeat.i(165171);
-    tto = new a((byte)0);
-    AppMethodBeat.o(165171);
+    AppMethodBeat.i(267016);
+    xaY = new b((byte)0);
+    AppMethodBeat.o(267016);
   }
   
-  public q(i parami, bbn parambbn)
+  public q(b paramb, a parama, int paramInt, ab.c paramc, bid parambid)
   {
-    super(parambbn);
-    AppMethodBeat.i(242236);
-    this.ttn = parami;
-    this.TAG = "Finder.CgiFinderLikeFeed";
-    this.tsR = cl.aWz();
-    long l;
-    if (this.tsR < tsS)
-    {
-      l = tsS;
-      tsS = 1L + l;
-      this.tsR = l;
-    }
-    tsS = this.tsR;
-    this.ttj = new auo();
-    parami = this.ttj;
-    Object localObject = c.vCb;
-    if (c.drg())
-    {
-      l = 0L;
-      parami.hFK = l;
-      this.ttj.objectNonceId = this.ttn.objectNonceId;
-      this.ttj.tsR = this.tsR;
-      this.ttj.username = z.aUg();
-      this.ttj.scene = this.ttn.scene;
-      parami = this.ttj;
-      if (!this.ttn.vUr) {
-        break label584;
-      }
-      i = 3;
-      label175:
-      parami.opType = i;
-      parami = this.ttj;
-      if (!this.ttn.vUk) {
-        break label589;
-      }
-    }
-    label584:
-    label589:
-    for (int i = 1;; i = 0)
-    {
-      parami.vkk = i;
-      parami = this.ttj;
-      localObject = am.tuw;
-      parami.uli = am.a(parambbn);
-      parami = this.ttj;
-      parambbn = k.vfA;
-      l = this.ttn.feedId;
-      parambbn = this.ttj.uli;
-      i = j;
-      if (parambbn != null) {
-        i = parambbn.scene;
-      }
-      parami.sessionBuffer = k.G(l, i);
-      Log.i(this.TAG, "likeId:" + this.tsR + " objectId:" + this.ttj.hFK + " opType:" + this.ttj.opType + " likeId:" + this.ttj.tsR + " username:" + this.ttj.username + " action:" + this.ttn.vUr + ", private:" + this.ttn.vUk);
-      parami = new d.a();
-      parami.c((a)this.ttj);
-      parambbn = new aup();
-      parambbn.setBaseResponse(new BaseResponse());
-      parambbn.getBaseResponse().ErrMsg = new dqi();
-      parami.d((a)parambbn);
-      parami.MB("/cgi-bin/micromsg-bin/finderlike");
-      parami.sG(3710);
-      c(parami.aXF());
-      Log.i(this.TAG, "likeId:" + this.tsR + " CgiFinderLikeComment init " + this.ttj.hFK + " and userName " + this.ttn.vTS.getUserName() + " nickname " + this.ttn.vTS.getNickName() + " totalCount:" + this.ttn.vTS.getLikeCount());
-      AppMethodBeat.o(242236);
-      return;
-      l = this.ttn.feedId;
-      break;
-      i = 4;
-      break label175;
-    }
+    super(parambid);
+    AppMethodBeat.i(267015);
+    this.xaX = parama;
+    this.pullType = paramInt;
+    this.xaU = paramc;
+    parama = new d.a();
+    parama.vD(375);
+    paramc = new avo();
+    Object localObject = g.Xox;
+    localObject = ((com.tencent.mm.plugin.finder.viewmodel.a)g.bD(PluginFinder.class).i(com.tencent.mm.plugin.finder.viewmodel.a.class)).dnl();
+    paramc.longitude = ((Number)((o)localObject).Mx).floatValue();
+    paramc.latitude = ((Number)((o)localObject).My).floatValue();
+    paramc.lastBuffer = paramb;
+    localObject = ao.xcj;
+    paramc.SDi = ao.dnO();
+    localObject = ao.xcj;
+    paramc.SCW = ao.dnP();
+    parama.c((com.tencent.mm.cd.a)paramc);
+    parama.d((com.tencent.mm.cd.a)new avp());
+    parama.TW("/cgi-bin/micromsg-bin/findergetnearbylist");
+    c(parama.bgN());
+    Log.i("Finder.CgiFinderGetNearbyList", "CgiFinderGetNearbyList lat.lng:" + paramc.latitude + ", " + paramc.longitude + ' ' + this.pullType + ' ' + paramb);
+    paramb = j.zVy;
+    j.a(2, this.pullType, parambid, 4L);
+    AppMethodBeat.o(267015);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderLikeFeed$Companion;", "", "()V", "GlobalLikeFeedId", "", "getGlobalLikeFeedId", "()J", "setGlobalLikeFeedId", "(J)V", "plugin-finder_release"})
-  public static final class a {}
+  public final f<c.a<avp>> bhW()
+  {
+    AppMethodBeat.i(267012);
+    j.a(j.zVy, 2, true, null, 12);
+    f localf = super.bhW();
+    AppMethodBeat.o(267012);
+    return localf;
+  }
+  
+  public final boolean dnD()
+  {
+    return true;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetNearbyList$Callback;", "", "onFetchDone", "", "errType", "", "errCode", "errMsg", "", "info", "Lcom/tencent/mm/protocal/protobuf/FinderGetNearbyListResp;", "pullType", "plugin-finder_release"})
+  public static abstract interface a
+  {
+    public abstract void a(int paramInt1, int paramInt2, String paramString, avp paramavp, int paramInt3);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetNearbyList$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.q
  * JD-Core Version:    0.7.0.1
  */

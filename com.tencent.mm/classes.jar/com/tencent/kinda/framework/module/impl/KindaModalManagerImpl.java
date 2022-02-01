@@ -5,8 +5,10 @@ import com.tencent.kinda.gen.IUIModal;
 import com.tencent.kinda.gen.IUIPagePlatformDelegate;
 import com.tencent.kinda.gen.KindaModalManager;
 import com.tencent.kinda.gen.Platform;
+import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 public class KindaModalManagerImpl
   implements KindaModalManager
@@ -24,7 +26,7 @@ public class KindaModalManagerImpl
   public IUIPagePlatformDelegate getPlatformDelegate()
   {
     AppMethodBeat.i(18644);
-    IUIPagePlatformDelegate local1 = new IUIPagePlatformDelegate()
+    IUIPagePlatformDelegate local2 = new IUIPagePlatformDelegate()
     {
       public Platform currentPlatform()
       {
@@ -32,7 +34,7 @@ public class KindaModalManagerImpl
       }
     };
     AppMethodBeat.o(18644);
-    return local1;
+    return local2;
   }
   
   public void removeAllModalViews()
@@ -42,17 +44,26 @@ public class KindaModalManagerImpl
     AppMethodBeat.o(185697);
   }
   
-  public void removeModalView(IUIModal paramIUIModal)
+  public void removeModalViewImpl(IUIModal paramIUIModal, final VoidCallback paramVoidCallback)
   {
-    AppMethodBeat.i(18643);
+    AppMethodBeat.i(264406);
     Log.i("MicroMsg.KindaModalManagerImpl", "kinda call reremoveModalView, modal: ".concat(String.valueOf(paramIUIModal)));
     ActivityController.remove(paramIUIModal);
-    AppMethodBeat.o(18643);
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(262784);
+        paramVoidCallback.call();
+        AppMethodBeat.o(262784);
+      }
+    });
+    AppMethodBeat.o(264406);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.KindaModalManagerImpl
  * JD-Core Version:    0.7.0.1
  */

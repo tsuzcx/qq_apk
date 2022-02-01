@@ -1,24 +1,22 @@
 package com.tencent.mm.ui.chatting.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.a.a;
-import com.tencent.mm.storage.ca;
-import java.util.Map;
+import com.tencent.mm.f.a.cs;
+import com.tencent.mm.sdk.event.IListener;
 
-public final class b$1
-  extends a.a
+final class b$1
+  extends IListener<cs>
 {
-  public final com.tencent.mm.az.a a(Map<String, String> paramMap, ca paramca)
+  b$1()
   {
-    AppMethodBeat.i(36445);
-    paramMap = new a(paramMap, paramca);
-    AppMethodBeat.o(36445);
-    return paramMap;
+    AppMethodBeat.i(286461);
+    this.__eventId = cs.class.getName().hashCode();
+    AppMethodBeat.o(286461);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.j.b.1
  * JD-Core Version:    0.7.0.1
  */

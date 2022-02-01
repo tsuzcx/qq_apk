@@ -8,17 +8,17 @@ import kotlin.l.b.a.b.f.f;
 public abstract class d
   implements kotlin.l.b.a.b.d.a.e.b
 {
-  public static final a Tnd = new a((byte)0);
-  private final f TjT;
+  public static final a aaPX = new a((byte)0);
+  private final f aaMN;
   
   public d(f paramf)
   {
-    this.TjT = paramf;
+    this.aaMN = paramf;
   }
   
-  public final f hAH()
+  public final f iEU()
   {
-    return this.TjT;
+    return this.aaMN;
   }
   
   public static final class a
@@ -26,8 +26,8 @@ public abstract class d
     public static d a(Object paramObject, f paramf)
     {
       AppMethodBeat.i(57415);
-      p.h(paramObject, "value");
-      if (b.by(paramObject.getClass()))
+      p.k(paramObject, "value");
+      if (b.bX(paramObject.getClass()))
       {
         paramObject = (d)new o(paramf, (Enum)paramObject);
         AppMethodBeat.o(57415);
@@ -59,7 +59,7 @@ public abstract class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.d.b.d
  * JD-Core Version:    0.7.0.1
  */

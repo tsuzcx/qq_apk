@@ -7,14 +7,12 @@ import com.tencent.mars.app.AppLogic;
 import com.tencent.mars.mm.AppCallBack;
 import com.tencent.mars.sdt.SdtLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.ak.t.a;
+import com.tencent.mm.an.t;
+import com.tencent.mm.an.t.a;
 import com.tencent.mm.booter.NotifyReceiver;
-import com.tencent.mm.booter.NotifyReceiver.NotifyService;
-import com.tencent.mm.co.i;
 import com.tencent.mm.compatible.util.j;
-import com.tencent.mm.kernel.b.f;
-import com.tencent.mm.kernel.l;
+import com.tencent.mm.cw.i;
+import com.tencent.mm.kernel.n;
 import com.tencent.mm.plugin.zero.tasks.LoadNormsgJNITask;
 import com.tencent.mm.plugin.zero.tasks.LoadProtocolJNITask;
 import com.tencent.mm.sdcard_migrate.ExtStorageMigrateMonitor;
@@ -26,72 +24,71 @@ import com.tencent.mm.storage.am;
 import com.tencent.mm.storage.an;
 import com.tencent.mm.storage.ar;
 import com.tencent.mm.storagebase.h.b;
-import com.tencent.mm.vending.h.h;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 import com.tencent.stubs.logger.Log.Logger;
 import java.util.HashMap;
 
 public class PluginZero
-  extends f
+  extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.kernel.api.a, com.tencent.mm.plugin.zero.a.d
 {
-  private static final int[] UtQ = { 6, 6, 0, 1, 2, 3, 4, 5 };
-  private a UtN;
-  private b UtO;
-  private final com.tencent.mm.app.g UtP;
-  public com.tencent.mm.plugin.zero.a.b UtR;
-  public b UtS;
-  public a UtT;
+  private static final int[] Svk = { 6, 6, 0, 1, 2, 3, 4, 5 };
+  private a SuX;
+  private b SuZ;
+  public a SvF;
+  private final com.tencent.mm.app.g Svj;
+  public com.tencent.mm.plugin.zero.a.b Svl;
+  public PluginZero.b Svm;
   
   public PluginZero()
   {
     AppMethodBeat.i(133012);
-    this.UtN = new a();
-    this.UtO = new b();
-    this.UtP = new com.tencent.mm.app.g();
-    this.UtS = new b();
-    this.UtT = new a();
+    this.SuX = new a();
+    this.SuZ = new b();
+    this.Svj = new com.tencent.mm.app.g();
+    this.Svm = new PluginZero.b();
+    this.SvF = new a();
     AppMethodBeat.o(133012);
   }
   
   private void initSDRoot()
   {
     AppMethodBeat.i(133016);
-    if (!new o(ar.NSe + "SdcardInfo.cfg").exists())
+    if (!new q(ar.Vgb + "SdcardInfo.cfg").ifE())
     {
-      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.PluginZero", "summermount initSdCardPath sdcard info file not existed use[%s]", new Object[] { com.tencent.mm.loader.j.b.aKE() });
+      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.PluginZero", "summermount initSdCardPath sdcard info file not existed use[%s]", new Object[] { com.tencent.mm.loader.j.b.aSG() });
       AppMethodBeat.o(133016);
       return;
     }
-    String str2 = com.tencent.mm.loader.j.b.aKE();
+    String str2 = com.tencent.mm.loader.j.b.aSG();
     int i = 0;
-    an localan = new an(ar.NSe + "SdcardInfo.cfg");
-    String str3 = (String)localan.get(1, "");
-    int m = ((Integer)localan.get(2, Integer.valueOf(0))).intValue();
+    an localan = new an(ar.Vgb + "SdcardInfo.cfg");
+    String str3 = (String)localan.b(1, "");
+    int m = ((Integer)localan.b(2, Integer.valueOf(0))).intValue();
     int k = Build.VERSION.SDK_INT;
     String str1;
     int j;
     if (Util.isNullOrNil(str3))
     {
-      localan.set(1, str2);
-      localan.set(2, Integer.valueOf(k));
+      localan.i(1, str2);
+      localan.i(2, Integer.valueOf(k));
       str1 = str2;
       com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.PluginZero", "initSdCardPath cfgSdcardRoot[%s], initSdcardRoot[%s], primarySD[%s], ver[%d], sdk[%d]", new Object[] { str3, str1, str2, Integer.valueOf(m), Integer.valueOf(k) });
-      com.tencent.mm.loader.j.b.A(str1, false);
+      com.tencent.mm.loader.j.b.C(str1, false);
       j = i;
       if (m != k)
       {
         j = i;
-        if (!com.tencent.mm.compatible.util.e.apn())
+        if (!com.tencent.mm.compatible.util.e.avA())
         {
           j = 0;
-          if ((!com.tencent.mm.compatible.util.g.getExternalStorageState().equals("mounted")) || (!new o(str2).canWrite())) {
+          if ((!com.tencent.mm.compatible.util.g.avJ().equals("mounted")) || (!new q(str2).ifD())) {
             break label352;
           }
-          localan.set(1, str2);
-          localan.set(2, Integer.valueOf(k));
-          com.tencent.mm.loader.j.b.A(str2, false);
-          com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.PluginZero", "summermount initSdCardPath ver change and old not avail reset SDCARD_ROOT[%s][%b]", new Object[] { com.tencent.mm.loader.j.b.aKD(), Boolean.valueOf(com.tencent.mm.compatible.util.e.apn()) });
+          localan.i(1, str2);
+          localan.i(2, Integer.valueOf(k));
+          com.tencent.mm.loader.j.b.C(str2, false);
+          com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.PluginZero", "summermount initSdCardPath ver change and old not avail reset SDCARD_ROOT[%s][%b]", new Object[] { com.tencent.mm.loader.j.b.aSF(), Boolean.valueOf(com.tencent.mm.compatible.util.e.avA()) });
         }
       }
     }
@@ -99,9 +96,9 @@ public class PluginZero
     {
       if ((MMApplicationContext.isMainProcess()) && (j != 0))
       {
-        ExtStorageMigrateMonitor.ME(140L);
+        ExtStorageMigrateMonitor.Um(140L);
         if (!str2.equals(str1)) {
-          ExtStorageMigrateMonitor.ME(141L);
+          ExtStorageMigrateMonitor.Um(141L);
         }
       }
       AppMethodBeat.o(133016);
@@ -110,7 +107,7 @@ public class PluginZero
       str1 = str3;
       break;
       label352:
-      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.PluginZero", "summermount initSdCardPath ver change but neither primarySD nor old avail keep do nothing[%s][%b][%s]", new Object[] { com.tencent.mm.loader.j.b.aKD(), Boolean.valueOf(com.tencent.mm.compatible.util.e.apn()), str2 });
+      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.PluginZero", "summermount initSdCardPath ver change but neither primarySD nor old avail keep do nothing[%s][%b][%s]", new Object[] { com.tencent.mm.loader.j.b.aSF(), Boolean.valueOf(com.tencent.mm.compatible.util.e.avA()), str2 });
     }
   }
   
@@ -122,7 +119,7 @@ public class PluginZero
       public final boolean isLoggable(String paramAnonymousString, int paramAnonymousInt)
       {
         AppMethodBeat.i(133000);
-        if ((paramAnonymousInt >= 2) && (paramAnonymousInt <= 7) && (PluginZero.UtQ[paramAnonymousInt] >= com.tencent.mm.sdk.platformtools.Log.getLogLevel()))
+        if ((paramAnonymousInt >= 2) && (paramAnonymousInt <= 7) && (PluginZero.Svk[paramAnonymousInt] >= com.tencent.mm.sdk.platformtools.Log.getLogLevel()))
         {
           AppMethodBeat.o(133000);
           return true;
@@ -221,7 +218,7 @@ public class PluginZero
   public com.tencent.mm.vending.b.b addICoreServiceLifecycleCallback(com.tencent.mm.plugin.zero.a.a parama)
   {
     AppMethodBeat.i(133021);
-    parama = this.UtT.add(parama);
+    parama = this.SvF.add(parama);
     AppMethodBeat.o(133021);
     return parama;
   }
@@ -230,14 +227,14 @@ public class PluginZero
   {
     AppMethodBeat.i(133020);
     com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.PluginZero", "addNotifyReceiverCallback this %s delegate %s ", new Object[] { this, paramc });
-    paramc = this.UtS.add(paramc);
+    paramc = this.Svm.add(paramc);
     AppMethodBeat.o(133020);
     return paramc;
   }
   
   public HashMap<Integer, h.b> collectDatabaseFactory()
   {
-    AppMethodBeat.i(197124);
+    AppMethodBeat.i(198761);
     com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.PluginZero", "CleanDeleteItemStorage collectDatabaseFactory");
     HashMap localHashMap = new HashMap();
     localHashMap.put(Integer.valueOf("CleanDeleteItem".hashCode()), new h.b()
@@ -247,7 +244,7 @@ public class PluginZero
         return am.SQL_CREATE;
       }
     });
-    AppMethodBeat.o(197124);
+    AppMethodBeat.o(198761);
     return localHashMap;
   }
   
@@ -257,63 +254,63 @@ public class PluginZero
     try
     {
       initSDRoot();
-      com.tencent.mm.kernel.a.a.k("configure [%s], setup broken library handler...", new Object[] { this });
+      com.tencent.mm.kernel.a.a.j("configure [%s], setup broken library handler...", new Object[] { this });
       setupStubLog();
       setupVendingLog();
-      if (paramg.aBb())
+      if (paramg.aIE())
       {
-        com.tencent.mm.kernel.a.a.k("configure [%s], for process[%s]...", new Object[] { this, paramg.mProcessName });
-        com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.zero.b.a.class, new com.tencent.mm.kernel.c.e(this.UtN));
-        com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.zero.b.b.class, new com.tencent.mm.kernel.c.e(this.UtO));
-        com.tencent.mm.kernel.a.a.k("configure [%s], make worker core...", new Object[] { this });
-        com.tencent.mm.kernel.g localg = com.tencent.mm.kernel.g.aAi();
-        if (!localg.hrr)
+        com.tencent.mm.kernel.a.a.j("configure [%s], for process[%s]...", new Object[] { this, paramg.mProcessName });
+        com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.zero.b.a.class, new com.tencent.mm.kernel.c.e(this.SuX));
+        com.tencent.mm.kernel.h.a(com.tencent.mm.plugin.zero.b.b.class, new com.tencent.mm.kernel.c.e(this.SuZ));
+        com.tencent.mm.kernel.a.a.j("configure [%s], make worker core...", new Object[] { this });
+        com.tencent.mm.kernel.h localh = com.tencent.mm.kernel.h.aHH();
+        if (!localh.kdm)
         {
-          localg.hrk = new com.tencent.mm.kernel.e(com.tencent.mm.kernel.a.c.aAu());
-          localg.hrl = new com.tencent.mm.kernel.a(com.tencent.mm.kernel.a.c.aAu());
-          localg.hrm = new com.tencent.mm.kernel.b(localg.hro, localg.hqh);
-          localg.hrn = new com.tencent.mm.cg.b(MMApplicationContext.getContext());
-          localg.hrr = true;
+          localh.kdf = new com.tencent.mm.kernel.f(com.tencent.mm.kernel.a.c.aHV());
+          localh.kdg = new com.tencent.mm.kernel.b(com.tencent.mm.kernel.a.c.aHV());
+          localh.kdh = new com.tencent.mm.kernel.c(localh.kdj, localh.kcc);
+          localh.kdi = new com.tencent.mm.cn.b(MMApplicationContext.getContext());
+          localh.kdm = true;
         }
-        NotifyReceiver.akE();
-        com.tencent.mm.kernel.g.aAi().a(new com.tencent.mm.kernel.api.g()
+        NotifyReceiver.aqA();
+        com.tencent.mm.kernel.h.aHH().a(new com.tencent.mm.kernel.api.g()
         {
-          public final void WY()
+          public final void abB()
           {
             AppMethodBeat.i(132996);
-            com.tencent.mm.kernel.a.a.k("onStartupDone", new Object[0]);
+            com.tencent.mm.kernel.a.a.j("onStartupDone", new Object[0]);
             AppMethodBeat.o(132996);
           }
           
-          public final void cQ(boolean paramAnonymousBoolean)
+          public final void dn(boolean paramAnonymousBoolean)
           {
             AppMethodBeat.i(132997);
             if (paramAnonymousBoolean)
             {
-              l.s(paramg.ca, true);
-              l.t(paramg.ca, true);
+              n.v(paramg.Zw, true);
+              n.w(paramg.Zw, true);
             }
             com.tencent.mm.sdk.platformtools.Log.appenderFlush();
             AppMethodBeat.o(132997);
           }
         });
-        com.tencent.mm.kernel.g.aAi();
-        i.RwW = new h(com.tencent.mm.co.d.b(com.tencent.mm.kernel.g.aAk().getWorkerHandler()), "WeChat.WORKER");
-        com.tencent.mm.vending.h.g.a("WeChat.WORKER", i.RwW);
+        com.tencent.mm.kernel.h.aHH();
+        i.YYx = new com.tencent.mm.vending.h.h(com.tencent.mm.cw.d.b(com.tencent.mm.kernel.h.aHJ().getWorkerHandler()), "WeChat.WORKER");
+        com.tencent.mm.vending.h.g.a("WeChat.WORKER", i.YYx);
         new com.tencent.mm.plugin.zero.tasks.a().before(this);
       }
-      if ((paramg.aBb()) || (paramg.FY(":push"))) {
+      if ((paramg.aIE()) || (paramg.MY(":push"))) {
         new LoadNormsgJNITask().before(new LoadProtocolJNITask().before(this));
       }
-      if (paramg.FY(":push"))
+      if (paramg.MY(":push"))
       {
         AppLogic.setCallBack(new AppCallBack(MMApplicationContext.getContext()));
         getClass().getClassLoader();
-        j.Ed("wechatbase");
+        j.KW("wechatbase");
         getClass().getClassLoader();
-        j.Ed("wechatnetwork");
+        j.KW("wechatnetwork");
         getClass().getClassLoader();
-        j.Ed("wechatmm");
+        j.KW("wechatmm");
         SdtLogic.setHttpNetcheckCGI("/mmnetcheck");
       }
       AppMethodBeat.o(133015);
@@ -338,20 +335,20 @@ public class PluginZero
   public void execute(final com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(133017);
-    if (paramg.aBb())
+    if (paramg.aIE())
     {
-      com.tencent.mm.kernel.g.aAi().hro.add(new t.a()
+      com.tencent.mm.kernel.h.aHH().kdj.add(new t.a()
       {
         public final void a(t paramAnonymoust)
         {
           AppMethodBeat.i(132998);
-          PluginZero.this.UtP.bG(paramg.ca);
+          PluginZero.this.Svj.bF(paramg.Zw);
           AppMethodBeat.o(132998);
         }
         
         public final void a(t paramAnonymoust, boolean paramAnonymousBoolean) {}
       });
-      NotifyReceiver.akF();
+      NotifyReceiver.aqB();
     }
     AppMethodBeat.o(133017);
   }
@@ -365,7 +362,7 @@ public class PluginZero
   
   public void setILightPushDelegate(com.tencent.mm.plugin.zero.a.b paramb)
   {
-    this.UtR = paramb;
+    this.Svl = paramb;
   }
   
   public String toString()
@@ -374,39 +371,27 @@ public class PluginZero
   }
   
   public static final class a
-    extends com.tencent.mm.co.a<com.tencent.mm.plugin.zero.a.a>
+    extends com.tencent.mm.cw.a<com.tencent.mm.plugin.zero.a.a>
     implements com.tencent.mm.plugin.zero.a.a
   {
     public final void a(final Service paramService)
     {
       AppMethodBeat.i(133008);
-      a(new com.tencent.mm.co.a.a() {});
+      a(new com.tencent.mm.cw.a.a() {});
       AppMethodBeat.o(133008);
     }
     
     public final void b(final Service paramService)
     {
       AppMethodBeat.i(133009);
-      a(new com.tencent.mm.co.a.a() {});
+      a(new com.tencent.mm.cw.a.a() {});
       AppMethodBeat.o(133009);
-    }
-  }
-  
-  public static final class b
-    extends com.tencent.mm.co.a<com.tencent.mm.plugin.zero.a.c>
-    implements com.tencent.mm.plugin.zero.a.c
-  {
-    public final void a(final NotifyReceiver.NotifyService paramNotifyService, final int paramInt, final byte[] paramArrayOfByte1, final byte[] paramArrayOfByte2, final long paramLong)
-    {
-      AppMethodBeat.i(133011);
-      a(new com.tencent.mm.co.a.a() {});
-      AppMethodBeat.o(133011);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.zero.PluginZero
  * JD-Core Version:    0.7.0.1
  */

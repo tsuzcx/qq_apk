@@ -5,26 +5,25 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.MutableContextWrapper;
 import android.os.Looper;
-import android.support.v4.e.c;
+import com.tencent.luggage.sdk.processes.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.plugin.appbrand.au.i;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.debugger.DebuggerShell;
 import com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI;
-import com.tencent.mm.plugin.appbrand.launching.ab;
-import com.tencent.mm.plugin.appbrand.launching.av;
+import com.tencent.mm.plugin.appbrand.launching.at;
+import com.tencent.mm.plugin.appbrand.launching.d.a;
+import com.tencent.mm.plugin.appbrand.launching.e;
 import com.tencent.mm.plugin.appbrand.launching.e.a;
-import com.tencent.mm.plugin.appbrand.launching.f.a;
 import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
-import com.tencent.mm.plugin.appbrand.launching.u;
+import com.tencent.mm.plugin.appbrand.launching.t;
+import com.tencent.mm.plugin.appbrand.launching.z;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.task.h;
-import com.tencent.mm.plugin.appbrand.task.p;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandXWebDownloadProxyUI;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.AvailabilityAlertSupplier;
 import com.tencent.mm.sdk.system.AndroidContextUtil;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
@@ -35,33 +34,22 @@ import org.xwalk.core.XWalkEnvironment;
 public abstract class a
   extends MutableContextWrapper
 {
-  private volatile boolean mYT = false;
-  volatile boolean mYU = false;
-  protected boolean mYV = true;
-  private final Queue<Runnable> mYW = new ConcurrentLinkedQueue();
-  private MMHandler mYX;
-  private LaunchParcel mYY;
+  private volatile boolean pZr = false;
+  volatile boolean pZs = false;
+  protected boolean pZt = true;
+  private final Queue<Runnable> pZu = new ConcurrentLinkedQueue();
+  private MMHandler pZv;
+  private LaunchParcel pZw;
   
   public a()
   {
     super(MMApplicationContext.getContext());
   }
   
-  private boolean bOd()
-  {
-    Object localObject = getBaseContext();
-    if ((localObject instanceof AppBrandLaunchProxyUI))
-    {
-      localObject = (AppBrandLaunchProxyUI)localObject;
-      return (!((AppBrandLaunchProxyUI)localObject).isDestroyed()) && (!((AppBrandLaunchProxyUI)localObject).isFinishing());
-    }
-    return false;
-  }
-  
-  private Context bOg()
+  private Context caA()
   {
     Object localObject1 = getBaseContext();
-    Object localObject2 = bOf();
+    Object localObject2 = caz();
     if ((!(localObject1 instanceof Activity)) && (localObject2 != null)) {
       localObject1 = localObject2;
     }
@@ -75,22 +63,34 @@ public abstract class a
     }
   }
   
+  private boolean cax()
+  {
+    Object localObject = getBaseContext();
+    if ((localObject instanceof AppBrandLaunchProxyUI))
+    {
+      localObject = (AppBrandLaunchProxyUI)localObject;
+      return (!((AppBrandLaunchProxyUI)localObject).isDestroyed()) && (!((AppBrandLaunchProxyUI)localObject).isFinishing());
+    }
+    return false;
+  }
+  
   protected final void a(final LaunchParcel paramLaunchParcel, final String paramString)
   {
+    this.pZw = paramLaunchParcel;
     MMHandler localMMHandler = new MMHandler("AppBrandLaunchProxyUI-PrepareThread");
-    this.mYX = localMMHandler;
+    this.pZv = localMMHandler;
     localMMHandler.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(47428);
-        new com.tencent.mm.plugin.appbrand.launching.f(paramLaunchParcel, paramString, new e.a()new f.a {}, new f.a()
+        new e(paramLaunchParcel, paramString, new d.a()new e.a {}, new e.a()
         {
-          public final void bto()
+          public final void bEl()
           {
             AppMethodBeat.i(175006);
-            com.tencent.mm.sdk.platformtools.Log.d("MicroMsg.AppBrand.Precondition.AbstractLaunchPreconditionProcess", "AppBrandPreLaunchProcessWC showPrompt, username[%s] appId[%s] currentInUiEnv[%b]", new Object[] { a.3.this.mZb.username, a.3.this.mZb.appId, Boolean.valueOf(a.c(a.this)) });
-            a.this.ab(new Runnable()
+            com.tencent.mm.sdk.platformtools.Log.d("MicroMsg.AppBrand.Precondition.AbstractLaunchPreconditionProcess", "AppBrandPreLaunchProcessWC showPrompt, username[%s] appId[%s] currentInUiEnv[%b]", new Object[] { a.3.this.pZz.username, a.3.this.pZz.appId, Boolean.valueOf(a.d(a.this)) });
+            a.this.ae(new Runnable()
             {
               public final void run()
               {
@@ -111,8 +111,8 @@ public abstract class a
                 for (boolean bool1 = bool2;; bool1 = false)
                 {
                   com.tencent.mm.sdk.platformtools.Log.d("MicroMsg.AppBrandLaunchProxyUI", "revealProgressLayoutImmediately destroyed[%b]", new Object[] { Boolean.valueOf(bool1) });
-                  localAppBrandLaunchProxyUI.mQp.removeCallbacks(localAppBrandLaunchProxyUI.mQq);
-                  localAppBrandLaunchProxyUI.mQp.post(localAppBrandLaunchProxyUI.mQq);
+                  localAppBrandLaunchProxyUI.pRi.removeCallbacks(localAppBrandLaunchProxyUI.pRj);
+                  localAppBrandLaunchProxyUI.pRi.post(localAppBrandLaunchProxyUI.pRj);
                   AppMethodBeat.o(175005);
                   return;
                 }
@@ -126,32 +126,64 @@ public abstract class a
     });
   }
   
-  protected final void ab(Runnable paramRunnable)
+  protected final void ae(Runnable paramRunnable)
   {
-    if (bOd())
+    if (cax())
     {
       ((Activity)getBaseContext()).runOnUiThread(paramRunnable);
       return;
     }
-    if (this.mYT)
+    if (this.pZr)
     {
       com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.AppBrand.Precondition.AbstractLaunchPreconditionProcess", "runOnUiEnv but destroyed, clear mUiEnvQueue, call stack = %s", new Object[] { android.util.Log.getStackTraceString(new Throwable()) });
-      this.mYW.clear();
+      this.pZu.clear();
       return;
     }
-    this.mYW.offer(paramRunnable);
+    this.pZu.offer(paramRunnable);
   }
   
-  public final void bOc()
+  protected void c(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
   {
-    this.mYT = true;
-    this.mYW.clear();
+    if (paramAppBrandInitConfigWC != null) {
+      i.b(caA(), paramAppBrandInitConfigWC, paramAppBrandStatObject);
+    }
+    for (;;)
+    {
+      if (this.pZt) {
+        cay();
+      }
+      this.pZs = true;
+      if (this.pZv != null) {
+        this.pZv.removeCallbacksAndMessages(null);
+      }
+      return;
+      this.pZt = true;
+      if (this.pZw != null)
+      {
+        paramAppBrandInitConfigWC = t.pUE;
+        paramAppBrandInitConfigWC = t.BI(this.pZw.pZq);
+        if ((paramAppBrandInitConfigWC != null) && (paramAppBrandInitConfigWC.nBG != null)) {
+          paramAppBrandInitConfigWC.nBG.bFd();
+        }
+      }
+    }
+  }
+  
+  protected final boolean caB()
+  {
+    return (cax()) && (((AppBrandLaunchProxyUI)getBaseContext()).isDestroyed());
+  }
+  
+  public final void caw()
+  {
+    this.pZr = true;
+    this.pZu.clear();
     super.setBaseContext(MMApplicationContext.getContext());
   }
   
-  protected final void bOe()
+  protected final void cay()
   {
-    ab(new Runnable()
+    ae(new Runnable()
     {
       public final void run()
       {
@@ -167,76 +199,36 @@ public abstract class a
     });
   }
   
-  protected Context bOf()
+  protected Context caz()
   {
     return null;
   }
   
-  protected final boolean bOh()
-  {
-    return (bOd()) && (((AppBrandLaunchProxyUI)getBaseContext()).isDestroyed());
-  }
-  
-  protected void c(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
-  {
-    if (paramAppBrandInitConfigWC != null) {
-      i.b(bOg(), paramAppBrandInitConfigWC, paramAppBrandStatObject);
-    }
-    for (;;)
-    {
-      if (this.mYV) {
-        bOe();
-      }
-      this.mYU = true;
-      if ((this.mYX != null) && (this.mYX.getLooper() != Looper.getMainLooper())) {
-        this.mYX.postToWorker(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(47429);
-            a.d(a.this).quit();
-            AppMethodBeat.o(47429);
-          }
-        });
-      }
-      return;
-      this.mYV = true;
-      if (this.mYY != null)
-      {
-        paramAppBrandInitConfigWC = u.mTD;
-        paramAppBrandInitConfigWC = u.yi(this.mYY.mYS);
-        if ((paramAppBrandInitConfigWC != null) && (paramAppBrandInitConfigWC.kHN != null)) {
-          paramAppBrandInitConfigWC.kHN.bud();
-        }
-      }
-    }
-  }
-  
   protected boolean d(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
   {
-    if (DebuggerShell.bAx())
+    if (DebuggerShell.bLS())
     {
       com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AppBrand.Precondition.AbstractLaunchPreconditionProcess", "shouldCheckTbsBeforeAppLaunch inMonkeyEnv");
       return true;
     }
-    if ((h.bWb().afi(paramAppBrandInitConfigWC.appId)) || (paramAppBrandInitConfigWC.NA())) {}
+    if ((com.tencent.mm.plugin.appbrand.task.i.cjb().w(paramAppBrandInitConfigWC.appId, -1)) || (paramAppBrandInitConfigWC.Qv())) {}
     for (int i = 1;; i = 0)
     {
-      boolean bool = i | paramAppBrandInitConfigWC.ldK | com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.g.e(paramAppBrandInitConfigWC, paramAppBrandStatObject);
+      boolean bool = i | paramAppBrandInitConfigWC.nXY | com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.g.e(paramAppBrandInitConfigWC, paramAppBrandStatObject);
       i = bool;
-      if (!paramAppBrandInitConfigWC.ldK)
+      if (!paramAppBrandInitConfigWC.nXY)
       {
         i = bool;
-        if (paramAppBrandInitConfigWC.ldN)
+        if (paramAppBrandInitConfigWC.nYb)
         {
           i = bool;
-          if (com.tencent.mm.plugin.appbrand.f.a(paramAppBrandInitConfigWC)) {
+          if (com.tencent.mm.plugin.appbrand.i.a(paramAppBrandInitConfigWC)) {
             i = 0;
           }
         }
       }
-      if (paramAppBrandInitConfigWC.NA()) {
-        com.tencent.mm.plugin.expansions.a.cMr();
+      if (paramAppBrandInitConfigWC.Qv()) {
+        com.tencent.mm.plugin.expansions.a.dbf();
       }
       if ((i & 0x1) == 0) {
         break;
@@ -252,18 +244,18 @@ public abstract class a
   
   protected final boolean isFinishing()
   {
-    return (bOd()) && (((AppBrandLaunchProxyUI)getBaseContext()).isFinishing());
+    return (cax()) && (((AppBrandLaunchProxyUI)getBaseContext()).isFinishing());
   }
   
   public final void setBaseContext(Context paramContext)
   {
     super.setBaseContext(paramContext);
-    if (bOd())
+    if (cax())
     {
-      if (!this.mYT) {
+      if (!this.pZr) {
         break label46;
       }
-      this.mYW.clear();
+      this.pZu.clear();
     }
     for (;;)
     {
@@ -273,27 +265,31 @@ public abstract class a
         label46:
         do
         {
-          ((Runnable)this.mYW.poll()).run();
-          if (this.mYW.isEmpty()) {
+          ((Runnable)this.pZu.poll()).run();
+          if (this.pZu.isEmpty()) {
             break;
           }
-        } while (bOd());
+        } while (cax());
         com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.AppBrand.Precondition.AbstractLaunchPreconditionProcess", "fileAllPendingUiTasks but !currentInUiEnv, return");
-        this.mYW.clear();
+        this.pZu.clear();
         return;
       }
       catch (ClassCastException paramContext)
       {
-        while (!paramContext.getMessage().endsWith("cannot be cast to com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI")) {}
-        com.tencent.mm.sdk.platformtools.Log.printErrStackTrace("MicroMsg.AppBrand.Precondition.AbstractLaunchPreconditionProcess", paramContext, "mUiEnvQueue.poll().run()", new Object[0]);
-        this.mYW.clear();
+        if (paramContext.getMessage().endsWith("cannot be cast to com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI"))
+        {
+          com.tencent.mm.sdk.platformtools.Log.printErrStackTrace("MicroMsg.AppBrand.Precondition.AbstractLaunchPreconditionProcess", paramContext, "mUiEnvQueue.poll().run()", new Object[0]);
+          this.pZu.clear();
+          return;
+        }
+        throw paramContext;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.e.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,34 @@
 package com.tencent.mm.plugin.mv.ui.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.n;
-import android.support.v7.widget.RecyclerView.r;
-import android.support.v7.widget.RecyclerView.s;
-import android.support.v7.widget.ae;
 import android.util.DisplayMetrics;
 import android.view.View;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.n;
+import androidx.recyclerview.widget.RecyclerView.r;
+import androidx.recyclerview.widget.RecyclerView.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import kotlin.g.b.p;
+import com.tencent.mm.ci.a;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/mv/ui/adapter/MusicLyricLayoutManager;", "Landroid/support/v7/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "orientation", "", "reverseLayout", "", "(Landroid/content/Context;IZ)V", "alphaStartOffset", "onLayoutCompleted", "", "state", "Landroid/support/v7/widget/RecyclerView$State;", "scrollVerticallyBy", "dy", "recycler", "Landroid/support/v7/widget/RecyclerView$Recycler;", "Landroid/support/v7/widget/RecyclerView;", "smoothScrollToPosition", "recyclerView", "position", "updateChild", "plugin-mv_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/adapter/MusicLyricLayoutManager;", "Landroidx/recyclerview/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "orientation", "", "reverseLayout", "", "(Landroid/content/Context;IZ)V", "alphaStartOffset", "onLayoutCompleted", "", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "scrollVerticallyBy", "dy", "recycler", "Landroidx/recyclerview/widget/RecyclerView$Recycler;", "Landroidx/recyclerview/widget/RecyclerView;", "smoothScrollToPosition", "recyclerView", "position", "updateChild", "plugin-mv_release"})
 public final class MusicLyricLayoutManager
   extends LinearLayoutManager
 {
-  private final int ArH;
+  private final int Gfo;
   
   private MusicLyricLayoutManager(Context paramContext)
   {
     super(1, false);
-    AppMethodBeat.i(256970);
-    this.ArH = a.fromDPToPix(paramContext, 0);
-    AppMethodBeat.o(256970);
+    AppMethodBeat.i(231364);
+    this.Gfo = a.fromDPToPix(paramContext, 0);
+    AppMethodBeat.o(231364);
   }
   
-  private final void cKb()
+  private final void cWY()
   {
-    AppMethodBeat.i(256969);
+    AppMethodBeat.i(231362);
     int i = 0;
     int j = getChildCount();
     if (i < j)
@@ -41,50 +39,50 @@ public final class MusicLyricLayoutManager
       {
         i += 1;
         break;
-        p.g(localView, "getChildAt(i) ?: continue");
+        kotlin.g.b.p.j(localView, "getChildAt(i) ?: continue");
         int k = (localView.getTop() + localView.getBottom()) / 2;
         int m = getHeight() / 2;
         int n = localView.getMeasuredHeight();
-        if (n - Math.abs(k - m) > this.ArH) {
-          localView.setAlpha(Math.min(1.0F - Math.abs(k - m) / (n - this.ArH), 1.0F));
+        if (n - Math.abs(k - m) > this.Gfo) {
+          localView.setAlpha(Math.min(1.0F - Math.abs(k - m) / (n - this.Gfo), 1.0F));
         } else {
           localView.setAlpha(0.0F);
         }
       }
     }
-    AppMethodBeat.o(256969);
+    AppMethodBeat.o(231362);
   }
   
   public final void onLayoutCompleted(RecyclerView.s params)
   {
-    AppMethodBeat.i(256966);
+    AppMethodBeat.i(231357);
     super.onLayoutCompleted(params);
-    cKb();
-    AppMethodBeat.o(256966);
+    cWY();
+    AppMethodBeat.o(231357);
   }
   
   public final int scrollVerticallyBy(int paramInt, RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(256967);
+    AppMethodBeat.i(231358);
     paramInt = super.scrollVerticallyBy(paramInt, paramn, params);
-    cKb();
-    AppMethodBeat.o(256967);
+    cWY();
+    AppMethodBeat.o(231358);
     return paramInt;
   }
   
   public final void smoothScrollToPosition(RecyclerView paramRecyclerView, RecyclerView.s params, int paramInt)
   {
-    AppMethodBeat.i(256968);
-    p.h(paramRecyclerView, "recyclerView");
+    AppMethodBeat.i(231360);
+    kotlin.g.b.p.k(paramRecyclerView, "recyclerView");
     paramRecyclerView = new a(paramRecyclerView, paramRecyclerView.getContext());
-    paramRecyclerView.ct(paramInt);
+    paramRecyclerView.cV(paramInt);
     startSmoothScroll((RecyclerView.r)paramRecyclerView);
-    AppMethodBeat.o(256968);
+    AppMethodBeat.o(231360);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/mv/ui/adapter/MusicLyricLayoutManager$smoothScrollToPosition$linearSmoothScroller$1", "Landroid/support/v7/widget/LinearSmoothScroller;", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-mv_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/adapter/MusicLyricLayoutManager$smoothScrollToPosition$linearSmoothScroller$1", "Landroidx/recyclerview/widget/LinearSmoothScroller;", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-mv_release"})
   public static final class a
-    extends ae
+    extends androidx.recyclerview.widget.p
   {
     a(RecyclerView paramRecyclerView, Context paramContext)
     {
@@ -93,17 +91,17 @@ public final class MusicLyricLayoutManager
     
     public final float a(DisplayMetrics paramDisplayMetrics)
     {
-      AppMethodBeat.i(256965);
-      p.h(paramDisplayMetrics, "displayMetrics");
+      AppMethodBeat.i(228593);
+      kotlin.g.b.p.k(paramDisplayMetrics, "displayMetrics");
       float f = 600.0F / paramDisplayMetrics.densityDpi;
-      AppMethodBeat.o(256965);
+      AppMethodBeat.o(228593);
       return f;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.ui.adapter.MusicLyricLayoutManager
  * JD-Core Version:    0.7.0.1
  */

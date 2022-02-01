@@ -4,6 +4,9 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.brandservice.b.e;
+import com.tencent.mm.plugin.brandservice.d.e;
+import com.tencent.mm.plugin.brandservice.d.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.sortview.a;
 import com.tencent.mm.ui.base.sortview.a.a;
@@ -12,8 +15,8 @@ import com.tencent.mm.ui.base.sortview.a.b;
 public final class d
   extends a
 {
-  private static a.b pnV;
-  String pnW;
+  private static a.b swV;
+  String swW;
   
   public d(Object paramObject)
   {
@@ -22,16 +25,16 @@ public final class d
   
   public final void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
-    if ((this.data instanceof String)) {
-      this.pnW = ((String)this.data);
+    if ((this.bnW instanceof String)) {
+      this.swW = ((String)this.bnW);
     }
   }
   
-  public final a.b clS()
+  public final a.b czw()
   {
     AppMethodBeat.i(5680);
-    if (pnV == null) {
-      pnV = new a.b()
+    if (swV == null) {
+      swV = new a.b()
       {
         public final void a(Context paramAnonymousContext, a.a paramAnonymousa, a paramAnonymousVarArgs)
         {
@@ -56,7 +59,7 @@ public final class d
           }
           paramAnonymousContext = (d.a)paramAnonymousa;
           paramAnonymousa = (d)paramAnonymousVarArgs;
-          com.tencent.mm.plugin.brandservice.b.d.c(paramAnonymousContext.pnP, paramAnonymousa.pnW);
+          e.c(paramAnonymousContext.swP, paramAnonymousa.swW);
           AppMethodBeat.o(5678);
         }
         
@@ -64,7 +67,7 @@ public final class d
         {
           AppMethodBeat.i(5679);
           if ((paramAnonymousView != null) && (paramAnonymousa != null) && ((paramAnonymousa instanceof d.a))) {
-            ((d.a)paramAnonymousa).pnP = ((TextView)paramAnonymousView.findViewById(2131298244));
+            ((d.a)paramAnonymousa).swP = ((TextView)paramAnonymousView.findViewById(d.e.catalogTV));
           }
           AppMethodBeat.o(5679);
         }
@@ -79,19 +82,19 @@ public final class d
           AppMethodBeat.i(5677);
           View localView = paramAnonymousView;
           if (paramAnonymousView == null) {
-            localView = View.inflate(paramAnonymousContext, 2131496187, null);
+            localView = View.inflate(paramAnonymousContext, d.f.sux, null);
           }
           AppMethodBeat.o(5677);
           return localView;
         }
       };
     }
-    a.b localb = pnV;
+    a.b localb = swV;
     AppMethodBeat.o(5680);
     return localb;
   }
   
-  public final a.a clT()
+  public final a.a czx()
   {
     AppMethodBeat.i(5681);
     a locala = new a();
@@ -102,12 +105,12 @@ public final class d
   public static final class a
     implements a.a
   {
-    public TextView pnP;
+    public TextView swP;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.d
  * JD-Core Version:    0.7.0.1
  */

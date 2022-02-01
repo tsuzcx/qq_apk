@@ -12,7 +12,7 @@ public final class SpliceScheduleCommand
   extends SpliceCommand
 {
   public static final Parcelable.Creator<SpliceScheduleCommand> CREATOR;
-  public final List<b> buW;
+  public final List<b> bey;
   
   static
   {
@@ -32,14 +32,14 @@ public final class SpliceScheduleCommand
       localArrayList.add(new b(paramParcel));
       i += 1;
     }
-    this.buW = Collections.unmodifiableList(localArrayList);
+    this.bey = Collections.unmodifiableList(localArrayList);
     AppMethodBeat.o(92500);
   }
   
   private SpliceScheduleCommand(List<b> paramList)
   {
     AppMethodBeat.i(92499);
-    this.buW = Collections.unmodifiableList(paramList);
+    this.bey = Collections.unmodifiableList(paramList);
     AppMethodBeat.o(92499);
   }
   
@@ -62,24 +62,24 @@ public final class SpliceScheduleCommand
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(92502);
-    int j = this.buW.size();
+    int j = this.bey.size();
     paramParcel.writeInt(j);
     paramInt = 0;
     if (paramInt < j)
     {
-      b localb = (b)this.buW.get(paramInt);
-      paramParcel.writeLong(localb.buG);
-      if (localb.buH)
+      b localb = (b)this.bey.get(paramInt);
+      paramParcel.writeLong(localb.bei);
+      if (localb.bej)
       {
         i = 1;
         paramParcel.writeByte((byte)i);
-        if (!localb.buI) {
+        if (!localb.bek) {
           break label174;
         }
         i = 1;
         label80:
         paramParcel.writeByte((byte)i);
-        if (!localb.buJ) {
+        if (!localb.bel) {
           break label179;
         }
       }
@@ -88,14 +88,14 @@ public final class SpliceScheduleCommand
       for (int i = 1;; i = 0)
       {
         paramParcel.writeByte((byte)i);
-        int k = localb.buN.size();
+        int k = localb.bep.size();
         paramParcel.writeInt(k);
         i = 0;
         while (i < k)
         {
-          a locala = (a)localb.buN.get(i);
-          paramParcel.writeInt(locala.buT);
-          paramParcel.writeLong(locala.buX);
+          a locala = (a)localb.bep.get(i);
+          paramParcel.writeInt(locala.bev);
+          paramParcel.writeLong(locala.bez);
           i += 1;
         }
         i = 0;
@@ -103,15 +103,15 @@ public final class SpliceScheduleCommand
         i = 0;
         break label80;
       }
-      paramParcel.writeLong(localb.buX);
-      if (localb.buO) {}
+      paramParcel.writeLong(localb.bez);
+      if (localb.beq) {}
       for (i = 1;; i = 0)
       {
         paramParcel.writeByte((byte)i);
-        paramParcel.writeLong(localb.buP);
-        paramParcel.writeInt(localb.buQ);
-        paramParcel.writeInt(localb.buR);
-        paramParcel.writeInt(localb.buS);
+        paramParcel.writeLong(localb.ber);
+        paramParcel.writeInt(localb.bes);
+        paramParcel.writeInt(localb.bet);
+        paramParcel.writeInt(localb.beu);
         paramInt += 1;
         break;
       }
@@ -121,61 +121,61 @@ public final class SpliceScheduleCommand
   
   public static final class a
   {
-    public final int buT;
-    public final long buX;
+    public final int bev;
+    public final long bez;
     
     a(int paramInt, long paramLong)
     {
-      this.buT = paramInt;
-      this.buX = paramLong;
+      this.bev = paramInt;
+      this.bez = paramLong;
     }
   }
   
   public static final class b
   {
-    public final long buG;
-    public final boolean buH;
-    public final boolean buI;
-    public final boolean buJ;
-    public final List<SpliceScheduleCommand.a> buN;
-    public final boolean buO;
-    public final long buP;
-    public final int buQ;
-    public final int buR;
-    public final int buS;
-    public final long buX;
+    public final long bei;
+    public final boolean bej;
+    public final boolean bek;
+    public final boolean bel;
+    public final List<SpliceScheduleCommand.a> bep;
+    public final boolean beq;
+    public final long ber;
+    public final int bes;
+    public final int bet;
+    public final int beu;
+    public final long bez;
     
     private b(long paramLong1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, List<SpliceScheduleCommand.a> paramList, long paramLong2, boolean paramBoolean4, long paramLong3, int paramInt1, int paramInt2, int paramInt3)
     {
       AppMethodBeat.i(92496);
-      this.buG = paramLong1;
-      this.buH = paramBoolean1;
-      this.buI = paramBoolean2;
-      this.buJ = paramBoolean3;
-      this.buN = Collections.unmodifiableList(paramList);
-      this.buX = paramLong2;
-      this.buO = paramBoolean4;
-      this.buP = paramLong3;
-      this.buQ = paramInt1;
-      this.buR = paramInt2;
-      this.buS = paramInt3;
+      this.bei = paramLong1;
+      this.bej = paramBoolean1;
+      this.bek = paramBoolean2;
+      this.bel = paramBoolean3;
+      this.bep = Collections.unmodifiableList(paramList);
+      this.bez = paramLong2;
+      this.beq = paramBoolean4;
+      this.ber = paramLong3;
+      this.bes = paramInt1;
+      this.bet = paramInt2;
+      this.beu = paramInt3;
       AppMethodBeat.o(92496);
     }
     
     b(Parcel paramParcel)
     {
       AppMethodBeat.i(92497);
-      this.buG = paramParcel.readLong();
+      this.bei = paramParcel.readLong();
       if (paramParcel.readByte() == 1)
       {
         bool1 = true;
-        this.buH = bool1;
+        this.bej = bool1;
         if (paramParcel.readByte() != 1) {
           break label127;
         }
         bool1 = true;
         label48:
-        this.buI = bool1;
+        this.bek = bool1;
         if (paramParcel.readByte() != 1) {
           break label133;
         }
@@ -184,7 +184,7 @@ public final class SpliceScheduleCommand
       label133:
       for (boolean bool1 = true;; bool1 = false)
       {
-        this.buJ = bool1;
+        this.bel = bool1;
         int j = paramParcel.readInt();
         localArrayList = new ArrayList(j);
         int i = 0;
@@ -199,16 +199,16 @@ public final class SpliceScheduleCommand
         bool1 = false;
         break label48;
       }
-      this.buN = Collections.unmodifiableList(localArrayList);
-      this.buX = paramParcel.readLong();
+      this.bep = Collections.unmodifiableList(localArrayList);
+      this.bez = paramParcel.readLong();
       if (paramParcel.readByte() == 1) {}
       for (bool1 = bool2;; bool1 = false)
       {
-        this.buO = bool1;
-        this.buP = paramParcel.readLong();
-        this.buQ = paramParcel.readInt();
-        this.buR = paramParcel.readInt();
-        this.buS = paramParcel.readInt();
+        this.beq = bool1;
+        this.ber = paramParcel.readLong();
+        this.bes = paramParcel.readInt();
+        this.bet = paramParcel.readInt();
+        this.beu = paramParcel.readInt();
         AppMethodBeat.o(92497);
         return;
       }
@@ -217,7 +217,7 @@ public final class SpliceScheduleCommand
     static b z(m paramm)
     {
       AppMethodBeat.i(92498);
-      long l3 = paramm.dE();
+      long l3 = paramm.ii();
       boolean bool4;
       boolean bool1;
       boolean bool2;
@@ -263,7 +263,7 @@ public final class SpliceScheduleCommand
       for (int i = 1;; i = 0)
       {
         if (bool2) {
-          l1 = paramm.dE();
+          l1 = paramm.ii();
         }
         if (bool2) {
           break label191;
@@ -277,7 +277,7 @@ public final class SpliceScheduleCommand
           if (j >= k) {
             break;
           }
-          localArrayList.add(new SpliceScheduleCommand.a(paramm.readUnsignedByte(), paramm.dE(), (byte)0));
+          localArrayList.add(new SpliceScheduleCommand.a(paramm.readUnsignedByte(), paramm.ii(), (byte)0));
           j += 1;
         }
         bool4 = false;
@@ -295,7 +295,7 @@ public final class SpliceScheduleCommand
         if ((0x80 & l2) != 0L)
         {
           bool3 = true;
-          l2 = (l2 & 1L) << 32 | paramm.dE();
+          l2 = (l2 & 1L) << 32 | paramm.ii();
           label230:
           i = paramm.readUnsignedShort();
           j = paramm.readUnsignedByte();
@@ -320,7 +320,7 @@ public final class SpliceScheduleCommand
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.scte35.SpliceScheduleCommand
  * JD-Core Version:    0.7.0.1
  */

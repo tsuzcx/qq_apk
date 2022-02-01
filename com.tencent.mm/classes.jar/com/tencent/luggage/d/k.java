@@ -4,17 +4,17 @@ import android.os.Bundle;
 
 public abstract interface k
 {
-  public abstract boolean Lo();
+  public abstract boolean Oe();
   
-  public abstract boolean bR(boolean paramBoolean);
+  public abstract boolean cb(boolean paramBoolean);
   
-  public abstract boolean cS(String paramString);
+  public abstract boolean ds(String paramString);
   
-  public abstract boolean h(String paramString, Bundle paramBundle);
+  public abstract boolean m(String paramString, Bundle paramBundle);
   
-  public abstract boolean i(String paramString, Bundle paramBundle);
+  public abstract boolean n(String paramString, Bundle paramBundle);
   
-  public abstract boolean j(String paramString, Bundle paramBundle);
+  public abstract boolean o(String paramString, Bundle paramBundle);
   
   public abstract boolean remove(int paramInt);
 }

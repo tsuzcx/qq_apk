@@ -1,62 +1,62 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.c;
-import com.google.a.a.e;
+import com.google.b.a.b;
+import com.google.b.a.c;
+import com.google.b.a.e;
 
 public final class a$o
   extends e
 {
-  private static volatile o[] RDN;
-  public int KBb = 0;
-  public String RDO = "";
+  private static volatile o[] Zft;
+  public int RCR = 0;
+  public String Zfu = "";
   public String nickname = "";
   
   public a$o()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public static o[] hjb()
+  public static o[] ikL()
   {
-    if (RDN == null) {}
-    synchronized (c.cbn)
+    if (Zft == null) {}
+    synchronized (c.ccQ)
     {
-      if (RDN == null) {
-        RDN = new o[0];
+      if (Zft == null) {
+        Zft = new o[0];
       }
-      return RDN;
+      return Zft;
     }
   }
   
-  public final int Ig()
+  public final int JG()
   {
-    int j = super.Ig();
+    int j = super.JG();
     int i = j;
-    if (this.KBb != 0) {
-      i = j + b.bC(1, this.KBb);
+    if (this.RCR != 0) {
+      i = j + b.bN(1, this.RCR);
     }
     j = i;
     if (!this.nickname.equals("")) {
-      j = i + b.f(2, this.nickname);
+      j = i + b.g(2, this.nickname);
     }
     i = j;
-    if (!this.RDO.equals("")) {
-      i = j + b.f(3, this.RDO);
+    if (!this.Zfu.equals("")) {
+      i = j + b.g(3, this.Zfu);
     }
     return i;
   }
   
   public final void a(b paramb)
   {
-    if (this.KBb != 0) {
-      paramb.bB(1, this.KBb);
+    if (this.RCR != 0) {
+      paramb.bK(1, this.RCR);
     }
     if (!this.nickname.equals("")) {
-      paramb.e(2, this.nickname);
+      paramb.f(2, this.nickname);
     }
-    if (!this.RDO.equals("")) {
-      paramb.e(3, this.RDO);
+    if (!this.Zfu.equals("")) {
+      paramb.f(3, this.Zfu);
     }
     super.a(paramb);
   }

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/cli" android:background="@color/ad" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/cli" android:background="@color/UN_BW_0_Alpha_0_5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <LinearLayout android:orientation="vertical" android:id="@id/gt3" android:background="@drawable/yj" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
         <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/cr">
             <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/clj" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/close_cross" android:layout_centerVertical="true" />
             <TextView android:textSize="@dimen/aja" android:textColor="@color/a2x" android:id="@id/ir3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cm7" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
             <TextView android:textSize="16.0dip" android:textColor="@color/pk" android:gravity="center" android:id="@id/clh" android:background="@drawable/xp" android:layout_width="58.0dip" android:layout_height="32.0dip" android:text="@string/h6" android:layout_centerVertical="true" android:layout_alignParentEnd="true" />
         </RelativeLayout>
-        <TextView android:textSize="14.0dip" android:textColor="@color/a2x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cb" android:text="@string/cm3" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/a2x" android:id="@id/jvw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cm3" />
         <RelativeLayout android:background="@drawable/yk" android:paddingLeft="@dimen/cb" android:paddingTop="@dimen/ct" android:paddingRight="@dimen/cb" android:paddingBottom="@dimen/ct" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:layout_marginBottom="@dimen/c5">
             <com.tencent.mm.ui.widget.MMEditText android:textSize="14.0dip" android:textColor="@color/a2x" android:textColorHint="@color/uj" android:gravity="top" android:id="@id/clk" android:background="@null" android:layout_width="fill_parent" android:layout_height="104.0dip" android:hint="点击公众号右上角 [···] 选择 [复制链接]，将文章链接粘贴在此处。" android:textCursorDrawable="@drawable/ann">
                 <requestFocus />

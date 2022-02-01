@@ -5,13 +5,14 @@ import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.zr;
+import com.tencent.mm.f.a.aay;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.g;
 
 final class a$9
   implements View.OnClickListener
@@ -22,15 +23,15 @@ final class a$9
   {
     AppMethodBeat.i(73092);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/wallet_core/ui/formview/CommonHintViewConfig$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    h.c(this.rCm, this.rCm.getString(2131767592), this.rCm.getString(2131767589), this.rCm.getString(2131767591), this.rCm.getString(2131767593), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    localb.bn(paramView);
+    a.c("com/tencent/mm/wallet_core/ui/formview/CommonHintViewConfig$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    h.c(this.vhU, this.vhU.getString(a.i.wallet_card_name_illustraction_new_detail), this.vhU.getString(a.i.wallet_card_name_illustraction), this.vhU.getString(a.i.wallet_card_name_illustraction_new_chnage_name), this.vhU.getString(a.i.wallet_card_name_illustraction_new_i_know), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(73090);
-        f.p(a.9.this.rCm, "https://wx.tenpay.com/cgi-bin/mmpayweb-bin/payunregshow?operation=1", false);
-        EventCenter.instance.publish(new zr());
+        g.p(a.9.this.vhU, "https://wx.tenpay.com/cgi-bin/mmpayweb-bin/payunregshow?operation=1", false);
+        EventCenter.instance.publish(new aay());
         AppMethodBeat.o(73090);
       }
     }, new DialogInterface.OnClickListener()

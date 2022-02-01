@@ -3,8 +3,7 @@ package com.tencent.mm.plugin.fcm;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class FCMInstanceIDListenerService
@@ -13,15 +12,15 @@ public class FCMInstanceIDListenerService
   public final void onTokenRefresh()
   {
     AppMethodBeat.i(127565);
-    String str = FirebaseInstanceId.yc().getToken();
+    String str = FirebaseInstanceId.yw().getToken();
     Log.i("MicroMsg.FCM.FCMInstanceIDListenerService", "Refreshed token: ".concat(String.valueOf(str)));
-    g.aAf();
-    if (a.azo())
+    h.aHE();
+    if (com.tencent.mm.kernel.b.aGL())
     {
-      b localb = b.cXf();
+      b localb = b.dmn();
       if (localb != null)
       {
-        localb.asA(str);
+        localb.aAE(str);
         AppMethodBeat.o(127565);
         return;
       }
@@ -35,7 +34,7 @@ public class FCMInstanceIDListenerService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fcm.FCMInstanceIDListenerService
  * JD-Core Version:    0.7.0.1
  */

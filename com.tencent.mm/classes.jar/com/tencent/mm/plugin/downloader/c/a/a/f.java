@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.downloader.c.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class f
-  extends com.tencent.mm.bw.a
+public class f
+  extends com.tencent.mm.cd.a
 {
   public String desc;
-  public String pTL;
+  public String jump_url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -15,10 +15,10 @@ public final class f
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.desc != null) {
-        paramVarArgs.e(1, this.desc);
+        paramVarArgs.f(1, this.desc);
       }
-      if (this.pTL != null) {
-        paramVarArgs.e(2, this.pTL);
+      if (this.jump_url != null) {
+        paramVarArgs.f(2, this.jump_url);
       }
       AppMethodBeat.o(153047);
       return 0;
@@ -29,20 +29,20 @@ public final class f
       }
     }
     label274:
-    for (paramInt = g.a.a.b.b.a.f(1, this.desc) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.g(1, this.desc) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.pTL != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.pTL);
+      if (this.jump_url != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.jump_url);
       }
       AppMethodBeat.o(153047);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
         AppMethodBeat.o(153047);
@@ -58,11 +58,11 @@ public final class f
           AppMethodBeat.o(153047);
           return -1;
         case 1: 
-          localf.desc = locala.UbS.readString();
+          localf.desc = locala.abFh.readString();
           AppMethodBeat.o(153047);
           return 0;
         }
-        localf.pTL = locala.UbS.readString();
+        localf.jump_url = locala.abFh.readString();
         AppMethodBeat.o(153047);
         return 0;
       }

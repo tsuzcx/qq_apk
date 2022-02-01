@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dwc;
-import com.tencent.mm.protocal.protobuf.dwd;
+import com.tencent.mm.protocal.protobuf.ege;
+import com.tencent.mm.protocal.protobuf.egf;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
@@ -25,14 +25,14 @@ public final class an
   {
     AppMethodBeat.i(131145);
     d.a locala = new d.a();
-    locala.iLN = new dwc();
-    locala.iLO = new dwd();
+    locala.lBU = new ege();
+    locala.lBV = new egf();
     locala.uri = "/cgi-bin/micromsg-bin/newsetemailpwd";
     locala.funcId = 382;
-    locala.iLP = 181;
+    locala.lBW = 181;
     locala.respCmdId = 1000000181;
-    this.rr = locala.aXF();
-    ((dwc)this.rr.iLK.iLR).KQi = Util.getCutPasswordMD5(paramString);
+    this.rr = locala.bgN();
+    ((ege)d.b.b(this.rr.lBR)).RRg = Util.getCutPasswordMD5(paramString);
     Log.d("MicroMsg.NetSceneSetEmailPwd", "md5 ".concat(String.valueOf(paramString)));
     AppMethodBeat.o(131145);
   }

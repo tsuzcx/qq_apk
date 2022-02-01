@@ -1,30 +1,31 @@
 package com.tencent.mm.plugin.sns;
 
+import android.text.TextUtils;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.b;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.aj.k.b;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.ad.b;
-import com.tencent.mm.modelsns.m;
-import com.tencent.mm.modelstat.p;
-import com.tencent.mm.modelstat.p.a;
+import com.tencent.mm.modelsns.n;
+import com.tencent.mm.modelstat.o;
+import com.tencent.mm.modelstat.o.a;
 import com.tencent.mm.plugin.sns.b.d;
-import com.tencent.mm.plugin.sns.b.j;
+import com.tencent.mm.plugin.sns.b.k;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.protocal.protobuf.eco;
-import com.tencent.mm.protocal.protobuf.ecp;
+import com.tencent.mm.protocal.protobuf.emp;
+import com.tencent.mm.protocal.protobuf.emq;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ca;
 
 public final class l
-  implements j
+  implements k
 {
   public final String a(String paramString, PString paramPString)
   {
     AppMethodBeat.i(94907);
-    paramString = p.a(paramString, paramPString);
+    paramString = o.a(paramString, paramPString);
     AppMethodBeat.o(94907);
     return paramString;
   }
@@ -32,29 +33,45 @@ public final class l
   public final void a(String paramString, ad.b paramb, ca paramca)
   {
     AppMethodBeat.i(94908);
-    if (paramca.dOQ())
+    if (paramca.erk())
     {
-      paramca = k.b.HD(paramca.field_content);
-      if ((paramca != null) && (!Util.isNullOrNil(paramca.ean))) {
-        paramb.l(paramString, paramca.ean);
+      paramca = k.b.OQ(paramca.field_content);
+      if ((paramca != null) && (!Util.isNullOrNil(paramca.fUk))) {
+        paramb.k(paramString, paramca.fUk);
       }
     }
     AppMethodBeat.o(94908);
   }
   
-  public final void aO(ca paramca)
+  public final String ao(ca paramca)
+  {
+    AppMethodBeat.i(94910);
+    paramca = o.ao(paramca);
+    AppMethodBeat.o(94910);
+    return paramca;
+  }
+  
+  public final void b(String paramString, n paramn)
+  {
+    AppMethodBeat.i(94906);
+    o.b(paramString, paramn);
+    AppMethodBeat.o(94906);
+  }
+  
+  public final void bc(ca paramca)
   {
     AppMethodBeat.i(94909);
-    String str = p.ag(paramca);
-    eco localeco;
+    String str = o.ao(paramca);
+    Object localObject;
+    emp localemp;
     if (str != null)
     {
-      Object localObject = Base64.decode(str, 0);
-      localeco = new eco();
+      localObject = Base64.decode(str, 0);
+      localemp = new emp();
       try
       {
-        localeco.parseFrom((byte[])localObject);
-        localObject = localeco.NcH;
+        localemp.parseFrom((byte[])localObject);
+        localObject = localemp.Upe;
         if (localObject == null)
         {
           AppMethodBeat.o(94909);
@@ -68,37 +85,30 @@ public final class l
         return;
       }
       if (!paramca.field_talker.endsWith("@chatroom")) {
-        break label193;
+        break label265;
+      }
+      localObject = o.a.meF.value;
+      paramca = paramca.field_content;
+      if ((TextUtils.isEmpty(paramca)) || (!paramca.contains("isInteractiveCanvas"))) {
+        break label288;
       }
     }
-    label193:
-    for (paramca = p.a.jpn.value;; paramca = p.a.jpm.value)
+    label265:
+    label288:
+    for (paramca = "1";; paramca = "0")
     {
-      Log.i("MicroMsg.SnsStatExtUtil", "report adPageExposure(13235): scene(%s), statExtStr:%s(id=%s, uxinfo=%s)", new Object[] { paramca, str, localeco.NcH.NcK, localeco.NcH.KxO });
-      ((d)g.af(d.class)).a(13235, new Object[] { paramca, localeco.NcH.NcK, localeco.NcH.KxO });
+      Log.i("MicroMsg.SnsStatExtUtil", "report adPageExposure(13235): scene=" + (String)localObject + ", adCanvasType=" + paramca + ", srcSnsId=" + localemp.Upe.Uph + ", uxinfo=" + localemp.Upe.RzC + ", statExtStr=" + str);
+      ((d)h.ae(d.class)).a(13235, new Object[] { localObject, localemp.Upe.Uph, localemp.Upe.RzC, "", "", paramca });
       AppMethodBeat.o(94909);
       return;
+      localObject = o.a.meE.value;
+      break;
     }
-  }
-  
-  public final String ag(ca paramca)
-  {
-    AppMethodBeat.i(94910);
-    paramca = p.ag(paramca);
-    AppMethodBeat.o(94910);
-    return paramca;
-  }
-  
-  public final void b(String paramString, m paramm)
-  {
-    AppMethodBeat.i(94906);
-    p.b(paramString, paramm);
-    AppMethodBeat.o(94906);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.l
  * JD-Core Version:    0.7.0.1
  */

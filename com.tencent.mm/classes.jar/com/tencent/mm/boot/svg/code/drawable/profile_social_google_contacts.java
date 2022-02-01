@@ -129,7 +129,7 @@ public class profile_social_google_contacts
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.profile_social_google_contacts
  * JD-Core Version:    0.7.0.1
  */

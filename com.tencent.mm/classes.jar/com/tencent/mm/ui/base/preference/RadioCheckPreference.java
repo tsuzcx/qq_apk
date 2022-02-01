@@ -10,17 +10,19 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
 
 public class RadioCheckPreference
   extends Preference
 {
-  private int HIJ;
-  private String HIK;
-  private int HIL;
-  private TextView HMo;
-  private CheckBox OXt;
-  private int OXu;
-  private boolean oD;
+  private int OAB;
+  private String OAC;
+  private int OAD;
+  private TextView OEk;
+  private CheckBox WqD;
+  private int WqE;
+  private boolean bBh;
   
   public RadioCheckPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,43 +33,53 @@ public class RadioCheckPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142666);
-    this.oD = false;
-    this.HIJ = -1;
-    this.HIK = "";
-    this.HIL = 8;
-    this.OXu = -1;
-    setLayoutResource(2131495538);
+    this.bBh = false;
+    this.OAB = -1;
+    this.OAC = "";
+    this.OAD = 8;
+    this.WqE = -1;
+    setLayoutResource(a.h.mm_preference);
     AppMethodBeat.o(142666);
+  }
+  
+  public final void BT(boolean paramBoolean)
+  {
+    AppMethodBeat.i(142669);
+    this.bBh = paramBoolean;
+    if (this.WqD != null) {
+      this.WqD.setChecked(paramBoolean);
+    }
+    AppMethodBeat.o(142669);
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(142668);
     super.onBindView(paramView);
-    alO(8);
-    this.OXt = ((CheckBox)paramView.findViewById(2131306495));
-    this.OXt.setChecked(this.oD);
-    this.HMo = ((TextView)paramView.findViewById(2131309166));
-    paramView = this.HIK;
-    int i = this.HIJ;
-    this.HIJ = i;
-    this.HIK = paramView;
-    if (this.HMo != null)
+    auO(8);
+    this.WqD = ((CheckBox)paramView.findViewById(a.g.radiocheck));
+    this.WqD.setChecked(this.bBh);
+    this.OEk = ((TextView)paramView.findViewById(a.g.tipicon));
+    paramView = this.OAC;
+    int i = this.OAB;
+    this.OAB = i;
+    this.OAC = paramView;
+    if (this.OEk != null)
     {
       if (i > 0) {
-        this.HMo.setBackgroundResource(this.HIJ);
+        this.OEk.setBackgroundResource(this.OAB);
       }
-      if (!TextUtils.isEmpty(this.HIK)) {
-        this.HMo.setText(this.HIK);
+      if (!TextUtils.isEmpty(this.OAC)) {
+        this.OEk.setText(this.OAC);
       }
     }
-    this.HIL = this.HIL;
-    if (this.HMo != null) {
-      this.HMo.setVisibility(this.HIL);
+    this.OAD = this.OAD;
+    if (this.OEk != null) {
+      this.OEk.setVisibility(this.OAD);
     }
-    paramView = (LinearLayout.LayoutParams)this.OXt.getLayoutParams();
-    if (-1 != this.OXu) {
-      paramView.setMargins(paramView.leftMargin, paramView.topMargin, this.OXu, paramView.bottomMargin);
+    paramView = (LinearLayout.LayoutParams)this.WqD.getLayoutParams();
+    if (-1 != this.WqE) {
+      paramView.setMargins(paramView.leftMargin, paramView.topMargin, this.WqE, paramView.bottomMargin);
     }
     AppMethodBeat.o(142668);
   }
@@ -77,26 +89,16 @@ public class RadioCheckPreference
     AppMethodBeat.i(142667);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.g.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2131495630, localViewGroup);
+    localLayoutInflater.inflate(a.h.mm_preference_summary_radio_check, localViewGroup);
     AppMethodBeat.o(142667);
     return paramViewGroup;
-  }
-  
-  public final void xZ(boolean paramBoolean)
-  {
-    AppMethodBeat.i(142669);
-    this.oD = paramBoolean;
-    if (this.OXt != null) {
-      this.OXt.setChecked(paramBoolean);
-    }
-    AppMethodBeat.o(142669);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.RadioCheckPreference
  * JD-Core Version:    0.7.0.1
  */

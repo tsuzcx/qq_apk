@@ -10,14 +10,14 @@ public final class k
   public k(String paramString)
   {
     AppMethodBeat.i(40518);
-    d.j(paramString, "Must provide a valid string as verifier");
+    d.n(paramString, "Must provide a valid string as verifier");
     this.value = paramString;
     AppMethodBeat.o(40518);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     org.b.d.k
  * JD-Core Version:    0.7.0.1
  */

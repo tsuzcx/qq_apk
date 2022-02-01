@@ -1,19 +1,14 @@
 package com.tencent.mm.plugin.appbrand.task.preload;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.mn;
-import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.f.b.a.pm;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.plugin.appbrand.preload.IAppBrandBatchPreloadController;
 import com.tencent.mm.plugin.appbrand.service.z;
-import com.tencent.mm.plugin.appbrand.task.e.b;
-import com.tencent.mm.plugin.appbrand.task.g;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.appbrand.task.h.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -34,7 +29,7 @@ public class AppBrandBatchPreloadController
   private void dealPreload(c paramc, PreloadAppInfo paramPreloadAppInfo)
   {
     AppMethodBeat.i(48495);
-    switch (AppBrandBatchPreloadController.5.nQK[paramc.ordinal()])
+    switch (AppBrandBatchPreloadController.5.qSp[paramc.ordinal()])
     {
     }
     for (;;)
@@ -56,46 +51,46 @@ public class AppBrandBatchPreloadController
   private void predownloadAllPackages(PreloadAppInfo paramPreloadAppInfo)
   {
     AppMethodBeat.i(48498);
-    XIPCInvoker.a(MainProcessIPCService.dkO, new TaskParamsCallPredownload(paramPreloadAppInfo.appId, paramPreloadAppInfo.appType, paramPreloadAppInfo.path, this.mBusinessScene, false), b.class, new d() {});
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new AppBrandBatchPreloadController.TaskParamsCallPredownload(paramPreloadAppInfo.appId, paramPreloadAppInfo.appType, paramPreloadAppInfo.path, this.mBusinessScene, false), AppBrandBatchPreloadController.b.class, new f() {});
     AppMethodBeat.o(48498);
   }
   
   private void predownloadPlugins(PreloadAppInfo paramPreloadAppInfo)
   {
     AppMethodBeat.i(48497);
-    XIPCInvoker.a(MainProcessIPCService.dkO, new TaskParamsCallPredownload(paramPreloadAppInfo.appId, paramPreloadAppInfo.appType, paramPreloadAppInfo.path, this.mBusinessScene, true), b.class, new d() {});
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new AppBrandBatchPreloadController.TaskParamsCallPredownload(paramPreloadAppInfo.appId, paramPreloadAppInfo.appType, paramPreloadAppInfo.path, this.mBusinessScene, true), AppBrandBatchPreloadController.b.class, new f() {});
     AppMethodBeat.o(48497);
   }
   
   private void preloadMiniProgramEnv(final int paramInt, PRELOAD_ENV_LEVEL paramPRELOAD_ENV_LEVEL, boolean paramBoolean)
   {
     AppMethodBeat.i(48496);
-    paramPRELOAD_ENV_LEVEL = g.nPF;
+    paramPRELOAD_ENV_LEVEL = com.tencent.mm.plugin.appbrand.task.n.qRU;
     if (paramInt == 1004) {
-      paramPRELOAD_ENV_LEVEL = g.nPE;
+      paramPRELOAD_ENV_LEVEL = com.tencent.mm.plugin.appbrand.task.n.qRT;
     }
-    while ((this.mIsGameEnv) && (paramPRELOAD_ENV_LEVEL == g.nPE))
+    while ((!com.tencent.mm.plugin.appbrand.game.a.n.bOz()) && (this.mIsGameEnv) && (paramPRELOAD_ENV_LEVEL == com.tencent.mm.plugin.appbrand.task.n.qRT))
     {
-      XIPCInvoker.a(MainProcessIPCService.dkO, IPCVoid.hnE, a.class, null);
+      XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.jZu, AppBrandBatchPreloadController.a.class, null);
       AppMethodBeat.o(48496);
       return;
       if (paramInt == 1000) {
-        paramPRELOAD_ENV_LEVEL = g.nPD;
+        paramPRELOAD_ENV_LEVEL = com.tencent.mm.plugin.appbrand.task.n.qRS;
       }
     }
-    if (com.tencent.mm.plugin.appbrand.task.e.l(paramPRELOAD_ENV_LEVEL))
+    if (com.tencent.mm.plugin.appbrand.task.h.k(paramPRELOAD_ENV_LEVEL))
     {
-      if (paramPRELOAD_ENV_LEVEL == g.nPE) {}
+      if (paramPRELOAD_ENV_LEVEL == com.tencent.mm.plugin.appbrand.task.n.qRT) {}
       for (boolean bool = true;; bool = false)
       {
-        paramInt = e.iF(bool);
-        h.CyF.dN(paramInt, z.nMJ.nMT);
-        com.tencent.mm.plugin.appbrand.task.e.a(paramPRELOAD_ENV_LEVEL, new e.b()
+        paramInt = e.jB(bool);
+        com.tencent.mm.plugin.report.service.h.IzE.el(paramInt, z.qPb.qPo);
+        com.tencent.mm.plugin.appbrand.task.h.a(paramPRELOAD_ENV_LEVEL, new h.b()
         {
-          public final void onReady()
+          public final void NR()
           {
             AppMethodBeat.i(48483);
-            h.CyF.dN(paramInt, z.nMJ.nMU);
+            com.tencent.mm.plugin.report.service.h.IzE.el(paramInt, z.qPb.qPp);
             Log.i("MicroMsg.Predownload.AppBrandBatchPreloadController", "preloadMiniProgramEnv success");
             AppMethodBeat.o(48483);
           }
@@ -104,7 +99,7 @@ public class AppBrandBatchPreloadController
         return;
       }
     }
-    if (com.tencent.mm.plugin.appbrand.task.e.k(paramPRELOAD_ENV_LEVEL))
+    if (com.tencent.mm.plugin.appbrand.task.h.j(paramPRELOAD_ENV_LEVEL))
     {
       Log.i("MicroMsg.Predownload.AppBrandBatchPreloadController", "preloadMiniProgramEnv alreadyExist");
       AppMethodBeat.o(48496);
@@ -142,8 +137,8 @@ public class AppBrandBatchPreloadController
           AppMethodBeat.o(48494);
           return "fail:preloadList is empty";
         }
-        b.bWE();
-        localObject1 = b.ew(this.mBusinessScene, k);
+        b.cjj();
+        localObject1 = b.eV(this.mBusinessScene, k);
         if (((localObject1 == null) || (((Map)localObject1).size() <= 0)) && (this.mBusinessScene != 1))
         {
           Log.e("MicroMsg.Predownload.AppBrandBatchPreloadController", "predictRate null businessScene:%d,innerScene:%d", new Object[] { Integer.valueOf(this.mBusinessScene), Integer.valueOf(k) });
@@ -172,15 +167,15 @@ public class AppBrandBatchPreloadController
             localPreloadAppInfo.appId = ((JSONObject)localObject2).optString("appId");
             localPreloadAppInfo.appType = ((JSONObject)localObject2).optInt("appType");
             localPreloadAppInfo.path = ((JSONObject)localObject2).optString("path");
-            localObject2 = new mn();
-            ((mn)localObject2).fcC = j;
-            ((mn)localObject2).fcD = this.mBusinessScene;
-            ((mn)localObject2).fcE = k;
-            ((mn)localObject2).eJx = ((mn)localObject2).x("AppId", localPreloadAppInfo.appId, true);
-            ((mn)localObject2).eYW = localPreloadAppInfo.appType;
-            ((mn)localObject2).fcF = ((mn)localObject2).x("openRate", String.valueOf(localPreloadAppInfo.openRate), true);
-            ((mn)localObject2).fbm = ((mn)localObject2).x("path", localPreloadAppInfo.path, true);
-            ((mn)localObject2).bfK();
+            localObject2 = new pm();
+            ((pm)localObject2).hfw = j;
+            ((pm)localObject2).hfx = this.mBusinessScene;
+            ((pm)localObject2).hfy = k;
+            ((pm)localObject2).gmF = ((pm)localObject2).z("AppId", localPreloadAppInfo.appId, true);
+            ((pm)localObject2).gYN = localPreloadAppInfo.appType;
+            ((pm)localObject2).hfz = ((pm)localObject2).z("openRate", String.valueOf(localPreloadAppInfo.openRate), true);
+            ((pm)localObject2).hee = ((pm)localObject2).z("path", localPreloadAppInfo.path, true);
+            ((pm)localObject2).bpa();
             if (localPreloadAppInfo.openRate < f3)
             {
               Log.i("MicroMsg.Predownload.AppBrandBatchPreloadController", "preloadAppInfo.openRate:%f < mLowLevelRate:%f", new Object[] { Float.valueOf(localPreloadAppInfo.openRate), Float.valueOf(f3) });
@@ -189,16 +184,16 @@ public class AppBrandBatchPreloadController
           }
           else
           {
-            f1 = ((Float)((Map)localObject1).get(Integer.valueOf(c.nQS.ordinal()))).floatValue();
-            f2 = ((Float)((Map)localObject1).get(Integer.valueOf(c.nQT.ordinal()))).floatValue();
+            f1 = ((Float)((Map)localObject1).get(Integer.valueOf(c.qSx.ordinal()))).floatValue();
+            f2 = ((Float)((Map)localObject1).get(Integer.valueOf(c.qSy.ordinal()))).floatValue();
             continue;
           }
         }
         else
         {
-          f3 = ((Float)((Map)localObject1).get(Integer.valueOf(c.nQR.ordinal()))).floatValue();
-          f1 = ((Float)((Map)localObject1).get(Integer.valueOf(c.nQS.ordinal()))).floatValue();
-          f2 = ((Float)((Map)localObject1).get(Integer.valueOf(c.nQT.ordinal()))).floatValue();
+          f3 = ((Float)((Map)localObject1).get(Integer.valueOf(c.qSw.ordinal()))).floatValue();
+          f1 = ((Float)((Map)localObject1).get(Integer.valueOf(c.qSx.ordinal()))).floatValue();
+          f2 = ((Float)((Map)localObject1).get(Integer.valueOf(c.qSy.ordinal()))).floatValue();
           continue;
         }
         ((ArrayList)localObject1).add(localPreloadAppInfo);
@@ -218,7 +213,7 @@ public class AppBrandBatchPreloadController
         if (paramJSONObject.openRate < f2) {
           break label800;
         }
-        dealPreload(c.nQT, paramJSONObject);
+        dealPreload(c.qSy, paramJSONObject);
       }
       for (;;)
       {
@@ -226,92 +221,19 @@ public class AppBrandBatchPreloadController
         return "ok";
         label800:
         if (paramJSONObject.openRate >= f1) {
-          dealPreload(c.nQS, paramJSONObject);
+          dealPreload(c.qSx, paramJSONObject);
         } else {
-          dealPreload(c.nQR, paramJSONObject);
+          dealPreload(c.qSw, paramJSONObject);
         }
       }
       label831:
       i += 1;
     }
   }
-  
-  public static class TaskParamsCallPredownload
-    implements Parcelable
-  {
-    public static final Parcelable.Creator<TaskParamsCallPredownload> CREATOR;
-    String appId;
-    int appType;
-    boolean nQN;
-    String path;
-    int scene;
-    
-    static
-    {
-      AppMethodBeat.i(48493);
-      CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(48493);
-    }
-    
-    protected TaskParamsCallPredownload(Parcel paramParcel)
-    {
-      AppMethodBeat.i(48492);
-      this.appId = paramParcel.readString();
-      this.appType = paramParcel.readInt();
-      this.path = paramParcel.readString();
-      this.scene = paramParcel.readInt();
-      if (paramParcel.readInt() == 1) {}
-      for (;;)
-      {
-        this.nQN = bool;
-        AppMethodBeat.o(48492);
-        return;
-        bool = false;
-      }
-    }
-    
-    public TaskParamsCallPredownload(String paramString1, int paramInt1, String paramString2, int paramInt2, boolean paramBoolean)
-    {
-      this.appId = paramString1;
-      this.appType = paramInt1;
-      this.path = paramString2;
-      this.scene = paramInt2;
-      this.nQN = paramBoolean;
-    }
-    
-    public int describeContents()
-    {
-      return 0;
-    }
-    
-    public void writeToParcel(Parcel paramParcel, int paramInt)
-    {
-      AppMethodBeat.i(48491);
-      paramParcel.writeString(this.appId);
-      paramParcel.writeInt(this.appType);
-      paramParcel.writeString(this.path);
-      paramParcel.writeInt(this.scene);
-      if (this.nQN) {}
-      for (paramInt = 1;; paramInt = 0)
-      {
-        paramParcel.writeInt(paramInt);
-        AppMethodBeat.o(48491);
-        return;
-      }
-    }
-  }
-  
-  static class a
-    implements com.tencent.mm.ipcinvoker.b<IPCVoid, IPCVoid>
-  {}
-  
-  static class b
-    implements com.tencent.mm.ipcinvoker.b<AppBrandBatchPreloadController.TaskParamsCallPredownload, IPCVoid>
-  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.preload.AppBrandBatchPreloadController
  * JD-Core Version:    0.7.0.1
  */

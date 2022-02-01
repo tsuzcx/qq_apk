@@ -1,35 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:id="@id/cz_" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/ei4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:elevation="@dimen/a_x" />
-    <ProgressBar android:layout_gravity="center" android:id="@id/ei3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:elevation="@dimen/a_y" style="@style/a62" />
-    <TextView android:textSize="24.0dip" android:textColor="@color/ag2" android:gravity="center" android:id="@id/fuw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/egq" android:layout_centerInParent="true" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb" android:elevation="@dimen/a_y" />
-    <RelativeLayout android:id="@id/cyx" android:layout_width="fill_parent" android:layout_height="fill_parent" android:elevation="@dimen/a_w">
+    <ImageView android:id="@id/ei4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <RelativeLayout android:id="@id/jyn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:elevation="@dimen/a_w">
         <include android:id="@id/ek6" layout="@layout/b1b" />
         <include layout="@layout/b1r" />
-        <include android:id="@id/cyi" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" layout="@layout/afl" />
+        <include android:visibility="gone" layout="@layout/ceo" />
+        <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/cb" android:layout_marginBottom="@dimen/c5" android:layout_alignParentBottom="true" layout="@layout/cl9" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/jz1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:elevation="@dimen/a_w">
         <FrameLayout android:id="@id/cxb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="@dimen/cb" android:layout_below="@id/emn" />
+        <include android:id="@id/jy3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cf5" />
+        <include android:id="@id/jy5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cf7" />
+        <include android:id="@id/cyi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" layout="@layout/afl" />
         <include layout="@layout/b1i" />
-        <include android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignTop="@id/ek6" android:layout_alignParentEnd="true" layout="@layout/afn" />
-        <include android:id="@id/cyo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignBottom="@id/ek6" layout="@layout/afm" />
     </RelativeLayout>
     <RelativeLayout android:id="@id/cz9" android:layout_width="fill_parent" android:layout_height="fill_parent" android:elevation="@dimen/a_y">
-        <include android:id="@id/cyr" android:visibility="gone" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="40.0dip" android:layout_alignParentTop="true" android:layout_marginEnd="@dimen/cb" android:layout_toStartOf="@id/cvz" layout="@layout/afo" />
-        <include android:id="@id/ene" android:visibility="gone" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="40.0dip" android:layout_alignParentTop="true" android:layout_marginEnd="@dimen/cb" android:layout_alignParentEnd="true" layout="@layout/afr" />
+        <include android:id="@id/kds" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_alignParentTop="true" android:layout_marginEnd="@dimen/cb" android:layout_toStartOf="@id/cyr" layout="@layout/cim" />
+        <include android:id="@id/cyr" android:visibility="gone" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/co" android:layout_alignParentTop="true" android:layout_marginEnd="@dimen/cb" android:layout_toStartOf="@id/cvz" layout="@layout/afo" />
+        <include android:id="@id/ene" android:visibility="gone" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/co" android:layout_alignParentTop="true" android:layout_marginEnd="@dimen/cb" android:layout_alignParentEnd="true" layout="@layout/afr" />
         <include android:visibility="gone" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginTop="@dimen/c5" android:layout_below="@id/ene" android:layout_marginEnd="@dimen/cb" android:layout_alignParentEnd="true" layout="@layout/af0" />
-        <include android:id="@id/cvz" android:visibility="gone" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="40.0dip" android:layout_alignParentTop="true" android:layout_marginEnd="@dimen/cb" android:layout_toStartOf="@id/ene" layout="@layout/aez" />
-        <include android:id="@id/emn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:layout_marginStart="@dimen/cb" android:layout_alignParentStart="true" layout="@layout/afk" />
+        <include android:id="@id/cvz" android:visibility="gone" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/co" android:layout_alignParentTop="true" android:layout_marginEnd="@dimen/cb" android:layout_toStartOf="@id/ene" layout="@layout/aez" />
+        <include android:id="@id/emn" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/co" android:layout_marginStart="@dimen/cb" android:layout_alignParentStart="true" layout="@layout/afk" />
         <include android:id="@id/egr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:layout_below="@id/emn" android:layout_marginStart="@dimen/cb" layout="@layout/adh" />
-        <include android:id="@id/cu8" android:visibility="gone" android:layout_width="@dimen/cs" android:layout_height="@dimen/bu" android:layout_below="@id/egr" layout="@layout/aed" />
+        <include android:visibility="gone" layout="@layout/ckr" />
+        <include android:id="@id/cu8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-14.0dip" android:layout_below="@id/egr" android:layout_marginStart="-8.0dip" layout="@layout/aed" />
+        <com.tencent.mm.plugin.finder.live.view.FinderLiveShadeView android:id="@id/kdk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     </RelativeLayout>
     <RelativeLayout android:id="@id/cyw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:elevation="@dimen/a_y">
-        <include android:id="@id/cyv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ct" android:layout_alignParentBottom="true" android:layout_marginStart="144.0dip" android:layout_alignParentEnd="true" layout="@layout/afq" />
-        <include android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="-16.0dip" android:layout_above="@id/cyv" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/bu" android:layout_alignParentEnd="true" layout="@layout/ag0" />
-        <include android:id="@id/cz7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip" android:layout_alignParentBottom="true" android:layout_marginStart="@dimen/cb" layout="@layout/afz" />
+        <FrameLayout android:id="@id/kyi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <include android:layout_gravity="end|bottom|center" android:id="@id/cyv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ct" android:layout_marginStart="144.0dip" layout="@layout/afq" />
+            <include android:layout_gravity="start|bottom|center" android:id="@id/cz7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip" android:layout_marginStart="@dimen/cb" layout="@layout/afz" />
+        </FrameLayout>
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ar8" android:layout_above="@id/kyi" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/aqu" android:layout_alignParentEnd="true" layout="@layout/cl4" />
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="@dimen/ar8" android:layout_above="@id/kyi" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb" android:layout_alignParentEnd="true" layout="@layout/cnz" />
         <include layout="@layout/b11" />
-        <include android:id="@id/cps" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/cyv" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb" android:layout_alignParentStart="true" layout="@layout/adg" />
+        <include android:id="@id/cps" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cb" android:layout_above="@id/kos" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/aqu" android:layout_alignParentStart="true" layout="@layout/adg" />
     </RelativeLayout>
     <RelativeLayout android:id="@id/cz0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:elevation="@dimen/a_z">
+        <RelativeLayout android:id="@id/jx4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/jy2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         <include android:id="@id/ctw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" layout="@layout/afv" />
         <include android:visibility="gone" layout="@layout/ads" />
         <com.tencent.mm.plugin.finder.live.view.FinderLiveGiftSendBtn android:id="@id/cr2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="86.0dip" android:layout_alignParentBottom="true" android:layout_marginEnd="16.0dip" android:layout_alignParentEnd="true" />
@@ -38,13 +48,17 @@
         <include android:id="@id/cq0" android:visibility="gone" layout="@layout/adl" />
         <include android:visibility="gone" layout="@layout/adr" />
         <include android:id="@id/cnz" android:visibility="gone" layout="@layout/ad4" />
-        <include android:visibility="gone" layout="@layout/aes" />
         <include android:visibility="gone" layout="@layout/afw" />
         <include android:id="@id/ehp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/ady" />
+        <include android:id="@id/jwv" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cev" />
+        <include android:id="@id/kcp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cig" />
+        <include android:visibility="gone" layout="@layout/cih" />
+        <include android:visibility="gone" layout="@layout/cny" />
+        <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cl1" />
     </RelativeLayout>
     <RelativeLayout android:id="@id/cyy" android:layout_width="fill_parent" android:layout_height="fill_parent" android:elevation="@dimen/aa1">
         <include android:id="@id/cyz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/adk" />
-        <include layout="@layout/afp" />
+        <include android:visibility="gone" layout="@layout/afp" />
     </RelativeLayout>
     <include android:id="@id/cr8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/bx" android:layout_alignParentTop="true" layout="@layout/adx" />
     <FrameLayout android:id="@id/e32" android:background="@color/ve" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.0" />

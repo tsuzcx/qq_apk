@@ -5,15 +5,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.kidswatch.b.a;
+import com.tencent.mm.plugin.kidswatch.b.b;
+import com.tencent.mm.plugin.kidswatch.b.e;
+import com.tencent.mm.plugin.kidswatch.b.f;
+import com.tencent.mm.plugin.kidswatch.b.h;
 import com.tencent.mm.plugin.kidswatch.ui.login.KidsWatchHeadComponent;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
@@ -24,33 +29,33 @@ import kotlin.l;
 import kotlin.x;
 
 @com.tencent.mm.ui.base.a(35)
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegIntroUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "loginUrl", "", "finish", "", "getForceOrientation", "", "getLayoutId", "initView", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "plugin-kidswatch_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegIntroUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "loginUrl", "", "finish", "", "getForceOrientation", "", "getLayoutId", "initView", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "plugin-kidswatch_release"})
 public final class KidsWatchRegIntroUI
   extends MMActivity
 {
-  public static final a yBy;
+  public static final a EcO;
   private HashMap _$_findViewCache;
-  private String dZW;
+  private String fTQ;
   
   static
   {
-    AppMethodBeat.i(256332);
-    yBy = new a((byte)0);
-    AppMethodBeat.o(256332);
+    AppMethodBeat.i(252163);
+    EcO = new a((byte)0);
+    AppMethodBeat.o(252163);
   }
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(256334);
+    AppMethodBeat.i(252165);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(256334);
+    AppMethodBeat.o(252165);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(256333);
+    AppMethodBeat.i(252164);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -61,16 +66,16 @@ public final class KidsWatchRegIntroUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(256333);
+    AppMethodBeat.o(252164);
     return localView1;
   }
   
   public final void finish()
   {
-    AppMethodBeat.i(256330);
+    AppMethodBeat.i(252161);
     super.finish();
-    overridePendingTransition(2130771986, 2130772130);
-    AppMethodBeat.o(256330);
+    overridePendingTransition(b.a.anim_not_change, b.a.push_down_out);
+    AppMethodBeat.o(252161);
   }
   
   public final int getForceOrientation()
@@ -80,47 +85,47 @@ public final class KidsWatchRegIntroUI
   
   public final int getLayoutId()
   {
-    return 2131495137;
+    return b.f.Ebn;
   }
   
   public final void initView()
   {
-    AppMethodBeat.i(256331);
+    AppMethodBeat.i(252162);
     setMMTitle("");
-    Object localObject = (KidsWatchHeadComponent)_$_findCachedViewById(2131302263);
-    String str = getString(2131762070);
-    p.g(str, "getString(R.string.kids_…ogin_enter_loading_title)");
+    Object localObject = (KidsWatchHeadComponent)_$_findCachedViewById(b.e.EaG);
+    String str = getString(b.h.Eby);
+    p.j(str, "getString(R.string.kids_…ogin_enter_loading_title)");
     ((KidsWatchHeadComponent)localObject).setTitle(str);
-    ((KidsWatchHeadComponent)_$_findCachedViewById(2131302263)).setCloseBtnCallBack((kotlin.g.a.a)new b(this));
-    this.dZW = getIntent().getStringExtra("intent.key.login.url");
-    ((Button)_$_findCachedViewById(2131299228)).setOnClickListener((View.OnClickListener)new c(this));
-    ((Button)_$_findCachedViewById(2131297159)).setOnClickListener((View.OnClickListener)new d(this));
-    localObject = com.tencent.mm.plugin.kidswatch.b.a.yBL;
+    ((KidsWatchHeadComponent)_$_findCachedViewById(b.e.EaG)).setCloseBtnCallBack((kotlin.g.a.a)new b(this));
+    this.fTQ = getIntent().getStringExtra("intent.key.login.url");
+    ((Button)_$_findCachedViewById(b.e.EaB)).setOnClickListener((View.OnClickListener)new c(this));
+    ((Button)_$_findCachedViewById(b.e.Eau)).setOnClickListener((View.OnClickListener)new d(this));
+    localObject = com.tencent.mm.plugin.kidswatch.b.a.Edb;
     localObject = getContext();
-    p.g(localObject, "context");
-    com.tencent.mm.plugin.kidswatch.b.a.a((Context)localObject, (LinearLayout)_$_findCachedViewById(2131298013), (LinearLayout)_$_findCachedViewById(2131297654));
-    AppMethodBeat.o(256331);
+    p.j(localObject, "context");
+    com.tencent.mm.plugin.kidswatch.b.a.a((Context)localObject, (LinearLayout)_$_findCachedViewById(b.e.Eax), (LinearLayout)_$_findCachedViewById(b.e.Eav));
+    AppMethodBeat.o(252162);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(256329);
+    AppMethodBeat.i(252160);
     super.onCreate(paramBundle);
     paramBundle = getSupportActionBar();
     if (paramBundle == null) {
-      p.hyc();
+      p.iCn();
     }
     paramBundle.hide();
     setSelfNavigationBarVisible(8);
     paramBundle = getContext();
-    p.g(paramBundle, "context");
-    setActionbarColor(paramBundle.getResources().getColor(2131099846));
+    p.j(paramBundle, "context");
+    setActionbarColor(paramBundle.getResources().getColor(b.b.Eap));
     paramBundle = getContext();
-    p.g(paramBundle, "context");
-    setNavigationbarColor(paramBundle.getResources().getColor(2131099846));
+    p.j(paramBundle, "context");
+    setNavigationbarColor(paramBundle.getResources().getColor(b.b.Eap));
     initView();
-    overridePendingTransition(2130772132, 2130771986);
-    AppMethodBeat.o(256329);
+    overridePendingTransition(b.a.push_up_in, b.a.anim_not_change);
+    AppMethodBeat.o(252160);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -129,10 +134,10 @@ public final class KidsWatchRegIntroUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegIntroUI$Companion;", "", "()V", "TAG", "", "plugin-kidswatch_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegIntroUI$Companion;", "", "()V", "TAG", "", "plugin-kidswatch_release"})
   public static final class a {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class b
     extends q
     implements kotlin.g.a.a<x>
@@ -143,7 +148,7 @@ public final class KidsWatchRegIntroUI
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
@@ -151,24 +156,24 @@ public final class KidsWatchRegIntroUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(256327);
+      AppMethodBeat.i(251659);
       Object localObject = new b();
-      ((b)localObject).bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegIntroUI$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+      ((b)localObject).bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegIntroUI$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
       Log.i("MicroMsg.KidsWatchRegIntroUI", "continue reg button clicked");
-      localObject = new Intent((Context)this.yBz, KidsWatchRegGetInfoUI.class);
-      ((Intent)localObject).putExtra("intent.key.login.url", KidsWatchRegIntroUI.a(this.yBz));
-      paramView = this.yBz;
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegIntroUI$initView$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramView, "com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegIntroUI$initView$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      localObject = new Intent((Context)this.EcP, KidsWatchRegGetInfoUI.class);
+      ((Intent)localObject).putExtra("intent.key.login.url", KidsWatchRegIntroUI.a(this.EcP));
+      paramView = this.EcP;
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegIntroUI$initView$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramView, "com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegIntroUI$initView$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegIntroUI$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(256327);
+      AppMethodBeat.o(251659);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class d
     implements View.OnClickListener
   {
@@ -176,19 +181,19 @@ public final class KidsWatchRegIntroUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(256328);
+      AppMethodBeat.i(251604);
       b localb = new b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegIntroUI$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      this.yBz.finish();
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegIntroUI$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      this.EcP.finish();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegIntroUI$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(256328);
+      AppMethodBeat.o(251604);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.kidswatch.ui.reg.KidsWatchRegIntroUI
  * JD-Core Version:    0.7.0.1
  */

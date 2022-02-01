@@ -27,7 +27,7 @@ public final class l
     this.db = paramISQLiteDatabase;
   }
   
-  public final List<k> ajm(String paramString)
+  public final List<k> aqZ(String paramString)
   {
     AppMethodBeat.i(112785);
     ArrayList localArrayList = new ArrayList();
@@ -66,7 +66,7 @@ public final class l
     }
   }
   
-  public final k ajn(String paramString)
+  public final k ara(String paramString)
   {
     AppMethodBeat.i(112786);
     localCursor = this.db.rawQuery("select * from CardQrCodeDataInfo where card_id =? AND status=0  limit 1", new String[] { paramString });
@@ -126,7 +126,7 @@ public final class l
     }
   }
   
-  public final k ajo(String paramString)
+  public final k arb(String paramString)
   {
     AppMethodBeat.i(112787);
     localCursor = this.db.rawQuery("select * from CardQrCodeDataInfo where card_id =? AND status=1  limit 1", new String[] { paramString });
@@ -186,7 +186,7 @@ public final class l
     }
   }
   
-  public final boolean fr(String paramString1, String paramString2)
+  public final boolean fF(String paramString1, String paramString2)
   {
     AppMethodBeat.i(112788);
     k localk = new k();
@@ -204,7 +204,7 @@ public final class l
     }
   }
   
-  public final boolean gC(String paramString)
+  public final boolean ho(String paramString)
   {
     AppMethodBeat.i(112789);
     k localk = new k();

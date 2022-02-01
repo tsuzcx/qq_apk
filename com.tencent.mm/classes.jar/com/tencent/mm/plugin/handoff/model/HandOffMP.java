@@ -2,22 +2,22 @@ package com.tencent.mm.plugin.handoff.model;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ball.model.BallInfo;
-import com.tencent.mm.protocal.protobuf.cru;
+import com.tencent.mm.protocal.protobuf.dar;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.n.n;
 import kotlin.o;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "icon", "", "title", "appID", "appEntryPage", "appUserName", "handOffType", "", "from", "to", "key", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "()V", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getAppEntryPage", "()Ljava/lang/String;", "setAppEntryPage", "(Ljava/lang/String;)V", "getAppID", "setAppID", "getAppUserName", "setAppUserName", "getIcon", "setIcon", "getTitle", "setTitle", "body", "copy", "describeContents", "doCreateBallInfo", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "doCreateMultiTaskInfo", "Lkotlin/Pair;", "Lcom/tencent/mm/protocal/protobuf/MultiTaskShowData;", "", "getDataType", "toString", "update", "", "newHandOff", "writeToParcel", "dest", "flags", "Companion", "api-handoff_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "icon", "", "title", "appID", "appEntryPage", "appUserName", "handOffType", "", "from", "to", "key", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "()V", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getAppEntryPage", "()Ljava/lang/String;", "setAppEntryPage", "(Ljava/lang/String;)V", "getAppID", "setAppID", "getAppUserName", "setAppUserName", "getIcon", "setIcon", "getTitle", "setTitle", "body", "copy", "describeContents", "doCreateBallInfo", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "doCreateMultiTaskInfo", "Lkotlin/Pair;", "Lcom/tencent/mm/protocal/protobuf/MultiTaskShowData;", "", "getDataType", "toString", "update", "", "newHandOff", "writeToParcel", "dest", "flags", "Companion", "api-handoff_release"})
 @Keep
 public class HandOffMP
   extends HandOff
 {
   public static final Parcelable.Creator<HandOffMP> CREATOR;
-  public static final HandOffMP.a Companion;
+  public static final a Companion;
   private String appEntryPage;
   private String appID;
   private String appUserName;
@@ -27,7 +27,7 @@ public class HandOffMP
   static
   {
     AppMethodBeat.i(121729);
-    Companion = new HandOffMP.a((byte)0);
+    Companion = new a((byte)0);
     CREATOR = (Parcelable.Creator)new b();
     AppMethodBeat.o(121729);
   }
@@ -43,27 +43,27 @@ public class HandOffMP
     AppMethodBeat.i(121728);
     String str = paramParcel.readString();
     if (str == null) {
-      p.hyc();
+      p.iCn();
     }
     this.icon = str;
     str = paramParcel.readString();
     if (str == null) {
-      p.hyc();
+      p.iCn();
     }
     this.title = str;
     str = paramParcel.readString();
     if (str == null) {
-      p.hyc();
+      p.iCn();
     }
     this.appID = str;
     str = paramParcel.readString();
     if (str == null) {
-      p.hyc();
+      p.iCn();
     }
     this.appEntryPage = str;
     paramParcel = paramParcel.readString();
     if (paramParcel == null) {
-      p.hyc();
+      p.iCn();
     }
     this.appUserName = paramParcel;
     AppMethodBeat.o(121728);
@@ -106,7 +106,7 @@ public class HandOffMP
   protected String body()
   {
     AppMethodBeat.i(121722);
-    String str = n.buv("\n        <icon>" + a.du(this.icon) + "</icon>\n        <title>" + a.du(this.title) + "</title>\n        <appid>" + a.du(this.appID) + "</appid>\n        <appentrypage>" + a.du(this.appEntryPage) + "</appentrypage>\n        <appusername>" + a.du(this.appUserName) + "</appusername>\n    ");
+    String str = n.bHx("\n        <icon>" + a.dy(this.icon) + "</icon>\n        <title>" + a.dy(this.title) + "</title>\n        <appid>" + a.dy(this.appID) + "</appid>\n        <appentrypage>" + a.dy(this.appEntryPage) + "</appentrypage>\n        <appusername>" + a.dy(this.appUserName) + "</appusername>\n    ");
     AppMethodBeat.o(121722);
     return str;
   }
@@ -131,7 +131,7 @@ public class HandOffMP
     return null;
   }
   
-  protected o<cru, byte[]> doCreateMultiTaskInfo()
+  protected o<dar, byte[]> doCreateMultiTaskInfo()
   {
     return null;
   }
@@ -168,42 +168,42 @@ public class HandOffMP
   
   public final void setAppEntryPage(String paramString)
   {
-    AppMethodBeat.i(238057);
-    p.h(paramString, "<set-?>");
+    AppMethodBeat.i(192858);
+    p.k(paramString, "<set-?>");
     this.appEntryPage = paramString;
-    AppMethodBeat.o(238057);
+    AppMethodBeat.o(192858);
   }
   
   public final void setAppID(String paramString)
   {
-    AppMethodBeat.i(238056);
-    p.h(paramString, "<set-?>");
+    AppMethodBeat.i(192852);
+    p.k(paramString, "<set-?>");
     this.appID = paramString;
-    AppMethodBeat.o(238056);
+    AppMethodBeat.o(192852);
   }
   
   public final void setAppUserName(String paramString)
   {
-    AppMethodBeat.i(238058);
-    p.h(paramString, "<set-?>");
+    AppMethodBeat.i(192865);
+    p.k(paramString, "<set-?>");
     this.appUserName = paramString;
-    AppMethodBeat.o(238058);
+    AppMethodBeat.o(192865);
   }
   
   public final void setIcon(String paramString)
   {
-    AppMethodBeat.i(238054);
-    p.h(paramString, "<set-?>");
+    AppMethodBeat.i(192838);
+    p.k(paramString, "<set-?>");
     this.icon = paramString;
-    AppMethodBeat.o(238054);
+    AppMethodBeat.o(192838);
   }
   
   public final void setTitle(String paramString)
   {
-    AppMethodBeat.i(238055);
-    p.h(paramString, "<set-?>");
+    AppMethodBeat.i(192845);
+    p.k(paramString, "<set-?>");
     this.title = paramString;
-    AppMethodBeat.o(238055);
+    AppMethodBeat.o(192845);
   }
   
   public String toString()
@@ -217,7 +217,7 @@ public class HandOffMP
   public void update(HandOff paramHandOff)
   {
     AppMethodBeat.i(121721);
-    p.h(paramHandOff, "newHandOff");
+    p.k(paramHandOff, "newHandOff");
     super.update(paramHandOff);
     if ((paramHandOff instanceof HandOffMP))
     {
@@ -233,7 +233,7 @@ public class HandOffMP
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(121723);
-    p.h(paramParcel, "dest");
+    p.k(paramParcel, "dest");
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeString(this.icon);
     paramParcel.writeString(this.title);
@@ -243,14 +243,17 @@ public class HandOffMP
     AppMethodBeat.o(121723);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/handoff/model/HandOffMP$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "api-handoff_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/model/HandOffMP$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "api-handoff_release"})
+  public static final class a {}
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/handoff/model/HandOffMP$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "api-handoff_release"})
   public static final class b
     implements Parcelable.Creator<HandOffMP>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.handoff.model.HandOffMP
  * JD-Core Version:    0.7.0.1
  */

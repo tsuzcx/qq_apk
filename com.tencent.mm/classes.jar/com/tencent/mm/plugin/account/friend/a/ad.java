@@ -1,28 +1,24 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.p;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.f.c.ax;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.platformtools.f;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.aeq;
-import com.tencent.mm.protocal.protobuf.alg;
-import com.tencent.mm.protocal.protobuf.bqd;
-import com.tencent.mm.protocal.protobuf.bqe;
-import com.tencent.mm.protocal.protobuf.cko;
-import com.tencent.mm.protocal.protobuf.ckp;
-import com.tencent.mm.protocal.protobuf.cpb;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.protocal.protobuf.ebj;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.protocal.protobuf.aez;
+import com.tencent.mm.protocal.protobuf.amh;
+import com.tencent.mm.protocal.protobuf.bxx;
+import com.tencent.mm.protocal.protobuf.bxy;
+import com.tencent.mm.protocal.protobuf.cth;
+import com.tencent.mm.protocal.protobuf.cti;
+import com.tencent.mm.protocal.protobuf.cxr;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.elj;
+import com.tencent.mm.protocal.protobuf.jh;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
@@ -34,27 +30,27 @@ import java.util.List;
 import junit.framework.Assert;
 
 public final class ad
-  extends q
+  extends com.tencent.mm.an.q
   implements m
 {
-  private com.tencent.mm.ak.i callback;
-  private List<String> kbT;
-  private List<String> kfn;
-  public d rr;
+  private i callback;
+  private List<String> mTs;
+  private List<String> mWM;
+  public com.tencent.mm.an.d rr;
   
   public ad()
   {
     AppMethodBeat.i(131105);
     this.callback = null;
-    bom();
-    bqd localbqd = (bqd)this.rr.iLK.iLR;
-    localbqd.MD5 = "";
-    localbqd.LXY = null;
-    localbqd.LXX = 0;
-    localbqd.LXW = null;
-    localbqd.LXV = 0;
-    localbqd.him = 0;
-    localbqd.Scene = 1;
+    byv();
+    bxx localbxx = (bxx)d.b.b(this.rr.lBR);
+    localbxx.MD5 = "";
+    localbxx.Thp = null;
+    localbxx.Tho = 0;
+    localbxx.Thn = null;
+    localbxx.Thm = 0;
+    localbxx.jUk = 0;
+    localbxx.CPw = 1;
     AppMethodBeat.o(131105);
   }
   
@@ -62,83 +58,83 @@ public final class ad
   {
     AppMethodBeat.i(131106);
     this.callback = null;
-    bom();
+    byv();
     if (((paramList1 == null) || (paramList1.size() == 0)) && ((paramList2 == null) || (paramList2.size() == 0)))
     {
       AppMethodBeat.o(131106);
       return;
     }
-    this.kbT = paramList1;
-    this.kfn = paramList2;
-    paramList1 = (bqd)this.rr.iLK.iLR;
+    this.mTs = paramList1;
+    this.mWM = paramList2;
+    paramList1 = (bxx)d.b.b(this.rr.lBR);
     paramList1.MD5 = "";
-    paramList1.him = 2;
-    paramList1.Scene = 1;
+    paramList1.jUk = 2;
+    paramList1.CPw = 1;
     AppMethodBeat.o(131106);
   }
   
-  private static void a(a parama, ckp paramckp)
+  private static void a(a parama, cti paramcti)
   {
-    parama.kdX = paramckp.kdX;
-    parama.kdY = paramckp.kdY;
-    parama.kdZ = paramckp.kdZ;
-    parama.kea = paramckp.kea;
-    parama.keb = paramckp.keb;
-    parama.kec = paramckp.kec;
-    parama.ked = paramckp.ked;
-    parama.kee = paramckp.kee;
-    parama.keg = paramckp.keg;
-    parama.kef = paramckp.kef;
-    parama.keh = paramckp.keh;
-    parama.kei = paramckp.kei;
-    ebj localebj = paramckp.MmQ;
-    if (localebj != null)
+    parama.mVx = paramcti.mVx;
+    parama.mVy = paramcti.mVy;
+    parama.mVz = paramcti.mVz;
+    parama.mVA = paramcti.mVA;
+    parama.mVB = paramcti.mVB;
+    parama.mVC = paramcti.mVC;
+    parama.mVD = paramcti.mVD;
+    parama.mVE = paramcti.mVE;
+    parama.mVG = paramcti.mVG;
+    parama.mVF = paramcti.mVF;
+    parama.mVH = paramcti.mVH;
+    parama.mVI = paramcti.mVI;
+    elj localelj = paramcti.TxL;
+    if (localelj != null)
     {
-      parama.kej = localebj.kej;
-      parama.kek = localebj.kek;
-      parama.kel = localebj.kel;
+      parama.mVJ = localelj.mVJ;
+      parama.mVK = localelj.mVK;
+      parama.mVL = localelj.mVL;
     }
-    paramckp = paramckp.MmR;
-    if (paramckp != null)
+    paramcti = paramcti.TxM;
+    if (paramcti != null)
     {
-      parama.kem = paramckp.kem;
-      parama.ken = paramckp.ken;
-      parama.keo = paramckp.keo;
-      parama.kep = paramckp.kep;
+      parama.mVM = paramcti.mVM;
+      parama.mVN = paramcti.mVN;
+      parama.mVO = paramcti.mVO;
+      parama.mVP = paramcti.mVP;
     }
   }
   
-  private void bom()
+  private void byv()
   {
     AppMethodBeat.i(131107);
     d.a locala = new d.a();
-    locala.iLN = new bqd();
-    locala.iLO = new bqe();
+    locala.lBU = new bxx();
+    locala.lBV = new bxy();
     locala.uri = "/cgi-bin/micromsg-bin/getmfriend";
     locala.funcId = 142;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
+    this.rr = locala.bgN();
     AppMethodBeat.o(131107);
   }
   
-  public final void bon()
+  public final void byw()
   {
     AppMethodBeat.i(131108);
-    bqd localbqd = (bqd)this.rr.iLK.iLR;
-    localbqd.MD5 = ((String)com.tencent.mm.kernel.g.aAh().azQ().get(65828, null));
-    localbqd.him = 1;
+    bxx localbxx = (bxx)d.b.b(this.rr.lBR);
+    localbxx.MD5 = ((String)com.tencent.mm.kernel.h.aHG().aHp().b(65828, null));
+    localbxx.jUk = 1;
     AppMethodBeat.o(131108);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, com.tencent.mm.ak.i parami)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(131109);
     this.callback = parami;
-    parami = (bqd)this.rr.iLK.iLR;
-    if (parami.him == 2)
+    parami = (bxx)d.b.b(this.rr.lBR);
+    if (parami.jUk == 2)
     {
-      if (((this.kbT == null) || (this.kbT.size() == 0)) && ((this.kfn == null) || (this.kfn.size() == 0)))
+      if (((this.mTs == null) || (this.mTs.size() == 0)) && ((this.mWM == null) || (this.mWM.size() == 0)))
       {
         Log.e("MicroMsg.NetSceneGetMFriend", "doScene failed, mobile list and email list empty.");
         AppMethodBeat.o(131109);
@@ -148,35 +144,35 @@ public final class ad
       Iterator localIterator;
       String str;
       Object localObject;
-      if ((this.kbT != null) && (this.kbT.size() > 0))
+      if ((this.mTs != null) && (this.mTs.size() > 0))
       {
-        Log.d("MicroMsg.NetSceneGetMFriend", "doScene get mobile list size:%d", new Object[] { Integer.valueOf(this.kbT.size()) });
+        Log.d("MicroMsg.NetSceneGetMFriend", "doScene get mobile list size:%d", new Object[] { Integer.valueOf(this.mTs.size()) });
         localLinkedList = new LinkedList();
-        localIterator = this.kbT.iterator();
+        localIterator = this.mTs.iterator();
         while (localIterator.hasNext())
         {
           str = (String)localIterator.next();
-          localObject = new cpb();
-          ((cpb)localObject).v = str;
+          localObject = new cxr();
+          ((cxr)localObject).v = str;
           localLinkedList.add(localObject);
         }
-        parami.LXW = localLinkedList;
-        parami.LXV = localLinkedList.size();
+        parami.Thn = localLinkedList;
+        parami.Thm = localLinkedList.size();
       }
-      if ((this.kfn != null) && (this.kfn.size() > 0))
+      if ((this.mWM != null) && (this.mWM.size() > 0))
       {
-        Log.d("MicroMsg.NetSceneGetMFriend", "doScene get email list size:%d", new Object[] { Integer.valueOf(this.kfn.size()) });
+        Log.d("MicroMsg.NetSceneGetMFriend", "doScene get email list size:%d", new Object[] { Integer.valueOf(this.mWM.size()) });
         localLinkedList = new LinkedList();
-        localIterator = this.kfn.iterator();
+        localIterator = this.mWM.iterator();
         while (localIterator.hasNext())
         {
           str = (String)localIterator.next();
-          localObject = new cko();
-          ((cko)localObject).v = str;
+          localObject = new cth();
+          ((cth)localObject).v = str;
           localLinkedList.add(localObject);
         }
-        parami.LXY = localLinkedList;
-        parami.LXX = localLinkedList.size();
+        parami.Thp = localLinkedList;
+        parami.Tho = localLinkedList.size();
       }
     }
     int i = dispatch(paramg, this.rr, this);
@@ -192,11 +188,11 @@ public final class ad
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(131110);
-    paramArrayOfByte = (bqe)this.rr.iLL.iLR;
-    bqd localbqd = (bqd)this.rr.iLK.iLR;
+    paramArrayOfByte = (bxy)d.c.b(this.rr.lBS);
+    bxx localbxx = (bxx)d.b.b(this.rr.lBR);
     if ((paramInt2 == 4) && (paramInt3 == -68))
     {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramArrayOfByte.getBaseResponse().ErrMsg.MTo, this);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramArrayOfByte.getBaseResponse().Tef.Ufy, this);
       AppMethodBeat.o(131110);
       return;
     }
@@ -208,88 +204,88 @@ public final class ad
       return;
     }
     Log.d("MicroMsg.NetSceneGetMFriend", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
-    params = Util.nullAsNil((String)com.tencent.mm.kernel.g.aAh().azQ().get(65828, null));
-    if ((localbqd.him == 1) && (!Util.isNullOrNil(paramArrayOfByte.MD5)) && (!paramArrayOfByte.MD5.equals(params)))
+    params = Util.nullAsNil((String)com.tencent.mm.kernel.h.aHG().aHp().b(65828, null));
+    if ((localbxx.jUk == 1) && (!Util.isNullOrNil(paramArrayOfByte.MD5)) && (!paramArrayOfByte.MD5.equals(params)))
     {
-      com.tencent.mm.kernel.g.aAh().azQ().set(65828, paramArrayOfByte.MD5);
-      ((h)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getFacebookFrdStg()).bnU();
+      com.tencent.mm.kernel.h.aHG().aHp().i(65828, paramArrayOfByte.MD5);
+      ((h)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getFacebookFrdStg()).byd();
     }
-    if (paramArrayOfByte.xMV == null)
+    if (paramArrayOfByte.CRe == null)
     {
       Log.e("MicroMsg.NetSceneGetMFriend", "onGYNetEnd  friendlist null");
       AppMethodBeat.o(131110);
       return;
     }
-    Log.i("MicroMsg.NetSceneGetMFriend", "onGYNetEnd friend list size:%d", new Object[] { Integer.valueOf(paramArrayOfByte.xMV.size()) });
-    long l = com.tencent.mm.kernel.g.aAh().hqK.beginTransaction(Thread.currentThread().getId());
+    Log.i("MicroMsg.NetSceneGetMFriend", "onGYNetEnd friend list size:%d", new Object[] { Integer.valueOf(paramArrayOfByte.CRe.size()) });
+    long l = com.tencent.mm.kernel.h.aHG().kcF.beginTransaction(Thread.currentThread().getId());
     paramInt1 = 0;
-    ckp localckp;
+    cti localcti;
     a locala;
     g localg;
     label494:
     j localj;
-    if (paramInt1 < paramArrayOfByte.xMV.size())
+    if (paramInt1 < paramArrayOfByte.CRe.size())
     {
-      localckp = (ckp)paramArrayOfByte.xMV.get(paramInt1);
-      if (localckp == null) {
+      localcti = (cti)paramArrayOfByte.CRe.get(paramInt1);
+      if (localcti == null) {
         Log.e("MicroMsg.NetSceneGetMFriend", "Err getFriendList null");
       }
       for (;;)
       {
         paramInt1 += 1;
         break;
-        locala = ((b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).SU(localckp.kdX);
-        if ((locala == null) && (localbqd.him != 1))
+        locala = ((b)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getAddrUploadStg()).aaA(localcti.mVx);
+        if ((locala == null) && (localbxx.jUk != 1))
         {
-          Log.e("MicroMsg.NetSceneGetMFriend", "Err MD5 %s not found in AddrUploadStg, md5: ", new Object[] { localckp.kdX });
+          Log.e("MicroMsg.NetSceneGetMFriend", "Err MD5 %s not found in AddrUploadStg, md5: ", new Object[] { localcti.mVx });
         }
         else
         {
-          com.tencent.mm.plugin.c.a.bqE().aTp().mP(localckp.Username, localckp.LRO);
+          com.tencent.mm.plugin.c.a.bBt().bcn().nG(localcti.Username, localcti.Tav);
           localg = new g();
-          if (localbqd.him != 1) {
+          if (localbxx.jUk != 1) {
             break label959;
           }
-          if (localckp.MpZ != null) {
+          if (localcti.TBc != null) {
             break label494;
           }
           Log.e("MicroMsg.NetSceneGetMFriend", "ERR: facebook friend return null info");
         }
       }
-      localg.fuC = localckp.MpZ.oIi;
-      localg.kes = localckp.MpZ.Lul;
-      com.tencent.mm.aj.c.LX(localckp.MpZ.oIi);
-      localg.ker = localckp.MpZ.Name;
-      localg.fMb = localckp.ked;
-      localg.fuK = localckp.kea;
-      localg.fuJ = localckp.kdZ;
-      localg.signature = localckp.keb;
-      localg.fuI = localckp.kec;
-      localg.fuA = localckp.kdY;
-      localg.nickName = localckp.Nickname;
-      localg.kdR = f.Si(localckp.MpZ.Name);
-      localg.kdS = f.Sh(localckp.MpZ.Name);
-      localg.username = localckp.Username;
+      localg.hDe = localcti.TBc.rJY;
+      localg.mVS = localcti.TBc.SwJ;
+      com.tencent.mm.am.d.Ts(localcti.TBc.rJY);
+      localg.mVR = localcti.TBc.CMP;
+      localg.idS = localcti.mVD;
+      localg.city = localcti.mVA;
+      localg.province = localcti.mVz;
+      localg.signature = localcti.mVB;
+      localg.hDk = localcti.mVC;
+      localg.sex = localcti.mVy;
+      localg.nickName = localcti.Nickname;
+      localg.mVr = com.tencent.mm.platformtools.f.ZK(localcti.TBc.CMP);
+      localg.mVs = com.tencent.mm.platformtools.f.ZJ(localcti.TBc.CMP);
+      localg.username = localcti.Username;
       label669:
       localj = new j();
-      localj.username = localckp.Username;
-      localj.fuJ = localckp.kdZ;
-      localj.fuK = localckp.kea;
-      localj.signature = localckp.keb;
-      localj.fuA = localckp.kdY;
-      localj.fuI = localckp.kec;
+      localj.username = localcti.Username;
+      localj.province = localcti.mVz;
+      localj.city = localcti.mVA;
+      localj.signature = localcti.mVB;
+      localj.sex = localcti.mVy;
+      localj.hDk = localcti.mVC;
       params = null;
-      if (!Util.isNullOrNil(localckp.Username))
+      if (!Util.isNullOrNil(localcti.Username))
       {
-        params = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().Kn(localckp.Username);
-        if ((params == null) || (!localckp.Username.equals(params.field_username))) {
+        params = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().RG(localcti.Username);
+        if ((params == null) || (!localcti.Username.equals(params.field_username))) {
           break label981;
         }
-        if ((Util.isNullOrNil(localckp.ked)) || (localckp.ked.equals(params.ajx()))) {
+        if ((Util.isNullOrNil(localcti.mVD)) || (localcti.mVD.equals(params.apf()))) {
           break label1328;
         }
-        params.BC(localckp.ked);
-        ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().c(params.field_username, params);
+        params.Iq(localcti.mVD);
+        ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().c(params.field_username, params);
       }
     }
     label1328:
@@ -297,8 +293,8 @@ public final class ad
     {
       label863:
       boolean bool;
-      if (Util.isNullOrNil(localckp.Username)) {
-        if (localbqd.him == 1)
+      if (Util.isNullOrNil(localcti.Username)) {
+        if (localbxx.jUk == 1)
         {
           bool = true;
           label886:
@@ -308,13 +304,13 @@ public final class ad
       }
       for (;;)
       {
-        if (localbqd.him == 1) {
-          ((h)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getFacebookFrdStg()).a(localg);
+        if (localbxx.jUk == 1) {
+          ((h)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getFacebookFrdStg()).a(localg);
         }
-        ((k)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getFrdExtStg()).a(localj);
+        ((k)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getFrdExtStg()).a(localj);
         break;
         label959:
-        if (!Util.isNullOrNil(localckp.Username)) {
+        if (!Util.isNullOrNil(localcti.Username)) {
           break label669;
         }
         Log.w("MicroMsg.NetSceneGetMFriend", "username null for mobile");
@@ -324,27 +320,27 @@ public final class ad
         break label863;
         bool = false;
         break label886;
-        if ((params == null) || (!com.tencent.mm.contact.c.oR(params.field_type)))
+        if ((params == null) || (!com.tencent.mm.contact.d.rk(params.field_type)))
         {
           localg.status = 100;
           if (locala != null)
           {
             locala.status = 1;
-            locala.username = localckp.Username;
-            locala.nickName = localckp.Nickname;
-            locala.kdR = f.Si(localckp.MpZ.Name);
-            locala.kdS = f.Sh(localckp.MpZ.Name);
-            locala.kdW = locala.aqN();
-            a(locala, localckp);
-            locala.cSx = -1;
-            ((b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).a(locala.getMd5(), locala);
-            params = new com.tencent.mm.aj.i();
-            params.username = localckp.Username;
-            params.iKX = localckp.Lir;
-            params.iKW = localckp.Lis;
-            params.fv(true);
-            params.fuz = 3;
-            p.aYB().b(params);
+            locala.username = localcti.Username;
+            locala.nickName = localcti.Nickname;
+            locala.mVr = com.tencent.mm.platformtools.f.ZK(localcti.TBc.CMP);
+            locala.mVs = com.tencent.mm.platformtools.f.ZJ(localcti.TBc.CMP);
+            locala.mVw = locala.axh();
+            a(locala, localcti);
+            locala.cUP = -1;
+            ((b)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getAddrUploadStg()).a(locala.getMd5(), locala);
+            params = new com.tencent.mm.am.j();
+            params.username = localcti.Username;
+            params.lBe = localcti.SjI;
+            params.lBd = localcti.SjJ;
+            params.gg(true);
+            params.hDc = 3;
+            com.tencent.mm.am.q.bhP().b(params);
           }
         }
         else
@@ -353,17 +349,17 @@ public final class ad
           if (locala != null)
           {
             locala.status = 2;
-            locala.username = localckp.Username;
-            locala.nickName = localckp.Nickname;
-            locala.kdW = locala.aqN();
-            a(locala, localckp);
-            locala.cSx = -1;
-            ((b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).a(locala.getMd5(), locala);
-            com.tencent.mm.aj.c.ap(localckp.Username, 3);
+            locala.username = localcti.Username;
+            locala.nickName = localcti.Nickname;
+            locala.mVw = locala.axh();
+            a(locala, localcti);
+            locala.cUP = -1;
+            ((b)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getAddrUploadStg()).a(locala.getMd5(), locala);
+            com.tencent.mm.am.d.aH(localcti.Username, 3);
           }
         }
       }
-      com.tencent.mm.kernel.g.aAh().hqK.endTransaction(l);
+      com.tencent.mm.kernel.h.aHG().kcF.endTransaction(l);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(131110);
       return;
@@ -372,7 +368,7 @@ public final class ad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.ad
  * JD-Core Version:    0.7.0.1
  */

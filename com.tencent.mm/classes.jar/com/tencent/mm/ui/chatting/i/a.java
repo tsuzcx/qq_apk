@@ -2,40 +2,40 @@ package com.tencent.mm.ui.chatting.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.chatting.d.af;
 import com.tencent.mm.ui.chatting.d.ag;
+import com.tencent.mm.ui.chatting.d.ah;
 import java.util.HashMap;
 
 public final class a
 {
-  public HashMap<Class<? extends af>, af> PDU;
-  private com.tencent.mm.ui.chatting.e.a dom;
+  public HashMap<Class<? extends ag>, ag> WYH;
+  private com.tencent.mm.ui.chatting.e.a fgR;
   
   public a(com.tencent.mm.ui.chatting.e.a parama)
   {
     AppMethodBeat.i(36433);
-    this.PDU = new HashMap();
-    this.dom = parama;
+    this.WYH = new HashMap();
+    this.fgR = parama;
     AppMethodBeat.o(36433);
   }
   
-  public final void a(Class<? extends af> paramClass, af paramaf)
+  public final void a(Class<? extends ag> paramClass, ag paramag)
   {
     AppMethodBeat.i(36435);
-    if (this.PDU.put(paramClass, paramaf) != null) {
+    if (this.WYH.put(paramClass, paramag) != null) {
       Log.w("MicroMsg.ChattingComponentManager", "[register] %s has register", new Object[] { paramClass });
     }
-    if ((paramaf instanceof ag))
+    if ((paramag instanceof ah))
     {
       long l1 = System.currentTimeMillis();
-      ((ag)paramaf).a(this.dom);
+      ((ah)paramag).a(this.fgR);
       long l2 = System.currentTimeMillis();
-      Log.i("MicroMsg.ChattingComponentManager", "[install] listener:%s cost:%sms", new Object[] { paramaf.getClass().getName(), Long.valueOf(l2 - l1) });
+      Log.i("MicroMsg.ChattingComponentManager", "[install] listener:%s cost:%sms", new Object[] { paramag.getClass().getName(), Long.valueOf(l2 - l1) });
     }
     AppMethodBeat.o(36435);
   }
   
-  public final <T extends af, V extends Class<T>> T bh(V paramV)
+  public final <T extends ag, V extends Class<T>> T bC(V paramV)
   {
     AppMethodBeat.i(36434);
     if (!paramV.isInterface())
@@ -44,9 +44,9 @@ public final class a
       AppMethodBeat.o(36434);
       throw paramV;
     }
-    if (this.PDU.containsKey(paramV))
+    if (this.WYH.containsKey(paramV))
     {
-      paramV = (af)this.PDU.get(paramV);
+      paramV = (ag)this.WYH.get(paramV);
       AppMethodBeat.o(36434);
       return paramV;
     }
@@ -56,7 +56,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.i.a
  * JD-Core Version:    0.7.0.1
  */

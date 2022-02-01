@@ -2,7 +2,7 @@ package com.facebook.login;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import android.support.v4.app.FragmentActivity;
+import androidx.fragment.app.FragmentActivity;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenSource;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -19,7 +19,21 @@ class DeviceAuthMethodHandler
   static
   {
     AppMethodBeat.i(7784);
-    CREATOR = new DeviceAuthMethodHandler.1();
+    CREATOR = new Parcelable.Creator()
+    {
+      public final DeviceAuthMethodHandler createFromParcel(Parcel paramAnonymousParcel)
+      {
+        AppMethodBeat.i(7773);
+        paramAnonymousParcel = new DeviceAuthMethodHandler(paramAnonymousParcel);
+        AppMethodBeat.o(7773);
+        return paramAnonymousParcel;
+      }
+      
+      public final DeviceAuthMethodHandler[] newArray(int paramAnonymousInt)
+      {
+        return new DeviceAuthMethodHandler[paramAnonymousInt];
+      }
+    };
     AppMethodBeat.o(7784);
   }
   
@@ -117,7 +131,7 @@ class DeviceAuthMethodHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.login.DeviceAuthMethodHandler
  * JD-Core Version:    0.7.0.1
  */

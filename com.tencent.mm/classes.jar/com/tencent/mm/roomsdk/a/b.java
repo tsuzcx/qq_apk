@@ -7,20 +7,20 @@ import java.util.HashMap;
 
 public final class b
 {
-  private static b NDJ;
-  private HashMap<String, a> NDI;
+  private static b URg;
+  private HashMap<String, a> URf;
   
   static
   {
     AppMethodBeat.i(152758);
-    NDJ = new b();
+    URg = new b();
     AppMethodBeat.o(152758);
   }
   
   public b()
   {
     AppMethodBeat.i(152755);
-    this.NDI = new HashMap();
+    this.URf = new HashMap();
     AppMethodBeat.o(152755);
   }
   
@@ -31,9 +31,9 @@ public final class b
     if (i < 0) {}
     for (;;)
     {
-      b localb = NDJ;
-      if (!localb.NDI.containsKey(paramString)) {
-        localb.NDI.put(paramString, parama);
+      b localb = URg;
+      if (!localb.URf.containsKey(paramString)) {
+        localb.URf.put(paramString, parama);
       }
       AppMethodBeat.o(152757);
       return;
@@ -41,7 +41,7 @@ public final class b
     }
   }
   
-  public static a bhF(String paramString)
+  public static a btX(String paramString)
   {
     AppMethodBeat.i(152756);
     int i = paramString.indexOf("@");
@@ -53,9 +53,9 @@ public final class b
       return paramString;
     }
     paramString = paramString.substring(i);
-    b localb = NDJ;
-    if (localb.NDI.containsKey(paramString)) {}
-    for (paramString = (a)localb.NDI.get(paramString); paramString == null; paramString = null)
+    b localb = URg;
+    if (localb.URf.containsKey(paramString)) {}
+    for (paramString = (a)localb.URf.get(paramString); paramString == null; paramString = null)
     {
       paramString = new com.tencent.mm.roomsdk.a.a.b();
       AppMethodBeat.o(152756);
@@ -67,7 +67,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.roomsdk.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.map.tools.json.annotation;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.map.tools.json.FieldNameStyle;
 import com.tencent.map.tools.json.JsonParser.Deserializer;
 import java.lang.annotation.Annotation;
@@ -23,7 +23,7 @@ public @interface JsonType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.map.tools.json.annotation.JsonType
  * JD-Core Version:    0.7.0.1
  */

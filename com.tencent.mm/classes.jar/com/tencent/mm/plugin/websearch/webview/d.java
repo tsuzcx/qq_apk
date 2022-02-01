@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.websearch.webview;
 import android.content.Context;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/websearch/webview/IWebSearchUIComponent;", "T", "", "getActivityContext", "Landroid/content/Context;", "getDataContext", "()Ljava/lang/Object;", "getWebSearchData", "Lcom/tencent/mm/plugin/websearch/webview/BaseWebSearchData;", "getWebSearchJSApi", "Lcom/tencent/mm/plugin/websearch/webview/BaseWebSearchJSApi;", "getWebView", "Lcom/tencent/mm/plugin/websearch/webview/WebSearchWebView;", "ui-websearch_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/websearch/webview/IWebSearchUIComponent;", "T", "", "getActivityContext", "Landroid/content/Context;", "getDataContext", "()Ljava/lang/Object;", "getWebSearchData", "Lcom/tencent/mm/plugin/websearch/webview/BaseWebSearchData;", "getWebSearchJSApi", "Lcom/tencent/mm/plugin/websearch/webview/BaseWebSearchJSApi;", "getWebView", "Lcom/tencent/mm/plugin/websearch/webview/WebSearchWebView;", "ui-websearch_release"})
 public abstract interface d<T>
 {
-  public abstract WebSearchWebView dQg();
+  public abstract WebSearchWebView esG();
   
-  public abstract b<T> dQj();
+  public abstract b<T> esJ();
   
-  public abstract a<T> dQk();
+  public abstract a<T> esK();
   
-  public abstract T dQl();
+  public abstract T esL();
   
   public abstract Context getActivityContext();
 }

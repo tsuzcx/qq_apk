@@ -16,35 +16,35 @@ import kotlin.l.b.a.b.o.a;
 public final class i
   implements m
 {
-  final l Tko;
-  final int TrA;
-  final h Trn;
-  final Map<w, Integer> Try;
-  private final d<w, n> Trz;
+  final l aaNi;
+  final h aaUh;
+  final Map<w, Integer> aaUs;
+  private final d<w, n> aaUt;
+  final int aaUu;
   
   public i(h paramh, l paraml, x paramx, int paramInt)
   {
     AppMethodBeat.i(57764);
-    this.Trn = paramh;
-    this.Tko = paraml;
-    this.TrA = paramInt;
-    this.Try = a.G((Iterable)paramx.hAt());
-    this.Trz = this.Trn.Trv.TcN.V((kotlin.g.a.b)new a(this));
+    this.aaUh = paramh;
+    this.aaNi = paraml;
+    this.aaUu = paramInt;
+    this.aaUs = a.G((Iterable)paramx.iEG());
+    this.aaUt = this.aaUh.aaUp.aaFH.al((kotlin.g.a.b)new a(this));
     AppMethodBeat.o(57764);
   }
   
   public final as a(w paramw)
   {
     AppMethodBeat.i(57763);
-    p.h(paramw, "javaTypeParameter");
-    n localn = (n)this.Trz.invoke(paramw);
+    p.k(paramw, "javaTypeParameter");
+    n localn = (n)this.aaUt.invoke(paramw);
     if (localn != null)
     {
       paramw = (as)localn;
       AppMethodBeat.o(57763);
       return paramw;
     }
-    paramw = this.Trn.Trw.a(paramw);
+    paramw = this.aaUh.aaUq.a(paramw);
     AppMethodBeat.o(57763);
     return paramw;
   }
@@ -61,7 +61,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.c.i
  * JD-Core Version:    0.7.0.1
  */

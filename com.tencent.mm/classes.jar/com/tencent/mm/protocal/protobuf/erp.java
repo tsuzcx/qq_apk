@@ -1,104 +1,62 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class erp
-  extends dop
+  extends com.tencent.mm.cd.a
 {
-  public String NoW;
-  public LinkedList<String> Nph;
-  
-  public erp()
-  {
-    AppMethodBeat.i(239519);
-    this.Nph = new LinkedList();
-    AppMethodBeat.o(239519);
-  }
+  public int dte;
+  public int end_time;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(239520);
+    AppMethodBeat.i(72586);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
-      }
-      paramVarArgs.e(2, 1, this.Nph);
-      if (this.NoW != null) {
-        paramVarArgs.e(3, this.NoW);
-      }
-      AppMethodBeat.o(239520);
+      paramVarArgs.aY(1, this.dte);
+      paramVarArgs.aY(2, this.end_time);
+      AppMethodBeat.o(72586);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label430;
-      }
-    }
-    label430:
-    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt + g.a.a.a.c(2, 1, this.Nph);
-      paramInt = i;
-      if (this.NoW != null) {
-        paramInt = i + g.a.a.b.b.a.f(3, this.NoW);
-      }
-      AppMethodBeat.o(239520);
-      return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.Nph.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
-          }
-        }
-        AppMethodBeat.o(239520);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
-        erp localerp = (erp)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(239520);
-          return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localerp.BaseRequest = ((jr)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(239520);
-          return 0;
-        case 2: 
-          localerp.Nph.add(((g.a.a.a.a)localObject1).UbS.readString());
-          AppMethodBeat.o(239520);
-          return 0;
-        }
-        localerp.NoW = ((g.a.a.a.a)localObject1).UbS.readString();
-        AppMethodBeat.o(239520);
-        return 0;
-      }
-      AppMethodBeat.o(239520);
-      return -1;
+      paramInt = g.a.a.b.b.a.bM(1, this.dte);
+      int i = g.a.a.b.b.a.bM(2, this.end_time);
+      AppMethodBeat.o(72586);
+      return paramInt + 0 + i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.iUs();
+        }
+      }
+      AppMethodBeat.o(72586);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      erp localerp = (erp)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(72586);
+        return -1;
+      case 1: 
+        localerp.dte = locala.abFh.AK();
+        AppMethodBeat.o(72586);
+        return 0;
+      }
+      localerp.end_time = locala.abFh.AK();
+      AppMethodBeat.o(72586);
+      return 0;
+    }
+    AppMethodBeat.o(72586);
+    return -1;
   }
 }
 

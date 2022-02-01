@@ -1,40 +1,18 @@
 package com.tencent.mm.pluginsdk.c;
 
-import com.tencent.mm.g.a.me;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
-import com.tencent.mm.sdk.event.IListener;
-import java.util.ArrayList;
+import android.content.Intent;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.ui.base.preference.f;
 
-public abstract class a
-  extends IListener<me>
+public abstract interface a
 {
-  protected ArrayList<String> JTm = new ArrayList(3);
+  public abstract boolean a(f paramf, as paramas, boolean paramBoolean, int paramInt);
   
-  public a()
-  {
-    this.__eventId = me.class.getName().hashCode();
-  }
+  public abstract boolean atw(String paramString);
   
-  public static void a(String paramString, a parama)
-  {
-    if (!parama.JTm.contains(paramString)) {
-      parama.JTm.add(paramString);
-    }
-    EventCenter.instance.addListener(parama);
-    e.bdh(paramString);
-  }
+  public abstract boolean cQX();
   
-  public static void b(String paramString, a parama)
-  {
-    e.bdi(paramString);
-    EventCenter.instance.removeListener(parama);
-    if (parama.JTm.contains(paramString)) {
-      parama.JTm.remove(paramString);
-    }
-  }
-  
-  public abstract void g(IEvent paramIEvent);
+  public abstract void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent);
 }
 
 

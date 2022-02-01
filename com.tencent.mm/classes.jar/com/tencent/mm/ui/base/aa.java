@@ -1,74 +1,57 @@
 package com.tencent.mm.ui.base;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Process;
+import android.util.SparseArray;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.WeChatPermissions;
 
 public final class aa
 {
-  public static int OWJ = -1;
+  int HyH;
+  View[] WpB;
+  int[] WpC;
+  SparseArray<View>[] WpD;
+  SparseArray<View> WpE;
   
-  private static boolean BA(boolean paramBoolean)
+  public aa()
   {
-    boolean bool = true;
-    int i;
-    if (paramBoolean)
+    AppMethodBeat.i(142451);
+    this.WpB = new View[0];
+    this.WpC = new int[0];
+    AppMethodBeat.o(142451);
+  }
+  
+  static View d(SparseArray<View> paramSparseArray, int paramInt)
+  {
+    AppMethodBeat.i(142452);
+    int j = paramSparseArray.size();
+    if (j > 0)
     {
-      i = 1;
-      if (OWJ == i) {
-        break label28;
+      int i = 0;
+      while (i < j)
+      {
+        int k = paramSparseArray.keyAt(i);
+        localView = (View)paramSparseArray.get(k);
+        if (k == paramInt)
+        {
+          paramSparseArray.remove(k);
+          AppMethodBeat.o(142452);
+          return localView;
+        }
+        i += 1;
       }
+      paramInt = j - 1;
+      View localView = (View)paramSparseArray.valueAt(paramInt);
+      paramSparseArray.remove(paramSparseArray.keyAt(paramInt));
+      AppMethodBeat.o(142452);
+      return localView;
     }
-    label28:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      OWJ = i;
-      return paramBoolean;
-      i = 0;
-      break;
-    }
-  }
-  
-  public static void activateBroadcast(boolean paramBoolean)
-  {
-    AppMethodBeat.i(142454);
-    d(paramBoolean, null);
-    AppMethodBeat.o(142454);
-  }
-  
-  public static void d(boolean paramBoolean, Intent paramIntent)
-  {
-    AppMethodBeat.i(142455);
-    if (!BA(paramBoolean))
-    {
-      Log.w("MicroMsg.UIStatusUtil", "isRealSend = false,just return!");
-      AppMethodBeat.o(142455);
-      return;
-    }
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
-    }
-    if (paramBoolean) {}
-    for (paramIntent = "com.tencent.mm.ui.ACTION_ACTIVE";; paramIntent = "com.tencent.mm.ui.ACTION_DEACTIVE")
-    {
-      localIntent.setAction(paramIntent);
-      localIntent.putExtra("_application_context_process_", MMApplicationContext.getProcessName());
-      localIntent.putExtra("process_id", Process.myPid());
-      localIntent.putExtra("process_is_mm", MMApplicationContext.isMMProcess());
-      MMApplicationContext.getContext().sendBroadcast(localIntent, WeChatPermissions.PERMISSION_MM_MESSAGE());
-      AppMethodBeat.o(142455);
-      return;
-    }
+    AppMethodBeat.o(142452);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.aa
  * JD-Core Version:    0.7.0.1
  */

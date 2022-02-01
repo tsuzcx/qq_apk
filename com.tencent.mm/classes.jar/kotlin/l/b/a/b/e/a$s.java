@@ -9,35 +9,35 @@ import kotlin.l.b.a.b.h.d;
 import kotlin.l.b.a.b.h.f;
 import kotlin.l.b.a.b.h.i;
 import kotlin.l.b.a.b.h.i.a;
-import kotlin.l.b.a.b.h.q;
-import kotlin.l.b.a.b.h.s;
+import kotlin.l.b.a.b.h.r;
+import kotlin.l.b.a.b.h.t;
 
 public final class a$s
   extends i
   implements v
 {
-  public static s<s> TwL;
-  private static final s TzV;
-  private final d TwK;
-  public List<a.p> TzW;
-  public int TzX;
-  private int bOT;
-  private byte bPe = -1;
-  private int bVY = -1;
+  public static t<s> aaZC;
+  private static final s abcM;
+  private final d aaZB;
+  public List<a.p> abcN;
+  public int abcO;
+  private int bQS;
+  private byte bRd = -1;
+  private int bXW = -1;
   
   static
   {
     AppMethodBeat.i(58957);
-    TwL = new b() {};
+    aaZC = new b() {};
     s locals = new s();
-    TzV = locals;
-    locals.hEu();
+    abcM = locals;
+    locals.iIN();
     AppMethodBeat.o(58957);
   }
   
   private a$s()
   {
-    this.TwK = d.TDp;
+    this.aaZB = d.abgb;
   }
   
   /* Error */
@@ -50,13 +50,13 @@ public final class a$s
     //   6: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
     //   10: iconst_m1
-    //   11: putfield 57	kotlin/l/b/a/b/e/a$s:bPe	B
+    //   11: putfield 57	kotlin/l/b/a/b/e/a$s:bRd	B
     //   14: aload_0
     //   15: iconst_m1
-    //   16: putfield 59	kotlin/l/b/a/b/e/a$s:bVY	I
+    //   16: putfield 59	kotlin/l/b/a/b/e/a$s:bXW	I
     //   19: aload_0
-    //   20: invokespecial 50	kotlin/l/b/a/b/e/a$s:hEu	()V
-    //   23: invokestatic 76	kotlin/l/b/a/b/h/d:hJo	()Lkotlin/l/b/a/b/h/d$b;
+    //   20: invokespecial 50	kotlin/l/b/a/b/e/a$s:iIN	()V
+    //   23: invokestatic 76	kotlin/l/b/a/b/h/d:iNH	()Lkotlin/l/b/a/b/h/d$b;
     //   26: astore 9
     //   28: aload 9
     //   30: iconst_1
@@ -75,7 +75,7 @@ public final class a$s
     //   52: iload_3
     //   53: istore 8
     //   55: aload_1
-    //   56: invokevirtual 88	kotlin/l/b/a/b/h/e:yT	()I
+    //   56: invokevirtual 88	kotlin/l/b/a/b/h/e:Av	()I
     //   59: istore 4
     //   61: iload 4
     //   63: lookupswitch	default:+384->447, 0:+387->450, 10:+61->124, 16:+202->265
@@ -111,7 +111,7 @@ public final class a$s
     //   144: new 93	java/util/ArrayList
     //   147: dup
     //   148: invokespecial 94	java/util/ArrayList:<init>	()V
-    //   151: putfield 96	kotlin/l/b/a/b/e/a$s:TzW	Ljava/util/List;
+    //   151: putfield 96	kotlin/l/b/a/b/e/a$s:abcN	Ljava/util/List;
     //   154: iload_3
     //   155: iconst_1
     //   156: ior
@@ -123,11 +123,11 @@ public final class a$s
     //   167: iload 4
     //   169: istore 8
     //   171: aload_0
-    //   172: getfield 96	kotlin/l/b/a/b/e/a$s:TzW	Ljava/util/List;
+    //   172: getfield 96	kotlin/l/b/a/b/e/a$s:abcN	Ljava/util/List;
     //   175: aload_1
-    //   176: getstatic 99	kotlin/l/b/a/b/e/a$p:TwL	Lkotlin/l/b/a/b/h/s;
+    //   176: getstatic 99	kotlin/l/b/a/b/e/a$p:aaZC	Lkotlin/l/b/a/b/h/t;
     //   179: aload_2
-    //   180: invokevirtual 102	kotlin/l/b/a/b/h/e:a	(Lkotlin/l/b/a/b/h/s;Lkotlin/l/b/a/b/h/g;)Lkotlin/l/b/a/b/h/q;
+    //   180: invokevirtual 102	kotlin/l/b/a/b/h/e:a	(Lkotlin/l/b/a/b/h/t;Lkotlin/l/b/a/b/h/g;)Lkotlin/l/b/a/b/h/r;
     //   183: invokeinterface 108 2 0
     //   188: pop
     //   189: iload 4
@@ -138,7 +138,7 @@ public final class a$s
     //   198: istore 5
     //   200: aload_1
     //   201: aload_0
-    //   202: putfield 112	kotlin/l/b/a/b/h/k:TDK	Lkotlin/l/b/a/b/h/q;
+    //   202: putfield 112	kotlin/l/b/a/b/h/l:abgy	Lkotlin/l/b/a/b/h/r;
     //   205: iload 7
     //   207: istore 5
     //   209: ldc 72
@@ -155,17 +155,17 @@ public final class a$s
     //   226: if_icmpne +14 -> 240
     //   229: aload_0
     //   230: aload_0
-    //   231: getfield 96	kotlin/l/b/a/b/e/a$s:TzW	Ljava/util/List;
+    //   231: getfield 96	kotlin/l/b/a/b/e/a$s:abcN	Ljava/util/List;
     //   234: invokestatic 118	java/util/Collections:unmodifiableList	(Ljava/util/List;)Ljava/util/List;
-    //   237: putfield 96	kotlin/l/b/a/b/e/a$s:TzW	Ljava/util/List;
+    //   237: putfield 96	kotlin/l/b/a/b/e/a$s:abcN	Ljava/util/List;
     //   240: aload 10
     //   242: invokevirtual 121	kotlin/l/b/a/b/h/f:flush	()V
     //   245: aload_0
     //   246: aload 9
-    //   248: invokevirtual 127	kotlin/l/b/a/b/h/d$b:hJs	()Lkotlin/l/b/a/b/h/d;
-    //   251: putfield 66	kotlin/l/b/a/b/e/a$s:TwK	Lkotlin/l/b/a/b/h/d;
+    //   248: invokevirtual 127	kotlin/l/b/a/b/h/d$b:iNK	()Lkotlin/l/b/a/b/h/d;
+    //   251: putfield 66	kotlin/l/b/a/b/e/a$s:aaZB	Lkotlin/l/b/a/b/h/d;
     //   254: aload_0
-    //   255: invokevirtual 130	kotlin/l/b/a/b/e/a$s:Gw	()V
+    //   255: invokevirtual 130	kotlin/l/b/a/b/e/a$s:HZ	()V
     //   258: ldc 72
     //   260: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   263: aload_1
@@ -178,10 +178,10 @@ public final class a$s
     //   272: istore 8
     //   274: aload_0
     //   275: aload_0
-    //   276: getfield 132	kotlin/l/b/a/b/e/a$s:bOT	I
+    //   276: getfield 132	kotlin/l/b/a/b/e/a$s:bQS	I
     //   279: iconst_1
     //   280: ior
-    //   281: putfield 132	kotlin/l/b/a/b/e/a$s:bOT	I
+    //   281: putfield 132	kotlin/l/b/a/b/e/a$s:bQS	I
     //   284: iload_3
     //   285: istore 7
     //   287: iload_3
@@ -190,23 +190,23 @@ public final class a$s
     //   291: istore 8
     //   293: aload_0
     //   294: aload_1
-    //   295: invokevirtual 135	kotlin/l/b/a/b/h/e:zi	()I
-    //   298: putfield 137	kotlin/l/b/a/b/e/a$s:TzX	I
+    //   295: invokevirtual 135	kotlin/l/b/a/b/h/e:AK	()I
+    //   298: putfield 137	kotlin/l/b/a/b/e/a$s:abcO	I
     //   301: goto -260 -> 41
     //   304: astore_1
     //   305: iload 8
     //   307: istore 5
-    //   309: new 69	kotlin/l/b/a/b/h/k
+    //   309: new 69	kotlin/l/b/a/b/h/l
     //   312: dup
     //   313: aload_1
     //   314: invokevirtual 141	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   317: invokespecial 144	kotlin/l/b/a/b/h/k:<init>	(Ljava/lang/String;)V
+    //   317: invokespecial 144	kotlin/l/b/a/b/h/l:<init>	(Ljava/lang/String;)V
     //   320: astore_1
     //   321: iload 8
     //   323: istore 5
     //   325: aload_1
     //   326: aload_0
-    //   327: putfield 112	kotlin/l/b/a/b/h/k:TDK	Lkotlin/l/b/a/b/h/q;
+    //   327: putfield 112	kotlin/l/b/a/b/h/l:abgy	Lkotlin/l/b/a/b/h/r;
     //   330: iload 8
     //   332: istore 5
     //   334: ldc 72
@@ -222,31 +222,31 @@ public final class a$s
     //   349: if_icmpne +14 -> 363
     //   352: aload_0
     //   353: aload_0
-    //   354: getfield 96	kotlin/l/b/a/b/e/a$s:TzW	Ljava/util/List;
+    //   354: getfield 96	kotlin/l/b/a/b/e/a$s:abcN	Ljava/util/List;
     //   357: invokestatic 118	java/util/Collections:unmodifiableList	(Ljava/util/List;)Ljava/util/List;
-    //   360: putfield 96	kotlin/l/b/a/b/e/a$s:TzW	Ljava/util/List;
+    //   360: putfield 96	kotlin/l/b/a/b/e/a$s:abcN	Ljava/util/List;
     //   363: aload 10
     //   365: invokevirtual 121	kotlin/l/b/a/b/h/f:flush	()V
     //   368: aload_0
     //   369: aload 9
-    //   371: invokevirtual 127	kotlin/l/b/a/b/h/d$b:hJs	()Lkotlin/l/b/a/b/h/d;
-    //   374: putfield 66	kotlin/l/b/a/b/e/a$s:TwK	Lkotlin/l/b/a/b/h/d;
+    //   371: invokevirtual 127	kotlin/l/b/a/b/h/d$b:iNK	()Lkotlin/l/b/a/b/h/d;
+    //   374: putfield 66	kotlin/l/b/a/b/e/a$s:aaZB	Lkotlin/l/b/a/b/h/d;
     //   377: aload_0
-    //   378: invokevirtual 130	kotlin/l/b/a/b/e/a$s:Gw	()V
+    //   378: invokevirtual 130	kotlin/l/b/a/b/e/a$s:HZ	()V
     //   381: ldc 72
     //   383: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   386: return
     //   387: astore_1
     //   388: aload_0
     //   389: aload 9
-    //   391: invokevirtual 127	kotlin/l/b/a/b/h/d$b:hJs	()Lkotlin/l/b/a/b/h/d;
-    //   394: putfield 66	kotlin/l/b/a/b/e/a$s:TwK	Lkotlin/l/b/a/b/h/d;
+    //   391: invokevirtual 127	kotlin/l/b/a/b/h/d$b:iNK	()Lkotlin/l/b/a/b/h/d;
+    //   394: putfield 66	kotlin/l/b/a/b/e/a$s:aaZB	Lkotlin/l/b/a/b/h/d;
     //   397: goto -20 -> 377
     //   400: astore_1
     //   401: aload_0
     //   402: aload 9
-    //   404: invokevirtual 127	kotlin/l/b/a/b/h/d$b:hJs	()Lkotlin/l/b/a/b/h/d;
-    //   407: putfield 66	kotlin/l/b/a/b/e/a$s:TwK	Lkotlin/l/b/a/b/h/d;
+    //   404: invokevirtual 127	kotlin/l/b/a/b/h/d$b:iNK	()Lkotlin/l/b/a/b/h/d;
+    //   407: putfield 66	kotlin/l/b/a/b/e/a$s:aaZB	Lkotlin/l/b/a/b/h/d;
     //   410: ldc 72
     //   412: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   415: aload_1
@@ -254,14 +254,14 @@ public final class a$s
     //   417: astore_2
     //   418: aload_0
     //   419: aload 9
-    //   421: invokevirtual 127	kotlin/l/b/a/b/h/d$b:hJs	()Lkotlin/l/b/a/b/h/d;
-    //   424: putfield 66	kotlin/l/b/a/b/e/a$s:TwK	Lkotlin/l/b/a/b/h/d;
+    //   421: invokevirtual 127	kotlin/l/b/a/b/h/d$b:iNK	()Lkotlin/l/b/a/b/h/d;
+    //   424: putfield 66	kotlin/l/b/a/b/e/a$s:aaZB	Lkotlin/l/b/a/b/h/d;
     //   427: goto -173 -> 254
     //   430: astore_1
     //   431: aload_0
     //   432: aload 9
-    //   434: invokevirtual 127	kotlin/l/b/a/b/h/d$b:hJs	()Lkotlin/l/b/a/b/h/d;
-    //   437: putfield 66	kotlin/l/b/a/b/e/a$s:TwK	Lkotlin/l/b/a/b/h/d;
+    //   434: invokevirtual 127	kotlin/l/b/a/b/h/d$b:iNK	()Lkotlin/l/b/a/b/h/d;
+    //   437: putfield 66	kotlin/l/b/a/b/e/a$s:aaZB	Lkotlin/l/b/a/b/h/d;
     //   440: ldc 72
     //   442: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   445: aload_1
@@ -285,12 +285,12 @@ public final class a$s
     //   34	330	10	localf	f
     // Exception table:
     //   from	to	target	type
-    //   55	61	195	kotlin/l/b/a/b/h/k
-    //   105	118	195	kotlin/l/b/a/b/h/k
-    //   143	154	195	kotlin/l/b/a/b/h/k
-    //   171	189	195	kotlin/l/b/a/b/h/k
-    //   274	284	195	kotlin/l/b/a/b/h/k
-    //   293	301	195	kotlin/l/b/a/b/h/k
+    //   55	61	195	kotlin/l/b/a/b/h/l
+    //   105	118	195	kotlin/l/b/a/b/h/l
+    //   143	154	195	kotlin/l/b/a/b/h/l
+    //   171	189	195	kotlin/l/b/a/b/h/l
+    //   274	284	195	kotlin/l/b/a/b/h/l
+    //   293	301	195	kotlin/l/b/a/b/h/l
     //   55	61	220	finally
     //   105	118	220	finally
     //   143	154	220	finally
@@ -319,61 +319,82 @@ public final class a$s
   private a$s(i.a parama)
   {
     super((byte)0);
-    this.TwK = parama.TwK;
+    this.aaZB = parama.aaZB;
   }
   
   public static a d(s params)
   {
     AppMethodBeat.i(58954);
-    params = a.hHM().g(params);
+    params = a.iMg().g(params);
     AppMethodBeat.o(58954);
     return params;
   }
   
-  private void hEu()
+  private void iIN()
   {
     AppMethodBeat.i(58950);
-    this.TzW = Collections.emptyList();
-    this.TzX = -1;
+    this.abcN = Collections.emptyList();
+    this.abcO = -1;
     AppMethodBeat.o(58950);
   }
   
-  public static s hHH()
+  public static s iMb()
   {
-    return TzV;
+    return abcM;
+  }
+  
+  public final int Ad()
+  {
+    AppMethodBeat.i(58953);
+    int i = this.bXW;
+    if (i != -1)
+    {
+      AppMethodBeat.o(58953);
+      return i;
+    }
+    int j = 0;
+    i = 0;
+    while (j < this.abcN.size())
+    {
+      i += f.c(1, (r)this.abcN.get(j));
+      j += 1;
+    }
+    j = i;
+    if ((this.bQS & 0x1) == 1) {
+      j = i + f.bM(2, this.abcO);
+    }
+    i = this.aaZB.size() + j;
+    this.bXW = i;
+    AppMethodBeat.o(58953);
+    return i;
   }
   
   public final void a(f paramf)
   {
     AppMethodBeat.i(58952);
-    yC();
+    Ad();
     int i = 0;
-    while (i < this.TzW.size())
+    while (i < this.abcN.size())
     {
-      paramf.a(1, (q)this.TzW.get(i));
+      paramf.a(1, (r)this.abcN.get(i));
       i += 1;
     }
-    if ((this.bOT & 0x1) == 1) {
-      paramf.bs(2, this.TzX);
+    if ((this.bQS & 0x1) == 1) {
+      paramf.bJ(2, this.abcO);
     }
-    paramf.e(this.TwK);
+    paramf.e(this.aaZB);
     AppMethodBeat.o(58952);
   }
   
-  public final s<s> hEs()
+  public final boolean iMc()
   {
-    return TwL;
-  }
-  
-  public final boolean hHI()
-  {
-    return (this.bOT & 0x1) == 1;
+    return (this.bQS & 0x1) == 1;
   }
   
   public final boolean isInitialized()
   {
     AppMethodBeat.i(58951);
-    int i = this.bPe;
+    int i = this.bRd;
     if (i == 1)
     {
       AppMethodBeat.o(58951);
@@ -385,85 +406,59 @@ public final class a$s
       return false;
     }
     i = 0;
-    while (i < this.TzW.size())
+    while (i < this.abcN.size())
     {
-      if (!((a.p)this.TzW.get(i)).isInitialized())
+      if (!((a.p)this.abcN.get(i)).isInitialized())
       {
-        this.bPe = 0;
+        this.bRd = 0;
         AppMethodBeat.o(58951);
         return false;
       }
       i += 1;
     }
-    this.bPe = 1;
+    this.bRd = 1;
     AppMethodBeat.o(58951);
     return true;
-  }
-  
-  public final int yC()
-  {
-    AppMethodBeat.i(58953);
-    int i = this.bVY;
-    if (i != -1)
-    {
-      AppMethodBeat.o(58953);
-      return i;
-    }
-    int j = 0;
-    i = 0;
-    while (j < this.TzW.size())
-    {
-      i += f.c(1, (q)this.TzW.get(j));
-      j += 1;
-    }
-    j = i;
-    if ((this.bOT & 0x1) == 1) {
-      j = i + f.bu(2, this.TzX);
-    }
-    i = this.TwK.size() + j;
-    this.bVY = i;
-    AppMethodBeat.o(58953);
-    return i;
   }
   
   public static final class a
     extends i.a<a.s, a>
     implements v
   {
-    private List<a.p> TzW;
-    private int TzX;
-    private int bOT;
+    private List<a.p> abcN;
+    private int abcO;
+    private int bQS;
     
     private a()
     {
       AppMethodBeat.i(58932);
-      this.TzW = Collections.emptyList();
-      this.TzX = -1;
+      this.abcN = Collections.emptyList();
+      this.abcO = -1;
       AppMethodBeat.o(58932);
     }
     
-    private a auY(int paramInt)
+    private a aES(int paramInt)
     {
-      this.bOT |= 0x2;
-      this.TzX = paramInt;
+      this.bQS |= 0x2;
+      this.abcO = paramInt;
       return this;
     }
     
-    private a hHJ()
+    private a iMd()
     {
       AppMethodBeat.i(58933);
-      a locala = new a().g(hHK());
+      a locala = new a().g(iMe());
       AppMethodBeat.o(58933);
       return locala;
     }
     
-    private void hHL()
+    private void iMf()
     {
       AppMethodBeat.i(58938);
-      if ((this.bOT & 0x1) != 1)
+      if ((this.bQS & 0x1) != 1)
       {
-        this.TzW = new ArrayList(this.TzW);
-        this.bOT |= 0x1;
+        this.abcN = new ArrayList(this.abcN);
+        this.bQS |= 0x1;
       }
       AppMethodBeat.o(58938);
     }
@@ -476,7 +471,7 @@ public final class a$s
       //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aconst_null
       //   6: astore_3
-      //   7: getstatic 78	kotlin/l/b/a/b/e/a$s:TwL	Lkotlin/l/b/a/b/h/s;
+      //   7: getstatic 78	kotlin/l/b/a/b/e/a$s:aaZC	Lkotlin/l/b/a/b/h/t;
       //   10: aload_1
       //   11: aload_2
       //   12: invokeinterface 83 3 0
@@ -492,7 +487,7 @@ public final class a$s
       //   33: areturn
       //   34: astore_1
       //   35: aload_1
-      //   36: getfield 87	kotlin/l/b/a/b/h/k:TDK	Lkotlin/l/b/a/b/h/q;
+      //   36: getfield 87	kotlin/l/b/a/b/h/l:abgy	Lkotlin/l/b/a/b/h/r;
       //   39: checkcast 9	kotlin/l/b/a/b/e/a$s
       //   42: astore_2
       //   43: ldc 74
@@ -522,7 +517,7 @@ public final class a$s
       //   6	64	3	localObject	java.lang.Object
       // Exception table:
       //   from	to	target	type
-      //   7	21	34	kotlin/l/b/a/b/h/k
+      //   7	21	34	kotlin/l/b/a/b/h/l
       //   43	50	50	finally
       //   7	21	68	finally
       //   35	43	68	finally
@@ -531,49 +526,49 @@ public final class a$s
     public final a g(a.s params)
     {
       AppMethodBeat.i(58935);
-      if (params == a.s.hHH())
+      if (params == a.s.iMb())
       {
         AppMethodBeat.o(58935);
         return this;
       }
       if (!a.s.e(params).isEmpty())
       {
-        if (!this.TzW.isEmpty()) {
+        if (!this.abcN.isEmpty()) {
           break label100;
         }
-        this.TzW = a.s.e(params);
-        this.bOT &= 0xFFFFFFFE;
+        this.abcN = a.s.e(params);
+        this.bQS &= 0xFFFFFFFE;
       }
       for (;;)
       {
-        if (params.hHI()) {
-          auY(params.TzX);
+        if (params.iMc()) {
+          aES(params.abcO);
         }
-        this.TwK = this.TwK.a(a.s.f(params));
+        this.aaZB = this.aaZB.a(a.s.f(params));
         AppMethodBeat.o(58935);
         return this;
         label100:
-        hHL();
-        this.TzW.addAll(a.s.e(params));
+        iMf();
+        this.abcN.addAll(a.s.e(params));
       }
     }
     
-    public final a.s hHK()
+    public final a.s iMe()
     {
       int i = 1;
       AppMethodBeat.i(58934);
       a.s locals = new a.s(this, (byte)0);
-      int j = this.bOT;
-      if ((this.bOT & 0x1) == 1)
+      int j = this.bQS;
+      if ((this.bQS & 0x1) == 1)
       {
-        this.TzW = Collections.unmodifiableList(this.TzW);
-        this.bOT &= 0xFFFFFFFE;
+        this.abcN = Collections.unmodifiableList(this.abcN);
+        this.bQS &= 0xFFFFFFFE;
       }
-      a.s.a(locals, this.TzW);
+      a.s.a(locals, this.abcN);
       if ((j & 0x2) == 2) {}
       for (;;)
       {
-        a.s.a(locals, this.TzX);
+        a.s.a(locals, this.abcO);
         a.s.b(locals, i);
         AppMethodBeat.o(58934);
         return locals;
@@ -585,9 +580,9 @@ public final class a$s
     {
       AppMethodBeat.i(58936);
       int i = 0;
-      while (i < this.TzW.size())
+      while (i < this.abcN.size())
       {
-        if (!((a.p)this.TzW.get(i)).isInitialized())
+        if (!((a.p)this.abcN.get(i)).isInitialized())
         {
           AppMethodBeat.o(58936);
           return false;
@@ -601,7 +596,7 @@ public final class a$s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     kotlin.l.b.a.b.e.a.s
  * JD-Core Version:    0.7.0.1
  */

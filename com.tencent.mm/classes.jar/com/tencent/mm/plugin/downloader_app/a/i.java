@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.downloader.c.a.a.f;
 import com.tencent.mm.plugin.downloader.c.b.c;
 import com.tencent.mm.sdk.platformtools.Util;
 
-public final class i
+public class i
   extends com.tencent.mm.plugin.game.commlib.c.b
 {
   public String appId = "";
@@ -13,17 +13,17 @@ public final class i
   public String iconUrl;
   public boolean isSelected = false;
   public String jumpUrl;
-  public boolean maw = true;
-  public boolean pSk = false;
+  public boolean oYn = true;
   public String packageName;
   public int position;
-  public boolean qLf;
-  public String qLg;
-  public int qLh = 0;
-  public c qLi;
-  public f qLj;
-  public com.tencent.mm.plugin.downloader.c.b.b qLk;
+  public boolean toj = false;
   public int type;
+  public boolean umr;
+  public String ums;
+  public int umt = 0;
+  public c umu;
+  public f umv;
+  public com.tencent.mm.plugin.downloader.c.b.b umw;
   
   public i() {}
   
@@ -35,17 +35,17 @@ public final class i
   public final int a(com.tencent.mm.plugin.game.commlib.c.b paramb)
   {
     AppMethodBeat.i(8906);
-    int i = Integer.compare(this.type, ((Integer)paramb.cCe()).intValue());
+    int i = Integer.compare(this.type, ((Integer)paramb.cQI()).intValue());
     AppMethodBeat.o(8906);
     return i;
   }
   
-  public final boolean cCd()
+  public final boolean cQH()
   {
     return (this.type == 2) || (this.type == 4) || (this.type == 6);
   }
   
-  public final Object cCe()
+  public final Object cQI()
   {
     AppMethodBeat.i(8905);
     int i = this.type;
@@ -53,7 +53,7 @@ public final class i
     return Integer.valueOf(i);
   }
   
-  public final boolean equals(Object paramObject)
+  public boolean equals(Object paramObject)
   {
     AppMethodBeat.i(8907);
     if ((paramObject != null) && ((paramObject instanceof i)) && (!Util.isNullOrNil(((i)paramObject).appId)) && (!Util.isNullOrNil(this.appId)))
@@ -68,7 +68,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.a.i
  * JD-Core Version:    0.7.0.1
  */

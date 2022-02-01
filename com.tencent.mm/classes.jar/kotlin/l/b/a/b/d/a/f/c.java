@@ -6,13 +6,13 @@ import kotlin.l.b.a.b.b.a.g;
 
 final class c<T>
 {
-  final g TtI;
+  final g aaWC;
   final T result;
   
   public c(T paramT, g paramg)
   {
     this.result = paramT;
-    this.TtI = paramg;
+    this.aaWC = paramg;
   }
   
   public final boolean equals(Object paramObject)
@@ -23,7 +23,7 @@ final class c<T>
       if ((paramObject instanceof c))
       {
         paramObject = (c)paramObject;
-        if ((!p.j(this.result, paramObject.result)) || (!p.j(this.TtI, paramObject.TtI))) {}
+        if ((!p.h(this.result, paramObject.result)) || (!p.h(this.aaWC, paramObject.aaWC))) {}
       }
     }
     else
@@ -43,7 +43,7 @@ final class c<T>
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.TtI;
+      localObject = this.aaWC;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -55,14 +55,14 @@ final class c<T>
   public final String toString()
   {
     AppMethodBeat.i(58021);
-    String str = "EnhancementResult(result=" + this.result + ", enhancementAnnotations=" + this.TtI + ")";
+    String str = "EnhancementResult(result=" + this.result + ", enhancementAnnotations=" + this.aaWC + ")";
     AppMethodBeat.o(58021);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.f.c
  * JD-Core Version:    0.7.0.1
  */

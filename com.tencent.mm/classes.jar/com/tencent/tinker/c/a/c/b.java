@@ -11,11 +11,11 @@ import java.io.EOFException;
 
 public final class b
 {
-  final a SiV;
+  final a ZLG;
   
   public b(a parama)
   {
-    this.SiV = parama;
+    this.ZLG = parama;
   }
   
   public final short[] a(short[] paramArrayOfShort)
@@ -29,9 +29,9 @@ public final class b
     {
       paramArrayOfShort.a(new a(localc));
       paramArrayOfShort.a(new a(localf));
-      i = localh.apk;
-      if (i == localh.Shs.length) {
-        return localh.Shs;
+      i = localh.YO;
+      if (i == localh.ZKd.length) {
+        return localh.ZKd;
       }
     }
     catch (EOFException paramArrayOfShort)
@@ -39,7 +39,7 @@ public final class b
       throw new j(paramArrayOfShort);
     }
     paramArrayOfShort = new short[i];
-    System.arraycopy(localh.Shs, 0, paramArrayOfShort, 0, i);
+    System.arraycopy(localh.ZKd, 0, paramArrayOfShort, 0, i);
     return paramArrayOfShort;
   }
   
@@ -51,61 +51,61 @@ public final class b
       super();
     }
     
-    private int mK(int paramInt1, int paramInt2)
+    private int oc(int paramInt1, int paramInt2)
     {
       switch (paramInt2)
       {
       default: 
         return paramInt1;
       case 3: 
-        return b.this.SiV.asg(paramInt1);
+        return b.this.ZLG.aBT(paramInt1);
       case 2: 
-        return b.this.SiV.ash(paramInt1);
+        return b.this.ZLG.aBU(paramInt1);
       case 5: 
-        return b.this.SiV.asj(paramInt1);
+        return b.this.ZLG.aBW(paramInt1);
       }
-      return b.this.SiV.ask(paramInt1);
+      return b.this.ZLG.aBX(paramInt1);
     }
     
     public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong)
     {
-      super.a(paramInt1, paramInt2, mK(paramInt3, paramInt4), paramInt4, paramInt5, paramLong);
+      super.a(paramInt1, paramInt2, oc(paramInt3, paramInt4), paramInt4, paramInt5, paramLong);
     }
     
     public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6)
     {
-      super.a(paramInt1, paramInt2, mK(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6);
+      super.a(paramInt1, paramInt2, oc(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6);
     }
     
     public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7)
     {
-      super.a(paramInt1, paramInt2, mK(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6, paramInt7);
+      super.a(paramInt1, paramInt2, oc(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6, paramInt7);
     }
     
     public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7, int paramInt8)
     {
-      super.a(paramInt1, paramInt2, mK(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6, paramInt7, paramInt8);
+      super.a(paramInt1, paramInt2, oc(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6, paramInt7, paramInt8);
     }
     
     public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
     {
-      super.a(paramInt1, paramInt2, mK(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6, paramInt7, paramInt8, paramInt9);
+      super.a(paramInt1, paramInt2, oc(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6, paramInt7, paramInt8, paramInt9);
     }
     
     public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
     {
-      super.a(paramInt1, paramInt2, mK(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10);
+      super.a(paramInt1, paramInt2, oc(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10);
     }
     
     public final void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7)
     {
-      super.b(paramInt1, paramInt2, mK(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6, paramInt7);
+      super.b(paramInt1, paramInt2, oc(paramInt3, paramInt4), paramInt4, paramInt5, paramLong, paramInt6, paramInt7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.tinker.c.a.c.b
  * JD-Core Version:    0.7.0.1
  */

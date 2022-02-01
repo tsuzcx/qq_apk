@@ -1,75 +1,75 @@
 package com.tencent.mm.plugin.selectrecord.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.gf;
+import com.tencent.mm.f.b.a.ia;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
-  public static b CXe = null;
-  public gf CXf;
+  public static b JcK = null;
+  public ia JcL;
   
   public b()
   {
-    AppMethodBeat.i(187916);
-    this.CXf = null;
-    this.CXf = new gf();
-    AppMethodBeat.o(187916);
+    AppMethodBeat.i(255260);
+    this.JcL = null;
+    this.JcL = new ia();
+    AppMethodBeat.o(255260);
   }
   
-  public static void eSA()
+  public static b fFC()
   {
-    AppMethodBeat.i(187915);
-    CXe = new b();
-    AppMethodBeat.o(187915);
-  }
-  
-  public static b eSz()
-  {
-    AppMethodBeat.i(187914);
-    if (CXe == null) {
-      eSA();
+    AppMethodBeat.i(255255);
+    if (JcK == null) {
+      fFD();
     }
-    b localb = CXe;
-    AppMethodBeat.o(187914);
+    b localb = JcK;
+    AppMethodBeat.o(255255);
     return localb;
   }
   
-  public final void IH(long paramLong)
+  public static void fFD()
   {
-    this.CXf.eJh = paramLong;
+    AppMethodBeat.i(255257);
+    JcK = new b();
+    AppMethodBeat.o(255257);
   }
   
-  public final void Xk(int paramInt)
+  public final void Qb(long paramLong)
   {
-    AppMethodBeat.i(187917);
-    gf localgf = this.CXf;
-    localgf.eJg = localgf.x("HasConfirmed", String.valueOf(paramInt), true);
-    AppMethodBeat.o(187917);
+    this.JcL.gHK = paramLong;
   }
   
-  public final boolean bfK()
+  public final void aej(int paramInt)
   {
-    AppMethodBeat.i(187919);
-    this.CXf.eJl = 1L;
-    Log.d("MicroMsg.MultiMessageForwardReportManager", "%s", new Object[] { this.CXf.abW() });
-    boolean bool = this.CXf.bfK();
-    AppMethodBeat.o(187919);
+    AppMethodBeat.i(255263);
+    ia localia = this.JcL;
+    localia.gHJ = localia.z("HasConfirmed", String.valueOf(paramInt), true);
+    AppMethodBeat.o(255263);
+  }
+  
+  public final boolean bpa()
+  {
+    AppMethodBeat.i(255265);
+    this.JcL.gHO = 1L;
+    Log.d("MicroMsg.MultiMessageForwardReportManager", "%s", new Object[] { this.JcL.agI() });
+    boolean bool = this.JcL.bpa();
+    AppMethodBeat.o(255265);
     return bool;
   }
   
-  public final boolean eSB()
+  public final boolean fFE()
   {
-    AppMethodBeat.i(187918);
-    Xk(2);
-    boolean bool = bfK();
-    AppMethodBeat.o(187918);
+    AppMethodBeat.i(255264);
+    aej(2);
+    boolean bool = bpa();
+    AppMethodBeat.o(255264);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.selectrecord.b.b
  * JD-Core Version:    0.7.0.1
  */

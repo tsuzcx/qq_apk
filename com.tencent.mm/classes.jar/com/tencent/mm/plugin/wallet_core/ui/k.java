@@ -3,431 +3,257 @@ package com.tencent.mm.plugin.wallet_core.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.text.SpannableString;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CheckedTextView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.wallet.a.c;
-import com.tencent.mm.plugin.wallet.a.d;
-import com.tencent.mm.plugin.wallet.a.h;
-import com.tencent.mm.plugin.wallet.a.n;
-import com.tencent.mm.plugin.wallet.a.o;
-import com.tencent.mm.plugin.wallet.pay.ui.WalletChangeBankcardUI;
+import com.tencent.mm.platformtools.u.a;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.wallet_core.d.b;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wallet_core.model.Orders;
-import com.tencent.mm.plugin.wallet_core.model.an;
-import com.tencent.mm.plugin.wallet_core.model.t;
-import com.tencent.mm.plugin.wallet_core.ui.view.FavourLayout;
-import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.plugin.wallet_core.model.ao;
+import com.tencent.mm.plugin.wallet_core.ui.view.c;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.d;
+import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.wallet_core.c.ah;
-import com.tencent.mm.wallet_core.ui.f;
-import java.util.ArrayList;
+import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.q.f;
+import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.wallet_core.ui.g;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.List;
 
-public class k
-  extends BaseAdapter
+public final class k
 {
-  private Orders CwO;
-  private com.tencent.mm.plugin.wallet_core.utils.a HCH;
-  private int HGc;
-  protected ArrayList<Bankcard> Hva;
-  private int IfV;
-  public String IfW;
-  public boolean IfX;
-  private boolean IfY;
-  private Context mContext;
-  
-  public k(Context paramContext, ArrayList<Bankcard> paramArrayList, int paramInt, Orders paramOrders)
+  public static void a(final Context paramContext, List<Bankcard> paramList, Bankcard paramBankcard, String paramString1, String paramString2, final boolean paramBoolean, final String paramString3, q.g paramg)
   {
-    AppMethodBeat.i(70876);
-    this.CwO = null;
-    this.IfV = -1;
-    this.IfW = "";
-    this.IfX = true;
-    this.IfY = false;
-    this.mContext = paramContext;
-    this.Hva = paramArrayList;
-    this.HGc = paramInt;
-    this.CwO = paramOrders;
-    this.HCH = new com.tencent.mm.plugin.wallet_core.utils.a();
-    this.HCH.b(this.mContext, this.Hva);
-    if ((paramOrders != null) && (paramOrders.HZl == 1)) {
-      this.IfY = true;
-    }
-    AppMethodBeat.o(70876);
-  }
-  
-  private LinkedList<String> h(Bankcard paramBankcard)
-  {
-    AppMethodBeat.i(70881);
-    LinkedList localLinkedList = new LinkedList();
-    if ((this.CwO != null) && (this.CwO.HZe != null) && (this.CwO.HZe.HEE != null))
+    AppMethodBeat.i(70721);
+    final com.tencent.mm.ui.widget.a.e locale = new com.tencent.mm.ui.widget.a.e(paramContext, 2, true);
+    locale.ODT = new q.f()
     {
-      Iterator localIterator = this.CwO.HZe.HEE.HDZ.iterator();
-      while (localIterator.hasNext())
+      public final void onCreateMMMenu(final o paramAnonymouso)
       {
-        c localc = (c)localIterator.next();
-        if (localc.ANo.equals(paramBankcard.field_bindSerial))
+        AppMethodBeat.i(70720);
+        int i = 0;
+        Iterator localIterator = this.OnC.iterator();
+        final Bankcard localBankcard;
+        Object localObject1;
+        Object localObject2;
+        if (localIterator.hasNext())
         {
-          paramBankcard = localc.HEk.iterator();
-          while (paramBankcard.hasNext()) {
-            localLinkedList.add(((d)paramBankcard.next()).Coh);
-          }
-          AppMethodBeat.o(70881);
-          return localLinkedList;
-        }
-      }
-    }
-    AppMethodBeat.o(70881);
-    return localLinkedList;
-  }
-  
-  public Bankcard aeu(int paramInt)
-  {
-    AppMethodBeat.i(70878);
-    Bankcard localBankcard;
-    if (this.IfY)
-    {
-      localBankcard = (Bankcard)this.Hva.get(paramInt);
-      AppMethodBeat.o(70878);
-      return localBankcard;
-    }
-    int j = getCount();
-    int i;
-    if (this.CwO != null)
-    {
-      i = j;
-      if (this.CwO.HYY.equals("CFT")) {}
-    }
-    else
-    {
-      i = j - 1;
-    }
-    if (paramInt < i)
-    {
-      localBankcard = (Bankcard)this.Hva.get(paramInt);
-      AppMethodBeat.o(70878);
-      return localBankcard;
-    }
-    AppMethodBeat.o(70878);
-    return null;
-  }
-  
-  public int getCount()
-  {
-    int i = 0;
-    AppMethodBeat.i(70877);
-    if (this.IfY)
-    {
-      if (this.Hva == null)
-      {
-        AppMethodBeat.o(70877);
-        return 0;
-      }
-      i = this.Hva.size();
-      AppMethodBeat.o(70877);
-      return i;
-    }
-    if ((this.CwO != null) && (this.CwO.HYY.equals("CFT"))) {}
-    for (;;)
-    {
-      if (this.Hva != null)
-      {
-        int j = this.Hva.size();
-        AppMethodBeat.o(70877);
-        return i + j;
-      }
-      AppMethodBeat.o(70877);
-      return i;
-      i = 1;
-    }
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(70880);
-    if (paramView == null)
-    {
-      paramView = View.inflate(this.mContext, 2131496914, null);
-      paramViewGroup = new a();
-      paramViewGroup.titleTv = ((TextView)paramView.findViewById(2131309195));
-      paramViewGroup.BfZ = ((TextView)paramView.findViewById(2131308767));
-      paramViewGroup.Igb = ((CheckedTextView)paramView.findViewById(2131298596));
-      paramViewGroup.Igc = ((CdnImageView)paramView.findViewById(2131297265));
-      paramViewGroup.Iga = ((FavourLayout)paramView.findViewById(2131300549));
-      paramViewGroup.BfZ.setText("");
-      paramView.setTag(paramViewGroup);
-    }
-    Object localObject1;
-    Object localObject2;
-    for (;;)
-    {
-      paramViewGroup.BfZ.setTextColor(MMApplicationContext.getResources().getColor(2131100594));
-      paramViewGroup.Iga.setVisibility(8);
-      localObject1 = aeu(paramInt);
-      if (localObject1 != null) {
-        break label342;
-      }
-      paramViewGroup.Igb.setVisibility(4);
-      paramViewGroup.BfZ.setVisibility(8);
-      paramViewGroup.titleTv.setText(2131768113);
-      paramViewGroup.Igc.setVisibility(8);
-      localObject1 = new LinkedList();
-      if ((this.CwO == null) || (this.CwO.HZe == null) || (this.CwO.HZe.HEE == null)) {
-        break label339;
-      }
-      localObject2 = this.CwO.HZe.HEE.HEa;
-      if (localObject2 == null) {
-        break label339;
-      }
-      localObject2 = ((n)localObject2).HEQ.iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        ((LinkedList)localObject1).add(((o)((Iterator)localObject2).next()).Coh);
-      }
-      paramViewGroup = (a)paramView.getTag();
-    }
-    if ((this.IfX) && (((LinkedList)localObject1).size() > 0))
-    {
-      paramViewGroup.Iga.setVisibility(0);
-      paramViewGroup.BfZ.setVisibility(8);
-      paramViewGroup.Iga.setWording((LinkedList)localObject1);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(70880);
-      return paramView;
-      label339:
-      break;
-      label342:
-      paramViewGroup.Igc.setVisibility(0);
-      paramViewGroup.Igb.setVisibility(0);
-      paramViewGroup.BfZ.setVisibility(0);
-      paramViewGroup.BfZ.setText("");
-      if (((Bankcard)localObject1).fQf())
-      {
-        paramViewGroup.titleTv.setText(l.b(this.mContext, ((Bankcard)localObject1).field_desc, paramViewGroup.titleTv.getTextSize()));
-        label409:
-        if (!((Bankcard)localObject1).fQb()) {
-          break label902;
-        }
-        localObject2 = t.fQI().Hwc;
-        if (Util.isNullOrNil(((Bankcard)localObject2).HVD)) {
-          break label837;
-        }
-        paramViewGroup.titleTv.setText(((Bankcard)localObject2).HVD);
-        label448:
-        paramViewGroup.BfZ.setVisibility(0);
-        switch (((Bankcard)localObject1).a(this.HGc, this.CwO))
-        {
-        default: 
-          if (!Util.isNullOrNil(((Bankcard)localObject1).field_tips))
+          localBankcard = (Bankcard)localIterator.next();
+          localObject1 = null;
+          if (localBankcard.gII())
           {
-            paramViewGroup.BfZ.setText(((Bankcard)localObject1).field_tips);
-            label539:
-            localObject2 = paramViewGroup.BfZ.getText().toString();
-            paramViewGroup.titleTv.setTextColor(this.mContext.getResources().getColor(2131100904));
-            if (!this.IfW.equalsIgnoreCase(((Bankcard)localObject1).field_bindSerial)) {
-              break label1119;
+            localObject2 = com.tencent.mm.plugin.wallet_core.model.u.gJo().OUc;
+            if (localObject2 != null) {
+              localObject1 = ((Bankcard)localObject2).ONN;
             }
-            paramViewGroup.Igb.setChecked(true);
-            paramViewGroup.Igb.setEnabled(true);
-            label604:
-            paramViewGroup.Igc.setTag(2131310182, null);
-            paramViewGroup.Igc.setTag(null);
-            paramViewGroup.Igc.setImageDrawable(null);
-            paramViewGroup.BfZ.setOnClickListener(null);
-            if (!((Bankcard)localObject1).fQb()) {
-              break label1184;
+            label71:
+            if (localObject1 == null) {
+              break label783;
             }
-            com.tencent.mm.plugin.wallet_core.utils.a.m(paramViewGroup.Igc);
           }
-          break;
         }
-      }
-      for (;;)
-      {
-        if ((Util.isNullOrNil(((Bankcard)localObject1).field_forbid_title)) || (Util.isNullOrNil(((Bankcard)localObject1).field_forbid_url))) {
-          break label1299;
-        }
-        localObject2 = (String)localObject2 + "  ";
-        SpannableString localSpannableString = new SpannableString((String)localObject2 + ((Bankcard)localObject1).field_forbid_title);
-        paramViewGroup.BfZ.setOnClickListener(new View.OnClickListener()
+        label777:
+        label783:
+        for (final String str1 = ((com.tencent.mm.plugin.wallet_core.model.e)localObject1).GtW;; str1 = "")
         {
-          public final void onClick(View paramAnonymousView)
+          Log.d("MicroMsg.WalletBankcardBottomSheetHelper", "logo url: %s", new Object[] { str1 });
+          Bitmap localBitmap = com.tencent.mm.platformtools.u.a(new c(str1));
+          com.tencent.mm.platformtools.u.a(new u.a()
           {
-            AppMethodBeat.i(70875);
-            Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-            ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/WalletChangeBankcardAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-            if ((paramAnonymousView.getTag() instanceof String))
+            public final void k(final String paramAnonymous2String, final Bitmap paramAnonymous2Bitmap)
             {
-              localObject = new Intent();
-              paramAnonymousView = (String)paramAnonymousView.getTag();
-              Log.i("MicroMsg.WalletChangeBankcardAdapter", "go to url %s", new Object[] { paramAnonymousView });
-              ((Intent)localObject).putExtra("rawUrl", paramAnonymousView);
-              ((Intent)localObject).putExtra("geta8key_username", z.aTY());
-              ((Intent)localObject).putExtra("pay_channel", 1);
-              f.b(k.a(k.this), (Intent)localObject, WalletChangeBankcardUI.HFZ);
+              AppMethodBeat.i(70718);
+              MMHandlerThread.postToMainThread(new Runnable()
+              {
+                public final void run()
+                {
+                  AppMethodBeat.i(70717);
+                  Log.i("MicroMsg.WalletBankcardBottomSheetHelper", "dancy test get picture finish, notifyKey:%s, finalIconUrl:%s", new Object[] { paramAnonymous2String, k.1.1.this.OVD });
+                  if (k.1.this.OVy.containsKey(paramAnonymous2String))
+                  {
+                    int i = ((Integer)k.1.this.OVy.get(paramAnonymous2String)).intValue();
+                    if (k.1.1.this.ErT.getItem(i) != null)
+                    {
+                      k.1.1.this.ErT.getItem(i).setIcon(new BitmapDrawable(BitmapUtil.extractThumbNail(paramAnonymous2Bitmap, MMApplicationContext.getResources().getDimensionPixelOffset(a.d.wallet_offline_bank_logo_width), MMApplicationContext.getResources().getDimensionPixelOffset(a.d.wallet_offline_bank_logo_width), true, false)));
+                      k.1.this.OVz.gIa();
+                    }
+                  }
+                  AppMethodBeat.o(70717);
+                }
+              });
+              AppMethodBeat.o(70718);
             }
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/ui/WalletChangeBankcardAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(70875);
+          });
+          localObject1 = "";
+          if (!Util.isNullOrNil(localBankcard.field_forbidWord)) {
+            localObject1 = localBankcard.field_forbidWord;
           }
-        });
-        paramInt = ((String)localObject2).length();
-        int i = ((String)localObject2).length();
-        int j = ((Bankcard)localObject1).field_forbid_title.length();
-        localSpannableString.setSpan(new ForegroundColorSpan(MMApplicationContext.getResources().getColor(2131101350)), paramInt, i + j, 34);
-        paramViewGroup.BfZ.setText(localSpannableString);
-        paramViewGroup.BfZ.setTag(((Bankcard)localObject1).field_forbid_url);
-        break;
-        paramViewGroup.titleTv.setText(((Bankcard)localObject1).field_desc);
-        break label409;
-        label837:
-        if (((Bankcard)localObject2).HVC >= 0.0D)
-        {
-          paramViewGroup.titleTv.setText(this.mContext.getString(ah.hhF(), new Object[] { f.D(((Bankcard)localObject2).HVC) }));
-          break label448;
-        }
-        paramViewGroup.titleTv.setText(this.mContext.getText(2131767746));
-        break label448;
-        label902:
-        if (!((Bankcard)localObject1).fQc()) {
-          break label448;
-        }
-        if (!Util.isNullOrNil(((Bankcard)localObject1).HVD))
-        {
-          paramViewGroup.titleTv.setText(((Bankcard)localObject1).HVD);
-          break label448;
-        }
-        if (((Bankcard)localObject1).HVC >= 0.0D)
-        {
-          paramViewGroup.titleTv.setText(this.mContext.getString(2131767830, new Object[] { f.D(((Bankcard)localObject1).HVC) }));
-          break label448;
-        }
-        paramViewGroup.titleTv.setText(this.mContext.getText(2131767746));
-        break label448;
-        paramViewGroup.BfZ.setText(((Bankcard)localObject1).field_forbidWord);
-        break label539;
-        paramViewGroup.BfZ.setText(2131768119);
-        break label539;
-        paramViewGroup.BfZ.setText(2131768130);
-        break label539;
-        paramViewGroup.BfZ.setText(2131768125);
-        break label539;
-        paramViewGroup.BfZ.setText(2131768121);
-        break label539;
-        paramViewGroup.BfZ.setText(2131768117);
-        break label539;
-        paramViewGroup.BfZ.setText(2131768123);
-        break label539;
-        paramViewGroup.BfZ.setText(2131768128);
-        break label539;
-        paramViewGroup.BfZ.setVisibility(8);
-        break label539;
-        label1119:
-        if (isEnabled(paramInt))
-        {
-          paramViewGroup.Igb.setChecked(false);
-          paramViewGroup.Igb.setEnabled(true);
-          break label604;
-        }
-        paramViewGroup.Igb.setEnabled(false);
-        paramViewGroup.Igb.setChecked(false);
-        paramViewGroup.titleTv.setTextColor(this.mContext.getResources().getColor(2131100594));
-        break label604;
-        label1184:
-        if (((Bankcard)localObject1).fQc())
-        {
-          this.HCH.a((Bankcard)localObject1, paramViewGroup.Igc);
-        }
-        else if (((Bankcard)localObject1).fQf())
-        {
-          paramViewGroup.Igc.setImageDrawable(com.tencent.mm.svg.a.a.h(MMApplicationContext.getResources(), 2131690395));
-          if (!Util.isNullOrNil(((Bankcard)localObject1).HVU))
+          Object localObject3;
+          label180:
+          String str2;
+          if (Util.isNullOrNil(localBankcard.field_forbid_title))
           {
-            paramViewGroup.Igc.setUseSdcardCache(true);
-            paramViewGroup.Igc.setImgSavedPath(com.tencent.mm.plugin.wallet_core.d.b.fSn());
-            paramViewGroup.Igc.gI(((Bankcard)localObject1).HVU, 2131690395);
+            localObject2 = new SpannableStringBuilder((CharSequence)localObject1);
+            localObject3 = localObject1;
+            localObject1 = localObject2;
+            localObject2 = localObject1;
+            if (this.OVA)
+            {
+              localObject2 = localObject1;
+              if (Util.isNullOrNil((CharSequence)localObject1))
+              {
+                localObject2 = localObject1;
+                if (!Util.isNullOrNil(localBankcard.field_fetchArriveTimeWording)) {
+                  localObject2 = new SpannableStringBuilder(localBankcard.field_fetchArriveTimeWording);
+                }
+              }
+            }
+            localObject1 = localObject2;
+            if (!Util.isNullOrNil((CharSequence)localObject2))
+            {
+              localObject1 = localObject2;
+              if (!Util.isNullOrNil(localBankcard.field_prompt_info_prompt_text))
+              {
+                localObject2 = new SpannableStringBuilder(localBankcard.field_prompt_info_prompt_text);
+                localObject1 = localObject2;
+                if (!Util.isNullOrNil(localBankcard.field_prompt_info_jump_text))
+                {
+                  localObject1 = localObject2;
+                  if (!Util.isNullOrNil(localBankcard.field_prompt_info_jump_url))
+                  {
+                    ((SpannableStringBuilder)localObject2).append(localBankcard.field_prompt_info_jump_text);
+                    ((SpannableStringBuilder)localObject2).setSpan(new r(new r.a()
+                    {
+                      public final void ed(View paramAnonymous2View)
+                      {
+                        AppMethodBeat.i(228115);
+                        g.bA(k.1.this.val$context, localBankcard.field_prompt_info_jump_url);
+                        h.IzE.a(20216, new Object[] { Integer.valueOf(4), localBankcard.field_prompt_info_jump_url });
+                        AppMethodBeat.o(228115);
+                      }
+                    }), localBankcard.field_prompt_info_prompt_text.length(), ((SpannableStringBuilder)localObject2).length(), 33);
+                    localObject1 = localObject2;
+                  }
+                }
+              }
+            }
+            str2 = localBankcard.field_desc;
+            if (localBitmap == null) {
+              break label777;
+            }
+          }
+          for (localObject2 = BitmapUtil.extractThumbNail(localBitmap, paramContext.getResources().getDimensionPixelOffset(a.d.wallet_offline_bank_logo_width), paramContext.getResources().getDimensionPixelOffset(a.d.wallet_offline_bank_logo_width), true, false);; localObject2 = null)
+          {
+            if (localObject2 == null) {
+              this.OVy.put(str1, Integer.valueOf(i));
+            }
+            Log.i("MicroMsg.WalletBankcardBottomSheetHelper", "i %d fee %s %s", new Object[] { Integer.valueOf(i), str2, localObject1 });
+            if (localBankcard.gIH())
+            {
+              localObject2 = paramContext.getResources().getDrawable(a.e.wallet_balance_manager_logo_small);
+              if (!Util.isNullOrNil((String)localObject3)) {}
+              for (bool = true;; bool = false)
+              {
+                paramAnonymouso.a(i, str2, (CharSequence)localObject1, (Drawable)localObject2, 0, bool);
+                i += 1;
+                break;
+                localObject1 = b.j(paramContext, localBankcard.field_bankcardType, localBankcard.gIG());
+                break label71;
+                localObject3 = (String)localObject1 + " ";
+                localObject1 = new SpannableStringBuilder((String)localObject3 + localBankcard.field_forbid_title);
+                localObject2 = new m(paramContext)
+                {
+                  public final void onClick(View paramAnonymous2View)
+                  {
+                    AppMethodBeat.i(70719);
+                    paramAnonymous2View = new Intent();
+                    String str = localBankcard.field_forbid_url;
+                    Log.i("MicroMsg.WalletBankcardBottomSheetHelper", "go to url %s", new Object[] { str });
+                    paramAnonymous2View.putExtra("rawUrl", str);
+                    paramAnonymous2View.putExtra("geta8key_username", z.bcZ());
+                    paramAnonymous2View.putExtra("pay_channel", 1);
+                    g.aJ(k.1.this.val$context, paramAnonymous2View);
+                    AppMethodBeat.o(70719);
+                  }
+                };
+                int j = ((String)localObject3).length();
+                int k = ((String)localObject3).length() + localBankcard.field_forbid_title.length();
+                ((SpannableStringBuilder)localObject1).setSpan(new ForegroundColorSpan(paramContext.getResources().getColor(a.c.wallet_offline_link_color)), j, k, 33);
+                ((SpannableStringBuilder)localObject1).setSpan(localObject2, j, k, 33);
+                break label180;
+              }
+            }
+            if (localObject2 == null)
+            {
+              localObject2 = null;
+              label679:
+              if (Util.isNullOrNil((String)localObject3)) {
+                break label726;
+              }
+            }
+            label726:
+            for (boolean bool = true;; bool = false)
+            {
+              paramAnonymouso.a(i, str2, (CharSequence)localObject1, (Drawable)localObject2, 0, bool);
+              i += 1;
+              break;
+              localObject2 = new BitmapDrawable((Bitmap)localObject2);
+              break label679;
+            }
+            if ((paramBoolean) && (!Util.isNullOrNil(paramString3))) {
+              paramAnonymouso.a(i, paramString3, "", MMApplicationContext.getResources().getDrawable(a.e.wallet_add_bankcard_icon), false);
+            }
+            AppMethodBeat.o(70720);
+            return;
           }
         }
-        else
-        {
-          this.HCH.a(this.mContext, (Bankcard)localObject1, paramViewGroup.Igc);
-        }
       }
-      label1299:
-      if ((this.IfX) && (Util.isNullOrNil(((Bankcard)localObject1).field_forbidWord)) && (Util.isNullOrNil((String)localObject2)))
+    };
+    locale.ODU = paramg;
+    locale.OEc = true;
+    paramContext = LayoutInflater.from(paramContext).inflate(a.g.wallet_balance_fetch_bankcard_bottomsheet_header, null);
+    if (!Util.isNullOrNil(paramString1)) {
+      ((TextView)paramContext.findViewById(a.f.bfbh_header_title_tv)).setText(paramString1);
+    }
+    if (!Util.isNullOrNil(paramString2)) {
+      ((TextView)paramContext.findViewById(a.f.bfbh_header_desc_tv)).setText(paramString2);
+    }
+    for (;;)
+    {
+      locale.Z(paramContext, false);
+      if (paramBankcard == null) {
+        break;
+      }
+      int i = 0;
+      while (i < paramList.size())
       {
-        localObject1 = h((Bankcard)localObject1);
-        if (((LinkedList)localObject1).size() > 0)
-        {
-          paramViewGroup.Iga.setVisibility(0);
-          paramViewGroup.BfZ.setVisibility(8);
-          paramViewGroup.Iga.setWording((LinkedList)localObject1);
+        if (((Bankcard)paramList.get(i)).field_bindSerial.equals(paramBankcard.field_bindSerial)) {
+          locale.mBE = i;
         }
+        i += 1;
       }
+      paramContext.findViewById(a.f.bfbh_header_desc_tv).setVisibility(8);
     }
-  }
-  
-  public final void h(ArrayList<Bankcard> paramArrayList, boolean paramBoolean)
-  {
-    AppMethodBeat.i(70882);
-    if (paramArrayList == null) {}
-    for (this.Hva = new ArrayList();; this.Hva = paramArrayList)
-    {
-      this.IfX = paramBoolean;
-      if (this.Hva.size() > 0) {
-        this.HCH.b(this.mContext, this.Hva);
-      }
-      notifyDataSetChanged();
-      AppMethodBeat.o(70882);
-      return;
-    }
-  }
-  
-  public boolean isEnabled(int paramInt)
-  {
-    AppMethodBeat.i(70879);
-    Bankcard localBankcard = aeu(paramInt);
-    if (localBankcard == null)
-    {
-      AppMethodBeat.o(70879);
-      return true;
-    }
-    if (localBankcard.a(this.HGc, this.CwO) != 0)
-    {
-      AppMethodBeat.o(70879);
-      return false;
-    }
-    AppMethodBeat.o(70879);
-    return true;
-  }
-  
-  final class a
-  {
-    public TextView BfZ;
-    public FavourLayout Iga;
-    public CheckedTextView Igb;
-    public CdnImageView Igc;
-    public TextView titleTv;
-    
-    a() {}
+    locale.eik();
+    AppMethodBeat.o(70721);
   }
 }
 

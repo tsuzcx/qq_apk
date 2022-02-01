@@ -1,122 +1,85 @@
 package kotlin.l.b.a.b.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Iterator;
-import java.util.Map.Entry;
+import java.io.IOException;
 
 public final class l
-  extends m
+  extends IOException
 {
-  private final q TDL;
+  public r abgy = null;
   
-  public final boolean equals(Object paramObject)
+  public l(String paramString)
   {
-    AppMethodBeat.i(59497);
-    boolean bool = hJL().equals(paramObject);
-    AppMethodBeat.o(59497);
-    return bool;
+    super(paramString);
   }
   
-  public final q hJL()
+  static l iNV()
   {
-    AppMethodBeat.i(59495);
-    q localq = d(this.TDL);
-    AppMethodBeat.o(59495);
-    return localq;
+    AppMethodBeat.i(59481);
+    l locall = new l("While parsing a protocol message, the input ended unexpectedly in the middle of a field.  This could mean either than the input has been truncated or that an embedded message misreported its own length.");
+    AppMethodBeat.o(59481);
+    return locall;
   }
   
-  public final int hashCode()
+  static l iNW()
   {
-    AppMethodBeat.i(59496);
-    int i = hJL().hashCode();
-    AppMethodBeat.o(59496);
-    return i;
+    AppMethodBeat.i(59482);
+    l locall = new l("CodedInputStream encountered an embedded string or message which claimed to have negative size.");
+    AppMethodBeat.o(59482);
+    return locall;
   }
   
-  public final String toString()
+  static l iNX()
   {
-    AppMethodBeat.i(59498);
-    String str = hJL().toString();
-    AppMethodBeat.o(59498);
-    return str;
+    AppMethodBeat.i(59483);
+    l locall = new l("CodedInputStream encountered a malformed varint.");
+    AppMethodBeat.o(59483);
+    return locall;
   }
   
-  static final class a<K>
-    implements Map.Entry<K, Object>
+  static l iNY()
   {
-    private Map.Entry<K, l> bXF;
-    
-    private a(Map.Entry<K, l> paramEntry)
-    {
-      this.bXF = paramEntry;
-    }
-    
-    public final K getKey()
-    {
-      AppMethodBeat.i(59489);
-      Object localObject = this.bXF.getKey();
-      AppMethodBeat.o(59489);
-      return localObject;
-    }
-    
-    public final Object getValue()
-    {
-      AppMethodBeat.i(59490);
-      Object localObject = (l)this.bXF.getValue();
-      if (localObject == null)
-      {
-        AppMethodBeat.o(59490);
-        return null;
-      }
-      localObject = ((l)localObject).hJL();
-      AppMethodBeat.o(59490);
-      return localObject;
-    }
-    
-    public final Object setValue(Object paramObject)
-    {
-      AppMethodBeat.i(59491);
-      if (!(paramObject instanceof q))
-      {
-        paramObject = new IllegalArgumentException("LazyField now only used for MessageSet, and the value of MessageSet must be an instance of MessageLite");
-        AppMethodBeat.o(59491);
-        throw paramObject;
-      }
-      paramObject = ((l)this.bXF.getValue()).e((q)paramObject);
-      AppMethodBeat.o(59491);
-      return paramObject;
-    }
+    AppMethodBeat.i(59484);
+    l locall = new l("Protocol message contained an invalid tag (zero).");
+    AppMethodBeat.o(59484);
+    return locall;
   }
   
-  static final class b<K>
-    implements Iterator<Map.Entry<K, Object>>
+  static l iNZ()
   {
-    private Iterator<Map.Entry<K, Object>> bXG;
-    
-    public b(Iterator<Map.Entry<K, Object>> paramIterator)
-    {
-      this.bXG = paramIterator;
-    }
-    
-    public final boolean hasNext()
-    {
-      AppMethodBeat.i(59492);
-      boolean bool = this.bXG.hasNext();
-      AppMethodBeat.o(59492);
-      return bool;
-    }
-    
-    public final void remove()
-    {
-      AppMethodBeat.i(59493);
-      this.bXG.remove();
-      AppMethodBeat.o(59493);
-    }
+    AppMethodBeat.i(59485);
+    l locall = new l("Protocol message end-group tag did not match expected tag.");
+    AppMethodBeat.o(59485);
+    return locall;
+  }
+  
+  static l iOa()
+  {
+    AppMethodBeat.i(59486);
+    l locall = new l("Protocol message tag had invalid wire type.");
+    AppMethodBeat.o(59486);
+    return locall;
+  }
+  
+  static l iOb()
+  {
+    AppMethodBeat.i(59487);
+    l locall = new l("Protocol message had too many levels of nesting.  May be malicious.  Use CodedInputStream.setRecursionLimit() to increase the depth limit.");
+    AppMethodBeat.o(59487);
+    return locall;
+  }
+  
+  static l iOc()
+  {
+    AppMethodBeat.i(59488);
+    l locall = new l("Protocol message was too large.  May be malicious.  Use CodedInputStream.setSizeLimit() to increase the size limit.");
+    AppMethodBeat.o(59488);
+    return locall;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     kotlin.l.b.a.b.h.l
  * JD-Core Version:    0.7.0.1
  */

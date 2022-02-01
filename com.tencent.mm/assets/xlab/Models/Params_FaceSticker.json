@@ -2,7 +2,7 @@
   "IdentityReg" : 0.05,
   "ExpressionReg" : 0.05,
   "PerspectiveCamera" : true,
-  "AutoBoundary" : true,
+  "AutoBoundary" : false,
   "FitPose" : true,
   "FitIdentity" : false,
   "FitExpression" : false,

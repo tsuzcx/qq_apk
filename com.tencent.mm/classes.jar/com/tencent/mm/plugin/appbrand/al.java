@@ -1,17 +1,48 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.view.KeyEvent;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.page.ah;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-public abstract class al
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/JsApiHighlightTitleForSinglePage;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "()V", "isDoingHighlightEffect", "", "invoke", "", "pageView", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
+public final class al
+  extends c<ah>
 {
-  int kEV;
-  public int kEW = -1;
+  public static final int CTRL_INDEX = -2;
+  public static final String NAME = "highlightTitleForSinglePage";
+  @Deprecated
+  public static final al.a nys;
+  private boolean nyr;
   
-  public abstract boolean c(KeyEvent paramKeyEvent);
+  static
+  {
+    AppMethodBeat.i(276100);
+    nys = new al.a((byte)0);
+    AppMethodBeat.o(276100);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  static final class b
+    extends q
+    implements a<x>
+  {
+    b(al paramal, ah paramah)
+    {
+      super();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.al
  * JD-Core Version:    0.7.0.1
  */

@@ -1,382 +1,266 @@
 package com.tencent.mm.plugin.scanner.model;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.i.c;
-import com.tencent.mm.i.g.a;
-import com.tencent.mm.model.z;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper;
-import com.tencent.mm.sdk.platformtools.BitmapUtil;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.s;
-import java.io.ByteArrayOutputStream;
-import java.nio.charset.Charset;
-import kotlin.Result;
-import kotlin.ResultKt;
-import kotlin.d.b.a.j;
-import kotlin.d.h;
-import kotlin.g.a.m;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.t;
-import kotlin.x;
-import kotlinx.coroutines.ai;
-import kotlinx.coroutines.ba;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.LinkedList;
+import java.util.Map;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/model/AIScanImageCdnUploadUtil;", "", "()V", "DEFAULT_DATA_LENGTH_FOR_IMAGE_SEARCH_CDN", "", "Image_Search_Status_Local_Add_Cdn_Task_Error", "Image_Search_Status_Server_Error", "Image_Search_status_OK", "MAX_DATA_LENGTH_FOR_IMAGE_SEARCH_CDN", "MIN_DATA_LENGTH_FOR_IMAGE_SEARCH_CDN", "TAG", "", "configMaxImageSize", "getConfigMaxImageSize", "()I", "configMaxImageSize$delegate", "Lkotlin/Lazy;", "cancelUploadImage", "", "mediaId", "decodeBitmap", "Lcom/tencent/mm/plugin/scanner/model/AIScanImageCdnUploadUtil$ImageSearchDecodeResult;", "imagePath", "(Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getMediaIdByPath", "filePath", "saveBitmapToFile", "bitmap", "Landroid/graphics/Bitmap;", "targetImagePath", "(Landroid/graphics/Bitmap;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "uploadImage", "Lcom/tencent/mm/plugin/scanner/model/AIScanImageCdnUploadUtil$ImageSearchCdnUploadResult;", "(Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "ImageSearchCdnUploadResult", "ImageSearchDecodeResult", "plugin-scan_release"})
 public final class a
 {
-  private static final kotlin.f CEx;
-  public static final a CEy;
+  public int IKe;
+  public String IKf;
+  public boolean IKg;
+  public int iconHeight;
+  public String iconUrl;
+  public int iconWidth;
+  public LinkedList<a> pSC;
+  public String title;
+  public int type;
   
-  static
+  public a()
   {
-    AppMethodBeat.i(240376);
-    CEy = new a();
-    CEx = kotlin.g.ah((kotlin.g.a.a)a.c.CEA);
-    AppMethodBeat.o(240376);
+    AppMethodBeat.i(51609);
+    this.type = 1;
+    this.pSC = new LinkedList();
+    AppMethodBeat.o(51609);
   }
   
-  public static final Object a(String paramString1, String paramString2, kotlin.d.d<? super a> paramd)
+  public static LinkedList<a> o(Map<String, String> paramMap, String paramString)
   {
-    AppMethodBeat.i(240374);
-    h localh = new h(kotlin.d.a.b.e(paramd));
-    kotlin.d.d locald = (kotlin.d.d)localh;
-    if (paramString1 == null)
+    AppMethodBeat.i(51610);
+    LinkedList localLinkedList1 = new LinkedList();
+    int i = 0;
+    int j = 0;
+    a locala;
+    Object localObject1;
+    boolean bool;
+    LinkedList localLinkedList2;
+    int k;
+    if (j < 1000)
     {
-      paramString1 = new a();
-      paramString1.errCode = -1;
-      paramString2 = Result.Companion;
-      locald.resumeWith(Result.constructor-impl(paramString1));
+      locala = new a();
+      Object localObject2 = new StringBuilder().append(paramString).append(".actionlist");
+      StringBuilder localStringBuilder;
+      if (j > 0)
+      {
+        localObject1 = Integer.valueOf(j);
+        localObject2 = localObject1;
+        if (!Util.isNullOrNil((String)paramMap.get((String)localObject2 + ".$type"))) {
+          locala.type = Util.getInt((String)paramMap.get((String)localObject2 + ".$type"), 0);
+        }
+        locala.title = Util.nullAsNil((String)paramMap.get((String)localObject2 + ".$title"));
+        locala.iconUrl = Util.nullAsNil((String)paramMap.get((String)localObject2 + ".$iconurl"));
+        locala.iconWidth = Util.getInt((String)paramMap.get((String)localObject2 + ".$iconwidth"), 34);
+        locala.iconHeight = Util.getInt((String)paramMap.get((String)localObject2 + ".$iconheight"), 34);
+        locala.IKf = Util.nullAsNil((String)paramMap.get((String)localObject2 + ".$referkey"));
+        locala.IKe = Util.getInt((String)paramMap.get((String)localObject2 + ".$listshowtype"), 0);
+        bool = false;
+        localLinkedList2 = new LinkedList();
+        k = 0;
+        if (k >= 1000) {
+          break label586;
+        }
+        localStringBuilder = new StringBuilder().append((String)localObject2).append(".action");
+        if (k <= 0) {
+          break label494;
+        }
+      }
+      label494:
+      for (localObject1 = Integer.valueOf(k);; localObject1 = "")
+      {
+        localObject1 = localObject1;
+        if (!Util.isNullOrNil((String)paramMap.get((String)localObject1 + ".$type"))) {
+          break label532;
+        }
+        if (i == 0) {
+          break label501;
+        }
+        AppMethodBeat.o(51610);
+        return localLinkedList1;
+        localObject1 = "";
+        break;
+      }
+      label501:
+      i = 1;
+      locala.pSC = localLinkedList2;
     }
+    label532:
+    label586:
     for (;;)
     {
-      paramString1 = localh.hxK();
-      if (paramString1 == kotlin.d.a.a.SXO) {
-        p.h(paramd, "frame");
-      }
-      AppMethodBeat.o(240374);
-      return paramString1;
-      Log.i("MicroMsg.AIScanImageCdnUploader", "alvinluo uploadImage using cdn mediaId: %s", new Object[] { paramString2 });
-      com.tencent.mm.i.g localg = new com.tencent.mm.i.g();
-      localg.taskName = "task_AiScanImagetUploadTask";
-      localg.field_mediaId = paramString2;
-      localg.field_fullpath = paramString1;
-      localg.field_fileType = com.tencent.mm.i.a.MediaType_FULLSIZEIMAGE;
-      localg.field_priority = com.tencent.mm.i.a.gpM;
-      localg.field_needStorage = false;
-      localg.field_needCompressImage = true;
-      localg.field_isStreamMedia = false;
-      localg.field_force_aeskeycdn = true;
-      localg.field_trysafecdn = false;
-      localg.gqD = 15;
-      localg.gqy = ((g.a)new f(locald));
-      if (!com.tencent.mm.an.f.baQ().f(localg))
+      locala.IKg = bool;
+      localLinkedList1.add(locala);
+      j += 1;
+      break;
+      i = 0;
+      localObject1 = p(paramMap, (String)localObject1);
+      if (localObject1 != null)
       {
-        paramString1 = new a();
-        paramString1.errCode = -2;
-        paramString2 = Result.Companion;
-        locald.resumeWith(Result.constructor-impl(paramString1));
-      }
-    }
-  }
-  
-  public static Object a(String paramString, kotlin.d.d<? super b> paramd)
-  {
-    AppMethodBeat.i(240373);
-    paramString = kotlinx.coroutines.g.a((kotlin.d.f)ba.hMW(), (m)new d(paramString, null), paramd);
-    AppMethodBeat.o(240373);
-    return paramString;
-  }
-  
-  public static String aMv(String paramString)
-  {
-    AppMethodBeat.i(240371);
-    p.h(paramString, "filePath");
-    paramString = z.aTY() + "_image_search_" + paramString + "_" + System.currentTimeMillis();
-    AppMethodBeat.o(240371);
-    return paramString;
-  }
-  
-  public static final boolean aMw(String paramString)
-  {
-    AppMethodBeat.i(240375);
-    p.h(paramString, "mediaId");
-    boolean bool = com.tencent.mm.an.f.baQ().Ob(paramString);
-    AppMethodBeat.o(240375);
-    return bool;
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/model/AIScanImageCdnUploadUtil$ImageSearchCdnUploadResult;", "", "()V", "aesKey", "", "getAesKey", "()Ljava/lang/String;", "setAesKey", "(Ljava/lang/String;)V", "errCode", "", "getErrCode", "()I", "setErrCode", "(I)V", "fileID", "getFileID", "setFileID", "imageUrl", "getImageUrl", "setImageUrl", "plugin-scan_release"})
-  public static final class a
-  {
-    public String aesKey;
-    int errCode;
-    public String fileID;
-    public String imageUrl;
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/model/AIScanImageCdnUploadUtil$ImageSearchDecodeResult;", "", "()V", "originHeight", "", "getOriginHeight", "()I", "setOriginHeight", "(I)V", "originWidth", "getOriginWidth", "setOriginWidth", "resultImagePath", "", "getResultImagePath", "()Ljava/lang/String;", "setResultImagePath", "(Ljava/lang/String;)V", "plugin-scan_release"})
-  public static final class b
-  {
-    String CEz;
-    public int xlg;
-    public int xlh;
-  }
-  
-  @kotlin.d.b.a.f(c="com.tencent.mm.plugin.scanner.model.AIScanImageCdnUploadUtil$decodeBitmap$2", f="AIScanImageCdnUploadUtil.kt", hxM={121}, m="invokeSuspend")
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/plugin/scanner/model/AIScanImageCdnUploadUtil$ImageSearchDecodeResult;", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
-  static final class d
-    extends j
-    implements m<ai, kotlin.d.d<? super a.b>, Object>
-  {
-    int CEB;
-    int CEC;
-    float CED;
-    Object L$0;
-    int label;
-    private ai p$;
-    Object pED;
-    Object pEE;
-    Object pEF;
-    Object pEG;
-    int pEQ;
-    int pER;
-    int pES;
-    
-    d(String paramString, kotlin.d.d paramd)
-    {
-      super(paramd);
-    }
-    
-    public final kotlin.d.d<x> create(Object paramObject, kotlin.d.d<?> paramd)
-    {
-      AppMethodBeat.i(240363);
-      p.h(paramd, "completion");
-      paramd = new d(this.lbx, paramd);
-      paramd.p$ = ((ai)paramObject);
-      AppMethodBeat.o(240363);
-      return paramd;
-    }
-    
-    public final Object invoke(Object paramObject1, Object paramObject2)
-    {
-      AppMethodBeat.i(240364);
-      paramObject1 = ((d)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(x.SXb);
-      AppMethodBeat.o(240364);
-      return paramObject1;
-    }
-    
-    public final Object invokeSuspend(Object paramObject)
-    {
-      AppMethodBeat.i(240362);
-      kotlin.d.a.a locala = kotlin.d.a.a.SXO;
-      int j;
-      int i;
-      Object localObject3;
-      switch (this.label)
-      {
-      default: 
-        paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
-        AppMethodBeat.o(240362);
-        throw paramObject;
-      case 0: 
-        ResultKt.throwOnFailure(paramObject);
-        Object localObject4 = this.p$;
-        BitmapFactory.Options localOptions = new BitmapFactory.Options();
-        localOptions.inJustDecodeBounds = true;
-        BitmapUtil.decodeFile(this.lbx, localOptions);
-        j = localOptions.outWidth;
-        int k = localOptions.outHeight;
-        if ((j <= 0) || (k <= 0))
-        {
-          Log.e("MicroMsg.AiScanImageSceneUploader", "Error outWidth:" + j + ", outHeight:" + k);
-          AppMethodBeat.o(240362);
-          return null;
-        }
-        int m = j * k;
-        i = 1;
-        float f = m;
-        paramObject = a.CEy;
-        f /= a.ePL();
-        if (f > 1.0F) {
-          i = (int)(float)Math.ceil((float)Math.sqrt(f));
-        }
-        paramObject = new StringBuilder("rate:").append(f).append(", inSampleSize: ").append(i).append(", originWidth:").append(localOptions.outWidth).append(", originHeight:").append(localOptions.outHeight).append(", configMaxImageSize:");
-        Object localObject1 = a.CEy;
-        Log.i("MicroMsg.AiScanImageSceneUploader", a.ePL());
-        localObject1 = null;
-        paramObject = localObject1;
-        try
-        {
-          int n = BackwardSupportUtil.ExifHelper.getExifOrientation(this.lbx);
-          paramObject = localObject1;
-          localOptions.inSampleSize = i;
-          paramObject = localObject1;
-          localOptions.inJustDecodeBounds = false;
-          paramObject = localObject1;
-          localObject1 = BitmapUtil.decodeFile(this.lbx, localOptions);
-          paramObject = localObject1;
-          localObject1 = BitmapUtil.rotate((Bitmap)localObject1, n);
-          paramObject = localObject1;
-        }
-        catch (Throwable localThrowable)
-        {
-          for (;;)
-          {
-            Log.e("MicroMsg.AiScanImageSceneUploader", "decode error, " + localThrowable.getLocalizedMessage());
-          }
-          Log.i("MicroMsg.AiScanImageSceneUploader", "decode result,width:" + paramObject.getWidth() + ", height:" + paramObject.getHeight());
-          localObject2 = this.lbx;
-          localObject3 = kotlin.n.d.UTF_8;
-          if (localObject2 != null) {
-            break label448;
-          }
-          paramObject = new t("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(240362);
-          throw paramObject;
-          localObject2 = ((String)localObject2).getBytes((Charset)localObject3);
-          p.g(localObject2, "(this as java.lang.String).getBytes(charset)");
-          localObject2 = com.tencent.mm.b.g.getMessageDigest((byte[])localObject2);
-          localObject3 = "wcf://ImageSearchFilePath/".concat(String.valueOf(localObject2));
-          a locala1 = a.CEy;
-          this.L$0 = localObject4;
-          this.pED = localOptions;
-          this.pEQ = j;
-          this.pER = k;
-          this.pES = m;
-          this.CEB = i;
-          this.CED = f;
-          this.CEC = i;
-          this.pEE = paramObject;
-          this.pEF = localObject2;
-          this.pEG = localObject3;
-          this.label = 1;
-          localObject4 = a.a(paramObject, (String)localObject3, this);
-          localObject2 = localObject4;
-          paramObject = localObject3;
-          i = k;
-          if (localObject4 != locala) {
-            break;
-          }
-        }
-        if (paramObject == null)
-        {
-          Log.e("MicroMsg.AiScanImageSceneUploader", "decode error, bitmap is null");
-          AppMethodBeat.o(240362);
-          return null;
-        }
-        AppMethodBeat.o(240362);
-        return locala;
-      case 1: 
-        label448:
-        localObject3 = (String)this.pEG;
-        i = this.pER;
-        j = this.pEQ;
-        ResultKt.throwOnFailure(paramObject);
-        localObject2 = paramObject;
-        paramObject = localObject3;
-      }
-      boolean bool1 = ((Boolean)localObject2).booleanValue();
-      boolean bool2 = s.YS(paramObject);
-      if ((!bool1) || (!bool2))
-      {
-        Log.i("MicroMsg.AiScanImageSceneUploader", "save Image Fail, saveSuccess:" + bool1 + ", fileExist:" + bool2);
-        AppMethodBeat.o(240362);
-        return null;
-      }
-      Object localObject2 = new a.b();
-      ((a.b)localObject2).xlh = i;
-      ((a.b)localObject2).xlg = j;
-      ((a.b)localObject2).CEz = paramObject;
-      AppMethodBeat.o(240362);
-      return localObject2;
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/model/AIScanImageCdnUploadUtil$uploadImage$2$2", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskCallback;", "callback", "", "mediaId", "", "startRet", "progressInfo", "Lcom/tencent/mm/cdn/keep_ProgressInfo;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onlyCheckExist", "", "decodePrepareResponse", "", "inbuf", "getCdnAuthInfo", "", "p1", "Ljava/io/ByteArrayOutputStream;", "plugin-scan_release"})
-  public static final class f
-    implements g.a
-  {
-    f(kotlin.d.d paramd) {}
-    
-    public final int a(String paramString, int paramInt, c paramc, com.tencent.mm.i.d paramd, boolean paramBoolean)
-    {
-      Object localObject = null;
-      AppMethodBeat.i(240369);
-      if (paramInt != 0)
-      {
-        paramString = this.iCb;
-        paramc = new a.a();
-        paramc.errCode = -1;
-        paramd = Result.Companion;
-        paramString.resumeWith(Result.constructor-impl(paramc));
-        Log.e("MicroMsg.AIScanImageCdnUploader", "AIScanImageCdnUploader upload start fail: ".concat(String.valueOf(paramInt)));
-        AppMethodBeat.o(240369);
-        return 0;
-      }
-      StringBuilder localStringBuilder = new StringBuilder("upload callback,id:").append(paramString).append(" len:");
-      if (paramc != null)
-      {
-        paramString = Long.valueOf(paramc.field_finishedLength);
-        localStringBuilder = localStringBuilder.append(paramString).append(", totalLen:");
-        paramString = localObject;
-        if (paramc != null) {
-          paramString = Long.valueOf(paramc.field_toltalLength);
-        }
-        Log.i("MicroMsg.AIScanImageCdnUploader", paramString);
-        if (paramd != null)
-        {
-          if (paramd.field_retCode == 0) {
-            break label223;
-          }
-          Log.e("MicroMsg.AIScanImageCdnUploader", "AIScanImageCdnUploader upload result fail: " + paramd.field_retCode);
-          paramString = this.iCb;
-          paramc = new a.a();
-          paramc.errCode = -1;
-          paramd = Result.Companion;
-          paramString.resumeWith(Result.constructor-impl(paramc));
+        localLinkedList2.add(localObject1);
+        if (!r.a((a)localObject1)) {
+          bool = true;
         }
       }
       for (;;)
       {
-        AppMethodBeat.o(240369);
-        return 0;
-        paramString = null;
+        k += 1;
         break;
-        label223:
-        Log.i("MicroMsg.AIScanImageCdnUploader", "AIScanImageCdnUploader success");
-        paramString = this.iCb;
-        paramc = new a.a();
-        paramc.errCode = 0;
-        paramc.fileID = paramd.field_fileId;
-        paramc.aesKey = paramd.field_aesKey;
-        paramc.imageUrl = paramd.field_fileUrl;
-        paramd = Result.Companion;
-        paramString.resumeWith(Result.constructor-impl(paramc));
+        AppMethodBeat.o(51610);
+        return localLinkedList1;
       }
     }
-    
-    public final void a(String paramString, ByteArrayOutputStream paramByteArrayOutputStream)
+  }
+  
+  public static a p(Map<String, String> paramMap, String paramString)
+  {
+    AppMethodBeat.i(51611);
+    int i = Util.getInt((String)paramMap.get(paramString + ".$type"), 0);
+    a locala = new a(i);
+    locala.type = i;
+    locala.IKl = Util.nullAsNil((String)paramMap.get(paramString + ".statid"));
+    locala.name = Util.nullAsNil((String)paramMap.get(paramString + ".name"));
+    locala.desc = Util.nullAsNil((String)paramMap.get(paramString + ".desc"));
+    locala.lpM = Util.nullAsNil((String)paramMap.get(paramString + ".digest"));
+    locala.fwp = Util.getInt((String)paramMap.get(paramString + ".showtype"), 0);
+    locala.image = Util.nullAsNil((String)paramMap.get(paramString + ".image"));
+    locala.key = Util.nullAsNil((String)paramMap.get(paramString + ".$key"));
+    locala.iconUrl = Util.nullAsNil((String)paramMap.get(paramString + ".iconurl"));
+    if (i == 1)
     {
-      AppMethodBeat.i(240368);
-      Log.i("MicroMsg.AIScanImageCdnUploader", "getCdnAuthInfo, mediaId = ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(240368);
+      locala.link = Util.nullAsNil((String)paramMap.get(paramString + ".link"));
+      paramMap = locala;
     }
-    
-    public final byte[] f(String paramString, byte[] paramArrayOfByte)
+    for (;;)
     {
-      AppMethodBeat.i(240370);
-      Log.i("MicroMsg.AIScanImageCdnUploader", "decodePrepareResponse, mediaId = %s", new Object[] { paramString });
-      AppMethodBeat.o(240370);
-      return new byte[0];
+      AppMethodBeat.o(51611);
+      return paramMap;
+      if (i == 2)
+      {
+        locala.username = Util.nullAsNil((String)paramMap.get(paramString + ".username"));
+        locala.nickname = Util.nullAsNil((String)paramMap.get(paramString + ".nickname"));
+        locala.IKp = Util.nullAsNil((String)paramMap.get(paramString + ".strbeforefollow"));
+        locala.IKq = Util.nullAsNil((String)paramMap.get(paramString + ".strafterfollow"));
+        paramMap = locala;
+      }
+      else if (i == 3)
+      {
+        locala.thumburl = Util.nullAsNil((String)paramMap.get(paramString + ".thumburl"));
+        locala.link = Util.nullAsNil((String)paramMap.get(paramString + ".link"));
+        paramMap = locala;
+      }
+      else if (i == 4)
+      {
+        locala.thumburl = Util.nullAsNil((String)paramMap.get(paramString + ".thumburl"));
+        locala.username = Util.nullAsNil((String)paramMap.get(paramString + ".username"));
+        locala.nickname = Util.nullAsNil((String)paramMap.get(paramString + ".nickname"));
+        paramMap = locala;
+      }
+      else
+      {
+        if (i == 5)
+        {
+          locala.IKi = Util.nullAsNil((String)paramMap.get(paramString + ".wifiurl"));
+          locala.IKj = Util.nullAsNil((String)paramMap.get(paramString + ".wapurl"));
+          locala.IKk = Util.nullAsNil((String)paramMap.get(paramString + ".weburl"));
+          if ((Util.isNullOrNil(locala.IKi)) && (Util.isNullOrNil(locala.IKj)) && (Util.isNullOrNil(locala.IKk))) {
+            paramMap = null;
+          }
+        }
+        else if (i != 6)
+        {
+          if (i == 7)
+          {
+            locala.thumburl = Util.nullAsNil((String)paramMap.get(paramString + ".thumburl"));
+            locala.IKh = Util.nullAsNil((String)paramMap.get(paramString + ".playurl"));
+            paramMap = locala;
+            continue;
+          }
+          if (i == 9)
+          {
+            locala.IKm = Util.nullAsNil((String)paramMap.get(paramString + ".productid"));
+            paramMap = locala;
+            continue;
+          }
+          if (i == 8)
+          {
+            locala.IKn = Util.nullAsNil((String)paramMap.get(paramString + ".cardext"));
+            locala.IKo = Util.nullAsNil((String)paramMap.get(paramString + ".cardid"));
+            paramMap = locala;
+            continue;
+          }
+          if (i == 10)
+          {
+            locala.IKm = Util.nullAsNil((String)paramMap.get(paramString + ".id"));
+            paramMap = locala;
+            continue;
+          }
+          if (i == 12)
+          {
+            locala.thumburl = Util.nullAsNil((String)paramMap.get(paramString + ".image"));
+            locala.link = Util.nullAsNil((String)paramMap.get(paramString + ".link"));
+            paramMap = locala;
+            continue;
+          }
+          if (i == 22)
+          {
+            locala.content = Util.nullAsNil((String)paramMap.get(paramString + ".content"));
+            locala.link = Util.nullAsNil((String)paramMap.get(paramString + ".link"));
+            locala.nickname = Util.nullAsNil((String)paramMap.get(paramString + ".nickname"));
+            locala.thumburl = Util.nullAsNil((String)paramMap.get(paramString + ".image"));
+            paramMap = locala;
+            continue;
+          }
+          if (i == 21)
+          {
+            locala.IKf = Util.nullAsNil((String)paramMap.get(paramString + ".referkey"));
+            paramMap = locala;
+            continue;
+          }
+          locala.link = Util.nullAsNil((String)paramMap.get(paramString + ".link"));
+        }
+        paramMap = locala;
+      }
+    }
+  }
+  
+  public static final class a
+  {
+    public String IKf;
+    public String IKh = "";
+    public String IKi = "";
+    public String IKj = "";
+    public String IKk = "";
+    public String IKl = "";
+    public String IKm = "";
+    public String IKn = "";
+    public String IKo = "";
+    public String IKp;
+    public String IKq;
+    public String content;
+    public String desc = "";
+    public int fwp;
+    public String iconUrl = "";
+    public String image = "";
+    public String key;
+    public String link = "";
+    public String lpM = "";
+    public String name = "";
+    public String nickname = "";
+    public String thumburl = "";
+    public int type;
+    public String username = "";
+    
+    public a() {}
+    
+    public a(int paramInt)
+    {
+      this.type = paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.a
  * JD-Core Version:    0.7.0.1
  */

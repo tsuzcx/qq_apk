@@ -5,25 +5,15 @@ import android.graphics.PointF;
 
 public abstract interface g
 {
+  public abstract float A(float paramFloat1, float paramFloat2);
+  
   public abstract PointF a(PointF paramPointF, int paramInt1, int paramInt2);
   
-  public abstract void at(float paramFloat1, float paramFloat2);
+  public abstract void ay(float paramFloat1, float paramFloat2);
   
-  public abstract void au(float paramFloat1, float paramFloat2);
+  public abstract void az(float paramFloat1, float paramFloat2);
   
-  public abstract PointF c(PointF paramPointF);
-  
-  public abstract void gKA();
-  
-  public abstract void gKB();
-  
-  public abstract boolean gKw();
-  
-  public abstract boolean gKx();
-  
-  public abstract void gKy();
-  
-  public abstract void gKz();
+  public abstract PointF d(PointF paramPointF);
   
   public abstract float getDoubleTabScale();
   
@@ -41,9 +31,23 @@ public abstract interface g
   
   public abstract float getScaleRate();
   
-  public abstract void l(float paramFloat1, float paramFloat2, float paramFloat3);
+  public abstract void hJA();
   
-  public abstract void r(float paramFloat1, float paramFloat2, float paramFloat3);
+  public abstract boolean hJv();
+  
+  public abstract boolean hJw();
+  
+  public abstract void hJx();
+  
+  public abstract void hJy();
+  
+  public abstract void hJz();
+  
+  public abstract void m(float paramFloat1, float paramFloat2, float paramFloat3);
+  
+  public abstract void s(float paramFloat1, float paramFloat2, float paramFloat3);
+  
+  public abstract void setCanRefresh(boolean paramBoolean);
   
   public abstract void setCustomScaleRate(Float paramFloat);
   
@@ -51,13 +55,16 @@ public abstract interface g
   
   public abstract void setMaxZoomLimit(float paramFloat);
   
-  public abstract void setOnZoomScaleChangedListener(g.a parama);
+  public abstract void setOnZoomScaleChangedListener(a parama);
   
-  public abstract float y(float paramFloat1, float paramFloat2);
+  public static abstract interface a
+  {
+    public abstract void ak(float paramFloat1, float paramFloat2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.base.g
  * JD-Core Version:    0.7.0.1
  */

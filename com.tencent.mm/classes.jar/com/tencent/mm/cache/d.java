@@ -5,9 +5,9 @@ import android.graphics.Canvas;
 import android.graphics.PorterDuff.Mode;
 import android.text.SpannableString;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ab.c;
 import com.tencent.mm.api.r;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.z.c;
 import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.Stack;
@@ -15,33 +15,28 @@ import java.util.Stack;
 public final class d
   implements f<c>
 {
-  private int gpA;
-  public Stack<c> gpx;
-  public Stack<c> gpy;
+  public Stack<c> iTF;
+  public Stack<c> iTG;
+  private int iTI;
   
-  public final String[] Dq(String paramString)
+  public final String[] Kh(String paramString)
   {
     AppMethodBeat.i(9224);
     String[] arrayOfString = new String[2];
     arrayOfString[0] = "";
     arrayOfString[1] = "";
-    Iterator localIterator = this.gpx.iterator();
+    Iterator localIterator = this.iTF.iterator();
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
-      if ((localc instanceof com.tencent.mm.z.f)) {
-        arrayOfString[1] = (arrayOfString[1] + ((com.tencent.mm.z.f)localc).hoI.toString() + paramString);
+      if ((localc instanceof com.tencent.mm.ab.f)) {
+        arrayOfString[1] = (arrayOfString[1] + ((com.tencent.mm.ab.f)localc).kaz.toString() + paramString);
       } else {
-        arrayOfString[0] = (arrayOfString[0] + localc.hoi.getMd5() + paramString);
+        arrayOfString[0] = (arrayOfString[0] + localc.jZZ.getMd5() + paramString);
       }
     }
     AppMethodBeat.o(9224);
     return arrayOfString;
-  }
-  
-  public final void Ya()
-  {
-    this.gpA += 1;
   }
   
   public final void a(Canvas paramCanvas, boolean paramBoolean)
@@ -50,19 +45,19 @@ public final class d
     if (paramBoolean)
     {
       paramCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
-      localObject = this.gpx.iterator();
+      localObject = this.iTF.iterator();
       while (((Iterator)localObject).hasNext())
       {
         c localc = (c)((Iterator)localObject).next();
-        if (!localc.gwn) {
+        if (!localc.jaA) {
           localc.draw(paramCanvas);
         }
       }
       AppMethodBeat.o(9215);
       return;
     }
-    Object localObject = alI();
-    if ((localObject != null) && (!((c)localObject).gwn)) {
+    Object localObject = arH();
+    if ((localObject != null) && (!((c)localObject).jaA)) {
       ((c)localObject).draw(paramCanvas);
     }
     AppMethodBeat.o(9215);
@@ -71,10 +66,15 @@ public final class d
   public final void a(c paramc)
   {
     AppMethodBeat.i(9219);
-    if (this.gpx != null) {
-      this.gpx.push(paramc);
+    if (this.iTF != null) {
+      this.iTF.push(paramc);
     }
     AppMethodBeat.o(9219);
+  }
+  
+  public final void acG()
+  {
+    this.iTI += 1;
   }
   
   public final int ai(boolean paramBoolean)
@@ -83,18 +83,18 @@ public final class d
     int i;
     if (paramBoolean)
     {
-      if (this.gpx != null)
+      if (this.iTF != null)
       {
-        i = this.gpx.size();
+        i = this.iTF.size();
         AppMethodBeat.o(9220);
         return i;
       }
       AppMethodBeat.o(9220);
       return 0;
     }
-    if (this.gpy != null)
+    if (this.iTG != null)
     {
-      i = this.gpy.size();
+      i = this.iTG.size();
       AppMethodBeat.o(9220);
       return i;
     }
@@ -102,38 +102,38 @@ public final class d
     return 0;
   }
   
-  public final void alC()
+  public final void arB()
   {
     AppMethodBeat.i(9214);
-    Log.i("MicroMsg.EmojiAndTextCache", "[onRestore] size:%s isExit:%s", new Object[] { Integer.valueOf(this.gpx.size()), Boolean.FALSE });
-    this.gpx.clear();
-    if (this.gpy != null)
+    Log.i("MicroMsg.EmojiAndTextCache", "[onRestore] size:%s isExit:%s", new Object[] { Integer.valueOf(this.iTF.size()), Boolean.FALSE });
+    this.iTF.clear();
+    if (this.iTG != null)
     {
-      Log.i("MicroMsg.EmojiAndTextCache", "[onRestore] %s", new Object[] { Integer.valueOf(this.gpy.size()) });
-      this.gpx.addAll(this.gpy);
+      Log.i("MicroMsg.EmojiAndTextCache", "[onRestore] %s", new Object[] { Integer.valueOf(this.iTG.size()) });
+      this.iTF.addAll(this.iTG);
     }
-    Log.i("MicroMsg.EmojiAndTextCache", "[onRestore] mCurStack size:%s ", new Object[] { Integer.valueOf(this.gpx.size()) });
-    Iterator localIterator = this.gpx.iterator();
+    Log.i("MicroMsg.EmojiAndTextCache", "[onRestore] mCurStack size:%s ", new Object[] { Integer.valueOf(this.iTF.size()) });
+    Iterator localIterator = this.iTF.iterator();
     while (localIterator.hasNext()) {
-      ((c)localIterator.next()).ayu();
+      ((c)localIterator.next()).aFN();
     }
     AppMethodBeat.o(9214);
   }
   
-  public final c alH()
+  public final c arG()
   {
     AppMethodBeat.i(9217);
-    c localc = (c)this.gpx.pop();
+    c localc = (c)this.iTF.pop();
     AppMethodBeat.o(9217);
     return localc;
   }
   
-  public final c alI()
+  public final c arH()
   {
     AppMethodBeat.i(9218);
-    if ((this.gpx != null) && (this.gpx.size() > 0))
+    if ((this.iTF != null) && (this.iTF.size() > 0))
     {
-      c localc = (c)this.gpx.peek();
+      c localc = (c)this.iTF.peek();
       AppMethodBeat.o(9218);
       return localc;
     }
@@ -141,10 +141,10 @@ public final class d
     return null;
   }
   
-  public final ListIterator<c> alJ()
+  public final ListIterator<c> arI()
   {
     AppMethodBeat.i(9222);
-    ListIterator localListIterator = this.gpx.listIterator(this.gpx.size());
+    ListIterator localListIterator = this.iTF.listIterator(this.iTF.size());
     AppMethodBeat.o(9222);
     return localListIterator;
   }
@@ -157,76 +157,76 @@ public final class d
       AppMethodBeat.o(9221);
       return;
     }
-    int i = this.gpx.indexOf(paramc);
-    this.gpx.remove(i);
-    this.gpx.push(paramc);
+    int i = this.iTF.indexOf(paramc);
+    this.iTF.remove(i);
+    this.iTF.push(paramc);
     AppMethodBeat.o(9221);
   }
   
   public final void clear()
   {
-    AppMethodBeat.i(204750);
-    if (this.gpx != null) {
-      this.gpx.clear();
+    AppMethodBeat.i(260025);
+    if (this.iTF != null) {
+      this.iTF.clear();
     }
-    AppMethodBeat.o(204750);
+    AppMethodBeat.o(260025);
   }
   
-  public final void dl(boolean paramBoolean)
+  public final void dL(boolean paramBoolean)
   {
     AppMethodBeat.i(9213);
-    Log.i("MicroMsg.EmojiAndTextCache", "[onSave] size:%s isExit:%s", new Object[] { Integer.valueOf(this.gpx.size()), Boolean.valueOf(paramBoolean) });
-    if (this.gpy != null) {
-      this.gpy.clear();
+    Log.i("MicroMsg.EmojiAndTextCache", "[onSave] size:%s isExit:%s", new Object[] { Integer.valueOf(this.iTF.size()), Boolean.valueOf(paramBoolean) });
+    if (this.iTG != null) {
+      this.iTG.clear();
     }
-    this.gpy = new Stack();
-    Iterator localIterator = this.gpx.iterator();
+    this.iTG = new Stack();
+    Iterator localIterator = this.iTF.iterator();
     c localc;
     while (localIterator.hasNext())
     {
       localc = (c)localIterator.next();
-      this.gpy.push(localc.ayz());
+      this.iTG.push(localc.aFS());
     }
-    Log.i("MicroMsg.EmojiAndTextCache", "[onSave] mLastStack size:%s", new Object[] { Integer.valueOf(this.gpy.size()) });
+    Log.i("MicroMsg.EmojiAndTextCache", "[onSave] mLastStack size:%s", new Object[] { Integer.valueOf(this.iTG.size()) });
     if (paramBoolean)
     {
-      this.gpx.clear();
-      localIterator = this.gpy.iterator();
+      this.iTF.clear();
+      localIterator = this.iTG.iterator();
       while (localIterator.hasNext())
       {
         localc = (c)localIterator.next();
         Log.d("MicroMsg.EmojiItem", "[recycleBitmap]");
-        if ((localc.hoj != null) && (!localc.hoj.isRecycled()))
+        if ((localc.kaa != null) && (!localc.kaa.isRecycled()))
         {
-          Log.i("MicroMsg.EmojiItem", "bitmap recycle %s", new Object[] { localc.hoj.toString() });
-          localc.hoj.recycle();
+          Log.i("MicroMsg.EmojiItem", "bitmap recycle %s", new Object[] { localc.kaa.toString() });
+          localc.kaa.recycle();
         }
       }
     }
     AppMethodBeat.o(9213);
   }
   
-  public final int[] dm(boolean paramBoolean)
+  public final int[] dM(boolean paramBoolean)
   {
     AppMethodBeat.i(9223);
     int[] arrayOfInt = new int[2];
     Iterator localIterator;
     if (paramBoolean)
     {
-      localIterator = this.gpx.iterator();
+      localIterator = this.iTF.iterator();
       while (localIterator.hasNext()) {
-        if (((c)localIterator.next() instanceof com.tencent.mm.z.f)) {
+        if (((c)localIterator.next() instanceof com.tencent.mm.ab.f)) {
           arrayOfInt[1] += 1;
         } else {
           arrayOfInt[0] += 1;
         }
       }
     }
-    if (this.gpy != null)
+    if (this.iTG != null)
     {
-      localIterator = this.gpy.iterator();
+      localIterator = this.iTG.iterator();
       while (localIterator.hasNext()) {
-        if (((c)localIterator.next() instanceof com.tencent.mm.z.f)) {
+        if (((c)localIterator.next() instanceof com.tencent.mm.ab.f)) {
           arrayOfInt[1] += 1;
         } else {
           arrayOfInt[0] += 1;
@@ -237,10 +237,10 @@ public final class d
     return arrayOfInt;
   }
   
-  public final void e(Canvas paramCanvas)
+  public final void f(Canvas paramCanvas)
   {
     AppMethodBeat.i(9216);
-    Iterator localIterator = this.gpx.iterator();
+    Iterator localIterator = this.iTF.iterator();
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
@@ -254,7 +254,7 @@ public final class d
   {
     AppMethodBeat.i(9211);
     Log.i("MicroMsg.EmojiAndTextCache", "[onCreate]");
-    this.gpx = new Stack();
+    this.iTF = new Stack();
     AppMethodBeat.o(9211);
   }
   
@@ -263,28 +263,28 @@ public final class d
     AppMethodBeat.i(9212);
     Log.i("MicroMsg.EmojiAndTextCache", "[onDestroy]");
     Iterator localIterator;
-    if (this.gpx != null)
+    if (this.iTF != null)
     {
-      localIterator = this.gpx.iterator();
+      localIterator = this.iTF.iterator();
       while (localIterator.hasNext()) {
         ((c)localIterator.next()).clear();
       }
-      this.gpx.clear();
+      this.iTF.clear();
     }
-    if (this.gpy != null)
+    if (this.iTG != null)
     {
-      localIterator = this.gpy.iterator();
+      localIterator = this.iTG.iterator();
       while (localIterator.hasNext()) {
         ((c)localIterator.next()).clear();
       }
-      this.gpy.clear();
+      this.iTG.clear();
     }
     AppMethodBeat.o(9212);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.cache.d
  * JD-Core Version:    0.7.0.1
  */

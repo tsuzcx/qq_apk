@@ -1,21 +1,44 @@
 package com.tencent.mm.ipcinvoker.h;
 
-import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.annotation.Annotation;
 
 public final class a
-  implements com.tencent.mm.ipcinvoker.h.a.a
 {
-  public final void printLog(int paramInt, String paramString1, String paramString2, Object... paramVarArgs)
+  public static boolean e(Class<?> paramClass, Class<? extends Annotation> paramClass1)
   {
-    AppMethodBeat.i(158834);
-    if (paramInt < 4)
+    AppMethodBeat.i(214829);
+    for (;;)
     {
-      AppMethodBeat.o(158834);
-      return;
+      if (paramClass == null)
+      {
+        AppMethodBeat.o(214829);
+        return false;
+      }
+      if (paramClass.isAnnotationPresent(paramClass1))
+      {
+        AppMethodBeat.o(214829);
+        return true;
+      }
+      Class[] arrayOfClass = paramClass.getInterfaces();
+      int j = arrayOfClass.length;
+      int i = 0;
+      while (i < j)
+      {
+        if (arrayOfClass[i].isAnnotationPresent(paramClass1))
+        {
+          AppMethodBeat.o(214829);
+          return true;
+        }
+        i += 1;
+      }
+      if (paramClass.getSuperclass() == null) {
+        break;
+      }
+      paramClass = paramClass.getSuperclass();
     }
-    Log.println(paramInt, paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(158834);
+    AppMethodBeat.o(214829);
+    return false;
   }
 }
 

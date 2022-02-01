@@ -11,44 +11,44 @@ import kotlin.g.a.a;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/biz/util/TestBiz;", "", "()V", "TAG", "", "crashMMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getCrashMMKV", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "crashMMKV$delegate", "Lkotlin/Lazy;", "maxViewItemCrashTimes", "", "mmkv", "getMmkv", "mmkv$delegate", "mpManifestPath", "mpManifestPath$annotations", "getMpManifestPath", "()Ljava/lang/String;", "mpManifestPath$delegate", "needReportIdKey", "", "getNeedReportIdKey", "()Z", "setNeedReportIdKey", "(Z)V", "noOftenReadMode", "noOftenReadMode$annotations", "getNoOftenReadMode", "setNoOftenReadMode", "noVideoChannelMode", "noVideoChannelMode$annotations", "getNoVideoChannelMode", "setNoVideoChannelMode", "open", "getOpen", "open$delegate", "useDebugMpManifestPath", "useDebugMpManifestPath$annotations", "getUseDebugMpManifestPath", "setUseDebugMpManifestPath", "canPreloadNow", "crashTimes", "defaultInterval", "", "preloadLastTimeKey", "reportKey", "postProcessShowView", "", "viewId", "preProcessShowView", "view", "Landroid/view/View;", "plugin-biz_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/biz/util/TestBiz;", "", "()V", "TAG", "", "crashMMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getCrashMMKV", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "crashMMKV$delegate", "Lkotlin/Lazy;", "maxViewItemCrashTimes", "", "mmkv", "getMmkv", "mmkv$delegate", "mpManifestPath", "mpManifestPath$annotations", "getMpManifestPath", "()Ljava/lang/String;", "mpManifestPath$delegate", "needReportIdKey", "", "getNeedReportIdKey", "()Z", "setNeedReportIdKey", "(Z)V", "noOftenReadMode", "noOftenReadMode$annotations", "getNoOftenReadMode", "setNoOftenReadMode", "noVideoChannelMode", "noVideoChannelMode$annotations", "getNoVideoChannelMode", "setNoVideoChannelMode", "open", "getOpen", "open$delegate", "useDebugMpManifestPath", "useDebugMpManifestPath$annotations", "getUseDebugMpManifestPath", "setUseDebugMpManifestPath", "canPreloadNow", "crashTimes", "defaultInterval", "", "preloadLastTimeKey", "reportKey", "postProcessShowView", "", "viewId", "preProcessShowView", "view", "Landroid/view/View;", "plugin-biz_release"})
 public final class c
 {
-  private static final f iBW;
-  private static final f pfo;
-  private static boolean pfp;
-  private static boolean pfq;
-  public static final f pfr;
-  private static boolean pfs;
-  private static final f pft;
-  private static boolean pfu;
-  public static final c pfv;
+  private static final f lrB;
+  private static final f shs;
+  private static boolean sht;
+  private static boolean shu;
+  public static final f shv;
+  private static boolean shw;
+  private static final f shx;
+  private static boolean shy;
+  public static final c shz;
   
   static
   {
-    AppMethodBeat.i(212470);
-    pfv = new c();
-    iBW = g.ah((a)b.pfx);
-    pfo = g.ah((a)a.pfw);
-    pfr = g.ah((a)d.pfz);
-    pfs = true;
-    pft = g.ah((a)c.pfy);
-    AppMethodBeat.o(212470);
+    AppMethodBeat.i(205682);
+    shz = new c();
+    lrB = g.ar((a)b.shB);
+    shs = g.ar((a)a.shA);
+    shv = g.ar((a)d.shD);
+    shw = true;
+    shx = g.ar((a)c.shC);
+    AppMethodBeat.o(205682);
   }
   
   public static boolean a(int paramInt, long paramLong1, String paramString, long paramLong2)
   {
-    AppMethodBeat.i(212468);
-    p.h(paramString, "preloadLastTimeKey");
+    AppMethodBeat.i(205676);
+    p.k(paramString, "preloadLastTimeKey");
     Log.d("MicroMsg.TestBiz", "do canPreloadNow %d", new Object[] { Long.valueOf(paramLong1) });
     long l = paramLong1;
     if (paramInt > 0)
     {
-      if (pfs)
+      if (shw)
       {
-        com.tencent.mm.plugin.webcanvas.l locall = com.tencent.mm.plugin.webcanvas.l.IAx;
-        com.tencent.mm.plugin.webcanvas.l.LV(paramLong2);
-        pfs = false;
+        com.tencent.mm.plugin.webcanvas.l locall = com.tencent.mm.plugin.webcanvas.l.PuB;
+        com.tencent.mm.plugin.webcanvas.l.Tt(paramLong2);
+        shw = false;
       }
       Log.e("MicroMsg.TestBiz", "canPreloadNow hasCrashFlag last time crashTimes=" + paramInt + ", defaultInterval=" + paramLong1);
       if (paramInt != 1) {
@@ -63,13 +63,13 @@ public final class c
     label217:
     for (l = paramLong1;; l = paramLong2)
     {
-      paramLong2 = cks().getLong(paramString, 0L);
+      paramLong2 = cxK().getLong(paramString, 0L);
       paramLong1 = System.currentTimeMillis();
       paramLong2 = Math.abs(paramLong1 - paramLong2);
       if (paramLong2 < l)
       {
         Log.d("MicroMsg.TestBiz", "canPreloadNow delta(" + paramLong2 + ") < interval(" + l + ')');
-        AppMethodBeat.o(212468);
+        AppMethodBeat.o(205676);
         return false;
         if (paramInt == 2)
         {
@@ -79,106 +79,106 @@ public final class c
         paramLong2 = 604800000L;
         break;
       }
-      cks().encode(paramString, paramLong1);
-      AppMethodBeat.o(212468);
+      cxK().encode(paramString, paramLong1);
+      AppMethodBeat.o(205676);
       return true;
     }
   }
   
-  private static String ahi(String paramString)
+  private static String aoO(String paramString)
   {
-    AppMethodBeat.i(212465);
-    p.h(paramString, "$this$crashTimes");
+    AppMethodBeat.i(205668);
+    p.k(paramString, "$this$crashTimes");
     paramString = "ViewItemCrashTimes_".concat(String.valueOf(paramString));
-    AppMethodBeat.o(212465);
+    AppMethodBeat.o(205668);
     return paramString;
   }
   
-  public static void ahj(String paramString)
+  public static void aoP(String paramString)
   {
-    AppMethodBeat.i(212467);
-    p.h(paramString, "viewId");
-    cks().encode(ahi(paramString), 0);
-    AppMethodBeat.o(212467);
+    AppMethodBeat.i(205675);
+    p.k(paramString, "viewId");
+    cxK().encode(aoO(paramString), 0);
+    AppMethodBeat.o(205675);
   }
   
-  public static MultiProcessMMKV cks()
+  public static MultiProcessMMKV cxK()
   {
-    AppMethodBeat.i(212464);
-    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)pfo.getValue();
-    AppMethodBeat.o(212464);
+    AppMethodBeat.i(205667);
+    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)shs.getValue();
+    AppMethodBeat.o(205667);
     return localMultiProcessMMKV;
   }
   
-  public static final boolean ckt()
+  public static final boolean cxL()
   {
-    return pfp;
+    return sht;
   }
   
-  public static final boolean cku()
+  public static final boolean cxM()
   {
-    return pfq;
+    return shu;
   }
   
-  public static final String ckv()
+  public static final String cxN()
   {
-    AppMethodBeat.i(212469);
-    String str = (String)pft.getValue();
-    AppMethodBeat.o(212469);
+    AppMethodBeat.i(205677);
+    String str = (String)shx.getValue();
+    AppMethodBeat.o(205677);
     return str;
   }
   
-  public static final boolean ckw()
+  public static final boolean cxO()
   {
-    return pfu;
+    return shy;
   }
   
-  public static final void ckx()
+  public static final void cxP()
   {
-    pfu = true;
+    shy = true;
   }
   
   public static boolean d(String paramString, View paramView)
   {
-    AppMethodBeat.i(212466);
-    p.h(paramString, "viewId");
-    int i = cks().decodeInt(ahi(paramString));
+    AppMethodBeat.i(205674);
+    p.k(paramString, "viewId");
+    int i = cxK().decodeInt(aoO(paramString));
     if (i > 2)
     {
       Log.e("MicroMsg.TestBiz", "PreProcessShowView " + paramString + " crash too much times(" + i + "), can not show now!!");
       if (paramView != null) {
         paramView.setVisibility(8);
       }
-      AppMethodBeat.o(212466);
+      AppMethodBeat.o(205674);
       return false;
     }
-    cks().encode(ahi(paramString), i + 1);
-    AppMethodBeat.o(212466);
+    cxK().encode(aoO(paramString), i + 1);
+    AppMethodBeat.o(205674);
     return true;
   }
   
-  public static final void kc(boolean paramBoolean)
+  public static final void ln(boolean paramBoolean)
   {
-    pfp = paramBoolean;
+    sht = paramBoolean;
   }
   
-  public static final void kd(boolean paramBoolean)
+  public static final void lo(boolean paramBoolean)
   {
-    pfq = paramBoolean;
+    shu = paramBoolean;
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
   static final class a
     extends q
     implements a<MultiProcessMMKV>
   {
-    public static final a pfw;
+    public static final a shA;
     
     static
     {
-      AppMethodBeat.i(212457);
-      pfw = new a();
-      AppMethodBeat.o(212457);
+      AppMethodBeat.i(206304);
+      shA = new a();
+      AppMethodBeat.o(206304);
     }
     
     a()
@@ -187,18 +187,18 @@ public final class c
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
   static final class b
     extends q
     implements a<MultiProcessMMKV>
   {
-    public static final b pfx;
+    public static final b shB;
     
     static
     {
-      AppMethodBeat.i(212459);
-      pfx = new b();
-      AppMethodBeat.o(212459);
+      AppMethodBeat.i(205397);
+      shB = new b();
+      AppMethodBeat.o(205397);
     }
     
     b()
@@ -207,18 +207,18 @@ public final class c
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class c
     extends q
     implements a<String>
   {
-    public static final c pfy;
+    public static final c shC;
     
     static
     {
-      AppMethodBeat.i(212461);
-      pfy = new c();
-      AppMethodBeat.o(212461);
+      AppMethodBeat.i(207342);
+      shC = new c();
+      AppMethodBeat.o(207342);
     }
     
     c()
@@ -227,18 +227,18 @@ public final class c
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class d
     extends q
     implements a<Boolean>
   {
-    public static final d pfz;
+    public static final d shD;
     
     static
     {
-      AppMethodBeat.i(212463);
-      pfz = new d();
-      AppMethodBeat.o(212463);
+      AppMethodBeat.i(209876);
+      shD = new d();
+      AppMethodBeat.o(209876);
     }
     
     d()

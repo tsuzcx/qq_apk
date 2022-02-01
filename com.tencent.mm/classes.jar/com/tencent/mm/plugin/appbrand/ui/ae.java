@@ -1,16 +1,20 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import kotlin.l;
+import kotlin.g.a.a;
+import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/IAppBrandLoadingSplashEx;", "Lcom/tencent/mm/plugin/appbrand/ui/IAppBrandLoadingSplash;", "setCanShowHideAnimation", "", "can", "", "luggage-wxa-app_release"})
 public abstract interface ae
-  extends ab
+  extends aa
 {
-  public abstract void setCanShowHideAnimation(boolean paramBoolean);
+  public abstract void cjm();
+  
+  public abstract void o(boolean paramBoolean, String paramString);
+  
+  public abstract void z(a<x> parama);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.ae
  * JD-Core Version:    0.7.0.1
  */

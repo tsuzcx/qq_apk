@@ -5,18 +5,23 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public abstract interface d
 {
-  public static final d czi = new d()
+  public static final d cxU = new d()
   {
-    public final String NJ()
+    public final String QE()
     {
-      AppMethodBeat.i(229829);
+      AppMethodBeat.i(242814);
       String str = "SessionId@" + hashCode() + "#" + Util.nowMilliSecond();
-      AppMethodBeat.o(229829);
+      AppMethodBeat.o(242814);
       return str;
     }
   };
   
-  public abstract String NJ();
+  public abstract String QE();
+  
+  public static final class a
+  {
+    public static d cxV;
+  }
 }
 
 

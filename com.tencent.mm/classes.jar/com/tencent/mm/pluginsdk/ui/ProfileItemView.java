@@ -9,7 +9,7 @@ import com.tencent.mm.storage.as;
 public abstract class ProfileItemView
   extends FrameLayout
 {
-  public as rjX;
+  public as uNk;
   
   public ProfileItemView(Context paramContext)
   {
@@ -28,13 +28,13 @@ public abstract class ProfileItemView
     init();
   }
   
-  public boolean aj(as paramas)
+  public boolean ap(as paramas)
   {
-    this.rjX = paramas;
-    return eEV();
+    this.uNk = paramas;
+    return fqK();
   }
   
-  public abstract boolean eEV();
+  public abstract boolean fqK();
   
   public abstract int getLayout();
   

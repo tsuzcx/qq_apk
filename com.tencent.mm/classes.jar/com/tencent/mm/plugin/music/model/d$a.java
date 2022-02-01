@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.music.model;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper$Companion;", "", "()V", "TAG", "", "get", "Lcom/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper;", "plugin-music_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper$Companion;", "", "()V", "TAG", "", "get", "Lcom/tencent/mm/plugin/music/model/GlobalMusicPlayerFloatBallHelper;", "plugin-music_release"})
 public final class d$a {}
 
 

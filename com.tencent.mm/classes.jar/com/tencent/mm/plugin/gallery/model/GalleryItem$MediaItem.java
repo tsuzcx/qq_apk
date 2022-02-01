@@ -7,20 +7,22 @@ import java.util.HashMap;
 public abstract class GalleryItem$MediaItem
   implements Parcelable, c, Comparable<MediaItem>
 {
-  public double cik = 91.0D;
-  public double cil = 181.0D;
-  public Object iMa;
+  public String AAz;
+  public String BVj;
+  public String BVk;
+  public long BVl;
+  public long BVm;
+  public String BVn;
+  public long BVo;
+  public double BVp = 181.0D;
+  public double BVq = 91.0D;
+  public String BVr;
+  public boolean BVs = false;
+  public HashMap<String, Object> BVt = new HashMap();
+  public boolean fXF = false;
+  public Object lCh;
   public String mMimeType;
-  public String sUB;
-  public String xiW;
-  public String xiX;
-  public String xiY;
-  public long xiZ;
-  public long xja;
-  public long xjb;
-  public String xjc;
-  public boolean xjd = false;
-  public HashMap<String, Object> xje = new HashMap();
+  public String wAy;
   
   public GalleryItem$MediaItem()
   {
@@ -34,9 +36,9 @@ public abstract class GalleryItem$MediaItem
   
   public GalleryItem$MediaItem(long paramLong, String paramString1, String paramString2, String paramString3)
   {
-    this.xiZ = paramLong;
-    this.xiW = paramString1;
-    this.sUB = paramString2;
+    this.BVl = paramLong;
+    this.AAz = paramString1;
+    this.wAy = paramString2;
     this.mMimeType = paramString3;
   }
   
@@ -48,7 +50,7 @@ public abstract class GalleryItem$MediaItem
     return new GalleryItem.VideoMediaItem(paramLong, paramString1, paramString2, paramString3);
   }
   
-  public static MediaItem ap(int paramInt, long paramLong)
+  public static MediaItem aw(int paramInt, long paramLong)
   {
     if (paramInt == 1) {
       return new GalleryItem.ImageMediaItem(paramLong);
@@ -56,16 +58,16 @@ public abstract class GalleryItem$MediaItem
     return new GalleryItem.VideoMediaItem(paramLong);
   }
   
-  public abstract String aQn();
-  
-  public final String auA()
+  public final String aBv()
   {
-    return this.xiZ + "_" + this.xiW.hashCode();
+    return this.BVl + "_" + this.AAz.hashCode();
   }
   
-  public final String dRh()
+  public abstract String aZe();
+  
+  public final int d(MediaItem paramMediaItem)
   {
-    return this.xiW;
+    return (int)((this.BVm - paramMediaItem.BVm) / 1000L);
   }
   
   public boolean equals(Object paramObject)
@@ -75,7 +77,7 @@ public abstract class GalleryItem$MediaItem
     if ((paramObject instanceof MediaItem))
     {
       paramObject = (MediaItem)paramObject;
-      if ((this.xiW == null) || (!this.xiW.equals(paramObject.xiW)))
+      if ((this.AAz == null) || (!this.AAz.equals(paramObject.AAz)))
       {
         bool1 = bool2;
         if (this.mMimeType != null)
@@ -84,10 +86,10 @@ public abstract class GalleryItem$MediaItem
           if (this.mMimeType.equals("edit"))
           {
             bool1 = bool2;
-            if (this.xiX != null)
+            if (this.BVj != null)
             {
               bool1 = bool2;
-              if (!this.xiX.equals(paramObject.xiW)) {}
+              if (!this.BVj.equals(paramObject.AAz)) {}
             }
           }
         }
@@ -100,26 +102,41 @@ public abstract class GalleryItem$MediaItem
     return bool1;
   }
   
+  public final String etI()
+  {
+    return this.AAz;
+  }
+  
+  public final String etM()
+  {
+    return this.BVk;
+  }
+  
+  public final String getMimeType()
+  {
+    return this.mMimeType;
+  }
+  
   public abstract int getType();
+  
+  public final void t(String paramString, Object paramObject)
+  {
+    this.BVt.put(paramString, paramObject);
+  }
   
   public final String toSimpleString()
   {
-    return this.xiZ + " " + this.mMimeType + " " + this.xja + " | " + this.xjb;
+    return this.BVl + " " + this.mMimeType + " " + this.BVm + "| " + this.BVn + " | " + this.BVo + " | " + this.fXF;
   }
   
   public String toString()
   {
-    return "MediaItem{mOriginalPath='" + this.xiW + '\'' + ", mThumbPath='" + this.sUB + '\'' + ", origId=" + this.xiZ + ", generateDate=" + this.xja + ", mMimeType='" + this.mMimeType + '\'' + ", mLongitude='" + this.cil + '\'' + ", mLatitude='" + this.cik + '\'' + ", mBusinessTag='" + this.xjc + '\'' + '}';
+    return "MediaItem{mOriginalPath='" + this.AAz + '\'' + ", mThumbPath='" + this.wAy + '\'' + ", origId=" + this.BVl + ", generateDate=" + this.BVm + ", dateTag=" + this.BVn + ", isChecked=" + this.fXF + ", mMimeType='" + this.mMimeType + '\'' + ", mLongitude='" + this.BVp + '\'' + ", mLatitude='" + this.BVq + '\'' + ", mBusinessTag='" + this.BVr + '\'' + '}';
   }
   
-  public final void u(String paramString, Object paramObject)
+  public final <T> T u(String paramString, T paramT)
   {
-    this.xje.put(paramString, paramObject);
-  }
-  
-  public final <T> T w(String paramString, T paramT)
-  {
-    paramString = this.xje.get(paramString);
+    paramString = this.BVt.get(paramString);
     if (paramString != null) {
       paramT = paramString;
     }
@@ -128,7 +145,7 @@ public abstract class GalleryItem$MediaItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem
  * JD-Core Version:    0.7.0.1
  */

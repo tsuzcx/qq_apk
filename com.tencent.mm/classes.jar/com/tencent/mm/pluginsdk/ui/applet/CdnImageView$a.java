@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.ui.applet;
 
 import android.os.Bundle;
 import android.os.Message;
-import com.tencent.f.i.h;
+import com.tencent.e.i.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;

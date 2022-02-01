@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.appbrand.m;
 
-import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.ipcinvoker.m;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 
 final class ad$a
-  implements k<IPCVoid, IPCString>
+  implements m<IPCVoid, IPCString>
 {}
 
 

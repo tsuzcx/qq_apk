@@ -1,16 +1,18 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bkb;
-import com.tencent.mm.protocal.protobuf.bkc;
+import com.tencent.mm.protocal.protobuf.brk;
+import com.tencent.mm.protocal.protobuf.brl;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
 
@@ -19,25 +21,25 @@ public final class x
   implements m
 {
   private i callback;
-  private String pUi;
   private final d rr;
+  private String tqj;
   
   public x()
   {
     AppMethodBeat.i(112828);
-    this.pUi = "";
+    this.tqj = "";
     d.a locala = new d.a();
-    locala.iLN = new bkb();
-    locala.iLO = new bkc();
+    locala.lBU = new brk();
+    locala.lBV = new brl();
     locala.uri = "/cgi-bin/micromsg-bin/getcardconfiginfo";
     locala.funcId = 1046;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
+    this.rr = locala.bgN();
     AppMethodBeat.o(112828);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(112829);
     this.callback = parami;
@@ -57,8 +59,8 @@ public final class x
     Log.i("MicroMsg.NetSceneGetCardConfigInfo", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      this.pUi = ((bkc)this.rr.iLL.iLR).pTY;
-      com.tencent.mm.kernel.g.aAh().azQ().set(282885, this.pUi);
+      this.tqj = ((brl)d.c.b(this.rr.lBS)).tpZ;
+      h.aHG().aHp().i(282885, this.tqj);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(112830);

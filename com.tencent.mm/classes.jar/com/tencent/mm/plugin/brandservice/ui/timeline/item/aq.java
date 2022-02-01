@@ -1,236 +1,169 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.item;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Point;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.u;
-import com.tencent.mm.ag.v;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.aj.u;
+import com.tencent.mm.aj.v;
+import com.tencent.mm.plugin.brandservice.d.d;
+import com.tencent.mm.plugin.brandservice.d.e;
+import com.tencent.mm.plugin.brandservice.d.h;
+import com.tencent.mm.plugin.brandservice.ui.b.c;
 import com.tencent.mm.plugin.brandservice.ui.timeline.b;
-import com.tencent.mm.plugin.brandservice.ui.timeline.preload.d;
 import com.tencent.mm.pluginsdk.ui.applet.m.a;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.z;
 import com.tencent.mm.ui.widget.MMNeat7extView;
 
 public final class aq
-  extends ai
+  extends ak
 {
-  public View puc;
-  public TextView pyn;
-  View pyo;
-  public ImageView pyp;
-  public ImageView[] pyq;
-  public View[] pyr;
-  
-  public aq()
-  {
-    AppMethodBeat.i(6050);
-    this.pyq = new ImageView[4];
-    this.pyr = new View[4];
-    AppMethodBeat.o(6050);
-  }
-  
-  private boolean cng()
-  {
-    return this.mCount == 1;
-  }
+  public ImageView sCR;
+  public MMNeat7extView sDe;
+  public ImageView sGV;
+  public TextView sHM;
+  public ImageView sHN;
   
   public final void a(int paramInt1, v paramv, final z paramz, final int paramInt2, u paramu, int paramInt3)
   {
-    AppMethodBeat.i(6052);
+    AppMethodBeat.i(6045);
     super.a(paramInt1, paramv, paramz, paramInt2, paramu, paramInt3);
-    this.mCount = paramInt1;
-    this.pxB = false;
-    this.ptS.setVisibility(8);
-    ai.W(this.puc, b.prs);
-    paramInt1 = 0;
-    Object localObject1;
-    if (paramInt1 < this.pyr.length)
+    label67:
+    label85:
+    boolean bool;
+    if (Util.isNullOrNil(paramv.title))
     {
-      localObject1 = this.pyr[paramInt1];
-      if (localObject1 != null)
-      {
-        if (paramInt1 == 0) {
-          break label101;
-        }
-        if (paramInt1 == this.pyr.length - 1) {}
-        ((View)localObject1).setVisibility(8);
+      this.sDe.setVisibility(8);
+      if (TextUtils.isEmpty(paramv.lpY)) {
+        break label330;
       }
-      for (;;)
-      {
-        paramInt1 += 1;
-        break;
-        label101:
-        ((View)localObject1).setVisibility(0);
-        this.pyq[0] = ((ImageView)((View)localObject1).findViewById(2131297581));
-        this.pyq[1] = ((ImageView)((View)localObject1).findViewById(2131297582));
-        this.pyq[2] = ((ImageView)((View)localObject1).findViewById(2131297583));
-        this.pyq[3] = ((ImageView)((View)localObject1).findViewById(2131297584));
+      this.sHM.setVisibility(0);
+      this.sHM.setText(paramv.lpY);
+      if (paramv.lpZ != 2) {
+        break label342;
       }
-    }
-    this.pyo.setBackgroundResource(2131233974);
-    this.ptU.setVisibility(8);
-    final boolean bool = cng();
-    Object localObject2;
-    if (this.pyq.length > 0)
-    {
-      localObject1 = this.pyq[0];
-      localObject2 = paramv.iAo;
-      if ((localObject1 != null) && (!Util.isNullOrNil((String)localObject2)))
-      {
-        paramInt1 = b.prs;
-        a.jn(this.mContext);
-        a.getDensity(this.mContext);
-        Point localPoint = new Point((int)(paramInt1 * 1.777778F), paramInt1);
-        ((ImageView)localObject1).getLayoutParams().width = localPoint.x;
-        ((ImageView)localObject1).getLayoutParams().height = localPoint.y;
-        paramInt1 = localPoint.x;
-        paramInt3 = localPoint.y;
-        ((ImageView)localObject1).setVisibility(0);
-        this.pyp.setImageResource(2131689792);
-        this.pxE.prc.a(paramz.field_msgId, 0, paramv, (String)localObject2, (ImageView)localObject1, paramInt1, paramInt3, false, new m.a()
-        {
-          public final void onFinish()
-          {
-            AppMethodBeat.i(6049);
-            aq.this.pxB = true;
-            if (aq.this.pyp != null) {
-              aq.this.pyp.setImageResource(2131689793);
-            }
-            if (aq.this.ptS != null) {
-              aq.this.ptS.setVisibility(0);
-            }
-            View localView;
-            if (aq.this.pyo != null)
-            {
-              localView = aq.this.pyo;
-              if (!bool) {
-                break label153;
-              }
-            }
-            label153:
-            for (int i = 2131231341;; i = 2131231342)
-            {
-              localView.setBackgroundResource(i);
-              if (this.pyt == 0)
-              {
-                aq.this.ptY.setTextColor(aq.this.mContext.getResources().getColor(2131101427));
-                aq.this.pxE.prc.m(paramz.field_msgId, paramInt2);
-              }
-              AppMethodBeat.o(6049);
-              return;
-            }
-          }
-          
-          public final void onStart() {}
-        }, bool, this.pxD);
-      }
-    }
-    if (paramv.iAC > 1)
-    {
-      this.pyn.setVisibility(0);
-      this.pyn.setText(String.valueOf(paramv.iAC));
-      if (this.mCount != 1) {
-        break label536;
-      }
-      if (!bool) {
-        break label511;
-      }
-      this.ptQ.setBackgroundResource(2131233974);
-      this.ptQ.setPadding(0, 0, 0, 0);
-      label429:
-      if (!cng()) {
-        break label559;
-      }
-      this.ptS.setBackgroundResource(2131231311);
-      label445:
+      this.sHN.setImageResource(d.h.chatting_item_biz_kugou_music_watermark);
+      a(this.sGV, paramz, 0, paramv.lpK);
       a(this, paramz, paramv);
-      localObject1 = this.pxE;
-      localObject2 = this.ptQ;
-      if (this.mCount <= 1) {
-        break label571;
+      Object localObject1 = this.sHf;
+      Object localObject2 = this.sDd;
+      if (paramInt1 <= 1) {
+        break label355;
       }
-    }
-    label536:
-    label559:
-    label571:
-    for (bool = true;; bool = false)
-    {
+      bool = true;
+      label127:
       ((b)localObject1).a(paramv, paramz, paramInt2, paramu, (View)localObject2, bool, 0);
-      AppMethodBeat.o(6052);
-      return;
-      this.pyn.setVisibility(8);
-      break;
-      label511:
-      this.ptQ.setBackgroundResource(2131231316);
-      this.ptQ.setPadding(0, 0, 0, b.prv);
-      break label429;
-      this.ptQ.setBackgroundResource(2131231322);
-      this.ptQ.setPadding(0, 0, 0, 0);
-      break label429;
-      this.ptS.setBackgroundResource(2131231313);
-      break label445;
+      if (!(paramz.field_msgId + "_0").equals(c.cEq())) {
+        break label361;
+      }
+      this.sGV.setImageResource(d.h.chatting_item_biz_music_pause_loading_icon);
+      label184:
+      this.sCT.setVisibility(8);
+      paramu = this.sHf.sAc;
+      long l = paramz.field_msgId;
+      localObject1 = paramv.lpK;
+      localObject2 = this.sCR;
+      int i = b.sAs;
+      paramu.a(l, 0, paramv, (String)localObject1, (ImageView)localObject2, i, i, false, new m.a()
+      {
+        public final void onFinish()
+        {
+          AppMethodBeat.i(6043);
+          aq.this.sCT.setVisibility(0);
+          if ((paramz.field_msgId + "_0").equals(c.cEq())) {
+            aq.this.sGV.setImageResource(d.d.chatting_item_biz_music_pause_selector);
+          }
+          for (;;)
+          {
+            aq.this.sHf.sAc.p(paramz.field_msgId, paramInt2);
+            AppMethodBeat.o(6043);
+            return;
+            aq.this.sGV.setImageResource(d.d.chatting_item_biz_music_play_selector);
+          }
+        }
+        
+        public final void onStart() {}
+      }, paramInt3, 2.0F);
+      if (paramInt1 != 1) {
+        break label374;
+      }
+      this.sDd.setBackgroundResource(d.d.chatting_item_multi_bottom);
     }
+    for (;;)
+    {
+      paramv = this.sDd;
+      if (paramInt1 <= 1) {
+        break label387;
+      }
+      paramInt1 = b.sAu;
+      paramInt2 = b.sAu;
+      paramv.setPadding(paramInt1, paramInt1, paramInt2, paramInt2);
+      AppMethodBeat.o(6045);
+      return;
+      this.sDe.setVisibility(0);
+      this.sDe.aL(paramv.title);
+      break;
+      label330:
+      this.sHM.setVisibility(8);
+      break label67;
+      label342:
+      this.sHN.setImageResource(d.h.chatting_item_biz_qq_music_watermark);
+      break label85;
+      label355:
+      bool = false;
+      break label127;
+      label361:
+      this.sGV.setImageResource(d.h.chatting_item_biz_music_play_loading_icon);
+      break label184;
+      label374:
+      this.sDd.setBackgroundResource(d.d.chatting_item_multi_middle);
+    }
+    label387:
+    paramInt1 = b.sAu;
+    paramv.setPadding(paramInt1, paramInt1, b.sAu, b.sAt);
+    AppMethodBeat.o(6045);
   }
   
   public final void a(View paramView, b paramb)
   {
-    AppMethodBeat.i(6051);
+    AppMethodBeat.i(6044);
     super.a(paramView, paramb);
-    if (this.puO != null)
+    if (this.sEi != null)
     {
-      AppMethodBeat.o(6051);
+      AppMethodBeat.o(6044);
       return;
     }
-    paramb = (ViewStub)paramView.findViewById(2131309895);
+    paramb = (ViewStub)paramView.findViewById(d.e.dZw);
     if (paramb == null)
     {
-      AppMethodBeat.o(6051);
+      AppMethodBeat.o(6044);
       return;
     }
     paramb.inflate();
-    this.puO = paramView.findViewById(2131297555);
-    this.ptQ = paramView.findViewById(2131298458);
-    this.pyr[0] = this.puO.findViewById(2131305931);
-    this.pyr[1] = this.puO.findViewById(2131305933);
-    this.pyr[2] = this.puO.findViewById(2131305932);
-    this.pyr[3] = this.puO.findViewById(2131305930);
-    cmH();
-    this.pyn = ((TextView)this.puO.findViewById(2131305934));
-    this.pyp = ((ImageView)this.puO.findViewById(2131305927));
-    this.ptS = ((ImageView)this.puO.findViewById(2131306101));
-    this.puc = this.puO.findViewById(2131298538);
-    this.pyo = this.puO.findViewById(2131297574);
-    this.ptU = ((LinearLayout)this.puO.findViewById(2131307916));
-    this.ptW = ((MMNeat7extView)this.puO.findViewById(2131307913));
-    AppMethodBeat.o(6051);
-  }
-  
-  public final void a(z paramz, v paramv, View paramView, TextView paramTextView, int paramInt)
-  {
-    AppMethodBeat.i(6054);
-    super.a(paramz, paramv, paramView, paramTextView, paramInt);
-    paramTextView.setTextColor(this.mContext.getResources().getColor(2131101427));
-    AppMethodBeat.o(6054);
-  }
-  
-  public final void dw(View paramView)
-  {
-    AppMethodBeat.i(258318);
-    ai.W(paramView, b.prs);
-    AppMethodBeat.o(258318);
+    this.sEi = paramView.findViewById(d.e.sqL);
+    this.sDd = paramView.findViewById(d.e.srx);
+    cAo();
+    this.sCR = ((ImageView)this.sEi.findViewById(d.e.cover));
+    this.sDe = ((MMNeat7extView)this.sEi.findViewById(d.e.title_tv));
+    this.sHM = ((TextView)this.sEi.findViewById(d.e.dRi));
+    this.sGV = ((ImageView)this.sEi.findViewById(d.e.play_icon));
+    this.sHN = ((ImageView)this.sEi.findViewById(d.e.eaw));
+    this.sCT = ((ImageView)this.sEi.findViewById(d.e.dCV));
+    paramView = com.tencent.mm.plugin.brandservice.ui.b.d.sTw;
+    if (com.tencent.mm.plugin.brandservice.ui.b.d.cEs())
+    {
+      paramView = com.tencent.mm.plugin.brandservice.ui.b.d.sTw;
+      com.tencent.mm.plugin.brandservice.ui.b.d.e(this.sDe);
+    }
+    AppMethodBeat.o(6044);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.item.aq
  * JD-Core Version:    0.7.0.1
  */

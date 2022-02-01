@@ -1,87 +1,137 @@
 package com.tencent.mm.plugin.recordvideo.e;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ad.g;
+import com.tencent.mm.ad.i;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.n.d;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/util/SecondCutUtil;", "", "()V", "APPID_SECONDCUT", "", "DOWNLOAD_FROM_SNS_HOME", "DOWNLOAD_FROM_VIDEO_CORP", "DOWNLOAD_SECONDCUT_URL", "PACKAGE_NAME_SECONDCUT", "PRE_SCHEMA_SECONDCUT", "PUBLIC_KEY_SECONDCUT", "SCENE_MOMENTS", "TAG", "getSecondCutEditIntent", "Landroid/content/Intent;", "scene", "videoPath", "duration", "", "videoBitrate", "width", "height", "getSecondCutHomeIntent", "takeSecondCutSigh", "", "activity", "Landroid/content/Context;", "intent", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/util/SecondCutConfig;", "", "()V", "CHINESE_SIMPLE", "", "CHINESE_TRADITION", "ENGLISH", "TAG", "getEditVideoToSecondCutEntrance", "", "getFinderWordingTime", "", "getPopupFinderWording", "getPopupSecondCutWording", "getPopupWeSeeWording", "getSecondCutDownloadUrl", "getSecondCutSimpleStyleEntrance", "getSecondCutSimpleStyleWording", "getSecondCutWordingTime", "getShareVideoDuration", "getSnsToSecondCutEntrance", "getWeSeeWordingTime", "getWordingByLanguageFromJson", "json", "plugin-recordvideo_release"})
 public final class h
 {
-  public static final h Cix;
+  public static final h Ifn;
   
   static
   {
-    AppMethodBeat.i(238005);
-    Cix = new h();
-    AppMethodBeat.o(238005);
+    AppMethodBeat.i(224172);
+    Ifn = new h();
+    AppMethodBeat.o(224172);
   }
   
-  public static void ao(Context paramContext, Intent paramIntent)
+  public static String aWv(String paramString)
   {
-    AppMethodBeat.i(238002);
-    p.h(paramContext, "activity");
-    p.h(paramIntent, "intent");
+    AppMethodBeat.i(224164);
+    p.k(paramString, "json");
     try
     {
-      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bl(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.axQ(), "com/tencent/mm/plugin/recordvideo/util/SecondCutUtil", "takeSecondCutSigh", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/recordvideo/util/SecondCutUtil", "takeSecondCutSigh", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      if ((paramContext instanceof Activity))
+      paramString = new i(paramString);
+      if (LocaleUtil.isSimplifiedChineseAppLang())
       {
-        ((Activity)paramContext).overridePendingTransition(2130772161, -1);
-        AppMethodBeat.o(238002);
-        return;
+        paramString = paramString.optString("simple");
+        p.j(paramString, "jsonObject.optString(CHINESE_SIMPLE)");
+        AppMethodBeat.o(224164);
+        return paramString;
+      }
+      if (LocaleUtil.isTraditionalChineseAppLang())
+      {
+        paramString = paramString.optString("tradition");
+        p.j(paramString, "jsonObject.optString(CHINESE_TRADITION)");
+        AppMethodBeat.o(224164);
+        return paramString;
       }
     }
-    catch (Exception paramContext)
+    catch (g paramString)
     {
-      Log.e("MicroMsg.SecondCutUtil", "takeSecondCutSigh: error " + paramContext.getMessage());
-      AppMethodBeat.o(238002);
+      Log.e("MicroMsg.SecondCutConfig", "parse wording JSON error");
+      AppMethodBeat.o(224164);
+      return "";
     }
+    paramString = paramString.optString("english");
+    p.j(paramString, "jsonObject.optString(ENGLISH)");
+    AppMethodBeat.o(224164);
+    return paramString;
   }
   
-  public static Intent b(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public static boolean fzA()
   {
-    AppMethodBeat.i(238003);
-    p.h(paramString1, "scene");
-    p.h(paramString2, "videoPath");
-    Log.i("MicroMsg.SecondCutUtil", "getSecondCutEditIntent >>>videoPath: " + paramString2 + " >>>width: " + paramInt3 + " >>>height: " + paramInt4 + " >>>duration: " + paramInt1 + " >>> videoBitrate: " + paramInt2);
-    paramString2 = paramString2.getBytes(d.UTF_8);
-    p.g(paramString2, "(this as java.lang.String).getBytes(charset)");
-    paramString2 = Base64.encodeToString(paramString2, 10);
-    Intent localIntent = new Intent();
-    localIntent.setData(Uri.parse("miaojian://createvideo?scene=" + paramString1 + "&assetPaths=" + paramString2 + "&maxDuration=" + paramInt1 + "&bitrate=" + paramInt2 + "&resolution=" + paramInt3 + ',' + paramInt4 + "&from=2"));
-    localIntent.setPackage("com.tencent.phoenix");
-    localIntent.setAction("android.intent.action.VIEW");
-    localIntent.setFlags(268435456);
-    AppMethodBeat.o(238003);
-    return localIntent;
+    AppMethodBeat.i(224141);
+    boolean bool = ((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vNr, false);
+    Log.i("MicroMsg.SecondCutConfig", "EditVideoToSecondCutEntrance: ".concat(String.valueOf(bool)));
+    AppMethodBeat.o(224141);
+    return bool;
   }
   
-  public static Intent fm(String paramString, int paramInt)
+  public static int fzB()
   {
-    AppMethodBeat.i(238004);
-    p.h(paramString, "scene");
-    Intent localIntent = new Intent();
-    localIntent.setData(Uri.parse("miaojian://createvideo?scene=" + paramString + "&maxDuration=" + paramInt + "&from=1"));
-    localIntent.setPackage("com.tencent.phoenix");
-    localIntent.setAction("android.intent.action.VIEW");
-    localIntent.setFlags(268435456);
-    AppMethodBeat.o(238004);
-    return localIntent;
+    AppMethodBeat.i(224144);
+    int i = ((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vNu, 30);
+    Log.i("MicroMsg.SecondCutConfig", "ShareVideoDuration: ".concat(String.valueOf(i)));
+    AppMethodBeat.o(224144);
+    return i;
+  }
+  
+  public static String fzC()
+  {
+    AppMethodBeat.i(224146);
+    String str = ((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vNv, "https://miaojian.weixin.qq.com/download/apps?channel=");
+    Log.i("MicroMsg.SecondCutConfig", "SecondCutDownloadUrl: ".concat(String.valueOf(str)));
+    p.j(str, "url");
+    AppMethodBeat.o(224146);
+    return str;
+  }
+  
+  public static int fzD()
+  {
+    AppMethodBeat.i(224151);
+    int i = ((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vNw, 30);
+    Log.i("MicroMsg.SecondCutConfig", "SecondCutWordingTime: ".concat(String.valueOf(i)));
+    AppMethodBeat.o(224151);
+    return i;
+  }
+  
+  public static int fzE()
+  {
+    AppMethodBeat.i(224153);
+    int i = ((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vNx, 30);
+    Log.i("MicroMsg.SecondCutConfig", "WeSeeWordingTime: ".concat(String.valueOf(i)));
+    AppMethodBeat.o(224153);
+    return i;
+  }
+  
+  public static int fzF()
+  {
+    AppMethodBeat.i(224156);
+    int i = ((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vNy, 60);
+    Log.i("MicroMsg.SecondCutConfig", "FinderWordingTime: ".concat(String.valueOf(i)));
+    AppMethodBeat.o(224156);
+    return i;
+  }
+  
+  public static boolean fzG()
+  {
+    AppMethodBeat.i(224169);
+    boolean bool = ((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vNC, false);
+    Log.i("MicroMsg.SecondCutConfig", "SecondCutSimpleStyleEntrance: ".concat(String.valueOf(bool)));
+    AppMethodBeat.o(224169);
+    return bool;
+  }
+  
+  public static boolean fzz()
+  {
+    AppMethodBeat.i(224140);
+    boolean bool = ((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vNs, false);
+    Log.i("MicroMsg.SecondCutConfig", "SecondCutEntrance: ".concat(String.valueOf(bool)));
+    AppMethodBeat.o(224140);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.e.h
  * JD-Core Version:    0.7.0.1
  */

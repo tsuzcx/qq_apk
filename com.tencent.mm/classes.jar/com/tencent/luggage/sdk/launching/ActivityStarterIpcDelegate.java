@@ -16,7 +16,7 @@ public class ActivityStarterIpcDelegate
   implements Parcelable
 {
   public static final Parcelable.Creator<ActivityStarterIpcDelegate> CREATOR;
-  private final ResultReceiver cBu;
+  private final ResultReceiver cAX;
   
   static
   {
@@ -28,7 +28,7 @@ public class ActivityStarterIpcDelegate
   public ActivityStarterIpcDelegate(final Activity paramActivity)
   {
     AppMethodBeat.i(146867);
-    this.cBu = new ResultReceiver(new Handler(Looper.getMainLooper()))
+    this.cAX = new ResultReceiver(new Handler(Looper.getMainLooper()))
     {
       protected void onReceiveResult(int paramAnonymousInt, Bundle paramAnonymousBundle)
       {
@@ -41,10 +41,10 @@ public class ActivityStarterIpcDelegate
           {
             ((Intent)localObject).setFlags(((Intent)localObject).getFlags() & 0xEFFFFFFF);
             paramAnonymousBundle = paramActivity;
-            localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousBundle, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/luggage/sdk/launching/ActivityStarterIpcDelegate$1", "onReceiveResult", "(ILandroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousBundle.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousBundle, "com/tencent/luggage/sdk/launching/ActivityStarterIpcDelegate$1", "onReceiveResult", "(ILandroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+            com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousBundle, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/luggage/sdk/launching/ActivityStarterIpcDelegate$1", "onReceiveResult", "(ILandroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousBundle.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+            com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousBundle, "com/tencent/luggage/sdk/launching/ActivityStarterIpcDelegate$1", "onReceiveResult", "(ILandroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           }
         }
         AppMethodBeat.o(146864);
@@ -56,11 +56,11 @@ public class ActivityStarterIpcDelegate
   private ActivityStarterIpcDelegate(Parcel paramParcel)
   {
     AppMethodBeat.i(146869);
-    this.cBu = ((ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel));
+    this.cAX = ((ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel));
     AppMethodBeat.o(146869);
   }
   
-  public static ActivityStarterIpcDelegate aJ(Context paramContext)
+  public static ActivityStarterIpcDelegate aH(Context paramContext)
   {
     AppMethodBeat.i(146866);
     if ((paramContext instanceof Activity))
@@ -80,22 +80,22 @@ public class ActivityStarterIpcDelegate
   
   public final void startActivity(Intent paramIntent)
   {
-    AppMethodBeat.i(229863);
+    AppMethodBeat.i(243861);
     if (paramIntent == null)
     {
-      AppMethodBeat.o(229863);
+      AppMethodBeat.o(243861);
       return;
     }
     Bundle localBundle = new Bundle(1);
     localBundle.putParcelable("intent", paramIntent);
-    this.cBu.send(4660, localBundle);
-    AppMethodBeat.o(229863);
+    this.cAX.send(4660, localBundle);
+    AppMethodBeat.o(243861);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(146868);
-    this.cBu.writeToParcel(paramParcel, paramInt);
+    this.cAX.writeToParcel(paramParcel, paramInt);
     AppMethodBeat.o(146868);
   }
 }

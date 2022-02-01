@@ -10,11 +10,13 @@ import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.v4.app.s.c;
+import androidx.core.app.e.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.nn;
-import com.tencent.mm.model.ax;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.l;
+import com.tencent.mm.f.a.oj;
+import com.tencent.mm.model.ay;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.plugin.notification.d.f;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
@@ -25,22 +27,22 @@ import com.tencent.mm.sdk.platformtools.Util;
 @SuppressLint({"InlinedApi"})
 public final class FailSendMsgNotification
 {
-  public s.c AHH;
-  private int AHI;
-  public a AHJ;
-  public b AHK;
-  public c AHL;
-  public String AHM;
-  public String AHN;
-  private PendingIntent AHO;
-  private PendingIntent AHP;
-  private PendingIntent AHQ;
-  private PendingIntent AHR;
-  public boolean AHS;
-  public boolean AHT;
-  public boolean AHU;
-  Notification HX;
-  private Intent cYF;
+  public e.d GAQ;
+  private Intent GAR;
+  private int GAS;
+  public a GAT;
+  public b GAU;
+  public c GAV;
+  public String GAW;
+  public String GAX;
+  private PendingIntent GAY;
+  private PendingIntent GAZ;
+  private PendingIntent GBa;
+  private PendingIntent GBb;
+  public boolean GBc;
+  public boolean GBd;
+  public boolean GBe;
+  Notification IV;
   public Context mContext;
   boolean mIsForeground;
   private boolean mIsInit;
@@ -48,58 +50,58 @@ public final class FailSendMsgNotification
   
   public FailSendMsgNotification()
   {
-    this.HX = null;
-    this.AHH = null;
-    this.cYF = null;
-    this.AHI = 0;
-    this.AHJ = null;
-    this.AHK = null;
-    this.AHL = null;
-    this.AHM = null;
-    this.AHN = null;
-    this.AHO = null;
-    this.AHP = null;
-    this.AHQ = null;
-    this.AHR = null;
-    this.AHS = false;
-    this.AHT = false;
+    this.IV = null;
+    this.GAQ = null;
+    this.GAR = null;
+    this.GAS = 0;
+    this.GAT = null;
+    this.GAU = null;
+    this.GAV = null;
+    this.GAW = null;
+    this.GAX = null;
+    this.GAY = null;
+    this.GAZ = null;
+    this.GBa = null;
+    this.GBb = null;
+    this.GBc = false;
+    this.GBd = false;
     this.mIsForeground = false;
     this.mIsInit = false;
-    this.AHU = true;
+    this.GBe = true;
   }
   
   public FailSendMsgNotification(int paramInt)
   {
     AppMethodBeat.i(26811);
-    this.HX = null;
-    this.AHH = null;
-    this.cYF = null;
-    this.AHI = 0;
-    this.AHJ = null;
-    this.AHK = null;
-    this.AHL = null;
-    this.AHM = null;
-    this.AHN = null;
-    this.AHO = null;
-    this.AHP = null;
-    this.AHQ = null;
-    this.AHR = null;
-    this.AHS = false;
-    this.AHT = false;
+    this.IV = null;
+    this.GAQ = null;
+    this.GAR = null;
+    this.GAS = 0;
+    this.GAT = null;
+    this.GAU = null;
+    this.GAV = null;
+    this.GAW = null;
+    this.GAX = null;
+    this.GAY = null;
+    this.GAZ = null;
+    this.GBa = null;
+    this.GBb = null;
+    this.GBc = false;
+    this.GBd = false;
     this.mIsForeground = false;
     this.mIsInit = false;
-    this.AHU = true;
+    this.GBe = true;
     this.mType = paramInt;
     this.mContext = MMApplicationContext.getContext();
-    this.AHH = com.tencent.mm.bq.a.cd(this.mContext, com.tencent.mm.bq.a.glE());
-    this.AHU = true;
-    this.AHN = "";
+    this.GAQ = com.tencent.mm.bx.a.cp(this.mContext, com.tencent.mm.bx.a.hfv());
+    this.GBe = true;
+    this.GAX = "";
     try
     {
-      if (this.AHU) {
-        eyW();
+      if (this.GBe) {
+        fkB();
       }
-      eyX();
+      fkC();
       this.mIsInit = true;
     }
     catch (Exception localException)
@@ -116,27 +118,27 @@ public final class FailSendMsgNotification
     {
       bool = true;
       Log.d("MicroMsg.FailSendMsgNotification", "create FailSendMsgNotification, type:%d, context==null:%b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) });
-      this.AHS = false;
+      this.GBc = false;
       AppMethodBeat.o(26811);
       return;
     }
   }
   
-  private void eyW()
+  private void fkB()
   {
     AppMethodBeat.i(26812);
-    this.AHH.HM = true;
+    this.GAQ.IH = true;
     Intent localIntent = new Intent();
     if (this.mType == 1)
     {
       localIntent.setAction("com.tencent.failnotification.omit_msg");
       localIntent.setClass(this.mContext, FailSendNormalMsgNotificationService.class);
       localIntent.putExtra("notification_type", this.mType);
-      this.AHQ = PendingIntent.getService(this.mContext, this.mType, localIntent, 134217728);
-      this.AHH.a(2131234307, this.mContext.getString(2131763651), this.AHQ);
+      this.GBa = PendingIntent.getService(this.mContext, this.mType, localIntent, 134217728);
+      this.GAQ.a(R.g.notification_message_ignore_icon, this.mContext.getString(R.l.eNp), this.GBa);
       localIntent = new Intent();
       if (this.mType != 1) {
-        break label237;
+        break label241;
       }
       localIntent.setAction("com.tencent.failnotificaiton.resend_msg");
       localIntent.setClass(this.mContext, FailSendNormalMsgNotificationService.class);
@@ -147,8 +149,8 @@ public final class FailSendMsgNotification
       if (Build.VERSION.SDK_INT >= 16) {
         localIntent.addFlags(268435456);
       }
-      this.AHR = PendingIntent.getService(this.mContext, this.mType, localIntent, 134217728);
-      this.AHH.a(2131234308, this.mContext.getString(2131763652), this.AHR);
+      this.GBb = PendingIntent.getService(this.mContext, this.mType, localIntent, 134217728);
+      this.GAQ.a(R.g.notification_message_resend_icon, this.mContext.getString(R.l.eNq), this.GBb);
       AppMethodBeat.o(26812);
       return;
       if (this.mType != 2) {
@@ -157,7 +159,7 @@ public final class FailSendMsgNotification
       localIntent.setAction("com.tencent.failnotification.omit_sns");
       localIntent.setClass(this.mContext, FailSendSnsMsgNotificationService.class);
       break;
-      label237:
+      label241:
       if (this.mType == 2)
       {
         localIntent.setAction("com.tencent.failnotificaiton.resend_sns");
@@ -166,18 +168,18 @@ public final class FailSendMsgNotification
     }
   }
   
-  private static int ezb()
+  private static int fkG()
   {
     if (Build.VERSION.SDK_INT < 19) {
-      return 2131234303;
+      return R.g.notification_icon;
     }
-    return 2131234305;
+    return R.g.notification_icon_gray;
   }
   
-  public final void aJb(String paramString)
+  public final void aTx(String paramString)
   {
     AppMethodBeat.i(26814);
-    this.AHM = paramString;
+    this.GAW = paramString;
     show();
     AppMethodBeat.o(26814);
   }
@@ -185,7 +187,7 @@ public final class FailSendMsgNotification
   public final void dismiss()
   {
     AppMethodBeat.i(26817);
-    bg.getNotification().cancel(this.mType);
+    bh.getNotification().cancel(this.mType);
     Intent localIntent = new Intent();
     if (this.mType == 1)
     {
@@ -195,7 +197,7 @@ public final class FailSendMsgNotification
     for (;;)
     {
       this.mIsForeground = false;
-      this.AHS = false;
+      this.GBc = false;
       AppMethodBeat.o(26817);
       return;
       if (this.mType == 2)
@@ -206,7 +208,7 @@ public final class FailSendMsgNotification
     }
   }
   
-  public final void eyX()
+  public final void fkC()
   {
     AppMethodBeat.i(26813);
     Intent localIntent = new Intent();
@@ -215,11 +217,11 @@ public final class FailSendMsgNotification
       localIntent.setAction("com.tencent.failnotification.click_msg");
       localIntent.setClass(this.mContext, FailSendNormalMsgNotificationService.class);
       localIntent.putExtra("notification_type", this.mType);
-      this.AHO = PendingIntent.getService(this.mContext, this.mType, localIntent, 134217728);
-      this.AHH.Hv = this.AHO;
+      this.GAY = PendingIntent.getService(this.mContext, this.mType, localIntent, 134217728);
+      this.GAQ.Ip = this.GAY;
       localIntent = new Intent();
       if (this.mType != 1) {
-        break label192;
+        break label194;
       }
       localIntent.setAction("com.tencent.failnotification.dismiss_msg");
       localIntent.setClass(this.mContext, FailSendNormalMsgNotificationService.class);
@@ -227,8 +229,8 @@ public final class FailSendMsgNotification
     for (;;)
     {
       localIntent.putExtra("notification_type", this.mType);
-      this.AHP = PendingIntent.getService(this.mContext, this.mType, localIntent, 134217728);
-      this.AHH.b(this.AHP);
+      this.GAZ = PendingIntent.getService(this.mContext, this.mType, localIntent, 134217728);
+      this.GAQ.b(this.GAZ);
       AppMethodBeat.o(26813);
       return;
       if (this.mType != 2) {
@@ -237,7 +239,7 @@ public final class FailSendMsgNotification
       localIntent.setAction("com.tencent.failnotification.click_sns");
       localIntent.setClass(this.mContext, FailSendSnsMsgNotificationService.class);
       break;
-      label192:
+      label194:
       if (this.mType == 2)
       {
         localIntent.setAction("com.tencent.failnotification.dismiss_sns");
@@ -246,7 +248,7 @@ public final class FailSendMsgNotification
     }
   }
   
-  public final void eyY()
+  public final void fkD()
   {
     AppMethodBeat.i(26815);
     Log.d("MicroMsg.FailSendMsgNotification", "setIsForeground:%b", new Object[] { Boolean.FALSE });
@@ -254,23 +256,23 @@ public final class FailSendMsgNotification
     AppMethodBeat.o(26815);
   }
   
-  public final void eyZ()
+  public final void fkE()
   {
     AppMethodBeat.i(26818);
-    this.AHH.g(2, false);
-    this.AHT = false;
+    this.GAQ.e(2, false);
+    this.GBd = false;
     show();
     Log.d("MicroMsg.FailSendMsgNotification", "FailSendMsgNotification, unLockInNotificationBar");
     AppMethodBeat.o(26818);
   }
   
-  public final void eza()
+  public final void fkF()
   {
     AppMethodBeat.i(26819);
-    this.AHU = true;
-    this.AHH = com.tencent.mm.bq.a.cd(this.mContext, com.tencent.mm.bq.a.glE());
-    eyW();
-    eyX();
+    this.GBe = true;
+    this.GAQ = com.tencent.mm.bx.a.cp(this.mContext, com.tencent.mm.bx.a.hfv());
+    fkB();
+    fkC();
     AppMethodBeat.o(26819);
   }
   
@@ -284,30 +286,30 @@ public final class FailSendMsgNotification
       AppMethodBeat.o(26816);
       return;
     }
-    this.AHH.i(this.AHN);
-    this.AHH.f(this.mContext.getText(2131755908));
-    this.AHH.as(ezb());
-    this.AHH.g(this.AHM);
-    this.AHH.E(false);
-    this.HX = this.AHH.build();
+    this.GAQ.n(this.GAX);
+    this.GAQ.k(this.mContext.getText(R.l.app_name));
+    this.GAQ.bn(fkG());
+    this.GAQ.l(this.GAW);
+    this.GAQ.W(false);
+    this.IV = this.GAQ.gr();
     if ((Build.VERSION.SDK_INT >= 16) && (!this.mIsForeground))
     {
-      this.HX.priority = 2;
+      this.IV.priority = 2;
       Log.d("MicroMsg.FailSendMsgNotification", "show notification, set priority to max");
     }
     Log.d("MicroMsg.FailSendMsgNotification", "show notification, mIsForeground:%b", new Object[] { Boolean.valueOf(this.mIsForeground) });
-    bg.getNotification().a(this.mType, this.HX, false);
-    this.AHS = true;
+    bh.getNotification().a(this.mType, this.IV, false);
+    this.GBc = true;
     AppMethodBeat.o(26816);
   }
   
   public static abstract class FailSendMsgNotificationService
     extends Service
   {
-    protected IListener AHV = new IListener() {};
-    protected FailSendMsgNotification AHW = null;
+    protected IListener GBf = new IListener() {};
+    protected FailSendMsgNotification GBg = null;
     
-    protected abstract int ezc();
+    protected abstract int fkH();
     
     public IBinder onBind(Intent paramIntent)
     {
@@ -318,14 +320,14 @@ public final class FailSendMsgNotification
     {
       super.onCreate();
       Log.d("MicroMsg.FailSendMsgNotification", "onCreate FailSendMsgNotificationService");
-      EventCenter.instance.addListener(this.AHV);
+      EventCenter.instance.addListener(this.GBf);
     }
     
     public void onDestroy()
     {
       super.onDestroy();
       Log.d("MicroMsg.FailSendMsgNotification", "onDestroy FailSendMsgNotificationService");
-      EventCenter.instance.removeListener(this.AHV);
+      EventCenter.instance.removeListener(this.GBf);
     }
     
     @TargetApi(16)
@@ -336,7 +338,7 @@ public final class FailSendMsgNotification
         Log.d("MicroMsg.FailSendMsgNotification", "handle action button, intent is null");
       }
       String str;
-      label362:
+      label350:
       do
       {
         do
@@ -354,46 +356,45 @@ public final class FailSendMsgNotification
               }
               paramInt1 = paramIntent.getExtras().getInt("notification_type", -1);
               Log.d("MicroMsg.FailSendMsgNotification", "handle action button, type:%d", new Object[] { Integer.valueOf(paramInt1) });
-              if (f.TU(paramInt1) == null)
+              if (f.aaH(paramInt1) == null)
               {
                 Log.d("MicroMsg.FailSendMsgNotification", "handle action button, notification not exist");
                 return 2;
               }
               Log.d("MicroMsg.FailSendMsgNotification", "action:%s", new Object[] { str });
-              this.AHW = f.TU(paramInt1);
+              this.GBg = f.aaH(paramInt1);
               if (!str.startsWith("com.tencent.failnotification.omit")) {
                 break;
               }
-            } while (this.AHW.AHJ == null);
+            } while (this.GBg.GAT == null);
             Log.d("MicroMsg.FailSendMsgNotification", "handle omit action button, type:%d", new Object[] { Integer.valueOf(paramInt1) });
-            this.AHW.AHJ.eyM();
+            this.GBg.GAT.fkr();
             return 2;
             if (!str.startsWith("com.tencent.failnotificaiton.resend")) {
               break;
             }
-          } while (this.AHW.AHJ == null);
+          } while (this.GBg.GAT == null);
           boolean bool1;
-          if (this.AHW.HX == null)
+          if (this.GBg.IV == null)
           {
             bool1 = true;
-            if (this.AHW.AHH != null) {
-              break label362;
+            if (this.GBg.GAQ != null) {
+              break label350;
             }
           }
           for (boolean bool2 = true;; bool2 = false)
           {
             Log.d("MicroMsg.FailSendMsgNotification", "handle resend action button, type:%d, notification==null:%b, notificationBuilder==null:%b", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-            if (this.AHW != null) {
-              this.AHW.mIsForeground = true;
+            if (this.GBg != null) {
+              this.GBg.mIsForeground = true;
             }
-            if ((this.AHW.HX != null) && (Build.VERSION.SDK_INT >= 16)) {
-              this.AHW.HX.priority = 0;
+            if ((this.GBg.IV != null) && (Build.VERSION.SDK_INT >= 16)) {
+              this.GBg.IV.priority = 0;
             }
-            if (this.AHW.HX == null) {
-              this.AHW.show();
+            if (this.GBg.IV == null) {
+              this.GBg.show();
             }
-            startForeground(paramInt1, this.AHW.HX);
-            this.AHW.AHJ.eyL();
+            this.GBg.GAT.fkq();
             Log.d("MicroMsg.FailSendMsgNotification", "finish handle resend action button, type:%d", new Object[] { Integer.valueOf(paramInt1) });
             return 2;
             bool1 = false;
@@ -402,17 +403,17 @@ public final class FailSendMsgNotification
           if (!str.startsWith("com.tencent.failnotification.click")) {
             break;
           }
-        } while (this.AHW.AHK == null);
+        } while (this.GBg.GAU == null);
         Log.d("MicroMsg.FailSendMsgNotification", "handle click notification, type:%d", new Object[] { Integer.valueOf(paramInt1) });
-        this.AHW.AHK.eyN();
+        this.GBg.GAU.fks();
         return 2;
       } while (!str.startsWith("com.tencent.failnotification.dismiss"));
-      this.AHW.AHS = false;
-      this.AHW.mIsForeground = false;
-      if (this.AHW.AHL != null)
+      this.GBg.GBc = false;
+      this.GBg.mIsForeground = false;
+      if (this.GBg.GAV != null)
       {
         Log.d("MicroMsg.FailSendMsgNotification", "handle notification dismiss");
-        this.AHW.AHL.onDismiss();
+        this.GBg.GAV.onDismiss();
       }
       stopSelf();
       return 2;
@@ -422,7 +423,7 @@ public final class FailSendMsgNotification
   public static class FailSendNormalMsgNotificationService
     extends FailSendMsgNotification.FailSendMsgNotificationService
   {
-    protected final int ezc()
+    protected final int fkH()
     {
       return 1;
     }
@@ -431,7 +432,7 @@ public final class FailSendMsgNotification
   public static class FailSendSnsMsgNotificationService
     extends FailSendMsgNotification.FailSendMsgNotificationService
   {
-    protected final int ezc()
+    protected final int fkH()
     {
       return 2;
     }
@@ -439,7 +440,7 @@ public final class FailSendMsgNotification
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.notification.ui.FailSendMsgNotification
  * JD-Core Version:    0.7.0.1
  */

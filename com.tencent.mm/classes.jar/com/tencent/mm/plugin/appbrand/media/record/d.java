@@ -8,41 +8,41 @@ import java.util.List;
 
 public final class d
 {
-  public static final Long duO;
-  public static final Long duQ;
-  public static final Long duR;
-  public static final Long duS;
-  private static List<String> duV;
-  public static long duW;
-  public static final Long ndq;
-  public static final Long ndr;
+  public static final Long fnA;
+  private static List<String> fnD;
+  public static long fnE;
+  public static final Long fnw;
+  public static final Long fny;
+  public static final Long fnz;
+  public static final Long qdF;
+  public static final Long qdG;
   
   static
   {
     AppMethodBeat.i(146323);
-    duO = Long.valueOf(259200000L);
-    duQ = Long.valueOf(86400000L);
-    duR = Long.valueOf(43200000L);
-    duS = Long.valueOf(240000L);
-    ndq = Long.valueOf(60000L);
-    ndr = duQ;
-    duW = 0L;
-    duV = new ArrayList(10);
+    fnw = Long.valueOf(259200000L);
+    fny = Long.valueOf(86400000L);
+    fnz = Long.valueOf(43200000L);
+    fnA = Long.valueOf(240000L);
+    qdF = Long.valueOf(60000L);
+    qdG = fny;
+    fnE = 0L;
+    fnD = new ArrayList(10);
     AppMethodBeat.o(146323);
   }
   
-  public static void bOU()
+  public static void cbk()
   {
     AppMethodBeat.i(146320);
     long l = System.currentTimeMillis();
-    if (l - duW <= ndr.longValue())
+    if (l - fnE <= qdG.longValue())
     {
       Log.e("MicroMsg.Record.AudioRecordCacheClean", "The last clean time is in AUDIO_RECORD_NO_SCAN_TIME time");
       AppMethodBeat.o(146320);
       return;
     }
     Log.i("MicroMsg.Record.AudioRecordCacheClean", "start clean audio record file");
-    duW = l;
+    fnE = l;
     ThreadPool.post(new Runnable()
     {
       public final void run()
@@ -57,7 +57,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.d
  * JD-Core Version:    0.7.0.1
  */

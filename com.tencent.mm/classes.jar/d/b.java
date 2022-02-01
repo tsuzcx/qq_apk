@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   extends JceStruct
 {
-  static byte[] SLc;
+  static byte[] aamX;
   public byte[] data = null;
   public String fileName = "";
   public byte type = 0;
@@ -17,33 +17,33 @@ public final class b
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(214835);
+    AppMethodBeat.i(208063);
     this.type = paramJceInputStream.read(this.type, 0, true);
     this.fileName = paramJceInputStream.readString(1, false);
-    if (SLc == null)
+    if (aamX == null)
     {
       byte[] arrayOfByte = new byte[1];
-      SLc = arrayOfByte;
+      aamX = arrayOfByte;
       arrayOfByte[0] = 0;
     }
-    this.data = paramJceInputStream.read(SLc, 2, true);
-    AppMethodBeat.o(214835);
+    this.data = paramJceInputStream.read(aamX, 2, true);
+    AppMethodBeat.o(208063);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(214834);
+    AppMethodBeat.i(208061);
     paramJceOutputStream.write(this.type, 0);
     if (this.fileName != null) {
       paramJceOutputStream.write(this.fileName, 1);
     }
     paramJceOutputStream.write(this.data, 2);
-    AppMethodBeat.o(214834);
+    AppMethodBeat.o(208061);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     d.b
  * JD-Core Version:    0.7.0.1
  */

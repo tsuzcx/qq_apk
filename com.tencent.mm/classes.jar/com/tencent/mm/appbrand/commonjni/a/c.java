@@ -9,55 +9,37 @@ public final class c
   {
     public final void e(String paramString1, String paramString2, Object... paramVarArgs)
     {
-      AppMethodBeat.i(201247);
+      AppMethodBeat.i(246859);
       if (paramVarArgs != null) {}
       try
       {
         if (paramVarArgs.length > 0) {
           String.format(paramString2, paramVarArgs);
         }
-        AppMethodBeat.o(201247);
+        AppMethodBeat.o(246859);
         return;
       }
       catch (Exception paramString1)
       {
-        AppMethodBeat.o(201247);
+        AppMethodBeat.o(246859);
       }
     }
     
     public final void i(String paramString1, String paramString2, Object... paramVarArgs)
     {
-      AppMethodBeat.i(201245);
+      AppMethodBeat.i(246857);
       if (paramVarArgs != null) {}
       try
       {
         if (paramVarArgs.length > 0) {
           String.format(paramString2, paramVarArgs);
         }
-        AppMethodBeat.o(201245);
+        AppMethodBeat.o(246857);
         return;
       }
       catch (Exception paramString1)
       {
-        AppMethodBeat.o(201245);
-      }
-    }
-    
-    public final void w(String paramString1, String paramString2, Object... paramVarArgs)
-    {
-      AppMethodBeat.i(201246);
-      if (paramVarArgs != null) {}
-      try
-      {
-        if (paramVarArgs.length > 0) {
-          String.format(paramString2, paramVarArgs);
-        }
-        AppMethodBeat.o(201246);
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        AppMethodBeat.o(201246);
+        AppMethodBeat.o(246857);
       }
     }
   }

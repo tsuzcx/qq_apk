@@ -1,218 +1,180 @@
 package com.tencent.mm.plugin.appbrand.jsapi.ac;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.os.IInterface;
 import android.text.TextUtils;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.s;
-import java.util.ArrayList;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.j;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public final class a
+public abstract class a
+  extends c<j>
 {
-  public static String[] a(String[] paramArrayOfString1, String[] paramArrayOfString2)
+  private static String pst = null;
+  private String mAppId = null;
+  
+  private boolean a(Context paramContext, j paramj, int paramInt, boolean paramBoolean, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(193718);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramArrayOfString1.length)
-    {
-      if ((paramArrayOfString1[i] != null) && (paramArrayOfString2[i] != null) && (!paramArrayOfString1[i].equals(paramArrayOfString2[i]))) {
-        localArrayList.add(paramArrayOfString1[i]);
-      }
-      i += 1;
+    if (paramContext == null) {
+      return false;
     }
-    paramArrayOfString1 = (String[])localArrayList.toArray(new String[localArrayList.size()]);
-    AppMethodBeat.o(193718);
-    return paramArrayOfString1;
-  }
-  
-  private static String abv(String paramString)
-  {
-    AppMethodBeat.i(193720);
-    if (TextUtils.isEmpty(paramString))
+    paramJSONObject = new a.a(this, paramContext, paramj, paramInt, paramBoolean, paramJSONObject);
+    paramj = null;
+    if (paramBoolean)
     {
-      AppMethodBeat.o(193720);
-      return "";
+      paramj = new Intent("com.huawei.nfc.action.TRANSIT_OPEN_SERVICE");
+      paramj.setPackage("com.huawei.wallet");
     }
-    paramString = abx(abw(paramString));
-    AppMethodBeat.o(193720);
-    return paramString;
-  }
-  
-  private static String abw(String paramString)
-  {
-    AppMethodBeat.i(193721);
-    paramString = paramString.substring(paramString.indexOf("base64,") + 7).trim();
-    AppMethodBeat.o(193721);
-    return paramString;
-  }
-  
-  /* Error */
-  private static String abx(String paramString)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: ldc 79
-    //   4: invokestatic 13	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: iconst_0
-    //   9: invokestatic 85	android/util/Base64:decode	(Ljava/lang/String;I)[B
-    //   12: astore_1
-    //   13: aload_1
-    //   14: ifnull +8 -> 22
-    //   17: aload_1
-    //   18: arraylength
-    //   19: ifne +29 -> 48
-    //   22: ldc 79
-    //   24: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   27: ldc 53
-    //   29: areturn
-    //   30: astore_1
-    //   31: ldc 53
-    //   33: aload_1
-    //   34: ldc 87
-    //   36: iconst_0
-    //   37: anewarray 4	java/lang/Object
-    //   40: invokestatic 93	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   43: aconst_null
-    //   44: astore_1
-    //   45: goto -32 -> 13
-    //   48: new 95	java/lang/StringBuilder
-    //   51: dup
-    //   52: ldc 97
-    //   54: invokespecial 100	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   57: invokestatic 106	java/lang/System:currentTimeMillis	()J
-    //   60: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   63: ldc 112
-    //   65: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   68: aload_0
-    //   69: invokevirtual 118	java/lang/String:hashCode	()I
-    //   72: invokevirtual 121	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   75: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   78: astore_0
-    //   79: new 126	com/tencent/mm/vfs/o
-    //   82: dup
-    //   83: invokestatic 132	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
-    //   86: invokevirtual 138	android/content/Context:getCacheDir	()Ljava/io/File;
-    //   89: aload_0
-    //   90: invokespecial 141	com/tencent/mm/vfs/o:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   93: astore_3
-    //   94: aload_3
-    //   95: invokestatic 147	com/tencent/mm/vfs/s:ap	(Lcom/tencent/mm/vfs/o;)Ljava/io/OutputStream;
-    //   98: astore_0
-    //   99: aload_0
-    //   100: astore_2
-    //   101: aload_0
-    //   102: aload_1
-    //   103: invokevirtual 153	java/io/OutputStream:write	([B)V
-    //   106: aload_0
-    //   107: ifnull +7 -> 114
-    //   110: aload_0
-    //   111: invokevirtual 156	java/io/OutputStream:close	()V
-    //   114: aload_3
-    //   115: invokevirtual 160	com/tencent/mm/vfs/o:her	()Landroid/net/Uri;
-    //   118: invokestatic 166	com/tencent/mm/vfs/aa:z	(Landroid/net/Uri;)Ljava/lang/String;
-    //   121: astore_0
-    //   122: ldc 79
-    //   124: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   127: aload_0
-    //   128: areturn
-    //   129: astore_0
-    //   130: aconst_null
-    //   131: astore_0
-    //   132: aload_0
-    //   133: ifnull +7 -> 140
-    //   136: aload_0
-    //   137: invokevirtual 156	java/io/OutputStream:close	()V
-    //   140: ldc 79
-    //   142: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   145: ldc 53
-    //   147: areturn
-    //   148: astore_0
-    //   149: aload_2
-    //   150: ifnull +7 -> 157
-    //   153: aload_2
-    //   154: invokevirtual 156	java/io/OutputStream:close	()V
-    //   157: ldc 79
-    //   159: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   162: aload_0
-    //   163: athrow
-    //   164: astore_0
-    //   165: goto -51 -> 114
-    //   168: astore_0
-    //   169: goto -29 -> 140
-    //   172: astore_1
-    //   173: goto -16 -> 157
-    //   176: astore_1
-    //   177: goto -45 -> 132
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	180	0	paramString	String
-    //   12	6	1	arrayOfByte1	byte[]
-    //   30	4	1	localException1	Exception
-    //   44	59	1	arrayOfByte2	byte[]
-    //   172	1	1	localIOException	java.io.IOException
-    //   176	1	1	localException2	Exception
-    //   1	153	2	str	String
-    //   93	22	3	localo	com.tencent.mm.vfs.o
-    // Exception table:
-    //   from	to	target	type
-    //   7	13	30	java/lang/Exception
-    //   94	99	129	java/lang/Exception
-    //   94	99	148	finally
-    //   101	106	148	finally
-    //   110	114	164	java/io/IOException
-    //   136	140	168	java/io/IOException
-    //   153	157	172	java/io/IOException
-    //   101	106	176	java/lang/Exception
-  }
-  
-  public static String[] q(String[] paramArrayOfString)
-  {
-    AppMethodBeat.i(193717);
-    String[] arrayOfString = new String[paramArrayOfString.length];
-    int i = 0;
-    if (i < paramArrayOfString.length)
-    {
-      if ((paramArrayOfString[i] != null) && (paramArrayOfString[i].startsWith("data:image/"))) {
-        arrayOfString[i] = abv(paramArrayOfString[i]);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        arrayOfString[i] = paramArrayOfString[i];
-      }
-    }
-    AppMethodBeat.o(193717);
-    return arrayOfString;
-  }
-  
-  public static void r(String[] paramArrayOfString)
-  {
-    AppMethodBeat.i(193719);
-    int i = 0;
-    for (;;)
-    {
-      if (i < paramArrayOfString.length) {}
+    while (paramj != null) {
       try
       {
-        s.deleteFile(paramArrayOfString[i]);
-        label20:
-        i += 1;
-        continue;
-        AppMethodBeat.o(193719);
-        return;
+        paramBoolean = paramContext.bindService(paramj, paramJSONObject, 1);
+        return paramBoolean;
+        if (TextUtils.isEmpty(pst)) {
+          continue;
+        }
+        paramj = new Intent("com.tencent.mm.sdk.trafficcard.action.TRANSIT_OPEN_SERVICE");
+        paramj.setPackage(pst);
+      }
+      catch (Exception paramContext)
+      {
+        for (;;)
+        {
+          Log.e("MicroMsg.AppBrandTrafficCardBaseJsApi", "bind remote service exception [%s]", new Object[] { paramContext.getMessage() });
+          paramBoolean = false;
+        }
+      }
+    }
+  }
+  
+  private static boolean ac(Context paramContext, String paramString)
+  {
+    String str = Build.BRAND;
+    if ((Util.isNullOrNil(paramString)) || (Util.isNullOrNil(str))) {
+      return false;
+    }
+    Log.i("MicroMsg.AppBrandTrafficCardBaseJsApi", "isOtherDevices, packageName: %s", new Object[] { pst });
+    if (pst == null)
+    {
+      Object localObject1 = ((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vSH, "");
+      Log.i("MicroMsg.AppBrandTrafficCardBaseJsApi", "isOtherDevices, nfcCardCfg: %s", new Object[] { localObject1 });
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        return false;
+      }
+      Object localObject3 = null;
+      String[] arrayOfString2 = null;
+      String[] arrayOfString1 = arrayOfString2;
+      try
+      {
+        Object localObject4 = new JSONObject((String)localObject1);
+        arrayOfString1 = arrayOfString2;
+        localObject1 = localObject3;
+        if (((JSONObject)localObject4).getBoolean("isSupport"))
+        {
+          arrayOfString1 = arrayOfString2;
+          localObject4 = ((JSONObject)localObject4).getJSONArray("packageName");
+          localObject1 = localObject3;
+          if (localObject4 != null)
+          {
+            arrayOfString1 = arrayOfString2;
+            localObject1 = localObject3;
+            if (((JSONArray)localObject4).length() > 0)
+            {
+              arrayOfString1 = arrayOfString2;
+              int j = ((JSONArray)localObject4).length();
+              arrayOfString1 = arrayOfString2;
+              arrayOfString2 = new String[j];
+              int i = 0;
+              for (;;)
+              {
+                localObject1 = arrayOfString2;
+                if (i >= j) {
+                  break;
+                }
+                arrayOfString1 = arrayOfString2;
+                arrayOfString2[i] = ((JSONArray)localObject4).getString(i);
+                i += 1;
+              }
+            }
+          }
+        }
+        Object localObject2;
+        if (TextUtils.isEmpty(pst)) {
+          break label315;
+        }
       }
       catch (Exception localException)
       {
-        break label20;
+        Log.e("MicroMsg.AppBrandTrafficCardBaseJsApi", "parse nfc card config Exception:%s", new Object[] { localException.getMessage() });
+        localObject2 = arrayOfString1;
+        paramContext = b(paramContext, localObject2);
+        Log.i("MicroMsg.AppBrandTrafficCardBaseJsApi", "update OPPOPackage= %s", new Object[] { paramContext });
+        if (!TextUtils.isEmpty(paramContext)) {
+          pst = paramContext;
+        }
       }
     }
+    else
+    {
+      if (paramString.equals("Default")) {
+        return true;
+      }
+      return str.toLowerCase().equals(paramString.toLowerCase());
+    }
+  }
+  
+  private static String b(Context paramContext, String[] paramArrayOfString)
+  {
+    if ((paramContext == null) || (paramArrayOfString == null)) {
+      return null;
+    }
+    int i = 0;
+    while (i < paramArrayOfString.length)
+    {
+      if (getPackageInfo(paramContext, paramArrayOfString[i]) != null) {
+        return paramArrayOfString[i];
+      }
+      i += 1;
+    }
+    return null;
+  }
+  
+  private static PackageInfo getPackageInfo(Context paramContext, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
+      return paramContext;
+    }
+    catch (Exception paramContext)
+    {
+      Log.e("MicroMsg.AppBrandTrafficCardBaseJsApi", "getPackageInfo exception: [%s]", new Object[] { paramContext.getMessage() });
+    }
+    return null;
+  }
+  
+  protected abstract void a(j paramj, int paramInt, IInterface paramIInterface, JSONObject paramJSONObject);
+  
+  protected final void q(int paramInt1, int paramInt2, String paramString)
+  {
+    com.tencent.mm.plugin.report.service.h.IzE.a(22506, new Object[] { this.mAppId, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ac.a
  * JD-Core Version:    0.7.0.1
  */

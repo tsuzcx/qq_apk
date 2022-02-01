@@ -5,16 +5,16 @@ import com.tencent.mm.wallet_core.c.l.a;
 public abstract class a<InputType>
   implements l.a<InputType>
 {
-  public void eNp() {}
+  public void fAe() {}
   
-  public final int eNq()
+  public final int fAf()
   {
     return 1149;
   }
   
-  public void eNr() {}
+  public void fAg() {}
   
-  public final void eNs() {}
+  public final void fAh() {}
 }
 
 

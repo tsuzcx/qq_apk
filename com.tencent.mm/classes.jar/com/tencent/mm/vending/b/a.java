@@ -26,7 +26,7 @@ public abstract class a<_Callback>
   
   public a(String paramString)
   {
-    this(g.boH(paramString));
+    this(g.bBx(paramString));
   }
   
   protected b add(b paramb)
@@ -108,7 +108,7 @@ public abstract class a<_Callback>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vending.b.a
  * JD-Core Version:    0.7.0.1
  */

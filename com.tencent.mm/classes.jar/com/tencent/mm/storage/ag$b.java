@@ -8,7 +8,7 @@ import android.text.style.StyleSpan;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import java.util.Map;
 import kotlin.g.a.b;
 import kotlin.g.b.p;
@@ -17,7 +17,7 @@ import kotlin.l;
 import kotlin.n.n;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<no name provided>", "Landroid/text/SpannableString;", "prefix", "", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<no name provided>", "Landroid/text/SpannableString;", "prefix", "", "invoke"})
 final class ag$b
   extends q
   implements b<String, SpannableString>
@@ -27,21 +27,21 @@ final class ag$b
     super(1);
   }
   
-  private SpannableString bjd(String paramString)
+  private SpannableString bvy(String paramString)
   {
     Object localObject3 = null;
-    AppMethodBeat.i(212659);
-    p.h(paramString, "prefix");
-    Object localObject1 = (String)this.NRx.get(paramString + ".content");
+    AppMethodBeat.i(206688);
+    p.k(paramString, "prefix");
+    Object localObject1 = (String)this.Vfs.get(paramString + ".content");
     if (localObject1 != null)
     {
       if (localObject1 == null)
       {
         paramString = new t("null cannot be cast to non-null type kotlin.CharSequence");
-        AppMethodBeat.o(212659);
+        AppMethodBeat.o(206688);
         throw paramString;
       }
-      localObject2 = n.trim((CharSequence)localObject1).toString();
+      localObject2 = n.bb((CharSequence)localObject1).toString();
       localObject1 = localObject2;
       if (localObject2 != null) {}
     }
@@ -49,19 +49,19 @@ final class ag$b
     {
       localObject1 = "";
     }
-    Object localObject2 = (String)this.NRx.get(paramString + ".android_color_light");
-    if (ao.isDarkMode()) {
-      localObject2 = (String)this.NRx.get(paramString + ".android_color_dark");
+    Object localObject2 = (String)this.Vfs.get(paramString + ".android_color_light");
+    if (ar.isDarkMode()) {
+      localObject2 = (String)this.Vfs.get(paramString + ".android_color_dark");
     }
     for (;;)
     {
       int i;
       int j;
       SpannableString localSpannableString;
-      if (Util.getInt((String)this.NRx.get(paramString + ".bold"), 0) == 1)
+      if (Util.getInt((String)this.Vfs.get(paramString + ".bold"), 0) == 1)
       {
         i = 1;
-        j = Util.getInt((String)this.NRx.get(paramString + ".size"), 15);
+        j = Util.getInt((String)this.Vfs.get(paramString + ".size"), 15);
         localSpannableString = new SpannableString((CharSequence)localObject1);
       }
       for (;;)
@@ -103,7 +103,7 @@ final class ag$b
           }
           localSpannableString.setSpan(localObject2, 0, paramString.intValue(), 33);
         }
-        AppMethodBeat.o(212659);
+        AppMethodBeat.o(206688);
         return localSpannableString;
         i = 0;
         break;
@@ -114,7 +114,7 @@ final class ag$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.ag.b
  * JD-Core Version:    0.7.0.1
  */

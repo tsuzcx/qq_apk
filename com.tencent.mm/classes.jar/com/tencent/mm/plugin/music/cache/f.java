@@ -10,23 +10,23 @@ import java.util.List;
 public final class f
   implements b
 {
-  private static long duW = 0L;
-  private List<String> duV;
+  private static long fnE = 0L;
+  private List<String> fnD;
   
   public f(List<String> paramList)
   {
     AppMethodBeat.i(137172);
-    this.duV = new ArrayList(10);
+    this.fnD = new ArrayList(10);
     if (!paramList.isEmpty()) {
-      this.duV.addAll(paramList);
+      this.fnD.addAll(paramList);
     }
     AppMethodBeat.o(137172);
   }
   
-  private boolean gJ(String paramString)
+  private boolean hv(String paramString)
   {
     AppMethodBeat.i(137174);
-    Iterator localIterator = this.duV.iterator();
+    Iterator localIterator = this.fnD.iterator();
     while (localIterator.hasNext()) {
       if (paramString.contains((String)localIterator.next()))
       {
@@ -38,22 +38,22 @@ public final class f
     return false;
   }
   
-  public final void etC()
+  public final void fdP()
   {
     final long l = 0L;
     AppMethodBeat.i(137173);
-    if (duW == 0L)
+    if (fnE == 0L)
     {
-      if (!e.etK()) {
+      if (!e.fdV()) {
         break label71;
       }
-      l = ((c)com.tencent.mm.plugin.music.f.c.b.aS(c.class)).etF();
+      l = ((c)com.tencent.mm.plugin.music.f.c.b.bm(c.class)).fdS();
     }
     for (;;)
     {
-      duW = l;
+      fnE = l;
       l = System.currentTimeMillis();
-      if (l - duW > AiG.longValue()) {
+      if (l - fnE > FPD.longValue()) {
         break;
       }
       Log.e("MicroMsg.Music.PieceCacheCleanController", "startClean the last clean time is in MUSIC_NO_SCAN_TIME time");
@@ -62,7 +62,7 @@ public final class f
       label71:
       Log.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
     }
-    duW = l;
+    fnE = l;
     Log.i("MicroMsg.Music.PieceCacheCleanController", "start clean music file");
     ThreadPool.post(new Runnable()
     {
@@ -70,8 +70,8 @@ public final class f
       {
         AppMethodBeat.i(137171);
         long l = l;
-        if (e.etK()) {
-          ((c)com.tencent.mm.plugin.music.f.c.b.aS(c.class)).Hn(l);
+        if (e.fdV()) {
+          ((c)com.tencent.mm.plugin.music.f.c.b.bm(c.class)).OD(l);
         }
         f.a(f.this);
         AppMethodBeat.o(137171);
@@ -82,7 +82,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.cache.f
  * JD-Core Version:    0.7.0.1
  */

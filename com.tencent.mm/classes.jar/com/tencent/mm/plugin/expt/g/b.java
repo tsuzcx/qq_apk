@@ -1,31 +1,44 @@
 package com.tencent.mm.plugin.expt.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class b
 {
-  private static b sKh;
+  private static b wqf;
   private String name = null;
   
-  public static b cRt()
+  public static b dgo()
   {
     AppMethodBeat.i(122358);
-    if (sKh == null) {
-      sKh = new b();
+    if (wqf == null) {
+      wqf = new b();
     }
-    b localb = sKh;
+    b localb = wqf;
     AppMethodBeat.o(122358);
     return localb;
   }
   
-  final MultiProcessMMKV VQ()
+  public final String L(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(122361);
+    MultiProcessMMKV localMultiProcessMMKV = aal();
+    if (localMultiProcessMMKV == null)
+    {
+      AppMethodBeat.o(122361);
+      return paramString2;
+    }
+    paramString1 = localMultiProcessMMKV.getString(paramString1, paramString2);
+    AppMethodBeat.o(122361);
+    return paramString1;
+  }
+  
+  final MultiProcessMMKV aal()
   {
     AppMethodBeat.i(122359);
-    int i = a.azs();
+    int i = com.tencent.mm.kernel.b.aGP();
     if (i == 0)
     {
       AppMethodBeat.o(122359);
@@ -45,7 +58,7 @@ public final class b
   public final String[] allKeys()
   {
     AppMethodBeat.i(122362);
-    Object localObject = VQ();
+    Object localObject = aal();
     if (localObject == null)
     {
       AppMethodBeat.o(122362);
@@ -56,24 +69,10 @@ public final class b
     return localObject;
   }
   
-  public final String get(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(122361);
-    MultiProcessMMKV localMultiProcessMMKV = VQ();
-    if (localMultiProcessMMKV == null)
-    {
-      AppMethodBeat.o(122361);
-      return paramString2;
-    }
-    paramString1 = localMultiProcessMMKV.getString(paramString1, paramString2);
-    AppMethodBeat.o(122361);
-    return paramString1;
-  }
-  
   public final void remove(String paramString)
   {
     AppMethodBeat.i(122360);
-    MultiProcessMMKV localMultiProcessMMKV = VQ();
+    MultiProcessMMKV localMultiProcessMMKV = aal();
     if (localMultiProcessMMKV == null)
     {
       AppMethodBeat.o(122360);
@@ -85,7 +84,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.g.b
  * JD-Core Version:    0.7.0.1
  */

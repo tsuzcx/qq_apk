@@ -9,41 +9,41 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
 {
-  public int cSx;
-  public String fuD;
-  public String iKR;
-  public int iKU;
+  public int cUP;
+  public String hDf;
   private int id;
-  public String kdN;
-  long kdO;
-  public String kdP;
-  public String kdQ;
-  String kdR;
-  String kdS;
-  public String kdT;
-  public int kdU;
-  public byte[] kdV;
-  public int kdW;
-  public String kdX;
-  public int kdY;
-  public String kdZ;
-  public String kea;
-  public String keb;
-  int kec;
-  public String ked;
-  int kee;
-  int kef;
-  String keg;
-  public String keh;
-  String kei;
-  int kej;
-  String kek;
-  long kel;
-  int kem;
-  String ken;
-  String keo;
-  String kep;
-  public long keq;
+  public String lAY;
+  public int lBb;
+  public String mVA;
+  public String mVB;
+  int mVC;
+  public String mVD;
+  int mVE;
+  int mVF;
+  String mVG;
+  public String mVH;
+  String mVI;
+  int mVJ;
+  String mVK;
+  long mVL;
+  int mVM;
+  String mVN;
+  String mVO;
+  String mVP;
+  public long mVQ;
+  public String mVn;
+  long mVo;
+  public String mVp;
+  public String mVq;
+  String mVr;
+  String mVs;
+  public String mVt;
+  public int mVu;
+  public byte[] mVv;
+  public int mVw;
+  public String mVx;
+  public int mVy;
+  public String mVz;
   private String md5;
   String nickName;
   public String realName;
@@ -54,49 +54,92 @@ public final class a
   public a()
   {
     AppMethodBeat.i(130966);
-    this.cSx = -1;
+    this.cUP = -1;
     this.id = 0;
     this.md5 = "";
-    this.kdN = "";
-    this.kdO = 0L;
+    this.mVn = "";
+    this.mVo = 0L;
     this.realName = "";
-    this.kdP = "";
-    this.kdQ = "";
+    this.mVp = "";
+    this.mVq = "";
     this.username = "";
     this.nickName = "";
-    this.kdR = "";
-    this.kdS = "";
+    this.mVr = "";
+    this.mVs = "";
     this.type = 0;
-    this.kdT = "";
-    this.fuD = "";
+    this.mVt = "";
+    this.hDf = "";
     this.status = 0;
-    this.iKR = "";
-    this.iKU = 0;
-    this.kdU = 0;
-    this.kdX = "";
-    this.kdY = 0;
-    this.kdZ = "";
-    this.kea = "";
-    this.keb = "";
-    this.kec = 0;
-    this.ked = "";
-    this.kee = 0;
-    this.kef = 0;
-    this.keg = "";
-    this.keh = "";
-    this.kei = "";
-    this.kej = -1;
-    this.kek = "";
-    this.kel = -1L;
-    this.kem = -1;
-    this.ken = "";
-    this.keo = "";
-    this.kep = "";
-    this.keq = 0L;
+    this.lAY = "";
+    this.lBb = 0;
+    this.mVu = 0;
+    this.mVx = "";
+    this.mVy = 0;
+    this.mVz = "";
+    this.mVA = "";
+    this.mVB = "";
+    this.mVC = 0;
+    this.mVD = "";
+    this.mVE = 0;
+    this.mVF = 0;
+    this.mVG = "";
+    this.mVH = "";
+    this.mVI = "";
+    this.mVJ = -1;
+    this.mVK = "";
+    this.mVL = -1L;
+    this.mVM = -1;
+    this.mVN = "";
+    this.mVO = "";
+    this.mVP = "";
+    this.mVQ = 0L;
     AppMethodBeat.o(130966);
   }
   
-  public static int SQ(String paramString)
+  private void aR(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(130968);
+    try
+    {
+      LVBuffer localLVBuffer = new LVBuffer();
+      int i = localLVBuffer.initParse(paramArrayOfByte);
+      if (i != 0)
+      {
+        Log.e("MicroMsg.AddrUpload", "parse LVBuffer error:".concat(String.valueOf(i)));
+        AppMethodBeat.o(130968);
+        return;
+      }
+      this.mVx = localLVBuffer.getString();
+      this.mVy = localLVBuffer.getInt();
+      this.mVz = localLVBuffer.getString();
+      this.mVA = localLVBuffer.getString();
+      this.mVB = localLVBuffer.getString();
+      this.mVC = localLVBuffer.getInt();
+      this.mVD = localLVBuffer.getString();
+      this.mVE = localLVBuffer.getInt();
+      this.mVF = localLVBuffer.getInt();
+      this.mVG = localLVBuffer.getString();
+      this.mVH = localLVBuffer.getString();
+      this.mVI = localLVBuffer.getString();
+      this.mVJ = localLVBuffer.getInt();
+      this.mVK = localLVBuffer.getString();
+      this.mVL = localLVBuffer.getLong();
+      this.mVM = localLVBuffer.getInt();
+      this.mVN = localLVBuffer.getString();
+      this.mVO = localLVBuffer.getString();
+      this.mVP = localLVBuffer.getString();
+      this.mVQ = localLVBuffer.getLong();
+      AppMethodBeat.o(130968);
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      Log.printErrStackTrace("MicroMsg.AddrUpload", paramArrayOfByte, "", new Object[0]);
+      AppMethodBeat.o(130968);
+    }
+  }
+  
+  public static int aaw(String paramString)
   {
     int i = 0;
     AppMethodBeat.i(130971);
@@ -116,76 +159,33 @@ public final class a
     return i;
   }
   
-  private void aG(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(130968);
-    try
-    {
-      LVBuffer localLVBuffer = new LVBuffer();
-      int i = localLVBuffer.initParse(paramArrayOfByte);
-      if (i != 0)
-      {
-        Log.e("MicroMsg.AddrUpload", "parse LVBuffer error:".concat(String.valueOf(i)));
-        AppMethodBeat.o(130968);
-        return;
-      }
-      this.kdX = localLVBuffer.getString();
-      this.kdY = localLVBuffer.getInt();
-      this.kdZ = localLVBuffer.getString();
-      this.kea = localLVBuffer.getString();
-      this.keb = localLVBuffer.getString();
-      this.kec = localLVBuffer.getInt();
-      this.ked = localLVBuffer.getString();
-      this.kee = localLVBuffer.getInt();
-      this.kef = localLVBuffer.getInt();
-      this.keg = localLVBuffer.getString();
-      this.keh = localLVBuffer.getString();
-      this.kei = localLVBuffer.getString();
-      this.kej = localLVBuffer.getInt();
-      this.kek = localLVBuffer.getString();
-      this.kel = localLVBuffer.getLong();
-      this.kem = localLVBuffer.getInt();
-      this.ken = localLVBuffer.getString();
-      this.keo = localLVBuffer.getString();
-      this.kep = localLVBuffer.getString();
-      this.keq = localLVBuffer.getLong();
-      AppMethodBeat.o(130968);
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      Log.printErrStackTrace("MicroMsg.AddrUpload", paramArrayOfByte, "", new Object[0]);
-      AppMethodBeat.o(130968);
-    }
-  }
-  
-  private byte[] bnI()
+  private byte[] bxR()
   {
     AppMethodBeat.i(130970);
     try
     {
       Object localObject = new LVBuffer();
       ((LVBuffer)localObject).initBuild();
-      ((LVBuffer)localObject).putString(this.kdX);
-      ((LVBuffer)localObject).putInt(this.kdY);
-      ((LVBuffer)localObject).putString(this.kdZ);
-      ((LVBuffer)localObject).putString(this.kea);
-      ((LVBuffer)localObject).putString(this.keb);
-      ((LVBuffer)localObject).putInt(this.kec);
-      ((LVBuffer)localObject).putString(this.ked);
-      ((LVBuffer)localObject).putInt(this.kee);
-      ((LVBuffer)localObject).putInt(this.kef);
-      ((LVBuffer)localObject).putString(this.keg);
-      ((LVBuffer)localObject).putString(this.keh);
-      ((LVBuffer)localObject).putString(this.kei);
-      ((LVBuffer)localObject).putInt(this.kej);
-      ((LVBuffer)localObject).putString(this.kek);
-      ((LVBuffer)localObject).putLong(this.kel);
-      ((LVBuffer)localObject).putInt(this.kem);
-      ((LVBuffer)localObject).putString(this.ken);
-      ((LVBuffer)localObject).putString(this.keo);
-      ((LVBuffer)localObject).putString(this.kep);
-      ((LVBuffer)localObject).putLong(this.keq);
+      ((LVBuffer)localObject).putString(this.mVx);
+      ((LVBuffer)localObject).putInt(this.mVy);
+      ((LVBuffer)localObject).putString(this.mVz);
+      ((LVBuffer)localObject).putString(this.mVA);
+      ((LVBuffer)localObject).putString(this.mVB);
+      ((LVBuffer)localObject).putInt(this.mVC);
+      ((LVBuffer)localObject).putString(this.mVD);
+      ((LVBuffer)localObject).putInt(this.mVE);
+      ((LVBuffer)localObject).putInt(this.mVF);
+      ((LVBuffer)localObject).putString(this.mVG);
+      ((LVBuffer)localObject).putString(this.mVH);
+      ((LVBuffer)localObject).putString(this.mVI);
+      ((LVBuffer)localObject).putInt(this.mVJ);
+      ((LVBuffer)localObject).putString(this.mVK);
+      ((LVBuffer)localObject).putLong(this.mVL);
+      ((LVBuffer)localObject).putInt(this.mVM);
+      ((LVBuffer)localObject).putString(this.mVN);
+      ((LVBuffer)localObject).putString(this.mVO);
+      ((LVBuffer)localObject).putString(this.mVP);
+      ((LVBuffer)localObject).putLong(this.mVQ);
       localObject = ((LVBuffer)localObject).buildFinish();
       AppMethodBeat.o(130970);
       return localObject;
@@ -198,14 +198,14 @@ public final class a
     return null;
   }
   
-  public final int aqN()
+  public final int axh()
   {
     AppMethodBeat.i(130973);
     int i = 32;
     int j;
-    if (!Util.isNullOrNil(bnL()))
+    if (!Util.isNullOrNil(bxU()))
     {
-      i = bnL().charAt(0);
+      i = bxU().charAt(0);
       if ((i < 97) || (i > 122)) {
         break label74;
       }
@@ -215,10 +215,10 @@ public final class a
     {
       AppMethodBeat.o(130973);
       return j;
-      if (Util.isNullOrNil(bnM())) {
+      if (Util.isNullOrNil(bxV())) {
         break;
       }
-      i = bnM().charAt(0);
+      i = bxV().charAt(0);
       break;
       label74:
       if (i >= 65)
@@ -233,15 +233,15 @@ public final class a
     }
   }
   
-  public final String bnJ()
+  public final String bxS()
   {
-    if (this.kdN == null) {
+    if (this.mVn == null) {
       return "";
     }
-    return this.kdN;
+    return this.mVn;
   }
   
-  public final String bnK()
+  public final String bxT()
   {
     if (this.realName == null) {
       return "";
@@ -249,84 +249,84 @@ public final class a
     return this.realName;
   }
   
-  public final String bnL()
+  public final String bxU()
   {
-    if (this.kdP == null) {
+    if (this.mVp == null) {
       return "";
     }
-    return this.kdP;
+    return this.mVp;
   }
   
-  public final String bnM()
+  public final String bxV()
   {
-    if (this.kdQ == null) {
+    if (this.mVq == null) {
       return "";
     }
-    return this.kdQ;
+    return this.mVq;
   }
   
-  public final String bnN()
+  public final String bxW()
   {
-    if (this.kdR == null) {
+    if (this.mVr == null) {
       return "";
     }
-    return this.kdR;
+    return this.mVr;
   }
   
-  public final String bnO()
+  public final String bxX()
   {
-    if (this.kdS == null) {
+    if (this.mVs == null) {
       return "";
     }
-    return this.kdS;
+    return this.mVs;
   }
   
-  public final String bnP()
+  public final String bxY()
   {
-    if (this.kdT == null) {
+    if (this.mVt == null) {
       return "";
     }
-    return this.kdT;
+    return this.mVt;
   }
   
-  public final void bnQ()
+  public final void bxZ()
   {
-    this.kdU |= 0x1;
+    this.mVu |= 0x1;
   }
   
-  public final boolean bnR()
+  public final boolean bya()
   {
-    return (this.kdU & 0x1) == 0;
+    return (this.mVu & 0x1) == 0;
   }
   
   public final void convertFrom(Cursor paramCursor)
   {
     AppMethodBeat.i(130967);
     setMd5(paramCursor.getString(1));
-    this.kdN = paramCursor.getString(2);
-    this.kdO = paramCursor.getLong(3);
+    this.mVn = paramCursor.getString(2);
+    this.mVo = paramCursor.getLong(3);
     this.realName = paramCursor.getString(4);
-    this.kdP = paramCursor.getString(5);
-    this.kdQ = paramCursor.getString(6);
+    this.mVp = paramCursor.getString(5);
+    this.mVq = paramCursor.getString(6);
     this.username = paramCursor.getString(7);
     this.nickName = paramCursor.getString(8);
-    this.kdR = paramCursor.getString(9);
-    this.kdS = paramCursor.getString(10);
+    this.mVr = paramCursor.getString(9);
+    this.mVs = paramCursor.getString(10);
     this.type = paramCursor.getInt(11);
-    this.kdT = paramCursor.getString(12);
-    this.fuD = paramCursor.getString(13);
+    this.mVt = paramCursor.getString(12);
+    this.hDf = paramCursor.getString(13);
     int i = paramCursor.getInt(14);
     if (i == 65536) {}
     for (this.status = 0;; this.status = i)
     {
-      this.kdU = paramCursor.getInt(17);
-      this.iKR = paramCursor.getString(15);
-      this.iKU = paramCursor.getInt(18);
-      this.kdV = paramCursor.getBlob(19);
-      if (!Util.isNullOrNil(this.kdV)) {
-        aG(this.kdV);
+      this.mVu = paramCursor.getInt(17);
+      this.lAY = paramCursor.getString(15);
+      this.lBb = paramCursor.getInt(18);
+      this.mVv = paramCursor.getBlob(19);
+      if (!Util.isNullOrNil(this.mVv)) {
+        aR(this.mVv);
       }
-      this.kdW = paramCursor.getInt(20);
+      this.mVw = paramCursor.getInt(20);
       AppMethodBeat.o(130967);
       return;
     }
@@ -336,50 +336,50 @@ public final class a
   {
     AppMethodBeat.i(130969);
     ContentValues localContentValues = new ContentValues();
-    if ((this.cSx & 0x1) != 0) {
+    if ((this.cUP & 0x1) != 0) {
       localContentValues.put("id", Integer.valueOf(this.id));
     }
-    if ((this.cSx & 0x2) != 0) {
+    if ((this.cUP & 0x2) != 0) {
       localContentValues.put("md5", getMd5());
     }
-    if ((this.cSx & 0x4) != 0) {
-      localContentValues.put("peopleid", bnJ());
+    if ((this.cUP & 0x4) != 0) {
+      localContentValues.put("peopleid", bxS());
     }
-    if ((this.cSx & 0x8) != 0) {
-      localContentValues.put("uploadtime", Long.valueOf(this.kdO));
+    if ((this.cUP & 0x8) != 0) {
+      localContentValues.put("uploadtime", Long.valueOf(this.mVo));
     }
-    if ((this.cSx & 0x10) != 0) {
-      localContentValues.put("realname", bnK());
+    if ((this.cUP & 0x10) != 0) {
+      localContentValues.put("realname", bxT());
     }
-    if ((this.cSx & 0x20) != 0) {
-      localContentValues.put("realnamepyinitial", bnL());
+    if ((this.cUP & 0x20) != 0) {
+      localContentValues.put("realnamepyinitial", bxU());
     }
-    if ((this.cSx & 0x40) != 0) {
-      localContentValues.put("realnamequanpin", bnM());
+    if ((this.cUP & 0x40) != 0) {
+      localContentValues.put("realnamequanpin", bxV());
     }
-    if ((this.cSx & 0x80) != 0) {
+    if ((this.cUP & 0x80) != 0) {
       localContentValues.put("username", getUsername());
     }
-    if ((this.cSx & 0x100) != 0) {
+    if ((this.cUP & 0x100) != 0) {
       localContentValues.put("nickname", getNickName());
     }
-    if ((this.cSx & 0x200) != 0) {
-      localContentValues.put("nicknamepyinitial", bnN());
+    if ((this.cUP & 0x200) != 0) {
+      localContentValues.put("nicknamepyinitial", bxW());
     }
-    if ((this.cSx & 0x400) != 0) {
-      localContentValues.put("nicknamequanpin", bnO());
+    if ((this.cUP & 0x400) != 0) {
+      localContentValues.put("nicknamequanpin", bxX());
     }
-    if ((this.cSx & 0x800) != 0) {
+    if ((this.cUP & 0x800) != 0) {
       localContentValues.put("type", Integer.valueOf(this.type));
     }
-    if ((this.cSx & 0x1000) != 0) {
-      localContentValues.put("moblie", bnP());
+    if ((this.cUP & 0x1000) != 0) {
+      localContentValues.put("moblie", bxY());
     }
-    if ((this.cSx & 0x2000) != 0) {
+    if ((this.cUP & 0x2000) != 0) {
       localContentValues.put("email", getEmail());
     }
     int i;
-    if ((this.cSx & 0x4000) != 0)
+    if ((this.cUP & 0x4000) != 0)
     {
       i = this.status;
       if (i != 0) {
@@ -389,22 +389,22 @@ public final class a
     }
     for (;;)
     {
-      if ((this.cSx & 0x8000) != 0) {
-        localContentValues.put("reserved1", this.iKR);
+      if ((this.cUP & 0x8000) != 0) {
+        localContentValues.put("reserved1", this.lAY);
       }
-      if ((this.cSx & 0x20000) != 0) {
-        localContentValues.put("reserved3", Integer.valueOf(this.kdU));
+      if ((this.cUP & 0x20000) != 0) {
+        localContentValues.put("reserved3", Integer.valueOf(this.mVu));
       }
-      if ((this.cSx & 0x40000) != 0) {
-        localContentValues.put("reserved4", Integer.valueOf(this.iKU));
+      if ((this.cUP & 0x40000) != 0) {
+        localContentValues.put("reserved4", Integer.valueOf(this.lBb));
       }
-      if ((this.cSx & 0x80000) != 0)
+      if ((this.cUP & 0x80000) != 0)
       {
-        this.kdV = bnI();
-        localContentValues.put("lvbuf", this.kdV);
+        this.mVv = bxR();
+        localContentValues.put("lvbuf", this.mVv);
       }
-      if ((this.cSx & 0x100000) != 0) {
-        localContentValues.put("showhead", Integer.valueOf(this.kdW));
+      if ((this.cUP & 0x100000) != 0) {
+        localContentValues.put("showhead", Integer.valueOf(this.mVw));
       }
       AppMethodBeat.o(130969);
       return localContentValues;
@@ -415,10 +415,10 @@ public final class a
   
   public final String getEmail()
   {
-    if (this.fuD == null) {
+    if (this.hDf == null) {
       return "";
     }
-    return this.fuD;
+    return this.hDf;
   }
   
   public final String getMd5()
@@ -449,13 +449,13 @@ public final class a
   {
     AppMethodBeat.i(130972);
     this.md5 = paramString;
-    this.id = SQ(paramString);
+    this.id = aaw(paramString);
     AppMethodBeat.o(130972);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.a
  * JD-Core Version:    0.7.0.1
  */

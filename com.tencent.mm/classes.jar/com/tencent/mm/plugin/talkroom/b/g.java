@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.talkroom.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.egt;
-import com.tencent.mm.protocal.protobuf.egu;
-import com.tencent.mm.protocal.protobuf.egv;
+import com.tencent.mm.protocal.protobuf.eqv;
+import com.tencent.mm.protocal.protobuf.eqw;
+import com.tencent.mm.protocal.protobuf.eqx;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
@@ -21,21 +21,21 @@ public final class g
   private i callback;
   private final d rr;
   
-  public g(LinkedList<egt> paramLinkedList, int paramInt)
+  public g(LinkedList<eqv> paramLinkedList, int paramInt)
   {
     AppMethodBeat.i(29567);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new egu();
-    ((d.a)localObject).iLO = new egv();
+    ((d.a)localObject).lBU = new eqw();
+    ((d.a)localObject).lBV = new eqx();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/talkstatreport";
     ((d.a)localObject).funcId = 373;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (egu)this.rr.iLK.iLR;
-    ((egu)localObject).NgF = paramLinkedList.size();
-    ((egu)localObject).NgG = paramLinkedList;
-    ((egu)localObject).Scene = paramInt;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (eqw)d.b.b(this.rr.lBR);
+    ((eqw)localObject).Utj = paramLinkedList.size();
+    ((eqw)localObject).Utk = paramLinkedList;
+    ((eqw)localObject).CPw = paramInt;
     AppMethodBeat.o(29567);
   }
   

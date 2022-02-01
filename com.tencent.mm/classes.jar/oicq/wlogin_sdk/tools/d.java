@@ -5,7 +5,7 @@ import java.util.Random;
 
 public final class d
 {
-  public static byte[] a(byte[] paramArrayOfByte1, int paramInt, byte[] paramArrayOfByte2)
+  public static byte[] b(byte[] paramArrayOfByte1, int paramInt, byte[] paramArrayOfByte2)
   {
     AppMethodBeat.i(88196);
     byte[] arrayOfByte = new byte[paramInt];
@@ -123,7 +123,7 @@ public final class d
       AppMethodBeat.o(88197);
       return null;
     }
-    locala.prePlain = locala.aQ(arrayOfByte);
+    locala.prePlain = locala.bd(arrayOfByte);
     locala.pos = (locala.prePlain[0] & 0x7);
     paramInt2 = i - locala.pos - 10;
     if (paramInt2 < 0)
@@ -225,7 +225,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     oicq.wlogin_sdk.tools.d
  * JD-Core Version:    0.7.0.1
  */

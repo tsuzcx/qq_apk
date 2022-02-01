@@ -11,503 +11,491 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.protocal.protobuf.bds;
-import com.tencent.mm.protocal.protobuf.dmk;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.protocal.protobuf.bkr;
+import com.tencent.mm.protocal.protobuf.dwb;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.ui.aa;
+import com.tencent.mm.ui.ad;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.g.b.aa.d;
 import kotlin.g.b.p;
-import kotlin.g.b.z.d;
 import kotlin.l;
 import kotlin.t;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderTagView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "allAddViews", "Ljava/util/ArrayList;", "Landroid/view/View;", "Lkotlin/collections/ArrayList;", "getAllAddViews", "()Ljava/util/ArrayList;", "setAllAddViews", "(Ljava/util/ArrayList;)V", "value", "Lcom/tencent/mm/plugin/finder/view/FinderTagView$Config;", "config", "getConfig", "()Lcom/tencent/mm/plugin/finder/view/FinderTagView$Config;", "setConfig", "(Lcom/tencent/mm/plugin/finder/view/FinderTagView$Config;)V", "expandListener", "Lcom/tencent/mm/plugin/finder/view/FinderTagView$expandOnClickListener;", "getExpandListener", "()Lcom/tencent/mm/plugin/finder/view/FinderTagView$expandOnClickListener;", "setExpandListener", "(Lcom/tencent/mm/plugin/finder/view/FinderTagView$expandOnClickListener;)V", "flodListener", "Lcom/tencent/mm/plugin/finder/view/FinderTagView$flodOnClickListener;", "getFlodListener", "()Lcom/tencent/mm/plugin/finder/view/FinderTagView$flodOnClickListener;", "setFlodListener", "(Lcom/tencent/mm/plugin/finder/view/FinderTagView$flodOnClickListener;)V", "foldedView", "getFoldedView", "setFoldedView", "hasExpandBtn", "", "getHasExpandBtn", "()I", "setHasExpandBtn", "(I)V", "isClickExpand", "setClickExpand", "isFolded", "", "()Z", "setFolded", "(Z)V", "onExpandListener", "Lkotlin/Function0;", "", "getOnExpandListener", "()Lkotlin/jvm/functions/Function0;", "setOnExpandListener", "(Lkotlin/jvm/functions/Function0;)V", "onFlodListener", "getOnFlodListener", "setOnFlodListener", "opBtn", "getOpBtn", "()Landroid/view/View;", "setOpBtn", "(Landroid/view/View;)V", "root", "getRoot", "setRoot", "selectedIndex", "getSelectedIndex", "setSelectedIndex", "tagClickMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "getTagClickMap", "()Ljava/util/HashMap;", "setTagClickMap", "(Ljava/util/HashMap;)V", "tagData", "Lcom/tencent/mm/protocal/protobuf/RelatedTopic;", "getTagData", "()Lcom/tencent/mm/protocal/protobuf/RelatedTopic;", "setTagData", "(Lcom/tencent/mm/protocal/protobuf/RelatedTopic;)V", "tagLayout", "Lcom/tencent/mm/plugin/finder/view/FinderTagFlowLayout;", "getTagLayout", "()Lcom/tencent/mm/plugin/finder/view/FinderTagFlowLayout;", "setTagLayout", "(Lcom/tencent/mm/plugin/finder/view/FinderTagFlowLayout;)V", "addDummyTag", "tags", "addTags", "expandTags", "flodTags", "genItemView", "tag", "Lcom/tencent/mm/protocal/protobuf/FinderTopicInfo;", "index", "init", "notiftyTagClick", "refreshOpBtn", "setTagState", "selected", "view", "showOrDimissOpBtn", "show", "Companion", "Config", "expandOnClickListener", "flodOnClickListener", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderTagView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "allAddViews", "Ljava/util/ArrayList;", "Landroid/view/View;", "Lkotlin/collections/ArrayList;", "getAllAddViews", "()Ljava/util/ArrayList;", "setAllAddViews", "(Ljava/util/ArrayList;)V", "value", "Lcom/tencent/mm/plugin/finder/view/FinderTagView$Config;", "config", "getConfig", "()Lcom/tencent/mm/plugin/finder/view/FinderTagView$Config;", "setConfig", "(Lcom/tencent/mm/plugin/finder/view/FinderTagView$Config;)V", "expandListener", "Lcom/tencent/mm/plugin/finder/view/FinderTagView$expandOnClickListener;", "getExpandListener", "()Lcom/tencent/mm/plugin/finder/view/FinderTagView$expandOnClickListener;", "setExpandListener", "(Lcom/tencent/mm/plugin/finder/view/FinderTagView$expandOnClickListener;)V", "flodListener", "Lcom/tencent/mm/plugin/finder/view/FinderTagView$flodOnClickListener;", "getFlodListener", "()Lcom/tencent/mm/plugin/finder/view/FinderTagView$flodOnClickListener;", "setFlodListener", "(Lcom/tencent/mm/plugin/finder/view/FinderTagView$flodOnClickListener;)V", "foldedView", "getFoldedView", "setFoldedView", "hasExpandBtn", "", "getHasExpandBtn", "()I", "setHasExpandBtn", "(I)V", "isClickExpand", "setClickExpand", "isFolded", "", "()Z", "setFolded", "(Z)V", "onExpandListener", "Lkotlin/Function0;", "", "getOnExpandListener", "()Lkotlin/jvm/functions/Function0;", "setOnExpandListener", "(Lkotlin/jvm/functions/Function0;)V", "onFlodListener", "getOnFlodListener", "setOnFlodListener", "opBtn", "getOpBtn", "()Landroid/view/View;", "setOpBtn", "(Landroid/view/View;)V", "root", "getRoot", "setRoot", "selectedIndex", "getSelectedIndex", "setSelectedIndex", "tagClickMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "getTagClickMap", "()Ljava/util/HashMap;", "setTagClickMap", "(Ljava/util/HashMap;)V", "tagData", "Lcom/tencent/mm/protocal/protobuf/RelatedTopic;", "getTagData", "()Lcom/tencent/mm/protocal/protobuf/RelatedTopic;", "setTagData", "(Lcom/tencent/mm/protocal/protobuf/RelatedTopic;)V", "tagLayout", "Lcom/tencent/mm/plugin/finder/view/FinderTagFlowLayout;", "getTagLayout", "()Lcom/tencent/mm/plugin/finder/view/FinderTagFlowLayout;", "setTagLayout", "(Lcom/tencent/mm/plugin/finder/view/FinderTagFlowLayout;)V", "addDummyTag", "tags", "addTags", "expandTags", "flodTags", "genItemView", "tag", "Lcom/tencent/mm/protocal/protobuf/FinderTopicInfo;", "index", "init", "notiftyTagClick", "refreshOpBtn", "setTagState", "selected", "view", "showOrDimissOpBtn", "show", "Companion", "Config", "expandOnClickListener", "flodOnClickListener", "plugin-finder_release"})
 public final class FinderTagView
   extends RelativeLayout
 {
-  private static final int wpr = -1;
-  private static final int wps = -2;
-  private static final int wpt;
-  public static final long wpu = -1L;
-  public static final a wpv;
-  private int bxP;
-  public View gvQ;
-  public FinderTagFlowLayout wpd;
-  public View wpe;
-  ArrayList<View> wpf;
-  public ArrayList<View> wpg;
-  public HashMap<Long, Integer> wph;
-  public dmk wpi;
-  boolean wpj;
-  private kotlin.g.a.a<x> wpk;
-  kotlin.g.a.a<x> wpl;
-  private int wpm;
-  public int wpn;
-  private b wpo;
-  private c wpp;
-  private d wpq;
+  private static final int BaA = -1;
+  private static final int BaB = -2;
+  private static final int BaC;
+  public static final long BaD = -1L;
+  public static final FinderTagView.a BaE;
+  public FinderTagFlowLayout Bam;
+  public View Ban;
+  ArrayList<View> Bao;
+  public ArrayList<View> Bap;
+  public HashMap<Long, Integer> Baq;
+  public dwb Bar;
+  boolean Bas;
+  private kotlin.g.a.a<x> Bat;
+  kotlin.g.a.a<x> Bau;
+  private int Bav;
+  public int Baw;
+  private FinderTagView.b Bax;
+  private c Bay;
+  private d Baz;
+  private int bhr;
+  public View jac;
   
   static
   {
-    AppMethodBeat.i(254991);
-    wpv = new a((byte)0);
-    wpr = -1;
-    wps = -2;
-    wpt = 2131300842;
-    wpu = -1L;
-    AppMethodBeat.o(254991);
+    AppMethodBeat.i(272375);
+    BaE = new FinderTagView.a((byte)0);
+    BaA = -1;
+    BaB = -2;
+    BaC = b.f.finder_feed_tag_float_view;
+    BaD = -1L;
+    AppMethodBeat.o(272375);
   }
   
   public FinderTagView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(254989);
-    this.wpf = new ArrayList();
-    this.wpg = new ArrayList();
-    this.bxP = -1;
-    this.wph = new HashMap();
-    this.wpo = new b();
-    this.wpp = new c(this);
-    this.wpq = new d(this);
+    AppMethodBeat.i(272373);
+    this.Bao = new ArrayList();
+    this.Bap = new ArrayList();
+    this.bhr = -1;
+    this.Baq = new HashMap();
+    this.Bax = new FinderTagView.b();
+    this.Bay = new c(this);
+    this.Baz = new d(this);
     init(paramContext);
-    AppMethodBeat.o(254989);
+    AppMethodBeat.o(272373);
   }
   
   public FinderTagView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(254990);
-    this.wpf = new ArrayList();
-    this.wpg = new ArrayList();
-    this.bxP = -1;
-    this.wph = new HashMap();
-    this.wpo = new b();
-    this.wpp = new c(this);
-    this.wpq = new d(this);
+    AppMethodBeat.i(272374);
+    this.Bao = new ArrayList();
+    this.Bap = new ArrayList();
+    this.bhr = -1;
+    this.Baq = new HashMap();
+    this.Bax = new FinderTagView.b();
+    this.Bay = new c(this);
+    this.Baz = new d(this);
     init(paramContext);
-    AppMethodBeat.o(254990);
+    AppMethodBeat.o(272374);
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(254984);
-    View localView = aa.jQ(paramContext).inflate(2131494498, (ViewGroup)this);
-    p.g(localView, "MMLayoutInflater.getInfl…chinetab_tag_layout,this)");
-    this.gvQ = localView;
-    localView = this.gvQ;
+    AppMethodBeat.i(272364);
+    View localView = ad.kS(paramContext).inflate(b.g.finder_machinetab_tag_layout, (ViewGroup)this);
+    p.j(localView, "MMLayoutInflater.getInfl…chinetab_tag_layout,this)");
+    this.jac = localView;
+    localView = this.jac;
     if (localView == null) {
-      p.btv("root");
+      p.bGy("root");
     }
-    localView = localView.findViewById(2131301350);
-    p.g(localView, "root.findViewById(R.id.finder_machine_tag_layout)");
-    this.wpd = ((FinderTagFlowLayout)localView);
-    localView = this.gvQ;
+    localView = localView.findViewById(b.f.finder_machine_tag_layout);
+    p.j(localView, "root.findViewById(R.id.finder_machine_tag_layout)");
+    this.Bam = ((FinderTagFlowLayout)localView);
+    localView = this.jac;
     if (localView == null) {
-      p.btv("root");
+      p.bGy("root");
     }
-    localView = localView.findViewById(2131301352);
-    p.g(localView, "root.findViewById(R.id.finder_machine_tag_op_icon)");
-    this.wpe = localView;
+    localView = localView.findViewById(b.f.finder_machine_tag_op_icon);
+    p.j(localView, "root.findViewById(R.id.finder_machine_tag_op_icon)");
+    this.Ban = localView;
     if (paramContext == null) {
-      p.hyc();
+      p.iCn();
     }
-    setBackgroundColor(paramContext.getResources().getColor(this.wpo.bg));
-    AppMethodBeat.o(254984);
+    setBackgroundColor(paramContext.getResources().getColor(this.Bax.bg));
+    AppMethodBeat.o(272364);
   }
   
   public final void a(boolean paramBoolean, View paramView, int paramInt)
   {
-    AppMethodBeat.i(254988);
+    AppMethodBeat.i(272372);
     if (paramInt >= 0) {
-      paramView.setTag(wps, Integer.valueOf(paramInt));
+      paramView.setTag(BaB, Integer.valueOf(paramInt));
     }
-    paramView.setTag(wpr, Boolean.valueOf(paramBoolean));
-    paramView = (TextView)paramView.findViewById(2131301348);
+    paramView.setTag(BaA, Boolean.valueOf(paramBoolean));
+    paramView = (TextView)paramView.findViewById(b.f.finder_machine_item_tv);
     if (paramBoolean)
     {
-      localObject = this.gvQ;
+      localObject = this.jac;
       if (localObject == null) {
-        p.btv("root");
+        p.bGy("root");
       }
       localObject = ((View)localObject).getContext();
-      p.g(localObject, "root.context");
-      paramView.setTextColor(((Context)localObject).getResources().getColor(this.wpo.wpz));
-      paramView.setBackgroundResource(this.wpo.wpx);
-      AppMethodBeat.o(254988);
+      p.j(localObject, "root.context");
+      paramView.setTextColor(((Context)localObject).getResources().getColor(this.Bax.BaI));
+      paramView.setBackgroundResource(this.Bax.BaG);
+      AppMethodBeat.o(272372);
       return;
     }
-    Object localObject = this.gvQ;
+    Object localObject = this.jac;
     if (localObject == null) {
-      p.btv("root");
+      p.bGy("root");
     }
     localObject = ((View)localObject).getContext();
-    p.g(localObject, "root.context");
-    paramView.setTextColor(((Context)localObject).getResources().getColor(this.wpo.wpy));
-    paramView.setBackgroundResource(this.wpo.wpw);
-    AppMethodBeat.o(254988);
+    p.j(localObject, "root.context");
+    paramView.setTextColor(((Context)localObject).getResources().getColor(this.Bax.BaH));
+    paramView.setBackgroundResource(this.Bax.BaF);
+    AppMethodBeat.o(272372);
   }
   
-  public final void dHg()
+  public final void ejh()
   {
-    AppMethodBeat.i(254985);
-    FinderTagFlowLayout localFinderTagFlowLayout = this.wpd;
+    AppMethodBeat.i(272366);
+    FinderTagFlowLayout localFinderTagFlowLayout = this.Bam;
     if (localFinderTagFlowLayout == null) {
-      p.btv("tagLayout");
+      p.bGy("tagLayout");
     }
     localFinderTagFlowLayout.post((Runnable)new g(this));
-    AppMethodBeat.o(254985);
+    AppMethodBeat.o(272366);
   }
   
-  public final void dHh()
+  public final void eji()
   {
-    AppMethodBeat.i(254987);
-    FinderTagFlowLayout localFinderTagFlowLayout = this.wpd;
+    AppMethodBeat.i(272371);
+    FinderTagFlowLayout localFinderTagFlowLayout = this.Bam;
     if (localFinderTagFlowLayout == null) {
-      p.btv("tagLayout");
+      p.bGy("tagLayout");
     }
     localFinderTagFlowLayout.post((Runnable)new e(this));
-    AppMethodBeat.o(254987);
+    AppMethodBeat.o(272371);
   }
   
   public final ArrayList<View> getAllAddViews()
   {
-    return this.wpg;
+    return this.Bap;
   }
   
-  public final b getConfig()
+  public final FinderTagView.b getConfig()
   {
-    return this.wpo;
+    return this.Bax;
   }
   
   public final c getExpandListener()
   {
-    return this.wpp;
+    return this.Bay;
   }
   
   public final d getFlodListener()
   {
-    return this.wpq;
+    return this.Baz;
   }
   
   public final ArrayList<View> getFoldedView()
   {
-    return this.wpf;
+    return this.Bao;
   }
   
   public final int getHasExpandBtn()
   {
-    return this.wpm;
+    return this.Bav;
   }
   
   public final kotlin.g.a.a<x> getOnExpandListener()
   {
-    return this.wpl;
+    return this.Bau;
   }
   
   public final kotlin.g.a.a<x> getOnFlodListener()
   {
-    return this.wpk;
+    return this.Bat;
   }
   
   public final View getOpBtn()
   {
-    AppMethodBeat.i(254972);
-    View localView = this.wpe;
+    AppMethodBeat.i(272340);
+    View localView = this.Ban;
     if (localView == null) {
-      p.btv("opBtn");
+      p.bGy("opBtn");
     }
-    AppMethodBeat.o(254972);
+    AppMethodBeat.o(272340);
     return localView;
   }
   
   public final View getRoot()
   {
-    AppMethodBeat.i(254979);
-    View localView = this.gvQ;
+    AppMethodBeat.i(272357);
+    View localView = this.jac;
     if (localView == null) {
-      p.btv("root");
+      p.bGy("root");
     }
-    AppMethodBeat.o(254979);
+    AppMethodBeat.o(272357);
     return localView;
   }
   
   public final int getSelectedIndex()
   {
-    return this.bxP;
+    return this.bhr;
   }
   
   public final HashMap<Long, Integer> getTagClickMap()
   {
-    return this.wph;
+    return this.Baq;
   }
   
-  public final dmk getTagData()
+  public final dwb getTagData()
   {
-    AppMethodBeat.i(254977);
-    dmk localdmk = this.wpi;
-    if (localdmk == null) {
-      p.btv("tagData");
+    AppMethodBeat.i(272353);
+    dwb localdwb = this.Bar;
+    if (localdwb == null) {
+      p.bGy("tagData");
     }
-    AppMethodBeat.o(254977);
-    return localdmk;
+    AppMethodBeat.o(272353);
+    return localdwb;
   }
   
   public final FinderTagFlowLayout getTagLayout()
   {
-    AppMethodBeat.i(254970);
-    FinderTagFlowLayout localFinderTagFlowLayout = this.wpd;
+    AppMethodBeat.i(272336);
+    FinderTagFlowLayout localFinderTagFlowLayout = this.Bam;
     if (localFinderTagFlowLayout == null) {
-      p.btv("tagLayout");
+      p.bGy("tagLayout");
     }
-    AppMethodBeat.o(254970);
+    AppMethodBeat.o(272336);
     return localFinderTagFlowLayout;
   }
   
-  public final void pa(boolean paramBoolean)
+  public final void ru(boolean paramBoolean)
   {
-    AppMethodBeat.i(254986);
+    AppMethodBeat.i(272368);
     if (paramBoolean)
     {
-      this.wpm = 1;
-      localView = this.wpe;
+      this.Bav = 1;
+      localView = this.Ban;
       if (localView == null) {
-        p.btv("opBtn");
+        p.bGy("opBtn");
       }
       localView.setVisibility(0);
-      localView = findViewById(2131301351);
-      p.g(localView, "findViewById<View>(R.id.finder_machine_tag_op_bg)");
+      localView = findViewById(b.f.finder_machine_tag_op_bg);
+      p.j(localView, "findViewById<View>(R.id.finder_machine_tag_op_bg)");
       localView.setVisibility(0);
-      localView = findViewById(2131301349);
-      p.g(localView, "findViewById<View>(R.id.finder_machine_op_layout)");
+      localView = findViewById(b.f.finder_machine_op_layout);
+      p.j(localView, "findViewById<View>(R.id.finder_machine_op_layout)");
       localView.setVisibility(0);
-      AppMethodBeat.o(254986);
+      AppMethodBeat.o(272368);
       return;
     }
-    View localView = this.wpe;
+    View localView = this.Ban;
     if (localView == null) {
-      p.btv("opBtn");
+      p.bGy("opBtn");
     }
     localView.setOnClickListener(null);
-    localView = this.wpe;
+    localView = this.Ban;
     if (localView == null) {
-      p.btv("opBtn");
+      p.bGy("opBtn");
     }
     localView.setVisibility(8);
-    localView = findViewById(2131301351);
-    p.g(localView, "findViewById<View>(R.id.finder_machine_tag_op_bg)");
+    localView = findViewById(b.f.finder_machine_tag_op_bg);
+    p.j(localView, "findViewById<View>(R.id.finder_machine_tag_op_bg)");
     localView.setVisibility(8);
-    localView = findViewById(2131301349);
-    p.g(localView, "findViewById<View>(R.id.finder_machine_op_layout)");
+    localView = findViewById(b.f.finder_machine_op_layout);
+    p.j(localView, "findViewById<View>(R.id.finder_machine_op_layout)");
     localView.setVisibility(8);
-    AppMethodBeat.o(254986);
+    AppMethodBeat.o(272368);
   }
   
   public final void setAllAddViews(ArrayList<View> paramArrayList)
   {
-    AppMethodBeat.i(254975);
-    p.h(paramArrayList, "<set-?>");
-    this.wpg = paramArrayList;
-    AppMethodBeat.o(254975);
+    AppMethodBeat.i(272348);
+    p.k(paramArrayList, "<set-?>");
+    this.Bap = paramArrayList;
+    AppMethodBeat.o(272348);
   }
   
   public final void setClickExpand(int paramInt)
   {
-    this.wpn = paramInt;
+    this.Baw = paramInt;
   }
   
-  public final void setConfig(b paramb)
+  public final void setConfig(FinderTagView.b paramb)
   {
-    AppMethodBeat.i(254981);
-    p.h(paramb, "value");
+    AppMethodBeat.i(272359);
+    p.k(paramb, "value");
     Context localContext = getContext();
     if (localContext == null) {
-      p.hyc();
+      p.iCn();
     }
     setBackgroundColor(localContext.getResources().getColor(paramb.bg));
-    AppMethodBeat.o(254981);
+    AppMethodBeat.o(272359);
   }
   
   public final void setExpandListener(c paramc)
   {
-    AppMethodBeat.i(254982);
-    p.h(paramc, "<set-?>");
-    this.wpp = paramc;
-    AppMethodBeat.o(254982);
+    AppMethodBeat.i(272360);
+    p.k(paramc, "<set-?>");
+    this.Bay = paramc;
+    AppMethodBeat.o(272360);
   }
   
   public final void setFlodListener(d paramd)
   {
-    AppMethodBeat.i(254983);
-    p.h(paramd, "<set-?>");
-    this.wpq = paramd;
-    AppMethodBeat.o(254983);
+    AppMethodBeat.i(272362);
+    p.k(paramd, "<set-?>");
+    this.Baz = paramd;
+    AppMethodBeat.o(272362);
   }
   
   public final void setFolded(boolean paramBoolean)
   {
-    this.wpj = paramBoolean;
+    this.Bas = paramBoolean;
   }
   
   public final void setFoldedView(ArrayList<View> paramArrayList)
   {
-    AppMethodBeat.i(254974);
-    p.h(paramArrayList, "<set-?>");
-    this.wpf = paramArrayList;
-    AppMethodBeat.o(254974);
+    AppMethodBeat.i(272345);
+    p.k(paramArrayList, "<set-?>");
+    this.Bao = paramArrayList;
+    AppMethodBeat.o(272345);
   }
   
   public final void setHasExpandBtn(int paramInt)
   {
-    this.wpm = paramInt;
+    this.Bav = paramInt;
   }
   
   public final void setOnExpandListener(kotlin.g.a.a<x> parama)
   {
-    this.wpl = parama;
+    this.Bau = parama;
   }
   
   public final void setOnFlodListener(kotlin.g.a.a<x> parama)
   {
-    this.wpk = parama;
+    this.Bat = parama;
   }
   
   public final void setOpBtn(View paramView)
   {
-    AppMethodBeat.i(254973);
-    p.h(paramView, "<set-?>");
-    this.wpe = paramView;
-    AppMethodBeat.o(254973);
+    AppMethodBeat.i(272343);
+    p.k(paramView, "<set-?>");
+    this.Ban = paramView;
+    AppMethodBeat.o(272343);
   }
   
   public final void setRoot(View paramView)
   {
-    AppMethodBeat.i(254980);
-    p.h(paramView, "<set-?>");
-    this.gvQ = paramView;
-    AppMethodBeat.o(254980);
+    AppMethodBeat.i(272358);
+    p.k(paramView, "<set-?>");
+    this.jac = paramView;
+    AppMethodBeat.o(272358);
   }
   
   public final void setSelectedIndex(int paramInt)
   {
-    this.bxP = paramInt;
+    this.bhr = paramInt;
   }
   
   public final void setTagClickMap(HashMap<Long, Integer> paramHashMap)
   {
-    AppMethodBeat.i(254976);
-    p.h(paramHashMap, "<set-?>");
-    this.wph = paramHashMap;
-    AppMethodBeat.o(254976);
+    AppMethodBeat.i(272351);
+    p.k(paramHashMap, "<set-?>");
+    this.Baq = paramHashMap;
+    AppMethodBeat.o(272351);
   }
   
-  public final void setTagData(dmk paramdmk)
+  public final void setTagData(dwb paramdwb)
   {
-    AppMethodBeat.i(254978);
-    p.h(paramdmk, "<set-?>");
-    this.wpi = paramdmk;
-    AppMethodBeat.o(254978);
+    AppMethodBeat.i(272354);
+    p.k(paramdwb, "<set-?>");
+    this.Bar = paramdwb;
+    AppMethodBeat.o(272354);
   }
   
   public final void setTagLayout(FinderTagFlowLayout paramFinderTagFlowLayout)
   {
-    AppMethodBeat.i(254971);
-    p.h(paramFinderTagFlowLayout, "<set-?>");
-    this.wpd = paramFinderTagFlowLayout;
-    AppMethodBeat.o(254971);
+    AppMethodBeat.i(272337);
+    p.k(paramFinderTagFlowLayout, "<set-?>");
+    this.Bam = paramFinderTagFlowLayout;
+    AppMethodBeat.o(272337);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderTagView$Companion;", "", "()V", "FLOAT_VIEW_ID", "", "getFLOAT_VIEW_ID", "()I", "TAG", "", "TAG_ALL_TOPIC_ID", "", "getTAG_ALL_TOPIC_ID", "()J", "TAG_VIEW_INDEX", "getTAG_VIEW_INDEX", "TAG_VIEW_SELECTED_STATE", "getTAG_VIEW_SELECTED_STATE", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderTagView$Config;", "", "()V", "bg", "", "getBg", "()I", "setBg", "(I)V", "canFoldAfterExpand", "", "getCanFoldAfterExpand", "()Z", "setCanFoldAfterExpand", "(Z)V", "itemNormalBg", "getItemNormalBg", "setItemNormalBg", "itemSelectedBg", "getItemSelectedBg", "setItemSelectedBg", "itemTextNormalColor", "getItemTextNormalColor", "setItemTextNormalColor", "itemTextSelectedColor", "getItemTextSelectedColor", "setItemTextSelectedColor", "plugin-finder_release"})
-  public static final class b
-  {
-    int bg = 2131099650;
-    boolean wpA = true;
-    int wpw = 2131232659;
-    int wpx = 2131232660;
-    int wpy = 2131100904;
-    int wpz = 2131101427;
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderTagView$expandOnClickListener;", "Landroid/view/View$OnClickListener;", "tagView", "Lcom/tencent/mm/plugin/finder/view/FinderTagView;", "(Lcom/tencent/mm/plugin/finder/view/FinderTagView;Lcom/tencent/mm/plugin/finder/view/FinderTagView;)V", "getTagView", "()Lcom/tencent/mm/plugin/finder/view/FinderTagView;", "onClick", "", "v", "Landroid/view/View;", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderTagView$expandOnClickListener;", "Landroid/view/View$OnClickListener;", "tagView", "Lcom/tencent/mm/plugin/finder/view/FinderTagView;", "(Lcom/tencent/mm/plugin/finder/view/FinderTagView;Lcom/tencent/mm/plugin/finder/view/FinderTagView;)V", "getTagView", "()Lcom/tencent/mm/plugin/finder/view/FinderTagView;", "onClick", "", "v", "Landroid/view/View;", "plugin-finder_release"})
   public final class c
     implements View.OnClickListener
   {
-    private final FinderTagView wpB;
+    private final FinderTagView BaK;
     
     public c()
     {
-      AppMethodBeat.i(254963);
-      this.wpB = localObject;
-      AppMethodBeat.o(254963);
+      AppMethodBeat.i(279746);
+      this.BaK = localObject;
+      AppMethodBeat.o(279746);
     }
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(254962);
+      AppMethodBeat.i(279744);
       Object localObject = new b();
-      ((b)localObject).bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderTagView$expandOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
-      paramView = this.wpB;
-      if (paramView.wpj)
+      ((b)localObject).bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderTagView$expandOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+      paramView = this.BaK;
+      if (paramView.Bas)
       {
-        localObject = ((Iterable)paramView.wpf).iterator();
+        localObject = ((Iterable)paramView.Bao).iterator();
         while (((Iterator)localObject).hasNext())
         {
           View localView = (View)((Iterator)localObject).next();
-          FinderTagFlowLayout localFinderTagFlowLayout = paramView.wpd;
+          FinderTagFlowLayout localFinderTagFlowLayout = paramView.Bam;
           if (localFinderTagFlowLayout == null) {
-            p.btv("tagLayout");
+            p.bGy("tagLayout");
           }
           localFinderTagFlowLayout.addView(localView);
         }
-        paramView.wpf.clear();
-        paramView.wpj = false;
-        paramView.dHg();
-        paramView = paramView.wpl;
+        paramView.Bao.clear();
+        paramView.Bas = false;
+        paramView.ejh();
+        paramView = paramView.Bau;
         if (paramView != null) {
           paramView.invoke();
         }
       }
       FinderTagView.this.setClickExpand(1);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/FinderTagView$expandOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(254962);
+      AppMethodBeat.o(279744);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderTagView$flodOnClickListener;", "Landroid/view/View$OnClickListener;", "tagView", "Lcom/tencent/mm/plugin/finder/view/FinderTagView;", "(Lcom/tencent/mm/plugin/finder/view/FinderTagView;)V", "getTagView", "()Lcom/tencent/mm/plugin/finder/view/FinderTagView;", "onClick", "", "v", "Landroid/view/View;", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderTagView$flodOnClickListener;", "Landroid/view/View$OnClickListener;", "tagView", "Lcom/tencent/mm/plugin/finder/view/FinderTagView;", "(Lcom/tencent/mm/plugin/finder/view/FinderTagView;)V", "getTagView", "()Lcom/tencent/mm/plugin/finder/view/FinderTagView;", "onClick", "", "v", "Landroid/view/View;", "plugin-finder_release"})
   public static final class d
     implements View.OnClickListener
   {
-    private final FinderTagView wpB;
+    private final FinderTagView BaK;
     
     public d(FinderTagView paramFinderTagView)
     {
-      AppMethodBeat.i(254965);
-      this.wpB = paramFinderTagView;
-      AppMethodBeat.o(254965);
+      AppMethodBeat.i(282411);
+      this.BaK = paramFinderTagView;
+      AppMethodBeat.o(282411);
     }
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(254964);
+      AppMethodBeat.i(282410);
       b localb = new b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderTagView$flodOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      this.wpB.dHh();
-      this.wpB.dHg();
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderTagView$flodOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      this.BaK.eji();
+      this.BaK.ejh();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/FinderTagView$flodOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(254964);
+      AppMethodBeat.o(282410);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class e
     implements Runnable
   {
@@ -515,46 +503,46 @@ public final class FinderTagView
     
     public final void run()
     {
-      AppMethodBeat.i(254966);
-      if (!this.wpC.wpj)
+      AppMethodBeat.i(291216);
+      if (!this.BaL.Bas)
       {
-        int j = this.wpC.getTagLayout().woZ.size();
-        this.wpC.getFoldedView().clear();
+        int j = this.BaL.getTagLayout().Bai.size();
+        this.BaL.getFoldedView().clear();
         int i = 1;
         View localView;
         while (i < j)
         {
-          localObject = this.wpC.getTagLayout().woZ.get(i);
-          p.g(localObject, "tagLayout.mAllViews[i]");
+          localObject = this.BaL.getTagLayout().Bai.get(i);
+          p.j(localObject, "tagLayout.mAllViews[i]");
           localObject = ((Iterable)localObject).iterator();
           while (((Iterator)localObject).hasNext())
           {
             localView = (View)((Iterator)localObject).next();
-            this.wpC.getFoldedView().add(localView);
+            this.BaL.getFoldedView().add(localView);
           }
           i += 1;
         }
-        Object localObject = ((Iterable)this.wpC.getFoldedView()).iterator();
+        Object localObject = ((Iterable)this.BaL.getFoldedView()).iterator();
         while (((Iterator)localObject).hasNext())
         {
           localView = (View)((Iterator)localObject).next();
-          this.wpC.getTagLayout().removeView(localView);
+          this.BaL.getTagLayout().removeView(localView);
         }
-        this.wpC.setFolded(true);
-        this.wpC.dHg();
-        localObject = this.wpC.getOnFlodListener();
+        this.BaL.setFolded(true);
+        this.BaL.ejh();
+        localObject = this.BaL.getOnFlodListener();
         if (localObject != null)
         {
           ((kotlin.g.a.a)localObject).invoke();
-          AppMethodBeat.o(254966);
+          AppMethodBeat.o(291216);
           return;
         }
       }
-      AppMethodBeat.o(254966);
+      AppMethodBeat.o(291216);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   public static final class f
     implements View.OnClickListener
   {
@@ -562,47 +550,47 @@ public final class FinderTagView
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(254968);
+      AppMethodBeat.i(271398);
       Object localObject1 = new b();
-      ((b)localObject1).bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderTagView$genItemView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject1).axR());
-      localObject1 = FinderTagView.wpv;
-      localObject1 = paramView.getTag(FinderTagView.dHi());
+      ((b)localObject1).bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderTagView$genItemView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject1).aFi());
+      localObject1 = FinderTagView.BaE;
+      localObject1 = paramView.getTag(FinderTagView.ejj());
       if (localObject1 == null)
       {
         paramView = new t("null cannot be cast to non-null type kotlin.Boolean");
-        AppMethodBeat.o(254968);
+        AppMethodBeat.o(271398);
         throw paramView;
       }
       boolean bool = ((Boolean)localObject1).booleanValue();
-      localObject1 = new z.d();
-      Object localObject2 = FinderTagView.wpv;
-      paramView = paramView.getTag(FinderTagView.dHj());
+      localObject1 = new aa.d();
+      Object localObject2 = FinderTagView.BaE;
+      paramView = paramView.getTag(FinderTagView.ejk());
       if (paramView == null)
       {
         paramView = new t("null cannot be cast to non-null type kotlin.Int");
-        AppMethodBeat.o(254968);
+        AppMethodBeat.o(271398);
         throw paramView;
       }
-      ((z.d)localObject1).SYE = ((Integer)paramView).intValue();
-      int j = this.wpC.getAllAddViews().size();
+      ((aa.d)localObject1).aaBA = ((Integer)paramView).intValue();
+      int j = this.BaL.getAllAddViews().size();
       int i = 0;
       if (i < j)
       {
-        if (i == ((z.d)localObject1).SYE)
+        if (i == ((aa.d)localObject1).aaBA)
         {
-          paramView = this.wpC;
-          localObject2 = this.wpC.getAllAddViews().get(i);
-          p.g(localObject2, "allAddViews[i]");
+          paramView = this.BaL;
+          localObject2 = this.BaL.getAllAddViews().get(i);
+          p.j(localObject2, "allAddViews[i]");
           FinderTagView.a(paramView, true, (View)localObject2);
         }
         for (;;)
         {
           i += 1;
           break;
-          paramView = this.wpC;
-          localObject2 = this.wpC.getAllAddViews().get(i);
-          p.g(localObject2, "allAddViews[i]");
+          paramView = this.BaL;
+          localObject2 = this.BaL.getAllAddViews().get(i);
+          p.j(localObject2, "allAddViews[i]");
           FinderTagView.a(paramView, false, (View)localObject2);
         }
       }
@@ -611,21 +599,21 @@ public final class FinderTagView
         {
           public final void run()
           {
-            AppMethodBeat.i(254967);
-            FinderTagView localFinderTagView = this.wpD.wpC;
-            Object localObject = this.wpD.wpC.getTagData().MPW.get(this.wpE.SYE);
-            p.g(localObject, "tagData.topic_list[indexClick]");
-            FinderTagView.a(localFinderTagView, (bds)localObject);
-            AppMethodBeat.o(254967);
+            AppMethodBeat.i(272223);
+            FinderTagView localFinderTagView = this.BaM.BaL;
+            Object localObject = this.BaM.BaL.getTagData().Uca.get(this.BaN.aaBA);
+            p.j(localObject, "tagData.topic_list[indexClick]");
+            FinderTagView.a(localFinderTagView, (bkr)localObject);
+            AppMethodBeat.o(272223);
           }
         });
       }
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/FinderTagView$genItemView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(254968);
+      AppMethodBeat.o(271398);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class g
     implements Runnable
   {
@@ -633,37 +621,37 @@ public final class FinderTagView
     
     public final void run()
     {
-      AppMethodBeat.i(254969);
-      if ((this.wpC.getTagLayout().woZ.size() <= 1) && (this.wpC.getFoldedView().isEmpty()))
+      AppMethodBeat.i(280906);
+      if ((this.BaL.getTagLayout().Bai.size() <= 1) && (this.BaL.getFoldedView().isEmpty()))
       {
-        this.wpC.pa(false);
-        AppMethodBeat.o(254969);
+        this.BaL.ru(false);
+        AppMethodBeat.o(280906);
         return;
       }
-      if (!this.wpC.wpj)
+      if (!this.BaL.Bas)
       {
-        if (this.wpC.getConfig().wpA)
+        if (this.BaL.getConfig().BaJ)
         {
-          this.wpC.getOpBtn().setRotation(-90.0F);
-          this.wpC.getOpBtn().setOnClickListener((View.OnClickListener)this.wpC.getFlodListener());
-          this.wpC.pa(true);
-          AppMethodBeat.o(254969);
+          this.BaL.getOpBtn().setRotation(-90.0F);
+          this.BaL.getOpBtn().setOnClickListener((View.OnClickListener)this.BaL.getFlodListener());
+          this.BaL.ru(true);
+          AppMethodBeat.o(280906);
           return;
         }
-        this.wpC.pa(false);
-        AppMethodBeat.o(254969);
+        this.BaL.ru(false);
+        AppMethodBeat.o(280906);
         return;
       }
-      this.wpC.pa(true);
-      this.wpC.getOpBtn().setRotation(90.0F);
-      this.wpC.getOpBtn().setOnClickListener((View.OnClickListener)this.wpC.getExpandListener());
-      AppMethodBeat.o(254969);
+      this.BaL.ru(true);
+      this.BaL.getOpBtn().setRotation(90.0F);
+      this.BaL.getOpBtn().setOnClickListener((View.OnClickListener)this.BaL.getExpandListener());
+      AppMethodBeat.o(280906);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.FinderTagView
  * JD-Core Version:    0.7.0.1
  */

@@ -12,9 +12,9 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class AutoMatchKeywordEditText
   extends MMEditText
 {
-  private a QBG;
-  private int QBH;
-  private int QBI;
+  private a Yaf;
+  private int Yag;
+  private int Yah;
   
   public AutoMatchKeywordEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,8 +35,8 @@ public class AutoMatchKeywordEditText
   private void init()
   {
     AppMethodBeat.i(143306);
-    this.QBH = getSelectionStart();
-    this.QBI = getSelectionEnd();
+    this.Yag = getSelectionStart();
+    this.Yah = getSelectionEnd();
     AppMethodBeat.o(143306);
   }
   
@@ -45,14 +45,14 @@ public class AutoMatchKeywordEditText
     AppMethodBeat.i(143310);
     Log.d("MicroMsg.AutoMatchKeywordEditText", "extendSelection");
     super.extendSelection(paramInt);
-    this.QBH = getSelectionStart();
-    this.QBI = getSelectionEnd();
+    this.Yag = getSelectionStart();
+    this.Yah = getSelectionEnd();
     AppMethodBeat.o(143310);
   }
   
   public a getOnSelectionChangeListener()
   {
-    return this.QBG;
+    return this.Yaf;
   }
   
   public boolean moveCursorToVisibleOffset()
@@ -79,12 +79,12 @@ public class AutoMatchKeywordEditText
     super.onDraw(paramCanvas);
     int i = getSelectionStart();
     int j = getSelectionEnd();
-    if ((this.QBH != i) || (this.QBI != j))
+    if ((this.Yag != i) || (this.Yah != j))
     {
-      this.QBH = i;
-      this.QBI = j;
-      if (this.QBG != null) {
-        this.QBG.b(this, getSelectionStart(), getSelectionEnd());
+      this.Yag = i;
+      this.Yah = j;
+      if (this.Yaf != null) {
+        this.Yaf.b(this, getSelectionStart(), getSelectionEnd());
       }
     }
     AppMethodBeat.o(143307);
@@ -101,7 +101,7 @@ public class AutoMatchKeywordEditText
   
   public void setOnSelectionChangeListener(a parama)
   {
-    this.QBG = parama;
+    this.Yaf = parama;
   }
   
   public void setSelection(int paramInt)
@@ -111,10 +111,10 @@ public class AutoMatchKeywordEditText
     int i = getSelectionStart();
     int j = getSelectionEnd();
     super.setSelection(paramInt);
-    this.QBH = getSelectionStart();
-    this.QBI = getSelectionEnd();
-    if (((i != getSelectionStart()) || (j != getSelectionEnd())) && (this.QBG != null)) {
-      this.QBG.b(this, getSelectionStart(), getSelectionEnd());
+    this.Yag = getSelectionStart();
+    this.Yah = getSelectionEnd();
+    if (((i != getSelectionStart()) || (j != getSelectionEnd())) && (this.Yaf != null)) {
+      this.Yaf.b(this, getSelectionStart(), getSelectionEnd());
     }
     AppMethodBeat.o(143308);
   }
@@ -126,10 +126,10 @@ public class AutoMatchKeywordEditText
     int i = getSelectionStart();
     int j = getSelectionEnd();
     super.setSelection(paramInt1, paramInt2);
-    this.QBH = getSelectionStart();
-    this.QBI = getSelectionEnd();
-    if (((i != getSelectionStart()) || (j != getSelectionEnd())) && (this.QBG != null)) {
-      this.QBG.b(this, getSelectionStart(), getSelectionEnd());
+    this.Yag = getSelectionStart();
+    this.Yah = getSelectionEnd();
+    if (((i != getSelectionStart()) || (j != getSelectionEnd())) && (this.Yaf != null)) {
+      this.Yaf.b(this, getSelectionStart(), getSelectionEnd());
     }
     AppMethodBeat.o(143309);
   }
@@ -141,7 +141,7 @@ public class AutoMatchKeywordEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.widget.AutoMatchKeywordEditText
  * JD-Core Version:    0.7.0.1
  */

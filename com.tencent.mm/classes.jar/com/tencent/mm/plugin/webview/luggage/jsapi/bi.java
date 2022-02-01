@@ -7,6 +7,7 @@ import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.c.c;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.ui.tools.e;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -22,22 +23,22 @@ public class bi
   {
     AppMethodBeat.i(78627);
     Log.i("MicroMsg.JsApiSetPageTitle", "invokeInOwn");
-    String str = paramb.ctb.csi.optString("title");
-    if (!Util.isNullOrNil(paramb.ctb.csi.optString("color")))
+    String str = paramb.crh.cqn.optString("title");
+    if (!Util.isNullOrNil(paramb.crh.cqn.optString("color")))
     {
-      int i = e.gw(paramb.ctb.csi.optString("color"), ((g)paramb.cta).mContext.getResources().getColor(2131099892));
-      ((g)paramb.cta).ec(str, i);
+      int i = e.he(paramb.crh.cqn.optString("color"), ((g)paramb.crg).mContext.getResources().getColor(c.c.action_bar_tittle_color));
+      ((g)paramb.crg).eA(str, i);
     }
     for (;;)
     {
-      paramb.c("", null);
+      paramb.a("", null);
       AppMethodBeat.o(78627);
       return;
-      ((g)paramb.cta).ec(str, 0);
+      ((g)paramb.crg).eA(str, 0);
     }
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

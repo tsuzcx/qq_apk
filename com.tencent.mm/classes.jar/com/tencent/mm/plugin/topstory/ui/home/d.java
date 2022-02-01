@@ -2,97 +2,98 @@ package com.tencent.mm.plugin.topstory.ui.home;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.a.h;
-import com.tencent.mm.plugin.topstory.ui.a.e;
+import com.tencent.mm.plugin.topstory.ui.c.c;
+import com.tencent.mm.plugin.topstory.ui.c.e;
 import com.tencent.mm.plugin.websearch.webview.WebSearchWebView;
-import com.tencent.mm.protocal.protobuf.eii;
-import com.tencent.mm.protocal.protobuf.eij;
+import com.tencent.mm.protocal.protobuf.aci;
+import com.tencent.mm.protocal.protobuf.esk;
+import com.tencent.mm.protocal.protobuf.esl;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
-import com.tencent.xweb.x;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import org.json.JSONArray;
 
-public final class d
+public class d
 {
-  private eii GlH;
-  private com.tencent.mm.plugin.topstory.ui.a.c GlI;
-  private WebSearchWebView GlJ;
-  private e GlK;
-  public HashMap<Integer, eij> GlL;
-  public HashMap<Integer, String> GlM;
-  boolean ygl;
+  boolean Dqn;
+  private esk MYt;
+  private c MYu;
+  private WebSearchWebView MYv;
+  private e MYw;
+  public HashMap<Integer, esl> MYx;
+  public HashMap<Integer, String> MYy;
   
   public d()
   {
     AppMethodBeat.i(126060);
-    this.ygl = false;
-    this.GlL = new HashMap();
-    this.GlM = new HashMap();
+    this.Dqn = false;
+    this.MYx = new HashMap();
+    this.MYy = new HashMap();
     AppMethodBeat.o(126060);
   }
   
-  private String a(eii parameii, int paramInt, boolean paramBoolean)
+  private String a(esk paramesk, int paramInt, boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(126063);
+    AppMethodBeat.i(206843);
     String str = "";
     Object localObject;
-    if (this.GlL.containsKey(Integer.valueOf(paramInt)))
+    if (this.MYx.containsKey(Integer.valueOf(paramInt)))
     {
-      localObject = (eij)this.GlL.get(Integer.valueOf(paramInt));
-      Log.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData SaveTs:%sms, DirectShowTs:%ss, ShowAndRefreshTs:%ss, curTs:%sms", new Object[] { Long.valueOf(((eij)localObject).NhD), Integer.valueOf(((eij)localObject).MOb), Integer.valueOf(((eij)localObject).NhE), Long.valueOf(System.currentTimeMillis()) });
-      if (((eij)localObject).NhD + ((eij)localObject).MOb * 1000 > System.currentTimeMillis())
+      localObject = (esl)this.MYx.get(Integer.valueOf(paramInt));
+      Log.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData SaveTs:%sms, DirectShowTs:%ss, ShowAndRefreshTs:%ss, curTs:%sms", new Object[] { Long.valueOf(((esl)localObject).Uuj), Integer.valueOf(((esl)localObject).TZU), Integer.valueOf(((esl)localObject).Uuk), Long.valueOf(System.currentTimeMillis()) });
+      if (((esl)localObject).Uuj + ((esl)localObject).TZU * 1000 > System.currentTimeMillis())
       {
-        this.GlI.fzT();
+        this.MYu.grU();
         Log.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData No Need Auto Refresh");
-        localObject = ((eij)localObject).iAc;
+        localObject = ((esl)localObject).lpy;
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(126063);
+      AppMethodBeat.o(206843);
       return localObject;
-      if (((eij)localObject).NhD + ((eij)localObject).NhE * 1000 > System.currentTimeMillis())
+      if (((esl)localObject).Uuj + ((esl)localObject).Uuk * 1000 > System.currentTimeMillis())
       {
-        this.GlI.fzT();
+        this.MYu.grU();
         Log.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData Need Auto Refresh");
-        str = ((eij)localObject).iAc;
+        str = ((esl)localObject).lpy;
       }
       for (;;)
       {
-        parameii.NhB.addAll(((eij)localObject).MOd);
+        paramesk.Uuh.addAll(((esl)localObject).TZW);
         localObject = str;
         if (!paramBoolean) {
           break;
         }
-        this.GlI.a(parameii, false, false, 0);
+        this.MYu.a(paramesk, false, false, 0, paramString);
         localObject = str;
         break;
-        this.GlI.fzT();
+        this.MYu.grU();
         Log.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData No Need Show CacheData");
       }
-      this.GlI.fzT();
+      this.MYu.grU();
       localObject = str;
       if (paramBoolean)
       {
-        this.GlI.a(parameii, false, false, 0);
+        this.MYu.a(paramesk, false, false, 0, paramString);
         localObject = str;
       }
     }
   }
   
-  private boolean fyw()
+  private boolean gqt()
   {
     AppMethodBeat.i(126064);
-    if (this.GlL.containsKey(Integer.valueOf(100)))
+    if (this.MYx.containsKey(Integer.valueOf(100)))
     {
-      eij localeij = (eij)this.GlL.get(Integer.valueOf(100));
-      long l = localeij.NhD;
-      if (localeij.MOb * 1000 + l > System.currentTimeMillis())
+      esl localesl = (esl)this.MYx.get(Integer.valueOf(100));
+      long l = localesl.Uuj;
+      if (localesl.TZU * 1000 + l > System.currentTimeMillis())
       {
         Log.i("MicroMsg.TopStory.TopStoryWebViewMgr", "needRefreshCache false");
         AppMethodBeat.o(126064);
@@ -104,49 +105,56 @@ public final class d
     return true;
   }
   
-  public final void a(eii parameii, boolean paramBoolean)
+  public final void a(esk paramesk, boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(126061);
+    AppMethodBeat.i(206838);
+    a(paramesk, paramBoolean, paramString, null);
+    AppMethodBeat.o(206838);
+  }
+  
+  public final void a(esk paramesk, boolean paramBoolean, String paramString, LinkedList<aci> paramLinkedList)
+  {
+    AppMethodBeat.i(206842);
     int i;
-    if (!this.ygl)
+    if (!this.Dqn)
     {
-      this.ygl = true;
-      com.tencent.mm.plugin.topstory.ui.c.c(parameii, "startCreateWB", System.currentTimeMillis());
-      this.GlH = parameii;
-      this.GlI = new com.tencent.mm.plugin.topstory.ui.a.c();
-      if (parameii.channelId > 0) {
-        break label251;
+      this.Dqn = true;
+      com.tencent.mm.plugin.topstory.ui.d.c(paramesk, "startCreateWB", System.currentTimeMillis());
+      this.MYt = paramesk;
+      this.MYu = new c();
+      if (paramesk.channelId > 0) {
+        break label256;
       }
       i = 100;
-      String str = a(parameii, i, paramBoolean);
-      this.GlJ = new WebSearchWebView(MMApplicationContext.getContext());
-      Object localObject = new com.tencent.mm.plugin.topstory.ui.a.b();
-      com.tencent.mm.plugin.topstory.ui.a.d locald = new com.tencent.mm.plugin.topstory.ui.a.d(parameii, this.GlI);
-      this.GlK = new e(this.GlJ, parameii, this.GlI);
-      this.GlJ.a((x)localObject, locald);
-      this.GlJ.addJavascriptInterface(this.GlK, "topStoryJSApi");
-      if (this.GlI.Gqp == null) {
-        break label259;
+      paramString = a(paramesk, i, paramBoolean, paramString);
+      this.MYv = new WebSearchWebView(MMApplicationContext.getContext());
+      com.tencent.mm.plugin.topstory.ui.c.b localb = new com.tencent.mm.plugin.topstory.ui.c.b();
+      com.tencent.mm.plugin.topstory.ui.c.d locald = new com.tencent.mm.plugin.topstory.ui.c.d(paramesk, this.MYu);
+      this.MYw = new e(this.MYv, paramesk, this.MYu, paramLinkedList);
+      this.MYv.a(localb, locald);
+      this.MYv.addJavascriptInterface(this.MYw, "topStoryJSApi");
+      if (this.MYu.Ndb == null) {
+        break label265;
       }
-      localObject = (String)this.GlM.get(Integer.valueOf(i));
-      this.GlI.A(str, (String)localObject, fyw());
-      this.GlJ.loadDataWithBaseURL(parameii.url, new String(this.GlI.Gqp), "text/html", "utf-8", null);
-      this.GlI.Gqp = null;
-      com.tencent.mm.plugin.topstory.ui.c.c(parameii, "endCreateWBWithLoadData", System.currentTimeMillis());
+      paramLinkedList = (String)this.MYy.get(Integer.valueOf(i));
+      this.MYu.C(paramString, paramLinkedList, gqt());
+      this.MYv.loadDataWithBaseURL(paramesk.url, new String(this.MYu.Ndb), "text/html", "utf-8", null);
+      this.MYu.Ndb = null;
+      com.tencent.mm.plugin.topstory.ui.d.c(paramesk, "endCreateWBWithLoadData", System.currentTimeMillis());
     }
     for (;;)
     {
       if (100 == i) {
-        this.GlK.aTI("");
+        this.MYw.bfg("");
       }
-      AppMethodBeat.o(126061);
+      AppMethodBeat.o(206842);
       return;
-      label251:
-      i = parameii.channelId;
+      label256:
+      i = paramesk.channelId;
       break;
-      label259:
-      this.GlJ.loadUrl(parameii.url);
-      com.tencent.mm.plugin.topstory.ui.c.c(parameii, "endCreateWBWithLoadURL", System.currentTimeMillis());
+      label265:
+      this.MYv.loadUrl(paramesk.url);
+      com.tencent.mm.plugin.topstory.ui.d.c(paramesk, "endCreateWBWithLoadURL", System.currentTimeMillis());
     }
   }
   
@@ -154,27 +162,27 @@ public final class d
   {
     AppMethodBeat.i(126062);
     Log.i("MicroMsg.TopStory.TopStoryWebViewMgr", "attachWebViewToActivity %s", new Object[] { Integer.valueOf(paramb.hashCode()) });
-    paramb.a(this.GlI, this.GlJ, this.GlK, this.GlH);
-    this.GlI = null;
-    this.GlJ = null;
-    this.GlK = null;
-    this.GlH = null;
-    this.ygl = false;
+    paramb.a(this.MYu, this.MYv, this.MYw, this.MYt);
+    this.MYu = null;
+    this.MYv = null;
+    this.MYw = null;
+    this.MYt = null;
+    this.Dqn = false;
     AppMethodBeat.o(126062);
   }
   
-  public final void cC(int paramInt, String paramString)
+  public final void cD(int paramInt, String paramString)
   {
     AppMethodBeat.i(126065);
-    this.GlM.put(Integer.valueOf(paramInt), paramString);
+    this.MYy.put(Integer.valueOf(paramInt), paramString);
     try
     {
       paramString = paramString.getBytes("utf-8");
-      o localo = new o(h.fxT());
-      if (!localo.exists()) {
-        localo.mkdirs();
+      q localq = new q(h.gpO());
+      if (!localq.ifE()) {
+        localq.ifL();
       }
-      s.f(h.fxT() + paramInt, paramString, paramString.length);
+      u.H(h.gpO() + paramInt, paramString);
       Log.i("MicroMsg.TopStory.TopStoryWebViewMgr", "putNegDataCache write data key: %d length: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramString.length) });
       AppMethodBeat.o(126065);
       return;
@@ -187,23 +195,23 @@ public final class d
   }
   
   /* Error */
-  public final void cD(final int paramInt, final String paramString)
+  public final void cE(final int paramInt, final String paramString)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 306
+    //   2: ldc_w 313
     //   5: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_2
-    //   9: invokestatic 312	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   9: invokestatic 319	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   12: ifeq +12 -> 24
-    //   15: ldc_w 306
+    //   15: ldc_w 313
     //   18: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   21: aload_0
     //   22: monitorexit
     //   23: return
     //   24: ldc 68
-    //   26: ldc_w 314
+    //   26: ldc_w 321
     //   29: iconst_2
     //   30: anewarray 4	java/lang/Object
     //   33: dup
@@ -221,10 +229,10 @@ public final class d
     //   51: aload_0
     //   52: iload_1
     //   53: aload_2
-    //   54: invokespecial 317	com/tencent/mm/plugin/topstory/ui/home/d$1:<init>	(Lcom/tencent/mm/plugin/topstory/ui/home/d;ILjava/lang/String;)V
-    //   57: ldc_w 319
-    //   60: invokestatic 325	com/tencent/mm/sdk/thread/ThreadPool:post	(Ljava/lang/Runnable;Ljava/lang/String;)V
-    //   63: ldc_w 306
+    //   54: invokespecial 324	com/tencent/mm/plugin/topstory/ui/home/d$1:<init>	(Lcom/tencent/mm/plugin/topstory/ui/home/d;ILjava/lang/String;)V
+    //   57: ldc_w 326
+    //   60: invokestatic 332	com/tencent/mm/sdk/thread/ThreadPool:post	(Ljava/lang/Runnable;Ljava/lang/String;)V
+    //   63: ldc_w 313
     //   66: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   69: goto -48 -> 21
     //   72: astore_2
@@ -245,7 +253,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.home.d
  * JD-Core Version:    0.7.0.1
  */

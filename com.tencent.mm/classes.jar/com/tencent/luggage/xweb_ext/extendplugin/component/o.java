@@ -2,9 +2,9 @@ package com.tencent.luggage.xweb_ext.extendplugin.component;
 
 public abstract interface o
 {
-  public abstract void PG();
+  public abstract String Tg();
   
-  public abstract String PH();
+  public abstract void forceStop();
 }
 
 

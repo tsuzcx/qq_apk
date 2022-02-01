@@ -1,24 +1,25 @@
 package com.tencent.mm.plugin.wallet.wecoin.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.byq;
-import com.tencent.mm.protocal.protobuf.byr;
-import com.tencent.mm.protocal.protobuf.dop;
-import com.tencent.mm.protocal.protobuf.dpc;
+import com.tencent.mm.protocal.protobuf.cgi;
+import com.tencent.mm.protocal.protobuf.cgj;
+import com.tencent.mm.protocal.protobuf.dyl;
+import com.tencent.mm.protocal.protobuf.dyy;
 import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.l;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CgiGetWecoinPriceListRequest;", "Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CommonWeCoinCgi;", "Lcom/tencent/mm/protocal/protobuf/GetWecoinPriceListResponse;", "()V", "plugin-wxpay_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CgiGetWecoinPageInfoRequest;", "Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CommonWeCoinCgi;", "Lcom/tencent/mm/protocal/protobuf/GetWecoinPageInfoResponse;", "()V", "plugin-wxpay_release"})
 public final class i
-  extends l<byr>
+  extends m<cgj>
 {
   public i()
   {
-    AppMethodBeat.i(212695);
-    byq localbyq = new byq();
-    byr localbyr = new byr();
-    a((dop)localbyq, (dpc)localbyr, 6299, "/cgi-bin/micromsg-bin/getwecoinpricelist");
-    Log.i("MicroMsg.CommonWeCoinCgi", "CgiGetWecoinPriceListRequest: ");
-    AppMethodBeat.o(212695);
+    AppMethodBeat.i(270699);
+    cgi localcgi = new cgi();
+    cgj localcgj = new cgj();
+    a((dyl)localcgi, (dyy)localcgj, 6633, "/cgi-bin/micromsg-bin/getwecoinpageinfo");
+    Log.i("MicroMsg.CommonWeCoinCgi", "CgiGetWecoinPageInfoRequest: ");
+    AppMethodBeat.o(270699);
   }
 }
 

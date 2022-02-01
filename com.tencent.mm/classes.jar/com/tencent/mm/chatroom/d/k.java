@@ -1,17 +1,17 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bij;
-import com.tencent.mm.protocal.protobuf.bik;
+import com.tencent.mm.protocal.protobuf.bpu;
+import com.tencent.mm.protocal.protobuf.bpv;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
@@ -21,7 +21,7 @@ public final class k
 {
   private i callback;
   private String errMsg;
-  public bik gsa;
+  public bpv iWl;
   private final d rr;
   
   public k(String paramString)
@@ -31,36 +31,36 @@ public final class k
     Object localObject = new d.a();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getassociatechatroommanageinfo";
     ((d.a)localObject).funcId = 3553;
-    ((d.a)localObject).iLN = new bij();
-    ((d.a)localObject).iLO = new bik();
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (bij)this.rr.iLK.iLR;
-    ((bij)localObject).dOe = Util.nullAs(paramString, "");
-    ((bij)localObject).scene = 0;
+    ((d.a)localObject).lBU = new bpu();
+    ((d.a)localObject).lBV = new bpv();
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (bpu)d.b.b(this.rr.lBR);
+    ((bpu)localObject).fHp = Util.nullAs(paramString, "");
+    ((bpu)localObject).scene = 0;
     AppMethodBeat.o(182082);
   }
   
   public k(String paramString, byte paramByte)
   {
-    AppMethodBeat.i(194026);
+    AppMethodBeat.i(193819);
     Log.i("MicroMsg.NetSceneGetAssociateChatRoomManageInfo", "NetSceneGetAssociateChatRoomManageInfo ticket:%s", new Object[] { Util.nullAs(paramString, "") });
     Object localObject = new d.a();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getassociatechatroommanageinfo";
     ((d.a)localObject).funcId = 3553;
-    ((d.a)localObject).iLN = new bij();
-    ((d.a)localObject).iLO = new bik();
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (bij)this.rr.iLK.iLR;
-    ((bij)localObject).dHx = Util.nullAs(paramString, "");
-    ((bij)localObject).scene = 1;
-    AppMethodBeat.o(194026);
+    ((d.a)localObject).lBU = new bpu();
+    ((d.a)localObject).lBV = new bpv();
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (bpu)d.b.b(this.rr.lBR);
+    ((bpu)localObject).fAo = Util.nullAs(paramString, "");
+    ((bpu)localObject).scene = 1;
+    AppMethodBeat.o(193819);
   }
   
   public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(182083);
     this.callback = parami;
-    this.gsa = ((bik)this.rr.iLL.iLR);
+    this.iWl = ((bpv)d.c.b(this.rr.lBS));
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(182083);
     return i;
@@ -82,7 +82,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.chatroom.d.k
  * JD-Core Version:    0.7.0.1
  */

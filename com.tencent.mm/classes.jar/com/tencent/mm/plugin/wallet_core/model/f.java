@@ -8,14 +8,14 @@ import org.json.JSONObject;
 
 public final class f
 {
-  public int HWi;
-  public String HWj;
-  public String HWk;
-  public String HWl;
-  public String HWm;
-  public String HWn;
+  public int OOi;
+  public String OOj;
+  public String OOk;
+  public String OOl;
+  public String OOm;
+  public String OOn;
   
-  public static f aVf(String paramString)
+  public static f bgO(String paramString)
   {
     AppMethodBeat.i(70237);
     if (!Util.isNullOrNil(paramString)) {
@@ -23,13 +23,13 @@ public final class f
       {
         paramString = new JSONObject(paramString);
         f localf = new f();
-        localf.HWi = paramString.optInt("menu_jump_type", -1);
-        localf.HWj = paramString.optString("menu_jump_url", "");
-        localf.HWk = paramString.optString("menu_username", "");
-        localf.HWl = paramString.optString("menu_path", "");
-        localf.HWm = paramString.optString("menu_title", "");
-        localf.HWn = paramString.optString("menu_icon_url", "");
-        Log.i("BindCardMenu", "parse bind card menu, type: %s, title: %s", new Object[] { Integer.valueOf(localf.HWi), localf.HWm });
+        localf.OOi = paramString.optInt("menu_jump_type", -1);
+        localf.OOj = paramString.optString("menu_jump_url", "");
+        localf.OOk = paramString.optString("menu_username", "");
+        localf.OOl = paramString.optString("menu_path", "");
+        localf.OOm = paramString.optString("menu_title", "");
+        localf.OOn = paramString.optString("menu_icon_url", "");
+        Log.i("BindCardMenu", "parse bind card menu, type: %s, title: %s", new Object[] { Integer.valueOf(localf.OOi), localf.OOm });
         AppMethodBeat.o(70237);
         return localf;
       }
@@ -44,7 +44,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.f
  * JD-Core Version:    0.7.0.1
  */

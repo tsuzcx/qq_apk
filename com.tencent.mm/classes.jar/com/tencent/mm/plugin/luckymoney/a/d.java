@@ -8,17 +8,39 @@ import java.util.UUID;
 
 public final class d
 {
+  public static boolean BqB = false;
+  public static String EsX;
   public static String sessionId;
   public static long startTime;
-  public static String yOZ;
-  public static boolean yPa = false;
   
-  public static void aDp(String paramString)
+  public static void Bv(int paramInt)
   {
-    yOZ = paramString;
+    AppMethodBeat.i(168792);
+    if (Util.isNullOrNil(sessionId))
+    {
+      AppMethodBeat.o(168792);
+      return;
+    }
+    if ((!BqB) && ((paramInt == 9) || (paramInt == 10) || (paramInt == 11)))
+    {
+      AppMethodBeat.o(168792);
+      return;
+    }
+    if ((paramInt == 9) || (paramInt == 10) || (paramInt == 11)) {
+      BqB = false;
+    }
+    long l1 = SystemClock.elapsedRealtime() / 1000L;
+    long l2 = startTime;
+    h.IzE.a(18889, new Object[] { Integer.valueOf(paramInt), sessionId, Long.valueOf(l1 - l2), EsX });
+    AppMethodBeat.o(168792);
   }
   
-  public static void bFT()
+  public static void aNz(String paramString)
+  {
+    EsX = paramString;
+  }
+  
+  public static void bRC()
   {
     AppMethodBeat.i(168791);
     sessionId = UUID.randomUUID().toString();
@@ -29,35 +51,13 @@ public final class d
   public static void resetSession()
   {
     sessionId = null;
-    yOZ = null;
+    EsX = null;
     startTime = -1L;
-  }
-  
-  public static void xV(int paramInt)
-  {
-    AppMethodBeat.i(168792);
-    if (Util.isNullOrNil(sessionId))
-    {
-      AppMethodBeat.o(168792);
-      return;
-    }
-    if ((!yPa) && ((paramInt == 9) || (paramInt == 10) || (paramInt == 11)))
-    {
-      AppMethodBeat.o(168792);
-      return;
-    }
-    if ((paramInt == 9) || (paramInt == 10) || (paramInt == 11)) {
-      yPa = false;
-    }
-    long l1 = SystemClock.elapsedRealtime() / 1000L;
-    long l2 = startTime;
-    h.CyF.a(18889, new Object[] { Integer.valueOf(paramInt), sessionId, Long.valueOf(l1 - l2), yOZ });
-    AppMethodBeat.o(168792);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.a.d
  * JD-Core Version:    0.7.0.1
  */

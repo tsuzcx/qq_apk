@@ -13,18 +13,18 @@ final class TextPreviewUI$9
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(232934);
+    AppMethodBeat.i(277003);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/ui/chatting/TextPreviewUI$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    TextPreviewUI.m(this.PkZ);
+    localb.bn(paramView);
+    a.c("com/tencent/mm/ui/chatting/TextPreviewUI$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    TextPreviewUI.n(this.WEJ);
     a.a(this, "com/tencent/mm/ui/chatting/TextPreviewUI$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(232934);
+    AppMethodBeat.o(277003);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.TextPreviewUI.9
  * JD-Core Version:    0.7.0.1
  */

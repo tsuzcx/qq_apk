@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.choosemsgfile.b.c;
 
 public abstract interface h
 {
-  public abstract void c(boolean paramBoolean, String paramString1, String paramString2);
+  public abstract void d(boolean paramBoolean, String paramString1, String paramString2);
 }
 
 

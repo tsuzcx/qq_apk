@@ -1,87 +1,88 @@
 package com.tencent.mm.plugin.appbrand.widget.actionbar;
 
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.os.IBinder;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.PopupWindow;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
 
-public final class f
-  extends PopupWindow
+public abstract interface f
 {
-  private Context mContext;
-  private View maskView;
-  public FrameLayout omw;
-  private WindowManager windowManager;
+  public abstract void destroy();
   
-  public f(Context paramContext)
-  {
-    super(paramContext);
-    AppMethodBeat.i(49381);
-    this.mContext = null;
-    this.mContext = paramContext;
-    this.windowManager = ((WindowManager)paramContext.getSystemService("window"));
-    this.omw = new FrameLayout(this.mContext);
-    AppMethodBeat.o(49381);
-  }
+  public abstract View getActionView();
   
-  public final void dismiss()
+  public abstract int getBackgroundColor();
+  
+  public abstract void hk(boolean paramBoolean);
+  
+  public abstract void setBackButtonClickListener(View.OnClickListener paramOnClickListener);
+  
+  public abstract void setBackgroundColor(int paramInt);
+  
+  public abstract void setCloseButtonClickListener(View.OnClickListener paramOnClickListener);
+  
+  public abstract void setForegroundColor(int paramInt);
+  
+  public abstract void setForegroundStyle(String paramString);
+  
+  public abstract void setLoadingIconVisibility(boolean paramBoolean);
+  
+  public abstract void setMainTitle(CharSequence paramCharSequence);
+  
+  public static enum a
   {
-    AppMethodBeat.i(49383);
-    if (this.maskView != null)
+    public final int roW;
+    
+    static
     {
-      this.windowManager.removeViewImmediate(this.maskView);
-      this.maskView = null;
+      AppMethodBeat.i(244974);
+      roU = new a("BLACK", 0, -16777216);
+      roV = new a("WHITE", 1, -1);
+      roX = new a[] { roU, roV };
+      AppMethodBeat.o(244974);
     }
-    super.dismiss();
-    AppMethodBeat.o(49383);
-  }
-  
-  public final void setContentView(View paramView)
-  {
-    AppMethodBeat.i(49384);
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
-    localLayoutParams.gravity = 17;
-    localLayoutParams.topMargin = a.aH(this.mContext, 2131165770);
-    localLayoutParams.rightMargin = a.aH(this.mContext, 2131165769);
-    localLayoutParams.leftMargin = a.aH(this.mContext, 2131165769);
-    this.omw.addView(paramView, localLayoutParams);
-    super.setContentView(this.omw);
-    AppMethodBeat.o(49384);
-  }
-  
-  public final void showAsDropDown(View paramView)
-  {
-    AppMethodBeat.i(49382);
-    IBinder localIBinder = paramView.getWindowToken();
-    WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
-    localLayoutParams.width = -1;
-    localLayoutParams.height = -1;
-    localLayoutParams.format = -3;
-    localLayoutParams.type = 1000;
-    if (Build.VERSION.SDK_INT >= 28) {
-      localLayoutParams.layoutInDisplayCutoutMode = 1;
+    
+    private a(int paramInt)
+    {
+      this.roW = paramInt;
     }
-    localLayoutParams.token = localIBinder;
-    this.maskView = new View(this.mContext);
-    this.maskView.setBackgroundColor(2130706432);
-    this.maskView.setFitsSystemWindows(false);
-    this.maskView.setOnTouchListener(new f.1(this));
-    this.maskView.setOnKeyListener(new f.2(this));
-    this.windowManager.addView(this.maskView, localLayoutParams);
-    super.showAsDropDown(paramView);
-    AppMethodBeat.o(49382);
+    
+    public static a Dy(int paramInt)
+    {
+      if (paramInt == -1) {
+        return roV;
+      }
+      return roU;
+    }
+    
+    public static a anB(String paramString)
+    {
+      AppMethodBeat.i(244970);
+      if (!TextUtils.isEmpty(paramString))
+      {
+        a[] arrayOfa = values();
+        int j = arrayOfa.length;
+        int i = 0;
+        while (i < j)
+        {
+          a locala = arrayOfa[i];
+          if (locala.name().equalsIgnoreCase(paramString))
+          {
+            AppMethodBeat.o(244970);
+            return locala;
+          }
+          i += 1;
+        }
+      }
+      paramString = roV;
+      AppMethodBeat.o(244970);
+      return paramString;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.actionbar.f
  * JD-Core Version:    0.7.0.1
  */

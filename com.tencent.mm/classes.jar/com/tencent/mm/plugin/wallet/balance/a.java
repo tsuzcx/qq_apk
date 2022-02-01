@@ -11,13 +11,13 @@ import com.tencent.mm.wallet_core.d;
 public class a
   extends b
 {
-  public static int HsP = 1;
-  public static int HsQ = 2;
+  public static int OkA = 1;
+  public static int OkB = 2;
   
   public final d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(68368);
-    z.aqh(14);
+    z.azF(14);
     paramActivity = super.a(paramActivity, paramBundle);
     AppMethodBeat.o(68368);
     return paramActivity;
@@ -26,19 +26,19 @@ public class a
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(68370);
-    z.hhs();
+    z.iiU();
     if ((paramBundle != null) && (paramBundle.getBoolean("intent_bind_end", false)))
     {
       Intent localIntent = new Intent();
       localIntent.putExtras(paramBundle);
-      if (paramBundle.getInt("from_bind_ui", HsQ) == HsP)
+      if (paramBundle.getInt("from_bind_ui", OkB) == OkA)
       {
-        localIntent.putExtra("from_bind_ui", HsP);
+        localIntent.putExtra("from_bind_ui", OkA);
         a(paramActivity, "wallet", ".balance.ui.WalletBalanceManagerUI", -1, localIntent, true);
         AppMethodBeat.o(68370);
         return;
       }
-      localIntent.putExtra("from_bind_ui", HsQ);
+      localIntent.putExtra("from_bind_ui", OkB);
       a(paramActivity, "wallet", ".balance.ui.WalletBalanceFetchUI", -1, localIntent, true);
       AppMethodBeat.o(68370);
       return;
@@ -47,15 +47,15 @@ public class a
     AppMethodBeat.o(68370);
   }
   
-  public final String dKC()
+  public final String epb()
   {
     return "BalanceFetchCardProcess";
   }
   
-  public final void g(Activity paramActivity, int paramInt)
+  public final void h(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(68369);
-    z.hhs();
+    z.iiU();
     if (paramActivity != null) {
       paramActivity.finish();
     }

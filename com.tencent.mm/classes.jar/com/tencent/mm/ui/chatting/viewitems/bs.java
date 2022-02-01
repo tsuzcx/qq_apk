@@ -1,16 +1,17 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
+import android.widget.ImageView;
+import android.widget.TextView;
+
 final class bs
 {
-  String PQM;
-  String PQN;
-  int PQO = -16777216;
-  int PQP = -16777216;
-  boolean PQQ = false;
+  ImageView bwJ;
+  TextView jMg;
+  TextView zai;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.bs
  * JD-Core Version:    0.7.0.1
  */

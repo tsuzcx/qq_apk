@@ -16,83 +16,84 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder;", "Lcom/tencent/mm/ui/widget/InsectFrameLayout;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/panel/IEditorPanel;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "closeTouchOutside", "", "getCloseTouchOutside", "()Z", "setCloseTouchOutside", "(Z)V", "coverByKeyboard", "getCoverByKeyboard", "setCoverByKeyboard", "value", "outsideTouchable", "getOutsideTouchable", "setOutsideTouchable", "panelView", "Landroid/view/View;", "visibleCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "visible", "", "dispatchKeyEvent", "event", "Landroid/view/KeyEvent;", "insectBottom", "bottom", "isShow", "setOnVisibleChangeCallback", "callback", "setPanelView", "view", "params", "Landroid/view/ViewGroup$LayoutParams;", "setShow", "show", "Companion", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder;", "Lcom/tencent/mm/ui/widget/InsectFrameLayout;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/panel/IEditorPanel;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "closeTouchOutside", "", "getCloseTouchOutside", "()Z", "setCloseTouchOutside", "(Z)V", "coverByKeyboard", "getCoverByKeyboard", "setCoverByKeyboard", "isDismissing", "value", "outsideTouchable", "getOutsideTouchable", "setOutsideTouchable", "panelView", "Landroid/view/View;", "visibleCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "visible", "", "dispatchKeyEvent", "event", "Landroid/view/KeyEvent;", "hasInit", "insectBottom", "bottom", "isShow", "setOnVisibleChangeCallback", "callback", "setPanelView", "view", "params", "Landroid/view/ViewGroup$LayoutParams;", "setShow", "show", "Companion", "plugin-recordvideo_release"})
 public final class EditorPanelHolder
   extends InsectFrameLayout
 {
-  public static final EditorPanelHolder.a Cdx;
-  private View AeF;
-  private kotlin.g.a.b<? super Boolean, x> Ccp;
-  private boolean Cdu;
-  private boolean Cdv;
-  private boolean Cdw;
+  public static final a HZN;
+  private View FLi;
+  private kotlin.g.a.b<? super Boolean, x> HYF;
+  private boolean HZJ;
+  private boolean HZK;
+  private boolean HZL;
+  private boolean HZM;
   
   static
   {
-    AppMethodBeat.i(237733);
-    Cdx = new EditorPanelHolder.a((byte)0);
-    AppMethodBeat.o(237733);
+    AppMethodBeat.i(217098);
+    HZN = new a((byte)0);
+    AppMethodBeat.o(217098);
   }
   
   public EditorPanelHolder(Context paramContext)
   {
     this(paramContext, null);
-    AppMethodBeat.i(237732);
-    AppMethodBeat.o(237732);
+    AppMethodBeat.i(217097);
+    AppMethodBeat.o(217097);
   }
   
   public EditorPanelHolder(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(237731);
-    AppMethodBeat.o(237731);
+    AppMethodBeat.i(217095);
+    AppMethodBeat.o(217095);
   }
   
   public EditorPanelHolder(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(237730);
-    this.Cdv = true;
+    AppMethodBeat.i(217093);
+    this.HZL = true;
     setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(237718);
+        AppMethodBeat.i(216960);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        if (this.Cdy.getCloseTouchOutside()) {
-          this.Cdy.setShow(false);
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        if (this.HZO.getCloseTouchOutside()) {
+          this.HZO.setShow(false);
         }
         a.a(this, "com/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(237718);
+        AppMethodBeat.o(216960);
       }
     });
     setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    AppMethodBeat.o(237730);
+    AppMethodBeat.o(217093);
   }
   
-  public final boolean Gv(int paramInt)
+  public final boolean Kc(final int paramInt)
   {
-    AppMethodBeat.i(237727);
-    if ((this.Cdu) && ((paramInt > 200) || (paramInt < 0)))
+    AppMethodBeat.i(217086);
+    if ((this.HZK) && ((paramInt > 200) || (paramInt < 0)))
     {
-      AppMethodBeat.o(237727);
+      AppMethodBeat.o(217086);
       return true;
     }
-    View localView = this.AeF;
+    View localView = this.FLi;
     if ((localView != null) && (localView.getPaddingBottom() != paramInt)) {
-      localView.post((Runnable)new EditorPanelHolder.b(localView, paramInt));
+      localView.post((Runnable)new b(localView, paramInt));
     }
-    AppMethodBeat.o(237727);
+    AppMethodBeat.o(217086);
     return true;
   }
   
   public final void a(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(237724);
-    p.h(paramView, "view");
-    this.AeF = paramView;
+    AppMethodBeat.i(217080);
+    p.k(paramView, "view");
+    this.FLi = paramView;
     if (paramLayoutParams != null) {
       paramLayoutParams = new FrameLayout.LayoutParams(paramLayoutParams);
     }
@@ -100,7 +101,7 @@ public final class EditorPanelHolder
     {
       paramLayoutParams.gravity = 80;
       addView(paramView, (ViewGroup.LayoutParams)paramLayoutParams);
-      AppMethodBeat.o(237724);
+      AppMethodBeat.o(217080);
       return;
       if (paramView.getLayoutParams() != null) {
         paramLayoutParams = new FrameLayout.LayoutParams(paramView.getLayoutParams());
@@ -110,28 +111,28 @@ public final class EditorPanelHolder
     }
   }
   
-  public final boolean bJw()
+  public final boolean bVd()
   {
-    AppMethodBeat.i(237728);
-    if (getVisibility() == 0)
+    AppMethodBeat.i(217088);
+    if ((getVisibility() == 0) && (!this.HZJ))
     {
-      AppMethodBeat.o(237728);
+      AppMethodBeat.o(217088);
       return true;
     }
-    AppMethodBeat.o(237728);
+    AppMethodBeat.o(217088);
     return false;
   }
   
   public final boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(237729);
-    p.h(paramKeyEvent, "event");
+    AppMethodBeat.i(217092);
+    p.k(paramKeyEvent, "event");
     if (paramKeyEvent.getKeyCode() == 4)
     {
       if (getKeyDispatcherState() == null)
       {
         bool = super.dispatchKeyEvent(paramKeyEvent);
-        AppMethodBeat.o(237729);
+        AppMethodBeat.o(217092);
         return bool;
       }
       KeyEvent.DispatcherState localDispatcherState;
@@ -141,7 +142,7 @@ public final class EditorPanelHolder
         if (localDispatcherState != null) {
           localDispatcherState.startTracking(paramKeyEvent, this);
         }
-        AppMethodBeat.o(237729);
+        AppMethodBeat.o(217092);
         return true;
       }
       if (paramKeyEvent.getAction() == 1)
@@ -150,75 +151,80 @@ public final class EditorPanelHolder
         if ((localDispatcherState != null) && (localDispatcherState.isTracking(paramKeyEvent)) && (!paramKeyEvent.isCanceled()))
         {
           setShow(false);
-          AppMethodBeat.o(237729);
+          AppMethodBeat.o(217092);
           return true;
         }
       }
       bool = super.dispatchKeyEvent(paramKeyEvent);
-      AppMethodBeat.o(237729);
+      AppMethodBeat.o(217092);
       return bool;
     }
     boolean bool = super.dispatchKeyEvent(paramKeyEvent);
-    AppMethodBeat.o(237729);
+    AppMethodBeat.o(217092);
     return bool;
+  }
+  
+  public final boolean fpT()
+  {
+    return this.FLi != null;
   }
   
   public final boolean getCloseTouchOutside()
   {
-    return this.Cdv;
+    return this.HZL;
   }
   
   public final boolean getCoverByKeyboard()
   {
-    return this.Cdu;
+    return this.HZK;
   }
   
   public final boolean getOutsideTouchable()
   {
-    return this.Cdw;
+    return this.HZM;
   }
   
   public final void setCloseTouchOutside(boolean paramBoolean)
   {
-    this.Cdv = paramBoolean;
+    this.HZL = paramBoolean;
   }
   
   public final void setCoverByKeyboard(boolean paramBoolean)
   {
-    this.Cdu = paramBoolean;
+    this.HZK = paramBoolean;
   }
   
   public final void setOnVisibleChangeCallback(kotlin.g.a.b<? super Boolean, x> paramb)
   {
-    this.Ccp = paramb;
+    this.HYF = paramb;
   }
   
   public final void setOutsideTouchable(boolean paramBoolean)
   {
-    AppMethodBeat.i(237723);
-    this.Cdw = paramBoolean;
+    AppMethodBeat.i(217079);
+    this.HZM = paramBoolean;
     if (paramBoolean)
     {
       setOnClickListener(null);
       setClickable(false);
-      AppMethodBeat.o(237723);
+      AppMethodBeat.o(217079);
       return;
     }
     setOnClickListener((View.OnClickListener)new c(this));
-    AppMethodBeat.o(237723);
+    AppMethodBeat.o(217079);
   }
   
   public final void setShow(boolean paramBoolean)
   {
-    AppMethodBeat.i(237726);
+    AppMethodBeat.i(217085);
     if (paramBoolean)
     {
       setVisibility(0);
-      localObject = this.Ccp;
+      localObject = this.HYF;
       if (localObject != null) {
         ((kotlin.g.a.b)localObject).invoke(Boolean.TRUE);
       }
-      localObject = this.AeF;
+      localObject = this.FLi;
       if (localObject != null)
       {
         ((View)localObject).animate().cancel();
@@ -226,32 +232,51 @@ public final class EditorPanelHolder
         {
           ((View)localObject).setVisibility(4);
           ((View)localObject).post((Runnable)new EditorPanelHolder.e((View)localObject));
-          AppMethodBeat.o(237726);
+          AppMethodBeat.o(217085);
           return;
         }
         ((View)localObject).animate().translationY(0.0F).start();
-        AppMethodBeat.o(237726);
+        AppMethodBeat.o(217085);
         return;
       }
-      AppMethodBeat.o(237726);
+      AppMethodBeat.o(217085);
       return;
     }
-    Object localObject = this.Ccp;
+    this.HZJ = true;
+    Object localObject = this.HYF;
     if (localObject != null) {
       ((kotlin.g.a.b)localObject).invoke(Boolean.FALSE);
     }
-    localObject = this.AeF;
+    localObject = this.FLi;
     if (localObject != null)
     {
       ((View)localObject).animate().cancel();
       ((View)localObject).animate().translationY(((View)localObject).getHeight()).withEndAction((Runnable)new d(this)).start();
-      AppMethodBeat.o(237726);
+      AppMethodBeat.o(217085);
       return;
     }
-    AppMethodBeat.o(237726);
+    AppMethodBeat.o(217085);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder$Companion;", "", "()V", "TAG", "", "plugin-recordvideo_release"})
+  public static final class a {}
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder$insectBottom$1$1"})
+  static final class b
+    implements Runnable
+  {
+    b(View paramView, int paramInt) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(228509);
+      this.HYL.setPadding(this.HYL.getPaddingLeft(), this.HYL.getPaddingTop(), this.HYL.getPaddingRight(), paramInt);
+      this.HYL.requestLayout();
+      AppMethodBeat.o(228509);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
@@ -259,19 +284,19 @@ public final class EditorPanelHolder
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(237720);
+      AppMethodBeat.i(221601);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      a.b("com/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder$outsideTouchable$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      if (this.Cdy.getCloseTouchOutside()) {
-        this.Cdy.setShow(false);
+      localb.bn(paramView);
+      a.c("com/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder$outsideTouchable$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      if (this.HZO.getCloseTouchOutside()) {
+        this.HZO.setShow(false);
       }
       a.a(this, "com/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder$outsideTouchable$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(237720);
+      AppMethodBeat.o(221601);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run", "com/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder$setShow$2$1"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder$setShow$2$1"})
   static final class d
     implements Runnable
   {
@@ -279,15 +304,16 @@ public final class EditorPanelHolder
     
     public final void run()
     {
-      AppMethodBeat.i(237721);
-      this.Cdy.setVisibility(8);
-      AppMethodBeat.o(237721);
+      AppMethodBeat.i(216516);
+      this.HZO.setVisibility(8);
+      EditorPanelHolder.a(this.HZO);
+      AppMethodBeat.o(216516);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder
  * JD-Core Version:    0.7.0.1
  */

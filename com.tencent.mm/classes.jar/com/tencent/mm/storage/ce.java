@@ -1,19 +1,19 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ew;
+import com.tencent.mm.f.c.fb;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class ce
-  extends ew
+  extends fb
 {
   protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(232418);
+    AppMethodBeat.i(278841);
     IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
     localMAutoDBInfo.fields = new Field[4];
     localMAutoDBInfo.columns = new String[5];
@@ -37,7 +37,7 @@ public final class ce
     localMAutoDBInfo.columns[4] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
     info = localMAutoDBInfo;
-    AppMethodBeat.o(232418);
+    AppMethodBeat.o(278841);
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
@@ -47,7 +47,7 @@ public final class ce
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.storage.ce
  * JD-Core Version:    0.7.0.1
  */

@@ -6,19 +6,19 @@ public abstract interface a
 {
   public abstract void a(h paramh);
   
-  public abstract Point bhJ();
+  public abstract Point brg();
   
-  public abstract int bhK();
+  public abstract int brh();
   
   public abstract int e(String paramString, long paramLong1, long paramLong2, int paramInt);
   
-  public abstract void ekm();
+  public abstract void eTP();
   
-  public abstract void uf(int paramInt);
+  public abstract void xe(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.b.a
  * JD-Core Version:    0.7.0.1
  */

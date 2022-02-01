@@ -7,10 +7,10 @@ import java.util.UUID;
 
 public final class h
 {
-  public static UUID r(byte[] paramArrayOfByte)
+  public static UUID p(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(92122);
-    paramArrayOfByte = s(paramArrayOfByte);
+    paramArrayOfByte = q(paramArrayOfByte);
     if (paramArrayOfByte == null)
     {
       AppMethodBeat.o(92122);
@@ -21,7 +21,7 @@ public final class h
     return paramArrayOfByte;
   }
   
-  private static Pair<UUID, byte[]> s(byte[] paramArrayOfByte)
+  private static Pair<UUID, byte[]> q(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(92123);
     paramArrayOfByte = new m(paramArrayOfByte);
@@ -31,17 +31,17 @@ public final class h
       return null;
     }
     paramArrayOfByte.setPosition(0);
-    if (paramArrayOfByte.readInt() != paramArrayOfByte.xd() + 4)
+    if (paramArrayOfByte.readInt() != paramArrayOfByte.vg() + 4)
     {
       AppMethodBeat.o(92123);
       return null;
     }
-    if (paramArrayOfByte.readInt() != a.blD)
+    if (paramArrayOfByte.readInt() != a.aVf)
     {
       AppMethodBeat.o(92123);
       return null;
     }
-    int i = a.ec(paramArrayOfByte.readInt());
+    int i = a.eq(paramArrayOfByte.readInt());
     if (i > 1)
     {
       AppMethodBeat.o(92123);
@@ -49,10 +49,10 @@ public final class h
     }
     UUID localUUID = new UUID(paramArrayOfByte.readLong(), paramArrayOfByte.readLong());
     if (i == 1) {
-      paramArrayOfByte.eZ(paramArrayOfByte.xk() * 16);
+      paramArrayOfByte.fu(paramArrayOfByte.vo() * 16);
     }
-    i = paramArrayOfByte.xk();
-    if (i != paramArrayOfByte.xd())
+    i = paramArrayOfByte.vo();
+    if (i != paramArrayOfByte.vg())
     {
       AppMethodBeat.o(92123);
       return null;
@@ -66,7 +66,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.c.d.h
  * JD-Core Version:    0.7.0.1
  */

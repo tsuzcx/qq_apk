@@ -12,12 +12,12 @@ import java.util.Iterator;
 public class SplashActivity
   extends HellActivity
 {
-  private boolean NLX = false;
+  private boolean UZH = false;
   
-  private void gys()
+  private void hus()
   {
     AppMethodBeat.i(40662);
-    e locale = h.NLE;
+    e locale = i.UZo;
     new Runnable()
     {
       public final void run()
@@ -27,31 +27,31 @@ public class SplashActivity
         AppMethodBeat.o(40653);
       }
     };
-    if (locale.WX()) {
-      gyu();
+    if (locale.abA()) {
+      huu();
     }
     AppMethodBeat.o(40662);
   }
   
-  private void gyu()
+  private void huu()
   {
     AppMethodBeat.i(40664);
-    if (this.NLX)
+    if (this.UZH)
     {
       AppMethodBeat.o(40664);
       return;
     }
-    this.NLX = true;
+    this.UZH = true;
     if (!isFinishing())
     {
       setResult(-100);
       int i = getIntent().getIntExtra("hashcode", 0);
-      Iterator localIterator = h.NLB.iterator();
+      Iterator localIterator = i.UZl.iterator();
       while (localIterator.hasNext())
       {
-        i locali = (i)localIterator.next();
-        if (i == locali.hashCode()) {
-          h.a(locali);
+        j localj = (j)localIterator.next();
+        if (i == localj.hashCode()) {
+          i.a(localj);
         }
       }
       new Handler().postDelayed(new Runnable()
@@ -72,7 +72,7 @@ public class SplashActivity
         public final void run()
         {
           AppMethodBeat.i(40656);
-          h.NLE = null;
+          i.UZo = null;
           AppMethodBeat.o(40656);
         }
       }, 5000L);
@@ -82,12 +82,12 @@ public class SplashActivity
     }
   }
   
-  public final void gyt()
+  public final void hut()
   {
     AppMethodBeat.i(40663);
-    if (h.NLE != null)
+    if (i.UZo != null)
     {
-      if (!h.NLE.a(this, new Runnable()
+      if (!i.UZo.a(this, new Runnable()
       {
         public final void run()
         {
@@ -97,14 +97,14 @@ public class SplashActivity
         }
       }))
       {
-        gys();
+        hus();
         AppMethodBeat.o(40663);
       }
     }
     else
     {
-      h.c("WxSplash.SplashActivity", "permissions delegate is null, call splash finish directly.", new Object[0]);
-      gyu();
+      i.g("WxSplash.SplashActivity", "permissions delegate is null, call splash finish directly.", new Object[0]);
+      huu();
     }
     AppMethodBeat.o(40663);
   }
@@ -113,15 +113,15 @@ public class SplashActivity
   {
     AppMethodBeat.i(40657);
     super.onCreate(paramBundle);
-    h.a(this);
-    h.c("WxSplash.SplashActivity", "onCreate", new Object[0]);
-    if (!h.gyj())
+    i.a(this);
+    i.g("WxSplash.SplashActivity", "onCreate", new Object[0]);
+    if (!i.huj())
     {
-      h.c("WxSplash.SplashActivity", "no need splash, finish", new Object[0]);
-      gyt();
+      i.g("WxSplash.SplashActivity", "no need splash, finish", new Object[0]);
+      hut();
     }
-    if (h.NLN != null) {
-      h.NLN.r(this);
+    if (i.UZx != null) {
+      i.UZx.q(this);
     }
     AppMethodBeat.o(40657);
   }
@@ -129,8 +129,8 @@ public class SplashActivity
   public void onDestroy()
   {
     AppMethodBeat.i(40660);
-    h.b(this);
-    h.c("WxSplash.SplashActivity", "onDestroy", new Object[0]);
+    i.b(this);
+    i.g("WxSplash.SplashActivity", "onDestroy", new Object[0]);
     super.onDestroy();
     AppMethodBeat.o(40660);
   }
@@ -138,7 +138,7 @@ public class SplashActivity
   public void onPause()
   {
     AppMethodBeat.i(40659);
-    h.c("WxSplash.SplashActivity", "onPause", new Object[0]);
+    i.g("WxSplash.SplashActivity", "onPause", new Object[0]);
     super.onPause();
     AppMethodBeat.o(40659);
   }
@@ -146,8 +146,8 @@ public class SplashActivity
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(40661);
-    if (h.NLE != null) {
-      h.NLE.a(this, paramInt, paramArrayOfString, paramArrayOfInt);
+    if (i.UZo != null) {
+      i.UZo.a(this, paramInt, paramArrayOfString, paramArrayOfInt);
     }
     AppMethodBeat.o(40661);
   }
@@ -156,7 +156,7 @@ public class SplashActivity
   {
     AppMethodBeat.i(40658);
     super.onResume();
-    h.c("WxSplash.SplashActivity", "onResume", new Object[0]);
+    i.g("WxSplash.SplashActivity", "onResume", new Object[0]);
     AppMethodBeat.o(40658);
   }
   
@@ -168,7 +168,7 @@ public class SplashActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.splash.SplashActivity
  * JD-Core Version:    0.7.0.1
  */

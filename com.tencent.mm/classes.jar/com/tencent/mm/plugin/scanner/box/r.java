@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.scanner.box;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.d;
-import com.tencent.mm.av.q;
-import com.tencent.mm.g.a.tt;
-import com.tencent.mm.g.a.tw;
+import com.tencent.mm.ay.d;
+import com.tencent.mm.ay.q;
+import com.tencent.mm.f.a.uw;
+import com.tencent.mm.f.a.uz;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
@@ -22,29 +22,29 @@ import kotlin.l;
 import kotlin.t;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/box/ScanSendAppMsgHelper;", "", "()V", "TAG", "", "convertToAppMsg", "Lcom/tencent/mm/opensdk/modelmsg/WXMediaMessage;", "data", "Lorg/json/JSONObject;", "doSendAppMessage", "", "appMsg", "app", "Lcom/tencent/mm/pluginsdk/model/app/AppInfo;", "appId", "toUser", "imageUrl", "srcUsername", "srcDisplayName", "appendText", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/ScanSendAppMsgHelper;", "", "()V", "TAG", "", "convertToAppMsg", "Lcom/tencent/mm/opensdk/modelmsg/WXMediaMessage;", "data", "Lorg/json/JSONObject;", "doSendAppMessage", "", "appMsg", "app", "Lcom/tencent/mm/pluginsdk/model/app/AppInfo;", "appId", "toUser", "imageUrl", "srcUsername", "srcDisplayName", "appendText", "plugin-scan_release"})
 public final class r
 {
-  public static final r CDy;
+  public static final r IHY;
   
   static
   {
-    AppMethodBeat.i(240337);
-    CDy = new r();
-    AppMethodBeat.o(240337);
+    AppMethodBeat.i(222837);
+    IHY = new r();
+    AppMethodBeat.o(222837);
   }
   
   public static boolean b(WXMediaMessage paramWXMediaMessage, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(240336);
+    AppMethodBeat.i(222836);
     if (paramWXMediaMessage == null)
     {
       Log.e("MicroMsg.ScanSendAppMsgHelper", "doSendAppMessage appMsg is null");
-      AppMethodBeat.o(240336);
+      AppMethodBeat.o(222836);
       return false;
     }
-    q.bcQ();
-    paramString2 = d.EP(paramString2);
+    q.bmg();
+    paramString2 = d.LI(paramString2);
     Object localObject;
     if ((paramString2 != null) && (!paramString2.isRecycled()))
     {
@@ -59,43 +59,43 @@ public final class r
       if (paramString2 == null)
       {
         paramWXMediaMessage = new t("null cannot be cast to non-null type com.tencent.mm.opensdk.modelmsg.WXWebpageObject");
-        AppMethodBeat.o(240336);
+        AppMethodBeat.o(222836);
         throw paramWXMediaMessage;
       }
     }
     for (paramString2 = ((WXWebpageObject)paramString2).webpageUrl;; paramString2 = "")
     {
-      localObject = new tt();
-      ((tt)localObject).eaf.dCE = paramWXMediaMessage;
-      ((tt)localObject).eaf.appId = null;
-      ((tt)localObject).eaf.appName = "";
-      ((tt)localObject).eaf.toUser = paramString1;
-      ((tt)localObject).eaf.dMG = 2;
-      ((tt)localObject).eaf.eag = null;
-      ((tt)localObject).eaf.eah = null;
-      ((tt)localObject).eaf.eaj = paramString2;
-      ((tt)localObject).eaf.eak = paramString2;
-      ((tt)localObject).eaf.eal = null;
+      localObject = new uw();
+      ((uw)localObject).fUc.fvl = paramWXMediaMessage;
+      ((uw)localObject).fUc.appId = null;
+      ((uw)localObject).fUc.appName = "";
+      ((uw)localObject).fUc.toUser = paramString1;
+      ((uw)localObject).fUc.fFO = 2;
+      ((uw)localObject).fUc.fUd = null;
+      ((uw)localObject).fUc.fUe = null;
+      ((uw)localObject).fUc.fUg = paramString2;
+      ((uw)localObject).fUc.fUh = paramString2;
+      ((uw)localObject).fUc.fUi = null;
       boolean bool = EventCenter.instance.publish((IEvent)localObject);
       if (!Util.isNullOrNil(paramString3))
       {
-        paramWXMediaMessage = new tw();
-        paramWXMediaMessage.eaq.dkV = paramString1;
-        paramWXMediaMessage.eaq.content = paramString3;
-        paramWXMediaMessage.eaq.type = ab.JG(paramString1);
-        paramWXMediaMessage.eaq.flags = 0;
+        paramWXMediaMessage = new uz();
+        paramWXMediaMessage.fUn.fcD = paramString1;
+        paramWXMediaMessage.fUn.content = paramString3;
+        paramWXMediaMessage.fUn.type = ab.QZ(paramString1);
+        paramWXMediaMessage.fUn.flags = 0;
         EventCenter.instance.publish((IEvent)paramWXMediaMessage);
       }
       Log.d("MicroMsg.ScanSendAppMsgHelper", "doSendAppMessage result %b", new Object[] { Boolean.valueOf(bool) });
-      AppMethodBeat.o(240336);
+      AppMethodBeat.o(222836);
       return bool;
     }
   }
   
-  public static final WXMediaMessage bm(JSONObject paramJSONObject)
+  public static final WXMediaMessage bv(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(240335);
-    p.h(paramJSONObject, "data");
+    AppMethodBeat.i(222827);
+    p.k(paramJSONObject, "data");
     Object localObject2 = paramJSONObject.optString("url");
     Object localObject1 = localObject2;
     if (localObject2 == null) {
@@ -105,7 +105,7 @@ public final class r
     for (int i = 1; i != 0; i = 0)
     {
       Log.e("MicroMsg.ScanSendAppMsgHelper", "convertToAppMsg fail, url is null");
-      AppMethodBeat.o(240335);
+      AppMethodBeat.o(222827);
       return null;
     }
     Log.i("MicroMsg.ScanSendAppMsgHelper", "convertToAppMsg url: %s", new Object[] { localObject1 });
@@ -115,7 +115,7 @@ public final class r
     ((WXMediaMessage)localObject2).mediaObject = ((WXMediaMessage.IMediaObject)localWXWebpageObject);
     ((WXMediaMessage)localObject2).title = paramJSONObject.optString("title");
     ((WXMediaMessage)localObject2).description = paramJSONObject.optString("desc");
-    AppMethodBeat.o(240335);
+    AppMethodBeat.o(222827);
     return localObject2;
   }
 }

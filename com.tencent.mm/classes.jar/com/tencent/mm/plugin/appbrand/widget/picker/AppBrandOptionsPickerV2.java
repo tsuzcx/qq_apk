@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.appbrand.widget.picker;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.annotation.Keep;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 
 public class AppBrandOptionsPickerV2
   extends YANumberPicker
-  implements com.tencent.mm.plugin.appbrand.jsapi.r.c<String>
+  implements com.tencent.mm.plugin.appbrand.jsapi.s.c<String>
 {
-  private String[] ozA;
-  private int ozC;
+  private String[] rCh;
+  private int rCj;
   
   @Keep
   public AppBrandOptionsPickerV2(Context paramContext)
@@ -40,15 +40,15 @@ public class AppBrandOptionsPickerV2
   public void onHide(c paramc)
   {
     AppMethodBeat.i(138029);
-    ccG();
+    cpX();
     AppMethodBeat.o(138029);
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(138028);
-    if (this.ozC > 0) {
-      paramInt1 = View.MeasureSpec.makeMeasureSpec(this.ozC, 1073741824);
+    if (this.rCj > 0) {
+      paramInt1 = View.MeasureSpec.makeMeasureSpec(this.rCj, 1073741824);
     }
     super.onMeasure(paramInt1, paramInt2);
     AppMethodBeat.o(138028);
@@ -58,7 +58,7 @@ public class AppBrandOptionsPickerV2
   
   public final void setForceWidth(int paramInt)
   {
-    this.ozC = paramInt;
+    this.rCj = paramInt;
   }
   
   public final void setOptionsArray(String[] paramArrayOfString)
@@ -73,7 +73,7 @@ public class AppBrandOptionsPickerV2
     }
     setEnabled(true);
     setVisibility(0);
-    this.ozA = paramArrayOfString;
+    this.rCh = paramArrayOfString;
     int i = getMinValue();
     int j = getMaxValue();
     int k = paramArrayOfString.length - 1;
@@ -91,7 +91,7 @@ public class AppBrandOptionsPickerV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.AppBrandOptionsPickerV2
  * JD-Core Version:    0.7.0.1
  */

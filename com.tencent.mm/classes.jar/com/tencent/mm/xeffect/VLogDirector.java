@@ -9,8 +9,8 @@ import java.util.List;
 
 public class VLogDirector
 {
-  private long RxK = 0L;
-  private long Rxd;
+  private long NmO;
+  private long YZq = 0L;
   private int height;
   private int outputHeight;
   private int outputWidth;
@@ -19,22 +19,22 @@ public class VLogDirector
   
   static
   {
-    AppMethodBeat.i(236760);
-    d.load("xlabeffect");
-    d.load("pag");
-    AppMethodBeat.o(236760);
+    AppMethodBeat.i(194579);
+    e.load("xlabeffect");
+    e.load("pag");
+    AppMethodBeat.o(194579);
   }
   
   private void checkThread()
   {
-    AppMethodBeat.i(236759);
+    AppMethodBeat.i(194572);
     if (Thread.currentThread().getId() != this.threadId) {
       XEffectLog.e("VLogDirector", "Thread error", new Object[0]);
     }
-    AppMethodBeat.o(236759);
+    AppMethodBeat.o(194572);
   }
   
-  private static native int nAddInputTexture(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, int paramInt12, int paramInt13, int paramInt14, float paramFloat1, float paramFloat2, boolean paramBoolean1, boolean paramBoolean2);
+  private static native int nAddInputTexture(long paramLong1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, int paramInt12, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean1, boolean paramBoolean2);
   
   private static native void nDestroy(long paramLong);
   
@@ -48,36 +48,30 @@ public class VLogDirector
   
   private static native int nSetRenderArea(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public final void V(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final void a(List<c> paramList, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(236756);
+    AppMethodBeat.i(194567);
     checkThread();
-    if (this.Rxd != 0L) {
-      nSetOutputTexCropRet(this.Rxd, paramInt1, paramInt2, paramInt3, paramInt4);
-    }
-    AppMethodBeat.o(236756);
-  }
-  
-  public final void a(List<b> paramList, int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(236757);
-    checkThread();
-    if (this.Rxd != 0L)
+    if (this.NmO != 0L)
     {
       paramList = paramList.iterator();
-      label199:
+      label250:
       while (paramList.hasNext())
       {
-        b localb = (b)paramList.next();
-        if (localb == null) {
+        c localc = (c)paramList.next();
+        if (localc == null) {
           XEffectLog.e("VLogDirector", "input is null", new Object[0]);
         }
         for (int i = 0;; i = 1)
         {
           if (i == 0) {
-            break label199;
+            break label250;
           }
-          nAddInputTexture(this.Rxd, localb.textureId, localb.width, localb.height, localb.dYT, localb.RxJ.left, localb.RxJ.top, localb.RxJ.right, localb.RxJ.bottom, localb.RxI.left, localb.RxI.top, localb.RxI.right, localb.RxI.bottom, localb.translateX, localb.translateY, localb.scale, localb.ijt, localb.HmG, localb.RxH);
+          localc.YZk.ijX();
+          localc.YZl.ijX();
+          InputAnimation localInputAnimation = localc.YZm;
+          localInputAnimation.nUpdate(localInputAnimation.ptr, localInputAnimation.gcH, localInputAnimation.dgn, localInputAnimation.YZf);
+          nAddInputTexture(this.NmO, localc.textureId, localc.width, localc.height, localc.fSM, localc.YZj.left, localc.YZj.top, localc.YZj.right, localc.YZj.bottom, localc.YZi.left, localc.YZi.top, localc.YZi.right, localc.YZi.bottom, localc.YZk.ptr, localc.YZl.ptr, localc.YZm.ptr, localc.Odt, localc.YZh);
           break;
         }
       }
@@ -91,50 +85,61 @@ public class VLogDirector
         this.outputHeight = paramList[1];
       }
       XEffectLog.d("VLogDirector", "render output size, width:%d, height:%d", new Object[] { Integer.valueOf(this.outputWidth), Integer.valueOf(this.outputHeight) });
-      nRender(this.Rxd, paramInt, this.outputWidth, this.outputHeight, paramLong);
+      nRender(this.NmO, paramInt, this.outputWidth, this.outputHeight, paramLong);
     }
-    AppMethodBeat.o(236757);
+    AppMethodBeat.o(194567);
   }
   
-  public final void b(EffectManager paramEffectManager)
+  public final void aa(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(236758);
-    if ((paramEffectManager != null) && (paramEffectManager.Rxd != 0L) && (paramEffectManager.Rxd != this.RxK))
-    {
-      nSetEffectManager(this.Rxd, paramEffectManager.Rxd);
-      this.RxK = paramEffectManager.Rxd;
+    AppMethodBeat.i(194557);
+    checkThread();
+    if (this.NmO != 0L) {
+      nSetOutputTexCropRet(this.NmO, paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    AppMethodBeat.o(236758);
+    AppMethodBeat.o(194557);
+  }
+  
+  public final void c(EffectManager paramEffectManager)
+  {
+    AppMethodBeat.i(194570);
+    if ((paramEffectManager != null) && (paramEffectManager.NmO != 0L) && (paramEffectManager.NmO != this.YZq))
+    {
+      nSetEffectManager(this.NmO, paramEffectManager.NmO);
+      this.YZq = paramEffectManager.NmO;
+    }
+    AppMethodBeat.o(194570);
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(236754);
+    AppMethodBeat.i(194554);
     checkThread();
-    if (this.Rxd != 0L)
+    if (this.NmO != 0L)
     {
-      nDestroy(this.Rxd);
-      this.Rxd = 0L;
+      nDestroy(this.NmO);
+      this.NmO = 0L;
+      this.YZq = 0L;
     }
-    AppMethodBeat.o(236754);
+    AppMethodBeat.o(194554);
   }
   
   public final void init()
   {
-    AppMethodBeat.i(236753);
+    AppMethodBeat.i(194552);
     this.threadId = Thread.currentThread().getId();
-    this.Rxd = nInit();
-    AppMethodBeat.o(236753);
+    this.NmO = nInit();
+    AppMethodBeat.o(194552);
   }
   
-  public final void mm(int paramInt1, int paramInt2)
+  public final void nD(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(236755);
+    AppMethodBeat.i(194555);
     checkThread();
-    if (this.Rxd != 0L) {
-      nSetRenderArea(this.Rxd, 0, 0, paramInt1, paramInt2);
+    if (this.NmO != 0L) {
+      nSetRenderArea(this.NmO, 0, 0, paramInt1, paramInt2);
     }
-    AppMethodBeat.o(236755);
+    AppMethodBeat.o(194555);
   }
   
   public final void setOutputSize(int paramInt1, int paramInt2)
@@ -145,16 +150,16 @@ public class VLogDirector
   
   public final void setSize(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(236752);
+    AppMethodBeat.i(194551);
     this.width = paramInt1;
     this.height = paramInt2;
-    mm(paramInt1, paramInt2);
-    AppMethodBeat.o(236752);
+    nD(paramInt1, paramInt2);
+    AppMethodBeat.o(194551);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.xeffect.VLogDirector
  * JD-Core Version:    0.7.0.1
  */

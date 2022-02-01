@@ -25,7 +25,7 @@ public class j
   
   private String a(String paramString)
   {
-    AppMethodBeat.i(221433);
+    AppMethodBeat.i(221804);
     if (paramString.contains("#EXT-TX-TS-START-TIME"))
     {
       int i = paramString.indexOf("#EXT-TX-TS-START-TIME:") + 22;
@@ -36,34 +36,34 @@ public class j
         if (i > 0)
         {
           paramString = paramString.substring(0, i).replaceAll("\r\n", "");
-          AppMethodBeat.o(221433);
+          AppMethodBeat.o(221804);
           return paramString;
         }
       }
     }
-    AppMethodBeat.o(221433);
+    AppMethodBeat.o(221804);
     return null;
   }
   
   public int a(final String paramString1, final String paramString2, final int paramInt, final a parama)
   {
-    AppMethodBeat.i(221432);
+    AppMethodBeat.i(221800);
     if ((paramString1 == null) || (paramString1.isEmpty()))
     {
-      AppMethodBeat.o(221432);
+      AppMethodBeat.o(221800);
       return -1;
     }
     this.d = TXCCommonUtil.getAppID();
     if (TextUtils.isEmpty(this.d))
     {
-      AppMethodBeat.o(221432);
+      AppMethodBeat.o(221800);
       return -2;
     }
     AsyncTask.execute(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(221786);
+        AppMethodBeat.i(242566);
         j.a(j.this, System.currentTimeMillis());
         j.a(j.this, "");
         j.a(j.this, paramInt);
@@ -125,38 +125,38 @@ public class j
           {
             public void run()
             {
-              AppMethodBeat.i(221600);
+              AppMethodBeat.i(230066);
               j.1.this.d.a(this.a);
-              AppMethodBeat.o(221600);
+              AppMethodBeat.o(230066);
             }
           });
         }
-        AppMethodBeat.o(221786);
+        AppMethodBeat.o(242566);
       }
     });
-    AppMethodBeat.o(221432);
+    AppMethodBeat.o(221800);
     return 0;
   }
   
   public long a()
   {
-    AppMethodBeat.i(221430);
+    AppMethodBeat.i(221794);
     long l1 = System.currentTimeMillis();
     long l2 = this.f;
-    AppMethodBeat.o(221430);
+    AppMethodBeat.o(221794);
     return l1 - l2;
   }
   
   public String a(long paramLong)
   {
-    AppMethodBeat.i(221431);
+    AppMethodBeat.i(221797);
     String str = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date(this.f + 1000L * paramLong));
     if (this.c < 0) {
       paramLong = (System.currentTimeMillis() - this.f - paramLong) / 1000L;
     }
     for (str = String.format("http://%s/timeshift/%s/%s/timeshift.m3u8?delay=%d", new Object[] { this.a, this.e, this.b, Long.valueOf(paramLong) });; str = String.format("http://%s/%s/%s/timeshift.m3u8?starttime=%s&appid=%s&txKbps=0", new Object[] { this.a, Integer.valueOf(this.c), this.b, str, this.d }))
     {
-      AppMethodBeat.o(221431);
+      AppMethodBeat.o(221797);
       return str;
     }
   }
@@ -168,7 +168,7 @@ public class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.j
  * JD-Core Version:    0.7.0.1
  */

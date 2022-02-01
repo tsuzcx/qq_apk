@@ -8,8 +8,8 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bk.e;
-import com.tencent.mm.compatible.deviceinfo.ae;
+import com.tencent.mm.bm.e;
+import com.tencent.mm.compatible.deviceinfo.af;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
@@ -27,24 +27,24 @@ import com.tencent.mm.ui.base.h;
 public class VideoCompressUI
   extends MMBaseActivity
 {
-  private static int gsi;
-  private d gVN;
-  private VideoTransPara jtV;
+  private static int iWt;
+  private ProgressDialog FeA;
+  private int[] FeB;
+  private a FeC;
+  private boolean FeD;
+  private Runnable FeE;
+  private d jGJ;
+  private VideoTransPara mjz;
   private String thumbPath;
   private String videoPath;
-  private ProgressDialog zzG;
-  private int[] zzH;
-  private a zzI;
-  private boolean zzJ;
-  private Runnable zzK;
   
   public VideoCompressUI()
   {
     AppMethodBeat.i(107701);
-    this.gVN = new d(this);
-    this.zzH = new int[34];
-    this.zzI = new a((byte)0);
-    this.zzK = new Runnable()
+    this.jGJ = new d(this);
+    this.FeB = new int[34];
+    this.FeC = new a((byte)0);
+    this.FeE = new Runnable()
     {
       public final void run()
       {
@@ -56,7 +56,7 @@ public class VideoCompressUI
           {
             VideoCompressUI.a(VideoCompressUI.this, VideoCompressUI.c(VideoCompressUI.this));
             localIntent = new Intent();
-            localPoint = VideoCompressUI.F(VideoCompressUI.d(VideoCompressUI.this).videoWidth, VideoCompressUI.d(VideoCompressUI.this).videoHeight, VideoCompressUI.a(VideoCompressUI.this).width, VideoCompressUI.a(VideoCompressUI.this).height);
+            localPoint = VideoCompressUI.K(VideoCompressUI.d(VideoCompressUI.this).videoWidth, VideoCompressUI.d(VideoCompressUI.this).videoHeight, VideoCompressUI.a(VideoCompressUI.this).width, VideoCompressUI.a(VideoCompressUI.this).height);
             j = 0;
             str = SightVideoJNI.getMP4CprtH(VideoCompressUI.c(VideoCompressUI.this));
             i = j;
@@ -84,21 +84,21 @@ public class VideoCompressUI
             }
             localPoint = new Point(VideoCompressUI.d(VideoCompressUI.this).videoWidth, VideoCompressUI.d(VideoCompressUI.this).videoHeight);
             VideoCompressUI.c(VideoCompressUI.this);
-            str = VideoCompressUI.ekD();
-            if (VideoCompressUI.a(VideoCompressUI.this).iTg == 2)
+            str = VideoCompressUI.eUl();
+            if (VideoCompressUI.a(VideoCompressUI.this).lJz == 2)
             {
-              VideoCompressUI.a(VideoCompressUI.this, AdaptiveAdjustBitrate.a(VideoCompressUI.c(VideoCompressUI.this), localPoint.y, localPoint.x, VideoCompressUI.a(VideoCompressUI.this).fps, VideoCompressUI.a(VideoCompressUI.this).videoBitrate, 0.0F, 0.0F, 2, VideoCompressUI.a(VideoCompressUI.this).iTi, VideoCompressUI.a(VideoCompressUI.this).iTj, VideoCompressUI.a(VideoCompressUI.this).iTk, VideoCompressUI.a(VideoCompressUI.this).iTl, VideoCompressUI.a(VideoCompressUI.this).iTm, VideoCompressUI.a(VideoCompressUI.this).iTn, VideoCompressUI.a(VideoCompressUI.this).iTo, false));
+              VideoCompressUI.a(VideoCompressUI.this, AdaptiveAdjustBitrate.a(VideoCompressUI.c(VideoCompressUI.this), localPoint.y, localPoint.x, VideoCompressUI.a(VideoCompressUI.this).fps, VideoCompressUI.a(VideoCompressUI.this).videoBitrate, 0.0F, 0.0F, 2, VideoCompressUI.a(VideoCompressUI.this).lJB, VideoCompressUI.a(VideoCompressUI.this).lJC, VideoCompressUI.a(VideoCompressUI.this).lJD, VideoCompressUI.a(VideoCompressUI.this).lJE, VideoCompressUI.a(VideoCompressUI.this).lJF, VideoCompressUI.a(VideoCompressUI.this).lJG, VideoCompressUI.a(VideoCompressUI.this).lJH, false));
               VideoCompressUI.a(VideoCompressUI.this).videoBitrate = (VideoCompressUI.f(VideoCompressUI.this)[0] * 1000);
               localPoint.x = VideoCompressUI.f(VideoCompressUI.this)[1];
               localPoint.y = VideoCompressUI.f(VideoCompressUI.this)[2];
               Log.i("MicroMsg.VideoCompressUI", "ABA: VideoCompressUI Send directly: [%d], [%d], [%d] ", new Object[] { Integer.valueOf(VideoCompressUI.a(VideoCompressUI.this).videoBitrate), Integer.valueOf(localPoint.x), Integer.valueOf(localPoint.y) });
             }
-            if ((VideoCompressUI.a(VideoCompressUI.this).iTh != 1) && (VideoCompressUI.a(VideoCompressUI.this).iTh != 2)) {
+            if ((VideoCompressUI.a(VideoCompressUI.this).lJA != 1) && (VideoCompressUI.a(VideoCompressUI.this).lJA != 2)) {
               continue;
             }
-            Log.i("MicroMsg.VideoCompressUI", "ABA: Using Min Max QP Limitation: [%d], [%d] ", new Object[] { Integer.valueOf(VideoCompressUI.a(VideoCompressUI.this).idF), Integer.valueOf(VideoCompressUI.a(VideoCompressUI.this).idG) });
-            i = VideoCompressUI.a(VideoCompressUI.this).idF;
-            j = VideoCompressUI.a(VideoCompressUI.this).idG;
+            Log.i("MicroMsg.VideoCompressUI", "ABA: Using Min Max QP Limitation: [%d], [%d] ", new Object[] { Integer.valueOf(VideoCompressUI.a(VideoCompressUI.this).kSl), Integer.valueOf(VideoCompressUI.a(VideoCompressUI.this).kSm) });
+            i = VideoCompressUI.a(VideoCompressUI.this).kSl;
+            j = VideoCompressUI.a(VideoCompressUI.this).kSm;
             if (VideoCompressUI.d(VideoCompressUI.this).videoWidth >= 2000) {
               break label1237;
             }
@@ -119,10 +119,10 @@ public class VideoCompressUI
             int k;
             Log.printErrStackTrace("MicroMsg.VideoCompressUI", localException, "video compress failed e [%s]", new Object[] { localException.getMessage() });
             return;
-            if (VideoCompressUI.a(VideoCompressUI.this).iTg != 2) {
+            if (VideoCompressUI.a(VideoCompressUI.this).lJz != 2) {
               continue;
             }
-            SightVideoJNI.addReportMetadata(str, VideoCompressUI.f(VideoCompressUI.this), VideoCompressUI.a(VideoCompressUI.this).iTg, 0);
+            SightVideoJNI.addReportMetadata(str, VideoCompressUI.f(VideoCompressUI.this), VideoCompressUI.a(VideoCompressUI.this).lJz, 0);
             continue;
           }
           finally
@@ -149,21 +149,21 @@ public class VideoCompressUI
           if (WXHardCoderJNI.hcEncodeVideoThr)
           {
             k = Process.myTid();
-            VideoCompressUI.su(WXHardCoderJNI.startPerformance(bool2, m, n, i1, k, 30000, 603, WXHardCoderJNI.hcEncodeVideoAction, "MicroMsg.VideoCompressUI"));
-            Log.i("MicroMsg.VideoCompressUI", "hardcoder summerPerformance startPerformance: %s", new Object[] { Integer.valueOf(VideoCompressUI.byU()) });
+            VideoCompressUI.vr(WXHardCoderJNI.startPerformance(bool2, m, n, i1, k, 30000, 603, WXHardCoderJNI.hcEncodeVideoAction, "MicroMsg.VideoCompressUI"));
+            Log.i("MicroMsg.VideoCompressUI", "hardcoder summerPerformance startPerformance: %s", new Object[] { Integer.valueOf(VideoCompressUI.bKj()) });
             if ((!VideoCompressUI.e(VideoCompressUI.this)) && (!bool1))
             {
-              SightVideoJNI.remuxingVFS(VideoCompressUI.c(VideoCompressUI.this), str, localPoint.x, localPoint.y, VideoCompressUI.a(VideoCompressUI.this).videoBitrate, VideoCompressUI.a(VideoCompressUI.this).iSV, 8, VideoCompressUI.a(VideoCompressUI.this).iSU, 25.0F, VideoCompressUI.a(VideoCompressUI.this).fps, null, 0, false, i, j);
-              if (VideoCompressUI.byU() != 0)
+              SightVideoJNI.remuxingVFS(VideoCompressUI.c(VideoCompressUI.this), str, localPoint.x, localPoint.y, VideoCompressUI.a(VideoCompressUI.this).videoBitrate, VideoCompressUI.a(VideoCompressUI.this).lJn, 8, VideoCompressUI.a(VideoCompressUI.this).lJm, 25.0F, VideoCompressUI.a(VideoCompressUI.this).fps, null, 0, false, i, j);
+              if (VideoCompressUI.bKj() != 0)
               {
-                WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcEncodeVideoEnable, VideoCompressUI.byU());
-                Log.i("MicroMsg.VideoCompressUI", "hardcoder summerPerformance stopPerformace %s", new Object[] { Integer.valueOf(VideoCompressUI.byU()) });
-                VideoCompressUI.su(0);
+                WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcEncodeVideoEnable, VideoCompressUI.bKj());
+                Log.i("MicroMsg.VideoCompressUI", "hardcoder summerPerformance stopPerformace %s", new Object[] { Integer.valueOf(VideoCompressUI.bKj()) });
+                VideoCompressUI.vr(0);
               }
-              if (VideoCompressUI.a(VideoCompressUI.this).iTh <= 0) {
+              if (VideoCompressUI.a(VideoCompressUI.this).lJA <= 0) {
                 continue;
               }
-              SightVideoJNI.addReportMetadata(str, VideoCompressUI.f(VideoCompressUI.this), 0, VideoCompressUI.a(VideoCompressUI.this).iTh);
+              SightVideoJNI.addReportMetadata(str, VideoCompressUI.f(VideoCompressUI.this), 0, VideoCompressUI.a(VideoCompressUI.this).lJA);
               localIntent.putExtra("K_SEGMENTVIDEOPATH", str);
               localIntent.putExtra("KSEGMENTVIDEOTHUMBPATH", VideoCompressUI.a(VideoCompressUI.this, str, null));
               VideoCompressUI.this.setResult(-1, localIntent);
@@ -214,7 +214,7 @@ public class VideoCompressUI
   }
   
   /* Error */
-  private String iK(String paramString1, String paramString2)
+  private String iV(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: ldc_w 373
@@ -262,14 +262,14 @@ public class VideoCompressUI
     //   90: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   93: astore_1
     //   94: aload_1
-    //   95: invokestatic 341	com/tencent/mm/vfs/s:YS	(Ljava/lang/String;)Z
+    //   95: invokestatic 341	com/tencent/mm/vfs/u:agG	(Ljava/lang/String;)Z
     //   98: ifeq +9 -> 107
     //   101: aload_1
     //   102: iconst_1
-    //   103: invokestatic 345	com/tencent/mm/vfs/s:dy	(Ljava/lang/String;Z)Z
+    //   103: invokestatic 345	com/tencent/mm/vfs/u:dK	(Ljava/lang/String;Z)Z
     //   106: pop
     //   107: aload_1
-    //   108: invokestatic 348	com/tencent/mm/vfs/s:boN	(Ljava/lang/String;)Z
+    //   108: invokestatic 348	com/tencent/mm/vfs/u:bBD	(Ljava/lang/String;)Z
     //   111: pop
     //   112: new 85	java/lang/StringBuilder
     //   115: dup
@@ -342,7 +342,7 @@ public class VideoCompressUI
   {
     AppMethodBeat.i(107702);
     super.onCreate(paramBundle);
-    setContentView(2131493171);
+    setContentView(l.a.background_transparent);
     paramBundle = getIntent();
     if ((paramBundle == null) || (Util.isNullOrNil(paramBundle.getStringExtra("K_SEGMENTVIDEOPATH"))))
     {
@@ -351,11 +351,11 @@ public class VideoCompressUI
       AppMethodBeat.o(107702);
       return;
     }
-    this.zzG = h.a(this, getString(2131756029), false, null);
+    this.FeA = h.a(this, getString(l.b.app_waiting), false, null);
     this.videoPath = paramBundle.getStringExtra("K_SEGMENTVIDEOPATH");
     this.thumbPath = paramBundle.getStringExtra("KSEGMENTVIDEOTHUMBPATH");
-    CaptureMMProxy.createProxy(new CaptureMMProxy(this.gVN));
-    this.gVN.connect(new Runnable()
+    CaptureMMProxy.createProxy(new CaptureMMProxy(this.jGJ));
+    this.jGJ.connect(new Runnable()
     {
       public final void run()
       {
@@ -369,7 +369,7 @@ public class VideoCompressUI
           AppMethodBeat.o(107697);
           return;
         }
-        ae.DV(CaptureMMProxy.getInstance().getDeviceInfoConfig());
+        af.KN(CaptureMMProxy.getInstance().getDeviceInfoConfig());
         ThreadPool.post(VideoCompressUI.b(VideoCompressUI.this), "video_remuxing_if_needed");
         AppMethodBeat.o(107697);
       }
@@ -381,8 +381,8 @@ public class VideoCompressUI
   {
     AppMethodBeat.i(107704);
     super.onDestroy();
-    if (this.gVN != null) {
-      this.gVN.release();
+    if (this.jGJ != null) {
+      this.jGJ.release();
     }
     AppMethodBeat.o(107704);
   }
@@ -396,9 +396,9 @@ public class VideoCompressUI
   final class a
   {
     public int audioBitRate = -1;
-    public String jkQ;
-    public String jkR;
-    public int jkS = -1;
+    public String maR;
+    public String maS;
+    public int maT = -1;
     public int videoBitRate = -1;
     public int videoFrameRate = -1;
     public int videoHeight = -1;
@@ -410,7 +410,7 @@ public class VideoCompressUI
     public final String toString()
     {
       AppMethodBeat.i(107700);
-      String str = "VideoAnalysisStruct{videoTrackMime='" + this.jkQ + '\'' + ", audioTrackMime='" + this.jkR + '\'' + ", durationMs=" + this.jkS + ", videoHeight=" + this.videoHeight + ", videoWidth=" + this.videoWidth + ", videoBitRate=" + this.videoBitRate + ", videoIFrameInterval=" + this.videoIFrameInterval + ", videoFrameRate=" + this.videoFrameRate + ", audioBitRate=" + this.audioBitRate + '}';
+      String str = "VideoAnalysisStruct{videoTrackMime='" + this.maR + '\'' + ", audioTrackMime='" + this.maS + '\'' + ", durationMs=" + this.maT + ", videoHeight=" + this.videoHeight + ", videoWidth=" + this.videoWidth + ", videoBitRate=" + this.videoBitRate + ", videoIFrameInterval=" + this.videoIFrameInterval + ", videoFrameRate=" + this.videoFrameRate + ", audioBitRate=" + this.audioBitRate + '}';
       AppMethodBeat.o(107700);
       return str;
     }
@@ -418,7 +418,7 @@ public class VideoCompressUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.VideoCompressUI
  * JD-Core Version:    0.7.0.1
  */

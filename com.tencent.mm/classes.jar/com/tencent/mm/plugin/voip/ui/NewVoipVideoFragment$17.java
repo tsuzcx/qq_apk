@@ -14,19 +14,19 @@ final class NewVoipVideoFragment$17
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(235725);
+    AppMethodBeat.i(238515);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/voip/ui/NewVoipVideoFragment$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/voip/ui/NewVoipVideoFragment$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
     Log.i("MicroMsg.Voip.VoipVideoFragment", "click reject video invite button");
-    NewVoipVideoFragment.d(this.Hef);
+    NewVoipVideoFragment.d(this.NUZ);
     a.a(this, "com/tencent/mm/plugin/voip/ui/NewVoipVideoFragment$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(235725);
+    AppMethodBeat.o(238515);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.NewVoipVideoFragment.17
  * JD-Core Version:    0.7.0.1
  */

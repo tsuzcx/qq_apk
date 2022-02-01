@@ -1,112 +1,80 @@
 package com.tencent.mm.vfs;
 
-import android.os.CancellationSignal;
-import android.os.ParcelFileDescriptor;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.channels.ByteChannel;
-import java.nio.channels.ReadableByteChannel;
-import java.nio.channels.WritableByteChannel;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 
-public abstract class i
-  implements FileSystem.b
+final class i
+  implements h.d
 {
-  public void a(CancellationSignal paramCancellationSignal) {}
+  static final i YCR;
+  private final LinkedHashSet<h.d> YCS;
   
-  public final boolean a(String paramString1, FileSystem.b paramb, String paramString2)
+  static
   {
-    return false;
+    AppMethodBeat.i(195218);
+    YCR = new i();
+    AppMethodBeat.o(195218);
   }
   
-  public final ReadableByteChannel boI(String paramString)
+  private i()
   {
-    throw new FileNotFoundException("Path '" + paramString + "' not found on NullFileSystem");
+    AppMethodBeat.i(195208);
+    this.YCS = new LinkedHashSet();
+    AppMethodBeat.o(195208);
   }
   
-  public final ByteChannel boJ(String paramString)
+  final void b(h.d paramd)
   {
-    throw new FileNotFoundException("Path '" + paramString + "' not found on NullFileSystem");
+    try
+    {
+      AppMethodBeat.i(195210);
+      if (paramd != null) {
+        this.YCS.add(paramd);
+      }
+      AppMethodBeat.o(195210);
+      return;
+    }
+    finally {}
   }
   
-  public final FileSystem.a boK(String paramString)
+  public final void br(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return null;
+    AppMethodBeat.i(195216);
+    try
+    {
+      Iterator localIterator = this.YCS.iterator();
+      while (localIterator.hasNext()) {
+        ((h.d)localIterator.next()).br(paramBoolean1, paramBoolean2);
+      }
+    }
+    finally
+    {
+      AppMethodBeat.o(195216);
+    }
+    AppMethodBeat.o(195216);
   }
   
-  public final boolean boL(String paramString)
+  public final void ife()
   {
-    return false;
-  }
-  
-  public final e boM(String paramString)
-  {
-    return null;
-  }
-  
-  public final boolean boN(String paramString)
-  {
-    return false;
-  }
-  
-  public final long c(String paramString1, FileSystem.b paramb, String paramString2)
-  {
-    throw new FileNotFoundException("Path '" + paramString1 + "' not found on NullFileSystem");
-  }
-  
-  public final boolean ck(String paramString, long paramLong)
-  {
-    return false;
-  }
-  
-  public final WritableByteChannel dv(String paramString, boolean paramBoolean)
-  {
-    throw new FileNotFoundException("Path '" + paramString + "' not found on NullFileSystem");
-  }
-  
-  public final OutputStream dw(String paramString, boolean paramBoolean)
-  {
-    throw new FileNotFoundException("Path '" + paramString + "' not found on NullFileSystem");
-  }
-  
-  public final Iterable<e> dx(String paramString, boolean paramBoolean)
-  {
-    return null;
-  }
-  
-  public final boolean dy(String paramString, boolean paramBoolean)
-  {
-    return false;
-  }
-  
-  public final String dz(String paramString, boolean paramBoolean)
-  {
-    return null;
-  }
-  
-  public final boolean gC(String paramString)
-  {
-    return false;
-  }
-  
-  public final int hdR()
-  {
-    return 28;
-  }
-  
-  public final ParcelFileDescriptor nr(String paramString1, String paramString2)
-  {
-    throw new FileNotFoundException("Path '" + paramString1 + "' not found on NullFileSystem");
-  }
-  
-  public final InputStream openRead(String paramString)
-  {
-    throw new FileNotFoundException("Path '" + paramString + "' not found on NullFileSystem");
+    AppMethodBeat.i(195213);
+    try
+    {
+      Iterator localIterator = this.YCS.iterator();
+      while (localIterator.hasNext()) {
+        ((h.d)localIterator.next()).ife();
+      }
+    }
+    finally
+    {
+      AppMethodBeat.o(195213);
+    }
+    AppMethodBeat.o(195213);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vfs.i
  * JD-Core Version:    0.7.0.1
  */

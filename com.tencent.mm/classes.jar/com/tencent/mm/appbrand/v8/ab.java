@@ -5,55 +5,55 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class ab
   extends z
 {
-  private static final ThreadLocal<ab> dpE;
-  private final a drJ;
+  private static final ThreadLocal<ab> fil;
+  private final a fkv;
   
   static
   {
-    AppMethodBeat.i(216935);
-    dpE = new ThreadLocal();
-    AppMethodBeat.o(216935);
+    AppMethodBeat.i(262259);
+    fil = new ThreadLocal();
+    AppMethodBeat.o(262259);
   }
   
   private ab(a parama, boolean paramBoolean)
   {
     super(paramBoolean);
-    this.drJ = parama;
+    this.fkv = parama;
   }
   
   public static ab a(a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(216933);
-    if (dpE.get() != null)
+    AppMethodBeat.i(262255);
+    if (fil.get() != null)
     {
       parama = new RuntimeException("Only one Looper may be created per thread");
-      AppMethodBeat.o(216933);
+      AppMethodBeat.o(262255);
       throw parama;
     }
     parama = new ab(parama, paramBoolean);
-    dpE.set(parama);
-    AppMethodBeat.o(216933);
+    fil.set(parama);
+    AppMethodBeat.o(262255);
     return parama;
   }
   
-  protected final void XD()
+  protected final void acg()
   {
-    AppMethodBeat.i(216934);
-    super.XD();
-    if (this.drJ != null) {
-      this.drJ.XP();
+    AppMethodBeat.i(262257);
+    super.acg();
+    if (this.fkv != null) {
+      this.fkv.acv();
     }
-    AppMethodBeat.o(216934);
+    AppMethodBeat.o(262257);
   }
   
   static abstract interface a
   {
-    public abstract void XP();
+    public abstract void acv();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.ab
  * JD-Core Version:    0.7.0.1
  */

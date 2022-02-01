@@ -1,195 +1,227 @@
 package com.tencent.mm.plugin.finder.storage;
 
-import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.f;
-import com.tencent.mm.ab.i;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.finder.utils.ak;
+import com.tencent.mm.protocal.protobuf.aqe;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.n.n;
-import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderFakeVideoConfig;", "", "jsonStr", "", "(Ljava/lang/String;)V", "configList", "", "Lcom/tencent/mm/plugin/finder/storage/FinderFakeVideoConfig$Config;", "getConfigList", "()Ljava/util/List;", "Companion", "Config", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderExptUtil;", "", "()V", "TAG", "", "fillExptFlag", "", "finderBaseReq", "Lcom/tencent/mm/protocal/protobuf/FinderBaseRequest;", "showFinderEntry", "", "EXPT_FLAG", "plugin-finder-base_release"})
 public final class j
 {
-  private static final String TAG = "Finder.FinderFakeVideoConfig";
-  private static boolean vDC;
-  public static final a vDD;
-  final List<b> vDB;
+  public static final j AkL;
   
   static
   {
-    AppMethodBeat.i(166965);
-    vDD = new a((byte)0);
-    TAG = "Finder.FinderFakeVideoConfig";
-    AppMethodBeat.o(166965);
+    AppMethodBeat.i(263343);
+    AkL = new j();
+    AppMethodBeat.o(263343);
   }
   
-  public j(String paramString)
+  public static void a(aqe paramaqe)
   {
-    AppMethodBeat.i(166964);
-    this.vDB = ((List)new ArrayList());
-    for (;;)
+    int i = 0;
+    AppMethodBeat.i(263341);
+    p.k(paramaqe, "finderBaseReq");
+    paramaqe.SDt = 0;
+    Object localObject = d.AjH;
+    int j;
+    if (((Number)d.dTE().aSr()).intValue() == 1)
     {
-      int i;
-      try
+      j = paramaqe.SDt;
+      localObject = a.AkW;
+      paramaqe.SDt = (j | a.dYq());
+    }
+    boolean bool1;
+    if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vHv, 0) != 0)
+    {
+      bool1 = true;
+      localObject = com.tencent.mm.plugin.findersdk.c.a.Bwg;
+      j = com.tencent.mm.plugin.findersdk.c.a.aGQ("entrance");
+      if (j == 2)
       {
-        paramString = new i(paramString).FI("configs");
-        if (paramString != null)
-        {
-          int j = paramString.length();
-          i = 0;
-          if (i < j)
-          {
-            Object localObject = paramString.pZ(i);
-            String str1 = ((i)localObject).optString("brands");
-            String str2 = ((i)localObject).optString("models");
-            int k = ((i)localObject).optInt("maxSize", 0);
-            if (k > 0)
-            {
-              localObject = this.vDB;
-              p.g(str1, "brands");
-              p.g(str2, "models");
-              ((List)localObject).add(new b(str1, str2, k));
-            }
-          }
-          else
-          {
-            AppMethodBeat.o(166964);
-          }
-        }
-        else
-        {
-          AppMethodBeat.o(166964);
-          return;
-        }
+        Log.i("Finder.ExptUtil", "showFinderEntry ".concat(String.valueOf(j)));
+        bool1 = false;
       }
-      catch (Throwable paramString)
+      localObject = d.AjH;
+      if (d.dSF() == 0) {
+        break label541;
+      }
+    }
+    label541:
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      Log.i("Finder.ExptUtil", "showFinder %s %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+      if ((bool1) || (bool2)) {
+        i = 1;
+      }
+      if (i != 0)
       {
-        AppMethodBeat.o(166964);
-        return;
+        i = paramaqe.SDt;
+        localObject = a.AkW;
+        paramaqe.SDt = (i | a.dYr());
       }
-      i += 1;
+      localObject = d.AjH;
+      if (((Number)d.dVF().aSr()).intValue() == 1)
+      {
+        i = paramaqe.SDt;
+        localObject = a.AkW;
+        paramaqe.SDt = (i | a.dYs());
+      }
+      localObject = d.AjH;
+      if (((Number)d.dVM().aSr()).intValue() == 1)
+      {
+        i = paramaqe.SDt;
+        localObject = a.AkW;
+        paramaqe.SDt = (i | a.dYt());
+      }
+      localObject = ak.AGL;
+      if (ak.isAnyEnableFullScreenEnjoy())
+      {
+        i = paramaqe.SDt;
+        localObject = a.AkW;
+        paramaqe.SDt = (i | a.dYu());
+      }
+      localObject = d.AjH;
+      if (((Number)d.dWF().aSr()).intValue() == 1)
+      {
+        i = paramaqe.SDt;
+        localObject = a.AkW;
+        paramaqe.SDt = (i | a.dYv());
+      }
+      localObject = d.AjH;
+      if (((Number)d.dWE().aSr()).intValue() == 1)
+      {
+        i = paramaqe.SDt;
+        localObject = a.AkW;
+        paramaqe.SDt = (i | a.dYw());
+      }
+      localObject = d.AjH;
+      if (((Number)d.dWH().aSr()).intValue() == 1)
+      {
+        i = paramaqe.SDt;
+        localObject = a.AkW;
+        paramaqe.SDt = (i | a.dYx());
+      }
+      localObject = ak.AGL;
+      if (ak.isAllEnableFullScreenEnjoy())
+      {
+        i = paramaqe.SDt;
+        localObject = a.AkW;
+        paramaqe.SDt = (i | a.dYy());
+      }
+      localObject = com.tencent.mm.plugin.finder.nearby.abtest.a.zDp;
+      if (com.tencent.mm.plugin.finder.nearby.abtest.a.dLo())
+      {
+        i = paramaqe.SDt;
+        localObject = a.AkW;
+        paramaqe.SDt = (i | a.dYz());
+      }
+      localObject = com.tencent.mm.plugin.finder.nearby.abtest.a.zDp;
+      if (com.tencent.mm.plugin.finder.nearby.abtest.a.cFx())
+      {
+        i = paramaqe.SDt;
+        localObject = a.AkW;
+        paramaqe.SDt = (i | a.etH());
+      }
+      Log.i("Finder.ExptUtil", "[fillExptFlag] exptFlag=" + paramaqe.SDt);
+      AppMethodBeat.o(263341);
+      return;
+      bool1 = false;
+      break;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderFakeVideoConfig$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "debugEnable", "", "getDebugEnable", "()Z", "setDebugEnable", "(Z)V", "getConfig", "Lcom/tencent/mm/plugin/finder/storage/FinderFakeVideoConfig;", "hitConfig", "videoSize", "", "plugin-finder_release"})
-  public static final class a
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderExptUtil$EXPT_FLAG;", "", "()V", "FINDER_COMMENT_EXPOSE", "", "getFINDER_COMMENT_EXPOSE", "()I", "FriendCommentExpand", "getFriendCommentExpand", "HAS_FINDER_ENTRANCE", "getHAS_FINDER_ENTRANCE", "MMFinderBaseReqExptFlag_AllFullScreen", "getMMFinderBaseReqExptFlag_AllFullScreen", "MMFinderBaseReqExptFlag_FollowFullScreen", "getMMFinderBaseReqExptFlag_FollowFullScreen", "MMFinderBaseReqExptFlag_FriendFullScreen", "getMMFinderBaseReqExptFlag_FriendFullScreen", "MMFinderBaseReqExptFlag_IsFullScreen", "getMMFinderBaseReqExptFlag_IsFullScreen", "MMFinderBaseReqExptFlag_NewLiveEntrance", "getMMFinderBaseReqExptFlag_NewLiveEntrance", "MMFinderBaseReqExptFlag_NewLiveEntrance_On_TopStory", "getMMFinderBaseReqExptFlag_NewLiveEntrance_On_TopStory", "MMFinderBaseReqExptFlag_RelatedFullScreen", "getMMFinderBaseReqExptFlag_RelatedFullScreen", "REAL_NAME_LIKE", "getREAL_NAME_LIKE", "plugin-finder-base_release"})
+  static final class a
   {
-    public static boolean KY(int paramInt)
-    {
-      AppMethodBeat.i(166959);
-      Object localObject1 = Build.BRAND;
-      p.g(localObject1, "Build.BRAND");
-      if (localObject1 == null)
-      {
-        localObject1 = new t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(166959);
-        throw ((Throwable)localObject1);
-      }
-      localObject1 = ((String)localObject1).toLowerCase();
-      p.g(localObject1, "(this as java.lang.String).toLowerCase()");
-      String str = Build.MODEL;
-      p.g(str, "Build.MODEL");
-      if (str == null)
-      {
-        localObject1 = new t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(166959);
-        throw ((Throwable)localObject1);
-      }
-      str = str.toLowerCase();
-      p.g(str, "(this as java.lang.String).toLowerCase()");
-      Object localObject2 = c.vCb;
-      localObject2 = c.drK();
-      p.g(localObject2, "FinderConfig.FAKE_VIDEO_CONFIG_JSON");
-      Object localObject3 = ((Iterable)new j((String)localObject2).vDB).iterator();
-      while (((Iterator)localObject3).hasNext())
-      {
-        localObject2 = (j.b)((Iterator)localObject3).next();
-        if (((n.a((CharSequence)((j.b)localObject2).vDE, (CharSequence)localObject1, false)) || (n.a((CharSequence)((j.b)localObject2).vDF, (CharSequence)str, false)) || (Util.isNullOrNil(((j.b)localObject2).vDE))) && (paramInt > ((j.b)localObject2).maxSize) && (((j.b)localObject2).maxSize > 0))
-        {
-          localObject3 = j.vDD;
-          Log.i(j.access$getTAG$cp(), "hitConfig brand:" + (String)localObject1 + ", model:" + str + ", videoSize:" + paramInt + "; config brands:" + ((j.b)localObject2).vDE + ", models:" + ((j.b)localObject2).vDF + ", maxSize:" + ((j.b)localObject2).maxSize);
-          AppMethodBeat.o(166959);
-          return true;
-        }
-      }
-      if (Log.getLogLevel() <= 1)
-      {
-        boolean bool = j.dxA();
-        AppMethodBeat.o(166959);
-        return bool;
-      }
-      AppMethodBeat.o(166959);
-      return false;
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderFakeVideoConfig$Config;", "", "brands", "", "models", "maxSize", "", "(Ljava/lang/String;Ljava/lang/String;I)V", "getBrands", "()Ljava/lang/String;", "getMaxSize", "()I", "getModels", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "plugin-finder_release"})
-  public static final class b
-  {
-    final int maxSize;
-    final String vDE;
-    final String vDF;
+    private static final int AkM = 1;
+    private static final int AkN = 2;
+    private static final int AkO = 4;
+    private static final int AkP = 8;
+    private static final int AkQ = 16;
+    private static final int AkR = 32;
+    private static final int AkS = 64;
+    private static final int AkT = 128;
+    private static final int AkU = 256;
+    private static final int AkV = 512;
+    public static final a AkW;
+    private static final int KIb = 1024;
     
-    public b(String paramString1, String paramString2, int paramInt)
+    static
     {
-      AppMethodBeat.i(166960);
-      this.vDE = paramString1;
-      this.vDF = paramString2;
-      this.maxSize = paramInt;
-      AppMethodBeat.o(166960);
+      AppMethodBeat.i(261913);
+      AkW = new a();
+      AkM = 1;
+      AkN = 2;
+      AkO = 4;
+      AkP = 8;
+      AkQ = 16;
+      AkR = 32;
+      AkS = 64;
+      AkT = 128;
+      AkU = 256;
+      AkV = 512;
+      KIb = 1024;
+      AppMethodBeat.o(261913);
     }
     
-    public final boolean equals(Object paramObject)
+    public static int dYq()
     {
-      AppMethodBeat.i(166963);
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof b))
-        {
-          paramObject = (b)paramObject;
-          if ((!p.j(this.vDE, paramObject.vDE)) || (!p.j(this.vDF, paramObject.vDF)) || (this.maxSize != paramObject.maxSize)) {}
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(166963);
-        return true;
-      }
-      AppMethodBeat.o(166963);
-      return false;
+      return AkM;
     }
     
-    public final int hashCode()
+    public static int dYr()
     {
-      int j = 0;
-      AppMethodBeat.i(166962);
-      String str = this.vDE;
-      if (str != null) {}
-      for (int i = str.hashCode();; i = 0)
-      {
-        str = this.vDF;
-        if (str != null) {
-          j = str.hashCode();
-        }
-        int k = this.maxSize;
-        AppMethodBeat.o(166962);
-        return (i * 31 + j) * 31 + k;
-      }
+      return AkN;
     }
     
-    public final String toString()
+    public static int dYs()
     {
-      AppMethodBeat.i(166961);
-      String str = "Config(brands=" + this.vDE + ", models=" + this.vDF + ", maxSize=" + this.maxSize + ")";
-      AppMethodBeat.o(166961);
-      return str;
+      return AkO;
+    }
+    
+    public static int dYt()
+    {
+      return AkP;
+    }
+    
+    public static int dYu()
+    {
+      return AkQ;
+    }
+    
+    public static int dYv()
+    {
+      return AkR;
+    }
+    
+    public static int dYw()
+    {
+      return AkS;
+    }
+    
+    public static int dYx()
+    {
+      return AkT;
+    }
+    
+    public static int dYy()
+    {
+      return AkU;
+    }
+    
+    public static int dYz()
+    {
+      return AkV;
+    }
+    
+    public static int etH()
+    {
+      return KIb;
     }
   }
 }

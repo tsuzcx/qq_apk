@@ -2,22 +2,22 @@ package com.tencent.mm.compatible.deviceinfo;
 
 public final class a
 {
-  public boolean gDy = false;
-  public String gDz = "";
+  public boolean jnI = false;
+  public String jnJ = "";
   
-  public final void DR(String paramString)
+  public final void KJ(String paramString)
   {
-    this.gDz = paramString;
+    this.jnJ = paramString;
   }
   
-  public final void dq(boolean paramBoolean)
+  public final void dQ(boolean paramBoolean)
   {
-    this.gDy = paramBoolean;
+    this.jnI = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.a
  * JD-Core Version:    0.7.0.1
  */

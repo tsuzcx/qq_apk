@@ -9,7 +9,7 @@ public class WeChatSVG
   static
   {
     AppMethodBeat.i(148690);
-    if (b.gFX())
+    if (b.hCp())
     {
       System.loadLibrary("wechatsvg");
       nativeInit();
@@ -31,7 +31,7 @@ public class WeChatSVG
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.svg.WeChatSVG
  * JD-Core Version:    0.7.0.1
  */

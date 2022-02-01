@@ -3,25 +3,25 @@ package com.tencent.mm.plugin.fingerprint.c;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class e
-  extends com.tencent.mm.wallet_core.tenpay.model.m
-  implements com.tencent.mm.network.m
+  extends m
 {
-  public String dNS;
-  public String wFp;
-  public String wGk;
+  public String Bym;
+  public String Bzh;
+  public String fHd;
   
   public e(String paramString)
   {
     AppMethodBeat.i(64472);
-    this.wFp = "";
-    this.dNS = "";
-    this.wGk = "";
+    this.Bym = "";
+    this.fHd = "";
+    this.Bzh = "";
     HashMap localHashMap = new HashMap();
     if (TextUtils.isEmpty(paramString)) {
       Log.e("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_cert_info is empty");
@@ -57,20 +57,20 @@ public final class e
     AppMethodBeat.i(64473);
     if (paramJSONObject != null)
     {
-      this.wFp = paramJSONObject.optString("encrypted_device_info");
-      this.dNS = paramJSONObject.optString("encrypted_rsa_sign");
-      this.wGk = paramJSONObject.optString("cert");
-      if (TextUtils.isEmpty(this.wFp))
+      this.Bym = paramJSONObject.optString("encrypted_device_info");
+      this.fHd = paramJSONObject.optString("encrypted_rsa_sign");
+      this.Bzh = paramJSONObject.optString("cert");
+      if (TextUtils.isEmpty(this.Bym))
       {
         Log.e("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_device_info is empty");
-        if (!TextUtils.isEmpty(this.dNS)) {
+        if (!TextUtils.isEmpty(this.fHd)) {
           break label106;
         }
         Log.e("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_rsa_sign is empty");
       }
       for (;;)
       {
-        if (!TextUtils.isEmpty(this.wGk)) {
+        if (!TextUtils.isEmpty(this.Bzh)) {
           break label116;
         }
         Log.e("MicroMsg.NetSceneTenpayGetOpenTouchCert", "cert is empty");

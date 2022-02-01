@@ -10,100 +10,100 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g
   implements TextureView.SurfaceTextureListener, d
 {
-  private TextureView cIM;
-  private d.a gQa;
+  private TextureView cJq;
+  private d.a jAt;
   
   public g(TextureView paramTextureView)
   {
-    AppMethodBeat.i(241722);
-    this.cIM = paramTextureView;
-    this.cIM.setOpaque(false);
-    this.cIM.setSurfaceTextureListener(this);
-    AppMethodBeat.o(241722);
+    AppMethodBeat.i(277779);
+    this.cJq = paramTextureView;
+    this.cJq.setOpaque(false);
+    this.cJq.setSurfaceTextureListener(this);
+    AppMethodBeat.o(277779);
   }
   
   public final void a(d.a parama)
   {
-    this.gQa = parama;
+    this.jAt = parama;
   }
   
   public final void a(d.b paramb)
   {
-    AppMethodBeat.i(241727);
+    AppMethodBeat.i(277785);
     if (paramb != null) {
-      paramb.l(null);
+      paramb.m(null);
     }
-    AppMethodBeat.o(241727);
+    AppMethodBeat.o(277785);
   }
   
-  public final float atd()
+  public final Canvas azQ()
   {
-    AppMethodBeat.i(241726);
-    float f = this.cIM.getY();
-    AppMethodBeat.o(241726);
+    AppMethodBeat.i(277780);
+    Canvas localCanvas = this.cJq.lockCanvas();
+    AppMethodBeat.o(277780);
+    return localCanvas;
+  }
+  
+  public final float azR()
+  {
+    AppMethodBeat.i(277783);
+    float f = this.cJq.getY();
+    AppMethodBeat.o(277783);
     return f;
   }
   
-  public final Canvas lockCanvas()
+  public final void o(Canvas paramCanvas)
   {
-    AppMethodBeat.i(241723);
-    Canvas localCanvas = this.cIM.lockCanvas();
-    AppMethodBeat.o(241723);
-    return localCanvas;
+    AppMethodBeat.i(277781);
+    this.cJq.unlockCanvasAndPost(paramCanvas);
+    AppMethodBeat.o(277781);
   }
   
   public final void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(241728);
-    this.cIM.setOpaque(false);
-    if (this.gQa != null)
+    AppMethodBeat.i(277786);
+    this.cJq.setOpaque(false);
+    if (this.jAt != null)
     {
-      this.gQa.asg();
-      this.gQa.ash();
+      this.jAt.ayT();
+      this.jAt.ayU();
     }
-    AppMethodBeat.o(241728);
+    AppMethodBeat.o(277786);
   }
   
   public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(241730);
-    if (this.gQa != null) {
-      this.gQa.asi();
+    AppMethodBeat.i(277788);
+    if (this.jAt != null) {
+      this.jAt.ayV();
     }
-    AppMethodBeat.o(241730);
+    AppMethodBeat.o(277788);
     return false;
   }
   
   public final void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(241729);
-    if (this.gQa != null) {
-      this.gQa.ash();
+    AppMethodBeat.i(277787);
+    if (this.jAt != null) {
+      this.jAt.ayU();
     }
-    AppMethodBeat.o(241729);
+    AppMethodBeat.o(277787);
   }
   
   public final void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
   
   public final void setOnTouchListener(View.OnTouchListener paramOnTouchListener)
   {
-    AppMethodBeat.i(241725);
-    this.cIM.setOnTouchListener(paramOnTouchListener);
-    AppMethodBeat.o(241725);
+    AppMethodBeat.i(277782);
+    this.cJq.setOnTouchListener(paramOnTouchListener);
+    AppMethodBeat.o(277782);
   }
   
   public final void unlock() {}
-  
-  public final void unlockCanvasAndPost(Canvas paramCanvas)
-  {
-    AppMethodBeat.i(241724);
-    this.cIM.unlockCanvasAndPost(paramCanvas);
-    AppMethodBeat.o(241724);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.danmaku.render.g
  * JD-Core Version:    0.7.0.1
  */

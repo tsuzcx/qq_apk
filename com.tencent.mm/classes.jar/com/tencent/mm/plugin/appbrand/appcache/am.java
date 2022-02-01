@@ -1,28 +1,25 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fm;
-import com.tencent.mm.plugin.appbrand.ab.b;
+import com.tencent.mm.f.c.fp;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
-import java.util.Locale;
 import java.util.Map;
 
 public final class am
-  extends fm
-  implements b
+  extends fp
 {
-  static final IAutoDBItem.MAutoDBInfo iBg;
-  static final String[] kJX;
+  static final String[] nDP;
+  static final IAutoDBItem.MAutoDBInfo nFK;
   
   static
   {
     int i = 0;
-    AppMethodBeat.i(90559);
-    kJX = new String[] { "appId", "type", "version" };
+    AppMethodBeat.i(44328);
+    nDP = new String[] { "appId", "version" };
     Object localObject1 = new IAutoDBItem.MAutoDBInfo();
-    ((IAutoDBItem.MAutoDBInfo)localObject1).fields = new Field[5];
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns = new String[6];
+    ((IAutoDBItem.MAutoDBInfo)localObject1).fields = new Field[4];
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns = new String[5];
     Object localObject2 = new StringBuilder();
     ((IAutoDBItem.MAutoDBInfo)localObject1).columns[0] = "appId";
     ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("appId", "TEXT");
@@ -32,22 +29,18 @@ public final class am
     ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("version", "INTEGER");
     ((StringBuilder)localObject2).append(" version INTEGER");
     ((StringBuilder)localObject2).append(", ");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[2] = "type";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("type", "INTEGER");
-    ((StringBuilder)localObject2).append(" type INTEGER");
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[2] = "hit";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("hit", "INTEGER");
+    ((StringBuilder)localObject2).append(" hit INTEGER");
     ((StringBuilder)localObject2).append(", ");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[3] = "pkgMd5";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("pkgMd5", "TEXT");
-    ((StringBuilder)localObject2).append(" pkgMd5 TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[4] = "pkgPath";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("pkgPath", "TEXT");
-    ((StringBuilder)localObject2).append(" pkgPath TEXT");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[5] = "rowid";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[3] = "hitTimeMS";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("hitTimeMS", "LONG");
+    ((StringBuilder)localObject2).append(" hitTimeMS LONG");
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[4] = "rowid";
     ((IAutoDBItem.MAutoDBInfo)localObject1).sql = ((StringBuilder)localObject2).toString();
-    iBg = (IAutoDBItem.MAutoDBInfo)localObject1;
-    localObject1 = " PRIMARY KEY ( ";
-    localObject2 = kJX;
+    nFK = (IAutoDBItem.MAutoDBInfo)localObject1;
+    localObject1 = " PRIMARY KEY (";
+    localObject2 = nDP;
     int j = localObject2.length;
     while (i < j)
     {
@@ -58,32 +51,19 @@ public final class am
     localObject1 = ((String)localObject1).replaceFirst(",", "");
     localObject1 = (String)localObject1 + " )";
     localObject2 = new StringBuilder();
-    Object localObject3 = iBg;
+    Object localObject3 = nFK;
     ((IAutoDBItem.MAutoDBInfo)localObject3).sql = (((IAutoDBItem.MAutoDBInfo)localObject3).sql + "," + (String)localObject1);
-    AppMethodBeat.o(90559);
+    AppMethodBeat.o(44328);
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    return iBg;
-  }
-  
-  public final String[] getKeys()
-  {
-    return kJX;
-  }
-  
-  public final String toShortString()
-  {
-    AppMethodBeat.i(90558);
-    String str = String.format(Locale.US, "EncryptPkgInfo[%s %d %d]", new Object[] { this.field_appId, Integer.valueOf(this.field_type), Integer.valueOf(this.field_version) });
-    AppMethodBeat.o(90558);
-    return str;
+    return nFK;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.am
  * JD-Core Version:    0.7.0.1
  */

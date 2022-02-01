@@ -1,89 +1,163 @@
 package com.tencent.mm.ui.chatting.gallery;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.av.e.a;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.f.c.et;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import java.util.HashSet;
+import com.tencent.mm.storage.ca;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public final class l
-  implements e.a
 {
-  private static l PBl;
-  HashSet<Long> PBm;
-  e.a PBn;
+  public ArrayList<ca> wQK;
+  public boolean wQL;
+  ArrayList<b> wQM;
   
   private l()
   {
-    AppMethodBeat.i(36338);
-    this.PBm = new HashSet();
-    AppMethodBeat.o(36338);
+    AppMethodBeat.i(36079);
+    this.wQK = new ArrayList();
+    this.wQL = false;
+    this.wQM = new ArrayList();
+    AppMethodBeat.o(36079);
   }
   
-  public static l gTf()
+  private ca Wa(long paramLong)
   {
-    AppMethodBeat.i(36339);
-    if (PBl == null) {
-      PBl = new l();
-    }
-    l locall = PBl;
-    AppMethodBeat.o(36339);
-    return locall;
-  }
-  
-  public final boolean NS(long paramLong)
-  {
-    AppMethodBeat.i(36340);
-    boolean bool = this.PBm.contains(Long.valueOf(paramLong));
-    AppMethodBeat.o(36340);
-    return bool;
-  }
-  
-  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject)
-  {
-    AppMethodBeat.i(36343);
-    if (this.PBn != null) {
-      this.PBn.a(paramLong1, paramLong2, paramInt1, paramInt2, paramObject);
-    }
-    this.PBm.remove(Long.valueOf(paramLong2));
-    AppMethodBeat.o(36343);
-  }
-  
-  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, q paramq)
-  {
-    AppMethodBeat.i(36341);
-    if (this.PBn != null) {
-      this.PBn.a(paramLong1, paramLong2, paramInt1, paramInt2, paramObject, paramInt3, paramInt4, paramq);
-    }
-    AppMethodBeat.o(36341);
-  }
-  
-  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, String paramString, q paramq)
-  {
-    AppMethodBeat.i(36342);
-    if (this.PBn != null) {
-      this.PBn.a(paramLong1, paramLong2, paramInt1, paramInt2, paramObject, paramInt3, paramInt4, paramString, paramq);
-    }
-    for (;;)
+    AppMethodBeat.i(36081);
+    Iterator localIterator = this.wQK.iterator();
+    while (localIterator.hasNext())
     {
-      this.PBm.remove(Long.valueOf(paramLong2));
-      AppMethodBeat.o(36342);
-      return;
-      bg.aVF();
-      paramObject = c.aSQ().Hb(paramLong2);
-      Log.i("MicroMsg.ImageHDDownloadAndSaveMgr", "[oreh download_and_save] hdImg end at background, msgLocalId:%d", new Object[] { Long.valueOf(paramObject.field_msgId) });
-      b.d(MMApplicationContext.getContext(), paramObject, false);
+      ca localca = (ca)localIterator.next();
+      if (localca.field_msgId == paramLong)
+      {
+        AppMethodBeat.o(36081);
+        return localca;
+      }
     }
+    AppMethodBeat.o(36081);
+    return null;
+  }
+  
+  private void cMA()
+  {
+    AppMethodBeat.i(36087);
+    Iterator localIterator = this.wQM.iterator();
+    while (localIterator.hasNext()) {
+      ((b)localIterator.next()).clear();
+    }
+    AppMethodBeat.o(36087);
+  }
+  
+  private void hRN()
+  {
+    AppMethodBeat.i(36086);
+    Iterator localIterator = this.wQM.iterator();
+    while (localIterator.hasNext()) {
+      ((b)localIterator.next()).hRL();
+    }
+    AppMethodBeat.o(36086);
+  }
+  
+  public final void a(b paramb)
+  {
+    AppMethodBeat.i(36088);
+    this.wQM.remove(paramb);
+    this.wQM.add(paramb);
+    AppMethodBeat.o(36088);
+  }
+  
+  public final void cY(ca paramca)
+  {
+    AppMethodBeat.i(36080);
+    if (paramca == null)
+    {
+      AppMethodBeat.o(36080);
+      return;
+    }
+    Log.i("MicroMsg.ImageGallerySelectedHandle", "add : %s", new Object[] { Long.valueOf(paramca.field_msgId) });
+    this.wQK.remove(paramca);
+    this.wQK.remove(Wa(paramca.field_msgId));
+    this.wQK.add(paramca);
+    hRN();
+    AppMethodBeat.o(36080);
+  }
+  
+  public final void cZ(ca paramca)
+  {
+    AppMethodBeat.i(36082);
+    if (paramca == null)
+    {
+      AppMethodBeat.o(36082);
+      return;
+    }
+    Log.i("MicroMsg.ImageGallerySelectedHandle", "remove : %s", new Object[] { Long.valueOf(paramca.field_msgId) });
+    this.wQK.remove(paramca);
+    this.wQK.remove(Wa(paramca.field_msgId));
+    hRN();
+    AppMethodBeat.o(36082);
+  }
+  
+  public final void clear()
+  {
+    AppMethodBeat.i(36083);
+    Log.i("MicroMsg.ImageGallerySelectedHandle", "clear..");
+    this.wQK.clear();
+    cMA();
+    AppMethodBeat.o(36083);
+  }
+  
+  public final boolean da(ca paramca)
+  {
+    AppMethodBeat.i(36085);
+    if (paramca == null)
+    {
+      AppMethodBeat.o(36085);
+      return false;
+    }
+    Iterator localIterator = this.wQK.iterator();
+    while (localIterator.hasNext()) {
+      if (((ca)localIterator.next()).field_msgId == paramca.field_msgId)
+      {
+        AppMethodBeat.o(36085);
+        return true;
+      }
+    }
+    AppMethodBeat.o(36085);
+    return false;
+  }
+  
+  public final void detach()
+  {
+    AppMethodBeat.i(36084);
+    this.wQM.clear();
+    clear();
+    this.wQL = false;
+    AppMethodBeat.o(36084);
+  }
+  
+  public static final class a
+  {
+    private static final l WSR;
+    
+    static
+    {
+      AppMethodBeat.i(36078);
+      WSR = new l((byte)0);
+      AppMethodBeat.o(36078);
+    }
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void clear();
+    
+    public abstract void hRL();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.l
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.appbrand.widget.desktop.RecentAppBrandView android:id="@id/gu3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <include android:id="@id/fkj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" layout="@layout/gx" />
-</RelativeLayout>
+<LinearLayout android:gravity="end|center" android:orientation="horizontal" android:id="@id/kqd" android:paddingTop="@dimen/cb" android:paddingBottom="@dimen/ct" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/cb" android:paddingEnd="@dimen/cb"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="15.0dip" android:textColor="@color/am" android:gravity="end|center" android:id="@id/kqe" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/jw4" android:layout_weight="1.0" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/finder_left_arrows" android:layout_marginStart="@dimen/bt" app:iconColor="@color/am" />
+</LinearLayout>

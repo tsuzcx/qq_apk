@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.ipcall.model.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.du;
+import com.tencent.mm.f.c.dy;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Map;
 
 public final class c
-  extends du
+  extends dy
 {
   public static IAutoDBItem.MAutoDBInfo info;
-  public ArrayList<String> ysE;
+  public ArrayList<String> DSI;
   
   static
   {
@@ -41,7 +41,7 @@ public final class c
     AppMethodBeat.o(25537);
   }
   
-  public static boolean ik(String paramString1, String paramString2)
+  public static boolean ix(String paramString1, String paramString2)
   {
     AppMethodBeat.i(25536);
     if ((paramString1 == null) && (paramString2 != null))
@@ -65,7 +65,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.h.c
  * JD-Core Version:    0.7.0.1
  */

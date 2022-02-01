@@ -4,19 +4,19 @@ import android.content.Intent;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.o.a;
-import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.kernel.f.c;
 import com.tencent.mm.plugin.downloader.a.e;
 import com.tencent.mm.plugin.downloader.model.FileDownloadService;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.game.commlib.c.a.a;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.y;
+import com.tencent.mm.vfs.ab;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,19 +26,46 @@ public class PluginDownloader
   implements com.tencent.mm.kernel.api.c, e
 {
   private static o.a appForegroundListener;
-  private static a qFe;
+  private static a uef;
   
   static
   {
     AppMethodBeat.i(88831);
-    appForegroundListener = new PluginDownloader.1();
+    appForegroundListener = new o.a()
+    {
+      public final void onAppBackground(String paramAnonymousString)
+      {
+        AppMethodBeat.i(88822);
+        if ((com.tencent.mm.kernel.h.aHB()) && (com.tencent.mm.kernel.h.aHE().kbT))
+        {
+          com.tencent.mm.kernel.h.aHE();
+          if (!com.tencent.mm.kernel.b.aGE()) {
+            ((com.tencent.mm.plugin.downloader.a.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.downloader.a.d.class)).md(false);
+          }
+        }
+        AppMethodBeat.o(88822);
+      }
+      
+      public final void onAppForeground(String paramAnonymousString)
+      {
+        AppMethodBeat.i(88821);
+        if ((com.tencent.mm.kernel.h.aHB()) && (com.tencent.mm.kernel.h.aHE().kbT))
+        {
+          com.tencent.mm.kernel.h.aHE();
+          if (!com.tencent.mm.kernel.b.aGE()) {
+            ((com.tencent.mm.plugin.downloader.a.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.downloader.a.d.class)).md(true);
+          }
+        }
+        AppMethodBeat.o(88821);
+      }
+    };
     AppMethodBeat.o(88831);
   }
   
   private void checkMD5CheckingTasks()
   {
     AppMethodBeat.i(88827);
-    Object localObject1 = com.tencent.mm.plugin.downloader.model.d.aSU();
+    Object localObject1 = com.tencent.mm.plugin.downloader.model.d.bbS();
     if (localObject1 == null) {
       localObject1 = null;
     }
@@ -52,13 +79,13 @@ public class PluginDownloader
         {
           Object localObject2 = (com.tencent.mm.plugin.downloader.g.a)((Iterator)localObject1).next();
           Object localObject3 = new Intent();
-          ((Intent)localObject3).putExtra(FileDownloadService.qJa, 1);
+          ((Intent)localObject3).putExtra(FileDownloadService.uib, 1);
           ((Intent)localObject3).setClass(MMApplicationContext.getContext(), FileDownloadService.class);
-          ((Intent)localObject3).putExtra(FileDownloadService.EXTRA_ID, ((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadId);
+          ((Intent)localObject3).putExtra(FileDownloadService.uia, ((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadId);
           try
           {
-            com.tencent.mm.br.c.startService((Intent)localObject3);
-            h.CyF.idkeyStat(710L, 25L, 1L, false);
+            com.tencent.mm.by.c.startService((Intent)localObject3);
+            com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(710L, 25L, 1L, false);
             break label27;
             Log.i("MicroMsg.FileDownloadInfoStorage", "getDownloadInWifiPauseTasks, sql = ".concat(String.valueOf("select * from FileDownloadInfo where status=6")));
             localObject3 = ((com.tencent.mm.plugin.downloader.g.b)localObject1).rawQuery("select * from FileDownloadInfo where status=6", new String[0]);
@@ -92,7 +119,7 @@ public class PluginDownloader
   private void resumeDownloadTaskWhenProcessRestart()
   {
     AppMethodBeat.i(88828);
-    Object localObject1 = com.tencent.mm.plugin.downloader.model.d.aSU();
+    Object localObject1 = com.tencent.mm.plugin.downloader.model.d.bbS();
     if (localObject1 == null)
     {
       localObject1 = null;
@@ -109,11 +136,11 @@ public class PluginDownloader
         }
         Object localObject2 = (com.tencent.mm.plugin.downloader.g.a)((Iterator)localObject1).next();
         Log.i("MicroMsg.PluginDownloader", "resumeDownloadTaskWhenProcessRestart, downloadid : %d, appid : %s, status : %d", new Object[] { Long.valueOf(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadId), ((com.tencent.mm.plugin.downloader.g.a)localObject2).field_appId, Integer.valueOf(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_status) });
-        if (com.tencent.mm.plugin.downloader.model.d.alf(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadUrl))
+        if (com.tencent.mm.plugin.downloader.model.d.asY(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadUrl))
         {
           Log.i("MicroMsg.PluginDownloader", "hasDuplicatedTask");
-          com.tencent.mm.plugin.downloader.model.d.alc(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadUrl);
-          h.CyF.idkeyStat(710L, 26L, 1L, false);
+          com.tencent.mm.plugin.downloader.model.d.asV(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadUrl);
+          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(710L, 26L, 1L, false);
           continue;
           Log.i("MicroMsg.FileDownloadInfoStorage", "getRunningDownloadInfos: select * from FileDownloadInfo where status=1");
           localObject2 = ((com.tencent.mm.plugin.downloader.g.b)localObject1).rawQuery("select * from FileDownloadInfo where status=1", new String[0]);
@@ -136,7 +163,7 @@ public class PluginDownloader
         Object localObject3 = new com.tencent.mm.plugin.downloader.f.b();
         ((com.tencent.mm.plugin.downloader.f.b)localObject3).k((com.tencent.mm.plugin.downloader.g.a)localObject2);
         com.tencent.mm.plugin.downloader.f.a.a(20, (com.tencent.mm.plugin.downloader.f.b)localObject3);
-        localObject3 = com.tencent.mm.plugin.downloader.model.f.cBv().Co(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadId);
+        localObject3 = com.tencent.mm.plugin.downloader.model.f.cPZ().Ix(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadId);
         long l;
         if (((FileDownloadTaskInfo)localObject3).status == 3)
         {
@@ -146,19 +173,19 @@ public class PluginDownloader
           ((com.tencent.mm.plugin.downloader.g.a)localObject2).field_status = 6;
           Log.i("MicroMsg.PluginDownloader", "download succeed, downloadedSize = %d, startSize = %d", new Object[] { Long.valueOf(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadedSize), Long.valueOf(((com.tencent.mm.plugin.downloader.g.a)localObject2).field_startSize) });
           com.tencent.mm.plugin.downloader.model.d.e((com.tencent.mm.plugin.downloader.g.a)localObject2);
-          localObject3 = com.tencent.mm.plugin.downloader.model.f.cBv();
+          localObject3 = com.tencent.mm.plugin.downloader.model.f.cPZ();
           l = ((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadId;
-          if (((com.tencent.mm.plugin.downloader.model.f)localObject3).qIy != null) {
-            ((com.tencent.mm.plugin.downloader.model.f)localObject3).qIy.Cv(l);
+          if (((com.tencent.mm.plugin.downloader.model.f)localObject3).uhy != null) {
+            ((com.tencent.mm.plugin.downloader.model.f)localObject3).uhy.IE(l);
           }
           localObject3 = new Intent();
-          ((Intent)localObject3).putExtra(FileDownloadService.qJa, 1);
+          ((Intent)localObject3).putExtra(FileDownloadService.uib, 1);
           ((Intent)localObject3).setClass(MMApplicationContext.getContext(), FileDownloadService.class);
-          ((Intent)localObject3).putExtra(FileDownloadService.EXTRA_ID, ((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadId);
+          ((Intent)localObject3).putExtra(FileDownloadService.uia, ((com.tencent.mm.plugin.downloader.g.a)localObject2).field_downloadId);
           try
           {
-            com.tencent.mm.br.c.startService((Intent)localObject3);
-            h.CyF.idkeyStat(710L, 12L, 1L, false);
+            com.tencent.mm.by.c.startService((Intent)localObject3);
+            com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(710L, 12L, 1L, false);
           }
           catch (Exception localException)
           {
@@ -170,29 +197,29 @@ public class PluginDownloader
         }
         else if (((FileDownloadTaskInfo)localObject3).status != 1)
         {
-          h.CyF.idkeyStat(710L, 14L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(710L, 14L, 1L, false);
           Log.i("MicroMsg.PluginDownloader", "download fail, all process dead, appId: " + localException.field_appId);
           l = (System.currentTimeMillis() - localException.field_updateTime) / 1000L;
           Log.i("MicroMsg.PluginDownloader", "lastTime = ".concat(String.valueOf(l)));
           if (l <= 1800L)
           {
-            boolean bool = ((com.tencent.mm.game.report.a.b)com.tencent.mm.kernel.g.af(com.tencent.mm.game.report.a.b.class)).a(b.a.rOp, false);
-            Log.i("MicroMsg.PluginDownloader", "in half hour, net: %s, downloadInWifi: %b, expt: %b", new Object[] { NetStatusUtil.getNetTypeString(MMApplicationContext.getContext()), Boolean.valueOf(((FileDownloadTaskInfo)localObject3).qJg), Boolean.valueOf(bool) });
+            boolean bool = ((com.tencent.mm.game.report.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.game.report.a.b.class)).a(b.a.vuk, false);
+            Log.i("MicroMsg.PluginDownloader", "in half hour, net: %s, downloadInWifi: %b, expt: %b", new Object[] { NetStatusUtil.getNetTypeString(MMApplicationContext.getContext()), Boolean.valueOf(((FileDownloadTaskInfo)localObject3).uij), Boolean.valueOf(bool) });
             if (NetStatusUtil.isWifi(MMApplicationContext.getContext()))
             {
               Log.i("MicroMsg.PluginDownloader", "in half hour, in wifi, restart");
-              com.tencent.mm.plugin.downloader.model.f.cBv().Cr(localException.field_downloadId);
-              h.CyF.idkeyStat(710L, 15L, 1L, false);
+              com.tencent.mm.plugin.downloader.model.f.cPZ().IA(localException.field_downloadId);
+              com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(710L, 15L, 1L, false);
             }
-            else if ((!((FileDownloadTaskInfo)localObject3).qJg) && (bool))
+            else if ((!((FileDownloadTaskInfo)localObject3).uij) && (bool))
             {
               Log.i("MicroMsg.PluginDownloader", "download not in wifi");
-              com.tencent.mm.plugin.downloader.model.f.cBv().Cr(localException.field_downloadId);
-              h.CyF.idkeyStat(710L, 19L, 1L, false);
+              com.tencent.mm.plugin.downloader.model.f.cPZ().IA(localException.field_downloadId);
+              com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(710L, 19L, 1L, false);
             }
             else
             {
-              h.CyF.idkeyStat(710L, 17L, 1L, false);
+              com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(710L, 17L, 1L, false);
             }
           }
           else
@@ -201,19 +228,19 @@ public class PluginDownloader
             {
               localException.field_finishTime = System.currentTimeMillis();
               localException.field_status = 4;
-              localException.field_errCode = com.tencent.mm.plugin.downloader.a.a.qFq;
+              localException.field_errCode = com.tencent.mm.plugin.downloader.a.a.ues;
               com.tencent.mm.plugin.downloader.model.d.e(localException);
-              localObject3 = com.tencent.mm.plugin.downloader.model.f.cBv();
+              localObject3 = com.tencent.mm.plugin.downloader.model.f.cPZ();
               l = localException.field_downloadId;
               int i = localException.field_errCode;
-              if (((com.tencent.mm.plugin.downloader.model.f)localObject3).qIy == null) {
+              if (((com.tencent.mm.plugin.downloader.model.f)localObject3).uhy == null) {
                 break;
               }
-              ((com.tencent.mm.plugin.downloader.model.f)localObject3).qIy.c(l, i, false);
+              ((com.tencent.mm.plugin.downloader.model.f)localObject3).uhy.c(l, i, false);
               break;
-              h.CyF.idkeyStat(710L, 16L, 1L, false);
+              com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(710L, 16L, 1L, false);
               if (!NetStatusUtil.isWifi(MMApplicationContext.getContext())) {
-                h.CyF.idkeyStat(710L, 17L, 1L, false);
+                com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(710L, 17L, 1L, false);
               }
             }
           }
@@ -221,7 +248,7 @@ public class PluginDownloader
         else
         {
           Log.i("MicroMsg.PluginDownloader", "download process alive, still downloading: " + localException.field_appId);
-          h.CyF.idkeyStat(710L, 13L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(710L, 13L, 1L, false);
         }
       }
     }
@@ -229,69 +256,69 @@ public class PluginDownloader
     AppMethodBeat.o(88828);
   }
   
-  public void configure(com.tencent.mm.kernel.b.g paramg)
+  public void configure(g paramg)
   {
-    AppMethodBeat.i(192248);
-    y.b("CDNDownloadBigFile", "BigFile", 2592000000L, 55);
-    AppMethodBeat.o(192248);
+    AppMethodBeat.i(219670);
+    ab.a("CDNDownloadBigFile", "BigFile", 2592000000L, 53);
+    AppMethodBeat.o(219670);
   }
   
-  public void execute(com.tencent.mm.kernel.b.g paramg)
+  public void execute(g paramg)
   {
     AppMethodBeat.i(88824);
     Log.d("MicroMsg.PluginDownloader", "execute");
-    if (paramg.aBb())
+    if (paramg.aIE())
     {
-      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.downloader.a.d.class, new b());
-      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.cdndownloader.b.a.class, new com.tencent.mm.plugin.cdndownloader.a());
-      paramg = new a(com.tencent.mm.plugin.downloader.model.b.qIb);
-      qFe = paramg;
+      com.tencent.mm.kernel.h.b(com.tencent.mm.plugin.downloader.a.d.class, new b());
+      com.tencent.mm.kernel.h.b(com.tencent.mm.plugin.cdndownloader.b.a.class, new com.tencent.mm.plugin.cdndownloader.a());
+      paramg = new a(com.tencent.mm.plugin.downloader.model.b.uhb);
+      uef = paramg;
       paramg.startWatching();
     }
     AppMethodBeat.o(88824);
   }
   
-  public void onAccountInitialized(e.c paramc)
+  public void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(88825);
     Log.i("MicroMsg.PluginDownloader", "onAccountInitialized");
-    com.tencent.mm.plugin.downloader.e.a.cBn();
+    com.tencent.mm.plugin.downloader.e.a.cPR();
     appForegroundListener.alive();
-    com.tencent.mm.plugin.game.commlib.c.a.dTf().a("md5_check", new a.a()
+    com.tencent.mm.plugin.game.commlib.c.a.ewo().a("md5_check", new a.a()
     {
-      public final void cBm()
+      public final void cPQ()
       {
-        AppMethodBeat.i(192245);
-        com.tencent.mm.plugin.cdndownloader.g.a.cyh().postDelayed(new Runnable()
+        AppMethodBeat.i(220121);
+        com.tencent.mm.plugin.cdndownloader.g.a.cMC().postDelayed(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(192244);
+            AppMethodBeat.i(220124);
             PluginDownloader.access$000(PluginDownloader.this);
-            AppMethodBeat.o(192244);
+            AppMethodBeat.o(220124);
           }
         }, 0L);
-        AppMethodBeat.o(192245);
+        AppMethodBeat.o(220121);
       }
     });
-    com.tencent.mm.plugin.game.commlib.c.a.dTf().a("download_resume", new a.a()
+    com.tencent.mm.plugin.game.commlib.c.a.ewo().a("download_resume", new a.a()
     {
-      public final void cBm()
+      public final void cPQ()
       {
-        AppMethodBeat.i(192247);
-        com.tencent.mm.plugin.cdndownloader.g.a.cyh().postDelayed(new Runnable()
+        AppMethodBeat.i(219899);
+        com.tencent.mm.plugin.cdndownloader.g.a.cMC().postDelayed(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(192246);
+            AppMethodBeat.i(219761);
             PluginDownloader.access$100(PluginDownloader.this);
-            AppMethodBeat.o(192246);
+            AppMethodBeat.o(219761);
           }
         }, 0L);
-        AppMethodBeat.o(192247);
+        AppMethodBeat.o(219899);
       }
     });
-    com.tencent.mm.plugin.downloader.b.a.cBn();
+    com.tencent.mm.plugin.downloader.b.a.cPR();
     AppMethodBeat.o(88825);
   }
   
@@ -299,16 +326,16 @@ public class PluginDownloader
   {
     AppMethodBeat.i(88826);
     Log.i("MicroMsg.PluginDownloader", "onAccountRelease");
-    com.tencent.mm.plugin.downloader.e.a.cBo();
+    com.tencent.mm.plugin.downloader.e.a.cPS();
     appForegroundListener.dead();
-    com.tencent.mm.plugin.downloader.b.a.cBo();
+    com.tencent.mm.plugin.downloader.b.a.cPS();
     com.tencent.mm.plugin.downloader.a.c.clearCache();
     AppMethodBeat.o(88826);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.PluginDownloader
  * JD-Core Version:    0.7.0.1
  */

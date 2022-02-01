@@ -11,14 +11,14 @@ final class FacingCreateChatRoomAllInOneUI$1
   public final boolean onTimerExpired()
   {
     AppMethodBeat.i(27622);
-    FacingCreateChatRoomAllInOneUI.a(this.BoY);
+    FacingCreateChatRoomAllInOneUI.a(this.Hjr);
     AppMethodBeat.o(27622);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.ui.FacingCreateChatRoomAllInOneUI.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.kernel.f.c;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class PluginRoomSdk
@@ -15,7 +15,7 @@ public class PluginRoomSdk
   
   public void execute(g paramg) {}
   
-  public void onAccountInitialized(e.c paramc)
+  public void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(152753);
     Log.i("MicroMsg.PluginRoomSdk", "onAccountInitialized");

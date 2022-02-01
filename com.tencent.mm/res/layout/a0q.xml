@@ -5,5 +5,5 @@
         <TextView android:textSize="17.0sp" android:textColor="@color/BW_BG_100" android:gravity="center" android:id="@id/aim" android:layout_width="wrap_content" android:layout_height="32.0dip" android:text="@string/sz" android:layout_marginStart="@dimen/al4" />
         <Button android:textSize="17.0sp" android:id="@id/aj1" android:background="@drawable/ka" android:text="@string/vl" android:layout_marginEnd="@dimen/al4" android:layout_alignParentEnd="true" style="@style/ow" />
     </RelativeLayout>
-    <android.support.v7.widget.RecyclerView android:id="@id/ait" android:fadingEdge="vertical" android:fadingEdgeLength="@dimen/ce" android:layout_width="fill_parent" android:layout_height="300.0dip" android:layout_marginTop="@dimen/ct" android:layout_marginBottom="@dimen/ce" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/ait" android:fadingEdge="vertical" android:fadingEdgeLength="@dimen/ce" android:layout_width="fill_parent" android:layout_height="300.0dip" android:layout_marginTop="@dimen/ct" android:layout_marginBottom="@dimen/ce" />
 </merge>

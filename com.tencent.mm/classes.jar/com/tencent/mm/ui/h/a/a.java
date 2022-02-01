@@ -1,34 +1,38 @@
 package com.tencent.mm.ui.h.a;
 
-import android.os.Bundle;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.net.MalformedURLException;
 
 public final class a
 {
-  c Qju;
+  private static b XGC = null;
   
-  public a(c paramc)
+  public static void a(b paramb)
   {
-    this.Qju = paramc;
+    XGC = paramb;
   }
   
-  public static abstract interface a
+  public static void c(ImageView paramImageView, String paramString)
   {
-    public abstract void Tn(String paramString);
-    
-    public abstract void a(FileNotFoundException paramFileNotFoundException);
-    
-    public abstract void a(MalformedURLException paramMalformedURLException);
-    
-    public abstract void c(IOException paramIOException);
+    AppMethodBeat.i(142751);
+    if (XGC != null) {
+      XGC.c(paramImageView, paramString);
+    }
+    AppMethodBeat.o(142751);
+  }
+  
+  public static void d(ImageView paramImageView, String paramString)
+  {
+    AppMethodBeat.i(164172);
+    if (XGC != null) {
+      XGC.d(paramImageView, paramString);
+    }
+    AppMethodBeat.o(164172);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.h.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.model.internal.i;
-import com.tencent.mm.plugin.finder.storage.ao;
+import com.tencent.mm.plugin.finder.feed.model.internal.k;
+import com.tencent.mm.plugin.finder.storage.an;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/model/FinderMsgFriendObjectRecommendLike;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;", "mention", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "(Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;)V", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemType", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderMsgFollowApply;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;", "mention", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "(Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;)V", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemType", "plugin-finder_release"})
 public final class az
   extends a
 {
-  public az(ao paramao)
+  public az(an paraman)
   {
-    super(paramao);
-    AppMethodBeat.i(248824);
-    AppMethodBeat.o(248824);
+    super(paraman);
+    AppMethodBeat.i(279068);
+    AppMethodBeat.o(279068);
   }
   
-  public final int a(i parami)
+  public final int a(k paramk)
   {
-    AppMethodBeat.i(248823);
-    p.h(parami, "obj");
-    AppMethodBeat.o(248823);
+    AppMethodBeat.i(279067);
+    p.k(paramk, "obj");
+    AppMethodBeat.o(279067);
     return 0;
   }
   
-  public final int cxn()
+  public final int bAQ()
   {
-    AppMethodBeat.i(248822);
+    AppMethodBeat.i(279066);
     int i = az.class.getName().hashCode();
-    AppMethodBeat.o(248822);
+    AppMethodBeat.o(279066);
     return i;
   }
 }

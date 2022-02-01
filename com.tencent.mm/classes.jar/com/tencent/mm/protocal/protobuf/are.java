@@ -3,52 +3,60 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class are
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int LBI;
+  public String fFa;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(168963);
+    AppMethodBeat.i(201165);
     if (paramInt == 0)
     {
-      ((g.a.a.c.a)paramVarArgs[0]).aM(1, this.LBI);
-      AppMethodBeat.o(168963);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = g.a.a.b.b.a.bu(1, this.LBI);
-      AppMethodBeat.o(168963);
-      return paramInt + 0;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
-        }
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.fFa != null) {
+        paramVarArgs.f(1, this.fFa);
       }
-      AppMethodBeat.o(168963);
+      AppMethodBeat.o(201165);
       return 0;
     }
-    if (paramInt == 3)
+    if (paramInt == 1) {
+      if (this.fFa == null) {
+        break label213;
+      }
+    }
+    label213:
+    for (paramInt = g.a.a.b.b.a.g(1, this.fFa) + 0;; paramInt = 0)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      are localare = (are)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      AppMethodBeat.o(201165);
+      return paramInt;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(168963);
-        return -1;
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
+        }
+        AppMethodBeat.o(201165);
+        return 0;
       }
-      localare.LBI = locala.UbS.zi();
-      AppMethodBeat.o(168963);
-      return 0;
+      if (paramInt == 3)
+      {
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        are localare = (are)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(201165);
+          return -1;
+        }
+        localare.fFa = locala.abFh.readString();
+        AppMethodBeat.o(201165);
+        return 0;
+      }
+      AppMethodBeat.o(201165);
+      return -1;
     }
-    AppMethodBeat.o(168963);
-    return -1;
   }
 }
 

@@ -9,19 +9,19 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.fav.a.g;
 import com.tencent.mm.plugin.fav.a.k;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.ar;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class p
 {
-  private static int Ic(int paramInt)
+  private static int LM(int paramInt)
   {
     if (paramInt == 1) {
       return 4;
@@ -47,7 +47,7 @@ public final class p
     return 2;
   }
   
-  public static void a(final Activity paramActivity, List<com.tencent.mm.plugin.fav.a.g> paramList, final a parama)
+  public static void a(final Activity paramActivity, List<g> paramList, final a parama)
   {
     AppMethodBeat.i(107060);
     if ((paramList == null) || (paramList.isEmpty()))
@@ -55,22 +55,22 @@ public final class p
       AppMethodBeat.o(107060);
       return;
     }
-    paramActivity = h.a(paramActivity, paramActivity.getString(2131759178), false, null);
-    com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
+    paramActivity = com.tencent.mm.ui.base.h.a(paramActivity, paramActivity.getString(s.i.favorite_delete_tips), false, null);
+    com.tencent.mm.kernel.h.aHJ().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(107055);
-        com.tencent.mm.plugin.fav.a.b.dD(this.tdE);
+        com.tencent.mm.plugin.fav.a.b.dJ(this.wJP);
         if (parama != null) {
-          parama.cVU();
+          parama.dla();
         }
         MMHandlerThread.postToMainThread(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(107053);
-            p.1.this.tcT.dismiss();
+            p.1.this.wJe.dismiss();
             AppMethodBeat.o(107053);
           }
           
@@ -88,7 +88,7 @@ public final class p
     AppMethodBeat.o(107060);
   }
   
-  public static void a(final Activity paramActivity, List<com.tencent.mm.plugin.fav.a.g> paramList, String paramString1, String paramString2, String paramString3)
+  public static void a(final Activity paramActivity, List<g> paramList, String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(107061);
     if ((paramList == null) || (paramList.isEmpty()))
@@ -106,7 +106,7 @@ public final class p
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      com.tencent.mm.plugin.fav.a.g localg = (com.tencent.mm.plugin.fav.a.g)paramList.next();
+      g localg = (g)paramList.next();
       if (!localk.u(localg)) {
         localLinkedList.add(localg);
       }
@@ -114,7 +114,7 @@ public final class p
     if (localLinkedList.isEmpty())
     {
       Log.i(paramString3, "after filter, nothing");
-      h.cD(paramActivity, paramActivity.getString(2131759312));
+      com.tencent.mm.ui.base.h.cO(paramActivity, paramActivity.getString(s.i.favorite_retransmit_tip));
       AppMethodBeat.o(107061);
       return;
     }
@@ -123,8 +123,8 @@ public final class p
       public final void run()
       {
         AppMethodBeat.i(107056);
-        this.tcT.dismiss();
-        com.tencent.mm.ui.widget.snackbar.b.r(paramActivity, paramActivity.getString(2131759157));
+        this.wJe.dismiss();
+        com.tencent.mm.ui.widget.snackbar.b.r(paramActivity, paramActivity.getString(s.i.fav_finish_sent));
         AppMethodBeat.o(107056);
       }
     });
@@ -139,7 +139,7 @@ public final class p
     if (Build.VERSION.SDK_INT >= 21)
     {
       localObject1 = localObject2;
-      if (!ao.isDarkMode()) {
+      if (!ar.isDarkMode()) {
         localObject1 = ActivityOptions.makeSceneTransitionAnimation(paramActivity, new Pair[0]).toBundle();
       }
     }
@@ -162,7 +162,7 @@ public final class p
     if (Build.VERSION.SDK_INT >= 21)
     {
       localObject1 = localObject2;
-      if (!ao.isDarkMode()) {
+      if (!ar.isDarkMode()) {
         localObject1 = ActivityOptions.makeSceneTransitionAnimation(paramActivity, new Pair[0]).toBundle();
       }
     }
@@ -177,7 +177,7 @@ public final class p
     AppMethodBeat.o(107058);
   }
   
-  public static boolean b(Context paramContext, int paramInt, com.tencent.mm.plugin.fav.ui.a.b paramb, com.tencent.mm.plugin.fav.a.g paramg)
+  public static boolean b(Context paramContext, int paramInt, com.tencent.mm.plugin.fav.ui.a.b paramb, g paramg)
   {
     int i = 0;
     AppMethodBeat.i(107059);
@@ -188,19 +188,19 @@ public final class p
       paramg.putExtra("scene_from", 1);
       paramg.putExtra("mutil_select_is_ret", true);
       Object localObject;
-      if (paramb.cWp() == 1)
+      if (paramb.dlw() == 1)
       {
-        localObject = (com.tencent.mm.plugin.fav.a.g)paramb.mE(false).get(0);
-        paramg.putExtra("select_fav_local_id", ((com.tencent.mm.plugin.fav.a.g)localObject).field_localId);
-        if (((com.tencent.mm.plugin.fav.a.g)localObject).tad) {
-          paramg.putExtra("select_fav_fake_local_id", ((com.tencent.mm.plugin.fav.a.g)localObject).dLb);
+        localObject = (g)paramb.nS(false).get(0);
+        paramg.putExtra("select_fav_local_id", ((g)localObject).field_localId);
+        if (((g)localObject).wGh) {
+          paramg.putExtra("select_fav_fake_local_id", ((g)localObject).fDQ);
         }
-        if ((localObject != null) && (Ic(((com.tencent.mm.plugin.fav.a.g)localObject).field_type) != -1)) {
-          paramg.putExtra("Retr_Msg_Type", Ic(((com.tencent.mm.plugin.fav.a.g)localObject).field_type));
+        if ((localObject != null) && (LM(((g)localObject).field_type) != -1)) {
+          paramg.putExtra("Retr_Msg_Type", LM(((g)localObject).field_type));
         }
-        if ((paramb.mE(false).get(0) != null) && (((com.tencent.mm.plugin.fav.a.g)paramb.mE(false).get(0)).field_type == 3))
+        if ((paramb.nS(false).get(0) != null) && (((g)paramb.nS(false).get(0)).field_type == 3))
         {
-          h.cD(paramContext, paramContext.getString(2131759312));
+          com.tencent.mm.ui.base.h.cO(paramContext, paramContext.getString(s.i.favorite_retransmit_tip));
           AppMethodBeat.o(107059);
           return false;
         }
@@ -209,16 +209,16 @@ public final class p
       {
         paramg.putExtra("Retr_Msg_Type", 17);
         localObject = new k();
-        paramb = paramb.mE(false).iterator();
+        paramb = paramb.nS(false).iterator();
         paramInt = i;
         while (paramb.hasNext()) {
-          if (!((k)localObject).u((com.tencent.mm.plugin.fav.a.g)paramb.next())) {
+          if (!((k)localObject).u((g)paramb.next())) {
             paramInt += 1;
           }
         }
         paramg.putExtra("select_fav_select_count", paramInt);
       }
-      com.tencent.mm.br.c.c(paramContext, ".ui.transmit.SelectConversationUI", paramg, 4105);
+      com.tencent.mm.by.c.d(paramContext, ".ui.transmit.SelectConversationUI", paramg, 4105);
       AppMethodBeat.o(107059);
       return true;
     }
@@ -231,17 +231,18 @@ public final class p
       if (paramg != null)
       {
         paramb.putExtra("select_fav_local_id", paramg.field_localId);
-        if (paramg.tad) {
-          paramb.putExtra("select_fav_fake_local_id", paramg.dLb);
+        if (paramg.wGh) {
+          paramb.putExtra("select_fav_fake_local_id", paramg.fDQ);
         }
         if (paramg.field_type == 19) {
           paramb.putExtra("appbrand_params", c.F(paramg));
         }
       }
-      if ((paramg != null) && (Ic(paramg.field_type) != -1)) {
-        paramb.putExtra("Retr_Msg_Type", Ic(paramg.field_type));
+      if ((paramg != null) && (LM(paramg.field_type) != -1)) {
+        paramb.putExtra("Retr_Msg_Type", LM(paramg.field_type));
       }
-      com.tencent.mm.br.c.c(paramContext, ".ui.transmit.SelectConversationUI", paramb, 4106);
+      paramb.putExtra("scene_from", 1);
+      com.tencent.mm.by.c.d(paramContext, ".ui.transmit.SelectConversationUI", paramb, 4106);
       AppMethodBeat.o(107059);
       return true;
     }
@@ -251,12 +252,12 @@ public final class p
   
   public static abstract interface a
   {
-    public abstract void cVU();
+    public abstract void dla();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.p
  * JD-Core Version:    0.7.0.1
  */

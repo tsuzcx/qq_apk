@@ -1,63 +1,117 @@
 package com.tencent.mm.plugin.appbrand.launching.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
-import com.tencent.mm.protocal.protobuf.fds;
-import com.tencent.mm.protocal.protobuf.fez;
+import com.tencent.mm.ak.a;
+import com.tencent.mm.an.c;
+import com.tencent.mm.an.c.a;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.cw.f;
+import com.tencent.mm.f.b.a.pt;
+import com.tencent.mm.f.b.a.pt.b;
+import com.tencent.mm.plugin.appbrand.launching.aw;
+import com.tencent.mm.plugin.appbrand.permission.AppRuntimeApiPermissionBundle;
+import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
+import com.tencent.mm.protocal.protobuf.ack;
+import com.tencent.mm.protocal.protobuf.fop;
+import com.tencent.mm.protocal.protobuf.foq;
+import com.tencent.mm.protocal.protobuf.for;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
 
 public final class d
+  extends c<foq>
 {
-  public static fez b(AppBrandLaunchReferrer paramAppBrandLaunchReferrer)
+  final String appId;
+  final int cBU;
+  final String cwP;
+  public volatile boolean pWG;
+  public volatile HashMap<String, AppRuntimeApiPermissionBundle> pYm;
+  private final aw pYo;
+  private final pt pYp;
+  final com.tencent.mm.an.d rr;
+  
+  public d(String paramString1, int paramInt, List<g> paramList, boolean paramBoolean, String paramString2, QualitySession paramQualitySession, aw paramaw, ack paramack)
   {
-    fez localfez = null;
-    AppMethodBeat.i(147319);
-    if (paramAppBrandLaunchReferrer == null)
+    AppMethodBeat.i(275089);
+    this.pWG = false;
+    this.pYm = new HashMap();
+    this.appId = paramString1;
+    this.cBU = paramInt;
+    this.cwP = paramString2;
+    this.pYo = paramaw;
+    this.pYp = com.tencent.mm.plugin.appbrand.report.quality.g.e(paramQualitySession);
+    Object localObject = this.pYp;
+    if (paramBoolean) {}
+    for (paramaw = pt.b.hhH;; paramaw = pt.b.hhI)
     {
-      AppMethodBeat.o(147319);
-      return null;
+      ((pt)localObject).hhC = paramaw;
+      this.pYp.gHC = com.tencent.mm.plugin.appbrand.report.quality.g.getNetworkType();
+      paramaw = new fop();
+      localObject = paramList.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        g localg = (g)((Iterator)localObject).next();
+        for localfor = new for();
+        localfor.appid = localg.appId;
+        localfor.ufE = localg.appType;
+        paramaw.ULx.add(localfor);
+      }
     }
-    if (2 == paramAppBrandLaunchReferrer.leo)
-    {
-      localfez = new fez();
-      localfez.KGX = paramAppBrandLaunchReferrer.appId;
-      localfez.Url = paramAppBrandLaunchReferrer.url;
-    }
-    AppMethodBeat.o(147319);
-    return localfez;
+    paramaw.RPD = ((ack)Objects.requireNonNull(paramack));
+    localObject = new d.a();
+    ((d.a)localObject).funcId = 3827;
+    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaattr/wxajsapiinfo";
+    ((d.a)localObject).lBU = paramaw;
+    ((d.a)localObject).lBV = new foq();
+    paramaw = ((d.a)localObject).bgN();
+    this.rr = paramaw;
+    c(paramaw);
+    Log.i("MicroMsg.AppBrand.CgiWxaJsApiInfo", "<init> appId:%s, versionType:%d, appIdList:%s, sync:%b, sessionId:%s, instanceId:%s, source:%s", new Object[] { paramString1, Integer.valueOf(paramInt), bM(paramList), Boolean.valueOf(paramBoolean), paramString2, paramQualitySession.cBH, a.a(paramack) });
+    AppMethodBeat.o(275089);
   }
   
-  public static fds c(AppBrandLaunchReferrer paramAppBrandLaunchReferrer)
+  private static String bM(List<g> paramList)
   {
-    fds localfds1 = null;
-    AppMethodBeat.i(147320);
-    if (paramAppBrandLaunchReferrer == null)
+    AppMethodBeat.i(275090);
+    StringBuilder localStringBuilder = new StringBuilder("[");
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      AppMethodBeat.o(147320);
-      return null;
+      g localg = (g)paramList.next();
+      localStringBuilder.append("{appId:").append(localg.appId).append(", appType:").append(localg.appType).append("}");
     }
-    if (1 == paramAppBrandLaunchReferrer.leo)
+    localStringBuilder.append("]");
+    paramList = localStringBuilder.toString();
+    AppMethodBeat.o(275090);
+    return paramList;
+  }
+  
+  public final f<c.a<foq>> bhW()
+  {
+    try
     {
-      localfds1 = new fds();
-      localfds1.MjN = paramAppBrandLaunchReferrer.appId;
-      localfds1.LEg = paramAppBrandLaunchReferrer.sourceType;
-      localfds1.Nzn = paramAppBrandLaunchReferrer.leq;
+      AppMethodBeat.i(275092);
+      long l = Util.nowMilliSecond();
+      this.pYp.CZ(l);
+      f localf = super.bhW();
+      AppMethodBeat.o(275092);
+      return localf;
     }
-    fds localfds2 = localfds1;
-    if (paramAppBrandLaunchReferrer.sourceType != 0)
+    finally
     {
-      localfds2 = localfds1;
-      if (localfds1 == null) {
-        localfds2 = new fds();
-      }
-      localfds2.LEg = paramAppBrandLaunchReferrer.sourceType;
+      localObject = finally;
+      throw localObject;
     }
-    AppMethodBeat.o(147320);
-    return localfds2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.a.d
  * JD-Core Version:    0.7.0.1
  */

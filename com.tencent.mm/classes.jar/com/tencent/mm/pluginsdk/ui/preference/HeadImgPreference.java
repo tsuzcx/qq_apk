@@ -9,15 +9,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class HeadImgPreference
   extends Preference
 {
-  private Bitmap Kpt;
+  private View.OnClickListener Fms;
+  private Bitmap Rqi;
+  private ImageView bwJ;
   private int height;
-  private ImageView kc;
-  private View.OnClickListener zHh;
   
   public HeadImgPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,7 +31,7 @@ public final class HeadImgPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(31853);
     this.height = -1;
-    setLayoutResource(2131495538);
+    setLayoutResource(R.i.mm_preference);
     AppMethodBeat.o(31853);
   }
   
@@ -37,18 +39,18 @@ public final class HeadImgPreference
   {
     AppMethodBeat.i(31855);
     super.onBindView(paramView);
-    if (this.kc == null) {
-      this.kc = ((ImageView)paramView.findViewById(2131302570));
+    if (this.bwJ == null) {
+      this.bwJ = ((ImageView)paramView.findViewById(R.h.image_headimg));
     }
-    if (this.zHh != null) {
-      this.kc.setOnClickListener(this.zHh);
+    if (this.Fms != null) {
+      this.bwJ.setOnClickListener(this.Fms);
     }
-    if (this.Kpt != null)
+    if (this.Rqi != null)
     {
-      this.kc.setImageBitmap(this.Kpt);
-      this.Kpt = null;
+      this.bwJ.setImageBitmap(this.Rqi);
+      this.Rqi = null;
     }
-    paramView = (LinearLayout)paramView.findViewById(2131304721);
+    paramView = (LinearLayout)paramView.findViewById(R.h.mm_preference_ll_id);
     if (this.height != -1) {
       paramView.setMinimumHeight(this.height);
     }
@@ -59,10 +61,10 @@ public final class HeadImgPreference
   {
     AppMethodBeat.i(31854);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2131495563, localViewGroup);
-    this.kc = ((ImageView)paramViewGroup.findViewById(2131302570));
+    View.inflate(this.mContext, R.i.eiS, localViewGroup);
+    this.bwJ = ((ImageView)paramViewGroup.findViewById(R.h.image_headimg));
     AppMethodBeat.o(31854);
     return paramViewGroup;
   }

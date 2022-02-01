@@ -1,6 +1,6 @@
 package com.tencent.liteav.beauty;
 
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 
@@ -8,19 +8,21 @@ public class NativeLoad
 {
   private static final String TAG = "NativeLoad";
   
+  static
+  {
+    AppMethodBeat.i(234841);
+    h.f();
+    OnLoadBeauty();
+    AppMethodBeat.o(234841);
+  }
+  
   private NativeLoad()
   {
     AppMethodBeat.i(15207);
-    OnLoadBeauty();
     AppMethodBeat.o(15207);
   }
   
   public static native void OnLoadBeauty();
-  
-  public static NativeLoad getInstance()
-  {
-    return a.a;
-  }
   
   public static native void nativeClearQueue();
   
@@ -37,23 +39,10 @@ public class NativeLoad
   public static native int nativeLoadGLProgram(int paramInt);
   
   public static native void nativeglTexImage2D(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, byte[] paramArrayOfByte, int paramInt9);
-  
-  static class a
-  {
-    public static final NativeLoad a;
-    
-    static
-    {
-      AppMethodBeat.i(15160);
-      f.f();
-      a = new NativeLoad(null);
-      AppMethodBeat.o(15160);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.NativeLoad
  * JD-Core Version:    0.7.0.1
  */

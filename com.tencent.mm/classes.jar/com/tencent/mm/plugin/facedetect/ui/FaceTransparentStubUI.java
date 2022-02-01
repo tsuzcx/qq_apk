@@ -4,15 +4,17 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.sh;
-import com.tencent.mm.g.a.sh.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.a.ti;
+import com.tencent.mm.f.a.ti.b;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.a;
 
-@com.tencent.mm.ui.base.a(3)
+@a(3)
 public class FaceTransparentStubUI
   extends MMActivity
 {
@@ -39,24 +41,24 @@ public class FaceTransparentStubUI
     Object localObject = getIntent().getBundleExtra("KEY_EXTRAS");
     if (!((Bundle)localObject).containsKey("k_user_name"))
     {
-      g.aAf();
-      if (com.tencent.mm.kernel.a.azo()) {
-        ((Bundle)localObject).putString("k_user_name", z.aUb());
+      h.aHE();
+      if (b.aGL()) {
+        ((Bundle)localObject).putString("k_user_name", z.bdc());
       }
     }
-    paramBundle = new sh();
-    paramBundle.dYV.context = this;
-    paramBundle.dYV.dYQ = i;
-    paramBundle.dYV.extras = ((Bundle)localObject);
+    paramBundle = new ti();
+    paramBundle.fSO.context = this;
+    paramBundle.fSO.fSJ = i;
+    paramBundle.fSO.extras = ((Bundle)localObject);
     EventCenter.instance.publish(paramBundle);
-    Log.i("MicroMsg.FaceTransparentStubUI", "hy: start face detect event result: %b", new Object[] { Boolean.valueOf(paramBundle.dYW.dYN) });
-    if (!paramBundle.dYW.dYN)
+    Log.i("MicroMsg.FaceTransparentStubUI", "hy: start face detect event result: %b", new Object[] { Boolean.valueOf(paramBundle.fSP.fSG) });
+    if (!paramBundle.fSP.fSG)
     {
-      if (paramBundle.dYW.extras == null) {
+      if (paramBundle.fSP.extras == null) {
         break label181;
       }
       localObject = new Intent();
-      ((Intent)localObject).putExtras(paramBundle.dYW.extras);
+      ((Intent)localObject).putExtras(paramBundle.fSP.extras);
       setResult(1, (Intent)localObject);
     }
     for (;;)

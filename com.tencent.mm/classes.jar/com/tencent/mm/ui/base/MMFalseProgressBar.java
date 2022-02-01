@@ -17,17 +17,17 @@ public class MMFalseProgressBar
   private MMHandler mHandler;
   private boolean mIsStart;
   private float mProgress;
-  private float olt;
-  private float olu;
-  private float olv;
-  private float olw;
-  public boolean olx;
+  private float rnQ;
+  private float rnR;
+  private float rnS;
+  private float rnT;
+  public boolean rnU;
   
   public MMFalseProgressBar(Context paramContext)
   {
     this(paramContext, null);
     AppMethodBeat.i(141887);
-    gKF();
+    hJD();
     AppMethodBeat.o(141887);
   }
   
@@ -42,7 +42,7 @@ public class MMFalseProgressBar
     AppMethodBeat.i(141888);
     this.mIsStart = false;
     this.mProgress = 0.0F;
-    this.olx = true;
+    this.rnU = true;
     this.mHandler = new MMHandler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
@@ -69,26 +69,26 @@ public class MMFalseProgressBar
       }
     };
     setMax(1000);
-    gKF();
+    hJD();
     AppMethodBeat.o(141888);
   }
   
-  private void gKF()
+  private void hJD()
   {
     AppMethodBeat.i(141891);
     if (NetStatusUtil.isWifiOr4G(MMApplicationContext.getContext()))
     {
-      this.olt = 4.0F;
-      this.olu = 1.0F;
-      this.olv = 0.3F;
-      this.olw = 50.0F;
+      this.rnQ = 4.0F;
+      this.rnR = 1.0F;
+      this.rnS = 0.3F;
+      this.rnT = 50.0F;
       AppMethodBeat.o(141891);
       return;
     }
-    this.olt = 2.0F;
-    this.olu = 0.5F;
-    this.olv = 0.15F;
-    this.olw = 50.0F;
+    this.rnQ = 2.0F;
+    this.rnR = 0.5F;
+    this.rnS = 0.15F;
+    this.rnT = 50.0F;
     AppMethodBeat.o(141891);
   }
   
@@ -106,7 +106,7 @@ public class MMFalseProgressBar
   {
     AppMethodBeat.i(141889);
     Log.d("MicroMsg.MMFalseProgressBar", "[cpan] start");
-    if (!this.olx)
+    if (!this.rnU)
     {
       AppMethodBeat.o(141889);
       return;
@@ -117,7 +117,7 @@ public class MMFalseProgressBar
       return;
     }
     this.mIsStart = true;
-    gKF();
+    hJD();
     if (this.mHandler != null)
     {
       this.mHandler.sendEmptyMessage(1000);
@@ -128,7 +128,7 @@ public class MMFalseProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMFalseProgressBar
  * JD-Core Version:    0.7.0.1
  */

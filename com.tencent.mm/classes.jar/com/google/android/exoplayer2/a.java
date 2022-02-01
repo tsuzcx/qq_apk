@@ -7,44 +7,44 @@ import com.google.android.exoplayer2.source.n;
 public abstract class a
   implements r, s
 {
-  protected t bbE;
-  protected n bbF;
-  protected long bbG;
-  protected boolean bbH;
-  protected boolean bbI;
-  protected int index;
-  protected int state;
+  private t aLc;
+  private n aLd;
+  private long aLe;
+  private boolean aLf;
+  private boolean aLg;
+  private int index;
+  private int state;
   private final int trackType;
   
   public a(int paramInt)
   {
     this.trackType = paramInt;
-    this.bbH = true;
+    this.aLf = true;
   }
   
   protected final int a(k paramk, e parame, boolean paramBoolean)
   {
-    int i = this.bbF.b(paramk, parame, paramBoolean);
+    int i = this.aLd.b(paramk, parame, paramBoolean);
     if (i == -4)
     {
-      if (parame.ud())
+      if (parame.rV())
       {
-        this.bbH = true;
-        if (this.bbI) {
+        this.aLf = true;
+        if (this.aLg) {
           return -4;
         }
         return -3;
       }
-      parame.timeUs += this.bbG;
+      parame.timeUs += this.aLe;
     }
     for (;;)
     {
       return i;
       if (i == -5)
       {
-        parame = paramk.bdF;
-        if (parame.bdC != 9223372036854775807L) {
-          paramk.bdF = parame.D(parame.bdC + this.bbG);
+        parame = paramk.aNg;
+        if (parame.aNc != 9223372036854775807L) {
+          paramk.aNg = parame.G(parame.aNc + this.aLe);
         }
       }
     }
@@ -58,9 +58,9 @@ public abstract class a
     for (boolean bool = true;; bool = false)
     {
       com.google.android.exoplayer2.i.a.checkState(bool);
-      this.bbE = paramt;
+      this.aLc = paramt;
       this.state = 1;
-      aN(paramBoolean);
+      aL(paramBoolean);
       a(paramArrayOfFormat, paramn, paramLong2);
       a(paramLong1, paramBoolean);
       return;
@@ -71,21 +71,19 @@ public abstract class a
   
   public final void a(Format[] paramArrayOfFormat, n paramn, long paramLong)
   {
-    if (!this.bbI) {}
+    if (!this.aLg) {}
     for (boolean bool = true;; bool = false)
     {
       com.google.android.exoplayer2.i.a.checkState(bool);
-      this.bbF = paramn;
-      this.bbH = false;
-      this.bbG = paramLong;
+      this.aLd = paramn;
+      this.aLf = false;
+      this.aLe = paramLong;
       a(paramArrayOfFormat, paramLong);
       return;
     }
   }
   
-  protected void aN(boolean paramBoolean) {}
-  
-  public void c(int paramInt, Object paramObject) {}
+  protected void aL(boolean paramBoolean) {}
   
   public final void disable()
   {
@@ -95,12 +93,19 @@ public abstract class a
     {
       com.google.android.exoplayer2.i.a.checkState(bool);
       this.state = 0;
-      this.bbF = null;
-      this.bbI = false;
-      te();
+      this.aLd = null;
+      this.aLg = false;
+      qU();
       return;
       bool = false;
     }
+  }
+  
+  public void e(int paramInt, Object paramObject) {}
+  
+  protected final int getIndex()
+  {
+    return this.index;
   }
   
   public final int getState()
@@ -113,28 +118,63 @@ public abstract class a
     return this.trackType;
   }
   
-  protected void onStarted() {}
-  
-  protected void onStopped() {}
-  
-  public final s sW()
+  public final s qK()
   {
     return this;
   }
   
-  public i sX()
+  public i qL()
   {
     return null;
   }
   
-  public final n sY()
+  public final n qM()
   {
-    return this.bbF;
+    return this.aLd;
   }
   
-  public final boolean sZ()
+  public final boolean qN()
   {
-    return this.bbH;
+    return this.aLf;
+  }
+  
+  public final void qO()
+  {
+    this.aLg = true;
+  }
+  
+  public final boolean qP()
+  {
+    return this.aLg;
+  }
+  
+  public final void qQ()
+  {
+    this.aLd.tq();
+  }
+  
+  public int qR()
+  {
+    return 0;
+  }
+  
+  protected void qS() {}
+  
+  protected void qT() {}
+  
+  protected void qU() {}
+  
+  protected final t qV()
+  {
+    return this.aLc;
+  }
+  
+  protected final boolean qW()
+  {
+    if (this.aLf) {
+      return this.aLg;
+    }
+    return this.aLd.isReady();
   }
   
   public final void setIndex(int paramInt)
@@ -150,7 +190,7 @@ public abstract class a
     {
       com.google.android.exoplayer2.i.a.checkState(bool);
       this.state = 2;
-      onStarted();
+      qS();
       return;
       bool = false;
     }
@@ -163,43 +203,26 @@ public abstract class a
     {
       com.google.android.exoplayer2.i.a.checkState(bool);
       this.state = 1;
-      onStopped();
+      qT();
       return;
     }
   }
   
-  public final void ta()
+  public final void w(long paramLong)
   {
-    this.bbI = true;
-  }
-  
-  public final boolean tb()
-  {
-    return this.bbI;
-  }
-  
-  public final void tc()
-  {
-    this.bbF.vs();
-  }
-  
-  public int td()
-  {
-    return 0;
-  }
-  
-  protected void te() {}
-  
-  public final void u(long paramLong)
-  {
-    this.bbI = false;
-    this.bbH = false;
+    this.aLg = false;
+    this.aLf = false;
     a(paramLong, false);
+  }
+  
+  protected final void x(long paramLong)
+  {
+    this.aLd.ab(paramLong - this.aLe);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.a
  * JD-Core Version:    0.7.0.1
  */

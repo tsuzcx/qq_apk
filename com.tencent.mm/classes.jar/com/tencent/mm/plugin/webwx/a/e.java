@@ -1,41 +1,41 @@
 package com.tencent.mm.plugin.webwx.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.akx;
-import com.tencent.mm.protocal.protobuf.aky;
+import com.tencent.mm.protocal.protobuf.aly;
+import com.tencent.mm.protocal.protobuf.alz;
 
 public final class e
   extends q
   implements m
 {
+  public boolean Ecm;
   private i callback;
-  public final d iUB;
-  public boolean yAX;
+  public final d lKU;
   
   public e(String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(30178);
-    this.yAX = paramBoolean;
+    this.Ecm = paramBoolean;
     d.a locala = new d.a();
-    akx localakx = new akx();
-    aky localaky = new aky();
-    locala.iLN = localakx;
-    locala.iLO = localaky;
+    aly localaly = new aly();
+    alz localalz = new alz();
+    locala.lBU = localaly;
+    locala.lBV = localalz;
     locala.uri = "/cgi-bin/micromsg-bin/extdeviceloginconfirmok";
     locala.funcId = 972;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    localakx.LtA = paramString1;
-    localakx.LtL = paramString2;
-    localakx.LtN = paramBoolean;
-    this.iUB = locala.aXF();
+    localaly.SvX = paramString1;
+    localaly.Swi = paramString2;
+    localaly.Swk = paramBoolean;
+    this.lKU = locala.bgN();
     AppMethodBeat.o(30178);
   }
   
@@ -43,7 +43,7 @@ public final class e
   {
     AppMethodBeat.i(30179);
     this.callback = parami;
-    int i = dispatch(paramg, this.iUB, this);
+    int i = dispatch(paramg, this.lKU, this);
     AppMethodBeat.o(30179);
     return i;
   }
@@ -62,7 +62,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webwx.a.e
  * JD-Core Version:    0.7.0.1
  */

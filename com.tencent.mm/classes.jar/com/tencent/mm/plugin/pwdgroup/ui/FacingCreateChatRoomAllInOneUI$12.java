@@ -12,14 +12,14 @@ final class FacingCreateChatRoomAllInOneUI$12
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(27633);
-    this.BoY.finish();
+    this.Hjr.finish();
     AppMethodBeat.o(27633);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.ui.FacingCreateChatRoomAllInOneUI.12
  * JD-Core Version:    0.7.0.1
  */

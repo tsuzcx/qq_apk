@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.fts.ui;
 
 import android.content.Context;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.fts.a.a.c;
 import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.a.m;
@@ -23,28 +23,28 @@ public abstract class a
   extends b
   implements l
 {
-  protected String query;
-  HashSet<String> wWX = new HashSet();
-  private long wXS;
-  private com.tencent.mm.plugin.fts.a.a.a wXa;
-  public List<e.a> wZO = Collections.synchronizedList(new LinkedList());
+  HashSet<String> BIS = new HashSet();
+  private com.tencent.mm.plugin.fts.a.a.a BIV;
+  private long BJO;
+  public List<e.a> BLN = Collections.synchronizedList(new LinkedList());
+  private String query;
   
   public a(Context paramContext, e.b paramb, int paramInt)
   {
     super(paramContext, paramb, paramInt);
   }
   
-  public final List<c> GE(long paramLong)
+  public final List<c> NG(long paramLong)
   {
     ArrayList localArrayList = new ArrayList();
-    if (this.wXS > 0L)
+    if (this.BJO > 0L)
     {
       int i = 0;
-      if (i < this.wZO.size())
+      if (i < this.BLN.size())
       {
-        e.a locala = (e.a)this.wZO.get(i);
-        int k = locala.mWl.size();
-        int m = locala.wXI;
+        e.a locala = (e.a)this.BLN.get(i);
+        int k = locala.pWR.size();
+        int m = locala.BJE;
         int j = 0;
         c localc;
         while (j < m + k)
@@ -52,45 +52,45 @@ public abstract class a
           localc = b(j, locala);
           if (localc != null)
           {
-            localc.wVZ = (this.wXS - paramLong);
-            localc.position = (locala.wXD + j + 1);
+            localc.BHU = (this.BJO - paramLong);
+            localc.position = (locala.BJz + j + 1);
             localArrayList.add(localc);
           }
           j += 1;
         }
-        if (locala.tuG)
+        if (locala.xcp)
         {
           localc = new c();
-          localc.dUb = String.valueOf(locala.hashCode());
+          localc.fND = String.valueOf(locala.hashCode());
           j = locala.businessType;
           if (j != -3) {
             break label233;
           }
-          localc.dUm = 4;
+          localc.fNO = 4;
         }
         for (;;)
         {
           if (localc != null)
           {
-            localc.wVZ = (this.wXS - paramLong);
-            localc.position = locala.wXF;
+            localc.BHU = (this.BJO - paramLong);
+            localc.position = locala.BJB;
             localArrayList.add(localc);
           }
           i += 1;
           break;
           label233:
           if (j == -4) {
-            localc.dUm = 3;
+            localc.fNO = 3;
           } else if (j == -1) {
-            localc.dUm = 12;
+            localc.fNO = 12;
           } else if (j == -2) {
-            localc.dUm = 11;
+            localc.fNO = 11;
           } else if (j == -6) {
-            localc.dUm = 10;
+            localc.fNO = 10;
           } else if (j == -13) {
-            localc.dUm = 19;
+            localc.fNO = 19;
           } else if (j == -7) {
-            localc.dUm = 5;
+            localc.fNO = 5;
           } else {
             localc = null;
           }
@@ -100,21 +100,21 @@ public abstract class a
     return localArrayList;
   }
   
-  public int Nn(int paramInt)
+  public int SB(int paramInt)
   {
-    int k = this.wZO.size();
+    int k = this.BLN.size();
     int i = 0;
     if (i < k)
     {
-      e.a locala = (e.a)this.wZO.get(i);
-      locala.wXD = paramInt;
+      e.a locala = (e.a)this.BLN.get(i);
+      locala.BJz = paramInt;
       int j = paramInt;
-      if (locala.wXE) {
+      if (locala.BJA) {
         j = paramInt + 1;
       }
-      paramInt = j + (locala.mWl.size() + locala.wXI);
-      locala.wXF = paramInt;
-      if (!locala.tuG) {
+      paramInt = j + (locala.pWR.size() + locala.BJE);
+      locala.BJB = paramInt;
+      if (!locala.xcp) {
         break label100;
       }
       paramInt += 1;
@@ -128,16 +128,16 @@ public abstract class a
     }
   }
   
-  public final com.tencent.mm.plugin.fts.a.d.a.a No(int paramInt)
+  public final com.tencent.mm.plugin.fts.a.d.a.a SC(int paramInt)
   {
-    int j = this.wZO.size();
+    int j = this.BLN.size();
     int i = 0;
     e.a locala;
     Object localObject;
     if (i < j)
     {
-      locala = (e.a)this.wZO.get(i);
-      if ((locala.wXD == paramInt) && (locala.wXE)) {
+      locala = (e.a)this.BLN.get(i);
+      if ((locala.BJz == paramInt) && (locala.BJA)) {
         localObject = c(paramInt, locala);
       }
     }
@@ -145,19 +145,19 @@ public abstract class a
     {
       if (localObject != null)
       {
-        if (((com.tencent.mm.plugin.fts.a.d.a.a)localObject).position == locala.wXF) {
-          ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).wXK = false;
+        if (((com.tencent.mm.plugin.fts.a.d.a.a)localObject).position == locala.BJB) {
+          ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).BJG = false;
         }
-        ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).mve = this.mve;
-        ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).wWd = locala.wWd;
-        ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).rjr = locala.businessType;
+        ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).ptD = eqY();
+        ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).BHY = locala.BHY;
+        ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).uMD = locala.businessType;
         return localObject;
-        if ((locala.wXF == paramInt) && (locala.tuG))
+        if ((locala.BJB == paramInt) && (locala.xcp))
         {
           localObject = d(paramInt, locala);
           continue;
         }
-        if (paramInt <= locala.wXF) {
+        if (paramInt <= locala.BJB) {
           localObject = a(paramInt, locala);
         }
       }
@@ -184,10 +184,10 @@ public abstract class a
   
   public final void a(String paramString, MMHandler paramMMHandler, HashSet<String> paramHashSet, long paramLong)
   {
-    dOG();
+    eqZ();
     clearData();
     this.query = paramString;
-    this.wXa = a(paramMMHandler, paramHashSet);
+    this.BIV = a(paramMMHandler, paramHashSet);
   }
   
   protected c b(int paramInt, e.a parama)
@@ -202,22 +202,22 @@ public abstract class a
     default: 
       return;
     case 0: 
-      Log.i("MicroMsg.FTS.BaseNativeFTSUIUnit", "search type %d | result %d", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramk.wXb.size()) });
-      if ((this.query == null) || (!this.query.equals(paramk.wTn.query)))
+      Log.i("MicroMsg.FTS.BaseNativeFTSUIUnit", "search type %d | result %d", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramk.BIW.size()) });
+      if ((this.query == null) || (!this.query.equals(paramk.BFk.query)))
       {
-        Log.i("MicroMsg.FTS.BaseNativeFTSUIUnit", "Native Search: Not Same query origin:%s current:%s", new Object[] { paramk.wTn.query, this.query });
+        Log.i("MicroMsg.FTS.BaseNativeFTSUIUnit", "Native Search: Not Same query origin:%s current:%s", new Object[] { paramk.BFk.query, this.query });
         return;
       }
-      this.wXS = System.currentTimeMillis();
-      this.wWX = paramk.wTn.wWX;
-      a(paramk, this.wWX);
+      this.BJO = System.currentTimeMillis();
+      this.BIS = paramk.BFk.BIS;
+      a(paramk, this.BIS);
     }
     do
     {
-      this.wXC.a(this, paramk.wTn.query);
+      eqX().a(this, paramk.BFk.query);
       return;
-      Log.i("MicroMsg.FTS.BaseNativeFTSUIUnit", "onSearchError: type=%d | errorCode=%d | originQuery=%s", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramk.resultCode), paramk.wTn.query });
-    } while (paramk.wTn.query.equals(this.query));
+      Log.i("MicroMsg.FTS.BaseNativeFTSUIUnit", "onSearchError: type=%d | errorCode=%d | originQuery=%s", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramk.resultCode), paramk.BFk.query });
+    } while (paramk.BFk.query.equals(this.query));
     Log.i("MicroMsg.FTS.BaseNativeFTSUIUnit", "Native Search: Not Same Query");
   }
   
@@ -229,64 +229,64 @@ public abstract class a
   public final void clearData()
   {
     this.query = null;
-    this.wWX.clear();
-    this.wZO.clear();
+    this.BIS.clear();
+    this.BLN.clear();
   }
   
   protected com.tencent.mm.plugin.fts.ui.a.n d(int paramInt, e.a parama)
   {
     com.tencent.mm.plugin.fts.ui.a.n localn = new com.tencent.mm.plugin.fts.ui.a.n(paramInt);
-    localn.wXM = (parama.wXF - parama.wXD);
-    localn.wXT = true;
+    localn.BJI = (parama.BJB - parama.BJz);
+    localn.BJP = true;
     return localn;
   }
   
-  public final void dOG()
+  public final void eqZ()
   {
-    if (this.wXa != null)
+    if (this.BIV != null)
     {
-      ((com.tencent.mm.plugin.fts.a.n)g.ah(com.tencent.mm.plugin.fts.a.n.class)).cancelSearchTask(this.wXa);
-      this.wXa = null;
+      ((com.tencent.mm.plugin.fts.a.n)h.ag(com.tencent.mm.plugin.fts.a.n.class)).cancelSearchTask(this.BIV);
+      this.BIV = null;
     }
   }
   
-  public final LinkedList<Integer> dOH()
+  public final LinkedList<Integer> era()
   {
     LinkedList localLinkedList = new LinkedList();
-    int j = this.wZO.size();
+    int j = this.BLN.size();
     int i = 0;
     while (i < j)
     {
-      e.a locala = (e.a)this.wZO.get(i);
-      if (locala.wXD != 2147483647) {
-        localLinkedList.add(Integer.valueOf(locala.wXD));
+      e.a locala = (e.a)this.BLN.get(i);
+      if (locala.BJz != 2147483647) {
+        localLinkedList.add(Integer.valueOf(locala.BJz));
       }
       i += 1;
     }
     return localLinkedList;
   }
   
-  public final int dOI()
+  public final int erb()
   {
-    return dPa();
+    return eru();
   }
   
-  public final long dOJ()
+  public final long erc()
   {
-    return this.wXS;
+    return this.BJO;
   }
   
-  public final int dPa()
+  public final int eru()
   {
-    int m = this.wZO.size();
+    int m = this.BLN.size();
     int j = 0;
     int k = 0;
     while (j < m)
     {
-      Iterator localIterator = ((e.a)this.wZO.get(j)).mWl.iterator();
+      Iterator localIterator = ((e.a)this.BLN.get(j)).pWR.iterator();
       if (localIterator.hasNext())
       {
-        String str = Util.nullAs(((m)localIterator.next()).wVX, "");
+        String str = Util.nullAs(((m)localIterator.next()).BHS, "");
         int i = -1;
         switch (str.hashCode())
         {
@@ -317,10 +317,15 @@ public abstract class a
     }
     return k;
   }
+  
+  public final String getQuery()
+  {
+    return this.query;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a
  * JD-Core Version:    0.7.0.1
  */

@@ -14,6 +14,7 @@ import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.os.Process;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.animation.Animation;
@@ -23,6 +24,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetect.FaceProNative;
+import com.tencent.mm.plugin.facedetect.a.e;
+import com.tencent.mm.plugin.facedetect.a.g;
+import com.tencent.mm.plugin.facedetect.a.i;
 import com.tencent.mm.plugin.facedetect.d.b.b;
 import com.tencent.mm.plugin.facedetect.d.b.c;
 import com.tencent.mm.plugin.facedetect.model.FaceCharacteristicsResult;
@@ -53,35 +57,44 @@ public class FaceDetectUI
   extends MMActivity
   implements com.tencent.mm.plugin.facedetect.c.f, com.tencent.mm.plugin.facedetect.views.a
 {
-  private String goe = null;
+  private String iSn = null;
   private ServiceConnection mConnection = null;
-  boolean rzT = false;
-  private int sPn = -1;
-  h sTC = null;
-  private b sTD = null;
-  private boolean sTE = false;
-  private boolean sTF = false;
-  private View sTG = null;
-  private RelativeLayout sTH;
-  FaceDetectView sTI = null;
-  FaceScanRect sTJ = null;
-  private TextView sTK = null;
-  private Button sTL = null;
-  private a sTM = null;
-  private FaceTutorial sTN = null;
-  private com.tencent.mm.plugin.facedetect.c.a sTO = null;
-  private FaceDetectProcessService sTP = null;
-  private boolean sTQ = false;
-  private boolean sTR = false;
-  private com.tencent.mm.plugin.facedetect.views.c sTS = null;
-  private String sTT;
+  boolean vfA = false;
   private PowerManager.WakeLock wakeLock = null;
+  private int wvi = -1;
+  private boolean wzA = false;
+  private boolean wzB = false;
+  private View wzC = null;
+  private RelativeLayout wzD;
+  FaceDetectView wzE = null;
+  FaceScanRect wzF = null;
+  private TextView wzG = null;
+  private Button wzH = null;
+  private a wzI = null;
+  private FaceTutorial wzJ = null;
+  private com.tencent.mm.plugin.facedetect.c.a wzK = null;
+  private FaceDetectProcessService wzL = null;
+  private boolean wzM = false;
+  private boolean wzN = false;
+  private com.tencent.mm.plugin.facedetect.views.c wzO = null;
+  private String wzP;
+  h wzy = null;
+  private b wzz = null;
   
   private void b(int paramInt1, int paramInt2, String paramString, Bundle paramBundle)
   {
     AppMethodBeat.i(104008);
     setResult(-1, c(paramInt1, paramInt2, paramString, paramBundle));
     AppMethodBeat.o(104008);
+  }
+  
+  private void bQm()
+  {
+    AppMethodBeat.i(104007);
+    Log.i("MicroMsg.FaceDetectUI", "alvinluo onUserCancel");
+    b.b localb = this.wzE.getCurrentMotionCancelInfo();
+    a(1, localb.errCode, localb.errMsg, null);
+    AppMethodBeat.o(104007);
   }
   
   private static Intent c(int paramInt1, int paramInt2, String paramString, Bundle paramBundle)
@@ -100,36 +113,27 @@ public class FaceDetectUI
     return paramString;
   }
   
-  private void cKu()
+  private void cZe()
   {
     AppMethodBeat.i(103993);
-    Log.i("MicroMsg.FaceDetectUI", "alvinluo unbindService, mBound: %b", new Object[] { Boolean.valueOf(this.sTQ) });
-    if (this.sTQ)
+    Log.i("MicroMsg.FaceDetectUI", "alvinluo unbindService, mBound: %b", new Object[] { Boolean.valueOf(this.wzM) });
+    if (this.wzM)
     {
       Log.i("MicroMsg.FaceDetectUI", "alvinluo unbindService");
-      com.tencent.mm.br.c.a(this.mConnection, "tools");
-      this.sTQ = false;
+      com.tencent.mm.by.c.a(this.mConnection, "tools");
+      this.wzM = false;
     }
     AppMethodBeat.o(103993);
   }
   
-  private void cTA()
-  {
-    AppMethodBeat.i(104007);
-    Log.i("MicroMsg.FaceDetectUI", "alvinluo onUserCancel");
-    b.b localb = this.sTI.getCurrentMotionCancelInfo();
-    a(1, localb.errCode, localb.errMsg, null);
-    AppMethodBeat.o(104007);
-  }
-  
-  private void cTC()
+  private void diH()
   {
     AppMethodBeat.i(104002);
-    this.rzT = false;
-    this.sTI.mv(false);
+    this.vfA = false;
+    this.wzE.nI(false);
     Log.i("MicroMsg.FaceDetectUI", "hy: stopped scan");
-    this.sTE = false;
-    this.sTI.sVP.sVv.stopPreview();
+    this.wzA = false;
+    this.wzE.wBN.wBt.TL();
     Log.i("MicroMsg.FaceDetectUI", "hy: stopped preview");
     AppMethodBeat.o(104002);
   }
@@ -140,17 +144,17 @@ public class FaceDetectUI
     Log.i("MicroMsg.FaceDetectUI", "onProcessingError errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(4), Integer.valueOf(paramInt), paramString1 });
     Bundle localBundle = new Bundle();
     localBundle.putString("show_err_msg", paramString2);
-    cTC();
+    diH();
     a(4, paramInt, paramString1, localBundle);
     AppMethodBeat.o(104004);
   }
   
-  public final void A(int paramInt, final String paramString)
+  public final void B(int paramInt, final String paramString)
   {
     boolean bool = true;
     AppMethodBeat.i(104005);
     Log.i("MicroMsg.FaceDetectUI", "hy: face detect result: %d", new Object[] { Integer.valueOf(paramInt) });
-    if (FaceCharacteristicsResult.HH(paramInt))
+    if (FaceCharacteristicsResult.Lr(paramInt))
     {
       if (paramInt == 3)
       {
@@ -166,7 +170,7 @@ public class FaceDetectUI
       }
       if (paramInt == 7)
       {
-        w(90009, "audio permission not granted", MMApplicationContext.getContext().getString(2131763876));
+        w(90009, "audio permission not granted", MMApplicationContext.getContext().getString(a.i.permission_microphone_request_again_msg));
         AppMethodBeat.o(104005);
         return;
       }
@@ -174,16 +178,16 @@ public class FaceDetectUI
       AppMethodBeat.o(104005);
       return;
     }
-    paramString = this.sTC;
-    if (paramString.rmJ >= paramString.sQS - 1)
+    paramString = this.wzy;
+    if (paramString.uPV >= paramString.wwO - 1)
     {
       paramInt = 1;
       if (paramInt == 0) {
         break label247;
       }
       Log.i("MicroMsg.FaceDetectUI", "hy: collect data ok");
-      this.sTI.mv(true);
-      paramString = this.sTI.getPreviewBm();
+      this.wzE.nI(true);
+      paramString = this.wzE.getPreviewBm();
       if (paramString != null) {
         break label242;
       }
@@ -213,8 +217,8 @@ public class FaceDetectUI
             public final void run()
             {
               AppMethodBeat.i(103986);
-              if (FaceDetectUI.7.this.sTV != null) {
-                FaceDetectUI.7.this.sTV.onFinish();
+              if (FaceDetectUI.7.this.wzR != null) {
+                FaceDetectUI.7.this.wzR.onFinish();
               }
               AppMethodBeat.o(103986);
             }
@@ -230,20 +234,20 @@ public class FaceDetectUI
       bool = false;
     }
     label247:
-    paramString = this.sTC;
-    g localg = com.tencent.mm.plugin.facedetect.model.f.sQM.sQN.sSO;
-    if (localg.sQQ == null) {
+    paramString = this.wzy;
+    g localg = com.tencent.mm.plugin.facedetect.model.f.wwI.wwJ.wyK;
+    if (localg.wwM == null) {
       Log.e("MicroMsg.FaceDetectNativeManager", "hy: move to next motion no instance");
     }
     for (;;)
     {
-      paramString.rmJ += 1;
-      paramInt = h.cTd().type;
+      paramString.uPV += 1;
+      paramInt = h.dii().type;
       Log.i("MicroMsg.FaceDetectUI", "hy: detect ok. start next: %d", new Object[] { Integer.valueOf(paramInt) });
-      if (!h.cTd().sQZ) {
+      if (!h.dii().wwV) {
         break;
       }
-      this.sTJ.b(new Animation.AnimationListener()
+      this.wzF.b(new Animation.AnimationListener()
       {
         public final void onAnimationEnd(Animation paramAnonymousAnimation)
         {
@@ -259,18 +263,18 @@ public class FaceDetectUI
       AppMethodBeat.o(104005);
       return;
       Log.i("MicroMsg.FaceDetectNativeManager", "hy: start move next motion");
-      localg.sQQ.engineNextMotion();
+      localg.wwM.engineNextMotion();
     }
     Log.i("MicroMsg.FaceDetectUI", "hy: detect ok. start next: %d", new Object[] { Integer.valueOf(paramInt) });
-    cTB();
+    diG();
     AppMethodBeat.o(104005);
   }
   
-  public final void HQ(int paramInt)
+  public final void LA(int paramInt)
   {
     AppMethodBeat.i(104006);
     if (paramInt == 1) {
-      this.sTJ.b(null);
+      this.wzF.b(null);
     }
     AppMethodBeat.o(104006);
   }
@@ -279,11 +283,11 @@ public class FaceDetectUI
   {
     AppMethodBeat.i(103998);
     Log.i("MicroMsg.FaceDetectUI", "finishWithResult errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if ((paramInt1 != 0) && (paramInt2 != 0) && (com.tencent.mm.plugin.facedetect.e.a.cTF().isStarted()) && (com.tencent.mm.plugin.facedetect.e.a.cTF().sUx)) {
-      com.tencent.mm.plugin.facedetect.e.a.cTF().cTH();
+    if ((paramInt1 != 0) && (paramInt2 != 0) && (com.tencent.mm.plugin.facedetect.e.a.diK().isStarted()) && (com.tencent.mm.plugin.facedetect.e.a.diK().wAu)) {
+      com.tencent.mm.plugin.facedetect.e.a.diK().diM();
     }
     Bundle localBundle = new Bundle();
-    localBundle.putParcelable("key_parcelable_reporter", FaceDetectReporter.cTe());
+    localBundle.putParcelable("key_parcelable_reporter", FaceDetectReporter.dij());
     if (paramBundle != null) {
       localBundle.putAll(paramBundle);
     }
@@ -292,50 +296,50 @@ public class FaceDetectUI
     AppMethodBeat.o(103998);
   }
   
-  final void cTB()
+  final void diG()
   {
     AppMethodBeat.i(103999);
-    if (this.rzT)
+    if (this.vfA)
     {
       Log.i("MicroMsg.FaceDetectUI", "hy: start capture face");
-      FaceDetectView localFaceDetectView = this.sTI;
-      Rect localRect = new Rect(this.sTJ.getLeft(), this.sTJ.getTop(), this.sTJ.getRight(), this.sTJ.getBottom());
-      h.a locala = h.cTd();
+      FaceDetectView localFaceDetectView = this.wzE;
+      Rect localRect = new Rect(this.wzF.getLeft(), this.wzF.getTop(), this.wzF.getRight(), this.wzF.getBottom());
+      h.a locala = h.dii();
       if (locala.type == 100)
       {
         AppMethodBeat.o(103999);
         return;
       }
-      if (localFaceDetectView.sVU != null) {
-        localFaceDetectView.sVU.cTs();
+      if (localFaceDetectView.wBS != null) {
+        localFaceDetectView.wBS.dix();
       }
-      localFaceDetectView.idt = false;
+      localFaceDetectView.kSa = false;
       localFaceDetectView.isPaused = false;
-      localFaceDetectView.sWa = Util.currentTicks();
-      localFaceDetectView.sVY = locala.sQW;
-      localFaceDetectView.sVX = locala.ktN;
+      localFaceDetectView.wBY = Util.currentTicks();
+      localFaceDetectView.wBW = locala.wwS;
+      localFaceDetectView.wBV = locala.nlB;
       Log.i("MicroMsg.FaceDetectView", "carson logic");
-      Log.i("MicroMsg.FaceDetectView", "item.hintStr" + locala.ktN);
-      localFaceDetectView.sQX = locala.sQX;
-      localFaceDetectView.sVV = true;
-      localFaceDetectView.sVZ = locala.sRa;
-      localFaceDetectView.sVU = b.c.a(locala);
-      if (localFaceDetectView.sVU != null)
+      Log.i("MicroMsg.FaceDetectView", "item.hintStr" + locala.nlB);
+      localFaceDetectView.wwT = locala.wwT;
+      localFaceDetectView.wBT = true;
+      localFaceDetectView.wBX = locala.wwW;
+      localFaceDetectView.wBS = b.c.a(locala);
+      if (localFaceDetectView.wBS != null)
       {
-        if (localFaceDetectView.sVR != null) {
-          localFaceDetectView.sVR.removeAllViews();
+        if (localFaceDetectView.wBP != null) {
+          localFaceDetectView.wBP.removeAllViews();
         }
-        if (localFaceDetectView.sVS != null) {
-          localFaceDetectView.sVS.removeAllViews();
+        if (localFaceDetectView.wBQ != null) {
+          localFaceDetectView.wBQ.removeAllViews();
         }
-        localFaceDetectView.sVU.a(localFaceDetectView.getContext(), localFaceDetectView.sVR, localFaceDetectView.sVS);
-        Log.d("MicroMsg.FaceDetectView", "mBusinessTip : " + localFaceDetectView.sTT);
-        localFaceDetectView.sVU.setBusinessTip(localFaceDetectView.sTT);
+        localFaceDetectView.wBS.a(localFaceDetectView.getContext(), localFaceDetectView.wBP, localFaceDetectView.wBQ);
+        Log.d("MicroMsg.FaceDetectView", "mBusinessTip : " + localFaceDetectView.wzP);
+        localFaceDetectView.wBS.setBusinessTip(localFaceDetectView.wzP);
       }
-      if (localFaceDetectView.sVP != null) {
-        localFaceDetectView.sVP.a(localRect, locala.sQU);
+      if (localFaceDetectView.wBN != null) {
+        localFaceDetectView.wBN.a(localRect, locala.wwQ);
       }
-      localFaceDetectView.sVW = false;
+      localFaceDetectView.wBU = false;
     }
     AppMethodBeat.o(103999);
   }
@@ -344,61 +348,50 @@ public class FaceDetectUI
   {
     AppMethodBeat.i(104011);
     Log.i("MicroMsg.FaceDetectUI", "alvinluo finish");
-    if (this.sTM != null) {
-      if (this.sTM.sTs.getVisibility() == 8) {
-        break label221;
-      }
-    }
-    label221:
-    for (int i = 1;; i = 0)
+    if (this.wzI != null)
     {
-      if (i != 0)
-      {
-        a locala = this.sTM;
-        Log.printInfoStack("MicroMsg.FaceDetectJumper", "dismiss jumper", new Object[0]);
-        a.sTu.cancel();
-        if (locala.sTs.getVisibility() == 0) {
-          MMHandlerThread.postToMainThread(new a.1(locala));
-        }
-      }
-      if (this.sTN != null) {
-        this.sTN.dismiss();
-      }
-      Log.i("MicroMsg.FaceDetectUI", "alvinluo FaceDetectUI release");
-      Log.i("MicroMsg.FaceDetectUI", "alvinluo releaseFaceDetect");
-      if (!this.sTF)
-      {
-        this.sTS = null;
-        this.sTF = true;
-        if (this.sTD.sTY)
-        {
-          cTC();
-          this.sTI.sVP.sVv.cTO();
-        }
-        if ((this.wakeLock != null) && (this.wakeLock.isHeld()))
-        {
-          this.wakeLock.release();
-          this.wakeLock = null;
-        }
-        ThreadPool.post(new FaceDetectUI.2(this), "Face_active_gc");
-      }
-      cKu();
-      super.finish();
       AppMethodBeat.o(104011);
-      return;
+      throw null;
     }
+    if (this.wzJ != null) {
+      this.wzJ.dismiss();
+    }
+    Log.i("MicroMsg.FaceDetectUI", "alvinluo FaceDetectUI release");
+    Log.i("MicroMsg.FaceDetectUI", "alvinluo releaseFaceDetect");
+    if (!this.wzB)
+    {
+      this.wzO = null;
+      this.wzB = true;
+      if (this.wzz.wzU)
+      {
+        diH();
+        this.wzE.wBN.wBt.diU();
+      }
+      if ((this.wakeLock != null) && (this.wakeLock.isHeld()))
+      {
+        PowerManager.WakeLock localWakeLock = this.wakeLock;
+        com.tencent.mm.hellhoundlib.a.a.b(localWakeLock, "com/tencent/mm/plugin/facedetect/ui/FaceDetectUI", "releaseWakeLock", "()V", "android/os/PowerManager$WakeLock_EXEC_", "release", "()V");
+        localWakeLock.release();
+        com.tencent.mm.hellhoundlib.a.a.c(localWakeLock, "com/tencent/mm/plugin/facedetect/ui/FaceDetectUI", "releaseWakeLock", "()V", "android/os/PowerManager$WakeLock_EXEC_", "release", "()V");
+        this.wakeLock = null;
+      }
+      ThreadPool.post(new FaceDetectUI.2(this), "Face_active_gc");
+    }
+    cZe();
+    super.finish();
+    AppMethodBeat.o(104011);
   }
   
   public int getLayoutId()
   {
-    return 2131494089;
+    return a.g.face_recognize_ui;
   }
   
   public void onBackPressed()
   {
     AppMethodBeat.i(104012);
     Log.i("MicroMsg.FaceDetectUI", "alvinluo onBackPressed and cancel");
-    cTA();
+    bQm();
     AppMethodBeat.o(104012);
   }
   
@@ -407,67 +400,80 @@ public class FaceDetectUI
     AppMethodBeat.i(103992);
     super.onCreate(paramBundle);
     getWindow().addFlags(2097280);
-    this.goe = getIntent().getStringExtra("k_user_name");
-    this.sPn = getIntent().getIntExtra("scene", -1);
-    this.sTT = getIntent().getStringExtra("business_tips");
+    this.iSn = getIntent().getStringExtra("k_user_name");
+    this.wvi = getIntent().getIntExtra("scene", -1);
+    this.wzP = getIntent().getStringExtra("business_tips");
     paramBundle = (FaceDetectReporter)getIntent().getBundleExtra("key_reporter_bundle").getParcelable("key_parcelable_reporter");
     Object localObject;
     long l;
     if (paramBundle != null)
     {
-      localObject = FaceDetectReporter.cTe();
+      localObject = FaceDetectReporter.dij();
       Log.v("MicroMsg.FaceDetectReporter", "alvinluo setReporter, stack: %s", new Object[] { Util.getStack().toString() });
-      ((FaceDetectReporter)localObject).sRu = paramBundle.sRu;
-      ((FaceDetectReporter)localObject).sRt = paramBundle.sRt;
+      ((FaceDetectReporter)localObject).wxq = paramBundle.wxq;
+      ((FaceDetectReporter)localObject).wxp = paramBundle.wxp;
       ((FaceDetectReporter)localObject).sessionId = paramBundle.sessionId;
-      ((FaceDetectReporter)localObject).sRw = paramBundle.sRw;
-      ((FaceDetectReporter)localObject).sRx = paramBundle.sRx;
+      ((FaceDetectReporter)localObject).wxs = paramBundle.wxs;
+      ((FaceDetectReporter)localObject).wxt = paramBundle.wxt;
       l = ((FaceDetectReporter)localObject).sessionId;
-      if (((FaceDetectReporter)localObject).sRu == null) {
+      if (((FaceDetectReporter)localObject).wxq == null) {
         break label466;
       }
     }
     label466:
-    for (paramBundle = ((FaceDetectReporter)localObject).sRu.toString();; paramBundle = "null")
+    for (paramBundle = ((FaceDetectReporter)localObject).wxq.toString();; paramBundle = "null")
     {
       Log.v("MicroMsg.FaceDetectReporter", "alvinluo sessionId: %d, info: %s", new Object[] { Long.valueOf(l), paramBundle });
-      paramBundle = com.tencent.mm.plugin.facedetect.c.b.sQr;
-      this.sTO = com.tencent.mm.plugin.facedetect.c.b.a(this, this, this.sPn, getIntent().getExtras());
+      paramBundle = com.tencent.mm.plugin.facedetect.c.b.wwo;
+      this.wzK = com.tencent.mm.plugin.facedetect.c.b.a(this, this, this.wvi, getIntent().getExtras());
       getWindow().setFlags(1024, 1024);
-      this.sTL = ((Button)findViewById(2131303137));
-      this.sTL.setOnClickListener(new FaceDetectUI.1(this));
-      this.sTG = findViewById(2131300319);
-      this.sTG.setVisibility(8);
-      this.sTH = ((RelativeLayout)findViewById(2131300346));
-      this.sTJ = ((FaceScanRect)findViewById(2131300335));
-      this.sTI = ((FaceDetectView)findViewById(2131300334));
-      this.sTK = ((TextView)findViewById(2131300151));
-      this.sTI.setCallback(this);
-      this.sTI.setBusinessTip(this.sTT);
-      paramBundle = this.sTI;
-      localObject = this.sTH;
-      ViewGroup localViewGroup = this.sTJ.getCenterHintHolder();
-      paramBundle.sVR = ((ViewGroup)localObject);
-      paramBundle.sVS = localViewGroup;
-      this.sTI.setErrTextView(this.sTK);
-      this.sTI.u(true, this.goe);
-      this.sTJ.setOnRefreshRectListener(new FaceScanRect.b()
+      this.wzH = ((Button)findViewById(a.e.left_btn));
+      this.wzH.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(103977);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/facedetect/ui/FaceDetectUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          Log.i("MicroMsg.FaceDetectUI", "hy: user cancelled with left button");
+          FaceDetectUI.a(FaceDetectUI.this);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetect/ui/FaceDetectUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(103977);
+        }
+      });
+      this.wzC = findViewById(a.e.face_detect_cover);
+      this.wzC.setVisibility(8);
+      this.wzD = ((RelativeLayout)findViewById(a.e.face_hold_area));
+      this.wzF = ((FaceScanRect)findViewById(a.e.face_fixed_rect));
+      this.wzE = ((FaceDetectView)findViewById(a.e.face_detect_view));
+      this.wzG = ((TextView)findViewById(a.e.err_msg_tv));
+      this.wzE.setCallback(this);
+      this.wzE.setBusinessTip(this.wzP);
+      paramBundle = this.wzE;
+      localObject = this.wzD;
+      ViewGroup localViewGroup = this.wzF.getCenterHintHolder();
+      paramBundle.wBP = ((ViewGroup)localObject);
+      paramBundle.wBQ = localViewGroup;
+      this.wzE.setErrTextView(this.wzG);
+      this.wzE.y(true, this.iSn);
+      this.wzF.setOnRefreshRectListener(new FaceScanRect.b()
       {
         public final void onRefresh()
         {
           AppMethodBeat.i(103979);
           Object localObject = FaceDetectUI.c(FaceDetectUI.this);
           RectF localRectF = new RectF(FaceDetectUI.b(FaceDetectUI.this).getLeft(), FaceDetectUI.b(FaceDetectUI.this).getTop(), FaceDetectUI.b(FaceDetectUI.this).getRight(), FaceDetectUI.b(FaceDetectUI.this).getBottom());
-          localObject = ((FaceDetectView)localObject).sVQ;
-          ((FaceDetectDecorView)localObject).sVL = true;
-          ((FaceDetectDecorView)localObject).sVM = true;
-          ((FaceDetectDecorView)localObject).sVN = localRectF;
+          localObject = ((FaceDetectView)localObject).wBO;
+          ((FaceDetectDecorView)localObject).wBJ = true;
+          ((FaceDetectDecorView)localObject).wBK = true;
+          ((FaceDetectDecorView)localObject).wBL = localRectF;
           ((FaceDetectDecorView)localObject).invalidate();
           AppMethodBeat.o(103979);
         }
       });
-      this.sTJ.setVisibility(4);
-      this.sTD = new b((byte)0);
+      this.wzF.setVisibility(4);
+      this.wzz = new b((byte)0);
       AppMethodBeat.o(103992);
       return;
     }
@@ -492,10 +498,13 @@ public class FaceDetectUI
     if (!this.wakeLock.isHeld())
     {
       Log.i("MicroMsg.FaceDetectUI", "alvinluo acquire wakeLock");
-      this.wakeLock.acquire();
+      localObject = this.wakeLock;
+      com.tencent.mm.hellhoundlib.a.a.b(localObject, "com/tencent/mm/plugin/facedetect/ui/FaceDetectUI", "acquireWakeLock", "()V", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "()V");
+      ((PowerManager.WakeLock)localObject).acquire();
+      com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/facedetect/ui/FaceDetectUI", "acquireWakeLock", "()V", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "()V");
     }
-    Intent localIntent = new Intent(this, FaceDetectProcessService.class);
-    localIntent.putExtra("key_face_service_connection_from", 2);
+    Object localObject = new Intent(this, FaceDetectProcessService.class);
+    ((Intent)localObject).putExtra("key_face_service_connection_from", 2);
     this.mConnection = new ServiceConnection()
     {
       public final void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
@@ -504,11 +513,11 @@ public class FaceDetectUI
         Log.i("MicroMsg.FaceDetectUI", "alvinluo service connected %s", new Object[] { paramAnonymousComponentName });
         FaceDetectUI.a(FaceDetectUI.this, true);
         paramAnonymousComponentName = (FaceDetectProcessService.a)paramAnonymousIBinder;
-        FaceDetectUI.a(FaceDetectUI.this, paramAnonymousComponentName.sSR);
-        paramAnonymousComponentName = com.tencent.mm.plugin.facedetect.model.f.sQM;
+        FaceDetectUI.a(FaceDetectUI.this, paramAnonymousComponentName.wyN);
+        paramAnonymousComponentName = com.tencent.mm.plugin.facedetect.model.f.wwI;
         paramAnonymousIBinder = FaceDetectUI.d(FaceDetectUI.this);
         Log.i("MicroMsg.FaceDetectManager", "alvinluo bindService process name: %s, hashCode: %d", new Object[] { Util.getProcessNameByPid(MMApplicationContext.getContext(), Process.myPid()), Integer.valueOf(paramAnonymousComponentName.hashCode()) });
-        paramAnonymousComponentName.sQN = paramAnonymousIBinder;
+        paramAnonymousComponentName.wwJ = paramAnonymousIBinder;
         Log.i("MicroMsg.FaceDetectUI", "alvinluo FaceDetectUI service hashCode: %d", new Object[] { Integer.valueOf(FaceDetectUI.d(FaceDetectUI.this).hashCode()) });
         FaceDetectUI.e(FaceDetectUI.this);
         AppMethodBeat.o(103980);
@@ -523,7 +532,7 @@ public class FaceDetectUI
       }
     };
     Log.i("MicroMsg.FaceDetectUI", "alvinluo bindService");
-    com.tencent.mm.br.c.a(localIntent, this.mConnection, "tools");
+    com.tencent.mm.by.c.a((Intent)localObject, this.mConnection, "tools");
     AppMethodBeat.o(103994);
   }
   
@@ -532,8 +541,8 @@ public class FaceDetectUI
     AppMethodBeat.i(103995);
     super.onStop();
     Log.i("MicroMsg.FaceDetectUI", "hy: onStop, finish");
-    cKu();
-    if (!this.sTR)
+    cZe();
+    if (!this.wzN)
     {
       a(1, 90006, "cancel with on stop", null);
       AppMethodBeat.o(103995);
@@ -556,18 +565,18 @@ public class FaceDetectUI
   
   final class b
   {
-    private boolean sTX = true;
-    boolean sTY = false;
-    private boolean sTZ = true;
-    private final boolean sUa = true;
+    private boolean wzT = true;
+    boolean wzU = false;
+    private boolean wzV = true;
+    private final boolean wzW = true;
     
     private b() {}
     
-    public final void cTD()
+    public final void diI()
     {
       try
       {
-        this.sTY = true;
+        this.wzU = true;
         return;
       }
       finally
@@ -577,13 +586,13 @@ public class FaceDetectUI
       }
     }
     
-    final void cTE()
+    final void diJ()
     {
       try
       {
         AppMethodBeat.i(103990);
         Log.i("MicroMsg.FaceDetectUI", "toString: %s", new Object[] { toString() });
-        if ((this.sTX) && (this.sTY) && (this.sTZ)) {
+        if ((this.wzT) && (this.wzU) && (this.wzV)) {
           FaceDetectUI.l(FaceDetectUI.this).setVisibility(0);
         }
         AppMethodBeat.o(103990);
@@ -596,7 +605,7 @@ public class FaceDetectUI
     {
       try
       {
-        this.sTY = false;
+        this.wzU = false;
         return;
       }
       finally
@@ -609,7 +618,7 @@ public class FaceDetectUI
     public final String toString()
     {
       AppMethodBeat.i(103991);
-      String str = "InitHandler{isCgiInitDone=" + this.sTX + ", isCameraInitDone=" + this.sTY + ", isLightInitDone=true, isLibraryInitDone=" + this.sTZ + '}';
+      String str = "InitHandler{isCgiInitDone=" + this.wzT + ", isCameraInitDone=" + this.wzU + ", isLightInitDone=true, isLibraryInitDone=" + this.wzV + '}';
       AppMethodBeat.o(103991);
       return str;
     }

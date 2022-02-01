@@ -8,10 +8,10 @@ public class MultiTalkGroupMember
   implements Parcelable
 {
   public static final Parcelable.Creator<MultiTalkGroupMember> CREATOR = new Parcelable.Creator() {};
-  public int RGf;
-  public String RHb = "";
-  public String RHc = "";
-  public int bDZ;
+  public int ZhL;
+  public String ZiH = "";
+  public String ZiI = "";
+  public int bnA;
   public int status;
   
   public int describeContents()
@@ -21,35 +21,35 @@ public class MultiTalkGroupMember
   
   public String toString()
   {
-    return "MultiTalkGroupMember [usrName=" + this.RHb + ", inviteUsrName=" + this.RHc + ", status=" + this.status + ", reason=" + this.bDZ + ", inviteTime=" + this.RGf + "]";
+    return "MultiTalkGroupMember [usrName=" + this.ZiH + ", inviteUsrName=" + this.ZiI + ", status=" + this.status + ", reason=" + this.bnA + ", inviteTime=" + this.ZhL + "]";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    if (this.RHb == null)
+    if (this.ZiH == null)
     {
       str = "";
       paramParcel.writeString(str);
-      if (this.RHc != null) {
+      if (this.ZiI != null) {
         break label63;
       }
     }
     label63:
-    for (String str = "";; str = this.RHc)
+    for (String str = "";; str = this.ZiI)
     {
       paramParcel.writeString(str);
       paramParcel.writeInt(this.status);
-      paramParcel.writeInt(this.bDZ);
-      paramParcel.writeInt(this.RGf);
+      paramParcel.writeInt(this.bnA);
+      paramParcel.writeInt(this.ZhL);
       return;
-      str = this.RHb;
+      str = this.ZiH;
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.pb.talkroom.sdk.MultiTalkGroupMember
  * JD-Core Version:    0.7.0.1
  */

@@ -12,23 +12,27 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.ak.a.e;
+import com.tencent.mm.plugin.ak.a.f;
+import com.tencent.mm.plugin.ak.a.g;
+import com.tencent.mm.plugin.ak.a.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.aa;
+import com.tencent.mm.ui.ad;
 
 public class ScannerFlashSwitcher
   extends LinearLayout
 {
-  private ImageView COa;
-  private TextView COb;
-  private boolean COc;
-  public boolean VC;
-  boolean ddZ;
+  private ImageView ITC;
+  private TextView ITD;
+  private boolean ITE;
+  boolean dic;
+  public boolean gZ;
   
   public ScannerFlashSwitcher(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(91061);
-    this.COc = false;
+    this.ITE = false;
     init();
     AppMethodBeat.o(91061);
   }
@@ -37,7 +41,7 @@ public class ScannerFlashSwitcher
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(91062);
-    this.COc = false;
+    this.ITE = false;
     init();
     AppMethodBeat.o(91062);
   }
@@ -45,30 +49,30 @@ public class ScannerFlashSwitcher
   private void init()
   {
     AppMethodBeat.i(91063);
-    aa.jQ(getContext()).inflate(2131496158, this, true);
-    this.COa = ((ImageView)findViewById(2131301575));
-    this.COb = ((TextView)findViewById(2131301571));
-    this.COc = true;
+    ad.kS(getContext()).inflate(a.f.scanner_flash_switcher, this, true);
+    this.ITC = ((ImageView)findViewById(a.e.flash_switcher));
+    this.ITD = ((TextView)findViewById(a.e.flash_open_hint));
+    this.ITE = true;
     AppMethodBeat.o(91063);
   }
   
-  public final void eRm()
+  public final void fEm()
   {
     AppMethodBeat.i(91066);
     Log.i("MicroMsg.ScannerFlashSwitcher", "openFlashStatus");
-    this.VC = true;
-    this.COa.setImageResource(2131691436);
-    this.COb.setText(2131764911);
+    this.gZ = true;
+    this.ITC.setImageResource(a.g.scanner_flash_open_on);
+    this.ITD.setText(a.h.scan_flash_close_hint);
     AppMethodBeat.o(91066);
   }
   
-  public final void eRn()
+  public final void fEn()
   {
     AppMethodBeat.i(91067);
     Log.i("MicroMsg.ScannerFlashSwitcher", "closeFlashStatus");
-    this.VC = false;
-    this.COa.setImageResource(2131691435);
-    this.COb.setText(2131764912);
+    this.gZ = false;
+    this.ITC.setImageResource(a.g.scanner_flash_open_normal);
+    this.ITD.setText(a.h.scan_flash_open_hint);
     AppMethodBeat.o(91067);
   }
   
@@ -77,9 +81,9 @@ public class ScannerFlashSwitcher
     AppMethodBeat.i(91065);
     Log.i("MicroMsg.ScannerFlashSwitcher", "hide");
     setEnabled(false);
-    this.ddZ = false;
-    this.COa.animate().alpha(0.0F).setDuration(500L);
-    this.COb.animate().alpha(0.0F).setDuration(500L).setListener(new AnimatorListenerAdapter()
+    this.dic = false;
+    this.ITC.animate().alpha(0.0F).setDuration(500L);
+    this.ITD.animate().alpha(0.0F).setDuration(500L).setListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
@@ -88,21 +92,21 @@ public class ScannerFlashSwitcher
         AppMethodBeat.o(91060);
       }
     });
-    this.VC = false;
+    this.gZ = false;
     AppMethodBeat.o(91065);
   }
   
   public final void show()
   {
     AppMethodBeat.i(91064);
-    Log.i("MicroMsg.ScannerFlashSwitcher", "show, isFirstShow: %s", new Object[] { Boolean.valueOf(this.COc) });
-    this.ddZ = true;
-    if (this.COc)
+    Log.i("MicroMsg.ScannerFlashSwitcher", "show, isFirstShow: %s", new Object[] { Boolean.valueOf(this.ITE) });
+    this.dic = true;
+    if (this.ITE)
     {
-      this.COa.setAlpha(0.0F);
-      this.COb.setAlpha(0.0F);
+      this.ITC.setAlpha(0.0F);
+      this.ITD.setAlpha(0.0F);
       setVisibility(0);
-      this.COb.animate().alpha(1.0F).setListener(null).setDuration(500L);
+      this.ITD.animate().alpha(1.0F).setListener(null).setDuration(500L);
       ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
       localValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
@@ -127,7 +131,7 @@ public class ScannerFlashSwitcher
         }
       });
       localValueAnimator.start();
-      this.COc = false;
+      this.ITE = false;
     }
     for (;;)
     {
@@ -135,14 +139,14 @@ public class ScannerFlashSwitcher
       AppMethodBeat.o(91064);
       return;
       setVisibility(0);
-      this.COb.animate().alpha(1.0F).setDuration(500L).setListener(null).start();
-      this.COa.animate().alpha(1.0F).setDuration(500L).setListener(null).start();
+      this.ITD.animate().alpha(1.0F).setDuration(500L).setListener(null).start();
+      this.ITC.animate().alpha(1.0F).setDuration(500L).setListener(null).start();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.ScannerFlashSwitcher
  * JD-Core Version:    0.7.0.1
  */

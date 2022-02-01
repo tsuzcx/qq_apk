@@ -3,45 +3,44 @@ package com.tencent.mm.wlogcat.b;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.StatFs;
-import com.tencent.f.i;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 import com.tencent.mm.xlog.app.XLogSetup;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public final class b
 {
-  private static final b RwF;
-  private Runnable RwD;
-  private final long RwG;
-  private final long RwH;
-  private final long RwI;
-  private boolean RwJ;
-  private boolean RwK;
-  private Runnable RwL;
-  public HandlerThread RwM;
-  public Handler RwN;
+  private static final b YYg;
+  private Runnable YYe;
+  private final long YYh;
+  private final long YYi;
+  private final long YYj;
+  private boolean YYk;
+  private boolean YYl;
+  private Runnable YYm;
+  public HandlerThread YYn;
+  public Handler YYo;
   
   static
   {
-    AppMethodBeat.i(224062);
-    RwF = new b();
-    AppMethodBeat.o(224062);
+    AppMethodBeat.i(189343);
+    YYg = new b();
+    AppMethodBeat.o(189343);
   }
   
   private b()
   {
-    AppMethodBeat.i(224058);
-    this.RwG = 60000L;
-    this.RwH = 524288000L;
-    this.RwI = 6442450944L;
-    this.RwJ = true;
-    this.RwK = true;
-    this.RwD = new Runnable()
+    AppMethodBeat.i(189321);
+    this.YYh = 60000L;
+    this.YYi = 524288000L;
+    this.YYj = 6442450944L;
+    this.YYk = true;
+    this.YYl = true;
+    this.YYe = new Runnable()
     {
       /* Error */
       public final void run()
@@ -50,7 +49,7 @@ public final class b
         //   0: ldc 22
         //   2: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
         //   5: aload_0
-        //   6: getfield 14	com/tencent/mm/wlogcat/b/b$1:RwO	Lcom/tencent/mm/wlogcat/b/b;
+        //   6: getfield 14	com/tencent/mm/wlogcat/b/b$1:YYp	Lcom/tencent/mm/wlogcat/b/b;
         //   9: invokestatic 32	com/tencent/mm/wlogcat/b/b:a	(Lcom/tencent/mm/wlogcat/b/b;)Z
         //   12: ifne +16 -> 28
         //   15: ldc 34
@@ -75,7 +74,7 @@ public final class b
         //   51: aload_3
         //   52: aastore
         //   53: invokestatic 68	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-        //   56: invokestatic 71	com/tencent/mm/wlogcat/b/b:hij	()Ljava/lang/String;
+        //   56: invokestatic 71	com/tencent/mm/wlogcat/b/b:ijK	()Ljava/lang/String;
         //   59: astore_2
         //   60: aload_2
         //   61: invokevirtual 75	java/lang/String:isEmpty	()Z
@@ -118,11 +117,11 @@ public final class b
         //   139: invokevirtual 133	java/lang/Boolean:booleanValue	()Z
         //   142: ifne +178 -> 320
         //   145: aload_0
-        //   146: getfield 14	com/tencent/mm/wlogcat/b/b$1:RwO	Lcom/tencent/mm/wlogcat/b/b;
+        //   146: getfield 14	com/tencent/mm/wlogcat/b/b$1:YYp	Lcom/tencent/mm/wlogcat/b/b;
         //   149: invokestatic 136	com/tencent/mm/wlogcat/b/b:b	(Lcom/tencent/mm/wlogcat/b/b;)Z
         //   152: ifeq +168 -> 320
         //   155: aload_0
-        //   156: getfield 14	com/tencent/mm/wlogcat/b/b$1:RwO	Lcom/tencent/mm/wlogcat/b/b;
+        //   156: getfield 14	com/tencent/mm/wlogcat/b/b$1:YYp	Lcom/tencent/mm/wlogcat/b/b;
         //   159: invokestatic 32	com/tencent/mm/wlogcat/b/b:a	(Lcom/tencent/mm/wlogcat/b/b;)Z
         //   162: ifeq +158 -> 320
         //   165: aload 4
@@ -173,11 +172,11 @@ public final class b
         //   261: iconst_0
         //   262: anewarray 4	java/lang/Object
         //   265: invokestatic 154	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-        //   268: getstatic 160	com/tencent/mm/plugin/report/service/h:CyF	Lcom/tencent/mm/plugin/report/service/h;
+        //   268: getstatic 160	com/tencent/mm/plugin/report/service/h:IzE	Lcom/tencent/mm/plugin/report/service/h;
         //   271: ldc2_w 161
         //   274: ldc2_w 163
         //   277: lconst_1
-        //   278: invokevirtual 168	com/tencent/mm/plugin/report/service/h:n	(JJJ)V
+        //   278: invokevirtual 168	com/tencent/mm/plugin/report/service/h:p	(JJJ)V
         //   281: ldc 34
         //   283: ldc 170
         //   285: invokestatic 172	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
@@ -354,46 +353,46 @@ public final class b
         //   123	134	490	java/lang/Exception
       }
     };
-    this.RwL = new Runnable()
+    this.YYm = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(224056);
-        if (((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rNO, 1) == 1)
+        AppMethodBeat.i(189316);
+        if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vtI, 1) == 1)
         {
           b.a(b.this, true);
           if (!b.a(b.this))
           {
             Log.e("MicroMsg.LogcatCatcher", "checker not safe!");
-            AppMethodBeat.o(224056);
+            AppMethodBeat.o(189316);
           }
         }
         else
         {
           b.a(b.this, false);
           Log.e("MicroMsg.LogcatCatcher", "no need to work");
-          AppMethodBeat.o(224056);
+          AppMethodBeat.o(189316);
           return;
         }
-        if (!b.hik())
+        if (!b.ijL())
         {
           Log.e("MicroMsg.LogcatCatcher", "no space!");
           b.c(b.this);
-          AppMethodBeat.o(224056);
+          AppMethodBeat.o(189316);
           return;
         }
-        String str = b.hij();
+        String str = b.ijK();
         if (str.isEmpty())
         {
           Log.e("MicroMsg.LogcatCatcher", "errorCheck nameprefix empty!");
-          AppMethodBeat.o(224056);
+          AppMethodBeat.o(189316);
           return;
         }
         str = str + "_" + new SimpleDateFormat("yyyyMMdd").format(new Date()) + ".xlog";
-        Object localObject1 = new o(XLogSetup.logPath);
-        if (((o)localObject1).isDirectory())
+        Object localObject1 = new q(XLogSetup.logPath);
+        if (((q)localObject1).isDirectory())
         {
-          localObject1 = ((o)localObject1).het();
+          localObject1 = ((q)localObject1).ifJ();
           if (localObject1 != null)
           {
             int m = localObject1.length;
@@ -426,26 +425,26 @@ public final class b
         if (k != 0)
         {
           b.e(b.this).postDelayed(b.d(b.this), 60000L);
-          AppMethodBeat.o(224056);
+          AppMethodBeat.o(189316);
           return;
         }
         b.c(b.this);
-        com.tencent.mm.plugin.report.service.h.CyF.n(1504L, 2L, 1L);
-        AppMethodBeat.o(224056);
+        com.tencent.mm.plugin.report.service.h.IzE.p(1504L, 2L, 1L);
+        AppMethodBeat.o(189316);
       }
     };
-    this.RwM = new HandlerThread("LogcatCatcher");
-    this.RwN = null;
-    AppMethodBeat.o(224058);
+    this.YYn = new HandlerThread("LogcatCatcher");
+    this.YYo = null;
+    AppMethodBeat.o(189321);
   }
   
-  private static long cyO()
+  private static long cNj()
   {
-    AppMethodBeat.i(224059);
+    AppMethodBeat.i(189324);
     long l;
     try
     {
-      StatFs localStatFs = new StatFs(com.tencent.mm.loader.j.b.aKD());
+      StatFs localStatFs = new StatFs(com.tencent.mm.loader.j.b.aSF());
       l = localStatFs.getAvailableBlocks();
       int i = localStatFs.getBlockSize();
       l = i * l;
@@ -456,24 +455,24 @@ public final class b
       {
         l = 0L;
       }
-      AppMethodBeat.o(224059);
+      AppMethodBeat.o(189324);
     }
     if (l <= 0L)
     {
-      AppMethodBeat.o(224059);
+      AppMethodBeat.o(189324);
       return 1L;
     }
     return l;
   }
   
-  public static b hii()
+  public static b ijJ()
   {
-    return RwF;
+    return YYg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wlogcat.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
-import com.tencent.mm.plugin.appbrand.jsapi.s;
+import com.tencent.mm.plugin.appbrand.jsapi.r;
 
 final class JsApiUploadEncryptedFileToCDN$a
-  extends s
+  extends r
 {
   private static final int CTRL_INDEX = 196;
   private static final String NAME = "onUploadEncryptedFileToCDNProgress";

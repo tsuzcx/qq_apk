@@ -25,12 +25,13 @@ import android.view.View.OnTouchListener;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.at;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.aw;
+import com.tenpay.R.color;
 import com.tenpay.ndk.Encrypt;
 import java.lang.reflect.Field;
 import java.util.regex.Matcher;
@@ -183,37 +184,39 @@ public final class TenpaySecureEditText
     AppMethodBeat.i(73225);
     if ((EditState.PASSWORD == this.mEditState) && (this.mPaintBackground != null))
     {
-      int m = getWidth();
+      int i1 = getWidth();
       int k = getHeight();
-      m /= PASSWD_LENGTH;
-      int n = getText().length();
+      int n = i1 / PASSWD_LENGTH;
+      int m = getText().length();
       if (!this.mNewPwdStyle)
       {
         i = j;
-        while (i < n)
+        while (i < m)
         {
-          paramCanvas.drawCircle(m / 2 + i * m, k / 2, PASSWD_BLACK_DOT_SIZE * this.mDensity, this.mPaintBackground);
+          paramCanvas.drawCircle(n / 2 + i * n, k / 2, PASSWD_BLACK_DOT_SIZE * this.mDensity, this.mPaintBackground);
           i += 1;
         }
         i = 1;
         while (i < PASSWD_LENGTH)
         {
-          paramCanvas.drawLine(m * i, 0.0F, m * i, k, this.mPasswdSeparedPaint);
+          paramCanvas.drawLine(n * i, 0.0F, n * i, k, this.mPasswdSeparedPaint);
           i += 1;
         }
         AppMethodBeat.o(73225);
         return;
       }
       j = a.fromDPToPix(getContext(), 8);
+      n = (i1 - (PASSWD_LENGTH - 1) * j) / PASSWD_LENGTH;
+      k -= n;
       while (i < PASSWD_LENGTH)
       {
-        float f1 = (k + j) * i;
-        float f2 = k + f1;
-        RectF localRectF = new RectF(f1, 0.0F, f2, k);
+        float f1 = (n + j) * i;
+        float f2 = n + f1;
+        RectF localRectF = new RectF(f1, k, f2, n + k);
         float f3 = a.fromDPToPix(getContext(), 4);
         paramCanvas.drawRoundRect(localRectF, f3, f3, this.mPasswdBgPaint);
-        if (i < n) {
-          paramCanvas.drawCircle((f1 + f2) / 2.0F, k / 2.0F, a.fromDPToPix(getContext(), 4), this.mPaintBackground);
+        if (i < m) {
+          paramCanvas.drawCircle((f1 + f2) / 2.0F, n / 2.0F + k, a.fromDPToPix(getContext(), 4), this.mPaintBackground);
         }
         i += 1;
       }
@@ -859,7 +862,7 @@ public final class TenpaySecureEditText
       this.mTitlePaint.setTypeface(Typeface.create(Typeface.DEFAULT, 0));
       this.mTitlePaint.setAntiAlias(true);
       this.mTitlePaint.setTextSize(getTextSize());
-      this.mIDCardPaint.setColor(getResources().getColor(2131100044));
+      this.mIDCardPaint.setColor(getResources().getColor(R.color.black_color));
     }
     AppMethodBeat.o(73221);
   }
@@ -912,7 +915,7 @@ public final class TenpaySecureEditText
     if (this.mClearBtnImg != null) {
       if ((paramInt3 != 0) && (paramInt4 != 0))
       {
-        this.mClearBtnImg.setBounds(0, 0, at.fromDPToPix(getContext(), paramInt3), at.fromDPToPix(getContext(), paramInt4));
+        this.mClearBtnImg.setBounds(0, 0, aw.fromDPToPix(getContext(), paramInt3), aw.fromDPToPix(getContext(), paramInt4));
         setOnFocusChangeListener(new View.OnFocusChangeListener()
         {
           public void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
@@ -1020,7 +1023,7 @@ public final class TenpaySecureEditText
       setPadding(PASSWD_LEFT_PADDING, getPaddingTop(), getPaddingRight(), getPaddingBottom());
       this.mPaintBackground = new Paint(1);
       this.mPaintBackground.setStyle(Paint.Style.FILL);
-      this.mIDCardPaint.setColor(getResources().getColor(2131100044));
+      this.mIDCardPaint.setColor(getResources().getColor(R.color.black_color));
       this.mEditState = EditState.CVV_4_PAYMENT;
       AppMethodBeat.o(73219);
       return;
@@ -1040,7 +1043,7 @@ public final class TenpaySecureEditText
       setPadding(PASSWD_LEFT_PADDING, getPaddingTop(), getPaddingRight(), getPaddingBottom());
       this.mPaintBackground = new Paint(1);
       this.mPaintBackground.setStyle(Paint.Style.FILL);
-      this.mIDCardPaint.setColor(getResources().getColor(2131100044));
+      this.mIDCardPaint.setColor(getResources().getColor(R.color.black_color));
       this.mEditState = EditState.CVV_PAYMENT;
       AppMethodBeat.o(73218);
       return;
@@ -1064,7 +1067,7 @@ public final class TenpaySecureEditText
       this.mIDCardPaint.setTextAlign(Paint.Align.CENTER);
       this.mIDCardPaint.setAntiAlias(true);
       this.mIDCardPaint.setTextSize(getTextSize());
-      this.mIDCardPaint.setColor(getResources().getColor(2131100044));
+      this.mIDCardPaint.setColor(getResources().getColor(R.color.black_color));
       AppMethodBeat.o(73217);
       return;
     }
@@ -1085,50 +1088,50 @@ public final class TenpaySecureEditText
   
   public final void setIsPasswordFormat(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(214353);
+    AppMethodBeat.i(204779);
     if (paramBoolean1)
     {
       this.mNewPwdStyle = paramBoolean2;
       setPadding(PASSWD_LEFT_PADDING, getPaddingTop(), getPaddingRight(), getPaddingBottom());
       this.mPaintBackground = new Paint(1);
       this.mPaintBackground.setStyle(Paint.Style.FILL);
-      if (ao.isDarkMode())
+      if (ar.isDarkMode())
       {
-        this.mPaintBackground.setColor(getResources().getColor(2131099679));
+        this.mPaintBackground.setColor(getResources().getColor(R.color.BW_100_Alpha_0_8));
         this.mEditState = EditState.PASSWORD;
         this.mPasswdSeparedPaint = new Paint(1);
         this.mPasswdSeparedPaint.setStyle(Paint.Style.STROKE);
         this.mPasswdSeparedPaint.setStrokeWidth(1.5F);
-        if (!ao.isDarkMode()) {
-          break label213;
+        if (!ar.isDarkMode()) {
+          break label206;
         }
-        this.mPasswdSeparedPaint.setColor(getResources().getColor(2131099751));
+        this.mPasswdSeparedPaint.setColor(getResources().getColor(R.color.FG_4));
       }
       for (;;)
       {
         this.mPasswdBgPaint = new Paint(1);
         this.mPasswdBgPaint.setStyle(Paint.Style.FILL);
-        if (!ao.isDarkMode()) {
-          break label233;
+        if (!ar.isDarkMode()) {
+          break label226;
         }
-        this.mPasswdBgPaint.setColor(getResources().getColor(2131099648));
-        AppMethodBeat.o(214353);
+        this.mPasswdBgPaint.setColor(218103807);
+        AppMethodBeat.o(204779);
         return;
-        this.mPaintBackground.setColor(getResources().getColor(2131099654));
+        this.mPaintBackground.setColor(getResources().getColor(R.color.BW_0));
         break;
-        label213:
-        this.mPasswdSeparedPaint.setColor(getResources().getColor(2131099750));
+        label206:
+        this.mPasswdSeparedPaint.setColor(getResources().getColor(R.color.FG_3));
       }
-      label233:
-      this.mPasswdBgPaint.setColor(getResources().getColor(2131099648));
-      AppMethodBeat.o(214353);
+      label226:
+      this.mPasswdBgPaint.setColor(getResources().getColor(R.color.BG_0));
+      AppMethodBeat.o(204779);
       return;
     }
     this.mPaintBackground = null;
     if (EditState.PASSWORD == this.mEditState) {
       this.mEditState = EditState.DEFAULT;
     }
-    AppMethodBeat.o(214353);
+    AppMethodBeat.o(204779);
   }
   
   public final void setIsSecurityAnswerFormat(boolean paramBoolean)
@@ -1217,7 +1220,7 @@ public final class TenpaySecureEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tenpay.android.wechat.TenpaySecureEditText
  * JD-Core Version:    0.7.0.1
  */

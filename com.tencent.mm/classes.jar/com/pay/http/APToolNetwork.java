@@ -19,26 +19,26 @@ public class APToolNetwork
   
   static
   {
-    AppMethodBeat.i(193270);
+    AppMethodBeat.i(253731);
     PATTERN = Pattern.compile("^(([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}([01]?\\d\\d?|2[0-4]\\d|25[0-5])$");
-    AppMethodBeat.o(193270);
+    AppMethodBeat.o(253731);
   }
   
   public static boolean isIPAddress(String paramString)
   {
-    AppMethodBeat.i(193267);
+    AppMethodBeat.i(253728);
     if ((validateIPV4(paramString)) || (validateIPV6(paramString)))
     {
-      AppMethodBeat.o(193267);
+      AppMethodBeat.o(253728);
       return true;
     }
-    AppMethodBeat.o(193267);
+    AppMethodBeat.o(253728);
     return false;
   }
   
   public static String joinDomainPort(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(193269);
+    AppMethodBeat.i(253730);
     String str = paramString1;
     if (!TextUtils.isEmpty(paramString2))
     {
@@ -49,7 +49,7 @@ public class APToolNetwork
     }
     for (;;)
     {
-      AppMethodBeat.o(193269);
+      AppMethodBeat.o(253730);
       return str;
       label52:
       str = paramString1;
@@ -61,24 +61,24 @@ public class APToolNetwork
   
   public static boolean validateIPV4(String paramString)
   {
-    AppMethodBeat.i(193266);
+    AppMethodBeat.i(253726);
     boolean bool = Patterns.IP_ADDRESS.matcher(paramString).matches();
-    AppMethodBeat.o(193266);
+    AppMethodBeat.o(253726);
     return bool;
   }
   
   public static boolean validateIPV6(String paramString)
   {
-    AppMethodBeat.i(193268);
+    AppMethodBeat.i(253729);
     boolean bool = paramString.contains("::");
     if ((bool) && (paramString.indexOf("::") != paramString.lastIndexOf("::")))
     {
-      AppMethodBeat.o(193268);
+      AppMethodBeat.o(253729);
       return false;
     }
     if (((paramString.startsWith(":")) && (!paramString.startsWith("::"))) || ((paramString.endsWith(":")) && (!paramString.endsWith("::"))))
     {
-      AppMethodBeat.o(193268);
+      AppMethodBeat.o(253729);
       return false;
     }
     String[] arrayOfString = paramString.split(":");
@@ -97,7 +97,7 @@ public class APToolNetwork
       if (localObject.length <= 8) {
         break;
       }
-      AppMethodBeat.o(193268);
+      AppMethodBeat.o(253729);
       return false;
       label170:
       if ((paramString.startsWith("::")) && (!((List)localObject).isEmpty())) {
@@ -116,7 +116,7 @@ public class APToolNetwork
         i = m;
         if (m > 1)
         {
-          AppMethodBeat.o(193268);
+          AppMethodBeat.o(253729);
           return false;
         }
       }
@@ -124,7 +124,7 @@ public class APToolNetwork
       {
         if (!Patterns.IP_ADDRESS.matcher(paramString).matches())
         {
-          AppMethodBeat.o(193268);
+          AppMethodBeat.o(253729);
           return false;
         }
         j += 2;
@@ -136,7 +136,7 @@ public class APToolNetwork
         break;
         if (paramString.length() > 4)
         {
-          AppMethodBeat.o(193268);
+          AppMethodBeat.o(253729);
           return false;
         }
         try
@@ -144,13 +144,13 @@ public class APToolNetwork
           i = Integer.parseInt(paramString, 16);
           if ((i < 0) || (i > 65535))
           {
-            AppMethodBeat.o(193268);
+            AppMethodBeat.o(253729);
             return false;
           }
         }
         catch (NumberFormatException paramString)
         {
-          AppMethodBeat.o(193268);
+          AppMethodBeat.o(253729);
           return false;
         }
         i = 0;
@@ -159,16 +159,16 @@ public class APToolNetwork
     }
     if ((j > 8) || ((j < 8) && (!bool)))
     {
-      AppMethodBeat.o(193268);
+      AppMethodBeat.o(253729);
       return false;
     }
-    AppMethodBeat.o(193268);
+    AppMethodBeat.o(253729);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.pay.http.APToolNetwork
  * JD-Core Version:    0.7.0.1
  */

@@ -7,6 +7,12 @@ import com.tencent.mm.protocal.c;
 public class b
   extends f.a
 {
+  public final void CG(boolean paramBoolean) {}
+  
+  public final void CH(boolean paramBoolean) {}
+  
+  public final void CI(boolean paramBoolean) {}
+  
   public final boolean a(d paramd)
   {
     return false;
@@ -17,77 +23,71 @@ public class b
     return false;
   }
   
-  public final void aL(Bundle paramBundle) {}
+  public final void aH(Bundle paramBundle) {}
   
-  public final void aM(Bundle paramBundle) {}
+  public final void aI(Bundle paramBundle) {}
   
-  public final void aWP(String paramString) {}
-  
-  public final boolean afl(int paramInt)
+  public final boolean amZ(int paramInt)
   {
     return false;
   }
+  
+  public String bXN()
+  {
+    return null;
+  }
+  
+  public final void bix(String paramString) {}
   
   public final void e(String paramString1, String paramString2, int paramInt1, int paramInt2) {}
   
-  public String ePp()
+  public final void gPF() {}
+  
+  public final String gPG()
   {
     return null;
   }
   
-  public boolean f(int paramInt, Bundle paramBundle)
-  {
-    return false;
-  }
-  
-  public final void fWV() {}
-  
-  public final String fWW()
+  public final String gPH()
   {
     return null;
   }
   
-  public final String fWX()
-  {
-    return null;
-  }
-  
-  public final int fWY()
+  public final int gPI()
   {
     return 0;
   }
   
-  public final void fWZ() {}
-  
-  public final Bundle fl(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(224509);
-    paramString1 = c.bga(null);
-    AppMethodBeat.o(224509);
-    return paramString1;
-  }
+  public final void gPJ() {}
   
   public String getCurrentUrl()
   {
     return null;
   }
   
-  public Bundle j(int paramInt, Bundle paramBundle)
+  public boolean h(int paramInt, Bundle paramBundle)
+  {
+    return false;
+  }
+  
+  public Bundle l(int paramInt, Bundle paramBundle)
   {
     return null;
   }
   
-  public final void lA(String paramString1, String paramString2) {}
+  public final Bundle lY(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(205452);
+    paramString1 = c.hoD();
+    AppMethodBeat.o(205452);
+    return paramString1;
+  }
   
-  public final void lz(String paramString1, String paramString2) {}
+  public final void lZ(String paramString1, String paramString2) {}
   
-  public final void t(int paramInt, Bundle paramBundle) {}
+  public final void ma(String paramString1, String paramString2) {}
   
-  public final void yL(boolean paramBoolean) {}
-  
-  public final void yM(boolean paramBoolean) {}
-  
-  public final void yN(boolean paramBoolean) {}
+  public final void v(int paramInt, Bundle paramBundle) {}
 }
 
 

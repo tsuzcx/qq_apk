@@ -18,6 +18,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.b.k;
 import com.tencent.mm.modelvoiceaddr.f;
 import com.tencent.mm.modelvoiceaddr.f.b;
+import com.tencent.mm.plugin.e.a.a;
+import com.tencent.mm.plugin.e.a.b;
+import com.tencent.mm.plugin.e.a.c;
+import com.tencent.mm.plugin.e.a.d;
+import com.tencent.mm.plugin.e.a.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
@@ -26,41 +31,41 @@ import com.tencent.mm.ui.widget.imageview.WeImageButton;
 public class VoiceSearchLayout
   extends LinearLayout
 {
-  private static final int[] jxw = { 2131235506, 2131235507, 2131235508, 2131235509, 2131235486, 2131235487, 2131235488, 2131235489, 2131235490, 2131235491, 2131235492, 2131235493, 2131235494, 2131235495 };
-  private static final int[] jxx = { 2131235506, 2131235506, 2131235506, 2131235507, 2131235508, 2131235507, 2131235506, 2131235509, 2131235506, 2131235506 };
-  private static final int[] jxy = { 2131235496, 2131235505, 2131235505, 2131235505, 2131235496 };
+  private static final int[] mmY = { a.b.voicesearch_silence_check001, a.b.voicesearch_silence_check002, a.b.voicesearch_silence_check003, a.b.voicesearch_silence_check004, a.b.voicesearch_feedback005, a.b.voicesearch_feedback006, a.b.voicesearch_feedback007, a.b.voicesearch_feedback008, a.b.voicesearch_feedback009, a.b.voicesearch_feedback010, a.b.voicesearch_feedback011, a.b.voicesearch_feedback012, a.b.voicesearch_feedback013, a.b.voicesearch_feedback014 };
+  private static final int[] mmZ = { a.b.voicesearch_silence_check001, a.b.voicesearch_silence_check001, a.b.voicesearch_silence_check001, a.b.voicesearch_silence_check002, a.b.voicesearch_silence_check003, a.b.voicesearch_silence_check002, a.b.voicesearch_silence_check001, a.b.voicesearch_silence_check004, a.b.voicesearch_silence_check001, a.b.voicesearch_silence_check001 };
+  private static final int[] mna = { a.b.voicesearch_loading001, a.b.voicesearch_loading010, a.b.voicesearch_loading010, a.b.voicesearch_loading010, a.b.voicesearch_loading001 };
   private int from;
+  private View fyN;
   boolean isStart;
-  private int jxA;
-  int jxB;
-  final MTimerHandler jxC;
-  private View jxm;
-  a jxn;
-  private WeImageButton jxo;
-  boolean jxp;
-  int jxq;
-  private VoiceSearchLayout.b jxr;
-  private View jxs;
-  private AnimationDrawable jxt;
-  f jxu;
-  private boolean jxv;
-  private int jxz;
+  a mmP;
+  private WeImageButton mmQ;
+  boolean mmR;
+  int mmS;
+  private b mmT;
+  private View mmU;
+  private AnimationDrawable mmV;
+  f mmW;
+  private boolean mmX;
+  private int mnb;
+  private int mnd;
+  int mne;
+  final MTimerHandler mnf;
   
   public VoiceSearchLayout(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(148617);
-    this.jxm = null;
-    this.jxn = null;
+    this.fyN = null;
+    this.mmP = null;
     this.isStart = false;
-    this.jxp = false;
-    this.jxq = 0;
-    this.jxv = false;
+    this.mmR = false;
+    this.mmS = 0;
+    this.mmX = false;
     this.from = 0;
-    this.jxz = 0;
-    this.jxA = 0;
-    this.jxB = 0;
-    this.jxC = new MTimerHandler(new MTimerHandler.CallBack()
+    this.mnb = 0;
+    this.mnd = 0;
+    this.mne = 0;
+    this.mnf = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -70,21 +75,21 @@ public class VoiceSearchLayout
           AppMethodBeat.o(148610);
           return true;
         }
-        if (VoiceSearchLayout.b(VoiceSearchLayout.this) < VoiceSearchLayout.biF().length)
+        if (VoiceSearchLayout.b(VoiceSearchLayout.this) < VoiceSearchLayout.bsd().length)
         {
-          VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.biF()[VoiceSearchLayout.c(VoiceSearchLayout.this)]);
+          VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.bsd()[VoiceSearchLayout.c(VoiceSearchLayout.this)]);
           AppMethodBeat.o(148610);
           return true;
         }
         f localf = VoiceSearchLayout.a(VoiceSearchLayout.this);
-        Log.d("MicroMsg.SceneVoiceAddr", "cAmplitude " + localf.jwf);
-        int i = localf.jwf;
-        localf.jwf = 0;
-        if (i > f.dAR) {
-          f.dAR = i;
+        Log.d("MicroMsg.SceneVoiceAddr", "cAmplitude " + localf.mlI);
+        int i = localf.mlI;
+        localf.mlI = 0;
+        if (i > f.ftG) {
+          f.ftG = i;
         }
-        Log.d("getMaxAmplitude", " map: " + i + " max:" + f.dAR + " per:" + i * 100 / f.dAR);
-        i = i * 100 / f.dAR;
+        Log.d("getMaxAmplitude", " map: " + i + " max:" + f.ftG + " per:" + i * 100 / f.ftG);
+        i = i * 100 / f.ftG;
         Log.d("MicroMsg.VoiceSearchLayout", "addr vol:".concat(String.valueOf(i)));
         int k = VoiceSearchLayout.d(VoiceSearchLayout.this);
         if (VoiceSearchLayout.d(VoiceSearchLayout.this) == VoiceSearchLayout.e(VoiceSearchLayout.this))
@@ -92,24 +97,24 @@ public class VoiceSearchLayout
           if (i <= 10)
           {
             VoiceSearchLayout.f(VoiceSearchLayout.this);
-            if (VoiceSearchLayout.g(VoiceSearchLayout.this) >= VoiceSearchLayout.biG().length) {
+            if (VoiceSearchLayout.g(VoiceSearchLayout.this) >= VoiceSearchLayout.bse().length) {
               VoiceSearchLayout.h(VoiceSearchLayout.this);
             }
-            VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.biG()[VoiceSearchLayout.g(VoiceSearchLayout.this)]);
+            VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.bse()[VoiceSearchLayout.g(VoiceSearchLayout.this)]);
             AppMethodBeat.o(148610);
             return true;
           }
           int j = i / 5;
           i = j;
-          if (j >= VoiceSearchLayout.biH().length) {
-            i = VoiceSearchLayout.biH().length - 1;
+          if (j >= VoiceSearchLayout.bsf().length) {
+            i = VoiceSearchLayout.bsf().length - 1;
           }
           Log.d("MicroMsg.VoiceSearchLayout", "addr mvol:".concat(String.valueOf(i)));
           VoiceSearchLayout.b(VoiceSearchLayout.this, i);
         }
         for (;;)
         {
-          VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.biH()[k]);
+          VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.bsf()[k]);
           AppMethodBeat.o(148610);
           return true;
           if (VoiceSearchLayout.d(VoiceSearchLayout.this) > VoiceSearchLayout.e(VoiceSearchLayout.this)) {
@@ -128,17 +133,17 @@ public class VoiceSearchLayout
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(148616);
-    this.jxm = null;
-    this.jxn = null;
+    this.fyN = null;
+    this.mmP = null;
     this.isStart = false;
-    this.jxp = false;
-    this.jxq = 0;
-    this.jxv = false;
+    this.mmR = false;
+    this.mmS = 0;
+    this.mmX = false;
     this.from = 0;
-    this.jxz = 0;
-    this.jxA = 0;
-    this.jxB = 0;
-    this.jxC = new MTimerHandler(new MTimerHandler.CallBack()
+    this.mnb = 0;
+    this.mnd = 0;
+    this.mne = 0;
+    this.mnf = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -148,21 +153,21 @@ public class VoiceSearchLayout
           AppMethodBeat.o(148610);
           return true;
         }
-        if (VoiceSearchLayout.b(VoiceSearchLayout.this) < VoiceSearchLayout.biF().length)
+        if (VoiceSearchLayout.b(VoiceSearchLayout.this) < VoiceSearchLayout.bsd().length)
         {
-          VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.biF()[VoiceSearchLayout.c(VoiceSearchLayout.this)]);
+          VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.bsd()[VoiceSearchLayout.c(VoiceSearchLayout.this)]);
           AppMethodBeat.o(148610);
           return true;
         }
         f localf = VoiceSearchLayout.a(VoiceSearchLayout.this);
-        Log.d("MicroMsg.SceneVoiceAddr", "cAmplitude " + localf.jwf);
-        int i = localf.jwf;
-        localf.jwf = 0;
-        if (i > f.dAR) {
-          f.dAR = i;
+        Log.d("MicroMsg.SceneVoiceAddr", "cAmplitude " + localf.mlI);
+        int i = localf.mlI;
+        localf.mlI = 0;
+        if (i > f.ftG) {
+          f.ftG = i;
         }
-        Log.d("getMaxAmplitude", " map: " + i + " max:" + f.dAR + " per:" + i * 100 / f.dAR);
-        i = i * 100 / f.dAR;
+        Log.d("getMaxAmplitude", " map: " + i + " max:" + f.ftG + " per:" + i * 100 / f.ftG);
+        i = i * 100 / f.ftG;
         Log.d("MicroMsg.VoiceSearchLayout", "addr vol:".concat(String.valueOf(i)));
         int k = VoiceSearchLayout.d(VoiceSearchLayout.this);
         if (VoiceSearchLayout.d(VoiceSearchLayout.this) == VoiceSearchLayout.e(VoiceSearchLayout.this))
@@ -170,24 +175,24 @@ public class VoiceSearchLayout
           if (i <= 10)
           {
             VoiceSearchLayout.f(VoiceSearchLayout.this);
-            if (VoiceSearchLayout.g(VoiceSearchLayout.this) >= VoiceSearchLayout.biG().length) {
+            if (VoiceSearchLayout.g(VoiceSearchLayout.this) >= VoiceSearchLayout.bse().length) {
               VoiceSearchLayout.h(VoiceSearchLayout.this);
             }
-            VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.biG()[VoiceSearchLayout.g(VoiceSearchLayout.this)]);
+            VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.bse()[VoiceSearchLayout.g(VoiceSearchLayout.this)]);
             AppMethodBeat.o(148610);
             return true;
           }
           int j = i / 5;
           i = j;
-          if (j >= VoiceSearchLayout.biH().length) {
-            i = VoiceSearchLayout.biH().length - 1;
+          if (j >= VoiceSearchLayout.bsf().length) {
+            i = VoiceSearchLayout.bsf().length - 1;
           }
           Log.d("MicroMsg.VoiceSearchLayout", "addr mvol:".concat(String.valueOf(i)));
           VoiceSearchLayout.b(VoiceSearchLayout.this, i);
         }
         for (;;)
         {
-          VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.biH()[k]);
+          VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.bsf()[k]);
           AppMethodBeat.o(148610);
           return true;
           if (VoiceSearchLayout.d(VoiceSearchLayout.this) > VoiceSearchLayout.e(VoiceSearchLayout.this)) {
@@ -207,17 +212,17 @@ public class VoiceSearchLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(148615);
-    this.jxm = null;
-    this.jxn = null;
+    this.fyN = null;
+    this.mmP = null;
     this.isStart = false;
-    this.jxp = false;
-    this.jxq = 0;
-    this.jxv = false;
+    this.mmR = false;
+    this.mmS = 0;
+    this.mmX = false;
     this.from = 0;
-    this.jxz = 0;
-    this.jxA = 0;
-    this.jxB = 0;
-    this.jxC = new MTimerHandler(new MTimerHandler.CallBack()
+    this.mnb = 0;
+    this.mnd = 0;
+    this.mne = 0;
+    this.mnf = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -227,21 +232,21 @@ public class VoiceSearchLayout
           AppMethodBeat.o(148610);
           return true;
         }
-        if (VoiceSearchLayout.b(VoiceSearchLayout.this) < VoiceSearchLayout.biF().length)
+        if (VoiceSearchLayout.b(VoiceSearchLayout.this) < VoiceSearchLayout.bsd().length)
         {
-          VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.biF()[VoiceSearchLayout.c(VoiceSearchLayout.this)]);
+          VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.bsd()[VoiceSearchLayout.c(VoiceSearchLayout.this)]);
           AppMethodBeat.o(148610);
           return true;
         }
         f localf = VoiceSearchLayout.a(VoiceSearchLayout.this);
-        Log.d("MicroMsg.SceneVoiceAddr", "cAmplitude " + localf.jwf);
-        int i = localf.jwf;
-        localf.jwf = 0;
-        if (i > f.dAR) {
-          f.dAR = i;
+        Log.d("MicroMsg.SceneVoiceAddr", "cAmplitude " + localf.mlI);
+        int i = localf.mlI;
+        localf.mlI = 0;
+        if (i > f.ftG) {
+          f.ftG = i;
         }
-        Log.d("getMaxAmplitude", " map: " + i + " max:" + f.dAR + " per:" + i * 100 / f.dAR);
-        i = i * 100 / f.dAR;
+        Log.d("getMaxAmplitude", " map: " + i + " max:" + f.ftG + " per:" + i * 100 / f.ftG);
+        i = i * 100 / f.ftG;
         Log.d("MicroMsg.VoiceSearchLayout", "addr vol:".concat(String.valueOf(i)));
         int k = VoiceSearchLayout.d(VoiceSearchLayout.this);
         if (VoiceSearchLayout.d(VoiceSearchLayout.this) == VoiceSearchLayout.e(VoiceSearchLayout.this))
@@ -249,24 +254,24 @@ public class VoiceSearchLayout
           if (i <= 10)
           {
             VoiceSearchLayout.f(VoiceSearchLayout.this);
-            if (VoiceSearchLayout.g(VoiceSearchLayout.this) >= VoiceSearchLayout.biG().length) {
+            if (VoiceSearchLayout.g(VoiceSearchLayout.this) >= VoiceSearchLayout.bse().length) {
               VoiceSearchLayout.h(VoiceSearchLayout.this);
             }
-            VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.biG()[VoiceSearchLayout.g(VoiceSearchLayout.this)]);
+            VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.bse()[VoiceSearchLayout.g(VoiceSearchLayout.this)]);
             AppMethodBeat.o(148610);
             return true;
           }
           int j = i / 5;
           i = j;
-          if (j >= VoiceSearchLayout.biH().length) {
-            i = VoiceSearchLayout.biH().length - 1;
+          if (j >= VoiceSearchLayout.bsf().length) {
+            i = VoiceSearchLayout.bsf().length - 1;
           }
           Log.d("MicroMsg.VoiceSearchLayout", "addr mvol:".concat(String.valueOf(i)));
           VoiceSearchLayout.b(VoiceSearchLayout.this, i);
         }
         for (;;)
         {
-          VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.biH()[k]);
+          VoiceSearchLayout.a(VoiceSearchLayout.this, VoiceSearchLayout.bsf()[k]);
           AppMethodBeat.o(148610);
           return true;
           if (VoiceSearchLayout.d(VoiceSearchLayout.this) > VoiceSearchLayout.e(VoiceSearchLayout.this)) {
@@ -281,20 +286,20 @@ public class VoiceSearchLayout
     AppMethodBeat.o(148615);
   }
   
-  private static void bdZ()
+  private static void bnu()
   {
     AppMethodBeat.i(148627);
     Log.d("MicroMsg.VoiceSearchLayout", "resumeMusic");
-    com.tencent.mm.plugin.audio.c.a.bdZ();
+    com.tencent.mm.plugin.audio.c.a.bnu();
     AppMethodBeat.o(148627);
   }
   
   private void init(Context paramContext)
   {
     AppMethodBeat.i(148618);
-    this.jxm = inflate(paramContext, 2131496850, this);
-    this.jxo = ((WeImageButton)this.jxm.findViewById(2131309993));
-    this.jxs = this.jxm.findViewById(2131309991);
+    this.fyN = inflate(paramContext, a.d.voice_search_layout, this);
+    this.mmQ = ((WeImageButton)this.fyN.findViewById(a.c.voice_search_start_btn));
+    this.mmU = this.fyN.findViewById(a.c.voice_search_field);
     setSearchStartBtnView(false);
     reset();
     AppMethodBeat.o(148618);
@@ -303,8 +308,8 @@ public class VoiceSearchLayout
   private void setAmpImage(int paramInt)
   {
     AppMethodBeat.i(148625);
-    if (this.jxo != null) {
-      this.jxo.setBackgroundResource(paramInt);
+    if (this.mmQ != null) {
+      this.mmQ.setBackgroundResource(paramInt);
     }
     AppMethodBeat.o(148625);
   }
@@ -314,68 +319,68 @@ public class VoiceSearchLayout
     AppMethodBeat.i(148622);
     if (paramBoolean)
     {
-      this.jxo.setBackgroundResource(2131235455);
-      this.jxt = ((AnimationDrawable)this.jxo.getBackground());
-      if (this.jxt != null)
+      this.mmQ.setBackgroundResource(a.b.voice_search_start_anim);
+      this.mmV = ((AnimationDrawable)this.mmQ.getBackground());
+      if (this.mmV != null)
       {
-        this.jxt.start();
+        this.mmV.start();
         AppMethodBeat.o(148622);
       }
     }
     else
     {
-      this.jxo.setBackgroundResource(2131235484);
+      this.mmQ.setBackgroundResource(a.b.voicesearch_btn_normal);
     }
     AppMethodBeat.o(148622);
   }
   
-  public final void biE()
+  public final void bsc()
   {
     AppMethodBeat.i(148620);
     Log.d("MicroMsg.VoiceSearchLayout", "doCancel " + this.isStart);
     if (this.isStart)
     {
       this.isStart = false;
-      if (this.jxn != null) {
-        this.jxn.biJ();
+      if (this.mmP != null) {
+        this.mmP.bsh();
       }
     }
     reset();
     if (getVisibility() == 0)
     {
       setVisibility(8);
-      if (this.jxr != null) {
-        this.jxr.fX(false);
+      if (this.mmT != null) {
+        this.mmT.gJ(false);
       }
     }
-    bdZ();
-    if (this.jxu != null) {
-      this.jxu.cancel();
+    bnu();
+    if (this.mmW != null) {
+      this.mmW.cancel();
     }
-    if (this.jxC != null) {
-      this.jxC.stopTimer();
+    if (this.mnf != null) {
+      this.mnf.stopTimer();
     }
     AppMethodBeat.o(148620);
   }
   
-  final void fW(boolean paramBoolean)
+  final void gI(boolean paramBoolean)
   {
     AppMethodBeat.i(148626);
     k localk;
     if (paramBoolean)
     {
       Log.d("MicroMsg.VoiceSearchLayout", "pauseMusic");
-      com.tencent.mm.plugin.audio.c.a.bdY();
+      com.tencent.mm.plugin.audio.c.a.bnt();
       localk = new k();
       if (!paramBoolean) {
-        break label130;
+        break label136;
       }
     }
     for (;;)
     {
       try
       {
-        localk.setDataSource(getContext(), Uri.parse("android.resource://" + getContext().getPackageName() + "/2131691297"));
+        localk.setDataSource(getContext(), Uri.parse("android.resource://" + getContext().getPackageName() + "/" + a.e.on));
         localk.setAudioStreamType(5);
         localk.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
         {
@@ -401,26 +406,26 @@ public class VoiceSearchLayout
       }
       catch (Exception localException)
       {
-        label130:
+        label136:
         Log.printErrStackTrace("MicroMsg.VoiceSearchLayout", localException, "", new Object[0]);
         localk.release();
         AppMethodBeat.o(148626);
       }
-      bdZ();
+      bnu();
       break;
-      localk.setDataSource(getContext(), Uri.parse("android.resource://" + getContext().getPackageName() + "/2131691255"));
+      localk.setDataSource(getContext(), Uri.parse("android.resource://" + getContext().getPackageName() + "/" + a.e.off));
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(148619);
-    if (!this.jxp)
+    if (!this.mmR)
     {
       Log.d("MicroMsg.VoiceSearchLayout", "checkStop " + this.isStart);
       if (this.isStart)
       {
-        biE();
+        bsc();
         this.isStart = false;
       }
     }
@@ -433,27 +438,27 @@ public class VoiceSearchLayout
     AppMethodBeat.i(148621);
     setSearchStartBtnView(false);
     this.isStart = false;
-    this.jxp = false;
-    this.jxo.setBackgroundResource(2131235484);
+    this.mmR = false;
+    this.mmQ.setBackgroundResource(a.b.voicesearch_btn_normal);
     AppMethodBeat.o(148621);
   }
   
   public void setOnSearchListener(a parama)
   {
-    this.jxn = parama;
+    this.mmP = parama;
   }
   
-  public void setOnVisibleChangeListener(VoiceSearchLayout.b paramb)
+  public void setOnVisibleChangeListener(b paramb)
   {
-    this.jxr = paramb;
+    this.mmT = paramb;
   }
   
   public void setTopMargin(int paramInt)
   {
     AppMethodBeat.i(148624);
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jxs.getLayoutParams();
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.mmU.getLayoutParams();
     localLayoutParams.topMargin = paramInt;
-    this.jxs.setLayoutParams(localLayoutParams);
+    this.mmU.setLayoutParams(localLayoutParams);
     AppMethodBeat.o(148624);
   }
   
@@ -461,17 +466,17 @@ public class VoiceSearchLayout
   {
     AppMethodBeat.i(148623);
     Object localObject;
-    if ((super.getVisibility() != paramInt) && (!this.jxv))
+    if ((super.getVisibility() != paramInt) && (!this.mmX))
     {
       if (paramInt != 8) {
         break label80;
       }
-      localObject = AnimationUtils.loadAnimation(getContext(), 2130772060);
+      localObject = AnimationUtils.loadAnimation(getContext(), a.a.fast_faded_out);
       startAnimation((Animation)localObject);
       super.setVisibility(paramInt);
-      if (this.jxr != null)
+      if (this.mmT != null)
       {
-        localObject = this.jxr;
+        localObject = this.mmT;
         if (paramInt != 0) {
           break label94;
         }
@@ -481,10 +486,10 @@ public class VoiceSearchLayout
     label94:
     for (boolean bool = true;; bool = false)
     {
-      ((VoiceSearchLayout.b)localObject).fX(bool);
+      ((b)localObject).gJ(bool);
       AppMethodBeat.o(148623);
       return;
-      localObject = AnimationUtils.loadAnimation(getContext(), 2130772059);
+      localObject = AnimationUtils.loadAnimation(getContext(), a.a.fast_faded_in);
       break;
     }
   }
@@ -493,9 +498,14 @@ public class VoiceSearchLayout
   {
     public abstract void a(boolean paramBoolean, String[] paramArrayOfString, long paramLong);
     
-    public abstract void biI();
+    public abstract void bsg();
     
-    public abstract void biJ();
+    public abstract void bsh();
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void gJ(boolean paramBoolean);
   }
 }
 

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_gravity="center" android:id="@id/i1e" android:background="@drawable/aw9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cp">
-        <TextView android:textSize="14.0dip" android:textColor="@color/Brand" android:id="@id/i1g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:layout_marginBottom="@dimen/bt" android:text="@string/hbt" android:layout_centerInParent="true" android:layout_marginStart="@dimen/ce" android:layout_marginEnd="@dimen/ce" />
+    <RelativeLayout android:layout_gravity="center" android:id="@id/i1e" android:background="@drawable/aw9" android:paddingLeft="@dimen/ce" android:paddingRight="@dimen/ce" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cn" android:layout_marginBottom="@dimen/cn">
+        <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/Brand" android:id="@id/i1g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hbt" android:layout_centerVertical="true" />
+        <com.tencent.mm.ui.widget.StoryAvatarDotsView android:id="@id/kiz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/ct" android:layout_marginBottom="@dimen/ct" android:layout_toRightOf="@id/i1g" android:layout_centerVertical="true" />
     </RelativeLayout>
     <View android:background="@drawable/a75" android:layout_width="fill_parent" android:layout_height="0.5dip" />
 </LinearLayout>

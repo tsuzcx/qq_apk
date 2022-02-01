@@ -44,6 +44,11 @@ public abstract class TinkerApplication
     this(paramInt, paramString, TinkerLoader.class.getName(), false, false);
   }
   
+  protected TinkerApplication(int paramInt, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    this(paramInt, paramString1, paramString2, paramBoolean, true);
+  }
+  
   protected TinkerApplication(int paramInt, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
     synchronized (SELF_HOLDER)
@@ -256,7 +261,7 @@ public abstract class TinkerApplication
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.loader.app.TinkerApplication
  * JD-Core Version:    0.7.0.1
  */

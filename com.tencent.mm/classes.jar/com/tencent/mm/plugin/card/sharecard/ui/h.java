@@ -3,27 +3,24 @@ package com.tencent.mm.plugin.card.sharecard.ui;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.a;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.plugin.card.base.c;
-import java.util.List;
 
 public final class h
   implements a
 {
-  private g pXA;
+  private g ttw;
   
   public h(g paramg)
   {
-    this.pXA = paramg;
+    this.ttw = paramg;
   }
   
-  public final b Ed(int paramInt)
+  public final b HE(int paramInt)
   {
     AppMethodBeat.i(113099);
-    if (this.pXA != null)
+    if (this.ttw != null)
     {
-      b localb = this.pXA.Ed(paramInt);
       AppMethodBeat.o(113099);
-      return localb;
+      throw null;
     }
     AppMethodBeat.o(113099);
     return null;
@@ -32,21 +29,17 @@ public final class h
   public final void onCreate()
   {
     AppMethodBeat.i(113096);
-    this.pXA.notifyDataSetChanged();
+    this.ttw.notifyDataSetChanged();
     AppMethodBeat.o(113096);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(113097);
-    if (this.pXA != null)
+    if (this.ttw != null)
     {
-      g localg = this.pXA;
-      localg.pXo.release();
-      localg.pXo = null;
-      localg.pXz.clear();
-      localg.mContext = null;
-      this.pXA = null;
+      AppMethodBeat.o(113097);
+      throw null;
     }
     AppMethodBeat.o(113097);
   }
@@ -54,8 +47,8 @@ public final class h
   public final void onNotify()
   {
     AppMethodBeat.i(113098);
-    if (this.pXA != null) {
-      this.pXA.notifyDataSetChanged();
+    if (this.ttw != null) {
+      this.ttw.notifyDataSetChanged();
     }
     AppMethodBeat.o(113098);
   }

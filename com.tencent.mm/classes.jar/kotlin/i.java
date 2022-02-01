@@ -3,14 +3,14 @@ package kotlin;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.a.a;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"lazy", "Lkotlin/Lazy;", "T", "initializer", "Lkotlin/Function0;", "lock", "", "mode", "Lkotlin/LazyThreadSafetyMode;", "kotlin-stdlib"}, hxG=1)
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"lazy", "Lkotlin/Lazy;", "T", "initializer", "Lkotlin/Function0;", "lock", "", "mode", "Lkotlin/LazyThreadSafetyMode;", "kotlin-stdlib"}, iBN=1)
 public class i
 {
   public static final <T> f<T> a(k paramk, a<? extends T> parama)
   {
     AppMethodBeat.i(129244);
-    kotlin.g.b.p.h(paramk, "mode");
-    kotlin.g.b.p.h(parama, "initializer");
+    kotlin.g.b.p.k(paramk, "mode");
+    kotlin.g.b.p.k(parama, "initializer");
     switch (h.$EnumSwitchMapping$0[paramk.ordinal()])
     {
     default: 
@@ -31,10 +31,10 @@ public class i
     return paramk;
   }
   
-  public static final <T> f<T> ah(a<? extends T> parama)
+  public static final <T> f<T> ar(a<? extends T> parama)
   {
     AppMethodBeat.i(129243);
-    kotlin.g.b.p.h(parama, "initializer");
+    kotlin.g.b.p.k(parama, "initializer");
     parama = (f)new q(parama, (byte)0);
     AppMethodBeat.o(129243);
     return parama;
@@ -42,7 +42,7 @@ public class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.i
  * JD-Core Version:    0.7.0.1
  */

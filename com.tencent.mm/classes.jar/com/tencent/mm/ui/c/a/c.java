@@ -16,110 +16,110 @@ import java.util.Set;
 final class c
   extends b
 {
-  long Cd;
-  boolean OMo;
-  boolean OMp;
-  boolean OMq;
-  Animator.AnimatorListener OMr;
-  a OMs;
-  ArrayList<b> OMt;
-  Runnable OMu;
-  HashMap<Animator, c> OMv;
-  final WeakReference<View> Rd;
+  final WeakReference<View> NQ;
+  boolean WfN;
+  boolean WfO;
+  boolean WfP;
+  Animator.AnimatorListener WfQ;
+  a WfR;
+  ArrayList<b> WfS;
+  Runnable WfT;
+  HashMap<Animator, c> WfU;
+  long arw;
   long mDuration;
   Interpolator mInterpolator;
   
   c(View paramView)
   {
-    AppMethodBeat.i(205166);
-    this.OMo = false;
-    this.Cd = 0L;
-    this.OMp = false;
-    this.OMq = false;
-    this.OMr = null;
-    this.OMs = new a();
-    this.OMt = new ArrayList();
-    this.OMu = new Runnable()
+    AppMethodBeat.i(199384);
+    this.WfN = false;
+    this.arw = 0L;
+    this.WfO = false;
+    this.WfP = false;
+    this.WfQ = null;
+    this.WfR = new a();
+    this.WfS = new ArrayList();
+    this.WfT = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(205159);
+        AppMethodBeat.i(216835);
         c.this.startAnimation();
-        AppMethodBeat.o(205159);
+        AppMethodBeat.o(216835);
       }
     };
-    this.OMv = new HashMap();
-    this.Rd = new WeakReference(paramView);
-    AppMethodBeat.o(205166);
+    this.WfU = new HashMap();
+    this.NQ = new WeakReference(paramView);
+    AppMethodBeat.o(199384);
   }
   
   private void A(int paramInt, float paramFloat)
   {
-    AppMethodBeat.i(205174);
-    float f = alo(paramInt);
+    AppMethodBeat.i(199403);
+    float f = aul(paramInt);
     e(paramInt, f, paramFloat - f);
-    AppMethodBeat.o(205174);
+    AppMethodBeat.o(199403);
   }
   
-  private float alo(int paramInt)
+  private float aul(int paramInt)
   {
-    AppMethodBeat.i(205176);
-    View localView = (View)this.Rd.get();
+    AppMethodBeat.i(199411);
+    View localView = (View)this.NQ.get();
     if (localView != null) {}
     switch (paramInt)
     {
     default: 
-      AppMethodBeat.o(205176);
+      AppMethodBeat.o(199411);
       return 0.0F;
     case 1: 
       f = localView.getTranslationX();
-      AppMethodBeat.o(205176);
+      AppMethodBeat.o(199411);
       return f;
     case 2: 
       f = localView.getTranslationY();
-      AppMethodBeat.o(205176);
+      AppMethodBeat.o(199411);
       return f;
     case 16: 
       f = localView.getRotation();
-      AppMethodBeat.o(205176);
+      AppMethodBeat.o(199411);
       return f;
     case 32: 
       f = localView.getRotationX();
-      AppMethodBeat.o(205176);
+      AppMethodBeat.o(199411);
       return f;
     case 64: 
       f = localView.getRotationY();
-      AppMethodBeat.o(205176);
+      AppMethodBeat.o(199411);
       return f;
     case 4: 
       f = localView.getScaleX();
-      AppMethodBeat.o(205176);
+      AppMethodBeat.o(199411);
       return f;
     case 8: 
       f = localView.getScaleY();
-      AppMethodBeat.o(205176);
+      AppMethodBeat.o(199411);
       return f;
     case 128: 
       f = localView.getX();
-      AppMethodBeat.o(205176);
+      AppMethodBeat.o(199411);
       return f;
     case 256: 
       f = localView.getY();
-      AppMethodBeat.o(205176);
+      AppMethodBeat.o(199411);
       return f;
     }
     float f = localView.getAlpha();
-    AppMethodBeat.o(205176);
+    AppMethodBeat.o(199411);
     return f;
   }
   
   private void e(int paramInt, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(205175);
+    AppMethodBeat.i(199404);
     Object localObject;
-    if (this.OMv.size() > 0)
+    if (this.WfU.size() > 0)
     {
-      Iterator localIterator = this.OMv.keySet().iterator();
+      Iterator localIterator = this.WfU.keySet().iterator();
       c localc;
       do
       {
@@ -127,8 +127,8 @@ final class c
           break;
         }
         localObject = (Animator)localIterator.next();
-        localc = (c)this.OMv.get(localObject);
-      } while ((!localc.alp(paramInt)) || (localc.OMA != 0));
+        localc = (c)this.WfU.get(localObject);
+      } while ((!localc.aum(paramInt)) || (localc.WfZ != 0));
     }
     for (;;)
     {
@@ -136,144 +136,152 @@ final class c
         ((Animator)localObject).cancel();
       }
       localObject = new b(paramInt, paramFloat1, paramFloat2);
-      this.OMt.add(localObject);
-      localObject = (View)this.Rd.get();
+      this.WfS.add(localObject);
+      localObject = (View)this.NQ.get();
       if (localObject != null)
       {
-        ((View)localObject).removeCallbacks(this.OMu);
-        ((View)localObject).post(this.OMu);
+        ((View)localObject).removeCallbacks(this.WfT);
+        ((View)localObject).post(this.WfT);
       }
-      AppMethodBeat.o(205175);
+      AppMethodBeat.o(199404);
       return;
       localObject = null;
     }
   }
   
-  public final b aJ(Runnable paramRunnable)
+  public final b Vw(long paramLong)
   {
-    AppMethodBeat.i(205177);
-    this.OMm = paramRunnable;
-    if (this.OMk == null) {
-      this.OMk = new HashMap();
+    AppMethodBeat.i(199386);
+    if (paramLong < 0L)
+    {
+      IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Animators cannot have negative duration: ".concat(String.valueOf(paramLong)));
+      AppMethodBeat.o(199386);
+      throw localIllegalArgumentException;
     }
-    AppMethodBeat.o(205177);
+    this.WfN = true;
+    this.mDuration = paramLong;
+    AppMethodBeat.o(199386);
     return this;
   }
   
-  public final b aK(Runnable paramRunnable)
+  public final b aP(Runnable paramRunnable)
   {
-    AppMethodBeat.i(205178);
-    this.OMl = paramRunnable;
-    if (this.OMj == null) {
-      this.OMj = new HashMap();
+    AppMethodBeat.i(199413);
+    this.WfL = paramRunnable;
+    if (this.WfJ == null) {
+      this.WfJ = new HashMap();
     }
-    AppMethodBeat.o(205178);
+    AppMethodBeat.o(199413);
+    return this;
+  }
+  
+  public final b aQ(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(199415);
+    this.WfK = paramRunnable;
+    if (this.WfI == null) {
+      this.WfI = new HashMap();
+    }
+    AppMethodBeat.o(199415);
     return this;
   }
   
   public final b c(Interpolator paramInterpolator)
   {
-    this.OMq = true;
+    this.WfP = true;
     this.mInterpolator = paramInterpolator;
     return this;
   }
   
-  public final b cn(float paramFloat)
+  public final b cE(float paramFloat)
   {
-    AppMethodBeat.i(205169);
+    AppMethodBeat.i(199393);
+    A(16, paramFloat);
+    AppMethodBeat.o(199393);
+    return this;
+  }
+  
+  public final b cF(float paramFloat)
+  {
+    AppMethodBeat.i(199394);
     A(1, paramFloat);
-    AppMethodBeat.o(205169);
+    AppMethodBeat.o(199394);
     return this;
   }
   
-  public final b co(float paramFloat)
+  public final b cG(float paramFloat)
   {
-    AppMethodBeat.i(205170);
+    AppMethodBeat.i(199396);
     A(2, paramFloat);
-    AppMethodBeat.o(205170);
+    AppMethodBeat.o(199396);
     return this;
   }
   
-  public final b cp(float paramFloat)
+  public final b cH(float paramFloat)
   {
-    AppMethodBeat.i(205171);
+    AppMethodBeat.i(199397);
     A(4, paramFloat);
-    AppMethodBeat.o(205171);
+    AppMethodBeat.o(199397);
     return this;
   }
   
-  public final b cq(float paramFloat)
+  public final b cI(float paramFloat)
   {
-    AppMethodBeat.i(205172);
+    AppMethodBeat.i(199399);
     A(8, paramFloat);
-    AppMethodBeat.o(205172);
-    return this;
-  }
-  
-  public final b gKg()
-  {
-    AppMethodBeat.i(205167);
-    if (250L < 0L)
-    {
-      IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Animators cannot have negative duration: 250");
-      AppMethodBeat.o(205167);
-      throw localIllegalArgumentException;
-    }
-    this.OMo = true;
-    this.mDuration = 250L;
-    AppMethodBeat.o(205167);
+    AppMethodBeat.o(199399);
     return this;
   }
   
   public final void start()
   {
-    AppMethodBeat.i(205168);
-    View localView = (View)this.Rd.get();
+    AppMethodBeat.i(199390);
+    View localView = (View)this.NQ.get();
     if (localView != null) {
-      localView.removeCallbacks(this.OMu);
+      localView.removeCallbacks(this.WfT);
     }
     startAnimation();
-    AppMethodBeat.o(205168);
+    AppMethodBeat.o(199390);
   }
   
   final void startAnimation()
   {
-    AppMethodBeat.i(205173);
+    AppMethodBeat.i(199402);
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F });
-    ArrayList localArrayList = (ArrayList)this.OMt.clone();
-    this.OMt.clear();
+    ArrayList localArrayList = (ArrayList)this.WfS.clone();
+    this.WfS.clear();
     int k = localArrayList.size();
     int i = 0;
     int j = 0;
     while (i < k)
     {
-      j |= ((b)localArrayList.get(i)).OMx;
+      j |= ((b)localArrayList.get(i)).WfW;
       i += 1;
     }
-    if (this.OMl != null)
+    if (this.WfK != null)
     {
-      this.OMj.put(localValueAnimator, this.OMl);
-      this.OMl = null;
+      this.WfI.put(localValueAnimator, this.WfK);
+      this.WfK = null;
     }
-    if (this.OMm != null)
+    if (this.WfL != null)
     {
-      this.OMk.put(localValueAnimator, this.OMm);
-      this.OMm = null;
+      this.WfJ.put(localValueAnimator, this.WfL);
+      this.WfL = null;
     }
-    this.OMv.put(localValueAnimator, new c(j, localArrayList));
-    localValueAnimator.addUpdateListener(this.OMs);
-    localValueAnimator.addListener(this.OMs);
-    if (this.OMp) {
-      localValueAnimator.setStartDelay(this.Cd);
+    this.WfU.put(localValueAnimator, new c(j, localArrayList));
+    localValueAnimator.addUpdateListener(this.WfR);
+    localValueAnimator.addListener(this.WfR);
+    if (this.WfO) {
+      localValueAnimator.setStartDelay(this.arw);
     }
-    if (this.OMo) {
+    if (this.WfN) {
       localValueAnimator.setDuration(this.mDuration);
     }
-    if (this.OMq) {
+    if (this.WfP) {
       localValueAnimator.setInterpolator(this.mInterpolator);
     }
     localValueAnimator.start();
-    AppMethodBeat.o(205173);
+    AppMethodBeat.o(199402);
   }
   
   final class a
@@ -283,80 +291,80 @@ final class c
     
     public final void onAnimationCancel(Animator paramAnimator)
     {
-      AppMethodBeat.i(205161);
-      if (c.this.OMr != null) {
-        c.this.OMr.onAnimationCancel(paramAnimator);
+      AppMethodBeat.i(221128);
+      if (c.this.WfQ != null) {
+        c.this.WfQ.onAnimationCancel(paramAnimator);
       }
-      if (c.this.OMk != null) {
-        c.this.OMk.remove(paramAnimator);
+      if (c.this.WfJ != null) {
+        c.this.WfJ.remove(paramAnimator);
       }
-      AppMethodBeat.o(205161);
+      AppMethodBeat.o(221128);
     }
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(205163);
-      if (c.this.OMr != null) {
-        c.this.OMr.onAnimationEnd(paramAnimator);
+      AppMethodBeat.i(221134);
+      if (c.this.WfQ != null) {
+        c.this.WfQ.onAnimationEnd(paramAnimator);
       }
-      if (c.this.OMk != null)
+      if (c.this.WfJ != null)
       {
-        Runnable localRunnable = (Runnable)c.this.OMk.get(paramAnimator);
+        Runnable localRunnable = (Runnable)c.this.WfJ.get(paramAnimator);
         if (localRunnable != null) {
           localRunnable.run();
         }
-        c.this.OMk.remove(paramAnimator);
+        c.this.WfJ.remove(paramAnimator);
       }
-      c.this.OMv.remove(paramAnimator);
-      if (c.this.OMv.isEmpty()) {
-        c.this.OMr = null;
+      c.this.WfU.remove(paramAnimator);
+      if (c.this.WfU.isEmpty()) {
+        c.this.WfQ = null;
       }
-      AppMethodBeat.o(205163);
+      AppMethodBeat.o(221134);
     }
     
     public final void onAnimationRepeat(Animator paramAnimator)
     {
-      AppMethodBeat.i(205162);
-      if (c.this.OMr != null) {
-        c.this.OMr.onAnimationRepeat(paramAnimator);
+      AppMethodBeat.i(221130);
+      if (c.this.WfQ != null) {
+        c.this.WfQ.onAnimationRepeat(paramAnimator);
       }
-      AppMethodBeat.o(205162);
+      AppMethodBeat.o(221130);
     }
     
     public final void onAnimationStart(Animator paramAnimator)
     {
-      AppMethodBeat.i(205160);
-      if (c.this.OMr != null) {
-        c.this.OMr.onAnimationStart(paramAnimator);
+      AppMethodBeat.i(221124);
+      if (c.this.WfQ != null) {
+        c.this.WfQ.onAnimationStart(paramAnimator);
       }
-      if (c.this.OMj != null)
+      if (c.this.WfI != null)
       {
-        Runnable localRunnable = (Runnable)c.this.OMj.get(paramAnimator);
+        Runnable localRunnable = (Runnable)c.this.WfI.get(paramAnimator);
         if (localRunnable != null) {
           localRunnable.run();
         }
-        c.this.OMj.remove(paramAnimator);
+        c.this.WfI.remove(paramAnimator);
       }
-      AppMethodBeat.o(205160);
+      AppMethodBeat.o(221124);
     }
     
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
-      AppMethodBeat.i(205164);
+      AppMethodBeat.i(221148);
       float f1 = paramValueAnimator.getAnimatedFraction();
-      if (c.this.OMn != null) {
-        c.this.OMn.by(f1);
+      if (c.this.WfM != null) {
+        c.this.WfM.bB(f1);
       }
-      paramValueAnimator = (c.c)c.this.OMv.get(paramValueAnimator);
+      paramValueAnimator = (c.c)c.this.WfU.get(paramValueAnimator);
       Object localObject;
-      if ((paramValueAnimator.OMA & 0x1FF) != 0)
+      if ((paramValueAnimator.WfZ & 0x1FF) != 0)
       {
-        localObject = (View)c.this.Rd.get();
+        localObject = (View)c.this.NQ.get();
         if (localObject != null) {
           ((View)localObject).invalidate();
         }
       }
-      paramValueAnimator = paramValueAnimator.OMB;
+      paramValueAnimator = paramValueAnimator.Wga;
       if (paramValueAnimator != null)
       {
         int j = paramValueAnimator.size();
@@ -364,10 +372,10 @@ final class c
         if (i < j)
         {
           localObject = (c.b)paramValueAnimator.get(i);
-          float f2 = ((c.b)localObject).OMy + ((c.b)localObject).OMz * f1;
+          float f2 = ((c.b)localObject).WfX + ((c.b)localObject).WfY * f1;
           c localc = c.this;
-          int k = ((c.b)localObject).OMx;
-          localObject = (View)localc.Rd.get();
+          int k = ((c.b)localObject).WfW;
+          localObject = (View)localc.NQ.get();
           if (localObject != null) {
             switch (k)
             {
@@ -399,66 +407,66 @@ final class c
           }
         }
       }
-      paramValueAnimator = (View)c.this.Rd.get();
+      paramValueAnimator = (View)c.this.NQ.get();
       if (paramValueAnimator != null) {
         paramValueAnimator.invalidate();
       }
-      AppMethodBeat.o(205164);
+      AppMethodBeat.o(221148);
     }
   }
   
   static final class b
   {
-    int OMx;
-    float OMy;
-    float OMz;
+    int WfW;
+    float WfX;
+    float WfY;
     
     b(int paramInt, float paramFloat1, float paramFloat2)
     {
-      this.OMx = paramInt;
-      this.OMy = paramFloat1;
-      this.OMz = paramFloat2;
+      this.WfW = paramInt;
+      this.WfX = paramFloat1;
+      this.WfY = paramFloat2;
     }
   }
   
   static final class c
   {
-    int OMA;
-    ArrayList<c.b> OMB;
+    int WfZ;
+    ArrayList<c.b> Wga;
     
     c(int paramInt, ArrayList<c.b> paramArrayList)
     {
-      this.OMA = paramInt;
-      this.OMB = paramArrayList;
+      this.WfZ = paramInt;
+      this.Wga = paramArrayList;
     }
     
-    final boolean alp(int paramInt)
+    final boolean aum(int paramInt)
     {
-      AppMethodBeat.i(205165);
-      if (((this.OMA & paramInt) != 0) && (this.OMB != null))
+      AppMethodBeat.i(188823);
+      if (((this.WfZ & paramInt) != 0) && (this.Wga != null))
       {
-        int j = this.OMB.size();
+        int j = this.Wga.size();
         int i = 0;
         while (i < j)
         {
-          if (((c.b)this.OMB.get(i)).OMx == paramInt)
+          if (((c.b)this.Wga.get(i)).WfW == paramInt)
           {
-            this.OMB.remove(i);
-            this.OMA &= (paramInt ^ 0xFFFFFFFF);
-            AppMethodBeat.o(205165);
+            this.Wga.remove(i);
+            this.WfZ &= (paramInt ^ 0xFFFFFFFF);
+            AppMethodBeat.o(188823);
             return true;
           }
           i += 1;
         }
       }
-      AppMethodBeat.o(205165);
+      AppMethodBeat.o(188823);
       return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.c.a.c
  * JD-Core Version:    0.7.0.1
  */

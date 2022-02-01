@@ -4,21 +4,19 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.view.Window;
+import androidx.appcompat.app.ActionBar;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.megavideo.uic.FinderMegaVideoFavTLUIC;
-import com.tencent.mm.plugin.finder.megavideo.uic.FinderMegaVideoLikeTLUIC;
-import com.tencent.mm.plugin.finder.megavideo.uic.FinderMegaVideoNormalTLUIC;
-import com.tencent.mm.plugin.finder.megavideo.uic.FinderMegaVideoProfileTLUIC;
-import com.tencent.mm.plugin.finder.megavideo.uic.FinderMegaVideoShareTLUIC;
+import com.tencent.mm.plugin.finder.b.a;
+import com.tencent.mm.plugin.finder.b.c;
+import com.tencent.mm.plugin.finder.megavideo.uic.b;
+import com.tencent.mm.plugin.finder.megavideo.uic.e;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderCommentDrawerUIC;
+import com.tencent.mm.plugin.finder.viewmodel.component.j;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.statusbar.d;
 import java.util.HashMap;
 import java.util.Set;
 import kotlin.a.ak;
@@ -26,38 +24,38 @@ import kotlin.g.b.p;
 import kotlin.l;
 
 @a(32)
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLongVideoTimelineUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "router", "", "getRouter", "()I", "setRouter", "(I)V", "getCommentScene", "getForceOrientation", "getReportType", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLongVideoTimelineUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "router", "", "getRouter", "()I", "setRouter", "(I)V", "getCommentScene", "getForceOrientation", "getReportType", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onBackPressed", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "plugin-finder_release"})
 public class FinderLongVideoTimelineUI
   extends MMFinderUI
 {
-  public static final a ubS;
+  public static final a xQK;
   private HashMap _$_findViewCache;
-  private int ubR;
+  public int xQJ;
   
   static
   {
-    AppMethodBeat.i(245432);
-    ubS = new a((byte)0);
-    AppMethodBeat.o(245432);
+    AppMethodBeat.i(285807);
+    xQK = new a((byte)0);
+    AppMethodBeat.o(285807);
   }
   
   public FinderLongVideoTimelineUI()
   {
-    this.vPS = true;
+    this.AwU = true;
   }
   
   public void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(245434);
+    AppMethodBeat.i(285809);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(245434);
+    AppMethodBeat.o(285809);
   }
   
   public View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(245433);
+    AppMethodBeat.i(285808);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -68,20 +66,20 @@ public class FinderLongVideoTimelineUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(245433);
+    AppMethodBeat.o(285808);
     return localView1;
   }
   
-  public final int ddN()
+  public final int duR()
   {
     return 4;
   }
   
   public final int getCommentScene()
   {
-    AppMethodBeat.i(245431);
-    int i = a.IS(this.ubR);
-    AppMethodBeat.o(245431);
+    AppMethodBeat.i(285806);
+    int i = a.MP(this.xQJ);
+    AppMethodBeat.o(285806);
     return i;
   }
   
@@ -92,49 +90,57 @@ public class FinderLongVideoTimelineUI
   
   public Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(245429);
-    this.ubR = getIntent().getIntExtra("KEY_ROUTER_UI", 0);
+    AppMethodBeat.i(285802);
+    this.xQJ = getIntent().getIntExtra("KEY_ROUTER_UI", 0);
     Object localObject;
-    switch (this.ubR)
+    switch (this.xQJ)
     {
+    case 4: 
     default: 
-      localObject = FinderMegaVideoNormalTLUIC.class;
+      localObject = com.tencent.mm.plugin.finder.megavideo.uic.d.class;
     }
     for (;;)
     {
-      localObject = ak.setOf(new Class[] { localObject, FinderCommentDrawerUIC.class });
-      AppMethodBeat.o(245429);
+      localObject = ak.setOf(new Class[] { localObject, j.class });
+      AppMethodBeat.o(285802);
       return localObject;
-      localObject = FinderMegaVideoNormalTLUIC.class;
+      localObject = com.tencent.mm.plugin.finder.megavideo.uic.d.class;
       continue;
-      localObject = FinderMegaVideoFavTLUIC.class;
+      localObject = b.class;
       continue;
-      localObject = FinderMegaVideoLikeTLUIC.class;
+      localObject = com.tencent.mm.plugin.finder.megavideo.uic.c.class;
       continue;
-      localObject = FinderMegaVideoProfileTLUIC.class;
+      localObject = e.class;
       continue;
-      localObject = FinderMegaVideoShareTLUIC.class;
-      continue;
-      localObject = FinderMegaVideoNormalTLUIC.class;
+      localObject = com.tencent.mm.plugin.finder.megavideo.uic.d.class;
     }
+  }
+  
+  public void onBackPressed()
+  {
+    AppMethodBeat.i(285805);
+    super.onBackPressed();
+    overridePendingTransition(b.a.anim_not_change, b.a.sight_slide_bottom_out);
+    AppMethodBeat.o(285805);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(245430);
+    AppMethodBeat.i(285804);
     super.onCreate(paramBundle);
     paramBundle = getWindow();
-    p.g(paramBundle, "window");
+    p.j(paramBundle, "window");
     paramBundle = paramBundle.getDecorView();
-    p.g(paramBundle, "window.decorView");
+    p.j(paramBundle, "window.decorView");
     paramBundle.setSystemUiVisibility(1792);
-    d.e(getWindow());
+    com.tencent.mm.ui.statusbar.d.e(getWindow());
     paramBundle = getSupportActionBar();
     if (paramBundle != null) {
       paramBundle.hide();
     }
-    setNavigationbarColor(getResources().getColor(2131101287));
-    AppMethodBeat.o(245430);
+    setNavigationbarColor(getResources().getColor(b.c.transparent));
+    com.tencent.mm.danmaku.a.c.h(getApplication());
+    AppMethodBeat.o(285804);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -143,10 +149,10 @@ public class FinderLongVideoTimelineUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLongVideoTimelineUI$Companion;", "", "()V", "TAG", "", "getMegaVideoCommentScene", "", "router", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLongVideoTimelineUI$Companion;", "", "()V", "TAG", "", "getMegaVideoCommentScene", "", "router", "plugin-finder_release"})
   public static final class a
   {
-    public static int IS(int paramInt)
+    public static int MP(int paramInt)
     {
       int i = 45;
       switch (paramInt)

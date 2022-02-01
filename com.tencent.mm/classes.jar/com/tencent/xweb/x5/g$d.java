@@ -7,19 +7,19 @@ import com.tencent.xweb.x.a;
 public final class g$d
   extends x.a
 {
-  public WebChromeClient.FileChooserParams SFe;
+  public WebChromeClient.FileChooserParams aagp;
   
   public g$d(WebChromeClient.FileChooserParams paramFileChooserParams)
   {
-    this.SFe = paramFileChooserParams;
+    this.aagp = paramFileChooserParams;
   }
   
   public final String[] getAcceptTypes()
   {
     AppMethodBeat.i(153851);
-    if (this.SFe != null)
+    if (this.aagp != null)
     {
-      String[] arrayOfString = this.SFe.getAcceptTypes();
+      String[] arrayOfString = this.aagp.getAcceptTypes();
       AppMethodBeat.o(153851);
       return arrayOfString;
     }
@@ -30,9 +30,9 @@ public final class g$d
   public final int getMode()
   {
     AppMethodBeat.i(153850);
-    if (this.SFe != null)
+    if (this.aagp != null)
     {
-      int i = this.SFe.getMode();
+      int i = this.aagp.getMode();
       AppMethodBeat.o(153850);
       return i;
     }
@@ -43,9 +43,9 @@ public final class g$d
   public final boolean isCaptureEnabled()
   {
     AppMethodBeat.i(153852);
-    if (this.SFe != null)
+    if (this.aagp != null)
     {
-      boolean bool = this.SFe.isCaptureEnabled();
+      boolean bool = this.aagp.isCaptureEnabled();
       AppMethodBeat.o(153852);
       return bool;
     }
@@ -55,7 +55,7 @@ public final class g$d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.x5.g.d
  * JD-Core Version:    0.7.0.1
  */

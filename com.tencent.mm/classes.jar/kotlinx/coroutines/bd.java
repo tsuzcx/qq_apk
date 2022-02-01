@@ -1,39 +1,38 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.concurrent.Future;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/DisposeOnCancel;", "Lkotlinx/coroutines/CancelHandler;", "handle", "Lkotlinx/coroutines/DisposableHandle;", "(Lkotlinx/coroutines/DisposableHandle;)V", "invoke", "", "cause", "", "toString", "", "kotlinx-coroutines-core"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/DisposableFutureHandle;", "Lkotlinx/coroutines/DisposableHandle;", "future", "Ljava/util/concurrent/Future;", "(Ljava/util/concurrent/Future;)V", "dispose", "", "toString", "", "kotlinx-coroutines-core"})
 final class bd
-  extends i
+  implements be
 {
-  private final bc TTy;
+  private final Future<?> fuk;
   
-  public bd(bc parambc)
+  public bd(Future<?> paramFuture)
   {
-    AppMethodBeat.i(118047);
-    this.TTy = parambc;
-    AppMethodBeat.o(118047);
+    this.fuk = paramFuture;
+  }
+  
+  public final void dispose()
+  {
+    AppMethodBeat.i(204761);
+    this.fuk.cancel(false);
+    AppMethodBeat.o(204761);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(118046);
-    String str = "DisposeOnCancel[" + this.TTy + ']';
-    AppMethodBeat.o(118046);
+    AppMethodBeat.i(204764);
+    String str = "DisposableFutureHandle[" + this.fuk + ']';
+    AppMethodBeat.o(204764);
     return str;
-  }
-  
-  public final void y(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118044);
-    this.TTy.dispose();
-    AppMethodBeat.o(118044);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.bd
  * JD-Core Version:    0.7.0.1
  */

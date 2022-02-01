@@ -1,76 +1,83 @@
 package com.tencent.mm.ui.conversation.a;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
-import com.tencent.mm.g.a.df;
-import com.tencent.mm.n.f;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IListener;
-import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.model.bp;
+import com.tencent.mm.model.bp.b;
+import com.tencent.mm.pluginsdk.ui.b.a;
+import com.tencent.mm.pluginsdk.ui.b.b;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class j
-  extends com.tencent.mm.pluginsdk.ui.b.b
+  extends b
 {
-  private IListener OAS;
-  View Qif;
-  int showFlag;
+  LinearLayout XFo;
   
   public j(final Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(38794);
-    this.Qif = View.inflate(paramContext, 2131495080, null);
-    if (this.Qif == null)
+    AppMethodBeat.i(38799);
+    this.XFo = null;
+    this.XFo = new LinearLayout(paramContext);
+    this.XFo.setVisibility(8);
+    bp.beO().ltZ = new bp.b()
     {
-      AppMethodBeat.o(38794);
-      return;
-    }
-    this.showFlag = Util.getInt(com.tencent.mm.n.h.aqJ().getValue("InviteFriendsControlFlags"), 0);
-    this.Qif.setVisibility(8);
-    this.Qif.setPadding(0, -com.tencent.mm.cb.a.fromDPToPix(paramContext, 2131165533), 0, 0);
-    if ((this.showFlag & 0x1) > 0)
-    {
-      this.Qif.setVisibility(0);
-      this.Qif.setPadding(0, 0, 0, 0);
-    }
-    this.Qif.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
+      public final void onNotify()
       {
-        AppMethodBeat.i(38791);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/banner/InviteFriendBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        paramAnonymousView = new Intent();
-        paramAnonymousView.putExtra("Invite_friends", 1);
-        c.b(paramContext, "subapp", ".ui.pluginapp.InviteFriendsBy3rdUI", paramAnonymousView);
-        com.tencent.mm.plugin.report.service.h.CyF.a(14034, new Object[] { Integer.valueOf(1) });
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/conversation/banner/InviteFriendBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(38791);
+        AppMethodBeat.i(38798);
+        j.this.XFo.post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(38797);
+            if (j.this.XFo != null)
+            {
+              j.this.XFo.setVisibility(8);
+              j.this.XFo.removeAllViews();
+            }
+            a locala = e.a(j.1.this.val$context, e.a.XFa, null);
+            Object localObject = locala;
+            if (locala == null) {
+              localObject = e.a(j.1.this.val$context, e.a.XER, null);
+            }
+            if ((localObject != null) && (((a)localObject).getView() != null))
+            {
+              Log.i("MicroMsg.MainFrameAndAbtestBanner", "summerinit MainFrameBannerStorage onNotify banner[%s], view[%s]", new Object[] { localObject, ((a)localObject).getView() });
+              j.this.XFo.setVisibility(0);
+              localObject = ((a)localObject).getView();
+              j.this.XFo.addView((View)localObject, new LinearLayout.LayoutParams(-1, -2));
+            }
+            AppMethodBeat.o(38797);
+          }
+        });
+        AppMethodBeat.o(38798);
       }
-    });
-    this.OAS = new IListener() {};
-    AppMethodBeat.o(38794);
+    };
+    bp.beO().ltZ.onNotify();
+    AppMethodBeat.o(38799);
   }
   
-  public final boolean bYa()
+  public final boolean ckL()
   {
-    AppMethodBeat.i(38795);
-    EventCenter.instance.addListener(this.OAS);
-    if ((this.Qif != null) && (this.Qif.getVisibility() == 0))
+    AppMethodBeat.i(38800);
+    if ((this.XFo != null) && (this.XFo.getVisibility() == 0))
     {
-      AppMethodBeat.o(38795);
+      AppMethodBeat.o(38800);
       return true;
     }
-    AppMethodBeat.o(38795);
+    AppMethodBeat.o(38800);
     return false;
   }
   
-  public final void destroy() {}
+  public final void destroy()
+  {
+    AppMethodBeat.i(38801);
+    bp.beO().ltZ = null;
+    AppMethodBeat.o(38801);
+  }
   
   public final int getLayoutId()
   {
@@ -79,19 +86,12 @@ public final class j
   
   public final View getView()
   {
-    return this.Qif;
-  }
-  
-  public final void release()
-  {
-    AppMethodBeat.i(38796);
-    EventCenter.instance.removeListener(this.OAS);
-    AppMethodBeat.o(38796);
+    return this.XFo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.a.j
  * JD-Core Version:    0.7.0.1
  */

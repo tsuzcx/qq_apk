@@ -8,26 +8,26 @@ public final class b
   extends Writer
   implements Serializable
 {
-  private final StringBuilder EjO;
+  private final StringBuilder KwX;
   
   public b()
   {
     AppMethodBeat.i(10311);
-    this.EjO = new StringBuilder();
+    this.KwX = new StringBuilder();
     AppMethodBeat.o(10311);
   }
   
   public b(byte paramByte)
   {
     AppMethodBeat.i(10312);
-    this.EjO = new StringBuilder(4);
+    this.KwX = new StringBuilder(4);
     AppMethodBeat.o(10312);
   }
   
   public final Writer append(char paramChar)
   {
     AppMethodBeat.i(10313);
-    this.EjO.append(paramChar);
+    this.KwX.append(paramChar);
     AppMethodBeat.o(10313);
     return this;
   }
@@ -35,7 +35,7 @@ public final class b
   public final Writer append(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(10314);
-    this.EjO.append(paramCharSequence);
+    this.KwX.append(paramCharSequence);
     AppMethodBeat.o(10314);
     return this;
   }
@@ -43,7 +43,7 @@ public final class b
   public final Writer append(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(10315);
-    this.EjO.append(paramCharSequence, paramInt1, paramInt2);
+    this.KwX.append(paramCharSequence, paramInt1, paramInt2);
     AppMethodBeat.o(10315);
     return this;
   }
@@ -55,7 +55,7 @@ public final class b
   public final String toString()
   {
     AppMethodBeat.i(10318);
-    String str = this.EjO.toString();
+    String str = this.KwX.toString();
     AppMethodBeat.o(10318);
     return str;
   }
@@ -64,7 +64,7 @@ public final class b
   {
     AppMethodBeat.i(10316);
     if (paramString != null) {
-      this.EjO.append(paramString);
+      this.KwX.append(paramString);
     }
     AppMethodBeat.o(10316);
   }
@@ -73,14 +73,14 @@ public final class b
   {
     AppMethodBeat.i(10317);
     if (paramArrayOfChar != null) {
-      this.EjO.append(paramArrayOfChar, paramInt1, paramInt2);
+      this.KwX.append(paramArrayOfChar, paramInt1, paramInt2);
     }
     AppMethodBeat.o(10317);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.apache.commons.a.a.b
  * JD-Core Version:    0.7.0.1
  */

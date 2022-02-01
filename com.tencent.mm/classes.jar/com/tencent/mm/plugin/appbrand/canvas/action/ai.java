@@ -33,7 +33,7 @@ public final class ai
       AppMethodBeat.o(144984);
       return false;
     }
-    boolean bool = a(paramCanvas, paramd.scaleX, paramd.kZS, paramd.kZT, paramd.scaleY, paramd.translateX, paramd.translateY);
+    boolean bool = a(paramCanvas, paramd.scaleX, paramd.nUd, paramd.nUe, paramd.scaleY, paramd.translateX, paramd.translateY);
     AppMethodBeat.o(144984);
     return bool;
   }
@@ -59,7 +59,7 @@ public final class ai
     return false;
   }
   
-  public final BaseDrawActionArg bzj()
+  public final BaseDrawActionArg bKy()
   {
     AppMethodBeat.i(144981);
     SetTransformActionArg localSetTransformActionArg = new SetTransformActionArg();
@@ -74,7 +74,7 @@ public final class ai
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.ai
  * JD-Core Version:    0.7.0.1
  */

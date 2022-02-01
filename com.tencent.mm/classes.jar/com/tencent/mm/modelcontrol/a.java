@@ -5,16 +5,16 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
-  private static g[] iSD;
+  private static g[] lIV;
   
   static
   {
     AppMethodBeat.i(126746);
-    iSD = null;
+    lIV = null;
     g[] arrayOfg = new g[2];
-    iSD = arrayOfg;
+    lIV = arrayOfg;
     arrayOfg[0] = new g(0, 120, 540, 960, 30, 1200000, 1200000);
-    iSD[1] = new g(120, 300, 360, 640, 24, 544000, 544000);
+    lIV[1] = new g(120, 300, 360, 640, 24, 544000, 544000);
     AppMethodBeat.o(126746);
   }
   
@@ -28,7 +28,7 @@ public final class a
     try
     {
       if (paramArrayOfg.length <= 0) {
-        arrayOfg = iSD;
+        arrayOfg = lIV;
       }
       n = arrayOfg.length;
       paramVideoTransPara2.width = paramVideoTransPara1.width;
@@ -51,10 +51,10 @@ public final class a
       j = paramVideoTransPara1.height;
       label102:
       i1 = paramVideoTransPara1.duration;
-      if (paramVideoTransPara2.duration < arrayOfg[(n - 1)].iSZ) {
+      if (paramVideoTransPara2.duration < arrayOfg[(n - 1)].lJr) {
         break label855;
       }
-      if (paramVideoTransPara2.duration >= iSD[1].iSZ) {
+      if (paramVideoTransPara2.duration >= lIV[1].lJr) {
         break label794;
       }
     }
@@ -133,10 +133,10 @@ public final class a
       }
     }
     if (m < n) {
-      if ((i1 >= arrayOfg[m].iSY) && (i1 < arrayOfg[m].iSZ))
+      if ((i1 >= arrayOfg[m].lJq) && (i1 < arrayOfg[m].lJr))
       {
-        i1 = arrayOfg[m].iTa;
-        i2 = arrayOfg[m].iTb;
+        i1 = arrayOfg[m].lJs;
+        i2 = arrayOfg[m].lJt;
         if (i <= i1) {
           if (j > i2)
           {
@@ -151,12 +151,12 @@ public final class a
                 break label923;
               }
               paramVideoTransPara2.height = i;
-              if (paramVideoTransPara2.fps <= arrayOfg[m].iTc) {
+              if (paramVideoTransPara2.fps <= arrayOfg[m].lJu) {
                 break label462;
               }
-              i = arrayOfg[m].iTc;
+              i = arrayOfg[m].lJu;
               paramVideoTransPara2.fps = i;
-              paramVideoTransPara2.videoBitrate = ((int)((arrayOfg[m].iTd * arrayOfg[m].iSZ + arrayOfg[m].iTe * paramVideoTransPara2.duration - arrayOfg[m].iTd * paramVideoTransPara2.duration - arrayOfg[m].iTe * arrayOfg[m].iSY) / (arrayOfg[m].iSZ - arrayOfg[m].iSY) * Math.sqrt(1.0D * (paramVideoTransPara2.width * paramVideoTransPara2.height) / (arrayOfg[m].iTa * arrayOfg[m].iTb)) * (paramVideoTransPara2.fps + 10) / 40.0D));
+              paramVideoTransPara2.videoBitrate = ((int)((arrayOfg[m].lJv * arrayOfg[m].lJr + arrayOfg[m].lJw * paramVideoTransPara2.duration - arrayOfg[m].lJv * paramVideoTransPara2.duration - arrayOfg[m].lJw * arrayOfg[m].lJq) / (arrayOfg[m].lJr - arrayOfg[m].lJq) * Math.sqrt(1.0D * (paramVideoTransPara2.width * paramVideoTransPara2.height) / (arrayOfg[m].lJs * arrayOfg[m].lJt)) * (paramVideoTransPara2.fps + 10) / 40.0D));
               i = paramVideoTransPara2.videoBitrate;
             }
             for (;;)
@@ -179,10 +179,10 @@ public final class a
                 if (m >= 2) {
                   break label794;
                 }
-                if ((i1 >= iSD[m].iSY) && (i1 < iSD[m].iSZ))
+                if ((i1 >= lIV[m].lJq) && (i1 < lIV[m].lJr))
                 {
-                  i1 = iSD[m].iTa;
-                  i2 = iSD[m].iTb;
+                  i1 = lIV[m].lJs;
+                  i2 = lIV[m].lJt;
                   if (i > i1) {
                     break label944;
                   }
@@ -200,14 +200,14 @@ public final class a
                       break label1006;
                     }
                     paramVideoTransPara2.height = i;
-                    if (paramVideoTransPara2.fps <= iSD[m].iTc) {
+                    if (paramVideoTransPara2.fps <= lIV[m].lJu) {
                       break label777;
                     }
                   }
-                  for (i = iSD[m].iTc;; i = paramVideoTransPara2.fps)
+                  for (i = lIV[m].lJu;; i = paramVideoTransPara2.fps)
                   {
                     paramVideoTransPara2.fps = i;
-                    paramVideoTransPara2.videoBitrate = ((int)((iSD[m].iTd * iSD[m].iSZ + iSD[m].iTe * paramVideoTransPara2.duration - iSD[m].iTd * paramVideoTransPara2.duration - iSD[m].iTe * iSD[m].iSY) / (iSD[m].iSZ - iSD[m].iSY) * Math.sqrt(1.0D * (paramVideoTransPara2.width * paramVideoTransPara2.height) / (iSD[m].iTa * iSD[m].iTb)) * (paramVideoTransPara2.fps + 10) / 40.0D));
+                    paramVideoTransPara2.videoBitrate = ((int)((lIV[m].lJv * lIV[m].lJr + lIV[m].lJw * paramVideoTransPara2.duration - lIV[m].lJv * paramVideoTransPara2.duration - lIV[m].lJw * lIV[m].lJq) / (lIV[m].lJr - lIV[m].lJq) * Math.sqrt(1.0D * (paramVideoTransPara2.width * paramVideoTransPara2.height) / (lIV[m].lJs * lIV[m].lJt)) * (paramVideoTransPara2.fps + 10) / 40.0D));
                     i = paramVideoTransPara2.videoBitrate;
                     break;
                     j = i * i2 / j;
@@ -227,7 +227,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.modelcontrol.a
  * JD-Core Version:    0.7.0.1
  */

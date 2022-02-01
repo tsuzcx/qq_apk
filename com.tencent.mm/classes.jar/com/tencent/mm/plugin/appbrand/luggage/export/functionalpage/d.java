@@ -7,20 +7,20 @@ import kotlin.n.n;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"makeReturnJson", "", "apiName", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"makeReturnJson", "", "apiName", "plugin-appbrand-integration_release"})
 public final class d
 {
-  static final String en(String paramString1, String paramString2)
+  static final String eB(String paramString1, String paramString2)
   {
     int i = 0;
-    AppMethodBeat.i(228833);
+    AppMethodBeat.i(276611);
     for (;;)
     {
       try
       {
         String str = new JSONObject(paramString1).getString("errMsg");
-        p.g(str, "this.getString(\"errMsg\")");
-        boolean bool = n.J(str, paramString2 + ':', false);
+        p.j(str, "this.getString(\"errMsg\")");
+        boolean bool = n.M(str, paramString2 + ':', false);
         if (!bool) {
           break label129;
         }
@@ -29,14 +29,14 @@ public final class d
       {
         i = 1;
         continue;
-        AppMethodBeat.o(228833);
+        AppMethodBeat.o(276611);
         return paramString1;
       }
       if (i != 0)
       {
         paramString1 = new JSONObject().put("errMsg", paramString2 + ':' + paramString1).toString();
-        p.g(paramString1, "JSONObject().put(\"errMsg…ame}:${this}\").toString()");
-        AppMethodBeat.o(228833);
+        p.j(paramString1, "JSONObject().put(\"errMsg…ame}:${this}\").toString()");
+        AppMethodBeat.o(276611);
         return paramString1;
       }
       label129:

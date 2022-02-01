@@ -12,24 +12,26 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.g;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public class LoadingMoreView
   extends LinearLayout
 {
-  protected LinearLayout ErQ;
-  protected TextView ErR;
-  Animation ErS;
+  protected LinearLayout KFl;
+  protected TextView KFm;
+  Animation KFn;
   private Context context;
-  ImageView dPk;
-  protected LinearLayout pXt;
-  protected LinearLayout pXu;
+  ImageView fIv;
+  protected LinearLayout ttq;
+  protected LinearLayout ttr;
   
   public LoadingMoreView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(97931);
-    this.ErS = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
+    this.KFn = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
     this.context = paramContext;
     init();
     AppMethodBeat.o(97931);
@@ -39,7 +41,7 @@ public class LoadingMoreView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(97930);
-    this.ErS = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
+    this.KFn = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
     this.context = paramContext;
     init();
     AppMethodBeat.o(97930);
@@ -48,52 +50,52 @@ public class LoadingMoreView
   private void init()
   {
     AppMethodBeat.i(97932);
-    Object localObject = LayoutInflater.from(this.context).inflate(2131496467, this, true);
-    this.dPk = ((ImageView)findViewById(2131296671));
-    this.pXt = ((LinearLayout)((View)localObject).findViewById(2131303707));
-    this.pXu = ((LinearLayout)((View)localObject).findViewById(2131303700));
-    this.ErQ = ((LinearLayout)((View)localObject).findViewById(2131306616));
-    this.ErR = ((TextView)((View)localObject).findViewById(2131306617));
-    this.pXt.setVisibility(0);
-    this.pXu.setVisibility(8);
-    this.ErQ.setVisibility(8);
-    this.ErS.setDuration(1000L);
-    this.ErS.setRepeatCount(-1);
+    Object localObject = LayoutInflater.from(this.context).inflate(i.g.sns_next_loading, this, true);
+    this.fIv = ((ImageView)findViewById(i.f.album_next_progress));
+    this.ttq = ((LinearLayout)((View)localObject).findViewById(i.f.loading_more_state));
+    this.ttr = ((LinearLayout)((View)localObject).findViewById(i.f.loading_end));
+    this.KFl = ((LinearLayout)((View)localObject).findViewById(i.f.recent_limit));
+    this.KFm = ((TextView)((View)localObject).findViewById(i.f.recent_limit_text));
+    this.ttq.setVisibility(0);
+    this.ttr.setVisibility(8);
+    this.KFl.setVisibility(8);
+    this.KFn.setDuration(1000L);
+    this.KFn.setRepeatCount(-1);
     localObject = new LinearInterpolator();
-    this.ErS.setInterpolator((Interpolator)localObject);
-    this.dPk.startAnimation(this.ErS);
+    this.KFn.setInterpolator((Interpolator)localObject);
+    this.fIv.startAnimation(this.KFn);
     AppMethodBeat.o(97932);
   }
   
-  public final void PL()
+  public final void Tk()
   {
     AppMethodBeat.i(97933);
-    this.pXt.setVisibility(0);
-    this.pXu.setVisibility(8);
-    this.ErQ.setVisibility(8);
+    this.ttq.setVisibility(0);
+    this.ttr.setVisibility(8);
+    this.KFl.setVisibility(8);
     AppMethodBeat.o(97933);
   }
   
-  public final void aQU(String paramString)
+  public final void bbU(String paramString)
   {
     AppMethodBeat.i(97934);
-    this.pXt.setVisibility(8);
+    this.ttq.setVisibility(8);
     if (Util.isNullOrNil(paramString))
     {
-      this.pXu.setVisibility(0);
-      this.ErQ.setVisibility(8);
+      this.ttr.setVisibility(0);
+      this.KFl.setVisibility(8);
       AppMethodBeat.o(97934);
       return;
     }
-    this.ErQ.setVisibility(0);
-    this.pXu.setVisibility(8);
-    this.ErR.setText(paramString);
+    this.KFl.setVisibility(0);
+    this.ttr.setVisibility(8);
+    this.KFm.setText(paramString);
     AppMethodBeat.o(97934);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.LoadingMoreView
  * JD-Core Version:    0.7.0.1
  */

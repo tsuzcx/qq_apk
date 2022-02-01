@@ -21,11 +21,11 @@ import java.util.Map;
 public final class WWAPIImpl
   implements IWWAPI
 {
-  private static final ArrayList<String> Sxg;
-  private static final ArrayList<String> Sxh;
-  private static boolean tUq;
-  private String Sxf;
-  private BroadcastReceiver Sxi;
+  private static final ArrayList<String> ZYg;
+  private static final ArrayList<String> ZYh;
+  private static boolean xFl;
+  private String ZYf;
+  private BroadcastReceiver ZYi;
   private Map<String, Object> callbacks;
   private Context context;
   private SharedPreferences mPreferences;
@@ -33,9 +33,9 @@ public final class WWAPIImpl
   static
   {
     AppMethodBeat.i(106537);
-    Sxg = new WWAPIImpl.1();
-    Sxh = new WWAPIImpl.2();
-    tUq = false;
+    ZYg = new ArrayList() {};
+    ZYh = new ArrayList() {};
+    xFl = false;
     AppMethodBeat.o(106537);
   }
   
@@ -43,48 +43,48 @@ public final class WWAPIImpl
   {
     AppMethodBeat.i(106530);
     this.callbacks = new HashMap();
-    this.Sxi = new BroadcastReceiver()
+    this.ZYi = new BroadcastReceiver()
     {
       public void onReceive(final Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
-        AppMethodBeat.i(198984);
+        AppMethodBeat.i(233284);
         try
         {
           boolean bool = WWAPIImpl.a(WWAPIImpl.this).equals(paramAnonymousIntent.getScheme());
           if (!bool)
           {
-            AppMethodBeat.o(198984);
+            AppMethodBeat.o(233284);
             return;
           }
-          paramAnonymousContext = BaseMessage.A(paramAnonymousIntent.getData());
-          paramAnonymousContext.brz(WWAPIImpl.b(WWAPIImpl.this).getString("sk", ""));
+          paramAnonymousContext = BaseMessage.t(paramAnonymousIntent.getData());
+          paramAnonymousContext.bEy(WWAPIImpl.b(WWAPIImpl.this).getString("sk", ""));
           paramAnonymousContext.fromBundle(paramAnonymousIntent.getExtras());
           if ((paramAnonymousContext instanceof WWBaseRespMessage)) {
             new Handler(Looper.getMainLooper()).post(new Runnable()
             {
               public void run()
               {
-                AppMethodBeat.i(198983);
+                AppMethodBeat.i(233279);
                 try
                 {
                   WWAPIImpl.c(WWAPIImpl.this).get(((WWBaseRespMessage)paramAnonymousContext).transaction);
                   WWAPIImpl.c(WWAPIImpl.this).remove(((WWBaseRespMessage)paramAnonymousContext).transaction);
-                  AppMethodBeat.o(198983);
+                  AppMethodBeat.o(233279);
                   return;
                 }
                 catch (Throwable localThrowable)
                 {
-                  AppMethodBeat.o(198983);
+                  AppMethodBeat.o(233279);
                 }
               }
             });
           }
-          AppMethodBeat.o(198984);
+          AppMethodBeat.o(233284);
           return;
         }
         catch (Throwable paramAnonymousContext)
         {
-          AppMethodBeat.o(198984);
+          AppMethodBeat.o(233284);
         }
       }
     };
@@ -94,7 +94,7 @@ public final class WWAPIImpl
     AppMethodBeat.o(106530);
   }
   
-  private int brw(String paramString)
+  private int bEv(String paramString)
   {
     AppMethodBeat.i(106533);
     try
@@ -131,16 +131,16 @@ public final class WWAPIImpl
     return null;
   }
   
-  public final boolean hrE()
+  public final boolean ivm()
   {
     AppMethodBeat.i(106531);
-    ArrayList localArrayList = Sxg;
+    ArrayList localArrayList = ZYg;
     Object localObject = localArrayList;
     if (this.context != null)
     {
       localObject = localArrayList;
       if (!TextUtils.equals(this.context.getPackageName(), "com.tencent.mm")) {
-        localObject = Sxh;
+        localObject = ZYh;
       }
     }
     localObject = ((List)localObject).iterator();
@@ -150,7 +150,7 @@ public final class WWAPIImpl
       if (!((Iterator)localObject).hasNext()) {
         break;
       }
-      i = brw((String)((Iterator)localObject).next());
+      i = bEv((String)((Iterator)localObject).next());
     } while (i == 0);
     while (i >= 100)
     {
@@ -164,7 +164,7 @@ public final class WWAPIImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.wework.api.WWAPIImpl
  * JD-Core Version:    0.7.0.1
  */

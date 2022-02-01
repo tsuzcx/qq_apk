@@ -8,27 +8,27 @@ import java.util.Arrays;
 final class g
   implements d
 {
+  private int aPP = -1;
+  int[] aPQ;
+  private int[] aPR;
+  private boolean aPS;
   private boolean active;
-  private int bgp = -1;
-  int[] bgq;
-  private int[] bgr;
-  private boolean bgs;
-  private ByteBuffer buffer = beO;
+  private ByteBuffer buffer = aOp;
   private int channelCount = -1;
-  private ByteBuffer outputBuffer = beO;
+  private ByteBuffer outputBuffer = aOp;
   
-  public final void f(ByteBuffer paramByteBuffer)
+  public final void c(ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(91803);
     int i = paramByteBuffer.position();
     int k = paramByteBuffer.limit();
-    int j = (k - i) / (this.channelCount * 2) * this.bgr.length * 2;
+    int j = (k - i) / (this.channelCount * 2) * this.aPR.length * 2;
     if (this.buffer.capacity() < j) {
       this.buffer = ByteBuffer.allocateDirect(j).order(ByteOrder.nativeOrder());
     }
     while (i < k)
     {
-      int[] arrayOfInt = this.bgr;
+      int[] arrayOfInt = this.aPR;
       int m = arrayOfInt.length;
       j = 0;
       for (;;)
@@ -53,8 +53,8 @@ final class g
   
   public final void flush()
   {
-    this.outputBuffer = beO;
-    this.bgs = false;
+    this.outputBuffer = aOp;
+    this.aPS = false;
   }
   
   public final boolean isActive()
@@ -62,14 +62,14 @@ final class g
     return this.active;
   }
   
-  public final boolean p(int paramInt1, int paramInt2, int paramInt3)
+  public final boolean m(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(91802);
-    if (!Arrays.equals(this.bgq, this.bgr)) {}
+    if (!Arrays.equals(this.aPQ, this.aPR)) {}
     for (int k = 1;; k = 0)
     {
-      this.bgr = this.bgq;
-      if (this.bgr != null) {
+      this.aPR = this.aPQ;
+      if (this.aPR != null) {
         break;
       }
       this.active = false;
@@ -83,23 +83,23 @@ final class g
       AppMethodBeat.o(91802);
       throw locala;
     }
-    if ((k == 0) && (this.bgp == paramInt1) && (this.channelCount == paramInt2))
+    if ((k == 0) && (this.aPP == paramInt1) && (this.channelCount == paramInt2))
     {
       AppMethodBeat.o(91802);
       return false;
     }
-    this.bgp = paramInt1;
+    this.aPP = paramInt1;
     this.channelCount = paramInt2;
-    if (paramInt2 != this.bgr.length) {}
+    if (paramInt2 != this.aPR.length) {}
     int i;
     for (k = 1;; k = 0)
     {
       this.active = k;
       i = 0;
-      if (i >= this.bgr.length) {
+      if (i >= this.aPR.length) {
         break label231;
       }
-      j = this.bgr[i];
+      j = this.aPR[i];
       if (j < paramInt2) {
         break;
       }
@@ -120,46 +120,46 @@ final class g
     return true;
   }
   
+  public final void rA()
+  {
+    this.aPS = true;
+  }
+  
+  public final ByteBuffer rB()
+  {
+    ByteBuffer localByteBuffer = this.outputBuffer;
+    this.outputBuffer = aOp;
+    return localByteBuffer;
+  }
+  
   public final void reset()
   {
     AppMethodBeat.i(91804);
     flush();
-    this.buffer = beO;
+    this.buffer = aOp;
     this.channelCount = -1;
-    this.bgp = -1;
-    this.bgr = null;
+    this.aPP = -1;
+    this.aPR = null;
     this.active = false;
     AppMethodBeat.o(91804);
   }
   
-  public final boolean tB()
+  public final boolean rt()
   {
-    return (this.bgs) && (this.outputBuffer == beO);
+    return (this.aPS) && (this.outputBuffer == aOp);
   }
   
-  public final int tH()
+  public final int rz()
   {
-    if (this.bgr == null) {
+    if (this.aPR == null) {
       return this.channelCount;
     }
-    return this.bgr.length;
-  }
-  
-  public final void tI()
-  {
-    this.bgs = true;
-  }
-  
-  public final ByteBuffer tJ()
-  {
-    ByteBuffer localByteBuffer = this.outputBuffer;
-    this.outputBuffer = beO;
-    return localByteBuffer;
+    return this.aPR.length;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.a.g
  * JD-Core Version:    0.7.0.1
  */

@@ -22,83 +22,85 @@ import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.m.a.g;
+import com.tencent.mm.plugin.m.a.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.tools.b.c;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 public class EmojiSearchEditTextView
   extends LinearLayout
 {
-  private String heA;
-  private a heB;
-  EmojiSearchEditTextView.b heC;
-  protected View.OnFocusChangeListener heD;
-  private WeImageView hex;
-  ImageButton hey;
-  private View hez;
+  EditText bGw;
   String hint;
-  EditText vy;
+  private WeImageView jQn;
+  ImageButton jQo;
+  private View jQp;
+  private String jQq;
+  private a jQr;
+  EmojiSearchEditTextView.b jQs;
+  protected View.OnFocusChangeListener jQt;
   
   public EmojiSearchEditTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(199765);
-    this.heA = "";
-    this.heC = EmojiSearchEditTextView.b.heF;
-    this.heD = new View.OnFocusChangeListener()
+    AppMethodBeat.i(225294);
+    this.jQq = "";
+    this.jQs = EmojiSearchEditTextView.b.jQv;
+    this.jQt = new View.OnFocusChangeListener()
     {
       public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(199761);
+        AppMethodBeat.i(230755);
         if (EmojiSearchEditTextView.d(EmojiSearchEditTextView.this) != null) {
-          EmojiSearchEditTextView.d(EmojiSearchEditTextView.this).eh(paramAnonymousBoolean);
+          EmojiSearchEditTextView.d(EmojiSearchEditTextView.this).eF(paramAnonymousBoolean);
         }
-        AppMethodBeat.o(199761);
+        AppMethodBeat.o(230755);
       }
     };
     init();
-    AppMethodBeat.o(199765);
+    AppMethodBeat.o(225294);
   }
   
   public EmojiSearchEditTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(199766);
-    this.heA = "";
-    this.heC = EmojiSearchEditTextView.b.heF;
-    this.heD = new View.OnFocusChangeListener()
+    AppMethodBeat.i(225296);
+    this.jQq = "";
+    this.jQs = EmojiSearchEditTextView.b.jQv;
+    this.jQt = new View.OnFocusChangeListener()
     {
       public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(199761);
+        AppMethodBeat.i(230755);
         if (EmojiSearchEditTextView.d(EmojiSearchEditTextView.this) != null) {
-          EmojiSearchEditTextView.d(EmojiSearchEditTextView.this).eh(paramAnonymousBoolean);
+          EmojiSearchEditTextView.d(EmojiSearchEditTextView.this).eF(paramAnonymousBoolean);
         }
-        AppMethodBeat.o(199761);
+        AppMethodBeat.o(230755);
       }
     };
     init();
-    AppMethodBeat.o(199766);
+    AppMethodBeat.o(225296);
   }
   
-  private void awB()
+  private void aDS()
   {
-    AppMethodBeat.i(199767);
+    AppMethodBeat.i(225297);
     ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(getLayoutById(), this, true);
-    AppMethodBeat.o(199767);
+    AppMethodBeat.o(225297);
   }
   
   private void init()
   {
-    AppMethodBeat.i(199768);
-    awB();
-    this.hez = findViewById(2131308873);
-    this.hex = ((WeImageView)findViewById(2131302468));
-    this.vy = ((EditText)findViewById(2131299910));
-    this.hey = ((ImageButton)findViewById(2131298744));
-    this.vy.setOnKeyListener(new EmojiSearchEditTextView.1(this));
-    this.vy.addTextChangedListener(new TextWatcher()
+    AppMethodBeat.i(225303);
+    aDS();
+    this.jQp = findViewById(a.g.tag_panel);
+    this.jQn = ((WeImageView)findViewById(a.g.icon));
+    this.bGw = ((EditText)findViewById(a.g.edittext));
+    this.jQo = ((ImageButton)findViewById(a.g.clear_btn));
+    this.bGw.setOnKeyListener(new EmojiSearchEditTextView.1(this));
+    this.bGw.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable) {}
       
@@ -106,7 +108,7 @@ public class EmojiSearchEditTextView
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
-        AppMethodBeat.i(199757);
+        AppMethodBeat.i(228339);
         paramAnonymousCharSequence = EmojiSearchEditTextView.this.getTotalQuery();
         if ((paramAnonymousCharSequence != EmojiSearchEditTextView.a(EmojiSearchEditTextView.this)) && (!paramAnonymousCharSequence.equals(EmojiSearchEditTextView.a(EmojiSearchEditTextView.this))))
         {
@@ -119,201 +121,201 @@ public class EmojiSearchEditTextView
         for (;;)
         {
           EmojiSearchEditTextView.c(EmojiSearchEditTextView.this);
-          AppMethodBeat.o(199757);
+          AppMethodBeat.o(228339);
           return;
           label78:
           EmojiSearchEditTextView.b(EmojiSearchEditTextView.this).setVisibility(8);
         }
       }
     });
-    this.vy.setOnFocusChangeListener(this.heD);
-    this.vy.setOnEditorActionListener(new TextView.OnEditorActionListener()
+    this.bGw.setOnFocusChangeListener(this.jQt);
+    this.bGw.setOnEditorActionListener(new TextView.OnEditorActionListener()
     {
       public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
-        AppMethodBeat.i(199758);
+        AppMethodBeat.i(235182);
         if ((3 == paramAnonymousInt) && (EmojiSearchEditTextView.d(EmojiSearchEditTextView.this) != null))
         {
-          boolean bool = EmojiSearchEditTextView.d(EmojiSearchEditTextView.this).awE();
-          AppMethodBeat.o(199758);
+          boolean bool = EmojiSearchEditTextView.d(EmojiSearchEditTextView.this).aDV();
+          AppMethodBeat.o(235182);
           return bool;
         }
-        AppMethodBeat.o(199758);
+        AppMethodBeat.o(235182);
         return false;
       }
     });
-    this.hey.setOnClickListener(new View.OnClickListener()
+    this.jQo.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(199759);
+        AppMethodBeat.i(240766);
         Object localObject = new b();
-        ((b)localObject).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/emojisearch/ui/EmojiSearchEditTextView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+        ((b)localObject).bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/emojisearch/ui/EmojiSearchEditTextView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
         localObject = EmojiSearchEditTextView.this;
-        ((EmojiSearchEditTextView)localObject).heC = EmojiSearchEditTextView.b.heG;
-        ((EmojiSearchEditTextView)localObject).vy.setText("");
-        ((EmojiSearchEditTextView)localObject).vy.setHint(((EmojiSearchEditTextView)localObject).hint);
-        ((EmojiSearchEditTextView)localObject).hey.setVisibility(8);
-        ((EmojiSearchEditTextView)localObject).heC = EmojiSearchEditTextView.b.heF;
+        ((EmojiSearchEditTextView)localObject).jQs = EmojiSearchEditTextView.b.jQw;
+        ((EmojiSearchEditTextView)localObject).bGw.setText("");
+        ((EmojiSearchEditTextView)localObject).bGw.setHint(((EmojiSearchEditTextView)localObject).hint);
+        ((EmojiSearchEditTextView)localObject).jQo.setVisibility(8);
+        ((EmojiSearchEditTextView)localObject).jQs = EmojiSearchEditTextView.b.jQv;
         if (EmojiSearchEditTextView.d(EmojiSearchEditTextView.this) != null) {
           EmojiSearchEditTextView.d(EmojiSearchEditTextView.this).onClickClearTextBtn(paramAnonymousView);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/emojisearch/ui/EmojiSearchEditTextView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(199759);
+        AppMethodBeat.o(240766);
       }
     });
-    c.f(this.vy).aoq(100).a(null);
-    if (ao.isDarkMode()) {
-      this.hey.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
+    c.i(this.bGw).axx(100).a(null);
+    if (ar.isDarkMode()) {
+      this.jQo.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
     }
-    AppMethodBeat.o(199768);
+    AppMethodBeat.o(225303);
   }
   
-  public final void awC()
+  public final void aDT()
   {
-    AppMethodBeat.i(199770);
+    AppMethodBeat.i(225311);
     postDelayed(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(199760);
+        AppMethodBeat.i(237235);
         ((InputMethodManager)EmojiSearchEditTextView.this.getContext().getSystemService("input_method")).showSoftInput(EmojiSearchEditTextView.e(EmojiSearchEditTextView.this), 1);
-        AppMethodBeat.o(199760);
+        AppMethodBeat.o(237235);
       }
     }, 128L);
-    AppMethodBeat.o(199770);
+    AppMethodBeat.o(225311);
   }
   
-  public final void awD()
+  public final void aDU()
   {
-    AppMethodBeat.i(199774);
-    this.vy.requestFocus();
-    AppMethodBeat.o(199774);
+    AppMethodBeat.i(225325);
+    this.bGw.requestFocus();
+    AppMethodBeat.o(225325);
   }
   
   public ImageButton getClearBtn()
   {
-    return this.hey;
+    return this.jQo;
   }
   
   public EditText getEditText()
   {
-    return this.vy;
+    return this.bGw;
   }
   
   public int getHighlightColor()
   {
-    AppMethodBeat.i(199771);
-    int i = this.vy.getHighlightColor();
-    AppMethodBeat.o(199771);
+    AppMethodBeat.i(225313);
+    int i = this.bGw.getHighlightColor();
+    AppMethodBeat.o(225313);
     return i;
   }
   
   public WeImageView getIconView()
   {
-    return this.hex;
+    return this.jQn;
   }
   
   public String getInEditTextQuery()
   {
-    AppMethodBeat.i(199776);
-    String str = this.vy.getText().toString().trim();
-    AppMethodBeat.o(199776);
+    AppMethodBeat.i(225331);
+    String str = this.bGw.getText().toString().trim();
+    AppMethodBeat.o(225331);
     return str;
   }
   
   protected int getLayoutById()
   {
-    return 2131493943;
+    return a.h.emoji_search_search_edittext_view;
   }
   
   public View getTagPanel()
   {
-    return this.hez;
+    return this.jQp;
   }
   
   public EmojiSearchEditTextView.b getTextChangeStatus()
   {
-    return this.heC;
+    return this.jQs;
   }
   
   public String getTotalQuery()
   {
-    AppMethodBeat.i(199777);
+    AppMethodBeat.i(225332);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.vy.getText().toString());
+    ((StringBuffer)localObject).append(this.bGw.getText().toString());
     localObject = ((StringBuffer)localObject).toString().trim();
-    AppMethodBeat.o(199777);
+    AppMethodBeat.o(225332);
     return localObject;
   }
   
   public void setEditTextDrawableLeft(int paramInt)
   {
-    AppMethodBeat.i(199769);
+    AppMethodBeat.i(225310);
     if (paramInt == -1)
     {
-      this.vy.setCompoundDrawablesRelative(null, null, null, null);
-      AppMethodBeat.o(199769);
+      this.bGw.setCompoundDrawablesRelative(null, null, null, null);
+      AppMethodBeat.o(225310);
       return;
     }
     Drawable localDrawable = getContext().getResources().getDrawable(paramInt);
-    localDrawable.setBounds(0, 0, com.tencent.mm.cb.a.fromDPToPix(getContext(), 15), com.tencent.mm.cb.a.fromDPToPix(getContext(), 15));
-    this.vy.setCompoundDrawablesRelative(localDrawable, null, null, null);
-    AppMethodBeat.o(199769);
+    localDrawable.setBounds(0, 0, com.tencent.mm.ci.a.fromDPToPix(getContext(), 15), com.tencent.mm.ci.a.fromDPToPix(getContext(), 15));
+    this.bGw.setCompoundDrawablesRelative(localDrawable, null, null, null);
+    AppMethodBeat.o(225310);
   }
   
   public void setEmojiSearchEditTextListener(a parama)
   {
-    this.heB = parama;
+    this.jQr = parama;
   }
   
   public void setHint(String paramString)
   {
-    AppMethodBeat.i(199775);
-    this.vy.setHint(paramString);
+    AppMethodBeat.i(225327);
+    this.bGw.setHint(paramString);
     this.hint = paramString;
-    AppMethodBeat.o(199775);
+    AppMethodBeat.o(225327);
   }
   
   public void setText(SpannableString paramSpannableString)
   {
-    AppMethodBeat.i(199772);
-    EmojiSearchEditTextView.b localb = EmojiSearchEditTextView.b.heF;
+    AppMethodBeat.i(225319);
+    EmojiSearchEditTextView.b localb = EmojiSearchEditTextView.b.jQv;
     Log.i("MicroMsg.EmojiSearch", "setText: %s", new Object[] { paramSpannableString });
-    this.heC = EmojiSearchEditTextView.b.heH;
-    this.vy.setText(paramSpannableString);
-    Selection.setSelection(this.vy.getText(), this.vy.getText().length());
-    this.heC = localb;
-    AppMethodBeat.o(199772);
+    this.jQs = EmojiSearchEditTextView.b.jQx;
+    this.bGw.setText(paramSpannableString);
+    Selection.setSelection(this.bGw.getText(), this.bGw.getText().length());
+    this.jQs = localb;
+    AppMethodBeat.o(225319);
   }
   
   public void setText(String paramString)
   {
-    AppMethodBeat.i(199773);
-    EmojiSearchEditTextView.b localb = EmojiSearchEditTextView.b.heF;
+    AppMethodBeat.i(225323);
+    EmojiSearchEditTextView.b localb = EmojiSearchEditTextView.b.jQv;
     Log.i("MicroMsg.EmojiSearch", "setText: %s", new Object[] { paramString });
-    this.heC = EmojiSearchEditTextView.b.heH;
-    this.vy.setText(paramString);
-    Selection.setSelection(this.vy.getText(), this.vy.getText().length());
-    this.heC = localb;
-    AppMethodBeat.o(199773);
+    this.jQs = EmojiSearchEditTextView.b.jQx;
+    this.bGw.setText(paramString);
+    Selection.setSelection(this.bGw.getText(), this.bGw.getText().length());
+    this.jQs = localb;
+    AppMethodBeat.o(225323);
   }
   
   public static abstract interface a
   {
     public abstract void a(String paramString1, String paramString2, EmojiSearchEditTextView.b paramb);
     
-    public abstract boolean awE();
+    public abstract boolean aDV();
     
-    public abstract void eh(boolean paramBoolean);
+    public abstract void eF(boolean paramBoolean);
     
     public abstract void onClickClearTextBtn(View paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.emojisearch.ui.EmojiSearchEditTextView
  * JD-Core Version:    0.7.0.1
  */

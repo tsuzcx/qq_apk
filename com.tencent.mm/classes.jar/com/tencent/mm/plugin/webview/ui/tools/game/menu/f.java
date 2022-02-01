@@ -9,28 +9,30 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a;
-import com.tencent.mm.av.a.a.c;
-import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.ay.a.a;
+import com.tencent.mm.ay.a.a.c;
+import com.tencent.mm.ay.a.a.c.a;
 import com.tencent.mm.b.g;
 import com.tencent.mm.loader.j.b;
+import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.plugin.webview.c.g;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.n;
+import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.p;
 import java.util.List;
 
-public final class f
+public class f
   extends BaseAdapter
 {
-  private static final String xEu;
-  m HMc;
+  private static final String CIv;
+  o ODY;
   private Context mContext;
   
   static
   {
     AppMethodBeat.i(81003);
-    xEu = b.aKJ() + "Game/HvMenu/";
+    CIv = b.aSL() + "Game/HvMenu/";
     AppMethodBeat.o(81003);
   }
   
@@ -39,49 +41,49 @@ public final class f
     this.mContext = paramContext;
   }
   
-  public final void a(m paramm)
+  public final void c(o paramo)
   {
     AppMethodBeat.i(80999);
-    this.HMc = paramm;
+    this.ODY = paramo;
     notifyDataSetChanged();
     AppMethodBeat.o(80999);
   }
   
-  public final int getCount()
+  public int getCount()
   {
     AppMethodBeat.i(81000);
-    if (this.HMc == null)
+    if (this.ODY == null)
     {
       AppMethodBeat.o(81000);
       return 0;
     }
-    int i = this.HMc.size();
+    int i = this.ODY.size();
     AppMethodBeat.o(81000);
     return i;
   }
   
-  public final long getItemId(int paramInt)
+  public long getItemId(int paramInt)
   {
     return paramInt;
   }
   
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(81001);
-    paramView = LayoutInflater.from(this.mContext).inflate(2131494910, paramViewGroup, false);
+    paramView = LayoutInflater.from(this.mContext).inflate(c.g.game_menu_item_view, paramViewGroup, false);
     paramViewGroup = new a(paramView);
-    n localn = (n)this.HMc.ORD.get(paramInt);
+    p localp = (p)this.ODY.WkP.get(paramInt);
     Object localObject1;
-    if ((localn != null) && (localn.getItemId() != -1))
+    if ((localp != null) && (localp.getItemId() != -1))
     {
-      localObject1 = localn.getTitle().toString();
+      localObject1 = localp.getTitle().toString();
       if (!Util.isNullOrNil((String)localObject1))
       {
         localObject1 = ((String)localObject1).split("__", 2);
         if (localObject1.length == 1)
         {
-          paramViewGroup.hbb.setText(localObject1[0]);
-          paramView.setTag(localn);
+          paramViewGroup.jMg.setText(localObject1[0]);
+          paramView.setTag(localp);
         }
       }
     }
@@ -89,19 +91,19 @@ public final class f
     {
       AppMethodBeat.o(81001);
       return paramView;
-      paramViewGroup.hbb.setText(localObject1[0]);
+      paramViewGroup.jMg.setText(localObject1[0]);
       localObject1 = localObject1[1];
       if (((String)localObject1).startsWith("http"))
       {
-        Object localObject2 = xEu + g.getMessageDigest(((String)localObject1).getBytes());
+        Object localObject2 = CIv + g.getMessageDigest(((String)localObject1).getBytes());
         c.a locala = new c.a();
-        locala.jbf = true;
+        locala.lRD = true;
         locala.fullPath = ((String)localObject2);
-        localObject2 = locala.bdv();
-        a.bdb().a((String)localObject1, paramViewGroup.kc, (c)localObject2);
+        localObject2 = locala.bmL();
+        a.bms().a((String)localObject1, paramViewGroup.bwJ, (c)localObject2);
         break;
       }
-      paramViewGroup.kc.setImageResource(MMApplicationContext.getResources().getIdentifier((String)localObject1, "drawable", MMApplicationContext.getPackageName()));
+      paramViewGroup.bwJ.setImageResource(MMApplicationContext.getResources().getIdentifier((String)localObject1, "drawable", MMApplicationContext.getPackageName()));
       break;
       paramView.setTag(null);
     }
@@ -109,14 +111,14 @@ public final class f
   
   public final class a
   {
-    TextView hbb;
-    ImageView kc;
+    ImageView bwJ;
+    TextView jMg;
     
     public a(View paramView)
     {
       AppMethodBeat.i(80998);
-      this.hbb = ((TextView)paramView.findViewById(2131309195));
-      this.kc = ((ImageView)paramView.findViewById(2131302468));
+      this.jMg = ((TextView)paramView.findViewById(c.f.title));
+      this.bwJ = ((ImageView)paramView.findViewById(c.f.icon));
       AppMethodBeat.o(80998);
     }
   }

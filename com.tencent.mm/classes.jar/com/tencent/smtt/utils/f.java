@@ -973,7 +973,7 @@ public class f
   public static boolean b(Context paramContext)
   {
     AppMethodBeat.i(53902);
-    long l = q.a();
+    long l = r.a();
     if (l >= TbsDownloadConfig.getInstance(paramContext).getDownloadMinFreeSpace()) {}
     for (boolean bool = true;; bool = false)
     {
@@ -1602,7 +1602,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.utils.f
  * JD-Core Version:    0.7.0.1
  */

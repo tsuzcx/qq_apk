@@ -1,77 +1,80 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dac;
+import com.tencent.mm.protocal.protobuf.dad;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.wallet_core.b.a.a;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
 
 public final class aa
-  extends a
+  extends q
+  implements m
 {
-  public String Cql;
-  public String Cqm;
-  public String jTx;
-  public String jTy;
-  public int qww;
+  public dad Imf;
+  String Img;
+  private String Imh;
+  private i callback;
+  private long gbJ;
+  private d kwO;
   
-  public aa(int paramInt)
+  public aa(String paramString1, long paramLong, String paramString2)
   {
-    AppMethodBeat.i(67899);
-    this.qww = 0;
-    this.Cql = "";
-    this.Cqm = "";
-    Log.i("MicroMsg.NetSceneTenpayh5Index", "NetSceneTenpayh5Index create");
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("wallet_type", String.valueOf(paramInt));
-    setRequestData(localHashMap);
-    AppMethodBeat.o(67899);
+    AppMethodBeat.i(277176);
+    this.gbJ = 0L;
+    Log.i("Micromsg.NetSceneRemittanceMsgCheck", "transferID: %s, amount:%s msgCheckStr:%s", new Object[] { paramString1, Long.valueOf(paramLong), paramString2 });
+    this.Img = paramString1;
+    this.gbJ = paramLong;
+    this.Imh = paramString2;
+    Object localObject = new d.a();
+    ((d.a)localObject).lBU = new dac();
+    ((d.a)localObject).lBV = new dad();
+    ((d.a)localObject).funcId = 6230;
+    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/transfermsgcheck";
+    this.kwO = ((d.a)localObject).bgN();
+    localObject = (dac)d.b.b(this.kwO.lBR);
+    ((dac)localObject).Inf = paramString1;
+    ((dac)localObject).gbJ = paramLong;
+    ((dac)localObject).THx = paramString2;
+    AppMethodBeat.o(277176);
   }
   
-  public final String czD()
+  public final int doScene(g paramg, i parami)
   {
-    return "/cgi-bin/mmpay-bin/h5transferoperate";
-  }
-  
-  public final int czE()
-  {
-    return 0;
+    AppMethodBeat.i(277177);
+    this.callback = parami;
+    int i = dispatch(paramg, this.kwO, this);
+    AppMethodBeat.o(277177);
+    return i;
   }
   
   public final int getType()
   {
-    return 1574;
+    return 6230;
   }
   
-  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(67900);
-    Log.i("MicroMsg.NetSceneTenpayh5Index", "errCode " + paramInt + " errMsg: " + paramString);
-    if (paramInt != 0)
-    {
-      Log.i("MicroMsg.NetSceneTenpayh5Index", "NetSceneTransferChargeQuery request error");
-      AppMethodBeat.o(67900);
-      return;
+    AppMethodBeat.i(277178);
+    Log.i("Micromsg.NetSceneRemittanceMsgCheck", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.Imf = ((dad)d.c.b(((d)params).lBS));
+    Log.i("Micromsg.NetSceneRemittanceMsgCheck", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.Imf.tqa), this.Imf.tqb });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    paramString = new StringBuffer();
-    this.qww = paramJSONObject.optInt("currency");
-    this.Cql = paramJSONObject.optString("currencyUint");
-    this.Cqm = paramJSONObject.optString("currencyWording");
-    this.jTx = paramJSONObject.optString("notice");
-    this.jTy = paramJSONObject.optString("notice_url");
-    paramString.append("currency:" + this.qww);
-    paramString.append(" currencyuint:" + this.Cql);
-    paramString.append(" currencywording:" + this.Cqm);
-    paramString.append(" notice:" + this.jTx);
-    paramString.append(" notice_url:" + this.jTy);
-    Log.i("MicroMsg.NetSceneTenpayh5Index", "resp " + paramString.toString());
-    AppMethodBeat.o(67900);
+    AppMethodBeat.o(277178);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.model.aa
  * JD-Core Version:    0.7.0.1
  */

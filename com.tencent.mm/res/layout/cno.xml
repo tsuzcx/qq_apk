@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/h9a" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.FoursquareRelativeLayout android:background="@color/a3k" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/fc1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <ImageView android:id="@id/fbr" android:background="@color/vt" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_alignParentStart="true">
+            <ImageView android:id="@id/izk" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/video_icon_in_gird" android:layout_marginStart="@dimen/ct" />
+            <TextView android:textSize="@dimen/is" android:textColor="@color/ag2" android:id="@id/izl" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="04:25" android:maxLines="1" android:layout_marginStart="@dimen/bt" />
+        </LinearLayout>
+        <com.tencent.mm.ui.widget.MMNumberCheckbox android:textSize="@dimen/k6" android:textColor="@color/ag2" android:gravity="center" android:id="@id/fbe" android:background="@drawable/a8y" android:focusable="false" android:clickable="false" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" android:layout_marginTop="@dimen/ct" android:layout_alignParentTop="true" android:layout_marginEnd="@dimen/ct" android:layout_alignParentEnd="true" />
+    </com.tencent.mm.ui.widget.FoursquareRelativeLayout>
+    <TextView android:textSize="@dimen/bd" android:textColor="@color/a2x" android:ellipsize="middle" android:id="@id/kzj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:text="我很长很长很长很长很长很长很长很长.mp4" android:singleLine="true" />
+    <TextView android:textSize="@dimen/eo" android:textColor="@color/BW_0_Alpha_0_5" android:id="@id/kzl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginBottom="@dimen/ct" android:text="22M" />
+</LinearLayout>

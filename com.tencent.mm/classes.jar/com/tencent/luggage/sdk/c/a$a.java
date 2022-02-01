@@ -1,27 +1,9 @@
 package com.tencent.luggage.sdk.c;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.p.a.b;
-import com.tencent.mm.plugin.appbrand.p.a.c;
+import kotlin.l;
 
-public final class a$a
-  extends a.c
-{
-  private final com.tencent.luggage.sdk.d.d cBE;
-  
-  private a$a(com.tencent.luggage.sdk.d.d paramd)
-  {
-    this.cBE = paramd;
-  }
-  
-  public final void a(String paramString, a.b paramb)
-  {
-    AppMethodBeat.i(169443);
-    ((com.tencent.luggage.sdk.b.a.c.d)this.cBE.NY()).dt("__APP__");
-    super.a(paramString, paramb);
-    AppMethodBeat.o(169443);
-  }
-}
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/luggage/sdk/jsruntime/JsEngineName$Companion;", "", "()V", "JS_ENGINE_NAME_J2V8", "", "getJS_ENGINE_NAME_J2V8", "()Ljava/lang/String;", "setJS_ENGINE_NAME_J2V8", "(Ljava/lang/String;)V", "JS_ENGINE_NAME_NODEJS", "getJS_ENGINE_NAME_NODEJS", "setJS_ENGINE_NAME_NODEJS", "JS_ENGINE_NAME_UNKNOWN", "getJS_ENGINE_NAME_UNKNOWN", "setJS_ENGINE_NAME_UNKNOWN", "JS_ENGINE_NAME_WEBVIEW", "getJS_ENGINE_NAME_WEBVIEW", "setJS_ENGINE_NAME_WEBVIEW", "JS_ENGINE_NAME_XWEB", "getJS_ENGINE_NAME_XWEB", "setJS_ENGINE_NAME_XWEB", "luggage-wechat-full-sdk_release"})
+public final class a$a {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar

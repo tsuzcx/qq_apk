@@ -10,18 +10,20 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.map.a.e;
+import com.tencent.mm.plugin.map.a.f;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public class TrackPointAnimAvatar
   extends RelativeLayout
 {
-  private ImageView keC;
+  private LinearLayout Ese;
+  private Animation Esf;
+  private Animation Esg;
   private Context mContext;
+  private ImageView mWb;
   private String username;
-  private LinearLayout yOg;
-  private Animation yOh;
-  private Animation yOi;
   
   public TrackPointAnimAvatar(Context paramContext)
   {
@@ -41,16 +43,16 @@ public class TrackPointAnimAvatar
     AppMethodBeat.o(56194);
   }
   
-  private void eeg()
+  private void eNB()
   {
     AppMethodBeat.i(56198);
-    this.yOh = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, -0.5F);
-    this.yOh.setDuration(500L);
-    this.yOh.setFillAfter(true);
-    this.yOi = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -0.5F, 1, 0.0F);
-    this.yOi.setDuration(500L);
-    this.yOi.setFillAfter(true);
-    this.yOh.setAnimationListener(new Animation.AnimationListener()
+    this.Esf = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, -0.5F);
+    this.Esf.setDuration(500L);
+    this.Esf.setFillAfter(true);
+    this.Esg = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -0.5F, 1, 0.0F);
+    this.Esg.setDuration(500L);
+    this.Esg.setFillAfter(true);
+    this.Esf.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
@@ -64,7 +66,7 @@ public class TrackPointAnimAvatar
       
       public final void onAnimationStart(Animation paramAnonymousAnimation) {}
     });
-    this.yOi.setAnimationListener(new Animation.AnimationListener()
+    this.Esg.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
@@ -84,10 +86,10 @@ public class TrackPointAnimAvatar
   private void init()
   {
     AppMethodBeat.i(56196);
-    View localView = View.inflate(this.mContext, 2131496760, this);
-    this.yOg = ((LinearLayout)localView.findViewById(2131296757));
-    this.keC = ((ImageView)localView.findViewById(2131296756));
-    eeg();
+    View localView = View.inflate(this.mContext, a.f.track_point_avatar, this);
+    this.Ese = ((LinearLayout)localView.findViewById(a.e.anim_avatar_layout));
+    this.mWb = ((ImageView)localView.findViewById(a.e.anim_avatar));
+    eNB();
     AppMethodBeat.o(56196);
   }
   
@@ -97,8 +99,8 @@ public class TrackPointAnimAvatar
     if (!Util.isNullOrNil(paramString))
     {
       this.username = paramString;
-      if (this.keC != null) {
-        a.b.d(this.keC, this.username);
+      if (this.mWb != null) {
+        a.b.d(this.mWb, this.username);
       }
     }
     AppMethodBeat.o(56197);
@@ -106,7 +108,7 @@ public class TrackPointAnimAvatar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.TrackPointAnimAvatar
  * JD-Core Version:    0.7.0.1
  */

@@ -17,77 +17,77 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   extends View
 {
-  protected Paint DAX;
-  protected RectF DAZ;
-  protected ValueAnimator.AnimatorUpdateListener DBa;
-  protected int HH;
-  protected AnimatorSet xc;
+  protected int IB;
+  protected Paint JMJ;
+  protected RectF JMK;
+  protected ValueAnimator.AnimatorUpdateListener JML;
+  protected AnimatorSet atV;
   
   public b(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(202446);
-    this.DBa = new ValueAnimator.AnimatorUpdateListener()
+    AppMethodBeat.i(218788);
+    this.JML = new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
-        AppMethodBeat.i(202445);
+        AppMethodBeat.i(224182);
         try
         {
-          b.this.HH = ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue();
+          b.this.IB = ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue();
           b.this.invalidate();
-          AppMethodBeat.o(202445);
+          AppMethodBeat.o(224182);
           return;
         }
         catch (Exception paramAnonymousValueAnimator)
         {
-          AppMethodBeat.o(202445);
+          AppMethodBeat.o(224182);
         }
       }
     };
-    this.DAX = new Paint();
-    this.DAX.setColor(Color.parseColor("#FFEDEDED"));
-    this.DAX.setAntiAlias(true);
-    this.DAX.setDither(true);
-    this.DAX.setStyle(Paint.Style.STROKE);
-    AppMethodBeat.o(202446);
+    this.JMJ = new Paint();
+    this.JMJ.setColor(Color.parseColor("#FFEDEDED"));
+    this.JMJ.setAntiAlias(true);
+    this.JMJ.setDither(true);
+    this.JMJ.setStyle(Paint.Style.STROKE);
+    AppMethodBeat.o(218788);
   }
   
-  public final void ax(int paramInt1, int paramInt2, int paramInt3)
+  public final void aB(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(202447);
+    AppMethodBeat.i(218790);
     clear();
     int i = paramInt3 / 2;
-    this.DAZ = new RectF(i, i, paramInt2 * 2 - i, paramInt2 * 2 - i);
-    this.DAX.setStrokeWidth(paramInt3);
+    this.JMK = new RectF(i, i, paramInt2 * 2 - i, paramInt2 * 2 - i);
+    this.JMJ.setStrokeWidth(paramInt3);
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, 362 });
     localValueAnimator.setDuration(paramInt1);
     localValueAnimator.setInterpolator(new DecelerateInterpolator());
-    localValueAnimator.addUpdateListener(this.DBa);
-    this.xc = new AnimatorSet();
-    this.xc.playSequentially(new Animator[] { localValueAnimator });
-    this.xc.start();
-    AppMethodBeat.o(202447);
+    localValueAnimator.addUpdateListener(this.JML);
+    this.atV = new AnimatorSet();
+    this.atV.playSequentially(new Animator[] { localValueAnimator });
+    this.atV.start();
+    AppMethodBeat.o(218790);
   }
   
   public final void clear()
   {
-    AppMethodBeat.i(202448);
-    if (this.xc != null) {
-      this.xc.cancel();
+    AppMethodBeat.i(218791);
+    if (this.atV != null) {
+      this.atV.cancel();
     }
-    this.HH = 0;
+    this.IB = 0;
     invalidate();
-    AppMethodBeat.o(202448);
+    AppMethodBeat.o(218791);
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(202449);
-    if (this.DAZ != null) {
-      paramCanvas.drawArc(this.DAZ, -90.0F, this.HH, false, this.DAX);
+    AppMethodBeat.i(218792);
+    if (this.JMK != null) {
+      paramCanvas.drawArc(this.JMK, -90.0F, this.IB, false, this.JMJ);
     }
-    AppMethodBeat.o(202449);
+    AppMethodBeat.o(218792);
   }
 }
 

@@ -3,7 +3,6 @@ package com.tencent.mm.plugin.wallet_core.ui.view;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -13,9 +12,12 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.OvershootInterpolator;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
+import androidx.appcompat.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import e.a.a.f;
@@ -25,9 +27,9 @@ import java.io.IOException;
 public class WalletSuccPageAwardLuckyMoneyDialog
   extends MMActivity
 {
-  private ImageView CPf;
-  private f InV;
-  private ViewGroup zhm;
+  private ViewGroup EMs;
+  private ImageView IUH;
+  private f Pgn;
   
   public int getForceOrientation()
   {
@@ -36,7 +38,7 @@ public class WalletSuccPageAwardLuckyMoneyDialog
   
   public int getLayoutId()
   {
-    return 2131497010;
+    return a.g.wallet_succ_page_award_lucky_money_dialog;
   }
   
   public void onCreate(final Bundle paramBundle)
@@ -46,7 +48,7 @@ public class WalletSuccPageAwardLuckyMoneyDialog
     if (getSupportActionBar() != null) {
       getSupportActionBar().hide();
     }
-    if (d.oD(19)) {
+    if (d.qV(19)) {
       getWindow().setFlags(67108864, 67108864);
     }
     paramBundle = getIntent().getByteArrayExtra("key_layer_info");
@@ -55,26 +57,26 @@ public class WalletSuccPageAwardLuckyMoneyDialog
       Log.e("MicroMsg.WalletSuccPageAwardLuckyMoneyDialog", "WalletSuccPageAwardLuckyMoneyDialog onCreate error! cannot get layerInfoBytes!");
       finish();
     }
-    this.InV = new f();
+    this.Pgn = new f();
     try
     {
-      this.InV.parseFrom(paramBundle);
-      this.zhm = ((ViewGroup)findViewById(2131299205));
-      this.CPf = ((ImageView)findViewById(2131298770));
-      this.CPf.setOnClickListener(new View.OnClickListener()
+      this.Pgn.parseFrom(paramBundle);
+      this.EMs = ((ViewGroup)findViewById(a.f.content_layout));
+      this.IUH = ((ImageView)findViewById(a.f.close_btn));
+      this.IUH.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(71549);
           b localb = new b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/view/WalletSuccPageAwardLuckyMoneyDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet_core/ui/view/WalletSuccPageAwardLuckyMoneyDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           WalletSuccPageAwardLuckyMoneyDialog.this.finish();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/ui/view/WalletSuccPageAwardLuckyMoneyDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(71549);
         }
       });
-      paramBundle = this.zhm;
+      paramBundle = this.EMs;
       Animation.AnimationListener local2 = new Animation.AnimationListener()
       {
         public final void onAnimationEnd(Animation paramAnonymousAnimation) {}
@@ -128,7 +130,7 @@ public class WalletSuccPageAwardLuckyMoneyDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.WalletSuccPageAwardLuckyMoneyDialog
  * JD-Core Version:    0.7.0.1
  */

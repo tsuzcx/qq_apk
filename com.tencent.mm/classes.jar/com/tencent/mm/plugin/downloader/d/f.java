@@ -2,32 +2,31 @@ package com.tencent.mm.plugin.downloader.d;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 
 public final class f
 {
-  public static ByteBuffer M(o paramo)
+  public static ByteBuffer L(q paramq)
   {
     AppMethodBeat.i(177463);
-    if ((paramo == null) || (!paramo.exists()) || (!paramo.isFile()))
+    if ((paramq == null) || (!paramq.ifE()) || (!paramq.ifH()))
     {
       AppMethodBeat.o(177463);
       return null;
     }
     try
     {
-      paramo = s.dB(aa.z(paramo.mUri), false);
+      paramq = u.dO(paramq.getPath(), false);
       try
       {
-        Object localObject1 = a.g(paramo);
+        Object localObject1 = a.g(paramq);
         localByteBuffer2 = (ByteBuffer)((Pair)localObject1).first;
         l = ((Long)((Pair)localObject1).second).longValue();
-        if (!h.c(paramo, l)) {
-          break label108;
+        if (!h.c(paramq, l)) {
+          break label105;
         }
         localObject1 = new a.b("ZIP64 APK not supported");
         AppMethodBeat.o(177463);
@@ -42,18 +41,18 @@ public final class f
         ByteBuffer localByteBuffer2;
         long l;
         ByteBuffer localByteBuffer1;
-        paramo = null;
+        paramq = null;
       }
     }
-    if (paramo != null) {
-      paramo.close();
+    if (paramq != null) {
+      paramq.close();
     }
     AppMethodBeat.o(177463);
     throw localObject2;
-    label108:
-    localByteBuffer1 = (ByteBuffer)a.b(paramo, a.b(localByteBuffer2, l)).first;
-    if (paramo != null) {
-      paramo.close();
+    label105:
+    localByteBuffer1 = (ByteBuffer)a.b(paramq, a.b(localByteBuffer2, l)).first;
+    if (paramq != null) {
+      paramq.close();
     }
     AppMethodBeat.o(177463);
     return localByteBuffer1;
@@ -61,7 +60,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.d.f
  * JD-Core Version:    0.7.0.1
  */

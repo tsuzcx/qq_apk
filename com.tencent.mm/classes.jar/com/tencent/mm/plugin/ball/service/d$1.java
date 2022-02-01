@@ -1,20 +1,19 @@
 package com.tencent.mm.plugin.ball.service;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.ball.model.BallInfo;
 
 final class d$1
-  extends AnimatorListenerAdapter
+  implements Runnable
 {
-  d$1(d paramd) {}
+  d$1(d paramd, BallInfo paramBallInfo, boolean paramBoolean) {}
   
-  public final void onAnimationEnd(Animator paramAnimator)
+  public final void run()
   {
-    AppMethodBeat.i(216986);
-    super.onAnimationEnd(paramAnimator);
-    this.oXo.a(null, 1.0F);
-    AppMethodBeat.o(216986);
+    AppMethodBeat.i(188982);
+    this.rXI.rYs.opType = 15;
+    a.b(this.rXI, this.rZA);
+    AppMethodBeat.o(188982);
   }
 }
 

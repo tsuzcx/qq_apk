@@ -6,244 +6,244 @@ import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/widget/util/Camera2ProcessIDKeyStat;", "", "()V", "ID", "", "KV_ID", "", "TAG", "", "markCamera2Open", "", "markCamera2OpenFailed", "markCamera2OpenSuccess", "markCamera2Release", "markCamera2SupportEXTERNAL", "markCamera2SupportFULL", "markCamera2SupportLEGACY", "markCamera2SupportLEVEL3", "markCamera2SupportLIMITED", "markCamera2TakePhotoBack", "markCamera2TakePhotoBackError", "markCamera2TakePhotoFront", "markCamera2TakePhotoFrontError", "markCamera2TakePhotoUseHDRSystem", "markCamera2UseEISSystem", "markCamera2UseOISSystem", "markCamera2UseRecordStream", "markCameraNumberAllBeenRemove", "markCameraNumberHasOne", "markCameraNumberHasTwo", "markCameraNumberMoreThanTwo", "markCameraQueryFail", "markCaptureSuccessUseImageBack", "markCaptureSuccessUseImageFront", "markCaptureUseImageCostTimes", "times", "markCaptureUseImageCostTimesBack", "markCaptureUseImageCostTimesFront", "markCaptureUseImageSuccess", "markErrorFindImage", "markErrorFindPreview", "markImageAvailable", "markReportCamera2Info", "numbers", "supportLevels", "levelDiffCameras", "frontLevel", "backLevel", "frontCameraNumber", "backCameraNumber", "markSupportLevelDiffCameras", "plugin-mediaeditor_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/widget/util/Camera2ProcessIDKeyStat;", "", "()V", "ID", "", "KV_ID", "", "TAG", "", "markCamera2Open", "", "markCamera2OpenFailed", "markCamera2OpenSuccess", "markCamera2Release", "markCamera2SupportEXTERNAL", "markCamera2SupportFULL", "markCamera2SupportLEGACY", "markCamera2SupportLEVEL3", "markCamera2SupportLIMITED", "markCamera2TakePhotoBack", "markCamera2TakePhotoBackError", "markCamera2TakePhotoFront", "markCamera2TakePhotoFrontError", "markCamera2TakePhotoUseHDRSystem", "markCamera2UseEISSystem", "markCamera2UseOISSystem", "markCamera2UseRecordStream", "markCameraNumberAllBeenRemove", "markCameraNumberHasOne", "markCameraNumberHasTwo", "markCameraNumberMoreThanTwo", "markCameraQueryFail", "markCaptureSuccessUseImageBack", "markCaptureSuccessUseImageFront", "markCaptureUseImageCostTimes", "times", "markCaptureUseImageCostTimesBack", "markCaptureUseImageCostTimesFront", "markCaptureUseImageSuccess", "markErrorFindImage", "markErrorFindPreview", "markImageAvailable", "markReportCamera2Info", "numbers", "supportLevels", "levelDiffCameras", "frontLevel", "backLevel", "frontCameraNumber", "backCameraNumber", "markSupportLevelDiffCameras", "plugin-mediaeditor_release"})
 public final class a
 {
-  public static final a itg;
+  public static final a lim;
   
   static
   {
-    AppMethodBeat.i(218938);
-    itg = new a();
-    AppMethodBeat.o(218938);
+    AppMethodBeat.i(261233);
+    lim = new a();
+    AppMethodBeat.o(261233);
+  }
+  
+  public static void Gd(long paramLong)
+  {
+    AppMethodBeat.i(261218);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCaptureUseImageCostTimesFront ".concat(String.valueOf(paramLong)));
+    h.IzE.p(1099L, 24L, paramLong);
+    AppMethodBeat.o(261218);
+  }
+  
+  public static void Ge(long paramLong)
+  {
+    AppMethodBeat.i(261219);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCaptureUseImageCostTimesBack ".concat(String.valueOf(paramLong)));
+    h.IzE.p(1099L, 25L, paramLong);
+    AppMethodBeat.o(261219);
   }
   
   public static void a(int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(218937);
-    p.h(paramString1, "supportLevels");
-    p.h(paramString2, "frontLevel");
-    p.h(paramString3, "backLevel");
+    AppMethodBeat.i(261229);
+    p.k(paramString1, "supportLevels");
+    p.k(paramString2, "frontLevel");
+    p.k(paramString3, "backLevel");
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markReportCamera2Info " + paramInt1 + ',' + paramString1 + ',' + paramInt2 + ',' + paramString2 + ',' + paramString3 + ',' + paramInt3 + ',' + paramInt4);
-    h.CyF.a(22109, new Object[] { Integer.valueOf(paramInt1), paramString1, Integer.valueOf(paramInt2), paramString2, paramString3, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-    AppMethodBeat.o(218937);
+    h.IzE.a(22109, new Object[] { Integer.valueOf(paramInt1), paramString1, Integer.valueOf(paramInt2), paramString2, paramString3, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    AppMethodBeat.o(261229);
   }
   
-  public static void aRb()
+  public static void aZU()
   {
-    AppMethodBeat.i(218910);
+    AppMethodBeat.i(261173);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2Open");
-    h.CyF.n(1099L, 0L, 1L);
-    AppMethodBeat.o(218910);
+    h.IzE.p(1099L, 0L, 1L);
+    AppMethodBeat.o(261173);
   }
   
-  public static void aRc()
+  public static void aZV()
   {
-    AppMethodBeat.i(218911);
+    AppMethodBeat.i(261175);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2OpenSuccess");
-    h.CyF.n(1099L, 1L, 1L);
-    AppMethodBeat.o(218911);
+    h.IzE.p(1099L, 1L, 1L);
+    AppMethodBeat.o(261175);
   }
   
-  public static void aRd()
+  public static void aZW()
   {
-    AppMethodBeat.i(218912);
+    AppMethodBeat.i(261176);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2OpenFailed");
-    h.CyF.n(1099L, 2L, 1L);
-    AppMethodBeat.o(218912);
+    h.IzE.p(1099L, 2L, 1L);
+    AppMethodBeat.o(261176);
   }
   
-  public static void aRe()
+  public static void aZX()
   {
-    AppMethodBeat.i(218913);
+    AppMethodBeat.i(261179);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2Release");
-    h.CyF.n(1099L, 3L, 1L);
-    AppMethodBeat.o(218913);
+    h.IzE.p(1099L, 3L, 1L);
+    AppMethodBeat.o(261179);
   }
   
-  public static void aRf()
+  public static void aZY()
   {
-    AppMethodBeat.i(218914);
+    AppMethodBeat.i(261183);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2TakePhotoFront");
-    h.CyF.n(1099L, 4L, 1L);
-    AppMethodBeat.o(218914);
+    h.IzE.p(1099L, 4L, 1L);
+    AppMethodBeat.o(261183);
   }
   
-  public static void aRg()
+  public static void aZZ()
   {
-    AppMethodBeat.i(218915);
+    AppMethodBeat.i(261185);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2TakePhotoBack");
-    h.CyF.n(1099L, 5L, 1L);
-    AppMethodBeat.o(218915);
+    h.IzE.p(1099L, 5L, 1L);
+    AppMethodBeat.o(261185);
   }
   
-  public static void aRh()
+  public static void baa()
   {
-    AppMethodBeat.i(218916);
+    AppMethodBeat.i(261189);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2TakePhotoBackError");
-    h.CyF.n(1099L, 6L, 1L);
-    AppMethodBeat.o(218916);
+    h.IzE.p(1099L, 6L, 1L);
+    AppMethodBeat.o(261189);
   }
   
-  public static void aRi()
+  public static void bab()
   {
-    AppMethodBeat.i(218917);
+    AppMethodBeat.i(261191);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2TakePhotoBackError");
-    com.tencent.mm.compatible.d.a locala = com.tencent.mm.compatible.d.a.gDv;
+    com.tencent.mm.compatible.d.a locala = com.tencent.mm.compatible.d.a.jnF;
     com.tencent.mm.compatible.d.a.v(1099L, 7L);
-    AppMethodBeat.o(218917);
+    AppMethodBeat.o(261191);
   }
   
-  public static void aRj()
+  public static void bac()
   {
-    AppMethodBeat.i(218918);
+    AppMethodBeat.i(261194);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2UseOISSystem");
-    h.CyF.n(1099L, 9L, 1L);
-    AppMethodBeat.o(218918);
+    h.IzE.p(1099L, 9L, 1L);
+    AppMethodBeat.o(261194);
   }
   
-  public static void aRk()
+  public static void bad()
   {
-    AppMethodBeat.i(218919);
+    AppMethodBeat.i(261197);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markErrorFindImage");
-    h.CyF.n(1099L, 12L, 1L);
-    AppMethodBeat.o(218919);
+    h.IzE.p(1099L, 12L, 1L);
+    AppMethodBeat.o(261197);
   }
   
-  public static void aRl()
+  public static void bae()
   {
-    AppMethodBeat.i(218920);
+    AppMethodBeat.i(261199);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markImageAvailable");
-    h.CyF.n(1099L, 13L, 1L);
-    AppMethodBeat.o(218920);
+    h.IzE.p(1099L, 13L, 1L);
+    AppMethodBeat.o(261199);
   }
   
-  public static void aRm()
+  public static void baf()
   {
-    AppMethodBeat.i(218921);
+    AppMethodBeat.i(261202);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCaptureSuccessUseImageBack");
-    h.CyF.n(1099L, 14L, 1L);
-    AppMethodBeat.o(218921);
+    h.IzE.p(1099L, 14L, 1L);
+    AppMethodBeat.o(261202);
   }
   
-  public static void aRn()
+  public static void bag()
   {
-    AppMethodBeat.i(218922);
+    AppMethodBeat.i(261204);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCaptureSuccessUseImageFront");
-    h.CyF.n(1099L, 15L, 1L);
-    AppMethodBeat.o(218922);
+    h.IzE.p(1099L, 15L, 1L);
+    AppMethodBeat.o(261204);
   }
   
-  public static void aRo()
+  public static void bah()
   {
-    AppMethodBeat.i(218923);
+    AppMethodBeat.i(261206);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCaptureUseImageSuccess");
-    h.CyF.n(1099L, 16L, 1L);
-    AppMethodBeat.o(218923);
+    h.IzE.p(1099L, 16L, 1L);
+    AppMethodBeat.o(261206);
   }
   
-  public static void aRp()
+  public static void bai()
   {
-    AppMethodBeat.i(218924);
+    AppMethodBeat.i(261208);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2UseRecordStream");
-    h.CyF.n(1099L, 18L, 1L);
-    AppMethodBeat.o(218924);
+    h.IzE.p(1099L, 18L, 1L);
+    AppMethodBeat.o(261208);
   }
   
-  public static void aRq()
+  public static void baj()
   {
-    AppMethodBeat.i(218925);
+    AppMethodBeat.i(261210);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2SupportLIMITED");
-    h.CyF.n(1099L, 19L, 1L);
-    AppMethodBeat.o(218925);
+    h.IzE.p(1099L, 19L, 1L);
+    AppMethodBeat.o(261210);
   }
   
-  public static void aRr()
+  public static void bak()
   {
-    AppMethodBeat.i(218926);
+    AppMethodBeat.i(261211);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2SupportFULL");
-    h.CyF.n(1099L, 20L, 1L);
-    AppMethodBeat.o(218926);
+    h.IzE.p(1099L, 20L, 1L);
+    AppMethodBeat.o(261211);
   }
   
-  public static void aRs()
+  public static void bal()
   {
-    AppMethodBeat.i(218927);
+    AppMethodBeat.i(261213);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2SupportLEGACY");
-    h.CyF.n(1099L, 21L, 1L);
-    AppMethodBeat.o(218927);
+    h.IzE.p(1099L, 21L, 1L);
+    AppMethodBeat.o(261213);
   }
   
-  public static void aRt()
+  public static void bam()
   {
-    AppMethodBeat.i(218928);
+    AppMethodBeat.i(261215);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2SupportLEVEL3");
-    h.CyF.n(1099L, 22L, 1L);
-    AppMethodBeat.o(218928);
+    h.IzE.p(1099L, 22L, 1L);
+    AppMethodBeat.o(261215);
   }
   
-  public static void aRu()
+  public static void ban()
   {
-    AppMethodBeat.i(218929);
+    AppMethodBeat.i(261217);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2SupportEXTERNAL");
-    h.CyF.n(1099L, 23L, 1L);
-    AppMethodBeat.o(218929);
+    h.IzE.p(1099L, 23L, 1L);
+    AppMethodBeat.o(261217);
   }
   
-  public static void aRv()
+  public static void bao()
   {
-    AppMethodBeat.i(218932);
+    AppMethodBeat.i(261220);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCameraNumberAllBeenRemove ");
-    h.CyF.n(1099L, 26L, 1L);
-    AppMethodBeat.o(218932);
+    h.IzE.p(1099L, 26L, 1L);
+    AppMethodBeat.o(261220);
   }
   
-  public static void aRw()
+  public static void bap()
   {
-    AppMethodBeat.i(218933);
+    AppMethodBeat.i(261221);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCameraNumberHasOne ");
-    h.CyF.n(1099L, 27L, 1L);
-    AppMethodBeat.o(218933);
+    h.IzE.p(1099L, 27L, 1L);
+    AppMethodBeat.o(261221);
   }
   
-  public static void aRx()
+  public static void baq()
   {
-    AppMethodBeat.i(218934);
+    AppMethodBeat.i(261222);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCameraNumberHasTwo");
-    h.CyF.n(1099L, 28L, 1L);
-    AppMethodBeat.o(218934);
+    h.IzE.p(1099L, 28L, 1L);
+    AppMethodBeat.o(261222);
   }
   
-  public static void aRy()
+  public static void bar()
   {
-    AppMethodBeat.i(218935);
+    AppMethodBeat.i(261223);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCameraNumberMoreThanTwo");
-    h.CyF.n(1099L, 29L, 1L);
-    AppMethodBeat.o(218935);
+    h.IzE.p(1099L, 29L, 1L);
+    AppMethodBeat.o(261223);
   }
   
-  public static void aRz()
+  public static void bas()
   {
-    AppMethodBeat.i(218936);
+    AppMethodBeat.i(261224);
     Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markSupportLevelDiffCameras");
-    h.CyF.n(1099L, 30L, 1L);
-    AppMethodBeat.o(218936);
-  }
-  
-  public static void zW(long paramLong)
-  {
-    AppMethodBeat.i(218930);
-    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCaptureUseImageCostTimesFront ".concat(String.valueOf(paramLong)));
-    h.CyF.n(1099L, 24L, paramLong);
-    AppMethodBeat.o(218930);
-  }
-  
-  public static void zX(long paramLong)
-  {
-    AppMethodBeat.i(218931);
-    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCaptureUseImageCostTimesBack ".concat(String.valueOf(paramLong)));
-    h.CyF.n(1099L, 25L, paramLong);
-    AppMethodBeat.o(218931);
+    h.IzE.p(1099L, 30L, 1L);
+    AppMethodBeat.o(261224);
   }
 }
 

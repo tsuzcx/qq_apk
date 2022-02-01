@@ -8,25 +8,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MMReceivers$SandBoxProcessReceiver
   extends BroadcastReceiver
 {
-  private static MMReceivers.a glx = null;
+  private static MMReceivers.a iPF = null;
   
   public static void a(MMReceivers.a parama)
   {
-    glx = parama;
+    iPF = parama;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(131892);
-    if (glx != null) {
-      glx.onReceive(paramContext, paramIntent);
+    if (iPF != null) {
+      iPF.onReceive(paramContext, paramIntent);
     }
     AppMethodBeat.o(131892);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.booter.MMReceivers.SandBoxProcessReceiver
  * JD-Core Version:    0.7.0.1
  */

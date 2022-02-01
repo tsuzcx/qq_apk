@@ -2,9 +2,11 @@ package com.tencent.mm.plugin.webview.luggage.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.c.h;
+import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.luggage.t;
-import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.o;
 
 public final class h
   extends a
@@ -17,21 +19,21 @@ public final class h
   public final void a(Context paramContext, g paramg)
   {
     AppMethodBeat.i(78697);
-    paramContext = paramg.gbJ();
+    paramContext = paramg.gUE();
     if (paramContext != null)
     {
-      paramContext.ic(true);
-      com.tencent.mm.plugin.report.service.h.CyF.dN(982, 4);
+      paramContext.iW(true);
+      com.tencent.mm.plugin.report.service.h.IzE.el(982, 4);
     }
     AppMethodBeat.o(78697);
   }
   
-  public final void a(Context paramContext, g paramg, m paramm)
+  public final void a(Context paramContext, g paramg, o paramo)
   {
     AppMethodBeat.i(78696);
-    t localt = paramg.gbJ();
-    if ((paramg.gbH()) && (localt != null)) {
-      paramm.b(35, paramContext.getString(2131764199), 2131690846);
+    t localt = paramg.gUE();
+    if ((paramg.gUC()) && (localt != null)) {
+      paramo.b(35, paramContext.getString(c.i.readerapp_minimize), c.h.icons_outlined_multitask);
     }
     AppMethodBeat.o(78696);
   }

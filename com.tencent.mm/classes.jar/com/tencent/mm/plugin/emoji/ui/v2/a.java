@@ -11,15 +11,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.q;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.ay.q;
 import com.tencent.mm.plugin.emoji.e.e;
+import com.tencent.mm.plugin.emoji.i.c;
+import com.tencent.mm.plugin.emoji.i.d;
+import com.tencent.mm.plugin.emoji.i.e;
+import com.tencent.mm.plugin.emoji.i.f;
 import com.tencent.mm.plugin.emoji.model.EmojiLogic;
-import com.tencent.mm.plugin.emoji.model.k;
-import com.tencent.mm.protocal.protobuf.ait;
+import com.tencent.mm.plugin.emoji.model.p;
+import com.tencent.mm.protocal.protobuf.aji;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.aa;
+import com.tencent.mm.ui.ad;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,42 +31,42 @@ public final class a
 {
   private Context mContext;
   private int mNumColumns;
-  private int omS;
-  private int opk;
-  private int qXG;
-  List<ait> qXp;
-  private boolean rnf;
-  private LinearLayout.LayoutParams rng;
-  private LinearLayout.LayoutParams rnh;
-  a rni;
+  private int sJu;
+  List<aji> uAd;
+  private int uAu;
+  private int uAv;
+  private boolean uQr;
+  private LinearLayout.LayoutParams uQs;
+  private LinearLayout.LayoutParams uQt;
+  a uQu;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(109414);
     this.mNumColumns = 3;
-    this.rnf = true;
+    this.uQr = true;
     this.mNumColumns = 3;
     this.mContext = paramContext;
-    this.qXG = com.tencent.mm.cb.a.jn(this.mContext);
-    this.opk = this.mContext.getResources().getDimensionPixelSize(2131166262);
-    this.omS = ((int)((this.qXG - this.mNumColumns * this.opk) / (this.mNumColumns + 1.0F)));
+    this.uAv = com.tencent.mm.ci.a.kr(this.mContext);
+    this.uAu = this.mContext.getResources().getDimensionPixelSize(i.c.emoji_grid_item_width_xhdpi);
+    this.sJu = ((int)((this.uAv - this.mNumColumns * this.uAu) / (this.mNumColumns + 1.0F)));
     AppMethodBeat.o(109414);
   }
   
   private int getRealCount()
   {
     AppMethodBeat.i(109416);
-    if (this.qXp == null)
+    if (this.uAd == null)
     {
       AppMethodBeat.o(109416);
       return 0;
     }
-    int i = this.qXp.size();
+    int i = this.uAd.size();
     AppMethodBeat.o(109416);
     return i;
   }
   
-  public final ait Gg(int paramInt)
+  public final aji JN(int paramInt)
   {
     AppMethodBeat.i(109418);
     if ((paramInt < 0) || (paramInt >= getRealCount()))
@@ -71,41 +74,41 @@ public final class a
       AppMethodBeat.o(109418);
       return null;
     }
-    if (this.qXp == null)
+    if (this.uAd == null)
     {
       AppMethodBeat.o(109418);
       return null;
     }
-    ait localait = (ait)this.qXp.get(paramInt);
+    aji localaji = (aji)this.uAd.get(paramInt);
     AppMethodBeat.o(109418);
-    return localait;
+    return localaji;
   }
   
-  public final void ad(List<ait> paramList)
+  public final void aa(List<aji> paramList)
   {
     AppMethodBeat.i(109415);
-    if (this.qXp == null) {
-      this.qXp = new ArrayList();
+    if (this.uAd == null) {
+      this.uAd = new ArrayList();
     }
     for (;;)
     {
-      this.qXp = paramList;
+      this.uAd = paramList;
       notifyDataSetChanged();
       AppMethodBeat.o(109415);
       return;
-      this.qXp.clear();
+      this.uAd.clear();
     }
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(109417);
-    if (this.qXp == null)
+    if (this.uAd == null)
     {
       AppMethodBeat.o(109417);
       return 0;
     }
-    int i = (int)Math.ceil(this.qXp.size() / this.mNumColumns);
+    int i = (int)Math.ceil(this.uAd.size() / this.mNumColumns);
     AppMethodBeat.o(109417);
     return i;
   }
@@ -122,10 +125,10 @@ public final class a
     Object localObject2;
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      localObject1 = aa.jQ(this.mContext).inflate(2131493979, null);
+      localObject1 = ad.kS(this.mContext).inflate(i.f.emoji_store_v2_single_product_item_2, null);
       localObject2 = new b();
-      ((b)localObject2).qXM = ((LinearLayout)((View)localObject1).findViewById(2131302798));
-      ((b)localObject2).qXM.setPadding(0, this.omS, 0, 0);
+      ((b)localObject2).uAB = ((LinearLayout)((View)localObject1).findViewById(i.e.item_container));
+      ((b)localObject2).uAB.setPadding(0, this.sJu, 0, 0);
       ((View)localObject1).setTag(localObject2);
       i = 0;
       for (;;)
@@ -135,14 +138,14 @@ public final class a
         if (i >= this.mNumColumns) {
           break;
         }
-        this.rnh = new LinearLayout.LayoutParams(-2, -2);
-        this.rnh.leftMargin = this.omS;
-        this.rng = new LinearLayout.LayoutParams(this.opk, this.opk);
+        this.uQt = new LinearLayout.LayoutParams(-2, -2);
+        this.uQt.leftMargin = this.sJu;
+        this.uQs = new LinearLayout.LayoutParams(this.uAu, this.uAu);
         paramView = new PaddingImageView(this.mContext);
-        paramViewGroup = this.rng;
-        paramView.addView(paramView.cIN, paramViewGroup);
-        paramView.addView(paramView.rnd, paramViewGroup);
-        ((b)localObject2).qXM.addView(paramView, i, this.rnh);
+        paramViewGroup = this.uQs;
+        paramView.addView(paramView.cJr, paramViewGroup);
+        paramView.addView(paramView.uQp, paramViewGroup);
+        ((b)localObject2).uAB.addView(paramView, i, this.uQt);
         i += 1;
       }
     }
@@ -151,30 +154,30 @@ public final class a
     if (i < this.mNumColumns)
     {
       final int j = this.mNumColumns * paramInt + i;
-      localObject1 = (PaddingImageView)paramViewGroup.qXM.getChildAt(i);
+      localObject1 = (PaddingImageView)paramViewGroup.uAB.getChildAt(i);
       Object localObject3;
       if (j <= getRealCount() - 1)
       {
-        localObject2 = Gg(j);
+        localObject2 = JN(j);
         if (localObject2 != null) {
-          if (!Util.isNullOrNil(((ait)localObject2).ThumbUrl))
+          if (!Util.isNullOrNil(((aji)localObject2).ThumbUrl))
           {
-            localObject3 = com.tencent.mm.emoji.e.a.hdT;
-            localObject3 = com.tencent.mm.emoji.e.a.EX(((ait)localObject2).Md5);
-            q.bcV().a(((ait)localObject2).ThumbUrl, ((PaddingImageView)localObject1).getImageView(), e.a((String)localObject3, this.opk, new Object[0]));
-            label324:
+            localObject3 = com.tencent.mm.emoji.e.a.jPz;
+            localObject3 = com.tencent.mm.emoji.e.a.LQ(((aji)localObject2).Md5);
+            q.bml().a(((aji)localObject2).ThumbUrl, ((PaddingImageView)localObject1).getImageView(), e.a((String)localObject3, this.uAu, new Object[0]));
+            label326:
             ((PaddingImageView)localObject1).setClickable(true);
-            ((PaddingImageView)localObject1).getImageViewFG().setBackgroundResource(2131232125);
+            ((PaddingImageView)localObject1).getImageViewFG().setBackgroundResource(i.d.emoji_grid_item_seq_fg);
             ((PaddingImageView)localObject1).setOnClickListener(new View.OnClickListener()
             {
               public final void onClick(View paramAnonymousView)
               {
                 AppMethodBeat.i(109413);
-                b localb = new b();
-                localb.bm(paramAnonymousView);
-                com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/emoji/ui/v2/PreViewListGridAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+                com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+                localb.bn(paramAnonymousView);
+                com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/emoji/ui/v2/PreViewListGridAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
                 if (a.a(a.this) != null) {
-                  a.a(a.this).FP(j);
+                  a.a(a.this).Jx(j);
                 }
                 com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/emoji/ui/v2/PreViewListGridAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                 AppMethodBeat.o(109413);
@@ -187,23 +190,22 @@ public final class a
       {
         i += 1;
         break;
-        if (!Util.isNullOrNil(((ait)localObject2).Url))
+        if (!Util.isNullOrNil(((aji)localObject2).Url))
         {
-          localObject3 = com.tencent.mm.emoji.e.a.hdT;
-          localObject3 = EmojiLogic.W(com.tencent.mm.emoji.e.a.awt(), "", ((ait)localObject2).Md5);
-          k.cGc().a(((ait)localObject2).Url, ((PaddingImageView)localObject1).getImageView(), e.a((String)localObject3, this.opk, new Object[0]));
-          break label324;
+          localObject3 = EmojiLogic.T(com.tencent.mm.plugin.emoji.i.b.bcb(), "", ((aji)localObject2).Md5);
+          p.cUL().a(((aji)localObject2).Url, ((PaddingImageView)localObject1).getImageView(), e.a((String)localObject3, this.uAu, new Object[0]));
+          break label326;
         }
         Log.w("MicroMsg.emoji.PreViewListGridAdapter", "this emoji has no thumb url and url. download faild");
-        break label324;
+        break label326;
         ((PaddingImageView)localObject1).getImageViewFG().setBackgroundDrawable(null);
-        q.bcV().loadImage("", ((PaddingImageView)localObject1).getImageView());
+        q.bml().loadImage("", ((PaddingImageView)localObject1).getImageView());
         Log.w("MicroMsg.emoji.PreViewListGridAdapter", "item is null");
         ((PaddingImageView)localObject1).setClickable(false);
         ((PaddingImageView)localObject1).setOnClickListener(null);
         continue;
         ((PaddingImageView)localObject1).getImageViewFG().setBackgroundDrawable(null);
-        q.bcV().loadImage("", ((PaddingImageView)localObject1).getImageView());
+        q.bml().loadImage("", ((PaddingImageView)localObject1).getImageView());
         ((PaddingImageView)localObject1).setClickable(false);
         ((PaddingImageView)localObject1).setOnClickListener(null);
       }
@@ -214,19 +216,19 @@ public final class a
   
   static abstract interface a
   {
-    public abstract void FP(int paramInt);
+    public abstract void Jx(int paramInt);
   }
   
   final class b
   {
-    LinearLayout qXM;
+    LinearLayout uAB;
     
     b() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.a
  * JD-Core Version:    0.7.0.1
  */

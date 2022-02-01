@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.profile.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dvy;
-import com.tencent.mm.protocal.protobuf.dvz;
+import com.tencent.mm.protocal.protobuf.ega;
+import com.tencent.mm.protocal.protobuf.egb;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
@@ -24,17 +24,17 @@ public final class c
   {
     AppMethodBeat.i(26907);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new dvy();
-    ((d.a)localObject).iLO = new dvz();
+    ((d.a)localObject).lBU = new ega();
+    ((d.a)localObject).lBV = new egb();
     ((d.a)localObject).uri = "/cgi-bin/mmocbiz-bin/setbrandflag";
     ((d.a)localObject).funcId = 1363;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (dvy)this.rr.iLK.iLR;
-    ((dvy)localObject).KTt = paramString;
-    ((dvy)localObject).MWH = paramInt;
-    ((dvy)localObject).MWI = 4;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (ega)d.b.b(this.rr.lBR);
+    ((ega)localObject).RUp = paramString;
+    ((ega)localObject).Ujc = paramInt;
+    ((ega)localObject).Ujd = 4;
     AppMethodBeat.o(26907);
   }
   
@@ -65,7 +65,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.b.c
  * JD-Core Version:    0.7.0.1
  */

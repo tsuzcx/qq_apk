@@ -3,7 +3,7 @@ package com.github.henryye.nativeiv.c;
 public final class a
 {
   /* Error */
-  public static java.nio.ByteBuffer j(java.io.InputStream paramInputStream)
+  public static java.nio.ByteBuffer h(java.io.InputStream paramInputStream)
   {
     // Byte code:
     //   0: ldc 13
@@ -14,7 +14,7 @@ public final class a
     //   9: invokevirtual 25	java/io/InputStream:markSupported	()Z
     //   12: ifne +16 -> 28
     //   15: aload_0
-    //   16: invokestatic 31	com/github/henryye/nativeiv/c/e:l	(Ljava/io/InputStream;)Ljava/io/InputStream;
+    //   16: invokestatic 31	com/github/henryye/nativeiv/c/e:j	(Ljava/io/InputStream;)Ljava/io/InputStream;
     //   19: astore 6
     //   21: aload 6
     //   23: ldc 32
@@ -227,7 +227,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.github.henryye.nativeiv.c.a
  * JD-Core Version:    0.7.0.1
  */

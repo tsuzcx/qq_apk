@@ -20,7 +20,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ap;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.i;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ao;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.AdLandingVideoWrapper;
 import com.tencent.mm.pluginsdk.ui.i.b;
 import com.tencent.mm.pluginsdk.ui.i.d;
@@ -33,242 +35,242 @@ public class LongVideoFullScreenView
   extends RelativeLayout
   implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener, View.OnClickListener, View.OnTouchListener, i.b, i.d
 {
-  private long AhP;
-  private int Aiv;
-  volatile boolean DXw;
-  String DYR;
-  VideoPlayerSeekBar EeP;
-  ImageView EeQ;
-  Runnable EeU;
-  private volatile boolean EeX;
-  boolean EeY;
-  private volatile boolean Efc;
-  private int Efh;
-  private int Efi;
-  private int Efj;
-  View.OnClickListener Efl;
-  int EgO;
-  ImageView Egd;
-  View Ege;
-  Runnable Egg;
-  private int Egh;
-  FrameLayout Esi;
-  View Esj;
-  View Esk;
-  AdLandingVideoWrapper Esl;
-  String Esm;
-  int Esn;
-  int Eso;
-  String Esp;
-  int Esq;
-  private volatile boolean Esr;
-  private volatile int Ess;
-  volatile boolean Est;
-  private long Esu;
-  private com.tencent.mm.plugin.sns.ui.d.a Esv;
+  private long FOL;
+  private int FPs;
+  boolean JAS;
+  private int JAW;
+  private int JAX;
+  private int JAY;
+  private int JAZ;
+  Runnable JBl;
+  FrameLayout KFE;
+  View KFF;
+  View KFG;
+  AdLandingVideoWrapper KFH;
+  String KFI;
+  int KFJ;
+  int KFK;
+  String KFL;
+  int KFM;
+  private volatile boolean KFN;
+  private volatile int KFO;
+  volatile boolean KFP;
+  private long KFQ;
+  private com.tencent.mm.plugin.sns.ui.d.a KFR;
+  volatile boolean KkF;
+  String Kmm;
+  private volatile boolean KtQ;
+  int KtV;
+  ImageView Kte;
+  private volatile boolean Ktg;
+  VideoPlayerSeekBar Kth;
+  ImageView Kti;
+  View Ktj;
+  Runnable Ktl;
+  View.OnClickListener Ktm;
   View contentView;
-  boolean gVd;
-  volatile boolean htU;
+  boolean fGh;
   volatile boolean isFirst;
   boolean isWaiting;
-  private GestureDetector jKk;
-  int jqs;
+  volatile boolean kfR;
   int length;
+  private GestureDetector mBn;
   Context mContext;
-  int mEX;
-  int mEY;
-  com.tencent.mm.plugin.sight.decode.ui.b tni;
+  int mfT;
+  int pEj;
+  int pEk;
+  com.tencent.mm.plugin.sight.decode.ui.b wTG;
   
   public LongVideoFullScreenView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(203269);
+    AppMethodBeat.i(264118);
     this.contentView = null;
-    this.Esr = false;
-    this.Ess = 0;
-    this.htU = true;
-    this.Efc = false;
-    this.EeX = true;
-    this.DXw = false;
+    this.KFN = false;
+    this.KFO = 0;
+    this.kfR = true;
+    this.Ktg = false;
+    this.KtQ = true;
+    this.KkF = false;
     this.isFirst = true;
-    this.Est = false;
-    this.AhP = 0L;
-    this.Efi = 0;
-    this.Egh = 0;
-    this.Efj = 0;
-    this.Efh = 0;
-    this.Aiv = 0;
-    this.Esu = 0L;
-    this.Efl = ffU();
-    this.tni = ffV();
-    this.EeU = new Runnable()
+    this.KFP = false;
+    this.FOL = 0L;
+    this.JAX = 0;
+    this.JAZ = 0;
+    this.JAY = 0;
+    this.JAW = 0;
+    this.FPs = 0;
+    this.KFQ = 0L;
+    this.Ktm = fTR();
+    this.wTG = fTS();
+    this.JBl = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(203267);
+        AppMethodBeat.i(240185);
         LongVideoFullScreenView.b(LongVideoFullScreenView.this, false);
-        AppMethodBeat.o(203267);
+        AppMethodBeat.o(240185);
       }
     };
-    this.Egg = new Runnable()
+    this.Ktl = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(203268);
+        AppMethodBeat.i(264724);
         try
         {
           LongVideoFullScreenView.l(LongVideoFullScreenView.this).setVisibility(8);
-          AppMethodBeat.o(203268);
+          AppMethodBeat.o(264724);
           return;
         }
         catch (Throwable localThrowable)
         {
           Log.e("LongVideoFullScreenView", localThrowable.toString());
-          AppMethodBeat.o(203268);
+          AppMethodBeat.o(264724);
         }
       }
     };
     this.mContext = paramContext;
-    this.jKk = new GestureDetector(this);
-    AppMethodBeat.o(203269);
+    this.mBn = new GestureDetector(this);
+    AppMethodBeat.o(264118);
   }
   
   public LongVideoFullScreenView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(203270);
+    AppMethodBeat.i(264120);
     this.contentView = null;
-    this.Esr = false;
-    this.Ess = 0;
-    this.htU = true;
-    this.Efc = false;
-    this.EeX = true;
-    this.DXw = false;
+    this.KFN = false;
+    this.KFO = 0;
+    this.kfR = true;
+    this.Ktg = false;
+    this.KtQ = true;
+    this.KkF = false;
     this.isFirst = true;
-    this.Est = false;
-    this.AhP = 0L;
-    this.Efi = 0;
-    this.Egh = 0;
-    this.Efj = 0;
-    this.Efh = 0;
-    this.Aiv = 0;
-    this.Esu = 0L;
-    this.Efl = ffU();
-    this.tni = ffV();
-    this.EeU = new Runnable()
+    this.KFP = false;
+    this.FOL = 0L;
+    this.JAX = 0;
+    this.JAZ = 0;
+    this.JAY = 0;
+    this.JAW = 0;
+    this.FPs = 0;
+    this.KFQ = 0L;
+    this.Ktm = fTR();
+    this.wTG = fTS();
+    this.JBl = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(203267);
+        AppMethodBeat.i(240185);
         LongVideoFullScreenView.b(LongVideoFullScreenView.this, false);
-        AppMethodBeat.o(203267);
+        AppMethodBeat.o(240185);
       }
     };
-    this.Egg = new Runnable()
+    this.Ktl = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(203268);
+        AppMethodBeat.i(264724);
         try
         {
           LongVideoFullScreenView.l(LongVideoFullScreenView.this).setVisibility(8);
-          AppMethodBeat.o(203268);
+          AppMethodBeat.o(264724);
           return;
         }
         catch (Throwable localThrowable)
         {
           Log.e("LongVideoFullScreenView", localThrowable.toString());
-          AppMethodBeat.o(203268);
+          AppMethodBeat.o(264724);
         }
       }
     };
     this.mContext = paramContext;
-    this.jKk = new GestureDetector(this);
-    AppMethodBeat.o(203270);
+    this.mBn = new GestureDetector(this);
+    AppMethodBeat.o(264120);
   }
   
   public LongVideoFullScreenView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(203271);
+    AppMethodBeat.i(264122);
     this.contentView = null;
-    this.Esr = false;
-    this.Ess = 0;
-    this.htU = true;
-    this.Efc = false;
-    this.EeX = true;
-    this.DXw = false;
+    this.KFN = false;
+    this.KFO = 0;
+    this.kfR = true;
+    this.Ktg = false;
+    this.KtQ = true;
+    this.KkF = false;
     this.isFirst = true;
-    this.Est = false;
-    this.AhP = 0L;
-    this.Efi = 0;
-    this.Egh = 0;
-    this.Efj = 0;
-    this.Efh = 0;
-    this.Aiv = 0;
-    this.Esu = 0L;
-    this.Efl = ffU();
-    this.tni = ffV();
-    this.EeU = new Runnable()
+    this.KFP = false;
+    this.FOL = 0L;
+    this.JAX = 0;
+    this.JAZ = 0;
+    this.JAY = 0;
+    this.JAW = 0;
+    this.FPs = 0;
+    this.KFQ = 0L;
+    this.Ktm = fTR();
+    this.wTG = fTS();
+    this.JBl = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(203267);
+        AppMethodBeat.i(240185);
         LongVideoFullScreenView.b(LongVideoFullScreenView.this, false);
-        AppMethodBeat.o(203267);
+        AppMethodBeat.o(240185);
       }
     };
-    this.Egg = new Runnable()
+    this.Ktl = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(203268);
+        AppMethodBeat.i(264724);
         try
         {
           LongVideoFullScreenView.l(LongVideoFullScreenView.this).setVisibility(8);
-          AppMethodBeat.o(203268);
+          AppMethodBeat.o(264724);
           return;
         }
         catch (Throwable localThrowable)
         {
           Log.e("LongVideoFullScreenView", localThrowable.toString());
-          AppMethodBeat.o(203268);
+          AppMethodBeat.o(264724);
         }
       }
     };
     this.mContext = paramContext;
-    this.jKk = new GestureDetector(this);
-    AppMethodBeat.o(203271);
+    this.mBn = new GestureDetector(this);
+    AppMethodBeat.o(264122);
   }
   
-  private static void ay(Runnable paramRunnable)
+  private static void aE(Runnable paramRunnable)
   {
-    AppMethodBeat.i(203289);
+    AppMethodBeat.i(264143);
     try
     {
       MMHandlerThread.removeRunnable(paramRunnable);
       MMHandlerThread.postToMainThreadDelayed(paramRunnable, 4000L);
-      AppMethodBeat.o(203289);
+      AppMethodBeat.o(264143);
       return;
     }
     catch (Throwable paramRunnable)
     {
       Log.e("LongVideoFullScreenView", paramRunnable.toString());
-      AppMethodBeat.o(203289);
+      AppMethodBeat.o(264143);
     }
   }
   
-  private View.OnClickListener ffU()
+  private View.OnClickListener fTR()
   {
-    AppMethodBeat.i(203285);
+    AppMethodBeat.i(264139);
     View.OnClickListener local3 = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(203264);
+        AppMethodBeat.i(203909);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         for (;;)
         {
           try
@@ -287,193 +289,157 @@ public class LongVideoFullScreenView
           {
             Log.e("LongVideoFullScreenView", paramAnonymousView.toString());
             continue;
-            LongVideoFullScreenView.this.fcK();
+            LongVideoFullScreenView.this.fKs();
             continue;
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(203264);
+          AppMethodBeat.o(203909);
           return;
           if (!LongVideoFullScreenView.o(LongVideoFullScreenView.this)) {
             continue;
           }
-          LongVideoFullScreenView.this.fcJ();
+          LongVideoFullScreenView.this.fKr();
           LongVideoFullScreenView.p(LongVideoFullScreenView.this);
         }
       }
     };
-    AppMethodBeat.o(203285);
+    AppMethodBeat.o(264139);
     return local3;
   }
   
-  private com.tencent.mm.plugin.sight.decode.ui.b ffV()
+  private com.tencent.mm.plugin.sight.decode.ui.b fTS()
   {
-    AppMethodBeat.i(203286);
+    AppMethodBeat.i(264140);
     com.tencent.mm.plugin.sight.decode.ui.b local4 = new com.tencent.mm.plugin.sight.decode.ui.b()
     {
-      public final void aJq()
+      public final void aRo()
       {
-        AppMethodBeat.i(203265);
+        AppMethodBeat.i(265849);
         try
         {
           LongVideoFullScreenView.b(LongVideoFullScreenView.this, true);
-          AppMethodBeat.o(203265);
+          AppMethodBeat.o(265849);
           return;
         }
         catch (Throwable localThrowable)
         {
           Log.e("LongVideoFullScreenView", localThrowable.toString());
-          AppMethodBeat.o(203265);
+          AppMethodBeat.o(265849);
         }
       }
       
-      public final void rk(int paramAnonymousInt)
+      public final void tY(int paramAnonymousInt)
       {
-        AppMethodBeat.i(203266);
+        AppMethodBeat.i(265850);
         try
         {
           Log.i("LongVideoFullScreenView", "onSeek time ".concat(String.valueOf(paramAnonymousInt)));
-          LongVideoFullScreenView.a(LongVideoFullScreenView.this, paramAnonymousInt);
+          int i = paramAnonymousInt;
+          if (paramAnonymousInt >= LongVideoFullScreenView.e(LongVideoFullScreenView.this))
+          {
+            i = 0;
+            LongVideoFullScreenView.s(LongVideoFullScreenView.this);
+            Log.i("LongVideoFullScreenView", "onLoopCompletion, onSeekTo time is 0");
+          }
+          LongVideoFullScreenView.a(LongVideoFullScreenView.this, i);
           if (LongVideoFullScreenView.o(LongVideoFullScreenView.this)) {
-            LongVideoFullScreenView.this.fcJ();
+            LongVideoFullScreenView.this.fKr();
           }
           for (;;)
           {
-            LongVideoFullScreenView.h(LongVideoFullScreenView.this).c(paramAnonymousInt, true);
+            LongVideoFullScreenView.h(LongVideoFullScreenView.this).a(i, true);
             MMHandlerThread.removeRunnable(LongVideoFullScreenView.m(LongVideoFullScreenView.this));
             LongVideoFullScreenView.l(LongVideoFullScreenView.this).setVisibility(8);
-            AppMethodBeat.o(203266);
+            AppMethodBeat.o(265850);
             return;
-            LongVideoFullScreenView.this.fcK();
+            LongVideoFullScreenView.this.fKs();
           }
           return;
         }
         catch (Throwable localThrowable)
         {
           Log.e("LongVideoFullScreenView", localThrowable.toString());
-          AppMethodBeat.o(203266);
+          AppMethodBeat.o(265850);
         }
       }
     };
-    AppMethodBeat.o(203286);
+    AppMethodBeat.o(264140);
     return local4;
   }
   
-  private void vh(boolean paramBoolean)
+  private void yM(boolean paramBoolean)
   {
-    AppMethodBeat.i(203280);
+    AppMethodBeat.i(264134);
     try
     {
-      this.EeP.setIsPlay(paramBoolean);
-      this.EeP.getPlayBtn().getLayoutParams().width = this.length;
-      this.EeP.getPlayBtn().getLayoutParams().height = this.length;
+      this.Kth.setIsPlay(paramBoolean);
+      this.Kth.getPlayBtn().getLayoutParams().width = this.length;
+      this.Kth.getPlayBtn().getLayoutParams().height = this.length;
       if (paramBoolean)
       {
         Log.i("LongVideoFullScreenView", "startPlay");
-        this.EeP.getPlayBtn().setImageDrawable(com.tencent.mm.cb.a.l(this.mContext, 2131691079));
-        AppMethodBeat.o(203280);
+        this.Kth.getPlayBtn().setImageDrawable(com.tencent.mm.ci.a.m(this.mContext, i.i.media_player_btn_cur_status_on));
+        AppMethodBeat.o(264134);
         return;
       }
       Log.i("LongVideoFullScreenView", "pausePlay");
-      this.EeP.getPlayBtn().setImageDrawable(com.tencent.mm.cb.a.l(this.mContext, 2131691078));
-      AppMethodBeat.o(203280);
+      this.Kth.getPlayBtn().setImageDrawable(com.tencent.mm.ci.a.m(this.mContext, i.i.media_player_btn_cur_status_off));
+      AppMethodBeat.o(264134);
       return;
     }
     catch (Throwable localThrowable)
     {
       Log.e("LongVideoFullScreenView", localThrowable.toString());
-      AppMethodBeat.o(203280);
+      AppMethodBeat.o(264134);
     }
   }
   
   public final void c(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(203279);
+    AppMethodBeat.i(264133);
     Log.e("LongVideoFullScreenView", "online play error, %s", new Object[] { paramString3 });
-    this.Efc = true;
-    AppMethodBeat.o(203279);
+    this.Ktg = true;
+    AppMethodBeat.o(264133);
   }
   
-  final void cXa()
+  final void cNW()
   {
-    AppMethodBeat.i(203282);
+    AppMethodBeat.i(264135);
     try
     {
-      Log.d("LongVideoFullScreenView", "pause play");
-      MMHandlerThread.postToMainThread(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(203263);
-          try
-          {
-            LongVideoFullScreenView.h(LongVideoFullScreenView.this).pause();
-            LongVideoFullScreenView.l(LongVideoFullScreenView.this).setVisibility(0);
-            LongVideoFullScreenView.az(LongVideoFullScreenView.m(LongVideoFullScreenView.this));
-            LongVideoFullScreenView.a(LongVideoFullScreenView.this, false);
-            AppMethodBeat.o(203263);
-            return;
-          }
-          catch (Throwable localThrowable)
-          {
-            Log.e("LongVideoFullScreenView", localThrowable.toString());
-            AppMethodBeat.o(203263);
-          }
-        }
-      });
-      if (this.AhP != 0L)
-      {
-        this.Esu += System.currentTimeMillis() - this.AhP;
-        this.AhP = 0L;
-        Log.i("LongVideoFullScreenView", "playTimeInterval update");
-      }
-      AppMethodBeat.o(203282);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      Log.e("LongVideoFullScreenView", localThrowable.toString());
-      AppMethodBeat.o(203282);
-    }
-  }
-  
-  final void czw()
-  {
-    AppMethodBeat.i(203281);
-    try
-    {
-      Log.i("LongVideoFullScreenView", "starting play, downFailed=" + this.Efc);
-      boolean bool = this.Efc;
+      Log.i("LongVideoFullScreenView", "starting play, downFailed=" + this.Ktg);
+      boolean bool = this.Ktg;
       if (bool) {
         try
         {
           Log.e("LongVideoFullScreenView", "last download fail ,try again");
-          if ((this.EeP != null) && (this.EeP.getParent() != null)) {
-            ((ViewGroup)this.EeP.getParent()).removeView(this.EeP);
+          if ((this.Kth != null) && (this.Kth.getParent() != null)) {
+            ((ViewGroup)this.Kth.getParent()).removeView(this.Kth);
           }
-          this.Esl.setFullScreen(true);
-          this.Esl.c(false, this.Esp, 0);
+          this.KFH.setFullScreen(true);
+          this.KFH.c(false, this.KFL, 0);
           if (this.mContext.getResources().getConfiguration().orientation == 2)
           {
             Log.i("LongVideoFullScreenView", "ORIENTATION_LANDSCAPE");
-            fda();
+            fQW();
           }
           for (;;)
           {
-            this.Esl.c(0.0D, true);
-            this.Esl.fdQ();
-            AppMethodBeat.o(203281);
+            this.KFH.a(0.0D, true);
+            this.KFH.fRI();
+            AppMethodBeat.o(264135);
             return;
             if (this.mContext.getResources().getConfiguration().orientation == 1)
             {
               Log.i("LongVideoFullScreenView", "ORIENTATION_PORTRAIT");
-              fdb();
+              fQX();
             }
           }
           MMHandlerThread.postToMainThread(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(203262);
+              AppMethodBeat.i(266224);
               try
               {
                 if (!LongVideoFullScreenView.a(LongVideoFullScreenView.this)) {
@@ -485,16 +451,16 @@ public class LongVideoFullScreenView
                   if ((LongVideoFullScreenView.d(LongVideoFullScreenView.this) > 0) && (LongVideoFullScreenView.d(LongVideoFullScreenView.this) <= LongVideoFullScreenView.e(LongVideoFullScreenView.this)))
                   {
                     LongVideoFullScreenView.g(LongVideoFullScreenView.this).seek(LongVideoFullScreenView.f(LongVideoFullScreenView.this));
-                    LongVideoFullScreenView.h(LongVideoFullScreenView.this).c(LongVideoFullScreenView.f(LongVideoFullScreenView.this), true);
+                    LongVideoFullScreenView.h(LongVideoFullScreenView.this).a(LongVideoFullScreenView.f(LongVideoFullScreenView.this), true);
                   }
                   for (;;)
                   {
                     LongVideoFullScreenView.a(LongVideoFullScreenView.this, System.currentTimeMillis());
                     LongVideoFullScreenView.a(LongVideoFullScreenView.this, true);
-                    AppMethodBeat.o(203262);
+                    AppMethodBeat.o(266224);
                     return;
                     LongVideoFullScreenView.g(LongVideoFullScreenView.this).seek(0);
-                    LongVideoFullScreenView.h(LongVideoFullScreenView.this).c(0.0D, true);
+                    LongVideoFullScreenView.h(LongVideoFullScreenView.this).a(0.0D, true);
                   }
                 }
                 if (LongVideoFullScreenView.i(LongVideoFullScreenView.this) >= LongVideoFullScreenView.e(LongVideoFullScreenView.this)) {
@@ -504,24 +470,24 @@ public class LongVideoFullScreenView
               catch (Throwable localThrowable)
               {
                 Log.e("LongVideoFullScreenView", localThrowable.toString());
-                AppMethodBeat.o(203262);
+                AppMethodBeat.o(266224);
                 return;
               }
               if (LongVideoFullScreenView.i(LongVideoFullScreenView.this) < 0)
               {
                 label192:
                 LongVideoFullScreenView.g(LongVideoFullScreenView.this).seek(0);
-                LongVideoFullScreenView.h(LongVideoFullScreenView.this).c(0.0D, LongVideoFullScreenView.j(LongVideoFullScreenView.this));
+                LongVideoFullScreenView.h(LongVideoFullScreenView.this).a(0.0D, LongVideoFullScreenView.j(LongVideoFullScreenView.this));
               }
               for (;;)
               {
                 LongVideoFullScreenView.a(LongVideoFullScreenView.this, System.currentTimeMillis());
                 LongVideoFullScreenView.a(LongVideoFullScreenView.this, LongVideoFullScreenView.j(LongVideoFullScreenView.this));
-                LongVideoFullScreenView.h(LongVideoFullScreenView.this).fdQ();
-                AppMethodBeat.o(203262);
+                LongVideoFullScreenView.h(LongVideoFullScreenView.this).fRI();
+                AppMethodBeat.o(266224);
                 return;
                 LongVideoFullScreenView.g(LongVideoFullScreenView.this).seek(LongVideoFullScreenView.i(LongVideoFullScreenView.this) / 1000);
-                LongVideoFullScreenView.h(LongVideoFullScreenView.this).c(LongVideoFullScreenView.i(LongVideoFullScreenView.this), LongVideoFullScreenView.j(LongVideoFullScreenView.this));
+                LongVideoFullScreenView.h(LongVideoFullScreenView.this).a(LongVideoFullScreenView.i(LongVideoFullScreenView.this), LongVideoFullScreenView.j(LongVideoFullScreenView.this));
               }
               label313:
               if (!LongVideoFullScreenView.h(LongVideoFullScreenView.this).isPlaying())
@@ -529,18 +495,18 @@ public class LongVideoFullScreenView
                 if (LongVideoFullScreenView.h(LongVideoFullScreenView.this).getCurrPosSec() != LongVideoFullScreenView.h(LongVideoFullScreenView.this).getVideoDurationSec()) {
                   break label405;
                 }
-                LongVideoFullScreenView.h(LongVideoFullScreenView.this).c(0.0D, true);
+                LongVideoFullScreenView.h(LongVideoFullScreenView.this).a(0.0D, true);
               }
               for (;;)
               {
                 LongVideoFullScreenView.a(LongVideoFullScreenView.this, true);
-                LongVideoFullScreenView.h(LongVideoFullScreenView.this).fdQ();
+                LongVideoFullScreenView.h(LongVideoFullScreenView.this).fRI();
                 LongVideoFullScreenView.k(LongVideoFullScreenView.this);
                 LongVideoFullScreenView.a(LongVideoFullScreenView.this, System.currentTimeMillis());
-                AppMethodBeat.o(203262);
+                AppMethodBeat.o(266224);
                 return;
                 label405:
-                LongVideoFullScreenView.h(LongVideoFullScreenView.this).c(LongVideoFullScreenView.h(LongVideoFullScreenView.this).getCurrPosSec(), true);
+                LongVideoFullScreenView.h(LongVideoFullScreenView.this).a(LongVideoFullScreenView.h(LongVideoFullScreenView.this).getCurrPosSec(), true);
               }
             }
           });
@@ -550,208 +516,254 @@ public class LongVideoFullScreenView
           Log.e("LongVideoFullScreenView", localThrowable1.toString());
         }
       }
-      AppMethodBeat.o(203281);
+      AppMethodBeat.o(264135);
       return;
     }
     catch (Throwable localThrowable2)
     {
       Log.e("LongVideoFullScreenView", localThrowable2.toString());
-      AppMethodBeat.o(203281);
+      AppMethodBeat.o(264135);
     }
   }
   
   public final void d(String paramString1, String paramString2, int paramInt1, int paramInt2) {}
   
-  public final void dH(String paramString1, String paramString2)
+  public final void dS(String paramString1, String paramString2)
   {
-    this.Efc = false;
+    this.Ktg = false;
   }
   
-  public final void dI(String paramString1, String paramString2)
+  public final void dT(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(203276);
+    AppMethodBeat.i(264130);
     try
     {
-      this.Efh += 1;
-      this.Esl.Ehq.stopTimer();
-      this.Esl.onUIPause();
-      AppMethodBeat.o(203276);
+      this.JAW += 1;
+      this.KFH.Kux.stopTimer();
+      this.KFH.onUIPause();
+      AppMethodBeat.o(264130);
       return;
     }
     catch (Throwable paramString1)
     {
       Log.e("LongVideoFullScreenView", paramString1.toString());
-      AppMethodBeat.o(203276);
+      AppMethodBeat.o(264130);
     }
   }
   
-  public final void dJ(String paramString1, String paramString2) {}
+  public final void dU(String paramString1, String paramString2) {}
   
-  public final void dK(String paramString1, String paramString2)
+  public final void dV(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(203278);
+    AppMethodBeat.i(264132);
     try
     {
-      MMHandlerThread.removeRunnable(this.Egg);
-      this.Ege.setVisibility(8);
-      vh(true);
-      AppMethodBeat.o(203278);
+      MMHandlerThread.removeRunnable(this.Ktl);
+      this.Ktj.setVisibility(8);
+      yM(true);
+      AppMethodBeat.o(264132);
       return;
     }
     catch (Throwable paramString1)
     {
       Log.e("LongVideoFullScreenView", paramString1.toString());
-      AppMethodBeat.o(203278);
+      AppMethodBeat.o(264132);
     }
   }
   
-  public final void dL(String paramString1, String paramString2)
+  public final void dW(String paramString1, String paramString2)
   {
-    this.Esr = true;
+    this.KFN = true;
   }
   
-  public final void dM(String paramString1, String paramString2)
+  public final void dX(String paramString1, String paramString2)
   {
-    this.Esr = false;
-    this.Ess = 0;
+    this.KFN = false;
+    this.KFO = 0;
   }
   
-  public final void fcJ()
+  final void dmi()
   {
-    AppMethodBeat.i(203283);
+    AppMethodBeat.i(264136);
     try
     {
-      this.EeQ.setImageDrawable(com.tencent.mm.cb.a.l(this.mContext, 2131690469));
-      this.Esl.setMute(true);
-      this.EeY = true;
-      AppMethodBeat.o(203283);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      Log.e("LongVideoFullScreenView", localThrowable.toString());
-      AppMethodBeat.o(203283);
-    }
-  }
-  
-  public final void fcK()
-  {
-    AppMethodBeat.i(203284);
-    try
-    {
-      this.EeQ.setImageDrawable(com.tencent.mm.cb.a.l(this.mContext, 2131690470));
-      this.Esl.setMute(false);
-      this.EeY = false;
-      AppMethodBeat.o(203284);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      Log.e("LongVideoFullScreenView", localThrowable.toString());
-      AppMethodBeat.o(203284);
-    }
-  }
-  
-  public final void fdO()
-  {
-    AppMethodBeat.i(203277);
-    try
-    {
-      if (this.Esl.getCurrPosSec() >= this.Eso)
+      Log.d("LongVideoFullScreenView", "pause play");
+      MMHandlerThread.postToMainThread(new Runnable()
       {
-        Log.i("LongVideoFullScreenView", "onLoopCompletion");
-        this.Efh += 1;
-        this.Esl.c(0.0D, true);
+        public final void run()
+        {
+          AppMethodBeat.i(204608);
+          try
+          {
+            LongVideoFullScreenView.h(LongVideoFullScreenView.this).pause();
+            LongVideoFullScreenView.l(LongVideoFullScreenView.this).setVisibility(0);
+            LongVideoFullScreenView.aF(LongVideoFullScreenView.m(LongVideoFullScreenView.this));
+            LongVideoFullScreenView.a(LongVideoFullScreenView.this, false);
+            AppMethodBeat.o(204608);
+            return;
+          }
+          catch (Throwable localThrowable)
+          {
+            Log.e("LongVideoFullScreenView", localThrowable.toString());
+            AppMethodBeat.o(204608);
+          }
+        }
+      });
+      if (this.FOL != 0L)
+      {
+        this.KFQ += System.currentTimeMillis() - this.FOL;
+        this.FOL = 0L;
+        Log.i("LongVideoFullScreenView", "playTimeInterval update");
       }
-      AppMethodBeat.o(203277);
+      AppMethodBeat.o(264136);
       return;
     }
     catch (Throwable localThrowable)
     {
       Log.e("LongVideoFullScreenView", localThrowable.toString());
-      AppMethodBeat.o(203277);
+      AppMethodBeat.o(264136);
     }
   }
   
-  final void fda()
+  public final void fC(String paramString1, String paramString2) {}
+  
+  public final void fKr()
   {
-    AppMethodBeat.i(203272);
+    AppMethodBeat.i(264137);
     try
     {
-      Object localObject = this.EeP.getParent();
-      if ((localObject instanceof ViewGroup)) {
-        ((ViewGroup)localObject).removeView(this.EeP);
-      }
-      ap.aL((Activity)this.mContext);
-      localObject = (RelativeLayout.LayoutParams)this.Esj.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 64);
-      ((RelativeLayout.LayoutParams)localObject).rightMargin = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 64);
-      ((RelativeLayout.LayoutParams)this.Esk.getLayoutParams()).rightMargin = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 20);
-      ((RelativeLayout.LayoutParams)this.Egd.getLayoutParams()).rightMargin = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 20);
-      localObject = new RelativeLayout.LayoutParams(this.mEY - com.tencent.mm.cb.a.fromDPToPix(this.mContext, 232), -2);
-      ((ViewGroup)this.Esj).addView(this.EeP, (ViewGroup.LayoutParams)localObject);
-      AppMethodBeat.o(203272);
+      this.Kte.setImageDrawable(com.tencent.mm.ci.a.m(this.mContext, i.i.icon_volume_off));
+      this.KFH.setMute(true);
+      this.JAS = true;
+      AppMethodBeat.o(264137);
       return;
     }
     catch (Throwable localThrowable)
     {
       Log.e("LongVideoFullScreenView", localThrowable.toString());
-      AppMethodBeat.o(203272);
+      AppMethodBeat.o(264137);
     }
   }
   
-  final void fdb()
+  public final void fKs()
   {
-    AppMethodBeat.i(203273);
+    AppMethodBeat.i(264138);
     try
     {
-      Object localObject = this.EeP.getParent();
-      if ((localObject instanceof ViewGroup)) {
-        ((ViewGroup)localObject).removeView(this.EeP);
-      }
-      ap.aL((Activity)this.mContext);
-      localObject = (RelativeLayout.LayoutParams)this.Esj.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 0);
-      ((RelativeLayout.LayoutParams)localObject).rightMargin = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 0);
-      ((RelativeLayout.LayoutParams)this.Esk.getLayoutParams()).rightMargin = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 10);
-      ((RelativeLayout.LayoutParams)this.Egd.getLayoutParams()).rightMargin = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 10);
-      localObject = new RelativeLayout.LayoutParams(this.mEX - com.tencent.mm.cb.a.fromDPToPix(this.mContext, 74), -2);
-      ((ViewGroup)this.Esj).addView(this.EeP, (ViewGroup.LayoutParams)localObject);
-      AppMethodBeat.o(203273);
+      this.Kte.setImageDrawable(com.tencent.mm.ci.a.m(this.mContext, i.i.icon_volume_on));
+      this.KFH.setMute(false);
+      this.JAS = false;
+      AppMethodBeat.o(264138);
       return;
     }
     catch (Throwable localThrowable)
     {
       Log.e("LongVideoFullScreenView", localThrowable.toString());
-      AppMethodBeat.o(203273);
+      AppMethodBeat.o(264138);
     }
   }
   
-  public final Intent ffW()
+  public final void fKt()
   {
-    AppMethodBeat.i(203287);
+    AppMethodBeat.i(264131);
+    try
+    {
+      int i = this.KFH.getCurrPosSec();
+      if (i >= this.KFK)
+      {
+        Log.i("LongVideoFullScreenView", "onLoopCompletion, currPosSec is ".concat(String.valueOf(i)));
+        this.JAW += 1;
+        this.KFH.a(0.0D, true);
+      }
+      AppMethodBeat.o(264131);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      Log.e("LongVideoFullScreenView", localThrowable.toString());
+      AppMethodBeat.o(264131);
+    }
+  }
+  
+  final void fQW()
+  {
+    AppMethodBeat.i(264124);
+    try
+    {
+      Object localObject = this.Kth.getParent();
+      if ((localObject instanceof ViewGroup)) {
+        ((ViewGroup)localObject).removeView(this.Kth);
+      }
+      ao.aR((Activity)this.mContext);
+      localObject = (RelativeLayout.LayoutParams)this.KFF.getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 64);
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 64);
+      ((RelativeLayout.LayoutParams)this.KFG.getLayoutParams()).rightMargin = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 20);
+      ((RelativeLayout.LayoutParams)this.Kti.getLayoutParams()).rightMargin = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 20);
+      localObject = new RelativeLayout.LayoutParams(this.pEk - com.tencent.mm.ci.a.fromDPToPix(this.mContext, 232), -2);
+      ((ViewGroup)this.KFF).addView(this.Kth, (ViewGroup.LayoutParams)localObject);
+      AppMethodBeat.o(264124);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      Log.e("LongVideoFullScreenView", localThrowable.toString());
+      AppMethodBeat.o(264124);
+    }
+  }
+  
+  final void fQX()
+  {
+    AppMethodBeat.i(264126);
+    try
+    {
+      Object localObject = this.Kth.getParent();
+      if ((localObject instanceof ViewGroup)) {
+        ((ViewGroup)localObject).removeView(this.Kth);
+      }
+      ao.aR((Activity)this.mContext);
+      localObject = (RelativeLayout.LayoutParams)this.KFF.getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 0);
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 0);
+      ((RelativeLayout.LayoutParams)this.KFG.getLayoutParams()).rightMargin = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 10);
+      ((RelativeLayout.LayoutParams)this.Kti.getLayoutParams()).rightMargin = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 10);
+      localObject = new RelativeLayout.LayoutParams(this.pEj - com.tencent.mm.ci.a.fromDPToPix(this.mContext, 74), -2);
+      ((ViewGroup)this.KFF).addView(this.Kth, (ViewGroup.LayoutParams)localObject);
+      AppMethodBeat.o(264126);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      Log.e("LongVideoFullScreenView", localThrowable.toString());
+      AppMethodBeat.o(264126);
+    }
+  }
+  
+  public final Intent fTT()
+  {
+    AppMethodBeat.i(264141);
     Intent localIntent = new Intent();
     try
     {
-      if ((this.Esl.isPlaying()) && (this.AhP != 0L))
+      if ((this.KFH.isPlaying()) && (this.FOL != 0L))
       {
-        this.Esu += System.currentTimeMillis() - this.AhP;
-        this.AhP = 0L;
+        this.KFQ += System.currentTimeMillis() - this.FOL;
+        this.FOL = 0L;
         Log.i("LongVideoFullScreenView", "playTimeInterval update");
       }
-      localIntent.putExtra("KComponentVideoType", this.jqs);
-      localIntent.putExtra("KComponentCid", this.Esm);
-      localIntent.putExtra("KComponentCurrentTime", this.Esl.getCurrPosSec());
-      localIntent.putExtra("KComponentVoiceType", this.EeY);
-      localIntent.putExtra("KComponentProgressType", this.Esl.isPlaying());
-      localIntent.putExtra("KComponentClickPlayControlCount", this.Efi);
-      localIntent.putExtra("KComponentDoubleClickCount", this.Egh);
-      localIntent.putExtra("KComponentClickVoiceControlCount", this.Efj);
-      localIntent.putExtra("KComponentPlayCompletedCount", this.Efh);
-      localIntent.putExtra("KComponentPlayCount", this.Aiv);
-      localIntent.putExtra("KComponentPlayTimeInterval", this.Esu);
-      localIntent.putExtra("KComponentIsWaiting", this.Esr);
-      localIntent.putExtra("KComponentSeekTimeDueWaiting", this.Ess);
+      localIntent.putExtra("KComponentVideoType", this.mfT);
+      localIntent.putExtra("KComponentCid", this.KFI);
+      localIntent.putExtra("KComponentCurrentTime", this.KFH.getCurrPosSec());
+      localIntent.putExtra("KComponentVoiceType", this.JAS);
+      localIntent.putExtra("KComponentProgressType", this.KFH.isPlaying());
+      localIntent.putExtra("KComponentClickPlayControlCount", this.JAX);
+      localIntent.putExtra("KComponentDoubleClickCount", this.JAZ);
+      localIntent.putExtra("KComponentClickVoiceControlCount", this.JAY);
+      localIntent.putExtra("KComponentPlayCompletedCount", this.JAW);
+      localIntent.putExtra("KComponentPlayCount", this.FPs);
+      localIntent.putExtra("KComponentPlayTimeInterval", this.KFQ);
+      localIntent.putExtra("KComponentIsWaiting", this.KFN);
+      localIntent.putExtra("KComponentSeekTimeDueWaiting", this.KFO);
     }
     catch (Throwable localThrowable)
     {
@@ -760,33 +772,31 @@ public class LongVideoFullScreenView
         Log.e("LongVideoFullScreenView", localThrowable.toString());
       }
     }
-    AppMethodBeat.o(203287);
+    AppMethodBeat.o(264141);
     return localIntent;
   }
   
-  public final void fo(String paramString1, String paramString2) {}
-  
   public void onClick(View paramView)
   {
-    AppMethodBeat.i(203274);
+    AppMethodBeat.i(264128);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    localb.bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
     try
     {
-      if (paramView.getId() == 2131308058)
+      if (paramView.getId() == i.f.sns_ad_native_landing_pages_sight_voice_btn)
       {
-        this.Efj += 1;
+        this.JAY += 1;
         setFocus(true);
-        if (this.EeY) {
-          fcK();
+        if (this.JAS) {
+          fKs();
         }
         for (;;)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(203274);
+          AppMethodBeat.o(264128);
           return;
-          fcJ();
+          fKr();
         }
       }
     }
@@ -796,10 +806,10 @@ public class LongVideoFullScreenView
       {
         Log.e("LongVideoFullScreenView", paramView.toString());
         continue;
-        if (paramView.getId() == 2131308057)
+        if (paramView.getId() == i.f.sns_ad_native_landing_pages_sight_video_full_screen_btn)
         {
-          MMHandlerThread.removeRunnable(this.Egg);
-          this.Ege.setVisibility(8);
+          MMHandlerThread.removeRunnable(this.Ktl);
+          this.Ktj.setVisibility(8);
           ((Activity)this.mContext).finish();
         }
       }
@@ -808,67 +818,67 @@ public class LongVideoFullScreenView
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(203275);
+    AppMethodBeat.i(264129);
     super.onConfigurationChanged(paramConfiguration);
     try
     {
       if (paramConfiguration.orientation == 2)
       {
         Log.i("LongVideoFullScreenView", "ORIENTATION_LANDSCAPE");
-        fda();
-        AppMethodBeat.o(203275);
+        fQW();
+        AppMethodBeat.o(264129);
         return;
       }
       if (paramConfiguration.orientation == 1)
       {
         Log.i("LongVideoFullScreenView", "ORIENTATION_PORTRAIT");
-        fdb();
+        fQX();
       }
-      AppMethodBeat.o(203275);
+      AppMethodBeat.o(264129);
       return;
     }
     catch (Throwable paramConfiguration)
     {
       Log.e("LongVideoFullScreenView", paramConfiguration.toString());
-      AppMethodBeat.o(203275);
+      AppMethodBeat.o(264129);
     }
   }
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(203292);
+    AppMethodBeat.i(264146);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bm(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView", "android/view/GestureDetector$OnDoubleTapListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+    localb.bn(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView", "android/view/GestureDetector$OnDoubleTapListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
     for (;;)
     {
       try
       {
         Log.i("LongVideoFullScreenView", "onDoubleTap");
-        if (!this.Efc) {
-          this.Egh += 1;
+        if (!this.Ktg) {
+          this.JAZ += 1;
         }
-        ay(this.EeU);
-        if (!this.Esl.isPlaying()) {
+        aE(this.JBl);
+        if (!this.KFH.isPlaying()) {
           continue;
         }
-        cXa();
+        dmi();
       }
       catch (Throwable paramMotionEvent)
       {
         Log.e("LongVideoFullScreenView", paramMotionEvent.toString());
         continue;
-        fcK();
+        fKs();
         continue;
       }
       com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView", "android/view/GestureDetector$OnDoubleTapListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
-      AppMethodBeat.o(203292);
+      AppMethodBeat.o(264146);
       return false;
-      if (!this.EeY) {
+      if (!this.JAS) {
         continue;
       }
-      fcJ();
-      czw();
+      fKr();
+      cNW();
     }
   }
   
@@ -889,12 +899,12 @@ public class LongVideoFullScreenView
   
   public void onLongPress(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(203294);
+    AppMethodBeat.i(264148);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bm(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.axR());
+    localb.bn(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-    AppMethodBeat.o(203294);
+    AppMethodBeat.o(264148);
   }
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
@@ -906,20 +916,20 @@ public class LongVideoFullScreenView
   
   public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(203291);
+    AppMethodBeat.i(264145);
     try
     {
       Log.i("LongVideoFullScreenView", "onSingleTapConfirmed");
-      if (!this.EeX)
+      if (!this.KtQ)
       {
-        this.EeX = true;
+        this.KtQ = true;
         setFocus(true);
       }
       for (;;)
       {
-        AppMethodBeat.o(203291);
+        AppMethodBeat.o(264145);
         return false;
-        this.EeX = false;
+        this.KtQ = false;
         setFocus(false);
       }
     }
@@ -934,67 +944,67 @@ public class LongVideoFullScreenView
   
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(203293);
+    AppMethodBeat.i(264147);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bm(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+    localb.bn(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
     com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(203293);
+    AppMethodBeat.o(264147);
     return false;
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(203290);
-    paramView = this.jKk;
-    paramMotionEvent = new com.tencent.mm.hellhoundlib.b.a().bl(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramView, paramMotionEvent.axQ(), "com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-    boolean bool = com.tencent.mm.hellhoundlib.a.a.a(paramView, paramView.onTouchEvent((MotionEvent)paramMotionEvent.pG(0)), "com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(203290);
+    AppMethodBeat.i(264144);
+    paramView = this.mBn;
+    paramMotionEvent = new com.tencent.mm.hellhoundlib.b.a().bm(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b(paramView, paramMotionEvent.aFh(), "com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    boolean bool = com.tencent.mm.hellhoundlib.a.a.a(paramView, paramView.onTouchEvent((MotionEvent)paramMotionEvent.sf(0)), "com/tencent/mm/plugin/sns/ui/LongVideoFullScreenView", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    AppMethodBeat.o(264144);
     return bool;
   }
   
   void setFocus(boolean paramBoolean)
   {
-    AppMethodBeat.i(203288);
+    AppMethodBeat.i(264142);
     if (paramBoolean) {}
     try
     {
-      if (this.Esv != null) {
-        this.Esv.vB(true);
+      if (this.KFR != null) {
+        this.KFR.zf(true);
       }
-      this.EeP.setVisibility(0);
-      this.EeQ.setVisibility(0);
-      this.Egd.setVisibility(0);
-      ay(this.EeU);
-      AppMethodBeat.o(203288);
+      this.Kth.setVisibility(0);
+      this.Kte.setVisibility(0);
+      this.Kti.setVisibility(0);
+      aE(this.JBl);
+      AppMethodBeat.o(264142);
       return;
     }
     catch (Throwable localThrowable)
     {
       Log.e("LongVideoFullScreenView", localThrowable.toString());
-      AppMethodBeat.o(203288);
+      AppMethodBeat.o(264142);
     }
-    this.EeX = false;
-    this.EeP.setVisibility(4);
-    this.EeQ.setVisibility(8);
-    this.Egd.setVisibility(8);
-    MMHandlerThread.removeRunnable(this.EeU);
-    if (this.Esv != null) {
-      this.Esv.vB(false);
+    this.KtQ = false;
+    this.Kth.setVisibility(4);
+    this.Kte.setVisibility(8);
+    this.Kti.setVisibility(8);
+    MMHandlerThread.removeRunnable(this.JBl);
+    if (this.KFR != null) {
+      this.KFR.zf(false);
     }
-    AppMethodBeat.o(203288);
+    AppMethodBeat.o(264142);
     return;
   }
   
   public void setProgressBarStatusListener(com.tencent.mm.plugin.sns.ui.d.a parama)
   {
-    this.Esv = parama;
+    this.KFR = parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.LongVideoFullScreenView
  * JD-Core Version:    0.7.0.1
  */

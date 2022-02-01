@@ -18,215 +18,206 @@ import java.util.Map;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat;", "", "()V", "ID", "", "TAG", "", "isWaiting", "", "isWifi", "lastStoryId", "last_selectedColumn", "", "last_selectedRow", "markGalleryItem", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "markStoryId", "onClickTime", "onCreateTime", "onPlayUser", "onResumeTime", "onSelectItemReport", "onStoryLauncherTime", "preLoadInfo", "Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$Info;", "storyIdsState", "", "unReadList", "Ljava/util/ArrayList;", "withCache", "canPlay", "", "user", "storyId", "chatting", "clickScene", "checkCanPlay", "item", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "cacheSecondsDowngrade", "checkReport", "checkStayTime", "checkUnRead", "clean", "downloadEnd", "enter", "list", "", "finish", "initID", "markInit", "markResumeTime", "netSpeed", "speed", "onDestroy", "onSelectItem", "group", "selectedRow", "selectedColumn", "onVideoEnd", "onVideoPlay", "onVideoWaiting", "playUser", "preLoadVideo", "galleryItem", "extinfo", "Lcom/tencent/mm/plugin/story/storage/StoryExtInfo;", "preloadWithCache", "report", "IID", "key", "mval", "startDownload", "isAll", "startHttp", "Info", "State", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat;", "", "()V", "ID", "", "TAG", "", "isWaiting", "", "isWifi", "lastStoryId", "last_selectedColumn", "", "last_selectedRow", "markGalleryItem", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "markStoryId", "onClickTime", "onCreateTime", "onPlayUser", "onResumeTime", "onSelectItemReport", "onStoryLauncherTime", "preLoadInfo", "Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$Info;", "storyIdsState", "", "unReadList", "Ljava/util/ArrayList;", "withCache", "canPlay", "", "user", "storyId", "chatting", "clickScene", "checkCanPlay", "item", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "cacheSecondsDowngrade", "checkReport", "checkStayTime", "checkUnRead", "clean", "downloadEnd", "enter", "list", "", "finish", "initID", "markInit", "markResumeTime", "netSpeed", "speed", "onDestroy", "onSelectItem", "group", "selectedRow", "selectedColumn", "onVideoEnd", "onVideoPlay", "onVideoWaiting", "playUser", "preLoadVideo", "galleryItem", "extinfo", "Lcom/tencent/mm/plugin/story/storage/StoryExtInfo;", "preloadWithCache", "report", "IID", "key", "mval", "startDownload", "isAll", "startHttp", "Info", "State", "plugin-story_release"})
 public final class b
 {
-  private static long FtA;
-  private static long FtB;
-  public static com.tencent.mm.plugin.story.f.d.h FtC;
-  public static boolean FtD;
-  public static long FtE;
-  private static long FtF;
-  private static long FtG;
-  private static int FtH;
-  private static int FtI;
-  private static boolean FtJ;
-  private static ArrayList<String> FtK;
-  public static final b FtL;
-  public static long Ftw;
-  public static final Map<Long, a> Ftx;
-  public static a Fty;
-  public static long Ftz;
+  public static final Map<Long, a> LNA;
+  public static a LNB;
+  public static long LNC;
+  private static long LND;
+  public static com.tencent.mm.plugin.story.f.d.h LNE;
+  public static boolean LNF;
+  public static long LNG;
+  private static long LNH;
+  private static int LNI;
+  private static int LNJ;
+  private static boolean LNK;
+  private static ArrayList<String> LNL;
+  public static final b LNM;
+  public static long LNz;
   private static boolean isWaiting;
-  public static long oIi;
-  public static boolean tcf;
+  public static long rJY;
+  public static boolean wIk;
+  private static long zUI;
+  private static long zUJ;
   
   static
   {
     AppMethodBeat.i(119402);
-    FtL = new b();
-    oIi = 998L;
-    tcf = true;
+    LNM = new b();
+    rJY = 998L;
+    wIk = true;
     Map localMap = Collections.synchronizedMap((Map)new HashMap());
-    p.g(localMap, "Collections.synchronizedMap(HashMap<Long, Info>())");
-    Ftx = localMap;
+    p.j(localMap, "Collections.synchronizedMap(HashMap<Long, Info>())");
+    LNA = localMap;
     AppMethodBeat.o(119402);
-  }
-  
-  public static void Kn(long paramLong)
-  {
-    Ftz = paramLong;
-  }
-  
-  public static void Ko(long paramLong)
-  {
-    AppMethodBeat.i(119398);
-    if (!Ftx.containsKey(Long.valueOf(paramLong)))
-    {
-      AppMethodBeat.o(119398);
-      return;
-    }
-    a locala = (a)Ftx.get(Long.valueOf(paramLong));
-    if ((locala != null) && (locala.Eva))
-    {
-      AppMethodBeat.o(119398);
-      return;
-    }
-    if (paramLong == Ftz)
-    {
-      locala = Fty;
-      if (locala != null)
-      {
-        if (locala.FtQ <= 0L)
-        {
-          AppMethodBeat.o(119398);
-          return;
-        }
-        paramLong = Util.milliSecondsToNow(locala.FtQ);
-        Log.i("MicroMsg.StoryBrowseDetailIDKeyStat", "downloadEnd1 ".concat(String.valueOf(paramLong)));
-        if (locala.qeT)
-        {
-          e(oIi, 62L, 1L);
-          e(oIi, 63L, paramLong);
-        }
-        e(oIi, 60L, 1L);
-        e(oIi, 61L, paramLong);
-        AppMethodBeat.o(119398);
-        return;
-      }
-      AppMethodBeat.o(119398);
-      return;
-    }
-    locala = (a)Ftx.get(Long.valueOf(paramLong));
-    if (locala != null)
-    {
-      if (locala.FtQ <= 0L)
-      {
-        AppMethodBeat.o(119398);
-        return;
-      }
-      paramLong = Util.milliSecondsToNow(locala.FtQ);
-      Log.i("MicroMsg.StoryBrowseDetailIDKeyStat", "downloadEnd2 ".concat(String.valueOf(paramLong)));
-      if (locala.qeT)
-      {
-        e(oIi, 62L, 1L);
-        e(oIi, 63L, paramLong);
-      }
-      e(oIi, 60L, 1L);
-      e(oIi, 61L, paramLong);
-      AppMethodBeat.o(119398);
-      return;
-    }
-    AppMethodBeat.o(119398);
   }
   
   public static void M(long paramLong, boolean paramBoolean)
   {
     AppMethodBeat.i(119397);
-    if (!Ftx.containsKey(Long.valueOf(paramLong)))
+    if (!LNA.containsKey(Long.valueOf(paramLong)))
     {
       AppMethodBeat.o(119397);
       return;
     }
-    a locala = (a)Ftx.get(Long.valueOf(paramLong));
+    a locala = (a)LNA.get(Long.valueOf(paramLong));
     if (locala != null)
     {
-      locala.FtQ = Util.nowMilliSecond();
-      locala.qeT = paramBoolean;
+      locala.LNR = Util.nowMilliSecond();
+      locala.tAQ = paramBoolean;
       AppMethodBeat.o(119397);
       return;
     }
     AppMethodBeat.o(119397);
   }
   
-  public static void aaR(int paramInt)
+  public static void RH(long paramLong)
+  {
+    LNC = paramLong;
+  }
+  
+  public static void RI(long paramLong)
+  {
+    AppMethodBeat.i(119398);
+    if (!LNA.containsKey(Long.valueOf(paramLong)))
+    {
+      AppMethodBeat.o(119398);
+      return;
+    }
+    a locala = (a)LNA.get(Long.valueOf(paramLong));
+    if ((locala != null) && (locala.KIR))
+    {
+      AppMethodBeat.o(119398);
+      return;
+    }
+    if (paramLong == LNC)
+    {
+      locala = LNB;
+      if (locala != null)
+      {
+        if (locala.LNR <= 0L)
+        {
+          AppMethodBeat.o(119398);
+          return;
+        }
+        paramLong = Util.milliSecondsToNow(locala.LNR);
+        Log.i("MicroMsg.StoryBrowseDetailIDKeyStat", "downloadEnd1 ".concat(String.valueOf(paramLong)));
+        if (locala.tAQ)
+        {
+          f(rJY, 62L, 1L);
+          f(rJY, 63L, paramLong);
+        }
+        f(rJY, 60L, 1L);
+        f(rJY, 61L, paramLong);
+        AppMethodBeat.o(119398);
+        return;
+      }
+      AppMethodBeat.o(119398);
+      return;
+    }
+    locala = (a)LNA.get(Long.valueOf(paramLong));
+    if (locala != null)
+    {
+      if (locala.LNR <= 0L)
+      {
+        AppMethodBeat.o(119398);
+        return;
+      }
+      paramLong = Util.milliSecondsToNow(locala.LNR);
+      Log.i("MicroMsg.StoryBrowseDetailIDKeyStat", "downloadEnd2 ".concat(String.valueOf(paramLong)));
+      if (locala.tAQ)
+      {
+        f(rJY, 62L, 1L);
+        f(rJY, 63L, paramLong);
+      }
+      f(rJY, 60L, 1L);
+      f(rJY, 61L, paramLong);
+      AppMethodBeat.o(119398);
+      return;
+    }
+    AppMethodBeat.o(119398);
+  }
+  
+  public static void aim(int paramInt)
   {
     if ((paramInt == 1) || (paramInt == 2))
     {
-      oIi = 998L;
+      rJY = 998L;
       return;
     }
     if (paramInt == 3)
     {
-      oIi = 1006L;
+      rJY = 1006L;
       return;
     }
-    oIi = -1L;
+    rJY = -1L;
   }
   
-  public static void aaS(int paramInt)
+  public static void ain(int paramInt)
   {
     AppMethodBeat.i(119393);
-    long l = Util.milliSecondsToNow(FtG);
+    long l = Util.milliSecondsToNow(zUI);
     Log.i("MicroMsg.StoryBrowseDetailIDKeyStat", "cur speed " + paramInt + " cur: " + l);
     if (l > 5000L)
     {
       if (paramInt < 10)
       {
-        e(oIi, 82L, 1L);
+        f(rJY, 82L, 1L);
         AppMethodBeat.o(119393);
         return;
       }
       if (paramInt < 100)
       {
-        e(oIi, 83L, 1L);
+        f(rJY, 83L, 1L);
         AppMethodBeat.o(119393);
         return;
       }
       if (paramInt < 200)
       {
-        e(oIi, 89L, 1L);
+        f(rJY, 89L, 1L);
         AppMethodBeat.o(119393);
         return;
       }
       if (paramInt < 250)
       {
-        e(oIi, 84L, 1L);
+        f(rJY, 84L, 1L);
         AppMethodBeat.o(119393);
         return;
       }
       if (paramInt < 450)
       {
-        e(oIi, 85L, 1L);
+        f(rJY, 85L, 1L);
         AppMethodBeat.o(119393);
         return;
       }
       if (paramInt < 900)
       {
-        e(oIi, 86L, 1L);
+        f(rJY, 86L, 1L);
         AppMethodBeat.o(119393);
         return;
       }
       if (paramInt < 1350)
       {
-        e(oIi, 87L, 1L);
+        f(rJY, 87L, 1L);
         AppMethodBeat.o(119393);
         return;
       }
       if (paramInt < 1800) {
-        e(oIi, 88L, 1L);
+        f(rJY, 88L, 1L);
       }
     }
     AppMethodBeat.o(119393);
   }
   
-  public static boolean beE()
-  {
-    if (FtG <= 0L) {}
-    while (!tcf) {
-      return false;
-    }
-    return true;
-  }
-  
   private static int c(com.tencent.mm.plugin.story.f.d.j paramj)
   {
     AppMethodBeat.i(119395);
-    Object localObject = s.Fny;
+    Object localObject = s.LHA;
     localObject = s.a(paramj);
-    if (((n)localObject).frQ())
+    if (((n)localObject).ggm())
     {
-      Log.v("MicroMsg.StoryBrowseDetailIDKeyStat", "z checkCanPlay downloadFinish " + paramj.edx);
+      Log.v("MicroMsg.StoryBrowseDetailIDKeyStat", "z checkCanPlay downloadFinish " + paramj.fXG);
       AppMethodBeat.o(119395);
       return 1;
     }
@@ -236,8 +227,8 @@ public final class b
       return 0;
     }
     float f = ((n)localObject).field_cacheSize / ((n)localObject).field_totalSize;
-    paramj = m.FHB;
-    if (f * 100.0F >= m.fsu().FFU)
+    paramj = m.MbB;
+    if (f * 100.0F >= m.ggS().LZU)
     {
       Log.v("MicroMsg.StoryBrowseDetailIDKeyStat", "z checkCanPlay cachesize " + ((n)localObject).field_cacheSize + " totalSize: " + ((n)localObject).field_totalSize);
       AppMethodBeat.o(119395);
@@ -250,72 +241,72 @@ public final class b
   public static void clean()
   {
     AppMethodBeat.i(119391);
-    FtA = 0L;
-    FtB = 0L;
-    FtG = 0L;
-    FtJ = false;
-    FtH = -1;
-    FtI = -1;
-    FtE = 0L;
-    FtF = 0L;
-    Ftx.clear();
-    FtD = false;
-    FtC = null;
+    zUJ = 0L;
+    LND = 0L;
+    zUI = 0L;
+    LNK = false;
+    LNI = -1;
+    LNJ = -1;
+    LNG = 0L;
+    LNH = 0L;
+    LNA.clear();
+    LNF = false;
+    LNE = null;
     isWaiting = false;
-    FtK = new ArrayList();
-    Fty = null;
+    LNL = new ArrayList();
+    LNB = null;
     AppMethodBeat.o(119391);
   }
   
   public static void d(ArrayList<ArrayList<com.tencent.mm.plugin.story.f.d.h>> paramArrayList, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(119394);
-    p.h(paramArrayList, "group");
-    if (!beE())
+    p.k(paramArrayList, "group");
+    if (!gej())
     {
       AppMethodBeat.o(119394);
       return;
     }
-    Log.v("MicroMsg.StoryBrowseDetailIDKeyStat", " last_selectedColumn:" + FtI + ",last_selectedRow:" + FtH + " selectedRow:" + paramInt1 + ",selectedColumn:" + paramInt2);
+    Log.v("MicroMsg.StoryBrowseDetailIDKeyStat", " last_selectedColumn:" + LNJ + ",last_selectedRow:" + LNI + " selectedRow:" + paramInt1 + ",selectedColumn:" + paramInt2);
     int i;
     int j;
     if (paramArrayList.size() > 0) {
       if ((((ArrayList)paramArrayList.get(paramInt1)).size() > 0) && (paramInt2 + 1 < ((ArrayList)paramArrayList.get(paramInt1)).size()))
       {
-        if (!FtJ) {
-          e(oIi, 101L, 1L);
+        if (!LNK) {
+          f(rJY, 101L, 1L);
         }
         i = 1;
         if (paramInt1 + 1 < paramArrayList.size())
         {
-          if (!FtJ) {
-            e(oIi, 102L, 1L);
+          if (!LNK) {
+            f(rJY, 102L, 1L);
           }
           j = 1;
           label167:
-          FtJ = true;
+          LNK = true;
         }
       }
     }
     for (;;)
     {
-      if ((FtI != -1) && (FtH != -1))
+      if ((LNJ != -1) && (LNI != -1))
       {
         if (isWaiting)
         {
-          e(oIi, 100L, 1L);
+          f(rJY, 100L, 1L);
           isWaiting = false;
         }
-        if (paramInt1 != FtH)
+        if (paramInt1 != LNI)
         {
           if (i != 0) {
-            e(oIi, 105L, 1L);
+            f(rJY, 105L, 1L);
           }
-          e(oIi, 106L, 1L);
-          i = paramInt1 - FtH;
+          f(rJY, 106L, 1L);
+          i = paramInt1 - LNI;
           if (i == 1)
           {
-            e(oIi, 110L, 1L);
+            f(rJY, 110L, 1L);
             if (paramArrayList.size() <= 0) {
               break label585;
             }
@@ -326,10 +317,10 @@ public final class b
             }
             if ((paramInt1 + i < paramArrayList.size()) && (((ArrayList)paramArrayList.get(paramInt1 + i)).size() > 0))
             {
-              com.tencent.mm.plugin.story.f.d.j localj = ((com.tencent.mm.plugin.story.f.d.h)((ArrayList)paramArrayList.get(paramInt1 + i)).get(0)).FoT;
-              if ((localj != null) && (localj.username != null) && (FtK != null))
+              com.tencent.mm.plugin.story.f.d.j localj = ((com.tencent.mm.plugin.story.f.d.h)((ArrayList)paramArrayList.get(paramInt1 + i)).get(0)).LIV;
+              if ((localj != null) && (localj.username != null) && (LNL != null))
               {
-                ArrayList localArrayList = FtK;
+                ArrayList localArrayList = LNL;
                 if ((localArrayList != null) && (localArrayList.contains(localj.username) == true))
                 {
                   if (c(localj) == 1)
@@ -337,13 +328,13 @@ public final class b
                     if (i != 0) {
                       break label460;
                     }
-                    e(oIi, 120L, 1L);
+                    f(rJY, 120L, 1L);
                   }
                   label385:
                   if (i != 0) {
                     break label496;
                   }
-                  e(oIi, 125L, 1L);
+                  f(rJY, 125L, 1L);
                 }
               }
             }
@@ -354,94 +345,94 @@ public final class b
             break label266;
             if (i == 2)
             {
-              e(oIi, 111L, 1L);
+              f(rJY, 111L, 1L);
               break;
             }
             if (i == 3)
             {
-              e(oIi, 112L, 1L);
+              f(rJY, 112L, 1L);
               break;
             }
             if (i < 4) {
               break;
             }
-            e(oIi, 113L, 1L);
+            f(rJY, 113L, 1L);
             break;
             label460:
             if (i == 1)
             {
-              e(oIi, 121L, 1L);
+              f(rJY, 121L, 1L);
               break label385;
             }
             if (i != 2) {
               break label385;
             }
-            e(oIi, 122L, 1L);
+            f(rJY, 122L, 1L);
             break label385;
             label496:
             if (i == 1) {
-              e(oIi, 126L, 1L);
+              f(rJY, 126L, 1L);
             } else if (i == 2) {
-              e(oIi, 127L, 1L);
+              f(rJY, 127L, 1L);
             }
           }
         }
-        else if (paramInt2 != FtI)
+        else if (paramInt2 != LNJ)
         {
           if (j != 0) {
-            e(oIi, 103L, 1L);
+            f(rJY, 103L, 1L);
           }
-          e(oIi, 104L, 1L);
-          i = paramInt2 - FtI;
+          f(rJY, 104L, 1L);
+          i = paramInt2 - LNJ;
           if (i != 1) {
             break label957;
           }
-          e(oIi, 115L, 1L);
+          f(rJY, 115L, 1L);
         }
       }
       for (;;)
       {
         label585:
-        if ((FtH >= 0) && (FtH < paramArrayList.size()) && (FtI >= 0) && (FtI < ((ArrayList)paramArrayList.get(FtH)).size()) && ((FtI != paramInt2) || (FtH != paramInt1)))
+        if ((LNI >= 0) && (LNI < paramArrayList.size()) && (LNJ >= 0) && (LNJ < ((ArrayList)paramArrayList.get(LNI)).size()) && ((LNJ != paramInt2) || (LNI != paramInt1)))
         {
-          long l = ((com.tencent.mm.plugin.story.f.d.h)((ArrayList)paramArrayList.get(FtH)).get(FtI)).FoT.edx;
-          Log.v("MicroMsg.StoryBrowseDetailIDKeyStat", "checkStayTime storyId " + l + " lastStoryId " + Ftw);
-          if ((beE()) && (Ftx.containsKey(Long.valueOf(l))))
+          long l = ((com.tencent.mm.plugin.story.f.d.h)((ArrayList)paramArrayList.get(LNI)).get(LNJ)).LIV.fXG;
+          Log.v("MicroMsg.StoryBrowseDetailIDKeyStat", "checkStayTime storyId " + l + " lastStoryId " + LNz);
+          if ((gej()) && (LNA.containsKey(Long.valueOf(l))))
           {
-            paramArrayList = (a)Ftx.get(Long.valueOf(l));
-            if ((paramArrayList != null) && (paramArrayList.FtM <= 0L) && (!paramArrayList.Eva) && (paramArrayList.FtN >= 0L))
+            paramArrayList = (a)LNA.get(Long.valueOf(l));
+            if ((paramArrayList != null) && (paramArrayList.LNN <= 0L) && (!paramArrayList.KIR) && (paramArrayList.LNO >= 0L))
             {
-              paramArrayList.FtM = Util.milliSecondsToNow(paramArrayList.FtN);
-              Log.i("MicroMsg.StoryBrowseDetailIDKeyStat", "checkStayTime onStayTime " + l + ' ' + paramArrayList.FtM + " hasHttp:" + paramArrayList.FtP + "  isWaiting:" + paramArrayList.isWaiting);
-              if (paramArrayList.FtP)
+              paramArrayList.LNN = Util.milliSecondsToNow(paramArrayList.LNO);
+              Log.i("MicroMsg.StoryBrowseDetailIDKeyStat", "checkStayTime onStayTime " + l + ' ' + paramArrayList.LNN + " hasHttp:" + paramArrayList.LNQ + "  isWaiting:" + paramArrayList.isWaiting);
+              if (paramArrayList.LNQ)
               {
-                e(oIi, 21L, 1L);
-                e(oIi, 20L, paramArrayList.FtM);
+                f(rJY, 21L, 1L);
+                f(rJY, 20L, paramArrayList.LNN);
               }
               if (paramArrayList.isWaiting)
               {
-                e(oIi, 23L, 1L);
-                e(oIi, 22L, paramArrayList.FtM);
+                f(rJY, 23L, 1L);
+                f(rJY, 22L, paramArrayList.LNN);
               }
-              e(oIi, 25L, 1L);
-              e(oIi, 24L, paramArrayList.FtM);
-              if (paramArrayList.idt) {
-                e(oIi, 26L, 1L);
+              f(rJY, 25L, 1L);
+              f(rJY, 24L, paramArrayList.LNN);
+              if (paramArrayList.kSa) {
+                f(rJY, 26L, 1L);
               }
             }
           }
         }
-        FtI = paramInt2;
-        FtH = paramInt1;
+        LNJ = paramInt2;
+        LNI = paramInt1;
         AppMethodBeat.o(119394);
         return;
         label957:
         if (i == 2) {
-          e(oIi, 116L, 1L);
+          f(rJY, 116L, 1L);
         } else if (i == 3) {
-          e(oIi, 117L, 1L);
+          f(rJY, 117L, 1L);
         } else if (i >= 4) {
-          e(oIi, 118L, 1L);
+          f(rJY, 118L, 1L);
         }
       }
       j = 0;
@@ -453,7 +444,7 @@ public final class b
     }
   }
   
-  public static void e(long paramLong1, long paramLong2, long paramLong3)
+  public static void f(long paramLong1, long paramLong2, long paramLong3)
   {
     AppMethodBeat.i(119390);
     if (paramLong1 < 0L)
@@ -461,80 +452,89 @@ public final class b
       AppMethodBeat.o(119390);
       return;
     }
-    com.tencent.mm.plugin.report.service.h.CyF.n(paramLong1, paramLong2, paramLong3);
+    com.tencent.mm.plugin.report.service.h.IzE.p(paramLong1, paramLong2, paramLong3);
     AppMethodBeat.o(119390);
   }
   
-  public static void fpM()
+  public static void geg()
   {
-    FtD = true;
+    LNF = true;
   }
   
-  public static void fpN()
+  public static void geh()
   {
     AppMethodBeat.i(119399);
-    Log.v("MicroMsg.StoryBrowseDetailIDKeyStat", "makeResumeTime onResumeTime " + FtA + " onPlayUser " + FtB);
-    FtA = Util.nowMilliSecond();
+    Log.v("MicroMsg.StoryBrowseDetailIDKeyStat", "makeResumeTime onResumeTime " + zUJ + " onPlayUser " + LND);
+    zUJ = Util.nowMilliSecond();
     AppMethodBeat.o(119399);
   }
   
-  public static void fpO()
+  public static void gei()
   {
     AppMethodBeat.i(119401);
-    FtG = Util.nowMilliSecond();
+    zUI = Util.nowMilliSecond();
     AppMethodBeat.o(119401);
   }
   
-  public static void hv(List<String> paramList)
+  public static boolean gej()
+  {
+    if (zUI <= 0L) {}
+    while (!wIk) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static void ie(List<String> paramList)
   {
     AppMethodBeat.i(119392);
-    p.h(paramList, "list");
+    p.k(paramList, "list");
     ArrayList localArrayList = new ArrayList();
-    FtK = localArrayList;
+    LNL = localArrayList;
     localArrayList.addAll((Collection)paramList);
     AppMethodBeat.o(119392);
   }
   
-  public static void n(String paramString, long paramLong, int paramInt)
+  public static void o(String paramString, long paramLong, int paramInt)
   {
     AppMethodBeat.i(119400);
-    p.h(paramString, "user");
-    if (!beE())
+    p.k(paramString, "user");
+    if (!gej())
     {
       AppMethodBeat.o(119400);
       return;
     }
-    if ((FtE > 0L) && (FtF <= 0L))
+    if ((LNG > 0L) && (LNH <= 0L))
     {
-      FtF = Util.milliSecondsToNow(FtE);
-      e(oIi, 130L, 1L);
-      e(oIi, 131L, FtF);
+      LNH = Util.milliSecondsToNow(LNG);
+      f(rJY, 130L, 1L);
+      f(rJY, 131L, LNH);
     }
-    Log.v("MicroMsg.StoryBrowseDetailIDKeyStat", "playUser user " + paramString + " storyId " + paramLong + " selectedColumn " + paramInt + " lastStoryId:" + Ftw + " onStoryLauncherTime " + FtF);
+    Log.v("MicroMsg.StoryBrowseDetailIDKeyStat", "playUser user " + paramString + " storyId " + paramLong + " selectedColumn " + paramInt + " lastStoryId:" + LNz + " onStoryLauncherTime " + LNH);
     int j = 0;
     int i = j;
-    if (Ftw != paramLong)
+    if (LNz != paramLong)
     {
       i = j;
-      if (Ftw != 0L) {
+      if (LNz != 0L) {
         i = 1;
       }
     }
-    long l = Ftw;
-    Ftw = paramLong;
-    p.h(paramString, "user");
-    Object localObject = FtK;
+    long l = LNz;
+    LNz = paramLong;
+    p.k(paramString, "user");
+    Object localObject = LNL;
     if ((localObject != null) && (((ArrayList)localObject).contains(paramString) == true)) {}
     for (j = 1; j == 0; j = 0)
     {
       AppMethodBeat.o(119400);
       return;
     }
-    if ((Ftx.containsKey(Long.valueOf(l))) && (i != 0))
+    if ((LNA.containsKey(Long.valueOf(l))) && (i != 0))
     {
-      localObject = (a)Ftx.get(Long.valueOf(l));
+      localObject = (a)LNA.get(Long.valueOf(l));
       if (localObject != null) {
-        ((a)localObject).Eva = true;
+        ((a)localObject).KIR = true;
       }
     }
     if (paramInt > 0)
@@ -542,54 +542,54 @@ public final class b
       AppMethodBeat.o(119400);
       return;
     }
-    localObject = Ftx;
-    a locala = new a(paramString, b.b.FtT);
-    locala.FtN = Util.nowMilliSecond();
+    localObject = LNA;
+    a locala = new a(paramString, b.b.LNU);
+    locala.LNO = Util.nowMilliSecond();
     ((Map)localObject).put(Long.valueOf(paramLong), locala);
-    FtB = Util.nowMilliSecond();
-    Log.v("MicroMsg.StoryBrowseDetailIDKeyStat", "playUser onResumeTime " + FtB);
-    localObject = com.tencent.mm.plugin.story.f.j.Fmy;
-    localObject = j.b.fod().aRS(paramString);
-    Log.i("MicroMsg.StoryBrowseDetailIDKeyStat", "preLoadCache > 0 then " + paramString + " preload " + Util.getSizeKB(((f)localObject).fry()));
-    e(oIi, 2L, 1L);
-    if (((f)localObject).fry() > 0L) {
-      e(oIi, 3L, 1L);
+    LND = Util.nowMilliSecond();
+    Log.v("MicroMsg.StoryBrowseDetailIDKeyStat", "playUser onResumeTime " + LND);
+    localObject = com.tencent.mm.plugin.story.f.j.LGA;
+    localObject = j.b.gcx().bcW(paramString);
+    Log.i("MicroMsg.StoryBrowseDetailIDKeyStat", "preLoadCache > 0 then " + paramString + " preload " + Util.getSizeKB(((f)localObject).gfU()));
+    f(rJY, 2L, 1L);
+    if (((f)localObject).gfU() > 0L) {
+      f(rJY, 3L, 1L);
     }
-    if (paramLong == Ftz)
+    if (paramLong == LNC)
     {
-      if (FtD)
+      if (LNF)
       {
-        e(oIi, 6L, 1L);
-        if (((f)localObject).fry() > 0L)
+        f(rJY, 6L, 1L);
+        if (((f)localObject).gfU() > 0L)
         {
-          if (!FtD) {
+          if (!LNF) {
             break label545;
           }
-          e(oIi, 7L, 1L);
+          f(rJY, 7L, 1L);
         }
       }
       for (;;)
       {
-        paramString = FtC;
+        paramString = LNE;
         if (paramString == null) {
           break label575;
         }
-        if (c(paramString.FoT) != 1) {
+        if (c(paramString.LIV) != 1) {
           break label568;
         }
-        if (!FtD) {
+        if (!LNF) {
           break label558;
         }
-        e(oIi, 8L, 1L);
+        f(rJY, 8L, 1L);
         AppMethodBeat.o(119400);
         return;
-        e(oIi, 9L, 1L);
+        f(rJY, 9L, 1L);
         break;
         label545:
-        e(oIi, 10L, 1L);
+        f(rJY, 10L, 1L);
       }
       label558:
-      e(oIi, 11L, 1L);
+      f(rJY, 11L, 1L);
       label568:
       AppMethodBeat.o(119400);
       return;
@@ -598,26 +598,26 @@ public final class b
     AppMethodBeat.o(119400);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$Info;", "", "user", "", "state", "Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$State;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$State;)V", "clean", "", "getClean", "()Z", "setClean", "(Z)V", "hasHttp", "getHasHttp", "setHasHttp", "isAll", "setAll", "isEnd", "setEnd", "isWaiting", "setWaiting", "onMarkPlayCall", "", "getOnMarkPlayCall", "()J", "setOnMarkPlayCall", "(J)V", "onMarkPlayingCall", "getOnMarkPlayingCall", "setOnMarkPlayingCall", "onStayTime", "getOnStayTime", "setOnStayTime", "startHttp", "getStartHttp", "setStartHttp", "getState", "()Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$State;", "setState", "(Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$State;)V", "getUser", "()Ljava/lang/String;", "plugin-story_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$Info;", "", "user", "", "state", "Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$State;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$State;)V", "clean", "", "getClean", "()Z", "setClean", "(Z)V", "hasHttp", "getHasHttp", "setHasHttp", "isAll", "setAll", "isEnd", "setEnd", "isWaiting", "setWaiting", "onMarkPlayCall", "", "getOnMarkPlayCall", "()J", "setOnMarkPlayCall", "(J)V", "onMarkPlayingCall", "getOnMarkPlayingCall", "setOnMarkPlayingCall", "onStayTime", "getOnStayTime", "setOnStayTime", "startHttp", "getStartHttp", "setStartHttp", "getState", "()Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$State;", "setState", "(Lcom/tencent/mm/plugin/story/report/StoryBrowseDetailIDKeyStat$State;)V", "getUser", "()Ljava/lang/String;", "plugin-story_release"})
   public static final class a
   {
-    public boolean Eva;
-    long FtM;
-    public long FtN;
-    public long FtO;
-    public boolean FtP;
-    public long FtQ;
-    private b.b FtR;
-    private final String dWq;
-    public boolean idt;
+    public boolean KIR;
+    long LNN;
+    public long LNO;
+    public long LNP;
+    public boolean LNQ;
+    public long LNR;
+    private b.b LNS;
+    private final String fPV;
     public boolean isWaiting;
-    public boolean qeT;
+    public boolean kSa;
+    public boolean tAQ;
     
     public a(String paramString, b.b paramb)
     {
       AppMethodBeat.i(119386);
-      this.dWq = paramString;
-      this.FtR = paramb;
+      this.fPV = paramString;
+      this.LNS = paramb;
       AppMethodBeat.o(119386);
     }
   }

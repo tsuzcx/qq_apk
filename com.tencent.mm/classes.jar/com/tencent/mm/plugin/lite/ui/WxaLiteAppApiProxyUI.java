@@ -11,11 +11,11 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMFragmentActivity.b;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.ui.d.b;
+import com.tencent.mm.ui.e.b;
 import java.util.HashMap;
 
 @a(7)
-@d.b
+@e.b
 public class WxaLiteAppApiProxyUI
   extends MMActivity
 {
@@ -29,9 +29,9 @@ public class WxaLiteAppApiProxyUI
   @TargetApi(21)
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(198906);
+    AppMethodBeat.i(233761);
     super.onCreate(paramBundle);
-    if (d.oD(21)) {
+    if (d.qV(21)) {
       getWindow().setStatusBarColor(0);
     }
     paramBundle = getIntent();
@@ -46,19 +46,19 @@ public class WxaLiteAppApiProxyUI
       localIntent.putExtra("webview_params", paramBundle);
       localIntent.putExtra("Retr_Msg_Type", 2);
       Log.i(TAG, "start SelectConversationUI");
-      com.tencent.mm.br.c.a(this, ".ui.transmit.SelectConversationUI", localIntent, 1, new MMFragmentActivity.b()
+      com.tencent.mm.by.c.a(this, ".ui.transmit.SelectConversationUI", localIntent, 1, new MMFragmentActivity.b()
       {
         public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
         {
-          AppMethodBeat.i(198905);
+          AppMethodBeat.i(234268);
           Log.i(WxaLiteAppApiProxyUI.TAG, "startAppActivityForResult %d %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
           com.tencent.mm.plugin.lite.c.a(i, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent);
           WxaLiteAppApiProxyUI.this.finish();
-          AppMethodBeat.o(198905);
+          AppMethodBeat.o(234268);
         }
       });
     }
-    AppMethodBeat.o(198906);
+    AppMethodBeat.o(233761);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -69,7 +69,7 @@ public class WxaLiteAppApiProxyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.lite.ui.WxaLiteAppApiProxyUI
  * JD-Core Version:    0.7.0.1
  */

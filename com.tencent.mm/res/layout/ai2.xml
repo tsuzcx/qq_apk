@@ -2,12 +2,12 @@
 <FrameLayout android:id="@id/ge2" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:background="@drawable/aqu" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/b21">
-        <android.support.v7.widget.RecyclerView android:id="@id/ge1" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/ge1" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     </com.tencent.mm.view.RefreshLoadMoreLayout>
     <FrameLayout android:id="@id/c3e" android:background="@drawable/aqu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/gl7" android:visibility="gone" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/c4" android:indeterminateDrawable="@drawable/apb" />
         <TextView android:textSize="@dimen/hc" android:textColor="@color/a2x" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/h5w" android:paddingTop="@dimen/c4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/cmj" />
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/a2x" android:layout_gravity="center_horizontal" android:id="@id/c35" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c4" android:text="@string/d3g" />
+        <TextView android:textSize="@dimen/hc" android:textColor="@color/BW_0_Alpha_0_5" android:layout_gravity="center" android:id="@id/c35" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jss" />
     </FrameLayout>
     <FrameLayout android:id="@id/ip9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <include layout="@layout/a8m" />

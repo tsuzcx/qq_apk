@@ -17,9 +17,14 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import com.tencent.luggage.wxa.a.a;
+import com.tencent.luggage.wxa.a.b;
+import com.tencent.luggage.wxa.a.d;
+import com.tencent.luggage.wxa.a.e;
+import com.tencent.luggage.wxa.a.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.i.b;
-import com.tencent.mm.plugin.appbrand.jsapi.i.d;
+import com.tencent.mm.plugin.appbrand.jsapi.h.b;
+import com.tencent.mm.plugin.appbrand.jsapi.h.d;
 import com.tencent.mm.plugin.appbrand.page.capsulebar.AppBrandCapsuleBarPlaceHolderView;
 import com.tencent.mm.plugin.appbrand.widget.AppBrandActionBarCustomImageView;
 import com.tencent.mm.plugin.appbrand.widget.CircleProgressDrawable;
@@ -30,117 +35,134 @@ import java.util.Set;
 
 public class b
   extends LinearLayout
-  implements i.b, i.d, e
+  implements h.b, h.d, f
 {
-  private View jBN;
-  protected int nYY;
-  protected ImageView olL;
-  protected View olM;
-  protected View olN;
-  protected View olO;
-  protected TextView olP;
-  protected ProgressBar olQ;
-  protected CircleProgressDrawable olR;
-  protected int olS;
-  protected double olT;
-  protected boolean olU;
-  protected boolean olV;
-  protected c olW;
-  private b olX;
-  private AppBrandCapsuleBarPlaceHolderView olY;
-  private a olZ;
-  private d oma;
-  private final Set<a> omb;
-  private boolean omc;
-  private AppBrandActionBarCustomImageView omd;
+  private View mrI;
+  protected int raJ;
+  private b roA;
+  private AppBrandCapsuleBarPlaceHolderView roB;
+  private a roC;
+  private d roD;
+  private final Set<a> roE;
+  private boolean roF;
+  private AppBrandActionBarCustomImageView roG;
+  protected ImageView ron;
+  protected View roo;
+  protected View rop;
+  protected View roq;
+  protected TextView ror;
+  protected ProgressBar ros;
+  protected CircleProgressDrawable rot;
+  protected int rou;
+  protected double rov;
+  protected boolean rox;
+  protected boolean roy;
+  protected c roz;
   
   public b(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(135409);
-    this.olW = new c();
-    this.olZ = new c((byte)0);
-    this.omb = new LinkedHashSet();
-    this.omc = false;
-    this.olU = false;
-    this.olV = false;
+    this.roz = new c();
+    this.roC = new c((byte)0);
+    this.roE = new LinkedHashSet();
+    this.roF = false;
+    this.rox = false;
+    this.roy = false;
     setOrientation(1);
     setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-    setBackgroundResource(2131099891);
-    this.jBN = LayoutInflater.from(getContext()).inflate(2131492999, this, false);
-    addView(this.jBN);
-    this.nYY = -1;
-    this.olS = getResources().getColor(2131099891);
-    this.olT = 1.0D;
-    this.olN = findViewById(2131296435);
-    this.olL = ((ImageView)findViewById(2131296436));
-    this.olM = findViewById(2131296434);
-    this.olO = findViewById(2131296444);
-    this.olP = ((TextView)findViewById(2131296447));
-    this.olQ = ((ProgressBar)findViewById(2131296433));
-    this.olR = new CircleProgressDrawable(getContext());
-    this.olY = ((AppBrandCapsuleBarPlaceHolderView)findViewById(2131296425));
-    this.olM.setOnClickListener(new View.OnClickListener()
+    setBackgroundResource(a.a.action_bar_color);
+    this.mrI = LayoutInflater.from(getContext()).inflate(a.e.app_brand_action_bar, this, false);
+    addView(this.mrI);
+    this.raJ = -1;
+    this.rou = getResources().getColor(a.a.action_bar_color);
+    this.rov = 1.0D;
+    this.rop = findViewById(a.d.actionbar_nav_area_container);
+    this.ron = ((ImageView)findViewById(a.d.actionbar_nav_btn));
+    this.roo = findViewById(a.d.actionbar_nav_area);
+    this.roq = findViewById(a.d.actionbar_title_area);
+    this.ror = ((TextView)findViewById(a.d.actionbar_title_main));
+    this.ros = ((ProgressBar)findViewById(a.d.actionbar_loading_icon));
+    this.rot = new CircleProgressDrawable(getContext());
+    this.roB = ((AppBrandCapsuleBarPlaceHolderView)findViewById(a.d.actionbar_capsule_area_placeholder));
+    this.roo.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(219616);
+        AppMethodBeat.i(242643);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-        if ((b.d(b.this) != null) && (!b.d(b.this).cz(paramAnonymousView)))
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+        if ((b.d(b.this) != null) && (!b.d(b.this).cS(paramAnonymousView)))
         {
-          localObject = b.this.olW;
-          paramAnonymousView = b.this.olM;
-          if (!((c)localObject).omk.isEmpty())
+          localObject = b.this.roz;
+          paramAnonymousView = b.this.roo;
+          if (!((c)localObject).roN.isEmpty())
           {
-            localObject = ((c)localObject).omk.iterator();
+            localObject = ((c)localObject).roN.iterator();
             while (((Iterator)localObject).hasNext()) {
               ((View.OnClickListener)((Iterator)localObject).next()).onClick(paramAnonymousView);
             }
           }
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(219616);
+        AppMethodBeat.o(242643);
       }
     });
     AppMethodBeat.o(135409);
   }
   
-  private void cac()
+  private void Dx(int paramInt)
+  {
+    AppMethodBeat.i(135431);
+    if (f.a.Dy(paramInt) == f.a.roV)
+    {
+      if (this.roA != null)
+      {
+        this.roA.setStyleColor(-1);
+        AppMethodBeat.o(135431);
+      }
+    }
+    else if (this.roA != null) {
+      this.roA.setStyleColor(-16777216);
+    }
+    AppMethodBeat.o(135431);
+  }
+  
+  private void cmZ()
   {
     AppMethodBeat.i(135419);
-    this.olO.setOnClickListener(new View.OnClickListener()
+    this.roq.setOnClickListener(new View.OnClickListener()
     {
-      private long omg = 0L;
+      private long roJ = 0L;
       
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(219618);
+        AppMethodBeat.i(244712);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        if (System.currentTimeMillis() - this.omg < 250L)
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        if (System.currentTimeMillis() - this.roJ < 250L)
         {
           paramAnonymousView = b.e(b.this).iterator();
           while (paramAnonymousView.hasNext()) {
-            ((a)paramAnonymousView.next()).bLE();
+            ((a)paramAnonymousView.next()).bXE();
           }
-          this.omg = 0L;
+          this.roJ = 0L;
         }
-        this.omg = System.currentTimeMillis();
+        this.roJ = System.currentTimeMillis();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(219618);
+        AppMethodBeat.o(244712);
       }
     });
     AppMethodBeat.o(135419);
   }
   
-  private void caf()
+  private void cnc()
   {
     AppMethodBeat.i(135434);
-    View localView = this.olM;
-    if ((this.olV) || (this.olU)) {}
+    View localView = this.roo;
+    if ((this.roy) || (this.rox)) {}
     for (int i = 8;; i = 0)
     {
       localView.setVisibility(i);
@@ -153,7 +175,7 @@ public class b
   private void setBackgroundColorInternal(int paramInt)
   {
     AppMethodBeat.i(135421);
-    if (!this.olV)
+    if (!this.roy)
     {
       super.setBackgroundColor(paramInt);
       AppMethodBeat.o(135421);
@@ -163,23 +185,6 @@ public class b
     AppMethodBeat.o(135421);
   }
   
-  private void zO(int paramInt)
-  {
-    AppMethodBeat.i(135431);
-    if (e.a.zP(paramInt) == e.a.omt)
-    {
-      if (this.olX != null)
-      {
-        this.olX.setStyleColor(-1);
-        AppMethodBeat.o(135431);
-      }
-    }
-    else if (this.olX != null) {
-      this.olX.setStyleColor(-16777216);
-    }
-    AppMethodBeat.o(135431);
-  }
-  
   public final void a(final Bitmap paramBitmap, final View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(135440);
@@ -187,28 +192,28 @@ public class b
     {
       public final void run()
       {
-        AppMethodBeat.i(219619);
+        AppMethodBeat.i(244507);
         if (b.this.getParent() == null)
         {
-          AppMethodBeat.o(219619);
+          AppMethodBeat.o(244507);
           return;
         }
         if (b.f(b.this) == null)
         {
-          ViewStub localViewStub = (ViewStub)b.this.findViewById(2131299384);
+          ViewStub localViewStub = (ViewStub)b.this.findViewById(a.d.custom_right_btn_viewstub);
           if (localViewStub == null)
           {
-            AppMethodBeat.o(219619);
+            AppMethodBeat.o(244507);
             return;
           }
           localViewStub.inflate();
-          b.a(b.this, (AppBrandActionBarCustomImageView)b.this.findViewById(2131299383));
+          b.a(b.this, (AppBrandActionBarCustomImageView)b.this.findViewById(a.d.custom_right_btn));
         }
         b.f(b.this).setVisibility(0);
         b.f(b.this).setImageBitmap(paramBitmap);
         b.f(b.this).setClickable(true);
         b.f(b.this).setOnClickListener(paramOnClickListener);
-        AppMethodBeat.o(219619);
+        AppMethodBeat.o(244507);
       }
     });
     AppMethodBeat.o(135440);
@@ -217,37 +222,37 @@ public class b
   public final void a(a parama)
   {
     AppMethodBeat.i(135414);
-    this.omb.add(parama);
-    if (!this.omc)
+    this.roE.add(parama);
+    if (!this.roF)
     {
-      cac();
-      this.omc = true;
+      cmZ();
+      this.roF = true;
     }
     AppMethodBeat.o(135414);
   }
   
-  public final void cad()
+  public final void cna()
   {
     AppMethodBeat.i(135430);
-    if (this.olZ != null) {
-      this.olZ.a(this.olL, this.olM, this.olN);
+    if (this.roC != null) {
+      this.roC.a(this.ron, this.roo, this.rop);
     }
-    this.olP.setTextColor(this.nYY);
-    this.olR.setStrokeColor(this.nYY);
-    this.olQ.setIndeterminateDrawable(this.olR);
-    zO(this.nYY);
+    this.ror.setTextColor(this.raJ);
+    this.rot.setStrokeColor(this.raJ);
+    this.ros.setIndeterminateDrawable(this.rot);
+    Dx(this.raJ);
     AppMethodBeat.o(135430);
   }
   
-  public final boolean cae()
+  public final boolean cnb()
   {
-    return this.olU;
+    return this.rox;
   }
   
-  public final boolean cag()
+  public final boolean cnd()
   {
     AppMethodBeat.i(135436);
-    if (this.olQ.getVisibility() == 0)
+    if (this.ros.getVisibility() == 0)
     {
       AppMethodBeat.o(135436);
       return true;
@@ -256,14 +261,19 @@ public class b
     return false;
   }
   
+  public final boolean cne()
+  {
+    return this.roy;
+  }
+  
   public final void destroy()
   {
-    AppMethodBeat.i(219621);
-    if (this.olR != null) {
-      this.olR.stop();
+    AppMethodBeat.i(243030);
+    if (this.rot != null) {
+      this.rot.stop();
     }
     removeAllViews();
-    AppMethodBeat.o(219621);
+    AppMethodBeat.o(243030);
   }
   
   public View getActionView()
@@ -273,44 +283,44 @@ public class b
   
   public final double getBackgroundAlpha()
   {
-    return this.olT;
+    return this.rov;
   }
   
   public final int getBackgroundColor()
   {
-    if (this.olV) {
+    if (this.roy) {
       return 0;
     }
-    return this.olS;
+    return this.rou;
   }
   
   public AppBrandCapsuleBarPlaceHolderView getCapsuleView()
   {
-    return this.olY;
+    return this.roB;
   }
   
   public int getForegroundColor()
   {
-    return this.nYY;
+    return this.raJ;
   }
   
   public CharSequence getMainTitle()
   {
     AppMethodBeat.i(135418);
-    CharSequence localCharSequence = this.olP.getText();
+    CharSequence localCharSequence = this.ror.getText();
     AppMethodBeat.o(135418);
     return localCharSequence;
   }
   
   public a getNavResetStyleListener()
   {
-    return this.olZ;
+    return this.roC;
   }
   
-  public final void gx(boolean paramBoolean)
+  public final void hi(boolean paramBoolean)
   {
     AppMethodBeat.i(135438);
-    View localView = this.olM;
+    View localView = this.roo;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -321,10 +331,10 @@ public class b
     }
   }
   
-  public final void gy(boolean paramBoolean)
+  public final void hj(boolean paramBoolean)
   {
     AppMethodBeat.i(135439);
-    View localView = this.olO;
+    View localView = this.roq;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -335,54 +345,52 @@ public class b
     }
   }
   
-  public final void gz(boolean paramBoolean)
+  public final void hk(boolean paramBoolean)
   {
     int j = 0;
     AppMethodBeat.i(135424);
-    Object localObject = this.olY;
+    Object localObject = this.roB;
     if (paramBoolean) {}
     for (int i = 0;; i = 4)
     {
       ((AppBrandCapsuleBarPlaceHolderView)localObject).setVisibility(i);
-      if (this.olY.getLayoutParams() != null)
+      if (this.roB.getLayoutParams() != null)
       {
-        localObject = this.olY.getLayoutParams();
+        localObject = this.roB.getLayoutParams();
         i = j;
         if (paramBoolean) {
           i = -2;
         }
         ((ViewGroup.LayoutParams)localObject).width = i;
-        this.olY.requestLayout();
+        this.roB.requestLayout();
       }
-      if (this.olX != null) {
-        this.olX.vI(this.olY.getVisibility());
+      if (this.roA != null) {
+        this.roA.yT(this.roB.getVisibility());
+      }
+      if (this.roG != null) {
+        this.roG.setVisibility(8);
       }
       AppMethodBeat.o(135424);
       return;
     }
   }
   
-  public final boolean isFullscreenMode()
-  {
-    return this.olV;
-  }
-  
   public final void onBackground()
   {
-    AppMethodBeat.i(219622);
-    if (this.olR != null) {
-      this.olR.stop();
+    AppMethodBeat.i(243031);
+    if (this.rot != null) {
+      this.rot.stop();
     }
-    AppMethodBeat.o(219622);
+    AppMethodBeat.o(243031);
   }
   
   public final void onForeground()
   {
-    AppMethodBeat.i(219623);
-    if ((cag()) && (this.olR != null)) {
-      this.olR.start();
+    AppMethodBeat.i(243032);
+    if ((cnd()) && (this.rot != null)) {
+      this.rot.start();
     }
-    AppMethodBeat.o(219623);
+    AppMethodBeat.o(243032);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -402,11 +410,11 @@ public class b
   public void setActionBarHeight(int paramInt)
   {
     AppMethodBeat.i(178644);
-    ViewGroup.LayoutParams localLayoutParams = this.jBN.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams = this.mrI.getLayoutParams();
     if ((localLayoutParams != null) && (localLayoutParams.height != paramInt))
     {
       localLayoutParams.height = paramInt;
-      this.jBN.setLayoutParams(localLayoutParams);
+      this.mrI.setLayoutParams(localLayoutParams);
     }
     AppMethodBeat.o(178644);
   }
@@ -414,27 +422,27 @@ public class b
   public void setBackButtonClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(135410);
-    c localc = this.olW;
+    c localc = this.roz;
     if (paramOnClickListener == null)
     {
       AppMethodBeat.o(135410);
       return;
     }
-    localc.omk.add(paramOnClickListener);
+    localc.roN.add(paramOnClickListener);
     AppMethodBeat.o(135410);
   }
   
   public final void setBackgroundAlpha(double paramDouble)
   {
     AppMethodBeat.i(135420);
-    this.olT = paramDouble;
-    if (!this.olV)
+    this.rov = paramDouble;
+    if (!this.roy)
     {
       Drawable localDrawable2 = super.getBackground();
       Drawable localDrawable1 = localDrawable2;
       if (localDrawable2 == null)
       {
-        setBackgroundColorInternal(this.olS);
+        setBackgroundColorInternal(this.rou);
         localDrawable1 = super.getBackground();
       }
       localDrawable1.setAlpha((int)(255.0D * paramDouble));
@@ -445,30 +453,30 @@ public class b
   public final void setBackgroundColor(int paramInt)
   {
     AppMethodBeat.i(135422);
-    this.olS = paramInt;
+    this.rou = paramInt;
     setBackgroundColorInternal(paramInt);
-    setBackgroundAlpha(this.olT);
+    setBackgroundAlpha(this.rov);
     AppMethodBeat.o(135422);
   }
   
   public final void setCapsuleBarInteractionDelegate(b paramb)
   {
-    AppMethodBeat.i(219620);
-    this.olX = paramb;
-    if (this.olX != null)
+    AppMethodBeat.i(243029);
+    this.roA = paramb;
+    if (this.roA != null)
     {
-      this.olX.setOptionButtonOnClickListener(new View.OnClickListener()
+      this.roA.setOptionButtonOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(135404);
           Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-          localObject = b.this.olW;
-          if (!((c)localObject).oml.isEmpty())
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+          localObject = b.this.roz;
+          if (!((c)localObject).roO.isEmpty())
           {
-            localObject = ((c)localObject).oml.iterator();
+            localObject = ((c)localObject).roO.iterator();
             while (((Iterator)localObject).hasNext()) {
               ((View.OnClickListener)((Iterator)localObject).next()).onClick(paramAnonymousView);
             }
@@ -477,18 +485,18 @@ public class b
           AppMethodBeat.o(135404);
         }
       });
-      this.olX.setHomeButtonOnClickListener(new View.OnClickListener()
+      this.roA.setHomeButtonOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(135405);
           Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-          localObject = b.this.olW;
-          if (!((c)localObject).omj.isEmpty())
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+          localObject = b.this.roz;
+          if (!((c)localObject).roM.isEmpty())
           {
-            localObject = ((c)localObject).omj.iterator();
+            localObject = ((c)localObject).roM.iterator();
             while (((Iterator)localObject).hasNext()) {
               ((View.OnClickListener)((Iterator)localObject).next()).onClick(paramAnonymousView);
             }
@@ -498,35 +506,35 @@ public class b
         }
       });
     }
-    AppMethodBeat.o(219620);
+    AppMethodBeat.o(243029);
   }
   
   public void setCloseButtonClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(135411);
-    c localc = this.olW;
+    c localc = this.roz;
     if (paramOnClickListener == null)
     {
       AppMethodBeat.o(135411);
       return;
     }
-    localc.omj.add(paramOnClickListener);
+    localc.roM.add(paramOnClickListener);
     AppMethodBeat.o(135411);
   }
   
   public void setForegroundColor(int paramInt)
   {
     AppMethodBeat.i(135429);
-    this.nYY = paramInt;
-    cad();
+    this.raJ = paramInt;
+    cna();
     AppMethodBeat.o(135429);
   }
   
   public void setForegroundStyle(String paramString)
   {
     AppMethodBeat.i(135427);
-    this.nYY = e.a.afW(paramString).omu;
-    cad();
+    this.raJ = f.a.anB(paramString).roW;
+    cna();
     AppMethodBeat.o(135427);
   }
   
@@ -536,8 +544,8 @@ public class b
     if (paramBoolean) {}
     for (int i = -16777216;; i = -1)
     {
-      this.nYY = i;
-      cad();
+      this.raJ = i;
+      cna();
       AppMethodBeat.o(135428);
       return;
     }
@@ -546,15 +554,15 @@ public class b
   public void setFullscreenMode(boolean paramBoolean)
   {
     AppMethodBeat.i(135437);
-    this.olV = paramBoolean;
-    caf();
-    View localView = this.olO;
-    if (this.olV) {}
+    this.roy = paramBoolean;
+    cnc();
+    View localView = this.roq;
+    if (this.roy) {}
     for (int i = 4;; i = 0)
     {
       localView.setVisibility(i);
       requestLayout();
-      setBackgroundColor(this.olS);
+      setBackgroundColor(this.rou);
       AppMethodBeat.o(135437);
       return;
     }
@@ -563,13 +571,13 @@ public class b
   public void setLoadingIconVisibility(boolean paramBoolean)
   {
     AppMethodBeat.i(135435);
-    if (this.oma != null)
+    if (this.roD != null)
     {
-      this.oma.io(paramBoolean);
+      this.roD.jl(paramBoolean);
       AppMethodBeat.o(135435);
       return;
     }
-    ProgressBar localProgressBar = this.olQ;
+    ProgressBar localProgressBar = this.ros;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -577,12 +585,12 @@ public class b
       if (!paramBoolean) {
         break;
       }
-      this.olR.caK();
-      this.olR.start();
+      this.rot.cmW();
+      this.rot.start();
       AppMethodBeat.o(135435);
       return;
     }
-    this.olR.stop();
+    this.rot.stop();
     AppMethodBeat.o(135435);
   }
   
@@ -590,44 +598,25 @@ public class b
   {
     AppMethodBeat.i(135415);
     boolean bool = isLayoutRequested();
-    this.olP.setText(paramCharSequence);
+    this.ror.setText(paramCharSequence);
     if (bool) {
       requestLayout();
     }
     AppMethodBeat.o(135415);
   }
   
-  public void setNavButtonLongClickListener(final View.OnLongClickListener paramOnLongClickListener)
+  public void setNavButtonLongClickListener(View.OnLongClickListener paramOnLongClickListener)
   {
     AppMethodBeat.i(135413);
-    this.olM.setOnLongClickListener(new View.OnLongClickListener()
-    {
-      public final boolean onLongClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(219617);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar$4", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
-        if (paramOnLongClickListener != null)
-        {
-          boolean bool = paramOnLongClickListener.onLongClick(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar$4", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-          AppMethodBeat.o(219617);
-          return bool;
-        }
-        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandActionBar$4", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-        AppMethodBeat.o(219617);
-        return false;
-      }
-    });
+    this.roo.setOnLongClickListener(new b.4(this, paramOnLongClickListener));
     AppMethodBeat.o(135413);
   }
   
   public void setNavContainerMinimumWidth(int paramInt)
   {
     AppMethodBeat.i(178643);
-    if (this.olN != null) {
-      this.olN.setMinimumWidth(paramInt);
+    if (this.rop != null) {
+      this.rop.setMinimumWidth(paramInt);
     }
     AppMethodBeat.o(178643);
   }
@@ -635,55 +624,47 @@ public class b
   public void setNavHidden(boolean paramBoolean)
   {
     AppMethodBeat.i(135433);
-    this.olU = paramBoolean;
-    caf();
-    cad();
+    this.rox = paramBoolean;
+    cnc();
+    cna();
     AppMethodBeat.o(135433);
   }
   
   public void setNavLoadingIconVisibilityResetListener(d paramd)
   {
-    this.oma = paramd;
+    this.roD = paramd;
   }
   
   public void setNavResetStyleListener(a parama)
   {
-    this.olZ = parama;
+    this.roC = parama;
   }
   
   public void setOptionButtonClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(135423);
-    c localc = this.olW;
+    c localc = this.roz;
     if (paramOnClickListener == null)
     {
       AppMethodBeat.o(135423);
       return;
     }
-    localc.oml.add(paramOnClickListener);
+    localc.roO.add(paramOnClickListener);
     AppMethodBeat.o(135423);
-  }
-  
-  public final void zN(int paramInt)
-  {
-    AppMethodBeat.i(178642);
-    this.olS = paramInt;
-    super.setBackgroundColor(paramInt);
-    AppMethodBeat.o(178642);
   }
   
   public static abstract class a
   {
-    public static final int omi = 2131165766;
+    public static final int roL = a.b.app_brand_actionbar_left_margin;
     
     protected abstract void a(ImageView paramImageView, View paramView1, View paramView2);
     
-    public abstract int bQz();
-    
-    protected boolean cz(View paramView)
+    protected boolean cS(View paramView)
     {
       return false;
     }
+    
+    public abstract int cdp();
   }
   
   public static abstract interface b
@@ -694,7 +675,7 @@ public class b
     
     public abstract void setStyleColor(int paramInt);
     
-    public abstract void vI(int paramInt);
+    public abstract void yT(int paramInt);
   }
   
   final class c
@@ -707,13 +688,13 @@ public class b
       AppMethodBeat.i(178641);
       if (paramImageView != null)
       {
-        paramImageView.setImageResource(2131689605);
-        paramImageView.setColorFilter(b.this.nYY, PorterDuff.Mode.SRC_ATOP);
+        paramImageView.setImageResource(a.f.app_brand_back);
+        paramImageView.setColorFilter(b.this.raJ, PorterDuff.Mode.SRC_ATOP);
         paramView2 = (ViewGroup.MarginLayoutParams)paramImageView.getLayoutParams();
-        paramView2.width = b.this.getContext().getResources().getDimensionPixelSize(2131165758);
-        paramView2.height = b.this.getContext().getResources().getDimensionPixelSize(2131165757);
-        paramView2.leftMargin = b.this.getContext().getResources().getDimensionPixelSize(2131165766);
-        paramView2.rightMargin = b.this.getContext().getResources().getDimensionPixelSize(2131165768);
+        paramView2.width = b.this.getContext().getResources().getDimensionPixelSize(a.b.app_brand_actionbar_back_arrow_width);
+        paramView2.height = b.this.getContext().getResources().getDimensionPixelSize(a.b.app_brand_actionbar_back_arrow_height);
+        paramView2.leftMargin = b.this.getContext().getResources().getDimensionPixelSize(a.b.app_brand_actionbar_left_margin);
+        paramView2.rightMargin = b.this.getContext().getResources().getDimensionPixelSize(a.b.app_brand_actionbar_right_margin);
         paramImageView.setLayoutParams(paramView2);
       }
       if (paramView1 != null)
@@ -726,20 +707,20 @@ public class b
       AppMethodBeat.o(178641);
     }
     
-    public final int bQz()
+    public final int cdp()
     {
-      return 2131165766;
+      return a.b.app_brand_actionbar_left_margin;
     }
   }
   
   public static abstract interface d
   {
-    public abstract void io(boolean paramBoolean);
+    public abstract void jl(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.actionbar.b
  * JD-Core Version:    0.7.0.1
  */

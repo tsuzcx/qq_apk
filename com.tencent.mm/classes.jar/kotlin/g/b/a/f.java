@@ -2,7 +2,7 @@ package kotlin.g.b.a;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/jvm/internal/markers/KMutableMap;", "Lkotlin/jvm/internal/markers/KMappedMarker;", "Entry", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/jvm/internal/markers/KMutableMap;", "Lkotlin/jvm/internal/markers/KMappedMarker;", "Entry", "kotlin-stdlib"})
 public abstract interface f
   extends a
 {}

@@ -4,9 +4,9 @@ import android.content.Context;
 import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
 import com.tencent.mm.plugin.nearlife.b.b;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.chj;
-import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.protocal.protobuf.cqf;
+import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.eaf;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper.LatLongData;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -20,43 +20,43 @@ import java.util.Map;
 public abstract class a
   extends BaseAdapter
 {
-  protected String AAT = "";
-  private ArrayList<b> AAZ = new ArrayList();
-  private HashSet<String> ABa = new HashSet();
-  ArrayList<BackwardSupportUtil.ExifHelper.LatLongData> ABb = null;
-  private Map<BackwardSupportUtil.ExifHelper.LatLongData, SKBuiltinBuffer_t> ABc;
-  private Map<BackwardSupportUtil.ExifHelper.LatLongData, Integer> ABd;
-  private Map<String, BackwardSupportUtil.ExifHelper.LatLongData> ABe;
-  BackwardSupportUtil.ExifHelper.LatLongData ABf;
-  boolean ABg = true;
-  int ABh = 0;
-  View.OnClickListener dec;
+  boolean Cem = false;
+  protected String GtV = "";
+  private ArrayList<b> Gub = new ArrayList();
+  private HashSet<String> Guc = new HashSet();
+  ArrayList<BackwardSupportUtil.ExifHelper.LatLongData> Gud = null;
+  private Map<BackwardSupportUtil.ExifHelper.LatLongData, eae> Gue;
+  private Map<BackwardSupportUtil.ExifHelper.LatLongData, Integer> Guf;
+  private Map<String, BackwardSupportUtil.ExifHelper.LatLongData> Gug;
+  BackwardSupportUtil.ExifHelper.LatLongData Guh;
+  boolean Gui = true;
+  int Guj = 0;
+  View.OnClickListener dig;
   Context mContext;
   String mKey = "";
-  boolean xrR = false;
   
   public a(Context paramContext, View.OnClickListener paramOnClickListener, String paramString, boolean paramBoolean)
   {
     this.mContext = paramContext;
-    this.dec = paramOnClickListener;
+    this.dig = paramOnClickListener;
     this.mKey = paramString;
-    this.xrR = paramBoolean;
-    this.ABb = new ArrayList();
-    this.ABc = new HashMap();
-    this.ABd = new HashMap();
-    this.ABe = new HashMap();
+    this.Cem = paramBoolean;
+    this.Gud = new ArrayList();
+    this.Gue = new HashMap();
+    this.Guf = new HashMap();
+    this.Gug = new HashMap();
   }
   
-  public static String fF(List<dqi> paramList)
+  public static String gj(List<eaf> paramList)
   {
     StringBuffer localStringBuffer = new StringBuffer();
     int i = 0;
     while (i < paramList.size())
     {
-      dqi localdqi = (dqi)paramList.get(i);
-      if ((localdqi != null) && (localdqi.MTo != null) && (!localdqi.MTo.equals("")) && (!localdqi.MTo.toLowerCase().equals("null")))
+      eaf localeaf = (eaf)paramList.get(i);
+      if ((localeaf != null) && (localeaf.Ufy != null) && (!localeaf.Ufy.equals("")) && (!localeaf.Ufy.toLowerCase().equals("null")))
       {
-        localStringBuffer.append(localdqi.MTo);
+        localStringBuffer.append(localeaf.Ufy);
         if (i < paramList.size() - 1) {
           localStringBuffer.append("·");
         }
@@ -66,48 +66,40 @@ public abstract class a
     return localStringBuffer.toString();
   }
   
-  public final b Tv(int paramInt)
+  public final eae a(BackwardSupportUtil.ExifHelper.LatLongData paramLatLongData)
   {
-    if ((paramInt >= 0) && (paramInt < this.AAZ.size())) {
-      return (b)this.AAZ.get(paramInt);
-    }
-    return new b("", new chj());
-  }
-  
-  public final SKBuiltinBuffer_t a(BackwardSupportUtil.ExifHelper.LatLongData paramLatLongData)
-  {
-    if (this.ABc.containsKey(paramLatLongData)) {
-      return (SKBuiltinBuffer_t)this.ABc.get(paramLatLongData);
+    if (this.Gue.containsKey(paramLatLongData)) {
+      return (eae)this.Gue.get(paramLatLongData);
     }
     return null;
   }
   
   public final void a(b paramb, int paramInt)
   {
-    if ((!this.ABa.contains(paramb.AAG)) && (paramInt <= this.AAZ.size()))
+    if ((!this.Guc.contains(paramb.GtI)) && (paramInt <= this.Gub.size()))
     {
-      this.AAZ.add(paramInt, paramb);
-      this.ABa.add(paramb.AAG);
-      this.ABe.put(paramb.AAG, this.ABf);
+      this.Gub.add(paramInt, paramb);
+      this.Guc.add(paramb.GtI);
+      this.Gug.put(paramb.GtI, this.Guh);
     }
   }
   
-  public final void a(BackwardSupportUtil.ExifHelper.LatLongData paramLatLongData, int paramInt, SKBuiltinBuffer_t paramSKBuiltinBuffer_t)
+  public final void a(BackwardSupportUtil.ExifHelper.LatLongData paramLatLongData, int paramInt, eae parameae)
   {
     int i = 0;
     float f1 = paramLatLongData.latitude;
     float f2 = paramLatLongData.longtitude;
-    if (paramSKBuiltinBuffer_t == null) {}
+    if (parameae == null) {}
     for (;;)
     {
       Log.d("MicroMsg.BaseLifeAdapter", "set flag & buf, lat:%f long:%f flag:%d len:%d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(paramInt), Integer.valueOf(i) });
-      if ((this.ABb.contains(paramLatLongData)) || ((this.ABf != null) && (this.ABf.equals(paramLatLongData))))
+      if ((this.Gud.contains(paramLatLongData)) || ((this.Guh != null) && (this.Guh.equals(paramLatLongData))))
       {
-        this.ABd.put(paramLatLongData, Integer.valueOf(paramInt));
-        this.ABc.put(paramLatLongData, paramSKBuiltinBuffer_t);
+        this.Guf.put(paramLatLongData, Integer.valueOf(paramInt));
+        this.Gue.put(paramLatLongData, parameae);
       }
       return;
-      i = paramSKBuiltinBuffer_t.getILen();
+      i = parameae.Ufv;
     }
   }
   
@@ -118,55 +110,55 @@ public abstract class a
     while (paramList.hasNext())
     {
       b localb = (b)paramList.next();
-      if (!this.ABa.contains(localb.AAG))
+      if (!this.Guc.contains(localb.GtI))
       {
-        this.AAZ.add(localb);
-        this.ABa.add(localb.AAG);
-        this.ABe.put(localb.AAG, paramLatLongData);
+        this.Gub.add(localb);
+        this.Guc.add(localb.GtI);
+        this.Gug.put(localb.GtI, paramLatLongData);
       }
     }
     notifyDataSetChanged();
   }
   
-  public final void aF(ArrayList<BackwardSupportUtil.ExifHelper.LatLongData> paramArrayList)
+  public final void aN(ArrayList<BackwardSupportUtil.ExifHelper.LatLongData> paramArrayList)
   {
     if (paramArrayList != null) {
-      this.ABb = paramArrayList;
+      this.Gud = paramArrayList;
     }
   }
   
-  public final void aIu(String paramString)
+  public final void aSO(String paramString)
   {
     if (paramString != null) {
-      this.AAT = paramString;
+      this.GtV = paramString;
     }
   }
   
-  public final BackwardSupportUtil.ExifHelper.LatLongData aIv(String paramString)
+  public final BackwardSupportUtil.ExifHelper.LatLongData aSP(String paramString)
   {
-    if (this.ABe.containsKey(paramString)) {
-      return (BackwardSupportUtil.ExifHelper.LatLongData)this.ABe.get(paramString);
+    if (this.Gug.containsKey(paramString)) {
+      return (BackwardSupportUtil.ExifHelper.LatLongData)this.Gug.get(paramString);
     }
     return null;
   }
   
-  public final boolean aIw(String paramString)
+  public final boolean aSQ(String paramString)
   {
     paramString = paramString.trim();
-    Iterator localIterator = this.AAZ.iterator();
+    Iterator localIterator = this.Gub.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      if ((!Util.isNullOrNil(localb.Title)) && (paramString.equals(localb.Title.trim()))) {
+      if ((!Util.isNullOrNil(localb.fwr)) && (paramString.equals(localb.fwr.trim()))) {
         return true;
       }
     }
     return false;
   }
   
-  public final int aIx(String paramString)
+  public final int aSR(String paramString)
   {
-    Iterator localIterator = this.AAZ.iterator();
+    Iterator localIterator = this.Gub.iterator();
     int i = -1;
     int j;
     b localb;
@@ -179,51 +171,59 @@ public abstract class a
       localb = (b)localIterator.next();
       j = i + 1;
       i = j;
-    } while (!localb.AAG.equals(paramString));
+    } while (!localb.GtI.equals(paramString));
     return j;
+  }
+  
+  public final b aah(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.Gub.size())) {
+      return (b)this.Gub.get(paramInt);
+    }
+    return new b("", new cqf());
   }
   
   public final int b(BackwardSupportUtil.ExifHelper.LatLongData paramLatLongData)
   {
-    if (this.ABd.containsKey(paramLatLongData)) {
-      return ((Integer)this.ABd.get(paramLatLongData)).intValue();
+    if (this.Guf.containsKey(paramLatLongData)) {
+      return ((Integer)this.Guf.get(paramLatLongData)).intValue();
     }
     return 1;
   }
   
-  public final void ewZ()
+  public final void fiC()
   {
-    this.AAZ.clear();
-    this.ABa.clear();
-    this.ABd.clear();
-    this.ABc.clear();
-    this.ABe.clear();
-    this.ABh = 0;
+    this.Gub.clear();
+    this.Guc.clear();
+    this.Guf.clear();
+    this.Gue.clear();
+    this.Gug.clear();
+    this.Guj = 0;
     notifyDataSetChanged();
   }
   
-  public final String exa()
+  public final String fiD()
   {
-    return this.AAT;
+    return this.GtV;
   }
   
-  public final boolean exb()
+  public final boolean fiE()
   {
-    Iterator localIterator = this.ABb.iterator();
+    Iterator localIterator = this.Gud.iterator();
     while (localIterator.hasNext()) {
       if (b((BackwardSupportUtil.ExifHelper.LatLongData)localIterator.next()) > 0) {
         return true;
       }
     }
-    if (this.ABg) {
-      return b(this.ABf) > 0;
+    if (this.Gui) {
+      return b(this.Guh) > 0;
     }
     return false;
   }
   
   public int getCount()
   {
-    return this.AAZ.size();
+    return this.Gub.size();
   }
   
   public long getItemId(int paramInt)
@@ -233,7 +233,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.ui.a
  * JD-Core Version:    0.7.0.1
  */

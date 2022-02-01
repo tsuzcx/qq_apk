@@ -3,22 +3,23 @@ package com.tencent.mm.plugin.appbrand.launching;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.launching.a.d;
+import com.tencent.mm.plugin.appbrand.launching.a.e;
+import com.tencent.mm.plugin.appbrand.openmaterial.model.a;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.protocal.protobuf.acc;
-import com.tencent.mm.protocal.protobuf.fcc;
-import com.tencent.mm.protocal.protobuf.fds;
-import com.tencent.mm.protocal.protobuf.fez;
+import com.tencent.mm.protocal.protobuf.ack;
+import com.tencent.mm.protocal.protobuf.fnd;
+import com.tencent.mm.protocal.protobuf.fot;
+import com.tencent.mm.protocal.protobuf.fqa;
 
 public final class AppBrandTaskUsageRecorder$UpdateTask
   extends MainProcessTask
 {
   public static final Parcelable.Creator<UpdateTask> CREATOR;
-  AppBrandTaskUsageRecorder.LaunchCheckParams mRN;
+  AppBrandTaskUsageRecorder.LaunchCheckParams pSJ;
   
   static
   {
@@ -36,40 +37,40 @@ public final class AppBrandTaskUsageRecorder$UpdateTask
   
   public AppBrandTaskUsageRecorder$UpdateTask(AppBrandTaskUsageRecorder.LaunchCheckParams paramLaunchCheckParams)
   {
-    this.mRN = paramLaunchCheckParams;
+    this.pSJ = paramLaunchCheckParams;
   }
   
-  public final void bjj()
+  public final void RW()
   {
     AppMethodBeat.i(47113);
-    if ((!g.aAf().hpY) || (com.tencent.mm.kernel.a.azj()))
+    if ((!h.aHE().kbT) || (com.tencent.mm.kernel.b.aGE()))
     {
       AppMethodBeat.o(47113);
       return;
     }
-    this.mRN.getClass();
-    Object localObject = this.mRN.kEG.cys;
-    fez localfez = d.b((AppBrandLaunchReferrer)localObject);
-    fds localfds = d.c((AppBrandLaunchReferrer)localObject);
-    fcc localfcc = new fcc();
-    localfcc.MjZ = this.mRN.kEG.eix;
-    localfcc.KSa = this.mRN.pkgVersion;
-    localfcc.Scene = this.mRN.mRM.scene;
-    localfcc.MqE = this.mRN.kEG.kHw;
-    localfcc.MqD = 1;
-    localfcc.MqC = this.mRN.mRM.ecU;
+    this.pSJ.getClass();
+    Object localObject = this.pSJ.nyg.cwV;
+    fqa localfqa = e.b((AppBrandLaunchReferrer)localObject);
+    fot localfot = e.c((AppBrandLaunchReferrer)localObject);
+    fnd localfnd = new fnd();
+    localfnd.TuP = this.pSJ.nyg.cBI;
+    localfnd.RTb = this.pSJ.pkgVersion;
+    localfnd.CPw = this.pSJ.pSI.scene;
+    localfnd.TBH = this.pSJ.nyg.nBq;
+    localfnd.TBG = 1;
+    localfnd.TBF = this.pSJ.pSI.fXa;
     localObject = null;
-    if (1173 == this.mRN.mRM.scene) {
-      localObject = com.tencent.mm.plugin.appbrand.openmaterial.model.a.ado(this.mRN.kEG.ldR);
+    if (1173 == this.pSJ.pSI.scene) {
+      localObject = a.alj(this.pSJ.nyg.nYf);
     }
-    acc localacc = new acc();
-    localacc.dUS = this.mRN.mRM.scene;
-    if (this.mRN.kEG.cyz == com.tencent.luggage.sdk.launching.b.cBC) {}
+    ack localack = new ack();
+    localack.fOu = this.pSJ.pSI.scene;
+    if (this.pSJ.nyg.cxe == com.tencent.luggage.sdk.launching.b.cBf) {}
     for (boolean bool = true;; bool = false)
     {
-      localacc.LmF = bool;
-      localacc.LmG = 1;
-      new com.tencent.mm.plugin.appbrand.launching.a.b(this.mRN.kEG.appId, false, localfcc, localfez, localfds, this.mRN.cym, this.mRN.lKh, this.mRN.ldW, "", this.mRN.kEG.kHI, (String)localObject, localacc).bNW();
+      localack.SnY = bool;
+      localack.SnZ = 1;
+      new com.tencent.mm.plugin.appbrand.launching.a.b(this.pSJ.nyg.appId, false, localfnd, localfqa, localfot, this.pSJ.cwP, this.pSJ.oGx, this.pSJ.nYk, "", this.pSJ.nyg.nBB, (String)localObject, localack, this.pSJ.nyg.launchMode).caq();
       AppMethodBeat.o(47113);
       return;
     }
@@ -83,20 +84,20 @@ public final class AppBrandTaskUsageRecorder$UpdateTask
   public final void f(Parcel paramParcel)
   {
     AppMethodBeat.i(47115);
-    this.mRN = ((AppBrandTaskUsageRecorder.LaunchCheckParams)paramParcel.readParcelable(AppBrandTaskUsageRecorder.LaunchCheckParams.class.getClassLoader()));
+    this.pSJ = ((AppBrandTaskUsageRecorder.LaunchCheckParams)paramParcel.readParcelable(AppBrandTaskUsageRecorder.LaunchCheckParams.class.getClassLoader()));
     AppMethodBeat.o(47115);
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(47116);
-    paramParcel.writeParcelable(this.mRN, paramInt);
+    paramParcel.writeParcelable(this.pSJ, paramInt);
     AppMethodBeat.o(47116);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.AppBrandTaskUsageRecorder.UpdateTask
  * JD-Core Version:    0.7.0.1
  */

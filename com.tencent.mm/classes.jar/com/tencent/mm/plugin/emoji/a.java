@@ -8,22 +8,22 @@ import com.tencent.mm.storage.emotion.EmojiInfo;
 public final class a
   extends o.e
 {
-  public String fQY;
-  public EmojiInfo gWm;
+  public String ilo;
+  public EmojiInfo jHh;
   public int type;
   
-  public static a cEL()
+  public static a cTq()
   {
-    AppMethodBeat.i(199779);
+    AppMethodBeat.i(223204);
     a locala = new a();
-    locala.jec = o.d.jdO;
-    AppMethodBeat.o(199779);
+    locala.lUB = o.d.lUn;
+    AppMethodBeat.o(223204);
     return locala;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a
  * JD-Core Version:    0.7.0.1
  */

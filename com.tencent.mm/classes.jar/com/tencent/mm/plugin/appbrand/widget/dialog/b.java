@@ -12,23 +12,23 @@ import com.tencent.mm.ui.widget.a.d;
 
 public class b
   extends d
-  implements k
+  implements j
 {
+  private boolean bxO;
+  private boolean bxP;
   private View contentView;
-  private m jCf;
-  private DialogInterface.OnCancelListener kke;
-  private DialogInterface.OnDismissListener opQ;
-  private boolean ox;
-  private boolean oy;
-  private boolean zZh;
-  private DialogInterface.OnShowListener zpS;
+  private l msa;
+  private DialogInterface.OnCancelListener nbU;
+  private DialogInterface.OnShowListener rrR;
+  private boolean rrT;
+  private DialogInterface.OnDismissListener rrn;
   
   public b(Context paramContext)
   {
     super(paramContext, (byte)0);
     AppMethodBeat.i(135470);
-    this.ox = true;
-    this.zZh = false;
+    this.bxO = true;
+    this.rrT = false;
     setContentView(super.getContentView());
     setCanceledOnTouchOutside(false);
     AppMethodBeat.o(135470);
@@ -37,44 +37,44 @@ public class b
   public b(Context paramContext, byte paramByte)
   {
     super(paramContext, (byte)0);
-    this.ox = true;
-    this.zZh = false;
+    this.bxO = true;
+    this.rrT = false;
   }
   
-  public final void a(m paramm)
+  public final void a(l paraml)
   {
     AppMethodBeat.i(135471);
-    if (this.zpS != null) {
-      this.zpS.onShow(this);
+    if (this.rrR != null) {
+      this.rrR.onShow(this);
     }
-    this.jCf = paramm;
+    this.msa = paraml;
     AppMethodBeat.o(135471);
   }
   
-  public final boolean bjb()
+  public final boolean bsB()
   {
     return false;
   }
   
-  public final boolean bjc()
+  public final boolean bsC()
   {
-    return this.oy;
+    return this.bxP;
   }
   
   public void dismiss()
   {
     AppMethodBeat.i(135478);
-    if (this.zZh)
+    if (this.rrT)
     {
       AppMethodBeat.o(135478);
       return;
     }
-    this.zZh = true;
-    if (this.jCf != null)
+    this.rrT = true;
+    if (this.msa != null)
     {
-      this.jCf.c(this);
-      if (this.opQ != null) {
-        this.opQ.onDismiss(this);
+      this.msa.b(this);
+      if (this.rrn != null) {
+        this.rrn.onDismiss(this);
       }
     }
     AppMethodBeat.o(135478);
@@ -101,14 +101,14 @@ public class b
   
   public final boolean isCancelable()
   {
-    return this.ox;
+    return this.bxO;
   }
   
   public final void onCancel()
   {
     AppMethodBeat.i(135477);
-    if (this.kke != null) {
-      this.kke.onCancel(this);
+    if (this.nbU != null) {
+      this.nbU.onCancel(this);
     }
     AppMethodBeat.o(135477);
   }
@@ -117,7 +117,7 @@ public class b
   {
     AppMethodBeat.i(135481);
     super.setCancelable(paramBoolean);
-    this.ox = paramBoolean;
+    this.bxO = paramBoolean;
     AppMethodBeat.o(135481);
   }
   
@@ -125,7 +125,7 @@ public class b
   {
     AppMethodBeat.i(135480);
     super.setCanceledOnTouchOutside(paramBoolean);
-    this.oy = paramBoolean;
+    this.bxP = paramBoolean;
     AppMethodBeat.o(135480);
   }
   
@@ -161,7 +161,7 @@ public class b
   {
     AppMethodBeat.i(135482);
     super.setOnCancelListener(paramOnCancelListener);
-    this.kke = paramOnCancelListener;
+    this.nbU = paramOnCancelListener;
     AppMethodBeat.o(135482);
   }
   
@@ -169,7 +169,7 @@ public class b
   {
     AppMethodBeat.i(135479);
     super.setOnDismissListener(paramOnDismissListener);
-    this.opQ = paramOnDismissListener;
+    this.rrn = paramOnDismissListener;
     AppMethodBeat.o(135479);
   }
   
@@ -177,17 +177,17 @@ public class b
   {
     AppMethodBeat.i(135476);
     super.setOnShowListener(paramOnShowListener);
-    this.zpS = paramOnShowListener;
+    this.rrR = paramOnShowListener;
     AppMethodBeat.o(135476);
   }
   
   public void show() {}
   
-  public final void ut(int paramInt) {}
+  public final void xu(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.b
  * JD-Core Version:    0.7.0.1
  */

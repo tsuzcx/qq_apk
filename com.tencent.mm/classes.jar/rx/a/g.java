@@ -12,7 +12,7 @@ public final class g
     if (paramThrowable == null) {
       localObject = new NullPointerException();
     }
-    paramThrowable = b.O((Throwable)localObject);
+    paramThrowable = b.S((Throwable)localObject);
     if (((paramThrowable instanceof a)) && (((a)paramThrowable).value == paramObject))
     {
       AppMethodBeat.o(90054);
@@ -33,7 +33,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     rx.a.g
  * JD-Core Version:    0.7.0.1
  */

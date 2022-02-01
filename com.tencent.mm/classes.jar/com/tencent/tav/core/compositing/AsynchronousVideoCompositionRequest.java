@@ -25,85 +25,85 @@ public class AsynchronousVideoCompositionRequest
   
   public AsynchronousVideoCompositionRequest(Object paramObject, AssetExtension paramAssetExtension)
   {
-    AppMethodBeat.i(218013);
+    AppMethodBeat.i(189591);
     this.sourceTrackIDs = new ArrayList();
     this.composedVideoFrame = null;
     this.status = -2147483648;
     this.sampleBuffers = new SparseArray();
     this.authorComposition = paramObject;
     this.assetExtension = paramAssetExtension;
-    AppMethodBeat.o(218013);
+    AppMethodBeat.o(189591);
   }
   
   private void notifyFinish()
   {
-    AppMethodBeat.i(218018);
+    AppMethodBeat.i(189601);
     if (this.authorComposition != null) {
       synchronized (this.authorComposition)
       {
         this.authorComposition.notifyAll();
-        AppMethodBeat.o(218018);
+        AppMethodBeat.o(189601);
         return;
       }
     }
-    AppMethodBeat.o(218018);
+    AppMethodBeat.o(189601);
   }
   
   public void appendCMSampleBuffer(CMSampleBuffer paramCMSampleBuffer, int paramInt)
   {
-    AppMethodBeat.i(218019);
+    AppMethodBeat.i(189606);
     this.sampleBuffers.put(paramInt, paramCMSampleBuffer);
     this.sourceTrackIDs.add(Integer.valueOf(paramInt));
-    AppMethodBeat.o(218019);
+    AppMethodBeat.o(189606);
   }
   
   public void finishCancelledRequest()
   {
-    AppMethodBeat.i(218017);
+    AppMethodBeat.i(189598);
     try
     {
       this.status = 1;
       notifyFinish();
-      AppMethodBeat.o(218017);
+      AppMethodBeat.o(189598);
       return;
     }
     finally
     {
-      AppMethodBeat.o(218017);
+      AppMethodBeat.o(189598);
     }
   }
   
   public void finishWithComposedVideoFrame(CMSampleBuffer paramCMSampleBuffer)
   {
-    AppMethodBeat.i(218015);
+    AppMethodBeat.i(189595);
     try
     {
       this.composedVideoFrame = paramCMSampleBuffer;
       this.status = 0;
       notifyFinish();
-      AppMethodBeat.o(218015);
+      AppMethodBeat.o(189595);
       return;
     }
     finally
     {
-      AppMethodBeat.o(218015);
+      AppMethodBeat.o(189595);
     }
   }
   
   public void finishWithError(ErrorMsg paramErrorMsg)
   {
-    AppMethodBeat.i(218016);
+    AppMethodBeat.i(189597);
     try
     {
       this.error = paramErrorMsg;
       this.status = -1;
       notifyFinish();
-      AppMethodBeat.o(218016);
+      AppMethodBeat.o(189597);
       return;
     }
     finally
     {
-      AppMethodBeat.o(218016);
+      AppMethodBeat.o(189597);
     }
   }
   
@@ -178,28 +178,28 @@ public class AsynchronousVideoCompositionRequest
   
   public CMSampleBuffer sourceFrameByTrackID(int paramInt)
   {
-    AppMethodBeat.i(218014);
+    AppMethodBeat.i(189593);
     if (this.sampleBuffers != null)
     {
       CMSampleBuffer localCMSampleBuffer = (CMSampleBuffer)this.sampleBuffers.get(paramInt);
-      AppMethodBeat.o(218014);
+      AppMethodBeat.o(189593);
       return localCMSampleBuffer;
     }
-    AppMethodBeat.o(218014);
+    AppMethodBeat.o(189593);
     return null;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(218020);
+    AppMethodBeat.i(189612);
     String str = "AsynchronousVideoCompositionRequest{renderContext=" + this.renderContext + ", compositionTime=" + this.compositionTime + ", videoCompositionInstruction=" + this.videoCompositionInstruction + ", sampleBuffers=" + this.sampleBuffers + '}';
-    AppMethodBeat.o(218020);
+    AppMethodBeat.o(189612);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.core.compositing.AsynchronousVideoCompositionRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -1,66 +1,89 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.Result;
-import kotlin.Result.Companion;
-import kotlin.ResultKt;
-import kotlin.d.d;
+import kotlin.g.b.p;
+import kotlin.t;
+import kotlinx.coroutines.internal.j;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/ResumeAwaitOnCompletion;", "T", "Lkotlinx/coroutines/JobNode;", "Lkotlinx/coroutines/JobSupport;", "job", "continuation", "Lkotlinx/coroutines/CancellableContinuationImpl;", "(Lkotlinx/coroutines/JobSupport;Lkotlinx/coroutines/CancellableContinuationImpl;)V", "invoke", "", "cause", "", "toString", "", "kotlinx-coroutines-core"})
-final class cj<T>
-  extends bz<ca>
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/NodeList;", "Lkotlinx/coroutines/internal/LockFreeLinkedListHead;", "Lkotlinx/coroutines/Incomplete;", "()V", "isActive", "", "()Z", "list", "getList", "()Lkotlinx/coroutines/NodeList;", "getString", "", "state", "toString", "kotlinx-coroutines-core"})
+public final class cj
+  extends j
+  implements bt
 {
-  private final l<T> TVi;
-  
-  public cj(ca paramca, l<? super T> paraml)
+  public final String getString(String paramString)
   {
-    super((bu)paramca);
-    AppMethodBeat.i(192403);
-    this.TVi = paraml;
-    AppMethodBeat.o(192403);
+    AppMethodBeat.i(118248);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("List{");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("}[");
+    int i = 1;
+    j localj = (j)this;
+    paramString = localj.iSL();
+    if (paramString == null)
+    {
+      paramString = new t("null cannot be cast to non-null type kotlinx.coroutines.internal.Node /* = kotlinx.coroutines.internal.LockFreeLinkedListNode */");
+      AppMethodBeat.o(118248);
+      throw paramString;
+    }
+    paramString = (kotlinx.coroutines.internal.l)paramString;
+    if ((p.h(paramString, localj) ^ true))
+    {
+      int j = i;
+      cd localcd;
+      if ((paramString instanceof cd))
+      {
+        localcd = (cd)paramString;
+        if (i == 0) {
+          break label129;
+        }
+        i = 0;
+      }
+      for (;;)
+      {
+        localStringBuilder.append(localcd);
+        j = i;
+        paramString = paramString.iSM();
+        i = j;
+        break;
+        label129:
+        localStringBuilder.append(", ");
+      }
+    }
+    localStringBuilder.append("]");
+    paramString = localStringBuilder.toString();
+    p.j(paramString, "StringBuilder().apply(builderAction).toString()");
+    AppMethodBeat.o(118248);
+    return paramString;
+  }
+  
+  public final cj iRt()
+  {
+    return this;
+  }
+  
+  public final boolean isActive()
+  {
+    return true;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(118268);
-    String str = "ResumeAwaitOnCompletion[" + this.TVi + ']';
-    AppMethodBeat.o(118268);
+    AppMethodBeat.i(118249);
+    if (ap.getDEBUG())
+    {
+      str = getString("Active");
+      AppMethodBeat.o(118249);
+      return str;
+    }
+    String str = super.toString();
+    AppMethodBeat.o(118249);
     return str;
-  }
-  
-  public final void y(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118266);
-    Object localObject = ((ca)this.TUQ).hNm();
-    if (an.hMK())
-    {
-      if (!(localObject instanceof bp)) {}
-      for (int i = 1; i == 0; i = 0)
-      {
-        paramThrowable = (Throwable)new AssertionError();
-        AppMethodBeat.o(118266);
-        throw paramThrowable;
-      }
-    }
-    if ((localObject instanceof v))
-    {
-      paramThrowable = (d)this.TVi;
-      localObject = ((v)localObject).cause;
-      localCompanion = Result.Companion;
-      paramThrowable.resumeWith(Result.constructor-impl(ResultKt.createFailure((Throwable)localObject)));
-      AppMethodBeat.o(118266);
-      return;
-    }
-    paramThrowable = (d)this.TVi;
-    localObject = cb.gd(localObject);
-    Result.Companion localCompanion = Result.Companion;
-    paramThrowable.resumeWith(Result.constructor-impl(localObject));
-    AppMethodBeat.o(118266);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlinx.coroutines.cj
  * JD-Core Version:    0.7.0.1
  */

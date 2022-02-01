@@ -1,26 +1,28 @@
 package com.tencent.mm.plugin.appbrand.keylogger.stepview;
 
+import com.tencent.luggage.a.d;
+
 public final class a
 {
-  public static int ye(int paramInt)
+  public static int BE(int paramInt)
   {
     switch (paramInt)
     {
     case -1: 
     case 1: 
     default: 
-      return 2131235052;
+      return a.d.step_error;
     case 0: 
-      return 2131235053;
+      return a.d.step_ok;
     case -2: 
-      return 2131235054;
+      return a.d.step_optional;
     }
-    return 2131235050;
+    return a.d.step_attention;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.stepview.a
  * JD-Core Version:    0.7.0.1
  */

@@ -11,25 +11,25 @@ import com.tencent.mm.sdk.platformtools.Util;
 public final class m
   implements u.a
 {
-  public n.a BbM;
-  public ImageView gBZ;
+  public n.a GVK;
+  public ImageView jmf;
   public TextView titleTv;
   
   public final void k(String paramString, final Bitmap paramBitmap)
   {
     AppMethodBeat.i(67045);
-    if ((this.BbM == null) || (Util.isNullOrNil(this.BbM.iconUrl)))
+    if ((this.GVK == null) || (Util.isNullOrNil(this.GVK.iconUrl)))
     {
       AppMethodBeat.o(67045);
       return;
     }
-    if (paramString.equals(this.BbM.iconUrl)) {
-      this.gBZ.post(new Runnable()
+    if (paramString.equals(this.GVK.iconUrl)) {
+      this.jmf.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(67044);
-          m.this.gBZ.setImageBitmap(paramBitmap);
+          m.this.jmf.setImageBitmap(paramBitmap);
           AppMethodBeat.o(67044);
         }
       });
@@ -39,7 +39,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.m
  * JD-Core Version:    0.7.0.1
  */

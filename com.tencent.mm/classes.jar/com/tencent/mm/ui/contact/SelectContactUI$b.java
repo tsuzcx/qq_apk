@@ -6,19 +6,19 @@ import java.lang.ref.WeakReference;
 final class SelectContactUI$b
   implements Runnable
 {
-  private WeakReference<SelectContactUI> cMO;
+  private WeakReference<SelectContactUI> cNB;
   
   private SelectContactUI$b(SelectContactUI paramSelectContactUI)
   {
     AppMethodBeat.i(37990);
-    this.cMO = new WeakReference(paramSelectContactUI);
+    this.cNB = new WeakReference(paramSelectContactUI);
     AppMethodBeat.o(37990);
   }
   
   public final void run()
   {
     AppMethodBeat.i(37991);
-    SelectContactUI localSelectContactUI = (SelectContactUI)this.cMO.get();
+    SelectContactUI localSelectContactUI = (SelectContactUI)this.cNB.get();
     if (localSelectContactUI == null)
     {
       AppMethodBeat.o(37991);

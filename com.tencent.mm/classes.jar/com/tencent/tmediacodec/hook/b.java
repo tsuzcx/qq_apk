@@ -8,9 +8,9 @@ public final class b
 {
   public final void release()
   {
-    AppMethodBeat.i(190138);
+    AppMethodBeat.i(224442);
     super.release();
-    AppMethodBeat.o(190138);
+    AppMethodBeat.o(224442);
   }
 }
 

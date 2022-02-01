@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.box.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.plugin.report.f;
 
 public final class a
 {
-  public static final void pl(int paramInt)
+  public static final void rE(int paramInt)
   {
     AppMethodBeat.i(90971);
-    e.Cxv.idkeyStat(1137L, paramInt, 1L, false);
+    f.Iyx.idkeyStat(1137L, paramInt, 1L, false);
     AppMethodBeat.o(90971);
   }
 }

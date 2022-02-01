@@ -6,26 +6,16 @@ import java.util.Arrays;
 public final class g
   extends a<byte[]>
 {
-  public static final g ity;
+  public static final g liH;
   
   static
   {
     AppMethodBeat.i(156423);
-    ity = new g();
+    liH = new g();
     AppMethodBeat.o(156423);
   }
   
-  protected final long aRP()
-  {
-    return 5242880L;
-  }
-  
-  protected final long aRQ()
-  {
-    return 1048576L;
-  }
-  
-  public final void k(byte[] paramArrayOfByte)
+  public final void as(byte[] paramArrayOfByte)
   {
     try
     {
@@ -41,10 +31,20 @@ public final class g
       throw paramArrayOfByte;
     }
   }
+  
+  protected final long baJ()
+  {
+    return 5242880L;
+  }
+  
+  protected final long baK()
+  {
+    return 1048576L;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.memory.g
  * JD-Core Version:    0.7.0.1
  */

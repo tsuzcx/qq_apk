@@ -1,12 +1,19 @@
 package com.tencent.mm.modelstat.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.b.r;
+import com.tencent.mm.cw.f;
+import com.tencent.mm.cw.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.vending.c.a;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 
 public final class b
 {
   /* Error */
-  public static int b(o paramo, int paramInt)
+  public static int b(q paramq, int paramInt)
   {
     // Byte code:
     //   0: ldc 17
@@ -41,7 +48,7 @@ public final class b
     //   61: dup
     //   62: invokespecial 59	java/lang/StringBuilder:<init>	()V
     //   65: aload_0
-    //   66: invokevirtual 65	com/tencent/mm/vfs/o:length	()J
+    //   66: invokevirtual 65	com/tencent/mm/vfs/q:length	()J
     //   69: invokevirtual 69	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   72: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   75: invokevirtual 77	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
@@ -53,17 +60,17 @@ public final class b
     //   89: ldc 83
     //   91: ldc 85
     //   93: invokevirtual 77	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   96: invokestatic 91	com/tencent/mm/kernel/g:aAf	()Lcom/tencent/mm/kernel/a;
+    //   96: invokestatic 91	com/tencent/mm/kernel/h:aHE	()Lcom/tencent/mm/kernel/b;
     //   99: pop
     //   100: aload 4
     //   102: ldc 93
-    //   104: invokestatic 98	com/tencent/mm/kernel/a:ayV	()Ljava/lang/String;
+    //   104: invokestatic 98	com/tencent/mm/kernel/b:aGq	()Ljava/lang/String;
     //   107: invokevirtual 77	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   110: invokestatic 91	com/tencent/mm/kernel/g:aAf	()Lcom/tencent/mm/kernel/a;
+    //   110: invokestatic 91	com/tencent/mm/kernel/h:aHE	()Lcom/tencent/mm/kernel/b;
     //   113: pop
     //   114: aload 4
     //   116: ldc 100
-    //   118: invokestatic 98	com/tencent/mm/kernel/a:ayV	()Ljava/lang/String;
+    //   118: invokestatic 98	com/tencent/mm/kernel/b:aGq	()Ljava/lang/String;
     //   121: invokevirtual 77	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   124: iload_1
     //   125: iconst_1
@@ -87,7 +94,7 @@ public final class b
     //   164: newarray byte
     //   166: astore_3
     //   167: aload_0
-    //   168: invokestatic 120	com/tencent/mm/vfs/s:ao	(Lcom/tencent/mm/vfs/o;)Ljava/io/InputStream;
+    //   168: invokestatic 120	com/tencent/mm/vfs/u:al	(Lcom/tencent/mm/vfs/q;)Ljava/io/InputStream;
     //   171: astore_0
     //   172: aload_0
     //   173: aload_3
@@ -242,11 +249,11 @@ public final class b
     //   468: goto -270 -> 198
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	471	0	paramo	o
+    //   0	471	0	paramq	q
     //   0	471	1	paramInt	int
     //   12	176	2	localObject1	Object
     //   197	1	2	localException1	java.lang.Exception
-    //   228	174	2	str	java.lang.String
+    //   228	174	2	str	String
     //   442	4	2	localException2	java.lang.Exception
     //   455	4	2	localObject2	Object
     //   461	1	2	localObject3	Object
@@ -319,10 +326,50 @@ public final class b
     //   167	172	465	java/lang/Exception
     //   283	305	465	java/lang/Exception
   }
+  
+  public static void o(String paramString1, String paramString2, int paramInt)
+  {
+    AppMethodBeat.i(195270);
+    Log.i("MicroMsg.UploadX5Log", "upload, date %s,process %s,type %d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
+    if (paramInt == 1) {
+      if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
+      {
+        Log.w("MicroMsg.UploadX5Log", "date or process is null,date %s,process %s", new Object[] { paramString1, paramString2 });
+        AppMethodBeat.o(195270);
+        return;
+      }
+    }
+    for (paramString1 = String.format("%s/files/Tencent/tbs_live_log/" + MMApplicationContext.getApplicationId() + "/com.tencent.mm_%s_%s.livelog", new Object[] { com.tencent.mm.loader.j.b.aSF(), paramString2, paramString1 });; paramString1 = com.tencent.mm.loader.j.b.aSF() + "/files/tbslog/tbslog.txt")
+    {
+      paramString2 = new q(paramString1);
+      if (paramString2.ifE()) {
+        break;
+      }
+      Log.i("MicroMsg.UploadX5Log", "upload file not exists");
+      AppMethodBeat.o(195270);
+      return;
+    }
+    paramString1 = r.a(paramString2, paramString1 + ".zip");
+    if (paramString1 == null)
+    {
+      Log.i("MicroMsg.UploadX5Log", "zipPath is null");
+      AppMethodBeat.o(195270);
+      return;
+    }
+    paramString1 = new q(paramString1);
+    if (!paramString1.ifE())
+    {
+      Log.i("MicroMsg.UploadX5Log", "upload zip file not exists");
+      AppMethodBeat.o(195270);
+      return;
+    }
+    g.eE(paramString1).h(new a() {});
+    AppMethodBeat.o(195270);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.modelstat.a.b
  * JD-Core Version:    0.7.0.1
  */

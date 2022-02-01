@@ -6,7 +6,7 @@
         <TextView android:textSize="@dimen/t" android:textColor="@color/am" android:gravity="center" android:layout_gravity="end|center" android:id="@id/d8" android:background="@drawable/ka" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:layout_width="wrap_content" android:layout_height="34.0dip" android:text="完成" android:layout_marginEnd="@dimen/cb" />
     </FrameLayout>
     <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/d8b" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <android.support.v7.widget.RecyclerView android:layout_gravity="center_vertical" android:id="@id/d8p" android:layout_width="fill_parent" android:layout_height="@dimen/cs" />
+        <androidx.recyclerview.widget.RecyclerView android:layout_gravity="center_vertical" android:id="@id/d8p" android:layout_width="fill_parent" android:layout_height="@dimen/cs" />
         <FrameLayout android:id="@id/d8c" android:layout_width="fill_parent" android:layout_height="@dimen/cp">
             <TextView android:textSize="@dimen/is" android:textColor="@color/ag5" android:gravity="center" android:layout_gravity="start" android:id="@id/bvn" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/tt" />
             <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/j8w" android:layout_width="wrap_content" android:layout_height="fill_parent">

@@ -6,18 +6,18 @@ import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/audio/utils/recorder/AudioRecordReportUtil;", "", "()V", "RMS_TYPE_HIGH", "", "RMS_TYPE_LOW", "RMS_TYPE_MIDDLE", "RMS_TYPE_SILENT", "TAG", "", "checkRecordingHasMusicPlayingHasBeenReport", "", "mRMSInOneRecordProcess", "", "[Ljava/lang/Integer;", "resultSize", "byteArray2ShortArray", "", "data", "", "items", "calcDecibelLevel", "", "buffer", "readSize", "checkPCMAmplitude", "", "length", "checkRecordingHasMusicPlaying", "type", "checkZeroDataCauseHeadsetPlugged", "checkZeroDataCauseMicMute", "doAudioRecordHasBeenInitReport", "doAudioRecordKVReport", "audioType", "scenes", "featureKey", "pcmSilent", "pcmLow", "pcmMiddle", "pcmHigh", "systemSilent", "systemLow", "systemMiddle", "systemHigh", "audioSource", "mSampleRate", "mChannelConfig", "mRecordDetailState", "doAudioSourceSwitchFailedReport", "source", "doAudioSourceSwitchSuccessReport", "doAudioSourceUseErrorReport", "doAudioVolumeRecordKVReport", "doFinalAudioSourceRequstReport", "doMicroPhonesMuteReport", "doMinBufferSizeErrorReport", "doNewAudioRecordErrorReport", "doPCMRecordChecker", "doPCMRecordPercentReport", "index", "result", "", "doPCMRecordResultReport", "doRecordModeNullErrorReport", "doRecordReport", "doStartRecordErrorReport", "plugin-audiosdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/audio/utils/recorder/AudioRecordReportUtil;", "", "()V", "RMS_TYPE_HIGH", "", "RMS_TYPE_LOW", "RMS_TYPE_MIDDLE", "RMS_TYPE_SILENT", "TAG", "", "checkRecordingHasMusicPlayingHasBeenReport", "", "mRMSInOneRecordProcess", "", "[Ljava/lang/Integer;", "resultSize", "byteArray2ShortArray", "", "data", "", "items", "calcDecibelLevel", "", "buffer", "readSize", "checkPCMAmplitude", "", "length", "checkRecordingHasMusicPlaying", "type", "checkZeroDataCauseHeadsetPlugged", "checkZeroDataCauseMicMute", "doAudioRecordHasBeenInitReport", "doAudioRecordKVReport", "audioType", "scenes", "featureKey", "pcmSilent", "pcmLow", "pcmMiddle", "pcmHigh", "systemSilent", "systemLow", "systemMiddle", "systemHigh", "audioSource", "mSampleRate", "mChannelConfig", "mRecordDetailState", "doAudioSourceSwitchFailedReport", "source", "doAudioSourceSwitchSuccessReport", "doAudioSourceUseErrorReport", "doAudioVolumeRecordKVReport", "doFinalAudioSourceRequstReport", "doMicroPhonesMuteReport", "doMinBufferSizeErrorReport", "doNewAudioRecordErrorReport", "doPCMRecordChecker", "doPCMRecordPercentReport", "index", "result", "", "doPCMRecordResultReport", "doRecordModeNullErrorReport", "doRecordReport", "doStartRecordErrorReport", "plugin-audiosdk_release"})
 public final class a
 {
-  private static Integer[] dAZ;
-  private static int dBa;
-  private static boolean dBb;
-  public static final a dBc;
+  private static Integer[] ftO;
+  private static int ftP;
+  private static boolean ftQ;
+  public static final a ftR;
   
   static
   {
     AppMethodBeat.i(130251);
-    dBc = new a();
+    ftR = new a();
     Integer[] arrayOfInteger = new Integer[4];
     int i = 0;
     while (i < 4)
@@ -25,28 +25,28 @@ public final class a
       arrayOfInteger[i] = Integer.valueOf(0);
       i += 1;
     }
-    dAZ = arrayOfInteger;
+    ftO = arrayOfInteger;
     AppMethodBeat.o(130251);
   }
   
   public static final void a(int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     AppMethodBeat.i(130234);
-    p.h(paramString, "featureKey");
-    if (dBa != 0)
+    p.k(paramString, "featureKey");
+    if (ftP != 0)
     {
-      int i = dAZ[0].intValue() * 100 / dBa;
-      int j = dAZ[1].intValue() * 100 / dBa;
-      int k = dAZ[2].intValue() * 100 / dBa;
-      int m = dAZ[3].intValue() * 100 / dBa;
+      int i = ftO[0].intValue() * 100 / ftP;
+      int j = ftO[1].intValue() * 100 / ftP;
+      int k = ftO[2].intValue() * 100 / ftP;
+      int m = ftO[3].intValue() * 100 / ftP;
       Log.i("MicroMsg.AudioRecordReportUtil", "audioType = 0 ,scenes = " + paramInt1 + ",featureKey=" + paramString + ",pcmSilent=" + i + ", pcmLow=" + j + ",pcmMiddle=" + k + ",pcmHigh=" + m + ",systemSilent=0,systemLow=0,systemMiddle=0,systemHigh=0,audioSource=" + paramInt2 + ",sampleRate=" + paramInt3 + ",mChannelConfig=" + paramInt4 + ",mRecordDetailState=" + paramInt5);
-      h.CyF.a(18554, true, true, new Object[] { Integer.valueOf(0), Integer.valueOf(paramInt1), paramString, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5) });
-      dBb = false;
+      h.IzE.a(18554, true, true, new Object[] { Integer.valueOf(0), Integer.valueOf(paramInt1), paramString, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5) });
+      ftQ = false;
     }
     AppMethodBeat.o(130234);
   }
   
-  public static final void cl(int paramInt1, int paramInt2)
+  public static final void cD(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(130243);
     switch (paramInt1)
@@ -62,11 +62,11 @@ public final class a
         AppMethodBeat.o(130243);
         return;
       case 1: 
-        c.abD();
+        c.agq();
         AppMethodBeat.o(130243);
         return;
       }
-      c.abE();
+      c.agr();
       AppMethodBeat.o(130243);
       return;
       switch (paramInt2)
@@ -74,16 +74,16 @@ public final class a
       default: 
         break;
       case 1: 
-        b.abD();
+        b.agq();
         AppMethodBeat.o(130243);
         return;
       case 7: 
-        b.abE();
+        b.agr();
       }
     }
   }
   
-  public static final void cm(int paramInt1, int paramInt2)
+  public static final void cE(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(130245);
     switch (paramInt1)
@@ -99,11 +99,11 @@ public final class a
         AppMethodBeat.o(130245);
         return;
       case 1: 
-        c.abx();
+        c.agk();
         AppMethodBeat.o(130245);
         return;
       }
-      c.aby();
+      c.agl();
       AppMethodBeat.o(130245);
       return;
       b localb;
@@ -112,18 +112,18 @@ public final class a
       default: 
         break;
       case 1: 
-        localb = b.dBd;
-        b.abx();
+        localb = b.ftS;
+        b.agk();
         AppMethodBeat.o(130245);
         return;
       case 7: 
-        localb = b.dBd;
-        b.aby();
+        localb = b.ftS;
+        b.agl();
       }
     }
   }
   
-  public static final void cn(int paramInt1, int paramInt2)
+  public static final void cF(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(130246);
     switch (paramInt1)
@@ -139,11 +139,11 @@ public final class a
         AppMethodBeat.o(130246);
         return;
       case 1: 
-        c.abC();
+        c.agp();
         AppMethodBeat.o(130246);
         return;
       }
-      c.abA();
+      c.agn();
       AppMethodBeat.o(130246);
       return;
       switch (paramInt2)
@@ -151,16 +151,16 @@ public final class a
       default: 
         break;
       case 1: 
-        b.abC();
+        b.agp();
         AppMethodBeat.o(130246);
         return;
       case 7: 
-        b.abA();
+        b.agn();
       }
     }
   }
   
-  public static final void co(int paramInt1, int paramInt2)
+  public static final void cG(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(130247);
     switch (paramInt1)
@@ -176,11 +176,11 @@ public final class a
         AppMethodBeat.o(130247);
         return;
       case 1: 
-        c.abB();
+        c.ago();
         AppMethodBeat.o(130247);
         return;
       }
-      c.abz();
+      c.agm();
       AppMethodBeat.o(130247);
       return;
       switch (paramInt2)
@@ -188,11 +188,11 @@ public final class a
       default: 
         break;
       case 1: 
-        b.abB();
+        b.ago();
         AppMethodBeat.o(130247);
         return;
       case 7: 
-        b.abz();
+        b.agm();
       }
     }
   }
@@ -200,7 +200,7 @@ public final class a
   public static final void e(int paramInt, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(130248);
-    p.h(paramArrayOfByte, "data");
+    p.k(paramArrayOfByte, "data");
     double d;
     if (paramInt != 0)
     {
@@ -226,34 +226,34 @@ public final class a
       if (d >= 50.0D) {
         break label169;
       }
-      paramArrayOfByte = dAZ;
+      paramArrayOfByte = ftO;
       paramArrayOfByte[0] = Integer.valueOf(paramArrayOfByte[0].intValue() + 1);
     }
     for (;;)
     {
-      dBa += 1;
+      ftP += 1;
       AppMethodBeat.o(130248);
       return;
       label169:
       if (d < 300.0D)
       {
-        paramArrayOfByte = dAZ;
+        paramArrayOfByte = ftO;
         paramArrayOfByte[1] = Integer.valueOf(paramArrayOfByte[1].intValue() + 1);
       }
       else if (d < 2000.0D)
       {
-        paramArrayOfByte = dAZ;
+        paramArrayOfByte = ftO;
         paramArrayOfByte[2] = Integer.valueOf(paramArrayOfByte[2].intValue() + 1);
       }
       else
       {
-        paramArrayOfByte = dAZ;
+        paramArrayOfByte = ftO;
         paramArrayOfByte[3] = Integer.valueOf(paramArrayOfByte[3].intValue() + 1);
       }
     }
   }
   
-  public static final void jp(int paramInt)
+  public static final void kJ(int paramInt)
   {
     AppMethodBeat.i(130235);
     switch (paramInt)
@@ -263,14 +263,14 @@ public final class a
     {
       AppMethodBeat.o(130235);
       return;
-      c.abK();
+      c.agx();
       AppMethodBeat.o(130235);
       return;
-      b.abK();
+      b.agx();
     }
   }
   
-  public static final void jq(int paramInt)
+  public static final void kK(int paramInt)
   {
     AppMethodBeat.i(130236);
     switch (paramInt)
@@ -280,14 +280,14 @@ public final class a
     {
       AppMethodBeat.o(130236);
       return;
-      c.abJ();
+      c.agw();
       AppMethodBeat.o(130236);
       return;
-      b.abJ();
+      b.agw();
     }
   }
   
-  public static final void jr(int paramInt)
+  public static final void kL(int paramInt)
   {
     AppMethodBeat.i(130237);
     switch (paramInt)
@@ -297,14 +297,14 @@ public final class a
     {
       AppMethodBeat.o(130237);
       return;
-      c.abI();
+      c.agv();
       AppMethodBeat.o(130237);
       return;
-      b.abI();
+      b.agv();
     }
   }
   
-  public static final void js(int paramInt)
+  public static final void kM(int paramInt)
   {
     AppMethodBeat.i(130238);
     switch (paramInt)
@@ -314,14 +314,14 @@ public final class a
     {
       AppMethodBeat.o(130238);
       return;
-      c.abM();
+      c.agz();
       AppMethodBeat.o(130238);
       return;
-      b.abM();
+      b.agz();
     }
   }
   
-  public static final void jt(int paramInt)
+  public static final void kN(int paramInt)
   {
     AppMethodBeat.i(130239);
     switch (paramInt)
@@ -331,14 +331,14 @@ public final class a
     {
       AppMethodBeat.o(130239);
       return;
-      c.abN();
+      c.agA();
       AppMethodBeat.o(130239);
       return;
-      b.abN();
+      b.agA();
     }
   }
   
-  public static final void ju(int paramInt)
+  public static final void kO(int paramInt)
   {
     AppMethodBeat.i(130240);
     Log.i("MicroMsg.AudioRecordReportUtil", "current happened recording and music playing ");
@@ -349,22 +349,22 @@ public final class a
     {
       AppMethodBeat.o(130240);
       return;
-      if (!dBb)
+      if (!ftQ)
       {
-        dBb = true;
-        c.abO();
+        ftQ = true;
+        c.agB();
         AppMethodBeat.o(130240);
         return;
-        if (!dBb)
+        if (!ftQ)
         {
-          dBb = true;
-          b.abO();
+          ftQ = true;
+          b.agB();
         }
       }
     }
   }
   
-  public static final void jv(int paramInt)
+  public static final void kP(int paramInt)
   {
     AppMethodBeat.i(130241);
     switch (paramInt)
@@ -374,14 +374,14 @@ public final class a
     {
       AppMethodBeat.o(130241);
       return;
-      c.abH();
+      c.agu();
       AppMethodBeat.o(130241);
       return;
-      b.abH();
+      b.agu();
     }
   }
   
-  public static final void jw(int paramInt)
+  public static final void kQ(int paramInt)
   {
     AppMethodBeat.i(130242);
     switch (paramInt)
@@ -391,14 +391,14 @@ public final class a
     {
       AppMethodBeat.o(130242);
       return;
-      c.abG();
+      c.agt();
       AppMethodBeat.o(130242);
       return;
-      b.abG();
+      b.agt();
     }
   }
   
-  public static final void jx(int paramInt)
+  public static final void kR(int paramInt)
   {
     AppMethodBeat.i(130244);
     switch (paramInt)
@@ -408,14 +408,14 @@ public final class a
     {
       AppMethodBeat.o(130244);
       return;
-      c.abF();
+      c.ags();
       AppMethodBeat.o(130244);
       return;
-      b.abF();
+      b.ags();
     }
   }
   
-  public static final void jy(int paramInt)
+  public static final void kS(int paramInt)
   {
     AppMethodBeat.i(130249);
     switch (paramInt)
@@ -425,30 +425,30 @@ public final class a
     {
       AppMethodBeat.o(130249);
       return;
-      c.abL();
+      c.agy();
       AppMethodBeat.o(130249);
       return;
-      b.abL();
+      b.agy();
     }
   }
   
-  public static final void jz(int paramInt)
+  public static final void kT(int paramInt)
   {
     AppMethodBeat.i(130250);
-    if (dBa != 0)
+    if (ftP != 0)
     {
-      Integer[] arrayOfInteger = dAZ;
+      Integer[] arrayOfInteger = ftO;
       int i = 0;
       int k = arrayOfInteger.length;
       int j = 0;
       if (j < k)
       {
         int m = ((Number)arrayOfInteger[j]).intValue();
-        long l = m * 100 / dBa;
+        long l = m * 100 / ftP;
         switch (paramInt)
         {
         default: 
-          m = m * 100 / dBa;
+          m = m * 100 / ftP;
           switch (paramInt)
           {
           }
@@ -464,32 +464,32 @@ public final class a
           default: 
             break;
           case 0: 
-            c.bv(l);
+            c.bK(l);
             break;
           case 1: 
-            c.bw(l);
+            c.bL(l);
             break;
           case 2: 
-            c.bx(l);
+            c.bM(l);
             break;
           case 3: 
-            c.by(l);
+            c.bN(l);
             break;
             switch (i)
             {
             default: 
               break;
             case 0: 
-              b.bv(l);
+              b.bK(l);
               break;
             case 1: 
-              b.bw(l);
+              b.bL(l);
               break;
             case 2: 
-              b.bx(l);
+              b.bM(l);
               break;
             case 3: 
-              b.by(l);
+              b.bN(l);
               break;
               switch (i)
               {
@@ -497,73 +497,73 @@ public final class a
                 break;
               case 0: 
                 if (m == 0) {
-                  c.aaB();
+                  c.afo();
                 } else if (m <= 20) {
-                  c.aaC();
+                  c.afp();
                 } else if (m <= 40) {
-                  c.aaD();
+                  c.afq();
                 } else if (m <= 60) {
-                  c.aaE();
+                  c.afr();
                 } else if (m <= 80) {
-                  c.aaF();
+                  c.afs();
                 } else if (m == 100) {
-                  c.aaG();
+                  c.aft();
                 }
                 break;
               case 1: 
                 if (m == 0) {
-                  c.aaH();
+                  c.afu();
                 } else if (m <= 20) {
-                  c.aaI();
+                  c.afv();
                 } else if (m <= 40) {
-                  c.aaJ();
+                  c.afw();
                 } else if (m <= 60) {
-                  c.aaK();
+                  c.afx();
                 } else if (m <= 80) {
-                  c.aaL();
+                  c.afy();
                 } else if (m == 100) {
-                  c.aaM();
+                  c.afz();
                 }
                 break;
               case 2: 
                 if (m == 0) {
-                  c.aaN();
+                  c.afA();
                 } else if (m <= 20) {
-                  c.aaO();
+                  c.afB();
                 } else if (m <= 40) {
-                  c.aaP();
+                  c.afC();
                 } else if (m <= 60) {
-                  c.aaQ();
+                  c.afD();
                 } else if (m <= 80) {
-                  c.aaR();
+                  c.afE();
                 } else if (m == 100) {
-                  c.aaS();
+                  c.afF();
                 }
                 break;
               case 3: 
                 if (m == 0)
                 {
-                  c.aaT();
+                  c.afG();
                 }
                 else if (m <= 20)
                 {
-                  c.aaU();
+                  c.afH();
                 }
                 else if (m <= 40)
                 {
-                  c.aaV();
+                  c.afI();
                 }
                 else if (m <= 60)
                 {
-                  c.aaW();
+                  c.afJ();
                 }
                 else if (m <= 80)
                 {
-                  c.aaX();
+                  c.afK();
                 }
                 else if (m == 100)
                 {
-                  c.aaY();
+                  c.afL();
                   continue;
                   switch (i)
                   {
@@ -571,62 +571,62 @@ public final class a
                     break;
                   case 0: 
                     if (m == 0) {
-                      b.aaB();
+                      b.afo();
                     } else if (m <= 20) {
-                      b.aaC();
+                      b.afp();
                     } else if (m <= 40) {
-                      b.aaD();
+                      b.afq();
                     } else if (m <= 60) {
-                      b.aaE();
+                      b.afr();
                     } else if (m <= 80) {
-                      b.aaF();
+                      b.afs();
                     } else if (m <= 100) {
-                      b.aaG();
+                      b.aft();
                     }
                     break;
                   case 1: 
                     if (m == 0) {
-                      b.aaH();
+                      b.afu();
                     } else if (m <= 20) {
-                      b.aaI();
+                      b.afv();
                     } else if (m <= 40) {
-                      b.aaJ();
+                      b.afw();
                     } else if (m <= 60) {
-                      b.aaK();
+                      b.afx();
                     } else if (m <= 80) {
-                      b.aaL();
+                      b.afy();
                     } else if (m <= 100) {
-                      b.aaM();
+                      b.afz();
                     }
                     break;
                   case 2: 
                     if (m == 0) {
-                      b.aaN();
+                      b.afA();
                     } else if (m <= 20) {
-                      b.aaO();
+                      b.afB();
                     } else if (m <= 40) {
-                      b.aaP();
+                      b.afC();
                     } else if (m <= 60) {
-                      b.aaQ();
+                      b.afD();
                     } else if (m <= 80) {
-                      b.aaR();
+                      b.afE();
                     } else if (m <= 100) {
-                      b.aaS();
+                      b.afF();
                     }
                     break;
                   case 3: 
                     if (m == 0) {
-                      b.aaT();
+                      b.afG();
                     } else if (m <= 20) {
-                      b.aaU();
+                      b.afH();
                     } else if (m <= 40) {
-                      b.aaV();
+                      b.afI();
                     } else if (m <= 60) {
-                      b.aaW();
+                      b.afJ();
                     } else if (m <= 80) {
-                      b.aaX();
+                      b.afK();
                     } else if (m <= 100) {
-                      b.aaY();
+                      b.afL();
                     }
                     break;
                   }
@@ -639,7 +639,7 @@ public final class a
           }
         }
       }
-      dBa = 0;
+      ftP = 0;
       arrayOfInteger = new Integer[4];
       paramInt = 0;
       while (paramInt < 4)
@@ -647,14 +647,14 @@ public final class a
         arrayOfInteger[paramInt] = Integer.valueOf(0);
         paramInt += 1;
       }
-      dAZ = arrayOfInteger;
+      ftO = arrayOfInteger;
     }
     AppMethodBeat.o(130250);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.audio.c.b.a
  * JD-Core Version:    0.7.0.1
  */

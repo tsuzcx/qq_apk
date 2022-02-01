@@ -3,12 +3,13 @@ package com.tencent.mm.plugin.finder.cgi.interceptor;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.b.j;
 import com.tencent.mm.plugin.finder.cgi.aa.f;
-import com.tencent.mm.plugin.finder.feed.model.b;
-import com.tencent.mm.plugin.finder.model.ai;
-import com.tencent.mm.plugin.finder.model.bo;
-import com.tencent.mm.plugin.finder.utils.y;
-import com.tencent.mm.protocal.protobuf.bcw;
+import com.tencent.mm.plugin.finder.feed.model.d;
+import com.tencent.mm.plugin.finder.model.ak;
+import com.tencent.mm.plugin.finder.model.bu;
+import com.tencent.mm.plugin.finder.utils.aj;
+import com.tencent.mm.protocal.protobuf.bjr;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.Iterator;
@@ -17,128 +18,128 @@ import java.util.List;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/interceptor/HandleHistoryTipsInterceptor;", "Lcom/tencent/mm/plugin/finder/cgi/interceptor/IFinderStreamInterceptor;", "()V", "handle", "", "loadedInfo", "Lcom/tencent/mm/plugin/finder/feed/model/CgiFinderStreamResult;", "onIntercept", "", "resp", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStream$FinderStreamResponseEx;", "tabType", "", "onInterceptAfterStore", "onInterceptBeforeStore", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/interceptor/HandleHistoryTipsInterceptor;", "Lcom/tencent/mm/plugin/finder/cgi/interceptor/IFinderStreamInterceptor;", "()V", "handle", "", "loadedInfo", "Lcom/tencent/mm/plugin/finder/feed/model/CgiFinderStreamResult;", "onIntercept", "", "resp", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStream$FinderStreamResponseEx;", "tabType", "", "onInterceptAfterStore", "onInterceptBeforeStore", "Companion", "plugin-finder_release"})
 public final class c
   implements f
 {
-  public static final a txB;
+  public static final a xfD;
   
   static
   {
-    AppMethodBeat.i(242621);
-    txB = new a((byte)0);
-    AppMethodBeat.o(242621);
+    AppMethodBeat.i(291414);
+    xfD = new a((byte)0);
+    AppMethodBeat.o(291414);
   }
   
   public final boolean a(aa.f paramf)
   {
-    AppMethodBeat.i(242618);
-    p.h(paramf, "resp");
-    AppMethodBeat.o(242618);
+    AppMethodBeat.i(291411);
+    p.k(paramf, "resp");
+    AppMethodBeat.o(291411);
     return false;
   }
   
-  public final boolean a(b paramb)
+  public final boolean a(d paramd)
   {
-    AppMethodBeat.i(242619);
-    p.h(paramb, "loadedInfo");
-    int k = paramb.dLS;
-    int i = paramb.pullType;
-    boolean bool1 = paramb.twZ;
-    boolean bool2 = paramb.tUD;
-    long l = paramb.ttW;
-    int m = paramb.ttV;
-    int j = paramb.kxF;
+    AppMethodBeat.i(291412);
+    p.k(paramd, "loadedInfo");
+    int k = paramd.fEH;
+    int i = paramd.pullType;
+    boolean bool1 = paramd.xeZ;
+    boolean bool2 = paramd.xFJ;
+    long l = paramd.xbC;
+    int m = paramd.xbB;
+    int j = paramd.nqx;
     Log.i("Finder.HandleHistoryTipsInterceptor", "[handle] tabType=" + k + " pullType=" + i + " isGetHistory=" + bool1 + " isFetchHistory=" + bool2 + " afterFeedIdHistory=" + l + " streamSize=" + m + " historySize=" + j);
     Object localObject1;
     if ((!bool1) && (bool2) && (j > 0) && ((k == 3) || (k == 1)) && ((i == 2) || (((i == 1) || (i == 0)) && (m > 0))))
     {
-      if (y.a(y.vXH, k, 0, 2)) {
-        break label465;
+      if (aj.a(aj.AGc, k, 0, 2)) {
+        break label466;
       }
-      Object localObject2 = ((Iterable)paramb.tUz).iterator();
+      Object localObject2 = ((Iterable)paramd.xFF).iterator();
       if (!((Iterator)localObject2).hasNext()) {
-        break label442;
+        break label443;
       }
       localObject1 = ((Iterator)localObject2).next();
-      if (((bo)localObject1).cxn() != 2011) {
-        break label437;
+      if (((bu)localObject1).bAQ() != 2011) {
+        break label438;
       }
       i = 1;
       label240:
       if (i == 0) {
-        break label440;
+        break label441;
       }
       label244:
       if (localObject1 != null) {
-        break label465;
+        break label466;
       }
-      localObject1 = new bcw();
-      ((bcw)localObject1).LLE = 2;
-      ((bcw)localObject1).uOx = System.currentTimeMillis();
+      localObject1 = new bjr();
+      ((bjr)localObject1).STx = 2;
+      ((bjr)localObject1).zAO = System.currentTimeMillis();
       localObject2 = MMApplicationContext.getContext();
-      p.g(localObject2, "MMApplicationContext.getContext()");
-      ((bcw)localObject1).dQx = ((Context)localObject2).getResources().getString(2131760627);
-      localObject1 = new ai((bcw)localObject1);
-      localObject2 = (List)paramb.tUz;
+      p.j(localObject2, "MMApplicationContext.getContext()");
+      ((bjr)localObject1).wording = ((Context)localObject2).getResources().getString(b.j.finder_timeline_refresh_nomore_tip);
+      localObject1 = new ak((bjr)localObject1);
+      localObject2 = (List)paramd.xFF;
       i = 0;
       localObject2 = ((List)localObject2).iterator();
-      label330:
+      label331:
       if (!((Iterator)localObject2).hasNext()) {
-        break label460;
+        break label461;
       }
-      if (((bo)((Iterator)localObject2).next()).lT() != l) {
-        break label448;
+      if (((bu)((Iterator)localObject2).next()).mf() != l) {
+        break label449;
       }
       j = 1;
-      label363:
+      label364:
       if (j == 0) {
-        break label453;
+        break label454;
       }
-      label367:
-      paramb.tUz.add(i + 1, localObject1);
+      label368:
+      paramd.xFF.add(i + 1, localObject1);
       Log.i("Finder.HandleHistoryTipsInterceptor", "tabType=" + k + ", index=" + i + ", streamSize=" + m + " afterFeedIdHistory=" + l);
     }
     for (;;)
     {
-      AppMethodBeat.o(242619);
+      AppMethodBeat.o(291412);
       return false;
-      label437:
+      label438:
       i = 0;
       break label240;
-      label440:
+      label441:
       break;
-      label442:
+      label443:
       localObject1 = null;
       break label244;
-      label448:
+      label449:
       j = 0;
-      break label363;
-      label453:
+      break label364;
+      label454:
       i += 1;
-      break label330;
-      label460:
+      break label331;
+      label461:
       i = -1;
-      break label367;
-      label465:
+      break label368;
+      label466:
       Log.i("Finder.HandleHistoryTipsInterceptor", "tabType=" + k + ", has insert history divider from server");
     }
   }
   
-  public final boolean b(b paramb, int paramInt)
+  public final boolean b(d paramd, int paramInt)
   {
-    AppMethodBeat.i(242620);
-    p.h(paramb, "loadedInfo");
-    AppMethodBeat.o(242620);
+    AppMethodBeat.i(291413);
+    p.k(paramd, "loadedInfo");
+    AppMethodBeat.o(291413);
     return false;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/interceptor/HandleHistoryTipsInterceptor$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/interceptor/HandleHistoryTipsInterceptor$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.interceptor.c
  * JD-Core Version:    0.7.0.1
  */

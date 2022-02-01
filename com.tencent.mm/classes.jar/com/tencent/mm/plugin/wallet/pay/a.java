@@ -18,12 +18,12 @@ public class a
     AppMethodBeat.o(69202);
   }
   
-  public final String dKC()
+  public final String epb()
   {
     return "BindCardForPayProcess";
   }
   
-  public final void g(Activity paramActivity, int paramInt)
+  public final void h(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(69201);
     if (paramActivity != null) {

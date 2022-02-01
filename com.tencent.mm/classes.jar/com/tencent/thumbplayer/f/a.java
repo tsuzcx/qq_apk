@@ -5,71 +5,71 @@ import com.tencent.thumbplayer.utils.g;
 
 public final class a
 {
-  public b RVM;
+  public b Zyw;
   private String mTag;
   
   public a(b paramb)
   {
-    AppMethodBeat.i(189267);
-    this.RVM = paramb;
-    this.mTag = this.RVM.tag;
-    AppMethodBeat.o(189267);
+    AppMethodBeat.i(220735);
+    this.Zyw = paramb;
+    this.mTag = this.Zyw.tag;
+    AppMethodBeat.o(220735);
   }
   
   public a(b paramb, String paramString)
   {
-    AppMethodBeat.i(189268);
-    this.RVM = new b(paramb, paramString);
-    this.mTag = this.RVM.tag;
-    AppMethodBeat.o(189268);
+    AppMethodBeat.i(220736);
+    this.Zyw = new b(paramb, paramString);
+    this.mTag = this.Zyw.tag;
+    AppMethodBeat.o(220736);
   }
   
   public final void a(b paramb)
   {
-    AppMethodBeat.i(189269);
+    AppMethodBeat.i(220741);
     if (paramb == null)
     {
-      this.RVM = new b(this.mTag);
-      AppMethodBeat.o(189269);
+      this.Zyw = new b(this.mTag);
+      AppMethodBeat.o(220741);
       return;
     }
-    this.RVM = paramb;
-    AppMethodBeat.o(189269);
+    this.Zyw = paramb;
+    AppMethodBeat.o(220741);
   }
   
-  public final void debug(String paramString)
+  public final void bDx(String paramString)
   {
-    AppMethodBeat.i(189271);
-    g.d(this.RVM.tag, paramString);
-    AppMethodBeat.o(189271);
+    AppMethodBeat.i(220744);
+    g.d(this.Zyw.tag, paramString);
+    AppMethodBeat.o(220744);
+  }
+  
+  public final void bDy(String paramString)
+  {
+    AppMethodBeat.i(220745);
+    g.i(this.Zyw.tag, paramString);
+    AppMethodBeat.o(220745);
+  }
+  
+  public final void bDz(String paramString)
+  {
+    AppMethodBeat.i(220747);
+    g.w(this.Zyw.tag, paramString);
+    AppMethodBeat.o(220747);
   }
   
   public final void error(String paramString)
   {
-    AppMethodBeat.i(189274);
-    g.e(this.RVM.tag, paramString);
-    AppMethodBeat.o(189274);
+    AppMethodBeat.i(220748);
+    g.e(this.Zyw.tag, paramString);
+    AppMethodBeat.o(220748);
   }
   
-  public final void info(String paramString)
+  public final void n(Exception paramException)
   {
-    AppMethodBeat.i(189272);
-    g.i(this.RVM.tag, paramString);
-    AppMethodBeat.o(189272);
-  }
-  
-  public final void r(Exception paramException)
-  {
-    AppMethodBeat.i(189270);
-    g.e(this.RVM.tag, paramException);
-    AppMethodBeat.o(189270);
-  }
-  
-  public final void warn(String paramString)
-  {
-    AppMethodBeat.i(189273);
-    g.w(this.RVM.tag, paramString);
-    AppMethodBeat.o(189273);
+    AppMethodBeat.i(220742);
+    g.e(this.Zyw.tag, paramException);
+    AppMethodBeat.o(220742);
   }
 }
 

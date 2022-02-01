@@ -1,52 +1,29 @@
 package com.tencent.mm.plugin.sns.data;
 
-import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cnb;
-import com.tencent.mm.storage.bp;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public final class o
 {
-  public String DEt;
-  public String DEu;
-  public bp DEv;
-  public SparseArray<cnb> DEw;
-  public String dRS;
-  public cnb ebR;
-  public String key;
-  public int requestType;
-  public int size;
+  public ArrayList<String> JRl;
+  public ArrayList<List<String>> JRm;
+  public Map<String, Map<String, Long>> map;
   
   public o()
   {
-    AppMethodBeat.i(95089);
-    this.DEw = new SparseArray();
-    AppMethodBeat.o(95089);
-  }
-  
-  public o(cnb paramcnb, int paramInt, String paramString1, bp parambp, String paramString2, String paramString3)
-  {
-    this.ebR = paramcnb;
-    this.requestType = paramInt;
-    this.DEv = parambp;
-    this.key = paramString1;
-    this.DEt = paramString2;
-    this.DEu = paramString3;
-  }
-  
-  public o(String paramString1, SparseArray<cnb> paramSparseArray, String paramString2, bp parambp, int paramInt)
-  {
-    this.dRS = paramString1;
-    this.DEw = paramSparseArray;
-    this.requestType = 9;
-    this.key = paramString2;
-    this.DEv = parambp;
-    this.size = paramInt;
+    AppMethodBeat.i(95085);
+    this.JRl = new ArrayList();
+    this.JRm = new ArrayList();
+    this.map = new HashMap();
+    AppMethodBeat.o(95085);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.data.o
  * JD-Core Version:    0.7.0.1
  */

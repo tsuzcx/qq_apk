@@ -10,9 +10,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.ResultReceiver;
-import android.support.v7.app.AppCompatActivity;
 import android.util.SparseArray;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.soter.a.f;
 import com.tencent.mm.plugin.soter.c.c.a;
 import com.tencent.mm.plugin.soter.d.j;
 import com.tencent.mm.plugin.soter.d.k;
@@ -28,30 +29,30 @@ import java.lang.ref.WeakReference;
 public class SoterAuthenticationUI
   extends AppCompatActivity
 {
-  private static com.tencent.mm.ui.widget.a.d FhA = null;
-  public static a Fir = null;
-  private c.a FhR;
-  private com.tencent.mm.plugin.soter.c.c Fio;
-  private boolean Fip;
-  private com.tencent.soter.core.c.i Fiq;
-  private com.tencent.soter.a.b.b<com.tencent.soter.a.b.d> Fis;
-  private ResultReceiver MU;
+  public static a LwW = null;
+  private static com.tencent.mm.ui.widget.a.d Lwf = null;
+  private com.tencent.mm.plugin.soter.c.c LwT;
+  private boolean LwU;
+  private com.tencent.soter.core.c.i LwV;
+  private com.tencent.soter.a.b.b<com.tencent.soter.a.b.d> LwX;
+  private c.a Lww;
   private String appId;
+  private ResultReceiver dK;
   private int fromScene;
-  private ProgressDialog qoU;
   private int scene;
+  private ProgressDialog tND;
   
   public SoterAuthenticationUI()
   {
     AppMethodBeat.i(145977);
-    this.Fio = null;
-    this.qoU = null;
+    this.LwT = null;
+    this.tND = null;
     this.fromScene = -1;
     this.scene = -1;
-    this.Fip = false;
-    this.Fiq = null;
+    this.LwU = false;
+    this.LwV = null;
     this.appId = null;
-    this.FhR = new c.a()
+    this.Lww = new c.a()
     {
       public final void a(com.tencent.soter.core.c.i paramAnonymousi)
       {
@@ -60,11 +61,11 @@ public class SoterAuthenticationUI
         AppMethodBeat.o(145972);
       }
     };
-    this.Fis = new com.tencent.soter.a.b.b() {};
+    this.LwX = new com.tencent.soter.a.b.b() {};
     AppMethodBeat.o(145977);
   }
   
-  private static int Tc(int paramInt)
+  private static int Zx(int paramInt)
   {
     switch (paramInt)
     {
@@ -87,7 +88,7 @@ public class SoterAuthenticationUI
   private void a(k paramk)
   {
     AppMethodBeat.i(145982);
-    this.MU.send(1, b(paramk));
+    this.dK.send(1, b(paramk));
     c(paramk);
     finish();
     AppMethodBeat.o(145982);
@@ -99,9 +100,9 @@ public class SoterAuthenticationUI
     Bundle localBundle = new Bundle();
     localBundle.putInt("err_code", paramk.errCode);
     localBundle.putString("err_msg", paramk.errMsg);
-    localBundle.putByte("use_mode", paramk.FhW);
-    localBundle.putString("result_json", paramk.dZL);
-    localBundle.putString("result_json_signature", paramk.FhX);
+    localBundle.putByte("use_mode", paramk.LwB);
+    localBundle.putString("result_json", paramk.fTF);
+    localBundle.putString("result_json_signature", paramk.LwC);
     Log.d("MicroMsg.SoterAuthenticationUI", "hy: dump mp soter result: %s", new Object[] { localBundle.toString() });
     AppMethodBeat.o(145983);
     return localBundle;
@@ -117,8 +118,8 @@ public class SoterAuthenticationUI
     }
     if (this.fromScene == 1)
     {
-      int i = Tc(paramk.errCode);
-      com.tencent.mm.plugin.soter.d.i.aB(this.appId, paramk.errCode, i);
+      int i = Zx(paramk.errCode);
+      com.tencent.mm.plugin.soter.d.i.aE(this.appId, paramk.errCode, i);
     }
     AppMethodBeat.o(145984);
   }
@@ -133,9 +134,9 @@ public class SoterAuthenticationUI
   
   public Resources getResources()
   {
-    AppMethodBeat.i(201780);
+    AppMethodBeat.i(191833);
     Resources localResources = MMApplicationContext.getResources();
-    AppMethodBeat.o(201780);
+    AppMethodBeat.o(191833);
     return localResources;
   }
   
@@ -145,11 +146,11 @@ public class SoterAuthenticationUI
     AppMethodBeat.i(145978);
     super.onCreate(paramBundle);
     overridePendingTransition(0, 0);
-    this.MU = ((ResultReceiver)getIntent().getParcelableExtra("Soter_Result_Receiver"));
-    if (Fir != null) {
-      a.a(Fir);
+    this.dK = ((ResultReceiver)getIntent().getParcelableExtra("Soter_Result_Receiver"));
+    if (LwW != null) {
+      a.a(LwW);
     }
-    Fir = new a(this, (byte)0);
+    LwW = new a(this, (byte)0);
     paramBundle = new j();
     Object localObject1 = new k();
     Object localObject2 = getIntent().getStringExtra("auth_mode");
@@ -169,10 +170,10 @@ public class SoterAuthenticationUI
       }
       try
       {
-        paramBundle.FhV = Byte.parseByte(Util.nullAs(((String)localObject2).substring(2), "00"), 16);
-        paramBundle.wFE = getIntent().getStringExtra("challenge");
+        paramBundle.LwA = Byte.parseByte(Util.nullAs(((String)localObject2).substring(2), "00"), 16);
+        paramBundle.ByB = getIntent().getStringExtra("challenge");
         paramBundle.content = getIntent().getStringExtra("auth_content");
-        if (!com.tencent.soter.core.a.hlj())
+        if (!com.tencent.soter.core.a.ioI())
         {
           Log.e("MicroMsg.SoterAuthenticationUI", "hy: not support soter");
           ((k)localObject1).errCode = 90001;
@@ -185,21 +186,21 @@ public class SoterAuthenticationUI
         ((k)localObject1).errCode = 90003;
         ((k)localObject1).errMsg = "authen mode is illegal: number format error. found: ".concat(String.valueOf(localObject2));
         continue;
-        if (paramBundle.FhV <= 0)
+        if (paramBundle.LwA <= 0)
         {
           Log.e("MicroMsg.SoterAuthenticationUI", "hy: param error: request mode illegal");
           ((k)localObject1).errCode = 90003;
           ((k)localObject1).errMsg = "resp model error";
           continue;
         }
-        if (Util.isNullOrNil(paramBundle.wFE))
+        if (Util.isNullOrNil(paramBundle.ByB))
         {
           Log.e("MicroMsg.SoterAuthenticationUI", "hy: param error: challenge null");
           ((k)localObject1).errCode = 90004;
           ((k)localObject1).errMsg = "challenge is null";
           continue;
         }
-        if (paramBundle.wFE.length() >= 512)
+        if (paramBundle.ByB.length() >= 512)
         {
           Log.e("MicroMsg.SoterAuthenticationUI", "hy: param error: challenge too long");
           ((k)localObject1).errCode = 90004;
@@ -208,20 +209,20 @@ public class SoterAuthenticationUI
         }
         if (Util.isNullOrNil(paramBundle.content))
         {
-          paramBundle.content = getString(2131766315);
+          paramBundle.content = getString(a.f.soter_authen_put_finger_msg);
           continue;
         }
         if (paramBundle.content.length() <= 42) {
           continue;
         }
         Log.e("MicroMsg.SoterAuthenticationUI", "hy: param error: content too long. use default");
-        paramBundle.content = getString(2131766315);
+        paramBundle.content = getString(a.f.soter_authen_put_finger_msg);
         continue;
         this.fromScene = getIntent().getIntExtra("key_soter_fp_luggage_fromscene", 1);
         this.scene = getIntent().getIntExtra("key_soter_fp_luggage_scene", 2048);
-        localObject2 = com.tencent.mm.plugin.soter.c.a.Fhx;
-        this.Fio = com.tencent.mm.plugin.soter.c.a.a(this, paramBundle, (k)localObject1, Fir);
-        if (this.Fio == null)
+        localObject2 = com.tencent.mm.plugin.soter.c.a.Lwc;
+        this.LwT = com.tencent.mm.plugin.soter.c.a.a(this, paramBundle, (k)localObject1, LwW);
+        if (this.LwT == null)
         {
           Log.e("MicroMsg.SoterAuthenticationUI", "hy: no corresponding authen mode");
           ((k)localObject1).errCode = 90003;
@@ -230,23 +231,23 @@ public class SoterAuthenticationUI
           AppMethodBeat.o(145978);
           return;
         }
-        this.Fio.FhQ = null;
-        this.Fio.FhP = null;
-        this.Fio.mScene = this.scene;
-        this.Fio.FhR = this.FhR;
-        boolean bool = com.tencent.soter.a.c.b.hlG().isInit();
+        this.LwT.Lwv = null;
+        this.LwT.Lwu = null;
+        this.LwT.mScene = this.scene;
+        this.LwT.Lww = this.Lww;
+        boolean bool = com.tencent.soter.a.c.b.ipf().isInit();
         Log.i("MicroMsg.SoterAuthenticationUI", "hy: isInit:".concat(String.valueOf(bool)));
         if (!bool)
         {
-          Log.i("MicroMsg.SoterAuthenticationUI", "hy: init scene:" + this.Fio.mScene);
-          paramBundle = new e.a().U(new int[] { this.Fio.mScene }).RRf;
+          Log.i("MicroMsg.SoterAuthenticationUI", "hy: init scene:" + this.LwT.mScene);
+          paramBundle = new e.a().T(new int[] { this.LwT.mScene }).ZtJ;
           localObject1 = getApplicationContext();
-          localObject2 = this.Fis;
-          g.hlR().aj(new a.1((Context)localObject1, paramBundle, (com.tencent.soter.a.b.b)localObject2));
-          this.Fip = true;
+          localObject2 = this.LwX;
+          g.ipq().am(new a.1((Context)localObject1, paramBundle, (com.tencent.soter.a.b.b)localObject2));
+          this.LwU = true;
         }
         this.appId = getIntent().getStringExtra("key_app_id");
-        this.Fio.gA();
+        this.LwT.aI();
         AppMethodBeat.o(145978);
         return;
       }
@@ -262,27 +263,27 @@ public class SoterAuthenticationUI
   {
     AppMethodBeat.i(145986);
     super.onDestroy();
-    if ((this.qoU != null) && (this.qoU.isShowing()))
+    if ((this.tND != null) && (this.tND.isShowing()))
     {
       Log.i("MicroMsg.SoterAuthenticationUI", "onDestroy mProgressDialog dismiss!");
-      this.qoU.dismiss();
+      this.tND.dismiss();
     }
-    if ((FhA != null) && (FhA.isShowing()))
+    if ((Lwf != null) && (Lwf.isShowing()))
     {
       Log.i("MicroMsg.SoterAuthenticationUI", "onDestroy mAuthenDialog dismiss!");
-      FhA.dismiss();
+      Lwf.dismiss();
     }
-    a.a(Fir);
-    if (this.Fip)
+    a.a(LwW);
+    if (this.LwU)
     {
-      f.hlO().hlP();
-      com.tencent.soter.a.c.b localb = com.tencent.soter.a.c.b.hlG();
+      f.ipn().ipo();
+      com.tencent.soter.a.c.b localb = com.tencent.soter.a.c.b.ipf();
       try
       {
         localb.isInit = false;
-        localb.dEI = false;
-        localb.RQy = new SparseArray(10);
-        localb.RQz = null;
+        localb.fxw = false;
+        localb.Ztc = new SparseArray(10);
+        localb.Ztd = null;
         return;
       }
       finally
@@ -297,8 +298,8 @@ public class SoterAuthenticationUI
   {
     AppMethodBeat.i(145980);
     super.onPause();
-    if (this.Fio != null) {
-      this.Fio.onPause();
+    if (this.LwT != null) {
+      this.LwT.onPause();
     }
     AppMethodBeat.o(145980);
   }
@@ -307,8 +308,8 @@ public class SoterAuthenticationUI
   {
     AppMethodBeat.i(145985);
     super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
-    if (this.Fio != null) {
-      this.Fio.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    if (this.LwT != null) {
+      this.LwT.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
     }
     AppMethodBeat.o(145985);
   }
@@ -317,8 +318,8 @@ public class SoterAuthenticationUI
   {
     AppMethodBeat.i(145979);
     super.onResume();
-    if (this.Fio != null) {
-      this.Fio.onResume();
+    if (this.LwT != null) {
+      this.LwT.onResume();
     }
     overridePendingTransition(0, 0);
     AppMethodBeat.o(145979);
@@ -333,13 +334,13 @@ public class SoterAuthenticationUI
   public static final class a
     extends Handler
   {
-    private WeakReference<SoterAuthenticationUI> Fiu;
+    private WeakReference<SoterAuthenticationUI> LwZ;
     
     private a(SoterAuthenticationUI paramSoterAuthenticationUI)
     {
       AppMethodBeat.i(145974);
-      this.Fiu = null;
-      this.Fiu = new WeakReference(paramSoterAuthenticationUI);
+      this.LwZ = null;
+      this.LwZ = new WeakReference(paramSoterAuthenticationUI);
       AppMethodBeat.o(145974);
     }
     
@@ -357,9 +358,9 @@ public class SoterAuthenticationUI
       case 0: 
         Log.i("MicroMsg.SoterAuthenticationUI", "hy: inform ok");
         paramMessage = (k)paramMessage.obj;
-        if ((this.Fiu != null) && (this.Fiu.get() != null))
+        if ((this.LwZ != null) && (this.LwZ.get() != null))
         {
-          SoterAuthenticationUI.a((SoterAuthenticationUI)this.Fiu.get(), paramMessage);
+          SoterAuthenticationUI.a((SoterAuthenticationUI)this.LwZ.get(), paramMessage);
           AppMethodBeat.o(145975);
           return;
         }
@@ -369,9 +370,9 @@ public class SoterAuthenticationUI
       case 1: 
         Log.i("MicroMsg.SoterAuthenticationUI", "hy: inform cancel");
         paramMessage = (k)paramMessage.obj;
-        if ((this.Fiu != null) && (this.Fiu.get() != null))
+        if ((this.LwZ != null) && (this.LwZ.get() != null))
         {
-          SoterAuthenticationUI.b((SoterAuthenticationUI)this.Fiu.get(), paramMessage);
+          SoterAuthenticationUI.b((SoterAuthenticationUI)this.LwZ.get(), paramMessage);
           AppMethodBeat.o(145975);
           return;
         }
@@ -381,9 +382,9 @@ public class SoterAuthenticationUI
       case 2: 
         Log.i("MicroMsg.SoterAuthenticationUI", "hy: inform fail");
         paramMessage = (k)paramMessage.obj;
-        if ((this.Fiu != null) && (this.Fiu.get() != null))
+        if ((this.LwZ != null) && (this.LwZ.get() != null))
         {
-          SoterAuthenticationUI.c((SoterAuthenticationUI)this.Fiu.get(), paramMessage);
+          SoterAuthenticationUI.c((SoterAuthenticationUI)this.LwZ.get(), paramMessage);
           AppMethodBeat.o(145975);
           return;
         }
@@ -392,7 +393,7 @@ public class SoterAuthenticationUI
         return;
       case 3: 
         Log.i("MicroMsg.SoterAuthenticationUI", "hy: request permission");
-        if ((this.Fiu != null) && (this.Fiu.get() != null))
+        if ((this.LwZ != null) && (this.LwZ.get() != null))
         {
           Object localObject = paramMessage.getData().getStringArray("permissions");
           int i = paramMessage.getData().getInt("request_code");
@@ -402,11 +403,11 @@ public class SoterAuthenticationUI
             AppMethodBeat.o(145975);
             return;
           }
-          paramMessage = (SoterAuthenticationUI)this.Fiu.get();
-          localObject = com.tencent.mm.hellhoundlib.b.c.a(i, new com.tencent.mm.hellhoundlib.b.a()).bl(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramMessage, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/soter/ui/SoterAuthenticationUI$SoterMpAuthenHandler", "handleMessage", "(Landroid/os/Message;)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
-          paramMessage.requestPermissions((String[])((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(1)).intValue());
-          com.tencent.mm.hellhoundlib.a.a.a(paramMessage, "com/tencent/mm/plugin/soter/ui/SoterAuthenticationUI$SoterMpAuthenHandler", "handleMessage", "(Landroid/os/Message;)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
+          paramMessage = (SoterAuthenticationUI)this.LwZ.get();
+          localObject = com.tencent.mm.hellhoundlib.b.c.a(i, new com.tencent.mm.hellhoundlib.b.a()).bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramMessage, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/soter/ui/SoterAuthenticationUI$SoterMpAuthenHandler", "handleMessage", "(Landroid/os/Message;)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
+          paramMessage.requestPermissions((String[])((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(1)).intValue());
+          com.tencent.mm.hellhoundlib.a.a.c(paramMessage, "com/tencent/mm/plugin/soter/ui/SoterAuthenticationUI$SoterMpAuthenHandler", "handleMessage", "(Landroid/os/Message;)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
           AppMethodBeat.o(145975);
           return;
         }
@@ -415,9 +416,9 @@ public class SoterAuthenticationUI
         return;
       case 4: 
         Log.i("MicroMsg.SoterAuthenticationUI", "hy: show progress");
-        if ((this.Fiu != null) && (this.Fiu.get() != null))
+        if ((this.LwZ != null) && (this.LwZ.get() != null))
         {
-          SoterAuthenticationUI.a((SoterAuthenticationUI)this.Fiu.get());
+          SoterAuthenticationUI.a((SoterAuthenticationUI)this.LwZ.get());
           AppMethodBeat.o(145975);
           return;
         }
@@ -426,9 +427,9 @@ public class SoterAuthenticationUI
         return;
       case 5: 
         Log.i("MicroMsg.SoterAuthenticationUI", "hy: dismiss progress");
-        if ((this.Fiu != null) && (this.Fiu.get() != null))
+        if ((this.LwZ != null) && (this.LwZ.get() != null))
         {
-          SoterAuthenticationUI.b((SoterAuthenticationUI)this.Fiu.get());
+          SoterAuthenticationUI.b((SoterAuthenticationUI)this.LwZ.get());
           AppMethodBeat.o(145975);
           return;
         }
@@ -437,7 +438,7 @@ public class SoterAuthenticationUI
         return;
       }
       Log.i("MicroMsg.SoterAuthenticationUI", "hy: show dialog");
-      if ((this.Fiu != null) && (this.Fiu.get() != null))
+      if ((this.LwZ != null) && (this.LwZ.get() != null))
       {
         SoterAuthenticationUI.c((com.tencent.mm.ui.widget.a.d)paramMessage.obj);
         AppMethodBeat.o(145975);
@@ -450,7 +451,7 @@ public class SoterAuthenticationUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.ui.SoterAuthenticationUI
  * JD-Core Version:    0.7.0.1
  */

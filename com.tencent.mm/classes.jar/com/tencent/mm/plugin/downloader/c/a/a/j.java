@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.downloader.c.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dop;
-import com.tencent.mm.protocal.protobuf.jr;
+import com.tencent.mm.protocal.protobuf.dyl;
+import com.tencent.mm.protocal.protobuf.jg;
 import g.a.a.b;
 import java.util.LinkedList;
 
 public final class j
-  extends dop
+  extends dyl
 {
-  public String gqB;
-  public String qFZ;
+  public String iUJ;
   public String source;
+  public String ufb;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -19,7 +19,7 @@ public final class j
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.gqB == null)
+      if (this.iUJ == null)
       {
         paramVarArgs = new b("Not all required fields were included: download_url");
         AppMethodBeat.o(153052);
@@ -27,52 +27,52 @@ public final class j
       }
       if (this.BaseRequest != null)
       {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.gqB != null) {
-        paramVarArgs.e(2, this.gqB);
+      if (this.iUJ != null) {
+        paramVarArgs.f(2, this.iUJ);
       }
-      if (this.qFZ != null) {
-        paramVarArgs.e(3, this.qFZ);
+      if (this.ufb != null) {
+        paramVarArgs.f(3, this.ufb);
       }
       if (this.source != null) {
-        paramVarArgs.e(4, this.source);
+        paramVarArgs.f(4, this.source);
       }
       AppMethodBeat.o(153052);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label538;
+        break label516;
       }
     }
-    label538:
-    for (int i = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label516:
+    for (int i = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.gqB != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.gqB);
+      if (this.iUJ != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.iUJ);
       }
       i = paramInt;
-      if (this.qFZ != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.qFZ);
+      if (this.ufb != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.ufb);
       }
       paramInt = i;
       if (this.source != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.source);
+        paramInt = i + g.a.a.b.b.a.g(4, this.source);
       }
       AppMethodBeat.o(153052);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.gqB == null)
+        if (this.iUJ == null)
         {
           paramVarArgs = new b("Not all required fields were included: download_url");
           AppMethodBeat.o(153052);
@@ -83,7 +83,7 @@ public final class j
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         j localj = (j)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
@@ -92,30 +92,31 @@ public final class j
           AppMethodBeat.o(153052);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localj.BaseRequest = ((jr)localObject1);
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            jg localjg = new jg();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localjg.parseFrom((byte[])localObject);
+            }
+            localj.BaseRequest = localjg;
             paramInt += 1;
           }
           AppMethodBeat.o(153052);
           return 0;
         case 2: 
-          localj.gqB = ((g.a.a.a.a)localObject1).UbS.readString();
+          localj.iUJ = ((g.a.a.a.a)localObject).abFh.readString();
           AppMethodBeat.o(153052);
           return 0;
         case 3: 
-          localj.qFZ = ((g.a.a.a.a)localObject1).UbS.readString();
+          localj.ufb = ((g.a.a.a.a)localObject).abFh.readString();
           AppMethodBeat.o(153052);
           return 0;
         }
-        localj.source = ((g.a.a.a.a)localObject1).UbS.readString();
+        localj.source = ((g.a.a.a.a)localObject).abFh.readString();
         AppMethodBeat.o(153052);
         return 0;
       }
@@ -126,7 +127,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.c.a.a.j
  * JD-Core Version:    0.7.0.1
  */

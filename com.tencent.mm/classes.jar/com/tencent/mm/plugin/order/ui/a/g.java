@@ -12,40 +12,43 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 
 public final class g
   extends Preference
 {
-  private static int AQE;
-  private static float AQF = 16.0F;
-  String AQG;
-  private String[] AQH;
-  private TextUtils.TruncateAt AQI;
-  private boolean AQJ;
+  private static int GJP;
+  private static float GJQ = 16.0F;
+  String GJR;
+  private String[] GJS;
+  private TextUtils.TruncateAt GJT;
+  private boolean GJU;
   private View mView;
-  f nRm;
+  f mrf;
   
   public g(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(66820);
     this.mView = null;
-    this.AQJ = false;
-    setLayoutResource(2131495439);
-    AQE = paramContext.getResources().getColor(2131100782);
+    this.GJU = false;
+    setLayoutResource(a.g.mall_order_deployable_pref);
+    GJP = paramContext.getResources().getColor(a.c.mall_order_pref_content_color);
     AppMethodBeat.o(66820);
   }
   
   public final void a(String[] paramArrayOfString, TextUtils.TruncateAt paramTruncateAt)
   {
-    this.AQH = paramArrayOfString;
-    this.AQI = paramTruncateAt;
-    this.AQJ = true;
+    this.GJS = paramArrayOfString;
+    this.GJT = paramTruncateAt;
+    this.GJU = true;
   }
   
-  public final View getView(View paramView, ViewGroup paramViewGroup)
+  public final View c(View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(66821);
     if (this.mView == null) {
@@ -61,16 +64,16 @@ public final class g
   {
     AppMethodBeat.i(66822);
     super.onBindView(paramView);
-    TextView localTextView1 = (TextView)paramView.findViewById(2131304379);
-    final TextView localTextView2 = (TextView)paramView.findViewById(2131304378);
-    paramView = (LinearLayout)paramView.findViewById(2131304377);
+    TextView localTextView1 = (TextView)paramView.findViewById(a.f.mall_order_deployable_pref_title);
+    final TextView localTextView2 = (TextView)paramView.findViewById(a.f.mall_order_deployable_pref_content_summary);
+    paramView = (LinearLayout)paramView.findViewById(a.f.mall_order_deployable_pref_content_container);
     localTextView1.setText(getTitle());
-    if ((this.AQH == null) || (this.AQH.length <= 1)) {
-      localTextView2.setTextColor(AQE);
+    if ((this.GJS == null) || (this.GJS.length <= 1)) {
+      localTextView2.setTextColor(GJP);
     }
     for (;;)
     {
-      localTextView2.setText(this.AQG);
+      localTextView2.setText(this.GJR);
       AppMethodBeat.o(66822);
       return;
       localTextView2.setOnClickListener(new View.OnClickListener()
@@ -79,8 +82,8 @@ public final class g
         {
           AppMethodBeat.i(66819);
           b localb = new b();
-          localb.bm(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/order/ui/preference/MallOrderDeployablePreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          a.c("com/tencent/mm/plugin/order/ui/preference/MallOrderDeployablePreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           localTextView2.setVisibility(8);
           int i = 0;
           while (i < g.a(g.this).length)

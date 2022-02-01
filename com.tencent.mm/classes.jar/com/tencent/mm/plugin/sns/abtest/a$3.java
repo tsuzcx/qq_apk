@@ -13,8 +13,8 @@ final class a$3
   {
     AppMethodBeat.i(94920);
     Object localObject = new b();
-    ((b)localObject).bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/abtest/NotInteresetABTestManager$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+    ((b)localObject).bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/abtest/NotInteresetABTestManager$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
     if ((paramView.getTag() instanceof SnsInfo))
     {
       localObject = (SnsInfo)paramView.getTag();
@@ -26,7 +26,7 @@ final class a$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.abtest.a.3
  * JD-Core Version:    0.7.0.1
  */

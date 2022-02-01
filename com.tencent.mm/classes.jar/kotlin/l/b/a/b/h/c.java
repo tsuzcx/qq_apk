@@ -4,10 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.NoSuchElementException;
 
 final class c
-  extends p
+  extends q
 {
-  final int bNl;
-  private final int bNm;
+  final int bPk;
+  private final int bPl;
   
   c(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
@@ -31,34 +31,17 @@ final class c
       AppMethodBeat.o(59365);
       throw paramArrayOfByte;
     }
-    this.bNl = paramInt1;
-    this.bNm = paramInt2;
+    this.bPk = paramInt1;
+    this.bPl = paramInt2;
     AppMethodBeat.o(59365);
   }
   
-  public final byte fB(int paramInt)
+  protected final int At()
   {
-    AppMethodBeat.i(59366);
-    ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException;
-    if (paramInt < 0)
-    {
-      localArrayIndexOutOfBoundsException = new ArrayIndexOutOfBoundsException(28 + "Index too small: " + paramInt);
-      AppMethodBeat.o(59366);
-      throw localArrayIndexOutOfBoundsException;
-    }
-    if (paramInt >= this.bNm)
-    {
-      int i = this.bNm;
-      localArrayIndexOutOfBoundsException = new ArrayIndexOutOfBoundsException(41 + "Index too large: " + paramInt + ", " + i);
-      AppMethodBeat.o(59366);
-      throw localArrayIndexOutOfBoundsException;
-    }
-    byte b = this.zy[(this.bNl + paramInt)];
-    AppMethodBeat.o(59366);
-    return b;
+    return this.bPk;
   }
   
-  public final d.a hJm()
+  public final d.a iNG()
   {
     AppMethodBeat.i(59368);
     a locala = new a((byte)0);
@@ -66,21 +49,16 @@ final class c
     return locala;
   }
   
-  protected final void l(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  protected final void m(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(59367);
-    System.arraycopy(this.zy, this.bNl + paramInt1, paramArrayOfByte, paramInt2, paramInt3);
+    System.arraycopy(this.UH, this.bPk + paramInt1, paramArrayOfByte, paramInt2, paramInt3);
     AppMethodBeat.o(59367);
   }
   
   public final int size()
   {
-    return this.bNm;
-  }
-  
-  protected final int yR()
-  {
-    return this.bNl;
+    return this.bPl;
   }
   
   final class a
@@ -92,7 +70,7 @@ final class c
     private a()
     {
       AppMethodBeat.i(59361);
-      this.position = c.this.bNl;
+      this.position = c.this.bPk;
       this.limit = (this.position + c.this.size());
       AppMethodBeat.o(59361);
     }
@@ -111,7 +89,7 @@ final class c
         AppMethodBeat.o(59362);
         throw ((Throwable)localObject);
       }
-      Object localObject = c.this.zy;
+      Object localObject = c.this.UH;
       int i = this.position;
       this.position = (i + 1);
       byte b = localObject[i];
@@ -130,7 +108,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.h.c
  * JD-Core Version:    0.7.0.1
  */

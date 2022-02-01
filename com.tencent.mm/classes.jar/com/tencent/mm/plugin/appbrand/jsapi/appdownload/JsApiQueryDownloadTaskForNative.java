@@ -4,12 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.v;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.u;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONArray;
@@ -17,7 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class JsApiQueryDownloadTaskForNative
-  extends d<com.tencent.mm.plugin.appbrand.s>
+  extends c<v>
 {
   public static final int CTRL_INDEX = 661;
   public static final String NAME = "queryDownloadTaskForNative";
@@ -26,19 +28,19 @@ public final class JsApiQueryDownloadTaskForNative
     extends MainProcessTask
   {
     public static final Parcelable.Creator<QueryDownloadTask> CREATOR;
-    private int csv;
-    private com.tencent.mm.plugin.appbrand.s kAr;
-    private p lAi;
-    private boolean lAq;
-    private String lAr;
-    private long lAs;
-    private boolean lDA;
-    private JSONArray lDu;
-    private JSONArray lDv;
-    private JSONArray lDw;
-    private String lDx;
-    private long lDy;
-    private float lDz;
+    private int cqA;
+    private v ntA;
+    private boolean ovH;
+    private String ovI;
+    private long ovJ;
+    private o ovz;
+    private JSONArray oyW;
+    private JSONArray oyX;
+    private JSONArray oyY;
+    private String oyZ;
+    private long oza;
+    private float ozb;
+    private boolean ozc;
     
     static
     {
@@ -54,17 +56,16 @@ public final class JsApiQueryDownloadTaskForNative
       AppMethodBeat.o(45882);
     }
     
-    public QueryDownloadTask(p paramp, com.tencent.mm.plugin.appbrand.s params, int paramInt, JSONObject paramJSONObject)
+    public QueryDownloadTask(o paramo, v paramv, int paramInt, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(45881);
-      bDJ();
-      this.lAi = paramp;
-      this.kAr = params;
-      this.csv = paramInt;
-      this.lAs = paramJSONObject.optLong("downloadId");
-      this.lDu = paramJSONObject.optJSONArray("downloadIdArray");
-      this.lDv = paramJSONObject.optJSONArray("appIdArray");
-      this.lAq = true;
+      this.ovz = paramo;
+      this.ntA = paramv;
+      this.cqA = paramInt;
+      this.ovJ = paramJSONObject.optLong("downloadId");
+      this.oyW = paramJSONObject.optJSONArray("downloadIdArray");
+      this.oyX = paramJSONObject.optJSONArray("appIdArray");
+      this.ovH = true;
       AppMethodBeat.o(45881);
     }
     
@@ -102,10 +103,10 @@ public final class JsApiQueryDownloadTaskForNative
         str = "default";
         Log.i("MicroMsg.JsApiQueryDownloadTaskForNative", "doQueryDownloadTask, state = %s", new Object[] { str });
         f = 0.0F;
-        if (paramFileDownloadTaskInfo.oJj != 0L)
+        if (paramFileDownloadTaskInfo.rKZ != 0L)
         {
-          l = paramFileDownloadTaskInfo.qJe * 100L / paramFileDownloadTaskInfo.oJj;
-          f = (float)paramFileDownloadTaskInfo.qJe * 100.0F / (float)paramFileDownloadTaskInfo.oJj;
+          l = paramFileDownloadTaskInfo.uih * 100L / paramFileDownloadTaskInfo.rKZ;
+          f = (float)paramFileDownloadTaskInfo.uih * 100.0F / (float)paramFileDownloadTaskInfo.rKZ;
         }
         break;
       }
@@ -118,7 +119,7 @@ public final class JsApiQueryDownloadTaskForNative
           localJSONObject.put("state", str);
           localJSONObject.put("progress", l);
           localJSONObject.put("progress_float", f);
-          if (!paramFileDownloadTaskInfo.qJh) {
+          if (!paramFileDownloadTaskInfo.uik) {
             continue;
           }
           i = 1;
@@ -132,12 +133,12 @@ public final class JsApiQueryDownloadTaskForNative
         }
         AppMethodBeat.o(45886);
         return localJSONObject;
-        this.lAr = "fail_apilevel_too_low";
+        this.ovI = "fail_apilevel_too_low";
         AppMethodBeat.o(45886);
         return localJSONObject;
         str = "downloading";
         break;
-        if (com.tencent.mm.vfs.s.YS(paramFileDownloadTaskInfo.path))
+        if (u.agG(paramFileDownloadTaskInfo.path))
         {
           str = "download_succ";
           break;
@@ -171,107 +172,107 @@ public final class JsApiQueryDownloadTaskForNative
       }
     }
     
-    public final void bjj()
+    public final void RW()
     {
       AppMethodBeat.i(45883);
-      Log.i("MicroMsg.JsApiQueryDownloadTaskForNative", "doQueryDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.lAs) });
+      Log.i("MicroMsg.JsApiQueryDownloadTaskForNative", "doQueryDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.ovJ) });
       int i;
-      if ((this.lDu != null) && (this.lDu.length() > 0))
+      if ((this.oyW != null) && (this.oyW.length() > 0))
       {
-        this.lDw = new JSONArray();
+        this.oyY = new JSONArray();
         i = 0;
-        while (i < this.lDu.length())
+        while (i < this.oyW.length())
         {
-          long l = this.lDu.optLong(i);
-          localObject = f.cBv().Co(l);
-          this.lDw.put(a(l, (FileDownloadTaskInfo)localObject));
+          long l = this.oyW.optLong(i);
+          localObject = f.cPZ().Ix(l);
+          this.oyY.put(a(l, (FileDownloadTaskInfo)localObject));
           i += 1;
         }
-        this.lAq = false;
+        this.ovH = false;
       }
       for (;;)
       {
-        bDU();
+        bPt();
         AppMethodBeat.o(45883);
         return;
-        if ((this.lDv != null) && (this.lDv.length() > 0))
+        if ((this.oyX != null) && (this.oyX.length() > 0))
         {
-          this.lDw = new JSONArray();
+          this.oyY = new JSONArray();
           i = 0;
-          while (i < this.lDv.length())
+          while (i < this.oyX.length())
           {
-            localObject = this.lDv.optString(i);
-            FileDownloadTaskInfo localFileDownloadTaskInfo = f.cBv().alg((String)localObject);
-            this.lDw.put(a((String)localObject, localFileDownloadTaskInfo));
+            localObject = this.oyX.optString(i);
+            FileDownloadTaskInfo localFileDownloadTaskInfo = f.cPZ().asZ((String)localObject);
+            this.oyY.put(a((String)localObject, localFileDownloadTaskInfo));
             i += 1;
           }
-          this.lAq = false;
+          this.ovH = false;
         }
         else
         {
-          if (this.lAs > 0L) {
+          if (this.ovJ > 0L) {
             break;
           }
-          this.lAr = "downloadId invalid";
+          this.ovI = "downloadId invalid";
         }
       }
-      Object localObject = f.cBv().Co(this.lAs);
+      Object localObject = f.cPZ().Ix(this.ovJ);
       switch (((FileDownloadTaskInfo)localObject).status)
       {
       case 0: 
       default: 
-        this.lDx = "default";
+        this.oyZ = "default";
       }
       for (;;)
       {
-        Log.i("MicroMsg.JsApiQueryDownloadTaskForNative", "doQueryDownloadTask, state = %s", new Object[] { this.lDx });
-        if (((FileDownloadTaskInfo)localObject).oJj != 0L)
+        Log.i("MicroMsg.JsApiQueryDownloadTaskForNative", "doQueryDownloadTask, state = %s", new Object[] { this.oyZ });
+        if (((FileDownloadTaskInfo)localObject).rKZ != 0L)
         {
-          this.lDy = (((float)((FileDownloadTaskInfo)localObject).qJe / (float)((FileDownloadTaskInfo)localObject).oJj * 100.0F));
-          this.lDz = ((float)((FileDownloadTaskInfo)localObject).qJe * 100.0F / (float)((FileDownloadTaskInfo)localObject).oJj);
+          this.oza = (((float)((FileDownloadTaskInfo)localObject).uih / (float)((FileDownloadTaskInfo)localObject).rKZ * 100.0F));
+          this.ozb = ((float)((FileDownloadTaskInfo)localObject).uih * 100.0F / (float)((FileDownloadTaskInfo)localObject).rKZ);
         }
-        this.lDA = ((FileDownloadTaskInfo)localObject).qJh;
-        this.lAq = false;
+        this.ozc = ((FileDownloadTaskInfo)localObject).uik;
+        this.ovH = false;
         break;
-        this.lAr = "fail_apilevel_too_low";
+        this.ovI = "fail_apilevel_too_low";
         break;
-        this.lDx = "downloading";
+        this.oyZ = "downloading";
         continue;
-        if (com.tencent.mm.vfs.s.YS(((FileDownloadTaskInfo)localObject).path))
+        if (u.agG(((FileDownloadTaskInfo)localObject).path))
         {
-          this.lDx = "download_succ";
+          this.oyZ = "download_succ";
         }
         else
         {
-          this.lDx = "default";
+          this.oyZ = "default";
           continue;
-          this.lDx = "download_pause";
+          this.oyZ = "download_pause";
           continue;
-          this.lDx = "download_fail";
+          this.oyZ = "download_fail";
         }
       }
     }
     
-    public final void bjk()
+    public final void bsK()
     {
       AppMethodBeat.i(45887);
-      bDK();
+      bPk();
       boolean bool;
-      if (this.kAr == null)
+      if (this.ntA == null)
       {
         bool = true;
         Log.d("MicroMsg.JsApiQueryDownloadTaskForNative", "callback, service is null: %b", new Object[] { Boolean.valueOf(bool) });
-        if (!this.lAq) {
+        if (!this.ovH) {
           break label110;
         }
-        if (!Util.isNullOrNil(this.lAr)) {
+        if (!Util.isNullOrNil(this.ovI)) {
           break label89;
         }
       }
       label89:
-      for (Object localObject = "fail";; localObject = String.format("fail:%s", new Object[] { this.lAr }))
+      for (Object localObject = "fail";; localObject = String.format("fail:%s", new Object[] { this.ovI }))
       {
-        this.kAr.i(this.csv, this.lAi.h((String)localObject, null));
+        this.ntA.j(this.cqA, this.ovz.h((String)localObject, null));
         AppMethodBeat.o(45887);
         return;
         bool = false;
@@ -279,19 +280,19 @@ public final class JsApiQueryDownloadTaskForNative
       }
       label110:
       localObject = new HashMap();
-      if (this.lDw != null) {
-        ((Map)localObject).put("result", this.lDw);
+      if (this.oyY != null) {
+        ((Map)localObject).put("result", this.oyY);
       }
       for (;;)
       {
-        this.kAr.i(this.csv, this.lAi.n("ok", (Map)localObject));
+        this.ntA.j(this.cqA, this.ovz.m("ok", (Map)localObject));
         AppMethodBeat.o(45887);
         return;
-        ((Map)localObject).put("downloadId", Long.valueOf(this.lAs));
-        ((Map)localObject).put("state", this.lDx);
-        ((Map)localObject).put("progress", Long.valueOf(this.lDy));
-        ((Map)localObject).put("progress_float", Float.valueOf(this.lDz));
-        ((Map)localObject).put("reserve_for_wifi", Boolean.valueOf(this.lDA));
+        ((Map)localObject).put("downloadId", Long.valueOf(this.ovJ));
+        ((Map)localObject).put("state", this.oyZ);
+        ((Map)localObject).put("progress", Long.valueOf(this.oza));
+        ((Map)localObject).put("progress_float", Float.valueOf(this.ozb));
+        ((Map)localObject).put("reserve_for_wifi", Boolean.valueOf(this.ozc));
       }
     }
     
@@ -299,26 +300,26 @@ public final class JsApiQueryDownloadTaskForNative
     {
       boolean bool2 = true;
       AppMethodBeat.i(45888);
-      this.lAs = paramParcel.readLong();
+      this.ovJ = paramParcel.readLong();
       if (paramParcel.readInt() == 1) {}
       for (bool1 = true;; bool1 = false)
       {
-        this.lAq = bool1;
-        this.lAr = paramParcel.readString();
-        this.lDx = paramParcel.readString();
-        this.lDy = paramParcel.readLong();
+        this.ovH = bool1;
+        this.ovI = paramParcel.readString();
+        this.oyZ = paramParcel.readString();
+        this.oza = paramParcel.readLong();
         String str1 = paramParcel.readString();
         String str2 = paramParcel.readString();
         String str3 = paramParcel.readString();
         if (str1 != null) {}
         try
         {
-          this.lDu = new JSONArray(str1);
+          this.oyW = new JSONArray(str1);
           if (str2 != null) {
-            this.lDv = new JSONArray(str2);
+            this.oyX = new JSONArray(str2);
           }
           if (str3 != null) {
-            this.lDw = new JSONArray(str3);
+            this.oyY = new JSONArray(str3);
           }
         }
         catch (JSONException localJSONException)
@@ -334,7 +335,7 @@ public final class JsApiQueryDownloadTaskForNative
           break;
         }
         bool1 = bool2;
-        this.lDA = bool1;
+        this.ozc = bool1;
         AppMethodBeat.o(45888);
         return;
       }
@@ -345,33 +346,33 @@ public final class JsApiQueryDownloadTaskForNative
       int i = 1;
       Object localObject2 = null;
       AppMethodBeat.i(45889);
-      paramParcel.writeLong(this.lAs);
+      paramParcel.writeLong(this.ovJ);
       Object localObject1;
-      if (this.lAq)
+      if (this.ovH)
       {
         paramInt = 1;
         paramParcel.writeInt(paramInt);
-        paramParcel.writeString(this.lAr);
-        paramParcel.writeString(this.lDx);
-        paramParcel.writeLong(this.lDy);
-        if (this.lDu == null) {
+        paramParcel.writeString(this.ovI);
+        paramParcel.writeString(this.oyZ);
+        paramParcel.writeLong(this.oza);
+        if (this.oyW == null) {
           break label153;
         }
-        localObject1 = this.lDu.toString();
+        localObject1 = this.oyW.toString();
         label73:
         paramParcel.writeString((String)localObject1);
-        if (this.lDv == null) {
+        if (this.oyX == null) {
           break label159;
         }
-        localObject1 = this.lDv.toString();
+        localObject1 = this.oyX.toString();
         label95:
         paramParcel.writeString((String)localObject1);
         localObject1 = localObject2;
-        if (this.lDw != null) {
-          localObject1 = this.lDw.toString();
+        if (this.oyY != null) {
+          localObject1 = this.oyY.toString();
         }
         paramParcel.writeString((String)localObject1);
-        if (!this.lDA) {
+        if (!this.ozc) {
           break label165;
         }
       }

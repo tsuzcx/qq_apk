@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dib;
-import com.tencent.mm.protocal.protobuf.dic;
+import com.tencent.mm.protocal.protobuf.drt;
+import com.tencent.mm.protocal.protobuf.dru;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
@@ -17,18 +17,18 @@ public final class d
   implements m
 {
   private i callback;
-  private com.tencent.mm.ak.d rr;
+  private com.tencent.mm.an.d rr;
   
   public d(String paramString)
   {
     AppMethodBeat.i(97133);
     d.a locala = new d.a();
-    locala.iLN = new dib();
-    locala.iLO = new dic();
+    locala.lBU = new drt();
+    locala.lBV = new dru();
     locala.uri = "/cgi-bin/mmoc-bin/adplayinfo/query_ad_redpkt_state";
     locala.funcId = 2944;
-    this.rr = locala.aXF();
-    ((dib)this.rr.iLK.iLR).MMJ = paramString;
+    this.rr = locala.bgN();
+    ((drt)d.b.b(this.rr.lBR)).TYD = paramString;
     AppMethodBeat.o(97133);
   }
   
@@ -61,7 +61,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.d
  * JD-Core Version:    0.7.0.1
  */

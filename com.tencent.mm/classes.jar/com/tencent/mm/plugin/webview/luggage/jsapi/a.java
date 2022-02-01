@@ -6,12 +6,15 @@ import android.content.DialogInterface.OnClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.g.a.iv;
+import com.tencent.mm.f.a.jl;
 import com.tencent.mm.modelstat.d;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.plugin.downloader.model.g.a;
 import com.tencent.mm.plugin.downloader.model.o;
 import com.tencent.mm.plugin.downloader.model.o.a;
+import com.tencent.mm.plugin.webview.c.c;
+import com.tencent.mm.plugin.webview.c.i;
+import com.tencent.mm.plugin.webview.luggage.c.c;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -26,7 +29,7 @@ public class a
   private void a(JSONObject paramJSONObject, br.a parama)
   {
     AppMethodBeat.i(78511);
-    iv localiv = new iv();
+    jl localjl = new jl();
     String str1 = paramJSONObject.optString("task_name");
     String str2 = paramJSONObject.optString("task_url");
     String str3 = paramJSONObject.optString("alternative_url");
@@ -42,30 +45,30 @@ public class a
     int m = paramJSONObject.optInt("ssid");
     int n = paramJSONObject.optInt("uiarea");
     int i1 = paramJSONObject.optInt("notice_id");
-    localiv.dNx.url = str2;
-    localiv.dNx.md5 = str4;
-    localiv.dNx.extInfo = str8;
-    localiv.dNx.appId = str6;
-    localiv.dNx.scene = i;
-    EventCenter.instance.publish(localiv);
+    localjl.fGJ.url = str2;
+    localjl.fGJ.md5 = str4;
+    localjl.fGJ.extInfo = str8;
+    localjl.fGJ.appId = str6;
+    localjl.fGJ.scene = i;
+    EventCenter.instance.publish(localjl);
     paramJSONObject = new g.a();
-    paramJSONObject.alj(str2);
-    paramJSONObject.alk(str3);
+    paramJSONObject.atc(str2);
+    paramJSONObject.atd(str3);
     paramJSONObject.setFileSize(l);
-    paramJSONObject.all(str1);
+    paramJSONObject.ate(str1);
     paramJSONObject.setFileMD5(str4);
     paramJSONObject.setAppId(str6);
-    paramJSONObject.gm(str7);
-    paramJSONObject.kS(true);
-    paramJSONObject.Fl(Util.getInt(str5, 1));
+    paramJSONObject.setPackageName(str7);
+    paramJSONObject.me(true);
+    paramJSONObject.IS(Util.getInt(str5, 1));
     paramJSONObject.setScene(i);
-    paramJSONObject.Fp(k);
-    paramJSONObject.Fm(m);
-    paramJSONObject.Fn(n);
-    paramJSONObject.Fo(i1);
-    paramJSONObject = paramJSONObject.qIY;
+    paramJSONObject.IW(k);
+    paramJSONObject.IT(m);
+    paramJSONObject.IU(n);
+    paramJSONObject.IV(i1);
+    paramJSONObject = paramJSONObject.uhY;
     if (j == 1) {}
-    for (l = f.cBv().b(paramJSONObject);; l = f.cBv().a(paramJSONObject))
+    for (l = f.cPZ().b(paramJSONObject);; l = f.cPZ().a(paramJSONObject))
     {
       d.d(10, "LuggageGameWebViewUI_addDownloadTask", hashCode());
       if (l > 0L) {
@@ -94,6 +97,14 @@ public class a
   {
     AppMethodBeat.i(78510);
     Log.i("MicroMsg.JsApiAddDownloadTaskStraight", "invokeInMM");
+    if (com.tencent.mm.plugin.webview.luggage.c.a.gVm())
+    {
+      Log.i("MicroMsg.JsApiAddDownloadTaskStraight", "addDownloadTaskStraight isTeenMode and ignore");
+      com.tencent.mm.plugin.webview.luggage.c.a.ja(paramContext);
+      parama.i("cancel", null);
+      AppMethodBeat.o(78510);
+      return;
+    }
     final String str1;
     long l;
     try
@@ -126,7 +137,7 @@ public class a
     final String str3 = paramString.optString("currentUrl");
     if (paramString.optBoolean("use_downloader_widget", false))
     {
-      o.a(paramContext, com.tencent.mm.plugin.downloader_app.a.a.aK(paramString), new o.a()
+      o.a(paramContext, com.tencent.mm.plugin.downloader_app.a.a.aO(paramString), new o.a()
       {
         public final void i(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
         {
@@ -142,12 +153,12 @@ public class a
     if (!NetStatusUtil.isNetworkConnected(paramContext))
     {
       parama.i("fail_network_not_connected", null);
-      com.tencent.mm.plugin.webview.luggage.c.b.runOnUiThread(new Runnable()
+      c.runOnUiThread(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(78504);
-          Toast.makeText(paramContext, paramContext.getString(2131761199), 0).show();
+          Toast.makeText(paramContext, paramContext.getString(c.i.game_download_network_unavailable), 0).show();
           AppMethodBeat.o(78504);
         }
       });
@@ -155,15 +166,15 @@ public class a
       AppMethodBeat.o(78510);
       return;
     }
-    if (!e.apn())
+    if (!e.avA())
     {
       parama.i("sdcard_not_ready", null);
-      com.tencent.mm.plugin.webview.luggage.c.b.runOnUiThread(new Runnable()
+      c.runOnUiThread(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(78505);
-          Toast.makeText(paramContext, paramContext.getString(2131761203), 0).show();
+          Toast.makeText(paramContext, paramContext.getString(c.i.game_download_sdcard_unavailable), 0).show();
           AppMethodBeat.o(78505);
         }
       });
@@ -171,15 +182,15 @@ public class a
       AppMethodBeat.o(78510);
       return;
     }
-    if ((l > 0L) && (!com.tencent.mm.plugin.downloader.model.h.CF(l)) && (!com.tencent.mm.plugin.downloader.model.h.CE(l)))
+    if ((l > 0L) && (!com.tencent.mm.plugin.downloader.model.h.IO(l)) && (!com.tencent.mm.plugin.downloader.model.h.IN(l)))
     {
       parama.i("has_not_enough_space", null);
-      com.tencent.mm.plugin.webview.luggage.c.b.runOnUiThread(new Runnable()
+      c.runOnUiThread(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(78506);
-          Toast.makeText(paramContext, paramContext.getString(2131761200), 0).show();
+          Toast.makeText(paramContext, paramContext.getString(c.i.game_download_not_enough_space), 0).show();
           AppMethodBeat.o(78506);
         }
       });
@@ -193,13 +204,13 @@ public class a
       AppMethodBeat.o(78510);
       return;
     }
-    com.tencent.mm.plugin.report.service.h.CyF.a(14217, new Object[] { str2, Integer.valueOf(4), str3, str1, Integer.valueOf(3) });
-    com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(2131768552), paramContext.getString(2131768553), paramContext.getString(2131768547), paramContext.getString(2131755761), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    com.tencent.mm.plugin.report.service.h.IzE.a(14217, new Object[] { str2, Integer.valueOf(4), str3, str1, Integer.valueOf(3) });
+    com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(c.i.webview_download_ui_download_not_in_wifi_tips), paramContext.getString(c.i.webview_download_ui_download_not_in_wifi_title), paramContext.getString(c.i.webview_download_ui_btn_state_to_download), paramContext.getString(c.i.app_cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(78507);
-        com.tencent.mm.plugin.report.service.h.CyF.a(14217, new Object[] { str2, Integer.valueOf(5), str3, str1, Integer.valueOf(3) });
+        com.tencent.mm.plugin.report.service.h.IzE.a(14217, new Object[] { str2, Integer.valueOf(5), str3, str1, Integer.valueOf(3) });
         a.a(a.this, paramString, parama);
         paramAnonymousDialogInterface.dismiss();
         AppMethodBeat.o(78507);
@@ -209,18 +220,18 @@ public class a
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(78508);
-        com.tencent.mm.plugin.report.service.h.CyF.a(14217, new Object[] { str2, Integer.valueOf(6), str3, str1, Integer.valueOf(3) });
+        com.tencent.mm.plugin.report.service.h.IzE.a(14217, new Object[] { str2, Integer.valueOf(6), str3, str1, Integer.valueOf(3) });
         paramAnonymousDialogInterface.dismiss();
         parama.i("network_not_wifi", null);
         AppMethodBeat.o(78508);
       }
-    }, 2131101414);
+    }, c.c.wechat_green);
     AppMethodBeat.o(78510);
   }
   
   public final void b(com.tencent.luggage.d.b<g>.a paramb) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 2;
   }

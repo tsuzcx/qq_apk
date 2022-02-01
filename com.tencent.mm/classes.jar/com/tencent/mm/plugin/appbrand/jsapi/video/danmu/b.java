@@ -2,38 +2,38 @@ package com.tencent.mm.plugin.appbrand.jsapi.video.danmu;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 
 public final class b
 {
-  public static int mAn = 18;
-  public static int mAo = 10;
-  private static int mAp = 3;
+  public static int pyI = 18;
+  public static int pyJ = 10;
+  private static int pyK = 3;
   
-  public static int N(Context paramContext, int paramInt)
+  public static int R(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(258649);
+    AppMethodBeat.i(292958);
     paramInt = a.fromDPToPix(paramContext, paramInt);
-    AppMethodBeat.o(258649);
+    AppMethodBeat.o(292958);
     return paramInt;
   }
   
-  public static int bKl()
+  public static int bVW()
   {
-    return mAp;
+    return pyK;
   }
   
-  public static float dW(Context paramContext)
+  public static float dU(Context paramContext)
   {
     AppMethodBeat.i(137855);
-    float f = a.fromDPToPix(paramContext, mAn);
+    float f = a.fromDPToPix(paramContext, pyI);
     AppMethodBeat.o(137855);
     return f * 2.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.danmu.b
  * JD-Core Version:    0.7.0.1
  */

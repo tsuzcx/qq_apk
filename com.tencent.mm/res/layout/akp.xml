@@ -2,7 +2,7 @@
 <FrameLayout android:orientation="vertical" android:id="@id/itu" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:background="@drawable/aqu" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/b21">
-        <android.support.v7.widget.RecyclerView android:id="@id/itt" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/itt" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     </com.tencent.mm.view.RefreshLoadMoreLayout>
     <FrameLayout android:id="@id/c3e" android:background="@drawable/aqu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/gl7" android:visibility="gone" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/c4" android:indeterminateDrawable="@drawable/apb" />
@@ -12,5 +12,4 @@
     <FrameLayout android:id="@id/ip9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <include layout="@layout/a8m" />
     </FrameLayout>
-    <ViewStub android:id="@id/cji" android:layout="@layout/a98" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </FrameLayout>

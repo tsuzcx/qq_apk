@@ -3,5 +3,5 @@
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView android:id="@id/e7n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/mi" />
     <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/mi" />
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/i4u" android:focusable="false" android:visibility="gone" android:clickable="false" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_done" app:iconColor="@color/Brand" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/i4u" android:focusable="false" android:visibility="gone" android:clickable="false" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_done" android:contentDescription="@string/k6h" app:iconColor="@color/Brand" />
 </LinearLayout>

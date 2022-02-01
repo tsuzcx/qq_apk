@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
+import com.tencent.kinda.framework.R.string;
 import com.tencent.kinda.framework.widget.tools.MMKViewUtil;
 import com.tencent.kinda.gen.KRegionEditView;
 import com.tencent.kinda.gen.KRegionEditViewOnRegionSelectedCallback;
@@ -93,13 +94,13 @@ public class KindaRegionEditViewImpl
     this.mEditText.setInputType(0);
     this.mEditText.setFocusable(false);
     this.mEditText.setBackground(null);
-    this.mEditText.setHint(2131767604);
+    this.mEditText.setHint(R.string.wallet_card_private_info_address_hint);
     this.mEditText.setTextSize(0, MMKViewUtil.dpToPx(MMApplicationContext.getContext(), 17.0F));
     this.mEditText.setPadding(0, 0, 0, 0);
     this.mContext = paramContext;
     if ((this.mContext instanceof UIPageFragmentActivity))
     {
-      this.REQUEST_CODE = ((UIPageFragmentActivity)this.mContext).hgB.getAndIncrement();
+      this.REQUEST_CODE = ((UIPageFragmentActivity)this.mContext).jSv.getAndIncrement();
       UIPageFragmentActivity.a(this.REQUEST_CODE, this.intentHandler);
     }
     paramContext = new LayoutWrapper(paramContext, this.mEditText);
@@ -222,7 +223,7 @@ public class KindaRegionEditViewImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaRegionEditViewImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.box;
 public abstract interface d
   extends com.tencent.mm.kernel.b.d
 {
-  public abstract String checkAllHotWords(String paramString);
+  public abstract a checkAllHotWords(String paramString);
   
   public abstract String checkFirstHotWord(String paramString);
   
@@ -14,10 +14,18 @@ public abstract interface d
   public abstract int getSearchDuration();
   
   public abstract String getWordBankVersionForStat();
+  
+  public static class a
+  {
+    public String snR;
+    public int snS;
+    public String snT;
+    public String snU;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.box.d
  * JD-Core Version:    0.7.0.1
  */

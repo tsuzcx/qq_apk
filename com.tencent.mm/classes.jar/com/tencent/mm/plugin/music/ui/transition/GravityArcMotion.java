@@ -9,19 +9,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class GravityArcMotion
   extends ArcMotion
 {
-  private static final float zI;
-  private float zJ = 0.0F;
-  private float zK = 0.0F;
-  private float zL = 70.0F;
-  private float zM = 0.0F;
-  private float zN = 0.0F;
-  private float zO = zI;
+  private static final float apl;
+  private float apm = 0.0F;
+  private float apn = 0.0F;
+  private float apo = 70.0F;
+  private float apq = 0.0F;
+  private float apr = 0.0F;
+  private float aps = apl;
   
   static
   {
-    AppMethodBeat.i(219892);
-    zI = (float)Math.tan(Math.toRadians(35.0D));
-    AppMethodBeat.o(219892);
+    AppMethodBeat.i(259761);
+    apl = (float)Math.tan(Math.toRadians(35.0D));
+    AppMethodBeat.o(259761);
   }
   
   public GravityArcMotion() {}
@@ -31,53 +31,53 @@ public class GravityArcMotion
     super(paramContext, paramAttributeSet);
   }
   
-  private static float w(float paramFloat)
+  private static float C(float paramFloat)
   {
-    AppMethodBeat.i(219890);
+    AppMethodBeat.i(259759);
     if ((paramFloat < 0.0F) || (paramFloat > 90.0F))
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Arc must be between 0 and 90 degrees");
-      AppMethodBeat.o(219890);
+      AppMethodBeat.o(259759);
       throw localIllegalArgumentException;
     }
     paramFloat = (float)Math.tan(Math.toRadians(paramFloat / 2.0F));
-    AppMethodBeat.o(219890);
+    AppMethodBeat.o(259759);
     return paramFloat;
   }
   
   public float getMaximumAngle()
   {
-    return this.zL;
+    return this.apo;
   }
   
   public float getMinimumHorizontalAngle()
   {
-    return this.zJ;
+    return this.apm;
   }
   
   public float getMinimumVerticalAngle()
   {
-    return this.zK;
+    return this.apn;
   }
   
   public Path getPath(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    AppMethodBeat.i(219891);
+    AppMethodBeat.i(259760);
     Path localPath = new Path();
     localPath.moveTo(paramFloat1, paramFloat2);
     float f1;
     if (paramFloat2 == paramFloat4) {
       f1 = (paramFloat1 + paramFloat3) / 2.0F;
     }
-    for (float f2 = paramFloat2 + this.zM * Math.abs(paramFloat3 - paramFloat1) / 2.0F;; f2 = (paramFloat2 + paramFloat4) / 2.0F)
+    for (float f2 = paramFloat2 + this.apq * Math.abs(paramFloat3 - paramFloat1) / 2.0F;; f2 = (paramFloat2 + paramFloat4) / 2.0F)
     {
       localPath.cubicTo((paramFloat1 + f1) / 2.0F, (paramFloat2 + f2) / 2.0F, (f1 + paramFloat3) / 2.0F, (f2 + paramFloat4) / 2.0F, paramFloat3, paramFloat4);
-      AppMethodBeat.o(219891);
+      AppMethodBeat.o(259760);
       return localPath;
       if (paramFloat1 != paramFloat3) {
         break;
       }
-      f1 = paramFloat1 + this.zN * Math.abs(paramFloat4 - paramFloat2) / 2.0F;
+      f1 = paramFloat1 + this.apr * Math.abs(paramFloat4 - paramFloat2) / 2.0F;
     }
     f2 = paramFloat3 - paramFloat1;
     label146:
@@ -98,12 +98,12 @@ public class GravityArcMotion
         break label338;
       }
       f1 = paramFloat4 + f3 / (f1 * 2.0F);
-      f3 = this.zN * f4 * this.zN;
+      f3 = this.apr * f4 * this.apr;
       f2 = paramFloat3;
       f7 = f6 - f2;
       float f8 = f5 - f1;
       f7 = f8 * f8 + f7 * f7;
-      f4 = f4 * this.zO * this.zO;
+      f4 = f4 * this.aps * this.aps;
       if (f7 >= f3) {
         break label370;
       }
@@ -122,7 +122,7 @@ public class GravityArcMotion
         break label146;
         label338:
         f2 = paramFloat3 + f3 / (2.0F * f2);
-        f3 = this.zM * f4 * this.zM;
+        f3 = this.apq * f4 * this.apq;
         f1 = paramFloat4;
         break label224;
         label370:
@@ -143,26 +143,26 @@ public class GravityArcMotion
   
   public void setMaximumAngle(float paramFloat)
   {
-    AppMethodBeat.i(219889);
-    this.zL = paramFloat;
-    this.zO = w(paramFloat);
-    AppMethodBeat.o(219889);
+    AppMethodBeat.i(259758);
+    this.apo = paramFloat;
+    this.aps = C(paramFloat);
+    AppMethodBeat.o(259758);
   }
   
   public void setMinimumHorizontalAngle(float paramFloat)
   {
-    AppMethodBeat.i(219887);
-    this.zJ = paramFloat;
-    this.zM = w(paramFloat);
-    AppMethodBeat.o(219887);
+    AppMethodBeat.i(259756);
+    this.apm = paramFloat;
+    this.apq = C(paramFloat);
+    AppMethodBeat.o(259756);
   }
   
   public void setMinimumVerticalAngle(float paramFloat)
   {
-    AppMethodBeat.i(219888);
-    this.zK = paramFloat;
-    this.zN = w(paramFloat);
-    AppMethodBeat.o(219888);
+    AppMethodBeat.i(259757);
+    this.apn = paramFloat;
+    this.apr = C(paramFloat);
+    AppMethodBeat.o(259757);
   }
 }
 

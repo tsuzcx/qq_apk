@@ -10,16 +10,27 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class MMService
 {
-  ConcurrentHashMap<String, MMService> NJP = new ConcurrentHashMap();
-  protected Service NJZ;
-  private Vector<Integer> NKa = new Vector();
-  private byte NKb = 0;
-  int cWG = 0;
+  protected Service UXA;
+  private Vector<Integer> UXB = new Vector();
+  private byte UXC = 0;
+  ConcurrentHashMap<String, MMService> UXq = new ConcurrentHashMap();
+  int daG = 0;
+  protected long kdD;
   
-  public IBinder akL()
+  public final void Uq(long paramLong)
+  {
+    this.kdD = paramLong;
+  }
+  
+  public IBinder aqH()
   {
     Log.i(getTag(), "%s onBind()", new Object[] { "MicroMsg.MMService" });
     return null;
+  }
+  
+  public final void d(int paramInt, Notification paramNotification)
+  {
+    this.UXA.startForeground(paramInt, paramNotification);
   }
   
   public String getTag()
@@ -27,9 +38,9 @@ public abstract class MMService
     return "MicroMsg.MMService";
   }
   
-  public final void gxF()
+  public final void htD()
   {
-    this.NJZ.stopForeground(true);
+    this.UXA.stopForeground(true);
   }
   
   public void onCreate()
@@ -61,10 +72,10 @@ public abstract class MMService
     return false;
   }
   
-  public final IBinder q(Intent paramIntent, String paramString)
+  public final IBinder p(Intent paramIntent, String paramString)
   {
     int i = 2;
-    String str = Integer.toBinaryString(this.NKb);
+    String str = Integer.toBinaryString(this.UXC);
     Log.i(getTag(), "%s callLifeCycle() callType = %s state = %s", new Object[] { "MicroMsg.MMService", paramString, str });
     switch (paramString.hashCode())
     {
@@ -106,84 +117,79 @@ public abstract class MMService
               }
               i = 3;
               break label86;
-              if ((this.NKb & 0x5) == 0) {
+              if ((this.UXC & 0x5) == 0) {
                 onCreate();
               }
-              i = this.cWG + 1;
-              this.cWG = i;
+              i = this.daG + 1;
+              this.daG = i;
               onStartCommand(paramIntent, 0, i);
-              this.NKb = ((byte)(this.NKb | 0x1));
+              this.UXC = ((byte)(this.UXC | 0x1));
               return null;
-              if (this.NKb == 1)
+              if (this.UXC == 1)
               {
                 onDestroy();
-                this.NJP.remove(getClass().getName());
+                this.UXq.remove(getClass().getName());
                 return null;
               }
-            } while (this.NKb == 4);
-            if (this.NKb == 5)
+            } while (this.UXC == 4);
+            if (this.UXC == 5)
             {
-              this.NKb = 7;
+              this.UXC = 7;
               return null;
             }
-          } while (this.NKb != 13);
+          } while (this.UXC != 13);
           onDestroy();
-          this.NJP.remove(getClass().getName());
+          this.UXq.remove(getClass().getName());
           return null;
           paramIntent = Integer.valueOf(paramIntent.getIntExtra("service_connection", -1));
-        } while (this.NKa.contains(paramIntent));
-        this.NKa.add(paramIntent);
-        if ((this.NKb & 0x5) == 0) {
+        } while (this.UXB.contains(paramIntent));
+        this.UXB.add(paramIntent);
+        if ((this.UXC & 0x5) == 0) {
           onCreate();
         }
-        this.NKb = ((byte)(this.NKb | 0x4));
-        return akL();
+        this.UXC = ((byte)(this.UXC | 0x4));
+        return aqH();
         i = paramIntent.getIntExtra("service_connection", -1);
-        this.NKa.remove(Integer.valueOf(i));
-      } while (this.NKb == 1);
-      if (this.NKb == 4)
+        this.UXB.remove(Integer.valueOf(i));
+      } while (this.UXC == 1);
+      if (this.UXC == 4)
       {
         onUnbind(paramIntent);
         onDestroy();
-        this.NJP.remove(getClass().getName());
+        this.UXq.remove(getClass().getName());
         return null;
       }
-      if (this.NKb == 5)
+      if (this.UXC == 5)
       {
-        this.NKb = 13;
+        this.UXC = 13;
         onUnbind(paramIntent);
         return null;
       }
-    } while (this.NKb != 7);
+    } while (this.UXC != 7);
     onUnbind(paramIntent);
     onDestroy();
-    this.NJP.remove(getClass().getName());
+    this.UXq.remove(getClass().getName());
     return null;
   }
   
   public final void startActivity(Intent paramIntent)
   {
-    Service localService = this.NJZ;
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bl(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(localService, paramIntent.axQ(), "com/tencent/mm/service/MMService", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    localService.startActivity((Intent)paramIntent.pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(localService, "com/tencent/mm/service/MMService", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-  }
-  
-  public final void startForeground(int paramInt, Notification paramNotification)
-  {
-    this.NJZ.startForeground(paramInt, paramNotification);
+    Service localService = this.UXA;
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(localService, paramIntent.aFh(), "com/tencent/mm/service/MMService", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localService.startActivity((Intent)paramIntent.sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localService, "com/tencent/mm/service/MMService", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
   }
   
   public final void stopSelf()
   {
     Log.i(getTag(), "%s stopSelf()", new Object[] { "MicroMsg.MMService" });
-    q(new Intent(), "stop");
+    p(new Intent(), "stop");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.service.MMService
  * JD-Core Version:    0.7.0.1
  */

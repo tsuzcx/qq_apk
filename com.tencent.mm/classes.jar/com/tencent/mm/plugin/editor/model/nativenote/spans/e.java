@@ -14,8 +14,8 @@ public abstract class e<V, C extends h<V>>
   {
     int k = paramSpannable.getSpanStart(paramObject);
     int i = paramSpannable.getSpanEnd(paramObject);
-    int j = paramg.avh;
-    int m = paramg.Pc;
+    int j = paramg.tH;
+    int m = paramg.tI;
     int n = Math.max(k, j);
     int i1 = Math.min(i, m);
     if (n > i1) {}
@@ -28,24 +28,24 @@ public abstract class e<V, C extends h<V>>
       if (((k > j) && (i < m)) || ((j > k) && (m < i))) {
         return true;
       }
-    } while (paramq == q.qTB);
+    } while (paramq == q.uvH);
     k = paramSpannable.getSpanFlags(paramObject) & 0x33;
     if (i == j) {
-      return e(k, new int[] { 34, 18 });
+      return d(k, new int[] { 34, 18 });
     }
-    return e(k, new int[] { 17, 18 });
+    return d(k, new int[] { 17, 18 });
   }
   
   protected final ArrayList<Object> a(Spannable paramSpannable, g paramg, q paramq)
   {
     int i = 0;
     ArrayList localArrayList = new ArrayList();
-    Object[] arrayOfObject = paramSpannable.getSpans(Math.max(0, paramg.avh - 1), Math.min(paramSpannable.length(), paramg.Pc + 1), CharacterStyle.class);
+    Object[] arrayOfObject = paramSpannable.getSpans(Math.max(0, paramg.tH - 1), Math.min(paramSpannable.length(), paramg.tI + 1), CharacterStyle.class);
     int j = arrayOfObject.length;
     while (i < j)
     {
       Object localObject = arrayOfObject[i];
-      if ((dd(localObject)) && (a(paramSpannable, paramg, localObject, paramq))) {
+      if ((da(localObject)) && (a(paramSpannable, paramg, localObject, paramq))) {
         localArrayList.add(localObject);
       }
       i += 1;
@@ -65,31 +65,31 @@ public abstract class e<V, C extends h<V>>
     {
       i = 18;
       paramWXRTEditText = paramWXRTEditText.getText();
-      Iterator localIterator = a(paramWXRTEditText, localg, q.qTC).iterator();
+      Iterator localIterator = a(paramWXRTEditText, localg, q.uvI).iterator();
       j = i;
       if (!localIterator.hasNext()) {
         break label233;
       }
       localObject = localIterator.next();
-      boolean bool = cEs().equals(paramV);
+      boolean bool = cSY().equals(paramV);
       k = paramWXRTEditText.getSpanStart(localObject);
       i = j;
-      if (k < localg.avh)
+      if (k < localg.tH)
       {
         if (!bool) {
           break label176;
         }
-        localg.fy(localg.avh - k, 0);
+        localg.fV(localg.tH - k, 0);
         i = 34;
       }
       label116:
       j = paramWXRTEditText.getSpanEnd(localObject);
-      if (j > localg.Pc)
+      if (j > localg.tI)
       {
         if (!bool) {
           break label206;
         }
-        localg.fy(0, j - localg.Pc);
+        localg.fV(0, j - localg.tI);
       }
     }
     for (;;)
@@ -100,25 +100,25 @@ public abstract class e<V, C extends h<V>>
       i = 34;
       break;
       label176:
-      cEs();
-      paramWXRTEditText.setSpan(cEr(), k, localg.avh, 33);
+      cSY();
+      paramWXRTEditText.setSpan(cSX(), k, localg.tH, 33);
       i = j;
       break label116;
       label206:
-      cEs();
-      paramWXRTEditText.setSpan(cEr(), localg.Pc, j, 34);
+      cSY();
+      paramWXRTEditText.setSpan(cSX(), localg.tI, j, 34);
     }
     label233:
     if (paramV != null) {
-      paramWXRTEditText.setSpan(cEr(), localg.avh, localg.Pc, j);
+      paramWXRTEditText.setSpan(cSX(), localg.tH, localg.tI, j);
     }
   }
   
-  protected abstract h<V> cEr();
+  protected abstract h<V> cSX();
   
-  protected abstract V cEs();
+  protected abstract V cSY();
   
-  public abstract boolean dd(Object paramObject);
+  public abstract boolean da(Object paramObject);
   
   protected final g r(WXRTEditText paramWXRTEditText)
   {
@@ -127,7 +127,7 @@ public abstract class e<V, C extends h<V>>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.spans.e
  * JD-Core Version:    0.7.0.1
  */

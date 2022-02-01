@@ -13,20 +13,20 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 final class ab
   implements ae
 {
-  private final FirebaseInstanceId bLY;
-  private final a bLi;
-  private final f bLj;
-  final m bMx;
-  private final ScheduledThreadPoolExecutor bMy;
+  private final a bIN;
+  private final f bIO;
+  private final FirebaseInstanceId bJD;
+  final m bKc;
+  private final ScheduledThreadPoolExecutor bKd;
   
   ab(a parama, FirebaseInstanceId paramFirebaseInstanceId, f paramf)
   {
     AppMethodBeat.i(4230);
-    this.bLi = parama;
-    this.bLY = paramFirebaseInstanceId;
-    this.bLj = paramf;
-    this.bMx = new m(parama.getApplicationContext(), paramf);
-    this.bMy = new ScheduledThreadPoolExecutor(1);
+    this.bIN = parama;
+    this.bJD = paramFirebaseInstanceId;
+    this.bIO = paramf;
+    this.bKc = new m(parama.getApplicationContext(), paramf);
+    this.bKd = new ScheduledThreadPoolExecutor(1);
     AppMethodBeat.o(4230);
   }
   
@@ -37,17 +37,17 @@ final class ab
     paramBundle.putString("sender", paramString1);
     paramBundle.putString("subtype", paramString1);
     paramBundle.putString("appid", FirebaseInstanceId.zzf());
-    paramBundle.putString("gmp_app_id", this.bLi.xR().zzs);
-    paramBundle.putString("gmsv", Integer.toString(this.bLj.yp()));
+    paramBundle.putString("gmp_app_id", this.bIN.yl().zzs);
+    paramBundle.putString("gmsv", Integer.toString(this.bIO.yJ()));
     paramBundle.putString("osv", Integer.toString(Build.VERSION.SDK_INT));
-    paramBundle.putString("app_ver", this.bLj.yn());
-    paramBundle.putString("app_ver_name", this.bLj.yo());
+    paramBundle.putString("app_ver", this.bIO.yH());
+    paramBundle.putString("app_ver_name", this.bIO.yI());
     paramBundle.putString("cliv", "fiid-12451000");
     AppMethodBeat.o(4232);
     return paramBundle;
   }
   
-  final String j(Bundle paramBundle)
+  final String l(Bundle paramBundle)
   {
     AppMethodBeat.i(4233);
     if (paramBundle == null)
@@ -71,7 +71,7 @@ final class ab
     str = paramBundle.getString("error");
     if ("RST".equals(str))
     {
-      this.bLY.yh();
+      this.bJD.yB();
       paramBundle = new IOException("INSTANCE_ID_RESET");
       AppMethodBeat.o(4233);
       throw paramBundle;
@@ -90,21 +90,21 @@ final class ab
     throw paramBundle;
   }
   
-  public final Task<String> q(String paramString1, String paramString2)
+  public final Task<String> u(String paramString1, String paramString2)
   {
     AppMethodBeat.i(4231);
     Bundle localBundle = new Bundle();
     c(paramString1, paramString2, localBundle);
     paramString1 = new TaskCompletionSource();
-    this.bMy.execute(new ac(this, localBundle, paramString1));
-    paramString1 = paramString1.getTask().continueWith(this.bMy, new ad(this));
+    this.bKd.execute(new ac(this, localBundle, paramString1));
+    paramString1 = paramString1.getTask().continueWith(this.bKd, new ad(this));
     AppMethodBeat.o(4231);
     return paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.ab
  * JD-Core Version:    0.7.0.1
  */

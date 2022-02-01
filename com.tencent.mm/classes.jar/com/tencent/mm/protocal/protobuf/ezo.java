@@ -1,111 +1,73 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
+import com.tencent.mm.cd.b;
 
 public final class ezo
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String KTg;
-  public String MRZ;
-  public int Scene;
+  public int UzP;
+  public b UzQ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32558);
+    AppMethodBeat.i(115856);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.MRZ == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: Talker");
-        AppMethodBeat.o(32558);
-        throw paramVarArgs;
+      paramVarArgs.aY(1, this.UzP);
+      if (this.UzQ != null) {
+        paramVarArgs.c(2, this.UzQ);
       }
-      if (this.KTg == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: Text");
-        AppMethodBeat.o(32558);
-        throw paramVarArgs;
-      }
-      if (this.MRZ != null) {
-        paramVarArgs.e(1, this.MRZ);
-      }
-      if (this.KTg != null) {
-        paramVarArgs.e(2, this.KTg);
-      }
-      paramVarArgs.aM(3, this.Scene);
-      AppMethodBeat.o(32558);
+      AppMethodBeat.o(115856);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.MRZ == null) {
-        break label427;
-      }
-    }
-    label427:
-    for (paramInt = g.a.a.b.b.a.f(1, this.MRZ) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.KTg != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.KTg);
+      int i = g.a.a.b.b.a.bM(1, this.UzP) + 0;
+      paramInt = i;
+      if (this.UzQ != null) {
+        paramInt = i + g.a.a.b.b.a.b(2, this.UzQ);
       }
-      paramInt = g.a.a.b.b.a.bu(3, this.Scene);
-      AppMethodBeat.o(32558);
-      return i + paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
-          }
-        }
-        if (this.MRZ == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: Talker");
-          AppMethodBeat.o(32558);
-          throw paramVarArgs;
-        }
-        if (this.KTg == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: Text");
-          AppMethodBeat.o(32558);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(32558);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-        ezo localezo = (ezo)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(32558);
-          return -1;
-        case 1: 
-          localezo.MRZ = locala.UbS.readString();
-          AppMethodBeat.o(32558);
-          return 0;
-        case 2: 
-          localezo.KTg = locala.UbS.readString();
-          AppMethodBeat.o(32558);
-          return 0;
-        }
-        localezo.Scene = locala.UbS.zi();
-        AppMethodBeat.o(32558);
-        return 0;
-      }
-      AppMethodBeat.o(32558);
-      return -1;
+      AppMethodBeat.o(115856);
+      return paramInt;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.iUs();
+        }
+      }
+      AppMethodBeat.o(115856);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      ezo localezo = (ezo)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(115856);
+        return -1;
+      case 1: 
+        localezo.UzP = locala.abFh.AK();
+        AppMethodBeat.o(115856);
+        return 0;
+      }
+      localezo.UzQ = locala.abFh.iUw();
+      AppMethodBeat.o(115856);
+      return 0;
+    }
+    AppMethodBeat.o(115856);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ezo
  * JD-Core Version:    0.7.0.1
  */

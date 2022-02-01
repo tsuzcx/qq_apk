@@ -8,13 +8,15 @@ import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import java.util.List;
 
 final class d$a
   extends BaseAdapter
 {
-  int BaH = -1;
-  List<String> aKs;
+  List<String> GUF;
+  int GUG = -1;
   private final Context context;
   private final int style;
   
@@ -27,9 +29,9 @@ final class d$a
   public final int getCount()
   {
     AppMethodBeat.i(66957);
-    if (this.aKs != null)
+    if (this.GUF != null)
     {
-      int i = this.aKs.size();
+      int i = this.GUF.size();
       AppMethodBeat.o(66957);
       return i;
     }
@@ -54,37 +56,37 @@ final class d$a
     paramViewGroup = paramView;
     if (paramView == null)
     {
-      paramViewGroup = View.inflate(this.context, 2131495589, null);
+      paramViewGroup = View.inflate(this.context, a.g.mm_preference_dialog_item, null);
       paramView = new d.b();
-      paramView.BaI = ((TextView)paramViewGroup.findViewById(2131308977));
-      paramView.BaJ = ((CheckBox)paramViewGroup.findViewById(2131298596));
-      paramView.BaK = ((RadioButton)paramViewGroup.findViewById(2131306483));
+      paramView.zlv = ((TextView)paramViewGroup.findViewById(a.f.text));
+      paramView.GUH = ((CheckBox)paramViewGroup.findViewById(a.f.check));
+      paramView.GUI = ((RadioButton)paramViewGroup.findViewById(a.f.radio));
       paramViewGroup.setTag(paramView);
     }
     paramView = (d.b)paramViewGroup.getTag();
-    paramView.BaI.setText((CharSequence)this.aKs.get(paramInt));
+    paramView.zlv.setText((CharSequence)this.GUF.get(paramInt));
     switch (this.style)
     {
     default: 
-      paramView.BaJ.setVisibility(8);
-      paramView.BaK.setVisibility(8);
+      paramView.GUH.setVisibility(8);
+      paramView.GUI.setVisibility(8);
       AppMethodBeat.o(66958);
       return paramViewGroup;
     case 1: 
-      paramView.BaJ.setVisibility(8);
-      paramView.BaK.setVisibility(0);
-      paramView = paramView.BaK;
-      if (paramInt == this.BaH) {}
+      paramView.GUH.setVisibility(8);
+      paramView.GUI.setVisibility(0);
+      paramView = paramView.GUI;
+      if (paramInt == this.GUG) {}
       for (bool = true;; bool = false)
       {
         paramView.setChecked(bool);
         break;
       }
     }
-    paramView.BaJ.setVisibility(0);
-    paramView.BaK.setVisibility(8);
-    paramView = paramView.BaJ;
-    if (paramInt == this.BaH) {}
+    paramView.GUH.setVisibility(0);
+    paramView.GUI.setVisibility(8);
+    paramView = paramView.GUH;
+    if (paramInt == this.GUG) {}
     for (;;)
     {
       paramView.setChecked(bool);

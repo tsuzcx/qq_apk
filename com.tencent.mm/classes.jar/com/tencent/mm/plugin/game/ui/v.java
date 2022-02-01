@@ -4,12 +4,12 @@ import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.game.report.f;
+import com.tencent.mm.game.report.g;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.game.e.c;
+import com.tencent.mm.plugin.game.d.c;
 import com.tencent.mm.plugin.game.model.o;
-import com.tencent.mm.plugin.game.model.o.k;
+import com.tencent.mm.plugin.game.model.o.l;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
@@ -17,11 +17,11 @@ import java.util.LinkedList;
 public final class v
   implements View.OnClickListener
 {
+  private int CKU;
+  private int Dba;
   private Context mContext;
   private int mPosition;
   private int mScene;
-  private int xGR;
-  private int xWQ;
   
   public v(Context paramContext)
   {
@@ -29,10 +29,10 @@ public final class v
     this.mScene = 13;
   }
   
-  public final void gL(int paramInt1, int paramInt2)
+  public final void hE(int paramInt1, int paramInt2)
   {
-    this.xGR = paramInt1;
-    this.xWQ = 1301;
+    this.CKU = paramInt1;
+    this.Dba = 1301;
     this.mPosition = paramInt2;
   }
   
@@ -40,8 +40,8 @@ public final class v
   {
     AppMethodBeat.i(42415);
     Object localObject = new b();
-    ((b)localObject).bm(paramView);
-    a.b("com/tencent/mm/plugin/game/ui/GameURLClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+    ((b)localObject).bn(paramView);
+    a.c("com/tencent/mm/plugin/game/ui/GameURLClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
     if (paramView.getTag() == null)
     {
       a.a(this, "com/tencent/mm/plugin/game/ui/GameURLClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -52,15 +52,15 @@ public final class v
     if ((paramView.getTag() instanceof o))
     {
       paramView = (o)paramView.getTag();
-      if (!Util.isNullOrNil(paramView.xFe))
+      if (!Util.isNullOrNil(paramView.CJf))
       {
-        localObject = ((o.k)paramView.xFe.get(0)).xGq;
+        localObject = ((o.l)paramView.CJf.get(0)).CKt;
         if (Util.isNullOrNil((String)localObject)) {
           break label189;
         }
-        i = c.aQ(this.mContext, (String)localObject);
-        localObject = f.a(null, null, paramView.xFX, null);
-        f.a(this.mContext, this.mScene, this.xWQ, this.mPosition, i, 0, paramView.field_appId, this.xGR, paramView.field_msgType, paramView.field_gameMsgId, paramView.xFW, (String)localObject);
+        i = c.aY(this.mContext, (String)localObject);
+        localObject = g.a(null, null, paramView.CJY, null);
+        g.a(this.mContext, this.mScene, this.Dba, this.mPosition, i, 0, paramView.field_appId, this.CKU, paramView.field_msgType, paramView.field_gameMsgId, paramView.CJX, (String)localObject);
       }
     }
     for (;;)
@@ -80,15 +80,15 @@ public final class v
           AppMethodBeat.o(42415);
           return;
         }
-        i = c.aQ(this.mContext, paramView);
-        f.a(this.mContext, this.mScene, this.xWQ, this.mPosition, i, this.xGR, null);
+        i = c.aY(this.mContext, paramView);
+        g.a(this.mContext, this.mScene, this.Dba, this.mPosition, i, this.CKU, null);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.v
  * JD-Core Version:    0.7.0.1
  */

@@ -8,35 +8,35 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g
   extends JceStruct
 {
-  public String SLM = "";
-  public String SLN = "";
-  public String SLO = "";
+  public String aanH = "";
+  public String aanI = "";
+  public String aanJ = "";
   
   public final void display(StringBuilder paramStringBuilder, int paramInt) {}
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(214845);
-    this.SLM = paramJceInputStream.readString(0, true);
-    this.SLO = paramJceInputStream.readString(1, true);
-    this.SLN = paramJceInputStream.readString(2, false);
-    AppMethodBeat.o(214845);
+    AppMethodBeat.i(207481);
+    this.aanH = paramJceInputStream.readString(0, true);
+    this.aanJ = paramJceInputStream.readString(1, true);
+    this.aanI = paramJceInputStream.readString(2, false);
+    AppMethodBeat.o(207481);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(214844);
-    paramJceOutputStream.write(this.SLM, 0);
-    paramJceOutputStream.write(this.SLO, 1);
-    if (this.SLN != null) {
-      paramJceOutputStream.write(this.SLN, 2);
+    AppMethodBeat.i(207479);
+    paramJceOutputStream.write(this.aanH, 0);
+    paramJceOutputStream.write(this.aanJ, 1);
+    if (this.aanI != null) {
+      paramJceOutputStream.write(this.aanI, 2);
     }
-    AppMethodBeat.o(214844);
+    AppMethodBeat.o(207479);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     d.g
  * JD-Core Version:    0.7.0.1
  */

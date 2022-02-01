@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.report.service;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int Cya;
-  public int Cyb;
-  public boolean Cyc;
-  public int ID;
+  public int IyZ;
+  public int Iza;
+  public boolean Izb;
+  public int ffF;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -16,28 +16,28 @@ public final class b
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.ID);
-      paramVarArgs.aM(2, this.Cya);
-      paramVarArgs.aM(3, this.Cyb);
-      paramVarArgs.cc(4, this.Cyc);
+      paramVarArgs.aY(1, this.ffF);
+      paramVarArgs.aY(2, this.IyZ);
+      paramVarArgs.aY(3, this.Iza);
+      paramVarArgs.co(4, this.Izb);
       AppMethodBeat.o(143818);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.bu(1, this.ID);
-      int i = g.a.a.b.b.a.bu(2, this.Cya);
-      int j = g.a.a.b.b.a.bu(3, this.Cyb);
-      int k = g.a.a.b.b.a.fS(4);
+      paramInt = g.a.a.b.b.a.bM(1, this.ffF);
+      int i = g.a.a.b.b.a.bM(2, this.IyZ);
+      int j = g.a.a.b.b.a.bM(3, this.Iza);
+      int k = g.a.a.b.b.a.gL(4);
       AppMethodBeat.o(143818);
       return paramInt + 0 + i + j + (k + 1);
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
       AppMethodBeat.o(143818);
@@ -53,19 +53,19 @@ public final class b
         AppMethodBeat.o(143818);
         return -1;
       case 1: 
-        localb.ID = locala.UbS.zi();
+        localb.ffF = locala.abFh.AK();
         AppMethodBeat.o(143818);
         return 0;
       case 2: 
-        localb.Cya = locala.UbS.zi();
+        localb.IyZ = locala.abFh.AK();
         AppMethodBeat.o(143818);
         return 0;
       case 3: 
-        localb.Cyb = locala.UbS.zi();
+        localb.Iza = locala.abFh.AK();
         AppMethodBeat.o(143818);
         return 0;
       }
-      localb.Cyc = locala.UbS.yZ();
+      localb.Izb = locala.abFh.AB();
       AppMethodBeat.o(143818);
       return 0;
     }
@@ -75,7 +75,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.report.service.b
  * JD-Core Version:    0.7.0.1
  */

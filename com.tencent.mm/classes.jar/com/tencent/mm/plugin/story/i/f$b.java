@@ -5,17 +5,17 @@ import kotlin.g.a.m;
 import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "i", "", "j", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "i", "", "j", "invoke"})
 final class f$b
   extends q
   implements m<Long, Long, Boolean>
 {
-  public static final b Fwf;
+  public static final b LQi;
   
   static
   {
     AppMethodBeat.i(119489);
-    Fwf = new b();
+    LQi = new b();
     AppMethodBeat.o(119489);
   }
   

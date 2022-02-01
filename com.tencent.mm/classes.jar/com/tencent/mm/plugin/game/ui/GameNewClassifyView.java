@@ -10,12 +10,14 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.game.report.f;
+import com.tencent.mm.game.report.g;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.game.e.c;
-import com.tencent.mm.plugin.game.e.e;
-import com.tencent.mm.plugin.game.protobuf.ef;
+import com.tencent.mm.plugin.game.d.c;
+import com.tencent.mm.plugin.game.d.e;
+import com.tencent.mm.plugin.game.g.e;
+import com.tencent.mm.plugin.game.g.f;
 import com.tencent.mm.plugin.game.protobuf.eg;
+import com.tencent.mm.plugin.game.protobuf.eh;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 
@@ -23,63 +25,63 @@ public class GameNewClassifyView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private LayoutInflater kgB;
-  private LinearLayout tmh;
-  private int xGR;
+  private int CKU;
+  private LayoutInflater mYa;
+  private LinearLayout wSF;
   
   public GameNewClassifyView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  public final void a(eg parameg, int paramInt1, int paramInt2)
+  public final void a(eh parameh, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(42315);
-    if ((parameg == null) || (Util.isNullOrNil(parameg.xKD)))
+    if ((parameh == null) || (Util.isNullOrNil(parameh.COK)))
     {
       setVisibility(8);
       AppMethodBeat.o(42315);
       return;
     }
-    this.xGR = paramInt2;
-    if (this.kgB == null) {
-      this.kgB = ((LayoutInflater)getContext().getSystemService("layout_inflater"));
+    this.CKU = paramInt2;
+    if (this.mYa == null) {
+      this.mYa = ((LayoutInflater)getContext().getSystemService("layout_inflater"));
     }
-    this.tmh.removeAllViews();
+    this.wSF.removeAllViews();
     LinearLayout localLinearLayout;
-    while (this.tmh.getChildCount() < parameg.xKD.size())
+    while (this.wSF.getChildCount() < parameh.COK.size())
     {
-      localLinearLayout = (LinearLayout)this.kgB.inflate(2131494929, this, false);
+      localLinearLayout = (LinearLayout)this.mYa.inflate(g.f.CnT, this, false);
       localLinearLayout.setOnClickListener(this);
-      this.tmh.addView(localLinearLayout, new LinearLayout.LayoutParams(-2, -2, 1.0F));
+      this.wSF.addView(localLinearLayout, new LinearLayout.LayoutParams(-2, -2, 1.0F));
     }
     paramInt2 = 0;
-    if (paramInt2 < this.tmh.getChildCount())
+    if (paramInt2 < this.wSF.getChildCount())
     {
-      if (paramInt2 < parameg.xKD.size()) {
-        this.tmh.getChildAt(paramInt2).setVisibility(0);
+      if (paramInt2 < parameh.COK.size()) {
+        this.wSF.getChildAt(paramInt2).setVisibility(0);
       }
       for (;;)
       {
         paramInt2 += 1;
         break;
-        this.tmh.getChildAt(paramInt2).setVisibility(8);
+        this.wSF.getChildAt(paramInt2).setVisibility(8);
       }
     }
     paramInt2 = 0;
-    while (paramInt2 < parameg.xKD.size())
+    while (paramInt2 < parameh.COK.size())
     {
-      localLinearLayout = (LinearLayout)this.tmh.getChildAt(paramInt2);
-      ImageView localImageView = (ImageView)localLinearLayout.findViewById(2131301890);
-      TextView localTextView = (TextView)localLinearLayout.findViewById(2131301891);
-      e.dWR().o(localImageView, ((ef)parameg.xKD.get(paramInt2)).IconUrl);
-      localTextView.setText(((ef)parameg.xKD.get(paramInt2)).Title);
-      localLinearLayout.setTag(new a(((ef)parameg.xKD.get(paramInt2)).xIy, paramInt2 + 1, ((ef)parameg.xKD.get(paramInt2)).xJt));
+      localLinearLayout = (LinearLayout)this.wSF.getChildAt(paramInt2);
+      ImageView localImageView = (ImageView)localLinearLayout.findViewById(g.e.ChY);
+      TextView localTextView = (TextView)localLinearLayout.findViewById(g.e.ChZ);
+      e.eAa().o(localImageView, ((eg)parameh.COK.get(paramInt2)).CNj);
+      localTextView.setText(((eg)parameh.COK.get(paramInt2)).fwr);
+      localLinearLayout.setTag(new a(((eg)parameh.COK.get(paramInt2)).CMD, paramInt2 + 1, ((eg)parameh.COK.get(paramInt2)).CNA));
       paramInt2 += 1;
     }
     setVisibility(0);
     if (paramInt1 == 2) {
-      com.tencent.mm.plugin.game.d.a.b(getContext(), 10, 1019, 0, null, this.xGR, null);
+      com.tencent.mm.plugin.game.c.a.b(getContext(), 10, 1019, 0, null, this.CKU, null);
     }
     AppMethodBeat.o(42315);
   }
@@ -88,8 +90,8 @@ public class GameNewClassifyView
   {
     AppMethodBeat.i(42316);
     b localb = new b();
-    localb.bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameNewClassifyView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    localb.bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/ui/GameNewClassifyView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
     if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof a)))
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameNewClassifyView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -99,8 +101,8 @@ public class GameNewClassifyView
     paramView = (a)paramView.getTag();
     if (!Util.isNullOrNil(paramView.url))
     {
-      c.aQ(getContext(), paramView.url);
-      f.a(getContext(), 10, 1019, paramView.position, 7, null, this.xGR, com.tencent.mm.plugin.game.d.a.Fh(paramView.extInfo));
+      c.aY(getContext(), paramView.url);
+      g.a(getContext(), 10, 1019, paramView.position, 7, null, this.CKU, com.tencent.mm.plugin.game.c.a.Md(paramView.extInfo));
     }
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameNewClassifyView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(42316);
@@ -110,8 +112,8 @@ public class GameNewClassifyView
   {
     AppMethodBeat.i(42314);
     super.onFinishInflate();
-    this.kgB = ((LayoutInflater)getContext().getSystemService("layout_inflater"));
-    this.tmh = ((LinearLayout)findViewById(2131302022));
+    this.mYa = ((LayoutInflater)getContext().getSystemService("layout_inflater"));
+    this.wSF = ((LinearLayout)findViewById(g.e.CjO));
     AppMethodBeat.o(42314);
   }
   
@@ -131,7 +133,7 @@ public class GameNewClassifyView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameNewClassifyView
  * JD-Core Version:    0.7.0.1
  */

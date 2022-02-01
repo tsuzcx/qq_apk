@@ -9,55 +9,55 @@ import com.tencent.mm.sdk.storage.MAutoStorage;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/background/VideoEditDataStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "cleanExpiredTask", "", "deleteByTaskId", "taskId", "", "droptable", "", "getByTaskId", "getLastDataIfNoMix", "limitTime", "", "updateByTaskId", "editorData", "Companion", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/background/VideoEditDataStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "cleanExpiredTask", "", "deleteByTaskId", "taskId", "", "droptable", "", "getByTaskId", "getLastDataIfNoMix", "limitTime", "", "updateByTaskId", "editorData", "Companion", "plugin-recordvideo_release"})
 public final class d
   extends MAutoStorage<c>
 {
-  public static final a BKl;
+  static final String Alf = "VideoEditInfo";
+  public static final a HGv;
   private static final String[] SQL_CREATE;
-  static final String TABLE = "VideoEditInfo";
   private static final String TAG = "MicroMsg.VideoEditDataStorage";
   final ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(75188);
-    BKl = new a((byte)0);
+    HGv = new a((byte)0);
     TAG = "MicroMsg.VideoEditDataStorage";
-    Object localObject = c.BKh;
-    localObject = c.eIL();
-    c.a locala = c.BKh;
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs((IAutoDBItem.MAutoDBInfo)localObject, c.eIM()) };
-    localObject = c.BKh;
-    TABLE = c.eIM();
+    Object localObject = c.HGr;
+    localObject = c.bHK();
+    c.a locala = c.HGr;
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs((IAutoDBItem.MAutoDBInfo)localObject, c.fuQ()) };
+    localObject = c.HGr;
+    Alf = c.fuQ();
     AppMethodBeat.o(75188);
   }
   
   public d(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, (IAutoDBItem.MAutoDBInfo)localObject1, (String)localObject2, c.eIN());
+    super(paramISQLiteDatabase, (IAutoDBItem.MAutoDBInfo)localObject1, (String)localObject2, c.fuR());
     AppMethodBeat.i(75187);
     this.db = paramISQLiteDatabase;
     AppMethodBeat.o(75187);
   }
   
   /* Error */
-  public final c HX(long paramLong)
+  public final c Pr(long paramLong)
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore 5
     //   3: ldc 114
     //   5: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 120	kotlin/g/b/ae:SYK	Lkotlin/g/b/ae;
+    //   8: getstatic 120	kotlin/g/b/af:aaBG	Lkotlin/g/b/af;
     //   11: astore 4
-    //   13: getstatic 87	com/tencent/mm/plugin/recordvideo/background/d:TABLE	Ljava/lang/String;
+    //   13: getstatic 87	com/tencent/mm/plugin/recordvideo/background/d:Alf	Ljava/lang/String;
     //   16: astore 4
-    //   18: getstatic 126	com/tencent/mm/plugin/recordvideo/background/c$b:BKk	Lcom/tencent/mm/plugin/recordvideo/background/c$b;
+    //   18: getstatic 126	com/tencent/mm/plugin/recordvideo/background/c$b:HGu	Lcom/tencent/mm/plugin/recordvideo/background/c$b;
     //   21: astore 6
-    //   23: invokestatic 130	com/tencent/mm/plugin/recordvideo/background/c$b:bTk	()I
+    //   23: invokestatic 130	com/tencent/mm/plugin/recordvideo/background/c$b:cgp	()I
     //   26: istore_3
-    //   27: getstatic 126	com/tencent/mm/plugin/recordvideo/background/c$b:BKk	Lcom/tencent/mm/plugin/recordvideo/background/c$b;
+    //   27: getstatic 126	com/tencent/mm/plugin/recordvideo/background/c$b:HGu	Lcom/tencent/mm/plugin/recordvideo/background/c$b;
     //   30: astore 6
     //   32: ldc 132
     //   34: bipush 8
@@ -77,7 +77,7 @@ public final class d
     //   55: aastore
     //   56: dup
     //   57: iconst_3
-    //   58: invokestatic 145	com/tencent/mm/plugin/recordvideo/background/c$b:eIP	()I
+    //   58: invokestatic 145	com/tencent/mm/plugin/recordvideo/background/c$b:fuT	()I
     //   61: invokestatic 142	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   64: aastore
     //   65: dup
@@ -103,7 +103,7 @@ public final class d
     //   97: astore 4
     //   99: aload 4
     //   101: ldc 166
-    //   103: invokestatic 169	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   103: invokestatic 169	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
     //   106: aload_0
     //   107: aload 4
     //   109: iconst_0
@@ -135,7 +135,7 @@ public final class d
     //   171: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   174: aload 7
     //   176: areturn
-    //   177: getstatic 198	kotlin/x:SXb	Lkotlin/x;
+    //   177: getstatic 198	kotlin/x:aazN	Lkotlin/x;
     //   180: astore 4
     //   182: aload 6
     //   184: aconst_null
@@ -183,17 +183,17 @@ public final class d
   public final int a(String paramString, c paramc)
   {
     AppMethodBeat.i(75184);
-    p.h(paramString, "taskId");
-    p.h(paramc, "editorData");
+    p.k(paramString, "taskId");
+    p.k(paramc, "editorData");
     paramc = paramc.convertTo();
     paramc.remove("rowid");
-    int i = this.db.update(TABLE, paramc, "taskId=?", new String[] { String.valueOf(paramString) });
+    int i = this.db.update(Alf, paramc, "taskId=?", new String[] { String.valueOf(paramString) });
     AppMethodBeat.o(75184);
     return i;
   }
   
   /* Error */
-  public final c aLe(String paramString)
+  public final c aVG(String paramString)
   {
     // Byte code:
     //   0: aconst_null
@@ -202,15 +202,15 @@ public final class d
     //   4: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_1
     //   8: ldc 201
-    //   10: invokestatic 98	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   13: getstatic 120	kotlin/g/b/ae:SYK	Lkotlin/g/b/ae;
+    //   10: invokestatic 98	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   13: getstatic 120	kotlin/g/b/af:aaBG	Lkotlin/g/b/af;
     //   16: astore_3
     //   17: ldc 230
     //   19: iconst_3
     //   20: anewarray 134	java/lang/Object
     //   23: dup
     //   24: iconst_0
-    //   25: getstatic 87	com/tencent/mm/plugin/recordvideo/background/d:TABLE	Ljava/lang/String;
+    //   25: getstatic 87	com/tencent/mm/plugin/recordvideo/background/d:Alf	Ljava/lang/String;
     //   28: aastore
     //   29: dup
     //   30: iconst_1
@@ -226,7 +226,7 @@ public final class d
     //   45: astore_1
     //   46: aload_1
     //   47: ldc 166
-    //   49: invokestatic 169	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   49: invokestatic 169	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
     //   52: aload_0
     //   53: aload_1
     //   54: iconst_0
@@ -258,7 +258,7 @@ public final class d
     //   107: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   110: aload 4
     //   112: areturn
-    //   113: getstatic 198	kotlin/x:SXb	Lkotlin/x;
+    //   113: getstatic 198	kotlin/x:aazN	Lkotlin/x;
     //   116: astore_1
     //   117: aload_3
     //   118: aconst_null
@@ -299,15 +299,15 @@ public final class d
     //   113	117	150	finally
   }
   
-  public final void eIQ()
+  public final void fuU()
   {
     AppMethodBeat.i(75186);
-    int i = this.db.delete(TABLE, null, null);
+    int i = this.db.delete(Alf, null, null);
     Log.i(TAG, "dropTable ".concat(String.valueOf(i)));
     AppMethodBeat.o(75186);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/background/VideoEditDataStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TABLE", "getTABLE", "()Ljava/lang/String;", "TAG", "getTAG", "plugin-recordvideo_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/background/VideoEditDataStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TABLE", "getTABLE", "()Ljava/lang/String;", "TAG", "getTAG", "plugin-recordvideo_release"})
   public static final class a {}
 }
 

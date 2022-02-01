@@ -1,25 +1,18 @@
 package com.tencent.mm.plugin.finder.presenter.contract;
 
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/presenter/contract/FinderLiveWeCoinHotConstract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/presenter/contract/FinderLiveWeCoinHotConstract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"})
 public final class FinderLiveWeCoinHotConstract
 {
-  public static final FinderLiveWeCoinHotConstract uXL;
+  public static final FinderLiveWeCoinHotConstract zNY;
   
   static
   {
-    AppMethodBeat.i(249846);
-    uXL = new FinderLiveWeCoinHotConstract();
-    AppMethodBeat.o(249846);
+    AppMethodBeat.i(284711);
+    zNY = new FinderLiveWeCoinHotConstract();
+    AppMethodBeat.o(284711);
   }
 }
 

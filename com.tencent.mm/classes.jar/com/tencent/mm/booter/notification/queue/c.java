@@ -13,7 +13,7 @@ import java.net.URLEncoder;
 
 public final class c
 {
-  public static Serializable Db(String paramString)
+  public static Serializable JS(String paramString)
   {
     AppMethodBeat.i(20035);
     if (Util.isNullOrNil(paramString))
@@ -49,7 +49,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.booter.notification.queue.c
  * JD-Core Version:    0.7.0.1
  */

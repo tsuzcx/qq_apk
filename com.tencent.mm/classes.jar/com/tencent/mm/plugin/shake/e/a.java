@@ -9,12 +9,12 @@ import java.util.Map;
 
 public final class a
 {
-  public LinkedList<a> mRG;
+  public LinkedList<a> pSC;
   
   public a()
   {
     AppMethodBeat.i(28614);
-    this.mRG = new LinkedList();
+    this.pSC = new LinkedList();
     AppMethodBeat.o(28614);
   }
   
@@ -36,7 +36,7 @@ public final class a
         if (Util.isNullOrNil((String)localObject)) {
           break label197;
         }
-        locala.DlO.add(localObject);
+        locala.Jrq.add(localObject);
         i += 1;
         break;
       }
@@ -49,16 +49,16 @@ public final class a
     {
       AppMethodBeat.o(28616);
       return locala;
-      locala.daA = Util.nullAsNil((String)paramMap.get(paramString + ".h5url.link"));
-      locala.DlP = Util.nullAsNil((String)paramMap.get(paramString + ".h5url.title"));
-      locala.DlQ = Util.nullAsNil((String)paramMap.get(paramString + ".h5url.username"));
+      locala.GRy = Util.nullAsNil((String)paramMap.get(paramString + ".h5url.link"));
+      locala.Jrr = Util.nullAsNil((String)paramMap.get(paramString + ".h5url.title"));
+      locala.Jrs = Util.nullAsNil((String)paramMap.get(paramString + ".h5url.username"));
       continue;
-      locala.daA = Util.nullAsNil((String)paramMap.get(paramString + ".bizprofile.username"));
-      locala.DlP = Util.nullAsNil((String)paramMap.get(paramString + ".bizprofile.showchat"));
+      locala.GRy = Util.nullAsNil((String)paramMap.get(paramString + ".bizprofile.username"));
+      locala.Jrr = Util.nullAsNil((String)paramMap.get(paramString + ".bizprofile.showchat"));
       continue;
-      locala.daA = Util.nullAsNil((String)paramMap.get(paramString + ".nativepay.wx_pay_url"));
+      locala.GRy = Util.nullAsNil((String)paramMap.get(paramString + ".nativepay.wx_pay_url"));
       continue;
-      locala.daA = Util.nullAsNil((String)paramMap.get(paramString + ".product.product_id"));
+      locala.GRy = Util.nullAsNil((String)paramMap.get(paramString + ".product.product_id"));
     }
   }
   
@@ -107,7 +107,7 @@ public final class a
         break;
       }
       label200:
-      locala1.mRG = ((LinkedList)localObject2);
+      locala1.pSC = ((LinkedList)localObject2);
       i = 1;
     }
     label209:
@@ -129,7 +129,7 @@ public final class a
             break label424;
           }
           localObject1 = new a(m);
-          ((a)localObject1).daA = Util.nullAsNil((String)paramMap.get((String)localObject3 + ".comment.id"));
+          ((a)localObject1).GRy = Util.nullAsNil((String)paramMap.get((String)localObject3 + ".comment.id"));
           ((a)localObject1).title = Util.nullAsNil((String)paramMap.get((String)localObject3 + ".comment.title"));
           if (localObject1 != null) {
             ((LinkedList)localObject2).add(localObject1);
@@ -145,7 +145,7 @@ public final class a
             AppMethodBeat.o(28615);
             return localLinkedList;
           }
-          locala1.mRG = ((LinkedList)localObject2);
+          locala1.pSC = ((LinkedList)localObject2);
           i = 1;
         }
         break label209;
@@ -167,10 +167,10 @@ public final class a
   
   public static final class a
   {
-    public List<String> DlO;
-    public String DlP;
-    public String DlQ;
-    public String daA;
+    public String GRy;
+    public List<String> Jrq;
+    public String Jrr;
+    public String Jrs;
     public String summary;
     public String title;
     public int type;
@@ -178,18 +178,18 @@ public final class a
     public a()
     {
       AppMethodBeat.i(28612);
-      this.DlO = new ArrayList();
-      this.DlP = "";
-      this.DlQ = "";
+      this.Jrq = new ArrayList();
+      this.Jrr = "";
+      this.Jrs = "";
       AppMethodBeat.o(28612);
     }
     
     public a(int paramInt)
     {
       AppMethodBeat.i(28613);
-      this.DlO = new ArrayList();
-      this.DlP = "";
-      this.DlQ = "";
+      this.Jrq = new ArrayList();
+      this.Jrr = "";
+      this.Jrs = "";
       this.type = paramInt;
       AppMethodBeat.o(28613);
     }
@@ -197,7 +197,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.e.a
  * JD-Core Version:    0.7.0.1
  */

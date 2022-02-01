@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.compatible.util.d;
 
 public class KeyBoardUtil
@@ -51,9 +51,9 @@ public class KeyBoardUtil
   
   private static final int dp2px(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(200889);
+    AppMethodBeat.i(248895);
     paramInt = a.fromDPToPix(paramContext, paramInt);
-    AppMethodBeat.o(200889);
+    AppMethodBeat.o(248895);
     return paramInt;
   }
   
@@ -80,21 +80,21 @@ public class KeyBoardUtil
   
   public static final int getKeyBordHeightPx(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(200886);
+    AppMethodBeat.i(248881);
     if (!isFixedHeight)
     {
       if ((LAST_SAVE_KEYBORD_HEIGHT_PX > 0) && (paramBoolean))
       {
         i = LAST_SAVE_KEYBORD_HEIGHT_PX;
-        AppMethodBeat.o(200886);
+        AppMethodBeat.o(248881);
         return i;
       }
       i = getKeyBordHeightPx(paramContext);
-      AppMethodBeat.o(200886);
+      AppMethodBeat.o(248881);
       return i;
     }
     int i = getMinPanelHeightPx(paramContext);
-    AppMethodBeat.o(200886);
+    AppMethodBeat.o(248881);
     return i;
   }
   
@@ -126,9 +126,9 @@ public class KeyBoardUtil
   
   public static final int getMinPanelHeightPx(Context paramContext)
   {
-    AppMethodBeat.i(200888);
+    AppMethodBeat.i(248887);
     int i = getMinPanelHeightPx(paramContext, 0);
-    AppMethodBeat.o(200888);
+    AppMethodBeat.o(248887);
     return i;
   }
   
@@ -237,7 +237,7 @@ public class KeyBoardUtil
     AppMethodBeat.i(125232);
     int i = getMinPanelHeightPx(paramContext, paramInt2);
     Log.e("MicroMsg.KeyBordUtil", "getValidPanelHeight(): minPanelHeight= %d, isOpenIm=%b", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt2) });
-    if ((d.oD(24)) && ((paramContext instanceof Activity))) {}
+    if ((d.qV(24)) && ((paramContext instanceof Activity))) {}
     for (boolean bool = ((Activity)paramContext).isInMultiWindowMode();; bool = false)
     {
       if ((!isPortOrientation(paramContext)) || (bool))
@@ -273,12 +273,12 @@ public class KeyBoardUtil
   
   public static int getVisibleHeight(Activity paramActivity)
   {
-    AppMethodBeat.i(200887);
+    AppMethodBeat.i(248883);
     Rect localRect = new Rect();
     paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
     int i = localRect.bottom;
     int j = localRect.top;
-    AppMethodBeat.o(200887);
+    AppMethodBeat.o(248883);
     return i - j;
   }
   
@@ -331,7 +331,7 @@ public class KeyBoardUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.KeyBoardUtil
  * JD-Core Version:    0.7.0.1
  */

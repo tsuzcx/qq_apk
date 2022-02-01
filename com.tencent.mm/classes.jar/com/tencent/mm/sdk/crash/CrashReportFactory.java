@@ -12,6 +12,7 @@ public class CrashReportFactory
   private static boolean isHookedByXposed;
   private static boolean isX86Env;
   private static boolean onlinePatchBlocked;
+  public static String recentlyDbPoolBusyRunningSql = "";
   private static ICrashReporter reporter;
   
   static
@@ -247,7 +248,7 @@ public class CrashReportFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.crash.CrashReportFactory
  * JD-Core Version:    0.7.0.1
  */

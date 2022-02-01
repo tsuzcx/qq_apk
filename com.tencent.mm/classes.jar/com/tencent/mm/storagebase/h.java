@@ -6,15 +6,13 @@ import android.database.DatabaseUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.f.a;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.report.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabaseEx;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import com.tencent.wcdb.database.SQLiteDatabase;
 import com.tencent.wcdb.repair.DBDumpUtil;
 import com.tencent.wcdb.repair.DBDumpUtil.ExecuteSqlCallback;
@@ -26,32 +24,32 @@ import junit.framework.Assert;
 public class h
   implements ISQLiteDatabaseEx
 {
-  private a OtA;
-  public a OtB;
-  private String OtC;
-  public c OtD;
-  public String OtE;
-  private final LinkedList<Object> OtF;
-  private MMHandler OtG;
   private String TAG;
+  private a VJB;
+  public a VJC;
+  private String VJD;
+  public c VJE;
+  public String VJF;
+  private final LinkedList<Object> VJG;
+  private MMHandler VJH;
   public int field_MARK_CURSOR_CHECK_IGNORE;
-  protected f jNN;
-  private long oKR;
+  protected f mEV;
+  private long rMI;
   
   public h()
   {
     AppMethodBeat.i(133399);
     this.field_MARK_CURSOR_CHECK_IGNORE = 1;
     this.TAG = "MicroMsg.SqliteDB";
-    this.jNN = null;
-    this.OtA = null;
-    this.OtB = new a();
-    this.OtC = "";
-    this.OtD = null;
-    this.OtE = "";
-    this.OtF = new LinkedList();
-    this.OtG = null;
-    this.oKR = 0L;
+    this.mEV = null;
+    this.VJB = null;
+    this.VJC = new a();
+    this.VJD = "";
+    this.VJE = null;
+    this.VJF = "";
+    this.VJG = new LinkedList();
+    this.VJH = null;
+    this.rMI = 0L;
     AppMethodBeat.o(133399);
   }
   
@@ -60,20 +58,20 @@ public class h
     AppMethodBeat.i(133398);
     this.field_MARK_CURSOR_CHECK_IGNORE = 1;
     this.TAG = "MicroMsg.SqliteDB";
-    this.jNN = null;
-    this.OtA = null;
-    this.OtB = new a();
-    this.OtC = "";
-    this.OtD = null;
-    this.OtE = "";
-    this.OtF = new LinkedList();
-    this.OtG = null;
-    this.oKR = 0L;
-    this.OtA = parama;
+    this.mEV = null;
+    this.VJB = null;
+    this.VJC = new a();
+    this.VJD = "";
+    this.VJE = null;
+    this.VJF = "";
+    this.VJG = new LinkedList();
+    this.VJH = null;
+    this.rMI = 0L;
+    this.VJB = parama;
     AppMethodBeat.o(133398);
   }
   
-  public static String Fl(String paramString)
+  public static String Mi(String paramString)
   {
     AppMethodBeat.i(133410);
     if (Util.isNullOrNil(paramString))
@@ -86,7 +84,7 @@ public class h
     return paramString;
   }
   
-  private void blA(String paramString)
+  private void bxZ(String paramString)
   {
     AppMethodBeat.i(133404);
     String str1 = MMApplicationContext.getProcessName();
@@ -98,25 +96,25 @@ public class h
     AppMethodBeat.o(133404);
   }
   
-  public void CL(String paramString)
+  public void JA(String paramString)
   {
     AppMethodBeat.i(133402);
-    if (this.jNN == null)
+    if (this.mEV == null)
     {
       AppMethodBeat.o(133402);
       return;
     }
-    if (this.OtA != null) {
-      this.OtA.azX();
+    if (this.VJB != null) {
+      this.VJB.aHw();
     }
-    Log.w(this.TAG, "begin close db, inTrans:%b ticket:%s  thr:%d {%s}", new Object[] { Boolean.valueOf(inTransaction()), Long.toHexString(this.oKR), Long.valueOf(Thread.currentThread().getId()), Util.getStack() });
+    Log.w(this.TAG, "begin close db, inTrans:%b ticket:%s  thr:%d {%s}", new Object[] { Boolean.valueOf(inTransaction()), Long.toHexString(this.rMI), Long.valueOf(Thread.currentThread().getId()), Util.getStack() });
     f.a locala = new f.a();
     if (paramString != null) {
-      this.OtC = paramString;
+      this.VJD = paramString;
     }
-    this.jNN.close();
-    this.jNN = null;
-    Log.d(this.TAG, "end close db time:%d", new Object[] { Long.valueOf(locala.apr()) });
+    this.mEV.close();
+    this.mEV = null;
+    Log.d(this.TAG, "end close db time:%d", new Object[] { Long.valueOf(locala.avE()) });
     AppMethodBeat.o(133402);
   }
   
@@ -135,21 +133,21 @@ public class h
     int k = WXHardCoderJNI.hcDBCPU;
     int m = WXHardCoderJNI.hcDBIO;
     if (WXHardCoderJNI.hcDBThr) {
-      i = g.aAk().getProcessTid();
+      i = com.tencent.mm.kernel.h.aHJ().getProcessTid();
     }
     i = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcDBTimeout, 501, WXHardCoderJNI.hcDBActionWrite, this.TAG);
     c.begin();
     try
     {
-      long l = this.jNN.insert(paramString1, paramString2, paramContentValues);
-      c.a(paramString1, null, this.oKR);
+      long l = this.mEV.insert(paramString1, paramString2, paramContentValues);
+      c.a(paramString1, null, this.rMI);
       return l;
     }
     catch (Exception paramString1)
     {
-      e.Cxv.idkeyStat(181L, 11L, 1L, false);
+      com.tencent.mm.plugin.report.f.Iyx.idkeyStat(181L, 11L, 1L, false);
       Log.e(this.TAG, "insert Error :" + paramString1.getMessage());
-      c.p(paramString1);
+      c.l(paramString1);
       return -1L;
     }
     finally
@@ -159,7 +157,7 @@ public class h
     }
   }
   
-  public final boolean a(String paramString1, String paramString2, long paramLong, HashMap<Integer, b> paramHashMap)
+  public final boolean a(String paramString1, String paramString2, long paramLong, HashMap<Integer, h.b> paramHashMap)
   {
     AppMethodBeat.i(133407);
     boolean bool = b(paramString1, paramString2, "", paramLong, paramHashMap, true);
@@ -176,54 +174,62 @@ public class h
       AppMethodBeat.o(133415);
       return false;
     }
-    boolean bool = DBDumpUtil.doRecoveryDb(this.jNN.Otb, paramString1, paramString2, paramString3, paramList, null, paramExecuteSqlCallback, true);
+    boolean bool = DBDumpUtil.doRecoveryDb(this.mEV.VJf, paramString1, paramString2, paramString3, paramList, null, paramExecuteSqlCallback, true);
     AppMethodBeat.o(133415);
     return bool;
   }
   
-  public final boolean a(String paramString, HashMap<Integer, b> paramHashMap, boolean paramBoolean)
+  public final boolean a(String paramString, HashMap<Integer, h.b> paramHashMap, boolean paramBoolean)
   {
     AppMethodBeat.i(133405);
     int i = paramString.lastIndexOf("/");
     if (i != -1) {
       this.TAG = (this.TAG + "." + paramString.substring(i + 1));
     }
-    blA(paramString);
-    if ((this.OtB.a(paramString, paramHashMap, true, paramBoolean)) && (this.OtB.jNN != null))
+    bxZ(paramString);
+    if ((this.VJC.a(paramString, paramHashMap, true, paramBoolean)) && (this.VJC.mEV != null))
     {
-      this.jNN = this.OtB.jNN;
-      Log.i(this.TAG, "SqliteDB db %s", new Object[] { this.jNN });
+      this.mEV = this.VJC.mEV;
+      Log.i(this.TAG, "SqliteDB db %s", new Object[] { this.mEV });
       AppMethodBeat.o(133405);
       return true;
     }
-    this.jNN = null;
-    this.OtB = null;
+    this.mEV = null;
+    this.VJC = null;
     Log.e(this.TAG, "initDB failed.");
     AppMethodBeat.o(133405);
     return false;
   }
   
-  public final boolean b(String paramString1, String paramString2, String paramString3, long paramLong, HashMap<Integer, b> paramHashMap, boolean paramBoolean)
+  public final boolean b(String paramString1, String paramString2, String paramString3, long paramLong, HashMap<Integer, h.b> paramHashMap, boolean paramBoolean)
   {
     AppMethodBeat.i(133406);
     int i = paramString1.lastIndexOf("/");
     if (i != -1) {
       this.TAG = (this.TAG + "." + paramString1.substring(i + 1));
     }
-    blA(paramString2);
-    if ((this.OtB.a(paramString1, paramString2, paramString3, paramLong, paramHashMap, paramBoolean)) && (this.OtB.jNN != null))
+    bxZ(paramString2);
+    if ((this.VJC.a(paramString1, paramString2, paramString3, paramLong, paramHashMap, paramBoolean)) && (this.VJC.mEV != null))
     {
-      this.OtE = this.OtB.getError();
-      this.jNN = this.OtB.jNN;
+      this.VJF = this.VJC.getError();
+      this.mEV = this.VJC.mEV;
       AppMethodBeat.o(133406);
       return true;
     }
-    this.OtE = this.OtB.getError();
-    this.jNN = null;
-    this.OtB = null;
-    Log.i(this.TAG, "initDB failed. %s", new Object[] { this.OtE });
+    this.VJF = this.VJC.getError();
+    this.mEV = null;
+    this.VJC = null;
+    Log.i(this.TAG, "initDB failed. %s", new Object[] { this.VJF });
     AppMethodBeat.o(133406);
     return false;
+  }
+  
+  public final long bLA()
+  {
+    AppMethodBeat.i(292947);
+    long l = beginTransaction(-1L);
+    AppMethodBeat.o(292947);
+    return l;
   }
   
   public long beginTransaction(long paramLong)
@@ -236,7 +242,7 @@ public class h
       {
         AppMethodBeat.i(133424);
         l2 = Thread.currentThread().getId();
-        Log.i(this.TAG, "beginTransaction thr:(%d,%d) ticket:%d db:%b", new Object[] { Long.valueOf(paramLong), Long.valueOf(l2), Long.valueOf(this.oKR), Boolean.valueOf(isOpen()) });
+        Log.i(this.TAG, "beginTransaction thr:(%d,%d) ticket:%d db:%b", new Object[] { Long.valueOf(paramLong), Long.valueOf(l2), Long.valueOf(this.rMI), Boolean.valueOf(isOpen()) });
         if (!isOpen())
         {
           Log.e(this.TAG, "DB IS CLOSED ! {%s}", new Object[] { Util.getStack() });
@@ -244,9 +250,9 @@ public class h
           AppMethodBeat.o(133424);
           return paramLong;
         }
-        if (this.oKR > 0L)
+        if (this.rMI > 0L)
         {
-          Log.e(this.TAG, "ERROR beginTransaction transactionTicket:" + this.oKR);
+          Log.e(this.TAG, "ERROR beginTransaction transactionTicket:" + this.rMI);
           AppMethodBeat.o(133424);
           paramLong = l1;
           continue;
@@ -268,21 +274,21 @@ public class h
         {
           label219:
           c.begin();
-          this.jNN.beginTransaction();
+          this.mEV.beginTransaction();
           c.a("beginTrans", null, 0L);
-          this.oKR = (Util.nowMilliSecond() & 0x7FFFFFFF);
-          this.oKR |= (l2 & 0x7FFFFFFF) << 32;
-          if (this.OtA != null) {
-            this.OtA.azY();
+          this.rMI = (Util.nowMilliSecond() & 0x7FFFFFFF);
+          this.rMI |= (l2 & 0x7FFFFFFF) << 32;
+          if (this.VJB != null) {
+            this.VJB.aHx();
           }
-          paramLong = this.oKR;
+          paramLong = this.rMI;
           AppMethodBeat.o(133424);
         }
         catch (Exception localException)
         {
-          e.Cxv.idkeyStat(181L, 8L, 1L, false);
+          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(181L, 8L, 1L, false);
           Log.e(this.TAG, "beginTransaction Error :" + localException.getMessage());
-          c.p(localException);
+          c.l(localException);
           paramLong = -3L;
           AppMethodBeat.o(133424);
         }
@@ -290,7 +296,7 @@ public class h
     }
   }
   
-  public final boolean blB(String paramString)
+  public final boolean bya(String paramString)
   {
     AppMethodBeat.i(133423);
     if (!isOpen())
@@ -301,15 +307,15 @@ public class h
     }
     try
     {
-      this.jNN.execSQL("DROP TABLE ".concat(String.valueOf(paramString)));
+      this.mEV.execSQL("DROP TABLE ".concat(String.valueOf(paramString)));
       AppMethodBeat.o(133423);
       return false;
     }
     catch (Exception paramString)
     {
-      e.Cxv.idkeyStat(181L, 11L, 1L, false);
+      com.tencent.mm.plugin.report.f.Iyx.idkeyStat(181L, 11L, 1L, false);
       Log.e(this.TAG, "drop table Error :" + paramString.getMessage());
-      c.p(paramString);
+      c.l(paramString);
       AppMethodBeat.o(133423);
     }
     return false;
@@ -318,14 +324,14 @@ public class h
   public void close()
   {
     AppMethodBeat.i(133426);
-    this.jNN.close();
+    this.mEV.close();
     AppMethodBeat.o(133426);
   }
   
   public void closeDB()
   {
     AppMethodBeat.i(133401);
-    CL(null);
+    JA(null);
     AppMethodBeat.o(133401);
   }
   
@@ -344,21 +350,21 @@ public class h
     int k = WXHardCoderJNI.hcDBCPU;
     int m = WXHardCoderJNI.hcDBIO;
     if (WXHardCoderJNI.hcDBThr) {
-      i = g.aAk().getProcessTid();
+      i = com.tencent.mm.kernel.h.aHJ().getProcessTid();
     }
     i = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcDBTimeout, 501, WXHardCoderJNI.hcDBActionWrite, this.TAG);
     c.begin();
     try
     {
-      j = this.jNN.delete(paramString1, paramString2, paramArrayOfString);
-      c.a(paramString1, null, this.oKR);
+      j = this.mEV.delete(paramString1, paramString2, paramArrayOfString);
+      c.a(paramString1, null, this.rMI);
       return j;
     }
     catch (Exception paramString1)
     {
-      e.Cxv.idkeyStat(181L, 11L, 1L, false);
+      com.tencent.mm.plugin.report.f.Iyx.idkeyStat(181L, 11L, 1L, false);
       Log.e(this.TAG, "delete Error :" + paramString1.getMessage());
-      c.p(paramString1);
+      c.l(paramString1);
       return -1;
     }
     finally
@@ -380,7 +386,7 @@ public class h
         AppMethodBeat.i(133425);
         l1 = Util.nowMilliSecond();
         l2 = Thread.currentThread().getId();
-        Log.i(this.TAG, "endTransaction thr:%d ticket:(%d,%d) db:%b", new Object[] { Long.valueOf(l2), Long.valueOf(paramLong), Long.valueOf(this.oKR), Boolean.valueOf(isOpen()) });
+        Log.i(this.TAG, "endTransaction thr:%d ticket:(%d,%d) db:%b", new Object[] { Long.valueOf(l2), Long.valueOf(paramLong), Long.valueOf(this.rMI), Boolean.valueOf(isOpen()) });
         if (!isOpen())
         {
           Log.e(this.TAG, "DB IS CLOSED ! {%s}", new Object[] { Util.getStack() });
@@ -388,9 +394,9 @@ public class h
           AppMethodBeat.o(133425);
           return i;
         }
-        if (paramLong != this.oKR)
+        if (paramLong != this.rMI)
         {
-          Log.e(this.TAG, "ERROR endTransaction ticket:" + paramLong + " transactionTicket:" + this.oKR);
+          Log.e(this.TAG, "ERROR endTransaction ticket:" + paramLong + " transactionTicket:" + this.rMI);
           i = -1;
           AppMethodBeat.o(133425);
           continue;
@@ -410,20 +416,20 @@ public class h
         try
         {
           c.begin();
-          this.jNN.endTransaction();
-          Log.i(this.TAG, "endTransaction Succ Time:%d thr:%d ticket:(%d,%d) db:%b", new Object[] { Long.valueOf(Util.milliSecondsToNow(l1)), Long.valueOf(l2), Long.valueOf(paramLong), Long.valueOf(this.oKR), Boolean.valueOf(isOpen()) });
+          this.mEV.endTransaction();
+          Log.i(this.TAG, "endTransaction Succ Time:%d thr:%d ticket:(%d,%d) db:%b", new Object[] { Long.valueOf(Util.milliSecondsToNow(l1)), Long.valueOf(l2), Long.valueOf(paramLong), Long.valueOf(this.rMI), Boolean.valueOf(isOpen()) });
           c.a("endTrans", null, 0L);
-          this.oKR = 0L;
-          if (this.OtA != null) {
-            this.OtA.azZ();
+          this.rMI = 0L;
+          if (this.VJB != null) {
+            this.VJB.aHy();
           }
           AppMethodBeat.o(133425);
         }
         catch (Exception localException)
         {
           Log.e(this.TAG, "endTransaction Error :" + localException.getMessage());
-          e.Cxv.idkeyStat(181L, 9L, 1L, false);
-          c.p(localException);
+          com.tencent.mm.plugin.report.f.Iyx.idkeyStat(181L, 9L, 1L, false);
+          c.l(localException);
           i = -3;
           AppMethodBeat.o(133425);
         }
@@ -450,31 +456,31 @@ public class h
     int k = WXHardCoderJNI.hcDBCPU;
     int m = WXHardCoderJNI.hcDBIO;
     if (WXHardCoderJNI.hcDBThr) {}
-    for (int i = g.aAk().getProcessTid();; i = 0)
+    for (int i = com.tencent.mm.kernel.h.aHJ().getProcessTid();; i = 0)
     {
       i = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcDBTimeout, 501, WXHardCoderJNI.hcDBActionWrite, this.TAG);
       c.begin();
       try
       {
-        this.jNN.execSQL(paramString2);
-        c.a(paramString2, null, this.oKR);
+        this.mEV.execSQL(paramString2);
+        c.a(paramString2, null, this.rMI);
         return true;
       }
       catch (Exception paramString1)
       {
-        e.Cxv.idkeyStat(181L, 11L, 1L, false);
+        com.tencent.mm.plugin.report.f.Iyx.idkeyStat(181L, 11L, 1L, false);
         paramString2 = paramString1.getMessage();
         Log.e(this.TAG, "execSQL Error :".concat(String.valueOf(paramString2)));
         if ((paramString2 == null) || (!paramString2.contains("no such table"))) {
           break label289;
         }
-        paramString2 = this.OtB;
-        Log.d("MicroMsg.DBInit", "resetIniCache iniFilename:%s", new Object[] { paramString2.OsS });
-        s.deleteFile(paramString2.OsS);
-        if (this.OtD == null) {
+        paramString2 = this.VJC;
+        Log.d("MicroMsg.DBInit", "resetIniCache iniFilename:%s", new Object[] { paramString2.VIV });
+        u.deleteFile(paramString2.VIV);
+        if (this.VJE == null) {
           break;
         }
-        this.OtD.aAa();
+        this.VJE.aHz();
         AppMethodBeat.o(133417);
         throw paramString1;
       }
@@ -485,7 +491,7 @@ public class h
       }
     }
     label289:
-    c.p(paramString1);
+    c.l(paramString1);
     WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcDBEnable, i);
     AppMethodBeat.o(133417);
     return false;
@@ -494,36 +500,22 @@ public class h
   protected void finalize()
   {
     AppMethodBeat.i(133400);
-    CL(null);
+    JA(null);
     AppMethodBeat.o(133400);
-  }
-  
-  public final f gFG()
-  {
-    return this.jNN;
-  }
-  
-  public final SQLiteDatabase gFH()
-  {
-    f localf = this.jNN;
-    if (localf.Otb != null) {
-      return localf.Otb;
-    }
-    return localf.Otc;
   }
   
   public final String getKey()
   {
-    if (this.OtB == null) {
+    if (this.VJC == null) {
       return null;
     }
-    return this.OtB.key;
+    return this.VJC.key;
   }
   
   public final long getPageSize()
   {
     AppMethodBeat.i(133416);
-    long l = this.jNN.Otb.getPageSize();
+    long l = this.mEV.VJf.getPageSize();
     AppMethodBeat.o(133416);
     return l;
   }
@@ -537,9 +529,23 @@ public class h
       AppMethodBeat.o(133409);
       return null;
     }
-    String str = this.jNN.getPath();
+    String str = this.mEV.getPath();
     AppMethodBeat.o(133409);
     return str;
+  }
+  
+  public final f hBY()
+  {
+    return this.mEV;
+  }
+  
+  public final SQLiteDatabase hBZ()
+  {
+    f localf = this.mEV;
+    if (localf.VJf != null) {
+      return localf.VJf;
+    }
+    return localf.VJg;
   }
   
   /* Error */
@@ -550,39 +556,39 @@ public class h
     //   1: istore_1
     //   2: aload_0
     //   3: monitorenter
-    //   4: ldc_w 496
-    //   7: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   4: ldc_w 500
+    //   7: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   10: aload_0
-    //   11: invokevirtual 211	com/tencent/mm/storagebase/h:isOpen	()Z
+    //   11: invokevirtual 210	com/tencent/mm/storagebase/h:isOpen	()Z
     //   14: ifne +32 -> 46
     //   17: aload_0
-    //   18: getfield 53	com/tencent/mm/storagebase/h:TAG	Ljava/lang/String;
-    //   21: ldc 213
+    //   18: getfield 52	com/tencent/mm/storagebase/h:TAG	Ljava/lang/String;
+    //   21: ldc 212
     //   23: iconst_1
     //   24: anewarray 4	java/lang/Object
     //   27: dup
     //   28: iconst_0
-    //   29: invokestatic 185	com/tencent/mm/sdk/platformtools/Util:getStack	()Lcom/tencent/mm/sdk/platformtools/MMStack;
+    //   29: invokestatic 184	com/tencent/mm/sdk/platformtools/Util:getStack	()Lcom/tencent/mm/sdk/platformtools/MMStack;
     //   32: aastore
-    //   33: invokestatic 216	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   36: ldc_w 496
-    //   39: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   33: invokestatic 215	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   36: ldc_w 500
+    //   39: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   42: aload_0
     //   43: monitorexit
     //   44: iload_1
     //   45: ireturn
     //   46: aload_0
-    //   47: getfield 79	com/tencent/mm/storagebase/h:oKR	J
+    //   47: getfield 78	com/tencent/mm/storagebase/h:rMI	J
     //   50: lconst_0
     //   51: lcmp
     //   52: ifle +14 -> 66
-    //   55: ldc_w 496
-    //   58: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   55: ldc_w 500
+    //   58: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   61: iconst_1
     //   62: istore_1
     //   63: goto -21 -> 42
-    //   66: ldc_w 496
-    //   69: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   66: ldc_w 500
+    //   69: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   72: goto -30 -> 42
     //   75: astore_2
     //   76: aload_0
@@ -612,7 +618,7 @@ public class h
   public boolean isClose()
   {
     AppMethodBeat.i(133403);
-    if ((this.jNN == null) || (!this.jNN.isOpen()))
+    if ((this.mEV == null) || (!this.mEV.isOpen()))
     {
       AppMethodBeat.o(133403);
       return true;
@@ -624,12 +630,12 @@ public class h
   public final boolean isOpen()
   {
     AppMethodBeat.i(133408);
-    if ((this.jNN != null) && (this.jNN.isOpen()))
+    if ((this.mEV != null) && (this.mEV.isOpen()))
     {
       AppMethodBeat.o(133408);
       return true;
     }
-    Log.e(this.TAG, "DB has been closed :[" + this.OtC + "]", new Object[] { Boolean.valueOf(Util.isNullOrNil(this.OtC)) });
+    Log.e(this.TAG, "DB has been closed :[" + this.VJD + "]", new Object[] { Boolean.valueOf(Util.isNullOrNil(this.VJD)) });
     AppMethodBeat.o(133408);
     return false;
   }
@@ -652,12 +658,12 @@ public class h
   
   public Cursor query(String paramString1, String[] paramArrayOfString1, String paramString2, String[] paramArrayOfString2, String paramString3, String paramString4, String paramString5, int paramInt, String paramString6)
   {
-    AppMethodBeat.i(197185);
+    AppMethodBeat.i(214075);
     if (!isOpen())
     {
       Log.e(this.TAG, "DB IS CLOSED ! {%s}", new Object[] { Util.getStack() });
-      paramString1 = d.gFu();
-      AppMethodBeat.o(197185);
+      paramString1 = d.hBM();
+      AppMethodBeat.o(214075);
       return paramString1;
     }
     boolean bool = WXHardCoderJNI.hcDBEnable;
@@ -665,28 +671,28 @@ public class h
     int k = WXHardCoderJNI.hcDBCPU;
     int m = WXHardCoderJNI.hcDBIO;
     if (WXHardCoderJNI.hcDBThr) {}
-    for (i = g.aAk().getProcessTid();; i = 0)
+    for (i = com.tencent.mm.kernel.h.aHJ().getProcessTid();; i = 0)
     {
       i = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcDBTimeout, 501, WXHardCoderJNI.hcDBActionQuery, this.TAG);
       c.begin();
       try
       {
-        paramArrayOfString1 = this.jNN.query(paramString1, paramArrayOfString1, paramString2, paramArrayOfString2, paramString3, paramString4, paramString5, paramInt, paramString6);
-        c.a(paramString1, paramArrayOfString1, this.oKR);
+        paramArrayOfString1 = this.mEV.query(paramString1, paramArrayOfString1, paramString2, paramArrayOfString2, paramString3, paramString4, paramString5, paramInt, paramString6);
+        c.a(paramString1, paramArrayOfString1, this.rMI);
         return paramArrayOfString1;
       }
       catch (Exception paramString1)
       {
-        e.Cxv.idkeyStat(181L, 10L, 1L, false);
+        com.tencent.mm.plugin.report.f.Iyx.idkeyStat(181L, 10L, 1L, false);
         Log.e(this.TAG, "execSQL Error :" + paramString1.getMessage());
-        c.p(paramString1);
-        paramString1 = d.gFu();
+        c.l(paramString1);
+        paramString1 = d.hBM();
         return paramString1;
       }
       finally
       {
         WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcDBEnable, i);
-        AppMethodBeat.o(197185);
+        AppMethodBeat.o(214075);
       }
     }
   }
@@ -711,7 +717,7 @@ public class h
         break;
       }
       Log.e(this.TAG, "DB IS CLOSED ! {%s}", new Object[] { Util.getStack() });
-      paramString = d.gFu();
+      paramString = d.hBM();
       AppMethodBeat.o(133413);
       return paramString;
     }
@@ -720,22 +726,22 @@ public class h
     int k = WXHardCoderJNI.hcDBCPU;
     int m = WXHardCoderJNI.hcDBIO;
     if (WXHardCoderJNI.hcDBThr) {
-      i = g.aAk().getProcessTid();
+      i = com.tencent.mm.kernel.h.aHJ().getProcessTid();
     }
     i = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcDBTimeout, 501, WXHardCoderJNI.hcDBActionQuery, this.TAG);
     c.begin();
     try
     {
-      paramArrayOfString = this.jNN.rawQuery(paramString, paramArrayOfString, paramInt);
-      c.a(paramString, paramArrayOfString, this.oKR);
+      paramArrayOfString = this.mEV.rawQuery(paramString, paramArrayOfString, paramInt);
+      c.a(paramString, paramArrayOfString, this.rMI);
       return paramArrayOfString;
     }
     catch (Exception paramString)
     {
-      e.Cxv.idkeyStat(181L, 10L, 1L, false);
+      com.tencent.mm.plugin.report.f.Iyx.idkeyStat(181L, 10L, 1L, false);
       Log.e(this.TAG, "execSQL Error :" + paramString.getMessage());
-      c.p(paramString);
-      paramString = d.gFu();
+      c.l(paramString);
+      paramString = d.hBM();
       return paramString;
     }
     finally
@@ -760,21 +766,21 @@ public class h
     int k = WXHardCoderJNI.hcDBCPU;
     int m = WXHardCoderJNI.hcDBIO;
     if (WXHardCoderJNI.hcDBThr) {
-      i = g.aAk().getProcessTid();
+      i = com.tencent.mm.kernel.h.aHJ().getProcessTid();
     }
     i = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcDBTimeout, 501, WXHardCoderJNI.hcDBActionWrite, this.TAG);
     c.begin();
     try
     {
-      long l = this.jNN.replace(paramString1, paramString2, paramContentValues);
-      c.a(paramString1, null, this.oKR);
+      long l = this.mEV.replace(paramString1, paramString2, paramContentValues);
+      c.a(paramString1, null, this.rMI);
       return l;
     }
     catch (Exception paramString1)
     {
-      e.Cxv.idkeyStat(181L, 11L, 1L, false);
+      com.tencent.mm.plugin.report.f.Iyx.idkeyStat(181L, 11L, 1L, false);
       Log.e(this.TAG, "repalce  Error :" + paramString1.getMessage());
-      c.p(paramString1);
+      c.l(paramString1);
       return -1L;
     }
     finally
@@ -798,21 +804,21 @@ public class h
     int k = WXHardCoderJNI.hcDBCPU;
     int m = WXHardCoderJNI.hcDBIO;
     if (WXHardCoderJNI.hcDBThr) {}
-    for (i = g.aAk().getProcessTid();; i = 0)
+    for (i = com.tencent.mm.kernel.h.aHJ().getProcessTid();; i = 0)
     {
       i = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcDBTimeout, 501, WXHardCoderJNI.hcDBActionWrite, this.TAG);
       c.begin();
       try
       {
-        j = this.jNN.update(paramString1, paramContentValues, paramString2, paramArrayOfString);
-        c.a(paramString1, null, this.oKR);
+        j = this.mEV.update(paramString1, paramContentValues, paramString2, paramArrayOfString);
+        c.a(paramString1, null, this.rMI);
         return j;
       }
       catch (Exception paramString1)
       {
-        e.Cxv.idkeyStat(181L, 11L, 1L, false);
+        com.tencent.mm.plugin.report.f.Iyx.idkeyStat(181L, 11L, 1L, false);
         Log.e(this.TAG, "update Error :" + paramString1.getMessage());
-        c.p(paramString1);
+        c.l(paramString1);
         return -1;
       }
       finally
@@ -825,26 +831,21 @@ public class h
   
   public static abstract interface a
   {
-    public abstract void azX();
+    public abstract void aHw();
     
-    public abstract void azY();
+    public abstract void aHx();
     
-    public abstract void azZ();
-  }
-  
-  public static abstract interface b
-  {
-    public abstract String[] getSQLs();
+    public abstract void aHy();
   }
   
   public static abstract interface c
   {
-    public abstract void aAa();
+    public abstract void aHz();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storagebase.h
  * JD-Core Version:    0.7.0.1
  */

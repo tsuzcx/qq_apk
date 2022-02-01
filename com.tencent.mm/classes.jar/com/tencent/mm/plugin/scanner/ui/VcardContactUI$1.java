@@ -10,7 +10,7 @@ final class VcardContactUI$1
 {
   VcardContactUI$1(VcardContactUI paramVcardContactUI, String paramString) {}
   
-  public final void oj(int paramInt)
+  public final void qy(int paramInt)
   {
     AppMethodBeat.i(52002);
     switch (paramInt)
@@ -22,12 +22,12 @@ final class VcardContactUI$1
       return;
       Object localObject = new Intent("android.intent.action.DIAL");
       ((Intent)localObject).setFlags(268435456);
-      ((Intent)localObject).setData(Uri.parse("tel:" + this.qew));
-      VcardContactUI localVcardContactUI = this.COU;
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(localVcardContactUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/scanner/ui/VcardContactUI$1", "onClick", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      localVcardContactUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(localVcardContactUI, "com/tencent/mm/plugin/scanner/ui/VcardContactUI$1", "onClick", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      ((Intent)localObject).setData(Uri.parse("tel:" + this.tAt));
+      VcardContactUI localVcardContactUI = this.IUw;
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(localVcardContactUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/scanner/ui/VcardContactUI$1", "onClick", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      localVcardContactUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(localVcardContactUI, "com/tencent/mm/plugin/scanner/ui/VcardContactUI$1", "onClick", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
   }
 }

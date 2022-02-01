@@ -7,16 +7,16 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class f
 {
-  public final int[] ydT;
+  public final int[] Dna;
   
   public f(String paramString)
   {
     AppMethodBeat.i(104654);
-    this.ydT = new int[6];
+    this.Dna = new int[6];
     try
     {
-      MMGIFJNI.recycle(MMGIFJNI.openByFilePath(q.k(paramString, false), this.ydT));
-      Log.i("MMGIFInfo", "width:%d height:%d", new Object[] { Integer.valueOf(this.ydT[0]), Integer.valueOf(this.ydT[1]) });
+      MMGIFJNI.recycle(MMGIFJNI.openByFilePath(q.n(paramString, false), this.Dna));
+      Log.i("MMGIFInfo", "width:%d height:%d", new Object[] { Integer.valueOf(this.Dna[0]), Integer.valueOf(this.Dna[1]) });
       AppMethodBeat.o(104654);
       return;
     }
@@ -29,7 +29,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.gif.f
  * JD-Core Version:    0.7.0.1
  */

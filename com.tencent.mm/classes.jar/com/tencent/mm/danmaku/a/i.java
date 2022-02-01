@@ -3,6 +3,7 @@ package com.tencent.mm.danmaku.a;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.HandlerThread;
+import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -10,6 +11,7 @@ import com.tencent.mm.danmaku.d.a.a;
 import com.tencent.mm.danmaku.d.g;
 import com.tencent.mm.danmaku.d.g.a;
 import com.tencent.mm.danmaku.e.c;
+import com.tencent.mm.plugin.finder.megavideo.bullet.b.a;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -17,105 +19,152 @@ import java.util.Queue;
 
 public final class i
 {
-  HandlerThread gOA;
-  private a gOB;
-  int gOC;
-  Boolean gOu;
-  Handler gOz;
+  Boolean jyP;
+  Handler jyT;
+  HandlerThread jyU;
+  private a jyV;
+  int jyW;
   
   public i(d paramd)
   {
-    AppMethodBeat.i(241663);
-    this.gOu = Boolean.FALSE;
-    this.gOC = 0;
-    this.gOB = new a(paramd, (byte)0);
-    AppMethodBeat.o(241663);
+    AppMethodBeat.i(268284);
+    this.jyP = Boolean.FALSE;
+    this.jyW = 0;
+    this.jyV = new a(paramd, (byte)0);
+    AppMethodBeat.o(268284);
   }
   
-  private boolean ass()
+  private boolean azg()
   {
-    return this.gOC == 1;
+    return this.jyW == 1;
   }
   
-  protected final void asp()
+  private void sendMessage(Message paramMessage)
   {
-    AppMethodBeat.i(241664);
-    if (this.gOz != null) {
-      this.gOz.removeMessages(4);
+    AppMethodBeat.i(268288);
+    if (azf()) {
+      this.jyT.sendMessage(paramMessage);
     }
-    AppMethodBeat.o(241664);
+    AppMethodBeat.o(268288);
   }
   
-  protected final void asq()
+  protected final void azd()
   {
-    AppMethodBeat.i(241667);
-    if (asr())
-    {
-      this.gOz.removeMessages(4);
-      this.gOz.sendEmptyMessage(4);
+    AppMethodBeat.i(268285);
+    if (this.jyT != null) {
+      this.jyT.removeMessages(4);
     }
-    AppMethodBeat.o(241667);
+    AppMethodBeat.o(268285);
   }
   
-  final boolean asr()
+  protected final void aze()
   {
-    AppMethodBeat.i(241668);
-    if (ass())
+    AppMethodBeat.i(268289);
+    if (azf())
     {
-      if (this.gOz != null)
+      this.jyT.removeMessages(4);
+      this.jyT.sendEmptyMessage(4);
+    }
+    AppMethodBeat.o(268289);
+  }
+  
+  final boolean azf()
+  {
+    AppMethodBeat.i(268290);
+    if (azg())
+    {
+      if (this.jyT != null)
       {
-        AppMethodBeat.o(241668);
+        AppMethodBeat.o(268290);
         return true;
       }
-      AppMethodBeat.o(241668);
+      AppMethodBeat.o(268290);
       return false;
     }
-    if ((this.gOA != null) && (this.gOA.isAlive()) && (this.gOz != null))
+    if ((this.jyU != null) && (this.jyU.isAlive()) && (this.jyT != null))
     {
-      AppMethodBeat.o(241668);
+      AppMethodBeat.o(268290);
       return true;
     }
-    AppMethodBeat.o(241668);
+    AppMethodBeat.o(268290);
     return false;
+  }
+  
+  final void rq(int paramInt)
+  {
+    AppMethodBeat.i(268291);
+    if (azg())
+    {
+      if (this.jyT == null) {
+        this.jyT = new Handler(Looper.getMainLooper(), this.jyV);
+      }
+      AppMethodBeat.o(268291);
+      return;
+    }
+    if ((this.jyU == null) || (!this.jyU.isAlive())) {
+      try
+      {
+        Object localObject = com.tencent.mm.plugin.finder.megavideo.bullet.b.zvH;
+        localObject = b.a.dJA().zvD;
+        if ((localObject != null) && (((HandlerThread)localObject).isAlive())) {
+          this.jyU = ((HandlerThread)localObject);
+        }
+        for (this.jyP = Boolean.TRUE;; this.jyP = Boolean.FALSE)
+        {
+          this.jyT = new Handler(this.jyU.getLooper(), this.jyV);
+          AppMethodBeat.o(268291);
+          return;
+          this.jyU = new HandlerThread("DanmakuDrawThreadPriority_".concat(String.valueOf(paramInt)), paramInt);
+          this.jyU.setUncaughtExceptionHandler(new com.tencent.mm.danmaku.e.b());
+          this.jyU.start();
+        }
+        AppMethodBeat.o(268291);
+      }
+      catch (Throwable localThrowable)
+      {
+        com.tencent.mm.danmaku.e.e.e("DanmakuManager", new Object[] { localThrowable });
+      }
+    }
   }
   
   protected final void sendMessage(int paramInt)
   {
-    AppMethodBeat.i(241665);
+    AppMethodBeat.i(268286);
     Message localMessage = Message.obtain();
     localMessage.what = paramInt;
     sendMessage(localMessage);
-    AppMethodBeat.o(241665);
+    AppMethodBeat.o(268286);
   }
   
-  final void sendMessage(Message paramMessage)
+  protected final void sendMessage(int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(241666);
-    if (asr()) {
-      this.gOz.sendMessage(paramMessage);
-    }
-    AppMethodBeat.o(241666);
+    AppMethodBeat.i(268287);
+    Message localMessage = Message.obtain();
+    localMessage.what = paramInt;
+    localMessage.obj = paramObject;
+    sendMessage(localMessage);
+    AppMethodBeat.o(268287);
   }
   
   static final class a
     implements Handler.Callback
   {
-    private WeakReference<d> gOD;
+    private WeakReference<d> jyX;
     
     private a(d paramd)
     {
-      AppMethodBeat.i(241661);
-      this.gOD = new WeakReference(paramd);
-      AppMethodBeat.o(241661);
+      AppMethodBeat.i(268305);
+      this.jyX = new WeakReference(paramd);
+      AppMethodBeat.o(268305);
     }
     
     public final boolean handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(241662);
-      Object localObject1 = (d)this.gOD.get();
+      AppMethodBeat.i(268306);
+      Object localObject1 = (d)this.jyX.get();
       if (localObject1 == null)
       {
-        AppMethodBeat.o(241662);
+        AppMethodBeat.o(268306);
         return false;
       }
       switch (paramMessage.what)
@@ -123,40 +172,40 @@ public final class i
       }
       for (;;)
       {
-        AppMethodBeat.o(241662);
+        AppMethodBeat.o(268306);
         return false;
-        ((d)localObject1).gNB = false;
-        ((d)localObject1).gNK = true;
+        ((d)localObject1).jxW = false;
+        ((d)localObject1).jyf = true;
         if (paramMessage.obj != null) {}
-        for (((d)localObject1).gNJ = ((Long)paramMessage.obj).longValue();; ((d)localObject1).gNJ = 0L)
+        for (((d)localObject1).jye = ((Long)paramMessage.obj).longValue();; ((d)localObject1).jye = 0L)
         {
-          ((d)localObject1).gNP = 0;
-          ((d)localObject1).gNQ = 0;
-          ((d)localObject1).gNR = 0;
-          ((d)localObject1).gNw.gNI = SystemClock.uptimeMillis();
-          paramMessage = ((d)localObject1).gNw;
-          paramMessage.gQv = 0L;
-          paramMessage.gQw = 0L;
-          if (com.tencent.mm.danmaku.e.e.gQV >= 3) {
-            com.tencent.mm.danmaku.e.e.i("DanmakuManager", new Object[] { "message start:startTime:", Long.valueOf(((d)localObject1).gNJ) });
+          ((d)localObject1).jyk = 0;
+          ((d)localObject1).jyl = 0;
+          ((d)localObject1).jym = 0;
+          ((d)localObject1).jxR.jyd = SystemClock.uptimeMillis();
+          paramMessage = ((d)localObject1).jxR;
+          paramMessage.jAO = 0L;
+          paramMessage.jAP = 0L;
+          if (com.tencent.mm.danmaku.e.e.jBo >= 3) {
+            com.tencent.mm.danmaku.e.e.i("DanmakuManager", new Object[] { "message start:startTime:", Long.valueOf(((d)localObject1).jye) });
           }
-          ((d)localObject1).asb();
+          ((d)localObject1).ayO();
           break;
         }
-        ((d)localObject1).asb();
+        ((d)localObject1).ayO();
         continue;
-        ((d)localObject1).ase();
+        ((d)localObject1).ayR();
         continue;
-        ((d)localObject1).asf();
+        ((d)localObject1).ayS();
         continue;
         ((d)localObject1).i(paramMessage);
         continue;
         com.tencent.mm.danmaku.e.e.i("DanmakuManager", "handleQuit()");
-        ((d)localObject1).gNB = true;
-        ((d)localObject1).gNt.gPo.atl();
-        ((d)localObject1).gNF.clear();
-        paramMessage = ((d)localObject1).gNu.gNx;
-        localObject1 = paramMessage.gQm.iterator();
+        ((d)localObject1).jxW = true;
+        ((d)localObject1).jxO.jzH.aAa();
+        ((d)localObject1).jya.clear();
+        paramMessage = ((d)localObject1).jxP.jxS;
+        localObject1 = paramMessage.jAF.iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (a.a)((Iterator)localObject1).next();
@@ -164,19 +213,19 @@ public final class i
             ((a.a)localObject2).destroy();
           }
         }
-        paramMessage.gQm.clear();
-        paramMessage.gQp = 0;
-        paramMessage.gQq = 0;
-        paramMessage.gQr = 0;
+        paramMessage.jAF.clear();
+        paramMessage.jAI = 0;
+        paramMessage.jAJ = 0;
+        paramMessage.jAK = 0;
         com.tencent.mm.danmaku.e.e.i("DanmakuManager", "message quit");
         continue;
         com.tencent.mm.danmaku.e.e.i("DanmakuManager", "handleConfigChanged()");
-        ((d)localObject1).gNZ.arP();
-        localObject1 = ((d)localObject1).gNF;
-        ((e)localObject1).asm();
-        paramMessage = ((e)localObject1).gOl;
-        Object localObject2 = paramMessage.gQB.gQE;
-        if (localObject2 != paramMessage.gQB)
+        ((d)localObject1).jyu.ayA();
+        localObject1 = ((d)localObject1).jya;
+        ((e)localObject1).ayZ();
+        paramMessage = ((e)localObject1).jyG;
+        Object localObject2 = paramMessage.jAU.jAX;
+        if (localObject2 != paramMessage.jAU)
         {
           paramMessage = ((g.a)localObject2).mData;
           label401:
@@ -186,71 +235,71 @@ public final class i
           }
         }
         label436:
-        for (((e)localObject1).gOn = -1L;; ((e)localObject1).gOn = paramMessage.getTime())
+        for (((e)localObject1).jyI = -1L;; ((e)localObject1).jyI = paramMessage.getTime())
         {
-          ((e)localObject1).asn();
+          ((e)localObject1).aza();
           com.tencent.mm.danmaku.e.e.i("DanmakuManager", "message config changed");
           break;
           paramMessage = null;
           break label401;
         }
         com.tencent.mm.danmaku.e.e.i("DanmakuManager", "handleRelease()");
-        paramMessage = ((d)localObject1).gOc;
-        if ((paramMessage.gOA != null) && (!paramMessage.gOu.booleanValue()))
+        paramMessage = ((d)localObject1).jyx;
+        if ((paramMessage.jyU != null) && (!paramMessage.jyP.booleanValue()))
         {
-          if (!c.atm()) {
+          if (!c.aAc()) {
             break label557;
           }
-          paramMessage.gOA.quitSafely();
+          paramMessage.jyU.quitSafely();
         }
         for (;;)
         {
-          paramMessage.gOA = null;
-          paramMessage = ((d)localObject1).gNH;
-          if ((paramMessage.gOs != null) && (paramMessage.gOs.isAlive())) {
+          paramMessage.jyU = null;
+          paramMessage = ((d)localObject1).jyc;
+          if ((paramMessage.jyN != null) && (paramMessage.jyN.isAlive())) {
             break label568;
           }
-          paramMessage = ((d)localObject1).gNu;
-          if ((paramMessage.gNy == null) || (!paramMessage.gNy.isAlive())) {
+          paramMessage = ((d)localObject1).jxP;
+          if ((paramMessage.jxT == null) || (!paramMessage.jxT.isAlive())) {
             break;
           }
-          if (!c.atm()) {
+          if (!c.aAc()) {
             break label611;
           }
-          paramMessage.gNy.quitSafely();
+          paramMessage.jxT.quitSafely();
           break;
           label557:
-          paramMessage.gOA.quit();
+          paramMessage.jyU.quit();
         }
         label568:
-        if (!paramMessage.gOu.booleanValue())
+        if (!paramMessage.jyP.booleanValue())
         {
-          if (!c.atm()) {
+          if (!c.aAc()) {
             break label600;
           }
-          paramMessage.gOs.quitSafely();
+          paramMessage.jyN.quitSafely();
         }
         for (;;)
         {
-          paramMessage.gOs = null;
+          paramMessage.jyN = null;
           break;
           label600:
-          paramMessage.gOs.quit();
+          paramMessage.jyN.quit();
         }
         label611:
-        paramMessage.gNy.quit();
+        paramMessage.jxT.quit();
         continue;
         com.tencent.mm.danmaku.e.e.i("DanmakuManager", "handleClear()");
-        ((d)localObject1).gNZ.arQ();
-        ((d)localObject1).gNt.gPo.atl();
-        ((d)localObject1).gNF.clear();
+        ((d)localObject1).jyu.ayB();
+        ((d)localObject1).jxO.jzH.aAa();
+        ((d)localObject1).jya.clear();
         continue;
-        if (((d)localObject1).gOa != null) {
-          while (!((d)localObject1).gNX.isEmpty())
+        if (((d)localObject1).jyv != null) {
+          while (!((d)localObject1).jys.isEmpty())
           {
-            paramMessage = (com.tencent.mm.danmaku.d.h)((d)localObject1).gNX.poll();
-            localObject2 = ((d)localObject1).gNZ.a(paramMessage);
-            if (com.tencent.mm.danmaku.e.e.gQV >= 4) {
+            paramMessage = (com.tencent.mm.danmaku.d.h)((d)localObject1).jys.poll();
+            localObject2 = ((d)localObject1).jyu.a(paramMessage);
+            if (com.tencent.mm.danmaku.e.e.jBo >= 4) {
               com.tencent.mm.danmaku.e.e.v("DanmakuManager", new Object[] { "handleClick:", paramMessage, ",currentTime:", Long.valueOf(SystemClock.uptimeMillis()) });
             }
             com.tencent.mm.danmaku.f.b.post(new d.2((d)localObject1, (com.tencent.mm.danmaku.b.a)localObject2, paramMessage));
@@ -258,9 +307,9 @@ public final class i
         }
         com.tencent.mm.danmaku.e.e.v("DanmakuManager", "message click");
         continue;
-        ((d)localObject1).ask();
+        ((d)localObject1).ayX();
         continue;
-        ((d)localObject1).asj();
+        ((d)localObject1).ayW();
       }
     }
   }

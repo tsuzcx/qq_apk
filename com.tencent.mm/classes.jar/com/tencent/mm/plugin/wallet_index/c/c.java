@@ -2,13 +2,14 @@ package com.tencent.mm.plugin.wallet_index.c;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class c
 {
-  public int IqK = 0;
+  public int Pjt = 0;
   public String mMessage;
   public int mResponse;
   
@@ -18,106 +19,87 @@ public final class c
     this.mMessage = paramString;
   }
   
-  public static c cJ(int paramInt, String paramString)
+  public static c cK(int paramInt, String paramString)
   {
-    int m = 6;
-    int k = 2131768862;
+    int j = 6;
     AppMethodBeat.i(71810);
-    int i;
-    String str;
-    int j;
-    if (paramInt <= -15001)
-    {
-      i = paramInt;
-      str = paramString;
-      j = k;
+    int i = a.i.wxwallet_result_unknown;
+    if (paramInt <= -15001) {
+      j = paramInt;
     }
     for (;;)
     {
-      Log.i("MicroMsg.IapResult", "code : " + paramInt + ", errMsg : " + str + ", convert to errCode : " + i);
-      if (!Util.isNullOrNil(str)) {
+      Log.i("MicroMsg.IapResult", "code : " + paramInt + ", errMsg : " + paramString + ", convert to errCode : " + j);
+      if (!Util.isNullOrNil(paramString)) {
         break;
       }
-      paramString = new c(i, MMApplicationContext.getContext().getString(j));
+      paramString = new c(j, MMApplicationContext.getContext().getString(i));
       AppMethodBeat.o(71810);
       return paramString;
-      j = k;
-      i = m;
-      str = paramString;
       switch (paramInt)
       {
-      case 106: 
-      case 100000001: 
       default: 
-        j = k;
-        i = m;
-        str = paramString;
+        i = a.i.wxwallet_result_unknown;
         break;
       case 0: 
-        j = 2131768861;
-        i = paramInt;
-        str = paramString;
+        i = a.i.wxwallet_result_success;
+        j = paramInt;
         break;
       case 1: 
       case 7: 
-        j = 2131768863;
-        i = paramInt;
-        str = paramString;
+        i = a.i.wxwallet_result_user_canceled;
+        j = paramInt;
         break;
       case 103: 
       case 104: 
       case 100000002: 
-        i = 100000002;
-        j = 2131768859;
-        str = paramString;
+        j = 100000002;
+        i = a.i.wxwallet_result_item_already_owned;
         break;
       case 6: 
         paramString = new c(6, paramString);
         AppMethodBeat.o(71810);
         return paramString;
       case 109: 
-        j = 2131768864;
-        i = paramInt;
-        str = paramString;
+        i = a.i.wxwallet_result_wco_invalid_purchase;
+        j = paramInt;
         break;
       case 110: 
-        j = 2131768866;
-        i = paramInt;
-        str = paramString;
+        i = a.i.wxwallet_result_wco_invalid_purchase_quota_day;
+        j = paramInt;
         break;
       case 111: 
-        j = 2131768867;
-        i = paramInt;
-        str = paramString;
+        i = a.i.wxwallet_result_wco_invalid_purchase_quota_week;
+        j = paramInt;
         break;
       case 112: 
-        j = 2131768865;
-        i = paramInt;
-        str = paramString;
+        i = a.i.wxwallet_result_wco_invalid_purchase_freq_limit;
+        j = paramInt;
         break;
       case 113: 
-        i = paramInt;
-        j = k;
-        str = paramString;
+        i = a.i.wxwallet_result_unknown;
+        j = paramInt;
         break;
       case 3: 
       case 105: 
-        i = 3;
-        str = "Google Play not install";
-        j = k;
+        j = 3;
+        paramString = "Google Play not install";
+        break;
+      case 106: 
+      case 100000001: 
+        i = a.i.wxwallet_result_unknown;
         break;
       case 8: 
-        j = 2131768860;
-        i = paramInt;
-        str = paramString;
+        i = a.i.wxwallet_result_purchase_error;
+        j = paramInt;
       }
     }
-    paramString = new c(i, str);
+    paramString = new c(j, paramString);
     AppMethodBeat.o(71810);
     return paramString;
   }
   
-  public final boolean fUp()
+  public final boolean gMV()
   {
     return (this.mResponse == 104) || (this.mResponse == 100000002);
   }
@@ -126,7 +108,7 @@ public final class c
   {
     AppMethodBeat.i(71811);
     if (this.mResponse == 0) {}
-    for (int i = 1; (i == 0) && (!fUp()); i = 0)
+    for (int i = 1; (i == 0) && (!gMV()); i = 0)
     {
       AppMethodBeat.o(71811);
       return true;

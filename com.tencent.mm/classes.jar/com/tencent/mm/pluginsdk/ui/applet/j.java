@@ -1,42 +1,42 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
-import com.tencent.mm.av.a.d.b;
+import com.tencent.mm.ay.a.d.b;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpUrlConnectionListener;", "", "onAfterCloseStream", "", "onAfterGetResponseCode", "onAfterOpenConnection", "connection", "Ljava/net/HttpURLConnection;", "onAfterReadStreamData", "onBeforeCloseStream", "onBeforeGetResponseCode", "onBeforeOpenConnection", "onBeforeReadStreamData", "onDisconnect", "onRequest", "imageType", "", "forceNormal", "", "onResultError", "responseCode", "onResultSuccess", "response", "Lcom/tencent/mm/modelimage/loader/model/Response;", "onRetry", "onStart", "key", "", "requestUrl", "plugin-biz_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpUrlConnectionListener;", "", "onAfterCloseStream", "", "onAfterGetResponseCode", "onAfterOpenConnection", "connection", "Ljava/net/HttpURLConnection;", "onAfterReadStreamData", "onBeforeCloseStream", "onBeforeGetResponseCode", "onBeforeOpenConnection", "onBeforeReadStreamData", "onDisconnect", "onRequest", "imageType", "", "forceNormal", "", "onResultError", "responseCode", "onResultSuccess", "response", "Lcom/tencent/mm/modelimage/loader/model/Response;", "onRetry", "onStart", "key", "", "requestUrl", "plugin-biz_release"})
 public abstract interface j
 {
-  public abstract void aih(int paramInt);
+  public abstract void aqj(int paramInt);
   
   public abstract void b(b paramb);
   
-  public abstract void bz(int paramInt, boolean paramBoolean);
+  public abstract void bL(int paramInt, boolean paramBoolean);
   
-  public abstract void ey(String paramString1, String paramString2);
+  public abstract void eM(String paramString1, String paramString2);
   
-  public abstract void gpk();
+  public abstract void hki();
   
-  public abstract void gpl();
+  public abstract void hkj();
   
-  public abstract void gpm();
+  public abstract void hkk();
   
-  public abstract void gpn();
+  public abstract void hkl();
   
-  public abstract void gpo();
+  public abstract void hkm();
   
-  public abstract void gpp();
+  public abstract void hkn();
   
-  public abstract void gpq();
+  public abstract void hko();
   
-  public abstract void gpr();
+  public abstract void hkp();
   
-  public abstract void gps();
+  public abstract void hkq();
   
-  public abstract void gpt();
+  public abstract void hkr();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.j
  * JD-Core Version:    0.7.0.1
  */

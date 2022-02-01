@@ -43,7 +43,7 @@ public class LooperCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.sdk.system.LooperCompat
  * JD-Core Version:    0.7.0.1
  */

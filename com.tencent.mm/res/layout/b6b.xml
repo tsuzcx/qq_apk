@@ -8,8 +8,7 @@
         <ImageView android:layout_gravity="center_vertical" android:id="@id/fsg" android:visibility="gone" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_marginLeft="8.0dip" android:src="@drawable/b1a" />
         <TextView android:textSize="9.0dip" android:textColor="@color/ag2" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/fse" android:background="@drawable/b16" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="18.0dip" android:layout_marginLeft="8.0dip" android:text="New" />
         <TextView android:layout_gravity="center_vertical" android:id="@id/fsf" android:visibility="gone" android:layout_marginLeft="8.0dip" android:text="" style="@style/zr" />
-        <Space android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-        <LinearLayout android:gravity="right" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="right" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_weight="1.0">
             <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
                 <ProgressBar android:layout_gravity="center_vertical" android:id="@id/jg5" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="4.0dip" android:layout_centerVertical="true" style="@style/a5t" />
                 <com.tencent.mm.plugin.wallet_core.ui.view.WcPayMoneyLoadingView android:textSize="17.0dip" android:textColor="@color/a2x" android:id="@id/fs9" android:layout_width="wrap_content" android:layout_height="wrap_content" wallet:progressBarType="a_j" wallet:walletTypeFace="i5q" />

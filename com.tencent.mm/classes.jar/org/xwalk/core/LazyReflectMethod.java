@@ -22,17 +22,17 @@ public class LazyReflectMethod
   
   protected boolean doInit()
   {
-    AppMethodBeat.i(207383);
+    AppMethodBeat.i(205044);
     if (this.mClass == null)
     {
-      AppMethodBeat.o(207383);
+      AppMethodBeat.o(205044);
       return false;
     }
     boolean bool;
     if ((this.mInited) && (this.mMethod != null))
     {
       bool = this.mInited;
-      AppMethodBeat.o(207383);
+      AppMethodBeat.o(205044);
       return bool;
     }
     try
@@ -48,7 +48,7 @@ public class LazyReflectMethod
         this.mInited = true;
         if (this.mMethod != null)
         {
-          AppMethodBeat.o(207383);
+          AppMethodBeat.o(205044);
           return true;
         }
       }
@@ -67,18 +67,18 @@ public class LazyReflectMethod
           }
         }
       }
-      AppMethodBeat.o(207383);
+      AppMethodBeat.o(205044);
     }
     finally
     {
-      AppMethodBeat.o(207383);
+      AppMethodBeat.o(205044);
     }
     return false;
   }
   
   public boolean init(Object paramObject, Class<?> paramClass, String paramString, Class<?>... paramVarArgs)
   {
-    AppMethodBeat.i(207382);
+    AppMethodBeat.i(205043);
     this.mInstance = paramObject;
     if (paramClass != null) {}
     for (;;)
@@ -88,7 +88,7 @@ public class LazyReflectMethod
       this.mParameterTypes = paramVarArgs;
       this.mMethod = null;
       this.mInited = false;
-      AppMethodBeat.o(207382);
+      AppMethodBeat.o(205043);
       return true;
       if (paramObject != null) {
         paramClass = paramObject.getClass();
@@ -100,25 +100,25 @@ public class LazyReflectMethod
   
   public Object invoke(Object... paramVarArgs)
   {
-    AppMethodBeat.i(207384);
+    AppMethodBeat.i(205045);
     doInit();
     paramVarArgs = super.invoke(paramVarArgs);
-    AppMethodBeat.o(207384);
+    AppMethodBeat.o(205045);
     return paramVarArgs;
   }
   
   public boolean isNull()
   {
-    AppMethodBeat.i(207385);
+    AppMethodBeat.i(205046);
     doInit();
     boolean bool = super.isNull();
-    AppMethodBeat.o(207385);
+    AppMethodBeat.o(205046);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.LazyReflectMethod
  * JD-Core Version:    0.7.0.1
  */

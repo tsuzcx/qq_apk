@@ -28,6 +28,7 @@ public class TXLiveConstants
   public static final int ENCODE_VIDEO_AUTO = 2;
   public static final int ENCODE_VIDEO_HARDWARE = 1;
   public static final int ENCODE_VIDEO_SOFTWARE = 0;
+  public static final String EVT_BLOCK_DURATION = "EVT_BLOCK_DURATION";
   public static final String EVT_DESCRIPTION = "EVT_MSG";
   public static final String EVT_GET_MSG = "EVT_GET_MSG";
   public static final String EVT_PARAM1 = "EVT_PARAM1";
@@ -42,6 +43,7 @@ public class TXLiveConstants
   public static final String EVT_PLAY_PROGRESS_MS = "EVT_PLAY_PROGRESS_MS";
   public static final String EVT_PLAY_URL = "EVT_PLAY_URL";
   public static final String EVT_TIME = "EVT_TIME";
+  public static final String EVT_UTC_TIME = "EVT_UTC_TIME";
   public static final int LOCAL_VIDEO_MIRROR_TYPE_AUTO = 0;
   public static final int LOCAL_VIDEO_MIRROR_TYPE_DISABLE = 2;
   public static final int LOCAL_VIDEO_MIRROR_TYPE_ENABLE = 1;
@@ -94,6 +96,7 @@ public class TXLiveConstants
   public static final int PLAY_EVT_PLAY_END = 2006;
   public static final int PLAY_EVT_PLAY_LOADING = 2007;
   public static final int PLAY_EVT_PLAY_PROGRESS = 2005;
+  public static final int PLAY_EVT_RCV_FIRST_AUDIO_FRAME = 2026;
   public static final int PLAY_EVT_RCV_FIRST_I_FRAME = 2003;
   public static final int PLAY_EVT_RTMP_STREAM_BEGIN = 2002;
   public static final int PLAY_EVT_START_VIDEO_DECODER = 2008;
@@ -225,7 +228,7 @@ public class TXLiveConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.rtmp.TXLiveConstants
  * JD-Core Version:    0.7.0.1
  */

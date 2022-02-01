@@ -14,6 +14,7 @@ import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.coremedia.TextureInfo;
 import com.tencent.tav.decoder.logger.Logger;
 import com.tencent.tav.extractor.AssetExtractor;
+import com.tencent.tav.report.AverageTimeReporter;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,6 +30,7 @@ public class VideoDecoder
   private MediaCodec.BufferInfo bufferInfo;
   private CMSampleState currentDecoderState;
   private CMSampleState currentStartState;
+  private final AverageTimeReporter decodeReporter;
   private CMTime duration;
   private AssetExtractor extractor;
   private boolean extractorDone;
@@ -59,7 +61,7 @@ public class VideoDecoder
   
   public VideoDecoder(String paramString, Surface paramSurface)
   {
-    AppMethodBeat.i(218295);
+    AppMethodBeat.i(191332);
     this.TAG = ("VideoDecoder@" + Integer.toHexString(hashCode()));
     this.frameDurationUs = 33333L;
     this.duration = CMTime.CMTimeZero;
@@ -77,6 +79,7 @@ public class VideoDecoder
     this.lastFrameValid = false;
     this.lastOutputBufferIndex = -1;
     this.preReadCost = 0L;
+    this.decodeReporter = new AverageTimeReporter();
     this.mTimeOffset = 10000000L;
     this.mLastVideoQueueTime = 0L;
     this.currentStartState = new CMSampleState();
@@ -89,7 +92,7 @@ public class VideoDecoder
     long l = System.currentTimeMillis();
     if (!initExtractor(paramString))
     {
-      AppMethodBeat.o(218295);
+      AppMethodBeat.o(191332);
       return;
     }
     createMirrorExtractor();
@@ -105,17 +108,17 @@ public class VideoDecoder
     {
       this.mediaCodecWrapper.startDecoder(paramSurface, this.mediaFormat);
       Logger.d(this.TAG, "create VideoDecoder end " + (System.currentTimeMillis() - l));
-      AppMethodBeat.o(218295);
+      AppMethodBeat.o(191332);
       return;
     }
     paramString = new IllegalStateException("decoderConfigure failed!");
-    AppMethodBeat.o(218295);
+    AppMethodBeat.o(191332);
     throw paramString;
   }
   
   private void clearDecoder()
   {
-    AppMethodBeat.i(218316);
+    AppMethodBeat.i(191421);
     Logger.d(this.TAG, "clearDecoder " + getSourcePath());
     releaseOutputBuffer();
     if ((this.pendingFrames.size() != 0) || (this.extractorDone)) {}
@@ -124,7 +127,7 @@ public class VideoDecoder
       this.mediaCodecWrapper.flushDecoder();
       this.pendingFrames.clear();
       this.currentDecoderState = new CMSampleState();
-      AppMethodBeat.o(218316);
+      AppMethodBeat.o(191421);
       return;
     }
     catch (Exception localException)
@@ -138,12 +141,12 @@ public class VideoDecoder
   
   private void createMirrorExtractor()
   {
-    AppMethodBeat.i(218297);
+    AppMethodBeat.i(191339);
     new Thread()
     {
       public void run()
       {
-        AppMethodBeat.i(218291);
+        AppMethodBeat.i(191285);
         long l2;
         try
         {
@@ -158,7 +161,7 @@ public class VideoDecoder
         catch (Exception localException)
         {
           Logger.e(VideoDecoder.this.TAG, "createMirrorExtractor", localException);
-          AppMethodBeat.o(218291);
+          AppMethodBeat.o(191285);
           return;
         }
         if (VideoDecoder.this.timeRange == null) {}
@@ -176,24 +179,25 @@ public class VideoDecoder
         VideoDecoder.this.allFrameTime.addAll(localArrayList);
         VideoDecoder.access$302(VideoDecoder.this, localException);
         Logger.d(VideoDecoder.this.TAG, "Decoder: MirrorExtractor Init " + (SystemClock.currentThreadTimeMillis() - l2));
-        AppMethodBeat.o(218291);
+        AppMethodBeat.o(191285);
       }
     }.start();
-    AppMethodBeat.o(218297);
+    AppMethodBeat.o(191339);
   }
   
   private void doReadFrames(SampleTime paramSampleTime, CMTime paramCMTime, boolean paramBoolean)
   {
-    AppMethodBeat.i(218310);
+    AppMethodBeat.i(191401);
     Logger.v(this.TAG, "doReadFrames() called with: sampleTime = [" + paramSampleTime + "], targetTime = [" + paramCMTime + "], justCache = [" + paramBoolean + "]");
     if ((this.pendingFrames.size() == 0) && (this.extractorDone)) {
       Logger.i(this.TAG, "doReadFrames:[unRead]pendingFrames.size() == 0 && extractorDone");
     }
     int i = 0;
-    label782:
-    label935:
-    label941:
-    label958:
+    label424:
+    label834:
+    label987:
+    label993:
+    label1010:
     for (;;)
     {
       int n;
@@ -202,7 +206,9 @@ public class VideoDecoder
         if (!this.extractorDone) {
           readFromExtractor();
         }
+        this.bufferInfo.set(0, 0, 0L, 0);
         n = this.mediaCodecWrapper.dequeueOutputBuffer(this.bufferInfo);
+        Logger.v(this.TAG, "doReadFrames outputBufferIndex:" + n + ", presentationTimeUs:" + this.bufferInfo.presentationTimeUs);
         if ((this.bufferInfo.flags & 0x4) != 0)
         {
           if ((this.bufferInfo.size > 0) && (n >= 0) && (this.pendingFrames.size() > 0))
@@ -212,11 +218,11 @@ public class VideoDecoder
           }
           Logger.i(this.TAG, "doReadFrames:[finish] bufferInfo.flags == MediaCodec.BUFFER_FLAG_END_OF_STREAM");
           SampleTime.access$502(paramSampleTime, CMSampleState.fromError(-1L));
-          AppMethodBeat.o(218310);
+          AppMethodBeat.o(191401);
           return;
         }
         if ((n >= 0) && (this.pendingFrames.size() > 0)) {
-          break label372;
+          break label424;
         }
         if (n >= 0)
         {
@@ -226,7 +232,7 @@ public class VideoDecoder
         }
         i += 1;
         if (i <= 1000) {
-          break label958;
+          break label1010;
         }
         Logger.e(this.TAG, "doReadFrames: [timeout] ");
         SampleTime.access$502(paramSampleTime, CMSampleState.fromError(-4L));
@@ -238,9 +244,8 @@ public class VideoDecoder
           Logger.i(this.TAG, "doReadFrames: extractorDone && sampleTime.timeUs < 0, sampleTime = ".concat(String.valueOf(paramSampleTime)));
           SampleTime.access$502(paramSampleTime, CMSampleState.fromError(-1L));
         }
-        AppMethodBeat.o(218310);
+        AppMethodBeat.o(191401);
         return;
-        label372:
         if (this.bufferInfo.size <= 0)
         {
           this.mediaCodecWrapper.releaseOutputBuffer(n, false);
@@ -255,14 +260,13 @@ public class VideoDecoder
         for (int j = 1;; j = 0)
         {
           if ((j != 0) || (localPendingFrame.seekStartTime.getTimeUs() <= paramSampleTime.timeUs + this.frameDurationUs / 2L)) {
-            break label592;
+            break label644;
           }
           this.mediaCodecWrapper.releaseOutputBuffer(n, false);
           Logger.v(this.TAG, "doReadFrames:[failed] pendingFrame.seekStartTime.getTimeUs() > sampleTime.timeUs");
           SampleTime.access$502(paramSampleTime, CMSampleState.fromError(-2L));
           break;
         }
-        label592:
         if ((this.outputSurface == null) || (paramBoolean))
         {
           this.lastOutputBufferIndex = n;
@@ -279,7 +283,7 @@ public class VideoDecoder
             this.mediaCodecWrapper.releaseOutputBuffer(n, false);
             Logger.e(this.TAG, "doReadFrames:[error] " + this.bufferInfo.size + " byteBuffer==null");
             SampleTime.access$502(paramSampleTime, CMSampleState.fromError(-3L));
-            AppMethodBeat.o(218310);
+            AppMethodBeat.o(191401);
           }
         }
         else
@@ -292,20 +296,20 @@ public class VideoDecoder
           {
             k = 1;
             if (paramCMTime.getTimeUs() < this.duration.getTimeUs()) {
-              break label935;
+              break label987;
             }
           }
           for (int m = 1;; m = 0)
           {
             if ((k != 0) || (m != 0) || (j != 0)) {
-              break label941;
+              break label993;
             }
             this.mediaCodecWrapper.releaseOutputBuffer(n, false);
             Logger.v(this.TAG, "doReadFrames:[failed] targetTime.getTimeUs() - sampleTime.cmTime.getTimeUs() == " + (paramCMTime.getTimeUs() - paramSampleTime.sampleState.getTime().getTimeUs()) + " targetTime = " + paramCMTime + "  duration = " + this.duration + " pendingFrames.size() = " + this.pendingFrames.size() + " extractorDone = " + this.extractorDone);
             SampleTime.access$502(paramSampleTime, CMSampleState.fromError(-2L));
             break;
             k = 0;
-            break label782;
+            break label834;
           }
           this.mediaCodecWrapper.releaseOutputBuffer(n, true);
           SampleTime.access$900(paramSampleTime);
@@ -321,12 +325,12 @@ public class VideoDecoder
     {
       try
       {
-        AppMethodBeat.i(218309);
+        AppMethodBeat.i(191393);
         if ((paramCMTime.bigThan(this.timeRange.getDuration())) && (!paramBoolean))
         {
           Logger.i(this.TAG, "doReadSample:[finish] targetTime.bigThan(timeRange.getDuration()) is" + paramCMTime.bigThan(this.timeRange.getDuration()) + "&& !justCache istrue");
           paramCMTime = CMSampleState.fromError(-1L);
-          AppMethodBeat.o(218309);
+          AppMethodBeat.o(191393);
           return paramCMTime;
         }
         if ((this.extractorDone) && (this.pendingFrames.size() == 0) && (this.timeRange.containsTime(paramCMTime)) && (!this.readSampleFinish)) {
@@ -348,7 +352,7 @@ public class VideoDecoder
           paramBoolean = bool;
           Logger.e(paramCMTime, paramBoolean);
           paramCMTime = CMSampleState.fromError(-100L);
-          AppMethodBeat.o(218309);
+          AppMethodBeat.o(191393);
           continue;
         }
         paramBoolean = false;
@@ -365,34 +369,37 @@ public class VideoDecoder
       SampleTime.access$602((SampleTime)localObject, -2L);
       try
       {
+        long l1 = System.currentTimeMillis();
         doReadFrames((SampleTime)localObject, paramCMTime, paramBoolean);
+        long l2 = System.currentTimeMillis();
+        this.decodeReporter.add(l2 - l1);
         Logger.v(this.TAG, "doReadSample:[success] " + this.extractorDone + " " + ((SampleTime)localObject).timeUs + "  " + ((SampleTime)localObject).sampleState);
         paramCMTime = ((SampleTime)localObject).sampleState;
-        AppMethodBeat.o(218309);
+        AppMethodBeat.o(191393);
       }
       catch (Exception paramCMTime)
       {
         paramCMTime = onReadFramesException(paramCMTime);
-        AppMethodBeat.o(218309);
+        AppMethodBeat.o(191393);
       }
     }
   }
   
   private boolean hasPreReadAndFirstFrameSeek(CMTime paramCMTime)
   {
-    AppMethodBeat.i(218303);
+    AppMethodBeat.i(191364);
     if ((paramCMTime == CMTime.CMTimeZero) && (this.preReadTime != CMTime.CMTimeInvalid) && (this.lastOutputBufferIndex != -1) && (!this.currentDecoderState.isInvalid()))
     {
-      AppMethodBeat.o(218303);
+      AppMethodBeat.o(191364);
       return true;
     }
-    AppMethodBeat.o(218303);
+    AppMethodBeat.o(191364);
     return false;
   }
   
   private boolean initExtractor(String paramString)
   {
-    AppMethodBeat.i(218296);
+    AppMethodBeat.i(191335);
     this.extractor = new AssetExtractor();
     this.extractor.setDataSource(paramString);
     while (this.extractor.getSampleTrackIndex() != -1) {
@@ -403,17 +410,17 @@ public class VideoDecoder
     {
       this.outputSurface = null;
       this.outputBuffer = null;
-      AppMethodBeat.o(218296);
+      AppMethodBeat.o(191335);
       return false;
     }
     this.extractor.selectTrack(this.trackIndex);
-    AppMethodBeat.o(218296);
+    AppMethodBeat.o(191335);
     return true;
   }
   
   private boolean moreCloseCurrentThenSeek(CMTime paramCMTime)
   {
-    AppMethodBeat.i(218302);
+    AppMethodBeat.i(191362);
     if (this.mirrorExtractor != null)
     {
       long l1 = this.currentDecoderState.getTime().getTimeUs();
@@ -424,30 +431,30 @@ public class VideoDecoder
       long l2 = this.mirrorExtractor.getSampleTime();
       if ((l2 <= l1) && (this.currentDecoderState.getTime().getTimeUs() >= l2) && (this.currentDecoderState.getTime().getTimeUs() < paramCMTime.getTimeUs() + this.pFrameTime.getTimeUs()) && (l1 <= paramCMTime.getTimeUs()))
       {
-        AppMethodBeat.o(218302);
+        AppMethodBeat.o(191362);
         return true;
       }
-      AppMethodBeat.o(218302);
+      AppMethodBeat.o(191362);
       return false;
     }
-    AppMethodBeat.o(218302);
+    AppMethodBeat.o(191362);
     return false;
   }
   
   private CMSampleState onReadFramesException(Exception paramException)
   {
-    AppMethodBeat.i(218311);
+    AppMethodBeat.i(191404);
     Logger.e(this.TAG, "onReadFramesException: ", paramException);
     if (Build.VERSION.SDK_INT < 21)
     {
       paramException = CMSampleState.fromError(-3L);
-      AppMethodBeat.o(218311);
+      AppMethodBeat.o(191404);
       return paramException;
     }
     if (!(paramException instanceof MediaCodec.CodecException))
     {
       paramException = CMSampleState.fromError(-3L);
-      AppMethodBeat.o(218311);
+      AppMethodBeat.o(191404);
       return paramException;
     }
     if (((MediaCodec.CodecException)paramException).isRecoverable())
@@ -461,7 +468,7 @@ public class VideoDecoder
       this.extractor.seekTo(l1 - l2, 0);
       this.extractorDone = false;
       paramException = CMSampleState.fromError(-3L);
-      AppMethodBeat.o(218311);
+      AppMethodBeat.o(191404);
       return paramException;
     }
     if (((MediaCodec.CodecException)paramException).isTransient()) {
@@ -469,7 +476,7 @@ public class VideoDecoder
     }
     Logger.e(this.TAG, "doReadSample:[error] retry failed");
     paramException = CMSampleState.fromError(-3L);
-    AppMethodBeat.o(218311);
+    AppMethodBeat.o(191404);
     return paramException;
   }
   
@@ -477,7 +484,7 @@ public class VideoDecoder
   {
     try
     {
-      AppMethodBeat.i(218308);
+      AppMethodBeat.i(191384);
       this.lastFrameValid = false;
       this.currentDecoderState = doReadSample(CMTime.CMTimeInvalid, true);
       if (!this.currentDecoderState.getTime().smallThan(CMTime.CMTimeZero)) {
@@ -485,7 +492,7 @@ public class VideoDecoder
       }
       this.preReadTime = this.currentDecoderState.getTime();
       Logger.i(this.TAG, "preReadSample: " + getSourcePath() + " preReadTime = " + this.preReadTime + ", lastOutputBufferIndex = " + this.lastOutputBufferIndex);
-      AppMethodBeat.o(218308);
+      AppMethodBeat.o(191384);
       return;
     }
     finally {}
@@ -497,86 +504,115 @@ public class VideoDecoder
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 580
-    //   5: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 599
+    //   5: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 203	com/tencent/tav/decoder/VideoDecoder:extractor	Lcom/tencent/tav/extractor/AssetExtractor;
-    //   12: invokevirtual 540	com/tencent/tav/extractor/AssetExtractor:getSampleTime	()J
+    //   9: getfield 210	com/tencent/tav/decoder/VideoDecoder:extractor	Lcom/tencent/tav/extractor/AssetExtractor;
+    //   12: invokevirtual 559	com/tencent/tav/extractor/AssetExtractor:getSampleTime	()J
     //   15: lstore_2
-    //   16: lload_2
-    //   17: aload_0
-    //   18: getfield 263	com/tencent/tav/decoder/VideoDecoder:timeRange	Lcom/tencent/tav/coremedia/CMTimeRange;
-    //   21: invokevirtual 583	com/tencent/tav/coremedia/CMTimeRange:getEndUs	()J
-    //   24: lcmp
-    //   25: ifge +22 -> 47
-    //   28: aload_0
-    //   29: getfield 203	com/tencent/tav/decoder/VideoDecoder:extractor	Lcom/tencent/tav/extractor/AssetExtractor;
-    //   32: invokevirtual 518	com/tencent/tav/extractor/AssetExtractor:getSampleTrackIndex	()I
-    //   35: iconst_m1
-    //   36: if_icmpeq +11 -> 47
-    //   39: lload_2
-    //   40: ldc2_w 348
-    //   43: lcmp
-    //   44: ifne +57 -> 101
-    //   47: lload_2
-    //   48: aload_0
-    //   49: getfield 263	com/tencent/tav/decoder/VideoDecoder:timeRange	Lcom/tencent/tav/coremedia/CMTimeRange;
-    //   52: invokevirtual 583	com/tencent/tav/coremedia/CMTimeRange:getEndUs	()J
-    //   55: lcmp
-    //   56: iflt +7 -> 63
-    //   59: aload_0
-    //   60: invokespecial 586	com/tencent/tav/decoder/VideoDecoder:readSampleData	()V
-    //   63: aload_0
-    //   64: getfield 129	com/tencent/tav/decoder/VideoDecoder:mediaCodecWrapper	Lcom/tencent/tav/decoder/MediaCodecWrapper;
-    //   67: invokevirtual 589	com/tencent/tav/decoder/MediaCodecWrapper:dequeueInputBuffer	()I
-    //   70: istore_1
-    //   71: iload_1
-    //   72: iflt +20 -> 92
-    //   75: aload_0
-    //   76: getfield 129	com/tencent/tav/decoder/VideoDecoder:mediaCodecWrapper	Lcom/tencent/tav/decoder/MediaCodecWrapper;
-    //   79: iload_1
-    //   80: iconst_0
-    //   81: iconst_0
-    //   82: lconst_0
-    //   83: iconst_4
-    //   84: invokevirtual 593	com/tencent/tav/decoder/MediaCodecWrapper:queueInputBuffer	(IIIJI)V
-    //   87: aload_0
-    //   88: iconst_1
-    //   89: putfield 173	com/tencent/tav/decoder/VideoDecoder:extractorDone	Z
-    //   92: ldc_w 580
-    //   95: invokestatic 198	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   98: aload_0
-    //   99: monitorexit
-    //   100: return
-    //   101: aload_0
-    //   102: invokespecial 586	com/tencent/tav/decoder/VideoDecoder:readSampleData	()V
-    //   105: ldc_w 580
-    //   108: invokestatic 198	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   111: goto -13 -> 98
-    //   114: astore 4
-    //   116: aload_0
-    //   117: monitorexit
-    //   118: aload 4
-    //   120: athrow
+    //   16: aload_0
+    //   17: getfield 104	com/tencent/tav/decoder/VideoDecoder:TAG	Ljava/lang/String;
+    //   20: new 80	java/lang/StringBuilder
+    //   23: dup
+    //   24: ldc_w 601
+    //   27: invokespecial 84	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   30: lload_2
+    //   31: invokevirtual 259	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   34: ldc_w 603
+    //   37: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   40: aload_0
+    //   41: getfield 270	com/tencent/tav/decoder/VideoDecoder:timeRange	Lcom/tencent/tav/coremedia/CMTimeRange;
+    //   44: invokevirtual 606	com/tencent/tav/coremedia/CMTimeRange:getEndUs	()J
+    //   47: invokevirtual 259	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   50: ldc_w 608
+    //   53: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: aload_0
+    //   57: getfield 210	com/tencent/tav/decoder/VideoDecoder:extractor	Lcom/tencent/tav/extractor/AssetExtractor;
+    //   60: invokevirtual 537	com/tencent/tav/extractor/AssetExtractor:getSampleTrackIndex	()I
+    //   63: invokevirtual 349	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   66: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   69: invokestatic 329	com/tencent/tav/decoder/logger/Logger:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   72: lload_2
+    //   73: aload_0
+    //   74: getfield 270	com/tencent/tav/decoder/VideoDecoder:timeRange	Lcom/tencent/tav/coremedia/CMTimeRange;
+    //   77: invokevirtual 606	com/tencent/tav/coremedia/CMTimeRange:getEndUs	()J
+    //   80: lcmp
+    //   81: ifge +22 -> 103
+    //   84: aload_0
+    //   85: getfield 210	com/tencent/tav/decoder/VideoDecoder:extractor	Lcom/tencent/tav/extractor/AssetExtractor;
+    //   88: invokevirtual 537	com/tencent/tav/extractor/AssetExtractor:getSampleTrackIndex	()I
+    //   91: iconst_m1
+    //   92: if_icmpeq +11 -> 103
+    //   95: lload_2
+    //   96: ldc2_w 369
+    //   99: lcmp
+    //   100: ifne +74 -> 174
+    //   103: lload_2
+    //   104: aload_0
+    //   105: getfield 270	com/tencent/tav/decoder/VideoDecoder:timeRange	Lcom/tencent/tav/coremedia/CMTimeRange;
+    //   108: invokevirtual 606	com/tencent/tav/coremedia/CMTimeRange:getEndUs	()J
+    //   111: lcmp
+    //   112: iflt +7 -> 119
+    //   115: aload_0
+    //   116: invokespecial 611	com/tencent/tav/decoder/VideoDecoder:readSampleData	()V
+    //   119: aload_0
+    //   120: getfield 131	com/tencent/tav/decoder/VideoDecoder:mediaCodecWrapper	Lcom/tencent/tav/decoder/MediaCodecWrapper;
+    //   123: invokevirtual 614	com/tencent/tav/decoder/MediaCodecWrapper:dequeueInputBuffer	()I
+    //   126: istore_1
+    //   127: iload_1
+    //   128: iflt +37 -> 165
+    //   131: aload_0
+    //   132: getfield 104	com/tencent/tav/decoder/VideoDecoder:TAG	Ljava/lang/String;
+    //   135: ldc_w 616
+    //   138: lload_2
+    //   139: invokestatic 619	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   142: invokevirtual 407	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   145: invokestatic 329	com/tencent/tav/decoder/logger/Logger:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   148: aload_0
+    //   149: getfield 131	com/tencent/tav/decoder/VideoDecoder:mediaCodecWrapper	Lcom/tencent/tav/decoder/MediaCodecWrapper;
+    //   152: iload_1
+    //   153: iconst_0
+    //   154: iconst_0
+    //   155: lconst_0
+    //   156: iconst_4
+    //   157: invokevirtual 623	com/tencent/tav/decoder/MediaCodecWrapper:queueInputBuffer	(IIIJI)V
+    //   160: aload_0
+    //   161: iconst_1
+    //   162: putfield 180	com/tencent/tav/decoder/VideoDecoder:extractorDone	Z
+    //   165: ldc_w 599
+    //   168: invokestatic 205	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   171: aload_0
+    //   172: monitorexit
+    //   173: return
+    //   174: aload_0
+    //   175: invokespecial 611	com/tencent/tav/decoder/VideoDecoder:readSampleData	()V
+    //   178: ldc_w 599
+    //   181: invokestatic 205	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   184: goto -13 -> 171
+    //   187: astore 4
+    //   189: aload_0
+    //   190: monitorexit
+    //   191: aload 4
+    //   193: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	121	0	this	VideoDecoder
-    //   70	10	1	i	int
-    //   15	33	2	l	long
-    //   114	5	4	localObject	Object
+    //   0	194	0	this	VideoDecoder
+    //   126	27	1	i	int
+    //   15	124	2	l	long
+    //   187	5	4	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	39	114	finally
-    //   47	63	114	finally
-    //   63	71	114	finally
-    //   75	92	114	finally
-    //   92	98	114	finally
-    //   101	111	114	finally
+    //   2	95	187	finally
+    //   103	119	187	finally
+    //   119	127	187	finally
+    //   131	165	187	finally
+    //   165	171	187	finally
+    //   174	184	187	finally
   }
   
   private void readSampleData()
   {
-    AppMethodBeat.i(218313);
+    AppMethodBeat.i(191407);
     long l = this.extractor.getSampleTime();
     int i = this.mediaCodecWrapper.dequeueInputBuffer();
     if (i >= 0)
@@ -586,6 +622,7 @@ public class VideoDecoder
       if (j >= 0)
       {
         this.mLastVideoQueueTime = (l - this.timeRange.getStartUs() + this.mTimeOffset);
+        Logger.v(this.TAG, "doReadFrames readSampleData queueInputBuffer sampleTime:".concat(String.valueOf(l)));
         this.mediaCodecWrapper.queueInputBuffer(i, 0, j, this.mLastVideoQueueTime, 0);
         localObject = new PendingFrame(null);
         PendingFrame.access$702((PendingFrame)localObject, this.mTimeOffset);
@@ -594,12 +631,12 @@ public class VideoDecoder
       }
       this.extractor.advance();
     }
-    AppMethodBeat.o(218313);
+    AppMethodBeat.o(191407);
   }
   
   private CMSampleState renderCacheBuffer()
   {
-    AppMethodBeat.i(218307);
+    AppMethodBeat.i(191380);
     Logger.v(this.TAG, "renderCacheBuffer: cache hit - " + this.currentDecoderState);
     try
     {
@@ -612,14 +649,14 @@ public class VideoDecoder
         this.extractorDone = true;
       }
       CMSampleState localCMSampleState1 = this.currentDecoderState;
-      AppMethodBeat.o(218307);
+      AppMethodBeat.o(191380);
       return localCMSampleState1;
     }
     catch (Exception localException)
     {
       Logger.e(this.TAG, "renderCacheBuffer: ", localException);
       CMSampleState localCMSampleState2 = CMSampleState.fromError(-2L);
-      AppMethodBeat.o(218307);
+      AppMethodBeat.o(191380);
       return localCMSampleState2;
     }
   }
@@ -628,14 +665,14 @@ public class VideoDecoder
   {
     try
     {
-      AppMethodBeat.i(218304);
+      AppMethodBeat.i(191366);
       this.extractor.seekTo(paramLong, 2);
       if (this.extractor.getSampleTime() > paramLong) {
         this.extractor.seekTo(paramLong, 0);
       }
       clearDecoder();
       this.mTimeOffset = (this.mLastVideoQueueTime + 10000000L);
-      AppMethodBeat.o(218304);
+      AppMethodBeat.o(191366);
       return;
     }
     finally {}
@@ -643,10 +680,15 @@ public class VideoDecoder
   
   protected void finalize()
   {
-    AppMethodBeat.i(218319);
+    AppMethodBeat.i(191426);
     super.finalize();
     release(false);
-    AppMethodBeat.o(218319);
+    AppMethodBeat.o(191426);
+  }
+  
+  public AverageTimeReporter getDecodePerformance()
+  {
+    return this.decodeReporter;
   }
   
   public long getPreReadCost()
@@ -656,14 +698,14 @@ public class VideoDecoder
   
   public String getSourcePath()
   {
-    AppMethodBeat.i(218315);
+    AppMethodBeat.i(191415);
     if (this.extractor == null)
     {
-      AppMethodBeat.o(218315);
+      AppMethodBeat.o(191415);
       return null;
     }
     String str = this.extractor.getSourcePath();
-    AppMethodBeat.o(218315);
+    AppMethodBeat.o(191415);
     return str;
   }
   
@@ -679,7 +721,7 @@ public class VideoDecoder
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 122	com/tencent/tav/decoder/VideoDecoder:trackIndex	I
+    //   3: getfield 124	com/tencent/tav/decoder/VideoDecoder:trackIndex	I
     //   6: istore_1
     //   7: iload_1
     //   8: iconst_m1
@@ -723,7 +765,7 @@ public class VideoDecoder
   
   public CMTime nextFrameTime(CMTime paramCMTime)
   {
-    AppMethodBeat.i(218314);
+    AppMethodBeat.i(191410);
     long l1 = paramCMTime.getTimeUs();
     paramCMTime = this.allFrameTime.iterator();
     while (paramCMTime.hasNext())
@@ -732,12 +774,12 @@ public class VideoDecoder
       if (l1 < l2)
       {
         paramCMTime = new CMTime((float)l2 / 1000.0F / 1000.0F);
-        AppMethodBeat.o(218314);
+        AppMethodBeat.o(191410);
         return paramCMTime;
       }
     }
     paramCMTime = this.currentDecoderState.getTime().add(this.pFrameTime);
-    AppMethodBeat.o(218314);
+    AppMethodBeat.o(191410);
     return paramCMTime;
   }
   
@@ -773,9 +815,9 @@ public class VideoDecoder
   {
     try
     {
-      AppMethodBeat.i(218305);
+      AppMethodBeat.i(191369);
       CMSampleState localCMSampleState = readSample(CMTime.CMTimeInvalid);
-      AppMethodBeat.o(218305);
+      AppMethodBeat.o(191369);
       return localCMSampleState;
     }
     finally
@@ -793,7 +835,7 @@ public class VideoDecoder
       CMSampleState localCMSampleState;
       try
       {
-        AppMethodBeat.i(218306);
+        AppMethodBeat.i(191377);
         Logger.v(this.TAG, "readSample: " + paramCMTime + ", currentDecoderTime = " + this.currentDecoderState + ",  extractor.getSampleTime() = " + this.extractor.getSampleTime() + ", lastOutputBufferIndex = " + this.lastOutputBufferIndex);
         this.lastFrameValid = false;
         int i;
@@ -814,7 +856,7 @@ public class VideoDecoder
           if ((i != 0) && (j != 0))
           {
             paramCMTime = renderCacheBuffer();
-            AppMethodBeat.o(218306);
+            AppMethodBeat.o(191377);
             return paramCMTime;
           }
         }
@@ -832,7 +874,7 @@ public class VideoDecoder
           Logger.v(this.TAG, "readSample: finish " + paramCMTime + "  -  " + this.currentDecoderState);
           this.readSampleFinish = true;
           paramCMTime = this.currentDecoderState;
-          AppMethodBeat.o(218306);
+          AppMethodBeat.o(191377);
           continue;
         }
         this.currentDecoderState = localCMSampleState;
@@ -842,7 +884,7 @@ public class VideoDecoder
         clearDecoder();
       }
       Logger.v(this.TAG, "readSample: finish flag = " + this.lastFrameValid + " - " + this.extractorDone + ", time = " + paramCMTime + "  -  " + this.currentDecoderState);
-      AppMethodBeat.o(218306);
+      AppMethodBeat.o(191377);
       paramCMTime = localCMSampleState;
       continue;
       label413:
@@ -858,88 +900,99 @@ public class VideoDecoder
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 708
-    //   5: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 740
+    //   5: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 155	com/tencent/tav/decoder/VideoDecoder:isReleased	Z
+    //   9: getfield 157	com/tencent/tav/decoder/VideoDecoder:isReleased	Z
     //   12: ifeq +12 -> 24
-    //   15: ldc_w 708
-    //   18: invokestatic 198	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   15: ldc_w 740
+    //   18: invokestatic 205	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   21: aload_0
     //   22: monitorexit
     //   23: return
     //   24: aload_0
-    //   25: getfield 102	com/tencent/tav/decoder/VideoDecoder:TAG	Ljava/lang/String;
-    //   28: ldc_w 710
+    //   25: getfield 104	com/tencent/tav/decoder/VideoDecoder:TAG	Ljava/lang/String;
+    //   28: ldc_w 742
     //   31: iload_1
-    //   32: invokestatic 713	java/lang/String:valueOf	(Z)Ljava/lang/String;
-    //   35: invokevirtual 389	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   38: invokestatic 326	com/tencent/tav/decoder/logger/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   32: invokestatic 745	java/lang/String:valueOf	(Z)Ljava/lang/String;
+    //   35: invokevirtual 407	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   38: invokestatic 333	com/tencent/tav/decoder/logger/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   41: iload_1
     //   42: ifeq +15 -> 57
     //   45: aload_0
-    //   46: getfield 203	com/tencent/tav/decoder/VideoDecoder:extractor	Lcom/tencent/tav/extractor/AssetExtractor;
-    //   49: invokevirtual 716	com/tencent/tav/extractor/AssetExtractor:dispose	()V
+    //   46: getfield 210	com/tencent/tav/decoder/VideoDecoder:extractor	Lcom/tencent/tav/extractor/AssetExtractor;
+    //   49: invokevirtual 748	com/tencent/tav/extractor/AssetExtractor:dispose	()V
     //   52: aload_0
     //   53: aconst_null
-    //   54: putfield 203	com/tencent/tav/decoder/VideoDecoder:extractor	Lcom/tencent/tav/extractor/AssetExtractor;
+    //   54: putfield 210	com/tencent/tav/decoder/VideoDecoder:extractor	Lcom/tencent/tav/extractor/AssetExtractor;
     //   57: aload_0
-    //   58: getfield 271	com/tencent/tav/decoder/VideoDecoder:mirrorExtractor	Lcom/tencent/tav/extractor/AssetExtractor;
+    //   58: getfield 278	com/tencent/tav/decoder/VideoDecoder:mirrorExtractor	Lcom/tencent/tav/extractor/AssetExtractor;
     //   61: ifnull +15 -> 76
     //   64: aload_0
-    //   65: getfield 271	com/tencent/tav/decoder/VideoDecoder:mirrorExtractor	Lcom/tencent/tav/extractor/AssetExtractor;
-    //   68: invokevirtual 716	com/tencent/tav/extractor/AssetExtractor:dispose	()V
+    //   65: getfield 278	com/tencent/tav/decoder/VideoDecoder:mirrorExtractor	Lcom/tencent/tav/extractor/AssetExtractor;
+    //   68: invokevirtual 748	com/tencent/tav/extractor/AssetExtractor:dispose	()V
     //   71: aload_0
     //   72: aconst_null
-    //   73: putfield 271	com/tencent/tav/decoder/VideoDecoder:mirrorExtractor	Lcom/tencent/tav/extractor/AssetExtractor;
+    //   73: putfield 278	com/tencent/tav/decoder/VideoDecoder:mirrorExtractor	Lcom/tencent/tav/extractor/AssetExtractor;
     //   76: aload_0
     //   77: iconst_0
-    //   78: putfield 157	com/tencent/tav/decoder/VideoDecoder:started	Z
+    //   78: putfield 159	com/tencent/tav/decoder/VideoDecoder:started	Z
     //   81: aload_0
     //   82: iconst_1
-    //   83: putfield 155	com/tencent/tav/decoder/VideoDecoder:isReleased	Z
+    //   83: putfield 157	com/tencent/tav/decoder/VideoDecoder:isReleased	Z
     //   86: aload_0
-    //   87: getfield 129	com/tencent/tav/decoder/VideoDecoder:mediaCodecWrapper	Lcom/tencent/tav/decoder/MediaCodecWrapper;
-    //   90: invokevirtual 718	com/tencent/tav/decoder/MediaCodecWrapper:release	()V
+    //   87: getfield 131	com/tencent/tav/decoder/VideoDecoder:mediaCodecWrapper	Lcom/tencent/tav/decoder/MediaCodecWrapper;
+    //   90: invokevirtual 750	com/tencent/tav/decoder/MediaCodecWrapper:release	()V
     //   93: aload_0
-    //   94: getfield 102	com/tencent/tav/decoder/VideoDecoder:TAG	Ljava/lang/String;
-    //   97: ldc_w 720
+    //   94: getfield 104	com/tencent/tav/decoder/VideoDecoder:TAG	Ljava/lang/String;
+    //   97: ldc_w 752
     //   100: iload_1
-    //   101: invokestatic 713	java/lang/String:valueOf	(Z)Ljava/lang/String;
-    //   104: invokevirtual 389	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   107: invokestatic 326	com/tencent/tav/decoder/logger/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   110: ldc_w 708
-    //   113: invokestatic 198	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   116: goto -95 -> 21
-    //   119: astore_2
-    //   120: aload_0
-    //   121: monitorexit
-    //   122: aload_2
-    //   123: athrow
+    //   101: invokestatic 745	java/lang/String:valueOf	(Z)Ljava/lang/String;
+    //   104: invokevirtual 407	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   107: invokestatic 333	com/tencent/tav/decoder/logger/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   110: aload_0
+    //   111: getfield 104	com/tencent/tav/decoder/VideoDecoder:TAG	Ljava/lang/String;
+    //   114: new 80	java/lang/StringBuilder
+    //   117: dup
+    //   118: ldc_w 754
+    //   121: invokespecial 84	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   124: aload_0
+    //   125: getfield 170	com/tencent/tav/decoder/VideoDecoder:decodeReporter	Lcom/tencent/tav/report/AverageTimeReporter;
+    //   128: invokevirtual 317	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   131: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   134: invokestatic 333	com/tencent/tav/decoder/logger/Logger:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   137: ldc_w 740
+    //   140: invokestatic 205	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   143: goto -122 -> 21
+    //   146: astore_2
+    //   147: aload_0
+    //   148: monitorexit
+    //   149: aload_2
+    //   150: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	124	0	this	VideoDecoder
-    //   0	124	1	paramBoolean	boolean
-    //   119	4	2	localObject	Object
+    //   0	151	0	this	VideoDecoder
+    //   0	151	1	paramBoolean	boolean
+    //   146	4	2	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	21	119	finally
-    //   24	41	119	finally
-    //   45	57	119	finally
-    //   57	76	119	finally
-    //   76	116	119	finally
+    //   2	21	146	finally
+    //   24	41	146	finally
+    //   45	57	146	finally
+    //   57	76	146	finally
+    //   76	143	146	finally
   }
   
   void releaseOutputBuffer()
   {
-    AppMethodBeat.i(218317);
+    AppMethodBeat.i(191422);
     if (this.lastOutputBufferIndex != -1) {}
     try
     {
       this.mediaCodecWrapper.releaseOutputBuffer(this.lastOutputBufferIndex, false);
       this.lastOutputBufferIndex = -1;
       this.outputBuffer = null;
-      AppMethodBeat.o(218317);
+      AppMethodBeat.o(191422);
       return;
     }
     catch (Exception localException)
@@ -955,9 +1008,9 @@ public class VideoDecoder
   {
     try
     {
-      AppMethodBeat.i(218300);
+      AppMethodBeat.i(191354);
       seekTo(paramCMTime, true);
-      AppMethodBeat.o(218300);
+      AppMethodBeat.o(191354);
       return;
     }
     finally
@@ -973,12 +1026,12 @@ public class VideoDecoder
     {
       try
       {
-        AppMethodBeat.i(218301);
+        AppMethodBeat.i(191359);
         Logger.v(this.TAG, "seekTo: " + paramCMTime + "  - " + this + "  " + this.currentStartState + "  " + this.currentDecoderState);
         if ((!this.started) || (this.trackIndex == -1))
         {
           Logger.e(this.TAG, "seekTo: [failed] !started || trackIndex == -1 ");
-          AppMethodBeat.o(218301);
+          AppMethodBeat.o(191359);
           return;
         }
         CMTime localCMTime = paramCMTime;
@@ -988,7 +1041,7 @@ public class VideoDecoder
         paramCMTime = this.timeRange.getStart().add(localCMTime);
         if (((paramBoolean) && (moreCloseCurrentThenSeek(localCMTime))) || (localCMTime.equalsTo(this.currentDecoderState.getTime())) || (hasPreReadAndFirstFrameSeek(localCMTime)))
         {
-          AppMethodBeat.o(218301);
+          AppMethodBeat.o(191359);
           continue;
         }
         this.currentStartState = new CMSampleState(localCMTime);
@@ -997,7 +1050,7 @@ public class VideoDecoder
       seekExtractorTo(paramCMTime.getTimeUs());
       this.extractorDone = false;
       Logger.v(this.TAG, "seekTo: finish - " + this.currentStartState + "  " + this.extractor.getSampleTime());
-      AppMethodBeat.o(218301);
+      AppMethodBeat.o(191359);
     }
   }
   
@@ -1005,9 +1058,9 @@ public class VideoDecoder
   {
     try
     {
-      AppMethodBeat.i(218298);
+      AppMethodBeat.i(191344);
       start(paramCMTimeRange, CMTime.CMTimeZero);
-      AppMethodBeat.o(218298);
+      AppMethodBeat.o(191344);
       return;
     }
     finally
@@ -1023,12 +1076,12 @@ public class VideoDecoder
     {
       try
       {
-        AppMethodBeat.i(218299);
+        AppMethodBeat.i(191352);
         Logger.d(this.TAG, "start:" + getSourcePath() + " [timeRange " + paramCMTimeRange + "] [start " + paramCMTime + "]");
         if (this.trackIndex == -1)
         {
           Logger.e(this.TAG, "start: trackIndex == -1");
-          AppMethodBeat.o(218299);
+          AppMethodBeat.o(191352);
           return;
         }
         clearDecoder();
@@ -1044,7 +1097,7 @@ public class VideoDecoder
             preReadSample();
             this.preReadCost = (System.currentTimeMillis() - l);
           }
-          AppMethodBeat.o(218299);
+          AppMethodBeat.o(191352);
         }
         else
         {
@@ -1072,28 +1125,28 @@ public class VideoDecoder
     
     private void fixCMTime()
     {
-      AppMethodBeat.i(218292);
+      AppMethodBeat.i(191297);
       if (!this.sampleState.getTime().smallThan(CMTime.CMTimeZero))
       {
-        AppMethodBeat.o(218292);
+        AppMethodBeat.o(191297);
         return;
       }
       this.sampleState = new CMSampleState(CMTime.fromUs(VideoDecoder.this.frameDurationUs));
-      AppMethodBeat.o(218292);
+      AppMethodBeat.o(191297);
     }
     
     public String toString()
     {
-      AppMethodBeat.i(218293);
+      AppMethodBeat.i(191301);
       String str = "SampleTime{sampleState=" + this.sampleState + ", timeUs=" + this.timeUs + '}';
-      AppMethodBeat.o(218293);
+      AppMethodBeat.o(191301);
       return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.decoder.VideoDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -10,31 +10,36 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
-import com.tencent.mm.plugin.fav.a.af;
+import com.tencent.mm.by.c;
+import com.tencent.mm.plugin.fav.a.ag;
+import com.tencent.mm.plugin.fav.a.g;
 import com.tencent.mm.plugin.fav.a.k;
-import com.tencent.mm.plugin.fav.a.x;
+import com.tencent.mm.plugin.fav.a.y;
 import com.tencent.mm.plugin.fav.offline.PluginFavOffline;
+import com.tencent.mm.plugin.fav.offline.b.a;
+import com.tencent.mm.plugin.fav.offline.b.b;
+import com.tencent.mm.plugin.fav.offline.b.c;
+import com.tencent.mm.plugin.fav.offline.b.d;
+import com.tencent.mm.plugin.fav.offline.b.e;
 import com.tencent.mm.plugin.fav.ui.l;
-import com.tencent.mm.protocal.protobuf.anb;
-import com.tencent.mm.protocal.protobuf.anq;
+import com.tencent.mm.protocal.protobuf.aoc;
+import com.tencent.mm.protocal.protobuf.aor;
 import com.tencent.mm.sdk.platformtools.FileProviderHelper;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.o.f;
-import com.tencent.mm.ui.base.o.g;
-import com.tencent.mm.ui.base.q;
+import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.q.f;
+import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.base.s;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.MMWebView.a;
 import com.tencent.mm.ui.widget.a.e;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.ac;
-import com.tencent.xweb.z;
+import com.tencent.xweb.aa;
+import com.tencent.xweb.ad;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
@@ -42,17 +47,17 @@ import java.util.List;
 public class FavOfflineWebViewUI
   extends MMActivity
 {
-  private boolean gvP = true;
+  private boolean jab = true;
   private String mUrl;
-  private com.tencent.mm.plugin.fav.offline.b.a tcM;
-  private MMWebView tcN;
-  private FrameLayout tcO;
-  private com.tencent.mm.plugin.fav.a.g tcP;
-  private a tcQ;
+  private com.tencent.mm.plugin.fav.offline.b.a wIX;
+  private MMWebView wIY;
+  private FrameLayout wIZ;
+  private g wJa;
+  private a wJb;
   
   public int getLayoutId()
   {
-    return 2131494141;
+    return b.c.wIG;
   }
   
   public void initView()
@@ -61,8 +66,8 @@ public class FavOfflineWebViewUI
     super.initView();
     setMMTitle("");
     hideActionbarLine();
-    setActionbarColor(getResources().getColor(2131101424));
-    setBackGroundColorResource(2131101424);
+    setActionbarColor(getResources().getColor(b.a.white));
+    setBackGroundColorResource(b.a.white);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -72,35 +77,35 @@ public class FavOfflineWebViewUI
         AppMethodBeat.o(73575);
         return true;
       }
-    }, 2131689494);
-    addIconOptionMenu(0, 2131689495, new MenuItem.OnMenuItemClickListener()
+    }, b.d.actionbar_icon_dark_close);
+    addIconOptionMenu(0, b.d.actionbar_icon_dark_more, new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(73580);
         Log.d("MicroMsg.offline.FavOfflineWebViewUI", "onMenuItemClick click");
         paramAnonymousMenuItem = new e(FavOfflineWebViewUI.this.getContext(), 0, false);
-        paramAnonymousMenuItem.HLX = new o.f()
+        paramAnonymousMenuItem.ODT = new q.f()
         {
-          public final void onCreateMMMenu(m paramAnonymous2m)
+          public final void onCreateMMMenu(o paramAnonymous2o)
           {
             AppMethodBeat.i(73576);
-            paramAnonymous2m.a(2, FavOfflineWebViewUI.this.getString(2131759161), 2131690674, FavOfflineWebViewUI.this.getResources().getColor(2131099710), false);
-            paramAnonymous2m.a(3, FavOfflineWebViewUI.this.getString(2131759162), 2131689830, false);
+            paramAnonymous2o.a(2, FavOfflineWebViewUI.this.getString(b.e.wIJ), b.d.icons_filled_share, FavOfflineWebViewUI.this.getResources().getColor(b.a.Brand), false);
+            paramAnonymous2o.a(3, FavOfflineWebViewUI.this.getString(b.e.wIK), b.d.bottomsheet_icon_moment, false);
             AppMethodBeat.o(73576);
           }
         };
-        paramAnonymousMenuItem.QNH = new o.f()
+        paramAnonymousMenuItem.Ymx = new q.f()
         {
-          public final void onCreateMMMenu(m paramAnonymous2m)
+          public final void onCreateMMMenu(o paramAnonymous2o)
           {
             AppMethodBeat.i(73577);
-            paramAnonymous2m.aS(0, 2131759160, 2131689805);
-            paramAnonymous2m.aS(1, 2131759159, 2131689814);
+            paramAnonymous2o.aW(0, b.e.wII, b.d.bottomsheet_icon_addtag);
+            paramAnonymous2o.aW(1, b.e.wIH, b.d.bottomsheet_icon_del);
             AppMethodBeat.o(73577);
           }
         };
-        paramAnonymousMenuItem.HLY = new o.g()
+        paramAnonymousMenuItem.ODU = new q.g()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
           {
@@ -118,20 +123,20 @@ public class FavOfflineWebViewUI
               localIntent.putExtra("mutil_select_is_ret", true);
               localIntent.putExtra("select_fav_local_id", FavOfflineWebViewUI.a(FavOfflineWebViewUI.this).field_localId);
               localIntent.putExtra("Retr_Msg_Type", 2);
-              c.c(FavOfflineWebViewUI.this, ".ui.transmit.SelectConversationUI", localIntent, 1);
+              c.d(FavOfflineWebViewUI.this, ".ui.transmit.SelectConversationUI", localIntent, 1);
               AppMethodBeat.o(73578);
               return;
             }
             Object localObject = "";
             String str;
-            if (FavOfflineWebViewUI.a(FavOfflineWebViewUI.this).field_favProto.LwS != null)
+            if (FavOfflineWebViewUI.a(FavOfflineWebViewUI.this).field_favProto.Szr != null)
             {
-              localObject = FavOfflineWebViewUI.a(FavOfflineWebViewUI.this).field_favProto.LwS;
+              localObject = FavOfflineWebViewUI.a(FavOfflineWebViewUI.this).field_favProto.Szr;
               paramAnonymous2MenuItem = FavOfflineWebViewUI.a(FavOfflineWebViewUI.this).field_favProto.title;
-              if (!Util.isNullOrNil(((anq)localObject).title)) {
-                paramAnonymous2MenuItem = ((anq)localObject).title;
+              if (!Util.isNullOrNil(((aor)localObject).title)) {
+                paramAnonymous2MenuItem = ((aor)localObject).title;
               }
-              str = ((anq)localObject).thumbUrl;
+              str = ((aor)localObject).thumbUrl;
               localObject = paramAnonymous2MenuItem;
             }
             for (paramAnonymous2MenuItem = str;; paramAnonymous2MenuItem = "")
@@ -139,7 +144,7 @@ public class FavOfflineWebViewUI
               localIntent.putExtra("Ksnsupload_link", FavOfflineWebViewUI.b(FavOfflineWebViewUI.this));
               localIntent.putExtra("Ksnsupload_title", (String)localObject);
               localIntent.putExtra("Ksnsupload_imgurl", paramAnonymous2MenuItem);
-              localIntent.putExtra("Ksnsupload_imgbuf", s.aW(com.tencent.mm.plugin.fav.a.b.a(com.tencent.mm.plugin.fav.a.b.c(FavOfflineWebViewUI.a(FavOfflineWebViewUI.this))), 0, -1));
+              localIntent.putExtra("Ksnsupload_imgbuf", u.aY(com.tencent.mm.plugin.fav.a.b.a(com.tencent.mm.plugin.fav.a.b.c(FavOfflineWebViewUI.a(FavOfflineWebViewUI.this))), 0, -1));
               localIntent.putExtra("Ksnsupload_type", 1);
               localIntent.putExtra("need_result", true);
               c.a(FavOfflineWebViewUI.this, "sns", ".ui.SnsUploadUI", localIntent, 2, false);
@@ -147,7 +152,7 @@ public class FavOfflineWebViewUI
             }
           }
         };
-        paramAnonymousMenuItem.QNK = new o.g()
+        paramAnonymousMenuItem.YmA = new q.g()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
           {
@@ -170,19 +175,17 @@ public class FavOfflineWebViewUI
             }
           }
         };
-        paramAnonymousMenuItem.dGm();
+        paramAnonymousMenuItem.eik();
         AppMethodBeat.o(73580);
         return true;
       }
     });
-    this.tcN = MMWebView.a.a(this, getContentView(), 2131310382);
-    this.tcO = ((FrameLayout)findViewById(2131302282));
-    this.tcN.getSettings().setJavaScriptEnabled(true);
-    this.tcN.getSettings().hsL();
-    this.tcN.getSettings().hsP();
-    this.tcN.getSettings().hsQ();
-    this.tcN.addJavascriptInterface(this.tcQ, "java_obj");
-    this.tcN.setWebViewClient(new ac()
+    this.wIY = MMWebView.a.a(this, getContentView(), b.b.webview);
+    this.wIZ = ((FrameLayout)findViewById(b.b.wIF));
+    this.wIY.getSettings().setJavaScriptEnabled(true);
+    this.wIY.getSettings().iwv();
+    this.wIY.addJavascriptInterface(this.wJb, "java_obj");
+    this.wIY.setWebViewClient(new ad()
     {
       public final boolean a(WebView paramAnonymousWebView, String paramAnonymousString)
       {
@@ -202,12 +205,12 @@ public class FavOfflineWebViewUI
         AppMethodBeat.o(73581);
       }
     });
-    Object localObject = new o(s.k(s.k(this.tcM.field_path, false), false));
-    localObject = FileProviderHelper.getUriForFile(getContext(), (o)localObject).toString();
+    Object localObject = new q(u.n(u.n(this.wIX.field_path, false), false));
+    localObject = FileProviderHelper.getUriForFile(getContext(), (q)localObject).toString();
     Log.d("MicroMsg.offline.FavOfflineWebViewUI", "basePath:%s", new Object[] { localObject });
     try
     {
-      this.tcN.loadDataWithBaseURL((String)localObject, s.boY(this.tcM.field_path), "text/html", "utf-8", null);
+      this.wIY.loadDataWithBaseURL((String)localObject, u.bBS(this.wIX.field_path), "text/html", "utf-8", null);
       AppMethodBeat.o(73584);
       return;
     }
@@ -235,22 +238,22 @@ public class FavOfflineWebViewUI
         AppMethodBeat.o(73585);
         return;
       }
-      if (new k().u(this.tcP))
+      if (new k().u(this.wJa))
       {
-        h.cD(getApplicationContext(), getString(2131759312));
+        com.tencent.mm.ui.base.h.cO(getApplicationContext(), getString(b.e.favorite_retransmit_tip));
         AppMethodBeat.o(73585);
         return;
       }
       LinkedList localLinkedList = new LinkedList();
-      localLinkedList.add(this.tcP);
-      final q localq = h.a(getContext(), getString(2131759230), false, null);
+      localLinkedList.add(this.wJa);
+      final s locals = com.tencent.mm.ui.base.h.a(getContext(), getString(b.e.favorite_forward_tips), false, null);
       l.a(getContext(), str, paramIntent.getStringExtra("custom_send_text"), localLinkedList, new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(73582);
-          localq.dismiss();
-          com.tencent.mm.ui.widget.snackbar.b.r(FavOfflineWebViewUI.this, FavOfflineWebViewUI.this.getString(2131759157));
+          locals.dismiss();
+          com.tencent.mm.ui.widget.snackbar.b.r(FavOfflineWebViewUI.this, FavOfflineWebViewUI.this.getString(b.e.fav_finish_sent));
           AppMethodBeat.o(73582);
         }
       });
@@ -270,16 +273,16 @@ public class FavOfflineWebViewUI
       AppMethodBeat.o(73583);
       return;
     }
-    this.tcM = ((PluginFavOffline)com.tencent.mm.kernel.g.ah(PluginFavOffline.class)).getFavOfflineStorage().ask(this.mUrl);
-    if (this.tcM == null)
+    this.wIX = ((PluginFavOffline)com.tencent.mm.kernel.h.ag(PluginFavOffline.class)).getFavOfflineStorage().aAl(this.mUrl);
+    if (this.wIX == null)
     {
       Log.e("MicroMsg.offline.FavOfflineWebViewUI", "favOffline is null!!!");
       finish();
       AppMethodBeat.o(73583);
       return;
     }
-    this.tcP = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DY(l);
-    if (this.tcP == null)
+    this.wJa = ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavItemInfoStorage().Km(l);
+    if (this.wJa == null)
     {
       Log.e("MicroMsg.offline.FavOfflineWebViewUI", "curInfo is null!!!");
       finish();
@@ -294,7 +297,7 @@ public class FavOfflineWebViewUI
       AppMethodBeat.o(73583);
       return;
     }
-    this.tcQ = new a(this, this.tcM);
+    this.wJb = new a(this, this.wIX);
     initView();
     AppMethodBeat.o(73583);
   }
@@ -307,7 +310,7 @@ public class FavOfflineWebViewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.offline.ui.FavOfflineWebViewUI
  * JD-Core Version:    0.7.0.1
  */

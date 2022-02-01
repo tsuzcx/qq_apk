@@ -6,30 +6,30 @@ import java.util.Date;
 
 public final class b
 {
-  public long sJS;
-  public long sJT;
-  public String sJU;
-  public boolean sJV;
   public String value;
+  public long wpQ;
+  public long wpR;
+  public String wpS;
+  public boolean wpT;
   
   public b() {}
   
   public b(long paramLong1, String paramString, long paramLong2, boolean paramBoolean)
   {
-    AppMethodBeat.i(220618);
-    this.sJS = paramLong1;
+    AppMethodBeat.i(253029);
+    this.wpQ = paramLong1;
     this.value = paramString;
-    this.sJT = paramLong2;
-    this.sJV = paramBoolean;
-    this.sJU = new SimpleDateFormat("[yy-MM-dd HH:mm:ss:SSS]").format(new Date(paramLong2));
-    AppMethodBeat.o(220618);
+    this.wpR = paramLong2;
+    this.wpT = paramBoolean;
+    this.wpS = new SimpleDateFormat("[yy-MM-dd HH:mm:ss:SSS]").format(new Date(paramLong2));
+    AppMethodBeat.o(253029);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(220619);
-    String str = this.sJU + ":" + this.value;
-    AppMethodBeat.o(220619);
+    AppMethodBeat.i(253031);
+    String str = this.wpS + ":" + this.value;
+    AppMethodBeat.o(253031);
     return str;
   }
 }

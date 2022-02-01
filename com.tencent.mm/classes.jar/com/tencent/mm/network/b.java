@@ -2,47 +2,49 @@ package com.tencent.mm.network;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.an.t;
 import com.tencent.mm.jni.utils.UtilsJni;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.dfx;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.protocal.protobuf.dpr;
+import com.tencent.mm.protocal.protobuf.eae;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.nio.charset.StandardCharsets;
 
 public final class b
 {
-  private static b jDF;
-  public dfx jDB;
-  public String jDC;
-  private String jDD;
-  private long jDE;
+  private static b mui;
+  public dpr mue;
+  public String muf;
+  private String mug;
+  private long muh;
   
   static
   {
-    AppMethodBeat.i(197089);
-    jDF = new b();
-    AppMethodBeat.o(197089);
+    AppMethodBeat.i(198019);
+    mui = new b();
+    AppMethodBeat.o(198019);
   }
   
   private b()
   {
-    AppMethodBeat.i(197081);
-    this.jDB = new dfx();
-    this.jDC = "";
-    this.jDD = "";
-    this.jDE = 0L;
-    AppMethodBeat.o(197081);
+    AppMethodBeat.i(197958);
+    this.mue = new dpr();
+    this.muf = "";
+    this.mug = "";
+    this.muh = 0L;
+    AppMethodBeat.o(197958);
   }
   
-  public static b bjq()
+  public static b bsU()
   {
-    return jDF;
+    return mui;
   }
   
-  private boolean bjs()
+  private boolean bsW()
   {
     boolean bool = true;
-    AppMethodBeat.i(197086);
+    AppMethodBeat.i(198010);
     byte[][] arrayOfByte = UtilsJni.ecdsaGeneralOctKeyPair();
     if ((arrayOfByte == null) || (arrayOfByte.length == 0) || (arrayOfByte.length == 1))
     {
@@ -51,80 +53,80 @@ public final class b
       for (;;)
       {
         Log.w("CgiSignerPublicAndPrivateKey", bool);
-        AppMethodBeat.o(197086);
+        AppMethodBeat.o(198010);
         return false;
         bool = false;
       }
     }
     try
     {
-      this.jDD = new String(arrayOfByte[0], StandardCharsets.ISO_8859_1);
-      this.jDC = new String(arrayOfByte[1], StandardCharsets.ISO_8859_1);
-      if (!bjt())
+      this.mug = new String(arrayOfByte[0], StandardCharsets.ISO_8859_1);
+      this.muf = new String(arrayOfByte[1], StandardCharsets.ISO_8859_1);
+      if (!bsX())
       {
-        Log.e("CgiSignerPublicAndPrivateKey", "public or private key is empty, public key is empty: " + TextUtils.isEmpty(this.jDD) + ", private key is empty: " + TextUtils.isEmpty(this.jDC));
-        AppMethodBeat.o(197086);
+        Log.e("CgiSignerPublicAndPrivateKey", "public or private key is empty, public key is empty: " + TextUtils.isEmpty(this.mug) + ", private key is empty: " + TextUtils.isEmpty(this.muf));
+        AppMethodBeat.o(198010);
         return false;
       }
     }
     catch (Exception localException)
     {
       Log.e("CgiSignerPublicAndPrivateKey", "gen keypair failed: " + localException.getLocalizedMessage());
-      AppMethodBeat.o(197086);
+      AppMethodBeat.o(198010);
       return false;
     }
-    Log.i("CgiSignerPublicAndPrivateKey", "public key length " + this.jDD.length() + " private key length " + this.jDC.length());
-    this.jDE = System.currentTimeMillis();
-    this.jDB.KLU = new SKBuiltinBuffer_t().setBuffer(this.jDD.getBytes(StandardCharsets.ISO_8859_1));
-    this.jDB.LrO = 415;
-    AppMethodBeat.o(197086);
+    Log.i("CgiSignerPublicAndPrivateKey", "public key length " + this.mug.length() + " private key length " + this.muf.length());
+    this.muh = System.currentTimeMillis();
+    this.mue.RMR = new eae().dc(this.mug.getBytes(StandardCharsets.ISO_8859_1));
+    this.mue.Stl = 415;
+    AppMethodBeat.o(198010);
     return true;
   }
   
-  private boolean bjt()
+  private boolean bsX()
   {
-    AppMethodBeat.i(197087);
-    if ((!TextUtils.isEmpty(this.jDD)) && (!TextUtils.isEmpty(this.jDC)))
+    AppMethodBeat.i(198017);
+    if ((!TextUtils.isEmpty(this.mug)) && (!TextUtils.isEmpty(this.muf)))
     {
-      AppMethodBeat.o(197087);
+      AppMethodBeat.o(198017);
       return true;
     }
-    AppMethodBeat.o(197087);
+    AppMethodBeat.o(198017);
     return false;
   }
   
-  private boolean bju()
+  private boolean bsY()
   {
-    AppMethodBeat.i(197088);
-    if (System.currentTimeMillis() - this.jDE > 86400000L)
+    AppMethodBeat.i(198018);
+    if (System.currentTimeMillis() - this.muh > 86400000L)
     {
-      AppMethodBeat.o(197088);
+      AppMethodBeat.o(198018);
       return true;
     }
-    if (!bjt())
+    if (!bsX())
     {
-      AppMethodBeat.o(197088);
+      AppMethodBeat.o(198018);
       return true;
     }
-    AppMethodBeat.o(197088);
+    AppMethodBeat.o(198018);
     return false;
   }
   
-  public final String RO(String paramString)
+  public final String Zo(String paramString)
   {
     boolean bool = true;
-    AppMethodBeat.i(197082);
-    if (TextUtils.isEmpty(this.jDC)) {}
+    AppMethodBeat.i(197978);
+    if (TextUtils.isEmpty(this.muf)) {}
     for (;;)
     {
       try
       {
-        arrayOfString = com.tencent.mm.kernel.g.aAg().hqi.iMw.aZl();
+        arrayOfString = h.aHF().kcd.lCD.biA();
         if ((arrayOfString != null) && (arrayOfString.length == 2) && (!TextUtils.isEmpty(arrayOfString[0])) && (!TextUtils.isEmpty(arrayOfString[1])))
         {
-          this.jDD = arrayOfString[0];
-          this.jDC = arrayOfString[1];
-          Log.w("CgiSignerPublicAndPrivateKey", "origin key is empty, use backup key " + this.jDD.length() + " " + this.jDC.length());
+          this.mug = arrayOfString[0];
+          this.muf = arrayOfString[1];
+          Log.w("CgiSignerPublicAndPrivateKey", "origin key is empty, use backup key " + this.mug.length() + " " + this.muf.length());
         }
       }
       catch (Exception localException)
@@ -138,18 +140,18 @@ public final class b
       }
       try
       {
-        paramString = UtilsJni.ecdsaSignWithOctKey(this.jDC.getBytes(StandardCharsets.ISO_8859_1), paramString.getBytes(StandardCharsets.ISO_8859_1));
+        paramString = UtilsJni.ecdsaSignWithOctKey(this.muf.getBytes(StandardCharsets.ISO_8859_1), paramString.getBytes(StandardCharsets.ISO_8859_1));
         if (paramString != null) {
           break label254;
         }
         Log.e("CgiSignerPublicAndPrivateKey", "sign result is null ");
-        AppMethodBeat.o(197082);
+        AppMethodBeat.o(197978);
         return "";
       }
       catch (Exception paramString)
       {
         Log.e("CgiSignerPublicAndPrivateKey", "sign data failed " + paramString.getLocalizedMessage());
-        AppMethodBeat.o(197082);
+        AppMethodBeat.o(197978);
         return "";
       }
       localStringBuilder = new StringBuilder("backup key is empty ");
@@ -161,30 +163,30 @@ public final class b
     label254:
     Log.d("CgiSignerPublicAndPrivateKey", "sign result length " + paramString.length);
     paramString = new String(paramString, StandardCharsets.ISO_8859_1);
-    AppMethodBeat.o(197082);
+    AppMethodBeat.o(197978);
     return paramString;
   }
   
-  public final byte[] az(byte[] paramArrayOfByte)
+  public final byte[] aK(byte[] paramArrayOfByte)
   {
     boolean bool = true;
-    AppMethodBeat.i(197083);
+    AppMethodBeat.i(197997);
     if (paramArrayOfByte == null)
     {
-      AppMethodBeat.o(197083);
+      AppMethodBeat.o(197997);
       return null;
     }
-    if (TextUtils.isEmpty(this.jDC)) {}
+    if (TextUtils.isEmpty(this.muf)) {}
     for (;;)
     {
       try
       {
-        arrayOfString = com.tencent.mm.kernel.g.aAg().hqi.iMw.aZl();
+        arrayOfString = h.aHF().kcd.lCD.biA();
         if ((arrayOfString != null) && (arrayOfString.length == 2) && (!TextUtils.isEmpty(arrayOfString[0])) && (!TextUtils.isEmpty(arrayOfString[1])))
         {
-          this.jDD = arrayOfString[0];
-          this.jDC = arrayOfString[1];
-          Log.w("CgiSignerPublicAndPrivateKey", "origin key is empty, use backup key " + this.jDD.length() + " " + this.jDC.length());
+          this.mug = arrayOfString[0];
+          this.muf = arrayOfString[1];
+          Log.w("CgiSignerPublicAndPrivateKey", "origin key is empty, use backup key " + this.mug.length() + " " + this.muf.length());
         }
       }
       catch (Exception localException)
@@ -198,18 +200,18 @@ public final class b
       }
       try
       {
-        paramArrayOfByte = UtilsJni.ecdsaSignWithOctKey(this.jDC.getBytes(StandardCharsets.ISO_8859_1), paramArrayOfByte);
+        paramArrayOfByte = UtilsJni.ecdsaSignWithOctKey(this.muf.getBytes(StandardCharsets.ISO_8859_1), paramArrayOfByte);
         if (paramArrayOfByte != null) {
           break label257;
         }
         Log.e("CgiSignerPublicAndPrivateKey", "sign result is null ");
-        AppMethodBeat.o(197083);
+        AppMethodBeat.o(197997);
         return null;
       }
       catch (Exception paramArrayOfByte)
       {
         Log.e("CgiSignerPublicAndPrivateKey", "sign data byte failed " + paramArrayOfByte.getLocalizedMessage());
-        AppMethodBeat.o(197083);
+        AppMethodBeat.o(197997);
         return null;
       }
       localStringBuilder = new StringBuilder("backup key is empty ");
@@ -220,51 +222,51 @@ public final class b
     }
     label257:
     Log.d("CgiSignerPublicAndPrivateKey", "sign byte result length " + paramArrayOfByte.length);
-    AppMethodBeat.o(197083);
+    AppMethodBeat.o(197997);
     return paramArrayOfByte;
   }
   
-  public final int bL(String paramString1, String paramString2)
+  public final int bO(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(197084);
+    AppMethodBeat.i(198000);
     try
     {
-      int i = UtilsJni.ecdsaVerifyWithOctKey(this.jDD.getBytes(StandardCharsets.ISO_8859_1), paramString1.getBytes(StandardCharsets.ISO_8859_1), paramString2.getBytes(StandardCharsets.ISO_8859_1));
+      int i = UtilsJni.ecdsaVerifyWithOctKey(this.mug.getBytes(StandardCharsets.ISO_8859_1), paramString1.getBytes(StandardCharsets.ISO_8859_1), paramString2.getBytes(StandardCharsets.ISO_8859_1));
       Log.d("CgiSignerPublicAndPrivateKey", "verify result ".concat(String.valueOf(i)));
-      AppMethodBeat.o(197084);
+      AppMethodBeat.o(198000);
       return i;
     }
     catch (Exception paramString1)
     {
       Log.e("CgiSignerPublicAndPrivateKey", "verify failed " + paramString1.getLocalizedMessage());
-      AppMethodBeat.o(197084);
+      AppMethodBeat.o(198000);
     }
     return -1;
   }
   
-  public final String bjr()
+  public final String bsV()
   {
-    AppMethodBeat.i(197085);
-    if ((bju()) && (!bjs()))
+    AppMethodBeat.i(198002);
+    if ((bsY()) && (!bsW()))
     {
       Log.e("CgiSignerPublicAndPrivateKey", "gen keypair failed");
-      AppMethodBeat.o(197085);
+      AppMethodBeat.o(198002);
       return "";
     }
-    String str = this.jDD;
-    AppMethodBeat.o(197085);
+    String str = this.mug;
+    AppMethodBeat.o(198002);
     return str;
   }
   
-  public static final class a
+  public static class a
   {
-    public String jDC = "";
-    public String jDD = "";
+    public String muf = "";
+    public String mug = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.network.b
  * JD-Core Version:    0.7.0.1
  */

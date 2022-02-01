@@ -2,25 +2,26 @@ package com.tencent.mm.plugin.appbrand.backgroundrunning;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.kernel.c.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashSet;
 import java.util.Iterator;
 
 public final class a
-  implements com.tencent.mm.kernel.c.b, f
+  implements b, f
 {
-  private final HashSet<f.b> kYg;
-  private final HashSet<f.a> kYh;
+  private final HashSet<f.b> nSs;
+  private final HashSet<f.a> nSt;
   
   public a()
   {
     AppMethodBeat.i(44765);
-    this.kYg = new HashSet();
-    this.kYh = new HashSet();
+    this.nSs = new HashSet();
+    this.nSt = new HashSet();
     AppMethodBeat.o(44765);
   }
   
@@ -28,19 +29,19 @@ public final class a
   {
     AppMethodBeat.i(44767);
     Log.i("MicroMsg.AppBrandBackgroundRunningManagerService", "sendOperation from appbrand process, operation:%s", new Object[] { paramAppBrandBackgroundRunningOperationParcel });
-    synchronized (this.kYg)
+    synchronized (this.nSs)
     {
-      Iterator localIterator = this.kYg.iterator();
+      Iterator localIterator = this.nSs.iterator();
       if (localIterator.hasNext()) {
         ((f.b)localIterator.next()).b(paramAppBrandBackgroundRunningOperationParcel);
       }
     }
-    if (paramAppBrandBackgroundRunningOperationParcel.kYo)
+    if (paramAppBrandBackgroundRunningOperationParcel.nSA)
     {
       AppMethodBeat.o(44767);
       return;
     }
-    h.a(MainProcessIPCService.dkO, paramAppBrandBackgroundRunningOperationParcel, a.class, new d() {});
+    j.a(MainProcessIPCService.PROCESS_NAME, paramAppBrandBackgroundRunningOperationParcel, a.class, new com.tencent.mm.ipcinvoker.f() {});
     AppMethodBeat.o(44767);
   }
   
@@ -50,9 +51,9 @@ public final class a
     if ((paramMMBackgroundRunningOperationParcel != null) && (!Util.isNullOrNil(paramMMBackgroundRunningOperationParcel.appId)))
     {
       Log.i("MicroMsg.AppBrandBackgroundRunningManagerService", "receiveOperation in appbrand process, operation:%s", new Object[] { paramMMBackgroundRunningOperationParcel });
-      synchronized (this.kYh)
+      synchronized (this.nSt)
       {
-        Iterator localIterator = this.kYh.iterator();
+        Iterator localIterator = this.nSt.iterator();
         if (localIterator.hasNext()) {
           ((f.a)localIterator.next()).b(paramMMBackgroundRunningOperationParcel);
         }
@@ -71,9 +72,9 @@ public final class a
       AppMethodBeat.o(44771);
       return;
     }
-    synchronized (this.kYh)
+    synchronized (this.nSt)
     {
-      this.kYh.add(parama);
+      this.nSt.add(parama);
       AppMethodBeat.o(44771);
       return;
     }
@@ -87,21 +88,21 @@ public final class a
       AppMethodBeat.o(44769);
       return;
     }
-    synchronized (this.kYg)
+    synchronized (this.nSs)
     {
-      this.kYg.add(paramb);
+      this.nSs.add(paramb);
       AppMethodBeat.o(44769);
       return;
     }
   }
   
-  public final void aBc() {}
+  public final void aIF() {}
   
-  public final void aBd()
+  public final void aIG()
   {
     AppMethodBeat.i(44766);
-    this.kYg.clear();
-    this.kYh.clear();
+    this.nSs.clear();
+    this.nSt.clear();
     AppMethodBeat.o(44766);
   }
   
@@ -113,9 +114,9 @@ public final class a
       AppMethodBeat.o(44772);
       return;
     }
-    synchronized (this.kYh)
+    synchronized (this.nSt)
     {
-      this.kYh.remove(parama);
+      this.nSt.remove(parama);
       AppMethodBeat.o(44772);
       return;
     }
@@ -129,21 +130,21 @@ public final class a
       AppMethodBeat.o(44770);
       return;
     }
-    synchronized (this.kYg)
+    synchronized (this.nSs)
     {
-      this.kYg.remove(paramb);
+      this.nSs.remove(paramb);
       AppMethodBeat.o(44770);
       return;
     }
   }
   
   static class a
-    implements com.tencent.mm.ipcinvoker.b<AppBrandBackgroundRunningOperationParcel, IPCBoolean>
+    implements d<AppBrandBackgroundRunningOperationParcel, IPCBoolean>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundrunning.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,13 +7,15 @@ import android.net.Uri;
 import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
+import com.tencent.mm.pluginsdk.ui.tools.ab;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.MMWebView.a;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.ac;
+import com.tencent.xweb.aa;
+import com.tencent.xweb.ad;
 import com.tencent.xweb.c;
 import java.io.File;
 import java.util.HashMap;
@@ -28,26 +30,26 @@ import org.json.JSONObject;
 
 public final class ao
 {
-  int IFb;
-  AtomicBoolean IFc;
-  List<ap> IFd;
-  long IFe;
+  int Pzt;
+  AtomicBoolean Pzu;
+  List<ap> Pzv;
+  long Pzw;
   String TAG;
   
   public ao(int paramInt)
   {
     AppMethodBeat.i(117750);
     this.TAG = "MicroMsg.WebSearch.WebSearchPreloadMgr";
-    this.IFc = new AtomicBoolean(false);
-    this.IFd = new LinkedList();
-    this.IFb = paramInt;
+    this.Pzu = new AtomicBoolean(false);
+    this.Pzv = new LinkedList();
+    this.Pzt = paramInt;
     this.TAG = (this.TAG + "_" + paramInt);
     AppMethodBeat.o(117750);
   }
   
   final boolean a(final MMWebView paramMMWebView, final ap paramap)
   {
-    AppMethodBeat.i(187862);
+    AppMethodBeat.i(212797);
     Log.i(this.TAG, "begin jsapi init,wv %s", new Object[] { paramMMWebView.toString() });
     try
     {
@@ -55,7 +57,7 @@ public final class ao
       if (str == null)
       {
         Log.e(this.TAG, "loadJavaScript fail, jsContent is null");
-        AppMethodBeat.o(187862);
+        AppMethodBeat.o(212797);
         return false;
       }
     }
@@ -69,7 +71,7 @@ public final class ao
       if (paramMMWebView == null)
       {
         Log.e(this.TAG, "loadJavaScript, viewWV is null");
-        AppMethodBeat.o(187862);
+        AppMethodBeat.o(212797);
         return false;
       }
       paramMMWebView.evaluateJavascript("javascript:".concat(String.valueOf(localObject)), new ValueCallback() {});
@@ -177,12 +179,12 @@ public final class ao
       paramMMWebView.getRandomStr();
       paramMMWebView.evaluateJavascript(a.i("event", "sys:attach_runOn3rd_apis", localHashMap) + ")", new ValueCallback() {});
       Log.i(this.TAG, "jsapi init done");
-      AppMethodBeat.o(187862);
+      AppMethodBeat.o(212797);
     }
     return true;
   }
   
-  public final void aXi(final String paramString)
+  public final void biT(final String paramString)
   {
     AppMethodBeat.i(117751);
     if (!MMApplicationContext.isToolsMpProcess())
@@ -191,52 +193,52 @@ public final class ao
       AppMethodBeat.o(117751);
       return;
     }
-    if (this.IFc.get())
+    if (this.Pzu.get())
     {
-      Log.i(this.TAG, "preloading webview %s", new Object[] { Integer.valueOf(this.IFb) });
+      Log.i(this.TAG, "preloading webview %s", new Object[] { Integer.valueOf(this.Pzt) });
       AppMethodBeat.o(117751);
       return;
     }
-    if (this.IFd.size() > 0)
+    if (this.Pzv.size() > 0)
     {
-      Log.i(this.TAG, "already preload webview %s", new Object[] { Integer.valueOf(this.IFb) });
+      Log.i(this.TAG, "already preload webview %s", new Object[] { Integer.valueOf(this.Pzt) });
       AppMethodBeat.o(117751);
       return;
     }
-    this.IFc.set(true);
-    Log.i(this.TAG, "start to preload webview %d", new Object[] { Integer.valueOf(this.IFb) });
-    com.tencent.f.h.RTc.aV(new Runnable()
+    this.Pzu.set(true);
+    Log.i(this.TAG, "start to preload webview %d", new Object[] { Integer.valueOf(this.Pzt) });
+    com.tencent.e.h.ZvG.bc(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(117739);
         ao localao = ao.this;
         String str1 = paramString;
-        Log.i(localao.TAG, "real start preloadWebView cached webview preloadBiz %d", new Object[] { Integer.valueOf(localao.IFb) });
-        localao.IFe = System.currentTimeMillis();
-        MMWebView localMMWebView = MMWebView.a.kL(MMApplicationContext.getContext());
+        Log.i(localao.TAG, "real start preloadWebView cached webview preloadBiz %d", new Object[] { Integer.valueOf(localao.Pzt) });
+        localao.Pzw = System.currentTimeMillis();
+        MMWebView localMMWebView = MMWebView.a.lH(MMApplicationContext.getContext());
         Log.i(localao.TAG, "Create MMWebView %s", new Object[] { localMMWebView.getWebCoreType() });
         localMMWebView.setPreload(true);
         localMMWebView.setRandomStr(Util.getRandomString(16));
         localMMWebView.getSettings().setJavaScriptEnabled(true);
         localMMWebView.getSettings().setPluginsEnabled(true);
-        localMMWebView.getSettings().hsU();
+        localMMWebView.getSettings().iwC();
         localMMWebView.getSettings().setBuiltInZoomControls(false);
         localMMWebView.getSettings().setUseWideViewPort(true);
         localMMWebView.getSettings().setLoadWithOverviewMode(true);
-        localMMWebView.getSettings().hsN();
-        localMMWebView.getSettings().hsM();
+        localMMWebView.getSettings().iwx();
+        localMMWebView.getSettings().iww();
         localMMWebView.getSettings().setGeolocationEnabled(true);
         localMMWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-        localMMWebView.getSettings().hsW();
-        localMMWebView.getSettings().hsS();
+        localMMWebView.getSettings().iwE();
+        localMMWebView.getSettings().iwA();
         localMMWebView.getSettings().setAppCachePath(localMMWebView.getContext().getDir("webviewcache", 0).getAbsolutePath());
-        localMMWebView.getSettings().hsR();
-        localMMWebView.getSettings().hsT();
-        localMMWebView.getSettings().setDatabasePath(b.aKA() + "databases/");
-        c.hsp().hsq();
-        c.hsp().e(localMMWebView);
-        Object localObject = com.tencent.mm.pluginsdk.ui.tools.z.cr(localMMWebView.getContext(), localMMWebView.getSettings().getUserAgentString());
+        localMMWebView.getSettings().iwz();
+        localMMWebView.getSettings().iwB();
+        localMMWebView.getSettings().setDatabasePath(b.aSC() + "databases/");
+        c.ivX().ivY();
+        c.ivX().f(localMMWebView);
+        Object localObject = ab.cC(localMMWebView.getContext(), localMMWebView.getSettings().getUserAgentString());
         localMMWebView.getSettings().setUserAgentString((String)localObject);
         localObject = new com.tencent.mm.plugin.webview.d.i();
         localMMWebView.addJavascriptInterface(localObject, "__wx");
@@ -248,7 +250,7 @@ public final class ao
         {
           i = Integer.valueOf(localUri.getQueryParameter("scene")).intValue();
           localMMWebView.setWebViewClient(new ao.2(localao, localMMWebView, new ap(localMMWebView, str1, str2, (com.tencent.mm.plugin.webview.d.i)localObject, i)));
-          com.tencent.mm.plugin.report.service.h.CyF.a(15005, new Object[] { Integer.valueOf(localao.IFb), Integer.valueOf(1), Integer.valueOf(0) });
+          com.tencent.mm.plugin.report.service.h.IzE.a(15005, new Object[] { Integer.valueOf(localao.Pzt), Integer.valueOf(1), Integer.valueOf(0) });
           AppMethodBeat.o(117739);
           return;
         }
@@ -266,7 +268,7 @@ public final class ao
   
   public static final class a
   {
-    private static JSONObject be(Map<String, Object> paramMap)
+    private static JSONObject aY(Map<String, Object> paramMap)
     {
       AppMethodBeat.i(117749);
       if ((paramMap == null) || (paramMap.size() == 0))
@@ -308,7 +310,7 @@ public final class ao
         if (paramString1.equals("event")) {
           localJSONObject.put("__event_id", paramString2);
         }
-        localJSONObject.put("__params", be(paramMap));
+        localJSONObject.put("__params", aY(paramMap));
         paramString1 = localJSONObject.toString();
         AppMethodBeat.o(117748);
         return paramString1;

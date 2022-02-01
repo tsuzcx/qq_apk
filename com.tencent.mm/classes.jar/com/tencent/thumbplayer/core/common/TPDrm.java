@@ -6,7 +6,7 @@ public class TPDrm
 {
   public static int[] getDRMCapabilities()
   {
-    AppMethodBeat.i(189732);
+    AppMethodBeat.i(222776);
     Object localObject = null;
     try
     {
@@ -20,10 +20,10 @@ public class TPDrm
     }
     if (localObject == null)
     {
-      AppMethodBeat.o(189732);
+      AppMethodBeat.o(222776);
       return new int[0];
     }
-    AppMethodBeat.o(189732);
+    AppMethodBeat.o(222776);
     return localObject;
   }
   
@@ -31,7 +31,7 @@ public class TPDrm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPDrm
  * JD-Core Version:    0.7.0.1
  */

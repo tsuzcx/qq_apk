@@ -1,38 +1,38 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.e;
+import com.google.b.a.b;
+import com.google.b.a.e;
 
 public final class a$t
   extends e
 {
-  public a.as[] REg = a.as.hjh();
+  public a.ar[] ZfN = a.ar.ikR();
   
   public a$t()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public final int Ig()
+  public final int JG()
   {
-    int i = super.Ig();
+    int i = super.JG();
     int k = i;
-    if (this.REg != null)
+    if (this.ZfN != null)
     {
       k = i;
-      if (this.REg.length > 0)
+      if (this.ZfN.length > 0)
       {
         int j = 0;
         for (;;)
         {
           k = i;
-          if (j >= this.REg.length) {
+          if (j >= this.ZfN.length) {
             break;
           }
-          a.as localas = this.REg[j];
+          a.ar localar = this.ZfN[j];
           k = i;
-          if (localas != null) {
-            k = i + b.b(1, localas);
+          if (localar != null) {
+            k = i + b.b(1, localar);
           }
           j += 1;
           i = k;
@@ -44,14 +44,14 @@ public final class a$t
   
   public final void a(b paramb)
   {
-    if ((this.REg != null) && (this.REg.length > 0))
+    if ((this.ZfN != null) && (this.ZfN.length > 0))
     {
       int i = 0;
-      while (i < this.REg.length)
+      while (i < this.ZfN.length)
       {
-        a.as localas = this.REg[i];
-        if (localas != null) {
-          paramb.a(1, localas);
+        a.ar localar = this.ZfN[i];
+        if (localar != null) {
+          paramb.a(1, localar);
         }
         i += 1;
       }

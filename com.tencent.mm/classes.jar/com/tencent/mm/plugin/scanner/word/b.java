@@ -8,25 +8,25 @@ import java.util.List;
 
 public final class b
 {
-  private WordDetectNative.WordDetectDetailResult CVE;
-  public List<Float> CVF;
+  private WordDetectNative.WordDetectDetailResult Jbq;
+  public List<Float> Jbr;
   
   public b(WordDetectNative.WordDetectDetailResult paramWordDetectDetailResult)
   {
-    AppMethodBeat.i(194820);
-    this.CVF = new ArrayList();
-    this.CVE = paramWordDetectDetailResult;
+    AppMethodBeat.i(192722);
+    this.Jbr = new ArrayList();
+    this.Jbq = paramWordDetectDetailResult;
     if ((paramWordDetectDetailResult != null) && (paramWordDetectDetailResult.rate_lang != null))
     {
       int i = 0;
       while (i < paramWordDetectDetailResult.rate_lang.length)
       {
         Log.i("MicroMsg.WordDetectDetailResultWrapper", "%d ratio %f", new Object[] { Integer.valueOf(i), Float.valueOf(paramWordDetectDetailResult.rate_lang[i]) });
-        this.CVF.add(Float.valueOf(paramWordDetectDetailResult.rate_lang[i]));
+        this.Jbr.add(Float.valueOf(paramWordDetectDetailResult.rate_lang[i]));
         i += 1;
       }
     }
-    AppMethodBeat.o(194820);
+    AppMethodBeat.o(192722);
   }
 }
 

@@ -13,37 +13,37 @@ public final class e
   extends com.google.android.exoplayer2.a
   implements Handler.Callback
 {
-  private boolean btF;
-  private final c btZ;
-  private final k btf;
-  private final a bua;
-  private final Handler bub;
-  private final d buc;
-  private final Metadata[] bud;
-  private final long[] bue;
-  private int bug;
-  private int buh;
-  private a bui;
+  private final k bcI;
+  private final c bdC;
+  private final a bdD;
+  private final Handler bdE;
+  private final d bdF;
+  private final Metadata[] bdG;
+  private final long[] bdH;
+  private int bdI;
+  private int bdJ;
+  private a bdK;
+  private boolean bdi;
   
   public e(a parama, Looper paramLooper)
   {
-    this(parama, paramLooper, c.btY);
+    this(parama, paramLooper, c.bdB);
   }
   
   private e(a parama, Looper paramLooper, c paramc)
   {
     super(4);
     AppMethodBeat.i(92471);
-    this.bua = ((a)com.google.android.exoplayer2.i.a.checkNotNull(parama));
+    this.bdD = ((a)com.google.android.exoplayer2.i.a.checkNotNull(parama));
     if (paramLooper == null) {}
     for (parama = null;; parama = new Handler(paramLooper, this))
     {
-      this.bub = parama;
-      this.btZ = ((c)com.google.android.exoplayer2.i.a.checkNotNull(paramc));
-      this.btf = new k();
-      this.buc = new d();
-      this.bud = new Metadata[5];
-      this.bue = new long[5];
+      this.bdE = parama;
+      this.bdC = ((c)com.google.android.exoplayer2.i.a.checkNotNull(paramc));
+      this.bcI = new k();
+      this.bdF = new d();
+      this.bdG = new Metadata[5];
+      this.bdH = new long[5];
       AppMethodBeat.o(92471);
       return;
     }
@@ -52,38 +52,38 @@ public final class e
   private void d(Metadata paramMetadata)
   {
     AppMethodBeat.i(92479);
-    this.bua.b(paramMetadata);
+    this.bdD.b(paramMetadata);
     AppMethodBeat.o(92479);
   }
   
-  private void vj()
+  private void th()
   {
     AppMethodBeat.i(92477);
-    Arrays.fill(this.bud, null);
-    this.bug = 0;
-    this.buh = 0;
+    Arrays.fill(this.bdG, null);
+    this.bdI = 0;
+    this.bdJ = 0;
     AppMethodBeat.o(92477);
   }
   
   public final void a(long paramLong, boolean paramBoolean)
   {
     AppMethodBeat.i(92474);
-    vj();
-    this.btF = false;
+    th();
+    this.bdi = false;
     AppMethodBeat.o(92474);
   }
   
   public final void a(Format[] paramArrayOfFormat, long paramLong)
   {
     AppMethodBeat.i(92473);
-    this.bui = this.btZ.h(paramArrayOfFormat[0]);
+    this.bdK = this.bdC.h(paramArrayOfFormat[0]);
     AppMethodBeat.o(92473);
   }
   
   public final int b(Format paramFormat)
   {
     AppMethodBeat.i(92472);
-    if (this.btZ.g(paramFormat))
+    if (this.bdC.g(paramFormat))
     {
       AppMethodBeat.o(92472);
       return 4;
@@ -92,27 +92,27 @@ public final class e
     return 0;
   }
   
-  public final void e(long paramLong1, long paramLong2)
+  public final void f(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(92475);
-    if ((!this.btF) && (this.buh < 5))
+    if ((!this.bdi) && (this.bdJ < 5))
     {
-      this.buc.clear();
-      if (a(this.btf, this.buc, false) == -4)
+      this.bdF.clear();
+      if (a(this.bcI, this.bdF, false) == -4)
       {
-        if (!this.buc.ud()) {
+        if (!this.bdF.rV()) {
           break label150;
         }
-        this.btF = true;
+        this.bdi = true;
       }
     }
-    if ((this.buh > 0) && (this.bue[this.bug] <= paramLong1))
+    if ((this.bdJ > 0) && (this.bdH[this.bdI] <= paramLong1))
     {
-      Metadata localMetadata = this.bud[this.bug];
-      if (this.bub == null) {
+      Metadata localMetadata = this.bdG[this.bdI];
+      if (this.bdE == null) {
         break label265;
       }
-      this.bub.obtainMessage(0, localMetadata).sendToTarget();
+      this.bdE.obtainMessage(0, localMetadata).sendToTarget();
     }
     for (;;)
     {
@@ -120,26 +120,26 @@ public final class e
       com.google.android.exoplayer2.e locale;
       for (;;)
       {
-        this.bud[this.bug] = null;
-        this.bug = ((this.bug + 1) % 5);
-        this.buh -= 1;
+        this.bdG[this.bdI] = null;
+        this.bdI = ((this.bdI + 1) % 5);
+        this.bdJ -= 1;
         AppMethodBeat.o(92475);
         return;
-        if (this.buc.uc()) {
+        if (this.bdF.rU()) {
           break;
         }
-        this.buc.bdC = this.btf.bdF.bdC;
-        this.buc.ui();
+        this.bdF.aNc = this.bcI.aNg.aNc;
+        this.bdF.sa();
         try
         {
-          int i = (this.bug + this.buh) % 5;
-          this.bud[i] = this.bui.a(this.buc);
-          this.bue[i] = this.buc.timeUs;
-          this.buh += 1;
+          int i = (this.bdI + this.bdJ) % 5;
+          this.bdG[i] = this.bdK.a(this.bdF);
+          this.bdH[i] = this.bdF.timeUs;
+          this.bdJ += 1;
         }
         catch (b localb)
         {
-          locale = com.google.android.exoplayer2.e.b(localb, this.index);
+          locale = com.google.android.exoplayer2.e.b(localb, getIndex());
           AppMethodBeat.o(92475);
           throw locale;
         }
@@ -169,17 +169,17 @@ public final class e
     return true;
   }
   
-  public final boolean tB()
-  {
-    return this.btF;
-  }
-  
-  public final void te()
+  public final void qU()
   {
     AppMethodBeat.i(92476);
-    vj();
-    this.bui = null;
+    th();
+    this.bdK = null;
     AppMethodBeat.o(92476);
+  }
+  
+  public final boolean rt()
+  {
+    return this.bdi;
   }
   
   public static abstract interface a
@@ -189,7 +189,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.e
  * JD-Core Version:    0.7.0.1
  */

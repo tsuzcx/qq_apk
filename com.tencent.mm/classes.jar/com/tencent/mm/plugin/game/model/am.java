@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.game.protobuf.bj;
 import com.tencent.mm.plugin.game.protobuf.bk;
+import com.tencent.mm.plugin.game.protobuf.bl;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class am
@@ -18,24 +18,24 @@ public final class am
   implements m
 {
   private i callback;
-  public final d hhm;
+  public final d jTk;
   
   public am(String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(41598);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new bj();
-    ((d.a)localObject).iLO = new bk();
+    ((d.a)localObject).lBU = new bk();
+    ((d.a)localObject).lBV = new bl();
     ((d.a)localObject).uri = "/cgi-bin/mmgame-bin/newgetgamedetail";
     ((d.a)localObject).funcId = getType();
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.hhm = ((d.a)localObject).aXF();
-    localObject = (bj)this.hhm.iLK.iLR;
-    ((bj)localObject).xLl = paramString1;
-    ((bj)localObject).hik = paramString2;
-    ((bj)localObject).xLo = paramBoolean;
-    ((bj)localObject).xLq = true;
+    this.jTk = ((d.a)localObject).bgN();
+    localObject = (bk)d.b.b(this.jTk.lBR);
+    ((bk)localObject).CPt = paramString1;
+    ((bk)localObject).jUi = paramString2;
+    ((bk)localObject).CPx = paramBoolean;
+    ((bk)localObject).CPz = true;
     AppMethodBeat.o(41598);
   }
   
@@ -43,7 +43,7 @@ public final class am
   {
     AppMethodBeat.i(41599);
     this.callback = parami;
-    int i = dispatch(paramg, this.hhm, this);
+    int i = dispatch(paramg, this.jTk, this);
     AppMethodBeat.o(41599);
     return i;
   }
@@ -63,7 +63,7 @@ public final class am
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.am
  * JD-Core Version:    0.7.0.1
  */

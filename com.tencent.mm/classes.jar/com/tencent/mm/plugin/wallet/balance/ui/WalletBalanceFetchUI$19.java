@@ -15,16 +15,16 @@ final class WalletBalanceFetchUI$19
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(213889);
+    AppMethodBeat.i(244508);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchUI$26", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchUI$26", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
     Log.i("MicroMsg.WalletBalanceFetchUI", "showIdentifyInfoCompleteDialog closeIcon click");
-    if ((this.HvS != null) && (this.HvS.isShowing())) {
-      this.HvS.dismiss();
+    if ((this.OnF != null) && (this.OnF.isShowing())) {
+      this.OnF.dismiss();
     }
     a.a(this, "com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchUI$26", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(213889);
+    AppMethodBeat.o(244508);
   }
 }
 

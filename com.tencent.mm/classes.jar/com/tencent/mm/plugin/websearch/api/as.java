@@ -6,16 +6,16 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class as
 {
-  public static int zE(int paramInt)
+  public static int Dj(int paramInt)
   {
     AppMethodBeat.i(161715);
     if (XWalkEnvironment.getUsingCustomContext())
     {
-      paramInt = Math.round(com.tencent.mm.cb.a.getDensity(MMApplicationContext.getContext()) * paramInt);
+      paramInt = Math.round(com.tencent.mm.ci.a.getDensity(MMApplicationContext.getContext()) * paramInt);
       AppMethodBeat.o(161715);
       return paramInt;
     }
-    paramInt = Math.round(com.tencent.mm.cc.a.gvp() * paramInt);
+    paramInt = Math.round(com.tencent.mm.cj.a.hrl() * paramInt);
     AppMethodBeat.o(161715);
     return paramInt;
   }

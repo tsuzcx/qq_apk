@@ -5,12 +5,12 @@ import com.tencent.mm.wallet_core.c.r;
 public abstract class b
   extends r
 {
-  public boolean czQ()
+  public boolean cOq()
   {
     return false;
   }
   
-  public final boolean eMY()
+  public final boolean fzN()
   {
     return false;
   }

@@ -10,7 +10,7 @@ import java.io.File;
 public class DefaultTinkerResultService
   extends AbstractResultService
 {
-  public static void ad(File paramFile)
+  public static void X(File paramFile)
   {
     if (!SharePatchFileUtil.isLegalFile(paramFile)) {}
     Object localObject;
@@ -44,9 +44,9 @@ public class DefaultTinkerResultService
     {
       return;
       ShareTinkerLog.i("Tinker.DefaultTinkerResultService", "DefaultTinkerResultService received a result:%s ", new Object[] { parama.toString() });
-      b.ll(getApplicationContext());
+      b.mj(getApplicationContext());
     } while (!parama.isSuccess);
-    ad(new File(parama.SjJ));
+    X(new File(parama.ZMu));
     if (b(parama))
     {
       Process.killProcess(Process.myPid());
@@ -57,14 +57,14 @@ public class DefaultTinkerResultService
   
   public final boolean b(a parama)
   {
-    Object localObject = com.tencent.tinker.lib.e.a.lk(getApplicationContext());
-    if (((com.tencent.tinker.lib.e.a)localObject).Ska)
+    Object localObject = com.tencent.tinker.lib.e.a.mi(getApplicationContext());
+    if (((com.tencent.tinker.lib.e.a)localObject).ZML)
     {
-      localObject = ((com.tencent.tinker.lib.e.a)localObject).SjZ;
+      localObject = ((com.tencent.tinker.lib.e.a)localObject).ZMK;
       if (localObject != null)
       {
-        localObject = ((d)localObject).Ske;
-        if ((parama.SjM != null) && (parama.SjM.equals(localObject))) {
+        localObject = ((d)localObject).ZMP;
+        if ((parama.ZMx != null) && (parama.ZMx.equals(localObject))) {
           return false;
         }
       }
@@ -74,7 +74,7 @@ public class DefaultTinkerResultService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.lib.service.DefaultTinkerResultService
  * JD-Core Version:    0.7.0.1
  */

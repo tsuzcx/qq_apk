@@ -3,9 +3,10 @@ package com.tencent.mm.plugin.multitalk.ui.widget;
 import android.content.Context;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.multitalk.a.h;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
 public final class k$a$b
   implements Runnable
 {
@@ -13,14 +14,14 @@ public final class k$a$b
   
   public final void run()
   {
-    AppMethodBeat.i(239807);
-    Toast.makeText(this.$context, (CharSequence)this.$context.getString(2131764864), 1).show();
-    AppMethodBeat.o(239807);
+    AppMethodBeat.i(198571);
+    Toast.makeText(this.$context, (CharSequence)this.$context.getString(a.h.save_image_err), 1).show();
+    AppMethodBeat.o(198571);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.k.a.b
  * JD-Core Version:    0.7.0.1
  */

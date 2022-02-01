@@ -8,35 +8,35 @@ import com.tencent.mm.sdk.platformtools.Log;
 final class f
   extends d
 {
-  private final IJSRuntime dpQ;
-  private final m mNT;
-  private final int mNU;
+  private final IJSRuntime fiy;
+  private final m pOL;
+  private final int pOM;
   
   public f(m paramm, int paramInt)
   {
-    this.dpQ = paramm.dpQ;
-    this.mNT = paramm;
-    this.mNU = paramInt;
+    this.fiy = paramm.fiy;
+    this.pOL = paramm;
+    this.pOM = paramInt;
   }
   
-  protected final m bMA()
+  public final IJSRuntime bYQ()
   {
-    return this.mNT;
+    return this.fiy;
   }
   
-  public final boolean bMB()
+  protected final m bYR()
+  {
+    return this.pOL;
+  }
+  
+  public final boolean bYS()
   {
     return false;
   }
   
-  public final int bMC()
+  public final int bYT()
   {
-    return this.mNU;
-  }
-  
-  public final IJSRuntime bMz()
-  {
-    return this.dpQ;
+    return this.pOM;
   }
   
   public final void pause()
@@ -56,13 +56,13 @@ final class f
   public final void setJsExceptionHandler(h paramh)
   {
     AppMethodBeat.i(144172);
-    this.mNT.a(this.mNU, paramh);
+    this.pOL.a(this.pOM, paramh);
     AppMethodBeat.o(144172);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.m.f
  * JD-Core Version:    0.7.0.1
  */

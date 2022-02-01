@@ -10,7 +10,10 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.traceroute.b.a;
 import com.tencent.mm.sdk.platformtools.MMHandler;
@@ -20,27 +23,27 @@ import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMProgressBar;
 import com.tencent.mm.ui.base.MMProgressBar.a;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.u;
+import com.tencent.mm.ui.base.w;
 
 public class NetworkDiagnoseUI
   extends MMActivity
 {
-  private final int Gsd;
-  private int Gse;
-  private a Gsf;
-  private MMProgressBar Gsg;
-  private MTimerHandler Gsh;
+  private int FfT;
+  private final int NeO;
+  private int NeP;
+  private a NeQ;
+  private MMProgressBar NeR;
+  private MTimerHandler NeS;
   private MMHandler handler;
-  private TextView tjP;
-  private int zAY;
+  private TextView wQg;
   
   public NetworkDiagnoseUI()
   {
     AppMethodBeat.i(29717);
-    this.Gsd = 100;
-    this.zAY = 0;
-    this.Gse = 0;
-    this.Gsh = new MTimerHandler(new MTimerHandler.CallBack()
+    this.NeO = 100;
+    this.FfT = 0;
+    this.NeP = 0;
+    this.NeS = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -73,14 +76,14 @@ public class NetworkDiagnoseUI
           if (NetworkDiagnoseUI.b(NetworkDiagnoseUI.this) < 95) {
             NetworkDiagnoseUI.c(NetworkDiagnoseUI.this).setProgress(95);
           }
-          NetworkDiagnoseUI.d(NetworkDiagnoseUI.this).fAb();
+          NetworkDiagnoseUI.d(NetworkDiagnoseUI.this).gsc();
           AppMethodBeat.o(29707);
           return;
           NetworkDiagnoseUI.e(NetworkDiagnoseUI.this);
           if (NetworkDiagnoseUI.b(NetworkDiagnoseUI.this) < 95) {
             NetworkDiagnoseUI.c(NetworkDiagnoseUI.this).setProgress(95);
           }
-          NetworkDiagnoseUI.d(NetworkDiagnoseUI.this).fAb();
+          NetworkDiagnoseUI.d(NetworkDiagnoseUI.this).gsc();
           AppMethodBeat.o(29707);
           return;
           NetworkDiagnoseUI.c(NetworkDiagnoseUI.this).setProgress(100);
@@ -95,10 +98,10 @@ public class NetworkDiagnoseUI
     AppMethodBeat.o(29717);
   }
   
-  private void fAg()
+  private void gsh()
   {
     AppMethodBeat.i(29723);
-    h.a(this, 2131757779, 2131758305, 2131756033, 2131755917, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    h.a(this, R.l.exK, R.l.eBh, R.l.app_yes, R.l.app_no, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -116,32 +119,32 @@ public class NetworkDiagnoseUI
   
   public int getLayoutId()
   {
-    return 2131495842;
+    return R.i.ejv;
   }
   
   public void initView()
   {
     AppMethodBeat.i(29719);
-    this.tjP = ((TextView)findViewById(2131306956));
-    this.Gsg = ((MMProgressBar)findViewById(2131299611));
-    this.Gsg.setOnProgressChangedListener(new MMProgressBar.a()
+    this.wQg = ((TextView)findViewById(R.h.dSO));
+    this.NeR = ((MMProgressBar)findViewById(R.h.dEp));
+    this.NeR.setOnProgressChangedListener(new MMProgressBar.a()
     {
-      public final void acg(int paramAnonymousInt)
+      public final void ajM(int paramAnonymousInt)
       {
         AppMethodBeat.i(29708);
         if (paramAnonymousInt < 5)
         {
-          NetworkDiagnoseUI.f(NetworkDiagnoseUI.this).setText(NetworkDiagnoseUI.this.getString(2131757802));
+          NetworkDiagnoseUI.f(NetworkDiagnoseUI.this).setText(NetworkDiagnoseUI.this.getString(R.l.exO));
           AppMethodBeat.o(29708);
           return;
         }
         if ((paramAnonymousInt >= 5) && (paramAnonymousInt < 95))
         {
-          NetworkDiagnoseUI.f(NetworkDiagnoseUI.this).setText(NetworkDiagnoseUI.this.getString(2131761450));
+          NetworkDiagnoseUI.f(NetworkDiagnoseUI.this).setText(NetworkDiagnoseUI.this.getString(R.l.eGi));
           AppMethodBeat.o(29708);
           return;
         }
-        NetworkDiagnoseUI.f(NetworkDiagnoseUI.this).setText(NetworkDiagnoseUI.this.getString(2131766952));
+        NetworkDiagnoseUI.f(NetworkDiagnoseUI.this).setText(NetworkDiagnoseUI.this.getString(R.l.eUC));
         AppMethodBeat.o(29708);
       }
     });
@@ -181,7 +184,7 @@ public class NetworkDiagnoseUI
     AppMethodBeat.i(29722);
     if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
-      fAg();
+      gsh();
       AppMethodBeat.o(29722);
       return true;
     }
@@ -193,7 +196,7 @@ public class NetworkDiagnoseUI
   public void onPause()
   {
     AppMethodBeat.i(29720);
-    this.Gsg.setAutoProgress(false);
+    this.NeR.setAutoProgress(false);
     super.onPause();
     AppMethodBeat.o(29720);
   }
@@ -201,14 +204,14 @@ public class NetworkDiagnoseUI
   public void onResume()
   {
     AppMethodBeat.i(29721);
-    bg.aVF();
+    bh.beI();
     if (!c.isSDCardAvailable())
     {
-      u.g(this, null);
+      w.g(this, null);
       AppMethodBeat.o(29721);
       return;
     }
-    this.Gsg.setAutoProgress(true);
+    this.NeR.setAutoProgress(true);
     super.onResume();
     AppMethodBeat.o(29721);
   }

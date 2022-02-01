@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cyz;
-import com.tencent.mm.protocal.protobuf.cza;
+import com.tencent.mm.protocal.protobuf.dil;
+import com.tencent.mm.protocal.protobuf.dim;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class t
   extends q
   implements m
 {
-  public cza IDB;
+  public dim PxR;
   private i callback;
-  private d iUB;
+  private d lKU;
   
-  public t(cyz paramcyz)
+  public t(dil paramdil)
   {
     AppMethodBeat.i(117617);
-    paramcyz.MlQ = ai.clJ();
-    paramcyz.MlR = ai.fYd();
-    this.IDB = new cza();
+    paramdil.TwK = ai.czn();
+    paramdil.TwL = ai.gQO();
+    this.PxR = new dim();
     d.a locala = new d.a();
     locala.funcId = 1417;
     locala.uri = "/cgi-bin/mmsearch-bin/parduspresearch";
-    locala.iLN = paramcyz;
-    locala.iLO = this.IDB;
-    this.iUB = locala.aXF();
+    locala.lBU = paramdil;
+    locala.lBV = this.PxR;
+    this.lKU = locala.bgN();
     AppMethodBeat.o(117617);
   }
   
@@ -39,7 +39,7 @@ public final class t
   {
     AppMethodBeat.i(117618);
     this.callback = parami;
-    int i = dispatch(paramg, this.iUB, this);
+    int i = dispatch(paramg, this.lKU, this);
     AppMethodBeat.o(117618);
     return i;
   }
@@ -59,7 +59,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.t
  * JD-Core Version:    0.7.0.1
  */

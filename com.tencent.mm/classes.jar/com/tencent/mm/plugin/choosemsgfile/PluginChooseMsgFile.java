@@ -2,6 +2,8 @@ package com.tencent.mm.plugin.choosemsgfile;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
+import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
@@ -18,11 +20,11 @@ public class PluginChooseMsgFile
     AppMethodBeat.o(123220);
   }
   
-  public void execute(com.tencent.mm.kernel.b.g paramg)
+  public void execute(g paramg)
   {
     AppMethodBeat.i(123219);
     Log.d("MicroMsg.PluginChooseMsgFile", "execute");
-    com.tencent.mm.kernel.g.b(com.tencent.mm.choosemsgfile.compat.a.class, new com.tencent.mm.plugin.choosemsgfile.b.a());
+    h.b(com.tencent.mm.choosemsgfile.compat.a.class, new com.tencent.mm.plugin.choosemsgfile.b.a());
     AppMethodBeat.o(123219);
   }
   

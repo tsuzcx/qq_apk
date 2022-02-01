@@ -2,7 +2,7 @@
 <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="vertical" android:id="@id/c1u" android:background="@drawable/b9w" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <android.support.v4.view.ViewPager android:gravity="center" android:id="@id/c1v" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <androidx.viewpager.widget.ViewPager android:gravity="center" android:id="@id/c1v" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
         <com.tencent.mm.ui.base.MMDotView android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/c1t" android:paddingBottom="7.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </LinearLayout>
 </LinearLayout>

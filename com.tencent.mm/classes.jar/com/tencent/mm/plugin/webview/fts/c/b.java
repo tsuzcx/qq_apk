@@ -24,23 +24,23 @@ import org.json.JSONObject;
 public final class b
   implements e
 {
-  public h IBw;
-  private b IQD;
-  com.tencent.mm.plugin.webview.fts.ui.b IQH;
-  private SimpleObjectPool<FtsWebVideoView> IQI;
+  private b PMS;
+  com.tencent.mm.plugin.webview.fts.ui.b PMW;
+  private SimpleObjectPool<FtsWebVideoView> PMX;
+  public h PvJ;
   private Context context;
   
   public b(Context paramContext, MMWebView paramMMWebView, b paramb)
   {
     AppMethodBeat.i(78154);
-    this.IQI = new SimpleObjectPool(3);
+    this.PMX = new SimpleObjectPool(3);
     this.context = paramContext;
-    this.IQD = paramb;
-    this.IQH = new com.tencent.mm.plugin.webview.fts.ui.b(paramMMWebView, paramb);
+    this.PMS = paramb;
+    this.PMW = new com.tencent.mm.plugin.webview.fts.ui.b(paramMMWebView, paramb);
     AppMethodBeat.o(78154);
   }
   
-  public final void Q(final int paramInt, final String paramString1, String paramString2)
+  public final void U(final int paramInt, final String paramString1, String paramString2)
   {
     AppMethodBeat.i(78155);
     Log.i("FtsVideoPlayerMgr", "insert player id %d,viewProps %s,videoProps %s", new Object[] { Integer.valueOf(paramInt), paramString1, paramString2 });
@@ -56,36 +56,61 @@ public final class b
         }
         JSONObject localJSONObject = new JSONObject(paramString1);
         paramString2 = new JSONObject(paramString2);
-        paramString1 = (FtsWebVideoView)this.IQI.acquire();
+        paramString1 = (FtsWebVideoView)this.PMX.acquire();
         if (paramString1 == null)
         {
           paramString1 = new FtsWebVideoView(this.context, paramString2.optBoolean("autoPlay"));
           paramString1.setIsShowBasicControls(true);
           paramString1.setVideoSizeByte(paramString2.optInt("fileSize"));
           paramString1.setMute(paramString2.optBoolean("isMute"));
-          paramString1.setCover$16da05f7(paramString2.optString("coverUrl"));
+          paramString1.aiL(paramString2.optString("coverUrl"));
           paramString1.setVideoPlayerId(paramInt);
           paramString1.setAutoPlay(paramString2.optBoolean("autoPlay"));
-          paramString1.cN(c.bX(paramString2), paramString2.optInt("durationSec"));
+          paramString1.dh(c.ci(paramString2), paramString2.optInt("durationSec"));
           paramString1.setFullScreenDelegate(new FtsWebVideoView.a()
           {
-            public final void Na()
+            public final void PS()
             {
               AppMethodBeat.i(78143);
               FtsWebVideoView localFtsWebVideoView = paramString1;
               Log.i("MicroMsg.FtsWebVideoView", "onExitFullScreen");
-              if (localFtsWebVideoView.IPY.mDo) {
-                localFtsWebVideoView.IPY.bGL();
+              if (localFtsWebVideoView.PMn.pCA) {
+                localFtsWebVideoView.PMn.bSs();
               }
-              localFtsWebVideoView.hN(false);
+              localFtsWebVideoView.iD(false);
               AppMethodBeat.o(78143);
             }
           }
           {
-            public final void bGL()
+            public final void CP(boolean paramAnonymousBoolean)
+            {
+              AppMethodBeat.i(78144);
+              com.tencent.mm.plugin.webview.fts.ui.b localb = b.this.PMW;
+              int i = paramInt;
+              Object localObject = this.PNb;
+              localObject = new b.4(localb, Boolean.FALSE, i, (a)localObject, paramAnonymousBoolean);
+              if (Thread.currentThread() == Looper.getMainLooper().getThread())
+              {
+                ((Boolean)((SyncTask)localObject).exec(null)).booleanValue();
+                AppMethodBeat.o(78144);
+                return;
+              }
+              ((Boolean)((SyncTask)localObject).exec(localb.mHandler)).booleanValue();
+              AppMethodBeat.o(78144);
+            }
+            
+            public final boolean QT()
+            {
+              AppMethodBeat.i(78146);
+              boolean bool = b.this.PMW.zW(paramInt);
+              AppMethodBeat.o(78146);
+              return bool;
+            }
+            
+            public final void bSs()
             {
               AppMethodBeat.i(78145);
-              com.tencent.mm.plugin.webview.fts.ui.b localb = b.this.IQH;
+              com.tencent.mm.plugin.webview.fts.ui.b localb = b.this.PMW;
               int i = paramInt;
               b.5 local5 = new b.5(localb, Boolean.FALSE, i);
               if (Thread.currentThread() == Looper.getMainLooper().getThread())
@@ -97,87 +122,62 @@ public final class b
               ((Boolean)local5.exec(localb.mHandler)).booleanValue();
               AppMethodBeat.o(78145);
             }
-            
-            public final boolean isFullScreen()
-            {
-              AppMethodBeat.i(78146);
-              boolean bool = b.this.IQH.wH(paramInt);
-              AppMethodBeat.o(78146);
-              return bool;
-            }
-            
-            public final void yU(boolean paramAnonymousBoolean)
-            {
-              AppMethodBeat.i(78144);
-              com.tencent.mm.plugin.webview.fts.ui.b localb = b.this.IQH;
-              int i = paramInt;
-              Object localObject = this.IQM;
-              localObject = new b.4(localb, Boolean.FALSE, i, (a)localObject, paramAnonymousBoolean);
-              if (Thread.currentThread() == Looper.getMainLooper().getThread())
-              {
-                ((Boolean)((SyncTask)localObject).exec(null)).booleanValue();
-                AppMethodBeat.o(78144);
-                return;
-              }
-              ((Boolean)((SyncTask)localObject).exec(localb.mHandler)).booleanValue();
-              AppMethodBeat.o(78144);
-            }
           });
           paramString2 = new b.a()
           {
-            public final void Na()
+            public final void PS()
             {
               AppMethodBeat.i(78150);
-              com.tencent.mm.plugin.webview.fts.ui.b localb = b.this.IQH;
-              Object localObject1 = localb.afR(localb.nsA);
-              float[] arrayOfFloat = localb.nsx;
-              if ((localObject1 == null) || (((com.tencent.mm.plugin.webview.fts.ui.b.a)localObject1).nsR == null) || (arrayOfFloat == null))
+              com.tencent.mm.plugin.webview.fts.ui.b localb = b.this.PMW;
+              Object localObject1 = localb.anF(localb.qut);
+              float[] arrayOfFloat = localb.quq;
+              if ((localObject1 == null) || (((com.tencent.mm.plugin.webview.fts.ui.b.a)localObject1).quK == null) || (arrayOfFloat == null))
               {
                 AppMethodBeat.o(78150);
                 return;
               }
-              localObject1 = (View)((com.tencent.mm.plugin.webview.fts.ui.b.a)localObject1).nsR.get();
+              localObject1 = (View)((com.tencent.mm.plugin.webview.fts.ui.b.a)localObject1).quK.get();
               if (localObject1 != null)
               {
-                if (localb.nsA != localb.nsw)
+                if (localb.qut != localb.qup)
                 {
-                  Object localObject2 = localb.afR(localb.nsw);
-                  if ((localObject2 != null) && (((com.tencent.mm.plugin.webview.fts.ui.b.a)localObject2).nsR != null))
+                  Object localObject2 = localb.anF(localb.qup);
+                  if ((localObject2 != null) && (((com.tencent.mm.plugin.webview.fts.ui.b.a)localObject2).quK != null))
                   {
-                    localObject2 = (View)((com.tencent.mm.plugin.webview.fts.ui.b.a)localObject2).nsR.get();
+                    localObject2 = (View)((com.tencent.mm.plugin.webview.fts.ui.b.a)localObject2).quK.get();
                     if (localObject2 != null) {
-                      localb.a(localb.nsw, arrayOfFloat, ((View)localObject2).getVisibility());
+                      localb.a(localb.qup, arrayOfFloat, ((View)localObject2).getVisibility());
                     }
                   }
                 }
-                int i = localb.nsA;
-                localb.nsw = -1;
-                localb.nsA = -1;
-                if (localb.IQC != null)
+                int i = localb.qut;
+                localb.qup = -1;
+                localb.qut = -1;
+                if (localb.PMR != null)
                 {
-                  localb.IQC.Na();
-                  localb.IQC = null;
+                  localb.PMR.PS();
+                  localb.PMR = null;
                 }
                 localb.a(i, arrayOfFloat, ((View)localObject1).getVisibility());
               }
               AppMethodBeat.o(78150);
             }
             
-            public final void gaM()
+            public final void gTE()
             {
               AppMethodBeat.i(78152);
               FtsWebVideoView localFtsWebVideoView = paramString1;
-              if ((!localFtsWebVideoView.guh) && (localFtsWebVideoView.getSystemVolume() == 0)) {
+              if ((!localFtsWebVideoView.iYs) && (localFtsWebVideoView.getSystemVolume() == 0)) {
                 localFtsWebVideoView.setMute(true);
               }
               AppMethodBeat.o(78152);
             }
             
-            public final void gaN()
+            public final void gTF()
             {
               AppMethodBeat.i(78153);
               FtsWebVideoView localFtsWebVideoView = paramString1;
-              if ((localFtsWebVideoView.guh) && (localFtsWebVideoView.getSystemVolume() > 0)) {
+              if ((localFtsWebVideoView.iYs) && (localFtsWebVideoView.getSystemVolume() > 0)) {
                 localFtsWebVideoView.setMute(false);
               }
               AppMethodBeat.o(78153);
@@ -186,9 +186,9 @@ public final class b
             public final boolean onBackPressed()
             {
               AppMethodBeat.i(78151);
-              if (paramString1.bJb())
+              if (paramString1.bUK())
               {
-                paramString1.yT(false);
+                paramString1.CO(false);
                 AppMethodBeat.o(78151);
                 return true;
               }
@@ -201,7 +201,7 @@ public final class b
               AppMethodBeat.i(78148);
               FtsWebVideoView localFtsWebVideoView = paramString1;
               Log.i("MicroMsg.FtsWebVideoView", "onUIPause");
-              localFtsWebVideoView.IPX.onUIPause();
+              localFtsWebVideoView.PMm.onUIPause();
               AppMethodBeat.o(78148);
             }
             
@@ -212,17 +212,17 @@ public final class b
               Log.i("MicroMsg.FtsWebVideoView", "onUIDestroy");
               Log.i("MicroMsg.FtsWebVideoView", "clean");
               localFtsWebVideoView.stop();
-              localFtsWebVideoView.IPX.onUIDestroy();
-              WebSearchWebVideoViewControlBar localWebSearchWebVideoViewControlBar = localFtsWebVideoView.IPY;
-              if (localWebSearchWebVideoViewControlBar.mww != null) {
-                localWebSearchWebVideoViewControlBar.mww.stopTimer();
+              localFtsWebVideoView.PMm.onUIDestroy();
+              WebSearchWebVideoViewControlBar localWebSearchWebVideoViewControlBar = localFtsWebVideoView.PMn;
+              if (localWebSearchWebVideoViewControlBar.puW != null) {
+                localWebSearchWebVideoViewControlBar.puW.stopTimer();
               }
-              if (localWebSearchWebVideoViewControlBar.mDn != null) {
-                localWebSearchWebVideoViewControlBar.mDn.stopTimer();
+              if (localWebSearchWebVideoViewControlBar.pCz != null) {
+                localWebSearchWebVideoViewControlBar.pCz.stopTimer();
               }
               try
               {
-                localFtsWebVideoView.getContext().unregisterReceiver(localFtsWebVideoView.IQr);
+                localFtsWebVideoView.getContext().unregisterReceiver(localFtsWebVideoView.PMG);
                 AppMethodBeat.o(78149);
                 return;
               }
@@ -237,16 +237,16 @@ public final class b
               AppMethodBeat.i(78147);
               FtsWebVideoView localFtsWebVideoView = paramString1;
               Log.i("MicroMsg.FtsWebVideoView", "onUIResume");
-              localFtsWebVideoView.IPX.onUIResume();
+              localFtsWebVideoView.PMm.onUIResume();
               AppMethodBeat.o(78147);
             }
           };
           paramString1.setUiLifecycleListener(paramString2);
-          this.IQD.a(paramString2);
-          paramString1.setCallback(new d(paramString1, this.IQD, this.IBw));
-          paramString2 = this.IQH;
+          this.PMS.a(paramString2);
+          paramString1.setCallback(new d(paramString1, this.PMS, this.PvJ));
+          paramString2 = this.PMW;
           float[] arrayOfFloat = c.a(localJSONObject, this.context);
-          int i = c.M(localJSONObject);
+          int i = c.Q(localJSONObject);
           paramString1 = new com.tencent.mm.plugin.webview.fts.ui.b.1(paramString2, Boolean.FALSE, paramString1, paramInt, arrayOfFloat, i);
           if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
             break;
@@ -268,7 +268,7 @@ public final class b
     AppMethodBeat.o(78155);
   }
   
-  public final void R(int paramInt, String paramString1, String paramString2)
+  public final void V(int paramInt, String paramString1, String paramString2)
   {
     AppMethodBeat.i(78156);
     Log.i("FtsVideoPlayerMgr", "update player id %d,viewProps %s,videoProps %s", new Object[] { Integer.valueOf(paramInt), paramString1, paramString2 });
@@ -278,9 +278,9 @@ public final class b
       if (!TextUtils.isEmpty(paramString1))
       {
         localObject = new JSONObject(paramString1);
-        paramString1 = this.IQH;
+        paramString1 = this.PMW;
         float[] arrayOfFloat = c.a((JSONObject)localObject, this.context);
-        int i = c.M((JSONObject)localObject);
+        int i = c.Q((JSONObject)localObject);
         localObject = new com.tencent.mm.plugin.webview.fts.ui.b.3(paramString1, Boolean.FALSE, paramInt, arrayOfFloat, i);
         if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
           break label171;
@@ -293,7 +293,7 @@ public final class b
           break label312;
         }
         paramString1 = new JSONObject(paramString2);
-        paramString2 = (FtsWebVideoView)this.IQH.getViewById(paramInt);
+        paramString2 = (FtsWebVideoView)this.PMW.bg(paramInt);
         if (paramString2 != null) {
           break;
         }
@@ -316,13 +316,13 @@ public final class b
     paramString2.setAutoPlay(paramString1.optBoolean("autoPlay"));
     label231:
     if (paramString1.has("coverUrl")) {
-      paramString2.setCover$16da05f7(paramString1.optString("coverUrl"));
+      paramString2.aiL(paramString1.optString("coverUrl"));
     }
     if (paramString1.has("durationSec")) {
       paramString2.setDuration(paramString1.optInt("durationSec"));
     }
     if (paramString1.has("playUrl")) {
-      paramString2.cN(c.bX(paramString1), paramString1.optInt("durationSec"));
+      paramString2.dh(c.ci(paramString1), paramString1.optInt("durationSec"));
     }
     if (paramString1.has("isMute")) {
       paramString2.setMute(paramString1.optBoolean("isMute"));
@@ -331,17 +331,17 @@ public final class b
     AppMethodBeat.o(78156);
   }
   
-  public final void afS(int paramInt)
+  public final void anG(int paramInt)
   {
     AppMethodBeat.i(78157);
     Log.i("FtsVideoPlayerMgr", "remove palyer id %d", new Object[] { Integer.valueOf(paramInt) });
-    FtsWebVideoView localFtsWebVideoView = (FtsWebVideoView)this.IQH.getViewById(paramInt);
+    FtsWebVideoView localFtsWebVideoView = (FtsWebVideoView)this.PMW.bg(paramInt);
     com.tencent.mm.plugin.webview.fts.ui.b localb;
     com.tencent.mm.plugin.webview.fts.ui.b.2 local2;
     if (localFtsWebVideoView != null)
     {
       localFtsWebVideoView.getUiLifecycleListener();
-      localb = this.IQH;
+      localb = this.PMW;
       local2 = new com.tencent.mm.plugin.webview.fts.ui.b.2(localb, Boolean.FALSE, paramInt);
       if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
         break label158;
@@ -357,7 +357,7 @@ public final class b
         localFtsWebVideoView.setCallback(null);
         localFtsWebVideoView.setVisibility(0);
         localFtsWebVideoView.setAllowMobileNetPlay(false);
-        this.IQI.release(localFtsWebVideoView);
+        this.PMX.release(localFtsWebVideoView);
       }
       AppMethodBeat.o(78157);
       return;
@@ -372,7 +372,7 @@ public final class b
   {
     AppMethodBeat.i(78158);
     Log.i("FtsVideoPlayerMgr", "op player id %d,type %s", new Object[] { Integer.valueOf(paramInt), paramString });
-    FtsWebVideoView localFtsWebVideoView = (FtsWebVideoView)this.IQH.getViewById(paramInt);
+    FtsWebVideoView localFtsWebVideoView = (FtsWebVideoView)this.PMW.bg(paramInt);
     if (localFtsWebVideoView != null)
     {
       paramInt = -1;
@@ -437,14 +437,14 @@ public final class b
   {
     public abstract void a(b.a parama);
     
-    public abstract void gaO();
+    public abstract void gTG();
     
-    public abstract void w(View paramView, boolean paramBoolean);
+    public abstract void y(View paramView, boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.c.b
  * JD-Core Version:    0.7.0.1
  */

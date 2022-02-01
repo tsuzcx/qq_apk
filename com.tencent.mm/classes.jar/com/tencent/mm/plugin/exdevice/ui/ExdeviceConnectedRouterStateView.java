@@ -9,23 +9,23 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public class ExdeviceConnectedRouterStateView
   extends ImageView
 {
   private int bottom;
-  private MMHandler hAk;
+  private MMHandler knk;
   private int left;
   private Context mContext;
   private Paint mPaint;
-  int rHF;
-  private int rHG;
-  private Runnable rHH;
   private int right;
+  int startAngle;
   private int state;
   private int top;
+  private int vno;
+  private Runnable vnp;
   
   public ExdeviceConnectedRouterStateView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,13 +36,13 @@ public class ExdeviceConnectedRouterStateView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(23998);
-    this.rHF = 2;
+    this.startAngle = 2;
     this.left = -1;
     this.top = -1;
     this.right = -1;
     this.bottom = -1;
-    this.rHG = -1;
-    this.rHH = new Runnable()
+    this.vno = -1;
+    this.vnp = new Runnable()
     {
       public final void run()
       {
@@ -57,16 +57,16 @@ public class ExdeviceConnectedRouterStateView
     this.mPaint.setStyle(Paint.Style.STROKE);
     this.left = a.fromDPToPix(this.mContext, 2);
     this.top = this.left;
-    this.rHG = a.fromDPToPix(this.mContext, 3);
-    this.hAk = new MMHandler(Looper.getMainLooper());
+    this.vno = a.fromDPToPix(this.mContext, 3);
+    this.knk = new MMHandler(Looper.getMainLooper());
     AppMethodBeat.o(23998);
   }
   
-  private void GF(int paramInt)
+  private void Kn(int paramInt)
   {
     AppMethodBeat.i(24001);
-    this.hAk.removeCallbacks(this.rHH);
-    this.hAk.postDelayed(this.rHH, paramInt);
+    this.knk.removeCallbacks(this.vnp);
+    this.knk.postDelayed(this.vnp, paramInt);
     AppMethodBeat.o(24001);
   }
   
@@ -78,19 +78,19 @@ public class ExdeviceConnectedRouterStateView
     {
       int i = getWidth() / 2;
       this.mPaint.setARGB(255, 103, 209, 79);
-      this.mPaint.setStrokeWidth(this.rHG);
+      this.mPaint.setStrokeWidth(this.vno);
       if (this.right == -1) {
         this.right = (i * 2 - this.left);
       }
       if (this.bottom == -1) {
         this.bottom = this.right;
       }
-      paramCanvas.drawArc(new RectF(this.left, this.top, this.right, this.bottom), 270.0F, this.rHF, false, this.mPaint);
-      this.rHF += 5;
-      if (this.rHF > 365) {
-        this.rHF = 0;
+      paramCanvas.drawArc(new RectF(this.left, this.top, this.right, this.bottom), 270.0F, this.startAngle, false, this.mPaint);
+      this.startAngle += 5;
+      if (this.startAngle > 365) {
+        this.startAngle = 0;
       }
-      GF(100);
+      Kn(100);
     }
     AppMethodBeat.o(24000);
   }
@@ -99,13 +99,13 @@ public class ExdeviceConnectedRouterStateView
   {
     AppMethodBeat.i(23999);
     this.state = paramInt;
-    GF(10);
+    Kn(10);
     AppMethodBeat.o(23999);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceConnectedRouterStateView
  * JD-Core Version:    0.7.0.1
  */

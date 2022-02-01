@@ -7,56 +7,56 @@ import org.json.JSONObject;
 
 public final class g
 {
-  private static g HWD;
-  public String ANp;
-  public int HWE = 0;
-  private JSONObject HWF;
+  private static g OOD;
+  public String GGD;
+  public int OOE = 0;
+  private JSONObject OOF;
   
-  public static g fQl()
+  public static g gIR()
   {
     AppMethodBeat.i(70243);
-    if (HWD == null) {
-      HWD = new g();
+    if (OOD == null) {
+      OOD = new g();
     }
-    g localg = HWD;
+    g localg = OOD;
     AppMethodBeat.o(70243);
     return localg;
   }
   
-  public final void bC(JSONObject paramJSONObject)
+  public final void bN(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70244);
-    this.HWF = paramJSONObject;
+    this.OOF = paramJSONObject;
     try
     {
-      if (this.HWF != null)
+      if (this.OOF != null)
       {
-        paramJSONObject = this.HWF.optJSONObject("bind_newcard_switch");
-        this.HWE = paramJSONObject.optInt("forbid_bind_card");
+        paramJSONObject = this.OOF.optJSONObject("bind_newcard_switch");
+        this.OOE = paramJSONObject.optInt("forbid_bind_card");
       }
-      for (this.ANp = paramJSONObject.optString("forbid_word");; this.ANp = "")
+      for (this.GGD = paramJSONObject.optString("forbid_word");; this.GGD = "")
       {
-        Log.i("MicroMsg.BindQueryComplexSwitchInfo", "feed result %s forbid_bind_card %s forbid_word %s", new Object[] { this.HWF, Integer.valueOf(this.HWE), this.ANp });
+        Log.i("MicroMsg.BindQueryComplexSwitchInfo", "feed result %s forbid_bind_card %s forbid_word %s", new Object[] { this.OOF, Integer.valueOf(this.OOE), this.GGD });
         AppMethodBeat.o(70244);
         return;
-        this.HWE = 0;
+        this.OOE = 0;
       }
     }
     catch (Exception paramJSONObject)
     {
       for (;;)
       {
-        this.HWE = 0;
-        this.ANp = "";
+        this.OOE = 0;
+        this.GGD = "";
         Log.printErrStackTrace("MicroMsg.BindQueryComplexSwitchInfo", paramJSONObject, "", new Object[0]);
       }
     }
   }
   
-  public final boolean bJw()
+  public final boolean bVd()
   {
     AppMethodBeat.i(70245);
-    if ((this.HWE == 1) && (!Util.isNullOrNil(this.ANp)))
+    if ((this.OOE == 1) && (!Util.isNullOrNil(this.GGD)))
     {
       AppMethodBeat.o(70245);
       return true;
@@ -67,7 +67,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.g
  * JD-Core Version:    0.7.0.1
  */

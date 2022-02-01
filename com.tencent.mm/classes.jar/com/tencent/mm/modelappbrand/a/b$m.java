@@ -11,47 +11,47 @@ import java.util.Map;
 class b$m
   implements b.k
 {
-  private final b iJj;
-  private final b.p iJk;
-  boolean iJl;
+  private final WeakReference<ImageView> aFW;
   private final String key;
-  private final WeakReference<ImageView> oi;
+  private final b lzn;
+  private final b.p lzo;
+  boolean lzp;
   private final String url;
   
   private b$m(ImageView paramImageView, b paramb, String paramString, b.p paramp)
   {
-    AppMethodBeat.i(204410);
-    this.iJl = false;
-    this.oi = new WeakReference(paramImageView);
-    this.iJj = paramb;
+    AppMethodBeat.i(229841);
+    this.lzp = false;
+    this.aFW = new WeakReference(paramImageView);
+    this.lzn = paramb;
     this.key = "ImageView";
     this.url = paramString;
-    this.iJk = paramp;
-    AppMethodBeat.o(204410);
+    this.lzo = paramp;
+    AppMethodBeat.o(229841);
   }
   
-  private void aYh()
+  private void bhs()
   {
     AppMethodBeat.i(131364);
-    ImageView localImageView = (ImageView)this.oi.get();
+    ImageView localImageView = (ImageView)this.aFW.get();
     if (localImageView != null) {
-      b.e(this.iJj).remove(Integer.valueOf(localImageView.hashCode()));
+      b.e(this.lzn).remove(Integer.valueOf(localImageView.hashCode()));
     }
     AppMethodBeat.o(131364);
   }
   
-  public final void I(Bitmap paramBitmap)
+  public final void G(Bitmap paramBitmap)
   {
     AppMethodBeat.i(131365);
-    aYh();
-    ImageView localImageView = (ImageView)this.oi.get();
-    this.iJl = true;
+    bhs();
+    ImageView localImageView = (ImageView)this.aFW.get();
+    this.lzp = true;
     if (localImageView != null)
     {
       if (!MMHandlerThread.isMainThread()) {
         Log.printDebugStack("Luggage.AppBrandSimpleImageLoader", "onBitmapLoaded invoke in non-main thread!!!", new Object[0]);
       }
-      if ((this.iJk != null) && (!this.iJk.e(localImageView)))
+      if ((this.lzo != null) && (!this.lzo.bhx()))
       {
         Log.i("Luggage.AppBrandSimpleImageLoader", "check fail，abort set image url=" + this.url);
         AppMethodBeat.o(131365);
@@ -62,31 +62,31 @@ class b$m
     AppMethodBeat.o(131365);
   }
   
-  public final String Lb()
-  {
-    return this.key;
-  }
+  public void bhq() {}
   
-  public void aYg() {}
+  public final void bhr()
+  {
+    AppMethodBeat.i(131366);
+    bhs();
+    AppMethodBeat.o(131366);
+  }
   
   final ImageView getImageView()
   {
     AppMethodBeat.i(131362);
-    ImageView localImageView = (ImageView)this.oi.get();
+    ImageView localImageView = (ImageView)this.aFW.get();
     AppMethodBeat.o(131362);
     return localImageView;
   }
   
-  public final void oD()
+  public final String key()
   {
-    AppMethodBeat.i(131366);
-    aYh();
-    AppMethodBeat.o(131366);
+    return this.key;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.a.b.m
  * JD-Core Version:    0.7.0.1
  */

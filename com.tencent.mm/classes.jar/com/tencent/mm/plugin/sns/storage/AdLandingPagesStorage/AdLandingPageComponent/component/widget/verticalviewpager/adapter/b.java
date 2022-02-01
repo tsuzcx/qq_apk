@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.adapter;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.g;
-import android.support.v4.app.i;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.e;
+import androidx.fragment.app.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class b
-  extends i
+  extends g
 {
   public List<Fragment> fragments;
   
-  public b(g paramg, List<Fragment> paramList)
+  public b(e parame, List<Fragment> paramList)
   {
-    super(paramg);
-    AppMethodBeat.i(97124);
+    super(parame);
+    AppMethodBeat.i(254552);
     this.fragments = new ArrayList();
     this.fragments = paramList;
-    AppMethodBeat.o(97124);
+    AppMethodBeat.o(254552);
   }
   
   public final void c(Fragment paramFragment, int paramInt)
   {
-    AppMethodBeat.i(97127);
+    AppMethodBeat.i(254555);
     this.fragments.remove(paramFragment);
     if (paramInt >= this.fragments.size())
     {
       this.fragments.add(paramFragment);
-      AppMethodBeat.o(97127);
+      AppMethodBeat.o(254555);
       return;
     }
     this.fragments.add(paramInt, paramFragment);
-    AppMethodBeat.o(97127);
+    AppMethodBeat.o(254555);
   }
   
   public final int getCount()
@@ -45,9 +45,9 @@ public final class b
   
   public final Fragment getItem(int paramInt)
   {
-    AppMethodBeat.i(97125);
+    AppMethodBeat.i(254554);
     Fragment localFragment = (Fragment)this.fragments.get(paramInt);
-    AppMethodBeat.o(97125);
+    AppMethodBeat.o(254554);
     return localFragment;
   }
   
@@ -58,7 +58,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.adapter.b
  * JD-Core Version:    0.7.0.1
  */

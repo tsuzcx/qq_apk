@@ -1,109 +1,94 @@
 package com.tencent.mm.plugin.topstory.ui.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.ball.c.e;
-import com.tencent.mm.plugin.ball.model.BallInfo;
-import com.tencent.mm.protocal.protobuf.eit;
-import com.tencent.mm.protocal.protobuf.eiv;
-import com.tencent.mm.protocal.protobuf.eiw;
+import com.tencent.mm.plugin.multitask.b.c;
+import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
+import com.tencent.mm.protocal.protobuf.esv;
+import com.tencent.mm.protocal.protobuf.esx;
+import com.tencent.mm.protocal.protobuf.esy;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
+import kotlin.g.b.p;
+import kotlin.l;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/topstory/ui/multitask/TopStoryMultiTaskHelper;", "Lcom/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper;", "pageAdapter", "Lcom/tencent/mm/plugin/multitask/adapter/IMultiTaskPageAdapter;", "(Lcom/tencent/mm/plugin/multitask/adapter/IMultiTaskPageAdapter;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "isSupportExitToMultiTask", "", "()Z", "isSupportSwipeToMultiTask", "isSupportSwipeToHome", "onCreate", "", "multiTaskType", "", "multiTaskId", "updateFloatBallData", "topStoryVideoContext", "Lcom/tencent/mm/protocal/protobuf/TopStoryVideoContext;", "currentVideoInfo", "Lcom/tencent/mm/protocal/protobuf/TopStoryVideoInfo;", "ui-topstory_release"})
 public final class a
-  extends com.tencent.mm.plugin.ball.service.f
+  extends c
 {
-  private static e lqt;
+  private final String TAG = "MicroMsg.TopStoryMultiTaskHelper";
   
-  static
+  public a(com.tencent.mm.plugin.multitask.a.a parama)
   {
-    AppMethodBeat.i(125904);
-    lqt = new com.tencent.mm.plugin.ball.c.f()
+    super(parama);
+  }
+  
+  public final void I(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(206116);
+    super.I(paramInt, paramString);
+    AppMethodBeat.o(206116);
+  }
+  
+  public final void a(esv paramesv, esy paramesy)
+  {
+    AppMethodBeat.i(206119);
+    p.k(paramesv, "topStoryVideoContext");
+    p.k(paramesy, "currentVideoInfo");
+    Log.i(this.TAG, "updateFloatBallData contextId:%s videoId:%s", new Object[] { paramesv.wmL, paramesy.Crh });
+    esx localesx = new esx();
+    localesx.UuD = paramesv.UuD;
+    localesx.UuE = paramesv.UuE;
+    if (Util.isNullOrNil(paramesv.jQi)) {}
+    for (localesx.UuF = paramesv.UuF;; localesx.UuF = paramesv.jQi)
     {
-      public final void b(BallInfo paramAnonymousBallInfo)
-      {
-        AppMethodBeat.i(125898);
-        a.a(paramAnonymousBallInfo);
-        AppMethodBeat.o(125898);
-      }
-      
-      public final void c(BallInfo paramAnonymousBallInfo) {}
-      
-      public final void d(BallInfo paramAnonymousBallInfo) {}
-    };
-    AppMethodBeat.o(125904);
-  }
-  
-  public a(com.tencent.mm.plugin.ball.a.f paramf)
-  {
-    super(paramf);
-  }
-  
-  public final void G(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(125899);
-    super.G(paramInt, paramString);
-    ciw().hDa = 7;
-    AppMethodBeat.o(125899);
-  }
-  
-  public final void a(eit parameit, eiw parameiw)
-  {
-    AppMethodBeat.i(125902);
-    Log.i("MicroMsg.TopStory.TopStoryFloatBallHelper", "updateFloatBallData contextId:%s videoId:%s", new Object[] { parameit.sGQ, parameiw.psI });
-    eiv localeiv = new eiv();
-    localeiv.NhX = parameit.NhX;
-    localeiv.NhY = parameit.NhY;
-    if (Util.isNullOrNil(parameit.hes)) {
-      localeiv.NhZ = parameit.NhZ;
-    }
-    for (;;)
-    {
-      localeiv.Nia = parameit.Nia;
-      localeiv.Nid = parameit.Nid;
-      localeiv.sGQ = parameit.sGQ;
-      localeiv.Nik = parameit.Nik;
-      localeiv.offset = parameit.offset;
-      localeiv.Nib = parameit.Nib;
-      localeiv.scene = parameit.scene;
-      localeiv.dDv = parameit.dDv;
-      localeiv.IDO = parameit.IDO;
-      localeiv.Mub.add(parameiw);
+      localesx.UuG = paramesv.UuG;
+      localesx.UuJ = paramesv.UuJ;
+      localesx.wmL = paramesv.wmL;
+      localesx.UuQ = paramesv.UuQ;
+      localesx.offset = paramesv.offset;
+      localesx.UuH = paramesv.UuH;
+      localesx.scene = paramesv.scene;
+      localesx.fwe = paramesv.fwe;
+      localesx.Pye = paramesy.Pye;
+      localesx.TFg.add(paramesy);
       try
       {
-        agT(parameiw.title);
-        parameit = localeiv.toByteArray();
-        if (this.oWE != null)
+        paramesv = this.FHd;
+        if (paramesv != null)
         {
-          Log.i("MicroMsg.FloatBallHelper", "updateByteArrayExtra, %s", new Object[] { "key_context" });
-          this.oWE.G("key_context", parameit);
-          cit();
+          paramesv = paramesv.fbc();
+          if (paramesv != null) {
+            paramesv.title = paramesy.title;
+          }
         }
-        ciw().dPJ = localeiv.NhZ;
-        ciw().oWy = parameiw.psI;
-        ciw().oWx = localeiv.scene;
-        Log.d("MicroMsg.TopStory.TopStoryFloatBallHelper", "updateFloatBallData, searchId:%s vid:%s", new Object[] { localeiv.NhZ, parameiw.psI });
-        cit();
-        AppMethodBeat.o(125902);
+        paramesv = this.FHd;
+        if (paramesv != null) {
+          paramesv.field_data = localesx.toByteArray();
+        }
+        faR();
+        AppMethodBeat.o(206119);
         return;
-        localeiv.NhZ = parameit.hes;
       }
-      catch (Exception parameit)
+      catch (Exception paramesv)
       {
-        for (;;)
-        {
-          Log.printErrStackTrace("MicroMsg.TopStory.TopStoryFloatBallHelper", parameit, "updateFloatBallData exception:%s", new Object[] { parameit });
-        }
+        Log.printErrStackTrace(this.TAG, (Throwable)paramesv, "updateFloatBallData exception:%s", new Object[] { paramesv });
+        AppMethodBeat.o(206119);
       }
     }
   }
   
-  public final boolean aGg()
+  public final boolean cbG()
   {
     return true;
   }
   
-  public final boolean bCG()
+  public final boolean cbJ()
+  {
+    return true;
+  }
+  
+  public final boolean dJN()
   {
     return true;
   }

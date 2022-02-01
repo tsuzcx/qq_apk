@@ -6,18 +6,21 @@ import android.graphics.Bitmap;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.b;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import androidx.core.content.a;
+import com.tencent.luggage.wxa.a.b;
+import com.tencent.luggage.wxa.a.c;
+import com.tencent.luggage.wxa.a.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class AppBrandOptionButton
   extends FrameLayout
 {
-  private ImageButton omr;
+  private ImageButton roT;
   
   public AppBrandOptionButton(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,7 +41,7 @@ public class AppBrandOptionButton
   private int getActionBarHeight()
   {
     AppMethodBeat.i(135462);
-    int i = getResources().getDimensionPixelSize(2131165254);
+    int i = getResources().getDimensionPixelSize(a.b.DefaultActionbarHeight);
     AppMethodBeat.o(135462);
     return i;
   }
@@ -46,31 +49,31 @@ public class AppBrandOptionButton
   private void init(Context paramContext)
   {
     AppMethodBeat.i(135463);
-    this.omr = new ImageButton(paramContext);
-    this.omr.setClickable(false);
-    this.omr.setBackground(null);
-    addView(this.omr, new FrameLayout.LayoutParams(getActionBarHeight(), -1, 17));
+    this.roT = new ImageButton(paramContext);
+    this.roT.setClickable(false);
+    this.roT.setBackground(null);
+    addView(this.roT, new FrameLayout.LayoutParams(getActionBarHeight(), -1, 17));
     setAccessibilityLabel(getDefaultAccessibilityLabel());
     AppMethodBeat.o(135463);
   }
   
   public ImageView getButtonImage()
   {
-    return this.omr;
+    return this.roT;
   }
   
   protected String getDefaultAccessibilityLabel()
   {
-    AppMethodBeat.i(219627);
-    String str = getContext().getString(2131755326);
-    AppMethodBeat.o(219627);
+    AppMethodBeat.i(246034);
+    String str = getContext().getString(a.g.app_brand_accessibility_option_button);
+    AppMethodBeat.o(246034);
     return str;
   }
   
   protected Drawable getDefaultImageDrawable()
   {
     AppMethodBeat.i(135468);
-    Drawable localDrawable = b.l(getContext(), 2131230975);
+    Drawable localDrawable = a.m(getContext(), a.c.app_brand_actionbar_option_light);
     AppMethodBeat.o(135468);
     return localDrawable;
   }
@@ -78,17 +81,17 @@ public class AppBrandOptionButton
   public final void reset()
   {
     AppMethodBeat.i(135467);
-    this.omr.setVisibility(0);
-    this.omr.setAlpha(1.0F);
-    this.omr.setImageDrawable(getDefaultImageDrawable());
+    this.roT.setVisibility(0);
+    this.roT.setAlpha(1.0F);
+    this.roT.setImageDrawable(getDefaultImageDrawable());
     AppMethodBeat.o(135467);
   }
   
   public final void setAccessibilityLabel(String paramString)
   {
     AppMethodBeat.i(135464);
-    if ((this.omr != null) && (this.omr.getVisibility() == 0)) {
-      this.omr.setContentDescription(paramString);
+    if ((this.roT != null) && (this.roT.getVisibility() == 0)) {
+      this.roT.setContentDescription(paramString);
     }
     AppMethodBeat.o(135464);
   }
@@ -96,11 +99,11 @@ public class AppBrandOptionButton
   public void setColor(int paramInt)
   {
     AppMethodBeat.i(135466);
-    this.omr.setImageDrawable(getDefaultImageDrawable());
-    this.omr.setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
-    this.omr.setBackground(getBackground());
-    if (this.omr.getBackground() != null) {
-      this.omr.getBackground().setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
+    this.roT.setImageDrawable(getDefaultImageDrawable());
+    this.roT.setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
+    this.roT.setBackground(getBackground());
+    if (this.roT.getBackground() != null) {
+      this.roT.getBackground().setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
     }
     AppMethodBeat.o(135466);
   }
@@ -113,14 +116,14 @@ public class AppBrandOptionButton
       AppMethodBeat.o(135465);
       return;
     }
-    this.omr.setImageDrawable(new BitmapDrawable(getResources(), paramBitmap));
-    this.omr.setVisibility(0);
+    this.roT.setImageDrawable(new BitmapDrawable(getResources(), paramBitmap));
+    this.roT.setVisibility(0);
     AppMethodBeat.o(135465);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandOptionButton
  * JD-Core Version:    0.7.0.1
  */

@@ -16,12 +16,12 @@ import java.util.List;
 public final class a
   implements io.flutter.embedding.engine.plugins.a, k.c
 {
-  private k bbv;
+  private k aKT;
   private Context context;
   
-  private List<String> btt(String paramString)
+  private List<String> bGw(String paramString)
   {
-    AppMethodBeat.i(199147);
+    AppMethodBeat.i(220876);
     ArrayList localArrayList = new ArrayList();
     if (Build.VERSION.SDK_INT >= 19)
     {
@@ -41,17 +41,17 @@ public final class a
     if (paramString != null) {
       localArrayList.add(paramString.getAbsolutePath());
     }
-    AppMethodBeat.o(199147);
+    AppMethodBeat.o(220876);
     return localArrayList;
   }
   
   public final void a(a.b paramb)
   {
-    AppMethodBeat.i(199145);
-    this.bbv = new k(paramb.wJi.SNW, "plugins.flutter.io/path_provider");
+    AppMethodBeat.i(220842);
+    this.aKT = new k(paramb.BCx.aapU, "plugins.flutter.io/path_provider");
     this.context = paramb.applicationContext;
-    this.bbv.a(this);
-    AppMethodBeat.o(199145);
+    this.aKT.a(this);
+    AppMethodBeat.o(220842);
   }
   
   public final void a(j paramj, k.d paramd)
@@ -69,7 +69,7 @@ public final class a
       switch (i)
       {
       default: 
-        paramd.dLv();
+        paramd.epZ();
         AppMethodBeat.o(153351);
         return;
         if (str.equals("getTemporaryDirectory"))
@@ -103,17 +103,17 @@ public final class a
         break;
       }
     }
-    paramd.ba(this.context.getCacheDir().getPath());
+    paramd.bb(this.context.getCacheDir().getPath());
     AppMethodBeat.o(153351);
     return;
-    paramd.ba(io.flutter.a.a.lO(this.context));
+    paramd.bb(io.flutter.a.a.mL(this.context));
     AppMethodBeat.o(153351);
     return;
     paramj = this.context.getExternalFilesDir(null);
     if (paramj == null) {}
     for (paramj = null;; paramj = paramj.getAbsolutePath())
     {
-      paramd.ba(paramj);
+      paramd.bb(paramj);
       AppMethodBeat.o(153351);
       return;
     }
@@ -136,16 +136,16 @@ public final class a
     if (localObject != null) {
       paramj.add(((File)localObject).getAbsolutePath());
     }
-    paramd.ba(paramj);
+    paramd.bb(paramj);
     AppMethodBeat.o(153351);
     return;
-    paramj = (Integer)paramj.btq("type");
+    paramj = (Integer)paramj.bGt("type");
     if (paramj == null) {
       paramj = (j)localObject;
     }
     for (;;)
     {
-      paramd.ba(btt(paramj));
+      paramd.bb(bGw(paramj));
       AppMethodBeat.o(153351);
       return;
       switch (paramj.intValue())
@@ -192,21 +192,21 @@ public final class a
     paramj = new IllegalArgumentException("Documents directory is unsupported.");
     AppMethodBeat.o(153351);
     throw paramj;
-    paramd.ba(this.context.getFilesDir().getPath());
+    paramd.bb(this.context.getFilesDir().getPath());
     AppMethodBeat.o(153351);
   }
   
   public final void b(a.b paramb)
   {
-    AppMethodBeat.i(199146);
-    this.bbv.a(null);
-    this.bbv = null;
-    AppMethodBeat.o(199146);
+    AppMethodBeat.i(220843);
+    this.aKT.a(null);
+    this.aKT = null;
+    AppMethodBeat.o(220843);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     io.flutter.plugins.a.a
  * JD-Core Version:    0.7.0.1
  */

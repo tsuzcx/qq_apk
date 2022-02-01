@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
 import com.tencent.mm.model.z;
 import com.tencent.mm.pluginsdk.ui.span.i;
 import com.tencent.mm.ui.HomeUI;
@@ -21,14 +21,9 @@ class URISpanHandlerSet$SettingHeadImgUriSpanHandler
     super(paramURISpanHandlerSet);
   }
   
-  final int[] Xp()
-  {
-    return new int[] { 6 };
-  }
-  
   final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
   {
-    AppMethodBeat.i(231448);
+    AppMethodBeat.i(209012);
     if (paramu.type == 6)
     {
       if (parami != null) {
@@ -36,15 +31,15 @@ class URISpanHandlerSet$SettingHeadImgUriSpanHandler
       }
       paramView = LauncherUI.getInstance();
       if (paramView != null) {
-        paramView.ODR.getMainTabUI().blU("tab_settings");
+        paramView.VXk.getMainTabUI().byt("tab_settings");
       }
       if (parami != null) {
         parami.b(paramu);
       }
-      AppMethodBeat.o(231448);
+      AppMethodBeat.o(209012);
       return true;
     }
-    AppMethodBeat.o(231448);
+    AppMethodBeat.o(209012);
     return false;
   }
   
@@ -54,13 +49,13 @@ class URISpanHandlerSet$SettingHeadImgUriSpanHandler
     if (paramString.equals("weixin://setting/setheadimage"))
     {
       paramString = new Intent();
-      paramString.putExtra("Contact_User", z.aTY());
-      paramString.putExtra("Contact_Nick", z.aUa());
+      paramString.putExtra("Contact_User", z.bcZ());
+      paramString.putExtra("Contact_Nick", z.bdb());
       paramString.putExtra("User_Avatar", true);
-      if ((URISpanHandlerSet.a(this.dnW) instanceof Service)) {
+      if ((URISpanHandlerSet.a(this.fgB) instanceof Service)) {
         paramString.addFlags(268435456);
       }
-      c.b(URISpanHandlerSet.a(this.dnW), "profile", ".ui.ContactInfoUI", paramString);
+      c.b(URISpanHandlerSet.a(this.fgB), "profile", ".ui.ContactInfoUI", paramString);
       AppMethodBeat.o(19744);
       return true;
     }
@@ -68,7 +63,12 @@ class URISpanHandlerSet$SettingHeadImgUriSpanHandler
     return false;
   }
   
-  final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
+  final int[] abR()
+  {
+    return new int[] { 6 };
+  }
+  
+  final com.tencent.mm.pluginsdk.ui.applet.u hi(String paramString)
   {
     AppMethodBeat.i(19742);
     if (paramString.trim().startsWith("weixin://setting/setheadimage"))

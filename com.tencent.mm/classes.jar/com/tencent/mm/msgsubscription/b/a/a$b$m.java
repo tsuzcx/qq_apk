@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.a.a;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
 final class a$b$m
   implements DialogInterface.OnClickListener
 {
@@ -14,9 +14,9 @@ final class a$b$m
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(223300);
-    this.ihE.invoke();
-    AppMethodBeat.o(223300);
+    AppMethodBeat.i(205588);
+    this.kWs.invoke();
+    AppMethodBeat.o(205588);
   }
 }
 

@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.a.a;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
 final class f$c$a
   implements Runnable
 {
@@ -13,7 +13,7 @@ final class f$c$a
   public final void run()
   {
     AppMethodBeat.i(165629);
-    this.qgW.invoke();
+    this.tCS.invoke();
     AppMethodBeat.o(165629);
   }
 }

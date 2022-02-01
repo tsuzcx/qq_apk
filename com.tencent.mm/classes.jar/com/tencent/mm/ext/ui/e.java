@@ -17,79 +17,79 @@ import android.view.ViewParent;
 import android.view.Window;
 import android.view.WindowInsets;
 import android.view.WindowManager;
-import com.tencent.liteapp.a.a;
+import com.tencent.liteapp.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ext.b.c;
 import java.lang.reflect.Method;
 
 public final class e
 {
-  public static String hfM;
-  private static Rect hfN;
-  private static boolean hfO;
-  private static SparseArray<WindowInsets> hfP;
-  private static SparseArray<Rect> hfQ;
-  private static final Object hfR;
-  private static boolean hfS;
-  private static boolean hfT;
-  private static Boolean hfU;
-  private static Boolean hfV;
-  private static Boolean hfW;
-  private static Boolean hfX;
-  private static String hfY;
-  private static boolean hfZ;
-  private static boolean hga;
-  private static Boolean hgb;
-  private static Boolean hgc;
+  public static String jRE;
+  private static Rect jRF;
+  private static boolean jRG;
+  private static SparseArray<WindowInsets> jRH;
+  private static SparseArray<Rect> jRI;
+  private static final Object jRJ;
+  private static boolean jRK;
+  private static boolean jRL;
+  private static Boolean jRM;
+  private static Boolean jRN;
+  private static Boolean jRO;
+  private static Boolean jRP;
+  private static String jRQ;
+  private static boolean jRR;
+  private static boolean jRS;
+  private static Boolean jRT;
+  private static Boolean jRU;
   @TargetApi(26)
-  private static Boolean hgd;
-  private static Boolean hge;
-  private static Boolean hgf;
+  private static Boolean jRV;
+  private static Boolean jRW;
+  private static Boolean jRX;
   
   static
   {
-    AppMethodBeat.i(197878);
-    hfM = "has_cutout";
-    hfN = new Rect(0, 0, 0, 0);
-    hfO = false;
-    hfP = new SparseArray(4);
-    hfQ = new SparseArray(4);
-    hfR = new Object();
-    hfS = false;
-    hfT = false;
-    hfU = null;
-    hfV = null;
-    hfW = null;
-    hfX = null;
-    hfY = "xiaomi&28, redmi&28, samsung&28, vivo&28, oppo&29, huawei&29, honor&29, oneplus&29, meizu&24, smartisan&24, other&29";
-    hfZ = false;
-    hga = false;
-    hgb = null;
-    hgc = null;
-    hgd = null;
-    hge = null;
-    hgf = null;
-    AppMethodBeat.o(197878);
+    AppMethodBeat.i(259027);
+    jRE = "has_cutout";
+    jRF = new Rect(0, 0, 0, 0);
+    jRG = false;
+    jRH = new SparseArray(4);
+    jRI = new SparseArray(4);
+    jRJ = new Object();
+    jRK = false;
+    jRL = false;
+    jRM = null;
+    jRN = null;
+    jRO = null;
+    jRP = null;
+    jRQ = "xiaomi&28, redmi&28, samsung&28, vivo&28, oppo&29, huawei&29, honor&29, oneplus&29, meizu&24, smartisan&24, other&29";
+    jRR = false;
+    jRS = false;
+    jRT = null;
+    jRU = null;
+    jRV = null;
+    jRW = null;
+    jRX = null;
+    AppMethodBeat.o(259027);
   }
   
   private static ViewGroup a(Window paramWindow)
   {
-    AppMethodBeat.i(197865);
+    AppMethodBeat.i(259007);
     if (Build.VERSION.SDK_INT >= 21)
     {
       paramWindow = new com.tencent.mm.ext.a.a.a(paramWindow, "mContentRoot");
-      if (!paramWindow.apg()) {}
+      if (!paramWindow.avs()) {}
     }
     try
     {
       paramWindow = (ViewGroup)paramWindow.get();
-      AppMethodBeat.o(197865);
+      AppMethodBeat.o(259007);
       return paramWindow;
     }
     catch (NoSuchFieldException paramWindow)
     {
       com.tencent.liteapp.b.b.e("MicroMsg.UIUtils", paramWindow.toString(), new Object[0]);
-      AppMethodBeat.o(197865);
+      AppMethodBeat.o(259007);
       return null;
     }
     catch (IllegalAccessException paramWindow)
@@ -107,16 +107,16 @@ public final class e
   public static ViewGroup a(Window paramWindow, View paramView)
   {
     View localView = null;
-    AppMethodBeat.i(197864);
+    AppMethodBeat.i(259005);
     if (paramWindow == null)
     {
-      AppMethodBeat.o(197864);
+      AppMethodBeat.o(259005);
       return null;
     }
     Object localObject = a(paramWindow);
     if (localObject != null)
     {
-      AppMethodBeat.o(197864);
+      AppMethodBeat.o(259005);
       return localObject;
     }
     if (paramView != null) {
@@ -134,7 +134,7 @@ public final class e
         if ((localView instanceof ViewGroup))
         {
           paramWindow = (ViewGroup)localView;
-          AppMethodBeat.o(197864);
+          AppMethodBeat.o(259005);
           return paramWindow;
         }
         if (Build.VERSION.SDK_INT >= 21) {
@@ -142,71 +142,55 @@ public final class e
         }
       }
       paramWindow = (ViewGroup)paramView;
-      AppMethodBeat.o(197864);
+      AppMethodBeat.o(259005);
       return paramWindow;
     }
   }
   
-  public static int aP(Context paramContext)
+  private static boolean aEf()
   {
-    AppMethodBeat.i(197867);
-    int i = com.tencent.mm.ext.a.b.b.cH(paramContext);
-    AppMethodBeat.o(197867);
-    return i;
-  }
-  
-  public static boolean aQ(Context paramContext)
-  {
-    AppMethodBeat.i(197868);
-    boolean bool = cI(paramContext);
-    AppMethodBeat.o(197868);
-    return bool;
-  }
-  
-  private static boolean awN()
-  {
-    AppMethodBeat.i(197872);
-    if ((awP()) && ((awT()) || (awQ())) && (awR()))
+    AppMethodBeat.i(259019);
+    if ((aEh()) && ((aEl()) || (aEi())) && (aEj()))
     {
-      AppMethodBeat.o(197872);
+      AppMethodBeat.o(259019);
       return true;
     }
-    AppMethodBeat.o(197872);
+    AppMethodBeat.o(259019);
     return false;
   }
   
-  private static boolean awO()
+  private static boolean aEg()
   {
-    AppMethodBeat.i(197873);
-    if ((awP()) && ((awT()) || (awQ())) && (Build.VERSION.SDK_INT >= 26))
+    AppMethodBeat.i(259020);
+    if ((aEh()) && ((aEl()) || (aEi())) && (Build.VERSION.SDK_INT >= 26))
     {
-      AppMethodBeat.o(197873);
+      AppMethodBeat.o(259020);
       return true;
     }
-    AppMethodBeat.o(197873);
+    AppMethodBeat.o(259020);
     return false;
   }
   
-  private static boolean awP()
+  private static boolean aEh()
   {
-    AppMethodBeat.i(197874);
-    if (hfU == null) {
-      hfU = Boolean.TRUE;
+    AppMethodBeat.i(259021);
+    if (jRM == null) {
+      jRM = Boolean.TRUE;
     }
-    boolean bool = hfU.booleanValue();
-    AppMethodBeat.o(197874);
+    boolean bool = jRM.booleanValue();
+    AppMethodBeat.o(259021);
     return bool;
   }
   
-  private static boolean awQ()
+  private static boolean aEi()
   {
-    AppMethodBeat.i(197875);
-    if (hfV == null) {}
+    AppMethodBeat.i(259023);
+    if (jRN == null) {}
     try
     {
-      hfV = Boolean.FALSE;
-      boolean bool = hfV.booleanValue();
-      AppMethodBeat.o(197875);
+      jRN = Boolean.FALSE;
+      boolean bool = jRN.booleanValue();
+      AppMethodBeat.o(259023);
       return bool;
     }
     catch (Exception localException)
@@ -214,30 +198,30 @@ public final class e
       for (;;)
       {
         com.tencent.liteapp.b.b.e("MicroMsg.UIUtils", "isDarkModeUnusedOn %s", new Object[] { localException.toString() });
-        hfV = Boolean.FALSE;
+        jRN = Boolean.FALSE;
       }
     }
   }
   
-  private static boolean awR()
+  private static boolean aEj()
   {
-    AppMethodBeat.i(197876);
-    if (hfX == null)
+    AppMethodBeat.i(259024);
+    if (jRP == null)
     {
-      hfX = Boolean.FALSE;
+      jRP = Boolean.FALSE;
       try
       {
         com.tencent.liteapp.b.b.i("MicroMsg.UIUtils", "dancy test darkModeUsableBrandAPI: %s", new Object[] { "" });
         if (!TextUtils.isEmpty(""))
         {
           String str = Build.BRAND.toLowerCase();
-          if (hfY.contains(str))
+          if (jRQ.contains(str))
           {
             String[] arrayOfString = "".split(",");
             int j = arrayOfString.length;
             i = 0;
             if (i >= j) {
-              break label262;
+              break label260;
             }
             localObject = arrayOfString[i];
             if (((String)localObject).contains(str))
@@ -260,7 +244,7 @@ public final class e
             int k = Integer.parseInt(localObject[1]);
             com.tencent.liteapp.b.b.d("MicroMsg.UIUtils", "dancy test api: %s", new Object[] { Integer.valueOf(k) });
             if (Build.VERSION.SDK_INT >= k) {
-              hfX = Boolean.TRUE;
+              jRP = Boolean.TRUE;
             }
             i += 1;
           }
@@ -275,44 +259,60 @@ public final class e
           }
         }
         if (("".contains("other")) && (Build.VERSION.SDK_INT >= 29)) {
-          hfX = Boolean.TRUE;
+          jRP = Boolean.TRUE;
         }
       }
     }
-    label262:
-    boolean bool = hfX.booleanValue();
-    AppMethodBeat.o(197876);
+    label260:
+    boolean bool = jRP.booleanValue();
+    AppMethodBeat.o(259024);
     return bool;
   }
   
-  private static boolean awS()
+  private static boolean aEk()
   {
-    if (!hga)
+    if (!jRS)
     {
-      hfZ = false;
-      hga = true;
+      jRR = false;
+      jRS = true;
     }
-    return hfZ;
+    return jRR;
   }
   
-  private static boolean awT()
+  private static boolean aEl()
   {
-    AppMethodBeat.i(197877);
-    if (hgc == null) {
-      hgc = Boolean.FALSE;
+    AppMethodBeat.i(259025);
+    if (jRU == null) {
+      jRU = Boolean.FALSE;
     }
-    boolean bool = hgc.booleanValue();
-    AppMethodBeat.o(197877);
+    boolean bool = jRU.booleanValue();
+    AppMethodBeat.o(259025);
     return bool;
   }
   
-  public static Point az(Context paramContext)
+  public static int aM(Context paramContext)
   {
-    AppMethodBeat.i(197866);
+    AppMethodBeat.i(259011);
+    int i = com.tencent.mm.ext.a.b.b.cD(paramContext);
+    AppMethodBeat.o(259011);
+    return i;
+  }
+  
+  public static boolean aN(Context paramContext)
+  {
+    AppMethodBeat.i(259013);
+    boolean bool = cE(paramContext);
+    AppMethodBeat.o(259013);
+    return bool;
+  }
+  
+  public static Point au(Context paramContext)
+  {
+    AppMethodBeat.i(259009);
     Point localPoint = new Point();
     if (paramContext == null)
     {
-      AppMethodBeat.o(197866);
+      AppMethodBeat.o(259009);
       return localPoint;
     }
     paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
@@ -321,7 +321,7 @@ public final class e
     }
     for (;;)
     {
-      AppMethodBeat.o(197866);
+      AppMethodBeat.o(259009);
       return localPoint;
       if (Build.VERSION.SDK_INT >= 14) {
         try
@@ -337,80 +337,80 @@ public final class e
     }
   }
   
-  public static boolean cI(Context paramContext)
+  public static boolean cE(Context paramContext)
   {
-    AppMethodBeat.i(197869);
+    AppMethodBeat.i(259015);
     if ((c.vivohasCutOut(paramContext)) || (com.tencent.mm.ext.b.b.oppohasCutOut(paramContext)) || (com.tencent.mm.ext.b.a.huaweihasCutOut(paramContext))) {}
     for (boolean bool = true;; bool = false)
     {
       com.tencent.liteapp.b.b.i("MicroMsg.UIUtils", "hasCutOut:%s", new Object[] { Boolean.valueOf(bool) });
-      AppMethodBeat.o(197869);
+      AppMethodBeat.o(259015);
       return bool;
     }
   }
   
   public static boolean f(Resources paramResources)
   {
-    AppMethodBeat.i(197871);
-    if ((!awO()) && (!awN()))
+    AppMethodBeat.i(259018);
+    if ((!aEg()) && (!aEf()))
     {
-      AppMethodBeat.o(197871);
+      AppMethodBeat.o(259018);
       return false;
     }
-    if (awS())
+    if (aEk())
     {
       if (paramResources == null)
       {
         com.tencent.liteapp.b.b.i("MicroMsg.UIUtils", "dancy test is not darkmode, activity is null ", new Object[0]);
-        AppMethodBeat.o(197871);
+        AppMethodBeat.o(259018);
         return false;
       }
       switch (paramResources.getConfiguration().uiMode & 0x30)
       {
       default: 
-        AppMethodBeat.o(197871);
+        AppMethodBeat.o(259018);
         return false;
       case 16: 
-        AppMethodBeat.o(197871);
+        AppMethodBeat.o(259018);
         return false;
       }
-      AppMethodBeat.o(197871);
+      AppMethodBeat.o(259018);
       return true;
     }
     boolean bool = isDarkMode();
-    AppMethodBeat.o(197871);
+    AppMethodBeat.o(259018);
     return bool;
   }
   
   private static boolean isDarkMode()
   {
-    AppMethodBeat.i(197870);
-    if (awS())
+    AppMethodBeat.i(259016);
+    if (aEk())
     {
-      a.a locala = com.tencent.liteapp.a.cqJ;
-      if ((f(a.a.getAppContext().getResources())) && (awN()))
+      b.a locala = com.tencent.liteapp.b.cox;
+      if ((f(b.a.getAppContext().getResources())) && (aEf()))
       {
-        AppMethodBeat.o(197870);
+        AppMethodBeat.o(259016);
         return true;
       }
-      AppMethodBeat.o(197870);
+      AppMethodBeat.o(259016);
       return false;
     }
-    if (hgb == null) {
-      hgb = Boolean.FALSE;
+    if (jRT == null) {
+      jRT = Boolean.FALSE;
     }
-    if ((hgb.booleanValue()) && ((awO()) || (awN())))
+    if ((jRT.booleanValue()) && ((aEg()) || (aEf())))
     {
-      AppMethodBeat.o(197870);
+      AppMethodBeat.o(259016);
       return true;
     }
-    AppMethodBeat.o(197870);
+    AppMethodBeat.o(259016);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ext.ui.e
  * JD-Core Version:    0.7.0.1
  */

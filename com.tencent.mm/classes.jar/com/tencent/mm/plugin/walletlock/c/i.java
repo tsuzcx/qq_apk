@@ -9,51 +9,78 @@ import java.util.Iterator;
 
 public enum i
 {
-  private boolean IwZ;
-  private boolean Ixa;
-  private Object Ixb;
-  public HashSet<WeakReference<Activity>> Ixc;
+  private boolean Pre;
+  private boolean Prf;
+  private Object Prg;
+  public HashSet<WeakReference<Activity>> Prh;
   
   static
   {
     AppMethodBeat.i(129945);
-    IwY = new i("INSTANCE");
-    Ixd = new i[] { IwY };
+    Prd = new i("INSTANCE");
+    Pri = new i[] { Prd };
     AppMethodBeat.o(129945);
   }
   
   private i()
   {
     AppMethodBeat.i(129942);
-    this.IwZ = false;
-    this.Ixa = false;
-    this.Ixb = new Object();
-    this.Ixc = new HashSet();
+    this.Pre = false;
+    this.Prf = false;
+    this.Prg = new Object();
+    this.Prh = new HashSet();
     AppMethodBeat.o(129942);
   }
   
-  public final boolean fVA()
+  public final void CC(boolean paramBoolean)
   {
-    synchronized (this.Ixb)
+    synchronized (this.Prg)
     {
-      boolean bool = this.Ixa;
-      return bool;
-    }
-  }
-  
-  public final void fVB()
-  {
-    synchronized (this.Ixb)
-    {
-      this.Ixa = true;
+      this.Pre = paramBoolean;
       return;
     }
   }
   
-  public final void fVC()
+  public final void CD(boolean paramBoolean)
+  {
+    synchronized (this.Prg)
+    {
+      this.Prf = paramBoolean;
+      return;
+    }
+  }
+  
+  public final boolean gOf()
+  {
+    synchronized (this.Prg)
+    {
+      boolean bool = this.Pre;
+      return bool;
+    }
+  }
+  
+  public final boolean gOg()
+  {
+    synchronized (this.Prg)
+    {
+      boolean bool = this.Prf;
+      return bool;
+    }
+  }
+  
+  public final void gOh()
+  {
+    synchronized (this.Prg)
+    {
+      this.Prf = true;
+      return;
+    }
+  }
+  
+  public final void gOi()
   {
     AppMethodBeat.i(129944);
-    Iterator localIterator = this.Ixc.iterator();
+    Iterator localIterator = this.Prh.iterator();
     while (localIterator.hasNext())
     {
       Activity localActivity = (Activity)((WeakReference)localIterator.next()).get();
@@ -67,49 +94,22 @@ public enum i
     AppMethodBeat.o(129944);
   }
   
-  public final boolean fVz()
-  {
-    synchronized (this.Ixb)
-    {
-      boolean bool = this.IwZ;
-      return bool;
-    }
-  }
-  
-  public final void j(WeakReference<Activity> paramWeakReference)
+  public final void i(WeakReference<Activity> paramWeakReference)
   {
     AppMethodBeat.i(129943);
-    if (this.Ixc != null)
+    if (this.Prh != null)
     {
       if (paramWeakReference.get() != null) {
         Log.v("MicroMsg.WalletLockStatusManager", "alvinluo addProtectActivity %s", new Object[] { ((Activity)paramWeakReference.get()).getClass().getName() });
       }
-      this.Ixc.add(paramWeakReference);
+      this.Prh.add(paramWeakReference);
     }
     AppMethodBeat.o(129943);
-  }
-  
-  public final void yH(boolean paramBoolean)
-  {
-    synchronized (this.Ixb)
-    {
-      this.IwZ = paramBoolean;
-      return;
-    }
-  }
-  
-  public final void yI(boolean paramBoolean)
-  {
-    synchronized (this.Ixb)
-    {
-      this.Ixa = paramBoolean;
-      return;
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.c.i
  * JD-Core Version:    0.7.0.1
  */

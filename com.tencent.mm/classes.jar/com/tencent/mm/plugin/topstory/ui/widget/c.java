@@ -8,26 +8,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.topstory.a.c.f;
+import com.tencent.mm.plugin.topstory.ui.c.d;
 
 public final class c
 {
-  private View GqJ;
-  private View GqK;
-  public f GqS;
-  a GqT;
-  private int GqU;
+  public f NdD;
+  a NdE;
+  private int NdF;
+  private View Ndu;
+  private View Ndv;
   public View contentView;
   public String vid;
   
   public c(View paramView, a parama, f paramf, String paramString)
   {
     AppMethodBeat.i(126639);
-    this.GqU = 16;
+    this.NdF = 16;
     this.contentView = paramView;
-    this.GqS = paramf;
-    this.GqJ = paramView.findViewById(2131299741);
-    this.GqK = paramView.findViewById(2131309598);
-    this.GqT = parama;
+    this.NdD = paramf;
+    this.Ndu = paramView.findViewById(c.d.down_iv);
+    this.Ndv = paramView.findViewById(c.d.up_iv);
+    this.NdE = parama;
     this.vid = paramString;
     paramView.setOnClickListener(new View.OnClickListener()
     {
@@ -35,9 +36,9 @@ public final class c
       {
         AppMethodBeat.i(126638);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/topstory/ui/widget/HaokanPopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        c.this.GqT.a(c.this.GqS);
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/topstory/ui/widget/HaokanPopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        c.this.NdE.a(c.this.NdD);
         a.a(this, "com/tencent/mm/plugin/topstory/ui/widget/HaokanPopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(126638);
       }
@@ -51,17 +52,17 @@ public final class c
     int[] arrayOfInt = e.b(paramView.getContext(), paramView, this.contentView, paramBoolean);
     arrayOfInt[0] += 0;
     arrayOfInt[1] += paramInt;
-    if ((this.GqK != null) && (this.GqJ != null))
+    if ((this.Ndv != null) && (this.Ndu != null))
     {
-      paramInt = e.fX(paramView) - e.dip2px(paramView.getContext(), this.GqU);
+      paramInt = e.hg(paramView) - e.dip2px(paramView.getContext(), this.NdF);
       if (!paramBoolean) {
         break label150;
       }
-      this.GqK.setVisibility(0);
-      this.GqJ.setVisibility(8);
-      paramView = (RelativeLayout.LayoutParams)this.GqK.getLayoutParams();
+      this.Ndv.setVisibility(0);
+      this.Ndu.setVisibility(8);
+      paramView = (RelativeLayout.LayoutParams)this.Ndv.getLayoutParams();
       paramView.leftMargin = paramInt;
-      this.GqK.setLayoutParams(paramView);
+      this.Ndv.setLayoutParams(paramView);
     }
     for (;;)
     {
@@ -71,11 +72,11 @@ public final class c
       AppMethodBeat.o(126640);
       return;
       label150:
-      this.GqK.setVisibility(8);
-      this.GqJ.setVisibility(0);
-      paramView = (RelativeLayout.LayoutParams)this.GqJ.getLayoutParams();
+      this.Ndv.setVisibility(8);
+      this.Ndu.setVisibility(0);
+      paramView = (RelativeLayout.LayoutParams)this.Ndu.getLayoutParams();
       paramView.leftMargin = paramInt;
-      this.GqJ.setLayoutParams(paramView);
+      this.Ndu.setLayoutParams(paramView);
     }
   }
   
@@ -86,7 +87,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.widget.c
  * JD-Core Version:    0.7.0.1
  */

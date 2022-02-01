@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.address.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.address.a.a;
-import com.tencent.mm.protocal.protobuf.djj;
-import com.tencent.mm.protocal.protobuf.djp;
-import com.tencent.mm.protocal.protobuf.djq;
+import com.tencent.mm.protocal.protobuf.dsy;
+import com.tencent.mm.protocal.protobuf.dte;
+import com.tencent.mm.protocal.protobuf.dtf;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
@@ -27,14 +27,14 @@ public final class g
   {
     AppMethodBeat.i(20783);
     d.a locala = new d.a();
-    locala.iLN = new djp();
-    locala.iLO = new djq();
+    locala.lBU = new dte();
+    locala.lBV = new dtf();
     locala.uri = "/cgi-bin/micromsg-bin/rcptinfotouch";
     locala.funcId = 419;
-    locala.iLP = 204;
+    locala.lBW = 204;
     locala.respCmdId = 1000000204;
-    this.rr = locala.aXF();
-    ((djp)this.rr.iLK.iLR).id = paramInt;
+    this.rr = locala.bgN();
+    ((dte)d.b.b(this.rr.lBR)).id = paramInt;
     AppMethodBeat.o(20783);
   }
   
@@ -58,14 +58,14 @@ public final class g
     Log.d("MicroMsg.NetSceneRcptInfoTouch", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = (djq)((d)params).iLL.iLR;
-      if (params.MNs.MNv != null)
+      params = (dtf)d.c.b(((d)params).lBS);
+      if (params.TZl.TZo != null)
       {
-        Log.d("MicroMsg.NetSceneRcptInfoTouch", "resp.rImpl.rcptinfolist.rcptinfolist " + params.MNs.MNv.size());
-        a.bqb();
-        a.bqd().t(params.MNs.MNv);
-        a.bqb();
-        a.bqd().bqf();
+        Log.d("MicroMsg.NetSceneRcptInfoTouch", "resp.rImpl.rcptinfolist.rcptinfolist " + params.TZl.TZo.size());
+        a.bAn();
+        a.bAp().u(params.TZl.TZo);
+        a.bAn();
+        a.bAp().bAs();
       }
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
@@ -74,7 +74,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.address.model.g
  * JD-Core Version:    0.7.0.1
  */

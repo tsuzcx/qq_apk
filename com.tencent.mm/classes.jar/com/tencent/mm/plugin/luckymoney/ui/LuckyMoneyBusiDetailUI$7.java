@@ -15,16 +15,16 @@ final class LuckyMoneyBusiDetailUI$7
   {
     AppMethodBeat.i(65456);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyBusiDetailUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    LuckyMoneyBusiDetailUI.e(this.zcr);
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyBusiDetailUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    LuckyMoneyBusiDetailUI.e(this.EGR);
     a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyBusiDetailUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(65456);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyBusiDetailUI.7
  * JD-Core Version:    0.7.0.1
  */

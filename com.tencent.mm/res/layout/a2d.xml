@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:id="@id/ht9" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
         <View android:id="@id/c0w" android:background="?kf" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/htb" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
-        <android.support.v7.widget.RecyclerView android:id="@id/htb" android:scrollbars="none" android:clipToPadding="false" android:layout_width="0.0dip" android:layout_height="@dimen/a35" android:overScrollMode="never" android:paddingStart="@dimen/bt" android:paddingEnd="@dimen/bt" app:layout_constraintEnd_toStartOf="@id/c0m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/htb" android:scrollbars="none" android:clipToPadding="false" android:layout_width="0.0dip" android:layout_height="@dimen/a35" android:overScrollMode="never" android:paddingStart="@dimen/bt" android:paddingEnd="@dimen/bt" app:layout_constraintEnd_toStartOf="@id/c0m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
         <ImageView android:id="@id/c0m" android:padding="@dimen/cb" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="0.0dip" android:src="@raw/hide_emoji_panel" android:contentDescription="@string/b5x" app:layout_constraintBottom_toBottomOf="@id/htb" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toEndOf="@id/htb" app:layout_constraintTop_toTopOf="@id/htb" />
-    </android.support.constraint.ConstraintLayout>
-    <com.tencent.mm.emoji.panel.EmojiPanelGroupView android:id="@id/c0t" android:background="?kc" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.tencent.mm.ui.widget.pulldown.NestedBounceView android:id="@id/cp0" android:background="?kc" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <com.tencent.mm.emoji.panel.EmojiPanelGroupView android:id="@id/c0t" android:background="@drawable/cao" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mm.ui.widget.pulldown.NestedBounceView>
 </LinearLayout>

@@ -9,19 +9,27 @@ public final class b
   extends h
   implements Iterable<h>
 {
-  public final List<h> aIq;
+  public final List<h> values;
   
   public b()
   {
     AppMethodBeat.i(74687);
-    this.aIq = new ArrayList();
+    this.values = new ArrayList();
     AppMethodBeat.o(74687);
+  }
+  
+  public final b O(float paramFloat)
+  {
+    AppMethodBeat.i(74690);
+    this.values.add(a.N(paramFloat));
+    AppMethodBeat.o(74690);
+    return this;
   }
   
   public final b a(int paramInt, double paramDouble)
   {
     AppMethodBeat.i(74697);
-    this.aIq.set(paramInt, a.d(paramDouble));
+    this.values.set(paramInt, a.c(paramDouble));
     AppMethodBeat.o(74697);
     return this;
   }
@@ -35,7 +43,7 @@ public final class b
       AppMethodBeat.o(74699);
       throw paramh;
     }
-    this.aIq.set(paramInt, paramh);
+    this.values.set(paramInt, paramh);
     AppMethodBeat.o(74699);
     return this;
   }
@@ -49,7 +57,7 @@ public final class b
       AppMethodBeat.o(74694);
       throw paramh;
     }
-    this.aIq.add(paramh);
+    this.values.add(paramh);
     AppMethodBeat.o(74694);
     return this;
   }
@@ -57,73 +65,65 @@ public final class b
   final void a(i parami)
   {
     AppMethodBeat.i(74702);
-    parami.sH();
+    parami.qv();
     Iterator localIterator = iterator();
     for (int i = 1; localIterator.hasNext(); i = 0)
     {
       if (i == 0) {
-        parami.sJ();
+        parami.qx();
       }
       ((h)localIterator.next()).a(parami);
     }
-    parami.sI();
+    parami.qw();
     AppMethodBeat.o(74702);
   }
   
-  public final b aM(boolean paramBoolean)
+  public final b aK(boolean paramBoolean)
   {
     AppMethodBeat.i(74692);
-    this.aIq.add(a.aL(paramBoolean));
+    this.values.add(a.aJ(paramBoolean));
     AppMethodBeat.o(74692);
     return this;
   }
   
-  public final b aT(String paramString)
-  {
-    AppMethodBeat.i(74693);
-    this.aIq.add(a.aQ(paramString));
-    AppMethodBeat.o(74693);
-    return this;
-  }
-  
-  public final b aV(int paramInt1, int paramInt2)
+  public final b bb(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(74695);
-    this.aIq.set(paramInt1, a.dA(paramInt2));
+    this.values.set(paramInt1, a.dO(paramInt2));
     AppMethodBeat.o(74695);
     return this;
   }
   
-  public final b ac(float paramFloat)
+  public final b bd(String paramString)
   {
-    AppMethodBeat.i(74690);
-    this.aIq.add(a.ab(paramFloat));
-    AppMethodBeat.o(74690);
+    AppMethodBeat.i(74693);
+    this.values.add(a.ba(paramString));
+    AppMethodBeat.o(74693);
     return this;
   }
   
-  public final b dB(int paramInt)
+  public final b d(double paramDouble)
+  {
+    AppMethodBeat.i(74691);
+    this.values.add(a.c(paramDouble));
+    AppMethodBeat.o(74691);
+    return this;
+  }
+  
+  public final b dP(int paramInt)
   {
     AppMethodBeat.i(74688);
-    this.aIq.add(a.dA(paramInt));
+    this.values.add(a.dO(paramInt));
     AppMethodBeat.o(74688);
     return this;
   }
   
-  public final h dC(int paramInt)
+  public final h dQ(int paramInt)
   {
     AppMethodBeat.i(74700);
-    h localh = (h)this.aIq.get(paramInt);
+    h localh = (h)this.values.get(paramInt);
     AppMethodBeat.o(74700);
     return localh;
-  }
-  
-  public final b e(double paramDouble)
-  {
-    AppMethodBeat.i(74691);
-    this.aIq.add(a.d(paramDouble));
-    AppMethodBeat.o(74691);
-    return this;
   }
   
   public final boolean equals(Object paramObject)
@@ -145,7 +145,7 @@ public final class b
       return false;
     }
     paramObject = (b)paramObject;
-    boolean bool = this.aIq.equals(paramObject.aIq);
+    boolean bool = this.values.equals(paramObject.values);
     AppMethodBeat.o(74704);
     return bool;
   }
@@ -153,7 +153,7 @@ public final class b
   public final b f(int paramInt, long paramLong)
   {
     AppMethodBeat.i(74696);
-    this.aIq.set(paramInt, a.s(paramLong));
+    this.values.set(paramInt, a.u(paramLong));
     AppMethodBeat.o(74696);
     return this;
   }
@@ -161,7 +161,7 @@ public final class b
   public final int hashCode()
   {
     AppMethodBeat.i(74703);
-    int i = this.aIq.hashCode();
+    int i = this.values.hashCode();
     AppMethodBeat.o(74703);
     return i;
   }
@@ -179,7 +179,7 @@ public final class b
       public final boolean hasNext()
       {
         AppMethodBeat.i(74684);
-        boolean bool = this.aZF.hasNext();
+        boolean bool = this.aJb.hasNext();
         AppMethodBeat.o(74684);
         return bool;
       }
@@ -196,30 +196,30 @@ public final class b
     return local1;
   }
   
-  public final b n(int paramInt, boolean paramBoolean)
+  public final b m(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(74698);
-    this.aIq.set(paramInt, a.aL(paramBoolean));
+    this.values.set(paramInt, a.aJ(paramBoolean));
     AppMethodBeat.o(74698);
     return this;
   }
   
-  public final b sd()
+  public final b pR()
   {
     return this;
   }
   
-  public final b t(long paramLong)
+  public final b v(long paramLong)
   {
     AppMethodBeat.i(74689);
-    this.aIq.add(a.s(paramLong));
+    this.values.add(a.u(paramLong));
     AppMethodBeat.o(74689);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.eclipsesource.a.b
  * JD-Core Version:    0.7.0.1
  */

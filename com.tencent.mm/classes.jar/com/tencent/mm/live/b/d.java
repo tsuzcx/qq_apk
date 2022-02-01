@@ -3,7 +3,7 @@ package com.tencent.mm.live.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/model/CloseApplyLiveMicInfo;", "", "liveId", "", "enable", "", "(JZ)V", "getEnable", "()Z", "getLiveId", "()J", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-logic_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/model/CloseApplyLiveMicInfo;", "", "liveId", "", "enable", "", "(JZ)V", "getEnable", "()Z", "getLiveId", "()J", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-logic_release"})
 public final class d
 {
   public final boolean enable;
@@ -38,15 +38,15 @@ public final class d
   
   public final String toString()
   {
-    AppMethodBeat.i(207559);
+    AppMethodBeat.i(196798);
     String str = "CloseApplyLiveMicInfo(liveId=" + this.liveId + ", enable=" + this.enable + ")";
-    AppMethodBeat.o(207559);
+    AppMethodBeat.o(196798);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.live.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.mall.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
@@ -12,7 +13,7 @@ import org.json.JSONObject;
 public final class e
   extends m
 {
-  public d zjm;
+  public d EOC;
   
   public e()
   {
@@ -42,9 +43,9 @@ public final class e
     }
     try
     {
-      this.zjm = new d(paramJSONObject.toString());
-      g.aAi();
-      g.aAh().azQ().set(ar.a.Ohb, paramJSONObject.toString());
+      this.EOC = new d(paramJSONObject.toString());
+      h.aHH();
+      h.aHG().aHp().set(ar.a.Vvr, paramJSONObject.toString());
       AppMethodBeat.o(65992);
       return;
     }
@@ -57,7 +58,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.a.e
  * JD-Core Version:    0.7.0.1
  */

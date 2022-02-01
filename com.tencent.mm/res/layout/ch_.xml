@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.hld.keyboard.S8ExceptionSettingKeyboard android:orientation="vertical" android:id="@id/h8v" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:setting="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/t" android:textStyle="bold" android:textColor="@color/FG_0" android:gravity="center_horizontal" android:id="@id/ir3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:text="@string/jj_" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/k48" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:layout_below="@id/bn6">
+        <RelativeLayout android:id="@id/kbx" android:background="@drawable/cws" android:layout_width="142.0dip" android:layout_height="131.0dip">
+            <ImageView android:id="@id/kbc" android:layout_width="118.0dip" android:layout_height="@dimen/cr" android:layout_marginTop="@dimen/c5" android:src="@drawable/cxq" android:scaleType="fitCenter" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="@dimen/t" android:textColor="@color/ahk" android:gravity="center_horizontal" android:id="@id/kc1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="19.0dip" android:text="@string/jht" android:layout_below="@id/kbc" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/kb7" android:background="@drawable/cws" android:layout_width="142.0dip" android:layout_height="131.0dip" android:layout_marginStart="@dimen/ct">
+            <ImageView android:id="@id/kb6" android:layout_width="118.0dip" android:layout_height="@dimen/cr" android:layout_marginTop="@dimen/c5" android:src="@drawable/cxp" android:scaleType="fitCenter" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="@dimen/t" android:textColor="@color/ahk" android:gravity="center_horizontal" android:id="@id/kb_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="19.0dip" android:text="@string/jhs" android:layout_below="@id/kb6" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="bottom|center" android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/aaq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ce">
+        <Button android:textSize="@dimen/t" android:textStyle="bold" android:layout_gravity="center_horizontal" android:id="@id/k5a" android:layout_width="@dimen/c1" android:layout_height="@dimen/cl" android:text="@string/jja" style="@style/ou" />
+    </LinearLayout>
+</com.tencent.mm.plugin.hld.keyboard.S8ExceptionSettingKeyboard>

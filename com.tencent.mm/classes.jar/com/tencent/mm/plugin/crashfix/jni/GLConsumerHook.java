@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.crashfix.jni;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 

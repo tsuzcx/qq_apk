@@ -6,19 +6,19 @@ import java.util.HashMap;
 
 public final class d
 {
-  public String Ske;
-  public boolean Skf;
-  public boolean Skg;
-  public File Skh;
-  public File Ski;
-  public File Skj;
-  public File Skk;
-  public File Skl;
-  public File Skm;
-  public HashMap<String, String> Skn;
-  public HashMap<String, String> Sko;
-  public HashMap<String, String> Skp;
-  public int Skq;
+  public String ZMP;
+  public boolean ZMQ;
+  public boolean ZMR;
+  public File ZMS;
+  public File ZMT;
+  public File ZMU;
+  public File ZMV;
+  public File ZMW;
+  public File ZMX;
+  public HashMap<String, String> ZMY;
+  public HashMap<String, String> ZMZ;
+  public HashMap<String, String> ZNa;
+  public int ZNb;
   public long costTime;
   public String oatDir;
   public SharePatchInfo patchInfo;
@@ -26,7 +26,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.lib.e.d
  * JD-Core Version:    0.7.0.1
  */

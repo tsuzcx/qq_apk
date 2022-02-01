@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.exdevice.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.plugin.exdevice.f.c;
 import com.tencent.mm.plugin.exdevice.f.n;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -13,22 +13,22 @@ public final class h
   {
     AppMethodBeat.i(23157);
     n localn = new n();
-    localn.rCa = new c();
-    localn.rCe = paramInt1;
-    localn.rCf = paramInt2;
-    this.rxz = localn;
-    this.pkb = paramLong;
-    this.rxx = 30002;
+    localn.vhI = new c();
+    localn.vhM = paramInt1;
+    localn.vhN = paramInt2;
+    this.vdf = localn;
+    this.smk = paramLong;
+    this.vdd = 30002;
     AppMethodBeat.o(23157);
   }
   
-  public final byte[] cKi()
+  public final byte[] cYS()
   {
     AppMethodBeat.i(23158);
     Object localObject = null;
     try
     {
-      byte[] arrayOfByte = this.rxz.toByteArray();
+      byte[] arrayOfByte = this.vdf.toByteArray();
       localObject = arrayOfByte;
     }
     catch (Exception localException)
@@ -42,24 +42,24 @@ public final class h
     return localObject;
   }
   
-  public final int cKk()
+  public final int cYU()
   {
     AppMethodBeat.i(23159);
-    n localn = (n)this.rxz;
+    n localn = (n)this.vdf;
     if (localn == null)
     {
       Log.e("MicroMsg.exdevice.ExDeviceCmdSwitchViewPush", "null = pushReq");
       AppMethodBeat.o(23159);
       return -1;
     }
-    int i = localn.rCe;
+    int i = localn.vhM;
     AppMethodBeat.o(23159);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.c.h
  * JD-Core Version:    0.7.0.1
  */

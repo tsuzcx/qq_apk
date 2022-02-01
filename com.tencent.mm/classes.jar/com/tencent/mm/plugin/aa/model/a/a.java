@@ -6,7 +6,7 @@ import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends com.tencent.mm.g.c.a
+  extends com.tencent.mm.f.c.a
 {
   public static IAutoDBItem.MAutoDBInfo info;
   
@@ -46,7 +46,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.a.a
  * JD-Core Version:    0.7.0.1
  */

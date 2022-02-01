@@ -2,22 +2,22 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
-import com.tencent.mm.protocal.protobuf.dvn;
+import com.tencent.mm.protocal.protobuf.efp;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 import java.util.LinkedList;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPath;", "", "()V", "Companion", "plugin-expt_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPath;", "", "()V", "Companion", "plugin-expt_release"})
 public final class m
 {
-  public static final a sIM;
+  public static final a woJ;
   
   static
   {
     AppMethodBeat.i(185607);
-    sIM = new a((byte)0);
+    woJ = new a((byte)0);
     AppMethodBeat.o(185607);
   }
   
@@ -29,25 +29,25 @@ public final class m
       AppMethodBeat.o(185608);
       return;
     }
-    dvn localdvn2 = a.cQG();
-    dvn localdvn1 = localdvn2;
-    if (localdvn2 == null) {
-      localdvn1 = new dvn();
+    efp localefp2 = a.dfA();
+    efp localefp1 = localefp2;
+    if (localefp2 == null) {
+      localefp1 = new efp();
     }
-    if (localdvn1.Mhr.size() > 100) {
-      localdvn1.Mhr.removeFirst();
+    if (localefp1.Trf.size() > 100) {
+      localefp1.Trf.removeFirst();
     }
-    localdvn1.Mhr.addLast(paramString);
-    if ((localdvn1 == null) || (localdvn1.Mhr.isEmpty()))
+    localefp1.Trf.addLast(paramString);
+    if ((localefp1 == null) || (localefp1.Trf.isEmpty()))
     {
       AppMethodBeat.o(185608);
       return;
     }
     try
     {
-      paramString = localdvn1.toByteArray();
+      paramString = localefp1.toByteArray();
       if (paramString != null) {
-        b.o("mmkv_sionId_table_hell", paramString);
+        b.r("mmkv_sionId_table_hell", paramString);
       }
       AppMethodBeat.o(185608);
       return;
@@ -59,49 +59,49 @@ public final class m
     }
   }
   
-  public static final String cPR()
+  public static final String deL()
   {
-    AppMethodBeat.i(221131);
-    Object localObject = a.cQG();
+    AppMethodBeat.i(256484);
+    Object localObject = a.dfA();
     if (localObject == null)
     {
-      AppMethodBeat.o(221131);
+      AppMethodBeat.o(256484);
       return null;
     }
-    if (((dvn)localObject).Mhr.isEmpty())
+    if (((efp)localObject).Trf.isEmpty())
     {
-      AppMethodBeat.o(221131);
+      AppMethodBeat.o(256484);
       return null;
     }
-    localObject = ((dvn)localObject).Mhr;
-    p.g(localObject, "table.sessions");
+    localObject = ((efp)localObject).Trf;
+    p.j(localObject, "table.sessions");
     localObject = (String)((LinkedList)localObject).getLast();
-    AppMethodBeat.o(221131);
+    AppMethodBeat.o(256484);
     return localObject;
   }
   
-  public static final dvn cQF()
+  public static final efp dfz()
   {
     AppMethodBeat.i(185609);
-    dvn localdvn = a.cQG();
+    efp localefp = a.dfA();
     AppMethodBeat.o(185609);
-    return localdvn;
+    return localefp;
   }
   
   public static final void reset()
   {
     AppMethodBeat.i(185610);
-    b.o("mmkv_sionId_table_hell", new byte[0]);
+    b.r("mmkv_sionId_table_hell", new byte[0]);
     AppMethodBeat.o(185610);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPath$Companion;", "", "()V", "KEY_MMKV", "", "MAX_ITMES", "", "TAG", "_read", "Lcom/tencent/mm/protocal/protobuf/SessionTable;", "_write", "", "table", "add", "sessionId", "get", "getCurSessionId", "reset", "plugin-expt_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionPath$Companion;", "", "()V", "KEY_MMKV", "", "MAX_ITMES", "", "TAG", "_read", "Lcom/tencent/mm/protocal/protobuf/SessionTable;", "_write", "", "table", "add", "sessionId", "get", "getCurSessionId", "reset", "plugin-expt_release"})
   public static final class a
   {
-    static dvn cQG()
+    static efp dfA()
     {
       AppMethodBeat.i(185606);
-      byte[] arrayOfByte = b.getBytes("mmkv_sionId_table_hell");
+      byte[] arrayOfByte = b.awZ("mmkv_sionId_table_hell");
       if (arrayOfByte != null) {
         if (arrayOfByte.length != 0) {
           break label33;
@@ -113,12 +113,12 @@ public final class m
         AppMethodBeat.o(185606);
         return null;
       }
-      dvn localdvn = new dvn();
+      efp localefp = new efp();
       try
       {
-        localdvn.parseFrom(arrayOfByte);
+        localefp.parseFrom(arrayOfByte);
         AppMethodBeat.o(185606);
-        return localdvn;
+        return localefp;
       }
       catch (IOException localIOException)
       {
@@ -131,7 +131,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.c.m
  * JD-Core Version:    0.7.0.1
  */

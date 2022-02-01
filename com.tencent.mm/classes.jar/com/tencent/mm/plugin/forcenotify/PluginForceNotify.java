@@ -3,9 +3,11 @@ package com.tencent.mm.plugin.forcenotify;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
-import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.plugin.forcenotify.c.d;
-import com.tencent.mm.plugin.messenger.foundation.a.s;
+import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.forcenotify.d.d;
+import com.tencent.mm.plugin.messenger.foundation.a.v;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 import com.tencent.mm.storagebase.h.b;
@@ -26,7 +28,7 @@ public class PluginForceNotify
     {
       public final String[] getSQLs()
       {
-        return this.wLB;
+        return this.BDx;
       }
     });
     AppMethodBeat.o(149133);
@@ -37,16 +39,16 @@ public class PluginForceNotify
     return baseDBFactories;
   }
   
-  public void configure(com.tencent.mm.kernel.b.g paramg) {}
+  public void configure(g paramg) {}
   
   public void dependency()
   {
     AppMethodBeat.i(149130);
-    dependsOn(s.class);
+    dependsOn(v.class);
     AppMethodBeat.o(149130);
   }
   
-  public void execute(com.tencent.mm.kernel.b.g paramg) {}
+  public void execute(g paramg) {}
   
   public void installed()
   {
@@ -55,28 +57,28 @@ public class PluginForceNotify
     AppMethodBeat.o(149129);
   }
   
-  public void onAccountInitialized(e.c paramc)
+  public void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(149131);
     long l = SystemClock.uptimeMillis();
-    Log.i("MicroMsg.PluginForceNotify", "[transformOldData] count:%s cost:%s", new Object[] { Integer.valueOf(com.tencent.mm.plugin.forcenotify.d.a.wLU.dMr()), Long.valueOf(SystemClock.uptimeMillis() - l) });
-    com.tencent.mm.plugin.forcenotify.b.c.wLS.start();
-    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.forcenotify.a.b.class, com.tencent.mm.plugin.forcenotify.b.c.wLS);
-    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.forcenotify.a.a.class, com.tencent.mm.plugin.forcenotify.b.b.wLO);
+    Log.i("MicroMsg.PluginForceNotify", "[transformOldData] count:%s cost:%s", new Object[] { Integer.valueOf(com.tencent.mm.plugin.forcenotify.e.b.BEa.eqn()), Long.valueOf(SystemClock.uptimeMillis() - l) });
+    com.tencent.mm.plugin.forcenotify.c.c.BDQ.start();
+    h.b(com.tencent.mm.plugin.forcenotify.a.b.class, com.tencent.mm.plugin.forcenotify.c.c.BDQ);
+    h.b(com.tencent.mm.plugin.forcenotify.a.a.class, com.tencent.mm.plugin.forcenotify.c.b.BDL);
     AppMethodBeat.o(149131);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(149132);
-    com.tencent.mm.plugin.forcenotify.b.c.wLS.release();
-    com.tencent.mm.kernel.g.ag(com.tencent.mm.plugin.forcenotify.a.b.class);
+    com.tencent.mm.plugin.forcenotify.c.c.BDQ.release();
+    h.af(com.tencent.mm.plugin.forcenotify.a.b.class);
     AppMethodBeat.o(149132);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.forcenotify.PluginForceNotify
  * JD-Core Version:    0.7.0.1
  */

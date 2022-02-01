@@ -14,36 +14,36 @@ public final class c
   @JavascriptInterface
   public final void error(String paramString)
   {
-    AppMethodBeat.i(187011);
+    AppMethodBeat.i(231998);
     if (paramString == null)
     {
-      AppMethodBeat.o(187011);
+      AppMethodBeat.o(231998);
       return;
     }
     Log.e("MicroMsg.GameV8JsInterface", "js console error : %s", new Object[] { paramString });
-    AppMethodBeat.o(187011);
+    AppMethodBeat.o(231998);
   }
   
   @JavascriptInterface
   public final void log(String paramString)
   {
-    AppMethodBeat.i(187010);
+    AppMethodBeat.i(231997);
     if (paramString == null)
     {
-      AppMethodBeat.o(187010);
+      AppMethodBeat.o(231997);
       return;
     }
     Log.i("MicroMsg.GameV8JsInterface", "js console log : %s", new Object[] { paramString });
-    AppMethodBeat.o(187010);
+    AppMethodBeat.o(231997);
   }
   
   @JavascriptInterface
   public final void postMessage(String paramString)
   {
-    AppMethodBeat.i(187009);
+    AppMethodBeat.i(231996);
     if (paramString == null)
     {
-      AppMethodBeat.o(187009);
+      AppMethodBeat.o(231996);
       return;
     }
     try
@@ -51,22 +51,22 @@ public final class c
       Object localObject = new JSONObject(paramString);
       paramString = ((JSONObject)localObject).optString("pageId");
       JSONObject localJSONObject = ((JSONObject)localObject).optJSONObject("params");
-      localObject = j.aYs(paramString);
+      localObject = j.bkn(paramString);
       if (localObject == null)
       {
         Log.e("MicroMsg.GameV8JsInterface", "page is null, pageId : %s", new Object[] { paramString });
-        AppMethodBeat.o(187009);
+        AppMethodBeat.o(231996);
         return;
       }
       paramString = String.format("javascript:WxGameJsCoreBridge.invokeEvent(%s)", new Object[] { localJSONObject.toString() });
       Log.i("MicroMsg.GameV8JsInterface", "postMessage, js = %s", new Object[] { paramString });
-      ((s)localObject).ctS.cT(paramString);
-      AppMethodBeat.o(187009);
+      ((s)localObject).crX.dt(paramString);
+      AppMethodBeat.o(231996);
       return;
     }
     catch (JSONException paramString)
     {
-      AppMethodBeat.o(187009);
+      AppMethodBeat.o(231996);
     }
   }
 }

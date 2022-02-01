@@ -21,12 +21,35 @@ import java.util.List;
 public abstract class VoiceInputLayout
   extends LinearLayout
 {
-  private b KdH = null;
-  private g KdI;
-  protected VoiceInputLayout.a KdJ;
+  private MMHandler BTA = new MMHandler()
+  {
+    public final void handleMessage(Message paramAnonymousMessage)
+    {
+      AppMethodBeat.i(31286);
+      switch (paramAnonymousMessage.what)
+      {
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(31286);
+        return;
+        VoiceInputLayout.this.esO();
+        AppMethodBeat.o(31286);
+        return;
+        paramAnonymousMessage = paramAnonymousMessage.getData();
+        VoiceInputLayout.this.al(paramAnonymousMessage.getInt("localCode"), paramAnonymousMessage.getInt("errType"), paramAnonymousMessage.getInt("errCode"));
+      }
+    }
+  };
+  protected boolean BTx = false;
+  private int BTy = 3000;
+  private int BTz = 10000;
+  private b Reo = null;
+  private g Rep;
+  protected a Req;
   public int currentState = 1;
-  private int jvS = g.jwq;
-  private final MTimerHandler jxC = new MTimerHandler(new MTimerHandler.CallBack()
+  private int mlv = g.mlT;
+  private final MTimerHandler mnf = new MTimerHandler(new MTimerHandler.CallBack()
   {
     public final boolean onTimerExpired()
     {
@@ -38,13 +61,13 @@ public abstract class VoiceInputLayout
       }
       int i = VoiceInputLayout.b(VoiceInputLayout.this).getMaxAmplitudeRate();
       if (VoiceInputLayout.this.currentState == 2) {
-        VoiceInputLayout.this.Ny(i);
+        VoiceInputLayout.this.SM(i);
       }
       AppMethodBeat.o(31287);
       return true;
     }
   }, true);
-  private MMHandler ndA = new MMHandler()
+  private MMHandler qdR = new MMHandler()
   {
     public final void handleMessage(Message paramAnonymousMessage)
     {
@@ -76,29 +99,6 @@ public abstract class VoiceInputLayout
       AppMethodBeat.o(31281);
     }
   };
-  protected boolean xhk = false;
-  private int xhl = 3000;
-  private int xhm = 10000;
-  private MMHandler xhn = new MMHandler()
-  {
-    public final void handleMessage(Message paramAnonymousMessage)
-    {
-      AppMethodBeat.i(31286);
-      switch (paramAnonymousMessage.what)
-      {
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(31286);
-        return;
-        VoiceInputLayout.this.dQo();
-        AppMethodBeat.o(31286);
-        return;
-        paramAnonymousMessage = paramAnonymousMessage.getData();
-        VoiceInputLayout.this.ai(paramAnonymousMessage.getInt("localCode"), paramAnonymousMessage.getInt("errType"), paramAnonymousMessage.getInt("errCode"));
-      }
-    }
-  };
   
   public VoiceInputLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -111,39 +111,37 @@ public abstract class VoiceInputLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected abstract void Ny(int paramInt);
+  protected abstract void SM(int paramInt);
   
-  public final void ai(int paramInt1, int paramInt2, int paramInt3)
+  public final void al(int paramInt1, int paramInt2, int paramInt3)
   {
     Log.d("MicroMsg.VoiceInputLayout", "doNetworkError localerrorType:%s,errorType:%s,errCode:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     this.currentState = 1;
     onReset();
-    if (this.KdH != null) {
-      this.KdH.aQ(paramInt1, paramInt2, paramInt3);
+    if (this.Reo != null) {
+      this.Reo.aU(paramInt1, paramInt2, paramInt3);
     }
   }
   
-  public final void biE()
+  public final void bsc()
   {
     Log.d("MicroMsg.VoiceInputLayout", "doCancel. state = %s", new Object[] { Integer.valueOf(this.currentState) });
     if (this.currentState == 1) {
       return;
     }
     this.currentState = 1;
-    if (this.KdH != null) {
-      this.KdH.dPR();
+    if (this.Reo != null) {
+      this.Reo.esq();
     }
-    if (this.KdI != null) {
-      this.KdI.cancel(true);
+    if (this.Rep != null) {
+      this.Rep.cancel(true);
     }
     onReset();
   }
   
-  protected abstract void dPZ();
-  
-  public final void dQm()
+  public final void esM()
   {
-    if ((a.cC(getContext())) || (a.cA(getContext())) || (a.cE(getContext())))
+    if ((a.cy(getContext())) || (a.cw(getContext())) || (a.cB(getContext())))
     {
       Log.d("MicroMsg.VoiceInputLayout", "voip is running, cann't record voice");
       onReset();
@@ -153,7 +151,7 @@ public abstract class VoiceInputLayout
       do
       {
         return;
-        boolean bool = b.n(getContext(), "android.permission.RECORD_AUDIO");
+        boolean bool = b.o(getContext(), "android.permission.RECORD_AUDIO");
         Log.d("MicroMsg.VoiceInputLayout", "summerper checkPermission checkMicrophone[%s]", new Object[] { Boolean.valueOf(bool) });
         if (!bool) {
           break;
@@ -161,12 +159,12 @@ public abstract class VoiceInputLayout
         Log.d("MicroMsg.VoiceInputLayout", "doStart currentState = %s", new Object[] { Integer.valueOf(this.currentState) });
       } while (this.currentState != 1);
       this.currentState = 2;
-      if (this.KdH != null) {
-        this.KdH.dPN();
+      if (this.Reo != null) {
+        this.Reo.esm();
       }
-      this.jxC.startTimer(50L);
-      dPZ();
-      this.KdI = new g(this.jvS, 0, new g.b()
+      this.mnf.startTimer(50L);
+      esy();
+      this.Rep = new g(this.mlv, 0, new g.b()
       {
         public final void b(String[] paramAnonymousArrayOfString, List<String> paramAnonymousList)
         {
@@ -186,7 +184,7 @@ public abstract class VoiceInputLayout
           AppMethodBeat.o(31284);
         }
         
-        public final void biv()
+        public final void brT()
         {
           AppMethodBeat.i(31282);
           Log.d("MicroMsg.VoiceInputLayout", "onRecordFin() onRecordFin currentState = %s", new Object[] { Integer.valueOf(VoiceInputLayout.this.currentState) });
@@ -197,14 +195,14 @@ public abstract class VoiceInputLayout
           AppMethodBeat.o(31282);
         }
         
-        public final void biz()
+        public final void brX()
         {
           AppMethodBeat.i(31283);
           Log.d("MicroMsg.VoiceInputLayout", "onRecognize Finish");
           VoiceInputLayout.a(VoiceInputLayout.this).removeMessages(0);
           VoiceInputLayout.a(VoiceInputLayout.this).removeMessages(1);
           if (VoiceInputLayout.e(VoiceInputLayout.this) != null) {
-            VoiceInputLayout.e(VoiceInputLayout.this).dPT();
+            VoiceInputLayout.e(VoiceInputLayout.this).ess();
           }
           VoiceInputLayout.this.reset(false);
           AppMethodBeat.o(31283);
@@ -226,13 +224,13 @@ public abstract class VoiceInputLayout
           AppMethodBeat.o(31285);
         }
       });
-      this.KdI.start();
+      this.Rep.start();
       return;
     } while (!(getContext() instanceof Activity));
     b.b((Activity)getContext(), "android.permission.RECORD_AUDIO", 80);
   }
   
-  public final void dQn()
+  public final void esN()
   {
     Log.d("MicroMsg.VoiceInputLayout", "do Stop. currentState = %s", new Object[] { Integer.valueOf(this.currentState) });
     if ((this.currentState == 1) || (this.currentState != 2)) {}
@@ -240,57 +238,59 @@ public abstract class VoiceInputLayout
     {
       return;
       this.currentState = 3;
-      if (this.KdH != null) {
-        this.KdH.dPQ();
+      if (this.Reo != null) {
+        this.Reo.esp();
       }
-      if (this.jxC != null) {
-        this.jxC.stopTimer();
+      if (this.mnf != null) {
+        this.mnf.stopTimer();
       }
-      this.ndA.removeMessages(0);
-      this.ndA.sendEmptyMessageDelayed(0, this.xhl);
-      this.ndA.sendEmptyMessageDelayed(1, this.xhm);
-      hs(true);
-    } while (this.KdI == null);
-    this.KdI.stop(true);
+      this.qdR.removeMessages(0);
+      this.qdR.sendEmptyMessageDelayed(0, this.BTy);
+      this.qdR.sendEmptyMessageDelayed(1, this.BTz);
+      ij(true);
+    } while (this.Rep == null);
+    this.Rep.stop(true);
   }
   
-  public final void dQo()
+  public final void esO()
   {
     Log.d("MicroMsg.VoiceInputLayout", "doWaiting currentState = %s", new Object[] { Integer.valueOf(this.currentState) });
     if (this.currentState != 2) {
       return;
     }
     this.currentState = 3;
-    this.ndA.removeMessages(0);
-    this.ndA.sendEmptyMessageDelayed(0, this.xhl);
-    this.ndA.sendEmptyMessageDelayed(1, this.xhm);
-    hs(false);
+    this.qdR.removeMessages(0);
+    this.qdR.sendEmptyMessageDelayed(0, this.BTy);
+    this.qdR.sendEmptyMessageDelayed(1, this.BTz);
+    ij(false);
   }
   
-  public final void dQp()
+  public final void esP()
   {
-    ai(12, -1, -1);
+    al(12, -1, -1);
   }
+  
+  protected abstract void esy();
   
   public int getCurrentState()
   {
     return this.currentState;
   }
   
-  public final void gpe()
+  public final void hjX()
   {
-    if (this.ndA != null) {
-      this.ndA.removeCallbacksAndMessages(null);
+    if (this.qdR != null) {
+      this.qdR.removeCallbacksAndMessages(null);
     }
-    if (this.xhn != null) {
-      this.xhn.removeCallbacksAndMessages(null);
+    if (this.BTA != null) {
+      this.BTA.removeCallbacksAndMessages(null);
     }
-    if (this.jxC != null) {
-      this.jxC.stopTimer();
+    if (this.mnf != null) {
+      this.mnf.stopTimer();
     }
   }
   
-  protected abstract void hs(boolean paramBoolean);
+  protected abstract void ij(boolean paramBoolean);
   
   protected abstract void onReset();
   
@@ -303,45 +303,50 @@ public abstract class VoiceInputLayout
       return;
       this.currentState = 1;
       onReset();
-    } while ((!paramBoolean) || (this.KdH == null));
-    this.KdH.dPS();
+    } while ((!paramBoolean) || (this.Reo == null));
+    this.Reo.esr();
   }
   
   public void setFromFullScreen(boolean paramBoolean)
   {
-    this.xhk = paramBoolean;
+    this.BTx = paramBoolean;
   }
   
   public void setLangType(int paramInt)
   {
-    this.jvS = paramInt;
+    this.mlv = paramInt;
   }
   
-  public void setLongClickLisnter(VoiceInputLayout.a parama)
+  public void setLongClickLisnter(a parama)
   {
-    this.KdJ = parama;
+    this.Req = parama;
   }
   
   public void setVoiceDetectListener(b paramb)
   {
-    this.KdH = paramb;
+    this.Reo = paramb;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void esv();
   }
   
   public static abstract interface b
   {
-    public abstract void aQ(int paramInt1, int paramInt2, int paramInt3);
+    public abstract void aU(int paramInt1, int paramInt2, int paramInt3);
     
     public abstract void c(String[] paramArrayOfString, List<String> paramList);
     
-    public abstract void dPN();
+    public abstract void esm();
     
-    public abstract void dPQ();
+    public abstract void esp();
     
-    public abstract void dPR();
+    public abstract void esq();
     
-    public abstract void dPS();
+    public abstract void esr();
     
-    public abstract void dPT();
+    public abstract void ess();
   }
 }
 

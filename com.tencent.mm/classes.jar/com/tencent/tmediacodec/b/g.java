@@ -18,27 +18,27 @@ public final class g
   public final a.b a(e parame)
   {
     int k = 0;
-    AppMethodBeat.i(190130);
-    if ((a.a(this, parame)) && (parame.width <= this.SlC.width) && (parame.height <= this.SlC.height) && (d.b(this, parame) <= this.SlC.bIC))
+    AppMethodBeat.i(224422);
+    if ((a.a(this, parame)) && (parame.width <= this.ZOn.width) && (parame.height <= this.ZOn.height) && (d.b(this, parame) <= this.ZOn.bsm))
     {
-      e locale = this.SlB;
+      e locale = this.ZOm;
       int i;
-      if (parame.Slz.size() != locale.Slz.size()) {
+      if (parame.ZOk.size() != locale.ZOk.size()) {
         i = k;
       }
       while (i != 0)
       {
-        parame = a.b.SmE;
-        AppMethodBeat.o(190130);
+        parame = a.b.ZPp;
+        AppMethodBeat.o(224422);
         return parame;
         int j = 0;
         for (;;)
         {
-          if (j >= parame.Slz.size()) {
+          if (j >= parame.ZOk.size()) {
             break label150;
           }
           i = k;
-          if (!((byte[])parame.Slz.get(j)).equals(locale.Slz.get(j))) {
+          if (!((byte[])parame.ZOk.get(j)).equals(locale.ZOk.get(j))) {
             break;
           }
           j += 1;
@@ -46,38 +46,38 @@ public final class g
         label150:
         i = 1;
       }
-      parame = a.b.SmD;
-      AppMethodBeat.o(190130);
+      parame = a.b.ZPo;
+      AppMethodBeat.o(224422);
       return parame;
     }
-    parame = a.b.SmB;
-    AppMethodBeat.o(190130);
+    parame = a.b.ZPm;
+    AppMethodBeat.o(224422);
     return parame;
   }
   
-  public final boolean hpw()
+  public final boolean itc()
   {
-    AppMethodBeat.i(190131);
-    if ((super.hpw()) && (this.mSurface != null) && (this.SlB.bdv == 0))
+    AppMethodBeat.i(224424);
+    if ((super.itc()) && (this.mSurface != null) && (this.ZOm.aMV == 0))
     {
-      AppMethodBeat.o(190131);
+      AppMethodBeat.o(224424);
       return true;
     }
-    AppMethodBeat.o(190131);
+    AppMethodBeat.o(224424);
     return false;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(190132);
+    AppMethodBeat.i(224426);
     String str = "VideoCodecWrapper[" + hashCode() + ']';
-    AppMethodBeat.o(190132);
+    AppMethodBeat.o(224426);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tmediacodec.b.g
  * JD-Core Version:    0.7.0.1
  */

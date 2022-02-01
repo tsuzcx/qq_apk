@@ -17,19 +17,19 @@ abstract interface d
   
   public static final class a
   {
-    public Queue<d.b> aIT;
+    public Queue<d.b> cNG;
     
     public a()
     {
       AppMethodBeat.i(140006);
-      this.aIT = new LinkedList();
+      this.cNG = new LinkedList();
       AppMethodBeat.o(140006);
     }
     
-    public final d.b Ry()
+    public final d.b Vi()
     {
       AppMethodBeat.i(140007);
-      d.b localb = (d.b)this.aIT.poll();
+      d.b localb = (d.b)this.cNG.poll();
       if (localb == null)
       {
         localb = new d.b();
@@ -43,11 +43,11 @@ abstract interface d
     public final void a(d.b paramb)
     {
       AppMethodBeat.i(140008);
-      this.aIT.offer(paramb);
+      this.cNG.offer(paramb);
       AppMethodBeat.o(140008);
     }
     
-    public final void e(ArrayList<d.b> paramArrayList)
+    public final void f(ArrayList<d.b> paramArrayList)
     {
       AppMethodBeat.i(140009);
       if ((paramArrayList == null) || (paramArrayList.isEmpty()))
@@ -59,7 +59,7 @@ abstract interface d
       while (localIterator.hasNext())
       {
         d.b localb = (d.b)localIterator.next();
-        this.aIT.offer(localb);
+        this.cNG.offer(localb);
       }
       paramArrayList.clear();
       AppMethodBeat.o(140009);
@@ -72,7 +72,7 @@ abstract interface d
     public int y;
     public int z;
     
-    public final b im(int paramInt)
+    public final b jp(int paramInt)
     {
       this.x = 1;
       this.y = 1;
@@ -91,7 +91,7 @@ abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.magicbrush.handler.glfont.d
  * JD-Core Version:    0.7.0.1
  */

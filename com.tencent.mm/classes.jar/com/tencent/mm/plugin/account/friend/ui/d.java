@@ -1,30 +1,29 @@
 package com.tencent.mm.plugin.account.friend.ui;
 
 import android.content.Context;
-import com.tencent.mm.aj.e.a;
-import com.tencent.mm.contact.c;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.am.f.a;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.plugin.account.a.a.a;
+import com.tencent.mm.model.cg;
 import com.tencent.mm.plugin.account.friend.a.at;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.account.sdk.a.a;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.ui.v;
 
 public abstract class d
-  extends s<com.tencent.mm.plugin.account.friend.a.as>
-  implements e.a
+  extends v<com.tencent.mm.plugin.account.friend.a.as>
+  implements f.a
 {
   public d(Context paramContext, com.tencent.mm.plugin.account.friend.a.as paramas)
   {
     super(paramContext, paramas);
   }
   
-  public static void Tk(String paramString)
+  public static void aaQ(String paramString)
   {
     if (Util.isNullOrNil(paramString)) {
       Log.w("MicroMsg.QQFriendAdapterBase", "deal add friend failed. username is null.");
@@ -33,13 +32,13 @@ public abstract class d
     do
     {
       return;
-      localObject = ((at)((a)g.ah(a.class)).getQQListStg()).Tg(paramString);
+      localObject = ((at)((a)h.ag(a.class)).getQQListStg()).aaM(paramString);
       if (localObject != null)
       {
-        ((com.tencent.mm.plugin.account.friend.a.as)localObject).kfO = 2;
-        ((at)((a)g.ah(a.class)).getQQListStg()).a(((com.tencent.mm.plugin.account.friend.a.as)localObject).kfN, (com.tencent.mm.plugin.account.friend.a.as)localObject);
+        ((com.tencent.mm.plugin.account.friend.a.as)localObject).mXn = 2;
+        ((at)((a)h.ag(a.class)).getQQListStg()).a(((com.tencent.mm.plugin.account.friend.a.as)localObject).mXm, (com.tencent.mm.plugin.account.friend.a.as)localObject);
       }
-      localObject = ((l)g.af(l.class)).aSN().Kn(paramString);
+      localObject = ((n)h.ae(n.class)).bbL().RG(paramString);
       if (localObject == null)
       {
         Log.w("MicroMsg.QQFriendAdapterBase", "[cpan] dealAddFriend failed. contact is null.");
@@ -48,36 +47,31 @@ public abstract class d
       if (Util.isNullOrNil(((ax)localObject).field_username)) {
         ((com.tencent.mm.storage.as)localObject).setUsername(paramString);
       }
-      if ((int)((c)localObject).gMZ != 0) {
+      if ((int)((com.tencent.mm.contact.d)localObject).jxt != 0) {
         break;
       }
-      ((l)g.af(l.class)).aSN().aq((com.tencent.mm.storage.as)localObject);
+      ((n)h.ae(n.class)).bbL().aw((com.tencent.mm.storage.as)localObject);
     } while (Util.isNullOrNil(((ax)localObject).field_username));
-    for (paramString = ((l)g.af(l.class)).aSN().Kn(((ax)localObject).field_username);; paramString = (String)localObject)
+    for (paramString = ((n)h.ae(n.class)).bbL().RG(((ax)localObject).field_username);; paramString = (String)localObject)
     {
-      if ((int)paramString.gMZ <= 0)
+      if ((int)paramString.jxt <= 0)
       {
         Log.e("MicroMsg.QQFriendAdapterBase", "addContact : insert contact failed");
         return;
       }
-      ab.B(paramString);
-      cf.aWl().f(26, new Object[0]);
+      ab.H(paramString);
+      cg.bfp().e(26, new Object[0]);
       return;
     }
   }
   
-  public void SM(String paramString) {}
+  public void a(d.a parama) {}
   
-  public void a(a parama) {}
-  
-  public static abstract interface a
-  {
-    public abstract void ve(int paramInt);
-  }
+  public void aas(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.ui.d
  * JD-Core Version:    0.7.0.1
  */

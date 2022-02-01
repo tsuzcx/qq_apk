@@ -12,63 +12,63 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public final class c
+public class c
   extends BaseAdapter
 {
-  List<d> OZV;
-  private Map<String, Integer> Paa;
-  private a Pab;
+  List<d> Wti;
+  private Map<String, Integer> Wtn;
+  private a Wto;
   
   public c(a parama)
   {
     AppMethodBeat.i(142694);
-    this.OZV = null;
+    this.Wti = null;
     if (parama == null)
     {
       parama = new RuntimeException("ViewCreator can not be null.");
       AppMethodBeat.o(142694);
       throw parama;
     }
-    this.Pab = parama;
-    this.OZV = new ArrayList();
-    this.Paa = new HashMap();
+    this.Wto = parama;
+    this.Wti = new ArrayList();
+    this.Wtn = new HashMap();
     AppMethodBeat.o(142694);
   }
   
   private static String a(d paramd)
   {
-    if ((paramd != null) && (paramd.Pae != null)) {
-      return paramd.Pae;
+    if ((paramd != null) && (paramd.Wtr != null)) {
+      return paramd.Wtr;
     }
     return null;
   }
   
-  private String alP(int paramInt)
+  private String auP(int paramInt)
   {
     AppMethodBeat.i(142702);
-    if ((paramInt < 0) || (paramInt >= this.OZV.size()))
+    if ((paramInt < 0) || (paramInt >= this.Wti.size()))
     {
       AppMethodBeat.o(142702);
       return null;
     }
-    String str = ((d)this.OZV.get(paramInt)).Pae;
+    String str = ((d)this.Wti.get(paramInt)).Wtr;
     AppMethodBeat.o(142702);
     return str;
   }
   
-  private void gLW()
+  private void hLe()
   {
     AppMethodBeat.i(142698);
-    this.Paa.clear();
+    this.Wtn.clear();
     Object localObject = null;
     int i = 0;
-    if (i < this.OZV.size())
+    if (i < this.Wti.size())
     {
-      String str = a((d)this.OZV.get(i));
+      String str = a((d)this.Wti.get(i));
       if ((str == null) || (str.equalsIgnoreCase((String)localObject))) {
         break label90;
       }
-      this.Paa.put(str, Integer.valueOf(i));
+      this.Wtn.put(str, Integer.valueOf(i));
       localObject = str;
     }
     label90:
@@ -81,59 +81,66 @@ public final class c
     }
   }
   
-  private void jf(List<d> paramList)
+  private void jX(List<d> paramList)
   {
     AppMethodBeat.i(142697);
-    if (this.OZV != paramList)
+    if (this.Wti != paramList)
     {
-      this.OZV.clear();
+      this.Wti.clear();
       if (paramList != null) {
-        this.OZV.addAll(paramList);
+        this.Wti.addAll(paramList);
       }
     }
-    gLW();
+    hLe();
     notifyDataSetChanged();
     AppMethodBeat.o(142697);
   }
   
-  public final int bmn(String paramString)
+  public final void bfU()
+  {
+    AppMethodBeat.i(142695);
+    ig(this.Wti);
+    AppMethodBeat.o(142695);
+  }
+  
+  public final int byM(String paramString)
   {
     AppMethodBeat.i(142703);
-    int i = Util.nullAs((Integer)this.Paa.get(paramString), -1);
+    int i = Util.nullAs((Integer)this.Wtn.get(paramString), -1);
     AppMethodBeat.o(142703);
     return i;
   }
   
-  public final int getCount()
+  public int getCount()
   {
     AppMethodBeat.i(142699);
-    int i = this.OZV.size();
+    int i = this.Wti.size();
     AppMethodBeat.o(142699);
     return i;
   }
   
-  public final Object getItem(int paramInt)
+  public Object getItem(int paramInt)
   {
     AppMethodBeat.i(142700);
-    Object localObject = this.OZV.get(paramInt);
+    Object localObject = this.Wti.get(paramInt);
     AppMethodBeat.o(142700);
     return localObject;
   }
   
-  public final long getItemId(int paramInt)
+  public long getItemId(int paramInt)
   {
     return paramInt;
   }
   
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     boolean bool2 = true;
     AppMethodBeat.i(142701);
     paramViewGroup = (d)getItem(paramInt);
-    Object localObject = alP(paramInt);
-    String str = alP(paramInt + 1);
+    Object localObject = auP(paramInt);
+    String str = auP(paramInt + 1);
     boolean bool1;
-    if (paramInt == bmn((String)localObject))
+    if (paramInt == byM((String)localObject))
     {
       bool1 = true;
       if ((localObject == null) || (((String)localObject).equalsIgnoreCase(str))) {
@@ -142,7 +149,7 @@ public final class c
     }
     for (;;)
     {
-      localObject = this.Pab;
+      localObject = this.Wto;
       getCount();
       paramView = ((a)localObject).a(paramViewGroup, paramView, paramInt, bool1, bool2);
       AppMethodBeat.o(142701);
@@ -154,7 +161,7 @@ public final class c
     }
   }
   
-  public final void hy(final List<d> paramList)
+  public final void ig(final List<d> paramList)
   {
     AppMethodBeat.i(142696);
     if (Thread.currentThread().getId() != Looper.getMainLooper().getThread().getId())
@@ -171,15 +178,8 @@ public final class c
       AppMethodBeat.o(142696);
       return;
     }
-    jf(paramList);
+    jX(paramList);
     AppMethodBeat.o(142696);
-  }
-  
-  public final void refresh()
-  {
-    AppMethodBeat.i(142695);
-    hy(this.OZV);
-    AppMethodBeat.o(142695);
   }
   
   public static abstract interface a
@@ -189,7 +189,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.base.sortview.c
  * JD-Core Version:    0.7.0.1
  */

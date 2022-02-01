@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.plugin.wxpay.a.c;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tenpay.android.wechat.MyKeyboardWindow;
 import com.tenpay.android.wechat.TenpayUtil;
@@ -128,7 +129,7 @@ public final class TenpaySegmentEditText
   private void init()
   {
     AppMethodBeat.i(73274);
-    setBackgroundColor(getResources().getColor(2131101424));
+    setBackgroundColor(getResources().getColor(a.c.white));
     setOrientation(0);
     setIsBankcardFormat(true);
     this.mPaintSplit = new Paint();
@@ -239,8 +240,8 @@ public final class TenpaySegmentEditText
     if (mTimeStamp != null) {
       ((Encrypt)localObject2).setTimeStamp(mTimeStamp);
     }
-    com.tencent.mm.wallet_core.b.hgC();
-    if (com.tencent.mm.wallet_core.b.hgD())
+    com.tencent.mm.wallet_core.b.iie();
+    if (com.tencent.mm.wallet_core.b.iif())
     {
       localObject1 = ((Encrypt)localObject2).encryptPasswdWithRSA2048((String)localObject1);
       AppMethodBeat.o(73281);
@@ -368,8 +369,8 @@ public final class TenpaySegmentEditText
         {
           AppMethodBeat.i(73267);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          a.b("com/tenpay/bankcard/TenpaySegmentEditText$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          a.c("com/tenpay/bankcard/TenpaySegmentEditText$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           if (TenpaySegmentEditText.this.mOnClickListener != null) {
             TenpaySegmentEditText.this.mOnClickListener.onClick(paramAnonymousView);
           }
@@ -416,7 +417,7 @@ public final class TenpaySegmentEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tenpay.bankcard.TenpaySegmentEditText
  * JD-Core Version:    0.7.0.1
  */

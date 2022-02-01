@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.mv.ui.adapter;
 
-import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/mv/ui/adapter/MusicMvAlbumVideoAdapter$CameraHeaderViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "plugin-mv_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/adapter/MusicMvAlbumAdapter$CameraHeaderViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "plugin-mv_release"})
 public final class b$b
   extends RecyclerView.v
 {
   public b$b(View paramView)
   {
     super(paramView);
-    AppMethodBeat.i(256972);
-    AppMethodBeat.o(256972);
+    AppMethodBeat.i(227526);
+    AppMethodBeat.o(227526);
   }
 }
 

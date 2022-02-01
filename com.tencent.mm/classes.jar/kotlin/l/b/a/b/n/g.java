@@ -11,20 +11,20 @@ public abstract interface g
   public static final class a
     implements g
   {
-    public static final a TQr;
+    public static final a absQ;
     
     static
     {
       AppMethodBeat.i(61302);
-      TQr = new a();
+      absQ = new a();
       AppMethodBeat.o(61302);
     }
     
     public final boolean g(l paraml1, l paraml2)
     {
       AppMethodBeat.i(61301);
-      p.h(paraml1, "what");
-      p.h(paraml2, "from");
+      p.k(paraml1, "what");
+      p.k(paraml2, "from");
       AppMethodBeat.o(61301);
       return true;
     }
@@ -32,7 +32,7 @@ public abstract interface g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.n.g
  * JD-Core Version:    0.7.0.1
  */

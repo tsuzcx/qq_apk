@@ -4,8 +4,11 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.b;
-import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.i;
+import com.tencent.mm.ipcinvoker.j;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.modelappbrand.g;
 import com.tencent.mm.modelappbrand.n;
 import com.tencent.mm.protocal.MMProtocalJni;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -17,7 +20,7 @@ public final class a
   public final boolean a(Context paramContext, final String[] paramArrayOfString, String paramString)
   {
     AppMethodBeat.i(121281);
-    if (!((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.af(com.tencent.mm.modelappbrand.g.class)).aXI().aXP())
+    if (!((g)h.ae(g.class)).bgR().bgY())
     {
       AppMethodBeat.o(121281);
       return true;
@@ -63,7 +66,7 @@ public final class a
       }
       i = 2;
       break label111;
-      com.tencent.mm.ch.a.post(new Runnable()
+      com.tencent.mm.co.a.post(new Runnable()
       {
         public final void run()
         {
@@ -77,12 +80,12 @@ public final class a
               str1 = str2 + ":" + paramArrayOfString[2];
             }
           }
-          h.a(str1, null, a.a.class, null);
+          j.a(str1, null, a.a.class, null);
           AppMethodBeat.o(121275);
         }
       });
       continue;
-      com.tencent.mm.ch.a.post(new Runnable()
+      com.tencent.mm.co.a.post(new Runnable()
       {
         public final void run()
         {
@@ -96,7 +99,7 @@ public final class a
               str1 = str2 + ":" + paramArrayOfString[2];
             }
           }
-          h.a(str1, null, a.b.class, null);
+          j.a(str1, null, a.b.class, null);
           AppMethodBeat.o(121276);
         }
       });
@@ -120,7 +123,7 @@ public final class a
         default: 
           break;
         case 0: 
-          ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.af(com.tencent.mm.modelappbrand.g.class)).aXI().fu(true);
+          ((g)h.ae(g.class)).bgR().ge(true);
           break;
           if (!paramArrayOfString.equals("-or")) {
             break label288;
@@ -138,18 +141,18 @@ public final class a
           i = 2;
         }
       }
-      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.af(com.tencent.mm.modelappbrand.g.class)).aXI().fu(false);
+      ((g)h.ae(g.class)).bgR().ge(false);
       continue;
-      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.af(com.tencent.mm.modelappbrand.g.class)).aXI().cV(paramContext);
+      ((g)h.ae(g.class)).bgR().cS(paramContext);
     }
   }
   
   static class a
-    implements b<Bundle, Bundle>
+    implements d<Bundle, Bundle>
   {}
   
   static class b
-    implements b<Bundle, Bundle>
+    implements d<Bundle, Bundle>
   {}
 }
 

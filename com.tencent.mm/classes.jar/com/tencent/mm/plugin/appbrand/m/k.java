@@ -5,11 +5,11 @@ import java.nio.ByteBuffer;
 public abstract interface k
   extends j
 {
-  public abstract ByteBuffer N(int paramInt, boolean paramBoolean);
+  public abstract ByteBuffer P(int paramInt, boolean paramBoolean);
   
   public abstract void a(y paramy);
   
-  public abstract y bMF();
+  public abstract y bYW();
   
   public abstract void bufferStoreBindTo(long paramLong1, long paramLong2);
   
@@ -23,7 +23,7 @@ public abstract interface k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.m.k
  * JD-Core Version:    0.7.0.1
  */

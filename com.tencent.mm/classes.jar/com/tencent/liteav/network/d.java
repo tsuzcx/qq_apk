@@ -1,7 +1,7 @@
 package com.tencent.liteav.network;
 
 import android.os.Bundle;
-import com.tencent.liteav.basic.b.b;
+import com.tencent.liteav.basic.c.b;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
 import com.tencent.liteav.basic.structs.a;
@@ -28,18 +28,6 @@ public class d
     this.f = parama;
   }
   
-  long a(long paramLong)
-  {
-    AppMethodBeat.i(15404);
-    if (this.b != null) {
-      this.b.b(this.c);
-    }
-    TXCLog.w("TXCMultiStreamDownloader", " stream_switch delay stop begin from " + this.c);
-    paramLong = this.c;
-    AppMethodBeat.o(15404);
-    return paramLong;
-  }
-  
   public void a()
   {
     AppMethodBeat.i(15400);
@@ -52,9 +40,15 @@ public class d
     AppMethodBeat.o(15400);
   }
   
+  void a(long paramLong)
+  {
+    this.g = paramLong;
+  }
+  
   public void a(TXIStreamDownloader paramTXIStreamDownloader1, TXIStreamDownloader paramTXIStreamDownloader2, long paramLong1, long paramLong2, String paramString)
   {
     AppMethodBeat.i(15401);
+    TXCLog.i("TXCMultiStreamDownloader", "[SwitchStream] old downloader:" + paramTXIStreamDownloader1.hashCode() + " new downloader:" + paramTXIStreamDownloader2.hashCode());
     this.c = paramTXIStreamDownloader1.getCurrentTS();
     this.d = paramTXIStreamDownloader1.getLastIFrameTS();
     this.b = new b(paramTXIStreamDownloader1, this);
@@ -73,6 +67,7 @@ public class d
   void a(TXIStreamDownloader paramTXIStreamDownloader, boolean paramBoolean)
   {
     AppMethodBeat.i(15403);
+    TXCLog.i("TXCMultiStreamDownloader", "[SwitchStream] switch stream finish. result:".concat(String.valueOf(paramBoolean)));
     if (this.f != null) {
       this.f.onSwitchFinish(paramTXIStreamDownloader, paramBoolean);
     }
@@ -91,7 +86,7 @@ public class d
     this.e.a(this);
     this.b = this.e;
     this.e = null;
-    StringBuilder localStringBuilder = new StringBuilder(" stream_switch end at ").append(this.c).append(" stop ts ").append(this.h).append(" start ts ").append(this.g).append(" diff ts ");
+    StringBuilder localStringBuilder = new StringBuilder("[SwitchStream] end at ").append(this.c).append(" stop ts ").append(this.h).append(" start ts ").append(this.g).append(" diff ts ");
     if (this.h > this.g) {}
     for (long l = this.h - this.g;; l = this.g - this.h)
     {
@@ -103,12 +98,19 @@ public class d
   
   void b(long paramLong)
   {
-    this.g = paramLong;
+    this.h = paramLong;
   }
   
-  void c(long paramLong)
+  long c()
   {
-    this.h = paramLong;
+    AppMethodBeat.i(243849);
+    if (this.b != null) {
+      this.b.b(this.c);
+    }
+    TXCLog.i("TXCMultiStreamDownloader", "[SwitchStream] stop original downloader, when video ts is" + this.c);
+    long l = this.c;
+    AppMethodBeat.o(243849);
+    return l;
   }
   
   public void onPullAudio(a parama)
@@ -182,29 +184,38 @@ public class d
       if ((paramTXSNALPacket.nalType == 0) && (!this.e))
       {
         this.d += 1;
+        TXCLog.i("TXCMultiStreamDownloader", "[SwitchStream] processing... current video ts:" + paramTXSNALPacket.pts + " target video ts:" + paramTXSNALPacket.pts + " check times:" + this.d + " maxTimes:2");
         if ((localObject1 != null) && ((d.a((d)localObject1) <= paramTXSNALPacket.pts) || (this.d == 2)))
         {
-          this.b = ((d)localObject1).a(paramTXSNALPacket.pts);
-          this.e = true;
-        }
-        if (localObject1 != null) {
-          TXCLog.w("TXCMultiStreamDownloader", " stream_switch pre start begin gop " + this.d + " last iframe ts " + d.a((d)localObject1) + " pts " + paramTXSNALPacket.pts + " from " + this.b + " type " + paramTXSNALPacket.nalType);
+          if (d.a((d)localObject1) > paramTXSNALPacket.pts) {
+            break label164;
+          }
+          TXCLog.i("TXCMultiStreamDownloader", "[SwitchStream] switch video success, video data is ready.");
         }
       }
-      if (!this.e)
+      for (;;)
       {
+        this.b = ((d)localObject1).c();
+        this.e = true;
+        if (this.e) {
+          break;
+        }
         AppMethodBeat.o(15497);
         return;
+        label164:
+        if (this.d == 2) {
+          TXCLog.e("TXCMultiStreamDownloader", "[SwitchStream] switch video failed. all times retried. max times:2");
+        }
       }
       if (localObject1 != null) {
-        ((d)localObject1).b(paramTXSNALPacket.pts);
+        ((d)localObject1).a(paramTXSNALPacket.pts);
       }
       if (paramTXSNALPacket.pts >= this.b)
       {
         if ((paramTXSNALPacket.nalType == 0) && (this.c == 0L))
         {
           this.c = paramTXSNALPacket.pts;
-          TXCLog.w("TXCMultiStreamDownloader", " stream_switch pre start end " + paramTXSNALPacket.pts + " from " + this.b + " type " + paramTXSNALPacket.nalType);
+          TXCLog.w("TXCMultiStreamDownloader", "[SwitchStream] pre start end " + paramTXSNALPacket.pts + " from " + this.b + " type " + paramTXSNALPacket.nalType);
         }
         if (this.c > 0L)
         {
@@ -222,16 +233,16 @@ public class d
                 localObject2 = (a)((Iterator)localObject1).next();
                 if (((a)localObject2).e >= this.c)
                 {
-                  TXCLog.i("TXCMultiStreamDownloader", " stream_switch pre start cache audio pts " + ((a)localObject2).e + " from " + this.c);
+                  TXCLog.i("TXCMultiStreamDownloader", "[SwitchStream] pre start cache audio pts " + ((a)localObject2).e + " from " + this.c);
                   this.m.onPullAudio((a)localObject2);
                 }
               }
-              TXCLog.w("TXCMultiStreamDownloader", " stream_switch pre start end audio cache  " + this.j.size());
+              TXCLog.w("TXCMultiStreamDownloader", "[SwitchStream] pre start end audio cache  " + this.j.size());
               this.j.clear();
             }
             if (!this.i.isEmpty())
             {
-              TXCLog.w("TXCMultiStreamDownloader", " stream_switch pre start end video cache  " + this.i.size());
+              TXCLog.w("TXCMultiStreamDownloader", "[SwitchStream] pre start end video cache  " + this.i.size());
               localObject1 = this.i.iterator();
               while (((Iterator)localObject1).hasNext())
               {
@@ -240,14 +251,13 @@ public class d
               }
               this.i.clear();
             }
-            TXCLog.w("TXCMultiStreamDownloader", " stream_switch pre start first pull nal " + paramTXSNALPacket.pts + " from " + this.c + " type " + paramTXSNALPacket.nalType);
+            TXCLog.w("TXCMultiStreamDownloader", "[SwitchStream] pre start first pull nal " + paramTXSNALPacket.pts + " from " + this.c + " type " + paramTXSNALPacket.nalType);
             this.m.onPullNAL(paramTXSNALPacket);
             this.m = null;
-            this.k.setNotifyListener(null);
             AppMethodBeat.o(15497);
             return;
           }
-          TXCLog.i("TXCMultiStreamDownloader", " stream_switch pre start cache video pts " + paramTXSNALPacket.pts + " from " + this.c + " type " + paramTXSNALPacket.nalType);
+          TXCLog.i("TXCMultiStreamDownloader", "[SwitchStream] pre start cache video pts " + paramTXSNALPacket.pts + " from " + this.c + " type " + paramTXSNALPacket.nalType);
           this.i.add(paramTXSNALPacket);
         }
       }
@@ -282,7 +292,7 @@ public class d
       AppMethodBeat.i(15498);
       d locald = (d)this.l.get();
       if (locald != null) {
-        locald.c(paramTXSNALPacket.pts);
+        locald.b(paramTXSNALPacket.pts);
       }
       if (paramTXSNALPacket.pts >= this.f)
       {
@@ -293,7 +303,7 @@ public class d
         {
           if (this.h > 0L)
           {
-            TXCLog.w("TXCMultiStreamDownloader", " stream_switch delay stop end video pts " + this.g + " audio ts " + this.h + " from " + this.f);
+            TXCLog.i("TXCMultiStreamDownloader", "[SwitchStream] switch finish and stop old downloader. video ts:" + this.g + " audio ts:" + this.h + " stop ts:" + this.f);
             if (locald != null) {
               locald.b();
             }
@@ -303,7 +313,7 @@ public class d
             AppMethodBeat.o(15498);
             return;
           }
-          TXCLog.w("TXCMultiStreamDownloader", " stream_switch delay stop video end wait audio end video pts " + paramTXSNALPacket.pts + " from " + this.f + " type " + paramTXSNALPacket.nalType);
+          TXCLog.w("TXCMultiStreamDownloader", "[SwitchStream] delay stop video end wait audio end video pts " + paramTXSNALPacket.pts + " from " + this.f + " type " + paramTXSNALPacket.nalType);
           AppMethodBeat.o(15498);
           return;
         }
@@ -343,6 +353,7 @@ public class d
     public void a(long paramLong)
     {
       AppMethodBeat.i(15491);
+      TXCLog.i("TXCMultiStreamDownloader", "[SwitchStream] start switch. current video pts:".concat(String.valueOf(paramLong)));
       this.d = 0;
       this.b = paramLong;
       this.k.setListener(this);
@@ -358,6 +369,7 @@ public class d
     public void b(long paramLong)
     {
       AppMethodBeat.i(15492);
+      TXCLog.i("TXCMultiStreamDownloader", "[SwitchStream] stop switch. pts:".concat(String.valueOf(paramLong)));
       this.b = 0L;
       this.f = paramLong;
       this.h = 0L;
@@ -434,7 +446,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.network.d
  * JD-Core Version:    0.7.0.1
  */

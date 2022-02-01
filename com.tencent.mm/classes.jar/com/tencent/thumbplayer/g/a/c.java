@@ -7,38 +7,36 @@ import java.util.Iterator;
 public final class c
   implements b
 {
-  private ArrayList<a> SbP;
+  private ArrayList<a> ZEA;
   
   public c()
   {
-    AppMethodBeat.i(189518);
-    this.SbP = new ArrayList();
-    AppMethodBeat.o(189518);
+    AppMethodBeat.i(221560);
+    this.ZEA = new ArrayList();
+    AppMethodBeat.o(221560);
   }
   
   public final b a(a parama)
   {
-    AppMethodBeat.i(189519);
-    if (this.SbP == null) {
-      this.SbP = new ArrayList();
+    AppMethodBeat.i(221561);
+    if (this.ZEA == null) {
+      this.ZEA = new ArrayList();
     }
-    if (!this.SbP.contains(parama))
+    if (!this.ZEA.contains(parama))
     {
-      parama.aSs();
-      this.SbP.add(parama);
+      parama.bbp();
+      this.ZEA.add(parama);
     }
-    AppMethodBeat.o(189519);
+    AppMethodBeat.o(221561);
     return this;
   }
   
-  public final void aSs() {}
-  
   public final void b(int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    AppMethodBeat.i(189520);
-    if (this.SbP != null)
+    AppMethodBeat.i(221563);
+    if (this.ZEA != null)
     {
-      Iterator localIterator = this.SbP.iterator();
+      Iterator localIterator = this.ZEA.iterator();
       while (localIterator.hasNext())
       {
         a locala = (a)localIterator.next();
@@ -47,17 +45,19 @@ public final class c
         }
       }
     }
-    AppMethodBeat.o(189520);
+    AppMethodBeat.o(221563);
   }
+  
+  public final void bbp() {}
   
   public final void onDetach() {}
   
   public final void release()
   {
-    AppMethodBeat.i(189521);
-    if (this.SbP != null)
+    AppMethodBeat.i(221565);
+    if (this.ZEA != null)
     {
-      Iterator localIterator = this.SbP.iterator();
+      Iterator localIterator = this.ZEA.iterator();
       while (localIterator.hasNext())
       {
         a locala = (a)localIterator.next();
@@ -67,13 +67,13 @@ public final class c
         localIterator.remove();
       }
     }
-    this.SbP = null;
-    AppMethodBeat.o(189521);
+    this.ZEA = null;
+    AppMethodBeat.o(221565);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.thumbplayer.g.a.c
  * JD-Core Version:    0.7.0.1
  */

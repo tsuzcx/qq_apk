@@ -4,8 +4,8 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentActivity;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentActivity;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -155,7 +155,7 @@ public class FacebookDialogFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.internal.FacebookDialogFragment
  * JD-Core Version:    0.7.0.1
  */

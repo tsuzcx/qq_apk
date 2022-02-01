@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.finder.upload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cl;
+import com.tencent.mm.model.cm;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.c;
-import com.tencent.mm.plugin.finder.storage.config.item.booleantype.a;
-import com.tencent.mm.plugin.finder.utils.al;
+import com.tencent.mm.plugin.finder.storage.d;
+import com.tencent.mm.plugin.finder.utils.av;
+import com.tencent.mm.plugin.findersdk.d.a.b.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -15,11 +15,11 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import kotlin.a.v;
-import kotlin.g.b.af;
+import kotlin.g.b.ag;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/upload/FinderPostClearTask;", "Lcom/tencent/mm/plugin/finder/upload/FinderPostTask;", "id", "", "(Ljava/lang/String;)V", "getId", "()Ljava/lang/String;", "call", "", "uniqueId", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/upload/FinderPostClearTask;", "Lcom/tencent/mm/plugin/finder/upload/FinderPostTask;", "id", "", "(Ljava/lang/String;)V", "getId", "()Ljava/lang/String;", "call", "", "uniqueId", "plugin-finder_release"})
 public final class e
   extends h
 {
@@ -33,7 +33,7 @@ public final class e
     AppMethodBeat.o(167737);
   }
   
-  public final String auK()
+  public final String aBG()
   {
     return this.id;
   }
@@ -41,26 +41,26 @@ public final class e
   public final void call()
   {
     AppMethodBeat.i(167736);
-    Object localObject1 = f.vSz;
+    Object localObject1 = f.AzZ;
     Set localSet;
     Object localObject4;
     Object localObject3;
     Object localObject5;
-    if (!f.dAX())
+    if (!f.ecg())
     {
-      localObject1 = c.vCb;
-      if (!((Boolean)c.dtp().value()).booleanValue()) {}
+      localObject1 = d.AjH;
+      if (!((Boolean)d.dUA().aSr()).booleanValue()) {}
     }
     else
     {
       Log.i(f.TAG, "FinderFileTrack checkPostingFolder");
-      f.vSx = cl.aWy();
+      f.AzX = cm.bfC();
       try
       {
-        localObject1 = al.waC;
-        localObject1 = al.dEH();
+        localObject1 = av.AJz;
+        localObject1 = av.egu();
         localSet = (Set)new LinkedHashSet();
-        localObject4 = s.dC((String)localObject1, false);
+        localObject4 = u.dP((String)localObject1, false);
         if (localObject4 == null) {
           break label489;
         }
@@ -68,10 +68,10 @@ public final class e
         localObject4 = ((Iterable)localObject4).iterator();
         while (((Iterator)localObject4).hasNext())
         {
-          localObject5 = (com.tencent.mm.vfs.e)((Iterator)localObject4).next();
-          ((Collection)localObject3).add((String)localObject1 + ((com.tencent.mm.vfs.e)localObject5).name);
+          localObject5 = (com.tencent.mm.vfs.f)((Iterator)localObject4).next();
+          ((Collection)localObject3).add((String)localObject1 + ((com.tencent.mm.vfs.f)localObject5).name);
         }
-        a(com.tencent.mm.loader.g.j.ibw);
+        a(com.tencent.mm.loader.g.j.kQd);
       }
       catch (Throwable localThrowable)
       {
@@ -87,13 +87,13 @@ public final class e
       localObject2 = (Collection)localObject2;
       label204:
       localSet.addAll((Collection)localObject2);
-      localObject2 = ((Iterable)f.vSy).iterator();
+      localObject2 = ((Iterable)f.AzY).iterator();
       label224:
       if (!((Iterator)localObject2).hasNext()) {
         break label455;
       }
       localObject3 = (f.a)((Iterator)localObject2).next();
-      localObject5 = (Iterable)((f.a)localObject3).dAY();
+      localObject5 = (Iterable)((f.a)localObject3).ech();
       localObject4 = (Collection)new ArrayList();
       localObject5 = ((Iterable)localObject5).iterator();
     }
@@ -109,7 +109,7 @@ public final class e
       {
         localObject6 = ((Iterator)localObject5).next();
         String str = (String)localObject6;
-        if ((str == null) || (!(p.j(str, "") ^ true))) {
+        if ((str == null) || (!(p.h(str, "") ^ true))) {
           break label494;
         }
       }
@@ -120,7 +120,7 @@ public final class e
         }
         ((Collection)localObject4).add(localObject6);
         break label277;
-        localObject2 = (Collection)v.SXr;
+        localObject2 = (Collection)v.aaAd;
         break label204;
         localObject4 = (List)localObject4;
         localObject5 = ((Iterable)localObject4).iterator();
@@ -129,11 +129,11 @@ public final class e
           localObject6 = (String)((Iterator)localObject5).next();
           Log.i(f.TAG, "ownership, " + ((f.a)localObject3).name() + " owns:" + (String)localObject6);
         }
-        af.eV((Collection)localSet).removeAll((Collection)localObject4);
+        ag.fc((Collection)localSet).removeAll((Collection)localObject4);
         break label224;
         localObject2 = ((Iterable)localSet).iterator();
         while (((Iterator)localObject2).hasNext()) {
-          f.avV((String)((Iterator)localObject2).next());
+          f.aFl((String)((Iterator)localObject2).next());
         }
         break;
         localObject2 = null;
@@ -144,7 +144,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.upload.e
  * JD-Core Version:    0.7.0.1
  */

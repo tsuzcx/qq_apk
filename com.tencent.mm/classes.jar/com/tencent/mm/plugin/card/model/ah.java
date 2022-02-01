@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cxh;
-import com.tencent.mm.protocal.protobuf.dng;
-import com.tencent.mm.protocal.protobuf.dnh;
+import com.tencent.mm.protocal.protobuf.dgr;
+import com.tencent.mm.protocal.protobuf.dwy;
+import com.tencent.mm.protocal.protobuf.dwz;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -23,25 +23,25 @@ public final class ah
   private i callback;
   private final d rr;
   
-  public ah(LinkedList<cxh> paramLinkedList)
+  public ah(LinkedList<dgr> paramLinkedList)
   {
     AppMethodBeat.i(112858);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new dng();
-    ((d.a)localObject).iLO = new dnh();
+    ((d.a)localObject).lBU = new dwy();
+    ((d.a)localObject).lBV = new dwz();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/reportdynamiccardcodeaction";
     ((d.a)localObject).funcId = 1275;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    ((dng)this.rr.iLK.iLR).MQA = paramLinkedList;
+    this.rr = ((d.a)localObject).bgN();
+    ((dwy)d.b.b(this.rr.lBR)).UcH = paramLinkedList;
     if (paramLinkedList != null)
     {
       paramLinkedList = paramLinkedList.iterator();
       while (paramLinkedList.hasNext())
       {
-        localObject = (cxh)paramLinkedList.next();
-        Log.d("MicroMsg.NetSceneReportDynamicCardCodeAction", "ReportDynamicCardCodeActionReq operate card_id=%s,code_id=%s,operate_timestamp=%d,operate_type=%d", new Object[] { ((cxh)localObject).eaO, ((cxh)localObject).pTM, Integer.valueOf(((cxh)localObject).MBP), Integer.valueOf(((cxh)localObject).MBQ) });
+        localObject = (dgr)paramLinkedList.next();
+        Log.d("MicroMsg.NetSceneReportDynamicCardCodeAction", "ReportDynamicCardCodeActionReq operate card_id=%s,code_id=%s,operate_timestamp=%d,operate_type=%d", new Object[] { ((dgr)localObject).fUL, ((dgr)localObject).tpN, Integer.valueOf(((dgr)localObject).TNv), Integer.valueOf(((dgr)localObject).TNw) });
       }
     }
     AppMethodBeat.o(112858);
@@ -71,7 +71,7 @@ public final class ah
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.ah
  * JD-Core Version:    0.7.0.1
  */

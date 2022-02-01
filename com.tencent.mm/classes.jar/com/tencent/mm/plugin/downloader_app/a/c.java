@@ -4,17 +4,18 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.plugin.downloader.model.g.a;
 import com.tencent.mm.plugin.downloader_app.api.a.a;
 import com.tencent.mm.plugin.downloader_app.api.a.b;
+import com.tencent.mm.plugin.downloader_app.e.b;
+import com.tencent.mm.plugin.downloader_app.e.h;
 import com.tencent.mm.pluginsdk.model.app.q;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -29,60 +30,60 @@ public class c
     AppMethodBeat.i(8858);
     if (!j.contains(parama.appId))
     {
-      localObject = j.cCg();
+      localObject = j.cQK();
       ((LinkedList)localObject).add(parama.appId);
       h.a((LinkedList)localObject, new h.a()
       {
-        public final void kW(boolean paramAnonymousBoolean) {}
+        public final void mi(boolean paramAnonymousBoolean) {}
       });
-      j.alB(parama.appId);
+      j.atu(parama.appId);
     }
     Object localObject = new g.a();
-    ((g.a)localObject).alj(parama.downloadUrl);
-    ((g.a)localObject).alk(parama.qKt);
-    ((g.a)localObject).setFileSize(parama.qKv);
-    ((g.a)localObject).all(parama.appName);
+    ((g.a)localObject).atc(parama.downloadUrl);
+    ((g.a)localObject).atd(parama.ulF);
+    ((g.a)localObject).setFileSize(parama.ulH);
+    ((g.a)localObject).ate(parama.appName);
     ((g.a)localObject).setAppId(parama.appId);
-    ((g.a)localObject).setFileMD5(parama.mYc);
-    ((g.a)localObject).kS(parama.qKw);
-    ((g.a)localObject).kT(false);
+    ((g.a)localObject).setFileMD5(parama.pYB);
+    ((g.a)localObject).me(parama.ulI);
+    ((g.a)localObject).mf(false);
     int i;
     long l;
     if (parama.fileType == 0)
     {
       i = 1;
-      ((g.a)localObject).Fl(i);
-      ((g.a)localObject).gm(parama.packageName);
-      ((g.a)localObject).cBE();
+      ((g.a)localObject).IS(i);
+      ((g.a)localObject).setPackageName(parama.packageName);
+      ((g.a)localObject).cQi();
       ((g.a)localObject).setScene(parama.scene);
-      ((g.a)localObject).Rv(parama.extInfo);
-      ((g.a)localObject).kV(parama.qJg);
-      ((g.a)localObject).Fp(parama.eik);
-      ((g.a)localObject).Fm(parama.qJJ);
-      ((g.a)localObject).Fo(parama.qJI);
-      ((g.a)localObject).Fn(parama.qJH);
-      ((g.a)localObject).kU(parama.qKx);
-      ((g.a)localObject).V(parama.qKz);
-      ((g.a)localObject).alm(parama.qKu);
-      if (parama.dNv != 1) {
+      ((g.a)localObject).YS(parama.extInfo);
+      ((g.a)localObject).mh(parama.uij);
+      ((g.a)localObject).IW(parama.gcB);
+      ((g.a)localObject).IT(parama.uiO);
+      ((g.a)localObject).IV(parama.uiN);
+      ((g.a)localObject).IU(parama.uiM);
+      ((g.a)localObject).mg(parama.ulJ);
+      ((g.a)localObject).T(parama.ulL);
+      ((g.a)localObject).atf(parama.ulG);
+      if (parama.fGH != 1) {
         break label388;
       }
-      l = f.cBv().b(((g.a)localObject).qIY);
+      l = f.cPZ().b(((g.a)localObject).uhY);
       label267:
-      Log.i("MicroMsg.DownloadPluginUtil", " add download task result:[%d], appid[%s]，downloaerType[%d]", new Object[] { Long.valueOf(l), parama.appId, Integer.valueOf(parama.dNv) });
+      Log.i("MicroMsg.DownloadPluginUtil", " add download task result:[%d], appid[%s]，downloaerType[%d]", new Object[] { Long.valueOf(l), parama.appId, Integer.valueOf(parama.fGH) });
       if (paramb != null)
       {
-        if ((!parama.qJg) || (NetStatusUtil.isWifi(MMApplicationContext.getContext()))) {
+        if ((!parama.uij) || (NetStatusUtil.isWifi(MMApplicationContext.getContext()))) {
           break label403;
         }
-        localObject = a.a.qKq;
+        localObject = a.a.ulC;
       }
     }
     for (;;)
     {
       paramb.a((a.a)localObject, l);
-      if ((parama.qJg) && (!NetStatusUtil.isWifi(MMApplicationContext.getContext()))) {
-        d.alu(parama.appId);
+      if ((parama.uij) && (!NetStatusUtil.isWifi(MMApplicationContext.getContext()))) {
+        d.atn(parama.appId);
       }
       com.tencent.mm.modelstat.d.d(10, "DownloadPluginUtil_downloadTaskStraight", c.class.hashCode());
       AppMethodBeat.o(8858);
@@ -90,13 +91,13 @@ public class c
       i = parama.fileType;
       break;
       label388:
-      l = f.cBv().a(((g.a)localObject).qIY);
+      l = f.cPZ().a(((g.a)localObject).uhY);
       break label267;
       label403:
       if (l > 0L) {
-        localObject = a.a.qKo;
+        localObject = a.a.ulA;
       } else {
-        localObject = a.a.qKp;
+        localObject = a.a.ulB;
       }
     }
   }
@@ -104,49 +105,49 @@ public class c
   public static void a(final Context paramContext, final long paramLong, final a.b paramb)
   {
     AppMethodBeat.i(8865);
-    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.Cw(paramLong);
+    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.IF(paramLong);
     if (locala == null)
     {
-      paramb.a(a.a.qKp, -1L);
+      paramb.a(a.a.ulB, -1L);
       AppMethodBeat.o(8865);
       return;
     }
-    ((com.tencent.mm.plugin.downloader_app.api.b)g.af(com.tencent.mm.plugin.downloader_app.api.b.class)).a(paramContext, locala.field_appId, new com.tencent.mm.plugin.downloader_app.api.b.a()new com.tencent.mm.plugin.downloader_app.api.b.a
+    ((com.tencent.mm.plugin.downloader_app.api.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.downloader_app.api.b.class)).a(paramContext, locala.field_appId, new com.tencent.mm.plugin.downloader_app.api.b.a()new com.tencent.mm.plugin.downloader_app.api.b.a
     {
       public final void onClick()
       {
-        AppMethodBeat.i(240201);
-        d.alt(this.qIi.field_appId);
-        c.a(this.qIi, false, new a.b()
+        AppMethodBeat.i(242936);
+        d.atm(this.uhi.field_appId);
+        c.a(this.uhi, false, new a.b()
         {
           public final void a(a.a paramAnonymous2a, long paramAnonymous2Long)
           {
-            AppMethodBeat.i(240200);
+            AppMethodBeat.i(243214);
             c.bQ(c.8.this.val$context);
-            if (c.8.this.qKE != null) {
-              c.8.this.qKE.a(paramAnonymous2a, paramAnonymous2Long);
+            if (c.8.this.ulQ != null) {
+              c.8.this.ulQ.a(paramAnonymous2a, paramAnonymous2Long);
             }
-            AppMethodBeat.o(240200);
+            AppMethodBeat.o(243214);
           }
         });
-        AppMethodBeat.o(240201);
+        AppMethodBeat.o(242936);
       }
     }, new com.tencent.mm.plugin.downloader_app.api.b.a()
     {
       public final void onClick()
       {
-        AppMethodBeat.i(240202);
-        com.tencent.mm.plugin.downloader.g.a locala = this.qIi;
-        this.qIi.field_downloadInWifi = false;
+        AppMethodBeat.i(243109);
+        com.tencent.mm.plugin.downloader.g.a locala = this.uhi;
+        this.uhi.field_downloadInWifi = false;
         locala.field_reserveInWifi = false;
-        com.tencent.mm.plugin.downloader.model.d.e(this.qIi);
-        if (this.qIi.field_status == 0) {
-          d.alv(this.qIi.field_appId);
+        com.tencent.mm.plugin.downloader.model.d.e(this.uhi);
+        if (this.uhi.field_status == 0) {
+          d.ato(this.uhi.field_appId);
         }
         if (paramb != null) {
-          paramb.a(a.a.qKr, paramLong);
+          paramb.a(a.a.ulD, paramLong);
         }
-        AppMethodBeat.o(240202);
+        AppMethodBeat.o(243109);
       }
     }, null);
     AppMethodBeat.o(8865);
@@ -157,19 +158,19 @@ public class c
     AppMethodBeat.i(8861);
     if (!NetStatusUtil.isConnected(paramContext))
     {
-      com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(2131763509), paramContext.getString(2131763510), paramContext.getString(2131762113), false, new DialogInterface.OnClickListener()
+      com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(e.h.ulh), paramContext.getString(e.h.uli), paramContext.getString(e.h.ule), false, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(8853);
-          this.qIi.field_status = 4;
-          com.tencent.mm.plugin.downloader.model.d.e(this.qIi);
-          d.CI(this.qIi.field_downloadId);
+          this.uhi.field_status = 4;
+          com.tencent.mm.plugin.downloader.model.d.e(this.uhi);
+          d.IR(this.uhi.field_downloadId);
           if (paramb != null) {
-            paramb.a(a.a.qKp, this.qIi.field_downloadId);
+            paramb.a(a.a.ulB, this.uhi.field_downloadId);
           }
           if (paramb != null) {
-            paramb.a(a.a.qKp, this.qIi.field_downloadId);
+            paramb.a(a.a.ulB, this.uhi.field_downloadId);
           }
           AppMethodBeat.o(8853);
         }
@@ -177,9 +178,9 @@ public class c
       AppMethodBeat.o(8861);
       return;
     }
-    if (((com.tencent.mm.game.report.a.b)g.af(com.tencent.mm.game.report.a.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.rOq, false))
+    if (((com.tencent.mm.game.report.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.game.report.a.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vul, false))
     {
-      d.alt(parama.field_appId);
+      d.atm(parama.field_appId);
       if (NetStatusUtil.isWifi(paramContext)) {}
       for (boolean bool = true;; bool = false)
       {
@@ -190,20 +191,20 @@ public class c
     }
     if (NetStatusUtil.isWifi(paramContext))
     {
-      d.alt(parama.field_appId);
+      d.atm(parama.field_appId);
       a(parama, false, paramb);
       AppMethodBeat.o(8861);
       return;
     }
-    if (parami.qLi.qGy)
+    if (parami.umu.ufz)
     {
-      ((com.tencent.mm.plugin.downloader_app.api.b)g.af(com.tencent.mm.plugin.downloader_app.api.b.class)).a(paramContext, parama.field_appId, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      ((com.tencent.mm.plugin.downloader_app.api.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.downloader_app.api.b.class)).a(paramContext, parama.field_appId, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(8841);
-          d.alt(this.qIi.field_appId);
-          c.a(this.qIi, false, paramb);
+          d.atm(this.uhi.field_appId);
+          c.a(this.uhi, false, paramb);
           AppMethodBeat.o(8841);
         }
       }, new DialogInterface.OnClickListener()
@@ -211,14 +212,14 @@ public class c
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(8842);
-          if ((!this.qIi.field_reserveInWifi) || (!this.qIi.field_downloadInWifi))
+          if ((!this.uhi.field_reserveInWifi) || (!this.uhi.field_downloadInWifi))
           {
-            paramAnonymousDialogInterface = this.qIi;
-            this.qIi.field_downloadInWifi = true;
+            paramAnonymousDialogInterface = this.uhi;
+            this.uhi.field_downloadInWifi = true;
             paramAnonymousDialogInterface.field_reserveInWifi = true;
-            com.tencent.mm.plugin.downloader.model.d.e(this.qIi);
+            com.tencent.mm.plugin.downloader.model.d.e(this.uhi);
           }
-          paramb.a(a.a.qKq, this.qIi.field_downloadId);
+          paramb.a(a.a.ulC, this.uhi.field_downloadId);
           AppMethodBeat.o(8842);
         }
       }, null);
@@ -231,13 +232,13 @@ public class c
       parama.field_reserveInWifi = false;
       com.tencent.mm.plugin.downloader.model.d.e(parama);
     }
-    com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(2131768552), paramContext.getString(2131768553), paramContext.getString(2131768547), paramContext.getString(2131755761), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(e.h.webview_download_ui_download_not_in_wifi_tips), paramContext.getString(e.h.webview_download_ui_download_not_in_wifi_title), paramContext.getString(e.h.webview_download_ui_btn_state_to_download), paramContext.getString(e.h.app_cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(8843);
-        d.alt(this.qIi.field_appId);
-        c.a(this.qIi, false, paramb);
+        d.atm(this.uhi.field_appId);
+        c.a(this.uhi, false, paramb);
         paramAnonymousDialogInterface.dismiss();
         AppMethodBeat.o(8843);
       }
@@ -246,13 +247,13 @@ public class c
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(8844);
-        if (this.qKF != null) {
-          com.tencent.mm.plugin.downloader_app.b.a.a(10, com.tencent.mm.plugin.downloader_app.b.a.Fq(this.qKF.type), this.qKF.position, 4, this.qKF.appId, "", "");
+        if (this.ulR != null) {
+          com.tencent.mm.plugin.downloader_app.b.a.a(10, com.tencent.mm.plugin.downloader_app.b.a.IX(this.ulR.type), this.ulR.position, 4, this.ulR.appId, "", "");
         }
         paramAnonymousDialogInterface.dismiss();
         AppMethodBeat.o(8844);
       }
-    }, 2131101414);
+    }, e.b.wechat_green);
     AppMethodBeat.o(8861);
   }
   
@@ -265,27 +266,27 @@ public class c
       AppMethodBeat.o(8857);
       return;
     }
-    if (((com.tencent.mm.game.report.a.b)g.af(com.tencent.mm.game.report.a.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.rOq, false))
+    if (((com.tencent.mm.game.report.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.game.report.a.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vul, false))
     {
       if (NetStatusUtil.isWifi(paramContext)) {
         bool = true;
       }
-      parama.qJg = bool;
+      parama.uij = bool;
       a(parama, paramb);
       AppMethodBeat.o(8857);
       return;
     }
     if (!NetStatusUtil.isWifi(paramContext))
     {
-      if (parama.qJg)
+      if (parama.uij)
       {
-        ((com.tencent.mm.plugin.downloader_app.api.b)g.af(com.tencent.mm.plugin.downloader_app.api.b.class)).a(paramContext, parama.appId, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+        ((com.tencent.mm.plugin.downloader_app.api.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.downloader_app.api.b.class)).a(paramContext, parama.appId, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(8848);
-            this.qKD.qJg = false;
-            c.a(this.qKD, paramb);
+            this.ulP.uij = false;
+            c.a(this.ulP, paramb);
             AppMethodBeat.o(8848);
           }
         }, new DialogInterface.OnClickListener()
@@ -293,21 +294,21 @@ public class c
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(8849);
-            c.a(this.qKD, paramb);
+            c.a(this.ulP, paramb);
             AppMethodBeat.o(8849);
           }
         }, null);
         AppMethodBeat.o(8857);
         return;
       }
-      com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(2131768552), paramContext.getString(2131768553), paramContext.getString(2131768547), paramContext.getString(2131755761), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(e.h.webview_download_ui_download_not_in_wifi_tips), paramContext.getString(e.h.webview_download_ui_download_not_in_wifi_title), paramContext.getString(e.h.webview_download_ui_btn_state_to_download), paramContext.getString(e.h.app_cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(8850);
-          d.alt(this.qKD.appId);
-          this.qKD.qJg = false;
-          c.a(this.qKD, paramb);
+          d.atm(this.ulP.appId);
+          this.ulP.uij = false;
+          c.a(this.ulP, paramb);
           paramAnonymousDialogInterface.dismiss();
           AppMethodBeat.o(8850);
         }
@@ -315,16 +316,16 @@ public class c
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(240206);
+          AppMethodBeat.i(242938);
           paramAnonymousDialogInterface.dismiss();
-          AppMethodBeat.o(240206);
+          AppMethodBeat.o(242938);
         }
-      }, 2131101414);
+      }, e.b.wechat_green);
       AppMethodBeat.o(8857);
       return;
     }
-    d.alt(parama.appId);
-    parama.qJg = false;
+    d.atm(parama.appId);
+    parama.uij = false;
     a(parama, paramb);
     AppMethodBeat.o(8857);
   }
@@ -347,7 +348,7 @@ public class c
   {
     AppMethodBeat.i(8855);
     if (!paramBoolean) {
-      com.tencent.mm.plugin.downloader_app.b.a.a(10, com.tencent.mm.plugin.downloader_app.b.a.Fq(parami.type), parami.position, 23, parami.appId, "", "");
+      com.tencent.mm.plugin.downloader_app.b.a.a(10, com.tencent.mm.plugin.downloader_app.b.a.IX(parami.type), parami.position, 23, parami.appId, "", "");
     }
     b(paramContext, parami, paramBoolean);
     AppMethodBeat.o(8855);
@@ -356,21 +357,21 @@ public class c
   public static void a(Context paramContext, i parami, boolean paramBoolean, final a.b paramb)
   {
     AppMethodBeat.i(8860);
-    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.alb(parami.appId);
+    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.asU(parami.appId);
     if (locala != null)
     {
-      locala.field_extInfo = als(locala.field_extInfo);
+      locala.field_extInfo = atl(locala.field_extInfo);
       locala.field_downloadType = 1;
       a(paramContext, locala, parami, new a.b()
       {
         public final void a(a.a paramAnonymousa, long paramAnonymousLong)
         {
-          AppMethodBeat.i(240207);
+          AppMethodBeat.i(242808);
           c.bQ(this.val$context);
           if (paramb != null) {
             paramb.a(paramAnonymousa, paramAnonymousLong);
           }
-          AppMethodBeat.o(240207);
+          AppMethodBeat.o(242808);
         }
       });
       paramContext = new com.tencent.mm.plugin.downloader.f.b();
@@ -378,7 +379,7 @@ public class c
       com.tencent.mm.plugin.downloader.f.a.a(10, paramContext);
     }
     if (paramBoolean) {
-      com.tencent.mm.plugin.downloader_app.b.a.a(10, com.tencent.mm.plugin.downloader_app.b.a.Fq(parami.type), parami.position, 6, parami.appId, "", "");
+      com.tencent.mm.plugin.downloader_app.b.a.a(10, com.tencent.mm.plugin.downloader_app.b.a.IX(parami.type), parami.position, 6, parami.appId, "", "");
     }
     AppMethodBeat.o(8860);
   }
@@ -386,11 +387,11 @@ public class c
   public static void a(i parami)
   {
     AppMethodBeat.i(8864);
-    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.alb(parami.appId);
+    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.asU(parami.appId);
     if (locala != null) {
-      f.cBv().Cn(locala.field_downloadId);
+      f.cPZ().Iw(locala.field_downloadId);
     }
-    com.tencent.mm.plugin.downloader_app.b.a.a(11, com.tencent.mm.plugin.downloader_app.b.a.Fq(parami.type), parami.position, 81, parami.appId, "", "");
+    com.tencent.mm.plugin.downloader_app.b.a.a(11, com.tencent.mm.plugin.downloader_app.b.a.IX(parami.type), parami.position, 81, parami.appId, "", "");
     AppMethodBeat.o(8864);
   }
   
@@ -399,24 +400,24 @@ public class c
     AppMethodBeat.i(8862);
     if (!j.contains(parama.field_appId))
     {
-      localObject = j.cCg();
+      localObject = j.cQK();
       ((LinkedList)localObject).add(parama.field_appId);
       h.a((LinkedList)localObject, null);
-      j.alB(parama.field_appId);
+      j.atu(parama.field_appId);
     }
     parama.field_showNotification = false;
     parama.field_fromDownloadApp = true;
     parama.field_downloadInWifi = paramBoolean;
     parama.field_reserveInWifi = paramBoolean;
     com.tencent.mm.plugin.downloader.model.d.e(parama);
-    paramBoolean = f.cBv().Cq(parama.field_downloadId);
+    paramBoolean = f.cPZ().Iz(parama.field_downloadId);
     if (paramb != null) {
       if (!paramBoolean) {
         break label121;
       }
     }
     label121:
-    for (Object localObject = a.a.qKo;; localObject = a.a.qKp)
+    for (Object localObject = a.a.ulA;; localObject = a.a.ulB)
     {
       paramb.a((a.a)localObject, parama.field_downloadId);
       com.tencent.mm.modelstat.d.d(10, "DownloadPluginUtil_resumeDownloadTaskStraight", c.class.hashCode());
@@ -425,7 +426,7 @@ public class c
     }
   }
   
-  private static String als(String paramString)
+  private static String atl(String paramString)
   {
     AppMethodBeat.i(8869);
     if ((paramString != null) && (paramString.contains("OpInWidget")))
@@ -487,50 +488,50 @@ public class c
   
   public static void b(Context paramContext, i parami)
   {
-    AppMethodBeat.i(240208);
-    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.alb(parami.appId);
+    AppMethodBeat.i(243142);
+    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.asU(parami.appId);
     if (locala != null)
     {
-      f.cBv().Cp(locala.field_downloadId);
-      com.tencent.mm.plugin.downloader_app.b.a.a(10, com.tencent.mm.plugin.downloader_app.b.a.Fq(parami.type), parami.position, 5, locala.field_appId, "", "");
-      if ((((com.tencent.mm.game.report.a.b)g.af(com.tencent.mm.game.report.a.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.rOq, false)) && (!NetStatusUtil.isWifi(MMApplicationContext.getContext()))) {
-        ((com.tencent.mm.plugin.downloader_app.api.b)g.af(com.tencent.mm.plugin.downloader_app.api.b.class)).a(paramContext, new com.tencent.mm.plugin.downloader_app.api.b.a()new com.tencent.mm.plugin.downloader_app.api.b.a
+      f.cPZ().Iy(locala.field_downloadId);
+      com.tencent.mm.plugin.downloader_app.b.a.a(10, com.tencent.mm.plugin.downloader_app.b.a.IX(parami.type), parami.position, 5, locala.field_appId, "", "");
+      if ((((com.tencent.mm.game.report.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.game.report.a.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vul, false)) && (!NetStatusUtil.isWifi(MMApplicationContext.getContext()))) {
+        ((com.tencent.mm.plugin.downloader_app.api.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.downloader_app.api.b.class)).a(paramContext, new com.tencent.mm.plugin.downloader_app.api.b.a()new com.tencent.mm.plugin.downloader_app.api.b.a
         {
           public final void onClick()
           {
-            AppMethodBeat.i(240198);
-            com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.alb(this.qKF.appId);
+            AppMethodBeat.i(243092);
+            com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.asU(this.ulR.appId);
             if (locala == null)
             {
-              AppMethodBeat.o(240198);
+              AppMethodBeat.o(243092);
               return;
             }
             locala.field_downloadInWifi = false;
             locala.field_reserveInWifi = false;
             com.tencent.mm.plugin.downloader.model.d.e(locala);
-            AppMethodBeat.o(240198);
+            AppMethodBeat.o(243092);
           }
         }, new com.tencent.mm.plugin.downloader_app.api.b.a()
         {
           public final void onClick()
           {
-            AppMethodBeat.i(240199);
-            com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.alb(this.qKF.appId);
+            AppMethodBeat.i(242978);
+            com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.asU(this.ulR.appId);
             if (locala == null)
             {
-              AppMethodBeat.o(240199);
+              AppMethodBeat.o(242978);
               return;
             }
             locala.field_downloadInWifi = true;
             locala.field_reserveInWifi = true;
             com.tencent.mm.plugin.downloader.model.d.e(locala);
-            d.alu(locala.field_appId);
-            AppMethodBeat.o(240199);
+            d.atn(locala.field_appId);
+            AppMethodBeat.o(242978);
           }
         });
       }
     }
-    AppMethodBeat.o(240208);
+    AppMethodBeat.o(243142);
   }
   
   private static void b(Context paramContext, i parami, boolean paramBoolean)
@@ -542,33 +543,33 @@ public class c
       return;
     }
     a locala = new a();
-    locala.downloadUrl = parami.qLi.gqB;
-    locala.qKt = parami.qLi.qGw;
+    locala.downloadUrl = parami.umu.iUJ;
+    locala.ulF = parami.umu.ufx;
     locala.appId = parami.appId;
     locala.appName = parami.appName;
-    locala.qKv = parami.qLi.qGq;
-    locala.mYc = parami.qLi.qGr;
-    locala.packageName = parami.qLi.qGp;
-    locala.dNv = parami.qLi.qGs;
-    locala.extInfo = cBV();
+    locala.ulH = parami.umu.ufr;
+    locala.pYB = parami.umu.ufs;
+    locala.packageName = parami.umu.ufq;
+    locala.fGH = parami.umu.uft;
+    locala.extInfo = cQz();
     if (paramBoolean) {}
     for (int i = 6003;; i = 6002)
     {
       locala.scene = i;
-      locala.qJg = parami.qLi.qGy;
+      locala.uij = parami.umu.ufz;
       locala.fileType = 1;
-      locala.dNv = 1;
-      locala.qKz = parami.qLi.qGz;
+      locala.fGH = 1;
+      locala.ulL = parami.umu.ufA;
       com.tencent.mm.plugin.downloader.f.a.a(9, new com.tencent.mm.plugin.downloader.f.b(locala.appId, locala.scene, -1L, ""));
       if (NetStatusUtil.isConnected(paramContext)) {
         break;
       }
-      com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(2131763509), paramContext.getString(2131763510), paramContext.getString(2131762113), false, new DialogInterface.OnClickListener()
+      com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(e.h.ulh), paramContext.getString(e.h.uli), paramContext.getString(e.h.ule), false, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(8840);
-          paramAnonymousDialogInterface = com.tencent.mm.plugin.downloader.model.d.alb(this.qKD.appId);
+          paramAnonymousDialogInterface = com.tencent.mm.plugin.downloader.model.d.asU(this.ulP.appId);
           if (paramAnonymousDialogInterface != null)
           {
             paramAnonymousDialogInterface.field_status = 4;
@@ -576,16 +577,16 @@ public class c
           }
           for (;;)
           {
-            d.CI(paramAnonymousDialogInterface.field_downloadId);
-            if (this.qKE != null) {
-              this.qKE.a(a.a.qKp, paramAnonymousDialogInterface.field_downloadId);
+            d.IR(paramAnonymousDialogInterface.field_downloadId);
+            if (this.ulQ != null) {
+              this.ulQ.a(a.a.ulB, paramAnonymousDialogInterface.field_downloadId);
             }
             AppMethodBeat.o(8840);
             return;
             paramAnonymousDialogInterface = new com.tencent.mm.plugin.downloader.g.a();
             paramAnonymousDialogInterface.field_downloadId = System.currentTimeMillis();
-            paramAnonymousDialogInterface.field_appId = this.qKD.appId;
-            paramAnonymousDialogInterface.field_downloadUrl = this.qKD.downloadUrl;
+            paramAnonymousDialogInterface.field_appId = this.ulP.appId;
+            paramAnonymousDialogInterface.field_downloadUrl = this.ulP.downloadUrl;
             paramAnonymousDialogInterface.field_status = 4;
             com.tencent.mm.plugin.downloader.model.d.d(paramAnonymousDialogInterface);
           }
@@ -598,14 +599,14 @@ public class c
     {
       public final void a(a.a paramAnonymousa, long paramAnonymousLong)
       {
-        AppMethodBeat.i(240204);
-        if (paramAnonymousa == a.a.qKo) {
+        AppMethodBeat.i(243226);
+        if (paramAnonymousa == a.a.ulA) {
           c.bQ(this.val$context);
         }
-        if (this.qKE != null) {
-          this.qKE.a(paramAnonymousa, paramAnonymousLong);
+        if (this.ulQ != null) {
+          this.ulQ.a(paramAnonymousa, paramAnonymousLong);
         }
-        AppMethodBeat.o(240204);
+        AppMethodBeat.o(243226);
       }
     });
     AppMethodBeat.o(8856);
@@ -614,26 +615,26 @@ public class c
   public static boolean c(Context paramContext, final i parami)
   {
     AppMethodBeat.i(8866);
-    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.alb(parami.appId);
+    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.asU(parami.appId);
     if (locala == null)
     {
       AppMethodBeat.o(8866);
       return false;
     }
-    if (s.YS(locala.field_filePath))
+    if (u.agG(locala.field_filePath))
     {
       com.tencent.mm.plugin.downloader.i.a.a(locala.field_downloadId, false, null);
-      com.tencent.mm.plugin.downloader_app.b.a.a(10, com.tencent.mm.plugin.downloader_app.b.a.Fq(parami.type), parami.position, 44, parami.appId, "", "");
+      com.tencent.mm.plugin.downloader_app.b.a.a(10, com.tencent.mm.plugin.downloader_app.b.a.IX(parami.type), parami.position, 44, parami.appId, "", "");
       AppMethodBeat.o(8866);
       return true;
     }
-    com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(2131763807), paramContext.getString(2131763808), paramContext.getString(2131764627), paramContext.getString(2131766643), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(e.h.ulp), paramContext.getString(e.h.ulq), paramContext.getString(e.h.ulr), paramContext.getString(e.h.ult), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
-        AppMethodBeat.i(240203);
+        AppMethodBeat.i(243212);
         c.a(this.val$context, parami);
-        AppMethodBeat.o(240203);
+        AppMethodBeat.o(243212);
       }
     }, new DialogInterface.OnClickListener()
     {
@@ -643,7 +644,7 @@ public class c
     return false;
   }
   
-  private static String cBV()
+  private static String cQz()
   {
     AppMethodBeat.i(8868);
     Object localObject2 = new JSONObject();
@@ -675,20 +676,20 @@ public class c
   public static void d(Context paramContext, final i parami)
   {
     AppMethodBeat.i(8867);
-    if (q.s(paramContext, parami.qLi.qGp))
+    if (q.u(paramContext, parami.umu.ufq))
     {
       com.tencent.mm.plugin.downloader.i.a.as(paramContext, parami.appId);
-      com.tencent.mm.plugin.downloader_app.b.a.a(10, com.tencent.mm.plugin.downloader_app.b.a.Fq(parami.type), parami.position, 22, parami.appId, "", "");
+      com.tencent.mm.plugin.downloader_app.b.a.a(10, com.tencent.mm.plugin.downloader_app.b.a.IX(parami.type), parami.position, 22, parami.appId, "", "");
       AppMethodBeat.o(8867);
       return;
     }
-    com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(2131756003), paramContext.getString(2131756004), paramContext.getString(2131764627), paramContext.getString(2131766643), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(e.h.ukI), paramContext.getString(e.h.ukJ), paramContext.getString(e.h.ulr), paramContext.getString(e.h.ult), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
-        AppMethodBeat.i(240205);
+        AppMethodBeat.i(243011);
         c.a(this.val$context, parami);
-        AppMethodBeat.o(240205);
+        AppMethodBeat.o(243011);
       }
     }, new DialogInterface.OnClickListener()
     {
@@ -699,7 +700,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.a.c
  * JD-Core Version:    0.7.0.1
  */

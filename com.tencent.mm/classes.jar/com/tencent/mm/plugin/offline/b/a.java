@@ -47,7 +47,7 @@ public final class a
     }
   }
   
-  public final r aJe(String paramString)
+  public final r aTA(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(66336);
@@ -70,10 +70,10 @@ public final class a
     return paramString;
   }
   
-  public final void aJf(String paramString)
+  public final void aTB(String paramString)
   {
     AppMethodBeat.i(66338);
-    r localr = aJe(paramString);
+    r localr = aTA(paramString);
     if (localr != null) {
       localr.field_status = -1;
     }
@@ -109,12 +109,12 @@ public final class a
     AppMethodBeat.o(66337);
   }
   
-  public final r ezt()
+  public final r fkZ()
   {
     int i = 1;
     r localr = null;
     AppMethodBeat.i(66334);
-    Log.i("MicroMsg.OfflineOrderStatusStorage", "in getLastestOrder: orders count: %d, latest 3 orders: %s", new Object[] { Integer.valueOf(ezv()), ezu() });
+    Log.i("MicroMsg.OfflineOrderStatusStorage", "in getLastestOrder: orders count: %d, latest 3 orders: %s", new Object[] { Integer.valueOf(flb()), fla() });
     Cursor localCursor = this.db.rawQuery("SELECT * FROM OfflineOrderStatus WHERE status!=-1 ORDER BY rowid DESC LIMIT 1", null, 2);
     if (localCursor == null)
     {
@@ -146,7 +146,7 @@ public final class a
     }
   }
   
-  public final String ezu()
+  public final String fla()
   {
     AppMethodBeat.i(66339);
     String str = String.format("SELECT * FROM %s ORDER BY %s DESC LIMIT %d;", new Object[] { "OfflineOrderStatus", "rowid", Integer.valueOf(3) });
@@ -182,7 +182,7 @@ public final class a
     }
   }
   
-  public final int ezv()
+  public final int flb()
   {
     int j = 0;
     int i = 0;
@@ -210,7 +210,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.b.a
  * JD-Core Version:    0.7.0.1
  */

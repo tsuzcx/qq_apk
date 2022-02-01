@@ -1,34 +1,32 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/model/BizTLRecFeedsDataUtil$EnRecommendFeedsInfoSwitchOption;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "RECOMMEND_FEEDS_UNDEFINED", "RECOMMEND_FEEDS_CLOSE", "RECOMMEND_FEEDS_OPEN", "plugin-biz_release"})
-public enum p$c
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+final class p$c
+  extends q
+  implements a<Boolean>
 {
-  public final int value;
+  public static final c lrN;
   
   static
   {
-    AppMethodBeat.i(212392);
-    c localc1 = new c("RECOMMEND_FEEDS_UNDEFINED", 0, 0);
-    iCf = localc1;
-    c localc2 = new c("RECOMMEND_FEEDS_CLOSE", 1, 1);
-    iCg = localc2;
-    c localc3 = new c("RECOMMEND_FEEDS_OPEN", 2, 2);
-    iCh = localc3;
-    iCi = new c[] { localc1, localc2, localc3 };
-    AppMethodBeat.o(212392);
+    AppMethodBeat.i(205833);
+    lrN = new c();
+    AppMethodBeat.o(205833);
   }
   
-  private p$c(int paramInt)
+  p$c()
   {
-    this.value = paramInt;
+    super(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.p.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,34 @@
 package com.tencent.mm.compatible.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
 
 public enum a
 {
-  private static volatile a gDw;
+  private static volatile a jnG;
   
   static
   {
     AppMethodBeat.i(155631);
-    gDv = new a("INSTANCE");
-    gDx = new a[] { gDv };
-    gDw = new a()
-    {
-      public final void c(int paramAnonymousInt, Object... paramAnonymousVarArgs)
-      {
-        AppMethodBeat.i(215247);
-        Log.w("MicroMsg.ReportDelegate", "hy: dummy reportKV, do nothing");
-        AppMethodBeat.o(215247);
-      }
-      
-      public final void w(long paramAnonymousLong1, long paramAnonymousLong2)
-      {
-        AppMethodBeat.i(155626);
-        Log.w("MicroMsg.ReportDelegate", "hy: dummy reportIDKey, do nothing");
-        AppMethodBeat.o(155626);
-      }
-    };
+    jnF = new a("INSTANCE");
+    jnH = new a[] { jnF };
+    jnG = new a.1();
     AppMethodBeat.o(155631);
   }
   
   private a() {}
   
+  public static void EV(long paramLong)
+  {
+    AppMethodBeat.i(155629);
+    jnG.w(853L, paramLong);
+    AppMethodBeat.o(155629);
+  }
+  
   public static void a(a parama)
   {
     try
     {
-      gDw = parama;
+      jnG = parama;
       return;
     }
     finally
@@ -49,23 +40,16 @@ public enum a
   
   public static void b(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(215249);
-    gDw.c(paramInt, paramVarArgs);
-    AppMethodBeat.o(215249);
+    AppMethodBeat.i(263121);
+    jnG.c(paramInt, paramVarArgs);
+    AppMethodBeat.o(263121);
   }
   
   public static void v(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(215248);
-    gDw.w(paramLong1, paramLong2);
-    AppMethodBeat.o(215248);
-  }
-  
-  public static void yT(long paramLong)
-  {
-    AppMethodBeat.i(155629);
-    gDw.w(853L, paramLong);
-    AppMethodBeat.o(155629);
+    AppMethodBeat.i(263120);
+    jnG.w(paramLong1, paramLong2);
+    AppMethodBeat.o(263120);
   }
   
   public static abstract interface a
@@ -77,7 +61,7 @@ public enum a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.compatible.d.a
  * JD-Core Version:    0.7.0.1
  */

@@ -88,64 +88,21 @@ public final class FileLruCache
   private void trim()
   {
     AppMethodBeat.i(17801);
-    synchronized (this.lock)
-    {
-      this.isTrimPending = false;
-      this.isTrimInProgress = true;
-    }
     for (;;)
     {
-      try
+      long l3;
+      File[] arrayOfFile;
+      long l1;
+      int j;
+      int i;
+      File localFile2;
+      ModifiedFile localModifiedFile;
+      synchronized (this.lock)
       {
-        Logger.log(LoggingBehavior.CACHE, TAG, "trim started");
-        ??? = new PriorityQueue();
-        long l3 = 0L;
-        l2 = 0L;
-        File[] arrayOfFile = this.directory.listFiles(BufferFile.excludeBufferFiles());
-        l4 = l2;
-        l1 = l3;
-        if (arrayOfFile == null) {
-          continue;
-        }
-        int j = arrayOfFile.length;
-        int i = 0;
-        l4 = l2;
-        l1 = l3;
-        if (i >= j) {
-          continue;
-        }
-        File localFile2 = arrayOfFile[i];
-        ModifiedFile localModifiedFile = new ModifiedFile(localFile2);
-        ((PriorityQueue)???).add(localModifiedFile);
-        Logger.log(LoggingBehavior.CACHE, TAG, "  trim considering time=" + Long.valueOf(localModifiedFile.getModified()) + " name=" + localModifiedFile.getFile().getName());
-        l1 = localFile2.length();
-        l3 += l1;
-        l2 += 1L;
-        i += 1;
-        continue;
-        localObject2 = finally;
-        AppMethodBeat.o(17801);
-        throw localObject2;
+        this.isTrimPending = false;
+        this.isTrimInProgress = true;
       }
-      finally
-      {
-        long l4;
-        synchronized (this.lock)
-        {
-          long l1;
-          File localFile1;
-          this.isTrimInProgress = false;
-          this.lock.notifyAll();
-          AppMethodBeat.o(17801);
-          throw localObject4;
-        }
-        long l2 = l4;
-        continue;
-      }
-      if ((l1 <= this.limits.getByteCount()) && (l2 <= this.limits.getFileCount())) {
-        continue;
-      }
-      localFile1 = ((ModifiedFile)((PriorityQueue)???).remove()).getFile();
+      File localFile1 = ((ModifiedFile)((PriorityQueue)???).remove()).getFile();
       Logger.log(LoggingBehavior.CACHE, TAG, "  trim removing " + localFile1.getName());
       l1 -= localFile1.length();
       localFile1.delete();
@@ -975,7 +932,7 @@ public final class FileLruCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.internal.FileLruCache
  * JD-Core Version:    0.7.0.1
  */

@@ -8,37 +8,38 @@ import java.util.Arrays;
 import kotlin.g;
 import kotlin.g.a.b;
 import kotlin.g.b.p;
+import kotlin.g.b.q;
 import kotlin.k;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NfcALogic;", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/INFCTechLogic;", "()V", "TAG", "", "emptyByteArray", "", "getEmptyByteArray", "()[B", "emptyByteArray$delegate", "Lkotlin/Lazy;", "exec", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult;", "", "tag", "Landroid/nfc/Tag;", "function", "params", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/model/INFCTechExecParams;", "execAsync", "", "callback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteCallback;", "getAtqa", "nfcA", "Landroid/nfc/tech/NfcA;", "getNfcA", "getSak", "", "luggage-commons-jsapi-nfc-ext_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NfcALogic;", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/INFCTechLogic;", "()V", "TAG", "", "emptyByteArray", "", "getEmptyByteArray", "()[B", "emptyByteArray$delegate", "Lkotlin/Lazy;", "exec", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteResult;", "", "tag", "Landroid/nfc/Tag;", "function", "params", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/model/INFCTechExecParams;", "execAsync", "", "callback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/logic/NFCReadWriteCallback;", "getAtqa", "nfcA", "Landroid/nfc/tech/NfcA;", "getNfcA", "getSak", "", "luggage-commons-jsapi-nfc-ext_release"})
 public final class f
   implements a
 {
-  private static final kotlin.f miX;
-  public static final f miY;
+  private static final kotlin.f pgZ;
+  public static final f pha;
   
   static
   {
-    AppMethodBeat.i(207164);
-    miY = new f();
-    miX = g.a(k.SWR, (kotlin.g.a.a)f.a.miZ);
-    AppMethodBeat.o(207164);
+    AppMethodBeat.i(242147);
+    pha = new f();
+    pgZ = g.a(k.aazD, (kotlin.g.a.a)a.phb);
+    AppMethodBeat.o(242147);
   }
   
   public final void a(Tag paramTag, String paramString, b<? super e<Object>, x> paramb)
   {
-    AppMethodBeat.i(207163);
-    p.h(paramTag, "tag");
-    p.h(paramString, "function");
-    p.h(paramb, "callback");
+    AppMethodBeat.i(242145);
+    p.k(paramTag, "tag");
+    p.k(paramString, "function");
+    p.k(paramb, "callback");
     Log.d("MicroMsg.AppBrand.NfcALogic", "execAsync, function: ".concat(String.valueOf(paramString)));
     paramTag = NfcA.get(paramTag);
     if (paramTag == null)
     {
       paramb.invoke(new e.a(13015, "unavailable tech"));
-      AppMethodBeat.o(207163);
+      AppMethodBeat.o(242145);
       return;
     }
     switch (paramString.hashCode())
@@ -49,7 +50,7 @@ public final class f
     for (;;)
     {
       paramb.invoke(paramTag);
-      AppMethodBeat.o(207163);
+      AppMethodBeat.o(242145);
       return;
       if (!paramString.equals("getAtqa")) {
         break;
@@ -57,11 +58,11 @@ public final class f
       paramString = paramTag.getAtqa();
       paramTag = paramString;
       if (paramString == null) {
-        paramTag = (byte[])miX.getValue();
+        paramTag = (byte[])pgZ.getValue();
       }
       paramString = new StringBuilder("atqa: ");
       String str = Arrays.toString(paramTag);
-      p.g(str, "java.util.Arrays.toString(this)");
+      p.j(str, "java.util.Arrays.toString(this)");
       Log.d("MicroMsg.AppBrand.NfcALogic", str);
       paramTag = (e)new e.b(paramTag);
       continue;
@@ -71,10 +72,30 @@ public final class f
       paramTag = (e)new e.b(Short.valueOf(paramTag.getSak()));
     }
   }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  static final class a
+    extends q
+    implements kotlin.g.a.a<byte[]>
+  {
+    public static final a phb;
+    
+    static
+    {
+      AppMethodBeat.i(241772);
+      phb = new a();
+      AppMethodBeat.o(241772);
+    }
+    
+    a()
+    {
+      super();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.rw.logic.f
  * JD-Core Version:    0.7.0.1
  */

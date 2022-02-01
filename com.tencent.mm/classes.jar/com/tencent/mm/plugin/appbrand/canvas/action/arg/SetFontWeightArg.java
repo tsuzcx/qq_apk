@@ -11,7 +11,7 @@ public class SetFontWeightArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetFontWeightArg> CREATOR;
-  public String cNw;
+  public String cOk;
   
   static
   {
@@ -51,7 +51,7 @@ public class SetFontWeightArg
       return false;
     }
     paramObject = (SetFontWeightArg)paramObject;
-    boolean bool = Objects.equals(this.cNw, paramObject.cNw);
+    boolean bool = Objects.equals(this.cOk, paramObject.cOk);
     AppMethodBeat.o(145172);
     return bool;
   }
@@ -59,7 +59,7 @@ public class SetFontWeightArg
   public int hashCode()
   {
     AppMethodBeat.i(145173);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.cNw });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.cOk });
     AppMethodBeat.o(145173);
     return i;
   }
@@ -68,7 +68,7 @@ public class SetFontWeightArg
   {
     AppMethodBeat.i(145169);
     super.i(paramParcel);
-    this.cNw = paramParcel.readString();
+    this.cOk = paramParcel.readString();
     AppMethodBeat.o(145169);
   }
   
@@ -76,7 +76,7 @@ public class SetFontWeightArg
   {
     AppMethodBeat.i(145170);
     super.parse(paramJSONObject);
-    this.cNw = paramJSONObject.optJSONArray("data").optString(0);
+    this.cOk = paramJSONObject.optJSONArray("data").optString(0);
     AppMethodBeat.o(145170);
   }
   
@@ -84,13 +84,13 @@ public class SetFontWeightArg
   {
     AppMethodBeat.i(145171);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.cNw);
+    paramParcel.writeString(this.cOk);
     AppMethodBeat.o(145171);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetFontWeightArg
  * JD-Core Version:    0.7.0.1
  */

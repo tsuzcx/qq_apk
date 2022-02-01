@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.performance;
 
-final class b {}
+public final class b {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

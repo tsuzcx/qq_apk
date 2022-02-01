@@ -9,56 +9,56 @@ import com.tencent.mm.view.recyclerview.WxRecyclerView;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/FinderImageBulletSubtitleLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bulletSubtitlePresenter", "Lcom/tencent/mm/plugin/finder/feed/FinderBulletSubtitlePresenter;", "bulletSubtitleViewCallback", "Lcom/tencent/mm/plugin/finder/feed/FinderBulletSubtitleViewCallback;", "bindData", "", "feed", "Lcom/tencent/mm/plugin/finder/storage/FeedData;", "tabType", "getFunctionSwitch", "", "isStartLoop", "onAttach", "onDetach", "onDetachedFromWindow", "pause", "refreshData", "reset", "resume", "setBulletSubtitleAlpha", "alpha", "", "startLoop", "switchFunction", "isTurnOn", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderImageBulletSubtitleLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bulletSubtitlePresenter", "Lcom/tencent/mm/plugin/finder/feed/FinderBulletSubtitlePresenter;", "bulletSubtitleViewCallback", "Lcom/tencent/mm/plugin/finder/feed/FinderBulletSubtitleViewCallback;", "bindData", "", "feed", "Lcom/tencent/mm/plugin/finder/storage/FeedData;", "tabType", "getFunctionSwitch", "", "isStartLoop", "onAttach", "onDetach", "onDetachedFromWindow", "pause", "refreshData", "reset", "resume", "setBulletSubtitleAlpha", "alpha", "", "startLoop", "switchFunction", "isTurnOn", "plugin-finder_release"})
 public final class FinderImageBulletSubtitleLayout
   extends FrameLayout
 {
-  public e tOr;
-  public d tOs;
+  public e xyR;
+  public d xyS;
   
   public FinderImageBulletSubtitleLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(243893);
+    AppMethodBeat.i(280655);
     paramContext = getContext();
-    p.g(paramContext, "context");
-    this.tOs = new d(paramContext);
-    this.tOr = new e((View)this, this.tOs);
-    AppMethodBeat.o(243893);
+    p.j(paramContext, "context");
+    this.xyS = new d(paramContext);
+    this.xyR = new e((View)this, this.xyS);
+    AppMethodBeat.o(280655);
   }
   
   public FinderImageBulletSubtitleLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(243894);
+    AppMethodBeat.i(280656);
     paramContext = getContext();
-    p.g(paramContext, "context");
-    this.tOs = new d(paramContext);
-    this.tOr = new e((View)this, this.tOs);
-    AppMethodBeat.o(243894);
+    p.j(paramContext, "context");
+    this.xyS = new d(paramContext);
+    this.xyR = new e((View)this, this.xyS);
+    AppMethodBeat.o(280656);
   }
   
   public final boolean getFunctionSwitch()
   {
-    AppMethodBeat.i(243890);
-    boolean bool = this.tOr.getFunctionSwitch();
-    AppMethodBeat.o(243890);
+    AppMethodBeat.i(280650);
+    boolean bool = this.xyR.getFunctionSwitch();
+    AppMethodBeat.o(280650);
     return bool;
   }
   
   protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(243892);
+    AppMethodBeat.i(280653);
     super.onDetachedFromWindow();
-    this.tOs.onDetach();
-    AppMethodBeat.o(243892);
+    this.xyS.onDetach();
+    AppMethodBeat.o(280653);
   }
   
   public final void setBulletSubtitleAlpha(float paramFloat)
   {
-    AppMethodBeat.i(243891);
-    this.tOr.dcy().setAlpha(paramFloat);
-    AppMethodBeat.o(243891);
+    AppMethodBeat.i(280651);
+    this.xyR.dsO().setAlpha(paramFloat);
+    AppMethodBeat.o(280651);
   }
 }
 

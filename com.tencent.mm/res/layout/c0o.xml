@@ -8,7 +8,7 @@
                 <FrameLayout android:layout_gravity="center" android:id="@id/ibw" android:background="@drawable/g9" android:layout_width="48.0dip" android:layout_height="24.0dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="24.0dip" android:layout_centerHorizontal="true">
                     <ImageView android:layout_gravity="center" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/byx" android:rotation="-90.0" />
                 </FrameLayout>
-                <android.support.v4.view.ViewPager android:id="@id/ic6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="30.0dip" android:layout_below="@id/ibw" />
+                <androidx.viewpager.widget.ViewPager android:id="@id/ic6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="30.0dip" android:layout_below="@id/ibw" />
             </RelativeLayout>
         </LinearLayout>
         <com.tencent.mm.plugin.story.ui.view.StoryActionView android:id="@id/ibq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_alignParentEnd="true" />

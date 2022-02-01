@@ -1,99 +1,60 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
-import java.util.LinkedList;
 
-public final class bkp
-  extends dop
+public class bkp
+  extends com.tencent.mm.cd.a
 {
-  public String eaO;
+  public String SVC;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(114017);
+    AppMethodBeat.i(169064);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.eaO == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: card_id");
-        AppMethodBeat.o(114017);
-        throw paramVarArgs;
+      if (this.SVC != null) {
+        paramVarArgs.f(1, this.SVC);
       }
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
-      }
-      if (this.eaO != null) {
-        paramVarArgs.e(2, this.eaO);
-      }
-      AppMethodBeat.o(114017);
+      AppMethodBeat.o(169064);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label418;
+      if (this.SVC == null) {
+        break label213;
       }
     }
-    label418:
-    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label213:
+    for (paramInt = g.a.a.b.b.a.g(1, this.SVC) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.eaO != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.eaO);
-      }
-      AppMethodBeat.o(114017);
-      return i;
+      AppMethodBeat.o(169064);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.eaO == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: card_id");
-          AppMethodBeat.o(114017);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(114017);
+        AppMethodBeat.o(169064);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         bkp localbkp = (bkp)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(114017);
+          AppMethodBeat.o(169064);
           return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localbkp.BaseRequest = ((jr)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(114017);
-          return 0;
         }
-        localbkp.eaO = ((g.a.a.a.a)localObject1).UbS.readString();
-        AppMethodBeat.o(114017);
+        localbkp.SVC = locala.abFh.readString();
+        AppMethodBeat.o(169064);
         return 0;
       }
-      AppMethodBeat.o(114017);
+      AppMethodBeat.o(169064);
       return -1;
     }
   }

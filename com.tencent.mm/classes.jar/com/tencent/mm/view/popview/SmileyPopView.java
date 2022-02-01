@@ -11,37 +11,41 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ce.e;
 import com.tencent.mm.emoji.a.b.a;
-import com.tencent.mm.emoji.a.f;
 import com.tencent.mm.emoji.a.f.a;
+import com.tencent.mm.emoji.b.q;
 import com.tencent.mm.emoji.e.a;
 import com.tencent.mm.plugin.gif.MMGIFException;
+import com.tencent.mm.plugin.m.a.c;
+import com.tencent.mm.plugin.m.a.e;
+import com.tencent.mm.plugin.m.a.g;
+import com.tencent.mm.plugin.m.a.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.at;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.vfs.u;
 import java.util.ArrayList;
 import java.util.Iterator;
+import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.n.n;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/view/popview/SmileyPopView;", "Lcom/tencent/mm/view/popview/AbstractPopView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "animDrawable", "Lcom/tencent/mm/plugin/gif/MMWXGFDrawable;", "descView", "Landroid/widget/TextView;", "popBottomWidth", "popLayoutParams", "Landroid/view/WindowManager$LayoutParams;", "preview", "Landroid/widget/ImageView;", "previewFrame", "Landroid/view/View;", "getWindowLayoutParams", "setSmileyItem", "", "item", "Lcom/tencent/mm/emoji/model/SmileyInfo;", "updateWindowLayoutParams", "anchor", "Companion", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/popview/SmileyPopView;", "Lcom/tencent/mm/view/popview/AbstractPopView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "animDrawable", "Lcom/tencent/mm/plugin/gif/MMWXGFDrawable;", "descView", "Landroid/widget/TextView;", "popBottomWidth", "popLayoutParams", "Landroid/view/WindowManager$LayoutParams;", "preview", "Landroid/widget/ImageView;", "previewFrame", "Landroid/view/View;", "getWindowLayoutParams", "onWindowFocusChanged", "", "hasWindowFocus", "", "setSmileyItem", "item", "Lcom/tencent/mm/emoji/model/SmileyInfo;", "updateWindowLayoutParams", "anchor", "Companion", "plugin-emojisdk_release"})
 public final class SmileyPopView
   extends AbstractPopView
 {
-  public static final SmileyPopView.a Rqy;
-  private final WindowManager.LayoutParams Rqm;
-  private View Rqv;
-  private ImageView Rqw;
-  private int Rqx;
-  private com.tencent.mm.plugin.gif.h gVb;
-  private TextView xVY;
+  public static final SmileyPopView.a YRW;
+  private final WindowManager.LayoutParams YRK;
+  private View YRT;
+  private ImageView YRU;
+  private int YRV;
+  private com.tencent.mm.plugin.gif.h jFU;
+  private TextView zQG;
   
   static
   {
-    AppMethodBeat.i(200105);
-    Rqy = new SmileyPopView.a((byte)0);
-    AppMethodBeat.o(200105);
+    AppMethodBeat.i(231706);
+    YRW = new SmileyPopView.a((byte)0);
+    AppMethodBeat.o(231706);
   }
   
   public SmileyPopView(Context paramContext)
@@ -58,77 +62,87 @@ public final class SmileyPopView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(105305);
-    AbstractPopView.inflate(paramContext, 2131493942, (ViewGroup)this);
-    this.Rqv = findViewById(2131307960);
-    this.Rqw = ((ImageView)findViewById(2131300025));
-    this.xVY = ((TextView)findViewById(2131300024));
-    this.Rqm = new WindowManager.LayoutParams(2, 264, 1);
-    this.Rqx = getResources().getDimensionPixelOffset(2131166948);
-    this.Rqm.width = paramContext.getResources().getDimensionPixelSize(2131166947);
-    this.Rqm.height = paramContext.getResources().getDimensionPixelSize(2131166945);
-    this.Rqm.gravity = 49;
+    AbstractPopView.inflate(paramContext, a.h.emoji_pop_smiley_view, (ViewGroup)this);
+    this.YRT = findViewById(a.g.smiley_pop_frame);
+    this.YRU = ((ImageView)findViewById(a.g.emoji_pop_image));
+    this.zQG = ((TextView)findViewById(a.g.emoji_pop_desc));
+    this.YRK = new WindowManager.LayoutParams(2, 264, 1);
+    this.YRV = getResources().getDimensionPixelOffset(a.e.smiley_pop_frame_width_bottom);
+    this.YRK.width = paramContext.getResources().getDimensionPixelSize(a.e.smiley_pop_frame_width);
+    this.YRK.height = paramContext.getResources().getDimensionPixelSize(a.e.smiley_pop_frame_height);
+    this.YRK.gravity = 49;
     AppMethodBeat.o(105305);
   }
   
   public final WindowManager.LayoutParams getWindowLayoutParams()
   {
-    return this.Rqm;
+    return this.YRK;
   }
   
-  public final void hI(View paramView)
+  public final void jd(View paramView)
   {
     AppMethodBeat.i(105307);
-    kotlin.g.b.p.h(paramView, "anchor");
-    kO(paramView.getContext());
+    p.k(paramView, "anchor");
+    lK(paramView.getContext());
     paramView.setPressed(false);
     paramView.setSelected(false);
     int[] arrayOfInt = new int[2];
     paramView.getLocationOnScreen(arrayOfInt);
     Resources localResources = getResources();
-    kotlin.g.b.p.g(localResources, "resources");
+    p.j(localResources, "resources");
     int i = localResources.getDisplayMetrics().widthPixels;
     int j = arrayOfInt[0] + paramView.getMeasuredWidth() / 2;
-    int k = (this.Rqm.width - this.Rqx) / 2;
-    this.Rqm.y = (arrayOfInt[1] - this.Rqm.height + paramView.getMeasuredHeight() - this.Rqa);
-    if (j < this.Rqm.width / 2)
+    int k = (this.YRK.width - this.YRV) / 2;
+    this.YRK.y = (arrayOfInt[1] - this.YRK.height + paramView.getMeasuredHeight() - this.YRy);
+    if (j < this.YRK.width / 2)
     {
-      paramView = this.Rqv;
+      paramView = this.YRT;
       if (paramView == null) {
-        kotlin.g.b.p.hyc();
+        p.iCn();
       }
-      paramView.setBackground(at.aN(getContext(), 2130968996));
-      this.Rqm.x = (j + k - i / 2);
+      paramView.setBackground(aw.bf(getContext(), a.c.emoji_pop_bg_smiley_left));
+      this.YRK.x = (j + k - i / 2);
       AppMethodBeat.o(105307);
       return;
     }
-    if (this.Rqm.width / 2 + j > i)
+    if (this.YRK.width / 2 + j > i)
     {
-      paramView = this.Rqv;
+      paramView = this.YRT;
       if (paramView == null) {
-        kotlin.g.b.p.hyc();
+        p.iCn();
       }
-      paramView.setBackground(at.aN(getContext(), 2130968997));
-      this.Rqm.x = (j - k - i / 2);
+      paramView.setBackground(aw.bf(getContext(), a.c.emoji_pop_bg_smiley_right));
+      this.YRK.x = (j - k - i / 2);
       AppMethodBeat.o(105307);
       return;
     }
-    paramView = this.Rqv;
+    paramView = this.YRT;
     if (paramView == null) {
-      kotlin.g.b.p.hyc();
+      p.iCn();
     }
-    paramView.setBackground(at.aN(getContext(), 2130968995));
-    this.Rqm.x = (j - i / 2);
+    paramView.setBackground(aw.bf(getContext(), a.c.emoji_pop_bg_smiley));
+    this.YRK.x = (j - i / 2);
     AppMethodBeat.o(105307);
   }
   
-  public final void setSmileyItem(com.tencent.mm.emoji.b.p paramp)
+  public final void onWindowFocusChanged(boolean paramBoolean)
+  {
+    AppMethodBeat.i(231695);
+    super.onWindowFocusChanged(paramBoolean);
+    if (!paramBoolean) {
+      dismiss();
+    }
+    AppMethodBeat.o(231695);
+  }
+  
+  public final void setSmileyItem(q paramq)
   {
     AppMethodBeat.i(105306);
-    kotlin.g.b.p.h(paramp, "item");
-    Object localObject1 = e.gxR().bie(paramp.key);
-    Object localObject2 = com.tencent.mm.ce.b.gxI().bib((String)localObject1);
-    Log.i("MicroMsg.SmileyPopView", "pop smiley %s, %s, %s", new Object[] { paramp.key, localObject1, localObject2 });
-    kotlin.g.b.p.g(localObject2, "desc");
+    p.k(paramq, "item");
+    Object localObject1 = com.tencent.mm.cl.f.htQ().buw(paramq.key);
+    Object localObject2 = com.tencent.mm.cl.b.htF().buu((String)localObject1);
+    Log.i("MicroMsg.SmileyPopView", "pop smiley %s, %s, %s", new Object[] { paramq.key, localObject1, localObject2 });
+    p.j(localObject2, "desc");
     int k = n.a((CharSequence)localObject2, "[", 0, false, 6);
     int j = n.a((CharSequence)localObject2, "]", 0, false, 6);
     int i = j;
@@ -136,20 +150,20 @@ public final class SmileyPopView
       i = ((String)localObject2).length();
     }
     localObject1 = ((String)localObject2).substring(k + 1, i);
-    kotlin.g.b.p.g(localObject1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-    localObject2 = this.xVY;
+    p.j(localObject1, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+    localObject2 = this.zQG;
     if (localObject2 != null) {
       ((TextView)localObject2).setText((CharSequence)localObject1);
     }
-    localObject1 = f.gVz;
-    localObject2 = ((Iterable)f.auu().gUV).iterator();
+    localObject1 = com.tencent.mm.emoji.a.f.jGv;
+    localObject2 = ((Iterable)com.tencent.mm.emoji.a.f.aBp().jFL).iterator();
     do
     {
       if (!((Iterator)localObject2).hasNext()) {
         break;
       }
       localObject1 = ((Iterator)localObject2).next();
-    } while (!kotlin.g.b.p.j(((b.a)localObject1).key, paramp.key));
+    } while (!p.h(((b.a)localObject1).key, paramq.key));
     for (;;)
     {
       localObject2 = (b.a)localObject1;
@@ -157,12 +171,12 @@ public final class SmileyPopView
       if (localObject2 == null)
       {
         localObject1 = null;
-        localObject3 = this.gVb;
+        localObject3 = this.jFU;
         if (localObject3 != null) {
           ((com.tencent.mm.plugin.gif.h)localObject3).recycle();
         }
-        this.gVb = null;
-        if (!s.YS((String)localObject1)) {
+        this.jFU = null;
+        if (!u.agG((String)localObject1)) {
           break;
         }
       }
@@ -170,30 +184,30 @@ public final class SmileyPopView
       {
         try
         {
-          this.gVb = new com.tencent.mm.plugin.gif.h(s.aW((String)localObject1, 0, -1));
-          paramp = this.Rqw;
-          if (paramp != null) {
-            paramp.setImageDrawable((Drawable)this.gVb);
+          this.jFU = new com.tencent.mm.plugin.gif.h(u.aY((String)localObject1, 0, -1));
+          paramq = this.YRU;
+          if (paramq != null) {
+            paramq.setImageDrawable((Drawable)this.jFU);
           }
-          paramp = this.gVb;
-          if (paramp != null)
+          paramq = this.jFU;
+          if (paramq != null)
           {
-            paramp.resume();
+            paramq.resume();
             AppMethodBeat.o(105306);
             return;
             localObject1 = null;
             continue;
             localObject1 = new StringBuilder();
-            localObject3 = a.hdT;
-            localObject1 = a.aww() + ((b.a)localObject2).gUW;
+            localObject3 = a.jPz;
+            localObject1 = a.aDE() + ((b.a)localObject2).jFM;
           }
         }
-        catch (Exception paramp)
+        catch (Exception paramq)
         {
           for (;;)
           {
-            if ((paramp instanceof MMGIFException)) {
-              com.tencent.mm.plugin.report.service.h.CyF.dN(711, 22);
+            if ((paramq instanceof MMGIFException)) {
+              com.tencent.mm.plugin.report.service.h.IzE.el(711, 22);
             }
           }
           AppMethodBeat.o(105306);
@@ -201,26 +215,26 @@ public final class SmileyPopView
         }
       }
     }
-    localObject1 = this.Rqw;
+    localObject1 = this.YRU;
     if (localObject1 != null)
     {
-      e.gxR();
-      ((ImageView)localObject1).setImageDrawable(e.bid(paramp.key));
+      com.tencent.mm.cl.f.htQ();
+      ((ImageView)localObject1).setImageDrawable(com.tencent.mm.cl.f.buv(paramq.key));
     }
-    paramp = new StringBuilder("setSmileyItem: ").append(paramp.key).append(", ");
-    localObject1 = f.gVz;
-    Log.i("MicroMsg.SmileyPopView", f.auu().gUV.size());
+    paramq = new StringBuilder("setSmileyItem: ").append(paramq.key).append(", ");
+    localObject1 = com.tencent.mm.emoji.a.f.jGv;
+    Log.i("MicroMsg.SmileyPopView", com.tencent.mm.emoji.a.f.aBp().jFL.size());
     if (localObject2 != null)
     {
-      paramp = f.gVz;
-      f.a.auz();
+      paramq = com.tencent.mm.emoji.a.f.jGv;
+      f.a.aBu();
     }
     AppMethodBeat.o(105306);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.view.popview.SmileyPopView
  * JD-Core Version:    0.7.0.1
  */

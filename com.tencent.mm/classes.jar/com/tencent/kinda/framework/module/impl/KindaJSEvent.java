@@ -116,15 +116,15 @@ public class KindaJSEvent
   
   public KindaJSEventType kindaGetType()
   {
-    AppMethodBeat.i(214451);
+    AppMethodBeat.i(264266);
     if (this.mDelegate != null)
     {
       localKindaJSEventType = this.mDelegate.kindaGetType();
-      AppMethodBeat.o(214451);
+      AppMethodBeat.o(264266);
       return localKindaJSEventType;
     }
     KindaJSEventType localKindaJSEventType = this.mEventType;
-    AppMethodBeat.o(214451);
+    AppMethodBeat.o(264266);
     return localKindaJSEventType;
   }
   

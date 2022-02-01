@@ -5,24 +5,33 @@ import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 public abstract class a
 {
-  a obo;
+  private a rcS;
+  
+  public abstract void CX(int paramInt);
+  
+  public abstract void CY(int paramInt);
+  
+  final void a(a parama)
+  {
+    this.rcS = parama;
+  }
   
   protected void a(WeImageView paramWeImageView) {}
   
-  public abstract void bSx();
+  public abstract void cfx();
   
-  public abstract View bYp();
+  public abstract void cfy();
+  
+  public abstract View getItemView();
   
   protected final boolean getViewEnable()
   {
-    if (bYp() == null) {}
-    while (bYp().getVisibility() != 0) {
+    if (getItemView() == null) {}
+    while (getItemView().getVisibility() != 0) {
       return false;
     }
     return true;
   }
-  
-  public abstract void onDetached();
   
   public abstract void onPause();
   
@@ -30,29 +39,25 @@ public abstract class a
   
   protected final void setViewEnable(boolean paramBoolean)
   {
-    if (bYp() == null) {}
+    if (getItemView() == null) {}
     for (;;)
     {
       return;
       if (paramBoolean) {
-        if (bYp().getVisibility() != 0) {
-          bYp().setVisibility(0);
+        if (getItemView().getVisibility() != 0) {
+          getItemView().setVisibility(0);
         }
       }
-      while (this.obo != null)
+      while (this.rcS != null)
       {
-        this.obo.a(this, bYp(), paramBoolean);
+        this.rcS.a(this, getItemView(), paramBoolean);
         return;
-        if (bYp().getVisibility() != 8) {
-          bYp().setVisibility(8);
+        if (getItemView().getVisibility() != 8) {
+          getItemView().setVisibility(8);
         }
       }
     }
   }
-  
-  public abstract void zu(int paramInt);
-  
-  public abstract void zv(int paramInt);
   
   static abstract interface a
   {
@@ -61,7 +66,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.a
  * JD-Core Version:    0.7.0.1
  */

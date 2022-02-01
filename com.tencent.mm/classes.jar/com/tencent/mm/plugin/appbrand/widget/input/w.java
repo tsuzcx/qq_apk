@@ -1,956 +1,580 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
 import android.content.Context;
-import android.content.ContextWrapper;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.view.ContextThemeWrapper;
+import android.graphics.Rect;
+import android.text.Editable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.appbrand.jsapi.h.a;
-import com.tencent.mm.plugin.appbrand.page.ao;
-import com.tencent.mm.plugin.appbrand.ui.y;
-import com.tencent.mm.plugin.appbrand.widget.input.panel.e.a;
-import com.tencent.mm.plugin.appbrand.widget.input.panel.e.b;
-import com.tencent.mm.plugin.appbrand.widget.input.panel.f;
-import com.tencent.mm.sdk.platformtools.KeyBoardUtil;
+import com.tencent.mm.model.ad.b;
+import com.tencent.mm.plugin.appbrand.jsapi.h.c;
+import com.tencent.mm.plugin.appbrand.n.a;
+import com.tencent.mm.plugin.appbrand.widget.input.e.e;
+import com.tencent.mm.plugin.appbrand.widget.input.e.f;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.system.AndroidContextUtil;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.ui.tools.g.a;
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
+import kotlin.l;
 
-public class w
-  extends LinearLayout
-  implements ac, u.b
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureInputComponent;", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandInputComponent;", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureInputWidget;", "inputType", "", "pageView", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "inputParams", "Lcom/tencent/mm/plugin/appbrand/widget/input/params/InsertParams;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;Lcom/tencent/mm/plugin/appbrand/widget/input/params/InsertParams;)V", "forceLightMode", "", "inputWidget", "keyboardPanel", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureKeyboardPanel;", "myTag", "performingHideKeyboard", "performingShowKeyboard", "sessionId", "style", "Lcom/tencent/mm/plugin/appbrand/widget/input/params/UpdateParams;", "adjustPositionOnFocused", "clearInputWidgetFocus", "", "currentValue", "Landroid/text/Editable;", "dispatchKeyboardComplete", "isInputDone", "doHideKeyboard", "doShowKeyboard", "findKeyboardPanel", "getInput", "getInputPanel", "Landroid/view/View;", "P", "Lcom/tencent/mm/plugin/appbrand/widget/input/IBaseInputPanel;", "getInputPanelMarginBottom", "", "getPosition", "Landroid/graphics/Rect;", "hideKeyboard", "isFocused", "onFocusChanged", "hasFocus", "showKeyboard", "selectionStart", "selectionEnd", "updateStyle", "params", "updateValue", "value", "luggage-wxa-app-input-ext_release"})
+public final class w
+  extends c<x>
 {
-  private static final int VIEW_ID;
-  private static com.tencent.mm.plugin.appbrand.n.a otP;
-  private static boolean otQ;
-  private static boolean ouo;
-  private static final b oup;
-  private Context context;
-  private View otO;
-  private List<d> otZ;
-  private int oua;
-  private final Runnable oub;
-  private e ouc;
-  private c oud;
-  private boolean oue;
-  private f ouf;
-  private com.tencent.mm.plugin.appbrand.widget.input.panel.e oug;
-  private View ouh;
-  private ImageButton oui;
-  private boolean ouj;
-  private View ouk;
-  private boolean oul;
-  public EditText oum;
-  private final ad oun;
-  private int state;
+  private final String bqj;
+  private boolean nnk;
+  private com.tencent.mm.plugin.appbrand.widget.input.e.h rtY;
+  private boolean rtZ;
+  private boolean rua;
+  private x rwl;
+  private z rwm;
+  private final String sessionId;
   
-  static
+  public w(String paramString, com.tencent.mm.plugin.appbrand.page.ad paramad, e parame)
   {
-    AppMethodBeat.i(136553);
-    VIEW_ID = 2131296843;
-    otP = null;
-    otQ = false;
-    ouo = false;
-    oup = new g((byte)0);
-    AppMethodBeat.o(136553);
-  }
-  
-  public w(Context paramContext, com.tencent.mm.plugin.appbrand.n.a parama)
-  {
-    super(paramContext);
-    AppMethodBeat.i(230587);
-    this.otZ = new ArrayList();
-    this.oua = 0;
-    this.oub = new Runnable()
+    super(paramString, paramad, parame.rtN);
+    AppMethodBeat.i(213763);
+    this.bqj = ("MicroMsg.AppBrand.AppBrandSecureInputComponent#" + this.rtN);
+    parame = parame.rAh;
+    if (parame != null)
     {
-      public final void run()
+      parame = String.format("AppBrandSecureInput#%s#%s", Arrays.copyOf(new Object[] { Integer.valueOf(paramad.getComponentId()), parame }, 2));
+      kotlin.g.b.p.j(parame, "java.lang.String.format(this, *args)");
+      this.sessionId = parame;
+      parame = paramad.getContext();
+      kotlin.g.b.p.j(parame, "pageView.context");
+      this.rwl = new x(parame);
+      Log.d(this.bqj, "<init>, inputType: " + paramString + ", inputId: " + this.rtN + ", sessionId: " + this.sessionId);
+      paramad.a((h.c)new h.c()
       {
-        AppMethodBeat.i(136503);
-        if ((w.a(w.this) == null) || (!android.support.v4.view.u.aD(w.a(w.this))))
+        public final void onDestroy()
         {
-          AppMethodBeat.o(136503);
-          return;
-        }
-        if (w.b(w.this).cbH())
-        {
-          Log.d("MicroMsg.AppBrandSoftKeyboardPanel", "postMeasure inLayout, skip");
-          w.this.post(this);
-          AppMethodBeat.o(136503);
-          return;
-        }
-        w.c(w.this);
-        AppMethodBeat.o(136503);
-      }
-    };
-    this.oue = false;
-    this.state = 2;
-    this.context = paramContext;
-    if ((paramContext instanceof ad))
-    {
-      paramContext = (ad)paramContext;
-      this.oun = paramContext;
-      Log.d("MicroMsg.AppBrandSoftKeyboardPanel", "mComponentView is assigned");
-      otP = parama;
-      Log.d("MicroMsg.AppBrandSoftKeyboardPanel", "init");
-      super.setId(VIEW_ID);
-      setOrientation(1);
-      if (!otQ) {
-        break label304;
-      }
-      this.otO = otP;
-      label113:
-      if (this.otO != null)
-      {
-        paramContext = (ViewGroup)this.otO.getParent();
-        if (paramContext != null)
-        {
-          Log.i("MicroMsg.AppBrandSoftKeyboardPanel", "toolbar is already exsited in a layout,the class of the parent is %s  the id is : %d", new Object[] { paramContext.getClass().toString(), Integer.valueOf(paramContext.getId()) });
-          paramContext.removeView(this.otO);
-        }
-      }
-      addView(this.otO);
-      ouo = false;
-      paramContext = (e.b)com.tencent.luggage.a.e.M(e.b.class);
-      if (paramContext != null) {
-        break label315;
-      }
-    }
-    label304:
-    label315:
-    for (paramContext = null;; paramContext = paramContext.ec(this.context))
-    {
-      this.oug = paramContext;
-      if (this.oug == null) {
-        this.oug = new e.a(this.context);
-      }
-      this.ouh = this.oug.getPanelView();
-      this.ouh.setVisibility(8);
-      this.ouh.setBackgroundColor(0);
-      this.oug.setOnTextOperationListener(new f()
-      {
-        public final void aHC()
-        {
-          AppMethodBeat.i(136507);
-          if (w.d(w.this) != null) {
-            w.d(w.this).afZ("[DELETE_EMOTION]");
-          }
-          AppMethodBeat.o(136507);
-        }
-        
-        public final void append(String paramAnonymousString)
-        {
-          AppMethodBeat.i(136506);
-          if (w.d(w.this) != null) {
-            w.d(w.this).afZ(paramAnonymousString);
-          }
-          AppMethodBeat.o(136506);
+          AppMethodBeat.i(213859);
+          Log.i(w.a(this.rwn), "onDestroy");
+          com.tencent.mm.model.ad.beh().Ro(w.c(this.rwn));
+          AppMethodBeat.o(213859);
         }
       });
-      addView(this.ouh);
-      Nq();
-      AppMethodBeat.o(230587);
-      return;
-      paramContext = new com.tencent.mm.plugin.appbrand.widget.input.b.a();
-      break;
-      this.otO = Ns();
-      break label113;
-    }
-  }
-  
-  private void Ah(final int paramInt)
-  {
-    AppMethodBeat.i(136533);
-    post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(136508);
-        int i = w.e(w.this);
-        if (!w.this.isShown()) {
-          w.a(w.this, 2);
-        }
-        while (w.f(w.this) == null)
+      paramString = this.rwl;
+      if (paramString != null) {
+        paramString.setListener((x.a)new x.a()
         {
-          AppMethodBeat.o(136508);
-          return;
-          w.a(w.this, paramInt);
-        }
-        if ((i != w.e(w.this)) && (!this.ous)) {
-          w.f(w.this).hJ(w.e(w.this));
-        }
-        AppMethodBeat.o(136508);
+          public final void coR()
+          {
+            AppMethodBeat.i(213984);
+            w.d(this.rwn);
+            AppMethodBeat.o(213984);
+          }
+        });
       }
-    });
-    AppMethodBeat.o(136533);
-  }
-  
-  public static w b(View paramView, com.tencent.mm.plugin.appbrand.n.a parama)
-  {
-    AppMethodBeat.i(230586);
-    if (otP != parama)
-    {
-      Log.d("MicroMsg.AppBrandSoftKeyboardPanel", "mComponentView != componentView so we set mComponentView = componentView;");
-      otP = parama;
-    }
-    n localn = n.cW(paramView);
-    if (localn == null)
-    {
-      AppMethodBeat.o(230586);
-      return null;
-    }
-    if ((localn.getOnLayoutListener() == null) || (!(localn.getOnLayoutListener() instanceof u))) {
-      localn.setOnLayoutListener(new u());
-    }
-    Object localObject1 = dc(paramView);
-    Object localObject2;
-    if (localObject1 == null)
-    {
-      localObject2 = AndroidContextUtil.castActivityOrNull(paramView.getContext());
-      localObject1 = localObject2;
-      if (localObject2 == null)
+      paramad = this.sessionId;
+      paramString = localObject;
+      if (paramad != null)
       {
-        localObject1 = paramView.getContext();
-        if (localObject1 == null) {
-          break label170;
-        }
-        if ((localObject1 instanceof ContextThemeWrapper)) {
-          localObject1 = (ContextThemeWrapper)localObject1;
+        paramad = com.tencent.mm.model.ad.beh().Rn(paramad);
+        paramString = localObject;
+        if (paramad != null) {
+          paramString = paramad.getString("SecureInputValue", null);
         }
       }
-      else
-      {
-        label119:
-        if (!(paramView instanceof w)) {
-          break label175;
-        }
-        paramView = (w)paramView;
-        label131:
-        localn.cX(paramView);
+      paramad = (CharSequence)paramString;
+      if ((paramad != null) && (paramad.length() != 0)) {
+        break label305;
       }
     }
-    for (;;)
+    label305:
+    for (int i = 1;; i = 0)
     {
-      AppMethodBeat.o(230586);
-      return paramView;
-      if ((localObject1 instanceof ContextWrapper))
-      {
-        localObject2 = ((ContextWrapper)localObject1).getBaseContext();
-        if (localObject2 != localObject1)
-        {
-          localObject1 = localObject2;
-          break;
-        }
+      if (i != 0) {
+        break label311;
       }
-      label170:
-      localObject1 = null;
-      break label119;
-      label175:
-      paramView = new w((Context)localObject1, parama);
-      break label131;
-      paramView = (View)localObject1;
-    }
-  }
-  
-  private void cbI()
-  {
-    AppMethodBeat.i(136531);
-    Np();
-    ((u)n.cW(this).getOnLayoutListener()).otH = this;
-    AppMethodBeat.o(136531);
-  }
-  
-  private void cbJ()
-  {
-    AppMethodBeat.i(136532);
-    n localn = n.cW(this);
-    if (localn == null)
-    {
-      AppMethodBeat.o(136532);
+      paramad = this.rwl;
+      if (paramad == null) {
+        break label311;
+      }
+      paramad.setText((CharSequence)paramString);
+      AppMethodBeat.o(213763);
       return;
-    }
-    if (localn.getOnLayoutListener() == null)
-    {
-      AppMethodBeat.o(136532);
-      return;
-    }
-    ((u)localn.getOnLayoutListener()).otH = null;
-    AppMethodBeat.o(136532);
-  }
-  
-  private void cbK()
-  {
-    AppMethodBeat.i(136534);
-    cbM();
-    if (this.oum != null)
-    {
-      InputMethodManager localInputMethodManager = aj.dg(this.oum);
-      if (!localInputMethodManager.showSoftInput(this.oum, 1)) {
-        localInputMethodManager.showSoftInput(this.oum, 2);
-      }
-      AppMethodBeat.o(136534);
-      return;
-    }
-    this.oun.showVKB();
-    AppMethodBeat.o(136534);
-  }
-  
-  private void cbL()
-  {
-    AppMethodBeat.i(136535);
-    oup.n(this);
-    if (this.oui != null) {
-      this.oui.setSelected(true);
-    }
-    Ah(1);
-    AppMethodBeat.o(136535);
-  }
-  
-  private void cbM()
-  {
-    AppMethodBeat.i(136536);
-    oup.m(this);
-    if (this.oui != null) {
-      this.oui.setSelected(false);
-    }
-    Ah(0);
-    AppMethodBeat.o(136536);
-  }
-  
-  private static void db(View paramView)
-  {
-    AppMethodBeat.i(230589);
-    if (paramView != null)
-    {
-      ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
-      if (localViewGroup != null) {
-        localViewGroup.removeView(paramView);
-      }
-    }
-    AppMethodBeat.o(230589);
-  }
-  
-  public static w dc(View paramView)
-  {
-    AppMethodBeat.i(136518);
-    paramView = (w)paramView.getRootView().findViewById(VIEW_ID);
-    AppMethodBeat.o(136518);
-    return paramView;
-  }
-  
-  private void setPanelHeightImpl(int paramInt)
-  {
-    AppMethodBeat.i(136524);
-    if (this.oug.Af(paramInt)) {
-      this.oub.run();
-    }
-    AppMethodBeat.o(136524);
-  }
-  
-  protected final void Ag(int paramInt)
-  {
-    AppMethodBeat.i(258632);
-    super.setId(paramInt);
-    AppMethodBeat.o(258632);
-  }
-  
-  final void Ai(int paramInt)
-  {
-    AppMethodBeat.i(136542);
-    int i = paramInt;
-    if (paramInt == 0)
-    {
-      i = paramInt;
-      if (y.cI(this)) {
-        i = 8;
-      }
-    }
-    if (getVisibility() == i)
-    {
-      AppMethodBeat.o(136542);
-      return;
-    }
-    super.setVisibility(i);
-    if (i == 0)
-    {
-      cbI();
-      AppMethodBeat.o(136542);
-      return;
-    }
-    cbJ();
-    AppMethodBeat.o(136542);
-  }
-  
-  protected void Np()
-  {
-    AppMethodBeat.i(136530);
-    b(this, otP);
-    AppMethodBeat.o(136530);
-  }
-  
-  protected void Nq()
-  {
-    boolean bool = false;
-    AppMethodBeat.i(136537);
-    if (this.otO == null)
-    {
-      AppMethodBeat.o(136537);
-      return;
-    }
-    w.a locala;
-    int i;
-    if ((this.otO instanceof w.a))
-    {
-      locala = (w.a)this.otO;
-      if (this.ouj) {
-        break label89;
-      }
-      i = 1;
-      if (this.oul) {
-        break label94;
-      }
-    }
-    label89:
-    label94:
-    for (int j = 1;; j = 0)
-    {
-      if (((i & j) != 0) || (y.cI(this))) {
-        bool = true;
-      }
-      locala.setIsHide(bool);
-      AppMethodBeat.o(136537);
-      return;
-      i = 0;
+      parame = null;
       break;
     }
+    label311:
+    AppMethodBeat.o(213763);
   }
   
-  protected void Nr()
+  private final z coQ()
   {
-    AppMethodBeat.i(136545);
-    setCanSmileyInput(this.ouj);
-    setShowDoneButton(this.oul);
-    Nq();
-    AppMethodBeat.o(136545);
-  }
-  
-  protected <T extends View,  extends w.a> T Ns()
-  {
-    AppMethodBeat.i(136529);
-    w.h localh = new w.h(getContext());
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    Drawable localDrawable = MMApplicationContext.getResources().getDrawable(2131235290);
-    localStateListDrawable.addState(new int[] { 16842913 }, localDrawable);
-    localDrawable = MMApplicationContext.getResources().getDrawable(2131235289);
-    localStateListDrawable.addState(new int[0], localDrawable);
-    this.oui = ((ImageButton)localh.findViewById(2131307964));
-    this.oui.setSelected(false);
-    this.oui.setImageDrawable(localStateListDrawable);
-    this.oui.setOnClickListener(new View.OnClickListener()
+    AppMethodBeat.i(213759);
+    if (this.rwm == null)
     {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(136504);
-        b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/input/AppBrandSoftKeyboardPanel$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        if (paramAnonymousView.isSelected())
-        {
-          w.cbO().o(w.this);
-          paramAnonymousView.setSelected(false);
-        }
-        for (;;)
-        {
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/input/AppBrandSoftKeyboardPanel$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(136504);
-          return;
-          w.cbO().p(w.this);
-          paramAnonymousView.setSelected(true);
-        }
+      localObject = this.rwl;
+      if (localObject == null) {
+        break label43;
       }
-    });
-    this.ouk = localh.findViewById(2131307963);
-    this.ouk.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(136505);
-        b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/input/AppBrandSoftKeyboardPanel$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        w.this.cm(true);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/input/AppBrandSoftKeyboardPanel$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(136505);
-      }
-    });
-    AppMethodBeat.o(136529);
-    return localh;
-  }
-  
-  public final void a(d paramd)
-  {
-    AppMethodBeat.i(230584);
-    if (!this.otZ.contains(paramd)) {
-      this.otZ.add(paramd);
     }
-    AppMethodBeat.o(230584);
-  }
-  
-  public final void b(d paramd)
-  {
-    AppMethodBeat.i(230585);
-    this.otZ.remove(paramd);
-    AppMethodBeat.o(230585);
-  }
-  
-  public final boolean b(EditText paramEditText)
-  {
-    if (paramEditText == this.oum)
+    label43:
+    for (Object localObject = ((x)localObject).getInputPanel();; localObject = null)
     {
-      this.oum = null;
+      this.rwm = ((z)localObject);
+      localObject = this.rwm;
+      AppMethodBeat.o(213759);
+      return localObject;
+    }
+  }
+  
+  private boolean isFocused()
+  {
+    AppMethodBeat.i(213726);
+    Log.d(this.bqj, "isFocused");
+    if (this.rwl == null)
+    {
+      Log.d(this.bqj, "isFocused, inputWidget is null");
+      AppMethodBeat.o(213726);
+      return false;
+    }
+    Object localObject = this.rwl;
+    if ((localObject != null) && (true == ((x)localObject).isFocused()))
+    {
+      Log.d(this.bqj, "isFocused, inputWidget focused");
+      AppMethodBeat.o(213726);
       return true;
     }
-    return false;
-  }
-  
-  public final void bQ(boolean paramBoolean)
-  {
-    AppMethodBeat.i(136523);
-    Log.d("MicroMsg.AppBrandSoftKeyboardPanel", "onKeyboardStateChanged, kbShown = %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (paramBoolean)
+    localObject = coQ();
+    if (localObject == null)
     {
-      Ai(0);
-      cbM();
-      AppMethodBeat.o(136523);
-      return;
+      Log.d(this.bqj, "isFocused, keyboardPanel is null");
+      AppMethodBeat.o(213726);
+      return false;
     }
-    if (isShown())
+    if (!((z)localObject).isShown())
     {
-      if ((this.ouj) && (1 == this.state))
-      {
-        cbL();
-        AppMethodBeat.o(136523);
-        return;
-      }
-      hide();
+      Log.d(this.bqj, "isFocused, keyboardPanel is not shown");
+      AppMethodBeat.o(213726);
+      return false;
     }
-    AppMethodBeat.o(136523);
-  }
-  
-  public final boolean cbD()
-  {
-    AppMethodBeat.i(136520);
-    boolean bool = this.oug.cbD();
-    AppMethodBeat.o(136520);
+    boolean bool = kotlin.g.b.p.h(((z)localObject).getAttachedInputWidget(), this.rwl);
+    AppMethodBeat.o(213726);
     return bool;
   }
   
-  public final void cbN()
+  private final void kq(boolean paramBoolean)
   {
-    AppMethodBeat.i(230590);
-    if (this.otO == null)
+    AppMethodBeat.i(213761);
+    if (!paramBoolean)
     {
-      AppMethodBeat.o(230590);
+      a(cod());
+      AppMethodBeat.o(213761);
       return;
     }
-    if (ouo)
+    com.tencent.mm.plugin.appbrand.page.ad localad = (com.tencent.mm.plugin.appbrand.page.ad)this.rtP.get();
+    localObject = this.rtY;
+    try
     {
-      db(this.otO);
-      if (!otQ) {
-        break label168;
+      localObject = y.a(this.rwl, localad, (com.tencent.mm.plugin.appbrand.widget.input.e.h)localObject);
+      localad = null;
+    }
+    catch (IllegalStateException localIllegalStateException)
+    {
+      for (;;)
+      {
+        String str = localIllegalStateException.getMessage();
+        Log.i(this.bqj, "dispatchKeyboardComplete, encryptErrorMsg: ".concat(String.valueOf(str)));
+        localObject = null;
       }
     }
-    label168:
-    for (this.otO = otP;; this.otO = Ns())
+    a(cod(), (String)localObject, localad);
+    AppMethodBeat.o(213761);
+  }
+  
+  private final void kt(boolean paramBoolean)
+  {
+    AppMethodBeat.i(213757);
+    Log.d(this.bqj, "doHideKeyboard, isInputDone: ".concat(String.valueOf(paramBoolean)));
+    boolean bool = isFocused();
+    if ((this.rtZ) || (!bool))
     {
-      db(this.otO);
-      addView(this.otO, 0);
-      Log.d("MicroMsg.AppBrandSoftKeyboardPanel", "toolbar is changed in updateToolbar() because of toolbarChanged");
-      ouo = false;
-      if ((otQ) && (this.otO != otP))
-      {
-        db(this.otO);
-        this.otO = otP;
-        db(this.otO);
-        addView(this.otO, 0);
-        Log.d("MicroMsg.AppBrandSoftKeyboardPanel", "toolbar is changed in updateToolbar() because toolbar != mComponentView");
-      }
-      if ((otQ) && (this.otO.getParent() != this))
-      {
-        db(this.otO);
-        addView(this.otO, 0);
-      }
-      AppMethodBeat.o(230590);
+      Log.i(this.bqj, "doHideKeyboard, performingHideKeyboard: " + this.rtZ + ", isFocused: " + bool);
+      AppMethodBeat.o(213757);
       return;
     }
-  }
-  
-  protected final void cm(boolean paramBoolean)
-  {
-    AppMethodBeat.i(136526);
-    if ((!this.oue) && (this.oud != null))
+    this.rtZ = true;
+    kq(paramBoolean);
+    Object localObject = this.rwl;
+    if (localObject != null) {}
+    for (localObject = ((x)localObject).getRealText$luggage_wxa_app_input_ext_release();; localObject = null)
     {
-      this.oue = true;
-      this.oud.cm(paramBoolean);
-      this.oue = false;
-    }
-    AppMethodBeat.o(136526);
-  }
-  
-  public EditText getAttachedEditText()
-  {
-    return this.oum;
-  }
-  
-  public int getMinimumHeight()
-  {
-    AppMethodBeat.i(136525);
-    if (getVisibility() != 0)
-    {
-      AppMethodBeat.o(136525);
-      return 0;
-    }
-    if ((otQ) && (otP != null))
-    {
-      ao localao = otP.getCustomViewContainer();
-      if ((localao != null) && ((localao.getRootView() instanceof ViewGroup)) && (((ViewGroup)localao.getRootView()).getChildCount() > 0) && (((ViewGroup)localao.getRootView()).getChildAt(0).getLayoutParams() != null))
+      if (localObject != null)
       {
-        i = Math.max(((ViewGroup)localao.getRootView()).getChildAt(0).getLayoutParams().height, 0);
-        AppMethodBeat.o(136525);
-        return i;
-      }
-      AppMethodBeat.o(136525);
-      return 0;
-    }
-    int i = com.tencent.mm.cb.a.fromDPToPix(getContext(), 48);
-    AppMethodBeat.o(136525);
-    return i;
-  }
-  
-  public final void hF(int paramInt)
-  {
-    AppMethodBeat.i(136521);
-    Log.d("MicroMsg.AppBrandSoftKeyboardPanel", "[scrollUp] refreshHeight %d", new Object[] { Integer.valueOf(paramInt) });
-    oup.c(this, paramInt);
-    AppMethodBeat.o(136521);
-  }
-  
-  public final void hide()
-  {
-    AppMethodBeat.i(136547);
-    if (!isShown())
-    {
-      AppMethodBeat.o(136547);
-      return;
-    }
-    Ai(8);
-    if ((this.oum != null) && (!this.oun.hideVKBHavingResult())) {
-      aj.dg(this).hideSoftInputFromWindow(getWindowToken(), 0);
-    }
-    cbM();
-    AppMethodBeat.o(136547);
-  }
-  
-  protected void onAttachedToWindow()
-  {
-    AppMethodBeat.i(136539);
-    super.onAttachedToWindow();
-    cbI();
-    AppMethodBeat.o(136539);
-  }
-  
-  protected void onDetachedFromWindow()
-  {
-    AppMethodBeat.i(136540);
-    super.onDetachedFromWindow();
-    Ai(8);
-    if (this.context != null)
-    {
-      if (this.oum == null) {
-        break label101;
-      }
-      this.oun.hideVKB(this.oum);
-    }
-    for (;;)
-    {
-      this.oug.onDestroy();
-      if (this.oui != null) {
-        this.oui.setOnClickListener(null);
-      }
-      this.ouc = null;
-      removeAllViews();
-      this.context = null;
-      this.otZ.clear();
-      cbJ();
-      AppMethodBeat.o(136540);
-      return;
-      label101:
-      this.oun.hideVKB();
-    }
-  }
-  
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    AppMethodBeat.i(136522);
-    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    paramInt1 = getMeasuredHeight();
-    if (paramInt1 != this.oua)
-    {
-      Log.i("MicroMsg.AppBrandSoftKeyboardPanel", "update panel height from %d to %d", new Object[] { Integer.valueOf(this.oua), Integer.valueOf(paramInt1) });
-      this.oua = paramInt1;
-      Iterator localIterator = this.otZ.iterator();
-      while (localIterator.hasNext())
-      {
-        d locald = (d)localIterator.next();
-        if ((locald != null) && (locald.getEditText() == this.oum)) {
-          locald.ig(this.oua);
+        String str = this.sessionId;
+        if (str != null) {
+          com.tencent.mm.model.ad.beh().I(str, true).aO("SecureInputValue", (String)localObject);
         }
       }
+      col();
+      remove();
+      this.rtZ = false;
+      this.rwl = null;
+      AppMethodBeat.o(213757);
+      return;
     }
-    Log.v("MicroMsg.AppBrandSoftKeyboardPanel", "[scrollUp] SoftKeyboardPanel onLayout measuredHeight = %d", new Object[] { Integer.valueOf(getMeasuredHeight()) });
-    AppMethodBeat.o(136522);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public final boolean anC(String paramString)
   {
-    AppMethodBeat.i(136538);
-    super.onMeasure(paramInt1, paramInt2);
-    Log.d("MicroMsg.AppBrandSoftKeyboardPanel", "smileyPanelWrapper, onMeasure");
-    AppMethodBeat.o(136538);
-  }
-  
-  public void setCanSmileyInput(boolean paramBoolean)
-  {
-    int i = 0;
-    AppMethodBeat.i(136543);
-    cbN();
-    this.ouj = false;
-    ImageButton localImageButton;
-    if (this.oui != null)
+    AppMethodBeat.i(213740);
+    Log.d(this.bqj, "updateValue, value: ".concat(String.valueOf(paramString)));
+    Object localObject = (CharSequence)paramString;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      localImageButton = this.oui;
-      if (!this.ouj) {
-        break label52;
+      localObject = this.rwl;
+      if (localObject != null) {
+        ((x)localObject).setText((CharSequence)paramString);
+      }
+      AppMethodBeat.o(213740);
+      return true;
+    }
+    AppMethodBeat.o(213740);
+    return false;
+  }
+  
+  protected final com.tencent.mm.plugin.appbrand.widget.input.e.h b(final com.tencent.mm.plugin.appbrand.widget.input.e.h paramh)
+  {
+    x localx = null;
+    AppMethodBeat.i(213734);
+    kotlin.g.b.p.k(paramh, "params");
+    Log.d(this.bqj, "updateStyle");
+    if (this.rtY == null) {
+      this.rtY = paramh;
+    }
+    while (this.rwl == null)
+    {
+      AppMethodBeat.o(213734);
+      return null;
+      localh = this.rtY;
+      if (localh != null)
+      {
+        localh.a((f)paramh);
+        au localau = au.ryC;
+        au.a(localh, paramh);
+      }
+    }
+    b.a((EditText)this.rwl, this.rtY);
+    com.tencent.mm.plugin.appbrand.widget.input.e.h localh = this.rtY;
+    paramh = localx;
+    if (localh != null) {
+      paramh = localh.rAS;
+    }
+    if (paramh != null)
+    {
+      localx = this.rwl;
+      if (localx != null) {
+        localx.setLength$luggage_wxa_app_input_ext_release(paramh.intValue());
+      }
+    }
+    com.tencent.e.h.ZvG.bc((Runnable)new b(this, paramh));
+    paramh = this.rtY;
+    AppMethodBeat.o(213734);
+    return paramh;
+  }
+  
+  protected final Rect coa()
+  {
+    AppMethodBeat.i(213755);
+    Object localObject = this.rtY;
+    if (localObject == null)
+    {
+      AppMethodBeat.o(213755);
+      return null;
+    }
+    Integer localInteger = ((com.tencent.mm.plugin.appbrand.widget.input.e.h)localObject).rAm;
+    kotlin.g.b.p.j(localInteger, "styleSnapshot.inputLeft");
+    int i = localInteger.intValue();
+    localInteger = ((com.tencent.mm.plugin.appbrand.widget.input.e.h)localObject).rAl;
+    kotlin.g.b.p.j(localInteger, "styleSnapshot.inputTop");
+    int j = localInteger.intValue();
+    int k = ((com.tencent.mm.plugin.appbrand.widget.input.e.h)localObject).rAm.intValue();
+    localInteger = ((com.tencent.mm.plugin.appbrand.widget.input.e.h)localObject).rAj;
+    kotlin.g.b.p.j(localInteger, "styleSnapshot.inputWidth");
+    int m = localInteger.intValue();
+    int n = ((com.tencent.mm.plugin.appbrand.widget.input.e.h)localObject).rAl.intValue();
+    localObject = ((com.tencent.mm.plugin.appbrand.widget.input.e.h)localObject).rAk;
+    kotlin.g.b.p.j(localObject, "styleSnapshot.inputHeight");
+    localObject = new Rect(i, j, k + m, ((Integer)localObject).intValue() + n);
+    AppMethodBeat.o(213755);
+    return localObject;
+  }
+  
+  public final Editable cod()
+  {
+    AppMethodBeat.i(213746);
+    Editable localEditable = super.cod();
+    Log.d(this.bqj, "currentValue, curVal: ".concat(String.valueOf(localEditable)));
+    AppMethodBeat.o(213746);
+    return localEditable;
+  }
+  
+  public final boolean coj()
+  {
+    AppMethodBeat.i(213737);
+    Boolean localBoolean = Boolean.TRUE;
+    Object localObject = this.rtY;
+    if (localObject != null) {}
+    for (localObject = ((com.tencent.mm.plugin.appbrand.widget.input.e.h)localObject).rAG;; localObject = null)
+    {
+      boolean bool = kotlin.g.b.p.h(localBoolean, localObject);
+      Log.d(this.bqj, "adjustPositionOnFocused, adjustPos: ".concat(String.valueOf(bool)));
+      AppMethodBeat.o(213737);
+      return bool;
+    }
+  }
+  
+  public final int cok()
+  {
+    AppMethodBeat.i(213750);
+    Object localObject = this.rtY;
+    if (localObject != null)
+    {
+      localObject = ((com.tencent.mm.plugin.appbrand.widget.input.e.h)localObject).rAD;
+      if (localObject == null) {}
+    }
+    for (int i = ((Integer)localObject).intValue();; i = 0)
+    {
+      Log.d(this.bqj, "getInputPanelMarginBottom, marginBottom: ".concat(String.valueOf(i)));
+      AppMethodBeat.o(213750);
+      return i;
+    }
+  }
+  
+  public final boolean col()
+  {
+    AppMethodBeat.i(213718);
+    Log.d(this.bqj, "hideKeyboard");
+    Object localObject = coQ();
+    if (localObject == null)
+    {
+      Log.i(this.bqj, "hideKeyboardInternal, keyboardPanel is null");
+      AppMethodBeat.o(213718);
+      return false;
+    }
+    if (isFocused())
+    {
+      Log.d(((z)localObject).bqj, "hide");
+      ((z)localObject).setVisibility(8);
+      ((z)localObject).coO();
+      Log.d(this.bqj, "clearInputWidgetFocus, inputWidget: " + this.rwl);
+      localObject = this.rwl;
+      if (localObject != null)
+      {
+        ((x)localObject).setFocusable(false);
+        ((x)localObject).setFocusableInTouchMode(false);
+        ((x)localObject).setEnabled(false);
+      }
+      cof();
+      cog();
+      AppMethodBeat.o(213718);
+      return true;
+    }
+    AppMethodBeat.o(213718);
+    return false;
+  }
+  
+  public final <P extends View,  extends ag> View getInputPanel()
+  {
+    AppMethodBeat.i(213713);
+    Object localObject = coQ();
+    Log.d(this.bqj, "getInputPanel, keyboardPanel: ".concat(String.valueOf(localObject)));
+    localObject = (View)localObject;
+    AppMethodBeat.o(213713);
+    return localObject;
+  }
+  
+  protected final boolean kn(boolean paramBoolean)
+  {
+    AppMethodBeat.i(213721);
+    Log.d(this.bqj, "onFocusChanged, hasFocus: ".concat(String.valueOf(paramBoolean)));
+    if (!paramBoolean) {
+      kt(false);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(213721);
+      return true;
+      paramBoolean = isFocused();
+      if ((this.rua) || (paramBoolean))
+      {
+        Log.i(this.bqj, "doShowKeyboard, performingShowKeyboard: " + this.rua + ", isFocused: " + paramBoolean);
+      }
+      else
+      {
+        this.rua = true;
+        r(-2, -2, this.nnk);
+        this.rua = false;
+      }
+    }
+  }
+  
+  public final boolean r(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    Object localObject3 = null;
+    AppMethodBeat.i(213717);
+    Log.d(this.bqj, "showKeyboard, selectionStart: " + paramInt1 + ", selectionEnd: " + paramInt2 + ", forceLightMode: " + paramBoolean);
+    if (this.rwl == null)
+    {
+      Log.i(this.bqj, "showKeyboard, inputWidget is null");
+      AppMethodBeat.o(213717);
+      return false;
+    }
+    Object localObject1 = (com.tencent.mm.plugin.appbrand.page.ad)this.rtP.get();
+    if (localObject1 != null) {}
+    for (localObject1 = ((com.tencent.mm.plugin.appbrand.page.ad)localObject1).getContentView(); localObject1 == null; localObject1 = null)
+    {
+      Log.w(this.bqj, "showKeyboard, pageContentView is null");
+      AppMethodBeat.o(213717);
+      return false;
+    }
+    Object localObject2 = z.rwB;
+    localObject2 = this.rtY;
+    boolean bool;
+    label190:
+    Object localObject4;
+    if (localObject2 != null)
+    {
+      localObject2 = ((com.tencent.mm.plugin.appbrand.widget.input.e.h)localObject2).rAQ;
+      if (localObject2 != null)
+      {
+        bool = ((Boolean)localObject2).booleanValue();
+        localObject2 = (com.tencent.mm.plugin.appbrand.page.ad)this.rtP.get();
+        if (localObject2 == null) {
+          break label260;
+        }
+        localObject2 = ((com.tencent.mm.plugin.appbrand.page.ad)localObject2).cef();
+        kotlin.g.b.p.k(localObject1, "view");
+        localObject4 = z.a.dv((View)localObject1);
+        if (localObject4 == null) {
+          break label266;
+        }
+        z.a((z)localObject4, bool, (a)localObject2);
+        localObject1 = localObject4;
       }
     }
     for (;;)
     {
-      localImageButton.setVisibility(i);
-      Nq();
-      AppMethodBeat.o(136543);
-      return;
-      label52:
-      i = 4;
-    }
-  }
-  
-  public void setComponentView(boolean paramBoolean)
-  {
-    if (otQ != paramBoolean)
-    {
-      otQ = paramBoolean;
-      ouo = true;
-    }
-  }
-  
-  public void setId(int paramInt) {}
-  
-  public void setOnDoneListener(c paramc)
-  {
-    this.oud = paramc;
-  }
-  
-  public void setOnSmileyChosenListener(e parame)
-  {
-    this.ouc = parame;
-  }
-  
-  public void setOnVisibilityChangedListener(f paramf)
-  {
-    this.ouf = paramf;
-  }
-  
-  public void setShowDoneButton(boolean paramBoolean)
-  {
-    AppMethodBeat.i(136544);
-    cbN();
-    this.oul = paramBoolean;
-    View localView;
-    if (this.ouk != null)
-    {
-      localView = this.ouk;
-      if (!this.oul) {
-        break label52;
+      this.rwm = ((z)localObject1);
+      if (this.rwm != null) {
+        break label338;
       }
-    }
-    label52:
-    for (int i = 0;; i = 4)
-    {
-      localView.setVisibility(i);
-      Nq();
-      AppMethodBeat.o(136544);
-      return;
-    }
-  }
-  
-  public void setVisibility(int paramInt)
-  {
-    AppMethodBeat.i(136541);
-    if (paramInt == 8)
-    {
-      if (getVisibility() != paramInt) {
-        cm(false);
-      }
-      hide();
-      AppMethodBeat.o(136541);
-      return;
-    }
-    if (paramInt == 0)
-    {
-      show();
-      AppMethodBeat.o(136541);
-      return;
-    }
-    Ai(paramInt);
-    AppMethodBeat.o(136541);
-  }
-  
-  public void show()
-  {
-    AppMethodBeat.i(136546);
-    if (this.oum != null) {
-      cbK();
-    }
-    Nr();
-    if (!isShown()) {
-      Ai(0);
-    }
-    AppMethodBeat.o(136546);
-  }
-  
-  static abstract interface b
-  {
-    public abstract void c(w paramw, int paramInt);
-    
-    public abstract void m(w paramw);
-    
-    public abstract void n(w paramw);
-    
-    public abstract void o(w paramw);
-    
-    public abstract void p(w paramw);
-  }
-  
-  public static abstract interface c
-  {
-    public abstract void cm(boolean paramBoolean);
-  }
-  
-  public static abstract interface d
-  {
-    public abstract EditText getEditText();
-    
-    public abstract void ig(int paramInt);
-  }
-  
-  public static abstract interface e
-  {
-    public abstract boolean afZ(String paramString);
-  }
-  
-  public static abstract interface f
-  {
-    public abstract void hJ(int paramInt);
-  }
-  
-  static final class g
-    implements w.b
-  {
-    public final void c(w paramw, int paramInt)
-    {
-      AppMethodBeat.i(136511);
-      if (y.cI(paramw))
+      Log.w(this.bqj, "showKeyboard, keyboardPanel is null");
+      AppMethodBeat.o(213717);
+      return false;
+      bool = false;
+      break;
+      label260:
+      localObject2 = null;
+      break label190;
+      label266:
+      localObject4 = n.dp((View)localObject1);
+      if (localObject4 == null)
       {
-        paramw.Ai(8);
-        AppMethodBeat.o(136511);
+        Log.w("MicroMsg.AppBrand.AppBrandSecureKeyboardPanel", "settleKeyboardPanel, rootFrameLayout is null");
+        localObject1 = localObject3;
+      }
+      else
+      {
+        localObject1 = ((View)localObject1).getContext();
+        kotlin.g.b.p.j(localObject1, "view.context");
+        localObject1 = new z((Context)localObject1, bool, (a)localObject2);
+        ((n)localObject4).m((View)localObject1, false);
+      }
+    }
+    label338:
+    this.rua = true;
+    coe();
+    this.nnk = paramBoolean;
+    if (paramBoolean)
+    {
+      localObject1 = this.rwm;
+      if (localObject1 != null)
+      {
+        Log.d(((z)localObject1).bqj, "forceLightMode");
+        ((z)localObject1).rwx.bAy();
+      }
+    }
+    localObject1 = this.rwm;
+    if (localObject1 != null)
+    {
+      localObject2 = (EditText)this.rwl;
+      Log.d(((z)localObject1).bqj, "show");
+      if (localObject2 != null) {
+        break label483;
+      }
+      Log.i(((z)localObject1).bqj, "show, inputWidget is null");
+    }
+    for (;;)
+    {
+      localObject1 = this.rwm;
+      if (localObject1 != null) {
+        ((z)localObject1).setOnDoneListener((z.b)new a(this));
+      }
+      fh(paramInt1, paramInt2);
+      coh();
+      this.rua = false;
+      AppMethodBeat.o(213717);
+      return true;
+      label483:
+      if ((kotlin.g.b.p.h(localObject2, ((z)localObject1).rwy) ^ true)) {
+        ((z)localObject1).coO();
+      }
+      ((z)localObject1).setInputWidget((EditText)localObject2);
+      ((z)localObject1).setVisibility(0);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureInputComponent$showKeyboard$1", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandSecureKeyboardPanel$OnDoneListener;", "onDone", "", "luggage-wxa-app-input-ext_release"})
+  public static final class a
+    implements z.b
+  {
+    public final void onDone()
+    {
+      AppMethodBeat.i(214343);
+      Log.d(w.a(this.rwn), "onDone#OnDoneListener");
+      this.rwn.kn(false);
+      AppMethodBeat.o(214343);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  static final class b
+    implements Runnable
+  {
+    b(w paramw, Integer paramInteger) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(214794);
+      x localx = w.b(this.rwn);
+      if (localx == null)
+      {
+        AppMethodBeat.o(214794);
         return;
       }
-      if ((w.a(paramw) == null) || (paramInt <= 0))
+      Integer localInteger = paramh;
+      if (localInteger != null)
       {
-        AppMethodBeat.o(136511);
+        int i = localInteger.intValue();
+        Log.i(w.a(this.rwn), "updateStyle, maxLength: ".concat(String.valueOf(i)));
+        p.a((EditText)localx).axx(i).Hh(false).b(g.a.XSt).a(null);
+        AppMethodBeat.o(214794);
         return;
       }
-      w.b(paramw, paramInt);
-      AppMethodBeat.o(136511);
-    }
-    
-    public final void m(w paramw)
-    {
-      AppMethodBeat.i(136509);
-      if (paramw.isShown()) {
-        w.a(paramw).setVisibility(0);
-      }
-      w.b(paramw).ccl();
-      AppMethodBeat.o(136509);
-    }
-    
-    public final void n(w paramw)
-    {
-      AppMethodBeat.i(136510);
-      if (y.cI(paramw))
-      {
-        paramw.Ai(8);
-        w.g(paramw);
-        AppMethodBeat.o(136510);
-        return;
-      }
-      if (paramw.isShown()) {
-        w.a(paramw).setVisibility(0);
-      }
-      if (!w.h(paramw))
-      {
-        w.b(paramw).ccl();
-        AppMethodBeat.o(136510);
-        return;
-      }
-      w.b(paramw).cck();
-      AppMethodBeat.o(136510);
-    }
-    
-    public final void o(w paramw)
-    {
-      AppMethodBeat.i(136512);
-      w.i(paramw).showVKB();
-      w.j(paramw);
-      AppMethodBeat.o(136512);
-    }
-    
-    public final void p(w paramw)
-    {
-      AppMethodBeat.i(136513);
-      w.i(paramw).hideVKB();
-      w.k(paramw);
-      paramw.hF(KeyBoardUtil.getValidPanelHeight(w.l(paramw)));
-      AppMethodBeat.o(136513);
+      AppMethodBeat.o(214794);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.w
  * JD-Core Version:    0.7.0.1
  */

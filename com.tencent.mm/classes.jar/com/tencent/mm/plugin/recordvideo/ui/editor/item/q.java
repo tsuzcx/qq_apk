@@ -1,185 +1,238 @@
 package com.tencent.mm.plugin.recordvideo.ui.editor.item;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.graphics.Rect;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.ehd;
-import com.tencent.mm.protocal.protobuf.erc;
-import com.tencent.mm.protocal.protobuf.jn;
+import com.tencent.mm.plugin.recordvideo.b.e;
+import com.tencent.mm.plugin.recordvideo.b.f;
+import com.tencent.mm.plugin.recordvideo.b.g;
+import com.tencent.mm.plugin.recordvideo.background.e;
+import com.tencent.mm.protocal.protobuf.duy;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.io.IOException;
+import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.ax;
 import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.n.n;
+import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TextItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/IEditorTTSData;", "text", "", "textColor", "", "textBgColor", "marginBottom", "matrix", "Landroid/graphics/Matrix;", "(Ljava/lang/CharSequence;IIILandroid/graphics/Matrix;)V", "font", "", "(Ljava/lang/CharSequence;IILjava/lang/String;ILandroid/graphics/Matrix;)V", "proto", "Lcom/tencent/mm/protocal/protobuf/BaseItemData;", "(Lcom/tencent/mm/protocal/protobuf/BaseItemData;)V", "getFont", "()Ljava/lang/String;", "setFont", "(Ljava/lang/String;)V", "getMarginBottom", "()I", "setMarginBottom", "(I)V", "<set-?>", "getText", "()Ljava/lang/CharSequence;", "getTextBgColor", "getTextColor", "ttsInfo", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/property/TTSInfo;", "getTTSInfo", "isValid", "", "setTTSInfo", "", "path", "durationMs", "", "toProtoBuf", "Lcom/tencent/mm/protocal/protobuf/TextItemData;", "toString", "update", "item", "Companion", "plugin-recordvideo_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/PositionItemView;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BitmapItemView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "DEFAULT_BG_COLOR", "", "DEFAULT_TEXT_COLOR", "MARGIN", "TAG", "", "locationItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LocationItem;", "originMatrix", "Landroid/graphics/Matrix;", "createPositionBitmap", "Landroid/graphics/Bitmap;", "item", "getBitmapEditorItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BitmapEditorItem;", "getEditorData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "getType", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/view/EditItemType;", "onTouchEvent", "", "event", "Landroid/view/MotionEvent;", "reshowPosition", "", "setLocation", "location", "Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;", "setValidArea", "validRect", "Landroid/graphics/Rect;", "plugin-recordvideo_release"})
 public final class q
-  extends a
-  implements i
+  extends b
 {
-  public static final q.a Cgh;
-  int CeB;
-  public String CeI;
-  private final com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b Cgc;
-  public int Cgg;
-  public CharSequence text;
-  public int textColor;
+  private final Matrix IcI;
+  private final int IcU;
+  private l IcV;
+  private final String TAG;
+  private final int YY;
+  private final int rBc;
   
-  static
+  public q(Context paramContext)
   {
-    AppMethodBeat.i(237837);
-    Cgh = new q.a((byte)0);
-    AppMethodBeat.o(237837);
+    super(paramContext);
+    AppMethodBeat.i(76166);
+    this.TAG = "MicroMsg.PositionItemView";
+    this.IcU = -1;
+    this.rBc = -1;
+    this.YY = aw.fromDPToPix(paramContext, 32);
+    this.IcI = new Matrix();
+    AppMethodBeat.o(76166);
   }
   
-  public q(jn paramjn)
+  private final Bitmap b(l paraml)
   {
-    super(d.CeK);
-    AppMethodBeat.i(237836);
-    this.CeI = "";
-    this.Cgc = new com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b();
-    try
+    AppMethodBeat.i(217927);
+    this.IcV = paraml;
+    RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
+    Object localObject1 = LayoutInflater.from(getContext()).inflate(b.f.story_edit_position, (ViewGroup)localRelativeLayout, true);
+    Object localObject3 = (TextView)((View)localObject1).findViewById(b.e.city_name);
+    Object localObject2 = (TextView)((View)localObject1).findViewById(b.e.poi_name);
+    Object localObject4 = (ImageView)((View)localObject1).findViewById(b.e.story_poi_item_location_icon);
+    ImageView localImageView = (ImageView)((View)localObject1).findViewById(b.e.story_poi_item_location_split_icon);
+    p.j(localObject3, "cityText");
+    com.tencent.mm.ae.d.g((TextView)localObject3);
+    p.j(localObject2, "poiText");
+    com.tencent.mm.ae.d.g((TextView)localObject2);
+    ((TextView)localObject3).setText((CharSequence)paraml.Icv);
+    ((TextView)localObject2).setText((CharSequence)paraml.poiName);
+    ((ImageView)localObject4).setImageDrawable(au.o(getContext(), b.g.icons_filled_location, -1));
+    localObject4 = paraml.poiName;
+    if (localObject4 == null)
     {
-      Object localObject = (com.tencent.mm.bw.a)new ehd();
-      paramjn = paramjn.KOd;
-      p.g(paramjn, "proto.itemData");
-      paramjn = paramjn.getBuffer();
-      p.g(paramjn, "proto.itemData.buffer");
-      paramjn = paramjn.zy;
-      try
+      paraml = new t("null cannot be cast to non-null type kotlin.CharSequence");
+      AppMethodBeat.o(217927);
+      throw paraml;
+    }
+    if (TextUtils.isEmpty((CharSequence)n.bb((CharSequence)localObject4).toString()))
+    {
+      ((TextView)localObject3).setTextSize(0, aw.fromDPToPix(getContext(), 20));
+      p.j(localImageView, "splitIcon");
+      localImageView.setVisibility(8);
+      ((TextView)localObject2).setVisibility(8);
+    }
+    localObject4 = paraml.Icv;
+    if (localObject4 == null)
+    {
+      paraml = new t("null cannot be cast to non-null type kotlin.CharSequence");
+      AppMethodBeat.o(217927);
+      throw paraml;
+    }
+    if (TextUtils.isEmpty((CharSequence)n.bb((CharSequence)localObject4).toString()))
+    {
+      ((TextView)localObject2).setTextSize(0, aw.fromDPToPix(getContext(), 20));
+      ((TextView)localObject3).setVisibility(8);
+      p.j(localImageView, "splitIcon");
+      localImageView.setVisibility(8);
+    }
+    int i = this.YY;
+    localObject3 = e.HGz;
+    if (i >= e.fuV().left)
+    {
+      localObject3 = e.HGz;
+      i = e.fuV().width();
+      j = this.YY;
+      localObject3 = e.HGz;
+      i -= (j - e.fuV().left) * 2;
+      ((TextView)localObject2).setMaxWidth(i);
+      ((View)localObject1).measure(0, 0);
+      p.j(localObject1, "parent");
+      ((View)localObject1).layout(0, 0, ((View)localObject1).getMeasuredWidth(), ((View)localObject1).getMeasuredHeight());
+      Log.i(this.TAG, paraml + " parent.measuredWidth:" + ((View)localObject1).getMeasuredWidth() + " , parent.measuredHeight:" + ((View)localObject1).getMeasuredHeight());
+      if (((View)localObject1).getMeasuredWidth() > 0)
       {
-        ((com.tencent.mm.bw.a)localObject).parseFrom(paramjn);
-        paramjn = (jn)localObject;
-      }
-      catch (Exception paramjn)
-      {
-        for (;;)
-        {
-          erc localerc;
-          Log.printDebugStack("safeParser", "", new Object[] { paramjn });
-          paramjn = null;
+        i = ((View)localObject1).getMeasuredWidth();
+        localObject2 = e.HGz;
+        if (i <= e.fuV().width()) {
+          break label642;
         }
-        AppMethodBeat.o(237836);
-        return;
       }
-      paramjn = (ehd)paramjn;
-      if (paramjn != null)
+      localObject2 = e.HGz;
+      i = e.fuV().width();
+      label512:
+      if (((View)localObject1).getMeasuredHeight() > 0)
       {
-        this.text = ((CharSequence)paramjn.text);
-        this.textColor = paramjn.textColor;
-        this.Cgg = paramjn.Cgg;
-        this.CeB = paramjn.CeB;
-        localObject = this.gT;
-        localerc = paramjn.Lce;
-        p.g(localerc, "it.matrix");
-        ((Matrix)localObject).setValues(a(localerc));
-        localObject = paramjn.CeI;
-        p.g(localObject, "it.font");
-        this.CeI = ((String)localObject);
-        a(paramjn.Cgj);
-        Log.i("MicroMsg.TextItem", toString());
-        AppMethodBeat.o(237836);
-        return;
+        j = ((View)localObject1).getMeasuredHeight();
+        localObject2 = e.HGz;
+        if (j <= e.fuV().height()) {
+          break label651;
+        }
       }
-      return;
+      localObject1 = e.HGz;
     }
-    catch (IOException paramjn)
+    label642:
+    label651:
+    for (int j = e.fuV().height();; j = ((View)localObject1).getMeasuredHeight())
     {
-      Log.printErrStackTrace("MicroMsg.TextItem", (Throwable)paramjn, "LocationItem parse error", new Object[0]);
-      AppMethodBeat.o(237836);
+      localObject1 = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+      localRelativeLayout.draw(new Canvas((Bitmap)localObject1));
+      setColor(this.IcU);
+      setTextBg(this.rBc);
+      setSourceDataType(d.IbI);
+      setLocation(paraml);
+      setBitmap((Bitmap)localObject1);
+      p.j(localObject1, "bitmap");
+      AppMethodBeat.o(217927);
+      return localObject1;
+      localObject3 = e.HGz;
+      i = e.fuV().width();
+      break;
+      i = ((View)localObject1).getMeasuredWidth();
+      break label512;
     }
   }
   
-  public q(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3, Matrix paramMatrix)
+  public final void a(l paraml)
   {
-    super(d.CeK);
-    AppMethodBeat.i(237832);
-    this.CeI = "";
-    this.Cgc = new com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b();
-    this.text = paramCharSequence;
-    this.textColor = paramInt1;
-    this.Cgg = paramInt2;
-    this.CeB = paramInt3;
-    this.gT.set(paramMatrix);
-    Log.i("MicroMsg.TextItem", toString());
-    AppMethodBeat.o(237832);
+    AppMethodBeat.i(217921);
+    p.k(paraml, "item");
+    b(paraml);
+    setViewMatrix(paraml.aHZ);
+    getTouchTracker().aHZ.set(paraml.aHZ);
+    setSourceDataType(d.IbI);
+    AppMethodBeat.o(217921);
   }
   
-  private q(CharSequence paramCharSequence, int paramInt1, int paramInt2, String paramString, Matrix paramMatrix)
+  public final com.tencent.mm.plugin.recordvideo.ui.editor.item.a.c c(l paraml)
   {
-    super(d.CeK);
-    AppMethodBeat.i(237834);
-    this.CeI = "";
-    this.Cgc = new com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b();
-    this.text = paramCharSequence;
-    this.textColor = paramInt1;
-    this.Cgg = paramInt2;
-    this.CeI = paramString;
-    this.CeB = 0;
-    this.gT.set(paramMatrix);
-    Log.i("MicroMsg.TextItem", toString());
-    AppMethodBeat.o(237834);
+    AppMethodBeat.i(217932);
+    p.k(paraml, "item");
+    paraml = new com.tencent.mm.plugin.recordvideo.ui.editor.item.a.c(b(paraml), paraml.aHZ);
+    AppMethodBeat.o(217932);
+    return paraml;
   }
   
-  public final void a(q paramq)
+  public final a getEditorData()
   {
-    AppMethodBeat.i(237827);
-    p.h(paramq, "item");
-    this.text = paramq.text;
-    this.textColor = paramq.textColor;
-    this.Cgg = paramq.Cgg;
-    this.CeB = paramq.CeB;
-    this.gT.set(paramq.gT);
-    this.CeI = paramq.CeI;
-    Log.i("MicroMsg.TextItem", toString());
-    AppMethodBeat.o(237827);
+    return (a)this.IcV;
   }
   
-  public final void bh(String paramString, long paramLong)
+  public final com.tencent.mm.plugin.recordvideo.ui.editor.view.b getType()
   {
-    AppMethodBeat.i(237830);
-    p.h(paramString, "path");
-    this.Cgc.setPath(paramString);
-    this.Cgc.durationMs = paramLong;
-    AppMethodBeat.o(237830);
+    return com.tencent.mm.plugin.recordvideo.ui.editor.view.b.Ieq;
   }
   
-  public final com.tencent.mm.plugin.recordvideo.ui.editor.item.b.b eMp()
+  public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    return this.Cgc;
-  }
-  
-  public final boolean eMq()
-  {
-    AppMethodBeat.i(237838);
-    boolean bool = i.a.a(this);
-    AppMethodBeat.o(237838);
+    AppMethodBeat.i(76162);
+    p.k(paramMotionEvent, "event");
+    this.IcI.set(getTouchTracker().aHZ);
+    boolean bool = super.onTouchEvent(paramMotionEvent);
+    getTouchTracker().aHZ.set(this.IcI);
+    AppMethodBeat.o(76162);
     return bool;
   }
   
-  public final boolean isValid()
+  public final void setLocation(duy paramduy)
   {
-    AppMethodBeat.i(237829);
-    if (!TextUtils.isEmpty(this.text))
+    AppMethodBeat.i(76165);
+    p.k(paramduy, "location");
+    String str1 = paramduy.mVA;
+    p.j(str1, "location.City");
+    String str2 = paramduy.poiName;
+    p.j(str2, "location.poiName");
+    b(new l(str1, str2, paramduy.ScO, paramduy.ScP));
+    paramduy = getBitmap();
+    if (paramduy != null)
     {
-      AppMethodBeat.o(237829);
-      return true;
+      float f2 = getValidRect().height() - aw.fromDPToPix(getContext(), 128) - ax.aB(getContext());
+      float f3 = paramduy.getHeight();
+      int i = this.YY;
+      paramduy = e.HGz;
+      if (i >= e.fuV().left) {}
+      for (float f1 = this.YY;; f1 = e.fuV().left)
+      {
+        getTouchTracker().aHZ.setTranslate(f1, f2 - f3);
+        AppMethodBeat.o(76165);
+        return;
+        paramduy = e.HGz;
+      }
     }
-    AppMethodBeat.o(237829);
-    return false;
+    AppMethodBeat.o(76165);
   }
   
-  public final String toString()
+  public final void setValidArea(Rect paramRect)
   {
-    AppMethodBeat.i(237831);
-    String str = "[" + hashCode() + "]text:" + this.text + " color:" + this.textColor + " bgColor:" + this.Cgg;
-    AppMethodBeat.o(237831);
-    return str;
+    AppMethodBeat.i(76161);
+    p.k(paramRect, "validRect");
+    getValidRect().set(paramRect);
+    AppMethodBeat.o(76161);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.q
  * JD-Core Version:    0.7.0.1
  */

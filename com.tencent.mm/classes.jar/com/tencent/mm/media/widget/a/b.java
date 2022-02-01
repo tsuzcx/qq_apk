@@ -4,46 +4,41 @@ import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/widget/camera/CameraConfig;", "", "()V", "encodeVideoBestSizeHeight", "", "getEncodeVideoBestSizeHeight", "()I", "setEncodeVideoBestSizeHeight", "(I)V", "encodeVideoBestSizeWidth", "getEncodeVideoBestSizeWidth", "setEncodeVideoBestSizeWidth", "isCpuCrop", "", "()Z", "setCpuCrop", "(Z)V", "isFrontCamera", "setFrontCamera", "previewHeight", "getPreviewHeight", "setPreviewHeight", "previewWidth", "getPreviewWidth", "setPreviewWidth", "rotateDegree", "getRotateDegree", "setRotateDegree", "cameraTextureSize", "Landroid/graphics/Point;", "toString", "", "plugin-mediaeditor_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/widget/camera/CameraConfig;", "", "()V", "encodeVideoBestSizeHeight", "", "getEncodeVideoBestSizeHeight", "()I", "setEncodeVideoBestSizeHeight", "(I)V", "encodeVideoBestSizeWidth", "getEncodeVideoBestSizeWidth", "setEncodeVideoBestSizeWidth", "isCpuCrop", "", "()Z", "setCpuCrop", "(Z)V", "isFrontCamera", "setFrontCamera", "previewHeight", "getPreviewHeight", "setPreviewHeight", "previewWidth", "getPreviewWidth", "setPreviewWidth", "rotateDegree", "getRotateDegree", "setRotateDegree", "cameraTextureSize", "Landroid/graphics/Point;", "toString", "", "plugin-mediaeditor_release"})
 public final class b
 {
-  private static int ijt;
-  private static int imd;
-  private static int ime;
-  private static boolean imf;
-  private static boolean img;
-  public static final b imh;
+  private static boolean isFrontCamera;
+  private static int kYg;
+  private static int lbe;
+  private static int lbf;
+  private static boolean lbg;
+  public static final b lbh;
   private static int previewHeight;
   private static int previewWidth;
   
   static
   {
     AppMethodBeat.i(94010);
-    imh = new b();
+    lbh = new b();
     AppMethodBeat.o(94010);
   }
   
-  public static int aPk()
+  public static int aVp()
   {
-    return ijt;
+    return kYg;
   }
   
-  public static int aPl()
+  public static int aXY()
   {
-    return imd;
+    return lbe;
   }
   
-  public static int aPm()
+  public static int aXZ()
   {
-    return ime;
+    return lbf;
   }
   
-  public static boolean aPn()
-  {
-    return imf;
-  }
-  
-  public static Point aPo()
+  public static Point aYa()
   {
     AppMethodBeat.i(94009);
     Point localPoint = new Point(previewWidth, previewHeight);
@@ -51,9 +46,9 @@ public final class b
     return localPoint;
   }
   
-  public static void eZ(boolean paramBoolean)
+  public static void fI(boolean paramBoolean)
   {
-    img = paramBoolean;
+    lbg = paramBoolean;
   }
   
   public static int getPreviewHeight()
@@ -66,47 +61,52 @@ public final class b
     return previewWidth;
   }
   
-  public static void rr(int paramInt)
+  public static boolean isFrontCamera()
   {
-    previewHeight = paramInt;
-  }
-  
-  public static void rs(int paramInt)
-  {
-    previewWidth = paramInt;
-  }
-  
-  public static void rt(int paramInt)
-  {
-    ijt = paramInt;
-  }
-  
-  public static void ru(int paramInt)
-  {
-    imd = paramInt;
-  }
-  
-  public static void rv(int paramInt)
-  {
-    ime = paramInt;
+    return isFrontCamera;
   }
   
   public static void setFrontCamera(boolean paramBoolean)
   {
-    imf = paramBoolean;
+    isFrontCamera = paramBoolean;
+  }
+  
+  public static void uk(int paramInt)
+  {
+    previewHeight = paramInt;
+  }
+  
+  public static void ul(int paramInt)
+  {
+    previewWidth = paramInt;
+  }
+  
+  public static void um(int paramInt)
+  {
+    kYg = paramInt;
+  }
+  
+  public static void un(int paramInt)
+  {
+    lbe = paramInt;
+  }
+  
+  public static void uo(int paramInt)
+  {
+    lbf = paramInt;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(94008);
-    String str = "previewHeight: " + previewHeight + " ,previewWidth:" + previewWidth + " ,rotateDegree: " + ijt + " ,isFrontCamera:" + imf + ' ' + " encodeVideoBestSizeWidth : " + imd + " , encodeVideoBestSizeHeight : " + ime + ", isCpuCrop: " + img + ' ';
+    String str = "previewHeight: " + previewHeight + " ,previewWidth:" + previewWidth + " ,rotateDegree: " + kYg + " ,isFrontCamera:" + isFrontCamera + ' ' + " encodeVideoBestSizeWidth : " + lbe + " , encodeVideoBestSizeHeight : " + lbf + ", isCpuCrop: " + lbg + ' ';
     AppMethodBeat.o(94008);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.media.widget.a.b
  * JD-Core Version:    0.7.0.1
  */

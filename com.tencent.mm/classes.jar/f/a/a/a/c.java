@@ -9,7 +9,7 @@ public final class c
 {
   public final byte[] zip(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(214849);
+    AppMethodBeat.i(207824);
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     GZIPOutputStream localGZIPOutputStream = new GZIPOutputStream(localByteArrayOutputStream);
     localGZIPOutputStream.write(paramArrayOfByte);
@@ -17,13 +17,13 @@ public final class c
     localGZIPOutputStream.close();
     paramArrayOfByte = localByteArrayOutputStream.toByteArray();
     localByteArrayOutputStream.close();
-    AppMethodBeat.o(214849);
+    AppMethodBeat.o(207824);
     return paramArrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     f.a.a.a.c
  * JD-Core Version:    0.7.0.1
  */

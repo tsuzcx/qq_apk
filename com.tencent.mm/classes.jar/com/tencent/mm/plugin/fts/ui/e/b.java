@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.fts.ui.e;
 import android.webkit.ConsoleMessage;
 import android.webkit.ConsoleMessage.MessageLevel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.plugin.websearch.api.ai;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -50,7 +50,7 @@ public final class b
     Log.i("MicroMsg.FTS.PardusWebChromeClient", "onConsoleMessage %d %s %s %s", new Object[] { Integer.valueOf(paramConsoleMessage.lineNumber()), paramConsoleMessage.messageLevel().name(), paramConsoleMessage.message(), paramConsoleMessage.sourceId() });
     if ((paramConsoleMessage.messageLevel() == ConsoleMessage.MessageLevel.ERROR) && (!Util.isNullOrNil(paramConsoleMessage.message())))
     {
-      e.Cxv.a(19153, new Object[] { Integer.valueOf(ai.aft(5)), paramConsoleMessage.messageLevel(), Integer.valueOf(2) });
+      f.Iyx.a(19153, new Object[] { Integer.valueOf(ai.anh(5)), paramConsoleMessage.messageLevel(), Integer.valueOf(2) });
       if (!paramConsoleMessage.message().contains("SyntaxError")) {
         paramConsoleMessage.message().contains("Maximum call stack size exceeded");
       }
@@ -62,7 +62,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.e.b
  * JD-Core Version:    0.7.0.1
  */

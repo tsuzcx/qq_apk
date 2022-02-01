@@ -4,11 +4,11 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.k;
-import com.tencent.mm.g.c.al;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.ao.k;
+import com.tencent.mm.f.c.al;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.cr.c;
+import com.tencent.mm.model.cs.c;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaEntryInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -27,21 +27,21 @@ import org.json.JSONObject;
 public final class c
   extends al
 {
-  public static int dhr;
-  public static int dhs;
-  public static int dht;
-  private static int dhw;
-  private static b dhx;
+  public static int eYY;
+  public static int eYZ;
+  public static int eZa;
+  private static int eZd;
+  private static b eZe;
   public static IAutoDBItem.MAutoDBInfo info;
-  private List<a> dhu;
-  public b dhv;
+  private List<a> eZb;
+  public b eZc;
   
   static
   {
     AppMethodBeat.i(116408);
-    dhr = 1;
-    dhs = 0;
-    dht = 1;
+    eYY = 1;
+    eYZ = 0;
+    eZa = 1;
     IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
     localMAutoDBInfo.fields = new Field[20];
     localMAutoDBInfo.columns = new String[21];
@@ -129,413 +129,40 @@ public final class c
     localMAutoDBInfo.columns[20] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
     info = localMAutoDBInfo;
-    dhw = 0;
-    dhx = null;
+    eZd = 0;
+    eZe = null;
     AppMethodBeat.o(116408);
   }
   
-  private boolean iE(int paramInt)
+  private boolean jQ(int paramInt)
   {
     return (this.field_bitFlag & paramInt) != 0;
   }
   
-  private void iF(int paramInt)
+  private void jR(int paramInt)
   {
     this.field_bitFlag |= paramInt;
   }
   
-  public final void UA()
+  public final b YO()
   {
-    AppMethodBeat.i(116391);
-    cG(false);
-    b localb = this.dhv;
-    if (localb.dhz != null) {
-      localb.dhO = localb.dhz.optInt("ConnectorMsgType");
-    }
-    this.field_acceptType = localb.dhO;
-    this.field_type = cG(false).getServiceType();
-    if (UH())
-    {
-      iF(1);
-      AppMethodBeat.o(116391);
-      return;
-    }
-    this.field_bitFlag &= 0xFFFFFFFE;
-    AppMethodBeat.o(116391);
-  }
-  
-  public final boolean UB()
-  {
-    AppMethodBeat.i(116392);
-    cG(false);
-    Log.i("MicroMsg.BizInfo", "is report location, user %s %B", new Object[] { this.field_username, Boolean.valueOf(this.dhv.UB()) });
-    boolean bool = this.dhv.UB();
-    AppMethodBeat.o(116392);
-    return bool;
-  }
-  
-  public final boolean UC()
-  {
-    AppMethodBeat.i(116393);
-    cG(false);
-    if (this.field_type == 1)
-    {
-      AppMethodBeat.o(116393);
-      return true;
-    }
-    AppMethodBeat.o(116393);
-    return false;
-  }
-  
-  public final boolean UD()
-  {
-    AppMethodBeat.i(116394);
-    cG(false);
-    if (this.field_type == 0)
-    {
-      AppMethodBeat.o(116394);
-      return true;
-    }
-    AppMethodBeat.o(116394);
-    return false;
-  }
-  
-  public final boolean UE()
-  {
-    AppMethodBeat.i(116395);
-    cG(false);
-    if ((this.field_type == 2) || (this.field_type == 3))
-    {
-      AppMethodBeat.o(116395);
-      return true;
-    }
-    AppMethodBeat.o(116395);
-    return false;
-  }
-  
-  public final boolean UF()
-  {
-    AppMethodBeat.i(116396);
-    cG(false);
-    if (this.field_type == 2)
-    {
-      AppMethodBeat.o(116396);
-      return true;
-    }
-    AppMethodBeat.o(116396);
-    return false;
-  }
-  
-  public final boolean UG()
-  {
-    AppMethodBeat.i(116397);
-    cG(false);
-    if (this.field_type == 3)
-    {
-      AppMethodBeat.o(116397);
-      return true;
-    }
-    AppMethodBeat.o(116397);
-    return false;
-  }
-  
-  public final boolean UH()
-  {
-    AppMethodBeat.i(116398);
-    cG(false);
-    boolean bool;
-    if ((this.dhv != null) && (this.dhv.Vh() != null)) {
-      if (this.dhv.dhL.dim == 1)
-      {
-        bool = true;
-        if ((bool) && (!iE(1)))
-        {
-          iF(1);
-          ((p)g.af(p.class)).a(this);
-        }
-        if (bool) {
-          Log.d("MicroMsg.BizInfo", "EnterpriseChat,userName : %s", new Object[] { this.field_username });
-        }
-      }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(116398);
-      return bool;
-      bool = false;
-      break;
-      bool = false;
-    }
-  }
-  
-  public final boolean UI()
-  {
-    AppMethodBeat.i(116399);
-    cG(false);
-    boolean bool;
-    if ((this.dhv != null) && (this.dhv.Vh() != null)) {
-      if (this.dhv.dhL.dim == 2)
-      {
-        bool = true;
-        if ((bool) && (!iE(2)))
-        {
-          iF(2);
-          ((p)g.af(p.class)).a(this);
-        }
-        if (bool) {
-          Log.d("MicroMsg.BizInfo", "EnterpriseWeb,userName : %s", new Object[] { this.field_username });
-        }
-      }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(116399);
-      return bool;
-      bool = false;
-      break;
-      bool = false;
-    }
-  }
-  
-  public final String UJ()
-  {
-    AppMethodBeat.i(116400);
-    cG(false);
-    if (this.dhv != null)
-    {
-      Object localObject = this.dhv.Vh();
-      if ((localObject != null) && (((c.b.c.a)localObject).din != null) && (!((c.b.c.a)localObject).din.isEmpty()))
-      {
-        localObject = ((c.b.c.a)localObject).din;
-        AppMethodBeat.o(116400);
-        return localObject;
-      }
-    }
-    AppMethodBeat.o(116400);
-    return null;
-  }
-  
-  public final long UK()
-  {
-    AppMethodBeat.i(116401);
-    cG(false);
-    if (this.dhv != null)
-    {
-      c.b.c.a locala = this.dhv.Vh();
-      if ((locala != null) && (locala.appid != 0L))
-      {
-        long l = locala.appid;
-        AppMethodBeat.o(116401);
-        return l;
-      }
-    }
-    AppMethodBeat.o(116401);
-    return 0L;
-  }
-  
-  public final boolean UL()
-  {
-    AppMethodBeat.i(116402);
-    cG(false);
-    if (this.dhv == null)
-    {
-      Log.i("MicroMsg.BizInfo", "isShowUserName bizInfo.getExtInfo() null");
-      AppMethodBeat.o(116402);
-      return true;
-    }
-    if (this.dhv.Vb() == null)
-    {
-      Log.i("MicroMsg.BizInfo", "isShowUserName bizInfo.getExtInfo().getRegisterSource() null");
-      AppMethodBeat.o(116402);
-      return true;
-    }
-    if (!this.dhv.Vb().diC)
-    {
-      AppMethodBeat.o(116402);
-      return true;
-    }
-    AppMethodBeat.o(116402);
-    return false;
-  }
-  
-  public final String UM()
-  {
-    AppMethodBeat.i(116403);
-    cG(false);
-    if (this.dhv != null)
-    {
-      Object localObject = this.dhv.Vh();
-      if (localObject != null)
-      {
-        localObject = ((c.b.c.a)localObject).dio;
-        AppMethodBeat.o(116403);
-        return localObject;
-      }
-    }
-    AppMethodBeat.o(116403);
-    return null;
-  }
-  
-  public final String UN()
-  {
-    AppMethodBeat.i(116404);
-    try
-    {
-      String str1 = cG(false).Vh().dik;
-      if (Util.isNullOrNil(str1)) {
-        Log.e("MicroMsg.BizInfo", "check father: %s, %s", new Object[] { this.field_username, str1 });
-      }
-      AppMethodBeat.o(116404);
-      return str1;
-    }
-    catch (NullPointerException localNullPointerException)
-    {
-      for (;;)
-      {
-        String str2 = "";
-      }
-    }
-  }
-  
-  /* Error */
-  public final List<a> UO()
-  {
-    // Byte code:
-    //   0: ldc_w 385
-    //   3: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: aload_0
-    //   7: getfield 387	com/tencent/mm/api/c:dhu	Ljava/util/List;
-    //   10: ifnull +16 -> 26
-    //   13: aload_0
-    //   14: getfield 387	com/tencent/mm/api/c:dhu	Ljava/util/List;
-    //   17: astore_2
-    //   18: ldc_w 385
-    //   21: invokestatic 210	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   24: aload_2
-    //   25: areturn
-    //   26: aload_0
-    //   27: new 389	java/util/LinkedList
-    //   30: dup
-    //   31: invokespecial 390	java/util/LinkedList:<init>	()V
-    //   34: putfield 387	com/tencent/mm/api/c:dhu	Ljava/util/List;
-    //   37: aload_0
-    //   38: getfield 393	com/tencent/mm/api/c:field_brandInfo	Ljava/lang/String;
-    //   41: ifnull +13 -> 54
-    //   44: aload_0
-    //   45: getfield 393	com/tencent/mm/api/c:field_brandInfo	Ljava/lang/String;
-    //   48: invokevirtual 396	java/lang/String:length	()I
-    //   51: ifne +16 -> 67
-    //   54: aload_0
-    //   55: getfield 387	com/tencent/mm/api/c:dhu	Ljava/util/List;
-    //   58: astore_2
-    //   59: ldc_w 385
-    //   62: invokestatic 210	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   65: aload_2
-    //   66: areturn
-    //   67: new 234	org/json/JSONObject
-    //   70: dup
-    //   71: aload_0
-    //   72: getfield 393	com/tencent/mm/api/c:field_brandInfo	Ljava/lang/String;
-    //   75: invokespecial 399	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   78: ldc_w 401
-    //   81: invokevirtual 405	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   84: astore_2
-    //   85: iconst_0
-    //   86: istore_1
-    //   87: iload_1
-    //   88: aload_2
-    //   89: invokevirtual 408	org/json/JSONArray:length	()I
-    //   92: if_icmpge +105 -> 197
-    //   95: new 6	com/tencent/mm/api/c$a
-    //   98: dup
-    //   99: invokespecial 409	com/tencent/mm/api/c$a:<init>	()V
-    //   102: astore_3
-    //   103: aload_2
-    //   104: iload_1
-    //   105: invokevirtual 413	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
-    //   108: astore 4
-    //   110: aload_3
-    //   111: aload 4
-    //   113: ldc_w 415
-    //   116: invokevirtual 419	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   119: putfield 421	com/tencent/mm/api/c$a:title	Ljava/lang/String;
-    //   122: aload_3
-    //   123: aload 4
-    //   125: ldc_w 423
-    //   128: invokevirtual 419	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   131: putfield 425	com/tencent/mm/api/c$a:url	Ljava/lang/String;
-    //   134: aload_3
-    //   135: aload 4
-    //   137: ldc_w 427
-    //   140: invokevirtual 419	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   143: putfield 430	com/tencent/mm/api/c$a:dhy	Ljava/lang/String;
-    //   146: aload_3
-    //   147: aload 4
-    //   149: ldc_w 432
-    //   152: invokevirtual 419	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   155: putfield 434	com/tencent/mm/api/c$a:description	Ljava/lang/String;
-    //   158: aload_0
-    //   159: getfield 387	com/tencent/mm/api/c:dhu	Ljava/util/List;
-    //   162: aload_3
-    //   163: invokeinterface 440 2 0
-    //   168: pop
-    //   169: iload_1
-    //   170: iconst_1
-    //   171: iadd
-    //   172: istore_1
-    //   173: goto -86 -> 87
-    //   176: astore_2
-    //   177: ldc_w 261
-    //   180: ldc_w 442
-    //   183: iconst_1
-    //   184: anewarray 265	java/lang/Object
-    //   187: dup
-    //   188: iconst_0
-    //   189: aload_2
-    //   190: invokestatic 446	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   193: aastore
-    //   194: invokestatic 378	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   197: aload_0
-    //   198: getfield 387	com/tencent/mm/api/c:dhu	Ljava/util/List;
-    //   201: astore_2
-    //   202: ldc_w 385
-    //   205: invokestatic 210	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   208: aload_2
-    //   209: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	210	0	this	c
-    //   86	87	1	i	int
-    //   17	87	2	localObject	Object
-    //   176	14	2	localException	Exception
-    //   201	8	2	localList	List
-    //   102	61	3	locala	a
-    //   108	40	4	localJSONObject	JSONObject
-    // Exception table:
-    //   from	to	target	type
-    //   67	85	176	java/lang/Exception
-    //   87	169	176	java/lang/Exception
-  }
-  
-  public final b Uw()
-  {
-    AppMethodBeat.i(187529);
-    b localb = cG(false);
-    AppMethodBeat.o(187529);
+    AppMethodBeat.i(196813);
+    b localb = dc(false);
+    AppMethodBeat.o(196813);
     return localb;
   }
   
-  public final boolean Ux()
+  public final boolean YP()
   {
     return (this.field_brandFlag & 0x1) == 0;
   }
   
-  public final boolean Uy()
+  public final boolean YQ()
   {
     return (this.field_brandFlag & 0x4) != 0;
   }
   
-  public final boolean Uz()
+  public final boolean YR()
   {
     AppMethodBeat.i(116390);
     if (System.currentTimeMillis() - this.field_updateTime > 86400000L)
@@ -556,34 +183,377 @@ public final class c
     return false;
   }
   
-  public final b cG(boolean paramBoolean)
+  public final void YS()
   {
-    AppMethodBeat.i(116389);
-    b localb;
-    if ((this.dhv == null) || (paramBoolean))
+    AppMethodBeat.i(116391);
+    dc(false);
+    b localb = this.eZc;
+    if (localb.eZg != null) {
+      localb.eZv = localb.eZg.optInt("ConnectorMsgType");
+    }
+    this.field_acceptType = localb.eZv;
+    this.field_type = dc(false).getServiceType();
+    if (YZ())
     {
-      if ((!Util.isNullOrNil(this.field_extInfo)) && (dhw == this.field_extInfo.hashCode())) {
-        this.dhv = dhx;
+      jR(1);
+      AppMethodBeat.o(116391);
+      return;
+    }
+    this.field_bitFlag &= 0xFFFFFFFE;
+    AppMethodBeat.o(116391);
+  }
+  
+  public final boolean YT()
+  {
+    AppMethodBeat.i(116392);
+    dc(false);
+    Log.i("MicroMsg.BizInfo", "is report location, user %s %B", new Object[] { this.field_username, Boolean.valueOf(this.eZc.YT()) });
+    boolean bool = this.eZc.YT();
+    AppMethodBeat.o(116392);
+    return bool;
+  }
+  
+  public final boolean YU()
+  {
+    AppMethodBeat.i(116393);
+    dc(false);
+    if (this.field_type == 1)
+    {
+      AppMethodBeat.o(116393);
+      return true;
+    }
+    AppMethodBeat.o(116393);
+    return false;
+  }
+  
+  public final boolean YV()
+  {
+    AppMethodBeat.i(116394);
+    dc(false);
+    if (this.field_type == 0)
+    {
+      AppMethodBeat.o(116394);
+      return true;
+    }
+    AppMethodBeat.o(116394);
+    return false;
+  }
+  
+  public final boolean YW()
+  {
+    AppMethodBeat.i(116395);
+    dc(false);
+    if ((this.field_type == 2) || (this.field_type == 3))
+    {
+      AppMethodBeat.o(116395);
+      return true;
+    }
+    AppMethodBeat.o(116395);
+    return false;
+  }
+  
+  public final boolean YX()
+  {
+    AppMethodBeat.i(116396);
+    dc(false);
+    if (this.field_type == 2)
+    {
+      AppMethodBeat.o(116396);
+      return true;
+    }
+    AppMethodBeat.o(116396);
+    return false;
+  }
+  
+  public final boolean YY()
+  {
+    AppMethodBeat.i(116397);
+    dc(false);
+    if (this.field_type == 3)
+    {
+      AppMethodBeat.o(116397);
+      return true;
+    }
+    AppMethodBeat.o(116397);
+    return false;
+  }
+  
+  public final boolean YZ()
+  {
+    AppMethodBeat.i(116398);
+    dc(false);
+    boolean bool;
+    if ((this.eZc != null) && (this.eZc.Zz() != null)) {
+      if (this.eZc.eZs.eZT == 1)
+      {
+        bool = true;
+        if ((bool) && (!jQ(1)))
+        {
+          jR(1);
+          ((p)h.ae(p.class)).a(this);
+        }
+        if (bool) {
+          Log.d("MicroMsg.BizInfo", "EnterpriseChat,userName : %s", new Object[] { this.field_username });
+        }
       }
     }
-    else
+    for (;;)
     {
-      localb = this.dhv;
-      AppMethodBeat.o(116389);
-      return localb;
-    }
-    if ((ab.Iv(this.field_username)) && (WeChatSomeFeatureSwitch.hardcodeWeChatUSTeam()))
-    {
-      localb = b.fp(cr.c.aWN());
-      this.dhv = localb;
-    }
-    for (dhx = localb;; dhx = localb)
-    {
-      dhw = Util.nullAsNil(this.field_extInfo).hashCode();
+      AppMethodBeat.o(116398);
+      return bool;
+      bool = false;
       break;
-      localb = b.fp(this.field_extInfo);
-      this.dhv = localb;
+      bool = false;
     }
+  }
+  
+  public final boolean Za()
+  {
+    AppMethodBeat.i(116399);
+    dc(false);
+    boolean bool;
+    if ((this.eZc != null) && (this.eZc.Zz() != null)) {
+      if (this.eZc.eZs.eZT == 2)
+      {
+        bool = true;
+        if ((bool) && (!jQ(2)))
+        {
+          jR(2);
+          ((p)h.ae(p.class)).a(this);
+        }
+        if (bool) {
+          Log.d("MicroMsg.BizInfo", "EnterpriseWeb,userName : %s", new Object[] { this.field_username });
+        }
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(116399);
+      return bool;
+      bool = false;
+      break;
+      bool = false;
+    }
+  }
+  
+  public final String Zb()
+  {
+    AppMethodBeat.i(116400);
+    dc(false);
+    if (this.eZc != null)
+    {
+      Object localObject = this.eZc.Zz();
+      if ((localObject != null) && (((c.b.c.a)localObject).eZU != null) && (!((c.b.c.a)localObject).eZU.isEmpty()))
+      {
+        localObject = ((c.b.c.a)localObject).eZU;
+        AppMethodBeat.o(116400);
+        return localObject;
+      }
+    }
+    AppMethodBeat.o(116400);
+    return null;
+  }
+  
+  public final long Zc()
+  {
+    AppMethodBeat.i(116401);
+    dc(false);
+    if (this.eZc != null)
+    {
+      c.b.c.a locala = this.eZc.Zz();
+      if ((locala != null) && (locala.appid != 0L))
+      {
+        long l = locala.appid;
+        AppMethodBeat.o(116401);
+        return l;
+      }
+    }
+    AppMethodBeat.o(116401);
+    return 0L;
+  }
+  
+  public final boolean Zd()
+  {
+    AppMethodBeat.i(116402);
+    dc(false);
+    if (this.eZc == null)
+    {
+      Log.i("MicroMsg.BizInfo", "isShowUserName bizInfo.getExtInfo() null");
+      AppMethodBeat.o(116402);
+      return true;
+    }
+    if (this.eZc.Zt() == null)
+    {
+      Log.i("MicroMsg.BizInfo", "isShowUserName bizInfo.getExtInfo().getRegisterSource() null");
+      AppMethodBeat.o(116402);
+      return true;
+    }
+    if (!this.eZc.Zt().fai)
+    {
+      AppMethodBeat.o(116402);
+      return true;
+    }
+    AppMethodBeat.o(116402);
+    return false;
+  }
+  
+  public final String Ze()
+  {
+    AppMethodBeat.i(116403);
+    dc(false);
+    if (this.eZc != null)
+    {
+      Object localObject = this.eZc.Zz();
+      if (localObject != null)
+      {
+        localObject = ((c.b.c.a)localObject).eZV;
+        AppMethodBeat.o(116403);
+        return localObject;
+      }
+    }
+    AppMethodBeat.o(116403);
+    return null;
+  }
+  
+  public final String Zf()
+  {
+    AppMethodBeat.i(116404);
+    try
+    {
+      String str1 = dc(false).Zz().eZR;
+      if (Util.isNullOrNil(str1)) {
+        Log.e("MicroMsg.BizInfo", "check father: %s, %s", new Object[] { this.field_username, str1 });
+      }
+      AppMethodBeat.o(116404);
+      return str1;
+    }
+    catch (NullPointerException localNullPointerException)
+    {
+      for (;;)
+      {
+        String str2 = "";
+      }
+    }
+  }
+  
+  /* Error */
+  public final List<a> Zg()
+  {
+    // Byte code:
+    //   0: ldc_w 419
+    //   3: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: getfield 421	com/tencent/mm/api/c:eZb	Ljava/util/List;
+    //   10: ifnull +16 -> 26
+    //   13: aload_0
+    //   14: getfield 421	com/tencent/mm/api/c:eZb	Ljava/util/List;
+    //   17: astore_2
+    //   18: ldc_w 419
+    //   21: invokestatic 211	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   24: aload_2
+    //   25: areturn
+    //   26: aload_0
+    //   27: new 423	java/util/LinkedList
+    //   30: dup
+    //   31: invokespecial 424	java/util/LinkedList:<init>	()V
+    //   34: putfield 421	com/tencent/mm/api/c:eZb	Ljava/util/List;
+    //   37: aload_0
+    //   38: getfield 427	com/tencent/mm/api/c:field_brandInfo	Ljava/lang/String;
+    //   41: ifnull +13 -> 54
+    //   44: aload_0
+    //   45: getfield 427	com/tencent/mm/api/c:field_brandInfo	Ljava/lang/String;
+    //   48: invokevirtual 430	java/lang/String:length	()I
+    //   51: ifne +16 -> 67
+    //   54: aload_0
+    //   55: getfield 421	com/tencent/mm/api/c:eZb	Ljava/util/List;
+    //   58: astore_2
+    //   59: ldc_w 419
+    //   62: invokestatic 211	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   65: aload_2
+    //   66: areturn
+    //   67: new 271	org/json/JSONObject
+    //   70: dup
+    //   71: aload_0
+    //   72: getfield 427	com/tencent/mm/api/c:field_brandInfo	Ljava/lang/String;
+    //   75: invokespecial 433	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   78: ldc_w 435
+    //   81: invokevirtual 439	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   84: astore_2
+    //   85: iconst_0
+    //   86: istore_1
+    //   87: iload_1
+    //   88: aload_2
+    //   89: invokevirtual 442	org/json/JSONArray:length	()I
+    //   92: if_icmpge +105 -> 197
+    //   95: new 6	com/tencent/mm/api/c$a
+    //   98: dup
+    //   99: invokespecial 443	com/tencent/mm/api/c$a:<init>	()V
+    //   102: astore_3
+    //   103: aload_2
+    //   104: iload_1
+    //   105: invokevirtual 447	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
+    //   108: astore 4
+    //   110: aload_3
+    //   111: aload 4
+    //   113: ldc_w 449
+    //   116: invokevirtual 453	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   119: putfield 455	com/tencent/mm/api/c$a:title	Ljava/lang/String;
+    //   122: aload_3
+    //   123: aload 4
+    //   125: ldc_w 457
+    //   128: invokevirtual 453	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   131: putfield 459	com/tencent/mm/api/c$a:url	Ljava/lang/String;
+    //   134: aload_3
+    //   135: aload 4
+    //   137: ldc_w 461
+    //   140: invokevirtual 453	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   143: putfield 464	com/tencent/mm/api/c$a:eZf	Ljava/lang/String;
+    //   146: aload_3
+    //   147: aload 4
+    //   149: ldc_w 466
+    //   152: invokevirtual 453	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   155: putfield 468	com/tencent/mm/api/c$a:description	Ljava/lang/String;
+    //   158: aload_0
+    //   159: getfield 421	com/tencent/mm/api/c:eZb	Ljava/util/List;
+    //   162: aload_3
+    //   163: invokeinterface 474 2 0
+    //   168: pop
+    //   169: iload_1
+    //   170: iconst_1
+    //   171: iadd
+    //   172: istore_1
+    //   173: goto -86 -> 87
+    //   176: astore_2
+    //   177: ldc_w 297
+    //   180: ldc_w 476
+    //   183: iconst_1
+    //   184: anewarray 301	java/lang/Object
+    //   187: dup
+    //   188: iconst_0
+    //   189: aload_2
+    //   190: invokestatic 480	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   193: aastore
+    //   194: invokestatic 412	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   197: aload_0
+    //   198: getfield 421	com/tencent/mm/api/c:eZb	Ljava/util/List;
+    //   201: astore_2
+    //   202: ldc_w 419
+    //   205: invokestatic 211	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   208: aload_2
+    //   209: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	210	0	this	c
+    //   86	87	1	i	int
+    //   17	87	2	localObject	Object
+    //   176	14	2	localException	Exception
+    //   201	8	2	localList	List
+    //   102	61	3	locala	a
+    //   108	40	4	localJSONObject	JSONObject
+    // Exception table:
+    //   from	to	target	type
+    //   67	85	176	java/lang/Exception
+    //   87	169	176	java/lang/Exception
   }
   
   public final void convertFrom(Cursor paramCursor)
@@ -601,6 +571,36 @@ public final class c
     return localContentValues;
   }
   
+  public final b dc(boolean paramBoolean)
+  {
+    AppMethodBeat.i(116389);
+    b localb;
+    if ((this.eZc == null) || (paramBoolean))
+    {
+      if ((!Util.isNullOrNil(this.field_extInfo)) && (eZd == this.field_extInfo.hashCode())) {
+        this.eZc = eZe;
+      }
+    }
+    else
+    {
+      localb = this.eZc;
+      AppMethodBeat.o(116389);
+      return localb;
+    }
+    if ((ab.PN(this.field_username)) && (WeChatSomeFeatureSwitch.hardcodeWeChatUSTeam()))
+    {
+      localb = b.ga(cs.c.bfT());
+      this.eZc = localb;
+    }
+    for (eZe = localb;; eZe = localb)
+    {
+      eZd = Util.nullAsNil(this.field_extInfo).hashCode();
+      break;
+      localb = b.ga(this.field_extInfo);
+      this.eZc = localb;
+    }
+  }
+  
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
@@ -609,47 +609,47 @@ public final class c
   public static final class a
   {
     public String description;
-    public String dhy;
+    public String eZf;
     public String title;
     public String url;
   }
   
   public static final class b
   {
-    private boolean dhA = true;
-    public boolean dhB = false;
-    private boolean dhC = false;
-    public boolean dhD = false;
-    private String dhE;
-    private String dhF;
-    private List<c.b.g> dhG = null;
-    private e dhH = null;
-    private d dhI = null;
-    private c dhJ = null;
-    private f dhK = null;
-    c.b.c.a dhL = null;
-    private boolean dhM = false;
-    public boolean dhN = false;
-    int dhO;
-    public boolean dhP = false;
-    public int dhQ = 0;
-    private String dhR;
-    private c.b.b dhS = null;
-    private int dhT = 0;
-    private int dhU = c.dhs;
-    private String dhV;
-    private boolean dhW = false;
-    private int dhX;
-    private c.b.h dhY;
-    private String dhZ;
-    public JSONObject dhz = null;
-    private String dia;
-    private boolean dib = false;
-    public c.b.a dic;
-    private List<WxaAttributes.WxaEntryInfo> did;
+    private int eZA = 0;
+    private int eZB = c.eYZ;
+    private String eZC;
+    private boolean eZD = false;
+    private int eZE;
+    private h eZF;
+    private String eZG;
+    private String eZH;
+    private boolean eZI = false;
+    public c.b.a eZJ;
+    private List<WxaAttributes.WxaEntryInfo> eZK;
+    public JSONObject eZg = null;
+    private boolean eZh = true;
+    public boolean eZi = false;
+    private boolean eZj = false;
+    public boolean eZk = false;
+    private String eZl;
+    private String eZm;
+    private List<c.b.g> eZn = null;
+    private e eZo = null;
+    private d eZp = null;
+    private c eZq = null;
+    private f eZr = null;
+    c.b.c.a eZs = null;
+    private boolean eZt = false;
+    public boolean eZu = false;
+    int eZv;
+    public boolean eZw = false;
+    public int eZx = 0;
+    private String eZy;
+    private c.b.b eZz = null;
     private int serviceType = 0;
     
-    static b fp(String paramString)
+    static b ga(String paramString)
     {
       AppMethodBeat.i(116387);
       b localb = new b();
@@ -661,7 +661,7 @@ public final class c
       try
       {
         System.currentTimeMillis();
-        localb.dhz = new JSONObject(paramString);
+        localb.eZg = new JSONObject(paramString);
         AppMethodBeat.o(116387);
         return localb;
       }
@@ -674,51 +674,51 @@ public final class c
       }
     }
     
-    public final boolean UB()
+    public final boolean YT()
     {
       boolean bool = false;
       AppMethodBeat.i(116380);
-      if (this.dhz != null)
+      if (this.eZg != null)
       {
-        if (Util.getInt(this.dhz.optString("ReportLocationType"), 0) > 0) {
+        if (Util.getInt(this.eZg.optString("ReportLocationType"), 0) > 0) {
           bool = true;
         }
-        this.dhM = bool;
+        this.eZt = bool;
       }
-      bool = this.dhM;
+      bool = this.eZt;
       AppMethodBeat.o(116380);
       return bool;
     }
     
-    public final boolean UP()
+    public final boolean Zh()
     {
       AppMethodBeat.i(116366);
-      if ((this.dhz != null) && (this.dhz.optJSONObject("WifiBizInfo") != null) && (this.dhz.optJSONObject("WifiBizInfo").optInt("IsWXWiFi") == 1)) {
-        this.dib = true;
+      if ((this.eZg != null) && (this.eZg.optJSONObject("WifiBizInfo") != null) && (this.eZg.optJSONObject("WifiBizInfo").optInt("IsWXWiFi") == 1)) {
+        this.eZI = true;
       }
-      boolean bool = this.dib;
+      boolean bool = this.eZI;
       AppMethodBeat.o(116366);
       return bool;
     }
     
-    public final boolean UQ()
+    public final boolean Zi()
     {
       AppMethodBeat.i(116367);
-      if (this.dhz != null) {
-        this.dhC = "1".equals(this.dhz.optString("IsShowMember"));
+      if (this.eZg != null) {
+        this.eZj = "1".equals(this.eZg.optString("IsShowMember"));
       }
-      boolean bool = this.dhC;
+      boolean bool = this.eZj;
       AppMethodBeat.o(116367);
       return bool;
     }
     
-    public final boolean UR()
+    public final boolean Zj()
     {
       AppMethodBeat.i(116368);
-      if (this.dhz != null) {
-        this.dhU = Util.getInt(this.dhz.optString("NotifyManage"), c.dhs);
+      if (this.eZg != null) {
+        this.eZB = Util.getInt(this.eZg.optString("NotifyManage"), c.eYZ);
       }
-      if (this.dhU == c.dhr)
+      if (this.eZB == c.eYY)
       {
         AppMethodBeat.o(116368);
         return true;
@@ -727,137 +727,137 @@ public final class c
       return false;
     }
     
-    public final String US()
+    public final String Zk()
     {
       AppMethodBeat.i(116369);
-      if (this.dhz != null) {
-        this.dhE = this.dhz.optString("VerifyContactPromptTitle");
+      if (this.eZg != null) {
+        this.eZl = this.eZg.optString("VerifyContactPromptTitle");
       }
-      String str = this.dhE;
+      String str = this.eZl;
       AppMethodBeat.o(116369);
       return str;
     }
     
-    public final String UT()
+    public final String Zl()
     {
       AppMethodBeat.i(116370);
-      if (this.dhz != null) {
-        this.dhZ = this.dhz.optString("TrademarkUrl");
+      if (this.eZg != null) {
+        this.eZG = this.eZg.optString("TrademarkUrl");
       }
-      String str = this.dhZ;
+      String str = this.eZG;
       AppMethodBeat.o(116370);
       return str;
     }
     
-    public final String UU()
+    public final String Zm()
     {
       AppMethodBeat.i(116371);
-      if (this.dhz != null) {
-        this.dia = this.dhz.optString("TrademarkName");
+      if (this.eZg != null) {
+        this.eZH = this.eZg.optString("TrademarkName");
       }
-      String str = this.dia;
+      String str = this.eZH;
       AppMethodBeat.o(116371);
       return str;
     }
     
-    public final String UV()
+    public final String Zn()
     {
       AppMethodBeat.i(116372);
-      if (this.dhz != null) {
-        this.dhF = this.dhz.optString("ConferenceContactExpireTime");
+      if (this.eZg != null) {
+        this.eZm = this.eZg.optString("ConferenceContactExpireTime");
       }
-      String str = this.dhF;
+      String str = this.eZm;
       AppMethodBeat.o(116372);
       return str;
     }
     
-    public final List<c.b.g> UW()
+    public final List<c.b.g> Zo()
     {
       AppMethodBeat.i(116373);
-      if ((this.dhz != null) && (this.dhG == null)) {
-        this.dhG = c.b.g.d(this.dhz.optJSONArray("Privilege"));
+      if ((this.eZg != null) && (this.eZn == null)) {
+        this.eZn = c.b.g.d(this.eZg.optJSONArray("Privilege"));
       }
-      List localList = this.dhG;
+      List localList = this.eZn;
       AppMethodBeat.o(116373);
       return localList;
     }
     
-    public final int UX()
+    public final int Zp()
     {
       AppMethodBeat.i(116374);
-      if (this.dhz != null) {
-        this.dhT = this.dhz.optInt("InteractiveMode");
+      if (this.eZg != null) {
+        this.eZA = this.eZg.optInt("InteractiveMode");
       }
-      int i = this.dhT;
+      int i = this.eZA;
       AppMethodBeat.o(116374);
       return i;
     }
     
-    public final f UY()
+    public final f Zq()
     {
       AppMethodBeat.i(116375);
-      if ((this.dhz != null) && (this.dhK == null)) {
-        this.dhK = f.fv(this.dhz.optString("PayShowInfo"));
+      if ((this.eZg != null) && (this.eZr == null)) {
+        this.eZr = f.gg(this.eZg.optString("PayShowInfo"));
       }
-      f localf = this.dhK;
+      f localf = this.eZr;
       AppMethodBeat.o(116375);
       return localf;
     }
     
-    public final c.b.b UZ()
+    public final c.b.b Zr()
     {
       AppMethodBeat.i(116376);
-      if ((this.dhz != null) && (this.dhS == null))
+      if ((this.eZg != null) && (this.eZz == null))
       {
-        localObject = this.dhz.optString("HardwareBizInfo");
+        localObject = this.eZg.optString("HardwareBizInfo");
         if (localObject != null) {
-          this.dhS = c.b.b.fr((String)localObject);
+          this.eZz = c.b.b.gc((String)localObject);
         }
       }
-      Object localObject = this.dhS;
+      Object localObject = this.eZz;
       AppMethodBeat.o(116376);
       return localObject;
     }
     
-    public final e Va()
+    public final e Zs()
     {
       AppMethodBeat.i(116377);
-      if ((this.dhz != null) && (this.dhH == null)) {
-        this.dhH = e.fu(this.dhz.optString("VerifySource"));
+      if ((this.eZg != null) && (this.eZo == null)) {
+        this.eZo = e.gf(this.eZg.optString("VerifySource"));
       }
-      e locale = this.dhH;
+      e locale = this.eZo;
       AppMethodBeat.o(116377);
       return locale;
     }
     
-    public final c.b.h Vb()
+    public final h Zt()
     {
       AppMethodBeat.i(116379);
-      if ((this.dhz != null) && (this.dhY == null))
+      if ((this.eZg != null) && (this.eZF == null))
       {
-        localObject = this.dhz.optString("RegisterSource");
+        localObject = this.eZg.optString("RegisterSource");
         if (localObject != null) {
-          this.dhY = c.b.h.fw((String)localObject);
+          this.eZF = h.gh((String)localObject);
         }
       }
-      Object localObject = this.dhY;
+      Object localObject = this.eZF;
       AppMethodBeat.o(116379);
       return localObject;
     }
     
-    public final boolean Vc()
+    public final boolean Zu()
     {
       boolean bool = true;
       AppMethodBeat.i(116381);
-      if (this.dhz != null) {
-        if (Util.getInt(this.dhz.optString("IsTrademarkProtection"), 0) != 1) {
+      if (this.eZg != null) {
+        if (Util.getInt(this.eZg.optString("IsTrademarkProtection"), 0) != 1) {
           break label51;
         }
       }
       for (;;)
       {
-        this.dhW = bool;
-        bool = this.dhW;
+        this.eZD = bool;
+        bool = this.eZD;
         AppMethodBeat.o(116381);
         return bool;
         label51:
@@ -865,50 +865,50 @@ public final class c
       }
     }
     
-    public final String Vd()
+    public final String Zv()
     {
       AppMethodBeat.i(116383);
-      if (this.dhz != null) {
-        this.dhR = this.dhz.optString("SupportEmoticonLinkPrefix");
+      if (this.eZg != null) {
+        this.eZy = this.eZg.optString("SupportEmoticonLinkPrefix");
       }
-      String str = this.dhR;
+      String str = this.eZy;
       AppMethodBeat.o(116383);
       return str;
     }
     
-    public final c Ve()
+    public final c Zw()
     {
       AppMethodBeat.i(116384);
-      if ((this.dhz != null) && (this.dhJ == null))
+      if ((this.eZg != null) && (this.eZq == null))
       {
-        localObject = this.dhz.optString("MMBizMenu");
+        localObject = this.eZg.optString("MMBizMenu");
         if (localObject != null) {
-          this.dhJ = c.fs((String)localObject);
+          this.eZq = c.gd((String)localObject);
         }
       }
-      Object localObject = this.dhJ;
+      Object localObject = this.eZq;
       AppMethodBeat.o(116384);
       return localObject;
     }
     
-    public final String Vf()
+    public final String Zx()
     {
       AppMethodBeat.i(116385);
-      if (this.dhz != null) {
-        this.dhV = this.dhz.optString("ServicePhone");
+      if (this.eZg != null) {
+        this.eZC = this.eZg.optString("ServicePhone");
       }
-      String str = this.dhV;
+      String str = this.eZC;
       AppMethodBeat.o(116385);
       return str;
     }
     
-    public final boolean Vg()
+    public final boolean Zy()
     {
       AppMethodBeat.i(116386);
-      if (this.dhz != null) {
-        this.dhX = this.dhz.optInt("FunctionFlag");
+      if (this.eZg != null) {
+        this.eZE = this.eZg.optInt("FunctionFlag");
       }
-      if ((this.dhX & c.dht) > 0)
+      if ((this.eZE & c.eZa) > 0)
       {
         AppMethodBeat.o(116386);
         return true;
@@ -917,17 +917,17 @@ public final class c
       return false;
     }
     
-    public final c.b.c.a Vh()
+    public final c.b.c.a Zz()
     {
       AppMethodBeat.i(116388);
-      if ((this.dhz != null) && (this.dhL == null))
+      if ((this.eZg != null) && (this.eZs == null))
       {
-        localObject = this.dhz.optString("EnterpriseBizInfo");
+        localObject = this.eZg.optString("EnterpriseBizInfo");
         if (localObject != null) {
-          this.dhL = c.b.c.a.ft((String)localObject);
+          this.eZs = c.b.c.a.ge((String)localObject);
         }
       }
-      Object localObject = this.dhL;
+      Object localObject = this.eZs;
       AppMethodBeat.o(116388);
       return localObject;
     }
@@ -935,8 +935,8 @@ public final class c
     public final int getServiceType()
     {
       AppMethodBeat.i(116382);
-      if (this.dhz != null) {
-        this.serviceType = this.dhz.optInt("ServiceType", 0);
+      if (this.eZg != null) {
+        this.serviceType = this.eZg.optInt("ServiceType", 0);
       }
       int i = this.serviceType;
       AppMethodBeat.o(116382);
@@ -947,12 +947,12 @@ public final class c
     {
       AppMethodBeat.i(116365);
       Object localObject1;
-      if (this.did == null)
+      if (this.eZK == null)
       {
-        this.did = new LinkedList();
-        if (this.dhz != null)
+        this.eZK = new LinkedList();
+        if (this.eZg != null)
         {
-          localObject1 = this.dhz.optString("BindWxaInfo");
+          localObject1 = this.eZg.optString("BindWxaInfo");
           if (TextUtils.isEmpty((CharSequence)localObject1)) {}
         }
       }
@@ -984,9 +984,9 @@ public final class c
               WxaAttributes.WxaEntryInfo localWxaEntryInfo = new WxaAttributes.WxaEntryInfo();
               localWxaEntryInfo.username = str1;
               localWxaEntryInfo.title = str2;
-              localWxaEntryInfo.lgO = str3;
+              localWxaEntryInfo.obt = str3;
               localWxaEntryInfo.iconUrl = ((String)localObject2);
-              this.did.add(localWxaEntryInfo);
+              this.eZK.add(localWxaEntryInfo);
             }
           }
           i += 1;
@@ -996,7 +996,7 @@ public final class c
         catch (JSONException localJSONException) {}
         continue;
         label219:
-        List localList = this.did;
+        List localList = this.eZK;
         AppMethodBeat.o(116365);
         return localList;
         label232:
@@ -1006,11 +1006,11 @@ public final class c
     
     public static final class c
     {
-      public int dii;
-      public List<k> dij = null;
+      public int eZP;
+      public List<k> eZQ = null;
       public int type;
       
-      public static c fs(String paramString)
+      public static c gd(String paramString)
       {
         AppMethodBeat.i(116359);
         Log.i("MicroMsg.BizInfo", "MenuInfo = ".concat(String.valueOf(paramString)));
@@ -1023,9 +1023,9 @@ public final class c
         try
         {
           paramString = new JSONObject(paramString);
-          localc.dii = paramString.optInt("update_time");
+          localc.eZP = paramString.optInt("update_time");
           localc.type = paramString.optInt("type", 0);
-          localc.dij = k.e(paramString.optJSONArray("button_list"));
+          localc.eZQ = k.e(paramString.optJSONArray("button_list"));
           AppMethodBeat.o(116359);
           return localc;
         }
@@ -1041,13 +1041,13 @@ public final class c
       public static final class a
       {
         public long appid = 0L;
-        public String dik;
-        public String dil;
-        public int dim;
-        public String din;
-        public String dio;
+        public String eZR;
+        public String eZS;
+        public int eZT;
+        public String eZU;
+        public String eZV;
         
-        public static a ft(String paramString)
+        public static a ge(String paramString)
         {
           AppMethodBeat.i(116358);
           Log.i("MicroMsg.BizInfo", "EnterpriseBizInfo = ".concat(String.valueOf(paramString)));
@@ -1060,20 +1060,20 @@ public final class c
           try
           {
             paramString = new JSONObject(paramString);
-            locala.dik = paramString.optString("belong");
-            locala.dil = paramString.optString("freeze_wording");
-            locala.dim = paramString.optInt("child_type");
-            locala.din = paramString.optString("home_url");
+            locala.eZR = paramString.optString("belong");
+            locala.eZS = paramString.optString("freeze_wording");
+            locala.eZT = paramString.optInt("child_type");
+            locala.eZU = paramString.optString("home_url");
             paramString = paramString.optString("exattr");
             if (Util.isNullOrNil(paramString)) {
-              locala.dio = null;
+              locala.eZV = null;
             }
             for (;;)
             {
               AppMethodBeat.o(116358);
               return locala;
               paramString = new JSONObject(paramString);
-              locala.dio = paramString.optString("chat_extension_url");
+              locala.eZV = paramString.optString("chat_extension_url");
               locala.appid = paramString.optLong("app_id");
             }
           }
@@ -1092,13 +1092,13 @@ public final class c
     
     public static final class e
     {
-      public int dip = 0;
-      public String diq;
-      public String dis;
-      public String dit;
-      public String diu;
+      public int eZW = 0;
+      public String eZX;
+      public String eZY;
+      public String eZZ;
+      public String faa;
       
-      public static e fu(String paramString)
+      public static e gf(String paramString)
       {
         AppMethodBeat.i(116361);
         if (Util.isNullOrNil(paramString))
@@ -1111,12 +1111,12 @@ public final class c
         try
         {
           paramString = new JSONObject(paramString);
-          locale.dip = paramString.optInt("Type");
-          locale.diq = paramString.optString("Description");
-          locale.dis = paramString.optString("Name");
-          locale.dit = paramString.optString("IntroUrl");
-          locale.diu = paramString.optString("VerifySubTitle");
-          Log.i("MicroMsg.BizInfo", "type[%d],desc[%s],name[%s],url[%s]", new Object[] { Integer.valueOf(locale.dip), locale.diq, locale.dis, locale.dit });
+          locale.eZW = paramString.optInt("Type");
+          locale.eZX = paramString.optString("Description");
+          locale.eZY = paramString.optString("Name");
+          locale.eZZ = paramString.optString("IntroUrl");
+          locale.faa = paramString.optString("VerifySubTitle");
+          Log.i("MicroMsg.BizInfo", "type[%d],desc[%s],name[%s],url[%s]", new Object[] { Integer.valueOf(locale.eZW), locale.eZX, locale.eZY, locale.eZZ });
           AppMethodBeat.o(116361);
           return locale;
         }
@@ -1132,12 +1132,12 @@ public final class c
     
     public static final class f
     {
-      public int div;
-      public String diw;
-      public List<String> dix;
-      public String diy;
+      public int fab;
+      public String fac;
+      public List<String> fad;
+      public String fae;
       
-      public static f fv(String paramString)
+      public static f gg(String paramString)
       {
         AppMethodBeat.i(116362);
         if (Util.isNullOrNil(paramString))
@@ -1149,22 +1149,22 @@ public final class c
         {
           f localf = new f();
           paramString = new JSONObject(paramString);
-          localf.div = paramString.optInt("reputation_level", -1);
-          localf.diw = paramString.optString("scope_of_business");
-          localf.diy = paramString.optString("guarantee_detail_h5_url");
+          localf.fab = paramString.optInt("reputation_level", -1);
+          localf.fac = paramString.optString("scope_of_business");
+          localf.fae = paramString.optString("guarantee_detail_h5_url");
           paramString = paramString.optJSONArray("guarantee_info");
           if (paramString != null)
           {
             int j = paramString.length();
             if (j > 0)
             {
-              localf.dix = new ArrayList();
+              localf.fad = new ArrayList();
               int i = 0;
               while (i < j)
               {
                 String str = paramString.getString(i);
                 if (!Util.isNullOrNil(str)) {
-                  localf.dix.add(str);
+                  localf.fad.add(str);
                 }
                 i += 1;
               }
@@ -1179,6 +1179,50 @@ public final class c
           AppMethodBeat.o(116362);
         }
         return null;
+      }
+    }
+    
+    public static final class h
+    {
+      public String fag;
+      public String fah;
+      public boolean fai;
+      public String faj;
+      
+      public static h gh(String paramString)
+      {
+        AppMethodBeat.i(116364);
+        Log.i("MicroMsg.BizInfo", "RegisterSource = %s", new Object[] { paramString });
+        h localh = new h();
+        if ((paramString == null) || (paramString.length() <= 0))
+        {
+          AppMethodBeat.o(116364);
+          return localh;
+        }
+        for (;;)
+        {
+          try
+          {
+            paramString = new JSONObject(paramString);
+            localh.fag = paramString.optString("RegisterBody");
+            localh.fah = paramString.optString("IntroUrl");
+            if (paramString.optInt("IsClose", 0) != 1) {
+              continue;
+            }
+            bool = true;
+            localh.fai = bool;
+            localh.faj = paramString.optString("AboutBizUrl");
+          }
+          catch (JSONException paramString)
+          {
+            boolean bool;
+            Log.e("MicroMsg.BizInfo", "exception in RegisterSource:%s", new Object[] { Util.stackTraceToString(paramString) });
+            continue;
+          }
+          AppMethodBeat.o(116364);
+          return localh;
+          bool = false;
+        }
       }
     }
   }

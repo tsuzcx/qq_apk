@@ -5,7 +5,7 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface b
   extends a
 {
-  public abstract com.tencent.mm.plugin.scanner.api.a.b eOT();
+  public abstract com.tencent.mm.plugin.scanner.api.a.b fBV();
 }
 
 

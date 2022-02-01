@@ -12,12 +12,13 @@ final class SnsTimeLineUI$62
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(99353);
+    SnsTimeLineUI.c(this.Lao, false);
     AppMethodBeat.o(99353);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsTimeLineUI.62
  * JD-Core Version:    0.7.0.1
  */

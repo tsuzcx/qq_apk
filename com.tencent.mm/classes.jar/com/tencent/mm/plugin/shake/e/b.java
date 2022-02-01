@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.g;
 import com.tencent.mm.platformtools.s;
 import com.tencent.mm.platformtools.s.a;
 import com.tencent.mm.platformtools.s.b;
@@ -17,12 +18,12 @@ import java.io.IOException;
 public final class b
   implements s
 {
-  private c.a DlR = null;
+  private c.a Jrt = null;
   private String thumburl = "";
   
   public b(c.a parama)
   {
-    this.DlR = parama;
+    this.Jrt = parama;
   }
   
   public b(String paramString)
@@ -33,10 +34,10 @@ public final class b
   public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
   {
     AppMethodBeat.i(28620);
-    if (s.a.jNh == parama) {}
+    if (s.a.mEp == parama) {}
     try
     {
-      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, blA(), false);
+      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, bvq(), false);
       AppMethodBeat.o(28620);
       return paramBitmap;
     }
@@ -49,23 +50,26 @@ public final class b
     }
   }
   
-  public final void a(s.a parama, String paramString) {}
+  public final void a(s.a parama) {}
   
-  public final void ad(String paramString, boolean paramBoolean) {}
+  public final s.b bvp()
+  {
+    return null;
+  }
   
-  public final String blA()
+  public final String bvq()
   {
     AppMethodBeat.i(28617);
     String str;
-    if ((this.DlR != null) && (this.DlR.field_thumburl != null))
+    if ((this.Jrt != null) && (this.Jrt.field_thumburl != null))
     {
-      str = m.jP(this.DlR.field_thumburl, "@S");
+      str = m.kh(this.Jrt.field_thumburl, "@S");
       AppMethodBeat.o(28617);
       return str;
     }
     if (this.thumburl != null)
     {
-      str = m.jP(this.thumburl, "@S");
+      str = m.kh(this.thumburl, "@S");
       AppMethodBeat.o(28617);
       return str;
     }
@@ -73,33 +77,28 @@ public final class b
     return "";
   }
   
-  public final String blB()
+  public final String bvr()
   {
-    if ((this.DlR != null) && (this.DlR.field_thumburl != null)) {
-      return this.DlR.field_thumburl;
+    if ((this.Jrt != null) && (this.Jrt.field_thumburl != null)) {
+      return this.Jrt.field_thumburl;
     }
     return this.thumburl;
   }
   
-  public final String blC()
+  public final String bvs()
   {
     AppMethodBeat.i(28618);
-    String str = blB() + "_tv";
+    String str = bvr() + "_tv";
     AppMethodBeat.o(28618);
     return str;
   }
   
-  public final boolean blD()
+  public final boolean bvt()
   {
     return false;
   }
   
-  public final boolean blE()
-  {
-    return false;
-  }
-  
-  public final Bitmap blF()
+  public final Bitmap bvu()
   {
     AppMethodBeat.i(28621);
     if (MMApplicationContext.getContext() == null)
@@ -107,29 +106,26 @@ public final class b
       AppMethodBeat.o(28621);
       return null;
     }
-    Bitmap localBitmap = BitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), 2131234279);
+    Bitmap localBitmap = BitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), R.g.nosdcard_chatting_bg);
     AppMethodBeat.o(28621);
     return localBitmap;
   }
   
-  public final void blG() {}
+  public final void bvv() {}
   
-  public final s.b blz()
-  {
-    return null;
-  }
+  public final void bvw() {}
   
   public final String getCacheKey()
   {
     AppMethodBeat.i(28619);
-    String str = blB() + "_tv";
+    String str = bvr() + "_tv";
     AppMethodBeat.o(28619);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.e.b
  * JD-Core Version:    0.7.0.1
  */

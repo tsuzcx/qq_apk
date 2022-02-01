@@ -10,6 +10,9 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.setting.b.f;
+import com.tencent.mm.plugin.setting.b.g;
+import com.tencent.mm.plugin.setting.b.i;
 import com.tencent.mm.ui.MMActivity;
 
 public class SettingDeleteAccountUI
@@ -17,7 +20,7 @@ public class SettingDeleteAccountUI
 {
   public int getLayoutId()
   {
-    return 2131496238;
+    return b.g.setting_delete_account;
   }
   
   public void initView()
@@ -34,14 +37,14 @@ public class SettingDeleteAccountUI
         return true;
       }
     });
-    ((TextView)findViewById(2131299478)).setOnClickListener(new View.OnClickListener()
+    ((TextView)findViewById(b.f.delete_account_btn)).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(74001);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/setting/ui/setting/SettingDeleteAccountUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/setting/ui/setting/SettingDeleteAccountUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingDeleteAccountUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(74001);
       }
@@ -53,7 +56,7 @@ public class SettingDeleteAccountUI
   {
     AppMethodBeat.i(74002);
     super.onCreate(paramBundle);
-    setMMTitle(2131765267);
+    setMMTitle(b.i.setting_del_account_title);
     initView();
     AppMethodBeat.o(74002);
   }

@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.clean.b;
 
+import android.system.ErrnoException;
+import android.system.Os;
+import android.system.StructStat;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.service.f;
 import com.tencent.mm.plugin.clean.c.d;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -22,221 +22,100 @@ import java.util.List;
 public final class a
   implements Runnable
 {
-  private static final Long duN;
-  private static final Long qps;
-  private long cacheSize;
   private boolean isStop;
-  List<Runnable> pQl;
-  private long qpt;
-  private long qpu;
-  private long qpv;
-  private HashMap<String, Long> qpw;
-  private HashSet<String> qpx;
-  private a qpy;
-  LinkedList<String> qpz;
-  
-  static
-  {
-    AppMethodBeat.i(22768);
-    duN = Long.valueOf(604800000L);
-    qps = Long.valueOf(7776000000L);
-    AppMethodBeat.o(22768);
-  }
+  private long sXm;
+  List<Runnable> sXn;
+  private long tOc;
+  private long tOd;
+  private long tOe;
+  private HashMap<String, Long> tOf;
+  private HashSet<String> tOg;
+  private a tOh;
+  LinkedList<String> tOi;
   
   public a(a parama)
   {
-    AppMethodBeat.i(231653);
+    AppMethodBeat.i(284703);
     this.isStop = false;
-    this.qpz = new LinkedList();
-    this.pQl = new ArrayList();
+    this.tOi = new LinkedList();
+    this.sXn = new ArrayList();
     this.isStop = false;
-    this.qpy = parama;
-    this.qpw = new HashMap();
-    this.qpx = new HashSet();
-    AppMethodBeat.o(231653);
+    this.tOh = parama;
+    this.tOf = new HashMap();
+    this.tOg = new HashSet();
+    AppMethodBeat.o(284703);
   }
   
-  private long H(File paramFile)
+  private static long A(File paramFile)
   {
-    AppMethodBeat.i(231654);
-    long l1 = 0L;
-    long l2;
+    AppMethodBeat.i(284706);
+    try
+    {
+      paramFile = Os.stat(paramFile.getPath());
+      if (paramFile == null)
+      {
+        AppMethodBeat.o(284706);
+        return 0L;
+      }
+      long l = paramFile.st_blocks;
+      AppMethodBeat.o(284706);
+      return l * 512L;
+    }
+    catch (ErrnoException paramFile)
+    {
+      AppMethodBeat.o(284706);
+    }
+    return 0L;
+  }
+  
+  private long B(File paramFile)
+  {
+    AppMethodBeat.i(284708);
+    long l1 = A(paramFile);
+    long l2 = l1;
     if (paramFile.isDirectory())
     {
       paramFile = paramFile.listFiles();
       l2 = l1;
       if (paramFile != null)
       {
-        int m = paramFile.length;
+        int j = paramFile.length;
         int i = 0;
-        l2 = l1;
-        if (i < m)
+        for (;;)
         {
-          File[] arrayOfFile = paramFile[i];
-          String str = arrayOfFile.getAbsolutePath() + File.separator;
-          long l3;
-          if (str.endsWith("/MicroMsg/")) {
-            if (arrayOfFile.isDirectory())
-            {
-              arrayOfFile = arrayOfFile.listFiles();
-              l2 = l1;
-              if (arrayOfFile != null)
-              {
-                int n = arrayOfFile.length;
-                int j = 0;
-                l2 = l1;
-                if (j < n)
-                {
-                  Object localObject = arrayOfFile[j];
-                  if (((File)localObject).getName().length() >= 32) {
-                    if (((File)localObject).isDirectory())
-                    {
-                      localObject = ((File)localObject).listFiles();
-                      l2 = l1;
-                      if (localObject != null)
-                      {
-                        int i1 = localObject.length;
-                        int k = 0;
-                        for (;;)
-                        {
-                          l2 = l1;
-                          if (k >= i1) {
-                            break;
-                          }
-                          File localFile = localObject[k];
-                          l2 = I(localFile);
-                          l1 += l2;
-                          Log.i("MicroMsg.CleanCalcLogic", "%s data path[%s] size[%s]", new Object[] { bgQ(), localFile.getAbsolutePath(), Util.getSizeMB(l2) });
-                          k += 1;
-                        }
-                      }
-                    }
-                    else
-                    {
-                      l3 = I(new File(str));
-                      l2 = l1 + l3;
-                      Log.i("MicroMsg.CleanCalcLogic", "%s data path[%s] size[%s]", new Object[] { bgQ(), ((File)localObject).getAbsolutePath(), Util.getSizeMB(l3) });
-                    }
-                  }
-                  for (;;)
-                  {
-                    j += 1;
-                    l1 = l2;
-                    break;
-                    l3 = I((File)localObject);
-                    l2 = l1 + l3;
-                    Log.i("MicroMsg.CleanCalcLogic", "%s data path[%s] size[%s]", new Object[] { bgQ(), ((File)localObject).getAbsolutePath(), Util.getSizeMB(l3) });
-                  }
-                }
-              }
-            }
-            else
-            {
-              l3 = I(new File(str));
-              l2 = l1 + l3;
-              Log.i("MicroMsg.CleanCalcLogic", "%s data path[%s] size[%s]", new Object[] { bgQ(), str, Util.getSizeMB(l3) });
-            }
-          }
-          for (;;)
-          {
-            i += 1;
-            l1 = l2;
+          l2 = l1;
+          if (i >= j) {
             break;
-            l3 = I(new File(str));
-            l2 = l1 + l3;
-            Log.i("MicroMsg.CleanCalcLogic", "%s data path[%s] size[%s]", new Object[] { bgQ(), str, Util.getSizeMB(l3) });
           }
+          File localFile = paramFile[i];
+          l2 = l1;
+          if (localFile != null) {
+            l2 = l1 + B(localFile);
+          }
+          i += 1;
+          l1 = l2;
         }
       }
     }
-    else
-    {
-      l2 = I(paramFile);
-      Log.i("MicroMsg.CleanCalcLogic", "%s data path[%s] size[%s]", new Object[] { bgQ(), paramFile.getAbsolutePath(), Util.getSizeMB(l2) });
-    }
-    AppMethodBeat.o(231654);
+    AppMethodBeat.o(284708);
     return l2;
-  }
-  
-  private long I(File paramFile)
-  {
-    AppMethodBeat.i(231655);
-    if (paramFile.isDirectory())
-    {
-      File[] arrayOfFile = paramFile.listFiles();
-      if (arrayOfFile != null)
-      {
-        l1 = 0L;
-        int j = arrayOfFile.length;
-        int i = 0;
-        while (i < j)
-        {
-          long l2 = I(arrayOfFile[i]);
-          if (l2 == -1L)
-          {
-            AppMethodBeat.o(231655);
-            return -1L;
-          }
-          l1 += l2;
-          i += 1;
-        }
-        AppMethodBeat.o(231655);
-        return l1;
-      }
-    }
-    long l1 = paramFile.length();
-    AppMethodBeat.o(231655);
-    return l1;
-  }
-  
-  private long J(File paramFile)
-  {
-    AppMethodBeat.i(231657);
-    if (paramFile.isDirectory())
-    {
-      File[] arrayOfFile = paramFile.listFiles();
-      if (arrayOfFile != null)
-      {
-        l = 0L;
-        int j = arrayOfFile.length;
-        int i = 0;
-        while (i < j)
-        {
-          l += J(arrayOfFile[i]);
-          i += 1;
-        }
-        AppMethodBeat.o(231657);
-        return l;
-      }
-    }
-    else
-    {
-      this.cacheSize += paramFile.length();
-      l = paramFile.length();
-      AppMethodBeat.o(231657);
-      return l;
-    }
-    this.cacheSize += paramFile.length();
-    long l = paramFile.length();
-    AppMethodBeat.o(231657);
-    return l;
   }
   
   private int a(HashSet<String> paramHashSet1, HashSet<String> paramHashSet2)
   {
-    AppMethodBeat.i(231656);
+    AppMethodBeat.i(284709);
     Object localObject1 = new HashSet();
     HashSet localHashSet = new HashSet();
     int i;
     Object localObject2;
-    if (com.tencent.mm.loader.j.b.aKD().equals(com.tencent.mm.loader.j.b.aKE()))
+    if (com.tencent.mm.loader.j.b.aSF().equals(com.tencent.mm.loader.j.b.aSG()))
     {
-      ((HashSet)localObject1).add(com.tencent.mm.loader.j.b.aKJ());
-      localHashSet.add(com.tencent.mm.loader.j.b.aKJ() + g.aAh().hqJ + File.separator);
-      localHashSet.add(com.tencent.mm.loader.j.b.aKJ() + g.aAh().hqH + File.separator);
-      Log.i("MicroMsg.CleanCalcLogic", "%s get MicroMsg path SDCARD_ROOT[%s] DEFAULT_SDCARD_ROOT[%s], acc[%s], oldacc[%s]", new Object[] { bgQ(), com.tencent.mm.loader.j.b.aKD(), com.tencent.mm.loader.j.b.aKE(), g.aAh().hqJ, g.aAh().hqH });
+      ((HashSet)localObject1).add(com.tencent.mm.loader.j.b.aSL());
+      localHashSet.add(com.tencent.mm.loader.j.b.aSL() + com.tencent.mm.kernel.h.aHG().kcE + File.separator);
+      localHashSet.add(com.tencent.mm.loader.j.b.aSL() + com.tencent.mm.kernel.h.aHG().kcC + File.separator);
+      Log.i("MicroMsg.CleanCalcLogic", "%s get MicroMsg path SDCARD_ROOT[%s] DEFAULT_SDCARD_ROOT[%s], acc[%s], oldacc[%s]", new Object[] { bqf(), com.tencent.mm.loader.j.b.aSF(), com.tencent.mm.loader.j.b.aSG(), com.tencent.mm.kernel.h.aHG().kcE, com.tencent.mm.kernel.h.aHG().kcC });
       i = 1;
-      localObject2 = com.tencent.mm.loader.j.b.aKD() + "/Cache/";
+      localObject2 = com.tencent.mm.loader.j.b.aSF() + "/Cache/";
       paramHashSet1.add(localObject2);
       ((HashSet)localObject1).remove(localObject2);
       localObject1 = ((HashSet)localObject1).iterator();
@@ -259,7 +138,7 @@ public final class a
           if (k < n)
           {
             String str = localObject2[k];
-            Log.d("MicroMsg.CleanCalcLogic", "%s getMicroMsgPaths filePath[%s]", new Object[] { bgQ(), str.getAbsolutePath() });
+            Log.d("MicroMsg.CleanCalcLogic", "%s getMicroMsgPaths filePath[%s]", new Object[] { bqf(), str.getAbsolutePath() });
             if (str.isDirectory())
             {
               Object localObject3 = str.getName();
@@ -285,7 +164,7 @@ public final class a
                       {
                         m += 1;
                         break label407;
-                        localObject2 = new File(com.tencent.mm.loader.j.b.aKD() + File.separator);
+                        localObject2 = new File(com.tencent.mm.loader.j.b.aSF() + File.separator);
                         if (((File)localObject2).isDirectory())
                         {
                           localObject2 = ((File)localObject2).listFiles();
@@ -309,14 +188,14 @@ public final class a
                           }
                           else
                           {
-                            ((HashSet)localObject1).add(com.tencent.mm.loader.j.b.aKD() + File.separator);
+                            ((HashSet)localObject1).add(com.tencent.mm.loader.j.b.aSF() + File.separator);
                           }
                         }
-                        ((HashSet)localObject1).add(com.tencent.mm.loader.j.b.aKI());
-                        localHashSet.add(com.tencent.mm.loader.j.b.aKJ() + g.aAh().hqJ + File.separator);
-                        localHashSet.add(com.tencent.mm.loader.j.b.aKJ() + g.aAh().hqH + File.separator);
-                        localHashSet.add(com.tencent.mm.loader.j.b.aKI() + g.aAh().hqJ + File.separator);
-                        localHashSet.add(com.tencent.mm.loader.j.b.aKI() + g.aAh().hqH + File.separator);
+                        ((HashSet)localObject1).add(com.tencent.mm.loader.j.b.aSK());
+                        localHashSet.add(com.tencent.mm.loader.j.b.aSL() + com.tencent.mm.kernel.h.aHG().kcE + File.separator);
+                        localHashSet.add(com.tencent.mm.loader.j.b.aSL() + com.tencent.mm.kernel.h.aHG().kcC + File.separator);
+                        localHashSet.add(com.tencent.mm.loader.j.b.aSK() + com.tencent.mm.kernel.h.aHG().kcE + File.separator);
+                        localHashSet.add(com.tencent.mm.loader.j.b.aSK() + com.tencent.mm.kernel.h.aHG().kcC + File.separator);
                         break;
                         paramHashSet1.add(str.getAbsolutePath());
                       }
@@ -328,7 +207,7 @@ public final class a
                   paramHashSet2.add(str);
                   paramHashSet1.add(str);
                   i = j + 1;
-                  this.qpx.add(localObject3);
+                  this.tOg.add(localObject3);
                 }
               }
             }
@@ -348,16 +227,102 @@ public final class a
       }
     }
     label877:
-    AppMethodBeat.o(231656);
+    AppMethodBeat.o(284709);
     return i;
   }
   
-  private String bgQ()
+  private String bqf()
   {
     AppMethodBeat.i(22762);
     String str = hashCode();
     AppMethodBeat.o(22762);
     return str;
+  }
+  
+  private long z(File paramFile)
+  {
+    AppMethodBeat.i(284705);
+    long l1 = 0L;
+    if (paramFile.isDirectory())
+    {
+      paramFile = paramFile.listFiles();
+      if (paramFile == null)
+      {
+        AppMethodBeat.o(284705);
+        return 0L;
+      }
+      int m = paramFile.length;
+      int i = 0;
+      for (;;)
+      {
+        l2 = l1;
+        if (i >= m) {
+          break;
+        }
+        File[] arrayOfFile = paramFile[i];
+        long l3;
+        if (((arrayOfFile.getAbsolutePath() + File.separator).endsWith("/MicroMsg/")) && (arrayOfFile.isDirectory()))
+        {
+          arrayOfFile = arrayOfFile.listFiles();
+          l2 = l1;
+          if (arrayOfFile != null)
+          {
+            int n = arrayOfFile.length;
+            int j = 0;
+            for (;;)
+            {
+              l2 = l1;
+              if (j >= n) {
+                break;
+              }
+              Object localObject = arrayOfFile[j];
+              if ((((File)localObject).getName().length() >= 32) && (((File)localObject).isDirectory()))
+              {
+                localObject = ((File)localObject).listFiles();
+                l2 = l1;
+                if (localObject != null)
+                {
+                  int i1 = localObject.length;
+                  int k = 0;
+                  for (;;)
+                  {
+                    l2 = l1;
+                    if (k >= i1) {
+                      break;
+                    }
+                    File localFile = localObject[k];
+                    l2 = B(localFile);
+                    l1 += l2;
+                    this.tOf.put(localFile.getAbsolutePath(), Long.valueOf(l2));
+                    k += 1;
+                  }
+                }
+              }
+              else
+              {
+                l3 = B((File)localObject);
+                l2 = l1 + l3;
+                this.tOf.put(((File)localObject).getAbsolutePath(), Long.valueOf(l3));
+              }
+              j += 1;
+              l1 = l2;
+            }
+          }
+        }
+        else
+        {
+          l3 = B(arrayOfFile);
+          l2 = l1 + l3;
+          this.tOf.put(arrayOfFile.getAbsolutePath(), Long.valueOf(l3));
+        }
+        i += 1;
+        l1 = l2;
+      }
+    }
+    long l2 = A(paramFile);
+    this.tOf.put(paramFile.getAbsolutePath(), Long.valueOf(l2));
+    AppMethodBeat.o(284705);
+    return l2;
   }
   
   public final void run()
@@ -366,94 +331,113 @@ public final class a
     long l3 = Util.currentTicks();
     if (this.isStop)
     {
-      Log.i("MicroMsg.CleanCalcLogic", "%s start run but stop", new Object[] { bgQ() });
+      Log.i("MicroMsg.CleanCalcLogic", "%s start run but stop", new Object[] { bqf() });
       AppMethodBeat.o(22763);
       return;
     }
-    Object localObject2 = new HashSet();
+    Object localObject1 = new HashSet();
     HashSet localHashSet = new HashSet();
-    a((HashSet)localObject2, localHashSet);
-    Object localObject1 = com.tencent.mm.loader.j.b.aKD() + "/Cache/";
-    int j = ((HashSet)localObject2).size();
-    localObject2 = ((HashSet)localObject2).iterator();
+    a((HashSet)localObject1, localHashSet);
+    int j = ((HashSet)localObject1).size();
+    localObject1 = ((HashSet)localObject1).iterator();
     int i = 0;
-    String str;
-    label146:
-    long l1;
+    Object localObject2;
+    label122:
     long l2;
-    long l4;
-    double d;
-    if (((Iterator)localObject2).hasNext())
+    if (((Iterator)localObject1).hasNext())
     {
-      str = (String)((Iterator)localObject2).next();
+      localObject2 = (String)((Iterator)localObject1).next();
       if (this.isStop) {
         Log.e("MicroMsg.CleanCalcLogic", "run stop.");
       }
     }
     else
     {
-      this.qpu = com.tencent.mm.plugin.f.b.crW().crX().csg();
-      l1 = H(new File(com.tencent.mm.loader.j.b.aKA()));
-      if (this.qpt <= 0L)
+      this.tOd = com.tencent.mm.plugin.h.a.cFg().cFh().cFr();
+      l2 = z(new File(com.tencent.mm.loader.j.b.aSC()));
+      if (this.tOc <= 0L)
       {
-        this.qpt = 1L;
-        h.CyF.idkeyStat(714L, 60L, 1L, false);
+        this.tOc = 1L;
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(714L, 60L, 1L, false);
       }
-      g.aAi();
-      l2 = s.boW(g.aAh().azO());
-      Log.i("MicroMsg.CleanCalcLogic", "%s scan finish cost[%d] micromsg[%s] dataSize[%s] dbSize[%s], acc[%s] otherAcc[%s]", new Object[] { bgQ(), Long.valueOf(Util.ticksToNow(l3)), Util.getSizeMB(this.qpt), Util.getSizeMB(l1), Util.getSizeMB(l2), Util.getSizeMB(this.qpu), Util.getSizeMB(this.qpv) });
-      d.cyM();
-      l3 = d.cyN();
-      d.cyM();
-      l4 = d.cyO();
-      i = (int)(this.qpt * 100L / l3);
-      j = (int)(this.qpu * 100L / this.qpt);
-      int k = (int)(this.qpv * 100L / this.qpt);
-      long l5 = this.qpt - this.qpu - this.qpv;
-      int m = (int)(100L * l5 / this.qpt);
-      localObject1 = MultiProcessMMKV.getMMKV("CleanCalcMMKV");
-      long l6 = ((MultiProcessMMKV)localObject1).getLong("CleanCalcMidImg", 0L);
-      long l7 = ((MultiProcessMMKV)localObject1).getLong("CleanCalcHevcImg", 0L);
-      localObject1 = new StringBuffer();
-      ((StringBuffer)localObject1).append(this.cacheSize).append(",");
-      ((StringBuffer)localObject1).append(this.qpt).append(",");
-      ((StringBuffer)localObject1).append(i).append(",");
-      ((StringBuffer)localObject1).append(l3 - l4).append(",");
-      ((StringBuffer)localObject1).append(l4).append(",");
-      ((StringBuffer)localObject1).append(l3).append(",");
-      ((StringBuffer)localObject1).append(l2).append(",");
-      ((StringBuffer)localObject1).append(this.qpu).append(",");
-      ((StringBuffer)localObject1).append(j).append(",");
-      ((StringBuffer)localObject1).append(this.qpv).append(",");
-      ((StringBuffer)localObject1).append(k).append(",");
-      ((StringBuffer)localObject1).append(l5).append(",");
-      ((StringBuffer)localObject1).append(m).append(",");
-      ((StringBuffer)localObject1).append("0,");
-      ((StringBuffer)localObject1).append(l1).append(",");
-      ((StringBuffer)localObject1).append(l6).append(",");
-      ((StringBuffer)localObject1).append(l7);
-      localObject1 = ((StringBuffer)localObject1).toString();
-      Log.i("MicroMsg.CleanCalcLogic", "rpt content %s", new Object[] { localObject1 });
-      this.pQl.add(new Runnable()
+      com.tencent.mm.kernel.h.aHH();
+      localObject1 = u.bBU(com.tencent.mm.kernel.h.aHG().aHn());
+      if (localObject1 == null) {
+        break label364;
+      }
+    }
+    label364:
+    for (long l1 = ((com.tencent.mm.vfs.f)localObject1).YCh;; l1 = 0L)
+    {
+      localObject1 = com.tencent.mm.vfs.b.ieZ().iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        public final void run()
-        {
-          AppMethodBeat.i(231652);
-          ((f)g.af(f.class)).buk();
-          AppMethodBeat.o(231652);
+        localObject2 = (com.tencent.mm.vfs.f)((Iterator)localObject1).next();
+        if (this.isStop) {
+          break;
         }
-      });
-      h.CyF.kvStat(14762, (String)localObject1);
-      l3 = this.qpt;
-      l4 = this.qpu;
-      d = l4 / l3;
-      if (l3 <= 17179869184L) {
-        break label1214;
+        this.sXm += ((com.tencent.mm.vfs.f)localObject2).YCh;
       }
+      if (i >= j) {
+        break label122;
+      }
+      if (Util.isNullOrNil((String)localObject2)) {
+        break;
+      }
+      l1 = B(new File((String)localObject2));
+      this.tOf.put(localObject2, Long.valueOf(l1));
+      this.tOc += l1;
+      if (localHashSet.contains(localObject2)) {
+        this.tOe = (l1 + this.tOe);
+      }
+      i += 1;
+      if (this.tOh != null) {
+        this.tOh.fK(i, j);
+      }
+      break;
+    }
+    Log.i("MicroMsg.CleanCalcLogic", "%s scan finish cost[%d] micromsg[%s] dataSize[%s] dbSize[%s] acc[%s] otherAcc[%s] cacheSize[%s]", new Object[] { bqf(), Long.valueOf(Util.ticksToNow(l3)), Util.getSizeMB(this.tOc), Util.getSizeMB(l2), Util.getSizeMB(l1), Util.getSizeMB(this.tOd), Util.getSizeMB(this.tOe), Util.getSizeMB(this.sXm) });
+    d.cNh();
+    l3 = d.cNi();
+    d.cNh();
+    long l4 = d.cNj();
+    i = (int)(this.tOc * 100L / l3);
+    j = (int)(this.tOd * 100L / this.tOc);
+    int k = (int)(this.tOe * 100L / this.tOc);
+    long l5 = this.tOc - this.tOd - this.tOe;
+    int m = (int)(100L * l5 / this.tOc);
+    localObject1 = MultiProcessMMKV.getMMKV("CleanCalcMMKV");
+    long l6 = ((MultiProcessMMKV)localObject1).getLong("CleanCalcMidImg", 0L);
+    long l7 = ((MultiProcessMMKV)localObject1).getLong("CleanCalcHevcImg", 0L);
+    localObject1 = new StringBuffer();
+    ((StringBuffer)localObject1).append(this.sXm).append(",");
+    ((StringBuffer)localObject1).append(this.tOc).append(",");
+    ((StringBuffer)localObject1).append(i).append(",");
+    ((StringBuffer)localObject1).append(l3 - l4).append(",");
+    ((StringBuffer)localObject1).append(l4).append(",");
+    ((StringBuffer)localObject1).append(l3).append(",");
+    ((StringBuffer)localObject1).append(this.tOd).append(",");
+    ((StringBuffer)localObject1).append(j).append(",");
+    ((StringBuffer)localObject1).append(this.tOe).append(",");
+    ((StringBuffer)localObject1).append(k).append(",");
+    ((StringBuffer)localObject1).append(l5).append(",");
+    ((StringBuffer)localObject1).append(m).append(",");
+    ((StringBuffer)localObject1).append("0,");
+    ((StringBuffer)localObject1).append(l2).append(",");
+    ((StringBuffer)localObject1).append(l6).append(",");
+    ((StringBuffer)localObject1).append(l7);
+    localObject1 = ((StringBuffer)localObject1).toString();
+    Log.i("MicroMsg.CleanCalcLogic", "rpt content %s", new Object[] { localObject1 });
+    this.sXn.add(new a.1(this));
+    com.tencent.mm.plugin.report.service.h.IzE.kvStat(14762, (String)localObject1);
+    l3 = this.tOc;
+    l4 = this.tOd;
+    double d = l4 / l3;
+    if (l3 > 17179869184L)
+    {
       i = 7;
-      label750:
       if (d <= 0.5D) {
-        break label1262;
+        break label1276;
       }
       j = 11;
     }
@@ -465,64 +449,46 @@ public final class a
       ((ArrayList)localObject1).add(new IDKey(1613, 2, 1));
       ((ArrayList)localObject1).add(new IDKey(1613, i, 1));
       ((ArrayList)localObject1).add(new IDKey(1613, j, 1));
-      h.CyF.b((ArrayList)localObject1, true);
-      d.cyM().qpK = this.qpt;
-      d.cyM().dataSize = l1;
-      d.cyM().qpu = (this.qpu + l2);
-      d.cyM().cacheSize = this.cacheSize;
-      d.cyM().qpv = this.qpv;
-      d.cyM().qpL = this.qpw;
-      d.cyM().qpM = localHashSet;
-      d.cyM().pQk = this.qpz;
-      d.cyM().pQl = this.pQl;
-      if (this.qpy != null) {
-        this.qpy.j(this.qpt, this.qpu + l2, this.cacheSize);
+      com.tencent.mm.plugin.report.service.h.IzE.b((ArrayList)localObject1, true);
+      localObject1 = this.tOf;
+      localObject2 = new ArrayList(((HashMap)localObject1).entrySet());
+      if (!((HashMap)localObject1).isEmpty()) {
+        Collections.sort((List)localObject2, new a.2(this));
+      }
+      Log.i("MicroMsg.CleanCalcLogic", "clean path size:\n%s", new Object[] { com.tencent.mm.plugin.clean.a.cY((List)localObject2) });
+      d.cNh().tOt = this.tOc;
+      d.cNh().bcy = l2;
+      d.cNh().tOd = (this.tOd + l1);
+      d.cNh().sXm = this.sXm;
+      d.cNh().tOe = this.tOe;
+      d.cNh().pWR = ((List)localObject2);
+      d.cNh().tOu = localHashSet;
+      d.cNh().sXl = this.tOi;
+      d.cNh().sXn = this.sXn;
+      if (this.tOh != null) {
+        this.tOh.k(this.tOc, this.tOd + l1, this.sXm);
       }
       stop();
       AppMethodBeat.o(22763);
       return;
-      if (i >= j) {
-        break label146;
-      }
-      if (Util.isNullOrNil(str)) {
-        break;
-      }
-      if ((str.endsWith("/sns/")) || (str.endsWith("/music")) || (str.equals(localObject1))) {
-        this.qpz.add(str);
-      }
-      for (l1 = J(new File(str));; l1 = I(new File(str)))
-      {
-        this.qpw.put(str, Long.valueOf(l1));
-        Log.i("MicroMsg.CleanCalcLogic", "%s path[%s] size[%s]", new Object[] { bgQ(), str, Util.getSizeMB(l1) });
-        this.qpt += l1;
-        if (localHashSet.contains(str)) {
-          this.qpv = (l1 + this.qpv);
-        }
-        i += 1;
-        if (this.qpy != null) {
-          this.qpy.fn(i, j);
-        }
-        break;
-      }
-      label1214:
       if (l3 > 8589934592L)
       {
         i = 6;
-        break label750;
+        break;
       }
       if (l3 > 2147483648L)
       {
         i = 5;
-        break label750;
+        break;
       }
       if (l3 > 536870912L)
       {
         i = 4;
-        break label750;
+        break;
       }
       i = 3;
-      break label750;
-      label1262:
+      break;
+      label1276:
       if (d > 0.2D) {
         j = 10;
       } else if (d > 0.1D) {
@@ -536,19 +502,19 @@ public final class a
   public final void stop()
   {
     this.isStop = true;
-    this.qpy = null;
+    this.tOh = null;
   }
   
   public static abstract interface a
   {
-    public abstract void fn(int paramInt1, int paramInt2);
+    public abstract void fK(int paramInt1, int paramInt2);
     
-    public abstract void j(long paramLong1, long paramLong2, long paramLong3);
+    public abstract void k(long paramLong1, long paramLong2, long paramLong3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.b.a
  * JD-Core Version:    0.7.0.1
  */

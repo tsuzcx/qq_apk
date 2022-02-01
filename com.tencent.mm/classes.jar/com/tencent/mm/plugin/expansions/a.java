@@ -6,47 +6,44 @@ import android.content.res.AssetManager;
 import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.j;
-import com.tencent.mm.cr.d;
-import com.tencent.mm.cr.d.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.toolkit.frontia.a.c.a;
 import com.tencent.mm.toolkit.frontia.b;
+import com.tencent.mm.xwebutil.c;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
 
 public final class a
 {
-  private static volatile boolean dmI;
-  private static final byte[] rNj;
-  private static final byte[] rNk;
-  private static final byte[] rNl;
-  private static final Object rNm;
-  private static volatile boolean rNn;
-  private static volatile c.a rNo;
-  private static volatile com.tencent.mm.toolkit.frontia.a.a rNp;
-  private static final List<String> rNq;
+  private static volatile boolean feW;
+  private static final byte[] vsT;
+  private static final byte[] vsU;
+  private static final byte[] vsV;
+  private static final Object vsW;
+  private static volatile boolean vsX;
+  private static volatile com.tencent.mm.toolkit.frontia.a.c.a vsY;
+  private static volatile com.tencent.mm.toolkit.frontia.a.a vsZ;
+  private static final List<String> vta;
   
   static
   {
     AppMethodBeat.i(152964);
-    rNj = new byte[] { 7, 2, -1, -1, -4, 8, -10, -3, 4, 2, -8, -4, 9, 5, -6, -17, 3, 4, 3, 1 };
-    rNk = new byte[0];
-    rNl = new byte[0];
-    rNm = j.class;
-    dmI = true;
-    rNn = true;
-    rNq = new ArrayList();
-    rNo = new c.a()
+    vsT = new byte[] { 7, 2, -1, -1, -4, 8, -10, -3, 4, 2, -8, -4, 9, 5, -6, -17, 3, 4, 3, 1 };
+    vsU = new byte[0];
+    vsV = new byte[0];
+    vsW = j.class;
+    feW = true;
+    vsX = true;
+    vta = new ArrayList();
+    vsY = new com.tencent.mm.toolkit.frontia.a.c.a()
     {
-      public final File cMt()
+      public final File dbh()
       {
-        AppMethodBeat.i(201274);
+        AppMethodBeat.i(202776);
         File localFile = new File(MMApplicationContext.getContext().getApplicationInfo().nativeLibraryDir);
-        AppMethodBeat.o(201274);
+        AppMethodBeat.o(202776);
         return localFile;
       }
       
@@ -58,33 +55,38 @@ public final class a
         return localAssetManager;
       }
     };
-    d locald = d.cMu();
-    rNp = new com.tencent.mm.toolkit.frontia.a.a(locald, new c(locald));
+    d locald = d.dbi();
+    vsZ = new com.tencent.mm.toolkit.frontia.a.a(locald, new a.c(locald));
     AppMethodBeat.o(152964);
   }
   
-  public static Future<?> a(a parama)
+  public static boolean Vt()
+  {
+    return true;
+  }
+  
+  public static Future<?> a(a.a parama)
   {
     AppMethodBeat.i(152961);
-    parama.a(rNo.getAssets());
-    parama = rNp.jKp;
+    parama.a(vsY.getAssets());
+    parama = vsZ.mBs;
     AppMethodBeat.o(152961);
     return parama;
   }
   
-  public static Future<?> a(b paramb)
+  public static Future<?> a(a.b paramb)
   {
     AppMethodBeat.i(152960);
-    paramb.a(rNo);
-    paramb = rNp.jKp;
+    paramb.a(vsY);
+    paramb = vsZ.mBs;
     AppMethodBeat.o(152960);
     return paramb;
   }
   
-  public static boolean aoa(String paramString)
+  public static boolean avY(String paramString)
   {
     AppMethodBeat.i(152962);
-    if (rNq.contains(paramString))
+    if (vta.contains(paramString))
     {
       AppMethodBeat.o(152962);
       return true;
@@ -92,8 +94,8 @@ public final class a
     try
     {
       a.class.getClassLoader();
-      j.Ed(paramString);
-      rNq.add(paramString);
+      j.KW(paramString);
+      vta.add(paramString);
       AppMethodBeat.o(152962);
       return true;
     }
@@ -105,72 +107,64 @@ public final class a
     return false;
   }
   
-  static boolean cMk()
+  static boolean daY()
   {
-    for (;;)
+    synchronized (vsV)
     {
-      synchronized (rNl)
+      if (vsZ != null)
       {
-        if (rNp != null)
-        {
-          bool = true;
-          return bool;
-        }
+        bool = true;
+        return bool;
       }
       boolean bool = false;
     }
   }
   
-  static boolean cMl()
+  static boolean daZ()
   {
     return true;
   }
   
-  static void cMm() {}
+  static void dba() {}
   
-  static void cMn() {}
+  static void dbb() {}
   
-  public static boolean cMo()
+  public static boolean dbc()
   {
     return true;
   }
   
-  public static boolean cMp()
+  public static boolean dbd()
   {
     return true;
   }
   
-  public static boolean cMq()
+  public static boolean dbe()
   {
     return false;
   }
   
-  public static boolean cMr()
+  public static boolean dbf()
   {
     return true;
   }
   
-  public static String cMs()
+  public static String dbg()
   {
-    AppMethodBeat.i(201278);
-    if (rNo == null)
+    AppMethodBeat.i(202801);
+    if (vsY == null)
     {
-      AppMethodBeat.o(201278);
+      AppMethodBeat.o(202801);
       return null;
     }
-    String str = rNo.cMt().getAbsolutePath() + File.separator;
-    AppMethodBeat.o(201278);
+    String str = vsY.dbh().getAbsolutePath() + File.separator;
+    AppMethodBeat.o(202801);
     return str;
   }
   
   public static boolean isEnabled()
   {
     return false;
-  }
-  
-  public static boolean isInstalled()
-  {
-    return true;
   }
   
   static boolean isMainProcess()
@@ -183,82 +177,33 @@ public final class a
   
   static void prepare()
   {
-    AppMethodBeat.i(201277);
-    d.a(new d.a()
+    AppMethodBeat.i(202791);
+    c.a(new com.tencent.mm.xwebutil.c.a()
     {
-      public final String cMs()
+      public final boolean Vt()
       {
-        AppMethodBeat.i(201276);
-        String str = a.cMs();
-        AppMethodBeat.o(201276);
-        return str;
-      }
-      
-      public final boolean isInstalled()
-      {
-        AppMethodBeat.i(201275);
-        boolean bool = a.isInstalled();
-        AppMethodBeat.o(201275);
+        AppMethodBeat.i(202762);
+        boolean bool = a.Vt();
+        AppMethodBeat.o(202762);
         return bool;
       }
+      
+      public final String dbg()
+      {
+        AppMethodBeat.i(202763);
+        String str = a.dbg();
+        AppMethodBeat.o(202763);
+        return str;
+      }
     });
-    AppMethodBeat.o(201277);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void a(AssetManager paramAssetManager);
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void a(c.a parama);
-  }
-  
-  static final class c<T>
-    implements Future<T>
-  {
-    private final T result;
-    
-    public c(T paramT)
-    {
-      this.result = paramT;
-    }
-    
-    public final boolean cancel(boolean paramBoolean)
-    {
-      return false;
-    }
-    
-    public final T get()
-    {
-      return this.result;
-    }
-    
-    public final T get(long paramLong, TimeUnit paramTimeUnit)
-    {
-      AppMethodBeat.i(152956);
-      paramTimeUnit = get();
-      AppMethodBeat.o(152956);
-      return paramTimeUnit;
-    }
-    
-    public final boolean isCancelled()
-    {
-      return false;
-    }
-    
-    public final boolean isDone()
-    {
-      return true;
-    }
+    AppMethodBeat.o(202791);
   }
   
   static final class d
     extends com.tencent.mm.toolkit.frontia.a.a<Object>
   {
-    public static final String rNr;
-    public boolean rNs;
+    public static final String vtb;
+    public boolean vtc;
     
     static
     {
@@ -266,25 +211,25 @@ public final class a
       StringBuilder localStringBuilder = new StringBuilder("expansions-");
       String str = Build.CPU_ABI;
       "Capable cpu abi = ".concat(String.valueOf(str));
-      b.gGg();
-      rNr = str + ".obb";
+      b.hET();
+      vtb = str + ".obb";
       AppMethodBeat.o(152959);
     }
     
     private d()
     {
       AppMethodBeat.i(152957);
-      this.rNs = true;
-      gGi();
+      this.vtc = true;
+      hEV();
       AppMethodBeat.o(152957);
     }
     
-    public static d cMu()
+    public static d dbi()
     {
       AppMethodBeat.i(152958);
       d locald = new d();
-      locald.gGh();
-      locald.blD("use builtin impl");
+      locald.hEU();
+      locald.bye("use builtin impl");
       AppMethodBeat.o(152958);
       return locald;
     }
@@ -292,7 +237,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.expansions.a
  * JD-Core Version:    0.7.0.1
  */

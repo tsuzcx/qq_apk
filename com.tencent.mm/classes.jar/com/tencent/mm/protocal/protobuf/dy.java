@@ -3,10 +3,10 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dy
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public boolean KHU;
-  public String KHV;
+  public boolean RJo;
+  public String RJp;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -14,19 +14,19 @@ public final class dy
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.cc(1, this.KHU);
-      if (this.KHV != null) {
-        paramVarArgs.e(2, this.KHV);
+      paramVarArgs.co(1, this.RJo);
+      if (this.RJp != null) {
+        paramVarArgs.f(2, this.RJp);
       }
       AppMethodBeat.o(123538);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.fS(1) + 1 + 0;
+      int i = g.a.a.b.b.a.gL(1) + 1 + 0;
       paramInt = i;
-      if (this.KHV != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.KHV);
+      if (this.RJp != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.RJp);
       }
       AppMethodBeat.o(123538);
       return paramInt;
@@ -34,9 +34,9 @@ public final class dy
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
       AppMethodBeat.o(123538);
@@ -52,11 +52,11 @@ public final class dy
         AppMethodBeat.o(123538);
         return -1;
       case 1: 
-        localdy.KHU = locala.UbS.yZ();
+        localdy.RJo = locala.abFh.AB();
         AppMethodBeat.o(123538);
         return 0;
       }
-      localdy.KHV = locala.UbS.readString();
+      localdy.RJp = locala.abFh.readString();
       AppMethodBeat.o(123538);
       return 0;
     }
@@ -66,7 +66,7 @@ public final class dy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dy
  * JD-Core Version:    0.7.0.1
  */

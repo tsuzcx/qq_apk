@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.a;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/model/BizTimeLineExposeHelper$Companion;", "", "()V", "TAG", "", "minExposureRatio", "", "minExposureTme", "", "plugin-brandservice_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/model/BizTimeLineExposeHelper$Companion;", "", "()V", "TAG", "", "minExposureRatio", "", "minExposureTme", "", "plugin-brandservice_release"})
 public final class b$a {}
 
 

@@ -3,24 +3,25 @@ package com.tencent.mm.plugin.editor.adapter.a;
 import android.util.SparseIntArray;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.editor.d.f;
 import com.tencent.mm.plugin.editor.model.nativenote.manager.j;
 
 public final class c
 {
-  private static final int qOn = 2131493896;
-  private static final int qOo = 2131493889;
-  public SparseIntArray qOp;
+  private static final int uqr = d.f.upT;
+  private static final int uqs = d.f.upR;
+  public SparseIntArray uqt;
   
   public c()
   {
     AppMethodBeat.i(181646);
-    this.qOp = new SparseIntArray();
-    this.qOp.put(1, qOn);
-    this.qOp.put(2, qOo);
-    this.qOp.put(4, qOo);
-    this.qOp.put(6, qOo);
-    this.qOp.put(0, qOo);
-    this.qOp.put(-1, qOo);
+    this.uqt = new SparseIntArray();
+    this.uqt.put(1, uqr);
+    this.uqt.put(2, uqs);
+    this.uqt.put(4, uqs);
+    this.uqt.put(6, uqs);
+    this.uqt.put(0, uqs);
+    this.uqt.put(-1, uqs);
     AppMethodBeat.o(181646);
   }
   
@@ -62,7 +63,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.adapter.a.c
  * JD-Core Version:    0.7.0.1
  */

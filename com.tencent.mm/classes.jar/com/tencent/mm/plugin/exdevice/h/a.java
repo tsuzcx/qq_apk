@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.exdevice.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.i.b;
 import com.tencent.mm.plugin.exdevice.i.c;
-import com.tencent.mm.plugin.exdevice.model.ad;
+import com.tencent.mm.plugin.exdevice.model.ae;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
-  public static void q(long paramLong, int paramInt)
+  public static void s(long paramLong, int paramInt)
   {
     AppMethodBeat.i(23587);
-    b localb = ad.cKL().anI(String.valueOf(paramLong));
+    b localb = ae.cZx().avH(String.valueOf(paramLong));
     if (localb == null)
     {
       Log.e("MicroMsg.exdevice.BTDeviceReport", "SubCoreExDevice.getHardDeviceInfoStorage().getByDeviceId Failed!!!");
@@ -23,7 +23,7 @@ public final class a
     localStringBuilder.append(localb.field_deviceType).append(',');
     localStringBuilder.append(localb.field_deviceID).append(',');
     localStringBuilder.append(paramInt);
-    h.CyF.kvStat(11232, localStringBuilder.toString());
+    h.IzE.kvStat(11232, localStringBuilder.toString());
     AppMethodBeat.o(23587);
   }
 }

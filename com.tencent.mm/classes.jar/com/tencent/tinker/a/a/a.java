@@ -6,23 +6,23 @@ import com.tencent.tinker.a.a.b.e;
 public final class a
   extends s.a.a<a>
 {
-  public byte Sfw;
-  public k Sfx;
+  public byte ZIh;
+  public k ZIi;
   
   public a(int paramInt, byte paramByte, k paramk)
   {
     super(paramInt);
-    this.Sfw = paramByte;
-    this.Sfx = paramk;
+    this.ZIh = paramByte;
+    this.ZIi = paramk;
   }
   
   private int a(a parama)
   {
-    int i = this.Sfx.b(parama.Sfx);
+    int i = this.ZIi.b(parama.ZIi);
     if (i != 0) {
       return i;
     }
-    return c.a(this.Sfw, parama.Sfw);
+    return c.a(this.ZIh, parama.ZIh);
   }
   
   public final boolean equals(Object paramObject)
@@ -36,12 +36,12 @@ public final class a
   
   public final int hashCode()
   {
-    return e.hash(new Object[] { Byte.valueOf(this.Sfw), this.Sfx });
+    return e.hash(new Object[] { Byte.valueOf(this.ZIh), this.ZIi });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.tinker.a.a.a
  * JD-Core Version:    0.7.0.1
  */

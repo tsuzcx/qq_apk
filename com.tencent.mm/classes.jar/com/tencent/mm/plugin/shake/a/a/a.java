@@ -3,31 +3,45 @@ package com.tencent.mm.plugin.shake.a.a;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.sql.Column;
+import com.tencent.mm.sdk.storage.sql.SingleTable;
 
 public abstract class a
   extends IAutoDBItem
 {
-  private static final int Dgu;
-  private static final int Dgv = "reservedBuf".hashCode();
+  public static final Column C_CREATETIME;
+  public static final Column C_ROWID;
+  public static final Column C_SUBTYPE;
+  public static final Column C_TYPE;
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int fBC;
-  private static final int fBo;
-  private static final int fLi;
-  private static final int fjl;
-  private static final int fne;
-  private static final int fyW;
-  private static final int fyg = "svrid".hashCode();
-  private static final int fyl;
-  private static final int fym;
-  private static final int fyn;
+  public static final Column JlW;
+  private static final int JlZ;
+  private static final int Jma = "reservedBuf".hashCode();
+  public static final SingleTable TABLE = new SingleTable("ShakeMessage");
+  public static final Column hGX;
+  public static final Column hHc;
+  public static final Column hHd;
+  public static final Column hHe;
+  public static final Column hHm;
+  private static final int hIE;
+  private static final int hIF;
+  private static final int hIG;
+  private static final int hIz;
+  public static final Column hJn;
+  private static final int hJv;
+  private static final int hMP;
+  public static final Column hMT;
+  private static final int hNn;
+  private static final int hmC;
+  public static final Column hmw;
+  public static final Column hsa;
+  private static final int hsg;
+  private static final int icG;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int type_HASHCODE = "type".hashCode();
-  private boolean Dgs = true;
-  private boolean Dgt = true;
+  private static final int type_HASHCODE;
+  private boolean JlX = true;
+  private boolean JlY = true;
   private boolean __hadSettype = true;
-  private boolean fBm = true;
-  private boolean fBs = true;
-  private boolean fKX = true;
   public long field_createtime;
   public String field_desc;
   public String field_reserved1;
@@ -41,26 +55,45 @@ public abstract class a
   public String field_thumburl;
   public String field_title;
   public int field_type;
-  private boolean fji = true;
-  private boolean fnb = true;
-  private boolean fxA = true;
-  private boolean fxB = true;
-  private boolean fxu = true;
-  private boolean fxz = true;
-  private boolean fyS = true;
+  private boolean hHL = true;
+  private boolean hHQ = true;
+  private boolean hHR = true;
+  private boolean hHS = true;
+  private boolean hJr = true;
+  private boolean hMN = true;
+  private boolean hNd = true;
+  private boolean hmz = true;
+  private boolean hsd = true;
+  private boolean icv = true;
   
   static
   {
-    fBo = "subtype".hashCode();
-    fLi = "createtime".hashCode();
-    fBC = "tag".hashCode();
-    fjl = "status".hashCode();
-    fne = "title".hashCode();
-    fyW = "desc".hashCode();
-    Dgu = "thumburl".hashCode();
-    fyl = "reserved1".hashCode();
-    fym = "reserved2".hashCode();
-    fyn = "reserved3".hashCode();
+    C_ROWID = new Column("rowid", "long", "ShakeMessage", "");
+    hGX = new Column("svrid", "long", "ShakeMessage", "");
+    C_TYPE = new Column("type", "int", "ShakeMessage", "");
+    C_SUBTYPE = new Column("subtype", "int", "ShakeMessage", "");
+    C_CREATETIME = new Column("createtime", "long", "ShakeMessage", "");
+    hMT = new Column("tag", "string", "ShakeMessage", "");
+    hmw = new Column("status", "int", "ShakeMessage", "");
+    hsa = new Column("title", "string", "ShakeMessage", "");
+    hJn = new Column("desc", "string", "ShakeMessage", "");
+    hHm = new Column("thumburl", "string", "ShakeMessage", "");
+    hHc = new Column("reserved1", "string", "ShakeMessage", "");
+    hHd = new Column("reserved2", "string", "ShakeMessage", "");
+    hHe = new Column("reserved3", "int", "ShakeMessage", "");
+    JlW = new Column("reservedbuf", "byte[]", "ShakeMessage", "");
+    hIz = "svrid".hashCode();
+    type_HASHCODE = "type".hashCode();
+    hMP = "subtype".hashCode();
+    icG = "createtime".hashCode();
+    hNn = "tag".hashCode();
+    hmC = "status".hashCode();
+    hsg = "title".hashCode();
+    hJv = "desc".hashCode();
+    JlZ = "thumburl".hashCode();
+    hIE = "reserved1".hashCode();
+    hIF = "reserved2".hashCode();
+    hIG = "reserved3".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -76,11 +109,11 @@ public abstract class a
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fyg != k) {
+      if (hIz != k) {
         break label65;
       }
       this.field_svrid = paramCursor.getLong(i);
-      this.fxu = true;
+      this.hHL = true;
     }
     for (;;)
     {
@@ -90,27 +123,27 @@ public abstract class a
       label65:
       if (type_HASHCODE == k) {
         this.field_type = paramCursor.getInt(i);
-      } else if (fBo == k) {
+      } else if (hMP == k) {
         this.field_subtype = paramCursor.getInt(i);
-      } else if (fLi == k) {
+      } else if (icG == k) {
         this.field_createtime = paramCursor.getLong(i);
-      } else if (fBC == k) {
+      } else if (hNn == k) {
         this.field_tag = paramCursor.getString(i);
-      } else if (fjl == k) {
+      } else if (hmC == k) {
         this.field_status = paramCursor.getInt(i);
-      } else if (fne == k) {
+      } else if (hsg == k) {
         this.field_title = paramCursor.getString(i);
-      } else if (fyW == k) {
+      } else if (hJv == k) {
         this.field_desc = paramCursor.getString(i);
-      } else if (Dgu == k) {
+      } else if (JlZ == k) {
         this.field_thumburl = paramCursor.getString(i);
-      } else if (fyl == k) {
+      } else if (hIE == k) {
         this.field_reserved1 = paramCursor.getString(i);
-      } else if (fym == k) {
+      } else if (hIF == k) {
         this.field_reserved2 = paramCursor.getString(i);
-      } else if (fyn == k) {
+      } else if (hIG == k) {
         this.field_reserved3 = paramCursor.getInt(i);
-      } else if (Dgv == k) {
+      } else if (Jma == k) {
         this.field_reservedBuf = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -121,43 +154,43 @@ public abstract class a
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fxu) {
+    if (this.hHL) {
       localContentValues.put("svrid", Long.valueOf(this.field_svrid));
     }
     if (this.__hadSettype) {
       localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.fBm) {
+    if (this.hMN) {
       localContentValues.put("subtype", Integer.valueOf(this.field_subtype));
     }
-    if (this.fKX) {
+    if (this.icv) {
       localContentValues.put("createtime", Long.valueOf(this.field_createtime));
     }
-    if (this.fBs) {
+    if (this.hNd) {
       localContentValues.put("tag", this.field_tag);
     }
-    if (this.fji) {
+    if (this.hmz) {
       localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.fnb) {
+    if (this.hsd) {
       localContentValues.put("title", this.field_title);
     }
-    if (this.fyS) {
+    if (this.hJr) {
       localContentValues.put("desc", this.field_desc);
     }
-    if (this.Dgs) {
+    if (this.JlX) {
       localContentValues.put("thumburl", this.field_thumburl);
     }
-    if (this.fxz) {
+    if (this.hHQ) {
       localContentValues.put("reserved1", this.field_reserved1);
     }
-    if (this.fxA) {
+    if (this.hHR) {
       localContentValues.put("reserved2", this.field_reserved2);
     }
-    if (this.fxB) {
+    if (this.hHS) {
       localContentValues.put("reserved3", Integer.valueOf(this.field_reserved3));
     }
-    if (this.Dgt) {
+    if (this.JlY) {
       localContentValues.put("reservedBuf", this.field_reservedBuf);
     }
     if (this.systemRowid > 0L) {
@@ -165,10 +198,20 @@ public abstract class a
     }
     return localContentValues;
   }
+  
+  public String[] getIndexCreateSQL()
+  {
+    return INDEX_CREATE;
+  }
+  
+  public String getTableName()
+  {
+    return "ShakeMessage";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.a.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,17 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.h;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.jsapi.h.h.a;
-import com.tencent.mm.plugin.appbrand.jsapi.s;
-import com.tencent.mm.plugin.appbrand.page.ac;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
 
 public final class j
 {
   public static final class a
   {
-    private static final j osP;
+    private static final j ruY;
     
     static
     {
       AppMethodBeat.i(136385);
-      osP = new j((byte)0);
+      ruY = new j((byte)0);
       AppMethodBeat.o(136385);
     }
   }

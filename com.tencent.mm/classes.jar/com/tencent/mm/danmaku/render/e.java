@@ -8,116 +8,116 @@ import com.tencent.mm.danmaku.f.a;
 public final class e
   implements NativeDanmakuView.a, d
 {
-  private d.b gOb;
-  private boolean gPY;
-  private boolean gPZ;
-  private d.a gQa;
-  private NativeDanmakuView gQb;
+  private boolean jAr;
+  private boolean jAs;
+  private d.a jAt;
+  private NativeDanmakuView jAu;
+  private d.b jyw;
   
   public e(NativeDanmakuView paramNativeDanmakuView)
   {
-    this.gQb = paramNativeDanmakuView;
-    this.gQb.gPX = this;
+    this.jAu = paramNativeDanmakuView;
+    this.jAu.jAq = this;
   }
   
   public final void a(d.a parama)
   {
-    this.gQa = parama;
+    this.jAt = parama;
   }
   
   public final void a(d.b paramb)
   {
-    AppMethodBeat.i(241706);
-    this.gPZ = true;
-    this.gOb = paramb;
-    if (a.ato())
+    AppMethodBeat.i(269030);
+    this.jAs = true;
+    this.jyw = paramb;
+    if (a.aAe())
     {
-      this.gQb.postInvalidateOnAnimation();
-      AppMethodBeat.o(241706);
+      this.jAu.postInvalidateOnAnimation();
+      AppMethodBeat.o(269030);
       return;
     }
-    this.gQb.postInvalidate();
-    AppMethodBeat.o(241706);
+    this.jAu.postInvalidate();
+    AppMethodBeat.o(269030);
   }
   
-  public final float atd()
-  {
-    AppMethodBeat.i(241705);
-    float f = this.gQb.getY();
-    AppMethodBeat.o(241705);
-    return f;
-  }
-  
-  public final void ate()
-  {
-    AppMethodBeat.i(241707);
-    if (!this.gPY)
-    {
-      if (this.gQa != null)
-      {
-        this.gQa.asg();
-        this.gQa.ash();
-      }
-      this.gPY = true;
-      AppMethodBeat.o(241707);
-      return;
-    }
-    if (this.gQa != null) {
-      this.gQa.ash();
-    }
-    AppMethodBeat.o(241707);
-  }
-  
-  public final Canvas lockCanvas()
+  public final Canvas azQ()
   {
     return null;
   }
   
+  public final float azR()
+  {
+    AppMethodBeat.i(269029);
+    float f = this.jAu.getY();
+    AppMethodBeat.o(269029);
+    return f;
+  }
+  
+  public final void azS()
+  {
+    AppMethodBeat.i(269031);
+    if (!this.jAr)
+    {
+      if (this.jAt != null)
+      {
+        this.jAt.ayT();
+        this.jAt.ayU();
+      }
+      this.jAr = true;
+      AppMethodBeat.o(269031);
+      return;
+    }
+    if (this.jAt != null) {
+      this.jAt.ayU();
+    }
+    AppMethodBeat.o(269031);
+  }
+  
+  public final void o(Canvas paramCanvas)
+  {
+    this.jyw = null;
+  }
+  
   public final void onDestroy()
   {
-    AppMethodBeat.i(241709);
-    if (this.gQa != null) {
-      this.gQa.asi();
+    AppMethodBeat.i(269033);
+    if (this.jAt != null) {
+      this.jAt.ayV();
     }
-    this.gPY = false;
-    AppMethodBeat.o(241709);
+    this.jAr = false;
+    AppMethodBeat.o(269033);
   }
   
   public final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(241708);
-    if (!this.gPZ)
+    AppMethodBeat.i(269032);
+    if (!this.jAs)
     {
-      AppMethodBeat.o(241708);
+      AppMethodBeat.o(269032);
       return;
     }
-    this.gPZ = false;
-    if (this.gOb != null) {
-      this.gOb.l(paramCanvas);
+    this.jAs = false;
+    if (this.jyw != null) {
+      this.jyw.m(paramCanvas);
     }
-    AppMethodBeat.o(241708);
+    AppMethodBeat.o(269032);
   }
   
   public final void setOnTouchListener(View.OnTouchListener paramOnTouchListener)
   {
-    AppMethodBeat.i(241704);
-    this.gQb.setOnTouchListener(paramOnTouchListener);
-    AppMethodBeat.o(241704);
+    AppMethodBeat.i(269028);
+    this.jAu.setOnTouchListener(paramOnTouchListener);
+    AppMethodBeat.o(269028);
   }
   
   public final void unlock()
   {
-    this.gOb = null;
-  }
-  
-  public final void unlockCanvasAndPost(Canvas paramCanvas)
-  {
-    this.gOb = null;
+    this.jyw = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.danmaku.render.e
  * JD-Core Version:    0.7.0.1
  */

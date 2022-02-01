@@ -97,7 +97,7 @@ public abstract class MAutoDBItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sdk.storage.MAutoDBItem
  * JD-Core Version:    0.7.0.1
  */

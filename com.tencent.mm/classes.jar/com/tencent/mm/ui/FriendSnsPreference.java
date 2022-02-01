@@ -5,8 +5,8 @@ import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sns.b.n;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.sns.b.o;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.ui.base.preference.IconPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -14,9 +14,9 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class FriendSnsPreference
   extends IconPreference
 {
-  private String OBW = null;
-  private Bitmap OBX = null;
-  private long OBY;
+  private String VVo = null;
+  private Bitmap VVp = null;
+  private long VVq;
   private Context context;
   
   public FriendSnsPreference(Context paramContext, AttributeSet paramAttributeSet)
@@ -30,28 +30,28 @@ public final class FriendSnsPreference
     this.context = paramContext;
   }
   
-  public final void No(long paramLong)
+  public final void Vv(long paramLong)
   {
     AppMethodBeat.i(33139);
-    this.OBW = null;
-    this.OBX = null;
-    this.OxP = -1;
-    this.OBY = paramLong;
-    if ((this.OBY != 0L) && (this.zkw != null)) {
-      ((n)g.af(n.class)).a(this.OBY, this.zkw, this.mContext.hashCode());
+    this.VVo = null;
+    this.VVp = null;
+    this.VQS = -1;
+    this.VVq = paramLong;
+    if ((this.VVq != 0L) && (this.EPM != null)) {
+      ((o)h.ae(o.class)).a(this.VVq, this.EPM, this.mContext.hashCode());
     }
     AppMethodBeat.o(33139);
   }
   
-  public final void blM(String paramString)
+  public final void byl(String paramString)
   {
     AppMethodBeat.i(33138);
-    this.OBX = null;
-    this.OxP = -1;
-    this.OBW = paramString;
-    this.OBY = 0L;
-    if (this.zkw != null) {
-      a.b.c(this.zkw, paramString);
+    this.VVp = null;
+    this.VQS = -1;
+    this.VVo = paramString;
+    this.VVq = 0L;
+    if (this.EPM != null) {
+      a.b.c(this.EPM, paramString);
     }
     AppMethodBeat.o(33138);
   }
@@ -60,11 +60,11 @@ public final class FriendSnsPreference
   {
     AppMethodBeat.i(33140);
     super.onBindView(paramView);
-    if ((this.OBW != null) && (g.aAc())) {
-      a.b.c(this.zkw, this.OBW);
+    if ((this.VVo != null) && (h.aHB())) {
+      a.b.c(this.EPM, this.VVo);
     }
-    if ((this.OBY != 0L) && (this.zkw != null)) {
-      ((n)g.af(n.class)).a(this.OBY, this.zkw, this.mContext.hashCode());
+    if ((this.VVq != 0L) && (this.EPM != null)) {
+      ((o)h.ae(o.class)).a(this.VVq, this.EPM, this.mContext.hashCode());
     }
     AppMethodBeat.o(33140);
   }

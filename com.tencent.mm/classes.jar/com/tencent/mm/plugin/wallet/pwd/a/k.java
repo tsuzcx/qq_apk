@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.wallet.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dwo;
-import com.tencent.mm.protocal.protobuf.dwp;
+import com.tencent.mm.protocal.protobuf.ego;
+import com.tencent.mm.protocal.protobuf.egp;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class k
   extends q
   implements m
 {
-  public dwo HIn;
-  private dwp HIo;
+  public ego OAf;
+  private egp OAg;
   private i callback;
   private final d rr;
   
@@ -26,17 +26,17 @@ public final class k
   {
     AppMethodBeat.i(69553);
     d.a locala = new d.a();
-    dwo localdwo = new dwo();
-    localdwo.KBz = System.currentTimeMillis();
+    ego localego = new ego();
+    localego.RDp = System.currentTimeMillis();
     if (paramBoolean) {}
-    for (localdwo.MWM = 1;; localdwo.MWM = 0)
+    for (localego.Ujh = 1;; localego.Ujh = 0)
     {
-      this.HIn = localdwo;
-      locala.iLN = localdwo;
-      locala.iLO = new dwp();
+      this.OAf = localego;
+      locala.lBU = localego;
+      locala.lBV = new egp();
       locala.uri = "/cgi-bin/mmpay-bin/setwalletentrancebalanceswitchstate";
       locala.funcId = 2554;
-      this.rr = locala.aXF();
+      this.rr = locala.bgN();
       AppMethodBeat.o(69553);
       return;
     }
@@ -51,18 +51,18 @@ public final class k
     return i;
   }
   
-  public final dwp fOP()
+  public final egp gHu()
   {
     AppMethodBeat.i(69556);
-    if (this.HIo == null)
+    if (this.OAg == null)
     {
-      localdwp = new dwp();
+      localegp = new egp();
       AppMethodBeat.o(69556);
-      return localdwp;
+      return localegp;
     }
-    dwp localdwp = this.HIo;
+    egp localegp = this.OAg;
     AppMethodBeat.o(69556);
-    return localdwp;
+    return localegp;
   }
   
   public final int getType()
@@ -75,7 +75,7 @@ public final class k
     AppMethodBeat.i(69555);
     Log.w("MicroMsg.NetSceneSetWalletEntranceBalanceSwitchState", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.HIo = ((dwp)((d)params).iLL.iLR);
+      this.OAg = ((egp)d.c.b(((d)params).lBS));
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(69555);

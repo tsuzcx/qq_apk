@@ -14,12 +14,12 @@ public abstract class c
   public static final class a
     extends c
   {
-    public static final a TQf;
+    public static final a absE;
     
     static
     {
       AppMethodBeat.i(61279);
-      TQf = new a();
+      absE = new a();
       AppMethodBeat.o(61279);
     }
     
@@ -46,12 +46,12 @@ public abstract class c
   public static final class c
     extends c
   {
-    public static final c TQg;
+    public static final c absF;
     
     static
     {
       AppMethodBeat.i(61281);
-      TQg = new c();
+      absF = new c();
       AppMethodBeat.o(61281);
     }
     
@@ -63,7 +63,7 @@ public abstract class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.n.c
  * JD-Core Version:    0.7.0.1
  */

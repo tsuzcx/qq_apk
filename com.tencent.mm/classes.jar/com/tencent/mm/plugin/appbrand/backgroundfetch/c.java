@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.backgroundfetch;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.j;
+import com.tencent.mm.f.c.j;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -9,14 +9,14 @@ import java.util.Map;
 public final class c
   extends j
 {
-  public static IAutoDBItem.MAutoDBInfo kXQ;
-  static final String[] kXR;
+  public static IAutoDBItem.MAutoDBInfo nSc;
+  static final String[] nSd;
   
   static
   {
     int i = 0;
     AppMethodBeat.i(44704);
-    kXR = new String[] { "username", "fetchType" };
+    nSd = new String[] { "username", "fetchType" };
     Object localObject1 = new IAutoDBItem.MAutoDBInfo();
     ((IAutoDBItem.MAutoDBInfo)localObject1).fields = new Field[7];
     ((IAutoDBItem.MAutoDBInfo)localObject1).columns = new String[8];
@@ -50,9 +50,9 @@ public final class c
     ((StringBuilder)localObject2).append(" data TEXT");
     ((IAutoDBItem.MAutoDBInfo)localObject1).columns[7] = "rowid";
     ((IAutoDBItem.MAutoDBInfo)localObject1).sql = ((StringBuilder)localObject2).toString();
-    kXQ = (IAutoDBItem.MAutoDBInfo)localObject1;
+    nSc = (IAutoDBItem.MAutoDBInfo)localObject1;
     localObject1 = " PRIMARY KEY ( ";
-    localObject2 = kXR;
+    localObject2 = nSd;
     int j = localObject2.length;
     while (i < j)
     {
@@ -63,19 +63,19 @@ public final class c
     localObject1 = ((String)localObject1).replaceFirst(",", "");
     localObject1 = (String)localObject1 + " )";
     localObject2 = new StringBuilder();
-    Object localObject3 = kXQ;
+    Object localObject3 = nSc;
     ((IAutoDBItem.MAutoDBInfo)localObject3).sql = (((IAutoDBItem.MAutoDBInfo)localObject3).sql + "," + (String)localObject1);
     AppMethodBeat.o(44704);
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    return kXQ;
+    return nSc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundfetch.c
  * JD-Core Version:    0.7.0.1
  */

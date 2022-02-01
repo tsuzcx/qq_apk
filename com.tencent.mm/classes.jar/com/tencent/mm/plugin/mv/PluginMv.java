@@ -1,55 +1,54 @@
 package com.tencent.mm.plugin.mv;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
-import com.tencent.mm.g.a.bp;
-import com.tencent.mm.g.a.lx;
+import com.tencent.mm.an.t;
+import com.tencent.mm.f.a.bu;
+import com.tencent.mm.f.a.mo;
 import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.plugin.mv.a.a.a;
-import com.tencent.mm.plugin.mv.a.h;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.ball.c.b;
+import com.tencent.mm.plugin.ball.c.e;
+import com.tencent.mm.plugin.textstatus.a.m;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.vfs.s;
-import java.util.Collection;
-import java.util.Iterator;
+import com.tencent.mm.vfs.u;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
-import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/mv/PluginMv;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/mv/IPluginMv;", "Lcom/tencent/mm/kernel/api/bucket/ICoreAccountCallbackBucket;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "localResUpdateListener", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/LocalCheckResUpdateCacheFileEvent;", "getLocalResUpdateListener", "()Lcom/tencent/mm/sdk/event/IListener;", "resUpdateListener", "Lcom/tencent/mm/autogen/events/CheckResUpdateCacheFileEvent;", "getResUpdateListener", "execute", "", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "handleDefaultVideoZip", "filePath", "onAccountInitialized", "upgrade", "Lcom/tencent/mm/kernel/CoreStorage$UpgradeInfo;", "onAccountRelease", "plugin-mv_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/PluginMv;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/mv/IPluginMv;", "Lcom/tencent/mm/kernel/api/bucket/ICoreAccountCallbackBucket;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "floatBallEventIListener", "com/tencent/mm/plugin/mv/PluginMv$floatBallEventIListener$1", "Lcom/tencent/mm/plugin/mv/PluginMv$floatBallEventIListener$1;", "localResUpdateListener", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/LocalCheckResUpdateCacheFileEvent;", "getLocalResUpdateListener", "()Lcom/tencent/mm/sdk/event/IListener;", "resUpdateListener", "Lcom/tencent/mm/autogen/events/CheckResUpdateCacheFileEvent;", "getResUpdateListener", "execute", "", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "handleAppIconZip", "filePath", "handleDefaultVideoZip", "handlePagZip", "onAccountInitialized", "upgrade", "Lcom/tencent/mm/kernel/CoreStorage$UpgradeInfo;", "onAccountRelease", "plugin-mv_release"})
 public final class PluginMv
   extends f
   implements c, a
 {
-  private final IListener<bp> Ape;
+  private final PluginMv.a FWm;
+  private final IListener<bu> FWn;
   private final String TAG;
-  private final IListener<lx> plI;
+  private final IListener<mo> soa;
   
   public PluginMv()
   {
-    AppMethodBeat.i(256741);
+    AppMethodBeat.i(230903);
     this.TAG = "MicroMsg.Mv.PluginMv";
-    this.Ape = ((IListener)new c(this));
-    this.plI = ((IListener)new b(this));
-    AppMethodBeat.o(256741);
+    this.FWm = new PluginMv.a();
+    this.FWn = ((IListener)new f(this));
+    this.soa = ((IListener)new e(this));
+    AppMethodBeat.o(230903);
   }
   
   public final void execute(g paramg) {}
   
-  public final IListener<lx> getLocalResUpdateListener()
+  public final IListener<mo> getLocalResUpdateListener()
   {
-    return this.plI;
+    return this.soa;
   }
   
-  public final IListener<bp> getResUpdateListener()
+  public final IListener<bu> getResUpdateListener()
   {
-    return this.Ape;
+    return this.FWn;
   }
   
   public final String getTAG()
@@ -57,93 +56,113 @@ public final class PluginMv
     return this.TAG;
   }
   
-  public final void handleDefaultVideoZip(final String paramString)
+  public final void handleAppIconZip(final String paramString)
   {
-    AppMethodBeat.i(256740);
-    p.h(paramString, "filePath");
-    Log.i(this.TAG, "start to handle " + paramString + ' ' + s.boW(paramString));
-    d.c("Thread.Music", (kotlin.g.a.a)new a(this, paramString));
-    AppMethodBeat.o(256740);
+    AppMethodBeat.i(230901);
+    p.k(paramString, "filePath");
+    Log.i(this.TAG, "start to handle app icon " + paramString + ' ' + u.bBQ(paramString));
+    com.tencent.mm.ae.d.c("Thread.Music", (kotlin.g.a.a)new b(this, paramString));
+    AppMethodBeat.o(230901);
   }
   
-  public final void onAccountInitialized(e.c paramc)
+  public final void handleDefaultVideoZip(final String paramString)
   {
-    AppMethodBeat.i(256739);
-    paramc = h.Aqi;
-    h.destroy();
-    paramc = com.tencent.mm.plugin.mv.a.a.Apj;
-    paramc = (Iterable)com.tencent.mm.plugin.mv.a.a.evw();
-    int i;
-    if ((!(paramc instanceof Collection)) || (!((Collection)paramc).isEmpty()))
-    {
-      paramc = paramc.iterator();
-      if (paramc.hasNext()) {
-        if (!s.YS(((com.tencent.mm.plugin.mv.a.a)paramc.next()).getFilePath()))
-        {
-          i = 1;
-          label78:
-          if (i == 0) {
-            break label158;
-          }
-        }
-      }
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      Log.i(com.tencent.mm.plugin.mv.a.a.access$getTAG$cp(), "checkCopyAssets needCopy:".concat(String.valueOf(bool)));
-      if (bool)
-      {
-        paramc = MMApplicationContext.getContext();
-        p.g(paramc, "MMApplicationContext.getContext()");
-        paramc = paramc.getAssets();
-        p.g(paramc, "MMApplicationContext.getContext().assets");
-        a.a.a(paramc, "mv_video", com.tencent.mm.plugin.mv.a.a.evv());
-      }
-      this.Ape.alive();
-      this.plI.alive();
-      AppMethodBeat.o(256739);
-      return;
-      i = 0;
-      break label78;
-      label158:
-      break;
-    }
+    AppMethodBeat.i(230899);
+    p.k(paramString, "filePath");
+    Log.i(this.TAG, "start to handle default video " + paramString + ' ' + u.bBQ(paramString));
+    com.tencent.mm.ae.d.c("Thread.Music", (kotlin.g.a.a)new c(this, paramString));
+    AppMethodBeat.o(230899);
+  }
+  
+  public final void handlePagZip(final String paramString)
+  {
+    AppMethodBeat.i(230900);
+    p.k(paramString, "filePath");
+    Log.i(this.TAG, "start to handle pag " + paramString + ' ' + u.bBQ(paramString));
+    com.tencent.mm.ae.d.c("Thread.Music", (kotlin.g.a.a)new d(this, paramString));
+    AppMethodBeat.o(230900);
+  }
+  
+  public final void onAccountInitialized(f.c paramc)
+  {
+    AppMethodBeat.i(230889);
+    this.FWn.alive();
+    this.soa.alive();
+    paramc = com.tencent.mm.plugin.mv.model.i.GbW;
+    com.tencent.mm.plugin.mv.model.i.init();
+    paramc = com.tencent.mm.plugin.mv.model.l.Gcr;
+    Log.i("MicroMsg.Mv.MvChattingDataManger", "onInit");
+    h.aGY().a(6893, (com.tencent.mm.an.i)paramc);
+    h.aGY().a(6820, (com.tencent.mm.an.i)paramc);
+    h.aGY().a(6672, (com.tencent.mm.an.i)paramc);
+    ((b)h.ae(b.class)).a(23, (e)this.FWm);
+    ((com.tencent.mm.plugin.textstatus.a.l)h.ae(com.tencent.mm.plugin.textstatus.a.l.class)).a("1", (m)new com.tencent.mm.plugin.mv.a.d());
+    AppMethodBeat.o(230889);
   }
   
   public final void onAccountRelease()
   {
-    AppMethodBeat.i(256738);
-    this.Ape.dead();
-    this.plI.dead();
-    h localh = h.Aqi;
-    h.init();
-    AppMethodBeat.o(256738);
+    AppMethodBeat.i(230894);
+    this.FWn.dead();
+    this.soa.dead();
+    Object localObject = com.tencent.mm.plugin.mv.model.i.GbW;
+    com.tencent.mm.plugin.mv.model.i.destroy();
+    localObject = com.tencent.mm.plugin.mv.model.l.Gcr;
+    Log.i("MicroMsg.Mv.MvChattingDataManger", "onDestroy");
+    h.aGY().b(6893, (com.tencent.mm.an.i)localObject);
+    h.aGY().b(6820, (com.tencent.mm.an.i)localObject);
+    h.aGY().b(6672, (com.tencent.mm.an.i)localObject);
+    ((b)h.ae(b.class)).b(23, (e)this.FWm);
+    ((com.tencent.mm.plugin.textstatus.a.l)h.ae(com.tencent.mm.plugin.textstatus.a.l.class)).beb("1");
+    AppMethodBeat.o(230894);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
-  static final class a
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  static final class b
     extends q
     implements kotlin.g.a.a<x>
   {
-    a(PluginMv paramPluginMv, String paramString)
+    b(PluginMv paramPluginMv, String paramString)
     {
       super();
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/mv/PluginMv$localResUpdateListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/LocalCheckResUpdateCacheFileEvent;", "callback", "", "event", "plugin-mv_release"})
-  public static final class b
-    extends IListener<lx>
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  static final class c
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    c(PluginMv paramPluginMv, String paramString)
+    {
+      super();
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  static final class d
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    d(PluginMv paramPluginMv, String paramString)
+    {
+      super();
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/PluginMv$localResUpdateListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/LocalCheckResUpdateCacheFileEvent;", "callback", "", "event", "plugin-mv_release"})
+  public static final class e
+    extends IListener<mo>
   {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/mv/PluginMv$resUpdateListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/CheckResUpdateCacheFileEvent;", "callback", "", "event", "plugin-mv_release"})
-  public static final class c
-    extends IListener<bp>
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/PluginMv$resUpdateListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/CheckResUpdateCacheFileEvent;", "callback", "", "event", "plugin-mv_release"})
+  public static final class f
+    extends IListener<bu>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.PluginMv
  * JD-Core Version:    0.7.0.1
  */

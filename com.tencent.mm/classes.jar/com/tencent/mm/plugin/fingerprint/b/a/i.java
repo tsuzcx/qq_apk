@@ -18,41 +18,41 @@ public abstract interface i
   
   public abstract void cancel();
   
-  public abstract boolean dJQ();
+  public abstract boolean eoM();
   
-  public abstract Map<String, String> dJY();
+  public abstract boolean eoN();
   
-  public abstract boolean dKn();
+  public abstract boolean eoP();
   
-  public abstract boolean dKo();
+  public abstract boolean eoQ();
   
-  public abstract boolean dKp();
+  public abstract boolean eoR();
   
-  public abstract boolean dKq();
+  public abstract boolean eoS();
   
-  public abstract boolean dKr();
+  public abstract int eoT();
   
-  public abstract boolean dKs();
+  public abstract com.tencent.mm.plugin.fingerprint.d.d eoU();
   
-  public abstract boolean dKt();
+  public abstract boolean eoV();
   
-  public abstract int dKu();
+  public abstract boolean eop();
   
-  public abstract com.tencent.mm.plugin.fingerprint.d.d dKv();
+  public abstract Map<String, String> eox();
   
-  public abstract boolean dKw();
+  public abstract boolean gh(Context paramContext);
   
-  public abstract boolean fN(Context paramContext);
+  public abstract boolean gi(Context paramContext);
   
-  public abstract boolean fO(Context paramContext);
-  
-  public abstract void pp(boolean paramBoolean);
-  
-  public abstract void pq(boolean paramBoolean);
+  public abstract boolean isSupport();
   
   public abstract void prepare();
   
   public abstract void q(Object... paramVarArgs);
+  
+  public abstract void rJ(boolean paramBoolean);
+  
+  public abstract void rK(boolean paramBoolean);
 }
 
 

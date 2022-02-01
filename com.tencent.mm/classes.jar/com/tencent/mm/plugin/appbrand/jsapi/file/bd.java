@@ -1,85 +1,65 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
+import com.tencent.luggage.k.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ac.i;
+import com.tencent.mm.plugin.appbrand.appstorage.k;
 import com.tencent.mm.plugin.appbrand.appstorage.m;
-import com.tencent.mm.plugin.appbrand.appstorage.n;
-import com.tencent.mm.plugin.appbrand.appstorage.q;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import com.tencent.mm.vfs.o;
-import java.util.Locale;
+import com.tencent.mm.plugin.appbrand.appstorage.r;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 final class bd
   extends g
 {
-  protected final String V(JSONObject paramJSONObject)
+  final i.a a(e parame, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(128922);
-    paramJSONObject = paramJSONObject.optString("oldPath");
-    AppMethodBeat.o(128922);
-    return paramJSONObject;
-  }
-  
-  final i.a a(f paramf, String paramString, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(128921);
-    Object localObject = paramf.getFileSystem();
-    if (localObject == null)
-    {
-      paramf = new i.a("fail:internal error", new Object[0]);
-      AppMethodBeat.o(128921);
-      return paramf;
-    }
-    String str2 = paramJSONObject.optString("newPath");
-    paramJSONObject = String.format(Locale.US, "fail no such file or directory, rename \"%s\" -> \"%s\"", new Object[] { paramString, str2 });
-    String str1 = String.format(Locale.US, "fail permission denied, rename \"%s\" -> \"%s\"", new Object[] { paramString, str2 });
-    if (!((q)localObject).VZ(paramString))
-    {
-      paramf = new i.a(str1, new Object[0]);
-      AppMethodBeat.o(128921);
-      return paramf;
-    }
-    localObject = paramf.getFileSystem().ag(paramString, true);
-    if ((localObject == null) || (!((o)localObject).exists()))
-    {
-      paramf = new i.a(paramJSONObject, new Object[0]);
-      AppMethodBeat.o(128921);
-      return paramf;
-    }
-    if (n.u((o)localObject))
-    {
-      paramf = new i.a("fail \"%s\" not a regular file", new Object[] { paramString });
-      AppMethodBeat.o(128921);
-      return paramf;
-    }
-    paramf = paramf.getFileSystem().a(str2, (o)localObject, true);
-    switch (1.lVs[paramf.ordinal()])
+    AppMethodBeat.i(128917);
+    paramJSONObject = new LinkedList();
+    i locali = new i();
+    parame = parame.getFileSystem().a(paramString, locali);
+    b.c(paramJSONObject, (List)locali.value);
+    switch (1.oSw[parame.ordinal()])
     {
     default: 
-      paramf = new i.a("fail " + paramf.name(), new Object[0]);
-      AppMethodBeat.o(128921);
-      return paramf;
+      parame = new i.a("fail " + parame.name(), new Object[0]);
+      AppMethodBeat.o(128917);
+      return parame;
     case 1: 
-      paramf = new i.a(str1, new Object[0]);
-      AppMethodBeat.o(128921);
-      return paramf;
     case 2: 
-      paramf = new i.a(paramJSONObject, new Object[0]);
-      AppMethodBeat.o(128921);
-      return paramf;
+      parame = new i.a("fail no such file or directory \"%s\"", new Object[] { paramString });
+      AppMethodBeat.o(128917);
+      return parame;
     case 3: 
-      paramf = new i.a("fail sdcard not mounted", new Object[0]);
-      AppMethodBeat.o(128921);
-      return paramf;
+      parame = new i.a("fail not a directory \"%s\"", new Object[] { paramString });
+      AppMethodBeat.o(128917);
+      return parame;
+    case 4: 
+      parame = new i.a("fail permission denied, open \"%s\"", new Object[] { paramString });
+      AppMethodBeat.o(128917);
+      return parame;
+    case 5: 
+      parame = new i.a("fail \"%s\" is not a regular file", new Object[] { paramString });
+      AppMethodBeat.o(128917);
+      return parame;
     }
-    paramf = new i.a("ok", new Object[0]);
-    AppMethodBeat.o(128921);
-    return paramf;
+    parame = new JSONArray();
+    paramString = paramJSONObject.iterator();
+    while (paramString.hasNext()) {
+      parame.put(((k)paramString.next()).fileName);
+    }
+    parame = new i.a("ok", new Object[0]).p("files", parame);
+    AppMethodBeat.o(128917);
+    return parame;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.bd
  * JD-Core Version:    0.7.0.1
  */

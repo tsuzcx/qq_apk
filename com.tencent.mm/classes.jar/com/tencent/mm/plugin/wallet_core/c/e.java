@@ -2,26 +2,26 @@ package com.tencent.mm.plugin.wallet_core.c;
 
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.fingerprint.d.a;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wallet_core.model.k;
-import com.tencent.mm.protocal.protobuf.zw;
-import com.tencent.mm.protocal.protobuf.zx;
+import com.tencent.mm.protocal.protobuf.aaa;
+import com.tencent.mm.protocal.protobuf.aab;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.c.w;
 
 public final class e
   extends w
 {
-  public int HPC;
-  public zx HPD;
+  public int OHK;
+  public aab OHL;
   private i callback;
-  private com.tencent.mm.ak.d rr;
+  private com.tencent.mm.an.d rr;
   
   public e(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt)
   {
@@ -31,42 +31,42 @@ public final class e
   private e(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt, byte paramByte)
   {
     AppMethodBeat.i(69894);
-    this.HPC = 0;
-    this.HPC = 5;
+    this.OHK = 0;
+    this.OHK = 5;
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new zw();
-    ((d.a)localObject).iLO = new zx();
+    ((d.a)localObject).lBU = new aaa();
+    ((d.a)localObject).lBV = new aab();
     ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/checkuserauthjsapi";
     ((d.a)localObject).funcId = 2728;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (zw)this.rr.iLK.iLR;
-    ((zw)localObject).jfi = paramString1;
-    ((zw)localObject).KPJ = paramString2;
-    ((zw)localObject).Lkp = paramString3;
-    ((zw)localObject).Lkq = paramString4;
-    ((zw)localObject).Lks = paramString5;
-    ((zw)localObject).Lkr = paramString6;
-    ((zw)localObject).Ljk = paramString7;
-    ((zw)localObject).Lkt = 5;
-    ((zw)localObject).Lcc = k.fQy();
-    ((zw)localObject).KHd = 1;
-    ((zw)localObject).UserName = null;
-    ((zw)localObject).xut = null;
-    ((zw)localObject).Lkw = paramString8;
-    ((zw)localObject).Lkv = paramInt;
-    boolean bool = ((a)com.tencent.mm.kernel.g.af(a.class)).dJO();
-    paramString3 = com.tencent.mm.plugin.soter.d.d.flM();
-    paramString2 = paramString3.FhU;
-    paramString3 = paramString3.hFF;
-    ((zw)localObject).Llf = 0;
-    ((zw)localObject).FhU = paramString2;
-    ((zw)localObject).hFF = paramString3;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (aaa)d.b.b(this.rr.lBR);
+    ((aaa)localObject).lVG = paramString1;
+    ((aaa)localObject).RQH = paramString2;
+    ((aaa)localObject).Sly = paramString3;
+    ((aaa)localObject).Slz = paramString4;
+    ((aaa)localObject).SlB = paramString5;
+    ((aaa)localObject).SlA = paramString6;
+    ((aaa)localObject).SkB = paramString7;
+    ((aaa)localObject).SlC = 5;
+    ((aaa)localObject).Sdp = k.gJe();
+    ((aaa)localObject).RIv = 1;
+    ((aaa)localObject).UserName = null;
+    ((aaa)localObject).CqK = null;
+    ((aaa)localObject).SlF = paramString8;
+    ((aaa)localObject).SlE = paramInt;
+    boolean bool = ((a)com.tencent.mm.kernel.h.ae(a.class)).eon();
+    paramString3 = com.tencent.mm.plugin.soter.d.d.gai();
+    paramString2 = paramString3.Lwz;
+    paramString3 = paramString3.ktM;
+    ((aaa)localObject).Smo = 0;
+    ((aaa)localObject).Lwz = paramString2;
+    ((aaa)localObject).ktM = paramString3;
     if (bool) {}
     for (paramInt = 1;; paramInt = 0)
     {
-      ((zw)localObject).Llg = paramInt;
+      ((aaa)localObject).Smp = paramInt;
       Log.d("MicroMsg.NetSceneCheckUserAuthJsapi", "cpu_id: %s, uid: %s", new Object[] { paramString2, paramString3 });
       Log.i("MicroMsg.NetSceneCheckUserAuthJsapi", "appId: %s, url: %s, jsapiScene: %s, isOpenTouchPay: %b", new Object[] { paramString1, paramString7, Integer.valueOf(5), Boolean.valueOf(bool) });
       AppMethodBeat.o(69894);
@@ -74,7 +74,7 @@ public final class e
     }
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(69895);
     this.callback = parami;
@@ -98,31 +98,31 @@ public final class e
       paramArrayOfByte = paramString;
       if (paramInt3 == 0)
       {
-        this.HPD = ((zx)((com.tencent.mm.ak.d)params).iLL.iLR);
-        paramString = (zw)((com.tencent.mm.ak.d)params).iLK.iLR;
-        if (paramString.Ljk == null) {
+        this.OHL = ((aab)d.c.b(((com.tencent.mm.an.d)params).lBS));
+        paramString = (aaa)d.b.b(((com.tencent.mm.an.d)params).lBR);
+        if (paramString.SkB == null) {
           break label388;
         }
-        params = Uri.parse(paramString.Ljk).getQueryParameter("appid");
-        if (params == paramString.jfi) {
+        params = Uri.parse(paramString.SkB).getQueryParameter("appid");
+        if (params == paramString.lVG) {
           break label296;
         }
-        h.CyF.a(14954, new Object[] { this.HPD.KxE, "", Integer.valueOf(paramString.Lkt), paramString.Lkw, paramString.jfi, Integer.valueOf(paramString.KHd), Integer.valueOf(paramString.Lkv), paramString.Ljk, params });
+        com.tencent.mm.plugin.report.service.h.IzE.a(14954, new Object[] { this.OHL.Rzs, "", Integer.valueOf(paramString.SlC), paramString.SlF, paramString.lVG, Integer.valueOf(paramString.RIv), Integer.valueOf(paramString.SlE), paramString.SkB, params });
       }
     }
     for (;;)
     {
-      Log.i("MicroMsg.NetSceneCheckUserAuthJsapi", "CheckUserAuthJsapiResponse resp.ErrCode is " + this.HPD.rBL + " resp.ErrMsg is " + this.HPD.rBM);
-      paramArrayOfByte = this.HPD.rBM;
+      Log.i("MicroMsg.NetSceneCheckUserAuthJsapi", "CheckUserAuthJsapiResponse resp.ErrCode is " + this.OHL.vht + " resp.ErrMsg is " + this.OHL.vhu);
+      paramArrayOfByte = this.OHL.vhu;
       this.callback.onSceneEnd(paramInt2, paramInt3, paramArrayOfByte, this);
       AppMethodBeat.o(69896);
       return;
       label296:
-      h.CyF.a(14954, new Object[] { this.HPD.KxE, "", Integer.valueOf(paramString.Lkt), paramString.Lkw, paramString.jfi, Integer.valueOf(paramString.KHd), Integer.valueOf(paramString.Lkv), paramString.Ljk });
+      com.tencent.mm.plugin.report.service.h.IzE.a(14954, new Object[] { this.OHL.Rzs, "", Integer.valueOf(paramString.SlC), paramString.SlF, paramString.lVG, Integer.valueOf(paramString.RIv), Integer.valueOf(paramString.SlE), paramString.SkB });
       continue;
       label388:
-      if ((paramString.UserName != null) && (paramString.xut != null)) {
-        h.CyF.a(14954, new Object[] { this.HPD.KxE, "", Integer.valueOf(paramString.Lkt), paramString.Lkw, paramString.jfi, Integer.valueOf(paramString.KHd), Integer.valueOf(paramString.Lkv), paramString.xut, paramString.UserName });
+      if ((paramString.UserName != null) && (paramString.CqK != null)) {
+        com.tencent.mm.plugin.report.service.h.IzE.a(14954, new Object[] { this.OHL.Rzs, "", Integer.valueOf(paramString.SlC), paramString.SlF, paramString.lVG, Integer.valueOf(paramString.RIv), Integer.valueOf(paramString.SlE), paramString.CqK, paramString.UserName });
       }
     }
   }

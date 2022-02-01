@@ -1,54 +1,54 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.c;
-import com.google.a.a.e;
+import com.google.b.a.b;
+import com.google.b.a.c;
+import com.google.b.a.e;
 
 public final class a$y
   extends e
 {
-  private static volatile y[] REI;
-  public String REJ = "";
-  public String sXO = "";
+  private static volatile y[] Zgn;
+  public String Zgo = "";
+  public String wDN = "";
   
   public a$y()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public static y[] hje()
+  public static y[] ikO()
   {
-    if (REI == null) {}
-    synchronized (c.cbn)
+    if (Zgn == null) {}
+    synchronized (c.ccQ)
     {
-      if (REI == null) {
-        REI = new y[0];
+      if (Zgn == null) {
+        Zgn = new y[0];
       }
-      return REI;
+      return Zgn;
     }
   }
   
-  public final int Ig()
+  public final int JG()
   {
-    int j = super.Ig();
+    int j = super.JG();
     int i = j;
-    if (!this.sXO.equals("")) {
-      i = j + b.f(1, this.sXO);
+    if (!this.wDN.equals("")) {
+      i = j + b.g(1, this.wDN);
     }
     j = i;
-    if (!this.REJ.equals("")) {
-      j = i + b.f(2, this.REJ);
+    if (!this.Zgo.equals("")) {
+      j = i + b.g(2, this.Zgo);
     }
     return j;
   }
   
   public final void a(b paramb)
   {
-    if (!this.sXO.equals("")) {
-      paramb.e(1, this.sXO);
+    if (!this.wDN.equals("")) {
+      paramb.f(1, this.wDN);
     }
-    if (!this.REJ.equals("")) {
-      paramb.e(2, this.REJ);
+    if (!this.Zgo.equals("")) {
+      paramb.f(2, this.Zgo);
     }
     super.a(paramb);
   }

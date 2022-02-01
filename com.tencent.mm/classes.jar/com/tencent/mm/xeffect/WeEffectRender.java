@@ -9,22 +9,28 @@ public class WeEffectRender
 {
   static
   {
-    AppMethodBeat.i(236762);
-    d.load("xlabeffect");
-    AppMethodBeat.o(236762);
+    AppMethodBeat.i(194594);
+    e.load("xlabeffect");
+    AppMethodBeat.o(194594);
   }
   
   public static long b(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(236761);
+    AppMethodBeat.i(194585);
     long l = nInit(paramInt, paramString, paramString + "/OpenCLCNNLib.bin", paramBoolean1, paramBoolean2);
-    AppMethodBeat.o(236761);
+    AppMethodBeat.o(194585);
     return l;
   }
   
+  public static native long nAddDeFaceWrinkle(long paramLong, String paramString);
+  
   public static native long nAddFaceAutoSlimer(long paramLong, String paramString);
   
+  public static native long nAddSharpenFilter(long paramLong, float paramFloat);
+  
   public static native long nCreateFilter(long paramLong, String paramString, float paramFloat);
+  
+  public static native long nCreateFilterWithConfig(long paramLong, String paramString);
   
   public static native long nCreateMakeUp(long paramLong, int paramInt, String paramString);
   
@@ -56,15 +62,23 @@ public class WeEffectRender
   
   public static native int nSetConfigFlags(long paramLong, String paramString, float paramFloat);
   
+  public static native void nSetDeFaceWrinkle(long paramLong1, long paramLong2, float paramFloat1, float paramFloat2);
+  
   public static native int nSetEffectLevel(long paramLong, int paramInt, float paramFloat);
   
-  public static native int nSetFaceAutoSlimerRate(long paramLong1, long paramLong2, float paramFloat);
+  public static native void nSetFilterColorWeight(long paramLong1, long paramLong2, float paramFloat);
   
   public static native void nSetFocalLength(long paramLong, float paramFloat);
   
   public static native void nSetNativeLog(long paramLong);
   
+  public static native void nSetRenderTextureCropSize(long paramLong, float paramFloat);
+  
   public static native void nSetSegment(long paramLong, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3);
+  
+  public static native int nSetSlimerRate(long paramLong1, long paramLong2, float paramFloat);
+  
+  public static native void nSetTeethBright(long paramLong, float paramFloat);
   
   public static native int nTrackImageLabel(long paramLong, Buffer paramBuffer, int paramInt1, int paramInt2);
   
@@ -74,7 +88,7 @@ public class WeEffectRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.xeffect.WeEffectRender
  * JD-Core Version:    0.7.0.1
  */

@@ -15,26 +15,26 @@ public class VideoTransPara
   public int duration;
   public int fps;
   public int height;
-  public int iSU;
-  public int iSV;
-  public int iTf;
-  public int iTg;
-  public int iTh;
-  public int iTi;
-  public int iTj;
-  public int iTk;
-  public int iTl;
-  public int iTm;
-  public int iTn;
-  public int iTo;
-  public int iTp;
-  public int iTq;
-  public int iTr;
-  public int iTs;
-  public int idF;
-  public int idG;
-  public int iiH;
-  public boolean isDefault;
+  public int kSl;
+  public int kSm;
+  public int kXt;
+  public int lJA;
+  public int lJB;
+  public int lJC;
+  public int lJD;
+  public int lJE;
+  public int lJF;
+  public int lJG;
+  public int lJH;
+  public int lJI;
+  public int lJJ;
+  public int lJK;
+  public int lJL;
+  public int lJm;
+  public int lJn;
+  public boolean lJx;
+  public int lJy;
+  public int lJz;
   public int minDuration;
   public int videoBitrate;
   public int width;
@@ -49,49 +49,49 @@ public class VideoTransPara
   public VideoTransPara()
   {
     this.audioChannelCount = 1;
-    this.iTf = 0;
-    this.iTr = 0;
-    this.iTs = 0;
+    this.lJy = 0;
+    this.lJK = 0;
+    this.lJL = 0;
   }
   
   protected VideoTransPara(Parcel paramParcel)
   {
     AppMethodBeat.i(133561);
     this.audioChannelCount = 1;
-    this.iTf = 0;
-    this.iTr = 0;
-    this.iTs = 0;
+    this.lJy = 0;
+    this.lJK = 0;
+    this.lJL = 0;
     this.width = paramParcel.readInt();
     this.height = paramParcel.readInt();
     this.fps = paramParcel.readInt();
     this.videoBitrate = paramParcel.readInt();
     this.duration = paramParcel.readInt();
-    this.iiH = paramParcel.readInt();
+    this.kXt = paramParcel.readInt();
     this.audioBitrate = paramParcel.readInt();
     this.audioSampleRate = paramParcel.readInt();
-    this.iSU = paramParcel.readInt();
-    this.iSV = paramParcel.readInt();
+    this.lJm = paramParcel.readInt();
+    this.lJn = paramParcel.readInt();
     if (paramParcel.readInt() > 0) {}
     for (;;)
     {
-      this.isDefault = bool;
-      this.iTf = paramParcel.readInt();
-      this.iTg = paramParcel.readInt();
-      this.iTh = paramParcel.readInt();
-      this.iTi = paramParcel.readInt();
-      this.iTj = paramParcel.readInt();
-      this.iTk = paramParcel.readInt();
-      this.iTl = paramParcel.readInt();
-      this.iTm = paramParcel.readInt();
-      this.iTn = paramParcel.readInt();
-      this.iTo = paramParcel.readInt();
-      this.idF = paramParcel.readInt();
-      this.idG = paramParcel.readInt();
-      this.iTp = paramParcel.readInt();
-      this.iTq = paramParcel.readInt();
+      this.lJx = bool;
+      this.lJy = paramParcel.readInt();
+      this.lJz = paramParcel.readInt();
+      this.lJA = paramParcel.readInt();
+      this.lJB = paramParcel.readInt();
+      this.lJC = paramParcel.readInt();
+      this.lJD = paramParcel.readInt();
+      this.lJE = paramParcel.readInt();
+      this.lJF = paramParcel.readInt();
+      this.lJG = paramParcel.readInt();
+      this.lJH = paramParcel.readInt();
+      this.kSl = paramParcel.readInt();
+      this.kSm = paramParcel.readInt();
+      this.lJI = paramParcel.readInt();
+      this.lJJ = paramParcel.readInt();
       this.audioChannelCount = paramParcel.readInt();
-      this.iTr = paramParcel.readInt();
-      this.iTs = paramParcel.readInt();
+      this.lJK = paramParcel.readInt();
+      this.lJL = paramParcel.readInt();
       this.minDuration = paramParcel.readInt();
       AppMethodBeat.o(133561);
       return;
@@ -102,37 +102,37 @@ public class VideoTransPara
   public VideoTransPara(VideoTransPara paramVideoTransPara)
   {
     this.audioChannelCount = 1;
-    this.iTf = 0;
-    this.iTr = 0;
-    this.iTs = 0;
+    this.lJy = 0;
+    this.lJK = 0;
+    this.lJL = 0;
     this.width = paramVideoTransPara.width;
     this.height = paramVideoTransPara.height;
     this.fps = paramVideoTransPara.fps;
     this.videoBitrate = paramVideoTransPara.videoBitrate;
     this.duration = paramVideoTransPara.duration;
-    this.iiH = paramVideoTransPara.iiH;
+    this.kXt = paramVideoTransPara.kXt;
     this.audioBitrate = paramVideoTransPara.audioBitrate;
     this.audioSampleRate = paramVideoTransPara.audioSampleRate;
-    this.iSU = paramVideoTransPara.iSU;
-    this.iSV = paramVideoTransPara.iSV;
-    this.isDefault = paramVideoTransPara.isDefault;
-    this.iTf = paramVideoTransPara.iTf;
-    this.iTg = paramVideoTransPara.iTg;
-    this.iTh = paramVideoTransPara.iTh;
-    this.iTi = paramVideoTransPara.iTi;
-    this.iTj = paramVideoTransPara.iTj;
-    this.iTk = paramVideoTransPara.iTk;
-    this.iTl = paramVideoTransPara.iTl;
-    this.iTm = paramVideoTransPara.iTm;
-    this.iTn = paramVideoTransPara.iTn;
-    this.iTo = paramVideoTransPara.iTo;
-    this.idF = paramVideoTransPara.idF;
-    this.idG = paramVideoTransPara.idG;
-    this.iTp = paramVideoTransPara.iTp;
-    this.iTq = paramVideoTransPara.iTq;
+    this.lJm = paramVideoTransPara.lJm;
+    this.lJn = paramVideoTransPara.lJn;
+    this.lJx = paramVideoTransPara.lJx;
+    this.lJy = paramVideoTransPara.lJy;
+    this.lJz = paramVideoTransPara.lJz;
+    this.lJA = paramVideoTransPara.lJA;
+    this.lJB = paramVideoTransPara.lJB;
+    this.lJC = paramVideoTransPara.lJC;
+    this.lJD = paramVideoTransPara.lJD;
+    this.lJE = paramVideoTransPara.lJE;
+    this.lJF = paramVideoTransPara.lJF;
+    this.lJG = paramVideoTransPara.lJG;
+    this.lJH = paramVideoTransPara.lJH;
+    this.kSl = paramVideoTransPara.kSl;
+    this.kSm = paramVideoTransPara.kSm;
+    this.lJI = paramVideoTransPara.lJI;
+    this.lJJ = paramVideoTransPara.lJJ;
     this.audioChannelCount = paramVideoTransPara.audioChannelCount;
-    this.iTr = paramVideoTransPara.iTr;
-    this.iTs = paramVideoTransPara.iTs;
+    this.lJK = paramVideoTransPara.lJK;
+    this.lJL = paramVideoTransPara.lJL;
     this.minDuration = paramVideoTransPara.minDuration;
   }
   
@@ -152,7 +152,7 @@ public class VideoTransPara
   public String toString()
   {
     AppMethodBeat.i(133563);
-    String str = "[isDefault " + this.isDefault + " width " + this.width + " height " + this.height + " fps " + this.fps + " video bitrate " + this.videoBitrate + " iFrame " + this.iiH + " audio bitrate " + this.audioBitrate + " audioSampleRate " + this.audioSampleRate + "audioChannelCount " + this.audioChannelCount + " duration " + this.duration + " profile index " + this.iSU + " preset index " + this.iSV + " thumbSize " + this.iTf + " abaSwitch " + this.iTg + " qpSwitch " + this.iTh + " abaUpgear " + this.iTi + " abaDowngear " + this.iTj + " ceilingVideoBR " + this.iTk + " flooringVideoBR " + this.iTl + " isEnableHEVCEncode " + this.iTm + " isEnable720p " + this.iTn + " maxVideoSize " + this.iTo + " minQP " + this.idF + " maxQP " + this.idG + " takePhotosVideoBR " + this.iTp + " remuxScene " + this.iTq + " hwEnableHevc " + this.iTr + " swEnableHevc " + this.iTs + "]";
+    String str = "[isDefault " + this.lJx + " width " + this.width + " height " + this.height + " fps " + this.fps + " video bitrate " + this.videoBitrate + " iFrame " + this.kXt + " audio bitrate " + this.audioBitrate + " audioSampleRate " + this.audioSampleRate + "audioChannelCount " + this.audioChannelCount + " duration " + this.duration + " profile index " + this.lJm + " preset index " + this.lJn + " thumbSize " + this.lJy + " abaSwitch " + this.lJz + " qpSwitch " + this.lJA + " abaUpgear " + this.lJB + " abaDowngear " + this.lJC + " ceilingVideoBR " + this.lJD + " flooringVideoBR " + this.lJE + " isEnableHEVCEncode " + this.lJF + " isEnable720p " + this.lJG + " maxVideoSize " + this.lJH + " minQP " + this.kSl + " maxQP " + this.kSm + " takePhotosVideoBR " + this.lJI + " remuxScene " + this.lJJ + " hwEnableHevc " + this.lJK + " swEnableHevc " + this.lJL + "]";
     AppMethodBeat.o(133563);
     return str;
   }
@@ -165,32 +165,32 @@ public class VideoTransPara
     paramParcel.writeInt(this.fps);
     paramParcel.writeInt(this.videoBitrate);
     paramParcel.writeInt(this.duration);
-    paramParcel.writeInt(this.iiH);
+    paramParcel.writeInt(this.kXt);
     paramParcel.writeInt(this.audioBitrate);
     paramParcel.writeInt(this.audioSampleRate);
-    paramParcel.writeInt(this.iSU);
-    paramParcel.writeInt(this.iSV);
-    if (this.isDefault) {}
+    paramParcel.writeInt(this.lJm);
+    paramParcel.writeInt(this.lJn);
+    if (this.lJx) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.iTf);
-      paramParcel.writeInt(this.iTg);
-      paramParcel.writeInt(this.iTh);
-      paramParcel.writeInt(this.iTi);
-      paramParcel.writeInt(this.iTj);
-      paramParcel.writeInt(this.iTk);
-      paramParcel.writeInt(this.iTl);
-      paramParcel.writeInt(this.iTm);
-      paramParcel.writeInt(this.iTn);
-      paramParcel.writeInt(this.iTo);
-      paramParcel.writeInt(this.idF);
-      paramParcel.writeInt(this.idG);
-      paramParcel.writeInt(this.iTp);
-      paramParcel.writeInt(this.iTq);
+      paramParcel.writeInt(this.lJy);
+      paramParcel.writeInt(this.lJz);
+      paramParcel.writeInt(this.lJA);
+      paramParcel.writeInt(this.lJB);
+      paramParcel.writeInt(this.lJC);
+      paramParcel.writeInt(this.lJD);
+      paramParcel.writeInt(this.lJE);
+      paramParcel.writeInt(this.lJF);
+      paramParcel.writeInt(this.lJG);
+      paramParcel.writeInt(this.lJH);
+      paramParcel.writeInt(this.kSl);
+      paramParcel.writeInt(this.kSm);
+      paramParcel.writeInt(this.lJI);
+      paramParcel.writeInt(this.lJJ);
       paramParcel.writeInt(this.audioChannelCount);
-      paramParcel.writeInt(this.iTr);
-      paramParcel.writeInt(this.iTs);
+      paramParcel.writeInt(this.lJK);
+      paramParcel.writeInt(this.lJL);
       paramParcel.writeInt(this.minDuration);
       AppMethodBeat.o(133562);
       return;
@@ -199,7 +199,7 @@ public class VideoTransPara
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelcontrol.VideoTransPara
  * JD-Core Version:    0.7.0.1
  */

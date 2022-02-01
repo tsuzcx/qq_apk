@@ -27,7 +27,7 @@ public final class al
     this.db = paramISQLiteDatabase;
   }
   
-  public final List<ak> ctO()
+  public final List<ak> cHq()
   {
     AppMethodBeat.i(112870);
     ArrayList localArrayList = new ArrayList();
@@ -46,7 +46,7 @@ public final class al
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.al
  * JD-Core Version:    0.7.0.1
  */

@@ -10,65 +10,78 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.b.c;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.b.i;
+import com.tencent.mm.plugin.finder.b.j;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.aa;
-import kotlin.g.a.m;
+import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
+import kotlin.g.a.q;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderExtendReadingView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "emptyClickListener", "Lkotlin/Function0;", "", "failedLayout", "Landroid/view/View;", "filledClickListener", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "link", "isVerifyState", "", "()Z", "setVerifyState", "(Z)V", "value", "getLink", "()Ljava/lang/String;", "setLink", "(Ljava/lang/String;)V", "normalLayout", "succLayout", "succTv", "Landroid/widget/TextView;", "tipsClickListener", "Lkotlin/Function2;", "title", "tipsLayout", "tipsLink", "getTipsLink", "setTipsLink", "tipsTitle", "getTipsTitle", "setTipsTitle", "tipsTv", "getTitle", "setTitle", "verifyingLayout", "setFailedState", "setListeners", "setOriginState", "setSuccState", "setVerifyingState", "updateVerifiedTips", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderExtendReadingView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "emptyClickListener", "Lkotlin/Function0;", "", "failedLayout", "Landroid/view/View;", "filledClickListener", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "link", "isVerifyState", "", "()Z", "setVerifyState", "(Z)V", "value", "getLink", "()Ljava/lang/String;", "setLink", "(Ljava/lang/String;)V", "normalLayout", "style", "getStyle", "()Ljava/lang/Integer;", "setStyle", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "succIocn", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "succLayout", "succTv", "Landroid/widget/TextView;", "tipsClickListener", "Lkotlin/Function3;", "title", "tipsLayout", "tipsLink", "getTipsLink", "setTipsLink", "tipsTitle", "getTipsTitle", "setTipsTitle", "tipsTv", "getTitle", "setTitle", "verifyingLayout", "setFailedState", "setListeners", "setOriginState", "setSuccState", "setVerifyingState", "updateVerifiedTips", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;)V", "plugin-finder_release"})
 public final class FinderExtendReadingView
   extends LinearLayout
 {
+  private final TextView AWF;
+  public kotlin.g.a.a<x> AWK;
+  public kotlin.g.a.b<? super String, x> AWL;
+  public q<? super String, ? super String, ? super Integer, x> AWM;
+  private String AWN;
+  private String AWO;
+  private Integer AWP;
+  private final View AWQ;
+  private final View AWR;
+  private final View AWS;
+  private final View AWT;
+  private final TextView AWU;
+  private final WeImageView AWV;
+  public boolean AWW;
   private final String TAG;
   private String link;
-  private final TextView pJV;
   private String title;
-  private final View uNf;
-  public kotlin.g.a.a<x> wlL;
-  public kotlin.g.a.b<? super String, x> wlM;
-  public m<? super String, ? super String, x> wlN;
-  private String wlO;
-  private String wlP;
-  private final View wlQ;
-  private final View wlR;
-  private final View wlS;
-  private final View wlT;
-  private final TextView wlU;
-  public boolean wlV;
+  private final View zzB;
   
   public FinderExtendReadingView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(168331);
     this.TAG = "Finder.FinderExtendReadingView";
+    this.AWP = Integer.valueOf(0);
     setOrientation(1);
-    paramContext = aa.jQ(getContext()).inflate(2131494245, null);
+    paramContext = ad.kS(getContext()).inflate(b.g.finder_extend_reading_view, null);
     addView(paramContext, (ViewGroup.LayoutParams)new LinearLayout.LayoutParams(-1, -2));
-    paramAttributeSet = paramContext.findViewById(2131300259);
-    p.g(paramAttributeSet, "view.findViewById(R.id.e…ding_normal_state_layout)");
-    this.wlQ = paramAttributeSet;
-    paramAttributeSet = paramContext.findViewById(2131300266);
-    p.g(paramAttributeSet, "view.findViewById(R.id.e…g_verifying_state_layout)");
-    this.wlR = paramAttributeSet;
-    paramAttributeSet = paramContext.findViewById(2131300257);
-    p.g(paramAttributeSet, "view.findViewById(R.id.e…ding_failed_state_layout)");
-    this.wlS = paramAttributeSet;
-    paramAttributeSet = paramContext.findViewById(2131300261);
-    p.g(paramAttributeSet, "view.findViewById(R.id.e…eading_succ_state_layout)");
-    this.wlT = paramAttributeSet;
-    paramAttributeSet = paramContext.findViewById(2131300262);
-    p.g(paramAttributeSet, "view.findViewById(R.id.extend_reading_tips_layout)");
-    this.uNf = paramAttributeSet;
-    paramAttributeSet = paramContext.findViewById(2131300263);
-    p.g(paramAttributeSet, "view.findViewById(R.id.extend_reading_tips_tv)");
-    this.pJV = ((TextView)paramAttributeSet);
-    paramContext = paramContext.findViewById(2131300264);
-    p.g(paramContext, "view.findViewById(R.id.extend_reading_title_tv)");
-    this.wlU = ((TextView)paramContext);
-    dGG();
+    paramAttributeSet = paramContext.findViewById(b.f.extend_reading_normal_state_layout);
+    p.j(paramAttributeSet, "view.findViewById(R.id.e…ding_normal_state_layout)");
+    this.AWQ = paramAttributeSet;
+    paramAttributeSet = paramContext.findViewById(b.f.extend_reading_verifying_state_layout);
+    p.j(paramAttributeSet, "view.findViewById(R.id.e…g_verifying_state_layout)");
+    this.AWR = paramAttributeSet;
+    paramAttributeSet = paramContext.findViewById(b.f.extend_reading_failed_state_layout);
+    p.j(paramAttributeSet, "view.findViewById(R.id.e…ding_failed_state_layout)");
+    this.AWS = paramAttributeSet;
+    paramAttributeSet = paramContext.findViewById(b.f.extend_reading_succ_state_layout);
+    p.j(paramAttributeSet, "view.findViewById(R.id.e…eading_succ_state_layout)");
+    this.AWT = paramAttributeSet;
+    paramAttributeSet = paramContext.findViewById(b.f.extend_reading_tips_layout);
+    p.j(paramAttributeSet, "view.findViewById(R.id.extend_reading_tips_layout)");
+    this.zzB = paramAttributeSet;
+    paramAttributeSet = paramContext.findViewById(b.f.extend_reading_tips_tv);
+    p.j(paramAttributeSet, "view.findViewById(R.id.extend_reading_tips_tv)");
+    this.AWF = ((TextView)paramAttributeSet);
+    paramAttributeSet = paramContext.findViewById(b.f.extend_reading_title_tv);
+    p.j(paramAttributeSet, "view.findViewById(R.id.extend_reading_title_tv)");
+    this.AWU = ((TextView)paramAttributeSet);
+    paramContext = paramContext.findViewById(b.f.extend_reading_succ_icon);
+    p.j(paramContext, "view.findViewById(R.id.extend_reading_succ_icon)");
+    this.AWV = ((WeImageView)paramContext);
+    eiF();
     AppMethodBeat.o(168331);
   }
   
@@ -77,44 +90,101 @@ public final class FinderExtendReadingView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(168332);
     this.TAG = "Finder.FinderExtendReadingView";
+    this.AWP = Integer.valueOf(0);
     setOrientation(1);
-    paramContext = aa.jQ(getContext()).inflate(2131494245, null);
+    paramContext = ad.kS(getContext()).inflate(b.g.finder_extend_reading_view, null);
     addView(paramContext, (ViewGroup.LayoutParams)new LinearLayout.LayoutParams(-1, -2));
-    paramAttributeSet = paramContext.findViewById(2131300259);
-    p.g(paramAttributeSet, "view.findViewById(R.id.e…ding_normal_state_layout)");
-    this.wlQ = paramAttributeSet;
-    paramAttributeSet = paramContext.findViewById(2131300266);
-    p.g(paramAttributeSet, "view.findViewById(R.id.e…g_verifying_state_layout)");
-    this.wlR = paramAttributeSet;
-    paramAttributeSet = paramContext.findViewById(2131300257);
-    p.g(paramAttributeSet, "view.findViewById(R.id.e…ding_failed_state_layout)");
-    this.wlS = paramAttributeSet;
-    paramAttributeSet = paramContext.findViewById(2131300261);
-    p.g(paramAttributeSet, "view.findViewById(R.id.e…eading_succ_state_layout)");
-    this.wlT = paramAttributeSet;
-    paramAttributeSet = paramContext.findViewById(2131300262);
-    p.g(paramAttributeSet, "view.findViewById(R.id.extend_reading_tips_layout)");
-    this.uNf = paramAttributeSet;
-    paramAttributeSet = paramContext.findViewById(2131300263);
-    p.g(paramAttributeSet, "view.findViewById(R.id.extend_reading_tips_tv)");
-    this.pJV = ((TextView)paramAttributeSet);
-    paramContext = paramContext.findViewById(2131300264);
-    p.g(paramContext, "view.findViewById(R.id.extend_reading_title_tv)");
-    this.wlU = ((TextView)paramContext);
-    dGG();
+    paramAttributeSet = paramContext.findViewById(b.f.extend_reading_normal_state_layout);
+    p.j(paramAttributeSet, "view.findViewById(R.id.e…ding_normal_state_layout)");
+    this.AWQ = paramAttributeSet;
+    paramAttributeSet = paramContext.findViewById(b.f.extend_reading_verifying_state_layout);
+    p.j(paramAttributeSet, "view.findViewById(R.id.e…g_verifying_state_layout)");
+    this.AWR = paramAttributeSet;
+    paramAttributeSet = paramContext.findViewById(b.f.extend_reading_failed_state_layout);
+    p.j(paramAttributeSet, "view.findViewById(R.id.e…ding_failed_state_layout)");
+    this.AWS = paramAttributeSet;
+    paramAttributeSet = paramContext.findViewById(b.f.extend_reading_succ_state_layout);
+    p.j(paramAttributeSet, "view.findViewById(R.id.e…eading_succ_state_layout)");
+    this.AWT = paramAttributeSet;
+    paramAttributeSet = paramContext.findViewById(b.f.extend_reading_tips_layout);
+    p.j(paramAttributeSet, "view.findViewById(R.id.extend_reading_tips_layout)");
+    this.zzB = paramAttributeSet;
+    paramAttributeSet = paramContext.findViewById(b.f.extend_reading_tips_tv);
+    p.j(paramAttributeSet, "view.findViewById(R.id.extend_reading_tips_tv)");
+    this.AWF = ((TextView)paramAttributeSet);
+    paramAttributeSet = paramContext.findViewById(b.f.extend_reading_title_tv);
+    p.j(paramAttributeSet, "view.findViewById(R.id.extend_reading_title_tv)");
+    this.AWU = ((TextView)paramAttributeSet);
+    paramContext = paramContext.findViewById(b.f.extend_reading_succ_icon);
+    p.j(paramContext, "view.findViewById(R.id.extend_reading_succ_icon)");
+    this.AWV = ((WeImageView)paramContext);
+    eiF();
     AppMethodBeat.o(168332);
   }
   
-  public final void dGG()
+  public final void U(String paramString1, final String paramString2, int paramInt)
+  {
+    AppMethodBeat.i(285368);
+    p.k(paramString1, "title");
+    p.k(paramString2, "link");
+    this.AWW = false;
+    this.AWQ.setVisibility(8);
+    this.AWR.setVisibility(8);
+    this.AWS.setVisibility(8);
+    this.AWT.setVisibility(0);
+    this.zzB.setVisibility(8);
+    setTitle(paramString1);
+    setLink(paramString2);
+    setStyle(Integer.valueOf(paramInt));
+    this.AWU.setText((CharSequence)paramString1);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.AWT.setOnClickListener((View.OnClickListener)new b(this, paramString2));
+      AppMethodBeat.o(285368);
+      return;
+      this.AWV.setImageDrawable(au.o(getContext(), b.i.icons_outlined_link, com.tencent.mm.ci.a.w(getContext(), b.c.Orange)));
+      continue;
+      this.AWV.setImageDrawable(au.o(getContext(), b.i.icons_filled_red_envelope, com.tencent.mm.ci.a.w(getContext(), b.c.Orange)));
+    }
+  }
+  
+  public final void b(final String paramString1, final String paramString2, final Integer paramInteger)
+  {
+    AppMethodBeat.i(285369);
+    if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
+    {
+      this.zzB.setVisibility(8);
+      AppMethodBeat.o(285369);
+      return;
+    }
+    if (this.AWQ.getVisibility() != 0) {
+      this.zzB.setVisibility(8);
+    }
+    for (;;)
+    {
+      setTipsLink(paramString2);
+      setTipsTitle(paramString1);
+      this.AWF.setText((CharSequence)getContext().getString(b.j.finder_extend_reading_tips, new Object[] { paramString1 }));
+      this.AWF.setOnClickListener((View.OnClickListener)new d(this, paramString1, paramString2, paramInteger));
+      AppMethodBeat.o(285369);
+      return;
+      this.zzB.setVisibility(0);
+    }
+  }
+  
+  public final void eiF()
   {
     AppMethodBeat.i(168327);
-    this.wlV = false;
-    this.wlQ.setVisibility(0);
-    this.wlR.setVisibility(8);
-    this.wlS.setVisibility(8);
-    this.wlT.setVisibility(8);
-    hm(this.wlP, this.wlO);
-    this.wlQ.setOnClickListener((View.OnClickListener)new a(this));
+    this.AWW = false;
+    this.AWQ.setVisibility(0);
+    this.AWR.setVisibility(8);
+    this.AWS.setVisibility(8);
+    this.AWT.setVisibility(8);
+    b(this.AWO, this.AWN, this.AWP);
+    this.AWQ.setOnClickListener((View.OnClickListener)new a(this));
     AppMethodBeat.o(168327);
   }
   
@@ -123,61 +193,24 @@ public final class FinderExtendReadingView
     return this.link;
   }
   
+  public final Integer getStyle()
+  {
+    return this.AWP;
+  }
+  
   public final String getTipsLink()
   {
-    return this.wlO;
+    return this.AWN;
   }
   
   public final String getTipsTitle()
   {
-    return this.wlP;
+    return this.AWO;
   }
   
   public final String getTitle()
   {
     return this.title;
-  }
-  
-  public final void hl(String paramString1, final String paramString2)
-  {
-    AppMethodBeat.i(168329);
-    p.h(paramString1, "title");
-    p.h(paramString2, "link");
-    this.wlV = false;
-    this.wlQ.setVisibility(8);
-    this.wlR.setVisibility(8);
-    this.wlS.setVisibility(8);
-    this.wlT.setVisibility(0);
-    this.uNf.setVisibility(8);
-    setTitle(paramString1);
-    setLink(paramString2);
-    this.wlU.setText((CharSequence)paramString1);
-    this.wlT.setOnClickListener((View.OnClickListener)new b(this, paramString2));
-    AppMethodBeat.o(168329);
-  }
-  
-  public final void hm(final String paramString1, final String paramString2)
-  {
-    AppMethodBeat.i(168330);
-    if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
-    {
-      this.uNf.setVisibility(8);
-      AppMethodBeat.o(168330);
-      return;
-    }
-    if (this.wlQ.getVisibility() != 0) {
-      this.uNf.setVisibility(8);
-    }
-    for (;;)
-    {
-      setTipsLink(paramString2);
-      setTipsTitle(paramString1);
-      this.pJV.setText((CharSequence)getContext().getString(2131759696, new Object[] { paramString1 }));
-      this.pJV.setOnClickListener((View.OnClickListener)new d(this, paramString1, paramString2));
-      AppMethodBeat.o(168330);
-      return;
-      this.uNf.setVisibility(0);
-    }
   }
   
   public final void setLink(String paramString)
@@ -188,11 +221,19 @@ public final class FinderExtendReadingView
     AppMethodBeat.o(168325);
   }
   
+  public final void setStyle(Integer paramInteger)
+  {
+    AppMethodBeat.i(285367);
+    Log.i(this.TAG, "set style ".concat(String.valueOf(paramInteger)));
+    this.AWP = paramInteger;
+    AppMethodBeat.o(285367);
+  }
+  
   public final void setTipsLink(String paramString)
   {
     AppMethodBeat.i(168323);
     Log.i(this.TAG, "set tipsLink ".concat(String.valueOf(paramString)));
-    this.wlO = paramString;
+    this.AWN = paramString;
     AppMethodBeat.o(168323);
   }
   
@@ -200,7 +241,7 @@ public final class FinderExtendReadingView
   {
     AppMethodBeat.i(168324);
     Log.i(this.TAG, "set tipsTitle ".concat(String.valueOf(paramString)));
-    this.wlP = paramString;
+    this.AWO = paramString;
     AppMethodBeat.o(168324);
   }
   
@@ -214,25 +255,25 @@ public final class FinderExtendReadingView
   
   public final void setVerifyState(boolean paramBoolean)
   {
-    this.wlV = paramBoolean;
+    this.AWW = paramBoolean;
   }
   
   public final void setVerifyingState(final String paramString)
   {
     AppMethodBeat.i(168328);
-    p.h(paramString, "link");
-    this.wlV = true;
-    this.wlQ.setVisibility(8);
-    this.wlR.setVisibility(0);
-    this.wlS.setVisibility(8);
-    this.wlT.setVisibility(8);
-    this.uNf.setVisibility(8);
+    p.k(paramString, "link");
+    this.AWW = true;
+    this.AWQ.setVisibility(8);
+    this.AWR.setVisibility(0);
+    this.AWS.setVisibility(8);
+    this.AWT.setVisibility(8);
+    this.zzB.setVisibility(8);
     setLink(paramString);
-    this.wlR.setOnClickListener((View.OnClickListener)new c(this, paramString));
+    this.AWR.setOnClickListener((View.OnClickListener)new c(this, paramString));
     AppMethodBeat.o(168328);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class a
     implements View.OnClickListener
   {
@@ -242,9 +283,9 @@ public final class FinderExtendReadingView
     {
       AppMethodBeat.i(168319);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderExtendReadingView$setOriginState$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      paramView = FinderExtendReadingView.a(this.wlW);
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderExtendReadingView$setOriginState$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      paramView = FinderExtendReadingView.a(this.AWX);
       if (paramView != null) {
         paramView.invoke();
       }
@@ -253,7 +294,7 @@ public final class FinderExtendReadingView
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
@@ -263,9 +304,9 @@ public final class FinderExtendReadingView
     {
       AppMethodBeat.i(168320);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderExtendReadingView$setSuccState$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      paramView = FinderExtendReadingView.b(this.wlW);
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderExtendReadingView$setSuccState$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      paramView = FinderExtendReadingView.b(this.AWX);
       if (paramView != null) {
         paramView.invoke(paramString2);
       }
@@ -274,7 +315,7 @@ public final class FinderExtendReadingView
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
@@ -284,9 +325,9 @@ public final class FinderExtendReadingView
     {
       AppMethodBeat.i(168321);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderExtendReadingView$setVerifyingState$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      paramView = FinderExtendReadingView.b(this.wlW);
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderExtendReadingView$setVerifyingState$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      paramView = FinderExtendReadingView.b(this.AWX);
       if (paramView != null) {
         paramView.invoke(paramString);
       }
@@ -295,30 +336,34 @@ public final class FinderExtendReadingView
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class d
     implements View.OnClickListener
   {
-    d(FinderExtendReadingView paramFinderExtendReadingView, String paramString1, String paramString2) {}
+    d(FinderExtendReadingView paramFinderExtendReadingView, String paramString1, String paramString2, Integer paramInteger) {}
     
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(168322);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderExtendReadingView$updateVerifiedTips$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-      paramView = FinderExtendReadingView.c(this.wlW);
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderExtendReadingView$updateVerifiedTips$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+      paramView = FinderExtendReadingView.c(this.AWX);
       if (paramView != null)
       {
         localObject = paramString1;
         if (localObject == null) {
-          p.hyc();
+          p.iCn();
         }
         String str = paramString2;
         if (str == null) {
-          p.hyc();
+          p.iCn();
         }
-        paramView.invoke(localObject, str);
+        Integer localInteger = paramInteger;
+        if (localInteger == null) {
+          p.iCn();
+        }
+        paramView.c(localObject, str, localInteger);
       }
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/FinderExtendReadingView$updateVerifiedTips$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(168322);
@@ -327,7 +372,7 @@ public final class FinderExtendReadingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.FinderExtendReadingView
  * JD-Core Version:    0.7.0.1
  */

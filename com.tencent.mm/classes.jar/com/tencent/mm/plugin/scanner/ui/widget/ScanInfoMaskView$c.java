@@ -6,17 +6,17 @@ import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
 final class ScanInfoMaskView$c
   implements View.OnTouchListener
 {
-  public static final c CSi;
+  public static final c IXA;
   
   static
   {
-    AppMethodBeat.i(240649);
-    CSi = new c();
-    AppMethodBeat.o(240649);
+    AppMethodBeat.i(219898);
+    IXA = new c();
+    AppMethodBeat.o(219898);
   }
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)

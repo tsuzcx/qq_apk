@@ -2,7 +2,7 @@ package com.tencent.mm.network;
 
 import com.tencent.mars.mm.MMLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public final class w
 {
-  public static void aL(List<String> paramList)
+  public static void aJ(List<String> paramList)
   {
     int k = 1;
     AppMethodBeat.i(132848);
@@ -23,14 +23,14 @@ public final class w
       AppMethodBeat.o(132848);
       return;
     }
-    Object localObject1 = af.bkl();
+    Object localObject1 = af.btU();
     if (localObject1 == null)
     {
       Log.w("MicroMsg.MMDisasterInfoHandle", "autoAuth is null");
       AppMethodBeat.o(132848);
       return;
     }
-    localObject1 = ((v)localObject1).jEj;
+    localObject1 = ((v)localObject1).muM;
     if (localObject1 == null)
     {
       Log.w("MicroMsg.MMDisasterInfoHandle", "accinfo is null");
@@ -39,11 +39,11 @@ public final class w
     }
     Object localObject2;
     int i;
-    if (!((a)localObject1).RM("main"))
+    if (!((a)localObject1).Zm("main"))
     {
       localObject2 = paramList.iterator();
       while (((Iterator)localObject2).hasNext()) {
-        if (((a)localObject1).ay(((String)((Iterator)localObject2).next()).getBytes())) {
+        if (((a)localObject1).aJ(((String)((Iterator)localObject2).next()).getBytes())) {
           i = 1;
         }
       }
@@ -54,20 +54,20 @@ public final class w
       int j;
       if (i != 0)
       {
-        ((a)localObject1).bjp();
+        ((a)localObject1).bsT();
         try
         {
-          af.bkj().post(new Runnable()
+          af.btS().post(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(132847);
-              af.bkn().j(3941, null);
+              af.btW().k(3941, null);
               AppMethodBeat.o(132847);
             }
           });
           Log.w("MicroMsg.MMDisasterInfoHandle", "main disaster disasterOccur ");
-          e.Cxv.idkeyStat(148L, 124L, 1L, false);
+          f.Iyx.idkeyStat(148L, 124L, 1L, false);
           AppMethodBeat.o(132848);
           return;
           i = 0;
@@ -110,11 +110,11 @@ public final class w
       }
       else
       {
-        if (!((a)localObject1).RM("axhost"))
+        if (!((a)localObject1).Zm("axhost"))
         {
           paramList = paramList.iterator();
           while (paramList.hasNext()) {
-            if (((a)localObject1).MG((String)paramList.next())) {
+            if (((a)localObject1).Ub((String)paramList.next())) {
               i = k;
             }
           }
@@ -123,9 +123,9 @@ public final class w
         {
           if (i != 0)
           {
-            ((a)localObject1).bjp();
-            af.bkl().RT("");
-            e.Cxv.idkeyStat(148L, 125L, 1L, false);
+            ((a)localObject1).bsT();
+            af.btU().Zt("");
+            f.Iyx.idkeyStat(148L, 125L, 1L, false);
             Log.w("MicroMsg.MMDisasterInfoHandle", "ax disaster disasterOccur ");
             AppMethodBeat.o(132848);
             return;
@@ -169,7 +169,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.network.w
  * JD-Core Version:    0.7.0.1
  */

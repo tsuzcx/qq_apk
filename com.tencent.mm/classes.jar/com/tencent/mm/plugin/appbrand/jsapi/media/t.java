@@ -3,27 +3,26 @@ package com.tencent.mm.plugin.appbrand.jsapi.media;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.media.i.d.b;
-import com.tencent.mm.media.i.h;
+import com.tencent.mm.plugin.a.c;
 import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.pluginsdk.model.m;
+import com.tencent.mm.pluginsdk.model.o;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
 public final class t
 {
-  public static final int meG;
+  public static final int pcy;
   
   static
   {
     AppMethodBeat.i(46609);
-    meG = com.tencent.mm.plugin.sight.base.c.Dmd;
-    j.bur();
+    pcy = com.tencent.mm.plugin.sight.base.d.JrI;
+    j.bFt();
     AppMethodBeat.o(46609);
   }
   
@@ -36,7 +35,7 @@ public final class t
       AppMethodBeat.o(46604);
       return null;
     }
-    if (((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rXX, 0) == 1) {}
+    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vEN, 0) == 1) {}
     for (boolean bool = true;; bool = false)
     {
       parama = a(parama, bool);
@@ -49,13 +48,13 @@ public final class t
   {
     AppMethodBeat.i(46605);
     String str = parama.filePath;
-    if (aan(str) != -50006)
+    if (aie(str) != -50006)
     {
-      d.pl(15);
+      d.rE(15);
       AppMethodBeat.o(46605);
       return str;
     }
-    Log.i("MicroMsg.RemuxHelper", "compress info: filePath: %s, suggestWidth: %d, suggestHeight: %d, outputWidth: %d, outputHeight: %d, remuxBitRate %d", new Object[] { str, Integer.valueOf(parama.meH), Integer.valueOf(parama.meI), Integer.valueOf(parama.outputWidth), Integer.valueOf(parama.outputHeight), Integer.valueOf(parama.meJ) });
+    Log.i("MicroMsg.RemuxHelper", "compress info: filePath: %s, suggestWidth: %d, suggestHeight: %d, outputWidth: %d, outputHeight: %d, remuxBitRate %d", new Object[] { str, Integer.valueOf(parama.pcz), Integer.valueOf(parama.pcA), Integer.valueOf(parama.outputWidth), Integer.valueOf(parama.outputHeight), Integer.valueOf(parama.pcB) });
     int k;
     int j;
     int i;
@@ -79,34 +78,34 @@ public final class t
       Log.i("MicroMsg.RemuxHelper", "outputWidth: %d, outputHeight: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
       float f;
       Object localObject;
-      if (parama.meJ > 0)
+      if (parama.pcB > 0)
       {
-        k = parama.meJ;
-        if (parama.cKu <= 0.0F) {
+        k = parama.pcB;
+        if (parama.cLa <= 0.0F) {
           break label533;
         }
-        f = parama.cKu;
-        if (!s.YS(com.tencent.mm.loader.j.b.aKH())) {
-          s.boN(com.tencent.mm.loader.j.b.aKH());
+        f = parama.cLa;
+        if (!u.agG(com.tencent.mm.loader.j.b.aSJ())) {
+          u.bBD(com.tencent.mm.loader.j.b.aSJ());
         }
-        parama = com.tencent.mm.loader.j.b.aKH() + "microMsg." + System.currentTimeMillis() + ".mp4";
-        d.pl(0);
+        parama = com.tencent.mm.loader.j.b.aSJ() + "microMsg." + System.currentTimeMillis() + ".mp4";
+        d.rE(0);
         if (!paramBoolean) {
           break label564;
         }
         Log.i("MicroMsg.RemuxHelper", "hard remux mode.");
-        d.pl(1);
+        d.rE(1);
         localObject = new CountDownLatch(1);
-        k = h.ijh.a(str, parama, i, j, k, (int)f, 0, 51, new d.b()
+        k = com.tencent.mm.media.i.h.kXT.a(str, parama, i, j, k, (int)f, 0, 51, new d.b()
         {
-          public final void Hn(String paramAnonymousString)
+          public final void Oy(String paramAnonymousString)
           {
             AppMethodBeat.i(46602);
             Log.d("MicroMsg.RemuxHelper", "remux onFinish.");
             this.val$latch.countDown();
             AppMethodBeat.o(46602);
           }
-        }).aMG();
+        }).aUW();
       }
       for (;;)
       {
@@ -114,18 +113,18 @@ public final class t
         {
           Log.d("MicroMsg.RemuxHelper", "latch await ");
           ((CountDownLatch)localObject).await();
-          d.pl(10);
+          d.rE(10);
           Log.i("MicroMsg.RemuxHelper", "remuxIfNeed [%s] to [%s], result %d, resolution:[%d, %d]", new Object[] { str, parama, Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j) });
           AppMethodBeat.o(46605);
           return parama;
-          if (parama.meH > 0)
+          if (parama.pcz > 0)
           {
-            i = parama.meH;
-            if (parama.meI <= 0) {
+            i = parama.pcz;
+            if (parama.pcA <= 0) {
               continue;
             }
-            j = parama.meI;
-            localObject = aao(str);
+            j = parama.pcA;
+            localObject = aif(str);
             if (localObject != null) {
               continue;
             }
@@ -136,7 +135,7 @@ public final class t
             m = 0;
             Log.i("MicroMsg.RemuxHelper", "sourceWidth: %d, sourceHeight: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(m) });
             localObject = new int[2];
-            m.b(str, (int[])localObject, i, j);
+            o.b(str, (int[])localObject, i, j);
             i = localObject[0];
             j = localObject[1];
             break;
@@ -149,9 +148,9 @@ public final class t
           continue;
           int m = ((b)localObject).height;
           continue;
-          k = com.tencent.mm.plugin.sight.base.c.Dmd;
+          k = com.tencent.mm.plugin.sight.base.d.JrI;
           break label194;
-          f = com.tencent.mm.plugin.sight.base.c.Dme;
+          f = com.tencent.mm.plugin.sight.base.d.JrJ;
         }
         catch (InterruptedException localInterruptedException)
         {
@@ -159,18 +158,18 @@ public final class t
           continue;
         }
         Log.i("MicroMsg.RemuxHelper", "soft remux mode.");
-        d.pl(2);
-        k = SightVideoJNI.remuxingVFS(str, parama, i, j, k, com.tencent.mm.plugin.sight.base.c.Dmc, 8, 2, 25.0F, f, null, 0, false, 0, 51);
+        d.rE(2);
+        k = SightVideoJNI.remuxingVFS(str, parama, i, j, k, com.tencent.mm.plugin.sight.base.d.JrH, 8, 2, 25.0F, f, null, 0, false, 0, 51);
         if (k < 0) {
-          d.pl(14);
+          d.rE(14);
         } else {
-          d.pl(11);
+          d.rE(11);
         }
       }
     }
   }
   
-  public static String aaf(String paramString)
+  public static String ahW(String paramString)
   {
     AppMethodBeat.i(46603);
     if (paramString == null)
@@ -179,15 +178,15 @@ public final class t
       AppMethodBeat.o(46603);
       return null;
     }
-    paramString = a(new a(paramString, 720, 540, 0, 0, com.tencent.mm.plugin.sight.base.c.Dmd, com.tencent.mm.plugin.sight.base.c.Dme));
+    paramString = a(new a(paramString, 720, 540, 0, 0, com.tencent.mm.plugin.sight.base.d.JrI, com.tencent.mm.plugin.sight.base.d.JrJ));
     AppMethodBeat.o(46603);
     return paramString;
   }
   
-  public static int aan(String paramString)
+  public static int aie(String paramString)
   {
     AppMethodBeat.i(46606);
-    boolean bool = com.tencent.mm.plugin.a.c.Sx(paramString);
+    boolean bool = c.ZZ(paramString);
     Log.i("MicroMsg.RemuxHelper", "checkRemux, isMp4 = %b", new Object[] { Boolean.valueOf(bool) });
     int i;
     if (bool)
@@ -205,10 +204,12 @@ public final class t
     {
       AppMethodBeat.o(46606);
       return i;
-      Log.i("MicroMsg.RemuxHelper", "fileLength = %d", new Object[] { Integer.valueOf((int)s.boW(paramString)) });
+      Log.i("MicroMsg.RemuxHelper", "fileLength = %d", new Object[] { Integer.valueOf((int)u.bBQ(paramString)) });
       i = 1;
       break;
       i = 1;
+      continue;
+      i = 2;
       continue;
       i = -50006;
       continue;
@@ -217,7 +218,7 @@ public final class t
   }
   
   /* Error */
-  public static b aao(String paramString)
+  public static b aif(String paramString)
   {
     // Byte code:
     //   0: ldc_w 281
@@ -256,7 +257,7 @@ public final class t
     //   71: aload 11
     //   73: astore 10
     //   75: aload_0
-    //   76: invokestatic 277	com/tencent/mm/vfs/s:boW	(Ljava/lang/String;)J
+    //   76: invokestatic 277	com/tencent/mm/vfs/u:bBQ	(Ljava/lang/String;)J
     //   79: lstore 8
     //   81: aload 11
     //   83: astore 10
@@ -311,7 +312,7 @@ public final class t
     //   182: aload 11
     //   184: astore 10
     //   186: aload_0
-    //   187: invokestatic 315	com/tencent/mm/plugin/appbrand/jsapi/media/t:aap	(Ljava/lang/String;)F
+    //   187: invokestatic 315	com/tencent/mm/plugin/appbrand/jsapi/media/t:aig	(Ljava/lang/String;)F
     //   190: fstore_2
     //   191: aload 11
     //   193: astore 10
@@ -466,7 +467,7 @@ public final class t
     //   278	301	370	java/lang/Exception
   }
   
-  private static float aap(String paramString)
+  private static float aig(String paramString)
   {
     AppMethodBeat.i(46608);
     MediaExtractor localMediaExtractor = new MediaExtractor();
@@ -512,30 +513,30 @@ public final class t
   
   public static final class a
   {
-    public float cKu;
+    public float cLa;
     public String filePath;
-    public int meH;
-    public int meI;
-    public int meJ;
     public int outputHeight;
     public int outputWidth;
+    public int pcA;
+    public int pcB;
+    public int pcz;
     
     public a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat)
     {
       this.filePath = paramString;
-      this.meH = paramInt1;
-      this.meI = paramInt2;
+      this.pcz = paramInt1;
+      this.pcA = paramInt2;
       this.outputWidth = paramInt3;
       this.outputHeight = paramInt4;
-      this.meJ = paramInt5;
-      this.cKu = paramFloat;
+      this.pcB = paramInt5;
+      this.cLa = paramFloat;
     }
   }
   
   public static final class b
   {
     public int bitrate;
-    public float cKu;
+    public float cLa;
     public int duration;
     public String filePath;
     public int height;
@@ -554,7 +555,7 @@ public final class t
       this.width = paramInt3;
       this.height = paramInt4;
       this.bitrate = paramInt5;
-      this.cKu = paramFloat;
+      this.cLa = paramFloat;
     }
   }
 }

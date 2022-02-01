@@ -83,7 +83,7 @@ public class qr_reward_avatar_border
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.qr_reward_avatar_border
  * JD-Core Version:    0.7.0.1
  */

@@ -6,11 +6,12 @@ import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wxpay.a.c;
 
 public final class a
   extends ClickableSpan
 {
-  public a AQT;
+  public a GKe;
   private int mBgColor;
   private int mColor;
   private Context mContext;
@@ -19,11 +20,11 @@ public final class a
   {
     AppMethodBeat.i(66834);
     this.mContext = null;
-    this.AQT = null;
+    this.GKe = null;
     this.mColor = -1;
     this.mBgColor = -1;
     this.mContext = paramContext;
-    this.mColor = this.mContext.getResources().getColor(2131100775);
+    this.mColor = this.mContext.getResources().getColor(a.c.mall_link_color);
     this.mBgColor = -1;
     AppMethodBeat.o(66834);
   }
@@ -31,8 +32,8 @@ public final class a
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(66835);
-    if (this.AQT != null) {
-      this.AQT.onClick(paramView);
+    if (this.GKe != null) {
+      this.GKe.onClick(paramView);
     }
     AppMethodBeat.o(66835);
   }

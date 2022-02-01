@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class FinderMediaExtra
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
   public String text;
   
@@ -14,7 +14,7 @@ public class FinderMediaExtra
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.text != null) {
-        paramVarArgs.e(1, this.text);
+        paramVarArgs.f(1, this.text);
       }
       AppMethodBeat.o(169006);
       return 0;
@@ -25,16 +25,16 @@ public class FinderMediaExtra
       }
     }
     label213:
-    for (paramInt = g.a.a.b.b.a.f(1, this.text) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.g(1, this.text) + 0;; paramInt = 0)
     {
       AppMethodBeat.o(169006);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
         AppMethodBeat.o(169006);
@@ -50,7 +50,7 @@ public class FinderMediaExtra
           AppMethodBeat.o(169006);
           return -1;
         }
-        localFinderMediaExtra.text = locala.UbS.readString();
+        localFinderMediaExtra.text = locala.abFh.readString();
         AppMethodBeat.o(169006);
         return 0;
       }

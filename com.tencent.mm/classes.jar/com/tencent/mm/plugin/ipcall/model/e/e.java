@@ -1,44 +1,44 @@
 package com.tencent.mm.plugin.ipcall.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bxw;
-import com.tencent.mm.protocal.protobuf.bxx;
+import com.tencent.mm.protocal.protobuf.cfq;
+import com.tencent.mm.protocal.protobuf.cfr;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
   extends q
   implements m
 {
+  private cfq DRx;
+  public cfr DRy;
   private i callback;
   private d rr;
-  private bxw yrv;
-  public bxx yrw;
   
   public e()
   {
     AppMethodBeat.i(25463);
     this.rr = null;
-    this.yrv = null;
-    this.yrw = null;
+    this.DRx = null;
+    this.DRy = null;
     this.callback = null;
     d.a locala = new d.a();
-    locala.iLN = new bxw();
-    locala.iLO = new bxx();
+    locala.lBU = new cfq();
+    locala.lBV = new cfr();
     locala.funcId = 831;
     locala.uri = "/cgi-bin/micromsg-bin/getwcopackageproductlist";
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    this.yrv = ((bxw)this.rr.iLK.iLR);
+    this.rr = locala.bgN();
+    this.DRx = ((cfq)d.b.b(this.rr.lBR));
     Log.i("MicroMsg.NetSceneIPCallGetPackageProductList", "NetSceneIPCallGetPackageProductList");
     AppMethodBeat.o(25463);
   }
@@ -61,7 +61,7 @@ public final class e
   {
     AppMethodBeat.i(25465);
     Log.i("MicroMsg.NetSceneIPCallGetPackageProductList", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.yrw = ((bxx)((d)params).iLL.iLR);
+    this.DRy = ((cfr)d.c.b(((d)params).lBS));
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/kr0" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/kqm" android:layout_width="@dimen/cm" android:layout_height="@dimen/cm" android:layout_marginLeft="@dimen/cb" android:layout_marginBottom="@dimen/cn" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginStart="@dimen/ct" android:layout_marginEnd="@dimen/ct" app:layout_constraintBottom_toBottomOf="@id/kqm" app:layout_constraintLeft_toRightOf="@id/kqm" app:layout_constraintRight_toLeftOf="@id/af2" app:layout_constraintTop_toTopOf="@id/kqm">
+        <TextView android:textSize="@dimen/h_" android:textColor="@color/am" android:ellipsize="end" android:id="@id/kjl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:alpha="0.8" />
+        <ImageView android:id="@id/kql" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:src="@drawable/c5a" />
+        <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
+    </LinearLayout>
+    <Button android:textSize="17.0dip" android:textColor="@color/abc" android:id="@id/af2" android:background="@drawable/az_" android:padding="@dimen/ct" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="23.0dip" android:text="@string/x_" android:layout_marginEnd="@dimen/ce" app:layout_constraintBottom_toBottomOf="@id/kqm" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="@id/kqm" />
+</androidx.constraintlayout.widget.ConstraintLayout>

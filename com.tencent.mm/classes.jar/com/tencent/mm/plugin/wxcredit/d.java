@@ -3,10 +3,11 @@ package com.tencent.mm.plugin.wxcredit;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.wallet_core.c.ad;
+import com.tencent.mm.plugin.wallet_core.c.ae;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI;
 import com.tencent.mm.plugin.wxcredit.a.f;
@@ -14,23 +15,24 @@ import com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditDetailUI;
 import com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditErrDetailUI;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
 
 public class d
   extends com.tencent.mm.wallet_core.d
 {
-  public final com.tencent.mm.wallet_core.d.g a(MMActivity paramMMActivity, i parami)
+  public final g a(MMActivity paramMMActivity, i parami)
   {
     AppMethodBeat.i(72266);
     if ((paramMMActivity instanceof WalletWXCreditDetailUI))
     {
-      paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
+      paramMMActivity = new g(paramMMActivity, parami)
       {
         public final boolean A(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(72258);
           paramAnonymousVarArgs = (Bankcard)paramAnonymousVarArgs[0];
-          this.Ruz.a(new com.tencent.mm.plugin.wxcredit.a.d(paramAnonymousVarArgs.field_bindSerial, paramAnonymousVarArgs.field_bankcardType), true, 1);
+          this.YVX.a(new com.tencent.mm.plugin.wxcredit.a.d(paramAnonymousVarArgs.field_bindSerial, paramAnonymousVarArgs.field_bankcardType), true, 1);
           AppMethodBeat.o(72258);
           return true;
         }
@@ -50,13 +52,13 @@ public class d
     }
     if ((paramMMActivity instanceof WalletCheckPwdUI))
     {
-      paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
+      paramMMActivity = new g(paramMMActivity, parami)
       {
         public final boolean A(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(72261);
           paramAnonymousVarArgs = (Bankcard)paramAnonymousVarArgs[0];
-          this.Ruz.a(new com.tencent.mm.plugin.wxcredit.a.d(paramAnonymousVarArgs.field_bindSerial, paramAnonymousVarArgs.field_bankcardType), true, 1);
+          this.YVX.a(new com.tencent.mm.plugin.wxcredit.a.d(paramAnonymousVarArgs.field_bindSerial, paramAnonymousVarArgs.field_bankcardType), true, 1);
           AppMethodBeat.o(72261);
           return true;
         }
@@ -67,13 +69,13 @@ public class d
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
           {
             if ((paramAnonymousq instanceof f)) {
-              this.Ruz.b(new ad(), true);
+              this.YVX.b(new ae(), true);
             }
             for (;;)
             {
               AppMethodBeat.o(72259);
               return true;
-              if ((paramAnonymousq instanceof ad)) {
+              if ((paramAnonymousq instanceof ae)) {
                 d.this.b(this.activity, d.a(d.this));
               }
             }
@@ -86,7 +88,7 @@ public class d
         {
           AppMethodBeat.i(72260);
           Bankcard localBankcard = (Bankcard)d.b(d.this).getParcelable("key_bankcard");
-          this.Ruz.a(new f(localBankcard.field_bankcardType, localBankcard.field_bindSerial, (String)paramAnonymousVarArgs[0]), true, 1);
+          this.YVX.a(new f(localBankcard.field_bankcardType, localBankcard.field_bindSerial, (String)paramAnonymousVarArgs[0]), true, 1);
           AppMethodBeat.o(72260);
           return true;
         }
@@ -139,15 +141,15 @@ public class d
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(72265);
-    boolean bool = ((b)com.tencent.mm.kernel.g.af(b.class)).a(b.a.sad, true);
+    boolean bool = ((b)h.ae(b.class)).a(b.a.vHh, true);
     Log.i("MicroMsg.WXCreditManagerProcess", " walletMallV2 switch is ：%s", new Object[] { Boolean.valueOf(bool) });
     if (bool)
     {
-      e(paramActivity, "mall", ".ui.MallIndexUIv2");
+      h(paramActivity, "mall", ".ui.MallIndexUIv2");
       AppMethodBeat.o(72265);
       return;
     }
-    e(paramActivity, "mall", ".ui.MallIndexUI");
+    h(paramActivity, "mall", ".ui.MallIndexUI");
     AppMethodBeat.o(72265);
   }
   
@@ -156,15 +158,15 @@ public class d
     return false;
   }
   
-  public final String dKC()
+  public final String epb()
   {
     return "WXCreditManagerProcess";
   }
   
-  public final void g(Activity paramActivity, int paramInt)
+  public final void h(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(72264);
-    P(paramActivity);
+    Q(paramActivity);
     AppMethodBeat.o(72264);
   }
 }

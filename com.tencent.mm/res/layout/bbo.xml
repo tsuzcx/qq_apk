@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/flf" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="250.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/bh7" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</RelativeLayout>

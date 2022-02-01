@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.talkroom.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.b;
-import com.tencent.mm.ak.h.c;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.protocal.protobuf.de;
-import com.tencent.mm.protocal.protobuf.egs;
+import com.tencent.mm.an.h;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.h.b;
+import com.tencent.mm.an.h.c;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.c;
+import com.tencent.mm.protocal.protobuf.db;
+import com.tencent.mm.protocal.protobuf.equ;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
@@ -22,7 +23,7 @@ import java.util.Map;
 public final class d
   implements h
 {
-  private static int aSU(String paramString)
+  private static int bdY(String paramString)
   {
     int j = 0;
     AppMethodBeat.i(29457);
@@ -44,33 +45,33 @@ public final class d
     }
   }
   
-  private static String fk(List<egs> paramList)
+  private static String fM(List<equ> paramList)
   {
     AppMethodBeat.i(29458);
-    List localList = b.ftN().ecY();
+    List localList = b.gin().eMr();
     LinkedList localLinkedList = new LinkedList();
     paramList = paramList.iterator();
     label187:
     for (;;)
     {
-      egs localegs;
+      equ localequ;
       if (paramList.hasNext())
       {
-        localegs = (egs)paramList.next();
+        localequ = (equ)paramList.next();
         Iterator localIterator = localList.iterator();
         do
         {
           if (!localIterator.hasNext()) {
             break;
           }
-        } while (!((egs)localIterator.next()).UserName.equals(localegs.UserName));
+        } while (!((equ)localIterator.next()).UserName.equals(localequ.UserName));
       }
       for (int i = 1;; i = 0)
       {
         if (i != 0) {
           break label187;
         }
-        localLinkedList.add(localegs.UserName);
+        localLinkedList.add(localequ.UserName);
         break;
         if (localLinkedList.isEmpty())
         {
@@ -81,7 +82,7 @@ public final class d
         while (i < localLinkedList.size())
         {
           paramList = (String)localLinkedList.get(i);
-          if (!paramList.equals(com.tencent.mm.model.z.aTY()))
+          if (!paramList.equals(com.tencent.mm.model.z.bcZ()))
           {
             AppMethodBeat.o(29458);
             return paramList;
@@ -94,33 +95,33 @@ public final class d
     }
   }
   
-  private static String fl(List<egs> paramList)
+  private static String fN(List<equ> paramList)
   {
     AppMethodBeat.i(29459);
-    Object localObject = b.ftN().ecY();
+    Object localObject = b.gin().eMr();
     LinkedList localLinkedList = new LinkedList();
     localObject = ((List)localObject).iterator();
     label187:
     for (;;)
     {
-      egs localegs;
+      equ localequ;
       if (((Iterator)localObject).hasNext())
       {
-        localegs = (egs)((Iterator)localObject).next();
+        localequ = (equ)((Iterator)localObject).next();
         Iterator localIterator = paramList.iterator();
         do
         {
           if (!localIterator.hasNext()) {
             break;
           }
-        } while (!((egs)localIterator.next()).UserName.equals(localegs.UserName));
+        } while (!((equ)localIterator.next()).UserName.equals(localequ.UserName));
       }
       for (int i = 1;; i = 0)
       {
         if (i != 0) {
           break label187;
         }
-        localLinkedList.add(localegs.UserName);
+        localLinkedList.add(localequ.UserName);
         break;
         if (localLinkedList.isEmpty())
         {
@@ -131,7 +132,7 @@ public final class d
         while (i < localLinkedList.size())
         {
           paramList = (String)localLinkedList.get(i);
-          if (!paramList.equals(com.tencent.mm.model.z.aTY()))
+          if (!paramList.equals(com.tencent.mm.model.z.bcZ()))
           {
             AppMethodBeat.o(29459);
             return paramList;
@@ -148,35 +149,35 @@ public final class d
   {
     int k = 1;
     AppMethodBeat.i(29456);
-    Object localObject2 = parama.heO;
+    Object localObject2 = parama.jQG;
     if (localObject2 == null)
     {
       Log.e("MicroMsg.TalkRoomExtension", "onPreAddMessage cmdAM is null");
       AppMethodBeat.o(29456);
       return null;
     }
-    if (((de)localObject2).xKb != 56)
+    if (((db)localObject2).COi != 56)
     {
-      Log.e("MicroMsg.TalkRoomExtension", "onPreAddMessage cmdAM.type:%d", new Object[] { Integer.valueOf(((de)localObject2).xKb) });
+      Log.e("MicroMsg.TalkRoomExtension", "onPreAddMessage cmdAM.type:%d", new Object[] { Integer.valueOf(((db)localObject2).COi) });
       AppMethodBeat.o(29456);
       return null;
     }
-    Object localObject1 = com.tencent.mm.platformtools.z.a(((de)localObject2).KHl);
-    parama = com.tencent.mm.platformtools.z.a(((de)localObject2).KHm);
-    bg.aVF();
-    if (((String)com.tencent.mm.model.c.azQ().get(2, null)).equals(localObject1)) {
+    Object localObject1 = com.tencent.mm.platformtools.z.a(((db)localObject2).RID);
+    parama = com.tencent.mm.platformtools.z.a(((db)localObject2).RIE);
+    bh.beI();
+    if (((String)c.aHp().b(2, null)).equals(localObject1)) {
       localObject1 = parama;
     }
     for (;;)
     {
-      bg.aVF();
-      parama = com.tencent.mm.model.c.aSN().Kn((String)localObject1);
-      if ((parama == null) || ((int)parama.gMZ == 0))
+      bh.beI();
+      parama = c.bbL().RG((String)localObject1);
+      if ((parama == null) || ((int)parama.jxt == 0))
       {
-        bg.aVF();
-        com.tencent.mm.model.c.aSN().ap(new as((String)localObject1));
+        bh.beI();
+        c.bbL().av(new as((String)localObject1));
       }
-      parama = com.tencent.mm.platformtools.z.a(((de)localObject2).KHn);
+      parama = com.tencent.mm.platformtools.z.a(((db)localObject2).RIF);
       Log.d("MicroMsg.TalkRoomExtension", "talkroom xml:".concat(String.valueOf(parama)));
       localObject2 = XmlParser.parseXml(parama, "talkroominfo", null);
       if (localObject2 != null) {}
@@ -184,13 +185,13 @@ public final class d
       {
         try
         {
-          if (aSU((String)((Map)localObject2).get(".talkroominfo.tracksysmsgtype")) != 0) {
+          if (bdY((String)((Map)localObject2).get(".talkroominfo.tracksysmsgtype")) != 0) {
             break label529;
           }
-          aSU((String)((Map)localObject2).get(".talkroominfo.sysmsgtype"));
+          bdY((String)((Map)localObject2).get(".talkroominfo.sysmsgtype"));
           i = 1;
           LinkedList localLinkedList = new LinkedList();
-          aSU((String)((Map)localObject2).get(".talkroominfo.membersize"));
+          bdY((String)((Map)localObject2).get(".talkroominfo.membersize"));
           int j = 0;
           Object localObject3 = new StringBuilder(".talkroominfo.memberlist.member");
           if (j == 0)
@@ -200,10 +201,10 @@ public final class d
             parama = (String)((Map)localObject2).get((String)localObject3 + ".username");
             if (!Util.isNullOrNil(parama))
             {
-              int m = aSU((String)((Map)localObject2).get((String)localObject3 + ".memberid"));
-              localObject3 = new egs();
-              ((egs)localObject3).UserName = parama;
-              ((egs)localObject3).NgD = m;
+              int m = bdY((String)((Map)localObject2).get((String)localObject3 + ".memberid"));
+              localObject3 = new equ();
+              ((equ)localObject3).UserName = parama;
+              ((equ)localObject3).Uth = m;
               localLinkedList.add(localObject3);
               j += 1;
             }
@@ -213,15 +214,15 @@ public final class d
             parama = Integer.valueOf(j);
             continue;
           }
-          if (!((String)localObject1).equals(b.ftN().FQv)) {
+          if (!((String)localObject1).equals(b.gin().Mkw)) {
             break label521;
           }
-          localObject2 = fk(localLinkedList);
+          localObject2 = fM(localLinkedList);
           if (!Util.isNullOrNil((String)localObject2)) {
             break label516;
           }
-          parama = fl(localLinkedList);
-          localObject3 = b.ftO();
+          parama = fN(localLinkedList);
+          localObject3 = b.gio();
           j = k;
           if (i != 0) {
             j = 0;
@@ -254,7 +255,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.model.d
  * JD-Core Version:    0.7.0.1
  */

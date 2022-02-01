@@ -6,34 +6,34 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class m
 {
-  static int gHQ = 0;
-  static String gHR = null;
+  static int jsi = 0;
+  static String jsj = null;
   
-  public static int aon()
+  public static int aus()
   {
     int m = 15;
     AppMethodBeat.i(155662);
     int i;
     int j;
     int k;
-    if (n.aot())
+    if (n.auy())
     {
       i = 7;
       j = i;
-      if (ae.gKs.gHT)
+      if (af.juG.jsl)
       {
         j = i;
-        if (ae.gKs.gHV == 0)
+        if (af.juG.jsn == 0)
         {
           Log.d("MicroMsg.CpuChecker", "disable armv6 by server ");
           j = i & 0xFFFFFFFD;
         }
       }
       k = j;
-      if (ae.gKs.gHT)
+      if (af.juG.jsl)
       {
         k = j;
-        if (ae.gKs.gHU == 0)
+        if (af.juG.jsm == 0)
         {
           Log.d("MicroMsg.CpuChecker", "disable armv7 by server ");
           k = j & 0xFFFFFFFB;
@@ -45,7 +45,7 @@ public final class m
       }
       j = 15;
       label98:
-      i = Util.getInt(aoo(), 0) / 1000;
+      i = Util.getInt(aut(), 0) / 1000;
       if (j < 8) {
         break label199;
       }
@@ -71,10 +71,10 @@ public final class m
       for (;;)
       {
         i = (k + (j << 4) << 8) + i;
-        gHQ = i;
+        jsi = i;
         AppMethodBeat.o(155662);
         return i;
-        if (n.aou())
+        if (n.auz())
         {
           i = 3;
           break;
@@ -108,17 +108,17 @@ public final class m
   }
   
   /* Error */
-  public static String aoo()
+  public static String aut()
   {
     // Byte code:
     //   0: ldc 82
     //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: new 84	java/io/BufferedReader
     //   8: dup
-    //   9: new 86	com/tencent/mm/vfs/u
+    //   9: new 86	com/tencent/mm/vfs/x
     //   12: dup
     //   13: ldc 88
-    //   15: invokespecial 92	com/tencent/mm/vfs/u:<init>	(Ljava/lang/String;)V
+    //   15: invokespecial 92	com/tencent/mm/vfs/x:<init>	(Ljava/lang/String;)V
     //   18: invokespecial 95	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   21: astore_1
     //   22: aload_1
@@ -213,17 +213,17 @@ public final class m
   }
   
   /* Error */
-  public static String aop()
+  public static String auu()
   {
     // Byte code:
     //   0: ldc 124
     //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: new 84	java/io/BufferedReader
     //   8: dup
-    //   9: new 86	com/tencent/mm/vfs/u
+    //   9: new 86	com/tencent/mm/vfs/x
     //   12: dup
     //   13: ldc 126
-    //   15: invokespecial 92	com/tencent/mm/vfs/u:<init>	(Ljava/lang/String;)V
+    //   15: invokespecial 92	com/tencent/mm/vfs/x:<init>	(Ljava/lang/String;)V
     //   18: invokespecial 95	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   21: astore_1
     //   22: aload_1
@@ -319,7 +319,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.m
  * JD-Core Version:    0.7.0.1
  */

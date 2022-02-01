@@ -7,70 +7,65 @@ import android.text.StaticLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.loader.m;
-import com.tencent.mm.plugin.finder.loader.m.a;
-import com.tencent.mm.plugin.finder.storage.x;
+import com.tencent.mm.plugin.finder.loader.t.a;
+import com.tencent.mm.plugin.finder.loader.x;
+import com.tencent.mm.plugin.finder.storage.u;
+import com.tencent.mm.plugin.multitask.ui.e.e;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ar;
-import kotlin.t;
+import com.tencent.mm.ui.ai.a;
+import com.tencent.mm.ui.ai.e;
+import com.tencent.mm.ui.au;
+import kotlin.g.b.p;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitask/ui/minusscreen/utils/MultiTaskViewUtils;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "calcTextWidth", "", "context", "Landroid/content/Context;", "length", "checkTitle", "title", "MAX_SHOW_TITLE_COUNT", "getFileResIcon", "fileExt", "getMultiTaskResIcon", "viewType", "getNickName", "", "tv", "Landroid/widget/TextView;", "spanText", "maxNameCount", "setAuthIcon", "", "view", "Landroid/widget/ImageView;", "authIconType", "authIconUrl", "ui-multitask_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/ui/minusscreen/utils/MultiTaskViewUtils;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "calcTextWidth", "", "context", "Landroid/content/Context;", "length", "checkTitle", "title", "MAX_SHOW_TITLE_COUNT", "getFileResIcon", "fileExt", "getMultiTaskResIcon", "viewType", "getNickName", "", "tv", "Landroid/widget/TextView;", "spanText", "maxNameCount", "setAuthIcon", "", "view", "Landroid/widget/ImageView;", "authIconType", "authIconUrl", "ui-multitask_release"})
 public final class a
 {
-  public static final a Aep;
+  public static final a FKR;
   private static final String TAG = "MicroMsg.MinusScreen.ViewUtils";
   
   static
   {
-    AppMethodBeat.i(236508);
-    Aep = new a();
+    AppMethodBeat.i(196108);
+    FKR = new a();
     TAG = "MicroMsg.MinusScreen.ViewUtils";
-    AppMethodBeat.o(236508);
+    AppMethodBeat.o(196108);
   }
   
-  public static int RR(int paramInt)
+  public static int Yj(int paramInt)
   {
     switch (paramInt)
     {
-    case 2: 
     default: 
-      return 2131690579;
+      return ai.e.icons_filled_link;
     case 1: 
-      return 2131690606;
+      return ai.e.icons_filled_mini_program2;
     case 22: 
-      return 2131690648;
+      return ai.e.icons_filled_play2;
+    case 2: 
+      return ai.e.icons_filled_link;
     case 3: 
-      return 2131689821;
+      return ai.e.bottomsheet_icon_fav;
     case 4: 
-      return 2131690536;
+      return e.e.icons_filled_documentation;
     }
-    return 2131690625;
-  }
-  
-  private static int Z(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(236504);
-    kotlin.g.b.p.h(paramContext, "context");
-    paramInt = com.tencent.mm.cb.a.fromDPToPix(paramContext, paramInt * 12 + 1);
-    AppMethodBeat.o(236504);
-    return paramInt;
+    return ai.e.icons_filled_news;
   }
   
   public static CharSequence a(TextView paramTextView, CharSequence paramCharSequence, int paramInt)
   {
-    AppMethodBeat.i(236505);
-    kotlin.g.b.p.h(paramTextView, "tv");
-    kotlin.g.b.p.h(paramCharSequence, "spanText");
+    AppMethodBeat.i(196092);
+    p.k(paramTextView, "tv");
+    p.k(paramCharSequence, "spanText");
     Object localObject = paramTextView.getContext();
-    kotlin.g.b.p.g(localObject, "tv.context");
-    int i = Z((Context)localObject, paramInt);
+    p.j(localObject, "tv.context");
+    int i = ae((Context)localObject, paramInt);
     localObject = paramTextView.getContext();
-    kotlin.g.b.p.g(localObject, "tv.context");
-    paramInt = Z((Context)localObject, paramInt + 1);
+    p.j(localObject, "tv.context");
+    paramInt = ae((Context)localObject, paramInt + 1);
     localObject = new StaticLayout(paramCharSequence, 0, paramCharSequence.length(), paramTextView.getPaint(), i, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true);
     if (new StaticLayout(paramCharSequence, 0, paramCharSequence.length(), paramTextView.getPaint(), paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true).getLineCount() <= 1)
     {
-      AppMethodBeat.o(236505);
+      AppMethodBeat.o(196092);
       return paramCharSequence;
     }
     paramInt = ((StaticLayout)localObject).getLineEnd(0);
@@ -79,23 +74,23 @@ public final class a
     paramCharSequence = paramCharSequence.toString();
     if (paramCharSequence == null)
     {
-      paramTextView = new t("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(236505);
+      paramTextView = new kotlin.t("null cannot be cast to non-null type java.lang.String");
+      AppMethodBeat.o(196092);
       throw paramTextView;
     }
     paramCharSequence = paramCharSequence.substring(0, paramInt);
-    kotlin.g.b.p.g(paramCharSequence, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+    p.j(paramCharSequence, "(this as java.lang.Strin…ing(startIndex, endIndex)");
     paramTextView = com.tencent.mm.pluginsdk.ui.span.l.c(paramTextView, (CharSequence)(paramCharSequence + "..."));
-    kotlin.g.b.p.g(paramTextView, "MMSpanManager.spanForSmi…0, ellipseStart) + \"...\")");
+    p.j(paramTextView, "MMSpanManager.spanForSmi…0, ellipseStart) + \"...\")");
     paramTextView = (CharSequence)paramTextView;
-    AppMethodBeat.o(236505);
+    AppMethodBeat.o(196092);
     return paramTextView;
   }
   
   public static void a(ImageView paramImageView, int paramInt, String paramString)
   {
-    AppMethodBeat.i(236506);
-    kotlin.g.b.p.h(paramImageView, "view");
+    AppMethodBeat.i(196101);
+    p.k(paramImageView, "view");
     paramImageView.setVisibility(8);
     Object localObject = paramImageView.getDrawable();
     if (localObject != null) {
@@ -109,54 +104,63 @@ public final class a
       {
       default: 
         paramImageView.setVisibility(8);
-        AppMethodBeat.o(236506);
+        AppMethodBeat.o(196101);
         return;
       case 1: 
         localObject = (CharSequence)paramString;
         if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
         for (paramInt = 1; paramInt == 0; paramInt = 0)
         {
-          localObject = m.uJa;
-          localObject = m.djY();
-          paramString = new com.tencent.mm.plugin.finder.loader.p(paramString, x.vEn);
-          m localm = m.uJa;
-          ((com.tencent.mm.loader.d)localObject).a(paramString, paramImageView, m.a(m.a.uJb));
-          AppMethodBeat.o(236506);
+          localObject = com.tencent.mm.plugin.finder.loader.t.ztT;
+          localObject = com.tencent.mm.plugin.finder.loader.t.dJe();
+          paramString = new x(paramString, u.Aly);
+          com.tencent.mm.plugin.finder.loader.t localt = com.tencent.mm.plugin.finder.loader.t.ztT;
+          ((com.tencent.mm.loader.d)localObject).a(paramString, paramImageView, com.tencent.mm.plugin.finder.loader.t.a(t.a.ztU));
+          AppMethodBeat.o(196101);
           return;
         }
-        paramImageView.setImageDrawable(ar.m(paramImageView.getContext(), 2131690678, com.tencent.mm.cb.a.n(paramImageView.getContext(), 2131100919)));
-        AppMethodBeat.o(236506);
+        paramImageView.setImageDrawable(au.o(paramImageView.getContext(), ai.e.icons_filled_star_identify, com.tencent.mm.ci.a.w(paramImageView.getContext(), ai.a.orange_100)));
+        AppMethodBeat.o(196101);
         return;
       case 2: 
-        paramImageView.setImageResource(2131690679);
-        AppMethodBeat.o(236506);
+        paramImageView.setImageResource(ai.e.icons_filled_star_identify_enterprise);
+        AppMethodBeat.o(196101);
         return;
       }
       paramImageView.setVisibility(8);
-      AppMethodBeat.o(236506);
+      AppMethodBeat.o(196101);
       return;
     }
     paramImageView.setVisibility(8);
-    AppMethodBeat.o(236506);
+    AppMethodBeat.o(196101);
   }
   
-  public static int aGN(String paramString)
+  public static int aRc(String paramString)
   {
-    AppMethodBeat.i(236507);
-    Integer localInteger = com.tencent.mm.plugin.ball.f.d.agX(paramString);
+    AppMethodBeat.i(196102);
+    Integer localInteger = com.tencent.mm.plugin.ball.f.d.aoD(paramString);
     paramString = localInteger;
     if (localInteger == null) {
-      paramString = com.tencent.mm.plugin.ball.f.d.agX("unknown");
+      paramString = com.tencent.mm.plugin.ball.f.d.aoD("unknown");
     }
-    kotlin.g.b.p.g(paramString, "iconRes");
+    p.j(paramString, "iconRes");
     int i = paramString.intValue();
-    AppMethodBeat.o(236507);
+    AppMethodBeat.o(196102);
     return i;
+  }
+  
+  private static int ae(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(196087);
+    p.k(paramContext, "context");
+    paramInt = com.tencent.mm.ci.a.fromDPToPix(paramContext, paramInt * 12 + 1);
+    AppMethodBeat.o(196087);
+    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.ui.minusscreen.e.a
  * JD-Core Version:    0.7.0.1
  */

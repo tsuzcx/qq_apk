@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.vlog.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.csq;
-import com.tencent.mm.protocal.protobuf.erh;
+import com.tencent.mm.protocal.protobuf.dbp;
+import com.tencent.mm.protocal.protobuf.fbs;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -10,45 +10,45 @@ import java.util.List;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "", "respId", "", "materials", "", "Lcom/tencent/mm/plugin/vlog/model/Material;", "netMusicPath", "", "xEffectConfig", "Lcom/tencent/mm/protocal/protobuf/VlogResp;", "editItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "Lkotlin/collections/ArrayList;", "editData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "drawingRect", "", "validRect", "(JLjava/util/List;Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/VlogResp;Ljava/util/ArrayList;Ljava/util/ArrayList;[F[F)V", "getDrawingRect", "()[F", "setDrawingRect", "([F)V", "getEditData", "()Ljava/util/ArrayList;", "setEditData", "(Ljava/util/ArrayList;)V", "getEditItems", "setEditItems", "fid", "", "getFid", "()I", "getMaterials", "()Ljava/util/List;", "setMaterials", "(Ljava/util/List;)V", "getNetMusicPath", "()Ljava/lang/String;", "setNetMusicPath", "(Ljava/lang/String;)V", "getRespId", "()J", "setRespId", "(J)V", "sid", "getSid", "getValidRect", "setValidRect", "vid", "getVid", "getXEffectConfig", "()Lcom/tencent/mm/protocal/protobuf/VlogResp;", "setXEffectConfig", "(Lcom/tencent/mm/protocal/protobuf/VlogResp;)V", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "copy", "equals", "", "other", "getVideoDurationMs", "hashCode", "isValid", "toString", "Companion", "plugin-vlog_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "", "respId", "", "materials", "", "Lcom/tencent/mm/plugin/vlog/model/Material;", "netMusicPath", "", "xEffectConfig", "Lcom/tencent/mm/protocal/protobuf/VlogResp;", "editItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "Lkotlin/collections/ArrayList;", "editData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "drawingRect", "", "validRect", "(JLjava/util/List;Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/VlogResp;Ljava/util/ArrayList;Ljava/util/ArrayList;[F[F)V", "getDrawingRect", "()[F", "setDrawingRect", "([F)V", "getEditData", "()Ljava/util/ArrayList;", "setEditData", "(Ljava/util/ArrayList;)V", "getEditItems", "setEditItems", "fid", "", "getFid", "()I", "getMaterials", "()Ljava/util/List;", "setMaterials", "(Ljava/util/List;)V", "getNetMusicPath", "()Ljava/lang/String;", "setNetMusicPath", "(Ljava/lang/String;)V", "getRespId", "()J", "setRespId", "(J)V", "sid", "getSid", "getValidRect", "setValidRect", "vid", "getVid", "getXEffectConfig", "()Lcom/tencent/mm/protocal/protobuf/VlogResp;", "setXEffectConfig", "(Lcom/tencent/mm/protocal/protobuf/VlogResp;)V", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "copy", "equals", "", "other", "getVideoDurationMs", "hashCode", "isValid", "toString", "Companion", "plugin-vlog_release"})
 public final class ah
 {
-  public static final ah.a GzT;
-  public float[] BKV;
-  public float[] BKW;
-  public ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a> BNn;
-  public ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a> BNo;
-  public long GzP;
-  public List<? extends s> GzQ;
-  public String GzR;
-  public erh GzS;
+  public static final a Nnz;
+  public float[] HHg;
+  public float[] HHh;
+  public ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a> HJV;
+  public ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a> HJW;
+  public long Nnv;
+  public List<? extends s> Nnw;
+  public String Nnx;
+  public fbs Nny;
   
   static
   {
     AppMethodBeat.i(110947);
-    GzT = new ah.a((byte)0);
+    Nnz = new a((byte)0);
     AppMethodBeat.o(110947);
   }
   
-  private ah(long paramLong, List<? extends s> paramList, String paramString, erh paramerh, ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a> paramArrayList, ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a> paramArrayList1, float[] paramArrayOfFloat)
+  private ah(long paramLong, List<? extends s> paramList, String paramString, fbs paramfbs, ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a> paramArrayList, ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a> paramArrayList1, float[] paramArrayOfFloat)
   {
     AppMethodBeat.i(110945);
-    this.GzP = paramLong;
-    this.GzQ = paramList;
-    this.GzR = paramString;
-    this.GzS = paramerh;
-    this.BNn = paramArrayList;
-    this.BNo = paramArrayList1;
-    this.BKV = paramArrayOfFloat;
-    this.BKW = null;
+    this.Nnv = paramLong;
+    this.Nnw = paramList;
+    this.Nnx = paramString;
+    this.Nny = paramfbs;
+    this.HJV = paramArrayList;
+    this.HJW = paramArrayList1;
+    this.HHg = paramArrayOfFloat;
+    this.HHh = null;
     AppMethodBeat.o(110945);
   }
   
-  public final void aT(ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a> paramArrayList)
+  public final void bh(ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a> paramArrayList)
   {
     AppMethodBeat.i(110943);
-    p.h(paramArrayList, "<set-?>");
-    this.BNn = paramArrayList;
+    p.k(paramArrayList, "<set-?>");
+    this.HJV = paramArrayList;
     AppMethodBeat.o(110943);
   }
   
@@ -60,7 +60,7 @@ public final class ah
       if ((paramObject instanceof ah))
       {
         paramObject = (ah)paramObject;
-        if ((this.GzP != paramObject.GzP) || (!p.j(this.GzQ, paramObject.GzQ)) || (!p.j(this.GzR, paramObject.GzR)) || (!p.j(this.GzS, paramObject.GzS)) || (!p.j(this.BNn, paramObject.BNn)) || (!p.j(this.BNo, paramObject.BNo)) || (!p.j(this.BKV, paramObject.BKV)) || (!p.j(this.BKW, paramObject.BKW))) {}
+        if ((this.Nnv != paramObject.Nnv) || (!p.h(this.Nnw, paramObject.Nnw)) || (!p.h(this.Nnx, paramObject.Nnx)) || (!p.h(this.Nny, paramObject.Nny)) || (!p.h(this.HJV, paramObject.HJV)) || (!p.h(this.HJW, paramObject.HJW)) || (!p.h(this.HHg, paramObject.HHg)) || (!p.h(this.HHh, paramObject.HHh))) {}
       }
     }
     else
@@ -72,26 +72,11 @@ public final class ah
     return false;
   }
   
-  public final int fBJ()
-  {
-    return (int)this.GzS.NoU.LQL;
-  }
-  
-  public final int fBK()
-  {
-    return (int)this.GzS.NoU.LQM;
-  }
-  
-  public final int fBL()
-  {
-    return (int)this.GzS.NoU.KTS;
-  }
-  
   public final int getVideoDurationMs()
   {
     AppMethodBeat.i(110941);
     long l = 0L;
-    Iterator localIterator = ((Iterable)this.GzQ).iterator();
+    Iterator localIterator = ((Iterable)this.Nnw).iterator();
     if (localIterator.hasNext())
     {
       s locals = (s)localIterator.next();
@@ -110,13 +95,28 @@ public final class ah
     }
   }
   
+  public final int gtG()
+  {
+    return (int)this.Nny.UBQ.SZm;
+  }
+  
+  public final int gtH()
+  {
+    return (int)this.Nny.UBQ.SZn;
+  }
+  
+  public final int gtI()
+  {
+    return (int)this.Nny.UBQ.RUQ;
+  }
+  
   public final int hashCode()
   {
     int i2 = 0;
     AppMethodBeat.i(110948);
-    long l = this.GzP;
+    long l = this.Nnv;
     int i3 = (int)(l ^ l >>> 32);
-    Object localObject = this.GzQ;
+    Object localObject = this.Nnw;
     int i;
     int j;
     label59:
@@ -128,28 +128,28 @@ public final class ah
     if (localObject != null)
     {
       i = localObject.hashCode();
-      localObject = this.GzR;
+      localObject = this.Nnx;
       if (localObject == null) {
         break label200;
       }
       j = localObject.hashCode();
-      localObject = this.GzS;
+      localObject = this.Nny;
       if (localObject == null) {
         break label205;
       }
       k = localObject.hashCode();
-      localObject = this.BNn;
+      localObject = this.HJV;
       if (localObject == null) {
         break label210;
       }
       m = localObject.hashCode();
-      localObject = this.BNo;
+      localObject = this.HJW;
       if (localObject == null) {
         break label216;
       }
       n = localObject.hashCode();
       label112:
-      localObject = this.BKV;
+      localObject = this.HHg;
       if (localObject == null) {
         break label222;
       }
@@ -161,7 +161,7 @@ public final class ah
     label222:
     for (int i1 = Arrays.hashCode((float[])localObject);; i1 = 0)
     {
-      localObject = this.BKW;
+      localObject = this.HHh;
       if (localObject != null) {
         i2 = Arrays.hashCode((float[])localObject);
       }
@@ -180,25 +180,28 @@ public final class ah
     }
   }
   
-  public final void p(float[] paramArrayOfFloat)
+  public final void q(float[] paramArrayOfFloat)
   {
     AppMethodBeat.i(110944);
-    p.h(paramArrayOfFloat, "<set-?>");
-    this.BKV = paramArrayOfFloat;
+    p.k(paramArrayOfFloat, "<set-?>");
+    this.HHg = paramArrayOfFloat;
     AppMethodBeat.o(110944);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(110942);
-    String str = "VLogScriptModel(respId=" + this.GzP + ", materials=" + this.GzQ + ", netMusicPath='" + this.GzR + "', xEffectConfig=" + this.GzS + ", editItems=" + this.BNn + ", editData=" + this.BNo + ", drawingRect=" + Arrays.toString(this.BKV) + ')';
+    String str = "VLogScriptModel(respId=" + this.Nnv + ", materials=" + this.Nnw + ", netMusicPath='" + this.Nnx + "', xEffectConfig=" + this.Nny + ", editItems=" + this.HJV + ", editData=" + this.HJW + ", drawingRect=" + Arrays.toString(this.HHg) + ')';
     AppMethodBeat.o(110942);
     return str;
   }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel$Companion;", "", "()V", "default", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "plugin-vlog_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.ah
  * JD-Core Version:    0.7.0.1
  */

@@ -1,113 +1,138 @@
 package com.tencent.mm.ui.tools;
 
-import android.content.Context;
-import android.view.GestureDetector;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import android.view.ViewConfiguration;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorInflater;
+import android.animation.TimeInterpolator;
+import android.annotation.TargetApi;
+import android.view.View;
+import android.view.ViewPropertyAnimator;
+import android.view.animation.AnimationUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
+import com.tencent.mm.ah.a.a;
+import com.tencent.mm.ah.a.b;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class k
-  implements GestureDetector.OnGestureListener
 {
-  private final int Pt;
-  private final int Pu;
-  private final float QuA;
-  public a Quy;
-  private final float Quz;
-  public final GestureDetector aYg;
-  private final Context context;
-  
-  public k(Context paramContext)
+  @TargetApi(11)
+  public static final void D(View paramView, float paramFloat)
   {
-    AppMethodBeat.i(143111);
-    this.context = paramContext;
-    this.aYg = new GestureDetector(this.context, this);
-    ViewConfiguration localViewConfiguration = ViewConfiguration.get(paramContext);
-    this.Pt = localViewConfiguration.getScaledMinimumFlingVelocity();
-    this.Pu = localViewConfiguration.getScaledMaximumFlingVelocity();
-    this.Quz = BackwardSupportUtil.BitmapFactory.fromDPToPix(paramContext, 70.0F);
-    this.QuA = BackwardSupportUtil.BitmapFactory.fromDPToPix(paramContext, 50.0F);
-    AppMethodBeat.o(143111);
-  }
-  
-  public final boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public final boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    AppMethodBeat.i(143112);
-    if (this.Quy == null)
+    AppMethodBeat.i(143107);
+    if ((paramView == null) || (d.qW(11)))
     {
-      AppMethodBeat.o(143112);
-      return true;
+      AppMethodBeat.o(143107);
+      return;
     }
-    Log.v("MicroMsg.MMGestureDetector", "lastX:%f, curX:%f, lastY:%f, curY:%f, vX:%f, vY:%f", new Object[] { Float.valueOf(paramMotionEvent1.getX()), Float.valueOf(paramMotionEvent2.getX()), Float.valueOf(paramMotionEvent1.getY()), Float.valueOf(paramMotionEvent2.getY()), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
-    float f1 = Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY());
-    float f2 = Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX());
-    if ((f1 < this.QuA) && (paramFloat1 > 800.0F) && (f2 > this.Quz))
-    {
-      AppMethodBeat.o(143112);
-      return true;
+    Animator localAnimator = (Animator)paramView.getTag(a.g.property_anim);
+    if (localAnimator != null) {
+      localAnimator.cancel();
     }
-    if ((f1 < this.QuA) && (paramFloat1 < -800.0F) && (f2 < -this.Quz))
-    {
-      AppMethodBeat.o(143112);
-      return true;
-    }
-    if ((f2 < this.QuA) && (paramFloat2 > 800.0F))
-    {
-      AppMethodBeat.o(143112);
-      return true;
-    }
-    if ((f2 < this.QuA) && (paramFloat2 < -800.0F))
-    {
-      AppMethodBeat.o(143112);
-      return true;
-    }
-    AppMethodBeat.o(143112);
-    return false;
+    paramView.setScaleX(paramFloat);
+    paramView.setScaleY(paramFloat);
+    AppMethodBeat.o(143107);
   }
   
-  public final void onLongPress(MotionEvent paramMotionEvent)
+  @TargetApi(14)
+  public static final void a(View paramView, long paramLong, float paramFloat, a parama)
   {
-    AppMethodBeat.i(205369);
-    b localb = new b();
-    localb.bm(paramMotionEvent);
-    a.b("com/tencent/mm/ui/tools/MMGestureDetector", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.axR());
-    a.a(this, "com/tencent/mm/ui/tools/MMGestureDetector", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-    AppMethodBeat.o(205369);
+    AppMethodBeat.i(143109);
+    if ((paramView == null) || (d.qW(14)))
+    {
+      AppMethodBeat.o(143109);
+      return;
+    }
+    Object localObject = (Animator)paramView.getTag(a.g.property_anim);
+    if (localObject != null) {
+      ((Animator)localObject).cancel();
+    }
+    Log.i("Changelcai", "[animTran] duration:%s x:%s", new Object[] { Long.valueOf(paramLong), Float.valueOf(paramFloat) });
+    paramView.animate().cancel();
+    paramView.animate().setListener(null);
+    localObject = AnimationUtils.loadInterpolator(paramView.getContext(), a.a.mm_decelerate_interpolator);
+    if (parama == null)
+    {
+      paramView.animate().setDuration(paramLong).translationX(paramFloat).translationY(0.0F).setInterpolator((TimeInterpolator)localObject);
+      AppMethodBeat.o(143109);
+      return;
+    }
+    paramView.animate().setDuration(paramLong).translationX(paramFloat).translationY(0.0F).setInterpolator((TimeInterpolator)localObject).setListener(new Animator.AnimatorListener()
+    {
+      public final void onAnimationCancel(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(143106);
+        this.XSz.aEa();
+        AppMethodBeat.o(143106);
+      }
+      
+      public final void onAnimationEnd(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(143105);
+        this.XSz.onAnimationEnd();
+        AppMethodBeat.o(143105);
+      }
+      
+      public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
+      
+      public final void onAnimationStart(Animator paramAnonymousAnimator) {}
+    });
+    AppMethodBeat.o(143109);
   }
   
-  public final boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  @TargetApi(11)
+  public static void a(View paramView, Animator.AnimatorListener paramAnimatorListener)
   {
-    return false;
+    AppMethodBeat.i(143110);
+    if ((paramView == null) || (d.qW(11)))
+    {
+      AppMethodBeat.o(143110);
+      return;
+    }
+    Animator localAnimator = (Animator)paramView.getTag(a.g.property_anim);
+    if (localAnimator != null) {
+      localAnimator.cancel();
+    }
+    localAnimator = AnimatorInflater.loadAnimator(paramView.getContext(), a.b.fade_in_property_anim);
+    localAnimator.setTarget(paramView);
+    if (paramAnimatorListener != null) {
+      localAnimator.addListener(paramAnimatorListener);
+    }
+    localAnimator.start();
+    paramView.setTag(a.g.property_anim, localAnimator);
+    AppMethodBeat.o(143110);
   }
   
-  public final void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public final boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  @TargetApi(14)
+  public static final void q(View paramView, float paramFloat)
   {
-    AppMethodBeat.i(205368);
-    b localb = new b();
-    localb.bm(paramMotionEvent);
-    a.b("com/tencent/mm/ui/tools/MMGestureDetector", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
-    a.a(false, this, "com/tencent/mm/ui/tools/MMGestureDetector", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(205368);
-    return false;
+    AppMethodBeat.i(143108);
+    if ((paramView == null) || (d.qW(14)))
+    {
+      AppMethodBeat.o(143108);
+      return;
+    }
+    Animator localAnimator = (Animator)paramView.getTag(a.g.property_anim);
+    if (localAnimator != null) {
+      localAnimator.cancel();
+    }
+    paramView.animate().cancel();
+    paramView.setTranslationX(paramFloat);
+    paramView.setTranslationY(0.0F);
+    AppMethodBeat.o(143108);
   }
   
-  public static abstract interface a {}
+  public static abstract interface a
+  {
+    public abstract void aEa();
+    
+    public abstract void onAnimationEnd();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.tools.k
  * JD-Core Version:    0.7.0.1
  */

@@ -12,20 +12,20 @@ public final class a
   extends Paint
   implements Serializable
 {
-  public a laj;
-  private float lak;
-  private String lal;
-  private int lam;
-  private float lan;
-  private int lao;
   private int mColor;
+  public a nUt;
+  private float nUu;
+  private String nUv;
+  private int nUw;
+  private float nUx;
+  private int nUy;
   
   public a()
   {
     AppMethodBeat.i(145336);
-    this.laj = a.lap;
-    this.lan = 3.4028235E+38F;
-    this.lao = 2147483647;
+    this.nUt = a.nUz;
+    this.nUx = 3.4028235E+38F;
+    this.nUy = 2147483647;
     init();
     AppMethodBeat.o(145336);
   }
@@ -33,41 +33,41 @@ public final class a
   private void init()
   {
     AppMethodBeat.i(145337);
-    this.lak = 0.0F;
+    this.nUu = 0.0F;
     this.mColor = 0;
-    this.lal = null;
-    this.lam = 0;
-    if (this.lan == 3.4028235E+38F)
+    this.nUv = null;
+    this.nUw = 0;
+    if (this.nUx == 3.4028235E+38F)
     {
-      this.lak = (getAlpha() / 255.0F);
-      this.lan = this.lak;
+      this.nUu = (getAlpha() / 255.0F);
+      this.nUx = this.nUu;
     }
-    while (this.lao == 2147483647)
+    while (this.nUy == 2147483647)
     {
       this.mColor = getColor();
-      this.lao = this.mColor;
+      this.nUy = this.mColor;
       AppMethodBeat.o(145337);
       return;
-      this.lak = this.lan;
+      this.nUu = this.nUx;
     }
-    this.mColor = this.lao;
+    this.mColor = this.nUy;
     AppMethodBeat.o(145337);
-  }
-  
-  public final void WF(String paramString)
-  {
-    AppMethodBeat.i(145345);
-    this.lal = paramString;
-    setTypeface(Typeface.create(paramString, this.lam));
-    AppMethodBeat.o(145345);
   }
   
   public final void aG(float paramFloat)
   {
     AppMethodBeat.i(145341);
-    this.lak = paramFloat;
+    this.nUu = paramFloat;
     setColor(this.mColor);
     AppMethodBeat.o(145341);
+  }
+  
+  public final void aeq(String paramString)
+  {
+    AppMethodBeat.i(145345);
+    this.nUv = paramString;
+    setTypeface(Typeface.create(paramString, this.nUw));
+    AppMethodBeat.o(145345);
   }
   
   public final a b(a parama)
@@ -97,13 +97,13 @@ public final class a
       parama.setTextSize(getTextSize());
       parama.setTextAlign(getTextAlign());
       parama.setTypeface(getTypeface());
-      parama.laj = this.laj;
+      parama.nUt = this.nUt;
       AppMethodBeat.o(145340);
       return parama;
     }
   }
   
-  public final a bzu()
+  public final a bKJ()
   {
     AppMethodBeat.i(145339);
     a locala = new a();
@@ -131,7 +131,7 @@ public final class a
       locala.setTextSize(getTextSize());
       locala.setTextAlign(getTextAlign());
       locala.setTypeface(getTypeface());
-      locala.laj = this.laj;
+      locala.nUt = this.nUt;
       AppMethodBeat.o(145339);
       return locala;
     }
@@ -157,7 +157,7 @@ public final class a
   {
     AppMethodBeat.i(145343);
     super.reset();
-    this.laj = a.lap;
+    this.nUt = a.nUz;
     AppMethodBeat.o(145343);
   }
   
@@ -165,15 +165,15 @@ public final class a
   {
     AppMethodBeat.i(145342);
     this.mColor = paramInt;
-    super.setColor(((int)(Color.alpha(paramInt) * this.lak) & 0xFF) << 24 | 0xFFFFFF & paramInt);
+    super.setColor(((int)(Color.alpha(paramInt) * this.nUu) & 0xFF) << 24 | 0xFFFFFF & paramInt);
     AppMethodBeat.o(145342);
   }
   
-  public final void we(int paramInt)
+  public final void zp(int paramInt)
   {
     AppMethodBeat.i(145346);
-    this.lam = paramInt;
-    setTypeface(Typeface.create(this.lal, paramInt));
+    this.nUw = paramInt;
+    setTypeface(Typeface.create(this.nUv, paramInt));
     AppMethodBeat.o(145346);
   }
   
@@ -182,11 +182,11 @@ public final class a
     static
     {
       AppMethodBeat.i(145335);
-      lap = new a("NORMAL", 0);
-      laq = new a("TOP", 1);
-      lar = new a("BOTTOM", 2);
-      las = new a("MIDDLE", 3);
-      lau = new a[] { lap, laq, lar, las };
+      nUz = new a("NORMAL", 0);
+      nUA = new a("TOP", 1);
+      nUB = new a("BOTTOM", 2);
+      nUC = new a("MIDDLE", 3);
+      nUD = new a[] { nUz, nUA, nUB, nUC };
       AppMethodBeat.o(145335);
     }
     
@@ -195,7 +195,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.a.a
  * JD-Core Version:    0.7.0.1
  */

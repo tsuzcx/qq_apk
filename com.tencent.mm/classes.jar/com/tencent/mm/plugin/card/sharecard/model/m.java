@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.card.sharecard.model;
 
 public final class m
 {
-  public String eaO;
-  public String pRX;
-  public String pWh;
-  public long pWi;
-  public long pWj;
-  public int pWk;
+  public String announcement;
+  public String fUL;
+  public int item_type;
+  public String tnX;
   public int top;
+  public long tsh;
+  public long tsi;
 }
 
 

@@ -5,25 +5,26 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.au.f;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionSortViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListViewHolder;", "root", "Landroid/view/View;", "(Landroid/view/View;)V", "canShowLongClickTestMenu", "", "getCanShowLongClickTestMenu", "()Z", "deleteHandle", "kotlin.jvm.PlatformType", "getDeleteHandle", "()Landroid/view/View;", "rightExtraBottomLine", "getRightExtraBottomLine", "sortHandle", "getSortHandle", "setBottomLineVisibility", "", "visibility", "", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionSortViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListViewHolder;", "root", "Landroid/view/View;", "(Landroid/view/View;)V", "canShowLongClickTestMenu", "", "getCanShowLongClickTestMenu", "()Z", "deleteHandle", "kotlin.jvm.PlatformType", "getDeleteHandle", "()Landroid/view/View;", "rightExtraBottomLine", "getRightExtraBottomLine", "sortHandle", "getSortHandle", "setBottomLineVisibility", "", "visibility", "", "plugin-appbrand-integration_release"})
 final class e
   extends h
 {
-  private final View oba;
-  final View obb;
-  final View obc;
-  private final boolean obd;
+  private final View rcF;
+  final View rcG;
+  final View rcH;
+  private final boolean rcI;
   
   public e(View paramView)
   {
     super(paramView);
     AppMethodBeat.i(51269);
-    this.oba = paramView.findViewById(2131296781);
-    this.obb = paramView.findViewById(2131296782);
-    this.obc = paramView.findViewById(2131300269);
-    ViewGroup.LayoutParams localLayoutParams = this.obh.getLayoutParams();
+    this.rcF = paramView.findViewById(au.f.app_brand_collection_drag_sort_item_handle);
+    this.rcG = paramView.findViewById(au.f.app_brand_collection_sort_delete_handle);
+    this.rcH = paramView.findViewById(au.f.extra_bottom_line);
+    ViewGroup.LayoutParams localLayoutParams = ckY().getLayoutParams();
     paramView = localLayoutParams;
     if (!(localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
       paramView = null;
@@ -32,18 +33,18 @@ final class e
     if (paramView != null) {
       paramView.leftMargin = 0;
     }
-    this.obh.requestLayout();
+    ckY().requestLayout();
     AppMethodBeat.o(51269);
   }
   
-  public final boolean bYl()
+  public final boolean ckW()
   {
-    return this.obd;
+    return this.rcI;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.collection.e
  * JD-Core Version:    0.7.0.1
  */

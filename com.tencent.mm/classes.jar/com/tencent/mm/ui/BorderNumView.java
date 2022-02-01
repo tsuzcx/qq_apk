@@ -12,10 +12,10 @@ import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 public class BorderNumView
   extends View
 {
-  private static int Oyu = 22;
-  private static int Oyv = 105;
-  private static int Oyw = 100;
-  private int Oyt;
+  private static int VRx = 22;
+  private static int VRy = 105;
+  private static int VRz = 100;
+  private int VRw;
   private Context context;
   private Paint mPaint;
   
@@ -24,7 +24,7 @@ public class BorderNumView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(32961);
     this.context = null;
-    this.Oyt = 100;
+    this.VRw = 100;
     this.context = paramContext;
     init();
     AppMethodBeat.o(32961);
@@ -35,7 +35,7 @@ public class BorderNumView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(32962);
     this.context = null;
-    this.Oyt = 100;
+    this.VRw = 100;
     this.context = paramContext;
     init();
     AppMethodBeat.o(32962);
@@ -52,22 +52,22 @@ public class BorderNumView
   {
     AppMethodBeat.i(32964);
     super.onDraw(paramCanvas);
-    if (this.Oyt < 100) {
-      Oyu += 15;
+    if (this.VRw < 100) {
+      VRx += 15;
     }
-    if (this.Oyt >= 1000) {
-      Oyw -= 20;
+    if (this.VRw >= 1000) {
+      VRz -= 20;
     }
-    float f1 = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, Oyu);
-    float f2 = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, Oyv);
-    String str = this.Oyt;
+    float f1 = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, VRx);
+    float f2 = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, VRy);
+    String str = this.VRw;
     this.mPaint.setAntiAlias(true);
-    this.mPaint.setTextSize(Oyw);
+    this.mPaint.setTextSize(VRz);
     this.mPaint.setColor(-11491572);
     this.mPaint.setStyle(Paint.Style.STROKE);
     this.mPaint.setStrokeWidth(8.0F);
     paramCanvas.drawText(str, f1, f2, this.mPaint);
-    this.mPaint.setTextSize(Oyw);
+    this.mPaint.setTextSize(VRz);
     this.mPaint.setColor(-1770573);
     this.mPaint.setStyle(Paint.Style.FILL);
     this.mPaint.setStrokeWidth(8.0F);
@@ -77,12 +77,12 @@ public class BorderNumView
   
   public void setPaintNum(int paramInt)
   {
-    this.Oyt = paramInt;
+    this.VRw = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.BorderNumView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.MMEditText android:id="@id/k8o" android:layout_width="fill_parent" android:layout_height="@dimen/cn" android:hint="rotate:" />
+    <com.tencent.mm.ui.widget.MMEditText android:id="@id/kc5" android:layout_width="fill_parent" android:layout_height="@dimen/cn" android:layout_marginTop="@dimen/cb" android:hint="translation:" />
+    <com.tencent.mm.ui.widget.MMEditText android:id="@id/kai" android:layout_width="fill_parent" android:layout_height="@dimen/cn" android:layout_marginTop="@dimen/cb" android:hint="scale:" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/g3k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="@dimen/cb" android:text="Start" style="@style/ov" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/h4k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="@dimen/cb" android:text="Reset" style="@style/ov" />
+    <View android:layout_gravity="center_horizontal" android:id="@id/cv1" android:background="@color/a5c" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" android:layout_marginTop="@dimen/bu" />
+</LinearLayout>

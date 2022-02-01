@@ -10,7 +10,7 @@ public class APBase64
   
   public static byte[] decode(String paramString)
   {
-    AppMethodBeat.i(193236);
+    AppMethodBeat.i(253581);
     paramString = paramString.getBytes();
     int k = paramString.length;
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(k);
@@ -41,7 +41,7 @@ public class APBase64
               if (j == 61)
               {
                 paramString = localByteArrayOutputStream.toByteArray();
-                AppMethodBeat.o(193236);
+                AppMethodBeat.o(253581);
                 return paramString;
               }
               n = base64DecodeChars[j];
@@ -57,7 +57,7 @@ public class APBase64
                   if (j == 61)
                   {
                     paramString = localByteArrayOutputStream.toByteArray();
-                    AppMethodBeat.o(193236);
+                    AppMethodBeat.o(253581);
                     return paramString;
                   }
                   j = base64DecodeChars[j];
@@ -69,7 +69,7 @@ public class APBase64
                       break;
                     }
                     paramString = localByteArrayOutputStream.toByteArray();
-                    AppMethodBeat.o(193236);
+                    AppMethodBeat.o(253581);
                     return paramString;
                   }
                 }
@@ -83,7 +83,7 @@ public class APBase64
   
   public static String encode(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(193235);
+    AppMethodBeat.i(253580);
     StringBuffer localStringBuffer = new StringBuffer();
     int j = paramArrayOfByte.length;
     int i = 0;
@@ -105,7 +105,7 @@ public class APBase64
       for (;;)
       {
         paramArrayOfByte = localStringBuffer.toString();
-        AppMethodBeat.o(193235);
+        AppMethodBeat.o(253580);
         return paramArrayOfByte;
         label92:
         m = n + 1;
@@ -129,7 +129,7 @@ public class APBase64
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.midas.comm.APBase64
  * JD-Core Version:    0.7.0.1
  */

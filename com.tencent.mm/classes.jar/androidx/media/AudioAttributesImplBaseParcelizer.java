@@ -1,31 +1,30 @@
 package androidx.media;
 
-import android.support.v4.media.AudioAttributesImplBase;
 import androidx.versionedparcelable.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class AudioAttributesImplBaseParcelizer
 {
-  public static AudioAttributesImplBase read(a parama)
+  public static c read(a parama)
   {
-    AppMethodBeat.i(107788);
-    AudioAttributesImplBase localAudioAttributesImplBase = new AudioAttributesImplBase();
-    localAudioAttributesImplBase.mUsage = parama.aN(localAudioAttributesImplBase.mUsage, 1);
-    localAudioAttributesImplBase.mContentType = parama.aN(localAudioAttributesImplBase.mContentType, 2);
-    localAudioAttributesImplBase.mFlags = parama.aN(localAudioAttributesImplBase.mFlags, 3);
-    localAudioAttributesImplBase.mLegacyStream = parama.aN(localAudioAttributesImplBase.mLegacyStream, 4);
-    AppMethodBeat.o(107788);
-    return localAudioAttributesImplBase;
+    AppMethodBeat.i(242731);
+    c localc = new c();
+    localc.abL = parama.aZ(localc.abL, 1);
+    localc.abM = parama.aZ(localc.abM, 2);
+    localc.cN = parama.aZ(localc.cN, 3);
+    localc.abN = parama.aZ(localc.abN, 4);
+    AppMethodBeat.o(242731);
+    return localc;
   }
   
-  public static void write(AudioAttributesImplBase paramAudioAttributesImplBase, a parama)
+  public static void write(c paramc, a parama)
   {
-    AppMethodBeat.i(107789);
-    parama.aM(paramAudioAttributesImplBase.mUsage, 1);
-    parama.aM(paramAudioAttributesImplBase.mContentType, 2);
-    parama.aM(paramAudioAttributesImplBase.mFlags, 3);
-    parama.aM(paramAudioAttributesImplBase.mLegacyStream, 4);
-    AppMethodBeat.o(107789);
+    AppMethodBeat.i(242733);
+    parama.aY(paramc.abL, 1);
+    parama.aY(paramc.abM, 2);
+    parama.aY(paramc.cN, 3);
+    parama.aY(paramc.abN, 4);
+    AppMethodBeat.o(242733);
   }
 }
 

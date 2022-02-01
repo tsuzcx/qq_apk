@@ -2,16 +2,15 @@ package com.tencent.mm.plugin.gamelife.h;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.protobuf.du;
-import com.tencent.mm.plugin.game.protobuf.h;
+import com.tencent.mm.plugin.game.protobuf.aa;
+import com.tencent.mm.plugin.game.protobuf.dv;
 import com.tencent.mm.plugin.game.protobuf.k;
-import com.tencent.mm.plugin.game.protobuf.u;
-import com.tencent.mm.plugin.game.protobuf.z;
+import com.tencent.mm.plugin.game.protobuf.v;
 import com.tencent.mm.plugin.gamelife.a.d;
 import com.tencent.mm.plugin.gamelife.a.e;
 import com.tencent.mm.plugin.gamelife.a.f;
 import com.tencent.mm.plugin.gamelife.b.c;
+import com.tencent.mm.plugin.gamelife.d.f;
 import com.tencent.mm.sdk.platformtools.ApplicationGlobal;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import java.util.Collection;
@@ -19,38 +18,38 @@ import java.util.Iterator;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/panel/GameLifePanelControlService;", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifePanelControlService;", "()V", "enableAttachButton", "", "enableCamera", "enableEmoji", "enablePic", "setButtonConfig", "", "shouldShowAttachButton", "shouldShowCamera", "shouldShowEmoji", "shouldShowSendPic", "wordForCameraIfDisabled", "", "sessionId", "wordForDynamicPanelIfDisabled", "panelType", "", "wordForSendPicIfDisabled", "wordForStaticPanelIfDisabled", "plugin-gamelife_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/panel/GameLifePanelControlService;", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifePanelControlService;", "()V", "enableAttachButton", "", "enableCamera", "enableEmoji", "enablePic", "setButtonConfig", "", "shouldShowAttachButton", "shouldShowCamera", "shouldShowEmoji", "shouldShowSendPic", "wordForCameraIfDisabled", "", "sessionId", "wordForDynamicPanelIfDisabled", "panelType", "", "wordForSendPicIfDisabled", "wordForStaticPanelIfDisabled", "plugin-gamelife_release"})
 public final class a
   implements d
 {
-  private boolean ycn;
-  private boolean yco;
-  private boolean ycp;
-  private boolean ycq;
+  private boolean DhT;
+  private boolean DhU;
+  private boolean DhV;
+  private boolean enableCamera;
   
-  private static String el(String paramString, int paramInt)
+  private static String eJ(String paramString, int paramInt)
   {
-    AppMethodBeat.i(241412);
+    AppMethodBeat.i(203947);
     if (paramString == null)
     {
-      AppMethodBeat.o(241412);
+      AppMethodBeat.o(203947);
       return null;
     }
-    paramString = ((f)g.af(f.class)).aAW(paramString);
+    paramString = ((f)com.tencent.mm.kernel.h.ae(f.class)).aKJ(paramString);
     if (paramString != null)
     {
-      paramString = paramString.dXh();
+      paramString = paramString.eAq();
       if (paramString != null)
       {
-        if ((paramString.ybb & 1 << paramInt - 1) == 0L)
+        if ((paramString.DgJ & 1 << paramInt - 1) == 0L)
         {
-          AppMethodBeat.o(241412);
+          AppMethodBeat.o(203947);
           return null;
         }
-        paramString = com.tencent.mm.plugin.game.commlib.a.dSZ();
+        paramString = com.tencent.mm.plugin.game.commlib.a.ewh();
         if (paramString != null)
         {
-          paramString = paramString.xJj;
+          paramString = paramString.CNq;
           if (paramString != null)
           {
             Iterator localIterator = ((Iterable)paramString).iterator();
@@ -58,7 +57,7 @@ public final class a
             if (localIterator.hasNext())
             {
               paramString = localIterator.next();
-              if (((du)paramString).xIY == paramInt)
+              if (((dv)paramString).CNe == paramInt)
               {
                 i = 1;
                 label125:
@@ -66,11 +65,11 @@ public final class a
                   break label213;
                 }
                 label129:
-                paramString = (du)paramString;
+                paramString = (dv)paramString;
                 if (paramString == null) {
                   break label225;
                 }
-                paramString = paramString.xJe;
+                paramString = paramString.CNl;
                 if (paramString == null) {
                   break label225;
                 }
@@ -81,17 +80,17 @@ public final class a
                     break;
                   }
                   paramString = localIterator.next();
-                } while (!p.j(((u)paramString).rBI, LocaleUtil.getApplicationLanguage()));
+                } while (!p.h(((v)paramString).vhq, LocaleUtil.getApplicationLanguage()));
               }
             }
             for (;;)
             {
-              paramString = (u)paramString;
+              paramString = (v)paramString;
               if (paramString == null) {
                 break label225;
               }
-              paramString = paramString.xJH;
-              AppMethodBeat.o(241412);
+              paramString = paramString.CNP;
+              AppMethodBeat.o(203947);
               return paramString;
               i = 0;
               break label125;
@@ -104,47 +103,47 @@ public final class a
           }
         }
         label225:
-        paramString = com.tencent.mm.cb.a.aI((Context)ApplicationGlobal.context(), 2131761388);
-        AppMethodBeat.o(241412);
+        paramString = com.tencent.mm.ci.a.ba((Context)ApplicationGlobal.context(), d.f.DgC);
+        AppMethodBeat.o(203947);
         return paramString;
       }
     }
-    AppMethodBeat.o(241412);
+    AppMethodBeat.o(203947);
     return null;
   }
   
-  public final String aAU(String paramString)
+  public final String aKH(String paramString)
   {
-    AppMethodBeat.i(241409);
-    paramString = el(paramString, 1);
-    AppMethodBeat.o(241409);
+    AppMethodBeat.i(203941);
+    paramString = eJ(paramString, 1);
+    AppMethodBeat.o(203941);
     return paramString;
   }
   
-  public final String aAV(String paramString)
+  public final String aKI(String paramString)
   {
-    AppMethodBeat.i(241410);
-    paramString = el(paramString, 2);
-    AppMethodBeat.o(241410);
+    AppMethodBeat.i(203943);
+    paramString = eJ(paramString, 2);
+    AppMethodBeat.o(203943);
     return paramString;
   }
   
-  public final void dXc()
+  public final void eAl()
   {
-    AppMethodBeat.i(241408);
-    Object localObject2 = com.tencent.mm.plugin.game.commlib.a.dSZ();
+    AppMethodBeat.i(203938);
+    Object localObject2 = com.tencent.mm.plugin.game.commlib.a.ewh();
     Object localObject1;
     int i;
     if (localObject2 != null)
     {
-      localObject1 = (Collection)((k)localObject2).xJj;
+      localObject1 = (Collection)((k)localObject2).CNq;
       if ((localObject1 != null) && (!((Collection)localObject1).isEmpty())) {
         break label243;
       }
       i = 1;
       if (i != 0)
       {
-        localObject1 = (Collection)((k)localObject2).xJi;
+        localObject1 = (Collection)((k)localObject2).CNp;
         if ((localObject1 != null) && (!((Collection)localObject1).isEmpty())) {
           break label248;
         }
@@ -154,9 +153,9 @@ public final class a
       }
       else
       {
-        this.ycq = true;
+        this.DhV = true;
       }
-      localObject1 = ((k)localObject2).xJj;
+      localObject1 = ((k)localObject2).CNq;
       Object localObject3;
       if (localObject1 != null)
       {
@@ -166,8 +165,8 @@ public final class a
           break label258;
         }
         localObject1 = ((Iterator)localObject3).next();
-        du localdu = (du)localObject1;
-        if ((localdu == null) || (localdu.xIY != 2)) {
+        dv localdv = (dv)localObject1;
+        if ((localdv == null) || (localdv.CNe != 2)) {
           break label253;
         }
         i = 1;
@@ -176,11 +175,11 @@ public final class a
           break label256;
         }
         label136:
-        if ((du)localObject1 != null) {
-          this.ycn = true;
+        if ((dv)localObject1 != null) {
+          this.enableCamera = true;
         }
       }
-      localObject1 = ((k)localObject2).xJj;
+      localObject1 = ((k)localObject2).CNq;
       if (localObject1 != null)
       {
         localObject2 = ((Iterable)localObject1).iterator();
@@ -189,8 +188,8 @@ public final class a
           break label268;
         }
         localObject1 = ((Iterator)localObject2).next();
-        localObject3 = (du)localObject1;
-        if ((localObject3 == null) || (((du)localObject3).xIY != 1)) {
+        localObject3 = (dv)localObject1;
+        if ((localObject3 == null) || (((dv)localObject3).CNe != 1)) {
           break label263;
         }
         i = 1;
@@ -202,15 +201,15 @@ public final class a
     }
     for (;;)
     {
-      if ((du)localObject1 != null) {
-        this.yco = true;
+      if ((dv)localObject1 != null) {
+        this.DhT = true;
       }
-      localObject1 = com.tencent.mm.plugin.game.commlib.a.dTa();
+      localObject1 = com.tencent.mm.plugin.game.commlib.a.ewi();
       if (localObject1 == null) {
         break label273;
       }
-      this.ycp = ((z)localObject1).xJV;
-      AppMethodBeat.o(241408);
+      this.DhU = ((aa)localObject1).CNJ;
+      AppMethodBeat.o(203938);
       return;
       label243:
       i = 0;
@@ -235,52 +234,52 @@ public final class a
       localObject1 = null;
     }
     label273:
-    AppMethodBeat.o(241408);
+    AppMethodBeat.o(203938);
   }
   
-  public final boolean dXd()
+  public final boolean eAm()
   {
-    return this.ycq;
+    return this.DhV;
   }
   
-  public final boolean dXe()
+  public final boolean eAn()
   {
-    return this.yco;
+    return this.DhT;
   }
   
-  public final boolean dXf()
+  public final boolean eAo()
   {
-    return this.ycn;
+    return this.enableCamera;
   }
   
-  public final boolean dXg()
+  public final boolean eAp()
   {
-    return this.ycp;
+    return this.DhU;
   }
   
-  public final String ek(String paramString, int paramInt)
+  public final String eI(String paramString, int paramInt)
   {
-    AppMethodBeat.i(241411);
+    AppMethodBeat.i(203944);
     if (paramString == null)
     {
-      AppMethodBeat.o(241411);
+      AppMethodBeat.o(203944);
       return null;
     }
-    paramString = ((f)g.af(f.class)).aAW(paramString);
+    paramString = ((f)com.tencent.mm.kernel.h.ae(f.class)).aKJ(paramString);
     if (paramString != null)
     {
-      paramString = paramString.dXh();
+      paramString = paramString.eAq();
       if (paramString != null)
       {
-        if ((paramString.ybc & 1 << paramInt - 1) == 0L)
+        if ((paramString.DgK & 1 << paramInt - 1) == 0L)
         {
-          AppMethodBeat.o(241411);
+          AppMethodBeat.o(203944);
           return null;
         }
-        paramString = com.tencent.mm.plugin.game.commlib.a.dSZ();
+        paramString = com.tencent.mm.plugin.game.commlib.a.ewh();
         if (paramString != null)
         {
-          paramString = paramString.xJi;
+          paramString = paramString.CNp;
           if (paramString != null)
           {
             Iterator localIterator = ((Iterable)paramString).iterator();
@@ -288,7 +287,7 @@ public final class a
             if (localIterator.hasNext())
             {
               paramString = localIterator.next();
-              if (((h)paramString).xIY == paramInt)
+              if (((com.tencent.mm.plugin.game.protobuf.h)paramString).CNe == paramInt)
               {
                 i = 1;
                 label128:
@@ -296,11 +295,11 @@ public final class a
                   break label219;
                 }
                 label132:
-                paramString = (h)paramString;
+                paramString = (com.tencent.mm.plugin.game.protobuf.h)paramString;
                 if (paramString == null) {
                   break label231;
                 }
-                paramString = paramString.xJe;
+                paramString = paramString.CNl;
                 if (paramString == null) {
                   break label231;
                 }
@@ -311,17 +310,17 @@ public final class a
                     break;
                   }
                   paramString = localIterator.next();
-                } while (!p.j(((u)paramString).rBI, LocaleUtil.getApplicationLanguage()));
+                } while (!p.h(((v)paramString).vhq, LocaleUtil.getApplicationLanguage()));
               }
             }
             for (;;)
             {
-              paramString = (u)paramString;
+              paramString = (v)paramString;
               if (paramString == null) {
                 break label231;
               }
-              paramString = paramString.xJH;
-              AppMethodBeat.o(241411);
+              paramString = paramString.CNP;
+              AppMethodBeat.o(203944);
               return paramString;
               i = 0;
               break label128;
@@ -334,12 +333,12 @@ public final class a
           }
         }
         label231:
-        paramString = com.tencent.mm.cb.a.aI((Context)ApplicationGlobal.context(), 2131761388);
-        AppMethodBeat.o(241411);
+        paramString = com.tencent.mm.ci.a.ba((Context)ApplicationGlobal.context(), d.f.DgC);
+        AppMethodBeat.o(203944);
         return paramString;
       }
     }
-    AppMethodBeat.o(241411);
+    AppMethodBeat.o(203944);
     return null;
   }
 }

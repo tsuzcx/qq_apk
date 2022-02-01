@@ -10,10 +10,10 @@ public final class c
 {
   public static boolean vivohasCutOut(Context paramContext)
   {
-    AppMethodBeat.i(197905);
+    AppMethodBeat.i(259087);
     if (paramContext == null)
     {
-      AppMethodBeat.o(197905);
+      AppMethodBeat.o(259087);
       return false;
     }
     try
@@ -21,7 +21,7 @@ public final class c
       paramContext = paramContext.getClassLoader().loadClass("android.util.FtFeature");
       boolean bool = ((Boolean)paramContext.getMethod("isFeatureSupport", new Class[] { Integer.TYPE }).invoke(paramContext, new Object[] { Integer.valueOf(32) })).booleanValue();
       b.d("MicroMsg.Vendor.Vivo", "vivo hasCutOut: %s", new Object[] { Boolean.valueOf(bool) });
-      AppMethodBeat.o(197905);
+      AppMethodBeat.o(259087);
       return bool;
     }
     catch (ClassNotFoundException paramContext)
@@ -47,14 +47,14 @@ public final class c
     finally
     {
       b.d("MicroMsg.Vendor.Vivo", "vivo hasCutOut: %s", new Object[] { Boolean.FALSE });
-      AppMethodBeat.o(197905);
+      AppMethodBeat.o(259087);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ext.b.c
  * JD-Core Version:    0.7.0.1
  */

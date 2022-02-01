@@ -1,43 +1,37 @@
 package com.tencent.mm.plugin.finder.cgi.oplog;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.cgi.bx;
-import com.tencent.mm.plugin.finder.cgi.bx.a;
-import com.tencent.mm.plugin.i.a.ai;
-import com.tencent.mm.plugin.i.a.r;
-import com.tencent.mm.protocal.protobuf.ayu;
+import com.tencent.mm.plugin.finder.cgi.ca;
+import com.tencent.mm.plugin.finder.cgi.ca.a;
+import com.tencent.mm.plugin.finder.service.h;
+import com.tencent.mm.plugin.findersdk.a.aj;
+import com.tencent.mm.protocal.protobuf.bic;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderModBlockPosterService;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderModBlockPoster;", "Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderOpLogCore;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlockPosterSetting;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "convertToCmdBuf", "Lcom/tencent/mm/protobuf/ByteString;", "cmdBufItem", "getCmdId", "", "handleUpdateResult", "", "retCode", "modBlockPoster", "finderUserName", "block", "", "callback", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderDelFansService;", "Lcom/tencent/mm/plugin/finder/service/IFinderDelFansService;", "Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderOpLogCore;", "Lcom/tencent/mm/protocal/protobuf/FinderRemoveFansSetting;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "convertToCmdBuf", "Lcom/tencent/mm/protobuf/ByteString;", "cmdBufItem", "delFans", "", "fansId", "callback", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "getCmdId", "", "handleUpdateResult", "retCode", "plugin-finder_release"})
 public final class b
-  extends k<ayu>
-  implements r
+  extends m<bic>
+  implements h
 {
-  private final String TAG = "Finder.FinderModBloclPosterSetting";
+  private final String TAG = "Finder.FinderDelFansService";
   
-  public final void a(String paramString, boolean paramBoolean, ai<ayu> paramai)
+  public final void a(String paramString, aj<bic> paramaj)
   {
-    AppMethodBeat.i(242643);
-    p.h(paramString, "finderUserName");
-    ayu localayu = new ayu();
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localayu.opType = i;
-      localayu.finderUsername = paramString;
-      a(localayu, paramai, false);
-      AppMethodBeat.o(242643);
-      return;
-    }
+    AppMethodBeat.i(284170);
+    p.k(paramString, "fansId");
+    bic localbic = new bic();
+    localbic.SSE = paramString;
+    m.a(this, localbic, paramaj);
+    AppMethodBeat.o(284170);
   }
   
   public final int getCmdId()
   {
-    AppMethodBeat.i(242641);
-    bx.a locala = bx.tvW;
-    int i = bx.cYX();
-    AppMethodBeat.o(242641);
+    AppMethodBeat.i(284168);
+    ca.a locala = ca.xdJ;
+    int i = ca.doN();
+    AppMethodBeat.o(284168);
     return i;
   }
   
@@ -48,7 +42,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.oplog.b
  * JD-Core Version:    0.7.0.1
  */

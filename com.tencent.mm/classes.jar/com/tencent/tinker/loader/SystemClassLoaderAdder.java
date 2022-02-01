@@ -14,7 +14,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -48,68 +47,7 @@ public class SystemClassLoaderAdder
       String str = ((File)localIterator.next()).getName();
       localHashMap.put(str, Boolean.valueOf(ShareConstants.CLASS_N_PATTERN.matcher(str).matches()));
     }
-    Collections.sort(paramList, new Comparator()
-    {
-      public final int compare(File paramAnonymousFile1, File paramAnonymousFile2)
-      {
-        if ((paramAnonymousFile1 == null) && (paramAnonymousFile2 == null)) {
-          return 0;
-        }
-        if (paramAnonymousFile1 == null) {
-          return -1;
-        }
-        if (paramAnonymousFile2 == null) {
-          return 1;
-        }
-        paramAnonymousFile1 = paramAnonymousFile1.getName();
-        paramAnonymousFile2 = paramAnonymousFile2.getName();
-        if (paramAnonymousFile1.equals(paramAnonymousFile2)) {
-          return 0;
-        }
-        if (paramAnonymousFile1.startsWith("test.dex")) {
-          return 1;
-        }
-        if (paramAnonymousFile2.startsWith("test.dex")) {
-          return -1;
-        }
-        boolean bool1 = ((Boolean)this.val$matchesClassNPatternMemo.get(paramAnonymousFile1)).booleanValue();
-        boolean bool2 = ((Boolean)this.val$matchesClassNPatternMemo.get(paramAnonymousFile2)).booleanValue();
-        if ((bool1) && (bool2))
-        {
-          int i = paramAnonymousFile1.indexOf('.');
-          int j = paramAnonymousFile2.indexOf('.');
-          if (i > 7)
-          {
-            i = Integer.parseInt(paramAnonymousFile1.substring(7, i));
-            if (j <= 7) {
-              break label175;
-            }
-          }
-          label175:
-          for (j = Integer.parseInt(paramAnonymousFile2.substring(7, j));; j = 1)
-          {
-            if (i != j) {
-              break label181;
-            }
-            return 0;
-            i = 1;
-            break;
-          }
-          label181:
-          if (i < j) {
-            return -1;
-          }
-          return 1;
-        }
-        if (bool1) {
-          return -1;
-        }
-        if (bool2) {
-          return 1;
-        }
-        return paramAnonymousFile1.compareTo(paramAnonymousFile2);
-      }
-    });
+    Collections.sort(paramList, new SystemClassLoaderAdder.1(localHashMap));
     return paramList;
   }
   
@@ -358,7 +296,7 @@ public class SystemClassLoaderAdder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.loader.SystemClassLoaderAdder
  * JD-Core Version:    0.7.0.1
  */

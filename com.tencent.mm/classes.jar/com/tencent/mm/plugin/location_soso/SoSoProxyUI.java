@@ -11,14 +11,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.k.c;
-import com.tencent.mm.plugin.k.c.a;
+import com.tencent.mm.plugin.q.c;
+import com.tencent.mm.plugin.q.c.a;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.crash.CrashReportFactory;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.aa;
+import com.tencent.mm.ui.ad;
 import com.tencent.tencentmap.mapsdk.map.MapActivity;
 
 @com.tencent.mm.ui.base.a(19)
@@ -26,7 +26,7 @@ public class SoSoProxyUI
   extends MapActivity
 {
   protected static final String TAG = "MicroMsg.SoSoProxyUI";
-  private com.tencent.mm.plugin.k.a basemapUI;
+  private com.tencent.mm.plugin.q.a basemapUI;
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
@@ -81,7 +81,7 @@ public class SoSoProxyUI
     Object localObject = super.getSystemService(paramString);
     if ((getAssets() != null) && ("layout_inflater".equals(paramString)))
     {
-      paramString = aa.b((LayoutInflater)localObject);
+      paramString = ad.b((LayoutInflater)localObject);
       AppMethodBeat.o(56238);
       return paramString;
     }
@@ -116,7 +116,7 @@ public class SoSoProxyUI
     if (Build.VERSION.SDK_INT != 26) {
       setRequestedOrientation(1);
     }
-    if (c.a.yOs == null) {
+    if (c.a.Esq == null) {
       for (;;)
       {
         try
@@ -133,13 +133,13 @@ public class SoSoProxyUI
           Log.printErrStackTrace("MicroMsg.SoSoProxyUI", paramBundle, "summerasyncinit finish:", new Object[0]);
           continue;
         }
-        h.CyF.idkeyStat(598L, 20L, 1L, false);
+        h.IzE.idkeyStat(598L, 20L, 1L, false);
         AppMethodBeat.o(56229);
         return;
         bool1 = false;
       }
     }
-    this.basemapUI = c.a.yOs.h(this, i);
+    this.basemapUI = c.a.Esq.i(this, i);
     if (this.basemapUI == null)
     {
       finish();
@@ -165,7 +165,7 @@ public class SoSoProxyUI
     AppMethodBeat.i(56233);
     if ((paramInt == 82) && (paramKeyEvent.getAction() == 1))
     {
-      this.basemapUI.edH();
+      this.basemapUI.eNc();
       AppMethodBeat.o(56233);
       return true;
     }
@@ -198,31 +198,31 @@ public class SoSoProxyUI
   
   public void setContentView(int paramInt)
   {
-    AppMethodBeat.i(201735);
+    AppMethodBeat.i(245789);
     super.setContentView(paramInt);
     Log.d("MicroMsg.SoSoProxyUI", "setContentView2 %s", new Object[] { Util.getStack() });
-    AppMethodBeat.o(201735);
+    AppMethodBeat.o(245789);
   }
   
   public void setContentView(View paramView)
   {
-    AppMethodBeat.i(201734);
+    AppMethodBeat.i(245788);
     super.setContentView(paramView);
     Log.d("MicroMsg.SoSoProxyUI", "setContentView1 %s", new Object[] { Util.getStack() });
-    AppMethodBeat.o(201734);
+    AppMethodBeat.o(245788);
   }
   
   public void setContentView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(201736);
+    AppMethodBeat.i(245790);
     super.setContentView(paramView, paramLayoutParams);
     Log.d("MicroMsg.SoSoProxyUI", "setContentView3 %s", new Object[] { Util.getStack() });
-    AppMethodBeat.o(201736);
+    AppMethodBeat.o(245790);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.location_soso.SoSoProxyUI
  * JD-Core Version:    0.7.0.1
  */

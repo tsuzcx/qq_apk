@@ -10,17 +10,17 @@ public class StatusBucket
   
   static
   {
-    AppMethodBeat.i(222034);
+    AppMethodBeat.i(238807);
     TAG = StatusBucket.class.getName();
-    AppMethodBeat.o(222034);
+    AppMethodBeat.o(238807);
   }
   
   public StatusBucket()
   {
-    AppMethodBeat.i(222024);
+    AppMethodBeat.i(238776);
     this.mBucketObj = 0L;
     this.mBucketObj = nativeCreateStatusBucket();
-    AppMethodBeat.o(222024);
+    AppMethodBeat.o(238776);
   }
   
   public StatusBucket(long paramLong)
@@ -49,7 +49,7 @@ public class StatusBucket
   
   public static void testStatusBucket()
   {
-    AppMethodBeat.i(222033);
+    AppMethodBeat.i(238799);
     StatusBucket localStatusBucket1 = new StatusBucket();
     StatusBucket localStatusBucket2 = new StatusBucket();
     localStatusBucket1.setBooleanStatus("1", 1, true);
@@ -65,74 +65,74 @@ public class StatusBucket
     TXCLog.e(TAG, "test_status_bucket: id:3, key:3, value:" + localStatusBucket1.getLongStatus("3", 3));
     TXCLog.e(TAG, "test_status_bucket: id:5, key:5, value:" + localStatusBucket1.getBooleanStatus("5", 5));
     TXCLog.e(TAG, "test_status_bucket: id:6, key:6, value:" + localStatusBucket1.getLongStatus("6", 6));
-    AppMethodBeat.o(222033);
+    AppMethodBeat.o(238799);
   }
   
   protected void finalize()
   {
-    AppMethodBeat.i(222032);
+    AppMethodBeat.i(238797);
     super.finalize();
     long l = this.mBucketObj;
     this.mBucketObj = 0L;
     nativeDestroyStatusBucket(l);
-    AppMethodBeat.o(222032);
+    AppMethodBeat.o(238797);
   }
   
   public boolean getBooleanStatus(String paramString, int paramInt)
   {
-    AppMethodBeat.i(222028);
+    AppMethodBeat.i(238791);
     boolean bool = nativeGetBooleanStatus(this.mBucketObj, paramString, paramInt);
-    AppMethodBeat.o(222028);
+    AppMethodBeat.o(238791);
     return bool;
   }
   
   public int getIntStatus(String paramString, int paramInt)
   {
-    AppMethodBeat.i(222029);
+    AppMethodBeat.i(238792);
     paramInt = nativeGetIntStatus(this.mBucketObj, paramString, paramInt);
-    AppMethodBeat.o(222029);
+    AppMethodBeat.o(238792);
     return paramInt;
   }
   
   public long getLongStatus(String paramString, int paramInt)
   {
-    AppMethodBeat.i(222030);
+    AppMethodBeat.i(238794);
     long l = nativeGetLongStatus(this.mBucketObj, paramString, paramInt);
-    AppMethodBeat.o(222030);
+    AppMethodBeat.o(238794);
     return l;
   }
   
   public void merge(StatusBucket paramStatusBucket)
   {
-    AppMethodBeat.i(222031);
+    AppMethodBeat.i(238795);
     nativeMerge(this.mBucketObj, paramStatusBucket.mBucketObj);
-    AppMethodBeat.o(222031);
+    AppMethodBeat.o(238795);
   }
   
   public void setBooleanStatus(String paramString, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(222025);
+    AppMethodBeat.i(238784);
     nativeSetBooleanStatus(this.mBucketObj, paramString, paramInt, paramBoolean);
-    AppMethodBeat.o(222025);
+    AppMethodBeat.o(238784);
   }
   
   public void setIntStatus(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(222026);
+    AppMethodBeat.i(238787);
     nativeSetIntStatus(this.mBucketObj, paramString, paramInt1, paramInt2);
-    AppMethodBeat.o(222026);
+    AppMethodBeat.o(238787);
   }
   
   public void setLongStatus(String paramString, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(222027);
+    AppMethodBeat.i(238790);
     nativeSetLongStatus(this.mBucketObj, paramString, paramInt, paramLong);
-    AppMethodBeat.o(222027);
+    AppMethodBeat.o(238790);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.basic.module.StatusBucket
  * JD-Core Version:    0.7.0.1
  */

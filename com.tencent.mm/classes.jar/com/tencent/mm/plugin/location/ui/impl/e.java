@@ -10,56 +10,59 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.tencent.map.geolocation.sapp.TencentLocationUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.map.a.e;
+import com.tencent.mm.plugin.map.a.f;
+import com.tencent.mm.plugin.map.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public final class e
+public class e
   extends BaseAdapter
 {
+  private double Emf;
+  private double Emg;
+  List<f> EqE;
+  private String EqF;
+  private String EqG;
+  int bFx;
   byte[] buffer;
+  boolean cSY;
   private Context context;
-  boolean daZ;
-  boolean idt;
+  boolean kSa;
   String key;
-  boolean khr;
-  String qLO;
-  int va;
-  private double yIm;
-  private double yIn;
-  List<f> yMH;
-  private String yMI;
-  private String yMJ;
+  boolean mYQ;
+  String una;
   
   public e(Context paramContext)
   {
     AppMethodBeat.i(56089);
-    this.yMH = new ArrayList();
-    this.va = 0;
+    this.EqE = new ArrayList();
+    this.bFx = 0;
     this.buffer = null;
-    this.idt = false;
+    this.kSa = false;
     this.key = "";
-    this.qLO = "";
-    this.khr = false;
-    this.daZ = false;
+    this.una = "";
+    this.mYQ = false;
+    this.cSY = false;
     this.context = paramContext;
     AppMethodBeat.o(56089);
   }
   
-  private Spannable aDk(String paramString)
+  private Spannable aNu(String paramString)
   {
     AppMethodBeat.i(56096);
-    paramString = com.tencent.mm.plugin.fts.a.f.b(paramString, this.qLO);
+    paramString = com.tencent.mm.plugin.fts.a.f.b(paramString, this.una);
     AppMethodBeat.o(56096);
     return paramString;
   }
   
-  public final f Pz(int paramInt)
+  public final f VI(int paramInt)
   {
     AppMethodBeat.i(56094);
-    f localf = (f)this.yMH.get(paramInt);
+    f localf = (f)this.EqE.get(paramInt);
     AppMethodBeat.o(56094);
     return localf;
   }
@@ -73,22 +76,22 @@ public final class e
       AppMethodBeat.o(56092);
       return;
     }
-    int i = this.yMH.size();
+    int i = this.EqE.size();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       paramString = (f)paramList.next();
-      paramString.yMZ = i;
+      paramString.EqX = i;
       i += 1;
-      this.yMH.add(paramString);
+      this.EqE.add(paramString);
     }
     this.buffer = paramArrayOfByte;
-    this.idt = paramBoolean;
+    this.kSa = paramBoolean;
     notifyDataSetChanged();
     AppMethodBeat.o(56092);
   }
   
-  public final void aDj(String paramString)
+  public final void aNt(String paramString)
   {
     AppMethodBeat.i(56091);
     this.key = paramString;
@@ -100,109 +103,109 @@ public final class e
   {
     AppMethodBeat.i(56090);
     this.buffer = null;
-    this.idt = false;
+    this.kSa = false;
     this.key = "";
-    this.yMH.clear();
-    this.va = -1;
+    this.EqE.clear();
+    this.bFx = -1;
     AppMethodBeat.o(56090);
   }
   
-  public final void edW()
+  public final void eNr()
   {
     this.buffer = null;
-    this.idt = false;
+    this.kSa = false;
     this.key = "";
   }
   
-  public final int getCount()
+  public int getCount()
   {
     AppMethodBeat.i(56093);
-    int i = this.yMH.size();
+    int i = this.EqE.size();
     AppMethodBeat.o(56093);
     return i;
   }
   
-  public final long getItemId(int paramInt)
+  public long getItemId(int paramInt)
   {
     return 0L;
   }
   
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(56095);
     View localView;
     a locala;
     f localf;
-    label156:
-    label180:
+    label161:
+    label186:
     Object localObject;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.context).inflate(2131495939, paramViewGroup, false);
+      localView = LayoutInflater.from(this.context).inflate(a.f.poi_list_item, paramViewGroup, false);
       locala = new a();
-      locala.yMK = localView.findViewById(2131306006);
-      locala.titleView = ((TextView)localView.findViewById(2131306008));
-      locala.yMM = ((TextView)localView.findViewById(2131306007));
-      locala.yML = localView.findViewById(2131306010);
+      locala.EqH = localView.findViewById(a.e.poi_item_location);
+      locala.titleView = ((TextView)localView.findViewById(a.e.poi_item_location_title));
+      locala.EqJ = ((TextView)localView.findViewById(a.e.poi_item_location_subtitle));
+      locala.EqI = localView.findViewById(a.e.poi_item_tick);
       localView.setTag(locala);
-      localf = (f)this.yMH.get(paramInt);
+      localf = (f)this.EqE.get(paramInt);
       if ((1 != localf.type) && (2 != localf.type)) {
-        break label567;
+        break label573;
       }
-      locala.titleView.setText(Util.nullAs(localf.yMN, ""));
-      locala.yMM.setVisibility(8);
+      locala.titleView.setText(Util.nullAs(localf.EqK, ""));
+      locala.EqJ.setVisibility(8);
       if (!Util.isNullOrNil(localf.mName)) {
-        break label579;
+        break label585;
       }
-      paramView = this.context.getResources().getString(2131762449);
+      paramView = this.context.getResources().getString(a.i.location);
       localObject = "";
-      if ((Util.isNullOrNil(this.yMI)) || (!Util.nullAs(localf.yMR, "").equals(this.yMI))) {
-        break label588;
+      if ((Util.isNullOrNil(this.EqF)) || (!Util.nullAs(localf.EqO, "").equals(this.EqF))) {
+        break label594;
       }
       paramViewGroup = (ViewGroup)localObject;
-      if (!Util.isNullOrNil(this.yMJ))
+      if (!Util.isNullOrNil(this.EqG))
       {
         paramViewGroup = (ViewGroup)localObject;
-        if (!Util.nullAs(localf.yMS, "").equals(this.yMJ)) {
-          paramViewGroup = Util.nullAs(localf.yMS, "");
+        if (!Util.nullAs(localf.EqP, "").equals(this.EqG)) {
+          paramViewGroup = Util.nullAs(localf.EqP, "");
         }
       }
-      label261:
-      paramViewGroup = paramViewGroup + Util.nullAs(localf.yMT, "");
-      localObject = paramViewGroup + Util.nullAs(localf.yMV, "");
+      label267:
+      paramViewGroup = paramViewGroup + Util.nullAs(localf.EqQ, "");
+      localObject = paramViewGroup + Util.nullAs(localf.EqT, "");
       paramViewGroup = (ViewGroup)localObject;
       if (Util.isNullOrNil((String)localObject)) {
-        paramViewGroup = Util.nullAs(localf.yMN, "");
+        paramViewGroup = Util.nullAs(localf.EqK, "");
       }
-      if ((!this.khr) || (Util.isNullOrNil(this.qLO))) {
-        break label702;
+      if ((!this.mYQ) || (Util.isNullOrNil(this.una))) {
+        break label708;
       }
-      paramView = aDk(paramView);
-      paramViewGroup = aDk(paramViewGroup);
+      paramView = aNu(paramView);
+      paramViewGroup = aNu(paramViewGroup);
     }
-    label567:
-    label702:
+    label573:
+    label708:
     for (;;)
     {
       locala.titleView.setText(paramView);
-      TextView localTextView = locala.yMM;
-      double d1 = localf.cik;
-      double d2 = localf.cil;
-      int i = (int)TencentLocationUtils.distanceBetween(this.yIm, this.yIn, d1, d2);
-      Log.d("MicroMsg.PoiAdapter", "mLat %s mLng %s lat %s lng %s dis %s.", new Object[] { Double.valueOf(this.yIm), Double.valueOf(this.yIn), Double.valueOf(d1), Double.valueOf(d2), Integer.valueOf(i) });
+      TextView localTextView = locala.EqJ;
+      double d1 = localf.BVq;
+      double d2 = localf.BVp;
+      int i = (int)TencentLocationUtils.distanceBetween(this.Emf, this.Emg, d1, d2);
+      Log.d("MicroMsg.PoiAdapter", "mLat %s mLng %s lat %s lng %s dis %s.", new Object[] { Double.valueOf(this.Emf), Double.valueOf(this.Emg), Double.valueOf(d1), Double.valueOf(d2), Integer.valueOf(i) });
       if (i < 100)
       {
         paramView = "100m内";
-        label484:
+        label490:
         localObject = paramView;
         if (!Util.isNullOrNil(paramViewGroup)) {
           localObject = paramView + " | " + paramViewGroup;
         }
         localTextView.setText((CharSequence)localObject);
-        if (paramInt != this.va) {
-          break label690;
+        if (paramInt != this.bFx) {
+          break label696;
         }
-        locala.yML.setVisibility(0);
+        locala.EqI.setVisibility(0);
       }
       for (;;)
       {
@@ -211,50 +214,50 @@ public final class e
         locala = (a)paramView.getTag();
         localView = paramView;
         break;
-        locala.yMM.setVisibility(0);
-        break label156;
-        label579:
+        locala.EqJ.setVisibility(0);
+        break label161;
+        label585:
         paramView = localf.mName;
-        break label180;
-        label588:
-        paramViewGroup = Util.nullAs(localf.yMR, "");
-        paramViewGroup = paramViewGroup + Util.nullAs(localf.yMS, "");
-        break label261;
+        break label186;
+        label594:
+        paramViewGroup = Util.nullAs(localf.EqO, "");
+        paramViewGroup = paramViewGroup + Util.nullAs(localf.EqP, "");
+        break label267;
         if (i >= 1000)
         {
           paramView = Util.safeFormatString("%.1fkm", new Object[] { Double.valueOf(i / 1000.0D) });
-          break label484;
+          break label490;
         }
         paramView = i + "m";
-        break label484;
-        locala.yML.setVisibility(4);
+        break label490;
+        locala.EqI.setVisibility(4);
       }
     }
   }
   
-  public final void iy(String paramString1, String paramString2)
+  public final void iK(String paramString1, String paramString2)
   {
-    this.yMI = paramString1;
-    this.yMJ = paramString2;
+    this.EqF = paramString1;
+    this.EqG = paramString2;
   }
   
-  public final void m(double paramDouble1, double paramDouble2)
+  public final void k(double paramDouble1, double paramDouble2)
   {
-    this.yIm = paramDouble1;
-    this.yIn = paramDouble2;
+    this.Emf = paramDouble1;
+    this.Emg = paramDouble2;
   }
   
   static final class a
   {
+    View EqH;
+    View EqI;
+    TextView EqJ;
     TextView titleView;
-    View yMK;
-    View yML;
-    TextView yMM;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.e
  * JD-Core Version:    0.7.0.1
  */

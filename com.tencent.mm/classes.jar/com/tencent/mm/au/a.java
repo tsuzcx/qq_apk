@@ -1,85 +1,93 @@
 package com.tencent.mm.au;
 
+import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bd;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.q.b;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.bq;
+import com.tencent.mm.model.c;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storagebase.h.b;
-import java.util.HashMap;
+import com.tencent.mm.storage.ca;
+import junit.framework.Assert;
 
-public class a
-  implements bd
+public final class a
+  extends q
+  implements m
 {
-  private static MMHandler iWG = null;
+  private com.tencent.mm.an.i callback;
+  private ca fvt;
+  private MMHandler handler;
   
-  public static boolean f(Runnable paramRunnable, long paramLong)
+  public a(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(104523);
-    if (paramRunnable == null)
+    AppMethodBeat.i(20484);
+    this.handler = new MMHandler()
     {
-      AppMethodBeat.o(104523);
-      return false;
-    }
-    boolean bool;
-    if (iWG == null)
-    {
-      if (iWG != null)
+      public final void handleMessage(Message paramAnonymousMessage)
       {
-        bool = true;
-        Log.w("MicroMsg.GIF.SubCoreGIF", "check decoder thread available fail, handler[%B] stack[%s]", new Object[] { Boolean.valueOf(bool), Util.getStack() });
-        if (iWG != null) {
-          iWG.removeCallbacksAndMessages(null);
-        }
-        MMHandler localMMHandler = new MMHandler("GIF-Decoder");
-        iWG = localMMHandler;
-        localMMHandler.setLogging(false);
+        AppMethodBeat.i(20483);
+        a.this.onGYNetEnd(999, 0, 0, "", null, null);
+        AppMethodBeat.o(20483);
       }
-    }
-    else
-    {
-      if (paramLong <= 0L) {
-        break label116;
-      }
-      iWG.postDelayed(paramRunnable, paramLong);
-    }
+    };
+    this.fvt = new ca();
+    this.fvt.setStatus(1);
+    this.fvt.Jm(paramString1);
+    this.fvt.setCreateTime(bq.RP(paramString1));
+    this.fvt.pJ(1);
+    this.fvt.setContent(paramString2);
+    this.fvt.setType(ab.QZ(paramString1));
+    bh.beI();
+    long l = c.bbO().aM(this.fvt);
+    if (l != -1L) {}
     for (;;)
     {
-      AppMethodBeat.o(104523);
-      return true;
+      Assert.assertTrue(bool);
+      Log.i("MicroMsg.NetSceneSendMsgFake", "new msg inserted to db , local id = ".concat(String.valueOf(l)));
+      AppMethodBeat.o(20484);
+      return;
       bool = false;
-      break;
-      label116:
-      iWG.post(paramRunnable);
     }
   }
   
-  public void clearPluginData(int paramInt) {}
-  
-  public HashMap<Integer, h.b> getBaseDBFactories()
+  public final int doScene(g paramg, com.tencent.mm.an.i parami)
   {
-    return null;
+    AppMethodBeat.i(20485);
+    this.callback = parami;
+    Log.i("MicroMsg.NetSceneSendMsgFake", "send local msg, msgId = " + this.fvt.field_msgId);
+    this.handler.sendEmptyMessageDelayed(0, 500L);
+    AppMethodBeat.o(20485);
+    return 999;
   }
   
-  public void onAccountPostReset(boolean paramBoolean)
+  public final int getType()
   {
-    AppMethodBeat.i(104524);
-    if (iWG != null) {
-      iWG.removeCallbacksAndMessages(null);
-    }
-    AppMethodBeat.o(104524);
+    return 522;
   }
   
-  public void onAccountRelease()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(104525);
-    if (iWG != null) {
-      iWG.removeCallbacksAndMessages(null);
-    }
-    AppMethodBeat.o(104525);
+    AppMethodBeat.i(20486);
+    Log.i("MicroMsg.NetSceneSendMsgFake", "recv local msg, msgId = " + this.fvt.field_msgId);
+    this.fvt.setStatus(2);
+    this.fvt.setCreateTime(bq.z(this.fvt.field_talker, System.currentTimeMillis() / 1000L));
+    bh.beI();
+    c.bbO().a(this.fvt.field_msgId, this.fvt);
+    this.callback.onSceneEnd(0, 0, paramString, this);
+    AppMethodBeat.o(20486);
   }
   
-  public void onSdcardMount(boolean paramBoolean) {}
+  public final q.b securityVerificationChecked(s params)
+  {
+    return q.b.lCx;
+  }
 }
 
 

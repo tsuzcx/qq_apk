@@ -11,7 +11,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public final class aa
 {
-  public HttpsURLConnection jFs;
+  public HttpsURLConnection mvV;
   
   public aa(String paramString)
   {
@@ -23,10 +23,10 @@ public final class aa
   private aa(URL paramURL)
   {
     AppMethodBeat.i(132884);
-    this.jFs = null;
+    this.mvV = null;
     try
     {
-      this.jFs = ((HttpsURLConnection)paramURL.openConnection());
+      this.mvV = ((HttpsURLConnection)paramURL.openConnection());
       AppMethodBeat.o(132884);
       return;
     }
@@ -52,28 +52,28 @@ public final class aa
     }
   }
   
-  public final void RU(String paramString)
+  public final void Zw(String paramString)
   {
     AppMethodBeat.i(132888);
-    this.jFs.setRequestProperty("Referer", paramString);
+    this.mvV.setRequestProperty("Referer", paramString);
     AppMethodBeat.o(132888);
   }
   
-  public final void bjX()
+  public final void btG()
   {
     AppMethodBeat.i(132889);
-    this.jFs.setUseCaches(true);
+    this.mvV.setUseCaches(true);
     AppMethodBeat.o(132889);
   }
   
   public final void disconnect()
   {
     AppMethodBeat.i(132885);
-    if (this.jFs != null) {}
+    if (this.mvV != null) {}
     try
     {
-      this.jFs.getInputStream().close();
-      this.jFs.disconnect();
+      this.mvV.getInputStream().close();
+      this.mvV.disconnect();
       AppMethodBeat.o(132885);
       return;
     }
@@ -86,23 +86,23 @@ public final class aa
     }
   }
   
-  public final void setConnectTimeout(int paramInt)
-  {
-    AppMethodBeat.i(132886);
-    this.jFs.setConnectTimeout(paramInt);
-    AppMethodBeat.o(132886);
-  }
-  
-  public final void setReadTimeout(int paramInt)
+  public final void xA(int paramInt)
   {
     AppMethodBeat.i(132887);
-    this.jFs.setReadTimeout(paramInt);
+    this.mvV.setReadTimeout(paramInt);
     AppMethodBeat.o(132887);
+  }
+  
+  public final void xz(int paramInt)
+  {
+    AppMethodBeat.i(132886);
+    this.mvV.setConnectTimeout(paramInt);
+    AppMethodBeat.o(132886);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.network.aa
  * JD-Core Version:    0.7.0.1
  */

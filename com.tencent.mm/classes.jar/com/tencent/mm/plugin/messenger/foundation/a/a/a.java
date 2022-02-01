@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.messenger.foundation.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bb;
+import com.tencent.mm.f.c.bb;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.az;
 

@@ -1,109 +1,84 @@
 package com.tencent.mm.plugin.finder.live.view.adapter;
 
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.plugin.finder.live.viewmodel.e;
-import com.tencent.mm.ui.widget.MMRoundCornerImageView;
+import com.tencent.mm.plugin.finder.b.f;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveApplyLinkSearchAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveApplyLinkSearchAdapter$ApplyLinkViewHolder;", "()V", "TAG", "", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderLiveLinkMicUser;", "Lkotlin/collections/ArrayList;", "keyword", "onAcceptLinkUser", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "acceptUser", "", "getOnAcceptLinkUser", "()Lkotlin/jvm/functions/Function1;", "setOnAcceptLinkUser", "(Lkotlin/jvm/functions/Function1;)V", "getItemCount", "", "onBindViewHolder", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "type", "updateData", "data", "", "ApplyLinkViewHolder", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderGameLiveRecentPlayAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderGameLiveRecentPlayAdapter$RecentPlayItemHolder;", "()V", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/live/view/convert/GameSearchItem;", "Lkotlin/collections/ArrayList;", "itemClickCallback", "Lkotlin/Function1;", "", "getItemClickCallback", "()Lkotlin/jvm/functions/Function1;", "setItemClickCallback", "(Lkotlin/jvm/functions/Function1;)V", "getItemCount", "", "onBindViewHolder", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "type", "updateData", "data", "", "RecentPlayItemHolder", "plugin-finder_release"})
 public final class b
   extends RecyclerView.a<a>
 {
-  private final String TAG;
-  private String dDv;
-  private final ArrayList<e> kgc;
-  public kotlin.g.a.b<? super e, x> uzX;
+  public final ArrayList<com.tencent.mm.plugin.finder.live.view.convert.b> mXB;
+  public kotlin.g.a.b<? super com.tencent.mm.plugin.finder.live.view.convert.b, x> yVM;
   
   public b()
   {
-    AppMethodBeat.i(247733);
-    this.TAG = "Finder.FinderLiveApplyLinkSearchAdapter";
-    this.kgc = new ArrayList();
-    this.dDv = "";
-    AppMethodBeat.o(247733);
+    AppMethodBeat.i(225148);
+    this.mXB = new ArrayList();
+    AppMethodBeat.o(225148);
   }
   
   public final int getItemCount()
   {
-    AppMethodBeat.i(247730);
-    int i = this.kgc.size();
-    AppMethodBeat.o(247730);
+    AppMethodBeat.i(225142);
+    int i = this.mXB.size();
+    AppMethodBeat.o(225142);
     return i;
   }
   
-  public final void j(List<e> paramList, String paramString)
-  {
-    AppMethodBeat.i(247732);
-    p.h(paramList, "data");
-    p.h(paramString, "keyword");
-    this.dDv = paramString;
-    this.kgc.clear();
-    this.kgc.addAll((Collection)paramList);
-    AppMethodBeat.o(247732);
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveApplyLinkSearchAdapter$ApplyLinkViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "acceptBtn", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "getAcceptBtn", "()Landroid/widget/TextView;", "avatar", "Lcom/tencent/mm/ui/widget/MMRoundCornerImageView;", "getAvatar", "()Lcom/tencent/mm/ui/widget/MMRoundCornerImageView;", "nicknameTv", "getNicknameTv", "typeIcon", "Landroid/widget/ImageView;", "getTypeIcon", "()Landroid/widget/ImageView;", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderGameLiveRecentPlayAdapter$RecentPlayItemHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "descTv", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "getDescTv", "()Landroid/widget/TextView;", "gameIv", "Landroid/widget/ImageView;", "getGameIv", "()Landroid/widget/ImageView;", "gameSearchItem", "Lcom/tencent/mm/plugin/finder/live/view/convert/GameSearchItem;", "getGameSearchItem", "()Lcom/tencent/mm/plugin/finder/live/view/convert/GameSearchItem;", "setGameSearchItem", "(Lcom/tencent/mm/plugin/finder/live/view/convert/GameSearchItem;)V", "titleTv", "getTitleTv", "plugin-finder_release"})
   public static final class a
     extends RecyclerView.v
   {
-    final TextView pIN;
-    final TextView uAa;
-    final MMRoundCornerImageView uzY;
-    final ImageView uzZ;
+    final TextView kEs;
+    final TextView titleTv;
+    final ImageView yVN;
+    public com.tencent.mm.plugin.finder.live.view.convert.b yVO;
     
     public a(View paramView)
     {
       super();
-      AppMethodBeat.i(247727);
-      this.uzY = ((MMRoundCornerImageView)paramView.findViewById(2131301069));
-      this.pIN = ((TextView)paramView.findViewById(2131301071));
-      this.uzZ = ((ImageView)paramView.findViewById(2131301072));
-      this.uAa = ((TextView)paramView.findViewById(2131301068));
-      AppMethodBeat.o(247727);
+      AppMethodBeat.i(281520);
+      this.titleTv = ((TextView)paramView.findViewById(b.f.game_title_tv));
+      this.kEs = ((TextView)paramView.findViewById(b.f.game_desc_tv));
+      this.yVN = ((ImageView)paramView.findViewById(b.f.game_icon_iv));
+      AppMethodBeat.o(281520);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
-    b(b paramb, int paramInt) {}
+    b(b paramb, com.tencent.mm.plugin.finder.live.view.convert.b paramb1) {}
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(247728);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-      a.b("com/tencent/mm/plugin/finder/live/view/adapter/FinderLiveApplyLinkSearchAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-      paramView = (e)j.L((List)b.a(this.uAc), this.gUj);
-      if (paramView != null)
-      {
-        localObject = this.uAc.uzX;
-        if (localObject != null) {
-          ((kotlin.g.a.b)localObject).invoke(paramView);
-        }
+      AppMethodBeat.i(252336);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bn(paramView);
+      a.c("com/tencent/mm/plugin/finder/live/view/adapter/FinderGameLiveRecentPlayAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      paramView = this.yVP.yVM;
+      if (paramView != null) {
+        paramView.invoke(this.yVQ);
       }
-      a.a(this, "com/tencent/mm/plugin/finder/live/view/adapter/FinderLiveApplyLinkSearchAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(247728);
+      a.a(this, "com/tencent/mm/plugin/finder/live/view/adapter/FinderGameLiveRecentPlayAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(252336);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.view.adapter.b
  * JD-Core Version:    0.7.0.1
  */

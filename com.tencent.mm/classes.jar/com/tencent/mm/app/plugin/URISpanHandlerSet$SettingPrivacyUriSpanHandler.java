@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
 import com.tencent.mm.pluginsdk.ui.span.i;
 import com.tencent.mm.ui.HomeUI;
 import com.tencent.mm.ui.LauncherUI;
@@ -20,14 +20,9 @@ class URISpanHandlerSet$SettingPrivacyUriSpanHandler
     super(paramURISpanHandlerSet);
   }
   
-  final int[] Xp()
-  {
-    return new int[] { 15 };
-  }
-  
   final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
   {
-    AppMethodBeat.i(231452);
+    AppMethodBeat.i(231652);
     if (paramu.type == 15)
     {
       if (parami != null) {
@@ -35,16 +30,16 @@ class URISpanHandlerSet$SettingPrivacyUriSpanHandler
       }
       paramView = LauncherUI.getInstance();
       if (paramView != null) {
-        paramView.ODR.getMainTabUI().blU("tab_settings");
+        paramView.VXk.getMainTabUI().byt("tab_settings");
       }
-      c.V(URISpanHandlerSet.a(this.dnW), "setting", ".ui.setting.SettingsPrivacyUI");
+      c.ad(URISpanHandlerSet.a(this.fgB), "setting", ".ui.setting.SettingsPrivacyUI");
       if (parami != null) {
         parami.b(paramu);
       }
-      AppMethodBeat.o(231452);
+      AppMethodBeat.o(231652);
       return true;
     }
-    AppMethodBeat.o(231452);
+    AppMethodBeat.o(231652);
     return false;
   }
   
@@ -55,13 +50,13 @@ class URISpanHandlerSet$SettingPrivacyUriSpanHandler
     {
       paramString = LauncherUI.getInstance();
       if (paramString != null) {
-        paramString.ODR.getMainTabUI().blU("tab_settings");
+        paramString.VXk.getMainTabUI().byt("tab_settings");
       }
       paramString = new Intent();
-      if ((URISpanHandlerSet.a(this.dnW) instanceof Service)) {
+      if ((URISpanHandlerSet.a(this.fgB) instanceof Service)) {
         paramString.addFlags(268435456);
       }
-      c.b(URISpanHandlerSet.a(this.dnW), "setting", ".ui.setting.SettingsPrivacyUI", paramString);
+      c.b(URISpanHandlerSet.a(this.fgB), "setting", ".ui.setting.SettingsPrivacyUI", paramString);
       AppMethodBeat.o(19758);
       return true;
     }
@@ -69,7 +64,12 @@ class URISpanHandlerSet$SettingPrivacyUriSpanHandler
     return false;
   }
   
-  final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
+  final int[] abR()
+  {
+    return new int[] { 15 };
+  }
+  
+  final com.tencent.mm.pluginsdk.ui.applet.u hi(String paramString)
   {
     AppMethodBeat.i(19756);
     if (paramString.trim().startsWith("weixin://setting/privacy"))

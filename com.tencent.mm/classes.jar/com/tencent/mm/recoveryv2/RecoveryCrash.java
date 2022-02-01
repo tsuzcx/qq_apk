@@ -8,127 +8,149 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class RecoveryCrash
 {
-  public c NBA;
-  public long NBx;
-  public String NBy;
-  g NBz;
+  long UPa;
+  String UPb;
+  h UPc;
+  c UPd;
   final Context mContext;
   
   private RecoveryCrash(Context paramContext)
   {
-    AppMethodBeat.i(193771);
+    AppMethodBeat.i(189951);
     this.mContext = paramContext;
-    this.NBz = new g.a(paramContext, "recovery_crash");
-    AppMethodBeat.o(193771);
+    this.UPc = new h.a(paramContext, "recovery_crash");
+    AppMethodBeat.o(189951);
   }
   
-  RecoveryCrash(Context paramContext, long paramLong, String paramString, g paramg, c paramc)
+  RecoveryCrash(Context paramContext, long paramLong, String paramString, h paramh, c paramc)
   {
     this.mContext = paramContext;
-    this.NBx = paramLong;
-    this.NBy = paramString;
-    this.NBz = paramg;
-    this.NBA = paramc;
+    this.UPa = paramLong;
+    this.UPb = paramString;
+    this.UPc = paramh;
+    this.UPd = paramc;
   }
   
-  private void guA()
+  private void hpY()
   {
-    AppMethodBeat.i(193772);
-    this.NBA = c.iK(this.mContext);
-    AppMethodBeat.o(193772);
+    AppMethodBeat.i(189955);
+    this.UPd = c.jN(this.mContext);
+    AppMethodBeat.o(189955);
   }
   
-  public static RecoveryCrash iI(Context paramContext)
+  public static RecoveryCrash jL(Context paramContext)
   {
-    AppMethodBeat.i(193769);
+    AppMethodBeat.i(189946);
     paramContext = new RecoveryCrash(paramContext);
-    paramContext.guA();
-    paramContext.guB();
-    AppMethodBeat.o(193769);
+    paramContext.hpY();
+    paramContext.hpZ();
+    AppMethodBeat.o(189946);
     return paramContext;
   }
   
-  public static RecoveryCrash iJ(Context paramContext)
+  public static RecoveryCrash jM(Context paramContext)
   {
-    AppMethodBeat.i(193770);
+    AppMethodBeat.i(189947);
     paramContext = new RecoveryCrash(paramContext);
-    paramContext.guA();
-    AppMethodBeat.o(193770);
+    paramContext.hpY();
+    AppMethodBeat.o(189947);
     return paramContext;
   }
   
-  public final RecoveryCrash ajr(int paramInt)
+  public final RecoveryCrash Uf(long paramLong)
   {
-    this.NBA.NBC = paramInt;
+    this.UPa = paramLong;
     return this;
   }
   
-  public final void guB()
+  public final RecoveryCrash arG(int paramInt)
   {
-    AppMethodBeat.i(193773);
-    this.NBz.guE();
-    if (this.NBy != null)
+    this.UPd.UPf = paramInt;
+    return this;
+  }
+  
+  public final void arg()
+  {
+    AppMethodBeat.i(189962);
+    c localc = this.UPd;
+    localc.UPc.hu("crash_count", localc.UPf).hqg();
+    this.UPc.nB("crash_version", this.UPb).ca("crash_time", this.UPa).hqg();
+    AppMethodBeat.o(189962);
+  }
+  
+  public final void hpZ()
+  {
+    AppMethodBeat.i(189957);
+    this.UPc.hqf();
+    if (this.UPb != null)
     {
-      AppMethodBeat.o(193773);
+      AppMethodBeat.o(189957);
       return;
     }
-    this.NBy = this.NBz.getString("crash_version", null);
-    this.NBx = Math.max(this.NBz.getLong("crash_time", 0L), 0L);
-    AppMethodBeat.o(193773);
+    this.UPb = this.UPc.getString("crash_version", null);
+    this.UPa = Math.max(this.UPc.getLong("crash_time", 0L), 0L);
+    AppMethodBeat.o(189957);
   }
   
-  public final RecoveryCrash guC()
+  public final long hqa()
   {
-    this.NBA.NBC = 0;
-    this.NBx = 0L;
-    this.NBy = null;
+    return this.UPa;
+  }
+  
+  public final int hqb()
+  {
+    return this.UPd.UPf;
+  }
+  
+  public final String hqc()
+  {
+    return this.UPb;
+  }
+  
+  public final RecoveryCrash hqd()
+  {
+    this.UPd.UPf = 0;
+    this.UPa = 0L;
+    this.UPb = null;
     return this;
   }
   
-  public final Record guD()
+  public final Record hqe()
   {
-    AppMethodBeat.i(193775);
-    guB();
+    AppMethodBeat.i(189963);
+    hpZ();
     Record localRecord = new Record();
-    localRecord.crashCount = this.NBA.NBC;
-    localRecord.LKH = this.NBx;
-    localRecord.NBB = this.NBy;
-    AppMethodBeat.o(193775);
+    localRecord.SSh = this.UPd.UPf;
+    localRecord.SSg = this.UPa;
+    localRecord.UPe = this.UPb;
+    AppMethodBeat.o(189963);
     return localRecord;
-  }
-  
-  public final void save()
-  {
-    AppMethodBeat.i(193774);
-    this.NBA.save();
-    this.NBz.mK("crash_version", this.NBy).bT("crash_time", this.NBx).guF();
-    AppMethodBeat.o(193774);
   }
   
   public static class Record
     implements Parcelable
   {
     public static final Parcelable.Creator<Record> CREATOR;
-    public long LKH;
-    public String NBB;
-    public int crashCount;
+    public long SSg;
+    public int SSh;
+    public String UPe;
     
     static
     {
-      AppMethodBeat.i(193768);
+      AppMethodBeat.i(189943);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(193768);
+      AppMethodBeat.o(189943);
     }
     
     Record() {}
     
     protected Record(Parcel paramParcel)
     {
-      AppMethodBeat.i(193766);
-      this.crashCount = paramParcel.readInt();
-      this.LKH = paramParcel.readLong();
-      this.NBB = paramParcel.readString();
-      AppMethodBeat.o(193766);
+      AppMethodBeat.i(189938);
+      this.SSh = paramParcel.readInt();
+      this.SSg = paramParcel.readLong();
+      this.UPe = paramParcel.readString();
+      AppMethodBeat.o(189938);
     }
     
     public int describeContents()
@@ -138,17 +160,17 @@ public final class RecoveryCrash
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(193767);
-      paramParcel.writeInt(this.crashCount);
-      paramParcel.writeLong(this.LKH);
-      paramParcel.writeString(this.NBB);
-      AppMethodBeat.o(193767);
+      AppMethodBeat.i(189942);
+      paramParcel.writeInt(this.SSh);
+      paramParcel.writeLong(this.SSg);
+      paramParcel.writeString(this.UPe);
+      AppMethodBeat.o(189942);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.recoveryv2.RecoveryCrash
  * JD-Core Version:    0.7.0.1
  */

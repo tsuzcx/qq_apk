@@ -1,65 +1,63 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.model.internal.i;
-import com.tencent.mm.protocal.protobuf.awi;
+import com.tencent.mm.plugin.finder.feed.model.internal.k;
+import com.tencent.mm.protocal.protobuf.bda;
+import com.tencent.mm.sdk.platformtools.Util;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/model/FinderLotteryHistoryData;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "lotteryInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveLotteryInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveLotteryInfo;)V", "getLotteryInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveLotteryInfo;", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderLiveTagData;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "tagInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveTagInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveTagInfo;)V", "getTagInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveTagInfo;", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "plugin-finder_release"})
 public final class an
-  implements bo
+  implements bu
 {
-  public final awi tWe;
+  public final bda zAP;
   
-  public an(awi paramawi)
+  public an(bda parambda)
   {
-    AppMethodBeat.i(248783);
-    this.tWe = paramawi;
-    AppMethodBeat.o(248783);
+    AppMethodBeat.i(282886);
+    this.zAP = parambda;
+    AppMethodBeat.o(282886);
   }
   
-  public final int a(i parami)
+  public final int a(k paramk)
   {
-    AppMethodBeat.i(248782);
-    p.h(parami, "obj");
-    if (!(parami instanceof an)) {
-      parami = null;
+    AppMethodBeat.i(282885);
+    p.k(paramk, "obj");
+    if (!(paramk instanceof an)) {
+      paramk = null;
     }
     for (;;)
     {
-      parami = (an)parami;
-      if (parami != null)
+      paramk = (an)paramk;
+      if (paramk != null)
       {
-        if (p.j(parami.tWe.id, this.tWe.id))
+        if (Util.isEqual(paramk.zAP.SOi, this.zAP.SOi))
         {
-          AppMethodBeat.o(248782);
+          AppMethodBeat.o(282885);
           return 0;
         }
-        if (this.tWe.iqg > parami.tWe.iqg)
-        {
-          AppMethodBeat.o(248782);
-          return 1;
-        }
+        AppMethodBeat.o(282885);
+        return -1;
       }
-      AppMethodBeat.o(248782);
+      AppMethodBeat.o(282885);
       return -1;
     }
   }
   
-  public final int cxn()
+  public final int bAQ()
   {
-    AppMethodBeat.i(248781);
+    AppMethodBeat.i(282884);
     int i = an.class.hashCode();
-    AppMethodBeat.o(248781);
+    AppMethodBeat.o(282884);
     return i;
   }
   
-  public final long lT()
+  public final long mf()
   {
-    AppMethodBeat.i(248780);
+    AppMethodBeat.i(282883);
     long l = hashCode();
-    AppMethodBeat.o(248780);
+    AppMethodBeat.o(282883);
     return l;
   }
 }

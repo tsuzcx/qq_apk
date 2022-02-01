@@ -18,7 +18,7 @@ public class a
   
   private boolean d(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(221454);
+    AppMethodBeat.i(232100);
     if (this.r == null)
     {
       this.r = new d(true);
@@ -26,7 +26,7 @@ public class a
       if (!this.r.a())
       {
         TXCLog.e("TXCBeauty4Filter", "mSkinBlurFilterVertical init failed!!, break init");
-        AppMethodBeat.o(221454);
+        AppMethodBeat.o(232100);
         return false;
       }
     }
@@ -37,7 +37,7 @@ public class a
       if (!this.s.a())
       {
         TXCLog.e("TXCBeauty4Filter", "mSkinBlurFilterHorizontal init failed!!, break init");
-        AppMethodBeat.o(221454);
+        AppMethodBeat.o(232100);
         return false;
       }
     }
@@ -48,7 +48,7 @@ public class a
       if (!this.t.a())
       {
         TXCLog.e("TXCBeauty4Filter", "mBorderFilter init failed!!, break init");
-        AppMethodBeat.o(221454);
+        AppMethodBeat.o(232100);
         return false;
       }
     }
@@ -59,7 +59,7 @@ public class a
       if (!this.v.a())
       {
         TXCLog.e("TXCBeauty4Filter", "mBorderBlurFilterVertical init failed!!, break init");
-        AppMethodBeat.o(221454);
+        AppMethodBeat.o(232100);
         return false;
       }
     }
@@ -70,7 +70,7 @@ public class a
       if (!this.w.a())
       {
         TXCLog.e("TXCBeauty4Filter", "mBorderBlurFilterHorizontal init failed!!, break init");
-        AppMethodBeat.o(221454);
+        AppMethodBeat.o(232100);
         return false;
       }
     }
@@ -81,7 +81,7 @@ public class a
       if (!this.u.a())
       {
         TXCLog.e("TXCBeauty4Filter", "mSmoothFilter init failed!!, break init");
-        AppMethodBeat.o(221454);
+        AppMethodBeat.o(232100);
         return false;
       }
     }
@@ -90,13 +90,13 @@ public class a
     this.u.b(this.y);
     this.u.c(this.z);
     a(paramInt1, paramInt2);
-    AppMethodBeat.o(221454);
+    AppMethodBeat.o(232100);
     return true;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(221453);
+    AppMethodBeat.i(232097);
     super.a(paramInt1, paramInt2);
     this.e = paramInt1;
     this.f = paramInt2;
@@ -106,12 +106,12 @@ public class a
     this.v.a(paramInt1, paramInt2);
     this.w.a(paramInt1, paramInt2);
     this.u.a(paramInt1, paramInt2);
-    AppMethodBeat.o(221453);
+    AppMethodBeat.o(232097);
   }
   
   public int b(int paramInt)
   {
-    AppMethodBeat.i(221455);
+    AppMethodBeat.i(232101);
     int i;
     if ((this.x <= 0.0F) && (this.y <= 0.0F))
     {
@@ -127,68 +127,68 @@ public class a
       j = this.w.b(j);
       i = this.u.a(paramInt, i, j);
     }
-    AppMethodBeat.o(221455);
+    AppMethodBeat.o(232101);
     return i;
   }
   
   public void c(int paramInt)
   {
-    AppMethodBeat.i(221456);
+    AppMethodBeat.i(232102);
     this.x = (paramInt / 10.0F);
     if (this.u != null) {
       this.u.a(this.x);
     }
-    AppMethodBeat.o(221456);
+    AppMethodBeat.o(232102);
   }
   
   public boolean c(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(221452);
+    AppMethodBeat.i(232096);
     this.e = paramInt1;
     this.f = paramInt2;
     boolean bool = d(paramInt1, paramInt2);
-    AppMethodBeat.o(221452);
+    AppMethodBeat.o(232096);
     return bool;
   }
   
   public void d(int paramInt)
   {
-    AppMethodBeat.i(221457);
+    AppMethodBeat.i(232105);
     this.y = (paramInt / 10.0F);
     if (this.u != null) {
       this.u.b(this.y);
     }
-    AppMethodBeat.o(221457);
+    AppMethodBeat.o(232105);
   }
   
   public void e()
   {
-    AppMethodBeat.i(221461);
+    AppMethodBeat.i(232112);
     super.e();
-    q();
-    AppMethodBeat.o(221461);
+    r();
+    AppMethodBeat.o(232112);
   }
   
   public void e(int paramInt)
   {
-    AppMethodBeat.i(221458);
+    AppMethodBeat.i(232106);
     this.z = (paramInt / 10.0F);
     if (this.u != null) {
       this.u.c(this.z);
     }
-    AppMethodBeat.o(221458);
+    AppMethodBeat.o(232106);
   }
   
   public void f(int paramInt)
   {
-    AppMethodBeat.i(221459);
+    AppMethodBeat.i(232109);
     this.u.d(paramInt / 10.0F);
-    AppMethodBeat.o(221459);
+    AppMethodBeat.o(232109);
   }
   
-  void q()
+  void r()
   {
-    AppMethodBeat.i(221460);
+    AppMethodBeat.i(232111);
     if (this.r != null)
     {
       this.r.e();
@@ -219,12 +219,12 @@ public class a
       this.w.e();
       this.w = null;
     }
-    AppMethodBeat.o(221460);
+    AppMethodBeat.o(232111);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.c.a
  * JD-Core Version:    0.7.0.1
  */

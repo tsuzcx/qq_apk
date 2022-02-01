@@ -14,15 +14,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.os.SystemClock;
-import android.support.v4.os.d;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.support.v4.view.ViewPager.d;
-import android.support.v4.view.a;
-import android.support.v4.view.a.e;
-import android.support.v4.view.q;
-import android.support.v4.view.u;
-import android.support.v4.view.v;
-import android.support.v4.widget.i;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.FocusFinder;
@@ -41,6 +32,13 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.animation.Interpolator;
 import android.widget.EdgeEffect;
 import android.widget.Scroller;
+import androidx.core.c.b;
+import androidx.core.c.c;
+import androidx.core.g.a.f;
+import androidx.core.g.w;
+import androidx.core.g.x;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
+import androidx.viewpager.widget.ViewPager.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -75,7 +73,7 @@ public class WxViewPager
   private static final f sPositionComparator;
   private List<ViewPager.OnPageChangeListener> listeners;
   private int mActivePointerId;
-  private q mAdapter;
+  private androidx.viewpager.widget.a mAdapter;
   private d mAdapterChangeListener;
   private int mBottomPageBounds;
   private boolean mCalledSuper;
@@ -106,7 +104,7 @@ public class WxViewPager
   private float mLastMotionX;
   private float mLastMotionY;
   private float mLastOffset;
-  private i mLeftEdge;
+  private androidx.core.widget.d mLeftEdge;
   private Drawable mMarginDrawable;
   private int mMaximumVelocity;
   private int mMinimumVelocity;
@@ -120,7 +118,7 @@ public class WxViewPager
   private Parcelable mRestoredAdapterState;
   private ClassLoader mRestoredClassLoader;
   private int mRestoredCurItem;
-  private i mRightEdge;
+  private androidx.core.widget.d mRightEdge;
   private int mScrollState;
   private Scroller mScroller;
   private boolean mScrollingCacheEnabled;
@@ -404,7 +402,7 @@ public class WxViewPager
     {
       if (paramBoolean)
       {
-        u.b(this, this.mEndScrollRunnable);
+        w.a(this, this.mEndScrollRunnable);
         AppMethodBeat.o(142949);
         return;
       }
@@ -448,7 +446,7 @@ public class WxViewPager
       if (paramBoolean) {}
       for (int j = 2;; j = 0)
       {
-        u.q(getChildAt(i), j);
+        w.q(getChildAt(i), j);
         i += 1;
         break;
       }
@@ -461,6 +459,7 @@ public class WxViewPager
     AppMethodBeat.i(142965);
     this.mIsBeingDragged = false;
     this.mIsUnableToDrag = false;
+    this.mIgnoreGutter = false;
     if (this.mVelocityTracker != null)
     {
       this.mVelocityTracker.recycle();
@@ -585,32 +584,32 @@ public class WxViewPager
   
   private void notifyOnPageScrollStateChanged(int paramInt)
   {
-    AppMethodBeat.i(205348);
+    AppMethodBeat.i(209801);
     Iterator localIterator = this.listeners.iterator();
     while (localIterator.hasNext()) {
       ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
     }
-    AppMethodBeat.o(205348);
+    AppMethodBeat.o(209801);
   }
   
   private void notifyOnPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    AppMethodBeat.i(205346);
+    AppMethodBeat.i(209798);
     Iterator localIterator = this.listeners.iterator();
     while (localIterator.hasNext()) {
       ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
     }
-    AppMethodBeat.o(205346);
+    AppMethodBeat.o(209798);
   }
   
   private void notifyOnPageSelected(int paramInt)
   {
-    AppMethodBeat.i(205347);
+    AppMethodBeat.i(209800);
     Iterator localIterator = this.listeners.iterator();
     while (localIterator.hasNext()) {
       ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
     }
-    AppMethodBeat.o(205347);
+    AppMethodBeat.o(209800);
   }
   
   private void onSecondaryPointerUp(MotionEvent paramMotionEvent)
@@ -709,7 +708,7 @@ public class WxViewPager
           f1 = paramFloat;
           if (i != 0)
           {
-            bool1 = this.mLeftEdge.G(Math.abs(paramFloat - f2) / k);
+            bool1 = this.mLeftEdge.m(Math.abs(paramFloat - f2) / k);
             f1 = paramFloat;
           }
         }
@@ -724,7 +723,7 @@ public class WxViewPager
           {
             bool1 = bool2;
             if (j != 0) {
-              bool1 = this.mRightEdge.G(Math.abs(f2 - f1) / k);
+              bool1 = this.mRightEdge.m(Math.abs(f2 - f1) / k);
             }
           }
           else
@@ -783,7 +782,7 @@ public class WxViewPager
     for (int i = 0; i < getChildCount(); i = j + 1)
     {
       j = i;
-      if (!((LayoutParams)getChildAt(i).getLayoutParams()).QY)
+      if (!((LayoutParams)getChildAt(i).getLayoutParams()).avM)
       {
         removeViewAt(i);
         j = i - 1;
@@ -955,11 +954,11 @@ public class WxViewPager
   
   public void addOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
   {
-    AppMethodBeat.i(205349);
+    AppMethodBeat.i(209803);
     if (!this.listeners.contains(paramOnPageChangeListener)) {
       this.listeners.add(paramOnPageChangeListener);
     }
-    AppMethodBeat.o(205349);
+    AppMethodBeat.o(209803);
   }
   
   public void addTouchables(ArrayList<View> paramArrayList)
@@ -991,16 +990,16 @@ public class WxViewPager
     {
       Assert.assertNotNull(paramLayoutParams);
       LayoutParams localLayoutParams = (LayoutParams)paramLayoutParams;
-      localLayoutParams.QY |= paramView instanceof a;
+      localLayoutParams.avM |= paramView instanceof a;
       if (this.mInLayout)
       {
-        if (localLayoutParams.QY)
+        if (localLayoutParams.avM)
         {
           paramView = new IllegalStateException("Cannot add pager decor view during layout");
           AppMethodBeat.o(142936);
           throw paramView;
         }
-        localLayoutParams.QZ = true;
+        localLayoutParams.avN = true;
         addViewInLayout(paramView, paramInt, paramLayoutParams);
         AppMethodBeat.o(142936);
         return;
@@ -1156,7 +1155,7 @@ public class WxViewPager
         i -= 1;
       }
     }
-    if ((paramBoolean) && (u.n(paramView, -paramInt1)))
+    if ((paramBoolean) && (w.n(paramView, -paramInt1)))
     {
       AppMethodBeat.o(142967);
       return true;
@@ -1229,7 +1228,7 @@ public class WxViewPager
           scrollTo(0, m);
         }
       }
-      u.X(this);
+      w.G(this);
       AppMethodBeat.o(142946);
       return;
     }
@@ -1328,7 +1327,7 @@ public class WxViewPager
           while (i < k)
           {
             localObject = (LayoutParams)getChildAt(i).getLayoutParams();
-            if (!((LayoutParams)localObject).QY) {
+            if (!((LayoutParams)localObject).avM) {
               ((LayoutParams)localObject).widthFactor = 0.0F;
             }
             i += 1;
@@ -1401,12 +1400,12 @@ public class WxViewPager
     super.draw(paramCanvas);
     int k = 0;
     int i = 0;
-    int m = u.S(this);
+    int m = w.z(this);
     boolean bool;
     if ((m == 0) || ((m == 1) && (this.mAdapter != null) && (this.mAdapter.getCount() > 1)))
     {
       int j;
-      if (!this.mLeftEdge.Uv.isFinished())
+      if (!this.mLeftEdge.Qf.isFinished())
       {
         k = paramCanvas.save();
         i = getHeight() - getPaddingTop() - getPaddingBottom();
@@ -1414,11 +1413,11 @@ public class WxViewPager
         paramCanvas.rotate(270.0F);
         paramCanvas.translate(-i + getPaddingTop(), this.mFirstOffset * m);
         this.mLeftEdge.setSize(i, m);
-        j = this.mLeftEdge.draw(paramCanvas) | false;
+        j = this.mLeftEdge.a(paramCanvas) | false;
         paramCanvas.restoreToCount(k);
       }
       k = j;
-      if (!this.mRightEdge.Uv.isFinished())
+      if (!this.mRightEdge.Qf.isFinished())
       {
         m = paramCanvas.save();
         k = getWidth();
@@ -1428,19 +1427,19 @@ public class WxViewPager
         paramCanvas.rotate(90.0F);
         paramCanvas.translate(-getPaddingTop(), -(this.mLastOffset + 1.0F) * k);
         this.mRightEdge.setSize(n - i1 - i2, k);
-        bool = j | this.mRightEdge.draw(paramCanvas);
+        bool = j | this.mRightEdge.a(paramCanvas);
         paramCanvas.restoreToCount(m);
       }
     }
     for (;;)
     {
       if (bool) {
-        u.X(this);
+        w.G(this);
       }
       AppMethodBeat.o(142959);
       return;
-      this.mLeftEdge.Uv.finish();
-      this.mRightEdge.Uv.finish();
+      this.mLeftEdge.Qf.finish();
+      this.mRightEdge.Qf.finish();
     }
   }
   
@@ -1594,7 +1593,7 @@ public class WxViewPager
     return paramLayoutParams;
   }
   
-  public q getAdapter()
+  public androidx.viewpager.widget.a getAdapter()
   {
     return this.mAdapter;
   }
@@ -1606,7 +1605,7 @@ public class WxViewPager
     if (this.mDrawingOrder == 2) {
       i = paramInt1 - 1 - paramInt2;
     }
-    paramInt1 = ((LayoutParams)((View)this.mDrawingOrderedChildren.get(i)).getLayoutParams()).Ra;
+    paramInt1 = ((LayoutParams)((View)this.mDrawingOrderedChildren.get(i)).getLayoutParams()).avO;
     AppMethodBeat.o(142918);
     return paramInt1;
   }
@@ -1693,17 +1692,17 @@ public class WxViewPager
     this.mScroller = new Scroller(localContext, sInterpolator);
     ViewConfiguration localViewConfiguration = ViewConfiguration.get(localContext);
     float f = localContext.getResources().getDisplayMetrics().density;
-    this.mTouchSlop = v.a(localViewConfiguration);
+    this.mTouchSlop = x.a(localViewConfiguration);
     this.mMinimumVelocity = ((int)(400.0F * f));
     this.mMaximumVelocity = localViewConfiguration.getScaledMaximumFlingVelocity();
-    this.mLeftEdge = new i(localContext);
-    this.mRightEdge = new i(localContext);
+    this.mLeftEdge = new androidx.core.widget.d(localContext);
+    this.mRightEdge = new androidx.core.widget.d(localContext);
     this.mFlingDistance = ((int)(25.0F * f));
     this.mCloseEnough = ((int)(2.0F * f));
     this.mDefaultGutterSize = ((int)(16.0F * f));
-    u.a(this, new c());
-    if (u.Y(this) == 0) {
-      u.p(this, 1);
+    w.a(this, new c());
+    if (w.H(this) == 0) {
+      w.p(this, 1);
     }
     AppMethodBeat.o(142903);
   }
@@ -1806,6 +1805,7 @@ public class WxViewPager
     {
       this.mIsBeingDragged = false;
       this.mIsUnableToDrag = false;
+      this.mIgnoreGutter = false;
       this.mActivePointerId = -1;
       if (this.mVelocityTracker != null)
       {
@@ -1849,7 +1849,7 @@ public class WxViewPager
         float f4 = Math.abs(f1);
         float f3 = paramMotionEvent.getY(i);
         float f5 = Math.abs(f3 - this.mInitialMotionY);
-        if ((f1 != 0.0F) && (!isGutterDrag(this.mLastMotionX, f1)) && (canScroll(this, false, (int)f1, (int)f2, (int)f3)))
+        if ((f1 != 0.0F) && (!isGutterDrag(this.mLastMotionX, f1)) && (!this.mIgnoreGutter) && (canScroll(this, false, (int)f1, (int)f2, (int)f3)))
         {
           this.mLastMotionX = f2;
           this.mLastMotionY = f3;
@@ -1864,7 +1864,7 @@ public class WxViewPager
           if (f1 > 0.0F)
           {
             f1 = this.mInitialMotionX + this.mTouchSlop;
-            label345:
+            label360:
             this.mLastMotionX = f1;
             this.mLastMotionY = f3;
             setScrollingCacheEnabled(true);
@@ -1872,10 +1872,10 @@ public class WxViewPager
         }
         while ((this.mIsBeingDragged) && (performDrag(f2)))
         {
-          u.X(this);
+          w.G(this);
           break;
           f1 = this.mInitialMotionX - this.mTouchSlop;
-          break label345;
+          break label360;
           if (f5 > this.mTouchSlop) {
             this.mIsUnableToDrag = true;
           }
@@ -1932,11 +1932,11 @@ public class WxViewPager
         break label650;
       }
       localLayoutParams = (LayoutParams)localView.getLayoutParams();
-      if (!localLayoutParams.QY) {
+      if (!localLayoutParams.avM) {
         break label650;
       }
-      paramInt4 = localLayoutParams.gravity;
-      n = localLayoutParams.gravity;
+      paramInt4 = localLayoutParams.ek;
+      n = localLayoutParams.ek;
       switch (paramInt4 & 0x7)
       {
       case 2: 
@@ -2002,16 +2002,16 @@ public class WxViewPager
         if (localView.getVisibility() != 8)
         {
           localLayoutParams = (LayoutParams)localView.getLayoutParams();
-          if (!localLayoutParams.QY)
+          if (!localLayoutParams.avM)
           {
             b localb = infoForChild(localView);
             if (localb != null)
             {
               float f = paramInt4;
               i = (int)(localb.offset * f) + paramInt1;
-              if (localLayoutParams.QZ)
+              if (localLayoutParams.avN)
               {
-                localLayoutParams.QZ = false;
+                localLayoutParams.avN = false;
                 f = paramInt4;
                 localView.measure(View.MeasureSpec.makeMeasureSpec((int)(localLayoutParams.widthFactor * f), 1073741824), View.MeasureSpec.makeMeasureSpec(i2 - paramInt2 - j, 1073741824));
               }
@@ -2070,10 +2070,10 @@ public class WxViewPager
         {
           i = paramInt1;
           j = paramInt2;
-          if (localLayoutParams.QY)
+          if (localLayoutParams.avM)
           {
-            i = localLayoutParams.gravity & 0x7;
-            m = localLayoutParams.gravity & 0x70;
+            i = localLayoutParams.ek & 0x7;
+            m = localLayoutParams.ek & 0x70;
             i1 = -2147483648;
             j = -2147483648;
             if ((m != 48) && (m != 80)) {
@@ -2164,7 +2164,7 @@ public class WxViewPager
           if (localView.getVisibility() != 8)
           {
             localLayoutParams = (LayoutParams)localView.getLayoutParams();
-            if (((localLayoutParams == null) || (!localLayoutParams.QY)) && (localLayoutParams != null))
+            if (((localLayoutParams == null) || (!localLayoutParams.avM)) && (localLayoutParams != null))
             {
               float f = paramInt1;
               localView.measure(View.MeasureSpec.makeMeasureSpec((int)(localLayoutParams.widthFactor * f), 1073741824), this.mChildHeightMeasureSpec);
@@ -2209,10 +2209,10 @@ public class WxViewPager
       {
         localView = getChildAt(m);
         LayoutParams localLayoutParams = (LayoutParams)localView.getLayoutParams();
-        if (!localLayoutParams.QY) {
+        if (!localLayoutParams.avM) {
           break label387;
         }
-        switch (localLayoutParams.gravity & 0x7)
+        switch (localLayoutParams.ek & 0x7)
         {
         case 2: 
         case 4: 
@@ -2261,7 +2261,7 @@ public class WxViewPager
         while (paramInt1 < i)
         {
           localView = getChildAt(paramInt1);
-          if (!((LayoutParams)localView.getLayoutParams()).QY)
+          if (!((LayoutParams)localView.getLayoutParams()).avM)
           {
             paramFloat = (localView.getLeft() - paramInt2) / getClientWidth();
             this.mPageTransformer.o(localView, paramFloat);
@@ -2324,14 +2324,14 @@ public class WxViewPager
     super.onRestoreInstanceState(paramParcelable.getSuperState());
     if (this.mAdapter != null)
     {
-      this.mAdapter.restoreState(paramParcelable.Rb, paramParcelable.Rc);
+      this.mAdapter.restoreState(paramParcelable.avP, paramParcelable.avQ);
       setCurrentItemInternal(paramParcelable.position, false, true);
       AppMethodBeat.o(142935);
       return;
     }
     this.mRestoredCurItem = paramParcelable.position;
-    this.mRestoredAdapterState = paramParcelable.Rb;
-    this.mRestoredClassLoader = paramParcelable.Rc;
+    this.mRestoredAdapterState = paramParcelable.avP;
+    this.mRestoredClassLoader = paramParcelable.avQ;
     AppMethodBeat.o(142935);
   }
   
@@ -2341,7 +2341,7 @@ public class WxViewPager
     SavedState localSavedState = new SavedState(super.onSaveInstanceState());
     localSavedState.position = this.mCurItem;
     if (this.mAdapter != null) {
-      localSavedState.Rb = this.mAdapter.saveState();
+      localSavedState.avP = this.mAdapter.saveState();
     }
     AppMethodBeat.o(142934);
     return localSavedState;
@@ -2389,7 +2389,7 @@ public class WxViewPager
     for (;;)
     {
       if (i != 0) {
-        u.X(this);
+        w.G(this);
       }
       AppMethodBeat.o(142953);
       return true;
@@ -2460,8 +2460,8 @@ public class WxViewPager
         }
         this.mActivePointerId = -1;
         endDrag();
-        boolean bool3 = this.mLeftEdge.ga();
-        boolean bool2 = this.mRightEdge.ga() | bool3;
+        boolean bool3 = this.mLeftEdge.hD();
+        boolean bool2 = this.mRightEdge.hD() | bool3;
         continue;
         bool2 = m;
         if (this.mIsBeingDragged)
@@ -2469,8 +2469,8 @@ public class WxViewPager
           scrollToItem(this.mCurItem, true, 0, false);
           this.mActivePointerId = -1;
           endDrag();
-          bool3 = this.mLeftEdge.ga();
-          bool2 = this.mRightEdge.ga() | bool3;
+          bool3 = this.mLeftEdge.hD();
+          bool2 = this.mRightEdge.hD() | bool3;
           continue;
           int k = paramMotionEvent.getActionIndex();
           this.mLastMotionX = paramMotionEvent.getX(k);
@@ -2757,7 +2757,7 @@ public class WxViewPager
             if (localObject4 != null) {}
             for (localObject2 = ((b)localObject4).object;; localObject2 = null)
             {
-              ((q)localObject3).setPrimaryItem(this, paramInt, localObject2);
+              ((androidx.viewpager.widget.a)localObject3).setPrimaryItem(this, paramInt, localObject2);
               this.mAdapter.finishUpdate(this);
               i = getChildCount();
               paramInt = 0;
@@ -2765,8 +2765,8 @@ public class WxViewPager
               {
                 localObject3 = getChildAt(paramInt);
                 localObject2 = (LayoutParams)((View)localObject3).getLayoutParams();
-                ((LayoutParams)localObject2).Ra = paramInt;
-                if ((!((LayoutParams)localObject2).QY) && (((LayoutParams)localObject2).widthFactor == 0.0F))
+                ((LayoutParams)localObject2).avO = paramInt;
+                if ((!((LayoutParams)localObject2).avM) && (((LayoutParams)localObject2).widthFactor == 0.0F))
                 {
                   localObject3 = infoForChild((View)localObject3);
                   if (localObject3 != null)
@@ -2815,9 +2815,9 @@ public class WxViewPager
   
   public void removeOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
   {
-    AppMethodBeat.i(205350);
+    AppMethodBeat.i(209804);
     this.listeners.remove(paramOnPageChangeListener);
-    AppMethodBeat.o(205350);
+    AppMethodBeat.o(209804);
   }
   
   public void removeView(View paramView)
@@ -2833,9 +2833,9 @@ public class WxViewPager
     AppMethodBeat.o(142937);
   }
   
-  public void setAdapter(q paramq)
+  public void setAdapter(androidx.viewpager.widget.a parama)
   {
-    AppMethodBeat.i(142906);
+    AppMethodBeat.i(209794);
     if (this.mAdapter != null)
     {
       this.mAdapter.unregisterDataSetObserver(this.mObserver);
@@ -2852,7 +2852,7 @@ public class WxViewPager
       removeNonDecorViews();
       scrollTo(0, 0);
     }
-    this.mAdapter = paramq;
+    this.mAdapter = parama;
     this.mExpectedAdapterCount = 0;
     if (this.mAdapter != null)
     {
@@ -2871,18 +2871,18 @@ public class WxViewPager
         this.mRestoredCurItem = -1;
         this.mRestoredAdapterState = null;
         this.mRestoredClassLoader = null;
-        AppMethodBeat.o(142906);
+        AppMethodBeat.o(209794);
         return;
       }
       if (!bool)
       {
         populate();
-        AppMethodBeat.o(142906);
+        AppMethodBeat.o(209794);
         return;
       }
       requestLayout();
     }
-    AppMethodBeat.o(142906);
+    AppMethodBeat.o(209794);
   }
   
   void setChildrenDrawingOrderEnabledCompat(boolean paramBoolean)
@@ -2934,10 +2934,10 @@ public class WxViewPager
   
   public void setCurrentItem(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(205345);
+    AppMethodBeat.i(209795);
     this.mPopulatePending = false;
     setCurrentItemInternal(paramInt, paramBoolean1, paramBoolean2);
-    AppMethodBeat.o(205345);
+    AppMethodBeat.o(209795);
   }
   
   void setCurrentItemInternal(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
@@ -3102,7 +3102,7 @@ public class WxViewPager
   public void setPageTransformer(boolean paramBoolean, ViewPager.d paramd)
   {
     int j = 1;
-    AppMethodBeat.i(142916);
+    AppMethodBeat.i(209806);
     boolean bool1;
     boolean bool2;
     label34:
@@ -3140,7 +3140,7 @@ public class WxViewPager
       if (i != 0) {
         populate();
       }
-      AppMethodBeat.o(142916);
+      AppMethodBeat.o(209806);
       return;
       bool1 = false;
       break;
@@ -3154,6 +3154,12 @@ public class WxViewPager
   public void setScroller(Scroller paramScroller)
   {
     this.mScroller = paramScroller;
+  }
+  
+  public void setUnableDrag(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.mIsUnableToDrag = paramBoolean1;
+    this.mIgnoreGutter = paramBoolean2;
   }
   
   void smoothScrollTo(int paramInt1, int paramInt2)
@@ -3198,7 +3204,7 @@ public class WxViewPager
     {
       paramInt1 = Math.min(paramInt1, 600);
       this.mScroller.startScroll(i, j, k, paramInt2, paramInt1);
-      u.X(this);
+      w.G(this);
       AppMethodBeat.o(142927);
       return;
       f1 = paramInt1;
@@ -3221,10 +3227,10 @@ public class WxViewPager
   public static class LayoutParams
     extends ViewGroup.LayoutParams
   {
-    public boolean QY;
-    boolean QZ;
-    int Ra;
-    public int gravity;
+    public boolean avM;
+    boolean avN;
+    int avO;
+    public int ek;
     int position;
     float widthFactor;
     
@@ -3240,7 +3246,7 @@ public class WxViewPager
       AppMethodBeat.i(142888);
       this.widthFactor = 0.0F;
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, WxViewPager.LAYOUT_ATTRS);
-      this.gravity = paramContext.getInteger(0, 48);
+      this.ek = paramContext.getInteger(0, 48);
       paramContext.recycle();
       AppMethodBeat.o(142888);
     }
@@ -3250,14 +3256,14 @@ public class WxViewPager
     extends View.BaseSavedState
   {
     public static final Parcelable.Creator<SavedState> CREATOR;
-    Parcelable Rb;
-    ClassLoader Rc;
+    Parcelable avP;
+    ClassLoader avQ;
     int position;
     
     static
     {
       AppMethodBeat.i(142899);
-      CREATOR = android.support.v4.os.c.a(new d() {});
+      CREATOR = b.a(new c() {});
       AppMethodBeat.o(142899);
     }
     
@@ -3270,8 +3276,8 @@ public class WxViewPager
         localClassLoader = getClass().getClassLoader();
       }
       this.position = paramParcel.readInt();
-      this.Rb = paramParcel.readParcelable(localClassLoader);
-      this.Rc = localClassLoader;
+      this.avP = paramParcel.readParcelable(localClassLoader);
+      this.avQ = localClassLoader;
       AppMethodBeat.o(142898);
     }
     
@@ -3293,14 +3299,14 @@ public class WxViewPager
       AppMethodBeat.i(142896);
       super.writeToParcel(paramParcel, paramInt);
       paramParcel.writeInt(this.position);
-      paramParcel.writeParcelable(this.Rb, paramInt);
+      paramParcel.writeParcelable(this.avP, paramInt);
       AppMethodBeat.o(142896);
     }
   }
   
   static abstract interface a {}
   
-  static final class b
+  static class b
   {
     Object object;
     float offset;
@@ -3310,11 +3316,11 @@ public class WxViewPager
   }
   
   final class c
-    extends a
+    extends androidx.core.g.a
   {
     c() {}
     
-    private boolean fG()
+    private boolean hE()
     {
       AppMethodBeat.i(142892);
       if ((WxViewPager.this.mAdapter != null) && (WxViewPager.this.mAdapter.getCount() > 1))
@@ -3331,30 +3337,30 @@ public class WxViewPager
       AppMethodBeat.i(142889);
       super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
       paramAccessibilityEvent.setClassName(WxViewPager.class.getName());
-      paramView = e.fJ();
-      paramView.setScrollable(fG());
+      paramView = f.hw();
+      paramView.ab(hE());
       if ((paramAccessibilityEvent.getEventType() == 4096) && (WxViewPager.this.mAdapter != null))
       {
-        paramView.setItemCount(WxViewPager.this.mAdapter.getCount());
-        paramView.setFromIndex(WxViewPager.this.mCurItem);
-        paramView.setToIndex(WxViewPager.this.mCurItem);
+        paramView.bE(WxViewPager.this.mAdapter.getCount());
+        paramView.bF(WxViewPager.this.mCurItem);
+        paramView.bG(WxViewPager.this.mCurItem);
       }
       AppMethodBeat.o(142889);
     }
     
-    public final void onInitializeAccessibilityNodeInfo(View paramView, android.support.v4.view.a.c paramc)
+    public final void onInitializeAccessibilityNodeInfo(View paramView, androidx.core.g.a.d paramd)
     {
-      AppMethodBeat.i(142890);
-      super.onInitializeAccessibilityNodeInfo(paramView, paramc);
-      paramc.setClassName(WxViewPager.class.getName());
-      paramc.setScrollable(fG());
+      AppMethodBeat.i(202602);
+      super.onInitializeAccessibilityNodeInfo(paramView, paramd);
+      paramd.t(WxViewPager.class.getName());
+      paramd.ab(hE());
       if (WxViewPager.this.canScrollHorizontally(1)) {
-        paramc.addAction(4096);
+        paramd.bA(4096);
       }
       if (WxViewPager.this.canScrollHorizontally(-1)) {
-        paramc.addAction(8192);
+        paramd.bA(8192);
       }
-      AppMethodBeat.o(142890);
+      AppMethodBeat.o(202602);
     }
     
     public final boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
@@ -3393,19 +3399,19 @@ public class WxViewPager
   
   static abstract interface d {}
   
-  final class e
+  class e
     extends DataSetObserver
   {
     private e() {}
     
-    public final void onChanged()
+    public void onChanged()
     {
       AppMethodBeat.i(142893);
       WxViewPager.this.dataSetChanged();
       AppMethodBeat.o(142893);
     }
     
-    public final void onInvalidated()
+    public void onInvalidated()
     {
       AppMethodBeat.i(142894);
       WxViewPager.this.dataSetChanged();
@@ -3413,13 +3419,13 @@ public class WxViewPager
     }
   }
   
-  static final class f
+  static class f
     implements Comparator<View>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.mogic.WxViewPager
  * JD-Core Version:    0.7.0.1
  */

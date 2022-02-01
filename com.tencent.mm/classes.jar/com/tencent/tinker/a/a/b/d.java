@@ -24,14 +24,14 @@ public final class d
     return localByteArrayOutputStream.toByteArray();
   }
   
-  public static byte[] r(InputStream paramInputStream)
+  public static byte[] p(InputStream paramInputStream)
   {
     return c(paramInputStream, 32768);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.a.a.b.d
  * JD-Core Version:    0.7.0.1
  */

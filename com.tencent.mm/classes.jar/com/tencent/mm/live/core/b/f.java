@@ -7,80 +7,86 @@ import com.tencent.mm.media.j.b.a;
 import com.tencent.mm.media.j.b.e;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/render/LiveScreenRenderProc;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcTexture;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "(IIII)V", "animationCost", "animationScale", "", "animationStartTime", "", "drawHeightStart", "drawWidthStart", "isScale", "", "originalDrawHeight", "originalDrawWidth", "beforeRender", "", "endScaleAnimation", "time", "initMatrixTemp", "reset", "startScaleAnimation", "scale", "updateDrawViewSize", "width", "height", "plugin-core_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/render/LiveScreenRenderProc;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcTexture;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "(IIII)V", "animationCost", "animationScale", "", "animationStartTime", "", "drawHeightStart", "drawWidthStart", "isScale", "", "originalDrawHeight", "originalDrawWidth", "beforeRender", "", "endScaleAnimation", "time", "initMatrixTemp", "reset", "startScaleAnimation", "scale", "updateDrawViewSize", "width", "height", "plugin-core_release"})
 public final class f
   extends e
 {
-  private int hDF;
-  private int hDG;
-  private long hDH;
-  private int hDI;
-  private float hDJ;
-  public int hDK;
-  public int hDL;
-  private boolean hDM;
+  private long krA;
+  private int krB;
+  private float krC;
+  private int krD;
+  private int krE;
+  private boolean krF;
+  private int kry;
+  private int krz;
   
   public f(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super(paramInt1, paramInt2, paramInt3, paramInt4, 1, 1);
+    super(paramInt1, paramInt2, paramInt3, paramInt4, 1, 2);
   }
   
-  public final void aEB()
+  public final void aMR()
   {
-    AppMethodBeat.i(196650);
+    AppMethodBeat.i(198456);
     float f1;
-    if (System.currentTimeMillis() - this.hDH <= this.hDI)
+    if (System.currentTimeMillis() - this.krA <= this.krB)
     {
-      if (!this.hDM) {
+      if (!this.krF) {
         break label221;
       }
-      f1 = (float)(System.currentTimeMillis() - this.hDH) * (1.0F - this.hDJ) / this.hDI;
-      this.hEp = ((int)(this.hDF * (1.0F - f1)));
-      this.hEq = ((int)((1.0F - f1) * this.hDG));
+      f1 = (float)(System.currentTimeMillis() - this.krA) * (1.0F - this.krC) / this.krB;
+      ub((int)(this.kry * (1.0F - f1)));
+      uc((int)((1.0F - f1) * this.krz));
     }
     for (;;)
     {
-      this.hDK = ((this.hDF - this.hEp) / 2);
-      this.hDL = ((this.hDG - this.hEq) / 2);
-      Matrix.setIdentityM(this.ijG, 0);
-      Matrix.setRotateM(this.ijG, 0, this.ijt, 0.0F, 0.0F, -1.0F);
-      if (this.iju) {
-        Matrix.scaleM(this.ijG, 0, -1.0F, 1.0F, 1.0F);
+      this.krD = ((this.kry - getDrawWidth()) / 2);
+      this.krE = ((this.krz - getDrawHeight()) / 2);
+      Matrix.setIdentityM(aVo(), 0);
+      Matrix.setRotateM(aVo(), 0, aVp(), 0.0F, 0.0F, -1.0F);
+      if (this.kYh) {
+        Matrix.scaleM(aVo(), 0, -1.0F, 1.0F, 1.0F);
       }
-      if (this.scaleType == 5) {
-        E(this.hEp / this.hEq, this.hDn / this.hDo);
+      if (getScaleType() == 5) {
+        G(getDrawWidth() / getDrawHeight(), aVx() / aVy());
       }
-      aMS();
-      aMT();
-      GLES20.glViewport(this.hDK, this.hDL, this.hEp, this.hEq);
-      AppMethodBeat.o(196650);
+      aVt();
+      aVu();
+      GLES20.glViewport(this.krD, this.krE, getDrawWidth(), getDrawHeight());
+      AppMethodBeat.o(198456);
       return;
       label221:
-      f1 = (float)(System.currentTimeMillis() - this.hDH) * (1.0F - this.hDJ) / this.hDI;
-      this.hEp = ((int)(this.hDF * (this.hDJ + f1)));
-      float f2 = this.hDG;
-      this.hEq = ((int)((f1 + this.hDJ) * f2));
-      if (this.hEp > this.hDF) {
-        this.hEp = this.hDF;
+      f1 = (float)(System.currentTimeMillis() - this.krA) * (1.0F - this.krC) / this.krB;
+      ub((int)(this.kry * (this.krC + f1)));
+      float f2 = this.krz;
+      uc((int)((f1 + this.krC) * f2));
+      if (getDrawWidth() > this.kry) {
+        ub(this.kry);
       }
-      if (this.hEq > this.hDG) {
-        this.hEp = this.hDG;
+      if (getDrawHeight() > this.krz) {
+        ub(this.krz);
       }
     }
   }
   
-  public final void cY(int paramInt1, int paramInt2)
+  public final void du(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(196651);
-    super.cY(paramInt1, paramInt2);
-    this.hDF = paramInt1;
-    this.hDG = paramInt2;
-    AppMethodBeat.o(196651);
+    AppMethodBeat.i(198459);
+    super.du(paramInt1, paramInt2);
+    this.kry = paramInt1;
+    this.krz = paramInt2;
+    AppMethodBeat.o(198459);
+  }
+  
+  public final void reset()
+  {
+    this.krE = 0;
+    this.krD = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.core.b.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,65 +1,62 @@
 package com.tencent.mm.plugin.appbrand.jsapi.fakenative;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.service.c;
+import com.tencent.mm.plugin.appbrand.t;
 import com.tencent.mm.plugin.appbrand.ui.aa;
-import com.tencent.mm.plugin.appbrand.ui.ab;
+import com.tencent.mm.plugin.appbrand.ui.z;
+import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/fakenative/JsApiHideSplashScreenshot;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Constants", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/fakenative/JsApiHideSplashScreenshot;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Constants", "plugin-appbrand-integration_release"})
 public final class a
-  extends d<c>
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<com.tencent.mm.plugin.appbrand.service.c>
 {
   public static final int CTRL_INDEX = -1;
   public static final String NAME = "hideSplashScreenshot";
-  public static final a lUf;
+  public static final a.a oQZ;
   
   static
   {
-    AppMethodBeat.i(228398);
-    lUf = new a((byte)0);
-    AppMethodBeat.o(228398);
+    AppMethodBeat.i(282617);
+    oQZ = new a.a((byte)0);
+    AppMethodBeat.o(282617);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/fakenative/JsApiHideSplashScreenshot$Constants;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
-  public static final class a {}
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
-    b(a parama, com.tencent.mm.plugin.appbrand.q paramq, c paramc, int paramInt) {}
+    b(a parama, t paramt, com.tencent.mm.plugin.appbrand.service.c paramc, int paramInt) {}
     
     public final void run()
     {
-      AppMethodBeat.i(228395);
-      ab localab = this.kAi.brK();
-      if (localab == null)
+      AppMethodBeat.i(269679);
+      aa localaa = this.oRb.bCz();
+      if (localaa == null)
       {
-        this.lUh.i(this.lyo, this.lUg.Zf("fail: timeout"));
-        AppMethodBeat.o(228395);
+        this.oxi.j(this.otk, this.oRa.agS("fail: timeout"));
+        AppMethodBeat.o(269679);
         return;
       }
-      if ((localab instanceof aa))
+      if ((localaa instanceof z))
       {
-        this.kAi.brr();
-        this.lUh.i(this.lyo, this.lUg.Zf("ok"));
-        AppMethodBeat.o(228395);
+        this.oRb.bCh();
+        this.oxi.j(this.otk, this.oRa.agS("ok"));
+        AppMethodBeat.o(269679);
         return;
       }
-      this.lUh.i(this.lyo, this.lUg.Zf("fail: screenshot invalid"));
-      AppMethodBeat.o(228395);
+      this.oxi.j(this.otk, this.oRa.agS("fail: screenshot invalid"));
+      AppMethodBeat.o(269679);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class c
-    extends kotlin.g.b.q
+    extends q
     implements kotlin.g.a.a<x>
   {
-    c(a parama, c paramc, int paramInt)
+    c(a parama, com.tencent.mm.plugin.appbrand.service.c paramc, int paramInt)
     {
       super();
     }
@@ -67,7 +64,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.fakenative.a
  * JD-Core Version:    0.7.0.1
  */

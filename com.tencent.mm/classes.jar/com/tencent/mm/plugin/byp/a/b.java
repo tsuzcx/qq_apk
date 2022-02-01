@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.byp.a;
 
-import com.tencent.mm.protocal.protobuf.ss;
+import com.tencent.mm.protocal.protobuf.sl;
 import java.util.LinkedList;
 
 public abstract interface b
 {
-  public abstract void O(LinkedList<ss> paramLinkedList);
+  public abstract void b(LinkedList<sl> paramLinkedList, boolean paramBoolean);
 }
 
 

@@ -1,34 +1,28 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.video;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.u;
-import com.tencent.mm.ag.v;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.aj.u;
+import com.tencent.mm.aj.v;
 import com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoView;
 import com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoWrapper;
 import com.tencent.mm.plugin.bizui.widget.StoryListView;
-import com.tencent.mm.plugin.brandservice.ui.timeline.item.ad;
-import com.tencent.mm.plugin.brandservice.ui.timeline.item.ak;
-import com.tencent.mm.plugin.brandservice.ui.timeline.item.at;
-import com.tencent.mm.plugin.topstory.a.h;
-import com.tencent.mm.protocal.protobuf.ale;
-import com.tencent.mm.protocal.protobuf.bsq;
-import com.tencent.mm.protocal.protobuf.bsr;
-import com.tencent.mm.protocal.protobuf.cdu;
-import com.tencent.mm.protocal.protobuf.dkr;
-import com.tencent.mm.protocal.protobuf.dlb;
-import com.tencent.mm.protocal.protobuf.ege;
-import com.tencent.mm.protocal.protobuf.eqv;
-import com.tencent.mm.protocal.protobuf.pi;
-import com.tencent.mm.protocal.protobuf.pj;
+import com.tencent.mm.plugin.brandservice.ui.timeline.item.ae;
+import com.tencent.mm.plugin.brandservice.ui.timeline.item.am;
+import com.tencent.mm.plugin.brandservice.ui.timeline.item.av;
+import com.tencent.mm.plugin.brandservice.ui.timeline.video.a.e;
+import com.tencent.mm.protocal.protobuf.amf;
+import com.tencent.mm.protocal.protobuf.cmo;
+import com.tencent.mm.protocal.protobuf.dug;
+import com.tencent.mm.protocal.protobuf.dur;
+import com.tencent.mm.protocal.protobuf.eqg;
+import com.tencent.mm.protocal.protobuf.fbh;
+import com.tencent.mm.protocal.protobuf.pe;
+import com.tencent.mm.protocal.protobuf.pf;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -54,70 +48,71 @@ import java.util.Set;
 import kotlin.a.j;
 import kotlin.g.b.p;
 import kotlin.l;
+import kotlin.o;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/MPVideoPreviewMgr;", "", "()V", "TAG", "", "abTestOn", "", "getAbTestOn", "()Z", "blackList", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "canSetAlpha", "cgiQueue", "currentVid", "hotLocation", "", "infoToCard", "Ljava/util/HashMap;", "", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardTmpl;", "Lkotlin/collections/HashMap;", "previewInfo", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/MPVideoPreviewMgr$PreviewInfo;", "updateTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "urlManager", "Lcom/tencent/mm/sdk/platformtools/MMKVSlotManager;", "videoLocation", "weakParent", "Landroid/view/ViewGroup;", "weakPreview", "Landroid/view/View;", "weakTimer", "Landroid/widget/TextView;", "weakVideoView", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/AppBrandVideoView;", "weakVideoWrapper", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/AppBrandVideoWrapper;", "addBlackList", "", "vid", "autoPlayTime", "", "cgiPlayUrl", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "changeStatus", "status", "checkPosition", "reason", "list", "Lcom/tencent/mm/plugin/bizui/widget/StoryListView;", "adapter", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "checkSameTopVideo", "lastVid", "chooseVideo", "videoInfoList", "Ljava/util/LinkedList;", "Lkotlin/Pair;", "clickCard", "extra", "destroy", "doPauseForResume", "event", "doStatusElse", "filterCard", "getAutoPlayId", "getPlayUrl", "isAutoPlay", "registerCard", "cardTmpl", "removeBlackList", "saveVideoInTimeline", "setPlayUrl", "url", "startPreview", "parent", "height", "playUrl", "startTimer", "stopPreviewAd", "except", "stopPreviewVideo", "stopTimer", "triggerEvent", "getBizMMReader", "Lcom/tencent/mm/message/BizMMReader;", "getTitle", "getTopBizReaderItem", "Lcom/tencent/mm/message/BizReaderItem;", "getUrl", "getVid", "EmptyControlBar", "Event", "PreviewInfo", "plugin-brandservice_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/MPVideoPreviewMgr;", "", "()V", "TAG", "", "abTestOn", "", "getAbTestOn", "()Z", "blackList", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "canSetAlpha", "cgiQueue", "currentVid", "hotLocation", "", "infoToCard", "Ljava/util/HashMap;", "", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardTmpl;", "Lkotlin/collections/HashMap;", "previewInfo", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/MPVideoPreviewMgr$PreviewInfo;", "updateTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "urlManager", "Lcom/tencent/mm/sdk/platformtools/MMKVSlotManager;", "videoLocation", "weakParent", "Landroid/view/ViewGroup;", "weakPreview", "Landroid/view/View;", "weakTimer", "Landroid/widget/TextView;", "weakVideoView", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/AppBrandVideoView;", "weakVideoWrapper", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/AppBrandVideoWrapper;", "addBlackList", "", "vid", "autoPlayTime", "", "cgiPlayUrl", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "changeStatus", "status", "checkPosition", "reason", "list", "Lcom/tencent/mm/plugin/bizui/widget/StoryListView;", "adapter", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "checkSameTopVideo", "lastVid", "chooseVideo", "videoInfoList", "Ljava/util/LinkedList;", "Lkotlin/Pair;", "clickCard", "extra", "destroy", "doPauseForResume", "event", "doStatusElse", "filterCard", "getAutoPlayId", "getPlayUrl", "isAutoPlay", "registerCard", "cardTmpl", "removeBlackList", "saveVideoInTimeline", "setPlayUrl", "url", "startPreview", "parent", "height", "playUrl", "startTimer", "stopPreviewAd", "except", "stopPreviewVideo", "stopTimer", "triggerEvent", "getBizMMReader", "Lcom/tencent/mm/message/BizMMReader;", "getTitle", "getTopBizReaderItem", "Lcom/tencent/mm/message/BizReaderItem;", "getUrl", "getVid", "EmptyControlBar", "Event", "PreviewInfo", "plugin-brandservice_release"})
 public final class MPVideoPreviewMgr
 {
-  public static final boolean pJj;
-  public static WeakReference<ViewGroup> pJk;
-  public static WeakReference<View> pJl;
-  public static WeakReference<AppBrandVideoView> pJm;
-  public static WeakReference<AppBrandVideoWrapper> pJn;
-  public static WeakReference<TextView> pJo;
-  public static MTimerHandler pJp;
-  public static final a pJq;
-  public static boolean pJr;
-  public static String pJs;
-  private static int[] pJt;
-  public static int[] pJu;
-  private static final MMKVSlotManager pJv;
-  public static HashSet<String> pJw;
-  public static HashMap<Long, WeakReference<ad>> pJx;
-  private static final HashSet<String> pJy;
-  public static final MPVideoPreviewMgr pJz;
+  public static final boolean sRX;
+  public static WeakReference<ViewGroup> sRY;
+  public static WeakReference<View> sRZ;
+  public static WeakReference<AppBrandVideoView> sSa;
+  public static WeakReference<AppBrandVideoWrapper> sSb;
+  public static WeakReference<TextView> sSc;
+  public static MTimerHandler sSd;
+  public static final a sSe;
+  public static boolean sSf;
+  public static String sSg;
+  private static int[] sSh;
+  public static int[] sSi;
+  private static final MMKVSlotManager sSj;
+  public static HashSet<String> sSk;
+  public static HashMap<Long, WeakReference<ae>> sSl;
+  private static final HashSet<String> sSm;
+  public static final MPVideoPreviewMgr sSn;
   
   static
   {
-    AppMethodBeat.i(195955);
-    pJz = new MPVideoPreviewMgr();
-    Object localObject = com.tencent.mm.plugin.webview.ui.tools.video.a.JxN;
-    pJj = com.tencent.mm.plugin.webview.ui.tools.video.a.gic();
-    pJq = new a();
-    pJs = "";
+    AppMethodBeat.i(267051);
+    sSn = new MPVideoPreviewMgr();
+    Object localObject = com.tencent.mm.plugin.webview.ui.tools.video.a.QvS;
+    sRX = com.tencent.mm.plugin.webview.ui.tools.video.a.hbB();
+    sSe = new a();
+    sSg = "";
     localObject = MultiProcessMMKV.getMMKV("MicroMsg.MPVideoPreviewMgr");
-    p.g(localObject, "MultiProcessMMKV.getMMKV(TAG)");
-    pJv = new MMKVSlotManager((MultiProcessMMKV)localObject, 14400L);
-    pJw = new HashSet();
-    pJx = new HashMap();
-    pJy = new HashSet();
-    AppMethodBeat.o(195955);
+    p.j(localObject, "MultiProcessMMKV.getMMKV(TAG)");
+    sSj = new MMKVSlotManager((MultiProcessMMKV)localObject, 14400L);
+    sSk = new HashSet();
+    sSl = new HashMap();
+    sSm = new HashSet();
+    AppMethodBeat.o(267051);
   }
   
-  private static void BM(long paramLong)
+  private static void HW(long paramLong)
   {
-    AppMethodBeat.i(195937);
+    AppMethodBeat.i(267032);
     Log.i("MicroMsg.MPVideoPreviewMgr", "stopPreviewAd except = ".concat(String.valueOf(paramLong)));
-    Iterator localIterator = ((Map)pJx).entrySet().iterator();
+    Iterator localIterator = ((Map)sSl).entrySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (Map.Entry)localIterator.next();
       if (((Number)((Map.Entry)localObject).getKey()).longValue() != paramLong)
       {
-        localObject = (ad)((WeakReference)((Map.Entry)localObject).getValue()).get();
+        localObject = (ae)((WeakReference)((Map.Entry)localObject).getValue()).get();
         if (localObject != null) {
-          ((ad)localObject).setVideoStatus(3);
+          ((ae)localObject).setVideoStatus(3);
         }
       }
     }
-    AppMethodBeat.o(195937);
+    AppMethodBeat.o(267032);
   }
   
-  private static void I(LinkedList<kotlin.o<z, View>> paramLinkedList)
+  private static void J(LinkedList<o<z, View>> paramLinkedList)
   {
     kotlin.g.a.q localq = null;
-    AppMethodBeat.i(195936);
-    Object localObject2 = (kotlin.g.a.b)c.pJO;
+    AppMethodBeat.i(267031);
+    Object localObject2 = (kotlin.g.a.b)c.sSC;
     Object localObject1 = new LinkedList();
     Object localObject3 = (Iterable)paramLinkedList;
     paramLinkedList = (Collection)new ArrayList();
@@ -128,7 +123,7 @@ public final class MPVideoPreviewMgr
     while (((Iterator)localObject3).hasNext())
     {
       localObject4 = ((Iterator)localObject3).next();
-      if (((Number)((kotlin.g.a.b)localObject2).invoke(((kotlin.o)localObject4).second)).floatValue() != 0.0F) {}
+      if (((Number)((kotlin.g.a.b)localObject2).invoke(((o)localObject4).My)).floatValue() != 0.0F) {}
       for (i = 1;; i = 0)
       {
         if (i == 0) {
@@ -142,66 +137,66 @@ public final class MPVideoPreviewMgr
     Log.i("MicroMsg.MPVideoPreviewMgr", "checkPosition hotList size = " + ((LinkedList)localObject1).size());
     if (Util.isNullOrNil((List)localObject1))
     {
-      cqK();
-      cqJ();
-      AppMethodBeat.o(195936);
+      cEa();
+      cDZ();
+      AppMethodBeat.o(267031);
       return;
     }
     if (((LinkedList)localObject1).size() <= 1) {
-      paramLinkedList = (kotlin.o)((LinkedList)localObject1).get(0);
+      paramLinkedList = (o)((LinkedList)localObject1).get(0);
     }
     label291:
     label1446:
     label1455:
     for (;;)
     {
-      localObject2 = (z)paramLinkedList.first;
+      localObject2 = (z)paramLinkedList.Mx;
       localObject3 = r((z)localObject2);
-      pJq.pJA = ((z)localObject2);
+      sSe.sSo = ((z)localObject2);
       switch (((z)localObject2).field_type)
       {
       default: 
-        if (((z)localObject2).gAs())
+        if (((z)localObject2).hwz())
         {
-          localObject1 = ((z)localObject2).NQr;
+          localObject1 = ((z)localObject2).Ven;
           if (localObject1 != null)
           {
-            localObject1 = ((dkr)localObject1).MOG;
+            localObject1 = ((dug)localObject1).UaA;
             if (localObject1 == null) {
               break label1446;
             }
-            pJq.akb = ((z)localObject2).NQr.MOG.size();
-            localObject1 = paramLinkedList.second;
-            paramLinkedList = (LinkedList<kotlin.o<z, View>>)localObject1;
+            sSe.afI = ((z)localObject2).Ven.UaA.size();
+            localObject1 = paramLinkedList.My;
+            paramLinkedList = (LinkedList<o<z, View>>)localObject1;
             if (!(localObject1 instanceof ViewGroup)) {
               paramLinkedList = null;
             }
             localObject1 = (ViewGroup)paramLinkedList;
-            paramLinkedList = aiK((String)localObject3);
+            paramLinkedList = aqw((String)localObject3);
           }
         }
         break;
       }
       for (;;)
       {
-        if (pJw.contains(localObject3))
+        if (sSk.contains(localObject3))
         {
           Log.i("MicroMsg.MPVideoPreviewMgr", "checkPosition in blacklist");
-          AppMethodBeat.o(195936);
+          AppMethodBeat.o(267031);
           return;
           paramLinkedList = ((LinkedList)localObject1).get(0);
-          p.g(paramLinkedList, "hotList[0]");
-          paramLinkedList = (kotlin.o)paramLinkedList;
+          p.j(paramLinkedList, "hotList[0]");
+          paramLinkedList = (o)paramLinkedList;
           localObject1 = ((LinkedList)localObject1).get(1);
-          p.g(localObject1, "hotList[1]");
-          localObject1 = (kotlin.o)localObject1;
-          if (((Number)((kotlin.g.a.b)localObject2).invoke(paramLinkedList.second)).floatValue() >= 0.5D) {
+          p.j(localObject1, "hotList[1]");
+          localObject1 = (o)localObject1;
+          if (((Number)((kotlin.g.a.b)localObject2).invoke(paramLinkedList.My)).floatValue() >= 0.5D) {
             break label1455;
           }
           Log.i("MicroMsg.MPVideoPreviewMgr", "checkPosition hotList second");
-          paramLinkedList = (LinkedList<kotlin.o<z, View>>)localObject1;
+          paramLinkedList = (LinkedList<o<z, View>>)localObject1;
           break;
-          pJq.d(null);
+          sSe.d(null);
           localObject1 = null;
           paramLinkedList = "";
           continue;
@@ -209,83 +204,83 @@ public final class MPVideoPreviewMgr
           if (localObject1 == null)
           {
             Log.i("MicroMsg.MPVideoPreviewMgr", "checkPosition error");
-            AppMethodBeat.o(195936);
+            AppMethodBeat.o(267031);
             return;
           }
-          pJq.d((v)localObject1);
-          localObject1 = pJq;
-          localObject4 = ((com.tencent.mm.plugin.biz.a.a)g.af(com.tencent.mm.plugin.biz.a.a.class)).a(((z)localObject2).field_msgId, ((z)localObject2).field_content);
+          sSe.d((v)localObject1);
+          localObject1 = sSe;
+          localObject4 = ((com.tencent.mm.plugin.biz.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.biz.a.a.class)).b(((z)localObject2).field_msgId, ((z)localObject2).field_content);
           if (localObject4 != null)
           {
-            localObject4 = ((u)localObject4).iAd;
+            localObject4 = ((u)localObject4).lpz;
             if (localObject4 == null) {}
           }
           for (i = ((LinkedList)localObject4).size();; i = 0)
           {
-            ((a)localObject1).akb = i;
-            localObject1 = paramLinkedList.second;
-            paramLinkedList = (LinkedList<kotlin.o<z, View>>)localObject1;
+            ((a)localObject1).afI = i;
+            localObject1 = paramLinkedList.My;
+            paramLinkedList = (LinkedList<o<z, View>>)localObject1;
             if (!(localObject1 instanceof ViewGroup)) {
               paramLinkedList = null;
             }
             localObject1 = (ViewGroup)paramLinkedList;
-            paramLinkedList = aiK((String)localObject3);
+            paramLinkedList = aqw((String)localObject3);
             break;
           }
-          localObject1 = (pi)((pj)((z)localObject2).gAD().Nga.KUf.get(0)).KWy.get(0);
+          localObject1 = (pe)((pf)((z)localObject2).hwL().UsF.RVd.get(0)).RXM.get(0);
           if (localObject1 == null)
           {
             Log.i("MicroMsg.MPVideoPreviewMgr", "checkPosition reccard error");
-            AppMethodBeat.o(195936);
+            AppMethodBeat.o(267031);
             return;
           }
-          pJq.pJB = ((pi)localObject1);
-          pJq.akb = ((z)localObject2).gAD().Nga.KUf.size();
-          localObject1 = paramLinkedList.second;
-          paramLinkedList = (LinkedList<kotlin.o<z, View>>)localObject1;
+          sSe.sSp = ((pe)localObject1);
+          sSe.afI = ((z)localObject2).hwL().UsF.RVd.size();
+          localObject1 = paramLinkedList.My;
+          paramLinkedList = (LinkedList<o<z, View>>)localObject1;
           if (!(localObject1 instanceof ViewGroup)) {
             paramLinkedList = null;
           }
           localObject1 = (ViewGroup)paramLinkedList;
-          paramLinkedList = aiK((String)localObject3);
+          paramLinkedList = aqw((String)localObject3);
           continue;
           localObject1 = null;
           break label291;
         }
-        if (((z)localObject2).gAs()) {
-          i = com.tencent.mm.plugin.brandservice.ui.timeline.b.prt;
+        if (((z)localObject2).hwz()) {
+          i = com.tencent.mm.plugin.brandservice.ui.timeline.b.sAr;
         }
         while (((z)localObject2).field_type == 637534257)
         {
-          cqK();
-          BM(((z)localObject2).field_msgId);
-          paramLinkedList = (WeakReference)pJx.get(Long.valueOf(((z)localObject2).field_msgId));
+          cEa();
+          HW(((z)localObject2).field_msgId);
+          paramLinkedList = (WeakReference)sSl.get(Long.valueOf(((z)localObject2).field_msgId));
           if (paramLinkedList != null)
           {
-            paramLinkedList = (ad)paramLinkedList.get();
+            paramLinkedList = (ae)paramLinkedList.get();
             if (paramLinkedList != null)
             {
               paramLinkedList.setVideoStatus(1);
-              AppMethodBeat.o(195936);
+              AppMethodBeat.o(267031);
               return;
-              i = com.tencent.mm.plugin.brandservice.ui.timeline.b.prs;
+              i = com.tencent.mm.plugin.brandservice.ui.timeline.b.sAq;
               continue;
             }
           }
-          AppMethodBeat.o(195936);
+          AppMethodBeat.o(267031);
           return;
         }
-        if ((((z)localObject2).field_type == 285212721) || (((z)localObject2).field_type == 620757041) || (((z)localObject2).gAs()))
+        if ((((z)localObject2).field_type == 285212721) || (((z)localObject2).field_type == 620757041) || (((z)localObject2).hwz()))
         {
           if ((localObject1 == null) || (((ViewGroup)localObject1).getContext() == null) || (Util.isNullOrNil(paramLinkedList)))
           {
             Log.i("MicroMsg.MPVideoPreviewMgr", "startPreview parent null or url = ".concat(String.valueOf(paramLinkedList)));
-            AppMethodBeat.o(195936);
+            AppMethodBeat.o(267031);
             return;
           }
-          cqJ();
+          cDZ();
           localObject4 = ((ViewGroup)localObject1).getContext();
-          localObject2 = pJk;
+          localObject2 = sRY;
           boolean bool1;
           if (localObject2 != null)
           {
@@ -293,8 +288,8 @@ public final class MPVideoPreviewMgr
             if (localObject2 != null)
             {
               localObject2 = ((ViewGroup)localObject2).getContext();
-              bool1 = p.j(localObject4, localObject2);
-              localObject2 = pJk;
+              bool1 = p.h(localObject4, localObject2);
+              localObject2 = sRY;
               if (localObject2 == null) {
                 break label1108;
               }
@@ -305,10 +300,10 @@ public final class MPVideoPreviewMgr
           label1108:
           for (localObject2 = (ViewGroup)((WeakReference)localObject2).get();; localObject2 = null)
           {
-            bool2 = p.j(localObject1, localObject2);
-            bool3 = p.j(pJs, localObject3);
+            bool2 = p.h(localObject1, localObject2);
+            bool3 = p.h(sSg, localObject3);
             localObject4 = new StringBuilder("startPreview sameContext = ").append(bool1).append(", sameParent = ").append(bool2).append(", sameVid = ").append(bool3).append(", visible = ");
-            Object localObject5 = pJm;
+            Object localObject5 = sSa;
             localObject2 = localq;
             if (localObject5 != null)
             {
@@ -323,21 +318,21 @@ public final class MPVideoPreviewMgr
               break label1114;
             }
             Log.i("MicroMsg.MPVideoPreviewMgr", "startPreview replay");
-            AppMethodBeat.o(195936);
+            AppMethodBeat.o(267031);
             return;
             localObject2 = null;
             break;
           }
           label1114:
-          localObject2 = (kotlin.g.a.m)g.pJS;
-          localq = (kotlin.g.a.q)f.pJR;
+          localObject2 = (kotlin.g.a.m)MPVideoPreviewMgr.g.sSG;
+          localq = (kotlin.g.a.q)MPVideoPreviewMgr.f.sSF;
           localObject4 = ((ViewGroup)localObject1).getContext();
-          p.g(localObject4, "context");
+          p.j(localObject4, "context");
           ((kotlin.g.a.m)localObject2).invoke(Boolean.valueOf(bool1), localObject4);
-          localq.d(Boolean.valueOf(bool2), localObject1, Integer.valueOf(i));
+          localq.c(Boolean.valueOf(bool2), localObject1, Integer.valueOf(i));
           if (!bool3)
           {
-            localObject1 = pJm;
+            localObject1 = sSa;
             if (localObject1 != null)
             {
               localObject1 = (AppBrandVideoView)((WeakReference)localObject1).get();
@@ -346,8 +341,8 @@ public final class MPVideoPreviewMgr
               }
             }
           }
-          pJr = true;
-          localObject1 = pJl;
+          sSf = true;
+          localObject1 = sRZ;
           if (localObject1 != null)
           {
             localObject1 = (View)((WeakReference)localObject1).get();
@@ -355,11 +350,11 @@ public final class MPVideoPreviewMgr
               ((View)localObject1).setAlpha(0.0F);
             }
           }
-          pJq.pJI = System.currentTimeMillis();
-          pJq.pJD = String.valueOf(System.currentTimeMillis());
-          pJq.aiO("PREPARE");
-          pJs = (String)localObject3;
-          localObject1 = pJm;
+          sSe.sSw = System.currentTimeMillis();
+          sSe.sSr = String.valueOf(System.currentTimeMillis());
+          sSe.aqA("PREPARE");
+          sSg = (String)localObject3;
+          localObject1 = sSa;
           if (localObject1 != null)
           {
             localObject1 = (AppBrandVideoView)((WeakReference)localObject1).get();
@@ -367,7 +362,7 @@ public final class MPVideoPreviewMgr
               ((AppBrandVideoView)localObject1).setAutoPlay(true);
             }
           }
-          localObject1 = pJm;
+          localObject1 = sSa;
           if (localObject1 != null)
           {
             localObject1 = (AppBrandVideoView)((WeakReference)localObject1).get();
@@ -375,7 +370,7 @@ public final class MPVideoPreviewMgr
               ((AppBrandVideoView)localObject1).setMute(true);
             }
           }
-          localObject1 = pJm;
+          localObject1 = sSa;
           if (localObject1 != null)
           {
             localObject1 = (AppBrandVideoView)((WeakReference)localObject1).get();
@@ -383,27 +378,27 @@ public final class MPVideoPreviewMgr
               ((AppBrandVideoView)localObject1).setLoop(true);
             }
           }
-          localObject1 = pJm;
+          localObject1 = sSa;
           if (localObject1 != null)
           {
             localObject1 = (AppBrandVideoView)((WeakReference)localObject1).get();
             if (localObject1 != null) {
-              ((AppBrandVideoView)localObject1).e(paramLinkedList, false, 0);
+              ((AppBrandVideoView)localObject1).f(paramLinkedList, false, 0);
             }
           }
-          paramLinkedList = pJm;
+          paramLinkedList = sSa;
           if (paramLinkedList != null)
           {
             paramLinkedList = (AppBrandVideoView)paramLinkedList.get();
             if (paramLinkedList != null)
             {
               paramLinkedList.start();
-              AppMethodBeat.o(195936);
+              AppMethodBeat.o(267031);
               return;
             }
           }
         }
-        AppMethodBeat.o(195936);
+        AppMethodBeat.o(267031);
         return;
         localObject1 = null;
         paramLinkedList = "";
@@ -411,53 +406,53 @@ public final class MPVideoPreviewMgr
     }
   }
   
-  private static void J(LinkedList<kotlin.o<z, View>> paramLinkedList)
+  private static void K(LinkedList<o<z, View>> paramLinkedList)
   {
-    AppMethodBeat.i(195944);
+    AppMethodBeat.i(267040);
     HashSet localHashSet = new HashSet();
     paramLinkedList = ((Iterable)paramLinkedList).iterator();
     while (paramLinkedList.hasNext())
     {
-      String str = r((z)((kotlin.o)paramLinkedList.next()).first);
-      if (pJw.contains(str))
+      String str = r((z)((o)paramLinkedList.next()).Mx);
+      if (sSk.contains(str))
       {
         localHashSet.add(str);
         Log.i("MicroMsg.MPVideoPreviewMgr", "removeBlackList still vid = ".concat(String.valueOf(str)));
       }
     }
-    pJw = localHashSet;
-    AppMethodBeat.o(195944);
+    sSk = localHashSet;
+    AppMethodBeat.o(267040);
   }
   
-  public static void a(z paramz, ad paramad)
+  public static void a(z paramz, ae paramae)
   {
-    AppMethodBeat.i(195953);
-    p.h(paramz, "info");
-    p.h(paramad, "cardTmpl");
-    if (!pJj)
+    AppMethodBeat.i(267049);
+    p.k(paramz, "info");
+    p.k(paramae, "cardTmpl");
+    if (!sRX)
     {
-      AppMethodBeat.o(195953);
+      AppMethodBeat.o(267049);
       return;
     }
-    ((Map)pJx).put(Long.valueOf(paramz.field_msgId), new WeakReference(paramad));
-    AppMethodBeat.o(195953);
+    ((Map)sSl).put(Long.valueOf(paramz.field_msgId), new WeakReference(paramae));
+    AppMethodBeat.o(267049);
   }
   
-  public static void a(final z paramz, String paramString)
+  public static void a(z paramz, String paramString)
   {
-    AppMethodBeat.i(195954);
-    p.h(paramz, "info");
-    p.h(paramString, "extra");
-    if (!pJj)
+    AppMethodBeat.i(267050);
+    p.k(paramz, "info");
+    p.k(paramString, "extra");
+    if (!sRX)
     {
-      AppMethodBeat.o(195954);
+      AppMethodBeat.o(267050);
       return;
     }
-    d locald = new d(paramString, paramz);
+    MPVideoPreviewMgr.d locald = new MPVideoPreviewMgr.d(paramString, paramz);
     switch (paramz.field_type)
     {
     default: 
-      if (paramz.gAs()) {
+      if (paramz.hwz()) {
         locald.invoke();
       }
       break;
@@ -468,65 +463,65 @@ public final class MPVideoPreviewMgr
       {
         do
         {
-          AppMethodBeat.o(195954);
+          AppMethodBeat.o(267050);
           return;
           switch (paramString.hashCode())
           {
           default: 
-            AppMethodBeat.o(195954);
+            AppMethodBeat.o(267050);
             return;
           }
         } while (!paramString.equals("PAUSE_FOR_RESUME"));
-        aiH("PAUSE_FOR_RESUME");
-        AppMethodBeat.o(195954);
+        aqt("PAUSE_FOR_RESUME");
+        AppMethodBeat.o(267050);
         return;
         locald.invoke();
-        AppMethodBeat.o(195954);
+        AppMethodBeat.o(267050);
         return;
-        BM(0L);
-      } while (pJq.pJA == null);
-      paramz = pJq.pJA;
+        HW(0L);
+      } while (sSe.sSo == null);
+      paramz = sSe.sSo;
     } while ((paramz != null) && (paramz.field_type == 637534257));
-    aiH("PAUSE_FOR_RESUME");
-    AppMethodBeat.o(195954);
+    aqt("PAUSE_FOR_RESUME");
+    AppMethodBeat.o(267050);
   }
   
-  public static void aiH(String paramString)
+  public static void aqt(String paramString)
   {
-    AppMethodBeat.i(195942);
-    if (!pJj)
+    AppMethodBeat.i(267038);
+    if (!sRX)
     {
-      AppMethodBeat.o(195942);
+      AppMethodBeat.o(267038);
       return;
     }
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(195942);
+      AppMethodBeat.o(267038);
       return;
     }
-    pJq.aiO(paramString);
-    AppMethodBeat.o(195942);
+    sSe.aqA(paramString);
+    AppMethodBeat.o(267038);
   }
   
-  public static void aiI(String paramString)
+  public static void aqu(String paramString)
   {
-    AppMethodBeat.i(195943);
-    if (!pJj)
+    AppMethodBeat.i(267039);
+    if (!sRX)
     {
-      AppMethodBeat.o(195943);
+      AppMethodBeat.o(267039);
       return;
     }
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(195943);
+      AppMethodBeat.o(267039);
       return;
     }
-    Log.i("MicroMsg.MPVideoPreviewMgr", "triggerEvent status = " + pJq.pJC + ", event = " + paramString);
-    Object localObject = pJq.pJC;
+    Log.i("MicroMsg.MPVideoPreviewMgr", "triggerEvent status = " + sSe.sSq + ", event = " + paramString);
+    Object localObject = sSe.sSq;
     if (localObject == null) {}
     while (paramString == null)
     {
-      AppMethodBeat.o(195943);
+      AppMethodBeat.o(267039);
       return;
       switch (((String)localObject).hashCode())
       {
@@ -537,7 +532,7 @@ public final class MPVideoPreviewMgr
         {
           if (paramString == null)
           {
-            AppMethodBeat.o(195943);
+            AppMethodBeat.o(267039);
             return;
           }
           switch (paramString.hashCode())
@@ -546,10 +541,10 @@ public final class MPVideoPreviewMgr
           case -592677033: 
             do
             {
-              AppMethodBeat.o(195943);
+              AppMethodBeat.o(267039);
               return;
-            } while ((!paramString.equals("ONPAUSE")) || (Util.isNullOrNil(pJs)));
-            paramString = pJm;
+            } while ((!paramString.equals("ONPAUSE")) || (Util.isNullOrNil(sSg)));
+            paramString = sSa;
             if (paramString != null)
             {
               paramString = (AppBrandVideoView)paramString.get();
@@ -557,8 +552,8 @@ public final class MPVideoPreviewMgr
                 paramString.pause();
               }
             }
-            paramString = pJq;
-            localObject = pJm;
+            paramString = sSe;
+            localObject = sSa;
             if (localObject != null)
             {
               localObject = (AppBrandVideoView)((WeakReference)localObject).get();
@@ -570,14 +565,14 @@ public final class MPVideoPreviewMgr
           }
           for (long l = ((AppBrandVideoView)localObject).getCurrPosMs();; l = 0L)
           {
-            paramString.pJH = l;
-            pJq.pl(4);
-            AppMethodBeat.o(195943);
+            paramString.sSv = l;
+            sSe.rE(4);
+            AppMethodBeat.o(267039);
             return;
-            if ((!paramString.equals("ONRESUME")) || (Util.isNullOrNil(pJs))) {
+            if ((!paramString.equals("ONRESUME")) || (Util.isNullOrNil(sSg))) {
               break;
             }
-            paramString = pJm;
+            paramString = sSa;
             if (paramString != null)
             {
               paramString = (AppBrandVideoView)paramString.get();
@@ -585,11 +580,11 @@ public final class MPVideoPreviewMgr
                 paramString.start();
               }
             }
-            pJq.pJI = System.currentTimeMillis();
-            pJq.pJJ = System.currentTimeMillis();
-            pJq.pJD = String.valueOf(System.currentTimeMillis());
-            aiH("PLAY");
-            pJq.pl(2);
+            sSe.sSw = System.currentTimeMillis();
+            sSe.sSx = System.currentTimeMillis();
+            sSe.sSr = String.valueOf(System.currentTimeMillis());
+            aqt("PLAY");
+            sSe.rE(2);
             break;
           }
         }
@@ -603,33 +598,33 @@ public final class MPVideoPreviewMgr
     {
       for (;;)
       {
-        AppMethodBeat.o(195943);
+        AppMethodBeat.o(267039);
         return;
-        if ((paramString.equals("ONPAUSE")) && (!Util.isNullOrNil(pJs))) {
-          MMHandlerThread.postToMainThreadDelayed((Runnable)e.pJQ, 500L);
+        if ((paramString.equals("ONPAUSE")) && (!Util.isNullOrNil(sSg))) {
+          MMHandlerThread.postToMainThreadDelayed((Runnable)e.sSE, 500L);
         }
       }
     } while (!paramString.equals("ONRESUME"));
-    AppMethodBeat.o(195943);
+    AppMethodBeat.o(267039);
   }
   
-  public static void aiJ(String paramString)
+  public static void aqv(String paramString)
   {
-    AppMethodBeat.i(195945);
-    if (!pJj)
+    AppMethodBeat.i(267041);
+    if (!sRX)
     {
-      AppMethodBeat.o(195945);
+      AppMethodBeat.o(267041);
       return;
     }
-    if (Util.isNullOrNil(pJs))
+    if (Util.isNullOrNil(sSg))
     {
-      AppMethodBeat.o(195945);
+      AppMethodBeat.o(267041);
       return;
     }
     Object localObject1;
-    if (p.j(pJs, paramString))
+    if (p.h(sSg, paramString))
     {
-      localObject1 = pJn;
+      localObject1 = sSb;
       if (localObject1 != null)
       {
         localObject1 = (AppBrandVideoWrapper)((WeakReference)localObject1).get();
@@ -637,12 +632,12 @@ public final class MPVideoPreviewMgr
       }
       else
       {
-        AppMethodBeat.o(195945);
+        AppMethodBeat.o(267041);
         return;
       }
-      p.g(localObject1, "weakVideoWrapper?.get() ?: return");
-      Object localObject2 = com.tencent.mm.plugin.webview.ui.tools.video.a.JxN;
-      localObject2 = pJs;
+      p.j(localObject1, "weakVideoWrapper?.get() ?: return");
+      Object localObject2 = com.tencent.mm.plugin.webview.ui.tools.video.a.QvS;
+      localObject2 = sSg;
       int i = ((AppBrandVideoWrapper)localObject1).getCurrPosSec();
       int j = (int)(System.currentTimeMillis() / 1000L + 600L);
       if (localObject1 != null)
@@ -653,14 +648,14 @@ public final class MPVideoPreviewMgr
           localObject1 = ((TextureView)localObject1).getBitmap();
           com.tencent.mm.plugin.webview.ui.tools.video.a.a((String)localObject2, i, j, (Bitmap)localObject1);
           Log.i("MicroMsg.MPVideoPreviewMgr", "addBlackList vid = ".concat(String.valueOf(paramString)));
-          pJw.add(paramString);
+          sSk.add(paramString);
         }
       }
     }
     else
     {
-      paramString = pJq;
-      localObject1 = pJm;
+      paramString = sSe;
+      localObject1 = sSa;
       if (localObject1 == null) {
         break label258;
       }
@@ -672,33 +667,32 @@ public final class MPVideoPreviewMgr
     label258:
     for (long l = ((AppBrandVideoView)localObject1).getCurrPosMs();; l = 0L)
     {
-      paramString.pJH = l;
-      pJq.pl(4);
-      pJq.pl(3);
-      pJq.pJA = null;
-      pJq.d(null);
-      aiH("IDLE");
-      AppMethodBeat.o(195945);
+      paramString.sSv = l;
+      sSe.rE(4);
+      sSe.rE(3);
+      sSe.sSo = null;
+      sSe.d(null);
+      aqt("IDLE");
+      AppMethodBeat.o(267041);
       return;
       localObject1 = null;
       break;
     }
   }
   
-  private static String aiK(String paramString)
+  private static String aqw(String paramString)
   {
-    AppMethodBeat.i(195947);
+    AppMethodBeat.i(267043);
     if (Util.isNullOrNil(paramString))
     {
       Log.i("MicroMsg.MPVideoPreviewMgr", "getPlayUrl vid null");
-      AppMethodBeat.o(195947);
+      AppMethodBeat.o(267043);
       return "";
     }
-    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)pJv.getSlot();
-    String str = localMultiProcessMMKV.decodeString("MicroMsg.MPVideoPreviewMgr_" + paramString + "_url");
+    String str = MMKVSlotManager.decodeString$default(sSj, "MicroMsg.MPVideoPreviewMgr_" + paramString + "_url", null, 2, null);
     if (!Util.isNullOrNil(str))
     {
-      long l = localMultiProcessMMKV.decodeLong("MicroMsg.MPVideoPreviewMgr_" + paramString + "_time");
+      long l = MMKVSlotManager.decodeLong$default(sSj, "MicroMsg.MPVideoPreviewMgr_" + paramString + "_time", 0L, 2, null);
       if (System.currentTimeMillis() - l > 14400000L)
       {
         Log.i("MicroMsg.MPVideoPreviewMgr", "getPlayUrl expire");
@@ -708,25 +702,25 @@ public final class MPVideoPreviewMgr
     for (;;)
     {
       Log.i("MicroMsg.MPVideoPreviewMgr", "getPlayUrl vid = " + paramString + ", url = " + str);
-      AppMethodBeat.o(195947);
+      AppMethodBeat.o(267043);
       return str;
     }
   }
   
-  public static int aiL(String paramString)
+  public static int aqx(String paramString)
   {
-    AppMethodBeat.i(195948);
+    AppMethodBeat.i(267044);
     int i;
     if (!Util.isNullOrNil(paramString))
     {
-      paramString = (Integer)pJq.pJF.get(paramString);
+      paramString = (Integer)sSe.sSt.get(paramString);
       if (paramString != null) {
         i = paramString.intValue();
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(195948);
+      AppMethodBeat.o(267044);
       return i;
       i = 0;
       continue;
@@ -734,20 +728,20 @@ public final class MPVideoPreviewMgr
     }
   }
   
-  public static int aiM(String paramString)
+  public static int aqy(String paramString)
   {
-    AppMethodBeat.i(195949);
+    AppMethodBeat.i(267045);
     int i;
     if (!Util.isNullOrNil(paramString))
     {
-      paramString = (Integer)pJq.pJG.get(paramString);
+      paramString = (Integer)sSe.sSu.get(paramString);
       if (paramString != null) {
         i = paramString.intValue();
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(195949);
+      AppMethodBeat.o(267045);
       return i;
       i = 0;
       continue;
@@ -755,28 +749,28 @@ public final class MPVideoPreviewMgr
     }
   }
   
-  public static String aiN(String paramString)
+  public static String aqz(String paramString)
   {
-    AppMethodBeat.i(195950);
-    if (!pJj)
+    AppMethodBeat.i(267046);
+    if (!sRX)
     {
-      AppMethodBeat.o(195950);
+      AppMethodBeat.o(267046);
       return "";
     }
     String str = "";
-    if (p.j(pJs, paramString)) {
-      str = pJq.pJD;
+    if (p.h(sSg, paramString)) {
+      str = sSe.sSr;
     }
-    AppMethodBeat.o(195950);
+    AppMethodBeat.o(267046);
     return str;
   }
   
-  public static void cqK()
+  public static void cEa()
   {
-    AppMethodBeat.i(195939);
+    AppMethodBeat.i(267034);
     Log.i("MicroMsg.MPVideoPreviewMgr", "stopPreviewVideo");
-    Object localObject1 = pJq;
-    Object localObject2 = pJm;
+    Object localObject1 = sSe;
+    Object localObject2 = sSa;
     long l;
     if (localObject2 != null)
     {
@@ -784,12 +778,12 @@ public final class MPVideoPreviewMgr
       if (localObject2 != null)
       {
         l = ((AppBrandVideoView)localObject2).getCurrPosMs();
-        ((a)localObject1).pJH = l;
-        pJq.pl(4);
-        pJq.pJA = null;
-        pJq.d(null);
-        pJq.aiO("IDLE");
-        localObject1 = pJm;
+        ((a)localObject1).sSv = l;
+        sSe.rE(4);
+        sSe.sSo = null;
+        sSe.d(null);
+        sSe.aqA("IDLE");
+        localObject1 = sSa;
         if (localObject1 != null)
         {
           localObject1 = (AppBrandVideoView)((WeakReference)localObject1).get();
@@ -797,7 +791,7 @@ public final class MPVideoPreviewMgr
             ((AppBrandVideoView)localObject1).setAutoPlay(false);
           }
         }
-        localObject1 = pJm;
+        localObject1 = sSa;
         if (localObject1 != null)
         {
           localObject1 = (AppBrandVideoView)((WeakReference)localObject1).get();
@@ -805,7 +799,7 @@ public final class MPVideoPreviewMgr
             ((AppBrandVideoView)localObject1).pause();
           }
         }
-        localObject1 = pJm;
+        localObject1 = sSa;
         if (localObject1 == null) {
           break label232;
         }
@@ -820,16 +814,16 @@ public final class MPVideoPreviewMgr
     {
       if (i > 0)
       {
-        localObject1 = pJm;
+        localObject1 = sSa;
         if (localObject1 != null)
         {
           localObject1 = (AppBrandVideoView)((WeakReference)localObject1).get();
           if (localObject1 != null) {
-            ((AppBrandVideoView)localObject1).bIX();
+            ((AppBrandVideoView)localObject1).bUG();
           }
         }
       }
-      localObject1 = pJl;
+      localObject1 = sRZ;
       if (localObject1 != null)
       {
         localObject1 = (View)((WeakReference)localObject1).get();
@@ -837,9 +831,9 @@ public final class MPVideoPreviewMgr
           ((View)localObject1).setAlpha(0.0F);
         }
       }
-      pJs = "";
+      sSg = "";
       stopTimer();
-      AppMethodBeat.o(195939);
+      AppMethodBeat.o(267034);
       return;
       l = 0L;
       break;
@@ -849,124 +843,124 @@ public final class MPVideoPreviewMgr
   public static void q(z arg0)
   {
     v localv = null;
-    AppMethodBeat.i(195946);
-    p.h(???, "info");
-    if (!pJj)
+    AppMethodBeat.i(267042);
+    p.k(???, "info");
+    if (!sRX)
     {
-      AppMethodBeat.o(195946);
+      AppMethodBeat.o(267042);
       return;
     }
-    kotlin.g.a.m localm = (kotlin.g.a.m)b.pJM;
+    kotlin.g.a.m localm = (kotlin.g.a.m)MPVideoPreviewMgr.b.sSA;
     Object localObject3;
     switch (???.field_type)
     {
     default: 
-      if (!???.gAs()) {
+      if (!???.hwz()) {
         break label718;
       }
-      ??? = ???.NQr;
+      ??? = ???.Ven;
       if (??? == null) {
         break label718;
       }
-      ??? = ???.MOG;
+      ??? = ???.UaA;
       if (??? == null) {
         break label718;
       }
-      ??? = (dlb)???.get(0);
+      ??? = (dur)???.get(0);
       if (??? == null) {
         break label718;
       }
-      localObject3 = ???.MOY;
+      localObject3 = ???.UaX;
       if (localObject3 == null) {
         break label718;
       }
-      ??? = ((cdu)localObject3).Mjm;
+      ??? = ((cmo)localObject3).Tua;
       if (??? == null) {
         break;
       }
     }
     boolean bool;
-    for (??? = ???.KSu; (Util.isNullOrNil(???)) || (Util.isNullOrNil(((cdu)localObject3).KSj)); ??? = null)
+    for (??? = ???.RTv; (Util.isNullOrNil(???)) || (Util.isNullOrNil(((cmo)localObject3).RTk)); ??? = null)
     {
       Log.i("MicroMsg.MPVideoPreviewMgr", "cgiPlayUrl videoId or contentUrl null");
-      AppMethodBeat.o(195946);
+      AppMethodBeat.o(267042);
       return;
-      ??? = ((com.tencent.mm.plugin.biz.a.a)g.af(com.tencent.mm.plugin.biz.a.a.class)).a(???.field_msgId, ???.field_content);
+      ??? = ((com.tencent.mm.plugin.biz.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.biz.a.a.class)).b(???.field_msgId, ???.field_content);
       if (??? != null)
       {
         if (??? != null)
         {
-          ??? = ???.iAd;
+          ??? = ???.lpz;
           if (??? != null)
           {
             localv = (v)???.get(0);
             if (localv != null)
             {
               if (localv.type == 5) {}
-              synchronized (pJz)
+              synchronized (sSn)
               {
-                bool = pJy.contains(localv.vid);
+                bool = sSm.contains(localv.vid);
                 if (bool)
                 {
-                  AppMethodBeat.o(195946);
+                  AppMethodBeat.o(267042);
                   return;
                 }
-                localObject3 = x.SXb;
-                if (Util.isNullOrNil(aiK(localv.vid)))
+                localObject3 = x.aazN;
+                if (Util.isNullOrNil(aqw(localv.vid)))
                 {
-                  pJy.add(localv.vid);
+                  sSm.add(localv.vid);
                   localm.invoke(localv.vid, localv.url);
                 }
-                AppMethodBeat.o(195946);
+                AppMethodBeat.o(267042);
                 return;
               }
             }
           }
         }
-        AppMethodBeat.o(195946);
+        AppMethodBeat.o(267042);
         return;
       }
-      AppMethodBeat.o(195946);
+      AppMethodBeat.o(267042);
       return;
-      ??? = ???.gAD();
+      ??? = ???.hwL();
       if (??? != null)
       {
-        ??? = ???.Nga;
+        ??? = ???.UsF;
         if (??? != null)
         {
-          ??? = ???.KUf;
+          ??? = ???.RVd;
           if (??? != null)
           {
-            ??? = (pj)???.get(0);
+            ??? = (pf)???.get(0);
             if (??? != null)
             {
-              ??? = ???.KWy;
+              ??? = ???.RXM;
               if (??? != null)
               {
-                pi localpi = (pi)???.get(0);
-                if (localpi != null)
+                pe localpe = (pe)???.get(0);
+                if (localpe != null)
                 {
-                  if ((Util.isNullOrNil(localpi.KSu)) || (Util.isNullOrNil(localpi.KSj)))
+                  if ((Util.isNullOrNil(localpe.RTv)) || (Util.isNullOrNil(localpe.RTk)))
                   {
                     Log.i("MicroMsg.MPVideoPreviewMgr", "cgiPlayUrl videoId or contentUrl null");
-                    AppMethodBeat.o(195946);
+                    AppMethodBeat.o(267042);
                     return;
                   }
-                  synchronized (pJz)
+                  synchronized (sSn)
                   {
-                    bool = pJy.contains(localpi.KSu);
+                    bool = sSm.contains(localpe.RTv);
                     if (bool)
                     {
-                      AppMethodBeat.o(195946);
+                      AppMethodBeat.o(267042);
                       return;
                     }
-                    localObject3 = x.SXb;
-                    if (Util.isNullOrNil(aiK(localpi.KSu)))
+                    localObject3 = x.aazN;
+                    if (Util.isNullOrNil(aqw(localpe.RTv)))
                     {
-                      pJy.add(localpi.KSu);
-                      localm.invoke(localpi.KSu, localpi.KSj);
+                      sSm.add(localpe.RTv);
+                      localm.invoke(localpe.RTv, localpe.RTk);
                     }
-                    AppMethodBeat.o(195946);
+                    AppMethodBeat.o(267042);
                     return;
                   }
                 }
@@ -975,21 +969,21 @@ public final class MPVideoPreviewMgr
           }
         }
       }
-      AppMethodBeat.o(195946);
+      AppMethodBeat.o(267042);
       return;
     }
     for (;;)
     {
-      synchronized (pJz)
+      synchronized (sSn)
       {
-        Iterable localIterable = (Iterable)pJy;
-        ??? = ((cdu)localObject3).Mjm;
+        Iterable localIterable = (Iterable)sSm;
+        ??? = ((cmo)localObject3).Tua;
         if (??? != null)
         {
-          ??? = ???.KSu;
+          ??? = ???.RTv;
           bool = j.a(localIterable, ???);
           if (bool) {
-            AppMethodBeat.o(195946);
+            AppMethodBeat.o(267042);
           }
         }
         else
@@ -997,31 +991,31 @@ public final class MPVideoPreviewMgr
           ??? = null;
           continue;
         }
-        ??? = x.SXb;
-        ??? = ((cdu)localObject3).Mjm;
+        ??? = x.aazN;
+        ??? = ((cmo)localObject3).Tua;
         if (??? != null)
         {
-          ??? = ???.KSu;
-          if (Util.isNullOrNil(aiK(???)))
+          ??? = ???.RTv;
+          if (Util.isNullOrNil(aqw(???)))
           {
-            ??? = pJy;
-            ??? = ((cdu)localObject3).Mjm;
+            ??? = sSm;
+            ??? = ((cmo)localObject3).Tua;
             if (??? == null) {
               break label713;
             }
-            ??? = ???.KSu;
+            ??? = ???.RTv;
             if (??? == null) {
-              p.hyc();
+              p.iCn();
             }
             ((HashSet)???).add(???);
-            ??? = ((cdu)localObject3).Mjm;
+            ??? = ((cmo)localObject3).Tua;
             ??? = localObject2;
             if (??? != null) {
-              ??? = ((eqv)???).KSu;
+              ??? = ((fbh)???).RTv;
             }
-            localm.invoke(???, ((cdu)localObject3).KSj);
+            localm.invoke(???, ((cmo)localObject3).RTk);
           }
-          AppMethodBeat.o(195946);
+          AppMethodBeat.o(267042);
           return;
         }
       }
@@ -1031,32 +1025,32 @@ public final class MPVideoPreviewMgr
       ??? = null;
     }
     label718:
-    AppMethodBeat.o(195946);
+    AppMethodBeat.o(267042);
   }
   
   private static String r(z paramz)
   {
-    AppMethodBeat.i(195951);
+    AppMethodBeat.i(267047);
     String str = "";
     Object localObject;
-    if (paramz.gAs())
+    if (paramz.hwz())
     {
-      paramz = paramz.NQr;
+      paramz = paramz.Ven;
       if (paramz != null)
       {
-        paramz = paramz.MOG;
+        paramz = paramz.UaA;
         if (paramz != null)
         {
-          paramz = (dlb)paramz.get(0);
+          paramz = (dur)paramz.get(0);
           if (paramz != null)
           {
-            paramz = paramz.MOY;
+            paramz = paramz.UaX;
             if (paramz != null)
             {
-              paramz = paramz.Mjm;
+              paramz = paramz.Tua;
               if (paramz != null)
               {
-                localObject = paramz.KSu;
+                localObject = paramz.RTv;
                 paramz = (z)localObject;
                 if (localObject != null) {
                   break label79;
@@ -1068,31 +1062,31 @@ public final class MPVideoPreviewMgr
       }
       paramz = "";
       label79:
-      AppMethodBeat.o(195951);
+      AppMethodBeat.o(267047);
       return paramz;
     }
     switch (paramz.field_type)
     {
     default: 
       localObject = str;
-      if (paramz.gAs())
+      if (paramz.hwz())
       {
-        paramz = paramz.NQr;
+        paramz = paramz.Ven;
         if (paramz != null)
         {
-          paramz = paramz.MOG;
+          paramz = paramz.UaA;
           if (paramz != null)
           {
-            paramz = (dlb)paramz.get(0);
+            paramz = (dur)paramz.get(0);
             if (paramz != null)
             {
-              paramz = paramz.MOY;
+              paramz = paramz.UaX;
               if (paramz != null)
               {
-                paramz = paramz.Mjm;
+                paramz = paramz.Tua;
                 if (paramz != null)
                 {
-                  paramz = paramz.KSu;
+                  paramz = paramz.RTv;
                   localObject = paramz;
                   if (paramz != null) {
                     break;
@@ -1108,7 +1102,7 @@ public final class MPVideoPreviewMgr
     }
     for (;;)
     {
-      AppMethodBeat.o(195951);
+      AppMethodBeat.o(267047);
       return localObject;
       paramz = s(paramz);
       if (paramz != null)
@@ -1122,18 +1116,18 @@ public final class MPVideoPreviewMgr
         localObject = "";
         continue;
         localObject = str;
-        if (paramz.gAD() != null) {
-          switch (paramz.gAD().style)
+        if (paramz.hwL() != null) {
+          switch (paramz.hwL().style)
           {
           default: 
             localObject = str;
             break;
           case 101: 
           case 102: 
-            localObject = ((pi)((pj)paramz.gAD().Nga.KUf.get(0)).KWy.get(0)).KSu;
-            p.g(localObject, "this.tlRecCardWrapper.ex…Info[0].AppMsg[0].VideoId");
+            localObject = ((pe)((pf)paramz.hwL().UsF.RVd.get(0)).RXM.get(0)).RTv;
+            p.j(localObject, "this.tlRecCardWrapper.ex…Info[0].AppMsg[0].VideoId");
             continue;
-            paramz = paramz.gAG();
+            paramz = paramz.hwO();
             localObject = paramz;
             if (paramz == null) {
               localObject = "";
@@ -1147,79 +1141,79 @@ public final class MPVideoPreviewMgr
   
   private static v s(z paramz)
   {
-    AppMethodBeat.i(195952);
-    paramz = ((com.tencent.mm.plugin.biz.a.a)g.af(com.tencent.mm.plugin.biz.a.a.class)).a(paramz.field_msgId, paramz.field_content);
+    AppMethodBeat.i(267048);
+    paramz = ((com.tencent.mm.plugin.biz.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.biz.a.a.class)).b(paramz.field_msgId, paramz.field_content);
     if ((paramz != null) && (paramz != null))
     {
-      paramz = paramz.iAd;
+      paramz = paramz.lpz;
       if (paramz != null)
       {
         paramz = (v)paramz.get(0);
         if ((paramz != null) && (paramz.type == 5))
         {
-          AppMethodBeat.o(195952);
+          AppMethodBeat.o(267048);
           return paramz;
         }
       }
     }
-    AppMethodBeat.o(195952);
+    AppMethodBeat.o(267048);
     return null;
   }
   
   public static void startTimer()
   {
-    AppMethodBeat.i(195940);
-    if (pJp == null) {
-      pJp = new MTimerHandler((MTimerHandler.CallBack)h.pJU, true);
+    AppMethodBeat.i(267035);
+    if (sSd == null) {
+      sSd = new MTimerHandler((MTimerHandler.CallBack)h.sSI, true);
     }
-    MTimerHandler localMTimerHandler = pJp;
+    MTimerHandler localMTimerHandler = sSd;
     if (localMTimerHandler != null) {
       localMTimerHandler.stopTimer();
     }
-    localMTimerHandler = pJp;
+    localMTimerHandler = sSd;
     if (localMTimerHandler != null)
     {
       localMTimerHandler.startTimer(1000L);
-      AppMethodBeat.o(195940);
+      AppMethodBeat.o(267035);
       return;
     }
-    AppMethodBeat.o(195940);
+    AppMethodBeat.o(267035);
   }
   
   public static void stopTimer()
   {
-    AppMethodBeat.i(195941);
-    MTimerHandler localMTimerHandler = pJp;
+    AppMethodBeat.i(267036);
+    MTimerHandler localMTimerHandler = sSd;
     if (localMTimerHandler != null)
     {
       localMTimerHandler.stopTimer();
-      AppMethodBeat.o(195941);
+      AppMethodBeat.o(267036);
       return;
     }
-    AppMethodBeat.o(195941);
+    AppMethodBeat.o(267036);
   }
   
   public final void a(String paramString, StoryListView paramStoryListView, com.tencent.mm.plugin.brandservice.ui.timeline.b paramb)
   {
-    AppMethodBeat.i(195935);
-    p.h(paramString, "reason");
-    p.h(paramStoryListView, "list");
-    p.h(paramb, "adapter");
-    if (!pJj)
+    AppMethodBeat.i(267030);
+    p.k(paramString, "reason");
+    p.k(paramStoryListView, "list");
+    p.k(paramb, "adapter");
+    if (!sRX)
     {
-      AppMethodBeat.o(195935);
+      AppMethodBeat.o(267030);
       return;
     }
     Log.i("MicroMsg.MPVideoPreviewMgr", "checkPosition reason = ".concat(String.valueOf(paramString)));
-    if ((!NetStatusUtil.isWifi(MMApplicationContext.getContext())) && (!h.isFreeSimCard()))
+    if ((!NetStatusUtil.isWifi(MMApplicationContext.getContext())) && (!com.tencent.mm.plugin.topstory.a.h.isFreeSimCard()))
     {
       Log.i("MicroMsg.MPVideoPreviewMgr", "checkPosition not wifi");
-      AppMethodBeat.o(195935);
+      AppMethodBeat.o(267030);
       return;
     }
-    if (pJt != null)
+    if (sSh != null)
     {
-      paramString = pJt;
+      paramString = sSh;
       if ((paramString == null) || (paramString[1] != 0)) {}
     }
     else
@@ -1227,11 +1221,11 @@ public final class MPVideoPreviewMgr
       paramString = new int[2];
       paramStoryListView.getLocationInWindow(paramString);
       localObject = new int[2];
-      pJt = (int[])localObject;
+      sSh = (int[])localObject;
       localObject[0] = paramString[1];
-      localObject = pJt;
+      localObject = sSh;
       if (localObject == null) {
-        p.hyc();
+        p.iCn();
       }
       paramString[1] += paramStoryListView.getHeight() * 2 / 3;
     }
@@ -1239,7 +1233,7 @@ public final class MPVideoPreviewMgr
     int j = paramStoryListView.getFirstVisiblePosition();
     int k = paramStoryListView.getLastVisiblePosition();
     Object localObject = new StringBuilder("checkPosition x = ");
-    paramString = pJt;
+    paramString = sSh;
     label237:
     int i;
     label297:
@@ -1248,7 +1242,7 @@ public final class MPVideoPreviewMgr
     {
       paramString = Integer.valueOf(paramString[0]);
       localObject = ((StringBuilder)localObject).append(paramString).append(", y = ");
-      paramString = pJt;
+      paramString = sSh;
       if (paramString == null) {
         break label548;
       }
@@ -1260,14 +1254,14 @@ public final class MPVideoPreviewMgr
       i = j;
       if (i != 0)
       {
-        localz = paramb.De(i - 1);
+        localz = paramb.GK(i - 1);
         if (localz != null) {
           switch (localz.field_type)
           {
           default: 
-            if (localz.gAs())
+            if (localz.hwz())
             {
-              paramString = (WeakReference)pJx.get(Long.valueOf(localz.field_msgId));
+              paramString = (WeakReference)sSl.get(Long.valueOf(localz.field_msgId));
               if (paramString == null) {
                 break label1023;
               }
@@ -1280,28 +1274,28 @@ public final class MPVideoPreviewMgr
     label548:
     label1021:
     label1023:
-    for (paramString = (ad)paramString.get();; paramString = null)
+    for (paramString = (ae)paramString.get();; paramString = null)
     {
-      if ((paramString != null) && (paramString.cmS() == true) && (paramString.getVideoView() != null))
+      if ((paramString != null) && (paramString.cAC() == true) && (paramString.getVideoView() != null))
       {
-        localObject = localz.NQr;
+        localObject = localz.Ven;
         if (localObject != null)
         {
-          localObject = ((dkr)localObject).MOG;
+          localObject = ((dug)localObject).UaA;
           if (localObject != null)
           {
-            localObject = (dlb)((LinkedList)localObject).get(0);
+            localObject = (dur)((LinkedList)localObject).get(0);
             if (localObject != null)
             {
-              localObject = ((dlb)localObject).MOY;
-              if ((localObject != null) && (((cdu)localObject).iAb == 5))
+              localObject = ((dur)localObject).UaX;
+              if ((localObject != null) && (((cmo)localObject).lpx == 5))
               {
                 paramString = paramString.getVideoView();
                 if (paramString == null) {
-                  p.hyc();
+                  p.iCn();
                 }
-                localLinkedList.add(new kotlin.o(localz, paramString));
-                ((Map)pJq.pJE).put(r(localz), Integer.valueOf(i));
+                localLinkedList.add(new o(localz, paramString));
+                ((Map)sSe.sSs).put(r(localz), Integer.valueOf(i));
               }
             }
           }
@@ -1318,20 +1312,20 @@ public final class MPVideoPreviewMgr
         break;
         paramString = null;
         break label237;
-        paramString = (WeakReference)pJx.get(Long.valueOf(localz.field_msgId));
+        paramString = (WeakReference)sSl.get(Long.valueOf(localz.field_msgId));
         if (paramString != null) {}
-        for (paramString = (ad)paramString.get();; paramString = null)
+        for (paramString = (ae)paramString.get();; paramString = null)
         {
-          if ((paramString == null) || (!paramString.cmS()) || (paramString.getVideoView() == null) || (Util.isNullOrNil(localz.gAG()))) {
+          if ((paramString == null) || (!paramString.cAC()) || (paramString.getVideoView() == null) || (Util.isNullOrNil(localz.hwO()))) {
             break label675;
           }
           localObject = r(localz);
           paramString = paramString.getVideoView();
           if (paramString == null) {
-            p.hyc();
+            p.iCn();
           }
-          localLinkedList.add(new kotlin.o(localz, paramString));
-          ((Map)pJq.pJE).put(localObject, Integer.valueOf(i));
+          localLinkedList.add(new o(localz, paramString));
+          ((Map)sSe.sSs).put(localObject, Integer.valueOf(i));
           break;
         }
         continue;
@@ -1343,51 +1337,51 @@ public final class MPVideoPreviewMgr
           for (paramString = paramString.getTag();; paramString = null)
           {
             localObject = paramString;
-            if (!(paramString instanceof ak)) {
+            if (!(paramString instanceof am)) {
               localObject = null;
             }
-            paramString = (ak)localObject;
+            paramString = (am)localObject;
             if (paramString == null) {
               break;
             }
-            paramString = paramString.pxN;
+            paramString = paramString.sHp;
             if (paramString == null) {
               break;
             }
-            paramString = paramString.ptQ;
+            paramString = paramString.sDd;
             if (paramString == null) {
               break;
             }
             Log.i("MicroMsg.MPVideoPreviewMgr", "checkPosition has TopVideo, index = " + (i - j));
-            localLinkedList.add(new kotlin.o(localz, paramString));
-            paramString = (Map)pJq.pJE;
+            localLinkedList.add(new o(localz, paramString));
+            paramString = (Map)sSe.sSs;
             localObject = localv.vid;
-            p.g(localObject, "top.vid");
+            p.j(localObject, "top.vid");
             paramString.put(localObject, Integer.valueOf(i));
             break;
           }
-          paramString = (WeakReference)pJx.get(Long.valueOf(localz.field_msgId));
+          paramString = (WeakReference)sSl.get(Long.valueOf(localz.field_msgId));
           if (paramString != null) {}
-          for (paramString = (ad)paramString.get();; paramString = null)
+          for (paramString = (ae)paramString.get();; paramString = null)
           {
-            if ((paramString == null) || (!paramString.cmS()) || (paramString.getVideoView() == null) || (localz.gAD() == null)) {
+            if ((paramString == null) || (!paramString.cAC()) || (paramString.getVideoView() == null) || (localz.hwL() == null)) {
               break label1021;
             }
-            switch (localz.gAD().style)
+            switch (localz.hwL().style)
             {
             default: 
               break;
             case 101: 
             case 102: 
-              if (((pi)((pj)localz.gAD().Nga.KUf.get(0)).KWy.get(0)).iAb != 5) {
+              if (((pe)((pf)localz.hwL().UsF.RVd.get(0)).RXM.get(0)).lpx != 5) {
                 break;
               }
               paramString = paramString.getVideoView();
               if (paramString == null) {
-                p.hyc();
+                p.iCn();
               }
-              localLinkedList.add(new kotlin.o(localz, paramString));
-              ((Map)pJq.pJE).put(r(localz), Integer.valueOf(i));
+              localLinkedList.add(new o(localz, paramString));
+              ((Map)sSe.sSs).put(r(localz), Integer.valueOf(i));
               break;
             }
           }
@@ -1397,103 +1391,103 @@ public final class MPVideoPreviewMgr
     label675:
     Log.i("MicroMsg.MPVideoPreviewMgr", "checkPosition videoInfoList size = " + localLinkedList.size());
     label1028:
-    J(localLinkedList);
+    K(localLinkedList);
     if (Util.isNullOrNil((List)localLinkedList))
     {
-      cqK();
-      cqJ();
-      AppMethodBeat.o(195935);
+      cEa();
+      cDZ();
+      AppMethodBeat.o(267030);
       return;
     }
-    I(localLinkedList);
-    AppMethodBeat.o(195935);
+    J(localLinkedList);
+    AppMethodBeat.o(267030);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/MPVideoPreviewMgr$PreviewInfo;", "", "()V", "autoPlayId", "", "getAutoPlayId", "()Ljava/lang/String;", "setAutoPlayId", "(Ljava/lang/String;)V", "autoPlayTime", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "getAutoPlayTime", "()Ljava/util/HashMap;", "setAutoPlayTime", "(Ljava/util/HashMap;)V", "bizInfo", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "getBizInfo", "()Lcom/tencent/mm/storage/BizTimeLineInfo;", "setBizInfo", "(Lcom/tencent/mm/storage/BizTimeLineInfo;)V", "bufferEnd", "", "getBufferEnd", "()J", "setBufferEnd", "(J)V", "bufferStart", "getBufferStart", "setBufferStart", "curPosMs", "getCurPosMs", "setCurPosMs", "hasAutoPlay", "getHasAutoPlay", "setHasAutoPlay", "value", "Lcom/tencent/mm/message/BizReaderItem;", "item", "getItem", "()Lcom/tencent/mm/message/BizReaderItem;", "setItem", "(Lcom/tencent/mm/message/BizReaderItem;)V", "itemCount", "getItemCount", "()I", "setItemCount", "(I)V", "prepareEnd", "getPrepareEnd", "setPrepareEnd", "prepareStart", "getPrepareStart", "setPrepareStart", "recAppMsg", "Lcom/tencent/mm/protocal/protobuf/BizRecArtCardAppMsg;", "getRecAppMsg", "()Lcom/tencent/mm/protocal/protobuf/BizRecArtCardAppMsg;", "setRecAppMsg", "(Lcom/tencent/mm/protocal/protobuf/BizRecArtCardAppMsg;)V", "status", "getStatus", "setStatus", "vidToPos", "getVidToPos", "setVidToPos", "videoDuration", "getVideoDuration", "setVideoDuration", "destroy", "", "report", "event", "Status", "plugin-brandservice_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/MPVideoPreviewMgr$PreviewInfo;", "", "()V", "autoPlayId", "", "getAutoPlayId", "()Ljava/lang/String;", "setAutoPlayId", "(Ljava/lang/String;)V", "autoPlayTime", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "getAutoPlayTime", "()Ljava/util/HashMap;", "setAutoPlayTime", "(Ljava/util/HashMap;)V", "bizInfo", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "getBizInfo", "()Lcom/tencent/mm/storage/BizTimeLineInfo;", "setBizInfo", "(Lcom/tencent/mm/storage/BizTimeLineInfo;)V", "bufferEnd", "", "getBufferEnd", "()J", "setBufferEnd", "(J)V", "bufferStart", "getBufferStart", "setBufferStart", "curPosMs", "getCurPosMs", "setCurPosMs", "hasAutoPlay", "getHasAutoPlay", "setHasAutoPlay", "value", "Lcom/tencent/mm/message/BizReaderItem;", "item", "getItem", "()Lcom/tencent/mm/message/BizReaderItem;", "setItem", "(Lcom/tencent/mm/message/BizReaderItem;)V", "itemCount", "getItemCount", "()I", "setItemCount", "(I)V", "prepareEnd", "getPrepareEnd", "setPrepareEnd", "prepareStart", "getPrepareStart", "setPrepareStart", "recAppMsg", "Lcom/tencent/mm/protocal/protobuf/BizRecArtCardAppMsg;", "getRecAppMsg", "()Lcom/tencent/mm/protocal/protobuf/BizRecArtCardAppMsg;", "setRecAppMsg", "(Lcom/tencent/mm/protocal/protobuf/BizRecArtCardAppMsg;)V", "status", "getStatus", "setStatus", "vidToPos", "getVidToPos", "setVidToPos", "videoDuration", "getVideoDuration", "setVideoDuration", "destroy", "", "report", "event", "Status", "plugin-brandservice_release"})
   public static final class a
   {
-    public int akb;
-    private v iAi;
-    public z pJA;
-    pi pJB;
-    String pJC;
-    public String pJD;
-    public HashMap<String, Integer> pJE;
-    HashMap<String, Integer> pJF;
-    HashMap<String, Integer> pJG;
-    public long pJH;
-    public long pJI;
-    public long pJJ;
-    public long pJK;
-    public long pJL;
+    public int afI;
+    private v lpE;
+    public z sSo;
+    pe sSp;
+    String sSq;
+    public String sSr;
+    public HashMap<String, Integer> sSs;
+    HashMap<String, Integer> sSt;
+    HashMap<String, Integer> sSu;
+    public long sSv;
+    public long sSw;
+    public long sSx;
+    public long sSy;
+    public long sSz;
     private int videoDuration;
     
     public a()
     {
-      AppMethodBeat.i(195914);
-      this.pJC = "IDLE";
-      this.pJD = "";
-      this.pJE = new HashMap();
-      this.pJF = new HashMap();
-      this.pJG = new HashMap();
-      AppMethodBeat.o(195914);
+      AppMethodBeat.i(265362);
+      this.sSq = "IDLE";
+      this.sSr = "";
+      this.sSs = new HashMap();
+      this.sSt = new HashMap();
+      this.sSu = new HashMap();
+      AppMethodBeat.o(265362);
     }
     
-    public final void aiO(String paramString)
+    public final void aqA(String paramString)
     {
-      AppMethodBeat.i(195912);
-      this.pJC = paramString;
+      AppMethodBeat.i(265360);
+      this.sSq = paramString;
       Log.i("MicroMsg.MPVideoPreviewMgr", "PreviewInfo status = ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(195912);
+      AppMethodBeat.o(265360);
     }
     
     public final void d(v paramv)
     {
-      AppMethodBeat.i(195911);
-      this.iAi = paramv;
+      AppMethodBeat.i(265359);
+      this.lpE = paramv;
       if (paramv != null)
       {
-        ((Map)this.pJF).put(paramv.vid, Integer.valueOf(1));
-        AppMethodBeat.o(195911);
+        ((Map)this.sSt).put(paramv.vid, Integer.valueOf(1));
+        AppMethodBeat.o(265359);
         return;
       }
-      this.akb = 0;
-      AppMethodBeat.o(195911);
+      this.afI = 0;
+      AppMethodBeat.o(265359);
     }
     
-    public final void pl(int paramInt)
+    public final void rE(int paramInt)
     {
       Object localObject2 = null;
-      AppMethodBeat.i(195913);
-      Object localObject1 = com.tencent.mm.plugin.brandservice.ui.timeline.video.util.o.pLS;
-      localObject1 = this.pJA;
+      AppMethodBeat.i(265361);
+      Object localObject1 = e.sTi;
+      localObject1 = this.sSo;
       int i;
       if (localObject1 != null)
       {
-        Object localObject3 = MPVideoPreviewMgr.pJz;
+        Object localObject3 = MPVideoPreviewMgr.sSn;
         localObject1 = MPVideoPreviewMgr.t((z)localObject1);
-        localObject3 = this.pJA;
+        localObject3 = this.sSo;
         if (localObject3 != null)
         {
-          localObject2 = MPVideoPreviewMgr.pJz;
+          localObject2 = MPVideoPreviewMgr.sSn;
           localObject2 = MPVideoPreviewMgr.u((z)localObject3);
         }
         if ((!Util.isNullOrNil((String)localObject1)) && (!Util.isNullOrNil((String)localObject2)))
         {
-          com.tencent.mm.plugin.brandservice.ui.timeline.video.util.o.setEventType(paramInt);
-          com.tencent.mm.plugin.brandservice.ui.timeline.video.util.o.setVid((String)localObject1);
-          com.tencent.mm.plugin.brandservice.ui.timeline.video.util.o.aiV((String)localObject2);
-          com.tencent.mm.plugin.brandservice.ui.timeline.video.util.o.aiU(this.pJD);
-          localObject2 = (Integer)((Map)this.pJE).get(localObject1);
+          e.Hu(paramInt);
+          e.setVid((String)localObject1);
+          e.aqE((String)localObject2);
+          e.aqD(this.sSr);
+          localObject2 = (Integer)((Map)this.sSs).get(localObject1);
           if (localObject2 == null) {
             break label186;
           }
           i = ((Integer)localObject2).intValue();
           label118:
-          com.tencent.mm.plugin.brandservice.ui.timeline.video.util.o.DT(i);
-          com.tencent.mm.plugin.brandservice.ui.timeline.video.util.o.BP(this.videoDuration);
-          com.tencent.mm.plugin.brandservice.ui.timeline.video.util.o.BQ(0L);
-          com.tencent.mm.plugin.brandservice.ui.timeline.video.util.o.BO(0L);
+          e.Hs(i);
+          e.HY(this.videoDuration);
+          e.HZ(0L);
+          e.HX(0L);
           switch (paramInt)
           {
           }
@@ -1501,28 +1495,28 @@ public final class MPVideoPreviewMgr
       }
       for (;;)
       {
-        com.tencent.mm.plugin.brandservice.ui.timeline.video.util.o.report();
-        AppMethodBeat.o(195913);
+        e.report();
+        AppMethodBeat.o(265361);
         return;
         localObject1 = null;
         break;
         label186:
         i = 0;
         break label118;
-        com.tencent.mm.plugin.brandservice.ui.timeline.video.util.o.BQ(this.pJJ - this.pJI);
+        e.HZ(this.sSx - this.sSw);
         continue;
-        com.tencent.mm.plugin.brandservice.ui.timeline.video.util.o.BQ(this.pJL - this.pJK);
-        if (this.pJJ != 0L)
+        e.HZ(this.sSz - this.sSy);
+        if (this.sSx != 0L)
         {
-          com.tencent.mm.plugin.brandservice.ui.timeline.video.util.o.BO(System.currentTimeMillis() - this.pJJ);
+          e.HX(System.currentTimeMillis() - this.sSx);
           continue;
-          if (this.pJJ != 0L)
+          if (this.sSx != 0L)
           {
-            com.tencent.mm.plugin.brandservice.ui.timeline.video.util.o.BO(System.currentTimeMillis() - this.pJJ);
-            ((Map)this.pJG).put(localObject1, Integer.valueOf((int)com.tencent.mm.plugin.brandservice.ui.timeline.video.util.o.crc()));
+            e.HX(System.currentTimeMillis() - this.sSx);
+            ((Map)this.sSu).put(localObject1, Integer.valueOf((int)e.cEl()));
             continue;
-            if (this.pJJ != 0L) {
-              com.tencent.mm.plugin.brandservice.ui.timeline.video.util.o.BO(System.currentTimeMillis() - this.pJJ);
+            if (this.sSx != 0L) {
+              e.HX(System.currentTimeMillis() - this.sSx);
             }
           }
         }
@@ -1535,38 +1529,18 @@ public final class MPVideoPreviewMgr
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<no name provided>", "", "vid", "", "url", "invoke"})
-  static final class b
-    extends kotlin.g.b.q
-    implements kotlin.g.a.m<String, String, x>
-  {
-    public static final b pJM;
-    
-    static
-    {
-      AppMethodBeat.i(195918);
-      pJM = new b();
-      AppMethodBeat.o(195918);
-    }
-    
-    b()
-    {
-      super();
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<no name provided>", "", "view", "Landroid/view/View;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<no name provided>", "", "view", "Landroid/view/View;", "invoke"})
   static final class c
     extends kotlin.g.b.q
     implements kotlin.g.a.b<View, Float>
   {
-    public static final c pJO;
+    public static final c sSC;
     
     static
     {
-      AppMethodBeat.i(195920);
-      pJO = new c();
-      AppMethodBeat.o(195920);
+      AppMethodBeat.i(265354);
+      sSC = new c();
+      AppMethodBeat.o(265354);
     }
     
     c()
@@ -1575,120 +1549,47 @@ public final class MPVideoPreviewMgr
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"onClick", "", "invoke"})
-  static final class d
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
-  {
-    d(String paramString, z paramz)
-    {
-      super();
-    }
-    
-    public final void invoke()
-    {
-      AppMethodBeat.i(195922);
-      Object localObject = this.pJP;
-      switch (((String)localObject).hashCode())
-      {
-      }
-      do
-      {
-        localObject = MPVideoPreviewMgr.pJz;
-        MPVideoPreviewMgr.aiJ(MPVideoPreviewMgr.t(paramz));
-        localObject = com.tencent.mm.plugin.webview.ui.tools.video.a.JxN;
-        localObject = MPVideoPreviewMgr.pJz;
-        com.tencent.mm.plugin.webview.ui.tools.video.a.bbi(MPVideoPreviewMgr.t(paramz));
-        AppMethodBeat.o(195922);
-        return;
-      } while (!((String)localObject).equals("PAUSE_FOR_RESUME"));
-      localObject = MPVideoPreviewMgr.pJz;
-      MPVideoPreviewMgr.aiH("PAUSE_FOR_RESUME");
-      AppMethodBeat.o(195922);
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class e
     implements Runnable
   {
-    public static final e pJQ;
+    public static final e sSE;
     
     static
     {
-      AppMethodBeat.i(195924);
-      pJQ = new e();
-      AppMethodBeat.o(195924);
+      AppMethodBeat.i(265596);
+      sSE = new e();
+      AppMethodBeat.o(265596);
     }
     
     public final void run()
     {
-      AppMethodBeat.i(195923);
-      MPVideoPreviewMgr localMPVideoPreviewMgr = MPVideoPreviewMgr.pJz;
-      MPVideoPreviewMgr.cqT();
-      AppMethodBeat.o(195923);
+      AppMethodBeat.i(265595);
+      MPVideoPreviewMgr localMPVideoPreviewMgr = MPVideoPreviewMgr.sSn;
+      MPVideoPreviewMgr.cEj();
+      AppMethodBeat.o(265595);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<no name provided>", "", "same", "", "parent", "Landroid/view/ViewGroup;", "height", "", "invoke"})
-  static final class f
-    extends kotlin.g.b.q
-    implements kotlin.g.a.q<Boolean, ViewGroup, Integer, x>
-  {
-    public static final f pJR;
-    
-    static
-    {
-      AppMethodBeat.i(195926);
-      pJR = new f();
-      AppMethodBeat.o(195926);
-    }
-    
-    f()
-    {
-      super();
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<no name provided>", "", "same", "", "context", "Landroid/content/Context;", "invoke"})
-  static final class g
-    extends kotlin.g.b.q
-    implements kotlin.g.a.m<Boolean, Context, x>
-  {
-    public static final g pJS;
-    
-    static
-    {
-      AppMethodBeat.i(195932);
-      pJS = new g();
-      AppMethodBeat.o(195932);
-    }
-    
-    g()
-    {
-      super();
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onTimerExpired"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onTimerExpired"})
   static final class h
     implements MTimerHandler.CallBack
   {
-    public static final h pJU;
+    public static final h sSI;
     
     static
     {
-      AppMethodBeat.i(195934);
-      pJU = new h();
-      AppMethodBeat.o(195934);
+      AppMethodBeat.i(263168);
+      sSI = new h();
+      AppMethodBeat.o(263168);
     }
     
     public final boolean onTimerExpired()
     {
       int k = 0;
-      AppMethodBeat.i(195933);
-      Object localObject = MPVideoPreviewMgr.pJz;
-      localObject = MPVideoPreviewMgr.cqR();
+      AppMethodBeat.i(263167);
+      Object localObject = MPVideoPreviewMgr.sSn;
+      localObject = MPVideoPreviewMgr.cEh();
       TextView localTextView;
       int i;
       if (localObject != null)
@@ -1696,8 +1597,8 @@ public final class MPVideoPreviewMgr
         localTextView = (TextView)((WeakReference)localObject).get();
         if (localTextView != null)
         {
-          localObject = MPVideoPreviewMgr.pJz;
-          localObject = MPVideoPreviewMgr.cqS();
+          localObject = MPVideoPreviewMgr.sSn;
+          localObject = MPVideoPreviewMgr.cEi();
           if (localObject == null) {
             break label162;
           }
@@ -1706,8 +1607,8 @@ public final class MPVideoPreviewMgr
             break label162;
           }
           i = ((AppBrandVideoView)localObject).getDuration();
-          localObject = MPVideoPreviewMgr.pJz;
-          localObject = MPVideoPreviewMgr.cqS();
+          localObject = MPVideoPreviewMgr.sSn;
+          localObject = MPVideoPreviewMgr.cEi();
           int j = k;
           if (localObject != null)
           {
@@ -1717,8 +1618,8 @@ public final class MPVideoPreviewMgr
               j = ((AppBrandVideoView)localObject).getCurrPosMs();
             }
           }
-          p.g(localTextView, "it");
-          localObject = com.tencent.mm.ag.m.rJ((i * 1000 - j) / 1000);
+          p.j(localTextView, "it");
+          localObject = com.tencent.mm.aj.m.uD((i * 1000 - j) / 1000);
           if (localObject == null) {
             break label167;
           }
@@ -1729,7 +1630,7 @@ public final class MPVideoPreviewMgr
       for (localObject = (CharSequence)localObject;; localObject = (CharSequence)"")
       {
         localTextView.setText((CharSequence)localObject);
-        AppMethodBeat.o(195933);
+        AppMethodBeat.o(263167);
         return true;
         i = 0;
         break;
@@ -1739,7 +1640,7 @@ public final class MPVideoPreviewMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.video.MPVideoPreviewMgr
  * JD-Core Version:    0.7.0.1
  */

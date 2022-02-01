@@ -5,13 +5,13 @@ import java.util.List;
 public abstract interface c
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract void CN(int paramInt);
+  public abstract void Gs(int paramInt);
   
   public abstract void a(String paramString1, String paramString2, String paramString3, f paramf);
   
-  public abstract List<a> ckR();
+  public abstract List<a> cym();
   
-  public abstract void fb(int paramInt1, int paramInt2);
+  public abstract void fA(int paramInt1, int paramInt2);
 }
 
 

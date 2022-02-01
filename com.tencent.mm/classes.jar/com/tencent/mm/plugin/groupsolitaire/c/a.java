@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.groupsolitaire.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dk;
+import com.tencent.mm.f.c.do;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class a
-  extends dk
+public class a
+  extends do
 {
   protected static IAutoDBItem.MAutoDBInfo info;
+  public String CBX;
+  public String DpD;
+  public int DpE;
+  public boolean DpF;
+  public HashMap<Integer, b> DpG;
+  public boolean DpH;
+  public int DpI;
+  public String bOX;
   public String header;
-  public String separator;
-  public String xxN;
-  public String yfB;
-  public int yfC;
-  public boolean yfD;
-  public HashMap<Integer, b> yfE;
-  public boolean yfF;
-  public int yfG;
   
   static
   {
@@ -73,28 +73,28 @@ public final class a
   {
     AppMethodBeat.i(110393);
     this.header = "";
-    this.yfB = "";
-    this.xxN = "";
-    this.separator = " ";
-    this.yfC = 1;
-    this.yfD = false;
-    this.yfE = new HashMap();
-    this.yfF = false;
-    this.yfG = 0;
+    this.DpD = "";
+    this.CBX = "";
+    this.bOX = " ";
+    this.DpE = 1;
+    this.DpF = false;
+    this.DpG = new HashMap();
+    this.DpH = false;
+    this.DpI = 0;
     AppMethodBeat.o(110393);
   }
   
-  public final void dXU()
+  public final void eBs()
   {
-    if (this.yfC == 0)
+    if (this.DpE == 0)
     {
-      this.yfC = 1;
+      this.DpE = 1;
       this.header = "";
     }
   }
   
   /* Error */
-  public final a dXV()
+  public final a eBt()
   {
     // Byte code:
     //   0: ldc 162
@@ -151,53 +151,53 @@ public final class a
     //   101: putfield 130	com/tencent/mm/plugin/groupsolitaire/c/a:header	Ljava/lang/String;
     //   104: aload_2
     //   105: aload_0
-    //   106: getfield 132	com/tencent/mm/plugin/groupsolitaire/c/a:yfB	Ljava/lang/String;
-    //   109: putfield 132	com/tencent/mm/plugin/groupsolitaire/c/a:yfB	Ljava/lang/String;
+    //   106: getfield 132	com/tencent/mm/plugin/groupsolitaire/c/a:DpD	Ljava/lang/String;
+    //   109: putfield 132	com/tencent/mm/plugin/groupsolitaire/c/a:DpD	Ljava/lang/String;
     //   112: aload_2
     //   113: aload_0
-    //   114: getfield 134	com/tencent/mm/plugin/groupsolitaire/c/a:xxN	Ljava/lang/String;
-    //   117: putfield 134	com/tencent/mm/plugin/groupsolitaire/c/a:xxN	Ljava/lang/String;
+    //   114: getfield 134	com/tencent/mm/plugin/groupsolitaire/c/a:CBX	Ljava/lang/String;
+    //   117: putfield 134	com/tencent/mm/plugin/groupsolitaire/c/a:CBX	Ljava/lang/String;
     //   120: aload_2
     //   121: aload_0
-    //   122: getfield 138	com/tencent/mm/plugin/groupsolitaire/c/a:separator	Ljava/lang/String;
-    //   125: putfield 138	com/tencent/mm/plugin/groupsolitaire/c/a:separator	Ljava/lang/String;
+    //   122: getfield 138	com/tencent/mm/plugin/groupsolitaire/c/a:bOX	Ljava/lang/String;
+    //   125: putfield 138	com/tencent/mm/plugin/groupsolitaire/c/a:bOX	Ljava/lang/String;
     //   128: aload_2
     //   129: aload_0
-    //   130: getfield 140	com/tencent/mm/plugin/groupsolitaire/c/a:yfC	I
-    //   133: putfield 140	com/tencent/mm/plugin/groupsolitaire/c/a:yfC	I
+    //   130: getfield 140	com/tencent/mm/plugin/groupsolitaire/c/a:DpE	I
+    //   133: putfield 140	com/tencent/mm/plugin/groupsolitaire/c/a:DpE	I
     //   136: aload_2
     //   137: aload_0
-    //   138: getfield 151	com/tencent/mm/plugin/groupsolitaire/c/a:yfG	I
-    //   141: putfield 151	com/tencent/mm/plugin/groupsolitaire/c/a:yfG	I
+    //   138: getfield 151	com/tencent/mm/plugin/groupsolitaire/c/a:DpI	I
+    //   141: putfield 151	com/tencent/mm/plugin/groupsolitaire/c/a:DpI	I
     //   144: aload_2
     //   145: aload_0
-    //   146: getfield 149	com/tencent/mm/plugin/groupsolitaire/c/a:yfF	Z
-    //   149: putfield 149	com/tencent/mm/plugin/groupsolitaire/c/a:yfF	Z
+    //   146: getfield 149	com/tencent/mm/plugin/groupsolitaire/c/a:DpH	Z
+    //   149: putfield 149	com/tencent/mm/plugin/groupsolitaire/c/a:DpH	Z
     //   152: aload_2
     //   153: new 144	java/util/HashMap
     //   156: dup
     //   157: invokespecial 145	java/util/HashMap:<init>	()V
-    //   160: putfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:yfE	Ljava/util/HashMap;
+    //   160: putfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:DpG	Ljava/util/HashMap;
     //   163: iconst_1
     //   164: istore_1
     //   165: iload_1
     //   166: aload_0
-    //   167: getfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:yfE	Ljava/util/HashMap;
+    //   167: getfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:DpG	Ljava/util/HashMap;
     //   170: invokevirtual 198	java/util/HashMap:size	()I
     //   173: if_icmpgt +41 -> 214
     //   176: aload_0
-    //   177: getfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:yfE	Ljava/util/HashMap;
+    //   177: getfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:DpG	Ljava/util/HashMap;
     //   180: iload_1
     //   181: invokestatic 204	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   184: invokevirtual 208	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   187: checkcast 210	com/tencent/mm/plugin/groupsolitaire/c/b
     //   190: astore_3
     //   191: aload_2
-    //   192: getfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:yfE	Ljava/util/HashMap;
+    //   192: getfield 147	com/tencent/mm/plugin/groupsolitaire/c/a:DpG	Ljava/util/HashMap;
     //   195: iload_1
     //   196: invokestatic 204	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   199: aload_3
-    //   200: invokevirtual 214	com/tencent/mm/plugin/groupsolitaire/c/b:dXW	()Lcom/tencent/mm/plugin/groupsolitaire/c/b;
+    //   200: invokevirtual 214	com/tencent/mm/plugin/groupsolitaire/c/b:eBu	()Lcom/tencent/mm/plugin/groupsolitaire/c/b;
     //   203: invokevirtual 215	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   206: pop
     //   207: iload_1
@@ -246,22 +246,22 @@ public final class a
     //   165	207	253	java/lang/Exception
   }
   
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  public IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
   
-  public final String toString()
+  public String toString()
   {
     AppMethodBeat.i(110394);
-    String str = "GroupSolitatire{header='" + this.header + '\'' + ", example='" + this.yfB + '\'' + ", tail='" + this.xxN + '\'' + ", separator='" + this.separator + '\'' + ", hasRealTitle=" + this.yfC + ", content=" + this.yfE + ", includeRepeatedContent=" + this.yfF + ", includeWhiteContentNum=" + this.yfG + ", field_username='" + this.field_username + '\'' + ", field_key='" + this.field_key + '\'' + ", field_content='" + this.field_content + '\'' + ", field_creator='" + this.field_creator + '\'' + ", field_num=" + this.field_num + ", field_firstMsgId=" + this.field_firstMsgId + ", field_msgSvrId=" + this.field_msgSvrId + ", field_active=" + this.field_active + ", field_lastActiveTime=" + this.field_lastActiveTime + ", systemRowid=" + this.systemRowid + '}';
+    String str = "GroupSolitatire{header='" + this.header + '\'' + ", example='" + this.DpD + '\'' + ", tail='" + this.CBX + '\'' + ", separator='" + this.bOX + '\'' + ", hasRealTitle=" + this.DpE + ", content=" + this.DpG + ", includeRepeatedContent=" + this.DpH + ", includeWhiteContentNum=" + this.DpI + ", field_username='" + this.field_username + '\'' + ", field_key='" + this.field_key + '\'' + ", field_content='" + this.field_content + '\'' + ", field_creator='" + this.field_creator + '\'' + ", field_num=" + this.field_num + ", field_firstMsgId=" + this.field_firstMsgId + ", field_msgSvrId=" + this.field_msgSvrId + ", field_active=" + this.field_active + ", field_lastActiveTime=" + this.field_lastActiveTime + ", systemRowid=" + this.systemRowid + '}';
     AppMethodBeat.o(110394);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.groupsolitaire.c.a
  * JD-Core Version:    0.7.0.1
  */

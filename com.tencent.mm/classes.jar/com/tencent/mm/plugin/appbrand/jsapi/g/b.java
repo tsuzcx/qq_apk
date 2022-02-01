@@ -1,53 +1,14 @@
 package com.tencent.mm.plugin.appbrand.jsapi.g;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 public final class b
-  extends d
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<com.tencent.mm.plugin.appbrand.service.c>
 {
-  private static final int CTRL_INDEX = 223;
-  private static final String NAME = "getBeacons";
-  
-  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
-  {
-    AppMethodBeat.i(144674);
-    Log.d("MicroMsg.JsApiGetBeacons", "getBeacons!");
-    paramJSONObject = new JSONArray();
-    Object localObject = a.ZM(paramf.getAppId());
-    if (localObject != null)
-    {
-      localObject = ((a.a)localObject).lWk;
-      Log.d("MicroMsg.JsApiGetBeacons", "getBeaconInfo, beaconInfos: ".concat(String.valueOf(localObject)));
-      if ((localObject != null) && (((Map)localObject).size() > 0))
-      {
-        localObject = ((Map)localObject).values().iterator();
-        while (((Iterator)localObject).hasNext()) {
-          paramJSONObject.put((JSONObject)((Iterator)localObject).next());
-        }
-      }
-    }
-    else
-    {
-      Log.e("MicroMsg.JsApiGetBeacons", "not found device");
-    }
-    localObject = new HashMap();
-    ((Map)localObject).put("beacons", paramJSONObject);
-    paramf.i(paramInt, n("ok", (Map)localObject));
-    AppMethodBeat.o(144674);
-  }
+  public static final int CTRL_INDEX = 910;
+  public static final String NAME = "checkHandoffEnabled";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.g.b
  * JD-Core Version:    0.7.0.1
  */

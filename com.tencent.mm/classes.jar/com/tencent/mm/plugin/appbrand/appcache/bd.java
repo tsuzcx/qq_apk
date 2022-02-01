@@ -1,93 +1,46 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
+import android.annotation.SuppressLint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.w;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.appcache.a.a;
 
-public final class bd
-  extends w
+@SuppressLint({"DefaultLocale"})
+public class bd
+  extends a
 {
-  static final IAutoDBItem.MAutoDBInfo iBg;
-  public static final String[] kNu;
-  
-  static
+  bd(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    int i = 0;
-    AppMethodBeat.i(146004);
-    kNu = new String[] { "appId", "version", "debugType" };
-    Object localObject1 = new IAutoDBItem.MAutoDBInfo();
-    ((IAutoDBItem.MAutoDBInfo)localObject1).fields = new Field[10];
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns = new String[11];
-    Object localObject2 = new StringBuilder();
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[0] = "appId";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("appId", "TEXT");
-    ((StringBuilder)localObject2).append(" appId TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[1] = "version";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("version", "INTEGER");
-    ((StringBuilder)localObject2).append(" version INTEGER");
-    ((StringBuilder)localObject2).append(", ");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[2] = "versionMd5";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("versionMd5", "TEXT");
-    ((StringBuilder)localObject2).append(" versionMd5 TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[3] = "NewMd5";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("NewMd5", "TEXT");
-    ((StringBuilder)localObject2).append(" NewMd5 TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[4] = "pkgPath";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("pkgPath", "TEXT");
-    ((StringBuilder)localObject2).append(" pkgPath TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[5] = "createTime";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("createTime", "LONG");
-    ((StringBuilder)localObject2).append(" createTime LONG");
-    ((StringBuilder)localObject2).append(", ");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[6] = "debugType";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("debugType", "INTEGER default '0' ");
-    ((StringBuilder)localObject2).append(" debugType INTEGER default '0' ");
-    ((StringBuilder)localObject2).append(", ");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[7] = "downloadURL";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("downloadURL", "TEXT");
-    ((StringBuilder)localObject2).append(" downloadURL TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[8] = "startTime";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("startTime", "LONG");
-    ((StringBuilder)localObject2).append(" startTime LONG");
-    ((StringBuilder)localObject2).append(", ");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[9] = "endTime";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("endTime", "LONG");
-    ((StringBuilder)localObject2).append(" endTime LONG");
-    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[10] = "rowid";
-    ((IAutoDBItem.MAutoDBInfo)localObject1).sql = ((StringBuilder)localObject2).toString();
-    iBg = (IAutoDBItem.MAutoDBInfo)localObject1;
-    localObject1 = " PRIMARY KEY (";
-    localObject2 = kNu;
-    int j = localObject2.length;
-    while (i < j)
-    {
-      localObject3 = localObject2[i];
-      localObject1 = (String)localObject1 + ", " + (String)localObject3;
-      i += 1;
-    }
-    localObject1 = ((String)localObject1).replaceFirst(",", "");
-    localObject1 = (String)localObject1 + " )";
-    localObject2 = new StringBuilder();
-    Object localObject3 = iBg;
-    ((IAutoDBItem.MAutoDBInfo)localObject3).sql = (((IAutoDBItem.MAutoDBInfo)localObject3).sql + "," + (String)localObject1);
-    AppMethodBeat.o(146004);
+    this(String.format("WxaPkg_%s_%d", new Object[] { paramString1, Integer.valueOf(paramInt2) }), bl(paramString1, paramInt2), paramString2, paramString1, paramInt2, paramInt1);
+    AppMethodBeat.i(90623);
+    AppMethodBeat.o(90623);
   }
   
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  private bd(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2)
   {
-    return iBg;
+    super(paramString1, paramString2, paramString3, paramString4, paramInt1, paramInt2);
+  }
+  
+  static String acR(String paramString)
+  {
+    AppMethodBeat.i(90622);
+    String str = bc.bHt();
+    paramString = str + String.format("_%s.wxapkg", new Object[] { paramString });
+    AppMethodBeat.o(90622);
+    return paramString;
+  }
+  
+  public static String bl(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(90621);
+    String str = bc.bHt();
+    paramString = str + String.format("_%d_%d.wxapkg", new Object[] { Integer.valueOf(paramString.hashCode()), Integer.valueOf(paramInt) });
+    AppMethodBeat.o(90621);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.bd
  * JD-Core Version:    0.7.0.1
  */

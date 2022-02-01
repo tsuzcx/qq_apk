@@ -5,86 +5,72 @@ import g.a.a.b;
 import java.util.LinkedList;
 
 public final class dvz
-  extends dpc
+  extends dyl
 {
-  public oa KTw;
-  public dis KTz;
+  public int UbU;
+  public fct UbV;
+  public int UbW;
+  public int rWs;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(124554);
+    AppMethodBeat.i(32412);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
+      if (this.UbV == null)
       {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(124554);
+        paramVarArgs = new b("Not all required fields were included: PieceData");
+        AppMethodBeat.o(32412);
         throw paramVarArgs;
       }
-      if (this.KTz == null)
+      if (this.BaseRequest != null)
       {
-        paramVarArgs = new b("Not all required fields were included: qy_base_resp");
-        AppMethodBeat.o(124554);
-        throw paramVarArgs;
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.BaseResponse != null)
+      paramVarArgs.aY(2, this.rWs);
+      paramVarArgs.aY(3, this.UbU);
+      if (this.UbV != null)
       {
-        paramVarArgs.ni(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+        paramVarArgs.oE(4, this.UbV.computeSize());
+        this.UbV.writeFields(paramVarArgs);
       }
-      if (this.KTz != null)
-      {
-        paramVarArgs.ni(2, this.KTz.computeSize());
-        this.KTz.writeFields(paramVarArgs);
-      }
-      if (this.KTw != null)
-      {
-        paramVarArgs.ni(3, this.KTw.computeSize());
-        this.KTw.writeFields(paramVarArgs);
-      }
-      AppMethodBeat.o(124554);
+      paramVarArgs.aY(5, this.UbW);
+      AppMethodBeat.o(32412);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label714;
+      if (this.BaseRequest == null) {
+        break label613;
       }
     }
-    label714:
-    for (int i = g.a.a.a.nh(1, this.BaseResponse.computeSize()) + 0;; i = 0)
+    label613:
+    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
+      int i = paramInt + g.a.a.b.b.a.bM(2, this.rWs) + g.a.a.b.b.a.bM(3, this.UbU);
       paramInt = i;
-      if (this.KTz != null) {
-        paramInt = i + g.a.a.a.nh(2, this.KTz.computeSize());
+      if (this.UbV != null) {
+        paramInt = i + g.a.a.a.oD(4, this.UbV.computeSize());
       }
-      i = paramInt;
-      if (this.KTw != null) {
-        i = paramInt + g.a.a.a.nh(3, this.KTw.computeSize());
-      }
-      AppMethodBeat.o(124554);
-      return i;
+      i = g.a.a.b.b.a.bM(5, this.UbW);
+      AppMethodBeat.o(32412);
+      return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dpc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dpc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.BaseResponse == null)
+        if (this.UbV == null)
         {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(124554);
+          paramVarArgs = new b("Not all required fields were included: PieceData");
+          AppMethodBeat.o(32412);
           throw paramVarArgs;
         }
-        if (this.KTz == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: qy_base_resp");
-          AppMethodBeat.o(124554);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(124554);
+        AppMethodBeat.o(32412);
         return 0;
       }
       if (paramInt == 3)
@@ -93,66 +79,64 @@ public final class dvz
         dvz localdvz = (dvz)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         Object localObject2;
-        boolean bool;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(124554);
+          AppMethodBeat.o(32412);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localdvz.BaseResponse = ((BaseResponse)localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new jg();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((jg)localObject2).parseFrom((byte[])localObject1);
+            }
+            localdvz.BaseRequest = ((jg)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(124554);
+          AppMethodBeat.o(32412);
           return 0;
         case 2: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          localdvz.rWs = ((g.a.a.a.a)localObject1).abFh.AK();
+          AppMethodBeat.o(32412);
+          return 0;
+        case 3: 
+          localdvz.UbU = ((g.a.a.a.a)localObject1).abFh.AK();
+          AppMethodBeat.o(32412);
+          return 0;
+        case 4: 
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new dis();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((dis)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localdvz.KTz = ((dis)localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new fct();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((fct)localObject2).parseFrom((byte[])localObject1);
+            }
+            localdvz.UbV = ((fct)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(124554);
+          AppMethodBeat.o(32412);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new oa();
-          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((oa)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-          localdvz.KTw = ((oa)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(124554);
+        localdvz.UbW = ((g.a.a.a.a)localObject1).abFh.AK();
+        AppMethodBeat.o(32412);
         return 0;
       }
-      AppMethodBeat.o(124554);
+      AppMethodBeat.o(32412);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dvz
  * JD-Core Version:    0.7.0.1
  */

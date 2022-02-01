@@ -10,51 +10,46 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class h
 {
-  protected l ctf;
-  public j ctg;
-  protected a cth;
+  protected l crl;
+  public j crm;
+  protected a crn;
   public Context mContext;
   
   public h(j paramj)
   {
     this.mContext = paramj.getContext();
-    this.ctf = new l();
-    this.ctg = paramj;
+    this.crl = new l();
+    this.crm = paramj;
   }
   
-  protected abstract View Lf();
+  protected abstract View NW();
   
-  public final j Lg()
+  public final j NX()
   {
-    return this.ctg;
+    return this.crm;
   }
   
-  final void Lh()
-  {
-    this.ctf.Q(l.e.class);
-  }
-  
-  public final void Li()
+  public final void NY()
   {
     onForeground();
-    this.ctf.Q(l.d.class);
+    this.crl.P(l.d.class);
   }
   
-  public final void Lj()
+  public final void NZ()
   {
     onBackground();
-    this.ctf.Q(l.b.class);
+    this.crl.P(l.b.class);
   }
   
-  public final boolean Lk()
+  public final boolean Oa()
   {
-    return (this.ctf.Q(l.a.class)) || (onBackPressed());
+    return (this.crl.P(l.a.class)) || (onBackPressed());
   }
   
-  final void Ll()
+  final void Ob()
   {
     onDestroy();
-    this.ctf.Q(l.c.class);
+    this.crl.P(l.c.class);
   }
   
   final void a(Animator paramAnimator, final Runnable paramRunnable)
@@ -75,7 +70,7 @@ public abstract class h
   
   public void a(a parama)
   {
-    this.cth = parama;
+    this.crn = parama;
   }
   
   protected abstract void destroy();
@@ -86,8 +81,6 @@ public abstract class h
     localObjectAnimator.setDuration(250L);
     a(localObjectAnimator, paramRunnable);
   }
-  
-  public abstract void g(String paramString, Bundle paramBundle);
   
   public abstract View getContentView();
   
@@ -103,6 +96,8 @@ public abstract class h
     a(localObjectAnimator, paramRunnable);
   }
   
+  public abstract void l(String paramString, Bundle paramBundle);
+  
   protected boolean onBackPressed()
   {
     return false;
@@ -116,13 +111,13 @@ public abstract class h
   
   public static class a
   {
-    protected a ctj;
+    protected a crp;
     
     public a() {}
     
     protected a(a parama)
     {
-      this.ctj = parama;
+      this.crp = parama;
     }
   }
 }

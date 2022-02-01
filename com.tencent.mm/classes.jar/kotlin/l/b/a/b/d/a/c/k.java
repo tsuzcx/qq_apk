@@ -8,14 +8,14 @@ import kotlin.l.b.a.b.d.a.f.h;
 
 public final class k
 {
-  public final h TrC;
-  public final Collection<a.a> TrD;
+  public final h aaUw;
+  public final Collection<a.a> aaUx;
   
   public k(h paramh, Collection<? extends a.a> paramCollection)
   {
     AppMethodBeat.i(57765);
-    this.TrC = paramh;
-    this.TrD = paramCollection;
+    this.aaUw = paramh;
+    this.aaUx = paramCollection;
     AppMethodBeat.o(57765);
   }
   
@@ -27,7 +27,7 @@ public final class k
       if ((paramObject instanceof k))
       {
         paramObject = (k)paramObject;
-        if ((!p.j(this.TrC, paramObject.TrC)) || (!p.j(this.TrD, paramObject.TrD))) {}
+        if ((!p.h(this.aaUw, paramObject.aaUw)) || (!p.h(this.aaUx, paramObject.aaUx))) {}
       }
     }
     else
@@ -43,11 +43,11 @@ public final class k
   {
     int j = 0;
     AppMethodBeat.i(57767);
-    Object localObject = this.TrC;
+    Object localObject = this.aaUw;
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.TrD;
+      localObject = this.aaUx;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -59,14 +59,14 @@ public final class k
   public final String toString()
   {
     AppMethodBeat.i(57766);
-    String str = "NullabilityQualifierWithApplicability(nullabilityQualifier=" + this.TrC + ", qualifierApplicabilityTypes=" + this.TrD + ")";
+    String str = "NullabilityQualifierWithApplicability(nullabilityQualifier=" + this.aaUw + ", qualifierApplicabilityTypes=" + this.aaUx + ")";
     AppMethodBeat.o(57766);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.c.k
  * JD-Core Version:    0.7.0.1
  */

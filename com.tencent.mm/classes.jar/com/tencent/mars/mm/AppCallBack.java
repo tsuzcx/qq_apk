@@ -11,7 +11,7 @@ import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
@@ -20,7 +20,7 @@ public class AppCallBack
 {
   private static final String TAG = "AppCallBack";
   private Context context = null;
-  AppLogic.DeviceInfo info = new AppLogic.DeviceInfo(d.DEVICE_NAME, d.ics);
+  AppLogic.DeviceInfo info = new AppLogic.DeviceInfo(d.RAB, d.kQZ);
   
   public AppCallBack(Context paramContext)
   {
@@ -37,17 +37,17 @@ public class AppCallBack
   public AppLogic.AccountInfo getAccountInfo()
   {
     AppLogic.AccountInfo localAccountInfo = new AppLogic.AccountInfo();
-    if ((af.bkl() == null) || (af.bkl().jEj == null)) {}
+    if ((af.btU() == null) || (af.btU().muM == null)) {}
     for (;;)
     {
       return localAccountInfo;
       try
       {
-        localAccountInfo.uin = af.bkl().jEj.getUin();
-        localAccountInfo.userName = af.bkl().jEj.aZd();
+        localAccountInfo.uin = af.btU().muM.getUin();
+        localAccountInfo.userName = af.btU().muM.bis();
         if (Util.isNullOrNil(localAccountInfo.userName))
         {
-          localAccountInfo.userName = af.bkl().jEj.getUsername();
+          localAccountInfo.userName = af.btU().muM.getUsername();
           return localAccountInfo;
         }
       }
@@ -65,11 +65,11 @@ public class AppCallBack
     }
     try
     {
-      Object localObject = o.X(this.context.getFilesDir());
-      if (!((o)localObject).exists()) {
-        ((o)localObject).createNewFile();
+      Object localObject = q.Q(this.context.getFilesDir());
+      if (!((q)localObject).ifE()) {
+        ((q)localObject).ifM();
       }
-      localObject = ((o)localObject).toString();
+      localObject = ((q)localObject).toString();
       return localObject;
     }
     catch (Exception localException)
@@ -82,7 +82,7 @@ public class AppCallBack
   
   public int getClientVersion()
   {
-    return d.KyO;
+    return d.RAD;
   }
   
   public String getCurLanguage()
@@ -97,7 +97,7 @@ public class AppCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mars.mm.AppCallBack
  * JD-Core Version:    0.7.0.1
  */

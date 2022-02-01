@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.flash.e;
 
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.i;
 
 public abstract interface a
 {
   public abstract void a(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, float paramFloat, int paramInt2, i parami);
   
-  public abstract String getResultKey();
+  public abstract String epR();
   
   public abstract int getType();
 }

@@ -17,32 +17,32 @@ import java.util.Map;
 
 public enum a
 {
-  private a NBa;
+  private a UOD;
   private boolean b;
   String c;
   public boolean e;
   
   static
   {
-    AppMethodBeat.i(186314);
-    NAY = new a("INSTANCE");
-    NAZ = new a[] { NAY };
-    AppMethodBeat.o(186314);
+    AppMethodBeat.i(231818);
+    UOB = new a("INSTANCE");
+    UOC = new a[] { UOB };
+    AppMethodBeat.o(231818);
   }
   
   private a()
   {
-    AppMethodBeat.i(186309);
+    AppMethodBeat.i(231810);
     this.b = false;
     this.c = "default";
-    this.NBa = new a((byte)0);
+    this.UOD = new a((byte)0);
     this.e = false;
-    AppMethodBeat.o(186309);
+    AppMethodBeat.o(231810);
   }
   
-  public static String RF()
+  public static String Vs()
   {
-    AppMethodBeat.i(186310);
+    AppMethodBeat.i(231813);
     System.currentTimeMillis();
     try
     {
@@ -85,58 +85,56 @@ public enum a
     finally
     {
       System.currentTimeMillis();
-      AppMethodBeat.o(186310);
+      AppMethodBeat.o(231813);
     }
   }
   
   private static boolean a()
   {
-    AppMethodBeat.i(186312);
+    AppMethodBeat.i(231815);
     try
     {
-      Object localObject3 = Class.forName("android.app.ActivityThread");
-      Object localObject1 = ((Class)localObject3).getMethod("currentActivityThread", new Class[0]).invoke(null, new Object[0]);
-      localObject3 = ((Class)localObject3).getDeclaredField("mActivities");
-      ((Field)localObject3).setAccessible(true);
+      Object localObject2 = Class.forName("android.app.ActivityThread");
+      Object localObject1 = ((Class)localObject2).getMethod("currentActivityThread", new Class[0]).invoke(null, new Object[0]);
+      localObject2 = ((Class)localObject2).getDeclaredField("mActivities");
+      ((Field)localObject2).setAccessible(true);
       if (Build.VERSION.SDK_INT < 19) {}
-      for (localObject1 = (HashMap)((Field)localObject3).get(localObject1);; localObject1 = (ArrayMap)((Field)localObject3).get(localObject1))
+      for (localObject1 = (HashMap)((Field)localObject2).get(localObject1);; localObject1 = (ArrayMap)((Field)localObject2).get(localObject1))
       {
         int i = ((Map)localObject1).size();
         if (i > 0) {
           break;
         }
+        AppMethodBeat.o(231815);
         return false;
       }
       localObject1 = ((Map)localObject1).values().iterator();
-      boolean bool;
-      do
+      while (((Iterator)localObject1).hasNext())
       {
-        if (!((Iterator)localObject1).hasNext()) {
-          break;
+        localObject2 = ((Iterator)localObject1).next();
+        Object localObject3 = localObject2.getClass();
+        localObject3 = ((Class)localObject3).getDeclaredField("paused");
+        ((Field)localObject3).setAccessible(true);
+        boolean bool = ((Field)localObject3).getBoolean(localObject2);
+        if (!bool)
+        {
+          AppMethodBeat.o(231815);
+          return true;
         }
-        localObject3 = ((Iterator)localObject1).next();
-        Object localObject4 = localObject3.getClass();
-        localObject4 = ((Class)localObject4).getDeclaredField("paused");
-        ((Field)localObject4).setAccessible(true);
-        bool = ((Field)localObject4).getBoolean(localObject3);
-      } while (bool);
-      return true;
+      }
     }
     catch (Exception localException)
     {
-      return false;
+      AppMethodBeat.o(231815);
     }
-    finally
-    {
-      AppMethodBeat.o(186312);
-    }
+    return false;
   }
   
-  public static boolean gus()
+  public static boolean hpQ()
   {
-    AppMethodBeat.i(186311);
+    AppMethodBeat.i(231814);
     boolean bool = a();
-    AppMethodBeat.o(186311);
+    AppMethodBeat.o(231814);
     return bool;
   }
   
@@ -145,8 +143,8 @@ public enum a
   {
     private a()
     {
-      AppMethodBeat.i(186303);
-      AppMethodBeat.o(186303);
+      AppMethodBeat.i(231781);
+      AppMethodBeat.o(231781);
     }
     
     public final void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
@@ -161,19 +159,19 @@ public enum a
     
     public final void onActivityStarted(Activity paramActivity)
     {
-      AppMethodBeat.i(186304);
+      AppMethodBeat.i(231784);
       a.a(a.this, paramActivity);
       a.a(a.this);
-      AppMethodBeat.o(186304);
+      AppMethodBeat.o(231784);
     }
     
     public final void onActivityStopped(Activity paramActivity)
     {
-      AppMethodBeat.i(186305);
-      if (a.RF() == null) {
+      AppMethodBeat.i(231786);
+      if (a.Vs() == null) {
         a.b(a.this);
       }
-      AppMethodBeat.o(186305);
+      AppMethodBeat.o(231786);
     }
     
     public final void onConfigurationChanged(Configuration paramConfiguration) {}
@@ -182,20 +180,20 @@ public enum a
     
     public final void onTrimMemory(int paramInt)
     {
-      AppMethodBeat.i(186306);
+      AppMethodBeat.i(231798);
       if ((paramInt == 20) && (a.c(a.this)))
       {
         a locala = a.this;
         a.d(locala);
         a.b(locala);
       }
-      AppMethodBeat.o(186306);
+      AppMethodBeat.o(231798);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.rabbiteye.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,9 +7,9 @@ import java.nio.ByteOrder;
 
 public abstract class h
 {
-  private static int D(ByteBuffer paramByteBuffer)
+  private static int A(ByteBuffer paramByteBuffer)
   {
-    G(paramByteBuffer);
+    D(paramByteBuffer);
     int j = paramByteBuffer.capacity();
     if (j < 22) {}
     for (;;)
@@ -28,19 +28,19 @@ public abstract class h
     }
   }
   
-  public static long E(ByteBuffer paramByteBuffer)
+  public static long B(ByteBuffer paramByteBuffer)
   {
-    G(paramByteBuffer);
+    D(paramByteBuffer);
     return e(paramByteBuffer, paramByteBuffer.position() + 16);
   }
   
-  public static long F(ByteBuffer paramByteBuffer)
+  public static long C(ByteBuffer paramByteBuffer)
   {
-    G(paramByteBuffer);
+    D(paramByteBuffer);
     return e(paramByteBuffer, paramByteBuffer.position() + 12);
   }
   
-  private static void G(ByteBuffer paramByteBuffer)
+  private static void D(ByteBuffer paramByteBuffer)
   {
     if (paramByteBuffer.order() != ByteOrder.LITTLE_ENDIAN) {
       throw new IllegalArgumentException("ByteBuffer byte order must be little endian");
@@ -80,7 +80,7 @@ public abstract class h
       l -= localByteBuffer.capacity();
       paramRandomAccessFile.seek(l);
       paramRandomAccessFile.readFully(localByteBuffer.array(), localByteBuffer.arrayOffset(), localByteBuffer.capacity());
-      paramInt = D(localByteBuffer);
+      paramInt = A(localByteBuffer);
     } while (paramInt == -1);
     localByteBuffer.position(paramInt);
     paramRandomAccessFile = localByteBuffer.slice();
@@ -106,7 +106,7 @@ public abstract class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.d.h
  * JD-Core Version:    0.7.0.1
  */

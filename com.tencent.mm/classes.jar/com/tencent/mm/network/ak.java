@@ -5,25 +5,25 @@ import java.util.HashMap;
 
 public final class ak
 {
-  private static ak jGa = null;
-  private HashMap<Integer, a> jGb;
+  private static ak mwD = null;
+  private HashMap<Integer, a> mwE;
   
   public ak()
   {
     AppMethodBeat.i(132943);
-    this.jGb = new HashMap();
+    this.mwE = new HashMap();
     AppMethodBeat.o(132943);
   }
   
-  public static ak bkr()
+  public static ak bua()
   {
     try
     {
       AppMethodBeat.i(132944);
-      if (jGa == null) {
-        jGa = new ak();
+      if (mwD == null) {
+        mwD = new ak();
       }
-      ak localak = jGa;
+      ak localak = mwD;
       AppMethodBeat.o(132944);
       return localak;
     }
@@ -31,7 +31,7 @@ public final class ak
   }
   
   /* Error */
-  public final int k(int paramInt, byte[] paramArrayOfByte)
+  public final int l(int paramInt, byte[] paramArrayOfByte)
   {
     // Byte code:
     //   0: aload_0
@@ -39,7 +39,7 @@ public final class ak
     //   2: ldc 42
     //   4: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 32	com/tencent/mm/network/ak:jGb	Ljava/util/HashMap;
+    //   8: getfield 32	com/tencent/mm/network/ak:mwE	Ljava/util/HashMap;
     //   11: iload_1
     //   12: invokestatic 48	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   15: invokevirtual 52	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
@@ -148,12 +148,12 @@ public final class ak
   
   public static abstract interface a
   {
-    public abstract int bks();
+    public abstract int bub();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.network.ak
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mm.xeffect.effect;
 
 import android.graphics.Bitmap;
-import android.support.annotation.Keep;
 import android.util.Size;
+import androidx.annotation.Keep;
 import kotlin.l;
 
-@l(hxD={1, 1, 15}, hxE={""}, hxF={"Lcom/tencent/mm/xeffect/effect/IStickerDecoder;", "", "destroy", "", "duration", "", "getFrame", "Landroid/graphics/Bitmap;", "seekTo", "time", "size", "Landroid/util/Size;", "renderlib_release"})
+@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/xeffect/effect/IStickerDecoder;", "", "destroy", "", "duration", "", "getFrame", "Landroid/graphics/Bitmap;", "seekTo", "time", "size", "Landroid/util/Size;", "renderlib_release"})
 @Keep
 public abstract interface IStickerDecoder
 {
@@ -21,7 +21,7 @@ public abstract interface IStickerDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.xeffect.effect.IStickerDecoder
  * JD-Core Version:    0.7.0.1
  */

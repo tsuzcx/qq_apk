@@ -1,64 +1,79 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.report.i;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.f.c.ig;
+import com.tencent.mm.plugin.appbrand.ab.b;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class am
+  extends ig
+  implements b
 {
-  static void a(b paramb, String paramString, int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4)
+  public static final String[] lqL;
+  public static final String[] nDP;
+  static final IAutoDBItem.MAutoDBInfo nFK;
+  
+  static
   {
-    AppMethodBeat.i(227090);
-    int i = i.aeH(paramString);
-    Log.d("MicroMsg.AppBrand.LaunchStepCostReporter", "report %s | %s | %d | %d | %d", new Object[] { paramb.name(), paramString, Long.valueOf(paramLong), Integer.valueOf(i), Integer.valueOf(paramInt4) });
-    h.CyF.a(13886, new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2 + 1), Integer.valueOf(paramb.eventId), "", "", Long.valueOf(paramLong), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramInt3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(paramInt4) });
-    AppMethodBeat.o(227090);
+    AppMethodBeat.i(276291);
+    Object localObject1 = new IAutoDBItem.MAutoDBInfo();
+    ((IAutoDBItem.MAutoDBInfo)localObject1).fields = new Field[4];
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns = new String[5];
+    Object localObject2 = new StringBuilder();
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[0] = "appId";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("appId", "TEXT");
+    ((StringBuilder)localObject2).append(" appId TEXT");
+    ((StringBuilder)localObject2).append(", ");
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[1] = "appType";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("appType", "INTEGER");
+    ((StringBuilder)localObject2).append(" appType INTEGER");
+    ((StringBuilder)localObject2).append(", ");
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[2] = "versionType";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("versionType", "INTEGER");
+    ((StringBuilder)localObject2).append(" versionType INTEGER");
+    ((StringBuilder)localObject2).append(", ");
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[3] = "permissionBytes";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("permissionBytes", "BLOB");
+    ((StringBuilder)localObject2).append(" permissionBytes BLOB");
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[4] = "rowid";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).sql = ((StringBuilder)localObject2).toString();
+    nFK = (IAutoDBItem.MAutoDBInfo)localObject1;
+    nDP = new String[] { "appId", "appType", "versionType" };
+    localObject1 = " PRIMARY KEY ( ";
+    localObject2 = nDP;
+    int j = localObject2.length;
+    int i = 0;
+    while (i < j)
+    {
+      localObject3 = localObject2[i];
+      localObject1 = (String)localObject1 + ", " + (String)localObject3;
+      i += 1;
+    }
+    localObject1 = ((String)localObject1).replaceFirst(",", "");
+    localObject1 = (String)localObject1 + " )";
+    localObject2 = new StringBuilder();
+    Object localObject3 = nFK;
+    ((IAutoDBItem.MAutoDBInfo)localObject3).sql = (((IAutoDBItem.MAutoDBInfo)localObject3).sql + "," + (String)localObject1);
+    lqL = new String[] { MAutoStorage.getCreateSQLs(nFK, "WxaAppidABTestInfo") };
+    AppMethodBeat.o(276291);
   }
   
-  public static enum a
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    static
-    {
-      AppMethodBeat.i(47266);
-      mVG = new a("NONE", 0);
-      mVH = new a("MISSING_PKG", 1);
-      mVI = new a("NO_USE_RECENT", 2);
-      mVJ = new a("INVALID_FIELDS", 3);
-      mVK = new a("VERSION_NOT_FOUND", 4);
-      mVL = new a("PATH_NOT_FOUND", 5);
-      mVM = new a("CMD_UPDATE_VERSION", 6);
-      mVN = new a("ATTRS_NOT_FOUND", 7);
-      mVO = new a[] { mVG, mVH, mVI, mVJ, mVK, mVL, mVM, mVN };
-      AppMethodBeat.o(47266);
-    }
-    
-    private a() {}
+    return nFK;
   }
   
-  public static enum b
+  public final String[] getKeys()
   {
-    final int eventId;
-    
-    static
-    {
-      AppMethodBeat.i(47269);
-      mVP = new b("SYNC_GET_ATTRS", 0, 20);
-      mVQ = new b("SYNC_LAUNCH", 1, 21);
-      mVR = new b("GET_DOWNLOAD_URL", 2, 22);
-      mVS = new b[] { mVP, mVQ, mVR };
-      AppMethodBeat.o(47269);
-    }
-    
-    private b(int paramInt)
-    {
-      this.eventId = paramInt;
-    }
+    return nDP;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.am
  * JD-Core Version:    0.7.0.1
  */

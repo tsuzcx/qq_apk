@@ -6,94 +6,96 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.tools.r;
+import com.tencent.mm.pluginsdk.ui.tools.t;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.xwebutil.c;
 import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.xweb.WebView;
 import com.tencent.xweb.downloader.WXFileDownloaderBridge;
+import com.tencent.xweb.x5.sdk.d;
 import com.tencent.xweb.x5.sdk.f;
 import com.tencent.xweb.x5.sdk.f.a;
 
 public final class e
   implements a
 {
-  private a NFf;
-  private boolean NFg;
-  private boolean NFh;
-  private boolean NFi;
+  private a USE;
+  private boolean USF;
+  private boolean USG;
+  private boolean USH;
   Intent intent;
-  private int kYM;
-  private Notification kYy;
+  private Notification nSJ;
+  private int nSX;
   
   static
   {
     AppMethodBeat.i(32707);
-    com.tencent.mm.cr.d.kT(MMApplicationContext.getContext());
-    WXFileDownloaderBridge.a(com.tencent.mm.plugin.cdndownloader.i.a.cyj());
+    c.lQ(MMApplicationContext.getContext());
+    WXFileDownloaderBridge.a(com.tencent.mm.plugin.cdndownloader.i.a.cME());
     AppMethodBeat.o(32707);
   }
   
   private e()
   {
     AppMethodBeat.i(32698);
-    this.NFf = null;
+    this.USE = null;
     this.intent = new Intent();
-    this.kYy = null;
-    this.kYM = 999;
-    this.NFg = false;
-    this.NFh = false;
-    this.NFi = false;
+    this.nSJ = null;
+    this.nSX = 999;
+    this.USF = false;
+    this.USG = false;
+    this.USH = false;
     AppMethodBeat.o(32698);
   }
   
-  private void dZb()
+  private void eHY()
   {
     AppMethodBeat.i(32699);
-    if (this.NFi)
+    if (this.USH)
     {
       Log.i("MicroMsg.TBSDownloadMgr", "TBS already downloaded, ignore duplicated request");
       AppMethodBeat.o(32699);
       return;
     }
-    this.NFi = true;
-    if (this.NFf == null)
+    this.USH = true;
+    if (this.USE == null)
     {
-      this.NFf = new a((byte)0);
-      com.tencent.xweb.x5.sdk.d.a(this.NFf);
-      r.pl(2);
+      this.USE = new a((byte)0);
+      d.a(this.USE);
+      t.rE(2);
     }
-    gwi();
-    r.pl(3);
+    hsh();
+    t.rE(3);
     AppMethodBeat.o(32699);
   }
   
-  public static e gwh()
+  public static e hsg()
   {
-    return b.NFl;
+    return b.USK;
   }
   
-  private void gwi()
+  private void hsh()
   {
     AppMethodBeat.i(32701);
     f.startDownload(MMApplicationContext.getContext());
     SharedPreferences localSharedPreferences = MMApplicationContext.getContext().getSharedPreferences("com.tencent.mm_webview_x5_preferences", 4);
     if (localSharedPreferences != null)
     {
-      Log.i("MicroMsg.TBSDownloadMgr", "now start download,hasDownloadOverSea over sea = %b, is now oversea = %b", new Object[] { Boolean.valueOf(this.NFh), Boolean.valueOf(this.NFg) });
-      if ((this.NFh) || (this.NFg)) {
+      Log.i("MicroMsg.TBSDownloadMgr", "now start download,hasDownloadOverSea over sea = %b, is now oversea = %b", new Object[] { Boolean.valueOf(this.USG), Boolean.valueOf(this.USF) });
+      if ((this.USG) || (this.USF)) {
         localSharedPreferences.edit().putBoolean("tbs_download_oversea", true).commit();
       }
     }
     AppMethodBeat.o(32701);
   }
   
-  public final void Ay(boolean paramBoolean)
+  public final void EF(boolean paramBoolean)
   {
     AppMethodBeat.i(32700);
-    if (this.NFf == null)
+    if (this.USE == null)
     {
       Log.w("MicroMsg.TBSDownloadMgr", "TBS download not inited, ignore");
       AppMethodBeat.o(32700);
@@ -101,21 +103,21 @@ public final class e
     }
     Context localContext = MMApplicationContext.getContext();
     boolean bool1 = f.isDownloading();
-    boolean bool2 = f.needDownload(localContext, this.NFg | this.NFh);
+    boolean bool2 = f.needDownload(localContext, this.USF | this.USG);
     boolean bool3 = this.intent.getBooleanExtra("intent_extra_download_ignore_network_type", false);
     boolean bool4 = f.isDownloadForeground();
     Log.i("MicroMsg.TBSDownloadMgr", "setNetStatChanged, isWifi = %b, downloading = %b, needDownload = %b, ignoreNetworkType = %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
     if (((paramBoolean) || (bool3)) && (!bool1) && (bool2))
     {
-      gwi();
-      r.pl(3);
+      hsh();
+      t.rE(3);
       AppMethodBeat.o(32700);
       return;
     }
     if ((!paramBoolean) && (!bool3) && (bool1) && (!bool4))
     {
       f.stopDownload();
-      r.pl(4);
+      t.rE(4);
     }
     AppMethodBeat.o(32700);
   }
@@ -127,14 +129,14 @@ public final class e
     if (this.intent.getIntExtra("intent_extra_download_type", 1) == 2) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      this.NFg = bool1;
+      this.USF = bool1;
       paramIntent = MMApplicationContext.getContext().getSharedPreferences("com.tencent.mm_webview_x5_preferences", 4);
       if (paramIntent != null) {
-        this.NFh = paramIntent.getBoolean("tbs_download_oversea", false);
+        this.USG = paramIntent.getBoolean("tbs_download_oversea", false);
       }
-      Log.i("MicroMsg.TBSDownloadMgr", "isOverSea = %b, hasDownloadOverSea = %b", new Object[] { Boolean.valueOf(this.NFg), Boolean.valueOf(this.NFh) });
+      Log.i("MicroMsg.TBSDownloadMgr", "isOverSea = %b, hasDownloadOverSea = %b", new Object[] { Boolean.valueOf(this.USF), Boolean.valueOf(this.USG) });
       bool1 = f.isDownloading();
-      com.tencent.xweb.x5.sdk.d.setUploadCode(MMApplicationContext.getContext(), 133);
+      d.setUploadCode(MMApplicationContext.getContext(), 133);
       if (this.intent.getBooleanExtra("intent_extra_download_ignore_network_type", false)) {
         QbSdk.setDownloadWithoutWifi(true);
       }
@@ -142,14 +144,14 @@ public final class e
         break;
       }
       Log.i("MicroMsg.TBSDownloadMgr", "TBS already downloading, ignore duplicated request");
-      com.tencent.xweb.x5.sdk.d.setUploadCode(MMApplicationContext.getContext(), 134);
+      d.setUploadCode(MMApplicationContext.getContext(), 134);
       AppMethodBeat.o(32702);
       return true;
     }
-    this.NFi = false;
+    this.USH = false;
     paramIntent = MMApplicationContext.getContext();
     int i = WebView.getInstalledTbsCoreVersion(paramIntent);
-    bool1 = f.a(paramIntent, this.NFg | this.NFh, false, new f.a()
+    bool1 = f.a(paramIntent, this.USF | this.USG, false, new f.a()
     {
       public final void onNeedDownloadFinish(boolean paramAnonymousBoolean, int paramAnonymousInt)
       {
@@ -168,7 +170,7 @@ public final class e
           public final void run()
           {
             AppMethodBeat.i(32693);
-            UpdaterService.fK();
+            UpdaterService.hz();
             AppMethodBeat.o(32693);
           }
         }, 500L);
@@ -180,7 +182,7 @@ public final class e
     Log.i("MicroMsg.TBSDownloadMgr", "TBS download, tbsCoreVersion = %d, needDownload = %b, isWifi = %b, ignoreNetworkType = %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
     if (((bool2) || (bool3)) && (bool1))
     {
-      dZb();
+      eHY();
       AppMethodBeat.o(32702);
       return true;
     }
@@ -197,7 +199,7 @@ public final class e
   {
     AppMethodBeat.i(32703);
     boolean bool1 = f.isDownloading();
-    boolean bool2 = com.tencent.xweb.x5.sdk.d.getTBSInstalling();
+    boolean bool2 = d.getTBSInstalling();
     Log.i("MicroMsg.TBSDownloadMgr", "isBusy isDownloading = %b, isInstalling = %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
     if ((bool1) || (bool2))
     {
@@ -224,13 +226,13 @@ public final class e
     {
       AppMethodBeat.i(32695);
       Log.i("MicroMsg.MyTbsListener", "onDownloadFinish, result = %d", new Object[] { Integer.valueOf(paramInt) });
-      r.gH(5, paramInt);
+      t.gU(5, paramInt);
       if (paramInt != 110)
       {
         if (paramInt != 100) {
           break label107;
         }
-        com.tencent.mm.plugin.report.service.h.CyF.a(64, 64, 4, 3, 1, 1, false);
+        com.tencent.mm.plugin.report.service.h.IzE.a(64, 64, 4, 3, 1, 1, false);
       }
       for (;;)
       {
@@ -245,7 +247,7 @@ public final class e
         AppMethodBeat.o(32695);
         return;
         label107:
-        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(64L, 3L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(64L, 3L, 1L, false);
       }
     }
     
@@ -255,34 +257,34 @@ public final class e
     {
       AppMethodBeat.i(32696);
       Log.i("MicroMsg.MyTbsListener", "onInstallFinish, result = %d", new Object[] { Integer.valueOf(paramInt) });
-      r.gH(6, paramInt);
+      t.gU(6, paramInt);
       if ((paramInt == 200) || (paramInt == 220))
       {
-        com.tencent.mm.plugin.report.service.h.CyF.a(64, 64, 7, 6, 1, 1, false);
+        com.tencent.mm.plugin.report.service.h.IzE.a(64, 64, 7, 6, 1, 1, false);
         e.b(e.this);
         AppMethodBeat.o(32696);
         return;
       }
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(64L, 6L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(64L, 6L, 1L, false);
       AppMethodBeat.o(32696);
     }
   }
   
   static final class b
   {
-    public static final e NFl;
+    public static final e USK;
     
     static
     {
       AppMethodBeat.i(32697);
-      NFl = new e((byte)0);
+      USK = new e((byte)0);
       AppMethodBeat.o(32697);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sandbox.updater.e
  * JD-Core Version:    0.7.0.1
  */

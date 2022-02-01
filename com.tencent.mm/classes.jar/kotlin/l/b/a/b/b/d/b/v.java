@@ -10,33 +10,33 @@ public final class v
   extends w
   implements u
 {
-  private final Class<?> Tnt;
+  private final Class<?> aaQn;
   
   public v(Class<?> paramClass)
   {
     AppMethodBeat.i(57503);
-    this.Tnt = paramClass;
+    this.aaQn = paramClass;
     AppMethodBeat.o(57503);
   }
   
-  public final h hDh()
+  public final h iHB()
   {
     AppMethodBeat.i(57502);
-    if (p.j(this.Tnt, Void.TYPE))
+    if (p.h(this.aaQn, Void.TYPE))
     {
       AppMethodBeat.o(57502);
       return null;
     }
-    Object localObject = d.buk(this.Tnt.getName());
-    p.g(localObject, "JvmPrimitiveType.get(reflectType.name)");
-    localObject = ((d)localObject).hKJ();
+    Object localObject = d.bHm(this.aaQn.getName());
+    p.j(localObject, "JvmPrimitiveType.get(reflectType.name)");
+    localObject = ((d)localObject).iOZ();
     AppMethodBeat.o(57502);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.d.b.v
  * JD-Core Version:    0.7.0.1
  */

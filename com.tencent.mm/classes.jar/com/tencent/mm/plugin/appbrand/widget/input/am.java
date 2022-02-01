@@ -1,56 +1,38 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.text.Spannable;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class am
-  implements ViewTreeObserver.OnGlobalLayoutListener
+final class am
 {
-  private final View ovG;
-  private final a ovH;
-  private int ovI;
-  private int ovJ;
-  private boolean ovK;
-  
-  private am(View paramView, a parama)
+  static am.a[] k(TextView paramTextView)
   {
-    this.ovG = paramView;
-    this.ovH = parama;
-  }
-  
-  public static void a(View paramView, a parama)
-  {
-    AppMethodBeat.i(133758);
-    paramView = new am(paramView, parama);
-    paramView.ovG.getViewTreeObserver().addOnGlobalLayoutListener(paramView);
-    AppMethodBeat.o(133758);
-  }
-  
-  public final void onGlobalLayout()
-  {
-    AppMethodBeat.i(133759);
-    if (!this.ovK)
+    int i = 0;
+    AppMethodBeat.i(131517);
+    Spannable localSpannable = null;
+    Object localObject = localSpannable;
+    if (paramTextView != null)
     {
-      this.ovK = true;
-      this.ovI = this.ovG.getWidth();
-      this.ovJ = this.ovG.getHeight();
-      AppMethodBeat.o(133759);
-      return;
+      localObject = localSpannable;
+      if ((paramTextView.getText() instanceof Spannable))
+      {
+        localSpannable = (Spannable)paramTextView.getText();
+        paramTextView = (am.a[])localSpannable.getSpans(0, localSpannable.length(), am.a.class);
+        int j = paramTextView.length;
+        for (;;)
+        {
+          localObject = paramTextView;
+          if (i >= j) {
+            break;
+          }
+          localSpannable.removeSpan(paramTextView[i]);
+          i += 1;
+        }
+      }
     }
-    if ((this.ovG.getWidth() != this.ovI) || (this.ovG.getHeight() != this.ovJ))
-    {
-      this.ovH.caR();
-      this.ovI = this.ovG.getWidth();
-      this.ovJ = this.ovG.getHeight();
-    }
-    AppMethodBeat.o(133759);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void caR();
+    AppMethodBeat.o(131517);
+    return localObject;
   }
 }
 

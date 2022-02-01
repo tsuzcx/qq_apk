@@ -2,8 +2,8 @@ package com.tencent.mm.audio.mix.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.mix.a.d;
-import com.tencent.mm.audio.mix.i.a;
-import com.tencent.mm.audio.mix.i.b;
+import com.tencent.mm.audio.mix.h.a;
+import com.tencent.mm.audio.mix.h.b;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -19,14 +19,14 @@ public final class c
     this.appId = paramString;
   }
   
-  public final void YC()
+  public final void adj()
   {
     AppMethodBeat.i(136752);
     b.i("MicroMsg.Mix.AudioPcmDataTrackRecycleCacheTask", "runTask, appId:%s", new Object[] { this.appId });
-    com.tencent.mm.audio.mix.b.f localf = com.tencent.mm.audio.mix.b.f.YL();
-    synchronized (localf.dup)
+    com.tencent.mm.audio.mix.b.f localf = com.tencent.mm.audio.mix.b.f.ads();
+    synchronized (localf.fmX)
     {
-      Iterator localIterator = localf.duo.iterator();
+      Iterator localIterator = localf.fmW.iterator();
       while (localIterator.hasNext())
       {
         Object localObject3 = (String)localIterator.next();
@@ -36,10 +36,10 @@ public final class c
         }
       }
     }
-    localObject2.duo.clear();
+    localObject2.fmW.clear();
     localObject2.cache.clear();
     b.i("MicroMsg.Mix.AudioPcmDataTrackRecycleCacheTask", "delete all pcm cache File");
-    ??? = com.tencent.mm.audio.mix.b.f.YL().YN();
+    ??? = com.tencent.mm.audio.mix.b.f.ads().adu();
     if (((ArrayList)???).size() > 0) {
       a.c(this.appId, (ArrayList)???);
     }
@@ -55,7 +55,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.audio.mix.b.a.c
  * JD-Core Version:    0.7.0.1
  */

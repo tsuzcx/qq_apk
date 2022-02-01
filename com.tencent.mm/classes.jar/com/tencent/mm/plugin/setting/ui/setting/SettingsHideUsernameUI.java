@@ -5,80 +5,80 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.protocal.protobuf.bfx;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.setting.b.i;
+import com.tencent.mm.plugin.setting.b.k;
+import com.tencent.mm.protocal.protobuf.bmy;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.base.preference.f;
 
 public class SettingsHideUsernameUI
   extends MMPreference
 {
-  private int Dbj;
-  private CheckBoxPreference Dce;
-  private boolean oBV;
-  private long qAb;
-  private f screen;
+  private int JgK;
+  private CheckBoxPreference JhF;
+  private boolean rED;
+  private com.tencent.mm.ui.base.preference.f screen;
+  private long tZb;
   private String username;
   
-  private void eTf()
+  private void fGj()
   {
     AppMethodBeat.i(74172);
-    if (this.oBV)
+    if (this.rED)
     {
-      this.Dce.setSummary(getString(2131765587));
+      this.JhF.aF(getString(b.i.settings_show_username_open_hint));
       AppMethodBeat.o(74172);
       return;
     }
-    if (this.Dce.isEnabled())
+    if (this.JhF.isEnabled())
     {
-      this.Dce.setSummary(getString(2131765585));
+      this.JhF.aF(getString(b.i.settings_show_username_close_hint));
       AppMethodBeat.o(74172);
       return;
     }
-    this.Dce.setSummary(getString(2131765586));
+    this.JhF.aF(getString(b.i.settings_show_username_disable_hint));
     AppMethodBeat.o(74172);
   }
   
   public int getResourceId()
   {
-    return 2132017265;
+    return b.k.settings_hide_username;
   }
   
   public void initView()
   {
     boolean bool2 = true;
     AppMethodBeat.i(74170);
-    setMMTitle(2131765675);
-    this.screen.bmg("settings_my_username").setSummary(this.username);
+    setMMTitle(b.i.settings_username);
+    this.screen.byG("settings_my_username").aF(this.username);
     CheckBoxPreference localCheckBoxPreference;
-    if ((this.qAb & 0x4000) != 0L)
+    if ((this.tZb & 0x4000) != 0L)
     {
       bool1 = true;
-      this.oBV = bool1;
+      this.rED = bool1;
       Log.d("MicroMsg.SettingsHideUsernameUI", "is hide: %s", new Object[] { Boolean.valueOf(bool1) });
-      this.Dce = ((CheckBoxPreference)this.screen.bmg("settings_show_username"));
-      this.Dce.OZw = false;
-      localCheckBoxPreference = this.Dce;
+      this.JhF = ((CheckBoxPreference)this.screen.byG("settings_show_username"));
+      this.JhF.WsF = false;
+      localCheckBoxPreference = this.JhF;
       if (bool1) {
-        break label148;
+        break label149;
       }
     }
-    label148:
+    label149:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       localCheckBoxPreference.setChecked(bool1);
-      if (Util.isNullOrNil(z.aUa())) {
-        this.Dce.setEnabled(false);
+      if (Util.isNullOrNil(z.bdb())) {
+        this.JhF.setEnabled(false);
       }
       this.screen.notifyDataSetChanged();
       AppMethodBeat.o(74170);
@@ -92,13 +92,13 @@ public class SettingsHideUsernameUI
   {
     AppMethodBeat.i(74169);
     super.onCreate(paramBundle);
-    this.username = z.aTZ();
+    this.username = z.bda();
     if (Util.isNullOrNil(this.username)) {
-      this.username = z.aTY();
+      this.username = z.bcZ();
     }
     this.screen = getPreferenceScreen();
-    this.qAb = z.aUd();
-    this.Dbj = z.aUe();
+    this.tZb = z.bde();
+    this.JgK = z.bdf();
     initView();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -119,38 +119,38 @@ public class SettingsHideUsernameUI
     int i = 1;
     AppMethodBeat.i(74174);
     super.onPause();
-    Log.d("MicroMsg.SettingsHideUsernameUI", "hide: %s", new Object[] { Boolean.valueOf(this.oBV) });
-    if ((this.qAb & 0x4000) != 0L) {
+    Log.d("MicroMsg.SettingsHideUsernameUI", "hide: %s", new Object[] { Boolean.valueOf(this.rED) });
+    if ((this.tZb & 0x4000) != 0L) {
       j = 1;
     }
-    if (j != this.oBV)
+    if (j != this.rED)
     {
-      if (!this.oBV) {
+      if (!this.rED) {
         break label194;
       }
-      this.qAb |= 0x4000;
+      this.tZb |= 0x4000;
     }
-    for (this.Dbj |= 0x200;; this.Dbj &= 0xFFFFFDFF)
+    for (this.JgK |= 0x200;; this.JgK &= 0xFFFFFDFF)
     {
-      g.aAi();
-      g.aAh().azQ().set(147457, Long.valueOf(this.qAb));
-      g.aAi();
-      g.aAh().azQ().set(40, Integer.valueOf(this.Dbj));
-      bfx localbfx = new bfx();
-      localbfx.LPB = 46;
-      if (this.oBV) {
+      h.aHH();
+      h.aHG().aHp().i(147457, Long.valueOf(this.tZb));
+      h.aHH();
+      h.aHG().aHp().i(40, Integer.valueOf(this.JgK));
+      bmy localbmy = new bmy();
+      localbmy.SXP = 46;
+      if (this.rED) {
         i = 2;
       }
-      localbfx.BsD = i;
-      ((l)g.af(l.class)).aSM().d(new k.a(23, localbfx));
+      localbmy.HmX = i;
+      ((n)h.ae(n.class)).bbK().d(new k.a(23, localbmy));
       AppMethodBeat.o(74174);
       return;
       label194:
-      this.qAb &= 0xFFFFBFFF;
+      this.tZb &= 0xFFFFBFFF;
     }
   }
   
-  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
     boolean bool = false;
     AppMethodBeat.i(74171);
@@ -159,8 +159,8 @@ public class SettingsHideUsernameUI
       if (!((CheckBoxPreference)paramPreference).isChecked()) {
         bool = true;
       }
-      this.oBV = bool;
-      eTf();
+      this.rED = bool;
+      fGj();
       AppMethodBeat.o(74171);
       return true;
     }
@@ -172,7 +172,7 @@ public class SettingsHideUsernameUI
   {
     AppMethodBeat.i(74173);
     super.onResume();
-    eTf();
+    fGj();
     AppMethodBeat.o(74173);
   }
   
@@ -184,7 +184,7 @@ public class SettingsHideUsernameUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsHideUsernameUI
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ import com.tencent.mm.sdk.storage.MAutoStorage;
 public final class c
   extends MAutoStorage<AdSnsInfo>
 {
-  private static final String Emf;
   public static final String[] INDEX_CREATE;
+  private static final String Kzn;
   public static final String[] SQL_CREATE;
   private ISQLiteDatabase db;
   
@@ -20,7 +20,7 @@ public final class c
     AppMethodBeat.i(97443);
     SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(AdSnsInfo.info, "adsnsinfo") };
     INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS serverAdSnsNameIndex ON AdSnsInfo ( snsId )", "CREATE INDEX IF NOT EXISTS serverAdSnsTimeHeadIndex ON AdSnsInfo ( head )", "DROP INDEX IF EXISTS serverAdSnsTimeIndex", "DROP INDEX IF EXISTS serverAdSnsTimeSourceTypeIndex", "CREATE INDEX IF NOT EXISTS adsnsMultiIndex1 ON AdSnsInfo ( createTime,snsId,sourceType,type)", "CREATE INDEX IF NOT EXISTS adsnsMultiIndex2 ON AdSnsInfo ( sourceType,type,userName)" };
-    Emf = String.format("select  %s %s,rowid from AdSnsInfo ", new Object[] { "snsId", "createTime" });
+    Kzn = String.format("select  %s %s,rowid from AdSnsInfo ", new Object[] { "snsId", "createTime" });
     AppMethodBeat.o(97443);
   }
   
@@ -46,7 +46,7 @@ public final class c
     return i;
   }
   
-  public final AdSnsInfo JE(long paramLong)
+  public final AdSnsInfo QX(long paramLong)
   {
     AppMethodBeat.i(97434);
     AdSnsInfo localAdSnsInfo = new AdSnsInfo();
@@ -64,7 +64,7 @@ public final class c
     return null;
   }
   
-  public final boolean JF(long paramLong)
+  public final boolean QY(long paramLong)
   {
     AppMethodBeat.i(97438);
     Object localObject = "select *,rowid from AdSnsInfo  where AdSnsInfo.snsId=".concat(String.valueOf(paramLong));
@@ -75,7 +75,26 @@ public final class c
     return bool;
   }
   
-  public final AdSnsInfo Zp(int paramInt)
+  public final boolean a(long paramLong, AdSnsInfo paramAdSnsInfo)
+  {
+    AppMethodBeat.i(97436);
+    if (QY(paramLong))
+    {
+      boolean bool = b(paramLong, paramAdSnsInfo);
+      AppMethodBeat.o(97436);
+      return bool;
+    }
+    Log.d("MicroMsg.AdSnsInfoStorage", "added PcId ".concat(String.valueOf(paramLong)));
+    if (a(paramAdSnsInfo) != -1)
+    {
+      AppMethodBeat.o(97436);
+      return true;
+    }
+    AppMethodBeat.o(97436);
+    return false;
+  }
+  
+  public final AdSnsInfo agG(int paramInt)
   {
     AppMethodBeat.i(97435);
     AdSnsInfo localAdSnsInfo = new AdSnsInfo();
@@ -91,25 +110,6 @@ public final class c
     ((Cursor)localObject).close();
     AppMethodBeat.o(97435);
     return null;
-  }
-  
-  public final boolean a(long paramLong, AdSnsInfo paramAdSnsInfo)
-  {
-    AppMethodBeat.i(97436);
-    if (JF(paramLong))
-    {
-      boolean bool = b(paramLong, paramAdSnsInfo);
-      AppMethodBeat.o(97436);
-      return bool;
-    }
-    Log.d("MicroMsg.AdSnsInfoStorage", "added PcId ".concat(String.valueOf(paramLong)));
-    if (a(paramAdSnsInfo) != -1)
-    {
-      AppMethodBeat.o(97436);
-      return true;
-    }
-    AppMethodBeat.o(97436);
-    return false;
   }
   
   public final boolean b(long paramLong, AdSnsInfo paramAdSnsInfo)
@@ -140,10 +140,10 @@ public final class c
     return false;
   }
   
-  public final Cursor iG(int paramInt1, int paramInt2)
+  public final Cursor jP(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(97441);
-    Object localObject = "select *,rowid from AdSnsInfo  where createTime > " + paramInt2 + " and createTime <= " + paramInt1 + " and " + n.EmI;
+    Object localObject = "select *,rowid from AdSnsInfo  where createTime > " + paramInt2 + " and createTime <= " + paramInt1 + " and " + n.KzR;
     localObject = (String)localObject + " order by  createTime desc";
     Log.d("MicroMsg.AdSnsInfoStorage", "getAdInTime ".concat(String.valueOf(localObject)));
     localObject = this.db.rawQuery((String)localObject, null, 2);
@@ -153,7 +153,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,51 @@
 package com.tencent.mm.plugin.appbrand.u.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.g;
-import com.tencent.mm.ab.i;
-import com.tencent.mm.plugin.appbrand.u.a.b;
+import com.tencent.mm.ad.i;
+import com.tencent.mm.plugin.appbrand.appstorage.r;
+import com.tencent.mm.plugin.appbrand.appstorage.t;
 import com.tencent.mm.plugin.appbrand.u.a.c;
+import com.tencent.mm.plugin.appbrand.v;
 import com.tencent.mm.sdk.platformtools.Log;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class d
-  extends b
+  extends com.tencent.mm.plugin.appbrand.u.a.d
 {
-  public static d.a nki;
-  
-  public final void a(i parami, c paramc)
+  public final String b(i parami, c paramc)
   {
-    AppMethodBeat.i(147395);
-    if (nki == null)
+    AppMethodBeat.i(239324);
+    Log.i("GetFileSysFolderSizeSync", "[execute] reqArgs:".concat(String.valueOf(parami)));
+    String str = parami.optString("dirPath", "");
+    parami = parami.optString("filePath", "");
+    HashMap localHashMap = new HashMap();
+    Object localObject = paramc.czP.getFileSystem();
+    if (localObject != null)
     {
-      Log.d("MicroMsg.NodeReportIDKey", "sDelegate null");
-      AppMethodBeat.o(147395);
-      return;
+      localObject = ((r)localObject).bIH();
+      if (localObject != null)
+      {
+        localHashMap.put("size", Long.valueOf(((t)localObject).cO(str, parami)));
+        parami = paramc.R(localHashMap);
+        AppMethodBeat.o(239324);
+        return parami;
+      }
     }
-    try
-    {
-      int i = parami.getInt("id");
-      int j = parami.getInt("key");
-      int k = parami.optInt("val", 1);
-      nki.Q(i, j, k);
-      AppMethodBeat.o(147395);
-      return;
-    }
-    catch (g parami)
-    {
-      Log.e("MicroMsg.NodeReportIDKey", "execute exception : %s", new Object[] { parami });
-      paramc.bPU();
-      AppMethodBeat.o(147395);
-    }
+    localHashMap.put("size", Integer.valueOf(-1));
+    parami = paramc.Ck(1);
+    AppMethodBeat.o(239324);
+    return parami;
   }
   
-  public final int bPT()
+  public final int ccB()
   {
-    return 3;
+    return 11;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.u.c.d
  * JD-Core Version:    0.7.0.1
  */

@@ -22,106 +22,106 @@ import org.tensorflow.lite.nnapi.NnApiDelegate;
 public final class NativeInterpreterWrapper
   implements AutoCloseable
 {
-  private final List<b> TiL;
-  private long Uje;
-  private long Ujf;
-  private long Ujg;
-  private long Ujh;
-  private long Uji;
-  private ByteBuffer Ujj;
-  private Map<String, Integer> Ujk;
-  private Map<String, Integer> Ujl;
-  public Tensor[] Ujm;
-  public Tensor[] Ujn;
-  private boolean Ujo;
-  private final List<AutoCloseable> Ujp;
+  private final List<b> aaLF;
+  private long abMA;
+  private long abMB;
+  private long abMC;
+  private long abMD;
+  private ByteBuffer abME;
+  private Map<String, Integer> abMF;
+  private Map<String, Integer> abMG;
+  public Tensor[] abMH;
+  public Tensor[] abMI;
+  private boolean abMJ;
+  private final List<AutoCloseable> abMK;
+  private long abMz;
   
   NativeInterpreterWrapper(ByteBuffer paramByteBuffer)
   {
-    AppMethodBeat.i(238969);
-    this.Ujh = 0L;
-    this.Uji = -1L;
-    this.Ujo = false;
-    this.TiL = new ArrayList();
-    this.Ujp = new ArrayList();
+    AppMethodBeat.i(239657);
+    this.abMC = 0L;
+    this.abMD = -1L;
+    this.abMJ = false;
+    this.aaLF = new ArrayList();
+    this.abMK = new ArrayList();
     TensorFlowLite.init();
     if ((paramByteBuffer == null) || ((!(paramByteBuffer instanceof MappedByteBuffer)) && ((!paramByteBuffer.isDirect()) || (paramByteBuffer.order() != ByteOrder.nativeOrder()))))
     {
       paramByteBuffer = new IllegalArgumentException("Model ByteBuffer should be either a MappedByteBuffer of the model file, or a direct ByteBuffer using ByteOrder.nativeOrder() which contains bytes of model content.");
-      AppMethodBeat.o(238969);
+      AppMethodBeat.o(239657);
       throw paramByteBuffer;
     }
-    this.Ujj = paramByteBuffer;
+    this.abME = paramByteBuffer;
     long l1 = createErrorReporter(512);
-    long l2 = createModelWithBuffer(this.Ujj, l1);
+    long l2 = createModelWithBuffer(this.abME, l1);
     paramByteBuffer = new c.a();
-    this.Uje = l1;
-    this.Ujg = l2;
-    this.Ujf = createInterpreter(l2, l1, paramByteBuffer.UiY);
-    if ((paramByteBuffer.Ujc != null) && (paramByteBuffer.Ujc.booleanValue())) {
-      this.Ujh = createCancellationFlag(this.Ujf);
+    this.abMz = l1;
+    this.abMB = l2;
+    this.abMA = createInterpreter(l2, l1, paramByteBuffer.abMt);
+    if ((paramByteBuffer.abMx != null) && (paramByteBuffer.abMx.booleanValue())) {
+      this.abMC = createCancellationFlag(this.abMA);
     }
-    this.Ujm = new Tensor[getInputCount(this.Ujf)];
-    this.Ujn = new Tensor[getOutputCount(this.Ujf)];
-    if (paramByteBuffer.Uja != null) {
-      allowFp16PrecisionForFp32(this.Ujf, paramByteBuffer.Uja.booleanValue());
+    this.abMH = new Tensor[getInputCount(this.abMA)];
+    this.abMI = new Tensor[getOutputCount(this.abMA)];
+    if (paramByteBuffer.abMv != null) {
+      allowFp16PrecisionForFp32(this.abMA, paramByteBuffer.abMv.booleanValue());
     }
-    if (paramByteBuffer.Ujb != null) {
-      allowBufferHandleOutput(this.Ujf, paramByteBuffer.Ujb.booleanValue());
+    if (paramByteBuffer.abMw != null) {
+      allowBufferHandleOutput(this.abMA, paramByteBuffer.abMw.booleanValue());
     }
     a(paramByteBuffer);
-    if (paramByteBuffer.Ujd != null) {
-      useXNNPACK(this.Ujf, l1, paramByteBuffer.Ujd.booleanValue(), paramByteBuffer.UiY);
+    if (paramByteBuffer.abMy != null) {
+      useXNNPACK(this.abMA, l1, paramByteBuffer.abMy.booleanValue(), paramByteBuffer.abMt);
     }
-    allocateTensors(this.Ujf, l1);
-    this.Ujo = true;
-    AppMethodBeat.o(238969);
+    allocateTensors(this.abMA, l1);
+    this.abMJ = true;
+    AppMethodBeat.o(239657);
   }
   
   private void a(c.a parama)
   {
-    AppMethodBeat.i(238974);
-    boolean bool = hasUnresolvedFlexOp(this.Ujf);
+    AppMethodBeat.i(239687);
+    boolean bool = hasUnresolvedFlexOp(this.abMA);
     Object localObject;
     if (bool)
     {
-      localObject = kO(parama.TiL);
+      localObject = lL(parama.aaLF);
       if (localObject != null)
       {
-        this.Ujp.add((AutoCloseable)localObject);
-        applyDelegate(this.Ujf, this.Uje, ((b)localObject).getNativeHandle());
+        this.abMK.add((AutoCloseable)localObject);
+        applyDelegate(this.abMA, this.abMz, ((b)localObject).getNativeHandle());
       }
     }
     try
     {
-      localObject = parama.TiL.iterator();
+      localObject = parama.aaLF.iterator();
       while (((Iterator)localObject).hasNext())
       {
         b localb = (b)((Iterator)localObject).next();
-        applyDelegate(this.Ujf, this.Uje, localb.getNativeHandle());
-        this.TiL.add(localb);
+        applyDelegate(this.abMA, this.abMz, localb.getNativeHandle());
+        this.aaLF.add(localb);
       }
       int i;
       return;
     }
     catch (IllegalArgumentException parama)
     {
-      if ((bool) && (!hasUnresolvedFlexOp(this.Ujf))) {}
+      if ((bool) && (!hasUnresolvedFlexOp(this.abMA))) {}
       for (i = 1; i == 0; i = 0)
       {
-        AppMethodBeat.o(238974);
+        AppMethodBeat.o(239687);
         throw parama;
-        if ((parama.UiZ != null) && (parama.UiZ.booleanValue()))
+        if ((parama.abMu != null) && (parama.abMu.booleanValue()))
         {
           parama = new NnApiDelegate();
-          this.Ujp.add(parama);
-          applyDelegate(this.Ujf, this.Uje, parama.Ujw);
+          this.abMK.add(parama);
+          applyDelegate(this.abMA, this.abMz, parama.abMR);
         }
-        AppMethodBeat.o(238974);
+        AppMethodBeat.o(239687);
         return;
       }
       System.err.println("Ignoring failed delegate application: ".concat(String.valueOf(parama)));
-      AppMethodBeat.o(238974);
+      AppMethodBeat.o(239687);
     }
   }
   
@@ -165,9 +165,9 @@ public final class NativeInterpreterWrapper
   
   private static native boolean hasUnresolvedFlexOp(long paramLong);
   
-  private static b kO(List<b> paramList)
+  private static b lL(List<b> paramList)
   {
-    AppMethodBeat.i(238975);
+    AppMethodBeat.i(239690);
     try
     {
       Class localClass = Class.forName("org.tensorflow.lite.flex.FlexDelegate");
@@ -177,17 +177,17 @@ public final class NativeInterpreterWrapper
         boolean bool = localClass.isInstance((b)paramList.next());
         if (bool)
         {
-          AppMethodBeat.o(238975);
+          AppMethodBeat.o(239690);
           return null;
         }
       }
       paramList = (b)localClass.getConstructor(new Class[0]).newInstance(new Object[0]);
-      AppMethodBeat.o(238975);
+      AppMethodBeat.o(239690);
       return paramList;
     }
     catch (Exception paramList)
     {
-      AppMethodBeat.o(238975);
+      AppMethodBeat.o(239690);
     }
     return null;
   }
@@ -206,18 +206,18 @@ public final class NativeInterpreterWrapper
   
   public final void a(Object[] paramArrayOfObject, Map<Integer, Object> paramMap)
   {
-    AppMethodBeat.i(238971);
-    this.Uji = -1L;
+    AppMethodBeat.i(239670);
+    this.abMD = -1L;
     if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0))
     {
       paramArrayOfObject = new IllegalArgumentException("Input error: Inputs should not be null or empty.");
-      AppMethodBeat.o(238971);
+      AppMethodBeat.o(239670);
       throw paramArrayOfObject;
     }
     if ((paramMap == null) || (paramMap.isEmpty()))
     {
       paramArrayOfObject = new IllegalArgumentException("Input error: Outputs should not be null or empty.");
-      AppMethodBeat.o(238971);
+      AppMethodBeat.o(239670);
       throw paramArrayOfObject;
     }
     int i = 0;
@@ -225,18 +225,18 @@ public final class NativeInterpreterWrapper
     Object localObject2;
     if (i < paramArrayOfObject.length)
     {
-      localObject3 = awn(i);
+      localObject3 = aGi(i);
       localObject1 = paramArrayOfObject[i];
       if (localObject1 == null) {
         localObject1 = null;
       }
       for (;;)
       {
-        if ((localObject1 != null) && (resizeInput(this.Ujf, this.Uje, i, (int[])localObject1, false)))
+        if ((localObject1 != null) && (resizeInput(this.abMA, this.abMz, i, (int[])localObject1, false)))
         {
-          this.Ujo = false;
-          if (this.Ujm[i] != null) {
-            this.Ujm[i].hQs();
+          this.abMJ = false;
+          if (this.abMH[i] != null) {
+            this.abMH[i].iVC();
           }
         }
         i += 1;
@@ -247,29 +247,29 @@ public final class NativeInterpreterWrapper
         }
         else
         {
-          ((Tensor)localObject3).gK(localObject1);
-          localObject2 = ((Tensor)localObject3).gI(localObject1);
+          ((Tensor)localObject3).hc(localObject1);
+          localObject2 = ((Tensor)localObject3).ha(localObject1);
           localObject1 = localObject2;
-          if (Arrays.equals(((Tensor)localObject3).Ujr, (int[])localObject2)) {
+          if (Arrays.equals(((Tensor)localObject3).abMM, (int[])localObject2)) {
             localObject1 = null;
           }
         }
       }
     }
-    if (!this.Ujo) {}
+    if (!this.abMJ) {}
     int j;
     for (i = 1;; i = 0)
     {
       if (i != 0)
       {
-        allocateTensors(this.Ujf, this.Uje);
-        this.Ujo = true;
+        allocateTensors(this.abMA, this.abMz);
+        this.abMJ = true;
       }
       j = 0;
       if (j >= paramArrayOfObject.length) {
         break label843;
       }
-      localObject1 = awn(j);
+      localObject1 = aGi(j);
       localObject2 = paramArrayOfObject[j];
       if (localObject2 != null) {
         break;
@@ -278,27 +278,27 @@ public final class NativeInterpreterWrapper
         break label564;
       }
       paramArrayOfObject = new IllegalArgumentException("Null inputs are allowed only if the Tensor is bound to a buffer handle.");
-      AppMethodBeat.o(238971);
+      AppMethodBeat.o(239670);
       throw paramArrayOfObject;
     }
-    ((Tensor)localObject1).gK(localObject2);
+    ((Tensor)localObject1).hc(localObject2);
     if ((localObject2 instanceof Buffer))
     {
       localObject3 = (Buffer)localObject2;
       int m = Tensor.numBytes(((Tensor)localObject1).nativeHandle);
       if ((localObject2 instanceof ByteBuffer)) {}
-      for (int k = ((Buffer)localObject3).capacity(); m != k; k = ((Buffer)localObject3).capacity() * ((Tensor)localObject1).Ujq.hQq())
+      for (int k = ((Buffer)localObject3).capacity(); m != k; k = ((Buffer)localObject3).capacity() * ((Tensor)localObject1).abML.iVA())
       {
         paramArrayOfObject = new IllegalArgumentException(String.format("Cannot copy to a TensorFlowLite tensor (%s) with %d bytes from a Java Buffer with %d bytes.", new Object[] { Tensor.name(((Tensor)localObject1).nativeHandle), Integer.valueOf(m), Integer.valueOf(k) }));
-        AppMethodBeat.o(238971);
+        AppMethodBeat.o(239670);
         throw paramArrayOfObject;
       }
     }
-    Object localObject3 = ((Tensor)localObject1).gI(localObject2);
-    if (!Arrays.equals((int[])localObject3, ((Tensor)localObject1).Ujr))
+    Object localObject3 = ((Tensor)localObject1).ha(localObject2);
+    if (!Arrays.equals((int[])localObject3, ((Tensor)localObject1).abMM))
     {
-      paramArrayOfObject = new IllegalArgumentException(String.format("Cannot copy to a TensorFlowLite tensor (%s) with shape %s from a Java object with shape %s.", new Object[] { Tensor.name(((Tensor)localObject1).nativeHandle), Arrays.toString(((Tensor)localObject1).Ujr), Arrays.toString((int[])localObject3) }));
-      AppMethodBeat.o(238971);
+      paramArrayOfObject = new IllegalArgumentException(String.format("Cannot copy to a TensorFlowLite tensor (%s) with shape %s from a Java object with shape %s.", new Object[] { Tensor.name(((Tensor)localObject1).nativeHandle), Arrays.toString(((Tensor)localObject1).abMM), Arrays.toString((int[])localObject3) }));
+      AppMethodBeat.o(239670);
       throw paramArrayOfObject;
     }
     if ((localObject2 instanceof Buffer))
@@ -317,7 +317,7 @@ public final class NativeInterpreterWrapper
       label564:
       j += 1;
       break;
-      ((Tensor)localObject1).Pf().put((ByteBuffer)localObject3);
+      ((Tensor)localObject1).SE().put((ByteBuffer)localObject3);
       continue;
       if ((localObject2 instanceof LongBuffer))
       {
@@ -325,7 +325,7 @@ public final class NativeInterpreterWrapper
         if ((((LongBuffer)localObject3).isDirect()) && (((LongBuffer)localObject3).order() == ByteOrder.nativeOrder())) {
           Tensor.writeDirectBuffer(((Tensor)localObject1).nativeHandle, (Buffer)localObject2);
         } else {
-          ((Tensor)localObject1).Pf().asLongBuffer().put((LongBuffer)localObject3);
+          ((Tensor)localObject1).SE().asLongBuffer().put((LongBuffer)localObject3);
         }
       }
       else if ((localObject2 instanceof FloatBuffer))
@@ -334,7 +334,7 @@ public final class NativeInterpreterWrapper
         if ((((FloatBuffer)localObject3).isDirect()) && (((FloatBuffer)localObject3).order() == ByteOrder.nativeOrder())) {
           Tensor.writeDirectBuffer(((Tensor)localObject1).nativeHandle, (Buffer)localObject2);
         } else {
-          ((Tensor)localObject1).Pf().asFloatBuffer().put((FloatBuffer)localObject3);
+          ((Tensor)localObject1).SE().asFloatBuffer().put((FloatBuffer)localObject3);
         }
       }
       else if ((localObject2 instanceof IntBuffer))
@@ -343,13 +343,13 @@ public final class NativeInterpreterWrapper
         if ((((IntBuffer)localObject3).isDirect()) && (((IntBuffer)localObject3).order() == ByteOrder.nativeOrder())) {
           Tensor.writeDirectBuffer(((Tensor)localObject1).nativeHandle, (Buffer)localObject2);
         } else {
-          ((Tensor)localObject1).Pf().asIntBuffer().put((IntBuffer)localObject3);
+          ((Tensor)localObject1).SE().asIntBuffer().put((IntBuffer)localObject3);
         }
       }
       else
       {
         paramArrayOfObject = new IllegalArgumentException("Unexpected input buffer type: ".concat(String.valueOf(localObject2)));
-        AppMethodBeat.o(238971);
+        AppMethodBeat.o(239670);
         throw paramArrayOfObject;
         if (localObject2.getClass().isArray()) {
           Tensor.writeMultiDimensionalArray(((Tensor)localObject1).nativeHandle, localObject2);
@@ -360,15 +360,15 @@ public final class NativeInterpreterWrapper
     }
     label843:
     long l1 = System.nanoTime();
-    run(this.Ujf, this.Uje);
+    run(this.abMA, this.abMz);
     long l2 = System.nanoTime();
     if (i != 0)
     {
       i = 0;
-      while (i < this.Ujn.length)
+      while (i < this.abMI.length)
       {
-        if (this.Ujn[i] != null) {
-          this.Ujn[i].hQs();
+        if (this.abMI[i] != null) {
+          this.abMI[i].iVC();
         }
         i += 1;
       }
@@ -377,37 +377,37 @@ public final class NativeInterpreterWrapper
     while (paramArrayOfObject.hasNext())
     {
       localObject1 = (Map.Entry)paramArrayOfObject.next();
-      paramMap = awo(((Integer)((Map.Entry)localObject1).getKey()).intValue());
+      paramMap = aGj(((Integer)((Map.Entry)localObject1).getKey()).intValue());
       localObject1 = ((Map.Entry)localObject1).getValue();
       if (localObject1 == null)
       {
         if (!Tensor.hasDelegateBufferHandle(paramMap.nativeHandle))
         {
           paramArrayOfObject = new IllegalArgumentException("Null outputs are allowed only if the Tensor is bound to a buffer handle.");
-          AppMethodBeat.o(238971);
+          AppMethodBeat.o(239670);
           throw paramArrayOfObject;
         }
       }
       else
       {
-        paramMap.gK(localObject1);
+        paramMap.hc(localObject1);
         if ((localObject1 instanceof Buffer))
         {
           localObject2 = (Buffer)localObject1;
           j = Tensor.numBytes(paramMap.nativeHandle);
           if ((localObject1 instanceof ByteBuffer)) {}
-          for (i = ((Buffer)localObject2).capacity(); j > i; i = ((Buffer)localObject2).capacity() * paramMap.Ujq.hQq())
+          for (i = ((Buffer)localObject2).capacity(); j > i; i = ((Buffer)localObject2).capacity() * paramMap.abML.iVA())
           {
             paramArrayOfObject = new IllegalArgumentException(String.format("Cannot copy from a TensorFlowLite tensor (%s) with %d bytes to a Java Buffer with %d bytes.", new Object[] { Tensor.name(paramMap.nativeHandle), Integer.valueOf(j), Integer.valueOf(i) }));
-            AppMethodBeat.o(238971);
+            AppMethodBeat.o(239670);
             throw paramArrayOfObject;
           }
         }
-        localObject2 = paramMap.gI(localObject1);
-        if (!Arrays.equals((int[])localObject2, paramMap.Ujr))
+        localObject2 = paramMap.ha(localObject1);
+        if (!Arrays.equals((int[])localObject2, paramMap.abMM))
         {
-          paramArrayOfObject = new IllegalArgumentException(String.format("Cannot copy from a TensorFlowLite tensor (%s) with shape %s to a Java object with shape %s.", new Object[] { Tensor.name(paramMap.nativeHandle), Arrays.toString(paramMap.Ujr), Arrays.toString((int[])localObject2) }));
-          AppMethodBeat.o(238971);
+          paramArrayOfObject = new IllegalArgumentException(String.format("Cannot copy from a TensorFlowLite tensor (%s) with shape %s to a Java object with shape %s.", new Object[] { Tensor.name(paramMap.nativeHandle), Arrays.toString(paramMap.abMM), Arrays.toString((int[])localObject2) }));
+          AppMethodBeat.o(239670);
           throw paramArrayOfObject;
         }
         if ((localObject1 instanceof Buffer))
@@ -415,24 +415,24 @@ public final class NativeInterpreterWrapper
           localObject1 = (Buffer)localObject1;
           if ((localObject1 instanceof ByteBuffer))
           {
-            ((ByteBuffer)localObject1).put(paramMap.Pf());
+            ((ByteBuffer)localObject1).put(paramMap.SE());
           }
           else if ((localObject1 instanceof FloatBuffer))
           {
-            ((FloatBuffer)localObject1).put(paramMap.Pf().asFloatBuffer());
+            ((FloatBuffer)localObject1).put(paramMap.SE().asFloatBuffer());
           }
           else if ((localObject1 instanceof LongBuffer))
           {
-            ((LongBuffer)localObject1).put(paramMap.Pf().asLongBuffer());
+            ((LongBuffer)localObject1).put(paramMap.SE().asLongBuffer());
           }
           else if ((localObject1 instanceof IntBuffer))
           {
-            ((IntBuffer)localObject1).put(paramMap.Pf().asIntBuffer());
+            ((IntBuffer)localObject1).put(paramMap.SE().asIntBuffer());
           }
           else
           {
             paramArrayOfObject = new IllegalArgumentException("Unexpected output buffer type: ".concat(String.valueOf(localObject1)));
-            AppMethodBeat.o(238971);
+            AppMethodBeat.o(239670);
             throw paramArrayOfObject;
           }
         }
@@ -442,87 +442,87 @@ public final class NativeInterpreterWrapper
         }
       }
     }
-    this.Uji = (l2 - l1);
-    AppMethodBeat.o(238971);
+    this.abMD = (l2 - l1);
+    AppMethodBeat.o(239670);
   }
   
-  public final Tensor awn(int paramInt)
+  public final Tensor aGi(int paramInt)
   {
-    AppMethodBeat.i(238972);
-    if ((paramInt < 0) || (paramInt >= this.Ujm.length))
+    AppMethodBeat.i(239678);
+    if ((paramInt < 0) || (paramInt >= this.abMH.length))
     {
       localObject1 = new IllegalArgumentException("Invalid input Tensor index: ".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(238972);
+      AppMethodBeat.o(239678);
       throw ((Throwable)localObject1);
     }
-    Object localObject2 = this.Ujm[paramInt];
+    Object localObject2 = this.abMH[paramInt];
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject2 = this.Ujm;
-      localObject1 = Tensor.ax(this.Ujf, getInputTensorIndex(this.Ujf, paramInt));
+      localObject2 = this.abMH;
+      localObject1 = Tensor.aG(this.abMA, getInputTensorIndex(this.abMA, paramInt));
       localObject2[paramInt] = localObject1;
     }
-    AppMethodBeat.o(238972);
+    AppMethodBeat.o(239678);
     return localObject1;
   }
   
-  public final Tensor awo(int paramInt)
+  public final Tensor aGj(int paramInt)
   {
-    AppMethodBeat.i(238973);
-    if ((paramInt < 0) || (paramInt >= this.Ujn.length))
+    AppMethodBeat.i(239683);
+    if ((paramInt < 0) || (paramInt >= this.abMI.length))
     {
       localObject1 = new IllegalArgumentException("Invalid output Tensor index: ".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(238973);
+      AppMethodBeat.o(239683);
       throw ((Throwable)localObject1);
     }
-    Object localObject2 = this.Ujn[paramInt];
+    Object localObject2 = this.abMI[paramInt];
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject2 = this.Ujn;
-      localObject1 = Tensor.ax(this.Ujf, getOutputTensorIndex(this.Ujf, paramInt));
+      localObject2 = this.abMI;
+      localObject1 = Tensor.aG(this.abMA, getOutputTensorIndex(this.abMA, paramInt));
       localObject2[paramInt] = localObject1;
     }
-    AppMethodBeat.o(238973);
+    AppMethodBeat.o(239683);
     return localObject1;
   }
   
   public final void close()
   {
-    AppMethodBeat.i(238970);
+    AppMethodBeat.i(239661);
     int i = 0;
-    while (i < this.Ujm.length)
+    while (i < this.abMH.length)
     {
-      if (this.Ujm[i] != null)
+      if (this.abMH[i] != null)
       {
-        this.Ujm[i].close();
-        this.Ujm[i] = null;
+        this.abMH[i].close();
+        this.abMH[i] = null;
       }
       i += 1;
     }
     i = 0;
-    while (i < this.Ujn.length)
+    while (i < this.abMI.length)
     {
-      if (this.Ujn[i] != null)
+      if (this.abMI[i] != null)
       {
-        this.Ujn[i].close();
-        this.Ujn[i] = null;
+        this.abMI[i].close();
+        this.abMI[i] = null;
       }
       i += 1;
     }
-    delete(this.Uje, this.Ujg, this.Ujf);
-    deleteCancellationFlag(this.Ujh);
-    this.Uje = 0L;
-    this.Ujg = 0L;
-    this.Ujf = 0L;
-    this.Ujh = 0L;
-    this.Ujj = null;
-    this.Ujk = null;
-    this.Ujl = null;
-    this.Ujo = false;
-    this.TiL.clear();
-    Iterator localIterator = this.Ujp.iterator();
+    delete(this.abMz, this.abMB, this.abMA);
+    deleteCancellationFlag(this.abMC);
+    this.abMz = 0L;
+    this.abMB = 0L;
+    this.abMA = 0L;
+    this.abMC = 0L;
+    this.abME = null;
+    this.abMF = null;
+    this.abMG = null;
+    this.abMJ = false;
+    this.aaLF.clear();
+    Iterator localIterator = this.abMK.iterator();
     while (localIterator.hasNext())
     {
       AutoCloseable localAutoCloseable = (AutoCloseable)localIterator.next();
@@ -535,13 +535,13 @@ public final class NativeInterpreterWrapper
         System.err.println("Failed to close flex delegate: ".concat(String.valueOf(localException)));
       }
     }
-    this.Ujp.clear();
-    AppMethodBeat.o(238970);
+    this.abMK.clear();
+    AppMethodBeat.o(239661);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     org.tensorflow.lite.NativeInterpreterWrapper
  * JD-Core Version:    0.7.0.1
  */

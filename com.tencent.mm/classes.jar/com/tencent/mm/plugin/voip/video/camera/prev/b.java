@@ -4,62 +4,62 @@ import android.graphics.Point;
 
 public final class b
 {
-  private String HjV = null;
-  public int HjW = 30;
-  public boolean HjX = false;
-  public boolean HjY = true;
-  public int HjZ = 0;
-  public int Hka;
-  public Point Hkb;
-  public Point Hkc;
-  public int gFx = 1;
+  private String OaK = null;
+  public int OaL = 30;
+  public boolean OaM = false;
+  public boolean OaN = true;
+  public int OaO = 0;
+  public int OaP;
+  public Point OaQ;
+  public Point OaR;
+  public int jpH = 1;
   
   public b(String paramString)
   {
-    this.HjV = paramString;
-    this.HjW = 15;
-    this.gFx = 1;
-    this.HjX = false;
-    this.HjY = true;
-    this.HjZ = 0;
-    this.Hka = 0;
-    this.Hkb = null;
-    this.Hkc = null;
+    this.OaK = paramString;
+    this.OaL = 15;
+    this.jpH = 1;
+    this.OaM = false;
+    this.OaN = true;
+    this.OaO = 0;
+    this.OaP = 0;
+    this.OaQ = null;
+    this.OaR = null;
   }
   
-  public final int aRA()
+  public final int bau()
   {
-    return this.gFx;
+    return this.jpH;
   }
   
-  public final Point fLq()
+  public final Point gDQ()
   {
-    return this.Hkb;
+    return this.OaQ;
   }
   
-  public final Point fLr()
+  public final Point gDR()
   {
-    return this.Hkc;
+    return this.OaR;
   }
   
-  public final int fLs()
+  public final int gDS()
   {
-    return this.HjW;
+    return this.OaL;
   }
   
-  public final boolean fLt()
+  public final boolean gDT()
   {
-    return this.HjX;
+    return this.OaM;
   }
   
-  public final boolean fLu()
+  public final boolean gDU()
   {
-    return this.HjY;
+    return this.OaN;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.camera.prev.b
  * JD-Core Version:    0.7.0.1
  */

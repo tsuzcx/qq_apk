@@ -16,17 +16,22 @@ import android.view.MotionEvent.PointerProperties;
 import android.view.Surface;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import io.flutter.embedding.android.FlutterImageView;
 import io.flutter.embedding.android.FlutterView;
 import io.flutter.embedding.android.b;
-import io.flutter.embedding.engine.c.h.b;
-import io.flutter.embedding.engine.c.h.c;
-import io.flutter.embedding.engine.c.h.d;
+import io.flutter.embedding.android.h.a;
+import io.flutter.embedding.engine.b.i.a;
+import io.flutter.embedding.engine.b.i.b;
+import io.flutter.embedding.engine.b.i.c;
+import io.flutter.embedding.engine.b.i.d;
 import io.flutter.embedding.engine.dart.DartExecutor;
-import io.flutter.plugin.a.i;
 import io.flutter.plugin.a.k;
-import io.flutter.plugin.b.c.a.a;
+import io.flutter.plugin.editing.d.a;
+import io.flutter.plugin.editing.d.a.a;
+import io.flutter.view.c.a;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -38,67 +43,84 @@ import java.util.PriorityQueue;
 public class PlatformViewsController
   implements g
 {
-  public io.flutter.plugin.b.c SMp;
-  private final io.flutter.embedding.android.h SMs;
-  public b SNr;
-  public final f STj;
-  public View STk;
-  private io.flutter.embedding.engine.c.h STl;
-  final HashMap<Integer, h> STm;
-  private final HashMap<Context, View> STn;
-  public final SparseArray<io.flutter.embedding.engine.c.h.a> STo;
-  public final SparseArray<View> STp;
-  public final SparseArray<io.flutter.embedding.engine.mutatorsstack.a> STq;
-  public final SparseArray<io.flutter.embedding.android.g> STr;
-  public int STs;
-  public boolean STt;
-  public HashSet<Integer> STu;
-  public HashSet<Integer> STv;
-  private final h.d STw;
-  private io.flutter.view.c StA;
+  public io.flutter.plugin.editing.d aaoo;
+  private final io.flutter.embedding.android.h aaot;
+  public b aapp;
+  private io.flutter.view.c aarP;
+  public final f aavW;
+  public View aavX;
+  private io.flutter.embedding.engine.b.i aavY;
+  final HashMap<Integer, h> aavZ;
+  private final HashMap<Context, View> aawa;
+  public final SparseArray<c> aawb;
+  public final SparseArray<io.flutter.embedding.engine.mutatorsstack.a> aawc;
+  public final SparseArray<FlutterImageView> aawd;
+  public int aawe;
+  public boolean aawf;
+  public HashSet<Integer> aawg;
+  public HashSet<Integer> aawh;
+  private final i.d aawi;
   private final a accessibilityEventsDelegate;
   public Context context;
   
   public PlatformViewsController()
   {
     AppMethodBeat.i(9923);
-    this.STs = 0;
-    this.STt = false;
-    this.STw = new h.d()
+    this.aawe = 0;
+    this.aawf = false;
+    this.aawi = new i.d()
     {
-      private static void atD(int paramAnonymousInt)
+      private static void aDx(int paramAnonymousInt)
       {
-        AppMethodBeat.i(214864);
+        AppMethodBeat.i(254890);
         if (Build.VERSION.SDK_INT < paramAnonymousInt)
         {
           IllegalStateException localIllegalStateException = new IllegalStateException("Trying to use platform views with API " + Build.VERSION.SDK_INT + ", required API level is: " + paramAnonymousInt);
-          AppMethodBeat.o(214864);
+          AppMethodBeat.o(254890);
           throw localIllegalStateException;
         }
-        AppMethodBeat.o(214864);
+        AppMethodBeat.o(254890);
       }
       
-      public final void a(io.flutter.embedding.engine.c.h.a paramAnonymousa)
+      public final void a(i.a paramAnonymousa)
       {
-        AppMethodBeat.i(214860);
-        atD(19);
-        PlatformViewsController.a(PlatformViewsController.this).put(paramAnonymousa.viewId, paramAnonymousa);
-        AppMethodBeat.o(214860);
+        AppMethodBeat.i(254879);
+        aDx(19);
+        if (!PlatformViewsController.xH(paramAnonymousa.direction))
+        {
+          paramAnonymousa = new IllegalStateException("Trying to create a view with unknown direction value: " + paramAnonymousa.direction + "(view id: " + paramAnonymousa.viewId + ")");
+          AppMethodBeat.o(254879);
+          throw paramAnonymousa;
+        }
+        Object localObject = PlatformViewsController.a(PlatformViewsController.this).bGv(paramAnonymousa.aatl);
+        if (localObject == null)
+        {
+          paramAnonymousa = new IllegalStateException("Trying to create a platform view of unregistered type: " + paramAnonymousa.aatl);
+          AppMethodBeat.o(254879);
+          throw paramAnonymousa;
+        }
+        if (paramAnonymousa.aato != null) {
+          ((d)localObject).aavU.F(paramAnonymousa.aato);
+        }
+        PlatformViewsController.b(PlatformViewsController.this);
+        localObject = ((d)localObject).iBt();
+        PlatformViewsController.c(PlatformViewsController.this).put(paramAnonymousa.viewId, localObject);
+        AppMethodBeat.o(254879);
       }
       
-      public final void a(h.b paramAnonymousb, final Runnable paramAnonymousRunnable)
+      public final void a(i.b paramAnonymousb, final Runnable paramAnonymousRunnable)
       {
         AppMethodBeat.i(9900);
-        atD(20);
-        final h localh = (h)PlatformViewsController.this.STm.get(Integer.valueOf(paramAnonymousb.viewId));
+        aDx(20);
+        final h localh = (h)PlatformViewsController.this.aavZ.get(Integer.valueOf(paramAnonymousb.viewId));
         if (localh == null)
         {
           paramAnonymousb = new IllegalStateException("Trying to resize a platform view with unknown id: " + paramAnonymousb.viewId);
           AppMethodBeat.o(9900);
           throw paramAnonymousb;
         }
-        int i = PlatformViewsController.a(PlatformViewsController.this, paramAnonymousb.SQT);
-        int j = PlatformViewsController.a(PlatformViewsController.this, paramAnonymousb.SQU);
+        int i = PlatformViewsController.a(PlatformViewsController.this, paramAnonymousb.aatp);
+        int j = PlatformViewsController.a(PlatformViewsController.this, paramAnonymousb.aatq);
         PlatformViewsController.a(PlatformViewsController.this, i, j);
         PlatformViewsController.a(PlatformViewsController.this, localh);
         paramAnonymousb = new Runnable()
@@ -112,41 +134,44 @@ public class PlatformViewsController
           }
         };
         boolean bool = localh.getView().isFocused();
-        paramAnonymousRunnable = localh.STK.detachState();
-        localh.STJ.setSurface(null);
-        localh.STJ.release();
-        localh.hgp.surfaceTexture().setDefaultBufferSize(i, j);
-        localh.STJ = ((DisplayManager)localh.context.getSystemService("display")).createVirtualDisplay("flutter-vd", i, j, localh.densityDpi, localh.surface, 0);
+        paramAnonymousRunnable = localh.aawx.detachState();
+        localh.aaww.setSurface(null);
+        localh.aaww.release();
+        localh.jSi.surfaceTexture().setDefaultBufferSize(i, j);
+        localh.aaww = ((DisplayManager)localh.context.getSystemService("display")).createVirtualDisplay("flutter-vd", i, j, localh.aawv, localh.surface, 0);
         View localView = localh.getView();
         localView.addOnAttachStateChangeListener(new h.1(localh, localView, paramAnonymousb));
-        paramAnonymousb = new SingleViewPresentation(localh.context, localh.STJ.getDisplay(), localh.accessibilityEventsDelegate, paramAnonymousRunnable, localh.focusChangeListener, bool);
+        paramAnonymousb = new SingleViewPresentation(localh.context, localh.aaww.getDisplay(), localh.accessibilityEventsDelegate, paramAnonymousRunnable, localh.focusChangeListener, bool);
         paramAnonymousb.show();
-        localh.STK.cancel();
-        localh.STK = paramAnonymousb;
+        localh.aawx.cancel();
+        localh.aawx = paramAnonymousb;
         AppMethodBeat.o(9900);
       }
       
-      public final void a(h.c paramAnonymousc)
+      public final void a(i.c paramAnonymousc)
       {
         AppMethodBeat.i(9901);
         int i = paramAnonymousc.viewId;
-        float f = PlatformViewsController.g(PlatformViewsController.this).getResources().getDisplayMetrics().density;
-        atD(20);
+        float f = PlatformViewsController.b(PlatformViewsController.this).getResources().getDisplayMetrics().density;
+        aDx(20);
         MotionEvent localMotionEvent;
-        if (PlatformViewsController.this.STm.containsKey(Integer.valueOf(i)))
+        if (PlatformViewsController.this.aavZ.containsKey(Integer.valueOf(i)))
         {
           localMotionEvent = PlatformViewsController.this.a(f, paramAnonymousc, true);
-          paramAnonymousc = (h)PlatformViewsController.this.STm.get(Integer.valueOf(paramAnonymousc.viewId));
-          if (paramAnonymousc.STK != null) {
-            paramAnonymousc.STK.dispatchTouchEvent(localMotionEvent);
+          paramAnonymousc = (h)PlatformViewsController.this.aavZ.get(Integer.valueOf(paramAnonymousc.viewId));
+          if (paramAnonymousc.aawx != null) {
+            paramAnonymousc.aawx.dispatchTouchEvent(localMotionEvent);
           }
           AppMethodBeat.o(9901);
           return;
         }
-        if (PlatformViewsController.b(PlatformViewsController.this).get(i) != null)
+        if (PlatformViewsController.c(PlatformViewsController.this).get(i) != null)
         {
           localMotionEvent = PlatformViewsController.this.a(f, paramAnonymousc, false);
-          ((View)PlatformViewsController.b(PlatformViewsController.this).get(paramAnonymousc.viewId)).dispatchTouchEvent(localMotionEvent);
+          paramAnonymousc = ((c)PlatformViewsController.c(PlatformViewsController.this).get(paramAnonymousc.viewId)).getView();
+          if (paramAnonymousc != null) {
+            paramAnonymousc.dispatchTouchEvent(localMotionEvent);
+          }
           AppMethodBeat.o(9901);
           return;
         }
@@ -155,94 +180,96 @@ public class PlatformViewsController
         throw paramAnonymousc;
       }
       
-      public final void att(int paramAnonymousInt)
+      public final void aDo(int paramAnonymousInt)
       {
-        AppMethodBeat.i(214861);
-        if (PlatformViewsController.a(PlatformViewsController.this).get(paramAnonymousInt) != null) {
-          PlatformViewsController.a(PlatformViewsController.this).remove(paramAnonymousInt);
-        }
-        View localView = (View)PlatformViewsController.b(PlatformViewsController.this).get(paramAnonymousInt);
-        if (localView != null)
+        AppMethodBeat.i(254881);
+        c localc = (c)PlatformViewsController.c(PlatformViewsController.this).get(paramAnonymousInt);
+        io.flutter.embedding.engine.mutatorsstack.a locala = (io.flutter.embedding.engine.mutatorsstack.a)PlatformViewsController.d(PlatformViewsController.this).get(paramAnonymousInt);
+        if (localc != null)
         {
-          io.flutter.embedding.engine.mutatorsstack.a locala = (io.flutter.embedding.engine.mutatorsstack.a)PlatformViewsController.c(PlatformViewsController.this).get(paramAnonymousInt);
-          locala.removeView(localView);
-          ((FlutterView)PlatformViewsController.d(PlatformViewsController.this)).removeView(locala);
-          PlatformViewsController.b(PlatformViewsController.this).remove(paramAnonymousInt);
+          if (locala != null) {
+            locala.removeView(localc.getView());
+          }
           PlatformViewsController.c(PlatformViewsController.this).remove(paramAnonymousInt);
         }
-        AppMethodBeat.o(214861);
+        if (locala != null)
+        {
+          ((ViewGroup)locala.getParent()).removeView(locala);
+          PlatformViewsController.d(PlatformViewsController.this).remove(paramAnonymousInt);
+        }
+        AppMethodBeat.o(254881);
       }
       
-      public final void atu(int paramAnonymousInt)
+      public final void aDp(int paramAnonymousInt)
       {
-        AppMethodBeat.i(214863);
-        atD(20);
-        Object localObject = (h)PlatformViewsController.this.STm.get(Integer.valueOf(paramAnonymousInt));
+        AppMethodBeat.i(254885);
+        aDx(20);
+        Object localObject = (h)PlatformViewsController.this.aavZ.get(Integer.valueOf(paramAnonymousInt));
         if (localObject == null)
         {
           localObject = new IllegalStateException("Trying to dispose a platform view with unknown id: ".concat(String.valueOf(paramAnonymousInt)));
-          AppMethodBeat.o(214863);
+          AppMethodBeat.o(254885);
           throw ((Throwable)localObject);
         }
-        if (PlatformViewsController.k(PlatformViewsController.this) != null)
+        if (PlatformViewsController.j(PlatformViewsController.this) != null)
         {
-          io.flutter.plugin.b.c localc = PlatformViewsController.k(PlatformViewsController.this);
-          if ((localc.SSH.SST == c.a.a.SSW) && (localc.SSH.id == paramAnonymousInt))
+          io.flutter.plugin.editing.d locald = PlatformViewsController.j(PlatformViewsController.this);
+          if ((locald.aavr.aavF == d.a.a.aavI) && (locald.aavr.id == paramAnonymousInt))
           {
-            localc.SSH = new io.flutter.plugin.b.c.a(c.a.a.SSU, 0);
-            localc.hR(localc.mView);
-            localc.SSy.restartInput(localc.mView);
-            localc.SSK = false;
+            locald.aavr = new d.a(d.a.a.aavG, 0);
+            locald.jl(locald.mView);
+            locald.aavc.restartInput(locald.mView);
+            locald.aavu = false;
           }
         }
-        PlatformViewsController.j(PlatformViewsController.this).remove(((h)localObject).getView().getContext());
+        PlatformViewsController.i(PlatformViewsController.this).remove(((h)localObject).getView().getContext());
         ((h)localObject).dispose();
-        PlatformViewsController.this.STm.remove(Integer.valueOf(paramAnonymousInt));
-        AppMethodBeat.o(214863);
+        PlatformViewsController.this.aavZ.remove(Integer.valueOf(paramAnonymousInt));
+        AppMethodBeat.o(254885);
       }
       
-      public final void atv(int paramAnonymousInt)
+      public final void aDq(int paramAnonymousInt)
       {
         AppMethodBeat.i(9903);
-        atD(20);
-        ((h)PlatformViewsController.this.STm.get(Integer.valueOf(paramAnonymousInt))).getView().clearFocus();
+        aDx(20);
+        ((h)PlatformViewsController.this.aavZ.get(Integer.valueOf(paramAnonymousInt))).getView().clearFocus();
         AppMethodBeat.o(9903);
       }
       
       @TargetApi(17)
-      public final long b(final io.flutter.embedding.engine.c.h.a paramAnonymousa)
+      public final long b(final i.a paramAnonymousa)
       {
-        AppMethodBeat.i(214862);
-        atD(20);
-        if (!PlatformViewsController.atC(paramAnonymousa.direction))
+        AppMethodBeat.i(254883);
+        aDx(20);
+        if (!PlatformViewsController.xH(paramAnonymousa.direction))
         {
           paramAnonymousa = new IllegalStateException("Trying to create a view with unknown direction value: " + paramAnonymousa.direction + "(view id: " + paramAnonymousa.viewId + ")");
-          AppMethodBeat.o(214862);
+          AppMethodBeat.o(254883);
           throw paramAnonymousa;
         }
-        if (PlatformViewsController.this.STm.containsKey(Integer.valueOf(paramAnonymousa.viewId)))
+        if (PlatformViewsController.this.aavZ.containsKey(Integer.valueOf(paramAnonymousa.viewId)))
         {
           paramAnonymousa = new IllegalStateException("Trying to create an already created platform view, view id: " + paramAnonymousa.viewId);
-          AppMethodBeat.o(214862);
+          AppMethodBeat.o(254883);
           throw paramAnonymousa;
         }
-        d locald = PlatformViewsController.e(PlatformViewsController.this).bts(paramAnonymousa.SQP);
+        d locald = PlatformViewsController.a(PlatformViewsController.this).bGv(paramAnonymousa.aatl);
         if (locald == null)
         {
-          paramAnonymousa = new IllegalStateException("Trying to create a platform view of unregistered type: " + paramAnonymousa.SQP);
-          AppMethodBeat.o(214862);
+          paramAnonymousa = new IllegalStateException("Trying to create a platform view of unregistered type: " + paramAnonymousa.aatl);
+          AppMethodBeat.o(254883);
           throw paramAnonymousa;
         }
         Object localObject = null;
-        if (paramAnonymousa.SQS != null) {
-          localObject = locald.STh.J(paramAnonymousa.SQS);
+        if (paramAnonymousa.aato != null) {
+          localObject = locald.aavU.F(paramAnonymousa.aato);
         }
-        int i = PlatformViewsController.a(PlatformViewsController.this, paramAnonymousa.SQQ);
-        int j = PlatformViewsController.a(PlatformViewsController.this, paramAnonymousa.SQR);
+        int i = PlatformViewsController.a(PlatformViewsController.this, paramAnonymousa.aatm);
+        int j = PlatformViewsController.a(PlatformViewsController.this, paramAnonymousa.aatn);
         PlatformViewsController.a(PlatformViewsController.this, i, j);
-        io.flutter.view.c.a locala = PlatformViewsController.f(PlatformViewsController.this).hwY();
-        Context localContext = PlatformViewsController.g(PlatformViewsController.this);
-        a locala1 = PlatformViewsController.h(PlatformViewsController.this);
+        c.a locala = PlatformViewsController.e(PlatformViewsController.this).iBa();
+        Context localContext = PlatformViewsController.b(PlatformViewsController.this);
+        a locala1 = PlatformViewsController.f(PlatformViewsController.this);
         int k = paramAnonymousa.viewId;
         View.OnFocusChangeListener local1 = new View.OnFocusChangeListener()
         {
@@ -251,10 +278,10 @@ public class PlatformViewsController
             AppMethodBeat.i(9886);
             if (paramAnonymous2Boolean)
             {
-              paramAnonymous2View = PlatformViewsController.i(PlatformViewsController.this);
+              paramAnonymous2View = PlatformViewsController.g(PlatformViewsController.this);
               int i = paramAnonymousa.viewId;
-              if (paramAnonymous2View.bbv != null) {
-                paramAnonymous2View.bbv.a("viewFocused", Integer.valueOf(i), null);
+              if (paramAnonymous2View.aKT != null) {
+                paramAnonymous2View.aKT.a("viewFocused", Integer.valueOf(i), null);
               }
             }
             AppMethodBeat.o(9886);
@@ -266,36 +293,36 @@ public class PlatformViewsController
         if (localVirtualDisplay == null) {}
         for (localObject = null; localObject == null; localObject = new h(localContext, locala1, localVirtualDisplay, locald, localSurface, locala, local1, k, localObject))
         {
-          paramAnonymousa = new IllegalStateException("Failed creating virtual display for a " + paramAnonymousa.SQP + " with id: " + paramAnonymousa.viewId);
-          AppMethodBeat.o(214862);
+          paramAnonymousa = new IllegalStateException("Failed creating virtual display for a " + paramAnonymousa.aatl + " with id: " + paramAnonymousa.viewId);
+          AppMethodBeat.o(254883);
           throw paramAnonymousa;
         }
-        if (PlatformViewsController.d(PlatformViewsController.this) != null)
+        if (PlatformViewsController.h(PlatformViewsController.this) != null)
         {
-          PlatformViewsController.d(PlatformViewsController.this);
-          ((h)localObject).hxu();
+          PlatformViewsController.h(PlatformViewsController.this);
+          ((h)localObject).iBy();
         }
-        PlatformViewsController.this.STm.put(Integer.valueOf(paramAnonymousa.viewId), localObject);
+        PlatformViewsController.this.aavZ.put(Integer.valueOf(paramAnonymousa.viewId), localObject);
         localObject = ((h)localObject).getView();
         ((View)localObject).setLayoutDirection(paramAnonymousa.direction);
-        PlatformViewsController.j(PlatformViewsController.this).put(((View)localObject).getContext(), localObject);
-        long l = locala.hxb();
-        AppMethodBeat.o(214862);
+        PlatformViewsController.i(PlatformViewsController.this).put(((View)localObject).getContext(), localObject);
+        long l = locala.dux();
+        AppMethodBeat.o(254883);
         return l;
       }
       
       @TargetApi(17)
-      public final void mT(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void om(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(9902);
-        if (!PlatformViewsController.atC(paramAnonymousInt2))
+        if (!PlatformViewsController.xH(paramAnonymousInt2))
         {
           localObject = new IllegalStateException("Trying to set unknown direction value: " + paramAnonymousInt2 + "(view id: " + paramAnonymousInt1 + ")");
           AppMethodBeat.o(9902);
           throw ((Throwable)localObject);
         }
-        atD(20);
-        Object localObject = ((h)PlatformViewsController.this.STm.get(Integer.valueOf(paramAnonymousInt1))).getView();
+        aDx(20);
+        Object localObject = ((h)PlatformViewsController.this.aavZ.get(Integer.valueOf(paramAnonymousInt1))).getView();
         if (localObject == null)
         {
           localObject = new IllegalStateException("Sending touch to an unknown view with id: ".concat(String.valueOf(paramAnonymousInt2)));
@@ -306,23 +333,22 @@ public class PlatformViewsController
         AppMethodBeat.o(9902);
       }
     };
-    this.STj = new f();
-    this.STm = new HashMap();
+    this.aavW = new f();
+    this.aavZ = new HashMap();
     this.accessibilityEventsDelegate = new a();
-    this.STn = new HashMap();
-    this.STr = new SparseArray();
-    this.STu = new HashSet();
-    this.STv = new HashSet();
-    this.STo = new SparseArray();
-    this.STp = new SparseArray();
-    this.STq = new SparseArray();
-    this.SMs = io.flutter.embedding.android.h.hwD();
+    this.aawa = new HashMap();
+    this.aawd = new SparseArray();
+    this.aawg = new HashSet();
+    this.aawh = new HashSet();
+    this.aawb = new SparseArray();
+    this.aawc = new SparseArray();
+    this.aaot = io.flutter.embedding.android.h.iAH();
     AppMethodBeat.o(9923);
   }
   
-  private static List<MotionEvent.PointerCoords> a(Object paramObject, float paramFloat)
+  private static List<MotionEvent.PointerCoords> b(Object paramObject, float paramFloat)
   {
-    AppMethodBeat.i(214872);
+    AppMethodBeat.i(253870);
     Object localObject = (List)paramObject;
     paramObject = new ArrayList();
     localObject = ((List)localObject).iterator();
@@ -341,80 +367,78 @@ public class PlatformViewsController
       localPointerCoords.y = ((float)((Double)localList.get(8)).doubleValue() * paramFloat);
       paramObject.add(localPointerCoords);
     }
-    AppMethodBeat.o(214872);
+    AppMethodBeat.o(253870);
     return paramObject;
   }
   
-  public static boolean atB(int paramInt)
+  public final boolean A(Integer paramInteger)
   {
-    return (paramInt == 0) || (paramInt == 1);
+    AppMethodBeat.i(253867);
+    boolean bool = this.aavZ.containsKey(paramInteger);
+    AppMethodBeat.o(253867);
+    return bool;
   }
   
-  public final void EA(boolean paramBoolean)
+  public final void Jf(boolean paramBoolean)
   {
-    AppMethodBeat.i(214875);
+    AppMethodBeat.i(253878);
     int i = 0;
     int j;
-    Object localObject1;
-    Object localObject2;
-    if (i < this.STr.size())
+    Object localObject;
+    if (i < this.aawd.size())
     {
-      j = this.STr.keyAt(i);
-      localObject1 = (io.flutter.embedding.android.g)this.STr.valueAt(i);
-      if (this.STu.contains(Integer.valueOf(j)))
+      j = this.aawd.keyAt(i);
+      localObject = (FlutterImageView)this.aawd.valueAt(i);
+      if (this.aawg.contains(Integer.valueOf(j)))
       {
-        localObject2 = (FlutterView)this.STk;
-        if (((FlutterView)localObject2).wJi != null) {
-          ((io.flutter.embedding.android.g)localObject1).a(((FlutterView)localObject2).wJi.SMr);
+        FlutterView localFlutterView = (FlutterView)this.aavX;
+        if (localFlutterView.BCx != null) {
+          ((FlutterImageView)localObject).a(localFlutterView.BCx.aaos);
         }
-        paramBoolean &= ((io.flutter.embedding.android.g)localObject1).hwv();
+        paramBoolean &= ((FlutterImageView)localObject).iAA();
       }
       for (;;)
       {
         i += 1;
         break;
-        if (!this.STt) {
-          ((io.flutter.embedding.android.g)localObject1).hwu();
+        if (!this.aawf) {
+          ((FlutterImageView)localObject).iAz();
         }
-        ((io.flutter.embedding.android.g)localObject1).setVisibility(8);
+        ((FlutterImageView)localObject).setVisibility(8);
       }
     }
     i = 0;
-    if (i < this.STp.size())
+    if (i < this.aawc.size())
     {
-      j = this.STp.keyAt(i);
-      localObject1 = (View)this.STp.get(j);
-      localObject2 = (View)this.STq.get(j);
-      if ((paramBoolean) && (this.STv.contains(Integer.valueOf(j))))
-      {
-        ((View)localObject1).setVisibility(0);
-        ((View)localObject2).setVisibility(0);
+      j = this.aawc.keyAt(i);
+      localObject = (View)this.aawc.get(j);
+      if ((paramBoolean) && (this.aawh.contains(Integer.valueOf(j)))) {
+        ((View)localObject).setVisibility(0);
       }
       for (;;)
       {
         i += 1;
         break;
-        ((View)localObject1).setVisibility(8);
-        ((View)localObject2).setVisibility(8);
+        ((View)localObject).setVisibility(8);
       }
     }
-    AppMethodBeat.o(214875);
+    AppMethodBeat.o(253878);
   }
   
-  public final MotionEvent a(float paramFloat, h.c paramc, boolean paramBoolean)
+  public final MotionEvent a(float paramFloat, i.c paramc, boolean paramBoolean)
   {
-    AppMethodBeat.i(214868);
-    Object localObject1 = io.flutter.embedding.android.h.a.Pa(paramc.SRc);
-    Object localObject2 = this.SMs;
-    while ((!((io.flutter.embedding.android.h)localObject2).SNL.isEmpty()) && (((Long)((io.flutter.embedding.android.h)localObject2).SNL.peek()).longValue() < io.flutter.embedding.android.h.a.a((io.flutter.embedding.android.h.a)localObject1))) {
-      ((io.flutter.embedding.android.h)localObject2).SNK.remove(((Long)((io.flutter.embedding.android.h)localObject2).SNL.poll()).longValue());
+    AppMethodBeat.i(253855);
+    Object localObject1 = h.a.Xq(paramc.aatB);
+    Object localObject2 = this.aaot;
+    while ((!((io.flutter.embedding.android.h)localObject2).aapJ.isEmpty()) && (((Long)((io.flutter.embedding.android.h)localObject2).aapJ.peek()).longValue() < h.a.a((h.a)localObject1))) {
+      ((io.flutter.embedding.android.h)localObject2).aapI.remove(((Long)((io.flutter.embedding.android.h)localObject2).aapJ.poll()).longValue());
     }
-    if ((!((io.flutter.embedding.android.h)localObject2).SNL.isEmpty()) && (((Long)((io.flutter.embedding.android.h)localObject2).SNL.peek()).longValue() == io.flutter.embedding.android.h.a.a((io.flutter.embedding.android.h.a)localObject1))) {
-      ((io.flutter.embedding.android.h)localObject2).SNL.poll();
+    if ((!((io.flutter.embedding.android.h)localObject2).aapJ.isEmpty()) && (((Long)((io.flutter.embedding.android.h)localObject2).aapJ.peek()).longValue() == h.a.a((h.a)localObject1))) {
+      ((io.flutter.embedding.android.h)localObject2).aapJ.poll();
     }
-    MotionEvent localMotionEvent = (MotionEvent)((io.flutter.embedding.android.h)localObject2).SNK.get(io.flutter.embedding.android.h.a.a((io.flutter.embedding.android.h.a)localObject1));
-    ((io.flutter.embedding.android.h)localObject2).SNK.remove(io.flutter.embedding.android.h.a.a((io.flutter.embedding.android.h.a)localObject1));
-    localObject2 = (List)paramc.SQX;
+    MotionEvent localMotionEvent = (MotionEvent)((io.flutter.embedding.android.h)localObject2).aapI.get(h.a.a((h.a)localObject1));
+    ((io.flutter.embedding.android.h)localObject2).aapI.remove(h.a.a((h.a)localObject1));
+    localObject2 = (List)paramc.aatt;
     localObject1 = new ArrayList();
     localObject2 = ((List)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())
@@ -425,16 +449,16 @@ public class PlatformViewsController
       localPointerProperties.toolType = ((Integer)localList.get(1)).intValue();
       ((List)localObject1).add(localPointerProperties);
     }
-    localObject1 = (MotionEvent.PointerProperties[])((List)localObject1).toArray(new MotionEvent.PointerProperties[paramc.kyY]);
-    localObject2 = (MotionEvent.PointerCoords[])a(paramc.SQY, paramFloat).toArray(new MotionEvent.PointerCoords[paramc.kyY]);
+    localObject1 = (MotionEvent.PointerProperties[])((List)localObject1).toArray(new MotionEvent.PointerProperties[paramc.nrY]);
+    localObject2 = (MotionEvent.PointerCoords[])b(paramc.aatu, paramFloat).toArray(new MotionEvent.PointerCoords[paramc.nrY]);
     if ((!paramBoolean) && (localMotionEvent != null))
     {
-      paramc = MotionEvent.obtain(localMotionEvent.getDownTime(), localMotionEvent.getEventTime(), localMotionEvent.getAction(), paramc.kyY, (MotionEvent.PointerProperties[])localObject1, (MotionEvent.PointerCoords[])localObject2, localMotionEvent.getMetaState(), localMotionEvent.getButtonState(), localMotionEvent.getXPrecision(), localMotionEvent.getYPrecision(), localMotionEvent.getDeviceId(), localMotionEvent.getEdgeFlags(), localMotionEvent.getSource(), localMotionEvent.getFlags());
-      AppMethodBeat.o(214868);
+      paramc = MotionEvent.obtain(localMotionEvent.getDownTime(), localMotionEvent.getEventTime(), localMotionEvent.getAction(), paramc.nrY, (MotionEvent.PointerProperties[])localObject1, (MotionEvent.PointerCoords[])localObject2, localMotionEvent.getMetaState(), localMotionEvent.getButtonState(), localMotionEvent.getXPrecision(), localMotionEvent.getYPrecision(), localMotionEvent.getDeviceId(), localMotionEvent.getEdgeFlags(), localMotionEvent.getSource(), localMotionEvent.getFlags());
+      AppMethodBeat.o(253855);
       return paramc;
     }
-    paramc = MotionEvent.obtain(paramc.SQV.longValue(), paramc.SQW.longValue(), paramc.action, paramc.kyY, (MotionEvent.PointerProperties[])localObject1, (MotionEvent.PointerCoords[])localObject2, paramc.SPZ, paramc.SQZ, paramc.SRa, paramc.SRb, paramc.SPU, paramc.edgeFlags, paramc.source, paramc.flags);
-    AppMethodBeat.o(214868);
+    paramc = MotionEvent.obtain(paramc.aatr.longValue(), paramc.aats.longValue(), paramc.action, paramc.nrY, (MotionEvent.PointerProperties[])localObject1, (MotionEvent.PointerCoords[])localObject2, paramc.aatv, paramc.aatw, paramc.aatx, paramc.aaty, paramc.aatz, paramc.aatA, paramc.source, paramc.flags);
+    AppMethodBeat.o(253855);
     return paramc;
   }
   
@@ -448,33 +472,38 @@ public class PlatformViewsController
       throw paramContext;
     }
     this.context = paramContext;
-    this.StA = paramc;
-    this.STl = new io.flutter.embedding.engine.c.h(paramDartExecutor);
-    this.STl.SQK = this.STw;
+    this.aarP = paramc;
+    this.aavY = new io.flutter.embedding.engine.b.i(paramDartExecutor);
+    this.aavY.aatg = this.aawi;
     AppMethodBeat.o(9924);
   }
   
   public final void a(io.flutter.view.a parama)
   {
-    this.accessibilityEventsDelegate.SNs = parama;
+    this.accessibilityEventsDelegate.aapq = parama;
   }
   
-  public final void b(io.flutter.embedding.engine.b.a parama)
+  public final void c(io.flutter.embedding.engine.renderer.a parama)
   {
-    AppMethodBeat.i(214874);
-    this.SNr = new b(parama, true);
-    AppMethodBeat.o(214874);
+    AppMethodBeat.i(253876);
+    this.aapp = new b(parama, true);
+    AppMethodBeat.o(253876);
   }
   
   public final boolean checkInputConnectionProxy(View paramView)
   {
     AppMethodBeat.i(9925);
-    if (!this.STn.containsKey(paramView.getContext()))
+    if (paramView == null)
     {
       AppMethodBeat.o(9925);
       return false;
     }
-    View localView = (View)this.STn.get(paramView.getContext());
+    if (!this.aawa.containsKey(paramView.getContext()))
+    {
+      AppMethodBeat.o(9925);
+      return false;
+    }
+    View localView = (View)this.aawa.get(paramView.getContext());
     if (localView == paramView)
     {
       AppMethodBeat.o(9925);
@@ -487,100 +516,105 @@ public class PlatformViewsController
   
   public final void destroyOverlaySurfaces()
   {
-    AppMethodBeat.i(214876);
+    AppMethodBeat.i(253880);
     int i = 0;
-    while (i < this.STr.size())
+    while (i < this.aawd.size())
     {
-      this.STr.keyAt(i);
-      io.flutter.embedding.android.g localg = (io.flutter.embedding.android.g)this.STr.valueAt(i);
-      localg.hwu();
-      ((FlutterView)this.STk).removeView(localg);
+      this.aawd.keyAt(i);
+      FlutterImageView localFlutterImageView = (FlutterImageView)this.aawd.valueAt(i);
+      localFlutterImageView.iAz();
+      ((FlutterView)this.aavX).removeView(localFlutterImageView);
       i += 1;
     }
-    this.STr.clear();
-    AppMethodBeat.o(214876);
+    this.aawd.clear();
+    AppMethodBeat.o(253880);
   }
   
   public final void detach()
   {
-    this.STl.SQK = null;
-    this.STl = null;
-    this.context = null;
-    this.StA = null;
-  }
-  
-  public final void hS(View paramView)
-  {
-    AppMethodBeat.i(214869);
-    this.STk = paramView;
-    paramView = this.STm.values().iterator();
-    while (paramView.hasNext()) {
-      ((h)paramView.next()).hxu();
+    if (this.aavY != null) {
+      this.aavY.aatg = null;
     }
-    AppMethodBeat.o(214869);
+    this.aavY = null;
+    this.context = null;
+    this.aarP = null;
   }
   
-  public final void hxq()
+  public final void iBu()
   {
-    this.accessibilityEventsDelegate.SNs = null;
+    this.accessibilityEventsDelegate.aapq = null;
   }
   
-  public final void hxr()
+  public final void iBv()
   {
-    AppMethodBeat.i(214870);
-    this.STk = null;
-    Iterator localIterator = this.STm.values().iterator();
+    AppMethodBeat.i(253862);
+    this.aavX = null;
+    Iterator localIterator = this.aavZ.values().iterator();
     while (localIterator.hasNext())
     {
       h localh = (h)localIterator.next();
-      if ((localh.STK != null) && (localh.STK.getView() != null)) {
-        localh.STK.getView();
+      if ((localh.aawx != null) && (localh.aawx.getView() != null)) {
+        localh.aawx.getView();
       }
     }
-    AppMethodBeat.o(214870);
+    AppMethodBeat.o(253862);
   }
   
-  public final void hxs()
+  public final void iBw()
   {
     AppMethodBeat.i(9927);
-    Iterator localIterator = this.STm.values().iterator();
+    Iterator localIterator = this.aavZ.values().iterator();
     while (localIterator.hasNext()) {
       ((h)localIterator.next()).dispose();
     }
-    this.STm.clear();
+    this.aavZ.clear();
+    while (this.aawb.size() > 0) {
+      this.aawi.aDo(this.aawb.keyAt(0));
+    }
     AppMethodBeat.o(9927);
   }
   
-  public final void hxt()
+  public final void iBx()
   {
-    AppMethodBeat.i(214873);
-    if (!this.STt)
+    AppMethodBeat.i(253873);
+    if (!this.aawf)
     {
-      ((FlutterView)this.STk).hwz();
-      this.STt = true;
+      ((FlutterView)this.aavX).iAD();
+      this.aawf = true;
     }
-    AppMethodBeat.o(214873);
+    AppMethodBeat.o(253873);
+  }
+  
+  public final void jm(View paramView)
+  {
+    AppMethodBeat.i(253860);
+    this.aavX = paramView;
+    paramView = this.aavZ.values().iterator();
+    while (paramView.hasNext()) {
+      ((h)paramView.next()).iBy();
+    }
+    AppMethodBeat.o(253860);
   }
   
   public void onAttachedToJNI() {}
   
   public void onDetachedFromJNI()
   {
-    AppMethodBeat.i(214871);
-    hxs();
-    AppMethodBeat.o(214871);
+    AppMethodBeat.i(253865);
+    iBw();
+    AppMethodBeat.o(253865);
   }
   
-  public final View r(Integer paramInteger)
+  public final View z(Integer paramInteger)
   {
     AppMethodBeat.i(9926);
-    if (this.STp.get(paramInteger.intValue()) != null)
+    if (this.aawb.get(paramInteger.intValue()) != null)
     {
-      paramInteger = (View)this.STp.get(paramInteger.intValue());
+      paramInteger = ((c)this.aawb.get(paramInteger.intValue())).getView();
       AppMethodBeat.o(9926);
       return paramInteger;
     }
-    paramInteger = (h)this.STm.get(paramInteger);
+    paramInteger = (h)this.aavZ.get(paramInteger);
     if (paramInteger == null)
     {
       AppMethodBeat.o(9926);

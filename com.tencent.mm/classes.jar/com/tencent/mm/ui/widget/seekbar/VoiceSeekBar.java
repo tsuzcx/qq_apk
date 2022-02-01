@@ -9,26 +9,28 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cr.a.f;
+import com.tencent.mm.cr.a.g;
 
 public class VoiceSeekBar
   extends RelativeLayout
 {
-  protected ImageView QVk;
-  protected float QVl;
-  protected int QVm;
+  protected ImageView YtV;
+  protected float YtW;
+  protected int YtX;
   protected View contentView;
-  protected ImageView mCM;
-  protected ImageView mCN;
+  protected ImageView pBZ;
+  protected ImageView pCa;
   
   public VoiceSeekBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159692);
     this.contentView = null;
-    this.mCN = null;
-    this.QVk = null;
-    this.QVl = 0.0F;
-    this.QVm = 0;
+    this.pCa = null;
+    this.YtV = null;
+    this.YtW = 0.0F;
+    this.YtX = 0;
     init();
     AppMethodBeat.o(159692);
   }
@@ -38,10 +40,10 @@ public class VoiceSeekBar
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159693);
     this.contentView = null;
-    this.mCN = null;
-    this.QVk = null;
-    this.QVl = 0.0F;
-    this.QVm = 0;
+    this.pCa = null;
+    this.YtV = null;
+    this.YtW = 0.0F;
+    this.YtX = 0;
     init();
     AppMethodBeat.o(159693);
   }
@@ -49,20 +51,20 @@ public class VoiceSeekBar
   private void init()
   {
     AppMethodBeat.i(159694);
-    this.contentView = View.inflate(getContext(), 2131496852, this);
-    this.mCM = ((ImageView)this.contentView.findViewById(2131307485));
-    this.mCN = ((ImageView)this.contentView.findViewById(2131307484));
-    this.QVk = ((ImageView)this.contentView.findViewById(2131307483));
-    this.mCN.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
+    this.contentView = View.inflate(getContext(), a.g.voice_seek_bar, this);
+    this.pBZ = ((ImageView)this.contentView.findViewById(a.f.seek_bar_front));
+    this.pCa = ((ImageView)this.contentView.findViewById(a.f.seek_bar_background));
+    this.YtV = ((ImageView)this.contentView.findViewById(a.f.seek_bar_IV));
+    this.pCa.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
     {
       public final boolean onPreDraw()
       {
         AppMethodBeat.i(159691);
-        VoiceSeekBar.this.mCN.getViewTreeObserver().removeOnPreDrawListener(this);
-        VoiceSeekBar.this.QVm = VoiceSeekBar.this.mCN.getHeight();
-        FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)VoiceSeekBar.this.mCM.getLayoutParams();
-        localLayoutParams.topMargin = ((int)((1.0F - VoiceSeekBar.this.QVl) * VoiceSeekBar.this.QVm));
-        VoiceSeekBar.this.mCM.setLayoutParams(localLayoutParams);
+        VoiceSeekBar.this.pCa.getViewTreeObserver().removeOnPreDrawListener(this);
+        VoiceSeekBar.this.YtX = VoiceSeekBar.this.pCa.getHeight();
+        FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)VoiceSeekBar.this.pBZ.getLayoutParams();
+        localLayoutParams.topMargin = ((int)((1.0F - VoiceSeekBar.this.YtW) * VoiceSeekBar.this.YtX));
+        VoiceSeekBar.this.pBZ.setLayoutParams(localLayoutParams);
         VoiceSeekBar.this.requestLayout();
         AppMethodBeat.o(159691);
         return false;

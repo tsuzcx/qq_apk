@@ -2,7 +2,7 @@ package io.flutter.embedding.android;
 
 public abstract interface k
 {
-  public abstract j KF();
+  public abstract j NC();
 }
 
 

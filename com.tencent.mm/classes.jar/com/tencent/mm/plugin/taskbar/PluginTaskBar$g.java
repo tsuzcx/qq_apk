@@ -8,7 +8,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.g.a.a;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
 final class PluginTaskBar$g
   implements Runnable
 {
@@ -16,27 +16,27 @@ final class PluginTaskBar$g
   
   public final void run()
   {
-    AppMethodBeat.i(258566);
+    AppMethodBeat.i(215307);
     try
     {
-      BitmapUtil.saveBitmapToImage(this.cKG, 100, Bitmap.CompressFormat.PNG, this.lCM, false);
+      BitmapUtil.saveBitmapToImage(this.cLr, 100, Bitmap.CompressFormat.JPEG, this.oyo, false);
       return;
     }
     catch (Throwable localThrowable)
     {
-      Log.e(PluginTaskBar.access$getTAG$p(this.FRX), "save bitmap failed!", new Object[] { localThrowable });
+      Log.e(PluginTaskBar.access$getTAG$p(this.MlY), "save bitmap failed! " + this.oyo, new Object[] { localThrowable });
       return;
     }
     finally
     {
-      this.ihE.invoke();
-      AppMethodBeat.o(258566);
+      this.kWs.invoke();
+      AppMethodBeat.o(215307);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.taskbar.PluginTaskBar.g
  * JD-Core Version:    0.7.0.1
  */

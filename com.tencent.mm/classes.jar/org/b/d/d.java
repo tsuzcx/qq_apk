@@ -43,14 +43,6 @@ public final class d
     return false;
   }
   
-  public final String hQi()
-  {
-    AppMethodBeat.i(40540);
-    String str = c.encode(this.key).concat("=").concat(c.encode(this.value));
-    AppMethodBeat.o(40540);
-    return str;
-  }
-  
   public final int hashCode()
   {
     AppMethodBeat.i(40542);
@@ -59,10 +51,18 @@ public final class d
     AppMethodBeat.o(40542);
     return i + j;
   }
+  
+  public final String iVr()
+  {
+    AppMethodBeat.i(40540);
+    String str = c.aT(this.key).concat("=").concat(c.aT(this.value));
+    AppMethodBeat.o(40540);
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     org.b.d.d
  * JD-Core Version:    0.7.0.1
  */

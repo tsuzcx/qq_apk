@@ -7,14 +7,16 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.a.a;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
+import com.tencent.mm.ah.a.m;
 
 public final class PluginTextPreference
   extends Preference
 {
-  private ImageView Bga;
-  public int OZn;
-  private TextView gyt;
+  private ImageView GZJ;
+  public int Wsw;
+  private TextView jiw;
   private String text;
   private int textColor;
   public int visibility;
@@ -33,18 +35,18 @@ public final class PluginTextPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142627);
-    this.Bga = null;
-    this.gyt = null;
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.PluginTextPreference);
-    setLayoutResource(paramContext.getResourceId(1, 2131495575));
-    this.OZn = paramContext.getResourceId(0, 0);
-    this.text = paramContext.getString(2);
-    this.textColor = paramContext.getColor(3, -7039852);
+    this.GZJ = null;
+    this.jiw = null;
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.m.PluginTextPreference);
+    setLayoutResource(paramContext.getResourceId(a.m.PluginTextPreference_plugin_layout, a.h.mm_preference_content_plugin_text));
+    this.Wsw = paramContext.getResourceId(a.m.PluginTextPreference_plugin_icon, 0);
+    this.text = paramContext.getString(a.m.PluginTextPreference_plugin_text);
+    this.textColor = paramContext.getColor(a.m.PluginTextPreference_plugin_text_color, -7039852);
     paramContext.recycle();
     AppMethodBeat.o(142627);
   }
   
-  public final void alN(int paramInt)
+  public final void auM(int paramInt)
   {
     AppMethodBeat.i(142628);
     this.text = this.mContext.getString(paramInt);
@@ -55,18 +57,18 @@ public final class PluginTextPreference
   {
     AppMethodBeat.i(142629);
     super.onBindView(paramView);
-    this.Bga = ((ImageView)paramView.findViewById(2131302573));
-    this.Bga.setImageResource(this.OZn);
-    this.Bga.setVisibility(this.visibility);
-    this.gyt = ((TextView)paramView.findViewById(2131309013));
-    this.gyt.setText(this.text);
-    this.gyt.setTextColor(this.textColor);
+    this.GZJ = ((ImageView)paramView.findViewById(a.g.image_iv));
+    this.GZJ.setImageResource(this.Wsw);
+    this.GZJ.setVisibility(this.visibility);
+    this.jiw = ((TextView)paramView.findViewById(a.g.text_tv));
+    this.jiw.setText(this.text);
+    this.jiw.setTextColor(this.textColor);
     AppMethodBeat.o(142629);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.PluginTextPreference
  * JD-Core Version:    0.7.0.1
  */

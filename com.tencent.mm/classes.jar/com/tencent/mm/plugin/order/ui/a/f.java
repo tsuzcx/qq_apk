@@ -11,17 +11,20 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.order.c.a;
 import com.tencent.mm.plugin.order.c.a.a;
-import com.tencent.mm.plugin.wallet_core.utils.g;
+import com.tencent.mm.plugin.wallet_core.utils.k;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class f
   extends Preference
 {
-  private int AQA;
-  private int AQB;
-  private int AQC;
-  private View.OnClickListener hEZ;
+  private int GJL;
+  private int GJM;
+  private int GJN;
+  private View.OnClickListener kte;
   private boolean mClickable;
   private String mContent;
   private View mView;
@@ -31,10 +34,10 @@ public final class f
     super(paramContext);
     AppMethodBeat.i(66815);
     this.mView = null;
-    this.AQA = 2147483647;
-    this.AQB = -1;
-    this.AQC = -1;
-    setLayoutResource(2131495438);
+    this.GJL = 2147483647;
+    this.GJM = -1;
+    this.GJN = -1;
+    setLayoutResource(a.g.mall_order_common_pref);
     AppMethodBeat.o(66815);
   }
   
@@ -42,28 +45,28 @@ public final class f
   {
     this.mContent = paramString;
     this.mClickable = true;
-    this.AQB = paramInt1;
-    this.AQC = paramInt2;
-    this.hEZ = paramOnClickListener;
+    this.GJM = paramInt1;
+    this.GJN = paramInt2;
+    this.kte = paramOnClickListener;
   }
   
-  public final void aJG(String paramString)
+  public final void aUc(String paramString)
   {
     AppMethodBeat.i(66818);
     try
     {
-      this.AQA = g.cI(paramString, true);
+      this.GJL = k.cW(paramString, true);
       AppMethodBeat.o(66818);
       return;
     }
     catch (Exception paramString)
     {
-      this.AQA = 2147483647;
+      this.GJL = 2147483647;
       AppMethodBeat.o(66818);
     }
   }
   
-  public final View getView(View paramView, ViewGroup paramViewGroup)
+  public final View c(View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(66816);
     if (this.mView == null) {
@@ -79,19 +82,19 @@ public final class f
   {
     AppMethodBeat.i(66817);
     super.onBindView(paramView);
-    Object localObject = (TextView)paramView.findViewById(2131304372);
-    paramView = (TextView)paramView.findViewById(2131304371);
+    Object localObject = (TextView)paramView.findViewById(a.f.mall_order_common_pref_title);
+    paramView = (TextView)paramView.findViewById(a.f.mall_order_common_pref_content);
     ((TextView)localObject).setText(getTitle());
-    if (this.AQA != 2147483647) {
-      paramView.setTextColor(this.AQA);
+    if (this.GJL != 2147483647) {
+      paramView.setTextColor(this.GJL);
     }
     if (this.mClickable)
     {
-      if ((this.AQB >= 0) && (this.AQC > 0))
+      if ((this.GJM >= 0) && (this.GJN > 0))
       {
         localObject = new a(this.mContext);
         SpannableString localSpannableString = new SpannableString(this.mContent);
-        ((a)localObject).AQT = new a.a()
+        ((a)localObject).GKe = new a.a()
         {
           public final void onClick(View paramAnonymousView)
           {
@@ -103,13 +106,13 @@ public final class f
           }
         };
         paramView.setMovementMethod(LinkMovementMethod.getInstance());
-        localSpannableString.setSpan(localObject, this.AQB, this.AQC, 33);
+        localSpannableString.setSpan(localObject, this.GJM, this.GJN, 33);
         paramView.setText(localSpannableString);
         AppMethodBeat.o(66817);
         return;
       }
-      paramView.setTextColor(this.mContext.getResources().getColor(2131100775));
-      paramView.setOnClickListener(this.hEZ);
+      paramView.setTextColor(this.mContext.getResources().getColor(a.c.mall_link_color));
+      paramView.setOnClickListener(this.kte);
       paramView.setText(l.b(this.mContext, this.mContent, paramView.getTextSize()));
       AppMethodBeat.o(66817);
       return;

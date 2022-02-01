@@ -5,6 +5,8 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
@@ -12,12 +14,12 @@ import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 public class MMProgressBar
   extends LinearLayout
 {
-  private MTimerHandler AIN;
-  private TextView DnJ;
-  private int ORP;
-  private int ORQ;
-  private TextView ORR;
-  private a ORS;
+  private MTimerHandler GBW;
+  private TextView Jto;
+  private int Wlc;
+  private int Wld;
+  private TextView Wle;
+  private a Wlf;
   private int max;
   
   public MMProgressBar(Context paramContext, AttributeSet paramAttributeSet)
@@ -25,9 +27,9 @@ public class MMProgressBar
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142059);
     this.max = 100;
-    this.ORP = 0;
-    this.ORQ = 0;
-    this.AIN = new MTimerHandler(new MTimerHandler.CallBack()
+    this.Wlc = 0;
+    this.Wld = 0;
+    this.GBW = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -57,16 +59,16 @@ public class MMProgressBar
         }
       }
     }, false);
-    inflate(getContext(), 2131495633, this);
-    this.ORR = ((TextView)findViewById(2131304731));
-    this.DnJ = ((TextView)findViewById(2131304732));
+    inflate(getContext(), a.h.mm_progress_bar, this);
+    this.Wle = ((TextView)findViewById(a.g.mm_progress_bar_progress));
+    this.Jto = ((TextView)findViewById(a.g.mm_progress_bar_tips));
     AppMethodBeat.o(142059);
   }
   
   private int getProgressLength()
   {
     AppMethodBeat.i(142063);
-    int j = getWidth() * this.ORP / this.max;
+    int j = getWidth() * this.Wlc / this.max;
     int i = j;
     if (j < BackwardSupportUtil.BitmapFactory.fromDPToPix(getContext(), 20.0F)) {
       i = BackwardSupportUtil.BitmapFactory.fromDPToPix(getContext(), 20.0F);
@@ -82,7 +84,7 @@ public class MMProgressBar
   
   public int getProgress()
   {
-    return this.ORQ;
+    return this.Wld;
   }
   
   public void setAutoProgress(boolean paramBoolean)
@@ -90,11 +92,11 @@ public class MMProgressBar
     AppMethodBeat.i(142061);
     if (paramBoolean)
     {
-      this.AIN.startTimer(40L);
+      this.GBW.startTimer(40L);
       AppMethodBeat.o(142061);
       return;
     }
-    this.AIN.stopTimer();
+    this.GBW.stopTimer();
     AppMethodBeat.o(142061);
   }
   
@@ -105,7 +107,7 @@ public class MMProgressBar
   
   public void setOnProgressChangedListener(a parama)
   {
-    this.ORS = parama;
+    this.Wlf = parama;
   }
   
   public void setProgress(int paramInt)
@@ -115,8 +117,8 @@ public class MMProgressBar
     if (paramInt > this.max) {
       i = this.max;
     }
-    this.ORQ = i;
-    if (this.AIN.stopped()) {
+    this.Wld = i;
+    if (this.GBW.stopped()) {
       setAutoProgress(true);
     }
     AppMethodBeat.o(142060);
@@ -125,13 +127,13 @@ public class MMProgressBar
   public void setTips(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(142062);
-    this.DnJ.setText(paramCharSequence);
+    this.Jto.setText(paramCharSequence);
     AppMethodBeat.o(142062);
   }
   
   public static abstract interface a
   {
-    public abstract void acg(int paramInt);
+    public abstract void ajM(int paramInt);
   }
 }
 

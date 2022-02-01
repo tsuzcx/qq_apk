@@ -1,64 +1,66 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.aow;
-import com.tencent.mm.protocal.protobuf.aox;
-import com.tencent.mm.protocal.protobuf.azz;
-import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.finder.live.model.cgi.n;
+import com.tencent.mm.protocal.protobuf.biw;
+import com.tencent.mm.protocal.protobuf.bix;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import java.util.Map;
+import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.o;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderBatchGetObjectAsyncLoadInfoRequest;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderBatchGetObjectAsyncLoadInfoResponse;", "objectIds", "", "Lkotlin/Pair;", "", "", "scene", "", "(Ljava/util/List;I)V", "TAG", "request", "Lcom/tencent/mm/protocal/protobuf/FinderBatchGetObjectAsyncLoadInfoRequest;", "initReqResp", "", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderAuthAppMsg;", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "Lcom/tencent/mm/protocal/protobuf/FinderSendInviteMsgResponse;", "toUserName", "", "msgContent", "callback", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderAuthAppMsg$CallBack;", "(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/finder/cgi/CgiFinderAuthAppMsg$CallBack;)V", "TAG", "getCallback", "()Lcom/tencent/mm/plugin/finder/cgi/CgiFinderAuthAppMsg$CallBack;", "setCallback", "(Lcom/tencent/mm/plugin/finder/cgi/CgiFinderAuthAppMsg$CallBack;)V", "commReqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "onCgiEnd", "", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "plugin-finder_release"})
 public final class f
-  extends an<aox>
+  extends n<bix>
 {
   private final String TAG;
-  private aow tsN;
+  private d lKU;
+  private a xau;
   
-  public f(List<o<Long, String>> paramList, int paramInt)
+  public f(String paramString1, String paramString2, a parama)
   {
-    AppMethodBeat.i(242208);
-    this.TAG = "Finder.CgiFinderBatchGetObjectAsyncLoadInfoRequest";
-    this.tsN = new aow();
-    Object localObject1 = this.tsN;
-    Object localObject2 = am.tuw;
-    ((aow)localObject1).LAI = am.cXY();
-    localObject1 = new LinkedList();
-    localObject2 = ((Iterable)paramList).iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      o localo = (o)((Iterator)localObject2).next();
-      azz localazz = new azz();
-      localazz.object_id = ((Number)localo.first).longValue();
-      localazz.object_nonce_id = ((String)localo.second);
-      ((LinkedList)localObject1).add(localazz);
+    AppMethodBeat.i(273181);
+    this.xau = parama;
+    this.TAG = "NetSceneFinderAuthAppMsg";
+    parama = new d.a();
+    parama.TW("/cgi-bin/micromsg-bin/findersendinvitemsg");
+    parama.vD(6412);
+    biw localbiw = new biw();
+    localbiw.sWA = paramString1;
+    localbiw.from_username = z.bcZ();
+    paramString1 = XmlParser.parseXml(paramString2, "msg", null);
+    localbiw.scene = Util.safeParseInt((String)paramString1.get(".msg.appmsg.finderGuarantee.scene"));
+    paramString2 = (String)paramString1.get(".msg.appmsg.finderGuarantee.relativePath");
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
     }
-    Log.i(this.TAG, "init idList " + ((LinkedList)localObject1).size() + " objectIds: " + paramList.size());
-    this.tsN.LAU = ((LinkedList)localObject1);
-    this.tsN.scene = paramInt;
-    paramList = new d.a();
-    paramList.c((a)this.tsN);
-    localObject1 = new aox();
-    ((aox)localObject1).setBaseResponse(new BaseResponse());
-    ((aox)localObject1).getBaseResponse().ErrMsg = new dqi();
-    paramList.d((a)localObject1);
-    paramList.MB("/cgi-bin/micromsg-bin/finderbatchgetobjectasyncloadinfo");
-    paramList.sG(6499);
-    c(paramList.aXF());
-    Log.i(this.TAG, "init");
-    AppMethodBeat.o(242208);
+    localbiw.link = paramString1;
+    parama.c((a)localbiw);
+    parama.d((a)new bix());
+    paramString1 = parama.bgN();
+    p.j(paramString1, "builder.buildInstance()");
+    this.lKU = paramString1;
+    c(this.lKU);
+    Log.i(this.TAG, "NetSceneFinderAuthAppMsg init");
+    AppMethodBeat.o(273181);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderAuthAppMsg$CallBack;", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderSendInviteMsgResponse;", "plugin-finder_release"})
+  public static abstract interface a
+  {
+    public abstract void a(int paramInt, bix parambix);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.f
  * JD-Core Version:    0.7.0.1
  */

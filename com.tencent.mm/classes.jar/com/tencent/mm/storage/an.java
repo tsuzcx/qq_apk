@@ -11,33 +11,33 @@ import java.util.Objects;
 
 public class an
 {
-  public volatile boolean NRI;
-  public volatile boolean NRJ;
-  private volatile boolean NRK;
-  private volatile boolean NRL;
-  private boolean NRM;
-  protected ConfigFileStorageProxyMMKV NRN;
-  private Runnable dQN;
+  public volatile boolean VfF;
+  public volatile boolean VfG;
+  private volatile boolean VfH;
+  private volatile boolean VfI;
+  private boolean VfJ;
+  protected ConfigFileStorageProxyMMKV VfK;
+  private Runnable fKd;
   private String filePath;
-  private boolean gHN;
+  private boolean jsf;
   private volatile Map<Integer, Object> values;
   
   public an(String paramString)
   {
     AppMethodBeat.i(133220);
     this.filePath = "";
-    this.NRI = false;
-    this.NRJ = false;
-    this.NRK = false;
-    this.NRL = false;
-    this.NRM = true;
-    this.gHN = false;
-    this.dQN = new Runnable()
+    this.VfF = false;
+    this.VfG = false;
+    this.VfH = false;
+    this.VfI = false;
+    this.VfJ = true;
+    this.jsf = false;
+    this.fKd = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(133219);
-        an.this.gBH();
+        an.this.hxS();
         AppMethodBeat.o(133219);
       }
     };
@@ -46,17 +46,17 @@ public class an
     }
     Log.d("MicroMsg.ConfigFileStorage", "ConfigFileStorage path is [%s],needCheckData:[%b]", new Object[] { paramString, Boolean.TRUE });
     this.filePath = paramString;
-    this.NRM = true;
+    this.VfJ = true;
     if (!TextUtils.isEmpty(this.filePath)) {
-      this.NRN = new ConfigFileStorageProxyMMKV(this.filePath);
+      this.VfK = new ConfigFileStorageProxyMMKV(this.filePath);
     }
-    gBG();
-    this.gHN = false;
+    hxR();
+    this.jsf = false;
     AppMethodBeat.o(133220);
   }
   
   /* Error */
-  private void aom()
+  private void aur()
   {
     // Byte code:
     //   0: aload_0
@@ -64,35 +64,35 @@ public class an
     //   2: ldc 104
     //   4: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: invokevirtual 107	com/tencent/mm/storage/an:gBE	()Z
+    //   8: invokevirtual 107	com/tencent/mm/storage/an:hxP	()Z
     //   11: ifne +15 -> 26
     //   14: aload_0
-    //   15: invokevirtual 110	com/tencent/mm/storage/an:gBH	()V
+    //   15: invokevirtual 110	com/tencent/mm/storage/an:hxS	()V
     //   18: ldc 104
     //   20: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   23: aload_0
     //   24: monitorexit
     //   25: return
     //   26: aload_0
-    //   27: invokevirtual 107	com/tencent/mm/storage/an:gBE	()Z
+    //   27: invokevirtual 107	com/tencent/mm/storage/an:hxP	()Z
     //   30: ifeq +21 -> 51
     //   33: aload_0
-    //   34: getfield 48	com/tencent/mm/storage/an:NRM	Z
+    //   34: getfield 48	com/tencent/mm/storage/an:VfJ	Z
     //   37: ifeq +14 -> 51
     //   40: aload_0
-    //   41: getfield 95	com/tencent/mm/storage/an:NRN	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
+    //   41: getfield 95	com/tencent/mm/storage/an:VfK	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
     //   44: aload_0
     //   45: getfield 112	com/tencent/mm/storage/an:values	Ljava/util/Map;
-    //   48: invokevirtual 116	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:bY	(Ljava/util/Map;)V
-    //   51: getstatic 122	com/tencent/f/h:RTc	Lcom/tencent/f/i;
+    //   48: invokevirtual 116	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:cf	(Ljava/util/Map;)V
+    //   51: getstatic 122	com/tencent/e/h:ZvG	Lcom/tencent/e/i;
     //   54: aload_0
     //   55: invokevirtual 126	java/lang/Object:hashCode	()I
     //   58: invokestatic 132	java/lang/Integer:toString	(I)Ljava/lang/String;
     //   61: invokeinterface 138 2 0
     //   66: pop
-    //   67: getstatic 122	com/tencent/f/h:RTc	Lcom/tencent/f/i;
+    //   67: getstatic 122	com/tencent/e/h:ZvG	Lcom/tencent/e/i;
     //   70: aload_0
-    //   71: getfield 55	com/tencent/mm/storage/an:dQN	Ljava/lang/Runnable;
+    //   71: getfield 55	com/tencent/mm/storage/an:fKd	Ljava/lang/Runnable;
     //   74: ldc2_w 139
     //   77: aload_0
     //   78: invokevirtual 126	java/lang/Object:hashCode	()I
@@ -119,7 +119,7 @@ public class an
   }
   
   /* Error */
-  private void gBG()
+  private void hxR()
   {
     // Byte code:
     //   0: aload_0
@@ -209,40 +209,40 @@ public class an
     //   156: astore 4
     //   158: aload_0
     //   159: iconst_1
-    //   160: putfield 40	com/tencent/mm/storage/an:NRI	Z
+    //   160: putfield 40	com/tencent/mm/storage/an:VfF	Z
     //   163: aload_2
     //   164: astore 5
     //   166: aload_3
     //   167: astore 4
     //   169: aload_0
-    //   170: invokevirtual 107	com/tencent/mm/storage/an:gBE	()Z
+    //   170: invokevirtual 107	com/tencent/mm/storage/an:hxP	()Z
     //   173: ifeq +51 -> 224
     //   176: aload_2
     //   177: astore 5
     //   179: aload_3
     //   180: astore 4
     //   182: aload_0
-    //   183: getfield 95	com/tencent/mm/storage/an:NRN	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
+    //   183: getfield 95	com/tencent/mm/storage/an:VfK	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
     //   186: bipush 42
-    //   188: invokevirtual 188	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:akf	(I)V
+    //   188: invokevirtual 188	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:asC	(I)V
     //   191: aload_2
     //   192: astore 5
     //   194: aload_3
     //   195: astore 4
     //   197: aload_0
-    //   198: getfield 95	com/tencent/mm/storage/an:NRN	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
+    //   198: getfield 95	com/tencent/mm/storage/an:VfK	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
     //   201: bipush 42
     //   203: aconst_null
-    //   204: invokevirtual 192	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:dj	(ILjava/lang/String;)V
+    //   204: invokevirtual 192	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:di	(ILjava/lang/String;)V
     //   207: aload_2
     //   208: astore 5
     //   210: aload_3
     //   211: astore 4
     //   213: aload_0
-    //   214: getfield 95	com/tencent/mm/storage/an:NRN	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
+    //   214: getfield 95	com/tencent/mm/storage/an:VfK	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
     //   217: aload_0
     //   218: getfield 112	com/tencent/mm/storage/an:values	Ljava/util/Map;
-    //   221: invokevirtual 195	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:cc	(Ljava/util/Map;)V
+    //   221: invokevirtual 195	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:cj	(Ljava/util/Map;)V
     //   224: aload_2
     //   225: ifnull +7 -> 232
     //   228: aload_2
@@ -302,61 +302,61 @@ public class an
     //   326: astore 4
     //   328: aload_0
     //   329: iconst_0
-    //   330: putfield 40	com/tencent/mm/storage/an:NRI	Z
+    //   330: putfield 40	com/tencent/mm/storage/an:VfF	Z
     //   333: aload_2
     //   334: astore 5
     //   336: aload_3
     //   337: astore 4
     //   339: aload_0
     //   340: iconst_1
-    //   341: putfield 44	com/tencent/mm/storage/an:NRK	Z
+    //   341: putfield 44	com/tencent/mm/storage/an:VfH	Z
     //   344: aload_2
     //   345: astore 5
     //   347: aload_3
     //   348: astore 4
     //   350: aload_0
-    //   351: invokevirtual 107	com/tencent/mm/storage/an:gBE	()Z
+    //   351: invokevirtual 107	com/tencent/mm/storage/an:hxP	()Z
     //   354: ifeq +77 -> 431
     //   357: aload_2
     //   358: astore 5
     //   360: aload_3
     //   361: astore 4
     //   363: aload_0
-    //   364: getfield 48	com/tencent/mm/storage/an:NRM	Z
+    //   364: getfield 48	com/tencent/mm/storage/an:VfJ	Z
     //   367: ifeq +64 -> 431
     //   370: aload_2
     //   371: astore 5
     //   373: aload_3
     //   374: astore 4
     //   376: aload_0
-    //   377: getfield 95	com/tencent/mm/storage/an:NRN	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
+    //   377: getfield 95	com/tencent/mm/storage/an:VfK	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
     //   380: aload_0
     //   381: getfield 112	com/tencent/mm/storage/an:values	Ljava/util/Map;
-    //   384: invokevirtual 231	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:bX	(Ljava/util/Map;)Z
+    //   384: invokevirtual 231	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:ce	(Ljava/util/Map;)Z
     //   387: ifeq +44 -> 431
     //   390: aload_2
     //   391: astore 5
     //   393: aload_3
     //   394: astore 4
     //   396: aload_0
-    //   397: getfield 95	com/tencent/mm/storage/an:NRN	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
+    //   397: getfield 95	com/tencent/mm/storage/an:VfK	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
     //   400: bipush 34
-    //   402: invokevirtual 188	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:akf	(I)V
+    //   402: invokevirtual 188	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:asC	(I)V
     //   405: aload_2
     //   406: astore 5
     //   408: aload_3
     //   409: astore 4
     //   411: aload_0
-    //   412: getfield 95	com/tencent/mm/storage/an:NRN	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
+    //   412: getfield 95	com/tencent/mm/storage/an:VfK	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
     //   415: bipush 34
     //   417: aconst_null
-    //   418: invokevirtual 192	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:dj	(ILjava/lang/String;)V
+    //   418: invokevirtual 192	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:di	(ILjava/lang/String;)V
     //   421: aload_2
     //   422: astore 5
     //   424: aload_3
     //   425: astore 4
     //   427: aload_0
-    //   428: invokespecial 233	com/tencent/mm/storage/an:aom	()V
+    //   428: invokespecial 233	com/tencent/mm/storage/an:aur	()V
     //   431: aload_2
     //   432: invokevirtual 200	java/io/ObjectInputStream:close	()V
     //   435: aload_3
@@ -485,16 +485,43 @@ public class an
     //   427	431	526	java/lang/Exception
   }
   
-  public final int ake(int paramInt)
+  public long ahV(int paramInt)
+  {
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(194619);
+        if (hxP())
+        {
+          l = this.VfK.ahV(paramInt);
+          AppMethodBeat.o(194619);
+          return l;
+        }
+        Object localObject1 = b(paramInt, Long.valueOf(0L));
+        if ((localObject1 instanceof Long))
+        {
+          l = ((Long)localObject1).longValue();
+          AppMethodBeat.o(194619);
+          continue;
+        }
+        AppMethodBeat.o(194619);
+      }
+      finally {}
+      long l = 0L;
+    }
+  }
+  
+  public final int asB(int paramInt)
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(133225);
-        if (gBE())
+        if (hxP())
         {
-          localObject1 = this.NRN.get(paramInt, Integer.valueOf(0));
+          localObject1 = this.VfK.b(paramInt, Integer.valueOf(0));
           if ((localObject1 instanceof Integer))
           {
             paramInt = ((Integer)localObject1).intValue();
@@ -505,7 +532,7 @@ public class an
           paramInt = 0;
           continue;
         }
-        Object localObject1 = get(paramInt, Integer.valueOf(0));
+        Object localObject1 = b(paramInt, Integer.valueOf(0));
         if ((localObject1 instanceof Integer))
         {
           paramInt = ((Integer)localObject1).intValue();
@@ -519,30 +546,147 @@ public class an
     }
   }
   
+  public final Object b(int paramInt, Object paramObject)
+  {
+    for (;;)
+    {
+      Object localObject1;
+      try
+      {
+        AppMethodBeat.i(133223);
+        localObject1 = this.values.get(Integer.valueOf(paramInt));
+        if (hxP())
+        {
+          Object localObject2 = this.VfK.b(paramInt, paramObject);
+          if (!Objects.equals(localObject1, localObject2))
+          {
+            this.VfK.asC(17);
+            this.VfK.i(17, String.valueOf(paramInt), String.valueOf(localObject1), String.valueOf(localObject2));
+            this.values.put(Integer.valueOf(paramInt), localObject2);
+          }
+          if (localObject2 == null)
+          {
+            AppMethodBeat.o(133223);
+            return paramObject;
+          }
+          AppMethodBeat.o(133223);
+          paramObject = localObject2;
+          continue;
+        }
+        if (localObject1 == null)
+        {
+          AppMethodBeat.o(133223);
+          continue;
+        }
+        AppMethodBeat.o(133223);
+      }
+      finally {}
+      paramObject = localObject1;
+    }
+  }
+  
   protected void finalize()
   {
     AppMethodBeat.i(133233);
     super.finalize();
-    if ((this.NRK) && (this.NRL) && (this.NRN != null))
+    if ((this.VfH) && (this.VfI) && (this.VfK != null))
     {
-      this.NRN.akf(27);
-      this.NRN.dj(27, null);
+      this.VfK.asC(27);
+      this.VfK.di(27, null);
     }
     AppMethodBeat.o(133233);
   }
   
-  protected final boolean gBE()
+  /* Error */
+  public final Object get(int paramInt)
   {
-    return (this.NRN != null) && (this.NRN.NRR);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc_w 288
+    //   5: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_0
+    //   9: getfield 112	com/tencent/mm/storage/an:values	Ljava/util/Map;
+    //   12: iload_1
+    //   13: invokestatic 225	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   16: invokeinterface 262 2 0
+    //   21: astore_2
+    //   22: aload_0
+    //   23: invokevirtual 107	com/tencent/mm/storage/an:hxP	()Z
+    //   26: ifeq +78 -> 104
+    //   29: aload_0
+    //   30: getfield 95	com/tencent/mm/storage/an:VfK	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
+    //   33: iload_1
+    //   34: aconst_null
+    //   35: invokevirtual 254	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:b	(ILjava/lang/Object;)Ljava/lang/Object;
+    //   38: astore_3
+    //   39: aload_2
+    //   40: aload_3
+    //   41: invokestatic 268	java/util/Objects:equals	(Ljava/lang/Object;Ljava/lang/Object;)Z
+    //   44: ifne +48 -> 92
+    //   47: aload_0
+    //   48: getfield 95	com/tencent/mm/storage/an:VfK	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
+    //   51: bipush 16
+    //   53: invokevirtual 188	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:asC	(I)V
+    //   56: aload_0
+    //   57: getfield 95	com/tencent/mm/storage/an:VfK	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
+    //   60: bipush 16
+    //   62: iload_1
+    //   63: invokestatic 272	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   66: aload_2
+    //   67: invokestatic 275	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   70: aload_3
+    //   71: invokestatic 275	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   74: invokevirtual 278	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:i	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   77: aload_0
+    //   78: getfield 112	com/tencent/mm/storage/an:values	Ljava/util/Map;
+    //   81: iload_1
+    //   82: invokestatic 225	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   85: aload_3
+    //   86: invokeinterface 282 3 0
+    //   91: pop
+    //   92: ldc_w 288
+    //   95: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   98: aload_3
+    //   99: astore_2
+    //   100: aload_0
+    //   101: monitorexit
+    //   102: aload_2
+    //   103: areturn
+    //   104: ldc_w 288
+    //   107: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   110: goto -10 -> 100
+    //   113: astore_2
+    //   114: aload_0
+    //   115: monitorexit
+    //   116: aload_2
+    //   117: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	118	0	this	an
+    //   0	118	1	paramInt	int
+    //   21	82	2	localObject1	Object
+    //   113	4	2	localObject2	Object
+    //   38	61	3	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	92	113	finally
+    //   92	98	113	finally
+    //   104	110	113	finally
   }
   
-  public final void gBF()
+  protected final boolean hxP()
+  {
+    return (this.VfK != null) && (this.VfK.VfO);
+  }
+  
+  public final void hxQ()
   {
     try
     {
       AppMethodBeat.i(133228);
-      this.gHN = false;
-      aom();
+      this.jsf = false;
+      aur();
       AppMethodBeat.o(133228);
       return;
     }
@@ -554,36 +698,36 @@ public class an
   }
   
   /* Error */
-  public final void gBH()
+  public final void hxS()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 258
+    //   2: ldc_w 298
     //   5: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: invokevirtual 107	com/tencent/mm/storage/an:gBE	()Z
+    //   9: invokevirtual 107	com/tencent/mm/storage/an:hxP	()Z
     //   12: ifeq +21 -> 33
     //   15: aload_0
-    //   16: getfield 48	com/tencent/mm/storage/an:NRM	Z
+    //   16: getfield 48	com/tencent/mm/storage/an:VfJ	Z
     //   19: ifeq +14 -> 33
     //   22: aload_0
-    //   23: getfield 95	com/tencent/mm/storage/an:NRN	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
+    //   23: getfield 95	com/tencent/mm/storage/an:VfK	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
     //   26: aload_0
     //   27: getfield 112	com/tencent/mm/storage/an:values	Ljava/util/Map;
-    //   30: invokevirtual 116	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:bY	(Ljava/util/Map;)V
-    //   33: invokestatic 263	com/tencent/mm/sdk/platformtools/Util:nowMilliSecond	()J
+    //   30: invokevirtual 116	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:cf	(Ljava/util/Map;)V
+    //   33: invokestatic 303	com/tencent/mm/sdk/platformtools/Util:nowMilliSecond	()J
     //   36: pop2
-    //   37: new 265	java/io/FileOutputStream
+    //   37: new 305	java/io/FileOutputStream
     //   40: dup
     //   41: aload_0
     //   42: getfield 38	com/tencent/mm/storage/an:filePath	Ljava/lang/String;
-    //   45: invokespecial 266	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   45: invokespecial 306	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   48: astore_1
-    //   49: new 268	java/io/ObjectOutputStream
+    //   49: new 308	java/io/ObjectOutputStream
     //   52: dup
     //   53: aload_1
-    //   54: invokespecial 271	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   54: invokespecial 311	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   57: astore 4
     //   59: aload 4
     //   61: astore_3
@@ -592,27 +736,27 @@ public class an
     //   64: aload 4
     //   66: aload_0
     //   67: getfield 112	com/tencent/mm/storage/an:values	Ljava/util/Map;
-    //   70: invokevirtual 275	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   70: invokevirtual 315	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   73: aload 4
     //   75: astore_3
     //   76: aload_1
     //   77: astore_2
     //   78: aload_1
-    //   79: invokevirtual 280	java/io/OutputStream:flush	()V
+    //   79: invokevirtual 320	java/io/OutputStream:flush	()V
     //   82: aload 4
     //   84: astore_3
     //   85: aload_1
     //   86: astore_2
     //   87: aload_0
     //   88: iconst_0
-    //   89: putfield 42	com/tencent/mm/storage/an:NRJ	Z
+    //   89: putfield 42	com/tencent/mm/storage/an:VfG	Z
     //   92: aload 4
     //   94: astore_3
     //   95: aload_1
     //   96: astore_2
     //   97: aload_0
     //   98: iconst_0
-    //   99: putfield 44	com/tencent/mm/storage/an:NRK	Z
+    //   99: putfield 44	com/tencent/mm/storage/an:VfH	Z
     //   102: aload 4
     //   104: astore_3
     //   105: aload_1
@@ -629,43 +773,43 @@ public class an
     //   127: aload_1
     //   128: astore_2
     //   129: aload_0
-    //   130: getfield 95	com/tencent/mm/storage/an:NRN	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
+    //   130: getfield 95	com/tencent/mm/storage/an:VfK	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
     //   133: ifnull +32 -> 165
     //   136: aload 4
     //   138: astore_3
     //   139: aload_1
     //   140: astore_2
     //   141: aload_0
-    //   142: getfield 95	com/tencent/mm/storage/an:NRN	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
+    //   142: getfield 95	com/tencent/mm/storage/an:VfK	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
     //   145: bipush 40
-    //   147: invokevirtual 188	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:akf	(I)V
+    //   147: invokevirtual 188	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:asC	(I)V
     //   150: aload 4
     //   152: astore_3
     //   153: aload_1
     //   154: astore_2
     //   155: aload_0
-    //   156: getfield 95	com/tencent/mm/storage/an:NRN	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
+    //   156: getfield 95	com/tencent/mm/storage/an:VfK	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
     //   159: bipush 40
     //   161: aconst_null
-    //   162: invokevirtual 192	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:dj	(ILjava/lang/String;)V
+    //   162: invokevirtual 192	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:di	(ILjava/lang/String;)V
     //   165: aload 4
     //   167: astore_3
     //   168: aload_1
     //   169: astore_2
     //   170: ldc 65
-    //   172: ldc_w 282
-    //   175: invokestatic 285	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   172: ldc_w 322
+    //   175: invokestatic 325	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   178: aload 4
-    //   180: invokevirtual 286	java/io/ObjectOutputStream:close	()V
+    //   180: invokevirtual 326	java/io/ObjectOutputStream:close	()V
     //   183: aload_1
-    //   184: invokevirtual 287	java/io/OutputStream:close	()V
-    //   187: ldc_w 258
+    //   184: invokevirtual 327	java/io/OutputStream:close	()V
+    //   187: ldc_w 298
     //   190: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   193: aload_0
     //   194: monitorexit
     //   195: return
     //   196: astore_1
-    //   197: ldc_w 258
+    //   197: ldc_w 298
     //   200: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   203: goto -10 -> 193
     //   206: astore_1
@@ -684,7 +828,7 @@ public class an
     //   222: astore_2
     //   223: ldc 65
     //   225: aload 5
-    //   227: ldc_w 289
+    //   227: ldc_w 329
     //   230: iconst_0
     //   231: anewarray 4	java/lang/Object
     //   234: invokestatic 185	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
@@ -694,44 +838,44 @@ public class an
     //   241: astore_2
     //   242: aload_0
     //   243: iconst_1
-    //   244: putfield 42	com/tencent/mm/storage/an:NRJ	Z
+    //   244: putfield 42	com/tencent/mm/storage/an:VfG	Z
     //   247: aload 4
     //   249: astore_3
     //   250: aload_1
     //   251: astore_2
     //   252: aload_0
-    //   253: getfield 95	com/tencent/mm/storage/an:NRN	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
+    //   253: getfield 95	com/tencent/mm/storage/an:VfK	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
     //   256: ifnull +32 -> 288
     //   259: aload 4
     //   261: astore_3
     //   262: aload_1
     //   263: astore_2
     //   264: aload_0
-    //   265: getfield 95	com/tencent/mm/storage/an:NRN	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
+    //   265: getfield 95	com/tencent/mm/storage/an:VfK	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
     //   268: bipush 28
-    //   270: invokevirtual 188	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:akf	(I)V
+    //   270: invokevirtual 188	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:asC	(I)V
     //   273: aload 4
     //   275: astore_3
     //   276: aload_1
     //   277: astore_2
     //   278: aload_0
-    //   279: getfield 95	com/tencent/mm/storage/an:NRN	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
+    //   279: getfield 95	com/tencent/mm/storage/an:VfK	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
     //   282: bipush 28
     //   284: aconst_null
-    //   285: invokevirtual 192	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:dj	(ILjava/lang/String;)V
+    //   285: invokevirtual 192	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:di	(ILjava/lang/String;)V
     //   288: aload 4
     //   290: ifnull +8 -> 298
     //   293: aload 4
-    //   295: invokevirtual 286	java/io/ObjectOutputStream:close	()V
+    //   295: invokevirtual 326	java/io/ObjectOutputStream:close	()V
     //   298: aload_1
     //   299: ifnull +7 -> 306
     //   302: aload_1
-    //   303: invokevirtual 287	java/io/OutputStream:close	()V
-    //   306: ldc_w 258
+    //   303: invokevirtual 327	java/io/OutputStream:close	()V
+    //   306: ldc_w 298
     //   309: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   312: goto -119 -> 193
     //   315: astore_1
-    //   316: ldc_w 258
+    //   316: ldc_w 298
     //   319: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   322: goto -129 -> 193
     //   325: astore 5
@@ -745,7 +889,7 @@ public class an
     //   336: astore_2
     //   337: ldc 65
     //   339: aload 5
-    //   341: ldc_w 291
+    //   341: ldc_w 331
     //   344: iconst_0
     //   345: anewarray 4	java/lang/Object
     //   348: invokestatic 185	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
@@ -755,44 +899,44 @@ public class an
     //   355: astore_2
     //   356: aload_0
     //   357: iconst_1
-    //   358: putfield 42	com/tencent/mm/storage/an:NRJ	Z
+    //   358: putfield 42	com/tencent/mm/storage/an:VfG	Z
     //   361: aload 4
     //   363: astore_3
     //   364: aload_1
     //   365: astore_2
     //   366: aload_0
-    //   367: getfield 95	com/tencent/mm/storage/an:NRN	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
+    //   367: getfield 95	com/tencent/mm/storage/an:VfK	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
     //   370: ifnull +32 -> 402
     //   373: aload 4
     //   375: astore_3
     //   376: aload_1
     //   377: astore_2
     //   378: aload_0
-    //   379: getfield 95	com/tencent/mm/storage/an:NRN	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
+    //   379: getfield 95	com/tencent/mm/storage/an:VfK	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
     //   382: bipush 29
-    //   384: invokevirtual 188	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:akf	(I)V
+    //   384: invokevirtual 188	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:asC	(I)V
     //   387: aload 4
     //   389: astore_3
     //   390: aload_1
     //   391: astore_2
     //   392: aload_0
-    //   393: getfield 95	com/tencent/mm/storage/an:NRN	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
+    //   393: getfield 95	com/tencent/mm/storage/an:VfK	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
     //   396: bipush 29
     //   398: aconst_null
-    //   399: invokevirtual 192	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:dj	(ILjava/lang/String;)V
+    //   399: invokevirtual 192	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:di	(ILjava/lang/String;)V
     //   402: aload 4
     //   404: ifnull +8 -> 412
     //   407: aload 4
-    //   409: invokevirtual 286	java/io/ObjectOutputStream:close	()V
+    //   409: invokevirtual 326	java/io/ObjectOutputStream:close	()V
     //   412: aload_1
     //   413: ifnull +7 -> 420
     //   416: aload_1
-    //   417: invokevirtual 287	java/io/OutputStream:close	()V
-    //   420: ldc_w 258
+    //   417: invokevirtual 327	java/io/OutputStream:close	()V
+    //   420: ldc_w 298
     //   423: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   426: goto -233 -> 193
     //   429: astore_1
-    //   430: ldc_w 258
+    //   430: ldc_w 298
     //   433: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   436: goto -243 -> 193
     //   439: astore 5
@@ -805,13 +949,13 @@ public class an
     //   449: aload_1
     //   450: astore_2
     //   451: ldc 65
-    //   453: ldc_w 293
+    //   453: ldc_w 333
     //   456: iconst_1
     //   457: anewarray 4	java/lang/Object
     //   460: dup
     //   461: iconst_0
     //   462: aload 5
-    //   464: invokestatic 297	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   464: invokestatic 337	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   467: aastore
     //   468: invokestatic 73	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   471: aload 4
@@ -820,7 +964,7 @@ public class an
     //   475: astore_2
     //   476: ldc 65
     //   478: aload 5
-    //   480: ldc_w 299
+    //   480: ldc_w 339
     //   483: iconst_0
     //   484: anewarray 4	java/lang/Object
     //   487: invokestatic 185	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
@@ -830,44 +974,44 @@ public class an
     //   494: astore_2
     //   495: aload_0
     //   496: iconst_1
-    //   497: putfield 42	com/tencent/mm/storage/an:NRJ	Z
+    //   497: putfield 42	com/tencent/mm/storage/an:VfG	Z
     //   500: aload 4
     //   502: astore_3
     //   503: aload_1
     //   504: astore_2
     //   505: aload_0
-    //   506: invokevirtual 107	com/tencent/mm/storage/an:gBE	()Z
+    //   506: invokevirtual 107	com/tencent/mm/storage/an:hxP	()Z
     //   509: ifeq +32 -> 541
     //   512: aload 4
     //   514: astore_3
     //   515: aload_1
     //   516: astore_2
     //   517: aload_0
-    //   518: getfield 95	com/tencent/mm/storage/an:NRN	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
+    //   518: getfield 95	com/tencent/mm/storage/an:VfK	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
     //   521: bipush 19
-    //   523: invokevirtual 188	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:akf	(I)V
+    //   523: invokevirtual 188	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:asC	(I)V
     //   526: aload 4
     //   528: astore_3
     //   529: aload_1
     //   530: astore_2
     //   531: aload_0
-    //   532: getfield 95	com/tencent/mm/storage/an:NRN	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
+    //   532: getfield 95	com/tencent/mm/storage/an:VfK	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
     //   535: bipush 19
     //   537: aconst_null
-    //   538: invokevirtual 192	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:dj	(ILjava/lang/String;)V
+    //   538: invokevirtual 192	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:di	(ILjava/lang/String;)V
     //   541: aload 4
     //   543: ifnull +8 -> 551
     //   546: aload 4
-    //   548: invokevirtual 286	java/io/ObjectOutputStream:close	()V
+    //   548: invokevirtual 326	java/io/ObjectOutputStream:close	()V
     //   551: aload_1
     //   552: ifnull +7 -> 559
     //   555: aload_1
-    //   556: invokevirtual 287	java/io/OutputStream:close	()V
-    //   559: ldc_w 258
+    //   556: invokevirtual 327	java/io/OutputStream:close	()V
+    //   559: ldc_w 298
     //   562: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   565: goto -372 -> 193
     //   568: astore_1
-    //   569: ldc_w 258
+    //   569: ldc_w 298
     //   572: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   575: goto -382 -> 193
     //   578: astore 4
@@ -878,12 +1022,12 @@ public class an
     //   584: aload_3
     //   585: ifnull +7 -> 592
     //   588: aload_3
-    //   589: invokevirtual 286	java/io/ObjectOutputStream:close	()V
+    //   589: invokevirtual 326	java/io/ObjectOutputStream:close	()V
     //   592: aload_1
     //   593: ifnull +7 -> 600
     //   596: aload_1
-    //   597: invokevirtual 287	java/io/OutputStream:close	()V
-    //   600: ldc_w 258
+    //   597: invokevirtual 327	java/io/OutputStream:close	()V
+    //   600: ldc_w 298
     //   603: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   606: aload 4
     //   608: athrow
@@ -1042,156 +1186,32 @@ public class an
     //   170	178	661	java/util/ConcurrentModificationException
   }
   
-  /* Error */
-  public final Object get(int paramInt)
+  public final void i(int paramInt, Object paramObject)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc_w 301
-    //   5: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: aload_0
-    //   9: getfield 112	com/tencent/mm/storage/an:values	Ljava/util/Map;
-    //   12: iload_1
-    //   13: invokestatic 225	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   16: invokeinterface 304 2 0
-    //   21: astore_2
-    //   22: aload_0
-    //   23: invokevirtual 107	com/tencent/mm/storage/an:gBE	()Z
-    //   26: ifeq +78 -> 104
-    //   29: aload_0
-    //   30: getfield 95	com/tencent/mm/storage/an:NRN	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
-    //   33: iload_1
-    //   34: aconst_null
-    //   35: invokevirtual 240	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:get	(ILjava/lang/Object;)Ljava/lang/Object;
-    //   38: astore_3
-    //   39: aload_2
-    //   40: aload_3
-    //   41: invokestatic 310	java/util/Objects:equals	(Ljava/lang/Object;Ljava/lang/Object;)Z
-    //   44: ifne +48 -> 92
-    //   47: aload_0
-    //   48: getfield 95	com/tencent/mm/storage/an:NRN	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
-    //   51: bipush 16
-    //   53: invokevirtual 188	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:akf	(I)V
-    //   56: aload_0
-    //   57: getfield 95	com/tencent/mm/storage/an:NRN	Lcom/tencent/mm/storage/ConfigFileStorageProxyMMKV;
-    //   60: bipush 16
-    //   62: iload_1
-    //   63: invokestatic 314	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   66: aload_2
-    //   67: invokestatic 317	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   70: aload_3
-    //   71: invokestatic 317	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   74: invokevirtual 320	com/tencent/mm/storage/ConfigFileStorageProxyMMKV:i	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   77: aload_0
-    //   78: getfield 112	com/tencent/mm/storage/an:values	Ljava/util/Map;
-    //   81: iload_1
-    //   82: invokestatic 225	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   85: aload_3
-    //   86: invokeinterface 324 3 0
-    //   91: pop
-    //   92: ldc_w 301
-    //   95: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   98: aload_3
-    //   99: astore_2
-    //   100: aload_0
-    //   101: monitorexit
-    //   102: aload_2
-    //   103: areturn
-    //   104: ldc_w 301
-    //   107: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   110: goto -10 -> 100
-    //   113: astore_2
-    //   114: aload_0
-    //   115: monitorexit
-    //   116: aload_2
-    //   117: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	118	0	this	an
-    //   0	118	1	paramInt	int
-    //   21	82	2	localObject1	Object
-    //   113	4	2	localObject2	Object
-    //   38	61	3	localObject3	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	92	113	finally
-    //   92	98	113	finally
-    //   104	110	113	finally
-  }
-  
-  public final Object get(int paramInt, Object paramObject)
-  {
-    for (;;)
+    try
     {
-      Object localObject1;
-      try
-      {
-        AppMethodBeat.i(133223);
-        localObject1 = this.values.get(Integer.valueOf(paramInt));
-        if (gBE())
-        {
-          Object localObject2 = this.NRN.get(paramInt, paramObject);
-          if (!Objects.equals(localObject1, localObject2))
-          {
-            this.NRN.akf(17);
-            this.NRN.i(17, String.valueOf(paramInt), String.valueOf(localObject1), String.valueOf(localObject2));
-            this.values.put(Integer.valueOf(paramInt), localObject2);
-          }
-          if (localObject2 == null)
-          {
-            AppMethodBeat.o(133223);
-            return paramObject;
-          }
-          AppMethodBeat.o(133223);
-          paramObject = localObject2;
-          continue;
-        }
-        if (localObject1 == null)
-        {
-          AppMethodBeat.o(133223);
-          continue;
-        }
-        AppMethodBeat.o(133223);
+      AppMethodBeat.i(133221);
+      this.VfI = true;
+      if (hxP()) {
+        this.VfK.i(paramInt, paramObject);
       }
-      finally {}
-      paramObject = localObject1;
-    }
-  }
-  
-  public long getLong(int paramInt, long paramLong)
-  {
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(133227);
-        if (gBE())
-        {
-          paramLong = this.NRN.getLong(paramInt, paramLong);
-          AppMethodBeat.o(133227);
-          return paramLong;
-        }
-        Object localObject1 = get(paramInt, Long.valueOf(paramLong));
-        if ((localObject1 instanceof Long))
-        {
-          paramLong = ((Long)localObject1).longValue();
-          AppMethodBeat.o(133227);
-        }
-        else
-        {
-          AppMethodBeat.o(133227);
-        }
+      if (this.values != null) {
+        this.values.put(Integer.valueOf(paramInt), paramObject);
       }
-      finally {}
+      if (!this.jsf) {
+        aur();
+      }
+      AppMethodBeat.o(133221);
+      return;
     }
+    finally {}
   }
   
   public final void lockWrite()
   {
     try
     {
-      this.gHN = true;
+      this.jsf = true;
       return;
     }
     finally
@@ -1212,37 +1232,16 @@ public class an
         ((File)localObject1).delete();
       }
       this.values = new HashMap();
-      if (gBE())
+      if (hxP())
       {
-        localObject1 = this.NRN;
-        if (((ConfigFileStorageProxyMMKV)localObject1).cQe != null) {
-          ((ConfigFileStorageProxyMMKV)localObject1).cQe.clearAll();
+        localObject1 = this.VfK;
+        if (((ConfigFileStorageProxyMMKV)localObject1).cQO != null) {
+          ((ConfigFileStorageProxyMMKV)localObject1).cQO.clearAll();
         }
-        this.NRN.akf(36);
-        this.NRN.dj(36, null);
+        this.VfK.asC(36);
+        this.VfK.di(36, null);
       }
       AppMethodBeat.o(133232);
-      return;
-    }
-    finally {}
-  }
-  
-  public final void set(int paramInt, Object paramObject)
-  {
-    try
-    {
-      AppMethodBeat.i(133221);
-      this.NRL = true;
-      if (gBE()) {
-        this.NRN.set(paramInt, paramObject);
-      }
-      if (this.values != null) {
-        this.values.put(Integer.valueOf(paramInt), paramObject);
-      }
-      if (!this.gHN) {
-        aom();
-      }
-      AppMethodBeat.o(133221);
       return;
     }
     finally {}
@@ -1253,7 +1252,7 @@ public class an
     try
     {
       AppMethodBeat.i(133224);
-      set(paramInt1, Integer.valueOf(paramInt2));
+      i(paramInt1, Integer.valueOf(paramInt2));
       AppMethodBeat.o(133224);
       return;
     }
@@ -1269,7 +1268,7 @@ public class an
     try
     {
       AppMethodBeat.i(133226);
-      set(paramInt, Long.valueOf(paramLong));
+      i(paramInt, Long.valueOf(paramLong));
       AppMethodBeat.o(133226);
       return;
     }
@@ -1282,7 +1281,7 @@ public class an
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storage.an
  * JD-Core Version:    0.7.0.1
  */

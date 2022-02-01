@@ -6,11 +6,13 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
 import com.tencent.mm.network.s;
 import com.tencent.mm.platformtools.ac;
-import com.tencent.mm.plugin.wallet_core.model.an;
+import com.tencent.mm.plugin.wallet_core.model.ao;
+import com.tencent.mm.plugin.wallet_core.model.u;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.c.j;
 import com.tencent.mm.wallet_core.c.w;
@@ -25,47 +27,47 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-public final class i
-  implements com.tencent.mm.ak.i, e
+public class i
+  implements com.tencent.mm.an.i, e
 {
-  private a RuB;
-  private b RuC;
-  public HashMap<Integer, c> RuD;
-  public HashSet<q> ksO;
-  public HashSet<q> ksP;
-  private Set<Integer> ktd;
+  private f EAz;
+  private a YVZ;
+  private b YWa;
+  public HashMap<Integer, c> YWb;
   public Bundle mBundle;
   public Context mContext;
   public String mProcessName;
+  public HashSet<q> nkO;
+  public HashSet<q> nkP;
+  private Set<Integer> nkQ;
   public Dialog tipDialog;
-  private f yWw;
   
   public i(Context paramContext, f paramf)
   {
     AppMethodBeat.i(72863);
-    this.yWw = null;
-    this.ksO = new HashSet();
-    this.ksP = new HashSet();
+    this.EAz = null;
+    this.nkO = new HashSet();
+    this.nkP = new HashSet();
     this.tipDialog = null;
-    this.ktd = new HashSet();
+    this.nkQ = new HashSet();
     this.mContext = paramContext;
-    this.yWw = paramf;
-    this.RuB = new a(this);
-    this.RuC = new b(this);
-    this.RuD = new HashMap();
+    this.EAz = paramf;
+    this.YVZ = new a(this);
+    this.YWa = new b(this);
+    this.YWb = new HashMap();
     AppMethodBeat.o(72863);
   }
   
-  private boolean j(int paramInt1, int paramInt2, String paramString, q paramq)
+  private boolean k(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(72871);
     Log.i("MicroMsg.WalletNetSceneMgr", "onSceneEnd scene is %s %s", new Object[] { this, paramq.toString() });
-    Log.d("MicroMsg.WalletNetSceneMgr", "tofutest: %s errType: %d, errCode: %d, errMsg: %s, %s", new Object[] { this, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Boolean.valueOf(ac.jPC) });
-    if ((ac.jPC) && ((paramq instanceof n)) && (!((n)paramq).getHasRetried()) && (!((n)paramq).fOn()))
+    Log.d("MicroMsg.WalletNetSceneMgr", "tofutest: %s errType: %d, errCode: %d, errMsg: %s, %s", new Object[] { this, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Boolean.valueOf(ac.mGM) });
+    if ((ac.mGM) && ((paramq instanceof n)) && (!((n)paramq).getHasRetried()) && (!((n)paramq).gGS()))
     {
       paramString = (n)paramq;
       Log.i("MicroMsg.WalletNetSceneMgr", "test do delay query order");
-      this.RuB.a(paramString);
+      this.YVZ.a(paramString);
       AppMethodBeat.o(72871);
       return true;
     }
@@ -75,7 +77,7 @@ public final class i
       if ((paramString instanceof ITenpaySave))
       {
         paramString = paramString.getRetryPayInfo();
-        if ((paramString != null) && (paramString.exv())) {
+        if ((paramString != null) && (paramString.fiY())) {
           b.retryPayInfo = paramString;
         }
       }
@@ -89,7 +91,7 @@ public final class i
         AppMethodBeat.o(72871);
         return false;
       }
-      if ((((n)paramq).fOn()) && ((paramq instanceof com.tencent.mm.wallet_core.tenpay.model.a)))
+      if ((((n)paramq).gGS()) && ((paramq instanceof com.tencent.mm.wallet_core.tenpay.model.a)))
       {
         bool2 = ((n)paramq).canPayRetry();
         if (!((n)paramq).checkRecSrvResp()) {}
@@ -103,11 +105,11 @@ public final class i
           if ((paramString instanceof com.tencent.mm.wallet_core.tenpay.model.a))
           {
             paramString = paramString.getRetryPayInfo();
-            if ((paramString != null) && (paramString.exv())) {
+            if ((paramString != null) && (paramString.fiY())) {
               b.retryPayInfo = paramString;
             }
           }
-          if (!this.RuC.c((n)paramq)) {
+          if (!this.YWa.c((n)paramq)) {
             break;
           }
           AppMethodBeat.o(72871);
@@ -121,9 +123,9 @@ public final class i
       }
     }
     int i = paramq.getType();
-    if (this.RuD != null)
+    if (this.YWb != null)
     {
-      paramString = (c)this.RuD.get(Integer.valueOf(i));
+      paramString = (c)this.YWb.get(Integer.valueOf(i));
       if ((paramq instanceof d))
       {
         if (((d)paramq).getHasRetried())
@@ -133,7 +135,7 @@ public final class i
         }
         d locald = (d)paramq;
         Log.i("MicroMsg.IDelayQueryOrder", "startQueryOrder %s ", new Object[] { locald });
-        paramString.Ruy = locald;
+        paramString.YVW = locald;
         if (paramString.a(paramInt1, paramInt2, locald))
         {
           AppMethodBeat.o(72871);
@@ -146,7 +148,7 @@ public final class i
       AppMethodBeat.o(72871);
       return false;
     }
-    if (((n)paramq).fOn())
+    if (((n)paramq).gGS())
     {
       AppMethodBeat.o(72871);
       return false;
@@ -158,35 +160,35 @@ public final class i
       return false;
     }
     paramString = (n)paramq;
-    paramq = this.RuB;
-    paramInt1 = com.tencent.mm.plugin.wallet_core.model.t.fQI().mRetryCount;
-    Log.i("MicroMsg.DelayQueryOrderHelper", " isServerDelayQuery %s mDelayQueryTime %s ", new Object[] { Boolean.valueOf(paramString.hhN()), Integer.valueOf(paramq.Ruw) });
-    if ((paramString.hhN()) && (paramq.Ruw < paramInt1))
+    paramq = this.YVZ;
+    paramInt1 = u.gJo().mRetryCount;
+    Log.i("MicroMsg.DelayQueryOrderHelper", " isServerDelayQuery %s mDelayQueryTime %s ", new Object[] { Boolean.valueOf(paramString.ijo()), Integer.valueOf(paramq.YVU) });
+    if ((paramString.ijo()) && (paramq.YVU < paramInt1))
     {
       bool1 = true;
       if (paramString.checkRecSrvResp()) {
-        break label731;
+        break label732;
       }
     }
-    label731:
+    label732:
     for (boolean bool2 = true;; bool2 = false)
     {
       Log.d("MicroMsg.WalletNetSceneMgr", "%s shouldRetry, network: %B, server: %B", new Object[] { this, Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
-      com.tencent.mm.plugin.report.service.h.CyF.n(965L, 13L, 1L);
+      com.tencent.mm.plugin.report.service.h.IzE.p(965L, 13L, 1L);
       if (bool2) {
-        com.tencent.mm.plugin.report.service.h.CyF.n(965L, 14L, 1L);
+        com.tencent.mm.plugin.report.service.h.IzE.p(965L, 14L, 1L);
       }
       if ((!bool1) && (!bool2)) {
-        break label737;
+        break label738;
       }
       Log.i("MicroMsg.WalletNetSceneMgr", "%s doing delay order query retry", new Object[] { this });
-      this.RuB.a(paramString);
+      this.YVZ.a(paramString);
       AppMethodBeat.o(72871);
       return true;
       bool1 = false;
       break;
     }
-    label737:
+    label738:
     AppMethodBeat.o(72871);
     return false;
   }
@@ -195,15 +197,15 @@ public final class i
   {
     AppMethodBeat.i(72875);
     forceCancel();
-    this.yWw = null;
+    this.EAz = null;
     this.mContext = null;
-    this.RuB.destory();
-    this.RuC.destory();
-    Iterator localIterator = this.RuD.values().iterator();
+    this.YVZ.destory();
+    this.YWa.destory();
+    Iterator localIterator = this.YWb.values().iterator();
     while (localIterator.hasNext()) {
-      ((c)localIterator.next()).fib();
+      ((c)localIterator.next()).fWn();
     }
-    this.RuD.clear();
+    this.YWb.clear();
     AppMethodBeat.o(72875);
   }
   
@@ -243,7 +245,7 @@ public final class i
     {
       Log.i("MicroMsg.WalletNetSceneMgr", "this %s isShowProgress %s scene: %s dialogType %s type %s IWxSafePay %s tipDialog showing? %s", new Object[] { this, Boolean.valueOf(paramBoolean), paramq, Integer.valueOf(paramInt1), Integer.valueOf(i), Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
       s(paramq);
-      this.ksP.add(paramq);
+      this.nkP.add(paramq);
       if ((!paramBoolean) || ((this.tipDialog != null) && ((this.tipDialog == null) || (this.tipDialog.isShowing())))) {
         break label221;
       }
@@ -260,32 +262,32 @@ public final class i
     if (paramInt1 == 1) {
       if ((paramq instanceof j))
       {
-        this.tipDialog = com.tencent.mm.wallet_core.ui.h.a(this.mContext, false, new DialogInterface.OnCancelListener()
+        this.tipDialog = com.tencent.mm.wallet_core.ui.i.a(this.mContext, false, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymousDialogInterface)
           {
             AppMethodBeat.i(72856);
-            if ((i.this.tipDialog != null) && (i.this.ksO.isEmpty()))
+            if ((i.b(i.this) != null) && (i.c(i.this).isEmpty()))
             {
-              i.this.tipDialog.dismiss();
-              paramAnonymousDialogInterface = i.this.ksP.iterator();
+              i.b(i.this).dismiss();
+              paramAnonymousDialogInterface = i.d(i.this).iterator();
               while (paramAnonymousDialogInterface.hasNext())
               {
                 q localq = (q)paramAnonymousDialogInterface.next();
-                g.aAi();
-                g.aAg().hqi.a(localq);
+                com.tencent.mm.kernel.h.aHH();
+                com.tencent.mm.kernel.h.aHF().kcd.a(localq);
               }
-              i.this.ksP.clear();
+              i.d(i.this).clear();
             }
             AppMethodBeat.o(72856);
           }
         });
         label221:
-        if ((ac.jPC) && ((paramq instanceof m)) && ((((m)paramq).getUri().contains("authen")) || (((m)paramq).getUri().contains("verify")))) {
+        if ((ac.mGM) && ((paramq instanceof m)) && ((((m)paramq).getUri().contains("authen")) || (((m)paramq).getUri().contains("verify")))) {
           ((m)paramq).setFake();
         }
-        g.aAi();
-        g.aAg().hqi.a(paramq, paramInt2);
+        com.tencent.mm.kernel.h.aHH();
+        com.tencent.mm.kernel.h.aHF().kcd.a(paramq, paramInt2);
         if (paramq.getReqResp() != null) {
           break label560;
         }
@@ -298,23 +300,23 @@ public final class i
       AppMethodBeat.o(72866);
       return;
       localObject = this.mContext;
-      this.mContext.getString(2131755797);
-      this.tipDialog = com.tencent.mm.ui.base.h.a((Context)localObject, this.mContext.getString(2131768146), false, new DialogInterface.OnCancelListener()
+      this.mContext.getString(a.i.app_empty_string);
+      this.tipDialog = com.tencent.mm.ui.base.h.a((Context)localObject, this.mContext.getString(a.i.wallet_pay_loading), false, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(72857);
-          if ((i.this.tipDialog != null) && (i.this.ksO.isEmpty()))
+          if ((i.b(i.this) != null) && (i.c(i.this).isEmpty()))
           {
-            i.this.tipDialog.dismiss();
-            paramAnonymousDialogInterface = i.this.ksP.iterator();
+            i.b(i.this).dismiss();
+            paramAnonymousDialogInterface = i.d(i.this).iterator();
             while (paramAnonymousDialogInterface.hasNext())
             {
               q localq = (q)paramAnonymousDialogInterface.next();
-              g.aAi();
-              g.aAg().hqi.a(localq);
+              com.tencent.mm.kernel.h.aHH();
+              com.tencent.mm.kernel.h.aHF().kcd.a(localq);
             }
-            i.this.ksP.clear();
+            i.d(i.this).clear();
           }
           AppMethodBeat.o(72857);
         }
@@ -323,23 +325,23 @@ public final class i
       if (paramInt1 == 2)
       {
         localObject = this.mContext;
-        this.mContext.getString(2131755797);
-        this.tipDialog = com.tencent.mm.ui.base.h.a((Context)localObject, this.mContext.getString(2131768146), false, new DialogInterface.OnCancelListener()
+        this.mContext.getString(a.i.app_empty_string);
+        this.tipDialog = com.tencent.mm.ui.base.h.a((Context)localObject, this.mContext.getString(a.i.wallet_pay_loading), false, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymousDialogInterface)
           {
             AppMethodBeat.i(72858);
-            if ((i.this.tipDialog != null) && (i.this.ksO.isEmpty()))
+            if ((i.b(i.this) != null) && (i.c(i.this).isEmpty()))
             {
-              i.this.tipDialog.dismiss();
-              paramAnonymousDialogInterface = i.this.ksP.iterator();
+              i.b(i.this).dismiss();
+              paramAnonymousDialogInterface = i.d(i.this).iterator();
               while (paramAnonymousDialogInterface.hasNext())
               {
                 q localq = (q)paramAnonymousDialogInterface.next();
-                g.aAi();
-                g.aAg().hqi.a(localq);
+                com.tencent.mm.kernel.h.aHH();
+                com.tencent.mm.kernel.h.aHF().kcd.a(localq);
               }
-              i.this.ksP.clear();
+              i.d(i.this).clear();
             }
             AppMethodBeat.o(72858);
           }
@@ -348,22 +350,22 @@ public final class i
       }
       if (paramInt1 == 3)
       {
-        this.tipDialog = com.tencent.mm.wallet_core.ui.h.a(this.mContext, "验证中", new DialogInterface.OnCancelListener()
+        this.tipDialog = com.tencent.mm.wallet_core.ui.i.a(this.mContext, "验证中", new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymousDialogInterface)
           {
             AppMethodBeat.i(72859);
-            if ((i.this.tipDialog != null) && (i.this.ksO.isEmpty()))
+            if ((i.b(i.this) != null) && (i.c(i.this).isEmpty()))
             {
-              i.this.tipDialog.dismiss();
-              paramAnonymousDialogInterface = i.this.ksP.iterator();
+              i.b(i.this).dismiss();
+              paramAnonymousDialogInterface = i.d(i.this).iterator();
               while (paramAnonymousDialogInterface.hasNext())
               {
                 q localq = (q)paramAnonymousDialogInterface.next();
-                g.aAi();
-                g.aAg().hqi.a(localq);
+                com.tencent.mm.kernel.h.aHH();
+                com.tencent.mm.kernel.h.aHF().kcd.a(localq);
               }
-              i.this.ksP.clear();
+              i.d(i.this).clear();
             }
             AppMethodBeat.o(72859);
           }
@@ -372,22 +374,22 @@ public final class i
       }
       if (paramInt1 == 4)
       {
-        this.tipDialog = com.tencent.mm.wallet_core.ui.h.a(this.mContext, false, new DialogInterface.OnCancelListener()
+        this.tipDialog = com.tencent.mm.wallet_core.ui.i.a(this.mContext, false, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymousDialogInterface)
           {
             AppMethodBeat.i(72860);
-            if ((i.this.tipDialog != null) && (i.this.ksO.isEmpty()))
+            if ((i.b(i.this) != null) && (i.c(i.this).isEmpty()))
             {
-              i.this.tipDialog.dismiss();
-              paramAnonymousDialogInterface = i.this.ksP.iterator();
+              i.b(i.this).dismiss();
+              paramAnonymousDialogInterface = i.d(i.this).iterator();
               while (paramAnonymousDialogInterface.hasNext())
               {
                 q localq = (q)paramAnonymousDialogInterface.next();
-                g.aAi();
-                g.aAg().hqi.a(localq);
+                com.tencent.mm.kernel.h.aHH();
+                com.tencent.mm.kernel.h.aHF().kcd.a(localq);
               }
-              i.this.ksP.clear();
+              i.d(i.this).clear();
             }
             AppMethodBeat.o(72860);
           }
@@ -396,23 +398,23 @@ public final class i
       }
       Log.i("MicroMsg.WalletNetSceneMgr", "unknown dialog type: %d", new Object[] { Integer.valueOf(paramInt1) });
       localObject = this.mContext;
-      this.mContext.getString(2131755797);
-      this.tipDialog = com.tencent.mm.ui.base.h.a((Context)localObject, this.mContext.getString(2131768146), false, new DialogInterface.OnCancelListener()
+      this.mContext.getString(a.i.app_empty_string);
+      this.tipDialog = com.tencent.mm.ui.base.h.a((Context)localObject, this.mContext.getString(a.i.wallet_pay_loading), false, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(72861);
-          if ((i.this.tipDialog != null) && (i.this.ksO.isEmpty()))
+          if ((i.b(i.this) != null) && (i.c(i.this).isEmpty()))
           {
-            i.this.tipDialog.dismiss();
-            paramAnonymousDialogInterface = i.this.ksP.iterator();
+            i.b(i.this).dismiss();
+            paramAnonymousDialogInterface = i.d(i.this).iterator();
             while (paramAnonymousDialogInterface.hasNext())
             {
               q localq = (q)paramAnonymousDialogInterface.next();
-              g.aAi();
-              g.aAg().hqi.a(localq);
+              com.tencent.mm.kernel.h.aHH();
+              com.tencent.mm.kernel.h.aHF().kcd.a(localq);
             }
-            i.this.ksP.clear();
+            i.d(i.this).clear();
           }
           AppMethodBeat.o(72861);
         }
@@ -424,9 +426,9 @@ public final class i
   public final void addSceneEndListener(int paramInt)
   {
     AppMethodBeat.i(72868);
-    this.ktd.add(Integer.valueOf(paramInt));
-    g.aAi();
-    g.aAg().hqi.a(paramInt, this);
+    this.nkQ.add(Integer.valueOf(paramInt));
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.a(paramInt, this);
     AppMethodBeat.o(72868);
   }
   
@@ -434,7 +436,7 @@ public final class i
   {
     AppMethodBeat.i(72864);
     s(paramq);
-    this.ksO.add(paramq);
+    this.nkO.add(paramq);
     if ((paramBoolean) && ((this.tipDialog == null) || ((this.tipDialog != null) && (!this.tipDialog.isShowing()))))
     {
       if (this.tipDialog != null) {
@@ -446,7 +448,7 @@ public final class i
         AppMethodBeat.o(72864);
         return;
       }
-      this.tipDialog = com.tencent.mm.wallet_core.ui.h.a(this.mContext, false, new DialogInterface.OnCancelListener()
+      this.tipDialog = com.tencent.mm.wallet_core.ui.i.a(this.mContext, false, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
@@ -456,11 +458,11 @@ public final class i
         }
       });
     }
-    if ((ac.jPC) && ((paramq instanceof m)) && ((((m)paramq).getUri().contains("authen")) || (((m)paramq).getUri().contains("verify")))) {
+    if ((ac.mGM) && ((paramq instanceof m)) && ((((m)paramq).getUri().contains("authen")) || (((m)paramq).getUri().contains("verify")))) {
       ((m)paramq).setFake();
     }
-    g.aAi();
-    g.aAg().hqi.a(paramq, 0);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.a(paramq, 0);
     AppMethodBeat.o(72864);
   }
   
@@ -475,11 +477,11 @@ public final class i
     AppMethodBeat.o(72873);
   }
   
-  public final void efi()
+  public final void eOG()
   {
-    AppMethodBeat.i(258352);
+    AppMethodBeat.i(293281);
     closeTipDialog();
-    AppMethodBeat.o(258352);
+    AppMethodBeat.o(293281);
   }
   
   public final void forceCancel()
@@ -490,30 +492,30 @@ public final class i
       this.tipDialog.dismiss();
       this.tipDialog = null;
     }
-    Iterator localIterator = this.ksO.iterator();
+    Iterator localIterator = this.nkO.iterator();
     q localq;
     while (localIterator.hasNext())
     {
       localq = (q)localIterator.next();
-      g.aAi();
-      g.aAg().hqi.a(localq);
+      com.tencent.mm.kernel.h.aHH();
+      com.tencent.mm.kernel.h.aHF().kcd.a(localq);
     }
-    localIterator = this.ksP.iterator();
+    localIterator = this.nkP.iterator();
     while (localIterator.hasNext())
     {
       localq = (q)localIterator.next();
-      g.aAi();
-      g.aAg().hqi.a(localq);
+      com.tencent.mm.kernel.h.aHH();
+      com.tencent.mm.kernel.h.aHF().kcd.a(localq);
     }
-    this.ksO.clear();
-    this.ksP.clear();
+    this.nkO.clear();
+    this.nkP.clear();
     AppMethodBeat.o(72867);
   }
   
   public final boolean isProcessing()
   {
     AppMethodBeat.i(72874);
-    if ((this.ksP.isEmpty()) && (this.ksO.isEmpty()))
+    if ((this.nkP.isEmpty()) && (this.nkO.isEmpty()))
     {
       AppMethodBeat.o(72874);
       return false;
@@ -522,43 +524,43 @@ public final class i
     return true;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(72872);
     int i;
-    if (this.ksP.contains(paramq))
+    if (this.nkP.contains(paramq))
     {
       Log.d("MicroMsg.WalletNetSceneMgr", "%s has find scene ", new Object[] { this });
-      if (!j(paramInt1, paramInt2, paramString, paramq))
+      if (!k(paramInt1, paramInt2, paramString, paramq))
       {
         Log.i("MicroMsg.WalletNetSceneMgr", "%s Not need delay query order,remove scene", new Object[] { this });
-        this.ksP.remove(paramq);
+        this.nkP.remove(paramq);
         i = 1;
       }
     }
     for (;;)
     {
-      Log.i("MicroMsg.WalletNetSceneMgr", "%s onSceneEnd scenes %s forcescenes %s", new Object[] { this, Integer.valueOf(this.ksP.size()), Integer.valueOf(this.ksO.size()) });
-      if ((this.ksP.isEmpty()) && (this.ksO.isEmpty())) {
+      Log.i("MicroMsg.WalletNetSceneMgr", "%s onSceneEnd scenes %s forcescenes %s", new Object[] { this, Integer.valueOf(this.nkP.size()), Integer.valueOf(this.nkO.size()) });
+      if ((this.nkP.isEmpty()) && (this.nkO.isEmpty())) {
         closeTipDialog();
       }
       for (boolean bool = true;; bool = false)
       {
-        if ((i != 0) && (this.yWw != null)) {
-          this.yWw.onSceneEnd(paramInt1, paramInt2, paramString, paramq, bool);
+        if ((i != 0) && (this.EAz != null)) {
+          this.EAz.onSceneEnd(paramInt1, paramInt2, paramString, paramq, bool);
         }
         AppMethodBeat.o(72872);
         return;
         Log.i("MicroMsg.WalletNetSceneMgr", "%s do delay order query.break off!", new Object[] { this });
         AppMethodBeat.o(72872);
         return;
-        if (!this.ksO.contains(paramq)) {
+        if (!this.nkO.contains(paramq)) {
           break label303;
         }
         Log.d("MicroMsg.WalletNetSceneMgr", "%s has find forcescenes ", new Object[] { this });
-        if (!j(paramInt1, paramInt2, paramString, paramq))
+        if (!k(paramInt1, paramInt2, paramString, paramq))
         {
-          this.ksO.remove(paramq);
+          this.nkO.remove(paramq);
           Log.i("MicroMsg.WalletNetSceneMgr", "%s Not need delay query order,remove scene", new Object[] { this });
           i = 1;
           break;
@@ -575,10 +577,10 @@ public final class i
   public final void removeSceneEndListener(int paramInt)
   {
     AppMethodBeat.i(72869);
-    g.aAi();
-    g.aAg().hqi.b(paramInt, this);
-    this.ktd.remove(Integer.valueOf(paramInt));
-    if (this.ktd.isEmpty()) {
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.b(paramInt, this);
+    this.nkQ.remove(Integer.valueOf(paramInt));
+    if (this.nkQ.isEmpty()) {
       onDestroy();
     }
     AppMethodBeat.o(72869);

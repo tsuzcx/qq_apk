@@ -9,20 +9,20 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 
 public final class AppBrandNearbyShowcaseView
   extends FrameLayout
 {
-  private int ojY;
-  private int ojZ;
+  private int rmq;
+  private int rmr;
   
   public AppBrandNearbyShowcaseView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(121094);
-    this.ojY = a.fromDPToPix(getContext(), 25);
-    this.ojZ = a.fromDPToPix(getContext(), 19);
+    this.rmq = a.fromDPToPix(getContext(), 25);
+    this.rmr = a.fromDPToPix(getContext(), 19);
     AppMethodBeat.o(121094);
   }
   
@@ -30,12 +30,12 @@ public final class AppBrandNearbyShowcaseView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(121095);
-    this.ojY = a.fromDPToPix(getContext(), 25);
-    this.ojZ = a.fromDPToPix(getContext(), 19);
+    this.rmq = a.fromDPToPix(getContext(), 25);
+    this.rmr = a.fromDPToPix(getContext(), 19);
     AppMethodBeat.o(121095);
   }
   
-  private void bZU()
+  private void cmP()
   {
     AppMethodBeat.i(121098);
     if (getChildCount() > 0)
@@ -46,12 +46,12 @@ public final class AppBrandNearbyShowcaseView
         View localView = getChildAt(i);
         Object localObject = localView.getLayoutParams();
         ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
-        int j = this.ojY;
+        int j = this.rmq;
         localLayoutParams.height = j;
         ((ViewGroup.LayoutParams)localObject).width = j;
         localObject = (FrameLayout.LayoutParams)localView.getLayoutParams();
         ((FrameLayout.LayoutParams)localObject).gravity |= 0x5;
-        ((FrameLayout.LayoutParams)localView.getLayoutParams()).rightMargin = (this.ojZ * i);
+        ((FrameLayout.LayoutParams)localView.getLayoutParams()).rightMargin = (this.rmr * i);
         i -= 1;
       }
       requestLayout();
@@ -60,7 +60,15 @@ public final class AppBrandNearbyShowcaseView
     AppMethodBeat.o(121098);
   }
   
-  public final void bZV()
+  public final ImageView Dt(int paramInt)
+  {
+    AppMethodBeat.i(121100);
+    ImageView localImageView = (ImageView)getChildAt(getChildCount() - 1 - paramInt);
+    AppMethodBeat.o(121100);
+    return localImageView;
+  }
+  
+  public final void cmQ()
   {
     AppMethodBeat.i(184009);
     if (getChildCount() > 1)
@@ -76,10 +84,10 @@ public final class AppBrandNearbyShowcaseView
     AppMethodBeat.o(184009);
   }
   
-  public final void bZW()
+  public final void cmR()
   {
     int i = 1;
-    AppMethodBeat.i(201285);
+    AppMethodBeat.i(207483);
     if (getChildCount() > 1)
     {
       int j = 200;
@@ -90,7 +98,7 @@ public final class AppBrandNearbyShowcaseView
         i += 1;
       }
     }
-    AppMethodBeat.o(201285);
+    AppMethodBeat.o(207483);
   }
   
   public final int getExpandDuration()
@@ -109,10 +117,10 @@ public final class AppBrandNearbyShowcaseView
   public final void setIconGap(int paramInt)
   {
     AppMethodBeat.i(121097);
-    if ((paramInt >= 0) && (this.ojZ != paramInt))
+    if ((paramInt >= 0) && (this.rmr != paramInt))
     {
-      this.ojZ = paramInt;
-      bZU();
+      this.rmr = paramInt;
+      cmP();
     }
     AppMethodBeat.o(121097);
   }
@@ -129,7 +137,7 @@ public final class AppBrandNearbyShowcaseView
         while (i < paramInt - j)
         {
           ImageView localImageView = new ImageView(getContext());
-          FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.ojY, this.ojY);
+          FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.rmq, this.rmq);
           localLayoutParams.gravity = 16;
           addViewInLayout(localImageView, 0, localLayoutParams, true);
           i += 1;
@@ -138,7 +146,7 @@ public final class AppBrandNearbyShowcaseView
       if (paramInt < getChildCount()) {
         removeViewsInLayout(0, getChildCount() - paramInt);
       }
-      bZU();
+      cmP();
     }
     AppMethodBeat.o(121099);
   }
@@ -146,25 +154,17 @@ public final class AppBrandNearbyShowcaseView
   public final void setIconSize(int paramInt)
   {
     AppMethodBeat.i(121096);
-    if ((paramInt > 0) && (paramInt != this.ojY))
+    if ((paramInt > 0) && (paramInt != this.rmq))
     {
-      this.ojY = paramInt;
-      bZU();
+      this.rmq = paramInt;
+      cmP();
     }
     AppMethodBeat.o(121096);
-  }
-  
-  public final ImageView zK(int paramInt)
-  {
-    AppMethodBeat.i(121100);
-    ImageView localImageView = (ImageView)getChildAt(getChildCount() - 1 - paramInt);
-    AppMethodBeat.o(121100);
-    return localImageView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.AppBrandNearbyShowcaseView
  * JD-Core Version:    0.7.0.1
  */

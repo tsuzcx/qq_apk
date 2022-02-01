@@ -3,7 +3,7 @@ package com.tencent.mm.ui.chatting;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
 import com.tencent.mm.model.z;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -28,9 +28,9 @@ public final class e
     {
       AppMethodBeat.o(34306);
       return true;
-      if (b.bmu(paramString1)) {
+      if (b.byV(paramString1)) {
         localObject = new b();
-      } else if (d.bmu(paramString1)) {
+      } else if (d.byV(paramString1)) {
         localObject = new d();
       }
     }
@@ -102,7 +102,7 @@ public final class e
   static final class b
     implements e.c
   {
-    public static boolean bmu(String paramString)
+    public static boolean byV(String paramString)
     {
       AppMethodBeat.i(34302);
       if ((paramString != null) && ((paramString.startsWith("weixin://openNativeUrl/myDeviceList")) || (paramString.startsWith("weixin://openNativeUrl/bindMyDevice"))))
@@ -148,7 +148,7 @@ public final class e
   static final class d
     implements e.c
   {
-    public static boolean bmu(String paramString)
+    public static boolean byV(String paramString)
     {
       AppMethodBeat.i(34304);
       if ((paramString != null) && ((paramString.startsWith("weixin://wesport/recommend")) || (paramString.startsWith("weixin://openNativeUrl/rankMyHomepage")) || (paramString.startsWith("weixin://openNativeUrl/rankSetting"))))
@@ -182,7 +182,7 @@ public final class e
       }
       if (paramString1.startsWith("weixin://openNativeUrl/rankMyHomepage"))
       {
-        paramString1 = z.aTY();
+        paramString1 = z.bcZ();
         if (Util.isNullOrNil(paramString1))
         {
           Log.e("MicroMsg.BizNativeUrlDispatcher", "Get username from UserInfo return null or nil.");
@@ -198,7 +198,7 @@ public final class e
       }
       if (paramString1.startsWith("weixin://openNativeUrl/rankSetting"))
       {
-        c.V(paramContext, "exdevice", ".ui.ExdeviceSettingUI");
+        c.ad(paramContext, "exdevice", ".ui.ExdeviceSettingUI");
         AppMethodBeat.o(34305);
         return true;
       }
@@ -209,7 +209,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.e
  * JD-Core Version:    0.7.0.1
  */

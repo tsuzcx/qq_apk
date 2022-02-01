@@ -1,11 +1,13 @@
 package com.tencent.mm.emoji.b.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.protocal.protobuf.bmw;
-import com.tencent.mm.protocal.protobuf.dbh;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.protocal.protobuf.bul;
+import com.tencent.mm.protocal.protobuf.dkw;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.emotion.s;
+import com.tencent.mm.vfs.u;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -17,31 +19,31 @@ import kotlin.l;
 import kotlin.n.n;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/model/search/EmojiSuggestWords;", "", "()V", "wordList", "Ljava/util/LinkedList;", "", "wordType", "", "getWordType", "()I", "setWordType", "(I)V", "wordVersion", "", "getWordVersion", "()J", "setWordVersion", "(J)V", "getWordList", "", "initPersonalWords", "", "rsp", "Lcom/tencent/mm/protocal/protobuf/GetEmotionWordListResponse;", "initResourceWords", "initWordList", "matchWord", "", "content", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/model/search/EmojiSuggestWords;", "", "()V", "wordList", "Ljava/util/LinkedList;", "", "wordType", "", "getWordType", "()I", "setWordType", "(I)V", "wordVersion", "", "getWordVersion", "()J", "setWordVersion", "(J)V", "getWordList", "", "initPersonalWords", "", "rsp", "Lcom/tencent/mm/protocal/protobuf/GetEmotionWordListResponse;", "initResourceWords", "initWordList", "matchWord", "", "content", "plugin-emojisdk_release"})
 public final class g
 {
-  private static int gZE;
-  private static long gZF;
-  private static final LinkedList<String> gZG;
-  public static final g gZH;
+  private static int jKF;
+  private static long jKG;
+  private static final LinkedList<String> jKH;
+  public static final g jKI;
   
   static
   {
-    AppMethodBeat.i(199950);
-    gZH = new g();
-    gZE = 3;
-    gZG = new LinkedList();
-    avL();
-    AppMethodBeat.o(199950);
+    AppMethodBeat.i(231352);
+    jKI = new g();
+    jKF = 3;
+    jKH = new LinkedList();
+    aCH();
+    AppMethodBeat.o(231352);
   }
   
-  public static boolean EV(String paramString)
+  public static boolean LO(String paramString)
   {
-    AppMethodBeat.i(199949);
-    p.h(paramString, "content");
-    synchronized (gZG)
+    AppMethodBeat.i(231344);
+    p.k(paramString, "content");
+    synchronized (jKH)
     {
-      Iterator localIterator = ((Iterable)gZG).iterator();
+      Iterator localIterator = ((Iterable)jKH).iterator();
       Object localObject;
       do
       {
@@ -49,67 +51,67 @@ public final class g
           break;
         }
         localObject = localIterator.next();
-      } while (!n.I((String)localObject, paramString, true));
+      } while (!n.L((String)localObject, paramString, true));
       for (paramString = localObject;; paramString = null)
       {
         paramString = (String)paramString;
         if (paramString == null) {
           break;
         }
-        Log.i(h.auD(), "matchWord: ".concat(String.valueOf(paramString)));
-        AppMethodBeat.o(199949);
+        Log.i(h.aBy(), "matchWord: ".concat(String.valueOf(paramString)));
+        AppMethodBeat.o(231344);
         return true;
       }
-      AppMethodBeat.o(199949);
+      AppMethodBeat.o(231344);
       return false;
     }
   }
   
-  public static int avJ()
+  public static int aCF()
   {
-    return gZE;
+    return jKF;
   }
   
-  public static long avK()
+  public static long aCG()
   {
-    return gZF;
+    return jKG;
   }
   
-  public static void avL()
+  public static void aCH()
   {
-    AppMethodBeat.i(199948);
+    AppMethodBeat.i(231341);
     Object localObject1;
-    synchronized (gZG)
+    synchronized (jKH)
     {
-      Log.i(h.auD(), "initWordList: start");
-      localObject1 = bj.gCJ();
-      p.g(localObject1, "EmojiStorageMgr.getInstance()");
-      localObject3 = ((bj)localObject1).gCM().get("cache_type_words_list");
-      localObject1 = (a)new bmw();
+      Log.i(h.aBy(), "initWordList: start");
+      localObject1 = bj.hyV();
+      p.j(localObject1, "EmojiStorageMgr.getInstance()");
+      localObject3 = ((bj)localObject1).hyZ().get("cache_type_words_list");
+      localObject1 = (a)new bul();
     }
     x localx;
     try
     {
       ((a)localObject1).parseFrom((byte[])localObject3);
-      localObject1 = (bmw)localObject1;
+      localObject1 = (bul)localObject1;
       if (localObject1 == null) {
         break label306;
       }
-      localObject3 = d.gZA;
-      d.pl(31);
-      gZG.clear();
-      localObject3 = gZG;
-      localObject4 = ((bmw)localObject1).LVv;
-      p.g(localObject4, "rsp.PersonalWords");
+      localObject3 = d.jKB;
+      d.rE(31);
+      jKH.clear();
+      localObject3 = jKH;
+      localObject4 = ((bul)localObject1).Tez;
+      p.j(localObject4, "rsp.PersonalWords");
       Object localObject5 = (Iterable)localObject4;
       localObject4 = (Collection)new ArrayList(j.a((Iterable)localObject5, 10));
       localObject5 = ((Iterable)localObject5).iterator();
       while (((Iterator)localObject5).hasNext())
       {
-        ((Collection)localObject4).add(((dbh)((Iterator)localObject5).next()).MGp);
+        ((Collection)localObject4).add(((dkw)((Iterator)localObject5).next()).TSb);
         continue;
         localObject2 = finally;
-        AppMethodBeat.o(199948);
+        AppMethodBeat.o(231341);
         throw localObject2;
       }
     }
@@ -121,51 +123,51 @@ public final class g
         localx = null;
       }
       ((LinkedList)localObject3).addAll((Collection)localObject4);
-      gZE = localx.LVw;
-      gZF = localx.LVx;
+      jKF = localx.TeA;
+      jKG = localx.TeB;
     }
-    Object localObject3 = h.auD();
+    Object localObject3 = h.aBy();
     Object localObject4 = new StringBuilder("initWordList: personal:");
     if (localx != null) {}
     for (boolean bool = true;; bool = false)
     {
-      Log.i((String)localObject3, bool + ", size:" + gZG.size() + ", type:" + gZE + ", version:" + gZF);
-      localx = x.SXb;
-      AppMethodBeat.o(199948);
+      Log.i((String)localObject3, bool + ", size:" + jKH.size() + ", type:" + jKF + ", version:" + jKG);
+      localx = x.aazN;
+      AppMethodBeat.o(231341);
       return;
       label306:
-      gZG.clear();
+      jKH.clear();
       localObject3 = new StringBuilder();
-      localObject4 = com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class);
-      p.g(localObject4, "MMKernel.plugin(IPluginEmoji::class.java)");
+      localObject4 = com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.emoji.b.d.class);
+      p.j(localObject4, "MMKernel.plugin(IPluginEmoji::class.java)");
       localObject4 = ((com.tencent.mm.plugin.emoji.b.d)localObject4).getEmojiMgr();
-      p.g(localObject4, "MMKernel.plugin(IPluginEmoji::class.java).emojiMgr");
-      localObject3 = ((com.tencent.mm.pluginsdk.a.d)localObject4).getDataEmojiPath() + "/suggest_word/word2emoji.txt";
-      if (com.tencent.mm.vfs.s.YS((String)localObject3))
+      p.j(localObject4, "MMKernel.plugin(IPluginEmoji::class.java).emojiMgr");
+      localObject3 = ((com.tencent.mm.pluginsdk.b.d)localObject4).getDataEmojiPath() + "/suggest_word/word2emoji.txt";
+      if (u.agG((String)localObject3))
       {
-        localObject3 = com.tencent.mm.vfs.s.boY((String)localObject3);
-        localObject4 = gZG;
-        p.g(localObject3, "content");
+        localObject3 = u.bBS((String)localObject3);
+        localObject4 = jKH;
+        p.j(localObject3, "content");
         ((LinkedList)localObject4).addAll((Collection)n.b((CharSequence)localObject3, new String[] { "\n" }));
       }
-      gZE = 3;
-      gZF = 0L;
+      jKF = 3;
+      jKG = 0L;
       break;
     }
   }
   
-  public static List<String> avM()
+  public static List<String> aCI()
   {
-    synchronized (gZG)
+    synchronized (jKH)
     {
-      List localList = (List)gZG;
+      List localList = (List)jKH;
       return localList;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.b.c.g
  * JD-Core Version:    0.7.0.1
  */

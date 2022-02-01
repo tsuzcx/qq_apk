@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <com.tencent.mm.ui.base.MultiTouchImageView android:layout_gravity="center" android:id="@id/dup" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
     <com.tencent.mm.ui.base.WxImageView android:layout_gravity="center" android:id="@id/jrc" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/j5b" android:layout_width="@dimen/bu" android:layout_height="@dimen/bu" android:src="@raw/shortvideo_play_btn" android:layout_centerInParent="true" />
+    <com.tencent.mm.plugin.thumbplayer.view.ThumbPlayerVideoView android:id="@id/j6y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/j5b" android:layout_width="@dimen/bu" android:layout_height="@dimen/bu" android:src="@raw/shortvideo_play_btn" android:layout_centerInParent="true" android:contentDescription="@string/k6b" />
     <TextView android:textSize="@dimen/hc" android:textColor="@color/ag2" android:id="@id/fbq" android:background="@drawable/b1m" android:padding="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="60.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="@dimen/is" android:textColor="@color/ag2" android:id="@id/caq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/acs" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
 </RelativeLayout>

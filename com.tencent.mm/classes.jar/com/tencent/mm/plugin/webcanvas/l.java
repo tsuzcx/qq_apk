@@ -3,30 +3,30 @@ package com.tencent.mm.plugin.webcanvas;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasReport;", "", "()V", "idKey1454", "", "value", "", "kv20821", "appId", "", "contextName", "reason", "webview-sdk_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasReport;", "", "()V", "idKey1454", "", "value", "", "kv20821", "appId", "", "contextName", "reason", "webview-sdk_release"})
 public final class l
 {
-  public static final l IAx;
+  public static final l PuB;
   
   static
   {
-    AppMethodBeat.i(224697);
-    IAx = new l();
-    AppMethodBeat.o(224697);
+    AppMethodBeat.i(214079);
+    PuB = new l();
+    AppMethodBeat.o(214079);
   }
   
-  public static void LV(long paramLong)
+  public static void Tt(long paramLong)
   {
-    AppMethodBeat.i(224695);
-    h.CyF.n(1454L, paramLong, 1L);
-    AppMethodBeat.o(224695);
+    AppMethodBeat.i(214077);
+    h.IzE.p(1454L, paramLong, 1L);
+    AppMethodBeat.o(214077);
   }
   
-  public static void ba(String paramString1, String paramString2, String paramString3)
+  public static void aU(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(224696);
-    h.CyF.a(20821, new Object[] { paramString1, paramString2, paramString3 });
-    AppMethodBeat.o(224696);
+    AppMethodBeat.i(214078);
+    h.IzE.a(20821, new Object[] { paramString1, paramString2, paramString3 });
+    AppMethodBeat.o(214078);
   }
 }
 

@@ -17,95 +17,95 @@ import java.util.Map;
 
 public final class d
 {
-  private static final Rect gQM;
-  private static final TextPaint gQN;
-  private static final Map<Float, Float> gQO;
-  private static final Map<Float, Float> gQP;
-  private static final Map<Float, Float> gQQ;
-  public static Paint gQR;
-  public static Paint gQS;
-  private static int gQT;
+  private static final Rect jBf;
+  private static final TextPaint jBg;
+  private static final Map<Float, Float> jBh;
+  private static final Map<Float, Float> jBi;
+  private static final Map<Float, Float> jBj;
+  public static Paint jBk;
+  public static Paint jBl;
+  private static int jBm;
   
   static
   {
-    AppMethodBeat.i(241766);
-    gQM = new Rect();
-    gQN = new TextPaint();
-    gQO = new HashMap();
-    gQP = new HashMap();
-    gQQ = new HashMap();
+    AppMethodBeat.i(278125);
+    jBf = new Rect();
+    jBg = new TextPaint();
+    jBh = new HashMap();
+    jBi = new HashMap();
+    jBj = new HashMap();
     Paint localPaint = new Paint();
-    gQR = localPaint;
+    jBk = localPaint;
     localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-    AppMethodBeat.o(241766);
+    AppMethodBeat.o(278125);
   }
   
   public static float a(float paramFloat, String paramString)
   {
-    AppMethodBeat.i(241765);
-    gQN.setTextSize(paramFloat);
-    paramFloat = gQN.measureText(paramString);
-    AppMethodBeat.o(241765);
+    AppMethodBeat.i(278124);
+    jBg.setTextSize(paramFloat);
+    paramFloat = jBg.measureText(paramString);
+    AppMethodBeat.o(278124);
     return paramFloat;
   }
   
   public static float a(m paramm)
   {
-    AppMethodBeat.i(241763);
-    float f1 = ap(paramm.gPN);
-    float f2 = com.tencent.mm.danmaku.c.a.asO().gPI * 2;
-    float f3 = paramm.gPO;
-    float f4 = paramm.gPP;
-    AppMethodBeat.o(241763);
+    AppMethodBeat.i(278122);
+    float f1 = ao(paramm.jAg);
+    float f2 = com.tencent.mm.danmaku.c.a.azC().jAb * 2;
+    float f3 = paramm.jAh;
+    float f4 = paramm.jAi;
+    AppMethodBeat.o(278122);
     return f1 + f2 + f3 * 2.0F + f4 * 2.0F;
   }
   
   public static void a(Canvas paramCanvas, String paramString)
   {
-    AppMethodBeat.i(241761);
-    if (gQS == null)
+    AppMethodBeat.i(278120);
+    if (jBl == null)
     {
       Object localObject = new Paint();
-      gQS = (Paint)localObject;
+      jBl = (Paint)localObject;
       ((Paint)localObject).setColor(-256);
-      localObject = com.tencent.mm.danmaku.f.a.atr().getResources().getDisplayMetrics();
-      gQS.setTextSize(((DisplayMetrics)localObject).density * 12.5F);
-      localObject = gQS.getFontMetrics();
-      gQT = (int)Math.ceil(((Paint.FontMetrics)localObject).descent - ((Paint.FontMetrics)localObject).ascent);
+      localObject = com.tencent.mm.danmaku.f.a.aAh().getResources().getDisplayMetrics();
+      jBl.setTextSize(((DisplayMetrics)localObject).density * 12.5F);
+      localObject = jBl.getFontMetrics();
+      jBm = (int)Math.ceil(((Paint.FontMetrics)localObject).descent - ((Paint.FontMetrics)localObject).ascent);
     }
-    paramCanvas.drawText(paramString, 10.0F, paramCanvas.getHeight() - gQT, gQS);
-    AppMethodBeat.o(241761);
+    paramCanvas.drawText(paramString, 10.0F, paramCanvas.getHeight() - jBm, jBl);
+    AppMethodBeat.o(278120);
   }
   
-  public static float ap(float paramFloat)
+  public static float ao(float paramFloat)
   {
-    AppMethodBeat.i(241764);
-    gQN.setTextSize(paramFloat);
-    Float localFloat = (Float)gQO.get(Float.valueOf(paramFloat));
+    AppMethodBeat.i(278123);
+    jBg.setTextSize(paramFloat);
+    Float localFloat = (Float)jBh.get(Float.valueOf(paramFloat));
     Object localObject = localFloat;
     if (localFloat == null)
     {
-      localObject = gQN.getFontMetrics();
+      localObject = jBg.getFontMetrics();
       float f1 = ((Paint.FontMetrics)localObject).descent;
       float f2 = ((Paint.FontMetrics)localObject).ascent;
       localObject = Float.valueOf(((Paint.FontMetrics)localObject).leading + (f1 - f2));
-      gQO.put(Float.valueOf(paramFloat), localObject);
+      jBh.put(Float.valueOf(paramFloat), localObject);
     }
     paramFloat = ((Float)localObject).floatValue();
-    AppMethodBeat.o(241764);
+    AppMethodBeat.o(278123);
     return paramFloat;
   }
   
-  public static void n(Canvas paramCanvas)
+  public static void p(Canvas paramCanvas)
   {
-    AppMethodBeat.i(241762);
+    AppMethodBeat.i(278121);
     paramCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
-    AppMethodBeat.o(241762);
+    AppMethodBeat.o(278121);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.danmaku.e.d
  * JD-Core Version:    0.7.0.1
  */

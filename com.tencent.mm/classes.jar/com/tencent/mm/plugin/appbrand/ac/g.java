@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import com.tencent.luggage.h.j;
+import com.tencent.luggage.k.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -15,17 +15,41 @@ import org.json.JSONObject;
 
 public final class g
 {
-  private static DisplayMetrics ogw;
-  private static Float ogx;
-  private static boolean ogy;
+  private static DisplayMetrics rii;
+  private static Float rij;
+  private static boolean rik;
   
   static
   {
     AppMethodBeat.i(140832);
-    ogx = null;
-    ogw = MMApplicationContext.getContext().getResources().getDisplayMetrics();
-    ogy = true;
+    rij = null;
+    rii = MMApplicationContext.getContext().getResources().getDisplayMetrics();
+    rik = true;
     AppMethodBeat.o(140832);
+  }
+  
+  public static int Dg(int paramInt)
+  {
+    AppMethodBeat.i(140813);
+    paramInt = (int)Math.ceil(paramInt / clS());
+    AppMethodBeat.o(140813);
+    return paramInt;
+  }
+  
+  public static int Dh(int paramInt)
+  {
+    AppMethodBeat.i(140814);
+    paramInt = (int)(paramInt / clS());
+    AppMethodBeat.o(140814);
+    return paramInt;
+  }
+  
+  public static int Di(int paramInt)
+  {
+    AppMethodBeat.i(140816);
+    paramInt = Math.round(clS() * paramInt);
+    AppMethodBeat.o(140816);
+    return paramInt;
   }
   
   public static float a(JSONObject paramJSONObject, String paramString, float paramFloat)
@@ -40,7 +64,7 @@ public final class g
     try
     {
       float f1 = (float)paramJSONObject.optDouble(paramString, d);
-      float f2 = bZk();
+      float f2 = clS();
       AppMethodBeat.o(140822);
       return f2 * f1;
     }
@@ -61,7 +85,7 @@ public final class g
     }
     try
     {
-      int i = Math.round((float)paramJSONObject.getDouble(paramString) * bZk());
+      int i = Math.round((float)paramJSONObject.getDouble(paramString) * clS());
       AppMethodBeat.o(140819);
       return i;
     }
@@ -72,40 +96,40 @@ public final class g
     return paramInt;
   }
   
-  public static float aS(float paramFloat)
+  public static float aT(float paramFloat)
   {
     AppMethodBeat.i(140815);
-    paramFloat /= bZk();
+    paramFloat /= clS();
     AppMethodBeat.o(140815);
     return paramFloat;
   }
   
-  public static float aT(float paramFloat)
+  public static float aU(float paramFloat)
   {
     AppMethodBeat.i(140817);
-    float f = bZk();
+    float f = clS();
     AppMethodBeat.o(140817);
     return f * paramFloat;
   }
   
-  public static void aU(float paramFloat)
+  public static void aV(float paramFloat)
   {
     AppMethodBeat.i(140830);
     if (paramFloat > 0.0F) {
-      ogx = Float.valueOf(paramFloat);
+      rij = Float.valueOf(paramFloat);
     }
     AppMethodBeat.o(140830);
   }
   
-  public static int afD(String paramString)
+  public static int anf(String paramString)
   {
     AppMethodBeat.i(140811);
-    int i = cu(paramString, 0);
+    int i = cO(paramString, 0);
     AppMethodBeat.o(140811);
     return i;
   }
   
-  public static int afE(String paramString)
+  public static int ang(String paramString)
   {
     AppMethodBeat.i(140812);
     if (TextUtils.isEmpty(paramString))
@@ -114,9 +138,9 @@ public final class g
       AppMethodBeat.o(140812);
       throw paramString;
     }
-    if (f.ogv.containsKey(paramString))
+    if (f.rih.containsKey(paramString))
     {
-      i = ((Integer)f.ogv.get(paramString)).intValue();
+      i = ((Integer)f.rih.get(paramString)).intValue();
       AppMethodBeat.o(140812);
       return i;
     }
@@ -151,32 +175,6 @@ public final class g
     return i;
   }
   
-  public static void bZj()
-  {
-    ogy = false;
-  }
-  
-  public static float bZk()
-  {
-    AppMethodBeat.i(140831);
-    Object localObject = ogx;
-    if (localObject != null)
-    {
-      f = ((Float)localObject).floatValue();
-      AppMethodBeat.o(140831);
-      return f;
-    }
-    localObject = ogw;
-    if (localObject == null)
-    {
-      AppMethodBeat.o(140831);
-      return 1.0F;
-    }
-    float f = ((DisplayMetrics)localObject).density;
-    AppMethodBeat.o(140831);
-    return f;
-  }
-  
   public static int c(JSONArray paramJSONArray, int paramInt)
   {
     AppMethodBeat.i(140823);
@@ -185,12 +183,12 @@ public final class g
     return paramInt;
   }
   
-  public static int cu(String paramString, int paramInt)
+  public static int cO(String paramString, int paramInt)
   {
     AppMethodBeat.i(140810);
     try
     {
-      int i = afE(paramString);
+      int i = ang(paramString);
       AppMethodBeat.o(140810);
       return i;
     }
@@ -199,6 +197,32 @@ public final class g
       AppMethodBeat.o(140810);
     }
     return paramInt;
+  }
+  
+  public static void clR()
+  {
+    rik = false;
+  }
+  
+  public static float clS()
+  {
+    AppMethodBeat.i(140831);
+    Object localObject = rij;
+    if (localObject != null)
+    {
+      f = ((Float)localObject).floatValue();
+      AppMethodBeat.o(140831);
+      return f;
+    }
+    localObject = rii;
+    if (localObject == null)
+    {
+      AppMethodBeat.o(140831);
+      return 1.0F;
+    }
+    float f = ((DisplayMetrics)localObject).density;
+    AppMethodBeat.o(140831);
+    return f;
   }
   
   private static int d(JSONArray paramJSONArray, int paramInt)
@@ -211,7 +235,7 @@ public final class g
     }
     try
     {
-      paramInt = Math.round((float)paramJSONArray.getDouble(paramInt) * bZk());
+      paramInt = Math.round((float)paramJSONArray.getDouble(paramInt) * clS());
       AppMethodBeat.o(140824);
       return paramInt;
     }
@@ -226,7 +250,7 @@ public final class g
   {
     AppMethodBeat.i(140827);
     float f1 = (float)paramJSONArray.getDouble(paramInt);
-    float f2 = bZk();
+    float f2 = clS();
     AppMethodBeat.o(140827);
     return f1 * f2;
   }
@@ -237,14 +261,6 @@ public final class g
     float f = g(paramJSONArray, paramInt);
     AppMethodBeat.o(140828);
     return f;
-  }
-  
-  public static int f(JSONObject paramJSONObject, String paramString)
-  {
-    AppMethodBeat.i(140818);
-    int i = a(paramJSONObject, paramString, 0);
-    AppMethodBeat.o(140818);
-    return i;
   }
   
   private static float g(JSONArray paramJSONArray, int paramInt)
@@ -258,7 +274,7 @@ public final class g
     try
     {
       float f1 = (float)paramJSONArray.getDouble(paramInt);
-      float f2 = bZk();
+      float f2 = clS();
       AppMethodBeat.o(140829);
       return f2 * f1;
     }
@@ -271,13 +287,21 @@ public final class g
   
   public static int g(JSONObject paramJSONObject, String paramString)
   {
+    AppMethodBeat.i(140818);
+    int i = a(paramJSONObject, paramString, 0);
+    AppMethodBeat.o(140818);
+    return i;
+  }
+  
+  public static int h(JSONObject paramJSONObject, String paramString)
+  {
     AppMethodBeat.i(140820);
-    int i = Math.round((float)paramJSONObject.getDouble(paramString) * bZk());
+    int i = Math.round((float)paramJSONObject.getDouble(paramString) * clS());
     AppMethodBeat.o(140820);
     return i;
   }
   
-  public static float h(JSONObject paramJSONObject, String paramString)
+  public static float i(JSONObject paramJSONObject, String paramString)
   {
     AppMethodBeat.i(140821);
     float f = a(paramJSONObject, paramString, 0.0F);
@@ -285,11 +309,11 @@ public final class g
     return f;
   }
   
-  public static float i(JSONObject paramJSONObject, String paramString)
+  public static float j(JSONObject paramJSONObject, String paramString)
   {
     AppMethodBeat.i(140826);
     float f1 = (float)paramJSONObject.getDouble(paramString);
-    float f2 = bZk();
+    float f2 = clS();
     AppMethodBeat.o(140826);
     return f1 * f2;
   }
@@ -306,8 +330,8 @@ public final class g
     for (int i = Color.rgb(paramJSONArray.optInt(0) & 0xFF, paramJSONArray.optInt(1) & 0xFF, paramJSONArray.optInt(2) & 0xFF);; i = Color.argb(paramJSONArray.optInt(3) & 0xFF, paramJSONArray.optInt(0) & 0xFF, paramJSONArray.optInt(1) & 0xFF, paramJSONArray.optInt(2) & 0xFF))
     {
       int j = i;
-      if (ogy) {
-        j = j.cDv.hT(i);
+      if (rik) {
+        j = j.cEc.iV(i);
       }
       AppMethodBeat.o(140809);
       return j;
@@ -317,38 +341,14 @@ public final class g
   public static int s(JSONArray paramJSONArray)
   {
     AppMethodBeat.i(140825);
-    int i = Math.round((float)paramJSONArray.getDouble(0) * bZk());
+    int i = Math.round((float)paramJSONArray.getDouble(0) * clS());
     AppMethodBeat.o(140825);
     return i;
-  }
-  
-  public static int zB(int paramInt)
-  {
-    AppMethodBeat.i(140813);
-    paramInt = (int)Math.ceil(paramInt / bZk());
-    AppMethodBeat.o(140813);
-    return paramInt;
-  }
-  
-  public static int zC(int paramInt)
-  {
-    AppMethodBeat.i(140814);
-    paramInt = (int)(paramInt / bZk());
-    AppMethodBeat.o(140814);
-    return paramInt;
-  }
-  
-  public static int zD(int paramInt)
-  {
-    AppMethodBeat.i(140816);
-    paramInt = Math.round(bZk() * paramInt);
-    AppMethodBeat.o(140816);
-    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ac.g
  * JD-Core Version:    0.7.0.1
  */

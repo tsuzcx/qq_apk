@@ -1,84 +1,83 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.cd.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.drl;
-import com.tencent.mm.protocal.protobuf.drm;
+import com.tencent.mm.plugin.exdevice.i.c;
+import com.tencent.mm.protocal.protobuf.cjb;
+import com.tencent.mm.protocal.protobuf.cjc;
+import com.tencent.mm.protocal.protobuf.jh;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class t
   extends q
   implements m
 {
-  private i callback;
-  private d rr;
+  private i jQg;
+  private String veU;
+  private d vgf;
   
-  public t(String paramString1, String paramString2, String paramString3)
+  public t(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    AppMethodBeat.i(23407);
-    this.callback = null;
-    this.rr = null;
+    AppMethodBeat.i(23404);
+    this.jQg = null;
+    this.vgf = null;
+    this.veU = null;
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new drl();
-    ((d.a)localObject).iLO = new drm();
-    ((d.a)localObject).uri = "/cgi-bin/mmoc-bin/hardware/searchbleharddevice";
-    ((d.a)localObject).funcId = 1706;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBU = new cjb();
+    ((d.a)localObject).lBV = new cjc();
+    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/device/subscribestatus";
+    ((d.a)localObject).funcId = 1090;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (drl)this.rr.iLK.iLR;
-    ((drl)localObject).mac = paramString1;
-    paramString1 = paramString2;
-    if (paramString2 == null) {
-      paramString1 = "";
-    }
-    ((drl)localObject).userName = paramString1;
-    paramString1 = paramString3;
-    if (paramString3 == null) {
-      paramString1 = "";
-    }
-    ((drl)localObject).category = paramString1;
-    AppMethodBeat.o(23407);
-  }
-  
-  public final drm cKH()
-  {
-    return (drm)this.rr.iLL.iLR;
+    this.vgf = ((d.a)localObject).bgN();
+    localObject = (cjb)d.b.b(this.vgf.lBR);
+    ((cjb)localObject).RPf = b.bss(paramString2);
+    ((cjb)localObject).RPd = b.bss(paramString3);
+    ((cjb)localObject).jUk = paramInt;
+    this.veU = paramString1;
+    AppMethodBeat.o(23404);
   }
   
   public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(23409);
-    this.callback = parami;
-    int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(23409);
+    AppMethodBeat.i(23406);
+    this.jQg = parami;
+    int i = dispatch(paramg, this.vgf, this);
+    AppMethodBeat.o(23406);
     return i;
   }
   
   public final int getType()
   {
-    return 1706;
+    return 1090;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(23408);
-    Log.i("MicroMsg.exdevice.NetSceneSearchBLEHardDevice", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(23408);
+    AppMethodBeat.i(23405);
+    Log.i("MicroMsg.exdevice.NetSceneHardDeviceStatusSubscribe", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
+    ae.cZx().avI(this.veU);
+    if ((paramInt2 == 0) && (paramInt3 == 0))
+    {
+      paramInt1 = ((cjc)d.c.b(this.vgf.lBS)).getBaseResponse().CqV;
+      Log.i("MicroMsg.exdevice.NetSceneHardDeviceStatusSubscribe", "HardDeviceStatusSubResponse: ret=" + paramInt1 + ",msg=" + paramString);
+    }
+    this.jQg.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(23405);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.t
  * JD-Core Version:    0.7.0.1
  */

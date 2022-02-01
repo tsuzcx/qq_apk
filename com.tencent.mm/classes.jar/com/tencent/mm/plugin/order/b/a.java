@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.order.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fd;
+import com.tencent.mm.f.c.fj;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends fd
+  extends fj
 {
   protected static IAutoDBItem.MAutoDBInfo info;
   
@@ -43,7 +43,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.order.b.a
  * JD-Core Version:    0.7.0.1
  */

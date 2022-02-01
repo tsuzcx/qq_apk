@@ -12,23 +12,23 @@ import kotlin.l;
 import kotlin.o;
 import kotlin.s;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/utils/MultitalkReportHelper;", "", "()V", "IDKEY_ID", "", "IDKEY_KEY_SCREEN_HW_DECODE", "IDKEY_KEY_SCREEN_HW_TIME", "IDKEY_KEY_SCREEN_RENDER", "IDKEY_KEY_SCREEN_SOFT_DECODE", "IDKEY_KEY_SCREEN_SOFT_TIME", "IDKEY_KEY_SWITCH_TO_HW", "IDKEY_KEY_SWITCH_TO_SOFT", "IDKEY_KEY_VIDEO_DECODE", "IDKEY_KEY_VIDEO_RENDER", "SCREEN_DECODE_TYPE_HW", "SCREEN_DECODE_TYPE_NONE", "SCREEN_DECODE_TYPE_SOFT", "SCREEN_HW_DECODE_COST", "SCREEN_RENDER_COST", "SCREEN_SOFT_DECODE_COST", "SWITCH_TO_HW", "SWITCH_TO_SOFT", "TAG", "", "VIDEO_DECODE_COST", "VIDEO_RENDER_COST", "costArray", "", "Lcom/tencent/mm/plugin/multitalk/utils/MultitalkReportHelper$CostInfo;", "[Lcom/tencent/mm/plugin/multitalk/utils/MultitalkReportHelper$CostInfo;", "curScreenDecodeType", "incArray", "", "keyMap", "", "receiveScreenTime", "", "screenHwDecodeTime", "screenSoftDecodeTime", "startReceiveTime", "append", "", "key", "cost", "decodeTypeSwitch", "curType", "inc", "report", "reportAvg", "reset", "stopReceiveScreen", "CostInfo", "plugin-multitalk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/utils/MultitalkReportHelper;", "", "()V", "IDKEY_ID", "", "IDKEY_KEY_SCREEN_HW_DECODE", "IDKEY_KEY_SCREEN_HW_TIME", "IDKEY_KEY_SCREEN_RENDER", "IDKEY_KEY_SCREEN_SOFT_DECODE", "IDKEY_KEY_SCREEN_SOFT_TIME", "IDKEY_KEY_SWITCH_TO_HW", "IDKEY_KEY_SWITCH_TO_SOFT", "IDKEY_KEY_VIDEO_DECODE", "IDKEY_KEY_VIDEO_RENDER", "SCREEN_DECODE_TYPE_HW", "SCREEN_DECODE_TYPE_NONE", "SCREEN_DECODE_TYPE_SOFT", "SCREEN_HW_DECODE_COST", "SCREEN_RENDER_COST", "SCREEN_SOFT_DECODE_COST", "SWITCH_TO_HW", "SWITCH_TO_SOFT", "TAG", "", "VIDEO_DECODE_COST", "VIDEO_RENDER_COST", "costArray", "", "Lcom/tencent/mm/plugin/multitalk/utils/MultitalkReportHelper$CostInfo;", "[Lcom/tencent/mm/plugin/multitalk/utils/MultitalkReportHelper$CostInfo;", "curScreenDecodeType", "incArray", "", "keyMap", "", "receiveScreenTime", "", "screenHwDecodeTime", "screenSoftDecodeTime", "startReceiveTime", "append", "", "key", "cost", "decodeTypeSwitch", "curType", "inc", "report", "reportAvg", "reset", "stopReceiveScreen", "CostInfo", "plugin-multitalk_release"})
 public final class d
 {
-  private static final a[] zYS;
-  private static final Map<Integer, Integer> zYT;
-  private static final int[] zYU;
-  private static long zYV;
-  private static long zYW;
-  private static long zYX;
-  private static long zYY;
-  private static int zYZ;
-  public static final d zZa;
+  private static final a[] FEF;
+  private static final Map<Integer, Integer> FEG;
+  private static final int[] FEH;
+  private static long FEI;
+  private static long FEJ;
+  private static long FEK;
+  private static long FEL;
+  private static int FEM;
+  public static final d FEN;
   
   static
   {
-    AppMethodBeat.i(240097);
-    zZa = new d();
+    AppMethodBeat.i(199685);
+    FEN = new d();
     a[] arrayOfa = new a[5];
     int i = 0;
     while (i < 5)
@@ -36,92 +36,92 @@ public final class d
       arrayOfa[i] = new a(i);
       i += 1;
     }
-    zYS = arrayOfa;
-    zYT = ae.e(new o[] { s.U(Integer.valueOf(0), Integer.valueOf(0)), s.U(Integer.valueOf(1), Integer.valueOf(3)), s.U(Integer.valueOf(2), Integer.valueOf(6)), s.U(Integer.valueOf(3), Integer.valueOf(9)), s.U(Integer.valueOf(4), Integer.valueOf(12)) });
-    zYU = new int[2];
-    AppMethodBeat.o(240097);
+    FEF = arrayOfa;
+    FEG = ae.e(new o[] { s.M(Integer.valueOf(0), Integer.valueOf(0)), s.M(Integer.valueOf(1), Integer.valueOf(3)), s.M(Integer.valueOf(2), Integer.valueOf(6)), s.M(Integer.valueOf(3), Integer.valueOf(9)), s.M(Integer.valueOf(4), Integer.valueOf(12)) });
+    FEH = new int[2];
+    AppMethodBeat.o(199685);
   }
   
-  public static void RC(int paramInt)
+  public static void XS(int paramInt)
   {
-    AppMethodBeat.i(240093);
-    if (zYZ == 0) {
-      zYV = System.currentTimeMillis();
+    AppMethodBeat.i(199663);
+    if (FEM == 0) {
+      FEI = System.currentTimeMillis();
     }
     long l;
-    if (paramInt != zYZ)
+    if (paramInt != FEM)
     {
       if (paramInt != 1) {
         break label73;
       }
-      RD(0);
-      l = System.currentTimeMillis() - zYV;
-      zYX += l;
-      zYW = l + zYW;
+      XT(0);
+      l = System.currentTimeMillis() - FEI;
+      FEK += l;
+      FEJ = l + FEJ;
     }
     for (;;)
     {
-      zYV = System.currentTimeMillis();
-      zYZ = paramInt;
-      AppMethodBeat.o(240093);
+      FEI = System.currentTimeMillis();
+      FEM = paramInt;
+      AppMethodBeat.o(199663);
       return;
       label73:
       if (paramInt == 2)
       {
-        RD(1);
-        l = System.currentTimeMillis() - zYV;
-        zYY += l;
-        zYW = l + zYW;
+        XT(1);
+        l = System.currentTimeMillis() - FEI;
+        FEL += l;
+        FEJ = l + FEJ;
       }
     }
   }
   
-  private static void RD(int paramInt)
+  private static void XT(int paramInt)
   {
-    int[] arrayOfInt = zYU;
+    int[] arrayOfInt = FEH;
     arrayOfInt[paramInt] += 1;
   }
   
-  public static void append(int paramInt, long paramLong)
+  public static void aC(int paramInt, long paramLong)
   {
-    a locala = zYS[paramInt];
-    locala.hjI += 1;
-    locala.zZb += paramLong;
+    a locala = FEF[paramInt];
+    locala.mgw += 1;
+    locala.FEO += paramLong;
   }
   
-  private static void au(int paramInt, long paramLong)
+  private static void aD(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(240096);
+    AppMethodBeat.i(199681);
     Log.i("MultitalkReportHelper", "report avg key: " + paramInt + " value: " + paramLong);
-    h.CyF.b(1438, paramInt, paramInt + 1, (int)paramLong, false);
-    AppMethodBeat.o(240096);
+    h.IzE.c(1438, paramInt, paramInt + 1, (int)paramLong, false);
+    AppMethodBeat.o(199681);
   }
   
-  public static void eof()
+  public static void eXV()
   {
-    AppMethodBeat.i(240094);
+    AppMethodBeat.i(199665);
     long l;
-    if (zYZ == 1)
+    if (FEM == 1)
     {
-      l = System.currentTimeMillis() - zYV;
-      zYX += l;
-      zYW = l + zYW;
-      AppMethodBeat.o(240094);
+      l = System.currentTimeMillis() - FEI;
+      FEK += l;
+      FEJ = l + FEJ;
+      AppMethodBeat.o(199665);
       return;
     }
-    if (zYZ == 2)
+    if (FEM == 2)
     {
-      l = System.currentTimeMillis() - zYV;
-      zYY += l;
-      zYW = l + zYW;
+      l = System.currentTimeMillis() - FEI;
+      FEL += l;
+      FEJ = l + FEJ;
     }
-    AppMethodBeat.o(240094);
+    AppMethodBeat.o(199665);
   }
   
   public static void report()
   {
-    AppMethodBeat.i(240095);
-    Object localObject1 = zYS;
+    AppMethodBeat.i(199677);
+    Object localObject1 = FEF;
     Object localObject2 = (Collection)new ArrayList();
     int k = localObject1.length;
     int i = 0;
@@ -129,7 +129,7 @@ public final class d
     if (i < k)
     {
       localObject3 = localObject1[i];
-      if (((a)localObject3).hjI > 5) {}
+      if (((a)localObject3).mgw > 5) {}
       for (int j = 1;; j = 0)
       {
         if (j != 0) {
@@ -143,60 +143,60 @@ public final class d
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (a)((Iterator)localObject1).next();
-      localObject3 = (Integer)zYT.get(Integer.valueOf(((a)localObject2).idx));
+      localObject3 = (Integer)FEG.get(Integer.valueOf(((a)localObject2).idx));
       if (localObject3 != null) {
-        au(((Number)localObject3).intValue(), ((a)localObject2).zZb / ((a)localObject2).hjI);
+        aD(((Number)localObject3).intValue(), ((a)localObject2).FEO / ((a)localObject2).mgw);
       }
     }
-    if (zYW > 0L)
+    if (FEJ > 0L)
     {
-      au(15, zYU[0]);
-      au(18, zYU[1]);
-      au(21, ((float)zYX / (float)zYW * 100.0F));
-      au(24, ((float)zYY / (float)zYW * 100.0F));
+      aD(15, FEH[0]);
+      aD(18, FEH[1]);
+      aD(21, ((float)FEK / (float)FEJ * 100.0F));
+      aD(24, ((float)FEL / (float)FEJ * 100.0F));
     }
     reset();
-    AppMethodBeat.o(240095);
+    AppMethodBeat.o(199677);
   }
   
   public static void reset()
   {
-    a[] arrayOfa = zYS;
+    a[] arrayOfa = FEF;
     int j = arrayOfa.length;
     int i = 0;
     while (i < j)
     {
       a locala = arrayOfa[i];
-      locala.zZb = 0L;
-      locala.hjI = 0;
+      locala.FEO = 0L;
+      locala.mgw = 0;
       i += 1;
     }
-    j = zYU.length;
+    j = FEH.length;
     i = 0;
     while (i < j)
     {
-      zYU[i] = 0;
+      FEH[i] = 0;
       i += 1;
     }
-    zYV = 0L;
-    zYW = 0L;
-    zYY = 0L;
-    zYX = 0L;
-    zYZ = 0;
+    FEI = 0L;
+    FEJ = 0L;
+    FEL = 0L;
+    FEK = 0L;
+    FEM = 0;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/utils/MultitalkReportHelper$CostInfo;", "", "idx", "", "totalCost", "", "times", "(IJI)V", "getIdx", "()I", "getTimes", "setTimes", "(I)V", "getTotalCost", "()J", "setTotalCost", "(J)V", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-multitalk_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/utils/MultitalkReportHelper$CostInfo;", "", "idx", "", "totalCost", "", "times", "(IJI)V", "getIdx", "()I", "getTimes", "setTimes", "(I)V", "getTotalCost", "()J", "setTotalCost", "(J)V", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-multitalk_release"})
   public static final class a
   {
-    int hjI;
+    long FEO;
     final int idx;
-    long zZb;
+    int mgw;
     
     public a(int paramInt)
     {
       this.idx = paramInt;
-      this.zZb = 0L;
-      this.hjI = 0;
+      this.FEO = 0L;
+      this.mgw = 0;
     }
     
     public final boolean equals(Object paramObject)
@@ -206,7 +206,7 @@ public final class d
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if ((this.idx != paramObject.idx) || (this.zZb != paramObject.zZb) || (this.hjI != paramObject.hjI)) {}
+          if ((this.idx != paramObject.idx) || (this.FEO != paramObject.FEO) || (this.mgw != paramObject.mgw)) {}
         }
       }
       else {
@@ -218,22 +218,22 @@ public final class d
     public final int hashCode()
     {
       int i = this.idx;
-      long l = this.zZb;
-      return (i * 31 + (int)(l ^ l >>> 32)) * 31 + this.hjI;
+      long l = this.FEO;
+      return (i * 31 + (int)(l ^ l >>> 32)) * 31 + this.mgw;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(240092);
-      String str = "CostInfo(idx=" + this.idx + ", totalCost=" + this.zZb + ", times=" + this.hjI + ")";
-      AppMethodBeat.o(240092);
+      AppMethodBeat.i(199638);
+      String str = "CostInfo(idx=" + this.idx + ", totalCost=" + this.FEO + ", times=" + this.mgw + ")";
+      AppMethodBeat.o(199638);
       return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.d.d
  * JD-Core Version:    0.7.0.1
  */

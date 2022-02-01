@@ -14,119 +14,119 @@ import com.tencent.tmediacodec.g.b;
 public final class d
   implements c
 {
-  private final MediaCodec btk;
+  private final MediaCodec bcN;
   
   public d(MediaCodec paramMediaCodec)
   {
-    this.btk = paramMediaCodec;
+    this.bcN = paramMediaCodec;
+  }
+  
+  public final int EX(long paramLong)
+  {
+    AppMethodBeat.i(224257);
+    int i = this.bcN.dequeueInputBuffer(paramLong);
+    AppMethodBeat.o(224257);
+    return i;
+  }
+  
+  public final int a(MediaCodec.BufferInfo paramBufferInfo, long paramLong)
+  {
+    AppMethodBeat.i(224254);
+    int i = this.bcN.dequeueOutputBuffer(paramBufferInfo, paramLong);
+    AppMethodBeat.o(224254);
+    return i;
   }
   
   public final void a(int paramInt1, int paramInt2, long paramLong, int paramInt3)
   {
-    AppMethodBeat.i(190110);
-    this.btk.queueInputBuffer(paramInt1, 0, paramInt2, paramLong, paramInt3);
-    AppMethodBeat.o(190110);
+    AppMethodBeat.i(224250);
+    this.bcN.queueInputBuffer(paramInt1, 0, paramInt2, paramLong, paramInt3);
+    AppMethodBeat.o(224250);
+  }
+  
+  public final void a(MediaFormat paramMediaFormat, Surface paramSurface, MediaCrypto paramMediaCrypto, int paramInt)
+  {
+    AppMethodBeat.i(224236);
+    this.bcN.configure(paramMediaFormat, paramSurface, paramMediaCrypto, 0);
+    AppMethodBeat.o(224236);
   }
   
   public final void a(a parama)
   {
-    AppMethodBeat.i(190101);
-    b.bqS("DirectCodecWrapper");
-    AppMethodBeat.o(190101);
+    AppMethodBeat.i(224232);
+    b.bDR("DirectCodecWrapper");
+    AppMethodBeat.o(224232);
   }
   
   public final a.b b(e parame)
   {
-    AppMethodBeat.i(190102);
-    b.bqS("DirectCodecWrapper");
-    parame = a.b.SmB;
-    AppMethodBeat.o(190102);
+    AppMethodBeat.i(224233);
+    b.bDR("DirectCodecWrapper");
+    parame = a.b.ZPm;
+    AppMethodBeat.o(224233);
     return parame;
-  }
-  
-  public final void configure(MediaFormat paramMediaFormat, Surface paramSurface, MediaCrypto paramMediaCrypto, int paramInt)
-  {
-    AppMethodBeat.i(190104);
-    this.btk.configure(paramMediaFormat, paramSurface, paramMediaCrypto, 0);
-    AppMethodBeat.o(190104);
-  }
-  
-  public final int dequeueInputBuffer(long paramLong)
-  {
-    AppMethodBeat.i(190112);
-    int i = this.btk.dequeueInputBuffer(paramLong);
-    AppMethodBeat.o(190112);
-    return i;
-  }
-  
-  public final int dequeueOutputBuffer(MediaCodec.BufferInfo paramBufferInfo, long paramLong)
-  {
-    AppMethodBeat.i(190111);
-    int i = this.btk.dequeueOutputBuffer(paramBufferInfo, paramLong);
-    AppMethodBeat.o(190111);
-    return i;
   }
   
   public final void flush()
   {
-    AppMethodBeat.i(190106);
-    this.btk.flush();
-    AppMethodBeat.o(190106);
+    AppMethodBeat.i(224242);
+    this.bcN.flush();
+    AppMethodBeat.o(224242);
   }
   
-  public final MediaCodec hps()
+  public final MediaCodec isY()
   {
-    return this.btk;
+    return this.bcN;
   }
   
-  public final void hpt() {}
+  public final void isZ() {}
   
-  public final void hpu()
+  public final void ita()
   {
-    AppMethodBeat.i(190103);
-    b.bqS("DirectCodecWrapper");
-    AppMethodBeat.o(190103);
+    AppMethodBeat.i(224234);
+    b.bDR("DirectCodecWrapper");
+    AppMethodBeat.o(224234);
+  }
+  
+  @TargetApi(23)
+  public final void q(Surface paramSurface)
+  {
+    AppMethodBeat.i(224259);
+    this.bcN.setOutputSurface(paramSurface);
+    AppMethodBeat.o(224259);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(190108);
-    this.btk.release();
-    AppMethodBeat.o(190108);
+    AppMethodBeat.i(224245);
+    this.bcN.release();
+    AppMethodBeat.o(224245);
   }
   
   public final void releaseOutputBuffer(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(190109);
-    this.btk.releaseOutputBuffer(paramInt, paramBoolean);
-    AppMethodBeat.o(190109);
-  }
-  
-  @TargetApi(23)
-  public final void setOutputSurface(Surface paramSurface)
-  {
-    AppMethodBeat.i(190113);
-    this.btk.setOutputSurface(paramSurface);
-    AppMethodBeat.o(190113);
+    AppMethodBeat.i(224246);
+    this.bcN.releaseOutputBuffer(paramInt, paramBoolean);
+    AppMethodBeat.o(224246);
   }
   
   public final void start()
   {
-    AppMethodBeat.i(190105);
-    this.btk.start();
-    AppMethodBeat.o(190105);
+    AppMethodBeat.i(224241);
+    this.bcN.start();
+    AppMethodBeat.o(224241);
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(190107);
-    this.btk.stop();
-    AppMethodBeat.o(190107);
+    AppMethodBeat.i(224244);
+    this.bcN.stop();
+    AppMethodBeat.o(224244);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tmediacodec.b.d
  * JD-Core Version:    0.7.0.1
  */

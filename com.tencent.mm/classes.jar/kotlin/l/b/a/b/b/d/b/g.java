@@ -12,7 +12,7 @@ public final class g
   public static final List<c> a(Annotation[] paramArrayOfAnnotation)
   {
     AppMethodBeat.i(57420);
-    p.h(paramArrayOfAnnotation, "$this$getAnnotations");
+    p.k(paramArrayOfAnnotation, "$this$getAnnotations");
     Collection localCollection = (Collection)new ArrayList(paramArrayOfAnnotation.length);
     int j = paramArrayOfAnnotation.length;
     int i = 0;
@@ -29,15 +29,15 @@ public final class g
   public static final c a(Annotation[] paramArrayOfAnnotation, kotlin.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(57421);
-    p.h(paramArrayOfAnnotation, "$this$findAnnotation");
-    p.h(paramb, "fqName");
+    p.k(paramArrayOfAnnotation, "$this$findAnnotation");
+    p.k(paramb, "fqName");
     int j = paramArrayOfAnnotation.length;
     int i = 0;
     Annotation localAnnotation;
     if (i < j)
     {
       localAnnotation = paramArrayOfAnnotation[i];
-      if (!p.j(b.bB(kotlin.g.a.a(kotlin.g.a.a(localAnnotation))).hJd(), paramb)) {}
+      if (!p.h(b.ca(kotlin.g.a.a(kotlin.g.a.a(localAnnotation))).iNx(), paramb)) {}
     }
     for (paramArrayOfAnnotation = localAnnotation;; paramArrayOfAnnotation = null)
     {
@@ -57,7 +57,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.d.b.g
  * JD-Core Version:    0.7.0.1
  */

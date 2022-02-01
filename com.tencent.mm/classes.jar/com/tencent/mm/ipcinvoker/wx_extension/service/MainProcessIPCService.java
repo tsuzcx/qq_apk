@@ -7,18 +7,18 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 public class MainProcessIPCService
   extends BaseIPCService
 {
-  public static final String dkO;
+  public static final String PROCESS_NAME;
   
   static
   {
-    AppMethodBeat.i(225237);
-    dkO = MMApplicationContext.getPackageName();
-    AppMethodBeat.o(225237);
+    AppMethodBeat.i(205231);
+    PROCESS_NAME = MMApplicationContext.getPackageName();
+    AppMethodBeat.o(205231);
   }
   
   public final String getProcessName()
   {
-    return dkO;
+    return PROCESS_NAME;
   }
 }
 

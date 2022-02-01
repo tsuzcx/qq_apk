@@ -21,108 +21,108 @@ public class JpegTools
   
   public JpegTools(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(230321);
+    AppMethodBeat.i(189744);
     this.buf = null;
     this.ordivalue = -1;
     this.bigOrder = true;
     this.buf = new MBuf();
     this.buf.setBuffer(paramArrayOfByte);
-    AppMethodBeat.o(230321);
+    AppMethodBeat.o(189744);
   }
   
   public static String byte2HexString(byte paramByte)
   {
-    AppMethodBeat.i(230323);
+    AppMethodBeat.i(189765);
     String str2 = Integer.toHexString(paramByte & 0xFF);
     String str1 = str2;
     if (str2.length() == 1) {
       str1 = "0".concat(String.valueOf(str2));
     }
     str1 = "" + str1.toUpperCase();
-    AppMethodBeat.o(230323);
+    AppMethodBeat.o(189765);
     return str1;
   }
   
   private String byteOrder()
   {
-    AppMethodBeat.i(230317);
+    AppMethodBeat.i(189730);
     int i = this.buf.getBuffer().get();
     int j = this.buf.getBuffer().get();
     if (((char)i == 'M') && ((char)j == 'M'))
     {
-      AppMethodBeat.o(230317);
+      AppMethodBeat.o(189730);
       return "MM";
     }
     if (((char)i == 'I') && ((char)j == 'I'))
     {
-      AppMethodBeat.o(230317);
+      AppMethodBeat.o(189730);
       return "II";
     }
-    AppMethodBeat.o(230317);
+    AppMethodBeat.o(189730);
     return "";
   }
   
   private boolean checkExifTag()
   {
-    AppMethodBeat.i(230314);
+    AppMethodBeat.i(189717);
     int i = this.buf.getBuffer().get();
     int j = this.buf.getBuffer().get();
     int k = this.buf.getBuffer().get();
     int m = this.buf.getBuffer().get();
     if (((char)i + (char)j + (char)k + (char)m).equals("Exif"))
     {
-      AppMethodBeat.o(230314);
+      AppMethodBeat.o(189717);
       return true;
     }
-    AppMethodBeat.o(230314);
+    AppMethodBeat.o(189717);
     return false;
   }
   
   private boolean checkIsJpeg()
   {
-    AppMethodBeat.i(230313);
+    AppMethodBeat.i(189712);
     byte b1 = this.buf.getBuffer().get();
     byte b2 = this.buf.getBuffer().get();
     if ((byte2HexString(b1).equals("FF")) && (byte2HexString(b2).equals("D8")))
     {
-      AppMethodBeat.o(230313);
+      AppMethodBeat.o(189712);
       return true;
     }
-    AppMethodBeat.o(230313);
+    AppMethodBeat.o(189712);
     return false;
   }
   
   private boolean checkTiffTag(boolean paramBoolean)
   {
-    AppMethodBeat.i(230318);
+    AppMethodBeat.i(189735);
     byte b1 = this.buf.getBuffer().get();
     byte b2 = this.buf.getBuffer().get();
     if ((paramBoolean) && (byte2HexString(b1).equals("00")) && (byte2HexString(b2).equals("2A")))
     {
-      AppMethodBeat.o(230318);
+      AppMethodBeat.o(189735);
       return true;
     }
     if ((byte2HexString(b1).equals("2A")) && (byte2HexString(b2).equals("00")))
     {
-      AppMethodBeat.o(230318);
+      AppMethodBeat.o(189735);
       return true;
     }
     Log.w("MicroMsg.JpegTools", "checkTiffTag: " + byte2HexString(b1) + " " + byte2HexString(b2));
-    AppMethodBeat.o(230318);
+    AppMethodBeat.o(189735);
     return false;
   }
   
   private void dropByte(int paramInt)
   {
-    AppMethodBeat.i(230316);
+    AppMethodBeat.i(189726);
     int i = this.buf.getBuffer().position();
     this.buf.getBuffer().position(i + paramInt);
-    AppMethodBeat.o(230316);
+    AppMethodBeat.o(189726);
   }
   
   private int findAppTag()
   {
-    AppMethodBeat.i(230315);
+    AppMethodBeat.i(189725);
     int i = 0;
     byte b1 = this.buf.getBuffer().get();
     byte b2 = this.buf.getBuffer().get();
@@ -133,7 +133,7 @@ public class JpegTools
     }
     for (;;)
     {
-      AppMethodBeat.o(230315);
+      AppMethodBeat.o(189725);
       return i;
       if ((byte2HexString(b1).equals("FF")) && (byte2HexString(b2).equals("E1")))
       {
@@ -160,24 +160,24 @@ public class JpegTools
   
   private int getOffset()
   {
-    AppMethodBeat.i(230319);
+    AppMethodBeat.i(189738);
     dropByte(4);
-    AppMethodBeat.o(230319);
+    AppMethodBeat.o(189738);
     return 0;
   }
   
   private int getOrei(boolean paramBoolean)
   {
-    AppMethodBeat.i(230320);
+    AppMethodBeat.i(189740);
     int i = this.buf.getBuffer().get();
     int j = this.buf.getBuffer().get();
     dropByte(2);
     if (paramBoolean)
     {
-      AppMethodBeat.o(230320);
+      AppMethodBeat.o(189740);
       return j & 0xFF;
     }
-    AppMethodBeat.o(230320);
+    AppMethodBeat.o(189740);
     return i & 0xFF;
   }
   
@@ -204,7 +204,7 @@ public class JpegTools
   
   public int parserJpeg()
   {
-    AppMethodBeat.i(230322);
+    AppMethodBeat.i(189756);
     for (;;)
     {
       int m;
@@ -214,19 +214,19 @@ public class JpegTools
         if (!checkIsJpeg())
         {
           Log.w("MicroMsg.JpegTools", "this is not jpeg or no exif data!!!");
-          AppMethodBeat.o(230322);
+          AppMethodBeat.o(189756);
           return -1;
         }
         if (findAppTag() < 0)
         {
           Log.w("MicroMsg.JpegTools", "datalen is error ");
-          AppMethodBeat.o(230322);
+          AppMethodBeat.o(189756);
           return -1;
         }
         if (!checkExifTag())
         {
           Log.w("MicroMsg.JpegTools", "checkExifTag is error");
-          AppMethodBeat.o(230322);
+          AppMethodBeat.o(189756);
           return -1;
         }
         dropByte(2);
@@ -234,14 +234,14 @@ public class JpegTools
         if ((!str.equals("MM")) && (!str.equals("II")))
         {
           Log.w("MicroMsg.JpegTools", "byteOrder  is error ".concat(String.valueOf(str)));
-          AppMethodBeat.o(230322);
+          AppMethodBeat.o(189756);
           return -1;
         }
         this.bigOrder = str.equals("MM");
         if (!checkTiffTag(this.bigOrder))
         {
           Log.w("MicroMsg.JpegTools", "checkTiffTag  is error ");
-          AppMethodBeat.o(230322);
+          AppMethodBeat.o(189756);
           return -1;
         }
         getOffset();
@@ -260,7 +260,7 @@ public class JpegTools
         byte b1;
         byte b2;
         Log.e("MicroMsg.JpegTools", "parser jpeg error");
-        AppMethodBeat.o(230322);
+        AppMethodBeat.o(189756);
         return -1;
       }
       if ((m < j) && (m < 255))
@@ -282,7 +282,7 @@ public class JpegTools
       {
         Log.d("MicroMsg.JpegTools", "orei " + this.ordivalue);
         i = getOreiValue();
-        AppMethodBeat.o(230322);
+        AppMethodBeat.o(189756);
         return i;
       }
       i = k;
@@ -311,7 +311,7 @@ public class JpegTools
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.JpegTools
  * JD-Core Version:    0.7.0.1
  */

@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.wallet.pwd.ui;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.ui.l.a;
+import com.tencent.mm.plugin.wallet_core.ui.m.a;
 
 final class WalletForgotPwdUI$5
-  implements l.a
+  implements m.a
 {
   WalletForgotPwdUI$5(WalletForgotPwdUI paramWalletForgotPwdUI) {}
   
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(69655);
-    WalletForgotPwdUI.a(this.HJI, true);
-    WalletForgotPwdUI.a(this.HJI);
+    WalletForgotPwdUI.a(this.OBC, true);
+    WalletForgotPwdUI.a(this.OBC);
     AppMethodBeat.o(69655);
   }
 }

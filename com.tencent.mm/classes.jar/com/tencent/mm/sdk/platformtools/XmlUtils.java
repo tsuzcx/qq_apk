@@ -21,37 +21,37 @@ class XmlUtils
 {
   public static final ArrayList<Object> readListXml(InputStream paramInputStream)
   {
-    AppMethodBeat.i(215458);
+    AppMethodBeat.i(262012);
     XmlPullParser localXmlPullParser = Xml.newPullParser();
     localXmlPullParser.setInput(paramInputStream, null);
     paramInputStream = (ArrayList)readValueXml(localXmlPullParser, new String[1]);
-    AppMethodBeat.o(215458);
+    AppMethodBeat.o(262012);
     return paramInputStream;
   }
   
   public static final HashMap<String, Object> readMapXml(InputStream paramInputStream)
   {
-    AppMethodBeat.i(215457);
+    AppMethodBeat.i(262009);
     XmlPullParser localXmlPullParser = Xml.newPullParser();
     localXmlPullParser.setInput(paramInputStream, null);
     paramInputStream = (HashMap)readValueXml(localXmlPullParser, new String[1]);
-    AppMethodBeat.o(215457);
+    AppMethodBeat.o(262009);
     return paramInputStream;
   }
   
   public static final HashSet<Object> readSetXml(InputStream paramInputStream)
   {
-    AppMethodBeat.i(215459);
+    AppMethodBeat.i(262014);
     XmlPullParser localXmlPullParser = Xml.newPullParser();
     localXmlPullParser.setInput(paramInputStream, null);
     paramInputStream = (HashSet)readValueXml(localXmlPullParser, new String[1]);
-    AppMethodBeat.o(215459);
+    AppMethodBeat.o(262014);
     return paramInputStream;
   }
   
   public static final int[] readThisIntArrayXml(XmlPullParser paramXmlPullParser, String paramString, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(215460);
+    AppMethodBeat.i(262026);
     int i;
     int j;
     try
@@ -74,30 +74,30 @@ class XmlUtils
           i = m;
         } while (m != 1);
         paramXmlPullParser = new XmlPullParserException("Document ended before " + paramString + " end tag");
-        AppMethodBeat.o(215460);
+        AppMethodBeat.o(262026);
         throw paramXmlPullParser;
       }
       catch (NullPointerException paramXmlPullParser)
       {
         paramXmlPullParser = new XmlPullParserException("Need value attribute in item");
-        AppMethodBeat.o(215460);
+        AppMethodBeat.o(262026);
         throw paramXmlPullParser;
       }
       catch (NumberFormatException paramXmlPullParser)
       {
         paramXmlPullParser = new XmlPullParserException("Not a number in value attribute in item");
-        AppMethodBeat.o(215460);
+        AppMethodBeat.o(262026);
         throw paramXmlPullParser;
       }
       paramXmlPullParser = paramXmlPullParser;
       paramXmlPullParser = new XmlPullParserException("Need num attribute in byte-array");
-      AppMethodBeat.o(215460);
+      AppMethodBeat.o(262026);
       throw paramXmlPullParser;
     }
     catch (NumberFormatException paramXmlPullParser)
     {
       paramXmlPullParser = new XmlPullParserException("Not a number in num attribute in byte-array");
-      AppMethodBeat.o(215460);
+      AppMethodBeat.o(262026);
       throw paramXmlPullParser;
     }
     if (i == 2) {
@@ -107,14 +107,14 @@ class XmlUtils
     {
       int m;
       paramXmlPullParser = new XmlPullParserException("Expected item tag at: " + paramXmlPullParser.getName());
-      AppMethodBeat.o(215460);
+      AppMethodBeat.o(262026);
       throw paramXmlPullParser;
       int k = j;
       if (i == 3)
       {
         if (paramXmlPullParser.getName().equals(paramString))
         {
-          AppMethodBeat.o(215460);
+          AppMethodBeat.o(262026);
           return paramArrayOfString;
         }
         if (!paramXmlPullParser.getName().equals("item")) {
@@ -124,7 +124,7 @@ class XmlUtils
       }
     }
     paramXmlPullParser = new XmlPullParserException("Expected " + paramString + " end tag at: " + paramXmlPullParser.getName());
-    AppMethodBeat.o(215460);
+    AppMethodBeat.o(262026);
     throw paramXmlPullParser;
   }
   
@@ -477,14 +477,14 @@ class XmlUtils
   
   public static final void writeListXml(List<Object> paramList, OutputStream paramOutputStream)
   {
-    AppMethodBeat.i(215456);
+    AppMethodBeat.i(261999);
     XmlSerializer localXmlSerializer = Xml.newSerializer();
     localXmlSerializer.setOutput(paramOutputStream, "utf-8");
     localXmlSerializer.startDocument(null, Boolean.TRUE);
     localXmlSerializer.setFeature("http://xmlpull.org/v1/doc/features.html#indent-output", true);
     writeListXml(paramList, null, localXmlSerializer);
     localXmlSerializer.endDocument();
-    AppMethodBeat.o(215456);
+    AppMethodBeat.o(261999);
   }
   
   public static final void writeListXml(List<Object> paramList, String paramString, XmlSerializer paramXmlSerializer)
@@ -514,14 +514,14 @@ class XmlUtils
   
   public static final void writeMapXml(Map<String, Object> paramMap, OutputStream paramOutputStream)
   {
-    AppMethodBeat.i(215455);
+    AppMethodBeat.i(261996);
     XmlSerializer localXmlSerializer = Xml.newSerializer();
     localXmlSerializer.setOutput(paramOutputStream, "utf-8");
     localXmlSerializer.startDocument(null, Boolean.TRUE);
     localXmlSerializer.setFeature("http://xmlpull.org/v1/doc/features.html#indent-output", true);
     writeMapXml(paramMap, null, localXmlSerializer);
     localXmlSerializer.endDocument();
-    AppMethodBeat.o(215455);
+    AppMethodBeat.o(261996);
   }
   
   public static final void writeMapXml(Map<String, Object> paramMap, String paramString, XmlSerializer paramXmlSerializer)
@@ -676,7 +676,7 @@ class XmlUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.XmlUtils
  * JD-Core Version:    0.7.0.1
  */

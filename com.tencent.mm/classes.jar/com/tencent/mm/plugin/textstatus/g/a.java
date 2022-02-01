@@ -1,273 +1,126 @@
 package com.tencent.mm.plugin.textstatus.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.textstatus.proto.j;
+import com.tencent.mm.plugin.textstatus.proto.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import java.util.concurrent.ConcurrentHashMap;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-public class a
-  extends com.tencent.mm.bw.a
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/textstatus/model/NetSceneDeleteSelfHistory;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "statusId", "", "scene", "", "(Ljava/lang/String;I)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "commReqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "getStatusId", "()Ljava/lang/String;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-textstatus_release"})
+public final class a
+  extends q
+  implements m
 {
-  public String FZB;
-  public String Gae;
-  public boolean Gaf;
-  public int Gag;
-  public String Gah;
-  public String Gai;
-  public String Gaj;
-  public LinkedList<r> Gak;
-  public long UrT;
-  public String brandName;
-  public String desc;
-  public long enterTime;
-  public String fileUrl;
-  public String fuN;
-  public String iFo;
-  public String jhb;
-  public int mediaType;
-  public String sessionId;
-  public String thumbUrl;
+  public static final a.a MCX;
+  public final String MBU;
+  private i callback;
+  private final d lKU;
   
-  public a()
+  static
   {
-    AppMethodBeat.i(222817);
-    this.Gak = new LinkedList();
-    AppMethodBeat.o(222817);
+    AppMethodBeat.i(238386);
+    MCX = new a.a((byte)0);
+    AppMethodBeat.o(238386);
   }
   
-  public final int op(int paramInt, Object... paramVarArgs)
+  public a(String paramString, int paramInt)
   {
-    AppMethodBeat.i(222818);
-    if (paramInt == 0)
+    AppMethodBeat.i(238382);
+    this.MBU = paramString;
+    paramString = new d.a();
+    paramString.vD(getType());
+    paramString.TW("/cgi-bin/micromsg-bin/textstatusdeleteselfhistory");
+    paramString.c((com.tencent.mm.cd.a)new j());
+    paramString.d((com.tencent.mm.cd.a)new k());
+    paramString = paramString.bgN();
+    p.j(paramString, "commReqRespBuilder.buildInstance()");
+    this.lKU = paramString;
+    paramString = this.lKU.bhX();
+    if (paramString == null)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Gae != null) {
-        paramVarArgs.e(1, this.Gae);
-      }
-      if (this.FZB != null) {
-        paramVarArgs.e(2, this.FZB);
-      }
-      if (this.desc != null) {
-        paramVarArgs.e(3, this.desc);
-      }
-      if (this.thumbUrl != null) {
-        paramVarArgs.e(4, this.thumbUrl);
-      }
-      if (this.fileUrl != null) {
-        paramVarArgs.e(5, this.fileUrl);
-      }
-      if (this.jhb != null) {
-        paramVarArgs.e(6, this.jhb);
-      }
-      if (this.brandName != null) {
-        paramVarArgs.e(7, this.brandName);
-      }
-      paramVarArgs.cc(8, this.Gaf);
-      paramVarArgs.aM(9, this.mediaType);
-      paramVarArgs.aM(10, this.Gag);
-      if (this.Gah != null) {
-        paramVarArgs.e(11, this.Gah);
-      }
-      if (this.Gai != null) {
-        paramVarArgs.e(12, this.Gai);
-      }
-      if (this.fuN != null) {
-        paramVarArgs.e(13, this.fuN);
-      }
-      if (this.iFo != null) {
-        paramVarArgs.e(14, this.iFo);
-      }
-      if (this.Gaj != null) {
-        paramVarArgs.e(15, this.Gaj);
-      }
-      paramVarArgs.e(16, 8, this.Gak);
-      if (this.sessionId != null) {
-        paramVarArgs.e(17, this.sessionId);
-      }
-      paramVarArgs.bb(18, this.UrT);
-      paramVarArgs.bb(19, this.enterTime);
-      AppMethodBeat.o(222818);
-      return 0;
+      paramString = new t("null cannot be cast to non-null type com.tencent.mm.plugin.textstatus.proto.TextStatusDeleteSelfHistoryReq");
+      AppMethodBeat.o(238382);
+      throw paramString;
     }
-    if (paramInt == 1) {
-      if (this.Gae == null) {
-        break label1322;
-      }
-    }
-    label1322:
-    for (int i = g.a.a.b.b.a.f(1, this.Gae) + 0;; i = 0)
+    paramString = (j)paramString;
+    paramString.MEN = this.MBU;
+    paramString.scene = paramInt;
+    Log.i("MicroMsg.TextStatus.NetSceneDeleteSelfHistory", "statusId:" + this.MBU);
+    AppMethodBeat.o(238382);
+  }
+  
+  public final int doScene(g paramg, i parami)
+  {
+    AppMethodBeat.i(238376);
+    p.k(paramg, "dispatcher");
+    p.k(parami, "callback");
+    this.callback = parami;
+    int i = dispatch(paramg, (s)this.lKU, (m)this);
+    AppMethodBeat.o(238376);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 5967;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(238380);
+    p.k(params, "rr");
+    Log.i("MicroMsg.TextStatus.NetSceneDeleteSelfHistory", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    String str;
+    if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramInt = i;
-      if (this.FZB != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.FZB);
+      params = com.tencent.mm.plugin.textstatus.b.f.MAm;
+      params = com.tencent.mm.plugin.textstatus.b.f.gly();
+      paramArrayOfByte = this.MBU;
+      str = com.tencent.mm.plugin.auth.a.a.crN();
+      p.j(str, "Account.username()");
+      p.k(paramArrayOfByte, "statusId");
+      p.k(str, "userName");
+      if (params.db.delete(com.tencent.mm.plugin.textstatus.g.e.f.Alf, "StatusID = ?", new String[] { paramArrayOfByte }) <= 0) {
+        break label215;
       }
-      i = paramInt;
-      if (this.desc != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.desc);
-      }
-      paramInt = i;
-      if (this.thumbUrl != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.thumbUrl);
-      }
-      i = paramInt;
-      if (this.fileUrl != null) {
-        i = paramInt + g.a.a.b.b.a.f(5, this.fileUrl);
-      }
-      paramInt = i;
-      if (this.jhb != null) {
-        paramInt = i + g.a.a.b.b.a.f(6, this.jhb);
-      }
-      i = paramInt;
-      if (this.brandName != null) {
-        i = paramInt + g.a.a.b.b.a.f(7, this.brandName);
-      }
-      i = i + (g.a.a.b.b.a.fS(8) + 1) + g.a.a.b.b.a.bu(9, this.mediaType) + g.a.a.b.b.a.bu(10, this.Gag);
-      paramInt = i;
-      if (this.Gah != null) {
-        paramInt = i + g.a.a.b.b.a.f(11, this.Gah);
-      }
-      i = paramInt;
-      if (this.Gai != null) {
-        i = paramInt + g.a.a.b.b.a.f(12, this.Gai);
-      }
-      paramInt = i;
-      if (this.fuN != null) {
-        paramInt = i + g.a.a.b.b.a.f(13, this.fuN);
-      }
-      i = paramInt;
-      if (this.iFo != null) {
-        i = paramInt + g.a.a.b.b.a.f(14, this.iFo);
-      }
-      paramInt = i;
-      if (this.Gaj != null) {
-        paramInt = i + g.a.a.b.b.a.f(15, this.Gaj);
-      }
-      i = paramInt + g.a.a.a.c(16, 8, this.Gak);
-      paramInt = i;
-      if (this.sessionId != null) {
-        paramInt = i + g.a.a.b.b.a.f(17, this.sessionId);
-      }
-      i = g.a.a.b.b.a.r(18, this.UrT);
-      int j = g.a.a.b.b.a.r(19, this.enterTime);
-      AppMethodBeat.o(222818);
-      return paramInt + i + j;
-      if (paramInt == 2)
+    }
+    label215:
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      if (paramInt1 != 0)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.Gak.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
-          }
-        }
-        AppMethodBeat.o(222818);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
-        a locala = (a)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        com.tencent.mm.plugin.textstatus.g.e.a locala = (com.tencent.mm.plugin.textstatus.g.e.a)params.gmf().get(str);
+        if ((locala != null) && (p.h(locala.field_StatusID, paramArrayOfByte)))
         {
-        default: 
-          AppMethodBeat.o(222818);
-          return -1;
-        case 1: 
-          locala.Gae = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(222818);
-          return 0;
-        case 2: 
-          locala.FZB = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(222818);
-          return 0;
-        case 3: 
-          locala.desc = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(222818);
-          return 0;
-        case 4: 
-          locala.thumbUrl = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(222818);
-          return 0;
-        case 5: 
-          locala.fileUrl = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(222818);
-          return 0;
-        case 6: 
-          locala.jhb = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(222818);
-          return 0;
-        case 7: 
-          locala.brandName = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(222818);
-          return 0;
-        case 8: 
-          locala.Gaf = ((g.a.a.a.a)localObject1).UbS.yZ();
-          AppMethodBeat.o(222818);
-          return 0;
-        case 9: 
-          locala.mediaType = ((g.a.a.a.a)localObject1).UbS.zi();
-          AppMethodBeat.o(222818);
-          return 0;
-        case 10: 
-          locala.Gag = ((g.a.a.a.a)localObject1).UbS.zi();
-          AppMethodBeat.o(222818);
-          return 0;
-        case 11: 
-          locala.Gah = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(222818);
-          return 0;
-        case 12: 
-          locala.Gai = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(222818);
-          return 0;
-        case 13: 
-          locala.fuN = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(222818);
-          return 0;
-        case 14: 
-          locala.iFo = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(222818);
-          return 0;
-        case 15: 
-          locala.Gaj = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(222818);
-          return 0;
-        case 16: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new r();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((r)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            locala.Gak.add(localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(222818);
-          return 0;
-        case 17: 
-          locala.sessionId = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(222818);
-          return 0;
-        case 18: 
-          locala.UrT = ((g.a.a.a.a)localObject1).UbS.zl();
-          AppMethodBeat.o(222818);
-          return 0;
+          params.gmf().remove(str);
+          params.doNotify(str);
         }
-        locala.enterTime = ((g.a.a.a.a)localObject1).UbS.zl();
-        AppMethodBeat.o(222818);
-        return 0;
       }
-      AppMethodBeat.o(222818);
-      return -1;
+      params = this.callback;
+      if (params == null) {
+        break;
+      }
+      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
+      AppMethodBeat.o(238380);
+      return;
     }
+    AppMethodBeat.o(238380);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.g.a
  * JD-Core Version:    0.7.0.1
  */

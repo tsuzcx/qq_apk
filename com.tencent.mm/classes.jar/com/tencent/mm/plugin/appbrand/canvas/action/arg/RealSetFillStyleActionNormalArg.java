@@ -34,7 +34,7 @@ public class RealSetFillStyleActionNormalArg
   public final boolean a(d paramd, Canvas paramCanvas)
   {
     AppMethodBeat.i(145055);
-    paramd = paramd.kZm;
+    paramd = paramd.nTx;
     paramd.setShader(null);
     paramd.setColor(this.color);
     AppMethodBeat.o(145055);
@@ -121,7 +121,7 @@ public class RealSetFillStyleActionNormalArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetFillStyleActionNormalArg
  * JD-Core Version:    0.7.0.1
  */

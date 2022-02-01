@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.wallet_core.d;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.model.ag;
+import com.tencent.mm.plugin.wallet_core.model.ah;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class i
-  extends MAutoStorage<ag>
+  extends MAutoStorage<ah>
 {
   public static final String[] SQL_CREATE;
   private ISQLiteDatabase db;
@@ -16,17 +16,17 @@ public final class i
   static
   {
     AppMethodBeat.i(70623);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(ag.info, "WalletPrefInfo") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(ah.info, "WalletPrefInfo") };
     AppMethodBeat.o(70623);
   }
   
   public i(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, ag.info, "WalletPrefInfo", null);
+    super(paramISQLiteDatabase, ah.info, "WalletPrefInfo", null);
     this.db = paramISQLiteDatabase;
   }
   
-  public final ag aVD(String paramString)
+  public final ah bhm(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(70621);
@@ -41,7 +41,7 @@ public final class i
       paramString = localObject;
       if (localCursor.moveToFirst())
       {
-        paramString = new ag();
+        paramString = new ah();
         paramString.convertFrom(localCursor);
       }
       localCursor.close();
@@ -52,7 +52,7 @@ public final class i
     return null;
   }
   
-  public final boolean aVE(String paramString)
+  public final boolean bhn(String paramString)
   {
     AppMethodBeat.i(70622);
     if (!Util.isNullOrNil(paramString))
@@ -68,7 +68,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.d.i
  * JD-Core Version:    0.7.0.1
  */

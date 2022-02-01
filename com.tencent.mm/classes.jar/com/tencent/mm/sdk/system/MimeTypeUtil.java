@@ -79,6 +79,11 @@ public class MimeTypeUtil
         AppMethodBeat.o(153470);
         return "jpg";
       }
+      if ("image/jpg".equals(str3))
+      {
+        AppMethodBeat.o(153470);
+        return "jpg";
+      }
     }
     AppMethodBeat.o(153470);
     return str1;
@@ -86,20 +91,20 @@ public class MimeTypeUtil
   
   public static String getFileExtByFilePath(String paramString)
   {
-    AppMethodBeat.i(214368);
+    AppMethodBeat.i(210064);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(214368);
+      AppMethodBeat.o(210064);
       return null;
     }
     int i = paramString.lastIndexOf('.');
     if ((i < 0) || (i >= paramString.length() - 1))
     {
-      AppMethodBeat.o(214368);
+      AppMethodBeat.o(210064);
       return null;
     }
     paramString = paramString.substring(i + 1);
-    AppMethodBeat.o(214368);
+    AppMethodBeat.o(210064);
     return paramString;
   }
   

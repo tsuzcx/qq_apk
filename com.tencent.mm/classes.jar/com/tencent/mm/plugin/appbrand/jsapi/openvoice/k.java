@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.openvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.q;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.q.11;
@@ -18,7 +18,7 @@ public final class k
   public k()
   {
     AppMethodBeat.i(180257);
-    com.tencent.mm.plugin.appbrand.permission.c.aem("subscribeVoIPMembers");
+    com.tencent.mm.plugin.appbrand.permission.c.amg("subscribeVoIPMembers");
     AppMethodBeat.o(180257);
   }
   
@@ -27,14 +27,14 @@ public final class k
     AppMethodBeat.i(180258);
     if (paramJSONObject == null)
     {
-      paramc.i(paramInt, h("fail:data is null or nil", null));
+      paramc.j(paramInt, h("fail:data is null or nil", null));
       AppMethodBeat.o(180258);
       return;
     }
     Object localObject = paramc.getAppId();
     Log.i(TAG, "hy: appId:" + (String)localObject + ", parmas:" + paramJSONObject.toString());
-    localObject = q.qta;
-    ((q)localObject).aj(new q.11((q)localObject, paramJSONObject, new b() {}));
+    localObject = q.tRM;
+    ((q)localObject).am(new q.11((q)localObject, new b() {}, paramJSONObject));
     AppMethodBeat.o(180258);
   }
 }

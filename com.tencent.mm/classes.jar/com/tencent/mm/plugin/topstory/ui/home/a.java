@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.topstory.ui.home;
 
 import com.tencent.mm.plugin.websearch.webview.d;
-import com.tencent.mm.protocal.protobuf.eii;
+import com.tencent.mm.protocal.protobuf.esk;
 import com.tencent.mm.ui.MMActivity;
 
 public abstract interface a
-  extends d<eii>
+  extends d<esk>
 {
-  public abstract void aTA(String paramString);
+  public abstract void beY(String paramString);
   
-  public abstract void aTB(String paramString);
+  public abstract void beZ(String paramString);
   
-  public abstract void aTC(String paramString);
+  public abstract void bfa(String paramString);
   
-  public abstract void aTD(String paramString);
+  public abstract void bfb(String paramString);
   
-  public abstract MMActivity eeF();
+  public abstract MMActivity eOa();
   
-  public abstract void fyj();
+  public abstract void gqg();
   
-  public abstract void fyk();
+  public abstract void gqh();
   
-  public abstract void fyl();
+  public abstract void gqi();
   
-  public abstract void fym();
+  public abstract void gqj();
   
-  public abstract int fyn();
+  public abstract int gqk();
   
-  public abstract void jn(int paramInt1, int paramInt2);
+  public abstract void kA(int paramInt1, int paramInt2);
   
-  public abstract void jo(int paramInt1, int paramInt2);
+  public abstract void kz(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.home.a
  * JD-Core Version:    0.7.0.1
  */

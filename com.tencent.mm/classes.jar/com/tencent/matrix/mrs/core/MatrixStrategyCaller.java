@@ -3,14 +3,16 @@ package com.tencent.matrix.mrs.core;
 import android.content.Context;
 import android.os.Build.VERSION;
 import com.tencent.matrix.strategy.c.a;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.b;
+import com.tencent.mm.an.t;
+import com.tencent.mm.b.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.report.e.b;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.WeChatHosts;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 
 public abstract class MatrixStrategyCaller
   implements MrsCallback
@@ -22,24 +24,24 @@ public abstract class MatrixStrategyCaller
   
   public String getCryptKey(MatrixUploadDataSlice paramMatrixUploadDataSlice)
   {
-    return com.tencent.mm.b.g.getMessageDigest(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(d.KyO), Long.valueOf(paramMatrixUploadDataSlice.getDataSize()) }).getBytes()).toLowerCase();
+    return g.getMessageDigest(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(d.RAD), Long.valueOf(paramMatrixUploadDataSlice.getDataSize()) }).getBytes()).toLowerCase();
   }
   
   public String getHost(MatrixUploadDataSlice paramMatrixUploadDataSlice)
   {
-    return WeChatHosts.domainString(2131761742);
+    return WeChatHosts.domainString(e.b.host_support_weixin_qq_com);
   }
   
   public String getPublicSharePath()
   {
     try
     {
-      Object localObject = o.X(MMApplicationContext.getContext().getFilesDir());
-      if (!((o)localObject).exists()) {
-        ((o)localObject).createNewFile();
+      Object localObject = q.Q(MMApplicationContext.getContext().getFilesDir());
+      if (!((q)localObject).ifE()) {
+        ((q)localObject).ifM();
       }
-      localObject = ((o)localObject).toString();
-      com.tencent.matrix.g.c.i("Matrix.MatrixStrategyCaller", "[TEST-PATH] getPublicSharePath, path: %s", new Object[] { localObject });
+      localObject = ((q)localObject).toString();
+      com.tencent.matrix.e.c.i("Matrix.MatrixStrategyCaller", "[TEST-PATH] getPublicSharePath, path: %s", new Object[] { localObject });
       localObject = (String)localObject + "/mrs/";
       return localObject;
     }
@@ -52,12 +54,12 @@ public abstract class MatrixStrategyCaller
   
   public String getUrl(MatrixUploadDataSlice paramMatrixUploadDataSlice)
   {
-    String str = com.tencent.mm.b.g.getMessageDigest(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(d.KyO), Long.valueOf(paramMatrixUploadDataSlice.getDataSize()) }).getBytes()).toLowerCase();
-    StringBuilder localStringBuilder = new StringBuilder(512).append("/cgi-bin/mmsupport-bin/stackreport?version=").append(Integer.toHexString(d.KyO)).append("&devicetype=").append("android-" + Build.VERSION.SDK_INT).append("&filelength=").append(paramMatrixUploadDataSlice.getDataSize()).append("&sum=").append(str);
+    String str = g.getMessageDigest(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(d.RAD), Long.valueOf(paramMatrixUploadDataSlice.getDataSize()) }).getBytes()).toLowerCase();
+    StringBuilder localStringBuilder = new StringBuilder(512).append("/cgi-bin/mmsupport-bin/stackreport?version=").append(Integer.toHexString(d.RAD)).append("&devicetype=").append("android-" + Build.VERSION.SDK_INT).append("&filelength=").append(paramMatrixUploadDataSlice.getDataSize()).append("&sum=").append(str);
     long l;
-    if ((MMApplicationContext.isMMProcess()) && (com.tencent.mm.kernel.g.aAc()))
+    if ((MMApplicationContext.isMMProcess()) && (h.aHB()))
     {
-      str = z.aTY();
+      str = z.bcZ();
       if ((str != null) && (str.length() != 0)) {
         localStringBuilder.append("&username=").append(str);
       }
@@ -89,7 +91,7 @@ public abstract class MatrixStrategyCaller
   {
     try
     {
-      if (!com.tencent.mm.kernel.g.aAc())
+      if (!h.aHB())
       {
         Log.e("Matrix.MatrixStrategyCaller", "onRequestGetMrsStrategy, account not ready");
         return false;
@@ -117,13 +119,13 @@ public abstract class MatrixStrategyCaller
         MrsLogic.onStrategyResp(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousArrayOfByte);
       }
     });
-    com.tencent.mm.kernel.g.aAg().hqi.a(paramArrayOfByte, 0);
+    h.aHF().kcd.a(paramArrayOfByte, 0);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.mrs.core.MatrixStrategyCaller
  * JD-Core Version:    0.7.0.1
  */

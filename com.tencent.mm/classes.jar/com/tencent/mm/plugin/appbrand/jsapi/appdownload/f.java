@@ -1,18 +1,19 @@
 package com.tencent.mm.plugin.appbrand.jsapi.appdownload;
 
-import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.v;
 
 public final class f
-  extends com.tencent.mm.plugin.appbrand.jsapi.d<s>
+  extends c<v>
 {
   public static final int CTRL_INDEX = 670;
   public static final String NAME = "getDownloadWidgetTaskInfoForNative";
   
   static class a
-    implements b<IPCVoid, IPCString>
+    implements d<IPCVoid, IPCString>
   {}
 }
 

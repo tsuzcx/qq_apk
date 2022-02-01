@@ -15,6 +15,9 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import com.tencent.kinda.framework.R.id;
+import com.tencent.kinda.framework.R.layout;
+import com.tencent.kinda.framework.R.style;
 import com.tencent.kinda.framework.module.impl.KindaCacheServiceImpl;
 import com.tencent.kinda.framework.widget.tools.KindaContext;
 import com.tencent.kinda.framework.widget.tools.ResourcesUtils;
@@ -56,7 +59,7 @@ public class AlertDialogImpl
     Activity localActivity = KindaContext.getTopOrUIPageFragmentActivity();
     if ((localActivity instanceof UIPageFragmentActivity))
     {
-      if (((UIPageFragmentActivity)localActivity).awW())
+      if (((UIPageFragmentActivity)localActivity).aEp())
       {
         ((UIPageFragmentActivity)localActivity).finish();
         AppMethodBeat.o(18745);
@@ -305,22 +308,22 @@ public class AlertDialogImpl
       AppMethodBeat.o(18753);
       return;
     }
-    localObject = new i((Context)localObject, 2131821772);
-    ((i)localObject).setContentView(2131495143);
-    TextView localTextView3 = (TextView)((i)localObject).findViewById(2131309199);
-    CdnImageView localCdnImageView = (CdnImageView)((i)localObject).findViewById(2131299201);
-    TextView localTextView1 = (TextView)((i)localObject).findViewById(2131299223);
-    TextView localTextView2 = (TextView)((i)localObject).findViewById(2131297814);
+    localObject = new i((Context)localObject, R.style.mmalertdialog);
+    ((i)localObject).setContentView(R.layout.kinda_image_dialog_with_one_btn);
+    TextView localTextView3 = (TextView)((i)localObject).findViewById(R.id.titleTv);
+    CdnImageView localCdnImageView = (CdnImageView)((i)localObject).findViewById(R.id.content_image);
+    TextView localTextView1 = (TextView)((i)localObject).findViewById(R.id.content_tv);
+    TextView localTextView2 = (TextView)((i)localObject).findViewById(R.id.btn1);
     localTextView3.setText(paramString1);
     int i;
     if (paramString2 != null)
     {
       if ((!paramString2.startsWith("http://")) && (!paramString2.startsWith("https://"))) {
-        break label196;
+        break label202;
       }
       i = 1;
       if (i == 0) {
-        break label202;
+        break label208;
       }
       localCdnImageView.setUrl(paramString2);
     }
@@ -336,8 +339,8 @@ public class AlertDialogImpl
         {
           AppMethodBeat.i(18731);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          a.b("com/tencent/kinda/framework/widget/base/AlertDialogImpl$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          a.c("com/tencent/kinda/framework/widget/base/AlertDialogImpl$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           if (paramVoidCallback != null) {
             paramVoidCallback.call();
           }
@@ -352,10 +355,10 @@ public class AlertDialogImpl
       this.mDialog = ((Dialog)localObject);
       AppMethodBeat.o(18753);
       return;
-      label196:
+      label202:
       i = 0;
       break;
-      label202:
+      label208:
       paramString1 = getDrawable(paramString2);
       if (paramString1 != null) {
         localCdnImageView.setImageDrawable(paramString1);
@@ -410,23 +413,23 @@ public class AlertDialogImpl
       AppMethodBeat.o(18754);
       return;
     }
-    localObject = new i((Context)localObject, 2131821772);
-    ((i)localObject).setContentView(2131495144);
-    TextView localTextView4 = (TextView)((i)localObject).findViewById(2131309199);
-    CdnImageView localCdnImageView = (CdnImageView)((i)localObject).findViewById(2131299201);
-    TextView localTextView1 = (TextView)((i)localObject).findViewById(2131299223);
-    TextView localTextView2 = (TextView)((i)localObject).findViewById(2131303137);
-    TextView localTextView3 = (TextView)((i)localObject).findViewById(2131307087);
+    localObject = new i((Context)localObject, R.style.mmalertdialog);
+    ((i)localObject).setContentView(R.layout.kinda_image_dialog_with_two_btn);
+    TextView localTextView4 = (TextView)((i)localObject).findViewById(R.id.titleTv);
+    CdnImageView localCdnImageView = (CdnImageView)((i)localObject).findViewById(R.id.content_image);
+    TextView localTextView1 = (TextView)((i)localObject).findViewById(R.id.content_tv);
+    TextView localTextView2 = (TextView)((i)localObject).findViewById(R.id.left_btn);
+    TextView localTextView3 = (TextView)((i)localObject).findViewById(R.id.right_btn);
     localTextView4.setText(paramString1);
     int i;
     if (paramString2 != null)
     {
       if ((!paramString2.startsWith("http://")) && (!paramString2.startsWith("https://"))) {
-        break label234;
+        break label238;
       }
       i = 1;
       if (i == 0) {
-        break label240;
+        break label244;
       }
       localCdnImageView.setUrl(paramString2);
     }
@@ -443,8 +446,8 @@ public class AlertDialogImpl
         {
           AppMethodBeat.i(18732);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          a.b("com/tencent/kinda/framework/widget/base/AlertDialogImpl$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          a.c("com/tencent/kinda/framework/widget/base/AlertDialogImpl$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           if (paramVoidCallback1 != null) {
             paramVoidCallback1.call();
           }
@@ -461,8 +464,8 @@ public class AlertDialogImpl
         {
           AppMethodBeat.i(18733);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          a.b("com/tencent/kinda/framework/widget/base/AlertDialogImpl$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          a.c("com/tencent/kinda/framework/widget/base/AlertDialogImpl$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           if (paramVoidCallback2 != null) {
             paramVoidCallback2.call();
           }
@@ -477,10 +480,10 @@ public class AlertDialogImpl
       this.mDialog = ((Dialog)localObject);
       AppMethodBeat.o(18754);
       return;
-      label234:
+      label238:
       i = 0;
       break;
-      label240:
+      label244:
       paramString1 = getDrawable(paramString2);
       if (paramString1 != null) {
         localCdnImageView.setImageDrawable(paramString1);
@@ -498,19 +501,19 @@ public class AlertDialogImpl
       AppMethodBeat.o(18752);
       return;
     }
-    localObject = new i((Context)localObject, 2131821772);
-    ((i)localObject).setContentView(2131495148);
-    TextView localTextView1 = (TextView)((i)localObject).findViewById(2131302976);
-    TextView localTextView2 = (TextView)((i)localObject).findViewById(2131302975);
-    TextView localTextView3 = (TextView)((i)localObject).findViewById(2131302972);
-    TextView localTextView4 = (TextView)((i)localObject).findViewById(2131302973);
-    TextView localTextView5 = (TextView)((i)localObject).findViewById(2131302974);
-    if (!com.tencent.matrix.trace.g.b.eP(paramString1))
+    localObject = new i((Context)localObject, R.style.mmalertdialog);
+    ((i)localObject).setContentView(R.layout.kinda_three_btn_dialog);
+    TextView localTextView1 = (TextView)((i)localObject).findViewById(R.id.ktbd_title);
+    TextView localTextView2 = (TextView)((i)localObject).findViewById(R.id.ktbd_content);
+    TextView localTextView3 = (TextView)((i)localObject).findViewById(R.id.ktbd_btn1);
+    TextView localTextView4 = (TextView)((i)localObject).findViewById(R.id.ktbd_btn2);
+    TextView localTextView5 = (TextView)((i)localObject).findViewById(R.id.ktbd_btn3);
+    if (!com.tencent.matrix.trace.g.b.fK(paramString1))
     {
       localTextView1.setVisibility(0);
       localTextView1.setText(paramString1);
     }
-    if (!com.tencent.matrix.trace.g.b.eP(paramString2))
+    if (!com.tencent.matrix.trace.g.b.fK(paramString2))
     {
       localTextView2.setVisibility(0);
       localTextView2.setText(paramString2);
@@ -526,8 +529,8 @@ public class AlertDialogImpl
       {
         AppMethodBeat.i(18728);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/kinda/framework/widget/base/AlertDialogImpl$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/kinda/framework/widget/base/AlertDialogImpl$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (paramVoidCallback1 != null) {
           paramVoidCallback1.call();
         }
@@ -544,8 +547,8 @@ public class AlertDialogImpl
       {
         AppMethodBeat.i(18729);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/kinda/framework/widget/base/AlertDialogImpl$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/kinda/framework/widget/base/AlertDialogImpl$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (paramVoidCallback2 != null) {
           paramVoidCallback2.call();
         }
@@ -562,8 +565,8 @@ public class AlertDialogImpl
       {
         AppMethodBeat.i(18730);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/kinda/framework/widget/base/AlertDialogImpl$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/kinda/framework/widget/base/AlertDialogImpl$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (paramVoidCallback3 != null) {
           paramVoidCallback3.call();
         }
@@ -583,7 +586,7 @@ public class AlertDialogImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.AlertDialogImpl
  * JD-Core Version:    0.7.0.1
  */

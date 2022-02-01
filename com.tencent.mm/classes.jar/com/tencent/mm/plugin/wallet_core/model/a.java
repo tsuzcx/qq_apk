@@ -5,15 +5,15 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
 {
-  public String dQx;
-  public String lHA;
-  public String lHB;
-  public String qwt;
+  public String oDJ;
+  public String oDK;
+  public String tVu;
+  public String wording;
   
-  public final boolean fPZ()
+  public final boolean gIF()
   {
     AppMethodBeat.i(70205);
-    if ((!Util.isNullOrNil(this.dQx)) && (!Util.isNullOrNil(this.lHA)) && (!Util.isNullOrNil(this.lHB)) && (!Util.isNullOrNil(this.qwt)))
+    if ((!Util.isNullOrNil(this.wording)) && (!Util.isNullOrNil(this.oDJ)) && (!Util.isNullOrNil(this.oDK)) && (!Util.isNullOrNil(this.tVu)))
     {
       AppMethodBeat.o(70205);
       return true;
@@ -24,7 +24,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.a
  * JD-Core Version:    0.7.0.1
  */

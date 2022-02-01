@@ -1,125 +1,151 @@
 package com.tencent.mm.plugin.appbrand;
 
-import com.tencent.f.i;
+import com.tencent.luggage.sdk.customize.a;
+import com.tencent.luggage.sdk.processes.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.api.f;
-import com.tencent.mm.plugin.appbrand.api.f.a;
-import com.tencent.mm.plugin.appbrand.api.f.b;
-import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
-import com.tencent.mm.plugin.appbrand.launching.u;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.plugin.appbrand.app.m;
+import com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObjectManager;
+import com.tencent.mm.plugin.appbrand.appstorage.ab;
+import com.tencent.mm.plugin.appbrand.appstorage.g;
+import com.tencent.mm.plugin.appbrand.appstorage.o;
+import com.tencent.mm.plugin.appbrand.appusage.k;
+import com.tencent.mm.plugin.appbrand.jsapi.auth.JsApiOperateWXData;
+import com.tencent.mm.plugin.appbrand.jsapi.file.av;
+import com.tencent.mm.plugin.appbrand.task.i;
+import com.tencent.mm.plugin.appbrand.task.i.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.q;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/AppBrandPreRenderColdStartService;", "", "()V", "TAG", "", "start", "", "bundle", "Lcom/tencent/mm/plugin/appbrand/api/WeAppOpenBundle;", "callback", "Lcom/tencent/mm/plugin/appbrand/api/PreRenderColdStartResultCallback;", "startInternal", "requestId", "", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/AppBrandFileCleaner;", "", "()V", "Companion", "plugin-appbrand-integration_release"})
 public final class j
 {
-  public static final j kAc;
+  public static final a nsO;
   
   static
   {
-    AppMethodBeat.i(227892);
-    kAc = new j();
-    AppMethodBeat.o(227892);
+    AppMethodBeat.i(283324);
+    nsO = new a((byte)0);
+    AppMethodBeat.o(283324);
   }
   
-  public static void a(com.tencent.mm.plugin.appbrand.api.g paramg, f paramf)
+  public static final void clean()
   {
-    AppMethodBeat.i(227891);
-    p.h(paramg, "bundle");
-    int j = paramg.hashCode();
-    final long l = Util.currentTicks();
-    Log.i("MicroMsg.AppBrandPreRenderColdStartService", "start with id:" + j + " username:" + paramg.username + " appId:" + paramg.appId + " versionType:" + paramg.iOo + " path:" + paramg.kHw + " scene:" + paramg.scene);
-    com.tencent.mm.plugin.report.service.h.CyF.dN(1519, 0);
-    paramf = (f)new a(j, l, paramf);
-    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rUq, 1) <= 0)
+    AppMethodBeat.i(283325);
+    a locala = nsO;
+    long l = Util.currentTicks();
+    Object localObject1 = m.W(k.class);
+    p.j(localObject1, "SubCoreAppBrand.getStora…icateStorage::class.java)");
+    Object localObject2 = ((k)localObject1).bJi();
+    localObject1 = i.qRL;
+    Object localObject3 = (Iterable)i.a.cjb().RS();
+    localObject1 = (Collection)new ArrayList();
+    localObject3 = ((Iterable)localObject3).iterator();
+    while (((Iterator)localObject3).hasNext()) {
+      kotlin.a.j.a((Collection)localObject1, (Iterable)((c)((Iterator)localObject3).next()).RO());
+    }
+    localObject3 = (Iterable)localObject1;
+    localObject1 = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject3, 10));
+    localObject3 = ((Iterable)localObject3).iterator();
+    while (((Iterator)localObject3).hasNext()) {
+      ((Collection)localObject1).add(((com.tencent.luggage.sdk.processes.e)((Iterator)localObject3).next()).appId);
+    }
+    ((List)localObject2).removeAll((Collection)localObject1);
+    p.j(com.tencent.mm.kernel.h.aHE(), "MMKernel.account()");
+    localObject1 = b.aGq();
+    localObject3 = (CharSequence)localObject1;
+    if ((localObject3 == null) || (((CharSequence)localObject3).length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      f.a.a(paramf, -8);
-      AppMethodBeat.o(227891);
+      Log.e("MicroMsg.AppBrandFileCleaner", "uin value is invaild");
+      AppMethodBeat.o(283325);
       return;
     }
-    try
+    localObject2 = ((List)localObject2).iterator();
+    for (;;)
     {
-      Object localObject = u.mTD;
-      u.a(paramg);
-      localObject = u.mTD;
-      localObject = u.b(paramg);
-      CharSequence localCharSequence = (CharSequence)paramg.appId;
-      if ((localCharSequence == null) || (localCharSequence.length() == 0))
+      if (((Iterator)localObject2).hasNext())
       {
-        i = 1;
-        if (i != 0) {
-          break label313;
-        }
-        paramg = paramg.appId;
-        paramg = com.tencent.mm.plugin.appbrand.report.quality.g.c((LaunchParcel)localObject, paramg);
-        ((LaunchParcel)localObject).cyz = com.tencent.luggage.sdk.launching.b.cBC;
-        ((LaunchParcel)localObject).mYM = Util.nowMilliSecond();
-        com.tencent.f.h.RTc.aZ((Runnable)new am(j, (LaunchParcel)localObject, paramg, paramf));
-        AppMethodBeat.o(227891);
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE))
+        localObject3 = (String)((Iterator)localObject2).next();
+        p.j(localObject3, "appId");
+        try
         {
-          paramg = (Throwable)localException;
-          AppMethodBeat.o(227891);
-          throw paramg;
+          localq = new q(av.bSa() + (String)localObject3 + "/");
+          o.s(localq);
+          if (localq.ifE()) {
+            localq.cFq();
+          }
         }
-        f.a.a(paramf, -1);
-        continue;
-        int i = 0;
-        continue;
-        label313:
-        paramg = com.tencent.mm.plugin.appbrand.launching.e.h.a(localException);
+        catch (Exception localException3)
+        {
+          try
+          {
+            av.dB((String)localObject1, (String)localObject3).bIE();
+          }
+          catch (Exception localException3)
+          {
+            try
+            {
+              av.dE((String)localObject1, (String)localObject3).bIE();
+            }
+            catch (Exception localException3)
+            {
+              try
+              {
+                for (;;)
+                {
+                  q localq = new q(av.bSa() + (String)localObject3 + "/blobTmp/");
+                  o.s(localq);
+                  if (localq.ifE()) {
+                    localq.cFq();
+                  }
+                  AppBrandLocalMediaObjectManager.clear((String)localObject3);
+                  m.QF().adu((String)localObject3);
+                  ((a)com.tencent.luggage.a.e.K(a.class)).dX((String)localObject3).adu((String)localObject3);
+                  JsApiOperateWXData.clear((String)localObject3);
+                  break;
+                  localException1 = localException1;
+                  Log.e("MicroMsg.AppBrandFileCleaner", "clean Flatten appId=%s e=%s", new Object[] { localObject3, localException1 });
+                  continue;
+                  localException2 = localException2;
+                  Log.e("MicroMsg.AppBrandFileCleaner", "clean NonFlatten appId=%s e=%s", new Object[] { localObject3, localException2 });
+                  continue;
+                  localException3 = localException3;
+                  Log.e("MicroMsg.AppBrandFileCleaner", "clean SinglePageNotFlatten appId=%s e=%s", new Object[] { localObject3, localException3 });
+                }
+              }
+              catch (Exception localException4)
+              {
+                for (;;)
+                {
+                  Log.e("MicroMsg.AppBrandFileCleaner", "clean flattenBlobPath appId=%s e=%s", new Object[] { localObject3, localException4 });
+                }
+              }
+            }
+          }
+        }
       }
     }
+    l = Util.ticksToNow(l);
+    Log.d("MicroMsg.AppBrandFileCleaner", "%d clean appbrand file costTime[%d]", new Object[] { Integer.valueOf(((a)locala).hashCode()), Long.valueOf(l) });
+    com.tencent.mm.plugin.report.service.h.IzE.p(1508L, 0L, l);
+    com.tencent.mm.plugin.report.service.h.IzE.p(1508L, 1L, 1L);
+    AppMethodBeat.o(283325);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/AppBrandPreRenderColdStartService$start$1", "Lcom/tencent/mm/plugin/appbrand/api/PreRenderColdStartResultCallback;", "onError", "", "errCode", "", "errMsg", "", "onSuccess", "plugin-appbrand-integration_release"})
-  public static final class a
-    implements f
-  {
-    a(int paramInt, long paramLong, f paramf) {}
-    
-    public final void onError(int paramInt, String paramString)
-    {
-      AppMethodBeat.i(227890);
-      Object localObject = new StringBuilder("onError, requestId:").append(this.kAd).append(", errCode:");
-      f.b localb = f.b.kHv;
-      Log.e("MicroMsg.AppBrandPreRenderColdStartService", f.b.vM(paramInt) + ", errMsg:" + paramString + ", cost:" + Util.ticksToNow(l));
-      localObject = this.kAf;
-      if (localObject != null) {
-        ((f)localObject).onError(paramInt, paramString);
-      }
-      paramString = com.tencent.mm.plugin.report.service.h.CyF;
-      localObject = as.kFm;
-      paramString.dN(1519, as.vD(paramInt));
-      AppMethodBeat.o(227890);
-    }
-    
-    public final void onSuccess()
-    {
-      AppMethodBeat.i(227889);
-      Log.i("MicroMsg.AppBrandPreRenderColdStartService", "onSuccess, requestId:" + this.kAd + ", cost:" + Util.ticksToNow(l));
-      f localf = this.kAf;
-      if (localf != null) {
-        localf.onSuccess();
-      }
-      com.tencent.mm.plugin.report.service.h.CyF.dN(1519, 1);
-      AppMethodBeat.o(227889);
-    }
-  }
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/AppBrandFileCleaner$Companion;", "", "()V", "IDKEY_CLEAN_APPBRAND_FILE", "", "TAG", "", "clean", "", "cleanImpl", "uinStr", "appId", "plugin-appbrand-integration_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.j
  * JD-Core Version:    0.7.0.1
  */

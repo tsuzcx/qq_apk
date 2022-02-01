@@ -12,8 +12,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.model.ax;
-import com.tencent.mm.n.b;
+import com.tencent.mm.model.ay;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -24,19 +23,19 @@ public class PluginNotification
   extends f
   implements com.tencent.mm.plugin.notification.b.a
 {
-  private ax AGG;
+  private ay GzP;
   
   public static void createActiveTimeNotification()
   {
     AppMethodBeat.i(149378);
-    if (d.oD(26))
+    if (d.qV(26))
     {
       Context localContext = MMApplicationContext.getContext();
       NotificationManager localNotificationManager = (NotificationManager)localContext.getSystemService(NotificationManager.class);
       if (localNotificationManager.getNotificationChannel("message_dnd_mode_channel_id") == null)
       {
-        NotificationChannel localNotificationChannel = new NotificationChannel("message_dnd_mode_channel_id", localContext.getString(2131763668), 4);
-        localNotificationChannel.setDescription(localContext.getString(2131763667));
+        NotificationChannel localNotificationChannel = new NotificationChannel("message_dnd_mode_channel_id", localContext.getString(e.a.notification_message_dnd_mode_channel_name), 4);
+        localNotificationChannel.setDescription(localContext.getString(e.a.notification_message_dnd_mode_channel_desc));
         localNotificationChannel.enableLights(true);
         localNotificationChannel.setLightColor(-16711936);
         localNotificationChannel.enableVibration(false);
@@ -54,62 +53,62 @@ public class PluginNotification
     NotificationManager localNotificationManager;
     Object localObject;
     NotificationChannel localNotificationChannel;
-    if (d.oD(26))
+    if (d.qV(26))
     {
       localContext = MMApplicationContext.getContext();
       localNotificationManager = (NotificationManager)localContext.getSystemService(NotificationManager.class);
-      localObject = com.tencent.mm.kernel.a.apK();
+      localObject = com.tencent.mm.kernel.b.awd();
       boolean bool1 = ((SharedPreferences)localObject).getBoolean("settings_sound", true);
       boolean bool2 = ((SharedPreferences)localObject).getBoolean("settings_shake", true);
       deleteNoWeChatSetNotification(localNotificationManager);
-      deleteNoNumberNotification(localNotificationManager, com.tencent.mm.bq.a.apJ(), "message_channel");
-      Log.i("MicroMsg.PluginNotification", "isEnableMsgNotification:%s isSysEnableMsgNotification:%s sound:%s vibration:%s", new Object[] { Boolean.valueOf(b.apN()), Boolean.valueOf(b.apO()), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+      deleteNoNumberNotification(localNotificationManager, com.tencent.mm.bx.a.awc(), "message_channel");
+      Log.i("MicroMsg.PluginNotification", "isEnableMsgNotification:%s isSysEnableMsgNotification:%s sound:%s vibration:%s", new Object[] { Boolean.valueOf(com.tencent.mm.n.b.awg()), Boolean.valueOf(com.tencent.mm.n.b.awh()), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
       boolean bool3 = c.b(localContext, localNotificationManager, bool2, bool1, (SharedPreferences)localObject);
       boolean bool4 = c.a(localContext, localNotificationManager, bool2, bool1, (SharedPreferences)localObject);
       if ((!bool3) && (!bool4))
       {
-        localNotificationChannel = new NotificationChannel(com.tencent.mm.bq.a.apJ(), localContext.getString(2131763666), 4);
-        localNotificationChannel.setDescription(localContext.getString(2131763665));
+        localNotificationChannel = new NotificationChannel(com.tencent.mm.bx.a.awc(), localContext.getString(e.a.notification_message_channel_name), 4);
+        localNotificationChannel.setDescription(localContext.getString(e.a.notification_message_channel_desc));
         localNotificationChannel.enableLights(true);
         localNotificationChannel.setLightColor(-16711936);
         localNotificationChannel.setVibrationPattern(Util.VIRBRATOR_PATTERN);
         localNotificationChannel.enableVibration(bool2);
         if (!bool1) {
-          break label523;
+          break label533;
         }
-        String str = ((SharedPreferences)localObject).getString("settings.ringtone", b.gLX);
-        if (c.aIY(str)) {
+        String str = ((SharedPreferences)localObject).getString("settings.ringtone", com.tencent.mm.n.b.jwm);
+        if (c.aTu(str)) {
           localNotificationChannel.setSound(Uri.parse(str), Notification.AUDIO_ATTRIBUTES_DEFAULT);
         }
-        ((SharedPreferences)localObject).edit().putString("message_channel_id", com.tencent.mm.bq.a.apJ()).commit();
+        ((SharedPreferences)localObject).edit().putString("message_channel_id", com.tencent.mm.bx.a.awc()).commit();
         localNotificationManager.createNotificationChannel(localNotificationChannel);
       }
-      localObject = new NotificationChannel("reminder_channel_id", localContext.getString(2131763677), 2);
-      ((NotificationChannel)localObject).setDescription(localContext.getString(2131763676));
+      localObject = new NotificationChannel("reminder_channel_id", localContext.getString(e.a.notification_reminder_channel_name), 2);
+      ((NotificationChannel)localObject).setDescription(localContext.getString(e.a.notification_reminder_channel_desc));
       localNotificationManager.createNotificationChannel((NotificationChannel)localObject);
-      if (!b.aqe())
+      if (!com.tencent.mm.n.b.awx())
       {
-        localObject = new NotificationChannel("message_dnd_mode_channel_id", localContext.getString(2131763668), 4);
-        ((NotificationChannel)localObject).setDescription(localContext.getString(2131763667));
+        localObject = new NotificationChannel("message_dnd_mode_channel_id", localContext.getString(e.a.notification_message_dnd_mode_channel_name), 4);
+        ((NotificationChannel)localObject).setDescription(localContext.getString(e.a.notification_message_dnd_mode_channel_desc));
         ((NotificationChannel)localObject).enableLights(true);
         ((NotificationChannel)localObject).setLightColor(-16711936);
         ((NotificationChannel)localObject).enableVibration(false);
         ((NotificationChannel)localObject).setSound(null, Notification.AUDIO_ATTRIBUTES_DEFAULT);
         localNotificationManager.createNotificationChannel((NotificationChannel)localObject);
       }
-      if ((!d.oF(28)) && (!Build.VERSION.CODENAME.equals("Q"))) {
-        break label535;
+      if ((!d.qX(28)) && (!Build.VERSION.CODENAME.equals("Q"))) {
+        break label545;
       }
     }
-    label523:
-    label535:
+    label533:
+    label545:
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
         localNotificationManager.deleteNotificationChannel("voip_channel_new_id");
-        localObject = new NotificationChannel("voip_notify_channel_new_id", localContext.getString(2131763699), 4);
-        ((NotificationChannel)localObject).setDescription(localContext.getString(2131763698));
+        localObject = new NotificationChannel("voip_notify_channel_new_id", localContext.getString(e.a.notification_voip_channel_name), 4);
+        ((NotificationChannel)localObject).setDescription(localContext.getString(e.a.notification_voip_channel_desc));
         ((NotificationChannel)localObject).enableLights(true);
         ((NotificationChannel)localObject).setLightColor(-16711936);
         ((NotificationChannel)localObject).enableVibration(true);
@@ -200,26 +199,26 @@ public class PluginNotification
   {
     AppMethodBeat.i(149374);
     Log.i("MicroMsg.PluginNotification", "execute");
-    if (paramg.aBb()) {
+    if (paramg.aIE()) {
       createNotificationChannel();
     }
     AppMethodBeat.o(149374);
   }
   
-  public ax getNotification()
+  public ay getNotification()
   {
-    return this.AGG;
+    return this.GzP;
   }
   
-  public void setNotification(ax paramax)
+  public void setNotification(ay paramay)
   {
-    this.AGG = paramax;
-    d.AGv = paramax;
+    this.GzP = paramay;
+    d.GzE = paramay;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.notification.PluginNotification
  * JD-Core Version:    0.7.0.1
  */

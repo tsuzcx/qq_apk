@@ -19,7 +19,7 @@ public class BridgedAndroidWebViewBase
   extends WebView
   implements s
 {
-  private static boolean csU = false;
+  private static boolean cqZ = false;
   
   public BridgedAndroidWebViewBase(Context paramContext)
   {
@@ -43,14 +43,14 @@ public class BridgedAndroidWebViewBase
     AppMethodBeat.o(140354);
   }
   
-  private boolean cQ(String paramString)
+  private boolean jdMethod_do(String paramString)
   {
     AppMethodBeat.i(140358);
     try
     {
-      Object localObject = a.gG(a.gG(this).bvr("mProvider").object).bvr("mWebViewCore").object;
+      Object localObject = a.gY(a.gY(this).bIx("mProvider").object).bIx("mWebViewCore").object;
       paramString = Message.obtain(null, 194, paramString);
-      a.gG(localObject).u("sendMessage", new Object[] { paramString });
+      a.gY(localObject).t("sendMessage", new Object[] { paramString });
       AppMethodBeat.o(140358);
       return true;
     }
@@ -75,7 +75,7 @@ public class BridgedAndroidWebViewBase
     AppMethodBeat.o(140355);
   }
   
-  public final void cP(String paramString)
+  public final void dn(String paramString)
   {
     AppMethodBeat.i(140357);
     if (TextUtils.isEmpty(paramString))
@@ -90,12 +90,12 @@ public class BridgedAndroidWebViewBase
       AppMethodBeat.o(140357);
       return;
     }
-    if (csU)
+    if (cqZ)
     {
-      if (cQ(paramString)) {
+      if (jdMethod_do(paramString)) {
         break label82;
       }
-      csU = false;
+      cqZ = false;
     }
     try
     {
@@ -115,11 +115,11 @@ public class BridgedAndroidWebViewBase
   
   public void evaluateJavascript(final String paramString, ValueCallback<String> paramValueCallback)
   {
-    AppMethodBeat.i(221176);
+    AppMethodBeat.i(209540);
     if (Looper.getMainLooper().getThread() == Thread.currentThread())
     {
-      cP(paramString);
-      AppMethodBeat.o(221176);
+      dn(paramString);
+      AppMethodBeat.o(209540);
       return;
     }
     post(new Runnable()
@@ -127,24 +127,24 @@ public class BridgedAndroidWebViewBase
       public final void run()
       {
         AppMethodBeat.i(140353);
-        BridgedAndroidWebViewBase.this.cP(paramString);
+        BridgedAndroidWebViewBase.this.dn(paramString);
         AppMethodBeat.o(140353);
       }
     });
-    AppMethodBeat.o(221176);
+    AppMethodBeat.o(209540);
   }
   
   public String getUserAgent()
   {
-    AppMethodBeat.i(221175);
+    AppMethodBeat.i(209538);
     String str = getSettings().getUserAgentString();
-    AppMethodBeat.o(221175);
+    AppMethodBeat.o(209538);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.bridge.impl.BridgedAndroidWebViewBase
  * JD-Core Version:    0.7.0.1
  */

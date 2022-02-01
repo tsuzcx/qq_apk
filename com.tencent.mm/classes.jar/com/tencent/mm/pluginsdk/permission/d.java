@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.permission;
 
 public abstract interface d
 {
-  public abstract void Xq(int paramInt);
+  public abstract void aep(int paramInt);
 }
 
 

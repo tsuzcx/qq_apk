@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.gamelife;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/PluginGameLife$Companion;", "", "()V", "FROM_USERNAME", "", "getFROM_USERNAME", "()Ljava/lang/String;", "TAG", "TO_USERNAME", "getTO_USERNAME", "plugin-gamelife_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/PluginGameLife$Companion;", "", "()V", "FROM_USERNAME", "", "getFROM_USERNAME", "()Ljava/lang/String;", "TAG", "TO_USERNAME", "getTO_USERNAME", "plugin-gamelife_release"})
 public final class PluginGameLife$a {}
 
 

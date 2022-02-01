@@ -2,25 +2,25 @@ package com.tencent.mm.api;
 
 public abstract interface x
 {
-  public abstract int VA();
+  public abstract int ZS();
   
-  public abstract int VB();
+  public abstract int ZT();
   
-  public abstract boolean VC();
+  public abstract int ZU();
   
-  public abstract int VD();
+  public abstract int ZV();
   
-  public abstract boolean VE();
+  public abstract int ZW();
   
-  public abstract String VF();
+  public abstract boolean ZX();
   
-  public abstract String VG();
+  public abstract int ZY();
   
-  public abstract int Vx();
+  public abstract boolean ZZ();
   
-  public abstract int Vy();
+  public abstract String aaa();
   
-  public abstract int Vz();
+  public abstract String aab();
   
   public abstract int getTextColor();
   
@@ -28,7 +28,7 @@ public abstract interface x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.api.x
  * JD-Core Version:    0.7.0.1
  */

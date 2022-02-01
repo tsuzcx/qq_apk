@@ -1,302 +1,439 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.content.Intent;
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.ImageView;
+import android.text.SpannableString;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.b;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.pluginsdk.model.app.ao;
-import com.tencent.mm.pluginsdk.model.app.l;
-import com.tencent.mm.pluginsdk.ui.a.b;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.f;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.chatting.HardDeviceChattingItemView;
-import com.tencent.mm.ui.chatting.d.b.k;
-import com.tencent.mm.ui.chatting.e.a;
+import com.tencent.mm.ui.ar;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public final class as
-  extends c
 {
-  private a PhN;
+  private static final LinearLayout.LayoutParams Xjz;
   
-  public final View a(LayoutInflater paramLayoutInflater, View paramView)
+  static
   {
-    AppMethodBeat.i(37304);
-    Object localObject;
-    if (paramView != null)
-    {
-      localObject = paramView;
-      if (paramView.getTag() != null) {}
-    }
-    else
-    {
-      localObject = new an(paramLayoutInflater, 2131493569);
-      ((View)localObject).setTag(new a().he((View)localObject));
-    }
-    AppMethodBeat.o(37304);
-    return localObject;
+    AppMethodBeat.i(37279);
+    Xjz = new LinearLayout.LayoutParams(-1, -2);
+    AppMethodBeat.o(37279);
   }
   
-  public final void a(c.a parama, int paramInt, a parama1, ca paramca, String paramString)
+  private static boolean a(LinearLayout paramLinearLayout, SpannableString paramSpannableString, List<a> paramList)
   {
-    AppMethodBeat.i(37305);
-    this.PhN = parama1;
-    a locala = (a)parama;
-    Object localObject1 = ao.gnf().GL(paramca.field_msgId);
-    Object localObject2 = paramca.field_content;
-    if ((localObject1 != null) && (localObject2 != null)) {
-      paramString = k.b.aD((String)localObject2, paramca.field_reserved);
+    AppMethodBeat.i(37272);
+    Log.d("MicroMsg.ChattingItemDyeingTemplateDecorator", "addLines, nodeList size = " + paramList.size());
+    int j = paramSpannableString.length();
+    paramList = paramList.iterator();
+    a locala;
+    for (int i = 0; paramList.hasNext(); i = locala.offset)
+    {
+      locala = (a)paramList.next();
+      if (locala.offset > i)
+      {
+        localTextView = new TextView(paramLinearLayout.getContext());
+        localTextView.setText(paramSpannableString.subSequence(i, Math.min(locala.offset, j)));
+        localTextView.setLineSpacing(3.0F, 1.0F);
+        paramLinearLayout.addView(localTextView, Xjz);
+      }
+      TextView localTextView = new TextView(paramLinearLayout.getContext());
+      localTextView.setText(bzL(locala.XjB));
+      localTextView.setSingleLine(true);
+      if (locala.oYK != 14) {
+        localTextView.setTextSize(locala.oYK);
+      }
+      if (locala.fWa) {
+        localTextView.setTypeface(null, 1);
+      }
+      if (locala.XjA) {
+        localTextView.setPaintFlags(localTextView.getPaintFlags() | 0x8);
+      }
+      localTextView.setTextColor(ar.iV(locala.color));
+      paramLinearLayout.addView(localTextView, Xjz);
+    }
+    if (i >= j)
+    {
+      Log.i("MicroMsg.ChattingItemDyeingTemplateDecorator", "addLines, lastOffset >= maxLength, lastOffset = " + i + ", maxLength = " + j);
+      AppMethodBeat.o(37272);
+      return true;
+    }
+    paramList = new TextView(paramLinearLayout.getContext());
+    paramList.setTextSize(0, a.aY(paramList.getContext(), R.f.HintTextSize));
+    paramList.setText(paramSpannableString.subSequence(i, j));
+    paramList.setLineSpacing(2.0F, 1.0F);
+    paramLinearLayout.addView(paramList, Xjz);
+    AppMethodBeat.o(37272);
+    return true;
+  }
+  
+  public static boolean a(LinearLayout paramLinearLayout, Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(37271);
+    if (paramLinearLayout == null)
+    {
+      Log.e("MicroMsg.ChattingItemDyeingTemplateDecorator", "decorateStyle fail, digestLl is null");
+      AppMethodBeat.o(37271);
+      return false;
+    }
+    String str1 = (String)paramMap.get(".msg.appmsg.mmreader.category.item.digest");
+    if (Util.isNullOrNil(str1))
+    {
+      Log.e("MicroMsg.ChattingItemDyeingTemplateDecorator", "decorateStyle, digest is null");
+      paramLinearLayout.setVisibility(8);
+      AppMethodBeat.o(37271);
+      return false;
+    }
+    paramLinearLayout.setVisibility(0);
+    SpannableString localSpannableString = new SpannableString(str1);
+    int i;
+    Object localObject2;
+    Object localObject3;
+    label203:
+    Object localObject1;
+    try
+    {
+      localSpannableString.setSpan(new ForegroundColorSpan(paramLinearLayout.getContext().getResources().getColor(R.e.normal_text_color)), 0, localSpannableString.length(), 17);
+      i = 0;
+      localObject2 = new StringBuilder(".msg.appmsg.mmreader.category.item.styles.style");
+      if (i == 0)
+      {
+        str1 = "";
+        localObject2 = str1;
+        if (paramMap.containsKey(localObject2)) {
+          break label300;
+        }
+        Log.i("MicroMsg.ChattingItemDyeingTemplateDecorator", "decorateStyle end, total style count = ".concat(String.valueOf(i)));
+        i = 0;
+        localObject2 = new ArrayList();
+        localObject3 = new StringBuilder(".msg.appmsg.mmreader.category.item.styles.line");
+        if (i != 0) {
+          break label968;
+        }
+        str1 = "";
+        str1 = str1;
+        if (paramMap.containsKey(str1)) {
+          break label977;
+        }
+        Log.d("MicroMsg.ChattingItemDyeingTemplateDecorator", "decorateStyle end, total line count = ".concat(String.valueOf(i)));
+        Collections.sort((List)localObject2);
+        paramLinearLayout.removeAllViews();
+        a(paramLinearLayout, localSpannableString, (List)localObject2);
+        AppMethodBeat.o(37271);
+        return true;
+      }
+    }
+    catch (IndexOutOfBoundsException localIndexOutOfBoundsException1)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.ChattingItemDyeingTemplateDecorator", "decorateStyle setSpan error: %s", new Object[] { localIndexOutOfBoundsException1.getMessage() });
+        continue;
+        localObject1 = String.valueOf(i);
+      }
+      label300:
+      localObject1 = b.ag(paramMap, (String)localObject2);
+      if (localObject1 != null) {
+        break label336;
+      }
+    }
+    Log.e("MicroMsg.ChattingItemDyeingTemplateDecorator", "parseFrom fail, skip to next, styleKey = ".concat(String.valueOf(localObject2)));
+    for (;;)
+    {
+      i += 1;
+      break;
+      label336:
+      if (((b)localObject1).XjC < ((b)localObject1).XjD) {
+        break label392;
+      }
+      Log.w("MicroMsg.ChattingItemDyeingTemplateDecorator", "addStyle, no need to add, rangeFrom = " + ((b)localObject1).XjC + ", rangeTo = " + ((b)localObject1).XjD);
+    }
+    label392:
+    int m = ((b)localObject1).XjC;
+    int k = ((b)localObject1).XjD;
+    int n = ((b)localObject1).oYK;
+    boolean bool1 = ((b)localObject1).fWa;
+    boolean bool2 = ((b)localObject1).XjA;
+    Log.d("MicroMsg.ChattingItemDyeingTemplateDecorator", "setFont, rangeFrom = " + m + ", rangeTo = " + k + ", fontSize = " + n + ", isBlack = " + bool1 + ", isUnderLine = " + bool2);
+    int j = m;
+    if (m < 0)
+    {
+      Log.e("MicroMsg.ChattingItemDyeingTemplateDecorator", "setFont, params error. length:%d, from:%d, to:%d", new Object[] { Integer.valueOf(localSpannableString.length()), Integer.valueOf(m), Integer.valueOf(k) });
+      j = 0;
+    }
+    if (k > localSpannableString.length())
+    {
+      Log.e("MicroMsg.ChattingItemDyeingTemplateDecorator", "setFont, params error. length:%d, from:%d, to:%d", new Object[] { Integer.valueOf(localSpannableString.length()), Integer.valueOf(j), Integer.valueOf(k) });
+      k = localSpannableString.length();
     }
     for (;;)
     {
-      bq localbq = new bq(paramca, parama1.gRM(), paramInt, null, '\000');
-      HardDeviceChattingItemView localHardDeviceChattingItemView = (HardDeviceChattingItemView)parama.clickArea;
-      int j;
-      int k;
-      int i;
-      if ((paramString != null) && ((paramString.dDG == 1) || (paramString.ixF == 1))) {
-        if (Util.isNullOrNil(paramString.ixA))
+      for (;;)
+      {
+        if (bool1) {}
+        try
         {
-          localObject2 = paramString.ixw;
-          Object localObject3 = paramString.ixx;
-          if (!Util.isNullOrNil((String)localObject2))
+          localSpannableString.setSpan(new StyleSpan(1), j, k, 17);
+          if (!bool2) {}
+        }
+        catch (IndexOutOfBoundsException localIndexOutOfBoundsException4)
+        {
+          try
           {
-            localObject1 = localObject3;
-            paramca = (ca)localObject2;
-            if (!Util.isNullOrNil((String)localObject3)) {}
+            localSpannableString.setSpan(new UnderlineSpan(), j, k, 17);
+            if (n == 14) {}
           }
-          else
+          catch (IndexOutOfBoundsException localIndexOutOfBoundsException4)
           {
-            Log.e("MicroMsg.HardDeviceChattingItemView", "color is null or highlight color is null, color = %s, highlight color = %s", new Object[] { localObject2, localObject3 });
-            paramca = "#ffffff";
-            localObject1 = "#ffffff";
-          }
-          localObject2 = new StateListDrawable();
-          localObject3 = new ColorDrawable(Color.parseColor((String)localObject1));
-          ((StateListDrawable)localObject2).addState(new int[] { 16842919 }, (Drawable)localObject3);
-          localObject1 = new ColorDrawable(Color.parseColor((String)localObject1));
-          ((StateListDrawable)localObject2).addState(new int[] { 16842908 }, (Drawable)localObject1);
-          localObject1 = new ColorDrawable(Color.parseColor(paramca));
-          ((StateListDrawable)localObject2).addState(new int[] { 16842766 }, (Drawable)localObject1);
-          paramca = new ColorDrawable(Color.parseColor(paramca));
-          ((StateListDrawable)localObject2).addState(new int[0], paramca);
-          localHardDeviceChattingItemView.setBackgroundDrawable((Drawable)localObject2);
-          paramString.ixA = "#ffffff";
-          paramca = paramString.ixy;
-          localObject1 = paramString.ixz;
-          j = 2131101424;
-          k = 2131101424;
-          i = k;
-          paramInt = j;
-          if (!Util.isNullOrNil(paramca))
-          {
-            i = k;
-            paramInt = j;
-            if (!Util.isNullOrNil((String)localObject1)) {
-              paramInt = j;
+            try
+            {
+              for (;;)
+              {
+                for (;;)
+                {
+                  localSpannableString.setSpan(new AbsoluteSizeSpan(n), j, k, 17);
+                  k = ((b)localObject1).XjC;
+                  m = ((b)localObject1).XjD;
+                  n = ar.iV(((b)localObject1).color);
+                  Log.d("MicroMsg.ChattingItemDyeingTemplateDecorator", "setColor, rangeFrom = " + k + ", rangeTo = " + m + ", color = " + n);
+                  j = k;
+                  if (k < 0)
+                  {
+                    Log.e("MicroMsg.ChattingItemDyeingTemplateDecorator", "setColor, params error. length:%d, from:%d, to:%d", new Object[] { Integer.valueOf(localSpannableString.length()), Integer.valueOf(k), Integer.valueOf(m) });
+                    j = 0;
+                  }
+                  k = m;
+                  if (m > localSpannableString.length())
+                  {
+                    Log.e("MicroMsg.ChattingItemDyeingTemplateDecorator", "setColor, params error. length:%d, from:%d, to:%d", new Object[] { Integer.valueOf(localSpannableString.length()), Integer.valueOf(j), Integer.valueOf(m) });
+                    k = localSpannableString.length();
+                  }
+                  try
+                  {
+                    localSpannableString.setSpan(new ForegroundColorSpan(n), j, k, 17);
+                  }
+                  catch (IndexOutOfBoundsException localIndexOutOfBoundsException2)
+                  {
+                    Log.e("MicroMsg.ChattingItemDyeingTemplateDecorator", "setFont setSpan error: %s", new Object[] { localIndexOutOfBoundsException2.getMessage() });
+                  }
+                }
+                break;
+                localIndexOutOfBoundsException3 = localIndexOutOfBoundsException3;
+                Log.e("MicroMsg.ChattingItemDyeingTemplateDecorator", "setFont setSpan error: %s", new Object[] { localIndexOutOfBoundsException3.getMessage() });
+              }
+              localIndexOutOfBoundsException4 = localIndexOutOfBoundsException4;
+              Log.e("MicroMsg.ChattingItemDyeingTemplateDecorator", "setFont setSpan error: %s", new Object[] { localIndexOutOfBoundsException4.getMessage() });
+            }
+            catch (IndexOutOfBoundsException localIndexOutOfBoundsException5)
+            {
+              for (;;)
+              {
+                Log.e("MicroMsg.ChattingItemDyeingTemplateDecorator", "setFont setSpan error: %s", new Object[] { localIndexOutOfBoundsException5.getMessage() });
+              }
             }
           }
         }
       }
-      try
-      {
-        i = Color.parseColor(paramca);
-        paramInt = i;
-        j = Color.parseColor((String)localObject1);
-        paramInt = i;
-        i = j;
-        paramca = new StateListDrawable();
-        localObject1 = new ColorDrawable(i);
-        paramca.addState(new int[] { 16842919 }, (Drawable)localObject1);
-        localObject1 = new ColorDrawable(i);
-        paramca.addState(new int[] { 16842908 }, (Drawable)localObject1);
-        localObject1 = new ColorDrawable(paramInt);
-        paramca.addState(new int[] { 16842766 }, (Drawable)localObject1);
-        localObject1 = new ColorDrawable(paramInt);
-        paramca.addState(new int[0], (Drawable)localObject1);
-        locala.PNX.setBackgroundDrawable(paramca);
-        paramca = paramString.ixA;
-        if (locala != null)
-        {
-          i = 2131101424;
-          paramInt = i;
-          if (Util.isNullOrNil(paramca)) {}
-        }
+      label968:
+      String str2 = String.valueOf(i);
+      break label203;
+      label977:
+      localObject3 = a.af(paramMap, str2);
+      if (localObject3 == null) {
+        Log.e("MicroMsg.ChattingItemDyeingTemplateDecorator", "parseFrom fail, skip to next, lineKey = ".concat(String.valueOf(str2)));
       }
-      catch (IllegalArgumentException paramca)
+      for (;;)
+      {
+        i += 1;
+        break;
+        localIndexOutOfBoundsException5.add(localObject3);
+      }
+    }
+  }
+  
+  private static String bzL(String paramString)
+  {
+    AppMethodBeat.i(37273);
+    StringBuilder localStringBuilder = new StringBuilder(paramString);
+    while (localStringBuilder.length() < 80) {
+      localStringBuilder.append(paramString);
+    }
+    paramString = localStringBuilder.toString();
+    AppMethodBeat.o(37273);
+    return paramString;
+  }
+  
+  private static int hP(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(37274);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(37274);
+      return paramInt;
+    }
+    try
+    {
+      int i = Color.parseColor(paramString);
+      AppMethodBeat.o(37274);
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      Log.e("MicroMsg.ChattingItemDyeingTemplateDecorator", "parseFrom, ex = " + paramString.getMessage());
+      AppMethodBeat.o(37274);
+    }
+    return paramInt;
+  }
+  
+  static final class a
+    implements Comparable<a>
+  {
+    public boolean XjA;
+    public String XjB;
+    public int color;
+    public boolean fWa;
+    public int oYK;
+    public int offset;
+    
+    public static a af(Map<String, String> paramMap, String paramString)
+    {
+      AppMethodBeat.i(37268);
+      a locala = new a();
+      for (;;)
       {
         try
         {
-          paramInt = Color.parseColor(paramca);
-          locala.PNU.setTextColor(paramInt);
-          locala.PNV.setTextColor(paramInt);
-          locala.PNS.setTextColor(paramInt);
-          locala.PNT.setTextColor(paramInt);
-          locala.PNW.setTextColor(paramInt);
-          locala.PNU.setText(paramString.ixs);
-          locala.PNV.setText(paramString.ixq);
-          locala.PNS.setText(paramString.ixu);
-          locala.PNT.setText(paramString.ixt);
-          locala.PNW.setText(paramString.ixv);
-          if (!Util.isNullOrNil(paramString.ixB))
+          locala.offset = Util.getInt((String)paramMap.get(paramString + ".offset"), 0);
+          str = (String)paramMap.get(paramString + ".font");
+          if (Util.isNullOrNil(str))
           {
-            locala.PNY.setVisibility(0);
-            a.b.z(locala.PNY, paramString.ixB);
-            parama.clickArea.setOnLongClickListener(c(parama1));
-            parama.clickArea.setOnTouchListener(((k)parama1.bh(k.class)).gOC());
-            parama.clickArea.setTag(localbq);
-            parama.clickArea.setOnClickListener(d(parama1));
-            AppMethodBeat.o(37305);
-            return;
-            if (localObject1 == null) {}
-            for (boolean bool = true;; bool = false)
-            {
-              Log.e("MicroMsg.ChattingItemHardDeviceMsg", "amessage:%b, %s, %d, %s", new Object[] { Boolean.valueOf(bool), localObject2, Long.valueOf(paramca.field_msgId), paramString });
-              paramString = null;
+            Log.d("MicroMsg.LineNode", "parseFrom, font is null, use default value");
+            str = "m";
+            locala.fWa = as.gS(str);
+            locala.XjA = as.acL(str);
+            locala.oYK = as.bzM(str);
+            str = (String)paramMap.get(paramString + ".color");
+            if (!ar.isDarkMode()) {
+              break label270;
+            }
+            i = -855638017;
+            locala.color = as.hQ(str, i);
+            locala.XjB = ((String)paramMap.get(paramString + ".chars"));
+            if (!Util.isNullOrNil(locala.XjB)) {
               break;
             }
-            paramca = paramca;
-            Log.w("MicroMsg.ChattingItemHardDeviceMsg", "hy: line color given color is incorrect. use default");
-            i = k;
+            Log.e("MicroMsg.LineNode", "parseFrom fail, chars is null");
+            AppMethodBeat.o(37268);
+            return null;
           }
         }
-        catch (IllegalArgumentException paramca)
+        catch (Exception paramMap)
         {
-          for (;;)
+          Log.e("MicroMsg.LineNode", "parseFrom fail, ex = " + paramMap.getMessage());
+          AppMethodBeat.o(37268);
+          return null;
+        }
+        String str = str.toLowerCase();
+        continue;
+        label270:
+        int i = -16777216;
+      }
+      AppMethodBeat.o(37268);
+      return locala;
+    }
+  }
+  
+  static final class b
+  {
+    public boolean XjA;
+    public int XjC;
+    public int XjD;
+    public int color;
+    public boolean fWa;
+    public int oYK;
+    
+    public static b ag(Map<String, String> paramMap, String paramString)
+    {
+      AppMethodBeat.i(37270);
+      Object localObject = (String)paramMap.get(paramString + ".range");
+      if (Util.isNullOrNil((String)localObject))
+      {
+        Log.e("MicroMsg.StyleNode", "parseFrom fail, range is null");
+        AppMethodBeat.o(37270);
+        return null;
+      }
+      if ((((String)localObject).length() < 5) || (((String)localObject).charAt(0) != '{') || (((String)localObject).charAt(((String)localObject).length() - 1) != '}') || (!((String)localObject).contains(",")))
+      {
+        Log.e("MicroMsg.StyleNode", "parseFrom fail, range wrong format, range = ".concat(String.valueOf(localObject)));
+        AppMethodBeat.o(37270);
+        return null;
+      }
+      Log.d("MicroMsg.StyleNode", "parseFrom, range = ".concat(String.valueOf(localObject)));
+      localObject = ((String)localObject).substring(1, ((String)localObject).length() - 1).split(",");
+      if ((localObject == null) || (localObject.length != 2))
+      {
+        Log.e("MicroMsg.StyleNode", "parseFrom fail, range wrong format, strs array length = " + localObject.length);
+        AppMethodBeat.o(37270);
+        return null;
+      }
+      b localb = new b();
+      for (;;)
+      {
+        try
+        {
+          localb.XjC = Util.getInt(localObject[0], 0);
+          int i = localb.XjC;
+          localb.XjD = (Util.getInt(localObject[1], 0) + i);
+          localObject = (String)paramMap.get(paramString + ".font");
+          if (Util.isNullOrNil((String)localObject))
           {
-            Log.w("MicroMsg.ChattingItemHardDeviceMsg", "hy: given color is incorrect.use default");
-            paramInt = i;
-            continue;
-            locala.PNY.setVisibility(8);
+            Log.d("MicroMsg.StyleNode", "parseFrom, font is null, use default value");
+            localObject = "m";
+            localb.fWa = as.gS((String)localObject);
+            localb.XjA = as.acL((String)localObject);
+            localb.oYK = as.bzM((String)localObject);
+            localObject = paramString + ".color";
+            paramString = paramString + ".wxcolors.wxcolor";
+            if (ar.isDarkMode()) {
+              break label429;
+            }
+            localb.color = as.hQ((String)paramMap.get(paramString), as.hQ((String)paramMap.get(localObject), -16777216));
+            AppMethodBeat.o(37270);
+            return localb;
           }
         }
+        catch (Exception paramMap)
+        {
+          Log.e("MicroMsg.StyleNode", "parseFrom fail, ex = " + paramMap.getMessage());
+          AppMethodBeat.o(37270);
+          return null;
+        }
+        localObject = ((String)localObject).toLowerCase();
+        continue;
+        label429:
+        localb.color = as.hQ((String)paramMap.get(paramString + "1"), as.hQ((String)paramMap.get(paramString), as.hQ((String)paramMap.get(localObject), -855638017)));
       }
-    }
-  }
-  
-  public final boolean a(MenuItem paramMenuItem, a parama, ca paramca)
-  {
-    AppMethodBeat.i(37307);
-    paramMenuItem.getItemId();
-    AppMethodBeat.o(37307);
-    return false;
-  }
-  
-  public final boolean a(m paramm, View paramView, ca paramca)
-  {
-    AppMethodBeat.i(233907);
-    paramm.a(((bq)paramView.getTag()).position, 100, this.PhN.Pwc.getMMResources().getString(2131757433), 2131690529);
-    AppMethodBeat.o(233907);
-    return false;
-  }
-  
-  public final boolean bM(int paramInt, boolean paramBoolean)
-  {
-    return paramInt == -1879048185;
-  }
-  
-  public final boolean c(View paramView, a parama, ca paramca)
-  {
-    int i = 0;
-    AppMethodBeat.i(37308);
-    String str = paramca.field_content;
-    paramView = k.b.aD(str, paramca.field_reserved);
-    if (paramView == null)
-    {
-      Log.i("MicroMsg.ChattingItemHardDeviceMsg", "onItemClick, content is null.");
-      AppMethodBeat.o(37308);
-      return false;
-    }
-    Log.d("MicroMsg.ChattingItemHardDeviceMsg", "onItemClick, url is (%s).", new Object[] { paramView.url });
-    if (!Util.isNullOrNil(paramView.url))
-    {
-      paramca = new Intent();
-      paramca.putExtra("rawUrl", paramView.url);
-      com.tencent.mm.br.c.b(parama.Pwc.getContext(), "webview", ".ui.tools.WebViewUI", paramca);
-      AppMethodBeat.o(37308);
-      return true;
-    }
-    if (!Util.isNullOrNil(paramView.ixr))
-    {
-      int j = paramView.ixH;
-      if (System.currentTimeMillis() - j * 1000L >= 2592000000L) {
-        i = 1;
-      }
-      if (i == 0)
-      {
-        Intent localIntent = new Intent();
-        localIntent.putExtra("key_rank_info", str);
-        localIntent.putExtra("key_rank_semi", paramca.field_reserved);
-        localIntent.putExtra("key_rank_title", paramView.ixC);
-        localIntent.putExtra("key_champion_info", paramView.ixD);
-        localIntent.putExtra("key_champion_coverimg", paramView.ixD);
-        localIntent.putExtra("rank_id", paramView.ixr);
-        localIntent.putExtra("app_username", paramView.appName);
-        localIntent.putExtra("device_type", paramView.ixG);
-        localIntent.putExtra("key_champioin_username", paramView.ixB);
-        com.tencent.mm.br.c.b(parama.Pwc.getContext(), "exdevice", ".ui.ExdeviceRankInfoUI", localIntent);
-        com.tencent.mm.plugin.sport.a.c.pl(28);
-      }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(37308);
-      return true;
-      com.tencent.mm.br.c.V(parama.Pwc.getContext(), "exdevice", ".ui.ExdeviceExpireUI");
-    }
-  }
-  
-  public final boolean gTT()
-  {
-    return false;
-  }
-  
-  final class a
-    extends c.a
-  {
-    protected TextView PNS;
-    protected TextView PNT;
-    protected TextView PNU;
-    protected TextView PNV;
-    protected TextView PNW;
-    protected TextView PNX;
-    protected ImageView PNY;
-    
-    a() {}
-    
-    public final a he(View paramView)
-    {
-      AppMethodBeat.i(37303);
-      super.create(paramView);
-      this.PNS = ((TextView)paramView.findViewById(2131308414));
-      this.PNU = ((TextView)paramView.findViewById(2131306508));
-      this.PNT = ((TextView)paramView.findViewById(2131308415));
-      this.PNV = ((TextView)paramView.findViewById(2131306509));
-      this.PNW = ((TextView)paramView.findViewById(2131309867));
-      this.PNX = ((TextView)paramView.findViewById(2131302246));
-      this.checkBox = ((CheckBox)paramView.findViewById(2131298410));
-      this.PNY = ((ImageView)paramView.findViewById(2131309857));
-      AppMethodBeat.o(37303);
-      return this;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.as
  * JD-Core Version:    0.7.0.1
  */

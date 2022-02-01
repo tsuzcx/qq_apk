@@ -2,13 +2,13 @@ package com.tencent.liteav.beauty.b;
 
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.c.h;
-import com.tencent.liteav.basic.c.j;
+import com.tencent.liteav.basic.opengl.TXCOpenGlUtils;
+import com.tencent.liteav.basic.opengl.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.FloatBuffer;
 
 public class m
-  extends h
+  extends j
 {
   private int A;
   private float[] B;
@@ -75,12 +75,12 @@ public class m
         m.b(m.this, paramBitmap2);
         if (paramBitmap1 != null)
         {
-          m.a(m.this, j.a(paramBitmap1, m.a(m.this), false));
+          m.a(m.this, TXCOpenGlUtils.a(paramBitmap1, m.a(m.this), false));
           m.b(m.this)[0] = 1.0F;
         }
         while (paramBitmap2 != null)
         {
-          m.b(m.this, j.a(paramBitmap2, m.c(m.this), false));
+          m.b(m.this, TXCOpenGlUtils.a(paramBitmap2, m.c(m.this), false));
           m.b(m.this)[1] = 1.0F;
           AppMethodBeat.o(15024);
           return;
@@ -104,10 +104,10 @@ public class m
   public boolean b()
   {
     AppMethodBeat.i(15048);
-    this.t = GLES20.glGetUniformLocation(p(), "inputImageTexture2");
-    this.x = GLES20.glGetUniformLocation(p(), "inputImageTexture3");
-    this.A = GLES20.glGetUniformLocation(p(), "v3_params");
-    this.C = GLES20.glGetUniformLocation(p(), "v2_texs");
+    this.t = GLES20.glGetUniformLocation(q(), "inputImageTexture2");
+    this.x = GLES20.glGetUniformLocation(q(), "inputImageTexture3");
+    this.A = GLES20.glGetUniformLocation(q(), "v3_params");
+    this.C = GLES20.glGetUniformLocation(q(), "v2_texs");
     boolean bool = super.b();
     AppMethodBeat.o(15048);
     return bool;
@@ -171,7 +171,7 @@ public class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.m
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mm.ipcinvoker.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.h.b;
+import com.tencent.mm.ipcinvoker.h.c;
 import java.lang.reflect.Field;
 
 public final class a<FieldType>
 {
-  private Class<?> dfe;
-  private String dff;
+  private Class<?> dji;
+  private String djj;
   private Field mField;
   private boolean mInited;
   
@@ -20,12 +20,12 @@ public final class a<FieldType>
       AppMethodBeat.o(158827);
       throw paramClass;
     }
-    this.dfe = paramClass;
-    this.dff = paramString;
+    this.dji = paramClass;
+    this.djj = paramString;
     AppMethodBeat.o(158827);
   }
   
-  private FieldType ayk()
+  private FieldType aFD()
   {
     Object localObject1 = null;
     try
@@ -34,7 +34,7 @@ public final class a<FieldType>
       prepare();
       if (this.mField == null)
       {
-        b.w("SDK.ReflectStaticFieldSmith", "Field %s is no exists.", new Object[] { this.dff });
+        c.w("SDK.ReflectStaticFieldSmith", "Field %s is no exists.", new Object[] { this.djj });
         AppMethodBeat.o(158829);
         return localObject1;
       }
@@ -68,7 +68,7 @@ public final class a<FieldType>
           AppMethodBeat.o(158828);
           return;
         }
-        localClass1 = this.dfe;
+        localClass1 = this.dji;
         if (localClass1 == null) {}
       }
       finally
@@ -76,7 +76,7 @@ public final class a<FieldType>
         try
         {
           Class localClass1;
-          Field localField = localClass1.getDeclaredField(this.dff);
+          Field localField = localClass1.getDeclaredField(this.djj);
           localField.setAccessible(true);
           this.mField = localField;
           this.mInited = true;
@@ -92,7 +92,7 @@ public final class a<FieldType>
   }
   
   /* Error */
-  public final FieldType ayl()
+  public final FieldType aFE()
   {
     // Byte code:
     //   0: aload_0
@@ -102,7 +102,7 @@ public final class a<FieldType>
     //   7: aconst_null
     //   8: astore_1
     //   9: aload_0
-    //   10: invokespecial 105	com/tencent/mm/ipcinvoker/g/a:ayk	()Ljava/lang/Object;
+    //   10: invokespecial 105	com/tencent/mm/ipcinvoker/g/a:aFD	()Ljava/lang/Object;
     //   13: astore_2
     //   14: aload_2
     //   15: astore_1
@@ -121,7 +121,7 @@ public final class a<FieldType>
     //   35: iconst_0
     //   36: aload_2
     //   37: aastore
-    //   38: invokestatic 109	com/tencent/mm/ipcinvoker/h/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   38: invokestatic 109	com/tencent/mm/ipcinvoker/h/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   41: goto -25 -> 16
     //   44: astore_1
     //   45: aload_0
@@ -137,7 +137,7 @@ public final class a<FieldType>
     //   59: iconst_0
     //   60: aload_2
     //   61: aastore
-    //   62: invokestatic 109	com/tencent/mm/ipcinvoker/h/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   62: invokestatic 109	com/tencent/mm/ipcinvoker/h/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   65: goto -49 -> 16
     //   68: astore_2
     //   69: ldc 61
@@ -148,7 +148,7 @@ public final class a<FieldType>
     //   78: iconst_0
     //   79: aload_2
     //   80: aastore
-    //   81: invokestatic 109	com/tencent/mm/ipcinvoker/h/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   81: invokestatic 109	com/tencent/mm/ipcinvoker/h/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   84: goto -68 -> 16
     // Local variable table:
     //   start	length	slot	name	signature
@@ -174,7 +174,7 @@ public final class a<FieldType>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.g.a
  * JD-Core Version:    0.7.0.1
  */

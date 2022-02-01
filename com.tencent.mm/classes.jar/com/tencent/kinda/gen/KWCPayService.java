@@ -6,7 +6,7 @@ public abstract interface KWCPayService
   
   public abstract boolean isNeedWalletLock();
   
-  public abstract boolean isWCPayRegUser();
+  public abstract boolean isSetWalletLock();
   
   public abstract void startUseCaseImpl(String paramString, ITransmitKvData paramITransmitKvData, VoidITransmitKvDataCallback paramVoidITransmitKvDataCallback);
 }

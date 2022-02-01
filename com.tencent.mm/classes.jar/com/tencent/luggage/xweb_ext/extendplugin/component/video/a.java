@@ -2,7 +2,7 @@ package com.tencent.luggage.xweb_ext.extendplugin.component.video;
 
 public abstract interface a
 {
-  public abstract void bZ(int paramInt1, int paramInt2);
+  public abstract void cs(int paramInt1, int paramInt2);
 }
 
 

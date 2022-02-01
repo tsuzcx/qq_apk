@@ -2,39 +2,44 @@ package com.tencent.mm.storage;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.an;
+import com.tencent.mm.f.c.an;
 import com.tencent.mm.plugin.biz.b.b;
-import com.tencent.mm.protocal.protobuf.dkr;
-import com.tencent.mm.protocal.protobuf.efz;
-import com.tencent.mm.protocal.protobuf.ege;
+import com.tencent.mm.protocal.protobuf.dug;
+import com.tencent.mm.protocal.protobuf.eqb;
+import com.tencent.mm.protocal.protobuf.eqg;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import org.json.JSONObject;
 
-public final class z
+public class z
   extends an
 {
   protected static IAutoDBItem.MAutoDBInfo info;
-  public boolean NQj = false;
-  public boolean NQk = false;
-  public boolean NQl = false;
-  public int NQm = -1;
-  public ege NQn = null;
-  x NQo = null;
-  private String NQp = "";
-  private JSONObject NQq = null;
-  public dkr NQr = null;
+  public boolean Veb = false;
+  public boolean Vec = false;
+  public boolean Ved = false;
+  public int Vee = -1;
+  public long Vef = 0L;
+  public boolean Veg = false;
+  public boolean Veh = false;
+  public eqg Vei = null;
+  x Vej = null;
+  private String Vek = "";
+  private JSONObject Vel = null;
+  private String Vem = null;
+  public dug Ven = null;
   private String aid = "";
-  public int dDG = 0;
+  public int fwp = 0;
   private String id = null;
-  private String kZe = "";
+  private String nTp = "";
   private String pathType = "";
-  public boolean pvs = false;
-  public int pxD = -1;
+  public boolean sEJ = false;
+  public int sHe = -1;
   
   static
   {
@@ -129,95 +134,227 @@ public final class z
     AppMethodBeat.o(124608);
   }
   
-  private static byte[] d(ege paramege)
+  private static byte[] d(eqg parameqg)
   {
     AppMethodBeat.i(124607);
-    if (paramege == null)
+    if (parameqg == null)
     {
       AppMethodBeat.o(124607);
       return null;
     }
     try
     {
-      paramege = paramege.toByteArray();
+      parameqg = parameqg.toByteArray();
       AppMethodBeat.o(124607);
-      return paramege;
+      return parameqg;
     }
-    catch (IOException paramege)
+    catch (IOException parameqg)
     {
-      Log.w("MicroMsg.BizTimeLineInfo", "getTLRecCardBytes toByteArray ex %s", new Object[] { paramege.getMessage() });
+      Log.w("MicroMsg.BizTimeLineInfo", "getTLRecCardBytes toByteArray ex %s", new Object[] { parameqg.getMessage() });
       AppMethodBeat.o(124607);
     }
     return null;
   }
   
-  private void gAI()
+  private void hwP()
   {
-    AppMethodBeat.i(212334);
-    JSONObject localJSONObject = gAE();
+    AppMethodBeat.i(205465);
+    JSONObject localJSONObject = hwM();
     if ((localJSONObject == null) || (!Util.isNullOrNil(this.aid)))
     {
-      AppMethodBeat.o(212334);
+      AppMethodBeat.o(205465);
       return;
     }
     try
     {
       this.aid = localJSONObject.optString("aid");
-      this.kZe = localJSONObject.optString("traceid");
+      this.nTp = localJSONObject.optString("traceid");
       this.pathType = localJSONObject.optString("path_type", "ad");
-      AppMethodBeat.o(212334);
+      AppMethodBeat.o(205465);
       return;
     }
     catch (Exception localException)
     {
       Log.w("MicroMsg.BizTimeLineInfo", "getAId ex %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(212334);
+      AppMethodBeat.o(205465);
     }
   }
   
-  public final String acx()
+  public final String ahl()
   {
-    AppMethodBeat.i(212327);
-    if (!gAv())
+    AppMethodBeat.i(205457);
+    if (!hwC())
     {
-      AppMethodBeat.o(212327);
+      AppMethodBeat.o(205457);
       return null;
     }
-    if (!Util.isNullOrNil(this.NQp))
+    if (!Util.isNullOrNil(this.Vek))
     {
-      localObject = this.NQp;
-      AppMethodBeat.o(212327);
+      localObject = this.Vek;
+      AppMethodBeat.o(205457);
       return localObject;
     }
-    Object localObject = gAE();
+    Object localObject = hwM();
     if (localObject != null) {
-      this.NQp = ((JSONObject)localObject).toString();
+      this.Vek = ((JSONObject)localObject).toString();
     }
-    localObject = this.NQp;
-    AppMethodBeat.o(212327);
+    localObject = this.Vek;
+    AppMethodBeat.o(205457);
     return localObject;
   }
   
-  public final void c(ege paramege)
+  public final void c(eqg parameqg)
   {
     AppMethodBeat.i(124606);
-    this.NQn = paramege;
-    paramege = d(paramege);
-    if (paramege == null)
+    this.Vei = parameqg;
+    parameqg = d(parameqg);
+    if (parameqg == null)
     {
       AppMethodBeat.o(124606);
       return;
     }
-    this.field_content = Base64.encodeToString(paramege, 0);
-    this.fqL = null;
-    this.fqk = true;
+    this.field_content = Base64.encodeToString(parameqg, 0);
+    ape();
     AppMethodBeat.o(124606);
   }
   
-  public final boolean gAA()
+  public final boolean fYu()
+  {
+    AppMethodBeat.i(205462);
+    if (Util.isNullOrNil(hwO()))
+    {
+      AppMethodBeat.o(205462);
+      return false;
+    }
+    if (this.Vel == null)
+    {
+      AppMethodBeat.o(205462);
+      return false;
+    }
+    if (!Util.isNullOrNil(this.Vel.optString("video_info")))
+    {
+      AppMethodBeat.o(205462);
+      return true;
+    }
+    AppMethodBeat.o(205462);
+    return false;
+  }
+  
+  public IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return info;
+  }
+  
+  public final String getId()
+  {
+    AppMethodBeat.i(205454);
+    String str;
+    if (this.id != null)
+    {
+      str = this.id;
+      AppMethodBeat.o(205454);
+      return str;
+    }
+    if (hwz()) {
+      this.id = ("recFeed:" + this.field_orderFlag);
+    }
+    for (;;)
+    {
+      str = this.id;
+      AppMethodBeat.o(205454);
+      return str;
+      if (hwy()) {
+        this.id = "newMsgLine";
+      } else {
+        this.id = ("msg:" + this.field_orderFlag);
+      }
+    }
+  }
+  
+  public final String getPathType()
+  {
+    AppMethodBeat.i(205463);
+    if (!Util.isNullOrNil(this.pathType))
+    {
+      str = this.pathType;
+      AppMethodBeat.o(205463);
+      return str;
+    }
+    hwP();
+    String str = this.pathType;
+    AppMethodBeat.o(205463);
+    return str;
+  }
+  
+  public final String getTraceId()
+  {
+    AppMethodBeat.i(205464);
+    if (!Util.isNullOrNil(this.nTp))
+    {
+      str = this.nTp;
+      AppMethodBeat.o(205464);
+      return str;
+    }
+    hwP();
+    String str = this.nTp;
+    AppMethodBeat.o(205464);
+    return str;
+  }
+  
+  public final boolean hwA()
+  {
+    return this.field_type == 285212721;
+  }
+  
+  public final boolean hwB()
+  {
+    return this.field_type == 620757041;
+  }
+  
+  public final boolean hwC()
+  {
+    return this.field_type == 637534257;
+  }
+  
+  public final boolean hwD()
+  {
+    return this.field_type == 10100;
+  }
+  
+  public final boolean hwE()
+  {
+    return this.field_type == 318767153;
+  }
+  
+  public final boolean hwF()
+  {
+    return this.field_type == 34;
+  }
+  
+  public final boolean hwG()
+  {
+    switch (this.field_type)
+    {
+    default: 
+      return false;
+    }
+    return true;
+  }
+  
+  public final boolean hwH()
+  {
+    switch (this.field_type)
+    {
+    default: 
+      return false;
+    }
+    return true;
+  }
+  
+  public final boolean hwI()
   {
     AppMethodBeat.i(124603);
-    if (gAo() == 1L)
+    if (hwv() == 1L)
     {
       AppMethodBeat.o(124603);
       return true;
@@ -226,128 +363,128 @@ public final class z
     return false;
   }
   
-  public final x gAB()
+  public final x hwJ()
   {
-    AppMethodBeat.i(212326);
-    if (this.NQo != null)
+    AppMethodBeat.i(205456);
+    if (this.Vej != null)
     {
-      localObject = this.NQo;
-      AppMethodBeat.o(212326);
+      localObject = this.Vej;
+      AppMethodBeat.o(205456);
       return localObject;
     }
-    Object localObject = b.pfn;
-    this.NQo = b.ahh(this.field_content);
-    localObject = this.NQo;
-    AppMethodBeat.o(212326);
+    Object localObject = b.shr;
+    this.Vej = b.aoN(this.field_content);
+    localObject = this.Vej;
+    AppMethodBeat.o(205456);
     return localObject;
   }
   
-  public final efz gAC()
+  public final eqb hwK()
   {
     AppMethodBeat.i(124604);
-    Object localObject = gAD();
+    Object localObject = hwL();
     if (localObject == null)
     {
       AppMethodBeat.o(124604);
       return null;
     }
-    localObject = ((ege)localObject).NfY;
+    localObject = ((eqg)localObject).UsD;
     AppMethodBeat.o(124604);
     return localObject;
   }
   
   /* Error */
-  public final ege gAD()
+  public final eqg hwL()
   {
     // Byte code:
-    //   0: ldc_w 343
-    //   3: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 404
+    //   3: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 309	com/tencent/mm/g/c/an:fqL	[B
-    //   10: invokestatic 346	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	([B)Z
+    //   7: invokevirtual 407	com/tencent/mm/storage/z:apd	()[B
+    //   10: invokestatic 410	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	([B)Z
     //   13: ifeq +21 -> 34
     //   16: aload_0
-    //   17: getfield 305	com/tencent/mm/storage/z:field_content	Ljava/lang/String;
-    //   20: invokestatic 265	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   17: getfield 318	com/tencent/mm/storage/z:field_content	Ljava/lang/String;
+    //   20: invokestatic 278	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   23: ifeq +11 -> 34
-    //   26: ldc_w 343
-    //   29: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   26: ldc_w 404
+    //   29: invokestatic 194	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   32: aconst_null
     //   33: areturn
     //   34: aload_0
-    //   35: getfield 207	com/tencent/mm/storage/z:NQn	Lcom/tencent/mm/protocal/protobuf/ege;
+    //   35: getfield 218	com/tencent/mm/storage/z:Vei	Lcom/tencent/mm/protocal/protobuf/eqg;
     //   38: ifnull +16 -> 54
     //   41: aload_0
-    //   42: getfield 207	com/tencent/mm/storage/z:NQn	Lcom/tencent/mm/protocal/protobuf/ege;
+    //   42: getfield 218	com/tencent/mm/storage/z:Vei	Lcom/tencent/mm/protocal/protobuf/eqg;
     //   45: astore_2
-    //   46: ldc_w 343
-    //   49: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   46: ldc_w 404
+    //   49: invokestatic 194	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   52: aload_2
     //   53: areturn
     //   54: aload_0
-    //   55: new 232	com/tencent/mm/protocal/protobuf/ege
+    //   55: new 245	com/tencent/mm/protocal/protobuf/eqg
     //   58: dup
-    //   59: invokespecial 347	com/tencent/mm/protocal/protobuf/ege:<init>	()V
-    //   62: putfield 207	com/tencent/mm/storage/z:NQn	Lcom/tencent/mm/protocal/protobuf/ege;
+    //   59: invokespecial 411	com/tencent/mm/protocal/protobuf/eqg:<init>	()V
+    //   62: putfield 218	com/tencent/mm/storage/z:Vei	Lcom/tencent/mm/protocal/protobuf/eqg;
     //   65: aload_0
-    //   66: getfield 305	com/tencent/mm/storage/z:field_content	Ljava/lang/String;
-    //   69: invokestatic 265	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   66: getfield 318	com/tencent/mm/storage/z:field_content	Ljava/lang/String;
+    //   69: invokestatic 278	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   72: ifne +72 -> 144
     //   75: aload_0
-    //   76: getfield 305	com/tencent/mm/storage/z:field_content	Ljava/lang/String;
+    //   76: getfield 318	com/tencent/mm/storage/z:field_content	Ljava/lang/String;
     //   79: iconst_0
-    //   80: invokestatic 351	android/util/Base64:decode	(Ljava/lang/String;I)[B
+    //   80: invokestatic 415	android/util/Base64:decode	(Ljava/lang/String;I)[B
     //   83: astore_2
     //   84: aload_0
-    //   85: getfield 207	com/tencent/mm/storage/z:NQn	Lcom/tencent/mm/protocal/protobuf/ege;
+    //   85: getfield 218	com/tencent/mm/storage/z:Vei	Lcom/tencent/mm/protocal/protobuf/eqg;
     //   88: aload_2
-    //   89: invokevirtual 355	com/tencent/mm/protocal/protobuf/ege:parseFrom	([B)Lcom/tencent/mm/bw/a;
+    //   89: invokevirtual 419	com/tencent/mm/protocal/protobuf/eqg:parseFrom	([B)Lcom/tencent/mm/cd/a;
     //   92: pop
     //   93: iconst_1
     //   94: istore_1
     //   95: iload_1
     //   96: ifne +15 -> 111
     //   99: aload_0
-    //   100: getfield 207	com/tencent/mm/storage/z:NQn	Lcom/tencent/mm/protocal/protobuf/ege;
+    //   100: getfield 218	com/tencent/mm/storage/z:Vei	Lcom/tencent/mm/protocal/protobuf/eqg;
     //   103: aload_0
-    //   104: getfield 309	com/tencent/mm/g/c/an:fqL	[B
-    //   107: invokevirtual 355	com/tencent/mm/protocal/protobuf/ege:parseFrom	([B)Lcom/tencent/mm/bw/a;
+    //   104: invokevirtual 407	com/tencent/mm/storage/z:apd	()[B
+    //   107: invokevirtual 419	com/tencent/mm/protocal/protobuf/eqg:parseFrom	([B)Lcom/tencent/mm/cd/a;
     //   110: pop
     //   111: aload_0
-    //   112: getfield 207	com/tencent/mm/storage/z:NQn	Lcom/tencent/mm/protocal/protobuf/ege;
+    //   112: getfield 218	com/tencent/mm/storage/z:Vei	Lcom/tencent/mm/protocal/protobuf/eqg;
     //   115: astore_2
-    //   116: ldc_w 343
-    //   119: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   116: ldc_w 404
+    //   119: invokestatic 194	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   122: aload_2
     //   123: areturn
     //   124: astore_2
-    //   125: ldc 238
-    //   127: ldc_w 357
+    //   125: ldc 251
+    //   127: ldc_w 421
     //   130: iconst_1
-    //   131: anewarray 242	java/lang/Object
+    //   131: anewarray 255	java/lang/Object
     //   134: dup
     //   135: iconst_0
     //   136: aload_2
-    //   137: invokevirtual 284	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   137: invokevirtual 297	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   140: aastore
-    //   141: invokestatic 359	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   141: invokestatic 423	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   144: iconst_0
     //   145: istore_1
     //   146: goto -51 -> 95
     //   149: astore_2
-    //   150: ldc 238
-    //   152: ldc_w 361
+    //   150: ldc 251
+    //   152: ldc_w 425
     //   155: iconst_1
-    //   156: anewarray 242	java/lang/Object
+    //   156: anewarray 255	java/lang/Object
     //   159: dup
     //   160: iconst_0
     //   161: aload_2
-    //   162: invokevirtual 284	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   162: invokevirtual 297	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   165: aastore
-    //   166: invokestatic 359	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   166: invokestatic 423	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   169: aload_0
     //   170: aconst_null
-    //   171: putfield 207	com/tencent/mm/storage/z:NQn	Lcom/tencent/mm/protocal/protobuf/ege;
+    //   171: putfield 218	com/tencent/mm/storage/z:Vei	Lcom/tencent/mm/protocal/protobuf/eqg;
     //   174: goto -63 -> 111
     // Local variable table:
     //   start	length	slot	name	signature
@@ -358,244 +495,141 @@ public final class z
     //   149	13	2	localException2	Exception
     // Exception table:
     //   from	to	target	type
-    //   84	93	124	java/lang/Exception
+    //   75	93	124	java/lang/Exception
     //   99	111	149	java/lang/Exception
   }
   
-  public final JSONObject gAE()
+  public final JSONObject hwM()
   {
-    AppMethodBeat.i(212328);
-    if (!gAv())
+    AppMethodBeat.i(205458);
+    if (!hwC())
     {
-      AppMethodBeat.o(212328);
+      AppMethodBeat.o(205458);
       return null;
     }
-    if (this.NQq != null)
+    if (this.Vel != null)
     {
-      localObject = this.NQq;
-      AppMethodBeat.o(212328);
+      localObject = this.Vel;
+      AppMethodBeat.o(205458);
       return localObject;
     }
-    Object localObject = r.NPl;
-    this.NQq = r.biI(this.field_content);
-    localObject = this.NQq;
-    AppMethodBeat.o(212328);
+    Object localObject = r.VcW;
+    this.Vel = r.bvb(this.field_content);
+    localObject = this.Vel;
+    AppMethodBeat.o(205458);
     return localObject;
   }
   
-  public final void gAF()
+  public final void hwN()
   {
-    AppMethodBeat.i(212329);
-    this.NQq = null;
+    AppMethodBeat.i(205460);
+    this.Vel = null;
     this.aid = "";
-    gAI();
-    AppMethodBeat.o(212329);
+    hwP();
+    AppMethodBeat.o(205460);
   }
   
-  public final String gAG()
+  public final String hwO()
   {
-    AppMethodBeat.i(212330);
+    AppMethodBeat.i(205461);
     if (!Util.isNullOrNil(this.aid))
     {
       str = this.aid;
-      AppMethodBeat.o(212330);
+      AppMethodBeat.o(205461);
       return str;
     }
-    gAI();
+    hwP();
     String str = this.aid;
-    AppMethodBeat.o(212330);
+    AppMethodBeat.o(205461);
     return str;
   }
   
-  public final boolean gAH()
+  public final int hwQ()
   {
-    AppMethodBeat.i(212331);
-    if (Util.isNullOrNil(gAG()))
+    AppMethodBeat.i(205466);
+    if ((!hwz()) || (this.Ven == null))
     {
-      AppMethodBeat.o(212331);
-      return false;
-    }
-    if (this.NQq == null)
-    {
-      AppMethodBeat.o(212331);
-      return false;
-    }
-    if (!Util.isNullOrNil(this.NQq.optString("video_info")))
-    {
-      AppMethodBeat.o(212331);
-      return true;
-    }
-    AppMethodBeat.o(212331);
-    return false;
-  }
-  
-  public final int gAJ()
-  {
-    AppMethodBeat.i(212335);
-    if ((!gAs()) || (this.NQr == null))
-    {
-      AppMethodBeat.o(212335);
+      AppMethodBeat.o(205466);
       return -1;
     }
-    int i = this.NQr.KUh;
-    AppMethodBeat.o(212335);
+    int i = this.Ven.RVf;
+    AppMethodBeat.o(205466);
     return i;
   }
   
-  public final void gAK()
+  public final String hwR()
+  {
+    AppMethodBeat.i(205468);
+    if ((!hwz()) || (this.Ven == null))
+    {
+      AppMethodBeat.o(205468);
+      return "";
+    }
+    String str;
+    if (this.Vem != null)
+    {
+      str = this.Vem;
+      AppMethodBeat.o(205468);
+      return str;
+    }
+    try
+    {
+      this.Vem = new String(Base64.encode(this.Ven.toByteArray(), 2), StandardCharsets.UTF_8);
+      str = this.Vem;
+      AppMethodBeat.o(205468);
+      return str;
+    }
+    catch (IOException localIOException)
+    {
+      Log.w("MicroMsg.BizTimeLineInfo", "getRecFeedData ex %s", new Object[] { localIOException.getMessage() });
+      AppMethodBeat.o(205468);
+    }
+    return "";
+  }
+  
+  public final void hwS()
   {
     this.field_bitFlag &= 0xFFFFFFFE;
   }
   
-  public final long gAo()
+  public final long hwv()
   {
     return (this.field_orderFlag & 0x0) >> 32;
   }
   
-  public final long gAp()
+  public final long hww()
   {
     return (this.field_orderFlag & 0xFF000000) >> 24;
   }
   
-  public final boolean gAq()
+  public final boolean hwx()
   {
-    return this.dDG == 0;
+    return this.fwp == 0;
   }
   
-  public final boolean gAr()
+  public final boolean hwy()
   {
-    return this.dDG == 1;
+    return this.fwp == 1;
   }
   
-  public final boolean gAs()
+  public final boolean hwz()
   {
-    return this.dDG == 2;
+    return this.fwp == 2;
   }
   
-  public final boolean gAt()
-  {
-    return this.field_type == 285212721;
-  }
-  
-  public final boolean gAu()
-  {
-    return this.field_type == 620757041;
-  }
-  
-  public final boolean gAv()
-  {
-    return this.field_type == 637534257;
-  }
-  
-  public final boolean gAw()
-  {
-    return this.field_type == 10100;
-  }
-  
-  public final boolean gAx()
-  {
-    return this.field_type == 318767153;
-  }
-  
-  public final boolean gAy()
-  {
-    return this.field_type == 34;
-  }
-  
-  public final boolean gAz()
-  {
-    switch (this.field_type)
-    {
-    default: 
-      return false;
-    }
-    return true;
-  }
-  
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
-  {
-    return info;
-  }
-  
-  public final String getId()
-  {
-    AppMethodBeat.i(212325);
-    String str;
-    if (this.id != null)
-    {
-      str = this.id;
-      AppMethodBeat.o(212325);
-      return str;
-    }
-    if (gAs()) {
-      this.id = ("recFeed:" + this.field_orderFlag);
-    }
-    for (;;)
-    {
-      str = this.id;
-      AppMethodBeat.o(212325);
-      return str;
-      if (gAr()) {
-        this.id = "newMsgLine";
-      } else {
-        this.id = ("msg:" + this.field_orderFlag);
-      }
-    }
-  }
-  
-  public final String getPathType()
-  {
-    AppMethodBeat.i(212332);
-    if (!Util.isNullOrNil(this.pathType))
-    {
-      str = this.pathType;
-      AppMethodBeat.o(212332);
-      return str;
-    }
-    gAI();
-    String str = this.pathType;
-    AppMethodBeat.o(212332);
-    return str;
-  }
-  
-  public final String getTraceId()
-  {
-    AppMethodBeat.i(212333);
-    if (!Util.isNullOrNil(this.kZe))
-    {
-      str = this.kZe;
-      AppMethodBeat.o(212333);
-      return str;
-    }
-    gAI();
-    String str = this.kZe;
-    AppMethodBeat.o(212333);
-    return str;
-  }
-  
-  public final boolean iE(int paramInt)
+  public final boolean jQ(int paramInt)
   {
     return (this.field_bitFlag & paramInt) != 0;
   }
   
-  public final void iF(int paramInt)
+  public final void jR(int paramInt)
   {
     this.field_bitFlag |= paramInt;
-  }
-  
-  public final boolean isText()
-  {
-    switch (this.field_type)
-    {
-    default: 
-      return false;
-    }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.storage.z
  * JD-Core Version:    0.7.0.1
  */

@@ -10,29 +10,29 @@ import com.tencent.mm.hellhoundlib.activities.HellActivity;
 public class SplashFallbackActivity
   extends HellActivity
 {
-  private Runnable NLZ;
+  private Runnable UZJ;
   private Handler mHandler;
   
   public SplashFallbackActivity()
   {
     AppMethodBeat.i(40668);
-    this.NLZ = new Runnable()
+    this.UZJ = new Runnable()
     {
-      private long NMa = -1L;
+      private long UZK = -1L;
       
       public final void run()
       {
         AppMethodBeat.i(40667);
-        if (this.NMa == -1L) {
-          this.NMa = System.currentTimeMillis();
+        if (this.UZK == -1L) {
+          this.UZK = System.currentTimeMillis();
         }
-        if (!SplashFallbackActivity.gyv())
+        if (!SplashFallbackActivity.huv())
         {
-          if (System.currentTimeMillis() - this.NMa >= 80000L)
+          if (System.currentTimeMillis() - this.UZK >= 80000L)
           {
-            h.c("MicroMsg.FallbackSplash", "checkIfMainProcessStartupDone timeout", new Object[0]);
+            i.g("MicroMsg.FallbackSplash", "checkIfMainProcessStartupDone timeout", new Object[0]);
             SplashFallbackActivity.this.finish();
-            SplashFallbackActivity.this.overridePendingTransition(2130772183, 2130772181);
+            SplashFallbackActivity.this.overridePendingTransition(h.a.UZk, h.a.UZi);
             AppMethodBeat.o(40667);
             return;
           }
@@ -40,9 +40,9 @@ public class SplashFallbackActivity
           AppMethodBeat.o(40667);
           return;
         }
-        h.c("MicroMsg.FallbackSplash", "checkIfMainProcessStartupDone true", new Object[0]);
+        i.g("MicroMsg.FallbackSplash", "checkIfMainProcessStartupDone true", new Object[0]);
         SplashFallbackActivity.this.finish();
-        SplashFallbackActivity.this.overridePendingTransition(2130772183, 2130772181);
+        SplashFallbackActivity.this.overridePendingTransition(h.a.UZk, h.a.UZi);
         AppMethodBeat.o(40667);
       }
     };
@@ -52,7 +52,7 @@ public class SplashFallbackActivity
   public void onBackPressed()
   {
     AppMethodBeat.i(40670);
-    h.c("MicroMsg.FallbackSplash", "block onBackPressed", new Object[0]);
+    i.g("MicroMsg.FallbackSplash", "block onBackPressed", new Object[0]);
     AppMethodBeat.o(40670);
   }
   
@@ -60,11 +60,11 @@ public class SplashFallbackActivity
   {
     AppMethodBeat.i(40669);
     super.onCreate(paramBundle);
-    h.c("MicroMsg.FallbackSplash", "onCreate", new Object[0]);
+    i.g("MicroMsg.FallbackSplash", "onCreate", new Object[0]);
     paramBundle = new HandlerThread("splash-activity");
     paramBundle.start();
     this.mHandler = new Handler(paramBundle.getLooper());
-    this.mHandler.postDelayed(this.NLZ, 100L);
+    this.mHandler.postDelayed(this.UZJ, 100L);
     AppMethodBeat.o(40669);
   }
   
@@ -76,7 +76,7 @@ public class SplashFallbackActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.splash.SplashFallbackActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -13,9 +13,9 @@ public abstract class d
   
   static
   {
-    LOGIC = new h(b.hdL().RaP.getLooper(), "Vending.LOGIC");
-    HEAVY_WORK = new h(a.hdK().RaN.getLooper(), "Vending.HEAVY_WORK");
-    g.hdI();
+    LOGIC = new h(b.ieS().YBf.getLooper(), "Vending.LOGIC");
+    HEAVY_WORK = new h(a.ieR().YBd.getLooper(), "Vending.HEAVY_WORK");
+    g.ieP();
   }
   
   public static d current()
@@ -25,7 +25,7 @@ public abstract class d
   
   public static d find(String paramString)
   {
-    return g.boH(paramString);
+    return g.bBx(paramString);
   }
   
   public abstract void arrange(Runnable paramRunnable);
@@ -38,7 +38,7 @@ public abstract class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vending.h.d
  * JD-Core Version:    0.7.0.1
  */

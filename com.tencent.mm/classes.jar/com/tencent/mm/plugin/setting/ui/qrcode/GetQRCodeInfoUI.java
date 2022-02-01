@@ -9,19 +9,18 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.e;
-import com.tencent.mm.aj.p;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.model.bu;
-import com.tencent.mm.model.bu.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.model.bv;
+import com.tencent.mm.model.bv.a;
+import com.tencent.mm.network.g;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.messenger.a.f;
+import com.tencent.mm.plugin.setting.b.g;
+import com.tencent.mm.plugin.setting.b.i;
 import com.tencent.mm.pluginsdk.k;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.protocal.protobuf.drt;
+import com.tencent.mm.protocal.protobuf.ebp;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatHosts;
@@ -31,13 +30,13 @@ public class GetQRCodeInfoUI
   extends MMBaseActivity
   implements i
 {
-  private f CYG;
-  private ProgressDialog gtM = null;
+  private com.tencent.mm.plugin.messenger.a.f Jem;
+  private ProgressDialog iXX = null;
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(73839);
-    com.tencent.mm.plugin.setting.c.jRt.o(new Intent(), this);
+    com.tencent.mm.plugin.setting.c.mIG.n(new Intent(), this);
     finish();
     AppMethodBeat.o(73839);
   }
@@ -46,7 +45,7 @@ public class GetQRCodeInfoUI
   {
     AppMethodBeat.i(73835);
     super.onCreate(paramBundle);
-    setContentView(2131493988);
+    setContentView(b.g.empty);
     Object localObject = getIntent().getData();
     if (localObject == null)
     {
@@ -56,11 +55,11 @@ public class GetQRCodeInfoUI
     }
     paramBundle = Util.nullAsNil(((Uri)localObject).getHost());
     localObject = Util.nullAsNil(((Uri)localObject).getScheme());
-    if ((("http".equals(localObject)) && (WeChatHosts.domainString(2131761749).equals(paramBundle))) || (("weixin".equals(localObject)) && ("qr".equals(paramBundle))))
+    if ((("http".equals(localObject)) && (WeChatHosts.domainString(b.i.host_weixin_qq_com).equals(paramBundle))) || (("weixin".equals(localObject)) && ("qr".equals(paramBundle))))
     {
-      com.tencent.mm.kernel.g.azz().a(new bu(new bu.a()
+      com.tencent.mm.kernel.h.aGY().a(new bv(new bv.a()
       {
-        public final void a(com.tencent.mm.network.g paramAnonymousg)
+        public final void a(g paramAnonymousg)
         {
           AppMethodBeat.i(73831);
           if (paramAnonymousg == null)
@@ -69,13 +68,13 @@ public class GetQRCodeInfoUI
             AppMethodBeat.o(73831);
             return;
           }
-          if ((com.tencent.mm.kernel.g.aAc()) && (!a.azj()))
+          if ((com.tencent.mm.kernel.h.aHB()) && (!b.aGE()))
           {
             GetQRCodeInfoUI.a(GetQRCodeInfoUI.this, GetQRCodeInfoUI.this.getIntent().getDataString());
             AppMethodBeat.o(73831);
             return;
           }
-          com.tencent.mm.plugin.setting.c.jRt.o(new Intent(), GetQRCodeInfoUI.this);
+          com.tencent.mm.plugin.setting.c.mIG.n(new Intent(), GetQRCodeInfoUI.this);
           GetQRCodeInfoUI.this.finish();
           AppMethodBeat.o(73831);
         }
@@ -91,10 +90,10 @@ public class GetQRCodeInfoUI
   {
     AppMethodBeat.i(73837);
     super.onDestroy();
-    if (this.CYG != null) {
-      com.tencent.mm.kernel.g.azz().a(this.CYG);
+    if (this.Jem != null) {
+      com.tencent.mm.kernel.h.aGY().a(this.Jem);
     }
-    com.tencent.mm.kernel.g.azz().b(106, this);
+    com.tencent.mm.kernel.h.aGY().b(106, this);
     AppMethodBeat.o(73837);
   }
   
@@ -102,8 +101,8 @@ public class GetQRCodeInfoUI
   {
     AppMethodBeat.i(73836);
     super.onResume();
-    getString(2131755998);
-    this.gtM = com.tencent.mm.ui.base.h.a(this, getString(2131755257), true, new DialogInterface.OnCancelListener()
+    getString(b.i.app_tip);
+    this.iXX = com.tencent.mm.ui.base.h.a(this, getString(b.i.address_searching), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
@@ -115,18 +114,18 @@ public class GetQRCodeInfoUI
     AppMethodBeat.o(73836);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
   {
     AppMethodBeat.i(73838);
     Log.i("MicroMsg.GetQRCodeInfoUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (this.gtM != null)
+    if (this.iXX != null)
     {
-      this.gtM.dismiss();
-      this.gtM = null;
+      this.iXX.dismiss();
+      this.iXX = null;
     }
     if ((paramInt1 == 4) && (paramInt2 == -2004))
     {
-      com.tencent.mm.ui.base.h.a(this, 2131764139, 2131755998, new DialogInterface.OnClickListener()
+      com.tencent.mm.ui.base.h.a(this, b.i.qrcode_ban_by_expose, b.i.app_tip, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -140,7 +139,7 @@ public class GetQRCodeInfoUI
     }
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      com.tencent.mm.ui.base.h.d(this, getString(2131760877, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), getString(2131755998), new DialogInterface.OnClickListener()
+      com.tencent.mm.ui.base.h.d(this, getString(b.i.fmt_search_err, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), getString(b.i.app_tip), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -152,17 +151,17 @@ public class GetQRCodeInfoUI
       AppMethodBeat.o(73838);
       return;
     }
-    paramString = ((f)paramq).eiq();
-    paramq = z.a(paramString.Lqk);
-    p.aYn().h(paramq, z.a(paramString.KHp));
+    paramString = ((com.tencent.mm.plugin.messenger.a.f)paramq).eRV();
+    paramq = z.a(paramString.SrH);
+    com.tencent.mm.am.q.bhz().h(paramq, z.a(paramString.RIH));
     Intent localIntent = new Intent();
-    ((k)com.tencent.mm.kernel.g.af(k.class)).a(localIntent, paramString, 30);
+    ((k)com.tencent.mm.kernel.h.ae(k.class)).a(localIntent, paramString, 30);
     if (Util.nullAsNil(paramq).length() > 0)
     {
-      if ((paramString.MmK & 0x8) > 0) {
-        com.tencent.mm.plugin.report.service.h.CyF.kvStat(10298, paramq + ",30");
+      if ((paramString.TxF & 0x8) > 0) {
+        com.tencent.mm.plugin.report.service.h.IzE.kvStat(10298, paramq + ",30");
       }
-      com.tencent.mm.br.c.d(this, "profile", ".ui.ContactInfoUI", 1);
+      com.tencent.mm.by.c.f(this, "profile", ".ui.ContactInfoUI", 1);
     }
     AppMethodBeat.o(73838);
   }
@@ -175,7 +174,7 @@ public class GetQRCodeInfoUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.qrcode.GetQRCodeInfoUI
  * JD-Core Version:    0.7.0.1
  */

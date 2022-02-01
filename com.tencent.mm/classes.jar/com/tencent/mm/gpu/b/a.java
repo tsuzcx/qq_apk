@@ -5,24 +5,24 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a
 {
-  public static final String hiY;
-  public static final String hiZ;
-  public static final String hja;
-  public static final String hjb;
+  public static final String jUS;
+  public static final String jUT;
+  public static final String jUU;
+  public static final String jUV;
   
   static
   {
-    AppMethodBeat.i(186151);
-    hiY = MMApplicationContext.getPackageName();
-    hiZ = MMApplicationContext.getPackageName() + ":appbrand";
-    hja = MMApplicationContext.getPackageName() + ":tools";
-    hjb = MMApplicationContext.getPackageName() + ":toolsmp";
-    AppMethodBeat.o(186151);
+    AppMethodBeat.i(210716);
+    jUS = MMApplicationContext.getPackageName();
+    jUT = MMApplicationContext.getPackageName() + ":appbrand";
+    jUU = MMApplicationContext.getPackageName() + ":tools";
+    jUV = MMApplicationContext.getPackageName() + ":toolsmp";
+    AppMethodBeat.o(210716);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.gpu.b.a
  * JD-Core Version:    0.7.0.1
  */

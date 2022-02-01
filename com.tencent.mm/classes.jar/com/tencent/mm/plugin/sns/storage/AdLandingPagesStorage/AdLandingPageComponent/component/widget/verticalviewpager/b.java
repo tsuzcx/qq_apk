@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager;
 
 import android.os.SystemClock;
-import android.support.v4.view.u;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import androidx.core.g.w;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
   implements View.OnTouchListener
 {
-  private DummyViewPager Eie;
-  private float Eif = 1.4E-45F;
-  private float dep = 1.4E-45F;
+  private DummyViewPager Kvl;
+  private float Kvm = 1.4E-45F;
+  private float diu = 1.4E-45F;
   
   public b(DummyViewPager paramDummyViewPager)
   {
-    this.Eie = paramDummyViewPager;
+    this.Kvl = paramDummyViewPager;
   }
   
   private boolean a(View paramView, MotionEvent paramMotionEvent, float paramFloat)
   {
     AppMethodBeat.i(97059);
-    if (this.Eie.mFakeDragging) {
-      if (!am((int)(this.Eie.getScrollX() - paramFloat) - this.Eie.getBaseScrollX(), this.Eie.getScrollX() - this.Eie.getBaseScrollX())) {
+    if (this.Kvl.mFakeDragging) {
+      if (!ao((int)(this.Kvl.getScrollX() - paramFloat) - this.Kvl.getBaseScrollX(), this.Kvl.getScrollX() - this.Kvl.getBaseScrollX())) {
         break label142;
       }
     }
     label142:
-    for (float f = this.Eie.getScrollX() - this.Eie.getBaseScrollX();; f = paramFloat)
+    for (float f = this.Kvl.getScrollX() - this.Kvl.getBaseScrollX();; f = paramFloat)
     {
-      this.Eie.fakeDragBy(f);
-      new StringBuilder("fake drag, diff ").append(paramFloat).append(",step ").append(f).append(",scrollX ").append(this.Eie.getScrollX());
-      e(paramView, paramMotionEvent);
+      this.Kvl.fakeDragBy(f);
+      new StringBuilder("fake drag, diff ").append(paramFloat).append(",step ").append(f).append(",scrollX ").append(this.Kvl.getScrollX());
+      f(paramView, paramMotionEvent);
       AppMethodBeat.o(97059);
       return true;
       AppMethodBeat.o(97059);
@@ -41,7 +41,7 @@ public final class b
     }
   }
   
-  private static boolean am(float paramFloat1, float paramFloat2)
+  private static boolean ao(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(97061);
     if (Math.abs(paramFloat1 + paramFloat2) < Math.abs(paramFloat1 - paramFloat2))
@@ -53,7 +53,7 @@ public final class b
     return false;
   }
   
-  private static void e(View paramView, MotionEvent paramMotionEvent)
+  private static void f(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(97060);
     paramMotionEvent = MotionEvent.obtain(paramMotionEvent);
@@ -65,7 +65,7 @@ public final class b
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(97058);
-    new StringBuilder("onTouchEvent , action ").append(paramMotionEvent.getAction()).append(", e.rawY ").append(paramMotionEvent.getRawY()).append(",lastMotionY ").append(this.Eif).append(",downY ").append(this.dep);
+    new StringBuilder("onTouchEvent , action ").append(paramMotionEvent.getAction()).append(", e.rawY ").append(paramMotionEvent.getRawY()).append(",lastMotionY ").append(this.Kvm).append(",downY ").append(this.diu);
     label262:
     int i;
     label316:
@@ -81,21 +81,21 @@ public final class b
         boolean bool = paramView.onTouchEvent(paramMotionEvent);
         AppMethodBeat.o(97058);
         return bool;
-        this.dep = paramMotionEvent.getRawY();
+        this.diu = paramMotionEvent.getRawY();
         continue;
-        if ((this.dep != 1.4E-45F) || (this.Eif != 1.4E-45F)) {
+        if ((this.diu != 1.4E-45F) || (this.Kvm != 1.4E-45F)) {
           break;
         }
-        this.dep = paramMotionEvent.getRawY();
+        this.diu = paramMotionEvent.getRawY();
       }
       float f2 = paramMotionEvent.getRawY();
-      if (this.Eif == 1.4E-45F) {}
-      for (float f1 = this.dep;; f1 = this.Eif)
+      if (this.Kvm == 1.4E-45F) {}
+      for (float f1 = this.diu;; f1 = this.Kvm)
       {
-        this.Eif = paramMotionEvent.getRawY();
+        this.Kvm = paramMotionEvent.getRawY();
         f1 = (f2 - f1) / 2.0F;
-        new StringBuilder("scrollX ").append(this.Eie.getScrollX()).append(",basescrollX ").append(this.Eie.getBaseScrollX());
-        if (this.Eie.getScrollX() == this.Eie.getBaseScrollX()) {
+        new StringBuilder("scrollX ").append(this.Kvl.getScrollX()).append(",basescrollX ").append(this.Kvl.getBaseScrollX());
+        if (this.Kvl.getScrollX() == this.Kvl.getBaseScrollX()) {
           break label262;
         }
         if (!a(paramView, paramMotionEvent, f1)) {
@@ -107,13 +107,13 @@ public final class b
       if (-f1 > 0.0F) {}
       for (i = 1;; i = -1)
       {
-        if (!u.o(paramView, i)) {
+        if (!w.o(paramView, i)) {
           break label316;
         }
         new StringBuilder("scroll vertically  ").append(f1).append(", move.lastMotionY ").append(paramMotionEvent.getY());
         break;
       }
-      localObject1 = this.Eie;
+      localObject1 = this.Kvl;
       if (!((AdLandingViewPager)localObject1).mIsBeingDragged)
       {
         ((AdLandingViewPager)localObject1).mFakeDragging = true;
@@ -133,17 +133,17 @@ public final class b
         ((MotionEvent)localObject2).recycle();
         ((AdLandingViewPager)localObject1).mFakeDragBeginTime = l;
         a(paramView, paramMotionEvent, f1);
-        e(paramView, paramMotionEvent);
+        f(paramView, paramMotionEvent);
         AppMethodBeat.o(97058);
         return false;
         label430:
         ((AdLandingViewPager)localObject1).mVelocityTracker.clear();
       }
     }
-    if (this.Eie.mFakeDragging) {
+    if (this.Kvl.mFakeDragging) {
       try
       {
-        localObject1 = this.Eie;
+        localObject1 = this.Kvl;
         if (!((AdLandingViewPager)localObject1).mFakeDragging)
         {
           localObject1 = new IllegalStateException("No fake drag in progress. Call beginFakeDrag first.");
@@ -155,8 +155,8 @@ public final class b
     }
     for (;;)
     {
-      this.dep = 1.4E-45F;
-      this.Eif = 1.4E-45F;
+      this.diu = 1.4E-45F;
+      this.Kvm = 1.4E-45F;
       break;
       localObject2 = localException.mVelocityTracker;
       ((VelocityTracker)localObject2).computeCurrentVelocity(1000, localException.mMaximumVelocity);
@@ -164,7 +164,7 @@ public final class b
       localException.mPopulatePending = true;
       int j = localException.getClientWidth();
       int k = localException.getScrollX();
-      localObject2 = localException.fdV();
+      localObject2 = localException.fRN();
       localException.setCurrentItemInternal(localException.determineTargetPage(((AdLandingViewPager.b)localObject2).position, (k / j - ((AdLandingViewPager.b)localObject2).offset) / ((AdLandingViewPager.b)localObject2).widthFactor, i, (int)(localException.mLastMotionX - localException.mInitialMotionX)), true, true, i);
       localException.endDrag();
       localException.mFakeDragging = false;
@@ -173,7 +173,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.b
  * JD-Core Version:    0.7.0.1
  */

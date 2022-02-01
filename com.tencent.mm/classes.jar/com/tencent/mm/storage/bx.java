@@ -1,13 +1,13 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.eb;
+import com.tencent.mm.f.c.ef;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class bx
-  extends eb
+  extends ef
 {
   public static IAutoDBItem.MAutoDBInfo info;
   
@@ -87,7 +87,7 @@ public final class bx
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.bx
  * JD-Core Version:    0.7.0.1
  */

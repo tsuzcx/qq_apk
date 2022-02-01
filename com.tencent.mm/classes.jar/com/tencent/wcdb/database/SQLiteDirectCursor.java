@@ -318,13 +318,12 @@ public class SQLiteDirectCursor
     //   from	to	target	type
     //   23	38	94	finally
     //   46	73	94	finally
-    //   95	97	94	finally
     //   81	86	105	java/lang/IllegalStateException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.wcdb.database.SQLiteDirectCursor
  * JD-Core Version:    0.7.0.1
  */

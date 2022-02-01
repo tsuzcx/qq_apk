@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.music.model.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.ipcinvoker.m;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.type.IPCInteger;
 import com.tencent.mm.ipcinvoker.type.IPCLong;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
@@ -16,15 +16,15 @@ import com.tencent.mm.storage.ar.a;
 public final class a
 {
   public static final class b
-    implements k<IPCVoid, IPCString>
+    implements m<IPCVoid, IPCString>
   {
-    private static IPCString bOT()
+    private static IPCString cbj()
     {
       AppMethodBeat.i(63068);
       try
       {
         Log.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc getAccPath task");
-        IPCString localIPCString1 = new IPCString(g.aAh().hqG);
+        IPCString localIPCString1 = new IPCString(h.aHG().kcB);
         AppMethodBeat.o(63068);
         return localIPCString1;
       }
@@ -39,15 +39,15 @@ public final class a
   }
   
   public static final class c
-    implements k<IPCVoid, IPCLong>
+    implements m<IPCVoid, IPCLong>
   {
-    private static IPCLong euH()
+    private static IPCLong ffa()
     {
       AppMethodBeat.i(63070);
       try
       {
         Log.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc getLastScanMusicPieceFileTime task");
-        IPCLong localIPCLong1 = new IPCLong(((Long)g.aAh().azQ().get(ar.a.Obh, Long.valueOf(0L))).longValue());
+        IPCLong localIPCLong1 = new IPCLong(((Long)h.aHG().aHp().get(ar.a.Vpk, Long.valueOf(0L))).longValue());
         AppMethodBeat.o(63070);
         return localIPCLong1;
       }
@@ -62,7 +62,7 @@ public final class a
   }
   
   public static final class f
-    implements k<IPCInteger, IPCInteger>
+    implements m<IPCInteger, IPCInteger>
   {
     private static IPCInteger a(IPCInteger paramIPCInteger)
     {
@@ -71,7 +71,7 @@ public final class a
       {
         Log.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc getRemovePlayingAudioPlayerGroupCount task");
         int i = paramIPCInteger.value;
-        IPCInteger localIPCInteger = new IPCInteger(((Integer)g.aAh().azQ().get(ar.a.Obl, Integer.valueOf(i))).intValue());
+        IPCInteger localIPCInteger = new IPCInteger(((Integer)h.aHG().aHp().get(ar.a.Vpo, Integer.valueOf(i))).intValue());
         AppMethodBeat.o(63076);
         return localIPCInteger;
       }
@@ -86,30 +86,7 @@ public final class a
   }
   
   public static final class g
-    implements k<IPCVoid, IPCBoolean>
-  {
-    private static IPCBoolean euI()
-    {
-      AppMethodBeat.i(63078);
-      try
-      {
-        Log.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc isSupportMixAudioByCP task");
-        IPCBoolean localIPCBoolean1 = new IPCBoolean(((Boolean)g.aAh().azQ().get(ar.a.Obn, Boolean.FALSE)).booleanValue());
-        AppMethodBeat.o(63078);
-        return localIPCBoolean1;
-      }
-      catch (Exception localException)
-      {
-        Log.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", localException, "ipc isSupportMixAudioByCP task", new Object[0]);
-        IPCBoolean localIPCBoolean2 = new IPCBoolean(false);
-        AppMethodBeat.o(63078);
-        return localIPCBoolean2;
-      }
-    }
-  }
-  
-  public static final class h
-    implements k<IPCLong, IPCVoid>
+    implements m<IPCLong, IPCVoid>
   {
     private static IPCVoid a(IPCLong paramIPCLong)
     {
@@ -118,7 +95,7 @@ public final class a
       {
         Log.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc setLastScanMusicPieceFileTime task");
         long l = paramIPCLong.value;
-        g.aAh().azQ().set(ar.a.Obh, Long.valueOf(l));
+        h.aHG().aHp().set(ar.a.Vpk, Long.valueOf(l));
         paramIPCLong = new IPCVoid();
         AppMethodBeat.o(63080);
         return paramIPCLong;
@@ -133,16 +110,16 @@ public final class a
     }
   }
   
-  public static final class j
-    implements k<IPCVoid, IPCBoolean>
+  public static final class i
+    implements m<IPCVoid, IPCBoolean>
   {
-    private static IPCBoolean euI()
+    private static IPCBoolean ffb()
     {
       AppMethodBeat.i(63084);
       try
       {
         Log.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc showAudioToast");
-        IPCBoolean localIPCBoolean1 = new IPCBoolean(((Boolean)g.aAh().azQ().get(ar.a.Obm, Boolean.FALSE)).booleanValue());
+        IPCBoolean localIPCBoolean1 = new IPCBoolean(((Boolean)h.aHG().aHp().get(ar.a.Vpp, Boolean.FALSE)).booleanValue());
         AppMethodBeat.o(63084);
         return localIPCBoolean1;
       }

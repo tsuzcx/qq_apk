@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.sns.ad.timeline.dynamic.listener;
 
 import android.app.Activity;
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.Lifecycle.Event;
-import android.arch.lifecycle.LifecycleObserver;
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.OnLifecycleEvent;
 import android.text.TextUtils;
 import android.util.ArrayMap;
+import androidx.lifecycle.h;
+import androidx.lifecycle.h.a;
+import androidx.lifecycle.k;
+import androidx.lifecycle.l;
+import androidx.lifecycle.t;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
@@ -17,109 +17,109 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class RequestListenerManager
-  implements LifecycleObserver
+  implements k
 {
-  private static final Map<Integer, RequestListenerManager> DxT;
-  public b DxU;
+  private static final Map<Integer, RequestListenerManager> JHM;
+  public b JHN;
   
   static
   {
-    AppMethodBeat.i(202151);
-    DxT = new ArrayMap();
-    AppMethodBeat.o(202151);
+    AppMethodBeat.i(250323);
+    JHM = new ArrayMap();
+    AppMethodBeat.o(250323);
   }
   
   private RequestListenerManager()
   {
-    AppMethodBeat.i(202147);
-    this.DxU = new b();
-    AppMethodBeat.o(202147);
+    AppMethodBeat.i(250310);
+    this.JHN = new b();
+    AppMethodBeat.o(250310);
   }
   
-  public static RequestListenerManager aF(Activity paramActivity)
+  public static RequestListenerManager aL(Activity paramActivity)
   {
-    AppMethodBeat.i(202144);
-    if ((paramActivity instanceof LifecycleOwner))
+    AppMethodBeat.i(250302);
+    if ((paramActivity instanceof l))
     {
-      RequestListenerManager localRequestListenerManager2 = (RequestListenerManager)DxT.get(Integer.valueOf(paramActivity.hashCode()));
+      RequestListenerManager localRequestListenerManager2 = (RequestListenerManager)JHM.get(Integer.valueOf(paramActivity.hashCode()));
       RequestListenerManager localRequestListenerManager1 = localRequestListenerManager2;
       if (localRequestListenerManager2 == null)
       {
-        localRequestListenerManager2 = aG(paramActivity);
+        localRequestListenerManager2 = aM(paramActivity);
         localRequestListenerManager1 = localRequestListenerManager2;
         if (localRequestListenerManager2 != null)
         {
           Log.i("RequestListenerManager", "new one RequestListenerManager instance!!!");
-          DxT.put(Integer.valueOf(paramActivity.hashCode()), localRequestListenerManager2);
+          JHM.put(Integer.valueOf(paramActivity.hashCode()), localRequestListenerManager2);
           localRequestListenerManager1 = localRequestListenerManager2;
         }
       }
-      AppMethodBeat.o(202144);
+      AppMethodBeat.o(250302);
       return localRequestListenerManager1;
     }
-    AppMethodBeat.o(202144);
+    AppMethodBeat.o(250302);
     return null;
   }
   
-  private static RequestListenerManager aG(Activity paramActivity)
+  private static RequestListenerManager aM(Activity paramActivity)
   {
-    AppMethodBeat.i(202145);
+    AppMethodBeat.i(250304);
     try
     {
-      if ((paramActivity instanceof LifecycleOwner))
+      if ((paramActivity instanceof l))
       {
-        paramActivity = e((LifecycleOwner)paramActivity);
-        AppMethodBeat.o(202145);
+        paramActivity = f((l)paramActivity);
+        AppMethodBeat.o(250304);
         return paramActivity;
       }
     }
     catch (Throwable paramActivity)
     {
-      AppMethodBeat.o(202145);
+      AppMethodBeat.o(250304);
     }
     return null;
   }
   
-  private static RequestListenerManager e(LifecycleOwner paramLifecycleOwner)
+  private static RequestListenerManager f(l paraml)
   {
-    AppMethodBeat.i(202146);
-    if (paramLifecycleOwner == null) {}
+    AppMethodBeat.i(250307);
+    if (paraml == null) {}
     try
     {
       Log.w("RequestListenerManager", "the input life cycle owner is null!");
-      AppMethodBeat.o(202146);
+      AppMethodBeat.o(250307);
       return null;
     }
-    catch (Throwable paramLifecycleOwner)
+    catch (Throwable paraml)
     {
       RequestListenerManager localRequestListenerManager;
       boolean bool;
       Log.e("RequestListenerManager", "new one instance of RequestListenerManager failed!");
-      AppMethodBeat.o(202146);
+      AppMethodBeat.o(250307);
     }
     localRequestListenerManager = new RequestListenerManager();
-    bool = localRequestListenerManager.f(paramLifecycleOwner);
+    bool = localRequestListenerManager.g(paraml);
     if (!bool)
     {
-      AppMethodBeat.o(202146);
+      AppMethodBeat.o(250307);
       return null;
     }
-    AppMethodBeat.o(202146);
+    AppMethodBeat.o(250307);
     return localRequestListenerManager;
     return null;
   }
   
-  private boolean f(LifecycleOwner paramLifecycleOwner)
+  private boolean g(l paraml)
   {
-    AppMethodBeat.i(202148);
-    if (paramLifecycleOwner != null) {}
+    AppMethodBeat.i(250313);
+    if (paraml != null) {}
     try
     {
-      paramLifecycleOwner.getLifecycle().addObserver(this);
-      AppMethodBeat.o(202148);
+      paraml.getLifecycle().a(this);
+      AppMethodBeat.o(250313);
       return true;
     }
-    catch (Throwable paramLifecycleOwner)
+    catch (Throwable paraml)
     {
       for (;;)
       {
@@ -127,26 +127,26 @@ public class RequestListenerManager
       }
     }
     Log.w("RequestListenerManager", "the life cycle owner is null!");
-    AppMethodBeat.o(202148);
+    AppMethodBeat.o(250313);
     return false;
   }
   
   public final void a(String paramString, a parama)
   {
-    AppMethodBeat.i(202149);
-    b localb = this.DxU;
+    AppMethodBeat.i(250316);
+    b localb = this.JHN;
     Map.Entry localEntry;
     if (localb != null)
     {
       if (TextUtils.isEmpty(paramString))
       {
-        AppMethodBeat.o(202149);
+        AppMethodBeat.o(250316);
         return;
       }
-      localObject = (WeakReference)localb.iIE.get(paramString);
+      localObject = (WeakReference)localb.lyH.get(paramString);
       if ((localObject == null) || (((WeakReference)localObject).get() != parama))
       {
-        localObject = localb.iIE.entrySet().iterator();
+        localObject = localb.lyH.entrySet().iterator();
         do
         {
           if (!((Iterator)localObject).hasNext()) {
@@ -159,36 +159,36 @@ public class RequestListenerManager
     for (Object localObject = (String)localEntry.getKey();; localObject = null)
     {
       if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).equals(paramString))) {
-        localb.iIE.remove(localObject);
+        localb.lyH.remove(localObject);
       }
-      localb.iIE.put(paramString, new WeakReference(parama));
-      AppMethodBeat.o(202149);
+      localb.lyH.put(paramString, new WeakReference(parama));
+      AppMethodBeat.o(250316);
       return;
     }
   }
   
-  @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-  public final void doDestroy(LifecycleOwner paramLifecycleOwner)
+  @t(jl=h.a.ON_DESTROY)
+  public final void doDestroy(l paraml)
   {
-    AppMethodBeat.i(202150);
+    AppMethodBeat.i(250319);
     try
     {
-      paramLifecycleOwner = this.DxU;
-      if (paramLifecycleOwner != null) {
-        paramLifecycleOwner.iIE.clear();
+      paraml = this.JHN;
+      if (paraml != null) {
+        paraml.lyH.clear();
       }
-      AppMethodBeat.o(202150);
+      AppMethodBeat.o(250319);
       return;
     }
-    catch (Throwable paramLifecycleOwner)
+    catch (Throwable paraml)
     {
-      AppMethodBeat.o(202150);
+      AppMethodBeat.o(250319);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.timeline.dynamic.listener.RequestListenerManager
  * JD-Core Version:    0.7.0.1
  */

@@ -20,11 +20,4 @@
     <dimen name="aq6">48.0dip</dimen>
     <dimen name="aq7">48.0dip</dimen>
     <dimen name="aq8">72.0dip</dimen>
-    <dimen name="aq9">40.0dip</dimen>
-    <dimen name="aq_">56.0dip</dimen>
-    <dimen name="aqa">18.0dip</dimen>
-    <dimen name="aqb">152.0dip</dimen>
-    <dimen name="aqc">104.0dip</dimen>
-    <dimen name="aqd">79.0dip</dimen>
-    <dimen name="aqe">215.0dip</dimen>
 </resources>

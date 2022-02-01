@@ -4,7 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.R.l;
+import com.tencent.mm.by.c;
 import com.tencent.mm.plugin.websearch.api.ai;
 import com.tencent.mm.plugin.websearch.api.ak;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -16,21 +17,21 @@ import org.json.JSONObject;
 public final class b
   implements com.tencent.mm.plugin.welab.a.a.b
 {
-  public final String gjl()
+  public final String hcY()
   {
     AppMethodBeat.i(30253);
-    String str = ak.aXe("discoverSearchEntry").optString("labIcon");
+    String str = ak.biP("discoverSearchEntry").optString("labIcon");
     AppMethodBeat.o(30253);
     return str;
   }
   
-  public final String gjm()
+  public final String hcZ()
   {
     AppMethodBeat.i(30254);
-    String str = ak.aXe("discoverSearchEntry").optString("wording");
+    String str = ak.biP("discoverSearchEntry").optString("wording");
     if (Util.isNullOrNil(str))
     {
-      str = MMApplicationContext.getContext().getString(2131759435);
+      str = MMApplicationContext.getContext().getString(R.l.find_friends_look);
       AppMethodBeat.o(30254);
       return str;
     }
@@ -41,17 +42,17 @@ public final class b
   public final void m(Activity paramActivity, String paramString)
   {
     AppMethodBeat.i(30252);
-    if (!ai.afs(0))
+    if (!ai.ang(0))
     {
       Log.e("MicroMsg.FTS.SearchOneSearchOpener", "fts h5 template not avail");
       AppMethodBeat.o(30252);
       return;
     }
-    paramString = ai.fXX();
+    paramString = ai.gQI();
     paramString.putExtra("ftsbizscene", 20);
-    Map localMap = ai.h(20, true, 0);
+    Map localMap = ai.j(20, true, 0);
     paramString.putExtra("ftsneedkeyboard", true);
-    paramString.putExtra("rawUrl", ai.bd(localMap));
+    paramString.putExtra("rawUrl", ai.aX(localMap));
     c.b(paramActivity, "webview", ".ui.tools.fts.FTSSearchOneSearchWebViewUI", paramString);
     AppMethodBeat.o(30252);
   }

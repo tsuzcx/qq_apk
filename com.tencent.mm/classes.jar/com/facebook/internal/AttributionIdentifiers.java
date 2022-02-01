@@ -18,7 +18,7 @@ public class AttributionIdentifiers
   private static final long IDENTIFIER_REFRESH_INTERVAL_MILLIS = 3600000L;
   private static final String LIMIT_TRACKING_COLUMN_NAME = "limit_tracking";
   private static final String TAG;
-  private static AttributionIdentifiers recentlyFetchedIdentifiers;
+  public static AttributionIdentifiers recentlyFetchedIdentifiers;
   private String androidAdvertiserId;
   private String androidInstallerPackage;
   private String attributionId;
@@ -438,7 +438,7 @@ public class AttributionIdentifiers
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.internal.AttributionIdentifiers
  * JD-Core Version:    0.7.0.1
  */

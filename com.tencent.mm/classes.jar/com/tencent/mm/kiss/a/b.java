@@ -5,6 +5,8 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.f.a.jb;
+import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.lang.reflect.Field;
@@ -13,12 +15,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class b
 {
-  private static b htK;
-  public static a htO;
-  private ConcurrentHashMap<String, c> htJ;
-  public String htL;
-  public MMHandler htM;
-  public boolean htN;
+  private static b kfH;
+  public static a kfL;
+  private ConcurrentHashMap<String, c> kfG;
+  public String kfI;
+  public MMHandler kfJ;
+  public boolean kfK;
   public LayoutInflater mInflater;
   public boolean mInitialized;
   public int mMode;
@@ -26,32 +28,32 @@ public final class b
   static
   {
     AppMethodBeat.i(141007);
-    htK = null;
-    htK = new b();
+    kfH = null;
+    kfH = new b();
     AppMethodBeat.o(141007);
   }
   
   public b()
   {
     AppMethodBeat.i(141001);
-    this.htJ = new ConcurrentHashMap();
+    this.kfG = new ConcurrentHashMap();
     this.mInitialized = false;
     this.mMode = 2;
-    this.htN = false;
+    this.kfK = false;
     AppMethodBeat.o(141001);
   }
   
-  public static b aBh()
+  public static b aIK()
   {
-    return htK;
+    return kfH;
   }
   
-  public static void aBi()
+  public static void aIL()
   {
     AppMethodBeat.i(141005);
-    if (htO != null)
+    if (kfL != null)
     {
-      a locala = htO;
+      a locala = kfL;
       try
       {
         boolean bool = locala.init();
@@ -72,7 +74,7 @@ public final class b
     AppMethodBeat.o(141005);
   }
   
-  public static View c(Activity paramActivity, int paramInt)
+  public static View d(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(141002);
     paramActivity = LayoutInflater.from(paramActivity).inflate(paramInt, null);
@@ -82,20 +84,20 @@ public final class b
   
   public static final class a
   {
-    Class htQ;
-    Field htR;
-    Class htS;
-    Field htT;
-    private boolean htU;
-    private boolean htV;
+    private boolean fFA;
+    Class kfN;
+    Field kfO;
+    Class kfP;
+    Field kfQ;
+    private boolean kfR;
     MMHandler mHandler;
     
     public a(String paramString)
     {
       AppMethodBeat.i(182560);
-      this.htT = null;
-      this.htU = false;
-      this.htV = false;
+      this.kfQ = null;
+      this.kfR = false;
+      this.fFA = false;
       this.mHandler = new MMHandler(paramString)
       {
         public final void handleMessage(Message paramAnonymousMessage)
@@ -107,7 +109,7 @@ public final class b
             paramAnonymousMessage = b.a.this;
             try
             {
-              localObject = (ThreadLocal)paramAnonymousMessage.htR.get(null);
+              localObject = (ThreadLocal)paramAnonymousMessage.kfO.get(null);
               if (localObject != null)
               {
                 localObject = ((ThreadLocal)localObject).get();
@@ -131,7 +133,7 @@ public final class b
           }
           try
           {
-            paramAnonymousMessage = paramAnonymousMessage.htT.get(localObject);
+            paramAnonymousMessage = paramAnonymousMessage.kfQ.get(localObject);
             if ((paramAnonymousMessage != null) && ((paramAnonymousMessage instanceof List))) {
               ((List)paramAnonymousMessage).clear();
             }
@@ -155,10 +157,10 @@ public final class b
       //   0: ldc 54
       //   2: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aload_0
-      //   6: getfield 36	com/tencent/mm/kiss/a/b$a:htU	Z
+      //   6: getfield 36	com/tencent/mm/kiss/a/b$a:kfR	Z
       //   9: ifeq +15 -> 24
       //   12: aload_0
-      //   13: getfield 38	com/tencent/mm/kiss/a/b$a:htV	Z
+      //   13: getfield 38	com/tencent/mm/kiss/a/b$a:fFA	Z
       //   16: istore_1
       //   17: ldc 54
       //   19: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -166,38 +168,38 @@ public final class b
       //   23: ireturn
       //   24: aload_0
       //   25: iconst_1
-      //   26: putfield 36	com/tencent/mm/kiss/a/b$a:htU	Z
+      //   26: putfield 36	com/tencent/mm/kiss/a/b$a:kfR	Z
       //   29: aload_0
       //   30: ldc 56
       //   32: invokestatic 62	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-      //   35: putfield 64	com/tencent/mm/kiss/a/b$a:htQ	Ljava/lang/Class;
+      //   35: putfield 64	com/tencent/mm/kiss/a/b$a:kfN	Ljava/lang/Class;
       //   38: aload_0
       //   39: aload_0
-      //   40: getfield 64	com/tencent/mm/kiss/a/b$a:htQ	Ljava/lang/Class;
+      //   40: getfield 64	com/tencent/mm/kiss/a/b$a:kfN	Ljava/lang/Class;
       //   43: ldc 66
       //   45: invokevirtual 70	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-      //   48: putfield 72	com/tencent/mm/kiss/a/b$a:htR	Ljava/lang/reflect/Field;
+      //   48: putfield 72	com/tencent/mm/kiss/a/b$a:kfO	Ljava/lang/reflect/Field;
       //   51: aload_0
-      //   52: getfield 72	com/tencent/mm/kiss/a/b$a:htR	Ljava/lang/reflect/Field;
+      //   52: getfield 72	com/tencent/mm/kiss/a/b$a:kfO	Ljava/lang/reflect/Field;
       //   55: iconst_1
       //   56: invokevirtual 78	java/lang/reflect/Field:setAccessible	(Z)V
       //   59: aload_0
       //   60: ldc 80
       //   62: invokestatic 62	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-      //   65: putfield 82	com/tencent/mm/kiss/a/b$a:htS	Ljava/lang/Class;
+      //   65: putfield 82	com/tencent/mm/kiss/a/b$a:kfP	Ljava/lang/Class;
       //   68: aload_0
       //   69: aload_0
-      //   70: getfield 82	com/tencent/mm/kiss/a/b$a:htS	Ljava/lang/Class;
+      //   70: getfield 82	com/tencent/mm/kiss/a/b$a:kfP	Ljava/lang/Class;
       //   73: ldc 84
       //   75: invokevirtual 70	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-      //   78: putfield 34	com/tencent/mm/kiss/a/b$a:htT	Ljava/lang/reflect/Field;
+      //   78: putfield 34	com/tencent/mm/kiss/a/b$a:kfQ	Ljava/lang/reflect/Field;
       //   81: aload_0
-      //   82: getfield 34	com/tencent/mm/kiss/a/b$a:htT	Ljava/lang/reflect/Field;
+      //   82: getfield 34	com/tencent/mm/kiss/a/b$a:kfQ	Ljava/lang/reflect/Field;
       //   85: iconst_1
       //   86: invokevirtual 78	java/lang/reflect/Field:setAccessible	(Z)V
       //   89: aload_0
       //   90: iconst_1
-      //   91: putfield 38	com/tencent/mm/kiss/a/b$a:htV	Z
+      //   91: putfield 38	com/tencent/mm/kiss/a/b$a:fFA	Z
       //   94: ldc 54
       //   96: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   99: iconst_1
@@ -265,7 +267,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.kiss.a.b
  * JD-Core Version:    0.7.0.1
  */

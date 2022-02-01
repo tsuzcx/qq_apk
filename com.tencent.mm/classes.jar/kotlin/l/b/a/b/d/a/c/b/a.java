@@ -7,30 +7,30 @@ import kotlin.l.b.a.b.d.a.a.l;
 
 public final class a
 {
-  final l Ttb;
-  final b Ttc;
-  final boolean Ttd;
-  final as Tte;
+  final l aaVV;
+  final b aaVW;
+  final boolean aaVX;
+  final as aaVY;
   
   private a(l paraml, b paramb, boolean paramBoolean, as paramas)
   {
     AppMethodBeat.i(57949);
-    this.Ttb = paraml;
-    this.Ttc = paramb;
-    this.Ttd = paramBoolean;
-    this.Tte = paramas;
+    this.aaVV = paraml;
+    this.aaVW = paramb;
+    this.aaVX = paramBoolean;
+    this.aaVY = paramas;
     AppMethodBeat.o(57949);
   }
   
   public final a a(b paramb)
   {
     AppMethodBeat.i(57948);
-    p.h(paramb, "flexibility");
-    l locall = this.Ttb;
-    boolean bool = this.Ttd;
-    as localas = this.Tte;
-    p.h(locall, "howThisTypeIsUsed");
-    p.h(paramb, "flexibility");
+    p.k(paramb, "flexibility");
+    l locall = this.aaVV;
+    boolean bool = this.aaVX;
+    as localas = this.aaVY;
+    p.k(locall, "howThisTypeIsUsed");
+    p.k(paramb, "flexibility");
     paramb = new a(locall, paramb, bool, localas);
     AppMethodBeat.o(57948);
     return paramb;
@@ -44,7 +44,7 @@ public final class a
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((!p.j(this.Ttb, paramObject.Ttb)) || (!p.j(this.Ttc, paramObject.Ttc)) || (this.Ttd != paramObject.Ttd) || (!p.j(this.Tte, paramObject.Tte))) {}
+        if ((!p.h(this.aaVV, paramObject.aaVV)) || (!p.h(this.aaVW, paramObject.aaVW)) || (this.aaVX != paramObject.aaVX) || (!p.h(this.aaVY, paramObject.aaVY))) {}
       }
     }
     else
@@ -64,14 +64,14 @@ public final class a
   public final String toString()
   {
     AppMethodBeat.i(57951);
-    String str = "JavaTypeAttributes(howThisTypeIsUsed=" + this.Ttb + ", flexibility=" + this.Ttc + ", isForAnnotationParameter=" + this.Ttd + ", upperBoundOfTypeParameter=" + this.Tte + ")";
+    String str = "JavaTypeAttributes(howThisTypeIsUsed=" + this.aaVV + ", flexibility=" + this.aaVW + ", isForAnnotationParameter=" + this.aaVX + ", upperBoundOfTypeParameter=" + this.aaVY + ")";
     AppMethodBeat.o(57951);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.c.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -9,29 +9,32 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ba.b.a;
-import com.tencent.mm.ba.b.c;
-import com.tencent.mm.g.a.ke;
-import com.tencent.mm.g.a.vl;
-import com.tencent.mm.g.a.vx;
-import com.tencent.mm.g.b.a.ir;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.bd.b.a;
+import com.tencent.mm.bd.b.c;
+import com.tencent.mm.f.a.ku;
+import com.tencent.mm.f.a.wq;
+import com.tencent.mm.f.a.xc;
+import com.tencent.mm.f.b.a.la;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.n.f;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.plugin.profile.d;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.sns.b.o;
-import com.tencent.mm.plugin.sns.data.r;
-import com.tencent.mm.protocal.protobuf.cxl;
-import com.tencent.mm.protocal.protobuf.cxn;
-import com.tencent.mm.protocal.protobuf.cxo;
+import com.tencent.mm.plugin.sns.b.m;
+import com.tencent.mm.plugin.sns.b.p;
+import com.tencent.mm.protocal.protobuf.dgv;
+import com.tencent.mm.protocal.protobuf.dgx;
+import com.tencent.mm.protocal.protobuf.dgy;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
@@ -39,6 +42,7 @@ import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.s;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
 import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 import com.tencent.mm.ui.widget.a.f.a;
@@ -50,130 +54,130 @@ public class PermissionSettingUI
   extends MMActivity
   implements i
 {
-  private MMSwitchBtn BhO;
-  private MMSwitchBtn BhP;
-  private WeImageView BhQ;
-  private WeImageView BhR;
-  private boolean BhS;
-  private boolean BhT;
-  private as BhU;
-  private boolean BhV;
-  private boolean BhW;
-  private long BhX;
-  private int BhY;
+  private MMSwitchBtn HbE;
+  private MMSwitchBtn HbF;
+  private WeImageView HbG;
+  private WeImageView HbH;
+  private boolean HbI;
+  private boolean HbJ;
+  private as HbK;
+  private boolean HbL;
+  private boolean HbM;
+  private long HbN;
+  private int HbO;
   private long enterTime;
   private int scene;
-  public com.tencent.mm.ui.base.q tipDialog;
+  public s tipDialog;
   private String userName;
   
   public PermissionSettingUI()
   {
     AppMethodBeat.i(27369);
-    this.BhS = false;
-    this.BhT = false;
+    this.HbI = false;
+    this.HbJ = false;
     this.tipDialog = null;
     this.userName = "";
-    this.BhU = null;
-    this.BhV = false;
-    this.BhW = false;
-    this.BhX = 0L;
+    this.HbK = null;
+    this.HbL = false;
+    this.HbM = false;
+    this.HbN = 0L;
     this.scene = 0;
-    this.BhY = 0;
+    this.HbO = 0;
     this.enterTime = System.currentTimeMillis();
     AppMethodBeat.o(27369);
   }
   
-  private static boolean aKt(String paramString)
+  private static boolean aUR(String paramString)
   {
     AppMethodBeat.i(27375);
-    boolean bool = o.DCP.aKt(paramString);
+    boolean bool = p.JPf.aUR(paramString);
     AppMethodBeat.o(27375);
     return bool;
   }
   
-  private void dmp()
+  private void dFf()
   {
     boolean bool1 = true;
     AppMethodBeat.i(27374);
-    g.aAi();
-    this.BhU = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn(this.userName);
-    this.BhU.setUsername(this.userName);
-    Object localObject = this.BhQ;
-    if (this.BhU.arD())
+    h.aHH();
+    this.HbK = ((n)h.ae(n.class)).bbL().RG(this.userName);
+    this.HbK.setUsername(this.userName);
+    Object localObject = this.HbG;
+    if (this.HbK.ayk())
     {
       i = 0;
       ((WeImageView)localObject).setVisibility(i);
-      if (this.BhR != null)
+      if (this.HbH != null)
       {
-        localObject = this.BhR;
-        if (!this.BhU.arD()) {
-          break label442;
+        localObject = this.HbH;
+        if (!this.HbK.ayk()) {
+          break label445;
         }
         i = 8;
         label99:
         ((WeImageView)localObject).setVisibility(i);
       }
-      localObject = findViewById(2131305488);
-      if ((!this.BhS) || (!this.BhU.arD())) {
-        break label447;
+      localObject = findViewById(R.h.dPA);
+      if ((!this.HbI) || (!this.HbK.ayk())) {
+        break label450;
       }
       i = 8;
-      label133:
+      label134:
       ((View)localObject).setVisibility(i);
-      localObject = t.Urt;
-      t.hT(findViewById(2131305489));
-      boolean bool2 = this.BhU.arB();
-      boolean bool3 = aKt(this.userName);
-      this.BhO.setCheck(bool2);
-      i = this.BhU.fuA;
+      localObject = t.HbX;
+      t.fK(findViewById(R.h.dPB));
+      boolean bool2 = this.HbK.ayi();
+      boolean bool3 = aUR(this.userName);
+      this.HbE.setCheck(bool2);
+      i = this.HbK.sex;
       Log.d("MicroMsg.SnsPermissionUI", "sex:%d", new Object[] { Integer.valueOf(i) });
-      localObject = (TextView)findViewById(2131305491);
+      localObject = (TextView)findViewById(R.h.dPD);
       if (i != 1) {
-        break label452;
+        break label455;
       }
-      ((TextView)localObject).setText(2131766157);
-      label228:
-      localObject = (TextView)findViewById(2131305498);
+      ((TextView)localObject).setText(R.l.sns_outside_permiss_male);
+      label231:
+      localObject = (TextView)findViewById(R.h.dPF);
       if (i != 1) {
-        break label468;
+        break label471;
       }
-      ((TextView)localObject).setText(2131766008);
-      label253:
-      this.BhP.setCheck(bool3);
-      localObject = (View)((View)this.BhR.getParent()).getParent();
-      if (this.BhT) {
+      ((TextView)localObject).setText(R.l.sns_black_permiss_male);
+      label256:
+      this.HbF.setCheck(bool3);
+      localObject = (View)((View)this.HbH.getParent()).getParent();
+      if (this.HbJ) {
         bool1 = false;
       }
       ((View)localObject).setClickable(bool1);
-      localObject = (TextView)findViewById(2131308188);
-      if (!this.BhT) {
-        break label484;
+      localObject = (TextView)findViewById(R.h.dVv);
+      if (!this.HbJ) {
+        break label487;
       }
-      i = getResources().getColor(2131100594);
-      label325:
+      i = getResources().getColor(R.e.hint_text_color);
+      label328:
       ((TextView)localObject).setTextColor(i);
-      localObject = findViewById(2131308891);
-      if (!this.BhU.arD()) {
-        break label498;
+      localObject = findViewById(R.h.dWb);
+      if (!this.HbK.ayk()) {
+        break label501;
       }
     }
-    label442:
-    label447:
-    label452:
-    label468:
-    label484:
-    label498:
+    label445:
+    label450:
+    label455:
+    label471:
+    label487:
+    label501:
     for (int i = 0;; i = 8)
     {
       ((View)localObject).setVisibility(i);
-      t localt = t.Urt;
-      t.hU((View)localObject);
-      if ((!as.bjp(this.userName)) || (!"3552365301".equals(this.BhU.field_openImAppid))) {
-        break label504;
+      t localt = t.HbX;
+      t.fL((View)localObject);
+      if ((!as.bvK(this.userName)) || (!"3552365301".equals(this.HbK.field_openImAppid))) {
+        break label507;
       }
-      findViewById(2131308893).setVisibility(8);
-      findViewById(2131305486).setVisibility(8);
-      findViewById(2131305487).setVisibility(0);
+      findViewById(R.h.dWd).setVisibility(8);
+      findViewById(R.h.dPy).setVisibility(8);
+      findViewById(R.h.dPz).setVisibility(0);
       AppMethodBeat.o(27374);
       return;
       i = 8;
@@ -181,38 +185,38 @@ public class PermissionSettingUI
       i = 0;
       break label99;
       i = 0;
-      break label133;
+      break label134;
       if (i != 2) {
-        break label228;
+        break label231;
       }
-      ((TextView)localObject).setText(2131766156);
-      break label228;
+      ((TextView)localObject).setText(R.l.sns_outside_permiss_female);
+      break label231;
       if (i != 2) {
-        break label253;
+        break label256;
       }
-      ((TextView)localObject).setText(2131766007);
-      break label253;
-      i = getResources().getColor(2131100904);
-      break label325;
+      ((TextView)localObject).setText(R.l.sns_black_permiss_female);
+      break label256;
+      i = getResources().getColor(R.e.normal_text_color);
+      break label328;
     }
-    label504:
-    findViewById(2131305487).setVisibility(8);
+    label507:
+    findViewById(R.h.dPz).setVisibility(8);
     AppMethodBeat.o(27374);
   }
   
-  private int eEU()
+  private int fqI()
   {
     int i = 1;
     int j = 0;
     AppMethodBeat.i(27377);
-    if ((this.BhU != null) && (!this.BhU.arD())) {
-      if (!this.BhU.arB()) {
+    if ((this.HbK != null) && (!this.HbK.ayk())) {
+      if (!this.HbK.ayi()) {
         break label109;
       }
     }
     for (;;)
     {
-      if (aKt(this.userName)) {}
+      if (aUR(this.userName)) {}
       for (j = i | 0x2;; j = i)
       {
         i = j;
@@ -224,8 +228,8 @@ public class PermissionSettingUI
           AppMethodBeat.o(27377);
           return i;
           i = j;
-          if (this.BhU != null) {
-            if (g.aAh().azQ().getInt(ar.a.Onw, 0) == 1) {
+          if (this.HbK != null) {
+            if (h.aHG().aHp().getInt(ar.a.VCJ, 0) == 1) {
               i = 6;
             } else {
               i = 5;
@@ -256,147 +260,129 @@ public class PermissionSettingUI
   
   public int getLayoutId()
   {
-    return 2131495918;
+    return R.i.ejP;
   }
   
   public void initView()
   {
-    boolean bool = true;
     AppMethodBeat.i(27373);
-    int i;
-    if ((this.BhU != null) && (as.bjp(this.userName)) && ("3552365301".equals(this.BhU.field_openImAppid)))
+    if ((this.HbK != null) && (as.bvK(this.userName)) && ("3552365301".equals(this.HbK.field_openImAppid)))
     {
-      setMMTitle(2131766161);
+      setMMTitle(R.l.sns_permiss_openim);
       setBackBtn(new PermissionSettingUI.1(this));
-      this.BhQ = ((WeImageView)findViewById(2131308890));
-      this.BhR = ((WeImageView)findViewById(2131308187));
-      this.BhO = ((MMSwitchBtn)findViewById(2131305486).findViewById(2131305490));
-      this.BhP = ((MMSwitchBtn)findViewById(2131308081).findViewById(2131305497));
-      ((View)this.BhQ.getParent()).setOnClickListener(new View.OnClickListener()
+      this.HbG = ((WeImageView)findViewById(R.h.dWa));
+      this.HbH = ((WeImageView)findViewById(R.h.dVu));
+      this.HbE = ((MMSwitchBtn)findViewById(R.h.dPy).findViewById(R.h.dPC));
+      this.HbF = ((MMSwitchBtn)findViewById(R.h.dVt).findViewById(R.h.dPE));
+      ((View)this.HbG.getParent()).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(27364);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/profile/ui/PermissionSettingUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          if (!PermissionSettingUI.a(PermissionSettingUI.this).arD())
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/PermissionSettingUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          if (!PermissionSettingUI.a(PermissionSettingUI.this).ayk())
           {
-            PermissionSettingUI.a(PermissionSettingUI.this).arh();
-            ab.F(PermissionSettingUI.a(PermissionSettingUI.this));
+            PermissionSettingUI.a(PermissionSettingUI.this).axH();
+            ab.L(PermissionSettingUI.a(PermissionSettingUI.this));
             PermissionSettingUI.b(PermissionSettingUI.this);
-            h.CyF.a(16055, new Object[] { Integer.valueOf(d.aP(PermissionSettingUI.this.getIntent())), Integer.valueOf(20), Integer.valueOf(3), PermissionSettingUI.c(PermissionSettingUI.this) });
+            d.a(PermissionSettingUI.this.getIntent(), 20, 3, PermissionSettingUI.c(PermissionSettingUI.this));
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/PermissionSettingUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(27364);
         }
       });
-      ((View)((View)this.BhR.getParent()).getParent()).setOnClickListener(new View.OnClickListener()
+      ((View)((View)this.HbH.getParent()).getParent()).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(27365);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/profile/ui/PermissionSettingUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          if (PermissionSettingUI.a(PermissionSettingUI.this).arD())
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/PermissionSettingUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          if (PermissionSettingUI.a(PermissionSettingUI.this).ayk())
           {
-            PermissionSettingUI.a(PermissionSettingUI.this).ari();
-            ab.F(PermissionSettingUI.a(PermissionSettingUI.this));
+            PermissionSettingUI.a(PermissionSettingUI.this).axI();
+            ab.L(PermissionSettingUI.a(PermissionSettingUI.this));
             PermissionSettingUI.b(PermissionSettingUI.this);
-            h.CyF.a(16055, new Object[] { Integer.valueOf(d.aP(PermissionSettingUI.this.getIntent())), Integer.valueOf(20), Integer.valueOf(2), PermissionSettingUI.c(PermissionSettingUI.this) });
+            d.a(PermissionSettingUI.this.getIntent(), 20, 2, PermissionSettingUI.c(PermissionSettingUI.this));
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/PermissionSettingUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(27365);
         }
       });
-      this.BhO.setSwitchListener(new MMSwitchBtn.a()
+      this.HbE.setSwitchListener(new MMSwitchBtn.a()
       {
         public final void onStatusChange(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(27366);
-          vx localvx = new vx();
-          localvx.ebX.ebZ = true;
-          localvx.ebX.ebY = false;
-          localvx.ebX.username = PermissionSettingUI.c(PermissionSettingUI.this);
-          EventCenter.instance.publish(localvx);
-          if (PermissionSettingUI.a(PermissionSettingUI.this).arB())
+          xc localxc = new xc();
+          localxc.fVZ.fWb = true;
+          localxc.fVZ.fWa = false;
+          localxc.fVZ.username = PermissionSettingUI.c(PermissionSettingUI.this);
+          EventCenter.instance.publish(localxc);
+          if (PermissionSettingUI.a(PermissionSettingUI.this).ayi())
           {
-            ab.w(PermissionSettingUI.a(PermissionSettingUI.this));
-            h.CyF.a(16055, new Object[] { Integer.valueOf(d.aP(PermissionSettingUI.this.getIntent())), Integer.valueOf(21), Integer.valueOf(2), PermissionSettingUI.c(PermissionSettingUI.this) });
+            ab.C(PermissionSettingUI.a(PermissionSettingUI.this));
+            d.a(PermissionSettingUI.this.getIntent(), 21, 2, PermissionSettingUI.c(PermissionSettingUI.this));
           }
           for (;;)
           {
             PermissionSettingUI.b(PermissionSettingUI.this);
             AppMethodBeat.o(27366);
             return;
-            h.CyF.a(16055, new Object[] { Integer.valueOf(d.aP(PermissionSettingUI.this.getIntent())), Integer.valueOf(21), Integer.valueOf(3), PermissionSettingUI.c(PermissionSettingUI.this) });
-            ab.v(PermissionSettingUI.a(PermissionSettingUI.this));
+            d.a(PermissionSettingUI.this.getIntent(), 21, 3, PermissionSettingUI.c(PermissionSettingUI.this));
+            ab.B(PermissionSettingUI.a(PermissionSettingUI.this));
           }
         }
       });
-      this.BhP.setSwitchListener(new MMSwitchBtn.a()
+      this.HbF.setSwitchListener(new MMSwitchBtn.a()
       {
         public final void onStatusChange(boolean paramAnonymousBoolean)
         {
+          int j = 2;
+          int i = 1;
           AppMethodBeat.i(27367);
-          Object localObject = new vx();
-          ((vx)localObject).ebX.ebZ = false;
-          ((vx)localObject).ebX.ebY = true;
-          ((vx)localObject).ebX.username = PermissionSettingUI.c(PermissionSettingUI.this);
-          paramAnonymousBoolean = PermissionSettingUI.aKu(PermissionSettingUI.c(PermissionSettingUI.this));
-          ((vx)localObject).ebX.eca = paramAnonymousBoolean;
+          Object localObject = new xc();
+          ((xc)localObject).fVZ.fWb = false;
+          ((xc)localObject).fVZ.fWa = true;
+          ((xc)localObject).fVZ.username = PermissionSettingUI.c(PermissionSettingUI.this);
+          paramAnonymousBoolean = PermissionSettingUI.aUS(PermissionSettingUI.c(PermissionSettingUI.this));
+          ((xc)localObject).fVZ.fWc = paramAnonymousBoolean;
           PermissionSettingUI localPermissionSettingUI = PermissionSettingUI.this;
           String str = PermissionSettingUI.c(PermissionSettingUI.this);
-          int j;
-          if (paramAnonymousBoolean)
-          {
+          if (paramAnonymousBoolean) {
             i = 2;
-            PermissionSettingUI.a(localPermissionSettingUI, str, i);
-            EventCenter.instance.publish((IEvent)localObject);
-            localObject = h.CyF;
-            j = d.aP(PermissionSettingUI.this.getIntent());
-            if (!paramAnonymousBoolean) {
-              break label184;
-            }
           }
-          label184:
-          for (int i = 2;; i = 3)
+          PermissionSettingUI.a(localPermissionSettingUI, str, i);
+          EventCenter.instance.publish((IEvent)localObject);
+          localObject = PermissionSettingUI.this.getIntent();
+          if (paramAnonymousBoolean) {}
+          for (i = j;; i = 3)
           {
-            ((h)localObject).a(16055, new Object[] { Integer.valueOf(j), Integer.valueOf(22), Integer.valueOf(i), PermissionSettingUI.c(PermissionSettingUI.this) });
+            d.a((Intent)localObject, 22, i, PermissionSettingUI.c(PermissionSettingUI.this));
             AppMethodBeat.o(27367);
             return;
-            i = 1;
-            break;
           }
         }
       });
-      f localf = ((com.tencent.mm.plugin.zero.b.a)g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ();
-      if (!BuildInfo.DEBUG) {
-        break label286;
-      }
-      i = 1;
-      label229:
-      if (localf.getInt("MMSocialBlackListFlag", i) != 1) {
-        break label291;
+      if (((com.tencent.mm.plugin.zero.b.a)h.ae(com.tencent.mm.plugin.zero.b.a.class)).axc().getInt("MMSocialBlackListFlag", 1) != 1) {
+        break label276;
       }
     }
-    for (;;)
+    label276:
+    for (boolean bool = true;; bool = false)
     {
-      this.BhS = bool;
-      if (!this.BhS) {
-        findViewById(2131308893).setVisibility(8);
+      this.HbI = bool;
+      if (!this.HbI) {
+        findViewById(R.h.dWd).setVisibility(8);
       }
-      dmp();
+      dFf();
       AppMethodBeat.o(27373);
       return;
-      setMMTitle(2131763884);
+      setMMTitle(R.l.eOO);
       break;
-      label286:
-      i = 0;
-      break label229;
-      label291:
-      bool = false;
     }
   }
   
@@ -404,28 +390,28 @@ public class PermissionSettingUI
   {
     AppMethodBeat.i(27370);
     super.onCreate(paramBundle);
-    g.aAi();
-    g.aAg().hqi.a(291, this);
-    g.aAi();
-    g.aAg().hqi.a(681, this);
+    h.aHH();
+    h.aHF().kcd.a(291, this);
+    h.aHH();
+    h.aHF().kcd.a(681, this);
     this.userName = getIntent().getStringExtra("sns_permission_userName");
-    this.BhX = getIntent().getLongExtra("sns_permission_snsinfo_svr_id", 0L);
+    this.HbN = getIntent().getLongExtra("sns_permission_snsinfo_svr_id", 0L);
     this.scene = getIntent().getIntExtra("sns_permission_block_scene", 0);
     Log.d("MicroMsg.SnsPermissionUI", "PermissionSettingUI, scene:%d", new Object[] { Integer.valueOf(this.scene) });
-    g.aAi();
-    this.BhU = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn(this.userName);
-    if (this.BhU == null)
+    h.aHH();
+    this.HbK = ((n)h.ae(n.class)).bbL().RG(this.userName);
+    if (this.HbK == null)
     {
       Log.e("MicroMsg.SnsPermissionUI", "the error cause by get contact by %s", new Object[] { this.userName });
       finish();
     }
-    this.BhU.setUsername(this.userName);
+    this.HbK.setUsername(this.userName);
     initView();
-    paramBundle = new ke();
-    paramBundle.dPe.dKy = 1;
+    paramBundle = new ku();
+    paramBundle.fIp.fDn = 1;
     EventCenter.instance.publish(paramBundle);
-    this.BhY = eEU();
-    h.CyF.a(16055, new Object[] { Integer.valueOf(d.aP(getIntent())), Integer.valueOf(19), Integer.valueOf(1), this.userName });
+    this.HbO = fqI();
+    d.a(getIntent(), 19, 1, this.userName);
     AppMethodBeat.o(27370);
   }
   
@@ -433,30 +419,30 @@ public class PermissionSettingUI
   {
     AppMethodBeat.i(27372);
     super.onDestroy();
-    g.aAi();
-    g.aAg().hqi.b(291, this);
-    g.aAi();
-    g.aAg().hqi.b(681, this);
-    if ((this.BhX != 0L) && (this.BhX != -1L))
+    h.aHH();
+    h.aHF().kcd.b(291, this);
+    h.aHH();
+    h.aHF().kcd.b(681, this);
+    if ((this.HbN != 0L) && (this.HbN != -1L))
     {
-      localObject = new vl();
-      ((vl)localObject).ebH.ebI = this.BhW;
-      ((vl)localObject).ebH.dNa = this.BhX;
+      localObject = new wq();
+      ((wq)localObject).fVJ.fVK = this.HbM;
+      ((wq)localObject).fVJ.fGk = this.HbN;
       EventCenter.instance.publish((IEvent)localObject);
     }
     long l = Util.currentTicks();
-    int i = eEU();
-    Object localObject = new ir().wq(this.userName).wr(r.Jb(this.BhX));
-    ((ir)localObject).eki = this.BhY;
-    ((ir)localObject).ePy = i;
-    ((ir)localObject).enq = this.scene;
-    ((ir)localObject).ePz = ((int)(System.currentTimeMillis() - this.enterTime));
-    ((ir)localObject).bfK();
-    Log.d("MicroMsg.SnsPermissionUI", "report PerMission action [%d %d] cost [%d]", new Object[] { Integer.valueOf(this.BhY), Integer.valueOf(i), Long.valueOf(Util.ticksToNow(l)) });
+    int i = fqI();
+    Object localObject = new la().BR(this.userName).BS(com.tencent.mm.plugin.sns.data.t.Qu(this.HbN));
+    ((la)localObject).geN = this.HbO;
+    ((la)localObject).gPU = i;
+    ((la)localObject).ggl = this.scene;
+    ((la)localObject).gPV = ((int)(System.currentTimeMillis() - this.enterTime));
+    ((la)localObject).bpa();
+    Log.d("MicroMsg.SnsPermissionUI", "report PerMission action [%d %d] cost [%d]", new Object[] { Integer.valueOf(this.HbO), Integer.valueOf(i), Long.valueOf(Util.ticksToNow(l)) });
     AppMethodBeat.o(27372);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(27376);
     Log.i("MicroMsg.SnsPermissionUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " " + paramq.getType());
@@ -474,15 +460,15 @@ public class PermissionSettingUI
         this.tipDialog.dismiss();
         this.tipDialog = null;
       }
-      dmp();
-      if (this.BhV) {
-        this.BhW = true;
+      dFf();
+      if (this.HbL) {
+        this.HbM = true;
       }
     }
     if (paramq.getType() == 681)
     {
-      List localList = ((com.tencent.mm.ba.b)paramq).jgc;
-      paramString = ((b.c)((com.tencent.mm.ba.b)paramq).jgb.getRespObj()).jgg;
+      List localList = ((com.tencent.mm.bd.b)paramq).lWF;
+      paramString = ((b.c)((com.tencent.mm.bd.b)paramq).lWE.getRespObj()).lWJ;
       paramInt1 = 0;
       for (;;)
       {
@@ -491,32 +477,32 @@ public class PermissionSettingUI
         }
         if (((k.b)localList.get(paramInt1)).getCmdId() == 72)
         {
-          if ((paramString.MBY != null) && (((Integer)paramString.MBY.LRr.get(paramInt1)).intValue() == -3400))
+          if ((paramString.TNE != null) && (((Integer)paramString.TNE.SZW.get(paramInt1)).intValue() == -3400))
           {
-            this.BhT = true;
-            g.aAh().azQ().set(ar.a.Onw, Integer.valueOf(1));
-            this.BhU.arh();
-            ab.F(this.BhU);
-            paramq = ((cxl)paramString.MBY.MBZ.get(paramInt1)).iAc;
+            this.HbJ = true;
+            h.aHG().aHp().set(ar.a.VCJ, Integer.valueOf(1));
+            this.HbK.axH();
+            ab.L(this.HbK);
+            paramq = ((dgv)paramString.TNE.TNF.get(paramInt1)).lpy;
             if (!Util.isNullOrNil(paramq)) {
-              ((TextView)findViewById(2131308891)).setText(paramq);
+              ((TextView)findViewById(R.h.dWb)).setText(paramq);
             }
             for (;;)
             {
-              dmp();
+              dFf();
               paramq = new f.a(this);
-              paramq.bow(((cxl)paramString.MBY.MBZ.get(paramInt1)).iAc).Dq(true).boB(getString(2131764037)).apa(2131764038);
+              paramq.bBl(((dgv)paramString.TNE.TNF.get(paramInt1)).lpy).HL(true).bBq(getString(R.l.ePC)).ayp(R.l.ePD);
               paramq.c(new PermissionSettingUI.6(this)).show();
               AppMethodBeat.o(27376);
               return;
               label404:
               bool = false;
               break;
-              ((TextView)findViewById(2131308891)).getText().toString();
+              ((TextView)findViewById(R.h.dWb)).getText().toString();
             }
           }
-          if ((paramString.MBY != null) && (((Integer)paramString.MBY.LRr.get(paramInt1)).intValue() == 0) && (!this.BhU.arD())) {
-            g.aAh().azQ().set(ar.a.Onw, Integer.valueOf(0));
+          if ((paramString.TNE != null) && (((Integer)paramString.TNE.SZW.get(paramInt1)).intValue() == 0) && (!this.HbK.ayk())) {
+            h.aHG().aHp().set(ar.a.VCJ, Integer.valueOf(0));
           }
         }
         paramInt1 += 1;
@@ -534,7 +520,7 @@ public class PermissionSettingUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.PermissionSettingUI
  * JD-Core Version:    0.7.0.1
  */

@@ -4,11 +4,11 @@ import java.util.List;
 
 abstract interface a$c
 {
-  public abstract void j(List<?> paramList);
+  public abstract void d(List<?> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v4.media.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.wallet.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.g.a.zm;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.cj;
+import com.tencent.mm.aa.c;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.be;
+import com.tencent.mm.model.ck;
 import com.tencent.mm.model.y;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.messenger.foundation.a.q;
-import com.tencent.mm.plugin.wallet_core.model.ab;
-import com.tencent.mm.plugin.wallet_core.model.an;
-import com.tencent.mm.plugin.wallet_core.model.t;
+import com.tencent.mm.plugin.messenger.foundation.a.t;
+import com.tencent.mm.plugin.messenger.foundation.a.v;
+import com.tencent.mm.plugin.wallet_core.model.ac;
+import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.pluginsdk.model.app.ap;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
@@ -21,28 +21,26 @@ import com.tencent.mm.sdk.platformtools.PhoneFormater;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.MStorageEx;
 import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
-import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.storagebase.h.b;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 import com.tencent.mm.wallet_core.d.a;
-import com.tencent.mm.y.c;
 import java.util.HashMap;
 import java.util.Map;
 
 public class s
-  implements bd
+  implements be
 {
-  private int HEY;
-  private r HEZ;
-  private ab HFa;
-  private k HFb;
-  private MStorageEx.IOnStorageChange HFc;
-  private d.a HFd;
-  private IListener HFe;
-  private q HFf;
-  private l HFg;
-  private int efI;
+  private int OwR;
+  private r OwS;
+  private ac OwT;
+  private k OwU;
+  private MStorageEx.IOnStorageChange OwV;
+  private d.a OwW;
+  private IListener OwX;
+  private t OwY;
+  private l OwZ;
+  private int fZX;
   
   static
   {
@@ -55,44 +53,44 @@ public class s
   public s()
   {
     AppMethodBeat.i(69193);
-    this.HEY = 0;
-    this.efI = 0;
-    this.HEZ = new r();
-    this.HFa = new ab();
-    this.HFb = new k();
-    this.HFc = new MStorageEx.IOnStorageChange()
+    this.OwR = 0;
+    this.fZX = 0;
+    this.OwS = new r();
+    this.OwT = new ac();
+    this.OwU = new k();
+    this.OwV = new MStorageEx.IOnStorageChange()
     {
       public final void onNotifyChange(int paramAnonymousInt, MStorageEx paramAnonymousMStorageEx, Object paramAnonymousObject)
       {
         AppMethodBeat.i(69189);
         if (Util.nullAsInt(paramAnonymousObject, 0) == 339975)
         {
-          g.aAi();
-          paramAnonymousInt = ((Integer)g.aAh().azQ().get(339975, Integer.valueOf(0))).intValue();
+          h.aHH();
+          paramAnonymousInt = ((Integer)h.aHG().aHp().b(339975, Integer.valueOf(0))).intValue();
           if (paramAnonymousInt != s.a(s.this))
           {
-            ap.gni().reset();
+            ap.hhK().reset();
             s.a(s.this, paramAnonymousInt);
           }
           AppMethodBeat.o(69189);
           return;
         }
-        if (ar.a.NXG.equals(paramAnonymousObject))
+        if (ar.a.VlG.equals(paramAnonymousObject))
         {
-          g.aAi();
-          paramAnonymousInt = ((Integer)g.aAh().azQ().get(ar.a.NXG, Integer.valueOf(0))).intValue();
+          h.aHH();
+          paramAnonymousInt = ((Integer)h.aHG().aHp().get(ar.a.VlG, Integer.valueOf(0))).intValue();
           if (paramAnonymousInt != s.b(s.this))
           {
-            ap.gni().reset();
+            ap.hhK().reset();
             s.b(s.this, paramAnonymousInt);
           }
         }
         AppMethodBeat.o(69189);
       }
     };
-    this.HFd = new s.2(this);
-    this.HFe = new IListener() {};
-    this.HFf = new q()
+    this.OwW = new s.2(this);
+    this.OwX = new s.3(this);
+    this.OwY = new t()
     {
       public final void onNewXmlReceived(String paramAnonymousString, Map<String, String> paramAnonymousMap, h.a paramAnonymousa)
       {
@@ -107,53 +105,53 @@ public class s
           if (i != 1) {
             break label260;
           }
-          c.axV().b(ar.a.Odt, true);
+          c.aFn().b(ar.a.VrE, true);
           if (j != 1) {
             break label273;
           }
-          c.axV().b(ar.a.Odu, true);
+          c.aFn().b(ar.a.VrF, true);
         }
         for (;;)
         {
           if (!Util.isNullOrNil(paramAnonymousString))
           {
-            g.aAi();
-            g.aAh().azQ().set(ar.a.Odw, paramAnonymousString);
+            h.aHH();
+            h.aHG().aHp().set(ar.a.VrH, paramAnonymousString);
           }
           if (!Util.isNullOrNil(paramAnonymousa))
           {
-            g.aAi();
-            paramAnonymousMap = (String)g.aAh().azQ().get(ar.a.Odx, "");
+            h.aHH();
+            paramAnonymousMap = (String)h.aHG().aHp().get(ar.a.VrI, "");
             paramAnonymousString = paramAnonymousa;
             if (!Util.isNullOrNil(paramAnonymousMap)) {
               paramAnonymousString = paramAnonymousMap + "," + paramAnonymousa;
             }
-            g.aAi();
-            g.aAh().azQ().set(ar.a.Odx, paramAnonymousString);
+            h.aHH();
+            h.aHG().aHp().set(ar.a.VrI, paramAnonymousString);
           }
           AppMethodBeat.o(69192);
           return;
           label260:
-          c.axV().b(ar.a.Odt, false);
+          c.aFn().b(ar.a.VrE, false);
           break;
           label273:
-          c.axV().b(ar.a.Odu, false);
+          c.aFn().b(ar.a.VrF, false);
         }
       }
     };
-    this.HFg = new l();
-    o localo = new o(com.tencent.mm.plugin.wallet_core.d.b.fSn());
-    if (!localo.exists()) {
-      localo.mkdirs();
+    this.OwZ = new l();
+    q localq = new q(com.tencent.mm.plugin.wallet_core.d.b.gKS());
+    if (!localq.ifE()) {
+      localq.ifK();
     }
     AppMethodBeat.o(69193);
   }
   
-  public static String bbI()
+  public static String bkY()
   {
     AppMethodBeat.i(69198);
-    g.aAi();
-    String str1 = (String)g.aAh().azQ().get(6, null);
+    h.aHH();
+    String str1 = (String)h.aHG().aHp().b(6, null);
     String str2 = PhoneFormater.extractCountryCode(str1);
     if (Util.isNullOrNil(str1))
     {
@@ -165,33 +163,33 @@ public class s
     return str1;
   }
   
-  public static s fOg()
+  public static s gGL()
   {
     AppMethodBeat.i(69194);
-    s locals = (s)y.at(s.class);
+    s locals = (s)y.as(s.class);
     AppMethodBeat.o(69194);
     return locals;
   }
   
-  public static an fOh()
+  public static com.tencent.mm.plugin.wallet_core.model.ao gGM()
   {
     AppMethodBeat.i(69197);
-    an localan = t.fQI();
+    com.tencent.mm.plugin.wallet_core.model.ao localao = u.gJo();
     AppMethodBeat.o(69197);
-    return localan;
+    return localao;
   }
   
-  public static String fOi()
+  public static String gGN()
   {
     AppMethodBeat.i(69199);
-    g.aAi();
-    String str1 = (String)g.aAh().azQ().get(6, null);
+    h.aHH();
+    String str1 = (String)h.aHG().aHp().b(6, null);
     if (Util.isNullOrNil(str1))
     {
       str1 = "";
       str2 = str1;
       if (Util.isNullOrNil(str1)) {
-        if (!z.aUo()) {
+        if (!z.bdq()) {
           break label75;
         }
       }
@@ -216,34 +214,34 @@ public class s
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(69195);
-    g.aAi();
-    this.HEY = ((Integer)g.aAh().azQ().get(339975, Integer.valueOf(0))).intValue();
-    g.aAi();
-    this.efI = ((Integer)g.aAh().azQ().get(ar.a.NXG, Integer.valueOf(0))).intValue();
-    ((com.tencent.mm.plugin.messenger.foundation.a.s)g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class)).getSysCmdMsgExtension().a("paymsg", this.HFf);
-    EventCenter.instance.addListener(this.HEZ);
-    EventCenter.instance.addListener(this.HFa);
-    EventCenter.instance.addListener(this.HFb);
-    this.HFe.alive();
-    this.HFg.alive();
-    g.aAi();
-    g.aAh().azQ().add(this.HFc);
-    g.aAi();
-    g.aAh().azQ().set(ar.a.Ogk, Boolean.FALSE);
+    h.aHH();
+    this.OwR = ((Integer)h.aHG().aHp().b(339975, Integer.valueOf(0))).intValue();
+    h.aHH();
+    this.fZX = ((Integer)h.aHG().aHp().get(ar.a.VlG, Integer.valueOf(0))).intValue();
+    ((v)h.ag(v.class)).getSysCmdMsgExtension().a("paymsg", this.OwY);
+    EventCenter.instance.addListener(this.OwS);
+    EventCenter.instance.addListener(this.OwT);
+    EventCenter.instance.addListener(this.OwU);
+    this.OwX.alive();
+    this.OwZ.alive();
+    h.aHH();
+    h.aHG().aHp().add(this.OwV);
+    h.aHH();
+    h.aHG().aHp().set(ar.a.VuA, Boolean.FALSE);
     AppMethodBeat.o(69195);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(69196);
-    ((com.tencent.mm.plugin.messenger.foundation.a.s)g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class)).getSysCmdMsgExtension().b("paymsg", this.HFf);
-    EventCenter.instance.removeListener(this.HEZ);
-    EventCenter.instance.removeListener(this.HFa);
-    EventCenter.instance.removeListener(this.HFb);
-    this.HFe.dead();
-    this.HFg.dead();
-    g.aAi();
-    g.aAh().azQ().remove(this.HFc);
+    ((v)h.ag(v.class)).getSysCmdMsgExtension().b("paymsg", this.OwY);
+    EventCenter.instance.removeListener(this.OwS);
+    EventCenter.instance.removeListener(this.OwT);
+    EventCenter.instance.removeListener(this.OwU);
+    this.OwX.dead();
+    this.OwZ.dead();
+    h.aHH();
+    h.aHG().aHp().remove(this.OwV);
     AppMethodBeat.o(69196);
   }
   
@@ -251,7 +249,7 @@ public class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.a.s
  * JD-Core Version:    0.7.0.1
  */

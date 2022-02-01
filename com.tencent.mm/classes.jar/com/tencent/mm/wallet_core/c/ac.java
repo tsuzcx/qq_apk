@@ -5,34 +5,34 @@ import org.json.JSONObject;
 
 public final class ac
 {
-  public String NgK;
-  public String Ntg;
-  public String Ruk;
-  public String Rul;
-  public int Rum;
+  public String SLk;
+  public String UGe;
+  public String Uto;
+  public String YVJ;
+  public int YVK;
   
   public ac()
   {
-    this.Ruk = "";
-    this.Ntg = "";
-    this.Rul = "";
-    this.NgK = "";
-    this.Rum = 0;
+    this.SLk = "";
+    this.UGe = "";
+    this.YVJ = "";
+    this.Uto = "";
+    this.YVK = 0;
   }
   
   public ac(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72811);
-    this.Ruk = "";
-    this.Ntg = "";
-    this.Rul = "";
-    this.NgK = "";
-    this.Rum = 0;
-    this.Ruk = paramJSONObject.optString("device_id");
-    this.Ntg = paramJSONObject.optString("device_name");
-    this.Rul = paramJSONObject.optString("device_os");
-    this.Rum = paramJSONObject.optInt("Is_cur_device");
-    this.NgK = paramJSONObject.optString("crt_no");
+    this.SLk = "";
+    this.UGe = "";
+    this.YVJ = "";
+    this.Uto = "";
+    this.YVK = 0;
+    this.SLk = paramJSONObject.optString("device_id");
+    this.UGe = paramJSONObject.optString("device_name");
+    this.YVJ = paramJSONObject.optString("device_os");
+    this.YVK = paramJSONObject.optInt("Is_cur_device");
+    this.Uto = paramJSONObject.optString("crt_no");
     AppMethodBeat.o(72811);
   }
 }

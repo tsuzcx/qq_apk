@@ -25,7 +25,25 @@ public final class b
     this.db = paramISQLiteDatabase;
   }
   
-  public final a TF(int paramInt)
+  public final boolean a(a parama, String... paramVarArgs)
+  {
+    AppMethodBeat.i(127264);
+    if (parama == null)
+    {
+      Log.e("MicroMsg.NewTipsCompatInfoStorage", "NewTipsCompatInfo is null!");
+      AppMethodBeat.o(127264);
+      return false;
+    }
+    boolean bool = super.updateNotify(parama, false, paramVarArgs);
+    if (bool) {
+      doNotify(parama.field_tipId, 3, Integer.valueOf(parama.field_tipId));
+    }
+    Log.d("MicroMsg.NewTipsCompatInfoStorage", "update result[%B]", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.o(127264);
+    return bool;
+  }
+  
+  public final a aas(int paramInt)
   {
     AppMethodBeat.i(127265);
     if (this.db == null)
@@ -59,24 +77,6 @@ public final class b
     return null;
   }
   
-  public final boolean a(a parama, String... paramVarArgs)
-  {
-    AppMethodBeat.i(127264);
-    if (parama == null)
-    {
-      Log.e("MicroMsg.NewTipsCompatInfoStorage", "NewTipsCompatInfo is null!");
-      AppMethodBeat.o(127264);
-      return false;
-    }
-    boolean bool = super.updateNotify(parama, false, paramVarArgs);
-    if (bool) {
-      doNotify(parama.field_tipId, 3, Integer.valueOf(parama.field_tipId));
-    }
-    Log.d("MicroMsg.NewTipsCompatInfoStorage", "update result[%B]", new Object[] { Boolean.valueOf(bool) });
-    AppMethodBeat.o(127264);
-    return bool;
-  }
-  
   public final boolean f(a parama)
   {
     AppMethodBeat.i(127263);
@@ -102,7 +102,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.newtips.b.b
  * JD-Core Version:    0.7.0.1
  */

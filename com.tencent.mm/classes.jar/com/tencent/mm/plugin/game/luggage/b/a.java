@@ -6,58 +6,61 @@ import java.util.LinkedList;
 
 public final class a
 {
-  private static LinkedList<Class<? extends com.tencent.luggage.d.b>> xwA;
+  private static LinkedList<Class<? extends com.tencent.luggage.d.b>> CAI;
   
-  private static void aQ(Class<? extends com.tencent.luggage.d.b> paramClass)
+  private static void bh(Class<? extends com.tencent.luggage.d.b> paramClass)
   {
     AppMethodBeat.i(83050);
-    xwA.add(paramClass);
+    CAI.add(paramClass);
     AppMethodBeat.o(83050);
   }
   
-  public static LinkedList<Class<? extends com.tencent.luggage.d.b>> dTr()
+  public static LinkedList<Class<? extends com.tencent.luggage.d.b>> ewB()
   {
     try
     {
       AppMethodBeat.i(83049);
-      xwA = new LinkedList();
-      aQ(g.class);
-      aQ(k.class);
-      aQ(l.class);
-      aQ(n.class);
-      aQ(o.class);
-      aQ(w.class);
-      aQ(y.class);
-      aQ(aa.class);
-      aQ(ah.class);
-      aQ(ad.class);
-      aQ(ae.class);
-      aQ(t.class);
-      aQ(c.class);
-      aQ(b.class);
-      aQ(v.class);
-      aQ(j.class);
-      aQ(u.class);
-      aQ(f.class);
-      aQ(ab.class);
-      aQ(e.class);
-      aQ(ac.class);
-      aQ(s.class);
-      aQ(ak.class);
-      aQ(be.class);
-      aQ(d.class);
-      aQ(m.class);
-      aQ(z.class);
-      aQ(ai.class);
-      aQ(aj.class);
-      aQ(r.class);
-      aQ(ag.class);
-      aQ(x.class);
-      aQ(af.class);
-      aQ(i.class);
-      aQ(q.class);
-      aQ(p.class);
-      LinkedList localLinkedList = xwA;
+      CAI = new LinkedList();
+      bh(g.class);
+      bh(k.class);
+      bh(l.class);
+      bh(n.class);
+      bh(o.class);
+      bh(x.class);
+      bh(z.class);
+      bh(ab.class);
+      bh(ak.class);
+      bh(ag.class);
+      bh(ah.class);
+      bh(t.class);
+      bh(c.class);
+      bh(b.class);
+      bh(v.class);
+      bh(j.class);
+      bh(u.class);
+      bh(f.class);
+      bh(ad.class);
+      bh(e.class);
+      bh(ae.class);
+      bh(s.class);
+      bh(an.class);
+      bh(be.class);
+      bh(d.class);
+      bh(m.class);
+      bh(aa.class);
+      bh(ac.class);
+      bh(al.class);
+      bh(am.class);
+      bh(r.class);
+      bh(aj.class);
+      bh(y.class);
+      bh(ai.class);
+      bh(i.class);
+      bh(q.class);
+      bh(p.class);
+      bh(af.class);
+      bh(w.class);
+      LinkedList localLinkedList = CAI;
       AppMethodBeat.o(83049);
       return localLinkedList;
     }

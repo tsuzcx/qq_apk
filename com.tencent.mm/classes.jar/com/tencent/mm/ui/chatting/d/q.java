@@ -1,169 +1,127 @@
 package com.tencent.mm.ui.chatting.d;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.content.res.Configuration;
+import android.view.KeyEvent;
+import android.widget.AbsListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.msgsubscription.presenter.SubscribeMsgSettingData;
-import com.tencent.mm.msgsubscription.util.c;
-import com.tencent.mm.plugin.appbrand.config.ae;
-import com.tencent.mm.plugin.appbrand.config.y;
-import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.ui.MMFragment;
-import com.tencent.mm.ui.aj;
-import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.chatting.d.b.o;
+import com.tencent.mm.ui.chatting.d.b.n;
+import com.tencent.mm.ui.m;
+import java.util.HashSet;
+import java.util.Iterator;
 
-@com.tencent.mm.ui.chatting.d.a.a(gRF=o.class)
-public class q
-  extends a
-  implements o
+public final class q
+  extends m
+  implements n
 {
-  private String PoN;
+  private HashSet<m> nSN;
   
-  private boolean gPo()
+  public q()
   {
-    AppMethodBeat.i(233095);
-    if (Util.isNullOrNil(this.dom.getTalkerUserName()))
-    {
-      AppMethodBeat.o(233095);
-      return false;
-    }
-    if ((ab.Jx(this.dom.getTalkerUserName())) && (!Util.isNullOrNil(this.PoN)))
-    {
-      AppMethodBeat.o(233095);
-      return true;
-    }
-    AppMethodBeat.o(233095);
-    return false;
+    AppMethodBeat.i(35256);
+    this.nSN = new HashSet();
+    AppMethodBeat.o(35256);
   }
   
-  public final void gIk()
+  public final void a(m paramm)
   {
-    AppMethodBeat.i(233090);
-    super.gIk();
-    this.PoN = this.dom.Pwc.getStringExtra("key_notify_message_real_username");
-    if (!gPo())
-    {
-      AppMethodBeat.o(233090);
-      return;
+    AppMethodBeat.i(35257);
+    if (!this.nSN.contains(paramm)) {
+      this.nSN.add(paramm);
     }
-    AppMethodBeat.o(233090);
+    AppMethodBeat.o(35257);
   }
   
-  public final boolean gPG()
+  public final void b(m paramm)
   {
-    AppMethodBeat.i(233092);
-    if (!gPo())
-    {
-      AppMethodBeat.o(233092);
-      return false;
-    }
-    ((com.tencent.mm.ui.chatting.d.b.aa)this.dom.bh(com.tencent.mm.ui.chatting.d.b.aa.class)).gQs();
-    AppMethodBeat.o(233092);
-    return true;
-  }
-  
-  public final boolean gPH()
-  {
-    AppMethodBeat.i(233093);
-    boolean bool = gPo();
-    AppMethodBeat.o(233093);
-    return bool;
-  }
-  
-  public final String gPI()
-  {
-    return this.PoN;
-  }
-  
-  public final void j(LinearLayout paramLinearLayout)
-  {
-    AppMethodBeat.i(233091);
-    if (!gPo())
-    {
-      AppMethodBeat.o(233091);
-      return;
-    }
-    if (Util.isNullOrNil(this.PoN))
-    {
-      Log.e("MicroMsg.ChattingServiceNotifyComponent", "username is null");
-      AppMethodBeat.o(233091);
-      return;
-    }
-    boolean bool = as.HF(this.PoN);
-    Activity localActivity = this.dom.Pwc.getContext();
-    Object localObject = paramLinearLayout.findViewById(2131298537);
-    ImageView localImageView = (ImageView)paramLinearLayout.findViewById(2131306181);
-    TextView localTextView2 = (TextView)paramLinearLayout.findViewById(2131306237);
-    TextView localTextView1 = (TextView)paramLinearLayout.findViewById(2131306269);
-    if (localObject != null) {
-      ((View)localObject).setOnClickListener(new q.1(this, bool, localActivity));
-    }
-    if (localImageView != null) {
-      a.b.d(localImageView, this.PoN);
-    }
-    paramLinearLayout = "";
-    if (localTextView2 != null)
-    {
-      if (bool)
-      {
-        localObject = y.Xr(this.PoN);
-        if (localObject != null) {
-          paramLinearLayout = ((ae)localObject).nickname;
-        }
-        localTextView2.setText(com.tencent.mm.model.aa.getDisplayName(paramLinearLayout));
-      }
-    }
-    else if (localTextView1 != null) {
-      if (!bool) {
-        break label215;
-      }
-    }
-    label215:
-    for (paramLinearLayout = localActivity.getString(2131756040);; paramLinearLayout = localActivity.getString(2131761000))
-    {
-      localTextView1.setText(paramLinearLayout);
-      AppMethodBeat.o(233091);
-      return;
-      paramLinearLayout = com.tencent.mm.model.aa.getDisplayName(this.PoN);
-      break;
-    }
+    AppMethodBeat.i(35258);
+    this.nSN.remove(paramm);
+    AppMethodBeat.o(35258);
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(233094);
-    super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (!gPo())
-    {
-      AppMethodBeat.o(233094);
-      return;
+    AppMethodBeat.i(35259);
+    Iterator localIterator = this.nSN.iterator();
+    while (localIterator.hasNext()) {
+      ((m)localIterator.next()).onActivityResult(paramInt1, paramInt2, paramIntent);
     }
-    if ((paramInt1 == 100) && (paramIntent != null))
-    {
-      Log.i("MicroMsg.ChattingServiceNotifyComponent", "receive data from subscribe msg");
-      paramIntent = (SubscribeMsgSettingData)paramIntent.getParcelableExtra("key_biz_data");
-      if (paramIntent != null)
+    AppMethodBeat.o(35259);
+  }
+  
+  public final void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    AppMethodBeat.i(35262);
+    super.onConfigurationChanged(paramConfiguration);
+    Iterator localIterator = this.nSN.iterator();
+    while (localIterator.hasNext()) {
+      ((m)localIterator.next()).onConfigurationChanged(paramConfiguration);
+    }
+    AppMethodBeat.o(35262);
+  }
+  
+  public final void onFinish()
+  {
+    AppMethodBeat.i(275365);
+    super.onFinish();
+    Iterator localIterator = this.nSN.iterator();
+    while (localIterator.hasNext()) {
+      ((m)localIterator.next()).onFinish();
+    }
+    AppMethodBeat.o(275365);
+  }
+  
+  public final boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  {
+    AppMethodBeat.i(35260);
+    Iterator localIterator = this.nSN.iterator();
+    while (localIterator.hasNext()) {
+      if (((m)localIterator.next()).onKeyDown(paramInt, paramKeyEvent))
       {
-        c localc = c.jDh;
-        c.a(this.PoN, paramIntent, new aj(this.dom.Pwc.getContext(), this.PoN));
+        AppMethodBeat.o(35260);
+        return true;
       }
     }
-    AppMethodBeat.o(233094);
+    AppMethodBeat.o(35260);
+    return false;
+  }
+  
+  public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(35261);
+    super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    Iterator localIterator = this.nSN.iterator();
+    while (localIterator.hasNext()) {
+      ((m)localIterator.next()).onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    }
+    AppMethodBeat.o(35261);
+  }
+  
+  public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(35263);
+    super.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    Iterator localIterator = this.nSN.iterator();
+    while (localIterator.hasNext()) {
+      ((m)localIterator.next()).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
+    AppMethodBeat.o(35263);
+  }
+  
+  public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    AppMethodBeat.i(35264);
+    super.onScrollStateChanged(paramAbsListView, paramInt);
+    Iterator localIterator = this.nSN.iterator();
+    while (localIterator.hasNext()) {
+      ((m)localIterator.next()).onScrollStateChanged(paramAbsListView, paramInt);
+    }
+    AppMethodBeat.o(35264);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.q
  * JD-Core Version:    0.7.0.1
  */

@@ -20,11 +20,11 @@ public class BiometricManagerCompat
   {
     AppMethodBeat.i(88562);
     IMPL_PROVIDER = new HashMap();
-    if (a.hlj()) {}
+    if (a.ioI()) {}
     for (Object localObject = new BiometricManagerCompat.FingerprintManagerImpl();; localObject = new LegacyFingerprintManagerImpl())
     {
       IMPL_PROVIDER.put(Integer.valueOf(1), localObject);
-      if ((a.hlj()) && (isNativeSupportFaceid())) {
+      if ((a.ioI()) && (isNativeSupportFaceid())) {
         IMPL_PROVIDER.put(Integer.valueOf(2), new BiometricManagerCompat.FaceidManagerImpl());
       }
       AppMethodBeat.o(88562);
@@ -183,7 +183,7 @@ public class BiometricManagerCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.soter.core.biometric.BiometricManagerCompat
  * JD-Core Version:    0.7.0.1
  */

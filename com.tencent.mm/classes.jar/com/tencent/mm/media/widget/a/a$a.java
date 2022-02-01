@@ -3,7 +3,7 @@ package com.tencent.mm.media.widget.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/widget/camera/BaseCommonCamera$CameraStatus;", "", "status", "", "(Ljava/lang/String;II)V", "getStatus", "()I", "CAMERA_IS_DEFAULT", "CAMERA_IS_PREVIEWING", "CAMERA_IS_CAPTURING", "plugin-mediaeditor_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/widget/camera/BaseCommonCamera$CameraStatus;", "", "status", "", "(Ljava/lang/String;II)V", "getStatus", "()I", "CAMERA_IS_DEFAULT", "CAMERA_IS_PREVIEWING", "CAMERA_IS_CAPTURING", "plugin-mediaeditor_release"})
 public enum a$a
 {
   private final int status;
@@ -12,12 +12,12 @@ public enum a$a
   {
     AppMethodBeat.i(94005);
     a locala1 = new a("CAMERA_IS_DEFAULT", 0, -1);
-    ilZ = locala1;
+    lba = locala1;
     a locala2 = new a("CAMERA_IS_PREVIEWING", 1, 0);
-    ima = locala2;
+    lbb = locala2;
     a locala3 = new a("CAMERA_IS_CAPTURING", 2, 1);
-    imb = locala3;
-    imc = new a[] { locala1, locala2, locala3 };
+    lbc = locala3;
+    lbd = new a[] { locala1, locala2, locala3 };
     AppMethodBeat.o(94005);
   }
   

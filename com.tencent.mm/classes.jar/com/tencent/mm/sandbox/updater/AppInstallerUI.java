@@ -6,7 +6,9 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.i.g;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.pluginsdk.j.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
@@ -17,42 +19,42 @@ import com.tencent.mm.ui.widget.a.d.a;
 public class AppInstallerUI
   extends MMBaseActivity
 {
-  private static AppInstallerUI NEu = null;
-  private int EtH;
-  private d NEt;
-  private DialogInterface.OnClickListener NEv;
+  private static AppInstallerUI URT = null;
+  private int KHe;
+  private d URS;
+  private DialogInterface.OnClickListener URU;
   private String desc;
-  private d kdo;
+  private d mUO;
   private String md5;
   
   public AppInstallerUI()
   {
     AppMethodBeat.i(32616);
-    this.kdo = null;
-    this.NEt = null;
-    this.NEv = new DialogInterface.OnClickListener()
+    this.mUO = null;
+    this.URS = null;
+    this.URU = new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(32612);
         Log.d("MicroMsg.AppInstallerUI", "getBtn (ok button) is click");
         if (AppInstallerUI.b(AppInstallerUI.this) == 2) {
-          j.aL(AppInstallerUI.this, 3);
+          j.bd(AppInstallerUI.this, 3);
         }
-        paramAnonymousDialogInterface = com.tencent.mm.sandbox.monitor.c.aFr(AppInstallerUI.c(AppInstallerUI.this));
+        paramAnonymousDialogInterface = com.tencent.mm.sandbox.monitor.c.aPB(AppInstallerUI.c(AppInstallerUI.this));
         Log.d("MicroMsg.AppInstallerUI", paramAnonymousDialogInterface);
         if (paramAnonymousDialogInterface != null)
         {
-          k.a.NFZ.bC(1, true);
-          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(405L, 72L, 1L, true);
+          k.a.UTz.bP(1, true);
+          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(405L, 72L, 1L, true);
           AppInstallerUI.a(AppInstallerUI.this, paramAnonymousDialogInterface);
           AppMethodBeat.o(32612);
           return;
         }
-        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(405L, 73L, 1L, true);
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(405L, 73L, 1L, true);
         Log.e("MicroMsg.AppInstallerUI", "pack not found!");
-        com.tencent.mm.ui.base.h.cD(AppInstallerUI.this, AppInstallerUI.this.getString(2131766917));
-        j.gwv();
+        com.tencent.mm.ui.base.h.cO(AppInstallerUI.this, AppInstallerUI.this.getString(R.l.update_err_pack_not_found));
+        j.hsu();
         AppInstallerUI.this.finish();
         AppMethodBeat.o(32612);
       }
@@ -60,9 +62,9 @@ public class AppInstallerUI
     AppMethodBeat.o(32616);
   }
   
-  public static AppInstallerUI gwa()
+  public static AppInstallerUI hrZ()
   {
-    return NEu;
+    return URT;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -70,36 +72,36 @@ public class AppInstallerUI
     AppMethodBeat.i(32617);
     super.onCreate(paramBundle);
     Log.d("MicroMsg.AppInstallerUI", "onCreate");
-    com.tencent.mm.sandbox.c.q(hashCode(), this);
+    com.tencent.mm.sandbox.c.u(hashCode(), this);
     MMActivity.initLanguage(this);
-    if ((AppUpdaterUI.gwb() != null) && (!AppUpdaterUI.gwb().isFinishing()))
+    if ((AppUpdaterUI.hsa() != null) && (!AppUpdaterUI.hsa().isFinishing()))
     {
       Log.d("MicroMsg.AppInstallerUI", "AppUpdaterUI is there, finish self");
       finish();
       AppMethodBeat.o(32617);
       return;
     }
-    if ((NEu != null) && (!NEu.isFinishing()) && (NEu != this))
+    if ((URT != null) && (!URT.isFinishing()) && (URT != this))
     {
       Log.d("MicroMsg.AppInstallerUI", "duplicate instance, finish self");
       finish();
       AppMethodBeat.o(32617);
       return;
     }
-    NEu = this;
-    this.md5 = j.gnt();
-    if ((Util.isNullOrNil(this.md5)) || (com.tencent.mm.sandbox.monitor.c.aFr(this.md5) == null))
+    URT = this;
+    this.md5 = j.hhZ();
+    if ((Util.isNullOrNil(this.md5)) || (com.tencent.mm.sandbox.monitor.c.aPB(this.md5) == null))
     {
       finish();
       AppMethodBeat.o(32617);
       return;
     }
-    this.desc = j.gwn();
-    this.EtH = j.gwo();
-    setContentView(2131493988);
+    this.desc = j.hsm();
+    this.KHe = j.hsn();
+    setContentView(R.i.empty);
     paramBundle = new d.a(this);
-    paramBundle.aoO(2131760888);
-    paramBundle.Dk(true);
+    paramBundle.ayc(R.l.fmt_update);
+    paramBundle.HG(true);
     paramBundle.f(new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
@@ -109,15 +111,15 @@ public class AppInstallerUI
         AppMethodBeat.o(32611);
       }
     });
-    paramBundle.boo(getString(2131760891, new Object[] { this.desc }));
-    paramBundle.aoV(2131761788).a(false, this.NEv);
-    paramBundle.aoW(2131766915).d(null);
-    this.kdo = paramBundle.hbn();
-    this.kdo.setCanceledOnTouchOutside(false);
-    this.kdo.show();
-    com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(405L, 71L, 1L, true);
-    if (this.EtH == 2) {
-      j.l(this, 2, j.gwp() + 1);
+    paramBundle.bBd(getString(R.l.fmt_update_install_info, new Object[] { this.desc }));
+    paramBundle.ayj(R.l.install_now).a(false, this.URU);
+    paramBundle.ayk(R.l.update_cancel).d(null);
+    this.mUO = paramBundle.icu();
+    this.mUO.setCanceledOnTouchOutside(false);
+    this.mUO.show();
+    com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(405L, 71L, 1L, true);
+    if (this.KHe == 2) {
+      j.n(this, 2, j.hso() + 1);
     }
     AppMethodBeat.o(32617);
   }
@@ -126,16 +128,16 @@ public class AppInstallerUI
   {
     AppMethodBeat.i(32618);
     Log.d("MicroMsg.AppInstallerUI", "onDestroy");
-    if ((this.kdo != null) && (this.kdo.isShowing())) {
-      this.kdo.dismiss();
+    if ((this.mUO != null) && (this.mUO.isShowing())) {
+      this.mUO.dismiss();
     }
-    if ((this.NEt != null) && (this.NEt.isShowing())) {
-      this.NEt.dismiss();
+    if ((this.URS != null) && (this.URS.isShowing())) {
+      this.URS.dismiss();
     }
-    if (NEu == this) {
-      NEu = null;
+    if (URT == this) {
+      URT = null;
     }
-    com.tencent.mm.sandbox.c.r(hashCode(), this);
+    com.tencent.mm.sandbox.c.v(hashCode(), this);
     super.onDestroy();
     AppMethodBeat.o(32618);
   }
@@ -148,7 +150,7 @@ public class AppInstallerUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sandbox.updater.AppInstallerUI
  * JD-Core Version:    0.7.0.1
  */

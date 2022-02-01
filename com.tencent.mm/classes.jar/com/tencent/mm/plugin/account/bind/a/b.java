@@ -1,24 +1,25 @@
 package com.tencent.mm.plugin.account.bind.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.c;
-import com.tencent.mm.ak.ac;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.ac;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.b.p;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.ch;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.ci;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.protocal.protobuf.mj;
-import com.tencent.mm.protocal.protobuf.mk;
+import com.tencent.mm.plugin.messenger.foundation.a.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.lz;
+import com.tencent.mm.protocal.protobuf.ma;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.an;
@@ -32,38 +33,38 @@ public final class b
   implements m
 {
   private i callback;
-  private String dOX;
-  private String dOZ;
-  public long jkB;
-  public final d rr;
+  private String fIi;
+  private String fIk;
+  public long maC;
+  public final com.tencent.mm.an.d rr;
   
   public b(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(109745);
-    this.jkB = 0L;
+    this.maC = 0L;
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new mj();
-    ((d.a)localObject).iLO = new mk();
+    ((d.a)localObject).lBU = new lz();
+    ((d.a)localObject).lBV = new ma();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/bindqq";
     ((d.a)localObject).funcId = 144;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    this.jkB = paramLong;
-    localObject = (mj)this.rr.iLK.iLR;
-    ((mj)localObject).KQu = new p(paramLong).intValue();
-    ((mj)localObject).KQi = "";
-    ((mj)localObject).KQv = "";
-    ((mj)localObject).KQw = "";
-    ((mj)localObject).KQx = "";
-    ((mj)localObject).KQz = new dqi().bhy("");
-    ((mj)localObject).KQy = 1;
+    this.rr = ((d.a)localObject).bgN();
+    this.maC = paramLong;
+    localObject = (lz)d.b.b(this.rr.lBR);
+    ((lz)localObject).RRs = new p(paramLong).intValue();
+    ((lz)localObject).RRg = "";
+    ((lz)localObject).RRt = "";
+    ((lz)localObject).RRu = "";
+    ((lz)localObject).RRv = "";
+    ((lz)localObject).RRx = new eaf().btQ("");
+    ((lz)localObject).RRw = 1;
     if (paramBoolean == true) {}
-    for (paramString1 = com.tencent.mm.kernel.g.aAf().azh().e(paramLong, paramString3);; paramString1 = com.tencent.mm.kernel.g.aAf().azh().a(paramLong, Util.getFullPasswordMD5(paramString1), true))
+    for (paramString1 = h.aHE().aGC().f(paramLong, paramString3);; paramString1 = h.aHE().aGC().a(paramLong, Util.getFullPasswordMD5(paramString1), true))
     {
-      ((mj)localObject).KNX = new SKBuiltinBuffer_t().setBuffer(paramString1);
-      String str = Util.nullAsNil((String)com.tencent.mm.kernel.g.aAh().azQ().get(47, null));
-      ((mj)localObject).KQA = new SKBuiltinBuffer_t().setBuffer(Util.decodeHexString(str));
+      ((lz)localObject).ROR = new eae().dc(paramString1);
+      String str = Util.nullAsNil((String)h.aHG().aHp().b(47, null));
+      ((lz)localObject).RRy = new eae().dc(Util.decodeHexString(str));
       Log.i("MicroMsg.NetSceneBindQQ", "init opcode:%d qq:%d  wtbuf:%d img[%s,%s,%s] ksid:%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong), Integer.valueOf(Util.getLength(paramString1)), paramString3, paramString2, paramString4, str });
       AppMethodBeat.o(109745);
       return;
@@ -74,15 +75,15 @@ public final class b
   {
     this(paramLong, paramString1, paramString2, paramString3, paramString4, 1, paramBoolean);
     AppMethodBeat.i(109746);
-    this.dOX = paramString5;
-    this.dOZ = paramString6;
-    paramString1 = (mj)this.rr.iLK.iLR;
-    paramString1.KPU = paramString5;
-    paramString1.KPV = paramString6;
+    this.fIi = paramString5;
+    this.fIk = paramString6;
+    paramString1 = (lz)d.b.b(this.rr.lBR);
+    paramString1.RQS = paramString5;
+    paramString1.RQT = paramString6;
     AppMethodBeat.o(109746);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(109747);
     this.callback = parami;
@@ -99,65 +100,65 @@ public final class b
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(109748);
-    params = (mj)this.rr.iLK.iLR;
-    paramArrayOfByte = (mk)this.rr.iLL.iLR;
-    Object localObject = com.tencent.mm.platformtools.z.a(paramArrayOfByte.KLb);
+    params = (lz)d.b.b(this.rr.lBR);
+    paramArrayOfByte = (ma)d.c.b(this.rr.lBS);
+    Object localObject = com.tencent.mm.platformtools.z.a(paramArrayOfByte.RLX);
     if (!Util.isNullOrNil((byte[])localObject)) {}
-    for (boolean bool1 = com.tencent.mm.kernel.g.aAf().azh().a(new p(params.KQu).longValue(), (byte[])localObject);; bool1 = false)
+    for (boolean bool1 = h.aHE().aGC().a(new p(params.RRs).longValue(), (byte[])localObject);; bool1 = false)
     {
-      if ((bool1) && (com.tencent.mm.kernel.g.aAc())) {
-        com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.Oou, Boolean.TRUE);
+      if ((bool1) && (h.aHB())) {
+        h.aHG().aHp().set(ar.a.VDS, Boolean.TRUE);
       }
-      Log.i("MicroMsg.NetSceneBindQQ", "onGYNetEnd[%d,%d] wtret:%b wtRespBuf:%d imgsid:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.valueOf(bool1), Integer.valueOf(Util.getLength((byte[])localObject)), paramArrayOfByte.KQw });
+      Log.i("MicroMsg.NetSceneBindQQ", "onGYNetEnd[%d,%d] wtret:%b wtRespBuf:%d imgsid:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.valueOf(bool1), Integer.valueOf(Util.getLength((byte[])localObject)), paramArrayOfByte.RRu });
       boolean bool2;
       if ((paramInt2 == 0) && (paramInt3 == 0))
       {
-        paramInt1 = com.tencent.mm.kernel.g.aAh().azQ().getInt(9, 0);
-        com.tencent.mm.kernel.g.aAh().azQ().set(9, Integer.valueOf(params.KQu));
+        paramInt1 = h.aHG().aHp().getInt(9, 0);
+        h.aHG().aHp().i(9, Integer.valueOf(params.RRs));
         if (paramInt1 != 0)
         {
-          if (com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.Ogq, "").equals(String.valueOf(paramInt1))) {
-            com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.Ogq, com.tencent.mm.model.z.aTY());
+          if (h.aHG().aHp().get(ar.a.VuG, "").equals(String.valueOf(paramInt1))) {
+            h.aHG().aHp().set(ar.a.VuG, com.tencent.mm.model.z.bcZ());
           }
-          localObject = ch.iFO.aWo().iterator();
+          localObject = ci.lvQ.bfs().iterator();
           while (((Iterator)localObject).hasNext())
           {
             str = (String)((Iterator)localObject).next();
-            if (String.valueOf(paramInt1).equals(ch.iFO.getString(str, "login_user_name"))) {
-              ch.iFO.l(str, "login_user_name", str);
+            if (String.valueOf(paramInt1).equals(ci.lvQ.getString(str, "login_user_name"))) {
+              ci.lvQ.o(str, "login_user_name", str);
             }
           }
         }
-        if (params.KQy == 1) {
-          com.tencent.mm.kernel.g.aAh().azQ().set(17, Integer.valueOf(paramArrayOfByte.KEi));
+        if (params.RRw == 1) {
+          h.aHG().aHp().i(17, Integer.valueOf(paramArrayOfByte.RFA));
         }
-        localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSW();
-        String str = paramArrayOfByte.KQD;
-        if (paramArrayOfByte.KQC == 1)
+        localObject = ((n)h.ae(n.class)).bbU();
+        String str = paramArrayOfByte.RRB;
+        if (paramArrayOfByte.RRA == 1)
         {
           bool2 = true;
-          ((com.tencent.mm.plugin.messenger.foundation.a.a.l)localObject).bO(str, bool2);
-          paramInt1 = params.KQu;
+          ((l)localObject).bV(str, bool2);
+          paramInt1 = params.RRs;
           if (paramInt1 != 0) {
-            ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSW().eJ(new p(paramInt1) + "@qqim", 3);
+            ((n)h.ae(n.class)).bbU().fk(new p(paramInt1) + "@qqim", 3);
           }
-          c.e(paramInt1, 3);
-          com.tencent.mm.kernel.g.aAh().azQ().set(32, params.KQi);
-          com.tencent.mm.kernel.g.aAh().azQ().set(33, params.KQv);
-          localObject = Util.encodeHexString(com.tencent.mm.kernel.g.aAf().azh().Aj(new p(params.KQu).longValue()));
+          com.tencent.mm.am.d.f(paramInt1, 3);
+          h.aHG().aHp().i(32, params.RRg);
+          h.aHG().aHp().i(33, params.RRt);
+          localObject = Util.encodeHexString(h.aHE().aGC().Gr(new p(params.RRs).longValue()));
           Log.i("MicroMsg.NetSceneBindQQ", "onGYNetEnd wtret:%b newa2key:%s ", new Object[] { Boolean.valueOf(bool1), Util.secPrint((String)localObject) });
-          com.tencent.mm.kernel.g.aAh().azQ().set(72, localObject);
-          com.tencent.mm.kernel.g.aAh().azQ().set(46, Util.encodeHexString(com.tencent.mm.platformtools.z.a(paramArrayOfByte.KLh)));
-          localObject = Util.encodeHexString(com.tencent.mm.platformtools.z.a(params.KQA));
-          com.tencent.mm.kernel.g.aAh().azQ().set(47, localObject);
-          com.tencent.mm.kernel.g.aAh().hqB.set(18, localObject);
-          com.tencent.mm.kernel.g.aAh().azQ().set(-1535680990, paramArrayOfByte.KQE);
+          h.aHG().aHp().i(72, localObject);
+          h.aHG().aHp().i(46, Util.encodeHexString(com.tencent.mm.platformtools.z.a(paramArrayOfByte.RMd)));
+          localObject = Util.encodeHexString(com.tencent.mm.platformtools.z.a(params.RRy));
+          h.aHG().aHp().i(47, localObject);
+          h.aHG().kcw.i(18, localObject);
+          h.aHG().aHp().i(-1535680990, paramArrayOfByte.RRC);
         }
       }
       for (;;)
       {
         paramInt1 = paramInt3;
-        if (params.KQy == 3)
+        if (params.RRw == 3)
         {
           paramInt1 = paramInt3;
           if (paramInt3 == -3)
@@ -173,8 +174,8 @@ public final class b
         break;
         if (paramInt2 == 4)
         {
-          com.tencent.mm.kernel.g.aAh().azQ().set(32, "");
-          com.tencent.mm.kernel.g.aAh().azQ().set(33, "");
+          h.aHG().aHp().i(32, "");
+          h.aHG().aHp().i(33, "");
         }
       }
     }
@@ -182,7 +183,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.a.b
  * JD-Core Version:    0.7.0.1
  */

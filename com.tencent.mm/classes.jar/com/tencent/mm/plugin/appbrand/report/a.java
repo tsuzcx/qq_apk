@@ -2,12 +2,14 @@ package com.tencent.mm.plugin.appbrand.report;
 
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.b;
-import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.ipcinvoker.c;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.m;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.ep;
-import com.tencent.mm.protocal.protobuf.eq;
+import com.tencent.mm.protocal.protobuf.em;
+import com.tencent.mm.protocal.protobuf.en;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MMHandler.Callback;
@@ -18,104 +20,105 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandCrossProcessSafeReporter;", "", "()V", "DEFAULT_REPORT_INTERVAL", "", "H", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "MSG_REPORT", "", "TAG", "", "reportCacheList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/AppBrandCrossProcessKVReportStruct;", "kvStat", "", "logID", "vals", "", "(I[Ljava/lang/Object;)V", "isReportNow", "", "isImportant", "ignoreFreqLimit", "(IZZZ[Ljava/lang/Object;)V", "reportAll", "sync", "reportIPC", "Lcom/tencent/mm/protocal/protobuf/AppBrandCrossProcessKVReportListStruct;", "reportMM", "scene", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandCrossProcessSafeReporter;", "", "()V", "DEFAULT_REPORT_INTERVAL", "", "H", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "MSG_REPORT", "", "TAG", "", "reportCacheList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/AppBrandCrossProcessKVReportStruct;", "kvStat", "", "logID", "vals", "", "(I[Ljava/lang/Object;)V", "kvStatFull", "type", "isReportNow", "", "isImportant", "ignoreFreqLimit", "kvStatWithType", "(II[Ljava/lang/Object;)V", "reportAll", "sync", "reportIPC", "Lcom/tencent/mm/protocal/protobuf/AppBrandCrossProcessKVReportListStruct;", "reportMM", "scene", "plugin-appbrand-integration_release"})
 public final class a
 {
-  private static final MMHandler mQp;
-  private static final LinkedList<eq> nFV;
-  private static final int nFW;
-  public static final a nFX;
+  private static final MMHandler pRi;
+  private static final LinkedList<en> qIh;
+  private static final int qIi;
+  public static final a qIj;
   
   static
   {
     AppMethodBeat.i(51002);
     a locala = new a();
-    nFX = locala;
-    nFV = new LinkedList();
-    nFW = locala.hashCode();
-    mQp = new MMHandler("AppBrandCrossProcessSafeReporter$H", (MMHandler.Callback)a.nFY);
+    qIj = locala;
+    qIh = new LinkedList();
+    qIi = locala.hashCode();
+    pRi = new MMHandler("AppBrandCrossProcessSafeReporter$H", (MMHandler.Callback)a.qIk);
     AppMethodBeat.o(51002);
   }
   
-  public static void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, Object... paramVarArgs)
+  public static void a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
   {
-    AppMethodBeat.i(229294);
-    p.h(paramVarArgs, "vals");
+    AppMethodBeat.i(274304);
+    p.k(paramString, "vals");
     if (MMApplicationContext.isMainProcess())
     {
-      localObject = h.CyF;
-      paramVarArgs = h.u(Arrays.copyOf(paramVarArgs, paramVarArgs.length));
-      localObject = h.CyF;
-      h.c(paramInt, paramVarArgs, paramBoolean1, paramBoolean3);
-      AppMethodBeat.o(229294);
+      if (Log.getLogLevel() <= 1) {
+        Log.d("MicroMsg.AppBrandCrossProcessSafeReporter", "kvStatFull(mm-direct): logID:" + paramInt1 + ", type:" + paramInt2 + ", val:" + paramString);
+      }
+      localObject = h.IzE;
+      h.c(paramInt1, paramInt2, paramString, paramBoolean1, paramBoolean3);
+      AppMethodBeat.o(274304);
       return;
     }
     Object localObject = null;
-    synchronized (nFV)
+    synchronized (qIh)
     {
-      LinkedList localLinkedList2 = nFV;
-      eq localeq = new eq();
-      localeq.KAy = paramInt;
-      h localh = h.CyF;
-      localeq.value = h.u(Arrays.copyOf(paramVarArgs, paramVarArgs.length));
-      localeq.Cyr = paramBoolean1;
-      localeq.CxY = paramBoolean2;
-      localeq.Cys = paramBoolean3;
-      localLinkedList2.add(localeq);
-      paramVarArgs = (Object[])localObject;
-      if (nFV.size() >= 1000)
+      LinkedList localLinkedList2 = qIh;
+      en localen = new en();
+      localen.RCo = paramInt1;
+      localen.value = paramString;
+      localen.Izq = paramBoolean1;
+      localen.IyX = paramBoolean2;
+      localen.Izr = paramBoolean3;
+      localen.type = paramInt2;
+      localLinkedList2.add(localen);
+      paramString = (String)localObject;
+      if (qIh.size() >= 1000)
       {
-        paramVarArgs = new ep();
-        paramVarArgs.gCs.addAll((Collection)nFV);
-        nFV.clear();
+        paramString = new em();
+        paramString.jmy.addAll((Collection)qIh);
+        qIh.clear();
       }
-      localObject = x.SXb;
-      if ((paramVarArgs != null) && (a(paramVarArgs, false) == true))
+      localObject = x.aazN;
+      if ((paramString != null) && (a(paramString, false) == true))
       {
-        mQp.removeMessages(nFW);
-        mQp.sendEmptyMessageDelayed(nFW, 10000L);
-        AppMethodBeat.o(229294);
+        pRi.removeMessages(qIi);
+        pRi.sendEmptyMessageDelayed(qIi, 10000L);
+        AppMethodBeat.o(274304);
         return;
       }
     }
-    if (!mQp.hasMessages(nFW)) {
-      mQp.sendEmptyMessageDelayed(nFW, 10000L);
+    if (!pRi.hasMessages(qIi)) {
+      pRi.sendEmptyMessageDelayed(qIi, 10000L);
     }
-    AppMethodBeat.o(229294);
+    AppMethodBeat.o(274304);
   }
   
-  private static boolean a(ep paramep, boolean paramBoolean)
+  private static boolean a(em paramem, boolean paramBoolean)
   {
-    AppMethodBeat.i(229293);
-    Collection localCollection = (Collection)paramep.gCs;
+    AppMethodBeat.i(274303);
+    Collection localCollection = (Collection)paramem.jmy;
     if ((localCollection == null) || (localCollection.isEmpty())) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(229293);
+      AppMethodBeat.o(274303);
       return false;
     }
     if (paramBoolean) {
-      com.tencent.mm.ipcinvoker.wx_extension.b.a.a(paramep, (k)b.nFZ);
+      com.tencent.mm.ipcinvoker.wx_extension.b.a.a(paramem, (m)b.qIl);
     }
     for (;;)
     {
-      AppMethodBeat.o(229293);
+      AppMethodBeat.o(274303);
       return true;
-      com.tencent.mm.ipcinvoker.wx_extension.b.a.a(paramep, (b)c.nGa, null);
+      com.tencent.mm.ipcinvoker.wx_extension.b.a.a(paramem, (d)c.qIm, null);
     }
   }
   
-  public static final void iA(boolean paramBoolean)
+  public static final void jy(boolean paramBoolean)
   {
-    AppMethodBeat.i(229291);
-    synchronized (nFV)
+    AppMethodBeat.i(274301);
+    synchronized (qIh)
     {
-      ep localep = new ep();
-      localep.gCs.addAll((Collection)nFV);
-      nFV.clear();
-      x localx = x.SXb;
-      a(localep, paramBoolean);
-      AppMethodBeat.o(229291);
+      em localem = new em();
+      localem.jmy.addAll((Collection)qIh);
+      qIh.clear();
+      x localx = x.aazN;
+      a(localem, paramBoolean);
+      AppMethodBeat.o(274301);
       return;
     }
   }
@@ -123,68 +126,71 @@ public final class a
   public final void a(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(51001);
-    p.h(paramVarArgs, "vals");
-    a(paramInt, false, false, false, Arrays.copyOf(paramVarArgs, paramVarArgs.length));
+    p.k(paramVarArgs, "vals");
+    h localh = h.IzE;
+    paramVarArgs = h.u(Arrays.copyOf(paramVarArgs, paramVarArgs.length));
+    p.j(paramVarArgs, "ReportManager.INSTANCE.g…StringFromMutilObj(*vals)");
+    a(paramInt, 0, false, false, false, paramVarArgs);
     AppMethodBeat.o(51001);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/os/Message;", "kotlin.jvm.PlatformType", "handleMessage"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/os/Message;", "kotlin.jvm.PlatformType", "handleMessage"})
   static final class a
     implements MMHandler.Callback
   {
-    public static final a nFY;
+    public static final a qIk;
     
     static
     {
-      AppMethodBeat.i(229286);
-      nFY = new a();
-      AppMethodBeat.o(229286);
+      AppMethodBeat.i(276706);
+      qIk = new a();
+      AppMethodBeat.o(276706);
     }
     
     public final boolean handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(229285);
+      AppMethodBeat.i(276704);
       int i = paramMessage.what;
-      paramMessage = a.nFX;
-      if (i == a.bUf()) {
-        a.bUe();
+      paramMessage = a.qIj;
+      if (i == a.chl()) {
+        a.chk();
       }
-      AppMethodBeat.o(229285);
+      AppMethodBeat.o(276704);
       return true;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "data", "Lcom/tencent/mm/protocal/protobuf/AppBrandCrossProcessKVReportListStruct;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "data", "Lcom/tencent/mm/protocal/protobuf/AppBrandCrossProcessKVReportListStruct;", "invoke"})
   static final class b<InputType, ResultType>
-    implements k<ep, IPCVoid>
+    implements m<em, IPCVoid>
   {
-    public static final b nFZ;
+    public static final b qIl;
     
     static
     {
-      AppMethodBeat.i(229288);
-      nFZ = new b();
-      AppMethodBeat.o(229288);
+      AppMethodBeat.i(284242);
+      qIl = new b();
+      AppMethodBeat.o(284242);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "data", "Lcom/tencent/mm/protocal/protobuf/AppBrandCrossProcessKVReportListStruct;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "data", "Lcom/tencent/mm/protocal/protobuf/AppBrandCrossProcessKVReportListStruct;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
   static final class c<InputType, ResultType>
-    implements b<ep, IPCVoid>
+    implements c<em, IPCVoid>
   {
-    public static final c nGa;
+    public static final c qIm;
     
     static
     {
-      AppMethodBeat.i(229290);
-      nGa = new c();
-      AppMethodBeat.o(229290);
+      AppMethodBeat.i(274550);
+      qIm = new c();
+      AppMethodBeat.o(274550);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,6 +7,7 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.music.a.h;
 import com.tencent.mm.sdk.platformtools.ClipboardHelper;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -19,25 +20,25 @@ final class LyricView$a
   
   public final boolean onContextClick(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(219872);
+    AppMethodBeat.i(259767);
     b localb = new b();
-    localb.bm(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/music/ui/LyricView$LongClickGestureDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+    localb.bn(paramMotionEvent);
+    a.c("com/tencent/mm/plugin/music/ui/LyricView$LongClickGestureDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
     boolean bool = super.onContextClick(paramMotionEvent);
     a.a(bool, this, "com/tencent/mm/plugin/music/ui/LyricView$LongClickGestureDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(219872);
+    AppMethodBeat.o(259767);
     return bool;
   }
   
   public final boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(219871);
+    AppMethodBeat.i(259766);
     b localb = new b();
-    localb.bm(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/music/ui/LyricView$LongClickGestureDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+    localb.bn(paramMotionEvent);
+    a.c("com/tencent/mm/plugin/music/ui/LyricView$LongClickGestureDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
     boolean bool = super.onDoubleTap(paramMotionEvent);
     a.a(bool, this, "com/tencent/mm/plugin/music/ui/LyricView$LongClickGestureDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(219871);
+    AppMethodBeat.o(259766);
     return bool;
   }
   
@@ -45,13 +46,13 @@ final class LyricView$a
   {
     AppMethodBeat.i(63181);
     b localb = new b();
-    localb.bm(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/music/ui/LyricView$LongClickGestureDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.axR());
-    paramMotionEvent = LyricView.a(this.Anc, paramMotionEvent.getX(), paramMotionEvent.getY());
+    localb.bn(paramMotionEvent);
+    a.c("com/tencent/mm/plugin/music/ui/LyricView$LongClickGestureDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
+    paramMotionEvent = LyricView.a(this.FUj, paramMotionEvent.getX(), paramMotionEvent.getY());
     if (!Util.isNullOrNil(paramMotionEvent))
     {
       ClipboardHelper.setText(MMApplicationContext.getContext(), "MicroMsg.Music", paramMotionEvent);
-      Toast.makeText(this.Anc.getContext(), this.Anc.getContext().getString(2131763328, new Object[] { paramMotionEvent }), 0).show();
+      Toast.makeText(this.FUj.getContext(), this.FUj.getContext().getString(a.h.music_clipboard_toast, new Object[] { paramMotionEvent }), 0).show();
     }
     for (;;)
     {
@@ -64,18 +65,18 @@ final class LyricView$a
   
   public final boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(219870);
+    AppMethodBeat.i(259765);
     b localb = new b();
-    localb.bm(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/music/ui/LyricView$LongClickGestureDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+    localb.bn(paramMotionEvent);
+    a.c("com/tencent/mm/plugin/music/ui/LyricView$LongClickGestureDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
     a.a(false, this, "com/tencent/mm/plugin/music/ui/LyricView$LongClickGestureDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(219870);
+    AppMethodBeat.o(259765);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.music.ui.LyricView.a
  * JD-Core Version:    0.7.0.1
  */

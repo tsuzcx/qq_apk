@@ -15,91 +15,91 @@ import android.view.ViewPropertyAnimator;
 import android.view.Window;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.b;
-import com.tencent.mm.ag.w;
-import com.tencent.mm.ag.w.a;
-import com.tencent.mm.av.r.a;
-import com.tencent.mm.g.b.a.li;
+import com.tencent.mm.f.b.a.oe;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.cl;
+import com.tencent.mm.model.cm;
 import com.tencent.mm.plugin.websearch.api.ar;
+import com.tencent.mm.plugin.websearch.ui.a.c;
+import com.tencent.mm.plugin.websearch.ui.a.d;
+import com.tencent.mm.plugin.websearch.ui.a.f;
+import com.tencent.mm.plugin.websearch.ui.a.g;
 import com.tencent.mm.plugin.websearch.webview.WebSearchWebView;
-import com.tencent.mm.protocal.protobuf.buv;
-import com.tencent.mm.protocal.protobuf.dsr;
-import com.tencent.mm.protocal.protobuf.dsu;
-import com.tencent.mm.protocal.protobuf.egj;
-import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.protocal.protobuf.ccn;
+import com.tencent.mm.protocal.protobuf.ecn;
+import com.tencent.mm.protocal.protobuf.eql;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.base.s;
 import com.tencent.mm.ui.search.FTSEditTextView;
 import kotlin.g.b.p;
+import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/websearch/tagsearch/ui/TagSearchDialog;", "Landroid/support/v7/app/AppCompatDialog;", "context", "Landroid/content/Context;", "homeContext", "Lcom/tencent/mm/protocal/protobuf/TagSearchHomeContext;", "listener", "Lcom/tencent/mm/plugin/websearch/tagsearch/ui/ITagSearchDialogListener;", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/TagSearchHomeContext;Lcom/tencent/mm/plugin/websearch/tagsearch/ui/ITagSearchDialogListener;)V", "TAG", "", "dialogView", "Landroid/view/View;", "getHomeContext", "()Lcom/tencent/mm/protocal/protobuf/TagSearchHomeContext;", "setHomeContext", "(Lcom/tencent/mm/protocal/protobuf/TagSearchHomeContext;)V", "getListener", "()Lcom/tencent/mm/plugin/websearch/tagsearch/ui/ITagSearchDialogListener;", "mainTab", "Lcom/tencent/mm/plugin/websearch/tagsearch/ui/TagSearchMainTab;", "moreTab", "Lcom/tencent/mm/plugin/websearch/tagsearch/ui/TagSearchMoreTab;", "moreTabShow", "", "progressDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "initContentView", "", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onEndSearchShareCgi", "shareContent", "Lcom/tencent/mm/protocal/protobuf/GetSearchShareResponse;", "cropBitmap", "Landroid/graphics/Bitmap;", "query", "onSharedEnd", "onStartSearchShareCgi", "id", "share", "startMoreTab", "moreContext", "ui-websearch_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/websearch/tagsearch/ui/TagSearchDialog;", "Landroidx/appcompat/app/AppCompatDialog;", "context", "Landroid/content/Context;", "homeContext", "Lcom/tencent/mm/protocal/protobuf/TagSearchHomeContext;", "listener", "Lcom/tencent/mm/plugin/websearch/tagsearch/ui/ITagSearchDialogListener;", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/TagSearchHomeContext;Lcom/tencent/mm/plugin/websearch/tagsearch/ui/ITagSearchDialogListener;)V", "TAG", "", "dialogView", "Landroid/view/View;", "getHomeContext", "()Lcom/tencent/mm/protocal/protobuf/TagSearchHomeContext;", "setHomeContext", "(Lcom/tencent/mm/protocal/protobuf/TagSearchHomeContext;)V", "getListener", "()Lcom/tencent/mm/plugin/websearch/tagsearch/ui/ITagSearchDialogListener;", "mainTab", "Lcom/tencent/mm/plugin/websearch/tagsearch/ui/TagSearchMainTab;", "moreTab", "Lcom/tencent/mm/plugin/websearch/tagsearch/ui/TagSearchMoreTab;", "moreTabShow", "", "progressDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "initContentView", "", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onEndSearchShareCgi", "shareContent", "Lcom/tencent/mm/protocal/protobuf/GetSearchShareResponse;", "cropBitmap", "Landroid/graphics/Bitmap;", "query", "onSharedEnd", "onStartSearchShareCgi", "id", "share", "startMoreTab", "moreContext", "ui-websearch_release"})
 public final class c
-  extends android.support.v7.app.e
+  extends androidx.appcompat.app.e
 {
-  private boolean IGd;
-  private d IGe;
-  private e IGf;
-  egj IGg;
-  final a IGh;
+  private boolean PAu;
+  private d PAv;
+  private e PAw;
+  eql PAx;
+  final a PAy;
   private final String TAG;
-  private com.tencent.mm.ui.base.q gut;
-  private View jBV;
+  private s iYE;
+  private View mrQ;
   
-  public c(Context paramContext, egj paramegj, a parama)
+  public c(Context paramContext, eql parameql, a parama)
   {
-    super(paramContext, 2131821351);
-    AppMethodBeat.i(197968);
-    this.IGg = paramegj;
-    this.IGh = parama;
+    super(paramContext, a.g.TagSearchDialog);
+    AppMethodBeat.i(198916);
+    this.PAx = parameql;
+    this.PAy = parama;
     this.TAG = "MicroMsg.WebSearch.TagSearchDialog";
-    AppMethodBeat.o(197968);
+    AppMethodBeat.o(198916);
   }
   
-  public final void a(final buv parambuv, final Bitmap paramBitmap, final String paramString)
+  public final void a(ccn paramccn, Bitmap paramBitmap, String paramString)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(197965);
-    p.h(parambuv, "shareContent");
+    AppMethodBeat.i(198909);
+    p.k(paramccn, "shareContent");
     String str = this.TAG;
-    StringBuilder localStringBuilder = new StringBuilder("onSearchShare BusinessType:").append(parambuv.Mbc.xMB).append(" SubType:").append(parambuv.Mbc.MJT).append(' ').append("BrandFeed:");
-    if (parambuv.Mbd != null)
+    StringBuilder localStringBuilder = new StringBuilder("onSearchShare BusinessType:").append(paramccn.Tkz.CQK).append(" SubType:").append(paramccn.Tkz.TVM).append(' ').append("BrandFeed:");
+    if (paramccn.TkA != null)
     {
       bool1 = true;
       localStringBuilder = localStringBuilder.append(bool1).append(" WeappFeed:");
-      if (parambuv.Mbf == null) {
+      if (paramccn.TkC == null) {
         break label275;
       }
       bool1 = true;
       label100:
       localStringBuilder = localStringBuilder.append(bool1).append(" WeappProfile:");
-      if (parambuv.Mbg == null) {
+      if (paramccn.TkD == null) {
         break label281;
       }
       bool1 = true;
       label124:
       localStringBuilder = localStringBuilder.append(bool1).append(' ').append("BrandProfile:");
-      if (parambuv.Mbe == null) {
+      if (paramccn.TkB == null) {
         break label287;
       }
       bool1 = true;
       label153:
       localStringBuilder = localStringBuilder.append(bool1).append(" FinderFeed:");
-      if (parambuv.Mbi == null) {
+      if (paramccn.TkF == null) {
         break label293;
       }
       bool1 = true;
       label177:
       localStringBuilder = localStringBuilder.append(bool1).append(" FinderProfile:");
-      if (parambuv.Mbh == null) {
+      if (paramccn.TkE == null) {
         break label299;
       }
       bool1 = true;
       label201:
       localStringBuilder = localStringBuilder.append(bool1).append(' ').append("Emoticon:");
-      if (parambuv.Mbj == null) {
+      if (paramccn.TkG == null) {
         break label305;
       }
     }
@@ -112,8 +112,8 @@ public final class c
     for (boolean bool1 = bool2;; bool1 = false)
     {
       Log.i(str, bool1);
-      com.tencent.mm.ac.d.h((kotlin.g.a.a)new d(this, parambuv, paramBitmap, paramString));
-      AppMethodBeat.o(197965);
+      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new c.d(this, paramccn, paramBitmap, paramString));
+      AppMethodBeat.o(198909);
       return;
       bool1 = false;
       break;
@@ -130,101 +130,101 @@ public final class c
     }
   }
   
-  public final void a(buv parambuv, String paramString)
+  public final void a(ccn paramccn, String paramString)
   {
     long l = 2L;
-    AppMethodBeat.i(197966);
-    p.h(parambuv, "shareContent");
-    Object localObject = this.gut;
+    AppMethodBeat.i(198910);
+    p.k(paramccn, "shareContent");
+    Object localObject = this.iYE;
     if (localObject != null) {
-      ((com.tencent.mm.ui.base.q)localObject).dismiss();
+      ((s)localObject).dismiss();
     }
-    this.IGh.a(parambuv);
+    this.PAy.a(paramccn);
     dismiss();
-    li localli = new li();
-    localli.uN(cl.aWB());
-    localli.uM(2L);
-    localli.aiA();
+    oe localoe = new oe();
+    localoe.AC(cm.bfF());
+    localoe.AB(2L);
+    localoe.aod();
     localObject = paramString;
     if (paramString == null) {
       localObject = "";
     }
-    localli.yx((String)localObject);
-    if (ab.Eq(this.IGg.talker)) {}
+    localoe.EV((String)localObject);
+    if (ab.Lj(this.PAx.talker)) {}
     for (;;)
     {
-      localli.uO(l);
-      localli.yy(this.IGg.talker);
-      localObject = parambuv.Mbc.SessionId;
+      localoe.AD(l);
+      localoe.EW(this.PAx.talker);
+      localObject = paramccn.Tkz.SessionId;
       paramString = (String)localObject;
       if (localObject == null) {
         paramString = "";
       }
-      localli.yz(paramString);
-      localObject = parambuv.Mbc.Mbb;
+      localoe.EX(paramString);
+      localObject = paramccn.Tkz.Tky;
       paramString = (String)localObject;
       if (localObject == null) {
         paramString = "";
       }
-      localli.yA(paramString);
-      localObject = parambuv.Mbc.Mba;
+      localoe.EY(paramString);
+      localObject = paramccn.Tkz.Tkx;
       paramString = (String)localObject;
       if (localObject == null) {
         paramString = "";
       }
-      localli.yB(paramString);
-      localObject = parambuv.Mbc.MUT;
+      localoe.EZ(paramString);
+      localObject = paramccn.Tkz.Uhd;
       paramString = (String)localObject;
       if (localObject == null) {
         paramString = "";
       }
-      localli.yC(paramString);
-      localli.uQ(parambuv.Mbc.MJT);
-      localli.uP(parambuv.Mbc.xMB);
-      localli.bfK();
-      ar.a((com.tencent.mm.plugin.report.a)localli);
-      AppMethodBeat.o(197966);
+      localoe.Fa(paramString);
+      localoe.AF(paramccn.Tkz.TVM);
+      localoe.AE(paramccn.Tkz.CQK);
+      localoe.bpa();
+      ar.a((com.tencent.mm.plugin.report.a)localoe);
+      AppMethodBeat.o(198910);
       return;
       l = 1L;
     }
   }
   
-  public final void aXn(String paramString)
+  public final void biY(String paramString)
   {
-    AppMethodBeat.i(197964);
-    p.h(paramString, "id");
-    if (this.gut == null) {
-      this.gut = com.tencent.mm.ui.base.q.a(getContext(), (CharSequence)getContext().getString(2131762446), true, 0, (DialogInterface.OnCancelListener)new e(this));
+    AppMethodBeat.i(198904);
+    p.k(paramString, "id");
+    if (this.iYE == null) {
+      this.iYE = s.a(getContext(), (CharSequence)getContext().getString(a.f.loading_tips), true, 0, (DialogInterface.OnCancelListener)new e(this));
     }
-    paramString = this.gut;
+    paramString = this.iYE;
     if (paramString != null)
     {
       if (!paramString.isShowing()) {
         paramString.show();
       }
-      AppMethodBeat.o(197964);
+      AppMethodBeat.o(198904);
       return;
     }
-    AppMethodBeat.o(197964);
+    AppMethodBeat.o(198904);
   }
   
   public final void onBackPressed()
   {
-    AppMethodBeat.i(197967);
-    if (this.IGd)
+    AppMethodBeat.i(198915);
+    if (this.PAu)
     {
-      Object localObject = this.jBV;
+      Object localObject = this.mrQ;
       if (localObject != null)
       {
-        localObject = (TextView)((View)localObject).findViewById(2131309249);
+        localObject = (TextView)((View)localObject).findViewById(a.c.title_tv);
         if (localObject != null) {
-          ((TextView)localObject).setText(2131766605);
+          ((TextView)localObject).setText(a.f.tag_search_title);
         }
       }
-      localObject = this.jBV;
+      localObject = this.mrQ;
       if (localObject != null)
       {
-        localObject = ((View)localObject).findViewById(2131298770);
+        localObject = ((View)localObject).findViewById(a.c.close_btn);
         if (localObject != null)
         {
           localObject = ((View)localObject).animate();
@@ -241,23 +241,23 @@ public final class c
           }
         }
       }
-      localObject = this.IGf;
+      localObject = this.PAw;
       if (localObject != null)
       {
-        int i = com.tencent.mm.cb.a.jn(((e)localObject).getActivityContext());
-        ((e)localObject).IGv.animate().translationX(i).setDuration(300L).start();
+        int i = com.tencent.mm.ci.a.kr(((e)localObject).getActivityContext());
+        ((e)localObject).PAM.animate().translationX(i).setDuration(300L).start();
       }
-      this.IGd = false;
-      AppMethodBeat.o(197967);
+      this.PAu = false;
+      AppMethodBeat.o(198915);
       return;
     }
     dismiss();
-    AppMethodBeat.o(197967);
+    AppMethodBeat.o(198915);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(197963);
+    AppMethodBeat.i(198900);
     super.onCreate(paramBundle);
     paramBundle = getWindow();
     if (paramBundle != null) {
@@ -273,21 +273,21 @@ public final class c
     }
     paramBundle = getWindow();
     if (paramBundle != null) {
-      paramBundle.setWindowAnimations(2131820793);
+      paramBundle.setWindowAnimations(a.g.BottomToTopSlowAnimation);
     }
-    paramBundle = LayoutInflater.from(getContext()).inflate(2131496644, null, false);
-    p.g(paramBundle, "LayoutInflater.from(cont…arch_dialog, null, false)");
+    paramBundle = LayoutInflater.from(getContext()).inflate(a.d.tag_search_dialog, null, false);
+    p.j(paramBundle, "LayoutInflater.from(cont…arch_dialog, null, false)");
     setContentView(paramBundle, new ViewGroup.LayoutParams(-1, -1));
-    paramBundle.findViewById(2131300079).setOnTouchListener((View.OnTouchListener)new c.a(this));
-    paramBundle.findViewById(2131298770).setOnClickListener((View.OnClickListener)new c.b(this));
-    this.IGe = new d(this, this.IGg, this.IGh, paramBundle);
+    paramBundle.findViewById(a.c.empty_area_view).setOnTouchListener((View.OnTouchListener)new c.a(this));
+    paramBundle.findViewById(a.c.close_btn).setOnClickListener((View.OnClickListener)new c.b(this));
+    this.PAv = new d(this, this.PAx, this.PAy, paramBundle);
     setOnDismissListener((DialogInterface.OnDismissListener)new c(this));
     setCancelable(true);
-    this.jBV = paramBundle;
-    AppMethodBeat.o(197963);
+    this.mrQ = paramBundle;
+    AppMethodBeat.o(198900);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
   static final class c
     implements DialogInterface.OnDismissListener
   {
@@ -295,42 +295,31 @@ public final class c
     
     public final void onDismiss(DialogInterface paramDialogInterface)
     {
-      AppMethodBeat.i(197958);
-      paramDialogInterface = c.a(this.IGi);
+      AppMethodBeat.i(198320);
+      paramDialogInterface = c.a(this.PAz);
       if (paramDialogInterface != null)
       {
         Log.i(paramDialogInterface.TAG, "dismiss dialog");
-        paramDialogInterface.IGg.dDv = paramDialogInterface.IGp.getInEditTextQuery();
-        paramDialogInterface.IGh.onDismiss();
-        paramDialogInterface.IGr.destroy();
-        paramDialogInterface.IGs.removeJavascriptInterface("tagWebSearchJSApi");
-        paramDialogInterface.IGs.destroy();
+        paramDialogInterface.PAx.fwe = paramDialogInterface.PAG.getInEditTextQuery();
+        paramDialogInterface.PAy.onDismiss();
+        paramDialogInterface.PAI.destroy();
+        paramDialogInterface.PAJ.removeJavascriptInterface("tagWebSearchJSApi");
+        paramDialogInterface.PAJ.destroy();
       }
-      paramDialogInterface = c.b(this.IGi);
+      paramDialogInterface = c.b(this.PAz);
       if (paramDialogInterface != null)
       {
-        paramDialogInterface.IGr.destroy();
-        paramDialogInterface.IGs.removeJavascriptInterface("tagWebSearchJSApi");
-        paramDialogInterface.IGs.destroy();
-        AppMethodBeat.o(197958);
+        paramDialogInterface.PAI.destroy();
+        paramDialogInterface.PAJ.removeJavascriptInterface("tagWebSearchJSApi");
+        paramDialogInterface.PAJ.destroy();
+        AppMethodBeat.o(198320);
         return;
       }
-      AppMethodBeat.o(197958);
+      AppMethodBeat.o(198320);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
-  static final class d
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
-  {
-    d(c paramc, buv parambuv, Bitmap paramBitmap, String paramString)
-    {
-      super();
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
   static final class e
     implements DialogInterface.OnCancelListener
   {
@@ -338,52 +327,36 @@ public final class c
     
     public final void onCancel(DialogInterface paramDialogInterface)
     {
-      AppMethodBeat.i(197960);
-      paramDialogInterface = c.a(this.IGi);
+      AppMethodBeat.i(198505);
+      paramDialogInterface = c.a(this.PAz);
       if (paramDialogInterface != null)
       {
-        paramDialogInterface = paramDialogInterface.IGr;
+        paramDialogInterface = paramDialogInterface.PAI;
         if (paramDialogInterface != null) {
-          paramDialogInterface.fYF();
+          paramDialogInterface.gRq();
         }
       }
-      paramDialogInterface = c.b(this.IGi);
+      paramDialogInterface = c.b(this.PAz);
       if (paramDialogInterface != null)
       {
-        paramDialogInterface = paramDialogInterface.IGr;
+        paramDialogInterface = paramDialogInterface.PAI;
         if (paramDialogInterface != null)
         {
-          paramDialogInterface.fYF();
-          AppMethodBeat.o(197960);
+          paramDialogInterface.gRq();
+          AppMethodBeat.o(198505);
           return;
         }
       }
-      AppMethodBeat.o(197960);
+      AppMethodBeat.o(198505);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "url", "", "kotlin.jvm.PlatformType", "bitmap", "Landroid/graphics/Bitmap;", "path", "onLoadImageEnd"})
-  static final class f
-    implements r.a
-  {
-    f(c paramc, k.b paramb, dsu paramdsu, buv parambuv, String paramString) {}
-    
-    public final void a(String paramString1, Bitmap paramBitmap, String paramString2)
-    {
-      AppMethodBeat.i(197961);
-      paramString1 = BitmapUtil.Bitmap2Bytes(paramBitmap);
-      w.a.aSz().a(this.IGl, this.IGm.hik, "", this.IGi.IGg.talker, "", paramString1);
-      this.IGi.a(this.IGj, this.IFW);
-      AppMethodBeat.o(197961);
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class g
-    extends kotlin.g.b.q
+    extends q
     implements kotlin.g.a.a<x>
   {
-    g(c paramc, egj paramegj)
+    g(c paramc, eql parameql)
     {
       super();
     }
@@ -391,7 +364,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.a.a.c
  * JD-Core Version:    0.7.0.1
  */

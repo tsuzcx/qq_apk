@@ -10,11 +10,7 @@ public abstract interface a
   
   public static abstract interface a
   {
-    public abstract void fZk();
-    
-    public abstract void fZl();
-    
-    public abstract void fZm();
+    public abstract void gRU();
     
     public abstract int getItemCount();
     
@@ -25,7 +21,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.view.footer.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,208 +1,60 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.content.SharedPreferences;
+import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.s.b.b;
-import com.tencent.mm.plugin.appbrand.s.d.b;
-import com.tencent.mm.plugin.appbrand.s.k.c;
-import com.tencent.mm.plugin.appbrand.u.c;
+import com.tencent.mm.b.p;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.appbrand.appstorage.ab;
+import com.tencent.mm.plugin.appbrand.appstorage.g;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.jsapi.file.av;
+import com.tencent.mm.plugin.appbrand.jsapi.r;
+import com.tencent.mm.plugin.appbrand.jsapi.storage.JsApiClearStorageTask;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class bd
 {
-  private static int kFW;
-  private static int kFX;
-  private static int kFY;
-  private static int kFZ;
-  private static k.c kGa;
-  private static k.c kGb;
-  private static d.b kGc;
-  private static b.b kGd;
-  
-  static
+  public static void a(t paramt, String paramString)
   {
-    AppMethodBeat.i(43996);
-    kFW = 1;
-    kFX = 2;
-    kFY = 3;
-    kFZ = 4;
-    kGa = new k.c()
-    {
-      public final boolean Uw(String paramAnonymousString)
-      {
-        AppMethodBeat.i(43986);
-        if (c.adj(paramAnonymousString))
-        {
-          Log.i("MicroMsg.WcWssSwitchLogic", "isWcWssOpen : true for hardcode case");
-          AppMethodBeat.o(43986);
-          return true;
-        }
-        boolean bool = bd.vF(bd.kFW);
-        AppMethodBeat.o(43986);
-        return bool;
-      }
-      
-      public final boolean btz()
-      {
-        AppMethodBeat.i(43987);
-        boolean bool = bd.vG(bd.kFW);
-        AppMethodBeat.o(43987);
-        return bool;
-      }
-    };
-    kGb = new k.c()
-    {
-      public final boolean Uw(String paramAnonymousString)
-      {
-        AppMethodBeat.i(43988);
-        boolean bool = bd.vF(bd.kFW);
-        AppMethodBeat.o(43988);
-        return bool;
-      }
-      
-      public final boolean btz()
-      {
-        AppMethodBeat.i(43989);
-        boolean bool = bd.vG(bd.kFW);
-        AppMethodBeat.o(43989);
-        return bool;
-      }
-    };
-    kGc = new d.b()
-    {
-      public final boolean btA()
-      {
-        AppMethodBeat.i(43990);
-        boolean bool = bd.vF(bd.kFX);
-        AppMethodBeat.o(43990);
-        return bool;
-      }
-      
-      public final boolean btB()
-      {
-        AppMethodBeat.i(226252);
-        boolean bool = bd.vF(bd.kFZ);
-        AppMethodBeat.o(226252);
-        return bool;
-      }
-      
-      public final boolean btz()
-      {
-        AppMethodBeat.i(43991);
-        boolean bool = bd.vG(bd.kFX);
-        AppMethodBeat.o(43991);
-        return bool;
-      }
-    };
-    kGd = new b.b()
-    {
-      public final boolean btA()
-      {
-        AppMethodBeat.i(43992);
-        boolean bool = bd.vF(bd.kFY);
-        AppMethodBeat.o(43992);
-        return bool;
-      }
-    };
-    AppMethodBeat.o(43996);
+    AppMethodBeat.i(282887);
+    a locala = new a();
+    HashMap localHashMap = new HashMap(1);
+    localHashMap.put("currentPath", paramString);
+    locala.D(localHashMap).i(paramt.bDA()).bPO();
+    AppMethodBeat.o(282887);
   }
   
-  public static k.c btv()
+  static void acf(String paramString)
   {
-    return kGa;
+    AppMethodBeat.i(180182);
+    ((com.tencent.luggage.sdk.customize.a)e.K(com.tencent.luggage.sdk.customize.a.class)).dX(paramString).aa(2, paramString);
+    AppMethodBeat.o(180182);
   }
   
-  public static k.c btw()
+  public static boolean s(t paramt)
   {
-    return kGb;
-  }
-  
-  public static d.b btx()
-  {
-    return kGc;
-  }
-  
-  public static b.b bty()
-  {
-    return kGd;
-  }
-  
-  private static Boolean vE(int paramInt)
-  {
-    AppMethodBeat.i(43993);
-    Object localObject;
-    if (paramInt == kFW)
+    AppMethodBeat.i(180181);
+    if (paramt.bDy().launchMode == 1)
     {
-      localObject = MMApplicationContext.getToolsProcesstPreference().getString("appbrandgame_open_wcwss", "");
-      if ((localObject != null) && (((String)localObject).equalsIgnoreCase("wcwss")))
-      {
-        localObject = Boolean.TRUE;
-        AppMethodBeat.o(43993);
-        return localObject;
-      }
-      if ((localObject != null) && (((String)localObject).equalsIgnoreCase("websocket")))
-      {
-        localObject = Boolean.FALSE;
-        AppMethodBeat.o(43993);
-        return localObject;
-      }
+      AppMethodBeat.o(180181);
+      return true;
     }
-    else if (paramInt == kFX)
-    {
-      localObject = MMApplicationContext.getToolsProcesstPreference().getString("appbrandgame_open_cdnrequest", "");
-      if ((localObject != null) && (((String)localObject).equalsIgnoreCase("chromium")))
-      {
-        localObject = Boolean.TRUE;
-        AppMethodBeat.o(43993);
-        return localObject;
-      }
-      if ((localObject != null) && (((String)localObject).equalsIgnoreCase("request")))
-      {
-        localObject = Boolean.FALSE;
-        AppMethodBeat.o(43993);
-        return localObject;
-      }
-    }
-    else if (paramInt == kFY)
-    {
-      localObject = MMApplicationContext.getToolsProcesstPreference().getString("appbrandgame_open_cronetdownload", "");
-      if ((localObject != null) && (((String)localObject).equalsIgnoreCase("open")))
-      {
-        localObject = Boolean.TRUE;
-        AppMethodBeat.o(43993);
-        return localObject;
-      }
-      if ((localObject != null) && (((String)localObject).equalsIgnoreCase("close")))
-      {
-        localObject = Boolean.FALSE;
-        AppMethodBeat.o(43993);
-        return localObject;
-      }
-    }
-    else if (paramInt == kFZ)
-    {
-      localObject = MMApplicationContext.getToolsProcesstPreference().getString("appbrandgame_open_cdnrequest_httpdns", "");
-      if ((localObject != null) && (((String)localObject).equalsIgnoreCase("open")))
-      {
-        localObject = Boolean.TRUE;
-        AppMethodBeat.o(43993);
-        return localObject;
-      }
-      if ((localObject != null) && (((String)localObject).equalsIgnoreCase("close")))
-      {
-        localObject = Boolean.FALSE;
-        AppMethodBeat.o(43993);
-        return localObject;
-      }
-    }
-    AppMethodBeat.o(43993);
-    return null;
+    AppMethodBeat.o(180181);
+    return false;
+  }
+  
+  public static final class a
+    extends r
+  {
+    public static final int CTRL_INDEX = -2;
+    public static final String NAME = "onBottomBannerButtonClicked";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.bd
  * JD-Core Version:    0.7.0.1
  */

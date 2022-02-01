@@ -12,57 +12,57 @@ import com.tencent.mm.ui.MMActivity;
 
 public final class i
 {
-  private View jBN;
-  MMActivity pQZ;
-  View pXU;
-  TextView pXV;
-  TextView pXW;
-  private boolean pXX = false;
+  private View mrI;
+  MMActivity tmY;
+  View ttQ;
+  TextView ttR;
+  TextView ttS;
+  private boolean ttT = false;
   
   public i(MMActivity paramMMActivity, View paramView)
   {
-    this.pQZ = paramMMActivity;
-    this.jBN = paramView;
+    this.tmY = paramMMActivity;
+    this.mrI = paramView;
   }
   
-  public final void cuX()
+  public final void cIz()
   {
     AppMethodBeat.i(113139);
-    this.pXU.setVisibility(8);
+    this.ttQ.setVisibility(8);
     AppMethodBeat.o(113139);
   }
   
   public final void updateView()
   {
     AppMethodBeat.i(113140);
-    Integer localInteger = (Integer)am.ctV().getValue("key_share_card_show_type");
+    Integer localInteger = (Integer)am.cHx().getValue("key_share_card_show_type");
     Object localObject = localInteger;
     if (localInteger == null) {
       localObject = Integer.valueOf(0);
     }
-    if ((((Integer)localObject).intValue() != 0) && (!b.cuz()))
+    if ((((Integer)localObject).intValue() != 0) && (!b.cIb()))
     {
-      this.pXU.setVisibility(0);
-      this.pXV.setVisibility(0);
+      this.ttQ.setVisibility(0);
+      this.ttR.setVisibility(0);
       localObject = new ShareCardInfo();
-      if (!TextUtils.isEmpty(((ShareCardInfo)localObject).Ee(10)))
+      if (!TextUtils.isEmpty(((ShareCardInfo)localObject).HF(10)))
       {
-        this.pXV.setVisibility(0);
-        this.pXV.setText(((ShareCardInfo)localObject).Ee(10));
+        this.ttR.setVisibility(0);
+        this.ttR.setText(((ShareCardInfo)localObject).HF(10));
       }
       while (!TextUtils.isEmpty(""))
       {
-        this.pXW.setVisibility(0);
-        this.pXW.setText("");
+        this.ttS.setVisibility(0);
+        this.ttS.setText("");
         AppMethodBeat.o(113140);
         return;
-        this.pXV.setVisibility(8);
+        this.ttR.setVisibility(8);
       }
-      this.pXW.setVisibility(8);
+      this.ttS.setVisibility(8);
       AppMethodBeat.o(113140);
       return;
     }
-    this.pXU.setVisibility(8);
+    this.ttQ.setVisibility(8);
     AppMethodBeat.o(113140);
   }
 }

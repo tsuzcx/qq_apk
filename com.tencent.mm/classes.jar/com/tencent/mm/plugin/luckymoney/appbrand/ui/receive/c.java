@@ -5,41 +5,41 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c.a;
+import com.tencent.mm.an.c.a;
 import com.tencent.mm.plugin.luckymoney.appbrand.ui.d.a;
 import com.tencent.mm.plugin.wallet_core.id_verify.util.RealnameGuideHelper;
-import com.tencent.mm.protocal.protobuf.cxg;
-import com.tencent.mm.protocal.protobuf.dju;
-import com.tencent.mm.protocal.protobuf.dkk;
+import com.tencent.mm.protocal.protobuf.dgq;
+import com.tencent.mm.protocal.protobuf.dtj;
+import com.tencent.mm.protocal.protobuf.dtz;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 
 public final class c
   implements a
 {
+  b Evp = null;
+  byte[] Evq;
+  dgq Evr;
+  public RealnameGuideHelper Evs;
   private String appId = null;
   int state = -1;
-  String yQE = null;
-  b yRr = null;
-  byte[] yRs;
-  cxg yRt;
-  public RealnameGuideHelper yRu;
+  String ybP = null;
   
-  final void aG(Intent paramIntent)
+  final void aE(Intent paramIntent)
   {
     AppMethodBeat.i(65022);
-    if (this.yRr == null)
+    if (this.Evp == null)
     {
       Log.e("MicroMsg.WxaReceiveLuckyMoneyLogic", "WxaGetLuckyMoneyLogic.fail ui == null");
       AppMethodBeat.o(65022);
       return;
     }
-    this.yRr.eeG();
-    this.yRr.f(0, paramIntent);
+    this.Evp.eOb();
+    this.Evp.f(0, paramIntent);
     AppMethodBeat.o(65022);
   }
   
-  public final void eeJ()
+  public final void eOe()
   {
     AppMethodBeat.i(65020);
     if (this.state != 0)
@@ -48,72 +48,72 @@ public final class c
       AppMethodBeat.o(65020);
       return;
     }
-    if (this.yRr == null)
+    if (this.Evp == null)
     {
       Log.i("MicroMsg.WxaReceiveLuckyMoneyLogic", "openLuckyMoney ui == null");
       AppMethodBeat.o(65020);
       return;
     }
-    new com.tencent.mm.plugin.luckymoney.appbrand.a.b(this.appId, this.yQE, this.yRs).b(new com.tencent.mm.vending.c.a()
+    new com.tencent.mm.plugin.luckymoney.appbrand.a.b(this.appId, this.ybP, this.Evq).b(new com.tencent.mm.vending.c.a()
     {
-      private Void a(c.a<cxg> paramAnonymousa)
+      private Void a(c.a<dgq> paramAnonymousa)
       {
         AppMethodBeat.i(182453);
         if ((paramAnonymousa.errType == 0) && (paramAnonymousa.errCode == 0))
         {
           Log.i("MicroMsg.WxaReceiveLuckyMoneyLogic", "CgiOpenWxaHB success");
-          if (((cxg)paramAnonymousa.iLC).MBD != 0)
+          if (((dgq)paramAnonymousa.lBJ).TNk != 0)
           {
-            Log.e("MicroMsg.WxaReceiveLuckyMoneyLogic", "CgiOpenWxaHB error wxahb_status = [%d] errorwording = [%s]", new Object[] { Integer.valueOf(((cxg)paramAnonymousa.iLC).MBD), ((cxg)paramAnonymousa.iLC).MBO });
+            Log.e("MicroMsg.WxaReceiveLuckyMoneyLogic", "CgiOpenWxaHB error wxahb_status = [%d] errorwording = [%s]", new Object[] { Integer.valueOf(((dgq)paramAnonymousa.lBJ).TNk), ((dgq)paramAnonymousa.lBJ).TNu });
             localc = c.this;
-            int i = ((cxg)paramAnonymousa.iLC).MBD;
+            int i = ((dgq)paramAnonymousa.lBJ).TNk;
             switch (i)
             {
             default: 
-              localc.aG(new Intent().putExtra("result_error_code", -1).putExtra("result_error_msg", "fail:system error {{unknow open retun errCode:" + i + "}"));
+              localc.aE(new Intent().putExtra("result_error_code", -1).putExtra("result_error_msg", "fail:system error {{unknow open retun errCode:" + i + "}"));
             }
             for (;;)
             {
               AppMethodBeat.o(182453);
               return null;
-              localc.aG(new Intent().putExtra("result_error_code", 20001).putExtra("result_error_msg", "fail:the red packet is expired"));
+              localc.aE(new Intent().putExtra("result_error_code", 20001).putExtra("result_error_msg", "fail:the red packet is expired"));
               continue;
-              localc.aG(new Intent().putExtra("result_error_code", 20002).putExtra("result_error_msg", "fail:the red packet has been received completly"));
+              localc.aE(new Intent().putExtra("result_error_code", 20002).putExtra("result_error_msg", "fail:the red packet has been received completly"));
               continue;
-              localc.aG(new Intent().putExtra("result_error_code", 20003).putExtra("result_error_msg", "fail:risk control"));
+              localc.aE(new Intent().putExtra("result_error_code", 20003).putExtra("result_error_msg", "fail:risk control"));
             }
           }
           c localc = c.this;
-          paramAnonymousa = (cxg)paramAnonymousa.iLC;
-          if (localc.yRr == null) {
+          paramAnonymousa = (dgq)paramAnonymousa.lBJ;
+          if (localc.Evp == null) {
             Log.i("MicroMsg.WxaReceiveLuckyMoneyLogic", "WxaGetLuckyMoneyLogic.CgiOpenWxaHB end. ui == null");
           }
           for (;;)
           {
             AppMethodBeat.o(182453);
             return null;
-            localc.yRt = paramAnonymousa;
-            localc.yRr.eeL();
-            if (localc.yRt.LgT != null)
+            localc.Evr = paramAnonymousa;
+            localc.Evp.eOg();
+            if (localc.Evr.Sih != null)
             {
-              localc.yRu = new RealnameGuideHelper();
-              localc.yRu.b(String.valueOf(localc.yRt.LgT.KCl), localc.yRt.LgT.yXJ, localc.yRt.LgT.lHA, localc.yRt.LgT.lHB, localc.yRt.LgT.yXK, 1003);
-              paramAnonymousa = localc.yRu;
+              localc.Evs = new RealnameGuideHelper();
+              localc.Evs.a(String.valueOf(localc.Evr.Sih.REc), localc.Evr.Sih.EBN, localc.Evr.Sih.oDJ, localc.Evr.Sih.oDK, localc.Evr.Sih.EBO, 1003);
+              paramAnonymousa = localc.Evs;
               Bundle localBundle = new Bundle();
               localBundle.putString("realname_verify_process_jump_activity", ".appbrand.ui.receive.WxaLuckyMoneyReceiveUI");
               localBundle.putString("realname_verify_process_jump_plugin", "luckymoney");
-              if (!paramAnonymousa.b(localc.yRr.eeF(), localBundle, new c.4(localc))) {
-                localc.aG(new Intent().putExtra("result_error_code", -1).putExtra("result_error_msg", "fail:system error {{launch realname fail}}"));
+              if (!paramAnonymousa.b(localc.Evp.eOa(), localBundle, new c.4(localc))) {
+                localc.aE(new Intent().putExtra("result_error_code", -1).putExtra("result_error_msg", "fail:system error {{launch realname fail}}"));
               }
             }
             else
             {
-              localc.eeO();
+              localc.eOj();
             }
           }
         }
         Log.e("MicroMsg.WxaReceiveLuckyMoneyLogic", "CgiOpenWxaHB failed [%d, %d, %s]", new Object[] { Integer.valueOf(paramAnonymousa.errType), Integer.valueOf(paramAnonymousa.errCode), paramAnonymousa.errMsg });
-        c.this.aG(new Intent().putExtra("result_error_code", -1).putExtra("result_error_msg", "fail:system error {{service error open errType = " + paramAnonymousa.errType + ",errCode" + paramAnonymousa.errCode + "}}"));
+        c.this.aE(new Intent().putExtra("result_error_code", -1).putExtra("result_error_msg", "fail:system error {{service error open errType = " + paramAnonymousa.errType + ",errCode" + paramAnonymousa.errCode + "}}"));
         AppMethodBeat.o(182453);
         return null;
       }
@@ -121,37 +121,37 @@ public final class c
     AppMethodBeat.o(65020);
   }
   
-  public final void eeK()
+  public final void eOf()
   {
     AppMethodBeat.i(65019);
-    if (this.yRr == null)
+    if (this.Evp == null)
     {
       Log.i("MicroMsg.WxaReceiveLuckyMoneyLogic", "onDetailBtnClick ui == null");
       AppMethodBeat.o(65019);
       return;
     }
-    eeO();
+    eOj();
     AppMethodBeat.o(65019);
   }
   
-  final void eeO()
+  final void eOj()
   {
     AppMethodBeat.i(65021);
     Intent localIntent = new Intent();
-    localIntent.putExtra("key_sendid", this.yQE);
+    localIntent.putExtra("key_sendid", this.ybP);
     localIntent.putExtra("key_appid", this.appId);
     Bundle localBundle;
-    if (this.yRt != null) {
+    if (this.Evr != null) {
       localBundle = new Bundle();
     }
     for (;;)
     {
       try
       {
-        localBundle.putByteArray("key_data", this.yRt.toByteArray());
+        localBundle.putByteArray("key_data", this.Evr.toByteArray());
         localIntent.putExtras(localBundle);
         localIntent.putExtra("key_from", "value_open");
-        this.yRr.a(com.tencent.mm.plugin.luckymoney.appbrand.ui.detail.b.class, localIntent, new d.a()
+        this.Evp.a(com.tencent.mm.plugin.luckymoney.appbrand.ui.detail.b.class, localIntent, new d.a()
         {
           public final void g(int paramAnonymousInt, Intent paramAnonymousIntent)
           {
@@ -159,18 +159,18 @@ public final class c
             if (paramAnonymousInt == -1)
             {
               paramAnonymousIntent = c.this;
-              if (paramAnonymousIntent.yRr == null)
+              if (paramAnonymousIntent.Evp == null)
               {
                 Log.e("MicroMsg.WxaReceiveLuckyMoneyLogic", "WxaGetLuckyMoneyLogic.succeed ui == null");
                 AppMethodBeat.o(65016);
                 return;
               }
-              paramAnonymousIntent.yRr.eeG();
-              paramAnonymousIntent.yRr.f(-1, new Intent());
+              paramAnonymousIntent.Evp.eOb();
+              paramAnonymousIntent.Evp.f(-1, new Intent());
               AppMethodBeat.o(65016);
               return;
             }
-            c.this.aG(paramAnonymousIntent);
+            c.this.aE(paramAnonymousIntent);
             AppMethodBeat.o(65016);
           }
         });
@@ -180,7 +180,7 @@ public final class c
       catch (IOException localIOException)
       {
         Log.printErrStackTrace("MicroMsg.WxaReceiveLuckyMoneyLogic", localIOException, "goLuckyMoneyDetailUI WxaDetailResponse putByteArray error", new Object[0]);
-        aG(new Intent().putExtra("result_error_code", -1).putExtra("result_error_msg", "fail:system error {{byte detail response fail}}"));
+        aE(new Intent().putExtra("result_error_code", -1).putExtra("result_error_msg", "fail:system error {{byte detail response fail}}"));
         AppMethodBeat.o(65021);
         return;
       }
@@ -192,15 +192,15 @@ public final class c
   {
     AppMethodBeat.i(65018);
     Log.i("MicroMsg.WxaReceiveLuckyMoneyLogic", "onDestroy ");
-    this.yRr = null;
-    this.yRt = null;
-    this.yRu = null;
+    this.Evp = null;
+    this.Evr = null;
+    this.Evs = null;
     AppMethodBeat.o(65018);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.appbrand.ui.receive.c
  * JD-Core Version:    0.7.0.1
  */

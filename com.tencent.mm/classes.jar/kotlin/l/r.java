@@ -1,29 +1,24 @@
 package kotlin.l;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.g.a.b;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/reflect/KVariance;", "", "(Ljava/lang/String;I)V", "INVARIANT", "IN", "OUT", "kotlin-stdlib"})
-public enum r
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/reflect/KProperty1;", "T", "R", "Lkotlin/reflect/KProperty;", "Lkotlin/Function1;", "getter", "Lkotlin/reflect/KProperty1$Getter;", "getGetter", "()Lkotlin/reflect/KProperty1$Getter;", "get", "receiver", "(Ljava/lang/Object;)Ljava/lang/Object;", "getDelegate", "", "Getter", "kotlin-stdlib"})
+public abstract interface r<T, R>
+  extends b<T, R>, n<R>
 {
-  static
-  {
-    AppMethodBeat.i(129551);
-    r localr1 = new r("INVARIANT", 0);
-    SZq = localr1;
-    r localr2 = new r("IN", 1);
-    SZr = localr2;
-    r localr3 = new r("OUT", 2);
-    SZs = localr3;
-    SZt = new r[] { localr1, localr2, localr3 };
-    AppMethodBeat.o(129551);
-  }
+  public abstract R get(T paramT);
   
-  private r() {}
+  public abstract a<T, R> iCp();
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/reflect/KProperty1$Getter;", "T", "R", "Lkotlin/reflect/KProperty$Getter;", "Lkotlin/Function1;", "kotlin-stdlib"})
+  public static abstract interface a<T, R>
+    extends b<T, R>, o<R>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.r
  * JD-Core Version:    0.7.0.1
  */

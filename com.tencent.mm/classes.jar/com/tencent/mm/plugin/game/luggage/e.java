@@ -4,9 +4,9 @@ import java.util.Map;
 
 public final class e
 {
-  public static long Nh;
+  public static String CzZ;
+  public static long dX;
   public static Map<String, String> mHeaders;
-  public static String xwe;
 }
 
 

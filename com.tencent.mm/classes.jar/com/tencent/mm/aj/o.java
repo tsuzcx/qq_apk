@@ -1,119 +1,78 @@
 package com.tencent.mm.aj;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MTimerHandler;
-import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
-import com.tencent.mm.storagebase.h;
-import java.util.ArrayList;
-import java.util.List;
 
 public final class o
+  extends com.tencent.mm.cd.a
 {
-  private static List<String> iLk;
-  private static int iLl;
-  private static a iLm;
+  public int lpp;
+  public int lpq;
+  public String lpr;
   
-  static
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(150317);
-    iLk = null;
-    iLl = 0;
-    iLm = new a(new b());
-    AppMethodBeat.o(150317);
-  }
-  
-  public static void H(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(150315);
-    if (!g.aAf().azp())
+    AppMethodBeat.i(116410);
+    if (paramInt == 0)
     {
-      AppMethodBeat.o(150315);
-      return;
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aY(1, this.lpp);
+      paramVarArgs.aY(2, this.lpq);
+      if (this.lpr != null) {
+        paramVarArgs.f(3, this.lpr);
+      }
+      AppMethodBeat.o(116410);
+      return 0;
     }
-    Object localObject = p.aYB();
-    ArrayList localArrayList = new ArrayList();
-    localObject = ((j)localObject).iFy.rawQuery("select username from img_flag where username not in (select username from rcontact ) and username not like \"%@qqim\" and username not like \"%@bottle\";", null, 2);
-    while (((Cursor)localObject).moveToNext()) {
-      localArrayList.add(((Cursor)localObject).getString(0));
-    }
-    ((Cursor)localObject).close();
-    iLk = localArrayList;
-    if (localArrayList.size() <= 0)
+    if (paramInt == 1)
     {
-      AppMethodBeat.o(150315);
-      return;
+      int i = g.a.a.b.b.a.bM(1, this.lpp) + 0 + g.a.a.b.b.a.bM(2, this.lpq);
+      paramInt = i;
+      if (this.lpr != null) {
+        paramInt = i + g.a.a.b.b.a.g(3, this.lpr);
+      }
+      AppMethodBeat.o(116410);
+      return paramInt;
     }
-    iLm.iLn.iLo = paramRunnable;
-    iLm.startTimer(10L);
-    AppMethodBeat.o(150315);
-  }
-  
-  public static void aYx()
-  {
-    AppMethodBeat.i(150316);
-    iLl = 0;
-    iLm.stopTimer();
-    AppMethodBeat.o(150316);
-  }
-  
-  static final class a
-    extends MTimerHandler
-  {
-    final o.b iLn;
-    
-    public a(o.b paramb)
+    if (paramInt == 2)
     {
-      super(true);
-      this.iLn = paramb;
-    }
-  }
-  
-  static final class b
-    implements MTimerHandler.CallBack
-  {
-    Runnable iLo;
-    
-    public final boolean onTimerExpired()
-    {
-      AppMethodBeat.i(150314);
-      int j = o.iLk.size();
-      Log.e("MicroMsg.RemoveAvatarTask", "RemoveOldAvatar left count:".concat(String.valueOf(j)));
-      if ((j <= 2000) || (o.iLl >= 300))
-      {
-        if (this.iLo != null) {
-          this.iLo.run();
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.iUs();
         }
-        o.aYy();
-        AppMethodBeat.o(150314);
-        return false;
       }
-      long l = g.aAh().hqK.beginTransaction(Thread.currentThread().getId());
-      int i = j - 1;
-      while (i >= j - 30)
-      {
-        o.aYz();
-        String str = (String)o.iLk.get(i);
-        o.iLk.remove(i);
-        p.aYn();
-        e.N(str, false);
-        p.aYn();
-        e.N(str, true);
-        p.aYB().My(str);
-        i -= 1;
-      }
-      g.aAh().hqK.endTransaction(l);
-      AppMethodBeat.o(150314);
-      return true;
+      AppMethodBeat.o(116410);
+      return 0;
     }
+    if (paramInt == 3)
+    {
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      o localo = (o)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(116410);
+        return -1;
+      case 1: 
+        localo.lpp = locala.abFh.AK();
+        AppMethodBeat.o(116410);
+        return 0;
+      case 2: 
+        localo.lpq = locala.abFh.AK();
+        AppMethodBeat.o(116410);
+        return 0;
+      }
+      localo.lpr = locala.abFh.readString();
+      AppMethodBeat.o(116410);
+      return 0;
+    }
+    AppMethodBeat.o(116410);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.aj.o
  * JD-Core Version:    0.7.0.1
  */

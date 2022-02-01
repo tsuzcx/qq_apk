@@ -1,65 +1,58 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
 import java.util.LinkedList;
 
 public final class bmx
-  extends dop
+  extends com.tencent.mm.cd.a
 {
-  public int KCO;
-  public b LVy;
-  public String extra;
+  public fhs SXN;
+  public LinkedList<bmw> SXO;
+  
+  public bmx()
+  {
+    AppMethodBeat.i(250066);
+    this.SXO = new LinkedList();
+    AppMethodBeat.o(250066);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152568);
+    AppMethodBeat.i(250068);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      if (this.SXN != null)
       {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs.oE(1, this.SXN.computeSize());
+        this.SXN.writeFields(paramVarArgs);
       }
-      paramVarArgs.aM(2, this.KCO);
-      if (this.extra != null) {
-        paramVarArgs.e(3, this.extra);
-      }
-      if (this.LVy != null) {
-        paramVarArgs.c(4, this.LVy);
-      }
-      AppMethodBeat.o(152568);
+      paramVarArgs.e(2, 8, this.SXO);
+      AppMethodBeat.o(250068);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label474;
+      if (this.SXN == null) {
+        break label406;
       }
     }
-    label474:
-    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label406:
+    for (paramInt = g.a.a.a.oD(1, this.SXN.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.bu(2, this.KCO);
-      paramInt = i;
-      if (this.extra != null) {
-        paramInt = i + g.a.a.b.b.a.f(3, this.extra);
-      }
-      i = paramInt;
-      if (this.LVy != null) {
-        i = paramInt + g.a.a.b.b.a.b(4, this.LVy);
-      }
-      AppMethodBeat.o(152568);
-      return i;
+      int i = g.a.a.a.c(2, 8, this.SXO);
+      AppMethodBeat.o(250068);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.SXO.clear();
+        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(152568);
+        AppMethodBeat.o(250068);
         return 0;
       }
       if (paramInt == 3)
@@ -67,40 +60,46 @@ public final class bmx
         Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         bmx localbmx = (bmx)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(152568);
+          AppMethodBeat.o(250068);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localbmx.BaseRequest = ((jr)localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new fhs();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((fhs)localObject2).parseFrom((byte[])localObject1);
+            }
+            localbmx.SXN = ((fhs)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(152568);
-          return 0;
-        case 2: 
-          localbmx.KCO = ((g.a.a.a.a)localObject1).UbS.zi();
-          AppMethodBeat.o(152568);
-          return 0;
-        case 3: 
-          localbmx.extra = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(152568);
+          AppMethodBeat.o(250068);
           return 0;
         }
-        localbmx.LVy = ((g.a.a.a.a)localObject1).UbS.hPo();
-        AppMethodBeat.o(152568);
+        paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject1 = (byte[])paramVarArgs.get(paramInt);
+          localObject2 = new bmw();
+          if ((localObject1 != null) && (localObject1.length > 0)) {
+            ((bmw)localObject2).parseFrom((byte[])localObject1);
+          }
+          localbmx.SXO.add(localObject2);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(250068);
         return 0;
       }
-      AppMethodBeat.o(152568);
+      AppMethodBeat.o(250068);
       return -1;
     }
   }

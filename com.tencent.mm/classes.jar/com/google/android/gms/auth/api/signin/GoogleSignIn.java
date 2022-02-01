@@ -3,8 +3,8 @@ package com.google.android.gms.auth.api.signin;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import androidx.fragment.app.Fragment;
 import com.google.android.gms.auth.api.signin.internal.zzi;
 import com.google.android.gms.auth.api.signin.internal.zzq;
 import com.google.android.gms.common.api.Scope;
@@ -141,20 +141,20 @@ public final class GoogleSignIn
   
   public static void requestPermissions(Fragment paramFragment, int paramInt, GoogleSignInAccount paramGoogleSignInAccount, GoogleSignInOptionsExtension paramGoogleSignInOptionsExtension)
   {
-    AppMethodBeat.i(88276);
+    AppMethodBeat.i(204135);
     Preconditions.checkNotNull(paramFragment, "Please provide a non-null Fragment");
     Preconditions.checkNotNull(paramGoogleSignInOptionsExtension, "Please provide a non-null GoogleSignInOptionsExtension");
     requestPermissions(paramFragment, paramInt, paramGoogleSignInAccount, zzd(paramGoogleSignInOptionsExtension.getImpliedScopes()));
-    AppMethodBeat.o(88276);
+    AppMethodBeat.o(204135);
   }
   
   public static void requestPermissions(Fragment paramFragment, int paramInt, GoogleSignInAccount paramGoogleSignInAccount, Scope... paramVarArgs)
   {
-    AppMethodBeat.i(88278);
+    AppMethodBeat.i(204136);
     Preconditions.checkNotNull(paramFragment, "Please provide a non-null Fragment");
     Preconditions.checkNotNull(paramVarArgs, "Please provide at least one scope");
     paramFragment.startActivityForResult(zzd(paramFragment.getActivity(), paramGoogleSignInAccount, paramVarArgs), paramInt);
-    AppMethodBeat.o(88278);
+    AppMethodBeat.o(204136);
   }
   
   private static Intent zzd(Activity paramActivity, GoogleSignInAccount paramGoogleSignInAccount, Scope... paramVarArgs)
@@ -187,7 +187,7 @@ public final class GoogleSignIn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.gms.auth.api.signin.GoogleSignIn
  * JD-Core Version:    0.7.0.1
  */

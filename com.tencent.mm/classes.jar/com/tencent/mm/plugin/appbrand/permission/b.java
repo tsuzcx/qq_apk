@@ -5,12 +5,13 @@ import android.util.SparseIntArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.ac.m;
-import com.tencent.mm.plugin.appbrand.page.ac;
-import com.tencent.mm.plugin.appbrand.page.t;
-import com.tencent.mm.plugin.appbrand.page.w;
-import com.tencent.mm.plugin.appbrand.widget.f.a;
-import com.tencent.mm.plugin.appbrand.widget.f.b.a;
-import com.tencent.mm.plugin.appbrand.widget.f.f;
+import com.tencent.mm.plugin.appbrand.au.i;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.page.u;
+import com.tencent.mm.plugin.appbrand.page.x;
+import com.tencent.mm.plugin.appbrand.widget.g.a;
+import com.tencent.mm.plugin.appbrand.widget.g.b.a;
+import com.tencent.mm.plugin.appbrand.widget.g.f;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashSet;
@@ -18,61 +19,61 @@ import java.util.Set;
 
 final class b
 {
-  private static final SparseIntArray nxh;
-  private static final Set<String> nxi;
+  private static final SparseIntArray qzj;
+  private static final Set<String> qzk;
   
   static
   {
     AppMethodBeat.i(47994);
-    nxh = new SparseIntArray()
+    qzj = new SparseIntArray()
     {
       public final int get(int paramAnonymousInt)
       {
         AppMethodBeat.i(47991);
-        paramAnonymousInt = super.get(paramAnonymousInt, 2131755518);
+        paramAnonymousInt = super.get(paramAnonymousInt, au.i.app_brand_jsapi_ban_banner_hint_other_api);
         AppMethodBeat.o(47991);
         return paramAnonymousInt;
       }
     };
-    nxi = new HashSet();
-    nxh.put("requestPayment".hashCode(), 2131755514);
-    nxh.put("requestVirtualPayment".hashCode(), 2131755514);
-    nxh.put("playVoice".hashCode(), 2131755515);
-    nxh.put("operateMusicPlayer".hashCode(), 2131755515);
-    nxh.put("shareAppMessage".hashCode(), 2131755516);
-    nxh.put("onShareAppMessage".hashCode(), 2131755516);
-    nxh.put("shareAppMessageDirectly".hashCode(), 2131755516);
-    nxh.put("shareTimeline".hashCode(), 2131755516);
-    nxh.put("onShareTimeline".hashCode(), 2131755516);
-    nxh.put("launchMiniProgram".hashCode(), 2131755513);
-    nxi.add("requestPayment");
-    nxi.add("requestVirtualPayment");
-    nxi.add("playVoice");
-    nxi.add("operateMusicPlayer");
-    nxi.add("shareAppMessage");
-    nxi.add("onShareAppMessage");
-    nxi.add("shareAppMessageDirectly");
-    nxi.add("shareTimeline");
-    nxi.add("onShareTimeline");
-    nxi.add("launchMiniProgram");
-    nxi.add("makeVoIPCall");
-    nxi.add("addCard");
-    nxi.add("chooseContact");
-    nxi.add("openCard");
-    nxi.add("openOfflinePayView");
-    nxi.add("openWCPayLQTDepositPlan");
-    nxi.add("openWCPayLQTDepositPlanAdd");
-    nxi.add("openWCPayLQTDetail");
-    nxi.add("openWCPayLQTSave");
-    nxi.add("loadPaySpeechDialectConfig");
-    nxi.add("setCurrentPaySpeech");
-    nxi.add("openWCCardHomePage");
-    nxi.add("openWCCertHomePage");
-    nxi.add("requestBizSplitBillPayment");
+    qzk = new HashSet();
+    qzj.put("requestPayment".hashCode(), au.i.app_brand_jsapi_ban_banner_hint_api_name_pay);
+    qzj.put("requestVirtualPayment".hashCode(), au.i.app_brand_jsapi_ban_banner_hint_api_name_pay);
+    qzj.put("playVoice".hashCode(), au.i.app_brand_jsapi_ban_banner_hint_api_name_play);
+    qzj.put("operateMusicPlayer".hashCode(), au.i.app_brand_jsapi_ban_banner_hint_api_name_play);
+    qzj.put("shareAppMessage".hashCode(), au.i.app_brand_jsapi_ban_banner_hint_api_name_share);
+    qzj.put("onShareAppMessage".hashCode(), au.i.app_brand_jsapi_ban_banner_hint_api_name_share);
+    qzj.put("shareAppMessageDirectly".hashCode(), au.i.app_brand_jsapi_ban_banner_hint_api_name_share);
+    qzj.put("shareTimeline".hashCode(), au.i.app_brand_jsapi_ban_banner_hint_api_name_share);
+    qzj.put("onShareTimeline".hashCode(), au.i.app_brand_jsapi_ban_banner_hint_api_name_share);
+    qzj.put("launchMiniProgram".hashCode(), au.i.app_brand_jsapi_ban_banner_hint_api_name_launch);
+    qzk.add("requestPayment");
+    qzk.add("requestVirtualPayment");
+    qzk.add("playVoice");
+    qzk.add("operateMusicPlayer");
+    qzk.add("shareAppMessage");
+    qzk.add("onShareAppMessage");
+    qzk.add("shareAppMessageDirectly");
+    qzk.add("shareTimeline");
+    qzk.add("onShareTimeline");
+    qzk.add("launchMiniProgram");
+    qzk.add("makeVoIPCall");
+    qzk.add("addCard");
+    qzk.add("chooseContact");
+    qzk.add("openCard");
+    qzk.add("openOfflinePayView");
+    qzk.add("openWCPayLQTDepositPlan");
+    qzk.add("openWCPayLQTDepositPlanAdd");
+    qzk.add("openWCPayLQTDetail");
+    qzk.add("openWCPayLQTSave");
+    qzk.add("loadPaySpeechDialectConfig");
+    qzk.add("setCurrentPaySpeech");
+    qzk.add("openWCCardHomePage");
+    qzk.add("openWCCertHomePage");
+    qzk.add("requestBizSplitBillPayment");
     AppMethodBeat.o(47994);
   }
   
-  static void n(AppBrandRuntime paramAppBrandRuntime, String paramString)
+  static void o(AppBrandRuntime paramAppBrandRuntime, String paramString)
   {
     AppMethodBeat.i(47993);
     if ((paramAppBrandRuntime == null) || (Util.isNullOrNil(paramString)))
@@ -80,33 +81,33 @@ final class b
       AppMethodBeat.o(47993);
       return;
     }
-    paramString = MMApplicationContext.getResources().getString(nxh.get(paramString.hashCode()));
+    paramString = MMApplicationContext.getResources().getString(qzj.get(paramString.hashCode()));
     m.runOnUiThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(47992);
-        Object localObject = this.cBo.brh();
+        Object localObject = this.cAw.bBX();
         if (localObject != null)
         {
-          localObject = ((w)localObject).getCurrentPage();
+          localObject = ((x)localObject).getCurrentPage();
           if (localObject != null)
           {
-            localObject = ((t)localObject).getCurrentPageView();
+            localObject = ((u)localObject).getCurrentPageView();
             if (localObject != null)
             {
-              localObject = ((ac)localObject).nqT;
+              localObject = ((ad)localObject).qsF;
               String str = this.val$message;
-              if (((com.tencent.mm.plugin.appbrand.widget.f.b)localObject).nnq.isRunning())
+              if (((com.tencent.mm.plugin.appbrand.widget.g.b)localObject).qoX.isRunning())
               {
-                b.a locala = ((com.tencent.mm.plugin.appbrand.widget.f.b)localObject).ccI();
-                ((com.tencent.mm.plugin.appbrand.widget.f.b)localObject).ccJ();
-                if (((com.tencent.mm.plugin.appbrand.widget.f.b)localObject).oBy == null)
+                b.a locala = ((com.tencent.mm.plugin.appbrand.widget.g.b)localObject).cpZ();
+                ((com.tencent.mm.plugin.appbrand.widget.g.b)localObject).cqa();
+                if (((com.tencent.mm.plugin.appbrand.widget.g.b)localObject).rEh == null)
                 {
-                  ((com.tencent.mm.plugin.appbrand.widget.f.b)localObject).oBy = new a(((com.tencent.mm.plugin.appbrand.widget.f.b)localObject).nnq.getContext());
-                  ((com.tencent.mm.plugin.appbrand.widget.f.b)localObject).oBy.c(locala);
+                  ((com.tencent.mm.plugin.appbrand.widget.g.b)localObject).rEh = new a(((com.tencent.mm.plugin.appbrand.widget.g.b)localObject).qoX.getContext());
+                  ((com.tencent.mm.plugin.appbrand.widget.g.b)localObject).rEh.c(locala);
                 }
-                ((com.tencent.mm.plugin.appbrand.widget.f.b)localObject).oBy.agi(str);
+                ((com.tencent.mm.plugin.appbrand.widget.g.b)localObject).rEh.anL(str);
               }
             }
           }
@@ -119,7 +120,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.b
  * JD-Core Version:    0.7.0.1
  */

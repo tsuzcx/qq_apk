@@ -1,27 +1,30 @@
 package com.tencent.mm.plugin.location.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.c;
-import com.tencent.mm.ak.h.d;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.h.c;
+import com.tencent.mm.an.h.d;
+import com.tencent.mm.an.t;
 import com.tencent.mm.app.o.a;
-import com.tencent.mm.g.a.by;
-import com.tencent.mm.g.a.fo;
-import com.tencent.mm.g.a.hp;
-import com.tencent.mm.g.a.kg;
-import com.tencent.mm.g.a.lw;
-import com.tencent.mm.g.a.ly;
-import com.tencent.mm.g.a.ss;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.cj;
-import com.tencent.mm.model.cj.a;
+import com.tencent.mm.bk.a;
+import com.tencent.mm.f.a.cc;
+import com.tencent.mm.f.a.fv;
+import com.tencent.mm.f.a.hw;
+import com.tencent.mm.f.a.kw;
+import com.tencent.mm.f.a.mn;
+import com.tencent.mm.f.a.mp;
+import com.tencent.mm.f.a.tt;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.be;
+import com.tencent.mm.model.ck;
+import com.tencent.mm.model.ck.a;
+import com.tencent.mm.model.e;
 import com.tencent.mm.model.y;
 import com.tencent.mm.modelsimple.x;
 import com.tencent.mm.plugin.location.ui.impl.d;
-import com.tencent.mm.plugin.messenger.foundation.a.s;
+import com.tencent.mm.plugin.messenger.foundation.a.v;
 import com.tencent.mm.pluginsdk.location.c;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
@@ -32,29 +35,29 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class n
-  implements bd
+  implements be
 {
   private static o.a appForegroundListener;
-  private IListener yGA;
-  private cj.a yGB;
-  private c yGi;
-  private a yGj;
-  private b yGk;
-  private a.a yGl;
-  private int yGm;
-  private com.tencent.mm.model.e yGn;
-  private com.tencent.mm.model.e yGo;
-  private q yGp;
-  private r yGq;
-  private k yGr;
-  private o yGs;
-  private d yGt;
-  private m yGu;
-  private l yGv;
-  private com.tencent.mm.ak.i yGw;
-  private IListener yGx;
-  private IListener yGy;
-  private IListener yGz;
+  private c Ekb;
+  private a Ekc;
+  private b Ekd;
+  private a.a Eke;
+  private int Ekf;
+  private e Ekg;
+  private e Ekh;
+  private q Eki;
+  private r Ekj;
+  private k Ekk;
+  private o Ekl;
+  private d Ekm;
+  private m Ekn;
+  private l Eko;
+  private com.tencent.mm.an.i Ekp;
+  private IListener Ekq;
+  private IListener Ekr;
+  private IListener Eks;
+  private IListener Ekt;
+  private ck.a Eku;
   
   static
   {
@@ -64,13 +67,13 @@ public class n
       public final void onAppBackground(String paramAnonymousString)
       {
         AppMethodBeat.i(55729);
-        if ((g.aAc()) && (g.aAf().hpY))
+        if ((h.aHB()) && (h.aHE().kbT))
         {
-          g.aAf();
-          if (!com.tencent.mm.kernel.a.azj())
+          h.aHE();
+          if (!com.tencent.mm.kernel.b.aGE())
           {
-            paramAnonymousString = new ss();
-            paramAnonymousString.dZj.active = false;
+            paramAnonymousString = new tt();
+            paramAnonymousString.fTc.active = false;
             EventCenter.instance.publish(paramAnonymousString);
           }
         }
@@ -80,13 +83,13 @@ public class n
       public final void onAppForeground(String paramAnonymousString)
       {
         AppMethodBeat.i(55728);
-        if ((g.aAc()) && (g.aAf().hpY))
+        if ((h.aHB()) && (h.aHE().kbT))
         {
-          g.aAf();
-          if (!com.tencent.mm.kernel.a.azj())
+          h.aHE();
+          if (!com.tencent.mm.kernel.b.aGE())
           {
-            paramAnonymousString = new ss();
-            paramAnonymousString.dZj.active = true;
+            paramAnonymousString = new tt();
+            paramAnonymousString.fTc.active = true;
             EventCenter.instance.publish(paramAnonymousString);
           }
         }
@@ -99,25 +102,25 @@ public class n
   public n()
   {
     AppMethodBeat.i(55736);
-    this.yGi = new c((byte)0);
-    this.yGj = new a((byte)0);
-    this.yGk = new b((byte)0);
-    this.yGm = 0;
-    this.yGn = new b();
-    this.yGo = new p();
-    this.yGp = null;
-    this.yGq = null;
-    this.yGr = null;
-    this.yGs = null;
-    this.yGt = new d();
-    this.yGu = null;
-    this.yGv = null;
-    this.yGw = new n.1(this);
-    this.yGx = new IListener() {};
-    this.yGy = new IListener() {};
-    this.yGz = new IListener() {};
-    this.yGA = new IListener() {};
-    this.yGB = new cj.a()
+    this.Ekb = new c((byte)0);
+    this.Ekc = new a((byte)0);
+    this.Ekd = new b((byte)0);
+    this.Ekf = 0;
+    this.Ekg = new b();
+    this.Ekh = new p();
+    this.Eki = null;
+    this.Ekj = null;
+    this.Ekk = null;
+    this.Ekl = null;
+    this.Ekm = new d();
+    this.Ekn = null;
+    this.Eko = null;
+    this.Ekp = new n.1(this);
+    this.Ekq = new IListener() {};
+    this.Ekr = new IListener() {};
+    this.Eks = new IListener() {};
+    this.Ekt = new IListener() {};
+    this.Eku = new ck.a()
     {
       public final void a(h.a paramAnonymousa)
       {
@@ -131,113 +134,113 @@ public class n
     AppMethodBeat.o(55736);
   }
   
-  public static void aA(ca paramca)
+  public static void D(long paramLong, String paramString)
+  {
+    AppMethodBeat.i(55748);
+    ca localca = ((com.tencent.mm.plugin.messenger.foundation.a.n)h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).eSe().Oq(paramLong);
+    if (localca.erm())
+    {
+      localca.Jo(paramString);
+      ((com.tencent.mm.plugin.messenger.foundation.a.n)h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).eSe().a(paramLong, localca);
+    }
+    AppMethodBeat.o(55748);
+  }
+  
+  public static void aK(ca paramca)
   {
     AppMethodBeat.i(55744);
     if ((paramca != null) && (paramca.field_msgId != 0L))
     {
-      ca.b localb = ca.b.bkB(paramca.field_content);
-      paramca = new x((float)localb.yFv, (float)localb.yFu, paramca.field_msgId);
-      g.azz().a(paramca, 0);
+      ca.b localb = ca.b.bxa(paramca.field_content);
+      paramca = new x((float)localb.Ejo, (float)localb.Ejn, paramca.field_msgId);
+      h.aGY().a(paramca, 0);
     }
     AppMethodBeat.o(55744);
   }
   
-  private static n ecN()
+  private static n eMf()
   {
     AppMethodBeat.i(55737);
-    n localn = (n)y.at(n.class);
+    n localn = (n)y.as(n.class);
     AppMethodBeat.o(55737);
     return localn;
   }
   
-  public static a.a ecO()
+  public static a.a eMg()
   {
     AppMethodBeat.i(55738);
-    g.aAf().azk();
-    if (ecN().yGl == null) {
-      ecN().yGl = new a.a();
+    h.aHE().aGH();
+    if (eMf().Eke == null) {
+      eMf().Eke = new a.a();
     }
-    a.a locala = ecN().yGl;
+    a.a locala = eMf().Eke;
     AppMethodBeat.o(55738);
     return locala;
   }
   
-  public static m ecP()
+  public static m eMh()
   {
     AppMethodBeat.i(55739);
-    g.aAf().azk();
-    if (ecN().yGu == null) {
-      ecN().yGu = new m();
+    h.aHE().aGH();
+    if (eMf().Ekn == null) {
+      eMf().Ekn = new m();
     }
-    m localm = ecN().yGu;
+    m localm = eMf().Ekn;
     AppMethodBeat.o(55739);
     return localm;
   }
   
-  public static l ecQ()
+  public static l eMi()
   {
     AppMethodBeat.i(55740);
-    g.aAf().azk();
-    if (ecN().yGv == null) {
-      ecN().yGv = new l();
+    h.aHE().aGH();
+    if (eMf().Eko == null) {
+      eMf().Eko = new l();
     }
-    l locall = ecN().yGv;
+    l locall = eMf().Eko;
     AppMethodBeat.o(55740);
     return locall;
   }
   
-  public static q ecR()
+  public static q eMj()
   {
     AppMethodBeat.i(55741);
-    if (ecN().yGp == null) {
-      ecN().yGp = new q();
+    if (eMf().Eki == null) {
+      eMf().Eki = new q();
     }
-    q localq = ecN().yGp;
+    q localq = eMf().Eki;
     AppMethodBeat.o(55741);
     return localq;
   }
   
-  public static r ecS()
+  public static r eMk()
   {
     AppMethodBeat.i(55742);
-    if (ecN().yGq == null) {
-      ecN().yGq = new r();
+    if (eMf().Ekj == null) {
+      eMf().Ekj = new r();
     }
-    r localr = ecN().yGq;
+    r localr = eMf().Ekj;
     AppMethodBeat.o(55742);
     return localr;
   }
   
-  public static k ecT()
+  public static k eMl()
   {
     AppMethodBeat.i(55743);
-    if (ecN().yGr == null) {
-      ecN().yGr = new k();
+    if (eMf().Ekk == null) {
+      eMf().Ekk = new k();
     }
-    k localk = ecN().yGr;
+    k localk = eMf().Ekk;
     AppMethodBeat.o(55743);
     return localk;
   }
   
-  public static String ecU()
+  public static String eMm()
   {
     AppMethodBeat.i(55745);
-    String str = g.aAh().cachePath + "trackroom/";
+    String str = h.aHG().cachePath + "trackroom/";
     AppMethodBeat.o(55745);
     return str;
-  }
-  
-  public static void w(long paramLong, String paramString)
-  {
-    AppMethodBeat.i(55748);
-    ca localca = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).eiy().Hb(paramLong);
-    if (localca.dOS())
-    {
-      localca.CA(paramString);
-      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).eiy().a(paramLong, localca);
-    }
-    AppMethodBeat.o(55748);
   }
   
   public void clearPluginData(int paramInt) {}
@@ -250,31 +253,31 @@ public class n
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(55746);
-    h.d.a(Integer.valueOf(48), this.yGn);
-    h.d.a(Integer.valueOf(61), this.yGo);
-    ((s)g.ah(s.class)).getSysCmdMsgExtension().a("trackmsg", this.yGB, true);
-    g.azz().a(424, this.yGw);
-    EventCenter.instance.addListener(this.yGi);
-    EventCenter.instance.addListener(this.yGj);
-    EventCenter.instance.addListener(this.yGx);
-    EventCenter.instance.addListener(this.yGy);
-    EventCenter.instance.addListener(this.yGz);
-    EventCenter.instance.addListener(this.yGA);
-    EventCenter.instance.addListener(this.yGk);
+    h.d.a(Integer.valueOf(48), this.Ekg);
+    h.d.a(Integer.valueOf(61), this.Ekh);
+    ((v)h.ag(v.class)).getSysCmdMsgExtension().a("trackmsg", this.Eku, true);
+    h.aGY().a(x.arZ(), this.Ekp);
+    EventCenter.instance.addListener(this.Ekb);
+    EventCenter.instance.addListener(this.Ekc);
+    EventCenter.instance.addListener(this.Ekq);
+    EventCenter.instance.addListener(this.Ekr);
+    EventCenter.instance.addListener(this.Eks);
+    EventCenter.instance.addListener(this.Ekt);
+    EventCenter.instance.addListener(this.Ekd);
     appForegroundListener.alive();
-    com.tencent.mm.bi.d.jpB = ecR();
-    r localr = ecS();
-    com.tencent.mm.bi.d.jpA = localr;
-    localr.bgs();
-    if (ecN().yGs == null) {
-      ecN().yGs = new o();
+    com.tencent.mm.bk.d.meW = eMj();
+    r localr = eMk();
+    com.tencent.mm.bk.d.meV = localr;
+    localr.bpI();
+    if (eMf().Ekl == null) {
+      eMf().Ekl = new o();
     }
-    com.tencent.mm.bx.a.a.a.NAL = ecN().yGs;
-    g.aAf().azk();
-    if (ecN().yGt == null) {
-      ecN().yGt = new d();
+    com.tencent.mm.ce.a.a.a.UOn = eMf().Ekl;
+    h.aHE().aGH();
+    if (eMf().Ekm == null) {
+      eMf().Ekm = new d();
     }
-    com.tencent.mm.plugin.k.c.a.yOs = ecN().yGt;
+    com.tencent.mm.plugin.q.c.a.Esq = eMf().Ekm;
     AppMethodBeat.o(55746);
   }
   
@@ -282,37 +285,37 @@ public class n
   {
     AppMethodBeat.i(55747);
     appForegroundListener.dead();
-    if (this.yGp != null)
+    if (this.Eki != null)
     {
-      this.yGp.yGP = null;
-      this.yGp.stop();
-      this.yGp.Px(1);
+      this.Eki.EkJ = null;
+      this.Eki.stop();
+      this.Eki.VG(1);
     }
-    h.d.b(Integer.valueOf(48), this.yGn);
-    h.d.b(Integer.valueOf(61), this.yGo);
-    ((s)g.ah(s.class)).getSysCmdMsgExtension().b("trackmsg", this.yGB, true);
-    g.azz().b(424, this.yGw);
-    EventCenter.instance.removeListener(this.yGi);
-    EventCenter.instance.removeListener(this.yGj);
-    EventCenter.instance.removeListener(this.yGx);
-    EventCenter.instance.removeListener(this.yGy);
-    EventCenter.instance.removeListener(this.yGz);
-    EventCenter.instance.removeListener(this.yGA);
-    EventCenter.instance.removeListener(this.yGk);
+    h.d.b(Integer.valueOf(48), this.Ekg);
+    h.d.b(Integer.valueOf(61), this.Ekh);
+    ((v)h.ag(v.class)).getSysCmdMsgExtension().b("trackmsg", this.Eku, true);
+    h.aGY().b(x.arZ(), this.Ekp);
+    EventCenter.instance.removeListener(this.Ekb);
+    EventCenter.instance.removeListener(this.Ekc);
+    EventCenter.instance.removeListener(this.Ekq);
+    EventCenter.instance.removeListener(this.Ekr);
+    EventCenter.instance.removeListener(this.Eks);
+    EventCenter.instance.removeListener(this.Ekt);
+    EventCenter.instance.removeListener(this.Ekd);
     Object localObject;
-    if (this.yGr != null)
+    if (this.Ekk != null)
     {
-      localObject = this.yGr;
-      ((k)localObject).ecM();
-      ((k)localObject).yFN.clear();
+      localObject = this.Ekk;
+      ((k)localObject).eMe();
+      ((k)localObject).EjG.clear();
     }
-    if (this.yGu != null) {
-      this.yGu.stop();
+    if (this.Ekn != null) {
+      this.Ekn.stop();
     }
-    if (this.yGv != null)
+    if (this.Eko != null)
     {
-      localObject = this.yGv;
-      ecP().b((c)localObject);
+      localObject = this.Eko;
+      eMh().b((c)localObject);
     }
     AppMethodBeat.o(55747);
   }
@@ -320,29 +323,29 @@ public class n
   public void onSdcardMount(boolean paramBoolean) {}
   
   static final class a
-    extends IListener<hp>
+    extends IListener<hw>
   {
     private a()
     {
       AppMethodBeat.i(160947);
-      this.__eventId = hp.class.getName().hashCode();
+      this.__eventId = hw.class.getName().hashCode();
       AppMethodBeat.o(160947);
     }
   }
   
   static final class b
-    extends IListener<lw>
+    extends IListener<mn>
   {
     private b()
     {
       AppMethodBeat.i(160949);
-      this.__eventId = lw.class.getName().hashCode();
+      this.__eventId = mn.class.getName().hashCode();
       AppMethodBeat.o(160949);
     }
   }
   
   static final class c
-    extends IListener<ly>
+    extends IListener<mp>
   {
     private volatile boolean mIsStarted;
     
@@ -350,14 +353,14 @@ public class n
     {
       AppMethodBeat.i(160951);
       this.mIsStarted = false;
-      this.__eventId = ly.class.getName().hashCode();
+      this.__eventId = mp.class.getName().hashCode();
       AppMethodBeat.o(160951);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.location.model.n
  * JD-Core Version:    0.7.0.1
  */

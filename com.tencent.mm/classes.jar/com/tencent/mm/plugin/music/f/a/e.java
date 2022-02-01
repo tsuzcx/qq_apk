@@ -5,50 +5,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
 {
-  public static int Tc(int paramInt)
-  {
-    AppMethodBeat.i(137405);
-    Log.i("MicroMsg.PlayerErrorHandler", "getErrCodeType, errorCode: %d", new Object[] { Integer.valueOf(paramInt) });
-    switch (paramInt)
-    {
-    default: 
-      AppMethodBeat.o(137405);
-      return -1;
-    case 62: 
-    case 66: 
-    case 67: 
-    case 69: 
-    case 70: 
-    case 74: 
-    case 102: 
-    case 702: 
-    case 704: 
-    case 706: 
-    case 707: 
-      AppMethodBeat.o(137405);
-      return 10001;
-    case 80: 
-      AppMethodBeat.o(137405);
-      return 10002;
-    case 53: 
-    case 54: 
-      AppMethodBeat.o(137405);
-      return 10003;
-    case 55: 
-    case 63: 
-    case 64: 
-    case 101: 
-    case 701: 
-    case 703: 
-    case 705: 
-      AppMethodBeat.o(137405);
-      return 10004;
-    }
-    AppMethodBeat.o(137405);
-    return 10001;
-  }
-  
-  public static String yw(int paramInt)
+  public static String BW(int paramInt)
   {
     AppMethodBeat.i(137406);
     Object localObject = new StringBuilder();
@@ -128,10 +85,53 @@ public final class e
       ((StringBuilder)localObject).append("error, mmplayer create audio track orror");
     }
   }
+  
+  public static int Zx(int paramInt)
+  {
+    AppMethodBeat.i(137405);
+    Log.i("MicroMsg.PlayerErrorHandler", "getErrCodeType, errorCode: %d", new Object[] { Integer.valueOf(paramInt) });
+    switch (paramInt)
+    {
+    default: 
+      AppMethodBeat.o(137405);
+      return -1;
+    case 62: 
+    case 66: 
+    case 67: 
+    case 69: 
+    case 70: 
+    case 74: 
+    case 102: 
+    case 702: 
+    case 704: 
+    case 706: 
+    case 707: 
+      AppMethodBeat.o(137405);
+      return 10001;
+    case 80: 
+      AppMethodBeat.o(137405);
+      return 10002;
+    case 53: 
+    case 54: 
+      AppMethodBeat.o(137405);
+      return 10003;
+    case 55: 
+    case 63: 
+    case 64: 
+    case 101: 
+    case 701: 
+    case 703: 
+    case 705: 
+      AppMethodBeat.o(137405);
+      return 10004;
+    }
+    AppMethodBeat.o(137405);
+    return 10001;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.music.f.a.e
  * JD-Core Version:    0.7.0.1
  */

@@ -10,32 +10,35 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.plugin.fav.ui.s.e;
+import com.tencent.mm.plugin.fav.ui.s.f;
+import com.tencent.mm.plugin.fav.ui.s.i;
 
 public class FavCapacityPanel
   extends LinearLayout
 {
-  private View.OnClickListener dec;
-  private LinearLayout tmh;
-  public long tmi;
-  public TextView tmj;
-  public int tmk;
-  public long tml;
+  private View.OnClickListener dig;
+  private LinearLayout wSF;
+  public long wSG;
+  public TextView wSH;
+  public int wSI;
+  public long wSJ;
   
   public FavCapacityPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(107504);
-    this.tmk = 0;
-    this.dec = new View.OnClickListener()
+    this.wSI = 0;
+    this.dig = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(107503);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/fav/ui/widget/FavCapacityPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/fav/ui/widget/FavCapacityPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         paramAnonymousView = new Intent();
-        if (FavCapacityPanel.this.tmk == 0) {
+        if (FavCapacityPanel.this.wSI == 0) {
           paramAnonymousView.putExtra("key_enter_fav_cleanui_from", 1);
         }
         for (;;)
@@ -48,27 +51,28 @@ public class FavCapacityPanel
         }
       }
     };
-    this.tmh = this;
-    paramContext = View.inflate(getContext(), 2131494149, null);
+    this.wSF = this;
+    paramContext = View.inflate(getContext(), s.f.fav_tag_panel_footview, null);
     paramContext.measure(-2, -2);
-    paramAttributeSet = paramContext.findViewById(2131300436);
-    View localView = paramContext.findViewById(2131300437);
-    this.tmj = ((TextView)paramContext.findViewById(2131300434));
+    paramAttributeSet = paramContext.findViewById(s.e.fav_capacity_foot_line);
+    View localView = paramContext.findViewById(s.e.fav_capacity_foot_linear);
+    this.wSH = ((TextView)paramContext.findViewById(s.e.fav_capacity_foot_desc));
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramAttributeSet.getLayoutParams();
     localLayoutParams.width = paramContext.getMeasuredWidth();
     paramAttributeSet.setLayoutParams(localLayoutParams);
-    localView.setOnClickListener(this.dec);
+    localView.setOnClickListener(this.dig);
     paramAttributeSet = new LinearLayout.LayoutParams(0, -2);
     paramAttributeSet.weight = 1.0F;
-    this.tmh.addView(paramContext, paramAttributeSet);
-    this.tmi = (com.tencent.mm.plugin.fav.a.b.cUh() / 1048576L);
-    this.tml = (com.tencent.mm.plugin.fav.a.b.cUi() / 1048576L);
-    paramContext = this.tmj;
-    paramAttributeSet = this.tmj.getContext();
-    if (this.tml - this.tmi > 0L) {}
-    for (long l = this.tml - this.tmi;; l = 0L)
+    this.wSF.addView(paramContext, paramAttributeSet);
+    this.wSG = (com.tencent.mm.plugin.fav.a.b.djn() / 1048576L);
+    this.wSJ = (com.tencent.mm.plugin.fav.a.b.djo() / 1048576L);
+    paramContext = this.wSH;
+    paramAttributeSet = this.wSH.getContext();
+    int i = s.i.fav_capacity_info;
+    if (this.wSJ - this.wSG > 0L) {}
+    for (long l = this.wSJ - this.wSG;; l = 0L)
     {
-      paramContext.setText(paramAttributeSet.getString(2131759143, new Object[] { Long.valueOf(l), Long.valueOf(this.tmi) }));
+      paramContext.setText(paramAttributeSet.getString(i, new Object[] { Long.valueOf(l), Long.valueOf(this.wSG) }));
       AppMethodBeat.o(107504);
       return;
     }
@@ -76,7 +80,7 @@ public class FavCapacityPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.widget.FavCapacityPanel
  * JD-Core Version:    0.7.0.1
  */

@@ -13,22 +13,22 @@ final class d$47
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(207269);
-    paramDialogInterface = this.SGe;
-    Object localObject = this.SGI;
-    String str = this.SGF;
-    u.cg((String)localObject, str);
+    AppMethodBeat.i(206537);
+    paramDialogInterface = this.aaht;
+    Object localObject = this.aahX;
+    String str = this.aahU;
+    u.cl((String)localObject, str);
     localObject = str.split("\\.");
     if (localObject.length == 2) {
-      paramDialogInterface.SFP.loadUrl("file://" + localObject[0] + "/main.html");
+      paramDialogInterface.aahe.loadUrl("file://" + localObject[0] + "/main.html");
     }
-    paramDialogInterface.SFW.setVisibility(8);
-    AppMethodBeat.o(207269);
+    paramDialogInterface.aahl.setVisibility(8);
+    AppMethodBeat.o(206537);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.xwalk.d.47
  * JD-Core Version:    0.7.0.1
  */

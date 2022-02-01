@@ -1,24 +1,19 @@
 package com.tencent.mm.emoji.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.emotion.EmojiGroupInfo;
-import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/model/panel/GroupExpandItem;", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "expand", "", "(Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;Z)V", "getExpand", "()Z", "getGroupInfo", "()Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "contentEquals", "other", "", "equals", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/model/panel/GroupExpandItem;", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "expand", "", "(Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;Z)V", "getExpand", "()Z", "getGroupInfo", "()Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "contentEquals", "other", "", "equals", "plugin-emojisdk_release"})
 public final class t
-  extends ac
+  extends ae
 {
-  private final EmojiGroupInfo gVA;
-  public final boolean gYL;
-  
-  public final boolean aZ(Object paramObject)
+  public final boolean ba(Object paramObject)
   {
     AppMethodBeat.i(105560);
-    if ((super.aZ(paramObject)) && ((paramObject instanceof t)) && (p.j(((t)paramObject).gVA.hRu(), this.gVA.hRu())) && (((t)paramObject).gYL == this.gYL))
+    if ((super.ba(paramObject)) && ((paramObject instanceof t)))
     {
       AppMethodBeat.o(105560);
-      return true;
+      throw null;
     }
     AppMethodBeat.o(105560);
     return false;
@@ -27,10 +22,10 @@ public final class t
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(105559);
-    if ((super.equals(paramObject)) && ((paramObject instanceof t)) && (p.j(((t)paramObject).gVA.hRu(), this.gVA.hRu())))
+    if ((super.equals(paramObject)) && ((paramObject instanceof t)))
     {
       AppMethodBeat.o(105559);
-      return true;
+      throw null;
     }
     AppMethodBeat.o(105559);
     return false;
@@ -38,7 +33,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.b.b.t
  * JD-Core Version:    0.7.0.1
  */

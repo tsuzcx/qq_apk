@@ -7,32 +7,32 @@ import java.util.Set;
 public final class v
   implements u
 {
-  private final List<w> TlI;
-  private final Set<w> TlJ;
-  private final List<w> TlK;
+  private final List<w> aaOC;
+  private final Set<w> aaOD;
+  private final List<w> aaOE;
   
   public v(List<w> paramList1, Set<w> paramSet, List<w> paramList2)
   {
     AppMethodBeat.i(57170);
-    this.TlI = paramList1;
-    this.TlJ = paramSet;
-    this.TlK = paramList2;
+    this.aaOC = paramList1;
+    this.aaOD = paramSet;
+    this.aaOE = paramList2;
     AppMethodBeat.o(57170);
   }
   
-  public final List<w> hCg()
+  public final List<w> iGv()
   {
-    return this.TlI;
+    return this.aaOC;
   }
   
-  public final Set<w> hCh()
+  public final Set<w> iGw()
   {
-    return this.TlJ;
+    return this.aaOD;
   }
   
-  public final List<w> hCi()
+  public final List<w> iGx()
   {
-    return this.TlK;
+    return this.aaOE;
   }
 }
 

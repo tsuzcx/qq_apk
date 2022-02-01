@@ -18,23 +18,18 @@ public final class f
     return localStringBuilder.toString();
   }
   
-  public static String bpK(String paramString)
+  public static String bCH(String paramString)
   {
     String str = paramString;
-    if (eP(paramString)) {
+    if (fK(paramString)) {
       str = "";
     }
     return str;
   }
   
-  public static boolean eP(String paramString)
+  public static boolean fK(String paramString)
   {
     return (paramString == null) || (paramString.length() == 0);
-  }
-  
-  public static boolean equals(String paramString1, String paramString2)
-  {
-    return (paramString1 == paramString2) || ((paramString1 != null) && (paramString2 != null) && (paramString1.equals(paramString2)));
   }
   
   public static boolean isNullOrEmpty(String paramString)
@@ -42,17 +37,22 @@ public final class f
     return (paramString == null) || ("".equals(paramString.trim()));
   }
   
-  public static boolean nG(String paramString1, String paramString2)
+  public static boolean oB(String paramString1, String paramString2)
   {
     if (paramString1 == null) {
       return paramString2 == null;
     }
     return paramString1.equals(paramString2);
   }
+  
+  public static boolean oC(String paramString1, String paramString2)
+  {
+    return (paramString1 == paramString2) || ((paramString1 != null) && (paramString2 != null) && (paramString1.equals(paramString2)));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.pb.common.c.f
  * JD-Core Version:    0.7.0.1
  */

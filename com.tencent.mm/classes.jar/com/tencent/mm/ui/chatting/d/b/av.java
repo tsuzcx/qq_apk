@@ -1,24 +1,24 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import android.content.Intent;
 import android.view.MenuItem;
 import com.tencent.mm.storage.ca;
-import com.tencent.mm.ui.chatting.d.af;
+import com.tencent.mm.ui.chatting.d.ag;
+import com.tencent.mm.ui.chatting.viewitems.ChattingItemTranslate.c;
 
 public abstract interface av
-  extends af
+  extends ag
 {
-  public abstract boolean a(MenuItem paramMenuItem, ca paramca);
+  public abstract boolean b(MenuItem paramMenuItem, ca paramca);
   
-  public abstract void aK(Intent paramIntent);
+  public abstract ChattingItemTranslate.c cC(ca paramca);
   
-  public abstract void bE(Intent paramIntent);
+  public abstract String g(ca paramca, boolean paramBoolean);
   
-  public abstract boolean h(ca paramca, boolean paramBoolean);
+  public abstract void hQT();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.b.av
  * JD-Core Version:    0.7.0.1
  */

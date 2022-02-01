@@ -7,23 +7,23 @@ import com.tencent.mm.sdk.platformtools.LruCache;
 import java.lang.ref.WeakReference;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/loader/cache/AnimateCache;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "cache", "Lcom/tencent/mm/sdk/platformtools/LruCache;", "Ljava/lang/ref/WeakReference;", "Landroid/graphics/drawable/Drawable;", "get", "key", "put", "", "drawable", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/loader/cache/AnimateCache;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "cache", "Lcom/tencent/mm/sdk/platformtools/LruCache;", "Ljava/lang/ref/WeakReference;", "Landroid/graphics/drawable/Drawable;", "get", "key", "put", "", "drawable", "plugin-emojisdk_release"})
 public final class a
 {
   private static final String TAG = "MicroMsg.EmojiLoader.AnimateCache";
   private static final LruCache<String, WeakReference<Drawable>> cache;
-  public static final a gVS;
+  public static final a jGO;
   
   static
   {
     AppMethodBeat.i(105412);
-    gVS = new a();
+    jGO = new a();
     TAG = "MicroMsg.EmojiLoader.AnimateCache";
-    cache = new LruCache(20);
+    cache = new LruCache(10);
     AppMethodBeat.o(105412);
   }
   
-  public static Drawable EO(String paramString)
+  public static Drawable LH(String paramString)
   {
     AppMethodBeat.i(105410);
     Log.i(TAG, "get ".concat(String.valueOf(paramString)));
@@ -62,7 +62,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.a.a
  * JD-Core Version:    0.7.0.1
  */

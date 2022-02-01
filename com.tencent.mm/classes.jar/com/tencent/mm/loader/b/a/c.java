@@ -2,32 +2,32 @@ package com.tencent.mm.loader.b.a;
 
 import android.system.ErrnoException;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.OutputStream;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/loader/cache/disk/DiskFunction;", "", "()V", "TAG", "", "compress", "", "bm", "Landroid/graphics/Bitmap;", "format", "Landroid/graphics/Bitmap$CompressFormat;", "quality", "", "stream", "Ljava/io/OutputStream;", "obtainOutputStream", "filePath", "save", "data", "", "libimageloader_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/loader/cache/disk/DiskFunction;", "", "()V", "TAG", "", "compress", "", "bm", "Landroid/graphics/Bitmap;", "format", "Landroid/graphics/Bitmap$CompressFormat;", "quality", "", "stream", "Ljava/io/OutputStream;", "obtainOutputStream", "filePath", "save", "data", "", "libimageloader_release"})
 public final class c
 {
   private static final String TAG = "MicroMsg.Loader.DiskFunction";
-  public static final c hYJ = new c();
+  public static final c kNn = new c();
   
-  public static OutputStream Hg(String paramString)
+  public static OutputStream Or(String paramString)
   {
-    p.h(paramString, "filePath");
+    p.k(paramString, "filePath");
     if (((CharSequence)paramString).length() == 0) {}
     for (int i = 1; i != 0; i = 0) {
       return null;
     }
     try
     {
-      o localo = new o(paramString).heq();
-      if (localo != null) {
-        localo.mkdirs();
+      q localq = new q(paramString).ifB();
+      if (localq != null) {
+        localq.ifL();
       }
-      paramString = s.LM(paramString);
+      paramString = u.Te(paramString);
     }
     catch (Exception paramString)
     {
@@ -48,15 +48,15 @@ public final class c
     //   1: astore_3
     //   2: aload_0
     //   3: ldc 48
-    //   5: invokestatic 54	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   5: invokestatic 54	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
     //   8: aload_1
     //   9: ldc 96
-    //   11: invokestatic 54	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   11: invokestatic 54	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
     //   14: aload_0
-    //   15: invokestatic 129	com/tencent/mm/vfs/s:YS	(Ljava/lang/String;)Z
+    //   15: invokestatic 129	com/tencent/mm/vfs/u:agG	(Ljava/lang/String;)Z
     //   18: ifeq +106 -> 124
     //   21: aload_0
-    //   22: invokestatic 133	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   22: invokestatic 133	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
     //   25: astore 4
     //   27: aload 4
     //   29: ifnull +95 -> 124
@@ -92,12 +92,12 @@ public final class c
     //   87: aload_1
     //   88: athrow
     //   89: astore_1
-    //   90: getstatic 158	com/tencent/mm/plugin/report/e:Cxv	Lcom/tencent/mm/plugin/report/e;
+    //   90: getstatic 158	com/tencent/mm/plugin/report/f:Iyx	Lcom/tencent/mm/plugin/report/f;
     //   93: ldc2_w 159
     //   96: ldc2_w 161
     //   99: lconst_1
     //   100: iconst_0
-    //   101: invokevirtual 166	com/tencent/mm/plugin/report/e:idkeyStat	(JJJZ)V
+    //   101: invokevirtual 166	com/tencent/mm/plugin/report/f:idkeyStat	(JJJZ)V
     //   104: getstatic 41	com/tencent/mm/loader/b/a/c:TAG	Ljava/lang/String;
     //   107: aload_1
     //   108: ldc 168
@@ -143,8 +143,8 @@ public final class c
   
   public static boolean a(byte[] paramArrayOfByte, OutputStream paramOutputStream)
   {
-    p.h(paramArrayOfByte, "data");
-    p.h(paramOutputStream, "stream");
+    p.k(paramArrayOfByte, "data");
+    p.k(paramOutputStream, "stream");
     try
     {
       paramOutputStream.write(paramArrayOfByte);

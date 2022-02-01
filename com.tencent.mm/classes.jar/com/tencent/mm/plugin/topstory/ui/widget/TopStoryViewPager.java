@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.topstory.ui.widget;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import androidx.viewpager.widget.ViewPager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class TopStoryViewPager
@@ -54,7 +54,7 @@ public class TopStoryViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.widget.TopStoryViewPager
  * JD-Core Version:    0.7.0.1
  */

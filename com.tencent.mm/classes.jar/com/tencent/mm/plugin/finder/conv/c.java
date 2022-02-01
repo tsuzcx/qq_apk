@@ -1,117 +1,188 @@
 package com.tencent.mm.plugin.finder.conv;
 
-import android.content.Context;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cf;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.n.n;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/conv/FinderConversation;", "Lcom/tencent/mm/autogen/table/BaseFinderConversation;", "()V", "contact", "Lcom/tencent/mm/storage/Contact;", "getContact", "()Lcom/tencent/mm/storage/Contact;", "setContact", "(Lcom/tencent/mm/storage/Contact;)V", "nickname", "", "getNickname", "()Ljava/lang/String;", "setNickname", "(Ljava/lang/String;)V", "nicknameSpan", "", "getNicknameSpan", "()Ljava/lang/CharSequence;", "setNicknameSpan", "(Ljava/lang/CharSequence;)V", "equals", "", "other", "", "getContentSpan", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "hashCode", "", "isTopPlace", "isTopPlaceUIStyle", "prepare", "", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/conv/FinderConvReporter;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "Builder", "ReportItem", "plugin-finder-base_release"})
 public final class c
-  extends cf
 {
-  private static final IAutoDBItem.MAutoDBInfo info;
-  public static final a tys;
-  public as contact;
-  public String nickname;
-  public CharSequence tyr;
+  private static final String TAG = "FinderConvReporter";
+  public static final c xfY;
   
   static
   {
-    AppMethodBeat.i(242703);
-    tys = new a((byte)0);
-    info = cf.ajs();
-    AppMethodBeat.o(242703);
+    AppMethodBeat.i(258085);
+    xfY = new c();
+    TAG = "FinderConvReporter";
+    AppMethodBeat.o(258085);
   }
   
-  public final boolean cZv()
+  public static String getTAG()
   {
-    return this.field_placedFlag > 0L;
+    return TAG;
   }
   
-  public final boolean cZw()
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/conv/FinderConvReporter$Builder;", "", "()V", "currentThread", "", "getCurrentThread", "()Ljava/lang/String;", "setCurrentThread", "(Ljava/lang/String;)V", "duration", "", "getDuration", "()J", "setDuration", "(J)V", "source", "getSource", "setSource", "sql", "getSql", "setSql", "tableSize", "getTableSize", "setTableSize", "build", "Lcom/tencent/mm/plugin/finder/conv/FinderConvReporter$ReportItem;", "plugin-finder-base_release"})
+  public static final class a
   {
-    AppMethodBeat.i(242702);
-    if ((this.field_placedFlag > 0L) && ((p.j(this.field_sessionId, "findersayhisessionholder") ^ true)))
+    public long duration;
+    private String source = "";
+    private String sql = "";
+    private String xfZ = "";
+    public long xga;
+    
+    public final a aAW(String paramString)
     {
-      AppMethodBeat.o(242702);
-      return true;
+      AppMethodBeat.i(261946);
+      p.k(paramString, "source");
+      this.source = paramString;
+      AppMethodBeat.o(261946);
+      return this;
     }
-    AppMethodBeat.o(242702);
-    return false;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof c))
+    
+    public final a aAX(String paramString)
     {
-      bool1 = bool2;
-      if (((c)paramObject).systemRowid == this.systemRowid) {
-        bool1 = true;
-      }
+      AppMethodBeat.i(261948);
+      p.k(paramString, "sql");
+      this.sql = n.a(paramString, ',', ';');
+      AppMethodBeat.o(261948);
+      return this;
     }
-    return bool1;
-  }
-  
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
-  {
-    AppMethodBeat.i(242700);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = info;
-    p.g(localMAutoDBInfo, "info");
-    AppMethodBeat.o(242700);
-    return localMAutoDBInfo;
-  }
-  
-  public final int hashCode()
-  {
-    return (int)this.systemRowid;
-  }
-  
-  public final void prepare()
-  {
-    AppMethodBeat.i(242701);
-    if (p.j(this.field_sessionId, "findersayhisessionholder"))
+    
+    public final a aAY(String paramString)
     {
-      this.nickname = MMApplicationContext.getContext().getString(2131760263);
-      localObject = (CharSequence)this.nickname;
-      this.tyr = ((CharSequence)localObject);
-      AppMethodBeat.o(242701);
-      return;
+      AppMethodBeat.i(261950);
+      p.k(paramString, "currentThread");
+      this.xfZ = paramString;
+      AppMethodBeat.o(261950);
+      return this;
     }
-    Object localObject = g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-    p.g(localObject, "MMKernel.service(IMessengerStorage::class.java)");
-    this.contact = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).aSN().Kn(this.field_sessionId);
-    localObject = this.contact;
-    if (localObject != null) {}
-    for (localObject = ((as)localObject).arJ();; localObject = null)
+    
+    public final c.b dpk()
     {
-      this.nickname = ((String)localObject);
-      localObject = this.contact;
-      if (localObject != null)
+      AppMethodBeat.i(261952);
+      c.b localb = new c.b(this.source, this.sql, this.duration, this.xfZ, this.xga);
+      AppMethodBeat.o(261952);
+      return localb;
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/conv/FinderConvReporter$ReportItem;", "", "source", "", "sql", "duration", "", "currentThread", "tableSize", "(Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;J)V", "getCurrentThread", "()Ljava/lang/String;", "getDuration", "()J", "getSource", "getSql", "getTableSize", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "hashCode", "", "report", "", "toString", "plugin-finder-base_release"})
+  public static final class b
+  {
+    final long duration;
+    final String source;
+    final String sql;
+    final String xfZ;
+    final long xga;
+    
+    public b(String paramString1, String paramString2, long paramLong1, String paramString3, long paramLong2)
+    {
+      AppMethodBeat.i(259143);
+      this.source = paramString1;
+      this.sql = paramString2;
+      this.duration = paramLong1;
+      this.xfZ = paramString3;
+      this.xga = paramLong2;
+      AppMethodBeat.o(259143);
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(259146);
+      if (this != paramObject)
       {
-        CharSequence localCharSequence = ((as)localObject).gBL();
-        localObject = localCharSequence;
-        if (localCharSequence != null) {
-          break;
+        if ((paramObject instanceof b))
+        {
+          paramObject = (b)paramObject;
+          if ((!p.h(this.source, paramObject.source)) || (!p.h(this.sql, paramObject.sql)) || (this.duration != paramObject.duration) || (!p.h(this.xfZ, paramObject.xfZ)) || (this.xga != paramObject.xga)) {}
         }
       }
-      localObject = (CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(MMApplicationContext.getContext(), (CharSequence)this.nickname);
-      break;
+      else
+      {
+        AppMethodBeat.o(259146);
+        return true;
+      }
+      AppMethodBeat.o(259146);
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      int k = 0;
+      AppMethodBeat.i(259144);
+      String str = this.source;
+      int i;
+      if (str != null)
+      {
+        i = str.hashCode();
+        str = this.sql;
+        if (str == null) {
+          break label126;
+        }
+      }
+      label126:
+      for (int j = str.hashCode();; j = 0)
+      {
+        long l = this.duration;
+        int m = (int)(l ^ l >>> 32);
+        str = this.xfZ;
+        if (str != null) {
+          k = str.hashCode();
+        }
+        l = this.xga;
+        int n = (int)(l ^ l >>> 32);
+        AppMethodBeat.o(259144);
+        return (((j + i * 31) * 31 + m) * 31 + k) * 31 + n;
+        i = 0;
+        break;
+      }
+    }
+    
+    public final void report()
+    {
+      AppMethodBeat.i(259138);
+      if ((this.duration < 16L) && (!n.a((CharSequence)this.source, (CharSequence)"reportSize", true)))
+      {
+        AppMethodBeat.o(259138);
+        return;
+      }
+      com.tencent.e.h.ZvG.bg((Runnable)new a(this));
+      AppMethodBeat.o(259138);
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(259140);
+      String str = "source:" + this.source + ", sql:" + this.sql + ", duration:" + this.duration + ", currentThread:" + this.xfZ + ", tableSize:" + this.xga;
+      AppMethodBeat.o(259140);
+      return str;
+    }
+    
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+    static final class a
+      implements Runnable
+    {
+      a(c.b paramb) {}
+      
+      public final void run()
+      {
+        AppMethodBeat.i(259099);
+        c localc = c.xfY;
+        Log.d(c.getTAG(), this.xgb.toString());
+        com.tencent.mm.plugin.report.service.h.IzE.a(23049, new Object[] { this.xgb.source, this.xgb.sql, Long.valueOf(this.xgb.duration), this.xgb.xfZ, Long.valueOf(this.xgb.xga) });
+        AppMethodBeat.o(259099);
+      }
     }
   }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/conv/FinderConversation$Companion;", "", "()V", "ACTION_DISABLE", "", "ACTION_ENABLE", "CAN_SEND_MSG", "READ_STATUS_READ", "READ_STATUS_UNREAD", "SCENE_FINDER", "SCENE_WX", "TYPE_GREET", "TYPE_HELLO_BOX", "TYPE_NORMAL", "UNABLE_SEND_MSG", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.conv.c
  * JD-Core Version:    0.7.0.1
  */

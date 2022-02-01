@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.widget.input;
 import android.content.Context;
 
 abstract class r
-  extends y
+  extends ac
 {
   public r(Context paramContext)
   {
@@ -16,12 +16,12 @@ abstract class r
     return false;
   }
   
-  public boolean cbB()
+  public final boolean coH()
   {
     return false;
   }
   
-  public final boolean cbx()
+  public boolean coL()
   {
     return false;
   }
@@ -69,7 +69,7 @@ abstract class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.r
  * JD-Core Version:    0.7.0.1
  */

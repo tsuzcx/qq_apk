@@ -11,8 +11,8 @@ import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Binder;
 import android.os.Process;
-import android.support.v4.content.f;
-import android.support.v4.e.k;
+import androidx.core.content.b;
+import androidx.core.f.e;
 import com.google.android.gms.common.util.PlatformVersion;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
@@ -53,7 +53,7 @@ public class PackageManagerWrapper
   public int checkCallingOrSelfPermissionAndAppOps(String paramString)
   {
     AppMethodBeat.i(5339);
-    int i = f.f(this.zzjp, paramString);
+    int i = b.f(this.zzjp, paramString);
     AppMethodBeat.o(5339);
     return i;
   }
@@ -84,7 +84,7 @@ public class PackageManagerWrapper
       AppMethodBeat.o(5337);
       return -1;
     }
-    int i = f.a(localContext, paramString1, Binder.getCallingPid(), Binder.getCallingUid(), paramString2);
+    int i = b.a(localContext, paramString1, Binder.getCallingPid(), Binder.getCallingUid(), paramString2);
     AppMethodBeat.o(5337);
     return i;
   }
@@ -129,7 +129,7 @@ public class PackageManagerWrapper
   public int checkPermissionAndAppOps(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     AppMethodBeat.i(5335);
-    paramInt1 = f.a(this.zzjp, paramString1, paramInt1, paramInt2, paramString2);
+    paramInt1 = b.a(this.zzjp, paramString1, paramInt1, paramInt2, paramString2);
     AppMethodBeat.o(5335);
     return paramInt1;
   }
@@ -150,12 +150,12 @@ public class PackageManagerWrapper
     return paramString;
   }
   
-  public k<CharSequence, Drawable> getApplicationLabelAndIcon(String paramString)
+  public e<CharSequence, Drawable> getApplicationLabelAndIcon(String paramString)
   {
-    AppMethodBeat.i(5345);
+    AppMethodBeat.i(258303);
     paramString = this.zzjp.getPackageManager().getApplicationInfo(paramString, 0);
-    paramString = k.c(this.zzjp.getPackageManager().getApplicationLabel(paramString), this.zzjp.getPackageManager().getApplicationIcon(paramString));
-    AppMethodBeat.o(5345);
+    paramString = e.d(this.zzjp.getPackageManager().getApplicationLabel(paramString), this.zzjp.getPackageManager().getApplicationIcon(paramString));
+    AppMethodBeat.o(258303);
     return paramString;
   }
   
@@ -275,7 +275,7 @@ public class PackageManagerWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.common.wrappers.PackageManagerWrapper
  * JD-Core Version:    0.7.0.1
  */

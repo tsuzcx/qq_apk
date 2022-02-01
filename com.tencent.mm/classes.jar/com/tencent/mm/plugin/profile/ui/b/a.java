@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.profile.ui.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.e.a;
+import com.tencent.mm.am.f.a;
 import java.lang.ref.WeakReference;
 
 public final class a
-  implements e.a
+  implements f.a
 {
-  private WeakReference<e.a> cMO;
+  private WeakReference<f.a> cNB;
   
-  public a(e.a parama)
+  public a(f.a parama)
   {
     AppMethodBeat.i(27599);
-    this.cMO = new WeakReference(parama);
+    this.cNB = new WeakReference(parama);
     AppMethodBeat.o(27599);
   }
   
-  public final void Mr(String paramString)
+  public final void TM(String paramString)
   {
     AppMethodBeat.i(27600);
-    if (this.cMO.get() != null) {
-      ((e.a)this.cMO.get()).Mr(paramString);
+    if (this.cNB.get() != null) {
+      ((f.a)this.cNB.get()).TM(paramString);
     }
     AppMethodBeat.o(27600);
   }

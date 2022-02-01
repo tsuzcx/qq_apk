@@ -11,22 +11,22 @@ import com.tencent.mm.sdk.platformtools.Util;
 public final class f
   implements Choreographer.FrameCallback
 {
-  private Choreographer fH;
+  private Choreographer SG;
+  public volatile double mCurrentFps;
   private boolean mEnabled;
   public long mInterval;
-  public a nwI;
-  private long nwY;
-  private int nwZ;
-  public volatile double nxa;
+  private long qza;
+  private int qzb;
+  public a qzc;
   
   public f()
   {
     AppMethodBeat.i(139905);
-    this.nwY = 0L;
-    this.nwZ = 0;
+    this.qza = 0L;
+    this.qzb = 0;
     this.mEnabled = false;
-    this.nxa = 0.0D;
-    this.fH = Choreographer.getInstance();
+    this.mCurrentFps = 0.0D;
+    this.SG = Choreographer.getInstance();
     this.mInterval = 200L;
     AppMethodBeat.o(139905);
   }
@@ -39,14 +39,14 @@ public final class f
     if (this.mEnabled)
     {
       paramLong /= 1000000L;
-      if (this.nwY <= 0L) {
+      if (this.qza <= 0L) {
         break label136;
       }
-      long l = paramLong - this.nwY;
-      this.nwZ += 1;
+      long l = paramLong - this.qza;
+      this.qzb += 1;
       if (l > this.mInterval)
       {
-        d2 = this.nwZ * 1000 / l;
+        d2 = this.qzb * 1000 / l;
         if (d2 < 60.0D) {
           break label144;
         }
@@ -54,21 +54,21 @@ public final class f
     }
     for (;;)
     {
-      this.nwY = paramLong;
-      this.nwZ = 0;
-      this.nxa = d1;
-      if (this.nwI != null) {
-        this.nwI.t(d1);
+      this.qza = paramLong;
+      this.qzb = 0;
+      this.mCurrentFps = d1;
+      if (this.qzc != null) {
+        this.qzc.t(d1);
       }
       for (;;)
       {
         if (this.mEnabled) {
-          this.fH.postFrameCallback(this);
+          this.SG.postFrameCallback(this);
         }
         AppMethodBeat.o(139908);
         return;
         label136:
-        this.nwY = paramLong;
+        this.qza = paramLong;
       }
       label144:
       d1 = d2;
@@ -85,7 +85,7 @@ public final class f
     }
     this.mEnabled = true;
     Log.i("FPSMetronome", "[start] stack:%s", new Object[] { Util.getStack() });
-    this.fH.postFrameCallback(this);
+    this.SG.postFrameCallback(this);
     AppMethodBeat.o(139906);
   }
   
@@ -98,10 +98,10 @@ public final class f
       return;
     }
     this.mEnabled = false;
-    this.nwY = 0L;
-    this.nwZ = 0;
+    this.qza = 0L;
+    this.qzb = 0;
     Log.i("FPSMetronome", "[stop] stack:%s", new Object[] { Util.getStack() });
-    this.fH.removeFrameCallback(this);
+    this.SG.removeFrameCallback(this);
     AppMethodBeat.o(139907);
   }
   
@@ -112,7 +112,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.performance.f
  * JD-Core Version:    0.7.0.1
  */

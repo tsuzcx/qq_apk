@@ -1,16 +1,16 @@
 package com.tencent.luggage.sdk.config;
 
-import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.jsapi.l;
 
 public class a
-  implements m
+  implements l
 {
-  public boolean cyg = false;
-  public boolean cyh = false;
+  public boolean cwJ = false;
+  public boolean cwK = false;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.sdk.config.a
  * JD-Core Version:    0.7.0.1
  */

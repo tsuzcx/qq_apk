@@ -3,47 +3,35 @@ package com.tencent.mm.plugin.recordvideo.plugin.progress;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
-import com.tencent.mm.plugin.recordvideo.plugin.t;
-import com.tencent.mm.plugin.recordvideo.plugin.t.a;
+import com.tencent.mm.plugin.recordvideo.plugin.u;
+import com.tencent.mm.plugin.recordvideo.plugin.u.a;
 import java.util.ArrayList;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/plugin/progress/HorizontalSubProgressPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "progressBar", "Lcom/tencent/mm/plugin/recordvideo/plugin/progress/HorizontalSubProgressBar;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Lcom/tencent/mm/plugin/recordvideo/plugin/progress/HorizontalSubProgressBar;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getProgressBar", "()Lcom/tencent/mm/plugin/recordvideo/plugin/progress/HorizontalSubProgressBar;", "setProgressBar", "(Lcom/tencent/mm/plugin/recordvideo/plugin/progress/HorizontalSubProgressBar;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "prepareDelete", "", "delete", "", "removeCurrentProgress", "verify", "", "(Ljava/lang/Integer;)V", "reset", "setVisibility", "visibility", "subFinish", "updateProgress", "subProgress", "Ljava/util/ArrayList;", "", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/plugin/progress/HorizontalSubProgressPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "progressBar", "Lcom/tencent/mm/plugin/recordvideo/plugin/progress/HorizontalSubProgressBar;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Lcom/tencent/mm/plugin/recordvideo/plugin/progress/HorizontalSubProgressBar;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getProgressBar", "()Lcom/tencent/mm/plugin/recordvideo/plugin/progress/HorizontalSubProgressBar;", "setProgressBar", "(Lcom/tencent/mm/plugin/recordvideo/plugin/progress/HorizontalSubProgressBar;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "prepareDelete", "", "delete", "", "removeCurrentProgress", "verify", "", "(Ljava/lang/Integer;)V", "reset", "setVisibility", "visibility", "subFinish", "updateProgress", "subProgress", "Ljava/util/ArrayList;", "", "plugin-recordvideo_release"})
 public final class a
-  implements t
+  implements u
 {
-  public HorizontalSubProgressBar BXq;
-  private d wgr;
+  private d APl;
+  public HorizontalSubProgressBar HUe;
   
   public a(HorizontalSubProgressBar paramHorizontalSubProgressBar, d paramd)
   {
-    AppMethodBeat.i(237430);
-    this.BXq = paramHorizontalSubProgressBar;
-    this.wgr = paramd;
-    AppMethodBeat.o(237430);
+    AppMethodBeat.i(216755);
+    this.HUe = paramHorizontalSubProgressBar;
+    this.APl = paramd;
+    AppMethodBeat.o(216755);
   }
   
-  public final void aJ(ArrayList<Float> paramArrayList)
-  {
-    AppMethodBeat.i(237425);
-    p.h(paramArrayList, "subProgress");
-    this.BXq.aJ(paramArrayList);
-    AppMethodBeat.o(237425);
-  }
-  
-  public final void aSs() {}
-  
-  public final void m(Integer paramInteger)
-  {
-    AppMethodBeat.i(237427);
-    this.BXq.m(paramInteger);
-    AppMethodBeat.o(237427);
-  }
+  public final void bbp() {}
   
   public final String name()
   {
-    return null;
+    AppMethodBeat.i(216756);
+    String str = getClass().getName();
+    AppMethodBeat.o(216756);
+    return str;
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
@@ -59,11 +47,11 @@ public final class a
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(237431);
-    p.h(paramArrayOfString, "permissions");
-    p.h(paramArrayOfInt, "grantResults");
-    t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(237431);
+    AppMethodBeat.i(216757);
+    p.k(paramArrayOfString, "permissions");
+    p.k(paramArrayOfInt, "grantResults");
+    u.a.a(paramArrayOfString, paramArrayOfInt);
+    AppMethodBeat.o(216757);
   }
   
   public final void onResume() {}
@@ -72,34 +60,41 @@ public final class a
   
   public final void reset()
   {
-    AppMethodBeat.i(237429);
-    HorizontalSubProgressBar localHorizontalSubProgressBar = this.BXq;
-    localHorizontalSubProgressBar.BXo = false;
-    localHorizontalSubProgressBar.zBc.clear();
+    AppMethodBeat.i(216754);
+    HorizontalSubProgressBar localHorizontalSubProgressBar = this.HUe;
+    localHorizontalSubProgressBar.HUc = false;
+    localHorizontalSubProgressBar.FfX.clear();
     localHorizontalSubProgressBar.postInvalidate();
-    AppMethodBeat.o(237429);
-  }
-  
-  public final void rl(boolean paramBoolean)
-  {
-    AppMethodBeat.i(237426);
-    this.BXq.rl(paramBoolean);
-    AppMethodBeat.o(237426);
+    AppMethodBeat.o(216754);
   }
   
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(237428);
+    AppMethodBeat.i(216753);
     if (paramInt == 0) {
-      this.BXq.bringToFront();
+      this.HUe.bringToFront();
     }
-    this.BXq.setVisibility(paramInt);
-    AppMethodBeat.o(237428);
+    this.HUe.setVisibility(paramInt);
+    AppMethodBeat.o(216753);
+  }
+  
+  public final void u(Integer paramInteger)
+  {
+    AppMethodBeat.i(216752);
+    this.HUe.u(paramInteger);
+    AppMethodBeat.o(216752);
+  }
+  
+  public final void up(boolean paramBoolean)
+  {
+    AppMethodBeat.i(216751);
+    this.HUe.up(paramBoolean);
+    AppMethodBeat.o(216751);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.progress.a
  * JD-Core Version:    0.7.0.1
  */

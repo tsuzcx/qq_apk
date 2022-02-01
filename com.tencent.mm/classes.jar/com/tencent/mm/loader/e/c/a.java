@@ -7,7 +7,7 @@ import com.tencent.mm.loader.h.e<TT;>;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/loader/impr/transcoder/HeadResourceTranscoder;", "T", "Lcom/tencent/mm/loader/impr/transcoder/ResourceTranscoder;", "transcoder", "(Lcom/tencent/mm/loader/impr/transcoder/ResourceTranscoder;)V", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "source", "when", "Lcom/tencent/mm/loader/impr/transcoder/ResourceTranscoder$WHENIF;", "asResourceName", "", "ishasTransCoderWhenDownload", "", "libimageloader_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/loader/impr/transcoder/HeadResourceTranscoder;", "T", "Lcom/tencent/mm/loader/impr/transcoder/ResourceTranscoder;", "transcoder", "(Lcom/tencent/mm/loader/impr/transcoder/ResourceTranscoder;)V", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "source", "when", "Lcom/tencent/mm/loader/impr/transcoder/ResourceTranscoder$WHENIF;", "asResourceName", "", "ishasTransCoderWhenDownload", "", "libimageloader_release"})
 public final class a<T>
   extends b<T>
 {
@@ -16,15 +16,15 @@ public final class a<T>
     c(paramb);
   }
   
-  public final String Hi(String paramString)
+  public final String Ot(String paramString)
   {
-    p.h(paramString, "source");
-    b localb2 = ((a)this).iaI;
+    p.k(paramString, "source");
+    b localb2 = ((a)this).kPo;
     b localb1 = localb2;
     String str = paramString;
     if (localb2 == null)
     {
-      localb2 = ((a)this).iaI;
+      localb2 = ((a)this).kPo;
       localb1 = localb2;
       str = paramString;
       if (localb2 != null) {
@@ -33,7 +33,7 @@ public final class a<T>
     }
     for (;;)
     {
-      localb2 = ((a)this).iaI;
+      localb2 = ((a)this).kPo;
       localb1 = localb2;
       str = paramString;
       if (localb2 != null) {
@@ -43,14 +43,14 @@ public final class a<T>
       do
       {
         paramString = str;
-        if (localb1.iaJ == b.a.iaN)
+        if (localb1.kPp == b.a.kPt)
         {
           paramString = str;
-          if (b.b.iaQ == localb1.iaK) {
-            paramString = str + localb1.Hi(str);
+          if (b.b.kPw == localb1.kPq) {
+            paramString = str + localb1.Ot(str);
           }
         }
-        localb2 = localb1.iaI;
+        localb2 = localb1.kPo;
         localb1 = localb2;
         str = paramString;
       } while (localb2 != null);
@@ -59,14 +59,14 @@ public final class a<T>
       do
       {
         paramString = str;
-        if (localb1.iaJ == b.a.iaM)
+        if (localb1.kPp == b.a.kPs)
         {
           paramString = str;
-          if (b.b.iaQ == localb1.iaK) {
-            paramString = str + localb1.Hi(str);
+          if (b.b.kPw == localb1.kPq) {
+            paramString = str + localb1.Ot(str);
           }
         }
-        localb2 = localb1.iaI;
+        localb2 = localb1.kPo;
         localb1 = localb2;
         str = paramString;
       } while (localb2 != null);
@@ -75,14 +75,14 @@ public final class a<T>
     do
     {
       paramString = str;
-      if (localb1.iaJ == b.a.iaL)
+      if (localb1.kPp == b.a.kPr)
       {
         paramString = str;
-        if (b.b.iaQ == localb1.iaK) {
-          paramString = str + localb1.Hi(str);
+        if (b.b.kPw == localb1.kPq) {
+          paramString = str + localb1.Ot(str);
         }
       }
-      localb2 = localb1.iaI;
+      localb2 = localb1.kPo;
       localb1 = localb2;
       str = paramString;
     } while (localb2 != null);
@@ -91,19 +91,19 @@ public final class a<T>
   
   public final e<? extends T> a(g<?> paramg, f<?, T> paramf, e<T> parame)
   {
-    p.h(paramg, "targetView");
-    p.h(paramf, "reaper");
-    p.h(parame, "source");
+    p.k(paramg, "targetView");
+    p.k(paramf, "reaper");
+    p.k(parame, "source");
     return parame;
   }
   
   public final e<T> a(g<?> paramg, f<?, T> paramf, e<T> parame, b.b paramb)
   {
-    p.h(paramg, "targetView");
-    p.h(paramf, "reaper");
-    p.h(parame, "source");
-    p.h(paramb, "when");
-    Object localObject1 = ((a)this).iaI;
+    p.k(paramg, "targetView");
+    p.k(paramf, "reaper");
+    p.k(parame, "source");
+    p.k(paramb, "when");
+    Object localObject1 = ((a)this).kPo;
     Object localObject2 = localObject1;
     if (!(localObject1 instanceof b)) {
       localObject2 = null;
@@ -112,7 +112,7 @@ public final class a<T>
     localObject1 = parame;
     if (localObject2 == null)
     {
-      localObject1 = ((a)this).iaI;
+      localObject1 = ((a)this).kPo;
       localObject2 = localObject1;
       if (!(localObject1 instanceof b)) {
         localObject2 = null;
@@ -122,7 +122,7 @@ public final class a<T>
       if (localObject2 == null)
       {
         localObject1 = parame;
-        parame = ((a)this).iaI;
+        parame = ((a)this).kPo;
         localObject2 = parame;
         if (!(parame instanceof b)) {
           localObject2 = null;
@@ -139,10 +139,10 @@ public final class a<T>
     {
       label136:
       parame = (e<T>)localObject1;
-      if (localObject3.iaJ == b.a.iaN)
+      if (localObject3.kPp == b.a.kPt)
       {
         parame = (e<T>)localObject1;
-        if (paramb == localObject3.iaK) {
+        if (paramb == localObject3.kPq) {
           if ((localObject1 instanceof e)) {
             break label499;
           }
@@ -155,7 +155,7 @@ public final class a<T>
     for (parame = null;; parame = (e<T>)localObject1)
     {
       if (parame == null) {
-        p.hyc();
+        p.iCn();
       }
       localObject2 = localObject3.a(paramg, paramf, parame);
       parame = (e<T>)localObject2;
@@ -167,7 +167,7 @@ public final class a<T>
       }
       for (;;)
       {
-        localObject1 = localObject3.iaI;
+        localObject1 = localObject3.kPo;
         localObject2 = localObject1;
         if (!(localObject1 instanceof b)) {
           localObject2 = null;
@@ -180,10 +180,10 @@ public final class a<T>
         break;
         label247:
         parame = (e<T>)localObject1;
-        if (localObject3.iaJ == b.a.iaM)
+        if (localObject3.kPp == b.a.kPs)
         {
           parame = (e<T>)localObject1;
-          if (paramb == localObject3.iaK) {
+          if (paramb == localObject3.kPq) {
             if ((localObject1 instanceof e)) {
               break label490;
             }
@@ -192,7 +192,7 @@ public final class a<T>
         for (parame = null;; parame = (e<T>)localObject1)
         {
           if (parame == null) {
-            p.hyc();
+            p.iCn();
           }
           localObject2 = localObject3.a(paramg, paramf, parame);
           parame = (e<T>)localObject2;
@@ -204,7 +204,7 @@ public final class a<T>
           }
           for (;;)
           {
-            localObject1 = localObject3.iaI;
+            localObject1 = localObject3.kPo;
             localObject2 = localObject1;
             if (!(localObject1 instanceof b)) {
               localObject2 = null;
@@ -217,10 +217,10 @@ public final class a<T>
             localObject1 = parame;
             break;
             localObject2 = parame;
-            if (localObject3.iaJ == b.a.iaL)
+            if (localObject3.kPp == b.a.kPr)
             {
               localObject2 = parame;
-              if (paramb == localObject3.iaK) {
+              if (paramb == localObject3.kPq) {
                 if ((parame instanceof e)) {
                   break label481;
                 }
@@ -229,7 +229,7 @@ public final class a<T>
             for (localObject1 = null;; localObject1 = parame)
             {
               if (localObject1 == null) {
-                p.hyc();
+                p.iCn();
               }
               localObject2 = localObject3.a(paramg, paramf, (e)localObject1);
               localObject1 = localObject2;
@@ -239,7 +239,7 @@ public final class a<T>
               if (localObject1 == null) {}
               for (localObject2 = parame;; localObject2 = localObject1)
               {
-                parame = localObject3.iaI;
+                parame = localObject3.kPo;
                 localObject1 = parame;
                 if (!(parame instanceof b)) {
                   localObject1 = null;
@@ -260,7 +260,7 @@ public final class a<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.loader.e.c.a
  * JD-Core Version:    0.7.0.1
  */

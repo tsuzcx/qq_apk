@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
 final class aa$h
   implements DialogInterface.OnClickListener
 {
@@ -17,13 +17,13 @@ final class aa$h
     AppMethodBeat.i(148181);
     paramDialogInterface.dismiss();
     Log.e("MicroMsg.PhoneNumberVerifyCodeDialog", "verify code is error, do send the right code");
-    aa.g(this.nBs);
+    aa.g(this.qDD);
     AppMethodBeat.o(148181);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.aa.h
  * JD-Core Version:    0.7.0.1
  */

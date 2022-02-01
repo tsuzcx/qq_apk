@@ -6,8 +6,7 @@ import android.bluetooth.BluetoothGattServer;
 import android.bluetooth.BluetoothGattService;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,36 +15,36 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.UUID;
+import kotlin.g.b.aa.f;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
-import kotlin.g.b.z.f;
 import kotlin.l;
 import kotlin.t;
 import kotlin.x;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/JsApiAddBlePeripheralService;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "parseData", "Landroid/bluetooth/BluetoothGattService;", "Companion", "luggage-commons-jsapi-connectivity-ext_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/JsApiAddBlePeripheralService;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "parseData", "Landroid/bluetooth/BluetoothGattService;", "Companion", "luggage-commons-jsapi-connectivity-ext_release"})
 public final class c
-  extends d<f>
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<e>
 {
   private static final int CTRL_INDEX = 723;
   private static final String NAME = "addBLEPeripheralService";
-  public static final a lLn;
+  public static final c.a oHC;
   
   static
   {
     AppMethodBeat.i(144751);
-    lLn = new a((byte)0);
+    oHC = new c.a((byte)0);
     NAME = "addBLEPeripheralService";
     CTRL_INDEX = 723;
     AppMethodBeat.o(144751);
   }
   
-  private static BluetoothGattService P(JSONObject paramJSONObject)
+  private static BluetoothGattService T(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(144750);
-    z.f localf = new z.f();
+    aa.f localf = new aa.f();
     if (paramJSONObject == null)
     {
       AppMethodBeat.o(144750);
@@ -54,21 +53,21 @@ public final class c
     try
     {
       paramJSONObject = paramJSONObject.optJSONObject("service");
-      localf.SYG = new BluetoothGattService(UUID.fromString(paramJSONObject.optString("uuid")), 0);
+      localf.aaBC = new BluetoothGattService(UUID.fromString(paramJSONObject.optString("uuid")), 0);
       localObject1 = paramJSONObject.optJSONArray("characteristics");
       if (localObject1 != null) {
         break label121;
       }
-      paramJSONObject = (BluetoothGattService)localf.SYG;
+      paramJSONObject = (BluetoothGattService)localf.aaBC;
       AppMethodBeat.o(144750);
       return paramJSONObject;
     }
     catch (Exception paramJSONObject)
     {
       Log.e("MicroMsg.BLE.JsApiAddBlePeripheralService", "parseData: fail", new Object[] { paramJSONObject });
-      localf.SYG = null;
+      localf.aaBC = null;
     }
-    paramJSONObject = (BluetoothGattService)localf.SYG;
+    paramJSONObject = (BluetoothGattService)localf.aaBC;
     AppMethodBeat.o(144750);
     return paramJSONObject;
     label121:
@@ -133,7 +132,7 @@ public final class c
       break label805;
       localObject2 = new BluetoothGattCharacteristic(UUID.fromString((String)localObject2), m, i);
       localObject3 = arrayOfJSONObject.optString("value");
-      localObject4 = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.aK(Base64.decode((String)localObject3, 2));
+      localObject4 = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.aW(Base64.decode((String)localObject3, 2));
       Log.i("MicroMsg.BLE.JsApiAddBlePeripheralService", "parseData characteristic : base64 = " + (String)localObject3 + ", hex = " + localObject4);
       ((BluetoothGattCharacteristic)localObject2).setValue((byte[])localObject4);
       localObject3 = arrayOfJSONObject.optJSONArray("descriptors");
@@ -176,7 +175,7 @@ public final class c
     for (;;)
     {
       localObject4 = new BluetoothGattDescriptor(UUID.fromString((String)localObject4), m);
-      localObject5 = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.aK(Base64.decode((String)localObject3, 2));
+      localObject5 = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.aW(Base64.decode((String)localObject3, 2));
       Log.i("MicroMsg.BLE.JsApiAddBlePeripheralService", "parseData descriptor: base64 = " + (String)localObject3 + ", hex = " + localObject5);
       ((BluetoothGattDescriptor)localObject4).setValue((byte[])localObject5);
       ((BluetoothGattCharacteristic)localObject2).addDescriptor((BluetoothGattDescriptor)localObject4);
@@ -189,9 +188,9 @@ public final class c
       while (paramJSONObject.hasNext())
       {
         localObject1 = (BluetoothGattCharacteristic)paramJSONObject.next();
-        localObject2 = (BluetoothGattService)localf.SYG;
+        localObject2 = (BluetoothGattService)localf.aaBC;
         if (localObject2 == null) {
-          p.hyc();
+          p.iCn();
         }
         ((BluetoothGattService)localObject2).addCharacteristic((BluetoothGattCharacteristic)localObject1);
       }
@@ -239,66 +238,63 @@ public final class c
     }
   }
   
-  public final void a(final f paramf, JSONObject paramJSONObject, final int paramInt)
+  public final void a(final e parame, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(144749);
-    p.h(paramf, "env");
-    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bFE())
+    p.k(parame, "env");
+    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bRm())
     {
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b.a(this, paramInt, paramf, 10001, "fail:not available");
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b.a(this, paramInt, parame, 10001, "fail:not available");
       Log.i("MicroMsg.BLE.JsApiAddBlePeripheralService", "invoke: Ble is not open");
       AppMethodBeat.o(144749);
       return;
     }
-    Object localObject1 = P(paramJSONObject);
+    Object localObject1 = T(paramJSONObject);
     if (localObject1 == null)
     {
       Log.e("MicroMsg.BLE.JsApiAddBlePeripheralService", "createBLEPeripheralService data is invalid");
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b.a(this, paramInt, paramf, 10013, "fail:invalid data");
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b.a(this, paramInt, parame, 10013, "fail:invalid data");
       AppMethodBeat.o(144749);
       return;
     }
     if (paramJSONObject == null) {
-      p.hyc();
+      p.iCn();
     }
     int i = paramJSONObject.optInt("serverId");
-    paramJSONObject = o.lLV;
-    paramJSONObject = o.wQ(i);
+    paramJSONObject = o.oIk;
+    paramJSONObject = o.Af(i);
     if (paramJSONObject == null)
     {
       Log.i("MicroMsg.BLE.JsApiAddBlePeripheralService", "invoke: retrieve a null server by #".concat(String.valueOf(i)));
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b.a(this, paramInt, paramf, 10020, "fail: no server");
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b.a(this, paramInt, parame, 10020, "fail: no server");
       AppMethodBeat.o(144749);
       return;
     }
-    paramf = (kotlin.g.a.b)new b(this, paramInt, paramf);
-    p.h(localObject1, "service");
-    p.h(paramf, "callback");
-    Object localObject2 = paramJSONObject.lLF;
+    parame = (kotlin.g.a.b)new b(this, paramInt, parame);
+    p.k(localObject1, "service");
+    p.k(parame, "callback");
+    Object localObject2 = paramJSONObject.oHU;
     if (localObject2 == null) {
-      p.btv("gattServer");
+      p.bGy("gattServer");
     }
     if (!((BluetoothGattServer)localObject2).addService((BluetoothGattService)localObject1)) {
-      paramf.invoke(Boolean.FALSE);
+      parame.invoke(Boolean.FALSE);
     }
-    paramJSONObject = paramJSONObject.lLG;
+    paramJSONObject = paramJSONObject.oHV;
     localObject1 = ((BluetoothGattService)localObject1).getUuid();
-    p.g(localObject1, "service.uuid");
-    localObject2 = kotlin.c.b.btu(null);
-    ((Timer)localObject2).schedule((TimerTask)new n.b(paramf), 3000L, 9223372036854775807L);
-    paramJSONObject.put(localObject1, new kotlin.o(paramf, localObject2));
+    p.j(localObject1, "service.uuid");
+    localObject2 = kotlin.c.b.bGx(null);
+    ((Timer)localObject2).schedule((TimerTask)new n.b(parame), 3000L, 9223372036854775807L);
+    paramJSONObject.put(localObject1, new kotlin.o(parame, localObject2));
     AppMethodBeat.o(144749);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/JsApiAddBlePeripheralService$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "luggage-commons-jsapi-connectivity-ext_release"})
-  public static final class a {}
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "success", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "success", "", "invoke"})
   static final class b
     extends q
     implements kotlin.g.a.b<Boolean, x>
   {
-    b(c paramc, int paramInt, f paramf)
+    b(c paramc, int paramInt, e parame)
     {
       super();
     }
@@ -306,7 +302,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b.c
  * JD-Core Version:    0.7.0.1
  */

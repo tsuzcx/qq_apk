@@ -7,23 +7,23 @@ import com.tencent.mm.ipcinvoker.wx_extension.service.SupportProcessIPCService;
 public final class c
   extends d
 {
-  public static final c oFE;
+  public static final c rHt;
   
   static
   {
     AppMethodBeat.i(121616);
-    oFE = new c();
+    rHt = new c();
     AppMethodBeat.o(121616);
   }
   
   private c()
   {
-    super(SupportProcessIPCService.dkO, b.class);
+    super(SupportProcessIPCService.PROCESS_NAME, b.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.wxawidget.console.c
  * JD-Core Version:    0.7.0.1
  */

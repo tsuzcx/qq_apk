@@ -6,35 +6,35 @@ import java.util.Arrays;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/model/MultiTalkCameraManager$FrameObj;", "", "isBusy", "", "w", "", "h", "MediaFmt", "mirror", "angle", "outImg", "", "bmp", "Landroid/graphics/Bitmap;", "(ZIIIII[ILandroid/graphics/Bitmap;)V", "getMediaFmt", "()I", "setMediaFmt", "(I)V", "getAngle", "setAngle", "getBmp", "()Landroid/graphics/Bitmap;", "setBmp", "(Landroid/graphics/Bitmap;)V", "getH", "setH", "()Z", "setBusy", "(Z)V", "getMirror", "setMirror", "getOutImg", "()[I", "setOutImg", "([I)V", "getW", "setW", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "copy", "equals", "other", "hashCode", "toString", "", "plugin-multitalk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/model/MultiTalkCameraManager$FrameObj;", "", "isBusy", "", "w", "", "h", "MediaFmt", "mirror", "angle", "outImg", "", "bmp", "Landroid/graphics/Bitmap;", "(ZIIIII[ILandroid/graphics/Bitmap;)V", "getMediaFmt", "()I", "setMediaFmt", "(I)V", "getAngle", "setAngle", "getBmp", "()Landroid/graphics/Bitmap;", "setBmp", "(Landroid/graphics/Bitmap;)V", "getH", "setH", "()Z", "setBusy", "(Z)V", "getMirror", "setMirror", "getOutImg", "()[I", "setOutImg", "([I)V", "getW", "setW", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "copy", "equals", "other", "hashCode", "toString", "", "plugin-multitalk_release"})
 public final class m$b
 {
-  private int angle = 0;
+  private int Frp = 0;
+  private int Frq = 0;
+  private int[] Frr = null;
   private int h = 0;
-  private boolean hho = false;
+  private boolean jTm = false;
   private int mirror = 0;
+  private Bitmap tJN = null;
   private int w = 0;
-  private Bitmap xqp = null;
-  private int zLX = 0;
-  private int[] zLY = null;
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(239601);
+    AppMethodBeat.i(200397);
     if (this != paramObject)
     {
       if ((paramObject instanceof b))
       {
         paramObject = (b)paramObject;
-        if ((this.hho != paramObject.hho) || (this.w != paramObject.w) || (this.h != paramObject.h) || (this.zLX != paramObject.zLX) || (this.mirror != paramObject.mirror) || (this.angle != paramObject.angle) || (!p.j(this.zLY, paramObject.zLY)) || (!p.j(this.xqp, paramObject.xqp))) {}
+        if ((this.jTm != paramObject.jTm) || (this.w != paramObject.w) || (this.h != paramObject.h) || (this.Frp != paramObject.Frp) || (this.mirror != paramObject.mirror) || (this.Frq != paramObject.Frq) || (!p.h(this.Frr, paramObject.Frr)) || (!p.h(this.tJN, paramObject.tJN))) {}
       }
     }
     else
     {
-      AppMethodBeat.o(239601);
+      AppMethodBeat.o(200397);
       return true;
     }
-    AppMethodBeat.o(239601);
+    AppMethodBeat.o(200397);
     return false;
   }
   
@@ -45,9 +45,9 @@ public final class m$b
   
   public final String toString()
   {
-    AppMethodBeat.i(239599);
-    String str = "FrameObj(isBusy=" + this.hho + ", w=" + this.w + ", h=" + this.h + ", MediaFmt=" + this.zLX + ", mirror=" + this.mirror + ", angle=" + this.angle + ", outImg=" + Arrays.toString(this.zLY) + ", bmp=" + this.xqp + ")";
-    AppMethodBeat.o(239599);
+    AppMethodBeat.i(200386);
+    String str = "FrameObj(isBusy=" + this.jTm + ", w=" + this.w + ", h=" + this.h + ", MediaFmt=" + this.Frp + ", mirror=" + this.mirror + ", angle=" + this.Frq + ", outImg=" + Arrays.toString(this.Frr) + ", bmp=" + this.tJN + ")";
+    AppMethodBeat.o(200386);
     return str;
   }
 }

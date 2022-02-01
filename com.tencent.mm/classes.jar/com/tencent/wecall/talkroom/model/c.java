@@ -3,9 +3,9 @@ package com.tencent.wecall.talkroom.model;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.a.a.a;
-import com.tencent.pb.common.b.a.a.a.az;
+import com.tencent.pb.common.b.a.a.a.ay;
+import com.tencent.pb.common.b.a.a.a.ba;
 import com.tencent.pb.common.b.a.a.a.bb;
-import com.tencent.pb.common.b.a.a.a.bc;
 import com.tencent.pb.common.c.b;
 import com.tencent.pb.talkroom.sdk.MultiTalkGroup;
 import java.util.HashMap;
@@ -16,41 +16,41 @@ import java.util.Map;
 public final class c
 {
   private static boolean DEBUG;
-  public static boolean Suk;
-  private static final com.tencent.pb.common.c.d<c> Sul;
-  private Map<String, TalkRoom> Sum;
-  private Map<String, String> Sun;
-  g Suo;
+  public static boolean ZVg;
+  private static final com.tencent.pb.common.c.d<c> ZVh;
+  private Map<String, TalkRoom> ZVi;
+  private Map<String, String> ZVj;
+  g ZVk;
   
   static
   {
     AppMethodBeat.i(62716);
-    Suk = false;
+    ZVg = false;
     DEBUG = false;
-    Sul = new com.tencent.pb.common.c.d() {};
+    ZVh = new com.tencent.pb.common.c.d() {};
     AppMethodBeat.o(62716);
   }
   
   private c()
   {
     AppMethodBeat.i(62702);
-    this.Sum = new HashMap();
-    this.Sun = new HashMap();
+    this.ZVi = new HashMap();
+    this.ZVj = new HashMap();
     b.d("TalkRoomManager", new Object[] { "asyncLoadCache" });
     AppMethodBeat.o(62702);
   }
   
-  public static boolean brl(String paramString)
+  public static boolean bEk(String paramString)
   {
     AppMethodBeat.i(62713);
-    paramString = hqY().brg(paramString);
+    paramString = iuI().bEf(paramString);
     if (paramString == null)
     {
       b.w("TalkRoomManager", new Object[] { "isMySelfExit talkRoom is null" });
       AppMethodBeat.o(62713);
       return true;
     }
-    paramString = paramString.hqR();
+    paramString = paramString.iuB();
     if ((paramString == null) || (20 == paramString.getState()))
     {
       AppMethodBeat.o(62713);
@@ -60,19 +60,19 @@ public final class c
     return false;
   }
   
-  public static int brm(String paramString)
+  public static int bEl(String paramString)
   {
     AppMethodBeat.i(62714);
-    Object localObject = hqY().brg(paramString);
+    Object localObject = iuI().bEf(paramString);
     if (localObject == null)
     {
       b.w("TalkRoomManager", new Object[] { "getMySelfReason talkRoom is null groupId: ", paramString });
       AppMethodBeat.o(62714);
       return 0;
     }
-    localObject = ((TalkRoom)localObject).hqR();
-    if ((localObject != null) && (((d)localObject).Sup != null)) {}
-    for (int i = ((d)localObject).Sup.bDZ;; i = 0)
+    localObject = ((TalkRoom)localObject).iuB();
+    if ((localObject != null) && (((d)localObject).ZVl != null)) {}
+    for (int i = ((d)localObject).ZVl.bnA;; i = 0)
     {
       b.w("TalkRoomManager", new Object[] { "getMySelfReason groupId: ", paramString, " reason: ", Integer.valueOf(i) });
       AppMethodBeat.o(62714);
@@ -80,15 +80,15 @@ public final class c
     }
   }
   
-  public static c hqY()
+  public static c iuI()
   {
     AppMethodBeat.i(62701);
-    c localc = (c)Sul.get();
+    c localc = (c)ZVh.get();
     AppMethodBeat.o(62701);
     return localc;
   }
   
-  private static void hqZ()
+  private static void iuJ()
   {
     AppMethodBeat.i(62710);
     b.d("TalkRoomManager", new Object[] { "asyncWriteBackCache" });
@@ -104,21 +104,21 @@ public final class c
       AppMethodBeat.o(62712);
       return null;
     }
-    Object localObject = brg(paramString);
+    Object localObject = bEf(paramString);
     if (localObject == null)
     {
       b.w("TalkRoomManager", new Object[] { "getMsgKeyByGroupId talkRoom is null,groupId: ", paramString });
       AppMethodBeat.o(62712);
       return null;
     }
-    localObject = ((TalkRoom)localObject).brf(a.hjq());
+    localObject = ((TalkRoom)localObject).bEe(a.ila());
     if (localObject == null)
     {
       b.w("TalkRoomManager", new Object[] { "getMsgKeyByGroupId talkRoomMember is null,groupId: ", paramString });
       AppMethodBeat.o(62712);
       return null;
     }
-    localObject = ((d)localObject).Sup;
+    localObject = ((d)localObject).ZVl;
     if (localObject == null)
     {
       b.w("TalkRoomManager", new Object[] { "getMsgKeyByGroupId voiceGroupMem is null,groupId: ", paramString });
@@ -132,16 +132,16 @@ public final class c
     localStringBuffer.append(",");
     localStringBuffer.append(paramLong);
     localStringBuffer.append(",");
-    localStringBuffer.append(((a.bb)localObject).RGh);
+    localStringBuffer.append(((a.ba)localObject).ZhN);
     b.w("TalkRoomManager", new Object[] { "getMsgKeyByGroupId msgKey is", localStringBuffer.toString() });
     paramString = localStringBuffer.toString();
     AppMethodBeat.o(62712);
     return paramString;
   }
   
-  public final boolean a(String paramString1, String paramString2, Integer paramInteger, int paramInt, long paramLong, a.az paramaz, a.bb[] paramArrayOfbb, a.bc[] paramArrayOfbc, boolean paramBoolean1, boolean paramBoolean2)
+  public final boolean a(String paramString1, String paramString2, Integer paramInteger, int paramInt, long paramLong, a.ay paramay, a.ba[] paramArrayOfba, a.bb[] paramArrayOfbb, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(199681);
+    AppMethodBeat.i(208859);
     b.d("TalkRoomManager", new Object[] { "newOrUpdateGroup groupId: ", paramString1, " isActive: ", Boolean.valueOf(paramBoolean2) });
     if (TextUtils.isEmpty(paramString1)) {}
     for (String str1 = paramString2;; str1 = paramString1)
@@ -149,111 +149,111 @@ public final class c
       if (TextUtils.isEmpty(str1))
       {
         b.w("TalkRoomManager", new Object[] { "newOrUpdateGroup invalid groupId" });
-        AppMethodBeat.o(199681);
+        AppMethodBeat.o(208859);
         return false;
       }
-      if (j.bru(paramString2)) {
-        this.Sun.put(paramString2, str1);
+      if (i.bEt(paramString2)) {
+        this.ZVj.put(paramString2, str1);
       }
-      paramString1 = (TalkRoom)this.Sum.get(str1);
-      if ((!TextUtils.isEmpty(paramString2)) && (paramString1 != null) && (paramaz != null) && (paramaz.dLt != 100))
+      paramString1 = (TalkRoom)this.ZVi.get(str1);
+      if ((!TextUtils.isEmpty(paramString2)) && (paramString1 != null) && (paramay != null) && (paramay.fEi != 100))
       {
         b.w("TalkRoomManager", new Object[] { "newOrUpdateGroup clientGroupId is not empty , room is not null" });
-        AppMethodBeat.o(199681);
+        AppMethodBeat.o(208859);
         return false;
       }
       String str2 = paramString1;
       if (paramString1 == null)
       {
-        if (j.bru(paramString2)) {
-          paramString1 = (TalkRoom)this.Sum.get(paramString2);
+        if (i.bEt(paramString2)) {
+          paramString1 = (TalkRoom)this.ZVi.get(paramString2);
         }
         str2 = paramString1;
         if (paramString1 != null)
         {
-          this.Sum.put(str1, paramString1);
+          this.ZVi.put(str1, paramString1);
           str2 = paramString1;
         }
       }
       if ((str2 != null) && (paramBoolean2))
       {
-        int i = j.hrA();
-        long l = j.hrB();
+        int i = i.ivi();
+        long l = i.ivj();
         b.d("TalkRoomManager", new Object[] { "check current active group roomId: ", Integer.valueOf(i), " and roomKey: ", Long.valueOf(paramLong) });
         if ((i != 0) && (i != paramInt))
         {
           b.w("TalkRoomManager", new Object[] { "diff roomId: ", Integer.valueOf(i), " -> ", Integer.valueOf(paramInt) });
-          AppMethodBeat.o(199681);
+          AppMethodBeat.o(208859);
           return false;
         }
         if ((0L != l) && (l != paramLong))
         {
           b.w("TalkRoomManager", new Object[] { "diff roomKey: ", Long.valueOf(l), " -> ", Long.valueOf(paramLong) });
-          AppMethodBeat.o(199681);
+          AppMethodBeat.o(208859);
           return false;
         }
       }
       if (str2 == null)
       {
         b.d("TalkRoomManager", new Object[] { "newOrUpdateGroup create groupId: ", str1 });
-        paramString1 = TalkRoom.a(str1, paramString2, paramInteger, paramInt, paramLong, paramaz, paramArrayOfbb, paramArrayOfbc);
-        this.Sum.put(str1, paramString1);
+        paramString1 = TalkRoom.a(str1, paramString2, paramInteger, paramInt, paramLong, paramay, paramArrayOfba, paramArrayOfbb);
+        this.ZVi.put(str1, paramString1);
       }
       for (;;)
       {
-        if ((this.Suo != null) && (paramBoolean1)) {
-          this.Suo.f(brn(str1));
+        if ((this.ZVk != null) && (paramBoolean1)) {
+          this.ZVk.f(bEm(str1));
         }
-        hqZ();
-        AppMethodBeat.o(199681);
+        iuJ();
+        AppMethodBeat.o(208859);
         return true;
         b.d("TalkRoomManager", new Object[] { "newOrUpdateGroup update groupId: ", str1 });
-        TalkRoom.a(str2, str1, paramString2, paramInteger, paramInt, paramLong, paramaz, paramArrayOfbb, paramArrayOfbc);
+        TalkRoom.a(str2, str1, paramString2, paramInteger, paramInt, paramLong, paramay, paramArrayOfba, paramArrayOfbb);
       }
     }
   }
   
-  public final TalkRoom brg(String paramString)
+  public final TalkRoom bEf(String paramString)
   {
     AppMethodBeat.i(62704);
-    TalkRoom localTalkRoom2 = (TalkRoom)this.Sum.get(paramString);
+    TalkRoom localTalkRoom2 = (TalkRoom)this.ZVi.get(paramString);
     TalkRoom localTalkRoom1 = localTalkRoom2;
     if (localTalkRoom2 == null)
     {
       localTalkRoom1 = localTalkRoom2;
-      if (j.bru(paramString))
+      if (i.bEt(paramString))
       {
-        paramString = (String)this.Sun.get(paramString);
-        localTalkRoom1 = (TalkRoom)this.Sum.get(paramString);
+        paramString = (String)this.ZVj.get(paramString);
+        localTalkRoom1 = (TalkRoom)this.ZVi.get(paramString);
       }
     }
     AppMethodBeat.o(62704);
     return localTalkRoom1;
   }
   
-  public final void brh(String paramString)
+  public final void bEg(String paramString)
   {
     AppMethodBeat.i(62705);
     try
     {
-      paramString = brg(paramString);
+      paramString = bEf(paramString);
       if (paramString == null)
       {
         b.w("TalkRoomManager", new Object[] { "handleRoomExit assert failed: current TalkRoom MUST exists" });
         AppMethodBeat.o(62705);
         return;
       }
-      d locald = paramString.brf(a.hjq());
+      d locald = paramString.bEe(a.ila());
       if (locald != null)
       {
-        locald.Sup.status = 20;
-        locald.Sup.qrD = -1;
+        locald.ZVl.status = 20;
+        locald.ZVl.tQm = -1;
       }
-      if (paramString.zHD == null) {}
-      for (paramString = "";; paramString = paramString.zHD)
+      if (paramString.FmO == null) {}
+      for (paramString = "";; paramString = paramString.FmO)
       {
         b.d("tagorewang:TalkRoom", new Object[] { "resetRoomTempInfo groupId: ", paramString });
-        hqZ();
+        iuJ();
         AppMethodBeat.o(62705);
         return;
       }
@@ -266,7 +266,7 @@ public final class c
     }
   }
   
-  public final int bri(String paramString)
+  public final int bEh(String paramString)
   {
     AppMethodBeat.i(62706);
     if (TextUtils.isEmpty(paramString))
@@ -275,17 +275,17 @@ public final class c
       AppMethodBeat.o(62706);
       return -1;
     }
-    Object localObject = brg(paramString);
+    Object localObject = bEf(paramString);
     if (localObject == null)
     {
       b.w("TalkRoomManager", new Object[] { "getSelfMemberId TalkRoom is null  groupId: ", paramString });
       AppMethodBeat.o(62706);
       return -1;
     }
-    localObject = ((TalkRoom)localObject).brf(a.hjq());
+    localObject = ((TalkRoom)localObject).bEe(a.ila());
     if (localObject != null)
     {
-      b.w("TalkRoomManager", new Object[] { "getSelfMemberId TalkRoomMember is not null groupId: ", paramString, " uuid: ", a.hjq(), " memberId: ", Integer.valueOf(((d)localObject).getMemberId()) });
+      b.w("TalkRoomManager", new Object[] { "getSelfMemberId TalkRoomMember is not null groupId: ", paramString, " uuid: ", a.ila(), " memberId: ", Integer.valueOf(((d)localObject).getMemberId()) });
       int i = ((d)localObject).getMemberId();
       AppMethodBeat.o(62706);
       return i;
@@ -295,7 +295,7 @@ public final class c
     return -1;
   }
   
-  public final int brj(String paramString)
+  public final int bEi(String paramString)
   {
     AppMethodBeat.i(62707);
     if (TextUtils.isEmpty(paramString))
@@ -304,48 +304,48 @@ public final class c
       AppMethodBeat.o(62707);
       return 0;
     }
-    TalkRoom localTalkRoom = brg(paramString);
+    TalkRoom localTalkRoom = bEf(paramString);
     if (localTalkRoom == null)
     {
       b.w("TalkRoomManager", new Object[] { "getRountIdByGrouId TalkRoom is null  groupId: ", paramString });
       AppMethodBeat.o(62707);
       return 0;
     }
-    int i = localTalkRoom.hqM();
+    int i = localTalkRoom.iuw();
     AppMethodBeat.o(62707);
     return i;
   }
   
-  public final int brk(String paramString)
+  public final int bEj(String paramString)
   {
     AppMethodBeat.i(62711);
-    TalkRoom localTalkRoom = brg(paramString);
+    TalkRoom localTalkRoom = bEf(paramString);
     if (localTalkRoom == null)
     {
       AppMethodBeat.o(62711);
       return 0;
     }
-    int i = localTalkRoom.Sui.size();
+    int i = localTalkRoom.ZVe.size();
     b.d("TalkRoomManager", new Object[] { "getGroupMemberSize groupid: ", paramString, " size: ", Integer.valueOf(i) });
     AppMethodBeat.o(62711);
     return i;
   }
   
-  public final MultiTalkGroup brn(String paramString)
+  public final MultiTalkGroup bEm(String paramString)
   {
     AppMethodBeat.i(62715);
-    paramString = brg(paramString);
+    paramString = bEf(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(62715);
       return null;
     }
-    paramString = paramString.hqU();
+    paramString = paramString.iuE();
     AppMethodBeat.o(62715);
     return paramString;
   }
   
-  public final boolean dG(String paramString, boolean paramBoolean)
+  public final boolean dS(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(62703);
     if (TextUtils.isEmpty(paramString))
@@ -354,14 +354,14 @@ public final class c
       AppMethodBeat.o(62703);
       return false;
     }
-    paramString = brg(paramString);
+    paramString = bEf(paramString);
     if (paramString == null)
     {
       b.w("TalkRoomManager", new Object[] { "isGroupActiveExceptMySelf talkRoom is null" });
       AppMethodBeat.o(62703);
       return false;
     }
-    paramString = paramString.hqP();
+    paramString = paramString.iuz();
     if (paramString == null)
     {
       b.w("TalkRoomManager", new Object[] { "isGroupActiveExceptMySelf TalkRoomMember list is null" });
@@ -378,8 +378,8 @@ public final class c
         d locald = (d)paramString.next();
         if (locald != null)
         {
-          locald.hra();
-          TalkRoom.hqL();
+          locald.iuK();
+          TalkRoom.iuv();
           if (locald.getState() != 10) {
             break label234;
           }
@@ -413,11 +413,11 @@ public final class c
     }
   }
   
-  public final boolean e(String paramString1, String paramString2, String... paramVarArgs)
+  public final boolean f(String paramString1, String paramString2, String... paramVarArgs)
   {
     AppMethodBeat.i(62708);
     b.d("TalkRoomManager", new Object[] { "newTmpGroup groupId: ", paramString1 });
-    if (!j.bru(paramString1))
+    if (!i.bEt(paramString1))
     {
       b.w("TalkRoomManager", new Object[] { "newTmpGroup invalid clientGroupId" });
       AppMethodBeat.o(62708);
@@ -431,27 +431,27 @@ public final class c
     }
     try
     {
-      Object localObject = new a.az();
-      ((a.az)localObject).dLt = 0;
-      ((a.az)localObject).RFQ = paramString2;
-      ((a.az)localObject).RFP = a.hjq();
-      paramString2 = new TalkRoom(paramString1, null, (a.az)localObject);
+      Object localObject = new a.ay();
+      ((a.ay)localObject).fEi = 0;
+      ((a.ay)localObject).Zhv = paramString2;
+      ((a.ay)localObject).Zhu = a.ila();
+      paramString2 = new TalkRoom(paramString1, null, (a.ay)localObject);
       int j = paramVarArgs.length;
       int i = 0;
       while (i != j)
       {
         localObject = paramVarArgs[i];
-        a.bb localbb = new a.bb();
-        localbb.dLN = ((String)localObject);
-        localbb.RGr = a.hjq();
-        localbb.status = 20;
-        localbb.qrD = -1;
-        localbb.RGf = ((int)(System.currentTimeMillis() / 1000L));
-        paramString2.a(new d(localbb, new a.bc()));
+        a.ba localba = new a.ba();
+        localba.fEC = ((String)localObject);
+        localba.ZhX = a.ila();
+        localba.status = 20;
+        localba.tQm = -1;
+        localba.ZhL = ((int)(System.currentTimeMillis() / 1000L));
+        paramString2.a(new d(localba, new a.bb()));
         i += 1;
       }
-      this.Sum.put(paramString1, paramString2);
-      hqZ();
+      this.ZVi.put(paramString1, paramString2);
+      iuJ();
       AppMethodBeat.o(62708);
       return true;
     }
@@ -463,40 +463,40 @@ public final class c
     return false;
   }
   
-  public final String hJ(String paramString, int paramInt)
+  public final String is(String paramString, int paramInt)
   {
-    AppMethodBeat.i(199682);
+    AppMethodBeat.i(208865);
     if (TextUtils.isEmpty(paramString))
     {
       b.w("TalkRoomManager", new Object[] { "getUsrNameByMemberId groupId is null memberId: ", Integer.valueOf(paramInt) });
-      AppMethodBeat.o(199682);
+      AppMethodBeat.o(208865);
       return "";
     }
-    Object localObject = brg(paramString);
+    Object localObject = bEf(paramString);
     if (localObject == null)
     {
       b.w("TalkRoomManager", new Object[] { "getUsrNameByMemberId talkRoom is null groupId: ", paramString, " memberId: ", Integer.valueOf(paramInt) });
-      AppMethodBeat.o(199682);
+      AppMethodBeat.o(208865);
       return "";
     }
-    localObject = ((TalkRoom)localObject).hqT().iterator();
+    localObject = ((TalkRoom)localObject).iuD().iterator();
     while (((Iterator)localObject).hasNext())
     {
-      a.bb localbb = (a.bb)((Iterator)localObject).next();
-      if ((localbb != null) && (localbb.qrD == paramInt))
+      a.ba localba = (a.ba)((Iterator)localObject).next();
+      if ((localba != null) && (localba.tQm == paramInt))
       {
-        b.d("TalkRoomManager", new Object[] { "getUsrNameByMemberId wxUserName:", localbb.dLN, " groupId: ", paramString, " memberId: ", Integer.valueOf(paramInt) });
-        if (localbb.dLN == null)
+        b.d("TalkRoomManager", new Object[] { "getUsrNameByMemberId wxUserName:", localba.fEC, " groupId: ", paramString, " memberId: ", Integer.valueOf(paramInt) });
+        if (localba.fEC == null)
         {
-          AppMethodBeat.o(199682);
+          AppMethodBeat.o(208865);
           return "";
         }
-        paramString = localbb.dLN;
-        AppMethodBeat.o(199682);
+        paramString = localba.fEC;
+        AppMethodBeat.o(208865);
         return paramString;
       }
     }
-    AppMethodBeat.o(199682);
+    AppMethodBeat.o(208865);
     return "";
   }
 }

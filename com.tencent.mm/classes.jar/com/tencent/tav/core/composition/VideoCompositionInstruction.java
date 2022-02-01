@@ -18,11 +18,11 @@ public class VideoCompositionInstruction
   
   public VideoCompositionInstruction()
   {
-    AppMethodBeat.i(218049);
+    AppMethodBeat.i(189766);
     this.layerInstructions = new ArrayList();
     this.requiredSourceTrackIDs = new ArrayList();
     this.passthroughTrackID = -1;
-    AppMethodBeat.o(218049);
+    AppMethodBeat.o(189766);
   }
   
   public int getBackgroundColor()
@@ -57,7 +57,7 @@ public class VideoCompositionInstruction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.core.composition.VideoCompositionInstruction
  * JD-Core Version:    0.7.0.1
  */

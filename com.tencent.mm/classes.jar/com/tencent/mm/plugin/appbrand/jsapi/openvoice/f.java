@@ -12,17 +12,17 @@ public final class f
 {
   public static final int CTRL_INDEX = 521;
   public static final String NAME = "updateVoIPChatMuteConfig";
-  boolean mkb;
-  boolean mkc;
-  private boolean mkd;
+  boolean pif;
+  boolean pig;
+  private boolean pih;
   
   public f()
   {
     AppMethodBeat.i(174848);
-    this.mkb = false;
-    this.mkc = false;
-    this.mkd = false;
-    com.tencent.mm.plugin.appbrand.permission.c.aem("updateVoIPChatMuteConfig");
+    this.pif = false;
+    this.pig = false;
+    this.pih = false;
+    com.tencent.mm.plugin.appbrand.permission.c.amg("updateVoIPChatMuteConfig");
     AppMethodBeat.o(174848);
   }
   
@@ -36,9 +36,9 @@ public final class f
       boolean bool2 = localJSONObject.getBoolean("muteEarphone");
       boolean bool3 = paramJSONObject.optBoolean("handsFree", false);
       Log.i("MicroMsg.OpenVoice.JsApiCloudVoiceUpdateVoIPChatMuteConfig", "hy: muteMicroPhone:%b, muteEarPhone:%b, handsFree:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
-      q.qta.a(bool2, new b() {});
-      q.qta.b(bool1, new b() {});
-      q.qta.c(bool3, new b() {});
+      q.tRM.a(bool2, new b() {});
+      q.tRM.b(bool1, new b() {});
+      q.tRM.c(bool3, new b() {});
       AppMethodBeat.o(46690);
       return;
     }

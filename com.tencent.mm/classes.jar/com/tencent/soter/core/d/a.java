@@ -21,7 +21,7 @@ public final class a
     super(paramString);
   }
   
-  public final Signature bqm(String paramString)
+  public final Signature bDf(String paramString)
   {
     AppMethodBeat.i(88680);
     d.d("Monday", "CertSoterCore initAuthKeySignature", new Object[0]);
@@ -32,7 +32,7 @@ public final class a
       return null;
     }
     Signature localSignature = Signature.getInstance("SHA256withRSA/PSS");
-    KeyStore localKeyStore = KeyStore.getInstance(this.RQb);
+    KeyStore localKeyStore = KeyStore.getInstance(this.ZsG);
     localKeyStore.load(null);
     paramString = localKeyStore.getKey(paramString, null);
     if (paramString != null)
@@ -46,18 +46,18 @@ public final class a
     return null;
   }
   
-  public final f hlk()
+  public final f ioJ()
   {
     AppMethodBeat.i(88678);
     d.i("Soter.CertSoterCore", "soter: start generate ask", new Object[0]);
-    if (hlj()) {
+    if (ioI()) {
       try
       {
-        Object localObject = KeyPairGenerator.getInstance("RSA", this.RQb);
-        ((KeyPairGenerator)localObject).initialize(com.tencent.soter.core.b.a.hw(e.hls().RPL + ".addcounter.auto_signed_when_get_pubkey_attk", 16).ac(new String[] { "SHA-256" }).ad(new String[] { "PSS" }).hlq());
+        Object localObject = KeyPairGenerator.getInstance("RSA", this.ZsG);
+        ((KeyPairGenerator)localObject).initialize(com.tencent.soter.core.b.a.ig(e.ioS().Zsq + ".addcounter.auto_signed_when_get_pubkey_attk", 16).ac(new String[] { "SHA-256" }).ad(new String[] { "PSS" }).ioQ());
         long l = System.nanoTime();
         ((KeyPairGenerator)localObject).generateKeyPair();
-        d.i("Soter.CertSoterCore", "soter: generate successfully. cost: %d ms", new Object[] { Long.valueOf(g.OA(l)) });
+        d.i("Soter.CertSoterCore", "soter: generate successfully. cost: %d ms", new Object[] { Long.valueOf(g.WQ(l)) });
         h.reset();
         localObject = new f(0);
         AppMethodBeat.o(88678);
@@ -74,7 +74,7 @@ public final class a
       catch (OutOfMemoryError localOutOfMemoryError)
       {
         d.a("Soter.CertSoterCore", localOutOfMemoryError, "soter: out of memory when generate ASK!! maybe no attk inside");
-        h.hlt();
+        h.ioT();
       }
     }
     for (;;)
@@ -86,20 +86,20 @@ public final class a
     }
   }
   
-  public final i hlo()
+  public final i ioN()
   {
     AppMethodBeat.i(88679);
     d.i("Soter.CertSoterCore", "soter: start get app global secure key pub", new Object[0]);
-    if (hlj()) {}
+    if (ioI()) {}
     for (;;)
     {
       try
       {
-        Object localObject = KeyStore.getInstance(this.RQb);
+        Object localObject = KeyStore.getInstance(this.ZsG);
         ((KeyStore)localObject).load(null);
         try
         {
-          localObject = ((KeyStore)localObject).getCertificateChain(e.hls().RPL);
+          localObject = ((KeyStore)localObject).getCertificateChain(e.ioS().Zsq);
           if (localObject != null)
           {
             h.reset();
@@ -128,14 +128,14 @@ public final class a
       catch (OutOfMemoryError localOutOfMemoryError)
       {
         d.a("Soter.CertSoterCore", localOutOfMemoryError, "soter: out of memory when getting ask!! maybe no attk inside");
-        h.hlt();
+        h.ioT();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.soter.core.d.a
  * JD-Core Version:    0.7.0.1
  */

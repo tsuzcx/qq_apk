@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dno;
-import com.tencent.mm.protocal.protobuf.dnp;
+import com.tencent.mm.protocal.protobuf.dxg;
+import com.tencent.mm.protocal.protobuf.dxh;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class u
@@ -24,19 +24,19 @@ public final class u
   {
     AppMethodBeat.i(112818);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new dno();
-    ((d.a)localObject).iLO = new dnp();
+    ((d.a)localObject).lBU = new dxg();
+    ((d.a)localObject).lBV = new dxh();
     ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/card/reportlocation";
     ((d.a)localObject).funcId = 1253;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (dno)this.rr.iLK.iLR;
-    ((dno)localObject).latitude = paramFloat1;
-    ((dno)localObject).longitude = paramFloat2;
-    ((dno)localObject).eaO = paramString1;
-    ((dno)localObject).pRX = paramString2;
-    ((dno)localObject).MQI = paramInt;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (dxg)d.b.b(this.rr.lBR);
+    ((dxg)localObject).latitude = paramFloat1;
+    ((dxg)localObject).longitude = paramFloat2;
+    ((dxg)localObject).fUL = paramString1;
+    ((dxg)localObject).tnX = paramString2;
+    ((dxg)localObject).UcP = paramInt;
     AppMethodBeat.o(112818);
   }
   

@@ -1,11 +1,11 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.util.HashMap;
@@ -17,13 +17,13 @@ import java.util.Set;
 public final class e
   implements i
 {
-  Map<Integer, Set<u>> iMA;
+  private Map<Integer, Set<u>> lCH;
   
   public e()
   {
     AppMethodBeat.i(151661);
-    this.iMA = new HashMap();
-    g.aAg().hqi.a(452, this);
+    this.lCH = new HashMap();
+    h.aHF().kcd.a(452, this);
     AppMethodBeat.o(151661);
   }
   
@@ -31,7 +31,7 @@ public final class e
   {
     AppMethodBeat.i(151664);
     paramaa = new ab(paramInt, paramaa);
-    g.aAg().hqi.a(paramaa, 0);
+    h.aHF().kcd.a(paramaa, 0);
     AppMethodBeat.o(151664);
   }
   
@@ -43,11 +43,11 @@ public final class e
       public final void run()
       {
         AppMethodBeat.i(151658);
-        if (!e.this.iMA.containsKey(Integer.valueOf(paramInt))) {
-          e.this.iMA.put(Integer.valueOf(paramInt), new HashSet());
+        if (!e.a(e.this).containsKey(Integer.valueOf(paramInt))) {
+          e.a(e.this).put(Integer.valueOf(paramInt), new HashSet());
         }
-        if ((e.this.iMA.get(Integer.valueOf(paramInt)) != null) && (!((Set)e.this.iMA.get(Integer.valueOf(paramInt))).contains(paramu))) {
-          ((Set)e.this.iMA.get(Integer.valueOf(paramInt))).add(paramu);
+        if ((e.a(e.this).get(Integer.valueOf(paramInt)) != null) && (!((Set)e.a(e.this).get(Integer.valueOf(paramInt))).contains(paramu))) {
+          ((Set)e.a(e.this).get(Integer.valueOf(paramInt))).add(paramu);
         }
         AppMethodBeat.o(151658);
       }
@@ -63,8 +63,8 @@ public final class e
       public final void run()
       {
         AppMethodBeat.i(151659);
-        if (e.this.iMA.get(Integer.valueOf(paramInt)) != null) {
-          ((Set)e.this.iMA.get(Integer.valueOf(paramInt))).remove(paramu);
+        if (e.a(e.this).get(Integer.valueOf(paramInt)) != null) {
+          ((Set)e.a(e.this).get(Integer.valueOf(paramInt))).remove(paramu);
         }
         AppMethodBeat.o(151659);
       }
@@ -82,7 +82,7 @@ public final class e
       return;
     }
     paramq = (ab)paramq;
-    Set localSet = (Set)this.iMA.get(Integer.valueOf(paramq.JWw));
+    Set localSet = (Set)this.lCH.get(Integer.valueOf(paramq.QWP));
     if ((localSet != null) && (localSet.size() > 0))
     {
       Object localObject = new HashSet();
@@ -92,7 +92,7 @@ public final class e
       {
         u localu = (u)((Iterator)localObject).next();
         if ((localu != null) && (localSet.contains(localu))) {
-          localu.a(paramInt1, paramInt2, paramString, paramq.JWx);
+          localu.a(paramInt1, paramInt2, paramString, paramq.QWQ);
         }
       }
     }

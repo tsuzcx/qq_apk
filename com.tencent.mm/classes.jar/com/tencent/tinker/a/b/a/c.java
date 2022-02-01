@@ -7,66 +7,66 @@ import com.tencent.tinker.a.c.b;
 public final class c
   extends e
 {
-  private final b Shl = new b();
-  private int Shm = 0;
+  private final b ZJW = new b();
+  private int ZJX = 0;
   
   public c()
   {
     super(null);
   }
   
-  private void arX(int paramInt)
+  private void aBL(int paramInt)
   {
-    if (paramInt != this.Shm) {
-      this.Shl.append(paramInt, this.Shm);
+    if (paramInt != this.ZJX) {
+      this.ZJW.oa(paramInt, this.ZJX);
     }
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong)
   {
-    arX(paramInt1);
+    aBL(paramInt1);
     switch (paramInt2)
     {
     default: 
-      throw new IllegalStateException("unexpected opcode: " + a.asb(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + a.aBP(paramInt2));
     case -1: 
     case 0: 
     case 14: 
-      this.Shm += 1;
+      this.ZJX += 1;
       return;
     case 40: 
-      paramInt1 = paramInt5 - this.Shm;
+      paramInt1 = paramInt5 - this.ZJX;
       if (paramInt1 != (byte)paramInt1)
       {
         if (paramInt1 != (short)paramInt1)
         {
-          this.Shm += 3;
+          this.ZJX += 3;
           return;
         }
-        this.Shm += 2;
+        this.ZJX += 2;
         return;
       }
-      this.Shm += 1;
+      this.ZJX += 1;
       return;
     case 41: 
-      paramInt1 = paramInt5 - this.Shm;
+      paramInt1 = paramInt5 - this.ZJX;
       if (paramInt1 != (short)paramInt1)
       {
-        this.Shm += 3;
+        this.ZJX += 3;
         return;
       }
-      this.Shm += 2;
+      this.ZJX += 2;
       return;
     case 42: 
-      this.Shm += 3;
+      this.ZJX += 3;
       return;
     }
-    this.Shm += 3;
+    this.ZJX += 3;
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6)
   {
-    arX(paramInt1);
+    aBL(paramInt1);
     switch (paramInt2)
     {
     case 14: 
@@ -123,17 +123,17 @@ public final class c
     case 94: 
     case 95: 
     default: 
-      throw new IllegalStateException("unexpected opcode: " + a.asb(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + a.aBP(paramInt2));
     case 26: 
       if (paramInt3 > 65535)
       {
-        this.Shm += 3;
+        this.ZJX += 3;
         return;
       }
-      this.Shm += 2;
+      this.ZJX += 2;
       return;
     case 27: 
-      this.Shm += 3;
+      this.ZJX += 3;
       return;
     case 10: 
     case 11: 
@@ -146,7 +146,7 @@ public final class c
     case 29: 
     case 30: 
     case 39: 
-      this.Shm += 1;
+      this.ZJX += 1;
       return;
     case 19: 
     case 21: 
@@ -175,7 +175,7 @@ public final class c
     case 107: 
     case 108: 
     case 109: 
-      this.Shm += 2;
+      this.ZJX += 2;
       return;
     case 20: 
     case 23: 
@@ -188,15 +188,15 @@ public final class c
     case 112: 
     case 113: 
     case 114: 
-      this.Shm += 3;
+      this.ZJX += 3;
       return;
     }
-    this.Shm += 5;
+    this.ZJX += 5;
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7)
   {
-    arX(paramInt1);
+    aBL(paramInt1);
     switch (paramInt2)
     {
     case 10: 
@@ -316,7 +316,7 @@ public final class c
     case 174: 
     case 175: 
     default: 
-      throw new IllegalStateException("unexpected opcode: " + a.asb(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + a.aBP(paramInt2));
     case 1: 
     case 4: 
     case 7: 
@@ -374,12 +374,12 @@ public final class c
     case 205: 
     case 206: 
     case 207: 
-      this.Shm += 1;
+      this.ZJX += 1;
       return;
     case 2: 
     case 5: 
     case 8: 
-      this.Shm += 2;
+      this.ZJX += 2;
       return;
     case 32: 
     case 35: 
@@ -422,15 +422,15 @@ public final class c
     case 224: 
     case 225: 
     case 226: 
-      this.Shm += 2;
+      this.ZJX += 2;
       return;
     }
-    this.Shm += 3;
+    this.ZJX += 3;
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7, int paramInt8)
   {
-    arX(paramInt1);
+    aBL(paramInt1);
     switch (paramInt2)
     {
     case 37: 
@@ -517,7 +517,7 @@ public final class c
     case 142: 
     case 143: 
     default: 
-      throw new IllegalStateException("unexpected opcode: " + a.asb(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + a.aBP(paramInt2));
     case 45: 
     case 46: 
     case 47: 
@@ -569,45 +569,45 @@ public final class c
     case 173: 
     case 174: 
     case 175: 
-      this.Shm += 2;
+      this.ZJX += 2;
       return;
     }
-    this.Shm += 3;
+    this.ZJX += 3;
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
   {
-    arX(paramInt1);
+    aBL(paramInt1);
     switch (paramInt2)
     {
     default: 
-      throw new IllegalStateException("unexpected opcode: " + a.asb(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + a.aBP(paramInt2));
     }
-    this.Shm += 3;
+    this.ZJX += 3;
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
   {
-    arX(paramInt1);
+    aBL(paramInt1);
     switch (paramInt2)
     {
     default: 
-      throw new IllegalStateException("unexpected opcode: " + a.asb(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + a.aBP(paramInt2));
     }
-    this.Shm += 3;
+    this.ZJX += 3;
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int[] paramArrayOfInt)
   {
-    arX(paramInt1);
-    this.Shm += 4;
-    this.Shm += paramArrayOfInt.length * 2;
+    aBL(paramInt1);
+    this.ZJX += 4;
+    this.ZJX += paramArrayOfInt.length * 2;
   }
   
   public final void a(int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4)
   {
-    arX(paramInt1);
-    this.Shm += 4;
+    aBL(paramInt1);
+    this.ZJX += 4;
     switch (paramInt4)
     {
     case 3: 
@@ -615,52 +615,52 @@ public final class c
     case 6: 
     case 7: 
     default: 
-      throw new j("bogus element_width: " + a.asa(paramInt4));
+      throw new j("bogus element_width: " + a.aBO(paramInt4));
     case 1: 
       paramInt1 = ((byte[])paramObject).length;
-      this.Shm = ((paramInt1 & 0x1) + (paramInt1 >> 1) + this.Shm);
+      this.ZJX = ((paramInt1 & 0x1) + (paramInt1 >> 1) + this.ZJX);
       return;
     case 2: 
-      this.Shm += ((short[])paramObject).length * 1;
+      this.ZJX += ((short[])paramObject).length * 1;
       return;
     case 4: 
-      this.Shm += ((int[])paramObject).length * 2;
+      this.ZJX += ((int[])paramObject).length * 2;
       return;
     }
-    this.Shm += ((long[])paramObject).length * 4;
+    this.ZJX += ((long[])paramObject).length * 4;
   }
   
   public final void a(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    arX(paramInt1);
-    this.Shm += 2;
-    this.Shm += paramArrayOfInt1.length * 2;
-    this.Shm += paramArrayOfInt2.length * 2;
+    aBL(paramInt1);
+    this.ZJX += 2;
+    this.ZJX += paramArrayOfInt1.length * 2;
+    this.ZJX += paramArrayOfInt2.length * 2;
   }
   
-  public final int arY(int paramInt)
+  public final int aBM(int paramInt)
   {
-    int i = this.Shl.indexOfKey(paramInt);
+    int i = this.ZJW.aQ(paramInt);
     if (i < 0) {
       return paramInt;
     }
-    return this.Shl.Shv[i];
+    return this.ZJW.ZKg[i];
   }
   
   public final void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7)
   {
-    arX(paramInt1);
+    aBL(paramInt1);
     switch (paramInt2)
     {
     default: 
-      throw new IllegalStateException("unexpected opcode: " + a.asb(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + a.aBP(paramInt2));
     }
-    this.Shm += 3;
+    this.ZJX += 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.tinker.a.b.a.c
  * JD-Core Version:    0.7.0.1
  */

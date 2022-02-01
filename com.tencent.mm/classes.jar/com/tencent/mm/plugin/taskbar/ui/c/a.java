@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.taskbar.ui.c;
 
 public final class a
 {
-  public static int d(float paramFloat, int paramInt)
+  public static int g(float paramFloat, int paramInt)
   {
     return (int)(255.0F * paramFloat) << 24 | 0xFFFFFF & paramInt;
   }

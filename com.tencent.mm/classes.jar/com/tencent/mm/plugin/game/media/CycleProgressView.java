@@ -5,17 +5,18 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
-import android.support.v4.content.b;
 import android.util.AttributeSet;
 import android.view.View;
+import androidx.core.content.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.g.b;
 
 public class CycleProgressView
   extends View
 {
+  private float CDP;
   private Paint paint;
   private int progress;
-  private float xzK;
   
   public CycleProgressView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -52,17 +53,17 @@ public class CycleProgressView
     AppMethodBeat.i(40888);
     super.onDraw(paramCanvas);
     int i = getWidth() / 2;
-    if (this.xzK == 0.0F) {
-      this.xzK = ((int)(getWidth() / 2 * 0.167D));
+    if (this.CDP == 0.0F) {
+      this.CDP = ((int)(getWidth() / 2 * 0.167D));
     }
-    int j = (int)(i - this.xzK / 2.0F);
-    this.paint.setStrokeWidth(this.xzK);
-    this.paint.setColor(b.n(getContext(), 2131099657));
+    int j = (int)(i - this.CDP / 2.0F);
+    this.paint.setStrokeWidth(this.CDP);
+    this.paint.setColor(a.w(getContext(), g.b.BW_0_Alpha_0_1));
     this.paint.setAntiAlias(true);
     this.paint.setStyle(Paint.Style.STROKE);
     paramCanvas.drawCircle(i, i, j, this.paint);
-    this.paint.setStrokeWidth(this.xzK);
-    this.paint.setColor(b.n(getContext(), 2131101424));
+    this.paint.setStrokeWidth(this.CDP);
+    this.paint.setColor(a.w(getContext(), g.b.white));
     paramCanvas.drawArc(new RectF(i - j, i - j, i + j, i + j), -90.0F, this.progress * 360 / 100, false, this.paint);
     this.paint.setStrokeWidth(0.0F);
     this.paint.setStyle(Paint.Style.FILL);
@@ -80,7 +81,7 @@ public class CycleProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.CycleProgressView
  * JD-Core Version:    0.7.0.1
  */

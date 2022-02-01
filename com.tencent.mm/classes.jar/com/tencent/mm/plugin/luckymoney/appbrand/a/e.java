@@ -1,26 +1,28 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dos;
-import com.tencent.mm.protocal.protobuf.dot;
+import com.tencent.mm.protocal.protobuf.dyo;
+import com.tencent.mm.protocal.protobuf.dyp;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
-  extends a<dos, dot>
+  extends a<dyo, dyp>
 {
-  public e(dos paramdos)
+  public e(dyo paramdyo)
   {
-    this.yPr = paramdos;
+    AppMethodBeat.i(272058);
+    a(paramdyo);
+    AppMethodBeat.o(272058);
   }
   
-  protected final void eeD()
+  protected final void eNY()
   {
     AppMethodBeat.i(64879);
     Log.i("MicroMsg.CgiRequestWxaHB", "CgiRequestWxaHB.onCgiStart ");
     AppMethodBeat.o(64879);
   }
   
-  protected final void eeE()
+  protected final void eNZ()
   {
     AppMethodBeat.i(64880);
     Log.i("MicroMsg.CgiRequestWxaHB", "CgiRequestWxaHB.onCgiEnd ");

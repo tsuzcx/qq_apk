@@ -9,16 +9,16 @@ public class AppBrandRecommendStatObj
   implements Parcelable
 {
   public static final Parcelable.Creator<AppBrandRecommendStatObj> CREATOR;
-  public String dNI;
-  public float dTj;
+  public String appid;
   public float latitude;
-  public String nHd;
-  public String nHe;
-  public String nHf;
-  public String nHg;
-  public int nHh;
-  public String nHi;
+  public float longitude;
   public int position;
+  public String qJp;
+  public String qJq;
+  public String qJr;
+  public String qJs;
+  public int qJt;
+  public String qJu;
   public long sessionId;
   public String username;
   
@@ -35,15 +35,15 @@ public class AppBrandRecommendStatObj
   {
     AppMethodBeat.i(123528);
     this.username = paramParcel.readString();
-    this.nHd = paramParcel.readString();
-    this.nHe = paramParcel.readString();
-    this.dNI = paramParcel.readString();
-    this.nHf = paramParcel.readString();
-    this.nHg = paramParcel.readString();
-    this.nHh = paramParcel.readInt();
-    this.nHi = paramParcel.readString();
+    this.qJp = paramParcel.readString();
+    this.qJq = paramParcel.readString();
+    this.appid = paramParcel.readString();
+    this.qJr = paramParcel.readString();
+    this.qJs = paramParcel.readString();
+    this.qJt = paramParcel.readInt();
+    this.qJu = paramParcel.readString();
     this.position = paramParcel.readInt();
-    this.dTj = paramParcel.readFloat();
+    this.longitude = paramParcel.readFloat();
     this.latitude = paramParcel.readFloat();
     this.sessionId = paramParcel.readLong();
     AppMethodBeat.o(123528);
@@ -57,7 +57,7 @@ public class AppBrandRecommendStatObj
   public String toString()
   {
     AppMethodBeat.i(123529);
-    String str = "AppBrandRecommendStatObj{username=" + this.username + ", recommend_id='" + this.nHd + '\'' + ", strategy_info=" + this.nHe + ", appid='" + this.dNI + '\'' + ", page_path=" + this.nHf + ", page_param=" + this.nHg + ", card_type=" + this.nHh + ", pass_str=" + this.nHi + ", position=" + this.position + ", longitude=" + this.dTj + ", latitude=" + this.latitude + ", sessionId=" + this.sessionId + '}';
+    String str = "AppBrandRecommendStatObj{username=" + this.username + ", recommend_id='" + this.qJp + '\'' + ", strategy_info=" + this.qJq + ", appid='" + this.appid + '\'' + ", page_path=" + this.qJr + ", page_param=" + this.qJs + ", card_type=" + this.qJt + ", pass_str=" + this.qJu + ", position=" + this.position + ", longitude=" + this.longitude + ", latitude=" + this.latitude + ", sessionId=" + this.sessionId + '}';
     AppMethodBeat.o(123529);
     return str;
   }
@@ -66,15 +66,15 @@ public class AppBrandRecommendStatObj
   {
     AppMethodBeat.i(123530);
     paramParcel.writeString(this.username);
-    paramParcel.writeString(this.nHd);
-    paramParcel.writeString(this.nHe);
-    paramParcel.writeString(this.dNI);
-    paramParcel.writeString(this.nHf);
-    paramParcel.writeString(this.nHg);
-    paramParcel.writeInt(this.nHh);
-    paramParcel.writeString(this.nHi);
+    paramParcel.writeString(this.qJp);
+    paramParcel.writeString(this.qJq);
+    paramParcel.writeString(this.appid);
+    paramParcel.writeString(this.qJr);
+    paramParcel.writeString(this.qJs);
+    paramParcel.writeInt(this.qJt);
+    paramParcel.writeString(this.qJu);
     paramParcel.writeInt(this.position);
-    paramParcel.writeFloat(this.dTj);
+    paramParcel.writeFloat(this.longitude);
     paramParcel.writeFloat(this.latitude);
     paramParcel.writeLong(this.sessionId);
     AppMethodBeat.o(123530);
@@ -82,7 +82,7 @@ public class AppBrandRecommendStatObj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.AppBrandRecommendStatObj
  * JD-Core Version:    0.7.0.1
  */

@@ -9,15 +9,15 @@ import com.tencent.mm.sdk.platformtools.Log;
 final class RecyclerThumbSeekBar$a
   implements Runnable
 {
+  private RecyclerThumbSeekBar.b Fek;
   private Bitmap bitmap;
-  private ImageView dKU;
-  private RecyclerThumbSeekBar.b zyQ;
+  private ImageView fDJ;
   
   RecyclerThumbSeekBar$a(RecyclerThumbSeekBar paramRecyclerThumbSeekBar, Bitmap paramBitmap, ImageView paramImageView, RecyclerThumbSeekBar.b paramb)
   {
     this.bitmap = paramBitmap;
-    this.dKU = paramImageView;
-    this.zyQ = paramb;
+    this.fDJ = paramImageView;
+    this.Fek = paramb;
   }
   
   public final void run()
@@ -35,13 +35,13 @@ final class RecyclerThumbSeekBar$a
         bool = false;
       }
     }
-    if ((this.zyQ == null) || (this.zyQ.jcC) || (this.dKU == null))
+    if ((this.Fek == null) || (this.Fek.lTb) || (this.fDJ == null))
     {
       Log.i("RecyclerThumbSeekBar", "bitmap in DrawBitmapOnViewTask");
       AppMethodBeat.o(94416);
       return;
     }
-    ImageView localImageView = this.dKU;
+    ImageView localImageView = this.fDJ;
     localImageView.setTag(null);
     ObjectAnimator.ofInt(localImageView, "imageAlpha", new int[] { 50, 255 }).setDuration(200L).start();
     localImageView.setImageBitmap(this.bitmap);
@@ -50,7 +50,7 @@ final class RecyclerThumbSeekBar$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.RecyclerThumbSeekBar.a
  * JD-Core Version:    0.7.0.1
  */

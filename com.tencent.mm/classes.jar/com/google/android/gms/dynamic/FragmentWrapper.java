@@ -216,10 +216,10 @@ public final class FragmentWrapper
   {
     AppMethodBeat.i(5387);
     Fragment localFragment = this.zzabm;
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bl(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(localFragment, paramIntent.axQ(), "com/google/android/gms/dynamic/FragmentWrapper", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    localFragment.startActivity((Intent)paramIntent.pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(localFragment, "com/google/android/gms/dynamic/FragmentWrapper", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(localFragment, paramIntent.aFh(), "com/google/android/gms/dynamic/FragmentWrapper", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localFragment.startActivity((Intent)paramIntent.sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localFragment, "com/google/android/gms/dynamic/FragmentWrapper", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(5387);
   }
   

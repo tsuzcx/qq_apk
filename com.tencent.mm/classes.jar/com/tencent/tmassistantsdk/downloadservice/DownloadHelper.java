@@ -10,8 +10,7 @@ import android.os.StatFs;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 import com.tencent.tmassistantsdk.storage.TMAssistantFile;
 import com.tencent.tmassistantsdk.util.GlobalUtil;
 import com.tencent.tmassistantsdk.util.TMLog;
@@ -247,7 +246,7 @@ public class DownloadHelper
     }
     try
     {
-      boolean bool2 = new o(TMAssistantFile.getSaveFilePath(paramString)).exists();
+      boolean bool2 = new q(TMAssistantFile.getSaveFilePath(paramString)).ifE();
       if (bool2) {
         bool1 = true;
       }
@@ -273,7 +272,7 @@ public class DownloadHelper
     AppMethodBeat.i(101955);
     try
     {
-      boolean bool2 = new o(TMAssistantFile.getSaveFilePath(generateFileNameFromURL(paramString1, paramString2))).exists();
+      boolean bool2 = new q(TMAssistantFile.getSaveFilePath(generateFileNameFromURL(paramString1, paramString2))).ifE();
       if (bool2) {
         bool1 = true;
       }
@@ -326,16 +325,16 @@ public class DownloadHelper
       l3 = (paramString.getAvailableBlocks() - 4L) * l1;
       l1 = l3;
       if (l3 >= 0L) {
-        break label188;
+        break label185;
       }
       l1 = l2;
     }
-    label188:
+    label185:
     for (;;)
     {
       paramLong = ((float)paramLong * 1.5F);
       if (paramLong <= 104857600L) {
-        break label199;
+        break label196;
       }
       if (l1 < paramLong) {
         break;
@@ -347,7 +346,7 @@ public class DownloadHelper
         l1 = l2;
         if ("mounted".equals(Environment.getExternalStorageState()))
         {
-          paramString = new StatFs(aa.z(new o(Environment.getExternalStorageDirectory().getPath()).mUri));
+          paramString = new StatFs(new q(Environment.getExternalStorageDirectory().getPath()).getPath());
           l1 = paramString.getBlockSize();
           l3 = (paramString.getAvailableBlocks() - 4L) * l1;
           l1 = l2;
@@ -359,7 +358,7 @@ public class DownloadHelper
     }
     AppMethodBeat.o(101957);
     return false;
-    label199:
+    label196:
     if (l1 >= 104857600L)
     {
       AppMethodBeat.o(101957);
@@ -411,7 +410,7 @@ public class DownloadHelper
     for (String str = paramString;; str = arrayOfString[0] + "(" + i + ")" + arrayOfString[1])
     {
       i += 1;
-      if (new o(TMAssistantFile.getSavePathRootDir() + "/" + str).exists()) {
+      if (new q(TMAssistantFile.getSavePathRootDir() + "/" + str).ifE()) {
         break;
       }
       AppMethodBeat.o(101950);
@@ -421,7 +420,7 @@ public class DownloadHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadservice.DownloadHelper
  * JD-Core Version:    0.7.0.1
  */

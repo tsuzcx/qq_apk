@@ -14,21 +14,21 @@ final class EmojiSearchEditTextView$1
   
   public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(199756);
+    AppMethodBeat.i(230698);
     b localb = new b();
-    localb.bm(paramView);
-    localb.pH(paramInt);
-    localb.bm(paramKeyEvent);
-    a.b("com/tencent/mm/emojisearch/ui/EmojiSearchEditTextView$1", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.axR());
+    localb.bn(paramView);
+    localb.sg(paramInt);
+    localb.bn(paramKeyEvent);
+    a.c("com/tencent/mm/emojisearch/ui/EmojiSearchEditTextView$1", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.aFi());
     paramKeyEvent.getAction();
     a.a(false, this, "com/tencent/mm/emojisearch/ui/EmojiSearchEditTextView$1", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
-    AppMethodBeat.o(199756);
+    AppMethodBeat.o(230698);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emojisearch.ui.EmojiSearchEditTextView.1
  * JD-Core Version:    0.7.0.1
  */

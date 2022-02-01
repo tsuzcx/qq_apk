@@ -7,29 +7,29 @@ import java.util.Map;
 
 public enum c
 {
-  private Map<a, Long> nFE;
-  private Map<a, Long> nFF;
+  private Map<a, Long> qHQ;
+  private Map<a, Long> qHR;
   
   static
   {
     AppMethodBeat.i(140786);
-    nFD = new c("INSTANCE");
-    nFG = new c[] { nFD };
+    qHP = new c("INSTANCE");
+    qHS = new c[] { qHP };
     AppMethodBeat.o(140786);
   }
   
   private c()
   {
     AppMethodBeat.i(140783);
-    this.nFE = new HashMap();
-    this.nFF = new HashMap();
+    this.qHQ = new HashMap();
+    this.qHR = new HashMap();
     AppMethodBeat.o(140783);
   }
   
   public final void a(a parama)
   {
     AppMethodBeat.i(140784);
-    this.nFE.put(parama, Long.valueOf(SystemClock.elapsedRealtime()));
+    this.qHQ.put(parama, Long.valueOf(SystemClock.elapsedRealtime()));
     AppMethodBeat.o(140784);
   }
   
@@ -45,20 +45,20 @@ public enum c
     static
     {
       AppMethodBeat.i(140780);
-      nFH = new a("AppStart", 0, "AppStart");
-      nFI = new a("LoadPageFrame", 1, "LoadPageFrame");
-      nFJ = new a("PrepareJsRuntime", 2, "PrepareJsRuntime");
-      nFK = new a("GetDom", 3, "GetDom");
-      nFL = new a("ParseDom", 4, "ParseDom");
-      nFM = new a("DiffDom", 5, "DiffDom");
-      nFN = new a("GetGlobalCss", 6, "GetGlobalCss");
-      nFO = new a("GetCss", 7, "GetCss");
-      nFP = new a("ParseCss", 8, "ParseCss");
-      nFQ = new a("GetData", 9, "GetData");
-      nFR = new a("Layout", 10, "Layout");
-      nFS = new a("JSEvent", 11, "JSEvent");
-      nFT = new a("StartUp", 12, "StartUp");
-      nFU = new a[] { nFH, nFI, nFJ, nFK, nFL, nFM, nFN, nFO, nFP, nFQ, nFR, nFS, nFT };
+      qHT = new a("AppStart", 0, "AppStart");
+      qHU = new a("LoadPageFrame", 1, "LoadPageFrame");
+      qHV = new a("PrepareJsRuntime", 2, "PrepareJsRuntime");
+      qHW = new a("GetDom", 3, "GetDom");
+      qHX = new a("ParseDom", 4, "ParseDom");
+      qHY = new a("DiffDom", 5, "DiffDom");
+      qHZ = new a("GetGlobalCss", 6, "GetGlobalCss");
+      qIa = new a("GetCss", 7, "GetCss");
+      qIb = new a("ParseCss", 8, "ParseCss");
+      qIc = new a("GetData", 9, "GetData");
+      qId = new a("Layout", 10, "Layout");
+      qIe = new a("JSEvent", 11, "JSEvent");
+      qIf = new a("StartUp", 12, "StartUp");
+      qIg = new a[] { qHT, qHU, qHV, qHW, qHX, qHY, qHZ, qIa, qIb, qIc, qId, qIe, qIf };
       AppMethodBeat.o(140780);
     }
     

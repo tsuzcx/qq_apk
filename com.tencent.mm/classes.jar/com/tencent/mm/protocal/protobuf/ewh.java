@@ -1,67 +1,108 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class ewh
-  extends com.tencent.mm.bw.a
+  extends dyl
 {
-  public int ID;
-  public String iAc;
+  public String Uxr;
+  public int status;
+  public String uuid;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32505);
+    AppMethodBeat.i(153309);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.ID);
-      if (this.iAc != null) {
-        paramVarArgs.e(2, this.iAc);
-      }
-      AppMethodBeat.o(32505);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.bu(1, this.ID) + 0;
-      paramInt = i;
-      if (this.iAc != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.iAc);
-      }
-      AppMethodBeat.o(32505);
-      return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
-        }
-      }
-      AppMethodBeat.o(32505);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      ewh localewh = (ewh)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (this.BaseRequest != null)
       {
-      default: 
-        AppMethodBeat.o(32505);
-        return -1;
-      case 1: 
-        localewh.ID = locala.UbS.zi();
-        AppMethodBeat.o(32505);
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
+      }
+      if (this.uuid != null) {
+        paramVarArgs.f(2, this.uuid);
+      }
+      paramVarArgs.aY(3, this.status);
+      if (this.Uxr != null) {
+        paramVarArgs.f(4, this.Uxr);
+      }
+      AppMethodBeat.o(153309);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label452;
+      }
+    }
+    label452:
+    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.uuid != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.uuid);
+      }
+      i += g.a.a.b.b.a.bM(3, this.status);
+      paramInt = i;
+      if (this.Uxr != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.Uxr);
+      }
+      AppMethodBeat.o(153309);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
+        }
+        AppMethodBeat.o(153309);
         return 0;
       }
-      localewh.iAc = locala.UbS.readString();
-      AppMethodBeat.o(32505);
-      return 0;
+      if (paramInt == 3)
+      {
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        ewh localewh = (ewh)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(153309);
+          return -1;
+        case 1: 
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            jg localjg = new jg();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localjg.parseFrom((byte[])localObject);
+            }
+            localewh.BaseRequest = localjg;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(153309);
+          return 0;
+        case 2: 
+          localewh.uuid = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(153309);
+          return 0;
+        case 3: 
+          localewh.status = ((g.a.a.a.a)localObject).abFh.AK();
+          AppMethodBeat.o(153309);
+          return 0;
+        }
+        localewh.Uxr = ((g.a.a.a.a)localObject).abFh.readString();
+        AppMethodBeat.o(153309);
+        return 0;
+      }
+      AppMethodBeat.o(153309);
+      return -1;
     }
-    AppMethodBeat.o(32505);
-    return -1;
   }
 }
 

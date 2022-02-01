@@ -1,6 +1,6 @@
 package com.tencent.map.lib.models;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.map.sdk.utilities.heatmap.WeightedLatLng;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
@@ -20,7 +20,7 @@ public class AggregationOverlayInfo
   
   public AggregationOverlayInfo()
   {
-    AppMethodBeat.i(193493);
+    AppMethodBeat.i(235882);
     this.mType = 0;
     this.mSize = 2000.0F;
     this.mGap = 0.0F;
@@ -30,7 +30,7 @@ public class AggregationOverlayInfo
     this.mMaxZoom = 22;
     this.mColors = new int[] { 1174031124, -1711650028, -637908204 };
     this.mStartPoints = new double[] { 0.0D, 0.6D, 0.8D };
-    AppMethodBeat.o(193493);
+    AppMethodBeat.o(235882);
   }
   
   public void setColors(int[] paramArrayOfInt)
@@ -85,7 +85,7 @@ public class AggregationOverlayInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.map.lib.models.AggregationOverlayInfo
  * JD-Core Version:    0.7.0.1
  */

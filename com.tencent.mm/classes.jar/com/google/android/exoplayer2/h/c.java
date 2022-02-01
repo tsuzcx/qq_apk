@@ -11,18 +11,18 @@ import java.io.InputStream;
 public final class c
   implements g
 {
-  private final AssetManager aFb;
-  private final w<? super c> bEI;
-  private long bEJ;
-  private InputStream inputStream;
+  private InputStream aFw;
+  private final AssetManager bok;
+  private final w<? super c> bol;
+  private long bom;
   private boolean opened;
   private Uri uri;
   
   public c(Context paramContext, w<? super c> paramw)
   {
     AppMethodBeat.i(92955);
-    this.aFb = paramContext.getAssets();
-    this.bEI = paramw;
+    this.bok = paramContext.getAssets();
+    this.bol = paramw;
     AppMethodBeat.o(92955);
   }
   
@@ -39,8 +39,8 @@ public final class c
         if (str2.startsWith("/android_asset/"))
         {
           str1 = str2.substring(15);
-          this.inputStream = this.aFb.open(str1, 1);
-          if (this.inputStream.skip(paramj.position) >= paramj.position) {
+          this.aFw = this.bok.open(str1, 1);
+          if (this.aFw.skip(paramj.position) >= paramj.position) {
             break;
           }
           paramj = new EOFException();
@@ -59,21 +59,21 @@ public final class c
         str1 = str2.substring(1);
       }
     }
-    if (paramj.length != -1L) {
-      this.bEJ = paramj.length;
+    if (paramj.aFL != -1L) {
+      this.bom = paramj.aFL;
     }
     for (;;)
     {
       this.opened = true;
-      if (this.bEI != null) {
-        this.bEI.a(this, paramj);
+      if (this.bol != null) {
+        this.bol.a(this, paramj);
       }
-      long l = this.bEJ;
+      long l = this.bom;
       AppMethodBeat.o(92956);
       return l;
-      this.bEJ = this.inputStream.available();
-      if (this.bEJ == 2147483647L) {
-        this.bEJ = -1L;
+      this.bom = this.aFw.available();
+      if (this.bom == 2147483647L) {
+        this.bom = -1L;
       }
     }
   }
@@ -84,8 +84,8 @@ public final class c
     this.uri = null;
     try
     {
-      if (this.inputStream != null) {
-        this.inputStream.close();
+      if (this.aFw != null) {
+        this.aFw.close();
       }
       return;
     }
@@ -97,12 +97,12 @@ public final class c
     }
     finally
     {
-      this.inputStream = null;
+      this.aFw = null;
       if (this.opened)
       {
         this.opened = false;
-        if (this.bEI != null) {
-          this.bEI.ai(this);
+        if (this.bol != null) {
+          this.bol.aa(this);
         }
       }
       AppMethodBeat.o(92958);
@@ -123,27 +123,27 @@ public final class c
       AppMethodBeat.o(92957);
       return 0;
     }
-    if (this.bEJ == 0L)
+    if (this.bom == 0L)
     {
       AppMethodBeat.o(92957);
       return -1;
     }
     try
     {
-      if (this.bEJ == -1L) {}
+      if (this.bom == -1L) {}
       for (;;)
       {
-        paramInt1 = this.inputStream.read(paramArrayOfByte, paramInt1, paramInt2);
+        paramInt1 = this.aFw.read(paramArrayOfByte, paramInt1, paramInt2);
         if (paramInt1 != -1) {
           break label134;
         }
-        if (this.bEJ == -1L) {
+        if (this.bom == -1L) {
           break;
         }
         paramArrayOfByte = new a(new EOFException());
         AppMethodBeat.o(92957);
         throw paramArrayOfByte;
-        long l = Math.min(this.bEJ, paramInt2);
+        long l = Math.min(this.bom, paramInt2);
         paramInt2 = (int)l;
       }
       AppMethodBeat.o(92957);
@@ -156,11 +156,11 @@ public final class c
     }
     return -1;
     label134:
-    if (this.bEJ != -1L) {
-      this.bEJ -= paramInt1;
+    if (this.bom != -1L) {
+      this.bom -= paramInt1;
     }
-    if (this.bEI != null) {
-      this.bEI.d(this, paramInt1);
+    if (this.bol != null) {
+      this.bol.e(this, paramInt1);
     }
     AppMethodBeat.o(92957);
     return paramInt1;
@@ -177,7 +177,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.h.c
  * JD-Core Version:    0.7.0.1
  */

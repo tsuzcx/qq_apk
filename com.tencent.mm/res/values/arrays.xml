@@ -1014,6 +1014,7 @@
         <item>@string/b1i</item>
     </string-array>
     <string-array name="a_">
+        <item>XFilesOfficeReader</item>
         <item>XFilesPDFReader</item>
         <item>XFilesPPTReader</item>
         <item>XFilesWordReader</item>

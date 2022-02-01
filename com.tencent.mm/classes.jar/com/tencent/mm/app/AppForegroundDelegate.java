@@ -21,16 +21,16 @@ import android.os.Looper;
 import android.os.Process;
 import android.os.SystemClock;
 import android.util.ArrayMap;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a.c;
-import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatAuthorities;
 import com.tencent.mm.sdk.platformtools.WeChatPermissions;
+import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Collection;
@@ -44,50 +44,52 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public enum AppForegroundDelegate
 {
-  public static final String djS;
-  private static String djV;
-  public static boolean djW;
-  private static final b dka;
-  private static ConcurrentHashMap<String, d> dkb;
-  private Handler aDv;
-  public volatile boolean cPB;
-  private Handler djT;
-  private Runnable djU;
-  public final Set<p> djX;
-  private c djY;
-  private boolean djZ;
+  private static String fbC;
+  public static boolean fbE;
+  private static final b fbH;
+  private static ConcurrentHashMap<String, d> fbI;
+  public static final String fbz;
+  public volatile boolean cQt;
+  private boolean ddZ;
+  private Handler die;
+  private Handler fbA;
+  private Runnable fbB;
+  public WeakReference<Activity> fbD;
+  public final Set<p> fbF;
+  private c fbG;
   private volatile boolean isInit;
   private final Set<o> listeners;
   
   static
   {
     AppMethodBeat.i(131766);
-    djR = new AppForegroundDelegate("INSTANCE");
-    dkc = new AppForegroundDelegate[] { djR };
-    djS = WeChatPermissions.PERMISSION_MM_MESSAGE();
-    djV = null;
-    djW = false;
-    dka = new b((byte)0);
-    dkb = new ConcurrentHashMap();
+    fby = new AppForegroundDelegate("INSTANCE");
+    fbJ = new AppForegroundDelegate[] { fby };
+    fbz = WeChatPermissions.PERMISSION_MM_MESSAGE();
+    fbC = null;
+    fbE = false;
+    fbH = new b((byte)0);
+    fbI = new ConcurrentHashMap();
     AppMethodBeat.o(131766);
   }
   
   private AppForegroundDelegate()
   {
     AppMethodBeat.i(131761);
-    this.aDv = new Handler(Looper.getMainLooper());
+    this.die = new Handler(Looper.getMainLooper());
+    this.fbD = null;
     this.listeners = new HashSet();
-    this.djX = new HashSet();
-    this.cPB = false;
-    this.djY = new c((byte)0);
+    this.fbF = new HashSet();
+    this.cQt = false;
+    this.fbG = new c((byte)0);
     this.isInit = false;
-    this.djZ = false;
+    this.ddZ = false;
     AppMethodBeat.o(131761);
   }
   
-  private static String RF()
+  private static String Vs()
   {
-    AppMethodBeat.i(196965);
+    AppMethodBeat.i(194051);
     try
     {
       Object localObject2 = Class.forName("android.app.ActivityThread");
@@ -98,7 +100,7 @@ public enum AppForegroundDelegate
       int i = ((Map)localObject1).size();
       if (i <= 0)
       {
-        AppMethodBeat.o(196965);
+        AppMethodBeat.o(194051);
         return null;
       }
       localObject2 = ((Map)localObject1).values().iterator();
@@ -113,39 +115,74 @@ public enum AppForegroundDelegate
           localObject2 = localClass.getDeclaredField("activity");
           ((Field)localObject2).setAccessible(true);
           localObject1 = ((Activity)((Field)localObject2).get(localObject1)).getClass().getCanonicalName();
-          AppMethodBeat.o(196965);
+          AppMethodBeat.o(194051);
           return localObject1;
         }
       }
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(196965);
+      AppMethodBeat.o(194051);
     }
     return null;
   }
   
-  public static String Wb()
+  public static String aaw()
   {
-    AppMethodBeat.i(196964);
-    if (Util.isNullOrNil(djV)) {
-      djV = RF();
+    AppMethodBeat.i(194043);
+    if (Util.isNullOrNil(fbC)) {
+      fbC = Vs();
     }
-    String str = djV;
-    AppMethodBeat.o(196964);
+    String str = fbC;
+    AppMethodBeat.o(194043);
     return str;
   }
   
-  public final boolean Wc()
+  public static WeakReference<Activity> aay()
   {
-    return this.cPB;
+    AppMethodBeat.i(194058);
+    try
+    {
+      Object localObject2 = Class.forName("android.app.ActivityThread");
+      Object localObject1 = ((Class)localObject2).getMethod("currentActivityThread", new Class[0]).invoke(null, new Object[0]);
+      localObject2 = ((Class)localObject2).getDeclaredField("mActivities");
+      ((Field)localObject2).setAccessible(true);
+      localObject1 = (ArrayMap)((Field)localObject2).get(localObject1);
+      int i = ((Map)localObject1).size();
+      if (i <= 0)
+      {
+        AppMethodBeat.o(194058);
+        return null;
+      }
+      localObject2 = ((Map)localObject1).values().iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject1 = ((Iterator)localObject2).next();
+        Class localClass = localObject1.getClass();
+        Field localField = localClass.getDeclaredField("paused");
+        localField.setAccessible(true);
+        if (!localField.getBoolean(localObject1))
+        {
+          localObject2 = localClass.getDeclaredField("activity");
+          ((Field)localObject2).setAccessible(true);
+          localObject1 = new WeakReference((Activity)((Field)localObject2).get(localObject1));
+          AppMethodBeat.o(194058);
+          return localObject1;
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(194058);
+    }
+    return null;
   }
   
   public final void a(o paramo)
   {
     AppMethodBeat.i(131762);
-    if (this.cPB) {
-      paramo.onAppForeground(this.djY.dkl.activity);
+    if (this.cQt) {
+      paramo.onAppForeground(this.fbG.fbT.fca);
     }
     synchronized (this.listeners)
     {
@@ -153,6 +190,11 @@ public enum AppForegroundDelegate
       AppMethodBeat.o(131762);
       return;
     }
+  }
+  
+  public final boolean aax()
+  {
+    return this.cQt;
   }
   
   public final void b(o paramo)
@@ -166,43 +208,43 @@ public enum AppForegroundDelegate
     }
   }
   
-  public final void d(Application paramApplication)
+  public final void c(Application paramApplication)
   {
-    AppMethodBeat.i(196963);
+    AppMethodBeat.i(194041);
     if (this.isInit)
     {
       Log.e("MicroMsg.AppForegroundDelegate", "has init!");
-      AppMethodBeat.o(196963);
+      AppMethodBeat.o(194041);
       return;
     }
     this.isInit = true;
     localObject1 = new HandlerThread("AppForegroundDelegate");
     ((HandlerThread)localObject1).start();
-    this.djT = new Handler(((HandlerThread)localObject1).getLooper());
+    this.fbA = new Handler(((HandlerThread)localObject1).getLooper());
     if (MMApplicationContext.isMainProcess())
     {
       localObject1 = new IntentFilter();
-      ((IntentFilter)localObject1).addAction(a.a(a.dkf));
-      ((IntentFilter)localObject1).addAction(a.a(a.dkg));
-      ((IntentFilter)localObject1).addAction(a.a(a.dkh));
-      ((IntentFilter)localObject1).addAction(a.a(a.dki));
+      ((IntentFilter)localObject1).addAction(a.a(a.fbN));
+      ((IntentFilter)localObject1).addAction(a.a(a.fbO));
+      ((IntentFilter)localObject1).addAction(a.a(a.fbP));
+      ((IntentFilter)localObject1).addAction(a.a(a.fbQ));
       ((IntentFilter)localObject1).addAction("android.intent.action.SCREEN_OFF");
       ((IntentFilter)localObject1).addAction("android.intent.action.SCREEN_ON");
-      paramApplication.registerReceiver(this.djY.dkn, (IntentFilter)localObject1, djS, null);
+      paramApplication.registerReceiver(this.fbG.fbV, (IntentFilter)localObject1, fbz, null);
     }
     for (;;)
     {
-      paramApplication.registerActivityLifecycleCallbacks(this.djY.dkn);
-      paramApplication.registerComponentCallbacks(this.djY.dkn);
+      paramApplication.registerActivityLifecycleCallbacks(this.fbG.fbV);
+      paramApplication.registerComponentCallbacks(this.fbG.fbV);
       localObject1 = new IntentFilter();
       ((IntentFilter)localObject1).addAction("com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVE");
       ((IntentFilter)localObject1).addAction("com.tencent.mm.AppForegroundDelegate.ACTION_DEAD");
-      paramApplication.registerReceiver(this.djY.dkl, (IntentFilter)localObject1, djS, null);
-      AppMethodBeat.o(196963);
+      paramApplication.registerReceiver(this.fbG.fbT, (IntentFilter)localObject1, fbz, null);
+      AppMethodBeat.o(194041);
       return;
       if (MMApplicationContext.getProcessName().endsWith(":dexopt"))
       {
-        AppMethodBeat.o(196963);
+        AppMethodBeat.o(194041);
         return;
       }
       Uri localUri = Uri.parse("content://" + Provider.AUTHORITY + "/");
@@ -216,7 +258,7 @@ public enum AppForegroundDelegate
           localObject1 = localBundle2;
           localBundle1 = paramApplication.getContentResolver().call(localUri, "isAppForeground", null, null);
           localObject1 = localBundle1;
-          this.cPB = localBundle1.getBoolean("isAppForeground");
+          this.cQt = localBundle1.getBoolean("isAppForeground");
         }
       }
       catch (Exception localException)
@@ -227,12 +269,12 @@ public enum AppForegroundDelegate
           Object localObject2;
           if (MMApplicationContext.isPushProcess())
           {
-            e.Cxv.idkeyStat(1118L, 0L, 1L, true);
+            f.Iyx.idkeyStat(1118L, 0L, 1L, true);
             localObject2 = localObject1;
           }
           else
           {
-            e.Cxv.idkeyStat(1118L, 1L, 1L, true);
+            f.Iyx.idkeyStat(1118L, 1L, 1L, true);
             localObject2 = localObject1;
             continue;
             localObject1 = localObject2.getString("com.tencent.mm.AppForegroundDelegate.ACTIVITY_NAME");
@@ -243,17 +285,17 @@ public enum AppForegroundDelegate
         break label446;
       }
       localObject1 = "";
-      Log.i("MicroMsg.AppForegroundDelegate", "[init] process:%s isAppForeground:%s", new Object[] { MMApplicationContext.getProcessName(), Boolean.valueOf(this.cPB) });
-      if (this.cPB) {
-        this.aDv.post(new Runnable()
+      Log.i("MicroMsg.AppForegroundDelegate", "[init] process:%s isAppForeground:%s", new Object[] { MMApplicationContext.getProcessName(), Boolean.valueOf(this.cQt) });
+      if (this.cQt) {
+        this.die.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(131735);
             Intent localIntent = new Intent();
             localIntent.setAction("com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVE");
-            localIntent.putExtra("com.tencent.mm.AppForegroundDelegate.ACTIVITY_NAME", this.cQb);
-            AppForegroundDelegate.a(AppForegroundDelegate.this).dkl.onReceive(MMApplicationContext.getContext(), localIntent);
+            localIntent.putExtra("com.tencent.mm.AppForegroundDelegate.ACTIVITY_NAME", this.fbK);
+            AppForegroundDelegate.a(AppForegroundDelegate.this).fbT.onReceive(MMApplicationContext.getContext(), localIntent);
             AppMethodBeat.o(131735);
           }
         });
@@ -268,9 +310,9 @@ public enum AppForegroundDelegate
     
     static
     {
-      AppMethodBeat.i(196962);
+      AppMethodBeat.i(214797);
       AUTHORITY = WeChatAuthorities.AUTHORITIES_APPFOREGROUNDDELEGATE_PROVIDER();
-      AppMethodBeat.o(196962);
+      AppMethodBeat.o(214797);
     }
     
     public Bundle call(String paramString1, String paramString2, Bundle paramBundle)
@@ -279,8 +321,8 @@ public enum AppForegroundDelegate
       if (paramString1.equals("isAppForeground"))
       {
         paramString1 = new Bundle();
-        paramString1.putString("com.tencent.mm.AppForegroundDelegate.ACTIVITY_NAME", AppForegroundDelegate.a(AppForegroundDelegate.djR).dkl.activity);
-        paramString1.putBoolean("isAppForeground", AppForegroundDelegate.c(AppForegroundDelegate.djR));
+        paramString1.putString("com.tencent.mm.AppForegroundDelegate.ACTIVITY_NAME", AppForegroundDelegate.a(AppForegroundDelegate.fby).fbT.fca);
+        paramString1.putBoolean("isAppForeground", AppForegroundDelegate.c(AppForegroundDelegate.fby));
         AppMethodBeat.o(131758);
         return paramString1;
       }
@@ -327,13 +369,13 @@ public enum AppForegroundDelegate
     static
     {
       AppMethodBeat.i(131741);
-      dke = new a("CREATED", 0, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_CREATED");
-      dkf = new a("STARTED", 1, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_STARTED");
-      dkg = new a("RESUMED", 2, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_RESUMED");
-      dkh = new a("PAUSED", 3, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_PAUSED");
-      dki = new a("STOPPED", 4, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_STOPPED");
-      dkj = new a("DESTROY", 5, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_DESTROY");
-      dkk = new a[] { dke, dkf, dkg, dkh, dki, dkj };
+      fbM = new a("CREATED", 0, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_CREATED");
+      fbN = new a("STARTED", 1, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_STARTED");
+      fbO = new a("RESUMED", 2, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_RESUMED");
+      fbP = new a("PAUSED", 3, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_PAUSED");
+      fbQ = new a("STOPPED", 4, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_STOPPED");
+      fbR = new a("DESTROY", 5, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_DESTROY");
+      fbS = new a[] { fbM, fbN, fbO, fbP, fbQ, fbR };
       AppMethodBeat.o(131741);
     }
     
@@ -342,30 +384,30 @@ public enum AppForegroundDelegate
       this.value = paramString;
     }
     
-    public static a fY(String paramString)
+    public static a gI(String paramString)
     {
       AppMethodBeat.i(131740);
-      if (paramString.equals(dkf.value))
+      if (paramString.equals(fbN.value))
       {
-        paramString = dkf;
+        paramString = fbN;
         AppMethodBeat.o(131740);
         return paramString;
       }
-      if (paramString.equals(dkg.value))
+      if (paramString.equals(fbO.value))
       {
-        paramString = dkg;
+        paramString = fbO;
         AppMethodBeat.o(131740);
         return paramString;
       }
-      if (paramString.equals(dkh.value))
+      if (paramString.equals(fbP.value))
       {
-        paramString = dkh;
+        paramString = fbP;
         AppMethodBeat.o(131740);
         return paramString;
       }
-      if (paramString.equals(dki.value))
+      if (paramString.equals(fbQ.value))
       {
-        paramString = dki;
+        paramString = fbQ;
         AppMethodBeat.o(131740);
         return paramString;
       }
@@ -377,59 +419,59 @@ public enum AppForegroundDelegate
   static final class b
     implements Runnable
   {
-    Handler aDv;
-    public boolean daZ = true;
-    AppForegroundDelegate.e dkl;
-    int dkm = 0;
+    public boolean cSY = true;
+    Handler die;
+    AppForegroundDelegate.e fbT;
+    int fbU = 0;
     
     public final void run()
     {
-      AppMethodBeat.i(196958);
-      Log.i("MicroMsg.AppForegroundDelegate", "CheckExceptionRunnable... isValid=%s checkErrorCount=%s isAppForeground=%s", new Object[] { Boolean.valueOf(this.daZ), Integer.valueOf(this.dkm), Boolean.valueOf(AppForegroundDelegate.c(AppForegroundDelegate.djR)) });
-      if (!this.daZ)
+      AppMethodBeat.i(203768);
+      Log.i("MicroMsg.AppForegroundDelegate", "CheckExceptionRunnable... isValid=%s checkErrorCount=%s isAppForeground=%s", new Object[] { Boolean.valueOf(this.cSY), Integer.valueOf(this.fbU), Boolean.valueOf(AppForegroundDelegate.c(AppForegroundDelegate.fby)) });
+      if (!this.cSY)
       {
-        AppMethodBeat.o(196958);
+        AppMethodBeat.o(203768);
         return;
       }
-      if ((AppForegroundDelegate.c(AppForegroundDelegate.djR)) && (this.dkm >= 2))
+      if ((AppForegroundDelegate.c(AppForegroundDelegate.fby)) && (this.fbU >= 2))
       {
         Log.e("MicroMsg.AppForegroundDelegate", "check error! isScreenOff is true but isAppForeground is true");
-        e.Cxv.a(20459, new Object[] { Boolean.valueOf(AppForegroundDelegate.djW), Integer.valueOf(2) });
-        if (AppForegroundDelegate.djW) {
-          e.Cxv.idkeyStat(1439L, 11L, 1L, false);
+        f.Iyx.a(20459, new Object[] { Boolean.valueOf(AppForegroundDelegate.fbE), Integer.valueOf(2) });
+        if (AppForegroundDelegate.fbE) {
+          f.Iyx.idkeyStat(1439L, 11L, 1L, false);
         }
         for (;;)
         {
-          e.Cxv.idkeyStat(1439L, 13L, 1L, false);
-          AppForegroundDelegate.Wd().clear();
-          if (this.dkl == null) {
+          f.Iyx.idkeyStat(1439L, 13L, 1L, false);
+          AppForegroundDelegate.aaz().clear();
+          if (this.fbT == null) {
             break;
           }
-          AppForegroundDelegate.e.c(false, "fallback");
-          AppMethodBeat.o(196958);
+          AppForegroundDelegate.e.e(false, "fallback");
+          AppMethodBeat.o(203768);
           return;
-          e.Cxv.idkeyStat(1439L, 12L, 1L, false);
+          f.Iyx.idkeyStat(1439L, 12L, 1L, false);
         }
       }
-      if ((AppForegroundDelegate.c(AppForegroundDelegate.djR)) && (this.dkm < 2))
+      if ((AppForegroundDelegate.c(AppForegroundDelegate.fby)) && (this.fbU < 2))
       {
-        this.dkm += 1;
-        this.aDv.postDelayed(this, 5000L);
+        this.fbU += 1;
+        this.die.postDelayed(this, 5000L);
       }
-      AppMethodBeat.o(196958);
+      AppMethodBeat.o(203768);
     }
   }
   
   final class c
   {
-    AppForegroundDelegate.e dkl;
-    a dkn;
+    AppForegroundDelegate.e fbT;
+    a fbV;
     
     private c()
     {
       AppMethodBeat.i(131755);
-      this.dkn = new a((byte)0);
-      this.dkl = new AppForegroundDelegate.e(AppForegroundDelegate.this, (byte)0);
+      this.fbV = new a((byte)0);
+      this.fbT = new AppForegroundDelegate.e(AppForegroundDelegate.this, (byte)0);
       AppMethodBeat.o(131755);
     }
     
@@ -437,21 +479,13 @@ public enum AppForegroundDelegate
       extends BroadcastReceiver
       implements Application.ActivityLifecycleCallbacks, ComponentCallbacks2
     {
-      private HashSet<String> dko;
+      private HashSet<String> fbW;
       
       private a()
       {
         AppMethodBeat.i(131745);
-        this.dko = new HashSet();
+        this.fbW = new HashSet();
         AppMethodBeat.o(131745);
-      }
-      
-      private static String Wf()
-      {
-        AppMethodBeat.i(196959);
-        String str = MMApplicationContext.getProcessName() + "@" + Process.myPid();
-        AppMethodBeat.o(196959);
-        return str;
       }
       
       private static void a(AppForegroundDelegate.a parama, String paramString)
@@ -459,9 +493,9 @@ public enum AppForegroundDelegate
         AppMethodBeat.i(131747);
         Intent localIntent = new Intent();
         localIntent.setAction(AppForegroundDelegate.a.a(parama));
-        localIntent.putExtra("_application_context_process_", Wf());
+        localIntent.putExtra("_application_context_process_", aaB());
         localIntent.putExtra("com.tencent.mm.AppForegroundDelegate.ACTIVITY_NAME", paramString);
-        MMApplicationContext.getContext().sendBroadcast(localIntent, AppForegroundDelegate.djS);
+        MMApplicationContext.getContext().sendBroadcast(localIntent, AppForegroundDelegate.fbz);
         AppMethodBeat.o(131747);
       }
       
@@ -470,19 +504,19 @@ public enum AppForegroundDelegate
         AppMethodBeat.i(131748);
         Log.i("MicroMsg.AppForegroundDelegate", "[checkAlive] activityName:%s process:%s action:%s", new Object[] { paramString1, paramString2, parama.name() });
         AppForegroundDelegate.a(paramString2, parama, paramString1);
-        if (parama == AppForegroundDelegate.a.dkf)
+        if (parama == AppForegroundDelegate.a.fbN)
         {
           if (!AppForegroundDelegate.c(AppForegroundDelegate.this)) {
-            AppForegroundDelegate.e.c(true, paramString1);
+            AppForegroundDelegate.e.e(true, paramString1);
           }
-          this.dko.remove(paramString1);
+          this.fbW.remove(paramString1);
         }
-        if (((parama == AppForegroundDelegate.a.dke) || (parama == AppForegroundDelegate.a.dkf) || (parama == AppForegroundDelegate.a.dkg) || (parama == AppForegroundDelegate.a.dkh)) && (AppForegroundDelegate.g(AppForegroundDelegate.this) != null))
+        if (((parama == AppForegroundDelegate.a.fbM) || (parama == AppForegroundDelegate.a.fbN) || (parama == AppForegroundDelegate.a.fbO) || (parama == AppForegroundDelegate.a.fbP)) && (AppForegroundDelegate.g(AppForegroundDelegate.this) != null))
         {
           AppForegroundDelegate.d(AppForegroundDelegate.this).removeCallbacks(AppForegroundDelegate.g(AppForegroundDelegate.this));
           AppForegroundDelegate.a(AppForegroundDelegate.this, null);
         }
-        if (parama == AppForegroundDelegate.a.dkg)
+        if (parama == AppForegroundDelegate.a.fbO)
         {
           AppForegroundDelegate.d(AppForegroundDelegate.this).postDelayed(AppForegroundDelegate.a(AppForegroundDelegate.this, new Runnable()
           {
@@ -490,7 +524,7 @@ public enum AppForegroundDelegate
             {
               AppMethodBeat.i(131743);
               if (!AppForegroundDelegate.c(AppForegroundDelegate.this)) {
-                AppForegroundDelegate.e.c(true, paramString1);
+                AppForegroundDelegate.e.e(true, paramString1);
               }
               AppMethodBeat.o(131743);
             }
@@ -498,7 +532,7 @@ public enum AppForegroundDelegate
           AppMethodBeat.o(131748);
           return;
         }
-        if (parama == AppForegroundDelegate.a.dkh)
+        if (parama == AppForegroundDelegate.a.fbP)
         {
           AppForegroundDelegate.d(AppForegroundDelegate.this).postDelayed(AppForegroundDelegate.a(AppForegroundDelegate.this, new Runnable()
           {
@@ -507,7 +541,7 @@ public enum AppForegroundDelegate
               AppMethodBeat.i(131744);
               if ((AppForegroundDelegate.c(AppForegroundDelegate.this)) && (AppForegroundDelegate.c.a.a(AppForegroundDelegate.c.a.this).remove(paramString1)))
               {
-                AppForegroundDelegate.e.c(false, paramString1);
+                AppForegroundDelegate.e.e(false, paramString1);
                 AppMethodBeat.o(131744);
                 return;
               }
@@ -519,10 +553,10 @@ public enum AppForegroundDelegate
           AppMethodBeat.o(131748);
           return;
         }
-        if ((parama == AppForegroundDelegate.a.dki) || (parama == AppForegroundDelegate.a.dkj))
+        if ((parama == AppForegroundDelegate.a.fbQ) || (parama == AppForegroundDelegate.a.fbR))
         {
-          if (parama == AppForegroundDelegate.a.dki) {
-            this.dko.add(paramString1);
+          if (parama == AppForegroundDelegate.a.fbQ) {
+            this.fbW.add(paramString1);
           }
           if (AppForegroundDelegate.g(AppForegroundDelegate.this) == null) {
             AppForegroundDelegate.d(AppForegroundDelegate.this).postDelayed(AppForegroundDelegate.a(AppForegroundDelegate.this, new Runnable()
@@ -531,7 +565,7 @@ public enum AppForegroundDelegate
               {
                 AppMethodBeat.i(182866);
                 if (AppForegroundDelegate.c(AppForegroundDelegate.this)) {
-                  AppForegroundDelegate.e.c(false, paramString1);
+                  AppForegroundDelegate.e.e(false, paramString1);
                 }
                 AppMethodBeat.o(182866);
               }
@@ -541,18 +575,27 @@ public enum AppForegroundDelegate
         AppMethodBeat.o(131748);
       }
       
+      private static String aaB()
+      {
+        AppMethodBeat.i(200554);
+        String str = MMApplicationContext.getProcessName() + "@" + Process.myPid();
+        AppMethodBeat.o(200554);
+        return str;
+      }
+      
       public final void onActivityCreated(Activity paramActivity, Bundle paramBundle)
       {
         AppMethodBeat.i(131749);
-        paramActivity = paramActivity.getClass().getName() + "@" + paramActivity.hashCode();
-        AppForegroundDelegate.fX(paramActivity);
+        paramBundle = paramActivity.getClass().getName() + "@" + paramActivity.hashCode();
+        AppForegroundDelegate.gH(paramBundle);
+        AppForegroundDelegate.a(AppForegroundDelegate.this, new WeakReference(paramActivity));
         if (MMApplicationContext.isMainProcess())
         {
-          a(paramActivity, Wf(), AppForegroundDelegate.a.dke);
+          a(paramBundle, aaB(), AppForegroundDelegate.a.fbM);
           AppMethodBeat.o(131749);
           return;
         }
-        a(AppForegroundDelegate.a.dke, paramActivity);
+        a(AppForegroundDelegate.a.fbM, paramBundle);
         AppMethodBeat.o(131749);
       }
       
@@ -562,11 +605,11 @@ public enum AppForegroundDelegate
         paramActivity = paramActivity.getClass().getName() + "@" + paramActivity.hashCode();
         if (MMApplicationContext.isMainProcess())
         {
-          a(paramActivity, Wf(), AppForegroundDelegate.a.dkj);
+          a(paramActivity, aaB(), AppForegroundDelegate.a.fbR);
           AppMethodBeat.o(131754);
           return;
         }
-        a(AppForegroundDelegate.a.dkj, paramActivity);
+        a(AppForegroundDelegate.a.fbR, paramActivity);
         AppMethodBeat.o(131754);
       }
       
@@ -576,11 +619,11 @@ public enum AppForegroundDelegate
         paramActivity = paramActivity.getClass().getName() + "@" + paramActivity.hashCode();
         if (MMApplicationContext.isMainProcess())
         {
-          a(paramActivity, Wf(), AppForegroundDelegate.a.dkh);
+          a(paramActivity, aaB(), AppForegroundDelegate.a.fbP);
           AppMethodBeat.o(131752);
           return;
         }
-        a(AppForegroundDelegate.a.dkh, paramActivity);
+        a(AppForegroundDelegate.a.fbP, paramActivity);
         AppMethodBeat.o(131752);
       }
       
@@ -590,11 +633,11 @@ public enum AppForegroundDelegate
         paramActivity = paramActivity.getClass().getName() + "@" + paramActivity.hashCode();
         if (MMApplicationContext.isMainProcess())
         {
-          a(paramActivity, Wf(), AppForegroundDelegate.a.dkg);
+          a(paramActivity, aaB(), AppForegroundDelegate.a.fbO);
           AppMethodBeat.o(131751);
           return;
         }
-        a(AppForegroundDelegate.a.dkg, paramActivity);
+        a(AppForegroundDelegate.a.fbO, paramActivity);
         AppMethodBeat.o(131751);
       }
       
@@ -606,11 +649,11 @@ public enum AppForegroundDelegate
         paramActivity = paramActivity.getClass().getName() + "@" + paramActivity.hashCode();
         if (MMApplicationContext.isMainProcess())
         {
-          a(paramActivity, Wf(), AppForegroundDelegate.a.dkf);
+          a(paramActivity, aaB(), AppForegroundDelegate.a.fbN);
           AppMethodBeat.o(131750);
           return;
         }
-        a(AppForegroundDelegate.a.dkf, paramActivity);
+        a(AppForegroundDelegate.a.fbN, paramActivity);
         AppMethodBeat.o(131750);
       }
       
@@ -620,11 +663,11 @@ public enum AppForegroundDelegate
         paramActivity = paramActivity.getClass().getName() + "@" + paramActivity.hashCode();
         if (MMApplicationContext.isMainProcess())
         {
-          a(paramActivity, Wf(), AppForegroundDelegate.a.dki);
+          a(paramActivity, aaB(), AppForegroundDelegate.a.fbQ);
           AppMethodBeat.o(131753);
           return;
         }
-        a(AppForegroundDelegate.a.dki, paramActivity);
+        a(AppForegroundDelegate.a.fbQ, paramActivity);
         AppMethodBeat.o(131753);
       }
       
@@ -648,18 +691,18 @@ public enum AppForegroundDelegate
           if ("android.intent.action.SCREEN_OFF".equals(paramContext))
           {
             AppForegroundDelegate.a(AppForegroundDelegate.this, true);
-            paramContext = AppForegroundDelegate.We();
-            paramIntent = AppForegroundDelegate.c.this.dkl;
+            paramContext = AppForegroundDelegate.aaA();
+            paramIntent = AppForegroundDelegate.c.this.fbT;
             localObject = AppForegroundDelegate.d(AppForegroundDelegate.this);
-            paramContext.dkl = paramIntent;
-            paramContext.aDv = ((Handler)localObject);
-            paramContext.dkm = 0;
-            paramContext.daZ = true;
-            AppForegroundDelegate.d(AppForegroundDelegate.this).postDelayed(AppForegroundDelegate.We(), 5000L);
+            paramContext.fbT = paramIntent;
+            paramContext.die = ((Handler)localObject);
+            paramContext.fbU = 0;
+            paramContext.cSY = true;
+            AppForegroundDelegate.d(AppForegroundDelegate.this).postDelayed(AppForegroundDelegate.aaA(), 5000L);
           }
           for (;;)
           {
-            h.RTc.b(new Runnable()
+            h.ZvG.d(new Runnable()
             {
               public final void run()
               {
@@ -669,23 +712,22 @@ public enum AppForegroundDelegate
                   LinkedList localLinkedList = new LinkedList(AppForegroundDelegate.e(AppForegroundDelegate.this));
                   ??? = localLinkedList.iterator();
                   if (((Iterator)???).hasNext()) {
-                    ((p)((Iterator)???).next()).cM(AppForegroundDelegate.f(AppForegroundDelegate.this));
+                    ((p)((Iterator)???).next()).di(AppForegroundDelegate.f(AppForegroundDelegate.this));
                   }
                 }
-                AppMethodBeat.o(131742);
               }
             }, "MicroMsg.AppForegroundDelegate");
             AppMethodBeat.o(131746);
             return;
-            AppForegroundDelegate.d(AppForegroundDelegate.this).removeCallbacks(AppForegroundDelegate.We());
+            AppForegroundDelegate.d(AppForegroundDelegate.this).removeCallbacks(AppForegroundDelegate.aaA());
             AppForegroundDelegate.a(AppForegroundDelegate.this, false);
           }
         }
-        paramContext = AppForegroundDelegate.a.fY(paramContext);
-        if ((paramContext == AppForegroundDelegate.a.dkf) || (paramContext == AppForegroundDelegate.a.dkg))
+        paramContext = AppForegroundDelegate.a.gI(paramContext);
+        if ((paramContext == AppForegroundDelegate.a.fbN) || (paramContext == AppForegroundDelegate.a.fbO))
         {
-          AppForegroundDelegate.We().daZ = false;
-          AppForegroundDelegate.d(AppForegroundDelegate.this).removeCallbacks(AppForegroundDelegate.We());
+          AppForegroundDelegate.aaA().cSY = false;
+          AppForegroundDelegate.d(AppForegroundDelegate.this).removeCallbacks(AppForegroundDelegate.aaA());
         }
         if (paramContext != null)
         {
@@ -701,35 +743,35 @@ public enum AppForegroundDelegate
   
   static final class d
   {
-    LinkedList<String> dkr;
+    LinkedList<String> fbZ;
     
     public d(String paramString, AppForegroundDelegate.a parama)
     {
-      AppMethodBeat.i(196960);
-      this.dkr = new LinkedList();
+      AppMethodBeat.i(206465);
+      this.fbZ = new LinkedList();
       a(paramString, parama);
-      AppMethodBeat.o(196960);
+      AppMethodBeat.o(206465);
     }
     
     public final boolean a(String paramString, AppForegroundDelegate.a parama)
     {
-      AppMethodBeat.i(196961);
+      AppMethodBeat.i(206466);
       String str = paramString + "#" + parama;
-      if (!this.dkr.contains(str))
+      if (!this.fbZ.contains(str))
       {
-        if (parama == AppForegroundDelegate.a.dkg) {
-          this.dkr.add(str);
+        if (parama == AppForegroundDelegate.a.fbO) {
+          this.fbZ.add(str);
         }
         for (;;)
         {
-          AppMethodBeat.o(196961);
+          AppMethodBeat.o(206466);
           return true;
-          if (parama == AppForegroundDelegate.a.dkh) {
-            this.dkr.remove(paramString + "#" + AppForegroundDelegate.a.dkg);
+          if (parama == AppForegroundDelegate.a.fbP) {
+            this.fbZ.remove(paramString + "#" + AppForegroundDelegate.a.fbO);
           }
         }
       }
-      AppMethodBeat.o(196961);
+      AppMethodBeat.o(206466);
       return false;
     }
   }
@@ -737,11 +779,11 @@ public enum AppForegroundDelegate
   final class e
     extends BroadcastReceiver
   {
-    public String activity;
+    public String fca;
     
     private e() {}
     
-    public static void c(boolean paramBoolean, String paramString)
+    public static void e(boolean paramBoolean, String paramString)
     {
       AppMethodBeat.i(131757);
       Intent localIntent = new Intent();
@@ -751,7 +793,7 @@ public enum AppForegroundDelegate
         localIntent.setAction(str);
         localIntent.putExtra("com.tencent.mm.AppForegroundDelegate.ACTIVITY_NAME", paramString);
         localIntent.putExtra("com.tencent.mm.AppForegroundDelegate.DISPATCH_TIME", SystemClock.uptimeMillis());
-        MMApplicationContext.getContext().sendBroadcast(localIntent, AppForegroundDelegate.djS);
+        MMApplicationContext.getContext().sendBroadcast(localIntent, AppForegroundDelegate.fbz);
         AppMethodBeat.o(131757);
         return;
       }
@@ -766,24 +808,24 @@ public enum AppForegroundDelegate
         return;
       }
       paramContext = paramIntent.getAction();
-      this.activity = paramIntent.getStringExtra("com.tencent.mm.AppForegroundDelegate.ACTIVITY_NAME");
+      this.fca = paramIntent.getStringExtra("com.tencent.mm.AppForegroundDelegate.ACTIVITY_NAME");
       long l = paramIntent.getLongExtra("com.tencent.mm.AppForegroundDelegate.DISPATCH_TIME", 0L);
       boolean bool = "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVE".equalsIgnoreCase(paramContext);
       l = SystemClock.uptimeMillis() - l;
       if (bool)
       {
-        AppForegroundDelegate.a(AppForegroundDelegate.this, this.activity, l);
+        AppForegroundDelegate.a(AppForegroundDelegate.this, this.fca, l);
         AppMethodBeat.o(131756);
         return;
       }
-      AppForegroundDelegate.b(AppForegroundDelegate.this, this.activity, l);
+      AppForegroundDelegate.b(AppForegroundDelegate.this, this.fca, l);
       AppMethodBeat.o(131756);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.app.AppForegroundDelegate
  * JD-Core Version:    0.7.0.1
  */

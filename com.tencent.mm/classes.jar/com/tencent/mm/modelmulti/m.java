@@ -13,13 +13,13 @@ import java.lang.reflect.Method;
 
 public final class m
 {
-  Boolean jdz;
+  Boolean lTY;
   
   public m(Context paramContext, final a parama)
   {
     AppMethodBeat.i(150782);
-    this.jdz = null;
-    this.jdz = dc(paramContext);
+    this.lTY = null;
+    this.lTY = cZ(paramContext);
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.intent.action.SCREEN_ON");
     localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
@@ -37,12 +37,12 @@ public final class m
           }
         }
         label98:
-        for (m.this.jdz = Boolean.FALSE;; m.this.jdz = Boolean.TRUE)
+        for (m.this.lTY = Boolean.FALSE;; m.this.lTY = Boolean.TRUE)
         {
           if (parama != null) {
-            parama.fH(m.this.jdz.booleanValue());
+            parama.gt(m.this.lTY.booleanValue());
           }
-          if (this.jdB) {
+          if (this.lUa) {
             paramAnonymousContext.unregisterReceiver(this);
           }
           AppMethodBeat.o(150781);
@@ -55,20 +55,20 @@ public final class m
     AppMethodBeat.o(150782);
   }
   
-  private Boolean dc(Context paramContext)
+  private Boolean cZ(Context paramContext)
   {
     AppMethodBeat.i(150783);
     try
     {
       paramContext = (Boolean)PowerManager.class.getMethod("isScreenOn", new Class[0]).invoke((PowerManager)paramContext.getSystemService("power"), new Object[0]);
-      Log.i("MicroMsg.ScreenState", "reflectScreenOn: byReflect:%s isScreenOn:%s", new Object[] { paramContext, this.jdz });
+      Log.i("MicroMsg.ScreenState", "reflectScreenOn: byReflect:%s isScreenOn:%s", new Object[] { paramContext, this.lTY });
       AppMethodBeat.o(150783);
       return paramContext;
     }
     catch (Exception paramContext)
     {
-      h.CyF.idkeyStat(99L, 154L, 1L, false);
-      Log.e("MicroMsg.ScreenState", "reflectScreenOn invoke ERROR use isScreenOn:%s e:%s", new Object[] { this.jdz, Util.stackTraceToString(paramContext) });
+      h.IzE.idkeyStat(99L, 154L, 1L, false);
+      Log.e("MicroMsg.ScreenState", "reflectScreenOn invoke ERROR use isScreenOn:%s e:%s", new Object[] { this.lTY, Util.stackTraceToString(paramContext) });
       AppMethodBeat.o(150783);
     }
     return null;
@@ -76,12 +76,12 @@ public final class m
   
   public static abstract interface a
   {
-    public abstract void fH(boolean paramBoolean);
+    public abstract void gt(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelmulti.m
  * JD-Core Version:    0.7.0.1
  */

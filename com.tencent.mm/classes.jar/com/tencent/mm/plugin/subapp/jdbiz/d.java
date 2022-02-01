@@ -3,15 +3,11 @@ package com.tencent.mm.plugin.subapp.jdbiz;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.o.a;
-import com.tencent.mm.g.a.lb;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.cj;
-import com.tencent.mm.n.f;
-import com.tencent.mm.n.h;
-import com.tencent.mm.pluginsdk.i.d.a;
+import com.tencent.mm.f.a.ls;
+import com.tencent.mm.model.be;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.ck;
+import com.tencent.mm.pluginsdk.j.d.a;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
@@ -25,22 +21,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class d
-  implements bd, d.a
+  implements be, d.a
 {
-  private a FJC;
-  private c FJD;
-  Map<String, Integer> FJE;
+  private c MdA;
+  Map<String, Integer> MdB;
+  private a Mdz;
   private o.a appForegroundListener;
-  private IListener gmC;
+  private IListener iQL;
   
   public d()
   {
     AppMethodBeat.i(28881);
-    this.FJC = null;
-    this.FJD = null;
-    this.FJE = new HashMap();
+    this.Mdz = null;
+    this.MdA = null;
+    this.MdB = new HashMap();
     this.appForegroundListener = new d.1(this);
-    this.gmC = new d.2(this);
+    this.iQL = new d.2(this);
     Log.i("MicroMsg.SubCoreJdIP6", "new SubCoreJDBiz this: " + hashCode() + " stack: " + Util.getStack());
     AppMethodBeat.o(28881);
   }
@@ -48,108 +44,102 @@ public class d
   public static void b(c paramc)
   {
     AppMethodBeat.i(28890);
-    g.aAf().azk();
-    d locald = fsQ();
-    if (locald.FJD == null) {
-      locald.FJD = c.fsN();
+    com.tencent.mm.kernel.h.aHE().aGH();
+    d locald = ghp();
+    if (locald.MdA == null) {
+      locald.MdA = c.ghm();
     }
-    Log.i("MicroMsg.SubCoreJdIP6", "updatejdMsgContent old: %s new: %s", new Object[] { locald.FJD.aBz(), paramc.aBz() });
-    if (!paramc.a(locald.FJD))
+    Log.i("MicroMsg.SubCoreJdIP6", "updatejdMsgContent old: %s new: %s", new Object[] { locald.MdA.aJc(), paramc.aJc() });
+    if (!paramc.a(locald.MdA))
     {
       Log.i("MicroMsg.SubCoreJdIP6", "fo zu baoyou! the activityid is same");
       AppMethodBeat.o(28890);
       return;
     }
-    if ((!Util.isNullOrNil(paramc.FJp)) || (paramc.FJo))
+    if ((!Util.isNullOrNil(paramc.Mdm)) || (paramc.Mdl))
     {
-      bg.aVF();
-      com.tencent.mm.model.c.azQ().set(327939, "1");
+      bh.beI();
+      com.tencent.mm.model.c.aHp().i(327939, "1");
     }
-    if (paramc.FJn)
+    if (paramc.Mdk)
     {
-      bg.aVF();
-      com.tencent.mm.model.c.azQ().set(327938, "1");
+      bh.beI();
+      com.tencent.mm.model.c.aHp().i(327938, "1");
     }
     for (;;)
     {
-      locald.FJD = paramc;
-      bg.aVF();
-      com.tencent.mm.model.c.azQ().set(327942, paramc.dWG);
-      locald.fsW();
-      g.aAh().azQ().set(ar.a.Ojv, Boolean.TRUE);
+      locald.MdA = paramc;
+      bh.beI();
+      com.tencent.mm.model.c.aHp().i(327942, paramc.fQs);
+      locald.ghv();
+      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VxL, Boolean.TRUE);
       AppMethodBeat.o(28890);
       return;
-      bg.aVF();
-      com.tencent.mm.model.c.azQ().set(327938, "");
+      bh.beI();
+      com.tencent.mm.model.c.aHp().i(327938, "");
     }
   }
   
-  public static String fO(String paramString, int paramInt)
+  private static b ghA()
   {
-    AppMethodBeat.i(28893);
-    String str = paramString;
-    if (-1 == paramString.indexOf('#')) {
-      if (-1 != paramString.indexOf('?')) {
-        break label60;
-      }
-    }
-    label60:
-    for (str = paramString + "?wc_scene=" + paramInt;; str = paramString + "&wc_scene=" + paramInt)
-    {
-      AppMethodBeat.o(28893);
-      return str;
-    }
+    AppMethodBeat.i(218435);
+    b localb = new b();
+    localb.username = com.tencent.mm.n.h.axc().getValue("JDEntranceConfigJumpWeAppUsername");
+    localb.path = com.tencent.mm.n.h.axc().getValue("JDEntranceConfigJumpWeAppPath");
+    localb.version = com.tencent.mm.n.h.axc().getInt("JDEntranceConfigJumpWeAppVersion", 0);
+    AppMethodBeat.o(218435);
+    return localb;
   }
   
-  public static d fsQ()
+  public static d ghp()
   {
     AppMethodBeat.i(28882);
-    d locald2 = (d)com.tencent.mm.pluginsdk.i.d.JYo;
+    d locald2 = (d)com.tencent.mm.pluginsdk.j.d.QYQ;
     d locald1 = locald2;
     if (locald2 == null)
     {
       locald1 = new d();
-      com.tencent.mm.pluginsdk.i.d.JYo = locald1;
+      com.tencent.mm.pluginsdk.j.d.QYQ = locald1;
     }
     AppMethodBeat.o(28882);
     return locald1;
   }
   
-  public static boolean fsR()
+  public static boolean ghq()
   {
     AppMethodBeat.i(28885);
-    bg.aVF();
-    boolean bool = "1".equals((String)com.tencent.mm.model.c.azQ().get(327939, ""));
+    bh.beI();
+    boolean bool = "1".equals((String)com.tencent.mm.model.c.aHp().b(327939, ""));
     AppMethodBeat.o(28885);
     return bool;
   }
   
-  public static boolean fsS()
+  public static boolean ghr()
   {
     AppMethodBeat.i(28886);
-    bg.aVF();
-    boolean bool = "1".equals((String)com.tencent.mm.model.c.azQ().get(327938, ""));
+    bh.beI();
+    boolean bool = "1".equals((String)com.tencent.mm.model.c.aHp().b(327938, ""));
     AppMethodBeat.o(28886);
     return bool;
   }
   
-  public static void fsT()
+  public static void ghs()
   {
     AppMethodBeat.i(28887);
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(327938, "");
+    bh.beI();
+    com.tencent.mm.model.c.aHp().i(327938, "");
     AppMethodBeat.o(28887);
   }
   
-  public static void fsU()
+  public static void ght()
   {
     AppMethodBeat.i(28888);
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(327939, "");
+    bh.beI();
+    com.tencent.mm.model.c.aHp().i(327939, "");
     AppMethodBeat.o(28888);
   }
   
-  private void fsW()
+  private void ghv()
   {
     AppMethodBeat.i(28891);
     new MMHandler(Looper.getMainLooper()).post(new Runnable()
@@ -157,119 +147,104 @@ public class d
       public final void run()
       {
         AppMethodBeat.i(28880);
-        lb locallb = new lb();
-        EventCenter.instance.publish(locallb);
+        ls localls = new ls();
+        EventCenter.instance.publish(localls);
         AppMethodBeat.o(28880);
       }
     });
     AppMethodBeat.o(28891);
   }
   
-  public static void fsX()
+  public static void ghw()
   {
     AppMethodBeat.i(28892);
-    if (bg.aAc())
+    if (bh.aHB())
     {
-      fsQ();
-      if (!fsR())
+      ghp();
+      if (!ghq())
       {
-        fsQ();
-        if (!fsS()) {}
+        ghp();
+        if (!ghr()) {}
       }
       else
       {
-        c localc = fsQ().fsV();
-        if (((!Util.isNullOrNil(localc.FJp)) || (localc.FJo)) && (localc.dMp()))
+        c localc = ghp().ghu();
+        if (((!Util.isNullOrNil(localc.Mdm)) || (localc.Mdl)) && (localc.eqj()))
         {
           Log.i("MicroMsg.SubCoreJdIP6", "clear red dot/friend dot");
-          fsQ();
-          fsT();
-          fsQ();
-          fsU();
-          fsQ().fsW();
+          ghp();
+          ghs();
+          ghp();
+          ght();
+          ghp().ghv();
         }
       }
     }
     AppMethodBeat.o(28892);
   }
   
-  public static String fsZ()
+  public static String ghy()
   {
     AppMethodBeat.i(28895);
     String str;
     if (LocaleUtil.isSimplifiedChineseAppLang()) {
-      str = h.aqJ().getValue("JDEntranceConfigName");
+      str = com.tencent.mm.n.h.axc().getValue("JDEntranceConfigName");
     }
     for (;;)
     {
       AppMethodBeat.o(28895);
       return str;
       if (LocaleUtil.isTraditionalChineseAppLang()) {
-        str = h.aqJ().getValue("JDEntranceConfigNameHKTW");
+        str = com.tencent.mm.n.h.axc().getValue("JDEntranceConfigNameHKTW");
       } else {
-        str = h.aqJ().getValue("JDEntranceConfigNameEN");
+        str = com.tencent.mm.n.h.axc().getValue("JDEntranceConfigNameEN");
       }
     }
   }
   
-  public static String fta()
+  public static String ghz()
   {
     AppMethodBeat.i(28896);
-    String str = h.aqJ().getValue("JDEntranceConfigJumpUrl");
+    String str = com.tencent.mm.n.h.axc().getValue("JDEntranceConfigJumpUrl");
     AppMethodBeat.o(28896);
     return str;
   }
   
-  private static b ftb()
+  public static String gs(String paramString, int paramInt)
   {
-    AppMethodBeat.i(232066);
-    b localb = new b();
-    localb.username = h.aqJ().getValue("JDEntranceConfigJumpWeAppUsername");
-    localb.path = h.aqJ().getValue("JDEntranceConfigJumpWeAppPath");
-    localb.version = h.aqJ().getInt("JDEntranceConfigJumpWeAppVersion", 0);
-    AppMethodBeat.o(232066);
-    return localb;
+    AppMethodBeat.i(28893);
+    String str = paramString;
+    if (-1 == paramString.indexOf('#')) {
+      if (-1 != paramString.indexOf('?')) {
+        break label61;
+      }
+    }
+    label61:
+    for (str = paramString + "?wc_scene=" + paramInt;; str = paramString + "&wc_scene=" + paramInt)
+    {
+      AppMethodBeat.o(28893);
+      return str;
+    }
   }
   
   public void clearPluginData(int paramInt) {}
   
-  public final c fsV()
+  public HashMap<Integer, h.b> getBaseDBFactories()
   {
-    AppMethodBeat.i(28889);
-    if (this.FJD == null) {
-      this.FJD = c.fsN();
-    }
-    c localc = this.FJD;
-    AppMethodBeat.o(28889);
-    return localc;
+    return null;
   }
   
-  public final boolean fsY()
-  {
-    AppMethodBeat.i(28894);
-    String str1 = fsZ();
-    String str2 = fta();
-    String str3 = h.aqJ().getValue("JDEntranceConfigJumpWeAppUsername");
-    if ((!Util.isNullOrNil(str1)) && ((!Util.isNullOrNil(str2)) || (!Util.isNullOrNil(str3))))
-    {
-      AppMethodBeat.o(28894);
-      return true;
-    }
-    AppMethodBeat.o(28894);
-    return false;
-  }
-  
-  public final String ftc()
+  public final String ghB()
   {
     int j = 1;
     AppMethodBeat.i(28897);
     Object localObject2 = "";
-    c localc = fsV();
+    c localc = ghu();
     int i = j;
     Object localObject1 = localObject2;
-    if (fsR())
+    if (ghq())
     {
-      if ((localc.dMp()) || (!"3".equals(localc.FJl)) || (Util.isNullOrNil(localc.jumpUrl))) {
+      if ((localc.eqj()) || (!"3".equals(localc.Mdj)) || (Util.isNullOrNil(localc.jumpUrl))) {
         break label184;
       }
       Log.i("MicroMsg.SubCoreJdIP6", "jumpUrl update %s", new Object[] { localc.jumpUrl });
@@ -280,7 +255,7 @@ public class d
     {
       j = i;
       localObject2 = localObject1;
-      if ("2".equals(localc.FJl))
+      if ("2".equals(localc.Mdj))
       {
         j = i;
         localObject2 = localObject1;
@@ -288,11 +263,11 @@ public class d
         {
           j = i;
           localObject2 = localObject1;
-          if (localc.fsO())
+          if (localc.ghn())
           {
             j = i;
             localObject2 = localObject1;
-            if (!localc.fsP())
+            if (!localc.gho())
             {
               localObject2 = localc.jumpUrl;
               j = 3;
@@ -303,65 +278,86 @@ public class d
       if (Util.isNullOrNil((String)localObject2)) {
         break;
       }
-      localObject1 = fO((String)localObject2, j);
+      localObject1 = gs((String)localObject2, j);
       AppMethodBeat.o(28897);
       return localObject1;
       label184:
       i = j;
       localObject1 = localObject2;
-      if (localc.FJo)
+      if (localc.Mdl)
       {
         i = 2;
         localObject1 = localObject2;
       }
     }
-    localObject1 = fta();
+    localObject1 = ghz();
     AppMethodBeat.o(28897);
     return localObject1;
   }
   
-  public final b ftd()
+  public final b ghC()
   {
     AppMethodBeat.i(28898);
     b localb = new b();
-    Object localObject = fsV();
-    if ((fsR()) && (!((c)localObject).dMp()) && ("3".equals(((c)localObject).FJl)))
+    Object localObject = ghu();
+    if ((ghq()) && (!((c)localObject).eqj()) && ("3".equals(((c)localObject).Mdj)))
     {
-      Log.i("MicroMsg.SubCoreJdIP6", "bizType %s, jumpWeapp update user:%s path:%s version:%d", new Object[] { ((c)localObject).FJl, ((c)localObject).FJz, ((c)localObject).FJA, Integer.valueOf(((c)localObject).FJB) });
-      localb.username = ((c)localObject).FJz;
-      localb.path = ((c)localObject).FJA;
-      localb.version = ((c)localObject).FJB;
+      Log.i("MicroMsg.SubCoreJdIP6", "bizType %s, jumpWeapp update user:%s path:%s version:%d", new Object[] { ((c)localObject).Mdj, ((c)localObject).Mdw, ((c)localObject).Mdx, Integer.valueOf(((c)localObject).Mdy) });
+      localb.username = ((c)localObject).Mdw;
+      localb.path = ((c)localObject).Mdx;
+      localb.version = ((c)localObject).Mdy;
     }
-    if (("2".equals(((c)localObject).FJl)) && (((c)localObject).fsO()) && (!((c)localObject).fsP()))
+    if (("2".equals(((c)localObject).Mdj)) && (((c)localObject).ghn()) && (!((c)localObject).gho()))
     {
-      Log.i("MicroMsg.SubCoreJdIP6", "bizType %s, jumpWeapp update user:%s path:%s version:%d", new Object[] { ((c)localObject).FJl, ((c)localObject).FJz, ((c)localObject).FJA, Integer.valueOf(((c)localObject).FJB) });
-      localb.username = ((c)localObject).FJz;
-      localb.path = ((c)localObject).FJA;
-      localb.version = ((c)localObject).FJB;
+      Log.i("MicroMsg.SubCoreJdIP6", "bizType %s, jumpWeapp update user:%s path:%s version:%d", new Object[] { ((c)localObject).Mdj, ((c)localObject).Mdw, ((c)localObject).Mdx, Integer.valueOf(((c)localObject).Mdy) });
+      localb.username = ((c)localObject).Mdw;
+      localb.path = ((c)localObject).Mdx;
+      localb.version = ((c)localObject).Mdy;
     }
     localObject = localb;
     if (!localb.isValid()) {
-      localObject = ftb();
+      localObject = ghA();
     }
     AppMethodBeat.o(28898);
     return localObject;
   }
   
-  public HashMap<Integer, h.b> getBaseDBFactories()
+  public final c ghu()
   {
-    return null;
+    AppMethodBeat.i(28889);
+    if (this.MdA == null) {
+      this.MdA = c.ghm();
+    }
+    c localc = this.MdA;
+    AppMethodBeat.o(28889);
+    return localc;
+  }
+  
+  public final boolean ghx()
+  {
+    AppMethodBeat.i(28894);
+    String str1 = ghy();
+    String str2 = ghz();
+    String str3 = com.tencent.mm.n.h.axc().getValue("JDEntranceConfigJumpWeAppUsername");
+    if ((!Util.isNullOrNil(str1)) && ((!Util.isNullOrNil(str2)) || (!Util.isNullOrNil(str3))))
+    {
+      AppMethodBeat.o(28894);
+      return true;
+    }
+    AppMethodBeat.o(28894);
+    return false;
   }
   
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(28883);
     Log.i("MicroMsg.SubCoreJdIP6", "onAccountPostReset");
-    if (this.FJC == null) {
-      this.FJC = new a();
+    if (this.Mdz == null) {
+      this.Mdz = new a();
     }
     this.appForegroundListener.alive();
-    bg.getSysCmdMsgExtension().a("jd", this.FJC, true);
-    EventCenter.instance.addListener(this.gmC);
+    bh.getSysCmdMsgExtension().a("jd", this.Mdz, true);
+    EventCenter.instance.addListener(this.iQL);
     AppMethodBeat.o(28883);
   }
   
@@ -370,15 +366,15 @@ public class d
     AppMethodBeat.i(28884);
     Log.i("MicroMsg.SubCoreJdIP6", "onAccountRelease");
     this.appForegroundListener.dead();
-    if (this.FJC != null)
+    if (this.Mdz != null)
     {
-      a locala = this.FJC;
-      EventCenter.instance.removeListener(locala.FJi);
-      bg.getSysCmdMsgExtension().b("jd", this.FJC, true);
+      a locala = this.Mdz;
+      EventCenter.instance.removeListener(locala.Mdg);
+      bh.getSysCmdMsgExtension().b("jd", this.Mdz, true);
     }
-    this.FJE.clear();
-    this.FJC = null;
-    EventCenter.instance.removeListener(this.gmC);
+    this.MdB.clear();
+    this.Mdz = null;
+    EventCenter.instance.removeListener(this.iQL);
     AppMethodBeat.o(28884);
   }
   
@@ -386,7 +382,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.jdbiz.d
  * JD-Core Version:    0.7.0.1
  */

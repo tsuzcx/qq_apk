@@ -7,19 +7,19 @@ import java.util.List;
 public abstract interface j
   extends a
 {
-  public abstract e<Integer> UK(String paramString);
-  
-  public abstract void UL(String paramString);
-  
   public abstract void a(int paramInt, String paramString, Object paramObject);
   
-  public abstract void bc(List<String> paramList);
+  public abstract e<Integer> acu(String paramString);
   
-  public abstract int buu();
+  public abstract void acv(String paramString);
   
-  public abstract void cr(String paramString1, String paramString2);
+  public abstract int bFx();
   
-  public abstract void p(String paramString1, String paramString2, int paramInt);
+  public abstract void ba(List<String> paramList);
+  
+  public abstract void cw(String paramString1, String paramString2);
+  
+  public abstract void r(String paramString1, String paramString2, int paramInt);
 }
 
 

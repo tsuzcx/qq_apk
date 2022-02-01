@@ -24,15 +24,15 @@ public class al
     int i = 1;
     AppMethodBeat.i(78588);
     Log.i("MicroMsg.JsApiOpenCustomWebView", "invokeInOwn");
-    final String str1 = paramb.ctb.csi.optString("url");
+    final String str1 = paramb.crh.cqn.optString("url");
     if (Util.isNullOrNil(str1))
     {
-      paramb.c("invalid_url", null);
+      paramb.a("invalid_url", null);
       AppMethodBeat.o(78588);
       return;
     }
     Log.i("MicroMsg.JsApiOpenCustomWebView", "url: %s", new Object[] { str1 });
-    String str2 = paramb.ctb.csi.optString("orientation");
+    String str2 = paramb.crh.cqn.optString("orientation");
     if (!Util.isNullOrNil(str2)) {
       if (str2.equals("horizontal")) {
         i = 0;
@@ -40,18 +40,18 @@ public class al
     }
     for (;;)
     {
-      boolean bool1 = paramb.ctb.csi.optBoolean("fullscreen");
-      final boolean bool2 = paramb.ctb.csi.optString("finish_recent_webview").equals("1");
-      boolean bool3 = paramb.ctb.csi.optString("disable_swipe_back").equals("1");
-      str2 = paramb.ctb.csi.optString("username");
+      boolean bool1 = paramb.crh.cqn.optBoolean("fullscreen");
+      final boolean bool2 = paramb.crh.cqn.optString("finish_recent_webview").equals("1");
+      boolean bool3 = paramb.crh.cqn.optString("disable_swipe_back").equals("1");
+      str2 = paramb.crh.cqn.optString("username");
       final Bundle localBundle = new Bundle();
       localBundle.putString("rawUrl", str1);
       localBundle.putInt("screen_orientation", i);
       localBundle.putBoolean("show_full_screen", bool1);
       localBundle.putBoolean("disable_swipe_back", bool3);
       localBundle.putString("shortcut_user_name", str2);
-      localBundle.putString("game_hv_menu_appid", Util.nullAsNil(paramb.ctb.csi.optString("gameAppid")));
-      localBundle.putBoolean("from_find_more_friend", ((g)paramb.cta).mParams.getBoolean("from_find_more_friend", false));
+      localBundle.putString("game_hv_menu_appid", Util.nullAsNil(paramb.crh.cqn.optString("gameAppid")));
+      localBundle.putBoolean("from_find_more_friend", ((g)paramb.crg).mParams.getBoolean("from_find_more_friend", false));
       MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
@@ -59,15 +59,15 @@ public class al
           AppMethodBeat.i(78587);
           if (bool2)
           {
-            ((g)paramb.cta).ctg.Ly().i(str1, localBundle);
+            ((g)paramb.crg).crm.Oo().n(str1, localBundle);
             AppMethodBeat.o(78587);
             return;
           }
-          ((g)paramb.cta).ctg.Ly().h(str1, localBundle);
+          ((g)paramb.crg).crm.Oo().m(str1, localBundle);
           AppMethodBeat.o(78587);
         }
       });
-      paramb.c("", null);
+      paramb.a("", null);
       AppMethodBeat.o(78588);
       return;
       if (!str2.equals("vertical")) {
@@ -76,7 +76,7 @@ public class al
     }
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

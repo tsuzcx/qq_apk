@@ -16,10 +16,10 @@ final class WalletForgotPwdUI$1
   {
     AppMethodBeat.i(69651);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/wallet/pwd/ui/WalletForgotPwdUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    h.CyF.a(11353, new Object[] { Integer.valueOf(1), Integer.valueOf(0) });
-    WalletForgotPwdUI.a(this.HJI);
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/wallet/pwd/ui/WalletForgotPwdUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    h.IzE.a(11353, new Object[] { Integer.valueOf(1), Integer.valueOf(0) });
+    WalletForgotPwdUI.a(this.OBC);
     a.a(this, "com/tencent/mm/plugin/wallet/pwd/ui/WalletForgotPwdUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(69651);
   }

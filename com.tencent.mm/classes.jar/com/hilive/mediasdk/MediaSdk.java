@@ -81,7 +81,7 @@ public class MediaSdk
   
   private native boolean nativeAddVideo(long paramLong1, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean1, boolean paramBoolean2, long paramLong2);
   
-  private native long nativeCreate();
+  private native long nativeCreate(String paramString);
   
   private native boolean nativeGetFrame(long paramLong, int paramInt, boolean paramBoolean, byte[] paramArrayOfByte, SdkInfo.FrameInfo paramFrameInfo);
   
@@ -127,7 +127,7 @@ public class MediaSdk
   
   public void Loging(int paramInt, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(238028);
+    AppMethodBeat.i(191549);
     for (;;)
     {
       try
@@ -136,23 +136,23 @@ public class MediaSdk
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(238028);
+          AppMethodBeat.o(191549);
           return;
         }
       }
       catch (Exception paramArrayOfByte)
       {
-        AppMethodBeat.o(238028);
+        AppMethodBeat.o(191549);
         return;
       }
       LogDelegate.e("[hilive][java]", paramArrayOfByte, new Object[0]);
-      AppMethodBeat.o(238028);
+      AppMethodBeat.o(191549);
       return;
       LogDelegate.w("[hilive][java]", paramArrayOfByte, new Object[0]);
-      AppMethodBeat.o(238028);
+      AppMethodBeat.o(191549);
       return;
       LogDelegate.i("[hilive][java]", paramArrayOfByte, new Object[0]);
-      AppMethodBeat.o(238028);
+      AppMethodBeat.o(191549);
       return;
       LogDelegate.d("[hilive][java]", paramArrayOfByte, new Object[0]);
     }
@@ -179,10 +179,10 @@ public class MediaSdk
   {
     try
     {
-      AppMethodBeat.i(238008);
+      AppMethodBeat.i(191473);
       LogDelegate.i("[hilive][java]", "editorAddTrack", new Object[0]);
       request(202, paramArrayOfByte, paramMediaCallbacker);
-      AppMethodBeat.o(238008);
+      AppMethodBeat.o(191473);
       return;
     }
     finally
@@ -213,10 +213,10 @@ public class MediaSdk
   {
     try
     {
-      AppMethodBeat.i(238009);
+      AppMethodBeat.i(191476);
       LogDelegate.i("[hilive][java]", "editorDelTrack", new Object[0]);
       request(204, paramArrayOfByte, paramMediaCallbacker);
-      AppMethodBeat.o(238009);
+      AppMethodBeat.o(191476);
       return;
     }
     finally
@@ -302,123 +302,132 @@ public class MediaSdk
   }
   
   /* Error */
-  public boolean init()
+  public boolean init(android.content.Context paramContext)
   {
     // Byte code:
     //   0: iconst_0
-    //   1: istore_2
+    //   1: istore_3
     //   2: aload_0
     //   3: monitorenter
     //   4: ldc 160
     //   6: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: ldc 11
-    //   11: ldc 162
-    //   13: iconst_0
-    //   14: anewarray 4	java/lang/Object
-    //   17: invokestatic 103	com/hilive/mediasdk/LogDelegate:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   20: invokestatic 167	com/hilive/mediasdk/LoadDelegate:loadLibraries	()V
-    //   23: aload_0
-    //   24: getfield 21	com/hilive/mediasdk/MediaSdk:mInited	Z
-    //   27: ifne +27 -> 54
-    //   30: aload_0
-    //   31: aload_0
-    //   32: invokespecial 169	com/hilive/mediasdk/MediaSdk:nativeCreate	()J
-    //   35: putfield 23	com/hilive/mediasdk/MediaSdk:mContext	J
-    //   38: aload_0
-    //   39: getfield 23	com/hilive/mediasdk/MediaSdk:mContext	J
-    //   42: lconst_0
-    //   43: lcmp
-    //   44: ifeq +52 -> 96
-    //   47: iconst_1
-    //   48: istore_1
-    //   49: aload_0
-    //   50: iload_1
-    //   51: putfield 21	com/hilive/mediasdk/MediaSdk:mInited	Z
-    //   54: ldc 11
-    //   56: new 46	java/lang/StringBuilder
-    //   59: dup
-    //   60: ldc 171
-    //   62: invokespecial 51	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   11: new 46	java/lang/StringBuilder
+    //   14: dup
+    //   15: ldc 162
+    //   17: invokespecial 51	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   20: aload_1
+    //   21: invokevirtual 168	android/content/Context:getCacheDir	()Ljava/io/File;
+    //   24: invokevirtual 173	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   27: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   33: iconst_0
+    //   34: anewarray 4	java/lang/Object
+    //   37: invokestatic 103	com/hilive/mediasdk/LogDelegate:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   40: invokestatic 178	com/hilive/mediasdk/LoadDelegate:loadLibraries	()V
+    //   43: aload_0
+    //   44: getfield 21	com/hilive/mediasdk/MediaSdk:mInited	Z
+    //   47: ifne +34 -> 81
+    //   50: aload_0
+    //   51: aload_0
+    //   52: aload_1
+    //   53: invokevirtual 168	android/content/Context:getCacheDir	()Ljava/io/File;
+    //   56: invokevirtual 173	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   59: invokespecial 180	com/hilive/mediasdk/MediaSdk:nativeCreate	(Ljava/lang/String;)J
+    //   62: putfield 23	com/hilive/mediasdk/MediaSdk:mContext	J
     //   65: aload_0
     //   66: getfield 23	com/hilive/mediasdk/MediaSdk:mContext	J
-    //   69: invokevirtual 174	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   72: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   75: iconst_0
-    //   76: anewarray 4	java/lang/Object
-    //   79: invokestatic 103	com/hilive/mediasdk/LogDelegate:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   82: aload_0
-    //   83: getfield 21	com/hilive/mediasdk/MediaSdk:mInited	Z
-    //   86: istore_1
-    //   87: ldc 160
-    //   89: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   69: lconst_0
+    //   70: lcmp
+    //   71: ifeq +52 -> 123
+    //   74: iconst_1
+    //   75: istore_2
+    //   76: aload_0
+    //   77: iload_2
+    //   78: putfield 21	com/hilive/mediasdk/MediaSdk:mInited	Z
+    //   81: ldc 11
+    //   83: new 46	java/lang/StringBuilder
+    //   86: dup
+    //   87: ldc 182
+    //   89: invokespecial 51	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   92: aload_0
-    //   93: monitorexit
-    //   94: iload_1
-    //   95: ireturn
-    //   96: iconst_0
-    //   97: istore_1
-    //   98: goto -49 -> 49
-    //   101: astore_3
-    //   102: ldc 11
-    //   104: new 46	java/lang/StringBuilder
-    //   107: dup
-    //   108: ldc 176
-    //   110: invokespecial 51	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   113: aload_3
-    //   114: invokevirtual 55	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   117: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   120: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   93: getfield 23	com/hilive/mediasdk/MediaSdk:mContext	J
+    //   96: invokevirtual 185	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   99: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   102: iconst_0
+    //   103: anewarray 4	java/lang/Object
+    //   106: invokestatic 103	com/hilive/mediasdk/LogDelegate:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   109: aload_0
+    //   110: getfield 21	com/hilive/mediasdk/MediaSdk:mInited	Z
+    //   113: istore_2
+    //   114: ldc 160
+    //   116: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   119: aload_0
+    //   120: monitorexit
+    //   121: iload_2
+    //   122: ireturn
     //   123: iconst_0
-    //   124: anewarray 4	java/lang/Object
-    //   127: invokestatic 68	com/hilive/mediasdk/LogDelegate:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   130: ldc 160
-    //   132: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   135: iload_2
-    //   136: istore_1
-    //   137: goto -45 -> 92
-    //   140: astore_3
-    //   141: aload_0
-    //   142: monitorexit
-    //   143: aload_3
-    //   144: athrow
-    //   145: astore_3
-    //   146: ldc 11
-    //   148: new 46	java/lang/StringBuilder
-    //   151: dup
-    //   152: ldc 178
-    //   154: invokespecial 51	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   157: aload_3
-    //   158: invokevirtual 69	java/lang/UnsatisfiedLinkError:getMessage	()Ljava/lang/String;
-    //   161: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   164: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   167: iconst_0
-    //   168: anewarray 4	java/lang/Object
-    //   171: invokestatic 68	com/hilive/mediasdk/LogDelegate:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   174: goto -44 -> 130
+    //   124: istore_2
+    //   125: goto -49 -> 76
+    //   128: astore_1
+    //   129: ldc 11
+    //   131: new 46	java/lang/StringBuilder
+    //   134: dup
+    //   135: ldc 187
+    //   137: invokespecial 51	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   140: aload_1
+    //   141: invokevirtual 55	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   144: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   147: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   150: iconst_0
+    //   151: anewarray 4	java/lang/Object
+    //   154: invokestatic 68	com/hilive/mediasdk/LogDelegate:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   157: ldc 160
+    //   159: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   162: iload_3
+    //   163: istore_2
+    //   164: goto -45 -> 119
+    //   167: astore_1
+    //   168: aload_0
+    //   169: monitorexit
+    //   170: aload_1
+    //   171: athrow
+    //   172: astore_1
+    //   173: ldc 11
+    //   175: new 46	java/lang/StringBuilder
+    //   178: dup
+    //   179: ldc 189
+    //   181: invokespecial 51	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   184: aload_1
+    //   185: invokevirtual 69	java/lang/UnsatisfiedLinkError:getMessage	()Ljava/lang/String;
+    //   188: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   191: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   194: iconst_0
+    //   195: anewarray 4	java/lang/Object
+    //   198: invokestatic 68	com/hilive/mediasdk/LogDelegate:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   201: goto -44 -> 157
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	177	0	this	MediaSdk
-    //   48	89	1	bool1	boolean
-    //   1	135	2	bool2	boolean
-    //   101	13	3	localException	Exception
-    //   140	4	3	localObject	Object
-    //   145	13	3	localUnsatisfiedLinkError	UnsatisfiedLinkError
+    //   0	204	0	this	MediaSdk
+    //   0	204	1	paramContext	android.content.Context
+    //   75	89	2	bool1	boolean
+    //   1	162	3	bool2	boolean
     // Exception table:
     //   from	to	target	type
-    //   9	47	101	java/lang/Exception
-    //   49	54	101	java/lang/Exception
-    //   54	87	101	java/lang/Exception
-    //   4	9	140	finally
-    //   9	47	140	finally
-    //   49	54	140	finally
-    //   54	87	140	finally
-    //   87	92	140	finally
-    //   102	130	140	finally
-    //   130	135	140	finally
-    //   146	174	140	finally
-    //   9	47	145	java/lang/UnsatisfiedLinkError
-    //   49	54	145	java/lang/UnsatisfiedLinkError
-    //   54	87	145	java/lang/UnsatisfiedLinkError
+    //   9	74	128	java/lang/Exception
+    //   76	81	128	java/lang/Exception
+    //   81	114	128	java/lang/Exception
+    //   4	9	167	finally
+    //   9	74	167	finally
+    //   76	81	167	finally
+    //   81	114	167	finally
+    //   114	119	167	finally
+    //   129	157	167	finally
+    //   157	162	167	finally
+    //   173	201	167	finally
+    //   9	74	172	java/lang/UnsatisfiedLinkError
+    //   76	81	172	java/lang/UnsatisfiedLinkError
+    //   81	114	172	java/lang/UnsatisfiedLinkError
   }
   
   public boolean isInited()
@@ -439,10 +448,10 @@ public class MediaSdk
   {
     try
     {
-      AppMethodBeat.i(238024);
+      AppMethodBeat.i(191518);
       LogDelegate.i("[hilive][java]", "loaderCreate", new Object[0]);
       request(500, paramArrayOfByte, paramMediaCallbacker);
-      AppMethodBeat.o(238024);
+      AppMethodBeat.o(191518);
       return;
     }
     finally
@@ -456,10 +465,10 @@ public class MediaSdk
   {
     try
     {
-      AppMethodBeat.i(238027);
+      AppMethodBeat.i(191527);
       LogDelegate.i("[hilive][java]", "loaderRemove", new Object[0]);
       request(503, paramArrayOfByte, paramMediaCallbacker);
-      AppMethodBeat.o(238027);
+      AppMethodBeat.o(191527);
       return;
     }
     finally
@@ -473,10 +482,10 @@ public class MediaSdk
   {
     try
     {
-      AppMethodBeat.i(238025);
+      AppMethodBeat.i(191520);
       LogDelegate.i("[hilive][java]", "loaderStart", new Object[0]);
       request(501, paramArrayOfByte, paramMediaCallbacker);
-      AppMethodBeat.o(238025);
+      AppMethodBeat.o(191520);
       return;
     }
     finally
@@ -490,10 +499,10 @@ public class MediaSdk
   {
     try
     {
-      AppMethodBeat.i(238026);
+      AppMethodBeat.i(191524);
       LogDelegate.i("[hilive][java]", "loaderStop", new Object[0]);
       request(502, paramArrayOfByte, paramMediaCallbacker);
-      AppMethodBeat.o(238026);
+      AppMethodBeat.o(191524);
       return;
     }
     finally
@@ -507,10 +516,10 @@ public class MediaSdk
   {
     try
     {
-      AppMethodBeat.i(238010);
+      AppMethodBeat.i(191482);
       LogDelegate.i("[hilive][java]", "readerCreate", new Object[0]);
       request(400, paramArrayOfByte, paramMediaCallbacker);
-      AppMethodBeat.o(238010);
+      AppMethodBeat.o(191482);
       return;
     }
     finally
@@ -524,9 +533,9 @@ public class MediaSdk
   {
     try
     {
-      AppMethodBeat.i(238012);
+      AppMethodBeat.i(191489);
       boolean bool = getFrame(paramInt, false, paramArrayOfByte, paramFrameInfo);
-      AppMethodBeat.o(238012);
+      AppMethodBeat.o(191489);
       return bool;
     }
     finally
@@ -540,9 +549,9 @@ public class MediaSdk
   {
     try
     {
-      AppMethodBeat.i(238013);
+      AppMethodBeat.i(191491);
       boolean bool = getFrame(paramInt, true, paramArrayOfByte, paramFrameInfo);
-      AppMethodBeat.o(238013);
+      AppMethodBeat.o(191491);
       return bool;
     }
     finally
@@ -556,10 +565,10 @@ public class MediaSdk
   {
     try
     {
-      AppMethodBeat.i(238016);
+      AppMethodBeat.i(191496);
       LogDelegate.i("[hilive][java]", "readerRemove", new Object[0]);
       request(405, paramArrayOfByte, paramMediaCallbacker);
-      AppMethodBeat.o(238016);
+      AppMethodBeat.o(191496);
       return;
     }
     finally
@@ -573,10 +582,10 @@ public class MediaSdk
   {
     try
     {
-      AppMethodBeat.i(238014);
+      AppMethodBeat.i(191492);
       LogDelegate.i("[hilive][java]", "readerSeek", new Object[0]);
       request(402, paramArrayOfByte, paramMediaCallbacker);
-      AppMethodBeat.o(238014);
+      AppMethodBeat.o(191492);
       return;
     }
     finally
@@ -590,10 +599,10 @@ public class MediaSdk
   {
     try
     {
-      AppMethodBeat.i(238011);
+      AppMethodBeat.i(191485);
       LogDelegate.i("[hilive][java]", "readerStart", new Object[0]);
       request(401, paramArrayOfByte, paramMediaCallbacker);
-      AppMethodBeat.o(238011);
+      AppMethodBeat.o(191485);
       return;
     }
     finally
@@ -607,10 +616,10 @@ public class MediaSdk
   {
     try
     {
-      AppMethodBeat.i(238015);
+      AppMethodBeat.i(191495);
       LogDelegate.i("[hilive][java]", "readerStop", new Object[0]);
       request(404, paramArrayOfByte, paramMediaCallbacker);
-      AppMethodBeat.o(238015);
+      AppMethodBeat.o(191495);
       return;
     }
     finally
@@ -645,7 +654,7 @@ public class MediaSdk
     label29:
     try
     {
-      AppMethodBeat.i(238007);
+      AppMethodBeat.i(191456);
     }
     finally {}
     try
@@ -665,13 +674,13 @@ public class MediaSdk
       LogDelegate.e("[hilive][java]", "getSdkVersion failed, error:" + localUnsatisfiedLinkError.getMessage(), new Object[0]);
       break label20;
     }
-    AppMethodBeat.o(238007);
+    AppMethodBeat.o(191456);
     for (;;)
     {
       return bool1;
       bool2 = nativeSetConfig(this.mContext, paramInt1, paramInt2);
       bool1 = bool2;
-      AppMethodBeat.o(238007);
+      AppMethodBeat.o(191456);
     }
   }
   
@@ -698,10 +707,10 @@ public class MediaSdk
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 227
+    //   2: ldc 239
     //   4: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: ldc 11
-    //   9: ldc 229
+    //   9: ldc 241
     //   11: iconst_0
     //   12: anewarray 4	java/lang/Object
     //   15: invokestatic 103	com/hilive/mediasdk/LogDelegate:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
@@ -711,16 +720,16 @@ public class MediaSdk
     //   23: aload_0
     //   24: aload_0
     //   25: getfield 23	com/hilive/mediasdk/MediaSdk:mContext	J
-    //   28: invokespecial 231	com/hilive/mediasdk/MediaSdk:nativeRelease	(J)V
+    //   28: invokespecial 243	com/hilive/mediasdk/MediaSdk:nativeRelease	(J)V
     //   31: aload_0
     //   32: lconst_0
     //   33: putfield 23	com/hilive/mediasdk/MediaSdk:mContext	J
     //   36: ldc 11
-    //   38: ldc 233
+    //   38: ldc 245
     //   40: iconst_0
     //   41: anewarray 4	java/lang/Object
     //   44: invokestatic 103	com/hilive/mediasdk/LogDelegate:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   47: ldc 227
+    //   47: ldc 239
     //   49: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   52: aload_0
     //   53: monitorexit
@@ -729,7 +738,7 @@ public class MediaSdk
     //   56: ldc 11
     //   58: new 46	java/lang/StringBuilder
     //   61: dup
-    //   62: ldc 235
+    //   62: ldc 247
     //   64: invokespecial 51	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   67: aload_1
     //   68: invokevirtual 55	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -748,7 +757,7 @@ public class MediaSdk
     //   93: ldc 11
     //   95: new 46	java/lang/StringBuilder
     //   98: dup
-    //   99: ldc 237
+    //   99: ldc 249
     //   101: invokespecial 51	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   104: aload_1
     //   105: invokevirtual 69	java/lang/UnsatisfiedLinkError:getMessage	()Ljava/lang/String;
@@ -779,9 +788,9 @@ public class MediaSdk
   {
     try
     {
-      AppMethodBeat.i(238019);
+      AppMethodBeat.i(191504);
       boolean bool = addAudio(paramInt1, paramArrayOfByte, paramInt2, paramInt3, paramInt4, paramLong);
-      AppMethodBeat.o(238019);
+      AppMethodBeat.o(191504);
       return bool;
     }
     finally
@@ -795,10 +804,10 @@ public class MediaSdk
   {
     try
     {
-      AppMethodBeat.i(238017);
+      AppMethodBeat.i(191498);
       LogDelegate.i("[hilive][java]", "writerCreate", new Object[0]);
       request(300, paramArrayOfByte, paramMediaCallbacker);
-      AppMethodBeat.o(238017);
+      AppMethodBeat.o(191498);
       return;
     }
     finally
@@ -812,10 +821,10 @@ public class MediaSdk
   {
     try
     {
-      AppMethodBeat.i(238023);
+      AppMethodBeat.i(191514);
       LogDelegate.i("[hilive][java]", "writerRemove", new Object[0]);
       request(304, paramArrayOfByte, paramMediaCallbacker);
-      AppMethodBeat.o(238023);
+      AppMethodBeat.o(191514);
       return;
     }
     finally
@@ -829,10 +838,10 @@ public class MediaSdk
   {
     try
     {
-      AppMethodBeat.i(238018);
+      AppMethodBeat.i(191501);
       LogDelegate.i("[hilive][java]", "writerStart", new Object[0]);
       request(301, paramArrayOfByte, paramMediaCallbacker);
-      AppMethodBeat.o(238018);
+      AppMethodBeat.o(191501);
       return;
     }
     finally
@@ -846,10 +855,10 @@ public class MediaSdk
   {
     try
     {
-      AppMethodBeat.i(238022);
+      AppMethodBeat.i(191510);
       LogDelegate.i("[hilive][java]", "writerStop", new Object[0]);
       request(303, paramArrayOfByte, paramMediaCallbacker);
-      AppMethodBeat.o(238022);
+      AppMethodBeat.o(191510);
       return;
     }
     finally
@@ -863,10 +872,10 @@ public class MediaSdk
   {
     try
     {
-      AppMethodBeat.i(238021);
+      AppMethodBeat.i(191509);
       LogDelegate.i("[hilive][java]", "writerUpdate", new Object[0]);
       request(302, paramArrayOfByte, paramMediaCallbacker);
-      AppMethodBeat.o(238021);
+      AppMethodBeat.o(191509);
       return;
     }
     finally
@@ -880,9 +889,9 @@ public class MediaSdk
   {
     try
     {
-      AppMethodBeat.i(238020);
+      AppMethodBeat.i(191507);
       paramBoolean1 = addVideo(paramInt1, paramArrayOfByte, paramInt2, paramInt3, paramInt4, paramBoolean1, paramBoolean2, paramLong);
-      AppMethodBeat.o(238020);
+      AppMethodBeat.o(191507);
       return paramBoolean1;
     }
     finally
@@ -899,7 +908,7 @@ public class MediaSdk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.hilive.mediasdk.MediaSdk
  * JD-Core Version:    0.7.0.1
  */

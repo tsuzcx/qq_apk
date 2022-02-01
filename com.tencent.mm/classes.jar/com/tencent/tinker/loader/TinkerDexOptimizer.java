@@ -559,9 +559,9 @@ public final class TinkerDexOptimizer
     
     private static void triggerPMDexOptOnDemand(Context paramContext, String paramString1, String paramString2)
     {
-      if (Build.VERSION.SDK_INT != 29)
+      if (Build.VERSION.SDK_INT < 29)
       {
-        ShareTinkerLog.w("Tinker.ParallelDex", "[+] Not API 29 device, skip fixing.", new Object[0]);
+        ShareTinkerLog.w("Tinker.ParallelDex", "[+] Not API 29 or newer device, skip fixing.", new Object[0]);
         return;
       }
       ShareTinkerLog.i("Tinker.ParallelDex", "[+] Hit target device, do fix logic now.", new Object[0]);
@@ -736,7 +736,7 @@ public final class TinkerDexOptimizer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.loader.TinkerDexOptimizer
  * JD-Core Version:    0.7.0.1
  */

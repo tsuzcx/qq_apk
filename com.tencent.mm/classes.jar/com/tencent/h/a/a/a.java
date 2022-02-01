@@ -1,165 +1,130 @@
 package com.tencent.h.a.a;
 
-import android.os.Build;
-import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
 import android.text.TextUtils;
-import com.qq.a.a.c;
-import com.qq.taf.jce.JceOutputStream;
+import com.tencent.g.c.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d;
-import d.e;
-import java.util.ArrayList;
 
-public final class a
+public abstract class a
 {
-  private static final byte[] SpK = new byte[1];
+  public Handler ZQg;
+  public HandlerThread mHandlerThread;
   
-  public static byte[] a(b paramb, byte[] paramArrayOfByte)
+  public a(String paramString)
   {
-    AppMethodBeat.i(214606);
-    if ((TextUtils.isEmpty(paramb.rcD)) || (TextUtils.isEmpty(paramb.SpP)) || (paramArrayOfByte == null))
+    ir(paramString, 0);
+  }
+  
+  public a(String paramString, byte paramByte)
+  {
+    ir(paramString, 5);
+  }
+  
+  private void b(int paramInt1, int paramInt2, Object paramObject, long paramLong)
+  {
+    if (this.ZQg != null)
     {
-      AppMethodBeat.o(214606);
-      return null;
+      Message localMessage = this.ZQg.obtainMessage();
+      localMessage.what = paramInt1;
+      localMessage.arg1 = paramInt2;
+      localMessage.arg2 = -1;
+      localMessage.obj = paramObject;
+      this.ZQg.sendMessageDelayed(localMessage, paramLong);
     }
-    c localc = new c();
-    localc.cz("analytics");
-    localc.IK();
-    localc.cy("uploadServer");
-    b.a locala = new b.a();
-    locala.SKS = 1;
-    locala.productId = paramb.rcD;
-    locala.SKU = paramb.SpP;
-    locala.sdkId = paramb.SpQ;
-    locala.dfy = paramb.mSdkVersion;
-    locala.EX = 206;
-    paramb = f.a.a.a.a.hPj();
-    try
-    {
-      paramb = paramb.zip(paramArrayOfByte);
-      if (paramb != null) {
-        locala.SKX = 2;
-      }
-      paramArrayOfByte = new f.a.a.b.a();
-      paramArrayOfByte.buV("*^@K#K@!");
-      return paramb;
+  }
+  
+  private void ir(String paramString, int paramInt)
+  {
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "worker_thread";
     }
-    catch (Throwable paramb)
+    this.mHandlerThread = new HandlerThread(str, paramInt);
+    this.mHandlerThread.start();
+    this.ZQg = new Handler(this.mHandlerThread.getLooper())
     {
-      try
+      public final void handleMessage(Message paramAnonymousMessage)
       {
-        paramb = paramArrayOfByte.encode(paramb);
-        if (paramb != null) {
-          locala.SKQ = 1;
+        AppMethodBeat.i(208442);
+        try
+        {
+          a.this.q(paramAnonymousMessage);
+          AppMethodBeat.o(208442);
+          return;
         }
-        locala.sBuffer = paramb;
-        locala.SKR = (Build.BRAND + "-" + Build.MODEL + ";Android " + Build.VERSION.RELEASE + ",level " + Build.VERSION.SDK_INT);
-        locala.qua = "";
-        localc.put("detail", locala);
-        paramb = localc.IJ();
-        AppMethodBeat.o(214606);
-        return paramb;
+        catch (Throwable paramAnonymousMessage)
+        {
+          i.i("sensor_AsyncWorker", "[method: handleMessage ] e: " + paramAnonymousMessage.getCause());
+          a.this.q(paramAnonymousMessage);
+          AppMethodBeat.o(208442);
+        }
       }
-      catch (Throwable paramb)
-      {
-        paramb = SpK;
-        AppMethodBeat.o(214606);
-      }
-      paramb = paramb;
-      paramb = SpK;
-      AppMethodBeat.o(214606);
-      return paramb;
+    };
+  }
+  
+  private void l(int paramInt1, int paramInt2, Object paramObject)
+  {
+    if (this.ZQg != null) {
+      b(paramInt1, paramInt2, paramObject, 0L);
     }
   }
   
-  public static byte[] bB(ArrayList<d> paramArrayList)
+  public final void a(com.tencent.g.a.a parama)
   {
-    AppMethodBeat.i(214605);
-    if ((paramArrayList == null) || (paramArrayList.isEmpty()))
-    {
-      AppMethodBeat.o(214605);
-      return null;
+    if (parama != null) {
+      this.ZQg.removeCallbacks(parama);
     }
-    e locale = new e();
-    locale.dtS = paramArrayList;
-    paramArrayList = new JceOutputStream();
-    paramArrayList.setServerEncoding("UTF-8");
-    locale.writeTo(paramArrayList);
-    paramArrayList = paramArrayList.toByteArray();
-    AppMethodBeat.o(214605);
-    return paramArrayList;
   }
   
-  public static int bqY(String paramString)
+  protected final void aCp(int paramInt)
   {
-    AppMethodBeat.i(214604);
-    if (TextUtils.isEmpty(paramString))
+    if ((this.ZQg != null) && (this.ZQg != null) && (this.ZQg != null))
     {
-      AppMethodBeat.o(214604);
-      return -1;
+      Message localMessage = this.ZQg.obtainMessage();
+      localMessage.what = paramInt;
+      localMessage.arg1 = -1;
+      localMessage.arg2 = -1;
+      localMessage.obj = null;
+      this.ZQg.sendMessageAtFrontOfQueue(localMessage);
     }
-    int i = Math.abs(paramString.hashCode());
-    AppMethodBeat.o(214604);
-    return i;
   }
   
-  public static String p(Throwable paramThrowable)
+  protected final void itI()
   {
-    AppMethodBeat.i(214603);
-    if (paramThrowable == null)
-    {
-      AppMethodBeat.o(214603);
-      return "";
-    }
-    paramThrowable = paramThrowable.getStackTrace();
-    if ((paramThrowable == null) || (paramThrowable.length <= 0))
-    {
-      AppMethodBeat.o(214603);
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < paramThrowable.length)
-    {
-      Object localObject = paramThrowable[i];
-      if (localObject != null)
-      {
-        localStringBuilder.append(localObject.getClassName());
-        localStringBuilder.append("(");
-        localStringBuilder.append(localObject.getMethodName());
-        localStringBuilder.append(":");
-        localStringBuilder.append(localObject.getLineNumber());
-        localStringBuilder.append(")");
-        localStringBuilder.append("\n");
-      }
-      i += 1;
-    }
-    paramThrowable = localStringBuilder.toString();
-    AppMethodBeat.o(214603);
-    return paramThrowable;
+    y(2, null);
   }
   
-  public static final class a
+  protected final void itJ()
   {
-    public String SpL;
-    public String SpM;
-    public long SpN;
-    public String SpO;
-    public String mProcessName;
-    public String mThreadName;
+    if (this.ZQg != null) {
+      b(7, -1, null, 10000L);
+    }
   }
   
-  public static final class b
+  protected final void k(int paramInt1, int paramInt2, Object paramObject)
   {
-    public String SpP;
-    public String SpQ;
-    public String mSdkVersion;
-    public String rcD;
+    if (this.ZQg != null) {
+      l(paramInt1, paramInt2, paramObject);
+    }
+  }
+  
+  public void q(Message paramMessage) {}
+  
+  public void q(Throwable paramThrowable) {}
+  
+  protected final void y(int paramInt, Object paramObject)
+  {
+    if (this.ZQg != null) {
+      k(paramInt, -1, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.h.a.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,8 @@ public class zzi
   implements Parcelable
 {
   public static final Parcelable.Creator<zzi> CREATOR;
-  private Messenger bMs;
-  private zze bMt;
+  private Messenger bJX;
+  private zze bJY;
   
   static
   {
@@ -30,24 +30,24 @@ public class zzi
     AppMethodBeat.i(4221);
     if (Build.VERSION.SDK_INT >= 21)
     {
-      this.bMs = new Messenger(paramIBinder);
+      this.bJX = new Messenger(paramIBinder);
       AppMethodBeat.o(4221);
       return;
     }
-    this.bMt = zzf.zza(paramIBinder);
+    this.bJY = zzf.zza(paramIBinder);
     AppMethodBeat.o(4221);
   }
   
   private final IBinder getBinder()
   {
     AppMethodBeat.i(4223);
-    if (this.bMs != null)
+    if (this.bJX != null)
     {
-      localIBinder = this.bMs.getBinder();
+      localIBinder = this.bJX.getBinder();
       AppMethodBeat.o(4223);
       return localIBinder;
     }
-    IBinder localIBinder = this.bMt.asBinder();
+    IBinder localIBinder = this.bJY.asBinder();
     AppMethodBeat.o(4223);
     return localIBinder;
   }
@@ -89,26 +89,26 @@ public class zzi
   public final void send(Message paramMessage)
   {
     AppMethodBeat.i(4222);
-    if (this.bMs != null)
+    if (this.bJX != null)
     {
-      this.bMs.send(paramMessage);
+      this.bJX.send(paramMessage);
       AppMethodBeat.o(4222);
       return;
     }
-    this.bMt.send(paramMessage);
+    this.bJY.send(paramMessage);
     AppMethodBeat.o(4222);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(4226);
-    if (this.bMs != null)
+    if (this.bJX != null)
     {
-      paramParcel.writeStrongBinder(this.bMs.getBinder());
+      paramParcel.writeStrongBinder(this.bJX.getBinder());
       AppMethodBeat.o(4226);
       return;
     }
-    paramParcel.writeStrongBinder(this.bMt.asBinder());
+    paramParcel.writeStrongBinder(this.bJY.asBinder());
     AppMethodBeat.o(4226);
   }
   
@@ -120,7 +120,7 @@ public class zzi
       AppMethodBeat.i(4220);
       if ("com.google.android.gms.iid.MessengerCompat".equals(paramString))
       {
-        FirebaseInstanceId.yg();
+        FirebaseInstanceId.yA();
         AppMethodBeat.o(4220);
         return zzi.class;
       }
@@ -132,7 +132,7 @@ public class zzi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.zzi
  * JD-Core Version:    0.7.0.1
  */

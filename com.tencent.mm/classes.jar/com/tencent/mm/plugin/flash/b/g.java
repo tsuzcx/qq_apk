@@ -11,21 +11,21 @@ public abstract interface g
 {
   public abstract void c(TextView paramTextView, String paramString);
   
-  public abstract long cSK();
+  public abstract long dhO();
   
-  public abstract void dLd();
+  public abstract void epG();
   
-  public abstract JSONObject dT(String paramString, int paramInt);
+  public abstract JSONObject er(String paramString, int paramInt);
   
   public abstract void h(Intent paramIntent, Activity paramActivity);
   
   public abstract void onNetworkRequestEvent(String paramString1, String paramString2, HashMap<String, String> paramHashMap, YtSDKKitFramework.IYtSDKKitNetResponseParser paramIYtSDKKitNetResponseParser);
   
-  public abstract void r(TextView paramTextView);
-  
   public abstract void release();
   
   public abstract void reset();
+  
+  public abstract void x(TextView paramTextView);
 }
 
 

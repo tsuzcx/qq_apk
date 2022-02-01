@@ -1,54 +1,48 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.model.v;
-import com.tencent.mm.wallet_core.tenpay.model.m;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.wxpay.a.a;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.wallet_core.c.aa;
 import org.json.JSONObject;
 
 public final class ah
-  extends m
+  extends ae
 {
-  public String HPZ;
-  public String HQm;
+  public am Ooo;
   
-  public ah(v paramv, String paramString)
+  public ah()
   {
-    AppMethodBeat.i(69960);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("verify_code", paramv.IaW);
-    localHashMap.put("token", paramv.token);
-    localHashMap.put("passwd", paramv.kdF);
-    localHashMap.put("relation_key", paramString);
-    setRequestData(localHashMap);
-    AppMethodBeat.o(69960);
+    super(null, 3);
   }
   
   public final int getFuncId()
   {
-    return 1604;
+    return 2750;
   }
   
   public final int getTenpayCgicmd()
   {
-    return 124;
+    return 2750;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/tenpay/webankverifysms";
+    return "/cgi-bin/mmpay-bin/tenpay/savebindquery";
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(69961);
-    if ((paramJSONObject != null) && (paramInt == 0))
+    AppMethodBeat.i(69959);
+    super.onGYNetEnd(paramInt, paramString, paramJSONObject);
+    paramString = paramJSONObject.optJSONObject("save_to_lqt_entry");
+    if (paramString != null)
     {
-      this.HPZ = paramJSONObject.optString("token_type");
-      this.HQm = paramJSONObject.optString("usertoken");
+      ((a)h.ag(a.class)).getWalletCacheStg().set(ar.a.VtL, paramString.toString());
+      this.Ooo = am.bI(paramString);
     }
-    AppMethodBeat.o(69961);
+    AppMethodBeat.o(69959);
   }
 }
 

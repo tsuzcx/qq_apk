@@ -1,150 +1,69 @@
 package com.tencent.mm.plugin.recordvideo.plugin;
 
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.jf;
-import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.recordvideo.b.g;
 import com.tencent.mm.plugin.recordvideo.d.c;
-import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager;
-import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.a;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
-import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
+import com.tencent.mm.ui.au;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditFinishPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/view/View;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/View;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/view/View;", "setView", "(Landroid/view/View;)V", "onAttach", "", "onClick", "v", "onDetach", "resetStyle", "bgResId", "", "textColor", "text", "height", "(Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Integer;)V", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditBackToRecordPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/AutoRegisterPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseIconPlugin;", "view", "Landroid/widget/ImageView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/widget/ImageView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/widget/ImageView;", "setView", "(Landroid/widget/ImageView;)V", "onClick", "", "v", "Landroid/view/View;", "resetIconColor", "iconColor", "", "setVisibility", "visibility", "plugin-recordvideo_release"})
 public final class f
-  implements View.OnClickListener, t
+  extends a
+  implements View.OnClickListener
 {
-  private final String TAG;
-  public View view;
-  d wgr;
+  private d APl;
+  private ImageView wRg;
   
-  public f(View paramView, d paramd)
+  public f(ImageView paramImageView, d paramd)
   {
-    AppMethodBeat.i(75489);
-    this.view = paramView;
-    this.wgr = paramd;
-    this.TAG = "MicroMsg.EditFinishPlugin";
-    this.view.setOnClickListener((View.OnClickListener)this);
-    AppMethodBeat.o(75489);
+    super(paramd, (byte)0);
+    AppMethodBeat.i(75485);
+    this.wRg = paramImageView;
+    this.APl = paramd;
+    this.wRg.setImageDrawable(au.o(this.wRg.getContext(), b.g.icons_filled_previous2, -1));
+    this.wRg.setOnClickListener((View.OnClickListener)this);
+    AppMethodBeat.o(75485);
   }
   
-  public final void a(Integer paramInteger1, Integer paramInteger2, String paramString, Integer paramInteger3)
+  public final void acl(int paramInt)
   {
-    AppMethodBeat.i(75488);
-    Log.i(this.TAG, paramString + ' ' + paramInteger3);
-    View localView = this.view;
-    if ((paramInteger1 != null) && (paramInteger1.intValue() != 0)) {
-      localView.setBackgroundResource(paramInteger1.intValue());
-    }
-    if (paramInteger3 != null)
-    {
-      i = ((Number)paramInteger3).intValue();
-      if (i > 0) {
-        this.view.getLayoutParams().height = i;
-      }
-    }
-    if ((paramInteger2 != null) && (paramInteger2.intValue() != 0) && ((localView instanceof TextView))) {
-      ((TextView)localView).setTextColor(android.support.v4.content.b.n(((TextView)localView).getContext(), paramInteger2.intValue()));
-    }
-    paramInteger1 = (CharSequence)paramString;
-    if ((paramInteger1 == null) || (paramInteger1.length() == 0)) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((i == 0) && ((localView instanceof TextView))) {
-        ((TextView)localView).setText((CharSequence)paramString);
-      }
-      AppMethodBeat.o(75488);
-      return;
-    }
-  }
-  
-  public final void aSs()
-  {
-    AppMethodBeat.i(237281);
-    this.view.setVisibility(0);
-    AppMethodBeat.o(237281);
-  }
-  
-  public final String name()
-  {
-    return null;
-  }
-  
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public final boolean onBackPress()
-  {
-    return false;
+    AppMethodBeat.i(216558);
+    this.wRg.setImageDrawable(au.o(this.wRg.getContext(), b.g.icons_filled_previous2, paramInt));
+    AppMethodBeat.o(216558);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(75487);
-    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/recordvideo/plugin/EditFinishPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    Log.i(this.TAG, "on click edit finish");
-    paramView = c.BXI;
-    c.VH(12);
-    paramView = c.BXI;
-    c.eKX().ry(System.currentTimeMillis());
-    if (!CaptureDataManager.BOb.a(this.view.getContext(), (CaptureDataManager.a)new a(this))) {
-      d.b.a(this.wgr, d.c.BVw);
-    }
-    a.a(this, "com/tencent/mm/plugin/recordvideo/plugin/EditFinishPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(75487);
+    AppMethodBeat.i(75483);
+    b localb = new b();
+    localb.bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/recordvideo/plugin/EditBackToRecordPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    d.b.a(this.APl, d.c.HRD);
+    paramView = c.HUw;
+    c.acq(11);
+    paramView = c.HUw;
+    c.acr(12);
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recordvideo/plugin/EditBackToRecordPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(75483);
   }
   
-  public final void onDetach()
+  public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(237282);
-    this.view.setVisibility(4);
-    AppMethodBeat.o(237282);
-  }
-  
-  public final void onPause() {}
-  
-  public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    AppMethodBeat.i(237283);
-    p.h(paramArrayOfString, "permissions");
-    p.h(paramArrayOfInt, "grantResults");
-    t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(237283);
-  }
-  
-  public final void onResume() {}
-  
-  public final void release() {}
-  
-  public final void reset() {}
-  
-  public final void setVisibility(int paramInt) {}
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onRequestFinish"})
-  static final class a
-    implements CaptureDataManager.a
-  {
-    a(f paramf) {}
-    
-    public final void eJL()
-    {
-      AppMethodBeat.i(75486);
-      d.b.a(this.BQe.wgr, d.c.BVw);
-      AppMethodBeat.o(75486);
-    }
+    AppMethodBeat.i(75484);
+    this.wRg.setVisibility(paramInt);
+    AppMethodBeat.o(75484);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,146 +1,66 @@
 package com.tencent.mm.game.report;
 
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.aa;
-import com.tencent.mm.ak.aa.a;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.game.report.c.c;
-import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.game.report.c.f;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.LinkedList;
 
-final class e
+public final class e
+  extends q
+  implements m
 {
-  private static LinkedList<com.tencent.mm.game.report.api.b> hhn;
-  private static boolean hho;
-  private static String hhp;
-  private static String hhq;
+  private i callback;
+  private final d jTk;
   
-  static
+  public e(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(108259);
-    hhn = new LinkedList();
-    hhp = "log_id";
-    hhq = "log_ext";
-    AppMethodBeat.o(108259);
+    AppMethodBeat.i(175995);
+    Object localObject = new d.a();
+    ((d.a)localObject).lBU = new com.tencent.mm.game.report.c.e();
+    ((d.a)localObject).lBV = new f();
+    ((d.a)localObject).uri = "/cgi-bin/mmgame-bin/gamereport";
+    ((d.a)localObject).funcId = getType();
+    ((d.a)localObject).lBW = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.jTk = ((d.a)localObject).bgN();
+    localObject = (com.tencent.mm.game.report.c.e)d.b.b(this.jTk.lBR);
+    ((com.tencent.mm.game.report.c.e)localObject).jUi = paramString1;
+    ((com.tencent.mm.game.report.c.e)localObject).jUk = paramInt1;
+    ((com.tencent.mm.game.report.c.e)localObject).jUl = paramInt2;
+    ((com.tencent.mm.game.report.c.e)localObject).jUm = paramString2;
+    ((com.tencent.mm.game.report.c.e)localObject).jUn = paramString3;
+    ((com.tencent.mm.game.report.c.e)localObject).jUj = ((int)(System.currentTimeMillis() / 1000L));
+    AppMethodBeat.o(175995);
   }
   
-  public static void a(com.tencent.mm.game.report.api.b paramb)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(108255);
-    if (MMApplicationContext.isMMProcess())
-    {
-      b(paramb);
-      AppMethodBeat.o(108255);
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(hhp, paramb.hhs);
-    localBundle.putString(hhq, paramb.hht);
-    h.a(MainProcessIPCService.dkO, localBundle, a.class, null);
-    AppMethodBeat.o(108255);
+    AppMethodBeat.i(175996);
+    this.callback = parami;
+    int i = dispatch(paramg, this.jTk, this);
+    AppMethodBeat.o(175996);
+    return i;
   }
   
-  private static void axe()
+  public final int getType()
   {
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(108257);
-        if (hho)
-        {
-          Log.i("MicroMsg.ReportService", "tryDoScene isBusy");
-          AppMethodBeat.o(108257);
-          return;
-        }
-        if (Util.isNullOrNil(hhn))
-        {
-          Log.i("MicroMsg.ReportService", "waitingList is null");
-          AppMethodBeat.o(108257);
-          continue;
-        }
-        localb = (com.tencent.mm.game.report.api.b)hhn.remove(0);
-      }
-      finally {}
-      com.tencent.mm.game.report.api.b localb;
-      if (localb != null)
-      {
-        hho = true;
-        d.a locala = new d.a();
-        locala.uri = "/cgi-bin/micromsg-bin/gamereportkv";
-        locala.funcId = 427;
-        locala.iLP = 0;
-        locala.respCmdId = 0;
-        c localc = new c();
-        localc.hid = com.tencent.mm.protocal.d.KyJ;
-        localc.hie = com.tencent.mm.protocal.d.KyI;
-        localc.hif = com.tencent.mm.protocal.d.KyL;
-        localc.hig = com.tencent.mm.protocal.d.KyM;
-        localc.hih = LocaleUtil.getApplicationLanguage();
-        localc.hii = localb.hhs;
-        localc.hij = localb.hht;
-        locala.iLN = localc;
-        locala.iLO = new com.tencent.mm.game.report.c.d();
-        aa.a(locala.aXF(), new aa.a()
-        {
-          public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.d paramAnonymousd, q paramAnonymousq)
-          {
-            AppMethodBeat.i(108253);
-            Log.i("MicroMsg.ReportService", "tryDoScene, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-            e.TT();
-            e.access$100();
-            AppMethodBeat.o(108253);
-            return 0;
-          }
-        });
-        AppMethodBeat.o(108257);
-      }
-      else
-      {
-        axe();
-        AppMethodBeat.o(108257);
-      }
-    }
+    return 1223;
   }
   
-  private static void b(com.tencent.mm.game.report.api.b paramb)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(108256);
-        if ((!g.aAf().azp()) || (a.azj()))
-        {
-          Log.w("MicroMsg.ReportService", "report, account not ready");
-          AppMethodBeat.o(108256);
-          return;
-        }
-        if (paramb == null)
-        {
-          AppMethodBeat.o(108256);
-          continue;
-        }
-        hhn.add(paramb);
-      }
-      finally {}
-      axe();
-      AppMethodBeat.o(108256);
-    }
+    AppMethodBeat.i(175997);
+    Log.i("MicroMsg.NetSceneGetGameIndex", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(175997);
   }
-  
-  static class a
-    implements com.tencent.mm.ipcinvoker.b<Bundle, Bundle>
-  {}
 }
 
 

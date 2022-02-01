@@ -5,18 +5,18 @@ import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.recordvideo.background.VideoMixer.MixConfig;
-import com.tencent.mm.plugin.recordvideo.e.c;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
 import com.tencent.mm.plugin.recordvideo.model.audio.AudioCacheInfo;
 import com.tencent.mm.plugin.vlog.model.af;
 import com.tencent.mm.plugin.vlog.model.ah;
 import com.tencent.mm.plugin.vlog.model.s;
-import com.tencent.mm.protocal.protobuf.aio;
-import com.tencent.mm.protocal.protobuf.ald;
-import com.tencent.mm.protocal.protobuf.epc;
+import com.tencent.mm.plugin.vlog.remux.e;
+import com.tencent.mm.protocal.protobuf.ajd;
+import com.tencent.mm.protocal.protobuf.ame;
+import com.tencent.mm.protocal.protobuf.ezn;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import java.util.Iterator;
 import kotlin.g.a.m;
 import kotlin.g.a.r;
@@ -24,23 +24,23 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager;", "", "context", "Landroid/content/Context;", "model", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "muteOrigin", "", "audioInfo", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;ZLcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;)V", "callback", "Lkotlin/Function3;", "", "Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager$VLogOutputInfo;", "", "onMuxEnd", "Lkotlin/Function4;", "", "Lkotlin/ParameterName;", "name", "mixVideo", "mixThumb", "ret", "errorCode", "remuxer", "Lcom/tencent/mm/plugin/vlog/remux/VLogRemuxer;", "vLogGenerateModel", "Lcom/tencent/mm/plugin/vlog/model/VLogGenerateModel;", "vLogMusicManager", "Lcom/tencent/mm/plugin/vlog/ui/manager/VLogMusicManager;", "getThumbBitmap", "previewWidth", "previewHeight", "getVideoDurationMs", "handleBgRemux", "editorProtoData", "Lcom/tencent/mm/protocal/protobuf/EditorProtoData;", "mixConfig", "Lcom/tencent/mm/plugin/recordvideo/background/VideoMixer$MixConfig;", "extraConfig", "Lcom/tencent/mm/protocal/protobuf/ExtraConfig;", "release", "setVideoCropInfo", "rect", "Landroid/graphics/Rect;", "beforeCropSize", "Landroid/graphics/Point;", "startBackgroundGenerate", "success", "startGenerate", "Companion", "VLogOutputInfo", "plugin-vlog_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager;", "", "context", "Landroid/content/Context;", "model", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "muteOrigin", "", "audioInfo", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;ZLcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;)V", "callback", "Lkotlin/Function3;", "", "Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager$VLogOutputInfo;", "", "onMuxEnd", "Lkotlin/Function4;", "", "Lkotlin/ParameterName;", "name", "mixVideo", "mixThumb", "ret", "errorCode", "remuxer", "Lcom/tencent/mm/plugin/vlog/remux/VLogRemuxer;", "vLogGenerateModel", "Lcom/tencent/mm/plugin/vlog/model/VLogGenerateModel;", "vLogMusicManager", "Lcom/tencent/mm/plugin/vlog/ui/manager/VLogMusicManager;", "getThumbBitmap", "previewWidth", "previewHeight", "getVideoDurationMs", "handleBgRemux", "editorProtoData", "Lcom/tencent/mm/protocal/protobuf/EditorProtoData;", "mixConfig", "Lcom/tencent/mm/plugin/recordvideo/background/VideoMixer$MixConfig;", "extraConfig", "Lcom/tencent/mm/protocal/protobuf/ExtraConfig;", "release", "setVideoCropInfo", "rect", "Landroid/graphics/Rect;", "beforeCropSize", "Landroid/graphics/Point;", "startBackgroundGenerate", "success", "startGenerate", "Companion", "VLogOutputInfo", "plugin-vlog_release"})
 public final class a
 {
-  public static final a GFX;
-  public b GFS;
-  public com.tencent.mm.plugin.vlog.remux.d GFT;
-  private final af GFU;
-  public final r<String, String, Boolean, Integer, x> GFV;
-  public final ah GFW;
+  public static final a NtO;
+  public final RecordConfigProvider ALV;
+  public b NtJ;
+  public e NtK;
+  private final af NtL;
+  public final r<String, String, Boolean, Integer, x> NtM;
+  public final ah NtN;
   private final Context context;
-  public final RecordConfigProvider wdm;
-  public kotlin.g.a.q<? super Boolean, ? super Integer, ? super b, x> xlr;
+  public kotlin.g.a.q<? super Boolean, ? super Integer, ? super b, x> nmO;
   
   static
   {
     AppMethodBeat.i(111149);
-    GFX = new a((byte)0);
+    NtO = new a((byte)0);
     AppMethodBeat.o(111149);
   }
   
@@ -48,22 +48,22 @@ public final class a
   {
     AppMethodBeat.i(111148);
     this.context = paramContext;
-    this.GFW = paramah;
-    this.wdm = paramRecordConfigProvider;
-    this.GFS = new b();
-    this.GFU = new af();
-    this.GFV = ((r)new c(this));
-    int k = com.tencent.mm.plugin.mmsight.d.QH(this.wdm.BOm.width);
-    paramContext = ao.az(MMApplicationContext.getContext());
+    this.NtN = paramah;
+    this.ALV = paramRecordConfigProvider;
+    this.NtJ = new b();
+    this.NtL = new af();
+    this.NtM = ((r)new c(this));
+    int k = com.tencent.mm.plugin.mmsight.d.WV(this.ALV.mfk.width);
+    paramContext = ar.au(MMApplicationContext.getContext());
     int i = paramContext.y;
     int j = paramContext.x;
-    if (this.wdm.scene == 11)
+    if (this.ALV.scene == 11)
     {
-      j = com.tencent.mm.plugin.mmsight.d.QH(this.wdm.BOm.height);
-      Log.i("MicroMsg.VLogGenerateManager", "targetWidth:" + k + " targetHeight:" + j + ", videoParam:" + this.wdm.BOm);
-      paramContext = c.Cic;
-      c.e(this.wdm);
-      Log.i("MicroMsg.VLogGenerateManager", "output path:" + this.wdm.BOA);
+      j = com.tencent.mm.plugin.mmsight.d.WV(this.ALV.mfk.height);
+      Log.i("MicroMsg.VLogGenerateManager", "targetWidth:" + k + " targetHeight:" + j + ", videoParam:" + this.ALV.mfk);
+      paramContext = com.tencent.mm.plugin.recordvideo.e.d.IeU;
+      com.tencent.mm.plugin.recordvideo.e.d.g(this.ALV);
+      Log.i("MicroMsg.VLogGenerateManager", "output path:" + this.ALV.HLg);
       if (!paramBoolean) {
         break label467;
       }
@@ -75,24 +75,24 @@ public final class a
     for (;;)
     {
       Log.i("MicroMsg.VLogGenerateManager", "audioMixType:" + i + ", muteOrigin:" + paramBoolean + ", audioInfo:" + paramAudioCacheInfo);
-      paramContext = this.GFU;
-      paramContext.GzL = getVideoDurationMs();
-      paramContext.GzM = i;
-      paramah = this.wdm.BOA;
-      p.g(paramah, "configProvider.outputVideoPath");
-      paramContext.aUb(paramah);
+      paramContext = this.NtL;
+      paramContext.Nnr = getVideoDurationMs();
+      paramContext.Nns = i;
+      paramah = this.ALV.HLg;
+      p.j(paramah, "configProvider.outputVideoPath");
+      paramContext.bfy(paramah);
       paramContext.targetWidth = k;
       paramContext.targetHeight = j;
-      paramContext.videoBitrate = this.wdm.BOm.videoBitrate;
-      paramContext.audioBitrate = this.wdm.BOm.audioBitrate;
-      paramContext.frameRate = this.wdm.BOm.fps;
-      paramContext.audioSampleRate = this.wdm.BOm.audioSampleRate;
-      paramContext.audioChannelCount = this.wdm.BOm.audioChannelCount;
-      Log.i("MicroMsg.VLogGenerateManager", "vLogGenerateModel is :" + this.GFU);
-      this.GFT = new com.tencent.mm.plugin.vlog.remux.d(this.GFW, this.GFU);
+      paramContext.videoBitrate = this.ALV.mfk.videoBitrate;
+      paramContext.audioBitrate = this.ALV.mfk.audioBitrate;
+      paramContext.frameRate = this.ALV.mfk.fps;
+      paramContext.audioSampleRate = this.ALV.mfk.audioSampleRate;
+      paramContext.audioChannelCount = this.ALV.mfk.audioChannelCount;
+      Log.i("MicroMsg.VLogGenerateManager", "vLogGenerateModel is :" + this.NtL);
+      this.NtK = new e(this.NtN, this.NtL);
       AppMethodBeat.o(111148);
       return;
-      j = com.tencent.mm.plugin.mmsight.d.QH(i * k / j);
+      j = com.tencent.mm.plugin.mmsight.d.WV(i * k / j);
       break;
       label461:
       i = 2;
@@ -110,7 +110,7 @@ public final class a
   {
     AppMethodBeat.i(111147);
     long l = 0L;
-    Iterator localIterator = ((Iterable)this.GFW.GzQ).iterator();
+    Iterator localIterator = ((Iterable)this.NtN.Nnw).iterator();
     if (localIterator.hasNext())
     {
       s locals = (s)localIterator.next();
@@ -130,10 +130,10 @@ public final class a
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager$Companion;", "", "()V", "ERROR_DEFAULT", "", "ERROR_MUSIC_DOWNLOAD_ERROR", "ERROR_MUSIC_MEDIA_EXTRACTOR_ERROR", "ERROR_OK", "ERROR_VIDEO_BG_REMUX", "ERROR_VIDEO_ENCODER_ERROR", "TAG", "", "plugin-vlog_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager$Companion;", "", "()V", "ERROR_DEFAULT", "", "ERROR_MUSIC_DOWNLOAD_ERROR", "ERROR_MUSIC_MEDIA_EXTRACTOR_ERROR", "ERROR_OK", "ERROR_VIDEO_BG_REMUX", "ERROR_VIDEO_ENCODER_ERROR", "TAG", "", "plugin-vlog_release"})
   public static final class a {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager$VLogOutputInfo;", "", "videoPath", "", "thumbPath", "(Ljava/lang/String;Ljava/lang/String;)V", "getThumbPath", "()Ljava/lang/String;", "setThumbPath", "(Ljava/lang/String;)V", "getVideoPath", "setVideoPath", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-vlog_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager$VLogOutputInfo;", "", "videoPath", "", "thumbPath", "(Ljava/lang/String;Ljava/lang/String;)V", "getThumbPath", "()Ljava/lang/String;", "setThumbPath", "(Ljava/lang/String;)V", "getVideoPath", "setVideoPath", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-vlog_release"})
   public static final class b
   {
     public String thumbPath;
@@ -155,7 +155,7 @@ public final class a
         if ((paramObject instanceof b))
         {
           paramObject = (b)paramObject;
-          if ((!p.j(this.videoPath, paramObject.videoPath)) || (!p.j(this.thumbPath, paramObject.thumbPath))) {}
+          if ((!p.h(this.videoPath, paramObject.videoPath)) || (!p.h(this.thumbPath, paramObject.thumbPath))) {}
         }
       }
       else
@@ -193,7 +193,7 @@ public final class a
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "mixVideo", "", "mixThumb", "ret", "", "errorCode", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "mixVideo", "", "mixThumb", "ret", "", "errorCode", "", "invoke"})
   static final class c
     extends kotlin.g.b.q
     implements r<String, String, Boolean, Integer, x>
@@ -204,7 +204,7 @@ public final class a
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "", "thumbPath", "b", "", "i", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "", "thumbPath", "b", "", "i", "", "invoke"})
   public static final class d
     extends kotlin.g.b.q
     implements r<String, String, Boolean, Integer, x>
@@ -215,7 +215,7 @@ public final class a
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "success", "", "filePath", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "success", "", "filePath", "", "invoke"})
   public static final class e
     extends kotlin.g.b.q
     implements m<Boolean, String, x>
@@ -228,7 +228,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.manager.a
  * JD-Core Version:    0.7.0.1
  */

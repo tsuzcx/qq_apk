@@ -8,8 +8,6 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.support.design.widget.BottomSheetBehavior;
-import android.support.design.widget.a;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,46 +15,49 @@ import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
 import android.view.WindowManager;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cr.a.j;
 import com.tencent.mm.ui.widget.a.e.b;
 
 public final class b
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public e.b PGl;
-  public boolean PGm;
-  public ViewTreeObserver afI;
-  public View lJI;
+  private boolean AUB;
+  public e.b XbB;
+  public boolean XbC;
+  public View lJ;
+  public ViewTreeObserver lS;
   public Context mContext;
-  public Dialog mLH;
-  public BottomSheetBehavior mLK;
-  public boolean mLL;
-  public int mLM;
-  public boolean mLO;
-  public View qK;
-  private boolean wjN;
+  public View oFW;
+  public BottomSheetBehavior pMC;
+  public boolean pMD;
+  public int pME;
+  public boolean pMG;
+  public Dialog pMz;
   
   public b(Context paramContext, View paramView)
   {
     AppMethodBeat.i(185898);
-    this.mLL = false;
-    this.wjN = false;
-    this.PGm = false;
-    this.mLO = false;
-    this.lJI = paramView;
+    this.pMD = false;
+    this.AUB = false;
+    this.XbC = false;
+    this.pMG = false;
+    this.oFW = paramView;
     this.mContext = paramContext;
     if ((this.mContext instanceof Activity)) {
-      this.qK = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
+      this.lJ = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
     }
-    this.mLH = new a(this.mContext, 2131820791);
-    this.mLL = isLandscape();
-    if (this.mLH != null) {
-      this.mLH.setContentView(this.lJI);
+    this.pMz = new a(this.mContext, a.j.BottomSheetDialog);
+    this.pMD = isLandscape();
+    if (this.pMz != null) {
+      this.pMz.setContentView(this.oFW);
     }
-    this.mLK = BottomSheetBehavior.l((View)this.lJI.getParent());
-    this.mLK.setState(3);
-    if (this.mLH != null) {
-      this.mLH.setOnDismissListener(new DialogInterface.OnDismissListener()
+    this.pMC = BottomSheetBehavior.cg((View)this.oFW.getParent());
+    this.pMC.setState(3);
+    if (this.pMz != null) {
+      this.pMz.setOnDismissListener(new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
@@ -82,7 +83,7 @@ public final class b
   private boolean isShowing()
   {
     AppMethodBeat.i(185903);
-    if ((this.mLH != null) && (this.mLH.isShowing()))
+    if ((this.pMz != null) && (this.pMz.isShowing()))
     {
       AppMethodBeat.o(185903);
       return true;
@@ -91,16 +92,16 @@ public final class b
     return false;
   }
   
-  public final void bMo()
+  public final void bYF()
   {
     AppMethodBeat.i(185901);
-    if (this.mLH != null)
+    if (this.pMz != null)
     {
-      if (this.mLK != null) {
-        this.mLK.ob = true;
+      if (this.pMC != null) {
+        this.pMC.bxz = true;
       }
       if ((!(this.mContext instanceof Activity)) || ((this.mContext != null) && (!((Activity)this.mContext).isFinishing()) && (!((Activity)this.mContext).isDestroyed()))) {
-        this.mLH.dismiss();
+        this.pMz.dismiss();
       }
     }
     AppMethodBeat.o(185901);
@@ -135,15 +136,15 @@ public final class b
     AppMethodBeat.i(185899);
     if (isShowing())
     {
-      View localView = this.qK;
+      View localView = this.lJ;
       if ((localView == null) || ((!localView.isShown()) && (localView.getVisibility() != 0)))
       {
-        bMo();
+        bYF();
         AppMethodBeat.o(185899);
         return;
       }
-      if ((isShowing()) && ((this.mLL != isLandscape()) || (this.mLM != getRotation()))) {
-        bMo();
+      if ((isShowing()) && ((this.pMD != isLandscape()) || (this.pME != getRotation()))) {
+        bYF();
       }
     }
     AppMethodBeat.o(185899);
@@ -151,7 +152,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.view.b
  * JD-Core Version:    0.7.0.1
  */

@@ -19,13 +19,13 @@ public class b
     super("varying lowp vec2 textureCoordinate;\n \nuniform sampler2D inputImageTexture;\n \nvoid main()\n{\n     gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n}");
   }
   
-  private void q()
+  private void r()
   {
-    AppMethodBeat.i(14980);
-    this.s = GLES20.glGetUniformLocation(p(), "whiteDegree");
-    this.r = GLES20.glGetUniformLocation(p(), "contrast");
-    this.t = GLES20.glGetUniformLocation(p(), "ruddyDegree");
-    AppMethodBeat.o(14980);
+    AppMethodBeat.i(233545);
+    this.s = GLES20.glGetUniformLocation(q(), "whiteDegree");
+    this.r = GLES20.glGetUniformLocation(q(), "contrast");
+    this.t = GLES20.glGetUniformLocation(q(), "ruddyDegree");
+    AppMethodBeat.o(233545);
   }
   
   public void a(float paramFloat)
@@ -39,7 +39,6 @@ public class b
   public boolean a()
   {
     AppMethodBeat.i(14976);
-    NativeLoad.getInstance();
     this.a = NativeLoad.nativeLoadGLProgram(12);
     if ((this.a != 0) && (b())) {}
     for (this.g = true;; this.g = false)
@@ -62,14 +61,14 @@ public class b
   {
     AppMethodBeat.i(14977);
     super.b();
-    q();
+    r();
     AppMethodBeat.o(14977);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.a.b
  * JD-Core Version:    0.7.0.1
  */

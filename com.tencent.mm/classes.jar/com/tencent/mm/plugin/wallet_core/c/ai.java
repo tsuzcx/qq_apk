@@ -1,48 +1,54 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.plugin.wallet_core.model.w;
 import com.tencent.mm.wallet_core.tenpay.model.m;
+import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONObject;
 
 public final class ai
   extends m
 {
-  public double Cpd;
-  public String Crl;
-  public String HQt;
-  public double HQu;
+  public String OIi;
+  public String OIv;
+  
+  public ai(w paramw, String paramString)
+  {
+    AppMethodBeat.i(69960);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("verify_code", paramw.OTh);
+    localHashMap.put("token", paramw.token);
+    localHashMap.put("passwd", paramw.mVf);
+    localHashMap.put("relation_key", paramString);
+    setRequestData(localHashMap);
+    AppMethodBeat.o(69960);
+  }
   
   public final int getFuncId()
   {
-    return 1689;
+    return 1604;
   }
   
   public final int getTenpayCgicmd()
   {
-    return 0;
+    return 124;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/transfergetchargefee";
+    return "/cgi-bin/mmpay-bin/tenpay/webankverifysms";
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(69962);
-    Log.i("Micromsg.NetSceneTransferChargeQuery", "errCode " + paramInt + " errMsg: " + paramString);
-    if (paramInt != 0)
+    AppMethodBeat.i(69961);
+    if ((paramJSONObject != null) && (paramInt == 0))
     {
-      Log.i("Micromsg.NetSceneTransferChargeQuery", "NetSceneTransferChargeQuery request error");
-      AppMethodBeat.o(69962);
-      return;
+      this.OIi = paramJSONObject.optString("token_type");
+      this.OIv = paramJSONObject.optString("usertoken");
     }
-    this.HQt = paramJSONObject.optString("short_desc");
-    this.Crl = paramJSONObject.optString("charge_desc");
-    this.HQu = paramJSONObject.optDouble("acc_fee");
-    this.Cpd = (paramJSONObject.optDouble("remain_fee") / 100.0D);
-    AppMethodBeat.o(69962);
+    AppMethodBeat.o(69961);
   }
 }
 

@@ -4,4 +4,5 @@
     <LinearLayout android:orientation="horizontal" android:id="@id/e9u" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <LinearLayout android:gravity="bottom" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/be9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <include layout="@layout/bo3" />
+    <com.tencent.mm.plugin.scanner.MultiCodeMaskView android:id="@id/krr" android:background="#b3000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </FrameLayout>

@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.exdevice.c;
 
-import com.tencent.mm.bw.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.plugin.exdevice.f.e;
 
 public abstract class c
 {
-  public long pkb = -1L;
-  public short rxx = -1;
-  public e rxy = null;
-  protected a rxz = null;
+  public long smk = -1L;
+  public short vdd = -1;
+  public e vde = null;
+  protected a vdf = null;
   
-  protected final e aQ(int paramInt, String paramString)
+  protected final e aP(int paramInt, String paramString)
   {
-    this.rxy = new e();
-    this.rxy.rBL = paramInt;
-    this.rxy.rBM = paramString;
-    return this.rxy;
+    this.vde = new e();
+    this.vde.vht = paramInt;
+    this.vde.vhu = paramString;
+    return this.vde;
   }
   
-  public abstract short cKg();
+  public abstract short cYQ();
   
-  public abstract short cKh();
+  public abstract short cYR();
   
-  public abstract byte[] cKi();
+  public abstract byte[] cYS();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.c.c
  * JD-Core Version:    0.7.0.1
  */

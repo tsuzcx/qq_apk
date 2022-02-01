@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/am" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.base.MMTextureView android:id="@id/d5t" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/d5s" android:background="#80000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.flash.view.FaceReflectMask android:id="@id/d5z" android:background="@color/am" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.flash.view.FaceNumberLayout android:id="@id/d5v" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/c8g" android:layout_width="24.0dip" android:layout_height="7.0dip" android:layout_marginTop="213.0dip" android:src="@drawable/c6k" android:layout_centerHorizontal="true" />
+    <ProgressBar android:id="@id/c9p" android:visibility="gone" android:layout_width="@dimen/a3q" android:layout_height="@dimen/a3q" android:layout_centerHorizontal="true" style="@style/a5r" />
+    <TextView android:textSize="@dimen/l" android:textColor="@color/am" android:id="@id/c_d" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c5z" android:layout_centerHorizontal="true" />
+    <RelativeLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="160.0dip">
+        <TextView android:textSize="22.0dip" android:textColor="@color/UN_BW_0_Alpha_0_9" android:ellipsize="end" android:gravity="center" android:id="@id/d63" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_marginTop="100.0dip" android:layout_marginRight="32.0dip" android:maxLength="30" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="@dimen/hd" android:textColor="@color/BW_0" android:gravity="center" android:id="@id/d62" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:text="@string/fl_pose_not_in_rect" android:layout_below="@id/d63" />
+        <TextView android:textSize="@dimen/hd" android:textColor="@color/BW_0" android:gravity="center" android:id="@id/d61" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:layout_below="@id/d63" />
+    </RelativeLayout>
+</RelativeLayout>

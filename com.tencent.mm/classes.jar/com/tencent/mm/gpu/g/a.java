@@ -1,196 +1,154 @@
 package com.tencent.mm.gpu.g;
 
-import android.app.Activity;
-import android.app.Application;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
-import android.os.Handler;
+import android.app.ActivityManager;
+import android.content.Context;
+import android.os.Debug.MemoryInfo;
 import android.os.Process;
-import com.tencent.f.h;
-import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.gpu.PluginGpuRes;
-import com.tencent.mm.gpu.d.a.3;
-import com.tencent.mm.gpu.d.c;
-import com.tencent.mm.gpu.d.c.4;
-import com.tencent.mm.gpu.e.e;
-import com.tencent.mm.gpu.f.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.lang.reflect.Field;
 
 public final class a
-  implements Application.ActivityLifecycleCallbacks, Runnable
 {
-  private static a hjD;
-  private volatile String activity;
-  public boolean hjE;
-  private long hjF;
-  public List<a> mListeners;
+  private int[] jVq;
   
-  static
+  public a()
   {
-    AppMethodBeat.i(186222);
-    hjD = new a();
-    AppMethodBeat.o(186222);
-  }
-  
-  private a()
-  {
-    AppMethodBeat.i(186215);
-    this.activity = "default";
-    this.hjE = false;
-    this.mListeners = new ArrayList();
-    this.hjF = 0L;
-    ((Application)MMApplicationContext.getContext()).registerActivityLifecycleCallbacks(this);
-    AppMethodBeat.o(186215);
-  }
-  
-  private void axA()
-  {
-    AppMethodBeat.i(186221);
-    if (!axz())
+    AppMethodBeat.i(210665);
+    this.jVq = null;
+    Object localObject = (ActivityManager)MMApplicationContext.getContext().getSystemService("activity");
+    if (localObject == null)
     {
-      Log.i("MicroMsg.GpuMemoryWatchDog", "checkCanDump in run false.");
-      AppMethodBeat.o(186221);
+      AppMethodBeat.o(210665);
       return;
     }
-    Log.d("MicroMsg.GpuMemoryWatchDog", "GpuResReportTask run.");
-    h.RTc.aX(this);
-    AppMethodBeat.o(186221);
-  }
-  
-  public static a axy()
-  {
-    return hjD;
-  }
-  
-  private boolean axz()
-  {
-    AppMethodBeat.i(186220);
-    if (System.currentTimeMillis() - this.hjF > 10000L)
+    localObject = ((ActivityManager)localObject).getProcessMemoryInfo(new int[] { Process.myPid() });
+    if ((localObject == null) || (localObject.length == 0))
     {
-      AppMethodBeat.o(186220);
-      return true;
-    }
-    AppMethodBeat.o(186220);
-    return false;
-  }
-  
-  public final void a(a parama)
-  {
-    AppMethodBeat.i(186216);
-    if (parama == null)
-    {
-      AppMethodBeat.o(186216);
+      AppMethodBeat.o(210665);
       return;
     }
-    synchronized (this.mListeners)
+    localObject = localObject[0];
+    if (localObject == null)
     {
-      if (!this.mListeners.contains(parama))
-      {
-        AppMethodBeat.o(186216);
-        return;
-      }
-      this.mListeners.remove(parama);
-      AppMethodBeat.o(186216);
+      AppMethodBeat.o(210665);
       return;
     }
+    this.jVq = a((Debug.MemoryInfo)localObject);
+    AppMethodBeat.o(210665);
   }
   
-  public final void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public final void onActivityDestroyed(Activity paramActivity) {}
-  
-  public final void onActivityPaused(Activity paramActivity) {}
-  
-  public final void onActivityResumed(Activity paramActivity) {}
-  
-  public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public final void onActivityStarted(Activity paramActivity)
+  private static int[] a(Debug.MemoryInfo paramMemoryInfo)
   {
-    AppMethodBeat.i(186217);
-    this.activity = paramActivity.getClass().getSimpleName();
-    if (axz()) {
-      axA();
-    }
-    AppMethodBeat.o(186217);
-  }
-  
-  public final void onActivityStopped(Activity paramActivity)
-  {
-    AppMethodBeat.i(186218);
-    if (axz()) {
-      axA();
-    }
-    AppMethodBeat.o(186218);
-  }
-  
-  public final void run()
-  {
-    AppMethodBeat.i(186219);
-    if (PluginGpuRes.isSkipModel())
+    AppMethodBeat.i(210669);
+    try
     {
-      Log.e("MicroMsg.GpuMemoryWatchDog", "skip current phone model");
-      AppMethodBeat.o(186219);
-      return;
+      Field localField = Class.forName("android.os.Debug$MemoryInfo").getDeclaredField("otherStats");
+      localField.setAccessible(true);
+      paramMemoryInfo = (int[])localField.get(paramMemoryInfo);
+      AppMethodBeat.o(210669);
+      return paramMemoryInfo;
     }
-    Log.d("MicroMsg.GpuMemoryWatchDog", "do not skip current phone model");
-    if (!axz())
+    catch (Exception paramMemoryInfo)
     {
-      Log.i("MicroMsg.GpuMemoryWatchDog", "checkCanDump in run false.");
-      AppMethodBeat.o(186219);
-      return;
+      Log.e("Gpu.GpuMemoryGetter", "getOtherStatsByReflect fail");
+      AppMethodBeat.o(210669);
     }
-    Log.d("MicroMsg.GpuMemoryWatchDog", "GpuResReportTask run.");
-    this.hjF = System.currentTimeMillis();
-    long l1 = this.hjF;
-    ??? = new com.tencent.mm.gpu.f.a();
-    long l2 = System.currentTimeMillis();
-    Object localObject3 = MMApplicationContext.getProcessName();
-    e locale = new e();
-    locale.pid = Process.myPid();
-    locale.processName = ((String)localObject3);
-    locale.hjv = PluginGpuRes.getCurrSpend();
-    locale.hju = (l2 - l1);
-    locale.hjt = ((com.tencent.mm.gpu.f.a)???).axv();
-    locale.hjr = ((com.tencent.mm.gpu.f.a)???).axu();
-    locale.hjs = ((com.tencent.mm.gpu.f.a)???).axw();
-    locale.activityName = this.activity;
-    Log.e("MicroMsg.GpuMemoryWatchDog", locale.toString());
-    Log.e("MicroMsg.GpuMemoryWatchDog.oomScore", b.axx());
-    ??? = c.axn();
-    ((c)???).hjg.post(new c.4((c)???));
-    ??? = com.tencent.mm.gpu.d.a.axl();
-    ((com.tencent.mm.gpu.d.a)???).hjg.post(new a.3((com.tencent.mm.gpu.d.a)???));
-    synchronized (this.mListeners)
-    {
-      if (this.mListeners.size() > 0)
-      {
-        localObject3 = this.mListeners.iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          a locala = (a)((Iterator)localObject3).next();
-          if (locala != null) {
-            locala.a(locale);
-          }
-        }
-      }
-    }
-    AppMethodBeat.o(186219);
+    return null;
   }
   
-  static abstract interface a
+  private static int f(int[] paramArrayOfInt, int paramInt)
   {
-    public abstract void a(e parame);
+    AppMethodBeat.i(210670);
+    int i = h(paramArrayOfInt, paramInt);
+    paramInt = g(paramArrayOfInt, paramInt);
+    AppMethodBeat.o(210670);
+    return i + paramInt;
+  }
+  
+  private static int g(int[] paramArrayOfInt, int paramInt)
+  {
+    return paramArrayOfInt[(paramInt * 9 + 3)];
+  }
+  
+  private static int h(int[] paramArrayOfInt, int paramInt)
+  {
+    return paramArrayOfInt[(paramInt * 9 + 5)];
+  }
+  
+  public final int aEP()
+  {
+    AppMethodBeat.i(210666);
+    if (this.jVq == null)
+    {
+      Log.e("Gpu.GpuMemoryGetter", "getGfx fail, because otherStats == null");
+      AppMethodBeat.o(210666);
+      return 0;
+    }
+    try
+    {
+      int i = f(this.jVq, 4);
+      AppMethodBeat.o(210666);
+      return i;
+    }
+    catch (Exception localException)
+    {
+      Log.e("Gpu.GpuMemoryGetter", "getGfx fail, because getOtherPrivate fail");
+      AppMethodBeat.o(210666);
+    }
+    return 0;
+  }
+  
+  public final int aEQ()
+  {
+    AppMethodBeat.i(210667);
+    if (this.jVq == null)
+    {
+      Log.e("Gpu.GpuMemoryGetter", "getEGL fail, because otherStats == null");
+      AppMethodBeat.o(210667);
+      return 0;
+    }
+    try
+    {
+      int i = f(this.jVq, 14);
+      AppMethodBeat.o(210667);
+      return i;
+    }
+    catch (Exception localException)
+    {
+      Log.e("Gpu.GpuMemoryGetter", "getEGL fail, because getOtherPrivate fail");
+      AppMethodBeat.o(210667);
+    }
+    return 0;
+  }
+  
+  public final int aER()
+  {
+    AppMethodBeat.i(210668);
+    if (this.jVq == null)
+    {
+      Log.e("Gpu.GpuMemoryGetter", "getGL fail, because getOtherStats == null");
+      AppMethodBeat.o(210668);
+      return 0;
+    }
+    try
+    {
+      int i = f(this.jVq, 15);
+      AppMethodBeat.o(210668);
+      return i;
+    }
+    catch (Exception localException)
+    {
+      Log.e("Gpu.GpuMemoryGetter", "getGL fail, because getOtherStats == null");
+      AppMethodBeat.o(210668);
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.gpu.g.a
  * JD-Core Version:    0.7.0.1
  */

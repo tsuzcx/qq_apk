@@ -11,7 +11,7 @@ public class SetLineWidthActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetLineWidthActionArg> CREATOR;
-  public float kZO;
+  public float nTZ;
   
   static
   {
@@ -50,7 +50,7 @@ public class SetLineWidthActionArg
       AppMethodBeat.o(145214);
       return false;
     }
-    if (Float.compare(((SetLineWidthActionArg)paramObject).kZO, this.kZO) == 0)
+    if (Float.compare(((SetLineWidthActionArg)paramObject).nTZ, this.nTZ) == 0)
     {
       AppMethodBeat.o(145214);
       return true;
@@ -62,7 +62,7 @@ public class SetLineWidthActionArg
   public int hashCode()
   {
     AppMethodBeat.i(145215);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.kZO) });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.nTZ) });
     AppMethodBeat.o(145215);
     return i;
   }
@@ -71,7 +71,7 @@ public class SetLineWidthActionArg
   {
     AppMethodBeat.i(145211);
     super.i(paramParcel);
-    this.kZO = paramParcel.readFloat();
+    this.nTZ = paramParcel.readFloat();
     AppMethodBeat.o(145211);
   }
   
@@ -79,7 +79,7 @@ public class SetLineWidthActionArg
   {
     AppMethodBeat.i(145212);
     super.parse(paramJSONObject);
-    this.kZO = g.f(paramJSONObject.optJSONArray("data"), 0);
+    this.nTZ = g.f(paramJSONObject.optJSONArray("data"), 0);
     AppMethodBeat.o(145212);
   }
   
@@ -87,13 +87,13 @@ public class SetLineWidthActionArg
   {
     AppMethodBeat.i(145213);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeFloat(this.kZO);
+    paramParcel.writeFloat(this.nTZ);
     AppMethodBeat.o(145213);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetLineWidthActionArg
  * JD-Core Version:    0.7.0.1
  */

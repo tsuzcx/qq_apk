@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.profile.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.efm;
-import com.tencent.mm.protocal.protobuf.efn;
+import com.tencent.mm.protocal.protobuf.epo;
+import com.tencent.mm.protocal.protobuf.epp;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
@@ -18,22 +18,22 @@ public final class d
   implements m
 {
   private i callback;
-  public com.tencent.mm.ak.d rr;
+  public com.tencent.mm.an.d rr;
   
   public d(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(6384);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new efm();
-    ((d.a)localObject).iLO = new efn();
+    ((d.a)localObject).lBU = new epo();
+    ((d.a)localObject).lBV = new epp();
     ((d.a)localObject).uri = "/cgi-bin/mmocbiz-bin/switchbrand";
     ((d.a)localObject).funcId = 1394;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (efm)this.rr.iLK.iLR;
-    ((efm)localObject).KTt = paramString;
-    ((efm)localObject).neT = paramBoolean;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (epo)d.b.b(this.rr.lBR);
+    ((epo)localObject).RUp = paramString;
+    ((epo)localObject).qfB = paramBoolean;
     AppMethodBeat.o(6384);
   }
   
@@ -47,19 +47,29 @@ public final class d
     return i;
   }
   
-  public final efn eDY()
+  public final epp fpR()
   {
-    if ((this.rr != null) && (this.rr.iLL.iLR != null)) {
-      return (efn)this.rr.iLL.iLR;
+    AppMethodBeat.i(263676);
+    if ((this.rr != null) && (d.c.b(this.rr.lBS) != null))
+    {
+      epp localepp = (epp)d.c.b(this.rr.lBS);
+      AppMethodBeat.o(263676);
+      return localepp;
     }
+    AppMethodBeat.o(263676);
     return null;
   }
   
-  public final efm eDZ()
+  public final epo fpS()
   {
-    if ((this.rr != null) && (this.rr.iLK.iLR != null)) {
-      return (efm)this.rr.iLK.iLR;
+    AppMethodBeat.i(263677);
+    if ((this.rr != null) && (d.b.b(this.rr.lBR) != null))
+    {
+      epo localepo = (epo)d.b.b(this.rr.lBR);
+      AppMethodBeat.o(263677);
+      return localepo;
     }
+    AppMethodBeat.o(263677);
     return null;
   }
   

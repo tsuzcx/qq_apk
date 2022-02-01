@@ -13,18 +13,18 @@ public final class g
   public static final a.p a(a.h paramh, h paramh1)
   {
     AppMethodBeat.i(59073);
-    p.h(paramh, "$this$returnType");
-    p.h(paramh1, "typeTable");
-    if (paramh.hGb())
+    p.k(paramh, "$this$returnType");
+    p.k(paramh1, "typeTable");
+    if (paramh.iKv())
     {
-      paramh = paramh.Tyy;
-      p.g(paramh, "returnType");
+      paramh = paramh.abbp;
+      p.j(paramh, "returnType");
       AppMethodBeat.o(59073);
       return paramh;
     }
-    if (paramh.hGc())
+    if (paramh.iKw())
     {
-      paramh = paramh1.avo(paramh.Tyz);
+      paramh = paramh1.aFi(paramh.abbq);
       AppMethodBeat.o(59073);
       return paramh;
     }
@@ -36,18 +36,18 @@ public final class g
   public static final a.p a(a.m paramm, h paramh)
   {
     AppMethodBeat.i(59076);
-    p.h(paramm, "$this$returnType");
-    p.h(paramh, "typeTable");
-    if (paramm.hGb())
+    p.k(paramm, "$this$returnType");
+    p.k(paramh, "typeTable");
+    if (paramm.iKv())
     {
-      paramm = paramm.Tyy;
-      p.g(paramm, "returnType");
+      paramm = paramm.abbp;
+      p.j(paramm, "returnType");
       AppMethodBeat.o(59076);
       return paramm;
     }
-    if (paramm.hGc())
+    if (paramm.iKw())
     {
-      paramm = paramh.avo(paramm.Tyz);
+      paramm = paramh.aFi(paramm.abbq);
       AppMethodBeat.o(59076);
       return paramm;
     }
@@ -59,17 +59,17 @@ public final class g
   public static final a.p a(a.p.a parama, h paramh)
   {
     AppMethodBeat.i(59071);
-    p.h(parama, "$this$type");
-    p.h(paramh, "typeTable");
-    if (parama.Cm())
+    p.k(parama, "$this$type");
+    p.k(paramh, "typeTable");
+    if (parama.DQ())
     {
-      parama = parama.Tzy;
+      parama = parama.abcp;
       AppMethodBeat.o(59071);
       return parama;
     }
-    if (parama.hHi())
+    if (parama.iLC())
     {
-      parama = paramh.avo(parama.Tzz);
+      parama = paramh.aFi(parama.abcq);
       AppMethodBeat.o(59071);
       return parama;
     }
@@ -80,17 +80,17 @@ public final class g
   public static final a.p a(a.p paramp, h paramh)
   {
     AppMethodBeat.i(59072);
-    p.h(paramp, "$this$flexibleUpperBound");
-    p.h(paramh, "typeTable");
-    if (paramp.hGV())
+    p.k(paramp, "$this$flexibleUpperBound");
+    p.k(paramh, "typeTable");
+    if (paramp.iLp())
     {
-      paramp = paramp.Tzm;
+      paramp = paramp.abcd;
       AppMethodBeat.o(59072);
       return paramp;
     }
-    if (paramp.hGW())
+    if (paramp.iLq())
     {
-      paramp = paramh.avo(paramp.Tzn);
+      paramp = paramh.aFi(paramp.abce);
       AppMethodBeat.o(59072);
       return paramp;
     }
@@ -101,18 +101,18 @@ public final class g
   public static final a.p a(a.t paramt, h paramh)
   {
     AppMethodBeat.i(59079);
-    p.h(paramt, "$this$type");
-    p.h(paramh, "typeTable");
-    if (paramt.Cm())
+    p.k(paramt, "$this$type");
+    p.k(paramh, "typeTable");
+    if (paramt.DQ())
     {
-      paramt = paramt.Tzy;
-      p.g(paramt, "type");
+      paramt = paramt.abcp;
+      p.j(paramt, "type");
       AppMethodBeat.o(59079);
       return paramt;
     }
-    if (paramt.hHi())
+    if (paramt.iLC())
     {
-      paramt = paramh.avo(paramt.Tzz);
+      paramt = paramh.aFi(paramt.abcq);
       AppMethodBeat.o(59079);
       return paramt;
     }
@@ -124,17 +124,17 @@ public final class g
   public static final a.p b(a.h paramh, h paramh1)
   {
     AppMethodBeat.i(59075);
-    p.h(paramh, "$this$receiverType");
-    p.h(paramh1, "typeTable");
-    if (paramh.hGd())
+    p.k(paramh, "$this$receiverType");
+    p.k(paramh1, "typeTable");
+    if (paramh.iKx())
     {
-      paramh = paramh.TyA;
+      paramh = paramh.abbr;
       AppMethodBeat.o(59075);
       return paramh;
     }
-    if (paramh.hGe())
+    if (paramh.iKy())
     {
-      paramh = paramh1.avo(paramh.TyB);
+      paramh = paramh1.aFi(paramh.abbs);
       AppMethodBeat.o(59075);
       return paramh;
     }
@@ -145,17 +145,17 @@ public final class g
   public static final a.p b(a.m paramm, h paramh)
   {
     AppMethodBeat.i(59078);
-    p.h(paramm, "$this$receiverType");
-    p.h(paramh, "typeTable");
-    if (paramm.hGd())
+    p.k(paramm, "$this$receiverType");
+    p.k(paramh, "typeTable");
+    if (paramm.iKx())
     {
-      paramm = paramm.TyA;
+      paramm = paramm.abbr;
       AppMethodBeat.o(59078);
       return paramm;
     }
-    if (paramm.hGe())
+    if (paramm.iKy())
     {
-      paramm = paramh.avo(paramm.TyB);
+      paramm = paramh.aFi(paramm.abbs);
       AppMethodBeat.o(59078);
       return paramm;
     }
@@ -166,17 +166,17 @@ public final class g
   public static final a.p b(a.p paramp, h paramh)
   {
     AppMethodBeat.i(59081);
-    p.h(paramp, "$this$outerType");
-    p.h(paramh, "typeTable");
-    if (paramp.hHb())
+    p.k(paramp, "$this$outerType");
+    p.k(paramh, "typeTable");
+    if (paramp.iLv())
     {
-      paramp = paramp.Tzs;
+      paramp = paramp.abcj;
       AppMethodBeat.o(59081);
       return paramp;
     }
-    if (paramp.hHc())
+    if (paramp.iLw())
     {
-      paramp = paramh.avo(paramp.Tzt);
+      paramp = paramh.aFi(paramp.abck);
       AppMethodBeat.o(59081);
       return paramp;
     }
@@ -187,17 +187,17 @@ public final class g
   public static final a.p b(a.t paramt, h paramh)
   {
     AppMethodBeat.i(59080);
-    p.h(paramt, "$this$varargElementType");
-    p.h(paramh, "typeTable");
-    if (paramt.hHO())
+    p.k(paramt, "$this$varargElementType");
+    p.k(paramh, "typeTable");
+    if (paramt.iMi())
     {
-      paramt = paramt.TzZ;
+      paramt = paramt.abcQ;
       AppMethodBeat.o(59080);
       return paramt;
     }
-    if (paramt.hHP())
+    if (paramt.iMj())
     {
-      paramt = paramh.avo(paramt.TAa);
+      paramt = paramh.aFi(paramt.abcR);
       AppMethodBeat.o(59080);
       return paramt;
     }
@@ -208,17 +208,17 @@ public final class g
   public static final a.p c(a.p paramp, h paramh)
   {
     AppMethodBeat.i(59082);
-    p.h(paramp, "$this$abbreviatedType");
-    p.h(paramh, "typeTable");
-    if (paramp.hHd())
+    p.k(paramp, "$this$abbreviatedType");
+    p.k(paramh, "typeTable");
+    if (paramp.iLx())
     {
-      paramp = paramp.Tzu;
+      paramp = paramp.abcl;
       AppMethodBeat.o(59082);
       return paramp;
     }
-    if (paramp.hHe())
+    if (paramp.iLy())
     {
-      paramp = paramh.avo(paramp.Tzv);
+      paramp = paramh.aFi(paramp.abcm);
       AppMethodBeat.o(59082);
       return paramp;
     }
@@ -229,8 +229,8 @@ public final class g
   public static final boolean e(a.m paramm)
   {
     AppMethodBeat.i(59077);
-    p.h(paramm, "$this$hasReceiver");
-    if ((paramm.hGd()) || (paramm.hGe()))
+    p.k(paramm, "$this$hasReceiver");
+    if ((paramm.iKx()) || (paramm.iKy()))
     {
       AppMethodBeat.o(59077);
       return true;
@@ -242,8 +242,8 @@ public final class g
   public static final boolean f(a.h paramh)
   {
     AppMethodBeat.i(59074);
-    p.h(paramh, "$this$hasReceiver");
-    if ((paramh.hGd()) || (paramh.hGe()))
+    p.k(paramh, "$this$hasReceiver");
+    if ((paramh.iKx()) || (paramh.iKy()))
     {
       AppMethodBeat.o(59074);
       return true;
@@ -254,7 +254,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     kotlin.l.b.a.b.e.b.g
  * JD-Core Version:    0.7.0.1
  */

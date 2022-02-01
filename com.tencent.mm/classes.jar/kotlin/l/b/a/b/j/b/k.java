@@ -7,19 +7,19 @@ import kotlin.x;
 public abstract class k
   extends g<x>
 {
-  public static final a TIz = new a((byte)0);
+  public static final a abld = new a((byte)0);
   
   public k()
   {
-    super(x.SXb);
+    super(x.aazN);
   }
   
   public static final class a
   {
-    public static k bui(String paramString)
+    public static k bHk(String paramString)
     {
       AppMethodBeat.i(60066);
-      p.h(paramString, "message");
+      p.k(paramString, "message");
       paramString = (k)new k.b(paramString);
       AppMethodBeat.o(60066);
       return paramString;
@@ -46,7 +46,7 @@ public abstract class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.j.b.k
  * JD-Core Version:    0.7.0.1
  */

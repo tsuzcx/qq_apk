@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.subapp.d;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.hb;
+import com.tencent.mm.f.c.hi;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
@@ -16,29 +16,29 @@ import junit.framework.Assert;
 public final class k
   extends MAutoStorage<g>
 {
-  private static long FKp;
+  private static long Mem;
   public static final String[] SQL_CREATE;
-  private Map<String, c> FKq;
+  private Map<String, c> Men;
   ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(29002);
     SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(g.info, "VoiceRemindInfo") };
-    FKp = 0L;
+    Mem = 0L;
     AppMethodBeat.o(29002);
   }
   
   public k(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, g.info, "VoiceRemindInfo", hb.INDEX_CREATE);
+    super(paramISQLiteDatabase, g.info, "VoiceRemindInfo", hi.INDEX_CREATE);
     AppMethodBeat.i(28995);
-    this.FKq = new HashMap();
+    this.Men = new HashMap();
     this.db = paramISQLiteDatabase;
     AppMethodBeat.o(28995);
   }
   
-  public static String Qv(String paramString)
+  public static String XS(String paramString)
   {
     AppMethodBeat.i(28996);
     long l = System.currentTimeMillis();
@@ -53,21 +53,21 @@ public final class k
     }
     paramString = str1 + l % 10000L;
     paramString = new StringBuilder().append(paramString);
-    l = FKp;
-    FKp = 1L + l;
+    l = Mem;
+    Mem = 1L + l;
     paramString = l;
     AppMethodBeat.o(28996);
     return paramString;
   }
   
-  public final void Rg(String paramString)
+  public final void YD(String paramString)
   {
     AppMethodBeat.i(28999);
-    c localc = (c)this.FKq.get(paramString);
+    c localc = (c)this.Men.get(paramString);
     if (localc != null)
     {
-      localc.bhP();
-      this.FKq.remove(paramString);
+      localc.brn();
+      this.Men.remove(paramString);
     }
     AppMethodBeat.o(28999);
   }
@@ -108,18 +108,18 @@ public final class k
     return true;
   }
   
-  public final c aSO(String paramString)
+  public final c bdS(String paramString)
   {
     AppMethodBeat.i(28998);
-    if (this.FKq.get(paramString) == null) {
-      this.FKq.put(paramString, new c(paramString));
+    if (this.Men.get(paramString) == null) {
+      this.Men.put(paramString, new c(paramString));
     }
-    paramString = (c)this.FKq.get(paramString);
+    paramString = (c)this.Men.get(paramString);
     AppMethodBeat.o(28998);
     return paramString;
   }
   
-  public final g aSP(String paramString)
+  public final g bdT(String paramString)
   {
     AppMethodBeat.i(29000);
     Object localObject1 = null;
@@ -136,7 +136,7 @@ public final class k
     return paramString;
   }
   
-  public final boolean gC(String paramString)
+  public final boolean ho(String paramString)
   {
     AppMethodBeat.i(28997);
     if (paramString.length() > 0) {}
@@ -153,7 +153,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.d.k
  * JD-Core Version:    0.7.0.1
  */

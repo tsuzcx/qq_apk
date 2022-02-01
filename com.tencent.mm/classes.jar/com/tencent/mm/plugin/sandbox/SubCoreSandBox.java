@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.plugin.p.b;
+import com.tencent.mm.model.be;
 import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.y.b;
 import com.tencent.mm.sandbox.monitor.ExceptionMonitorBroadcastReceiver;
 import com.tencent.mm.sandbox.monitor.ExceptionMonitorService;
 import com.tencent.mm.sandbox.updater.AppUpdaterUI;
@@ -17,10 +17,10 @@ import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class SubCoreSandBox
-  implements bd, com.tencent.mm.plugin.p.c
+  implements be, com.tencent.mm.plugin.y.c
 {
-  public static boolean Czx = false;
-  public static boolean Czy = false;
+  public static boolean IAA = false;
+  public static boolean IAz = false;
   
   public SubCoreSandBox()
   {
@@ -29,15 +29,15 @@ public class SubCoreSandBox
     AppMethodBeat.o(28049);
   }
   
-  public final String aFr(String paramString)
+  public final String aPB(String paramString)
   {
     AppMethodBeat.i(28062);
-    paramString = com.tencent.mm.sandbox.monitor.c.aFr(paramString);
+    paramString = com.tencent.mm.sandbox.monitor.c.aPB(paramString);
     AppMethodBeat.o(28062);
     return paramString;
   }
   
-  public final void ak(Context paramContext, Intent paramIntent)
+  public final void at(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(28063);
     if (paramContext != null)
@@ -46,7 +46,7 @@ public class SubCoreSandBox
         break label100;
       }
       Log.i("MicroMsg.CrashSecondReport", "reportCrash() process:mm");
-      h.CyF.idkeyStat(1185L, 0L, 1L, true);
+      h.IzE.idkeyStat(1185L, 0L, 1L, true);
       paramIntent.putExtra("exceptionProcess", "mm");
     }
     for (;;)
@@ -58,19 +58,19 @@ public class SubCoreSandBox
       {
         paramIntent.setClass(paramContext, ExceptionMonitorService.class);
         MMApplicationContext.getContext().startService(paramIntent);
-        com.tencent.mm.sandbox.monitor.a.p(paramIntent, str);
+        com.tencent.mm.sandbox.monitor.a.o(paramIntent, str);
         AppMethodBeat.o(28063);
         return;
         label100:
         if (MMApplicationContext.isPushProcess())
         {
           Log.i("MicroMsg.CrashSecondReport", "reportCrash() process:push");
-          h.CyF.idkeyStat(1185L, 1L, 1L, true);
+          h.IzE.idkeyStat(1185L, 1L, 1L, true);
           paramIntent.putExtra("exceptionProcess", "push");
           continue;
         }
         Log.i("MicroMsg.CrashSecondReport", "reportCrash() process:other");
-        h.CyF.idkeyStat(1185L, 2L, 1L, true);
+        h.IzE.idkeyStat(1185L, 2L, 1L, true);
         paramIntent.putExtra("exceptionProcess", "other");
       }
       catch (Exception localException)
@@ -85,22 +85,30 @@ public class SubCoreSandBox
     }
   }
   
-  public final void al(Context paramContext, Intent paramIntent)
+  public final void au(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(28064);
     paramIntent.setClass(paramContext, AppUpdaterUI.class);
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bl(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.axQ(), "com/tencent/mm/plugin/sandbox/SubCoreSandBox", "startAppUpdateUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/sandbox/SubCoreSandBox", "startAppUpdateUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramIntent.aFh(), "com/tencent/mm/plugin/sandbox/SubCoreSandBox", "startAppUpdateUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramIntent.sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/sandbox/SubCoreSandBox", "startAppUpdateUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(28064);
   }
   
-  public final com.tencent.mm.plugin.p.a c(Context paramContext, DialogInterface.OnCancelListener paramOnCancelListener)
+  public final com.tencent.mm.plugin.y.a b(Context paramContext, DialogInterface.OnCancelListener paramOnCancelListener)
   {
     AppMethodBeat.i(28056);
-    paramContext = Updater.e(paramContext, paramOnCancelListener);
+    paramContext = Updater.d(paramContext, paramOnCancelListener);
     AppMethodBeat.o(28056);
+    return paramContext;
+  }
+  
+  public final com.tencent.mm.plugin.y.a c(Context paramContext, DialogInterface.OnCancelListener paramOnCancelListener)
+  {
+    AppMethodBeat.i(28057);
+    paramContext = Updater.e(paramContext, paramOnCancelListener);
+    AppMethodBeat.o(28057);
     return paramContext;
   }
   
@@ -111,42 +119,19 @@ public class SubCoreSandBox
     AppMethodBeat.o(28051);
   }
   
-  public final com.tencent.mm.plugin.p.a d(Context paramContext, DialogInterface.OnCancelListener paramOnCancelListener)
-  {
-    AppMethodBeat.i(28057);
-    paramContext = Updater.f(paramContext, paramOnCancelListener);
-    AppMethodBeat.o(28057);
-    return paramContext;
-  }
-  
-  public final void elo()
+  public final void eUX()
   {
     AppMethodBeat.i(28055);
-    Updater.ajz(16);
+    Updater.arR(16);
     AppMethodBeat.o(28055);
   }
   
-  public final b elp()
+  public final b eUY()
   {
     AppMethodBeat.i(28061);
     com.tencent.mm.sandbox.a.a locala = new com.tencent.mm.sandbox.a.a(2);
     AppMethodBeat.o(28061);
     return locala;
-  }
-  
-  public final com.tencent.mm.plugin.p.a gB(Context paramContext)
-  {
-    AppMethodBeat.i(28058);
-    paramContext = Updater.jt(paramContext);
-    AppMethodBeat.o(28058);
-    return paramContext;
-  }
-  
-  public final void gC(Context paramContext)
-  {
-    AppMethodBeat.i(28059);
-    Updater.gC(paramContext);
-    AppMethodBeat.o(28059);
   }
   
   public HashMap<Integer, h.b> getBaseDBFactories()
@@ -157,10 +142,25 @@ public class SubCoreSandBox
     return null;
   }
   
-  public final void h(String paramString1, int paramInt, String paramString2, String paramString3)
+  public final com.tencent.mm.plugin.y.a hy(Context paramContext)
+  {
+    AppMethodBeat.i(28058);
+    paramContext = Updater.kx(paramContext);
+    AppMethodBeat.o(28058);
+    return paramContext;
+  }
+  
+  public final void hz(Context paramContext)
+  {
+    AppMethodBeat.i(28059);
+    Updater.hz(paramContext);
+    AppMethodBeat.o(28059);
+  }
+  
+  public final void k(String paramString1, int paramInt, String paramString2, String paramString3)
   {
     AppMethodBeat.i(28060);
-    Updater.h(paramString1, paramInt, paramString2, paramString3);
+    Updater.k(paramString1, paramInt, paramString2, paramString3);
     AppMethodBeat.o(28060);
   }
   
@@ -185,15 +185,15 @@ public class SubCoreSandBox
     AppMethodBeat.o(28053);
   }
   
-  public final void rp(boolean paramBoolean)
+  public final void ut(boolean paramBoolean)
   {
-    Czx = true;
-    Czy = paramBoolean;
+    IAz = true;
+    IAA = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sandbox.SubCoreSandBox
  * JD-Core Version:    0.7.0.1
  */

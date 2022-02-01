@@ -8,9 +8,12 @@ import com.tencent.mm.sdk.storage.MAutoStorage;
 public abstract class c<_Model extends IAutoDBItem,  extends b>
   extends MAutoStorage<_Model>
 {
+  private final ISQLiteDatabase qQJ;
+  
   public c(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, String[] paramArrayOfString)
   {
     super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, paramArrayOfString);
+    this.qQJ = paramISQLiteDatabase;
   }
   
   public boolean delete(_Model param_Model, boolean paramBoolean, String... paramVarArgs)
@@ -66,7 +69,7 @@ public abstract class c<_Model extends IAutoDBItem,  extends b>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ab.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.wallet_payu.pay.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.pj;
+import com.tencent.mm.f.a.qh;
 import com.tencent.mm.sdk.event.IListener;
 
 final class WalletPayUChangeBankcardUI$4
-  extends IListener<pj>
+  extends IListener<qh>
 {
   WalletPayUChangeBankcardUI$4(WalletPayUChangeBankcardUI paramWalletPayUChangeBankcardUI)
   {
     AppMethodBeat.i(160903);
-    this.__eventId = pj.class.getName().hashCode();
+    this.__eventId = qh.class.getName().hashCode();
     AppMethodBeat.o(160903);
   }
 }

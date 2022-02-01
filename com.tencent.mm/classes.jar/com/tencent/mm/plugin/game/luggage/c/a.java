@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 public final class a
 {
-  public static a.b xxj;
+  public static a.b CBs;
 }
 
 

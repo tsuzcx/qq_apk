@@ -1,10 +1,10 @@
 package com.tencent.mm.chatroom.c;
 
 import android.os.Message;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.gt;
+import com.tencent.mm.f.b.a.iy;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -12,35 +12,35 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.Future;
 
-public final class b
+public class b
 {
-  private String ehT;
-  Future grQ;
-  public ConcurrentLinkedDeque<String> grR;
-  public ConcurrentHashMap<String, String> grS;
-  Runnable grT;
-  MMHandler mHandler;
+  private String gck;
+  private Future iWc;
+  public ConcurrentLinkedDeque<String> iWd;
+  public ConcurrentHashMap<String, String> iWe;
+  private Runnable iWf;
+  private MMHandler mHandler;
   
   public b()
   {
-    AppMethodBeat.i(194014);
-    this.grQ = null;
-    this.grR = new ConcurrentLinkedDeque();
-    this.grS = new ConcurrentHashMap();
-    this.ehT = "";
+    AppMethodBeat.i(187147);
+    this.iWc = null;
+    this.iWd = new ConcurrentLinkedDeque();
+    this.iWe = new ConcurrentHashMap();
+    this.gck = "";
     this.mHandler = new MMHandler("OpenImMigrateService")
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
-        AppMethodBeat.i(194012);
-        Log.i("MicroMsg.openIm.OpenImMigrateService", "handleMessage running, %s", new Object[] { Integer.valueOf(b.this.grR.size()) });
-        if (!b.this.grR.isEmpty()) {
-          b.this.grQ = h.RTc.b(b.this.grT, "migrate_tag");
+        AppMethodBeat.i(187775);
+        Log.i("MicroMsg.openIm.OpenImMigrateService", "handleMessage running, %s", new Object[] { Integer.valueOf(b.a(b.this).size()) });
+        if (!b.a(b.this).isEmpty()) {
+          b.a(b.this, h.ZvG.d(b.b(b.this), "migrate_tag"));
         }
-        AppMethodBeat.o(194012);
+        AppMethodBeat.o(187775);
       }
     };
-    this.grT = new Runnable()
+    this.iWf = new Runnable()
     {
       /* Error */
       public final void run()
@@ -60,9 +60,9 @@ public final class b
         //   18: istore_2
         //   19: ldc 36
         //   21: astore 16
-        //   23: invokestatic 42	com/tencent/mm/kernel/g:aAh	()Lcom/tencent/mm/kernel/e;
-        //   26: invokevirtual 48	com/tencent/mm/kernel/e:azQ	()Lcom/tencent/mm/storage/ao;
-        //   29: getstatic 54	com/tencent/mm/storage/ar$a:OnZ	Lcom/tencent/mm/storage/ar$a;
+        //   23: invokestatic 42	com/tencent/mm/kernel/h:aHG	()Lcom/tencent/mm/kernel/f;
+        //   26: invokevirtual 48	com/tencent/mm/kernel/f:aHp	()Lcom/tencent/mm/storage/ao;
+        //   29: getstatic 54	com/tencent/mm/storage/ar$a:VDs	Lcom/tencent/mm/storage/ar$a;
         //   32: ldc 36
         //   34: invokevirtual 60	com/tencent/mm/storage/ao:get	(Lcom/tencent/mm/storage/ar$a;Ljava/lang/Object;)Ljava/lang/Object;
         //   37: checkcast 62	java/lang/String
@@ -71,8 +71,8 @@ public final class b
         //   44: invokestatic 68	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
         //   47: ifeq +223 -> 270
         //   50: aload_0
-        //   51: getfield 14	com/tencent/mm/chatroom/c/b$2:grU	Lcom/tencent/mm/chatroom/c/b;
-        //   54: getfield 72	com/tencent/mm/chatroom/c/b:grR	Ljava/util/concurrent/ConcurrentLinkedDeque;
+        //   51: getfield 14	com/tencent/mm/chatroom/c/b$2:iWg	Lcom/tencent/mm/chatroom/c/b;
+        //   54: invokestatic 72	com/tencent/mm/chatroom/c/b:a	(Lcom/tencent/mm/chatroom/c/b;)Ljava/util/concurrent/ConcurrentLinkedDeque;
         //   57: invokevirtual 78	java/util/concurrent/ConcurrentLinkedDeque:removeFirst	()Ljava/lang/Object;
         //   60: checkcast 62	java/lang/String
         //   63: astore 12
@@ -81,20 +81,20 @@ public final class b
         //   69: aload 12
         //   71: astore 14
         //   73: aload_0
-        //   74: getfield 14	com/tencent/mm/chatroom/c/b$2:grU	Lcom/tencent/mm/chatroom/c/b;
-        //   77: getfield 82	com/tencent/mm/chatroom/c/b:grS	Ljava/util/concurrent/ConcurrentHashMap;
+        //   74: getfield 14	com/tencent/mm/chatroom/c/b$2:iWg	Lcom/tencent/mm/chatroom/c/b;
+        //   77: invokestatic 82	com/tencent/mm/chatroom/c/b:c	(Lcom/tencent/mm/chatroom/c/b;)Ljava/util/concurrent/ConcurrentHashMap;
         //   80: aload 12
         //   82: invokevirtual 88	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
         //   85: checkcast 62	java/lang/String
         //   88: astore 15
-        //   90: invokestatic 42	com/tencent/mm/kernel/g:aAh	()Lcom/tencent/mm/kernel/e;
-        //   93: invokevirtual 48	com/tencent/mm/kernel/e:azQ	()Lcom/tencent/mm/storage/ao;
-        //   96: getstatic 54	com/tencent/mm/storage/ar$a:OnZ	Lcom/tencent/mm/storage/ar$a;
+        //   90: invokestatic 42	com/tencent/mm/kernel/h:aHG	()Lcom/tencent/mm/kernel/f;
+        //   93: invokevirtual 48	com/tencent/mm/kernel/f:aHp	()Lcom/tencent/mm/storage/ao;
+        //   96: getstatic 54	com/tencent/mm/storage/ar$a:VDs	Lcom/tencent/mm/storage/ar$a;
         //   99: aload 12
         //   101: invokevirtual 92	com/tencent/mm/storage/ao:set	(Lcom/tencent/mm/storage/ar$a;Ljava/lang/Object;)V
-        //   104: invokestatic 42	com/tencent/mm/kernel/g:aAh	()Lcom/tencent/mm/kernel/e;
-        //   107: invokevirtual 48	com/tencent/mm/kernel/e:azQ	()Lcom/tencent/mm/storage/ao;
-        //   110: getstatic 95	com/tencent/mm/storage/ar$a:OnY	Lcom/tencent/mm/storage/ar$a;
+        //   104: invokestatic 42	com/tencent/mm/kernel/h:aHG	()Lcom/tencent/mm/kernel/f;
+        //   107: invokevirtual 48	com/tencent/mm/kernel/f:aHp	()Lcom/tencent/mm/storage/ao;
+        //   110: getstatic 95	com/tencent/mm/storage/ar$a:VDr	Lcom/tencent/mm/storage/ar$a;
         //   113: aload 15
         //   115: invokevirtual 92	com/tencent/mm/storage/ao:set	(Lcom/tencent/mm/storage/ar$a;Ljava/lang/Object;)V
         //   118: aload 15
@@ -186,9 +186,9 @@ public final class b
         //   272: astore 13
         //   274: aload 12
         //   276: astore 14
-        //   278: invokestatic 42	com/tencent/mm/kernel/g:aAh	()Lcom/tencent/mm/kernel/e;
-        //   281: invokevirtual 48	com/tencent/mm/kernel/e:azQ	()Lcom/tencent/mm/storage/ao;
-        //   284: getstatic 95	com/tencent/mm/storage/ar$a:OnY	Lcom/tencent/mm/storage/ar$a;
+        //   278: invokestatic 42	com/tencent/mm/kernel/h:aHG	()Lcom/tencent/mm/kernel/f;
+        //   281: invokevirtual 48	com/tencent/mm/kernel/f:aHp	()Lcom/tencent/mm/storage/ao;
+        //   284: getstatic 95	com/tencent/mm/storage/ar$a:VDr	Lcom/tencent/mm/storage/ar$a;
         //   287: ldc 36
         //   289: invokevirtual 60	com/tencent/mm/storage/ao:get	(Lcom/tencent/mm/storage/ar$a;Ljava/lang/Object;)Ljava/lang/Object;
         //   292: checkcast 62	java/lang/String
@@ -205,8 +205,8 @@ public final class b
         //   314: iload 4
         //   316: istore_1
         //   317: ldc 135
-        //   319: invokestatic 139	com/tencent/mm/kernel/g:af	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
-        //   322: checkcast 135	com/tencent/mm/plugin/messenger/foundation/a/l
+        //   319: invokestatic 139	com/tencent/mm/kernel/h:ae	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+        //   322: checkcast 135	com/tencent/mm/plugin/messenger/foundation/a/n
         //   325: invokeinterface 143 1 0
         //   330: aload 13
         //   332: invokeinterface 149 2 0
@@ -219,8 +219,8 @@ public final class b
         //   347: iload 4
         //   349: istore_1
         //   350: ldc 135
-        //   352: invokestatic 139	com/tencent/mm/kernel/g:af	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
-        //   355: checkcast 135	com/tencent/mm/plugin/messenger/foundation/a/l
+        //   352: invokestatic 139	com/tencent/mm/kernel/h:ae	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+        //   355: checkcast 135	com/tencent/mm/plugin/messenger/foundation/a/n
         //   358: invokeinterface 153 1 0
         //   363: aload 13
         //   365: bipush 50
@@ -302,7 +302,7 @@ public final class b
         //   511: istore_1
         //   512: aload 18
         //   514: aload 12
-        //   516: invokevirtual 188	com/tencent/mm/storage/ca:Cy	(Ljava/lang/String;)V
+        //   516: invokevirtual 188	com/tencent/mm/storage/ca:Jm	(Ljava/lang/String;)V
         //   519: iload_2
         //   520: istore_3
         //   521: aload 13
@@ -318,7 +318,7 @@ public final class b
         //   539: dup
         //   540: iconst_0
         //   541: aload 18
-        //   543: getfield 196	com/tencent/mm/g/c/eo:field_msgId	J
+        //   543: getfield 196	com/tencent/mm/f/c/et:field_msgId	J
         //   546: invokestatic 122	java/lang/Long:valueOf	(J)Ljava/lang/Long;
         //   549: aastore
         //   550: invokestatic 170	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
@@ -331,13 +331,13 @@ public final class b
         //   563: iload_2
         //   564: istore_1
         //   565: ldc 135
-        //   567: invokestatic 139	com/tencent/mm/kernel/g:af	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
-        //   570: checkcast 135	com/tencent/mm/plugin/messenger/foundation/a/l
+        //   567: invokestatic 139	com/tencent/mm/kernel/h:ae	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+        //   570: checkcast 135	com/tencent/mm/plugin/messenger/foundation/a/n
         //   573: invokeinterface 153 1 0
         //   578: aload 18
-        //   580: getfield 196	com/tencent/mm/g/c/eo:field_msgId	J
+        //   580: getfield 196	com/tencent/mm/f/c/et:field_msgId	J
         //   583: aload 18
-        //   585: invokeinterface 200 4 0
+        //   585: invokeinterface 199 4 0
         //   590: goto -136 -> 454
         //   593: astore 14
         //   595: aload 13
@@ -347,21 +347,21 @@ public final class b
         //   603: iload_3
         //   604: istore_1
         //   605: ldc 97
-        //   607: ldc 202
+        //   607: ldc 201
         //   609: iconst_2
         //   610: anewarray 4	java/lang/Object
         //   613: dup
         //   614: iconst_0
         //   615: aload 14
-        //   617: invokevirtual 206	java/lang/Object:getClass	()Ljava/lang/Class;
-        //   620: invokevirtual 212	java/lang/Class:getSimpleName	()Ljava/lang/String;
+        //   617: invokevirtual 205	java/lang/Object:getClass	()Ljava/lang/Class;
+        //   620: invokevirtual 211	java/lang/Class:getSimpleName	()Ljava/lang/String;
         //   623: aastore
         //   624: dup
         //   625: iconst_1
         //   626: aload 14
-        //   628: invokevirtual 215	java/lang/Exception:getMessage	()Ljava/lang/String;
+        //   628: invokevirtual 214	java/lang/Exception:getMessage	()Ljava/lang/String;
         //   631: aastore
-        //   632: invokestatic 218	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   632: invokestatic 217	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
         //   635: ldc 97
         //   637: ldc 111
         //   639: iconst_5
@@ -427,8 +427,8 @@ public final class b
         //   745: iload_2
         //   746: istore_1
         //   747: ldc 135
-        //   749: invokestatic 139	com/tencent/mm/kernel/g:af	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
-        //   752: checkcast 135	com/tencent/mm/plugin/messenger/foundation/a/l
+        //   749: invokestatic 139	com/tencent/mm/kernel/h:ae	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+        //   752: checkcast 135	com/tencent/mm/plugin/messenger/foundation/a/n
         //   755: invokeinterface 153 1 0
         //   760: aload 13
         //   762: sipush 500
@@ -511,7 +511,7 @@ public final class b
         //   914: istore_1
         //   915: aload 19
         //   917: aload 12
-        //   919: invokevirtual 188	com/tencent/mm/storage/ca:Cy	(Ljava/lang/String;)V
+        //   919: invokevirtual 188	com/tencent/mm/storage/ca:Jm	(Ljava/lang/String;)V
         //   922: iload_2
         //   923: istore_3
         //   924: aload 13
@@ -521,13 +521,13 @@ public final class b
         //   932: iload_2
         //   933: istore_1
         //   934: ldc 97
-        //   936: ldc 220
+        //   936: ldc 219
         //   938: iconst_1
         //   939: anewarray 4	java/lang/Object
         //   942: dup
         //   943: iconst_0
         //   944: aload 19
-        //   946: getfield 196	com/tencent/mm/g/c/eo:field_msgId	J
+        //   946: getfield 196	com/tencent/mm/f/c/et:field_msgId	J
         //   949: invokestatic 122	java/lang/Long:valueOf	(J)Ljava/lang/Long;
         //   952: aastore
         //   953: invokestatic 170	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
@@ -540,13 +540,13 @@ public final class b
         //   966: iload_2
         //   967: istore_1
         //   968: ldc 135
-        //   970: invokestatic 139	com/tencent/mm/kernel/g:af	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
-        //   973: checkcast 135	com/tencent/mm/plugin/messenger/foundation/a/l
+        //   970: invokestatic 139	com/tencent/mm/kernel/h:ae	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+        //   973: checkcast 135	com/tencent/mm/plugin/messenger/foundation/a/n
         //   976: invokeinterface 153 1 0
         //   981: aload 19
-        //   983: getfield 196	com/tencent/mm/g/c/eo:field_msgId	J
+        //   983: getfield 196	com/tencent/mm/f/c/et:field_msgId	J
         //   986: aload 19
-        //   988: invokeinterface 200 4 0
+        //   988: invokeinterface 199 4 0
         //   993: goto -136 -> 857
         //   996: astore 14
         //   998: aload 16
@@ -607,27 +607,27 @@ public final class b
         //   1095: istore_2
         //   1096: goto -369 -> 727
         //   1099: ldc 135
-        //   1101: invokestatic 139	com/tencent/mm/kernel/g:af	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
-        //   1104: checkcast 135	com/tencent/mm/plugin/messenger/foundation/a/l
+        //   1101: invokestatic 139	com/tencent/mm/kernel/h:ae	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+        //   1104: checkcast 135	com/tencent/mm/plugin/messenger/foundation/a/n
         //   1107: invokeinterface 143 1 0
         //   1112: aload 12
-        //   1114: invokeinterface 224 2 0
+        //   1114: invokeinterface 223 2 0
         //   1119: astore 14
         //   1121: aload 14
         //   1123: ifnonnull +432 -> 1555
         //   1126: iconst_1
         //   1127: istore 11
-        //   1129: new 226	com/tencent/mm/storage/az
+        //   1129: new 225	com/tencent/mm/storage/az
         //   1132: dup
         //   1133: aload 12
-        //   1135: invokespecial 228	com/tencent/mm/storage/az:<init>	(Ljava/lang/String;)V
+        //   1135: invokespecial 227	com/tencent/mm/storage/az:<init>	(Ljava/lang/String;)V
         //   1138: astore 15
         //   1140: ldc 135
-        //   1142: invokestatic 139	com/tencent/mm/kernel/g:af	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
-        //   1145: checkcast 135	com/tencent/mm/plugin/messenger/foundation/a/l
-        //   1148: invokeinterface 232 1 0
+        //   1142: invokestatic 139	com/tencent/mm/kernel/h:ae	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+        //   1145: checkcast 135	com/tencent/mm/plugin/messenger/foundation/a/n
+        //   1148: invokeinterface 231 1 0
         //   1153: aload 12
-        //   1155: invokeinterface 238 2 0
+        //   1155: invokeinterface 237 2 0
         //   1160: astore 16
         //   1162: iload 11
         //   1164: istore 10
@@ -640,7 +640,7 @@ public final class b
         //   1179: aload 15
         //   1181: astore 14
         //   1183: aload 16
-        //   1185: getfield 244	com/tencent/mm/g/c/ax:field_username	Ljava/lang/String;
+        //   1185: getfield 243	com/tencent/mm/f/c/ax:field_username	Ljava/lang/String;
         //   1188: invokestatic 68	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
         //   1191: ifne +39 -> 1230
         //   1194: iload 11
@@ -648,34 +648,34 @@ public final class b
         //   1198: aload 15
         //   1200: astore 14
         //   1202: aload 16
-        //   1204: invokevirtual 249	com/tencent/mm/storage/as:arE	()Z
+        //   1204: invokevirtual 248	com/tencent/mm/storage/as:ayn	()Z
         //   1207: ifeq +23 -> 1230
         //   1210: aload 15
         //   1212: aload 15
         //   1214: iconst_2
         //   1215: lconst_0
-        //   1216: invokestatic 254	com/tencent/mm/plugin/messenger/foundation/a/a/a:a	(Lcom/tencent/mm/storage/az;IJ)J
-        //   1219: invokevirtual 258	com/tencent/mm/storage/az:yB	(J)V
+        //   1216: invokestatic 253	com/tencent/mm/plugin/messenger/foundation/a/a/a:a	(Lcom/tencent/mm/storage/az;IJ)J
+        //   1219: invokevirtual 257	com/tencent/mm/storage/az:EC	(J)V
         //   1222: aload 15
         //   1224: astore 14
         //   1226: iload 11
         //   1228: istore 10
         //   1230: aload 14
         //   1232: aload 14
-        //   1234: getfield 261	com/tencent/mm/g/c/bb:field_username	Ljava/lang/String;
-        //   1237: invokestatic 267	com/tencent/mm/model/bp:Ku	(Ljava/lang/String;)I
-        //   1240: invokevirtual 270	com/tencent/mm/storage/az:ns	(I)V
+        //   1234: getfield 260	com/tencent/mm/f/c/bb:field_username	Ljava/lang/String;
+        //   1237: invokestatic 266	com/tencent/mm/model/bq:RN	(Ljava/lang/String;)I
+        //   1240: invokevirtual 269	com/tencent/mm/storage/az:pG	(I)V
         //   1243: iload 10
         //   1245: ifeq +190 -> 1435
         //   1248: ldc 135
-        //   1250: invokestatic 139	com/tencent/mm/kernel/g:af	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
-        //   1253: checkcast 135	com/tencent/mm/plugin/messenger/foundation/a/l
+        //   1250: invokestatic 139	com/tencent/mm/kernel/h:ae	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+        //   1253: checkcast 135	com/tencent/mm/plugin/messenger/foundation/a/n
         //   1256: invokeinterface 143 1 0
         //   1261: aload 14
-        //   1263: invokeinterface 273 2 0
+        //   1263: invokeinterface 272 2 0
         //   1268: lstore 6
         //   1270: ldc 97
-        //   1272: ldc_w 275
+        //   1272: ldc_w 274
         //   1275: iconst_4
         //   1276: anewarray 4	java/lang/Object
         //   1279: dup
@@ -685,7 +685,7 @@ public final class b
         //   1284: dup
         //   1285: iconst_1
         //   1286: iload 10
-        //   1288: invokestatic 278	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+        //   1288: invokestatic 277	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
         //   1291: aastore
         //   1292: dup
         //   1293: iconst_2
@@ -695,26 +695,26 @@ public final class b
         //   1300: dup
         //   1301: iconst_3
         //   1302: aload 14
-        //   1304: getfield 282	com/tencent/mm/g/c/bb:field_msgCount	I
+        //   1304: getfield 281	com/tencent/mm/f/c/bb:field_msgCount	I
         //   1307: invokestatic 117	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
         //   1310: aastore
         //   1311: invokestatic 130	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
         //   1314: aload 12
-        //   1316: invokestatic 285	com/tencent/mm/chatroom/c/b:Dx	(Ljava/lang/String;)V
+        //   1316: invokestatic 284	com/tencent/mm/chatroom/c/b:Ko	(Ljava/lang/String;)V
         //   1319: aload 13
-        //   1321: invokestatic 285	com/tencent/mm/chatroom/c/b:Dx	(Ljava/lang/String;)V
+        //   1321: invokestatic 284	com/tencent/mm/chatroom/c/b:Ko	(Ljava/lang/String;)V
         //   1324: aload 12
         //   1326: aload 13
         //   1328: iconst_1
-        //   1329: invokestatic 289	com/tencent/mm/chatroom/c/b:f	(Ljava/lang/String;Ljava/lang/String;I)V
-        //   1332: invokestatic 42	com/tencent/mm/kernel/g:aAh	()Lcom/tencent/mm/kernel/e;
-        //   1335: invokevirtual 48	com/tencent/mm/kernel/e:azQ	()Lcom/tencent/mm/storage/ao;
-        //   1338: getstatic 54	com/tencent/mm/storage/ar$a:OnZ	Lcom/tencent/mm/storage/ar$a;
+        //   1329: invokestatic 288	com/tencent/mm/chatroom/c/b:f	(Ljava/lang/String;Ljava/lang/String;I)V
+        //   1332: invokestatic 42	com/tencent/mm/kernel/h:aHG	()Lcom/tencent/mm/kernel/f;
+        //   1335: invokevirtual 48	com/tencent/mm/kernel/f:aHp	()Lcom/tencent/mm/storage/ao;
+        //   1338: getstatic 54	com/tencent/mm/storage/ar$a:VDs	Lcom/tencent/mm/storage/ar$a;
         //   1341: ldc 36
         //   1343: invokevirtual 92	com/tencent/mm/storage/ao:set	(Lcom/tencent/mm/storage/ar$a;Ljava/lang/Object;)V
-        //   1346: invokestatic 42	com/tencent/mm/kernel/g:aAh	()Lcom/tencent/mm/kernel/e;
-        //   1349: invokevirtual 48	com/tencent/mm/kernel/e:azQ	()Lcom/tencent/mm/storage/ao;
-        //   1352: getstatic 95	com/tencent/mm/storage/ar$a:OnY	Lcom/tencent/mm/storage/ar$a;
+        //   1346: invokestatic 42	com/tencent/mm/kernel/h:aHG	()Lcom/tencent/mm/kernel/f;
+        //   1349: invokevirtual 48	com/tencent/mm/kernel/f:aHp	()Lcom/tencent/mm/storage/ao;
+        //   1352: getstatic 95	com/tencent/mm/storage/ar$a:VDr	Lcom/tencent/mm/storage/ar$a;
         //   1355: ldc 36
         //   1357: invokevirtual 92	com/tencent/mm/storage/ao:set	(Lcom/tencent/mm/storage/ar$a;Ljava/lang/Object;)V
         //   1360: ldc 97
@@ -747,25 +747,25 @@ public final class b
         //   1407: aastore
         //   1408: dup
         //   1409: iconst_4
-        //   1410: getstatic 292	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
+        //   1410: getstatic 291	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
         //   1413: aastore
         //   1414: invokestatic 130	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
         //   1417: aload_0
-        //   1418: getfield 14	com/tencent/mm/chatroom/c/b$2:grU	Lcom/tencent/mm/chatroom/c/b;
-        //   1421: getfield 296	com/tencent/mm/chatroom/c/b:mHandler	Lcom/tencent/mm/sdk/platformtools/MMHandler;
+        //   1418: getfield 14	com/tencent/mm/chatroom/c/b$2:iWg	Lcom/tencent/mm/chatroom/c/b;
+        //   1421: invokestatic 294	com/tencent/mm/chatroom/c/b:d	(Lcom/tencent/mm/chatroom/c/b;)Lcom/tencent/mm/sdk/platformtools/MMHandler;
         //   1424: iconst_0
-        //   1425: invokevirtual 302	com/tencent/mm/sdk/platformtools/MMHandler:sendEmptyMessage	(I)Z
+        //   1425: invokevirtual 300	com/tencent/mm/sdk/platformtools/MMHandler:sendEmptyMessage	(I)Z
         //   1428: pop
         //   1429: ldc 22
         //   1431: invokestatic 133	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   1434: return
         //   1435: ldc 135
-        //   1437: invokestatic 139	com/tencent/mm/kernel/g:af	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
-        //   1440: checkcast 135	com/tencent/mm/plugin/messenger/foundation/a/l
+        //   1437: invokestatic 139	com/tencent/mm/kernel/h:ae	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+        //   1440: checkcast 135	com/tencent/mm/plugin/messenger/foundation/a/n
         //   1443: invokeinterface 143 1 0
         //   1448: aload 14
         //   1450: aload 12
-        //   1452: invokeinterface 305 3 0
+        //   1452: invokeinterface 303 3 0
         //   1457: istore_1
         //   1458: iload_1
         //   1459: i2l
@@ -926,102 +926,102 @@ public final class b
         //   1435	1458	1547	java/lang/Exception
       }
     };
-    AppMethodBeat.o(194014);
+    AppMethodBeat.o(187147);
   }
   
   public static void f(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(194019);
-    gt localgt = new gt();
-    localgt.uw(paramString1);
-    localgt.ux(paramString2);
-    localgt.ejW = paramInt;
-    localgt.bfK();
-    AppMethodBeat.o(194019);
+    AppMethodBeat.i(187157);
+    iy localiy = new iy();
+    localiy.gKy = localiy.z("roomID", paramString1, true);
+    localiy.gKz = localiy.z("oldRoomID", paramString2, true);
+    localiy.geB = paramInt;
+    localiy.bpa();
+    AppMethodBeat.o(187157);
   }
   
   private void run()
   {
-    AppMethodBeat.i(194018);
-    if ((this.grQ == null) || (this.grQ.isDone()))
+    AppMethodBeat.i(187156);
+    if ((this.iWc == null) || (this.iWc.isDone()))
     {
-      this.grQ = h.RTc.b(this.grT, "migrate_tag");
+      this.iWc = h.ZvG.d(this.iWf, "migrate_tag");
       Log.w("MicroMsg.openIm.OpenImMigrateService", "run stack:%s", new Object[] { Util.getStack() });
-      AppMethodBeat.o(194018);
+      AppMethodBeat.o(187156);
       return;
     }
     Log.w("MicroMsg.openIm.OpenImMigrateService", "running stack:%s", new Object[] { Util.getStack() });
-    AppMethodBeat.o(194018);
+    AppMethodBeat.o(187156);
   }
   
-  public final void Dw(String paramString)
+  public final void Kn(String paramString)
   {
-    AppMethodBeat.i(194015);
+    AppMethodBeat.i(187149);
     Log.i("MicroMsg.openIm.OpenImMigrateService", "setCurChatName:%s", new Object[] { Util.nullAs(paramString, "") });
-    this.ehT = paramString;
-    AppMethodBeat.o(194015);
+    this.gck = paramString;
+    AppMethodBeat.o(187149);
   }
   
-  public final void ae(String paramString1, String paramString2)
+  public final void ai(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(194016);
+    AppMethodBeat.i(187152);
     Log.i("MicroMsg.openIm.OpenImMigrateService", "addMigrateTask %s %s", new Object[] { Util.nullAs(paramString1, ""), Util.nullAs(paramString2, "") });
     if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
     {
-      AppMethodBeat.o(194016);
+      AppMethodBeat.o(187152);
       return;
     }
-    if (Util.isEqual(paramString2, this.ehT))
+    if (Util.isEqual(paramString2, this.gck))
     {
       Log.w("MicroMsg.openIm.OpenImMigrateService", "addMigrateTask in curChatName");
-      AppMethodBeat.o(194016);
+      AppMethodBeat.o(187152);
       return;
     }
-    if (this.grR.contains(paramString1))
+    if (this.iWd.contains(paramString1))
     {
       Log.i("MicroMsg.openIm.OpenImMigrateService", "addMigrateTask %s exist", new Object[] { Util.nullAs(paramString1, "") });
-      AppMethodBeat.o(194016);
+      AppMethodBeat.o(187152);
       return;
     }
-    this.grS.put(paramString1, paramString2);
-    this.grR.add(paramString1);
+    this.iWe.put(paramString1, paramString2);
+    this.iWd.add(paramString1);
     run();
-    AppMethodBeat.o(194016);
+    AppMethodBeat.o(187152);
   }
   
-  public final void af(String paramString1, String paramString2)
+  public final void aj(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(194017);
+    AppMethodBeat.i(187154);
     Log.i("MicroMsg.openIm.OpenImMigrateService", "addFirstMigrateTask %s %s", new Object[] { Util.nullAs(paramString1, ""), Util.nullAs(paramString2, "") });
     if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
     {
-      AppMethodBeat.o(194017);
+      AppMethodBeat.o(187154);
       return;
     }
-    if (Util.isEqual(paramString2, this.ehT))
+    if (Util.isEqual(paramString2, this.gck))
     {
       Log.w("MicroMsg.openIm.OpenImMigrateService", "addFirstMigrateTask in curChatName");
-      AppMethodBeat.o(194017);
+      AppMethodBeat.o(187154);
       return;
     }
-    if (this.grR.contains(paramString1))
+    if (this.iWd.contains(paramString1))
     {
       Log.i("MicroMsg.openIm.OpenImMigrateService", "addFirstMigrateTask %s exist", new Object[] { Util.nullAs(paramString1, "") });
-      this.grR.remove(paramString1);
+      this.iWd.remove(paramString1);
     }
     for (;;)
     {
-      this.grR.addFirst(paramString1);
+      this.iWd.addFirst(paramString1);
       run();
-      AppMethodBeat.o(194017);
+      AppMethodBeat.o(187154);
       return;
-      this.grS.put(paramString1, paramString2);
+      this.iWe.put(paramString1, paramString2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.chatroom.c.b
  * JD-Core Version:    0.7.0.1
  */

@@ -10,65 +10,65 @@ import org.a.a;
 public class f
   extends n
 {
-  private o csD;
-  private g cte;
+  private o cqI;
+  private g crk;
   private final Context mContext;
   
   static
   {
-    AppMethodBeat.i(221183);
+    AppMethodBeat.i(207610);
     if (!f.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      AppMethodBeat.o(221183);
+      AppMethodBeat.o(207610);
       return;
     }
   }
   
   public f(Context paramContext, Class<? extends g> paramClass)
   {
-    AppMethodBeat.i(221179);
+    AppMethodBeat.i(207605);
     this.mContext = paramContext;
     if ((!$assertionsDisabled) && (paramClass == null))
     {
       paramContext = new AssertionError();
-      AppMethodBeat.o(221179);
+      AppMethodBeat.o(207605);
       throw paramContext;
     }
-    this.cte = ((g)a.bF(paramClass).ak(new Object[] { paramContext }).object);
+    this.crk = ((g)a.ce(paramClass).ao(new Object[] { paramContext }).object);
     evaluateJavascript("var self = this;", null);
     evaluateJavascript("let require = process.mainModule.require;", null);
-    this.csD = new o(this.cte);
-    evaluateJavascript(d.afA("LuggageBridge.js"), null);
-    this.cte.Le();
-    AppMethodBeat.o(221179);
+    this.cqI = new o(this.crk);
+    evaluateJavascript(d.anc("LuggageBridge.js"), null);
+    this.crk.NV();
+    AppMethodBeat.o(207605);
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(221182);
-    this.cte.destroy();
-    AppMethodBeat.o(221182);
+    AppMethodBeat.i(207609);
+    this.crk.destroy();
+    AppMethodBeat.o(207609);
   }
   
   public final void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback)
   {
-    AppMethodBeat.i(221180);
-    this.cte.evaluateJavascript(paramString, paramValueCallback);
-    AppMethodBeat.o(221180);
+    AppMethodBeat.i(207606);
+    this.crk.evaluateJavascript(paramString, paramValueCallback);
+    AppMethodBeat.o(207606);
   }
   
-  final o getBridge()
+  public final o getBridge()
   {
-    return this.csD;
+    return this.cqI;
   }
   
   public final String getUserAgent()
   {
-    AppMethodBeat.i(221181);
-    String str = this.cte.getUserAgent();
-    AppMethodBeat.o(221181);
+    AppMethodBeat.i(207608);
+    String str = this.crk.getUserAgent();
+    AppMethodBeat.o(207608);
     return str;
   }
 }

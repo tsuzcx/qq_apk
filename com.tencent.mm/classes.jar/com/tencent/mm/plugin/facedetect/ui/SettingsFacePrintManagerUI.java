@@ -6,19 +6,23 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bf;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.facedetect.a.b;
+import com.tencent.mm.plugin.facedetect.a.e;
+import com.tencent.mm.plugin.facedetect.a.i;
+import com.tencent.mm.plugin.facedetect.a.k;
+import com.tencent.mm.plugin.facedetect.b.r;
 import com.tencent.mm.plugin.facedetect.model.p;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -26,45 +30,44 @@ import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.base.preference.f;
 
 public class SettingsFacePrintManagerUI
   extends MMPreference
   implements i
 {
-  private ProgressDialog gtM = null;
-  private View lJI;
-  private FaceHeaderPreference sUm;
-  private boolean sUn = false;
-  private f screen;
+  private ProgressDialog iXX = null;
+  private View oFW;
+  private com.tencent.mm.ui.base.preference.f screen;
+  private FaceHeaderPreference wAj;
+  private boolean wAk = false;
   
   public int getResourceId()
   {
-    return 2132017264;
+    return a.k.settings_face_print;
   }
   
   public void initView()
   {
     AppMethodBeat.i(104053);
-    int i = Util.nullAsInt(g.aAh().azQ().get(40, Integer.valueOf(0)), 0);
+    int i = Util.nullAsInt(com.tencent.mm.kernel.h.aHG().aHp().b(40, Integer.valueOf(0)), 0);
     Log.i("MicroMsg.FaceSettingsManagerUI", "plugSwitch " + i + " " + (i & 0x400000));
     this.screen = getPreferenceScreen();
-    this.sUm = ((FaceHeaderPreference)this.screen.bmg("settings_faceprint_header"));
-    ((CheckBoxPreference)this.screen.bmg("settings_faceprint_title")).xZ(true);
+    this.wAj = ((FaceHeaderPreference)this.screen.byG("settings_faceprint_header"));
+    ((CheckBoxPreference)this.screen.byG("settings_faceprint_title")).BT(true);
     this.screen.notifyDataSetChanged();
-    if ((this.gtM != null) && (this.gtM.isShowing())) {
-      this.gtM.dismiss();
+    if ((this.iXX != null) && (this.iXX.isShowing())) {
+      this.iXX.dismiss();
     }
     AppCompatActivity localAppCompatActivity = getContext();
-    getString(2131755998);
-    this.gtM = com.tencent.mm.ui.base.h.a(localAppCompatActivity, getString(2131756029), true, new DialogInterface.OnCancelListener()
+    getString(a.i.app_tip);
+    this.iXX = com.tencent.mm.ui.base.h.a(localAppCompatActivity, getString(a.i.app_waiting), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
     });
-    g.azz().a(new com.tencent.mm.plugin.facedetect.b.q(3), 0);
-    this.screen.jdMethod_do("settings_faceprint_create", true);
-    this.screen.jdMethod_do("settings_faceeprint_reset", true);
-    this.screen.jdMethod_do("settings_faceprint_unlock", true);
+    com.tencent.mm.kernel.h.aGY().a(new r(3), 0);
+    this.screen.dz("settings_faceprint_create", true);
+    this.screen.dz("settings_faceeprint_reset", true);
+    this.screen.dz("settings_faceprint_unlock", true);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -85,9 +88,9 @@ public class SettingsFacePrintManagerUI
     if (paramInt1 == 1)
     {
       if ((paramIntent != null) && (paramIntent.getIntExtra("err_code", 10) == 0)) {
-        this.sUn = true;
+        this.wAk = true;
       }
-      Log.i("MicroMsg.FaceSettingsManagerUI", "hy: is reg ok: %b", new Object[] { Boolean.valueOf(this.sUn) });
+      Log.i("MicroMsg.FaceSettingsManagerUI", "hy: is reg ok: %b", new Object[] { Boolean.valueOf(this.wAk) });
     }
     AppMethodBeat.o(104056);
   }
@@ -96,12 +99,12 @@ public class SettingsFacePrintManagerUI
   {
     AppMethodBeat.i(104050);
     super.onCreate(paramBundle);
-    setMMTitle(2131759058);
-    g.azz().a(938, this);
-    this.lJI = findViewById(2131304719);
+    setMMTitle(a.i.face_lock_title);
+    com.tencent.mm.kernel.h.aGY().a(938, this);
+    this.oFW = findViewById(a.e.mm_preference_list_content);
     initView();
-    this.lJI.setBackgroundResource(2131101424);
-    p.aj(this);
+    this.oFW.setBackgroundResource(a.b.white);
+    p.ak(this);
     AppMethodBeat.o(104050);
   }
   
@@ -109,51 +112,51 @@ public class SettingsFacePrintManagerUI
   {
     AppMethodBeat.i(104052);
     super.onDestroy();
-    g.azz().b(938, this);
-    if (this.gtM != null) {
-      this.gtM.dismiss();
+    com.tencent.mm.kernel.h.aGY().b(938, this);
+    if (this.iXX != null) {
+      this.iXX.dismiss();
     }
     AppMethodBeat.o(104052);
   }
   
-  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
     AppMethodBeat.i(104054);
     paramPreference = paramPreference.mKey;
     Intent localIntent = new Intent();
     if (paramPreference.equals("settings_faceprint_title"))
     {
-      paramf = (CheckBoxPreference)paramf.bmg("settings_faceprint_title");
+      paramf = (CheckBoxPreference)paramf.byG("settings_faceprint_title");
       Log.d("MicroMsg.FaceSettingsManagerUI", "hy: checkPref.isChecked() " + paramf.isChecked());
-      if ((this.gtM != null) && (this.gtM.isShowing())) {
-        this.gtM.dismiss();
+      if ((this.iXX != null) && (this.iXX.isShowing())) {
+        this.iXX.dismiss();
       }
       paramPreference = getContext();
-      getString(2131755998);
-      this.gtM = com.tencent.mm.ui.base.h.a(paramPreference, getString(2131756029), true, new DialogInterface.OnCancelListener()
+      getString(a.i.app_tip);
+      this.iXX = com.tencent.mm.ui.base.h.a(paramPreference, getString(a.i.app_waiting), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
       });
       if (paramf.isChecked()) {
-        g.azz().a(new com.tencent.mm.plugin.facedetect.b.q(1), 0);
+        com.tencent.mm.kernel.h.aGY().a(new r(1), 0);
       }
       for (;;)
       {
         AppMethodBeat.o(104054);
         return true;
-        g.azz().a(new com.tencent.mm.plugin.facedetect.b.q(2), 0);
+        com.tencent.mm.kernel.h.aGY().a(new r(2), 0);
       }
     }
     if (paramPreference.equals("settings_faceprint_unlock"))
     {
       localIntent.setClass(this, FaceDetectUI.class);
       localIntent.putExtra("k_need_signature", true);
-      localIntent.putExtra("k_user_name", z.aUb());
+      localIntent.putExtra("k_user_name", z.bdc());
       localIntent.putExtra("k_purpose", 2);
-      paramf = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/plugin/facedetect/ui/SettingsFacePrintManagerUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramf.pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetect/ui/SettingsFacePrintManagerUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramf = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(this, paramf.aFh(), "com/tencent/mm/plugin/facedetect/ui/SettingsFacePrintManagerUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/facedetect/ui/SettingsFacePrintManagerUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(104054);
       return true;
     }
@@ -161,7 +164,7 @@ public class SettingsFacePrintManagerUI
     {
       localIntent.setClass(this, FaceDetectUI.class);
       localIntent.putExtra("k_need_signature", true);
-      localIntent.putExtra("k_user_name", z.aUb());
+      localIntent.putExtra("k_user_name", z.bdc());
       localIntent.putExtra("k_purpose", 1);
       startActivityForResult(localIntent, 1);
       AppMethodBeat.o(104054);
@@ -200,102 +203,102 @@ public class SettingsFacePrintManagerUI
   {
     AppMethodBeat.i(104051);
     super.onResume();
-    if (this.sUn)
+    if (this.wAk)
     {
-      this.sUn = false;
-      if ((this.gtM != null) && (this.gtM.isShowing())) {
-        this.gtM.dismiss();
+      this.wAk = false;
+      if ((this.iXX != null) && (this.iXX.isShowing())) {
+        this.iXX.dismiss();
       }
       AppCompatActivity localAppCompatActivity = getContext();
-      getString(2131755998);
-      this.gtM = com.tencent.mm.ui.base.h.a(localAppCompatActivity, getString(2131756029), true, new DialogInterface.OnCancelListener()
+      getString(a.i.app_tip);
+      this.iXX = com.tencent.mm.ui.base.h.a(localAppCompatActivity, getString(a.i.app_waiting), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
       });
       Log.d("MicroMsg.FaceSettingsManagerUI", "hy: resume after create face, get switch status");
-      g.azz().a(new com.tencent.mm.plugin.facedetect.b.q(1), 0);
+      com.tencent.mm.kernel.h.aGY().a(new r(1), 0);
     }
     AppMethodBeat.o(104051);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(104055);
     Log.d("MicroMsg.FaceSettingsManagerUI", "hy: onSceneEnd, errType:%d, errCode:%d, sceneType:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramq.getType()) });
     if ((paramInt1 != 0) && (paramInt2 != 0))
     {
-      this.screen.jdMethod_do("settings_faceprint_create", true);
-      this.screen.jdMethod_do("settings_faceprint_unlock", true);
-      this.screen.jdMethod_do("settings_faceeprint_reset", true);
-      ((CheckBoxPreference)this.screen.bmg("settings_faceprint_title")).xZ(false);
-      this.sUm.setTitle(getString(2131765391));
+      this.screen.dz("settings_faceprint_create", true);
+      this.screen.dz("settings_faceprint_unlock", true);
+      this.screen.dz("settings_faceeprint_reset", true);
+      ((CheckBoxPreference)this.screen.byG("settings_faceprint_title")).BT(false);
+      this.wAj.setTitle(getString(a.i.settings_faceprint_off));
       this.screen.notifyDataSetChanged();
-      if (this.gtM != null) {
-        this.gtM.dismiss();
+      if (this.iXX != null) {
+        this.iXX.dismiss();
       }
       AppMethodBeat.o(104055);
       return;
     }
     if (paramq.getType() == 938)
     {
-      paramString = (com.tencent.mm.plugin.facedetect.b.q)paramq;
-      if (!paramString.sQf) {
+      paramString = (r)paramq;
+      if (!paramString.wwd) {
         break label494;
       }
       Log.d("MicroMsg.FaceSettingsManagerUI", "faceprint exist");
-      this.screen.jdMethod_do("settings_faceprint_unlock", false);
+      this.screen.dz("settings_faceprint_unlock", false);
       this.screen.notifyDataSetChanged();
-      paramInt1 = z.aUe();
-      paramq = (CheckBoxPreference)this.screen.bmg("settings_faceprint_title");
-      Log.d("MicroMsg.FaceSettingsManagerUI", "opScene.isOpenSwitch:%b", new Object[] { Boolean.valueOf(paramString.sQg) });
-      if (!paramString.sQg) {
+      paramInt1 = z.bdf();
+      paramq = (CheckBoxPreference)this.screen.byG("settings_faceprint_title");
+      Log.d("MicroMsg.FaceSettingsManagerUI", "opScene.isOpenSwitch:%b", new Object[] { Boolean.valueOf(paramString.wwe) });
+      if (!paramString.wwe) {
         break label428;
       }
       Log.d("MicroMsg.FaceSettingsManagerUI", "hy: faceprint open");
-      paramq.xZ(true);
-      this.screen.jdMethod_do("settings_faceeprint_reset", false);
-      this.screen.jdMethod_do("settings_faceprint_unlock", false);
+      paramq.BT(true);
+      this.screen.dz("settings_faceeprint_reset", false);
+      this.screen.dz("settings_faceprint_unlock", false);
       paramInt1 = 0x400000 | paramInt1;
-      this.sUm.gD(getString(2131765392), "");
+      this.wAj.gR(getString(a.i.settings_faceprint_on), "");
       Log.i("MicroMsg.FaceSettingsManagerUI", "scene end plugSwitch %d", new Object[] { Integer.valueOf(paramInt1) });
-      bf.iDu.aO("last_login_use_voice", String.valueOf(paramInt1));
-      g.aAh().azQ().set(40, Integer.valueOf(paramInt1));
-      this.screen.jdMethod_do("settings_faceprint_create", true);
-      this.screen.jdMethod_do("settings_faceprint_title", false);
-      this.sUm.b(null);
+      bg.ltv.aS("last_login_use_voice", String.valueOf(paramInt1));
+      com.tencent.mm.kernel.h.aHG().aHp().i(40, Integer.valueOf(paramInt1));
+      this.screen.dz("settings_faceprint_create", true);
+      this.screen.dz("settings_faceprint_title", false);
+      this.wAj.c(null);
       this.screen.notifyDataSetChanged();
     }
     for (;;)
     {
-      if (this.gtM != null) {
-        this.gtM.dismiss();
+      if (this.iXX != null) {
+        this.iXX.dismiss();
       }
       AppMethodBeat.o(104055);
       return;
       label428:
       Log.d("MicroMsg.FaceSettingsManagerUI", "hy: faceprint close");
-      paramq.xZ(false);
-      this.screen.jdMethod_do("settings_faceeprint_reset", true);
-      this.screen.jdMethod_do("settings_faceprint_unlock", true);
+      paramq.BT(false);
+      this.screen.dz("settings_faceeprint_reset", true);
+      this.screen.dz("settings_faceprint_unlock", true);
       paramInt1 = 0xFFBFFFFF & paramInt1;
-      this.sUm.gD(getString(2131765391), "");
+      this.wAj.gR(getString(a.i.settings_faceprint_off), "");
       break;
       label494:
       Log.d("MicroMsg.FaceSettingsManagerUI", "faceprint not exist");
-      com.tencent.mm.plugin.report.service.h.CyF.a(11390, new Object[] { Integer.valueOf(2) });
-      this.screen.jdMethod_do("settings_faceprint_create", true);
-      this.screen.jdMethod_do("settings_faceprint_title", true);
-      this.screen.jdMethod_do("settings_faceprint_unlock", true);
-      this.screen.jdMethod_do("settings_faceeprint_reset", true);
-      this.sUm.setTitle(getString(2131765387));
-      this.sUm.b(new View.OnClickListener()
+      com.tencent.mm.plugin.report.service.h.IzE.a(11390, new Object[] { Integer.valueOf(2) });
+      this.screen.dz("settings_faceprint_create", true);
+      this.screen.dz("settings_faceprint_title", true);
+      this.screen.dz("settings_faceprint_unlock", true);
+      this.screen.dz("settings_faceeprint_reset", true);
+      this.wAj.setTitle(getString(a.i.settings_face_title));
+      this.wAj.c(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(104049);
           b localb = new b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetect/ui/SettingsFacePrintManagerUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/facedetect/ui/SettingsFacePrintManagerUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           SettingsFacePrintManagerUI.a(SettingsFacePrintManagerUI.this);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetect/ui/SettingsFacePrintManagerUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(104049);

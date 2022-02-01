@@ -6,52 +6,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
-  public static String K(MotionEvent paramMotionEvent)
-  {
-    AppMethodBeat.i(131468);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("MotionEvent { action=").append(actionToString(paramMotionEvent.getAction()));
-    int j = paramMotionEvent.getPointerCount();
-    int i = 0;
-    while (i < j)
-    {
-      localStringBuilder.append(", x[").append(i).append("]=").append(paramMotionEvent.getX(i));
-      localStringBuilder.append(", y[").append(i).append("]=").append(paramMotionEvent.getY(i));
-      i += 1;
-    }
-    localStringBuilder.append(", downTime=").append(paramMotionEvent.getDownTime());
-    localStringBuilder.append(" }");
-    paramMotionEvent = localStringBuilder.toString();
-    AppMethodBeat.o(131468);
-    return paramMotionEvent;
-  }
-  
-  public static void a(String paramString1, String paramString2, MotionEvent paramMotionEvent)
-  {
-    AppMethodBeat.i(131467);
-    if (Log.getLogLevel() > 0)
-    {
-      AppMethodBeat.o(131467);
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString2).append(' ');
-    localStringBuilder.append("[apptouch] MotionEvent { action=").append(actionToString(paramMotionEvent.getAction()));
-    int j = paramMotionEvent.getPointerCount();
-    int i = 0;
-    while (i < j)
-    {
-      localStringBuilder.append(", x[").append(i).append("]=").append(paramMotionEvent.getX(i));
-      localStringBuilder.append(", y[").append(i).append("]=").append(paramMotionEvent.getY(i));
-      i += 1;
-    }
-    localStringBuilder.append(", downTime=").append(paramMotionEvent.getDownTime());
-    localStringBuilder.append(" }");
-    Log.v(paramString1, localStringBuilder.toString());
-    AppMethodBeat.o(131467);
-  }
-  
-  private static String actionToString(int paramInt)
+  private static String DB(int paramInt)
   {
     AppMethodBeat.i(131469);
     int i;
@@ -108,10 +63,55 @@ public final class a
     AppMethodBeat.o(131469);
     return str;
   }
+  
+  public static String L(MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(131468);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MotionEvent { action=").append(DB(paramMotionEvent.getAction()));
+    int j = paramMotionEvent.getPointerCount();
+    int i = 0;
+    while (i < j)
+    {
+      localStringBuilder.append(", x[").append(i).append("]=").append(paramMotionEvent.getX(i));
+      localStringBuilder.append(", y[").append(i).append("]=").append(paramMotionEvent.getY(i));
+      i += 1;
+    }
+    localStringBuilder.append(", downTime=").append(paramMotionEvent.getDownTime());
+    localStringBuilder.append(" }");
+    paramMotionEvent = localStringBuilder.toString();
+    AppMethodBeat.o(131468);
+    return paramMotionEvent;
+  }
+  
+  public static void a(String paramString1, String paramString2, MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(131467);
+    if (Log.getLogLevel() > 0)
+    {
+      AppMethodBeat.o(131467);
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString2).append(' ');
+    localStringBuilder.append("[apptouch] MotionEvent { action=").append(DB(paramMotionEvent.getAction()));
+    int j = paramMotionEvent.getPointerCount();
+    int i = 0;
+    while (i < j)
+    {
+      localStringBuilder.append(", x[").append(i).append("]=").append(paramMotionEvent.getX(i));
+      localStringBuilder.append(", y[").append(i).append("]=").append(paramMotionEvent.getY(i));
+      i += 1;
+    }
+    localStringBuilder.append(", downTime=").append(paramMotionEvent.getDownTime());
+    localStringBuilder.append(" }");
+    Log.v(paramString1, localStringBuilder.toString());
+    AppMethodBeat.o(131467);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.base.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,114 +1,98 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.model.cl;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.q;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.cd.b;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.report.k;
-import com.tencent.mm.plugin.finder.storage.c;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
-import com.tencent.mm.protocal.protobuf.aov;
-import com.tencent.mm.protocal.protobuf.auo;
-import com.tencent.mm.protocal.protobuf.aup;
-import com.tencent.mm.protocal.protobuf.bbn;
-import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.plugin.finder.utils.aj;
+import com.tencent.mm.plugin.findersdk.b.c;
+import com.tencent.mm.protocal.protobuf.auk;
+import com.tencent.mm.protocal.protobuf.aul;
+import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.jh;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.g.a.s;
+import kotlin.l;
+import kotlin.t;
+import kotlin.x;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderLikeComment;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderLikeResponse;", "action", "Lcom/tencent/mm/plugin/finder/upload/action/LikeCommentAction;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/plugin/finder/upload/action/LikeCommentAction;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "TAG", "", "getAction", "()Lcom/tencent/mm/plugin/finder/upload/action/LikeCommentAction;", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLikeRequest;", "initCommReqResp", "", "onCgiEnd", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetHistory;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetHistoryResponse;", "pullType", "", "tabType", "callback", "Lkotlin/Function5;", "Lkotlin/ParameterName;", "name", "errType", "errCode", "", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "scene", "", "consume", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderTimelineStream$ConsumeCallback;", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "useGlobalLastBuffer", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(IILkotlin/jvm/functions/Function5;Lcom/tencent/mm/plugin/finder/cgi/CgiFinderTimelineStream$ConsumeCallback;Lcom/tencent/mm/protobuf/ByteString;ZLcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "onCgiEnd", "Companion", "plugin-finder_release"})
 public final class p
-  extends an<aup>
+  extends c<aul>
 {
-  private static long ttl;
-  public static final a ttm;
-  private final String TAG;
-  private auo ttj;
-  private final com.tencent.mm.plugin.finder.upload.action.l ttk;
+  public static final a xaW;
+  private final int fEH;
+  private final b lastBuffer;
+  private final int pullType;
+  private final s<Integer, Integer, String, aul, q, x> xaT;
+  private final ab.c xaU;
+  private final boolean xaV;
   
   static
   {
-    AppMethodBeat.i(165168);
-    ttm = new a((byte)0);
-    AppMethodBeat.o(165168);
+    AppMethodBeat.i(165165);
+    xaW = new a((byte)0);
+    AppMethodBeat.o(165165);
   }
   
-  public p(com.tencent.mm.plugin.finder.upload.action.l paraml, bbn parambbn)
+  public p(int paramInt1, int paramInt2, s<? super Integer, ? super Integer, ? super String, ? super aul, ? super q, x> params, ab.c paramc, b paramb, bid parambid)
   {
-    super(parambbn);
-    AppMethodBeat.i(242234);
-    this.ttk = paraml;
-    this.TAG = "Finder.CgiFinderLikeComment";
-    long l2 = cl.aWz();
-    long l1 = l2;
-    if (l2 < ttl)
+    super(parambid);
+    AppMethodBeat.i(282376);
+    this.pullType = paramInt1;
+    this.fEH = paramInt2;
+    this.xaT = params;
+    this.xaU = null;
+    this.lastBuffer = paramb;
+    this.xaV = false;
+    params = new d.a();
+    paramc = new auk();
+    paramc.RLN = z.bdh();
+    paramc.fEH = this.fEH;
+    if (this.xaV)
     {
-      l1 = ttl;
-      ttl = 1L + l1;
-    }
-    ttl = l1;
-    this.ttj = new auo();
-    paraml = this.ttj;
-    Object localObject = c.vCb;
-    if (c.drg())
-    {
-      l2 = 0L;
-      paraml.hFK = l2;
-      this.ttj.objectNonceId = this.ttk.objectNonceId;
-      this.ttj.commentId = this.ttk.vUB.dyb().commentId;
-      this.ttj.tsR = l1;
-      if (this.ttk.scene == 1) {
-        this.ttj.username = z.aUg();
-      }
-      paraml = this.ttj;
-      localObject = am.tuw;
-      paraml.uli = am.a(parambbn);
-      this.ttj.scene = this.ttk.scene;
-      paraml = this.ttj;
-      if (!this.ttk.vUr) {
-        break label420;
-      }
-      i = 1;
-      label211:
-      paraml.opType = i;
-      paraml = this.ttj;
-      parambbn = k.vfA;
-      l1 = this.ttk.feedId;
-      parambbn = this.ttj.uli;
-      if (parambbn == null) {
-        break label425;
+      paramb = h.aHG();
+      kotlin.g.b.p.j(paramb, "MMKernel.storage()");
+      paramb = paramb.aHp();
+      aj localaj = aj.AGc;
+      paramb = paramb.get(aj.QX(this.fEH), "");
+      if (paramb == null)
+      {
+        params = new t("null cannot be cast to non-null type kotlin.String");
+        AppMethodBeat.o(282376);
+        throw params;
       }
     }
-    label420:
-    label425:
-    for (int i = parambbn.scene;; i = 0)
+    for (paramc.SDI = b.cU(Util.decodeHexString((String)paramb));; paramc.SDI = this.lastBuffer)
     {
-      paraml.sessionBuffer = k.G(l1, i);
-      paraml = new d.a();
-      paraml.c((a)this.ttj);
-      parambbn = new aup();
-      parambbn.setBaseResponse(new BaseResponse());
-      parambbn.getBaseResponse().ErrMsg = new dqi();
-      paraml.d((a)parambbn);
-      paraml.MB("/cgi-bin/micromsg-bin/finderlike");
-      paraml.sG(3710);
-      c(paraml.aXF());
-      Log.i(this.TAG, "CgiFinderLikeComment init " + this.ttj.hFK + " and userName " + this.ttj.username + " comment:" + this.ttk.vUB);
-      AppMethodBeat.o(242234);
+      Log.i("Finder.CgiFinderGetHistory", "[request] tabType=" + this.fEH + " pullType=" + this.pullType + " useGlobalLastBuffer=" + this.xaV);
+      paramb = ao.xcj;
+      paramc.yjp = ao.a(parambid);
+      params.c((a)paramc);
+      paramc = new aul();
+      paramc.setBaseResponse(new jh());
+      paramc.getBaseResponse().Tef = new eaf();
+      params.d((a)paramc);
+      params.TW("/cgi-bin/micromsg-bin/findergethistory");
+      params.vD(3814);
+      c(params.bgN());
+      AppMethodBeat.o(282376);
       return;
-      l2 = this.ttk.feedId;
-      break;
-      i = 2;
-      break label211;
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderLikeComment$Companion;", "", "()V", "GlobalLikeCommentId", "", "getGlobalLikeCommentId", "()J", "setGlobalLikeCommentId", "(J)V", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetHistory$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.p
  * JD-Core Version:    0.7.0.1
  */

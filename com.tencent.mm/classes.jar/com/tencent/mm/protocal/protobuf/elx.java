@@ -1,98 +1,79 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class elx
-  extends dop
+  extends com.tencent.mm.cd.a
 {
-  public String McL;
-  public String rCp;
+  public String UnQ;
+  public String UnR;
+  public int UnS;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32479);
+    AppMethodBeat.i(200393);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      if (this.UnQ != null) {
+        paramVarArgs.f(1, this.UnQ);
       }
-      if (this.McL != null) {
-        paramVarArgs.e(2, this.McL);
+      if (this.UnR != null) {
+        paramVarArgs.f(2, this.UnR);
       }
-      if (this.rCp != null) {
-        paramVarArgs.e(3, this.rCp);
-      }
-      AppMethodBeat.o(32479);
+      paramVarArgs.aY(3, this.UnS);
+      AppMethodBeat.o(200393);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label439;
+      if (this.UnQ == null) {
+        break label318;
       }
     }
-    label439:
-    for (int i = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label318:
+    for (paramInt = g.a.a.b.b.a.g(1, this.UnQ) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.McL != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.McL);
+      int i = paramInt;
+      if (this.UnR != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.UnR);
       }
-      i = paramInt;
-      if (this.rCp != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.rCp);
-      }
-      AppMethodBeat.o(32479);
-      return i;
+      paramInt = g.a.a.b.b.a.bM(3, this.UnS);
+      AppMethodBeat.o(200393);
+      return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(32479);
+        AppMethodBeat.o(200393);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         elx localelx = (elx)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(32479);
+          AppMethodBeat.o(200393);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localelx.BaseRequest = ((jr)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(32479);
+          localelx.UnQ = locala.abFh.readString();
+          AppMethodBeat.o(200393);
           return 0;
         case 2: 
-          localelx.McL = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(32479);
+          localelx.UnR = locala.abFh.readString();
+          AppMethodBeat.o(200393);
           return 0;
         }
-        localelx.rCp = ((g.a.a.a.a)localObject1).UbS.readString();
-        AppMethodBeat.o(32479);
+        localelx.UnS = locala.abFh.AK();
+        AppMethodBeat.o(200393);
         return 0;
       }
-      AppMethodBeat.o(32479);
+      AppMethodBeat.o(200393);
       return -1;
     }
   }

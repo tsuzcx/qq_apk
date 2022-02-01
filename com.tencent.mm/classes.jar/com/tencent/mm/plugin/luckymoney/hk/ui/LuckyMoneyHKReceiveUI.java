@@ -20,187 +20,197 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import androidx.core.widget.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c.a;
-import com.tencent.mm.co.f;
+import com.tencent.mm.an.c.a;
+import com.tencent.mm.an.q;
+import com.tencent.mm.cw.f;
 import com.tencent.mm.emoji.view.BaseEmojiView;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.luckymoney.hk.a.c;
 import com.tencent.mm.plugin.luckymoney.model.LuckyMoneyEmojiSwitch;
 import com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyBaseUI;
 import com.tencent.mm.plugin.normsg.a.d;
-import com.tencent.mm.plugin.wallet_core.model.ae;
-import com.tencent.mm.protocal.protobuf.bfb;
-import com.tencent.mm.protocal.protobuf.bfd;
-import com.tencent.mm.protocal.protobuf.bfg;
+import com.tencent.mm.plugin.wallet_core.model.af;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.d;
+import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.plugin.wxpay.a.j;
+import com.tencent.mm.protocal.protobuf.bmf;
+import com.tencent.mm.protocal.protobuf.bmh;
+import com.tencent.mm.protocal.protobuf.bmk;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.s;
 import com.tencent.mm.wallet_core.c.g;
 
 @com.tencent.mm.ui.base.a(7)
 public class LuckyMoneyHKReceiveUI
   extends LuckyMoneyBaseUI
 {
-  private static final String yUb;
-  private long gof;
+  private static final String ExY;
+  private String CKp;
+  private TextView DLp;
+  private ImageView Eus;
+  private TextView Evi;
+  private Button Evj;
+  private View Evk;
+  private ImageView Evl;
+  private TextView Evm;
+  private String ExZ;
+  private ImageView Exp;
+  private LinearLayout Eye;
+  private TextView Eyf;
+  private View Eyg;
+  private ImageView Eyh;
+  private RelativeLayout Eyi;
+  private BaseEmojiView Eyj;
+  private TextView Eyk;
+  private LinearLayout Eyl;
+  private ProgressBar Eym;
+  private String Eyn;
+  private int Eyo;
+  private af Eyp = null;
+  public int Eyq = 0;
+  private c Eyr;
+  private long iSo;
   private int maxSize = 0;
-  private TextView nAB;
-  private ViewGroup nmW;
+  private TextView qCM;
+  private ViewGroup qoE;
   private int textSize = 0;
-  private com.tencent.mm.ui.base.q tipDialog = null;
-  private String xGm;
-  private ImageView yQt;
-  private TextView yRk;
-  private Button yRl;
-  private View yRm;
-  private ImageView yRn;
-  private TextView yRo;
-  private ImageView yTs;
-  private String yUc;
-  private LinearLayout yUh;
-  private TextView yUi;
-  private View yUj;
-  private ImageView yUk;
-  private RelativeLayout yUl;
-  private BaseEmojiView yUm;
-  private TextView yUn;
-  private LinearLayout yUo;
-  private ProgressBar yUp;
-  private String yUq;
-  private int yUr;
-  private ae yUs = null;
-  public int yUt = 0;
-  private c yUu;
-  private TextView yln;
+  private s tipDialog = null;
   
   static
   {
-    AppMethodBeat.i(213300);
-    yUb = MMApplicationContext.getContext().getResources().getString(2131768354);
-    AppMethodBeat.o(213300);
+    AppMethodBeat.i(247123);
+    ExY = MMApplicationContext.getContext().getResources().getString(a.i.wallet_unknown_err);
+    AppMethodBeat.o(247123);
   }
   
-  private void eeN()
+  private void eOi()
   {
-    AppMethodBeat.i(213293);
-    if (this.yRl == null)
+    AppMethodBeat.i(247086);
+    if (this.Evj == null)
     {
-      AppMethodBeat.o(213293);
+      AppMethodBeat.o(247086);
       return;
     }
-    d.AEF.TL(this.yRl.getId());
+    d.GxJ.aay(this.Evj.getId());
     String str = LocaleUtil.loadApplicationLanguage(MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0), MMApplicationContext.getContext());
     if ((str != null) && (str.length() > 0) && ((str.equals("zh_CN")) || (str.equals("zh_TW")) || (str.equals("zh_HK"))))
     {
-      AppMethodBeat.o(213293);
+      AppMethodBeat.o(247086);
       return;
     }
-    this.yRl.setBackgroundResource(2131233788);
-    this.yRl.setText(2131762695);
-    AppMethodBeat.o(213293);
+    this.Evj.setBackgroundResource(a.e.lucky_money_send_btn);
+    this.Evj.setText(a.i.lucky_money_open_title);
+    AppMethodBeat.o(247086);
   }
   
   public int getLayoutId()
   {
-    return 2131495382;
+    return a.g.lucky_money_receive_ui;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(213291);
-    this.yUj = findViewById(2131304246);
-    this.nmW = ((ViewGroup)findViewById(2131304243));
-    this.yUh = ((LinearLayout)findViewById(2131304267));
-    this.yQt = ((ImageView)findViewById(2131304244));
-    this.yRk = ((TextView)findViewById(2131304245));
-    this.nAB = ((TextView)findViewById(2131304247));
-    this.yln = ((TextView)findViewById(2131304251));
-    this.yUl = ((RelativeLayout)findViewById(2131304102));
-    this.yUm = ((BaseEmojiView)findViewById(2131304098));
-    this.yUn = ((TextView)findViewById(2131304266));
-    this.yUo = ((LinearLayout)findViewById(2131304151));
-    this.yUp = ((ProgressBar)findViewById(2131299998));
-    this.yRl = ((Button)findViewById(2131304255));
-    this.yRo = ((TextView)findViewById(2131304252));
-    this.yRm = findViewById(2131304253);
-    this.yRn = ((ImageView)findViewById(2131304018));
-    this.yUk = ((ImageView)findViewById(2131304238));
-    this.yUi = ((TextView)findViewById(2131304256));
-    this.yTs = ((ImageView)findViewById(2131304254));
-    this.yTs.setOnClickListener(new View.OnClickListener()
+    AppMethodBeat.i(247081);
+    this.Eyg = findViewById(a.f.lucky_money_receive_test_ll);
+    this.qoE = ((ViewGroup)findViewById(a.f.lucky_money_receive_root_view));
+    this.Eye = ((LinearLayout)findViewById(a.f.lucky_money_sender_detail_ll));
+    this.Eus = ((ImageView)findViewById(a.f.lucky_money_receive_sender_avatar));
+    this.Evi = ((TextView)findViewById(a.f.lucky_money_receive_sender_nickname));
+    this.qCM = ((TextView)findViewById(a.f.lucky_money_receive_tips));
+    this.DLp = ((TextView)findViewById(a.f.lucky_money_receive_wishing));
+    this.Eyi = ((RelativeLayout)findViewById(a.f.lucky_money_emoji_layout));
+    this.Eyj = ((BaseEmojiView)findViewById(a.f.lucky_money_emoji));
+    this.Eyk = ((TextView)findViewById(a.f.lucky_money_reload_emoji));
+    this.Eyl = ((LinearLayout)findViewById(a.f.lucky_money_loading_emoji_area));
+    this.Eym = ((ProgressBar)findViewById(a.f.emoji_loading_image));
+    this.Evj = ((Button)findViewById(a.f.lucky_money_recieve_open));
+    this.Evm = ((TextView)findViewById(a.f.lucky_money_recieve_check_detail));
+    this.Evk = findViewById(a.f.lucky_money_recieve_check_detail_ll);
+    this.Evl = ((ImageView)findViewById(a.f.lucky_money_bottom_decoration));
+    this.Eyh = ((ImageView)findViewById(a.f.lucky_money_receive_envelope_iv));
+    this.Eyf = ((TextView)findViewById(a.f.lucky_money_recieve_temp_label_tv));
+    this.Exp = ((ImageView)findViewById(a.f.lucky_money_recieve_close_btn));
+    this.Exp.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(213281);
+        AppMethodBeat.i(277438);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/hk/ui/LuckyMoneyHKReceiveUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/luckymoney/hk/ui/LuckyMoneyHKReceiveUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         LuckyMoneyHKReceiveUI.this.finish();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/hk/ui/LuckyMoneyHKReceiveUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(213281);
+        AppMethodBeat.o(277438);
       }
     });
-    this.nAB.setLines(2);
-    android.support.v4.widget.q.d(this.nAB);
-    this.maxSize = ((int)(com.tencent.mm.cb.a.aH(getContext(), 2131166624) * 1.125F));
-    this.textSize = com.tencent.mm.cb.a.aG(getContext(), 2131166624);
+    this.qCM.setLines(2);
+    i.c(this.qCM);
+    this.maxSize = ((int)(com.tencent.mm.ci.a.aZ(getContext(), a.d.lucky_money_goldstyle_envelop_wishing_textsize) * 1.125F));
+    this.textSize = com.tencent.mm.ci.a.aY(getContext(), a.d.lucky_money_goldstyle_envelop_wishing_textsize);
     if (this.textSize > this.maxSize) {}
     for (int i = this.maxSize;; i = this.textSize)
     {
       this.textSize = i;
       getContentView().setVisibility(8);
-      eeN();
-      AppMethodBeat.o(213291);
+      eOi();
+      AppMethodBeat.o(247081);
       return;
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(213290);
+    AppMethodBeat.i(247078);
     fixStatusbar(true);
-    this.zbY = false;
+    this.EGv = false;
     super.onCreate(paramBundle);
     if (Build.VERSION.SDK_INT >= 21)
     {
       paramBundle = getWindow();
       paramBundle.addFlags(-2147483648);
-      paramBundle.setStatusBarColor(getResources().getColor(2131101287));
+      paramBundle.setStatusBarColor(getResources().getColor(a.c.transparent));
     }
-    this.yUq = getIntent().getStringExtra("key_native_url");
-    this.gof = getIntent().getLongExtra("key_msgid", 0L);
-    this.yUr = getIntent().getIntExtra("key_way", 0);
-    paramBundle = Uri.parse(Util.nullAsNil(this.yUq));
+    this.Eyn = getIntent().getStringExtra("key_native_url");
+    this.iSo = getIntent().getLongExtra("key_msgid", 0L);
+    this.Eyo = getIntent().getIntExtra("key_way", 0);
+    paramBundle = Uri.parse(Util.nullAsNil(this.Eyn));
     try
     {
-      this.yUc = paramBundle.getQueryParameter("sendid");
+      this.ExZ = paramBundle.getQueryParameter("sendid");
       initView();
-      Log.i("MicroMsg.LuckyMoneyHKReceiveUI", "do receive hb: %s, %s", new Object[] { this.yUq, this.yUc });
-      if (this.yUu != null) {
-        this.yUu.cancel();
+      Log.i("MicroMsg.LuckyMoneyHKReceiveUI", "do receive hb: %s, %s", new Object[] { this.Eyn, this.ExZ });
+      if (this.Eyr != null) {
+        this.Eyr.cancel();
       }
       if (this.tipDialog != null) {
         this.tipDialog.dismiss();
       }
-      this.tipDialog = h.a(getContext(), 3, 2131821007, getString(2131762446), true, new DialogInterface.OnCancelListener()
+      this.tipDialog = h.a(getContext(), 3, a.j.LuckyMoneyNoAnimDialog, getString(a.i.loading_tips), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
-          AppMethodBeat.i(213286);
+          AppMethodBeat.i(276407);
           if ((LuckyMoneyHKReceiveUI.f(LuckyMoneyHKReceiveUI.this) != null) && (LuckyMoneyHKReceiveUI.f(LuckyMoneyHKReceiveUI.this).isShowing())) {
             LuckyMoneyHKReceiveUI.f(LuckyMoneyHKReceiveUI.this).dismiss();
           }
           LuckyMoneyHKReceiveUI.g(LuckyMoneyHKReceiveUI.this).cancel();
           LuckyMoneyHKReceiveUI.this.finish();
-          AppMethodBeat.o(213286);
+          AppMethodBeat.o(276407);
         }
       });
-      this.yUu = new c(this.yUq, this.yUc, this.yUr);
-      this.yUu.aYI().b(new com.tencent.mm.vending.c.a() {}).a(this);
-      AppMethodBeat.o(213290);
+      this.Eyr = new c(this.Eyn, this.ExZ, this.Eyo);
+      this.Eyr.bhW().b(new com.tencent.mm.vending.c.a() {}).a(this);
+      AppMethodBeat.o(247078);
       return;
     }
     catch (Exception paramBundle)
@@ -214,12 +224,12 @@ public class LuckyMoneyHKReceiveUI
   
   public void onDestroy()
   {
-    AppMethodBeat.i(213292);
+    AppMethodBeat.i(247083);
     super.onDestroy();
-    AppMethodBeat.o(213292);
+    AppMethodBeat.o(247083);
   }
   
-  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     return false;
   }
@@ -232,7 +242,7 @@ public class LuckyMoneyHKReceiveUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.hk.ui.LuckyMoneyHKReceiveUI
  * JD-Core Version:    0.7.0.1
  */

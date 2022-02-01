@@ -6,35 +6,34 @@ import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer.OnErrorListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.b.k;
-import com.tencent.mm.compatible.deviceinfo.ae;
+import com.tencent.mm.compatible.deviceinfo.af;
 import com.tencent.mm.compatible.util.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.PhoneStatusWatcher;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
 
 public final class u
   implements d
 {
   String fileName;
-  boolean juP;
-  d.a juW;
-  d.b juX;
-  MediaPlayer jvF;
-  com.tencent.mm.compatible.util.b jvG;
+  boolean mkr;
+  d.a mky;
+  d.b mkz;
+  MediaPlayer mli;
+  com.tencent.mm.compatible.util.b mlj;
   int status;
   
   public u()
   {
     AppMethodBeat.i(130095);
     this.fileName = "";
-    this.juW = null;
-    this.juX = null;
+    this.mky = null;
+    this.mkz = null;
     this.status = 0;
-    this.juP = true;
-    this.jvF = new k();
-    bik();
-    bil();
+    this.mkr = true;
+    this.mli = new k();
+    brI();
+    brJ();
     Log.d("MicroMsg.VoicePlayer", "VoicePlayer");
     AppMethodBeat.o(130095);
   }
@@ -43,35 +42,35 @@ public final class u
   {
     this();
     AppMethodBeat.i(130096);
-    this.jvG = new com.tencent.mm.compatible.util.b(paramContext);
+    this.mlj = new com.tencent.mm.compatible.util.b(paramContext);
     Log.d("MicroMsg.VoicePlayer", "VoicePlayer context");
     AppMethodBeat.o(130096);
   }
   
-  private void bik()
+  private void brI()
   {
     AppMethodBeat.i(130097);
-    this.jvF.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
+    this.mli.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
     {
       public final void onCompletion(MediaPlayer paramAnonymousMediaPlayer)
       {
         AppMethodBeat.i(130093);
         Log.d("MicroMsg.VoicePlayer", "OnCompletionListener");
-        if ((u.this.jvG != null) && (u.this.juP))
+        if ((u.this.mlj != null) && (u.this.mkr))
         {
           Log.d("MicroMsg.VoicePlayer", "OnCompletionListener abandonFocus");
-          u.this.jvG.apm();
+          u.this.mlj.avz();
         }
-        if (u.this.juW != null)
+        if (u.this.mky != null)
         {
           Log.d("MicroMsg.VoicePlayer", "OnCompletionListener onCompletion");
-          u.this.juW.onCompletion();
+          u.this.mky.onCompletion();
         }
         try
         {
           Log.d("MicroMsg.VoicePlayer", "OnCompletionListener release");
-          u.this.jvF.reset();
-          u.this.jvF.release();
+          u.this.mli.reset();
+          u.this.mli.release();
           u.this.status = 0;
           AppMethodBeat.o(130093);
           return;
@@ -86,30 +85,30 @@ public final class u
     AppMethodBeat.o(130097);
   }
   
-  private void bil()
+  private void brJ()
   {
     AppMethodBeat.i(130098);
-    this.jvF.setOnErrorListener(new MediaPlayer.OnErrorListener()
+    this.mli.setOnErrorListener(new MediaPlayer.OnErrorListener()
     {
       public final boolean onError(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(130094);
         Log.d("MicroMsg.VoicePlayer", "OnErrorListener");
-        if ((u.this.jvG != null) && (u.this.juP))
+        if ((u.this.mlj != null) && (u.this.mkr))
         {
           Log.d("MicroMsg.VoicePlayer", "OnErrorListener abandonFocus");
-          u.this.jvG.apm();
+          u.this.mlj.avz();
         }
-        if (u.this.juX != null)
+        if (u.this.mkz != null)
         {
           Log.d("MicroMsg.VoicePlayer", "OnErrorListener onError");
-          u.this.juX.onError();
+          u.this.mkz.onError();
         }
         try
         {
           Log.d("MicroMsg.VoicePlayer", "OnErrorListener release");
-          u.this.jvF.reset();
-          u.this.jvF.release();
+          u.this.mli.reset();
+          u.this.mli.release();
           u.this.status = -1;
           AppMethodBeat.o(130094);
           return false;
@@ -126,7 +125,7 @@ public final class u
     AppMethodBeat.o(130098);
   }
   
-  private boolean d(String paramString, boolean paramBoolean, int paramInt)
+  private boolean e(String paramString, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(130102);
     if (this.status != 0)
@@ -139,7 +138,7 @@ public final class u
     this.fileName = paramString;
     try
     {
-      k(paramBoolean, paramInt);
+      n(paramBoolean, paramInt);
       this.status = 1;
       AppMethodBeat.o(130102);
       return true;
@@ -148,7 +147,7 @@ public final class u
     {
       try
       {
-        k(true, paramInt);
+        n(true, paramInt);
       }
       catch (Exception localException)
       {
@@ -161,11 +160,11 @@ public final class u
     return false;
   }
   
-  private void k(boolean paramBoolean, int paramInt)
+  private void n(boolean paramBoolean, int paramInt)
   {
     int j = 3;
     AppMethodBeat.i(130103);
-    if (!s.YS(this.fileName))
+    if (!com.tencent.mm.vfs.u.agG(this.fileName))
     {
       AppMethodBeat.o(130103);
       return;
@@ -180,26 +179,26 @@ public final class u
       try
       {
         Log.d("MicroMsg.VoicePlayer", "playImp speakerOn:%s,seekTo:%s,type:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), Integer.valueOf(i) });
-        if (!ae.gKu.gDA) {
+        if (!af.juI.jnK) {
           break label249;
         }
-        ae.gKu.dump();
-        if (ae.gKu.gDH != 1) {
+        af.juI.Y();
+        if (af.juI.jnR != 1) {
           break label249;
         }
         i = j;
-        if ((this.jvG != null) && (this.juP))
+        if ((this.mlj != null) && (this.mkr))
         {
           Log.d("MicroMsg.VoicePlayer", "playImp audioFocusHelper.requestFocus");
-          this.jvG.requestFocus();
+          this.mlj.avy();
         }
-        this.jvF.setAudioStreamType(i);
-        this.jvF.setDataSource(this.fileName);
-        this.jvF.prepare();
+        this.mli.setAudioStreamType(i);
+        this.mli.setDataSource(this.fileName);
+        this.mli.prepare();
         if (paramInt > 0) {
-          this.jvF.seekTo(paramInt);
+          this.mli.seekTo(paramInt);
         }
-        this.jvF.start();
+        this.mli.start();
         AppMethodBeat.o(130103);
         return;
       }
@@ -207,10 +206,10 @@ public final class u
       {
         Log.e("MicroMsg.VoicePlayer", "playImp : fail, exception = " + localException.getMessage());
         Log.e("MicroMsg.VoicePlayer", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
-        if ((this.jvG == null) || (!this.juP)) {
+        if ((this.mlj == null) || (!this.mkr)) {
           continue;
         }
-        this.jvG.apm();
+        this.mlj.avz();
         AppMethodBeat.o(130103);
         return;
       }
@@ -218,7 +217,7 @@ public final class u
     }
   }
   
-  public final boolean Qt()
+  public final boolean TV()
   {
     AppMethodBeat.i(130106);
     if ((this.status != 1) && (this.status != 2))
@@ -230,12 +229,12 @@ public final class u
     try
     {
       Log.d("MicroMsg.VoicePlayer", "stop mediaPlayer.stop()");
-      this.jvF.stop();
-      this.jvF.release();
-      if ((this.jvG != null) && (this.juP))
+      this.mli.stop();
+      this.mli.release();
+      if ((this.mlj != null) && (this.mkr))
       {
         Log.d("MicroMsg.VoicePlayer", "stop audioFocusHelper.abandonFocus()");
-        this.jvG.apm();
+        this.mlj.avz();
       }
       this.status = 0;
       AppMethodBeat.o(130106);
@@ -249,16 +248,26 @@ public final class u
     }
     finally
     {
-      if ((this.jvG != null) && (this.juP))
+      if ((this.mlj != null) && (this.mkr))
       {
         Log.d("MicroMsg.VoicePlayer", "stop audioFocusHelper.abandonFocus()");
-        this.jvG.apm();
+        this.mlj.avz();
       }
       AppMethodBeat.o(130106);
     }
   }
   
-  public final double ZY()
+  public final void a(d.a parama)
+  {
+    this.mky = parama;
+  }
+  
+  public final void a(d.b paramb)
+  {
+    this.mkz = paramb;
+  }
+  
+  public final double aeI()
   {
     AppMethodBeat.i(130107);
     if ((this.status != 1) && (this.status != 2))
@@ -270,8 +279,8 @@ public final class u
     int j;
     try
     {
-      i = this.jvF.getCurrentPosition();
-      j = this.jvF.getDuration();
+      i = this.mli.getCurrentPosition();
+      j = this.mli.getDuration();
       if (j == 0)
       {
         Log.e("MicroMsg.VoicePlayer", "getDuration File[" + this.fileName + "] Failed");
@@ -282,7 +291,7 @@ public final class u
     catch (Exception localException)
     {
       Log.e("MicroMsg.VoicePlayer", "getNowProgress File[" + this.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
-      Qt();
+      TV();
       AppMethodBeat.o(130107);
       return 0.0D;
     }
@@ -291,63 +300,29 @@ public final class u
     return d;
   }
   
-  public final void a(d.a parama)
+  public final void bro()
   {
-    this.juW = parama;
-  }
-  
-  public final void a(d.b paramb)
-  {
-    this.juX = paramb;
-  }
-  
-  public final void bhQ()
-  {
-    this.juP = false;
+    this.mkr = false;
   }
   
   public final void c(b.a parama)
   {
     AppMethodBeat.i(130108);
-    if ((this.jvG != null) && (parama != null)) {
-      this.jvG.a(parama);
+    if ((this.mlj != null) && (parama != null)) {
+      this.mlj.a(parama);
     }
     AppMethodBeat.o(130108);
   }
   
-  public final boolean c(String paramString, boolean paramBoolean, int paramInt)
+  public final boolean d(String paramString, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(130101);
-    paramBoolean = d(paramString, paramBoolean, paramInt);
+    paramBoolean = e(paramString, paramBoolean, paramInt);
     AppMethodBeat.o(130101);
     return paramBoolean;
   }
   
-  public final void cU(boolean paramBoolean)
-  {
-    AppMethodBeat.i(130099);
-    Log.d("MicroMsg.VoicePlayer", "setSpeakerOn=".concat(String.valueOf(paramBoolean)));
-    if (this.jvF == null)
-    {
-      AppMethodBeat.o(130099);
-      return;
-    }
-    if (PhoneStatusWatcher.isCalling())
-    {
-      Log.v("MicroMsg.VoicePlayer", "setSpeakOn return when calling");
-      AppMethodBeat.o(130099);
-      return;
-    }
-    int i = this.jvF.getCurrentPosition();
-    Qt();
-    this.jvF = new k();
-    bik();
-    bil();
-    d(this.fileName, paramBoolean, i);
-    AppMethodBeat.o(130099);
-  }
-  
-  public final boolean da(boolean paramBoolean)
+  public final boolean dA(boolean paramBoolean)
   {
     AppMethodBeat.i(130104);
     if (this.status != 1)
@@ -359,11 +334,11 @@ public final class u
     try
     {
       Log.d("MicroMsg.VoicePlayer", "pause mediaPlayer.pause()");
-      this.jvF.pause();
-      if ((this.jvG != null) && (paramBoolean) && (this.juP))
+      this.mli.pause();
+      if ((this.mlj != null) && (paramBoolean) && (this.mkr))
       {
         Log.d("MicroMsg.VoicePlayer", "pause audioFocusHelper.abandonFocus()");
-        this.jvG.apm();
+        this.mlj.avz();
       }
       this.status = 2;
       AppMethodBeat.o(130104);
@@ -377,13 +352,37 @@ public final class u
     }
     finally
     {
-      if ((this.jvG != null) && (paramBoolean) && (this.juP))
+      if ((this.mlj != null) && (paramBoolean) && (this.mkr))
       {
         Log.d("MicroMsg.VoicePlayer", "pause audioFocusHelper.abandonFocus()");
-        this.jvG.apm();
+        this.mlj.avz();
       }
       AppMethodBeat.o(130104);
     }
+  }
+  
+  public final void dr(boolean paramBoolean)
+  {
+    AppMethodBeat.i(130099);
+    Log.d("MicroMsg.VoicePlayer", "setSpeakerOn=".concat(String.valueOf(paramBoolean)));
+    if (this.mli == null)
+    {
+      AppMethodBeat.o(130099);
+      return;
+    }
+    if (PhoneStatusWatcher.isCalling())
+    {
+      Log.v("MicroMsg.VoicePlayer", "setSpeakOn return when calling");
+      AppMethodBeat.o(130099);
+      return;
+    }
+    int i = this.mli.getCurrentPosition();
+    TV();
+    this.mli = new k();
+    brI();
+    brJ();
+    e(this.fileName, paramBoolean, i);
+    AppMethodBeat.o(130099);
   }
   
   public final int getStatus()
@@ -408,11 +407,11 @@ public final class u
     try
     {
       Log.d("MicroMsg.VoicePlayer", "resume mediaPlayer.start()");
-      this.jvF.start();
-      if ((this.jvG != null) && (this.juP))
+      this.mli.start();
+      if ((this.mlj != null) && (this.mkr))
       {
         Log.d("MicroMsg.VoicePlayer", "resume audioFocusHelper.requestFocus()");
-        this.jvG.requestFocus();
+        this.mlj.avy();
       }
       this.status = 1;
       AppMethodBeat.o(130105);
@@ -426,10 +425,10 @@ public final class u
     }
     finally
     {
-      if ((this.jvG != null) && (this.juP))
+      if ((this.mlj != null) && (this.mkr))
       {
         Log.d("MicroMsg.VoicePlayer", "resume audioFocusHelper.requestFocus()");
-        this.jvG.requestFocus();
+        this.mlj.avy();
       }
       AppMethodBeat.o(130105);
     }
@@ -437,7 +436,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.modelvoice.u
  * JD-Core Version:    0.7.0.1
  */

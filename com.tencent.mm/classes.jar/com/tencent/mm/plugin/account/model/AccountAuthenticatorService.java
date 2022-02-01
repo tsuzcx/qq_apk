@@ -17,7 +17,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class AccountAuthenticatorService
   extends Service
 {
-  private static a kif = null;
+  private static a mZE = null;
   
   public IBinder onBind(Intent paramIntent)
   {
@@ -29,10 +29,10 @@ public class AccountAuthenticatorService
     }
     if ((paramIntent.getAction() != null) && (paramIntent.getAction().equals("android.accounts.AccountAuthenticator")))
     {
-      if (kif == null) {
-        kif = new a(this);
+      if (mZE == null) {
+        mZE = new a(this);
       }
-      paramIntent = kif.getIBinder();
+      paramIntent = mZE.getIBinder();
       AppMethodBeat.o(127806);
       return paramIntent;
     }

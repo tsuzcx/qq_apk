@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:background="@drawable/cyq" android:padding="@dimen/cb" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <com.tencent.mm.ui.widget.MMEditText android:textColor="@color/a2x" android:textColorHint="@color/uj" android:id="@id/khx" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:minHeight="@dimen/ag" android:text="" android:hint="@string/k6m" android:maxLines="4" android:minLines="1" android:singleLine="false" android:layout_weight="1.0" android:inputType="textCapSentences|textMultiLine" android:textCursorDrawable="@drawable/a70" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/khw" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/remark_address_icon" app:iconColor="@color/u_" />
+        </LinearLayout>
+        <TextView android:textSize="14.0dip" android:textColor="@color/u_" android:id="@id/khy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="" />
+    </LinearLayout>
+</ScrollView>

@@ -1,145 +1,73 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.Result;
-import kotlin.ResultKt;
-import kotlin.d.b.a.e;
+import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
+import kotlin.d.a.b;
 import kotlin.d.d;
 import kotlin.d.f;
 import kotlin.l;
-import kotlin.x;
-import kotlinx.coroutines.internal.y;
+import kotlinx.coroutines.internal.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"MODE_ATOMIC_DEFAULT", "", "MODE_ATOMIC_DEFAULT$annotations", "()V", "MODE_CANCELLABLE", "MODE_CANCELLABLE$annotations", "MODE_UNDISPATCHED", "MODE_UNDISPATCHED$annotations", "isCancellableMode", "", "(I)Z", "isDispatchedMode", "dispatch", "", "T", "Lkotlinx/coroutines/DispatchedTask;", "mode", "resume", "delegate", "Lkotlin/coroutines/Continuation;", "useMode", "resumeUnconfined", "resumeWithStackTrace", "exception", "", "runUnconfinedEventLoop", "eventLoop", "Lkotlinx/coroutines/EventLoop;", "block", "Lkotlin/Function0;", "kotlinx-coroutines-core"})
-public final class az
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/DispatchedCoroutine;", "T", "Lkotlin/coroutines/CoroutineContext;", "context", "Lkotlin/coroutines/Continuation;", "uCont", "<init>", "(Lkotlin/coroutines/CoroutineContext;Lkotlin/coroutines/Continuation;)V", "", "state", "", "afterCompletion", "(Ljava/lang/Object;)V", "afterResume", "getResult", "()Ljava/lang/Object;", "", "tryResume", "()Z", "trySuspend", "kotlinx-coroutines-core", "Lkotlinx/coroutines/internal/ScopeCoroutine;"})
+final class az<T>
+  extends t<T>
 {
-  private static final void a(ay<?> paramay)
+  static final AtomicIntegerFieldUpdater abwh;
+  volatile int _decision = 0;
+  
+  static
   {
-    AppMethodBeat.i(192332);
-    Object localObject = cp.TVk;
-    localObject = cp.hNz();
-    if (((bg)localObject).hNb())
-    {
-      ((bg)localObject).b(paramay);
-      AppMethodBeat.o(192332);
-      return;
-    }
-    ((bg)localObject).EX(true);
-    try
-    {
-      a(paramay, paramay.hMz(), 2);
-      boolean bool;
-      do
-      {
-        bool = ((bg)localObject).hNa();
-      } while (bool);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      paramay.c(localThrowable, null);
-      return;
-    }
-    finally
-    {
-      ((bg)localObject).hNd();
-      AppMethodBeat.o(192332);
-    }
+    AppMethodBeat.i(204755);
+    abwh = AtomicIntegerFieldUpdater.newUpdater(az.class, "_decision");
+    AppMethodBeat.o(204755);
   }
   
-  public static final <T> void a(ay<? super T> paramay, int paramInt)
+  public az(f paramf, d<? super T> paramd)
   {
-    AppMethodBeat.i(192330);
-    Object localObject = paramay.hMz();
-    if ((avV(paramInt)) && ((localObject instanceof av)) && (avU(paramInt) == avU(paramay.TUq)))
-    {
-      ad localad = ((av)localObject).TUm;
-      localObject = ((d)localObject).getContext();
-      if (localad.hMH())
-      {
-        localad.a((f)localObject, (Runnable)paramay);
-        AppMethodBeat.o(192330);
-        return;
-      }
-      a(paramay);
-      AppMethodBeat.o(192330);
-      return;
-    }
-    a(paramay, (d)localObject, paramInt);
-    AppMethodBeat.o(192330);
+    super(paramf, paramd);
   }
   
-  private static <T> void a(ay<? super T> paramay, d<? super T> paramd, int paramInt)
+  private final boolean iQQ()
   {
-    AppMethodBeat.i(192331);
-    Object localObject = paramay.hMt();
-    paramay = ay.fT(localObject);
-    if (paramay != null) {
-      if ((!an.hML()) || (!(paramd instanceof e)))
-      {
-        label32:
-        if (paramay == null) {
-          break label123;
-        }
-        localObject = Result.Companion;
-      }
-    }
-    for (paramay = Result.constructor-impl(ResultKt.createFailure(paramay));; paramay = Result.constructor-impl(localObject)) {
-      switch (paramInt)
+    AppMethodBeat.i(204752);
+    do
+    {
+      switch (this._decision)
       {
       default: 
-        paramay = (Throwable)new IllegalStateException("Invalid mode ".concat(String.valueOf(paramInt)).toString());
-        AppMethodBeat.o(192331);
-        throw paramay;
-        paramay = kotlinx.coroutines.internal.t.a(paramay, (e)paramd);
-        break label32;
-        paramay = null;
-        break label32;
-        label123:
-        paramay = Result.Companion;
+        Throwable localThrowable = (Throwable)new IllegalStateException("Already resumed".toString());
+        AppMethodBeat.o(204752);
+        throw localThrowable;
       }
-    }
-    paramd.resumeWith(paramay);
-    AppMethodBeat.o(192331);
-    return;
-    aw.a(paramd, paramay);
-    AppMethodBeat.o(192331);
-    return;
-    if (paramd == null)
+    } while (!abwh.compareAndSet(this, 0, 2));
+    AppMethodBeat.o(204752);
+    return true;
+    AppMethodBeat.o(204752);
+    return false;
+  }
+  
+  public final void fT(Object paramObject)
+  {
+    AppMethodBeat.i(204754);
+    if (iQQ())
     {
-      paramay = new kotlin.t("null cannot be cast to non-null type kotlinx.coroutines.DispatchedContinuation<T>");
-      AppMethodBeat.o(192331);
-      throw paramay;
-    }
-    av localav = (av)paramd;
-    paramd = localav.getContext();
-    localObject = y.a(paramd, localav.TUk);
-    try
-    {
-      localav.TUn.resumeWith(paramay);
-      paramay = x.SXb;
+      AppMethodBeat.o(204754);
       return;
     }
-    finally
-    {
-      y.b(paramd, localObject);
-      AppMethodBeat.o(192331);
-    }
+    ay.a(b.k(this.abzw), y.b(paramObject, this.abzw));
+    AppMethodBeat.o(204754);
   }
   
-  public static final boolean avU(int paramInt)
+  public final void fU(Object paramObject)
   {
-    return paramInt == 1;
-  }
-  
-  private static boolean avV(int paramInt)
-  {
-    return (paramInt == 0) || (paramInt == 1);
+    AppMethodBeat.i(204753);
+    fT(paramObject);
+    AppMethodBeat.o(204753);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlinx.coroutines.az
  * JD-Core Version:    0.7.0.1
  */

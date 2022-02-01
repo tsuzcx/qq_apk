@@ -1,26 +1,27 @@
 package com.tencent.mm.plugin.scanner.ui.scangoods.widget;
 
 import android.content.Context;
+import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.scanner.model.ScanPoint;
-import com.tencent.mm.plugin.scanner.model.ae;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import java.util.Timer;
-import java.util.TimerTask;
+import com.tencent.mm.plugin.scanner.model.ac;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/RandomScanDotsAnimationController;", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/BaseScanDotsAnimationController;", "context", "Landroid/content/Context;", "scanDotsView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;)V", "animationTimer", "Ljava/util/Timer;", "scanPointsResult", "Lcom/tencent/mm/plugin/scanner/model/ScanPointsInfo;", "generateRandomPoints", "startAnimation", "", "stopAnimation", "Companion", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/RandomScanDotsAnimationController;", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/BaseScanDotsAnimationController;", "context", "Landroid/content/Context;", "scanDotsView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;)V", "animationCallback", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler$CallBack;", "animationHandler", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "scanPointsResult", "Lcom/tencent/mm/plugin/scanner/model/ScanPointsInfo;", "generateRandomPoints", "startAnimation", "", "stopAnimation", "Companion", "plugin-scan_release"})
 public final class f
   extends a
 {
-  public static final f.a CPv;
-  private Timer CPt;
-  private ae CPu;
+  public static final f.a IUY;
+  private final MTimerHandler.CallBack IUV;
+  private final MTimerHandler IUW;
+  private ac IUX;
   
   static
   {
     AppMethodBeat.i(52260);
-    CPv = new f.a((byte)0);
+    IUY = new f.a((byte)0);
     AppMethodBeat.o(52260);
   }
   
@@ -28,8 +29,10 @@ public final class f
   {
     super(paramContext, paramd);
     AppMethodBeat.i(52259);
-    this.CPu = new ae();
-    paramContext = this.CPu;
+    this.IUV = ((MTimerHandler.CallBack)new b(this));
+    this.IUW = new MTimerHandler(Looper.getMainLooper(), this.IUV, true);
+    this.IUX = new ac();
+    paramContext = this.IUX;
     paramd = new ScanPoint[10];
     int i = 0;
     while (i < 10)
@@ -44,57 +47,36 @@ public final class f
   public final void startAnimation()
   {
     AppMethodBeat.i(52257);
-    this.CPt = new Timer();
-    Timer localTimer = this.CPt;
-    if (localTimer != null)
-    {
-      localTimer.scheduleAtFixedRate((TimerTask)new b(this), 0L, 350L);
-      AppMethodBeat.o(52257);
-      return;
-    }
+    this.IUW.startTimer(0L, 350L);
     AppMethodBeat.o(52257);
   }
   
   public final void stopAnimation()
   {
     AppMethodBeat.i(52258);
-    Timer localTimer = this.CPt;
-    if (localTimer != null) {
-      localTimer.cancel();
-    }
+    this.IUW.stopTimer();
     super.stopAnimation();
     AppMethodBeat.o(52258);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/ui/scangoods/widget/RandomScanDotsAnimationController$startAnimation$1", "Ljava/util/TimerTask;", "run", "", "plugin-scan_release"})
-  public static final class b
-    extends TimerTask
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onTimerExpired"})
+  static final class b
+    implements MTimerHandler.CallBack
   {
-    public final void run()
-    {
-      AppMethodBeat.i(52256);
-      MMHandlerThread.postToMainThread((Runnable)new a(this));
-      AppMethodBeat.o(52256);
-    }
+    b(f paramf) {}
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-    static final class a
-      implements Runnable
+    public final boolean onTimerExpired()
     {
-      a(f.b paramb) {}
-      
-      public final void run()
-      {
-        AppMethodBeat.i(52255);
-        this.CPx.CPw.b(f.a(this.CPx.CPw));
-        AppMethodBeat.o(52255);
-      }
+      AppMethodBeat.i(217749);
+      this.IUZ.b(f.a(this.IUZ));
+      AppMethodBeat.o(217749);
+      return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.scangoods.widget.f
  * JD-Core Version:    0.7.0.1
  */

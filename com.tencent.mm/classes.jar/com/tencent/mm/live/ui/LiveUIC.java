@@ -2,24 +2,29 @@ package com.tencent.mm.live.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.a;
-import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.live.b.e;
+import com.tencent.mm.live.b.f;
 import com.tencent.mm.live.b.a.d;
-import com.tencent.mm.live.b.r;
-import com.tencent.mm.live.b.x;
+import com.tencent.mm.live.b.u;
+import com.tencent.mm.live.view.a.b;
+import com.tencent.mm.live.view.a.g;
 import com.tencent.mm.model.v;
-import com.tencent.mm.protocal.protobuf.civ;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.protocal.protobuf.crq;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.MMActivity;
@@ -28,139 +33,139 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import kotlin.g.b.p;
-import kotlin.o;
+import kotlin.l;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/ui/LiveUIC;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "adapter", "Lcom/tencent/mm/live/view/adapter/LiveAfterMembersStatesAdapter;", "loadingView", "Landroid/widget/ProgressBar;", "onlineCountGroup", "Landroid/view/ViewGroup;", "onlineCountTv", "Landroid/widget/TextView;", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "retryTip", "roomCountGroup", "roomCountTv", "subTitleTv", "getLayoutId", "", "initActionBar", "", "initViews", "loadMembers", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "showDataView", "showLoadingView", "showRetryView", "plugin-logic_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/ui/LiveUIC;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "adapter", "Lcom/tencent/mm/live/view/adapter/LiveAfterMembersStatesAdapter;", "loadingView", "Landroid/widget/ProgressBar;", "onlineCountGroup", "Landroid/view/ViewGroup;", "onlineCountTv", "Landroid/widget/TextView;", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "retryTip", "roomCountGroup", "roomCountTv", "subTitleTv", "getLayoutId", "", "initActionBar", "", "initViews", "loadMembers", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "showDataView", "showLoadingView", "showRetryView", "plugin-logic_release"})
 public final class LiveUIC
   extends MMActivity
   implements i
 {
-  private TextView hRL;
-  private ViewGroup hTY;
-  private ViewGroup hTZ;
-  private TextView hUa;
-  private TextView hUb;
-  private TextView hUc;
-  private final com.tencent.mm.live.view.a.b hUd;
-  private RecyclerView hak;
-  private ProgressBar hbv;
+  private RecyclerView jLl;
+  private ProgressBar jMF;
+  private TextView kGi;
+  private TextView kIA;
+  private TextView kIB;
+  private final b kIC;
+  private ViewGroup kIx;
+  private ViewGroup kIy;
+  private TextView kIz;
   
   public LiveUIC()
   {
-    AppMethodBeat.i(208388);
-    this.hUd = new com.tencent.mm.live.view.a.b();
-    AppMethodBeat.o(208388);
+    AppMethodBeat.i(189696);
+    this.kIC = new b();
+    AppMethodBeat.o(189696);
   }
   
   public final int getLayoutId()
   {
-    return 2131495222;
+    return b.f.live_after_members_states_ui;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(208385);
+    AppMethodBeat.i(189686);
     super.onCreate(paramBundle);
-    paramBundle = com.tencent.mm.kernel.g.aAg();
-    p.g(paramBundle, "MMKernel.network()");
-    paramBundle.azz().a(3700, (i)this);
-    paramBundle = com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-    p.g(paramBundle, "MMKernel.service(IMessengerStorage::class.java)");
-    paramBundle = ((com.tencent.mm.plugin.messenger.foundation.a.l)paramBundle).aSN();
-    x localx = x.hJf;
-    paramBundle = paramBundle.Kn(x.aGm());
-    p.g(paramBundle, "contact");
-    setMMTitle(paramBundle.arJ());
-    setBackBtn((MenuItem.OnMenuItemClickListener)new a(this));
-    this.hTY = ((ViewGroup)findViewById(2131303263));
-    this.hTZ = ((ViewGroup)findViewById(2131303269));
-    this.hak = ((RecyclerView)findViewById(2131303261));
-    this.hUa = ((TextView)findViewById(2131303267));
-    this.hUb = ((TextView)findViewById(2131303265));
-    this.hUc = ((TextView)findViewById(2131303271));
-    this.hbv = ((ProgressBar)findViewById(2131303262));
-    this.hRL = ((TextView)findViewById(2131303266));
-    paramBundle = this.hak;
+    paramBundle = h.aHF();
+    p.j(paramBundle, "MMKernel.network()");
+    paramBundle.aGY().a(3700, (i)this);
+    paramBundle = h.ae(n.class);
+    p.j(paramBundle, "MMKernel.service(IMessengerStorage::class.java)");
+    paramBundle = ((n)paramBundle).bbL();
+    u localu = u.kwz;
+    paramBundle = paramBundle.RG(u.aOm());
+    p.j(paramBundle, "contact");
+    setMMTitle(paramBundle.ays());
+    setBackBtn((MenuItem.OnMenuItemClickListener)new LiveUIC.a(this));
+    this.kIx = ((ViewGroup)findViewById(b.e.live_after_members_states_online_total_group));
+    this.kIy = ((ViewGroup)findViewById(b.e.live_after_members_states_total_group));
+    this.jLl = ((RecyclerView)findViewById(b.e.live_after_members_states_content_view));
+    this.kIz = ((TextView)findViewById(b.e.live_after_members_states_sub_title));
+    this.kIA = ((TextView)findViewById(b.e.live_after_members_states_online_total_number));
+    this.kIB = ((TextView)findViewById(b.e.live_after_members_states_total_number));
+    this.jMF = ((ProgressBar)findViewById(b.e.live_after_members_states_loading));
+    this.kGi = ((TextView)findViewById(b.e.live_after_members_states_retry_tip));
+    paramBundle = this.jLl;
     if (paramBundle != null)
     {
       getContext();
       paramBundle.setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager());
     }
-    paramBundle = this.hak;
+    paramBundle = this.jLl;
     if (paramBundle != null) {
-      paramBundle.setAdapter((RecyclerView.a)this.hUd);
+      paramBundle.setAdapter((RecyclerView.a)this.kIC);
     }
-    paramBundle = x.hJf;
-    int i = v.Ie(x.aGm());
-    paramBundle = this.hUb;
+    paramBundle = u.kwz;
+    int i = v.Pu(u.aOm());
+    paramBundle = this.kIA;
     if (paramBundle != null)
     {
-      localx = x.hJf;
-      paramBundle.setText((CharSequence)String.valueOf(x.aGr().LIa));
+      localu = u.kwz;
+      paramBundle.setText((CharSequence)String.valueOf(u.aOr().SOs));
     }
-    paramBundle = this.hUc;
+    paramBundle = this.kIB;
     if (paramBundle != null) {
       paramBundle.setText((CharSequence)String.valueOf(i));
     }
-    paramBundle = this.hbv;
+    paramBundle = this.jMF;
     if (paramBundle != null) {
       paramBundle.setVisibility(0);
     }
-    paramBundle = this.hRL;
+    paramBundle = this.kGi;
     if (paramBundle != null) {
       paramBundle.setVisibility(8);
     }
-    paramBundle = this.hak;
+    paramBundle = this.jLl;
     if (paramBundle != null) {
       paramBundle.setVisibility(8);
     }
-    paramBundle = r.hIg;
-    paramBundle = x.hJf;
-    r.GN(x.aGm());
-    AppMethodBeat.o(208385);
+    paramBundle = com.tencent.mm.live.b.o.kvA;
+    paramBundle = u.kwz;
+    com.tencent.mm.live.b.o.NY(u.aOm());
+    AppMethodBeat.o(189686);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(208386);
+    AppMethodBeat.i(189687);
     super.onDestroy();
-    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.aAg();
-    p.g(localb, "MMKernel.network()");
-    localb.azz().b(3700, (i)this);
-    AppMethodBeat.o(208386);
+    c localc = h.aHF();
+    p.j(localc, "MMKernel.network()");
+    localc.aGY().b(3700, (i)this);
+    AppMethodBeat.o(189687);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
-    AppMethodBeat.i(208387);
+    AppMethodBeat.i(189693);
     if ((paramq instanceof d))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = this.hUb;
+        paramString = this.kIA;
         if (paramString != null)
         {
-          paramq = x.hJf;
-          paramString.setText((CharSequence)String.valueOf(x.aGr().LIa));
+          paramq = u.kwz;
+          paramString.setText((CharSequence)String.valueOf(u.aOr().SOs));
         }
-        paramString = this.hbv;
+        paramString = this.jMF;
         if (paramString != null) {
           paramString.setVisibility(8);
         }
-        paramString = this.hRL;
+        paramString = this.kGi;
         if (paramString != null) {
           paramString.setVisibility(8);
         }
-        paramString = this.hak;
+        paramString = this.jLl;
         if (paramString != null) {
           paramString.setVisibility(0);
         }
-        paramString = x.hJf;
-        paramString = x.aGo();
-        paramq = x.hJf;
-        paramString = (o)paramString.get(x.aGm());
+        paramString = u.kwz;
+        paramString = u.aOo();
+        paramq = u.kwz;
+        paramString = (kotlin.o)paramString.get(u.aOm());
         if (paramString != null) {}
-        for (paramString = (ArrayList)paramString.first;; paramString = null)
+        for (paramString = (ArrayList)paramString.Mx;; paramString = null)
         {
           paramq = new ArrayList();
           if (paramString == null) {
@@ -168,31 +173,31 @@ public final class LiveUIC
           }
           paramString = ((Iterable)paramString).iterator();
           while (paramString.hasNext()) {
-            paramq.add(new com.tencent.mm.live.view.a.g((String)paramString.next()));
+            paramq.add(new g((String)paramString.next()));
           }
         }
-        this.hUd.ai((List)paramq);
-        this.hUd.notifyDataSetChanged();
-        AppMethodBeat.o(208387);
+        this.kIC.ag((List)paramq);
+        this.kIC.notifyDataSetChanged();
+        AppMethodBeat.o(189693);
         return;
       }
-      paramString = this.hbv;
+      paramString = this.jMF;
       if (paramString != null) {
         paramString.setVisibility(8);
       }
-      paramString = this.hRL;
+      paramString = this.kGi;
       if (paramString != null) {
         paramString.setVisibility(0);
       }
-      paramString = this.hak;
+      paramString = this.jLl;
       if (paramString != null)
       {
         paramString.setVisibility(8);
-        AppMethodBeat.o(208387);
+        AppMethodBeat.o(189693);
         return;
       }
     }
-    AppMethodBeat.o(208387);
+    AppMethodBeat.o(189693);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -200,25 +205,10 @@ public final class LiveUIC
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class a
-    implements MenuItem.OnMenuItemClickListener
-  {
-    a(LiveUIC paramLiveUIC) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(208384);
-      this.hUe.finish();
-      AppMethodBeat.o(208384);
-      return true;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.ui.LiveUIC
  * JD-Core Version:    0.7.0.1
  */

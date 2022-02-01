@@ -1,7 +1,7 @@
 package com.google.android.gms.common.util;
 
-import android.support.v4.e.a;
-import android.support.v4.e.b;
+import androidx.b.a;
+import androidx.b.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -1121,7 +1121,7 @@ public final class CollectionUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.common.util.CollectionUtils
  * JD-Core Version:    0.7.0.1
  */

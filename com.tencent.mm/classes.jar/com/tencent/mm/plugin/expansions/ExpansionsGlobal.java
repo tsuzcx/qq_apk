@@ -5,18 +5,18 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class ExpansionsGlobal
 {
-  private static final byte[] rNt;
-  private static volatile boolean rNu;
-  private static volatile boolean rNv;
-  private static AtomicBoolean rNw;
+  private static final byte[] vtd;
+  private static volatile boolean vte;
+  private static volatile boolean vtf;
+  private static AtomicBoolean vtg;
   
   static
   {
     AppMethodBeat.i(152972);
-    rNt = new byte[0];
-    rNu = a.isMainProcess();
-    rNv = false;
-    rNw = new AtomicBoolean(false);
+    vtd = new byte[0];
+    vte = a.isMainProcess();
+    vtf = false;
+    vtg = new AtomicBoolean(false);
     AppMethodBeat.o(152972);
   }
 }

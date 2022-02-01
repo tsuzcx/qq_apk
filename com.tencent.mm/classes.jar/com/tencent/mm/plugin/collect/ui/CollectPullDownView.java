@@ -5,7 +5,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.ui.base.MMPullDownView;
 
 public class CollectPullDownView
@@ -21,11 +22,11 @@ public class CollectPullDownView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void cAG()
+  public final void cPg()
   {
     AppMethodBeat.i(64191);
-    View localView1 = inflate(this.context, 2131493668, null);
-    View localView2 = inflate(this.context, 2131493668, null);
+    View localView1 = inflate(this.context, a.g.collect_bill_list_loading_view, null);
+    View localView2 = inflate(this.context, a.g.collect_bill_list_loading_view, null);
     addView(localView1, 0, new FrameLayout.LayoutParams(-1, a.fromDPToPix(this.context, 48)));
     addView(localView2, new FrameLayout.LayoutParams(-1, a.fromDPToPix(this.context, 48)));
     AppMethodBeat.o(64191);
@@ -33,12 +34,12 @@ public class CollectPullDownView
   
   public void setLoadDataEnd(boolean paramBoolean)
   {
-    this.OSc = paramBoolean;
+    this.Wlp = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.ui.CollectPullDownView
  * JD-Core Version:    0.7.0.1
  */

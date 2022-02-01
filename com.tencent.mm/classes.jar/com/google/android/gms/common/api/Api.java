@@ -90,9 +90,6 @@ public final class Api<O extends ApiOptions>
   }
   
   @KeepForSdk
-  public static abstract interface AnyClient {}
-  
-  @KeepForSdk
   public static class AnyClientKey<C extends Api.AnyClient> {}
   
   public static abstract interface ApiOptions
@@ -111,10 +108,6 @@ public final class Api<O extends ApiOptions>
     
     public static abstract interface HasOptions
       extends Api.ApiOptions
-    {}
-    
-    public static final class NoOptions
-      implements Api.ApiOptions.NotRequiredOptions
     {}
     
     public static abstract interface NotRequiredOptions
@@ -218,7 +211,7 @@ public final class Api<O extends ApiOptions>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.gms.common.api.Api
  * JD-Core Version:    0.7.0.1
  */

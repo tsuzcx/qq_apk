@@ -7,45 +7,44 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.q;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.plugin.wallet_core.c.a.b;
-import com.tencent.mm.pluginsdk.model.x.a;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.pluginsdk.model.ab.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.d.i;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
-import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.g;
 
 @com.tencent.mm.ui.base.a(7)
 public class WalletIbgAdapterUI
   extends WalletBaseUI
 {
-  private void aVV(String paramString)
+  private void bhE(String paramString)
   {
     AppMethodBeat.i(71442);
     Intent localIntent = new Intent();
     localIntent.putExtra("rawUrl", paramString);
     localIntent.putExtra("showShare", false);
-    f.aA(this, localIntent);
+    g.aJ(this, localIntent);
     AppMethodBeat.o(71442);
   }
   
-  private void fTO()
+  private void gMu()
   {
     AppMethodBeat.i(71443);
-    g.aAi();
-    g.aAh().azQ().set(ar.a.NXj, Boolean.TRUE);
-    h.a(this, false, getString(2131768616), "", getString(2131768611), getString(2131768610), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vlj, Boolean.TRUE);
+    com.tencent.mm.ui.base.h.a(this, false, getString(a.i.webview_tbs_need_download), "", getString(a.i.webview_tbs_download_ok), getString(a.i.webview_tbs_download_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(71436);
-        x.a.gmK();
-        Toast.makeText(WalletIbgAdapterUI.this, WalletIbgAdapterUI.this.getString(2131768612), 1).show();
+        ab.a.hhl();
+        Toast.makeText(WalletIbgAdapterUI.this, WalletIbgAdapterUI.this.getString(a.i.webview_tbs_download_start), 1).show();
         WalletIbgAdapterUI.this.finish();
         AppMethodBeat.o(71436);
       }
@@ -96,47 +95,47 @@ public class WalletIbgAdapterUI
     AppMethodBeat.i(71440);
     if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramq instanceof b)))
     {
-      paramInt1 = ((b)paramq).HQH;
+      paramInt1 = ((b)paramq).OIP;
       paramString = ((b)paramq).jumpUrl;
       Log.i("MicroMsg.WalletH5AdapterUI", "hy: get success! url is: %s, download x5 = %b", new Object[] { paramString, Integer.valueOf(paramInt1) });
       if (paramInt1 == 1)
       {
-        paramInt1 = x.a.gmJ();
+        paramInt1 = ab.a.hhk();
         Log.i("MicroMsg.WalletH5AdapterUI", "now status = %d", new Object[] { Integer.valueOf(paramInt1) });
         switch (paramInt1)
         {
         default: 
-          fTO();
+          gMu();
         case 1: 
         case 4: 
           for (paramInt1 = 0; paramInt1 != 0; paramInt1 = 1)
           {
-            aVV(paramString);
+            bhE(paramString);
             finish();
             AppMethodBeat.o(71440);
             return false;
           }
         }
-        g.aAi();
-        if (((Boolean)g.aAh().azQ().get(ar.a.NXj, Boolean.FALSE)).booleanValue())
+        com.tencent.mm.kernel.h.aHH();
+        if (((Boolean)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.Vlj, Boolean.FALSE)).booleanValue())
         {
-          Toast.makeText(this, getString(2131768613), 1).show();
-          x.a.gmK();
+          Toast.makeText(this, getString(a.i.webview_tbs_downloading), 1).show();
+          ab.a.hhl();
           finish();
         }
         for (;;)
         {
           paramInt1 = 0;
           break;
-          fTO();
+          gMu();
         }
       }
-      aVV(paramString);
+      bhE(paramString);
       finish();
       AppMethodBeat.o(71440);
       return false;
     }
-    com.tencent.mm.wallet_core.a.c(this, null, 0);
+    com.tencent.mm.wallet_core.a.b(this, null, 0);
     AppMethodBeat.o(71440);
     return false;
   }

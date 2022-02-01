@@ -1,91 +1,95 @@
 package com.tencent.mm.console.a;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Typeface;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.TextView;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.f.a.ce;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.pluginsdk.cmd.a;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.pluginsdk.o.c.a;
-import com.tencent.mm.pluginsdk.o.e;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.ui.base.w;
 
 public final class n
   implements a
 {
   static
   {
-    AppMethodBeat.i(20194);
-    b.a(new n(), new String[] { "//wear" });
-    AppMethodBeat.o(20194);
+    AppMethodBeat.i(20196);
+    b.a(new n(), new String[] { "//cleanwx", "//showfile", "//hidefile" });
+    AppMethodBeat.o(20196);
   }
   
   public static void init() {}
   
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
-    int i = 0;
-    AppMethodBeat.i(20193);
-    if (Log.getLogLevel() > 1)
-    {
-      AppMethodBeat.o(20193);
-      return false;
-    }
-    if (paramArrayOfString.length < 2)
-    {
-      AppMethodBeat.o(20193);
-      return true;
-    }
-    paramArrayOfString = paramArrayOfString[1];
+    AppMethodBeat.i(20195);
+    paramArrayOfString = paramArrayOfString[0];
+    int i = -1;
     switch (paramArrayOfString.hashCode())
     {
-    default: 
-      i = -1;
-      label83:
-      switch (i)
-      {
-      }
-      break;
     }
     for (;;)
     {
-      AppMethodBeat.o(20193);
+      switch (i)
+      {
+      default: 
+        AppMethodBeat.o(20195);
+        return false;
+        if (paramArrayOfString.equals("//cleanwx"))
+        {
+          i = 0;
+          continue;
+          if (paramArrayOfString.equals("//showfile"))
+          {
+            i = 1;
+            continue;
+            if (paramArrayOfString.equals("//hidefile")) {
+              i = 2;
+            }
+          }
+        }
+        break;
+      }
+    }
+    paramArrayOfString = new ce();
+    EventCenter.instance.publish(paramArrayOfString);
+    w.makeText(paramContext, "clean wx file index now.", 0).show();
+    AppMethodBeat.o(20195);
+    return true;
+    try
+    {
+      h.aHG().aHp().set(ar.a.VrP, Integer.valueOf(1));
+      w.makeText(paramContext, "show file now.", 0).show();
+      label193:
+      AppMethodBeat.o(20195);
       return true;
-      if (!paramArrayOfString.equals("log")) {
-        break;
+      try
+      {
+        h.aHG().aHp().set(ar.a.VrP, Integer.valueOf(0));
+        w.makeText(paramContext, "hide file now.", 0).show();
+        label227:
+        AppMethodBeat.o(20195);
+        return true;
       }
-      break label83;
-      if (!paramArrayOfString.equals("version")) {
-        break;
+      catch (Exception paramContext)
+      {
+        break label227;
       }
-      i = 1;
-      break label83;
-      if (!paramArrayOfString.equals("reconnect")) {
-        break;
-      }
-      i = 2;
-      break label83;
-      o.e.JSY.fVU();
-      continue;
-      paramArrayOfString = new TextView(paramContext);
-      paramArrayOfString.setText(o.e.JSY.fVT());
-      paramArrayOfString.setGravity(19);
-      paramArrayOfString.setTextSize(1, 10.0F);
-      paramArrayOfString.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-      paramArrayOfString.setTextColor(paramContext.getResources().getColor(2131099746));
-      paramArrayOfString.setTypeface(Typeface.MONOSPACE);
-      i = paramContext.getResources().getDimensionPixelSize(2131165498);
-      paramArrayOfString.setPadding(i, i, i, i);
-      h.a(paramContext, null, paramArrayOfString, null);
+    }
+    catch (Exception paramContext)
+    {
+      break label193;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.console.a.n
  * JD-Core Version:    0.7.0.1
  */

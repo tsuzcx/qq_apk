@@ -12,7 +12,7 @@ public class WalletPayUBalanceResultUI
   {
     AppMethodBeat.i(71969);
     super.initView();
-    this.Hwv.setVisibility(8);
+    this.Ooi.setVisibility(8);
     AppMethodBeat.o(71969);
   }
   

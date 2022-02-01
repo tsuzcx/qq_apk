@@ -8,12 +8,12 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class g
 {
-  public FaceProNative sQQ = null;
+  public FaceProNative wwM = null;
   
-  public final FaceProNative.FaceResult cTb()
+  public final FaceProNative.FaceResult dif()
   {
     AppMethodBeat.i(103739);
-    if (this.sQQ == null)
+    if (this.wwM == null)
     {
       Log.e("MicroMsg.FaceDetectNativeManager", "hy: release out not init");
       AppMethodBeat.o(103739);
@@ -22,39 +22,39 @@ public final class g
     try
     {
       long l = Util.currentTicks();
-      FaceProNative.FaceResult localFaceResult = this.sQQ.engineReleaseOut();
+      FaceProNative.FaceResult localFaceResult = this.wwM.engineReleaseOut();
       Log.i("MicroMsg.FaceDetectNativeManager", "hy: uninitialize result : %d, using: %d ms", new Object[] { Integer.valueOf(localFaceResult.result), Long.valueOf(Util.currentTicks() - l) });
-      this.sQQ = null;
+      this.wwM = null;
       AppMethodBeat.o(103739);
       return localFaceResult;
     }
     catch (Throwable localThrowable)
     {
       Log.printErrStackTrace("MicroMsg.FaceDetectNativeManager", localThrowable, "hy: face lib release crash!!!", new Object[0]);
-      this.sQQ.engineRelease();
-      this.sQQ = null;
+      this.wwM.engineRelease();
+      this.wwM = null;
       AppMethodBeat.o(103739);
     }
     return null;
   }
   
-  public final int cTc()
+  public final int dig()
   {
     AppMethodBeat.i(103740);
-    if (this.sQQ == null) {}
+    if (this.wwM == null) {}
     for (boolean bool = true;; bool = false)
     {
       Log.v("MicroMsg.FaceDetectNativeManager", "alvinluo cutDown sFaceProNative == null: %b", new Object[] { Boolean.valueOf(bool) });
-      if (this.sQQ != null) {
+      if (this.wwM != null) {
         break;
       }
       Log.e("MicroMsg.FaceDetectNativeManager", "hy: reelase not init");
       AppMethodBeat.o(103740);
       return -101;
     }
-    int i = this.sQQ.engineRelease();
+    int i = this.wwM.engineRelease();
     Log.i("MicroMsg.FaceDetectNativeManager", "hy: cut down result: %d", new Object[] { Integer.valueOf(i) });
-    this.sQQ = null;
+    this.wwM = null;
     AppMethodBeat.o(103740);
     return i;
   }

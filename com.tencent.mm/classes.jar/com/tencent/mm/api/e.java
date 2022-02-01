@@ -8,7 +8,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 public abstract class e
   extends FrameLayout
 {
-  z diE = new z()
+  z fak = new z()
   {
     public final void a(h paramAnonymoush)
     {
@@ -24,7 +24,7 @@ public abstract class e
       AppMethodBeat.o(169116);
     }
     
-    public final void cH(boolean paramAnonymousBoolean) {}
+    public final void dd(boolean paramAnonymousBoolean) {}
   };
   
   public e(Context paramContext)
@@ -34,7 +34,7 @@ public abstract class e
   
   public z getSelectedFeatureListener()
   {
-    return this.diE;
+    return this.fak;
   }
   
   public abstract void setActionBarCallback(j paramj);
@@ -47,12 +47,12 @@ public abstract class e
   
   public void setSelectedFeatureListener(z paramz)
   {
-    this.diE = paramz;
+    this.fak = paramz;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.api.e
  * JD-Core Version:    0.7.0.1
  */

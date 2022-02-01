@@ -4,10 +4,10 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
 import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.welab.a.e;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
 import com.tencent.mm.protocal.d;
@@ -27,23 +27,23 @@ final class WelabAppInfoUI$4
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(146273);
-    Object localObject = new b();
-    ((b)localObject).bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/welab/ui/WelabAppInfoUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+    Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/welab/ui/WelabAppInfoUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
     for (;;)
     {
       try
       {
-        g.aAf();
-        i = com.tencent.mm.kernel.a.getUin();
-        paramView = URLEncoder.encode(d.DEVICE_NAME, "utf-8");
+        h.aHE();
+        i = com.tencent.mm.kernel.b.getUin();
+        paramView = URLEncoder.encode(d.RAB, "utf-8");
         localObject = URLEncoder.encode(Util.getTimeZoneOffset(), "utf-8");
-        String str1 = URLEncoder.encode(q.dr(true), "utf-8");
-        String str2 = URLEncoder.encode(d.KyI, "utf-8");
-        String str3 = URLEncoder.encode(d.KyJ, "utf-8");
-        String str4 = URLEncoder.encode(d.KyK, "utf-8");
-        g.aAf();
-        String str5 = URLEncoder.encode(com.tencent.mm.kernel.a.azt(), "utf-8");
+        String str1 = URLEncoder.encode(q.dR(true), "utf-8");
+        String str2 = URLEncoder.encode(d.RAw, "utf-8");
+        String str3 = URLEncoder.encode(d.RAx, "utf-8");
+        String str4 = URLEncoder.encode(d.RAy, "utf-8");
+        h.aHE();
+        String str5 = URLEncoder.encode(com.tencent.mm.kernel.b.aGR(), "utf-8");
         String str6 = URLEncoder.encode(Util.getSourceeMd5(MMApplicationContext.getContext()), "utf-8");
         paramView = new StringBuilder("&uin=").append(i).append("&deviceName=").append(paramView).append("&timeZone=").append((String)localObject).append("&imei=").append(str1).append("&deviceBrand=").append(str2).append("&deviceModel=").append(str3).append("&ostype=").append(str4).append("&clientSeqID=").append(str5).append("&signature=").append(str6).append("&scene=");
         if (!Util.isNullOrNil("")) {
@@ -51,17 +51,17 @@ final class WelabAppInfoUI$4
         }
         i = 0;
         paramView = i;
-        localObject = "https://" + WeChatHosts.domainString(2131761742) + "/cgi-bin/mmsupport-bin/readtemplate?t=feedback/index";
-        paramView = (String)localObject + "&from=" + URLEncoder.encode(new StringBuilder().append(WelabAppInfoUI.a(this.JGp).field_expId).append("|").append(WelabAppInfoUI.b(this.JGp)).toString()) + "&version=" + d.KyO + "&lang=" + LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext()) + "&" + Util.nullAsNil("") + paramView;
+        localObject = "https://" + WeChatHosts.domainString(a.e.host_support_weixin_qq_com) + "/cgi-bin/mmsupport-bin/readtemplate?t=feedback/index";
+        paramView = (String)localObject + "&from=" + URLEncoder.encode(new StringBuilder().append(WelabAppInfoUI.a(this.QFB).field_expId).append("|").append(WelabAppInfoUI.b(this.QFB)).toString()) + "&version=" + d.RAD + "&lang=" + LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext()) + "&" + Util.nullAsNil("") + paramView;
         paramView = paramView + "#/comment/4134";
         localObject = new Intent();
         ((Intent)localObject).putExtra("showShare", false);
         ((Intent)localObject).putExtra("rawUrl", paramView);
         ((Intent)localObject).putExtra("title", "意见反馈");
         ((Intent)localObject).putExtra("neverGetA8Key", true);
-        ((Intent)localObject).putExtra("hardcode_jspermission", JsapiPermissionWrapper.Kzm);
-        ((Intent)localObject).putExtra("hardcode_general_ctrl", GeneralControlWrapper.Kzg);
-        c.b(this.JGp, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+        ((Intent)localObject).putExtra("hardcode_jspermission", JsapiPermissionWrapper.RBc);
+        ((Intent)localObject).putExtra("hardcode_general_ctrl", GeneralControlWrapper.RAX);
+        c.b(this.QFB, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
       }
       catch (UnsupportedEncodingException paramView)
       {

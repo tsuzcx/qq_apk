@@ -4,13 +4,12 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.q;
 import com.tencent.mm.plugin.fingerprint.b.a.f;
 import com.tencent.mm.plugin.fingerprint.b.a.i;
 import com.tencent.mm.plugin.fingerprint.d.d;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.soter.a.c;
+import com.tencent.mm.plugin.soter.b.c;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -21,23 +20,23 @@ import java.lang.ref.WeakReference;
 public final class m
   implements d
 {
-  int dNP;
-  private String kof = "";
-  private com.tencent.mm.plugin.soter.a wFC;
-  private String wFE;
-  String wFF;
-  String wFG;
-  private com.tencent.mm.plugin.fingerprint.d.b wFm = null;
-  private com.tencent.mm.plugin.fingerprint.d.b wFn = null;
-  WeakReference<WalletBaseUI> wFz = null;
+  private String ByB;
+  String ByC;
+  String ByD;
+  private com.tencent.mm.plugin.fingerprint.d.b Byj = null;
+  private com.tencent.mm.plugin.fingerprint.d.b Byk = null;
+  WeakReference<WalletBaseUI> Byw = null;
+  private com.tencent.mm.plugin.soter.b Byz;
+  int fHa;
+  private String nfX = "";
   
-  private void bk(int paramInt, String paramString)
+  private void bl(int paramInt, String paramString)
   {
     AppMethodBeat.i(64384);
     Log.i("MicroMsg.SoterFingerprintOpenDelegate", "hy: callback total");
     clear();
-    this.wFn.bg(paramInt, paramString);
-    this.wFn = null;
+    this.Byk.bh(paramInt, paramString);
+    this.Byk = null;
     AppMethodBeat.o(64384);
   }
   
@@ -45,14 +44,14 @@ public final class m
   {
     AppMethodBeat.i(64381);
     Log.i("MicroMsg.SoterFingerprintOpenDelegate", "request authentication");
-    if (Util.isNullOrNil(this.wFE))
+    if (Util.isNullOrNil(this.ByB))
     {
       Log.w("MicroMsg.SoterFingerprintOpenDelegate", "no challenge!!");
       AppMethodBeat.o(64381);
       return;
     }
-    h.CyF.dN(1104, 41);
-    ((i)g.af(i.class)).a(paramContext, new f(this.wFE), new com.tencent.mm.plugin.fingerprint.b.a.b()
+    com.tencent.mm.plugin.report.service.h.IzE.el(1104, 41);
+    ((i)com.tencent.mm.kernel.h.ae(i.class)).a(paramContext, new f(this.ByB), new com.tencent.mm.plugin.fingerprint.b.a.b()
     {
       public final void a(com.tencent.mm.plugin.fingerprint.b.a.c paramAnonymousc)
       {
@@ -66,56 +65,56 @@ public final class m
         }
         for (;;)
         {
-          paramb.bg(-2, paramAnonymousc);
+          paramb.bh(-2, paramAnonymousc);
           AppMethodBeat.o(64375);
           return;
           Log.i("MicroMsg.SoterFingerprintOpenDelegate", "identify success");
-          m.this.dNP = paramAnonymousc.dNP;
-          m.this.wFF = paramAnonymousc.wFF;
-          m.this.wFG = paramAnonymousc.wFG;
-          h.CyF.dN(1104, 40);
-          paramb.bg(0, "");
+          m.this.fHa = paramAnonymousc.fHa;
+          m.this.ByC = paramAnonymousc.ByC;
+          m.this.ByD = paramAnonymousc.ByD;
+          com.tencent.mm.plugin.report.service.h.IzE.el(1104, 40);
+          paramb.bh(0, "");
           AppMethodBeat.o(64375);
           return;
           Log.i("MicroMsg.SoterFingerprintOpenDelegate", "identify FingerPrintConst.RESULT_NO_MATCH");
-          paramb.bg(-1, "");
+          paramb.bh(-1, "");
           AppMethodBeat.o(64375);
           return;
           Log.i("MicroMsg.SoterFingerprintOpenDelegate", "identify timeout");
           AppMethodBeat.o(64375);
           return;
-          localObject = MMApplicationContext.getContext().getString(2131766339);
-          com.tencent.mm.plugin.soter.d.a.d(1000, -1000223, paramAnonymousc.errCode, "fingerprint error");
-          h.CyF.dN(1104, 39);
+          localObject = MMApplicationContext.getContext().getString(a.i.soter_on_sensor_error);
+          com.tencent.mm.plugin.soter.d.a.c(1000, -1000223, paramAnonymousc.errCode, "fingerprint error");
+          com.tencent.mm.plugin.report.service.h.IzE.el(1104, 39);
           paramAnonymousc = (com.tencent.mm.plugin.fingerprint.b.a.c)localObject;
           continue;
           Log.i("MicroMsg.SoterFingerprintOpenDelegate", "hy: on error: %d", new Object[] { Integer.valueOf(paramAnonymousc.errCode) });
-          String str = MMApplicationContext.getContext().getString(2131766337);
+          String str = MMApplicationContext.getContext().getString(a.i.soter_on_error_common);
           if (paramAnonymousc.errCode == 10308)
           {
-            paramAnonymousc = MMApplicationContext.getContext().getString(2131766338);
-            com.tencent.mm.plugin.soter.d.a.d(6, -1000223, -1, "too many trial");
+            paramAnonymousc = MMApplicationContext.getContext().getString(a.i.soter_on_error_max_trial_special);
+            com.tencent.mm.plugin.soter.d.a.c(6, -1000223, -1, "too many trial");
+            paramb.bh(-3, paramAnonymousc);
+            AppMethodBeat.o(64375);
+            return;
           }
-          else
+          localObject = str;
+          if (Build.VERSION.SDK_INT == 27)
           {
             localObject = str;
-            if (Build.VERSION.SDK_INT == 27)
-            {
-              localObject = str;
-              if ("Xiaomi".equals(Build.MANUFACTURER)) {
-                localObject = MMApplicationContext.getContext().getString(2131756697);
-              }
+            if ("Xiaomi".equals(Build.MANUFACTURER)) {
+              localObject = MMApplicationContext.getContext().getString(a.i.biometric_pay_fingerprint_manufacturer_errmsg);
             }
-            com.tencent.mm.plugin.soter.d.a.d(1000, -1000223, paramAnonymousc.errCode, "fingerprint error");
-            h.CyF.dN(1104, 39);
-            paramAnonymousc = (com.tencent.mm.plugin.fingerprint.b.a.c)localObject;
-            continue;
-            Log.i("MicroMsg.SoterFingerprintOpenDelegate", "hy: on error: %d", new Object[] { Integer.valueOf(paramAnonymousc.errCode) });
-            localObject = MMApplicationContext.getContext().getString(2131766337);
-            com.tencent.mm.plugin.soter.d.a.d(1000, -1000223, paramAnonymousc.errCode, "fingerprint error");
-            com.tencent.mm.plugin.soter.d.a.aaw(2);
-            paramAnonymousc = (com.tencent.mm.plugin.fingerprint.b.a.c)localObject;
           }
+          com.tencent.mm.plugin.soter.d.a.c(1000, -1000223, paramAnonymousc.errCode, "fingerprint error");
+          com.tencent.mm.plugin.report.service.h.IzE.el(1104, 39);
+          paramAnonymousc = (com.tencent.mm.plugin.fingerprint.b.a.c)localObject;
+          continue;
+          Log.i("MicroMsg.SoterFingerprintOpenDelegate", "hy: on error: %d", new Object[] { Integer.valueOf(paramAnonymousc.errCode) });
+          localObject = MMApplicationContext.getContext().getString(a.i.soter_on_error_common);
+          com.tencent.mm.plugin.soter.d.a.c(1000, -1000223, paramAnonymousc.errCode, "fingerprint error");
+          com.tencent.mm.plugin.soter.d.a.ahQ(2);
+          paramAnonymousc = (com.tencent.mm.plugin.fingerprint.b.a.c)localObject;
         }
       }
     });
@@ -126,28 +125,28 @@ public final class m
   {
     AppMethodBeat.i(64379);
     Log.i("MicroMsg.SoterFingerprintOpenDelegate", "hy: prepare");
-    this.wFC = new com.tencent.mm.plugin.soter.a();
-    this.wFz = new WeakReference((WalletBaseUI)paramContext);
-    this.wFm = paramb;
-    this.kof = paramString;
-    ((WalletBaseUI)this.wFz.get()).addSceneEndListener(1586);
-    ((WalletBaseUI)this.wFz.get()).addSceneEndListener(1638);
-    com.tencent.mm.plugin.soter.d.a.flI();
-    ((i)g.af(i.class)).q(new Object[0]);
+    this.Byz = new com.tencent.mm.plugin.soter.b();
+    this.Byw = new WeakReference((WalletBaseUI)paramContext);
+    this.Byj = paramb;
+    this.nfX = paramString;
+    ((WalletBaseUI)this.Byw.get()).addSceneEndListener(1586);
+    ((WalletBaseUI)this.Byw.get()).addSceneEndListener(1638);
+    com.tencent.mm.plugin.soter.d.a.gae();
+    ((i)com.tencent.mm.kernel.h.ae(i.class)).q(new Object[0]);
     Log.i("MicroMsg.SoterFingerprintOpenDelegate", "hy: start gen auth key");
-    h.CyF.dN(1104, 35);
-    this.wFC.a(new a.c()new com.tencent.mm.plugin.fingerprint.c.c
+    com.tencent.mm.plugin.report.service.h.IzE.el(1104, 35);
+    this.Byz.a(new b.c()new com.tencent.mm.plugin.fingerprint.c.c
     {
       public final void a(com.tencent.soter.a.b.c paramAnonymousc)
       {
         AppMethodBeat.i(64376);
-        if ((m.this.wFz != null) && (m.this.wFz.get() != null))
+        if ((m.this.Byw != null) && (m.this.Byw.get() != null))
         {
-          ((WalletBaseUI)m.this.wFz.get()).doSceneProgress(new com.tencent.mm.plugin.fingerprint.c.a(1), false);
+          ((WalletBaseUI)m.this.Byw.get()).doSceneProgress(new com.tencent.mm.plugin.fingerprint.c.a(1), false);
           AppMethodBeat.o(64376);
           return;
         }
-        m.this.bj(-1, "base ui is null");
+        m.this.bk(-1, "base ui is null");
         AppMethodBeat.o(64376);
       }
       
@@ -157,52 +156,52 @@ public final class m
         if (paramAnonymousc.errCode == 1006)
         {
           Log.e("MicroMsg.SoterFingerprintOpenDelegate", "hy: failed upload: model is null or necessary elements null");
-          com.tencent.mm.plugin.soter.d.a.d(4, -1000223, -1, "gen auth key failed: unexpected! generated but cannot get");
+          com.tencent.mm.plugin.soter.d.a.c(4, -1000223, -1, "gen auth key failed: unexpected! generated but cannot get");
         }
         for (;;)
         {
-          h.CyF.dN(1104, 34);
-          m.this.bj(-1, MMApplicationContext.getContext().getString(2131756697));
+          com.tencent.mm.plugin.report.service.h.IzE.el(1104, 34);
+          m.this.bk(-1, MMApplicationContext.getContext().getString(a.i.biometric_pay_fingerprint_manufacturer_errmsg));
           AppMethodBeat.o(64377);
           return;
           if (paramAnonymousc.errCode == 6)
           {
-            com.tencent.mm.plugin.soter.d.a.d(4, -1000223, -1, "gen auth key failed");
+            com.tencent.mm.plugin.soter.d.a.c(4, -1000223, -1, "gen auth key failed");
             if ((!Util.isNullOrNil(paramAnonymousc.errMsg)) && (paramAnonymousc.errMsg.startsWith("java.security.ProviderException")))
             {
-              m.this.bj(-2, MMApplicationContext.getContext().getString(2131756698));
+              m.this.bk(-2, MMApplicationContext.getContext().getString(a.i.biometric_pay_fingerprint_manufacturer_errmsg2));
               AppMethodBeat.o(64377);
               return;
             }
-            if ((com.tencent.soter.core.a.hlf() == 1) && (!Util.isNullOrNil(paramAnonymousc.errMsg)) && (paramAnonymousc.errMsg.equals("errmsg not specified")))
+            if ((com.tencent.soter.core.a.ioE() == 1) && (!Util.isNullOrNil(paramAnonymousc.errMsg)) && (paramAnonymousc.errMsg.equals("errmsg not specified")))
             {
-              m.this.bj(-2, MMApplicationContext.getContext().getString(2131756699));
+              m.this.bk(-2, MMApplicationContext.getContext().getString(a.i.biometric_pay_fingerprint_manufacturer_errmsg3));
               AppMethodBeat.o(64377);
             }
           }
           else if (paramAnonymousc.errCode == 1004)
           {
             Log.e("MicroMsg.SoterFingerprintOpenDelegate", "hy: update pay auth key failed. remove");
-            com.tencent.mm.plugin.soter.d.a.d(5, 4, paramAnonymousc.errCode, "upload auth key failed");
+            com.tencent.mm.plugin.soter.d.a.c(5, 4, paramAnonymousc.errCode, "upload auth key failed");
           }
           else if ((paramAnonymousc.errCode == 4) || (paramAnonymousc.errCode == 3))
           {
             Log.e("MicroMsg.SoterFingerprintOpenDelegate", "hy: gen auth key failed");
-            com.tencent.mm.plugin.soter.d.a.d(2, -1000223, -1, "gen ask failed");
+            com.tencent.mm.plugin.soter.d.a.c(2, -1000223, -1, "gen ask failed");
           }
           else if (paramAnonymousc.errCode == 1003)
           {
             Log.e("MicroMsg.SoterFingerprintOpenDelegate", "alvinluo upload ask failed");
-            com.tencent.mm.plugin.soter.d.a.d(3, 4, paramAnonymousc.errCode, paramAnonymousc.errMsg);
+            com.tencent.mm.plugin.soter.d.a.c(3, 4, paramAnonymousc.errCode, paramAnonymousc.errMsg);
           }
           else
           {
             Log.e("MicroMsg.SoterFingerprintOpenDelegate", "alvinluo unknown error when prepare auth key");
-            com.tencent.mm.plugin.soter.d.a.d(1000, -1000223, paramAnonymousc.errCode, paramAnonymousc.errMsg);
+            com.tencent.mm.plugin.soter.d.a.c(1000, -1000223, paramAnonymousc.errCode, paramAnonymousc.errMsg);
           }
         }
       }
-    }, new com.tencent.mm.plugin.fingerprint.c.c(this.kof, 1));
+    }, new com.tencent.mm.plugin.fingerprint.c.c(this.nfX, 1));
     AppMethodBeat.o(64379);
   }
   
@@ -210,29 +209,29 @@ public final class m
   {
     AppMethodBeat.i(64385);
     Log.i("MicroMsg.SoterFingerprintOpenDelegate", "hy: doOpenFP");
-    this.wFn = paramb;
-    if (!Util.isNullOrNil(this.wFF))
+    this.Byk = paramb;
+    if (!Util.isNullOrNil(this.ByC))
     {
-      if ((this.wFz != null) && (this.wFz.get() != null))
+      if ((this.Byw != null) && (this.Byw.get() != null))
       {
-        ((WalletBaseUI)this.wFz.get()).doSceneProgress(new com.tencent.mm.plugin.fingerprint.c.b(this.wFF, this.wFG, this.kof, 1));
+        ((WalletBaseUI)this.Byw.get()).doSceneProgress(new com.tencent.mm.plugin.fingerprint.c.b(this.ByC, this.ByD, this.nfX, 1));
         AppMethodBeat.o(64385);
       }
     }
     else
     {
       Log.e("MicroMsg.SoterFingerprintOpenDelegate", "hy: signature is null");
-      com.tencent.mm.plugin.soter.d.a.d(9, -1000223, -1, "signature is null");
-      bj(-1, MMApplicationContext.getContext().getString(2131760697));
+      com.tencent.mm.plugin.soter.d.a.c(9, -1000223, -1, "signature is null");
+      bk(-1, MMApplicationContext.getContext().getString(a.i.fingerprint_open_fail));
     }
     AppMethodBeat.o(64385);
   }
   
-  final void bj(int paramInt, String paramString)
+  final void bk(int paramInt, String paramString)
   {
     AppMethodBeat.i(64382);
-    if (this.wFm != null) {
-      this.wFm.bg(paramInt, paramString);
+    if (this.Byj != null) {
+      this.Byj.bh(paramInt, paramString);
     }
     AppMethodBeat.o(64382);
   }
@@ -241,15 +240,15 @@ public final class m
   {
     AppMethodBeat.i(64380);
     Log.i("MicroMsg.SoterFingerprintOpenDelegate", "hy: clear");
-    if ((this.wFz != null) && (this.wFz.get() != null))
+    if ((this.Byw != null) && (this.Byw.get() != null))
     {
-      ((WalletBaseUI)this.wFz.get()).removeSceneEndListener(1586);
-      ((WalletBaseUI)this.wFz.get()).removeSceneEndListener(1638);
+      ((WalletBaseUI)this.Byw.get()).removeSceneEndListener(1586);
+      ((WalletBaseUI)this.Byw.get()).removeSceneEndListener(1638);
     }
-    this.wFm = null;
-    p.wFK.reset();
-    if ((this.wFz != null) && (this.wFz.get() != null)) {
-      this.wFz.clear();
+    this.Byj = null;
+    p.ByH.reset();
+    if ((this.Byw != null) && (this.Byw.get() != null)) {
+      this.Byw.clear();
     }
     AppMethodBeat.o(64380);
   }
@@ -260,7 +259,7 @@ public final class m
     Log.i("MicroMsg.SoterFingerprintOpenDelegate", "hy: onSceneEnd: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     String str = paramString;
     if (Util.isNullOrNil(paramString)) {
-      str = MMApplicationContext.getContext().getString(2131760697);
+      str = MMApplicationContext.getContext().getString(a.i.fingerprint_open_fail);
     }
     if ((paramq instanceof com.tencent.mm.plugin.fingerprint.c.a))
     {
@@ -268,19 +267,19 @@ public final class m
       {
         Log.i("MicroMsg.SoterFingerprintOpenDelegate", "get challenge success");
         paramString = (com.tencent.mm.plugin.fingerprint.c.a)paramq;
-        if (Util.isNullOrNil(paramString.wFE))
+        if (Util.isNullOrNil(paramString.ByB))
         {
-          bj(-1, str);
+          bk(-1, str);
           AppMethodBeat.o(64383);
           return true;
         }
-        this.wFE = paramString.wFE;
+        this.ByB = paramString.ByB;
         MMHandlerThread.postToMainThread(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(64378);
-            m.this.bj(0, "");
+            m.this.bk(0, "");
             AppMethodBeat.o(64378);
           }
         });
@@ -289,31 +288,31 @@ public final class m
     else
     {
       if (!(paramq instanceof com.tencent.mm.plugin.fingerprint.c.b)) {
-        break label235;
+        break label237;
       }
       if ((paramInt2 != 0) || (paramInt1 != 0)) {
-        break label207;
+        break label209;
       }
       Log.i("MicroMsg.SoterFingerprintOpenDelegate", "hy: open success");
-      com.tencent.mm.plugin.soter.d.a.flJ();
-      com.tencent.mm.plugin.soter.d.a.d(0, 0, 0, "OK");
-      bk(0, str);
+      com.tencent.mm.plugin.soter.d.a.gaf();
+      com.tencent.mm.plugin.soter.d.a.c(0, 0, 0, "OK");
+      bl(0, str);
     }
     for (;;)
     {
       AppMethodBeat.o(64383);
       return true;
       Log.e("MicroMsg.SoterFingerprintOpenDelegate", "hy: failed get challenge");
-      bj(paramInt2, str);
-      com.tencent.mm.plugin.soter.d.a.d(7, paramInt1, paramInt2, "get challenge failed");
+      bk(paramInt2, str);
+      com.tencent.mm.plugin.soter.d.a.c(7, paramInt1, paramInt2, "get challenge failed");
       AppMethodBeat.o(64383);
       return true;
-      label207:
+      label209:
       Log.i("MicroMsg.SoterFingerprintOpenDelegate", "hy: open");
-      com.tencent.mm.plugin.soter.d.a.d(8, paramInt1, paramInt2, "open fp pay failed");
-      bk(-1, str);
+      com.tencent.mm.plugin.soter.d.a.c(8, paramInt1, paramInt2, "open fp pay failed");
+      bl(-1, str);
     }
-    label235:
+    label237:
     AppMethodBeat.o(64383);
     return false;
   }

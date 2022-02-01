@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.webview.emojistore;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.drx;
-import com.tencent.mm.protocal.protobuf.dry;
+import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.ebt;
+import com.tencent.mm.protocal.protobuf.ebu;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
@@ -21,73 +21,78 @@ public final class b
   extends q
   implements m
 {
-  int INw;
-  boolean INx;
-  private i heq;
-  private long rbH;
-  private byte[] rcO;
-  private String rcQ;
-  private int rcy;
+  int PJP;
+  boolean PJQ;
+  private i jQg;
   private final d rr;
+  private long uEM;
+  private int uFD;
+  private byte[] uFT;
+  private String uFV;
   
   public b(int paramInt1, String paramString, byte[] paramArrayOfByte, int paramInt2, long paramLong)
   {
     AppMethodBeat.i(77868);
-    this.rcO = null;
-    this.INw = -1;
-    this.INx = true;
-    this.rbH = 0L;
+    this.uFT = null;
+    this.PJP = -1;
+    this.PJQ = true;
+    this.uEM = 0L;
     d.a locala = new d.a();
-    locala.iLN = new drx();
-    locala.iLO = new dry();
+    locala.lBU = new ebt();
+    locala.lBV = new ebu();
     locala.uri = "/cgi-bin/micromsg-bin/mmsearchemotion";
     locala.funcId = 234;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    this.rcy = paramInt1;
-    this.rcQ = paramString;
-    this.rcO = paramArrayOfByte;
-    this.INw = paramInt2;
-    this.rbH = paramLong;
+    this.rr = locala.bgN();
+    this.uFD = paramInt1;
+    this.uFV = paramString;
+    this.uFT = paramArrayOfByte;
+    this.PJP = paramInt2;
+    this.uEM = paramLong;
     AppMethodBeat.o(77868);
   }
   
   public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(77869);
-    this.heq = parami;
-    drx localdrx = (drx)this.rr.iLK.iLR;
-    if (!Util.isNullOrNil(this.rcO))
+    this.jQg = parami;
+    ebt localebt = (ebt)d.b.b(this.rr.lBR);
+    if (!Util.isNullOrNil(this.uFT))
     {
-      localdrx.LUY = z.aC(this.rcO);
-      this.INx = false;
-      localdrx.LVb = this.rbH;
-      if (localdrx.LUY != null) {
+      localebt.TdH = z.aN(this.uFT);
+      this.PJQ = false;
+      localebt.TdK = this.uEM;
+      if (localebt.TdH != null) {
         break label134;
       }
     }
     label134:
-    for (parami = "Buf is NULL";; parami = localdrx.LUY.toString())
+    for (parami = "Buf is NULL";; parami = localebt.TdH.toString())
     {
       Log.d("MicroMsg.emoji.NetSceneSearchEmotion", parami);
-      localdrx.ReqType = this.rcy;
-      localdrx.LUZ = this.rcQ;
+      localebt.lpw = this.uFD;
+      localebt.TdI = this.uFV;
       int i = dispatch(paramg, this.rr, this);
       AppMethodBeat.o(77869);
       return i;
-      localdrx.LUY = new SKBuiltinBuffer_t();
-      this.INx = true;
+      localebt.TdH = new eae();
+      this.PJQ = true;
       break;
     }
   }
   
-  public final dry gap()
+  public final ebu gTj()
   {
-    if (this.rr == null) {
+    AppMethodBeat.i(264350);
+    if (this.rr == null)
+    {
+      AppMethodBeat.o(264350);
       return null;
     }
-    return (dry)this.rr.iLL.iLR;
+    ebu localebu = (ebu)d.c.b(this.rr.lBS);
+    AppMethodBeat.o(264350);
+    return localebu;
   }
   
   public final int getType()
@@ -99,7 +104,7 @@ public final class b
   {
     AppMethodBeat.i(77870);
     Log.i("MicroMsg.emoji.NetSceneSearchEmotion", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.heq.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    this.jQg.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(77870);
   }
 }

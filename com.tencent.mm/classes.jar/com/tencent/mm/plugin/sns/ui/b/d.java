@@ -17,8 +17,8 @@ public final class d
   {
     super(paramActivity, paramView, paramBoolean);
     AppMethodBeat.i(99899);
-    this.yTl = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.yTl.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.Exi = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    this.Exi.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -31,37 +31,37 @@ public final class d
           if (f != 0.0F)
           {
             paramAnonymousValueAnimator = (FrameLayout.LayoutParams)d.this.view.getLayoutParams();
-            paramAnonymousValueAnimator.leftMargin = ((int)(d.this.ETJ * f));
-            paramAnonymousValueAnimator.topMargin = ((int)(d.this.ETK * f));
+            paramAnonymousValueAnimator.leftMargin = ((int)(d.this.LhL * f));
+            paramAnonymousValueAnimator.topMargin = ((int)(d.this.LhM * f));
             localViewGroup = (ViewGroup)d.this.view.getParent();
             if (!paramBoolean) {
               break label238;
             }
-            paramAnonymousValueAnimator.rightMargin = ((int)(localViewGroup.getWidth() - (d.this.targetWidth - d.this.ETO * f) - paramAnonymousValueAnimator.leftMargin));
+            paramAnonymousValueAnimator.rightMargin = ((int)(localViewGroup.getWidth() - (d.this.targetWidth - d.this.LhQ * f) - paramAnonymousValueAnimator.leftMargin));
           }
         }
-        for (paramAnonymousValueAnimator.bottomMargin = ((int)(localViewGroup.getHeight() - (d.this.targetHeight - d.this.ETN * f) - paramAnonymousValueAnimator.topMargin));; paramAnonymousValueAnimator.bottomMargin = ((int)(localViewGroup.getHeight() * f - d.this.ETM * f - paramAnonymousValueAnimator.topMargin)))
+        for (paramAnonymousValueAnimator.bottomMargin = ((int)(localViewGroup.getHeight() - (d.this.targetHeight - d.this.LhP * f) - paramAnonymousValueAnimator.topMargin));; paramAnonymousValueAnimator.bottomMargin = ((int)(localViewGroup.getHeight() * f - d.this.LhO * f - paramAnonymousValueAnimator.topMargin)))
         {
           d.this.view.setLayoutParams(paramAnonymousValueAnimator);
-          if (d.this.ETI != null) {
-            d.this.ETI.bX(f);
+          if (d.this.LhK != null) {
+            d.this.LhK.ca(f);
           }
           AppMethodBeat.o(99896);
           return;
           d.this.view.setAlpha(1.0F - f);
           break;
           label238:
-          paramAnonymousValueAnimator.rightMargin = ((int)(localViewGroup.getWidth() * f - d.this.ETL * f - paramAnonymousValueAnimator.leftMargin));
+          paramAnonymousValueAnimator.rightMargin = ((int)(localViewGroup.getWidth() * f - d.this.LhN * f - paramAnonymousValueAnimator.leftMargin));
         }
       }
     });
-    this.yTl.addListener(new AnimatorListenerAdapter()
+    this.Exi.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(99898);
-        if (d.this.ETI != null) {
-          d.this.ETI.onAnimationEnd();
+        if (d.this.LhK != null) {
+          d.this.LhK.onAnimationEnd();
         }
         d.this.view.setVisibility(8);
         AppMethodBeat.o(99898);
@@ -70,8 +70,8 @@ public final class d
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(99897);
-        if (d.this.ETI != null) {
-          d.this.ETI.onAnimationStart();
+        if (d.this.LhK != null) {
+          d.this.LhK.onAnimationStart();
         }
         d.this.view.setVisibility(0);
         AppMethodBeat.o(99897);
@@ -79,17 +79,17 @@ public final class d
     });
     if (paramBoolean)
     {
-      this.yTl.setDuration(300L);
+      this.Exi.setDuration(300L);
       AppMethodBeat.o(99899);
       return;
     }
-    this.yTl.setDuration(400L);
+    this.Exi.setDuration(400L);
     AppMethodBeat.o(99899);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.b.d
  * JD-Core Version:    0.7.0.1
  */

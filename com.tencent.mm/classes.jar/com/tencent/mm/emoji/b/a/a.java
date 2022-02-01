@@ -1,51 +1,67 @@
 package com.tencent.mm.emoji.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.protocal.protobuf.ExchangeEmotionPackRequest;
-import com.tencent.mm.protocal.protobuf.ExchangeEmotionPackResponse;
+import com.tencent.mm.an.c;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.cd.b;
+import com.tencent.mm.protocal.protobuf.jq;
+import com.tencent.mm.protocal.protobuf.jr;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
+import kotlin.a.v;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/model/cgi/CgiExchangeEmotionPack;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/ExchangeEmotionPackResponse;", "groupId", "", "scene", "", "(Ljava/lang/String;I)V", "Companion", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/model/cgi/CgiBatchEmojiDownload;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/BatchEmojiDownLoadResponse;", "customType", "", "reqBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "(ILcom/tencent/mm/protobuf/ByteString;)V", "md5List", "", "", "(Ljava/util/List;)V", "reqType", "(IILjava/util/List;Lcom/tencent/mm/protobuf/ByteString;)V", "Companion", "plugin-emojisdk_release"})
 public final class a
-  extends c<ExchangeEmotionPackResponse>
+  extends c<jr>
 {
-  public static final a gXU;
+  public static final a jIT;
   
   static
   {
-    AppMethodBeat.i(199915);
-    gXU = new a((byte)0);
-    AppMethodBeat.o(199915);
+    AppMethodBeat.i(229947);
+    jIT = new a((byte)0);
+    AppMethodBeat.o(229947);
   }
   
-  public a(String paramString)
+  private a(int paramInt1, int paramInt2, List<String> paramList, b paramb)
   {
-    AppMethodBeat.i(199914);
-    ExchangeEmotionPackRequest localExchangeEmotionPackRequest = new ExchangeEmotionPackRequest();
-    ExchangeEmotionPackResponse localExchangeEmotionPackResponse = new ExchangeEmotionPackResponse();
-    localExchangeEmotionPackRequest.IsAutomatic = 1;
-    localExchangeEmotionPackRequest.ProductID = paramString;
-    localExchangeEmotionPackRequest.Scene = 1;
-    localExchangeEmotionPackRequest.SeriesID = null;
-    paramString = new d.a();
-    paramString.c((com.tencent.mm.bw.a)localExchangeEmotionPackRequest);
-    paramString.d((com.tencent.mm.bw.a)localExchangeEmotionPackResponse);
-    paramString.MB("/cgi-bin/micromsg-bin/exchangeemotionpack");
-    paramString.sG(423);
-    paramString.sI(213);
-    paramString.sJ(1000000213);
-    c(paramString.aXF());
-    AppMethodBeat.o(199914);
+    AppMethodBeat.i(229935);
+    jq localjq = new jq();
+    jr localjr = new jr();
+    localjq.lpw = paramInt1;
+    localjq.RPk = new LinkedList((Collection)paramList);
+    localjq.CNe = paramInt2;
+    localjq.RPl = paramb;
+    paramList = new d.a();
+    paramList.c((com.tencent.mm.cd.a)localjq);
+    paramList.d((com.tencent.mm.cd.a)localjr);
+    paramList.TW("/cgi-bin/micromsg-bin/mmbatchemojidownload");
+    paramList.vD(697);
+    c(paramList.bgN());
+    AppMethodBeat.o(229935);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/model/cgi/CgiExchangeEmotionPack$Companion;", "", "()V", "MM_EXCHANGE_EMOTION_PACK", "", "MM_EXCHANGE_EMOTION_PIECE", "NOT_PAY_PRODUCT", "NOT_VALID_AREA", "NOT_VALID_WEAR", "NO_SUCH_PRODUCT", "PRODUCT_EXPIRED", "plugin-emojisdk_release"})
+  public a(int paramInt, b paramb)
+  {
+    this(2, paramInt, (List)v.aaAd, paramb);
+    AppMethodBeat.o(229940);
+  }
+  
+  public a(List<String> paramList, byte paramByte)
+  {
+    this(paramList);
+    AppMethodBeat.i(229944);
+    AppMethodBeat.o(229944);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/model/cgi/CgiBatchEmojiDownload$Companion;", "", "()V", "MM_BATCH_EMOJI_DOWNLOAD_REQ_BACKUP", "", "MM_BATCH_EMOJI_DOWNLOAD_REQ_BACKUP_MD5ONLY", "MM_BATCH_EMOJI_DOWNLOAD_REQ_MD5LIST", "plugin-emojisdk_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.emoji.b.a.a
  * JD-Core Version:    0.7.0.1
  */

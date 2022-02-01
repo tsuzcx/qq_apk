@@ -6,8 +6,8 @@ public class h<K, O>
   extends LruCache<K, O>
   implements f<K, O>
 {
-  private f.b<K, O> dgK = null;
-  private f.c<K, O> dgL = null;
+  private f.b<K, O> eYr = null;
+  private f.c<K, O> eYs = null;
   
   public h(int paramInt)
   {
@@ -17,14 +17,14 @@ public class h<K, O>
   public h(int paramInt, f.b<K, O> paramb)
   {
     super(paramInt);
-    this.dgK = paramb;
+    this.eYr = paramb;
   }
   
   public h(int paramInt, f.b<K, O> paramb, f.c<K, O> paramc)
   {
     super(paramInt);
-    this.dgK = paramb;
-    this.dgL = paramc;
+    this.eYr = paramb;
+    this.eYs = paramc;
   }
   
   public void a(f.a<K, O> parama)
@@ -32,7 +32,7 @@ public class h<K, O>
     clear();
   }
   
-  public final O aT(K paramK)
+  public final O aX(K paramK)
   {
     return get(paramK);
   }
@@ -50,15 +50,23 @@ public class h<K, O>
   public void entryRemoved(boolean paramBoolean, K paramK, O paramO1, O paramO2)
   {
     super.entryRemoved(paramBoolean, paramK, paramO1, paramO2);
-    if (this.dgK != null) {
-      this.dgK.c(paramK, paramO1, paramO2);
+    if (this.eYr != null) {
+      this.eYr.preRemoveCallback(paramK, paramO1, paramO2);
     }
+  }
+  
+  public final void q(K paramK, O paramO)
+  {
+    if ((paramO == null) || (paramK == null)) {
+      return;
+    }
+    put(paramK, paramO);
   }
   
   public int sizeOf(K paramK, O paramO)
   {
-    if (this.dgL != null) {
-      return this.dgL.y(paramK, paramO);
+    if (this.eYs != null) {
+      return this.eYs.r(paramK, paramO);
     }
     return super.sizeOf(paramK, paramO);
   }
@@ -67,18 +75,10 @@ public class h<K, O>
   {
     super.trimToSize(paramInt);
   }
-  
-  public final void x(K paramK, O paramO)
-  {
-    if ((paramO == null) || (paramK == null)) {
-      return;
-    }
-    put(paramK, paramO);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.b.h
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,6 @@
     <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/cn">
         <ImageView android:id="@id/wm" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginRight="@dimen/c5" android:layout_centerVertical="true" />
         <TextView android:textColor="@color/qa" android:ellipsize="end" android:gravity="center" android:id="@id/fzc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="nickname" android:maxLines="1" android:layout_toRightOf="@id/wm" android:layout_centerVertical="true" />
-        <View android:background="@color/aa" android:layout_width="fill_parent" android:layout_height="1.0px" android:minHeight="1.0px" android:layout_alignParentBottom="true" />
+        <View android:background="@color/UN_BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="1.0px" android:minHeight="1.0px" android:layout_alignParentBottom="true" />
     </RelativeLayout>
 </FrameLayout>

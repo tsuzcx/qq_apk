@@ -18,18 +18,18 @@ public class TXCUGCBGMPlayer
   private float mSpeedRate;
   private long mStartTimeMS;
   private float mVolume;
-  private WeakReference<f> mWeakListener;
+  private WeakReference<h> mWeakListener;
   
   static
   {
     AppMethodBeat.i(16297);
-    com.tencent.liteav.basic.util.f.f();
+    com.tencent.liteav.basic.util.h.f();
     AppMethodBeat.o(16297);
   }
   
   private TXCUGCBGMPlayer()
   {
-    AppMethodBeat.i(221833);
+    AppMethodBeat.i(247851);
     this.mWeakListener = null;
     this.mIsRunning = false;
     this.mVolume = 1.0F;
@@ -39,7 +39,7 @@ public class TXCUGCBGMPlayer
     this.mSeekBytes = 0L;
     this.mBGMId = -2147483648;
     TXCMultAudioTrackPlayer.getInstance();
-    AppMethodBeat.o(221833);
+    AppMethodBeat.o(247851);
   }
   
   public static TXCUGCBGMPlayer getInstance()
@@ -53,14 +53,14 @@ public class TXCUGCBGMPlayer
   private void onPlayEnd(int paramInt)
   {
     AppMethodBeat.i(16294);
-    f localf = null;
+    h localh = null;
     try
     {
       if (this.mWeakListener != null) {
-        localf = (f)this.mWeakListener.get();
+        localh = (h)this.mWeakListener.get();
       }
-      if (localf != null) {
-        localf.onPlayEnd(paramInt);
+      if (localh != null) {
+        localh.onPlayEnd(paramInt);
       }
       AppMethodBeat.o(16294);
       return;
@@ -74,14 +74,14 @@ public class TXCUGCBGMPlayer
   private void onPlayProgress(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(16295);
-    f localf = null;
+    h localh = null;
     try
     {
       if (this.mWeakListener != null) {
-        localf = (f)this.mWeakListener.get();
+        localh = (h)this.mWeakListener.get();
       }
-      if (localf != null) {
-        localf.onPlayProgress(paramLong1, paramLong2);
+      if (localh != null) {
+        localh.onPlayProgress(paramLong1, paramLong2);
       }
       AppMethodBeat.o(16295);
       return;
@@ -95,14 +95,14 @@ public class TXCUGCBGMPlayer
   private void onPlayStart()
   {
     AppMethodBeat.i(16293);
-    f localf = null;
+    h localh = null;
     try
     {
       if (this.mWeakListener != null) {
-        localf = (f)this.mWeakListener.get();
+        localh = (h)this.mWeakListener.get();
       }
-      if (localf != null) {
-        localf.onPlayStart();
+      if (localh != null) {
+        localh.onPlayStart();
       }
       AppMethodBeat.o(16293);
       return;
@@ -123,23 +123,23 @@ public class TXCUGCBGMPlayer
   
   public void onComplete(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(221839);
+    AppMethodBeat.i(247881);
     onPlayEnd(paramInt2);
-    AppMethodBeat.o(221839);
+    AppMethodBeat.o(247881);
   }
   
   public void onPlayProgress(int paramInt, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(221837);
+    AppMethodBeat.i(247878);
     onPlayProgress(paramLong1, paramLong2);
-    AppMethodBeat.o(221837);
+    AppMethodBeat.o(247878);
   }
   
   public void onStart(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(221838);
+    AppMethodBeat.i(247880);
     onPlayStart();
-    AppMethodBeat.o(221838);
+    AppMethodBeat.o(247880);
   }
   
   public void pause()
@@ -170,36 +170,41 @@ public class TXCUGCBGMPlayer
   public void seekBytes(long paramLong)
   {
     AppMethodBeat.i(16290);
-    TXCLog.i("AudioCenter:TXCUGCBGMPlayer", "seekBytes:".concat(String.valueOf(paramLong)));
-    long l = paramLong;
+    long l1 = paramLong;
     if (paramLong < 0L)
     {
       TXCLog.e("AudioCenter:TXCUGCBGMPlayer", "seek bytes can not be negative. change to 0");
-      l = 0L;
+      l1 = 0L;
     }
-    this.mSeekBytes = l;
-    TXAudioEffectManagerImpl.getCacheInstance().seekMusicToPosInBytes(this.mBGMId, l);
+    long l2 = TXAudioEffectManagerImpl.getCacheInstance().getAvailableBGMBytes(this.mBGMId);
+    paramLong = l1;
+    if (l2 > 0L) {
+      paramLong = l1 % l2;
+    }
+    this.mSeekBytes = paramLong;
+    TXCLog.i("AudioCenter:TXCUGCBGMPlayer", "mSeekBytes:" + this.mSeekBytes);
+    TXAudioEffectManagerImpl.getCacheInstance().seekMusicToPosInBytes(this.mBGMId, paramLong);
     AppMethodBeat.o(16290);
   }
   
   public void setChangerType(int paramInt)
   {
-    AppMethodBeat.i(221835);
+    AppMethodBeat.i(247867);
     TXCLog.i("AudioCenter:TXCUGCBGMPlayer", "changerType:".concat(String.valueOf(paramInt)));
     TXAudioEffectManagerImpl.getCacheInstance().setMusicChangerType(this.mBGMId, paramInt);
-    AppMethodBeat.o(221835);
+    AppMethodBeat.o(247867);
   }
   
-  public void setOnPlayListener(f paramf)
+  public void setOnPlayListener(h paramh)
   {
     try
     {
-      AppMethodBeat.i(16282);
-      if (paramf == null) {
+      AppMethodBeat.i(247853);
+      if (paramh == null) {
         this.mWeakListener = null;
       }
-      this.mWeakListener = new WeakReference(paramf);
-      AppMethodBeat.o(16282);
+      this.mWeakListener = new WeakReference(paramh);
+      AppMethodBeat.o(247853);
       return;
     }
     finally {}
@@ -207,10 +212,10 @@ public class TXCUGCBGMPlayer
   
   public void setReverbType(int paramInt)
   {
-    AppMethodBeat.i(221836);
+    AppMethodBeat.i(247870);
     TXCLog.i("AudioCenter:TXCUGCBGMPlayer", "int reverbType:".concat(String.valueOf(paramInt)));
     TXAudioEffectManagerImpl.getCacheInstance().setMusicReverbType(this.mBGMId, paramInt);
-    AppMethodBeat.o(221836);
+    AppMethodBeat.o(247870);
   }
   
   public void setSpeedRate(float paramFloat)
@@ -233,11 +238,11 @@ public class TXCUGCBGMPlayer
   
   public void startPlay(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(221834);
+    AppMethodBeat.i(247857);
     TXCLog.i("AudioCenter:TXCUGCBGMPlayer", "startPlay:" + paramString + "record:" + paramBoolean);
     if ((paramString == null) || (paramString.isEmpty()))
     {
-      AppMethodBeat.o(221834);
+      AppMethodBeat.o(247857);
       return;
     }
     if (this.mIsRunning)
@@ -264,11 +269,11 @@ public class TXCUGCBGMPlayer
     if (!paramBoolean)
     {
       onPlayEnd(-1);
-      AppMethodBeat.o(221834);
+      AppMethodBeat.o(247857);
       return;
     }
     onPlayStart();
-    AppMethodBeat.o(221834);
+    AppMethodBeat.o(247857);
   }
   
   public void stopPlay()
@@ -297,9 +302,9 @@ public class TXCUGCBGMPlayer
     
     static
     {
-      AppMethodBeat.i(222008);
+      AppMethodBeat.i(247265);
       a = new TXCUGCBGMPlayer(null);
-      AppMethodBeat.o(222008);
+      AppMethodBeat.o(247265);
     }
     
     public static TXCUGCBGMPlayer a()
@@ -310,7 +315,7 @@ public class TXCUGCBGMPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.audio.TXCUGCBGMPlayer
  * JD-Core Version:    0.7.0.1
  */

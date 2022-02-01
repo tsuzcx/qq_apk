@@ -1,31 +1,51 @@
 package com.tencent.mm.plugin.appbrand.task;
 
-import android.app.Activity;
-import android.content.Context;
-import android.widget.FrameLayout;
+import com.tencent.luggage.sdk.processes.LuggageServiceType;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.l;
+import kotlin.m;
 
-public abstract interface k
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"getAppBrandProcesses", "Lcom/tencent/mm/plugin/appbrand/task/AppBrandProcessesManager;", "maxLimit", "", "Lcom/tencent/luggage/sdk/processes/LuggageServiceType;", "plugin-appbrand-integration_release"})
+public final class k
 {
-  public abstract void a(a parama);
-  
-  public abstract FrameLayout bWl();
-  
-  public abstract boolean bsc();
-  
-  public abstract void finish();
-  
-  public abstract Activity getActivity();
-  
-  public abstract Context getContext();
-  
-  public static abstract interface a
+  public static final i cjd()
   {
-    public abstract void proceed();
+    AppMethodBeat.i(282430);
+    if (com.tencent.mm.plugin.appbrand.ui.n.cka())
+    {
+      locali = (i)new o();
+      AppMethodBeat.o(282430);
+      return locali;
+    }
+    i locali = (i)new g();
+    AppMethodBeat.o(282430);
+    return locali;
+  }
+  
+  static final int f(LuggageServiceType paramLuggageServiceType)
+  {
+    AppMethodBeat.i(282429);
+    switch (l.$EnumSwitchMapping$0[paramLuggageServiceType.ordinal()])
+    {
+    default: 
+      paramLuggageServiceType = new m();
+      AppMethodBeat.o(282429);
+      throw paramLuggageServiceType;
+    case 1: 
+      AppMethodBeat.o(282429);
+      return 2147483647;
+    case 2: 
+      int i = n.cje();
+      AppMethodBeat.o(282429);
+      return i;
+    }
+    AppMethodBeat.o(282429);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.k
  * JD-Core Version:    0.7.0.1
  */

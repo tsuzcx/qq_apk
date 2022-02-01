@@ -2,8 +2,8 @@ package com.google.android.gms.dynamic;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.View;
+import androidx.fragment.app.Fragment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class SupportFragmentWrapper
@@ -19,14 +19,14 @@ public final class SupportFragmentWrapper
   
   public static SupportFragmentWrapper wrap(Fragment paramFragment)
   {
-    AppMethodBeat.i(5419);
+    AppMethodBeat.i(258399);
     if (paramFragment != null)
     {
       paramFragment = new SupportFragmentWrapper(paramFragment);
-      AppMethodBeat.o(5419);
+      AppMethodBeat.o(258399);
       return paramFragment;
     }
-    AppMethodBeat.o(5419);
+    AppMethodBeat.o(258399);
     return null;
   }
   
@@ -214,10 +214,10 @@ public final class SupportFragmentWrapper
   {
     AppMethodBeat.i(5443);
     Fragment localFragment = this.zzabq;
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bl(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(localFragment, paramIntent.axQ(), "com/google/android/gms/dynamic/SupportFragmentWrapper", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    localFragment.startActivity((Intent)paramIntent.pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(localFragment, "com/google/android/gms/dynamic/SupportFragmentWrapper", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(localFragment, paramIntent.aFh(), "com/google/android/gms/dynamic/SupportFragmentWrapper", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localFragment.startActivity((Intent)paramIntent.sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localFragment, "com/google/android/gms/dynamic/SupportFragmentWrapper", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(5443);
   }
   

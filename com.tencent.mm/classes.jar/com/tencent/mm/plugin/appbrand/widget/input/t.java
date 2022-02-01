@@ -14,12 +14,12 @@ final class t
     super(paramContext);
   }
   
-  public final void cbz()
+  public final void coJ()
   {
     AppMethodBeat.i(136475);
     try
     {
-      aj.dg(this).restartInput(this);
+      an.dB(this).restartInput(this);
       AppMethodBeat.o(136475);
       return;
     }
@@ -28,7 +28,7 @@ final class t
       Log.e("Luggage.Wxa.AppBrandInputWidgetSingleLineWithSoftKeyboard", "ensureInputConnection restartInput re=%s", new Object[] { localRuntimeException1 });
       try
       {
-        aj.dg(this).showSoftInput(this, 0);
+        an.dB(this).showSoftInput(this, 0);
         AppMethodBeat.o(136475);
         return;
       }
@@ -43,15 +43,15 @@ final class t
   public final View getInputPanel()
   {
     AppMethodBeat.i(136473);
-    w localw = w.dc(this);
+    aa localaa = aa.dw(this);
     AppMethodBeat.o(136473);
-    return localw;
+    return localaa;
   }
   
   public final void setPasswordMode(boolean paramBoolean)
   {
     AppMethodBeat.i(136474);
-    cbU();
+    cpf();
     int i = getInputType() | 0x1;
     if (paramBoolean) {
       i |= 0x80;
@@ -60,7 +60,7 @@ final class t
     {
       setInputType(i);
       super.setPasswordMode(paramBoolean);
-      cbV();
+      cpg();
       AppMethodBeat.o(136474);
       return;
       i &= 0xFFFFFF7F;
@@ -69,7 +69,7 @@ final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.t
  * JD-Core Version:    0.7.0.1
  */

@@ -6,9 +6,9 @@ import java.util.Map;
 
 final class c
 {
-  final Map<Character, Integer> cgA;
-  final int cgy;
-  final char[] cgz;
+  final char[] ciA;
+  final Map<Character, Integer> ciB;
+  final int ciz;
   
   c(String paramString)
   {
@@ -21,27 +21,27 @@ final class c
     }
     paramString = paramString.toCharArray();
     int k = paramString.length;
-    this.cgy = k;
-    this.cgA = new HashMap(k);
+    this.ciz = k;
+    this.ciB = new HashMap(k);
     int i = 0;
     while (i < k)
     {
-      this.cgA.put(Character.valueOf(paramString[i]), Integer.valueOf(i));
+      this.ciB.put(Character.valueOf(paramString[i]), Integer.valueOf(i));
       i += 1;
     }
-    this.cgz = new char[k * 2 + 1];
-    this.cgz[0] = '\000';
+    this.ciA = new char[k * 2 + 1];
+    this.ciA[0] = '\000';
     i = j;
     while (i < k)
     {
-      this.cgz[(i + 1)] = paramString[i];
-      this.cgz[(k + 1 + i)] = paramString[i];
+      this.ciA[(i + 1)] = paramString[i];
+      this.ciA[(k + 1 + i)] = paramString[i];
       i += 1;
     }
     AppMethodBeat.o(39843);
   }
   
-  final int p(char paramChar)
+  final int u(char paramChar)
   {
     AppMethodBeat.i(39844);
     if (paramChar == 0)
@@ -49,31 +49,19 @@ final class c
       AppMethodBeat.o(39844);
       return 0;
     }
-    if (this.cgA.containsKey(Character.valueOf(paramChar)))
+    if (this.ciB.containsKey(Character.valueOf(paramChar)))
     {
-      int i = ((Integer)this.cgA.get(Character.valueOf(paramChar))).intValue();
+      int i = ((Integer)this.ciB.get(Character.valueOf(paramChar))).intValue();
       AppMethodBeat.o(39844);
       return i + 1;
     }
     AppMethodBeat.o(39844);
     return -1;
   }
-  
-  final class a
-  {
-    final int endIndex;
-    final int startIndex;
-    
-    public a(int paramInt1, int paramInt2)
-    {
-      this.startIndex = paramInt1;
-      this.endIndex = paramInt2;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.robinhood.ticker.c
  * JD-Core Version:    0.7.0.1
  */

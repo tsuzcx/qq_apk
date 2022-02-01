@@ -2,7 +2,7 @@ package com.tencent.mm.msgsubscription;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData$ItemUiData$Companion;", "", "()V", "CHOOSE_STATUS_CHECK", "", "getCHOOSE_STATUS_CHECK", "()I", "CHOOSE_STATUS_UNCHECK", "getCHOOSE_STATUS_UNCHECK", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData$ItemUiData;", "wxbiz-msgsubscription-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData$ItemUiData$Companion;", "", "()V", "CHOOSE_STATUS_CHECK", "", "getCHOOSE_STATUS_CHECK", "()I", "CHOOSE_STATUS_UNCHECK", "getCHOOSE_STATUS_UNCHECK", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData$ItemUiData;", "wxbiz-msgsubscription-sdk_release"})
 public final class SubscribeMsgRequestDialogUiData$ItemUiData$a {}
 
 

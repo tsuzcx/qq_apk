@@ -8,7 +8,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.s;
 import com.tencent.mm.platformtools.s.a;
 import com.tencent.mm.platformtools.s.b;
-import com.tencent.mm.plugin.scanner.j;
+import com.tencent.mm.plugin.scanner.l.e;
+import com.tencent.mm.plugin.scanner.o;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -27,10 +28,10 @@ public final class q
   public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
   {
     AppMethodBeat.i(52069);
-    if (s.a.jNh == parama) {}
+    if (s.a.mEp == parama) {}
     try
     {
-      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, blA(), false);
+      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, bvq(), false);
       AppMethodBeat.o(52069);
       return paramBitmap;
     }
@@ -43,39 +44,37 @@ public final class q
     }
   }
   
-  public final void a(s.a parama, String paramString) {}
+  public final void a(s.a parama) {}
   
-  public final void ad(String paramString, boolean paramBoolean) {}
+  public final s.b bvp()
+  {
+    return null;
+  }
   
-  public final String blA()
+  public final String bvq()
   {
     AppMethodBeat.i(52068);
-    String str = j.eOR().jP(this.mPicUrl, "@S");
+    String str = o.fBS().kh(this.mPicUrl, "@S");
     AppMethodBeat.o(52068);
     return str;
   }
   
-  public final String blB()
+  public final String bvr()
   {
     return this.mPicUrl;
   }
   
-  public final String blC()
+  public final String bvs()
   {
     return this.mPicUrl;
   }
   
-  public final boolean blD()
+  public final boolean bvt()
   {
     return false;
   }
   
-  public final boolean blE()
-  {
-    return false;
-  }
-  
-  public final Bitmap blF()
+  public final Bitmap bvu()
   {
     AppMethodBeat.i(52070);
     if (MMApplicationContext.getContext() == null)
@@ -83,17 +82,14 @@ public final class q
       AppMethodBeat.o(52070);
       return null;
     }
-    Bitmap localBitmap = BitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), 2131234279);
+    Bitmap localBitmap = BitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), l.e.nosdcard_chatting_bg);
     AppMethodBeat.o(52070);
     return localBitmap;
   }
   
-  public final void blG() {}
+  public final void bvv() {}
   
-  public final s.b blz()
-  {
-    return null;
-  }
+  public final void bvw() {}
   
   public final String getCacheKey()
   {
@@ -102,7 +98,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.util.q
  * JD-Core Version:    0.7.0.1
  */

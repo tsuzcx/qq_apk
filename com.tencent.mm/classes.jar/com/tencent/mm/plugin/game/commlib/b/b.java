@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.game.commlib.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.io.IOException;
@@ -24,7 +25,12 @@ public final class b
     super(paramISQLiteDatabase, a.info, "PBCache", null);
   }
   
-  public final byte[] azn(String paramString)
+  public b(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, String[] paramArrayOfString)
+  {
+    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, paramArrayOfString);
+  }
+  
+  public final byte[] aIX(String paramString)
   {
     AppMethodBeat.i(89950);
     if (Util.isNullOrNil(paramString))
@@ -44,7 +50,7 @@ public final class b
     return null;
   }
   
-  public final void azo(String paramString)
+  public final void aIY(String paramString)
   {
     AppMethodBeat.i(184540);
     a locala = new a();
@@ -53,7 +59,7 @@ public final class b
     AppMethodBeat.o(184540);
   }
   
-  public final boolean b(String paramString, com.tencent.mm.bw.a parama)
+  public final boolean b(String paramString, com.tencent.mm.cd.a parama)
   {
     AppMethodBeat.i(89951);
     if ((Util.isNullOrNil(paramString)) || (parama == null))
@@ -64,7 +70,7 @@ public final class b
     try
     {
       parama = parama.toByteArray();
-      boolean bool = r(paramString, parama);
+      boolean bool = u(paramString, parama);
       AppMethodBeat.o(89951);
       return bool;
     }
@@ -76,7 +82,7 @@ public final class b
     return false;
   }
   
-  public final boolean r(String paramString, byte[] paramArrayOfByte)
+  public final boolean u(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(184539);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
@@ -102,7 +108,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.commlib.b.b
  * JD-Core Version:    0.7.0.1
  */

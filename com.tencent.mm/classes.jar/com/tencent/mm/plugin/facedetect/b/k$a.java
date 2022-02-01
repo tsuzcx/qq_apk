@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.cd.b;
 import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.l;
 import com.tencent.mm.protocal.l.b;
 import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.epl;
+import com.tencent.mm.protocal.protobuf.dvv;
+import com.tencent.mm.protocal.protobuf.eae;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class k$a
   extends l.d
   implements l.b
 {
-  public epl sPL;
+  public dvv wvD;
   
   public k$a()
   {
-    AppMethodBeat.i(103599);
-    this.sPL = new epl();
-    AppMethodBeat.o(103599);
+    AppMethodBeat.i(103595);
+    this.wvD = new dvv();
+    AppMethodBeat.o(103595);
   }
   
   public final int getCmdId()
@@ -30,24 +30,24 @@ public final class k$a
   
   public final int getFuncId()
   {
-    return 930;
+    return 931;
   }
   
   public final byte[] toProtoBuf()
   {
-    AppMethodBeat.i(103600);
-    setRsaInfo(ac.gtR());
-    this.sPL.KPW = new SKBuiltinBuffer_t().setBuffer(Util.getUuidRandom());
-    this.sPL.setBaseRequest(l.a(this));
-    setPassKey(this.sPL.KPW.getBuffer().toByteArray());
-    byte[] arrayOfByte = this.sPL.toByteArray();
-    AppMethodBeat.o(103600);
+    AppMethodBeat.i(103596);
+    setRsaInfo(ac.hph());
+    this.wvD.RQU = new eae().dc(Util.getUuidRandom());
+    this.wvD.setBaseRequest(l.a(this));
+    setPassKey(this.wvD.RQU.Tkb.toByteArray());
+    byte[] arrayOfByte = this.wvD.toByteArray();
+    AppMethodBeat.o(103596);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.b.k.a
  * JD-Core Version:    0.7.0.1
  */

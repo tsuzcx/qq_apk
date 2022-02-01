@@ -10,8 +10,8 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.annotation.Keep;
 import android.util.Log;
+import androidx.annotation.Keep;
 import com.google.android.gms.common.util.VisibleForTesting;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
@@ -25,24 +25,24 @@ import javax.annotation.concurrent.GuardedBy;
 
 public class FirebaseInstanceId
 {
-  private static final long bLf;
-  static p bLg;
+  private static final long bIK;
+  static p bIL;
   @VisibleForTesting
   @GuardedBy("FirebaseInstanceId.class")
-  private static ScheduledThreadPoolExecutor bLh;
-  final a bLi;
-  final f bLj;
-  final ae bLk;
-  final i bLl;
+  private static ScheduledThreadPoolExecutor bIM;
+  final a bIN;
+  final f bIO;
+  final ae bIP;
+  final i bIQ;
   @GuardedBy("this")
-  private boolean bLm;
+  private boolean bIR;
   @GuardedBy("this")
-  private boolean bLn;
+  private boolean bIS;
   
   static
   {
     AppMethodBeat.i(4142);
-    bLf = TimeUnit.HOURS.toSeconds(8L);
+    bIK = TimeUnit.HOURS.toSeconds(8L);
     AppMethodBeat.o(4142);
   }
   
@@ -56,8 +56,8 @@ public class FirebaseInstanceId
   private FirebaseInstanceId(a parama, f paramf)
   {
     AppMethodBeat.i(4127);
-    this.bLl = new i();
-    this.bLm = false;
+    this.bIQ = new i();
+    this.bIR = false;
     if (f.b(parama) == null)
     {
       parama = new IllegalStateException("FirebaseInstanceId failed to initialize, FirebaseApp is missing project ID");
@@ -66,15 +66,15 @@ public class FirebaseInstanceId
     }
     try
     {
-      if (bLg == null) {
-        bLg = new p(parama.getApplicationContext());
+      if (bIL == null) {
+        bIL = new p(parama.getApplicationContext());
       }
-      this.bLi = parama;
-      this.bLj = paramf;
-      this.bLk = new ab(parama, this, paramf);
-      this.bLn = yi();
-      if (yk()) {
-        yd();
+      this.bIN = parama;
+      this.bIO = paramf;
+      this.bIP = new ab(parama, this, paramf);
+      this.bIS = yC();
+      if (yE()) {
+        yx();
       }
       AppMethodBeat.o(4127);
       return;
@@ -126,10 +126,10 @@ public class FirebaseInstanceId
     AppMethodBeat.i(4131);
     try
     {
-      if (bLh == null) {
-        bLh = new ScheduledThreadPoolExecutor(1);
+      if (bIM == null) {
+        bIM = new ScheduledThreadPoolExecutor(1);
       }
-      bLh.schedule(paramRunnable, paramLong, TimeUnit.SECONDS);
+      bIM.schedule(paramRunnable, paramLong, TimeUnit.SECONDS);
       return;
     }
     finally
@@ -144,7 +144,7 @@ public class FirebaseInstanceId
     try
     {
       AppMethodBeat.i(4125);
-      parama = (FirebaseInstanceId)parama.y(FirebaseInstanceId.class);
+      parama = (FirebaseInstanceId)parama.m(FirebaseInstanceId.class);
       AppMethodBeat.o(4125);
       return parama;
     }
@@ -155,20 +155,7 @@ public class FirebaseInstanceId
     }
   }
   
-  public static FirebaseInstanceId yc()
-  {
-    AppMethodBeat.i(4124);
-    FirebaseInstanceId localFirebaseInstanceId = getInstance(a.xS());
-    AppMethodBeat.o(4124);
-    return localFirebaseInstanceId;
-  }
-  
-  static p yf()
-  {
-    return bLg;
-  }
-  
-  static boolean yg()
+  static boolean yA()
   {
     AppMethodBeat.i(4137);
     if ((Log.isLoggable("FirebaseInstanceId", 3)) || ((Build.VERSION.SDK_INT == 23) && (Log.isLoggable("FirebaseInstanceId", 3))))
@@ -180,10 +167,10 @@ public class FirebaseInstanceId
     return false;
   }
   
-  private final boolean yi()
+  private final boolean yC()
   {
     AppMethodBeat.i(4139);
-    Object localObject1 = this.bLi.getApplicationContext();
+    Object localObject1 = this.bIN.getApplicationContext();
     Object localObject2 = ((Context)localObject1).getSharedPreferences("com.google.firebase.messaging", 0);
     boolean bool;
     if (((SharedPreferences)localObject2).contains("auto_init"))
@@ -208,13 +195,13 @@ public class FirebaseInstanceId
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
-      bool = yj();
+      bool = yD();
       AppMethodBeat.o(4139);
     }
     return bool;
   }
   
-  private final boolean yj()
+  private final boolean yD()
   {
     AppMethodBeat.i(4140);
     try
@@ -225,7 +212,7 @@ public class FirebaseInstanceId
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      Object localObject = this.bLi.getApplicationContext();
+      Object localObject = this.bIN.getApplicationContext();
       Intent localIntent = new Intent("com.google.firebase.MESSAGING_EVENT");
       localIntent.setPackage(((Context)localObject).getPackageName());
       localObject = ((Context)localObject).getPackageManager().resolveService(localIntent, 0);
@@ -240,11 +227,11 @@ public class FirebaseInstanceId
   }
   
   @VisibleForTesting
-  private boolean yk()
+  private boolean yE()
   {
     try
     {
-      boolean bool = this.bLn;
+      boolean bool = this.bIS;
       return bool;
     }
     finally
@@ -254,10 +241,23 @@ public class FirebaseInstanceId
     }
   }
   
+  public static FirebaseInstanceId yw()
+  {
+    AppMethodBeat.i(4124);
+    FirebaseInstanceId localFirebaseInstanceId = getInstance(a.ym());
+    AppMethodBeat.o(4124);
+    return localFirebaseInstanceId;
+  }
+  
+  static p yz()
+  {
+    return bIL;
+  }
+  
   public static String zzf()
   {
     AppMethodBeat.i(4132);
-    String str = f.a(bLg.bP("").bMC);
+    String str = f.a(bIL.cb("").bKh);
     AppMethodBeat.o(4132);
     return str;
   }
@@ -265,9 +265,9 @@ public class FirebaseInstanceId
   final String b(String paramString1, String paramString2, Bundle paramBundle)
   {
     AppMethodBeat.i(4136);
-    ab localab = (ab)this.bLk;
+    ab localab = (ab)this.bIP;
     localab.c(paramString1, paramString2, paramBundle);
-    paramString1 = localab.j(localab.bMx.h(paramBundle));
+    paramString1 = localab.l(localab.bKc.j(paramBundle));
     AppMethodBeat.o(4136);
     return paramString1;
   }
@@ -275,13 +275,13 @@ public class FirebaseInstanceId
   public final String getToken()
   {
     AppMethodBeat.i(4133);
-    Object localObject = ye();
-    if ((localObject == null) || (((q)localObject).bS(this.bLj.yn()))) {
+    Object localObject = yy();
+    if ((localObject == null) || (((q)localObject).ce(this.bIO.yH()))) {
       startSync();
     }
     if (localObject != null)
     {
-      localObject = ((q)localObject).bLU;
+      localObject = ((q)localObject).bJz;
       AppMethodBeat.o(4133);
       return localObject;
     }
@@ -294,7 +294,7 @@ public class FirebaseInstanceId
     try
     {
       AppMethodBeat.i(4129);
-      if (!this.bLm) {
+      if (!this.bIR) {
         zza(0L);
       }
       AppMethodBeat.o(4129);
@@ -303,31 +303,13 @@ public class FirebaseInstanceId
     finally {}
   }
   
-  public final void yd()
-  {
-    AppMethodBeat.i(4128);
-    q localq = ye();
-    if ((localq == null) || (localq.bS(this.bLj.yn())) || (bLg.ys() != null)) {
-      startSync();
-    }
-    AppMethodBeat.o(4128);
-  }
-  
-  final q ye()
-  {
-    AppMethodBeat.i(4134);
-    q localq = bLg.c("", f.b(this.bLi), "*");
-    AppMethodBeat.o(4134);
-    return localq;
-  }
-  
-  final void yh()
+  final void yB()
   {
     try
     {
       AppMethodBeat.i(4138);
-      bLg.zzag();
-      if (yk()) {
+      bIL.zzag();
+      if (yE()) {
         startSync();
       }
       AppMethodBeat.o(4138);
@@ -337,22 +319,40 @@ public class FirebaseInstanceId
   }
   
   @VisibleForTesting
-  public final void yl()
+  public final void yF()
   {
     try
     {
       AppMethodBeat.i(4141);
-      SharedPreferences.Editor localEditor = this.bLi.getApplicationContext().getSharedPreferences("com.google.firebase.messaging", 0).edit();
+      SharedPreferences.Editor localEditor = this.bIN.getApplicationContext().getSharedPreferences("com.google.firebase.messaging", 0).edit();
       localEditor.putBoolean("auto_init", true);
       localEditor.apply();
-      if (!this.bLn) {
-        yd();
+      if (!this.bIS) {
+        yx();
       }
-      this.bLn = true;
+      this.bIS = true;
       AppMethodBeat.o(4141);
       return;
     }
     finally {}
+  }
+  
+  public final void yx()
+  {
+    AppMethodBeat.i(4128);
+    q localq = yy();
+    if ((localq == null) || (localq.ce(this.bIO.yH())) || (bIL.yM() != null)) {
+      startSync();
+    }
+    AppMethodBeat.o(4128);
+  }
+  
+  final q yy()
+  {
+    AppMethodBeat.i(4134);
+    q localq = bIL.c("", f.b(this.bIN), "*");
+    AppMethodBeat.o(4134);
+    return localq;
   }
   
   final void zza(long paramLong)
@@ -360,9 +360,9 @@ public class FirebaseInstanceId
     try
     {
       AppMethodBeat.i(4130);
-      long l = Math.min(Math.max(30L, paramLong << 1), bLf);
-      b(new r(this, this.bLj, l), paramLong);
-      this.bLm = true;
+      long l = Math.min(Math.max(30L, paramLong << 1), bIK);
+      b(new r(this, this.bIO, l), paramLong);
+      this.bIR = true;
       AppMethodBeat.o(4130);
       return;
     }
@@ -377,7 +377,7 @@ public class FirebaseInstanceId
   {
     try
     {
-      this.bLm = paramBoolean;
+      this.bIR = paramBoolean;
       return;
     }
     finally
@@ -389,7 +389,7 @@ public class FirebaseInstanceId
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.FirebaseInstanceId
  * JD-Core Version:    0.7.0.1
  */

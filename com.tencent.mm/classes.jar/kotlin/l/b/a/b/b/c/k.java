@@ -11,46 +11,46 @@ public abstract class k
   extends j
   implements m
 {
-  private final an Tik;
-  private final l Tko;
+  private final an aaLe;
+  private final l aaNi;
   
   protected k(l paraml, g paramg, f paramf, an paraman)
   {
     super(paramg, paramf);
-    this.Tko = paraml;
-    this.Tik = paraman;
+    this.aaNi = paraml;
+    this.aaLe = paraman;
   }
   
-  public o hBT()
+  public l iDJ()
   {
-    o localo = (o)super.hAE();
-    if (localo == null) {
-      atM(4);
+    l locall = this.aaNi;
+    if (locall == null) {
+      aDG(5);
     }
-    return localo;
+    return locall;
   }
   
-  public an hzM()
+  public an iDZ()
   {
-    an localan = this.Tik;
+    an localan = this.aaLe;
     if (localan == null) {
-      atM(6);
+      aDG(6);
     }
     return localan;
   }
   
-  public l hzx()
+  public o iGi()
   {
-    l locall = this.Tko;
-    if (locall == null) {
-      atM(5);
+    o localo = (o)super.iER();
+    if (localo == null) {
+      aDG(4);
     }
-    return locall;
+    return localo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.c.k
  * JD-Core Version:    0.7.0.1
  */

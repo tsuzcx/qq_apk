@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.recharge.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.wallet_core.model.mall.MallFunction;
 import com.tencent.mm.plugin.wallet_core.model.mall.MallNews;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -16,23 +16,6 @@ import org.json.JSONObject;
 
 public final class b
 {
-  public static String Ts(String paramString)
-  {
-    AppMethodBeat.i(67093);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(67093);
-      return null;
-    }
-    String str = paramString.replaceAll("\\D", "");
-    paramString = str;
-    if (str.startsWith("86")) {
-      paramString = str.substring(2);
-    }
-    AppMethodBeat.o(67093);
-    return paramString;
-  }
-  
   public static ArrayList<MallRechargeProduct> a(String paramString, JSONArray paramJSONArray)
   {
     AppMethodBeat.i(67091);
@@ -48,7 +31,7 @@ public final class b
         if (i >= j) {
           break;
         }
-        localArrayList2.add(n(paramString, paramJSONArray.getJSONObject(i)));
+        localArrayList2.add(l(paramString, paramJSONArray.getJSONObject(i)));
         i += 1;
       }
       ArrayList localArrayList1 = null;
@@ -63,7 +46,7 @@ public final class b
     return null;
   }
   
-  public static String aKR(String paramString)
+  public static String aVs(String paramString)
   {
     AppMethodBeat.i(67094);
     if (paramString == null)
@@ -88,24 +71,41 @@ public final class b
     return paramString;
   }
   
-  public static void eHO()
+  public static String aaY(String paramString)
+  {
+    AppMethodBeat.i(67093);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(67093);
+      return null;
+    }
+    String str = paramString.replaceAll("\\D", "");
+    paramString = str;
+    if (str.startsWith("86")) {
+      paramString = str.substring(2);
+    }
+    AppMethodBeat.o(67093);
+    return paramString;
+  }
+  
+  public static void ftT()
   {
     AppMethodBeat.i(67095);
-    g.aAi();
-    g.aAh().azQ().set(ar.a.NXH, Boolean.TRUE);
+    h.aHH();
+    h.aHG().aHp().set(ar.a.VlH, Boolean.TRUE);
     AppMethodBeat.o(67095);
   }
   
   public static boolean g(MallFunction paramMallFunction)
   {
     AppMethodBeat.i(67096);
-    if ((paramMallFunction.Icf == null) || (paramMallFunction.Icf.trD != 1) || (Util.isNullOrNil(paramMallFunction.Icf.Ict)))
+    if ((paramMallFunction.OUr == null) || (paramMallFunction.OUr.wYj != 1) || (Util.isNullOrNil(paramMallFunction.OUr.OUF)))
     {
       AppMethodBeat.o(67096);
       return false;
     }
-    g.aAi();
-    if (!((Boolean)g.aAh().azQ().get(ar.a.NXH, Boolean.FALSE)).booleanValue())
+    h.aHH();
+    if (!((Boolean)h.aHG().aHp().get(ar.a.VlH, Boolean.FALSE)).booleanValue())
     {
       AppMethodBeat.o(67096);
       return true;
@@ -114,7 +114,7 @@ public final class b
     return false;
   }
   
-  public static MallRechargeProduct n(String paramString, JSONObject paramJSONObject)
+  public static MallRechargeProduct l(String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(67092);
     MallRechargeProduct localMallRechargeProduct;
@@ -122,21 +122,21 @@ public final class b
     {
       bool = true;
       localMallRechargeProduct = new MallRechargeProduct(bool);
-      localMallRechargeProduct.kHR = paramString;
+      localMallRechargeProduct.nBK = paramString;
       localMallRechargeProduct.productId = paramJSONObject.getString("product_id");
-      localMallRechargeProduct.rjt = paramJSONObject.getString("product_name");
-      localMallRechargeProduct.BCZ = paramJSONObject.optString("product_desc");
-      localMallRechargeProduct.BDa = (paramJSONObject.getInt("product_min_price") / 100.0F);
-      localMallRechargeProduct.BDb = (paramJSONObject.getInt("product_max_price") / 100.0F);
+      localMallRechargeProduct.uMF = paramJSONObject.getString("product_name");
+      localMallRechargeProduct.Hzd = paramJSONObject.optString("product_desc");
+      localMallRechargeProduct.Hze = (paramJSONObject.getInt("product_min_price") / 100.0F);
+      localMallRechargeProduct.Hzf = (paramJSONObject.getInt("product_max_price") / 100.0F);
       localMallRechargeProduct.appId = paramJSONObject.optString("app_id");
       if (paramJSONObject.getInt("is_infinite") != 1) {
         break label183;
       }
       bool = true;
       label112:
-      localMallRechargeProduct.BDc = bool;
-      localMallRechargeProduct.BDd = paramJSONObject.getInt("left_count");
-      localMallRechargeProduct.BDe = paramJSONObject.getInt("discount");
+      localMallRechargeProduct.Hzg = bool;
+      localMallRechargeProduct.Hzh = paramJSONObject.getInt("left_count");
+      localMallRechargeProduct.Hzi = paramJSONObject.getInt("discount");
       if (paramJSONObject.optInt("is_default_choose", 0) != 1) {
         break label188;
       }
@@ -145,9 +145,9 @@ public final class b
     label188:
     for (boolean bool = true;; bool = false)
     {
-      localMallRechargeProduct.isDefault = bool;
-      localMallRechargeProduct.BDg = true;
-      localMallRechargeProduct.iFf = paramJSONObject.optInt("product_type", 0);
+      localMallRechargeProduct.lJx = bool;
+      localMallRechargeProduct.Hzk = true;
+      localMallRechargeProduct.lvh = paramJSONObject.optInt("product_type", 0);
       AppMethodBeat.o(67092);
       return localMallRechargeProduct;
       bool = false;
@@ -159,7 +159,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.model.b
  * JD-Core Version:    0.7.0.1
  */

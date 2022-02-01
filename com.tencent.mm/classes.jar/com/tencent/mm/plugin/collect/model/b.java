@@ -9,9 +9,11 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.am.d;
 import com.tencent.mm.graphics.MMBitmapFactory;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
+import com.tencent.mm.plugin.wxpay.a.e;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -24,7 +26,7 @@ public final class b
 {
   public static Bitmap a(Context paramContext, String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2, u.a parama, boolean paramBoolean1, int paramInt3, float paramFloat, boolean paramBoolean2)
   {
-    AppMethodBeat.i(213144);
+    AppMethodBeat.i(231504);
     int i = (int)(paramInt2 * 0.26F);
     int j = (int)(paramInt2 * 0.22F);
     paramInt2 = (int)(paramInt2 * 0.076F);
@@ -55,14 +57,14 @@ public final class b
           if (paramBoolean2)
           {
             Log.i("MicroMsg.CollectBitmapFactory", "avatar == null,use own avatar");
-            paramString3 = com.tencent.mm.aj.c.e(paramString2, j, j, (int)(j * 0.06F));
+            paramString3 = d.f(paramString2, j, j, (int)(j * 0.06F));
           }
         }
         paramString2 = paramString3;
         if (paramString3 == null)
         {
           Log.i("MicroMsg.CollectBitmapFactory", "avatar == null,use default");
-          paramString2 = BackwardSupportUtil.BitmapFactory.decodeStream(MMApplicationContext.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cb.a.getDensity(null));
+          paramString2 = BackwardSupportUtil.BitmapFactory.decodeStream(MMApplicationContext.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.ci.a.getDensity(null));
           paramString2 = BitmapUtil.getRoundedCornerBitmap(paramString2, false, 0.06F * paramString2.getWidth());
         }
         paramString3 = paramString2;
@@ -78,25 +80,25 @@ public final class b
         {
           paramString2 = paramString3;
           if (paramFloat > 0.0F) {
-            paramString2 = BitmapUtil.getRoundedCornerBitmap(paramString3, false, com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 2));
+            paramString2 = BitmapUtil.getRoundedCornerBitmap(paramString3, false, com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 2));
           }
         }
         paramString3 = new Canvas(localBitmap);
         paramInt1 = (i - j) / 2;
         paramString3.drawBitmap(paramString2, null, new Rect(paramInt1, paramInt1, i - paramInt1, i - paramInt1), localPaint);
-        paramString3.drawBitmap(MMBitmapFactory.decodeStream(paramContext.getResources().openRawResource(2131231859)), null, new Rect(i - paramInt2, i - paramInt2, i, i), localPaint);
+        paramString3.drawBitmap(MMBitmapFactory.decodeStream(paramContext.getResources().openRawResource(a.e.collect_ftf_avatar_icon)), null, new Rect(i - paramInt2, i - paramInt2, i, i), localPaint);
         if (Util.isEqual(paramInt3, -1)) {
-          break label603;
+          break label604;
         }
         if (!Util.isEqual(paramInt3, 0)) {
-          break label597;
+          break label598;
         }
       }
       catch (Exception paramContext)
       {
         Bitmap localBitmap;
         Log.printErrStackTrace("MicroMsg.CollectBitmapFactory", paramContext, "", new Object[0]);
-        AppMethodBeat.o(213144);
+        AppMethodBeat.o(231504);
         return null;
       }
       paramString2 = new byte[40000];
@@ -104,13 +106,13 @@ public final class b
       paramInt2 = f.a(paramString2, paramString3, paramString1, 12, paramInt1, "UTF-8");
       if (paramInt2 == 0)
       {
-        paramContext = com.tencent.mm.by.a.a.a(paramContext, localBitmap, paramString2, paramString3, 0.1D);
+        paramContext = com.tencent.mm.cf.a.a.a(paramContext, localBitmap, paramString2, paramString3, 0.1D);
         if (paramContext == null)
         {
           Log.i("MicroMsg.QRCodeBitmapFactory", "createBitmap bm is error result %d %s", new Object[] { Integer.valueOf(paramInt2), Util.getStack().toString() });
           Log.i("MicroMsg.CollectBitmapFactory", "bitmap recycle %s errorLevel:%s", new Object[] { localBitmap, Integer.valueOf(paramInt1) });
           localBitmap.recycle();
-          AppMethodBeat.o(213144);
+          AppMethodBeat.o(231504);
           return paramContext;
         }
         Log.i("MicroMsg.QRCodeBitmapFactory", "createBitmap %s", new Object[] { paramContext });
@@ -119,10 +121,10 @@ public final class b
       Log.i("MicroMsg.QRCodeBitmapFactory", "result %d %s", new Object[] { Integer.valueOf(paramInt2), Util.getStack().toString() });
       paramContext = null;
       continue;
-      label597:
+      label598:
       paramInt1 = paramInt3;
       continue;
-      label603:
+      label604:
       paramInt1 = 3;
     }
   }
@@ -145,7 +147,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.b
  * JD-Core Version:    0.7.0.1
  */

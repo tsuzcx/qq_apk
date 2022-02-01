@@ -18,39 +18,43 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.ah.a.l;
+import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.compatible.util.k;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.ax;
 
 public class b
   extends Dialog
 {
-  private BubbleLayout QPP;
-  private View QPQ;
-  private Rect QPR;
-  private int QPS;
-  private boolean QPT;
-  private a QPU;
-  private a[] QPV;
-  private a QPW;
-  private boolean QPX;
-  private int[] QPY;
-  private ViewTreeObserver.OnGlobalLayoutListener ajG;
+  private int Bw;
+  private int CL;
+  private int CM;
+  private BubbleLayout YoA;
+  private View YoB;
+  private Rect YoC;
+  private int YoD;
+  private boolean YoE;
+  private b.a YoF;
+  private b.a[] YoG;
+  private a YoH;
+  private boolean YoI;
+  private int[] YoJ;
   private Activity mActivity;
   private boolean mCancelable;
   private int mHeight;
-  private int mMargin;
-  private int mOffsetX;
-  private int mOffsetY;
   private int mStatusBarHeight;
   private int mWidth;
+  private ViewTreeObserver.OnGlobalLayoutListener qc;
   
   public b(final Context paramContext)
   {
-    super(paramContext, 2131821772);
+    super(paramContext, a.l.mmalertdialog);
     AppMethodBeat.i(143532);
-    this.QPU = a.QQf;
-    this.QPV = new a[4];
-    this.QPX = false;
-    this.QPY = new int[2];
+    this.YoF = b.a.YoQ;
+    this.YoG = new b.a[4];
+    this.YoI = false;
+    this.YoJ = new int[2];
     setCancelable(true);
     this.mActivity = ((Activity)paramContext);
     paramContext = getWindow();
@@ -61,7 +65,7 @@ public class b
     }
     paramContext = paramContext.getAttributes();
     final int i = c.getScreenWH(getContext())[0];
-    this.mStatusBarHeight = au.getStatusBarHeight(getContext());
+    this.mStatusBarHeight = ax.getStatusBarHeight(getContext());
     getWindow().getDecorView().setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
@@ -89,9 +93,9 @@ public class b
     AppMethodBeat.o(143532);
   }
   
-  private boolean hbF()
+  private boolean icM()
   {
-    a[] arrayOfa = this.QPV;
+    b.a[] arrayOfa = this.YoG;
     int m = arrayOfa.length;
     int i = 0;
     int k;
@@ -106,36 +110,36 @@ public class b
     return j > 0;
   }
   
-  private void hbG()
+  private void icN()
   {
     AppMethodBeat.i(143535);
-    if ((this.QPR == null) || ((this.QPW == null) && (!hbF())))
+    if ((this.YoC == null) || ((this.YoH == null) && (!icM())))
     {
       AppMethodBeat.o(143535);
       return;
     }
     Object localObject = new int[4];
-    localObject[0] = this.QPY[0];
-    localObject[1] = this.QPY[1];
-    localObject[2] = (c.getScreenWH(getContext())[0] - this.QPY[0] - this.QPR.width());
-    localObject[3] = (c.getScreenWH(getContext())[1] - this.QPY[1] - this.QPR.height());
+    localObject[0] = this.YoJ[0];
+    localObject[1] = this.YoJ[1];
+    localObject[2] = (c.getScreenWH(getContext())[0] - this.YoJ[0] - this.YoC.width());
+    localObject[3] = (c.getScreenWH(getContext())[1] - this.YoJ[1] - this.YoC.height());
     int j;
     int i;
-    if (hbF())
+    if (icM())
     {
-      this.QPQ.measure(0, 0);
-      a[] arrayOfa = this.QPV;
+      this.YoB.measure(0, 0);
+      b.a[] arrayOfa = this.YoG;
       j = arrayOfa.length;
       i = 0;
       if (i < j)
       {
-        a locala = arrayOfa[i];
+        b.a locala = arrayOfa[i];
         if (locala == null)
         {
           AppMethodBeat.o(143535);
           return;
         }
-        switch (4.QQc[locala.ordinal()])
+        switch (b.4.YoN[locala.ordinal()])
         {
         }
         do
@@ -148,29 +152,29 @@ public class b
               {
                 i += 1;
                 break;
-              } while (localObject[0] <= this.QPQ.getMeasuredWidth());
-              this.QPU = a.QQe;
+              } while (localObject[0] <= this.YoB.getMeasuredWidth());
+              this.YoF = b.a.YoP;
               AppMethodBeat.o(143535);
               return;
-            } while (localObject[1] <= this.QPQ.getMeasuredHeight());
-            this.QPU = a.QQf;
+            } while (localObject[1] <= this.YoB.getMeasuredHeight());
+            this.YoF = b.a.YoQ;
             AppMethodBeat.o(143535);
             return;
-          } while (localObject[2] <= this.QPQ.getMeasuredWidth());
-          this.QPU = a.QQg;
+          } while (localObject[2] <= this.YoB.getMeasuredWidth());
+          this.YoF = b.a.YoR;
           AppMethodBeat.o(143535);
           return;
-        } while (localObject[3] <= this.QPQ.getMeasuredHeight());
-        this.QPU = a.QQh;
+        } while (localObject[3] <= this.YoB.getMeasuredHeight());
+        this.YoF = b.a.YoS;
         AppMethodBeat.o(143535);
         return;
       }
-      this.QPU = this.QPV[0];
+      this.YoF = this.YoG[0];
       AppMethodBeat.o(143535);
       return;
     }
-    if (this.QPW != null) {}
-    switch (4.QQd[this.QPW.ordinal()])
+    if (this.YoH != null) {}
+    switch (b.4.YoO[this.YoH.ordinal()])
     {
     case 1: 
     default: 
@@ -192,70 +196,70 @@ public class b
       j += 1;
       break;
       if (localObject[1] > localObject[3]) {}
-      for (localObject = a.QQf;; localObject = a.QQh)
+      for (localObject = b.a.YoQ;; localObject = b.a.YoS)
       {
-        this.QPU = ((a)localObject);
+        this.YoF = ((b.a)localObject);
         AppMethodBeat.o(143535);
         return;
       }
       if (localObject[0] > localObject[2]) {}
-      for (localObject = a.QQe;; localObject = a.QQg)
+      for (localObject = b.a.YoP;; localObject = b.a.YoR)
       {
-        this.QPU = ((a)localObject);
+        this.YoF = ((b.a)localObject);
         AppMethodBeat.o(143535);
         return;
       }
       if (i == localObject[0])
       {
-        this.QPU = a.QQe;
+        this.YoF = b.a.YoP;
         AppMethodBeat.o(143535);
         return;
       }
       if (i == localObject[1])
       {
-        this.QPU = a.QQf;
+        this.YoF = b.a.YoQ;
         AppMethodBeat.o(143535);
         return;
       }
       if (i == localObject[2])
       {
-        this.QPU = a.QQg;
+        this.YoF = b.a.YoR;
         AppMethodBeat.o(143535);
         return;
       }
       if (i == localObject[3]) {
-        this.QPU = a.QQh;
+        this.YoF = b.a.YoS;
       }
       AppMethodBeat.o(143535);
       return;
     }
   }
   
-  private void hbH()
+  private void icO()
   {
     AppMethodBeat.i(143536);
-    switch (4.QQc[this.QPU.ordinal()])
+    switch (b.4.YoN[this.YoF.ordinal()])
     {
     }
     for (;;)
     {
-      this.QPP.hbL();
+      this.YoA.icS();
       AppMethodBeat.o(143536);
       return;
-      this.QPP.setLook(BubbleLayout.a.QQz);
+      this.YoA.setLook(BubbleLayout.a.Ypk);
       continue;
-      this.QPP.setLook(BubbleLayout.a.QQA);
+      this.YoA.setLook(BubbleLayout.a.Ypl);
       continue;
-      this.QPP.setLook(BubbleLayout.a.QQx);
+      this.YoA.setLook(BubbleLayout.a.Ypi);
       continue;
-      this.QPP.setLook(BubbleLayout.a.QQy);
+      this.YoA.setLook(BubbleLayout.a.Ypj);
     }
   }
   
-  private void hbI()
+  private void icP()
   {
     AppMethodBeat.i(143538);
-    if (this.QPR == null)
+    if (this.YoC == null)
     {
       AppMethodBeat.o(143538);
       return;
@@ -275,144 +279,156 @@ public class b
       localLayoutParams.height = this.mHeight;
     }
     FrameLayout.LayoutParams localLayoutParams1;
-    if (this.mMargin != 0)
+    if (this.Bw != 0)
     {
-      localLayoutParams1 = (FrameLayout.LayoutParams)this.QPP.getLayoutParams();
-      if ((this.QPU == a.QQf) || (this.QPU == a.QQh))
+      localLayoutParams1 = (FrameLayout.LayoutParams)this.YoA.getLayoutParams();
+      if ((this.YoF == b.a.YoQ) || (this.YoF == b.a.YoS))
       {
-        localLayoutParams1.leftMargin = this.mMargin;
-        localLayoutParams1.rightMargin = this.mMargin;
-        this.QPP.setLayoutParams(localLayoutParams1);
+        localLayoutParams1.leftMargin = this.Bw;
+        localLayoutParams1.rightMargin = this.Bw;
+        this.YoA.setLayoutParams(localLayoutParams1);
       }
     }
     else
     {
-      switch (4.QQc[this.QPU.ordinal()])
+      switch (b.4.YoN[this.YoF.ordinal()])
       {
+      default: 
+        label180:
+        if (k.avQ()) {
+          if ((this.mActivity == null) || (!d.qV(24)) || (!this.mActivity.isInMultiWindowMode())) {
+            break label991;
+          }
+        }
+        break;
       }
     }
-    for (;;)
+    label581:
+    label991:
+    for (int i = 1;; i = 0)
     {
-      this.QPP.invalidate();
+      if ((ar.hIH()) || (i != 0)) {
+        localLayoutParams.y += this.mStatusBarHeight;
+      }
+      this.YoA.invalidate();
       localWindow.setAttributes(localLayoutParams);
       AppMethodBeat.o(143538);
       return;
-      localLayoutParams1.topMargin = this.mMargin;
-      localLayoutParams1.bottomMargin = this.mMargin;
+      localLayoutParams1.topMargin = this.Bw;
+      localLayoutParams1.bottomMargin = this.Bw;
       break;
-      localLayoutParams.x = (this.QPY[0] + this.QPR.width() / 2 - this.QPP.getMeasuredWidth() / 2 + this.mOffsetX);
-      if ((this.mMargin != 0) && (this.mWidth == -1)) {
-        this.QPP.setLookPosition(this.QPY[0] - this.mMargin + this.QPR.width() / 2 - this.QPP.getLookWidth() / 2);
+      localLayoutParams.x = (this.YoJ[0] + this.YoC.width() / 2 - this.YoA.getMeasuredWidth() / 2 + this.CL);
+      if ((this.Bw != 0) && (this.mWidth == -1)) {
+        this.YoA.setLookPosition(this.YoJ[0] - this.Bw + this.YoC.width() / 2 - this.YoA.getLookWidth() / 2);
       }
       for (;;)
       {
-        if (this.QPU != a.QQh) {
-          break label519;
+        if (this.YoF != b.a.YoS) {
+          break label581;
         }
-        if (this.QPS != 0) {
-          this.mOffsetY = this.QPS;
+        if (this.YoD != 0) {
+          this.CM = this.YoD;
         }
-        localLayoutParams.y = (this.QPY[1] + this.QPR.height() + this.mOffsetY - this.mStatusBarHeight);
+        localLayoutParams.y = (this.YoJ[1] + this.YoC.height() + this.CM - this.mStatusBarHeight);
         break;
         if (localLayoutParams.x <= 0) {
-          this.QPP.setLookPosition(this.QPY[0] + this.QPR.width() / 2 - this.QPP.getLookWidth() / 2);
-        } else if (localLayoutParams.x + this.QPP.getMeasuredWidth() > c.getScreenWH(getContext())[0]) {
-          this.QPP.setLookPosition(this.QPY[0] - (c.getScreenWH(getContext())[0] - this.QPP.getMeasuredWidth()) + this.QPR.width() / 2 - this.QPP.getLookWidth() / 2);
+          this.YoA.setLookPosition(this.YoJ[0] + this.YoC.width() / 2 - this.YoA.getLookWidth() / 2);
+        } else if (localLayoutParams.x + this.YoA.getMeasuredWidth() > c.getScreenWH(getContext())[0]) {
+          this.YoA.setLookPosition(this.YoJ[0] - (c.getScreenWH(getContext())[0] - this.YoA.getMeasuredWidth()) + this.YoC.width() / 2 - this.YoA.getLookWidth() / 2);
         } else {
-          this.QPP.setLookPosition(this.QPY[0] - localLayoutParams.x + this.QPR.width() / 2 - this.QPP.getLookWidth() / 2);
+          this.YoA.setLookPosition(this.YoJ[0] - localLayoutParams.x + this.YoC.width() / 2 - this.YoA.getLookWidth() / 2);
         }
       }
-      label519:
-      if (this.QPS != 0) {
-        this.mOffsetY = (-this.QPS);
+      if (this.YoD != 0) {
+        this.CM = (-this.YoD);
       }
-      localLayoutParams.y = (this.QPY[1] - this.QPP.getMeasuredHeight() + this.mOffsetY - this.mStatusBarHeight);
-      continue;
-      localLayoutParams.y = (this.QPY[1] + this.mOffsetY + this.QPR.height() / 2 - this.QPP.getMeasuredHeight() / 2 - this.mStatusBarHeight);
-      if ((this.mMargin != 0) && (this.mHeight == -1)) {
-        this.QPP.setLookPosition(this.QPY[1] - this.mMargin + this.QPR.height() / 2 - this.QPP.getLookWidth() / 2 - this.mStatusBarHeight);
+      localLayoutParams.y = (this.YoJ[1] - this.YoA.getMeasuredHeight() + this.CM - this.mStatusBarHeight);
+      break label180;
+      localLayoutParams.y = (this.YoJ[1] + this.CM + this.YoC.height() / 2 - this.YoA.getMeasuredHeight() / 2 - this.mStatusBarHeight);
+      if ((this.Bw != 0) && (this.mHeight == -1)) {
+        this.YoA.setLookPosition(this.YoJ[1] - this.Bw + this.YoC.height() / 2 - this.YoA.getLookWidth() / 2 - this.mStatusBarHeight);
       }
       for (;;)
       {
-        if (this.QPU != a.QQg) {
-          break label887;
+        if (this.YoF != b.a.YoR) {
+          break label949;
         }
-        if (this.QPS != 0) {
-          this.mOffsetX = this.QPS;
+        if (this.YoD != 0) {
+          this.CL = this.YoD;
         }
-        localLayoutParams.x = (this.QPY[0] + this.QPR.width() + this.mOffsetX);
+        localLayoutParams.x = (this.YoJ[0] + this.YoC.width() + this.CL);
         break;
         if (localLayoutParams.y <= 0) {
-          this.QPP.setLookPosition(this.QPY[1] + this.QPR.height() / 2 - this.QPP.getLookWidth() / 2 - this.mStatusBarHeight);
-        } else if (localLayoutParams.y + this.QPP.getMeasuredHeight() > c.getScreenWH(getContext())[1]) {
-          this.QPP.setLookPosition(this.QPY[1] - (c.getScreenWH(getContext())[1] - this.QPP.getMeasuredHeight()) + this.QPR.height() / 2 - this.QPP.getLookWidth() / 2);
+          this.YoA.setLookPosition(this.YoJ[1] + this.YoC.height() / 2 - this.YoA.getLookWidth() / 2 - this.mStatusBarHeight);
+        } else if (localLayoutParams.y + this.YoA.getMeasuredHeight() > c.getScreenWH(getContext())[1]) {
+          this.YoA.setLookPosition(this.YoJ[1] - (c.getScreenWH(getContext())[1] - this.YoA.getMeasuredHeight()) + this.YoC.height() / 2 - this.YoA.getLookWidth() / 2);
         } else {
-          this.QPP.setLookPosition(this.QPY[1] - localLayoutParams.y + this.QPR.height() / 2 - this.QPP.getLookWidth() / 2 - this.mStatusBarHeight);
+          this.YoA.setLookPosition(this.YoJ[1] - localLayoutParams.y + this.YoC.height() / 2 - this.YoA.getLookWidth() / 2 - this.mStatusBarHeight);
         }
       }
-      label887:
-      if (this.QPS != 0) {
-        this.mOffsetX = (-this.QPS);
+      if (this.YoD != 0) {
+        this.CL = (-this.YoD);
       }
-      localLayoutParams.x = (this.QPY[0] - this.QPP.getMeasuredWidth() + this.mOffsetX);
+      localLayoutParams.x = (this.YoJ[0] - this.YoA.getMeasuredWidth() + this.CL);
+      break label180;
     }
   }
   
-  private void hbJ()
+  private void icQ()
   {
-    AppMethodBeat.i(206157);
-    hbG();
-    if (this.ajG != null)
+    AppMethodBeat.i(216004);
+    icN();
+    if (this.qc != null)
     {
-      hbH();
-      hbI();
+      icO();
+      icP();
     }
-    AppMethodBeat.o(206157);
+    AppMethodBeat.o(216004);
   }
   
   public final <T extends b> T a(BubbleLayout paramBubbleLayout)
   {
-    this.QPP = paramBubbleLayout;
+    this.YoA = paramBubbleLayout;
     return this;
   }
   
-  public final <T extends b> T a(a... paramVarArgs)
+  public final <T extends b> T a(b.a... paramVarArgs)
   {
-    this.QPV = paramVarArgs;
+    this.YoG = paramVarArgs;
     return this;
   }
   
   public void dismiss()
   {
     AppMethodBeat.i(143537);
-    if (this.QPT)
+    if (this.YoE)
     {
       View localView = getCurrentFocus();
       if ((localView instanceof TextView)) {
         ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(localView.getWindowToken(), 0);
       }
     }
-    if ((this.QPP != null) && (Build.VERSION.SDK_INT >= 16)) {
-      this.QPP.getViewTreeObserver().removeOnGlobalLayoutListener(this.ajG);
+    if ((this.YoA != null) && (Build.VERSION.SDK_INT >= 16)) {
+      this.YoA.getViewTreeObserver().removeOnGlobalLayoutListener(this.qc);
     }
     super.dismiss();
     AppMethodBeat.o(143537);
   }
   
-  public final <T extends b> T hw(View paramView)
+  public final <T extends b> T iM(View paramView)
   {
-    AppMethodBeat.i(206156);
-    this.QPR = new Rect(0, 0, paramView.getWidth(), paramView.getHeight());
-    paramView.getLocationOnScreen(this.QPY);
-    hbJ();
-    AppMethodBeat.o(206156);
+    AppMethodBeat.i(216003);
+    this.YoC = new Rect(0, 0, paramView.getWidth(), paramView.getHeight());
+    paramView.getLocationInWindow(this.YoJ);
+    icQ();
+    AppMethodBeat.o(216003);
     return this;
   }
   
   @Deprecated
-  public final <T extends b> T hx(View paramView)
+  public final <T extends b> T iN(View paramView)
   {
-    this.QPQ = paramView;
+    this.YoB = paramView;
     return this;
   }
   
@@ -420,50 +436,50 @@ public class b
   {
     AppMethodBeat.i(143534);
     super.onCreate(paramBundle);
-    if (this.QPP == null) {
-      this.QPP = new BubbleLayout(getContext());
+    if (this.YoA == null) {
+      this.YoA = new BubbleLayout(getContext());
     }
-    if (this.QPQ != null) {
-      this.QPP.addView(this.QPQ);
+    if (this.YoB != null) {
+      this.YoA.addView(this.YoB);
     }
-    setContentView(this.QPP);
+    setContentView(this.YoA);
     paramBundle = getWindow();
     if (paramBundle == null)
     {
       AppMethodBeat.o(143534);
       return;
     }
-    if (this.QPT) {
+    if (this.YoE) {
       paramBundle.setSoftInputMode(18);
     }
     paramBundle.setLayout(-2, -2);
-    hbG();
-    hbH();
-    this.QPP.measure(0, 0);
-    hbI();
-    this.ajG = new ViewTreeObserver.OnGlobalLayoutListener()
+    icN();
+    icO();
+    this.YoA.measure(0, 0);
+    icP();
+    this.qc = new ViewTreeObserver.OnGlobalLayoutListener()
     {
-      int ovI;
-      int ovJ;
+      int ryu;
+      int ryv;
       
       public final void onGlobalLayout()
       {
         AppMethodBeat.i(143526);
-        if ((this.ovI == b.c(b.this).getMeasuredWidth()) && (this.ovJ == b.c(b.this).getMeasuredHeight()))
+        if ((this.ryu == b.c(b.this).getMeasuredWidth()) && (this.ryv == b.c(b.this).getMeasuredHeight()))
         {
           AppMethodBeat.o(143526);
           return;
         }
         b.d(b.this);
-        this.ovI = b.c(b.this).getMeasuredWidth();
-        this.ovJ = b.c(b.this).getMeasuredHeight();
+        this.ryu = b.c(b.this).getMeasuredWidth();
+        this.ryv = b.c(b.this).getMeasuredHeight();
         AppMethodBeat.o(143526);
       }
     };
-    this.QPP.getViewTreeObserver().addOnGlobalLayoutListener(this.ajG);
-    this.QPP.setOnClickEdgeListener(new BubbleLayout.b()
+    this.YoA.getViewTreeObserver().addOnGlobalLayoutListener(this.qc);
+    this.YoA.setOnClickEdgeListener(new BubbleLayout.b()
     {
-      public final void hbK()
+      public final void icR()
       {
         AppMethodBeat.i(143527);
         if (b.e(b.this)) {
@@ -478,7 +494,7 @@ public class b
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(143533);
-    if ((this.QPX) && (paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
+    if ((this.YoI) && (paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
       dismiss();
       this.mActivity.onBackPressed();
@@ -524,26 +540,10 @@ public class b
     this.mCancelable = paramBoolean;
     AppMethodBeat.o(143540);
   }
-  
-  public static enum a
-  {
-    static
-    {
-      AppMethodBeat.i(143531);
-      QQe = new a("LEFT", 0);
-      QQf = new a("TOP", 1);
-      QQg = new a("RIGHT", 2);
-      QQh = new a("BOTTOM", 3);
-      QQi = new a[] { QQe, QQf, QQg, QQh };
-      AppMethodBeat.o(143531);
-    }
-    
-    private a() {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.widget.happybubble.b
  * JD-Core Version:    0.7.0.1
  */

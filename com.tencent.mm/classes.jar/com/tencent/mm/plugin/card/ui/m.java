@@ -14,7 +14,11 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.card.a.a;
+import com.tencent.mm.plugin.card.a.c;
+import com.tencent.mm.plugin.card.a.d;
+import com.tencent.mm.plugin.card.a.e;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.d.n;
 import com.tencent.mm.plugin.card.model.b;
@@ -26,23 +30,23 @@ public final class m
   extends BaseAdapter
 {
   private Context mContext;
-  private List<b> pRa;
-  View.OnClickListener qet;
-  boolean qeu;
+  View.OnClickListener tAq;
+  boolean tAr;
+  private List<b> tmZ;
   
   public m(Context paramContext)
   {
     AppMethodBeat.i(113612);
-    this.pRa = new ArrayList();
-    this.qeu = false;
+    this.tmZ = new ArrayList();
+    this.tAr = false;
     this.mContext = paramContext;
     AppMethodBeat.o(113612);
   }
   
-  private b Ew(int paramInt)
+  private b HY(int paramInt)
   {
     AppMethodBeat.i(113615);
-    b localb = (b)this.pRa.get(paramInt);
+    b localb = (b)this.tmZ.get(paramInt);
     AppMethodBeat.o(113615);
     return localb;
   }
@@ -55,18 +59,18 @@ public final class m
       AppMethodBeat.o(161199);
       return;
     }
-    c(paramView, paramb.pSj, paramBoolean);
+    c(paramView, paramb.toi, paramBoolean);
     AppMethodBeat.o(161199);
   }
   
   private static void c(View paramView, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(161200);
-    Rect localRect = n.dC(paramView);
+    Rect localRect = n.ea(paramView);
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
     int i;
     if (paramBoolean1) {
-      i = 2131233974;
+      i = a.c.mm_trans;
     }
     for (;;)
     {
@@ -76,9 +80,9 @@ public final class m
       AppMethodBeat.o(161200);
       return;
       if (paramBoolean2) {
-        i = 2131233329;
+        i = a.c.list_item_normal_un;
       } else {
-        i = 2131233327;
+        i = a.c.list_item_normal;
       }
     }
   }
@@ -86,7 +90,7 @@ public final class m
   public final int getCount()
   {
     AppMethodBeat.i(113614);
-    int i = this.pRa.size();
+    int i = this.tmZ.size();
     AppMethodBeat.o(113614);
     return i;
   }
@@ -102,8 +106,8 @@ public final class m
     boolean bool2 = true;
     boolean bool1 = false;
     AppMethodBeat.i(113616);
-    b localb = Ew(paramInt);
-    switch (localb.pSi)
+    b localb = HY(paramInt);
+    switch (localb.toh)
     {
     default: 
       if (paramView == null) {
@@ -120,168 +124,168 @@ public final class m
       }
       else
       {
-        paramView = View.inflate(this.mContext, 2131493342, null);
+        paramView = View.inflate(this.mContext, a.e.thL, null);
         localObject1 = new a((byte)0);
-        ((a)localObject1).qdx = ((TextView)paramView.findViewById(2131298067));
-        ((a)localObject1).qez = ((TextView)paramView.findViewById(2131298066));
-        ((a)localObject1).qeA = ((TextView)paramView.findViewById(2131298063));
-        ((a)localObject1).qeB = ((ImageView)paramView.findViewById(2131298065));
-        ((a)localObject1).sc = paramView.findViewById(2131298061);
-        ((a)localObject1).qeC = ((CheckBox)paramView.findViewById(2131298064));
+        ((a)localObject1).tzu = ((TextView)paramView.findViewById(a.d.tbu));
+        ((a)localObject1).tAw = ((TextView)paramView.findViewById(a.d.tbt));
+        ((a)localObject1).tAx = ((TextView)paramView.findViewById(a.d.tbq));
+        ((a)localObject1).tAy = ((ImageView)paramView.findViewById(a.d.tbs));
+        ((a)localObject1).bvK = paramView.findViewById(a.d.tbp);
+        ((a)localObject1).tAz = ((CheckBox)paramView.findViewById(a.d.tbr));
         paramView.setTag(localObject1);
       }
-      ((a)localObject1).qdx.setText(localb.title);
-      label257:
+      ((a)localObject1).tzu.setText(localb.title);
+      label264:
       int i;
-      label272:
-      label317:
-      label334:
+      label279:
+      label325:
+      label342:
       Object localObject2;
-      if (localb.pSk)
+      if (localb.toj)
       {
-        ((a)localObject1).qeC.setVisibility(0);
-        ((a)localObject1).qeC.setChecked(localb.edw);
-        ((a)localObject1).qeC.setOnClickListener(new m.2(this, localb));
-        if (!TextUtils.isEmpty(localb.pRY)) {
-          break label666;
+        ((a)localObject1).tAz.setVisibility(0);
+        ((a)localObject1).tAz.setChecked(localb.fXF);
+        ((a)localObject1).tAz.setOnClickListener(new m.2(this, localb));
+        if (!TextUtils.isEmpty(localb.tnY)) {
+          break label676;
         }
-        ((a)localObject1).qez.setVisibility(4);
-        if ((localb.LfD & 1L) <= 0L) {
-          break label691;
+        ((a)localObject1).tAw.setVisibility(4);
+        if ((localb.SgR & 1L) <= 0L) {
+          break label701;
         }
         i = 1;
         if (i == 0) {
-          break label697;
+          break label707;
         }
-        ((a)localObject1).qdx.setGravity(17);
-        ((a)localObject1).qdx.setTextColor(this.mContext.getResources().getColor(2131100685));
-        ((a)localObject1).qez.setVisibility(8);
-        if (!localb.pSj) {
-          break label801;
+        ((a)localObject1).tzu.setGravity(17);
+        ((a)localObject1).tzu.setTextColor(this.mContext.getResources().getColor(a.a.link_color));
+        ((a)localObject1).tAw.setVisibility(8);
+        if (!localb.toi) {
+          break label811;
         }
-        ((a)localObject1).qeA.setVisibility(0);
-        paramViewGroup = ((a)localObject1).qez;
+        ((a)localObject1).tAx.setVisibility(0);
+        paramViewGroup = ((a)localObject1).tAw;
         localObject2 = this.mContext.getResources();
-        if (!localb.pSl) {
-          break label814;
+        if (!localb.tok) {
+          break label824;
         }
-        i = 2131100245;
-        label361:
+        i = a.a.desc_text_color;
+        label370:
         paramViewGroup.setTextColor(((Resources)localObject2).getColor(i));
-        if (Util.isNullOrNil(localb.qGB)) {
-          break label822;
+        if (Util.isNullOrNil(localb.ufC)) {
+          break label832;
         }
         i = 1;
-        label386:
+        label395:
         if (i == 0) {
-          break label828;
+          break label838;
         }
-        ((a)localObject1).qeB.setVisibility(0);
-        n.a(((a)localObject1).qeB, localb.qGB, a.fromDPToPix(this.mContext, 20), 2131234198, false);
-        label425:
+        ((a)localObject1).tAy.setVisibility(0);
+        n.a(((a)localObject1).tAy, localb.ufC, a.fromDPToPix(this.mContext, 20), a.c.my_card_package_defaultlogo, false);
+        label435:
         if (paramInt + 1 >= getCount()) {
-          break label853;
+          break label863;
         }
-        paramViewGroup = Ew(paramInt);
-        localObject2 = ((a)localObject1).sc;
-        if (localb.pSl) {
-          break label841;
+        paramViewGroup = HY(paramInt);
+        localObject2 = ((a)localObject1).bvK;
+        if (localb.tok) {
+          break label851;
         }
         bool1 = true;
-        label459:
+        label469:
         a((View)localObject2, paramViewGroup, bool1);
-        paramViewGroup = Ew(paramInt + 1);
-        localObject1 = ((a)localObject1).sc;
-        if (localb.pSl) {
-          break label847;
+        paramViewGroup = HY(paramInt + 1);
+        localObject1 = ((a)localObject1).bvK;
+        if (localb.tok) {
+          break label857;
         }
         bool1 = bool2;
-        label494:
+        label504:
         a((View)localObject1, paramViewGroup, bool1);
       }
       for (;;)
       {
         AppMethodBeat.o(113616);
         return paramView;
-        paramView = View.inflate(this.mContext, 2131493341, null);
-        paramViewGroup = (TextView)paramView.findViewById(2131298070);
-        localObject1 = (TextView)paramView.findViewById(2131298069);
-        localObject2 = (LinearLayout)paramView.findViewById(2131307844);
-        if (!TextUtils.isEmpty(localb.pSm))
+        paramView = View.inflate(this.mContext, a.e.thK, null);
+        paramViewGroup = (TextView)paramView.findViewById(a.d.tbx);
+        localObject1 = (TextView)paramView.findViewById(a.d.tbw);
+        localObject2 = (LinearLayout)paramView.findViewById(a.d.tgR);
+        if (!TextUtils.isEmpty(localb.tol))
         {
-          ((LinearLayout)localObject2).setTag(localb.pSm);
+          ((LinearLayout)localObject2).setTag(localb.tol);
           ((LinearLayout)localObject2).setOnClickListener(new m.1(this));
-          ((ImageView)paramView.findViewById(2131298068)).setBackgroundColor(l.ake(localb.ixw));
+          ((ImageView)paramView.findViewById(a.d.tbv)).setBackgroundColor(l.arR(localb.lmL));
           ((LinearLayout)localObject2).setVisibility(0);
         }
         for (;;)
         {
           paramViewGroup.setText(localb.title);
-          ((TextView)localObject1).setText(localb.pRY);
+          ((TextView)localObject1).setText(localb.tnY);
           AppMethodBeat.o(113616);
           return paramView;
           ((LinearLayout)localObject2).setVisibility(8);
         }
-        ((a)localObject1).qeC.setVisibility(8);
+        ((a)localObject1).tAz.setVisibility(8);
         break;
-        label666:
-        ((a)localObject1).qez.setVisibility(0);
-        ((a)localObject1).qez.setText(localb.pRY);
-        break label257;
-        label691:
+        label676:
+        ((a)localObject1).tAw.setVisibility(0);
+        ((a)localObject1).tAw.setText(localb.tnY);
+        break label264;
+        label701:
         i = 0;
-        break label272;
-        label697:
-        ((a)localObject1).qdx.setGravity(3);
-        paramViewGroup = ((a)localObject1).qdx;
+        break label279;
+        label707:
+        ((a)localObject1).tzu.setGravity(3);
+        paramViewGroup = ((a)localObject1).tzu;
         localObject2 = this.mContext.getResources();
-        if (localb.pSl) {}
-        for (i = 2131100904;; i = 2131099836)
+        if (localb.tok) {}
+        for (i = a.a.normal_text_color;; i = a.a.UN_BW_0_Alpha_0_9)
         {
           paramViewGroup.setTextColor(((Resources)localObject2).getColor(i));
-          if (!localb.pSl) {
-            break label781;
+          if (!localb.tok) {
+            break label791;
           }
-          paramView.setBackgroundColor(this.mContext.getResources().getColor(2131101424));
+          paramView.setBackgroundColor(this.mContext.getResources().getColor(a.a.white));
           break;
         }
-        label781:
-        paramView.setBackgroundColor(this.mContext.getResources().getColor(2131099844));
-        break label317;
-        label801:
-        ((a)localObject1).qeA.setVisibility(8);
-        break label334;
-        label814:
-        i = 2131099835;
-        break label361;
-        label822:
+        label791:
+        paramView.setBackgroundColor(this.mContext.getResources().getColor(a.a.White));
+        break label325;
+        label811:
+        ((a)localObject1).tAx.setVisibility(8);
+        break label342;
+        label824:
+        i = a.a.UN_BW_0_Alpha_0_5;
+        break label370;
+        label832:
         i = 0;
-        break label386;
-        label828:
-        ((a)localObject1).qeB.setVisibility(8);
-        break label425;
-        label841:
+        break label395;
+        label838:
+        ((a)localObject1).tAy.setVisibility(8);
+        break label435;
+        label851:
         bool1 = false;
-        break label459;
-        label847:
+        break label469;
+        label857:
         bool1 = false;
-        break label494;
-        label853:
+        break label504;
+        label863:
         if (paramInt + 1 == getCount())
         {
-          if (!this.qeu) {
-            break label897;
+          if (!this.tAr) {
+            break label907;
           }
-          paramViewGroup = ((a)localObject1).sc;
-          if (!localb.pSl) {
+          paramViewGroup = ((a)localObject1).bvK;
+          if (!localb.tok) {
             bool1 = true;
           }
           c(paramViewGroup, true, bool1);
         }
       }
-      label897:
-      paramViewGroup = ((a)localObject1).sc;
-      if (!localb.pSl) {}
+      label907:
+      paramViewGroup = ((a)localObject1).bvK;
+      if (!localb.tok) {}
       for (bool1 = bool3;; bool1 = false)
       {
         c(paramViewGroup, false, bool1);
@@ -293,19 +297,19 @@ public final class m
   public final void setData(List<b> paramList)
   {
     AppMethodBeat.i(113613);
-    this.pRa.clear();
-    this.pRa.addAll(paramList);
+    this.tmZ.clear();
+    this.tmZ.addAll(paramList);
     AppMethodBeat.o(113613);
   }
   
   final class a
   {
-    TextView qdx;
-    TextView qeA;
-    ImageView qeB;
-    CheckBox qeC;
-    TextView qez;
-    View sc;
+    View bvK;
+    TextView tAw;
+    TextView tAx;
+    ImageView tAy;
+    CheckBox tAz;
+    TextView tzu;
     
     private a() {}
   }

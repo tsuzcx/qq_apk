@@ -9,29 +9,29 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class j
   implements h.a
 {
-  private NoiseSuppressor gDn;
+  private NoiseSuppressor jnu;
   
   @TargetApi(16)
   public j(AudioRecord paramAudioRecord)
   {
     AppMethodBeat.i(155614);
-    this.gDn = null;
+    this.jnu = null;
     boolean bool = NoiseSuppressor.isAvailable();
     Log.d("MicroMsg.MMNoiseSuppressor", "available  ".concat(String.valueOf(bool)));
     if (bool) {
-      this.gDn = NoiseSuppressor.create(paramAudioRecord.getAudioSessionId());
+      this.jnu = NoiseSuppressor.create(paramAudioRecord.getAudioSessionId());
     }
     AppMethodBeat.o(155614);
   }
   
   @TargetApi(16)
-  public final boolean anE()
+  public final boolean atG()
   {
     AppMethodBeat.i(155616);
-    if (this.gDn != null) {}
+    if (this.jnu != null) {}
     try
     {
-      int i = this.gDn.setEnabled(true);
+      int i = this.jnu.setEnabled(true);
       if (i == 0)
       {
         AppMethodBeat.o(155616);
@@ -61,7 +61,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.compatible.b.j
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.os.IBinder;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.by.c;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.BakOldUSBService;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -17,10 +17,10 @@ import com.tencent.mm.service.MMService;
 public class BackupPcService
   extends MMService
 {
-  private boolean mbo = false;
-  private boolean oOM = false;
+  private boolean oZf = false;
+  private boolean rQJ = false;
   
-  public final IBinder akL()
+  public final IBinder aqH()
   {
     return null;
   }
@@ -72,19 +72,19 @@ public class BackupPcService
       AppMethodBeat.o(21624);
       return 2;
     }
-    this.oOM = paramIntent.getBooleanExtra("isFromWifi", false);
-    this.mbo = paramIntent.getBooleanExtra("isMove", false);
-    Log.i("MicroMsg.BackupPcService", "onStartCommand Broadcast url:%s, isFromWifi:%b, isMove:%b", new Object[] { str, Boolean.valueOf(this.oOM), Boolean.valueOf(this.mbo) });
-    if ((!this.mbo) && (!bg.aVG()))
+    this.rQJ = paramIntent.getBooleanExtra("isFromWifi", false);
+    this.oZf = paramIntent.getBooleanExtra("isMove", false);
+    Log.i("MicroMsg.BackupPcService", "onStartCommand Broadcast url:%s, isFromWifi:%b, isMove:%b", new Object[] { str, Boolean.valueOf(this.rQJ), Boolean.valueOf(this.oZf) });
+    if ((!this.oZf) && (!bh.beJ()))
     {
       Log.e("MicroMsg.BackupPcService", "onStartCommand onStartCommand not in Login state");
       paramIntent = new Intent().setClassName(MMApplicationContext.getContext(), "com.tencent.mm.ui.LauncherUI");
       paramIntent.addFlags(335544320);
       paramIntent.putExtra("nofification_type", "back_to_pcmgr_notification");
-      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bl(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramIntent.axQ(), "com/tencent/mm/plugin/backup/backuppcmodel/BackupPcService", "onStartCommand", "(Landroid/content/Intent;II)I", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramIntent.pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backuppcmodel/BackupPcService", "onStartCommand", "(Landroid/content/Intent;II)I", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(this, paramIntent.aFh(), "com/tencent/mm/plugin/backup/backuppcmodel/BackupPcService", "onStartCommand", "(Landroid/content/Intent;II)I", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramIntent.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/backup/backuppcmodel/BackupPcService", "onStartCommand", "(Landroid/content/Intent;II)I", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(21624);
       return 2;
     }
@@ -95,7 +95,7 @@ public class BackupPcService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.backuppcmodel.BackupPcService
  * JD-Core Version:    0.7.0.1
  */

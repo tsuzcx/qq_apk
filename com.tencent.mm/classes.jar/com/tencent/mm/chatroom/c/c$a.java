@@ -1,42 +1,48 @@
 package com.tencent.mm.chatroom.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.chatroom.d.r;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.dqb;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.protocal.protobuf.dzx;
 import com.tencent.mm.sdk.platformtools.Log;
 
-public final class c$a
+public class c$a
   implements i
 {
   public c$a()
   {
     AppMethodBeat.i(182078);
-    g.azz().a(3618, this);
-    g.azz().a(3854, this);
+    h.aGY().a(3618, this);
+    h.aGY().a(3854, this);
     AppMethodBeat.o(182078);
   }
   
-  public static void a(String paramString, int paramInt, dqb paramdqb)
+  public static void a(String paramString, int paramInt, dzx paramdzx)
   {
     AppMethodBeat.i(182080);
-    g.azz().a(new r(paramString, paramInt, paramdqb), 0);
+    h.aGY().a(new r(paramString, paramInt, paramdzx), 0);
     AppMethodBeat.o(182080);
   }
   
-  protected final void finalize()
+  public static void a(String paramString1, String paramString2, String paramString3, dzx paramdzx)
+  {
+    AppMethodBeat.i(193987);
+    h.aGY().a(new com.tencent.mm.chatroom.d.t(paramString1, paramString2, paramString3, paramdzx), 0);
+    AppMethodBeat.o(193987);
+  }
+  
+  protected void finalize()
   {
     AppMethodBeat.i(182079);
-    g.azz().b(3618, this);
-    g.azz().b(3854, this);
+    h.aGY().b(3618, this);
+    h.aGY().b(3854, this);
     super.finalize();
     AppMethodBeat.o(182079);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(182081);
     Log.i("MicroMsg.roomTodo.RoomTodoMsg", "onSceneEnd errType = %d, errCode = %d, errMsg = %s, scenetype:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramq.getType()) });
@@ -45,7 +51,7 @@ public final class c$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.chatroom.c.c.a
  * JD-Core Version:    0.7.0.1
  */

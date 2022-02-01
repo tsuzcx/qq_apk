@@ -3,34 +3,36 @@ package com.tencent.mm.plugin.sight.draft.ui;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.Toast;
+import androidx.appcompat.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelvideo.j;
-import com.tencent.mm.modelvideo.k;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.l;
+import com.tencent.mm.modelvideo.n;
+import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo;
 import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo.WhichApp;
 import com.tencent.mm.sdk.system.AndroidMediaUtil;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.u;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.ui.base.w;
+import com.tencent.mm.vfs.u;
 import java.util.LinkedList;
 
 public class SightDraftUI
   extends MMActivity
 {
-  private int DoO;
-  SightDraftContainerView DoP;
-  private LinkedList<String> DoQ;
+  private int Jut;
+  SightDraftContainerView Juu;
+  private LinkedList<String> Juv;
   
   public SightDraftUI()
   {
     AppMethodBeat.i(28699);
-    this.DoO = 1;
-    this.DoQ = new LinkedList();
+    this.Jut = 1;
+    this.Juv = new LinkedList();
     AppMethodBeat.o(28699);
   }
   
@@ -43,11 +45,11 @@ public class SightDraftUI
   {
     AppMethodBeat.i(28700);
     super.onCreate(paramBundle);
-    setMMTitle(2131765899);
-    getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(2131100042));
-    this.DoP = new SightDraftContainerView(this);
-    setContentView(this.DoP);
-    this.DoP.eVW();
+    setMMTitle(R.l.sight_old_draft_title);
+    getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.e.black));
+    this.Juu = new SightDraftContainerView(this);
+    setContentView(this.Juu);
+    this.Juu.fIZ();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -58,12 +60,12 @@ public class SightDraftUI
         return false;
       }
     });
-    this.DoP.setSightDraftCallback(new a()
+    this.Juu.setSightDraftCallback(new a()
     {
-      public final void eVT()
+      public final void fIW()
       {
         AppMethodBeat.i(28697);
-        SightDraftUI.this.addTextOptionMenu(SightDraftUI.a(SightDraftUI.this), SightDraftUI.this.getString(2131765888), new MenuItem.OnMenuItemClickListener()
+        SightDraftUI.this.addTextOptionMenu(SightDraftUI.a(SightDraftUI.this), SightDraftUI.this.getString(R.l.sight_draft_save), new MenuItem.OnMenuItemClickListener()
         {
           public final boolean onMenuItemClick(MenuItem paramAnonymous2MenuItem)
           {
@@ -76,7 +78,7 @@ public class SightDraftUI
         AppMethodBeat.o(28697);
       }
       
-      public final void eVU()
+      public final void fIX()
       {
         AppMethodBeat.i(28698);
         SightDraftUI.this.removeOptionMenu(SightDraftUI.a(SightDraftUI.this));
@@ -94,7 +96,7 @@ public class SightDraftUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.draft.ui.SightDraftUI
  * JD-Core Version:    0.7.0.1
  */

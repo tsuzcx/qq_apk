@@ -10,42 +10,42 @@ import java.util.Iterator;
 
 public enum d
 {
-  public WeakReference<Context> hkm;
-  public HashMap<Integer, a> hkn;
-  public com.tencent.f.i.b hko;
-  public final Object hkp;
   public boolean isRunning;
+  public WeakReference<Context> jVV;
+  public HashMap<Integer, a> jVW;
+  public com.tencent.e.i.b jVX;
+  public final Object jVY;
   
   static
   {
     AppMethodBeat.i(136211);
-    hkl = new d("INSTANCE");
-    hkq = new d[] { hkl };
+    jVU = new d("INSTANCE");
+    jVZ = new d[] { jVU };
     AppMethodBeat.o(136211);
   }
   
   private d()
   {
     AppMethodBeat.i(136208);
-    this.hkm = null;
-    this.hkn = new HashMap();
+    this.jVV = null;
+    this.jVW = new HashMap();
     this.isRunning = false;
-    this.hko = null;
-    this.hkp = new Object();
+    this.jVX = null;
+    this.jVY = new Object();
     AppMethodBeat.o(136208);
   }
   
-  public final b axG()
+  public final b aEY()
   {
     AppMethodBeat.i(136209);
-    synchronized (this.hkp)
+    synchronized (this.jVY)
     {
-      if (this.hkn != null)
+      if (this.jVW != null)
       {
-        Object localObject2 = (a)this.hkn.get(Integer.valueOf(2));
+        Object localObject2 = (a)this.jVW.get(Integer.valueOf(2));
         if ((localObject2 != null) && ((localObject2 instanceof b)))
         {
-          ((a)localObject2).axD();
+          ((a)localObject2).aEV();
           localObject2 = (b)localObject2;
           AppMethodBeat.o(136209);
           return localObject2;
@@ -56,22 +56,22 @@ public enum d
     }
   }
   
-  public final void axH()
+  public final void aEZ()
   {
     AppMethodBeat.i(136210);
-    synchronized (this.hkp)
+    synchronized (this.jVY)
     {
       if (!this.isRunning)
       {
         AppMethodBeat.o(136210);
         return;
       }
-      if (this.hko != null) {
-        this.hko.cancel();
+      if (this.jVX != null) {
+        this.jVX.cancel();
       }
       this.isRunning = false;
-      if (this.hkn != null) {
-        this.hkn.clear();
+      if (this.jVW != null) {
+        this.jVW.clear();
       }
       AppMethodBeat.o(136210);
       return;
@@ -80,7 +80,7 @@ public enum d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.graphics.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -9,32 +9,32 @@ import java.util.concurrent.Executors;
 
 public final class a
 {
-  private static a CDM;
-  private static float CDN;
-  private Object CCt;
-  private Map CDO;
-  private Object CDP;
-  private ExecutorService CDQ;
-  private Rect CDR;
-  private Rect iiw;
+  private static a IIo;
+  private static float IIp;
+  private Object Brg;
+  private Map IIq;
+  private Object IIr;
+  private ExecutorService IIs;
+  private Rect IIt;
+  private Rect kXj;
   
   static
   {
     AppMethodBeat.i(118321);
-    CDM = new a();
-    CDN = 1.15F;
+    IIo = new a();
+    IIp = 1.15F;
     AppMethodBeat.o(118321);
   }
   
   public a()
   {
     AppMethodBeat.i(118320);
-    this.CDO = new HashMap();
-    this.CCt = new Object();
-    this.CDP = new Object();
-    this.CDQ = Executors.newSingleThreadExecutor();
-    this.CDR = new Rect();
-    this.iiw = new Rect();
+    this.IIq = new HashMap();
+    this.Brg = new Object();
+    this.IIr = new Object();
+    this.IIs = Executors.newSingleThreadExecutor();
+    this.IIt = new Rect();
+    this.kXj = new Rect();
     AppMethodBeat.o(118320);
   }
 }

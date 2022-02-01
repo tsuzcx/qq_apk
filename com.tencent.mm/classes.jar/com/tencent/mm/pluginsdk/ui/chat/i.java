@@ -16,8 +16,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -27,56 +29,56 @@ import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.base.r;
 import java.util.ArrayList;
 
 public final class i
 {
-  private h Kng;
-  g Knh;
-  p Kni;
-  boolean Knj;
-  h.a Knk;
-  a Knl;
+  View Eol;
+  private h RnS;
+  g RnT;
+  r RnU;
+  boolean RnV;
+  h.a RnW;
+  a RnX;
   Bitmap bitmap;
   private View contentView;
   Context context;
-  ImageView dPk;
-  View gvQ;
+  ImageView fIv;
+  View jac;
   SharedPreferences sp;
-  View yKs;
   
   public i(Context paramContext, View paramView1, View paramView2, a parama)
   {
     AppMethodBeat.i(31756);
     this.contentView = null;
-    this.dPk = null;
+    this.fIv = null;
     this.bitmap = null;
-    this.Knj = true;
+    this.RnV = true;
     this.context = paramContext;
-    this.gvQ = paramView1;
-    this.yKs = paramView2;
-    this.Kng = new h(this.context);
+    this.jac = paramView1;
+    this.Eol = paramView2;
+    this.RnS = new h(this.context);
     this.sp = paramContext.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0);
-    this.Knl = parama;
-    this.contentView = View.inflate(this.context, 2131493496, null);
-    this.dPk = ((ImageView)this.contentView.findViewById(2131306613));
-    this.Kni = new p(this.contentView, -2, -2, false);
-    this.Kni.setBackgroundDrawable(new ColorDrawable(0));
-    this.Kni.setOutsideTouchable(true);
+    this.RnX = parama;
+    this.contentView = View.inflate(this.context, R.i.ecr, null);
+    this.fIv = ((ImageView)this.contentView.findViewById(R.h.dSg));
+    this.RnU = new r(this.contentView, -2, -2, false);
+    this.RnU.setBackgroundDrawable(new ColorDrawable(0));
+    this.RnU.setOutsideTouchable(true);
     this.contentView.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(31751);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/pluginsdk/ui/chat/RecentImageBubble$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        if ((i.this.Knl != null) && (i.this.Knh != null)) {
-          i.this.Knl.beZ(i.this.Knh.Kne);
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/pluginsdk/ui/chat/RecentImageBubble$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        if ((i.this.RnX != null) && (i.this.RnT != null)) {
+          i.this.RnX.brv(i.this.RnT.RnQ);
         }
-        i.this.Kni.dismiss();
+        i.this.RnU.dismiss();
         a.a(this, "com/tencent/mm/pluginsdk/ui/chat/RecentImageBubble$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(31751);
       }
@@ -84,7 +86,7 @@ public final class i
     AppMethodBeat.o(31756);
   }
   
-  final float aiE(int paramInt)
+  final float DI(int paramInt)
   {
     AppMethodBeat.i(31759);
     float f = TypedValue.applyDimension(1, paramInt, this.context.getResources().getDisplayMetrics());
@@ -92,10 +94,10 @@ public final class i
     return f;
   }
   
-  public final void grx()
+  public final void hmw()
   {
     AppMethodBeat.i(31757);
-    if (!this.Knk.gqT())
+    if (!this.RnW.hlS())
     {
       Log.w("MicroMsg.RecentImageBubble", "[checkIfShow] is not support.");
       AppMethodBeat.o(31757);
@@ -107,20 +109,20 @@ public final class i
       {
         AppMethodBeat.i(31752);
         paramAnonymousMessage = i.this;
-        if (!paramAnonymousMessage.Knk.gqT())
+        if (!paramAnonymousMessage.RnW.hlS())
         {
           Log.w("MicroMsg.RecentImageBubble", "[checkIfShow] is not support.");
           AppMethodBeat.o(31752);
           return;
         }
-        if ((paramAnonymousMessage.dPk == null) || (paramAnonymousMessage.Knh == null) || (paramAnonymousMessage.bitmap == null) || (paramAnonymousMessage.Kni == null) || (paramAnonymousMessage.gvQ == null) || (paramAnonymousMessage.yKs == null))
+        if ((paramAnonymousMessage.fIv == null) || (paramAnonymousMessage.RnT == null) || (paramAnonymousMessage.bitmap == null) || (paramAnonymousMessage.RnU == null) || (paramAnonymousMessage.jac == null) || (paramAnonymousMessage.Eol == null))
         {
           AppMethodBeat.o(31752);
           return;
         }
-        paramAnonymousMessage.dPk.setImageBitmap(paramAnonymousMessage.bitmap);
+        paramAnonymousMessage.fIv.setImageBitmap(paramAnonymousMessage.bitmap);
         int k;
-        if (paramAnonymousMessage.Knj) {
+        if (paramAnonymousMessage.RnV) {
           k = 83;
         }
         for (;;)
@@ -132,19 +134,19 @@ public final class i
           int n;
           int m;
           Rect localRect;
-          if (paramAnonymousMessage.Knj)
+          if (paramAnonymousMessage.RnV)
           {
             j = 0;
-            if (paramAnonymousMessage.Knk == null) {
+            if (paramAnonymousMessage.RnW == null) {
               break label302;
             }
-            i = paramAnonymousMessage.Knk.getYFromBottom();
+            i = paramAnonymousMessage.RnW.getYFromBottom();
             n = j;
             m = i;
             if (Build.VERSION.SDK_INT >= 21)
             {
-              localRect = ao.gJG();
-              if (!paramAnonymousMessage.Knj) {
+              localRect = ar.hID();
+              if (!paramAnonymousMessage.RnV) {
                 break label313;
               }
               j = 0;
@@ -156,7 +158,7 @@ public final class i
           }
           try
           {
-            paramAnonymousMessage.Kni.showAtLocation(paramAnonymousMessage.gvQ, k, n, m);
+            paramAnonymousMessage.RnU.showAtLocation(paramAnonymousMessage.jac, k, n, m);
             new MTimerHandler(new i.4(paramAnonymousMessage), false).startTimer(10000L);
             AppMethodBeat.o(31752);
             return;
@@ -165,7 +167,7 @@ public final class i
             j = 10;
             break label117;
             label302:
-            i = paramAnonymousMessage.yKs.getHeight();
+            i = paramAnonymousMessage.Eol.getHeight();
             break label134;
             label313:
             j += localRect.right;
@@ -180,13 +182,13 @@ public final class i
         }
       }
     };
-    bg.aAk().postToWorker(new Runnable()
+    bh.aHJ().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(31753);
         i locali = i.this;
-        Object localObject = locali.gry();
+        Object localObject = locali.hmx();
         int i;
         int j;
         int m;
@@ -201,8 +203,8 @@ public final class i
         }
         else
         {
-          i = (int)locali.aiE(70);
-          j = (int)locali.aiE(120);
+          i = (int)locali.DI(70);
+          j = (int)locali.DI(120);
           m = BackwardSupportUtil.ExifHelper.getExifOrientation((String)localObject);
           if ((m != 90) && (m != 270)) {
             break label197;
@@ -210,12 +212,12 @@ public final class i
         }
         for (;;)
         {
-          int k = (int)locali.aiE(4);
+          int k = (int)locali.DI(4);
           localObject = BitmapUtil.extractThumbNail((String)localObject, i, j, true);
           if (localObject != null)
           {
             locali.bitmap = BitmapUtil.getRoundedCornerBitmap(BitmapUtil.rotate((Bitmap)localObject, m), true, k);
-            locali.sp.edit().putString("chattingui_recent_shown_image_path", locali.Knh.Kne).commit();
+            locali.sp.edit().putString("chattingui_recent_shown_image_path", locali.RnT.RnQ).commit();
             Log.d("MicroMsg.RecentImageBubble", "check ok");
             i = 1;
             break;
@@ -244,19 +246,19 @@ public final class i
     AppMethodBeat.o(31757);
   }
   
-  public final String gry()
+  public final String hmx()
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(31758);
-        if (this.Kng == null)
+        if (this.RnS == null)
         {
           Log.d("MicroMsg.RecentImageBubble", "because of imageQuery == null");
           localObject1 = null;
-          this.Knh = ((g)localObject1);
-          if (this.Knh == null)
+          this.RnT = ((g)localObject1);
+          if (this.RnT == null)
           {
             AppMethodBeat.o(31758);
             localObject1 = null;
@@ -265,7 +267,7 @@ public final class i
         }
         else
         {
-          localObject1 = this.Kng.grw();
+          localObject1 = this.RnS.hmv();
           if ((localObject1 == null) || (((ArrayList)localObject1).size() == 0))
           {
             Log.d("MicroMsg.RecentImageBubble", "because of items == null || items.size() == 0");
@@ -275,32 +277,32 @@ public final class i
           g localg = (g)((ArrayList)localObject1).get(0);
           if (localg != null)
           {
-            if (Util.secondsToNow(localg.Knf) >= 0L) {
-              break label306;
+            if (Util.secondsToNow(localg.RnR) >= 0L) {
+              break label308;
             }
             i = 1;
             if (i != 0)
             {
-              Log.e("MicroMsg.RecentImageBubble", "we found u have a future pic that lead to forbid this featur. file : %s", new Object[] { localg.Kne });
+              Log.e("MicroMsg.RecentImageBubble", "we found u have a future pic that lead to forbid this featur. file : %s", new Object[] { localg.RnQ });
               localObject1 = null;
               continue;
             }
           }
-          if ((localg != null) && (localg.Kne != null) && (localg.Kne.contains(com.tencent.mm.loader.j.b.aKz())))
+          if ((localg != null) && (localg.RnQ != null) && (localg.RnQ.contains(com.tencent.mm.loader.j.b.aSB())))
           {
             localObject1 = null;
             continue;
           }
           if (localg != null)
           {
-            if (Util.secondsToNow(localg.Knf) > 30L) {
-              break label311;
+            if (Util.secondsToNow(localg.RnR) > 30L) {
+              break label313;
             }
             i = 1;
             if (i != 0)
             {
               localObject1 = localg;
-              if (!this.sp.getString("chattingui_recent_shown_image_path", "").equals(localg.Kne)) {
+              if (!this.sp.getString("chattingui_recent_shown_image_path", "").equals(localg.RnQ)) {
                 continue;
               }
               Log.d("MicroMsg.RecentImageBubble", "because of recentImage.equals(imageItem.orginalPath)");
@@ -309,40 +311,40 @@ public final class i
             }
           }
           if (localg != null) {
-            break label316;
+            break label318;
           }
           bool = true;
           Log.d("MicroMsg.RecentImageBubble", "because of checkAddDate(generateDate) == false, or imageItem == null : %s", new Object[] { Boolean.valueOf(bool) });
           localObject1 = null;
           continue;
         }
-        Object localObject1 = this.Knh.thumbPath;
-        if (this.Knh.thumbPath == null) {
-          localObject1 = this.Knh.Kne;
+        Object localObject1 = this.RnT.thumbPath;
+        if (this.RnT.thumbPath == null) {
+          localObject1 = this.RnT.RnQ;
         }
         AppMethodBeat.o(31758);
         continue;
         i = 0;
       }
       finally {}
-      label306:
+      label308:
       continue;
-      label311:
+      label313:
       int i = 0;
       continue;
-      label316:
+      label318:
       boolean bool = false;
     }
   }
   
   public static abstract interface a
   {
-    public abstract void beZ(String paramString);
+    public abstract void brv(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.i
  * JD-Core Version:    0.7.0.1
  */

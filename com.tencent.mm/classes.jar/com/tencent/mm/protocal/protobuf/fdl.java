@@ -1,91 +1,168 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class fdl
-  extends com.tencent.mm.bw.a
+  extends dyl
 {
-  public int KXD;
-  public String MxW;
-  public String path;
-  public String username;
+  public int SmH;
+  public long TVZ;
+  public int TWa;
+  public String UDq;
+  public com.tencent.mm.cd.b UDr;
+  public com.tencent.mm.cd.b UDs;
+  public String UDt;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123705);
+    AppMethodBeat.i(125498);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.username != null) {
-        paramVarArgs.e(1, this.username);
+      if (this.UDq == null)
+      {
+        paramVarArgs = new g.a.a.b("Not all required fields were included: ToBizUserName");
+        AppMethodBeat.o(125498);
+        throw paramVarArgs;
       }
-      if (this.MxW != null) {
-        paramVarArgs.e(2, this.MxW);
+      if (this.UDs == null)
+      {
+        paramVarArgs = new g.a.a.b("Not all required fields were included: CapInfo");
+        AppMethodBeat.o(125498);
+        throw paramVarArgs;
       }
-      paramVarArgs.aM(3, this.KXD);
-      if (this.path != null) {
-        paramVarArgs.e(4, this.path);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(123705);
+      paramVarArgs.aY(2, this.TWa);
+      if (this.UDq != null) {
+        paramVarArgs.f(3, this.UDq);
+      }
+      paramVarArgs.aY(4, this.SmH);
+      if (this.UDr != null) {
+        paramVarArgs.c(5, this.UDr);
+      }
+      if (this.UDs != null) {
+        paramVarArgs.c(6, this.UDs);
+      }
+      paramVarArgs.bm(7, this.TVZ);
+      if (this.UDt != null) {
+        paramVarArgs.f(8, this.UDt);
+      }
+      AppMethodBeat.o(125498);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.username == null) {
-        break label378;
+      if (this.BaseRequest == null) {
+        break label764;
       }
     }
-    label378:
-    for (paramInt = g.a.a.b.b.a.f(1, this.username) + 0;; paramInt = 0)
+    label764:
+    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.MxW != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.MxW);
-      }
-      i += g.a.a.b.b.a.bu(3, this.KXD);
+      int i = paramInt + g.a.a.b.b.a.bM(2, this.TWa);
       paramInt = i;
-      if (this.path != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.path);
+      if (this.UDq != null) {
+        paramInt = i + g.a.a.b.b.a.g(3, this.UDq);
       }
-      AppMethodBeat.o(123705);
+      i = paramInt + g.a.a.b.b.a.bM(4, this.SmH);
+      paramInt = i;
+      if (this.UDr != null) {
+        paramInt = i + g.a.a.b.b.a.b(5, this.UDr);
+      }
+      i = paramInt;
+      if (this.UDs != null) {
+        i = paramInt + g.a.a.b.b.a.b(6, this.UDs);
+      }
+      i += g.a.a.b.b.a.p(7, this.TVZ);
+      paramInt = i;
+      if (this.UDt != null) {
+        paramInt = i + g.a.a.b.b.a.g(8, this.UDt);
+      }
+      AppMethodBeat.o(125498);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(123705);
+        if (this.UDq == null)
+        {
+          paramVarArgs = new g.a.a.b("Not all required fields were included: ToBizUserName");
+          AppMethodBeat.o(125498);
+          throw paramVarArgs;
+        }
+        if (this.UDs == null)
+        {
+          paramVarArgs = new g.a.a.b("Not all required fields were included: CapInfo");
+          AppMethodBeat.o(125498);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(125498);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         fdl localfdl = (fdl)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(123705);
+          AppMethodBeat.o(125498);
           return -1;
         case 1: 
-          localfdl.username = locala.UbS.readString();
-          AppMethodBeat.o(123705);
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            jg localjg = new jg();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localjg.parseFrom((byte[])localObject);
+            }
+            localfdl.BaseRequest = localjg;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(125498);
           return 0;
         case 2: 
-          localfdl.MxW = locala.UbS.readString();
-          AppMethodBeat.o(123705);
+          localfdl.TWa = ((g.a.a.a.a)localObject).abFh.AK();
+          AppMethodBeat.o(125498);
           return 0;
         case 3: 
-          localfdl.KXD = locala.UbS.zi();
-          AppMethodBeat.o(123705);
+          localfdl.UDq = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(125498);
+          return 0;
+        case 4: 
+          localfdl.SmH = ((g.a.a.a.a)localObject).abFh.AK();
+          AppMethodBeat.o(125498);
+          return 0;
+        case 5: 
+          localfdl.UDr = ((g.a.a.a.a)localObject).abFh.iUw();
+          AppMethodBeat.o(125498);
+          return 0;
+        case 6: 
+          localfdl.UDs = ((g.a.a.a.a)localObject).abFh.iUw();
+          AppMethodBeat.o(125498);
+          return 0;
+        case 7: 
+          localfdl.TVZ = ((g.a.a.a.a)localObject).abFh.AN();
+          AppMethodBeat.o(125498);
           return 0;
         }
-        localfdl.path = locala.UbS.readString();
-        AppMethodBeat.o(123705);
+        localfdl.UDt = ((g.a.a.a.a)localObject).abFh.readString();
+        AppMethodBeat.o(125498);
         return 0;
       }
-      AppMethodBeat.o(123705);
+      AppMethodBeat.o(125498);
       return -1;
     }
   }

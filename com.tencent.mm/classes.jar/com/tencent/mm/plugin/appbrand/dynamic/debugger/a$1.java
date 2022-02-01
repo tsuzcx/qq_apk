@@ -2,20 +2,20 @@ package com.tencent.mm.plugin.appbrand.dynamic.debugger;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aa.c.e.a;
-import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ac.c.e.a;
+import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 
 final class a$1
   implements e.a
 {
-  public final void S(String paramString, int paramInt)
+  public final void aj(String paramString, int paramInt)
   {
     AppMethodBeat.i(121285);
     Bundle localBundle = new Bundle();
     localBundle.putString("id", paramString);
     localBundle.putInt("status", paramInt);
-    h.a(MainProcessIPCService.dkO, localBundle, a.a.class, null);
+    j.a(MainProcessIPCService.PROCESS_NAME, localBundle, a.a.class, null);
     AppMethodBeat.o(121285);
   }
 }

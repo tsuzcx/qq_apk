@@ -21,11 +21,16 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.t;
+import com.tencent.mm.ay.a.a.c.a;
 import com.tencent.mm.b.p;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.plugin.card.a.a;
+import com.tencent.mm.plugin.card.a.c;
+import com.tencent.mm.plugin.card.a.d;
+import com.tencent.mm.plugin.card.a.e;
+import com.tencent.mm.plugin.card.a.g;
 import com.tencent.mm.plugin.card.d.d;
 import com.tencent.mm.plugin.card.d.n.3;
 import com.tencent.mm.plugin.card.model.ag;
@@ -34,7 +39,8 @@ import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.base.s;
 
 @com.tencent.mm.ui.base.a(7)
 public class CardGiftAcceptUI
@@ -42,88 +48,88 @@ public class CardGiftAcceptUI
   implements View.OnClickListener, i
 {
   private final String TAG = "MicroMsg.CardGiftAcceptUI";
-  private String dSW;
-  private String dYs;
-  private TextView hFg;
-  private int ixX;
-  private String ixY;
-  private RelativeLayout qai;
-  private RelativeLayout qaj;
-  private ImageView qak;
-  private TextView qal;
-  private ImageView qam;
-  private Button qan;
-  private LinearLayout qao;
-  private TextView qap;
-  private LinearLayout qaq;
-  private TextView qar;
-  private ImageView qas;
-  private ImageView qat;
-  private RelativeLayout qau;
-  private ag qav;
-  private com.tencent.mm.plugin.card.model.q qaw;
-  private com.tencent.mm.ui.base.q tipDialog = null;
+  private String fSj;
+  private String fwY;
+  private TextView ktl;
+  private int lnn;
+  private String lno;
+  private s tipDialog = null;
+  private RelativeLayout twe;
+  private RelativeLayout twf;
+  private ImageView twg;
+  private TextView twh;
+  private ImageView twi;
+  private Button twj;
+  private LinearLayout twk;
+  private TextView twl;
+  private LinearLayout twm;
+  private TextView twn;
+  private ImageView twp;
+  private ImageView twq;
+  private RelativeLayout twr;
+  private ag tws;
+  private com.tencent.mm.plugin.card.model.q twt;
   
   private static Drawable b(Drawable paramDrawable, ColorStateList paramColorStateList)
   {
     AppMethodBeat.i(113312);
-    paramDrawable = android.support.v4.graphics.drawable.a.i(paramDrawable);
-    android.support.v4.graphics.drawable.a.a(paramDrawable, paramColorStateList);
+    paramDrawable = androidx.core.graphics.drawable.a.p(paramDrawable);
+    androidx.core.graphics.drawable.a.a(paramDrawable, paramColorStateList);
     AppMethodBeat.o(113312);
     return paramDrawable;
   }
   
-  private void cvP()
+  private void cJr()
   {
     AppMethodBeat.i(113316);
-    com.tencent.mm.plugin.card.model.q localq = new com.tencent.mm.plugin.card.model.q(this.ixX, this.ixY, this.dSW, Boolean.FALSE);
-    g.aAg().hqi.a(localq, 0);
+    com.tencent.mm.plugin.card.model.q localq = new com.tencent.mm.plugin.card.model.q(this.lnn, this.lno, this.fwY, Boolean.FALSE);
+    com.tencent.mm.kernel.h.aHF().kcd.a(localq, 0);
     if (this.tipDialog != null) {
       this.tipDialog.show();
     }
     AppMethodBeat.o(113316);
   }
   
-  private void fg(int paramInt1, int paramInt2)
+  private void fD(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(113313);
     GradientDrawable localGradientDrawable = new GradientDrawable();
     localGradientDrawable.setColor(paramInt2);
     localGradientDrawable.setStroke(2, paramInt1);
     localGradientDrawable.setCornerRadius(6.0F);
-    this.qan.setBackground(localGradientDrawable);
+    this.twj.setBackground(localGradientDrawable);
     AppMethodBeat.o(113313);
   }
   
   public int getLayoutId()
   {
-    return 2131493365;
+    return a.e.tib;
   }
   
   public void initView()
   {
     AppMethodBeat.i(113311);
-    this.qai = ((RelativeLayout)findViewById(2131298111));
-    this.qaj = ((RelativeLayout)findViewById(2131298120));
-    this.qak = ((ImageView)findViewById(2131298122));
-    this.qal = ((TextView)findViewById(2131298123));
-    this.hFg = ((TextView)findViewById(2131298118));
-    this.qam = ((ImageView)findViewById(2131302902));
-    this.qan = ((Button)findViewById(2131298125));
-    this.qap = ((TextView)findViewById(2131298119));
-    this.qar = ((TextView)findViewById(2131298121));
-    this.qau = ((RelativeLayout)findViewById(2131298124));
-    this.qas = ((ImageView)findViewById(2131298117));
-    this.qat = ((ImageView)findViewById(2131307473));
-    this.qao = ((LinearLayout)findViewById(2131305742));
-    this.qaq = ((LinearLayout)findViewById(2131307474));
-    this.qau.setOnClickListener(this);
-    this.qai.setOnClickListener(this);
-    this.qaj.setOnClickListener(this);
-    this.qao.setOnClickListener(this);
-    this.qaq.setOnClickListener(this);
+    this.twe = ((RelativeLayout)findViewById(a.d.tbY));
+    this.twf = ((RelativeLayout)findViewById(a.d.tcf));
+    this.twg = ((ImageView)findViewById(a.d.tch));
+    this.twh = ((TextView)findViewById(a.d.tci));
+    this.ktl = ((TextView)findViewById(a.d.tcd));
+    this.twi = ((ImageView)findViewById(a.d.tfZ));
+    this.twj = ((Button)findViewById(a.d.tck));
+    this.twl = ((TextView)findViewById(a.d.tce));
+    this.twn = ((TextView)findViewById(a.d.tcg));
+    this.twr = ((RelativeLayout)findViewById(a.d.tcj));
+    this.twp = ((ImageView)findViewById(a.d.tcc));
+    this.twq = ((ImageView)findViewById(a.d.tgC));
+    this.twk = ((LinearLayout)findViewById(a.d.tgp));
+    this.twm = ((LinearLayout)findViewById(a.d.tgD));
+    this.twr.setOnClickListener(this);
+    this.twe.setOnClickListener(this);
+    this.twf.setOnClickListener(this);
+    this.twk.setOnClickListener(this);
+    this.twm.setOnClickListener(this);
     getContentView().setVisibility(8);
-    this.tipDialog = com.tencent.mm.ui.base.h.a(getContext(), getString(2131762446), true, new DialogInterface.OnCancelListener()
+    this.tipDialog = com.tencent.mm.ui.base.h.a(getContext(), getString(a.g.loading_tips), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
@@ -136,8 +142,8 @@ public class CardGiftAcceptUI
         AppMethodBeat.o(113308);
       }
     });
-    ag localag = new ag(this.ixX, this.ixY, this.dSW);
-    g.aAg().hqi.a(localag, 0);
+    ag localag = new ag(this.lnn, this.lno, this.fwY);
+    com.tencent.mm.kernel.h.aHF().kcd.a(localag, 0);
     if (this.tipDialog != null) {
       this.tipDialog.show();
     }
@@ -148,19 +154,19 @@ public class CardGiftAcceptUI
   {
     AppMethodBeat.i(113314);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/CardGiftAcceptUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    if ((paramView.getId() == 2131298125) || (paramView.getId() == 2131305742))
+    localb.bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/card/ui/CardGiftAcceptUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    if ((paramView.getId() == a.d.tck) || (paramView.getId() == a.d.tgp))
     {
-      if (this.qan.getVisibility() == 0)
+      if (this.twj.getVisibility() == 0)
       {
-        int i = ao.hT(Util.convertStringToRGB(this.qav.pUw, getResources().getColor(2131100128)));
-        fg(i, i);
-        this.qan.setTextColor(getResources().getColor(2131101427));
+        int i = ar.iV(Util.convertStringToRGB(this.tws.tqx, getResources().getColor(a.a.sZw)));
+        fD(i, i);
+        this.twj.setTextColor(getResources().getColor(a.a.white_text_color));
       }
-      cvP();
-      if (!Util.isNullOrNil(this.dYs)) {
-        com.tencent.mm.plugin.report.service.h.CyF.a(13866, new Object[] { Integer.valueOf(2), this.ixY, p.getString(this.ixX), this.dYs });
+      cJr();
+      if (!Util.isNullOrNil(this.fSj)) {
+        com.tencent.mm.plugin.report.service.h.IzE.a(13866, new Object[] { Integer.valueOf(2), this.lno, p.getString(this.lnn), this.fSj });
       }
     }
     for (;;)
@@ -168,18 +174,18 @@ public class CardGiftAcceptUI
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/CardGiftAcceptUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(113314);
       return;
-      if (paramView.getId() == 2131298124)
+      if (paramView.getId() == a.d.tcj)
       {
         finish();
       }
-      else if (paramView.getId() == 2131298111)
+      else if (paramView.getId() == a.d.tbY)
       {
         finish();
       }
-      else if (paramView.getId() == 2131307474)
+      else if (paramView.getId() == a.d.tgD)
       {
-        paramView = new com.tencent.mm.plugin.card.model.q(this.ixX, this.ixY, this.dSW, Boolean.TRUE);
-        g.aAg().hqi.a(paramView, 0);
+        paramView = new com.tencent.mm.plugin.card.model.q(this.lnn, this.lno, this.fwY, Boolean.TRUE);
+        com.tencent.mm.kernel.h.aHF().kcd.a(paramView, 0);
         if (this.tipDialog != null) {
           this.tipDialog.show();
         }
@@ -191,31 +197,31 @@ public class CardGiftAcceptUI
   {
     AppMethodBeat.i(113309);
     super.onCreate(paramBundle);
-    this.ixY = getIntent().getStringExtra("key_order_id");
-    this.ixX = getIntent().getIntExtra("key_biz_uin", -1);
-    this.dYs = getIntent().getStringExtra("key_from_user_name");
-    this.dSW = getIntent().getStringExtra("key_chatroom_name");
-    Log.i("MicroMsg.CardGiftAcceptUI", "onCreate, orderId:%s, bizUin:%s, fromUserName:%s", new Object[] { this.ixY, Integer.valueOf(this.ixX), this.dYs });
-    if (this.ixX == -1)
+    this.lno = getIntent().getStringExtra("key_order_id");
+    this.lnn = getIntent().getIntExtra("key_biz_uin", -1);
+    this.fSj = getIntent().getStringExtra("key_from_user_name");
+    this.fwY = getIntent().getStringExtra("key_chatroom_name");
+    Log.i("MicroMsg.CardGiftAcceptUI", "onCreate, orderId:%s, bizUin:%s, fromUserName:%s", new Object[] { this.lno, Integer.valueOf(this.lnn), this.fSj });
+    if (this.lnn == -1)
     {
       Log.e("MicroMsg.CardGiftAcceptUI", "bizUin is -1, fail!");
       d.a(this, "", true);
       AppMethodBeat.o(113309);
       return;
     }
-    if (this.ixY == null)
+    if (this.lno == null)
     {
       Log.e("MicroMsg.CardGiftAcceptUI", "orderId is null, fail");
       d.a(this, "", true);
       AppMethodBeat.o(113309);
       return;
     }
-    if (!Util.isNullOrNil(this.dYs)) {
-      com.tencent.mm.plugin.report.service.h.CyF.a(13866, new Object[] { Integer.valueOf(1), this.ixY, p.getString(this.ixX), this.dYs });
+    if (!Util.isNullOrNil(this.fSj)) {
+      com.tencent.mm.plugin.report.service.h.IzE.a(13866, new Object[] { Integer.valueOf(1), this.lno, p.getString(this.lnn), this.fSj });
     }
     initView();
-    g.aAg().hqi.a(1171, this);
-    g.aAg().hqi.a(1136, this);
+    com.tencent.mm.kernel.h.aHF().kcd.a(1171, this);
+    com.tencent.mm.kernel.h.aHF().kcd.a(1136, this);
     AppMethodBeat.o(113309);
   }
   
@@ -223,8 +229,8 @@ public class CardGiftAcceptUI
   {
     AppMethodBeat.i(113310);
     super.onDestroy();
-    g.aAg().hqi.b(1171, this);
-    g.aAg().hqi.b(1136, this);
+    com.tencent.mm.kernel.h.aHF().kcd.b(1171, this);
+    com.tencent.mm.kernel.h.aHF().kcd.b(1136, this);
     AppMethodBeat.o(113310);
   }
   
@@ -244,24 +250,24 @@ public class CardGiftAcceptUI
     return bool;
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
   {
     AppMethodBeat.i(113315);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       if ((paramq instanceof ag))
       {
-        this.qav = ((ag)paramq);
-        Log.i("MicroMsg.CardGiftAcceptUI", "ignore:%b", new Object[] { Boolean.valueOf(this.qav.pUu) });
-        if (!this.qav.pUu)
+        this.tws = ((ag)paramq);
+        Log.i("MicroMsg.CardGiftAcceptUI", "ignore:%b", new Object[] { Boolean.valueOf(this.tws.tqv) });
+        if (!this.tws.tqv)
         {
           if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
             this.tipDialog.dismiss();
           }
-          if (this.qav == null)
+          if (this.tws == null)
           {
             Log.e("MicroMsg.CardGiftAcceptUI", "preAcceptGiftCard is null");
-            paramString = this.qaj;
+            paramString = this.twf;
             paramq = new ScaleAnimation(0.0F, 0.96F, 0.0F, 0.96F, 1, 0.5F, 1, 0.5F);
             paramq.setDuration(300L);
             paramq.setInterpolator(new OvershootInterpolator());
@@ -273,125 +279,125 @@ public class CardGiftAcceptUI
             if (paramString != null) {
               paramString.startAnimation(paramq);
             }
-            ao.q(this, getResources().getColor(2131099652));
+            ar.r(this, getResources().getColor(a.a.BG_4));
             getContentView().setVisibility(0);
             AppMethodBeat.o(113315);
             return;
           }
-          this.hFg.setText(this.qav.content);
-          this.qal.setText(l.b(this, this.qav.dYs, this.qal.getTextSize()));
-          if (this.qav.status == 0) {
-            if (!Util.isNullOrNil(this.qav.pUt))
+          this.ktl.setText(this.tws.content);
+          this.twh.setText(l.b(this, this.tws.fSj, this.twh.getTextSize()));
+          if (this.tws.status == 0) {
+            if (!Util.isNullOrNil(this.tws.tqu))
             {
-              this.qan.setVisibility(0);
-              this.qan.setText(this.qav.pUt);
-              this.qan.setOnClickListener(this);
+              this.twj.setVisibility(0);
+              this.twj.setText(this.tws.tqu);
+              this.twj.setOnClickListener(this);
             }
           }
           for (;;)
           {
-            if (!Util.isNullOrNil(this.qav.pUx))
+            if (!Util.isNullOrNil(this.tws.tqy))
             {
-              this.qan.setVisibility(8);
-              this.qaq.setVisibility(8);
-              this.qao.setVisibility(0);
-              this.qap.setText(this.qav.pUx);
+              this.twj.setVisibility(8);
+              this.twm.setVisibility(8);
+              this.twk.setVisibility(0);
+              this.twl.setText(this.tws.tqy);
             }
-            if (!Util.isNullOrNil(this.qav.pUy))
+            if (!Util.isNullOrNil(this.tws.tqz))
             {
-              this.qao.setVisibility(8);
-              this.qaq.setVisibility(0);
-              this.qar.setText(this.qav.pUy);
+              this.twk.setVisibility(8);
+              this.twm.setVisibility(0);
+              this.twn.setText(this.tws.tqz);
             }
-            if (!Util.isNullOrNil(this.qav.pUs))
+            if (!Util.isNullOrNil(this.tws.tqt))
             {
-              paramInt1 = com.tencent.mm.cb.a.fromDPToPix(this, 15);
+              paramInt1 = com.tencent.mm.ci.a.fromDPToPix(this, 15);
               paramString = new c.a();
-              paramString.prefixPath = com.tencent.mm.loader.j.b.aKJ();
-              com.tencent.mm.av.q.bcW();
-              paramString.jbw = null;
-              paramString.fullPath = m.ajp(this.qav.pUs);
-              paramString.jbf = true;
-              paramString.iaT = true;
-              paramString.jbx = paramInt1;
-              paramString.jbd = true;
-              paramString.jbq = 2131234198;
-              paramString = paramString.bdv();
-              com.tencent.mm.av.q.bcV().a(this.qav.pUs, this.qak, paramString);
+              paramString.prefixPath = com.tencent.mm.loader.j.b.aSL();
+              com.tencent.mm.ay.q.bmm();
+              paramString.lRV = null;
+              paramString.fullPath = m.arc(this.tws.tqt);
+              paramString.lRD = true;
+              paramString.kPz = true;
+              paramString.lRW = paramInt1;
+              paramString.lRB = true;
+              paramString.lRP = a.c.my_card_package_defaultlogo;
+              paramString = paramString.bmL();
+              com.tencent.mm.ay.q.bml().a(this.tws.tqt, this.twg, paramString);
             }
-            if (!Util.isNullOrNil(this.qav.pUv)) {
-              com.tencent.mm.av.q.bcV().loadImage(this.qav.pUv, this.qam);
+            if (!Util.isNullOrNil(this.tws.tqw)) {
+              com.tencent.mm.ay.q.bml().loadImage(this.tws.tqw, this.twi);
             }
-            if ((!Util.isNullOrNil(this.qav.pUw)) && (this.qan.getVisibility() == 0))
+            if ((!Util.isNullOrNil(this.tws.tqx)) && (this.twj.getVisibility() == 0))
             {
-              paramInt1 = ao.hT(Util.convertStringToRGB(this.qav.pUw, getResources().getColor(2131100128)));
-              fg(paramInt1, getResources().getColor(2131099653));
-              this.qan.setTextColor(paramInt1);
+              paramInt1 = ar.iV(Util.convertStringToRGB(this.tws.tqx, getResources().getColor(a.a.sZw)));
+              fD(paramInt1, getResources().getColor(a.a.BG_5));
+              this.twj.setTextColor(paramInt1);
             }
-            if ((!Util.isNullOrNil(this.qav.pUw)) && (this.qap.getVisibility() == 0))
+            if ((!Util.isNullOrNil(this.tws.tqx)) && (this.twl.getVisibility() == 0))
             {
-              paramInt1 = ao.hT(Util.convertStringToRGB(this.qav.pUw, getResources().getColor(2131100128)));
-              this.qap.setTextColor(paramInt1);
-              paramInt2 = getResources().getColor(2131100128);
+              paramInt1 = ar.iV(Util.convertStringToRGB(this.tws.tqx, getResources().getColor(a.a.sZw)));
+              this.twl.setTextColor(paramInt1);
+              paramInt2 = getResources().getColor(a.a.sZw);
               paramInt1 = paramInt2;
-              if (!Util.isNullOrNil(this.qav.pUw)) {
-                paramInt1 = Util.convertStringToRGB(this.qav.pUw, paramInt2);
+              if (!Util.isNullOrNil(this.tws.tqx)) {
+                paramInt1 = Util.convertStringToRGB(this.tws.tqx, paramInt2);
               }
-              paramInt1 = ao.hT(paramInt1);
-              this.qas.setImageDrawable(b(this.qas.getDrawable(), ColorStateList.valueOf(paramInt1)));
+              paramInt1 = ar.iV(paramInt1);
+              this.twp.setImageDrawable(b(this.twp.getDrawable(), ColorStateList.valueOf(paramInt1)));
             }
-            if ((!Util.isNullOrNil(this.qav.pUw)) && (this.qar.getVisibility() == 0))
+            if ((!Util.isNullOrNil(this.tws.tqx)) && (this.twn.getVisibility() == 0))
             {
-              paramInt1 = ao.hT(Util.convertStringToRGB(this.qav.pUw, getResources().getColor(2131100128)));
-              this.qar.setTextColor(paramInt1);
-              paramInt2 = getResources().getColor(2131100128);
+              paramInt1 = ar.iV(Util.convertStringToRGB(this.tws.tqx, getResources().getColor(a.a.sZw)));
+              this.twn.setTextColor(paramInt1);
+              paramInt2 = getResources().getColor(a.a.sZw);
               paramInt1 = paramInt2;
-              if (!Util.isNullOrNil(this.qav.pUw)) {
-                paramInt1 = Util.convertStringToRGB(this.qav.pUw, paramInt2);
+              if (!Util.isNullOrNil(this.tws.tqx)) {
+                paramInt1 = Util.convertStringToRGB(this.tws.tqx, paramInt2);
               }
-              paramInt1 = ao.hT(paramInt1);
-              this.qat.setImageDrawable(b(this.qat.getDrawable(), ColorStateList.valueOf(paramInt1)));
-              paramString = (ViewGroup.MarginLayoutParams)this.qan.getLayoutParams();
-              paramString.topMargin -= com.tencent.mm.cb.a.fromDPToPix(this, 20);
-              this.qan.setLayoutParams(paramString);
+              paramInt1 = ar.iV(paramInt1);
+              this.twq.setImageDrawable(b(this.twq.getDrawable(), ColorStateList.valueOf(paramInt1)));
+              paramString = (ViewGroup.MarginLayoutParams)this.twj.getLayoutParams();
+              paramString.topMargin -= com.tencent.mm.ci.a.fromDPToPix(this, 20);
+              this.twj.setLayoutParams(paramString);
             }
-            if ((this.qan.getVisibility() != 0) || (this.qaq.getVisibility() != 8)) {
+            if ((this.twj.getVisibility() != 0) || (this.twm.getVisibility() != 8)) {
               break;
             }
-            paramString = (ViewGroup.MarginLayoutParams)this.qan.getLayoutParams();
-            paramString.bottomMargin += com.tencent.mm.cb.a.fromDPToPix(this, 28);
-            this.qan.setLayoutParams(paramString);
+            paramString = (ViewGroup.MarginLayoutParams)this.twj.getLayoutParams();
+            paramString.bottomMargin += com.tencent.mm.ci.a.fromDPToPix(this, 28);
+            this.twj.setLayoutParams(paramString);
             break;
-            this.qan.setVisibility(0);
-            this.qan.setText(getResources().getString(2131757012));
-            this.qan.setOnClickListener(this);
+            this.twj.setVisibility(0);
+            this.twj.setText(getResources().getString(a.g.tki));
+            this.twj.setOnClickListener(this);
             continue;
-            if ((this.qav.status != 1) && (this.qav.status == 2))
+            if ((this.tws.status != 1) && (this.tws.status == 2))
             {
-              if (!Util.isNullOrNil(this.qav.pUt))
+              if (!Util.isNullOrNil(this.tws.tqu))
               {
-                this.qan.setVisibility(0);
-                this.qan.setBackgroundDrawable(null);
-                this.qan.setText(this.qav.pUt);
-                this.qan.setTextColor(getResources().getColor(2131100904));
-                this.qan.setTextSize(1, 17.0F);
-                this.qan.setOnClickListener(null);
+                this.twj.setVisibility(0);
+                this.twj.setBackgroundDrawable(null);
+                this.twj.setText(this.tws.tqu);
+                this.twj.setTextColor(getResources().getColor(a.a.normal_text_color));
+                this.twj.setTextSize(1, 17.0F);
+                this.twj.setOnClickListener(null);
               }
               else
               {
-                this.qan.setVisibility(8);
-                this.qan.setOnClickListener(null);
+                this.twj.setVisibility(8);
+                this.twj.setOnClickListener(null);
               }
             }
             else
             {
-              this.qan.setVisibility(8);
-              this.qan.setOnClickListener(null);
+              this.twj.setVisibility(8);
+              this.twj.setOnClickListener(null);
             }
           }
         }
         Log.i("MicroMsg.CardGiftAcceptUI", "NetScenePreAcceptGiftCard ignore is true~so ignore it");
-        cvP();
+        cJr();
         AppMethodBeat.o(113315);
         return;
       }
@@ -401,19 +407,19 @@ public class CardGiftAcceptUI
           this.tipDialog.dismiss();
         }
         Log.i("MicroMsg.CardGiftAcceptUI", "accept gift card is success!");
-        this.qaw = ((com.tencent.mm.plugin.card.model.q)paramq);
+        this.twt = ((com.tencent.mm.plugin.card.model.q)paramq);
         paramString = new Intent(this, CardGiftReceiveUI.class);
-        paramString.putExtra("key_order_id", this.ixY);
-        paramString.putExtra("key_biz_uin", this.ixX);
-        paramString.putExtra("key_gift_into", this.qaw.pUb);
-        if (!Util.isNullOrNil(this.dSW)) {}
+        paramString.putExtra("key_order_id", this.lno);
+        paramString.putExtra("key_biz_uin", this.lnn);
+        paramString.putExtra("key_gift_into", this.twt.tqc);
+        if (!Util.isNullOrNil(this.fwY)) {}
         for (boolean bool = true;; bool = false)
         {
           paramString.putExtra("key_from_group_chat_room", bool);
-          paramString = new com.tencent.mm.hellhoundlib.b.a().bl(paramString);
-          com.tencent.mm.hellhoundlib.a.a.a(this, paramString.axQ(), "com/tencent/mm/plugin/card/ui/CardGiftAcceptUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          startActivity((Intent)paramString.pG(0));
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/CardGiftAcceptUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramString = new com.tencent.mm.hellhoundlib.b.a().bm(paramString);
+          com.tencent.mm.hellhoundlib.a.a.b(this, paramString.aFh(), "com/tencent/mm/plugin/card/ui/CardGiftAcceptUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          startActivity((Intent)paramString.sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/card/ui/CardGiftAcceptUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           finish();
           AppMethodBeat.o(113315);
           return;
@@ -449,7 +455,7 @@ public class CardGiftAcceptUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardGiftAcceptUI
  * JD-Core Version:    0.7.0.1
  */

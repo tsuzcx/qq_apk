@@ -13,26 +13,26 @@ public class VoIPVideoView
   extends MMTextureView
   implements TextureView.SurfaceTextureListener
 {
-  private static final int[] Hqr = { 452984831, 369098751, 268435455, 369098751, 268435455, 184549375, 268435455, 184549375, 100663295 };
-  private int Hqs;
-  private int Hqt;
-  private int Hqu;
-  private float Hqv;
-  private Paint qvj;
+  private static final int[] Ohk = { 452984831, 369098751, 268435455, 369098751, 268435455, 184549375, 268435455, 184549375, 100663295 };
+  private int Ohl;
+  private int Ohm;
+  private int Ohn;
+  private float Oho;
   private int surfaceHeight;
   private SurfaceTexture surfaceTexture;
   private int surfaceWidth;
-  private float tEJ;
+  private Paint tUe;
+  private float xnl;
   
   public VoIPVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(115781);
-    this.tEJ = 0.4F;
-    this.Hqs = 30;
-    this.Hqt = 30;
-    this.Hqu = 15;
-    this.Hqv = 0.02F;
+    this.xnl = 0.4F;
+    this.Ohl = 30;
+    this.Ohm = 30;
+    this.Ohn = 15;
+    this.Oho = 0.02F;
     initView();
     AppMethodBeat.o(115781);
   }
@@ -41,11 +41,11 @@ public class VoIPVideoView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(115782);
-    this.tEJ = 0.4F;
-    this.Hqs = 30;
-    this.Hqt = 30;
-    this.Hqu = 15;
-    this.Hqv = 0.02F;
+    this.xnl = 0.4F;
+    this.Ohl = 30;
+    this.Ohm = 30;
+    this.Ohn = 15;
+    this.Oho = 0.02F;
     initView();
     AppMethodBeat.o(115782);
   }
@@ -53,10 +53,10 @@ public class VoIPVideoView
   private void initView()
   {
     AppMethodBeat.i(115783);
-    this.qvj = new Paint();
-    this.qvj.setColor(-16777216);
-    this.qvj.setFilterBitmap(true);
-    this.qvj.setTextSize(40.0F);
+    this.tUe = new Paint();
+    this.tUe.setColor(-16777216);
+    this.tUe.setFilterBitmap(true);
+    this.tUe.setTextSize(40.0F);
     setSurfaceTextureListener(this);
     AppMethodBeat.o(115783);
   }
@@ -71,7 +71,7 @@ public class VoIPVideoView
       this.surfaceTexture = paramSurfaceTexture;
       this.surfaceWidth = paramInt1;
       this.surfaceHeight = paramInt2;
-      gLi();
+      hKg();
       AppMethodBeat.o(115784);
       return;
     }
@@ -124,7 +124,7 @@ public class VoIPVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.widget.VoIPVideoView
  * JD-Core Version:    0.7.0.1
  */

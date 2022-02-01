@@ -18,13 +18,20 @@ public class TXLivePusher
   public static final int YUV_420P = 3;
   public static final int YUV_420SP = 1;
   public static final int YUV_420YpCbCr = 2;
-  private b mTXTxLivePusherImpl;
+  private TXLivePusherImpl mTXTxLivePusherImpl;
   
   public TXLivePusher(Context paramContext)
   {
     AppMethodBeat.i(13556);
-    this.mTXTxLivePusherImpl = new b(paramContext);
+    this.mTXTxLivePusherImpl = new TXLivePusherImpl(paramContext);
     AppMethodBeat.o(13556);
+  }
+  
+  public void callExperimentalAPI(String paramString)
+  {
+    AppMethodBeat.i(219701);
+    this.mTXTxLivePusherImpl.f(paramString);
+    AppMethodBeat.o(219701);
   }
   
   public void enableAudioVolumeEvaluation(int paramInt)
@@ -36,16 +43,16 @@ public class TXLivePusher
   
   public TXAudioEffectManager getAudioEffectManager()
   {
-    AppMethodBeat.i(222652);
+    AppMethodBeat.i(219683);
     TXAudioEffectManagerImpl localTXAudioEffectManagerImpl = TXAudioEffectManagerImpl.getAutoCacheHolder();
-    AppMethodBeat.o(222652);
+    AppMethodBeat.o(219683);
     return localTXAudioEffectManagerImpl;
   }
   
   public TXBeautyManager getBeautyManager()
   {
     AppMethodBeat.i(13577);
-    TXBeautyManager localTXBeautyManager = this.mTXTxLivePusherImpl.r();
+    TXBeautyManager localTXBeautyManager = this.mTXTxLivePusherImpl.q();
     AppMethodBeat.o(13577);
     return localTXBeautyManager;
   }
@@ -53,7 +60,7 @@ public class TXLivePusher
   public TXLivePushConfig getConfig()
   {
     AppMethodBeat.i(13558);
-    TXLivePushConfig localTXLivePushConfig = this.mTXTxLivePusherImpl.i();
+    TXLivePushConfig localTXLivePushConfig = this.mTXTxLivePusherImpl.h();
     AppMethodBeat.o(13558);
     return localTXLivePushConfig;
   }
@@ -61,7 +68,7 @@ public class TXLivePusher
   public int getMaxZoom()
   {
     AppMethodBeat.i(13574);
-    int i = this.mTXTxLivePusherImpl.q();
+    int i = this.mTXTxLivePusherImpl.p();
     AppMethodBeat.o(13574);
     return i;
   }
@@ -78,7 +85,7 @@ public class TXLivePusher
   public boolean isPushing()
   {
     AppMethodBeat.i(13568);
-    boolean bool = this.mTXTxLivePusherImpl.m();
+    boolean bool = this.mTXTxLivePusherImpl.l();
     AppMethodBeat.o(13568);
     return bool;
   }
@@ -94,7 +101,7 @@ public class TXLivePusher
   public boolean pauseBGM()
   {
     AppMethodBeat.i(13594);
-    boolean bool = this.mTXTxLivePusherImpl.u();
+    boolean bool = this.mTXTxLivePusherImpl.t();
     AppMethodBeat.o(13594);
     return bool;
   }
@@ -102,7 +109,7 @@ public class TXLivePusher
   public void pausePusher()
   {
     AppMethodBeat.i(13566);
-    this.mTXTxLivePusherImpl.k();
+    this.mTXTxLivePusherImpl.j();
     AppMethodBeat.o(13566);
   }
   
@@ -119,7 +126,7 @@ public class TXLivePusher
   public boolean resumeBGM()
   {
     AppMethodBeat.i(13595);
-    boolean bool = this.mTXTxLivePusherImpl.v();
+    boolean bool = this.mTXTxLivePusherImpl.u();
     AppMethodBeat.o(13595);
     return bool;
   }
@@ -127,7 +134,7 @@ public class TXLivePusher
   public void resumePusher()
   {
     AppMethodBeat.i(13567);
-    this.mTXTxLivePusherImpl.l();
+    this.mTXTxLivePusherImpl.k();
     AppMethodBeat.o(13567);
   }
   
@@ -149,7 +156,7 @@ public class TXLivePusher
   public int sendCustomVideoTexture(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(13607);
-    paramInt1 = this.mTXTxLivePusherImpl.c(paramInt1, paramInt2, paramInt3);
+    paramInt1 = this.mTXTxLivePusherImpl.b(paramInt1, paramInt2, paramInt3);
     AppMethodBeat.o(13607);
     return paramInt1;
   }
@@ -467,7 +474,7 @@ public class TXLivePusher
   public void startScreenCapture()
   {
     AppMethodBeat.i(13564);
-    this.mTXTxLivePusherImpl.n();
+    this.mTXTxLivePusherImpl.m();
     AppMethodBeat.o(13564);
   }
   
@@ -475,7 +482,7 @@ public class TXLivePusher
   public boolean stopBGM()
   {
     AppMethodBeat.i(13593);
-    boolean bool = this.mTXTxLivePusherImpl.s();
+    boolean bool = this.mTXTxLivePusherImpl.r();
     AppMethodBeat.o(13593);
     return bool;
   }
@@ -490,28 +497,28 @@ public class TXLivePusher
   public void stopPusher()
   {
     AppMethodBeat.i(13563);
-    this.mTXTxLivePusherImpl.j();
+    this.mTXTxLivePusherImpl.i();
     AppMethodBeat.o(13563);
   }
   
   public void stopRecord()
   {
     AppMethodBeat.i(13605);
-    this.mTXTxLivePusherImpl.w();
+    this.mTXTxLivePusherImpl.v();
     AppMethodBeat.o(13605);
   }
   
   public void stopScreenCapture()
   {
     AppMethodBeat.i(13565);
-    this.mTXTxLivePusherImpl.o();
+    this.mTXTxLivePusherImpl.n();
     AppMethodBeat.o(13565);
   }
   
   public void switchCamera()
   {
     AppMethodBeat.i(13570);
-    this.mTXTxLivePusherImpl.p();
+    this.mTXTxLivePusherImpl.o();
     AppMethodBeat.o(13570);
   }
   
@@ -561,7 +568,7 @@ public class TXLivePusher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.rtmp.TXLivePusher
  * JD-Core Version:    0.7.0.1
  */

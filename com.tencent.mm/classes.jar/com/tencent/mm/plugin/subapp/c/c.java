@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.subapp.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.d;
-import com.tencent.mm.model.bd;
+import com.tencent.mm.an.h.d;
+import com.tencent.mm.model.be;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class c
-  implements bd
+  implements be
 {
-  private b FJM;
+  private b MdJ;
   
   public c()
   {
     AppMethodBeat.i(28923);
-    this.FJM = new b();
+    this.MdJ = new b();
     AppMethodBeat.o(28923);
   }
   
@@ -28,14 +28,14 @@ public class c
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(28925);
-    h.d.a(Integer.valueOf(38), this.FJM);
+    h.d.a(Integer.valueOf(38), this.MdJ);
     AppMethodBeat.o(28925);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(28924);
-    h.d.b(Integer.valueOf(38), this.FJM);
+    h.d.b(Integer.valueOf(38), this.MdJ);
     AppMethodBeat.o(28924);
   }
   
@@ -43,7 +43,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.c.c
  * JD-Core Version:    0.7.0.1
  */

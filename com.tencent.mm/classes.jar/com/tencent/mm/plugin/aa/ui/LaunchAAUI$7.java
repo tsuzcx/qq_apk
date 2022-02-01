@@ -18,10 +18,10 @@ final class LaunchAAUI$7
   {
     AppMethodBeat.i(63636);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/aa/ui/LaunchAAUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/aa/ui/LaunchAAUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
     LaunchAAUI.getKV().edit().putBoolean("new_open_IM_user_guide_show", false);
-    this.gwC.bMo();
+    this.jaP.bYF();
     a.a(this, "com/tencent/mm/plugin/aa/ui/LaunchAAUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(63636);
   }

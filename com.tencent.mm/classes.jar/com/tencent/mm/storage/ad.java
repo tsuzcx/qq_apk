@@ -1,247 +1,311 @@
 package com.tencent.mm.storage;
 
-import com.tencent.f.i;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.aa.a;
-import com.tencent.mm.ak.d;
+import com.tencent.mm.an.aa.a;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.q;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.protocal.protobuf.ox;
-import com.tencent.mm.protocal.protobuf.oy;
+import com.tencent.mm.protocal.protobuf.or;
+import com.tencent.mm.protocal.protobuf.ot;
+import com.tencent.mm.protocal.protobuf.ou;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
 import java.util.LinkedList;
 import kotlin.f;
+import kotlin.g;
 import kotlin.g.a.a;
+import kotlin.g.b.aa.e;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/storage/BizTimeLineResortLogic;", "", "()V", "TAG", "", "isBizMsgResort", "", "Ljava/lang/Boolean;", "isBizMsgResortCheckOpen", "()Z", "isBizMsgResortCheckOpen$delegate", "Lkotlin/Lazy;", "isBizMsgResortNew", "isDoingSortBizMsg", "isForeGroundBizMsgResortOpen", "isReceiveMsgResortOpen", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "doReSortCgi", "", "fromScene", "", "getResortBizTimeLineInfo", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "groupId", "", "item", "Lcom/tencent/mm/protocal/protobuf/BizMsgItem;", "handleReSortResult", "resp", "Lcom/tencent/mm/protocal/protobuf/BizMsgReSortResp;", "isBizMsgResortNewOpen", "isBizMsgResortOpen", "onReceiveRecCard", "msgContent", "digestInfo", "Lcom/tencent/mm/protocal/protobuf/DigestInfo;", "reSortBizMsg", "reportBizMsgResortIDKey", "value", "saveConfig", "plugin-biz_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/storage/BizTimeLineResortLogic;", "", "()V", "MIN_FORE_GROUND_REQ_TIME", "", "MIN_IN_TIMELINE_REQ_TIME", "MIN_REV_MSG_REQ_TIME", "TAG", "", "clickFirstVisibleItem", "", "getClickFirstVisibleItem", "()I", "setClickFirstVisibleItem", "(I)V", "isBizMsgResort", "", "Ljava/lang/Boolean;", "isBizMsgResortCheckOpen", "()Z", "isBizMsgResortCheckOpen$delegate", "Lkotlin/Lazy;", "isDoingSortBizMsg", "isForeGroundBizMsgResortOpen", "isReceiveMsgResortOpen", "lastExposeOrderFlag", "getLastExposeOrderFlag", "()J", "setLastExposeOrderFlag", "(J)V", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "resortBizMsgRespFlagOpenClickArticle", "resortBizMsgRespFlagOpenClickOftenRead", "resortBizMsgRespFlagOpenEnterTimeline", "sFirstVisibleItem", "getSFirstVisibleItem", "setSFirstVisibleItem", "doReSortCgi", "", "fromScene", "context", "Lcom/tencent/mm/protocal/protobuf/BizMsgReSortContext;", "orderFlag", "getResortBizTimeLineInfo", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "groupId", "item", "Lcom/tencent/mm/protocal/protobuf/BizMsgItem;", "handleReSortResult", "resp", "Lcom/tencent/mm/protocal/protobuf/BizMsgReSortResp;", "maxWeight", "hasScrollNotDoResort", "inTimeLineNotDoResort", "isBizMsgResortOpen", "isInTimeLineResortScene", "markScroll", "onReceiveRecCard", "msgContent", "digestInfo", "Lcom/tencent/mm/protocal/protobuf/DigestInfo;", "reSortBizMsg", "reportBizMsgResortIDKey", "value", "saveConfig", "plugin-biz_release"})
 public final class ad
 {
-  private static boolean NRh;
-  private static Boolean NRi;
-  private static Boolean NRj;
-  private static final f NRk;
-  public static Boolean NRl;
-  private static Boolean NRm;
-  public static final ad NRn;
-  private static final f iBW;
+  private static boolean VeY;
+  private static long VeZ;
+  private static Boolean Vfa;
+  private static final f Vfb;
+  public static Boolean Vfc;
+  private static Boolean Vfd;
+  public static final ad Vfe;
+  private static final f lrB;
+  private static int sCk;
+  private static int sIr;
   
   static
   {
-    AppMethodBeat.i(212631);
-    NRn = new ad();
-    iBW = kotlin.g.ah((a)ad.c.NRs);
-    NRk = kotlin.g.ah((a)b.NRr);
-    AppMethodBeat.o(212631);
+    AppMethodBeat.i(208564);
+    Vfe = new ad();
+    lrB = g.ar((a)ad.c.Vfm);
+    Vfb = g.ar((a)ad.b.Vfl);
+    AppMethodBeat.o(208564);
   }
   
-  public static MultiProcessMMKV aTI()
+  public static void GP(int paramInt)
   {
-    AppMethodBeat.i(212625);
-    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)iBW.getValue();
-    AppMethodBeat.o(212625);
+    sCk = paramInt;
+  }
+  
+  public static void UP(long paramLong)
+  {
+    VeZ = paramLong;
+  }
+  
+  public static void a(int paramInt, final or paramor, final long paramLong)
+  {
+    AppMethodBeat.i(208555);
+    com.tencent.e.h.ZvG.d((Runnable)new d(paramInt, paramor, paramLong), "MicroMsg.BizTimeLineResortLogic");
+    AppMethodBeat.o(208555);
+  }
+  
+  public static void ast(int paramInt)
+  {
+    sIr = paramInt;
+  }
+  
+  public static void asu(int paramInt)
+  {
+    AppMethodBeat.i(208554);
+    com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1130L, paramInt, 1L, false);
+    AppMethodBeat.o(208554);
+  }
+  
+  private static boolean asv(int paramInt)
+  {
+    AppMethodBeat.i(208557);
+    if ((ab.VeK) && (!asx(paramInt)))
+    {
+      AppMethodBeat.o(208557);
+      return true;
+    }
+    AppMethodBeat.o(208557);
+    return false;
+  }
+  
+  private static boolean asw(int paramInt)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(208558);
+    int i;
+    if (sCk != sIr)
+    {
+      i = 1;
+      if ((i == 0) || (!asx(paramInt))) {
+        break label60;
+      }
+    }
+    for (;;)
+    {
+      if (bool)
+      {
+        asu(34);
+        Log.i("MicroMsg.BizTimeLineResortLogic", "hasScrollNotDoResort");
+      }
+      AppMethodBeat.o(208558);
+      return bool;
+      i = 0;
+      break;
+      label60:
+      bool = false;
+    }
+  }
+  
+  public static boolean asx(int paramInt)
+  {
+    return (paramInt == 3) || (paramInt == 4) || (paramInt == 5);
+  }
+  
+  public static MultiProcessMMKV bcJ()
+  {
+    AppMethodBeat.i(208549);
+    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)lrB.getValue();
+    AppMethodBeat.o(208549);
     return localMultiProcessMMKV;
   }
   
-  public static void ajZ(int paramInt)
+  public static int hxs()
   {
-    AppMethodBeat.i(212629);
-    com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1130L, paramInt, 1L, false);
-    AppMethodBeat.o(212629);
+    return sCk;
   }
   
-  public static void aka(int paramInt)
+  public static boolean hxt()
   {
-    AppMethodBeat.i(212630);
-    com.tencent.f.h.RTc.b((Runnable)new d(paramInt), "MicroMsg.BizTimeLineResortLogic");
-    AppMethodBeat.o(212630);
-  }
-  
-  public static boolean gBi()
-  {
-    AppMethodBeat.i(212626);
+    AppMethodBeat.i(208550);
     if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG) || (WeChatEnvironment.hasDebugger()))
     {
-      AppMethodBeat.o(212626);
+      AppMethodBeat.o(208550);
       return true;
     }
-    if (!ab.clc())
-    {
-      AppMethodBeat.o(212626);
-      return false;
-    }
     Boolean localBoolean;
-    if (NRi != null)
+    if (Vfa != null)
     {
-      localBoolean = NRi;
+      localBoolean = Vfa;
       if (localBoolean == null) {
-        p.hyc();
+        p.iCn();
       }
       bool = localBoolean.booleanValue();
-      AppMethodBeat.o(212626);
+      AppMethodBeat.o(208550);
       return bool;
     }
-    if (((b)com.tencent.mm.kernel.g.af(b.class)).a(b.a.rTL, 0) == 1) {}
+    if (((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vAs, 1) == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      NRi = Boolean.valueOf(bool);
-      Log.i("MicroMsg.BizTimeLineResortLogic", "isBizMsgResortOpen open %b", new Object[] { NRi });
-      localBoolean = NRi;
+      Vfa = Boolean.valueOf(bool);
+      Log.i("MicroMsg.BizTimeLineResortLogic", "isBizMsgResortOpen open %b", new Object[] { Vfa });
+      localBoolean = Vfa;
       if (localBoolean == null) {
-        p.hyc();
+        p.iCn();
       }
       bool = localBoolean.booleanValue();
-      AppMethodBeat.o(212626);
+      AppMethodBeat.o(208550);
       return bool;
     }
   }
   
-  private static boolean gBj()
+  private static boolean hxu()
   {
-    AppMethodBeat.i(212627);
-    boolean bool = ((Boolean)NRk.getValue()).booleanValue();
-    AppMethodBeat.o(212627);
+    AppMethodBeat.i(208552);
+    boolean bool = ((Boolean)Vfb.getValue()).booleanValue();
+    AppMethodBeat.o(208552);
     return bool;
   }
   
-  public static boolean gBk()
+  public static boolean hxv()
   {
-    AppMethodBeat.i(212628);
+    AppMethodBeat.i(208553);
     if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG) || (WeChatEnvironment.hasDebugger()))
     {
-      AppMethodBeat.o(212628);
+      AppMethodBeat.o(208553);
       return true;
     }
-    if (!gBi())
+    if (!hxt())
     {
-      AppMethodBeat.o(212628);
+      AppMethodBeat.o(208553);
       return false;
     }
     Boolean localBoolean;
-    if (NRm != null)
+    if (Vfd != null)
     {
-      localBoolean = NRm;
+      localBoolean = Vfd;
       if (localBoolean == null) {
-        p.hyc();
+        p.iCn();
       }
       bool = localBoolean.booleanValue();
-      AppMethodBeat.o(212628);
+      AppMethodBeat.o(208553);
       return bool;
     }
-    if (((b)com.tencent.mm.kernel.g.af(b.class)).a(b.a.rTN, 1) == 1) {}
+    if (((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vAu, 1) == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      NRm = Boolean.valueOf(bool);
-      Log.i("MicroMsg.BizTimeLineResortLogic", "isReceiveMsgResortOpen open %b", new Object[] { NRm });
-      localBoolean = NRm;
+      Vfd = Boolean.valueOf(bool);
+      Log.i("MicroMsg.BizTimeLineResortLogic", "isReceiveMsgResortOpen open %b", new Object[] { Vfd });
+      localBoolean = Vfd;
       if (localBoolean == null) {
-        p.hyc();
+        p.iCn();
       }
       bool = localBoolean.booleanValue();
-      AppMethodBeat.o(212628);
+      AppMethodBeat.o(208553);
       return bool;
     }
   }
   
-  public static boolean gBl()
+  public static boolean hxw()
   {
-    return NRh;
+    return VeY;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "errType", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "callback"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "errType", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "callback"})
   static final class a
     implements aa.a
   {
-    a(ox paramox, LinkedList paramLinkedList, int paramInt) {}
+    a(ot paramot, LinkedList paramLinkedList, int paramInt, aa.e parame, or paramor) {}
     
-    public final int a(int paramInt1, int paramInt2, String paramString, d paramd, com.tencent.mm.ak.q paramq)
+    public final int a(int paramInt1, int paramInt2, final String paramString, d paramd, q paramq)
     {
-      AppMethodBeat.i(212619);
-      Log.i("MicroMsg.BizTimeLineResortLogic", "doReSortCgi CGI callback errType=%d, errCode=%d, bitFlag=%d, digest_bold_cnt=" + this.NRo.KVJ + ", digest_expose_cnt=" + this.NRo.KVK + ", size=" + this.NRp.size(), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.NRo.KVI) });
-      paramString = ad.NRn;
-      ad.aTI().encode("ReSortBizMsgLastTime", System.currentTimeMillis() / 1000L);
+      int i = 2;
+      AppMethodBeat.i(205426);
+      Log.i("MicroMsg.BizTimeLineResortLogic", "doReSortCgi CGI callback errType=%d, errCode=%d, bitFlag=%d, digest_bold_cnt=" + this.Vff.RWU + ", digest_expose_cnt=" + this.Vff.RWV + ", size=" + this.Vfg.size(), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.Vff.RWT) });
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        paramString = ad.NRn;
-        ad.ajZ(2);
-        paramString = ad.NRn;
-        ad.gBm();
-        AppMethodBeat.o(212619);
+        paramString = ad.Vfe;
+        paramString = ad.Vfe;
+        paramInt1 = i;
+        if (ad.asx(this.swd)) {
+          paramInt1 = 62;
+        }
+        ad.asu(paramInt1);
+        paramString = ad.Vfe;
+        ad.hxx();
+        AppMethodBeat.o(205426);
         return 0;
       }
-      paramString = ad.NRn;
-      ad.ajZ(1);
-      p.g(paramd, "rr");
-      paramString = paramd.aYK();
-      if (paramString == null)
+      paramString = ad.Vfe;
+      paramString = ad.Vfe;
+      if (ad.asx(this.swd)) {}
+      for (paramInt1 = 61;; paramInt1 = 1)
       {
+        ad.asu(paramInt1);
+        p.j(paramd, "rr");
+        paramString = paramd.bhY();
+        if (paramString != null) {
+          break;
+        }
         paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizMsgReSortResp");
-        AppMethodBeat.o(212619);
+        AppMethodBeat.o(205426);
         throw paramString;
       }
-      paramString = (oy)paramString;
-      paramd = ad.NRn;
-      ad.a(this.pnf, paramString);
-      com.tencent.f.h.RTc.b((Runnable)new Runnable()
+      paramString = (ou)paramString;
+      paramd = ad.Vfe;
+      ad.a(this.swd, paramString);
+      com.tencent.e.h.ZvG.d((Runnable)new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(212618);
-          ad localad = ad.NRn;
-          ad.a(this.NRq);
-          localad = ad.NRn;
-          ad.gBm();
-          AppMethodBeat.o(212618);
+          AppMethodBeat.i(205908);
+          Object localObject = ad.Vfe;
+          localObject = paramString;
+          int j = this.Vfj.swd;
+          long l = this.Vfj.Vfh.aaBB;
+          or localor = this.Vfj.Vfi;
+          if (localor != null) {}
+          for (int i = localor.RWP;; i = 0)
+          {
+            ad.a((ou)localObject, j, l, i);
+            localObject = ad.Vfe;
+            ad.hxx();
+            AppMethodBeat.o(205908);
+            return;
+          }
         }
       }, "MicroMsg.BizTimeLineResortLogic");
-      AppMethodBeat.o(212619);
+      AppMethodBeat.o(205426);
       return 0;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
-  static final class b
-    extends kotlin.g.b.q
-    implements a<Boolean>
-  {
-    public static final b NRr;
-    
-    static
-    {
-      AppMethodBeat.i(212621);
-      NRr = new b();
-      AppMethodBeat.o(212621);
-    }
-    
-    b()
-    {
-      super();
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
-    d(int paramInt) {}
+    d(int paramInt, or paramor, long paramLong) {}
     
     public final void run()
     {
-      AppMethodBeat.i(212624);
-      ad localad = ad.NRn;
-      ad.akb(this.pnf);
-      AppMethodBeat.o(212624);
+      AppMethodBeat.i(205765);
+      ad localad = ad.Vfe;
+      ad.b(this.swd, paramor, paramLong);
+      AppMethodBeat.o(205765);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.storage.ad
  * JD-Core Version:    0.7.0.1
  */

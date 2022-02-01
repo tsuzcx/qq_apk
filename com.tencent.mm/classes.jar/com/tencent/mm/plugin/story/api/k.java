@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.story.api;
 
 public abstract interface k
 {
-  public abstract void aaE(int paramInt);
+  public abstract void ahZ(int paramInt);
   
-  public abstract void fnh();
+  public abstract void gbA();
   
-  public abstract void fni();
+  public abstract void gbB();
 }
 
 

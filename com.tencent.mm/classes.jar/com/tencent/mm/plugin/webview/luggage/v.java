@@ -5,8 +5,8 @@ import android.content.Intent;
 import com.tencent.luggage.d.e;
 import com.tencent.luggage.d.i;
 import com.tencent.luggage.d.j;
-import com.tencent.luggage.h.f;
-import com.tencent.luggage.h.f.c;
+import com.tencent.luggage.k.f;
+import com.tencent.luggage.k.f.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bt;
 import com.tencent.mm.ui.MMActivity;
@@ -16,21 +16,21 @@ import java.util.LinkedList;
 public class v
   extends i
 {
-  com.tencent.mm.plugin.webview.modeltools.a IVh;
+  com.tencent.mm.plugin.webview.modeltools.a PRx;
   
   public v(final Activity paramActivity)
   {
     super(paramActivity);
     AppMethodBeat.i(78469);
-    this.ctk = com.tencent.mm.plugin.webview.luggage.webview_impl.a.class;
-    this.ctn.E(bt.dTr());
-    this.IVh = new com.tencent.mm.plugin.webview.modeltools.a();
-    this.cts.LA().a(new f.c()
+    O(com.tencent.mm.plugin.webview.luggage.d.a.class);
+    this.crt.B(bt.ewB());
+    this.PRx = new com.tencent.mm.plugin.webview.modeltools.a();
+    this.cry.Oq().a(new f.c()
     {
       public final boolean c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(78468);
-        boolean bool = v.this.IVh.d(paramActivity, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent);
+        boolean bool = v.this.PRx.c(paramActivity, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent);
         AppMethodBeat.o(78468);
         return bool;
       }
@@ -38,7 +38,7 @@ public class v
     AppMethodBeat.o(78469);
   }
   
-  private void gch()
+  private void gVb()
   {
     AppMethodBeat.i(78471);
     if ((this.mContext instanceof MMActivity))
@@ -46,7 +46,7 @@ public class v
       SwipeBackLayout localSwipeBackLayout = ((MMActivity)this.mContext).getSwipeBackLayout();
       if (localSwipeBackLayout != null)
       {
-        if (this.cts.Lx().size() <= 1)
+        if (this.cry.On().size() <= 1)
         {
           localSwipeBackLayout.setEnableGesture(true);
           AppMethodBeat.o(78471);
@@ -58,18 +58,18 @@ public class v
     AppMethodBeat.o(78471);
   }
   
-  public final void Ls()
+  public final void Oi()
   {
     AppMethodBeat.i(78472);
-    ((g)Ln()).gby();
-    gch();
+    ((g)Od()).gUs();
+    gVb();
     AppMethodBeat.o(78472);
   }
   
-  public final void Lt()
+  public final void Oj()
   {
     AppMethodBeat.i(78473);
-    gch();
+    gVb();
     AppMethodBeat.o(78473);
   }
   
@@ -77,7 +77,7 @@ public class v
   {
     AppMethodBeat.i(78470);
     super.onResume();
-    gch();
+    gVb();
     AppMethodBeat.o(78470);
   }
 }

@@ -21,22 +21,22 @@ public class i
   public i(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(186846);
-    if (this.xyl != null) {
-      this.xyl.JLQ = true;
+    AppMethodBeat.i(232078);
+    if (this.CCu != null) {
+      this.CCu.QLj = true;
     }
-    AppMethodBeat.o(186846);
+    AppMethodBeat.o(232078);
   }
   
-  public final void LE()
+  public final void Ou()
   {
     AppMethodBeat.i(83028);
-    getWebCore().ctJ = new q()
+    getWebCore().crO = new q()
     {
-      public final String LJ()
+      public final String Oz()
       {
         AppMethodBeat.i(83025);
-        String str = com.tencent.mm.plugin.appbrand.ac.d.afA("preload_game_adapter.js");
+        String str = com.tencent.mm.plugin.appbrand.ac.d.anc("preload_game_adapter.js");
         AppMethodBeat.o(83025);
         return str;
       }
@@ -46,14 +46,14 @@ public class i
         return null;
       }
       
-      public final void cV(String paramAnonymousString) {}
+      public final void dv(String paramAnonymousString) {}
       
-      public final void cW(String paramAnonymousString) {}
+      public final void dw(String paramAnonymousString) {}
     };
-    if (getWebCore().ctM != null)
+    if (getWebCore().crR != null)
     {
-      getWebCore().ctM.a(new LuggageMMLocalResourceProvider());
-      getWebCore().ctM.a(new e(com.tencent.mm.plugin.appbrand.ac.d.afA("preload_game_adapter.js")));
+      getWebCore().crR.a(new LuggageMMLocalResourceProvider());
+      getWebCore().crR.a(new e(com.tencent.mm.plugin.appbrand.ac.d.anc("preload_game_adapter.js")));
     }
     AppMethodBeat.o(83028);
   }
@@ -74,10 +74,10 @@ public class i
   
   public void loadUrl(String paramString)
   {
-    AppMethodBeat.i(186847);
+    AppMethodBeat.i(232080);
     super.loadUrl(paramString);
-    g.a(getWebCore(), paramString);
-    AppMethodBeat.o(186847);
+    g.b(getWebCore(), paramString);
+    AppMethodBeat.o(232080);
   }
   
   public void onAttachedToWindow()
@@ -86,7 +86,7 @@ public class i
     super.onAttachedToWindow();
     getWebCore().a(new com.tencent.luggage.d.d()
     {
-      public final JSONObject Ld()
+      public final JSONObject NU()
       {
         return null;
       }

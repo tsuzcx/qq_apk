@@ -1,94 +1,81 @@
 package com.tencent.mm.plugin.appbrand.openmaterial;
 
 import android.content.Context;
-import com.tencent.mm.g.b.a.ng;
 import com.tencent.mm.plugin.appbrand.openmaterial.model.AppBrandOpenMaterialCollection;
 import com.tencent.mm.plugin.appbrand.openmaterial.model.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMFragmentActivity;
 import com.tencent.mm.ui.widget.a.e;
-import kotlin.g.b.p;
-import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/openmaterial/BottomSheetEnhanceLogic;", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IEnhanceBottomSheetController;", "openMaterialScene", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialScene;", "context", "Landroid/content/Context;", "bottomSheet", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "openMaterialCollection", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialCollection;", "openMaterialBottomSheet", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IAppBrandOpenMaterialBottomSheet;", "launchAppBrandExecutor", "Lcom/tencent/mm/plugin/appbrand/openmaterial/ILaunchAppBrandExecutor;", "(Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialScene;Landroid/content/Context;Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialCollection;Lcom/tencent/mm/plugin/appbrand/openmaterial/IAppBrandOpenMaterialBottomSheet;Lcom/tencent/mm/plugin/appbrand/openmaterial/ILaunchAppBrandExecutor;)V", "getBottomSheet", "()Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "getContext", "()Landroid/content/Context;", "isEnhanceInteractionEnabled", "", "()Z", "setEnhanceInteractionEnabled", "(Z)V", "getOpenMaterialCollection", "()Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialCollection;", "openMaterialReporter", "Lcom/tencent/mm/plugin/appbrand/openmaterial/report/AppBrandOpenMaterialReporter;", "getOpenMaterialReporter", "()Lcom/tencent/mm/plugin/appbrand/openmaterial/report/AppBrandOpenMaterialReporter;", "dead", "", "enableEnhanceInteraction", "enable", "requireOpenMaterialBottomSheet", "Companion", "plugin-appbrand-integration_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/openmaterial/BottomSheetEnhanceLogic;", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IEnhanceBottomSheetController;", "openMaterialScene", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialScene;", "context", "Landroid/content/Context;", "bottomSheet", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "openMaterialCollection", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialCollection;", "openMaterialBottomSheet", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IAppBrandOpenMaterialBottomSheet;", "launchAppBrandExecutor", "Lcom/tencent/mm/plugin/appbrand/openmaterial/ILaunchAppBrandExecutor;", "(Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialScene;Landroid/content/Context;Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialCollection;Lcom/tencent/mm/plugin/appbrand/openmaterial/IAppBrandOpenMaterialBottomSheet;Lcom/tencent/mm/plugin/appbrand/openmaterial/ILaunchAppBrandExecutor;)V", "getBottomSheet", "()Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "getContext", "()Landroid/content/Context;", "getOpenMaterialCollection", "()Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialCollection;", "openMaterialReporter", "Lcom/tencent/mm/plugin/appbrand/openmaterial/report/AppBrandOpenMaterialReporter;", "getOpenMaterialReporter", "()Lcom/tencent/mm/plugin/appbrand/openmaterial/report/AppBrandOpenMaterialReporter;", "dead", "", "requireOpenMaterialBottomSheet", "Companion", "plugin-appbrand-integration_release"})
 public abstract class c
-  implements h
+  implements j
 {
-  public static final c.a nkP = new c.a((byte)0);
-  final Context context;
-  final e hOv;
-  boolean nkN;
-  private g nkO;
-  final AppBrandOpenMaterialCollection nkx;
-  private final j nky;
-  final com.tencent.mm.plugin.appbrand.openmaterial.b.a nkz;
+  public static final a qmn = new a((byte)0);
+  private final Context context;
+  final e kCR;
+  private final AppBrandOpenMaterialCollection qlV;
+  private final l qlW;
+  final com.tencent.mm.plugin.appbrand.openmaterial.b.a qml;
+  private h qmm;
   
-  public c(b paramb, Context paramContext, e parame, AppBrandOpenMaterialCollection paramAppBrandOpenMaterialCollection, g paramg, j paramj)
+  public c(b paramb, Context paramContext, e parame, AppBrandOpenMaterialCollection paramAppBrandOpenMaterialCollection, h paramh, l paraml)
   {
     this.context = paramContext;
-    this.hOv = parame;
-    this.nkx = paramAppBrandOpenMaterialCollection;
-    this.nkO = paramg;
-    this.nky = paramj;
-    this.nkN = true;
-    paramContext = this.nkx;
-    if (this.hOv.hbo() == 0)
+    this.kCR = parame;
+    this.qlV = paramAppBrandOpenMaterialCollection;
+    this.qmm = paramh;
+    this.qlW = paraml;
+    this.qml = com.tencent.mm.plugin.appbrand.openmaterial.b.c.b(paramb, this.qlV);
+    if ((this.context instanceof MMFragmentActivity))
     {
-      p.h(paramb, "scene");
-      p.h(paramContext, "openMaterialCollection");
-      paramb = new com.tencent.mm.plugin.appbrand.openmaterial.b.a(paramb, paramContext);
-      Log.i(paramb.bQh(), "onBottomSheetShow, isGrid: ".concat(String.valueOf(bool)));
-      paramContext = paramb.bQi();
-      if (!bool) {
-        break label206;
-      }
-    }
-    label206:
-    for (long l = 1L;; l = 5L)
-    {
-      paramContext.xE(l).xF(com.tencent.mm.plugin.appbrand.openmaterial.b.a.d(paramb.nkA)).xG(paramb.bQk()).xH(0L).bfK();
-      this.nkz = paramb;
-      if (!(this.context instanceof MMFragmentActivity)) {
-        break label214;
-      }
       ((MMFragmentActivity)this.context).keep((com.tencent.mm.vending.e.a)this);
       return;
-      bool = false;
-      break;
     }
-    label214:
     Log.e("MicroMsg.AppBrand.BottomSheetEnhanceLogic", "<init>, context is not lifecycle keeper");
   }
   
-  protected final g bQb()
+  protected final h ccM()
   {
-    g localg = this.nkO;
-    Object localObject = localg;
-    if (localg == null)
+    h localh2 = this.qmm;
+    h localh1 = localh2;
+    if (localh2 == null)
     {
-      localObject = a.nkB;
-      localObject = a.a.a(this.context, this.hOv, this.nkx, this.nky, this.nkz);
-      this.nkO = ((g)localObject);
+      localh1 = a.qlZ.a(this.context, this.kCR, this.qlV, this.qlW, (i)this.qml);
+      this.qmm = localh1;
     }
-    return localObject;
+    return localh1;
+  }
+  
+  protected final AppBrandOpenMaterialCollection ccN()
+  {
+    return this.qlV;
   }
   
   public void dead()
   {
     Log.d("MicroMsg.AppBrand.BottomSheetEnhanceLogic", "dead");
-    g localg = this.nkO;
-    if (localg != null) {
-      localg.hide();
+    h localh = this.qmm;
+    if (localh != null) {
+      localh.hide();
     }
-    localg = this.nkO;
-    if (localg != null) {
-      localg.dead();
+    localh = this.qmm;
+    if (localh != null) {
+      localh.dead();
     }
   }
+  
+  protected final Context getContext()
+  {
+    return this.context;
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/openmaterial/BottomSheetEnhanceLogic$Companion;", "", "()V", "create", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IEnhanceBottomSheetController;", "openMaterialScene", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialScene;", "context", "Landroid/content/Context;", "bottomSheet", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "openMaterialCollection", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialCollection;", "openMaterialBottomSheet", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IAppBrandOpenMaterialBottomSheet;", "launchAppBrandExecutor", "Lcom/tencent/mm/plugin/appbrand/openmaterial/ILaunchAppBrandExecutor;", "needEnhance", "", "plugin-appbrand-integration_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.openmaterial.c
  * JD-Core Version:    0.7.0.1
  */

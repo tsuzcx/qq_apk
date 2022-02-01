@@ -1,70 +1,74 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.cd.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.du;
-import com.tencent.mm.protocal.protobuf.rf;
-import com.tencent.mm.protocal.protobuf.rg;
+import com.tencent.mm.protocal.protobuf.qs;
+import com.tencent.mm.protocal.protobuf.qt;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class h
   extends q
   implements m
 {
-  public rg CoA;
+  public qt Ilv;
   private i callback;
-  private d hJu;
+  private d kwO;
   
-  public h(du paramdu, String paramString)
+  public h(String paramString1, String paramString2, String paramString3, int paramInt, b paramb, String paramString4)
   {
-    AppMethodBeat.i(67846);
+    AppMethodBeat.i(67840);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new rf();
-    ((d.a)localObject).iLO = new rg();
-    ((d.a)localObject).funcId = 1241;
-    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/busif2fpaycheck";
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBU = new qs();
+    ((d.a)localObject).lBV = new qt();
+    ((d.a)localObject).funcId = 1680;
+    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/busif2factqry";
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.hJu = ((d.a)localObject).aXF();
-    localObject = (rf)this.hJu.iLK.iLR;
-    ((rf)localObject).KYe = paramdu;
-    ((rf)localObject).KYf = paramString;
-    Log.i("MicroMsg.NetSceneBusiF2fPayCheck", "NetSceneBusiF2fPayCheck, f2fId: %s, transId: %s, amount: %s req: %s", new Object[] { paramdu.KHM, paramdu.KHN, Integer.valueOf(paramdu.KHQ), a.a(paramdu) });
-    AppMethodBeat.o(67846);
+    this.kwO = ((d.a)localObject).bgN();
+    localObject = (qs)d.b.b(this.kwO.lBR);
+    ((qs)localObject).ImY = paramString3;
+    ((qs)localObject).RJf = paramString1;
+    ((qs)localObject).InV = paramString2;
+    ((qs)localObject).RJi = paramInt;
+    ((qs)localObject).RZb = paramb;
+    ((qs)localObject).RJg = paramString4;
+    Log.i("MicroMsg.NetSceneBusiF2fActQry", "NetSceneBusiF2fPayCheck, f2fId: %s, transId: %s, amount: %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
+    AppMethodBeat.o(67840);
   }
   
   public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(67847);
+    AppMethodBeat.i(67841);
     this.callback = parami;
-    int i = dispatch(paramg, this.hJu, this);
-    AppMethodBeat.o(67847);
+    int i = dispatch(paramg, this.kwO, this);
+    AppMethodBeat.o(67841);
     return i;
   }
   
   public final int getType()
   {
-    return 1241;
+    return 1680;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(67848);
-    Log.i("MicroMsg.NetSceneBusiF2fPayCheck", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.CoA = ((rg)((d)params).iLL.iLR);
-    Log.i("MicroMsg.NetSceneBusiF2fPayCheck", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.CoA.pTZ), this.CoA.pUa });
+    AppMethodBeat.i(67842);
+    Log.i("MicroMsg.NetSceneBusiF2fActQry", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.Ilv = ((qt)d.c.b(((d)params).lBS));
+    Log.i("MicroMsg.NetSceneBusiF2fActQry", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.Ilv.tqa), this.Ilv.tqb });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(67848);
+    AppMethodBeat.o(67842);
   }
 }
 

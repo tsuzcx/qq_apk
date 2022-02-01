@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.MiniProgramNavigationBackResult;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
-import com.tencent.mm.plugin.appbrand.d;
+import com.tencent.mm.plugin.appbrand.g;
 import com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.c.c;
 import com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.i;
 import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.l.a;
@@ -15,52 +15,52 @@ import kotlin.g.b.p;
 import kotlin.t;
 import org.json.JSONObject;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalJsApiNavigateToMiniProgram;", "Lcom/tencent/mm/plugin/appbrand/jsapi/miniprogram_navigator/JsApiNavigateToMiniProgramWC;", "()V", "createNavigatorCallback", "Lcom/tencent/mm/plugin/appbrand/jsapi/miniprogram_navigator/IMiniProgramNavigator$NavigatorCallback;", "service", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalJsApiNavigateToMiniProgram;", "Lcom/tencent/mm/plugin/appbrand/jsapi/miniprogram_navigator/JsApiNavigateToMiniProgramWC;", "()V", "createNavigatorCallback", "Lcom/tencent/mm/plugin/appbrand/jsapi/miniprogram_navigator/IMiniProgramNavigator$NavigatorCallback;", "service", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
 public final class h
   extends i
 {
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "sdk_navigateToMiniProgram";
-  public static final a nbx;
+  public static final a qbM;
   
   static
   {
-    AppMethodBeat.i(228911);
-    nbx = new a((byte)0);
-    AppMethodBeat.o(228911);
+    AppMethodBeat.i(274022);
+    qbM = new a((byte)0);
+    AppMethodBeat.o(274022);
   }
   
-  public final c.c b(final d paramd, final JSONObject paramJSONObject, final int paramInt)
+  public final c.c b(final g paramg, final JSONObject paramJSONObject, final int paramInt)
   {
-    AppMethodBeat.i(228910);
-    p.h(paramd, "service");
-    p.h(paramJSONObject, "data");
-    AppBrandRuntime localAppBrandRuntime = paramd.getRuntime();
+    AppMethodBeat.i(274021);
+    p.k(paramg, "service");
+    p.k(paramJSONObject, "data");
+    AppBrandRuntime localAppBrandRuntime = paramg.getRuntime();
     if (localAppBrandRuntime == null)
     {
-      paramd = new t("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.FunctionalRuntime");
-      AppMethodBeat.o(228910);
-      throw paramd;
+      paramg = new t("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.FunctionalRuntime");
+      AppMethodBeat.o(274021);
+      throw paramg;
     }
-    ((com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.l)localAppBrandRuntime).a((l.a)new b(this, paramd, paramInt));
-    paramd = (c.c)new c(this, paramJSONObject, paramd, paramInt);
-    AppMethodBeat.o(228910);
-    return paramd;
+    ((com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.l)localAppBrandRuntime).a((l.a)new b(this, paramg, paramInt));
+    paramg = (c.c)new c(this, paramJSONObject, paramg, paramInt);
+    AppMethodBeat.o(274021);
+    return paramg;
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalJsApiNavigateToMiniProgram$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalJsApiNavigateToMiniProgram$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
   public static final class a {}
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "thatConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfig;", "kotlin.jvm.PlatformType", "data", "", "onRuntimeReceiveReturnData"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "thatConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfig;", "kotlin.jvm.PlatformType", "data", "", "onRuntimeReceiveReturnData"})
   static final class b
     implements l.a
   {
-    b(h paramh, d paramd, int paramInt) {}
+    b(h paramh, g paramg, int paramInt) {}
     
     public final void c(AppBrandInitConfig paramAppBrandInitConfig, Object paramObject)
     {
       Object localObject = null;
-      AppMethodBeat.i(228908);
+      AppMethodBeat.i(277584);
       if (!(paramObject instanceof MiniProgramNavigationBackResult)) {
         paramObject = null;
       }
@@ -70,50 +70,50 @@ public final class h
         Log.i("MicroMsg.AppBrand.FunctionalJsApiNavigateToMiniProgram", "onReceiveReturnData navigateToAppId:" + paramAppBrandInitConfig.appId + " result:" + paramObject);
         HashMap localHashMap = new HashMap();
         if (paramObject != null) {}
-        for (paramAppBrandInitConfig = paramObject.kFg;; paramAppBrandInitConfig = null)
+        for (paramAppBrandInitConfig = paramObject.nyM;; paramAppBrandInitConfig = null)
         {
           if (paramAppBrandInitConfig != null) {
-            localHashMap.put("extraData", paramObject.kFg);
+            localHashMap.put("extraData", paramObject.nyM);
           }
           paramAppBrandInitConfig = localObject;
           if (paramObject != null) {
-            paramAppBrandInitConfig = paramObject.kFh;
+            paramAppBrandInitConfig = paramObject.nyN;
           }
           if (paramAppBrandInitConfig != null) {
-            localHashMap.put("privateExtraData", paramObject.kFh);
+            localHashMap.put("privateExtraData", paramObject.nyN);
           }
-          paramd.i(paramInt, this.nby.n("ok", (Map)localHashMap));
-          AppMethodBeat.o(228908);
+          paramg.j(paramInt, this.qbN.m("ok", (Map)localHashMap));
+          AppMethodBeat.o(277584);
           return;
         }
       }
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "ok", "", "reason", "", "kotlin.jvm.PlatformType", "onNavigateResult"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "ok", "", "reason", "", "kotlin.jvm.PlatformType", "onNavigateResult"})
   static final class c
     implements c.c
   {
-    c(h paramh, JSONObject paramJSONObject, d paramd, int paramInt) {}
+    c(h paramh, JSONObject paramJSONObject, g paramg, int paramInt) {}
     
-    public final void o(boolean paramBoolean, String paramString)
+    public final void s(boolean paramBoolean, String paramString)
     {
-      AppMethodBeat.i(228909);
+      AppMethodBeat.i(267713);
       String str = paramJSONObject.optString("appId");
       Log.i("MicroMsg.AppBrand.FunctionalJsApiNavigateToMiniProgram", "onNavigateResult, navigateToAppId:" + str + " ok:" + paramBoolean + ", reason:" + paramString);
       if (!paramBoolean)
       {
-        d locald = paramd;
+        g localg = paramg;
         int i = paramInt;
-        h localh = this.nby;
+        h localh = this.qbN;
         StringBuilder localStringBuilder = new StringBuilder("fail: navigate error ");
         str = paramString;
         if (paramString == null) {
           str = "";
         }
-        locald.i(i, localh.Zf(str));
+        localg.j(i, localh.agS(str));
       }
-      AppMethodBeat.o(228909);
+      AppMethodBeat.o(267713);
     }
   }
 }

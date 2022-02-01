@@ -8,29 +8,29 @@ import org.json.JSONObject;
 public final class a
   extends d
 {
-  private static a Icx = null;
+  private static a OUJ = null;
   
-  public static a fSl()
+  public static a gKQ()
   {
     AppMethodBeat.i(70575);
-    if (Icx == null) {
-      Icx = new a();
+    if (OUJ == null) {
+      OUJ = new a();
     }
-    a locala = Icx;
+    a locala = OUJ;
     AppMethodBeat.o(70575);
     return locala;
   }
   
-  public final Bankcard bA(JSONObject paramJSONObject)
+  public final Bankcard bL(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70576);
-    Bankcard localBankcard = super.bA(paramJSONObject);
-    localBankcard.field_ext_msg = b.bU(paramJSONObject);
+    Bankcard localBankcard = super.bL(paramJSONObject);
+    localBankcard.field_ext_msg = b.cf(paramJSONObject);
     localBankcard.field_bankcardClientType = 1;
     localBankcard.field_desc = paramJSONObject.optString("description");
     localBankcard.field_trueName = paramJSONObject.optString("name_on_card");
     if ("CREDITCARD_PAYU".equals(paramJSONObject.optString("bank_type"))) {}
-    for (localBankcard.field_cardType |= Bankcard.HVp;; localBankcard.field_cardType |= Bankcard.HVr)
+    for (localBankcard.field_cardType |= Bankcard.ONq;; localBankcard.field_cardType |= Bankcard.ONs)
     {
       AppMethodBeat.o(70576);
       return localBankcard;

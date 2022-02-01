@@ -3,13 +3,13 @@ package com.tencent.mm.live.core.b;
 import kotlin.g.a.a;
 import kotlin.l;
 
-@l(hxD={1, 1, 16})
+@l(iBK={1, 1, 16})
 final class e
   implements Runnable
 {
   e(a parama)
   {
-    this.cuq = parama;
+    this.csv = parama;
   }
 }
 

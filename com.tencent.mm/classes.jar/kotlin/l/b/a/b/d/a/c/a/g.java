@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import kotlin.a.v;
-import kotlin.aa;
 import kotlin.g.a.b<-Lkotlin.l.b.a.b.f.f;+Ljava.util.Collection<+Lkotlin.l.b.a.b.b.am;>;>;
 import kotlin.l.b.a.b.b.a.g.a;
 import kotlin.l.b.a.b.b.ah;
@@ -31,37 +30,38 @@ import kotlin.l.b.a.b.k.a.r;
 import kotlin.l.b.a.b.m.at;
 import kotlin.l.b.a.b.m.bc;
 import kotlin.l.b.a.b.o.i.b;
+import kotlin.z;
 
 public final class g
   extends k
 {
-  private final kotlin.l.b.a.b.d.a.e.g TrI;
-  final kotlin.l.b.a.b.l.f<List<kotlin.l.b.a.b.b.d>> Tsh;
-  private final kotlin.l.b.a.b.l.f<Set<kotlin.l.b.a.b.f.f>> Tsi;
-  private final kotlin.l.b.a.b.l.f<Map<kotlin.l.b.a.b.f.f, kotlin.l.b.a.b.d.a.e.n>> Tsj;
-  private final kotlin.l.b.a.b.l.d<kotlin.l.b.a.b.f.f, kotlin.l.b.a.b.b.c.g> Tsk;
-  final kotlin.l.b.a.b.b.e Tsl;
-  private final boolean Tsm;
+  private final kotlin.l.b.a.b.d.a.e.g aaUC;
+  final kotlin.l.b.a.b.l.f<List<kotlin.l.b.a.b.b.d>> aaVb;
+  private final kotlin.l.b.a.b.l.f<Set<kotlin.l.b.a.b.f.f>> aaVc;
+  private final kotlin.l.b.a.b.l.f<Map<kotlin.l.b.a.b.f.f, kotlin.l.b.a.b.d.a.e.n>> aaVd;
+  private final kotlin.l.b.a.b.l.d<kotlin.l.b.a.b.f.f, kotlin.l.b.a.b.b.c.g> aaVe;
+  final kotlin.l.b.a.b.b.e aaVf;
+  private final boolean aaVg;
   
   public g(final kotlin.l.b.a.b.d.a.c.h paramh, kotlin.l.b.a.b.b.e parame, kotlin.l.b.a.b.d.a.e.g paramg, boolean paramBoolean, g paramg1)
   {
     super(paramh, (k)paramg1);
     AppMethodBeat.i(57876);
-    this.Tsl = parame;
-    this.TrI = paramg;
-    this.Tsm = paramBoolean;
-    this.Tsh = paramh.Trv.TcN.al((kotlin.g.a.a)new f(this, paramh));
-    this.Tsi = paramh.Trv.TcN.al((kotlin.g.a.a)new i(this));
-    this.Tsj = paramh.Trv.TcN.al((kotlin.g.a.a)new g(this));
-    this.Tsk = paramh.Trv.TcN.V((kotlin.g.a.b)new j(this, paramh));
+    this.aaVf = parame;
+    this.aaUC = paramg;
+    this.aaVg = paramBoolean;
+    this.aaVb = paramh.aaUp.aaFH.av((kotlin.g.a.a)new f(this, paramh));
+    this.aaVc = paramh.aaUp.aaFH.av((kotlin.g.a.a)new i(this));
+    this.aaVd = paramh.aaUp.aaFH.av((kotlin.g.a.a)new g(this));
+    this.aaVe = paramh.aaUp.aaFH.al((kotlin.g.a.b)new j(this, paramh));
     AppMethodBeat.o(57876);
   }
   
   private static am a(ah paramah, String paramString, kotlin.g.a.b<? super kotlin.l.b.a.b.f.f, ? extends Collection<? extends am>> paramb)
   {
     AppMethodBeat.i(57851);
-    paramString = kotlin.l.b.a.b.f.f.btY(paramString);
-    kotlin.g.b.p.g(paramString, "Name.identifier(getterName)");
+    paramString = kotlin.l.b.a.b.f.f.bHb(paramString);
+    kotlin.g.b.p.j(paramString, "Name.identifier(getterName)");
     paramb = ((Iterable)paramb.invoke(paramString)).iterator();
     label119:
     label122:
@@ -71,10 +71,10 @@ public final class g
       kotlin.l.b.a.b.m.a.g localg;
       kotlin.l.b.a.b.m.ab localab;
       boolean bool;
-      if (paramString.hAw().size() == 0)
+      if (paramString.iEJ().size() == 0)
       {
-        localg = kotlin.l.b.a.b.m.a.g.TPc;
-        localab = paramString.hAu();
+        localg = kotlin.l.b.a.b.m.a.g.abrB;
+        localab = paramString.iEH();
         if (localab == null)
         {
           bool = false;
@@ -90,7 +90,7 @@ public final class g
         }
         AppMethodBeat.o(57851);
         return paramString;
-        bool = localg.c(localab, paramah.hBy());
+        bool = localg.c(localab, paramah.iFN());
         break;
         paramString = null;
       }
@@ -102,19 +102,19 @@ public final class g
   private final am a(ah paramah, kotlin.g.a.b<? super kotlin.l.b.a.b.f.f, ? extends Collection<? extends am>> paramb)
   {
     AppMethodBeat.i(57850);
-    Object localObject1 = paramah.hBn();
+    Object localObject1 = paramah.iFC();
     if (localObject1 != null)
     {
       localObject1 = (ai)kotlin.l.b.a.b.d.a.t.m((kotlin.l.b.a.b.b.b)localObject1);
       if (localObject1 == null) {
         break label84;
       }
-      localObject2 = kotlin.l.b.a.b.d.a.e.ToV;
+      localObject2 = kotlin.l.b.a.b.d.a.e.aaRP;
     }
     label84:
     for (Object localObject2 = kotlin.l.b.a.b.d.a.e.l((kotlin.l.b.a.b.b.b)localObject1);; localObject2 = null)
     {
-      if ((localObject2 == null) || (kotlin.l.b.a.b.d.a.t.a(this.Tsl, (kotlin.l.b.a.b.b.a)localObject1))) {
+      if ((localObject2 == null) || (kotlin.l.b.a.b.d.a.t.a(this.aaVf, (kotlin.l.b.a.b.b.a)localObject1))) {
         break label90;
       }
       paramah = a(paramah, (String)localObject2, paramb);
@@ -124,23 +124,23 @@ public final class g
       break;
     }
     label90:
-    localObject1 = o.btJ(paramah.hAH().sG());
-    kotlin.g.b.p.g(localObject1, "JvmAbi.getterName(name.asString())");
+    localObject1 = o.bGM(paramah.iEU().qu());
+    kotlin.g.b.p.j(localObject1, "JvmAbi.getterName(name.asString())");
     paramah = a(paramah, (String)localObject1, paramb);
     AppMethodBeat.o(57850);
     return paramah;
   }
   
-  private static am a(am paramam, kotlin.g.a.b<? super kotlin.l.b.a.b.f.f, ? extends Collection<? extends am>> paramb)
+  private final am a(am paramam, kotlin.g.a.b<? super kotlin.l.b.a.b.f.f, ? extends Collection<? extends am>> paramb)
   {
     AppMethodBeat.i(57857);
-    if (!paramam.hAZ())
+    if (!paramam.iFn())
     {
       AppMethodBeat.o(57857);
       return null;
     }
-    Object localObject = paramam.hAH();
-    kotlin.g.b.p.g(localObject, "descriptor.name");
+    Object localObject = paramam.iEU();
+    kotlin.g.b.p.j(localObject, "descriptor.name");
     localObject = ((Iterable)paramb.invoke(localObject)).iterator();
     while (((Iterator)localObject).hasNext())
     {
@@ -171,7 +171,7 @@ public final class g
       if (paramCollection.hasNext())
       {
         am localam = (am)paramCollection.next();
-        if (((kotlin.g.b.p.j(paramam, localam) ^ true)) && (localam.hAU() == null) && (b((kotlin.l.b.a.b.b.a)localam, parama)))
+        if (((kotlin.g.b.p.h(paramam, localam) ^ true)) && (localam.iFi() == null) && (b((kotlin.l.b.a.b.b.a)localam, parama)))
         {
           i = 1;
           label92:
@@ -194,9 +194,9 @@ public final class g
       break;
     }
     label120:
-    paramam = paramam.hBa().hBe().hBg();
+    paramam = paramam.iFo().iFs().iFu();
     if (paramam == null) {
-      kotlin.g.b.p.hyc();
+      kotlin.g.b.p.iCn();
     }
     paramam = (am)paramam;
     AppMethodBeat.o(57858);
@@ -206,13 +206,13 @@ public final class g
   private static am a(am paramam, kotlin.l.b.a.b.f.f paramf)
   {
     AppMethodBeat.i(57847);
-    paramam = paramam.hBa();
+    paramam = paramam.iFo();
     paramam.d(paramf);
-    paramam.hBb();
-    paramam.hBc();
-    paramam = paramam.hBg();
+    paramam.iFp();
+    paramam.iFq();
+    paramam = paramam.iFu();
     if (paramam == null) {
-      kotlin.g.b.p.hyc();
+      kotlin.g.b.p.iCn();
     }
     paramam = (am)paramam;
     AppMethodBeat.o(57847);
@@ -222,8 +222,8 @@ public final class g
   private final void a(Collection<am> paramCollection, kotlin.l.b.a.b.f.f paramf, Collection<? extends am> paramCollection1, boolean paramBoolean)
   {
     AppMethodBeat.i(57855);
-    paramf = kotlin.l.b.a.b.d.a.a.a.a(paramf, paramCollection1, paramCollection, this.Tsl, this.Trn.Trv.TqU, this.Trn.Trv.Trh.hLN());
-    kotlin.g.b.p.g(paramf, "resolveOverridesForNonSt….overridingUtil\n        )");
+    paramf = kotlin.l.b.a.b.d.a.a.a.a(paramf, paramCollection1, paramCollection, this.aaVf, this.aaUh.aaUp.aaTO, this.aaUh.aaUp.aaUb.iQf());
+    kotlin.g.b.p.j(paramf, "resolveOverridesForNonSt….overridingUtil\n        )");
     if (!paramBoolean)
     {
       paramCollection.addAll(paramf);
@@ -243,7 +243,7 @@ public final class g
       {
         localCollection.add(paramf);
         break;
-        kotlin.g.b.p.g(paramf, "resolvedOverride");
+        kotlin.g.b.p.j(paramf, "resolvedOverride");
         paramf = a(paramf, (kotlin.l.b.a.b.b.a)localam, (Collection)paramCollection1);
       }
     }
@@ -255,16 +255,16 @@ public final class g
   {
     AppMethodBeat.i(57867);
     kotlin.l.b.a.b.b.a locala = (kotlin.l.b.a.b.b.a)paramk;
-    paramk = kotlin.l.b.a.b.b.a.g.TiC;
-    kotlin.l.b.a.b.b.a.g localg = g.a.hBP();
-    kotlin.l.b.a.b.f.f localf = paramq.hAH();
+    paramk = kotlin.l.b.a.b.b.a.g.aaLw;
+    kotlin.l.b.a.b.b.a.g localg = g.a.iGe();
+    kotlin.l.b.a.b.f.f localf = paramq.iEU();
     paramab1 = bc.aD(paramab1);
-    kotlin.g.b.p.g(paramab1, "TypeUtils.makeNotNullable(returnType)");
-    boolean bool = paramq.hDf();
+    kotlin.g.b.p.j(paramab1, "TypeUtils.makeNotNullable(returnType)");
+    boolean bool = paramq.iHz();
     if (paramab2 != null) {}
     for (paramk = bc.aD(paramab2);; paramk = null)
     {
-      paramList.add(new kotlin.l.b.a.b.b.c.aj(locala, null, paramInt, localg, localf, paramab1, bool, false, false, paramk, (an)this.Trn.Trv.TqY.a((kotlin.l.b.a.b.d.a.e.l)paramq)));
+      paramList.add(new kotlin.l.b.a.b.b.c.aj(locala, null, paramInt, localg, localf, paramab1, bool, false, false, paramk, (an)this.aaUh.aaUp.aaTS.a((kotlin.l.b.a.b.d.a.e.l)paramq)));
       AppMethodBeat.o(57867);
       return;
     }
@@ -301,12 +301,12 @@ public final class g
       Object localObject1;
       if (paramCollection2 == null)
       {
-        break label149;
+        break label150;
         paramCollection2 = null;
         kotlin.l.b.a.b.o.a.c(paramCollection, paramCollection2);
         localObject1 = kotlin.l.b.a.b.d.a.d.e((kotlin.l.b.a.b.b.t)localam);
         if (localObject1 != null) {
-          break label201;
+          break label202;
         }
         paramCollection2 = null;
       }
@@ -317,12 +317,12 @@ public final class g
         break;
         localObject1 = kotlin.l.b.a.b.d.a.t.p((kotlin.l.b.a.b.b.b)paramCollection2);
         if (localObject1 == null) {
-          kotlin.g.b.p.hyc();
+          kotlin.g.b.p.iCn();
         }
-        localObject1 = kotlin.l.b.a.b.f.f.btY((String)localObject1);
-        kotlin.g.b.p.g(localObject1, "Name.identifier(nameInJava)");
+        localObject1 = kotlin.l.b.a.b.f.f.bHb((String)localObject1);
+        kotlin.g.b.p.j(localObject1, "Name.identifier(nameInJava)");
         localObject1 = ((Collection)paramb.invoke(localObject1)).iterator();
-        label149:
+        label150:
         if (!((Iterator)localObject1).hasNext()) {
           break label52;
         }
@@ -332,9 +332,9 @@ public final class g
         }
         paramCollection2 = a((am)localObject2, (kotlin.l.b.a.b.b.a)paramCollection2, paramCollection1);
         break label54;
-        label201:
-        paramCollection2 = ((kotlin.l.b.a.b.b.t)localObject1).hAH();
-        kotlin.g.b.p.g(paramCollection2, "overridden.name");
+        label202:
+        paramCollection2 = ((kotlin.l.b.a.b.b.t)localObject1).iEU();
+        kotlin.g.b.p.j(paramCollection2, "overridden.name");
         localObject2 = ((Iterable)paramb.invoke(paramCollection2)).iterator();
         do
         {
@@ -347,49 +347,49 @@ public final class g
         {
           localObject2 = (am)paramCollection2;
           if (localObject2 == null) {
-            break label520;
+            break label521;
           }
-          paramCollection2 = ((am)localObject2).hBa();
-          localObject3 = ((kotlin.l.b.a.b.b.t)localObject1).hAw();
-          kotlin.g.b.p.g(localObject3, "overridden.valueParameters");
+          paramCollection2 = ((am)localObject2).iFo();
+          localObject3 = ((kotlin.l.b.a.b.b.t)localObject1).iEJ();
+          kotlin.g.b.p.j(localObject3, "overridden.valueParameters");
           Object localObject4 = (Iterable)localObject3;
           localObject3 = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject4, 10));
           localObject4 = ((Iterable)localObject4).iterator();
           while (((Iterator)localObject4).hasNext())
           {
             kotlin.l.b.a.b.b.av localav = (kotlin.l.b.a.b.b.av)((Iterator)localObject4).next();
-            kotlin.g.b.p.g(localav, "it");
-            kotlin.l.b.a.b.m.ab localab = localav.hBy();
-            kotlin.g.b.p.g(localab, "it.type");
-            ((Collection)localObject3).add(new kotlin.l.b.a.b.d.a.b.l(localab, localav.hBA()));
+            kotlin.g.b.p.j(localav, "it");
+            kotlin.l.b.a.b.m.ab localab = localav.iFN();
+            kotlin.g.b.p.j(localab, "it.type");
+            ((Collection)localObject3).add(new kotlin.l.b.a.b.d.a.b.l(localab, localav.iFP()));
           }
           paramCollection2 = null;
         }
         Object localObject3 = (Collection)localObject3;
-        localObject2 = ((am)localObject2).hAw();
-        kotlin.g.b.p.g(localObject2, "override.valueParameters");
-        paramCollection2.kz(kotlin.l.b.a.b.d.a.b.k.a((Collection)localObject3, (Collection)localObject2, (kotlin.l.b.a.b.b.a)localObject1));
-        paramCollection2.hBb();
-        paramCollection2.hBc();
-        paramCollection2 = (am)paramCollection2.hBg();
-        label487:
+        localObject2 = ((am)localObject2).iEJ();
+        kotlin.g.b.p.j(localObject2, "override.valueParameters");
+        paramCollection2.lv(kotlin.l.b.a.b.d.a.b.k.a((Collection)localObject3, (Collection)localObject2, (kotlin.l.b.a.b.b.a)localObject1));
+        paramCollection2.iFp();
+        paramCollection2.iFq();
+        paramCollection2 = (am)paramCollection2.iFu();
+        label488:
         if (paramCollection2 != null)
         {
           if (((g)this).d(paramCollection2)) {}
           for (;;)
           {
             if (paramCollection2 == null) {
-              break label530;
+              break label531;
             }
             paramCollection2 = a(paramCollection2, (kotlin.l.b.a.b.b.a)localObject1, paramCollection1);
             break;
             paramCollection2 = null;
-            break label487;
+            break label488;
             paramCollection2 = null;
           }
         }
-        label520:
-        label530:
+        label521:
+        label531:
         paramCollection2 = null;
       }
     }
@@ -399,13 +399,13 @@ public final class g
   private static boolean a(am paramam, kotlin.l.b.a.b.b.t paramt)
   {
     AppMethodBeat.i(57848);
-    kotlin.l.b.a.b.d.a.c localc = kotlin.l.b.a.b.d.a.c.Tou;
+    kotlin.l.b.a.b.d.a.c localc = kotlin.l.b.a.b.d.a.c.aaRo;
     if (kotlin.l.b.a.b.d.a.c.c(paramam)) {
-      paramt = paramt.hAT();
+      paramt = paramt.iFh();
     }
     for (;;)
     {
-      kotlin.g.b.p.g(paramt, "if (superDescriptor.isRe…iginal else subDescriptor");
+      kotlin.g.b.p.j(paramt, "if (superDescriptor.isRe…iginal else subDescriptor");
       boolean bool = b((kotlin.l.b.a.b.b.a)paramt, (kotlin.l.b.a.b.b.a)paramam);
       AppMethodBeat.o(57848);
       return bool;
@@ -415,17 +415,17 @@ public final class g
   private static am b(ah paramah, kotlin.g.a.b<? super kotlin.l.b.a.b.f.f, ? extends Collection<? extends am>> paramb)
   {
     AppMethodBeat.i(57852);
-    Object localObject1 = kotlin.l.b.a.b.f.f.btY(o.btK(paramah.hAH().sG()));
-    kotlin.g.b.p.g(localObject1, "Name.identifier(JvmAbi.s…terName(name.asString()))");
+    Object localObject1 = kotlin.l.b.a.b.f.f.bHb(o.bGN(paramah.iEU().qu()));
+    kotlin.g.b.p.j(localObject1, "Name.identifier(JvmAbi.s…terName(name.asString()))");
     localObject1 = ((Iterable)paramb.invoke(localObject1)).iterator();
     label172:
     while (((Iterator)localObject1).hasNext())
     {
       paramb = (am)((Iterator)localObject1).next();
       Object localObject2;
-      if (paramb.hAw().size() == 1)
+      if (paramb.iEJ().size() == 1)
       {
-        localObject2 = paramb.hAu();
+        localObject2 = paramb.iEH();
         if (localObject2 != null) {}
       }
       else
@@ -442,12 +442,12 @@ public final class g
         if (!kotlin.l.b.a.b.a.g.C((kotlin.l.b.a.b.m.ab)localObject2)) {
           break;
         }
-        localObject2 = kotlin.l.b.a.b.m.a.g.TPc;
-        Object localObject3 = paramb.hAw();
-        kotlin.g.b.p.g(localObject3, "descriptor.valueParameters");
-        localObject3 = kotlin.a.j.kw((List)localObject3);
-        kotlin.g.b.p.g(localObject3, "descriptor.valueParameters.single()");
-        if (!((kotlin.l.b.a.b.m.a.g)localObject2).d(((kotlin.l.b.a.b.b.av)localObject3).hBy(), paramah.hBy())) {
+        localObject2 = kotlin.l.b.a.b.m.a.g.abrB;
+        Object localObject3 = paramb.iEJ();
+        kotlin.g.b.p.j(localObject3, "descriptor.valueParameters");
+        localObject3 = kotlin.a.j.ls((List)localObject3);
+        kotlin.g.b.p.j(localObject3, "descriptor.valueParameters.single()");
+        if (!((kotlin.l.b.a.b.m.a.g)localObject2).d(((kotlin.l.b.a.b.b.av)localObject3).iFN(), paramah.iFN())) {
           break;
         }
       }
@@ -459,13 +459,13 @@ public final class g
   private static boolean b(kotlin.l.b.a.b.b.a parama1, kotlin.l.b.a.b.b.a parama2)
   {
     AppMethodBeat.i(57849);
-    Object localObject = kotlin.l.b.a.b.j.i.THP.b(parama2, parama1, true);
-    kotlin.g.b.p.g(localObject, "OverridingUtil.DEFAULT.i…erDescriptor, this, true)");
-    localObject = ((i.a)localObject).hKA();
-    kotlin.g.b.p.g(localObject, "OverridingUtil.DEFAULT.i…iptor, this, true).result");
-    if (localObject == i.a.a.TIe)
+    Object localObject = kotlin.l.b.a.b.j.i.abkt.b(parama2, parama1, true);
+    kotlin.g.b.p.j(localObject, "OverridingUtil.DEFAULT.i…erDescriptor, this, true)");
+    localObject = ((i.a)localObject).iOQ();
+    kotlin.g.b.p.j(localObject, "OverridingUtil.DEFAULT.i…iptor, this, true).result");
+    if (localObject == i.a.a.abkI)
     {
-      localObject = m.Tpd;
+      localObject = m.aaRX;
       if (!m.a.a(parama2, parama1))
       {
         AppMethodBeat.o(57849);
@@ -480,9 +480,9 @@ public final class g
   {
     AppMethodBeat.i(57866);
     String str = kotlin.l.b.a.b.d.b.t.a((kotlin.l.b.a.b.b.t)paramam, false, false, 2);
-    kotlin.l.b.a.b.b.t localt = paramt.hAT();
-    kotlin.g.b.p.g(localt, "builtinWithErasedParameters.original");
-    if ((kotlin.g.b.p.j(str, kotlin.l.b.a.b.d.b.t.a(localt, false, false, 2))) && (!b((kotlin.l.b.a.b.b.a)paramam, (kotlin.l.b.a.b.b.a)paramt)))
+    kotlin.l.b.a.b.b.t localt = paramt.iFh();
+    kotlin.g.b.p.j(localt, "builtinWithErasedParameters.original");
+    if ((kotlin.g.b.p.h(str, kotlin.l.b.a.b.d.b.t.a(localt, false, false, 2))) && (!b((kotlin.l.b.a.b.b.a)paramam, (kotlin.l.b.a.b.b.a)paramt)))
     {
       AppMethodBeat.o(57866);
       return true;
@@ -506,12 +506,12 @@ public final class g
       AppMethodBeat.o(57853);
       return false;
     }
-    if (!paramah.hBF())
+    if (!paramah.iFU())
     {
       AppMethodBeat.o(57853);
       return true;
     }
-    if ((paramb != null) && (paramb.hzC() == localam.hzC()))
+    if ((paramb != null) && (paramb.iDO() == localam.iDO()))
     {
       AppMethodBeat.o(57853);
       return true;
@@ -531,38 +531,38 @@ public final class g
     }
     am localam = a(paramah, paramb);
     if (localam == null) {
-      kotlin.g.b.p.hyc();
+      kotlin.g.b.p.iCn();
     }
     int i;
-    if (paramah.hBF())
+    if (paramah.iFU())
     {
       localObject = b(paramah, paramb);
       paramb = (kotlin.g.a.b<? super kotlin.l.b.a.b.f.f, ? extends Collection<? extends am>>)localObject;
       if (localObject == null)
       {
-        kotlin.g.b.p.hyc();
+        kotlin.g.b.p.iCn();
         paramb = (kotlin.g.a.b<? super kotlin.l.b.a.b.f.f, ? extends Collection<? extends am>>)localObject;
       }
       i = j;
       if (paramb != null)
       {
-        if (paramb.hzC() != localam.hzC()) {
+        if (paramb.iDO() != localam.iDO()) {
           break label203;
         }
         i = j;
       }
       label98:
-      if ((!aa.SXc) || (i != 0)) {
+      if ((!z.aazO) || (i != 0)) {
         break label213;
       }
-      localObject = new StringBuilder("Different accessors modalities when creating overrides for ").append(paramah).append(" in ").append(this.Tsl).append("for getter is ").append(localam.hzC()).append(", but for setter is ");
+      localObject = new StringBuilder("Different accessors modalities when creating overrides for ").append(paramah).append(" in ").append(this.aaVf).append("for getter is ").append(localam.iDO()).append(", but for setter is ");
       if (paramb == null) {
         break label208;
       }
     }
     label203:
     label208:
-    for (paramah = paramb.hzC();; paramah = null)
+    for (paramah = paramb.iDO();; paramah = null)
     {
       paramah = (Throwable)new AssertionError(paramah);
       AppMethodBeat.o(57862);
@@ -573,29 +573,29 @@ public final class g
       break label98;
     }
     label213:
-    Object localObject = new kotlin.l.b.a.b.d.a.b.e(this.Tsl, localam, paramb, paramah);
-    paramah = localam.hAu();
+    Object localObject = new kotlin.l.b.a.b.d.a.b.e(this.aaVf, localam, paramb, paramah);
+    paramah = localam.iEH();
     if (paramah == null) {
-      kotlin.g.b.p.hyc();
+      kotlin.g.b.p.iCn();
     }
-    ((kotlin.l.b.a.b.d.a.b.e)localObject).a(paramah, (List)v.SXr, hAs(), null);
-    kotlin.l.b.a.b.b.c.ab localab = kotlin.l.b.a.b.j.b.a((ah)localObject, localam.hzL(), false, localam.hzM());
-    localab.Tlb = ((kotlin.l.b.a.b.b.t)localam);
-    localab.J(((kotlin.l.b.a.b.d.a.b.e)localObject).hBy());
-    kotlin.g.b.p.g(localab, "DescriptorFactory.create…escriptor.type)\n        }");
+    ((kotlin.l.b.a.b.d.a.b.e)localObject).a(paramah, (List)v.aaAd, iEF(), null);
+    kotlin.l.b.a.b.b.c.ab localab = kotlin.l.b.a.b.j.b.a((ah)localObject, localam.iDY(), false, localam.iDZ());
+    localab.aaNV = ((kotlin.l.b.a.b.b.t)localam);
+    localab.J(((kotlin.l.b.a.b.d.a.b.e)localObject).iFN());
+    kotlin.g.b.p.j(localab, "DescriptorFactory.create…escriptor.type)\n        }");
     if (paramb != null)
     {
-      paramah = paramb.hAw();
-      kotlin.g.b.p.g(paramah, "setterMethod.valueParameters");
-      paramah = (kotlin.l.b.a.b.b.av)kotlin.a.j.kt(paramah);
+      paramah = paramb.iEJ();
+      kotlin.g.b.p.j(paramah, "setterMethod.valueParameters");
+      paramah = (kotlin.l.b.a.b.b.av)kotlin.a.j.lp(paramah);
       if (paramah == null)
       {
         paramah = (Throwable)new AssertionError("No parameter found for ".concat(String.valueOf(paramb)));
         AppMethodBeat.o(57862);
         throw paramah;
       }
-      paramah = kotlin.l.b.a.b.j.b.a((ah)localObject, paramb.hzL(), paramah.hzL(), false, paramb.hzE(), paramb.hzM());
-      paramah.Tlb = ((kotlin.l.b.a.b.b.t)paramb);
+      paramah = kotlin.l.b.a.b.j.b.a((ah)localObject, paramb.iDY(), paramah.iDY(), false, paramb.iDQ(), paramb.iDZ());
+      paramah.aaNV = ((kotlin.l.b.a.b.b.t)paramb);
     }
     for (;;)
     {
@@ -610,8 +610,8 @@ public final class g
   private final boolean d(final am paramam)
   {
     AppMethodBeat.i(57842);
-    Object localObject1 = paramam.hAH();
-    kotlin.g.b.p.g(localObject1, "function.name");
+    Object localObject1 = paramam.iEU();
+    kotlin.g.b.p.j(localObject1, "function.name");
     localObject1 = (Iterable)s.i((kotlin.l.b.a.b.f.f)localObject1);
     if ((!(localObject1 instanceof Collection)) || (!((Collection)localObject1).isEmpty()))
     {
@@ -628,7 +628,7 @@ public final class g
           if (((Iterator)localObject2).hasNext())
           {
             ah localah = (ah)((Iterator)localObject2).next();
-            if ((c(localah, (kotlin.g.a.b)new h(this, paramam))) && ((localah.hBF()) || (!o.btI(paramam.hAH().sG()))))
+            if ((c(localah, (kotlin.g.a.b)new h(this, paramam))) && ((localah.iFU()) || (!o.bGL(paramam.iEU().qu()))))
             {
               i = 1;
               if (i == 0) {
@@ -672,16 +672,16 @@ public final class g
   private final boolean e(am paramam)
   {
     AppMethodBeat.i(57843);
-    Object localObject1 = kotlin.l.b.a.b.d.a.d.ToD;
-    localObject1 = paramam.hAH();
-    kotlin.g.b.p.g(localObject1, "name");
+    Object localObject1 = kotlin.l.b.a.b.d.a.d.aaRx;
+    localObject1 = paramam.iEU();
+    kotlin.g.b.p.j(localObject1, "name");
     if (!kotlin.l.b.a.b.d.a.d.g((kotlin.l.b.a.b.f.f)localObject1))
     {
       AppMethodBeat.o(57843);
       return false;
     }
-    localObject1 = paramam.hAH();
-    kotlin.g.b.p.g(localObject1, "name");
+    localObject1 = paramam.iEU();
+    kotlin.g.b.p.j(localObject1, "name");
     Object localObject2 = (Iterable)l((kotlin.l.b.a.b.f.f)localObject1);
     localObject1 = (Collection)new ArrayList();
     localObject2 = ((Iterable)localObject2).iterator();
@@ -711,9 +711,9 @@ public final class g
   private final boolean f(am paramam)
   {
     AppMethodBeat.i(57844);
-    Object localObject1 = kotlin.l.b.a.b.d.a.c.Tou;
-    localObject1 = paramam.hAH();
-    kotlin.g.b.p.g(localObject1, "name");
+    Object localObject1 = kotlin.l.b.a.b.d.a.c.aaRo;
+    localObject1 = paramam.iEU();
+    kotlin.g.b.p.j(localObject1, "name");
     localObject1 = (Iterable)kotlin.l.b.a.b.d.a.c.f((kotlin.l.b.a.b.f.f)localObject1);
     if ((!(localObject1 instanceof Collection)) || (!((Collection)localObject1).isEmpty()))
     {
@@ -767,8 +767,8 @@ public final class g
       AppMethodBeat.o(57845);
       return false;
     }
-    paramam = paramam.hAH();
-    kotlin.g.b.p.g(paramam, "name");
+    paramam = paramam.iEU();
+    kotlin.g.b.p.j(paramam, "name");
     paramam = (Iterable)l(paramam);
     if (!((Collection)paramam).isEmpty())
     {
@@ -776,7 +776,7 @@ public final class g
       while (paramam.hasNext())
       {
         am localam2 = (am)paramam.next();
-        if ((localam2.hAZ()) && (b((kotlin.l.b.a.b.b.a)localam1, (kotlin.l.b.a.b.b.a)localam2))) {}
+        if ((localam2.iFn()) && (b((kotlin.l.b.a.b.b.a)localam1, (kotlin.l.b.a.b.b.a)localam2))) {}
         for (int i = 1; i != 0; i = 0)
         {
           AppMethodBeat.o(57845);
@@ -788,15 +788,15 @@ public final class g
     return false;
   }
   
-  private static am h(am paramam)
+  private final am h(am paramam)
   {
     AppMethodBeat.i(57846);
-    Object localObject1 = paramam.hAw();
-    kotlin.g.b.p.g(localObject1, "valueParameters");
-    Object localObject2 = (kotlin.l.b.a.b.b.av)kotlin.a.j.kv((List)localObject1);
+    Object localObject1 = paramam.iEJ();
+    kotlin.g.b.p.j(localObject1, "valueParameters");
+    Object localObject2 = (kotlin.l.b.a.b.b.av)kotlin.a.j.lr((List)localObject1);
     if (localObject2 != null)
     {
-      localObject1 = ((kotlin.l.b.a.b.b.av)localObject2).hBy().hKE().hzS();
+      localObject1 = ((kotlin.l.b.a.b.b.av)localObject2).iFN().iOU().iEf();
       if (localObject1 == null) {
         break label106;
       }
@@ -804,13 +804,13 @@ public final class g
       if (localObject1 == null) {
         break label106;
       }
-      if (!((kotlin.l.b.a.b.f.c)localObject1).hJi()) {
+      if (!((kotlin.l.b.a.b.f.c)localObject1).iNC()) {
         break label101;
       }
       if (localObject1 == null) {
         break label106;
       }
-      localObject1 = ((kotlin.l.b.a.b.f.c)localObject1).hJj();
+      localObject1 = ((kotlin.l.b.a.b.f.c)localObject1).iND();
       label79:
       if (!kotlin.l.b.a.b.a.k.a((kotlin.l.b.a.b.f.b)localObject1, false)) {
         break label111;
@@ -832,31 +832,31 @@ public final class g
       break label79;
     }
     label116:
-    localObject2 = paramam.hBa();
-    paramam = paramam.hAw();
-    kotlin.g.b.p.g(paramam, "valueParameters");
-    paramam = (am)((t.a)localObject2).kz(kotlin.a.j.M(paramam, 1)).G(((kotlin.l.b.a.b.m.av)((kotlin.l.b.a.b.b.av)localObject1).hBy().hKB().get(0)).hBy()).hBg();
+    localObject2 = paramam.iFo();
+    paramam = paramam.iEJ();
+    kotlin.g.b.p.j(paramam, "valueParameters");
+    paramam = (am)((t.a)localObject2).lv(kotlin.a.j.N(paramam, 1)).G(((kotlin.l.b.a.b.m.av)((kotlin.l.b.a.b.b.av)localObject1).iFN().iOR().get(0)).iFN()).iFu();
     localObject1 = (ae)paramam;
     if (localObject1 != null) {
-      ((kotlin.l.b.a.b.b.c.p)localObject1).TkU = true;
+      ((kotlin.l.b.a.b.b.c.p)localObject1).aaNO = true;
     }
     AppMethodBeat.o(57846);
     return paramam;
   }
   
-  private final Collection<kotlin.l.b.a.b.m.ab> hzR()
+  private final Collection<kotlin.l.b.a.b.m.ab> iEe()
   {
     AppMethodBeat.i(57864);
-    if (this.Tsm)
+    if (this.aaVg)
     {
-      localObject = this.Tsl.hzz();
-      kotlin.g.b.p.g(localObject, "ownerDescriptor.typeConstructor");
-      localObject = ((at)localObject).hBV();
-      kotlin.g.b.p.g(localObject, "ownerDescriptor.typeConstructor.supertypes");
+      localObject = this.aaVf.iDL();
+      kotlin.g.b.p.j(localObject, "ownerDescriptor.typeConstructor");
+      localObject = ((at)localObject).iGk();
+      kotlin.g.b.p.j(localObject, "ownerDescriptor.typeConstructor.supertypes");
       AppMethodBeat.o(57864);
       return localObject;
     }
-    Object localObject = this.Trn.Trv.Trh.hLM().D(this.Tsl);
+    Object localObject = this.aaUh.aaUp.aaUb.iQe().D(this.aaVf);
     AppMethodBeat.o(57864);
     return localObject;
   }
@@ -864,11 +864,11 @@ public final class g
   private final Set<am> l(kotlin.l.b.a.b.f.f paramf)
   {
     AppMethodBeat.i(57859);
-    Object localObject = (Iterable)hzR();
+    Object localObject = (Iterable)iEe();
     Collection localCollection = (Collection)new LinkedHashSet();
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
-      kotlin.a.j.a(localCollection, (Iterable)((kotlin.l.b.a.b.m.ab)((Iterator)localObject).next()).hAp().b(paramf, (kotlin.l.b.a.b.c.a.a)kotlin.l.b.a.b.c.a.c.TnQ));
+      kotlin.a.j.a(localCollection, (Iterable)((kotlin.l.b.a.b.m.ab)((Iterator)localObject).next()).iEC().b(paramf, (kotlin.l.b.a.b.c.a.a)kotlin.l.b.a.b.c.a.c.aaQK));
     }
     paramf = (Set)localCollection;
     AppMethodBeat.o(57859);
@@ -878,12 +878,12 @@ public final class g
   private final Set<ah> m(kotlin.l.b.a.b.f.f paramf)
   {
     AppMethodBeat.i(57863);
-    Object localObject1 = (Iterable)hzR();
+    Object localObject1 = (Iterable)iEe();
     Collection localCollection1 = (Collection)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      Object localObject2 = (Iterable)((kotlin.l.b.a.b.m.ab)((Iterator)localObject1).next()).hAp().a(paramf, (kotlin.l.b.a.b.c.a.a)kotlin.l.b.a.b.c.a.c.TnQ);
+      Object localObject2 = (Iterable)((kotlin.l.b.a.b.m.ab)((Iterator)localObject1).next()).iEC().a(paramf, (kotlin.l.b.a.b.c.a.a)kotlin.l.b.a.b.c.a.c.aaQK);
       Collection localCollection2 = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject2, 10));
       localObject2 = ((Iterable)localObject2).iterator();
       while (((Iterator)localObject2).hasNext()) {
@@ -899,8 +899,8 @@ public final class g
   public final Collection<ah> a(kotlin.l.b.a.b.f.f paramf, kotlin.l.b.a.b.c.a.a parama)
   {
     AppMethodBeat.i(57871);
-    kotlin.g.b.p.h(paramf, "name");
-    kotlin.g.b.p.h(parama, "location");
+    kotlin.g.b.p.k(paramf, "name");
+    kotlin.g.b.p.k(parama, "location");
     d(paramf, parama);
     paramf = super.a(paramf, parama);
     AppMethodBeat.o(57871);
@@ -910,22 +910,22 @@ public final class g
   protected final Set<kotlin.l.b.a.b.f.f> a(kotlin.l.b.a.b.j.f.d paramd)
   {
     AppMethodBeat.i(57873);
-    kotlin.g.b.p.h(paramd, "kindFilter");
-    if (this.TrI.hCO())
+    kotlin.g.b.p.k(paramd, "kindFilter");
+    if (this.aaUC.iHh())
     {
-      paramd = hCa();
+      paramd = iGp();
       AppMethodBeat.o(57873);
       return paramd;
     }
-    paramd = new LinkedHashSet((Collection)((b)this.TsE.invoke()).hDL());
-    Object localObject = this.Tsl.hzz();
-    kotlin.g.b.p.g(localObject, "ownerDescriptor.typeConstructor");
-    localObject = ((at)localObject).hBV();
-    kotlin.g.b.p.g(localObject, "ownerDescriptor.typeConstructor.supertypes");
+    paramd = new LinkedHashSet((Collection)((b)this.aaVy.invoke()).iIe());
+    Object localObject = this.aaVf.iDL();
+    kotlin.g.b.p.j(localObject, "ownerDescriptor.typeConstructor");
+    localObject = ((at)localObject).iGk();
+    kotlin.g.b.p.j(localObject, "ownerDescriptor.typeConstructor.supertypes");
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      Iterable localIterable = (Iterable)((kotlin.l.b.a.b.m.ab)((Iterator)localObject).next()).hAp().hCb();
+      Iterable localIterable = (Iterable)((kotlin.l.b.a.b.m.ab)((Iterator)localObject).next()).iEC().iGq();
       kotlin.a.j.a((Collection)paramd, localIterable);
     }
     paramd = (Set)paramd;
@@ -936,34 +936,34 @@ public final class g
   protected final k.a a(kotlin.l.b.a.b.d.a.e.q paramq, List<? extends as> paramList, kotlin.l.b.a.b.m.ab paramab, List<? extends kotlin.l.b.a.b.b.av> paramList1)
   {
     AppMethodBeat.i(57865);
-    kotlin.g.b.p.h(paramq, "method");
-    kotlin.g.b.p.h(paramList, "methodTypeParameters");
-    kotlin.g.b.p.h(paramab, "returnType");
-    kotlin.g.b.p.h(paramList1, "valueParameters");
-    Object localObject = this.Trn.Trv.TqT.a(paramq, this.Tsl, paramab, paramList1, paramList);
-    kotlin.g.b.p.g(localObject, "c.components.signaturePr…dTypeParameters\n        )");
-    paramq = ((kotlin.l.b.a.b.d.a.a.k.a)localObject).Tmg;
+    kotlin.g.b.p.k(paramq, "method");
+    kotlin.g.b.p.k(paramList, "methodTypeParameters");
+    kotlin.g.b.p.k(paramab, "returnType");
+    kotlin.g.b.p.k(paramList1, "valueParameters");
+    Object localObject = this.aaUh.aaUp.aaTN.a(paramq, this.aaVf, paramab, paramList1, paramList);
+    kotlin.g.b.p.j(localObject, "c.components.signaturePr…dTypeParameters\n        )");
+    paramq = ((kotlin.l.b.a.b.d.a.a.k.a)localObject).aaPa;
     if (paramq == null) {
-      kotlin.l.b.a.b.d.a.a.k.a.atM(4);
+      kotlin.l.b.a.b.d.a.a.k.a.aDG(4);
     }
-    kotlin.g.b.p.g(paramq, "propagated.returnType");
-    paramList = ((kotlin.l.b.a.b.d.a.a.k.a)localObject).Tqr;
-    paramab = ((kotlin.l.b.a.b.d.a.a.k.a)localObject).Tqs;
+    kotlin.g.b.p.j(paramq, "propagated.returnType");
+    paramList = ((kotlin.l.b.a.b.d.a.a.k.a)localObject).aaTl;
+    paramab = ((kotlin.l.b.a.b.d.a.a.k.a)localObject).aaTm;
     if (paramab == null) {
-      kotlin.l.b.a.b.d.a.a.k.a.atM(5);
+      kotlin.l.b.a.b.d.a.a.k.a.aDG(5);
     }
-    kotlin.g.b.p.g(paramab, "propagated.valueParameters");
-    paramList1 = ((kotlin.l.b.a.b.d.a.a.k.a)localObject).Thx;
+    kotlin.g.b.p.j(paramab, "propagated.valueParameters");
+    paramList1 = ((kotlin.l.b.a.b.d.a.a.k.a)localObject).aaKr;
     if (paramList1 == null) {
-      kotlin.l.b.a.b.d.a.a.k.a.atM(6);
+      kotlin.l.b.a.b.d.a.a.k.a.aDG(6);
     }
-    kotlin.g.b.p.g(paramList1, "propagated.typeParameters");
-    boolean bool = ((kotlin.l.b.a.b.d.a.a.k.a)localObject).TkV;
-    localObject = ((kotlin.l.b.a.b.d.a.a.k.a)localObject).Tqt;
+    kotlin.g.b.p.j(paramList1, "propagated.typeParameters");
+    boolean bool = ((kotlin.l.b.a.b.d.a.a.k.a)localObject).aaNP;
+    localObject = ((kotlin.l.b.a.b.d.a.a.k.a)localObject).aaTn;
     if (localObject == null) {
-      kotlin.l.b.a.b.d.a.a.k.a.atM(7);
+      kotlin.l.b.a.b.d.a.a.k.a.aDG(7);
     }
-    kotlin.g.b.p.g(localObject, "propagated.errors");
+    kotlin.g.b.p.j(localObject, "propagated.errors");
     paramq = new k.a(paramq, paramList, paramab, paramList1, bool, (List)localObject);
     AppMethodBeat.o(57865);
     return paramq;
@@ -972,13 +972,13 @@ public final class g
   protected final void a(Collection<am> paramCollection, kotlin.l.b.a.b.f.f paramf)
   {
     AppMethodBeat.i(57854);
-    kotlin.g.b.p.h(paramCollection, "result");
-    kotlin.g.b.p.h(paramf, "name");
+    kotlin.g.b.p.k(paramCollection, "result");
+    kotlin.g.b.p.k(paramf, "name");
     Object localObject1 = l(paramf);
-    Object localObject2 = kotlin.l.b.a.b.d.a.c.Tou;
+    Object localObject2 = kotlin.l.b.a.b.d.a.c.aaRo;
     if (!kotlin.l.b.a.b.d.a.c.e(paramf))
     {
-      localObject2 = kotlin.l.b.a.b.d.a.d.ToD;
+      localObject2 = kotlin.l.b.a.b.d.a.d.aaRx;
       if (!kotlin.l.b.a.b.d.a.d.g(paramf))
       {
         localObject2 = (Iterable)localObject1;
@@ -987,7 +987,7 @@ public final class g
         {
           localObject2 = ((Iterable)localObject2).iterator();
           while (((Iterator)localObject2).hasNext()) {
-            if (((kotlin.l.b.a.b.b.t)((Iterator)localObject2).next()).hAZ()) {
+            if (((kotlin.l.b.a.b.b.t)((Iterator)localObject2).next()).iFn()) {
               i = 0;
             }
           }
@@ -1017,10 +1017,10 @@ public final class g
         }
       }
     }
-    localObject2 = kotlin.l.b.a.b.o.i.TSf;
-    localObject2 = i.b.hLZ();
-    Object localObject3 = kotlin.l.b.a.b.d.a.a.a.a(paramf, (Collection)localObject1, (Collection)v.SXr, this.Tsl, r.TLh, this.Trn.Trv.Trh.hLN());
-    kotlin.g.b.p.g(localObject3, "resolveOverridesForNonSt….overridingUtil\n        )");
+    localObject2 = kotlin.l.b.a.b.o.i.abuE;
+    localObject2 = i.b.iQq();
+    Object localObject3 = kotlin.l.b.a.b.d.a.a.a.a(paramf, (Collection)localObject1, (Collection)v.aaAd, this.aaVf, r.abnK, this.aaUh.aaUp.aaUb.iQf());
+    kotlin.g.b.p.j(localObject3, "resolveOverridesForNonSt….overridingUtil\n        )");
     a(paramf, paramCollection, (Collection)localObject3, paramCollection, (kotlin.g.a.b)new b((g)this));
     a(paramf, paramCollection, (Collection)localObject3, (Collection)localObject2, (kotlin.g.a.b)new c((g)this));
     localObject3 = (Iterable)localObject1;
@@ -1040,8 +1040,8 @@ public final class g
   protected final boolean a(kotlin.l.b.a.b.d.a.b.f paramf)
   {
     AppMethodBeat.i(57841);
-    kotlin.g.b.p.h(paramf, "$this$isVisibleAsFunction");
-    if (this.TrI.hCO())
+    kotlin.g.b.p.k(paramf, "$this$isVisibleAsFunction");
+    if (this.aaUC.iHh())
     {
       AppMethodBeat.o(57841);
       return false;
@@ -1054,8 +1054,8 @@ public final class g
   public final Collection<am> b(kotlin.l.b.a.b.f.f paramf, kotlin.l.b.a.b.c.a.a parama)
   {
     AppMethodBeat.i(57870);
-    kotlin.g.b.p.h(paramf, "name");
-    kotlin.g.b.p.h(parama, "location");
+    kotlin.g.b.p.k(paramf, "name");
+    kotlin.g.b.p.k(parama, "location");
     d(paramf, parama);
     paramf = super.b(paramf, parama);
     AppMethodBeat.o(57870);
@@ -1065,12 +1065,12 @@ public final class g
   protected final void b(kotlin.l.b.a.b.f.f paramf, Collection<ah> paramCollection)
   {
     AppMethodBeat.i(57860);
-    kotlin.g.b.p.h(paramf, "name");
-    kotlin.g.b.p.h(paramCollection, "result");
+    kotlin.g.b.p.k(paramf, "name");
+    kotlin.g.b.p.k(paramCollection, "result");
     Object localObject1;
-    if (this.TrI.hCO())
+    if (this.aaUC.iHh())
     {
-      localObject1 = (kotlin.l.b.a.b.d.a.e.q)kotlin.a.j.j((Iterable)((b)this.TsE.invoke()).j(paramf));
+      localObject1 = (kotlin.l.b.a.b.d.a.e.q)kotlin.a.j.j((Iterable)((b)this.aaVy.invoke()).j(paramf));
       if (localObject1 != null) {
         break label86;
       }
@@ -1084,26 +1084,26 @@ public final class g
       AppMethodBeat.o(57860);
       return;
       label86:
-      localObject2 = w.Tho;
-      Object localObject3 = kotlin.l.b.a.b.d.a.c.f.a(this.Trn, (kotlin.l.b.a.b.d.a.e.d)localObject1);
-      localObject2 = kotlin.l.b.a.b.d.a.b.g.a((kotlin.l.b.a.b.b.l)this.Tsl, (kotlin.l.b.a.b.b.a.g)localObject3, (w)localObject2, ((kotlin.l.b.a.b.d.a.e.q)localObject1).hzE(), false, ((kotlin.l.b.a.b.d.a.e.q)localObject1).hAH(), (an)this.Trn.Trv.TqY.a((kotlin.l.b.a.b.d.a.e.l)localObject1), false);
-      kotlin.g.b.p.g(localObject2, "JavaPropertyDescriptor.c…inal = */ false\n        )");
+      localObject2 = w.aaKi;
+      Object localObject3 = kotlin.l.b.a.b.d.a.c.f.a(this.aaUh, (kotlin.l.b.a.b.d.a.e.d)localObject1);
+      localObject2 = kotlin.l.b.a.b.d.a.b.g.a((kotlin.l.b.a.b.b.l)this.aaVf, (kotlin.l.b.a.b.b.a.g)localObject3, (w)localObject2, ((kotlin.l.b.a.b.d.a.e.q)localObject1).iDQ(), false, ((kotlin.l.b.a.b.d.a.e.q)localObject1).iEU(), (an)this.aaUh.aaUp.aaTS.a((kotlin.l.b.a.b.d.a.e.l)localObject1), false);
+      kotlin.g.b.p.j(localObject2, "JavaPropertyDescriptor.c…inal = */ false\n        )");
       localObject3 = (ah)localObject2;
-      g.a locala = kotlin.l.b.a.b.b.a.g.TiC;
-      localObject3 = kotlin.l.b.a.b.j.b.a((ah)localObject3, g.a.hBP());
-      kotlin.g.b.p.g(localObject3, "DescriptorFactory.create…iptor, Annotations.EMPTY)");
+      g.a locala = kotlin.l.b.a.b.b.a.g.aaLw;
+      localObject3 = kotlin.l.b.a.b.j.b.a((ah)localObject3, g.a.iGe());
+      kotlin.g.b.p.j(localObject3, "DescriptorFactory.create…iptor, Annotations.EMPTY)");
       ((kotlin.l.b.a.b.d.a.b.g)localObject2).a((kotlin.l.b.a.b.b.c.ab)localObject3, null);
-      localObject1 = a((kotlin.l.b.a.b.d.a.e.q)localObject1, kotlin.l.b.a.b.d.a.c.a.a(this.Trn, (kotlin.l.b.a.b.b.l)localObject2, (x)localObject1, 0));
-      ((kotlin.l.b.a.b.d.a.b.g)localObject2).a((kotlin.l.b.a.b.m.ab)localObject1, (List)v.SXr, hAs(), null);
+      localObject1 = a((kotlin.l.b.a.b.d.a.e.q)localObject1, kotlin.l.b.a.b.d.a.c.a.a(this.aaUh, (kotlin.l.b.a.b.b.l)localObject2, (x)localObject1, 0));
+      ((kotlin.l.b.a.b.d.a.b.g)localObject2).a((kotlin.l.b.a.b.m.ab)localObject1, (List)v.aaAd, iEF(), null);
       ((kotlin.l.b.a.b.b.c.ab)localObject3).J((kotlin.l.b.a.b.m.ab)localObject1);
       paramCollection.add(localObject2);
     }
-    Object localObject2 = kotlin.l.b.a.b.o.i.TSf;
-    localObject2 = i.b.hLZ();
+    Object localObject2 = kotlin.l.b.a.b.o.i.abuE;
+    localObject2 = i.b.iQq();
     a((Set)localObject1, paramCollection, (kotlin.g.a.b)new d(this));
     a((Set)localObject1, (Collection)localObject2, (kotlin.g.a.b)new e(this));
-    paramf = kotlin.l.b.a.b.d.a.a.a.a(paramf, (Collection)kotlin.a.ak.b((Set)localObject1, (Iterable)localObject2), paramCollection, this.Tsl, this.Trn.Trv.TqU, this.Trn.Trv.Trh.hLN());
-    kotlin.g.b.p.g(paramf, "resolveOverridesForNonSt…rridingUtil\n            )");
+    paramf = kotlin.l.b.a.b.d.a.a.a.a(paramf, (Collection)kotlin.a.ak.b((Set)localObject1, (Iterable)localObject2), paramCollection, this.aaVf, this.aaUh.aaUp.aaTO, this.aaUh.aaUp.aaUb.iQf());
+    kotlin.g.b.p.j(paramf, "resolveOverridesForNonSt…rridingUtil\n            )");
     paramCollection.addAll(paramf);
     AppMethodBeat.o(57860);
   }
@@ -1111,8 +1111,8 @@ public final class g
   protected final Set<kotlin.l.b.a.b.f.f> c(kotlin.l.b.a.b.j.f.d paramd, kotlin.g.a.b<? super kotlin.l.b.a.b.f.f, Boolean> paramb)
   {
     AppMethodBeat.i(57872);
-    kotlin.g.b.p.h(paramd, "kindFilter");
-    paramd = kotlin.a.ak.b((Set)this.Tsi.invoke(), (Iterable)((Map)this.Tsj.invoke()).keySet());
+    kotlin.g.b.p.k(paramd, "kindFilter");
+    paramd = kotlin.a.ak.b((Set)this.aaVc.invoke(), (Iterable)((Map)this.aaVd.invoke()).keySet());
     AppMethodBeat.o(57872);
     return paramd;
   }
@@ -1120,13 +1120,13 @@ public final class g
   public final kotlin.l.b.a.b.b.h c(kotlin.l.b.a.b.f.f paramf, kotlin.l.b.a.b.c.a.a parama)
   {
     AppMethodBeat.i(57869);
-    kotlin.g.b.p.h(paramf, "name");
-    kotlin.g.b.p.h(parama, "location");
+    kotlin.g.b.p.k(paramf, "name");
+    kotlin.g.b.p.k(parama, "location");
     d(paramf, parama);
-    parama = (g)this.TsK;
+    parama = (g)this.aaVE;
     if (parama != null)
     {
-      parama = parama.Tsk;
+      parama = parama.aaVe;
       if (parama != null)
       {
         parama = (kotlin.l.b.a.b.b.c.g)parama.invoke(paramf);
@@ -1138,7 +1138,7 @@ public final class g
         }
       }
     }
-    paramf = (kotlin.l.b.a.b.b.h)this.Tsk.invoke(paramf);
+    paramf = (kotlin.l.b.a.b.b.h)this.aaVe.invoke(paramf);
     AppMethodBeat.o(57869);
     return paramf;
   }
@@ -1146,16 +1146,16 @@ public final class g
   public final void d(kotlin.l.b.a.b.f.f paramf, kotlin.l.b.a.b.c.a.a parama)
   {
     AppMethodBeat.i(57874);
-    kotlin.g.b.p.h(paramf, "name");
-    kotlin.g.b.p.h(parama, "location");
-    kotlin.l.b.a.b.c.a.a(this.Trn.Trv.Trb, parama, this.Tsl, paramf);
+    kotlin.g.b.p.k(paramf, "name");
+    kotlin.g.b.p.k(parama, "location");
+    kotlin.l.b.a.b.c.a.a(this.aaUh.aaUp.aaTV, parama, this.aaVf, paramf);
     AppMethodBeat.o(57874);
   }
   
-  protected final kotlin.l.b.a.b.b.ak hAs()
+  protected final kotlin.l.b.a.b.b.ak iEF()
   {
     AppMethodBeat.i(57868);
-    kotlin.l.b.a.b.b.ak localak = kotlin.l.b.a.b.j.c.l((kotlin.l.b.a.b.b.l)this.Tsl);
+    kotlin.l.b.a.b.b.ak localak = kotlin.l.b.a.b.j.c.l((kotlin.l.b.a.b.b.l)this.aaVf);
     AppMethodBeat.o(57868);
     return localak;
   }
@@ -1163,7 +1163,7 @@ public final class g
   public final String toString()
   {
     AppMethodBeat.i(57875);
-    String str = "Lazy Java member scope for " + this.TrI.hBk();
+    String str = "Lazy Java member scope for " + this.aaUC.iFy();
     AppMethodBeat.o(57875);
     return str;
   }
@@ -1250,7 +1250,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.c.a.g
  * JD-Core Version:    0.7.0.1
  */

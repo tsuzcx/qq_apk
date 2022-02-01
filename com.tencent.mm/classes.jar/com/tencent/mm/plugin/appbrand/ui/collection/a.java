@@ -5,10 +5,10 @@ import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"TAG", "", "OPEN_TEST_ENTRY", "", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"TAG", "", "OPEN_TEST_ENTRY", "", "plugin-appbrand-integration_release"})
 public final class a
 {
-  static final boolean bYj()
+  static final boolean ckU()
   {
     AppMethodBeat.i(175226);
     if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (WeChatEnvironment.hasDebugger()))
@@ -22,7 +22,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.collection.a
  * JD-Core Version:    0.7.0.1
  */

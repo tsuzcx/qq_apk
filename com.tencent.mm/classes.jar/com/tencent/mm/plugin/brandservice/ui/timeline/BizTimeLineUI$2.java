@@ -5,7 +5,8 @@ import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
+import com.tencent.mm.plugin.brandservice.d.i;
 import com.tencent.mm.plugin.websearch.api.ai;
 import com.tencent.mm.plugin.websearch.api.ak;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -21,24 +22,24 @@ final class BizTimeLineUI$2
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(5945);
-    if (ai.afs(0))
+    if (ai.ang(0))
     {
-      paramMenuItem = ai.fXX();
-      paramMenuItem.putExtra("title", this.ptt.getString(2131761039));
-      paramMenuItem.putExtra("searchbar_tips", this.ptt.getString(2131761039));
+      paramMenuItem = ai.gQI();
+      paramMenuItem.putExtra("title", this.sCH.getString(d.i.fts_search_biz_article));
+      paramMenuItem.putExtra("searchbar_tips", this.sCH.getString(d.i.fts_search_biz_article));
       paramMenuItem.putExtra("KRightBtn", true);
       paramMenuItem.putExtra("ftsneedkeyboard", true);
       paramMenuItem.putExtra("publishIdPrefix", "bs");
       paramMenuItem.putExtra("ftsType", 2);
       paramMenuItem.putExtra("ftsbizscene", 11);
-      Object localObject = ai.h(11, true, 2);
-      String str = ai.afq(Util.safeParseInt((String)((Map)localObject).get("scene")));
+      Object localObject = ai.j(11, true, 2);
+      String str = ai.ane(Util.safeParseInt((String)((Map)localObject).get("scene")));
       ((Map)localObject).put("sessionId", str);
       paramMenuItem.putExtra("sessionId", str);
-      paramMenuItem.putExtra("rawUrl", ai.bd((Map)localObject));
+      paramMenuItem.putExtra("rawUrl", ai.aX((Map)localObject));
       paramMenuItem.putExtra("key_load_js_without_delay", true);
       paramMenuItem.addFlags(67108864);
-      localObject = ak.aXg("bizAccountTopSearch");
+      localObject = ak.biR("bizAccountTopSearch");
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         paramMenuItem.putExtra("key_search_input_hint", (String)localObject);
       }

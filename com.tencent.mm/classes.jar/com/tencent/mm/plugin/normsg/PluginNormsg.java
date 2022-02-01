@@ -1,14 +1,16 @@
 package com.tencent.mm.plugin.normsg;
 
 import android.os.Build.VERSION;
-import com.tencent.f.i;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
+import com.tencent.mm.an.h.a;
 import com.tencent.mm.kernel.b.f;
-import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.model.cj;
-import com.tencent.mm.plugin.messenger.foundation.a.q;
-import com.tencent.mm.plugin.messenger.foundation.a.s;
+import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.model.ck;
+import com.tencent.mm.plugin.messenger.foundation.a.t;
+import com.tencent.mm.plugin.messenger.foundation.a.v;
 import com.tencent.mm.plugin.normsg.d.a.a;
 import com.tencent.mm.plugin.normsg.d.a.c;
 import com.tencent.mm.plugin.normsg.d.b.f;
@@ -21,26 +23,26 @@ import java.util.Queue;
 
 public class PluginNormsg
   extends f
-  implements com.tencent.mm.kernel.api.c, q, a
+  implements com.tencent.mm.kernel.api.c, t, a
 {
-  private static final String AEB;
-  private static final String AEC;
-  private static final String AED;
+  private static final String GxF;
+  private static final String GxG;
+  private static final String GxH;
   
   static
   {
     AppMethodBeat.i(149007);
-    AEB = b.AEu.aIJ("\034:/-9+\n.\"0:41\r\"!");
-    AEC = b.AEu.aIJ("\005#64 2\004(,");
-    AED = b.AEu.aIJ("");
+    GxF = b.Gxy.aTf("\034:/-9+\n.\"0:41\r\"!");
+    GxG = b.Gxy.aTf("\005#64 2\004(,");
+    GxH = b.Gxy.aTf("");
     AppMethodBeat.o(149007);
   }
   
-  public void configure(com.tencent.mm.kernel.b.g paramg)
+  public void configure(g paramg)
   {
     AppMethodBeat.i(148987);
-    com.tencent.mm.plugin.normsg.a.d.a(b.AEu);
-    com.tencent.f.h.RTc.aX(new com.tencent.f.i.h()
+    com.tencent.mm.plugin.normsg.a.d.a(b.Gxy);
+    com.tencent.e.h.ZvG.be(new com.tencent.e.i.h()
     {
       public final String getKey()
       {
@@ -50,12 +52,12 @@ public class PluginNormsg
       public final void run()
       {
         AppMethodBeat.i(148982);
-        com.tencent.e.e.b.a.a.b.kW(MMApplicationContext.getContext());
-        b localb = b.AEu;
+        com.tencent.d.e.b.a.a.b.lT(MMApplicationContext.getContext());
+        b localb = b.Gxy;
         CrashReportFactory.setX86Env(b.isX86Env());
-        localb = b.AEu;
+        localb = b.Gxy;
         CrashReportFactory.setDualByTools(b.isDualByTools());
-        localb = b.AEu;
+        localb = b.Gxy;
         CrashReportFactory.setHookedByXposed(b.isHookedByXposed());
         AppMethodBeat.o(148982);
       }
@@ -71,12 +73,12 @@ public class PluginNormsg
     if (MMApplicationContext.isMainProcess())
     {
       dependsOn(com.tencent.mm.plugin.comm.a.a.class);
-      dependsOn(s.class);
+      dependsOn(v.class);
     }
     AppMethodBeat.o(148986);
   }
   
-  public void execute(com.tencent.mm.kernel.b.g paramg) {}
+  public void execute(g paramg) {}
   
   public void installed()
   {
@@ -85,34 +87,34 @@ public class PluginNormsg
     AppMethodBeat.o(148985);
   }
   
-  public void onAccountInitialized(e.c paramc)
+  public void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(148988);
-    paramc = com.tencent.mm.plugin.normsg.d.a.exW();
-    com.tencent.mm.kernel.b.g localg = com.tencent.mm.kernel.g.aAe().azG();
+    paramc = com.tencent.mm.plugin.normsg.d.a.fjB();
+    g localg = com.tencent.mm.kernel.h.aHD().aHf();
     if (!a.c.isEnabled()) {
       Log.w("MircoMsg.AEDHLP", "[tomys] aedh is not enabled.");
     }
     for (;;)
     {
-      ((s)com.tencent.mm.kernel.g.ah(s.class)).getSysCmdMsgExtension().a(AEB, this);
+      ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension().a(GxF, this);
       k.start();
       AppMethodBeat.o(148988);
       return;
-      int j = a.c.eyc();
+      int j = a.c.fjH();
       int i = j;
       if (j <= 0) {
         i = 26;
       }
       if (Build.VERSION.SDK_INT > i) {
         Log.w("MircoMsg.AEDHLP", "[tomys] unsupported system, aedh is not enabled.");
-      } else if (com.tencent.mm.plugin.normsg.d.a.AFa.contains(com.tencent.mm.plugin.normsg.d.a.gj(localg.mProcessName))) {
+      } else if (com.tencent.mm.plugin.normsg.d.a.Gyk.contains(com.tencent.mm.plugin.normsg.d.a.gT(localg.mProcessName))) {
         try
         {
-          com.tencent.mm.plugin.normsg.d.b localb = com.tencent.mm.plugin.normsg.d.b.eye();
-          localb.initialize(localg.ca);
+          com.tencent.mm.plugin.normsg.d.b localb = com.tencent.mm.plugin.normsg.d.b.fjJ();
+          localb.initialize(localg.Zw);
           localb.ensureInitialized();
-          localb.AFG.add(paramc);
+          localb.GyQ.add(paramc);
           Log.i("MircoMsg.AEDHLP", "[tomys] aed installed.");
         }
         catch (b.f localf)
@@ -129,7 +131,7 @@ public class PluginNormsg
   public void onAccountRelease()
   {
     AppMethodBeat.i(148989);
-    ((s)com.tencent.mm.kernel.g.ah(s.class)).getSysCmdMsgExtension().b(AEB, this);
+    ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension().b(GxF, this);
     k.stop();
     AppMethodBeat.o(148989);
   }
@@ -142,7 +144,7 @@ public class PluginNormsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.PluginNormsg
  * JD-Core Version:    0.7.0.1
  */

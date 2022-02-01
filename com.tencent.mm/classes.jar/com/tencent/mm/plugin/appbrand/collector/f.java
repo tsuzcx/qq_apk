@@ -6,29 +6,34 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public final class f
 {
-  private static final AtomicInteger lbk;
-  private static final AtomicLong lbl;
-  private static boolean lbm;
+  private static final AtomicInteger nVt;
+  private static final AtomicLong nVu;
+  private static boolean nVv;
   
   static
   {
     AppMethodBeat.i(146109);
-    lbk = new AtomicInteger();
-    lbl = new AtomicLong();
+    nVt = new AtomicInteger();
+    nVu = new AtomicLong();
     AppMethodBeat.o(146109);
   }
   
-  public static String bzA()
+  public static boolean bKO()
+  {
+    return nVv;
+  }
+  
+  public static String bKP()
   {
     float f2 = 0.0F;
     AppMethodBeat.i(146108);
-    int i = lbk.get();
-    long l1 = lbl.get();
+    int i = nVt.get();
+    long l1 = nVu.get();
     Object localObject = new StringBuilder();
     StringBuilder localStringBuilder = ((StringBuilder)localObject).append("fps : ");
-    int j = lbk.get();
-    long l2 = lbl.get();
-    if ((!lbm) || (l2 <= 0L))
+    int j = nVt.get();
+    long l2 = nVu.get();
+    if ((!nVv) || (l2 <= 0L))
     {
       f1 = 0.0F;
       localStringBuilder.append(f1);
@@ -50,27 +55,22 @@ public final class f
     }
   }
   
-  public static boolean bzz()
+  public static void hF(boolean paramBoolean)
   {
-    return lbm;
-  }
-  
-  public static void gU(boolean paramBoolean)
-  {
-    lbm = paramBoolean;
+    nVv = paramBoolean;
   }
   
   public static void reset()
   {
     AppMethodBeat.i(146107);
-    lbk.set(0);
-    lbl.set(0L);
+    nVt.set(0);
+    nVu.set(0L);
     AppMethodBeat.o(146107);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.collector.f
  * JD-Core Version:    0.7.0.1
  */

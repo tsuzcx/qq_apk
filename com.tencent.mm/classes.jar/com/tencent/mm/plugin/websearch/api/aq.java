@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.websearch.api;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -11,40 +11,40 @@ import com.tencent.mm.storage.ar.a;
 
 public final class aq
 {
-  private static aq IFm;
-  public a IFk;
-  private boolean IFl;
+  private static aq PzE;
+  public a PzC;
+  private boolean PzD;
   
   static
   {
     AppMethodBeat.i(117764);
-    IFm = new aq();
+    PzE = new aq();
     AppMethodBeat.o(117764);
   }
   
   private aq()
   {
     AppMethodBeat.i(117760);
-    Object localObject = (String)g.aAh().azQ().get(ar.a.Ods, "");
-    this.IFk = new a();
-    a locala = this.IFk;
+    Object localObject = (String)h.aHG().aHp().get(ar.a.VrC, "");
+    this.PzC = new a();
+    a locala = this.PzC;
     try
     {
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         localObject = ((String)localObject).split("&");
         locala.id = Util.safeFormatString(localObject[0], new Object[0]);
-        locala.IFn = Util.safeParseInt(localObject[1]);
-        locala.IFo = Util.safeParseInt(localObject[2]);
-        locala.jIU = Util.safeParseLong(localObject[3]);
-        locala.IEj = Util.safeParseInt(localObject[4]);
+        locala.PzF = Util.safeParseInt(localObject[1]);
+        locala.PzG = Util.safeParseInt(localObject[2]);
+        locala.mzZ = Util.safeParseLong(localObject[3]);
+        locala.Pyz = Util.safeParseInt(localObject[4]);
         locala.type = Util.safeParseInt(localObject[5]);
         locala.text = localObject[6];
         locala.icon = localObject[7];
         locala.timestamp = Util.safeParseLong(localObject[8]);
-        locala.IFp = Util.safeParseInt(localObject[9]);
-        locala.iUm = Util.safeParseLong(localObject[10]);
-        locala.IFq = Util.safeParseInt(localObject[11]);
+        locala.PzH = Util.safeParseInt(localObject[9]);
+        locala.lKF = Util.safeParseLong(localObject[10]);
+        locala.PzI = Util.safeParseInt(localObject[11]);
       }
       AppMethodBeat.o(117760);
       return;
@@ -56,15 +56,15 @@ public final class aq
     }
   }
   
-  public static aq fYk()
+  public static aq gQV()
   {
-    return IFm;
+    return PzE;
   }
   
-  public static long fYl()
+  public static long gQW()
   {
     AppMethodBeat.i(117762);
-    Object localObject = g.aAh().azQ().get(ar.a.Ogu, null);
+    Object localObject = h.aHG().aHp().get(ar.a.VuK, null);
     if (localObject == null)
     {
       AppMethodBeat.o(117762);
@@ -75,19 +75,19 @@ public final class aq
     return l;
   }
   
-  public final void afy(int paramInt)
+  public final void anm(int paramInt)
   {
     int i = 0;
     AppMethodBeat.i(117763);
-    if (this.IFk != null)
+    if (this.PzC != null)
     {
-      boolean bool = this.IFk.isValid();
-      if ((this.IFl) && (paramInt == 1) && (!bool))
+      boolean bool = this.PzC.isValid();
+      if ((this.PzD) && (paramInt == 1) && (!bool))
       {
         AppMethodBeat.o(117763);
         return;
       }
-      String str2 = this.IFk.id;
+      String str2 = this.PzC.id;
       if (str2 != null)
       {
         str1 = str2;
@@ -102,21 +102,21 @@ public final class aq
       }
       String str1 = String.format("%d,%d,%s,%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), str1, Long.valueOf(System.currentTimeMillis()) });
       Log.i("MicroMsg.WebSearch.WebSearchRedPointMgr", "report websearch reddot 17513: ".concat(String.valueOf(str1)));
-      com.tencent.mm.plugin.report.e.Cxv.kvStat(17513, str1);
+      com.tencent.mm.plugin.report.f.Iyx.kvStat(17513, str1);
       if ((paramInt == 1) && (!bool)) {
-        this.IFl = true;
+        this.PzD = true;
       }
     }
     AppMethodBeat.o(117763);
   }
   
-  public final void save()
+  public final void arg()
   {
     AppMethodBeat.i(117761);
-    if (this.IFk == null) {}
-    for (String str = "";; str = this.IFk.bGg())
+    if (this.PzC == null) {}
+    for (String str = "";; str = this.PzC.bRQ())
     {
-      g.aAh().azQ().set(ar.a.Ods, str);
+      h.aHG().aHp().set(ar.a.VrC, str);
       AppMethodBeat.o(117761);
       return;
     }
@@ -124,16 +124,16 @@ public final class aq
   
   public static final class a
   {
-    public int IEj;
-    public int IFn;
-    public int IFo;
-    public int IFp;
-    int IFq;
+    public int Pyz;
+    public int PzF;
+    public int PzG;
+    public int PzH;
+    int PzI;
     public int clear;
-    public long iUm;
     public String icon;
     public String id;
-    public long jIU;
+    public long lKF;
+    public long mzZ;
     public String text;
     public long timestamp;
     public int type;
@@ -141,14 +141,14 @@ public final class aq
     public a()
     {
       AppMethodBeat.i(117756);
-      this.iUm = System.currentTimeMillis();
+      this.lKF = System.currentTimeMillis();
       AppMethodBeat.o(117756);
     }
     
     private boolean isExpired()
     {
       AppMethodBeat.i(117757);
-      if (System.currentTimeMillis() > this.iUm + this.jIU * 1000L)
+      if (System.currentTimeMillis() > this.lKF + this.mzZ * 1000L)
       {
         AppMethodBeat.o(117757);
         return true;
@@ -157,10 +157,10 @@ public final class aq
       return false;
     }
     
-    final String bGg()
+    final String bRQ()
     {
       AppMethodBeat.i(117759);
-      String str = this.id + "&" + this.IFn + "&" + this.IFo + "&" + this.jIU + "&" + this.IEj + "&" + this.type + "&" + this.text + "&" + this.icon + "&" + this.timestamp + "&" + this.IFp + "&" + this.iUm + "&" + this.IFq;
+      String str = this.id + "&" + this.PzF + "&" + this.PzG + "&" + this.mzZ + "&" + this.Pyz + "&" + this.type + "&" + this.text + "&" + this.icon + "&" + this.timestamp + "&" + this.PzH + "&" + this.lKF + "&" + this.PzI;
       AppMethodBeat.o(117759);
       return str;
     }
@@ -173,9 +173,9 @@ public final class aq
         AppMethodBeat.o(117758);
         return false;
       }
-      if (this.IFo > d.KyO)
+      if (this.PzG > d.RAD)
       {
-        Log.i("MicroMsg.WebSearch.WebSearchRedPointMgr", "msgid %s clientVersion %d invalid ,curVer is %d", new Object[] { this.id, Integer.valueOf(this.IFo), Integer.valueOf(d.KyO) });
+        Log.i("MicroMsg.WebSearch.WebSearchRedPointMgr", "msgid %s clientVersion %d invalid ,curVer is %d", new Object[] { this.id, Integer.valueOf(this.PzG), Integer.valueOf(d.RAD) });
         AppMethodBeat.o(117758);
         return false;
       }
@@ -185,12 +185,12 @@ public final class aq
         AppMethodBeat.o(117758);
         return false;
       }
-      String str = this.IFn + "h5 version valid ? %b, red.h5 %d, cur.h5 %s, red.timestamp %d, last rec.timestamp %d";
-      if (ai.aft(0) >= this.IEj) {}
+      String str = this.PzF + "h5 version valid ? %b, red.h5 %d, cur.h5 %s, red.timestamp %d, last rec.timestamp %d";
+      if (ai.anh(0) >= this.Pyz) {}
       for (boolean bool = true;; bool = false)
       {
-        Log.i("MicroMsg.WebSearch.WebSearchRedPointMgr", str, new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.IEj), Integer.valueOf(ai.aft(0)), Long.valueOf(this.timestamp), Long.valueOf(aq.fYl()) });
-        if ((ai.aft(0) < this.IEj) || (this.timestamp <= aq.fYl())) {
+        Log.i("MicroMsg.WebSearch.WebSearchRedPointMgr", str, new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.Pyz), Integer.valueOf(ai.anh(0)), Long.valueOf(this.timestamp), Long.valueOf(aq.gQW()) });
+        if ((ai.anh(0) < this.Pyz) || (this.timestamp <= aq.gQW())) {
           break;
         }
         AppMethodBeat.o(117758);
@@ -203,7 +203,7 @@ public final class aq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.aq
  * JD-Core Version:    0.7.0.1
  */

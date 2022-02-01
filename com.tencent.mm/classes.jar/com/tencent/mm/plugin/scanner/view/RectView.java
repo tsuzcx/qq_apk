@@ -10,32 +10,33 @@ import android.graphics.Region.Op;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.ak.a.d;
 
 public class RectView
   extends View
 {
-  private Bitmap CLS;
-  private Bitmap CLT;
-  private Bitmap CLU;
-  private Bitmap CLV;
-  private Paint CMr;
-  int CVa;
-  int CVb;
+  private Paint IRR;
+  private Bitmap IRs;
+  private Bitmap IRt;
+  private Bitmap IRu;
+  private Bitmap IRv;
+  int JaA;
+  int JaB;
+  private Rect byG;
   private Paint paint;
-  private Rect rect;
   
   public RectView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(91085);
-    this.CLS = null;
-    this.CLT = null;
-    this.CLU = null;
-    this.CLV = null;
-    this.CVa = 0;
-    this.CVb = 0;
+    this.IRs = null;
+    this.IRt = null;
+    this.IRu = null;
+    this.IRv = null;
+    this.JaA = 0;
+    this.JaB = 0;
     this.paint = new Paint();
-    this.CMr = new Paint();
+    this.IRR = new Paint();
     init();
     AppMethodBeat.o(91085);
   }
@@ -44,14 +45,14 @@ public class RectView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(91086);
-    this.CLS = null;
-    this.CLT = null;
-    this.CLU = null;
-    this.CLV = null;
-    this.CVa = 0;
-    this.CVb = 0;
+    this.IRs = null;
+    this.IRt = null;
+    this.IRu = null;
+    this.IRv = null;
+    this.JaA = 0;
+    this.JaB = 0;
     this.paint = new Paint();
-    this.CMr = new Paint();
+    this.IRR = new Paint();
     init();
     AppMethodBeat.o(91086);
   }
@@ -60,14 +61,14 @@ public class RectView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(91087);
-    this.CLS = null;
-    this.CLT = null;
-    this.CLU = null;
-    this.CLV = null;
-    this.CVa = 0;
-    this.CVb = 0;
+    this.IRs = null;
+    this.IRt = null;
+    this.IRu = null;
+    this.IRv = null;
+    this.JaA = 0;
+    this.JaB = 0;
     this.paint = new Paint();
-    this.CMr = new Paint();
+    this.IRR = new Paint();
     init();
     AppMethodBeat.o(91087);
   }
@@ -75,21 +76,21 @@ public class RectView
   private void init()
   {
     AppMethodBeat.i(91088);
-    this.CLS = BitmapFactory.decodeResource(getResources(), 2131234738);
-    this.CLT = BitmapFactory.decodeResource(getResources(), 2131234739);
-    this.CLU = BitmapFactory.decodeResource(getResources(), 2131234740);
-    this.CLV = BitmapFactory.decodeResource(getResources(), 2131234741);
-    this.CVa = this.CLS.getWidth();
-    this.CVb = this.CLS.getHeight();
+    this.IRs = BitmapFactory.decodeResource(getResources(), a.d.scanqr1);
+    this.IRt = BitmapFactory.decodeResource(getResources(), a.d.scanqr2);
+    this.IRu = BitmapFactory.decodeResource(getResources(), a.d.scanqr3);
+    this.IRv = BitmapFactory.decodeResource(getResources(), a.d.scanqr4);
+    this.JaA = this.IRs.getWidth();
+    this.JaB = this.IRs.getHeight();
     this.paint.setAntiAlias(true);
-    this.CMr.setAntiAlias(true);
+    this.IRR.setAntiAlias(true);
     AppMethodBeat.o(91088);
   }
   
   public Rect getRect()
   {
     AppMethodBeat.i(91089);
-    Rect localRect = new Rect(this.rect);
+    Rect localRect = new Rect(this.byG);
     AppMethodBeat.o(91089);
     return localRect;
   }
@@ -99,24 +100,24 @@ public class RectView
     AppMethodBeat.i(91090);
     super.onDraw(paramCanvas);
     paramCanvas.save();
-    paramCanvas.clipRect(this.rect, Region.Op.DIFFERENCE);
-    paramCanvas.drawRect(this.rect, this.paint);
+    paramCanvas.clipRect(this.byG, Region.Op.DIFFERENCE);
+    paramCanvas.drawRect(this.byG, this.paint);
     paramCanvas.restore();
-    paramCanvas.drawBitmap(this.CLS, this.rect.left, this.rect.top, this.CMr);
-    paramCanvas.drawBitmap(this.CLT, this.rect.right - this.CVa, this.rect.top, this.CMr);
-    paramCanvas.drawBitmap(this.CLU, this.rect.left, this.rect.bottom - this.CVb, this.CMr);
-    paramCanvas.drawBitmap(this.CLV, this.rect.right - this.CVa, this.rect.bottom - this.CVb, this.CMr);
+    paramCanvas.drawBitmap(this.IRs, this.byG.left, this.byG.top, this.IRR);
+    paramCanvas.drawBitmap(this.IRt, this.byG.right - this.JaA, this.byG.top, this.IRR);
+    paramCanvas.drawBitmap(this.IRu, this.byG.left, this.byG.bottom - this.JaB, this.IRR);
+    paramCanvas.drawBitmap(this.IRv, this.byG.right - this.JaA, this.byG.bottom - this.JaB, this.IRR);
     AppMethodBeat.o(91090);
   }
   
   public void setRect(Rect paramRect)
   {
-    this.rect = paramRect;
+    this.byG = paramRect;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.view.RectView
  * JD-Core Version:    0.7.0.1
  */

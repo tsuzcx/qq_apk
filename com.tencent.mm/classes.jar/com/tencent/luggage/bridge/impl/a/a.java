@@ -22,7 +22,7 @@ public abstract class a
     if (!(paramObject instanceof a.a)) {
       return false;
     }
-    if (Lb().equalsIgnoreCase(((a.a)paramObject).Lb())) {
+    if (key().equalsIgnoreCase(((a.a)paramObject).key())) {
       return true;
     }
     return super.equals(paramObject);
@@ -30,7 +30,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.bridge.impl.a.a
  * JD-Core Version:    0.7.0.1
  */

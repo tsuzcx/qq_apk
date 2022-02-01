@@ -9,12 +9,12 @@ import com.tencent.mm.storage.ca;
 
 public final class g
 {
-  public f gok;
+  public f iSt;
   
   private g()
   {
     AppMethodBeat.i(19997);
-    this.gok = new f();
+    this.iSt = new f();
     AppMethodBeat.o(19997);
   }
   
@@ -34,7 +34,7 @@ public final class g
   public final Notification a(Notification paramNotification, int paramInt1, int paramInt2, PendingIntent paramPendingIntent, String paramString1, String paramString2, String paramString3, Bitmap paramBitmap, String paramString4)
   {
     AppMethodBeat.i(20000);
-    paramNotification = this.gok.a(paramNotification, paramInt1, paramInt2, paramPendingIntent, paramString1, paramString2, paramString3, paramBitmap, paramString4);
+    paramNotification = this.iSt.a(paramNotification, paramInt1, paramInt2, paramPendingIntent, paramString1, paramString2, paramString3, paramBitmap, paramString4);
     AppMethodBeat.o(20000);
     return paramNotification;
   }
@@ -42,26 +42,21 @@ public final class g
   public final int b(NotificationItem paramNotificationItem)
   {
     AppMethodBeat.i(19999);
-    int i = this.gok.a(paramNotificationItem);
+    int i = this.iSt.a(paramNotificationItem);
     AppMethodBeat.o(19999);
     return i;
   }
   
-  public static final class a
+  public final void s(int paramInt, String paramString)
   {
-    private static final g gol;
-    
-    static
-    {
-      AppMethodBeat.i(19996);
-      gol = new g((byte)0);
-      AppMethodBeat.o(19996);
-    }
+    AppMethodBeat.i(280566);
+    this.iSt.s(paramInt, paramString);
+    AppMethodBeat.o(280566);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.booter.notification.g
  * JD-Core Version:    0.7.0.1
  */

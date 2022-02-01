@@ -7,11 +7,11 @@ import java.util.List;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/page/navigation/NavigateBackInterceptionInfo;", "", "dialogContent", "", "sceneInfo", "", "Lcom/tencent/mm/plugin/appbrand/page/navigation/SceneInfo;", "(Ljava/lang/String;Ljava/util/List;)V", "getDialogContent", "()Ljava/lang/String;", "getSceneInfo", "()Ljava/util/List;", "isEnable", "", "scene", "luggage-wxa-app_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/page/navigation/NavigateBackInterceptionInfo;", "", "dialogContent", "", "sceneInfo", "", "Lcom/tencent/mm/plugin/appbrand/page/navigation/SceneInfo;", "(Ljava/lang/String;Ljava/util/List;)V", "getDialogContent", "()Ljava/lang/String;", "getSceneInfo", "()Ljava/util/List;", "isEnable", "", "scene", "luggage-wxa-app_release"})
 public final class g
 {
-  final String nvR;
-  private final List<h> nvS;
+  final String qxT;
+  private final List<h> qxU;
   
   public g()
   {
@@ -20,33 +20,33 @@ public final class g
   
   public g(String paramString, List<h> paramList)
   {
-    AppMethodBeat.i(219744);
-    this.nvR = paramString;
-    this.nvS = paramList;
-    AppMethodBeat.o(219744);
+    AppMethodBeat.i(246321);
+    this.qxT = paramString;
+    this.qxU = paramList;
+    AppMethodBeat.o(246321);
   }
   
-  public final boolean adY(String paramString)
+  public final boolean alT(String paramString)
   {
-    AppMethodBeat.i(219743);
-    p.h(paramString, "scene");
-    Iterator localIterator = this.nvS.iterator();
+    AppMethodBeat.i(246319);
+    p.k(paramString, "scene");
+    Iterator localIterator = this.qxU.iterator();
     while (localIterator.hasNext())
     {
       h localh = (h)localIterator.next();
-      if ((TextUtils.equals((CharSequence)localh.nvT, (CharSequence)paramString)) && (localh.enable))
+      if ((TextUtils.equals((CharSequence)localh.qxV, (CharSequence)paramString)) && (localh.enable))
       {
-        AppMethodBeat.o(219743);
+        AppMethodBeat.o(246319);
         return true;
       }
     }
-    AppMethodBeat.o(219743);
+    AppMethodBeat.o(246319);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.b.g
  * JD-Core Version:    0.7.0.1
  */

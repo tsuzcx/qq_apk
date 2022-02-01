@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class g
   extends h
 {
-  private final String string;
+  private final String aJg;
   
   g(String paramString)
   {
@@ -16,14 +16,14 @@ final class g
       AppMethodBeat.o(74767);
       throw paramString;
     }
-    this.string = paramString;
+    this.aJg = paramString;
     AppMethodBeat.o(74767);
   }
   
   final void a(i parami)
   {
     AppMethodBeat.i(74768);
-    parami.writeString(this.string);
+    parami.T(this.aJg);
     AppMethodBeat.o(74768);
   }
   
@@ -46,7 +46,7 @@ final class g
       return false;
     }
     paramObject = (g)paramObject;
-    boolean bool = this.string.equals(paramObject.string);
+    boolean bool = this.aJg.equals(paramObject.aJg);
     AppMethodBeat.o(74770);
     return bool;
   }
@@ -54,7 +54,7 @@ final class g
   public final int hashCode()
   {
     AppMethodBeat.i(74769);
-    int i = this.string.hashCode();
+    int i = this.aJg.hashCode();
     AppMethodBeat.o(74769);
     return i;
   }
@@ -64,14 +64,14 @@ final class g
     return true;
   }
   
-  public final String sG()
+  public final String qu()
   {
-    return this.string;
+    return this.aJg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.eclipsesource.a.g
  * JD-Core Version:    0.7.0.1
  */

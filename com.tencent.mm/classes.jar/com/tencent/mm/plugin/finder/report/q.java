@@ -1,92 +1,75 @@
 package com.tencent.mm.plugin.finder.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ea;
-import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.storage.data.l.a;
-import com.tencent.mm.plugin.report.a;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.Collection;
+import com.tencent.mm.plugin.finder.utils.aj;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.g.b.p;
+import kotlin.l;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/report/FinderSnsPostReporter;", "", "()V", "SCENE_ENTRANCE_CLICK", "", "SCENE_ENTRANCE_EXPOSE", "SCENE_NO_ACCOUNT_EXIT", "SCENE_NO_ACCOUNT_OK", "SCENE_NO_POST_EXIT", "SCENE_NO_POST_OK", "SCENE_SELECT_EXIT", "SCENE_SELECT_FEED", "SCENE_SNS_POST_CANCEL", "SCENE_SNS_POST_SUCCESS", "reportSessionID", "", "getReportSessionID", "()Ljava/lang/String;", "setReportSessionID", "(Ljava/lang/String;)V", "report20747", "", "sessionID", "scene", "wording", "haveFinderAccount", "", "havePostFinder", "feedId", "", "shootEntranceEndType", "entranceExposeMaxTimes", "entranceExposedTimes", "snsId", "timeStamp", "exposeType", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/report/FinderShareReporter;", "", "()V", "report21673", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "eventCode", "", "eventTime", "", "index", "jumpType", "wording", "", "friendLikeCount", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;IJIILjava/lang/String;Ljava/lang/Integer;)V", "report21856", "Companion", "plugin-finder_release"})
 public final class q
 {
-  private static String vgD;
-  public static final q vgE;
+  private static final q zWI;
+  public static final a zWJ;
   
   static
   {
-    AppMethodBeat.i(250755);
-    vgE = new q();
-    AppMethodBeat.o(250755);
+    AppMethodBeat.i(250055);
+    zWJ = new a((byte)0);
+    zWI = new q();
+    AppMethodBeat.o(250055);
   }
   
-  public static void a(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, long paramLong3, int paramInt5)
+  public static void a(bid parambid, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(250754);
-    p.h(paramString1, "sessionID");
-    p.h(paramString2, "wording");
-    if (paramInt1 == 2) {
-      vgD = paramString1;
-    }
-    ea localea = new ea();
-    localea.qm(paramString1);
-    localea.lg(paramInt1);
-    localea.lh(paramLong3);
-    localea.li(paramInt2);
-    paramString1 = k.vfA;
-    localea.qo(k.Fg(paramLong2));
-    paramString1 = k.vfA;
-    localea.qn(k.Fg(paramLong1));
-    paramString1 = z.aUg();
-    localea.ll(paramInt3);
-    localea.lm(paramInt4);
-    if (Util.isNullOrNil(paramString1))
+    AppMethodBeat.i(250053);
+    if (parambid != null)
     {
-      paramLong1 = 0L;
-      localea.lj(paramLong1);
-      if (localea.afk() != 1L) {
-        break label243;
+      Log.i("Finder.FinderShareReporter", "FinderShareReporter.report21856, sessionId = " + parambid.sessionId + ", clickTabContextId = " + parambid.wmz + ", contextId = " + parambid.wmL + ", commentScene = " + parambid.xkX + ", eventCode = " + paramInt + ", eventTime = " + paramLong);
+      h.IzE.a(21856, new Object[] { parambid.sessionId, parambid.wmz, parambid.wmL, Integer.valueOf(parambid.xkX), Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+    }
+    AppMethodBeat.o(250053);
+  }
+  
+  public static void a(bid parambid, int paramInt1, long paramLong, int paramInt2, int paramInt3, String paramString, Integer paramInteger)
+  {
+    AppMethodBeat.i(250051);
+    p.k(paramString, "wording");
+    int i;
+    StringBuilder localStringBuilder;
+    if (parambid != null)
+    {
+      localObject = aj.AGc;
+      if (!aj.eev()) {
+        break label275;
       }
-      l.a locala = com.tencent.mm.plugin.finder.storage.data.l.vGw;
-      p.g(paramString1, "username");
-      if (((Collection)locala.dG(paramString1, 1)).isEmpty()) {
-        break label238;
-      }
-      paramInt1 = 1;
-      label177:
-      if (paramInt1 == 0) {
-        break label243;
+      i = 1;
+      localStringBuilder = new StringBuilder("FinderShareReporter.report21673, sessionId = ").append(parambid.sessionId).append(", clickTabContextId = ").append(parambid.wmz).append(", contextId = ").append(parambid.wmL).append(", commentScene = ").append(parambid.xkX).append(", eventCode = ").append(paramInt1).append(", eventTime = ").append(paramLong).append(", index = ").append(paramInt2).append(", jumpType=").append(paramInt3).append(", entranceStatus=").append(i).append(", wording=").append(paramString).append(", frilikecnt=");
+      if (paramInteger != null) {
+        break label281;
       }
     }
-    label238:
-    label243:
-    for (paramLong1 = 1L;; paramLong1 = 0L)
+    label275:
+    label281:
+    for (Object localObject = "null";; localObject = paramInteger)
     {
-      localea.lk(paramLong1);
-      localea.qp(paramString2);
-      localea.ln(paramInt5);
-      localea.bfK();
-      paramString1 = k.vfA;
-      k.a((a)localea);
-      AppMethodBeat.o(250754);
+      Log.i("Finder.FinderShareReporter", localObject);
+      h.IzE.a(21673, new Object[] { parambid.sessionId, parambid.wmz, parambid.wmL, Integer.valueOf(parambid.xkX), Integer.valueOf(paramInt1), Long.valueOf(paramLong), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(i), paramString, paramInteger });
+      AppMethodBeat.o(250051);
       return;
-      paramLong1 = 1L;
+      i = 0;
       break;
-      paramInt1 = 0;
-      break label177;
     }
   }
   
-  public static String dot()
-  {
-    return vgD;
-  }
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/report/FinderShareReporter$Companion;", "", "()V", "EVENT_CODE_CLICK", "", "EVENT_CODE_SHOW", "EVENT_EXPOSE_ANIMATION", "EVENT_EXPOSE_STATIC", "INSTANCE", "Lcom/tencent/mm/plugin/finder/report/FinderShareReporter;", "getINSTANCE", "()Lcom/tencent/mm/plugin/finder/report/FinderShareReporter;", "JUMP_TYPE_CARD", "JUMP_TYPE_POPUP", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.report.q
  * JD-Core Version:    0.7.0.1
  */

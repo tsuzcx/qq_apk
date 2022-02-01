@@ -2,7 +2,7 @@ package com.tencent.mm.sdk.platformtools;
 
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.f.j.a;
+import com.tencent.e.j.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class MTimerHandler
@@ -26,7 +26,7 @@ public class MTimerHandler
     this.mCallBack = paramCallBack;
     this.myTimerID = incTimerID();
     this.mLoop = paramBoolean;
-    if ((Thread.currentThread().getName().equals("initThread")) || ("initThread".equals(a.hmF()))) {
+    if ((Thread.currentThread().getName().equals("initThread")) || ("initThread".equals(a.iqg()))) {
       Log.e("MicroMsg.MTimerHandler", "MTimerHandler can not init handler with initThread, stack %s", new Object[] { Util.getStack() });
     }
     AppMethodBeat.o(157716);
@@ -52,7 +52,7 @@ public class MTimerHandler
     this.mCallBack = paramCallBack;
     this.myTimerID = incTimerID();
     this.mLoop = paramBoolean;
-    if ((Thread.currentThread().getName().equals("initThread")) || ("initThread".equals(a.hmF()))) {
+    if ((Thread.currentThread().getName().equals("initThread")) || ("initThread".equals(a.iqg()))) {
       Log.e("MicroMsg.MTimerHandler", "MTimerHandler can not init handler with initThread, stack %s", new Object[] { Util.getStack() });
     }
     AppMethodBeat.o(157715);
@@ -168,7 +168,7 @@ public class MTimerHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.MTimerHandler
  * JD-Core Version:    0.7.0.1
  */

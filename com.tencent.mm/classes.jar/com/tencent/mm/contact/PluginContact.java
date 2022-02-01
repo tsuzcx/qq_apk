@@ -2,25 +2,27 @@ package com.tencent.mm.contact;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
-import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.plugin.messenger.foundation.a.r;
+import com.tencent.mm.model.as;
+import com.tencent.mm.plugin.messenger.foundation.a.u;
 
 public class PluginContact
   extends f
-  implements b, com.tencent.mm.kernel.api.bucket.c
+  implements c, com.tencent.mm.kernel.api.bucket.c
 {
-  public void execute(com.tencent.mm.kernel.b.g paramg)
+  public void execute(g paramg)
   {
-    AppMethodBeat.i(257871);
-    com.tencent.mm.kernel.g.aAi();
-    com.tencent.mm.kernel.g.b(r.class, new com.tencent.mm.contact.a.c());
-    ab.a((ar)com.tencent.mm.kernel.g.af(r.class));
-    AppMethodBeat.o(257871);
+    AppMethodBeat.i(188756);
+    h.aHH();
+    h.b(u.class, new com.tencent.mm.contact.a.c());
+    ab.a((as)h.ae(u.class));
+    AppMethodBeat.o(188756);
   }
   
-  public void onAccountInitialized(e.c paramc) {}
+  public void onAccountInitialized(f.c paramc) {}
   
   public void onAccountRelease() {}
 }

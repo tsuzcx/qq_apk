@@ -10,34 +10,34 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class c
   implements d
 {
-  private NfcA AEk;
+  private NfcA Gxo;
   
   public c(Tag paramTag)
   {
     AppMethodBeat.i(26671);
-    this.AEk = NfcA.get(paramTag);
+    this.Gxo = NfcA.get(paramTag);
     AppMethodBeat.o(26671);
   }
   
   public final com.tencent.mm.plugin.nfc.a.c a(a parama)
   {
     AppMethodBeat.i(26672);
-    if (this.AEk == null)
+    if (this.Gxo == null)
     {
       Log.e("MicroMsg.ApduEngineNfcA", "[NFC]NfcA is null");
       parama = new IllegalStateException("NfcA is null");
       AppMethodBeat.o(26672);
       throw parama;
     }
-    connect();
+    cyb();
     Object localObject = null;
     a locala = parama;
     parama = (a)localObject;
-    com.tencent.mm.plugin.nfc.a.c localc = new com.tencent.mm.plugin.nfc.a.c(this.AEk.transceive(locala.getBytes()));
+    com.tencent.mm.plugin.nfc.a.c localc = new com.tencent.mm.plugin.nfc.a.c(this.Gxo.transceive(locala.getBytes()));
     localObject = parama;
-    if (localc.ADT.length != 0)
+    if (localc.GwX.length != 0)
     {
-      if (localc.ADT.length - 2 >= 0) {
+      if (localc.GwX.length - 2 >= 0) {
         break label100;
       }
       localObject = localc;
@@ -48,9 +48,9 @@ public final class c
       AppMethodBeat.o(26672);
       return localObject;
       label100:
-      if (localc.ext() == 108)
+      if (localc.fiW() == 108)
       {
-        locala.TH(localc.exu());
+        locala.aau(localc.fiX());
         break;
       }
       if (parama == null) {
@@ -59,18 +59,18 @@ public final class c
       for (;;)
       {
         localObject = parama;
-        if (localc.ext() != 97) {
+        if (localc.fiW() != 97) {
           break label92;
         }
-        if (localc.exu() == 0) {
+        if (localc.fiX() == 0) {
           break label174;
         }
-        locala = new a((byte[])b.AEb.clone());
+        locala = new a((byte[])b.Gxf.clone());
         break;
         parama.a(localc);
       }
       label174:
-      parama.ADT[(parama.ADT.length - 1)] = -112;
+      parama.GwX[(parama.GwX.length - 1)] = -112;
       localObject = parama;
     }
   }
@@ -78,27 +78,27 @@ public final class c
   public final void close()
   {
     AppMethodBeat.i(26674);
-    if (this.AEk.isConnected()) {
-      this.AEk.close();
+    if (this.Gxo.isConnected()) {
+      this.Gxo.close();
     }
     AppMethodBeat.o(26674);
   }
   
-  public final boolean connect()
+  public final boolean cyb()
   {
     AppMethodBeat.i(26673);
-    if (!this.AEk.isConnected()) {
-      this.AEk.connect();
+    if (!this.Gxo.isConnected()) {
+      this.Gxo.connect();
     }
     AppMethodBeat.o(26673);
     return true;
   }
   
-  public final boolean exx()
+  public final boolean fjb()
   {
     AppMethodBeat.i(26676);
     close();
-    connect();
+    cyb();
     AppMethodBeat.o(26676);
     return true;
   }
@@ -106,7 +106,7 @@ public final class c
   public final boolean isConnected()
   {
     AppMethodBeat.i(26675);
-    boolean bool = this.AEk.isConnected();
+    boolean bool = this.Gxo.isConnected();
     AppMethodBeat.o(26675);
     return bool;
   }

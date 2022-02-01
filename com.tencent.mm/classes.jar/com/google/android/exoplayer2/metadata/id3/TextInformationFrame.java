@@ -49,7 +49,7 @@ public final class TextInformationFrame
       return false;
     }
     paramObject = (TextInformationFrame)paramObject;
-    if ((this.id.equals(paramObject.id)) && (x.j(this.description, paramObject.description)) && (x.j(this.value, paramObject.value)))
+    if ((this.id.equals(paramObject.id)) && (x.h(this.description, paramObject.description)) && (x.h(this.value, paramObject.value)))
     {
       AppMethodBeat.o(92452);
       return true;
@@ -85,7 +85,7 @@ public final class TextInformationFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.id3.TextInformationFrame
  * JD-Core Version:    0.7.0.1
  */

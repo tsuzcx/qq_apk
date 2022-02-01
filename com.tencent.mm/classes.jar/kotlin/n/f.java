@@ -2,19 +2,20 @@ package kotlin.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
+import kotlin.k.e;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/text/MatchGroup;", "", "value", "", "range", "Lkotlin/ranges/IntRange;", "(Ljava/lang/String;Lkotlin/ranges/IntRange;)V", "getRange", "()Lkotlin/ranges/IntRange;", "getValue", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/text/MatchGroup;", "", "value", "", "range", "Lkotlin/ranges/IntRange;", "(Ljava/lang/String;Lkotlin/ranges/IntRange;)V", "getRange", "()Lkotlin/ranges/IntRange;", "getValue", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "kotlin-stdlib"})
 public final class f
 {
-  public final kotlin.k.f TSZ;
+  public final e abvC;
   public final String value;
   
-  public f(String paramString, kotlin.k.f paramf)
+  public f(String paramString, e parame)
   {
     AppMethodBeat.i(129350);
     this.value = paramString;
-    this.TSZ = paramf;
+    this.abvC = parame;
     AppMethodBeat.o(129350);
   }
   
@@ -26,7 +27,7 @@ public final class f
       if ((paramObject instanceof f))
       {
         paramObject = (f)paramObject;
-        if ((!p.j(this.value, paramObject.value)) || (!p.j(this.TSZ, paramObject.TSZ))) {}
+        if ((!p.h(this.value, paramObject.value)) || (!p.h(this.abvC, paramObject.abvC))) {}
       }
     }
     else
@@ -46,7 +47,7 @@ public final class f
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.TSZ;
+      localObject = this.abvC;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -58,14 +59,14 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(129351);
-    String str = "MatchGroup(value=" + this.value + ", range=" + this.TSZ + ")";
+    String str = "MatchGroup(value=" + this.value + ", range=" + this.abvC + ")";
     AppMethodBeat.o(129351);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlin.n.f
  * JD-Core Version:    0.7.0.1
  */

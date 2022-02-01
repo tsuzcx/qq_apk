@@ -1,102 +1,60 @@
 package com.tencent.mm.plugin.finder.live.view.adapter;
 
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.v;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.live.viewmodel.e;
-import com.tencent.mm.ui.widget.MMRoundCornerImageView;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import kotlin.a.j;
+import com.tencent.mm.plugin.finder.live.view.convert.f;
 import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveApplyLinkAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveApplyLinkAdapter$ApplyLinkViewHolder;", "()V", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderLiveLinkMicUser;", "Lkotlin/collections/ArrayList;", "onAcceptLinkUser", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "acceptUser", "", "getOnAcceptLinkUser", "()Lkotlin/jvm/functions/Function1;", "setOnAcceptLinkUser", "(Lkotlin/jvm/functions/Function1;)V", "getDataList", "", "getItemCount", "", "onBindViewHolder", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "type", "updateData", "data", "ApplyLinkViewHolder", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/adapter/EditData;", "", "productInfo", "Lcom/tencent/mm/plugin/finder/live/view/convert/ShopWindowShelfProductItem;", "select", "", "(Lcom/tencent/mm/plugin/finder/live/view/convert/ShopWindowShelfProductItem;Z)V", "getProductInfo", "()Lcom/tencent/mm/plugin/finder/live/view/convert/ShopWindowShelfProductItem;", "getSelect", "()Z", "setSelect", "(Z)V", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-finder_release"})
 public final class a
-  extends RecyclerView.a<a>
 {
-  private final ArrayList<e> kgc;
-  public kotlin.g.a.b<? super e, x> uzX;
+  public final f yVL;
+  public boolean yip;
   
-  public a()
+  private a(f paramf)
   {
-    AppMethodBeat.i(247726);
-    this.kgc = new ArrayList();
-    AppMethodBeat.o(247726);
+    AppMethodBeat.i(273165);
+    this.yVL = paramf;
+    this.yip = false;
+    AppMethodBeat.o(273165);
   }
   
-  public final void ad(List<e> paramList)
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(247725);
-    p.h(paramList, "data");
-    this.kgc.clear();
-    this.kgc.addAll((Collection)paramList);
-    AppMethodBeat.o(247725);
-  }
-  
-  public final int getItemCount()
-  {
-    AppMethodBeat.i(247723);
-    int i = this.kgc.size();
-    AppMethodBeat.o(247723);
-    return i;
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveApplyLinkAdapter$ApplyLinkViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "acceptBtn", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "getAcceptBtn", "()Landroid/widget/TextView;", "avatar", "Lcom/tencent/mm/ui/widget/MMRoundCornerImageView;", "getAvatar", "()Lcom/tencent/mm/ui/widget/MMRoundCornerImageView;", "nicknameTv", "getNicknameTv", "typeIcon", "Landroid/widget/ImageView;", "getTypeIcon", "()Landroid/widget/ImageView;", "plugin-finder_release"})
-  public static final class a
-    extends RecyclerView.v
-  {
-    final TextView pIN;
-    final TextView uAa;
-    final MMRoundCornerImageView uzY;
-    final ImageView uzZ;
-    
-    public a(View paramView)
+    AppMethodBeat.i(273168);
+    if (this != paramObject)
     {
-      super();
-      AppMethodBeat.i(247720);
-      this.uzY = ((MMRoundCornerImageView)paramView.findViewById(2131301069));
-      this.pIN = ((TextView)paramView.findViewById(2131301071));
-      this.uzZ = ((ImageView)paramView.findViewById(2131301072));
-      this.uAa = ((TextView)paramView.findViewById(2131301068));
-      AppMethodBeat.o(247720);
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
-  {
-    b(a parama, int paramInt) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(247721);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/live/view/adapter/FinderLiveApplyLinkAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-      paramView = (e)j.L((List)a.a(this.uAb), this.gUj);
-      if (paramView != null)
+      if ((paramObject instanceof a))
       {
-        localObject = this.uAb.uzX;
-        if (localObject != null) {
-          ((kotlin.g.a.b)localObject).invoke(paramView);
-        }
+        paramObject = (a)paramObject;
+        if ((!p.h(this.yVL, paramObject.yVL)) || (this.yip != paramObject.yip)) {}
       }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/view/adapter/FinderLiveApplyLinkAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(247721);
     }
+    else
+    {
+      AppMethodBeat.o(273168);
+      return true;
+    }
+    AppMethodBeat.o(273168);
+    return false;
+  }
+  
+  public final int hashCode()
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(273166);
+    String str = "EditData(productInfo=" + this.yVL + ", select=" + this.yip + ")";
+    AppMethodBeat.o(273166);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.view.adapter.a
  * JD-Core Version:    0.7.0.1
  */

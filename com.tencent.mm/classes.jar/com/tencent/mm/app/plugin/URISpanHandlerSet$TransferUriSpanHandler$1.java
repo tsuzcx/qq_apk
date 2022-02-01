@@ -3,7 +3,7 @@ package com.tencent.mm.app.plugin;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.widget.a.f.c;
 
@@ -12,14 +12,14 @@ final class URISpanHandlerSet$TransferUriSpanHandler$1
 {
   URISpanHandlerSet$TransferUriSpanHandler$1(URISpanHandlerSet.TransferUriSpanHandler paramTransferUriSpanHandler, Bundle paramBundle) {}
   
-  public final void e(boolean paramBoolean, String paramString)
+  public final void g(boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(19760);
     if (paramBoolean)
     {
-      paramString = this.doj.getString("transaction_id");
-      String str1 = this.doj.getString("transfer_id");
-      String str2 = this.doj.getString("receiver_name");
+      paramString = this.fgO.getString("transaction_id");
+      String str1 = this.fgO.getString("transfer_id");
+      String str2 = this.fgO.getString("receiver_name");
       Intent localIntent = new Intent();
       localIntent.putExtra("transaction_id", paramString);
       localIntent.putExtra("transfer_id", str1);

@@ -24,7 +24,7 @@ public final class h
     this.db = paramISQLiteDatabase;
   }
   
-  public final int ctM()
+  public final int cHo()
   {
     int i = 0;
     AppMethodBeat.i(112778);
@@ -42,7 +42,7 @@ public final class h
     return i;
   }
   
-  public final boolean ctN()
+  public final boolean cHp()
   {
     AppMethodBeat.i(112779);
     boolean bool = this.db.execSQL("CardMsgInfo", " update CardMsgInfo set read_state = 0  where read_state = 1");

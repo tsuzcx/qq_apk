@@ -5,29 +5,29 @@ import com.tencent.mm.plugin.card.ui.n;
 
 public abstract class i
 {
-  n qjX;
+  n tFT;
   
   public final void a(n paramn)
   {
-    this.qjX = paramn;
+    this.tFT = paramn;
     initView();
   }
   
-  public void cxw() {}
+  public void cKY() {}
   
   public void destroy()
   {
-    this.qjX = null;
+    this.tFT = null;
   }
   
   protected final View findViewById(int paramInt)
   {
-    return this.qjX.findViewById(paramInt);
+    return this.tFT.findViewById(paramInt);
   }
   
   protected final String getString(int paramInt)
   {
-    return this.qjX.getString(paramInt);
+    return this.tFT.getString(paramInt);
   }
   
   public abstract void initView();

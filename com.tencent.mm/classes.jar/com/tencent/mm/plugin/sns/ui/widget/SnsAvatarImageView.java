@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.sns.ui.e.a;
 import com.tencent.mm.plugin.story.api.e;
 import com.tencent.mm.plugin.story.api.i;
@@ -20,8 +20,8 @@ public class SnsAvatarImageView
   extends MaskImageButton
   implements m
 {
-  private i EQN;
-  private String FeZ;
+  private i LeM;
+  private String LtE;
   private int pageType;
   
   public SnsAvatarImageView(Context paramContext, AttributeSet paramAttributeSet)
@@ -29,16 +29,16 @@ public class SnsAvatarImageView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(100480);
     this.pageType = -1;
-    this.EQN = null;
-    this.FeZ = "";
+    this.LeM = null;
+    this.LtE = "";
     paramContext = getContext();
-    this.EQN = ((e)g.ah(e.class)).getStoryUIFactory().hj(paramContext);
-    this.EQN.ba(this);
+    this.LeM = ((e)h.ag(e.class)).getStoryUIFactory().ik(paramContext);
+    this.LeM.g(this);
     setLayerType(1, null);
     AppMethodBeat.o(100480);
   }
   
-  public final void cr(String paramString, boolean paramBoolean)
+  public final void cF(String paramString, boolean paramBoolean)
   {
     boolean bool = true;
     AppMethodBeat.i(100488);
@@ -48,7 +48,7 @@ public class SnsAvatarImageView
       AppMethodBeat.o(100488);
       return;
     }
-    if (paramString.equals(this.FeZ)) {
+    if (paramString.equals(this.LtE)) {
       if (paramBoolean) {
         break label77;
       }
@@ -62,13 +62,13 @@ public class SnsAvatarImageView
     }
   }
   
-  public final void fL(String paramString, int paramInt)
+  public final void gp(String paramString, int paramInt)
   {
     AppMethodBeat.i(100487);
-    this.EQN.fL(paramString, paramInt);
-    if (!this.FeZ.equals(paramString))
+    this.LeM.gp(paramString, paramInt);
+    if (!this.LtE.equals(paramString))
     {
-      this.FeZ = paramString;
+      this.LtE = paramString;
       this.pageType = paramInt;
     }
     AppMethodBeat.o(100487);
@@ -79,7 +79,7 @@ public class SnsAvatarImageView
     AppMethodBeat.i(100489);
     super.onDetachedFromWindow();
     if (this.pageType != -1) {
-      a.b(this.pageType, this.FeZ, this);
+      a.b(this.pageType, this.LtE, this);
     }
     AppMethodBeat.o(100489);
   }
@@ -88,7 +88,7 @@ public class SnsAvatarImageView
   {
     AppMethodBeat.i(100482);
     super.onDraw(paramCanvas);
-    this.EQN.a(paramCanvas, true, 0);
+    this.LeM.a(paramCanvas, true, 0);
     AppMethodBeat.o(100482);
   }
   
@@ -102,22 +102,22 @@ public class SnsAvatarImageView
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(100484);
-    super.setOnClickListener(this.EQN.fne());
-    this.EQN.setOnClickListener(paramOnClickListener);
+    super.setOnClickListener(this.LeM.gbx());
+    this.LeM.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(100484);
   }
   
   public void setShowStoryHint(boolean paramBoolean)
   {
     AppMethodBeat.i(100485);
-    this.EQN.setShowStoryHint(paramBoolean);
+    this.LeM.setShowStoryHint(paramBoolean);
     AppMethodBeat.o(100485);
   }
   
   public void setUserName(String paramString)
   {
     AppMethodBeat.i(100486);
-    fL(paramString, -1);
+    gp(paramString, -1);
     AppMethodBeat.o(100486);
   }
   
@@ -127,7 +127,7 @@ public class SnsAvatarImageView
     if (!(paramContext instanceof Activity)) {
       Log.w("MicroMsg.SnsAvatarImageView", "weakContext is not activity");
     }
-    this.EQN.setWeakContext(paramContext);
+    this.LeM.setWeakContext(paramContext);
     AppMethodBeat.o(100481);
   }
 }

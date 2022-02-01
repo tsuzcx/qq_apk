@@ -3,82 +3,81 @@ package kotlin.l.b.a.b.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Map;
 import kotlin.a.ae;
-import kotlin.g.b.aa;
+import kotlin.g.b.ab;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
-import kotlin.g.b.y;
-import kotlin.l.b.a.b.b.a.c;
+import kotlin.g.b.z;
 import kotlin.l.b.a.b.b.an;
 import kotlin.l.b.a.b.d.a.b.i;
 import kotlin.l.b.a.b.d.a.c.h;
 import kotlin.l.b.a.b.d.a.e.l;
 import kotlin.l.b.a.b.j.b.g;
 import kotlin.l.b.a.b.m.aj;
-import kotlin.l.k;
+import kotlin.l.n;
 
 public class b
-  implements c, i
+  implements i
 {
-  final kotlin.l.b.a.b.f.b TiI;
-  private final an Tik;
-  private final kotlin.l.b.a.b.l.f TpP;
-  final kotlin.l.b.a.b.d.a.e.b TpQ;
-  private final boolean TpR;
+  final kotlin.l.b.a.b.f.b aaLC;
+  private final an aaLe;
+  private final kotlin.l.b.a.b.l.f aaSJ;
+  final kotlin.l.b.a.b.d.a.e.b aaSK;
+  private final boolean aaSL;
   
   static
   {
     AppMethodBeat.i(57654);
-    cLI = new k[] { (k)aa.a(new y(aa.bp(b.class), "type", "getType()Lorg/jetbrains/kotlin/types/SimpleType;")) };
+    cMt = new n[] { (n)ab.a(new z(ab.bO(b.class), "type", "getType()Lorg/jetbrains/kotlin/types/SimpleType;")) };
     AppMethodBeat.o(57654);
   }
   
   public b(final h paramh, kotlin.l.b.a.b.d.a.e.a parama, kotlin.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(57657);
-    this.TiI = paramb;
+    this.aaLC = paramb;
     if (parama != null)
     {
-      paramb = (an)paramh.Trv.TqY.a((l)parama);
-      this.Tik = paramb;
-      this.TpP = paramh.Trv.TcN.al((kotlin.g.a.a)new a(this, paramh));
+      paramb = (an)paramh.aaUp.aaTS.a((l)parama);
+      this.aaLe = paramb;
+      this.aaSJ = paramh.aaUp.aaFH.av((kotlin.g.a.a)new a(this, paramh));
       if (parama == null) {
         break label132;
       }
     }
     label132:
-    for (paramh = (kotlin.l.b.a.b.d.a.e.b)kotlin.a.j.f((Iterable)parama.hCD());; paramh = null)
+    for (paramh = (kotlin.l.b.a.b.d.a.e.b)kotlin.a.j.f((Iterable)parama.iGU());; paramh = null)
     {
-      this.TpQ = paramh;
-      this.TpR = false;
+      this.aaSK = paramh;
+      this.aaSL = false;
       AppMethodBeat.o(57657);
       return;
-      paramb = an.ThK;
-      p.g(paramb, "SourceElement.NO_SOURCE");
+      paramb = an.aaKE;
+      p.j(paramb, "SourceElement.NO_SOURCE");
       break;
     }
   }
   
-  public Map<kotlin.l.b.a.b.f.f, g<?>> hBO()
+  public final an iDZ()
+  {
+    return this.aaLe;
+  }
+  
+  public final kotlin.l.b.a.b.f.b iFy()
+  {
+    return this.aaLC;
+  }
+  
+  public Map<kotlin.l.b.a.b.f.f, g<?>> iGd()
   {
     AppMethodBeat.i(57656);
-    Map localMap = ae.emptyMap();
+    Map localMap = ae.iBR();
     AppMethodBeat.o(57656);
     return localMap;
   }
   
-  public final kotlin.l.b.a.b.f.b hBk()
+  public final boolean iHY()
   {
-    return this.TiI;
-  }
-  
-  public final boolean hDF()
-  {
-    return this.TpR;
-  }
-  
-  public final an hzM()
-  {
-    return this.Tik;
+    return this.aaSL;
   }
   
   static final class a
@@ -93,7 +92,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.a.b
  * JD-Core Version:    0.7.0.1
  */

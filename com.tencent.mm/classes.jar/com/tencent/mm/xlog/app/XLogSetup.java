@@ -7,6 +7,7 @@ import com.tencent.mars.xlog.Xlog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Log.LogImp;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 
@@ -57,14 +58,18 @@ public class XLogSetup
       return;
     }
     setup = true;
-    paramString1 = a.Rza;
+    paramString1 = a.ZaI;
     XLogSetup.class.getClassLoader();
-    j.Ed(paramString1);
+    j.KW(paramString1);
     Log.setLogImp(xlog);
     Log.setConsoleLogOpen(isLogcatOpen.booleanValue());
     if (toolsLevel == null)
     {
       Log.appenderOpen(2, 0, cachePath, logPath, nameprefix, 3);
+      paramString1 = Log.getImpl();
+      if (paramString1 != null) {
+        paramString1.setMaxAliveTime(0L, 518400L);
+      }
       LogLogic.initIPxxLogInfo();
       AppMethodBeat.o(133557);
       return;
@@ -88,7 +93,7 @@ public class XLogSetup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.xlog.app.XLogSetup
  * JD-Core Version:    0.7.0.1
  */

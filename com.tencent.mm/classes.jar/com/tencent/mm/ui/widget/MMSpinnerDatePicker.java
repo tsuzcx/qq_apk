@@ -20,17 +20,17 @@ public class MMSpinnerDatePicker
   extends DatePicker
   implements DatePicker.OnDateChangedListener
 {
-  private NumberPicker QDf;
-  private NumberPicker QDg;
-  private NumberPicker QDh;
-  private a QDi;
-  private int QDj;
+  private NumberPicker YbI;
+  private NumberPicker YbJ;
+  private NumberPicker YbK;
+  private a YbL;
+  private int YbM;
   
   public MMSpinnerDatePicker(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143397);
-    this.QDj = 0;
+    this.YbM = 0;
     init();
     AppMethodBeat.o(143397);
   }
@@ -39,7 +39,7 @@ public class MMSpinnerDatePicker
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143398);
-    this.QDj = 0;
+    this.YbM = 0;
     init();
     AppMethodBeat.o(143398);
   }
@@ -89,47 +89,47 @@ public class MMSpinnerDatePicker
     int i = ((Resources)localObject).getIdentifier("year", "id", "android");
     int j = ((Resources)localObject).getIdentifier("month", "id", "android");
     int k = ((Resources)localObject).getIdentifier("day", "id", "android");
-    this.QDf = ((NumberPicker)findViewById(i));
-    this.QDg = ((NumberPicker)findViewById(j));
-    this.QDh = ((NumberPicker)findViewById(k));
+    this.YbI = ((NumberPicker)findViewById(i));
+    this.YbJ = ((NumberPicker)findViewById(j));
+    this.YbK = ((NumberPicker)findViewById(k));
     localObject = getChildAt(0);
     ViewGroup.LayoutParams localLayoutParams = ((View)localObject).getLayoutParams();
     localLayoutParams.width = -1;
     ((View)localObject).setLayoutParams(localLayoutParams);
-    localObject = (LinearLayout.LayoutParams)this.QDf.getLayoutParams();
+    localObject = (LinearLayout.LayoutParams)this.YbI.getLayoutParams();
     ((LinearLayout.LayoutParams)localObject).topMargin = 0;
     ((LinearLayout.LayoutParams)localObject).bottomMargin = 0;
     ((LinearLayout.LayoutParams)localObject).leftMargin = 0;
     ((LinearLayout.LayoutParams)localObject).rightMargin = 0;
     ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
-    this.QDf.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.QDg.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.QDh.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.YbI.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.YbJ.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.YbK.setLayoutParams((ViewGroup.LayoutParams)localObject);
     setDescendantFocusability(393216);
     setPickerMode(2);
     AppMethodBeat.o(143399);
   }
   
-  public final boolean gYR()
+  public final boolean axD(int paramInt)
   {
-    AppMethodBeat.i(143401);
+    AppMethodBeat.i(197963);
     try
     {
       Field localField = NumberPicker.class.getDeclaredField("mSelectionDivider");
       localField.setAccessible(true);
       ColorDrawable localColorDrawable = new ColorDrawable();
-      localColorDrawable.setColor(getResources().getColor(2131101287));
-      localField.set(this.QDf, localColorDrawable);
-      localField.set(this.QDg, localColorDrawable);
-      localField.set(this.QDh, localColorDrawable);
+      localColorDrawable.setColor(getResources().getColor(paramInt));
+      localField.set(this.YbI, localColorDrawable);
+      localField.set(this.YbJ, localColorDrawable);
+      localField.set(this.YbK, localColorDrawable);
       invalidate();
-      AppMethodBeat.o(143401);
+      AppMethodBeat.o(197963);
       return true;
     }
     catch (IllegalAccessException localIllegalAccessException)
     {
       Log.printErrStackTrace("MicroMsg.MMSpinnerDatePicker", localIllegalAccessException, "", new Object[0]);
-      AppMethodBeat.o(143401);
+      AppMethodBeat.o(197963);
       return false;
     }
     catch (NoSuchFieldException localNoSuchFieldException)
@@ -143,48 +143,48 @@ public class MMSpinnerDatePicker
   
   public int getPickerMode()
   {
-    return this.QDj;
+    return this.YbM;
   }
   
   public void onDateChanged(DatePicker paramDatePicker, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void setOnDateChangeListener(a parama)
   {
-    this.QDi = parama;
+    this.YbL = parama;
   }
   
   public void setPickerMode(int paramInt)
   {
     AppMethodBeat.i(143400);
-    this.QDj = paramInt;
-    if (this.QDj == 0)
+    this.YbM = paramInt;
+    if (this.YbM == 0)
     {
-      this.QDf.setVisibility(0);
-      this.QDg.setVisibility(0);
-      this.QDh.setVisibility(0);
+      this.YbI.setVisibility(0);
+      this.YbJ.setVisibility(0);
+      this.YbK.setVisibility(0);
       AppMethodBeat.o(143400);
       return;
     }
-    if (this.QDj == 1)
+    if (this.YbM == 1)
     {
-      this.QDf.setVisibility(0);
-      this.QDg.setVisibility(0);
-      this.QDh.setVisibility(8);
+      this.YbI.setVisibility(0);
+      this.YbJ.setVisibility(0);
+      this.YbK.setVisibility(8);
       AppMethodBeat.o(143400);
       return;
     }
-    this.QDf.setVisibility(0);
-    this.QDg.setVisibility(8);
-    this.QDh.setVisibility(8);
+    this.YbI.setVisibility(0);
+    this.YbJ.setVisibility(8);
+    this.YbK.setVisibility(8);
     AppMethodBeat.o(143400);
   }
   
   public void setTextSize(int paramInt)
   {
     AppMethodBeat.i(143402);
-    a(this.QDf, paramInt);
-    a(this.QDg, paramInt);
-    a(this.QDh, paramInt);
+    a(this.YbI, paramInt);
+    a(this.YbJ, paramInt);
+    a(this.YbK, paramInt);
     AppMethodBeat.o(143402);
   }
   

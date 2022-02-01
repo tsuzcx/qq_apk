@@ -6,26 +6,26 @@ import com.tencent.mm.storage.emotion.EmojiInfo;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/loader/verify/EmojiVerifyFactory;", "", "()V", "createVerifyConfig", "Lcom/tencent/mm/emoji/loader/verify/EmojiVerifyConfig;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "verify", "", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/loader/verify/EmojiVerifyFactory;", "", "()V", "createVerifyConfig", "Lcom/tencent/mm/emoji/loader/verify/EmojiVerifyConfig;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "verify", "", "plugin-emojisdk_release"})
 public final class c
 {
-  public static final c gWT;
+  public static final c jHR;
   
   static
   {
     AppMethodBeat.i(105492);
-    gWT = new c();
+    jHR = new c();
     AppMethodBeat.o(105492);
   }
   
   public static boolean k(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(105491);
-    p.h(paramEmojiInfo, "emojiInfo");
+    p.k(paramEmojiInfo, "emojiInfo");
     a locala = new a();
-    p.h(paramEmojiInfo, "emojiInfo");
+    p.k(paramEmojiInfo, "emojiInfo");
     Object localObject1 = paramEmojiInfo.getMd5();
-    String str2 = paramEmojiInfo.hRM() + "_temp";
+    String str2 = paramEmojiInfo.ifh() + "_temp";
     int i;
     boolean bool;
     if (i.i(paramEmojiInfo))
@@ -45,7 +45,7 @@ public final class c
       if (localObject3 == null) {
         localObject1 = "";
       }
-      String str1 = paramEmojiInfo.hRM();
+      String str1 = paramEmojiInfo.ifh();
       localObject3 = str1;
       if (str1 == null) {
         localObject3 = "";
@@ -73,7 +73,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.f.c
  * JD-Core Version:    0.7.0.1
  */

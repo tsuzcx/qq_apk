@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.luckymoney.story.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ek;
+import com.tencent.mm.f.c.ep;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class e
-  extends ek
+  extends ep
 {
   public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(213352);
+    AppMethodBeat.i(225892);
     IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
     localMAutoDBInfo.fields = new Field[2];
     localMAutoDBInfo.columns = new String[3];
@@ -29,7 +29,7 @@ public final class e
     localMAutoDBInfo.columns[2] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
     info = localMAutoDBInfo;
-    AppMethodBeat.o(213352);
+    AppMethodBeat.o(225892);
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
@@ -39,7 +39,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.story.b.e
  * JD-Core Version:    0.7.0.1
  */

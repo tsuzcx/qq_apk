@@ -4,7 +4,7 @@ import android.content.Context;
 import android.text.SpannableString;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.eml;
+import com.tencent.mm.protocal.protobuf.ewr;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -14,121 +14,121 @@ import kotlin.g.a.m;
 import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberManageLogic;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberManageLogic;", "mContext", "Landroid/content/Context;", "mAppId", "", "mPagePath", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V", "mDeletePhoneItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "Lkotlin/collections/ArrayList;", "mPhoneItems", "mPhoneNumberManagerView", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberManagerView;", "mShowDelete", "", "addPhone", "", "editPhoneNumber", "enableEdit", "finishEdit", "getSpanString", "Landroid/text/SpannableString;", "getView", "Landroid/view/View;", "init", "removePhone", "phoneItem", "uninit", "updateView", "showDelete", "luggage-wechat-full-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberManageLogic;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberManageLogic;", "mContext", "Landroid/content/Context;", "mAppId", "", "mPagePath", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V", "mDeletePhoneItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "Lkotlin/collections/ArrayList;", "mPhoneItems", "mPhoneNumberManagerView", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberManagerView;", "mShowDelete", "", "addPhone", "", "editPhoneNumber", "enableEdit", "finishEdit", "getSpanString", "Landroid/text/SpannableString;", "getView", "Landroid/view/View;", "init", "removePhone", "phoneItem", "uninit", "updateView", "showDelete", "luggage-wechat-full-sdk_release"})
 public final class w
   implements o
 {
-  private final String lBI;
   final String mAppId;
   private final Context mContext;
-  private p nAn;
-  private final ArrayList<PhoneItem> nAo;
-  private final ArrayList<PhoneItem> nAp;
-  private boolean nAq;
+  private final String oxe;
+  private final ArrayList<PhoneItem> qCA;
+  private boolean qCB;
+  private p qCy;
+  private final ArrayList<PhoneItem> qCz;
   
   public w(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(148147);
     this.mContext = paramContext;
     this.mAppId = paramString1;
-    this.lBI = paramString2;
-    this.nAo = new ArrayList();
-    this.nAp = new ArrayList();
+    this.oxe = paramString2;
+    this.qCz = new ArrayList();
+    this.qCA = new ArrayList();
     AppMethodBeat.o(148147);
   }
   
   public final void a(PhoneItem paramPhoneItem)
   {
     AppMethodBeat.i(148142);
-    kotlin.g.b.p.h(paramPhoneItem, "phoneItem");
-    this.nAp.add(paramPhoneItem);
-    this.nAo.remove(paramPhoneItem);
-    paramPhoneItem = this.nAn;
+    kotlin.g.b.p.k(paramPhoneItem, "phoneItem");
+    this.qCA.add(paramPhoneItem);
+    this.qCz.remove(paramPhoneItem);
+    paramPhoneItem = this.qCy;
     if (paramPhoneItem != null)
     {
-      paramPhoneItem.b(this.nAq, (List)this.nAo);
+      paramPhoneItem.b(this.qCB, (List)this.qCz);
       AppMethodBeat.o(148142);
       return;
     }
     AppMethodBeat.o(148142);
   }
   
-  public final void bTv()
+  public final void cgA()
   {
     AppMethodBeat.i(148141);
-    y localy = z.nBg.aex(this.mAppId);
+    y localy = z.qDr.amr(this.mAppId);
     if (localy != null)
     {
-      localObject = z.nBg.aex(this.mAppId);
+      localObject = z.qDr.amr(this.mAppId);
       if (localObject == null) {
         break label92;
       }
     }
     label92:
-    for (Object localObject = Long.valueOf(((y)localObject).nAX);; localObject = null)
+    for (Object localObject = Long.valueOf(((y)localObject).qDi);; localObject = null)
     {
       if (localObject == null) {
-        kotlin.g.b.p.hyc();
+        kotlin.g.b.p.iCn();
       }
-      localy.nAX = (((Long)localObject).longValue() + 1L);
-      localObject = u.nAe;
-      u.bTz().a(this.mContext, this.mAppId, (m)w.a.nAr);
+      localy.qDi = (((Long)localObject).longValue() + 1L);
+      localObject = u.qCp;
+      u.cgE().a(this.mContext, this.mAppId, (m)w.a.qCC);
       AppMethodBeat.o(148141);
       return;
     }
   }
   
-  public final SpannableString bTw()
+  public final SpannableString cgB()
   {
     AppMethodBeat.i(148145);
-    Object localObject = u.nAe;
-    localObject = u.bTz().n(this.mContext, this.mAppId, this.lBI);
+    Object localObject = u.qCp;
+    localObject = u.cgE().q(this.mContext, this.mAppId, this.oxe);
     AppMethodBeat.o(148145);
     return localObject;
   }
   
-  public final void bTx()
+  public final void cgC()
   {
     AppMethodBeat.i(148144);
-    if (this.nAp.size() >= 0)
+    if (this.qCA.size() >= 0)
     {
-      localObject2 = this.nAp.iterator();
+      localObject2 = this.qCA.iterator();
       if (((Iterator)localObject2).hasNext())
       {
         PhoneItem localPhoneItem = (PhoneItem)((Iterator)localObject2).next();
-        y localy = z.nBg.aex(this.mAppId);
+        y localy = z.qDr.amr(this.mAppId);
         if (localy != null)
         {
-          localObject1 = z.nBg.aex(this.mAppId);
+          localObject1 = z.qDr.amr(this.mAppId);
           if (localObject1 == null) {
             break label133;
           }
         }
         label133:
-        for (localObject1 = Long.valueOf(((y)localObject1).nAY);; localObject1 = null)
+        for (localObject1 = Long.valueOf(((y)localObject1).qDj);; localObject1 = null)
         {
           if (localObject1 == null) {
-            kotlin.g.b.p.hyc();
+            kotlin.g.b.p.iCn();
           }
-          localy.nAY = (((Long)localObject1).longValue() + 1L);
-          new g(this.mAppId, localPhoneItem.dSf, 1).y((b)new b(this));
+          localy.qDj = (((Long)localObject1).longValue() + 1L);
+          new g(this.mAppId, localPhoneItem.fLC, 1).y((b)new b(this));
           break;
         }
       }
     }
-    Object localObject1 = r.nzC;
-    Object localObject2 = this.nAp;
+    Object localObject1 = r.qBN;
+    Object localObject2 = this.qCA;
     if (localObject2 == null) {
-      kotlin.g.b.p.hyc();
+      kotlin.g.b.p.iCn();
     }
-    ((r)localObject1).K((ArrayList)localObject2);
+    ((r)localObject1).L((ArrayList)localObject2);
     AppMethodBeat.o(148144);
   }
   
   public final View getView()
   {
     AppMethodBeat.i(148139);
-    Object localObject = this.nAn;
+    Object localObject = this.qCy;
     if (localObject != null)
     {
       localObject = ((p)localObject).getView();
@@ -142,44 +142,44 @@ public final class w
   public final void init()
   {
     AppMethodBeat.i(148138);
-    this.nAn = ((p)new x(this.mContext, (o)this));
-    this.nAo.clear();
-    ArrayList localArrayList = this.nAo;
-    r localr = r.nzC;
-    localArrayList.addAll((Collection)r.bTy());
-    z.nBg.aew(this.mAppId);
+    this.qCy = ((p)new x(this.mContext, (o)this));
+    this.qCz.clear();
+    ArrayList localArrayList = this.qCz;
+    r localr = r.qBN;
+    localArrayList.addAll((Collection)r.cgD());
+    z.qDr.amq(this.mAppId);
     AppMethodBeat.o(148138);
   }
   
-  public final void is(boolean paramBoolean)
+  public final void jq(boolean paramBoolean)
   {
     AppMethodBeat.i(148140);
-    this.nAo.clear();
-    Object localObject = this.nAo;
-    r localr = r.nzC;
-    ((ArrayList)localObject).addAll((Collection)r.bTy());
-    localObject = this.nAn;
+    this.qCz.clear();
+    Object localObject = this.qCz;
+    r localr = r.qBN;
+    ((ArrayList)localObject).addAll((Collection)r.cgD());
+    localObject = this.qCy;
     if (localObject != null)
     {
-      ((p)localObject).b(paramBoolean, (List)this.nAo);
+      ((p)localObject).b(paramBoolean, (List)this.qCz);
       AppMethodBeat.o(148140);
       return;
     }
     AppMethodBeat.o(148140);
   }
   
-  public final void it(boolean paramBoolean)
+  public final void jr(boolean paramBoolean)
   {
     AppMethodBeat.i(148143);
     if (!paramBoolean) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
-      this.nAq = paramBoolean;
-      p localp = this.nAn;
+      this.qCB = paramBoolean;
+      p localp = this.qCy;
       if (localp == null) {
         break;
       }
-      localp.b(this.nAq, (List)this.nAo);
+      localp.b(this.qCB, (List)this.qCz);
       AppMethodBeat.o(148143);
       return;
     }
@@ -189,14 +189,14 @@ public final class w
   public final void uninit()
   {
     AppMethodBeat.i(148146);
-    z.nBg.aev(this.mAppId);
+    z.qDr.amp(this.mAppId);
     AppMethodBeat.o(148146);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/UpdateUserPhoneResp;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/UpdateUserPhoneResp;", "invoke"})
   static final class b
     extends q
-    implements b<eml, kotlin.x>
+    implements b<ewr, kotlin.x>
   {
     b(w paramw)
     {

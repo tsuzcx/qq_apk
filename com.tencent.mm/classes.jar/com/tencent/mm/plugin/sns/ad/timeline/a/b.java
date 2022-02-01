@@ -14,6 +14,8 @@ public abstract class b<T extends c>
     this.mContext = paramContext;
   }
   
+  protected abstract T a(SnsInfo paramSnsInfo, d paramd);
+  
   protected void a(T paramT, SnsInfo paramSnsInfo, d paramd) {}
   
   public boolean a(View paramView, int paramInt, SnsInfo paramSnsInfo, d paramd)
@@ -27,7 +29,7 @@ public abstract class b<T extends c>
       return bool1;
       try
       {
-        c localc = j(paramSnsInfo);
+        c localc = a(paramSnsInfo, paramd);
         if (localc != null)
         {
           boolean bool2 = localc.a(paramView, paramInt, paramSnsInfo, paramd);
@@ -43,12 +45,10 @@ public abstract class b<T extends c>
     }
     return false;
   }
-  
-  protected abstract T j(SnsInfo paramSnsInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.timeline.a.b
  * JD-Core Version:    0.7.0.1
  */

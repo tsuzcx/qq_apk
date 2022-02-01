@@ -2,12 +2,11 @@ package com.tencent.mm.plugin.zero;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.o.a;
-import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.api.bucket.c;
-import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ci;
-import com.tencent.mm.model.ci.a;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.cj;
+import com.tencent.mm.model.cj.a;
 import com.tencent.mm.modelmulti.q;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -16,36 +15,36 @@ import java.util.Queue;
 public final class b
   implements c, com.tencent.mm.plugin.zero.b.b
 {
-  private ci UtK;
-  private q UtL;
+  private cj SuO;
+  private q SuP;
   
-  public final q bdS()
+  public final q bnn()
   {
     AppMethodBeat.i(132993);
-    g.aAi();
-    g.aAf().azk();
-    if (this.UtL == null)
+    h.aHH();
+    h.aHE().aGH();
+    if (this.SuP == null)
     {
-      this.UtL = new q();
-      this.UtL.appForegroundListener.alive();
+      this.SuP = new q();
+      this.SuP.appForegroundListener.alive();
     }
-    q localq = this.UtL;
+    q localq = this.SuP;
     AppMethodBeat.o(132993);
     return localq;
   }
   
-  public final ci glA()
+  public final cj hfr()
   {
     AppMethodBeat.i(132994);
-    g.aAi();
-    g.aAf().azk();
-    if (this.UtK == null) {
-      this.UtK = new ci(new ci.a()
+    h.aHH();
+    h.aHE().aGH();
+    if (this.SuO == null) {
+      this.SuO = new cj(new cj.a()
       {
-        public final boolean aWx()
+        public final boolean bfB()
         {
           AppMethodBeat.i(132992);
-          if (b.this.bdS().jei == null)
+          if (b.this.bnn().lUH == null)
           {
             AppMethodBeat.o(132992);
             return true;
@@ -55,16 +54,16 @@ public final class b
         }
       });
     }
-    ci localci = this.UtK;
+    cj localcj = this.SuO;
     AppMethodBeat.o(132994);
-    return localci;
+    return localcj;
   }
   
-  public final void onAccountInitialized(e.c paramc)
+  public final void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(176851);
     if (MMApplicationContext.isMainProcess()) {
-      bdS();
+      bnn();
     }
     AppMethodBeat.o(176851);
   }
@@ -72,23 +71,23 @@ public final class b
   public final void onAccountRelease()
   {
     AppMethodBeat.i(132995);
-    if (this.UtL != null)
+    if (this.SuP != null)
     {
-      q localq = this.UtL;
-      Log.i("MicroMsg.SyncService", "clear synclist:%s notify:%s running:%s", new Object[] { Integer.valueOf(localq.jef.size()), Integer.valueOf(localq.jeg.size()), localq.jei });
-      localq.jef.clear();
-      localq.jeg.clear();
-      this.UtL.appForegroundListener.dead();
+      q localq = this.SuP;
+      Log.i("MicroMsg.SyncService", "clear synclist:%s notify:%s running:%s", new Object[] { Integer.valueOf(localq.lUE.size()), Integer.valueOf(localq.lUF.size()), localq.lUH });
+      localq.lUE.clear();
+      localq.lUF.clear();
+      this.SuP.appForegroundListener.dead();
     }
-    if (this.UtK != null) {
-      this.UtK.aWs();
+    if (this.SuO != null) {
+      this.SuO.bfw();
     }
     AppMethodBeat.o(132995);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.zero.b
  * JD-Core Version:    0.7.0.1
  */

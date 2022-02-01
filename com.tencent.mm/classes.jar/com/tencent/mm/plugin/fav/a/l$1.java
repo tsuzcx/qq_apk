@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.fav.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 
@@ -14,8 +14,8 @@ final class l$1
   public final void run()
   {
     AppMethodBeat.i(103409);
-    String str = Util.encodeHexString(this.taJ);
-    g.aAh().azQ().set(225283, str);
+    String str = Util.encodeHexString(this.wGO);
+    h.aHG().aHp().i(225283, str);
     AppMethodBeat.o(103409);
   }
   

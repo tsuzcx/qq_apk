@@ -2,7 +2,7 @@
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center" android:id="@id/hku" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/k5" android:text="@string/gkp" android:singleLine="false" />
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+    <FrameLayout android:id="@id/by0" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <EditText android:id="@id/hkt" android:paddingRight="25.0dip" style="@style/nn" />
         <TextView android:layout_gravity="bottom|center|right" android:id="@id/joi" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="4.0dip" style="@style/zx" />
     </FrameLayout>

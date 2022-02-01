@@ -2,10 +2,10 @@ package com.tencent.mm.model;
 
 public class ah
 {
-  private final String dWp;
   public final boolean enable;
-  private final String gzZ;
-  private boolean iDl;
+  private final String fPU;
+  private final String jkc;
+  private boolean ltl;
   private final String name;
   private final String type;
   
@@ -13,8 +13,8 @@ public class ah
   {
     this.type = "";
     this.name = "";
-    this.dWp = "";
-    this.gzZ = "";
+    this.fPU = "";
+    this.jkc = "";
     this.enable = true;
   }
   
@@ -22,26 +22,26 @@ public class ah
   {
     this.type = paramString1;
     this.name = paramString2;
-    this.dWp = paramString3;
-    this.gzZ = paramString4;
+    this.fPU = paramString3;
+    this.jkc = paramString4;
     this.enable = paramBoolean1;
-    this.iDl = paramBoolean2;
+    this.ltl = paramBoolean2;
   }
   
-  public final String aVj()
+  public final String ayr()
   {
-    if (this.gzZ == null) {
+    if (this.fPU == null) {
       return "";
     }
-    return this.gzZ;
+    return this.fPU;
   }
   
-  public final String arI()
+  public final String bem()
   {
-    if (this.dWp == null) {
+    if (this.jkc == null) {
       return "";
     }
-    return this.dWp;
+    return this.jkc;
   }
   
   public final String getType()

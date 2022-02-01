@@ -9,9 +9,9 @@ public class DebuggerInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<DebuggerInfo> CREATOR;
-  public boolean lnb;
-  public boolean lnc;
-  public boolean lnd;
+  public boolean ohN;
+  public boolean ohO;
+  public boolean ohP;
   
   static
   {
@@ -29,17 +29,17 @@ public class DebuggerInfo
   {
     int i = 1;
     AppMethodBeat.i(121283);
-    if (this.lnb)
+    if (this.ohN)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.lnc) {
+      if (!this.ohO) {
         break label60;
       }
       paramInt = 1;
       label30:
       paramParcel.writeInt(paramInt);
-      if (!this.lnd) {
+      if (!this.ohP) {
         break label65;
       }
     }
@@ -59,7 +59,7 @@ public class DebuggerInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.debugger.DebuggerInfo
  * JD-Core Version:    0.7.0.1
  */

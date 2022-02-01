@@ -2,7 +2,7 @@ package com.tencent.mm.media.e;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/encoder/X264TransImageReaderEncoder$Companion;", "", "()V", "CacheEncodeYuvExceedFrameLimit", "", "TAG", "", "plugin-mediaeditor_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/encoder/X264TransEncoder$Companion;", "", "()V", "TAG", "", "plugin-mediaeditor_release"})
 public final class h$a {}
 
 

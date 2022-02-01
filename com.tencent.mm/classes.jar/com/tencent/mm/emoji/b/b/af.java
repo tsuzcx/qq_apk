@@ -1,55 +1,79 @@
 package com.tencent.mm.emoji.b.b;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vending.e.a;
-import com.tencent.mm.vending.e.b;
-import java.util.Iterator;
-import java.util.LinkedList;
-import kotlin.g.b.p;
+import com.tencent.mm.plugin.m.a.j;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/model/panel/PanelLifeCycle;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "()V", "TAG", "", "lifeCycles", "Ljava/util/LinkedList;", "clear", "", "keep", "iLifeCycle", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"TAG", "", "captureGroupId", "getCaptureGroupId", "()Ljava/lang/String;", "customGroupId", "getCustomGroupId", "smileyGroupId", "getSmileyGroupId", "smileyRecentGroupId", "getSmileyRecentGroupId", "createCaptureGroupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "createCustomGroupInfo", "createSmileyGroupInfo", "createSmileyRecentGroupInfo", "plugin-emojisdk_release"})
 public final class af
-  implements b<a>
 {
-  private final String TAG;
-  private final LinkedList<a> gZd;
+  private static final String TAG = "MicroMsg.PanelItemGroup";
+  private static final String jJZ = "smiley";
+  private static final String jKa = "smiley_recent";
+  private static final String jKb = "custom";
+  private static final String jKc = "capture";
   
-  public af()
+  public static final EmojiGroupInfo aCA()
   {
-    AppMethodBeat.i(199925);
-    this.TAG = "MicroMsg.PanelLifeCycle";
-    this.gZd = new LinkedList();
-    AppMethodBeat.o(199925);
+    AppMethodBeat.i(105575);
+    EmojiGroupInfo localEmojiGroupInfo = new EmojiGroupInfo();
+    localEmojiGroupInfo.setProductID(jJZ);
+    localEmojiGroupInfo.bIQ(MMApplicationContext.getContext().getString(a.j.emoji_panel_smiley_title));
+    AppMethodBeat.o(105575);
+    return localEmojiGroupInfo;
   }
   
-  public final void clear()
+  public static final EmojiGroupInfo aCB()
   {
-    AppMethodBeat.i(199924);
-    Log.i(this.TAG, "clear: ");
-    Iterator localIterator = ((Iterable)this.gZd).iterator();
-    while (localIterator.hasNext()) {
-      ((a)localIterator.next()).dead();
-    }
-    this.gZd.clear();
-    AppMethodBeat.o(199924);
+    AppMethodBeat.i(105576);
+    EmojiGroupInfo localEmojiGroupInfo = new EmojiGroupInfo();
+    localEmojiGroupInfo.setProductID(jKb);
+    localEmojiGroupInfo.bIQ(MMApplicationContext.getContext().getString(a.j.emoji_panel_custom_title));
+    AppMethodBeat.o(105576);
+    return localEmojiGroupInfo;
   }
   
-  public final void keep(a parama)
+  public static final EmojiGroupInfo aCC()
   {
-    AppMethodBeat.i(199923);
-    p.h(parama, "iLifeCycle");
-    Log.i(this.TAG, "keep: ".concat(String.valueOf(parama)));
-    if (!this.gZd.contains(parama)) {
-      this.gZd.add(parama);
-    }
-    AppMethodBeat.o(199923);
+    AppMethodBeat.i(105577);
+    EmojiGroupInfo localEmojiGroupInfo = new EmojiGroupInfo();
+    localEmojiGroupInfo.setProductID(jKc);
+    localEmojiGroupInfo.bIQ(MMApplicationContext.getContext().getString(a.j.emoji_panel_capture_title));
+    AppMethodBeat.o(105577);
+    return localEmojiGroupInfo;
+  }
+  
+  public static final String aCw()
+  {
+    return jJZ;
+  }
+  
+  public static final String aCx()
+  {
+    return jKb;
+  }
+  
+  public static final String aCy()
+  {
+    return jKc;
+  }
+  
+  public static final EmojiGroupInfo aCz()
+  {
+    AppMethodBeat.i(105574);
+    EmojiGroupInfo localEmojiGroupInfo = new EmojiGroupInfo();
+    localEmojiGroupInfo.setProductID(jKa);
+    localEmojiGroupInfo.bIQ(MMApplicationContext.getContext().getString(a.j.emoji_panel_smiley_recent_title));
+    AppMethodBeat.o(105574);
+    return localEmojiGroupInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.b.b.af
  * JD-Core Version:    0.7.0.1
  */

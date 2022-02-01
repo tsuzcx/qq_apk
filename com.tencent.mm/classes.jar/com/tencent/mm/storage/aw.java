@@ -1,15 +1,15 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.storagebase.g;
-import com.tencent.mm.storagebase.g.a;
 
 public final class aw
   extends MAutoStorage<av>
-  implements g.a
 {
   public static final String[] SQL_CREATE;
+  private ISQLiteDatabase db;
   
   static
   {
@@ -18,9 +18,15 @@ public final class aw
     AppMethodBeat.o(32841);
   }
   
-  public final int a(g paramg)
+  public aw(ISQLiteDatabase paramISQLiteDatabase)
   {
-    return 0;
+    this(paramISQLiteDatabase, au.info, "ContactLabel", null);
+  }
+  
+  public aw(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, String[] paramArrayOfString)
+  {
+    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, paramArrayOfString);
+    this.db = paramISQLiteDatabase;
   }
 }
 

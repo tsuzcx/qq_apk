@@ -14,7 +14,7 @@ public class SetFillStyleActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetFillStyleActionArg> CREATOR;
-  public RealSetFillStyleActionArg kZJ;
+  public RealSetFillStyleActionArg nTU;
   
   static
   {
@@ -33,12 +33,12 @@ public class SetFillStyleActionArg
   public final boolean a(d paramd, Canvas paramCanvas)
   {
     AppMethodBeat.i(145133);
-    if (this.kZJ == null)
+    if (this.nTU == null)
     {
       AppMethodBeat.o(145133);
       return false;
     }
-    boolean bool = this.kZJ.a(paramd, paramCanvas);
+    boolean bool = this.nTU.a(paramd, paramCanvas);
     AppMethodBeat.o(145133);
     return bool;
   }
@@ -67,7 +67,7 @@ public class SetFillStyleActionArg
       return false;
     }
     paramObject = (SetFillStyleActionArg)paramObject;
-    boolean bool = Objects.equals(this.kZJ, paramObject.kZJ);
+    boolean bool = Objects.equals(this.nTU, paramObject.nTU);
     AppMethodBeat.o(145137);
     return bool;
   }
@@ -75,7 +75,7 @@ public class SetFillStyleActionArg
   public int hashCode()
   {
     AppMethodBeat.i(145138);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.kZJ });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.nTU });
     AppMethodBeat.o(145138);
     return i;
   }
@@ -84,7 +84,7 @@ public class SetFillStyleActionArg
   {
     AppMethodBeat.i(145134);
     super.i(paramParcel);
-    this.kZJ = ((RealSetFillStyleActionArg)paramParcel.readParcelable(SetFillStyleActionArg.class.getClassLoader()));
+    this.nTU = ((RealSetFillStyleActionArg)paramParcel.readParcelable(SetFillStyleActionArg.class.getClassLoader()));
     AppMethodBeat.o(145134);
   }
   
@@ -99,8 +99,8 @@ public class SetFillStyleActionArg
       return;
     }
     String str = paramJSONObject.optString(0);
-    this.kZJ = ((RealSetFillStyleActionArg)g.bzr().WC(str));
-    this.kZJ.f(paramJSONObject);
+    this.nTU = ((RealSetFillStyleActionArg)g.bKG().aen(str));
+    this.nTU.f(paramJSONObject);
     AppMethodBeat.o(145136);
   }
   
@@ -108,8 +108,8 @@ public class SetFillStyleActionArg
   {
     AppMethodBeat.i(145132);
     super.reset();
-    g.bzr().a(this.kZJ);
-    this.kZJ = null;
+    g.bKG().a(this.nTU);
+    this.nTU = null;
     AppMethodBeat.o(145132);
   }
   
@@ -117,13 +117,13 @@ public class SetFillStyleActionArg
   {
     AppMethodBeat.i(145135);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeParcelable(this.kZJ, paramInt);
+    paramParcel.writeParcelable(this.nTU, paramInt);
     AppMethodBeat.o(145135);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetFillStyleActionArg
  * JD-Core Version:    0.7.0.1
  */

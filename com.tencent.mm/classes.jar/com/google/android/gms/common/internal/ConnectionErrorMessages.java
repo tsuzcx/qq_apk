@@ -5,8 +5,8 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.support.v4.e.n;
 import android.text.TextUtils;
+import androidx.b.g;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.util.DeviceProperties;
 import com.google.android.gms.common.wrappers.PackageManagerWrapper;
@@ -17,12 +17,12 @@ import javax.annotation.concurrent.GuardedBy;
 public final class ConnectionErrorMessages
 {
   @GuardedBy("sCache")
-  private static final n<String, String> zzse;
+  private static final g<String, String> zzse;
   
   static
   {
     AppMethodBeat.i(11825);
-    zzse = new n();
+    zzse = new g();
     AppMethodBeat.o(11825);
   }
   
@@ -57,7 +57,7 @@ public final class ConnectionErrorMessages
   public static String getDefaultNotificationChannelName(Context paramContext)
   {
     AppMethodBeat.i(11824);
-    paramContext = paramContext.getResources().getString(2131757762);
+    paramContext = paramContext.getResources().getString(com.google.android.gms.base.R.string.common_google_play_services_notification_channel_name);
     AppMethodBeat.o(11824);
     return paramContext;
   }
@@ -73,15 +73,15 @@ public final class ConnectionErrorMessages
       AppMethodBeat.o(11820);
       return paramContext;
     case 1: 
-      paramContext = paramContext.getString(2131757759);
+      paramContext = paramContext.getString(com.google.android.gms.base.R.string.common_google_play_services_install_button);
       AppMethodBeat.o(11820);
       return paramContext;
     case 3: 
-      paramContext = paramContext.getString(2131757756);
+      paramContext = paramContext.getString(com.google.android.gms.base.R.string.common_google_play_services_enable_button);
       AppMethodBeat.o(11820);
       return paramContext;
     }
-    paramContext = paramContext.getString(2131757766);
+    paramContext = paramContext.getString(com.google.android.gms.base.R.string.common_google_play_services_update_button);
     AppMethodBeat.o(11820);
     return paramContext;
   }
@@ -104,33 +104,33 @@ public final class ConnectionErrorMessages
     case 15: 
     case 19: 
     default: 
-      paramContext = localResources.getString(2131757764, new Object[] { str });
+      paramContext = localResources.getString(com.google.android.gms.common.R.string.common_google_play_services_unknown_issue, new Object[] { str });
       AppMethodBeat.o(11818);
       return paramContext;
     case 1: 
-      paramContext = localResources.getString(2131757760, new Object[] { str });
+      paramContext = localResources.getString(com.google.android.gms.base.R.string.common_google_play_services_install_text, new Object[] { str });
       AppMethodBeat.o(11818);
       return paramContext;
     case 3: 
-      paramContext = localResources.getString(2131757757, new Object[] { str });
+      paramContext = localResources.getString(com.google.android.gms.base.R.string.common_google_play_services_enable_text, new Object[] { str });
       AppMethodBeat.o(11818);
       return paramContext;
     case 18: 
-      paramContext = localResources.getString(2131757769, new Object[] { str });
+      paramContext = localResources.getString(com.google.android.gms.base.R.string.common_google_play_services_updating_text, new Object[] { str });
       AppMethodBeat.o(11818);
       return paramContext;
     case 2: 
       if (DeviceProperties.isWearableWithoutPlayStore(paramContext))
       {
-        paramContext = localResources.getString(2131757770);
+        paramContext = localResources.getString(com.google.android.gms.base.R.string.common_google_play_services_wear_update_text);
         AppMethodBeat.o(11818);
         return paramContext;
       }
-      paramContext = localResources.getString(2131757767, new Object[] { str });
+      paramContext = localResources.getString(com.google.android.gms.base.R.string.common_google_play_services_update_text, new Object[] { str });
       AppMethodBeat.o(11818);
       return paramContext;
     case 9: 
-      paramContext = localResources.getString(2131757765, new Object[] { str });
+      paramContext = localResources.getString(com.google.android.gms.base.R.string.common_google_play_services_unsupported_text, new Object[] { str });
       AppMethodBeat.o(11818);
       return paramContext;
     case 7: 
@@ -177,7 +177,7 @@ public final class ConnectionErrorMessages
     {
       String str2 = str1;
       if (str1 == null) {
-        str2 = paramContext.getResources().getString(2131757763);
+        str2 = paramContext.getResources().getString(com.google.android.gms.base.R.string.common_google_play_services_notification_ticker);
       }
       AppMethodBeat.o(11817);
       return str2;
@@ -205,15 +205,15 @@ public final class ConnectionErrorMessages
       AppMethodBeat.o(11816);
       return null;
     case 1: 
-      paramContext = localResources.getString(2131757761);
+      paramContext = localResources.getString(com.google.android.gms.base.R.string.common_google_play_services_install_title);
       AppMethodBeat.o(11816);
       return paramContext;
     case 3: 
-      paramContext = localResources.getString(2131757758);
+      paramContext = localResources.getString(com.google.android.gms.base.R.string.common_google_play_services_enable_title);
       AppMethodBeat.o(11816);
       return paramContext;
     case 2: 
-      paramContext = localResources.getString(2131757768);
+      paramContext = localResources.getString(com.google.android.gms.base.R.string.common_google_play_services_update_title);
       AppMethodBeat.o(11816);
       return paramContext;
     case 9: 
@@ -256,7 +256,7 @@ public final class ConnectionErrorMessages
     paramString1 = zzb(paramContext, paramString1);
     paramContext = paramString1;
     if (paramString1 == null) {
-      paramContext = localResources.getString(2131757764);
+      paramContext = localResources.getString(com.google.android.gms.common.R.string.common_google_play_services_unknown_issue);
     }
     paramContext = String.format(localResources.getConfiguration().locale, paramContext, new Object[] { paramString2 });
     AppMethodBeat.o(11822);
@@ -315,7 +315,7 @@ public final class ConnectionErrorMessages
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.common.internal.ConnectionErrorMessages
  * JD-Core Version:    0.7.0.1
  */

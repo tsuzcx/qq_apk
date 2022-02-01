@@ -5,41 +5,41 @@ import java.util.ArrayList;
 import kotlin.a.j;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/report/MultiVideoPerformance;", "", "()V", "MAX_INDEX", "", "seekTimeArray", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "updateCompositionTimeArray", "addSeekTime", "", "time", "addUpdateCompositionTime", "getSeekTimeStr", "", "getUpdateTimeStr", "plugin-vlog_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/report/MultiVideoPerformance;", "", "()V", "MAX_INDEX", "", "seekTimeArray", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "updateCompositionTimeArray", "addSeekTime", "", "time", "addUpdateCompositionTime", "getSeekTimeStr", "", "getUpdateTimeStr", "plugin-vlog_release"})
 public final class a
 {
-  public final int GOA;
-  public ArrayList<Long> GOB;
-  public ArrayList<Long> GOC;
+  public final int NCg;
+  public ArrayList<Long> NCh;
+  public ArrayList<Long> NCi;
   
   public a()
   {
-    AppMethodBeat.i(192024);
-    this.GOA = 50;
-    this.GOB = new ArrayList();
-    this.GOC = new ArrayList();
-    AppMethodBeat.o(192024);
+    AppMethodBeat.i(225487);
+    this.NCg = 50;
+    this.NCh = new ArrayList();
+    this.NCi = new ArrayList();
+    AppMethodBeat.o(225487);
   }
   
-  public final String agM()
+  public final String alO()
   {
-    AppMethodBeat.i(192022);
-    String str = j.a((Iterable)this.GOB, (CharSequence)"#", null, null, 0, null, null, 62);
-    AppMethodBeat.o(192022);
+    AppMethodBeat.i(225483);
+    String str = j.a((Iterable)this.NCh, (CharSequence)"#", null, null, 0, null, null, 62);
+    AppMethodBeat.o(225483);
     return str;
   }
   
-  public final String fEt()
+  public final String gwu()
   {
-    AppMethodBeat.i(192023);
-    String str = j.a((Iterable)this.GOC, (CharSequence)"#", null, null, 0, null, null, 62);
-    AppMethodBeat.o(192023);
+    AppMethodBeat.i(225486);
+    String str = j.a((Iterable)this.NCi, (CharSequence)"#", null, null, 0, null, null, 62);
+    AppMethodBeat.o(225486);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.report.a
  * JD-Core Version:    0.7.0.1
  */

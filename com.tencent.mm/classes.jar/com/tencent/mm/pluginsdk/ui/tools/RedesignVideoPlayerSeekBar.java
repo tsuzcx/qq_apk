@@ -6,15 +6,19 @@ import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.plugin.af.a.b;
+import com.tencent.mm.plugin.af.a.c;
+import com.tencent.mm.plugin.af.a.d;
+import com.tencent.mm.plugin.af.a.e;
+import com.tencent.mm.ui.au;
 
 public class RedesignVideoPlayerSeekBar
   extends VideoPlayerSeekBar
 {
-  long Kwt = 0L;
-  long dtZ = 0L;
-  long iVn = 0L;
-  private ImageView mDf;
+  long RxK = 0L;
+  long fmH = 0L;
+  long lLH = 0L;
+  private ImageView pCr;
   
   public RedesignVideoPlayerSeekBar(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,16 +30,16 @@ public class RedesignVideoPlayerSeekBar
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final boolean aiS(int paramInt)
+  public final boolean arc(int paramInt)
   {
     AppMethodBeat.i(134012);
     int j = getVideoTotalTime();
-    if ((paramInt == this.iVn) && (j == this.dtZ))
+    if ((paramInt == this.lLH) && (j == this.fmH))
     {
       AppMethodBeat.o(134012);
       return false;
     }
-    if (System.currentTimeMillis() - this.Kwt < 300L)
+    if (System.currentTimeMillis() - this.RxK < 300L)
     {
       AppMethodBeat.o(134012);
       return false;
@@ -58,11 +62,11 @@ public class RedesignVideoPlayerSeekBar
     if (j == 0) {}
     for (paramInt = 0;; paramInt = (int)(paramInt * (i * 1.0D / j)))
     {
-      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.mDf.getLayoutParams();
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.pCr.getLayoutParams();
       localLayoutParams.width = paramInt;
-      this.mDf.setLayoutParams(localLayoutParams);
-      this.iVn = i;
-      this.dtZ = j;
+      this.pCr.setLayoutParams(localLayoutParams);
+      this.lLH = i;
+      this.fmH = j;
       AppMethodBeat.o(134012);
       return true;
     }
@@ -70,10 +74,10 @@ public class RedesignVideoPlayerSeekBar
   
   public int getLayoutId()
   {
-    return 2131496078;
+    return a.c.redesign_video_player_seek_bar;
   }
   
-  public final void hP(boolean paramBoolean)
+  public final void iF(boolean paramBoolean)
   {
     AppMethodBeat.i(134010);
     setIsPlay(paramBoolean);
@@ -84,29 +88,29 @@ public class RedesignVideoPlayerSeekBar
   {
     AppMethodBeat.i(134009);
     super.init();
-    this.mDf = ((ImageView)this.contentView.findViewById(2131305976));
+    this.pCr = ((ImageView)this.contentView.findViewById(a.b.player_progress_bar_middle));
     AppMethodBeat.o(134009);
   }
   
   public void setIsPlay(boolean paramBoolean)
   {
     AppMethodBeat.i(134011);
-    this.dLB = paramBoolean;
+    this.fEq = paramBoolean;
     if (paramBoolean)
     {
-      this.mCP.setImageDrawable(ar.m(getContext(), 2131690631, -1));
-      this.mCP.setContentDescription(getContext().getString(2131755924));
+      this.pCc.setImageDrawable(au.o(getContext(), a.d.icons_filled_pause, -1));
+      this.pCc.setContentDescription(getContext().getString(a.e.app_pause));
       AppMethodBeat.o(134011);
       return;
     }
-    this.mCP.setImageDrawable(ar.m(getContext(), 2131690647, -1));
-    this.mCP.setContentDescription(getContext().getString(2131755942));
+    this.pCc.setImageDrawable(au.o(getContext(), a.d.icons_filled_play, -1));
+    this.pCc.setContentDescription(getContext().getString(a.e.app_play));
     AppMethodBeat.o(134011);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.RedesignVideoPlayerSeekBar
  * JD-Core Version:    0.7.0.1
  */

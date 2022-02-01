@@ -1,417 +1,303 @@
 package com.tencent.mm.plugin.appbrand.widget.dialog;
 
 import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.animation.TimeInterpolator;
-import android.arch.a.c.a;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.app.Dialog;
 import android.content.Context;
-import android.content.res.Configuration;
-import android.graphics.Color;
-import android.os.Looper;
-import android.support.v4.e.b;
-import android.view.Display;
-import android.view.MotionEvent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnDismissListener;
+import android.media.AudioManager;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewPropertyAnimator;
-import android.view.WindowManager;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AnimationUtils;
-import android.view.animation.Interpolator;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.luggage.h.g;
+import android.webkit.ValueCallback;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RatingBar;
+import android.widget.RatingBar.OnRatingBarChangeListener;
+import android.widget.TextView;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.MMHandler;
-import java.util.Iterator;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
+import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.api.g;
+import com.tencent.mm.plugin.appbrand.au.f;
+import com.tencent.mm.plugin.appbrand.au.i;
+import com.tencent.mm.plugin.appbrand.au.j;
+import com.tencent.mm.plugin.appbrand.service.c;
+import com.tencent.mm.plugin.appbrand.service.r;
+import com.tencent.mm.plugin.appbrand.t;
+import com.tencent.mm.plugin.music.b.i;
+import com.tencent.mm.protocal.protobuf.aku;
+import com.tencent.mm.protocal.protobuf.dgz;
+import com.tencent.mm.protocal.protobuf.eoz;
+import com.tencent.mm.protocal.protobuf.epa;
+import com.tencent.mm.protocal.protobuf.eww;
+import com.tencent.mm.protocal.protobuf.ewx;
+import com.tencent.mm.protocal.protobuf.fok;
+import com.tencent.mm.protocal.protobuf.fqd;
+import com.tencent.mm.protocal.protobuf.fqe;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
-import java.util.Set;
 
 public final class e
-  extends RelativeLayout
-  implements m
 {
-  private final j Atv;
-  private final LinkedList<k> Atw;
-  private final Runnable Atx;
-  private k GcY;
-  private final Set<Object> GdC;
-  private final Set<Object> GdH;
-  private boolean GdI;
-  private k Gdg;
-  private Set<l> Gdi;
-  private boolean GfG;
-  private boolean ddZ;
-  private final View.OnClickListener mOnClickListener;
-  private final MMHandler mQp;
-  private int mRotation;
+  public String appId;
+  public Dialog dialog;
+  public String fve;
+  public com.tencent.mm.plugin.appbrand.report.b olT;
+  public int pEa;
+  public TextView rrS;
+  public boolean rtM;
+  int rtO;
+  public RatingBar rtQ;
+  public TextView rtR;
+  public LinearLayout rtS;
+  public LinearLayout rtT;
+  boolean rtU;
+  public int scene;
+  public String sessionId;
+  public String userName;
   
-  public e(Context paramContext)
+  public e(c paramc)
   {
-    super(paramContext);
-    AppMethodBeat.i(131483);
-    this.mRotation = 0;
-    this.mQp = new MMHandler(Looper.getMainLooper());
-    this.Atv = new j(this);
-    this.Atw = new LinkedList();
-    this.mOnClickListener = new e.1(this);
-    this.Atx = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(131478);
-        e.this.setBackgroundColor(0);
-        e.this.removeAllViews();
-        e.this.setVisibility(4);
-        AppMethodBeat.o(131478);
-      }
-    };
-    this.ddZ = false;
-    this.Gdi = new b();
-    this.GdC = new b();
-    this.GdH = new b();
-    this.GdI = false;
-    this.GfG = true;
-    setVisibility(4);
-    setBackgroundColor(0);
-    setOnClickListener(this.mOnClickListener);
-    paramContext = (WindowManager)getContext().getSystemService("window");
-    if (paramContext != null) {
-      this.mRotation = paramContext.getDefaultDisplay().getRotation();
+    AppMethodBeat.i(49886);
+    this.rtM = false;
+    this.rtO = 0;
+    this.pEa = -1;
+    this.rtU = false;
+    paramc = (com.tencent.mm.plugin.appbrand.game.b)paramc.R(com.tencent.mm.plugin.appbrand.game.b.class);
+    if (paramc != null) {
+      this.olT = paramc.bOq();
     }
-    AppMethodBeat.o(131483);
+    AppMethodBeat.o(49886);
   }
   
-  private static Animator P(View paramView, int paramInt)
+  public static Dialog C(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(131490);
-    if (paramInt == 2)
+    AppMethodBeat.i(49887);
+    paramContext = new com.tencent.mm.plugin.crashfix.b.a(paramContext, au.j.AppBrandEvaluateDialogStyle);
+    paramContext.setCancelable(true);
+    paramContext.setCanceledOnTouchOutside(paramBoolean);
+    Window localWindow = paramContext.getWindow();
+    if (localWindow != null)
     {
-      localObject = new AccelerateInterpolator();
-      localAnimatorSet = new AnimatorSet();
-      paramView = ObjectAnimator.ofFloat(paramView, "translationY", new float[] { 0.0F, paramView.getHeight() }).setDuration(200L);
-      paramView.setInterpolator((TimeInterpolator)localObject);
-      localAnimatorSet.playTogether(new Animator[] { paramView });
-      AppMethodBeat.o(131490);
-      return localAnimatorSet;
+      localWindow.getDecorView().setPadding(0, 0, 0, 0);
+      WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
+      localLayoutParams.gravity = 81;
+      localLayoutParams.height = -2;
+      localLayoutParams.width = -1;
+      localWindow.setAttributes(localLayoutParams);
+      localWindow.setWindowAnimations(au.j.AppBrandEvaluateDialogAnimation);
     }
-    Interpolator localInterpolator = AnimationUtils.loadInterpolator(paramView.getContext(), 2130772021);
-    Object localObject = AnimationUtils.loadInterpolator(paramView.getContext(), 2130772020);
-    AnimatorSet localAnimatorSet = new AnimatorSet();
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { 1.0F, 0.9F }).setDuration(220L);
-    localObjectAnimator1.setInterpolator(localInterpolator);
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(paramView, "scaleY", new float[] { 1.0F, 0.9F }).setDuration(220L);
-    localObjectAnimator2.setInterpolator(localInterpolator);
-    paramView = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { 1.0F, 0.0F }).setDuration(150L);
-    paramView.setInterpolator((TimeInterpolator)localObject);
-    localAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2, paramView });
-    AppMethodBeat.o(131490);
-    return localAnimatorSet;
+    AppMethodBeat.o(49887);
+    return paramContext;
   }
   
-  private static void cS(View paramView)
+  final void DG(int paramInt)
   {
-    AppMethodBeat.i(131487);
-    if ((paramView == null) || (paramView.getParent() == null))
+    AppMethodBeat.i(49890);
+    int i = au.i.app_brand_evaluate_star_one;
+    switch (paramInt)
     {
-      AppMethodBeat.o(131487);
-      return;
+    default: 
+      paramInt = i;
     }
-    ((ViewGroup)paramView.getParent()).removeView(paramView);
-    AppMethodBeat.o(131487);
+    for (;;)
+    {
+      this.rtR.setText(paramInt);
+      AppMethodBeat.o(49890);
+      return;
+      paramInt = au.i.app_brand_evaluate_star_one;
+      continue;
+      paramInt = au.i.app_brand_evaluate_star_two;
+      continue;
+      paramInt = au.i.app_brand_evaluate_star_three;
+      continue;
+      paramInt = au.i.app_brand_evaluate_star_four;
+      continue;
+      paramInt = au.i.app_brand_evaluate_star_five;
+    }
   }
   
-  public final void a(l paraml)
+  final void a(t paramt, boolean paramBoolean, dgz paramdgz, fqd paramfqd)
   {
-    AppMethodBeat.i(176008);
-    this.Gdi.add(paraml);
-    AppMethodBeat.o(176008);
-  }
-  
-  public final void b(final k paramk)
-  {
-    AppMethodBeat.i(131484);
-    if (paramk == null)
+    AppMethodBeat.i(175092);
+    if (this.rtU)
     {
-      AppMethodBeat.o(131484);
+      AppMethodBeat.o(175092);
       return;
     }
-    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AppBrandDialogContainerLayout", "showDialog dialog[%s] tid[%d]", new Object[] { paramk.getClass().getName(), Long.valueOf(Thread.currentThread().getId()) });
-    if (Looper.getMainLooper() != Looper.myLooper())
+    this.rtU = true;
+    int i;
+    if (paramdgz == null)
     {
-      this.mQp.post(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(131479);
-          e.this.b(paramk);
-          AppMethodBeat.o(131479);
-        }
-      });
-      AppMethodBeat.o(131484);
-      return;
-    }
-    g.aM(getContext());
-    if (this.Atv.isRunning()) {
-      this.Atv.cancel();
-    }
-    View localView = paramk.getContentView();
-    if (localView == null)
-    {
-      com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.AppBrandDialogContainerLayout", "showDialog NULL dialogView from dialog[%s], stack=%s", new Object[] { paramk, android.util.Log.getStackTraceString(new Throwable()) });
-      AppMethodBeat.o(131484);
-      return;
-    }
-    RelativeLayout.LayoutParams localLayoutParams;
-    if (localView.getParent() != this)
-    {
-      cS(localView);
-      if (paramk.getPosition() != 2) {
-        break label358;
-      }
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-      localLayoutParams.addRule(12);
-      localLayoutParams.addRule(14);
-      addView(localView, localLayoutParams);
-      if (this.Gdg != paramk)
-      {
-        localView.clearAnimation();
-        if (paramk.getPosition() != 2) {
-          break label379;
-        }
-        localView.startAnimation(AnimationUtils.loadAnimation(getContext(), 2130772076));
+      i = 0;
+      paramdgz = (AudioManager)paramt.mContext.getSystemService("audio");
+      if (paramdgz == null) {
+        break label390;
       }
     }
     for (;;)
     {
-      this.Gdg = paramk;
-      localView.setOnClickListener(this.mOnClickListener);
-      this.Atw.add(paramk);
-      paramk.a(this);
-      setVisibility(0);
-      if (this.GfG) {
-        bringToFront();
-      }
-      this.Atv.c(Color.argb(127, 0, 0, 0), null);
-      if ((this.Gdi.isEmpty()) || (this.ddZ)) {
-        break label396;
-      }
-      paramk = this.Gdi.iterator();
-      while (paramk.hasNext()) {
-        ((l)paramk.next()).h(Boolean.TRUE);
-      }
-      label358:
-      localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(13);
-      break;
-      label379:
-      localView.startAnimation(AnimationUtils.loadAnimation(getContext(), 2130772004));
-    }
-    label396:
-    this.ddZ = true;
-    AppMethodBeat.o(131484);
-  }
-  
-  public final void b(l paraml)
-  {
-    AppMethodBeat.i(176009);
-    this.Gdi.remove(paraml);
-    AppMethodBeat.o(176009);
-  }
-  
-  public final void c(final k paramk)
-  {
-    AppMethodBeat.i(131485);
-    if ((paramk == null) || (paramk.getContentView() == null))
-    {
-      AppMethodBeat.o(131485);
-      return;
-    }
-    if (Looper.getMainLooper() != Looper.myLooper())
-    {
-      this.mQp.post(new Runnable()
+      try
       {
-        public final void run()
-        {
-          AppMethodBeat.i(204428);
-          e.this.c(paramk);
-          AppMethodBeat.o(204428);
+        j = paramdgz.getStreamVolume(3);
+        fok localfok = new fok();
+        if (j != 0) {
+          break label396;
         }
-      });
-      AppMethodBeat.o(131485);
-      return;
-    }
-    if (paramk.getContentView().getParent() != this)
-    {
-      AppMethodBeat.o(131485);
-      return;
-    }
-    if (this.GcY == paramk)
-    {
-      AppMethodBeat.o(131485);
-      return;
-    }
-    this.GcY = paramk;
-    if (this.Gdg == paramk) {
-      this.Gdg = null;
-    }
-    final View localView = paramk.getContentView();
-    localView.animate().cancel();
-    localView.clearAnimation();
-    Animator localAnimator = P(localView, paramk.getPosition());
-    localAnimator.addListener(new AnimatorListenerAdapter()
-    {
-      public final void onAnimationCancel(Animator paramAnonymousAnimator)
-      {
-        AppMethodBeat.i(204430);
-        onAnimationEnd(paramAnonymousAnimator);
-        AppMethodBeat.o(204430);
+        bool = true;
+        localfok.UMy = bool;
+        paramdgz = i.fcS();
+        str1 = paramt.mAppId;
+        localfok.UMz = paramdgz.FNQ.contains(str1);
+        localfok.UMA = (this.pEa / 1000);
+        if (!paramBoolean) {
+          break label402;
+        }
+        paramdgz = "true";
+        String str3 = paramfqd.UNV;
+        if (j != 0) {
+          break label409;
+        }
+        str1 = "true";
+        if (!localfok.UMz) {
+          break label417;
+        }
+        str2 = "true";
+        Log.i("MicroMsg.AppBrand.Evaluate.AppBrandEvaluateDialogHelper", "submitGameEvaluateResult reject[%s] questionId[%s] optionId[%d] isMute[%s] isPlayMusic[%s] playSeconds[%d]", new Object[] { paramdgz, str3, Integer.valueOf(i), str1, str2, Integer.valueOf(localfok.UMA) });
+        paramdgz = new fqe();
+        paramdgz.UOa = paramBoolean;
+        paramdgz.TNG = i;
+        paramdgz.UNV = paramfqd.UNV;
+        paramfqd = new eoz();
+        paramfqd.lVG = paramt.mAppId;
+        paramfqd.Ton = this.olT.qIn;
+        paramfqd.Tom = this.olT.qIo;
+        paramfqd.Too = localfok;
+        paramfqd.Urt = paramdgz;
+        paramt = new d.a();
+        paramt.funcId = 2772;
+        paramt.uri = "/cgi-bin/mmgame-bin/submitoriginalreview";
+        paramt.lBU = paramfqd;
+        paramt.lBV = new epa();
+        IPCRunCgi.a(paramt.bgN(), new e.14(this));
+        AppMethodBeat.o(175092);
+        return;
       }
-      
-      public final void onAnimationEnd(Animator paramAnonymousAnimator)
+      catch (Exception paramdgz)
       {
-        AppMethodBeat.i(204431);
-        localView.setVisibility(8);
-        e.b(e.this).remove(paramk);
-        e.c(e.this);
-        e.this.post(new Runnable()
+        Log.e("MicroMsg.AppBrand.Evaluate.AppBrandEvaluateDialogHelper", "currentVolume get error: %s", new Object[] { paramdgz.toString() });
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1237L, 6L, 1L, false);
+      }
+      i = paramdgz.TNG;
+      break;
+      label390:
+      int j = 0;
+      continue;
+      label396:
+      boolean bool = false;
+      continue;
+      label402:
+      paramdgz = "false";
+      continue;
+      label409:
+      String str1 = "false";
+      continue;
+      label417:
+      String str2 = "false";
+    }
+  }
+  
+  final void a(eww parameww)
+  {
+    AppMethodBeat.i(49888);
+    d.a locala = new d.a();
+    locala.funcId = 2521;
+    locala.uri = "/cgi-bin/mmbiz-bin/wxabusiness/updateevaluate";
+    locala.lBU = parameww;
+    locala.lBV = new ewx();
+    IPCRunCgi.a(locala.bgN(), new IPCRunCgi.a()
+    {
+      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, d paramAnonymousd)
+      {
+        AppMethodBeat.i(49869);
+        Log.i("MicroMsg.AppBrand.Evaluate.AppBrandEvaluateDialogHelper", "updateEvaluateCgi, errType:%s, errCode:%s, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0) && (paramAnonymousd != null) && (d.c.b(paramAnonymousd.lBS) != null) && ((d.c.b(paramAnonymousd.lBS) instanceof ewx)))
         {
-          public final void run()
+          Log.i("MicroMsg.AppBrand.Evaluate.AppBrandEvaluateDialogHelper", "updateEvaluateCgi, request success");
+          if (e.this.rtM)
           {
-            AppMethodBeat.i(204429);
-            e.this.removeView(e.5.this.oqr);
-            e.a(e.this, true);
-            Iterator localIterator = e.d(e.this).iterator();
-            while (localIterator.hasNext()) {
-              localIterator.next();
-            }
-            e.a(e.this, false);
-            if (!e.e(e.this).isEmpty())
-            {
-              e.d(e.this).removeAll(e.e(e.this));
-              e.e(e.this).clear();
-            }
-            AppMethodBeat.o(204429);
+            e.this.fg(3, 1);
+            AppMethodBeat.o(49869);
+            return;
           }
-        });
-        AppMethodBeat.o(204431);
+          e.this.fg(2, 1);
+          AppMethodBeat.o(49869);
+          return;
+        }
+        Log.e("MicroMsg.AppBrand.Evaluate.AppBrandEvaluateDialogHelper", "updateEvaluateCgi, request fail");
+        if (e.this.rtM)
+        {
+          e.this.fg(3, 2);
+          AppMethodBeat.o(49869);
+          return;
+        }
+        e.this.fg(2, 2);
+        AppMethodBeat.o(49869);
       }
     });
-    localAnimator.start();
-    if (this.Atw.size() <= 1) {
-      this.Atv.c(0, this.Atx);
-    }
-    if ((!this.Gdi.isEmpty()) && (this.ddZ))
+    AppMethodBeat.o(49888);
+  }
+  
+  public final void dismiss()
+  {
+    AppMethodBeat.i(49892);
+    if (this.dialog != null)
     {
-      paramk = this.Gdi.iterator();
-      while (paramk.hasNext()) {
-        ((l)paramk.next()).h(Boolean.FALSE);
-      }
+      this.dialog.dismiss();
+      this.dialog = null;
     }
-    this.ddZ = false;
-    AppMethodBeat.o(131485);
+    AppMethodBeat.o(49892);
   }
   
-  public final void caW()
+  public final void fg(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(183778);
-    if (this.Atv.isRunning()) {
-      this.Atv.cancel();
-    }
-    if (!this.Atw.isEmpty())
+    AppMethodBeat.i(49893);
+    if (Util.isNullOrNil(this.appId))
     {
-      a local6 = new a() {};
-      while (!this.Atw.isEmpty()) {
-        local6.apply(this.Atw.pollFirst());
-      }
+      Log.e("MicroMsg.AppBrand.Evaluate.AppBrandEvaluateDialogHelper", "operateReport, no app id");
+      AppMethodBeat.o(49893);
+      return;
     }
-    this.GcY = null;
-    this.Gdg = null;
-    this.GdI = false;
-    this.GdC.clear();
-    this.GdH.clear();
-    removeAllViewsInLayout();
-    this.mQp.removeCallbacksAndMessages(null);
-    this.Atx.run();
-    AppMethodBeat.o(183778);
+    Log.i("MicroMsg.AppBrand.Evaluate.AppBrandEvaluateDialogHelper", "operateReport, appId:%s, eventId:%s, session:%s, score:%s, scene:%s, result:%s, path:%s", new Object[] { this.appId, Integer.valueOf(paramInt1), this.sessionId, Integer.valueOf(this.rtO), Integer.valueOf(this.scene), Integer.valueOf(paramInt2), this.fve });
+    com.tencent.mm.plugin.report.service.h.IzE.a(16176, new Object[] { this.appId, Integer.valueOf(paramInt1), Long.valueOf(Util.nowSecond()), Integer.valueOf(this.rtO), this.sessionId, this.fve, Integer.valueOf(this.scene), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(49893);
   }
   
-  public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  public final void show()
   {
-    AppMethodBeat.i(131488);
-    if (getChildCount() == 0)
-    {
-      AppMethodBeat.o(131488);
-      return false;
+    AppMethodBeat.i(49891);
+    if (this.dialog != null) {
+      this.dialog.show();
     }
-    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(131488);
-    return bool;
-  }
-  
-  public final k getCurrentDialog()
-  {
-    AppMethodBeat.i(131486);
-    k localk = (k)this.Atw.peekLast();
-    AppMethodBeat.o(131486);
-    return localk;
-  }
-  
-  public final boolean onBackPressed()
-  {
-    AppMethodBeat.i(131489);
-    k localk = (k)this.Atw.peekLast();
-    if (localk == null)
-    {
-      setVisibility(8);
-      AppMethodBeat.o(131489);
-      return false;
-    }
-    if ((!localk.bjb()) && (localk.isCancelable()))
-    {
-      localk.onCancel();
-      c(localk);
-    }
-    AppMethodBeat.o(131489);
-    return true;
-  }
-  
-  protected final void onConfigurationChanged(Configuration paramConfiguration)
-  {
-    AppMethodBeat.i(131491);
-    super.onConfigurationChanged(paramConfiguration);
-    paramConfiguration = (WindowManager)getContext().getSystemService("window");
-    if (paramConfiguration != null)
-    {
-      int i = paramConfiguration.getDefaultDisplay().getRotation();
-      if (this.mRotation != i)
-      {
-        this.mRotation = i;
-        paramConfiguration = this.Atw.iterator();
-        while (paramConfiguration.hasNext()) {
-          ((k)paramConfiguration.next()).ut(this.mRotation);
-        }
-      }
-    }
-    AppMethodBeat.o(131491);
-  }
-  
-  public final void onViewRemoved(View paramView)
-  {
-    AppMethodBeat.i(204433);
-    super.onViewRemoved(paramView);
-    if (this.Atw.size() == 0) {
-      this.Atv.c(0, this.Atx);
-    }
-    AppMethodBeat.o(204433);
-  }
-  
-  public final void setShouldBringSelfToFrontWhenDialogShown(boolean paramBoolean)
-  {
-    this.GfG = paramBoolean;
+    AppMethodBeat.o(49891);
   }
 }
 

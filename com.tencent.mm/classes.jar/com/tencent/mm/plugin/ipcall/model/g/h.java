@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.ipcall.model.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.an.t;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.plugin.ipcall.model.b.a;
 import com.tencent.mm.plugin.ipcall.model.b.c;
 import com.tencent.mm.plugin.ipcall.model.e.n;
@@ -11,24 +11,24 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class h
   extends a
 {
-  public boolean ysA = false;
-  public int ysz = 1;
+  public int DSB = 1;
+  public boolean DSC = false;
   
-  public final void MC() {}
+  public final void Pu() {}
   
   public final void b(c paramc)
   {
     AppMethodBeat.i(25525);
     if (paramc != null)
     {
-      Log.d("MicroMsg.IPCallShutDownService", "call shutdown scene, roomId: %d, inviteId: %d", new Object[] { Integer.valueOf(paramc.roomId), Integer.valueOf(paramc.ypJ) });
-      paramc = new n(paramc.roomId, paramc.ypH, paramc.ypI, this.ysz);
-      bg.azz().a(paramc, 0);
+      Log.d("MicroMsg.IPCallShutDownService", "call shutdown scene, roomId: %d, inviteId: %d", new Object[] { Integer.valueOf(paramc.roomId), Integer.valueOf(paramc.DPL) });
+      paramc = new n(paramc.roomId, paramc.DPJ, paramc.DPK, this.DSB);
+      bh.aGY().a(paramc, 0);
     }
     AppMethodBeat.o(25525);
   }
   
-  public final int[] eaF()
+  public final int[] eJD()
   {
     return new int[] { 723 };
   }
@@ -42,7 +42,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.g.h
  * JD-Core Version:    0.7.0.1
  */

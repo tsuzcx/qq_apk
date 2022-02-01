@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cdi;
-import com.tencent.mm.protocal.protobuf.cfg;
-import com.tencent.mm.protocal.protobuf.cfh;
-import com.tencent.mm.protocal.protobuf.cfx;
-import com.tencent.mm.protocal.protobuf.cfy;
+import com.tencent.mm.protocal.protobuf.cmc;
+import com.tencent.mm.protocal.protobuf.cod;
+import com.tencent.mm.protocal.protobuf.coe;
+import com.tencent.mm.protocal.protobuf.cot;
+import com.tencent.mm.protocal.protobuf.cou;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -26,27 +26,27 @@ public final class x
   implements m
 {
   private i callback;
-  private final com.tencent.mm.ak.d rr;
+  private final com.tencent.mm.an.d rr;
   
-  public x(List<cfy> paramList)
+  public x(List<cou> paramList)
   {
     AppMethodBeat.i(78909);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new cfg();
-    ((d.a)localObject).iLO = new cfh();
+    ((d.a)localObject).lBU = new cod();
+    ((d.a)localObject).lBV = new coe();
     ((d.a)localObject).uri = "/cgi-bin/mmux-bin/jslog";
     ((d.a)localObject).funcId = 1803;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (cfg)this.rr.iLK.iLR;
-    cfx localcfx = new cfx();
-    localcfx.hid = com.tencent.mm.protocal.d.KyJ;
-    localcfx.hie = com.tencent.mm.protocal.d.KyI;
-    localcfx.hif = com.tencent.mm.protocal.d.KyL;
-    localcfx.hig = com.tencent.mm.protocal.d.KyM;
-    localcfx.hih = LocaleUtil.getApplicationLanguage();
-    localcfx.LOF = ((int)(System.currentTimeMillis() / 1000L));
-    ((cfg)localObject).KGA = localcfx;
-    ((cfg)localObject).KGB.addAll(paramList);
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (cod)d.b.b(this.rr.lBR);
+    cot localcot = new cot();
+    localcot.jUb = com.tencent.mm.protocal.d.RAx;
+    localcot.jUc = com.tencent.mm.protocal.d.RAw;
+    localcot.jUd = com.tencent.mm.protocal.d.RAz;
+    localcot.jUe = com.tencent.mm.protocal.d.RAA;
+    localcot.jUf = LocaleUtil.getApplicationLanguage();
+    localcot.TwF = ((int)(System.currentTimeMillis() / 1000L));
+    ((cod)localObject).RHS = localcot;
+    ((cod)localObject).RHT.addAll(paramList);
     AppMethodBeat.o(78909);
   }
   
@@ -71,10 +71,10 @@ public final class x
     Log.i("MicroMsg.NetSceneJsLog", "onGYNetEnd, netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = (cfh)((com.tencent.mm.ak.d)params).iLL.iLR;
+      params = (coe)d.c.b(((com.tencent.mm.an.d)params).lBS);
       Log.i("MicroMsg.NetSceneJsLog", "received InvalidLogList: ");
       paramArrayOfByte = new StringBuilder("{ ");
-      if (!Util.isNullOrNil(params.Mlt)) {
+      if (!Util.isNullOrNil(params.Twm)) {
         break label165;
       }
       paramArrayOfByte.append("{  }");
@@ -83,17 +83,17 @@ public final class x
     {
       paramArrayOfByte.append(" }");
       Log.i("MicroMsg.NetSceneJsLog", paramArrayOfByte.toString());
-      h.a.gcu();
-      h.ii(params.Mlt);
+      h.a.gVp();
+      h.iY(params.Twm);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(78910);
       return;
       label165:
-      Iterator localIterator = params.Mlt.iterator();
+      Iterator localIterator = params.Twm.iterator();
       while (localIterator.hasNext())
       {
-        cdi localcdi = (cdi)localIterator.next();
-        paramArrayOfByte.append(String.format(" { logId(%d), interval(%d) },", new Object[] { Integer.valueOf(localcdi.Mjf), Integer.valueOf(localcdi.Mjg) }));
+        cmc localcmc = (cmc)localIterator.next();
+        paramArrayOfByte.append(String.format(" { logId(%d), interval(%d) },", new Object[] { Integer.valueOf(localcmc.Stn), Integer.valueOf(localcmc.TtU) }));
       }
     }
   }

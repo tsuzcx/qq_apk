@@ -8,7 +8,7 @@ import com.tencent.mm.plugin.facedetect.model.p;
 import com.tencent.mm.plugin.mmsight.api.b;
 import com.tencent.mm.plugin.mmsight.api.b.a;
 import com.tencent.mm.plugin.mmsight.model.a.d.a;
-import com.tencent.mm.plugin.mmsight.model.a.k;
+import com.tencent.mm.plugin.mmsight.model.a.j;
 import com.tencent.mm.plugin.mmsight.model.g;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -16,42 +16,42 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 
 public class a
 {
-  private static final String sUD;
-  public static final String sUE;
-  private static final String sUF;
-  private static volatile a sUp;
-  public com.tencent.mm.remoteservice.d gVN;
-  private com.tencent.mm.plugin.mmsight.model.a.d kxS;
+  private static final String wAA;
+  public static final String wAB;
+  private static final String wAC;
+  private static volatile a wAm;
+  public com.tencent.mm.remoteservice.d jGJ;
   private String mFilePath;
   private final Object mLock;
-  private boolean nmu;
-  private int sUA;
-  private String sUB;
-  public b sUC;
-  private d.b sUG;
-  private d.a sUH;
-  public MMHandler sUq;
-  private final int sUr;
-  private final int sUs;
-  private final int sUt;
-  private a sUu;
-  private int sUv;
-  private int sUw;
-  public boolean sUx;
-  private b sUy;
-  private int sUz;
+  private com.tencent.mm.plugin.mmsight.model.a.d nqS;
+  private boolean qoc;
+  private d.b wAD;
+  private d.a wAE;
+  public MMHandler wAn;
+  private final int wAo;
+  private final int wAp;
+  private final int wAq;
+  private a wAr;
+  private int wAs;
+  private int wAt;
+  public boolean wAu;
+  private b wAv;
+  private int wAw;
+  private int wAx;
+  private String wAy;
+  public b wAz;
   
   static
   {
     AppMethodBeat.i(104090);
-    sUp = null;
-    sUD = p.cTh() + '/' + "fdv_";
-    sUE = p.cTh() + '/' + "video_temp_test.mp4";
-    sUF = p.cTh() + '/' + "fdv_t_";
+    wAm = null;
+    wAA = p.dim() + '/' + "fdv_";
+    wAB = p.dim() + '/' + "video_temp_test.mp4";
+    wAC = p.dim() + '/' + "fdv_t_";
     AppMethodBeat.o(104090);
   }
   
@@ -59,39 +59,39 @@ public class a
   {
     AppMethodBeat.i(104078);
     this.mLock = new Object();
-    this.sUq = null;
-    this.sUr = 960;
-    this.sUs = 540;
-    this.sUt = 15;
-    this.sUu = a.sUZ;
-    this.sUv = 0;
-    this.nmu = false;
-    this.sUw = 0;
-    this.sUx = false;
-    this.sUy = null;
-    this.sUz = -1;
-    this.sUA = -1;
+    this.wAn = null;
+    this.wAo = 960;
+    this.wAp = 540;
+    this.wAq = 15;
+    this.wAr = a.wAW;
+    this.wAs = 0;
+    this.qoc = false;
+    this.wAt = 0;
+    this.wAu = false;
+    this.wAv = null;
+    this.wAw = -1;
+    this.wAx = -1;
     this.mFilePath = "";
-    this.sUB = "";
-    this.gVN = new com.tencent.mm.remoteservice.d(MMApplicationContext.getContext());
-    this.sUC = b.zsZ.bqG();
-    this.sUG = new d.b()
+    this.wAy = "";
+    this.jGJ = new com.tencent.mm.remoteservice.d(MMApplicationContext.getContext());
+    this.wAz = b.EYA.bBv();
+    this.wAD = new d.b()
     {
-      public final void bC(byte[] paramAnonymousArrayOfByte)
+      public final void bQ(byte[] paramAnonymousArrayOfByte)
       {
         AppMethodBeat.i(104073);
-        a.this.bD(paramAnonymousArrayOfByte);
+        a.this.bR(paramAnonymousArrayOfByte);
         AppMethodBeat.o(104073);
       }
       
-      public final com.tencent.mm.memory.a<byte[]> cSS()
+      public final com.tencent.mm.memory.a<byte[]> dhW()
       {
-        return k.zwi;
+        return j.FbH;
       }
     };
-    this.sUH = new d.a()
+    this.wAE = new d.a()
     {
-      public final void bqP()
+      public final void bBE()
       {
         AppMethodBeat.i(104063);
         Log.e("MicroMsg.FaceVideoRecorder", "hy: video capture error: %d", new Object[] { Integer.valueOf(1) });
@@ -104,41 +104,41 @@ public class a
             //   0: ldc 28
             //   2: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
             //   5: aload_0
-            //   6: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:sUT	Lcom/tencent/mm/plugin/facedetect/e/a$2;
-            //   9: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:sUQ	Lcom/tencent/mm/plugin/facedetect/e/a;
+            //   6: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:wAQ	Lcom/tencent/mm/plugin/facedetect/e/a$2;
+            //   9: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:wAN	Lcom/tencent/mm/plugin/facedetect/e/a;
             //   12: invokestatic 44	com/tencent/mm/plugin/facedetect/e/a:g	(Lcom/tencent/mm/plugin/facedetect/e/a;)Lcom/tencent/mm/plugin/mmsight/model/a/d;
             //   15: ifnull +18 -> 33
             //   18: aload_0
-            //   19: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:sUT	Lcom/tencent/mm/plugin/facedetect/e/a$2;
-            //   22: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:sUQ	Lcom/tencent/mm/plugin/facedetect/e/a;
+            //   19: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:wAQ	Lcom/tencent/mm/plugin/facedetect/e/a$2;
+            //   22: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:wAN	Lcom/tencent/mm/plugin/facedetect/e/a;
             //   25: invokestatic 44	com/tencent/mm/plugin/facedetect/e/a:g	(Lcom/tencent/mm/plugin/facedetect/e/a;)Lcom/tencent/mm/plugin/mmsight/model/a/d;
             //   28: invokeinterface 49 1 0
             //   33: aload_0
-            //   34: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:sUT	Lcom/tencent/mm/plugin/facedetect/e/a$2;
-            //   37: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:sUQ	Lcom/tencent/mm/plugin/facedetect/e/a;
+            //   34: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:wAQ	Lcom/tencent/mm/plugin/facedetect/e/a$2;
+            //   37: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:wAN	Lcom/tencent/mm/plugin/facedetect/e/a;
             //   40: invokestatic 53	com/tencent/mm/plugin/facedetect/e/a:d	(Lcom/tencent/mm/plugin/facedetect/e/a;)V
             //   43: aload_0
-            //   44: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:sUT	Lcom/tencent/mm/plugin/facedetect/e/a$2;
-            //   47: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:sUQ	Lcom/tencent/mm/plugin/facedetect/e/a;
+            //   44: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:wAQ	Lcom/tencent/mm/plugin/facedetect/e/a$2;
+            //   47: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:wAN	Lcom/tencent/mm/plugin/facedetect/e/a;
             //   50: invokestatic 57	com/tencent/mm/plugin/facedetect/e/a:a	(Lcom/tencent/mm/plugin/facedetect/e/a;)Ljava/lang/Object;
             //   53: astore_1
             //   54: aload_1
             //   55: monitorenter
             //   56: aload_0
-            //   57: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:sUT	Lcom/tencent/mm/plugin/facedetect/e/a$2;
-            //   60: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:sUQ	Lcom/tencent/mm/plugin/facedetect/e/a;
-            //   63: getstatic 63	com/tencent/mm/plugin/facedetect/e/a$a:sVa	Lcom/tencent/mm/plugin/facedetect/e/a$a;
+            //   57: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:wAQ	Lcom/tencent/mm/plugin/facedetect/e/a$2;
+            //   60: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:wAN	Lcom/tencent/mm/plugin/facedetect/e/a;
+            //   63: getstatic 63	com/tencent/mm/plugin/facedetect/e/a$a:wAX	Lcom/tencent/mm/plugin/facedetect/e/a$a;
             //   66: invokestatic 66	com/tencent/mm/plugin/facedetect/e/a:a	(Lcom/tencent/mm/plugin/facedetect/e/a;Lcom/tencent/mm/plugin/facedetect/e/a$a;)Lcom/tencent/mm/plugin/facedetect/e/a$a;
             //   69: pop
             //   70: aload_1
             //   71: monitorexit
-            //   72: invokestatic 72	com/tencent/mm/plugin/facedetect/model/FaceContextData:cST	()Lcom/tencent/mm/plugin/facedetect/model/FaceContextData;
+            //   72: invokestatic 72	com/tencent/mm/plugin/facedetect/model/FaceContextData:dhX	()Lcom/tencent/mm/plugin/facedetect/model/FaceContextData;
             //   75: ifnull +17 -> 92
-            //   78: invokestatic 72	com/tencent/mm/plugin/facedetect/model/FaceContextData:cST	()Lcom/tencent/mm/plugin/facedetect/model/FaceContextData;
-            //   81: getfield 76	com/tencent/mm/plugin/facedetect/model/FaceContextData:sQI	J
+            //   78: invokestatic 72	com/tencent/mm/plugin/facedetect/model/FaceContextData:dhX	()Lcom/tencent/mm/plugin/facedetect/model/FaceContextData;
+            //   81: getfield 76	com/tencent/mm/plugin/facedetect/model/FaceContextData:wwE	J
             //   84: iconst_2
             //   85: aload_0
-            //   86: getfield 21	com/tencent/mm/plugin/facedetect/e/a$2$1:ksf	I
+            //   86: getfield 21	com/tencent/mm/plugin/facedetect/e/a$2$1:njO	I
             //   89: invokestatic 82	com/tencent/mm/plugin/facedetect/model/FaceDetectReporter:h	(JII)V
             //   92: ldc 28
             //   94: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -155,14 +155,14 @@ public class a
             //   113: aastore
             //   114: invokestatic 99	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
             //   117: aload_0
-            //   118: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:sUT	Lcom/tencent/mm/plugin/facedetect/e/a$2;
-            //   121: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:sUQ	Lcom/tencent/mm/plugin/facedetect/e/a;
+            //   118: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:wAQ	Lcom/tencent/mm/plugin/facedetect/e/a$2;
+            //   121: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:wAN	Lcom/tencent/mm/plugin/facedetect/e/a;
             //   124: invokestatic 53	com/tencent/mm/plugin/facedetect/e/a:d	(Lcom/tencent/mm/plugin/facedetect/e/a;)V
             //   127: goto -84 -> 43
             //   130: astore_1
             //   131: aload_0
-            //   132: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:sUT	Lcom/tencent/mm/plugin/facedetect/e/a$2;
-            //   135: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:sUQ	Lcom/tencent/mm/plugin/facedetect/e/a;
+            //   132: getfield 19	com/tencent/mm/plugin/facedetect/e/a$2$1:wAQ	Lcom/tencent/mm/plugin/facedetect/e/a$2;
+            //   135: getfield 38	com/tencent/mm/plugin/facedetect/e/a$2:wAN	Lcom/tencent/mm/plugin/facedetect/e/a;
             //   138: invokestatic 53	com/tencent/mm/plugin/facedetect/e/a:d	(Lcom/tencent/mm/plugin/facedetect/e/a;)V
             //   141: ldc 28
             //   143: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -187,45 +187,44 @@ public class a
             //   5	33	130	finally
             //   99	117	130	finally
             //   56	72	148	finally
-            //   149	151	148	finally
           }
         });
         AppMethodBeat.o(104063);
       }
     };
-    this.sUq = new MMHandler("face_video_handler");
+    this.wAn = new MMHandler("face_video_handler");
     AppMethodBeat.o(104078);
   }
   
-  private VideoTransPara bDA()
+  private VideoTransPara bOY()
   {
     AppMethodBeat.i(104086);
     VideoTransPara localVideoTransPara = new VideoTransPara();
-    localVideoTransPara.isDefault = true;
-    localVideoTransPara.width = this.sUz;
-    localVideoTransPara.height = this.sUA;
+    localVideoTransPara.lJx = true;
+    localVideoTransPara.width = this.wAw;
+    localVideoTransPara.height = this.wAx;
     localVideoTransPara.fps = 30;
     localVideoTransPara.videoBitrate = 1200000;
-    localVideoTransPara.iiH = 10;
+    localVideoTransPara.kXt = 10;
     localVideoTransPara.audioBitrate = 64000;
-    localVideoTransPara.iSU = 2;
-    localVideoTransPara.iSV = 1;
+    localVideoTransPara.lJm = 2;
+    localVideoTransPara.lJn = 1;
     localVideoTransPara.audioSampleRate = 16000;
     localVideoTransPara.duration = 15;
     AppMethodBeat.o(104086);
     return localVideoTransPara;
   }
   
-  public static a cTF()
+  public static a diK()
   {
     AppMethodBeat.i(104079);
-    if (sUp == null) {
+    if (wAm == null) {
       try
       {
-        if (sUp == null) {
-          sUp = new a();
+        if (wAm == null) {
+          wAm = new a();
         }
-        a locala1 = sUp;
+        a locala1 = wAm;
         return locala1;
       }
       finally
@@ -233,7 +232,7 @@ public class a
         AppMethodBeat.o(104079);
       }
     }
-    a locala2 = sUp;
+    a locala2 = wAm;
     AppMethodBeat.o(104079);
     return locala2;
   }
@@ -242,7 +241,7 @@ public class a
   {
     AppMethodBeat.i(104084);
     Log.e("MicroMsg.FaceVideoRecorder", "carson: stop Record Video");
-    this.sUq.postToWorker(new Runnable()
+    this.wAn.postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -250,44 +249,50 @@ public class a
         synchronized (a.a(a.this))
         {
           a.a(a.this, paramb);
-          if (a.n(a.this) == a.a.sUZ)
+          if (a.n(a.this) == a.a.wAW)
           {
             Log.e("MicroMsg.FaceVideoRecorder", "hy: not initialized. should not happen");
             a.d(a.this);
-            if (a.r(a.this) != null) {
-              a.r(a.this).arD(null);
+            if (a.r(a.this) != null)
+            {
+              a.r(a.this).azE(null);
+              a.a(a.this, null);
             }
             AppMethodBeat.o(104072);
             return;
           }
-          if ((a.n(a.this) == a.a.sVe) || (a.n(a.this) == a.a.sVa))
+          if ((a.n(a.this) == a.a.wBb) || (a.n(a.this) == a.a.wAX))
           {
             Log.w("MicroMsg.FaceVideoRecorder", "hy: cancelled or not started capturing.");
             a.d(a.this);
-            if (a.r(a.this) != null) {
-              a.r(a.this).arD(null);
+            if (a.r(a.this) != null)
+            {
+              a.r(a.this).azE(null);
+              a.a(a.this, null);
             }
             AppMethodBeat.o(104072);
             return;
           }
-          if (a.n(a.this) == a.a.sVd)
+          if (a.n(a.this) == a.a.wBa)
           {
             Log.i("MicroMsg.FaceVideoRecorder", "hy: already stopped");
-            if (a.r(a.this) != null) {
-              a.r(a.this).arD(a.g(a.this).getFilePath());
+            if (a.r(a.this) != null)
+            {
+              a.r(a.this).azE(a.g(a.this).getFilePath());
+              a.a(a.this, null);
             }
             AppMethodBeat.o(104072);
             return;
           }
-          if (a.n(a.this) == a.a.sVc)
+          if (a.n(a.this) == a.a.wAZ)
           {
             Log.i("MicroMsg.FaceVideoRecorder", "hy: stopping. wait");
             AppMethodBeat.o(104072);
             return;
           }
           Log.i("MicroMsg.FaceVideoRecorder", "hy: stop record and release" + Thread.currentThread().getName());
-          com.tencent.mm.plugin.facedetect.model.d.cSR().b(a.o(a.this));
-          a.a(a.this, a.a.sVc);
+          com.tencent.mm.plugin.facedetect.model.d.dhV().b(a.o(a.this));
+          a.a(a.this, a.a.wAZ);
           a.g(a.this).E(new Runnable()
           {
             public final void run()
@@ -296,10 +301,12 @@ public class a
               synchronized (a.a(a.this))
               {
                 Log.i("MicroMsg.FaceVideoRecorder", "carson: begin to stop" + a.g(a.this).getFilePath());
-                a.a(a.this, a.a.sVd);
-                s.deleteFile(a.h(a.this));
-                if (a.r(a.this) != null) {
-                  a.r(a.this).arD(a.g(a.this).getFilePath());
+                a.a(a.this, a.a.wBa);
+                u.deleteFile(a.h(a.this));
+                if (a.r(a.this) != null)
+                {
+                  a.r(a.this).azE(a.g(a.this).getFilePath());
+                  a.a(a.this, null);
                 }
                 AppMethodBeat.o(104071);
                 return;
@@ -319,9 +326,9 @@ public class a
     AppMethodBeat.i(104080);
     Log.i("MicroMsg.FaceVideoRecorder", "hy: init record");
     Log.i("MicroMsg.FaceVideoRecorder", "hy: cameraOrientation: %d, previewWidth: %d, previewHeight: %d,isLandscape: %b,  degree: %d, acceptVoiceFromOutside: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.FALSE, Integer.valueOf(0), Boolean.valueOf(paramBoolean) });
-    VideoTransPara localVideoTransPara = bDA();
-    this.sUC.a(this.gVN, localVideoTransPara);
-    this.sUq.postToWorker(new Runnable()
+    VideoTransPara localVideoTransPara = bOY();
+    this.wAz.a(this.jGJ, localVideoTransPara);
+    this.wAn.postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -337,8 +344,8 @@ public class a
           synchronized (a.a(a.this))
           {
             a.c(a.this, paramInt1);
-            a.a(a.this, this.sUL);
-            a.d(a.this, this.sUM);
+            a.a(a.this, this.wAI);
+            a.d(a.this, this.wAJ);
             a.b(a.this);
             a.c(a.this);
             a.d(a.this);
@@ -349,14 +356,14 @@ public class a
           synchronized (a.a(a.this))
           {
             long l = Util.currentTicks();
-            a.a(a.this, a.e(a.this).bqF());
+            a.a(a.this, a.e(a.this).bBu());
             a.g(a.this).setFilePath(a.f(a.this));
-            a.g(a.this).HA(a.h(a.this));
-            a.g(a.this).fk(paramBoolean);
-            a.g(a.this).s(a.i(a.this), a.j(a.this), paramInt4, paramInt5);
-            a.g(a.this).rC(a.k(a.this));
+            a.g(a.this).ON(a.h(a.this));
+            a.g(a.this).fU(paramBoolean);
+            a.g(a.this).u(a.i(a.this), a.j(a.this), paramInt4, paramInt5);
+            a.g(a.this).uw(a.k(a.this));
             a.g(a.this).a(a.l(a.this));
-            a.a(a.this, a.a.sVa);
+            a.a(a.this, a.a.wAX);
             Log.i("MicroMsg.FaceVideoRecorder", "hy: init in main thread cost %d ms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
             AppMethodBeat.o(104061);
             return;
@@ -383,14 +390,14 @@ public class a
                 {
                   Log.i("MicroMsg.FaceVideoRecorder", "hy: connect cost %s ms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
                   long l = Util.currentTicks();
-                  a.a(a.this, a.e(a.this).bqF());
+                  a.a(a.this, a.e(a.this).bBu());
                   a.g(a.this).setFilePath(a.f(a.this));
-                  a.g(a.this).HA(a.h(a.this));
-                  a.g(a.this).fk(a.1.this.sUN);
-                  a.g(a.this).s(a.i(a.this), a.j(a.this), a.1.this.sUO, a.1.this.sUP);
-                  a.g(a.this).rC(a.k(a.this));
+                  a.g(a.this).ON(a.h(a.this));
+                  a.g(a.this).fU(a.1.this.wAK);
+                  a.g(a.this).u(a.i(a.this), a.j(a.this), a.1.this.wAL, a.1.this.wAM);
+                  a.g(a.this).uw(a.k(a.this));
                   a.g(a.this).a(a.l(a.this));
-                  a.a(a.this, a.a.sVa);
+                  a.a(a.this, a.a.wAX);
                   Log.i("MicroMsg.FaceVideoRecorder", "hy: init in main thread cost %d ms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
                   AppMethodBeat.o(104059);
                   return;
@@ -407,35 +414,35 @@ public class a
     return true;
   }
   
-  public final boolean aai()
+  public final boolean aeU()
   {
     AppMethodBeat.i(104082);
     Log.e("MicroMsg.FaceVideoRecorder", "carson: start Record Video");
-    this.sUq.postToWorker(new Runnable()
+    this.wAn.postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(104069);
         synchronized (a.a(a.this))
         {
-          if (a.n(a.this) == a.a.sUZ)
+          if (a.n(a.this) == a.a.wAW)
           {
             Log.e("MicroMsg.FaceVideoRecorder", "hy: not started. should not happen");
             a.d(a.this);
             AppMethodBeat.o(104069);
             return;
           }
-          if (a.n(a.this) == a.a.sVb)
+          if (a.n(a.this) == a.a.wAY)
           {
             Log.w("MicroMsg.FaceVideoRecorder", "hy: already started or wait start");
             AppMethodBeat.o(104069);
             return;
           }
           Log.i("MicroMsg.FaceVideoRecorder", "hy: startRecord record");
-          com.tencent.mm.plugin.facedetect.model.d.cSR().clear();
-          com.tencent.mm.plugin.facedetect.model.d.cSR().a(a.o(a.this));
+          com.tencent.mm.plugin.facedetect.model.d.dhV().clear();
+          com.tencent.mm.plugin.facedetect.model.d.dhV().a(a.o(a.this));
           a.g(a.this).b(a.k(a.this), a.p(a.this), a.q(a.this));
-          a.a(a.this, a.a.sVb);
+          a.a(a.this, a.a.wAY);
           AppMethodBeat.o(104069);
           return;
         }
@@ -445,17 +452,17 @@ public class a
     return true;
   }
   
-  public final void bD(final byte[] paramArrayOfByte)
+  public final void bR(final byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(104085);
-    this.sUq.postToWorker(new Runnable()
+    this.wAn.postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(104074);
         SightVideoJNI.mirrorCameraData(paramArrayOfByte, a.i(a.this), a.j(a.this), false);
         if (a.g(a.this).getFrameDataCallback() != null) {
-          a.g(a.this).getFrameDataCallback().ai(paramArrayOfByte);
+          a.g(a.this).getFrameDataCallback().ar(paramArrayOfByte);
         }
         AppMethodBeat.o(104074);
       }
@@ -463,12 +470,12 @@ public class a
     AppMethodBeat.o(104085);
   }
   
-  public final c.a cTG()
+  public final c.a diL()
   {
     AppMethodBeat.i(104081);
-    if (this.kxS != null)
+    if (this.nqS != null)
     {
-      c.a locala = this.kxS.aQS();
+      c.a locala = this.nqS.aZK();
       AppMethodBeat.o(104081);
       return locala;
     }
@@ -477,18 +484,18 @@ public class a
     return null;
   }
   
-  public final void cTH()
+  public final void diM()
   {
     AppMethodBeat.i(104083);
     Log.e("MicroMsg.FaceVideoRecorder", "carson: cancel Record Video");
-    this.sUq.postToWorker(new Runnable()
+    this.wAn.postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(104070);
         synchronized (a.a(a.this))
         {
-          if (a.n(a.this) == a.a.sUZ)
+          if (a.n(a.this) == a.a.wAW)
           {
             Log.e("MicroMsg.FaceVideoRecorder", "hy: not started when cancel. should not happen");
             a.d(a.this);
@@ -498,8 +505,8 @@ public class a
           Log.i("MicroMsg.FaceVideoRecorder", "hy: cancel record");
           a.g(a.this).cancel();
           a.d(a.this);
-          com.tencent.mm.plugin.facedetect.model.d.cSR().b(a.o(a.this));
-          a.a(a.this, a.a.sVe);
+          com.tencent.mm.plugin.facedetect.model.d.dhV().b(a.o(a.this));
+          a.a(a.this, a.a.wBb);
           a.m(a.this).release();
           AppMethodBeat.o(104070);
           return;
@@ -509,26 +516,23 @@ public class a
     AppMethodBeat.o(104083);
   }
   
-  public final a cTI()
+  public final a diN()
   {
     synchronized (this.mLock)
     {
-      a locala = this.sUu;
+      a locala = this.wAr;
       return locala;
     }
   }
   
   public final boolean isStarted()
   {
-    for (;;)
+    synchronized (this.mLock)
     {
-      synchronized (this.mLock)
+      if (this.wAr == a.wAY)
       {
-        if (this.sUu == a.sVb)
-        {
-          bool = true;
-          return bool;
-        }
+        bool = true;
+        return bool;
       }
       boolean bool = false;
     }
@@ -539,13 +543,13 @@ public class a
     static
     {
       AppMethodBeat.i(104077);
-      sUZ = new a("UNINITIALIZED", 0);
-      sVa = new a("INITIALIZED", 1);
-      sVb = new a("STARTED", 2);
-      sVc = new a("STOPPING", 3);
-      sVd = new a("STOPPED", 4);
-      sVe = new a("CANCELLED", 5);
-      sVf = new a[] { sUZ, sVa, sVb, sVc, sVd, sVe };
+      wAW = new a("UNINITIALIZED", 0);
+      wAX = new a("INITIALIZED", 1);
+      wAY = new a("STARTED", 2);
+      wAZ = new a("STOPPING", 3);
+      wBa = new a("STOPPED", 4);
+      wBb = new a("CANCELLED", 5);
+      wBc = new a[] { wAW, wAX, wAY, wAZ, wBa, wBb };
       AppMethodBeat.o(104077);
     }
     
@@ -554,7 +558,7 @@ public class a
   
   public static abstract interface b
   {
-    public abstract void arD(String paramString);
+    public abstract void azE(String paramString);
   }
 }
 

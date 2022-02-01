@@ -1,72 +1,72 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.cd.b;
 import java.util.LinkedList;
 
 public final class ash
-  extends dop
+  extends dyl
 {
-  public String LAt;
-  public aov LCA;
-  public b LDs;
+  public aqe SFL;
+  public String SFM;
+  public b lastBuffer;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(209414);
+    AppMethodBeat.i(203061);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.LDs != null) {
-        paramVarArgs.c(2, this.LDs);
-      }
-      if (this.LAt != null) {
-        paramVarArgs.e(3, this.LAt);
-      }
-      if (this.LCA != null)
+      if (this.SFL != null)
       {
-        paramVarArgs.ni(4, this.LCA.computeSize());
-        this.LCA.writeFields(paramVarArgs);
+        paramVarArgs.oE(2, this.SFL.computeSize());
+        this.SFL.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(209414);
+      if (this.SFM != null) {
+        paramVarArgs.f(3, this.SFM);
+      }
+      if (this.lastBuffer != null) {
+        paramVarArgs.c(4, this.lastBuffer);
+      }
+      AppMethodBeat.o(203061);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label586;
+        break label542;
       }
     }
-    label586:
-    for (int i = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label542:
+    for (int i = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.LDs != null) {
-        paramInt = i + g.a.a.b.b.a.b(2, this.LDs);
+      if (this.SFL != null) {
+        paramInt = i + g.a.a.a.oD(2, this.SFL.computeSize());
       }
       i = paramInt;
-      if (this.LAt != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.LAt);
+      if (this.SFM != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.SFM);
       }
       paramInt = i;
-      if (this.LCA != null) {
-        paramInt = i + g.a.a.a.nh(4, this.LCA.computeSize());
+      if (this.lastBuffer != null) {
+        paramInt = i + g.a.a.b.b.a.b(4, this.lastBuffer);
       }
-      AppMethodBeat.o(209414);
+      AppMethodBeat.o(203061);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(209414);
+        AppMethodBeat.o(203061);
         return 0;
       }
       if (paramInt == 3)
@@ -75,52 +75,53 @@ public final class ash
         ash localash = (ash)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         Object localObject2;
-        boolean bool;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(209414);
+          AppMethodBeat.o(203061);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localash.BaseRequest = ((jr)localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new jg();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((jg)localObject2).parseFrom((byte[])localObject1);
+            }
+            localash.BaseRequest = ((jg)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(209414);
+          AppMethodBeat.o(203061);
           return 0;
         case 2: 
-          localash.LDs = ((g.a.a.a.a)localObject1).UbS.hPo();
-          AppMethodBeat.o(209414);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new aqe();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((aqe)localObject2).parseFrom((byte[])localObject1);
+            }
+            localash.SFL = ((aqe)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(203061);
           return 0;
         case 3: 
-          localash.LAt = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(209414);
+          localash.SFM = ((g.a.a.a.a)localObject1).abFh.readString();
+          AppMethodBeat.o(203061);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new aov();
-          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((aov)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-          localash.LCA = ((aov)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(209414);
+        localash.lastBuffer = ((g.a.a.a.a)localObject1).abFh.iUw();
+        AppMethodBeat.o(203061);
         return 0;
       }
-      AppMethodBeat.o(209414);
+      AppMethodBeat.o(203061);
       return -1;
     }
   }

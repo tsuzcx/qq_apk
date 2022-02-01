@@ -1,160 +1,107 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cd.b;
+import java.util.LinkedList;
 
 public final class ams
-  extends com.tencent.mm.bw.a
+  extends dyl
 {
-  public boolean LxN = false;
-  public boolean LxO = false;
-  public boolean LxP = false;
-  public boolean LxQ = false;
-  public boolean LxR = false;
-  public int dRt;
-  public String dWi;
-  public String label;
-  public double lat;
-  public double lng;
-  
-  public final ams B(double paramDouble)
-  {
-    this.lng = paramDouble;
-    this.LxN = true;
-    return this;
-  }
-  
-  public final ams C(double paramDouble)
-  {
-    this.lat = paramDouble;
-    this.LxO = true;
-    return this;
-  }
-  
-  public final ams aji(int paramInt)
-  {
-    this.dRt = paramInt;
-    this.LxP = true;
-    return this;
-  }
-  
-  public final ams bgW(String paramString)
-  {
-    this.label = paramString;
-    this.LxQ = true;
-    return this;
-  }
-  
-  public final ams bgX(String paramString)
-  {
-    this.dWi = paramString;
-    this.LxR = true;
-    return this;
-  }
+  public b SwT;
+  public b SwU;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(127466);
+    AppMethodBeat.i(149124);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.LxN == true) {
-        paramVarArgs.e(1, this.lng);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.LxO == true) {
-        paramVarArgs.e(2, this.lat);
+      if (this.SwT != null) {
+        paramVarArgs.c(2, this.SwT);
       }
-      if (this.LxP == true) {
-        paramVarArgs.aM(3, this.dRt);
+      if (this.SwU != null) {
+        paramVarArgs.c(3, this.SwU);
       }
-      if (this.label != null) {
-        paramVarArgs.e(4, this.label);
-      }
-      if (this.dWi != null) {
-        paramVarArgs.e(5, this.dWi);
-      }
-      AppMethodBeat.o(127466);
+      AppMethodBeat.o(149124);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.LxN != true) {
-        break label494;
+      if (this.BaseRequest == null) {
+        break label408;
       }
     }
-    label494:
-    for (int i = g.a.a.b.b.a.fS(1) + 8 + 0;; i = 0)
+    label408:
+    for (int i = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.LxO == true) {
-        paramInt = i + (g.a.a.b.b.a.fS(2) + 8);
+      if (this.SwT != null) {
+        paramInt = i + g.a.a.b.b.a.b(2, this.SwT);
       }
       i = paramInt;
-      if (this.LxP == true) {
-        i = paramInt + g.a.a.b.b.a.bu(3, this.dRt);
+      if (this.SwU != null) {
+        i = paramInt + g.a.a.b.b.a.b(3, this.SwU);
       }
-      paramInt = i;
-      if (this.label != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.label);
-      }
-      i = paramInt;
-      if (this.dWi != null) {
-        i = paramInt + g.a.a.b.b.a.f(5, this.dWi);
-      }
-      AppMethodBeat.o(127466);
+      AppMethodBeat.o(149124);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(127466);
+        AppMethodBeat.o(149124);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         ams localams = (ams)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(127466);
+          AppMethodBeat.o(149124);
           return -1;
         case 1: 
-          localams.lng = Double.longBitsToDouble(locala.UbS.zn());
-          localams.LxN = true;
-          AppMethodBeat.o(127466);
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            jg localjg = new jg();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localjg.parseFrom((byte[])localObject);
+            }
+            localams.BaseRequest = localjg;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(149124);
           return 0;
         case 2: 
-          localams.lat = Double.longBitsToDouble(locala.UbS.zn());
-          localams.LxO = true;
-          AppMethodBeat.o(127466);
-          return 0;
-        case 3: 
-          localams.dRt = locala.UbS.zi();
-          localams.LxP = true;
-          AppMethodBeat.o(127466);
-          return 0;
-        case 4: 
-          localams.label = locala.UbS.readString();
-          localams.LxQ = true;
-          AppMethodBeat.o(127466);
+          localams.SwT = ((g.a.a.a.a)localObject).abFh.iUw();
+          AppMethodBeat.o(149124);
           return 0;
         }
-        localams.dWi = locala.UbS.readString();
-        localams.LxR = true;
-        AppMethodBeat.o(127466);
+        localams.SwU = ((g.a.a.a.a)localObject).abFh.iUw();
+        AppMethodBeat.o(149124);
         return 0;
       }
-      AppMethodBeat.o(127466);
+      AppMethodBeat.o(149124);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ams
  * JD-Core Version:    0.7.0.1
  */

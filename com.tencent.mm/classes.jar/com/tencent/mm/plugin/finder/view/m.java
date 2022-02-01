@@ -1,294 +1,218 @@
 package com.tencent.mm.plugin.finder.view;
 
-import android.graphics.SurfaceTexture;
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaCodec.Callback;
-import android.media.MediaCodec.CodecException;
-import android.media.MediaFormat;
-import android.os.HandlerThread;
-import android.view.Surface;
-import android.view.TextureView;
-import android.view.TextureView.SurfaceTextureListener;
+import android.app.Activity;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.i.c;
+import com.tencent.mm.f.a.xl;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.finder.live.model.FinderLiveBundle;
+import com.tencent.mm.plugin.finder.live.report.k;
+import com.tencent.mm.plugin.finder.live.report.s.t;
+import com.tencent.mm.plugin.finder.model.bu;
+import com.tencent.mm.plugin.finder.model.y;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
+import com.tencent.mm.protocal.protobuf.bac;
+import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMHandler;
-import java.nio.ByteBuffer;
-import kotlin.g.a.a;
-import kotlin.g.a.b;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.g.b.q;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderVideoFrameSeeker;", "", "path", "", "textureView", "Landroid/view/TextureView;", "(Ljava/lang/String;Landroid/view/TextureView;)V", "TAG", "canPauseInput", "", "getCanPauseInput", "()Z", "setCanPauseInput", "(Z)V", "curInputTimeUs", "", "getCurInputTimeUs", "()J", "setCurInputTimeUs", "(J)V", "curOutputTimeUs", "getCurOutputTimeUs", "setCurOutputTimeUs", "decoder", "Landroid/media/MediaCodec;", "getDecoder", "()Landroid/media/MediaCodec;", "setDecoder", "(Landroid/media/MediaCodec;)V", "extractor", "Lcom/tencent/mm/compatible/video/VFSMediaExtractor;", "getExtractor", "()Lcom/tencent/mm/compatible/video/VFSMediaExtractor;", "setExtractor", "(Lcom/tencent/mm/compatible/video/VFSMediaExtractor;)V", "frameFlagExtractor", "getFrameFlagExtractor", "setFrameFlagExtractor", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getHandler", "()Lcom/tencent/mm/sdk/platformtools/MMHandler;", "setHandler", "(Lcom/tencent/mm/sdk/platformtools/MMHandler;)V", "hasStart", "getHasStart", "setHasStart", "ht", "Landroid/os/HandlerThread;", "getHt", "()Landroid/os/HandlerThread;", "setHt", "(Landroid/os/HandlerThread;)V", "lastSeekTimeMs", "getLastSeekTimeMs", "setLastSeekTimeMs", "lastSyncFrameTimeUs", "getLastSyncFrameTimeUs", "setLastSyncFrameTimeUs", "lock", "Ljava/lang/Object;", "getLock", "()Ljava/lang/Object;", "mediaFormat", "Landroid/media/MediaFormat;", "getMediaFormat", "()Landroid/media/MediaFormat;", "setMediaFormat", "(Landroid/media/MediaFormat;)V", "mime", "getMime", "()Ljava/lang/String;", "setMime", "(Ljava/lang/String;)V", "getPath", "getTextureView", "()Landroid/view/TextureView;", "destroy", "", "releaseDecoder", "seekTo", "timeMs", "start", "onTextureReady", "Lkotlin/Function0;", "onTextureDestroy", "onSeekFrame", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "frameUs", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderSnsHeaderPresenter;", "", "context", "Landroid/app/Activity;", "viewCallback", "Lcom/tencent/mm/view/IViewActionCallback;", "(Landroid/app/Activity;Lcom/tencent/mm/view/IViewActionCallback;)V", "TAG", "", "getContext", "()Landroid/app/Activity;", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lkotlin/collections/ArrayList;", "getDataList", "()Ljava/util/ArrayList;", "dataLoader", "Lcom/tencent/mm/plugin/finder/feed/model/FinderSnsHeaderLoader;", "snsRefreshListener", "com/tencent/mm/plugin/finder/view/FinderSnsHeaderPresenter$snsRefreshListener$1", "Lcom/tencent/mm/plugin/finder/view/FinderSnsHeaderPresenter$snsRefreshListener$1;", "getViewCallback", "()Lcom/tencent/mm/view/IViewActionCallback;", "clearAll", "", "convertToVisitorData", "Lcom/tencent/mm/plugin/finder/live/model/FinderLiveBundle;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedLiveListItem;", "position", "", "getListOfType", "E", "clazz", "Ljava/lang/Class;", "goSetting", "gotoLive", "item", "initData", "loadMore", "refresh", "release", "statsReport", "exposed", "commentScene", "plugin-finder_release"})
 public final class m
 {
-  public final String TAG;
-  public final TextureView bec;
-  public MediaCodec decoder;
-  public MMHandler handler;
-  public boolean hki;
-  public c jto;
-  public final Object lock;
-  public MediaFormat mediaFormat;
-  public String mime;
-  public final String path;
-  public c wpL;
-  public HandlerThread wpM;
-  public long wpN;
-  public long wpO;
-  private long wpP;
-  public long wpQ;
-  boolean wpR;
+  final com.tencent.mm.plugin.finder.feed.model.l AZS;
+  final a AZT;
+  private final String TAG;
+  final Activity fDf;
+  final ArrayList<bu> mXB;
+  private final com.tencent.mm.view.j xJl;
   
-  public m(String paramString, TextureView paramTextureView)
+  public m(Activity paramActivity, com.tencent.mm.view.j paramj)
   {
-    AppMethodBeat.i(255011);
-    this.path = paramString;
-    this.bec = paramTextureView;
-    this.TAG = "Finder.FinderVideoFrameSeeker";
-    this.lock = new Object();
-    this.wpN = -1L;
-    this.wpO = -1L;
-    this.wpP = -1L;
-    this.wpQ = -1L;
-    AppMethodBeat.o(255011);
+    AppMethodBeat.i(286231);
+    this.fDf = paramActivity;
+    this.xJl = paramj;
+    this.TAG = "Finder.FinderSnsHeaderPresenter";
+    this.mXB = new ArrayList();
+    this.AZS = new com.tencent.mm.plugin.finder.feed.model.l(this.mXB, this.xJl);
+    this.AZT = new a(this);
+    AppMethodBeat.o(286231);
   }
   
-  public final c dHm()
+  public final <E> ArrayList<E> aL(Class<E> paramClass)
   {
-    AppMethodBeat.i(255009);
-    c localc = this.jto;
-    if (localc == null) {
-      p.btv("extractor");
-    }
-    AppMethodBeat.o(255009);
-    return localc;
-  }
-  
-  public final void releaseDecoder()
-  {
-    AppMethodBeat.i(255010);
-    MediaCodec localMediaCodec = this.decoder;
-    if (localMediaCodec != null) {
-      localMediaCodec.stop();
-    }
-    localMediaCodec = this.decoder;
-    if (localMediaCodec != null) {
-      localMediaCodec.release();
-    }
-    this.decoder = null;
-    AppMethodBeat.o(255010);
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/view/FinderVideoFrameSeeker$start$1", "Landroid/view/TextureView$SurfaceTextureListener;", "onSurfaceTextureAvailable", "", "surface", "Landroid/graphics/SurfaceTexture;", "width", "", "height", "onSurfaceTextureDestroyed", "", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "plugin-finder_release"})
-  public static final class a
-    implements TextureView.SurfaceTextureListener
-  {
-    public a(a parama1, b paramb, a parama2) {}
-    
-    public final void onSurfaceTextureAvailable(final SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+    AppMethodBeat.i(286230);
+    p.k(paramClass, "clazz");
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = ((Iterable)this.mXB).iterator();
+    while (localIterator.hasNext())
     {
-      AppMethodBeat.i(255008);
-      MMHandler localMMHandler = this.wpS.handler;
-      if (localMMHandler == null) {
-        p.btv("handler");
+      bu localbu = (bu)localIterator.next();
+      if (paramClass.isInstance(localbu)) {
+        localArrayList.add((Object)localbu);
       }
-      localMMHandler.post((Runnable)new a(this, paramSurfaceTexture));
-      AppMethodBeat.o(255008);
     }
-    
-    public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
+    AppMethodBeat.o(286230);
+    return localArrayList;
+  }
+  
+  public final void f(bu parambu)
+  {
+    AppMethodBeat.i(286229);
+    p.k(parambu, "item");
+    if ((parambu instanceof y))
     {
-      AppMethodBeat.i(255007);
-      this.wpS.releaseDecoder();
-      this.wpT.invoke();
-      AppMethodBeat.o(255007);
-      return true;
-    }
-    
-    public final void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2) {}
-    
-    public final void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
-    
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-    static final class a
-      implements Runnable
-    {
-      a(m.a parama, SurfaceTexture paramSurfaceTexture) {}
-      
-      public final void run()
+      Object localObject5;
+      Object localObject3;
+      Object localObject4;
+      if (Util.isEqual(((y)parambu).zAF.username, z.bdh()))
       {
-        AppMethodBeat.i(255006);
-        if (this.wpV.wpS.decoder != null) {
-          this.wpV.wpS.releaseDecoder();
-        }
-        Object localObject1 = this.wpV.wpS;
-        Object localObject2 = this.wpV.wpS.mime;
+        localObject1 = com.tencent.mm.plugin.finder.utils.a.ACH;
+        localObject5 = (Context)this.fDf;
+        long l = ((y)parambu).zAF.id;
+        localObject2 = ((y)parambu).zAF.objectNonceId;
+        localObject1 = localObject2;
         if (localObject2 == null) {
-          p.btv("mime");
+          localObject1 = "";
         }
-        ((m)localObject1).decoder = MediaCodec.createDecoderByType((String)localObject2);
-        localObject1 = this.wpV.wpS.decoder;
-        if (localObject1 != null)
+        localObject3 = ((y)parambu).zAF.liveInfo;
+        localObject2 = localObject3;
+        if (localObject3 == null) {
+          localObject2 = new bac();
+        }
+        localObject3 = ((y)parambu).zAF.objectDesc;
+        if (localObject3 != null)
         {
-          ((MediaCodec)localObject1).setCallback((MediaCodec.Callback)new a(this));
-          localObject2 = this.wpV.wpS.mediaFormat;
-          if (localObject2 == null) {
-            p.btv("mediaFormat");
-          }
-          ((MediaCodec)localObject1).configure((MediaFormat)localObject2, new Surface(paramSurfaceTexture), null, 0);
-          this.wpV.wpS.bec.post((Runnable)new b(this));
-          AppMethodBeat.o(255006);
-          return;
+          localObject4 = ((FinderObjectDesc)localObject3).description;
+          localObject3 = localObject4;
+          if (localObject4 != null) {}
         }
-        AppMethodBeat.o(255006);
+        else
+        {
+          localObject3 = "";
+        }
+        com.tencent.mm.plugin.finder.utils.a.a((Context)localObject5, l, (String)localObject1, (bac)localObject2, null, (String)localObject3, null, null, null, ((y)parambu).zAF.sessionBuffer, null, null, 7088);
+        AppMethodBeat.o(286229);
+        return;
       }
-      
-      @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/view/FinderVideoFrameSeeker$start$1$onSurfaceTextureAvailable$1$1$1", "Landroid/media/MediaCodec$Callback;", "onError", "", "codec", "Landroid/media/MediaCodec;", "e", "Landroid/media/MediaCodec$CodecException;", "onInputBufferAvailable", "decoder", "inputIndex", "", "onOutputBufferAvailable", "outputIndex", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "onOutputFormatChanged", "format", "Landroid/media/MediaFormat;", "plugin-finder_release"})
-      public static final class a
-        extends MediaCodec.Callback
+      Object localObject2 = aL(y.class);
+      Object localObject1 = (List)localObject2;
+      int i = 0;
+      localObject1 = ((List)localObject1).iterator();
+      int j;
+      if (((Iterator)localObject1).hasNext()) {
+        if (((y)((Iterator)localObject1).next()).zAF.id == parambu.mf())
+        {
+          j = 1;
+          label257:
+          if (j == 0) {
+            break label487;
+          }
+        }
+      }
+      for (;;)
       {
-        a(m.a.a parama) {}
-        
-        public final void onError(MediaCodec paramMediaCodec, MediaCodec.CodecException paramCodecException)
-        {
-          AppMethodBeat.i(255004);
-          p.h(paramMediaCodec, "codec");
-          p.h(paramCodecException, "e");
-          AppMethodBeat.o(255004);
+        Log.i(this.TAG, "click item position:".concat(String.valueOf(i)));
+        if (i < 0) {
+          break label577;
         }
-        
-        public final void onInputBufferAvailable(MediaCodec paramMediaCodec, int paramInt)
+        k.yBj.a((y)parambu, ((y)parambu).zAF.username, i, s.t.yGP, "61");
+        parambu = com.tencent.mm.plugin.finder.utils.a.ACH;
+        localObject3 = (Context)this.fDf;
+        localObject4 = new FinderLiveBundle();
+        ((FinderLiveBundle)localObject4).yeA = i;
+        ((FinderLiveBundle)localObject4).fEH = 0;
+        ((FinderLiveBundle)localObject4).xkX = 61;
+        parambu = (y)kotlin.a.j.M((List)localObject2, i);
+        if (parambu != null)
         {
-          AppMethodBeat.i(255002);
-          p.h(paramMediaCodec, "decoder");
-          Log.i(this.wpX.wpV.wpS.TAG, "lxl onInputBufferAvailable");
-          localObject = this.wpX.wpV.wpS.lock;
-          if (paramInt >= 0) {}
-          for (;;)
+          parambu = parambu.zAF;
+          if (parambu != null)
           {
-            try
-            {
-              ByteBuffer localByteBuffer = paramMediaCodec.getInputBuffer(paramInt);
-              c localc = this.wpX.wpV.wpS.dHm();
-              if (localByteBuffer == null) {
-                p.hyc();
-              }
-              i = localc.readSampleData(localByteBuffer, 0);
-              if (i >= 0) {
-                continue;
-              }
-              Log.i(this.wpX.wpV.wpS.TAG, "lxl queueInputBuffer BUFFER_FLAG_END_OF_STREAM");
-              paramMediaCodec.queueInputBuffer(paramInt, 0, 0, 0L, 4);
-              if (this.wpX.wpV.wpS.wpR)
-              {
-                this.wpX.wpV.wpS.lock.wait();
-                this.wpX.wpV.wpS.wpR = false;
-              }
+            localObject1 = parambu.nickname;
+            parambu = (bu)localObject1;
+            if (localObject1 != null) {
+              break label393;
             }
-            catch (Throwable paramMediaCodec)
-            {
-              int i;
-              Log.printErrStackTrace(this.wpX.wpV.wpS.TAG, paramMediaCodec, "lxl onInputBufferAvailable exception", new Object[0]);
-              continue;
-            }
-            finally
-            {
-              AppMethodBeat.o(255002);
-            }
-            paramMediaCodec = x.SXb;
-            AppMethodBeat.o(255002);
-            return;
-            paramMediaCodec.queueInputBuffer(paramInt, 0, i, this.wpX.wpV.wpS.dHm().getSampleTime(), 0);
-            this.wpX.wpV.wpS.dHm().advance();
-            Log.i(this.wpX.wpV.wpS.TAG, "lxl queueInputBuffer " + this.wpX.wpV.wpS.dHm().getSampleTime() / 1000L);
           }
         }
-        
-        public final void onOutputBufferAvailable(MediaCodec arg1, int paramInt, MediaCodec.BufferInfo paramBufferInfo)
+        parambu = "";
+        label393:
+        ((FinderLiveBundle)localObject4).aCa(parambu);
+        localObject1 = (Iterable)localObject2;
+        parambu = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject1, 10));
+        localObject1 = ((Iterable)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          AppMethodBeat.i(255001);
-          p.h(???, "decoder");
-          p.h(paramBufferInfo, "bufferInfo");
-          Log.i(this.wpX.wpV.wpS.TAG, "lxl onOutputBufferAvailable");
-          switch (paramInt)
-          {
-          default: 
-            if (paramInt < 0) {
-              break;
-            }
-          }
-          try
-          {
-            if ((paramBufferInfo.flags & 0x4) == 0) {
-              break label149;
-            }
-            Log.i(this.wpX.wpV.wpS.TAG, "lxl releaseOutputBuffer BUFFER_FLAG_END_OF_STREAM");
-            ???.releaseOutputBuffer(paramInt, false);
-            AppMethodBeat.o(255001);
-            return;
-          }
-          catch (Throwable ???)
-          {
-            Log.printErrStackTrace(this.wpX.wpV.wpS.TAG, ???, "lxl onOutputBufferAvailable exception", new Object[0]);
-            AppMethodBeat.o(255001);
-            return;
-          }
-          ???.releaseOutputBuffer(paramInt, false);
-          AppMethodBeat.o(255001);
-          return;
-          label149:
-          if (paramBufferInfo.presentationTimeUs >= this.wpX.wpV.wpS.wpN * 1000L)
-          {
-            ???.releaseOutputBuffer(paramInt, true);
-            this.wpX.wpV.wbp.invoke(Long.valueOf(paramBufferInfo.presentationTimeUs));
-            Log.i(this.wpX.wpV.wpS.TAG, "lxl releaseOutputBuffer " + paramBufferInfo.presentationTimeUs / 1000L + ", render!");
-          }
-          for (;;)
-          {
-            synchronized (this.wpX.wpV.wpS.lock)
-            {
-              this.wpX.wpV.wpS.wpR = true;
-              x localx = x.SXb;
-              this.wpX.wpV.wpS.wpQ = paramBufferInfo.presentationTimeUs;
-              AppMethodBeat.o(255001);
-              return;
-            }
-            Log.i(this.wpX.wpV.wpS.TAG, "lxl releaseOutputBuffer " + paramBufferInfo.presentationTimeUs / 1000L + ", no");
-            ???.releaseOutputBuffer(paramInt, false);
-          }
+          localObject5 = (y)((Iterator)localObject1).next();
+          com.tencent.mm.plugin.finder.live.utils.a locala = com.tencent.mm.plugin.finder.live.utils.a.yRm;
+          parambu.add(com.tencent.mm.plugin.finder.live.utils.a.a(((y)localObject5).zAF, 0, false, 6));
         }
-        
-        public final void onOutputFormatChanged(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
-        {
-          AppMethodBeat.i(255003);
-          p.h(paramMediaCodec, "codec");
-          p.h(paramMediaFormat, "format");
-          AppMethodBeat.o(255003);
-        }
+        j = 0;
+        break label257;
+        label487:
+        i += 1;
+        break;
+        i = -1;
       }
-      
-      @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run", "com/tencent/mm/plugin/finder/view/FinderVideoFrameSeeker$start$1$onSurfaceTextureAvailable$1$1$2"})
-      static final class b
-        implements Runnable
+      ((FinderLiveBundle)localObject4).ae(new ArrayList((Collection)parambu));
+      parambu = (y)kotlin.a.j.M((List)localObject2, i);
+      if (parambu != null)
       {
-        b(m.a.a parama) {}
-        
-        public final void run()
+        parambu = parambu.zAF;
+        if (parambu != null)
         {
-          AppMethodBeat.i(255005);
-          this.wpX.wpV.wpU.invoke();
-          AppMethodBeat.o(255005);
+          parambu = parambu.liveInfo;
+          if (parambu == null) {}
         }
       }
+      for (i = parambu.SLO;; i = 0)
+      {
+        ((FinderLiveBundle)localObject4).extFlag = i;
+        com.tencent.mm.plugin.finder.utils.a.a((Context)localObject3, (FinderLiveBundle)localObject4, null, null, null, 28);
+        label577:
+        AppMethodBeat.o(286229);
+        return;
+      }
+    }
+    Log.i(this.TAG, "click not FinderFeedLiveListItem");
+    AppMethodBeat.o(286229);
+  }
+  
+  public final void release()
+  {
+    AppMethodBeat.i(286228);
+    this.AZT.dead();
+    this.AZS.release();
+    AppMethodBeat.o(286228);
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/FinderSnsHeaderPresenter$snsRefreshListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/SnsTimelineRefreshEvent;", "callback", "", "event", "plugin-finder_release"})
+  public static final class a
+    extends IListener<xl>
+  {}
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  static final class b
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    b(ArrayList paramArrayList)
+    {
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.m
  * JD-Core Version:    0.7.0.1
  */

@@ -4,18 +4,18 @@ import java.util.List;
 
 public final class j
 {
-  public String APc;
-  public String APm;
-  public String APn;
-  public String APo;
-  public String APp;
-  public String APq;
-  public String APr;
-  public String APs;
-  public String APt;
-  public List<a> APu;
-  public List<b> APv;
-  public String dWG;
+  public String GIA;
+  public String GIB;
+  public String GIC;
+  public String GID;
+  public String GIE;
+  public String GIF;
+  public String GIG;
+  public String GIH;
+  public List<a> GII;
+  public List<b> GIJ;
+  public String GIq;
+  public String fQs;
   public String msgId;
   
   public static final class a

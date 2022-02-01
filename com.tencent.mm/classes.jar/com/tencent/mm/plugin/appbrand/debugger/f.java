@@ -1,17 +1,15 @@
 package com.tencent.mm.plugin.appbrand.debugger;
 
-import com.tencent.mm.plugin.appbrand.d;
-import com.tencent.mm.plugin.appbrand.jsapi.ab;
+import com.tencent.mm.kernel.c.a;
 
-public final class f
-  extends ab<d>
+public abstract interface f
+  extends a
 {
-  public static final int CTRL_INDEX = -2;
-  public static final String NAME = "remoteDebugInfo";
+  public abstract void afE(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.f
  * JD-Core Version:    0.7.0.1
  */

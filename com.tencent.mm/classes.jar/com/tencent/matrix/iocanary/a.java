@@ -1,14 +1,14 @@
 package com.tencent.matrix.iocanary;
 
 import android.app.Application;
-import com.tencent.matrix.e.b;
-import com.tencent.matrix.e.c;
+import com.tencent.matrix.d.b;
+import com.tencent.matrix.d.c;
 import com.tencent.matrix.iocanary.core.IOCanaryCore;
 
-public final class a
+public class a
   extends b
 {
-  private IOCanaryCore cUy;
+  private IOCanaryCore cYB;
   public final com.tencent.matrix.iocanary.a.a mIOConfig;
   
   public a(com.tencent.matrix.iocanary.a.a parama)
@@ -16,38 +16,38 @@ public final class a
     this.mIOConfig = parama;
   }
   
-  public final void destroy()
+  public void destroy()
   {
     super.destroy();
   }
   
-  public final String getTag()
+  public String getTag()
   {
     return "io";
   }
   
-  public final void init(Application paramApplication, c paramc)
+  public void init(Application paramApplication, c paramc)
   {
     super.init(paramApplication, paramc);
     com.tencent.matrix.iocanary.c.a.setPackageName(paramApplication);
-    this.cUy = new IOCanaryCore(this);
+    this.cYB = new IOCanaryCore(this);
   }
   
-  public final void start()
+  public void start()
   {
     super.start();
-    this.cUy.start();
+    this.cYB.start();
   }
   
-  public final void stop()
+  public void stop()
   {
     super.stop();
-    this.cUy.stop();
+    this.cYB.stop();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.iocanary.a
  * JD-Core Version:    0.7.0.1
  */

@@ -10,16 +10,16 @@ import org.json.JSONObject;
 public final class b
   extends a
 {
-  public String Ita;
-  public String Itb;
-  public boolean Ity;
-  public String dRM;
+  public String PlK;
+  public String PlL;
+  public boolean Pmi;
+  public String fLj;
   
   public b(String paramString1, String paramString2)
   {
     AppMethodBeat.i(72049);
-    this.Ita = paramString1;
-    this.Itb = paramString2;
+    this.PlK = paramString1;
+    this.PlL = paramString2;
     HashMap localHashMap = new HashMap();
     localHashMap.put("dial_code", paramString1);
     localHashMap.put("number", String.valueOf(paramString2));
@@ -27,7 +27,7 @@ public final class b
     AppMethodBeat.o(72049);
   }
   
-  public final int fPU()
+  public final int gIA()
   {
     return 12;
   }
@@ -36,8 +36,8 @@ public final class b
   {
     AppMethodBeat.i(72050);
     Log.d("MicroMsg.NetScenePayUGenerateOtp", "hy: get NetScenePayUGenerateOtp info. errCode: %d, errMsg:%s, json:%s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject.toString() });
-    this.Ity = paramJSONObject.optBoolean("has_mobile");
-    this.dRM = paramJSONObject.optString("payu_reference");
+    this.Pmi = paramJSONObject.optBoolean("has_mobile");
+    this.fLj = paramJSONObject.optString("payu_reference");
     AppMethodBeat.o(72050);
   }
 }

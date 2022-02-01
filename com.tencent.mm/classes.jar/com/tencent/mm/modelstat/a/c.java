@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
 {
-  public static Bundle PV(String paramString)
+  public static Bundle Xs(String paramString)
   {
     AppMethodBeat.i(151154);
     Log.v("MicroMsg.WebViewMMReportUtil", "create webview bundle name[%s]", new Object[] { paramString });

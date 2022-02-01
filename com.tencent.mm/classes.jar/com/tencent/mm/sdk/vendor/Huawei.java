@@ -17,16 +17,17 @@ public class Huawei
   private static final String HUAWEI_SYSTEM_STRING = "ro.build.version.emui";
   private static final String TAG = "MicroMsg.Vendor.Huawei";
   private static Boolean ifHUAWEI = null;
+  private static Boolean ifOnlyHUAWEI = null;
   private static String systemName = null;
   
   private static String getProperty()
   {
-    AppMethodBeat.i(214373);
+    AppMethodBeat.i(209942);
     Object localObject;
     if (!Util.isNullOrNil(systemName))
     {
       localObject = systemName;
-      AppMethodBeat.o(214373);
+      AppMethodBeat.o(209942);
       return localObject;
     }
     try
@@ -35,7 +36,7 @@ public class Huawei
       localObject = (String)((Class)localObject).getMethod("get", new Class[] { String.class, String.class }).invoke(localObject, new Object[] { "ro.build.version.emui", "unknown" });
       localObject = Util.nullAs((String)localObject, "").toLowerCase();
       systemName = (String)localObject;
-      AppMethodBeat.o(214373);
+      AppMethodBeat.o(209942);
       return localObject;
     }
     catch (Exception localException)
@@ -92,6 +93,7 @@ public class Huawei
     return false;
   }
   
+  @Deprecated
   public static boolean ifHUAWEI()
   {
     AppMethodBeat.i(153473);
@@ -119,51 +121,87 @@ public class Huawei
     }
   }
   
+  public static boolean ifOnlyHUAWEI()
+  {
+    boolean bool = true;
+    AppMethodBeat.i(209926);
+    String str;
+    if (ifOnlyHUAWEI == null)
+    {
+      str = Build.BRAND;
+      Log.i("MicroMsg.Vendor.Huawei", "Build.BRAND = %s", new Object[] { str });
+      if (!"HUAWEI".equalsIgnoreCase(str)) {
+        break label61;
+      }
+      ifOnlyHUAWEI = Boolean.TRUE;
+    }
+    for (;;)
+    {
+      bool = ifOnlyHUAWEI.booleanValue();
+      AppMethodBeat.o(209926);
+      return bool;
+      label61:
+      if ("HONOR".equalsIgnoreCase(str))
+      {
+        str = Build.MANUFACTURER;
+        Log.i("MicroMsg.Vendor.Huawei", "Build.MANUFACTURER = %s", new Object[] { str });
+        if (!"HONOR".equalsIgnoreCase(str)) {}
+        for (;;)
+        {
+          ifOnlyHUAWEI = Boolean.valueOf(bool);
+          break;
+          bool = false;
+        }
+      }
+      ifOnlyHUAWEI = Boolean.FALSE;
+    }
+  }
+  
   public static boolean isEMUI10()
   {
-    AppMethodBeat.i(214371);
+    AppMethodBeat.i(209934);
     if (getProperty().startsWith("EmotionUI_10".toLowerCase()))
     {
-      AppMethodBeat.o(214371);
+      AppMethodBeat.o(209934);
       return true;
     }
-    AppMethodBeat.o(214371);
+    AppMethodBeat.o(209934);
     return false;
   }
   
   public static boolean isEMUI8()
   {
-    AppMethodBeat.i(214369);
+    AppMethodBeat.i(209929);
     if (getProperty().startsWith("EmotionUI_8".toLowerCase()))
     {
-      AppMethodBeat.o(214369);
+      AppMethodBeat.o(209929);
       return true;
     }
-    AppMethodBeat.o(214369);
+    AppMethodBeat.o(209929);
     return false;
   }
   
   public static boolean isEMUI9()
   {
-    AppMethodBeat.i(214370);
+    AppMethodBeat.i(209931);
     if (getProperty().startsWith("EmotionUI_9".toLowerCase()))
     {
-      AppMethodBeat.o(214370);
+      AppMethodBeat.o(209931);
       return true;
     }
-    AppMethodBeat.o(214370);
+    AppMethodBeat.o(209931);
     return false;
   }
   
   public static boolean isNotBelowEMUI10()
   {
-    AppMethodBeat.i(214372);
+    AppMethodBeat.i(209937);
     if (getProperty().startsWith("EmotionUI_1".toLowerCase()))
     {
-      AppMethodBeat.o(214372);
+      AppMethodBeat.o(209937);
       return true;
     }
-    AppMethodBeat.o(214372);
+    AppMethodBeat.o(209937);
     return false;
   }
 }

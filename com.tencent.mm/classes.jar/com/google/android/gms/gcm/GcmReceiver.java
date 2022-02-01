@@ -7,9 +7,9 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.ServiceInfo;
 import android.os.Build.VERSION;
-import android.support.v4.content.WakefulBroadcastReceiver;
 import android.util.Base64;
 import android.util.Log;
+import androidx.legacy.content.WakefulBroadcastReceiver;
 import com.google.android.gms.common.util.PlatformVersion;
 import com.google.android.gms.iid.zzk;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -206,7 +206,7 @@ public class GcmReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.gcm.GcmReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -4,50 +4,51 @@ import android.app.Activity;
 import android.content.res.Resources;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a.b;
-import com.tencent.mm.al.a.c;
-import com.tencent.mm.al.a.k;
-import com.tencent.mm.al.a.l;
-import com.tencent.mm.al.ag;
+import com.tencent.mm.R.l;
+import com.tencent.mm.ao.a.b;
+import com.tencent.mm.ao.a.c;
+import com.tencent.mm.ao.a.k;
+import com.tencent.mm.ao.a.l;
+import com.tencent.mm.ao.af;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.MStorageEx;
 import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
-import com.tencent.mm.ui.contact.a.h;
-import com.tencent.mm.ui.contact.n;
-import com.tencent.mm.ui.contact.p;
+import com.tencent.mm.ui.contact.a.j;
+import com.tencent.mm.ui.contact.o;
 import com.tencent.mm.ui.contact.q;
+import com.tencent.mm.ui.contact.r;
 
 public final class d
-  extends q
+  extends r
   implements MStorageEx.IOnStorageChange
 {
-  private int CuC;
-  private Cursor jWh;
-  private String ppO;
+  private int Isp;
+  private Cursor mNt;
+  private String syN;
   
   public d(MMBaseSelectContactUI paramMMBaseSelectContactUI, String paramString)
   {
     super(paramMMBaseSelectContactUI, null, false, false);
     AppMethodBeat.i(34092);
     Log.i("MicroMsg.RecentConversationAdapter", "create!");
-    this.ppO = paramString;
-    and();
+    this.syN = paramString;
+    ate();
     AppMethodBeat.o(34092);
   }
   
-  public final void and()
+  public final void ate()
   {
     AppMethodBeat.i(34093);
     Log.i("MicroMsg.RecentConversationAdapter", "resetData");
-    if (this.jWh != null)
+    if (this.mNt != null)
     {
-      this.jWh.close();
-      this.jWh = null;
+      this.mNt.close();
+      this.mNt = null;
     }
-    this.jWh = ag.bak().NB(this.ppO);
-    this.CuC = 0;
+    this.mNt = af.bjy().UX(this.syN);
+    this.Isp = 0;
     AppMethodBeat.o(34093);
   }
   
@@ -56,10 +57,10 @@ public final class d
     AppMethodBeat.i(34096);
     super.finish();
     Log.i("MicroMsg.RecentConversationAdapter", "finish!");
-    if (this.jWh != null)
+    if (this.mNt != null)
     {
-      this.jWh.close();
-      this.jWh = null;
+      this.mNt.close();
+      this.mNt = null;
     }
     AppMethodBeat.o(34096);
   }
@@ -67,7 +68,7 @@ public final class d
   public final int getCount()
   {
     AppMethodBeat.i(34094);
-    int i = this.jWh.getCount();
+    int i = this.mNt.getCount();
     AppMethodBeat.o(34094);
     return i + 1;
   }
@@ -75,44 +76,44 @@ public final class d
   public final void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
   {
     AppMethodBeat.i(34097);
-    and();
+    ate();
     notifyDataSetChanged();
     AppMethodBeat.o(34097);
   }
   
-  public final com.tencent.mm.ui.contact.a.a va(int paramInt)
+  public final com.tencent.mm.ui.contact.a.a ye(int paramInt)
   {
     AppMethodBeat.i(34095);
     Object localObject = null;
-    if (paramInt == this.CuC)
+    if (paramInt == this.Isp)
     {
-      localObject = new h(paramInt);
-      ((h)localObject).header = this.PWg.getActivity().getResources().getString(2131765140);
+      localObject = new j(paramInt);
+      ((j)localObject).header = this.XsW.getActivity().getResources().getString(R.l.eRW);
     }
     for (;;)
     {
       AppMethodBeat.o(34095);
       return localObject;
-      if ((paramInt > this.CuC) && (this.jWh.moveToPosition(paramInt - this.CuC - 1)))
+      if ((paramInt > this.Isp) && (this.mNt.moveToPosition(paramInt - this.Isp - 1)))
       {
         a locala = new a(paramInt);
-        com.tencent.mm.al.a.a locala1 = new com.tencent.mm.al.a.a();
-        locala1.convertFrom(this.jWh);
+        com.tencent.mm.ao.a.a locala1 = new com.tencent.mm.ao.a.a();
+        locala1.convertFrom(this.mNt);
         localObject = locala;
-        if (locala.ppv == -1L)
+        if (locala.syu == -1L)
         {
-          locala.ppv = locala1.field_bizChatId;
-          localObject = ag.baj().bs(locala1.field_bizChatId);
-          if (((c)localObject).isGroup())
+          locala.syu = locala1.field_bizChatId;
+          localObject = af.bjx().bF(locala1.field_bizChatId);
+          if (((c)localObject).bjM())
           {
-            locala.jVL = ((c)localObject).field_chatName;
-            locala.hXq = ((c)localObject).field_headImageUrl;
+            locala.mMY = ((c)localObject).field_chatName;
+            locala.kLW = ((c)localObject).field_headImageUrl;
             locala.username = ((c)localObject).field_brandUserName;
           }
           for (;;)
           {
-            if (Util.isNullOrNil(locala.jVL)) {
-              locala.jVL = this.PWg.getActivity().getResources().getString(2131764705);
+            if (Util.isNullOrNil(locala.mMY)) {
+              locala.mMY = this.XsW.getActivity().getResources().getString(R.l.eRh);
             }
             localObject = locala;
             if (!Util.isNullOrNil(locala.username)) {
@@ -121,11 +122,11 @@ public final class d
             locala.username = locala1.field_brandUserName;
             localObject = locala;
             break;
-            localObject = ag.bal().fB(((c)localObject).field_bizChatServId);
+            localObject = af.bjz().gm(((c)localObject).field_bizChatServId);
             if (localObject != null)
             {
-              locala.jVL = ((k)localObject).field_userName;
-              locala.hXq = ((k)localObject).field_headImageUrl;
+              locala.mMY = ((k)localObject).field_userName;
+              locala.kLW = ((k)localObject).field_headImageUrl;
               locala.username = ((k)localObject).field_brandUserName;
             }
           }
@@ -140,7 +141,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.bizchat.d
  * JD-Core Version:    0.7.0.1
  */

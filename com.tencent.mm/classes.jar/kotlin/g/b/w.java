@@ -1,11 +1,11 @@
 package kotlin.g.b;
 
 import kotlin.l.a;
-import kotlin.l.k;
+import kotlin.l.n;
 
 public abstract class w
   extends e
-  implements k
+  implements n
 {
   public w() {}
   
@@ -24,27 +24,27 @@ public abstract class w
         break;
       }
       paramObject = (w)paramObject;
-    } while ((Rs().equals(paramObject.Rs())) && (getName().equals(paramObject.getName())) && (getSignature().equals(paramObject.getSignature())) && (p.j(hxQ(), paramObject.hxQ())));
+    } while ((Vc().equals(paramObject.Vc())) && (getName().equals(paramObject.getName())) && (getSignature().equals(paramObject.getSignature())) && (p.h(iBY(), paramObject.iBY())));
     return false;
-    if ((paramObject instanceof k)) {
-      return paramObject.equals(hxR());
+    if ((paramObject instanceof n)) {
+      return paramObject.equals(iBZ());
     }
     return false;
   }
   
   public int hashCode()
   {
-    return (Rs().hashCode() * 31 + getName().hashCode()) * 31 + getSignature().hashCode();
+    return (Vc().hashCode() * 31 + getName().hashCode()) * 31 + getSignature().hashCode();
   }
   
-  protected final k hyg()
+  protected final n iCr()
   {
-    return (k)super.hxS();
+    return (n)super.iCa();
   }
   
   public String toString()
   {
-    a locala = hxR();
+    a locala = iBZ();
     if (locala != this) {
       return locala.toString();
     }
@@ -53,7 +53,7 @@ public abstract class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.g.b.w
  * JD-Core Version:    0.7.0.1
  */

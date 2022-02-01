@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.g;
-import android.support.v4.app.k;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.e;
+import androidx.fragment.app.i;
+import com.facebook.common.R.id;
+import com.facebook.common.R.layout;
 import com.facebook.internal.FacebookDialogFragment;
 import com.facebook.internal.NativeProtocol;
 import com.facebook.internal.Utility;
@@ -49,37 +51,37 @@ public class FacebookActivity
   
   protected Fragment getFragment()
   {
-    AppMethodBeat.i(7613);
+    AppMethodBeat.i(222616);
     Intent localIntent = getIntent();
-    g localg = getSupportFragmentManager();
-    Fragment localFragment = localg.findFragmentByTag(FRAGMENT_TAG);
+    e locale = getSupportFragmentManager();
+    Fragment localFragment = locale.findFragmentByTag(FRAGMENT_TAG);
     Object localObject = localFragment;
     if (localFragment == null)
     {
       if (!"FacebookDialogFragment".equals(localIntent.getAction())) {
-        break label73;
+        break label71;
       }
       localObject = new FacebookDialogFragment();
       ((FacebookDialogFragment)localObject).setRetainInstance(true);
-      ((FacebookDialogFragment)localObject).show(localg, FRAGMENT_TAG);
+      ((FacebookDialogFragment)localObject).show(locale, FRAGMENT_TAG);
     }
     for (;;)
     {
-      AppMethodBeat.o(7613);
+      AppMethodBeat.o(222616);
       return localObject;
-      label73:
+      label71:
       if ("DeviceShareDialogFragment".equals(localIntent.getAction()))
       {
         localObject = new DeviceShareDialogFragment();
         ((DeviceShareDialogFragment)localObject).setRetainInstance(true);
         ((DeviceShareDialogFragment)localObject).setShareContent((ShareContent)localIntent.getParcelableExtra("content"));
-        ((DeviceShareDialogFragment)localObject).show(localg, FRAGMENT_TAG);
+        ((DeviceShareDialogFragment)localObject).show(locale, FRAGMENT_TAG);
       }
       else
       {
         localObject = new LoginFragment();
         ((Fragment)localObject).setRetainInstance(true);
-        localg.beginTransaction().a(2131298918, (Fragment)localObject, FRAGMENT_TAG).commit();
+        locale.beginTransaction().a(R.id.com_facebook_fragment_container, (Fragment)localObject, FRAGMENT_TAG).in();
       }
     }
   }
@@ -104,7 +106,7 @@ public class FacebookActivity
       Utility.logd(TAG, "Facebook SDK not initialized. Make sure you call sdkInitialize inside your Application's onCreate method.");
       FacebookSdk.sdkInitialize(getApplicationContext());
     }
-    setContentView(2131493683);
+    setContentView(R.layout.com_facebook_activity_layout);
     if (PASS_THROUGH_CANCEL_ACTION.equals(paramBundle.getAction()))
     {
       handlePassThroughError();
@@ -123,7 +125,7 @@ public class FacebookActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.FacebookActivity
  * JD-Core Version:    0.7.0.1
  */

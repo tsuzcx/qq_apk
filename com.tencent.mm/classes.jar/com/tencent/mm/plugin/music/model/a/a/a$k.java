@@ -1,62 +1,81 @@
 package com.tencent.mm.plugin.music.model.a.a;
 
-import android.content.ContentValues;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.f;
-import com.tencent.mm.ipcinvoker.k;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.plugin.music.cache.ipc.IPCAudioParamRequest;
+import com.tencent.mm.ipcinvoker.m;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.plugin.music.h.b;
 import com.tencent.mm.plugin.music.model.e.c;
 import com.tencent.mm.plugin.music.model.e.d;
 import com.tencent.mm.plugin.music.model.o;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 
 public final class a$k
-  implements k<IPCAudioParamRequest, IPCVoid>
+  implements m<IPCString, IPCString>
 {
-  private static IPCVoid a(IPCAudioParamRequest paramIPCAudioParamRequest)
+  private static IPCString d(IPCString paramIPCString)
   {
-    boolean bool = true;
-    AppMethodBeat.i(63086);
+    int i = 1;
+    AppMethodBeat.i(63088);
     for (;;)
     {
+      d locald;
       try
       {
-        Object localObject = paramIPCAudioParamRequest.dSF;
-        if (paramIPCAudioParamRequest.jfA == null) {
+        Log.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc updatePieceMusicInfo Task, src:%s", new Object[] { paramIPCString });
+        String str1 = paramIPCString.value;
+        locald = o.feX();
+        if (TextUtils.isEmpty(str1))
+        {
+          Log.i("MicroMsg.Music.PieceMusicInfoStorage", "updatePieceMusicByUrl url is empty!");
+          paramIPCString = null;
+          if (paramIPCString == null) {
+            break label231;
+          }
+          paramIPCString = paramIPCString.field_musicId;
+          paramIPCString = new IPCString(paramIPCString);
+          AppMethodBeat.o(63088);
+          return paramIPCString;
+        }
+        String str2 = b.aSt(str1);
+        c localc = locald.aSn(str2);
+        paramIPCString = localc;
+        if (localc == null)
+        {
+          paramIPCString = new c();
+          i = 0;
+        }
+        paramIPCString.field_musicId = str2;
+        paramIPCString.field_musicUrl = str1;
+        paramIPCString.field_fileName = b.aSu(str1);
+        Log.i("MicroMsg.Music.PieceMusicInfoStorage", "updatePieceMusicByUrl musicId:%s, field_fileName:%s", new Object[] { str2, paramIPCString.field_fileName });
+        if (i != 0)
+        {
+          Log.i("MicroMsg.Music.PieceMusicInfoStorage", "update PieceMusicInfo");
+          locald.update(paramIPCString, new String[0]);
+          locald.FSN.put(str2, paramIPCString);
           continue;
         }
-        Log.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc updateMusicFileIndexBitCache Task, musicId:%s, bitset is valid:%b", new Object[] { localObject, Boolean.valueOf(bool) });
-        localObject = paramIPCAudioParamRequest.dSF;
-        paramIPCAudioParamRequest = paramIPCAudioParamRequest.jfA;
-        d locald = o.euE();
-        ContentValues localContentValues = new ContentValues();
-        localContentValues.put("indexBitData", paramIPCAudioParamRequest);
-        int i = locald.db.update("PieceMusicInfo", localContentValues, "musicId=?", new String[] { localObject });
-        if (i <= 0) {
-          Log.i("MicroMsg.Music.PieceMusicInfoStorage", "updateMusicFileIndexBitCache raw=%d musicId=%s", new Object[] { Integer.valueOf(i), localObject });
-        }
-        localObject = (c)locald.AlG.get(localObject);
-        if (localObject != null) {
-          ((c)localObject).field_indexBitData = paramIPCAudioParamRequest;
-        }
+        Log.i("MicroMsg.Music.PieceMusicInfoStorage", "insert PieceMusicInfo");
       }
-      catch (Exception paramIPCAudioParamRequest)
+      catch (Exception paramIPCString)
       {
-        Log.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCAudioParamRequest, "ipc updateMusicFileIndexBitCache task", new Object[0]);
-        continue;
+        Log.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCString, "ipc updatePieceMusicInfo task", new Object[0]);
+        paramIPCString = new IPCString("");
+        AppMethodBeat.o(63088);
+        return paramIPCString;
       }
-      paramIPCAudioParamRequest = new IPCVoid();
-      AppMethodBeat.o(63086);
-      return paramIPCAudioParamRequest;
-      bool = false;
+      locald.insert(paramIPCString);
+      continue;
+      label231:
+      paramIPCString = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.a.a.a.k
  * JD-Core Version:    0.7.0.1
  */

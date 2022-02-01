@@ -4,28 +4,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class k
 {
-  public String Cpy;
-  public double JPH;
-  public int JPM;
-  public double JPN;
-  public double JPO;
-  public int JPP;
-  public double JPQ;
-  public double JPR;
-  public boolean JPS;
-  public int JPT;
-  public String JPU;
-  public String JPV;
-  public String JPW;
-  public String JPX;
-  public String JPY;
-  public String JPZ;
-  public j JQa;
+  public String ImN;
+  public double QNY;
+  public int QOd;
+  public double QOe;
+  public double QOf;
+  public int QOg;
+  public double QOh;
+  public double QOi;
+  public boolean QOj;
+  public int QOk;
+  public String QOl;
+  public String QOm;
+  public String QOn;
+  public String QOo;
+  public String QOp;
+  public String QOq;
+  public j QOr;
   
   public k()
   {
     AppMethodBeat.i(72315);
-    this.JQa = new j();
+    this.QOr = new j();
     AppMethodBeat.o(72315);
   }
 }

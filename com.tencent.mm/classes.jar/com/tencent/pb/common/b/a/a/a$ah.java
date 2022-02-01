@@ -1,29 +1,29 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.e;
+import com.google.b.a.b;
+import com.google.b.a.e;
 
 public final class a$ah
   extends e
 {
+  public long DPJ = 0L;
   public int roomId = 0;
-  public long ypH = 0L;
   
   public a$ah()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public final int Ig()
+  public final int JG()
   {
-    int j = super.Ig();
+    int j = super.JG();
     int i = j;
     if (this.roomId != 0) {
-      i = j + b.bu(1, this.roomId);
+      i = j + b.bM(1, this.roomId);
     }
     j = i;
-    if (this.ypH != 0L) {
-      j = i + b.r(2, this.ypH);
+    if (this.DPJ != 0L) {
+      j = i + b.p(2, this.DPJ);
     }
     return j;
   }
@@ -31,10 +31,10 @@ public final class a$ah
   public final void a(b paramb)
   {
     if (this.roomId != 0) {
-      paramb.bs(1, this.roomId);
+      paramb.bJ(1, this.roomId);
     }
-    if (this.ypH != 0L) {
-      paramb.q(2, this.ypH);
+    if (this.DPJ != 0L) {
+      paramb.r(2, this.DPJ);
     }
     super.a(paramb);
   }

@@ -1,92 +1,90 @@
 package com.tencent.mm.plugin.finder.video;
 
-import android.arch.lifecycle.LifecycleOwner;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
 import com.tencent.mm.app.AppForegroundDelegate;
 import com.tencent.mm.app.o;
-import com.tencent.mm.plugin.finder.life.UILifecycleObserver;
-import com.tencent.mm.plugin.finder.music.FinderImgFeedMusicPlayerManager;
+import com.tencent.mm.plugin.finder.live.n;
 import com.tencent.mm.plugin.finder.music.FinderImgFeedMusicTag;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderVideoRecycler;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderVideoRecycler.r;
+import com.tencent.mm.plugin.finder.music.a;
+import com.tencent.mm.plugin.finder.viewmodel.component.au;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import kotlin.g.b.p;
-import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/video/FinderVideoCore$onInitialize$2", "Lcom/tencent/mm/plugin/finder/life/UILifecycleObserver;", "onCreate", "", "var1", "Landroid/arch/lifecycle/LifecycleOwner;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/video/FinderVideoCore$onInitialize$2", "Lcom/tencent/mm/plugin/finder/life/UILifecycleObserver;", "onCreate", "", "var1", "Landroidx/lifecycle/LifecycleOwner;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "plugin-finder_release"})
 public final class FinderVideoCore$onInitialize$2
-  implements UILifecycleObserver
+  implements com.tencent.mm.plugin.finder.life.b
 {
   FinderVideoCore$onInitialize$2(AppCompatActivity paramAppCompatActivity) {}
   
-  public final void onCreate(LifecycleOwner paramLifecycleOwner)
+  public final void onCreate(androidx.lifecycle.l paraml)
   {
-    AppMethodBeat.i(168030);
-    p.h(paramLifecycleOwner, "var1");
-    AppMethodBeat.o(168030);
+    AppMethodBeat.i(257590);
+    p.k(paraml, "var1");
+    AppMethodBeat.o(257590);
   }
   
-  public final void onDestroy(LifecycleOwner paramLifecycleOwner)
+  public final void onDestroy(androidx.lifecycle.l paraml)
   {
-    AppMethodBeat.i(168035);
-    p.h(paramLifecycleOwner, "var1");
-    AppForegroundDelegate.djR.b((o)this.weX);
-    this.weX.dFy().clear();
-    AppMethodBeat.o(168035);
+    AppMethodBeat.i(257597);
+    p.k(paraml, "var1");
+    AppForegroundDelegate.fby.b((o)this.ANG);
+    this.ANG.ehm().clear();
+    AppMethodBeat.o(257597);
   }
   
-  public final void onPause(LifecycleOwner paramLifecycleOwner)
+  public final void onPause(androidx.lifecycle.l paraml)
   {
-    AppMethodBeat.i(168033);
-    p.h(paramLifecycleOwner, "var1");
-    this.weX.dFx().fJ((Context)this.vao);
-    paramLifecycleOwner = ((Map)this.weX.dFy().uPC).entrySet().iterator();
-    while (paramLifecycleOwner.hasNext())
+    AppMethodBeat.i(257595);
+    p.k(paraml, "var1");
+    this.ANG.ehl().gb((Context)this.zQu);
+    paraml = ((Map)this.ANG.ehm().zBX).entrySet().iterator();
+    while (paraml.hasNext())
     {
-      Map.Entry localEntry = (Map.Entry)paramLifecycleOwner.next();
-      if (((FinderImgFeedMusicTag)localEntry.getKey()).uPE)
+      Map.Entry localEntry = (Map.Entry)paraml.next();
+      if (((FinderImgFeedMusicTag)localEntry.getKey()).zBZ)
       {
-        ((FinderImgFeedMusicTag)localEntry.getKey()).setShouldMusicResume(((com.tencent.mm.plugin.finder.music.a)localEntry.getValue()).isPlaying());
-        ((FinderImgFeedMusicTag)localEntry.getKey()).bdY();
+        ((FinderImgFeedMusicTag)localEntry.getKey()).setShouldMusicResume(((a)localEntry.getValue()).isPlaying());
+        ((FinderImgFeedMusicTag)localEntry.getKey()).bnt();
       }
     }
-    AppMethodBeat.o(168033);
+    this.ANG.ehn().MX(this.ANG.fEH);
+    AppMethodBeat.o(257595);
   }
   
-  public final void onResume(LifecycleOwner paramLifecycleOwner)
+  public final void onResume(androidx.lifecycle.l paraml)
   {
-    AppMethodBeat.i(168032);
-    p.h(paramLifecycleOwner, "var1");
-    d.h((kotlin.g.a.a)new FinderVideoRecycler.r(this.weX.dFx(), (Context)this.vao));
-    paramLifecycleOwner = ((Map)this.weX.dFy().uPC).entrySet().iterator();
-    while (paramLifecycleOwner.hasNext())
+    AppMethodBeat.i(257594);
+    p.k(paraml, "var1");
+    this.ANG.ehl().gc((Context)this.zQu);
+    paraml = ((Map)this.ANG.ehm().zBX).entrySet().iterator();
+    while (paraml.hasNext())
     {
-      Map.Entry localEntry = (Map.Entry)paramLifecycleOwner.next();
-      if ((((FinderImgFeedMusicTag)localEntry.getKey()).uPE) && (((FinderImgFeedMusicTag)localEntry.getKey()).getShouldMusicResume())) {
-        ((com.tencent.mm.plugin.finder.music.a)localEntry.getValue()).play();
+      Map.Entry localEntry = (Map.Entry)paraml.next();
+      if ((((FinderImgFeedMusicTag)localEntry.getKey()).zBZ) && (((FinderImgFeedMusicTag)localEntry.getKey()).getShouldMusicResume())) {
+        ((a)localEntry.getValue()).play();
       }
     }
-    AppMethodBeat.o(168032);
+    this.ANG.ehn().MW(this.ANG.fEH);
+    AppMethodBeat.o(257594);
   }
   
-  public final void onStart(LifecycleOwner paramLifecycleOwner)
+  public final void onStart(androidx.lifecycle.l paraml)
   {
-    AppMethodBeat.i(168031);
-    p.h(paramLifecycleOwner, "var1");
-    AppMethodBeat.o(168031);
+    AppMethodBeat.i(257591);
+    p.k(paraml, "var1");
+    AppMethodBeat.o(257591);
   }
   
-  public final void onStop(LifecycleOwner paramLifecycleOwner)
+  public final void onStop(androidx.lifecycle.l paraml)
   {
-    AppMethodBeat.i(168034);
-    p.h(paramLifecycleOwner, "var1");
-    AppMethodBeat.o(168034);
+    AppMethodBeat.i(257596);
+    p.k(paraml, "var1");
+    AppMethodBeat.o(257596);
   }
 }
 

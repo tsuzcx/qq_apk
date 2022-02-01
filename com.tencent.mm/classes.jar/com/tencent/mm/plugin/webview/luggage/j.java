@@ -7,25 +7,17 @@ import java.util.LinkedList;
 
 public final class j
 {
-  private static LinkedList<s> IUb;
-  private static HashMap<String, s> IUc;
+  private static LinkedList<s> PQt;
+  private static HashMap<String, s> PQu;
   private static Object lock;
   
   static
   {
     AppMethodBeat.i(78357);
     lock = new Object();
-    IUb = new LinkedList();
-    IUc = new HashMap();
+    PQt = new LinkedList();
+    PQu = new HashMap();
     AppMethodBeat.o(78357);
-  }
-  
-  public static s aYs(String paramString)
-  {
-    AppMethodBeat.i(210917);
-    paramString = (s)IUc.get(paramString);
-    AppMethodBeat.o(210917);
-    return paramString;
   }
   
   public static void b(s params)
@@ -33,14 +25,22 @@ public final class j
     AppMethodBeat.i(78355);
     synchronized (lock)
     {
-      if (!IUb.contains(params))
+      if (!PQt.contains(params))
       {
-        IUb.add(params);
-        IUc.put(d(params), params);
+        PQt.add(params);
+        PQu.put(d(params), params);
       }
       AppMethodBeat.o(78355);
       return;
     }
+  }
+  
+  public static s bkn(String paramString)
+  {
+    AppMethodBeat.i(224979);
+    paramString = (s)PQu.get(paramString);
+    AppMethodBeat.o(224979);
+    return paramString;
   }
   
   public static void c(s params)
@@ -48,8 +48,8 @@ public final class j
     AppMethodBeat.i(78356);
     synchronized (lock)
     {
-      IUb.remove(params);
-      IUc.remove(d(params));
+      PQt.remove(params);
+      PQu.remove(d(params));
       AppMethodBeat.o(78356);
       return;
     }
@@ -57,19 +57,19 @@ public final class j
   
   public static String d(s params)
   {
-    AppMethodBeat.i(210919);
+    AppMethodBeat.i(224982);
     params = "luggage_page_" + params.hashCode();
-    AppMethodBeat.o(210919);
+    AppMethodBeat.o(224982);
     return params;
   }
   
-  public static LinkedList<s> gbV()
+  public static LinkedList<s> gUQ()
   {
-    AppMethodBeat.i(210918);
+    AppMethodBeat.i(224981);
     synchronized (lock)
     {
-      LinkedList localLinkedList = new LinkedList(IUb);
-      AppMethodBeat.o(210918);
+      LinkedList localLinkedList = new LinkedList(PQt);
+      AppMethodBeat.o(224981);
       return localLinkedList;
     }
   }

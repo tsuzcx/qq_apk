@@ -2,52 +2,60 @@ package com.tencent.mm.plugin.appbrand.jsapi.video.e.b;
 
 import android.net.Uri;
 import android.os.Handler;
-import com.tencent.f.h;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.video.e.c.c;
+import com.tencent.mm.plugin.appbrand.jsapi.video.e.b.a.a;
+import com.tencent.mm.plugin.appbrand.jsapi.video.e.e.c;
+import com.tencent.mm.plugin.appbrand.jsapi.video.f;
 
 public final class b
-  extends f
+  extends g
 {
   public b(Handler paramHandler)
   {
     super(paramHandler);
   }
   
-  public final void a(final String paramString1, final String paramString2, final c.c paramc)
+  public final void a(final String paramString1, final String paramString2, final e.c paramc)
   {
-    AppMethodBeat.i(234965);
-    i locali = i.mCD;
-    if (i.bKL())
+    AppMethodBeat.i(230612);
+    com.tencent.mm.plugin.appbrand.jsapi.video.e.g localg = com.tencent.mm.plugin.appbrand.jsapi.video.e.g.pzQ;
+    if (com.tencent.mm.plugin.appbrand.jsapi.video.e.g.bWm())
     {
-      h.RTc.aX(new Runnable()
+      h.ZvG.be(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(234964);
+          AppMethodBeat.i(228806);
           b.a(b.this, paramString1, paramString2, paramc);
-          AppMethodBeat.o(234964);
+          AppMethodBeat.o(228806);
         }
       });
-      AppMethodBeat.o(234965);
+      AppMethodBeat.o(230612);
       return;
     }
     super.a(paramString1, paramString2, paramc);
-    AppMethodBeat.o(234965);
+    AppMethodBeat.o(230612);
   }
   
-  protected final int q(Uri paramUri)
+  protected final f bWq()
   {
-    AppMethodBeat.i(234966);
-    i locali = i.mCD;
-    int i = i.r(paramUri);
-    AppMethodBeat.o(234966);
+    return a.pBH;
+  }
+  
+  protected final int h(Uri paramUri)
+  {
+    AppMethodBeat.i(230615);
+    com.tencent.mm.plugin.appbrand.jsapi.video.e.g localg = com.tencent.mm.plugin.appbrand.jsapi.video.e.g.pzQ;
+    int i = com.tencent.mm.plugin.appbrand.jsapi.video.e.g.a(a.pBH, paramUri);
+    AppMethodBeat.o(230615);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.e.b.b
  * JD-Core Version:    0.7.0.1
  */

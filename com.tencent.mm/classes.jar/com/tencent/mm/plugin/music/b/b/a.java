@@ -9,14 +9,14 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a
 {
-  public boolean Aiz;
+  public boolean FPw;
   AudioManager.OnAudioFocusChangeListener audioFocusChangeListener;
   AudioManager audioManager;
   
   public a()
   {
     AppMethodBeat.i(137145);
-    this.Aiz = false;
+    this.FPw = false;
     this.audioFocusChangeListener = new AudioManager.OnAudioFocusChangeListener()
     {
       public final void onAudioFocusChange(int paramAnonymousInt)
@@ -41,7 +41,7 @@ public final class a
           if (a.this.audioManager != null) {
             a.this.audioManager.abandonAudioFocus(a.this.audioFocusChangeListener);
           }
-          a.this.Aiz = false;
+          a.this.FPw = false;
         }
         AppMethodBeat.o(137144);
       }
@@ -50,21 +50,7 @@ public final class a
     AppMethodBeat.o(137145);
   }
   
-  public final void bLZ()
-  {
-    AppMethodBeat.i(137147);
-    Log.i("MicroMsg.Music.MusicAudioFocusHelper", "abandonFocus");
-    if (this.audioManager == null)
-    {
-      AppMethodBeat.o(137147);
-      return;
-    }
-    this.audioManager.abandonAudioFocus(this.audioFocusChangeListener);
-    this.Aiz = false;
-    AppMethodBeat.o(137147);
-  }
-  
-  public final boolean requestFocus()
+  public final boolean avy()
   {
     AppMethodBeat.i(137146);
     if (this.audioManager == null)
@@ -78,7 +64,7 @@ public final class a
     {
       Log.i("MicroMsg.Music.MusicAudioFocusHelper", "request audio focus %b", new Object[] { Boolean.valueOf(bool) });
       if (i == 1) {
-        this.Aiz = true;
+        this.FPw = true;
       }
       if (i != 1) {
         break;
@@ -89,10 +75,24 @@ public final class a
     AppMethodBeat.o(137146);
     return false;
   }
+  
+  public final void bYq()
+  {
+    AppMethodBeat.i(137147);
+    Log.i("MicroMsg.Music.MusicAudioFocusHelper", "abandonFocus");
+    if (this.audioManager == null)
+    {
+      AppMethodBeat.o(137147);
+      return;
+    }
+    this.audioManager.abandonAudioFocus(this.audioFocusChangeListener);
+    this.FPw = false;
+    AppMethodBeat.o(137147);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.music.b.b.a
  * JD-Core Version:    0.7.0.1
  */

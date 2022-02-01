@@ -1,7 +1,7 @@
 package com.tencent.mm.sdk.storage;
 
 import android.os.Looper;
-import com.tencent.f.j.a;
+import com.tencent.e.j.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.util.ArrayList;
@@ -95,25 +95,19 @@ public abstract class MStorageEvent<T, E>
           ((MMHandler)localObject1).post(local1);
         }
       }
-      Object localObject3;
-      if (localEventHandler.looper != null)
+      ??? = (MMHandler)localHashMap.get(localEventHandler.looper);
+      Object localObject3 = ???;
+      if (??? == null)
       {
-        ??? = (MMHandler)localHashMap.get(localEventHandler.looper);
-        localObject3 = ???;
-        if (??? == null)
-        {
-          localObject3 = new MMHandler(localEventHandler.looper);
-          localHashMap.put(localEventHandler.looper, localObject3);
-        }
-        ((MMHandler)localObject3).post(local1);
+        localObject3 = new MMHandler(localEventHandler.looper);
+        localHashMap.put(localEventHandler.looper, localObject3);
       }
-      else
-      {
-        sMainHandler.post(local1);
-        continue;
-        label314:
-        processEvent(localObject5, localObject3);
-      }
+      ((MMHandler)localObject3).post(local1);
+      continue;
+      sMainHandler.post(local1);
+      continue;
+      label314:
+      processEvent(localObject5, localObject3);
     }
   }
   
@@ -187,7 +181,7 @@ public abstract class MStorageEvent<T, E>
     //   22: new 9	com/tencent/mm/sdk/storage/MStorageEvent$EventHandler
     //   25: dup
     //   26: aload_2
-    //   27: invokespecial 147	com/tencent/mm/sdk/storage/MStorageEvent$EventHandler:<init>	(Lcom/tencent/f/j/a;)V
+    //   27: invokespecial 147	com/tencent/mm/sdk/storage/MStorageEvent$EventHandler:<init>	(Lcom/tencent/e/j/a;)V
     //   30: invokevirtual 144	java/util/Hashtable:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   33: pop
     //   34: aload_0
@@ -312,7 +306,7 @@ public abstract class MStorageEvent<T, E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.sdk.storage.MStorageEvent
  * JD-Core Version:    0.7.0.1
  */

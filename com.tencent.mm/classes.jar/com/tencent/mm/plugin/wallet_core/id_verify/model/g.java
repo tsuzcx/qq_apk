@@ -1,15 +1,16 @@
 package com.tencent.mm.plugin.wallet_core.id_verify.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.plugin.wallet_core.model.u;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.eha;
-import com.tencent.mm.protocal.protobuf.ehb;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.cd.b;
+import com.tencent.mm.plugin.wallet_core.model.v;
+import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.erc;
+import com.tencent.mm.protocal.protobuf.erd;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.wallet_core.c.ae;
@@ -23,15 +24,15 @@ import org.json.JSONObject;
 public final class g
   extends s
 {
-  public u HPz;
-  public boolean HTF;
-  public boolean HTG;
-  public boolean HTH;
-  public String HTI;
-  public String HTJ;
-  public String dNQ;
-  public String dYK;
-  public long igp;
+  public v OHH;
+  public boolean OLM;
+  public boolean OLN;
+  public boolean OLO;
+  public String OLP;
+  public String OLQ;
+  public String fHb;
+  public String fSC;
+  public long kVd;
   public String packageExt;
   public String token;
   
@@ -60,8 +61,8 @@ public final class g
     localHashMap.put("cre_type", String.valueOf(paramInt2));
     if (paramProfession != null)
     {
-      localHashMap.put("profession_name", paramProfession.HTX);
-      localHashMap.put("profession_type", String.valueOf(paramProfession.HTY));
+      localHashMap.put("profession_name", paramProfession.OLY);
+      localHashMap.put("profession_type", String.valueOf(paramProfession.OLZ));
     }
     localHashMap.put("user_country", paramString3);
     localHashMap.put("user_province", paramString4);
@@ -84,18 +85,18 @@ public final class g
     if (localObject2 == null)
     {
       localObject1 = new d.a();
-      ((d.a)localObject1).iLN = new eha();
-      ((d.a)localObject1).iLO = new ehb();
+      ((d.a)localObject1).lBU = new erc();
+      ((d.a)localObject1).lBV = new erd();
       ((d.a)localObject1).uri = "/cgi-bin/mmpay-bin/tenpay/realnameauthen";
       ((d.a)localObject1).funcId = 1616;
-      ((d.a)localObject1).iLP = 185;
+      ((d.a)localObject1).lBW = 185;
       ((d.a)localObject1).respCmdId = 1000000185;
-      localObject1 = ((d.a)localObject1).aXF();
+      localObject1 = ((d.a)localObject1).bgN();
       ((d)localObject1).setIsUserCmd(true);
     }
-    localObject2 = (eha)((d)localObject1).iLK.iLR;
+    localObject2 = (erc)d.b.b(((d)localObject1).lBR);
     if (paramBoolean2) {
-      ((eha)localObject2).MhR = 1;
+      ((erc)localObject2).TrE = 1;
     }
     setCommReqResp((d)localObject1);
     AppMethodBeat.o(70148);
@@ -113,16 +114,16 @@ public final class g
   public final int doSceneSimulately(d paramd, com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(70151);
-    paramd = (eha)paramd.iLK.iLR;
-    if (paramd.MhS != null) {
-      new String(paramd.MhS.getBufferToBytes());
+    paramd = (erc)d.b.b(paramd.lBR);
+    if (paramd.TrF != null) {
+      new String(paramd.TrF.Tkb.UH);
     }
-    if (paramd.MGc != null) {
-      new String(paramd.MGc.getBufferToBytes());
+    if (paramd.TRP != null) {
+      new String(paramd.TRP.Tkb.UH);
     }
     MMApplicationContext.getContext();
     getPayCgicmd();
-    ae.hhx();
+    ae.iiZ();
     AppMethodBeat.o(70151);
     return -1;
   }
@@ -143,14 +144,14 @@ public final class g
   public final x getRetModel(d paramd)
   {
     AppMethodBeat.i(70150);
-    paramd = (ehb)paramd.iLL.iLR;
+    paramd = (erd)d.c.b(paramd.lBS);
     x localx = new x();
-    localx.MhW = paramd.MhW;
-    localx.MhV = paramd.MhV;
-    localx.MhU = paramd.MhU;
-    localx.MhT = paramd.MhT;
-    localx.rBM = paramd.MGe;
-    localx.Ruc = paramd.MGd;
+    localx.TrJ = paramd.TrJ;
+    localx.TrI = paramd.TrI;
+    localx.TrH = paramd.TrH;
+    localx.TrG = paramd.TrG;
+    localx.vhu = paramd.TRR;
+    localx.YVB = paramd.TRQ;
     AppMethodBeat.o(70150);
     return localx;
   }
@@ -166,33 +167,37 @@ public final class g
     if (paramInt == 0)
     {
       this.token = paramJSONObject.optString("token");
-      this.HTF = paramJSONObject.optBoolean("is_need_bind");
-      this.HTG = paramJSONObject.optBoolean("is_need_face");
-      this.HTH = paramJSONObject.optBoolean("is_need_Laund");
-      this.HTI = paramJSONObject.optString("laundh5");
-      this.igp = paramJSONObject.optLong("scene");
+      this.OLM = paramJSONObject.optBoolean("is_need_bind");
+      this.OLN = paramJSONObject.optBoolean("is_need_face");
+      this.OLO = paramJSONObject.optBoolean("is_need_Laund");
+      this.OLP = paramJSONObject.optString("laundh5");
+      this.kVd = paramJSONObject.optLong("scene");
       this.packageExt = paramJSONObject.optString("package", "");
-      this.dYK = paramJSONObject.optString("packagesign", "");
-      this.HTJ = paramJSONObject.optString("addbankword");
-      this.dNQ = this.token;
-      this.HPz = u.bM(paramJSONObject);
+      this.fSC = paramJSONObject.optString("packagesign", "");
+      this.OLQ = paramJSONObject.optString("addbankword");
+      this.fHb = this.token;
+      this.OHH = v.bX(paramJSONObject);
     }
     AppMethodBeat.o(70147);
   }
   
-  public final void putToReqText(d paramd, SKBuiltinBuffer_t paramSKBuiltinBuffer_t)
+  public final void putToReqText(d paramd, eae parameae)
   {
-    ((eha)paramd.iLK.iLR).MhS = paramSKBuiltinBuffer_t;
+    AppMethodBeat.i(197100);
+    ((erc)d.b.b(paramd.lBR)).TrF = parameae;
+    AppMethodBeat.o(197100);
   }
   
-  public final void putToWXReqText(d paramd, SKBuiltinBuffer_t paramSKBuiltinBuffer_t)
+  public final void putToWXReqText(d paramd, eae parameae)
   {
-    ((eha)paramd.iLK.iLR).MGc = paramSKBuiltinBuffer_t;
+    AppMethodBeat.i(197101);
+    ((erc)d.b.b(paramd.lBR)).TRP = parameae;
+    AppMethodBeat.o(197101);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.model.g
  * JD-Core Version:    0.7.0.1
  */

@@ -11,5 +11,5 @@
         </LinearLayout>
         <TextView android:textSize="@dimen/eo" android:textColor="@color/l3" android:layout_gravity="center_vertical" android:id="@id/vz" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxLines="1" android:singleLine="true" />
     </LinearLayout>
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/fjv" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_more" android:layout_marginStart="@dimen/cb" app:iconColor="@color/am" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/fjv" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_more" android:contentDescription="@string/jv9" android:layout_marginStart="@dimen/cb" app:iconColor="@color/am" />
 </LinearLayout>

@@ -2,7 +2,6 @@ package com.tencent.mm.plugin.music.ui.view;
 
 import android.content.Context;
 import android.graphics.Rect;
-import android.support.v7.widget.AppCompatTextView;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.animation.Animation;
@@ -10,39 +9,41 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.Scroller;
+import androidx.appcompat.widget.AppCompatTextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.music.a.a;
 import com.tencent.mm.plugin.music.model.e;
 import com.tencent.mm.plugin.music.model.e.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.at;
+import com.tencent.mm.ui.aw;
 import kotlin.g.b.p;
-import kotlin.k.j;
+import kotlin.k.i;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/music/ui/view/MarqueeLyricView;", "Landroid/support/v7/widget/AppCompatTextView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "currentLine", "faceOutTask", "Ljava/lang/Runnable;", "fadeIn", "Landroid/view/animation/Animation;", "kotlin.jvm.PlatformType", "fadeOut", "hasStartedFadeIn", "", "lyricObj", "Lcom/tencent/mm/plugin/music/model/LyricObj;", "mDistance", "mDuration", "mMinDuration", "", "mScroller", "Landroid/widget/Scroller;", "mStartX", "mXPaused", "scrollTask", "calculateScrollingLen", "lyricTxt", "", "computeScroll", "", "doFaceIn", "getLyricLine", "currentTime", "hasNoLyric", "init", "textSize", "", "textColor", "isFocused", "setContent", "lineCnt", "content", "setCurrentTime", "setLyricObj", "startScroll", "stopScroll", "Companion", "plugin-music_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/ui/view/MarqueeLyricView;", "Landroidx/appcompat/widget/AppCompatTextView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "currentLine", "faceOutTask", "Ljava/lang/Runnable;", "fadeIn", "Landroid/view/animation/Animation;", "kotlin.jvm.PlatformType", "fadeOut", "hasStartedFadeIn", "", "lyricObj", "Lcom/tencent/mm/plugin/music/model/LyricObj;", "mDistance", "mDuration", "mMinDuration", "", "mScroller", "Landroid/widget/Scroller;", "mStartX", "mXPaused", "scrollTask", "calculateScrollingLen", "lyricTxt", "", "computeScroll", "", "doFaceIn", "getLyricLine", "currentTime", "hasNoLyric", "init", "textSize", "", "textColor", "isFocused", "setContent", "lineCnt", "content", "setCurrentTime", "setLyricObj", "startScroll", "stopScroll", "Companion", "plugin-music_release"})
 public final class MarqueeLyricView
   extends AppCompatTextView
 {
-  public static final MarqueeLyricView.a Aof;
-  private e Amv;
-  private int Amw;
-  private Runnable Aoa;
-  private long Aob;
-  private Runnable Aoc;
-  private Animation Aod;
-  private boolean Aoe;
-  private int Dm;
-  private int atU;
+  public static final MarqueeLyricView.a FVl;
+  private int Buy;
+  private e FTB;
+  private int FTC;
+  private Runnable FVg;
+  private long FVh;
+  private Runnable FVi;
+  private Animation FVj;
+  private boolean FVk;
+  private int alM;
+  private int asE;
   private int mDistance;
   private Scroller mScroller;
-  private Animation sSE;
-  private int wDQ;
+  private Animation wyA;
   
   static
   {
-    AppMethodBeat.i(220023);
-    Aof = new MarqueeLyricView.a((byte)0);
-    AppMethodBeat.o(220023);
+    AppMethodBeat.i(260028);
+    FVl = new MarqueeLyricView.a((byte)0);
+    AppMethodBeat.o(260028);
   }
   
   public MarqueeLyricView(Context paramContext, AttributeSet paramAttributeSet)
@@ -53,133 +54,133 @@ public final class MarqueeLyricView
   public MarqueeLyricView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(220022);
+    AppMethodBeat.i(260027);
     this.mScroller = new Scroller(getContext(), (Interpolator)new LinearInterpolator());
-    this.wDQ = (-getWidth());
-    this.Aoa = ((Runnable)new c(this));
-    this.Aob = 200L;
-    this.Aoc = ((Runnable)new b(this));
-    this.sSE = AnimationUtils.loadAnimation(getContext(), 2130772059);
-    this.Aod = AnimationUtils.loadAnimation(getContext(), 2130772060);
-    this.Amw = -1;
+    this.Buy = (-getWidth());
+    this.FVg = ((Runnable)new c(this));
+    this.FVh = 200L;
+    this.FVi = ((Runnable)new b(this));
+    this.wyA = AnimationUtils.loadAnimation(getContext(), a.a.fast_faded_in);
+    this.FVj = AnimationUtils.loadAnimation(getContext(), a.a.fast_faded_out);
+    this.FTC = -1;
     setScroller(this.mScroller);
     setHorizontallyScrolling(true);
-    AppMethodBeat.o(220022);
+    AppMethodBeat.o(260027);
   }
   
-  private final void aIb(String paramString)
+  private final void aSr(String paramString)
   {
-    AppMethodBeat.i(220018);
-    int i = aIc(paramString);
-    int j = i - this.wDQ * 3 / 4;
+    AppMethodBeat.i(260019);
+    int i = aSs(paramString);
+    int j = i - this.Buy * 3 / 4;
     if (j != 0)
     {
-      Log.d("MicroMsg.MarqueeLyricView", "scrollingLen:%s, mXPause:%s, distance:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(this.wDQ), Integer.valueOf(j) });
-      this.atU = ((int)(j * 1.0F / at.fromDPToPix(getContext(), 25) * 1000.0F));
-      this.Dm = this.wDQ;
+      Log.d("MicroMsg.MarqueeLyricView", "scrollingLen:%s, mXPause:%s, distance:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(this.Buy), Integer.valueOf(j) });
+      this.alM = ((int)(j * 1.0F / aw.fromDPToPix(getContext(), 25) * 1000.0F));
+      this.asE = this.Buy;
       this.mDistance = j;
-      postDelayed(this.Aoa, 1000L);
+      postDelayed(this.FVg, 1000L);
     }
-    AppMethodBeat.o(220018);
+    AppMethodBeat.o(260019);
   }
   
-  private final int aIc(String paramString)
+  private final int aSs(String paramString)
   {
-    AppMethodBeat.i(220019);
+    AppMethodBeat.i(260021);
     TextPaint localTextPaint = getPaint();
     Rect localRect = new Rect();
     localTextPaint.getTextBounds(paramString, 0, paramString.length(), localRect);
     if (localRect.width() > 0)
     {
       int i = localRect.width();
-      AppMethodBeat.o(220019);
+      AppMethodBeat.o(260021);
       return i;
     }
-    AppMethodBeat.o(220019);
+    AppMethodBeat.o(260021);
     return 25;
   }
   
-  private final void evn()
+  private final void ffG()
   {
-    AppMethodBeat.i(220014);
-    Animation localAnimation = this.sSE;
-    p.g(localAnimation, "fadeIn");
-    localAnimation.setDuration(this.Aob);
-    startAnimation(this.sSE);
-    Log.d("MicroMsg.MarqueeLyricView", "doFaceIn, duration:%s", new Object[] { Long.valueOf(this.Aob) });
-    AppMethodBeat.o(220014);
+    AppMethodBeat.i(260014);
+    Animation localAnimation = this.wyA;
+    p.j(localAnimation, "fadeIn");
+    localAnimation.setDuration(this.FVh);
+    startAnimation(this.wyA);
+    Log.d("MicroMsg.MarqueeLyricView", "doFaceIn, duration:%s", new Object[] { Long.valueOf(this.FVh) });
+    AppMethodBeat.o(260014);
   }
   
-  private final void kQ()
+  private final void ld()
   {
-    AppMethodBeat.i(220020);
-    removeCallbacks(this.Aoa);
+    AppMethodBeat.i(260023);
+    removeCallbacks(this.FVg);
     this.mScroller.startScroll(0, 0, 0, 0, 0);
-    AppMethodBeat.o(220020);
+    AppMethodBeat.o(260023);
   }
   
-  public final void bM(int paramInt, String paramString)
+  public final void bK(int paramInt, String paramString)
   {
-    AppMethodBeat.i(220016);
-    p.h(paramString, "content");
-    e locale = this.Amv;
+    AppMethodBeat.i(260016);
+    p.k(paramString, "content");
+    e locale = this.FTB;
     int i;
     if (locale != null)
     {
       setText((CharSequence)paramString);
       i = paramInt + 1;
-      if (i >= locale.euw()) {
+      if (i >= locale.feO()) {
         break label279;
       }
     }
     label265:
     label279:
-    for (long l1 = locale.SQ(i).timestamp - locale.SQ(paramInt).timestamp;; l1 = 5000L)
+    for (long l1 = locale.Zm(i).timestamp - locale.Zm(paramInt).timestamp;; l1 = 5000L)
     {
       if (l1 > 1000L) {}
       for (i = 1;; i = 0)
       {
         long l2 = (0.3D * l1);
-        this.Aob = j.aN(200L, l2);
-        int j = aIc(paramString);
-        Log.d("MicroMsg.MarqueeLyricView", "content:%s, width:%s,  contentWidth:%s, duration:%s, duration30Percent:%s, mMinDuration:%s", new Object[] { paramString, Integer.valueOf(getWidth()), Integer.valueOf(j), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(this.Aob) });
-        kQ();
-        if (this.Aoe)
+        this.FVh = i.bf(200L, l2);
+        int j = aSs(paramString);
+        Log.d("MicroMsg.MarqueeLyricView", "content:%s, width:%s,  contentWidth:%s, duration:%s, duration30Percent:%s, mMinDuration:%s", new Object[] { paramString, Integer.valueOf(getWidth()), Integer.valueOf(j), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(this.FVh) });
+        ld();
+        if (this.FVk)
         {
-          evn();
-          this.Aoe = false;
+          ffG();
+          this.FVk = false;
         }
         if ((getWidth() >= j) || (i == 0)) {
           break;
         }
         Log.d("MicroMsg.MarqueeLyricView", "startScroll");
-        aIb(paramString);
-        if (locale.euw() - 1 <= paramInt) {
+        aSr(paramString);
+        if (locale.feO() - 1 <= paramInt) {
           break label265;
         }
-        postDelayed(this.Aoc, l1 - this.Aob);
-        this.Aoe = true;
-        AppMethodBeat.o(220016);
+        postDelayed(this.FVi, l1 - this.FVh);
+        this.FVk = true;
+        AppMethodBeat.o(260016);
         return;
       }
       Log.d("MicroMsg.MarqueeLyricView", "stopScroll");
-      AppMethodBeat.o(220016);
+      AppMethodBeat.o(260016);
       return;
-      AppMethodBeat.o(220016);
+      AppMethodBeat.o(260016);
       return;
     }
   }
   
   public final void computeScroll()
   {
-    AppMethodBeat.i(220021);
+    AppMethodBeat.i(260026);
     super.computeScroll();
     if (this.mScroller.computeScrollOffset())
     {
       scrollTo(this.mScroller.getCurrX(), 0);
       invalidate();
     }
-    AppMethodBeat.o(220021);
+    AppMethodBeat.o(260026);
   }
   
   public final boolean isFocused()
@@ -189,15 +190,15 @@ public final class MarqueeLyricView
   
   public final void setCurrentTime(long paramLong)
   {
-    AppMethodBeat.i(220017);
+    AppMethodBeat.i(260018);
     Log.v("MicroMsg.MarqueeLyricView", "getLyricLine, currentTime:%s", new Object[] { Long.valueOf(paramLong) });
-    if (this.Amv != null)
+    if (this.FTB != null)
     {
-      localObject = this.Amv;
+      localObject = this.FTB;
       if (localObject == null) {
-        p.hyc();
+        p.iCn();
       }
-      if (((e)localObject).euw() > 2) {}
+      if (((e)localObject).feO() > 2) {}
     }
     else
     {
@@ -211,32 +212,32 @@ public final class MarqueeLyricView
     int m;
     label221:
     label373:
-    for (int i = -2;; i = this.Amw)
+    for (int i = -2;; i = this.FTC)
     {
-      localObject = this.Amv;
+      localObject = this.FTB;
       if (localObject == null) {
         break label831;
       }
-      if ((i >= 0) && (i < ((e)localObject).euw()))
+      if ((i >= 0) && (i < ((e)localObject).feO()))
       {
-        localObject = ((e)localObject).SQ(i).content;
-        p.g(localObject, "content");
-        bM(i, (String)localObject);
+        localObject = ((e)localObject).Zm(i).content;
+        p.j(localObject, "content");
+        bK(i, (String)localObject);
       }
-      AppMethodBeat.o(220017);
+      AppMethodBeat.o(260018);
       return;
       i = 0;
       break;
-      if (-1 != this.Amw) {
+      if (-1 != this.FTC) {
         break label381;
       }
-      this.Amw = 0;
-      localObject = this.Amv;
+      this.FTC = 0;
+      localObject = this.FTB;
       if (localObject == null) {
-        p.hyc();
+        p.iCn();
       }
-      localObject = ((e)localObject).SQ(this.Amw).content;
-      p.g(localObject, "lyricObj!!.getSentence(currentLine).content");
+      localObject = ((e)localObject).Zm(this.FTC).content;
+      p.j(localObject, "lyricObj!!.getSentence(currentLine).content");
       localObject = (CharSequence)localObject;
       i = ((CharSequence)localObject).length() - 1;
       k = 0;
@@ -279,39 +280,39 @@ public final class MarqueeLyricView
         if (i == 0) {
           break label373;
         }
-        this.Amw += 1;
-        localObject = this.Amv;
+        this.FTC += 1;
+        localObject = this.FTB;
         if (localObject == null) {
-          p.hyc();
+          p.iCn();
         }
-        localObject = ((e)localObject).SQ(this.Amw).content;
-        p.g(localObject, "lyricObj!!.getSentence(currentLine).content");
+        localObject = ((e)localObject).Zm(this.FTC).content;
+        p.j(localObject, "lyricObj!!.getSentence(currentLine).content");
         break;
       }
     }
     label260:
     label381:
-    Object localObject = this.Amv;
+    Object localObject = this.FTB;
     if (localObject == null) {
-      p.hyc();
+      p.iCn();
     }
-    int k = ((e)localObject).euw();
+    int k = ((e)localObject).feO();
     int j = 0;
     i = -1;
     label407:
     if (j < k)
     {
-      localObject = this.Amv;
+      localObject = this.FTB;
       if (localObject == null) {
-        p.hyc();
+        p.iCn();
       }
-      if (((e)localObject).SQ(j).timestamp < paramLong)
+      if (((e)localObject).Zm(j).timestamp < paramLong)
       {
-        localObject = this.Amv;
+        localObject = this.FTB;
         if (localObject == null) {
-          p.hyc();
+          p.iCn();
         }
-        if (((e)localObject).SQ(j).Akt) {
+        if (((e)localObject).Zm(j).FRx) {
           break label838;
         }
         i = j;
@@ -330,33 +331,33 @@ public final class MarqueeLyricView
         i = -1;
         break;
       }
-      if (i == this.Amw)
+      if (i == this.FTC)
       {
-        Log.v("MicroMsg.MarqueeLyricView", "getLyricLine, same line. [%s]", new Object[] { Integer.valueOf(this.Amw) });
+        Log.v("MicroMsg.MarqueeLyricView", "getLyricLine, same line. [%s]", new Object[] { Integer.valueOf(this.FTC) });
         i = -3;
         break;
       }
-      localObject = this.Amv;
+      localObject = this.FTB;
       if (localObject == null) {
-        p.hyc();
+        p.iCn();
       }
-      if (i >= ((e)localObject).euw())
+      if (i >= ((e)localObject).feO())
       {
-        localObject = this.Amv;
+        localObject = this.FTB;
         if (localObject == null) {
-          p.hyc();
+          p.iCn();
         }
-        Log.e("MicroMsg.MarqueeLyricView", "getLyricLine, over range, tempHighLightIndex:%s, SentenceSize:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(((e)localObject).euw()) });
+        Log.e("MicroMsg.MarqueeLyricView", "getLyricLine, over range, tempHighLightIndex:%s, SentenceSize:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(((e)localObject).feO()) });
         i = -5;
         break;
       }
-      this.Amw = i;
-      localObject = this.Amv;
+      this.FTC = i;
+      localObject = this.FTB;
       if (localObject == null) {
-        p.hyc();
+        p.iCn();
       }
-      localObject = ((e)localObject).SQ(i).content;
-      p.g(localObject, "lyricObj!!.getSentence(tempHighLightIndex).content");
+      localObject = ((e)localObject).Zm(i).content;
+      p.j(localObject, "lyricObj!!.getSentence(tempHighLightIndex).content");
       CharSequence localCharSequence = (CharSequence)localObject;
       j = localCharSequence.length() - 1;
       m = 0;
@@ -407,24 +408,24 @@ public final class MarqueeLyricView
       }
       Log.d("MicroMsg.MarqueeLyricView", "lyric:%s", new Object[] { localObject });
       break;
-      AppMethodBeat.o(220017);
+      AppMethodBeat.o(260018);
       return;
     }
   }
   
   public final void setLyricObj(e parame)
   {
-    AppMethodBeat.i(220015);
-    p.h(parame, "lyricObj");
+    AppMethodBeat.i(260015);
+    p.k(parame, "lyricObj");
     setText((CharSequence)"");
-    this.Aoe = false;
-    removeCallbacks(this.Aoc);
-    kQ();
-    this.Amv = parame;
-    AppMethodBeat.o(220015);
+    this.FVk = false;
+    removeCallbacks(this.FVi);
+    ld();
+    this.FTB = parame;
+    AppMethodBeat.o(260015);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -432,17 +433,17 @@ public final class MarqueeLyricView
     
     public final void run()
     {
-      AppMethodBeat.i(220012);
-      Animation localAnimation = MarqueeLyricView.e(this.Aog);
-      p.g(localAnimation, "fadeOut");
-      localAnimation.setDuration(MarqueeLyricView.f(this.Aog));
-      this.Aog.startAnimation(MarqueeLyricView.e(this.Aog));
-      Log.d("MicroMsg.MarqueeLyricView", "doFaceOut, duration:%s", new Object[] { Long.valueOf(MarqueeLyricView.f(this.Aog)) });
-      AppMethodBeat.o(220012);
+      AppMethodBeat.i(259874);
+      Animation localAnimation = MarqueeLyricView.e(this.FVm);
+      p.j(localAnimation, "fadeOut");
+      localAnimation.setDuration(MarqueeLyricView.f(this.FVm));
+      this.FVm.startAnimation(MarqueeLyricView.e(this.FVm));
+      Log.d("MicroMsg.MarqueeLyricView", "doFaceOut, duration:%s", new Object[] { Long.valueOf(MarqueeLyricView.f(this.FVm)) });
+      AppMethodBeat.o(259874);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -450,11 +451,11 @@ public final class MarqueeLyricView
     
     public final void run()
     {
-      AppMethodBeat.i(220013);
-      Log.d("MicroMsg.MarqueeLyricView", "scrollTask, mStartX:%s, mDistance:%s, mDuration:%s", new Object[] { Integer.valueOf(MarqueeLyricView.a(this.Aog)), Integer.valueOf(MarqueeLyricView.b(this.Aog)), Integer.valueOf(MarqueeLyricView.c(this.Aog)) });
-      MarqueeLyricView.d(this.Aog).startScroll(MarqueeLyricView.a(this.Aog), 0, MarqueeLyricView.b(this.Aog), 0, MarqueeLyricView.c(this.Aog));
-      this.Aog.invalidate();
-      AppMethodBeat.o(220013);
+      AppMethodBeat.i(260201);
+      Log.d("MicroMsg.MarqueeLyricView", "scrollTask, mStartX:%s, mDistance:%s, mDuration:%s", new Object[] { Integer.valueOf(MarqueeLyricView.a(this.FVm)), Integer.valueOf(MarqueeLyricView.b(this.FVm)), Integer.valueOf(MarqueeLyricView.c(this.FVm)) });
+      MarqueeLyricView.d(this.FVm).startScroll(MarqueeLyricView.a(this.FVm), 0, MarqueeLyricView.b(this.FVm), 0, MarqueeLyricView.c(this.FVm));
+      this.FVm.invalidate();
+      AppMethodBeat.o(260201);
     }
   }
 }

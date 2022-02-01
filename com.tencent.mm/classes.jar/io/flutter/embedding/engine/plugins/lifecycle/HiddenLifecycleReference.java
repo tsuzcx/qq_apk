@@ -1,19 +1,19 @@
 package io.flutter.embedding.engine.plugins.lifecycle;
 
-import android.arch.lifecycle.Lifecycle;
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
+import androidx.lifecycle.h;
 
 @Keep
 public class HiddenLifecycleReference
 {
-  private final Lifecycle lifecycle;
+  private final h lifecycle;
   
-  public HiddenLifecycleReference(Lifecycle paramLifecycle)
+  public HiddenLifecycleReference(h paramh)
   {
-    this.lifecycle = paramLifecycle;
+    this.lifecycle = paramh;
   }
   
-  public Lifecycle getLifecycle()
+  public h getLifecycle()
   {
     return this.lifecycle;
   }

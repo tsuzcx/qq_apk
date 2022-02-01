@@ -13,11 +13,11 @@ import android.os.RemoteException;
 import android.provider.ContactsContract.Data;
 import android.provider.ContactsContract.RawContacts;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.contact.c;
-import com.tencent.mm.g.c.ax;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.f.c.ax;
 import com.tencent.mm.n.f;
-import com.tencent.mm.n.h;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.account.ui.r.j;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.bv;
@@ -30,10 +30,10 @@ import java.util.Map;
 public final class g
   implements Runnable
 {
-  private String dRe;
-  private Account jMD;
-  private a jME;
+  private String fKu;
   private Context mContext;
+  private Account mDL;
+  private a mDM;
   private String username;
   
   public g(Context paramContext, Account paramAccount)
@@ -50,14 +50,14 @@ public final class g
   {
     AppMethodBeat.i(127679);
     this.mContext = paramContext;
-    this.jMD = paramAccount;
+    this.mDL = paramAccount;
     this.username = paramString1;
-    this.dRe = paramString2;
+    this.fKu = paramString2;
     Log.i("MicroMsg.ContactsOperations", "username = " + paramString1 + ", " + paramString2);
     AppMethodBeat.o(127679);
   }
   
-  private void Sj(String paramString)
+  private void ZL(String paramString)
   {
     AppMethodBeat.i(127684);
     if (Util.isNullOrNil(paramString))
@@ -66,7 +66,7 @@ public final class g
       AppMethodBeat.o(127684);
       return;
     }
-    if (!com.tencent.mm.pluginsdk.permission.b.n(this.mContext, "android.permission.READ_CONTACTS"))
+    if (!com.tencent.mm.pluginsdk.permission.b.o(this.mContext, "android.permission.READ_CONTACTS"))
     {
       Log.e("MicroMsg.ContactsOperations", "no contact permission");
       AppMethodBeat.o(127684);
@@ -134,61 +134,61 @@ public final class g
   }
   
   /* Error */
-  private boolean Sk(String paramString)
+  private boolean ZM(String paramString)
   {
     // Byte code:
-    //   0: ldc 184
+    //   0: ldc 183
     //   2: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
     //   6: getfield 37	com/tencent/mm/platformtools/g:mContext	Landroid/content/Context;
     //   9: ldc 87
-    //   11: invokestatic 93	com/tencent/mm/pluginsdk/permission/b:n	(Landroid/content/Context;Ljava/lang/String;)Z
+    //   11: invokestatic 92	com/tencent/mm/pluginsdk/permission/b:o	(Landroid/content/Context;Ljava/lang/String;)Z
     //   14: ifne +17 -> 31
     //   17: ldc 45
-    //   19: ldc 95
+    //   19: ldc 94
     //   21: invokestatic 85	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   24: ldc 184
+    //   24: ldc 183
     //   26: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   29: iconst_0
     //   30: ireturn
     //   31: aload_0
     //   32: getfield 37	com/tencent/mm/platformtools/g:mContext	Landroid/content/Context;
-    //   35: invokevirtual 101	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   38: getstatic 107	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   35: invokevirtual 100	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   38: getstatic 106	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
     //   41: iconst_1
-    //   42: anewarray 109	java/lang/String
+    //   42: anewarray 108	java/lang/String
     //   45: dup
     //   46: iconst_0
-    //   47: ldc 111
+    //   47: ldc 110
     //   49: aastore
-    //   50: ldc 186
+    //   50: ldc 185
     //   52: iconst_1
-    //   53: anewarray 109	java/lang/String
+    //   53: anewarray 108	java/lang/String
     //   56: dup
     //   57: iconst_0
     //   58: aload_1
     //   59: aastore
     //   60: aconst_null
-    //   61: invokevirtual 131	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   61: invokevirtual 130	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   64: astore_3
     //   65: aload_3
     //   66: ifnull +81 -> 147
     //   69: aload_3
-    //   70: invokeinterface 190 1 0
+    //   70: invokeinterface 189 1 0
     //   75: ifle +72 -> 147
     //   78: ldc 45
-    //   80: ldc 192
+    //   80: ldc 191
     //   82: aload_1
-    //   83: invokestatic 196	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   86: invokevirtual 200	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   89: invokestatic 203	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   83: invokestatic 195	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   86: invokevirtual 199	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   89: invokestatic 202	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   92: iconst_1
     //   93: istore_2
     //   94: aload_3
     //   95: ifnull +9 -> 104
     //   98: aload_3
-    //   99: invokeinterface 178 1 0
-    //   104: ldc 184
+    //   99: invokeinterface 177 1 0
+    //   104: ldc 183
     //   106: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   109: iload_2
     //   110: ireturn
@@ -198,10 +198,10 @@ public final class g
     //   114: ldc 45
     //   116: new 47	java/lang/StringBuilder
     //   119: dup
-    //   120: ldc 205
+    //   120: ldc 204
     //   122: invokespecial 52	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   125: aload_1
-    //   126: invokevirtual 138	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   126: invokevirtual 137	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   129: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   132: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   135: invokestatic 85	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
@@ -225,7 +225,7 @@ public final class g
     //   69	92	143	java/lang/Exception
   }
   
-  private void bls()
+  private void bvi()
   {
     Object localObject2;
     for (;;)
@@ -234,14 +234,14 @@ public final class g
       try
       {
         AppMethodBeat.i(127682);
-        if (!com.tencent.mm.kernel.g.aAc())
+        if (!com.tencent.mm.kernel.h.aHB())
         {
           Log.d("MicroMsg.ContactsOperations", "account not ready, quit this operation");
           Log.w("MicroMsg.ContactsOperations", "quit...");
           AppMethodBeat.o(127682);
           return;
         }
-        localObject5 = ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).SV("select  *  from addr_upload2 where ( addr_upload2.username IS NOT NULL AND addr_upload2.status!=\"0\" AND addr_upload2.username!=\"" + Util.escapeSqlValue("") + "\" )");
+        localObject5 = ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getAddrUploadStg()).aaB("select  *  from addr_upload2 where ( addr_upload2.username IS NOT NULL AND addr_upload2.status!=\"0\" AND addr_upload2.username!=\"" + Util.escapeSqlValue("") + "\" )");
         if (((List)localObject5).size() == 0)
         {
           Log.e("MicroMsg.ContactsOperations", "there is no wechat friend in this phone");
@@ -253,8 +253,8 @@ public final class g
       }
       finally {}
       HashMap localHashMap;
-      localObject2 = ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("account_name", this.jMD.name).appendQueryParameter("account_type", this.jMD.type).build();
-      if (!com.tencent.mm.pluginsdk.permission.b.n(this.mContext, "android.permission.READ_CONTACTS"))
+      localObject2 = ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("account_name", this.mDL.name).appendQueryParameter("account_type", this.mDL.type).build();
+      if (!com.tencent.mm.pluginsdk.permission.b.o(this.mContext, "android.permission.READ_CONTACTS"))
       {
         Log.e("MicroMsg.ContactsOperations", "no contact permission");
         AppMethodBeat.o(127682);
@@ -278,11 +278,11 @@ public final class g
             Log.printErrStackTrace("MicroMsg.ContactsOperations", localException1, "", new Object[] { "" });
             Object localObject4 = localObject2;
             continue;
-            localObject2 = ((com.tencent.mm.plugin.account.friend.a.a)localObject6).bnK();
+            localObject2 = ((com.tencent.mm.plugin.account.friend.a.a)localObject6).bxT();
             continue;
-            Sj(((com.tencent.mm.plugin.account.friend.a.a)localObject6).kdX);
+            ZL(((com.tencent.mm.plugin.account.friend.a.a)localObject6).mVx);
             continue;
-            this.jME.execute();
+            this.mDM.execute();
             Log.w("MicroMsg.ContactsOperations", "quit...");
             AppMethodBeat.o(127682);
           }
@@ -293,7 +293,7 @@ public final class g
             if (localObject3 != null) {
               ((Cursor)localObject3).close();
             }
-            if ((Sk("vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voip.video")) || (Sk("vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voip"))) {
+            if ((ZM("vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voip.video")) || (ZM("vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voip"))) {
               break label578;
             }
             i = 1;
@@ -304,31 +304,31 @@ public final class g
             i = 0;
             continue;
           }
-          this.jME = new a(this.mContext.getContentResolver());
+          this.mDM = new a(this.mContext.getContentResolver());
           localObject3 = ((List)localObject5).iterator();
           if (!((Iterator)localObject3).hasNext()) {
             continue;
           }
           localObject6 = (com.tencent.mm.plugin.account.friend.a.a)((Iterator)localObject3).next();
           localObject5 = ((com.tencent.mm.plugin.account.friend.a.a)localObject6).getUsername();
-          localObject2 = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().Kn((String)localObject5);
-          if ((localObject2 == null) || (!c.oR(((ax)localObject2).field_type))) {
+          localObject2 = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().RG((String)localObject5);
+          if ((localObject2 == null) || (!d.rk(((ax)localObject2).field_type))) {
             continue;
           }
-          if (!Util.isNullOrNil(((com.tencent.mm.plugin.account.friend.a.a)localObject6).bnK())) {
+          if (!Util.isNullOrNil(((com.tencent.mm.plugin.account.friend.a.a)localObject6).bxT())) {
             continue;
           }
           localObject2 = ((com.tencent.mm.plugin.account.friend.a.a)localObject6).getNickName();
-          str = ((com.tencent.mm.plugin.account.friend.a.a)localObject6).bnP();
-          localObject6 = ((com.tencent.mm.plugin.account.friend.a.a)localObject6).kdX;
+          str = ((com.tencent.mm.plugin.account.friend.a.a)localObject6).bxY();
+          localObject6 = ((com.tencent.mm.plugin.account.friend.a.a)localObject6).mVx;
           if ((localHashMap.get(localObject6) == null) || (i != 0))
           {
             if (localHashMap.get(localObject6) != null) {
-              Sj((String)localObject6);
+              ZL((String)localObject6);
             }
-            e((String)localObject2, str, (String)localObject6, (String)localObject5);
+            f((String)localObject2, str, (String)localObject6, (String)localObject5);
           }
-          this.jME.execute();
+          this.mDM.execute();
           continue;
           localObject3 = localObject2;
           if (((Cursor)localObject2).moveToFirst())
@@ -344,38 +344,38 @@ public final class g
     }
   }
   
-  private void e(String paramString1, String paramString2, String paramString3, String paramString4)
+  private void f(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(127683);
     Log.d("MicroMsg.ContactsOperations", "add wechat contact: displayname:" + paramString1 + ", phoneNum:" + paramString2 + ", " + paramString3 + ", username:" + paramString4);
     paramString4 = ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI);
-    paramString4.withValue("account_name", this.jMD.name);
-    paramString4.withValue("account_type", this.jMD.type);
+    paramString4.withValue("account_name", this.mDL.name);
+    paramString4.withValue("account_type", this.mDL.type);
     paramString4.withValue("sync1", paramString3);
-    this.jME.a(paramString4.build());
+    this.mDM.a(paramString4.build());
     paramString4 = ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI);
     paramString4.withValueBackReference("raw_contact_id", 0);
     paramString4.withValue("mimetype", "vnd.android.cursor.item/name");
     paramString4.withValue("data1", paramString1);
-    this.jME.a(paramString4.build());
+    this.mDM.a(paramString4.build());
     paramString1 = ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI);
     paramString1.withValueBackReference("raw_contact_id", 0);
     paramString1.withValue("mimetype", "vnd.android.cursor.item/vnd.com.tencent.mm.chatting.profile");
     paramString1.withValue("data1", paramString2);
-    paramString1.withValue("data2", this.mContext.getString(2131755908));
-    paramString1.withValue("data3", this.mContext.getString(2131758168));
+    paramString1.withValue("data2", this.mContext.getString(r.j.app_name));
+    paramString1.withValue("data3", this.mContext.getString(r.j.contact_sync_action_chat));
     paramString1.withValue("data4", paramString3);
-    this.jME.a(paramString1.build());
-    if ("1".equals(h.aqJ().getValue("VOIPCallType")))
+    this.mDM.a(paramString1.build());
+    if ("1".equals(com.tencent.mm.n.h.axc().getValue("VOIPCallType")))
     {
       paramString1 = ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI);
       paramString1.withValueBackReference("raw_contact_id", 0);
       paramString1.withValue("mimetype", "vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voip.video");
       paramString1.withValue("data1", paramString2);
-      paramString1.withValue("data2", this.mContext.getString(2131755908));
-      paramString1.withValue("data3", this.mContext.getString(2131758170));
+      paramString1.withValue("data2", this.mContext.getString(r.j.app_name));
+      paramString1.withValue("data3", this.mContext.getString(r.j.contact_sync_action_chat_voip_video));
       paramString1.withValue("data4", paramString3);
-      this.jME.a(paramString1.build());
+      this.mDM.a(paramString1.build());
     }
     for (;;)
     {
@@ -383,28 +383,28 @@ public final class g
       paramString1.withValueBackReference("raw_contact_id", 0);
       paramString1.withValue("mimetype", "vnd.android.cursor.item/vnd.com.tencent.mm.plugin.sns.timeline");
       paramString1.withValue("data1", paramString2);
-      paramString1.withValue("data2", this.mContext.getString(2131755908));
-      paramString1.withValue("data3", this.mContext.getString(2131758171));
+      paramString1.withValue("data2", this.mContext.getString(r.j.app_name));
+      paramString1.withValue("data3", this.mContext.getString(r.j.contact_sync_action_view_timeline));
       paramString1.withValue("data4", paramString3);
-      this.jME.a(paramString1.build());
+      this.mDM.a(paramString1.build());
       paramString1 = ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI);
       paramString1.withValueBackReference("raw_contact_id", 0);
       paramString1.withValue("mimetype", "vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voiceaction");
       paramString1.withValue("data1", paramString2);
-      paramString1.withValue("data2", this.mContext.getString(2131755908));
+      paramString1.withValue("data2", this.mContext.getString(r.j.app_name));
       paramString1.withValue("data3", "");
       paramString1.withValue("data4", paramString3);
-      this.jME.a(paramString1.build());
+      this.mDM.a(paramString1.build());
       AppMethodBeat.o(127683);
       return;
       paramString1 = ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI);
       paramString1.withValueBackReference("raw_contact_id", 0);
       paramString1.withValue("mimetype", "vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voip");
       paramString1.withValue("data1", paramString2);
-      paramString1.withValue("data2", this.mContext.getString(2131755908));
-      paramString1.withValue("data3", this.mContext.getString(2131758169));
+      paramString1.withValue("data2", this.mContext.getString(r.j.app_name));
+      paramString1.withValue("data3", this.mContext.getString(r.j.contact_sync_action_chat_voip));
       paramString1.withValue("data4", paramString3);
-      this.jME.a(paramString1.build());
+      this.mDM.a(paramString1.build());
     }
   }
   
@@ -412,42 +412,42 @@ public final class g
   {
     AppMethodBeat.i(127680);
     Log.i("MicroMsg.ContactsOperations", "start time:".concat(String.valueOf(System.currentTimeMillis())));
-    if (!com.tencent.mm.kernel.g.aAf().azp())
+    if (!com.tencent.mm.kernel.h.aHE().aGM())
     {
       Log.w("MicroMsg.ContactsOperations", "account not ready, quit this operation");
       Log.w("MicroMsg.ContactsOperations", "quit...");
       AppMethodBeat.o(127680);
       return;
     }
-    if ((Util.isNullOrNil(this.username)) && (Util.isNullOrNil(this.dRe))) {
-      bls();
+    if ((Util.isNullOrNil(this.username)) && (Util.isNullOrNil(this.fKu))) {
+      bvi();
     }
     for (;;)
     {
       Log.i("MicroMsg.ContactsOperations", "end time:" + System.currentTimeMillis());
       AppMethodBeat.o(127680);
       return;
-      if (!Util.isNullOrNil(this.dRe)) {
+      if (!Util.isNullOrNil(this.fKu)) {
         break;
       }
-      locala = ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).SR(this.username);
-      if ((locala != null) && (!Util.isNullOrNil(locala.kdX))) {
-        Sj(locala.kdX);
+      locala = ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getAddrUploadStg()).aax(this.username);
+      if ((locala != null) && (!Util.isNullOrNil(locala.mVx))) {
+        ZL(locala.mVx);
       }
       Log.w("MicroMsg.ContactsOperations", "quit...");
     }
-    com.tencent.mm.plugin.account.friend.a.a locala = ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).SR(this.username);
-    if ((locala == null) || (Util.isNullOrNil(locala.kdX))) {
-      locala = ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).SR(this.dRe);
+    com.tencent.mm.plugin.account.friend.a.a locala = ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getAddrUploadStg()).aax(this.username);
+    if ((locala == null) || (Util.isNullOrNil(locala.mVx))) {
+      locala = ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getAddrUploadStg()).aax(this.fKu);
     }
     for (;;)
     {
       for (;;)
       {
-        if ((locala != null) && (!Util.isNullOrNil(locala.kdX))) {
+        if ((locala != null) && (!Util.isNullOrNil(locala.mVx))) {
           try
           {
-            if (!com.tencent.mm.pluginsdk.permission.b.n(this.mContext, "android.permission.READ_CONTACTS")) {
+            if (!com.tencent.mm.pluginsdk.permission.b.o(this.mContext, "android.permission.READ_CONTACTS")) {
               Log.e("MicroMsg.ContactsOperations", "no contact permission");
             }
           }
@@ -461,21 +461,21 @@ public final class g
       {
         Log.w("MicroMsg.ContactsOperations", "quit...");
         break;
-        Object localObject1 = ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("account_name", this.jMD.name).appendQueryParameter("account_type", this.jMD.type).build();
+        Object localObject1 = ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("account_name", this.mDL.name).appendQueryParameter("account_type", this.mDL.type).build();
         Object localObject2 = this.mContext.getContentResolver();
-        String str = "deleted=\"0\" AND sync1=\"" + localException.kdX + "\"";
+        String str = "deleted=\"0\" AND sync1=\"" + localException.mVx + "\"";
         localObject2 = ((ContentResolver)localObject2).query((Uri)localObject1, new String[] { "sync1", "_id" }, str, null, null);
         if ((localObject2 == null) || (((Cursor)localObject2).getCount() == 0)) {
-          if (!Util.isNullOrNil(localException.bnK())) {
+          if (!Util.isNullOrNil(localException.bxT())) {
             break label481;
           }
         }
         label481:
-        for (localObject1 = localException.getNickName();; localObject1 = localException.bnK())
+        for (localObject1 = localException.getNickName();; localObject1 = localException.bxT())
         {
-          this.jME = new a(this.mContext.getContentResolver());
-          e((String)localObject1, localException.bnP(), localException.kdX, this.username);
-          this.jME.execute();
+          this.mDM = new a(this.mContext.getContentResolver());
+          f((String)localObject1, localException.bxY(), localException.mVx, this.username);
+          this.mDM.execute();
           if (localObject2 == null) {
             break;
           }
@@ -490,35 +490,35 @@ public final class g
   public final class a
   {
     private final String TAG;
-    private final ContentResolver hwt;
-    ArrayList<ContentProviderOperation> jMF;
+    private final ContentResolver kiH;
+    ArrayList<ContentProviderOperation> mDN;
     
     public a(ContentResolver paramContentResolver)
     {
       AppMethodBeat.i(127676);
       this.TAG = "MicroMsg.BatchOperation";
-      this.hwt = paramContentResolver;
-      this.jMF = new ArrayList();
+      this.kiH = paramContentResolver;
+      this.mDN = new ArrayList();
       AppMethodBeat.o(127676);
     }
     
     public final void a(ContentProviderOperation paramContentProviderOperation)
     {
       AppMethodBeat.i(127677);
-      this.jMF.add(paramContentProviderOperation);
+      this.mDN.add(paramContentProviderOperation);
       AppMethodBeat.o(127677);
     }
     
     public final void execute()
     {
       AppMethodBeat.i(127678);
-      if (this.jMF.size() == 0)
+      if (this.mDN.size() == 0)
       {
         Log.d("MicroMsg.BatchOperation", "no batch operation");
         AppMethodBeat.o(127678);
         return;
       }
-      if (!com.tencent.mm.pluginsdk.permission.b.n(g.a(g.this), "android.permission.READ_CONTACTS"))
+      if (!com.tencent.mm.pluginsdk.permission.b.o(g.a(g.this), "android.permission.READ_CONTACTS"))
       {
         Log.e("MicroMsg.BatchOperation", "no contact permission");
         AppMethodBeat.o(127678);
@@ -526,8 +526,8 @@ public final class g
       }
       try
       {
-        this.hwt.applyBatch("com.android.contacts", this.jMF);
-        this.jMF.clear();
+        this.kiH.applyBatch("com.android.contacts", this.mDN);
+        this.mDN.clear();
         AppMethodBeat.o(127678);
         return;
       }
@@ -557,7 +557,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.platformtools.g
  * JD-Core Version:    0.7.0.1
  */

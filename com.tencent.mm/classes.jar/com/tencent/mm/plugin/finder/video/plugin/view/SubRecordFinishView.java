@@ -6,21 +6,24 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.finder.b.c;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/video/plugin/view/SubRecordFinishView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/plugin/view/SubRecordFinishView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "plugin-finder_release"})
 public final class SubRecordFinishView
   extends FrameLayout
 {
   public SubRecordFinishView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(254521);
-    LayoutInflater.from(paramContext).inflate(2131494639, (ViewGroup)this, true);
-    ((WeImageView)findViewById(2131308722)).setIconColor(a.n(paramContext, 2131099792));
-    AppMethodBeat.o(254521);
+    AppMethodBeat.i(291610);
+    LayoutInflater.from(paramContext).inflate(b.g.finder_sub_record_finish_layout, (ViewGroup)this, true);
+    ((WeImageView)findViewById(b.f.sub_video_finish)).setIconColor(a.w(paramContext, b.c.Orange));
+    AppMethodBeat.o(291610);
   }
 }
 

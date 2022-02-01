@@ -1,98 +1,94 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class ctu
-  extends com.tencent.mm.bw.a
+  extends dyl
 {
-  public String Mzd;
-  public String Mze;
-  public String Mzf;
-  public int action;
+  public String Tsf;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(194512);
+    AppMethodBeat.i(124529);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Mzd != null) {
-        paramVarArgs.e(1, this.Mzd);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.Mze != null) {
-        paramVarArgs.e(2, this.Mze);
+      if (this.Tsf != null) {
+        paramVarArgs.f(2, this.Tsf);
       }
-      if (this.Mzf != null) {
-        paramVarArgs.e(3, this.Mzf);
-      }
-      paramVarArgs.aM(4, this.action);
-      AppMethodBeat.o(194512);
+      AppMethodBeat.o(124529);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Mzd == null) {
-        break label378;
+      if (this.BaseRequest == null) {
+        break label348;
       }
     }
-    label378:
-    for (int i = g.a.a.b.b.a.f(1, this.Mzd) + 0;; i = 0)
+    label348:
+    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.Mze != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.Mze);
+      int i = paramInt;
+      if (this.Tsf != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.Tsf);
       }
-      i = paramInt;
-      if (this.Mzf != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.Mzf);
-      }
-      paramInt = g.a.a.b.b.a.bu(4, this.action);
-      AppMethodBeat.o(194512);
-      return i + paramInt;
+      AppMethodBeat.o(124529);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(194512);
+        AppMethodBeat.o(124529);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         ctu localctu = (ctu)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(194512);
+          AppMethodBeat.o(124529);
           return -1;
         case 1: 
-          localctu.Mzd = locala.UbS.readString();
-          AppMethodBeat.o(194512);
-          return 0;
-        case 2: 
-          localctu.Mze = locala.UbS.readString();
-          AppMethodBeat.o(194512);
-          return 0;
-        case 3: 
-          localctu.Mzf = locala.UbS.readString();
-          AppMethodBeat.o(194512);
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            jg localjg = new jg();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localjg.parseFrom((byte[])localObject);
+            }
+            localctu.BaseRequest = localjg;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(124529);
           return 0;
         }
-        localctu.action = locala.UbS.zi();
-        AppMethodBeat.o(194512);
+        localctu.Tsf = ((g.a.a.a.a)localObject).abFh.readString();
+        AppMethodBeat.o(124529);
         return 0;
       }
-      AppMethodBeat.o(194512);
+      AppMethodBeat.o(124529);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ctu
  * JD-Core Version:    0.7.0.1
  */

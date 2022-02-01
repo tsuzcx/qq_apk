@@ -7,14 +7,14 @@ import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public final class j
 {
-  MMHandler ndA;
+  MMHandler qdR;
   
   public j()
   {
     AppMethodBeat.i(30036);
-    if (com.tencent.mm.compatible.util.d.oF(18))
+    if (com.tencent.mm.compatible.util.d.qX(18))
     {
-      this.ndA = new a("WearWorker_worker_thread");
+      this.qdR = new a("WearWorker_worker_thread");
       Log.i("MicroMsg.Wear.WearWorker", "start worker");
     }
     AppMethodBeat.o(30036);
@@ -23,10 +23,10 @@ public final class j
   public final void a(com.tencent.mm.plugin.wear.model.f.d paramd)
   {
     AppMethodBeat.i(30037);
-    if (this.ndA != null)
+    if (this.qdR != null)
     {
-      paramd = this.ndA.obtainMessage(0, paramd);
-      this.ndA.sendMessage(paramd);
+      paramd = this.qdR.obtainMessage(0, paramd);
+      this.qdR.sendMessage(paramd);
     }
     AppMethodBeat.o(30037);
   }
@@ -61,7 +61,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.j
  * JD-Core Version:    0.7.0.1
  */

@@ -2,14 +2,10 @@ package com.tencent.mm.plugin.voip.ui;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.SurfaceTexture;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
@@ -19,15 +15,17 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.f.h;
-import com.tencent.f.i;
-import com.tencent.f.i.b;
+import androidx.fragment.app.Fragment;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.g.d;
-import com.tencent.mm.plugin.voip.b.k;
+import com.tencent.mm.plugin.voip.b.d;
+import com.tencent.mm.plugin.voip.b.g;
+import com.tencent.mm.plugin.voip.c.k;
+import com.tencent.mm.plugin.voip.model.u;
 import com.tencent.mm.plugin.voip.video.OpenGlRender;
 import com.tencent.mm.plugin.voip.video.camera.prev.CaptureView;
-import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
@@ -37,31 +35,35 @@ import java.lang.ref.WeakReference;
 public abstract class VoipBaseFragment
   extends Fragment
 {
-  protected static final int[] HeB = { -1, 2131767342, 2131767369, 2131767368 };
-  static int HeF = -1;
+  protected static final int[] NVs = { -1, b.g.voip_one_dot, b.g.voip_two_dot, b.g.voip_three_dot };
+  static int NVw = -1;
   protected static int mScreenHeight;
   protected static int mScreenWidth;
-  protected boolean GUf;
-  protected ImageView HeC;
-  protected ImageView HeD;
-  protected int HeE = 4096;
-  protected VoipBaseFragment.d HeG;
-  protected c HeH = new c();
-  private VoipBaseFragment.a HeI;
-  private b HeJ;
-  protected WeakReference<c> Hen;
-  protected long Heo = -1L;
-  protected String goe;
-  protected MMHandler kAn;
+  protected TextView DZt;
+  private Runnable FAr = new VoipBaseFragment.2(this);
+  protected ImageView FwW;
+  protected boolean FzP = false;
+  protected boolean NKr;
+  private VoipBaseFragment.b NVA;
+  protected WeakReference<c> NVe;
+  protected long NVf = -1L;
+  protected ImageView NVt;
+  protected ImageView NVu;
+  protected int NVv = 4096;
+  protected VoipBaseFragment.d NVx;
+  protected c NVy = new c();
+  private VoipBaseFragment.a NVz;
+  protected String iSn;
   protected int mStatus = -1;
-  protected RelativeLayout ncd;
+  protected MMHandler ntw;
+  protected RelativeLayout qcr;
   
-  protected static String AF(long paramLong)
+  protected static String GN(long paramLong)
   {
     return String.format("%02d:%02d", new Object[] { Long.valueOf(paramLong / 60L), Long.valueOf(paramLong % 60L) });
   }
   
-  protected static void aA(View paramView, int paramInt)
+  protected static void aF(View paramView, int paramInt)
   {
     if (paramView == null) {
       return;
@@ -71,9 +73,27 @@ public abstract class VoipBaseFragment
     paramView.setLayoutParams(localLayoutParams);
   }
   
-  public final void Li(long paramLong)
+  protected abstract void Bc(boolean paramBoolean);
+  
+  public final void SG(long paramLong)
   {
-    this.Heo = paramLong;
+    this.NVf = paramLong;
+  }
+  
+  final void XK(int paramInt)
+  {
+    if (this.DZt != null)
+    {
+      this.FzP = true;
+      if (this.qcr.findViewById(b.d.net_tip_layout) != null) {
+        this.qcr.findViewById(b.d.net_tip_layout).setOnClickListener(new VoipBaseFragment.3(this));
+      }
+      this.FwW.setVisibility(0);
+      this.DZt.setVisibility(0);
+      this.DZt.setText(b.g.voip_auduo_auto_switch_to_mobile_net);
+      this.ntw.removeCallbacks(this.FAr);
+      this.ntw.postDelayed(this.FAr, paramInt * 1000);
+    }
   }
   
   @Deprecated
@@ -81,56 +101,72 @@ public abstract class VoipBaseFragment
   
   public final void a(VoipBaseFragment.d paramd)
   {
-    this.HeG = paramd;
+    this.NVx = paramd;
   }
   
   @Deprecated
   public void a(CaptureView paramCaptureView) {}
   
-  protected abstract void aUB(String paramString);
+  public void ali(int paramInt) {}
   
-  void adB(int paramInt) {}
+  public void alj(int paramInt) {}
   
-  public void adx(int paramInt) {}
+  public void alk(int paramInt) {}
   
-  public void ady(int paramInt) {}
+  public void aln(int paramInt) {}
   
-  public void adz(int paramInt) {}
+  final void alo(int paramInt)
+  {
+    com.tencent.mm.plugin.voip.c.gxs();
+    if (u.gAI())
+    {
+      this.FwW.setVisibility(8);
+      this.DZt.setVisibility(0);
+      if (this.qcr.findViewById(b.d.net_tip_layout) != null) {
+        this.qcr.findViewById(b.d.net_tip_layout).setOnClickListener(new VoipBaseFragment.1(this));
+      }
+      this.DZt.setText(b.g.voip_audio_network_data_cost_max);
+      this.ntw.removeCallbacks(this.FAr);
+      this.ntw.postDelayed(this.FAr, paramInt * 1000);
+    }
+  }
   
   @Deprecated
   public void b(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
   
+  protected abstract void bgj(String paramString);
+  
   @Deprecated
   public void f(int paramInt1, int paramInt2, byte[] paramArrayOfByte) {}
   
-  protected final void fJA()
-  {
-    this.HeD.setVisibility(0);
-    this.HeJ = new b();
-    h.RTc.aX(this.HeJ);
-  }
+  public void gBJ() {}
   
-  public void fJm() {}
-  
-  protected abstract void fJq();
+  protected abstract void gBM();
   
   @Deprecated
-  public void fJx() {}
+  public void gBT() {}
   
   @Deprecated
-  public OpenGlRender fJy()
+  public OpenGlRender gBU()
   {
     return null;
   }
   
-  protected final void fJz()
+  protected final void gBV()
   {
-    if ((this.goe == null) || (this.HeC.getVisibility() == 0)) {
+    if ((this.iSn == null) || (this.NVt.getVisibility() == 0)) {
       return;
     }
-    this.HeC.setVisibility(0);
-    this.HeI = new VoipBaseFragment.a(this);
-    h.RTc.aX(this.HeI);
+    this.NVt.setVisibility(0);
+    this.NVz = new VoipBaseFragment.a(this);
+    h.ZvG.be(this.NVz);
+  }
+  
+  protected final void gBW()
+  {
+    this.NVu.setVisibility(0);
+    this.NVA = new VoipBaseFragment.b(this);
+    h.ZvG.be(this.NVA);
   }
   
   @Deprecated
@@ -140,21 +176,35 @@ public abstract class VoipBaseFragment
   }
   
   @Deprecated
-  public void jA(int paramInt1, int paramInt2) {}
+  public void kN(int paramInt1, int paramInt2) {}
   
-  public void jD(int paramInt1, int paramInt2)
+  public void kR(int paramInt1, int paramInt2)
   {
-    Log.printInfoStack("MicroMsg.VoipBaseFragment", "newState: " + k.adM(paramInt2) + ", action: " + k.adM(paramInt1) + ", lastStatus: " + k.adM(HeF), new Object[0]);
-    if ((HeF != this.mStatus) && (paramInt2 != this.mStatus)) {
-      HeF = this.mStatus;
+    Log.printInfoStack("MicroMsg.VoipBaseFragment", "newState: " + k.alz(paramInt2) + ", action: " + k.alz(paramInt1) + ", lastStatus: " + k.alz(NVw), new Object[0]);
+    if ((NVw != this.mStatus) && (paramInt2 != this.mStatus)) {
+      NVw = this.mStatus;
     }
-    this.HeE = paramInt1;
+    this.NVv = paramInt1;
     this.mStatus = paramInt2;
   }
   
-  protected abstract void jE(int paramInt1, int paramInt2);
+  protected abstract void kS(int paramInt1, int paramInt2);
   
-  public abstract void m(Point paramPoint);
+  public abstract void l(Point paramPoint);
+  
+  protected final void o(TextView paramTextView, int paramInt)
+  {
+    if (paramTextView == null)
+    {
+      Log.e("MicroMsg.VoipBaseFragment", "TextView is null or text is null");
+      return;
+    }
+    paramTextView.setText(paramInt);
+    paramInt = getResources().getDisplayMetrics().widthPixels;
+    int i = getResources().getDisplayMetrics().heightPixels;
+    paramTextView.measure(View.MeasureSpec.makeMeasureSpec(paramInt, -2147483648), View.MeasureSpec.makeMeasureSpec(i, -2147483648));
+    paramTextView.setWidth(paramTextView.getMeasuredWidth());
+  }
   
   public void onAttach(Activity paramActivity)
   {
@@ -180,20 +230,20 @@ public abstract class VoipBaseFragment
   {
     super.onCreate(paramBundle);
     paramBundle = getArguments();
-    this.goe = paramBundle.getString("key_username");
-    this.GUf = paramBundle.getBoolean("key_isoutcall");
+    this.iSn = paramBundle.getString("key_username");
+    this.NKr = paramBundle.getBoolean("key_isoutcall");
     if (-1 == this.mStatus) {
       this.mStatus = paramBundle.getInt("key_status");
     }
-    this.kAn = new MMHandler();
+    this.ntw = new MMHandler();
   }
   
   public void onDetach()
   {
-    if (this.kAn != null) {
-      this.kAn.removeCallbacksAndMessages(null);
+    if (this.ntw != null) {
+      this.ntw.removeCallbacksAndMessages(null);
     }
-    this.HeG = null;
+    this.NVx = null;
     super.onDetach();
   }
   
@@ -207,8 +257,6 @@ public abstract class VoipBaseFragment
   
   @Deprecated
   public void requestRender() {}
-  
-  public void setDeviceOrientation(int paramInt) {}
   
   @Deprecated
   public void setHWDecMode(int paramInt) {}
@@ -225,112 +273,61 @@ public abstract class VoipBaseFragment
   
   public final void setVoipUIListener(c paramc)
   {
-    this.Hen = new WeakReference(paramc);
+    this.NVe = new WeakReference(paramc);
   }
   
   public void uninit()
   {
     Log.d("MicroMsg.VoipBaseFragment", "uninit");
-    this.HeH.fJB();
-    c localc = this.HeH;
+    this.NVy.gBX();
+    c localc = this.NVy;
     Log.d("MicroMsg.DynamicTextWrap", "uninit");
-    localc.fJB();
-    localc.cve = null;
-    if (this.HeI != null)
+    localc.gBX();
+    localc.cts = null;
+    if (this.NVz != null)
     {
-      this.HeI.cancel();
-      this.HeI = null;
+      this.NVz.cancel();
+      this.NVz = null;
     }
-    if (this.HeJ != null)
+    if (this.NVA != null)
     {
-      this.HeJ.cancel();
-      this.HeJ = null;
-    }
-  }
-  
-  protected abstract void xk(boolean paramBoolean);
-  
-  protected final void z(TextView paramTextView)
-  {
-    if (paramTextView == null)
-    {
-      Log.e("MicroMsg.VoipBaseFragment", "TextView is null or text is null");
-      return;
-    }
-    paramTextView.setText(2131767368);
-    int i = getResources().getDisplayMetrics().widthPixels;
-    int j = getResources().getDisplayMetrics().heightPixels;
-    paramTextView.measure(View.MeasureSpec.makeMeasureSpec(i, -2147483648), View.MeasureSpec.makeMeasureSpec(j, -2147483648));
-    paramTextView.setWidth(paramTextView.getMeasuredWidth());
-  }
-  
-  public final class b
-    extends b
-  {
-    public b() {}
-    
-    public final String getKey()
-    {
-      return "VoipBaseFragment_blurtransparentbitmap";
-    }
-    
-    public final void run()
-    {
-      AppMethodBeat.i(115369);
-      Log.i("MicroMsg.VoipBaseFragment", "try create blur bitmap,timestamp: " + System.currentTimeMillis());
-      final Bitmap localBitmap = BitmapUtil.getBitmapNative(2131235557);
-      Log.i("MicroMsg.VoipBaseFragment", "blur transparent ok, timestamp: " + System.currentTimeMillis());
-      VoipBaseFragment.this.kAn.post(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(115368);
-          if (VoipBaseFragment.this.HeD != null)
-          {
-            VoipBaseFragment.this.HeD.setBackgroundDrawable(new BitmapDrawable(localBitmap));
-            VoipBaseFragment.this.HeD.getBackground().setAlpha(230);
-            VoipBaseFragment.this.HeD.getBackground().setFilterBitmap(true);
-          }
-          VoipBaseFragment.b(VoipBaseFragment.this);
-          AppMethodBeat.o(115368);
-        }
-      });
-      AppMethodBeat.o(115369);
+      this.NVA.cancel();
+      this.NVA = null;
     }
   }
   
   protected static final class c
   {
-    int[] HeN;
-    private int HeO;
-    int HeP;
-    TextView Ws;
-    MTimerHandler cve;
+    int[] NVF;
+    private int NVG;
+    int NVH;
+    MTimerHandler cts;
+    TextView rR;
     
     protected c()
     {
       AppMethodBeat.i(115371);
-      this.cve = new MTimerHandler(new MTimerHandler.CallBack()
+      this.cts = new MTimerHandler(new MTimerHandler.CallBack()
       {
         public final boolean onTimerExpired()
         {
           AppMethodBeat.i(115370);
-          int i = VoipBaseFragment.c.this.HeN[(VoipBaseFragment.c.this.HeP % VoipBaseFragment.c.this.HeN.length)];
-          if (VoipBaseFragment.c.this.Ws != null)
+          int i = VoipBaseFragment.c.this.NVF[(VoipBaseFragment.c.this.NVH % VoipBaseFragment.c.this.NVF.length)];
+          if (VoipBaseFragment.c.this.rR != null)
           {
             if (-1 != i) {
               break label78;
             }
-            VoipBaseFragment.c.this.Ws.setText(null);
+            VoipBaseFragment.c.this.rR.setText(null);
           }
           for (;;)
           {
             VoipBaseFragment.c localc = VoipBaseFragment.c.this;
-            localc.HeP += 1;
+            localc.NVH += 1;
             AppMethodBeat.o(115370);
             return true;
             label78:
-            VoipBaseFragment.c.this.Ws.setText(i);
+            VoipBaseFragment.c.this.rR.setText(i);
           }
         }
       }, true);
@@ -346,33 +343,33 @@ public abstract class VoipBaseFragment
         AppMethodBeat.o(115372);
         return;
       }
-      fJB();
-      this.HeP = 0;
-      this.HeN = paramArrayOfInt;
-      this.Ws = paramTextView;
-      this.HeO = 500;
-      if (this.cve != null) {
-        this.cve.startTimer(this.HeO);
+      gBX();
+      this.NVH = 0;
+      this.NVF = paramArrayOfInt;
+      this.rR = paramTextView;
+      this.NVG = 500;
+      if (this.cts != null) {
+        this.cts.startTimer(this.NVG);
       }
       Log.printDebugStack("MicroMsg.DynamicTextWrap", "start textview:".concat(String.valueOf(paramTextView)), new Object[0]);
       AppMethodBeat.o(115372);
     }
     
-    public final void fJB()
+    public final void gBX()
     {
       AppMethodBeat.i(115373);
-      if (this.cve != null) {
-        this.cve.stopTimer();
+      if (this.cts != null) {
+        this.cts.stopTimer();
       }
-      Log.printDebugStack("MicroMsg.DynamicTextWrap", "stop textview: " + this.Ws, new Object[0]);
-      this.Ws = null;
+      Log.printDebugStack("MicroMsg.DynamicTextWrap", "stop textview: " + this.rR, new Object[0]);
+      this.rR = null;
       AppMethodBeat.o(115373);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.VoipBaseFragment
  * JD-Core Version:    0.7.0.1
  */

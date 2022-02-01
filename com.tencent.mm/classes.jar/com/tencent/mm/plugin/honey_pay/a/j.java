@@ -1,40 +1,40 @@
 package com.tencent.mm.plugin.honey_pay.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cqv;
-import com.tencent.mm.protocal.protobuf.cqw;
-import com.tencent.mm.protocal.protobuf.dbf;
+import com.tencent.mm.protocal.protobuf.czm;
+import com.tencent.mm.protocal.protobuf.czn;
+import com.tencent.mm.protocal.protobuf.dkt;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.c.r;
 
 public final class j
   extends r
 {
+  public czn DJJ;
   private final String TAG;
-  public cqw yjH;
   
-  public j(dbf paramdbf, String paramString)
+  public j(dkt paramdkt, String paramString)
   {
     AppMethodBeat.i(64630);
     this.TAG = "MicroMsg.NetSceneModifyHoneyPayerPayWay";
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new cqv();
-    ((d.a)localObject).iLO = new cqw();
+    ((d.a)localObject).lBU = new czm();
+    ((d.a)localObject).lBV = new czn();
     ((d.a)localObject).funcId = getType();
     ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/modifyhppayerpayway";
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (cqv)this.rr.iLK.iLR;
-    ((cqv)localObject).MhM = paramdbf;
-    ((cqv)localObject).LWD = paramString;
-    Log.i("MicroMsg.NetSceneModifyHoneyPayerPayWay", "cardNo: %s, suffix: %s, bankType: %s", new Object[] { paramString, paramdbf.MGk, paramdbf.dDj });
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (czm)d.b.b(this.rr.lBR);
+    ((czm)localObject).Trz = paramdkt;
+    ((czm)localObject).TfK = paramString;
+    Log.i("MicroMsg.NetSceneModifyHoneyPayerPayWay", "cardNo: %s, suffix: %s, bankType: %s", new Object[] { paramString, paramdkt.TRW, paramdkt.fvP });
     AppMethodBeat.o(64630);
   }
   
@@ -42,19 +42,21 @@ public final class j
   {
     AppMethodBeat.i(64631);
     Log.i("MicroMsg.NetSceneModifyHoneyPayerPayWay", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.yjH = ((cqw)((d)params).iLL.iLR);
-    Log.i("MicroMsg.NetSceneModifyHoneyPayerPayWay", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.yjH.pTZ), this.yjH.pUa });
+    this.DJJ = ((czn)d.c.b(((d)params).lBS));
+    Log.i("MicroMsg.NetSceneModifyHoneyPayerPayWay", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.DJJ.tqa), this.DJJ.tqb });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
     AppMethodBeat.o(64631);
   }
   
-  public final void e(s params)
+  public final void f(s params)
   {
-    params = (cqw)((d)params).iLL.iLR;
-    this.RtZ = params.pTZ;
-    this.Rua = params.pUa;
+    AppMethodBeat.i(198559);
+    params = (czn)d.c.b(((d)params).lBS);
+    this.YVy = params.tqa;
+    this.YVz = params.tqb;
+    AppMethodBeat.o(198559);
   }
   
   public final int getType()
@@ -64,7 +66,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.a.j
  * JD-Core Version:    0.7.0.1
  */

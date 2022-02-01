@@ -23,48 +23,48 @@ class BuilderModel
   
   BuilderModel(TAVComposition paramTAVComposition)
   {
-    AppMethodBeat.i(197511);
+    AppMethodBeat.i(211985);
     this.tavComposition = paramTAVComposition;
     this.mainVideoTrackInfo = new ArrayList();
     this.mainAudioTrackInfo = new ArrayList();
     this.overlayTrackInfo = new ArrayList();
     this.audioTrackInfo = new ArrayList();
-    AppMethodBeat.o(197511);
+    AppMethodBeat.o(211985);
   }
   
   void addAudioTrackInfo(AudioMixInfo paramAudioMixInfo)
   {
-    AppMethodBeat.i(197524);
+    AppMethodBeat.i(212028);
     this.audioTrackInfo.add(paramAudioMixInfo);
-    AppMethodBeat.o(197524);
+    AppMethodBeat.o(212028);
   }
   
   void addMainAudioTrackInfo(AudioParamsInfo paramAudioParamsInfo)
   {
-    AppMethodBeat.i(197522);
+    AppMethodBeat.i(212022);
     this.mainAudioTrackInfo.add(paramAudioParamsInfo);
-    AppMethodBeat.o(197522);
+    AppMethodBeat.o(212022);
   }
   
   void addMainVideoTrackInfo(List<VideoInfo> paramList)
   {
-    AppMethodBeat.i(197521);
+    AppMethodBeat.i(212017);
     this.mainVideoTrackInfo.add(paramList);
-    AppMethodBeat.o(197521);
+    AppMethodBeat.o(212017);
   }
   
   void addOverlayTrackInfo(VideoOverlayInfo paramVideoOverlayInfo)
   {
-    AppMethodBeat.i(197523);
+    AppMethodBeat.i(212025);
     this.overlayTrackInfo.add(paramVideoOverlayInfo);
-    AppMethodBeat.o(197523);
+    AppMethodBeat.o(212025);
   }
   
   List<List<? extends TAVTransitionableAudio>> getAudioChannels()
   {
-    AppMethodBeat.i(197513);
+    AppMethodBeat.i(211991);
     List localList = this.tavComposition.getAudioChannels();
-    AppMethodBeat.o(197513);
+    AppMethodBeat.o(211991);
     return localList;
   }
   
@@ -75,17 +75,17 @@ class BuilderModel
   
   int getBackgroundColor()
   {
-    AppMethodBeat.i(197516);
+    AppMethodBeat.i(211998);
     int i = this.tavComposition.getBackgroundColor();
-    AppMethodBeat.o(197516);
+    AppMethodBeat.o(211998);
     return i;
   }
   
   TAVVideoEffect getGlobalVideoEffect()
   {
-    AppMethodBeat.i(197519);
+    AppMethodBeat.i(212005);
     TAVVideoEffect localTAVVideoEffect = this.tavComposition.getGlobalVideoEffect();
-    AppMethodBeat.o(197519);
+    AppMethodBeat.o(212005);
     return localTAVVideoEffect;
   }
   
@@ -101,9 +101,9 @@ class BuilderModel
   
   List<? extends TAVAudio> getMixAudios()
   {
-    AppMethodBeat.i(197515);
+    AppMethodBeat.i(211994);
     List localList = this.tavComposition.getAudios();
-    AppMethodBeat.o(197515);
+    AppMethodBeat.o(211994);
     return localList;
   }
   
@@ -114,25 +114,25 @@ class BuilderModel
   
   List<? extends TAVVideo> getOverlays()
   {
-    AppMethodBeat.i(197514);
+    AppMethodBeat.i(211992);
     List localList = this.tavComposition.getOverlays();
-    AppMethodBeat.o(197514);
+    AppMethodBeat.o(211992);
     return localList;
   }
   
   VideoComposition.RenderLayoutMode getRenderLayoutMode()
   {
-    AppMethodBeat.i(197518);
+    AppMethodBeat.i(212001);
     VideoComposition.RenderLayoutMode localRenderLayoutMode = this.tavComposition.getRenderLayoutMode();
-    AppMethodBeat.o(197518);
+    AppMethodBeat.o(212001);
     return localRenderLayoutMode;
   }
   
   CGSize getRenderSize()
   {
-    AppMethodBeat.i(197517);
+    AppMethodBeat.i(211999);
     CGSize localCGSize = this.tavComposition.getRenderSize();
-    AppMethodBeat.o(197517);
+    AppMethodBeat.o(211999);
     return localCGSize;
   }
   
@@ -143,23 +143,23 @@ class BuilderModel
   
   List<List<? extends TAVTransitionableVideo>> getVideoChannels()
   {
-    AppMethodBeat.i(197512);
+    AppMethodBeat.i(211987);
     List localList = this.tavComposition.getVideoChannels();
-    AppMethodBeat.o(197512);
+    AppMethodBeat.o(211987);
     return localList;
   }
   
   public TAVVideoMixEffect getVideoMixEffect()
   {
-    AppMethodBeat.i(197520);
+    AppMethodBeat.i(212009);
     TAVVideoMixEffect localTAVVideoMixEffect = this.tavComposition.getVideoMixEffect();
-    AppMethodBeat.o(197520);
+    AppMethodBeat.o(212009);
     return localTAVVideoMixEffect;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tavkit.composition.builder.BuilderModel
  * JD-Core Version:    0.7.0.1
  */

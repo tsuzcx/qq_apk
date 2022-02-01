@@ -1,66 +1,93 @@
 package com.tencent.mm.plugin.messenger.e;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.messenger.d.e;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.messenger.foundation.a.v;
-import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.messenger.a.e;
+import com.tencent.mm.plugin.messenger.a.e.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ca;
+import com.tencent.neattextview.textview.view.NeatTextView;
+import java.lang.ref.WeakReference;
+import java.util.LinkedList;
 import java.util.Map;
+import junit.framework.Assert;
 
-public final class b
-  extends e
+public abstract class b
 {
-  public final void b(Map<String, String> paramMap, h.a parama)
+  public WeakReference<b> EWp = null;
+  
+  public b(b paramb)
   {
-    AppMethodBeat.i(194508);
-    Object localObject = parama.heO;
-    parama = z.a(((de)localObject).KHl);
-    localObject = ((l)g.af(l.class)).eiy().aJ(parama, ((de)localObject).Brn);
-    String str = n(paramMap, "link_history");
-    if (Util.isNullOrNil(str))
+    Assert.assertNotNull(paramb);
+    this.EWp = new WeakReference(paramb);
+    ((e)h.ae(e.class)).a(eSz(), new e.c()
     {
-      Log.e("MicroMsg.SysMsgTemp.HandlerProfileWithRevokeReceived", "onReceivedImp head(LINK_TYPE_HISTORY) is null.(%s %s)", new Object[] { parama, Long.valueOf(((eo)localObject).field_msgSvrId) });
-      AppMethodBeat.o(194508);
-      return;
-    }
-    ((v)g.af(v.class)).a(((eo)localObject).field_msgId, paramMap, str);
-    paramMap = Util.nullAs((String)paramMap.get(str + ".historyid"), "");
-    ((ca)localObject).CF(paramMap);
-    ((l)g.af(l.class)).eiy().a(((eo)localObject).field_msgId, (ca)localObject);
-    ((v)g.af(v.class)).aA(paramMap, ((eo)localObject).field_msgId);
-    Log.i("MicroMsg.SysMsgTemp.HandlerProfileWithRevokeReceived", "onReceivedImp msgId:%s historyId:%s", new Object[] { Long.valueOf(((eo)localObject).field_msgId), paramMap });
-    AppMethodBeat.o(194508);
+      public final CharSequence a(Map<String, String> paramAnonymousMap, String paramAnonymousString, Bundle paramAnonymousBundle, WeakReference<Context> paramAnonymousWeakReference, WeakReference<NeatTextView> paramAnonymousWeakReference1)
+      {
+        AppMethodBeat.i(213332);
+        String str = paramAnonymousBundle.getString("conv_talker_username", "");
+        if (paramAnonymousMap == null)
+        {
+          Log.w("MicroMsg.SysMsgTemp.SysMsgTemplateLinkHandlerBase", "hy: non map!!");
+          AppMethodBeat.o(213332);
+          return null;
+        }
+        if (Util.isNullOrNil(paramAnonymousString))
+        {
+          Log.w("MicroMsg.SysMsgTemp.SysMsgTemplateLinkHandlerBase", "hy: non header!!");
+          AppMethodBeat.o(213332);
+          return null;
+        }
+        if (Util.isNullOrNil(str))
+        {
+          Log.w("MicroMsg.SysMsgTemp.SysMsgTemplateLinkHandlerBase", "hy: not resolved talker!!");
+          AppMethodBeat.o(213332);
+          return null;
+        }
+        paramAnonymousMap = b.this.b(paramAnonymousMap, paramAnonymousString, paramAnonymousBundle, paramAnonymousWeakReference, paramAnonymousWeakReference1);
+        AppMethodBeat.o(213332);
+        return paramAnonymousMap;
+      }
+    });
   }
   
-  public final void c(String paramString, Map<String, String> paramMap, Bundle paramBundle)
+  public final void a(long paramLong, LinkedList<String> paramLinkedList, int paramInt)
   {
-    AppMethodBeat.i(194509);
-    if (Util.isNullOrNil(n(paramMap, "link_history")))
-    {
-      Log.e("MicroMsg.SysMsgTemp.HandlerProfileWithRevokeReceived", "onClickLinkImp head is null.");
-      AppMethodBeat.o(194509);
-      return;
+    if ((this.EWp != null) && (this.EWp.get() != null)) {
+      ((b)this.EWp.get()).a(paramLong, paramLinkedList, paramInt);
     }
-    AppMethodBeat.o(194509);
   }
   
-  public final String eiU()
+  protected abstract CharSequence b(Map<String, String> paramMap, String paramString, Bundle paramBundle, WeakReference<Context> paramWeakReference, WeakReference<NeatTextView> paramWeakReference1);
+  
+  protected abstract String eSz();
+  
+  public void release()
   {
-    return "tmpl_type_profile";
+    ((e)h.ae(e.class)).aOe(eSz());
+  }
+  
+  public final class a
+  {
+    public String link;
+    public String username;
+    
+    public a() {}
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void a(long paramLong, LinkedList<String> paramLinkedList, int paramInt);
+    
+    public abstract void a(View paramView, b.a parama);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.e.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,30 +2,31 @@ package com.tencent.mm.plugin.flash.b;
 
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.facedetect.a.i;
 
 public final class e
   extends a
 {
-  public final int dKV()
-  {
-    return 2;
-  }
-  
-  public final int dLb()
+  public final int epF()
   {
     return 1;
   }
   
-  public final int dLc()
+  public final int epv()
   {
     return 2;
   }
   
-  public final void r(TextView paramTextView)
+  public final int epz()
   {
-    AppMethodBeat.i(186648);
-    paramTextView.setText(com.tencent.mm.cb.a.aI(paramTextView.getContext(), 2131759072));
-    AppMethodBeat.o(186648);
+    return 2;
+  }
+  
+  public final void x(TextView paramTextView)
+  {
+    AppMethodBeat.i(197250);
+    com.tencent.mm.plugin.flash.d.a.d(paramTextView, com.tencent.mm.ci.a.ba(paramTextView.getContext(), a.i.face_preview_posture_correct));
+    AppMethodBeat.o(197250);
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.wear.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.eys;
+import com.tencent.mm.protocal.protobuf.fjj;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class i
   extends a
 {
-  public eys Iyu;
+  public fjj Psx;
   
-  public final List<Integer> fWe()
+  public final List<Integer> gON()
   {
     AppMethodBeat.i(30085);
     ArrayList localArrayList = new ArrayList();
@@ -20,184 +20,183 @@ public final class i
   }
   
   /* Error */
-  protected final byte[] s(int paramInt, byte[] paramArrayOfByte)
+  protected final byte[] t(int paramInt, byte[] paramArrayOfByte)
   {
     // Byte code:
     //   0: sipush 30086
     //   3: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: iload_1
     //   7: sipush 11002
-    //   10: if_icmpne +286 -> 296
+    //   10: if_icmpne +284 -> 294
     //   13: iconst_1
     //   14: iconst_0
-    //   15: invokestatic 51	com/tencent/mm/plugin/wear/model/c/a:jZ	(II)V
+    //   15: invokestatic 51	com/tencent/mm/plugin/wear/model/c/a:lp	(II)V
     //   18: iconst_0
-    //   19: invokestatic 54	com/tencent/mm/plugin/wear/model/c/a:aff	(I)V
-    //   22: new 56	com/tencent/mm/g/a/aao
+    //   19: invokestatic 54	com/tencent/mm/plugin/wear/model/c/a:amT	(I)V
+    //   22: new 56	com/tencent/mm/f/a/abv
     //   25: dup
-    //   26: invokespecial 57	com/tencent/mm/g/a/aao:<init>	()V
+    //   26: invokespecial 57	com/tencent/mm/f/a/abv:<init>	()V
     //   29: astore 4
     //   31: aload 4
-    //   33: getfield 61	com/tencent/mm/g/a/aao:ehA	Lcom/tencent/mm/g/a/aao$a;
+    //   33: getfield 61	com/tencent/mm/f/a/abv:gbQ	Lcom/tencent/mm/f/a/abv$a;
     //   36: invokestatic 67	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
     //   39: invokevirtual 73	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   42: ldc 74
-    //   44: invokevirtual 80	android/content/res/Resources:getStringArray	(I)[Ljava/lang/String;
-    //   47: putfield 86	com/tencent/mm/g/a/aao$a:ehB	[Ljava/lang/String;
-    //   50: aload 4
-    //   52: getfield 61	com/tencent/mm/g/a/aao:ehA	Lcom/tencent/mm/g/a/aao$a;
-    //   55: iconst_1
-    //   56: putfield 90	com/tencent/mm/g/a/aao$a:dDe	I
-    //   59: getstatic 96	com/tencent/mm/sdk/event/EventCenter:instance	Lcom/tencent/mm/sdk/event/EventCenter;
-    //   62: aload 4
-    //   64: invokevirtual 100	com/tencent/mm/sdk/event/EventCenter:publish	(Lcom/tencent/mm/sdk/event/IEvent;)Z
-    //   67: pop
-    //   68: invokestatic 106	com/tencent/mm/plugin/wear/model/a:fVM	()Lcom/tencent/mm/plugin/wear/model/d;
-    //   71: aload_2
-    //   72: invokevirtual 112	com/tencent/mm/plugin/wear/model/d:cw	([B)[B
-    //   75: astore_2
-    //   76: aload_2
-    //   77: ifnull +216 -> 293
-    //   80: new 114	com/tencent/mm/protocal/protobuf/eys
-    //   83: dup
-    //   84: invokespecial 115	com/tencent/mm/protocal/protobuf/eys:<init>	()V
-    //   87: astore 5
-    //   89: aload 5
-    //   91: aload_2
-    //   92: invokevirtual 119	com/tencent/mm/protocal/protobuf/eys:parseFrom	([B)Lcom/tencent/mm/bw/a;
-    //   95: pop
-    //   96: new 121	com/tencent/mm/protocal/protobuf/eyt
-    //   99: dup
-    //   100: invokespecial 122	com/tencent/mm/protocal/protobuf/eyt:<init>	()V
-    //   103: astore 6
-    //   105: bipush 20
-    //   107: istore_1
-    //   108: aconst_null
-    //   109: astore_2
-    //   110: aload_2
-    //   111: astore 4
-    //   113: iload_1
-    //   114: ifle +32 -> 146
-    //   117: invokestatic 128	com/tencent/mm/model/z:aTY	()Ljava/lang/String;
-    //   120: astore_2
-    //   121: aload_2
-    //   122: invokestatic 134	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
-    //   125: istore_3
-    //   126: aload_2
-    //   127: astore 4
-    //   129: iload_3
-    //   130: ifeq +16 -> 146
-    //   133: ldc2_w 135
-    //   136: invokestatic 142	java/lang/Thread:sleep	(J)V
-    //   139: iload_1
-    //   140: iconst_1
-    //   141: isub
-    //   142: istore_1
-    //   143: goto -33 -> 110
-    //   146: aload 4
-    //   148: invokestatic 134	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
-    //   151: istore_3
-    //   152: iload_3
-    //   153: ifeq +11 -> 164
-    //   156: sipush 30086
-    //   159: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   162: aconst_null
-    //   163: areturn
-    //   164: aload 6
-    //   166: aload 4
-    //   168: putfield 146	com/tencent/mm/protocal/protobuf/eyt:Username	Ljava/lang/String;
-    //   171: invokestatic 67	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
-    //   174: invokestatic 149	com/tencent/mm/sdk/platformtools/MMApplicationContext:getDefaultPreferencePath	()Ljava/lang/String;
-    //   177: iconst_0
-    //   178: invokevirtual 153	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   181: invokestatic 67	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
-    //   184: invokestatic 159	com/tencent/mm/sdk/platformtools/LocaleUtil:loadApplicationLanguageSettings	(Landroid/content/SharedPreferences;Landroid/content/Context;)Ljava/lang/String;
-    //   187: astore_2
-    //   188: invokestatic 162	com/tencent/mm/sdk/platformtools/LocaleUtil:getApplicationLanguage	()Ljava/lang/String;
-    //   191: astore 4
-    //   193: aload_2
-    //   194: ldc 164
-    //   196: invokevirtual 169	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   199: ifeq +72 -> 271
-    //   202: aload 6
-    //   204: aload 4
-    //   206: putfield 172	com/tencent/mm/protocal/protobuf/eyt:rBI	Ljava/lang/String;
-    //   209: aload 6
-    //   211: invokevirtual 176	com/tencent/mm/protocal/protobuf/eyt:toByteArray	()[B
-    //   214: astore_2
-    //   215: invokestatic 106	com/tencent/mm/plugin/wear/model/a:fVM	()Lcom/tencent/mm/plugin/wear/model/d;
-    //   218: aload_2
-    //   219: invokevirtual 179	com/tencent/mm/plugin/wear/model/d:cx	([B)[B
-    //   222: astore_2
-    //   223: aload_2
-    //   224: ifnull +80 -> 304
-    //   227: aload_0
-    //   228: aload 5
-    //   230: putfield 181	com/tencent/mm/plugin/wear/model/e/i:Iyu	Lcom/tencent/mm/protocal/protobuf/eys;
-    //   233: new 183	com/tencent/mm/g/a/aap
-    //   236: dup
-    //   237: invokespecial 184	com/tencent/mm/g/a/aap:<init>	()V
-    //   240: astore 4
-    //   242: aload 4
-    //   244: getfield 188	com/tencent/mm/g/a/aap:ehC	Lcom/tencent/mm/g/a/aap$a;
-    //   247: bipush 9
-    //   249: putfield 191	com/tencent/mm/g/a/aap$a:dDe	I
-    //   252: getstatic 96	com/tencent/mm/sdk/event/EventCenter:instance	Lcom/tencent/mm/sdk/event/EventCenter;
-    //   255: aload 4
-    //   257: invokestatic 197	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   260: invokevirtual 201	com/tencent/mm/sdk/event/EventCenter:asyncPublish	(Lcom/tencent/mm/sdk/event/IEvent;Landroid/os/Looper;)V
-    //   263: sipush 30086
-    //   266: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   269: aload_2
-    //   270: areturn
-    //   271: aload 6
-    //   273: aload_2
-    //   274: putfield 172	com/tencent/mm/protocal/protobuf/eyt:rBI	Ljava/lang/String;
-    //   277: goto -68 -> 209
-    //   280: astore_2
-    //   281: ldc 203
-    //   283: aload_2
-    //   284: ldc 205
-    //   286: iconst_0
-    //   287: anewarray 207	java/lang/Object
-    //   290: invokestatic 213	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   293: invokestatic 216	com/tencent/mm/plugin/wear/model/a:fVR	()V
-    //   296: sipush 30086
-    //   299: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   302: aconst_null
-    //   303: areturn
-    //   304: sipush 30086
-    //   307: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   310: aconst_null
-    //   311: areturn
-    //   312: astore 4
-    //   314: goto -175 -> 139
+    //   42: getstatic 79	com/tencent/mm/R$c:djP	I
+    //   45: invokevirtual 85	android/content/res/Resources:getStringArray	(I)[Ljava/lang/String;
+    //   48: putfield 91	com/tencent/mm/f/a/abv$a:gbR	[Ljava/lang/String;
+    //   51: aload 4
+    //   53: getfield 61	com/tencent/mm/f/a/abv:gbQ	Lcom/tencent/mm/f/a/abv$a;
+    //   56: iconst_1
+    //   57: putfield 94	com/tencent/mm/f/a/abv$a:fvK	I
+    //   60: getstatic 100	com/tencent/mm/sdk/event/EventCenter:instance	Lcom/tencent/mm/sdk/event/EventCenter;
+    //   63: aload 4
+    //   65: invokevirtual 104	com/tencent/mm/sdk/event/EventCenter:publish	(Lcom/tencent/mm/sdk/event/IEvent;)Z
+    //   68: pop
+    //   69: invokestatic 110	com/tencent/mm/plugin/wear/model/a:gOt	()Lcom/tencent/mm/plugin/wear/model/d;
+    //   72: aload_2
+    //   73: invokevirtual 116	com/tencent/mm/plugin/wear/model/d:cN	([B)[B
+    //   76: astore_2
+    //   77: aload_2
+    //   78: ifnull +216 -> 294
+    //   81: new 118	com/tencent/mm/protocal/protobuf/fjj
+    //   84: dup
+    //   85: invokespecial 119	com/tencent/mm/protocal/protobuf/fjj:<init>	()V
+    //   88: astore 5
+    //   90: aload 5
+    //   92: aload_2
+    //   93: invokevirtual 123	com/tencent/mm/protocal/protobuf/fjj:parseFrom	([B)Lcom/tencent/mm/cd/a;
+    //   96: pop
+    //   97: new 125	com/tencent/mm/protocal/protobuf/fjk
+    //   100: dup
+    //   101: invokespecial 126	com/tencent/mm/protocal/protobuf/fjk:<init>	()V
+    //   104: astore 6
+    //   106: bipush 20
+    //   108: istore_1
+    //   109: aconst_null
+    //   110: astore_2
+    //   111: aload_2
+    //   112: astore 4
+    //   114: iload_1
+    //   115: ifle +32 -> 147
+    //   118: invokestatic 132	com/tencent/mm/model/z:bcZ	()Ljava/lang/String;
+    //   121: astore_2
+    //   122: aload_2
+    //   123: invokestatic 138	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   126: istore_3
+    //   127: aload_2
+    //   128: astore 4
+    //   130: iload_3
+    //   131: ifeq +16 -> 147
+    //   134: ldc2_w 139
+    //   137: invokestatic 146	java/lang/Thread:sleep	(J)V
+    //   140: iload_1
+    //   141: iconst_1
+    //   142: isub
+    //   143: istore_1
+    //   144: goto -33 -> 111
+    //   147: aload 4
+    //   149: invokestatic 138	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   152: istore_3
+    //   153: iload_3
+    //   154: ifeq +11 -> 165
+    //   157: sipush 30086
+    //   160: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   163: aconst_null
+    //   164: areturn
+    //   165: aload 6
+    //   167: aload 4
+    //   169: putfield 150	com/tencent/mm/protocal/protobuf/fjk:Username	Ljava/lang/String;
+    //   172: invokestatic 67	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   175: invokestatic 153	com/tencent/mm/sdk/platformtools/MMApplicationContext:getDefaultPreferencePath	()Ljava/lang/String;
+    //   178: iconst_0
+    //   179: invokevirtual 157	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   182: invokestatic 67	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   185: invokestatic 163	com/tencent/mm/sdk/platformtools/LocaleUtil:loadApplicationLanguageSettings	(Landroid/content/SharedPreferences;Landroid/content/Context;)Ljava/lang/String;
+    //   188: astore_2
+    //   189: invokestatic 166	com/tencent/mm/sdk/platformtools/LocaleUtil:getApplicationLanguage	()Ljava/lang/String;
+    //   192: astore 4
+    //   194: aload_2
+    //   195: ldc 168
+    //   197: invokevirtual 173	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   200: ifeq +72 -> 272
+    //   203: aload 6
+    //   205: aload 4
+    //   207: putfield 176	com/tencent/mm/protocal/protobuf/fjk:vhq	Ljava/lang/String;
+    //   210: aload 6
+    //   212: invokevirtual 180	com/tencent/mm/protocal/protobuf/fjk:toByteArray	()[B
+    //   215: astore_2
+    //   216: invokestatic 110	com/tencent/mm/plugin/wear/model/a:gOt	()Lcom/tencent/mm/plugin/wear/model/d;
+    //   219: aload_2
+    //   220: invokevirtual 183	com/tencent/mm/plugin/wear/model/d:cO	([B)[B
+    //   223: astore_2
+    //   224: aload_2
+    //   225: ifnull +77 -> 302
+    //   228: aload_0
+    //   229: aload 5
+    //   231: putfield 185	com/tencent/mm/plugin/wear/model/e/i:Psx	Lcom/tencent/mm/protocal/protobuf/fjj;
+    //   234: new 187	com/tencent/mm/f/a/abw
+    //   237: dup
+    //   238: invokespecial 188	com/tencent/mm/f/a/abw:<init>	()V
+    //   241: astore 4
+    //   243: aload 4
+    //   245: getfield 192	com/tencent/mm/f/a/abw:gbS	Lcom/tencent/mm/f/a/abw$a;
+    //   248: bipush 9
+    //   250: putfield 195	com/tencent/mm/f/a/abw$a:fvK	I
+    //   253: getstatic 100	com/tencent/mm/sdk/event/EventCenter:instance	Lcom/tencent/mm/sdk/event/EventCenter;
+    //   256: aload 4
+    //   258: invokestatic 201	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   261: invokevirtual 205	com/tencent/mm/sdk/event/EventCenter:asyncPublish	(Lcom/tencent/mm/sdk/event/IEvent;Landroid/os/Looper;)V
+    //   264: sipush 30086
+    //   267: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   270: aload_2
+    //   271: areturn
+    //   272: aload 6
+    //   274: aload_2
+    //   275: putfield 176	com/tencent/mm/protocal/protobuf/fjk:vhq	Ljava/lang/String;
+    //   278: goto -68 -> 210
+    //   281: astore_2
+    //   282: ldc 207
+    //   284: aload_2
+    //   285: ldc 209
+    //   287: iconst_0
+    //   288: anewarray 211	java/lang/Object
+    //   291: invokestatic 217	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   294: sipush 30086
+    //   297: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   300: aconst_null
+    //   301: areturn
+    //   302: sipush 30086
+    //   305: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   308: aconst_null
+    //   309: areturn
+    //   310: astore 4
+    //   312: goto -172 -> 140
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	317	0	this	i
-    //   0	317	1	paramInt	int
-    //   0	317	2	paramArrayOfByte	byte[]
-    //   125	28	3	bool	boolean
-    //   29	227	4	localObject	java.lang.Object
-    //   312	1	4	localInterruptedException	java.lang.InterruptedException
-    //   87	142	5	localeys	eys
-    //   103	169	6	localeyt	com.tencent.mm.protocal.protobuf.eyt
+    //   0	315	0	this	i
+    //   0	315	1	paramInt	int
+    //   0	315	2	paramArrayOfByte	byte[]
+    //   126	28	3	bool	boolean
+    //   29	228	4	localObject	java.lang.Object
+    //   310	1	4	localInterruptedException	java.lang.InterruptedException
+    //   88	142	5	localfjj	fjj
+    //   104	169	6	localfjk	com.tencent.mm.protocal.protobuf.fjk
     // Exception table:
     //   from	to	target	type
-    //   80	105	280	java/io/IOException
-    //   117	126	280	java/io/IOException
-    //   133	139	280	java/io/IOException
-    //   146	152	280	java/io/IOException
-    //   164	209	280	java/io/IOException
-    //   209	223	280	java/io/IOException
-    //   227	263	280	java/io/IOException
-    //   271	277	280	java/io/IOException
-    //   133	139	312	java/lang/InterruptedException
+    //   81	106	281	java/io/IOException
+    //   118	127	281	java/io/IOException
+    //   134	140	281	java/io/IOException
+    //   147	153	281	java/io/IOException
+    //   165	210	281	java/io/IOException
+    //   210	224	281	java/io/IOException
+    //   228	264	281	java/io/IOException
+    //   272	278	281	java/io/IOException
+    //   134	140	310	java/lang/InterruptedException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.e.i
  * JD-Core Version:    0.7.0.1
  */

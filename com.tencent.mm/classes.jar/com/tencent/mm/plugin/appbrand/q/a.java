@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandTaskProxyUI;
 import com.tencent.mm.plugin.ball.f.b;
 import com.tencent.mm.plugin.multitask.b.c;
-import com.tencent.mm.protocal.protobuf.aoe;
+import com.tencent.mm.protocal.protobuf.apf;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 
@@ -12,41 +12,41 @@ public final class a
   extends c
 {
   private String mFilePath;
-  private aoe nhp;
-  private AppBrandTaskProxyUI nhq;
-  private String nhr;
+  private apf qhY;
+  private AppBrandTaskProxyUI qhZ;
+  private String qia;
   
   public a(com.tencent.mm.plugin.multitask.a.a parama)
   {
     super(parama);
-    AppMethodBeat.i(227199);
-    this.nhp = new aoe();
-    this.nhq = null;
+    AppMethodBeat.i(273009);
+    this.qhY = new apf();
+    this.qhZ = null;
     this.mFilePath = "";
-    this.nhr = "";
-    AppMethodBeat.o(227199);
+    this.qia = "";
+    AppMethodBeat.o(273009);
   }
   
   public final void a(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, AppBrandTaskProxyUI paramAppBrandTaskProxyUI)
   {
-    AppMethodBeat.i(227201);
+    AppMethodBeat.i(273011);
     Log.i("MicroMsg.AppBrandFilesMultiTaskHelper", "onCreate, filePath:%s fileExt:%s ", new Object[] { paramString1, paramString2 });
     this.mFilePath = paramString1;
-    this.nhr = paramString2;
-    this.nhq = paramAppBrandTaskProxyUI;
-    super.G(4, b.agW(paramString1));
-    this.nhp.LzL = false;
-    this.nhp.filePath = paramString1;
-    this.nhp.gCr = paramString2;
-    this.nhp.appId = paramString3;
-    this.nhp.processName = paramString4;
-    this.nhp.lwF = paramBoolean;
-    this.nhp.qoX = 0;
+    this.qia = paramString2;
+    this.qhZ = paramAppBrandTaskProxyUI;
+    super.I(4, b.aoC(paramString1));
+    this.qhY.SCl = false;
+    this.qhY.filePath = paramString1;
+    this.qhY.jmx = paramString2;
+    this.qhY.appId = paramString3;
+    this.qhY.processName = paramString4;
+    this.qhY.orn = paramBoolean;
+    this.qhY.tNG = 0;
     try
     {
-      this.Abp.field_data = this.nhp.toByteArray();
-      eqX();
-      AppMethodBeat.o(227201);
+      this.FHd.field_data = this.qhY.toByteArray();
+      faR();
+      AppMethodBeat.o(273011);
       return;
     }
     catch (IOException paramString1)
@@ -58,18 +58,18 @@ public final class a
     }
   }
   
-  public final void acQ(String paramString)
+  public final void akK(String paramString)
   {
-    AppMethodBeat.i(227202);
+    AppMethodBeat.i(273012);
     Log.i("MicroMsg.AppBrandFilesMultiTaskHelper", "update processName: %s", new Object[] { paramString });
-    if (this.nhp != null) {
-      this.nhp.processName = paramString;
+    if (this.qhY != null) {
+      this.qhY.processName = paramString;
     }
     try
     {
-      this.Abp.field_data = this.nhp.toByteArray();
-      eqX();
-      AppMethodBeat.o(227202);
+      this.FHd.field_data = this.qhY.toByteArray();
+      faR();
+      AppMethodBeat.o(273012);
       return;
     }
     catch (IOException paramString)
@@ -81,36 +81,36 @@ public final class a
     }
   }
   
-  public final boolean bPp()
+  public final boolean cbG()
   {
     return true;
   }
   
-  public final boolean bPq()
+  public final boolean cbH()
   {
     return true;
   }
   
-  public final boolean bPr()
+  public final boolean cbI()
   {
     return false;
   }
   
-  public final void ib(boolean paramBoolean)
+  public final void iV(boolean paramBoolean)
   {
-    AppMethodBeat.i(227200);
+    AppMethodBeat.i(273010);
     if (paramBoolean)
     {
       Log.i("MicroMsg.AppBrandFilesMultiTaskHelper", "onMenuFloatBallSelected, enter float ball");
       b(null, true);
-      this.nhq.b(null);
+      this.qhZ.b(null);
     }
-    AppMethodBeat.o(227200);
+    AppMethodBeat.o(273010);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.q.a
  * JD-Core Version:    0.7.0.1
  */

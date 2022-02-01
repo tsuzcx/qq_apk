@@ -19,15 +19,15 @@ public final class g
   
   public static m a(Context paramContext, String paramString, float paramFloat, boolean paramBoolean, Object paramObject)
   {
-    AppMethodBeat.i(204006);
-    paramContext = new m(l.a(paramContext, paramString, (int)paramFloat, 2, paramBoolean, paramObject));
-    AppMethodBeat.o(204006);
+    AppMethodBeat.i(267838);
+    paramContext = new m(l.b(paramContext, paramString, (int)paramFloat, paramBoolean, paramObject));
+    AppMethodBeat.o(267838);
     return paramContext;
   }
   
   public static CharSequence d(Spannable paramSpannable)
   {
-    AppMethodBeat.i(204007);
+    AppMethodBeat.i(267839);
     localSpannableStringBuilder = new SpannableStringBuilder(paramSpannable);
     try
     {
@@ -44,9 +44,9 @@ public final class g
             if (localp.getType() == 1)
             {
               String str1 = localp.getHrefInfo().url;
-              if ((str1 != null) && (str1.length() > ah.DKc) && (localSpannableStringBuilder.toString().contains(str1)))
+              if ((str1 != null) && (str1.length() > ah.JXe) && (localSpannableStringBuilder.toString().contains(str1)))
               {
-                String str2 = str1.substring(0, ah.DKc) + "...";
+                String str2 = str1.substring(0, ah.JXe) + "...";
                 SpannableString localSpannableString = new SpannableString(str2);
                 localSpannableString.setSpan(new p(2, localp.getHrefInfo()), 0, str2.length(), 33);
                 int k = localSpannableStringBuilder.toString().indexOf(str1);
@@ -62,13 +62,13 @@ public final class g
     catch (Exception localException)
     {
       Log.w(TAG, "compressedPostDesc fail:%s", new Object[] { paramSpannable });
-      AppMethodBeat.o(204007);
+      AppMethodBeat.o(267839);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.g
  * JD-Core Version:    0.7.0.1
  */

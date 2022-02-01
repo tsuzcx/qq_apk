@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.recordvideo.background.b;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/background/image2video/MediaCodecFakeVideoRemuxer$Companion;", "", "()V", "CHECK_FRAME_DRWA_TIMEOUT", "", "DECODE_END_FINISH_ENCODE_CHECK_TIMEOUT", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/background/image2video/MediaCodecFakeVideoRemuxer$Companion;", "", "()V", "CHECK_FRAME_DRWA_TIMEOUT", "", "DECODE_END_FINISH_ENCODE_CHECK_TIMEOUT", "plugin-recordvideo_release"})
 public final class e$a {}
 
 

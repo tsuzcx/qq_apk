@@ -22,12 +22,15 @@ import com.tencent.mm.plugin.wallet.a.o;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.FavorPayInfo;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.j;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.i;
 import com.tencent.mm.wallet_core.c.ab;
-import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.g;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -36,35 +39,35 @@ import java.util.List;
 public final class a
   extends i
 {
-  Orders CwO;
-  com.tencent.mm.plugin.wallet_core.utils.a HCH;
-  FavorPayInfo HGf;
-  Bankcard HJA;
-  private ImageView IkS;
-  ViewGroup IkT;
-  TextView IkU;
-  List<WcPayCashierBankcardItemLayout> IkV;
-  int IkW;
-  boolean IkX;
-  int IkY;
-  boolean IkZ;
-  a Ila;
-  WcPayCashierDialog.b Ilb;
+  Orders Ivh;
+  Bankcard OBu;
+  com.tencent.mm.plugin.wallet_core.utils.a OuA;
+  FavorPayInfo OxY;
+  private ImageView Pdk;
+  ViewGroup Pdl;
+  TextView Pdm;
+  List<WcPayCashierBankcardItemLayout> Pdn;
+  int Pdo;
+  boolean Pdp;
+  int Pdq;
+  boolean Pdr;
+  a Pds;
+  WcPayCashierDialog.b Pdt;
   private Context mContext;
   PayInfo mPayInfo;
-  private ViewGroup nmW;
+  private ViewGroup qoE;
   
   public a(Context paramContext)
   {
-    super(paramContext, 2131821772);
+    super(paramContext, a.j.mmalertdialog);
     AppMethodBeat.i(71314);
-    this.IkV = new ArrayList();
+    this.Pdn = new ArrayList();
     this.mPayInfo = new PayInfo();
-    this.CwO = new Orders();
-    this.IkZ = true;
-    this.Ilb = new WcPayCashierDialog.b()
+    this.Ivh = new Orders();
+    this.Pdr = true;
+    this.Pdt = new WcPayCashierDialog.b()
     {
-      public final void fTr()
+      public final void gLX()
       {
         AppMethodBeat.i(71307);
         Log.i("MicroMsg.WcPayCashierBankcardDialog", "cashier dialog has dismissed");
@@ -73,16 +76,16 @@ public final class a
       }
     };
     this.mContext = paramContext;
-    this.nmW = ((ViewGroup)View.inflate(getContext(), 2131497032, null));
-    this.IkS = ((ImageView)this.nmW.findViewById(2131310549));
-    this.IkT = ((ViewGroup)this.nmW.findViewById(2131310546));
-    this.IkU = ((TextView)this.nmW.findViewById(2131310551));
-    paramContext = this.IkS;
-    int i = WcPayCashierDialog.Ill;
-    int j = WcPayCashierDialog.Ill;
+    this.qoE = ((ViewGroup)View.inflate(getContext(), a.g.wc_pay_cashier_bankcard_dialog, null));
+    this.Pdk = ((ImageView)this.qoE.findViewById(a.f.wpcb_close_iv));
+    this.Pdl = ((ViewGroup)this.qoE.findViewById(a.f.wpcb_bankcard_layout));
+    this.Pdm = ((TextView)this.qoE.findViewById(a.f.wpcb_hint_tv));
+    paramContext = this.Pdk;
+    int i = WcPayCashierDialog.PdD;
+    int j = WcPayCashierDialog.PdD;
     Util.expandViewTouchArea(paramContext, i, i, j, j);
-    this.IkS.setOnClickListener(new a.4(this));
-    setContentView(this.nmW);
+    this.Pdk.setOnClickListener(new a.4(this));
+    setContentView(this.qoE);
     setCanceledOnTouchOutside(false);
     setOnCancelListener(new DialogInterface.OnCancelListener()
     {
@@ -104,30 +107,30 @@ public final class a
         AppMethodBeat.o(71309);
       }
     });
-    this.HCH = new com.tencent.mm.plugin.wallet_core.utils.a();
+    this.OuA = new com.tencent.mm.plugin.wallet_core.utils.a();
     AppMethodBeat.o(71314);
   }
   
   public final void a(WcPayCashierDialog paramWcPayCashierDialog)
   {
     AppMethodBeat.i(71316);
-    WcPayCashierDialog.b localb = this.Ilb;
-    paramWcPayCashierDialog.IlY.remove(localb);
+    WcPayCashierDialog.b localb = this.Pdt;
+    paramWcPayCashierDialog.Peq.remove(localb);
     AppMethodBeat.o(71316);
   }
   
-  final LinkedList<String> fTq()
+  final LinkedList<String> gLW()
   {
     AppMethodBeat.i(71318);
     LinkedList localLinkedList = new LinkedList();
-    if ((this.CwO != null) && (this.CwO.HZe != null) && (this.CwO.HZe.HEE != null))
+    if ((this.Ivh != null) && (this.Ivh.ORe != null) && (this.Ivh.ORe.Owx != null))
     {
-      Object localObject = this.CwO.HZe.HEE.HEa;
+      Object localObject = this.Ivh.ORe.Owx.OvT;
       if (localObject != null)
       {
-        localObject = ((n)localObject).HEQ.iterator();
+        localObject = ((n)localObject).OwJ.iterator();
         while (((Iterator)localObject).hasNext()) {
-          localLinkedList.add(((o)((Iterator)localObject).next()).Coh);
+          localLinkedList.add(((o)((Iterator)localObject).next()).Ila);
         }
         AppMethodBeat.o(71318);
         return localLinkedList;
@@ -137,21 +140,21 @@ public final class a
     return localLinkedList;
   }
   
-  final LinkedList<String> h(Bankcard paramBankcard)
+  final LinkedList<String> i(Bankcard paramBankcard)
   {
     AppMethodBeat.i(71317);
     LinkedList localLinkedList = new LinkedList();
-    if ((this.CwO != null) && (this.CwO.HZe != null) && (this.CwO.HZe.HEE != null))
+    if ((this.Ivh != null) && (this.Ivh.ORe != null) && (this.Ivh.ORe.Owx != null))
     {
-      Iterator localIterator = this.CwO.HZe.HEE.HDZ.iterator();
+      Iterator localIterator = this.Ivh.ORe.Owx.OvS.iterator();
       while (localIterator.hasNext())
       {
         c localc = (c)localIterator.next();
-        if (localc.ANo.equals(paramBankcard.field_bindSerial))
+        if (localc.GGC.equals(paramBankcard.field_bindSerial))
         {
-          paramBankcard = localc.HEk.iterator();
+          paramBankcard = localc.Owd.iterator();
           while (paramBankcard.hasNext()) {
-            localLinkedList.add(((d)paramBankcard.next()).Coh);
+            localLinkedList.add(((d)paramBankcard.next()).Ila);
           }
           AppMethodBeat.o(71317);
           return localLinkedList;
@@ -171,15 +174,15 @@ public final class a
       Log.w("MicroMsg.WcPayCashierBankcardDialog", "pay info is null!!");
       dismiss();
     }
-    ab.mg(7, 0);
+    ab.ny(7, 0);
     AppMethodBeat.o(71315);
   }
   
   public static abstract interface a
   {
-    public abstract void fNc();
+    public abstract void gFG();
     
-    public abstract void j(Bankcard paramBankcard);
+    public abstract void k(Bankcard paramBankcard);
     
     public abstract void onCancel();
   }

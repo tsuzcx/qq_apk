@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.exdevice.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.exdevice.b.a;
 import com.tencent.mm.plugin.exdevice.b.b;
-import com.tencent.mm.protocal.protobuf.bew;
-import com.tencent.mm.protocal.protobuf.byg;
-import com.tencent.mm.protocal.protobuf.byh;
+import com.tencent.mm.protocal.protobuf.bma;
+import com.tencent.mm.protocal.protobuf.cga;
+import com.tencent.mm.protocal.protobuf.cgb;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.bv;
 import java.lang.ref.WeakReference;
@@ -18,18 +18,18 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class l
-  extends a<byg, byh>
+  extends a<cga, cgb>
 {
-  public List<String> rCR;
-  public List<String> rCS;
-  public List<String> rCT;
-  private final WeakReference<b<l>> rxQ;
+  private final WeakReference<b<l>> vdw;
+  public List<String> viB;
+  public List<String> viC;
+  public List<String> viD;
   
   public l()
   {
-    AppMethodBeat.i(231696);
-    this.rxQ = new WeakReference(null);
-    AppMethodBeat.o(231696);
+    AppMethodBeat.i(237520);
+    this.vdw = new WeakReference(null);
+    AppMethodBeat.o(237520);
   }
   
   public final int getType()
@@ -48,41 +48,41 @@ public final class l
     Log.d("MicroMsg.NetSceneGetWeRunFollowerList", "ap: errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      Object localObject1 = (byh)cgq();
-      this.rCT = new ArrayList();
-      Object localObject2 = ((byh)localObject1).MdS.iterator();
+      Object localObject1 = (cgb)ctC();
+      this.viD = new ArrayList();
+      Object localObject2 = ((cgb)localObject1).Tnt.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         String str = (String)((Iterator)localObject2).next();
-        bg.aVF();
-        if (c.aSN().bjG(str)) {
-          this.rCT.add(str);
+        bh.beI();
+        if (c.bbL().bwd(str)) {
+          this.viD.add(str);
         }
       }
-      this.rCR = new ArrayList();
-      this.rCS = new ArrayList();
-      if (((byh)localObject1).LCY != null)
+      this.viB = new ArrayList();
+      this.viC = new ArrayList();
+      if (((cgb)localObject1).SGk != null)
       {
-        localObject1 = ((byh)localObject1).LCY.iterator();
+        localObject1 = ((cgb)localObject1).SGk.iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          localObject2 = (bew)((Iterator)localObject1).next();
-          if (((bew)localObject2).tOS) {
-            this.rCS.add(((bew)localObject2).username);
+          localObject2 = (bma)((Iterator)localObject1).next();
+          if (((bma)localObject2).xzE) {
+            this.viC.add(((bma)localObject2).username);
           }
-          bg.aVF();
-          if (c.aSN().bjG(((bew)localObject2).username)) {
-            this.rCR.add(((bew)localObject2).username);
+          bh.beI();
+          if (c.bbL().bwd(((bma)localObject2).username)) {
+            this.viB.add(((bma)localObject2).username);
           }
         }
       }
-      Log.d("MicroMsg.NetSceneGetWeRunFollowerList", "follow:%s %s", new Object[] { Integer.valueOf(this.rCS.size()), this.rCS.toString() });
-      Log.d("MicroMsg.NetSceneGetWeRunFollowerList", "all follow:%s %s", new Object[] { Integer.valueOf(this.rCR.size()), this.rCR });
+      Log.d("MicroMsg.NetSceneGetWeRunFollowerList", "follow:%s %s", new Object[] { Integer.valueOf(this.viC.size()), this.viC.toString() });
+      Log.d("MicroMsg.NetSceneGetWeRunFollowerList", "all follow:%s %s", new Object[] { Integer.valueOf(this.viB.size()), this.viB });
     }
     super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, params, paramArrayOfByte);
-    if (this.rxQ != null)
+    if (this.vdw != null)
     {
-      params = (b)this.rxQ.get();
+      params = (b)this.vdw.get();
       if (params != null)
       {
         Log.d("MicroMsg.NetSceneGetWeRunFollowerList", "callback is not null");

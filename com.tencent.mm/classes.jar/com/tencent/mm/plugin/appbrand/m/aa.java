@@ -1,52 +1,50 @@
 package com.tencent.mm.plugin.appbrand.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
-import com.tencent.mm.plugin.appbrand.d;
-import com.tencent.mm.plugin.appbrand.page.ac;
-import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.appbrand.g;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.v;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.xweb.ah;
+import com.tencent.xweb.aj;
 
 public final class aa
 {
-  private static Boolean mNW;
-  private static Boolean mNX;
-  private static Boolean mNY;
+  private static Boolean pOO;
+  private static Boolean pOP;
+  private static Boolean pOQ;
   
   public static void a(i parami, int paramInt1, int paramInt2, String paramString)
   {
-    AppMethodBeat.i(204369);
+    AppMethodBeat.i(217410);
     com.tencent.mm.sdk.platformtools.Log.i("Luggage.NativeTransLogic", "initNativeTransServiceId serviceId:%d, componentId:%d, appId:%s, stack:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, android.util.Log.getStackTraceString(new Throwable()) });
     parami.evaluateJavascript("console.log('initNativeTransServiceId. ntrans:' + typeof ntrans + ' componentId :" + paramInt2 + "')", null);
     parami.evaluateJavascript("if (typeof ntrans !== 'undefined') { ntrans.serviceId = " + paramInt1 + "; }", null);
-    AppMethodBeat.o(204369);
+    AppMethodBeat.o(217410);
   }
   
   public static void a(i parami, int paramInt, String paramString)
   {
-    AppMethodBeat.i(204368);
+    AppMethodBeat.i(217409);
     com.tencent.mm.sdk.platformtools.Log.i("Luggage.NativeTransLogic", "initNativeTransComponentId componentId: %d appId:%s , stack: %s", new Object[] { Integer.valueOf(paramInt), paramString, android.util.Log.getStackTraceString(new Throwable()) });
     parami.evaluateJavascript("console.log('initNativeTransComponentId. ntrans:' + typeof ntrans + ' componentId :" + paramInt + "')", null);
     parami.evaluateJavascript("if (typeof ntrans !== 'undefined') { ntrans.id = " + paramInt + "; }", null);
-    AppMethodBeat.o(204368);
+    AppMethodBeat.o(217409);
   }
   
-  private static boolean bMI()
+  private static boolean bYZ()
   {
-    AppMethodBeat.i(204367);
-    if (mNY == null) {
-      mNY = Boolean.valueOf(((b)g.af(b.class)).a(b.a.seT, false));
+    AppMethodBeat.i(217408);
+    if (pOQ == null) {
+      pOQ = Boolean.valueOf(((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vOD, false));
     }
-    boolean bool = mNY.booleanValue();
-    AppMethodBeat.o(204367);
+    boolean bool = pOQ.booleanValue();
+    AppMethodBeat.o(217408);
     return bool;
   }
   
-  public static boolean f(ac paramac)
+  public static boolean f(ad paramad)
   {
     boolean bool1 = true;
     for (;;)
@@ -56,26 +54,26 @@ public final class aa
       boolean bool4;
       try
       {
-        AppMethodBeat.i(204365);
-        bool2 = bMI();
-        if (mNW == null) {
-          mNW = Boolean.valueOf(ah.htd());
+        AppMethodBeat.i(217405);
+        bool2 = bYZ();
+        if (pOO == null) {
+          pOO = Boolean.valueOf(aj.iwL());
         }
-        bool3 = mNW.booleanValue();
-        bool4 = g(paramac);
+        bool3 = pOO.booleanValue();
+        bool4 = h(paramad);
         if ((bool2) && (bool3) && (bool4))
         {
-          h.CyF.dN(1355, 0);
+          com.tencent.mm.plugin.report.service.h.IzE.el(1355, 0);
           com.tencent.mm.sdk.platformtools.Log.i("Luggage.NativeTransLogic", "isWebViewOpen exprOpen:%b webviewMatch:%b libMatch:%b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4) });
           if ((!bool2) || (!bool3) || (!bool4)) {
             break label196;
           }
-          AppMethodBeat.o(204365);
+          AppMethodBeat.o(217405);
           return bool1;
         }
         if ((bool2) && (!bool3))
         {
-          h.CyF.dN(1355, 1);
+          com.tencent.mm.plugin.report.service.h.IzE.el(1355, 1);
           continue;
         }
         if (!bool2) {
@@ -84,56 +82,56 @@ public final class aa
       }
       finally {}
       if (!bool4) {
-        h.CyF.dN(1355, 2);
+        com.tencent.mm.plugin.report.service.h.IzE.el(1355, 2);
       } else {
         label170:
         if ((bool2) && (!bool4) && (!bool3))
         {
-          h.CyF.dN(1355, 3);
+          com.tencent.mm.plugin.report.service.h.IzE.el(1355, 3);
           continue;
           label196:
-          AppMethodBeat.o(204365);
+          AppMethodBeat.o(217405);
           bool1 = false;
         }
       }
     }
   }
   
-  private static boolean g(d paramd)
+  private static boolean h(g paramg)
   {
-    AppMethodBeat.i(204366);
-    if (mNX == null) {
-      mNX = Boolean.valueOf(Boolean.parseBoolean(paramd.bqZ().UN("nativeTrans")));
+    AppMethodBeat.i(217406);
+    if (pOP == null) {
+      pOP = Boolean.valueOf(Boolean.parseBoolean(paramg.bBP().acx("nativeTrans")));
     }
-    boolean bool = mNX.booleanValue();
-    AppMethodBeat.o(204366);
+    boolean bool = pOP.booleanValue();
+    AppMethodBeat.o(217406);
     return bool;
   }
   
-  public static boolean q(s params)
+  public static boolean r(v paramv)
   {
     boolean bool1 = false;
     for (;;)
     {
       try
       {
-        AppMethodBeat.i(204364);
-        if (params == null)
+        AppMethodBeat.i(217404);
+        if (paramv == null)
         {
-          h.CyF.dN(1355, 6);
+          com.tencent.mm.plugin.report.service.h.IzE.el(1355, 6);
           com.tencent.mm.sdk.platformtools.Log.i("Luggage.NativeTransLogic", "isServiceOpen component null");
-          AppMethodBeat.o(204364);
+          AppMethodBeat.o(217404);
           return bool1;
         }
-        boolean bool2 = g(params);
-        boolean bool3 = bMI();
+        boolean bool2 = h(paramv);
+        boolean bool3 = bYZ();
         if ((bool3) && (bool2))
         {
-          h.CyF.dN(1355, 4);
-          com.tencent.mm.sdk.platformtools.Log.i("Luggage.NativeTransLogic", "isServiceOpen isExprOpen:%b isLibMatch:%b", new Object[] { Boolean.valueOf(bMI()), Boolean.valueOf(bool2) });
+          com.tencent.mm.plugin.report.service.h.IzE.el(1355, 4);
+          com.tencent.mm.sdk.platformtools.Log.i("Luggage.NativeTransLogic", "isServiceOpen isExprOpen:%b isLibMatch:%b", new Object[] { Boolean.valueOf(bYZ()), Boolean.valueOf(bool2) });
           if ((bool2) && (bool3))
           {
-            AppMethodBeat.o(204364);
+            AppMethodBeat.o(217404);
             bool1 = true;
           }
         }
@@ -142,10 +140,10 @@ public final class aa
           if ((!bool3) || (bool2)) {
             continue;
           }
-          h.CyF.dN(1355, 5);
+          com.tencent.mm.plugin.report.service.h.IzE.el(1355, 5);
           continue;
         }
-        AppMethodBeat.o(204364);
+        AppMethodBeat.o(217404);
       }
       finally {}
     }
@@ -153,7 +151,7 @@ public final class aa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.m.aa
  * JD-Core Version:    0.7.0.1
  */

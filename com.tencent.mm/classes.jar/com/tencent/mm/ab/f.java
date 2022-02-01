@@ -1,328 +1,110 @@
 package com.tencent.mm.ab;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint.Cap;
+import android.graphics.Paint.Style;
+import android.graphics.Rect;
+import android.text.Layout;
+import android.text.SpannableString;
+import android.text.TextPaint;
+import android.util.DisplayMetrics;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import junit.framework.Assert;
-import org.json.JSONArray;
+import com.tencent.mm.bv.a.c;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.view.PhotoEditText;
 
 public final class f
-  extends JSONArray
-  implements a
+  extends c
 {
-  private final a hpy;
+  private static final float kaw;
+  private static final int kax;
+  private static final int kay;
+  private static TextPaint wi;
+  public SpannableString kaz;
+  public int mBgColor = -65536;
+  public int mColor = -1;
   
-  public f()
+  static
   {
-    AppMethodBeat.i(158497);
-    this.hpy = h.ayT();
-    AppMethodBeat.o(158497);
+    AppMethodBeat.i(9275);
+    kaw = MMApplicationContext.getResources().getDimension(a.c.edit_text_size);
+    kax = (int)MMApplicationContext.getResources().getDimension(a.c.line_padding_text);
+    kay = (int)MMApplicationContext.getResources().getDimension(a.c.padding_text);
+    TextPaint localTextPaint = new TextPaint(1);
+    wi = localTextPaint;
+    localTextPaint.setStrokeCap(Paint.Cap.ROUND);
+    wi.setStyle(Paint.Style.FILL);
+    wi.setDither(true);
+    wi.setTextSize(kaw);
+    AppMethodBeat.o(9275);
   }
   
-  f(a parama)
+  public f(Context paramContext, Matrix paramMatrix, String paramString, Rect paramRect, SpannableString paramSpannableString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(158499);
-    Assert.assertNotNull(parama);
-    this.hpy = parama;
-    AppMethodBeat.o(158499);
+    super(paramContext, paramMatrix, paramString, paramRect);
+    this.mColor = paramInt1;
+    this.kaz = paramSpannableString;
+    this.mBgColor = paramInt2;
   }
   
-  public f(String paramString)
+  protected final Bitmap aFQ()
   {
-    AppMethodBeat.i(158498);
-    this.hpy = h.FG(paramString);
-    AppMethodBeat.o(158498);
+    AppMethodBeat.i(9273);
+    wi.setColor(this.mColor);
+    if (this.kaz == null)
+    {
+      AppMethodBeat.o(9273);
+      return null;
+    }
+    PhotoEditText localPhotoEditText = new PhotoEditText(this.mContext);
+    int i = a.aY(this.mContext, a.c.edit_text_padding);
+    localPhotoEditText.setPadding(i, 0, i, 0);
+    localPhotoEditText.setTextBackground(this.mBgColor);
+    localPhotoEditText.setTextColor(this.mColor);
+    localPhotoEditText.setTextSize(Math.round(kaw / this.mContext.getResources().getDisplayMetrics().density));
+    localPhotoEditText.setText(l.b(this.mContext, this.kaz, kaw / 1.3F));
+    localPhotoEditText.setSingleLine(false);
+    localPhotoEditText.setMaxWidth((int)(this.mContext.getResources().getDisplayMetrics().widthPixels - this.mContext.getResources().getDimension(a.c.edit_text_padding) * 2.0F));
+    if ((this.mBgColor == 0) && (this.mColor != -16777216)) {
+      localPhotoEditText.setShadowLayer(a.fromDPToPix(localPhotoEditText.getContext(), 3), 0.0F, a.fromDPToPix(localPhotoEditText.getContext(), 1), -2147483648);
+    }
+    localPhotoEditText.measure(0, 0);
+    Bitmap localBitmap = Bitmap.createBitmap(localPhotoEditText.getMeasuredWidth() - i, localPhotoEditText.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas(localBitmap);
+    localPhotoEditText.getLayout().getPaint().setColor(this.mColor);
+    localCanvas.save();
+    localCanvas.translate(-0.5F * i, 0.0F);
+    localPhotoEditText.draw(localCanvas);
+    localCanvas.restore();
+    localCanvas.save();
+    localCanvas.translate(i * 0.5F, 0.0F);
+    localPhotoEditText.getLayout().draw(localCanvas);
+    localCanvas.restore();
+    AppMethodBeat.o(9273);
+    return localBitmap;
   }
   
-  private f D(int paramInt, boolean paramBoolean)
+  public final void setSelected(boolean paramBoolean)
   {
-    AppMethodBeat.i(158506);
-    this.hpy.C(paramInt, paramBoolean);
-    AppMethodBeat.o(158506);
-    return this;
-  }
-  
-  private f cT(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(158508);
-    this.hpy.cS(paramInt1, paramInt2);
-    AppMethodBeat.o(158508);
-    return this;
-  }
-  
-  private f d(int paramInt, double paramDouble)
-  {
-    AppMethodBeat.i(158507);
-    this.hpy.c(paramInt, paramDouble);
-    AppMethodBeat.o(158507);
-    return this;
-  }
-  
-  private f eq(boolean paramBoolean)
-  {
-    AppMethodBeat.i(158501);
-    this.hpy.ep(paramBoolean);
-    AppMethodBeat.o(158501);
-    return this;
-  }
-  
-  private f h(int paramInt, Object paramObject)
-  {
-    AppMethodBeat.i(158510);
-    this.hpy.g(paramInt, paramObject);
-    AppMethodBeat.o(158510);
-    return this;
-  }
-  
-  private f l(double paramDouble)
-  {
-    AppMethodBeat.i(158502);
-    this.hpy.k(paramDouble);
-    AppMethodBeat.o(158502);
-    return this;
-  }
-  
-  private f pV(int paramInt)
-  {
-    AppMethodBeat.i(158503);
-    this.hpy.pQ(paramInt);
-    AppMethodBeat.o(158503);
-    return this;
-  }
-  
-  private f pX(int paramInt)
-  {
-    AppMethodBeat.i(158531);
-    f localf = new f(this.hpy.pS(paramInt));
-    AppMethodBeat.o(158531);
-    return localf;
-  }
-  
-  private f w(int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(158509);
-    this.hpy.v(paramInt, paramLong);
-    AppMethodBeat.o(158509);
-    return this;
-  }
-  
-  private f zq(long paramLong)
-  {
-    AppMethodBeat.i(158504);
-    this.hpy.zp(paramLong);
-    AppMethodBeat.o(158504);
-    return this;
-  }
-  
-  public final f bv(Object paramObject)
-  {
-    AppMethodBeat.i(158505);
-    this.hpy.bu(paramObject);
-    AppMethodBeat.o(158505);
-    return this;
-  }
-  
-  public final Object get(int paramInt)
-  {
-    AppMethodBeat.i(158512);
-    Object localObject = this.hpy.get(paramInt);
-    AppMethodBeat.o(158512);
-    return localObject;
-  }
-  
-  public final boolean getBoolean(int paramInt)
-  {
-    AppMethodBeat.i(158515);
-    boolean bool = this.hpy.getBoolean(paramInt);
-    AppMethodBeat.o(158515);
-    return bool;
-  }
-  
-  public final double getDouble(int paramInt)
-  {
-    AppMethodBeat.i(158518);
-    double d = this.hpy.getDouble(paramInt);
-    AppMethodBeat.o(158518);
-    return d;
-  }
-  
-  public final int getInt(int paramInt)
-  {
-    AppMethodBeat.i(158521);
-    paramInt = this.hpy.getInt(paramInt);
-    AppMethodBeat.o(158521);
-    return paramInt;
-  }
-  
-  public final long getLong(int paramInt)
-  {
-    AppMethodBeat.i(158524);
-    long l = this.hpy.getLong(paramInt);
-    AppMethodBeat.o(158524);
-    return l;
-  }
-  
-  public final String getString(int paramInt)
-  {
-    AppMethodBeat.i(158527);
-    String str = this.hpy.getString(paramInt);
-    AppMethodBeat.o(158527);
-    return str;
-  }
-  
-  public final boolean isNull(int paramInt)
-  {
-    AppMethodBeat.i(158511);
-    boolean bool = this.hpy.isNull(paramInt);
-    AppMethodBeat.o(158511);
-    return bool;
-  }
-  
-  public final int length()
-  {
-    AppMethodBeat.i(158500);
-    int i = this.hpy.length();
-    AppMethodBeat.o(158500);
-    return i;
-  }
-  
-  public final Object opt(int paramInt)
-  {
-    AppMethodBeat.i(158513);
-    Object localObject = this.hpy.opt(paramInt);
-    AppMethodBeat.o(158513);
-    return localObject;
-  }
-  
-  public final boolean optBoolean(int paramInt)
-  {
-    AppMethodBeat.i(158516);
-    boolean bool = this.hpy.optBoolean(paramInt);
-    AppMethodBeat.o(158516);
-    return bool;
-  }
-  
-  public final boolean optBoolean(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(158517);
-    paramBoolean = this.hpy.optBoolean(paramInt, paramBoolean);
-    AppMethodBeat.o(158517);
-    return paramBoolean;
-  }
-  
-  public final double optDouble(int paramInt)
-  {
-    AppMethodBeat.i(158519);
-    double d = this.hpy.optDouble(paramInt);
-    AppMethodBeat.o(158519);
-    return d;
-  }
-  
-  public final double optDouble(int paramInt, double paramDouble)
-  {
-    AppMethodBeat.i(158520);
-    paramDouble = this.hpy.optDouble(paramInt, paramDouble);
-    AppMethodBeat.o(158520);
-    return paramDouble;
-  }
-  
-  public final int optInt(int paramInt)
-  {
-    AppMethodBeat.i(158522);
-    paramInt = this.hpy.optInt(paramInt);
-    AppMethodBeat.o(158522);
-    return paramInt;
-  }
-  
-  public final int optInt(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(158523);
-    paramInt1 = this.hpy.optInt(paramInt1, paramInt2);
-    AppMethodBeat.o(158523);
-    return paramInt1;
-  }
-  
-  public final long optLong(int paramInt)
-  {
-    AppMethodBeat.i(158525);
-    long l = this.hpy.optLong(paramInt);
-    AppMethodBeat.o(158525);
-    return l;
-  }
-  
-  public final long optLong(int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(158526);
-    paramLong = this.hpy.optLong(paramInt, paramLong);
-    AppMethodBeat.o(158526);
-    return paramLong;
-  }
-  
-  public final String optString(int paramInt)
-  {
-    AppMethodBeat.i(158528);
-    String str = this.hpy.optString(paramInt);
-    AppMethodBeat.o(158528);
-    return str;
-  }
-  
-  public final String optString(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(158529);
-    paramString = this.hpy.optString(paramInt, paramString);
-    AppMethodBeat.o(158529);
-    return paramString;
-  }
-  
-  public final f pW(int paramInt)
-  {
-    AppMethodBeat.i(158530);
-    f localf = new f(this.hpy.pR(paramInt));
-    AppMethodBeat.o(158530);
-    return localf;
-  }
-  
-  public final i pY(int paramInt)
-  {
-    AppMethodBeat.i(158532);
-    i locali = new i(this.hpy.pT(paramInt));
-    AppMethodBeat.o(158532);
-    return locali;
-  }
-  
-  public final i pZ(int paramInt)
-  {
-    AppMethodBeat.i(158533);
-    i locali = new i(this.hpy.pU(paramInt));
-    AppMethodBeat.o(158533);
-    return locali;
-  }
-  
-  public final Object remove(int paramInt)
-  {
-    AppMethodBeat.i(158514);
-    Object localObject = this.hpy.remove(paramInt);
-    AppMethodBeat.o(158514);
-    return localObject;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(158534);
-    String str = this.hpy.toString();
-    AppMethodBeat.o(158534);
-    return str;
-  }
-  
-  public final String toString(int paramInt)
-  {
-    AppMethodBeat.i(158535);
-    String str = this.hpy.toString(paramInt);
-    AppMethodBeat.o(158535);
-    return str;
+    AppMethodBeat.i(9274);
+    super.setSelected(paramBoolean);
+    if (!paramBoolean) {
+      this.kag = false;
+    }
+    AppMethodBeat.o(9274);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ab.f
  * JD-Core Version:    0.7.0.1
  */

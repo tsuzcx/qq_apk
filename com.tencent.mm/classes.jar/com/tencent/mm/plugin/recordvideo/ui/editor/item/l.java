@@ -2,155 +2,128 @@ package com.tencent.mm.plugin.recordvideo.ui.editor.item;
 
 import android.graphics.Matrix;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.ckl;
-import com.tencent.mm.protocal.protobuf.ckm;
-import com.tencent.mm.protocal.protobuf.erc;
-import com.tencent.mm.protocal.protobuf.jn;
+import com.tencent.mm.protocal.protobuf.csu;
+import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.jc;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 import kotlin.g.b.p;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LyricsItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "lyricsInfo", "", "Lcom/tencent/mm/protocal/protobuf/LyricsItemInfo;", "matrix", "Landroid/graphics/Matrix;", "(Ljava/util/List;Landroid/graphics/Matrix;)V", "proto", "Lcom/tencent/mm/protocal/protobuf/BaseItemData;", "(Lcom/tencent/mm/protocal/protobuf/BaseItemData;)V", "<set-?>", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getLyricsInfo", "()Ljava/util/ArrayList;", "isValid", "", "limitLyrics", "", "duration", "", "toProtoBuf", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "toString", "", "Companion", "plugin-recordvideo_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LocationItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "cityName", "", "poiName", "longitude", "", "latitude", "matrix", "Landroid/graphics/Matrix;", "(Ljava/lang/String;Ljava/lang/String;FFLandroid/graphics/Matrix;)V", "proto", "Lcom/tencent/mm/protocal/protobuf/BaseItemData;", "(Lcom/tencent/mm/protocal/protobuf/BaseItemData;)V", "<set-?>", "getCityName", "()Ljava/lang/String;", "getLatitude", "()F", "getLongitude", "getPoiName", "isValid", "", "toProtoBuf", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "toString", "Companion", "plugin-recordvideo_release"})
 public final class l
   extends a
 {
-  public static final l.a CfB;
-  ArrayList<ckm> CfA;
+  public static final a Icw;
+  String Icv;
+  float latitude;
+  float longitude;
+  String poiName;
   
   static
   {
-    AppMethodBeat.i(237789);
-    CfB = new l.a((byte)0);
-    AppMethodBeat.o(237789);
+    AppMethodBeat.i(221547);
+    Icw = new a((byte)0);
+    AppMethodBeat.o(221547);
   }
   
-  public l(jn paramjn)
+  public l(jc paramjc)
   {
-    super(d.CeO);
-    AppMethodBeat.i(237788);
-    this.CfA = new ArrayList();
+    super(d.IbG);
+    AppMethodBeat.i(221545);
+    this.Icv = "";
+    this.poiName = "";
     try
     {
-      Object localObject = (com.tencent.mm.bw.a)new ckl();
-      paramjn = paramjn.KOd;
-      p.g(paramjn, "proto.itemData");
-      paramjn = paramjn.getBuffer();
-      p.g(paramjn, "proto.itemData.buffer");
-      paramjn = paramjn.zy;
+      Object localObject = (com.tencent.mm.cd.a)new csu();
+      paramjc = paramjc.ROY;
+      p.j(paramjc, "proto.itemData");
+      paramjc = paramjc.Tkb;
+      p.j(paramjc, "proto.itemData.buffer");
+      paramjc = paramjc.UH;
       try
       {
-        ((com.tencent.mm.bw.a)localObject).parseFrom(paramjn);
-        paramjn = (jn)localObject;
+        ((com.tencent.mm.cd.a)localObject).parseFrom(paramjc);
+        paramjc = (jc)localObject;
       }
-      catch (Exception paramjn)
+      catch (Exception paramjc)
       {
         for (;;)
         {
-          Log.printDebugStack("safeParser", "", new Object[] { paramjn });
-          paramjn = null;
+          Log.printDebugStack("safeParser", "", new Object[] { paramjc });
+          paramjc = null;
         }
-        AppMethodBeat.o(237788);
-        return;
       }
-      localObject = (ckl)paramjn;
-      if (localObject != null)
+      paramjc = (csu)paramjc;
+      if (paramjc != null)
       {
-        this.CfA.clear();
-        this.CfA.addAll((Collection)((ckl)localObject).MpX);
-        paramjn = this.gT;
-        localObject = ((ckl)localObject).Lce;
-        p.g(localObject, "it.matrix");
-        paramjn.setValues(a((erc)localObject));
-        Log.i("MicroMsg.LyricsItem", toString());
-        AppMethodBeat.o(237788);
-        return;
+        localObject = paramjc.Icv;
+        p.j(localObject, "it.cityName");
+        this.Icv = ((String)localObject);
+        localObject = paramjc.poiName;
+        p.j(localObject, "it.poiName");
+        this.poiName = ((String)localObject);
+        this.longitude = paramjc.longitude;
+        this.latitude = paramjc.latitude;
+        localObject = this.aHZ;
+        paramjc = paramjc.Sdr;
+        p.j(paramjc, "it.matrix");
+        ((Matrix)localObject).setValues(a(paramjc));
       }
+      com.tencent.mm.audio.mix.h.b.i("MicroMsg.LocationItem", toString());
+      AppMethodBeat.o(221545);
       return;
     }
-    catch (IOException paramjn)
+    catch (IOException paramjc)
     {
-      Log.printErrStackTrace("MicroMsg.LyricsItem", (Throwable)paramjn, "LocationItem parse error", new Object[0]);
-      AppMethodBeat.o(237788);
+      com.tencent.mm.audio.mix.h.b.printErrStackTrace("MicroMsg.LocationItem", (Throwable)paramjc, "LocationItem parse error", new Object[0]);
+      AppMethodBeat.o(221545);
     }
   }
   
-  public l(List<? extends ckm> paramList, Matrix paramMatrix)
+  public l(String paramString1, String paramString2, float paramFloat1, float paramFloat2, Matrix paramMatrix)
   {
-    super(d.CeO);
-    AppMethodBeat.i(237787);
-    this.CfA = new ArrayList();
-    this.CfA.clear();
-    this.CfA.addAll((Collection)paramList);
-    this.gT.set(paramMatrix);
-    AppMethodBeat.o(237787);
+    super(d.IbI);
+    AppMethodBeat.i(221534);
+    this.Icv = "";
+    this.poiName = "";
+    this.Icv = paramString1;
+    this.poiName = paramString2;
+    this.latitude = paramFloat2;
+    this.longitude = paramFloat1;
+    p.k(paramMatrix, "<set-?>");
+    this.aHZ = paramMatrix;
+    com.tencent.mm.audio.mix.h.b.i("MicroMsg.LocationItem", toString());
+    AppMethodBeat.o(221534);
   }
   
-  public final void Ij(long paramLong)
+  public final com.tencent.mm.cd.a fyG()
   {
-    AppMethodBeat.i(237785);
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1 = (Iterable)this.CfA;
-    Collection localCollection = (Collection)new ArrayList();
-    localObject1 = ((Iterable)localObject1).iterator();
-    label98:
-    while (((Iterator)localObject1).hasNext())
-    {
-      Object localObject2 = ((Iterator)localObject1).next();
-      if (((ckm)localObject2).startTime < paramLong) {}
-      for (int i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label98;
-        }
-        localCollection.add(localObject2);
-        break;
-      }
-    }
-    localArrayList.addAll((Collection)localCollection);
-    this.CfA.clear();
-    this.CfA.addAll((Collection)localArrayList);
-    AppMethodBeat.o(237785);
-  }
-  
-  public final com.tencent.mm.bw.a eMk()
-  {
-    AppMethodBeat.i(237784);
-    Object localObject = new ckl();
-    float[] arrayOfFloat = new float[9];
-    erc localerc = new erc();
-    this.gT.getValues(arrayOfFloat);
-    int i = 0;
-    while (i < 9)
-    {
-      float f = arrayOfFloat[i];
-      localerc.LOe.add(Float.valueOf(f));
-      i += 1;
-    }
-    ((ckl)localObject).MpX.addAll((Collection)this.CfA);
-    ((ckl)localObject).Lce = localerc;
-    localObject = (com.tencent.mm.bw.a)localObject;
-    AppMethodBeat.o(237784);
+    AppMethodBeat.i(221521);
+    Object localObject = new csu();
+    ((csu)localObject).Icv = this.Icv;
+    ((csu)localObject).poiName = this.poiName;
+    ((csu)localObject).Sdr = f(this.aHZ);
+    ((csu)localObject).longitude = this.longitude;
+    ((csu)localObject).latitude = this.latitude;
+    localObject = (com.tencent.mm.cd.a)localObject;
+    AppMethodBeat.o(221521);
     return localObject;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(237786);
-    String str = "[" + hashCode() + "]lyrics size:" + this.CfA.size();
-    AppMethodBeat.o(237786);
+    AppMethodBeat.i(221525);
+    String str = "[" + hashCode() + "]poiName:" + this.poiName + " cityName:" + this.Icv;
+    AppMethodBeat.o(221525);
     return str;
   }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/LocationItem$Companion;", "", "()V", "TAG", "", "plugin-recordvideo_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.l
  * JD-Core Version:    0.7.0.1
  */

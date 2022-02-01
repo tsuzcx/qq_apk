@@ -9,17 +9,18 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.k.a;
+import com.tencent.mm.plugin.map.a.e;
+import com.tencent.mm.plugin.q.a;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class b
   extends a
 {
-  protected float aTD = 0.0F;
-  protected float aTE = 0.0F;
+  protected com.tencent.mm.plugin.q.d EmT;
+  protected float aCa = 0.0F;
+  protected float aCb = 0.0F;
   public Activity activity;
   protected int type = 0;
-  protected com.tencent.mm.plugin.k.d yJa;
   
   public b(Activity paramActivity)
   {
@@ -42,32 +43,34 @@ public abstract class b
     return false;
   }
   
-  public final boolean edH()
+  public final boolean eNc()
   {
     return false;
   }
   
-  public abstract com.tencent.mm.plugin.k.d edI();
+  public abstract com.tencent.mm.plugin.q.d eNd();
   
-  public void edJ() {}
+  public void eNe() {}
   
-  public void edK() {}
+  public void eNf() {}
   
   public final View findViewById(int paramInt)
   {
     return this.activity.findViewById(paramInt);
   }
   
+  public abstract int getLayoutId();
+  
   public final void onBackPressed() {}
   
   public void onCreate(Bundle paramBundle)
   {
-    this.activity.setContentView(2131495937);
+    this.activity.setContentView(getLayoutId());
     this.type = this.activity.getIntent().getIntExtra("map_view_type", 0);
     Log.i("MicroMsg.MMBaseMapUI", "init oncreate type %d", new Object[] { Integer.valueOf(this.type) });
-    ((FrameLayout)findViewById(2131304494)).addView(d.gs(this.activity));
-    this.yJa = edI();
-    this.yJa.setMapViewOnTouchListener(new View.OnTouchListener()
+    ((FrameLayout)findViewById(a.e.mapview_content)).addView(d.hq(this.activity));
+    this.EmT = eNd();
+    this.EmT.setMapViewOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -81,22 +84,22 @@ public abstract class b
         {
           AppMethodBeat.o(56000);
           return false;
-          b.this.aTD = paramAnonymousMotionEvent.getX();
-          b.this.aTE = paramAnonymousMotionEvent.getY();
-          b.this.edJ();
+          b.this.aCa = paramAnonymousMotionEvent.getX();
+          b.this.aCb = paramAnonymousMotionEvent.getY();
+          b.this.eNe();
           continue;
-          if ((Math.abs(paramAnonymousMotionEvent.getX() - b.this.aTD) > 10.0F) || (Math.abs(paramAnonymousMotionEvent.getY() - b.this.aTE) > 10.0F)) {
-            b.this.edK();
+          if ((Math.abs(paramAnonymousMotionEvent.getX() - b.this.aCa) > 10.0F) || (Math.abs(paramAnonymousMotionEvent.getY() - b.this.aCb) > 10.0F)) {
+            b.this.eNf();
           }
         }
       }
     });
-    this.yJa.setMapAnchor(0.5F, 0.5F);
+    this.EmT.setMapAnchor(0.5F, 0.5F);
   }
   
   public void onDestroy()
   {
-    this.yJa.destroy();
+    this.EmT.destroy();
   }
   
   public void onPause() {}
@@ -105,7 +108,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.b
  * JD-Core Version:    0.7.0.1
  */

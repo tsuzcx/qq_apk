@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.multitalk.d.e;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.pb.common.b.a.a.a.as;
+import com.tencent.pb.common.b.a.a.a.ar;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -19,126 +19,126 @@ import kotlin.o;
 import kotlin.s;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/model/MultiTalkScreenCastManager;", "Lcom/tencent/mm/plugin/multitalk/model/IScreenCastEventHandler;", "()V", "canReceiveScreenCast", "", "dispatchToPauseEvent", "Lkotlin/Function1;", "", "", "dispatchToStartEvent", "dispatchToStopEvent", "dispatcher", "", "", "mCurrenScreenCastList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getMCurrenScreenCastList", "()Ljava/util/ArrayList;", "setMCurrenScreenCastList", "(Ljava/util/ArrayList;)V", "uiCallback", "Lcom/tencent/mm/plugin/multitalk/model/IScreenCastUiCallback;", "userStateMap", "Landroid/util/ArrayMap;", "close", "getCurrenScreenCastList", "getUserState", "wxUserName", "isCanReceiveScreenCast", "onSwitchVideoScreenSharingRsp", "rsp", "onVideoGroupMemberChange", "memberList", "", "Lcom/tencent/pb/common/network/protocol/nano/ProtocolContacts$VideoGroupMember;", "pauseScreenCast", "refreshScreenList", "registerUiCallback", "callback", "restartScreenCast", "resumeScreenCast", "startScreenCast", "stopScreenCast", "switchScreenCastState", "state", "Companion", "plugin-multitalk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/model/MultiTalkScreenCastManager;", "Lcom/tencent/mm/plugin/multitalk/model/IScreenCastEventHandler;", "()V", "canReceiveScreenCast", "", "dispatchToPauseEvent", "Lkotlin/Function1;", "", "", "dispatchToStartEvent", "dispatchToStopEvent", "dispatcher", "", "", "mCurrenScreenCastList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getMCurrenScreenCastList", "()Ljava/util/ArrayList;", "setMCurrenScreenCastList", "(Ljava/util/ArrayList;)V", "uiCallback", "Lcom/tencent/mm/plugin/multitalk/model/IScreenCastUiCallback;", "userStateMap", "Landroid/util/ArrayMap;", "close", "getCurrenScreenCastList", "getUserState", "wxUserName", "isCanReceiveScreenCast", "onSwitchVideoScreenSharingRsp", "rsp", "onVideoGroupMemberChange", "memberList", "", "Lcom/tencent/pb/common/network/protocol/nano/ProtocolContacts$VideoGroupMember;", "pauseScreenCast", "refreshScreenList", "registerUiCallback", "callback", "restartScreenCast", "resumeScreenCast", "startScreenCast", "stopScreenCast", "switchScreenCastState", "state", "Companion", "plugin-multitalk_release"})
 public final class t
   implements h
 {
-  public static final t.a zNJ;
-  private final ArrayMap<String, Integer> zKT;
-  private i zNC;
-  public final boolean zND;
-  public ArrayList<String> zNE;
-  private final b<String, x> zNF;
-  private final b<String, x> zNG;
-  private final b<String, x> zNH;
-  private final Map<Integer, b<String, x>> zNI;
+  public static final t.a Ftg;
+  private final ArrayMap<String, Integer> Fqk;
+  private i FsZ;
+  public final boolean Fta;
+  public ArrayList<String> Ftb;
+  private final b<String, x> Ftc;
+  private final b<String, x> Ftd;
+  private final b<String, x> Fte;
+  private final Map<Integer, b<String, x>> Ftf;
   
   static
   {
-    AppMethodBeat.i(239633);
-    zNJ = new t.a((byte)0);
-    AppMethodBeat.o(239633);
+    AppMethodBeat.i(196423);
+    Ftg = new t.a((byte)0);
+    AppMethodBeat.o(196423);
   }
   
   public t()
   {
-    AppMethodBeat.i(239632);
-    this.zKT = new ArrayMap();
-    e locale = e.zZc;
-    this.zND = e.eqd();
-    this.zNF = ((b)new c(this));
-    this.zNG = ((b)new b(this));
-    this.zNH = ((b)new d(this));
-    this.zNI = ae.e(new o[] { s.U(Integer.valueOf(101), this.zNF), s.U(Integer.valueOf(102), this.zNG), s.U(Integer.valueOf(103), this.zNH) });
-    AppMethodBeat.o(239632);
+    AppMethodBeat.i(196422);
+    this.Fqk = new ArrayMap();
+    e locale = e.FEP;
+    this.Fta = e.eZU();
+    this.Ftc = ((b)new c(this));
+    this.Ftd = ((b)new b(this));
+    this.Fte = ((b)new d(this));
+    this.Ftf = ae.e(new o[] { s.M(Integer.valueOf(101), this.Ftc), s.M(Integer.valueOf(102), this.Ftd), s.M(Integer.valueOf(103), this.Fte) });
+    AppMethodBeat.o(196422);
   }
   
-  public static void Rk(int paramInt)
+  public static void Xy(int paramInt)
   {
-    AppMethodBeat.i(239625);
-    if (ac.eom() != null) {
-      q.Rj(paramInt);
+    AppMethodBeat.i(196407);
+    if (ad.eYc() != null) {
+      q.Xx(paramInt);
     }
-    AppMethodBeat.o(239625);
+    AppMethodBeat.o(196407);
   }
   
-  public final void Rd(int paramInt)
+  public final void Xr(int paramInt)
   {
-    AppMethodBeat.i(239626);
+    AppMethodBeat.i(196408);
     Log.i("MicroMsg.MultiTalkScreenCastManager", String.valueOf(paramInt));
-    AppMethodBeat.o(239626);
+    AppMethodBeat.o(196408);
   }
   
   public final void a(i parami)
   {
-    if (!this.zND) {
+    if (!this.Fta) {
       return;
     }
-    this.zNC = parami;
+    this.FsZ = parami;
   }
   
-  public final int aGj(String paramString)
+  public final int aQx(String paramString)
   {
-    AppMethodBeat.i(239629);
-    p.h(paramString, "wxUserName");
-    paramString = (Integer)this.zKT.get(paramString);
+    AppMethodBeat.i(196413);
+    p.k(paramString, "wxUserName");
+    paramString = (Integer)this.Fqk.get(paramString);
     if (paramString != null)
     {
       int i = paramString.intValue();
-      AppMethodBeat.o(239629);
+      AppMethodBeat.o(196413);
       return i;
     }
-    AppMethodBeat.o(239629);
+    AppMethodBeat.o(196413);
     return 100;
   }
   
-  public final void aGk(String paramString)
+  public final void aQy(String paramString)
   {
-    AppMethodBeat.i(239630);
-    i locali = this.zNC;
+    AppMethodBeat.i(196415);
+    i locali = this.FsZ;
     if (locali != null)
     {
-      locali.aFD(paramString);
-      AppMethodBeat.o(239630);
+      locali.aPP(paramString);
+      AppMethodBeat.o(196415);
       return;
     }
-    AppMethodBeat.o(239630);
+    AppMethodBeat.o(196415);
   }
   
   public final void close()
   {
-    AppMethodBeat.i(239631);
-    this.zKT.clear();
-    this.zNC = null;
-    ArrayList localArrayList = this.zNE;
+    AppMethodBeat.i(196417);
+    this.Fqk.clear();
+    this.FsZ = null;
+    ArrayList localArrayList = this.Ftb;
     if (localArrayList != null) {
       localArrayList.clear();
     }
-    this.zNE = null;
-    AppMethodBeat.o(239631);
+    this.Ftb = null;
+    AppMethodBeat.o(196417);
   }
   
-  public final ArrayList<String> enV()
+  public final ArrayList<String> eXL()
   {
-    AppMethodBeat.i(239628);
-    if (this.zNE != null)
+    AppMethodBeat.i(196412);
+    if (this.Ftb != null)
     {
-      localArrayList = this.zNE;
-      AppMethodBeat.o(239628);
+      localArrayList = this.Ftb;
+      AppMethodBeat.o(196412);
       return localArrayList;
     }
     ArrayList localArrayList = new ArrayList();
-    AppMethodBeat.o(239628);
+    AppMethodBeat.o(196412);
     return localArrayList;
   }
   
-  public final void fz(List<a.as> paramList)
+  public final void gb(List<a.ar> paramList)
   {
-    AppMethodBeat.i(239627);
-    p.h(paramList, "memberList");
-    if (!this.zND)
+    AppMethodBeat.i(196411);
+    p.k(paramList, "memberList");
+    if (!this.Fta)
     {
-      AppMethodBeat.o(239627);
+      AppMethodBeat.o(196411);
       return;
     }
     ArrayList localArrayList = new ArrayList();
@@ -150,30 +150,30 @@ public final class t
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = ((Iterator)localObject1).next();
-      if ((p.j(((a.as)localObject2).dLN, z.aTY()) ^ true)) {
+      if ((p.h(((a.ar)localObject2).fEC, z.bcZ()) ^ true)) {
         paramList.add(localObject2);
       }
     }
     paramList = ((Iterable)paramList).iterator();
     while (paramList.hasNext())
     {
-      localObject1 = (a.as)paramList.next();
-      localObject2 = (b)this.zNI.get(Integer.valueOf(((a.as)localObject1).RFm));
+      localObject1 = (a.ar)paramList.next();
+      localObject2 = (b)this.Ftf.get(Integer.valueOf(((a.ar)localObject1).ZgR));
       if (localObject2 != null)
       {
-        String str = ((a.as)localObject1).dLN;
-        p.g(str, "it.wxUserName");
+        String str = ((a.ar)localObject1).fEC;
+        p.j(str, "it.wxUserName");
         ((b)localObject2).invoke(str);
       }
-      if ((((a.as)localObject1).RFm == 101) || (((a.as)localObject1).RFm == 102)) {
-        localArrayList.add(((a.as)localObject1).dLN);
+      if ((((a.ar)localObject1).ZgR == 101) || (((a.ar)localObject1).ZgR == 102)) {
+        localArrayList.add(((a.ar)localObject1).fEC);
       }
     }
-    this.zNE = localArrayList;
-    AppMethodBeat.o(239627);
+    this.Ftb = localArrayList;
+    AppMethodBeat.o(196411);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "wxUserName", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "wxUserName", "", "invoke"})
   static final class b
     extends kotlin.g.b.q
     implements b<String, x>
@@ -184,7 +184,7 @@ public final class t
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "wxUserName", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "wxUserName", "", "invoke"})
   static final class c
     extends kotlin.g.b.q
     implements b<String, x>
@@ -195,7 +195,7 @@ public final class t
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "wxUserName", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "wxUserName", "", "invoke"})
   static final class d
     extends kotlin.g.b.q
     implements b<String, x>
@@ -208,7 +208,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.t
  * JD-Core Version:    0.7.0.1
  */

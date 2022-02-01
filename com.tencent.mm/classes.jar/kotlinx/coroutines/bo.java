@@ -1,48 +1,130 @@
 package kotlinx.coroutines;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
+import kotlin.d.f;
+import kotlin.g.a.b;
 import kotlin.l;
+import kotlin.x;
+import kotlinx.coroutines.internal.d;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/InactiveNodeList;", "Lkotlinx/coroutines/Incomplete;", "list", "Lkotlinx/coroutines/NodeList;", "(Lkotlinx/coroutines/NodeList;)V", "isActive", "", "()Z", "getList", "()Lkotlinx/coroutines/NodeList;", "toString", "", "kotlinx-coroutines-core"})
-public final class bo
-  implements bp
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/ExecutorCoroutineDispatcherBase;", "Lkotlinx/coroutines/ExecutorCoroutineDispatcher;", "Lkotlinx/coroutines/Delay;", "()V", "removesFutureOnCancellation", "", "close", "", "dispatch", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "equals", "other", "", "hashCode", "", "initFutureCancellation", "initFutureCancellation$kotlinx_coroutines_core", "invokeOnTimeout", "Lkotlinx/coroutines/DisposableHandle;", "timeMillis", "", "scheduleBlock", "Ljava/util/concurrent/ScheduledFuture;", "time", "unit", "Ljava/util/concurrent/TimeUnit;", "scheduleResumeAfterDelay", "continuation", "Lkotlinx/coroutines/CancellableContinuation;", "toString", "", "kotlinx-coroutines-core"})
+public abstract class bo
+  extends bn
+  implements av
 {
-  final cf TUL;
+  private boolean abxn;
   
-  public bo(cf paramcf)
+  private final ScheduledFuture<?> a(Runnable paramRunnable, long paramLong, TimeUnit paramTimeUnit)
   {
-    AppMethodBeat.i(118136);
-    this.TUL = paramcf;
-    AppMethodBeat.o(118136);
-  }
-  
-  public final cf hMX()
-  {
-    return this.TUL;
-  }
-  
-  public final boolean isActive()
-  {
-    return false;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(118135);
-    if (an.getDEBUG())
+    try
     {
-      str = this.TUL.getString("New");
-      AppMethodBeat.o(118135);
-      return str;
+      Executor localExecutor = getExecutor();
+      Object localObject = localExecutor;
+      if (!(localExecutor instanceof ScheduledExecutorService)) {
+        localObject = null;
+      }
+      localObject = (ScheduledExecutorService)localObject;
+      if (localObject != null)
+      {
+        paramRunnable = ((ScheduledExecutorService)localObject).schedule(paramRunnable, paramLong, paramTimeUnit);
+        return paramRunnable;
+      }
+      return null;
     }
-    String str = super.toString();
-    AppMethodBeat.o(118135);
-    return str;
+    catch (RejectedExecutionException paramRunnable) {}
+    return null;
+  }
+  
+  public final void a(long paramLong, m<? super x> paramm)
+  {
+    if (this.abxn) {}
+    for (ScheduledFuture localScheduledFuture = a((Runnable)new cq((af)this, paramm), paramLong, TimeUnit.MILLISECONDS); localScheduledFuture != null; localScheduledFuture = null)
+    {
+      paramm.am((b)new j((Future)localScheduledFuture));
+      return;
+    }
+    ar.abwJ.a(paramLong, paramm);
+  }
+  
+  public final void a(f paramf, Runnable paramRunnable)
+  {
+    for (;;)
+    {
+      try
+      {
+        Executor localExecutor = getExecutor();
+        paramf = cx.abxP;
+        if (paramf != null)
+        {
+          Runnable localRunnable = paramf.iSa();
+          paramf = localRunnable;
+          if (localRunnable != null)
+          {
+            localExecutor.execute(paramf);
+            return;
+          }
+        }
+      }
+      catch (RejectedExecutionException paramf)
+      {
+        ar.abwJ.bl(paramRunnable);
+        return;
+      }
+      paramf = paramRunnable;
+    }
+  }
+  
+  public void close()
+  {
+    Executor localExecutor = getExecutor();
+    Object localObject = localExecutor;
+    if (!(localExecutor instanceof ExecutorService)) {
+      localObject = null;
+    }
+    localObject = (ExecutorService)localObject;
+    if (localObject != null) {
+      ((ExecutorService)localObject).shutdown();
+    }
+  }
+  
+  public final be d(long paramLong, Runnable paramRunnable)
+  {
+    if (this.abxn) {}
+    for (ScheduledFuture localScheduledFuture = a(paramRunnable, paramLong, TimeUnit.MILLISECONDS); localScheduledFuture != null; localScheduledFuture = null) {
+      return (be)new bd((Future)localScheduledFuture);
+    }
+    return ar.abwJ.d(paramLong, paramRunnable);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return ((paramObject instanceof bo)) && (((bo)paramObject).getExecutor() == getExecutor());
+  }
+  
+  public int hashCode()
+  {
+    return System.identityHashCode(getExecutor());
+  }
+  
+  public final void iRE()
+  {
+    this.abxn = d.b(getExecutor());
+  }
+  
+  public String toString()
+  {
+    return getExecutor().toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     kotlinx.coroutines.bo
  * JD-Core Version:    0.7.0.1
  */

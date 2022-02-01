@@ -1,122 +1,113 @@
 package com.tencent.mm.plugin.appbrand.luggage.b;
 
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-import android.text.TextUtils;
-import com.tencent.luggage.bridge.impl.a.c;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelappbrand.a.b;
-import com.tencent.mm.modelappbrand.a.b.a;
-import com.tencent.mm.modelappbrand.a.b.e;
-import com.tencent.mm.modelappbrand.a.b.k;
-import com.tencent.mm.modelappbrand.a.b.q;
-import com.tencent.mm.plugin.appbrand.f.a.b;
-import com.tencent.mm.plugin.appbrand.f.a.c;
-import com.tencent.mm.sdk.platformtools.MMHandler;
-import java.io.InputStream;
+import com.tencent.mm.ipcinvoker.wx_extension.a.a;
+import com.tencent.mm.ipcinvoker.wx_extension.a.a.a;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.l.a.f;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.c;
+import com.tencent.mm.ui.ar;
 import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class m
-  extends c
+  extends com.tencent.luggage.h.a.b
 {
-  public final void a(String paramString, Map<String, String> paramMap, final a.c paramc)
+  public static Integer qaC;
+  
+  private static int getMapType()
   {
-    AppMethodBeat.i(219350);
-    b localb = b.aXY();
-    paramc = new android.arch.a.c.a() {};
-    if (TextUtils.isEmpty(paramString))
+    AppMethodBeat.i(47493);
+    if (qaC != null)
     {
-      paramc.apply(null);
-      AppMethodBeat.o(219350);
-      return;
+      i = qaC.intValue();
+      AppMethodBeat.o(47493);
+      return i;
     }
-    b.q localq = new b.q(paramString, (byte)0);
-    localb.iIK.iJf.post(new b.a(localb, localb, localq, paramc, paramString, paramMap));
-    AppMethodBeat.o(219350);
+    Object localObject = a.a.jZD;
+    localObject = a.Mu("100487");
+    if ((localObject == null) || (!((c)localObject).isValid()))
+    {
+      Log.i("MicroMsg.WxaMapViewFactory", "[sMapType] item is null");
+      AppMethodBeat.o(47493);
+      return 1;
+    }
+    qaC = Integer.valueOf(Util.getInt((String)((c)localObject).hvz().get("MapType"), 1));
+    Log.i("MicroMsg.WxaMapViewFactory", "sMapType:%d", new Object[] { qaC });
+    int i = qaC.intValue();
+    AppMethodBeat.o(47493);
+    return i;
   }
   
-  public final Bitmap b(String paramString, Rect paramRect, final a.b paramb)
+  public final com.tencent.mm.plugin.appbrand.jsapi.l.a.b a(Context paramContext, String paramString, Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(219349);
-    if (!match(paramString))
+    int i = 0;
+    AppMethodBeat.i(47495);
+    if (paramContext == null)
     {
-      AppMethodBeat.o(219349);
+      AppMethodBeat.o(47495);
       return null;
     }
-    if (paramRect != null) {}
-    for (paramRect = new com.tencent.mm.plugin.appbrand.luggage.a.a(paramRect.left, paramRect.top, paramRect.width(), paramRect.height());; paramRect = null)
+    int k = f.a(paramMap, "mapType", getMapType());
+    int j = f.a(paramMap, "enableDarkMode", 0);
+    if (!ar.isDarkMode()) {}
+    for (;;)
     {
-      Bitmap localBitmap = b.aXY().a(paramString, paramRect);
-      if (localBitmap == null) {
-        b.aXY().a(new b.k()
-        {
-          public final void I(Bitmap paramAnonymousBitmap)
-          {
-            AppMethodBeat.i(219344);
-            if (paramb == null)
-            {
-              AppMethodBeat.o(219344);
-              return;
-            }
-            if ((paramAnonymousBitmap == null) || (paramAnonymousBitmap.isRecycled()))
-            {
-              paramb.Q(null);
-              AppMethodBeat.o(219344);
-              return;
-            }
-            paramb.Q(paramAnonymousBitmap);
-            AppMethodBeat.o(219344);
-          }
-          
-          public final String Lb()
-          {
-            AppMethodBeat.i(219346);
-            String str = "WxaIcon" + hashCode();
-            AppMethodBeat.o(219346);
-            return str;
-          }
-          
-          public final void aYg() {}
-          
-          public final void oD()
-          {
-            AppMethodBeat.i(219345);
-            if (paramb == null)
-            {
-              AppMethodBeat.o(219345);
-              return;
-            }
-            paramb.Q(null);
-            AppMethodBeat.o(219345);
-          }
-        }, paramString, null, paramRect);
+      paramMap.put("enableDarkMode", Integer.valueOf(i));
+      if (k == 2)
+      {
+        paramContext = new com.tencent.mm.plugin.appbrand.jsapi.ai.d.b(paramContext, paramString, paramMap);
+        AppMethodBeat.o(47495);
+        return paramContext;
       }
-      AppMethodBeat.o(219349);
-      return localBitmap;
+      paramContext = super.a(paramContext, paramString, paramMap);
+      AppMethodBeat.o(47495);
+      return paramContext;
+      i = j;
     }
   }
   
-  public final boolean match(String paramString)
+  public final com.tencent.mm.plugin.appbrand.jsapi.l.a.b b(e parame, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(219348);
-    if ((paramString == null) || (paramString.length() == 0))
+    AppMethodBeat.i(47494);
+    if (paramJSONObject != null) {}
+    for (;;)
     {
-      AppMethodBeat.o(219348);
-      return false;
+      try
+      {
+        paramJSONObject.put("mapType", getMapType());
+        bool = paramJSONObject.optBoolean("enableDarkMode", false);
+        if (ar.isDarkMode()) {
+          continue;
+        }
+        bool = false;
+      }
+      catch (JSONException localJSONException)
+      {
+        boolean bool;
+        Log.printInfoStack("MicroMsg.WxaMapViewFactory", "", new Object[] { localJSONException });
+        continue;
+        if (!bool) {
+          continue;
+        }
+        int i = 1;
+        continue;
+      }
+      paramJSONObject.put("enableDarkMode", i);
+      parame = super.b(parame, paramJSONObject);
+      AppMethodBeat.o(47494);
+      return parame;
+      i = 0;
     }
-    paramString = paramString.toLowerCase();
-    if ((paramString.startsWith("http://")) || (paramString.startsWith("https://")))
-    {
-      AppMethodBeat.o(219348);
-      return true;
-    }
-    AppMethodBeat.o(219348);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.m
  * JD-Core Version:    0.7.0.1
  */

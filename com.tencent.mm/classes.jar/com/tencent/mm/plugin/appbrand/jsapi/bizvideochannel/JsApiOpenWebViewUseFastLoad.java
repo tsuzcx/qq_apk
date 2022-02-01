@@ -4,48 +4,48 @@ import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import com.tencent.mm.plugin.brandservice.a.b;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.HashMap;
+import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiOpenWebViewUseFastLoad;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "callback", "", "env", "callbackId", "", "resultJson", "", "invoke", "data", "Lorg/json/JSONObject;", "Companion", "OpenWebViewUseFastLoad", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiOpenWebViewUseFastLoad;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "callback", "", "env", "callbackId", "", "resultJson", "", "invoke", "data", "Lorg/json/JSONObject;", "Companion", "OpenWebViewUseFastLoad", "plugin-appbrand-integration_release"})
 public final class JsApiOpenWebViewUseFastLoad
-  extends d<f>
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<e>
 {
   private static final int CTRL_INDEX = 764;
   private static final String NAME = "openWebViewUseFastLoad";
-  public static final a lKI;
+  public static final a oGV;
   
   static
   {
     AppMethodBeat.i(175164);
-    lKI = new a((byte)0);
+    oGV = new a((byte)0);
     NAME = "openWebViewUseFastLoad";
     CTRL_INDEX = 764;
     AppMethodBeat.o(175164);
   }
   
-  private static void a(f paramf, int paramInt, String paramString)
+  private static void a(e parame, int paramInt, String paramString)
   {
     AppMethodBeat.i(175163);
-    if (paramf != null)
+    if (parame != null)
     {
-      paramf.i(paramInt, paramString);
+      parame.j(paramInt, paramString);
       AppMethodBeat.o(175163);
       return;
     }
     AppMethodBeat.o(175163);
   }
   
-  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
+  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
   {
     Object localObject2 = null;
     AppMethodBeat.i(175162);
@@ -53,72 +53,72 @@ public final class JsApiOpenWebViewUseFastLoad
     for (Object localObject1 = paramJSONObject.toString();; localObject1 = null)
     {
       Log.d("MicroMsg.JsApiOpenWebViewUseFastLoad", "alvinluo openWebViewUseFastLoad data: %s", new Object[] { localObject1 });
-      if (((b)g.af(b.class)).CR(5)) {
+      if (((com.tencent.mm.plugin.brandservice.a.c)h.ae(com.tencent.mm.plugin.brandservice.a.c.class)).Gw(5)) {
         break;
       }
       Log.e("MicroMsg.JsApiOpenWebViewUseFastLoad", "alvinluo openWebViewUseFastLoad abtest closed");
-      paramJSONObject = Zf("fail: abtest closed");
-      kotlin.g.b.p.g(paramJSONObject, "makeReturnJson(\"fail: abtest closed\")");
-      a(paramf, paramInt, paramJSONObject);
+      paramJSONObject = agS("fail: abtest closed");
+      p.j(paramJSONObject, "makeReturnJson(\"fail: abtest closed\")");
+      a(parame, paramInt, paramJSONObject);
       AppMethodBeat.o(175162);
       return;
     }
     if (paramJSONObject == null)
     {
-      paramJSONObject = Zf("fail: invalid param");
-      kotlin.g.b.p.g(paramJSONObject, "makeReturnJson(\"fail: invalid param\")");
-      a(paramf, paramInt, paramJSONObject);
+      paramJSONObject = agS("fail: invalid param");
+      p.j(paramJSONObject, "makeReturnJson(\"fail: invalid param\")");
+      a(parame, paramInt, paramJSONObject);
       AppMethodBeat.o(175162);
       return;
     }
     if (!paramJSONObject.has("url"))
     {
-      paramJSONObject = Zf("fail: invalid url");
-      kotlin.g.b.p.g(paramJSONObject, "makeReturnJson(\"fail: invalid url\")");
-      a(paramf, paramInt, paramJSONObject);
+      paramJSONObject = agS("fail: invalid url");
+      p.j(paramJSONObject, "makeReturnJson(\"fail: invalid url\")");
+      a(parame, paramInt, paramJSONObject);
       AppMethodBeat.o(175162);
       return;
     }
     if (!paramJSONObject.has("item_show_type"))
     {
-      paramJSONObject = Zf("fail: invalid item_show_type");
-      kotlin.g.b.p.g(paramJSONObject, "makeReturnJson(\"fail: invalid item_show_type\")");
-      a(paramf, paramInt, paramJSONObject);
+      paramJSONObject = agS("fail: invalid item_show_type");
+      p.j(paramJSONObject, "makeReturnJson(\"fail: invalid item_show_type\")");
+      a(parame, paramInt, paramJSONObject);
       AppMethodBeat.o(175162);
       return;
     }
     if (!paramJSONObject.has("scene"))
     {
-      paramJSONObject = Zf("fail: invalid scene");
-      kotlin.g.b.p.g(paramJSONObject, "makeReturnJson(\"fail: invalid scene\")");
-      a(paramf, paramInt, paramJSONObject);
+      paramJSONObject = agS("fail: invalid scene");
+      p.j(paramJSONObject, "makeReturnJson(\"fail: invalid scene\")");
+      a(parame, paramInt, paramJSONObject);
       AppMethodBeat.o(175162);
       return;
     }
     if (!paramJSONObject.has("openType"))
     {
-      paramJSONObject = Zf("fail: invalid openType");
-      kotlin.g.b.p.g(paramJSONObject, "makeReturnJson(\"fail: invalid openType\")");
-      a(paramf, paramInt, paramJSONObject);
+      paramJSONObject = agS("fail: invalid openType");
+      p.j(paramJSONObject, "makeReturnJson(\"fail: invalid openType\")");
+      a(parame, paramInt, paramJSONObject);
       AppMethodBeat.o(175162);
       return;
     }
     HashMap localHashMap = new HashMap();
-    b localb = (b)g.af(b.class);
+    com.tencent.mm.plugin.brandservice.a.c localc = (com.tencent.mm.plugin.brandservice.a.c)h.ae(com.tencent.mm.plugin.brandservice.a.c.class);
     localObject1 = localObject2;
-    if (paramf != null) {
-      localObject1 = paramf.getContext();
+    if (parame != null) {
+      localObject1 = parame.getContext();
     }
-    localb.a((Context)localObject1, paramJSONObject, localHashMap);
-    boolean bool = kotlin.g.b.p.j(localHashMap.get("success"), Boolean.TRUE);
+    localc.a((Context)localObject1, paramJSONObject, localHashMap);
+    boolean bool = p.h(localHashMap.get("success"), Boolean.TRUE);
     paramJSONObject = localHashMap.get("desc");
     if (paramJSONObject != null)
     {
       if (paramJSONObject == null)
       {
-        paramf = new t("null cannot be cast to non-null type kotlin.String");
+        parame = new t("null cannot be cast to non-null type kotlin.String");
         AppMethodBeat.o(175162);
-        throw paramf;
+        throw parame;
       }
       localObject1 = (String)paramJSONObject;
       paramJSONObject = (JSONObject)localObject1;
@@ -131,29 +131,29 @@ public final class JsApiOpenWebViewUseFastLoad
     if (bool)
     {
       Log.i("MicroMsg.JsApiOpenWebViewUseFastLoad", "alvinluo openWebViewUseFastLoad success");
-      paramJSONObject = Zf("ok");
-      kotlin.g.b.p.g(paramJSONObject, "makeReturnJson(\"ok\")");
-      a(paramf, paramInt, paramJSONObject);
+      paramJSONObject = agS("ok");
+      p.j(paramJSONObject, "makeReturnJson(\"ok\")");
+      a(parame, paramInt, paramJSONObject);
       AppMethodBeat.o(175162);
       return;
     }
     Log.e("MicroMsg.JsApiOpenWebViewUseFastLoad", "alvinluo openWebViewUseFastLoad failed %s", new Object[] { paramJSONObject });
-    paramJSONObject = Zf("fail: ".concat(String.valueOf(paramJSONObject)));
-    kotlin.g.b.p.g(paramJSONObject, "makeReturnJson(\"fail: $errMsg\")");
-    a(paramf, paramInt, paramJSONObject);
+    paramJSONObject = agS("fail: ".concat(String.valueOf(paramJSONObject)));
+    p.j(paramJSONObject, "makeReturnJson(\"fail: $errMsg\")");
+    a(parame, paramInt, paramJSONObject);
     AppMethodBeat.o(175162);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiOpenWebViewUseFastLoad$OpenWebViewUseFastLoad;", "Lcom/tencent/mm/plugin/appbrand/ipc/MainProcessTask;", "()V", "api", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;", "service", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "callbackId", "", "data", "Lorg/json/JSONObject;", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;ILorg/json/JSONObject;)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "errMsg", "", "jsapi", "success", "", "describeContents", "parseFromParcel", "", "src", "runInClientProcess", "runInMainProcess", "writeToParcel", "flags", "CREATOR", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiOpenWebViewUseFastLoad$OpenWebViewUseFastLoad;", "Lcom/tencent/mm/plugin/appbrand/ipc/MainProcessTask;", "()V", "api", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;", "service", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "callbackId", "", "data", "Lorg/json/JSONObject;", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;ILorg/json/JSONObject;)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "errMsg", "", "jsapi", "success", "", "describeContents", "parseFromParcel", "", "src", "runInClientProcess", "runInMainProcess", "writeToParcel", "flags", "CREATOR", "plugin-appbrand-integration_release"})
   static final class OpenWebViewUseFastLoad
     extends MainProcessTask
   {
     public static final a CREATOR;
     private String errMsg = "";
-    private f lAx;
-    private com.tencent.mm.plugin.appbrand.jsapi.p lKG;
-    private JSONObject lnV;
-    private int lqe;
+    private o oGT;
+    private JSONObject oiG;
+    private int okO;
+    private e ovO;
     private boolean success;
     
     static
@@ -173,21 +173,21 @@ public final class JsApiOpenWebViewUseFastLoad
       AppMethodBeat.o(175160);
     }
     
-    public final void bjj()
+    public final void RW()
     {
       AppMethodBeat.i(175156);
-      if (!((b)g.af(b.class)).CR(5))
+      if (!((com.tencent.mm.plugin.brandservice.a.c)h.ae(com.tencent.mm.plugin.brandservice.a.c.class)).Gw(5))
       {
         Log.e("MicroMsg.JsApiOpenWebViewUseFastLoad", "alvinluo openWebViewUseFastLoad abtest closed");
         this.success = false;
         this.errMsg = "abtest closed";
-        bDU();
+        bPt();
         AppMethodBeat.o(175156);
         return;
       }
       Object localObject = new HashMap();
-      ((b)g.af(b.class)).a(MMApplicationContext.getContext(), this.lnV, (HashMap)localObject);
-      this.success = kotlin.g.b.p.j(((HashMap)localObject).get("success"), Boolean.TRUE);
+      ((com.tencent.mm.plugin.brandservice.a.c)h.ae(com.tencent.mm.plugin.brandservice.a.c.class)).a(MMApplicationContext.getContext(), this.oiG, (HashMap)localObject);
+      this.success = p.h(((HashMap)localObject).get("success"), Boolean.TRUE);
       localObject = ((HashMap)localObject).get("desc");
       if (localObject != null)
       {
@@ -207,32 +207,32 @@ public final class JsApiOpenWebViewUseFastLoad
       for (;;)
       {
         this.errMsg = ((String)localObject);
-        bDU();
+        bPt();
         AppMethodBeat.o(175156);
         return;
       }
     }
     
-    public final void bjk()
+    public final void bsK()
     {
-      f localf = null;
+      e locale = null;
       Object localObject1 = null;
       AppMethodBeat.i(175157);
-      super.bjk();
-      bDK();
+      super.bsK();
+      bPk();
       int i;
       if (this.success)
       {
         Log.i("MicroMsg.JsApiOpenWebViewUseFastLoad", "alvinluo openWebViewUseFastLoad success");
-        localf = this.lAx;
-        if (localf != null)
+        locale = this.ovO;
+        if (locale != null)
         {
-          i = this.lqe;
-          localObject2 = this.lKG;
+          i = this.okO;
+          localObject2 = this.oGT;
           if (localObject2 != null) {
-            localObject1 = ((com.tencent.mm.plugin.appbrand.jsapi.p)localObject2).Zf("ok");
+            localObject1 = ((o)localObject2).agS("ok");
           }
-          localf.i(i, (String)localObject1);
+          locale.j(i, (String)localObject1);
           AppMethodBeat.o(175157);
           return;
         }
@@ -240,16 +240,16 @@ public final class JsApiOpenWebViewUseFastLoad
         return;
       }
       Log.e("MicroMsg.JsApiOpenWebViewUseFastLoad", "alvinluo openWebViewUseFastLoad failed %s", new Object[] { this.errMsg });
-      Object localObject2 = this.lAx;
+      Object localObject2 = this.ovO;
       if (localObject2 != null)
       {
-        i = this.lqe;
-        com.tencent.mm.plugin.appbrand.jsapi.p localp = this.lKG;
-        localObject1 = localf;
-        if (localp != null) {
-          localObject1 = localp.Zf("failed: " + this.errMsg);
+        i = this.okO;
+        o localo = this.oGT;
+        localObject1 = locale;
+        if (localo != null) {
+          localObject1 = localo.agS("failed: " + this.errMsg);
         }
-        ((f)localObject2).i(i, (String)localObject1);
+        ((e)localObject2).j(i, (String)localObject1);
         AppMethodBeat.o(175157);
         return;
       }
@@ -276,8 +276,8 @@ public final class JsApiOpenWebViewUseFastLoad
       {
         str1 = "";
       }
-      kotlin.g.b.p.g(str1, "src?.readString() ?: \"\"");
-      this.lnV = new JSONObject(str1);
+      p.j(str1, "src?.readString() ?: \"\"");
+      this.oiG = new JSONObject(str1);
       if ((paramParcel != null) && (paramParcel.readInt() == 1)) {}
       for (boolean bool = true;; bool = false)
       {
@@ -301,9 +301,9 @@ public final class JsApiOpenWebViewUseFastLoad
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(175159);
-      kotlin.g.b.p.h(paramParcel, "parcel");
+      p.k(paramParcel, "parcel");
       super.writeToParcel(paramParcel, paramInt);
-      Object localObject = this.lnV;
+      Object localObject = this.oiG;
       if (localObject != null)
       {
         String str = ((JSONObject)localObject).toString();
@@ -325,13 +325,13 @@ public final class JsApiOpenWebViewUseFastLoad
       }
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiOpenWebViewUseFastLoad$OpenWebViewUseFastLoad$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiOpenWebViewUseFastLoad$OpenWebViewUseFastLoad;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiOpenWebViewUseFastLoad$OpenWebViewUseFastLoad;", "plugin-appbrand-integration_release"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiOpenWebViewUseFastLoad$OpenWebViewUseFastLoad$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiOpenWebViewUseFastLoad$OpenWebViewUseFastLoad;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiOpenWebViewUseFastLoad$OpenWebViewUseFastLoad;", "plugin-appbrand-integration_release"})
     public static final class a
       implements Parcelable.Creator<JsApiOpenWebViewUseFastLoad.OpenWebViewUseFastLoad>
     {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiOpenWebViewUseFastLoad$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/bizvideochannel/JsApiOpenWebViewUseFastLoad$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
   public static final class a {}
 }
 

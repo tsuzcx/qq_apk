@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.expt.h;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.br;
-import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.f.c.br;
+import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MD5Util;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -106,7 +106,7 @@ public final class c
         label113:
         Log.e("MicroMsg.ExptItem", "data length more 1M don't parse, reset value. key[%s]", new Object[] { str2 });
         paramJSONObject = "";
-        e.Cxv.idkeyStat(863L, 16L, 1L, false);
+        f.Iyx.idkeyStat(863L, 16L, 1L, false);
       }
     }
     catch (Error paramJSONObject)
@@ -125,7 +125,7 @@ public final class c
     }
   }
   
-  private static String arj(String paramString)
+  private static String azk(String paramString)
   {
     AppMethodBeat.i(156045);
     String str1 = "";
@@ -145,8 +145,8 @@ public final class c
       }
       else if (paramString.charAt(i + 1) != '^')
       {
-        int k = dq(paramString.substring(i + 1, i + 3), 2);
-        int j = dq(paramString.charAt(i + 3), 1) + 5;
+        int k = dL(paramString.substring(i + 1, i + 3), 2);
+        int j = dL(paramString.charAt(i + 3), 1) + 5;
         k = str1.length() - k - j;
         String str2 = str1.substring(k, j + k);
         str1 = str1 + str2;
@@ -162,7 +162,7 @@ public final class c
     return str1;
   }
   
-  private static int dq(String paramString, int paramInt)
+  private static int dL(String paramString, int paramInt)
   {
     AppMethodBeat.i(156046);
     int j = 0;
@@ -191,7 +191,7 @@ public final class c
     return k;
   }
   
-  public final boolean TN(String paramString)
+  public final boolean abx(String paramString)
   {
     AppMethodBeat.i(156037);
     if (Util.isNullOrNil(paramString))
@@ -211,7 +211,7 @@ public final class c
       this.field_endTime = localJSONObject.optLong("EndTime");
       this.field_exptType = localJSONObject.optInt("ExptType");
       this.field_exptCheckSum = localJSONObject.optString("ExptCheckSum");
-      cRH();
+      dgD();
       if ((this.cache != null) && (this.cache.containsKey("jsoncfg_param_" + this.field_exptId + "_subtype"))) {}
       for (this.field_subType = Util.getInt((String)this.cache.get("jsoncfg_param_" + this.field_exptId + "_subtype"), 0);; this.field_subType = 0)
       {
@@ -223,14 +223,14 @@ public final class c
     }
     catch (Exception localException)
     {
-      e.Cxv.idkeyStat(863L, 5L, 1L, false);
+      f.Iyx.idkeyStat(863L, 5L, 1L, false);
       Log.e("MicroMsg.ExptItem", "%d convertFrom [%s] error [%s]", new Object[] { Integer.valueOf(hashCode()), paramString, localException.toString() });
       AppMethodBeat.o(156037);
     }
   }
   
   /* Error */
-  public final HashMap<String, String> cRH()
+  public final HashMap<String, String> dgD()
   {
     // Byte code:
     //   0: ldc_w 336
@@ -353,59 +353,59 @@ public final class c
     //   136	151	189	java/lang/Exception
   }
   
-  public final boolean cRM()
+  public final boolean dgL()
   {
     return this.field_exptType == 10;
   }
   
-  public final boolean cRN()
+  public final boolean dgM()
   {
     return this.field_subType == 1;
   }
   
-  public final boolean cRO()
+  public final boolean dgN()
   {
     return this.field_subType == 2;
   }
   
-  public final boolean cRP()
+  public final boolean dgO()
   {
     return this.field_subType == 3;
   }
   
-  public final boolean cRQ()
+  public final boolean dgP()
   {
     return this.field_subType == 4;
   }
   
-  public final boolean cRR()
+  public final boolean dgQ()
   {
     return this.field_subType == 5;
   }
   
-  public final boolean cRS()
+  public final boolean dgR()
   {
     return this.field_subType == 6;
   }
   
-  public final boolean cRT()
+  public final boolean dgS()
   {
-    AppMethodBeat.i(215268);
-    if ((cRN()) || (cRO()) || (cRP()) || (cRQ()) || (cRR()) || (cRS()))
+    AppMethodBeat.i(263103);
+    if ((dgM()) || (dgN()) || (dgO()) || (dgP()) || (dgQ()) || (dgR()))
     {
-      AppMethodBeat.o(215268);
+      AppMethodBeat.o(263103);
       return true;
     }
-    AppMethodBeat.o(215268);
+    AppMethodBeat.o(263103);
     return false;
   }
   
-  public final boolean cRU()
+  public final boolean dgT()
   {
     return this.field_exptType == 2;
   }
   
-  public final boolean cRV()
+  public final boolean dgU()
   {
     AppMethodBeat.i(156040);
     if ((this.cache == null) || (this.cache.size() <= 0))
@@ -422,7 +422,7 @@ public final class c
     return false;
   }
   
-  public final long cRW()
+  public final long dgV()
   {
     AppMethodBeat.i(156041);
     if ((this.cache == null) || (this.cache.size() <= 0))
@@ -435,16 +435,16 @@ public final class c
     return l;
   }
   
-  public final String cRX()
+  public final String dgW()
   {
     AppMethodBeat.i(156042);
-    if (!cRT())
+    if (!dgS())
     {
       AppMethodBeat.o(156042);
       return "";
     }
     if ((this.cache == null) || (this.cache.size() <= 0)) {
-      cRH();
+      dgD();
     }
     Object localObject2 = this.cache;
     if ((localObject2 == null) || (((HashMap)localObject2).size() <= 0))
@@ -474,7 +474,7 @@ public final class c
         if (Util.getInt((String)((HashMap)localObject2).get(str3 + "decompress"), 0) <= 0) {
           continue;
         }
-        localObject1 = arj(str2);
+        localObject1 = azk(str2);
         String str4 = MD5Util.getMD5String((String)localObject1);
         localObject2 = (String)((HashMap)localObject2).get(str3 + "md5");
         if (str4 == null) {
@@ -493,7 +493,7 @@ public final class c
       }
       AppMethodBeat.o(156042);
       return localObject1;
-      e.Cxv.idkeyStat(863L, 12L, 1L, false);
+      f.Iyx.idkeyStat(863L, 12L, 1L, false);
       Log.e("MicroMsg.ExptItem", "to session config but md5 not right deJson[%s] json[%s]", new Object[] { localObject1, str2 });
       localObject1 = "";
       continue;
@@ -544,7 +544,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.h.c
  * JD-Core Version:    0.7.0.1
  */

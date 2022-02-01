@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sns.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gl;
+import com.tencent.mm.f.c.gs;
 import com.tencent.mm.plugin.sns.model.aj;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
@@ -10,7 +10,7 @@ import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class o
-  extends gl
+  extends gs
 {
   protected static IAutoDBItem.MAutoDBInfo info;
   public int localid;
@@ -62,7 +62,7 @@ public final class o
       String str = paramCursor.getMessage();
       Log.e("MicroMsg.SnsKvReport", "error ".concat(String.valueOf(str)));
       if ((str != null) && (str.contains("Unable to convert"))) {
-        aj.faT().eIQ();
+        aj.fON().fuU();
       }
       try
       {
@@ -84,7 +84,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.o
  * JD-Core Version:    0.7.0.1
  */

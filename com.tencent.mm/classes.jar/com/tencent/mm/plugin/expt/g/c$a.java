@@ -2,11 +2,10 @@ package com.tencent.mm.plugin.expt.g;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 
 class c$a
-  implements b<Bundle, IPCVoid>
+  implements com.tencent.mm.ipcinvoker.d<Bundle, IPCVoid>
 {}
 
 

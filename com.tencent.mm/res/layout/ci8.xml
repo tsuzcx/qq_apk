@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:keybutton="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.textstatus.emoji.TextStatusEmojiSubTypeScrollView android:id="@id/juo" android:scrollbars="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="@dimen/cj" android:overScrollMode="never" android:layout_marginStart="@dimen/c5" android:layout_marginEnd="@dimen/ci" keybutton:emoji_type="@integer/as" />
+    <com.tencent.mm.plugin.textstatus.emoji.TextStatusEmojiContentScrollView android:id="@id/jul" android:background="@color/UN_BW_93" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/juo" android:overScrollMode="never" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/jtm" android:background="@drawable/cv9" android:layout_width="@dimen/cp" android:layout_height="44.0dip" android:layout_marginBottom="@dimen/c5" android:layout_alignParentBottom="true" android:layout_marginEnd="@dimen/c5" android:layout_alignParentEnd="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/aej" android:paddingTop="@dimen/ct" android:paddingBottom="@dimen/ct" android:layout_width="@dimen/cp" android:layout_height="44.0dip" android:src="@raw/icons_outlined_delemoji" android:layout_centerInParent="true" android:contentDescription="@string/tf" android:paddingStart="@dimen/cb" android:paddingEnd="@dimen/cb" keybutton:iconColor="@color/UN_BW_0_Alpha_0_9" />
+        </RelativeLayout>
+    </RelativeLayout>
+</merge>

@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.protocal.protobuf.adf;
-import com.tencent.mm.protocal.protobuf.adg;
+import com.tencent.mm.protocal.protobuf.adm;
+import com.tencent.mm.protocal.protobuf.adn;
 
 public final class c
-  extends com.tencent.mm.ak.c<adg>
+  extends com.tencent.mm.an.c<adn>
 {
   public c(String paramString)
   {
     AppMethodBeat.i(65162);
-    adf localadf = new adf();
-    localadf.Lot = paramString;
+    adm localadm = new adm();
+    localadm.SpP = paramString;
     paramString = new d.a();
-    paramString.iLN = localadf;
-    paramString.iLO = new adg();
+    paramString.lBU = localadm;
+    paramString.lBV = new adn();
     int i;
-    if (((b)g.af(b.class)).a(b.a.skv, 1) == 1)
+    if (((b)h.ae(b.class)).a(b.a.vUS, 1) == 1)
     {
       i = 1;
       if (i == 0) {
@@ -30,7 +30,7 @@ public final class c
     }
     for (paramString.uri = "/cgi-bin/micromsg-bin/deleteshowsourcenew";; paramString.uri = "/cgi-bin/mmpay-bin/ftfhb/deleteshowsource")
     {
-      c(paramString.aXF());
+      c(paramString.bgN());
       AppMethodBeat.o(65162);
       return;
       i = 0;

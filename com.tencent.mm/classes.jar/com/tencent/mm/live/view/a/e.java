@@ -4,13 +4,13 @@ import android.view.View.OnClickListener;
 import kotlin.g.a.b;
 import kotlin.l;
 
-@l(hxD={1, 1, 16})
+@l(iBK={1, 1, 16})
 final class e
   implements View.OnClickListener
 {
   e(b paramb)
   {
-    this.hXF = paramb;
+    this.kMk = paramb;
   }
 }
 

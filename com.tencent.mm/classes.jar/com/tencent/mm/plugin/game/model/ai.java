@@ -10,10 +10,11 @@ import com.tencent.mm.loader.j.b;
 import com.tencent.mm.platformtools.s;
 import com.tencent.mm.platformtools.s.a;
 import com.tencent.mm.platformtools.s.b;
+import com.tencent.mm.plugin.game.g.d;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 import java.io.IOException;
 
 public final class ai
@@ -25,9 +26,9 @@ public final class ai
   {
     AppMethodBeat.i(41574);
     this.mPicUrl = paramString;
-    paramString = new o(b.aKO());
-    if (!paramString.exists()) {
-      paramString.mkdirs();
+    paramString = new q(b.aSQ());
+    if (!paramString.ifE()) {
+      paramString.ifK();
     }
     AppMethodBeat.o(41574);
   }
@@ -35,14 +36,14 @@ public final class ai
   public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
   {
     AppMethodBeat.i(41579);
-    if (s.a.jNi == parama)
+    if (s.a.mEq == parama)
     {
       AppMethodBeat.o(41579);
       return paramBitmap;
     }
     try
     {
-      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, blA(), false);
+      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, bvq(), false);
       AppMethodBeat.o(41579);
       return paramBitmap;
     }
@@ -55,24 +56,27 @@ public final class ai
     }
   }
   
-  public final void a(s.a parama, String paramString) {}
+  public final void a(s.a parama) {}
   
-  public final void ad(String paramString, boolean paramBoolean) {}
+  public final s.b bvp()
+  {
+    return null;
+  }
   
-  public final String blA()
+  public final String bvq()
   {
     AppMethodBeat.i(41575);
-    String str = b.aKO() + g.getMessageDigest(this.mPicUrl.getBytes());
+    String str = b.aSQ() + g.getMessageDigest(this.mPicUrl.getBytes());
     AppMethodBeat.o(41575);
     return str;
   }
   
-  public final String blB()
+  public final String bvr()
   {
     return this.mPicUrl;
   }
   
-  public final String blC()
+  public final String bvs()
   {
     AppMethodBeat.i(41576);
     String str = this.mPicUrl.hashCode();
@@ -80,30 +84,22 @@ public final class ai
     return str;
   }
   
-  public final boolean blD()
+  public final boolean bvt()
   {
     return true;
   }
   
-  public final boolean blE()
-  {
-    return false;
-  }
-  
-  public final Bitmap blF()
+  public final Bitmap bvu()
   {
     AppMethodBeat.i(41578);
-    Bitmap localBitmap = BitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), 2131234279);
+    Bitmap localBitmap = BitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), g.d.nosdcard_chatting_bg);
     AppMethodBeat.o(41578);
     return localBitmap;
   }
   
-  public final void blG() {}
+  public final void bvv() {}
   
-  public final s.b blz()
-  {
-    return null;
-  }
+  public final void bvw() {}
   
   public final String getCacheKey()
   {

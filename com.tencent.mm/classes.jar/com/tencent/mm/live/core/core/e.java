@@ -3,16 +3,16 @@ package com.tencent.mm.live.core.core;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/core/LiveCoreConstants;", "", "()V", "AudienceMode", "EventKey", "LiveBeautyEnum", "LiveCoreEvent", "LiveFilterEnum", "LiveScene", "MirrorMode", "NetStatus", "Role", "TXLiveConstantExt", "plugin-core_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/LiveCoreConstants;", "", "()V", "AnchorStatus", "AudienceMode", "CdnPlayerConfig", "EventKey", "LiveBeautyEnum", "LiveCoreEvent", "LiveFilterEnum", "LiveScene", "MicSettingFlag", "MicSettingSwitchFlag", "MicUserAttr", "MicUserStatus", "MirrorMode", "NetStatus", "Role", "SEIMode", "SEIMsgAnchorInfo", "TXLiveConstantExt", "plugin-core_release"})
 public final class e
 {
-  public static final e hwZ;
+  public static final e kjs;
   
   static
   {
-    AppMethodBeat.i(196412);
-    hwZ = new e();
-    AppMethodBeat.o(196412);
+    AppMethodBeat.i(200992);
+    kjs = new e();
+    AppMethodBeat.o(200992);
   }
 }
 

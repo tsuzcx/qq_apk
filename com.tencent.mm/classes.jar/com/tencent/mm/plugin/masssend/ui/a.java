@@ -5,10 +5,13 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Message;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
+import com.tencent.mm.R.l;
+import com.tencent.mm.R.o;
+import com.tencent.mm.f.c.ax;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.masssend.a.b;
@@ -24,61 +27,59 @@ import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bw;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
-import com.tencent.mm.ui.base.q;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.v;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
 import junit.framework.Assert;
 
 public final class a
-  implements com.tencent.mm.pluginsdk.b.a, MStorageEx.IOnStorageChange
+  implements com.tencent.mm.pluginsdk.c.a, MStorageEx.IOnStorageChange
 {
   private as contact;
   private Context context;
-  private Map<String, Preference> kkJ;
+  private Map<String, Preference> ncz;
   private f screen;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(26378);
-    this.kkJ = new HashMap();
+    this.ncz = new HashMap();
     this.context = paramContext;
     AppMethodBeat.o(26378);
   }
   
-  public static void C(Context paramContext, boolean paramBoolean)
+  public static void F(Context paramContext, boolean paramBoolean)
   {
     AppMethodBeat.i(26383);
     if (paramBoolean) {}
-    for (Object localObject = paramContext.getString(2131765544);; localObject = paramContext.getString(2131765552))
+    for (Object localObject = paramContext.getString(R.l.settings_plugins_installing);; localObject = paramContext.getString(R.l.settings_plugins_uninstalling))
     {
-      paramContext.getString(2131755998);
+      paramContext.getString(R.l.app_tip);
       paramContext = com.tencent.mm.ui.base.h.a(paramContext, (String)localObject, true, null);
       localObject = new MMHandler()
       {
         public final void handleMessage(Message paramAnonymousMessage)
         {
           AppMethodBeat.i(26376);
-          if (this.qNu) {
-            a.ehH();
+          if (this.uoH) {
+            a.eRo();
           }
-          int i = z.aUl();
-          if (this.qNu) {
+          int i = z.bdn();
+          if (this.uoH) {
             i &= 0xFFFEFFFF;
           }
           for (;;)
           {
-            bg.aVF();
-            c.azQ().set(34, Integer.valueOf(i));
-            bg.aVF();
-            c.aSM().d(new com.tencent.mm.ba.l("", "", "", "", "", "", "", "", i, "", ""));
-            if (!this.qNu) {
+            bh.beI();
+            c.aHp().i(34, Integer.valueOf(i));
+            bh.beI();
+            c.bbK().d(new com.tencent.mm.bd.l("", "", "", "", "", "", "", "", i, "", ""));
+            if (!this.uoH) {
               a.clearData();
             }
-            if (this.znB != null) {
-              this.znB.onNotifyChange(null, null);
+            if (this.ESS != null) {
+              this.ESS.onNotifyChange(null, null);
             }
             AppMethodBeat.o(26376);
             return;
@@ -86,14 +87,14 @@ public final class a
           }
         }
       };
-      new Timer().schedule(new TimerTask()
+      com.tencent.e.h.ZvG.o(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(26377);
-          if (this.qDi != null)
+          if (this.ucj != null)
           {
-            this.qDi.dismiss();
+            this.ucj.dismiss();
             this.val$handler.sendEmptyMessage(0);
           }
           AppMethodBeat.o(26377);
@@ -104,73 +105,73 @@ public final class a
     }
   }
   
-  private void cCt()
+  private void cQY()
   {
     boolean bool2 = true;
     AppMethodBeat.i(26382);
     boolean bool3 = isOpen();
-    Object localObject = (HelperHeaderPreference)this.screen.bmg("contact_info_masssend_header_helper");
-    ((HelperHeaderPreference)localObject).bk(this.contact.field_username, this.contact.arJ(), this.context.getString(2131757953));
+    Object localObject = (HelperHeaderPreference)this.screen.byG("contact_info_masssend_header_helper");
+    ((HelperHeaderPreference)localObject).bf(this.contact.field_username, this.contact.ays(), this.context.getString(R.l.eyE));
     int i;
     if (bool3)
     {
       i = 1;
       ((HelperHeaderPreference)localObject).updateStatus(i);
-      this.screen.jdMethod_do("contact_info_masssend_install", bool3);
+      this.screen.dz("contact_info_masssend_install", bool3);
       localObject = this.screen;
       if (bool3) {
-        break label168;
+        break label169;
       }
       bool1 = true;
-      label97:
-      ((f)localObject).jdMethod_do("contact_info_masssend_view", bool1);
+      label98:
+      ((f)localObject).dz("contact_info_masssend_view", bool1);
       localObject = this.screen;
       if (bool3) {
-        break label173;
+        break label174;
       }
       bool1 = true;
-      label121:
-      ((f)localObject).jdMethod_do("contact_info_masssend_clear_data", bool1);
+      label122:
+      ((f)localObject).dz("contact_info_masssend_clear_data", bool1);
       localObject = this.screen;
       if (bool3) {
-        break label178;
+        break label179;
       }
     }
-    label168:
-    label173:
-    label178:
+    label169:
+    label174:
+    label179:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      ((f)localObject).jdMethod_do("contact_info_masssend_uninstall", bool1);
+      ((f)localObject).dz("contact_info_masssend_uninstall", bool1);
       AppMethodBeat.o(26382);
       return;
       i = 0;
       break;
       bool1 = false;
-      break label97;
+      break label98;
       bool1 = false;
-      break label121;
+      break label122;
     }
   }
   
   public static void clearData()
   {
     AppMethodBeat.i(26384);
-    b localb = com.tencent.mm.plugin.masssend.a.h.ehF();
-    if (localb.iFy.execSQL("massendinfo", "delete from massendinfo")) {
+    b localb = com.tencent.mm.plugin.masssend.a.h.eRm();
+    if (localb.lvy.execSQL("massendinfo", "delete from massendinfo")) {
       localb.doNotify();
     }
-    bg.aVF();
-    c.aST().bjW("masssendapp");
+    bh.beI();
+    c.bbR().bwv("masssendapp");
     AppMethodBeat.o(26384);
   }
   
-  static void ehH() {}
+  static void eRo() {}
   
   private static boolean isOpen()
   {
     AppMethodBeat.i(26380);
-    if ((z.aUl() & 0x10000) == 0)
+    if ((z.bdn() & 0x10000) == 0)
     {
       AppMethodBeat.o(26380);
       return true;
@@ -192,19 +193,19 @@ public final class a
         paramBoolean = true;
       }
       Assert.assertTrue(paramBoolean);
-      Assert.assertTrue(ab.Jc(paramas.field_username));
-      bg.aVF();
-      c.azQ().add(this);
+      Assert.assertTrue(ab.Qv(paramas.field_username));
+      bh.beI();
+      c.aHp().add(this);
       this.contact = paramas;
       this.screen = paramf;
-      paramf.addPreferencesFromResource(2132017182);
-      cCt();
+      paramf.auC(R.o.eXo);
+      cQY();
       AppMethodBeat.o(26381);
       return true;
     }
   }
   
-  public final boolean alD(String paramString)
+  public final boolean atw(String paramString)
   {
     AppMethodBeat.i(26379);
     Log.d("MicroMsg.ContactWidgetMassSend", "handleEvent : key = ".concat(String.valueOf(paramString)));
@@ -217,16 +218,16 @@ public final class a
     {
       Object localObject = new Intent(this.context, MassSendHistoryUI.class);
       paramString = this.context;
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/masssend/ui/ContactWidgetMassSend", "handleEvent", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/masssend/ui/ContactWidgetMassSend", "handleEvent", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/masssend/ui/ContactWidgetMassSend", "handleEvent", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramString, "com/tencent/mm/plugin/masssend/ui/ContactWidgetMassSend", "handleEvent", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(26379);
       return true;
     }
     if (paramString.equals("contact_info_masssend_clear_data"))
     {
-      com.tencent.mm.ui.base.h.c(this.context, this.context.getString(2131757858), "", this.context.getString(2131755764), this.context.getString(2131755761), new DialogInterface.OnClickListener()
+      com.tencent.mm.ui.base.h.c(this.context, this.context.getString(R.l.contact_info_clear_data), "", this.context.getString(R.l.app_clear), this.context.getString(R.l.app_cancel), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -240,18 +241,18 @@ public final class a
     }
     if (paramString.equals("contact_info_masssend_install"))
     {
-      C(this.context, true);
+      F(this.context, true);
       AppMethodBeat.o(26379);
       return true;
     }
     if (paramString.equals("contact_info_masssend_uninstall"))
     {
-      com.tencent.mm.ui.base.h.c(this.context, this.context.getString(2131765548), "", this.context.getString(2131755764), this.context.getString(2131755761), new DialogInterface.OnClickListener()
+      com.tencent.mm.ui.base.h.c(this.context, this.context.getString(R.l.settings_plugins_uninstall_hint), "", this.context.getString(R.l.app_clear), this.context.getString(R.l.app_cancel), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(26375);
-          a.C(a.a(a.this), false);
+          a.F(a.a(a.this), false);
           AppMethodBeat.o(26375);
         }
       }, null);
@@ -263,12 +264,12 @@ public final class a
     return false;
   }
   
-  public final boolean cCs()
+  public final boolean cQX()
   {
     AppMethodBeat.i(26385);
-    bg.aVF();
-    c.azQ().remove(this);
-    com.tencent.mm.plugin.masssend.a.jRu.WZ();
+    bh.beI();
+    c.aHp().remove(this);
+    com.tencent.mm.plugin.masssend.a.mIH.abC();
     AppMethodBeat.o(26385);
     return true;
   }
@@ -280,8 +281,8 @@ public final class a
     AppMethodBeat.i(26386);
     int i = Util.nullAsInt(paramObject, 0);
     Log.d("MicroMsg.ContactWidgetMassSend", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramMStorageEx });
-    bg.aVF();
-    if ((paramMStorageEx != c.azQ()) || (i <= 0))
+    bh.beI();
+    if ((paramMStorageEx != c.aHp()) || (i <= 0))
     {
       Log.e("MicroMsg.ContactWidgetMassSend", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramMStorageEx });
       AppMethodBeat.o(26386);
@@ -292,7 +293,7 @@ public final class a
       AppMethodBeat.o(26386);
       return;
     }
-    cCt();
+    cQY();
     AppMethodBeat.o(26386);
   }
 }

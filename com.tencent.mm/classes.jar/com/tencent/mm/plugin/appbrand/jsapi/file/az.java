@@ -2,43 +2,35 @@ package com.tencent.mm.plugin.appbrand.jsapi.file;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appstorage.m;
-import com.tencent.mm.plugin.appbrand.appstorage.q;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 final class az
-  extends g
+  extends bl
 {
-  final i.a a(f paramf, String paramString, JSONObject paramJSONObject)
+  final i.a a(e parame, String paramString, JSONObject paramJSONObject)
   {
-    boolean bool = true;
-    AppMethodBeat.i(128913);
-    paramf = paramf.getFileSystem().Vl(paramString);
-    switch (1.lVs[paramf.ordinal()])
+    AppMethodBeat.i(128908);
+    try
     {
-    default: 
-      paramf = new i.a("fail " + paramf.name(), new Object[0]);
-      AppMethodBeat.o(128913);
-      return paramf;
-    case 1: 
-      paramf = new i.a("fail no such file or directory \"%s\"", new Object[] { paramString });
-      AppMethodBeat.o(128913);
-      return paramf;
+      paramJSONObject.put("append", true);
+      parame = super.a(parame, paramString, paramJSONObject);
+      AppMethodBeat.o(128908);
+      return parame;
     }
-    paramString = new i.a("ok", new Object[0]);
-    if (paramf == m.kSu) {}
-    for (;;)
+    catch (Exception parame)
     {
-      paramf = paramString.q("result", Boolean.valueOf(bool));
-      AppMethodBeat.o(128913);
-      return paramf;
-      bool = false;
+      Log.e("MicroMsg.AppBrand.UnitAppendFile", "call with path(%s), put append fail ex = %s", new Object[] { paramString, parame });
+      parame = new i.a("fail " + m.nMS.name(), new Object[0]);
+      AppMethodBeat.o(128908);
     }
+    return parame;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.az
  * JD-Core Version:    0.7.0.1
  */

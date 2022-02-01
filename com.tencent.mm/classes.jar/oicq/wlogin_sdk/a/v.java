@@ -5,12 +5,12 @@ public final class v
 {
   public v()
   {
-    this.Ucx = 287;
+    this.abFM = 287;
   }
   
-  public final Boolean hPC()
+  public final Boolean iUK()
   {
-    if (this.Udh < 8) {
+    if (this.abGw < 8) {
       return Boolean.FALSE;
     }
     return Boolean.TRUE;
@@ -18,7 +18,7 @@ public final class v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     oicq.wlogin_sdk.a.v
  * JD-Core Version:    0.7.0.1
  */

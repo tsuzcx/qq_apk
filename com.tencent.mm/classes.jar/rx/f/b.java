@@ -12,10 +12,10 @@ import rx.j;
 public final class b
   implements j
 {
-  public volatile boolean UnB;
-  private Set<j> UoK;
+  public volatile boolean abQP;
+  private Set<j> abRZ;
   
-  private static void C(Collection<j> paramCollection)
+  private static void A(Collection<j> paramCollection)
   {
     AppMethodBeat.i(90439);
     if (paramCollection == null)
@@ -34,7 +34,7 @@ public final class b
       localj = (j)localIterator.next();
       try
       {
-        localj.hQA();
+        localj.iVJ();
       }
       catch (Throwable localThrowable)
       {
@@ -50,7 +50,7 @@ public final class b
     {
       paramCollection.add(localThrowable);
       break;
-      rx.a.b.kP(paramCollection);
+      rx.a.b.lM(paramCollection);
       AppMethodBeat.o(90439);
       return;
     }
@@ -59,23 +59,23 @@ public final class b
   public final void b(j paramj)
   {
     AppMethodBeat.i(90435);
-    if (paramj.hQB())
+    if (paramj.iVK())
     {
       AppMethodBeat.o(90435);
       return;
     }
-    if (!this.UnB) {}
+    if (!this.abQP) {}
     try
     {
-      if (!this.UnB)
+      if (!this.abQP)
       {
-        if (this.UoK == null) {
-          this.UoK = new HashSet(4);
+        if (this.abRZ == null) {
+          this.abRZ = new HashSet(4);
         }
-        this.UoK.add(paramj);
+        this.abRZ.add(paramj);
         return;
       }
-      paramj.hQA();
+      paramj.iVJ();
       AppMethodBeat.o(90435);
       return;
     }
@@ -88,15 +88,15 @@ public final class b
   public final void clear()
   {
     AppMethodBeat.i(90437);
-    if (!this.UnB) {}
+    if (!this.abQP) {}
     try
     {
-      if ((this.UnB) || (this.UoK == null)) {
+      if ((this.abQP) || (this.abRZ == null)) {
         return;
       }
-      Set localSet = this.UoK;
-      this.UoK = null;
-      C(localSet);
+      Set localSet = this.abRZ;
+      this.abRZ = null;
+      A(localSet);
       AppMethodBeat.o(90437);
       return;
     }
@@ -109,15 +109,15 @@ public final class b
   public final void e(j paramj)
   {
     AppMethodBeat.i(90436);
-    if (!this.UnB) {}
+    if (!this.abQP) {}
     try
     {
-      if ((this.UnB) || (this.UoK == null)) {
+      if ((this.abQP) || (this.abRZ == null)) {
         return;
       }
-      boolean bool = this.UoK.remove(paramj);
+      boolean bool = this.abRZ.remove(paramj);
       if (bool) {
-        paramj.hQA();
+        paramj.iVJ();
       }
       AppMethodBeat.o(90436);
       return;
@@ -128,19 +128,19 @@ public final class b
     }
   }
   
-  public final void hQA()
+  public final void iVJ()
   {
     AppMethodBeat.i(90438);
-    if (!this.UnB) {}
+    if (!this.abQP) {}
     try
     {
-      if (this.UnB) {
+      if (this.abQP) {
         return;
       }
-      this.UnB = true;
-      Set localSet = this.UoK;
-      this.UoK = null;
-      C(localSet);
+      this.abQP = true;
+      Set localSet = this.abRZ;
+      this.abRZ = null;
+      A(localSet);
       AppMethodBeat.o(90438);
       return;
     }
@@ -150,14 +150,14 @@ public final class b
     }
   }
   
-  public final boolean hQB()
+  public final boolean iVK()
   {
-    return this.UnB;
+    return this.abQP;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     rx.f.b
  * JD-Core Version:    0.7.0.1
  */

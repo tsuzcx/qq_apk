@@ -5,23 +5,23 @@ import kotlin.g.b.p;
 import kotlin.l.b.a.b.f.b;
 import kotlin.l.b.a.b.f.f;
 import kotlin.l.b.a.b.h.g;
-import kotlin.l.b.a.b.h.i.f;
+import kotlin.l.b.a.b.h.i.e;
 
 public final class a
   extends kotlin.l.b.a.b.k.a
 {
-  public static final a TLQ;
+  public static final a abos;
   
   static
   {
     AppMethodBeat.i(60386);
-    TLQ = new a();
+    abos = new a();
     AppMethodBeat.o(60386);
   }
   
   private a()
   {
-    super(localg, localf1, localf2, localf3, localf4, localf5, localf6, localf7, localf8, localf9, localf10, localf11, localf12);
+    super(localg, locale1, locale2, locale3, locale4, locale5, locale6, locale7, locale8, locale9, locale10, locale11, locale12);
     AppMethodBeat.o(60385);
   }
   
@@ -33,15 +33,15 @@ public final class a
       AppMethodBeat.o(60384);
       return "default-package";
     }
-    paramb = paramb.hJg().sG();
-    p.g(paramb, "fqName.shortName().asString()");
+    paramb = paramb.iNA().qu();
+    p.j(paramb, "fqName.shortName().asString()");
     AppMethodBeat.o(60384);
     return paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.a.a
  * JD-Core Version:    0.7.0.1
  */

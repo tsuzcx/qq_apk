@@ -16,7 +16,7 @@ public class SampleTask2
     AppMethodBeat.o(134867);
   }
   
-  public final void bjj()
+  public final void RW()
   {
     AppMethodBeat.i(134866);
     Log.e("SampleTask2", "Run in Main Process");
@@ -25,7 +25,7 @@ public class SampleTask2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.SampleTask2
  * JD-Core Version:    0.7.0.1
  */

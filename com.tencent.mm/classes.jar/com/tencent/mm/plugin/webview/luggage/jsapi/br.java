@@ -5,8 +5,6 @@ import android.os.Bundle;
 import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.webview.luggage.ipc.JsApiMMTask;
 import com.tencent.mm.plugin.webview.luggage.ipc.d;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -21,44 +19,43 @@ public abstract class br<T extends com.tencent.luggage.d.a>
   public void a(final com.tencent.luggage.d.b<T>.a paramb)
   {
     Object localObject;
-    if (dTs() == 1)
+    if (cDj() == 1)
     {
       localObject = new JsApiMMTask();
-      ((JsApiMMTask)localObject).IVw = paramb;
-      ((JsApiMMTask)localObject).IVx = getClass().getName();
-      ((JsApiMMTask)localObject).lEA = paramb.ctb.csi.toString();
-      ((JsApiMMTask)localObject).bDJ();
-      AppBrandMainProcessService.a((MainProcessTask)localObject);
+      ((JsApiMMTask)localObject).PRM = paramb;
+      ((JsApiMMTask)localObject).PRN = getClass().getName();
+      ((JsApiMMTask)localObject).oAb = paramb.crh.cqn.toString();
+      ((JsApiMMTask)localObject).bsM();
       return;
     }
-    if (dTs() == 2)
+    if (cDj() == 2)
     {
       localObject = new Bundle();
       ((Bundle)localObject).putString("jsapi_name", getClass().getName());
-      ((Bundle)localObject).putString("data", paramb.ctb.csi.toString());
-      com.tencent.mm.plugin.webview.luggage.ipc.b.a((MMActivity)((com.tencent.luggage.d.a)paramb.cta).getContext(), (Bundle)localObject, d.class, new com.tencent.mm.plugin.webview.luggage.ipc.a()
+      ((Bundle)localObject).putString("data", paramb.crh.cqn.toString());
+      com.tencent.mm.plugin.webview.luggage.ipc.b.a((MMActivity)((com.tencent.luggage.d.a)paramb.crg).getContext(), (Bundle)localObject, d.class, new com.tencent.mm.plugin.webview.luggage.ipc.a()
       {
-        public final void v(Bundle paramAnonymousBundle)
+        public final void C(Bundle paramAnonymousBundle)
         {
           AppMethodBeat.i(78641);
           String str = paramAnonymousBundle.getString("err_msg");
           paramAnonymousBundle = paramAnonymousBundle.getString("data");
           if (!Util.isNullOrNil(str))
           {
-            paramb.c(str, null);
+            paramb.a(str, null);
             AppMethodBeat.o(78641);
             return;
           }
           try
           {
             paramAnonymousBundle = new JSONObject(paramAnonymousBundle);
-            paramb.c("", paramAnonymousBundle);
+            paramb.a("", paramAnonymousBundle);
             AppMethodBeat.o(78641);
             return;
           }
           catch (Exception paramAnonymousBundle)
           {
-            paramb.c("", null);
+            paramb.a("", null);
             AppMethodBeat.o(78641);
           }
         }
@@ -70,7 +67,7 @@ public abstract class br<T extends com.tencent.luggage.d.a>
   
   public abstract void b(com.tencent.luggage.d.b<T>.a paramb);
   
-  public abstract int dTs();
+  public abstract int cDj();
   
   public static abstract class a
   {

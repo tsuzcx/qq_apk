@@ -2,60 +2,60 @@ package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.o.f;
-import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.q.f;
+import com.tencent.mm.ui.base.q.g;
 import com.tencent.mm.ui.widget.a.e;
-import com.tencent.mm.wallet_core.ui.e.a;
-import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.f.a;
+import com.tencent.mm.wallet_core.ui.g;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 final class WalletLqtSaveFetchUI$14
-  implements e.a
+  implements f.a
 {
   WalletLqtSaveFetchUI$14(WalletLqtSaveFetchUI paramWalletLqtSaveFetchUI, ArrayList paramArrayList) {}
   
-  public final void bmr()
+  public final void bwz()
   {
-    AppMethodBeat.i(213983);
-    e locale = new e(this.HBI, 1, false);
-    locale.HLX = new o.f()
+    AppMethodBeat.i(270295);
+    e locale = new e(this.Oty, 1, false);
+    locale.ODT = new q.f()
     {
-      public final void onCreateMMMenu(m paramAnonymousm)
+      public final void onCreateMMMenu(o paramAnonymouso)
       {
-        AppMethodBeat.i(213981);
-        Iterator localIterator = WalletLqtSaveFetchUI.14.this.HBS.iterator();
+        AppMethodBeat.i(275133);
+        Iterator localIterator = WalletLqtSaveFetchUI.14.this.OtI.iterator();
         int i = 0;
         while (localIterator.hasNext())
         {
-          paramAnonymousm.add(0, i, 0, ((java.lang.String)localIterator.next()).split("\\|\\|")[0]);
+          paramAnonymouso.add(0, i, 0, ((java.lang.String)localIterator.next()).split("\\|\\|")[0]);
           i += 1;
         }
-        AppMethodBeat.o(213981);
+        AppMethodBeat.o(275133);
       }
     };
-    locale.HLY = new o.g()
+    locale.ODU = new q.g()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
-        AppMethodBeat.i(213982);
+        AppMethodBeat.i(270343);
         paramAnonymousInt = paramAnonymousMenuItem.getItemId();
-        if (paramAnonymousInt < WalletLqtSaveFetchUI.14.this.HBS.size())
+        if (paramAnonymousInt < WalletLqtSaveFetchUI.14.this.OtI.size())
         {
-          paramAnonymousMenuItem = ((java.lang.String)WalletLqtSaveFetchUI.14.this.HBS.get(paramAnonymousInt)).split("\\|\\|")[1];
-          f.p(WalletLqtSaveFetchUI.14.this.HBI, paramAnonymousMenuItem, false);
+          paramAnonymousMenuItem = ((java.lang.String)WalletLqtSaveFetchUI.14.this.OtI.get(paramAnonymousInt)).split("\\|\\|")[1];
+          g.p(WalletLqtSaveFetchUI.14.this.Oty, paramAnonymousMenuItem, false);
         }
-        AppMethodBeat.o(213982);
+        AppMethodBeat.o(270343);
       }
     };
-    locale.dGm();
-    AppMethodBeat.o(213983);
+    locale.eik();
+    AppMethodBeat.o(270295);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtSaveFetchUI.14
  * JD-Core Version:    0.7.0.1
  */

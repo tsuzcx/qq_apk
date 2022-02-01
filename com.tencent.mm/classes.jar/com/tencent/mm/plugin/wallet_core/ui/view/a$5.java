@@ -17,19 +17,19 @@ final class a$5
   {
     AppMethodBeat.i(71457);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/wallet_core/ui/view/AlertWithMMEditText$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    this.ImG.setVisibility(0);
-    this.ImH.setVisibility(8);
-    this.ImI.setText("");
-    this.ImF.setText("");
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/wallet_core/ui/view/AlertWithMMEditText$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    this.PeY.setVisibility(0);
+    this.PeZ.setVisibility(8);
+    this.Pfa.setText("");
+    this.PeX.setText("");
     a.a(this, "com/tencent/mm/plugin/wallet_core/ui/view/AlertWithMMEditText$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(71457);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.a.5
  * JD-Core Version:    0.7.0.1
  */

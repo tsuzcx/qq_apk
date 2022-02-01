@@ -1,341 +1,162 @@
 package android.support.v4.app;
 
-import android.app.Activity;
-import android.app.SharedElementCallback;
-import android.app.SharedElementCallback.OnSharedElementsReadyListener;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentSender;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Parcelable;
-import android.support.v4.content.b;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.mm.hellhoundlib.b.c;
-import java.util.List;
-import java.util.Map;
+import android.app.Notification;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-public final class a
-  extends b
+public abstract interface a
+  extends IInterface
 {
-  private static b Ey;
+  public abstract void a(String paramString1, int paramInt, String paramString2, Notification paramNotification);
   
-  public static void a(Activity paramActivity, Intent paramIntent, int paramInt, Bundle paramBundle)
+  public abstract void c(String paramString1, int paramInt, String paramString2);
+  
+  public abstract void n(String paramString);
+  
+  public static abstract class a
+    extends Binder
+    implements a
   {
-    if (Build.VERSION.SDK_INT >= 16)
+    public static a V()
     {
-      paramActivity.startActivityForResult(paramIntent, paramInt, paramBundle);
-      return;
+      return a.co;
     }
-    paramActivity.startActivityForResult(paramIntent, paramInt);
-  }
-  
-  public static void a(Activity paramActivity, IntentSender paramIntentSender, int paramInt1, Intent paramIntent, int paramInt2, int paramInt3, int paramInt4, Bundle paramBundle)
-  {
-    if (Build.VERSION.SDK_INT >= 16)
+    
+    public static a b(IBinder paramIBinder)
     {
-      paramActivity.startIntentSenderForResult(paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
-      return;
-    }
-    paramActivity.startIntentSenderForResult(paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public static void a(Activity paramActivity, z paramz)
-  {
-    if (Build.VERSION.SDK_INT >= 21) {
-      if (paramz == null) {
-        break label27;
+      if (paramIBinder == null) {
+        return null;
       }
-    }
-    label27:
-    for (paramz = new d(paramz);; paramz = null)
-    {
-      paramActivity.setEnterSharedElementCallback(paramz);
-      return;
-    }
-  }
-  
-  public static void a(final Activity paramActivity, String[] paramArrayOfString, final int paramInt)
-  {
-    if ((Ey != null) && (Ey.dW())) {}
-    do
-    {
-      return;
-      if (Build.VERSION.SDK_INT >= 23)
-      {
-        if ((paramActivity instanceof c)) {
-          ((c)paramActivity).validateRequestPermissionsRequestCode(paramInt);
-        }
-        paramArrayOfString = c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a()).bl(paramArrayOfString);
-        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramArrayOfString.axQ(), "android/support/v4/app/ActivityCompat", "requestPermissions", "(Landroid/app/Activity;[Ljava/lang/String;I)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
-        paramActivity.requestPermissions((String[])paramArrayOfString.pG(0), ((Integer)paramArrayOfString.pG(1)).intValue());
-        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "android/support/v4/app/ActivityCompat", "requestPermissions", "(Landroid/app/Activity;[Ljava/lang/String;I)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
-        return;
+      IInterface localIInterface = paramIBinder.queryLocalInterface("android.support.v4.app.INotificationSideChannel");
+      if ((localIInterface != null) && ((localIInterface instanceof a))) {
+        return (a)localIInterface;
       }
-    } while (!(paramActivity instanceof a));
-    new Handler(Looper.getMainLooper()).post(new Runnable()
+      return new a(paramIBinder);
+    }
+    
+    public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
     {
-      public final void run()
+      switch (paramInt1)
       {
-        int[] arrayOfInt = new int[this.Ez.length];
-        PackageManager localPackageManager = paramActivity.getPackageManager();
-        String str = paramActivity.getPackageName();
-        int j = this.Ez.length;
-        int i = 0;
-        while (i < j)
+      default: 
+        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      case 1598968902: 
+        paramParcel2.writeString("android.support.v4.app.INotificationSideChannel");
+        return true;
+      case 1: 
+        paramParcel1.enforceInterface("android.support.v4.app.INotificationSideChannel");
+        paramParcel2 = paramParcel1.readString();
+        paramInt1 = paramParcel1.readInt();
+        String str = paramParcel1.readString();
+        if (paramParcel1.readInt() != 0) {}
+        for (paramParcel1 = (Notification)Notification.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
         {
-          arrayOfInt[i] = localPackageManager.checkPermission(this.Ez[i], str);
-          i += 1;
+          a(paramParcel2, paramInt1, str, paramParcel1);
+          return true;
         }
-        ((a.a)paramActivity).onRequestPermissionsResult(paramInt, this.Ez, arrayOfInt);
+      case 2: 
+        paramParcel1.enforceInterface("android.support.v4.app.INotificationSideChannel");
+        c(paramParcel1.readString(), paramParcel1.readInt(), paramParcel1.readString());
+        return true;
       }
-    });
-  }
-  
-  public static boolean a(Activity paramActivity, String paramString)
-  {
-    if (Build.VERSION.SDK_INT >= 23) {
-      return paramActivity.shouldShowRequestPermissionRationale(paramString);
-    }
-    return false;
-  }
-  
-  public static void b(Activity paramActivity, z paramz)
-  {
-    if (Build.VERSION.SDK_INT >= 21) {
-      if (paramz == null) {
-        break label27;
-      }
-    }
-    label27:
-    for (paramz = new d(paramz);; paramz = null)
-    {
-      paramActivity.setExitSharedElementCallback(paramz);
-      return;
-    }
-  }
-  
-  public static void d(Activity paramActivity)
-  {
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      paramActivity.finishAffinity();
-      return;
-    }
-    paramActivity.finish();
-  }
-  
-  public static b dV()
-  {
-    return Ey;
-  }
-  
-  public static void e(Activity paramActivity)
-  {
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      paramActivity.finishAfterTransition();
-      return;
-    }
-    paramActivity.finish();
-  }
-  
-  public static void f(Activity paramActivity)
-  {
-    if (Build.VERSION.SDK_INT >= 21) {
-      paramActivity.postponeEnterTransition();
-    }
-  }
-  
-  public static void g(Activity paramActivity)
-  {
-    if (Build.VERSION.SDK_INT >= 21) {
-      paramActivity.startPostponedEnterTransition();
-    }
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt);
-  }
-  
-  public static abstract interface b
-  {
-    public abstract boolean dW();
-    
-    public abstract boolean dX();
-  }
-  
-  public static abstract interface c
-  {
-    public abstract void validateRequestPermissionsRequestCode(int paramInt);
-  }
-  
-  static final class d
-    extends SharedElementCallback
-  {
-    private final z EA;
-    
-    d(z paramz)
-    {
-      this.EA = paramz;
+      paramParcel1.enforceInterface("android.support.v4.app.INotificationSideChannel");
+      n(paramParcel1.readString());
+      return true;
     }
     
-    public final Parcelable onCaptureSharedElementSnapshot(View paramView, Matrix paramMatrix, RectF paramRectF)
+    static final class a
+      implements a
     {
-      z localz = this.EA;
-      ImageView localImageView;
-      Drawable localDrawable;
-      Object localObject;
-      if ((paramView instanceof ImageView))
+      public static a co;
+      private IBinder mRemote;
+      
+      a(IBinder paramIBinder)
       {
-        localImageView = (ImageView)paramView;
-        localDrawable = localImageView.getDrawable();
-        localObject = localImageView.getBackground();
-        if ((localDrawable != null) && (localObject == null))
+        this.mRemote = paramIBinder;
+      }
+      
+      public final void a(String paramString1, int paramInt, String paramString2, Notification paramNotification)
+      {
+        Parcel localParcel = Parcel.obtain();
+        try
         {
-          i = localDrawable.getIntrinsicWidth();
-          j = localDrawable.getIntrinsicHeight();
-          if ((i <= 0) || (j <= 0))
+          localParcel.writeInterfaceToken("android.support.v4.app.INotificationSideChannel");
+          localParcel.writeString(paramString1);
+          localParcel.writeInt(paramInt);
+          localParcel.writeString(paramString2);
+          if (paramNotification != null)
           {
-            localObject = null;
-            if (localObject == null) {
-              break label298;
-            }
-            paramView = new Bundle();
-            paramView.putParcelable("sharedElement:snapshot:bitmap", (Parcelable)localObject);
-            paramView.putString("sharedElement:snapshot:imageScaleType", localImageView.getScaleType().toString());
-            if (localImageView.getScaleType() == ImageView.ScaleType.MATRIX)
-            {
-              paramMatrix = localImageView.getImageMatrix();
-              paramRectF = new float[9];
-              paramMatrix.getValues(paramRectF);
-              paramView.putFloatArray("sharedElement:snapshot:imageMatrix", paramRectF);
-            }
-            localObject = paramView;
+            localParcel.writeInt(1);
+            paramNotification.writeToParcel(localParcel, 0);
+          }
+          while ((!this.mRemote.transact(1, localParcel, null, 1)) && (a.a.V() != null))
+          {
+            a.a.V().a(paramString1, paramInt, paramString2, paramNotification);
+            return;
+            localParcel.writeInt(0);
           }
         }
-      }
-      label298:
-      do
-      {
-        do
+        finally
         {
-          return localObject;
-          f = Math.min(1.0F, 1048576.0F / (i * j));
-          if (((localDrawable instanceof BitmapDrawable)) && (f == 1.0F))
+          localParcel.recycle();
+        }
+      }
+      
+      public final IBinder asBinder()
+      {
+        return this.mRemote;
+      }
+      
+      public final void c(String paramString1, int paramInt, String paramString2)
+      {
+        Parcel localParcel = Parcel.obtain();
+        try
+        {
+          localParcel.writeInterfaceToken("android.support.v4.app.INotificationSideChannel");
+          localParcel.writeString(paramString1);
+          localParcel.writeInt(paramInt);
+          localParcel.writeString(paramString2);
+          if ((!this.mRemote.transact(2, localParcel, null, 1)) && (a.a.V() != null))
           {
-            localObject = ((BitmapDrawable)localDrawable).getBitmap();
-            break;
+            a.a.V().c(paramString1, paramInt, paramString2);
+            return;
           }
-          i = (int)(i * f);
-          j = (int)(j * f);
-          localObject = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-          Canvas localCanvas = new Canvas((Bitmap)localObject);
-          Rect localRect = localDrawable.getBounds();
-          int k = localRect.left;
-          int m = localRect.top;
-          int n = localRect.right;
-          int i1 = localRect.bottom;
-          localDrawable.setBounds(0, 0, i, j);
-          localDrawable.draw(localCanvas);
-          localDrawable.setBounds(k, m, n, i1);
-          break;
-          j = Math.round(paramRectF.width());
-          i = Math.round(paramRectF.height());
-          localImageView = null;
-          localObject = localImageView;
-        } while (j <= 0);
-        localObject = localImageView;
-      } while (i <= 0);
-      float f = Math.min(1.0F, 1048576.0F / (j * i));
-      int j = (int)(j * f);
-      int i = (int)(i * f);
-      if (localz.AB == null) {
-        localz.AB = new Matrix();
-      }
-      localz.AB.set(paramMatrix);
-      localz.AB.postTranslate(-paramRectF.left, -paramRectF.top);
-      localz.AB.postScale(f, f);
-      paramMatrix = Bitmap.createBitmap(j, i, Bitmap.Config.ARGB_8888);
-      paramRectF = new Canvas(paramMatrix);
-      paramRectF.concat(localz.AB);
-      paramView.draw(paramRectF);
-      return paramMatrix;
-    }
-    
-    public final View onCreateSnapshotView(Context paramContext, Parcelable paramParcelable)
-    {
-      if ((paramParcelable instanceof Bundle))
-      {
-        paramParcelable = (Bundle)paramParcelable;
-        Object localObject = (Bitmap)paramParcelable.getParcelable("sharedElement:snapshot:bitmap");
-        if (localObject == null) {
-          return null;
+          return;
         }
-        paramContext = new ImageView(paramContext);
-        paramContext.setImageBitmap((Bitmap)localObject);
-        paramContext.setScaleType(ImageView.ScaleType.valueOf(paramParcelable.getString("sharedElement:snapshot:imageScaleType")));
-        if (paramContext.getScaleType() == ImageView.ScaleType.MATRIX)
+        finally
         {
-          paramParcelable = paramParcelable.getFloatArray("sharedElement:snapshot:imageMatrix");
-          localObject = new Matrix();
-          ((Matrix)localObject).setValues(paramParcelable);
-          paramContext.setImageMatrix((Matrix)localObject);
+          localParcel.recycle();
         }
       }
-      for (;;)
+      
+      public final void n(String paramString)
       {
-        return paramContext;
-        if ((paramParcelable instanceof Bitmap))
+        Parcel localParcel = Parcel.obtain();
+        try
         {
-          paramParcelable = (Bitmap)paramParcelable;
-          paramContext = new ImageView(paramContext);
-          paramContext.setImageBitmap(paramParcelable);
+          localParcel.writeInterfaceToken("android.support.v4.app.INotificationSideChannel");
+          localParcel.writeString(paramString);
+          if ((!this.mRemote.transact(3, localParcel, null, 1)) && (a.a.V() != null))
+          {
+            a.a.V().n(paramString);
+            return;
+          }
+          return;
         }
-        else
+        finally
         {
-          paramContext = null;
+          localParcel.recycle();
         }
       }
-    }
-    
-    public final void onMapSharedElements(List<String> paramList, Map<String, View> paramMap) {}
-    
-    public final void onRejectSharedElements(List<View> paramList) {}
-    
-    public final void onSharedElementEnd(List<String> paramList, List<View> paramList1, List<View> paramList2) {}
-    
-    public final void onSharedElementStart(List<String> paramList, List<View> paramList1, List<View> paramList2) {}
-    
-    public final void onSharedElementsArrived(List<String> paramList, List<View> paramList1, final SharedElementCallback.OnSharedElementsReadyListener paramOnSharedElementsReadyListener)
-    {
-      new z.a()
-      {
-        public final void onSharedElementsReady()
-        {
-          paramOnSharedElementsReadyListener.onSharedElementsReady();
-        }
-      }.onSharedElementsReady();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v4.app.a
  * JD-Core Version:    0.7.0.1
  */

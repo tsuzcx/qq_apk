@@ -1,6 +1,9 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-public final class x {}
+public final class x
+{
+  private static float syM = 0.1F;
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

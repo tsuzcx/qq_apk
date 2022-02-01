@@ -12,7 +12,7 @@ public class PluginFace
   public static boolean isEnabled()
   {
     AppMethodBeat.i(103572);
-    boolean bool = com.tencent.mm.plugin.expansions.a.cMr();
+    boolean bool = com.tencent.mm.plugin.expansions.a.dbf();
     AppMethodBeat.o(103572);
     return bool;
   }
@@ -21,8 +21,8 @@ public class PluginFace
   {
     AppMethodBeat.i(103571);
     Log.i("MicroMsg.PluginFace", "hy: starting execute.");
-    if (paramg.aBb()) {
-      com.tencent.mm.vending.g.g.hdG().d(new a()).a(new d.a() {});
+    if (paramg.aIE()) {
+      com.tencent.mm.vending.g.g.ieN().d(new b()).a(new d.a() {});
     }
     AppMethodBeat.o(103571);
   }

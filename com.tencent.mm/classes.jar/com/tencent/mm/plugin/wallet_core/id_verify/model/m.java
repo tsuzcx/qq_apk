@@ -26,9 +26,9 @@ public final class m
     }
     if (paramProfession != null)
     {
-      Log.d("MicroMsg.NetSceneTenpaySetUserExInfo", "name: %s, type: %s", new Object[] { paramProfession.HTX, Integer.valueOf(paramProfession.HTY) });
-      localHashMap.put("profession_name", paramProfession.HTX);
-      localHashMap.put("profession_type", String.valueOf(paramProfession.HTY));
+      Log.d("MicroMsg.NetSceneTenpaySetUserExInfo", "name: %s, type: %s", new Object[] { paramProfession.OLY, Integer.valueOf(paramProfession.OLZ) });
+      localHashMap.put("profession_name", paramProfession.OLY);
+      localHashMap.put("profession_type", String.valueOf(paramProfession.OLZ));
     }
     if (!Util.isNullOrNil(paramString4)) {
       localHashMap.put("nationality", paramString4);
@@ -61,7 +61,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.model.m
  * JD-Core Version:    0.7.0.1
  */

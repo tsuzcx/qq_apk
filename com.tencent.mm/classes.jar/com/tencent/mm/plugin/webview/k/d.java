@@ -1,56 +1,143 @@
 package com.tencent.mm.plugin.webview.k;
 
-import android.content.Intent;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.FileProviderHelper;
+import com.tencent.mm.plugin.ay.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.w;
+import kotlin.g.b.p;
+import kotlin.l;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/util/ToastUtil;", "", "()V", "TAG", "", "dismiss", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "dialog", "showProgress", "wording", "context", "Landroid/content/Context;", "showToast", "bundle", "Landroid/os/Bundle;", "webview-sdk_release"})
 public final class d
 {
-  public static String aYW(String paramString)
+  public static final d QzO;
+  
+  static
   {
-    AppMethodBeat.i(224512);
-    Object localObject = new o(b.aKV());
-    if (!((o)localObject).mkdirs()) {
-      Log.i("MicroMsg.WebJSSDKUtil", "mkdirs failed.File is exist = " + ((o)localObject).exists());
+    AppMethodBeat.i(205479);
+    QzO = new d();
+    AppMethodBeat.o(205479);
+  }
+  
+  public static final s a(Bundle paramBundle, Context paramContext, s params)
+  {
+    AppMethodBeat.i(205474);
+    p.k(paramContext, "context");
+    String str;
+    if (paramBundle != null)
+    {
+      str = paramBundle.getString("status");
+      if (str != null) {
+        break label38;
+      }
     }
-    if (!((o)localObject).exists()) {
-      Log.e("MicroMsg.WebJSSDKUtil", "camera storage path do not exist.(%s)", new Object[] { b.aKV() });
+    label38:
+    do
+    {
+      for (;;)
+      {
+        AppMethodBeat.o(205474);
+        return null;
+        str = null;
+        break;
+        switch (str.hashCode())
+        {
+        }
+      }
+    } while (!str.equals("success"));
+    if (paramBundle != null) {}
+    for (paramBundle = paramBundle.getString("wording");; paramBundle = null)
+    {
+      w.cR(paramContext, paramBundle);
+      break;
+      if (!str.equals("dismissloading")) {
+        break;
+      }
+      paramBundle = c(params);
+      AppMethodBeat.o(205474);
+      return paramBundle;
+      if (!str.equals("loading")) {
+        break;
+      }
+      paramBundle = paramContext.getString(a.a.app_waiting);
+      p.j(paramBundle, "context.getString(R.string.app_waiting)");
+      paramBundle = a(paramBundle, paramContext, params);
+      AppMethodBeat.o(205474);
+      return paramBundle;
     }
-    localObject = aa.z(((o)localObject).her()) + "/" + paramString + ".jpg";
-    Log.i("MicroMsg.WebJSSDKUtil", "get file path from capture file name : %s == %s", new Object[] { paramString, localObject });
-    AppMethodBeat.o(224512);
-    return localObject;
   }
   
-  public static Intent aYX(String paramString)
+  public static s a(String paramString, Context paramContext, s params)
   {
-    AppMethodBeat.i(224513);
-    Intent localIntent = new Intent("android.media.action.IMAGE_CAPTURE");
-    paramString = aYW(paramString);
-    localIntent.putExtra("output", FileProviderHelper.getUriForFile(MMApplicationContext.getContext(), new o(paramString)));
-    AppMethodBeat.o(224513);
-    return localIntent;
+    AppMethodBeat.i(205476);
+    p.k(paramString, "wording");
+    p.k(paramContext, "context");
+    MMActivity localMMActivity = e.jf(paramContext);
+    if ((localMMActivity != null) && (localMMActivity.isFinishing() == true))
+    {
+      AppMethodBeat.o(205476);
+      return null;
+    }
+    if (params != null)
+    {
+      c(params);
+      if (!params.isShowing())
+      {
+        params.show();
+        AppMethodBeat.o(205476);
+        return params;
+      }
+    }
+    paramString = h.a(paramContext, paramString, true, (DialogInterface.OnCancelListener)a.QzP);
+    AppMethodBeat.o(205476);
+    return paramString;
   }
   
-  public static Intent gcV()
+  public static s c(s params)
   {
-    AppMethodBeat.i(224514);
-    Intent localIntent = new Intent("android.media.action.VIDEO_CAPTURE");
-    AppMethodBeat.o(224514);
-    return localIntent;
+    AppMethodBeat.i(205477);
+    if ((params != null) && (params.isShowing())) {
+      params.dismiss();
+    }
+    AppMethodBeat.o(205477);
+    return params;
   }
   
-  public static Intent gcW()
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+  static final class a
+    implements DialogInterface.OnCancelListener
   {
-    AppMethodBeat.i(224515);
-    Intent localIntent = new Intent("android.provider.MediaStore.RECORD_SOUND");
-    AppMethodBeat.o(224515);
-    return localIntent;
+    public static final a QzP;
+    
+    static
+    {
+      AppMethodBeat.i(214276);
+      QzP = new a();
+      AppMethodBeat.o(214276);
+    }
+    
+    public final void onCancel(DialogInterface paramDialogInterface)
+    {
+      AppMethodBeat.i(214273);
+      try
+      {
+        paramDialogInterface.dismiss();
+        AppMethodBeat.o(214273);
+        return;
+      }
+      catch (Exception paramDialogInterface)
+      {
+        Log.e("MicroMsg.ToastUtil", "showProgressDlg onCancel exp: %s ", new Object[] { paramDialogInterface.getLocalizedMessage() });
+        AppMethodBeat.o(214273);
+      }
+    }
   }
 }
 

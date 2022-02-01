@@ -1,24 +1,31 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.widget.ListView;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class SnsCommentDetailUI$b$1
-  implements Runnable
+  implements View.OnClickListener
 {
   SnsCommentDetailUI$b$1(SnsCommentDetailUI.b paramb) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(98585);
-    SnsCommentDetailUI.a(this.ECD.ECd).setSelection(SnsCommentDetailUI.a(this.ECD.ECd).getHeaderViewsCount() + this.ECD.commentList.size() - 1);
-    AppMethodBeat.o(98585);
+    AppMethodBeat.i(98586);
+    b localb = new b();
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/sns/ui/SnsCommentDetailUI$CommentListAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    Log.i("MicroMsg.SnsCommentDetailUI", "onClick nickTv");
+    a.a(this, "com/tencent/mm/plugin/sns/ui/SnsCommentDetailUI$CommentListAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(98586);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsCommentDetailUI.b.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,18 +11,18 @@ import org.json.JSONObject;
 public final class i
   extends m
 {
-  public String AJx;
-  private String AJy;
-  private boolean AJz;
-  public String dSf;
+  public String GCE;
+  private String GCF;
+  private boolean GCG;
+  public String fLC;
   
   public i(Bankcard paramBankcard, String paramString1, String paramString2, int paramInt, String paramString3)
   {
     AppMethodBeat.i(66296);
-    this.AJx = "0";
-    this.AJy = "0";
-    this.dSf = "";
-    this.AJz = false;
+    this.GCE = "0";
+    this.GCF = "0";
+    this.fLC = "";
+    this.GCG = false;
     HashMap localHashMap = new HashMap();
     localHashMap.put("passwd", paramString1);
     localHashMap.put("oper", paramString2);
@@ -39,7 +39,7 @@ public final class i
       localHashMap.put("bind_serialno", paramBankcard.field_bindSerial);
       localHashMap.put("bank_type", paramBankcard.field_bankcardType);
       localHashMap.put("card_tail", paramBankcard.field_bankcardTail);
-      this.dSf = paramBankcard.field_mobile;
+      this.fLC = paramBankcard.field_mobile;
       setRequestData(localHashMap);
       AppMethodBeat.o(66296);
       return;
@@ -58,8 +58,8 @@ public final class i
     AppMethodBeat.i(66297);
     if (paramJSONObject != null)
     {
-      this.AJx = paramJSONObject.optString("verify_flag");
-      this.AJy = paramJSONObject.optString("limit_fee");
+      this.GCE = paramJSONObject.optString("verify_flag");
+      this.GCF = paramJSONObject.optString("limit_fee");
     }
     AppMethodBeat.o(66297);
   }

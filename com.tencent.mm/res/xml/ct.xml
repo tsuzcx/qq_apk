@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:newtip="http://schemas.android.com/apk/res-auto"
   xmlns:android1="http://schemas.android.com/apk/res/android">
-    <IconPreference android:key="settings_dark" android:layout="@layout/b8j" android:title="@string/go9" />
-    <PreferenceSmallCategory android:key="small_divider" />
-    <CheckBoxPreference android:defaultValue="false" android:key="settings_landscape_mode" android:title="@string/gpj" />
-    <CheckBoxPreference android:defaultValue="false" android:key="settings_nfc_switch" android:title="@string/grx" />
-    <Preference android:key="settings_silence_update_mode" android:layout="@layout/b8j" android:title="@string/gu2" />
-    <Preference android:key="settings_language" android:layout="@layout/b8j" android:title="@string/gpk" />
-    <Preference android:key="settings_text_size" android:layout="@layout/b8j" android:title="@string/gva" />
-    <Preference android:key="settings_take_photo" android:layout="@layout/b8j" android:title="@string/gse" />
-    <Preference android:key="settings_manage_findmoreui" android:layout="@layout/b8j" android:title="@string/gq2" />
-    <IconPreference android:key="settings_plugins" android:title="@string/gsm" />
-    <Preference android:key="settings_traffic_statistic" android:layout="@layout/b8j" android:title="@string/gvg" />
-    <Preference android:key="settngs_clean" android:layout="@layout/b8j" android:title="@string/grq" />
-    <Preference android:key="settngs_matrix_trace" android:layout="@layout/b8j" android:title="@string/gq8" />
+    <IconPreference newtip:key="settings_dark" newtip:layout="@layout/b8j" newtip:title="@string/go9" />
+    <PreferenceSmallCategory newtip:key="small_divider" />
+    <CheckBoxPreference newtip:defaultValue="false" newtip:key="settings_landscape_mode" newtip:title="@string/gpj" />
+    <CheckBoxPreference newtip:defaultValue="false" newtip:key="settings_nfc_switch" newtip:title="@string/grx" />
+    <Preference newtip:key="settings_silence_update_mode" newtip:layout="@layout/b8j" newtip:title="@string/gu2" />
+    <Preference newtip:key="settings_language" newtip:layout="@layout/b8j" newtip:title="@string/gpk" />
+    <Preference newtip:key="settings_text_size" newtip:layout="@layout/b8j" newtip:title="@string/gva" />
+    <Preference newtip:key="settings_take_photo" newtip:layout="@layout/b8j" newtip:title="@string/gse" />
+    <Preference newtip:key="settings_manage_findmoreui" newtip:layout="@layout/b8j" newtip:title="@string/gq2" />
+    <com.tencent.mm.plugin.newtips.NormalIconNewTipPreference newtip:key="settings_plugins" newtip:path="wechattools" newtip:title="@string/gsm" />
+    <Preference newtip:key="settings_traffic_statistic" newtip:layout="@layout/b8j" newtip:title="@string/gvg" />
+    <Preference newtip:key="settngs_clean" newtip:layout="@layout/b8j" newtip:title="@string/grq" />
+    <Preference newtip:key="settngs_matrix_trace" newtip:layout="@layout/b8j" newtip:title="@string/gq8" />
     <PreferenceCategory />
 </PreferenceScreen>

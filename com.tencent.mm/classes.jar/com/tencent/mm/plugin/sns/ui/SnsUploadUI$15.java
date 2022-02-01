@@ -1,13 +1,12 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.widget.cedit.api.c;
 
 final class SnsUploadUI$15
-  implements TextWatcher
+  implements DialogInterface.OnClickListener
 {
   SnsUploadUI$15(SnsUploadUI paramSnsUploadUI)
   {
@@ -15,26 +14,22 @@ final class SnsUploadUI$15
     AppMethodBeat.o(176376);
   }
   
-  public final void afterTextChanged(Editable paramEditable) {}
-  
-  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(203773);
-    if (SnsUploadUI.a(this.EPZ).getText().toString().trim().length() > 10)
-    {
-      paramCharSequence = this.EPZ.findViewById(2131308135);
-      if (paramCharSequence != null) {
-        paramCharSequence.setVisibility(8);
-      }
-    }
-    AppMethodBeat.o(203773);
+    AppMethodBeat.i(228290);
+    SnsUploadUI localSnsUploadUI = this.LdU;
+    Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(localSnsUploadUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/sns/ui/SnsUploadUI$22", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localSnsUploadUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localSnsUploadUI, "com/tencent/mm/plugin/sns/ui/SnsUploadUI$22", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramDialogInterface.dismiss();
+    AppMethodBeat.o(228290);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsUploadUI.15
  * JD-Core Version:    0.7.0.1
  */

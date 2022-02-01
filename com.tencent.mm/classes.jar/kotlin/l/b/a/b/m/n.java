@@ -12,46 +12,46 @@ public abstract class n
 {
   public abstract n b(aj paramaj);
   
-  public final h hAp()
-  {
-    return hDW().hAp();
-  }
-  
-  protected abstract aj hDW();
-  
-  public boolean hEa()
-  {
-    return hDW().hEa();
-  }
-  
-  public final List<av> hKB()
-  {
-    return hDW().hKB();
-  }
-  
-  public final at hKE()
-  {
-    return hDW().hKE();
-  }
-  
-  public g hzL()
-  {
-    return hDW().hzL();
-  }
-  
   public aj i(i parami)
   {
-    p.h(parami, "kotlinTypeRefiner");
-    parami = parami.aK((ab)hDW());
+    p.k(parami, "kotlinTypeRefiner");
+    parami = parami.aK((ab)iIq());
     if (parami == null) {
       throw new t("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
     }
     return (aj)b((aj)parami);
   }
+  
+  public g iDY()
+  {
+    return iIq().iDY();
+  }
+  
+  public final h iEC()
+  {
+    return iIq().iEC();
+  }
+  
+  protected abstract aj iIq();
+  
+  public boolean iIu()
+  {
+    return iIq().iIu();
+  }
+  
+  public final List<av> iOR()
+  {
+    return iIq().iOR();
+  }
+  
+  public final at iOU()
+  {
+    return iIq().iOU();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.n
  * JD-Core Version:    0.7.0.1
  */

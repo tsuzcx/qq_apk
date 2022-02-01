@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.el;
+import com.tencent.mm.f.c.eq;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class u
-  extends el
+  extends eq
 {
   public static IAutoDBItem.MAutoDBInfo info;
   
@@ -15,8 +15,8 @@ public final class u
   {
     AppMethodBeat.i(65223);
     IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[5];
-    localMAutoDBInfo.columns = new String[6];
+    localMAutoDBInfo.fields = new Field[6];
+    localMAutoDBInfo.columns = new String[7];
     StringBuilder localStringBuilder = new StringBuilder();
     localMAutoDBInfo.columns[0] = "subtype";
     localMAutoDBInfo.colsMap.put("subtype", "INTEGER PRIMARY KEY ");
@@ -35,10 +35,14 @@ public final class u
     localMAutoDBInfo.colsMap.put("minilogoMd5", "TEXT");
     localStringBuilder.append(" minilogoMd5 TEXT");
     localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[4] = "version";
+    localMAutoDBInfo.columns[4] = "detailMd5";
+    localMAutoDBInfo.colsMap.put("detailMd5", "TEXT");
+    localStringBuilder.append(" detailMd5 TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[5] = "version";
     localMAutoDBInfo.colsMap.put("version", "INTEGER");
     localStringBuilder.append(" version INTEGER");
-    localMAutoDBInfo.columns[5] = "rowid";
+    localMAutoDBInfo.columns[6] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
     info = localMAutoDBInfo;
     AppMethodBeat.o(65223);
@@ -51,7 +55,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.u
  * JD-Core Version:    0.7.0.1
  */

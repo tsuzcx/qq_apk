@@ -3,19 +3,21 @@ package com.tencent.mm.plugin.brandservice.ui.b;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.brandservice.d.g;
+import com.tencent.mm.plugin.brandservice.d.i;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 public final class b
 {
-  private static HashMap<Long, Long> pMp;
-  private static HashMap<Long, String> pMq;
+  private static HashMap<Long, Long> sTn;
+  private static HashMap<Long, String> sTo;
   
   static
   {
     AppMethodBeat.i(6238);
-    pMp = new HashMap();
-    pMq = new HashMap();
+    sTn = new HashMap();
+    sTo = new HashMap();
     AppMethodBeat.o(6238);
   }
   
@@ -24,8 +26,8 @@ public final class b
     try
     {
       AppMethodBeat.i(6236);
-      pMp.clear();
-      pMq.clear();
+      sTn.clear();
+      sTo.clear();
       AppMethodBeat.o(6236);
       return;
     }
@@ -53,17 +55,17 @@ public final class b
           return paramContext;
         }
         l1 = localGregorianCalendar.getTimeInMillis();
-        if (pMp.containsKey(Long.valueOf(paramLong))) {
-          if (l1 - ((Long)pMp.get(Long.valueOf(paramLong))).longValue() < 60000L)
+        if (sTn.containsKey(Long.valueOf(paramLong))) {
+          if (l1 - ((Long)sTn.get(Long.valueOf(paramLong))).longValue() < 60000L)
           {
-            if (pMq.containsKey(Long.valueOf(paramLong)))
+            if (sTo.containsKey(Long.valueOf(paramLong)))
             {
-              paramContext = (String)pMq.get(Long.valueOf(paramLong));
+              paramContext = (String)sTo.get(Long.valueOf(paramLong));
               AppMethodBeat.o(6237);
             }
           }
           else {
-            pMp.remove(Long.valueOf(paramLong));
+            sTn.remove(Long.valueOf(paramLong));
           }
         }
       }
@@ -77,9 +79,9 @@ public final class b
         if (j <= 0) {
           i = 1;
         }
-        paramContext = paramContext.getResources().getQuantityString(2131623946, i, new Object[] { Integer.valueOf(i) });
-        pMq.put(Long.valueOf(paramLong), paramContext);
-        pMp.put(Long.valueOf(paramLong), Long.valueOf(l1));
+        paramContext = paramContext.getResources().getQuantityString(d.g.fmt_in60min, i, new Object[] { Integer.valueOf(i) });
+        sTo.put(Long.valueOf(paramLong), paramContext);
+        sTn.put(Long.valueOf(paramLong), Long.valueOf(l1));
         AppMethodBeat.o(6237);
       }
       else
@@ -93,9 +95,9 @@ public final class b
           if (j <= 0) {
             i = 1;
           }
-          paramContext = paramContext.getResources().getQuantityString(2131623945, i, new Object[] { Integer.valueOf(i) });
-          pMq.put(Long.valueOf(paramLong), paramContext);
-          pMp.put(Long.valueOf(paramLong), Long.valueOf(l1));
+          paramContext = paramContext.getResources().getQuantityString(d.g.fmt_in24h, i, new Object[] { Integer.valueOf(i) });
+          sTo.put(Long.valueOf(paramLong), paramContext);
+          sTn.put(Long.valueOf(paramLong), Long.valueOf(l1));
           AppMethodBeat.o(6237);
         }
         else
@@ -103,9 +105,9 @@ public final class b
           l3 = paramLong - l2 + 86400000L;
           if ((l3 > 0L) && (l3 <= 86400000L))
           {
-            paramContext = paramContext.getString(2131760868);
-            pMq.put(Long.valueOf(paramLong), paramContext);
-            pMp.put(Long.valueOf(paramLong), Long.valueOf(l1));
+            paramContext = paramContext.getString(d.i.fmt_pre_yesterday);
+            sTo.put(Long.valueOf(paramLong), paramContext);
+            sTn.put(Long.valueOf(paramLong), Long.valueOf(l1));
             AppMethodBeat.o(6237);
           }
           else
@@ -115,9 +117,9 @@ public final class b
             if (j <= 0) {
               i = 1;
             }
-            paramContext = paramContext.getResources().getQuantityString(2131623947, i, new Object[] { Integer.valueOf(i) });
-            pMq.put(Long.valueOf(paramLong), paramContext);
-            pMp.put(Long.valueOf(paramLong), Long.valueOf(l1));
+            paramContext = paramContext.getResources().getQuantityString(d.g.fmt_indayh, i, new Object[] { Integer.valueOf(i) });
+            sTo.put(Long.valueOf(paramLong), paramContext);
+            sTn.put(Long.valueOf(paramLong), Long.valueOf(l1));
             AppMethodBeat.o(6237);
           }
         }
@@ -127,7 +129,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.b.b
  * JD-Core Version:    0.7.0.1
  */

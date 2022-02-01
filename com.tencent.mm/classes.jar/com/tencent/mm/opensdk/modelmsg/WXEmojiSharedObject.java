@@ -18,12 +18,12 @@ public class WXEmojiSharedObject
   
   public WXEmojiSharedObject(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(190392);
+    AppMethodBeat.i(254868);
     this.thumburl = paramString1;
     this.packageflag = paramInt;
     this.packageid = paramString2;
     this.url = paramString3;
-    AppMethodBeat.o(190392);
+    AppMethodBeat.o(254868);
   }
   
   public boolean checkArgs()

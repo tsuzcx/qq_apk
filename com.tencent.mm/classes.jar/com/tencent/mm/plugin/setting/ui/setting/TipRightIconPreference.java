@@ -5,6 +5,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.setting.b.f;
+import com.tencent.mm.plugin.setting.b.g;
 import com.tencent.mm.ui.base.preference.IconPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 
@@ -25,9 +27,9 @@ public class TipRightIconPreference
   {
     AppMethodBeat.i(74567);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(b.f.content);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2131495596, localViewGroup);
+    View.inflate(this.mContext, b.g.mm_preference_icon_tipright, localViewGroup);
     AppMethodBeat.o(74567);
     return paramViewGroup;
   }

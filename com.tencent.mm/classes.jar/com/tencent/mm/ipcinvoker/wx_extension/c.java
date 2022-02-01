@@ -11,10 +11,10 @@ import org.apache.commons.b.g;
 public final class c
   implements com.tencent.mm.ipcinvoker.extension.a
 {
-  static MultiProcessMMKV VQ()
+  static MultiProcessMMKV aal()
   {
     AppMethodBeat.i(146411);
-    MultiProcessMMKV localMultiProcessMMKV = c.a.ayo();
+    MultiProcessMMKV localMultiProcessMMKV = a.aFH();
     AppMethodBeat.o(146411);
     return localMultiProcessMMKV;
   }
@@ -30,14 +30,14 @@ public final class c
       AppMethodBeat.o(146412);
       return;
     }
-    Object localObject = (com.tencent.mm.bw.a)paramObject;
+    Object localObject = (com.tencent.mm.cd.a)paramObject;
     paramParcel.writeString(localObject.getClass().getName());
     for (;;)
     {
       try
       {
-        localObject = ((com.tencent.mm.bw.a)localObject).toByteArray();
-        localMultiProcessMMKV = c.a.ayo();
+        localObject = ((com.tencent.mm.cd.a)localObject).toByteArray();
+        localMultiProcessMMKV = a.aFH();
         i = k;
         if (localObject.length > 102400)
         {
@@ -92,7 +92,7 @@ public final class c
   
   public final boolean bp(Object paramObject)
   {
-    return paramObject instanceof com.tencent.mm.bw.a;
+    return paramObject instanceof com.tencent.mm.cd.a;
   }
   
   /* Error */
@@ -100,7 +100,7 @@ public final class c
   {
     // Byte code:
     //   0: ldc 146
-    //   2: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
     //   6: invokevirtual 149	android/os/Parcel:readString	()Ljava/lang/String;
     //   9: astore_3
@@ -108,7 +108,7 @@ public final class c
     //   11: invokestatic 155	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   14: ifeq +10 -> 24
     //   17: ldc 146
-    //   19: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   19: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   22: aconst_null
     //   23: areturn
     //   24: aload_1
@@ -117,7 +117,7 @@ public final class c
     //   30: aload 4
     //   32: invokestatic 155	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   35: ifne +207 -> 242
-    //   38: invokestatic 25	com/tencent/mm/ipcinvoker/wx_extension/c$a:ayo	()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;
+    //   38: invokestatic 26	com/tencent/mm/ipcinvoker/wx_extension/c$a:aFH	()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;
     //   41: astore 5
     //   43: aload 5
     //   45: aload 4
@@ -148,7 +148,7 @@ public final class c
     //   91: aload 5
     //   93: invokevirtual 168	com/tencent/mm/sdk/platformtools/MultiProcessMMKV:trim	()V
     //   96: ldc 146
-    //   98: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   98: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   101: aconst_null
     //   102: areturn
     //   103: aload 5
@@ -169,18 +169,18 @@ public final class c
     //   130: aload_1
     //   131: astore_2
     //   132: aload_3
-    //   133: invokestatic 174	org/a/a:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   136: invokestatic 178	org/a/a:bF	(Ljava/lang/Class;)Lorg/a/a;
-    //   139: invokevirtual 182	org/a/a:hPX	()Lorg/a/a;
+    //   133: invokestatic 174	org/a/a:bIA	(Ljava/lang/String;)Ljava/lang/Class;
+    //   136: invokestatic 178	org/a/a:ce	(Ljava/lang/Class;)Lorg/a/a;
+    //   139: invokevirtual 182	org/a/a:iVg	()Lorg/a/a;
     //   142: getfield 186	org/a/a:object	Ljava/lang/Object;
-    //   145: checkcast 43	com/tencent/mm/bw/a
+    //   145: checkcast 43	com/tencent/mm/cd/a
     //   148: astore_1
     //   149: aload_1
     //   150: aload_2
-    //   151: invokevirtual 190	com/tencent/mm/bw/a:parseFrom	([B)Lcom/tencent/mm/bw/a;
+    //   151: invokevirtual 190	com/tencent/mm/cd/a:parseFrom	([B)Lcom/tencent/mm/cd/a;
     //   154: pop
     //   155: ldc 146
-    //   157: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   157: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   160: aload_1
     //   161: areturn
     //   162: astore_3
@@ -206,7 +206,7 @@ public final class c
     //   197: aload 5
     //   199: invokevirtual 168	com/tencent/mm/sdk/platformtools/MultiProcessMMKV:trim	()V
     //   202: ldc 146
-    //   204: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   204: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   207: aconst_null
     //   208: areturn
     //   209: astore_1
@@ -224,7 +224,7 @@ public final class c
     //   230: aload 5
     //   232: invokevirtual 168	com/tencent/mm/sdk/platformtools/MultiProcessMMKV:trim	()V
     //   235: ldc 146
-    //   237: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   237: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   240: aload_1
     //   241: athrow
     //   242: aload_1
@@ -292,10 +292,22 @@ public final class c
     //   73	80	300	java/lang/Throwable
     //   84	96	300	java/lang/Throwable
   }
+  
+  static final class a
+  {
+    private static final MultiProcessMMKV jZA;
+    
+    static
+    {
+      AppMethodBeat.i(146410);
+      jZA = MultiProcessMMKV.getMMKV("MicroMsg_XIPC_MMProtoBufTransfer");
+      AppMethodBeat.o(146410);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.wx_extension.c
  * JD-Core Version:    0.7.0.1
  */

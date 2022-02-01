@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.appbrand.loading;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/loading/AppBrandProcessTriggerService3;", "Lcom/tencent/mm/plugin/appbrand/loading/AppBrandProcessTriggerService0;", "()V", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/loading/AppBrandProcessTriggerService3;", "Lcom/tencent/mm/plugin/appbrand/loading/AppBrandProcessTriggerService0;", "()V", "plugin-appbrand-integration_release"})
 @Keep
 public final class AppBrandProcessTriggerService3
   extends AppBrandProcessTriggerService0
 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.loading.AppBrandProcessTriggerService3
  * JD-Core Version:    0.7.0.1
  */

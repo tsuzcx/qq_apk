@@ -16,20 +16,20 @@ public final class s
   extends r
   implements q
 {
-  public final Method Tns;
+  public final Method aaQm;
   
   public s(Method paramMethod)
   {
     AppMethodBeat.i(57490);
-    this.Tns = paramMethod;
+    this.aaQm = paramMethod;
     AppMethodBeat.o(57490);
   }
   
-  public final List<x> hAt()
+  public final List<x> iEG()
   {
     AppMethodBeat.i(57489);
-    Object localObject = this.Tns.getTypeParameters();
-    p.g(localObject, "member.typeParameters");
+    Object localObject = this.aaQm.getTypeParameters();
+    p.j(localObject, "member.typeParameters");
     Collection localCollection = (Collection)new ArrayList(localObject.length);
     int j = localObject.length;
     int i = 0;
@@ -43,26 +43,26 @@ public final class s
     return localObject;
   }
   
-  public final List<y> hAw()
+  public final List<y> iEJ()
   {
     AppMethodBeat.i(57486);
-    Object localObject = this.Tns.getGenericParameterTypes();
-    p.g(localObject, "member.genericParameterTypes");
-    Annotation[][] arrayOfAnnotation = this.Tns.getParameterAnnotations();
-    p.g(arrayOfAnnotation, "member.parameterAnnotations");
-    localObject = a((Type[])localObject, arrayOfAnnotation, this.Tns.isVarArgs());
+    Object localObject = this.aaQm.getGenericParameterTypes();
+    p.j(localObject, "member.genericParameterTypes");
+    Annotation[][] arrayOfAnnotation = this.aaQm.getParameterAnnotations();
+    p.j(arrayOfAnnotation, "member.parameterAnnotations");
+    localObject = a((Type[])localObject, arrayOfAnnotation, this.aaQm.isVarArgs());
     AppMethodBeat.o(57486);
     return localObject;
   }
   
-  public final b hDe()
+  public final b iHy()
   {
     Object localObject1 = null;
     AppMethodBeat.i(57488);
-    Object localObject2 = this.Tns.getDefaultValue();
+    Object localObject2 = this.aaQm.getDefaultValue();
     if (localObject2 != null)
     {
-      localObject1 = d.Tnd;
+      localObject1 = d.aaPX;
       localObject1 = d.a.a(localObject2, null);
     }
     localObject1 = (b)localObject1;
@@ -70,10 +70,10 @@ public final class s
     return localObject1;
   }
   
-  public final boolean hDf()
+  public final boolean iHz()
   {
     AppMethodBeat.i(57491);
-    if (hDe() != null)
+    if (iHy() != null)
     {
       AppMethodBeat.o(57491);
       return true;
@@ -84,7 +84,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.d.b.s
  * JD-Core Version:    0.7.0.1
  */

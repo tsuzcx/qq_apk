@@ -4,27 +4,26 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aa.a.d.a;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.a;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
+import com.tencent.mm.plugin.appbrand.g;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.k;
-import com.tencent.mm.plugin.appbrand.page.ac;
+import com.tencent.mm.plugin.appbrand.jsapi.j;
+import com.tencent.mm.plugin.appbrand.page.ad;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.s;
-import com.tencent.mm.plugin.appbrand.widget.dialog.m;
-import com.tencent.mm.protocal.protobuf.ceq;
-import com.tencent.mm.protocal.protobuf.ces;
-import com.tencent.mm.protocal.protobuf.drb;
-import com.tencent.mm.protocal.protobuf.fdg;
+import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.widget.dialog.c.a;
+import com.tencent.mm.protocal.protobuf.cnk;
+import com.tencent.mm.protocal.protobuf.cnm;
+import com.tencent.mm.protocal.protobuf.eax;
+import com.tencent.mm.protocal.protobuf.foh;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vending.e.a;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,25 +37,25 @@ public final class JsApiLogin
 {
   public static final int CTRL_INDEX = 52;
   public static final String NAME = "login";
-  private final l lGF;
+  private final n oCn;
   
   public JsApiLogin()
   {
     AppMethodBeat.i(174774);
-    this.lGF = new l();
+    this.oCn = new n();
     AppMethodBeat.o(174774);
   }
   
-  public final void a(com.tencent.mm.plugin.appbrand.d paramd, JSONObject paramJSONObject, int paramInt)
+  public final void a(g paramg, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(226702);
+    AppMethodBeat.i(284058);
     try
     {
       if (!paramJSONObject.has("requestInQueue")) {
         paramJSONObject.put("requestInQueue", false);
       }
-      super.a(paramd, paramJSONObject, paramInt);
-      AppMethodBeat.o(226702);
+      super.a(paramg, paramJSONObject, paramInt);
+      AppMethodBeat.o(284058);
       return;
     }
     catch (JSONException localJSONException)
@@ -68,38 +67,38 @@ public final class JsApiLogin
     }
   }
   
-  public final void a(com.tencent.mm.plugin.appbrand.d paramd, JSONObject paramJSONObject, int paramInt, e parame)
+  public final void a(g paramg, JSONObject paramJSONObject, int paramInt, e parame)
   {
-    AppMethodBeat.i(226703);
+    AppMethodBeat.i(284059);
     LoginTask localLoginTask = new LoginTask();
-    localLoginTask.appId = paramd.getAppId();
-    localLoginTask.lFR = "login";
-    Object localObject = paramd.getRuntime().OT();
+    localLoginTask.appId = paramg.getAppId();
+    localLoginTask.oBs = "login";
+    Object localObject = paramg.getRuntime().Sp();
     if (localObject != null) {
-      localLoginTask.iOo = ((com.tencent.mm.plugin.appbrand.config.l)localObject).leE.kNW;
+      localLoginTask.cBU = ((com.tencent.mm.plugin.appbrand.config.l)localObject).nYR.nHY;
     }
-    localObject = a.TS(paramd.getAppId());
+    localObject = com.tencent.mm.plugin.appbrand.d.abC(paramg.getAppId());
     if (localObject != null) {
-      localLoginTask.lBE = ((AppBrandStatObject)localObject).scene;
+      localLoginTask.owU = ((AppBrandStatObject)localObject).scene;
     }
     paramJSONObject = paramJSONObject.toString();
-    localLoginTask.lFN = this;
-    localLoginTask.lGG = paramd;
+    localLoginTask.oBo = this;
+    localLoginTask.oCo = paramg;
     localLoginTask.data = paramJSONObject;
-    localLoginTask.lqe = paramInt;
-    localLoginTask.lFP = parame;
-    localLoginTask.lGd = new Bundle();
-    if ((paramd instanceof s)) {
-      localLoginTask.lGg = 1;
+    localLoginTask.okO = paramInt;
+    localLoginTask.oBq = new JsApiLogin.LoginTask.1(localLoginTask, parame);
+    localLoginTask.oBE = new Bundle();
+    if ((paramg instanceof v)) {
+      localLoginTask.oBH = 1;
     }
     for (;;)
     {
-      localLoginTask.bDJ();
-      AppBrandMainProcessService.a(localLoginTask);
-      AppMethodBeat.o(226703);
+      paramg.getRuntime().keep(new JsApiLogin.LoginTask.2(localLoginTask));
+      localLoginTask.bsM();
+      AppMethodBeat.o(284059);
       return;
-      if ((paramd instanceof ac)) {
-        localLoginTask.lGg = 2;
+      if ((paramg instanceof ad)) {
+        localLoginTask.oBH = 2;
       }
     }
   }
@@ -109,27 +108,27 @@ public final class JsApiLogin
   {
     public static final Parcelable.Creator<LoginTask> CREATOR;
     public String appId;
+    public int cBU;
     public String code;
     public String data;
     public int errCode;
     public String errMsg;
-    public int iOo;
-    public int lBE;
-    public String lDx;
-    i lFN;
-    e lFP;
-    public ArrayList<String> lFQ;
-    public String lFR;
-    public String lFS;
-    public int lFT;
-    public String lFU;
-    k lGG;
-    public int lGc;
-    public Bundle lGd;
-    int lGg;
     public int loginType;
-    public int lqe;
     public String mAppName;
+    public int oBD;
+    public Bundle oBE;
+    int oBH;
+    i oBo;
+    e oBq;
+    public ArrayList<String> oBr;
+    public String oBs;
+    public String oBt;
+    public int oBu;
+    public String oBv;
+    j oCo;
+    public int okO;
+    public int owU;
+    public String oyZ;
     
     static
     {
@@ -147,151 +146,150 @@ public final class JsApiLogin
       AppMethodBeat.o(46052);
     }
     
-    public final void bjj()
+    public final void RW()
     {
       AppMethodBeat.i(46053);
-      Object localObject1 = new a()
+      Object localObject1 = new JsApiLogin.LoginTask.a()
       {
-        public final void a(LinkedList<drb> paramAnonymousLinkedList, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3)
+        public final void a(LinkedList<eax> paramAnonymousLinkedList, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3)
         {
-          AppMethodBeat.i(46046);
+          AppMethodBeat.i(276061);
           Log.i("MicroMsg.JsApiLogin", "onConfirm !");
-          JsApiLogin.LoginTask.this.lGc = paramAnonymousLinkedList.size();
+          JsApiLogin.LoginTask.this.oBD = paramAnonymousLinkedList.size();
           int i = 0;
-          while (i < JsApiLogin.LoginTask.this.lGc)
+          while (i < JsApiLogin.LoginTask.this.oBD)
           {
-            drb localdrb = (drb)paramAnonymousLinkedList.get(i);
+            eax localeax = (eax)paramAnonymousLinkedList.get(i);
             try
             {
-              JsApiLogin.LoginTask.this.lGd.putByteArray(String.valueOf(i), localdrb.toByteArray());
+              JsApiLogin.LoginTask.this.oBE.putByteArray(String.valueOf(i), localeax.toByteArray());
               i += 1;
             }
             catch (IOException paramAnonymousLinkedList)
             {
               Log.e("MicroMsg.JsApiLogin", "IOException %s", new Object[] { paramAnonymousLinkedList.getMessage() });
               Log.printErrStackTrace("MicroMsg.JsApiLogin", paramAnonymousLinkedList, "", new Object[0]);
-              JsApiLogin.LoginTask.this.lFS = "fail";
+              JsApiLogin.LoginTask.this.oBt = "fail";
               JsApiLogin.LoginTask.c(JsApiLogin.LoginTask.this);
-              AppMethodBeat.o(46046);
+              AppMethodBeat.o(276061);
               return;
             }
           }
-          JsApiLogin.LoginTask.this.lDx = paramAnonymousString3;
+          JsApiLogin.LoginTask.this.oyZ = paramAnonymousString3;
           JsApiLogin.LoginTask.this.mAppName = paramAnonymousString1;
-          JsApiLogin.LoginTask.this.lFU = paramAnonymousString2;
-          JsApiLogin.LoginTask.this.lFS = "needConfirm";
+          JsApiLogin.LoginTask.this.oBv = paramAnonymousString2;
+          JsApiLogin.LoginTask.this.oBt = "needConfirm";
           JsApiLogin.LoginTask.d(JsApiLogin.LoginTask.this);
-          AppMethodBeat.o(46046);
+          AppMethodBeat.o(276061);
         }
         
-        public final void ai(int paramAnonymousInt, String paramAnonymousString)
+        public final void ak(int paramAnonymousInt, String paramAnonymousString)
         {
-          AppMethodBeat.i(46045);
+          AppMethodBeat.i(276060);
           Log.i("MicroMsg.JsApiLogin", "onFailure !");
-          JsApiLogin.LoginTask.this.lFS = "fail";
+          JsApiLogin.LoginTask.this.oBt = "fail";
           JsApiLogin.LoginTask.this.errCode = paramAnonymousInt;
           JsApiLogin.LoginTask.this.errMsg = paramAnonymousString;
           JsApiLogin.LoginTask.b(JsApiLogin.LoginTask.this);
-          AppMethodBeat.o(46045);
+          AppMethodBeat.o(276060);
         }
         
         public final void onSuccess(String paramAnonymousString)
         {
-          AppMethodBeat.i(46044);
+          AppMethodBeat.i(276059);
           Log.i("MicroMsg.JsApiLogin", "onSuccess !");
           JsApiLogin.LoginTask.this.code = paramAnonymousString;
-          JsApiLogin.LoginTask.this.lFS = "ok";
+          JsApiLogin.LoginTask.this.oBt = "ok";
           JsApiLogin.LoginTask.a(JsApiLogin.LoginTask.this);
-          AppMethodBeat.o(46044);
+          AppMethodBeat.o(276059);
         }
       };
       Object localObject2;
-      if (this.lFR.equals("login"))
+      if (this.oBs.equals("login"))
       {
         Log.i("MicroMsg.JsApiLogin", "start login");
         localObject2 = new LinkedList();
         this.loginType = 1;
-        this.lDx = "";
-        localObject1 = new com.tencent.mm.aa.a.c(this.appId, (LinkedList)localObject2, this.loginType, "", this.lDx, this.iOo, this.lBE, new com.tencent.mm.aa.a.c.a() {});
-        if (((com.tencent.mm.aa.a.c)localObject1).ayL().Mka == null) {
-          ((com.tencent.mm.aa.a.c)localObject1).ayL().Mka = new fdg();
+        this.oyZ = "";
+        localObject1 = new com.tencent.mm.ac.a.c(this.appId, (LinkedList)localObject2, this.loginType, "", this.oyZ, this.cBU, this.owU, new JsApiLogin.LoginTask.6(this, (JsApiLogin.LoginTask.a)localObject1));
+        if (((com.tencent.mm.ac.a.c)localObject1).aGe().TuQ == null) {
+          ((com.tencent.mm.ac.a.c)localObject1).aGe().TuQ = new foh();
         }
-        ((com.tencent.mm.aa.a.c)localObject1).ayL().Mka.NyS = this.lGg;
-        g.azz().a((q)localObject1, 0);
+        ((com.tencent.mm.ac.a.c)localObject1).aGe().TuQ.UMw = this.oBH;
+        h.aGY().a((q)localObject1, 0);
         AppMethodBeat.o(46053);
         return;
       }
-      if (this.lFR.equals("loginConfirm"))
+      if (this.oBs.equals("loginConfirm"))
       {
         Log.i("MicroMsg.JsApiLogin", "start loginConfirm");
         localObject2 = this.appId;
-        ArrayList localArrayList = this.lFQ;
+        ArrayList localArrayList = this.oBr;
         int i = this.loginType;
-        String str = this.lDx;
-        int j = this.iOo;
-        final int k = this.lFT;
-        localObject1 = new com.tencent.mm.aa.a.d((String)localObject2, i.A(localArrayList), i, str, j, k, this.lBE, new d.a() {});
-        if (((com.tencent.mm.aa.a.d)localObject1).ayN().Mka == null) {
-          ((com.tencent.mm.aa.a.d)localObject1).ayN().Mka = new fdg();
+        String str = this.oyZ;
+        int j = this.cBU;
+        int k = this.oBu;
+        localObject1 = new com.tencent.mm.ac.a.d((String)localObject2, i.B(localArrayList), i, str, j, k, this.owU, new JsApiLogin.LoginTask.7(this, (JsApiLogin.LoginTask.a)localObject1, k));
+        if (((com.tencent.mm.ac.a.d)localObject1).aGg().TuQ == null) {
+          ((com.tencent.mm.ac.a.d)localObject1).aGg().TuQ = new foh();
         }
-        ((com.tencent.mm.aa.a.d)localObject1).ayN().Mka.NyS = this.lGg;
-        g.azz().a((q)localObject1, 0);
+        ((com.tencent.mm.ac.a.d)localObject1).aGg().TuQ.UMw = this.oBH;
+        h.aGY().a((q)localObject1, 0);
       }
       AppMethodBeat.o(46053);
     }
     
-    public final void bjk()
+    public final void bsK()
     {
       AppMethodBeat.i(46054);
-      bDK();
-      if (!this.lGG.isRunning())
+      if (!this.oCo.isRunning())
       {
-        this.lFP.bEE();
+        this.oBq.bQe();
         AppMethodBeat.o(46054);
         return;
       }
       Object localObject;
-      if (this.lFS.equals("ok"))
+      if (this.oBt.equals("ok"))
       {
         localObject = new HashMap();
         ((Map)localObject).put("code", this.code);
-        localObject = this.lFN.n("ok", (Map)localObject);
-        this.lGG.i(this.lqe, (String)localObject);
-        this.lFP.bEE();
+        localObject = this.oBo.m("ok", (Map)localObject);
+        this.oCo.j(this.okO, (String)localObject);
+        this.oBq.bQe();
         AppMethodBeat.o(46054);
         return;
       }
-      if (this.lFS.equals("fail"))
+      if (this.oBt.equals("fail"))
       {
         if (Util.isNullOrNil(this.errMsg)) {}
         for (localObject = String.format("fail:login error %s", new Object[] { Integer.valueOf(this.errCode) });; localObject = String.format("fail:%s", new Object[] { this.errMsg }))
         {
-          this.lFN.b(this.lGG, this.lqe, (String)localObject);
-          this.lFP.bEE();
+          this.oBo.b(this.oCo, this.okO, (String)localObject);
+          this.oBq.bQe();
           AppMethodBeat.o(46054);
           return;
         }
       }
-      if (this.lFS.equals("needConfirm"))
+      if (this.oBt.equals("needConfirm"))
       {
         localObject = new LinkedList();
         int i = 0;
-        while (i < this.lGc)
+        while (i < this.oBD)
         {
-          byte[] arrayOfByte = this.lGd.getByteArray(String.valueOf(i));
-          drb localdrb = new drb();
+          byte[] arrayOfByte = this.oBE.getByteArray(String.valueOf(i));
+          eax localeax = new eax();
           try
           {
-            localdrb.parseFrom(arrayOfByte);
-            ((LinkedList)localObject).add(localdrb);
+            localeax.parseFrom(arrayOfByte);
+            ((LinkedList)localObject).add(localeax);
             i += 1;
           }
           catch (IOException localIOException)
           {
             Log.e("MicroMsg.JsApiLogin", "parse scope info error %s", new Object[] { localIOException.getMessage() });
             Log.printErrStackTrace("MicroMsg.JsApiLogin", localIOException, "", new Object[0]);
-            this.lFN.b(this.lGG, this.lqe, "fail:internal error scope error");
-            this.lFP.bEE();
+            this.oBo.b(this.oCo, this.okO, "fail:internal error scope error");
+            this.oBq.bQe();
             AppMethodBeat.o(46054);
             return;
           }
@@ -302,43 +300,43 @@ public final class JsApiLogin
           {
             public final void run()
             {
-              AppMethodBeat.i(46048);
-              com.tencent.mm.plugin.appbrand.widget.dialog.c.a local1 = new com.tencent.mm.plugin.appbrand.widget.dialog.c.a()
+              AppMethodBeat.i(272993);
+              c.a local1 = new c.a()
               {
                 public final void a(int paramAnonymous2Int, ArrayList<String> paramAnonymous2ArrayList)
                 {
-                  AppMethodBeat.i(46047);
+                  AppMethodBeat.i(278602);
                   Log.i("MicroMsg.JsApiLogin", "stev onRevMsg resultCode %d", new Object[] { Integer.valueOf(paramAnonymous2Int) });
                   switch (paramAnonymous2Int)
                   {
                   default: 
                     Log.d("MicroMsg.JsApiLogin", "press back button!");
-                    JsApiLogin.LoginTask.this.lFN.b(JsApiLogin.LoginTask.this.lGG, JsApiLogin.LoginTask.this.lqe, "fail auth cancel");
-                    JsApiLogin.LoginTask.this.lFP.bEE();
+                    JsApiLogin.LoginTask.this.oBo.b(JsApiLogin.LoginTask.this.oCo, JsApiLogin.LoginTask.this.okO, "fail auth cancel");
+                    JsApiLogin.LoginTask.this.oBq.bQe();
                   }
                   do
                   {
-                    AppMethodBeat.o(46047);
+                    AppMethodBeat.o(278602);
                     return;
-                    JsApiLogin.LoginTask.this.lFR = "loginConfirm";
-                    JsApiLogin.LoginTask.this.lFQ = paramAnonymous2ArrayList;
-                    JsApiLogin.LoginTask.this.lFT = paramAnonymous2Int;
-                    AppBrandMainProcessService.a(JsApiLogin.LoginTask.this);
+                    JsApiLogin.LoginTask.this.oBs = "loginConfirm";
+                    JsApiLogin.LoginTask.this.oBr = paramAnonymous2ArrayList;
+                    JsApiLogin.LoginTask.this.oBu = paramAnonymous2Int;
+                    JsApiLogin.LoginTask.this.bsM();
                   } while (paramAnonymous2Int != 2);
-                  JsApiLogin.LoginTask.this.lFN.b(JsApiLogin.LoginTask.this.lGG, JsApiLogin.LoginTask.this.lqe, "fail auth deny");
-                  JsApiLogin.LoginTask.this.lFP.bEE();
-                  AppMethodBeat.o(46047);
+                  JsApiLogin.LoginTask.this.oBo.b(JsApiLogin.LoginTask.this.oCo, JsApiLogin.LoginTask.this.okO, "fail auth deny");
+                  JsApiLogin.LoginTask.this.oBq.bQe();
+                  AppMethodBeat.o(278602);
                 }
               };
-              JsApiLogin.LoginTask.this.lGG.getDialogContainer().b(new com.tencent.mm.plugin.appbrand.widget.dialog.c(i.b(JsApiLogin.LoginTask.this.lGG), i.y(localIOException), JsApiLogin.LoginTask.this.mAppName, JsApiLogin.LoginTask.this.lFU, local1));
-              AppMethodBeat.o(46048);
+              JsApiLogin.LoginTask.this.oCo.getDialogContainer().a(new com.tencent.mm.plugin.appbrand.widget.dialog.c(i.b(JsApiLogin.LoginTask.this.oCo), i.z(localIOException), JsApiLogin.LoginTask.this.mAppName, JsApiLogin.LoginTask.this.oBv, local1));
+              AppMethodBeat.o(272993);
             }
           });
           AppMethodBeat.o(46054);
           return;
         }
-        this.lFN.b(this.lGG, this.lqe, "fail:internal error scope empty");
-        this.lFP.bEE();
+        this.oBo.b(this.oCo, this.okO, "fail:internal error scope empty");
+        this.oBq.bQe();
       }
       AppMethodBeat.o(46054);
     }
@@ -347,22 +345,22 @@ public final class JsApiLogin
     {
       AppMethodBeat.i(46055);
       this.data = paramParcel.readString();
-      this.lqe = paramParcel.readInt();
-      this.lFR = paramParcel.readString();
+      this.okO = paramParcel.readInt();
+      this.oBs = paramParcel.readString();
       this.appId = paramParcel.readString();
       this.code = paramParcel.readString();
-      this.lFS = paramParcel.readString();
-      this.lDx = paramParcel.readString();
+      this.oBt = paramParcel.readString();
+      this.oyZ = paramParcel.readString();
       this.loginType = paramParcel.readInt();
       this.mAppName = paramParcel.readString();
-      this.lFU = paramParcel.readString();
-      this.lGc = paramParcel.readInt();
-      this.lGd = paramParcel.readBundle(JsApiLogin.class.getClassLoader());
-      this.lFQ = paramParcel.createStringArrayList();
-      this.iOo = paramParcel.readInt();
-      this.lFT = paramParcel.readInt();
-      this.lBE = paramParcel.readInt();
-      this.lGg = paramParcel.readInt();
+      this.oBv = paramParcel.readString();
+      this.oBD = paramParcel.readInt();
+      this.oBE = paramParcel.readBundle(JsApiLogin.class.getClassLoader());
+      this.oBr = paramParcel.createStringArrayList();
+      this.cBU = paramParcel.readInt();
+      this.oBu = paramParcel.readInt();
+      this.owU = paramParcel.readInt();
+      this.oBH = paramParcel.readInt();
       this.errCode = paramParcel.readInt();
       this.errMsg = paramParcel.readString();
       AppMethodBeat.o(46055);
@@ -372,34 +370,25 @@ public final class JsApiLogin
     {
       AppMethodBeat.i(46056);
       paramParcel.writeString(this.data);
-      paramParcel.writeInt(this.lqe);
-      paramParcel.writeString(this.lFR);
+      paramParcel.writeInt(this.okO);
+      paramParcel.writeString(this.oBs);
       paramParcel.writeString(this.appId);
       paramParcel.writeString(this.code);
-      paramParcel.writeString(this.lFS);
-      paramParcel.writeString(this.lDx);
+      paramParcel.writeString(this.oBt);
+      paramParcel.writeString(this.oyZ);
       paramParcel.writeInt(this.loginType);
       paramParcel.writeString(this.mAppName);
-      paramParcel.writeString(this.lFU);
-      paramParcel.writeInt(this.lGc);
-      paramParcel.writeBundle(this.lGd);
-      paramParcel.writeStringList(this.lFQ);
-      paramParcel.writeInt(this.iOo);
-      paramParcel.writeInt(this.lFT);
-      paramParcel.writeInt(this.lBE);
-      paramParcel.writeInt(this.lGg);
+      paramParcel.writeString(this.oBv);
+      paramParcel.writeInt(this.oBD);
+      paramParcel.writeBundle(this.oBE);
+      paramParcel.writeStringList(this.oBr);
+      paramParcel.writeInt(this.cBU);
+      paramParcel.writeInt(this.oBu);
+      paramParcel.writeInt(this.owU);
+      paramParcel.writeInt(this.oBH);
       paramParcel.writeInt(this.errCode);
       paramParcel.writeString(this.errMsg);
       AppMethodBeat.o(46056);
-    }
-    
-    static abstract interface a
-    {
-      public abstract void a(LinkedList<drb> paramLinkedList, String paramString1, String paramString2, String paramString3);
-      
-      public abstract void ai(int paramInt, String paramString);
-      
-      public abstract void onSuccess(String paramString);
     }
   }
 }

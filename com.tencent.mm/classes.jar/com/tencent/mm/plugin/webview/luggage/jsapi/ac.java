@@ -38,7 +38,7 @@ public class ac
       AppMethodBeat.o(78567);
       return;
     }
-    paramString = f.cBv().Co(l);
+    paramString = f.cPZ().Ix(l);
     if (paramString.status == -1)
     {
       Log.e("MicroMsg.JsApiInstallDownloadTask", "installDownloadTask fail, apilevel not supported");
@@ -53,7 +53,7 @@ public class ac
       AppMethodBeat.o(78567);
       return;
     }
-    com.tencent.mm.plugin.downloader.g.a locala = d.Cw(l);
+    com.tencent.mm.plugin.downloader.g.a locala = d.IF(l);
     if (locala != null)
     {
       int i = paramContext.optInt("scene");
@@ -68,7 +68,7 @@ public class ac
     }
     com.tencent.mm.plugin.downloader.i.a.a(paramString.id, false, new com.tencent.mm.pluginsdk.permission.a()
     {
-      public final void hk(boolean paramAnonymousBoolean)
+      public final void ia(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(78566);
         if (paramAnonymousBoolean)
@@ -86,7 +86,7 @@ public class ac
   
   public final void b(b<s>.a paramb) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 1;
   }

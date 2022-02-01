@@ -1,43 +1,43 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.e;
+import com.google.b.a.b;
+import com.google.b.a.e;
 
 public final class a$h
   extends e
 {
-  public String gAb = "";
+  public long DPJ = 0L;
   public String groupId = "";
+  public String jke = "";
   public int roomId = 0;
   public long timestamp = 0L;
-  public long ypH = 0L;
   
   public a$h()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public final int Ig()
+  public final int JG()
   {
-    int j = super.Ig() + b.bu(1, this.roomId) + b.r(2, this.ypH) + b.f(3, this.gAb);
+    int j = super.JG() + b.bM(1, this.roomId) + b.p(2, this.DPJ) + b.g(3, this.jke);
     int i = j;
     if (!this.groupId.equals("")) {
-      i = j + b.f(4, this.groupId);
+      i = j + b.g(4, this.groupId);
     }
     j = i;
     if (this.timestamp != 0L) {
-      j = i + b.p(5, this.timestamp);
+      j = i + b.q(5, this.timestamp);
     }
     return j;
   }
   
   public final void a(b paramb)
   {
-    paramb.bs(1, this.roomId);
-    paramb.q(2, this.ypH);
-    paramb.e(3, this.gAb);
+    paramb.bJ(1, this.roomId);
+    paramb.r(2, this.DPJ);
+    paramb.f(3, this.jke);
     if (!this.groupId.equals("")) {
-      paramb.e(4, this.groupId);
+      paramb.f(4, this.groupId);
     }
     if (this.timestamp != 0L) {
       paramb.n(5, this.timestamp);

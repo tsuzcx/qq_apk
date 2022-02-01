@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:id="@id/h9h" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout android:paddingLeft="@dimen/ce" android:paddingTop="@dimen/ce" android:paddingRight="@dimen/ce" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="horizontal" android:id="@id/ipm" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cme" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@raw/icons_outlined_finder_icon" android:layout_marginEnd="@dimen/ct" app:iconColor="@color/Orange" app:layout_constraintBottom_toBottomOf="@id/d3x" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toTopOf="@id/d3x" />
+            <TextView android:id="@id/d3x" android:text="@string/da9" app:layout_constraintLeft_toRightOf="@id/cme" app:layout_constraintTop_toTopOf="g8m" style="@style/i0" />
+        </LinearLayout>
+        <TextView android:id="@id/cky" android:layout_marginTop="@dimen/ce" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toBottomOf="@id/ipm" style="@style/xn" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_marginBottom="@dimen/cr" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toBottomOf="@id/cky">
+            <Button android:id="@id/aib" android:minWidth="120.0dip" android:text="@string/sz" style="@style/p3" />
+            <Button android:id="@id/g3k" android:layout_marginLeft="@dimen/cb" android:minWidth="120.0dip" android:text="@string/x_" style="@style/ov" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.tencent.mm.ui.widget.RoundedCornerFrameLayout>

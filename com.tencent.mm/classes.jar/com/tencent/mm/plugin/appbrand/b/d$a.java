@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.b;
 
 public abstract interface d$a
 {
-  public abstract void ac(int paramInt, String paramString);
+  public abstract void ae(int paramInt, String paramString);
 }
 
 

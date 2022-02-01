@@ -1,19 +1,19 @@
 package com.tencent.mm.live.b.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.eg;
+import com.tencent.mm.f.c.el;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class b
-  extends eg
+  extends el
 {
   protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(224101);
+    AppMethodBeat.i(254230);
     IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
     localMAutoDBInfo.fields = new Field[7];
     localMAutoDBInfo.columns = new String[8];
@@ -49,7 +49,7 @@ public final class b
     localMAutoDBInfo.columns[7] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
     info = localMAutoDBInfo;
-    AppMethodBeat.o(224101);
+    AppMethodBeat.o(254230);
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()

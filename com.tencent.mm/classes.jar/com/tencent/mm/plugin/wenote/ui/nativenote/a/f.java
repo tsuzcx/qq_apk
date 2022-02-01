@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.l;
 import com.tencent.mm.plugin.wenote.model.a.c;
 import com.tencent.mm.plugin.wenote.model.a.e;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
@@ -13,18 +15,18 @@ import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
 public final class f
   extends a
 {
-  private TextView JKQ;
-  private View JKR;
-  public LinearLayout JKS;
+  private TextView QKj;
+  private View QKk;
+  public LinearLayout QKl;
   
   public f(View paramView, k paramk)
   {
     super(paramView, paramk);
     AppMethodBeat.i(30858);
-    this.JKS = ((LinearLayout)paramView.findViewById(2131305513));
-    this.JKS.setVisibility(0);
-    this.JKQ = ((TextView)paramView.findViewById(2131305515));
-    this.JKR = paramView.findViewById(2131305514);
+    this.QKl = ((LinearLayout)paramView.findViewById(R.h.dPU));
+    this.QKl.setVisibility(0);
+    this.QKj = ((TextView)paramView.findViewById(R.h.dPW));
+    this.QKk = paramView.findViewById(R.h.dPV);
     AppMethodBeat.o(30858);
   }
   
@@ -36,40 +38,40 @@ public final class f
       AppMethodBeat.o(30859);
       return;
     }
-    if (this.JJu.JIH == 3)
+    if (this.QIM.QHZ == 3)
     {
-      this.JKS.setVisibility(8);
+      this.QKl.setVisibility(8);
       AppMethodBeat.o(30859);
       return;
     }
-    this.JKS.setVisibility(0);
+    this.QKl.setVisibility(0);
     paramc = (e)paramc;
-    if (paramc.JHM <= 0L)
+    if (paramc.QHe <= 0L)
     {
       AppMethodBeat.o(30859);
       return;
     }
-    Object localObject = this.JKQ.getContext();
-    long l = paramc.JHM;
+    Object localObject = this.QKj.getContext();
+    long l = paramc.QHe;
     if (l < 3600000L) {}
-    for (paramc = "";; paramc = DateFormat.format(((Context)localObject).getString(2131759249), l))
+    for (paramc = "";; paramc = DateFormat.format(((Context)localObject).getString(R.l.favorite_longdate), l))
     {
-      localObject = this.JKQ.getContext().getString(2131763609);
+      localObject = this.QKj.getContext().getString(R.l.eMP);
       paramc = (String)localObject + " " + paramc;
-      this.JKQ.setText(paramc);
+      this.QKj.setText(paramc);
       AppMethodBeat.o(30859);
       return;
     }
   }
   
-  public final int cCY()
+  public final int cRD()
   {
     return -3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.a.f
  * JD-Core Version:    0.7.0.1
  */

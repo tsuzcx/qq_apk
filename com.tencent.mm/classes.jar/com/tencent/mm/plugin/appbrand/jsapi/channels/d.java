@@ -1,94 +1,77 @@
 package com.tencent.mm.plugin.appbrand.jsapi.channels;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
+import com.tencent.mm.plugin.appbrand.ipc.a;
+import com.tencent.mm.plugin.appbrand.jsapi.EmptyResult;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
 import kotlin.l;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/JsApiOpenChannelsLive;", "Lcom/tencent/mm/plugin/appbrand/jsapi/channels/JsApiOpenChannelsBase;", "()V", "action", "", "getAction", "()Ljava/lang/String;", "isParamValid", "", "extInfoJsonObj", "Lorg/json/JSONObject;", "preProcessExtInfo", "Companion", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/JsApiOpenChannelsCreateContact;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
 public final class d
-  extends c
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<e>
 {
-  private static final int CTRL_INDEX = 968;
-  private static final String NAME = "openChannelsLive";
-  public static final a lRA;
+  private static final int CTRL_INDEX = 985;
+  private static final String NAME = "openChannelsCreateContact";
+  public static final d.a oNV;
   
   static
   {
-    AppMethodBeat.i(228390);
-    lRA = new a((byte)0);
-    AppMethodBeat.o(228390);
+    AppMethodBeat.i(273099);
+    oNV = new d.a((byte)0);
+    AppMethodBeat.o(273099);
   }
   
-  public final boolean T(JSONObject paramJSONObject)
+  public d()
   {
-    AppMethodBeat.i(228388);
-    p.h(paramJSONObject, "extInfoJsonObj");
-    String str = paramJSONObject.optString("feedId");
-    p.g(str, "extInfoJsonObj.optString(PARAM_KEY_FEED_ID)");
-    if (((CharSequence)str).length() > 0)
-    {
-      i = 1;
-      if (i == 0) {
-        break label90;
-      }
-      paramJSONObject = paramJSONObject.optString("nonceId");
-      p.g(paramJSONObject, "extInfoJsonObj.optString(PARAM_KEY_NONCE_ID)");
-      if (((CharSequence)paramJSONObject).length() <= 0) {
-        break label85;
-      }
-    }
-    label85:
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        break label90;
-      }
-      AppMethodBeat.o(228388);
-      return true;
-      i = 0;
-      break;
-    }
-    label90:
-    AppMethodBeat.o(228388);
-    return false;
+    AppMethodBeat.i(273098);
+    com.tencent.mm.plugin.appbrand.permission.c.amg("openChannelsCreateContact");
+    AppMethodBeat.o(273098);
   }
   
-  public final boolean U(JSONObject paramJSONObject)
+  public final void a(e parame, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(228389);
-    p.h(paramJSONObject, "extInfoJsonObj");
-    try
+    AppMethodBeat.i(273096);
+    if (parame == null)
     {
-      paramJSONObject.put("feedID", paramJSONObject.optString("feedId"));
-      paramJSONObject.put("nonceID", paramJSONObject.optString("nonceId"));
-      paramJSONObject.put("commentScene", 15);
-      bool = true;
+      Log.w("MicroMsg.AppBrand.JsApiOpenChannelsCreateContact", "invoke, env is null");
+      AppMethodBeat.o(273096);
+      return;
     }
-    catch (Exception paramJSONObject)
+    paramJSONObject = parame.getContext();
+    if (paramJSONObject == null)
     {
-      for (;;)
-      {
-        Log.w("MicroMsg.AppBrand.JsApiOpenChannelsLive", "preProcessExtInfo, fail since ".concat(String.valueOf(paramJSONObject)));
-        boolean bool = false;
-      }
+      Log.w("MicroMsg.AppBrand.JsApiOpenChannelsCreateContact", "invoke, context is null");
+      parame.j(paramInt, agS("fail:internal error invalid android context"));
+      AppMethodBeat.o(273096);
+      return;
     }
-    AppMethodBeat.o(228389);
-    return bool;
+    a.a(paramJSONObject, (AppBrandProxyUIProcessTask.ProcessRequest)new OpenChannelsCreateContactRequest(), (AppBrandProxyUIProcessTask.b)b.oNW);
+    parame.j(paramInt, agS("ok"));
+    AppMethodBeat.o(273096);
   }
   
-  public final String getAction()
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/jsapi/EmptyResult;", "kotlin.jvm.PlatformType", "onReceiveResult"})
+  static final class b<R extends AppBrandProxyUIProcessTask.ProcessResult>
+    implements AppBrandProxyUIProcessTask.b<EmptyResult>
   {
-    return "openFinderLive";
+    public static final b oNW;
+    
+    static
+    {
+      AppMethodBeat.i(264865);
+      oNW = new b();
+      AppMethodBeat.o(264865);
+    }
   }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/channels/JsApiOpenChannelsLive$Companion;", "", "()V", "ACTION", "", "CTRL_INDEX", "", "NAME", "PARAM_KEY_COMMENT_SCENE", "PARAM_VALUE_COMMENT_SCENE", "TAG", "plugin-appbrand-integration_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.channels.d
  * JD-Core Version:    0.7.0.1
  */

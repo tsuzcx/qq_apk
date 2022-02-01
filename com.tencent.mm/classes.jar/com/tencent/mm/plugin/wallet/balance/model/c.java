@@ -11,14 +11,14 @@ import org.json.JSONObject;
 public final class c
   extends m
 {
-  public boolean HsS;
-  public String dNQ;
+  public boolean OkD;
+  public String fHb;
   
   public c(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4)
   {
-    AppMethodBeat.i(213845);
-    this.dNQ = null;
-    this.HsS = false;
+    AppMethodBeat.i(267199);
+    this.fHb = null;
+    this.OkD = false;
     HashMap localHashMap = new HashMap();
     localHashMap.put("flag", String.valueOf(paramInt1));
     localHashMap.put("passwd", paramString1);
@@ -27,17 +27,17 @@ public final class c
     localHashMap.put("pay_scene", String.valueOf(paramInt2));
     localHashMap.put("ignore_bind", paramString4);
     if ("0".equals(paramString4)) {
-      this.HsS = true;
+      this.OkD = true;
     }
     setRequestData(localHashMap);
     paramString1 = new HashMap();
-    if (z.hhq())
+    if (z.iiS())
     {
       paramString1.put("uuid_for_bindcard", z.getBindCardUuid());
-      paramString1.put("bindcard_scene", z.hhr());
+      paramString1.put("bindcard_scene", z.iiT());
     }
     setWXRequestData(paramString1);
-    AppMethodBeat.o(213845);
+    AppMethodBeat.o(267199);
   }
   
   public final int getFuncId()
@@ -64,7 +64,7 @@ public final class c
       AppMethodBeat.o(68393);
       return;
     }
-    this.dNQ = paramJSONObject.optString("req_key");
+    this.fHb = paramJSONObject.optString("req_key");
     AppMethodBeat.o(68393);
   }
 }

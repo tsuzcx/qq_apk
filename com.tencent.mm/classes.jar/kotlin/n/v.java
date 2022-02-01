@@ -4,35 +4,35 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"numberFormatError", "", "input", "", "toByteOrNull", "", "(Ljava/lang/String;)Ljava/lang/Byte;", "radix", "", "(Ljava/lang/String;I)Ljava/lang/Byte;", "toIntOrNull", "(Ljava/lang/String;)Ljava/lang/Integer;", "(Ljava/lang/String;I)Ljava/lang/Integer;", "toLongOrNull", "", "(Ljava/lang/String;)Ljava/lang/Long;", "(Ljava/lang/String;I)Ljava/lang/Long;", "toShortOrNull", "", "(Ljava/lang/String;)Ljava/lang/Short;", "(Ljava/lang/String;I)Ljava/lang/Short;", "kotlin-stdlib"}, hxG=1)
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"numberFormatError", "", "input", "", "toByteOrNull", "", "(Ljava/lang/String;)Ljava/lang/Byte;", "radix", "", "(Ljava/lang/String;I)Ljava/lang/Byte;", "toIntOrNull", "(Ljava/lang/String;)Ljava/lang/Integer;", "(Ljava/lang/String;I)Ljava/lang/Integer;", "toLongOrNull", "", "(Ljava/lang/String;)Ljava/lang/Long;", "(Ljava/lang/String;I)Ljava/lang/Long;", "toShortOrNull", "", "(Ljava/lang/String;)Ljava/lang/Short;", "(Ljava/lang/String;I)Ljava/lang/Short;", "kotlin-stdlib"}, iBN=1)
 public class v
   extends u
 {
-  public static final Integer buA(String paramString)
+  public static final Integer bHC(String paramString)
   {
     AppMethodBeat.i(129444);
-    p.h(paramString, "$this$toIntOrNull");
-    paramString = n.hT(paramString, 10);
+    p.k(paramString, "$this$toIntOrNull");
+    paramString = n.iC(paramString, 10);
     AppMethodBeat.o(129444);
     return paramString;
   }
   
-  public static final Long buB(String paramString)
+  public static final Long bHD(String paramString)
   {
     AppMethodBeat.i(129446);
-    p.h(paramString, "$this$toLongOrNull");
-    paramString = n.hU(paramString, 10);
+    p.k(paramString, "$this$toLongOrNull");
+    paramString = n.iD(paramString, 10);
     AppMethodBeat.o(129446);
     return paramString;
   }
   
-  public static final Integer hT(String paramString, int paramInt)
+  public static final Integer iC(String paramString, int paramInt)
   {
     int k = -2147483647;
     int n = 0;
     AppMethodBeat.i(129445);
-    p.h(paramString, "$this$toIntOrNull");
-    a.avR(paramInt);
+    p.k(paramString, "$this$toIntOrNull");
+    a.aFL(paramInt);
     int i2 = paramString.length();
     if (i2 == 0)
     {
@@ -119,12 +119,12 @@ public class v
     return Integer.valueOf(paramInt);
   }
   
-  public static final Long hU(String paramString, int paramInt)
+  public static final Long iD(String paramString, int paramInt)
   {
     long l2 = -9223372036854775807L;
     AppMethodBeat.i(129447);
-    p.h(paramString, "$this$toLongOrNull");
-    a.avR(paramInt);
+    p.k(paramString, "$this$toLongOrNull");
+    a.aFL(paramInt);
     int k = paramString.length();
     if (k == 0)
     {

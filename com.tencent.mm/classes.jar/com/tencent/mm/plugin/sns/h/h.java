@@ -9,33 +9,33 @@ import java.util.Map;
 
 public final class h
 {
-  public String DQS;
-  public String DQT;
-  public String DRG;
-  public int[] DRH;
-  public int DRt;
-  public List<a> DRu;
-  public boolean dGX;
-  public String yFy;
+  public String Ejr;
+  public String KdZ;
+  public int KeA;
+  public List<a> KeB;
+  public String KeN;
+  public int[] KeO;
+  public String Kea;
+  public boolean fzO;
   
   public h()
   {
     AppMethodBeat.i(96140);
-    this.DQT = "";
-    this.DQS = "";
-    this.yFy = "";
-    this.DRG = "";
-    this.DRt = 0;
-    this.DRu = new ArrayList();
-    this.dGX = true;
+    this.Kea = "";
+    this.KdZ = "";
+    this.Ejr = "";
+    this.KeN = "";
+    this.KeA = 0;
+    this.KeB = new ArrayList();
+    this.fzO = true;
     AppMethodBeat.o(96140);
   }
   
   public final boolean f(String paramString1, String paramString2, Map<String, String> paramMap)
   {
     AppMethodBeat.i(96142);
-    this.DQT = paramString1;
-    this.DQS = paramString2;
+    this.Kea = paramString1;
+    this.KdZ = paramString2;
     if (paramMap == null)
     {
       AppMethodBeat.o(96142);
@@ -43,15 +43,15 @@ public final class h
     }
     try
     {
-      this.DRu.clear();
-      this.yFy = Util.nullAs((String)paramMap.get("language"), "");
-      this.DRG = Util.nullAs((String)paramMap.get("first_step_order"), "");
-      paramString2 = this.DRG.split("\\|");
-      this.DRH = new int[paramString2.length];
-      if (this.DRH.length != 0) {
+      this.KeB.clear();
+      this.Ejr = Util.nullAs((String)paramMap.get("language"), "");
+      this.KeN = Util.nullAs((String)paramMap.get("first_step_order"), "");
+      paramString2 = this.KeN.split("\\|");
+      this.KeO = new int[paramString2.length];
+      if (this.KeO.length != 0) {
         break label476;
       }
-      this.dGX = false;
+      this.fzO = false;
     }
     catch (Exception paramString1)
     {
@@ -68,9 +68,9 @@ public final class h
     }
     if (i < paramString2.length)
     {
-      this.DRH[i] = Util.safeParseInt(paramString2[i]);
-      if ((this.DRH[i] <= 0) || (this.DRH[i] > 3)) {
-        this.dGX = false;
+      this.KeO[i] = Util.safeParseInt(paramString2[i]);
+      if ((this.KeO[i] <= 0) || (this.KeO[i] > 3)) {
+        this.fzO = false;
       }
     }
     else
@@ -81,24 +81,24 @@ public final class h
       while (i < j)
       {
         paramString2 = new a();
-        paramString2.DQm = Util.safeParseInt((String)paramMap.get(String.format("wording_%d_id", new Object[] { Integer.valueOf(i + 1) })));
-        paramString2.DQn = Util.nullAs((String)paramMap.get(String.format("wording_%d_zh_CN", new Object[] { Integer.valueOf(i + 1) })), "");
-        paramString2.DQo = Util.nullAs((String)paramMap.get(String.format("wording_%d_zh_TW", new Object[] { Integer.valueOf(i + 1) })), "");
-        paramString2.DQp = Util.nullAs((String)paramMap.get(String.format("wording_%d_en", new Object[] { Integer.valueOf(i + 1) })), "");
-        paramString2.DQq = Util.safeParseInt((String)paramMap.get(String.format("wording_%d_action_type", new Object[] { Integer.valueOf(i + 1) })));
-        this.DRu.add(paramString2);
+        paramString2.Kdt = Util.safeParseInt((String)paramMap.get(String.format("wording_%d_id", new Object[] { Integer.valueOf(i + 1) })));
+        paramString2.Kdu = Util.nullAs((String)paramMap.get(String.format("wording_%d_zh_CN", new Object[] { Integer.valueOf(i + 1) })), "");
+        paramString2.Kdv = Util.nullAs((String)paramMap.get(String.format("wording_%d_zh_TW", new Object[] { Integer.valueOf(i + 1) })), "");
+        paramString2.Kdw = Util.nullAs((String)paramMap.get(String.format("wording_%d_en", new Object[] { Integer.valueOf(i + 1) })), "");
+        paramString2.Kdx = Util.safeParseInt((String)paramMap.get(String.format("wording_%d_action_type", new Object[] { Integer.valueOf(i + 1) })));
+        this.KeB.add(paramString2);
         i += 1;
       }
-      Log.i("MicroMsg.SnsAdAbTestInfo", "expertType " + k + " " + paramString1 + " " + this.DRG);
+      Log.i("MicroMsg.SnsAdAbTestInfo", "expertType " + k + " " + paramString1 + " " + this.KeN);
       AppMethodBeat.o(96142);
       return false;
     }
   }
   
-  public final boolean fcq()
+  public final boolean fQj()
   {
     AppMethodBeat.i(96141);
-    if ((this.dGX) && (this.DRu != null) && (this.DRu.size() > 0))
+    if ((this.fzO) && (this.KeB != null) && (this.KeB.size() > 0))
     {
       AppMethodBeat.o(96141);
       return true;
@@ -109,7 +109,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.h.h
  * JD-Core Version:    0.7.0.1
  */

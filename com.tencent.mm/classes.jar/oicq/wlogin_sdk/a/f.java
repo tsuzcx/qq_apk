@@ -5,30 +5,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class f
   extends a
 {
-  int Udq = 0;
+  int abGF = 0;
   
   public f()
   {
-    this.Ucx = 260;
+    this.abFM = 260;
   }
   
-  public final byte[] jdMethod_do(byte[] paramArrayOfByte)
+  public final byte[] dN(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(88119);
-    this.Udq = paramArrayOfByte.length;
-    byte[] arrayOfByte = new byte[this.Udq];
+    this.abGF = paramArrayOfByte.length;
+    byte[] arrayOfByte = new byte[this.abGF];
     System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, paramArrayOfByte.length);
-    super.awj(this.Ucx);
-    super.ak(arrayOfByte, this.Udq);
-    super.hPB();
-    paramArrayOfByte = super.hPx();
+    super.aGe(this.abFM);
+    super.am(arrayOfByte, this.abGF);
+    super.iUJ();
+    paramArrayOfByte = super.iUF();
     AppMethodBeat.o(88119);
     return paramArrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     oicq.wlogin_sdk.a.f
  * JD-Core Version:    0.7.0.1
  */

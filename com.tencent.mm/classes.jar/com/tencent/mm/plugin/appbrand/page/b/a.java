@@ -1,71 +1,68 @@
 package com.tencent.mm.plugin.appbrand.page.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.t;
-import com.tencent.mm.plugin.appbrand.page.x;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.page.u;
+import com.tencent.mm.plugin.appbrand.page.y;
+import com.tencent.mm.plugin.appbrand.t;
 import com.tencent.mm.plugin.report.service.h;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/page/navigation/AppBrandPageConfirmNavigateBackInterceptorWC;", "Lcom/tencent/mm/plugin/appbrand/page/navigation/BaseAppBrandPageConfirmNavigateBackInterceptor;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "()V", "onClickDialogLeaveButton", "", "runtime", "onClickDialogStayButton", "onCustomIntercept", "", "scene", "", "onInterceptionDialogShown", "reportEvent", "eventId", "", "Companion", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/page/navigation/AppBrandPageConfirmNavigateBackInterceptorWC;", "Lcom/tencent/mm/plugin/appbrand/page/navigation/BaseAppBrandPageConfirmNavigateBackInterceptor;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "()V", "onClickDialogLeaveButton", "", "runtime", "onClickDialogStayButton", "onCustomIntercept", "", "scene", "", "onInterceptionDialogShown", "reportEvent", "eventId", "", "Companion", "plugin-appbrand-integration_release"})
 public final class a
-  extends c<q>
+  extends c<t>
 {
-  public static final a nvI;
+  public static final a.a qxK;
   
   static
   {
-    AppMethodBeat.i(229252);
-    nvI = new a((byte)0);
-    AppMethodBeat.o(229252);
+    AppMethodBeat.i(268157);
+    qxK = new a.a((byte)0);
+    AppMethodBeat.o(268157);
   }
   
-  private static void a(q paramq, int paramInt)
+  private static void a(t paramt, int paramInt)
   {
-    AppMethodBeat.i(229251);
-    Object localObject = paramq.bsD();
-    p.g(localObject, "runtime.pageContainer");
-    localObject = ((x)localObject).getCurrentPage();
+    AppMethodBeat.i(268156);
+    Object localObject = paramt.bDz();
+    p.j(localObject, "runtime.pageContainer");
+    localObject = ((y)localObject).getCurrentPage();
     if (localObject != null)
     {
-      g localg = ((t)localObject).a(i.nvW);
+      g localg = ((u)localObject).a(i.qxY);
       if (localg != null)
       {
-        h localh = h.CyF;
-        String str = paramq.getAppId();
+        h localh = h.IzE;
+        String str = paramt.getAppId();
         long l = System.currentTimeMillis();
-        paramq = paramq.bsD();
-        p.g(paramq, "runtime.pageContainer");
-        paramq = paramq.getCurrentPage();
-        if (paramq != null)
+        paramt = paramt.bDz();
+        p.j(paramt, "runtime.pageContainer");
+        paramt = paramt.getCurrentPage();
+        if (paramt != null)
         {
-          localObject = paramq.getCurrentUrl();
-          paramq = (q)localObject;
+          localObject = paramt.getCurrentUrl();
+          paramt = (t)localObject;
           if (localObject != null) {}
         }
         else
         {
-          paramq = "";
+          paramt = "";
         }
         if (paramInt == 1) {}
-        for (localObject = localg.nvR;; localObject = "")
+        for (localObject = localg.qxT;; localObject = "")
         {
-          localh.a(19169, new Object[] { str, Long.valueOf(l), paramq, Integer.valueOf(paramInt), localObject });
-          AppMethodBeat.o(229251);
+          localh.a(19169, new Object[] { str, Long.valueOf(l), paramt, Integer.valueOf(paramInt), localObject });
+          AppMethodBeat.o(268156);
           return;
         }
       }
     }
-    AppMethodBeat.o(229251);
+    AppMethodBeat.o(268156);
   }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/page/navigation/AppBrandPageConfirmNavigateBackInterceptorWC$Companion;", "", "()V", "REPORT_EVENT_CLICK_LEAVE_BUTTON", "", "REPORT_EVENT_CLICK_STAY_BUTTON", "REPORT_EVENT_SHOW_DIALOG", "TAG", "", "plugin-appbrand-integration_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.b.a
  * JD-Core Version:    0.7.0.1
  */

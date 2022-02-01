@@ -109,7 +109,7 @@ public class collect_sound_off
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.collect_sound_off
  * JD-Core Version:    0.7.0.1
  */

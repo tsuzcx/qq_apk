@@ -20,6 +20,6 @@
     <RelativeLayout android:id="@id/edj" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/edq">
         <ProgressBar android:id="@id/edl" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a61" />
         <TextView android:textColor="@color/u_" android:id="@id/edp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eh1" android:layout_centerInParent="true" />
-        <android.support.v7.widget.RecyclerView android:id="@id/edk" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/edk" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </RelativeLayout>
 </RelativeLayout>

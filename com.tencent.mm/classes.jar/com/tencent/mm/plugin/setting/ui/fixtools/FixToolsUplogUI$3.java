@@ -15,16 +15,16 @@ final class FixToolsUplogUI$3
   {
     AppMethodBeat.i(73825);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/setting/ui/fixtools/FixToolsUplogUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    FixToolsUplogUI.b(this.CYF);
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/setting/ui/fixtools/FixToolsUplogUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    FixToolsUplogUI.b(this.Jel);
     a.a(this, "com/tencent/mm/plugin/setting/ui/fixtools/FixToolsUplogUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(73825);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.fixtools.FixToolsUplogUI.3
  * JD-Core Version:    0.7.0.1
  */

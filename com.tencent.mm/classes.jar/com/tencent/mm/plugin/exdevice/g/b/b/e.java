@@ -4,7 +4,7 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.g.b.a;
 import com.tencent.mm.plugin.exdevice.g.b.d;
-import com.tencent.mm.plugin.exdevice.model.ad;
+import com.tencent.mm.plugin.exdevice.model.ae;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
@@ -35,41 +35,7 @@ public final class e
     AppMethodBeat.o(23583);
   }
   
-  public final ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.e> anG(String paramString)
-  {
-    com.tencent.mm.plugin.exdevice.g.b.a.e locale = null;
-    AppMethodBeat.i(23584);
-    if (Util.isNullOrNil(paramString))
-    {
-      Log.e("MicroMsg.ExdeviceRankLikeUserStg", "hy: param error");
-      AppMethodBeat.o(23584);
-      return null;
-    }
-    Object localObject = String.format("select *, rowid from %s where %s = ? order by %s desc", new Object[] { "HardDeviceLikeUser", "rankID", "timestamp" });
-    localObject = this.db.rawQuery((String)localObject, new String[] { Util.nullAs(paramString, "") }, 2);
-    if (localObject == null)
-    {
-      Log.e("MicroMsg.ExdeviceRankLikeUserStg", "Get no rank in DB");
-      AppMethodBeat.o(23584);
-      return null;
-    }
-    paramString = locale;
-    if (((Cursor)localObject).moveToFirst())
-    {
-      paramString = new ArrayList();
-      do
-      {
-        locale = new com.tencent.mm.plugin.exdevice.g.b.a.e();
-        locale.convertFrom((Cursor)localObject);
-        paramString.add(locale);
-      } while (((Cursor)localObject).moveToNext());
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(23584);
-    return paramString;
-  }
-  
-  public final void b(String paramString1, String paramString2, ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.e> paramArrayList)
+  public final void a(String paramString1, String paramString2, ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.e> paramArrayList)
   {
     AppMethodBeat.i(23585);
     if (!Util.isNullOrNil(paramString1)) {}
@@ -104,13 +70,47 @@ public final class e
         Log.w("MicroMsg.ExdeviceRankLikeUserStg", "hy: insert or update failed");
       }
     }
-    ad.cKU().a("HardDeviceLikeUser", new d(paramString1, paramString2, null));
+    ae.cZH().a("HardDeviceLikeUser", new d(paramString1, paramString2, null));
     AppMethodBeat.o(23585);
+  }
+  
+  public final ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.e> avF(String paramString)
+  {
+    com.tencent.mm.plugin.exdevice.g.b.a.e locale = null;
+    AppMethodBeat.i(23584);
+    if (Util.isNullOrNil(paramString))
+    {
+      Log.e("MicroMsg.ExdeviceRankLikeUserStg", "hy: param error");
+      AppMethodBeat.o(23584);
+      return null;
+    }
+    Object localObject = String.format("select *, rowid from %s where %s = ? order by %s desc", new Object[] { "HardDeviceLikeUser", "rankID", "timestamp" });
+    localObject = this.db.rawQuery((String)localObject, new String[] { Util.nullAs(paramString, "") }, 2);
+    if (localObject == null)
+    {
+      Log.e("MicroMsg.ExdeviceRankLikeUserStg", "Get no rank in DB");
+      AppMethodBeat.o(23584);
+      return null;
+    }
+    paramString = locale;
+    if (((Cursor)localObject).moveToFirst())
+    {
+      paramString = new ArrayList();
+      do
+      {
+        locale = new com.tencent.mm.plugin.exdevice.g.b.a.e();
+        locale.convertFrom((Cursor)localObject);
+        paramString.add(locale);
+      } while (((Cursor)localObject).moveToNext());
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(23584);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.g.b.b.e
  * JD-Core Version:    0.7.0.1
  */

@@ -510,11 +510,12 @@ public abstract class ChildProcessService
             Log.e("ChildProcessService", "@mMainThread loadNativeLibrary failed!", new Object[0]);
             ??? = c.a(-1, new com.tencent.mm.hellhoundlib.b.a());
             Object localObject3 = new Object();
-            com.tencent.mm.hellhoundlib.a.a.a(localObject3, ((com.tencent.mm.hellhoundlib.b.a)???).axQ(), "com/tencent/smtt/sandbox/ChildProcessService$2", "run", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
-            System.exit(((Integer)((com.tencent.mm.hellhoundlib.b.a)???).pG(0)).intValue());
-            com.tencent.mm.hellhoundlib.a.a.a(localObject3, "com/tencent/smtt/sandbox/ChildProcessService$2", "run", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
+            com.tencent.mm.hellhoundlib.a.a.b(localObject3, ((com.tencent.mm.hellhoundlib.b.a)???).aFh(), "com/tencent/smtt/sandbox/ChildProcessService$2", "run", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
+            System.exit(((Integer)((com.tencent.mm.hellhoundlib.b.a)???).sf(0)).intValue());
+            com.tencent.mm.hellhoundlib.a.a.c(localObject3, "com/tencent/smtt/sandbox/ChildProcessService$2", "run", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
             ChildProcessService.this.mDelegate.initCommandLine(ChildProcessService.this.mCommandLineParams);
           }
+          label454:
           synchronized (ChildProcessService.this.mLibraryInitializedLock)
           {
             ChildProcessService.access$1002(ChildProcessService.this, true);
@@ -524,7 +525,7 @@ public abstract class ChildProcessService
             {
               ChildProcessService.this.mMainThread.notifyAll();
               if (ChildProcessService.this.mFdInfos != null) {
-                break;
+                break label454;
               }
               ChildProcessService.this.mMainThread.wait();
             }
@@ -534,7 +535,6 @@ public abstract class ChildProcessService
             i.e();
           }
         }
-        Log.d("ChildProcessService", "@mMainThread after mMainThread.wait");
         SparseArray localSparseArray = ChildProcessService.this.mDelegate.getFileDescriptorsIdsToKeys();
         Log.d("ChildProcessService", "@mMainThread after getFileDescriptorsIdsToKeys");
         int[] arrayOfInt1 = new int[ChildProcessService.this.mFdInfos.length];
@@ -605,9 +605,9 @@ public abstract class ChildProcessService
     {
       ??? = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
       Object localObject2 = new Object();
-      com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)???).axQ(), "com/tencent/smtt/sandbox/ChildProcessService", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
-      System.exit(((Integer)((com.tencent.mm.hellhoundlib.b.a)???).pG(0)).intValue());
-      com.tencent.mm.hellhoundlib.a.a.a(localObject2, "com/tencent/smtt/sandbox/ChildProcessService", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
+      com.tencent.mm.hellhoundlib.a.a.b(localObject2, ((com.tencent.mm.hellhoundlib.b.a)???).aFh(), "com/tencent/smtt/sandbox/ChildProcessService", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
+      System.exit(((Integer)((com.tencent.mm.hellhoundlib.b.a)???).sf(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.c(localObject2, "com/tencent/smtt/sandbox/ChildProcessService", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
       return;
     }
     synchronized (this.mLibraryInitializedLock)
@@ -629,7 +629,7 @@ public abstract class ChildProcessService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.sandbox.ChildProcessService
  * JD-Core Version:    0.7.0.1
  */

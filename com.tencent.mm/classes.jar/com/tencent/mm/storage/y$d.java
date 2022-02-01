@@ -6,18 +6,18 @@ import kotlin.g.a.a;
 import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MMKVSlotManager;", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MMKVSlotManager;", "invoke"})
 final class y$d
   extends q
   implements a<MMKVSlotManager>
 {
-  public static final d NQb;
+  public static final d VdT;
   
   static
   {
-    AppMethodBeat.i(212582);
-    NQb = new d();
-    AppMethodBeat.o(212582);
+    AppMethodBeat.i(207247);
+    VdT = new d();
+    AppMethodBeat.o(207247);
   }
   
   y$d()

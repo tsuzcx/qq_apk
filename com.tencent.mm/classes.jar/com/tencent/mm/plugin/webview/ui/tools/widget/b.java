@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools.widget;
 
 public abstract interface b
 {
-  public abstract boolean Lc(String paramString);
+  public abstract boolean Sv(String paramString);
 }
 
 

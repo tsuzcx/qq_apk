@@ -12,6 +12,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import com.tencent.kinda.framework.R.color;
+import com.tencent.kinda.framework.R.id;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class KindaButtonImpl
@@ -58,10 +60,10 @@ public class KindaButtonImpl
     this.mKButtonTextView.setKindaButton(this);
     paramContext = new ViewGroup.LayoutParams(-1, -1);
     this.mKButtonTextView.setLayoutParams(paramContext);
-    this.mKButtonTextView.setBackgroundResource(2131101287);
+    this.mKButtonTextView.setBackgroundResource(R.color.transparent);
     this.mKButtonTextView.setGravity(17);
     addView(this.mKButtonTextView);
-    super.setId(2131302965);
+    super.setId(R.id.kinda_button_impl_wrapper);
     AppMethodBeat.o(18859);
   }
   
@@ -213,7 +215,7 @@ public class KindaButtonImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaButtonImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,105 +1,105 @@
 package com.tencent.mm.plugin.finder.nearby.video;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.m;
-import android.support.v7.widget.RecyclerView.s;
-import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
 import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.h;
+import androidx.recyclerview.widget.RecyclerView.m;
+import androidx.recyclerview.widget.RecyclerView.s;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.convert.cp;
-import com.tencent.mm.plugin.finder.convert.v;
+import com.tencent.mm.plugin.finder.b.d;
+import com.tencent.mm.plugin.finder.convert.cv;
+import com.tencent.mm.plugin.finder.convert.w;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.storage.al;
+import com.tencent.mm.plugin.finder.storage.ak;
 import com.tencent.mm.plugin.finder.view.manager.FinderStaggeredGridLayoutManager;
-import com.tencent.mm.plugin.finder.viewmodel.FinderRecyclerViewPool;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.component.a;
+import com.tencent.mm.ui.component.g;
+import com.tencent.mm.ui.component.g.a;
 import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.h;
+import com.tencent.mm.view.recyclerview.i;
 import java.util.List;
 import kotlin.g.a.b;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoStaggeredConfig;", "Lcom/tencent/mm/plugin/finder/storage/IFinderLayoutConfig;", "context", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "getContext", "()Lcom/tencent/mm/ui/MMActivity;", "spanCount", "", "getSpanCount", "()I", "bindConvert", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getDefaultConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "getItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "extraMap", "Lkotlin/Function1;", "getItemDecoration", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "Landroid/content/Context;", "getViewPool", "Landroid/support/v7/widget/RecyclerView$RecycledViewPool;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoStaggeredConfig;", "Lcom/tencent/mm/plugin/finder/storage/IFinderLayoutConfig;", "context", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "getContext", "()Lcom/tencent/mm/ui/MMActivity;", "spanCount", "", "getSpanCount", "()I", "bindConvert", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getDefaultConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "getItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "extraMap", "Lkotlin/Function1;", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroidx/recyclerview/widget/RecyclerView$LayoutManager;", "Landroid/content/Context;", "getViewPool", "Landroidx/recyclerview/widget/RecyclerView$RecycledViewPool;", "plugin-finder-nearby_release"})
 public final class c
-  extends al
+  extends ak
 {
-  private final int att;
-  private final MMActivity gte;
+  private final MMActivity iXq;
+  private final int spanCount;
   
   public c(MMActivity paramMMActivity)
   {
-    AppMethodBeat.i(249462);
-    this.gte = paramMMActivity;
-    this.att = 2;
-    AppMethodBeat.o(249462);
+    AppMethodBeat.i(199837);
+    this.iXq = paramMMActivity;
+    this.spanCount = 2;
+    AppMethodBeat.o(199837);
   }
   
-  public final com.tencent.mm.view.recyclerview.f G(final b<? super Integer, ? extends e<?>> paramb)
+  public final com.tencent.mm.view.recyclerview.f O(final b<? super Integer, ? extends e<?>> paramb)
   {
-    AppMethodBeat.i(249460);
+    AppMethodBeat.i(199835);
     paramb = (com.tencent.mm.view.recyclerview.f)new a(this, paramb);
-    AppMethodBeat.o(249460);
+    AppMethodBeat.o(199835);
     return paramb;
   }
   
-  public final com.tencent.mm.view.recyclerview.f dcK()
+  public final com.tencent.mm.view.recyclerview.f dtg()
   {
-    AppMethodBeat.i(249459);
-    com.tencent.mm.view.recyclerview.f localf = G(null);
-    AppMethodBeat.o(249459);
+    AppMethodBeat.i(199833);
+    com.tencent.mm.view.recyclerview.f localf = O(null);
+    AppMethodBeat.o(199833);
     return localf;
   }
   
-  public final RecyclerView.LayoutManager eS(Context paramContext)
+  public final RecyclerView.LayoutManager eW(Context paramContext)
   {
-    AppMethodBeat.i(249457);
-    p.h(paramContext, "context");
-    paramContext = new FinderStaggeredGridLayoutManager(this.att);
+    AppMethodBeat.i(199830);
+    p.k(paramContext, "context");
+    paramContext = new FinderStaggeredGridLayoutManager(this.spanCount);
     paramContext.setItemPrefetchEnabled(true);
     paramContext = (RecyclerView.LayoutManager)paramContext;
-    AppMethodBeat.o(249457);
+    AppMethodBeat.o(199830);
     return paramContext;
   }
   
-  public final RecyclerView.m f(MMActivity paramMMActivity)
+  public final RecyclerView.m g(MMActivity paramMMActivity)
   {
-    AppMethodBeat.i(249461);
-    p.h(paramMMActivity, "context");
-    a locala = a.PRN;
-    paramMMActivity = ((FinderRecyclerViewPool)a.b((AppCompatActivity)paramMMActivity).get(FinderRecyclerViewPool.class)).wuw;
-    AppMethodBeat.o(249461);
+    AppMethodBeat.i(199836);
+    p.k(paramMMActivity, "context");
+    g localg = g.Xox;
+    paramMMActivity = ((com.tencent.mm.plugin.finder.viewmodel.c)g.b((AppCompatActivity)paramMMActivity).i(com.tencent.mm.plugin.finder.viewmodel.c.class)).BgV;
+    AppMethodBeat.o(199836);
     return paramMMActivity;
   }
   
   public final RecyclerView.h getItemDecoration()
   {
-    AppMethodBeat.i(249458);
+    AppMethodBeat.i(199832);
     RecyclerView.h localh = (RecyclerView.h)new b();
-    AppMethodBeat.o(249458);
+    AppMethodBeat.o(199832);
     return localh;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/nearby/video/NearbyVideoStaggeredConfig$getItemConvertFactory$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/nearby/video/NearbyVideoStaggeredConfig$getItemConvertFactory$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder-nearby_release"})
   public static final class a
     implements com.tencent.mm.view.recyclerview.f
   {
     a(b paramb) {}
     
-    public final e<?> EC(int paramInt)
+    public final e<?> yx(int paramInt)
     {
-      AppMethodBeat.i(249455);
+      AppMethodBeat.i(203719);
       switch (paramInt)
       {
       default: 
@@ -115,7 +115,7 @@ public final class c
         if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED))
         {
           localObject = (Throwable)new RuntimeException("type invalid");
-          AppMethodBeat.o(249455);
+          AppMethodBeat.o(203719);
           throw ((Throwable)localObject);
         }
         break;
@@ -123,106 +123,106 @@ public final class c
       case 9: 
       case 3002: 
         localObject = (e)new a(this);
-        AppMethodBeat.o(249455);
+        AppMethodBeat.o(203719);
         return localObject;
       case 2: 
       case 3001: 
         localObject = (e)new b(this);
-        AppMethodBeat.o(249455);
+        AppMethodBeat.o(203719);
         return localObject;
       }
       Log.printInfoStack("FinderGridLayoutConfig", "type invalid", new Object[0]);
       Object localObject = (e)new com.tencent.mm.plugin.finder.convert.f();
       label183:
-      AppMethodBeat.o(249455);
+      AppMethodBeat.o(203719);
       return localObject;
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/nearby/video/NearbyVideoStaggeredConfig$getItemConvertFactory$1$getItemConvert$1", "Lcom/tencent/mm/plugin/finder/convert/NearbyVideoFeedConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/nearby/video/NearbyVideoStaggeredConfig$getItemConvertFactory$1$getItemConvert$1", "Lcom/tencent/mm/plugin/finder/convert/NearbyVideoFeedConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder-nearby_release"})
     public static final class a
-      extends cp
+      extends cv
     {
-      public final void a(h paramh, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
+      public final void a(i parami, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
       {
-        AppMethodBeat.i(249451);
-        p.h(paramh, "holder");
-        p.h(paramBaseFinderFeed, "item");
-        super.a(paramh, paramBaseFinderFeed, paramInt1, paramInt2, paramBoolean, paramList);
-        c.l(paramh, paramBaseFinderFeed);
-        AppMethodBeat.o(249451);
+        AppMethodBeat.i(200431);
+        p.k(parami, "holder");
+        p.k(paramBaseFinderFeed, "item");
+        super.a(parami, paramBaseFinderFeed, paramInt1, paramInt2, paramBoolean, paramList);
+        c.m(parami, paramBaseFinderFeed);
+        AppMethodBeat.o(200431);
       }
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/nearby/video/NearbyVideoStaggeredConfig$getItemConvertFactory$1$getItemConvert$2", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedImageRoundCornerConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/nearby/video/NearbyVideoStaggeredConfig$getItemConvertFactory$1$getItemConvert$2", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedImageRoundCornerConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder-nearby_release"})
     public static final class b
-      extends v
+      extends w
     {
-      public final void a(h paramh, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
+      public final void a(i parami, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
       {
-        AppMethodBeat.i(249453);
-        p.h(paramh, "holder");
-        p.h(paramBaseFinderFeed, "item");
-        super.a(paramh, paramBaseFinderFeed, paramInt1, paramInt2, paramBoolean, paramList);
-        c.l(paramh, paramBaseFinderFeed);
-        AppMethodBeat.o(249453);
+        AppMethodBeat.i(201230);
+        p.k(parami, "holder");
+        p.k(paramBaseFinderFeed, "item");
+        super.a(parami, paramBaseFinderFeed, paramInt1, paramInt2, paramBoolean, paramList);
+        c.m(parami, paramBaseFinderFeed);
+        AppMethodBeat.o(201230);
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/nearby/video/NearbyVideoStaggeredConfig$getItemDecoration$1", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/nearby/video/NearbyVideoStaggeredConfig$getItemDecoration$1", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "plugin-finder-nearby_release"})
   public static final class b
     extends RecyclerView.h
   {
     public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
     {
-      AppMethodBeat.i(249456);
-      p.h(paramRect, "outRect");
-      p.h(paramView, "view");
-      p.h(paramRecyclerView, "parent");
-      p.h(params, "state");
+      AppMethodBeat.i(200634);
+      p.k(paramRect, "outRect");
+      p.k(paramView, "view");
+      p.k(paramRecyclerView, "parent");
+      p.k(params, "state");
       paramRecyclerView = paramView.getContext();
-      p.g(paramRecyclerView, "view.context");
-      int i = (int)paramRecyclerView.getResources().getDimension(2131165277);
+      p.j(paramRecyclerView, "view.context");
+      int i = (int)paramRecyclerView.getResources().getDimension(b.d.Edge_0_5_A);
       paramRecyclerView = paramView.getContext();
-      p.g(paramRecyclerView, "view.context");
-      int j = (int)paramRecyclerView.getResources().getDimension(2131166347);
+      p.j(paramRecyclerView, "view.context");
+      int j = (int)paramRecyclerView.getResources().getDimension(b.d.finder_0_25_A);
       paramRecyclerView = paramView.getLayoutParams();
       if (paramRecyclerView == null)
       {
-        paramRect = new t("null cannot be cast to non-null type android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams");
-        AppMethodBeat.o(249456);
+        paramRect = new t("null cannot be cast to non-null type androidx.recyclerview.widget.StaggeredGridLayoutManager.LayoutParams");
+        AppMethodBeat.o(200634);
         throw paramRect;
       }
-      if (((StaggeredGridLayoutManager.LayoutParams)paramRecyclerView).mJ())
+      if (((StaggeredGridLayoutManager.LayoutParams)paramRecyclerView).mF())
       {
         paramRect.left = 0;
         paramRect.right = 0;
         paramRect.bottom = 0;
         paramRect.top = 0;
-        AppMethodBeat.o(249456);
+        AppMethodBeat.o(200634);
         return;
       }
       paramView = paramView.getLayoutParams();
       if (paramView == null)
       {
-        paramRect = new t("null cannot be cast to non-null type android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams");
-        AppMethodBeat.o(249456);
+        paramRect = new t("null cannot be cast to non-null type androidx.recyclerview.widget.StaggeredGridLayoutManager.LayoutParams");
+        AppMethodBeat.o(200634);
         throw paramRect;
       }
-      if (((StaggeredGridLayoutManager.LayoutParams)paramView).kj() % 2 == 0)
+      if (((StaggeredGridLayoutManager.LayoutParams)paramView).kv() % 2 == 0)
       {
         paramRect.left = i;
         paramRect.right = j;
         paramRect.bottom = j;
         paramRect.top = j;
-        AppMethodBeat.o(249456);
+        AppMethodBeat.o(200634);
         return;
       }
       paramRect.left = j;
       paramRect.right = i;
       paramRect.bottom = j;
       paramRect.top = j;
-      AppMethodBeat.o(249456);
+      AppMethodBeat.o(200634);
     }
   }
 }

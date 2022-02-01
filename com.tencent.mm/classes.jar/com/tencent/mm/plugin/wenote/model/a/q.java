@@ -6,20 +6,20 @@ import java.io.Serializable;
 public final class q
   implements Serializable
 {
-  public boolean JHR = false;
-  public long JHS = -1L;
-  public long JHT = -1L;
-  public String JHU = "";
-  public String JHV = "";
-  public int JHW = 0;
-  public int JHX = 0;
-  public boolean tcb = false;
+  public boolean QHj = false;
+  public long QHk = -1L;
+  public long QHl = -1L;
+  public String QHm = "";
+  public String QHn = "";
+  public int QHo = 0;
+  public int QHp = 0;
+  public boolean wIg = false;
   
-  public final String gjG()
+  public final String hdu()
   {
     AppMethodBeat.i(30377);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("topIsOpenFromSession=").append(this.JHR).append(" topLocalId=").append(this.JHS).append(" topMsgId=").append(this.JHT).append(" topTitle=").append(this.JHU).append(" topNoteXml=").append(this.JHV).append(" topLastPosition=").append(this.JHW).append(" topLastOffset=").append(this.JHX);
+    ((StringBuilder)localObject).append("topIsOpenFromSession=").append(this.QHj).append(" topLocalId=").append(this.QHk).append(" topMsgId=").append(this.QHl).append(" topTitle=").append(this.QHm).append(" topNoteXml=").append(this.QHn).append(" topLastPosition=").append(this.QHo).append(" topLastOffset=").append(this.QHp);
     localObject = ((StringBuilder)localObject).toString();
     AppMethodBeat.o(30377);
     return localObject;
@@ -27,7 +27,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.a.q
  * JD-Core Version:    0.7.0.1
  */

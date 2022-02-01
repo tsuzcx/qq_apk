@@ -3,7 +3,6 @@ package com.tencent.mm.plugin.webview.luggage.b;
 import android.content.Context;
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.webview.luggage.FavUrlTask;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -13,37 +12,37 @@ import java.util.Map;
 
 public class n
 {
-  protected List<o> IXa;
-  protected Map<Integer, a> xxy;
+  protected Map<Integer, a> CBH;
+  protected List<o> PTp;
   
   public n()
   {
     AppMethodBeat.i(78709);
-    this.IXa = new LinkedList();
-    this.xxy = new HashMap();
-    dTx();
-    dTy();
+    this.PTp = new LinkedList();
+    this.CBH = new HashMap();
+    ewG();
+    ewH();
     AppMethodBeat.o(78709);
   }
   
   private void a(a parama)
   {
     AppMethodBeat.i(78711);
-    this.xxy.put(Integer.valueOf(parama.id), parama);
+    this.CBH.put(Integer.valueOf(parama.id), parama);
     AppMethodBeat.o(78711);
-  }
-  
-  private void i(int paramInt, String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(78713);
-    this.IXa.add(new o(paramInt, paramString, paramBoolean, false));
-    AppMethodBeat.o(78713);
   }
   
   private void j(int paramInt, String paramString, boolean paramBoolean)
   {
+    AppMethodBeat.i(78713);
+    this.PTp.add(new o(paramInt, paramString, paramBoolean, false));
+    AppMethodBeat.o(78713);
+  }
+  
+  private void k(int paramInt, String paramString, boolean paramBoolean)
+  {
     AppMethodBeat.i(78714);
-    this.IXa.add(new o(paramInt, paramString, paramBoolean, true));
+    this.PTp.add(new o(paramInt, paramString, paramBoolean, true));
     AppMethodBeat.o(78714);
   }
   
@@ -56,7 +55,7 @@ public class n
       return;
     }
     int i = paramMenuItem.getItemId();
-    Iterator localIterator = this.IXa.iterator();
+    Iterator localIterator = this.PTp.iterator();
     do
     {
       if (!localIterator.hasNext()) {
@@ -66,7 +65,7 @@ public class n
     } while ((paramMenuItem == null) || (paramMenuItem.id != i));
     for (;;)
     {
-      paramMenuItem = (a)this.xxy.get(Integer.valueOf(paramMenuItem.id));
+      paramMenuItem = (a)this.CBH.get(Integer.valueOf(paramMenuItem.id));
       if (paramMenuItem != null) {
         break;
       }
@@ -78,17 +77,35 @@ public class n
     AppMethodBeat.o(78717);
   }
   
-  public final void aYA(String paramString)
+  public final void b(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, com.tencent.mm.ui.base.o paramo)
+  {
+    AppMethodBeat.i(78715);
+    Iterator localIterator = this.PTp.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (o)localIterator.next();
+      if ((!((o)localObject).rED) && (!((o)localObject).PTr))
+      {
+        localObject = (a)this.CBH.get(Integer.valueOf(((o)localObject).id));
+        if (localObject != null) {
+          ((a)localObject).a(paramContext, paramg, paramo);
+        }
+      }
+    }
+    AppMethodBeat.o(78715);
+  }
+  
+  public final void bku(String paramString)
   {
     AppMethodBeat.i(78720);
-    Iterator localIterator = this.IXa.iterator();
+    Iterator localIterator = this.PTp.iterator();
     while (localIterator.hasNext())
     {
       o localo = (o)localIterator.next();
       if (localo.name.equals(paramString)) {
-        if (!localo.IXb)
+        if (!localo.PTq)
         {
-          localo.oBV = true;
+          localo.rED = true;
           AppMethodBeat.o(78720);
           return;
         }
@@ -97,16 +114,16 @@ public class n
     AppMethodBeat.o(78720);
   }
   
-  public final void aYB(String paramString)
+  public final void bkv(String paramString)
   {
     AppMethodBeat.i(78721);
-    Iterator localIterator = this.IXa.iterator();
+    Iterator localIterator = this.PTp.iterator();
     while (localIterator.hasNext())
     {
       o localo = (o)localIterator.next();
       if (localo.name.equals(paramString))
       {
-        localo.oBV = false;
+        localo.rED = false;
         AppMethodBeat.o(78721);
         return;
       }
@@ -114,43 +131,25 @@ public class n
     AppMethodBeat.o(78721);
   }
   
-  public final void b(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, com.tencent.mm.ui.base.m paramm)
-  {
-    AppMethodBeat.i(78715);
-    Iterator localIterator = this.IXa.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (o)localIterator.next();
-      if ((!((o)localObject).oBV) && (!((o)localObject).IXc))
-      {
-        localObject = (a)this.xxy.get(Integer.valueOf(((o)localObject).id));
-        if (localObject != null) {
-          ((a)localObject).a(paramContext, paramg, paramm);
-        }
-      }
-    }
-    AppMethodBeat.o(78715);
-  }
-  
-  public final void c(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, com.tencent.mm.ui.base.m paramm)
+  public final void c(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, com.tencent.mm.ui.base.o paramo)
   {
     AppMethodBeat.i(78716);
-    Iterator localIterator = this.IXa.iterator();
+    Iterator localIterator = this.PTp.iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (o)localIterator.next();
-      if ((!((o)localObject).oBV) && (((o)localObject).IXc))
+      if ((!((o)localObject).rED) && (((o)localObject).PTr))
       {
-        localObject = (a)this.xxy.get(Integer.valueOf(((o)localObject).id));
+        localObject = (a)this.CBH.get(Integer.valueOf(((o)localObject).id));
         if (localObject != null) {
-          ((a)localObject).a(paramContext, paramg, paramm);
+          ((a)localObject).a(paramContext, paramg, paramo);
         }
       }
     }
     AppMethodBeat.o(78716);
   }
   
-  protected void dTx()
+  protected void ewG()
   {
     AppMethodBeat.i(78710);
     a(new h());
@@ -168,54 +167,54 @@ public class n
     AppMethodBeat.o(78710);
   }
   
-  protected void dTy()
+  protected void ewH()
   {
     AppMethodBeat.i(78712);
-    this.IXa.clear();
-    j(35, "menuItem:minimize", true);
-    i(1, "menuItem:share:appMessage", false);
-    i(2, "menuItem:share:timeline", false);
+    this.PTp.clear();
+    k(35, "menuItem:minimize", true);
+    j(1, "menuItem:share:appMessage", false);
+    j(2, "menuItem:share:timeline", false);
     FavUrlTask localFavUrlTask = new FavUrlTask();
     localFavUrlTask.actionType = 3;
-    AppBrandMainProcessService.b(localFavUrlTask);
-    if (localFavUrlTask.ISM)
+    localFavUrlTask.bPu();
+    if (localFavUrlTask.PPf)
     {
-      i(3, "menuItem:favorite", false);
-      j(12, "menuItem:editTag", false);
-      j(9, "menuItem:favorite", false);
+      j(3, "menuItem:favorite", false);
+      k(12, "menuItem:editTag", false);
+      k(9, "menuItem:favorite", false);
     }
-    j(31, "menuItem:search", true);
-    j(6, "menuItem:copyUrl", false);
-    i(7, "menuItem:openWithSafari", false);
-    i(27, "menuItem:finish", true);
-    j(28, "menuItem:refresh", true);
-    j(29, "menuItem:addShortcut", false);
+    k(31, "menuItem:search", true);
+    k(6, "menuItem:copyUrl", false);
+    j(7, "menuItem:openWithSafari", false);
+    j(27, "menuItem:finish", true);
+    k(28, "menuItem:refresh", true);
+    k(29, "menuItem:addShortcut", false);
     AppMethodBeat.o(78712);
   }
   
-  public final void gbX()
+  public final void gUT()
   {
     AppMethodBeat.i(78718);
-    Iterator localIterator = this.IXa.iterator();
+    Iterator localIterator = this.PTp.iterator();
     while (localIterator.hasNext())
     {
       o localo = (o)localIterator.next();
-      if (!localo.IXb) {
-        localo.oBV = true;
+      if (!localo.PTq) {
+        localo.rED = true;
       }
     }
     AppMethodBeat.o(78718);
   }
   
-  public final void gbY()
+  public final void gUU()
   {
     AppMethodBeat.i(78719);
-    Iterator localIterator = this.IXa.iterator();
+    Iterator localIterator = this.PTp.iterator();
     while (localIterator.hasNext())
     {
       o localo = (o)localIterator.next();
-      if (!localo.IXb) {
-        localo.oBV = false;
+      if (!localo.PTq) {
+        localo.rED = false;
       }
     }
     AppMethodBeat.o(78719);

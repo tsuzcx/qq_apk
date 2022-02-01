@@ -11,7 +11,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class TalkRoomService
   extends Service
 {
-  private g FPx;
+  private f Mjy;
   
   static
   {
@@ -24,7 +24,7 @@ public class TalkRoomService
   {
     AppMethodBeat.i(29428);
     Log.d("MicroMsg.TalkRoomService", "onBind~~~ threadID:" + Thread.currentThread());
-    paramIntent = this.FPx;
+    paramIntent = this.Mjy;
     AppMethodBeat.o(29428);
     return paramIntent;
   }
@@ -37,8 +37,8 @@ public class TalkRoomService
     if (Build.VERSION.SDK_INT < 18) {
       startForeground(9999, new Notification());
     }
-    if (this.FPx == null) {
-      this.FPx = new g();
+    if (this.Mjy == null) {
+      this.Mjy = new f();
     }
     AppMethodBeat.o(29425);
   }
@@ -70,7 +70,7 @@ public class TalkRoomService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.component.TalkRoomService
  * JD-Core Version:    0.7.0.1
  */

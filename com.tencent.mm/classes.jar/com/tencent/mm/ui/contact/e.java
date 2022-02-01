@@ -5,10 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
-import com.tencent.mm.g.c.ax;
+import com.tencent.mm.by.c;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.plugin.account.friend.a.a;
 import com.tencent.mm.plugin.account.friend.a.at;
-import com.tencent.mm.plugin.account.friend.a.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ca.a;
 
@@ -17,7 +17,7 @@ public final class e
   public static void a(Context paramContext, com.tencent.mm.storage.as paramas, ca.a parama)
   {
     AppMethodBeat.i(37733);
-    a(paramContext, paramas, parama, false, false, null, parama.kcp);
+    a(paramContext, paramas, parama, false, false, null, parama.mTO);
     AppMethodBeat.o(37733);
   }
   
@@ -36,18 +36,18 @@ public final class e
     }
     Intent localIntent = new Intent();
     localIntent.putExtra("Contact_User", paramas.field_username);
-    localIntent.putExtra("Contact_Alias", paramas.ajx());
-    localIntent.putExtra("Contact_Nick", paramas.arI());
-    localIntent.putExtra("Contact_QuanPin", paramas.ajA());
-    localIntent.putExtra("Contact_PyInitial", paramas.ajz());
-    localIntent.putExtra("Contact_Sex", parama.fuA);
+    localIntent.putExtra("Contact_Alias", paramas.apf());
+    localIntent.putExtra("Contact_Nick", paramas.ayr());
+    localIntent.putExtra("Contact_QuanPin", paramas.api());
+    localIntent.putExtra("Contact_PyInitial", paramas.aph());
+    localIntent.putExtra("Contact_Sex", parama.sex);
     localIntent.putExtra("Contact_Province", parama.getProvince());
     localIntent.putExtra("Contact_City", parama.getCity());
     localIntent.putExtra("Contact_Signature", parama.signature);
-    localIntent.putExtra("Contact_Uin", parama.Bge);
-    localIntent.putExtra("Contact_Mobile_MD5", parama.OqK);
-    localIntent.putExtra("Contact_full_Mobile_MD5", parama.OqL);
-    localIntent.putExtra("Contact_QQNick", parama.gDZ());
+    localIntent.putExtra("Contact_Uin", parama.GZN);
+    localIntent.putExtra("Contact_Mobile_MD5", parama.VGG);
+    localIntent.putExtra("Contact_full_Mobile_MD5", parama.VGH);
+    localIntent.putExtra("Contact_QQNick", parama.hAp());
     localIntent.putExtra("User_From_Fmessage", true);
     localIntent.putExtra("Contact_Scene", parama.scene);
     localIntent.putExtra("Contact_from_msgType", 40);
@@ -83,11 +83,11 @@ public final class e
       return;
     }
     com.tencent.mm.storage.as localas = new com.tencent.mm.storage.as();
-    localas.setUsername(parama.dkU);
+    localas.setUsername(parama.fcC);
     localas.setNickname(parama.getDisplayName());
-    localas.BF(parama.kfQ);
-    localas.BG(parama.kfR);
-    a(paramContext, localas, parama, paramBoolean1, paramBoolean2, paramBundle, parama.kcp);
+    localas.It(parama.mXp);
+    localas.Iu(parama.mXq);
+    a(paramContext, localas, parama, paramBoolean1, paramBoolean2, paramBundle, parama.mTO);
     AppMethodBeat.o(37732);
   }
   
@@ -100,20 +100,20 @@ public final class e
       AppMethodBeat.o(37730);
       return;
     }
-    com.tencent.mm.plugin.account.friend.a.as localas = com.tencent.mm.plugin.account.a.getQQListStg().Tg(paramString);
+    com.tencent.mm.plugin.account.friend.a.as localas = com.tencent.mm.plugin.account.b.getQQListStg().aaM(paramString);
     if (localas != null)
     {
-      paramIntent.putExtra("Contact_Uin", localas.kfN);
+      paramIntent.putExtra("Contact_Uin", localas.mXm);
       paramIntent.putExtra("Contact_QQNick", localas.getDisplayName());
     }
-    paramString = com.tencent.mm.plugin.account.a.getAddrUploadStg().SR(paramString);
+    paramString = com.tencent.mm.plugin.account.b.getAddrUploadStg().aax(paramString);
     if (paramString != null) {
       paramIntent.putExtra("Contact_Mobile_MD5", paramString.getMd5());
     }
     AppMethodBeat.o(37730);
   }
   
-  public static void s(Intent paramIntent, String paramString)
+  public static void r(Intent paramIntent, String paramString)
   {
     AppMethodBeat.i(37729);
     paramIntent.putExtra("Contact_User", paramString);

@@ -12,13 +12,13 @@ import java.util.regex.Pattern;
 public final class a
   extends com.google.android.exoplayer2.f.b
 {
-  private static final Pattern bCF;
-  private final StringBuilder bCG;
+  private static final Pattern bmh;
+  private final StringBuilder bmi;
   
   static
   {
     AppMethodBeat.i(92818);
-    bCF = Pattern.compile("\\s*((?:(\\d+):)?(\\d+):(\\d+),(\\d+))\\s*-->\\s*((?:(\\d+):)?(\\d+):(\\d+),(\\d+))?\\s*");
+    bmh = Pattern.compile("\\s*((?:(\\d+):)?(\\d+):(\\d+),(\\d+))\\s*-->\\s*((?:(\\d+):)?(\\d+):(\\d+),(\\d+))?\\s*");
     AppMethodBeat.o(92818);
   }
   
@@ -26,7 +26,7 @@ public final class a
   {
     super("SubripDecoder");
     AppMethodBeat.i(92814);
-    this.bCG = new StringBuilder();
+    this.bmi = new StringBuilder();
     AppMethodBeat.o(92814);
   }
   
@@ -60,7 +60,7 @@ public final class a
         localObject = paramArrayOfByte.readLine();
         if (localObject != null)
         {
-          localObject = bCF.matcher((CharSequence)localObject);
+          localObject = bmh.matcher((CharSequence)localObject);
           if (!((Matcher)localObject).matches()) {
             break;
           }
@@ -70,17 +70,17 @@ public final class a
           }
           localh.add(a((Matcher)localObject, 6));
           paramInt = 1;
-          this.bCG.setLength(0);
+          this.bmi.setLength(0);
           localObject = paramArrayOfByte.readLine();
           if (!TextUtils.isEmpty((CharSequence)localObject))
           {
-            if (this.bCG.length() > 0) {
-              this.bCG.append("<br>");
+            if (this.bmi.length() > 0) {
+              this.bmi.append("<br>");
             }
-            this.bCG.append(((String)localObject).trim());
+            this.bmi.append(((String)localObject).trim());
             continue;
           }
-          localArrayList.add(new com.google.android.exoplayer2.f.a(Html.fromHtml(this.bCG.toString())));
+          localArrayList.add(new com.google.android.exoplayer2.f.a(Html.fromHtml(this.bmi.toString())));
           if (paramInt == 0) {
             break;
           }
@@ -89,7 +89,7 @@ public final class a
         }
         paramArrayOfByte = new com.google.android.exoplayer2.f.a[localArrayList.size()];
         localArrayList.toArray(paramArrayOfByte);
-        paramArrayOfByte = new b(paramArrayOfByte, localh.toArray());
+        paramArrayOfByte = new b(paramArrayOfByte, localh.vb());
         AppMethodBeat.o(92815);
         return paramArrayOfByte;
       }
@@ -102,7 +102,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.f.d.a
  * JD-Core Version:    0.7.0.1
  */

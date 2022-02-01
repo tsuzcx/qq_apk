@@ -6,29 +6,29 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
-  implements com.tencent.mm.aa.d.a
+  implements com.tencent.mm.ac.d.a
 {
-  private static final int loy;
+  private static final int oji;
   private String id;
-  private byte[] loz;
+  private byte[] ojj;
   
   static
   {
     AppMethodBeat.i(121381);
-    loy = -Util.getInt(ac.jOx, 0);
+    oji = -Util.getInt(ac.mFH, 0);
     AppMethodBeat.o(121381);
   }
   
   public a(String paramString, byte[] paramArrayOfByte)
   {
     this.id = paramString;
-    this.loz = paramArrayOfByte;
+    this.ojj = paramArrayOfByte;
   }
   
-  public final boolean pP(int paramInt)
+  public final boolean so(int paramInt)
   {
     AppMethodBeat.i(121380);
-    int i = loy;
+    int i = oji;
     if (i == -1)
     {
       Log.d("MicroMsg.DefaultPermissionFilter", "getCtrlByte, id = %s, ctrlIndex = %d, hard code perm on", new Object[] { this.id, Integer.valueOf(paramInt) });
@@ -51,13 +51,13 @@ public final class a
       {
         paramInt = 0;
       }
-      else if ((this.loz == null) || (paramInt < 0) || (paramInt >= this.loz.length))
+      else if ((this.ojj == null) || (paramInt < 0) || (paramInt >= this.ojj.length))
       {
         paramInt = 0;
       }
       else
       {
-        paramInt = this.loz[paramInt];
+        paramInt = this.ojj[paramInt];
       }
     }
     AppMethodBeat.o(121380);

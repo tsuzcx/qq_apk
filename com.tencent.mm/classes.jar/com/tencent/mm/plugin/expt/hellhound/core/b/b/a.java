@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.expt.hellhound.core.b.b;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.c;
+import com.tencent.mm.hellhoundlib.a.d;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -11,31 +11,31 @@ import java.util.Map;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/ChatFragmentCallback;", "", "()V", "CLASS_NAME", "", "METHOD_DESC_doAttach", "METHOD_DESC_doPause", "METHOD_DESC_doResume", "METHOD_DESC_onEnterBegin", "METHOD_DESC_onExitBegin", "METHOD_DESC_onExitEnd", "METHOD_NAME_doAttach", "METHOD_NAME_doPause", "METHOD_NAME_doResume", "METHOD_NAME_onEnterBegin", "METHOD_NAME_onExitBegin", "METHOD_NAME_onExitEnd", "mChatFragmentListener", "com/tencent/mm/plugin/expt/hellhound/core/v2/fragment/ChatFragmentCallback$mChatFragmentListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/ChatFragmentCallback$mChatFragmentListener$1;", "mDoAttach", "", "mListeners", "", "Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/IChatFragmentListener;", "mOnEnter", "mOnExit", "callbackOnEnter", "", "callbackOnExit", "callbackOnPause", "callbackOnResume", "monitor", "registerListener", "listener", "unregisterListener", "plugin-expt_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/ChatFragmentCallback;", "", "()V", "CLASS_NAME", "", "METHOD_DESC_doAttach", "METHOD_DESC_doPause", "METHOD_DESC_doResume", "METHOD_DESC_onEnterBegin", "METHOD_DESC_onExitBegin", "METHOD_DESC_onExitEnd", "METHOD_NAME_doAttach", "METHOD_NAME_doPause", "METHOD_NAME_doResume", "METHOD_NAME_onEnterBegin", "METHOD_NAME_onExitBegin", "METHOD_NAME_onExitEnd", "mChatFragmentListener", "com/tencent/mm/plugin/expt/hellhound/core/v2/fragment/ChatFragmentCallback$mChatFragmentListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/ChatFragmentCallback$mChatFragmentListener$1;", "mDoAttach", "", "mListeners", "", "Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/IChatFragmentListener;", "mOnEnter", "mOnExit", "callbackOnEnter", "", "callbackOnExit", "callbackOnPause", "callbackOnResume", "monitor", "registerListener", "listener", "unregisterListener", "plugin-expt_release"})
 public final class a
 {
   private static List<i> mListeners;
-  private static boolean szR;
-  private static boolean szS;
-  private static boolean szT;
-  private static final a szU;
-  public static final a szV;
+  private static boolean wfL;
+  private static boolean wfM;
+  private static boolean wfN;
+  private static final a wfO;
+  public static final a wfP;
   
   static
   {
-    AppMethodBeat.i(220745);
-    szV = new a();
+    AppMethodBeat.i(257288);
+    wfP = new a();
     mListeners = (List)new ArrayList();
-    szU = new a();
-    AppMethodBeat.o(220745);
+    wfO = new a();
+    AppMethodBeat.o(257288);
   }
   
-  public static void cMH()
+  public static void Xr()
   {
-    AppMethodBeat.i(220739);
-    szR = false;
-    szS = false;
-    szT = false;
+    AppMethodBeat.i(257281);
+    wfL = false;
+    wfM = false;
+    wfN = false;
     Map localMap = (Map)new LinkedHashMap();
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new Pair("doAttach", "(Landroid/content/Context;)V"));
@@ -45,63 +45,63 @@ public final class a
     localArrayList.add(new Pair("doPause", "()V"));
     localArrayList.add(new Pair("onExitEnd", "()V"));
     localMap.put("com/tencent/mm/ui/chatting/ChattingUIFragment", localArrayList);
-    com.tencent.mm.hellhoundlib.a.axP();
-    com.tencent.mm.hellhoundlib.a.a(localMap, (c)szU);
-    AppMethodBeat.o(220739);
+    com.tencent.mm.hellhoundlib.a.aFg();
+    com.tencent.mm.hellhoundlib.a.a(localMap, (d)wfO);
+    AppMethodBeat.o(257281);
   }
   
-  private final void cOa()
+  private final void dcS()
   {
     try
     {
-      AppMethodBeat.i(220741);
+      AppMethodBeat.i(257283);
       Iterator localIterator = ((Iterable)mListeners).iterator();
       while (localIterator.hasNext()) {
         ((i)localIterator.next()).onEnter();
       }
-      AppMethodBeat.o(220741);
+      AppMethodBeat.o(257283);
     }
     finally {}
   }
   
-  private final void cOb()
+  private final void dcT()
   {
     try
     {
-      AppMethodBeat.i(220742);
+      AppMethodBeat.i(257284);
       Iterator localIterator = ((Iterable)mListeners).iterator();
       while (localIterator.hasNext()) {
         ((i)localIterator.next()).onExit();
       }
-      AppMethodBeat.o(220742);
+      AppMethodBeat.o(257284);
     }
     finally {}
   }
   
-  private final void cOc()
+  private final void dcU()
   {
     try
     {
-      AppMethodBeat.i(220743);
+      AppMethodBeat.i(257286);
       Iterator localIterator = ((Iterable)mListeners).iterator();
       while (localIterator.hasNext()) {
         ((i)localIterator.next()).onResume();
       }
-      AppMethodBeat.o(220743);
+      AppMethodBeat.o(257286);
     }
     finally {}
   }
   
-  private final void cOd()
+  private final void dcV()
   {
     try
     {
-      AppMethodBeat.i(220744);
+      AppMethodBeat.i(257287);
       Iterator localIterator = ((Iterable)mListeners).iterator();
       while (localIterator.hasNext()) {
         ((i)localIterator.next()).onPause();
       }
-      AppMethodBeat.o(220744);
+      AppMethodBeat.o(257287);
     }
     finally {}
   }
@@ -110,34 +110,34 @@ public final class a
   {
     try
     {
-      AppMethodBeat.i(220740);
-      p.h(parami, "listener");
+      AppMethodBeat.i(257282);
+      p.k(parami, "listener");
       if (!mListeners.contains(parami)) {
         mListeners.add(parami);
       }
-      AppMethodBeat.o(220740);
+      AppMethodBeat.o(257282);
       return;
     }
     finally {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/expt/hellhound/core/v2/fragment/ChatFragmentCallback$mChatFragmentListener$1", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "runOnEnter", "", "className", "", "methodName", "methodDec", "caller", "", "args", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V", "runOnExit", "retVal", "plugin-expt_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/expt/hellhound/core/v2/fragment/ChatFragmentCallback$mChatFragmentListener$1", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "runOnEnter", "", "className", "", "methodName", "methodDec", "caller", "", "args", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V", "runOnExit", "retVal", "plugin-expt_release"})
   public static final class a
-    implements c
+    implements d
   {
     public final void a(String paramString1, String paramString2, String paramString3, Object paramObject1, Object paramObject2) {}
     
-    public final void a(String paramString1, String paramString2, String paramString3, Object paramObject, Object[] paramArrayOfObject)
+    public final void b(String paramString1, String paramString2, String paramString3, Object paramObject, Object[] paramArrayOfObject)
     {
-      AppMethodBeat.i(220738);
-      if ((p.j(paramString1, "com/tencent/mm/ui/chatting/ChattingUIFragment") ^ true))
+      AppMethodBeat.i(255930);
+      if ((p.h(paramString1, "com/tencent/mm/ui/chatting/ChattingUIFragment") ^ true))
       {
-        AppMethodBeat.o(220738);
+        AppMethodBeat.o(255930);
         return;
       }
       if (paramString2 == null)
       {
-        AppMethodBeat.o(220738);
+        AppMethodBeat.o(255930);
         return;
       }
       switch (paramString2.hashCode())
@@ -163,69 +163,69 @@ public final class a
                       {
                         for (;;)
                         {
-                          AppMethodBeat.o(220738);
+                          AppMethodBeat.o(255930);
                           return;
-                          if ((paramString2.equals("onExitEnd")) && (p.j(paramString3, "()V")))
+                          if ((paramString2.equals("onExitEnd")) && (p.h(paramString3, "()V")))
                           {
-                            paramString1 = a.szV;
-                            a.lY(false);
+                            paramString1 = a.wfP;
+                            a.nk(false);
                           }
                         }
-                      } while ((!paramString2.equals("doResume")) || (!p.j(paramString3, "()V")));
-                      paramString1 = a.szV;
-                    } while (a.cOe());
-                    paramString1 = a.szV;
-                    if (a.cOf()) {
+                      } while ((!paramString2.equals("doResume")) || (!p.h(paramString3, "()V")));
+                      paramString1 = a.wfP;
+                    } while (a.dcW());
+                    paramString1 = a.wfP;
+                    if (a.dcX()) {
                       break;
                     }
-                    a.b(a.szV);
-                    AppMethodBeat.o(220738);
+                    a.b(a.wfP);
+                    AppMethodBeat.o(255930);
                     return;
-                  } while ((!paramString2.equals("onExitBegin")) || (!p.j(paramString3, "()V")));
-                  paramString1 = a.szV;
-                } while (a.cOe());
-                a.c(a.szV);
-                paramString1 = a.szV;
-                a.ma(true);
-                AppMethodBeat.o(220738);
+                  } while ((!paramString2.equals("onExitBegin")) || (!p.h(paramString3, "()V")));
+                  paramString1 = a.wfP;
+                } while (a.dcW());
+                a.c(a.wfP);
+                paramString1 = a.wfP;
+                a.nm(true);
+                AppMethodBeat.o(255930);
                 return;
-              } while ((!paramString2.equals("doPause")) || (!p.j(paramString3, "()V")));
-              paramString1 = a.szV;
-            } while (a.cOe());
-            paramString1 = a.szV;
-            if (a.cOg()) {
+              } while ((!paramString2.equals("doPause")) || (!p.h(paramString3, "()V")));
+              paramString1 = a.wfP;
+            } while (a.dcW());
+            paramString1 = a.wfP;
+            if (a.dcY()) {
               break label373;
             }
-            a.d(a.szV);
-            AppMethodBeat.o(220738);
+            a.d(a.wfP);
+            AppMethodBeat.o(255930);
             return;
-          } while ((!paramString2.equals("onEnterBegin")) || (!p.j(paramString3, "()V")));
-          paramString1 = a.szV;
-        } while (a.cOe());
-        a.a(a.szV);
-        paramString1 = a.szV;
-        a.lZ(true);
-        AppMethodBeat.o(220738);
+          } while ((!paramString2.equals("onEnterBegin")) || (!p.h(paramString3, "()V")));
+          paramString1 = a.wfP;
+        } while (a.dcW());
+        a.a(a.wfP);
+        paramString1 = a.wfP;
+        a.nl(true);
+        AppMethodBeat.o(255930);
         return;
-      } while ((!paramString2.equals("doAttach")) || (!p.j(paramString3, "(Landroid/content/Context;)V")));
-      paramString1 = a.szV;
-      a.lY(true);
-      AppMethodBeat.o(220738);
+      } while ((!paramString2.equals("doAttach")) || (!p.h(paramString3, "(Landroid/content/Context;)V")));
+      paramString1 = a.wfP;
+      a.nk(true);
+      AppMethodBeat.o(255930);
       return;
-      paramString1 = a.szV;
-      a.lZ(false);
-      AppMethodBeat.o(220738);
+      paramString1 = a.wfP;
+      a.nl(false);
+      AppMethodBeat.o(255930);
       return;
       label373:
-      paramString1 = a.szV;
-      a.ma(false);
-      AppMethodBeat.o(220738);
+      paramString1 = a.wfP;
+      a.nm(false);
+      AppMethodBeat.o(255930);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.b.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,36 +2,36 @@ package com.tencent.mm.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class e
+public class e
 {
-  public int Rtu;
+  public int YUS;
   public int errCode;
   public String errMsg;
   public int errType;
   
   public e()
   {
-    this.Rtu = 0;
+    this.YUS = 0;
     this.errType = 0;
     this.errCode = 0;
     this.errMsg = "";
-    this.Rtu = 0;
+    this.YUS = 0;
   }
   
   public e(int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(72742);
-    this.Rtu = 0;
-    f(paramInt1, paramInt2, paramString, 0);
+    this.YUS = 0;
+    i(paramInt1, paramInt2, paramString, 0);
     AppMethodBeat.o(72742);
   }
   
-  public final void f(int paramInt1, int paramInt2, String paramString, int paramInt3)
+  public final void i(int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
     this.errType = paramInt1;
     this.errCode = paramInt2;
     this.errMsg = paramString;
-    this.Rtu = paramInt3;
+    this.YUS = paramInt3;
   }
 }
 

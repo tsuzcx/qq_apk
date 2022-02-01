@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.hp.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.d;
-import com.tencent.mm.g.a.ps;
-import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.f.a.qq;
+import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.PeriodRecorder;
@@ -12,22 +12,22 @@ import java.util.concurrent.TimeUnit;
 
 public final class a
 {
-  private static final boolean[] ync;
-  private static final PeriodRecorder ynd;
-  private static final IListener<ps> yne;
+  private static final boolean[] DNe;
+  private static final PeriodRecorder DNf;
+  private static final IListener<qq> DNg;
   
   static
   {
-    AppMethodBeat.i(196792);
-    ync = new boolean[] { false };
-    ynd = new PeriodRecorder("TinkerHealthStats", TimeUnit.DAYS.toMillis(1L), true, true);
-    yne = new IListener() {};
-    AppMethodBeat.o(196792);
+    AppMethodBeat.i(195936);
+    DNe = new boolean[] { false };
+    DNf = new PeriodRecorder("TinkerHealthStats", TimeUnit.DAYS.toMillis(1L), true, true);
+    DNg = new IListener() {};
+    AppMethodBeat.o(195936);
   }
   
-  private static boolean K(File paramFile)
+  private static boolean C(File paramFile)
   {
-    AppMethodBeat.i(196789);
+    AppMethodBeat.i(195923);
     File localFile = paramFile.getParentFile();
     paramFile = paramFile.getName().replaceAll("\\.dex|\\.apk|\\.jar|\\.zip", ".odex");
     int i = 0;
@@ -36,67 +36,67 @@ public final class a
       String str = new String[] { "arm", "arm64", "x86", "x86_64" }[i];
       if (new File(localFile, "oat/" + str + "/" + paramFile).exists())
       {
-        AppMethodBeat.o(196789);
+        AppMethodBeat.o(195923);
         return true;
       }
       i += 1;
     }
-    AppMethodBeat.o(196789);
+    AppMethodBeat.o(195923);
     return false;
   }
   
-  private static void bB(int paramInt, String paramVarArgs)
+  private static boolean Vt()
   {
-    AppMethodBeat.i(196790);
-    paramVarArgs = String.format("%s,%s,%s", new Object[] { Integer.valueOf(paramInt), d.cQi, paramVarArgs.replace(",", "##") });
-    e.Cxv.a(19725, paramVarArgs, true, true);
-    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.TinkerHealthStats", "[+] kvReport, msg: %s", new Object[] { paramVarArgs });
-    AppMethodBeat.o(196790);
+    synchronized (DNe)
+    {
+      int i = DNe[0];
+      return i;
+    }
   }
   
-  public static void dZf()
+  private static void by(int paramInt, String paramVarArgs)
   {
-    AppMethodBeat.i(196787);
-    if (isInstalled())
+    AppMethodBeat.i(195925);
+    paramVarArgs = String.format("%s,%s,%s", new Object[] { Integer.valueOf(paramInt), d.cQP, paramVarArgs.replace(",", "##") });
+    f.Iyx.b(19725, paramVarArgs, true, true);
+    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.TinkerHealthStats", "[+] kvReport, msg: %s", new Object[] { paramVarArgs });
+    AppMethodBeat.o(195925);
+  }
+  
+  public static void eIc()
+  {
+    AppMethodBeat.i(195916);
+    if (Vt())
     {
       com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.TinkerHealthStats", "[!] Already installed.");
-      AppMethodBeat.o(196787);
+      AppMethodBeat.o(195916);
       return;
     }
-    EventCenter.instance.add(yne);
-    synchronized (ync)
+    EventCenter.instance.add(DNg);
+    synchronized (DNe)
     {
-      ync[0] = true;
+      DNe[0] = true;
       com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.TinkerHealthStats", "[+] install done.");
-      AppMethodBeat.o(196787);
+      AppMethodBeat.o(195916);
       return;
-    }
-  }
-  
-  private static boolean isInstalled()
-  {
-    synchronized (ync)
-    {
-      int i = ync[0];
-      return i;
     }
   }
   
   public static void m(Throwable paramThrowable)
   {
-    AppMethodBeat.i(196788);
+    AppMethodBeat.i(195919);
     if (paramThrowable == null)
     {
-      AppMethodBeat.o(196788);
+      AppMethodBeat.o(195919);
       return;
     }
-    bB(7, android.util.Log.getStackTraceString(paramThrowable));
-    AppMethodBeat.o(196788);
+    by(7, android.util.Log.getStackTraceString(paramThrowable));
+    AppMethodBeat.o(195919);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.c.a
  * JD-Core Version:    0.7.0.1
  */

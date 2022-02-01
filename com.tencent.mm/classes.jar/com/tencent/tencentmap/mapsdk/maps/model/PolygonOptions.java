@@ -152,13 +152,13 @@ public class PolygonOptions
   
   public boolean isValid()
   {
-    AppMethodBeat.i(193615);
+    AppMethodBeat.i(237890);
     if ((this.listPts != null) && (this.listPts.size() > 2))
     {
-      AppMethodBeat.o(193615);
+      AppMethodBeat.o(237890);
       return true;
     }
-    AppMethodBeat.o(193615);
+    AppMethodBeat.o(237890);
     return false;
   }
   
@@ -240,7 +240,7 @@ public class PolygonOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.PolygonOptions
  * JD-Core Version:    0.7.0.1
  */

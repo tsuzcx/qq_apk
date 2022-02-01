@@ -1,47 +1,60 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.b.g;
 import com.tencent.mm.plugin.finder.model.q;
-import com.tencent.mm.plugin.finder.profile.uic.FinderProfileEduUIC;
-import com.tencent.mm.ui.component.a;
-import com.tencent.mm.view.recyclerview.h;
+import com.tencent.mm.plugin.finder.profile.uic.f;
+import com.tencent.mm.ui.component.g;
+import com.tencent.mm.ui.component.g.a;
+import com.tencent.mm.view.recyclerview.i;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/convert/FinderDraftInfoConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderDraftInfoData;", "()V", "getLayoutId", "", "getStr", "", "context", "Landroid/content/Context;", "resId", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "setDefaultAvatarImage", "imageView", "Landroid/widget/ImageView;", "setImage", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderDraftInfoConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderDraftInfoData;", "()V", "getLayoutId", "", "getStr", "", "context", "Landroid/content/Context;", "resId", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "setDefaultAvatarImage", "imageView", "Landroid/widget/ImageView;", "setImage", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "Companion", "plugin-finder_release"})
 public final class e
   extends com.tencent.mm.view.recyclerview.e<q>
 {
-  public final void a(RecyclerView paramRecyclerView, h paramh, int paramInt)
+  public static final a xgS;
+  
+  static
   {
-    AppMethodBeat.i(242775);
-    p.h(paramRecyclerView, "recyclerView");
-    p.h(paramh, "holder");
-    AppMethodBeat.o(242775);
+    AppMethodBeat.i(292177);
+    xgS = new a((byte)0);
+    AppMethodBeat.o(292177);
+  }
+  
+  public final void a(RecyclerView paramRecyclerView, i parami, int paramInt)
+  {
+    AppMethodBeat.i(292175);
+    p.k(paramRecyclerView, "recyclerView");
+    p.k(parami, "holder");
+    AppMethodBeat.o(292175);
   }
   
   public final int getLayoutId()
   {
-    return 2131494589;
+    return b.g.finder_profile_music_draft_item;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-  static final class a
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderDraftInfoConvert$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  static final class b
     implements Runnable
   {
-    a(h paramh, String paramString) {}
+    b(i parami, String paramString) {}
     
     public final void run()
     {
-      AppMethodBeat.i(242774);
-      Object localObject = a.PRN;
-      localObject = this.qhp.getContext();
-      p.g(localObject, "holder.context");
-      ((FinderProfileEduUIC)a.ko((Context)localObject).get(FinderProfileEduUIC.class)).gP("draft", this.tzi);
-      AppMethodBeat.o(242774);
+      AppMethodBeat.i(290859);
+      Object localObject = g.Xox;
+      localObject = this.tDl.getContext();
+      p.j(localObject, "holder.context");
+      ((f)g.lm((Context)localObject).i(f.class)).M("draft", 0, this.xgT);
+      AppMethodBeat.o(290859);
     }
   }
 }

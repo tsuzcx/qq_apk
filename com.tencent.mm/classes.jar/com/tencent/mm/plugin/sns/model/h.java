@@ -7,12 +7,12 @@ import junit.framework.Assert;
 
 public abstract class h<Params, Progress, Result>
 {
-  MMHandler handler = aj.dRd();
+  MMHandler handler = aj.etE();
   private boolean isStart = false;
   
-  public abstract ExecutorService eGk();
+  public abstract Result doInBackground(Params... paramVarArgs);
   
-  public abstract Result ew();
+  public abstract ExecutorService fsl();
   
   public void onPostExecute(Result paramResult) {}
   
@@ -22,7 +22,7 @@ public abstract class h<Params, Progress, Result>
       Assert.assertTrue("MicroMsg.MMAsyncTask Should construct a new Task", false);
     }
     this.isStart = true;
-    ExecutorService localExecutorService = eGk();
+    ExecutorService localExecutorService = fsl();
     if (localExecutorService == null) {
       return false;
     }
@@ -31,7 +31,7 @@ public abstract class h<Params, Progress, Result>
       public final void run()
       {
         AppMethodBeat.i(95555);
-        final Object localObject = h.this.ew();
+        final Object localObject = h.this.doInBackground(paramVarArgs);
         h.this.handler.post(new Runnable()
         {
           public final void run()
@@ -49,7 +49,7 @@ public abstract class h<Params, Progress, Result>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.h
  * JD-Core Version:    0.7.0.1
  */

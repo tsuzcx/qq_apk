@@ -3,15 +3,18 @@ package com.tencent.mm.ui.contact;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
@@ -19,26 +22,31 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.g.b.a.gq;
-import com.tencent.mm.g.c.ax;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.f.b.a.iv;
+import com.tencent.mm.f.c.ax;
 import com.tencent.mm.model.aa;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.ap;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.aq;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.modelvoiceaddr.ui.VoiceSearchLayout;
 import com.tencent.mm.modelvoiceaddr.ui.VoiceSearchLayout.b;
 import com.tencent.mm.modelvoiceaddr.ui.b.a;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pluginsdk.ui.span.l;
-import com.tencent.mm.protocal.protobuf.aeq;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.protocal.protobuf.drr;
-import com.tencent.mm.protocal.protobuf.ebj;
+import com.tencent.mm.protocal.protobuf.aez;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.ebn;
+import com.tencent.mm.protocal.protobuf.elj;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.SmoothScrollFactory;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -48,38 +56,40 @@ import com.tencent.mm.storage.RegionCodeDecoder;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.ac.a;
+import com.tencent.mm.ui.base.MMSlideDelView.c;
 import com.tencent.mm.ui.base.MMSlideDelView.f;
-import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.base.MMSlideDelView.g;
+import com.tencent.mm.ui.base.q.g;
 import com.tencent.mm.ui.chatting.ChattingUI;
 import com.tencent.mm.ui.voicesearch.VoiceSearchResultUI;
-import com.tencent.mm.ui.z.a;
 import java.io.IOException;
 
 public class ChatroomContactUI
   extends MMActivity
   implements i, MStorage.IOnStorageChange
 {
-  private com.tencent.mm.ui.voicesearch.b PSM;
-  private String PSO;
-  private ContactCountView PTa;
-  private VoiceSearchLayout PUl;
-  private View PUm;
-  private com.tencent.mm.modelvoiceaddr.ui.b PUn;
-  private d PUo;
-  private com.tencent.mm.pluginsdk.ui.e gup;
-  private TextView hSx;
-  private int ppd;
-  private int ppe;
-  private com.tencent.mm.ui.widget.b.a pqr;
-  private o.g rJj;
-  private ListView yCT;
+  private ListView Een;
+  private String XpB;
+  private ContactCountView XpL;
+  private com.tencent.mm.ui.voicesearch.b Xpz;
+  private VoiceSearchLayout XqW;
+  private View XqX;
+  private com.tencent.mm.modelvoiceaddr.ui.b XqY;
+  private d XqZ;
+  private com.tencent.mm.pluginsdk.ui.e iYA;
+  private TextView kGU;
+  private int syc;
+  private int syd;
+  private com.tencent.mm.ui.widget.b.a szq;
+  private q.g voR;
   
   public ChatroomContactUI()
   {
     AppMethodBeat.i(37708);
-    this.ppd = 0;
-    this.ppe = 0;
-    this.rJj = new o.g()
+    this.syc = 0;
+    this.syd = 0;
+    this.voR = new q.g()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -90,41 +100,46 @@ public class ChatroomContactUI
           AppMethodBeat.o(37691);
           return;
         }
-        ChatroomContactUI.bns(ChatroomContactUI.a(ChatroomContactUI.this));
+        ChatroomContactUI.bzS(ChatroomContactUI.a(ChatroomContactUI.this));
         AppMethodBeat.o(37691);
       }
     };
-    this.gup = new com.tencent.mm.pluginsdk.ui.e(new ChatroomContactUI.6(this));
+    this.iYA = new com.tencent.mm.pluginsdk.ui.e(new AbsListView.OnScrollListener()
+    {
+      public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
+      
+      public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt) {}
+    });
     AppMethodBeat.o(37708);
   }
   
-  private void eco()
+  private void eLm()
   {
     AppMethodBeat.i(37715);
-    if (this.PUo != null) {
-      this.PUo.onNotifyChange(null, null);
+    if (this.XqZ != null) {
+      this.XqZ.onNotifyChange(null, null);
     }
-    if (this.PSM != null) {
-      this.PSM.onNotifyChange(null, null);
+    if (this.Xpz != null) {
+      this.Xpz.onNotifyChange(null, null);
     }
     AppMethodBeat.o(37715);
   }
   
   public int getLayoutId()
   {
-    return 2131493461;
+    return R.i.ecf;
   }
   
   public void initView()
   {
     AppMethodBeat.i(37711);
-    ((TextView)findViewById(2131300114)).setVisibility(8);
-    this.yCT = ((ListView)findViewById(2131296545));
-    this.yCT.setAdapter(null);
-    this.hSx = ((TextView)findViewById(2131300114));
-    this.hSx.setText(2131755227);
-    this.PUm = findViewById(2131309324);
-    this.PUm.setOnTouchListener(new View.OnTouchListener()
+    ((TextView)findViewById(R.h.dFA)).setVisibility(8);
+    this.Een = ((ListView)findViewById(R.h.address_contactlist));
+    this.Een.setAdapter(null);
+    this.kGU = ((TextView)findViewById(R.h.dFA));
+    this.kGU.setText(R.l.enw);
+    this.XqX = findViewById(R.h.top_mask);
+    this.XqX.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -134,27 +149,13 @@ public class ChatroomContactUI
         return true;
       }
     });
-    this.PUo = new d(this, "@all.chatroom.contact");
-    this.PUo.Bh(true);
-    this.PSM = new com.tencent.mm.ui.voicesearch.b(getContext(), 1);
-    this.PSM.PSf = "@all.chatroom.contact";
-    this.PUn = new com.tencent.mm.modelvoiceaddr.ui.b((byte)0);
-    this.PUn.a(new b.a()
+    this.XqZ = new d(this, "@all.chatroom.contact");
+    this.XqZ.Fx(true);
+    this.Xpz = new com.tencent.mm.ui.voicesearch.b(getContext(), 1);
+    this.Xpz.XoS = "@all.chatroom.contact";
+    this.XqY = new com.tencent.mm.modelvoiceaddr.ui.b((byte)0);
+    this.XqY.a(new b.a()
     {
-      public final boolean SN(String paramAnonymousString)
-      {
-        return false;
-      }
-      
-      public final void SO(String paramAnonymousString)
-      {
-        AppMethodBeat.i(37698);
-        Log.d("MicroMsg.ChatroomContactUI", "onSearchBarChange %s", new Object[] { paramAnonymousString });
-        paramAnonymousString = Util.escapeSqlValue(paramAnonymousString);
-        ChatroomContactUI.a(ChatroomContactUI.this, paramAnonymousString);
-        AppMethodBeat.o(37698);
-      }
-      
       public final void a(boolean paramAnonymousBoolean, String[] paramAnonymousArrayOfString, long paramAnonymousLong, int paramAnonymousInt)
       {
         AppMethodBeat.i(37702);
@@ -166,27 +167,41 @@ public class ChatroomContactUI
           ((Intent)localObject).putExtra("VoiceSearchResultUI_VoiceId", paramAnonymousLong);
           ((Intent)localObject).putExtra("VoiceSearchResultUI_ShowType", paramAnonymousInt);
           paramAnonymousArrayOfString = ChatroomContactUI.this.getContext();
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousArrayOfString, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/ui/contact/ChatroomContactUI$4", "onVoiceReturn", "(Z[Ljava/lang/String;JI)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousArrayOfString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousArrayOfString, "com/tencent/mm/ui/contact/ChatroomContactUI$4", "onVoiceReturn", "(Z[Ljava/lang/String;JI)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousArrayOfString, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/ui/contact/ChatroomContactUI$4", "onVoiceReturn", "(Z[Ljava/lang/String;JI)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousArrayOfString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousArrayOfString, "com/tencent/mm/ui/contact/ChatroomContactUI$4", "onVoiceReturn", "(Z[Ljava/lang/String;JI)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(37702);
           return;
         }
         Object localObject = new Intent(ChatroomContactUI.this.getContext(), VoiceSearchResultUI.class);
         ((Intent)localObject).putExtra("VoiceSearchResultUI_Resultlist", new String[0]);
-        ((Intent)localObject).putExtra("VoiceSearchResultUI_Error", ChatroomContactUI.this.getContext().getString(2131760826));
+        ((Intent)localObject).putExtra("VoiceSearchResultUI_Error", ChatroomContactUI.this.getContext().getString(R.l.fmt_iap_err));
         ((Intent)localObject).putExtra("VoiceSearchResultUI_VoiceId", paramAnonymousLong);
         ((Intent)localObject).putExtra("VoiceSearchResultUI_ShowType", paramAnonymousInt);
         paramAnonymousArrayOfString = ChatroomContactUI.this.getContext();
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousArrayOfString, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/ui/contact/ChatroomContactUI$4", "onVoiceReturn", "(Z[Ljava/lang/String;JI)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousArrayOfString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousArrayOfString, "com/tencent/mm/ui/contact/ChatroomContactUI$4", "onVoiceReturn", "(Z[Ljava/lang/String;JI)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousArrayOfString, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/ui/contact/ChatroomContactUI$4", "onVoiceReturn", "(Z[Ljava/lang/String;JI)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousArrayOfString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousArrayOfString, "com/tencent/mm/ui/contact/ChatroomContactUI$4", "onVoiceReturn", "(Z[Ljava/lang/String;JI)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(37702);
       }
       
-      public final void biM()
+      public final boolean aat(String paramAnonymousString)
+      {
+        return false;
+      }
+      
+      public final void aau(String paramAnonymousString)
+      {
+        AppMethodBeat.i(37698);
+        Log.d("MicroMsg.ChatroomContactUI", "onSearchBarChange %s", new Object[] { paramAnonymousString });
+        paramAnonymousString = Util.escapeSqlValue(paramAnonymousString);
+        ChatroomContactUI.a(ChatroomContactUI.this, paramAnonymousString);
+        AppMethodBeat.o(37698);
+      }
+      
+      public final void bsk()
       {
         AppMethodBeat.i(37701);
         Log.v("MicroMsg.ChatroomContactUI", "onVoiceSearchStart");
@@ -194,33 +209,50 @@ public class ChatroomContactUI
         AppMethodBeat.o(37701);
       }
       
-      public final void bnA() {}
-      
-      public final void bnB() {}
-      
-      public final void bny()
+      public final void bxH()
       {
         AppMethodBeat.i(37699);
         ChatroomContactUI.d(ChatroomContactUI.this).setAdapter(ChatroomContactUI.c(ChatroomContactUI.this));
         ChatroomContactUI.c(ChatroomContactUI.this).notifyDataSetChanged();
-        ChatroomContactUI.e(ChatroomContactUI.this).CQ(false);
+        ChatroomContactUI.e(ChatroomContactUI.this).Hk(false);
         ChatroomContactUI.f(ChatroomContactUI.this).setVisibility(8);
         AppMethodBeat.o(37699);
       }
       
-      public final void bnz()
+      public final void bxI()
       {
         AppMethodBeat.i(37700);
         ChatroomContactUI.f(ChatroomContactUI.this).setVisibility(0);
         AppMethodBeat.o(37700);
       }
+      
+      public final void bxJ() {}
+      
+      public final void bxK() {}
     });
-    addSearchMenu(true, this.PUn);
-    this.PUo.setGetViewPositionCallback(new ChatroomContactUI.9(this));
-    this.PUo.setPerformItemClickListener(new ChatroomContactUI.10(this));
-    this.PUo.a(new MMSlideDelView.f()
+    addSearchMenu(true, this.XqY);
+    this.XqZ.setGetViewPositionCallback(new MMSlideDelView.c()
     {
-      public final void cZ(Object paramAnonymousObject)
+      public final int dO(View paramAnonymousView)
+      {
+        AppMethodBeat.i(37703);
+        int i = ChatroomContactUI.d(ChatroomContactUI.this).getPositionForView(paramAnonymousView);
+        AppMethodBeat.o(37703);
+        return i;
+      }
+    });
+    this.XqZ.setPerformItemClickListener(new MMSlideDelView.g()
+    {
+      public final void s(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        AppMethodBeat.i(37704);
+        ChatroomContactUI.d(ChatroomContactUI.this).performItemClick(paramAnonymousView, paramAnonymousInt1, paramAnonymousInt2);
+        AppMethodBeat.o(37704);
+      }
+    });
+    this.XqZ.a(new MMSlideDelView.f()
+    {
+      public final void cW(Object paramAnonymousObject)
       {
         AppMethodBeat.i(37705);
         if (paramAnonymousObject == null)
@@ -229,28 +261,28 @@ public class ChatroomContactUI
           AppMethodBeat.o(37705);
           return;
         }
-        ChatroomContactUI.bns(paramAnonymousObject.toString());
+        ChatroomContactUI.bzS(paramAnonymousObject.toString());
         ChatroomContactUI.g(ChatroomContactUI.this);
         AppMethodBeat.o(37705);
       }
     });
-    this.yCT.setOnScrollListener(this.gup);
-    this.PUo.KfF = this.gup;
-    this.pqr = new com.tencent.mm.ui.widget.b.a(getContext());
-    this.yCT.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.Een.setOnScrollListener(this.iYA);
+    this.XqZ.Rgt = this.iYA;
+    this.szq = new com.tencent.mm.ui.widget.b.a(getContext());
+    this.Een.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(37706);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousAdapterView);
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).pH(paramAnonymousInt);
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).zo(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/ChatroomContactUI$8", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousAdapterView);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).sg(paramAnonymousInt);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).Fs(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/contact/ChatroomContactUI$8", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
         paramAnonymousView = new StringBuilder("onItemClick ").append(paramAnonymousInt);
         if (ChatroomContactUI.e(ChatroomContactUI.this) == null) {}
-        for (paramAnonymousAdapterView = ChatroomContactUI.e(ChatroomContactUI.this);; paramAnonymousAdapterView = Boolean.valueOf(ChatroomContactUI.e(ChatroomContactUI.this).QBl))
+        for (paramAnonymousAdapterView = ChatroomContactUI.e(ChatroomContactUI.this);; paramAnonymousAdapterView = Boolean.valueOf(ChatroomContactUI.e(ChatroomContactUI.this).XZK))
         {
           Log.d("MicroMsg.ChatroomContactUI", paramAnonymousAdapterView);
           if (paramAnonymousInt >= ChatroomContactUI.d(ChatroomContactUI.this).getHeaderViewsCount()) {
@@ -261,10 +293,10 @@ public class ChatroomContactUI
           return;
         }
         paramAnonymousInt -= ChatroomContactUI.d(ChatroomContactUI.this).getHeaderViewsCount();
-        if ((ChatroomContactUI.e(ChatroomContactUI.this) != null) && (ChatroomContactUI.e(ChatroomContactUI.this).QBl))
+        if ((ChatroomContactUI.e(ChatroomContactUI.this) != null) && (ChatroomContactUI.e(ChatroomContactUI.this).XZK))
         {
-          boolean bool1 = ChatroomContactUI.e(ChatroomContactUI.this).Ox(paramAnonymousInt);
-          boolean bool2 = ChatroomContactUI.e(ChatroomContactUI.this).aot(paramAnonymousInt);
+          boolean bool1 = ChatroomContactUI.e(ChatroomContactUI.this).TR(paramAnonymousInt);
+          boolean bool2 = ChatroomContactUI.e(ChatroomContactUI.this).axB(paramAnonymousInt);
           Log.d("MicroMsg.ChatroomContactUI", "onItemClick ".concat(String.valueOf(bool2)));
           if (bool2)
           {
@@ -272,7 +304,7 @@ public class ChatroomContactUI
             if (ChatroomContactUI.b(ChatroomContactUI.this) == null)
             {
               paramAnonymousAdapterView = "";
-              paramAnonymousView.boh(paramAnonymousAdapterView);
+              paramAnonymousView.bAW(paramAnonymousAdapterView);
             }
           }
           for (;;)
@@ -284,49 +316,49 @@ public class ChatroomContactUI
             break;
             if (bool1)
             {
-              paramAnonymousView = ChatroomContactUI.e(ChatroomContactUI.this).aos(paramAnonymousInt);
-              paramAnonymousAdapterView = paramAnonymousView.Lqk.MTo;
-              bg.aVF();
-              localObject = com.tencent.mm.model.c.aSN().Kn(paramAnonymousAdapterView);
-              if (com.tencent.mm.contact.c.oR(((ax)localObject).field_type))
+              paramAnonymousView = ChatroomContactUI.e(ChatroomContactUI.this).axA(paramAnonymousInt);
+              paramAnonymousAdapterView = paramAnonymousView.SrH.Ufy;
+              bh.beI();
+              localObject = com.tencent.mm.model.c.bbL().RG(paramAnonymousAdapterView);
+              if (com.tencent.mm.contact.d.rk(((ax)localObject).field_type))
               {
                 paramAnonymousView = new Intent();
                 paramAnonymousView.putExtra("Contact_User", paramAnonymousAdapterView);
                 paramAnonymousView.putExtra("Contact_Scene", 3);
                 if ((paramAnonymousAdapterView != null) && (paramAnonymousAdapterView.length() > 0))
                 {
-                  if (((as)localObject).gBM()) {
-                    h.CyF.kvStat(10298, paramAnonymousAdapterView + ",3");
+                  if (((as)localObject).hxX()) {
+                    h.IzE.kvStat(10298, paramAnonymousAdapterView + ",3");
                   }
                   e.a(paramAnonymousView, paramAnonymousAdapterView);
-                  com.tencent.mm.br.c.b(ChatroomContactUI.this, "profile", ".ui.ContactInfoUI", paramAnonymousView);
+                  com.tencent.mm.by.c.b(ChatroomContactUI.this, "profile", ".ui.ContactInfoUI", paramAnonymousView);
                 }
               }
               else
               {
                 localObject = new Intent();
-                ((Intent)localObject).putExtra("Contact_User", paramAnonymousView.Lqk.MTo);
-                ((Intent)localObject).putExtra("Contact_Alias", paramAnonymousView.ked);
-                ((Intent)localObject).putExtra("Contact_Nick", paramAnonymousView.Mjj.MTo);
-                ((Intent)localObject).putExtra("Contact_Signature", paramAnonymousView.keb);
-                ((Intent)localObject).putExtra("Contact_RegionCode", RegionCodeDecoder.bq(paramAnonymousView.keh, paramAnonymousView.kdZ, paramAnonymousView.kea));
-                ((Intent)localObject).putExtra("Contact_Sex", paramAnonymousView.kdY);
-                ((Intent)localObject).putExtra("Contact_VUser_Info", paramAnonymousView.MmL);
-                ((Intent)localObject).putExtra("Contact_VUser_Info_Flag", paramAnonymousView.MmK);
-                ((Intent)localObject).putExtra("Contact_KWeibo_flag", paramAnonymousView.MmO);
-                ((Intent)localObject).putExtra("Contact_KWeibo", paramAnonymousView.MmM);
-                ((Intent)localObject).putExtra("Contact_KWeiboNick", paramAnonymousView.MmN);
-                ((Intent)localObject).putExtra("Contact_KSnsIFlag", paramAnonymousView.MmQ.kej);
-                ((Intent)localObject).putExtra("Contact_KSnsBgId", paramAnonymousView.MmQ.kel);
-                ((Intent)localObject).putExtra("Contact_KSnsBgUrl", paramAnonymousView.MmQ.kek);
-                if (paramAnonymousView.MmR != null) {}
+                ((Intent)localObject).putExtra("Contact_User", paramAnonymousView.SrH.Ufy);
+                ((Intent)localObject).putExtra("Contact_Alias", paramAnonymousView.mVD);
+                ((Intent)localObject).putExtra("Contact_Nick", paramAnonymousView.TtX.Ufy);
+                ((Intent)localObject).putExtra("Contact_Signature", paramAnonymousView.mVB);
+                ((Intent)localObject).putExtra("Contact_RegionCode", RegionCodeDecoder.bl(paramAnonymousView.mVH, paramAnonymousView.mVz, paramAnonymousView.mVA));
+                ((Intent)localObject).putExtra("Contact_Sex", paramAnonymousView.mVy);
+                ((Intent)localObject).putExtra("Contact_VUser_Info", paramAnonymousView.TxG);
+                ((Intent)localObject).putExtra("Contact_VUser_Info_Flag", paramAnonymousView.TxF);
+                ((Intent)localObject).putExtra("Contact_KWeibo_flag", paramAnonymousView.TxJ);
+                ((Intent)localObject).putExtra("Contact_KWeibo", paramAnonymousView.TxH);
+                ((Intent)localObject).putExtra("Contact_KWeiboNick", paramAnonymousView.TxI);
+                ((Intent)localObject).putExtra("Contact_KSnsIFlag", paramAnonymousView.TxL.mVJ);
+                ((Intent)localObject).putExtra("Contact_KSnsBgId", paramAnonymousView.TxL.mVL);
+                ((Intent)localObject).putExtra("Contact_KSnsBgUrl", paramAnonymousView.TxL.mVK);
+                if (paramAnonymousView.TxM != null) {}
                 try
                 {
-                  ((Intent)localObject).putExtra("Contact_customInfo", paramAnonymousView.MmR.toByteArray());
-                  if ((paramAnonymousView.MmK & 0x8) > 0) {
-                    h.CyF.kvStat(10298, paramAnonymousAdapterView + ",3");
+                  ((Intent)localObject).putExtra("Contact_customInfo", paramAnonymousView.TxM.toByteArray());
+                  if ((paramAnonymousView.TxF & 0x8) > 0) {
+                    h.IzE.kvStat(10298, paramAnonymousAdapterView + ",3");
                   }
-                  com.tencent.mm.br.c.b(ChatroomContactUI.this, "profile", ".ui.ContactInfoUI", (Intent)localObject);
+                  com.tencent.mm.by.c.b(ChatroomContactUI.this, "profile", ".ui.ContactInfoUI", (Intent)localObject);
                 }
                 catch (IOException localIOException)
                 {
@@ -339,7 +371,7 @@ public class ChatroomContactUI
             }
             else
             {
-              paramAnonymousAdapterView = ChatroomContactUI.e(ChatroomContactUI.this).Ln(paramAnonymousInt);
+              paramAnonymousAdapterView = ChatroomContactUI.e(ChatroomContactUI.this).Qx(paramAnonymousInt);
               if (paramAnonymousAdapterView == null)
               {
                 Log.e("MicroMsg.ChatroomContactUI", "on Contact ListView ItemClick, the item contact shoud not be null. count:%d, pos:%d ", new Object[] { Integer.valueOf(ChatroomContactUI.e(ChatroomContactUI.this).getCount()), Integer.valueOf(paramAnonymousInt) });
@@ -347,24 +379,24 @@ public class ChatroomContactUI
                 AppMethodBeat.o(37706);
                 return;
               }
-              ac.u(ChatroomContactUI.b(ChatroomContactUI.this).getSearchContent(), 9, 3, paramAnonymousInt + 1);
+              ae.y(ChatroomContactUI.b(ChatroomContactUI.this).getSearchContent(), 9, 3, paramAnonymousInt + 1);
               paramAnonymousAdapterView = paramAnonymousAdapterView.field_username;
-              if (ab.Iy(paramAnonymousAdapterView))
+              if (ab.PQ(paramAnonymousAdapterView))
               {
-                paramAnonymousView = new gq();
-                paramAnonymousView.us(paramAnonymousAdapterView);
-                paramAnonymousView.erw = 2L;
-                paramAnonymousView.bfK();
+                paramAnonymousView = new iv();
+                paramAnonymousView.zR(paramAnonymousAdapterView);
+                paramAnonymousView.gmT = 2L;
+                paramAnonymousView.bpa();
               }
               paramAnonymousView = new Intent(ChatroomContactUI.this.getContext(), ChattingUI.class);
               paramAnonymousView.addFlags(67108864);
               paramAnonymousView.putExtra("Chat_User", paramAnonymousAdapterView);
               paramAnonymousView.putExtra("Chat_Mode", 1);
               paramAnonymousAdapterView = ChatroomContactUI.this.getContext();
-              paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bl(paramAnonymousView);
-              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, paramAnonymousView.axQ(), "com/tencent/mm/ui/contact/ChatroomContactUI$8", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              paramAnonymousAdapterView.startActivity((Intent)paramAnonymousView.pG(0));
-              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, "com/tencent/mm/ui/contact/ChatroomContactUI$8", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousAdapterView, paramAnonymousView.aFh(), "com/tencent/mm/ui/contact/ChatroomContactUI$8", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              paramAnonymousAdapterView.startActivity((Intent)paramAnonymousView.sf(0));
+              com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousAdapterView, "com/tencent/mm/ui/contact/ChatroomContactUI$8", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             }
           }
         }
@@ -376,12 +408,12 @@ public class ChatroomContactUI
           AppMethodBeat.o(37706);
           return;
         }
-        if (ab.Iy(paramAnonymousAdapterView.field_username))
+        if (ab.PQ(paramAnonymousAdapterView.field_username))
         {
-          paramAnonymousView = new gq();
-          paramAnonymousView.us(paramAnonymousAdapterView.field_username);
-          paramAnonymousView.erw = 2L;
-          paramAnonymousView.bfK();
+          paramAnonymousView = new iv();
+          paramAnonymousView.zR(paramAnonymousAdapterView.field_username);
+          paramAnonymousView.gmT = 2L;
+          paramAnonymousView.bpa();
         }
         paramAnonymousAdapterView = paramAnonymousAdapterView.field_username;
         ChatroomContactUI.b(ChatroomContactUI.this, paramAnonymousAdapterView);
@@ -389,7 +421,7 @@ public class ChatroomContactUI
         AppMethodBeat.o(37706);
       }
     });
-    this.yCT.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+    this.Een.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
     {
       public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
@@ -401,7 +433,7 @@ public class ChatroomContactUI
           AppMethodBeat.o(37707);
           return true;
         }
-        if ((ChatroomContactUI.e(ChatroomContactUI.this) != null) && (ChatroomContactUI.e(ChatroomContactUI.this).QBl))
+        if ((ChatroomContactUI.e(ChatroomContactUI.this) != null) && (ChatroomContactUI.e(ChatroomContactUI.this).XZK))
         {
           AppMethodBeat.o(37707);
           return true;
@@ -414,7 +446,7 @@ public class ChatroomContactUI
           return false;
         }
         paramAnonymousAdapterView = paramAnonymousAdapterView.field_username;
-        if ((ab.Js(paramAnonymousAdapterView)) || (ab.Jt(paramAnonymousAdapterView)))
+        if ((ab.QL(paramAnonymousAdapterView)) || (ab.QM(paramAnonymousAdapterView)))
         {
           AppMethodBeat.o(37707);
           return true;
@@ -425,7 +457,7 @@ public class ChatroomContactUI
         return true;
       }
     });
-    this.yCT.setOnTouchListener(new View.OnTouchListener()
+    this.Een.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -438,15 +470,15 @@ public class ChatroomContactUI
           if (ChatroomContactUI.c(ChatroomContactUI.this) != null)
           {
             paramAnonymousView = ChatroomContactUI.c(ChatroomContactUI.this);
-            if (paramAnonymousView.kex != null) {
-              paramAnonymousView.kex.onTouchEvent(paramAnonymousMotionEvent);
+            if (paramAnonymousView.mVX != null) {
+              paramAnonymousView.mVX.B(paramAnonymousMotionEvent);
             }
           }
           if (ChatroomContactUI.e(ChatroomContactUI.this) != null)
           {
             paramAnonymousView = ChatroomContactUI.e(ChatroomContactUI.this);
-            if (paramAnonymousView.kex != null) {
-              paramAnonymousView.kex.onTouchEvent(paramAnonymousMotionEvent);
+            if (paramAnonymousView.mVX != null) {
+              paramAnonymousView.mVX.B(paramAnonymousMotionEvent);
             }
           }
           AppMethodBeat.o(37692);
@@ -457,26 +489,52 @@ public class ChatroomContactUI
         }
       }
     });
-    Object localObject = this.yCT;
+    Object localObject = this.Een;
     ContactCountView localContactCountView = new ContactCountView(this);
-    this.PTa = localContactCountView;
+    this.XpL = localContactCountView;
     ((ListView)localObject).addFooterView(localContactCountView, null, false);
-    setBackBtn(new ChatroomContactUI.3(this));
-    setToTop(new ChatroomContactUI.4(this));
-    this.yCT.setAdapter(this.PUo);
-    this.PSM.CQ(false);
-    this.yCT.setVisibility(0);
-    this.PUl = new VoiceSearchLayout(this);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(37693);
+        ChatroomContactUI.this.finish();
+        AppMethodBeat.o(37693);
+        return false;
+      }
+    });
+    setToTop(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(37694);
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/contact/ChatroomContactUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+        paramAnonymousView = ChatroomContactUI.d(ChatroomContactUI.this);
+        paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousView);
+        localObject = new Object();
+        com.tencent.mm.hellhoundlib.a.a.b(localObject, paramAnonymousView.aFh(), "com/tencent/mm/ui/contact/ChatroomContactUI$12", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+        BackwardSupportUtil.SmoothScrollFactory.scrollToTop((ListView)paramAnonymousView.sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/ui/contact/ChatroomContactUI$12", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/ChatroomContactUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(37694);
+      }
+    });
+    this.Een.setAdapter(this.XqZ);
+    this.Xpz.Hk(false);
+    this.Een.setVisibility(0);
+    this.XqW = new VoiceSearchLayout(this);
     localObject = new RelativeLayout.LayoutParams(-1, -1);
     ((RelativeLayout.LayoutParams)localObject).addRule(14);
-    this.PUl.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.PUl.setTopMargin(BackwardSupportUtil.BitmapFactory.fromDPToPix(this, 100.0F));
-    this.PUl.setVisibility(8);
-    ((ViewGroup)findViewById(2131310010)).addView(this.PUl);
-    if (this.PUl != null) {
-      this.PUl.setOnVisibleChangeListener(new VoiceSearchLayout.b()
+    this.XqW.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.XqW.setTopMargin(BackwardSupportUtil.BitmapFactory.fromDPToPix(this, 100.0F));
+    this.XqW.setVisibility(8);
+    ((ViewGroup)findViewById(R.h.eat)).addView(this.XqW);
+    if (this.XqW != null) {
+      this.XqW.setOnVisibleChangeListener(new VoiceSearchLayout.b()
       {
-        public final void fX(boolean paramAnonymousBoolean)
+        public final void gJ(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(37696);
           Log.d("MicroMsg.ChatroomContactUI", "visible ".concat(String.valueOf(paramAnonymousBoolean)));
@@ -500,11 +558,11 @@ public class ChatroomContactUI
         }
       });
     }
-    if (this.PUo.getCount() == 0)
+    if (this.XqZ.getCount() == 0)
     {
-      this.hSx.setSingleLine(false);
-      this.hSx.setPadding(40, 0, 40, 0);
-      this.hSx.setVisibility(0);
+      this.kGU.setSingleLine(false);
+      this.kGU.setPadding(40, 0, 40, 0);
+      this.kGU.setVisibility(0);
     }
     AppMethodBeat.o(37711);
   }
@@ -513,11 +571,11 @@ public class ChatroomContactUI
   {
     AppMethodBeat.i(37709);
     super.onCreate(paramBundle);
-    setMMTitle(2131755196);
+    setMMTitle(R.l.address_chatroom_contact_nick);
     initView();
-    bg.azz().a(138, this);
-    bg.aVF();
-    com.tencent.mm.model.c.aSN().add(this.PUo);
+    bh.aGY().a(138, this);
+    bh.beI();
+    com.tencent.mm.model.c.bbL().add(this.XqZ);
     AppMethodBeat.o(37709);
   }
   
@@ -526,17 +584,17 @@ public class ChatroomContactUI
     AppMethodBeat.i(37710);
     super.onCreateContextMenu(paramContextMenu, paramView, paramContextMenuInfo);
     paramContextMenuInfo = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
-    bg.aVF();
-    if (com.tencent.mm.model.c.aSN().Kn(this.PSO) == null)
+    bh.beI();
+    if (com.tencent.mm.model.c.bbL().RG(this.XpB) == null)
     {
-      Log.e("MicroMsg.ChatroomContactUI", "onCreateContextMenu, contact is null, username = " + this.PSO);
+      Log.e("MicroMsg.ChatroomContactUI", "onCreateContextMenu, contact is null, username = " + this.XpB);
       AppMethodBeat.o(37710);
       return;
     }
-    if (ab.IQ(this.PSO))
+    if (ab.Qj(this.XpB))
     {
-      paramContextMenu.setHeaderTitle(l.c(paramView.getContext(), aa.getDisplayName(this.PSO)));
-      paramContextMenu.add(paramContextMenuInfo.position, 1, 0, 2131755223);
+      paramContextMenu.setHeaderTitle(l.c(paramView.getContext(), aa.PJ(this.XpB)));
+      paramContextMenu.add(paramContextMenuInfo.position, 1, 0, R.l.ent);
       AppMethodBeat.o(37710);
       return;
     }
@@ -547,29 +605,29 @@ public class ChatroomContactUI
   {
     AppMethodBeat.i(37714);
     super.onDestroy();
-    bg.azz().b(138, this);
-    bg.aVF();
-    com.tencent.mm.model.c.aSN().remove(this.PUo);
-    d locald = this.PUo;
-    if (locald.kex != null)
+    bh.aGY().b(138, this);
+    bh.beI();
+    com.tencent.mm.model.c.bbL().remove(this.XqZ);
+    d locald = this.XqZ;
+    if (locald.mVX != null)
     {
-      locald.kex.detach();
-      locald.kex = null;
+      locald.mVX.detach();
+      locald.mVX = null;
     }
-    this.PUo.ebf();
-    this.PUo.gGV();
-    this.PSM.detach();
-    this.PSM.ebf();
+    this.XqZ.eKd();
+    this.XqZ.hFC();
+    this.Xpz.detach();
+    this.Xpz.eKd();
     AppMethodBeat.o(37714);
   }
   
   public void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData)
   {
     AppMethodBeat.i(37717);
-    if (this.PTa != null)
+    if (this.XpL != null)
     {
-      this.PTa.setContactType(2);
-      this.PTa.gUw();
+      this.XpL.setContactType(2);
+      this.XpL.hUp();
     }
     AppMethodBeat.o(37717);
   }
@@ -578,13 +636,13 @@ public class ChatroomContactUI
   {
     AppMethodBeat.i(37713);
     super.onPause();
-    bg.aVF();
-    com.tencent.mm.model.c.aSX().remove(this);
-    if (this.PUn != null) {
-      this.PUn.onPause();
+    bh.beI();
+    com.tencent.mm.model.c.bbV().remove(this);
+    if (this.XqY != null) {
+      this.XqY.onPause();
     }
-    if (this.PSM != null) {
-      this.PSM.onPause();
+    if (this.Xpz != null) {
+      this.Xpz.onPause();
     }
     AppMethodBeat.o(37713);
   }
@@ -593,41 +651,41 @@ public class ChatroomContactUI
   {
     AppMethodBeat.i(37712);
     super.onResume();
-    if (this.PTa != null)
+    if (this.XpL != null)
     {
-      this.PTa.setContactType(2);
-      this.PTa.gUw();
+      this.XpL.setContactType(2);
+      this.XpL.hUp();
     }
-    bg.aVF();
-    com.tencent.mm.model.c.aSX().add(this);
+    bh.beI();
+    com.tencent.mm.model.c.bbV().add(this);
     com.tencent.mm.modelvoiceaddr.ui.b localb;
-    if ((this.PUn != null) && (this.PUl != null))
+    if ((this.XqY != null) && (this.XqW != null))
     {
-      com.tencent.mm.br.c.gsX();
-      if ((com.tencent.mm.aw.b.isOverseasUser()) || (!LocaleUtil.getApplicationLanguage().equals("zh_CN"))) {
+      com.tencent.mm.by.c.hok();
+      if ((com.tencent.mm.az.b.isOverseasUser()) || (!LocaleUtil.getApplicationLanguage().equals("zh_CN"))) {
         break label149;
       }
-      this.PUn.jxF = false;
-      localb = this.PUn;
-      localb.jxJ = this.PUl;
-      localb.jxH = 1;
-      if (1 != localb.jxH) {
+      this.XqY.mni = false;
+      localb = this.XqY;
+      localb.mnm = this.XqW;
+      localb.mnk = 1;
+      if (1 != localb.mnk) {
         break label141;
       }
-      localb.jxG = 2;
+      localb.mnj = 2;
     }
     for (;;)
     {
-      if (this.PSM != null) {
-        this.PSM.onResume();
+      if (this.Xpz != null) {
+        this.Xpz.onResume();
       }
       AppMethodBeat.o(37712);
       return;
       label141:
-      localb.jxG = 1;
+      localb.mnj = 1;
       continue;
       label149:
-      this.PUn.jxF = false;
+      this.XqY.mni = false;
     }
   }
   
@@ -639,7 +697,7 @@ public class ChatroomContactUI
       AppMethodBeat.o(37716);
       return;
     }
-    if (z.a.a(this, paramInt1, paramInt2, paramString, 4))
+    if (ac.a.a(this, paramInt1, paramInt2, paramString, 4))
     {
       AppMethodBeat.o(37716);
       return;
@@ -656,7 +714,7 @@ public class ChatroomContactUI
     {
       AppMethodBeat.o(37716);
       return;
-      eco();
+      eLm();
     }
   }
   
@@ -668,7 +726,7 @@ public class ChatroomContactUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.ChatroomContactUI
  * JD-Core Version:    0.7.0.1
  */

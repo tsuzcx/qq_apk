@@ -10,7 +10,7 @@ public abstract class a<T>
 {
   private Map<String, SynchronizedPool> map = new HashMap();
   
-  private SynchronizedPool WD(String paramString)
+  private SynchronizedPool aeo(String paramString)
   {
     SynchronizedPool localSynchronizedPool2 = (SynchronizedPool)this.map.get(paramString);
     SynchronizedPool localSynchronizedPool1 = localSynchronizedPool2;
@@ -22,18 +22,6 @@ public abstract class a<T>
     return localSynchronizedPool1;
   }
   
-  public final <T extends BaseDrawActionArg> T WC(String paramString)
-  {
-    BaseDrawActionArg localBaseDrawActionArg2 = (BaseDrawActionArg)WD(paramString).acquire();
-    BaseDrawActionArg localBaseDrawActionArg1 = localBaseDrawActionArg2;
-    if (localBaseDrawActionArg2 == null) {
-      localBaseDrawActionArg1 = (BaseDrawActionArg)WE(paramString);
-    }
-    return localBaseDrawActionArg1;
-  }
-  
-  public abstract <T> T WE(String paramString);
-  
   public final void a(BaseDrawActionArg paramBaseDrawActionArg)
   {
     if (paramBaseDrawActionArg == null) {
@@ -42,8 +30,20 @@ public abstract class a<T>
     if (TextUtils.isEmpty(paramBaseDrawActionArg.method)) {
       throw new IllegalStateException("method is empty " + paramBaseDrawActionArg.toString());
     }
-    WD(paramBaseDrawActionArg.method).release(paramBaseDrawActionArg);
+    aeo(paramBaseDrawActionArg.method).release(paramBaseDrawActionArg);
   }
+  
+  public final <T extends BaseDrawActionArg> T aen(String paramString)
+  {
+    BaseDrawActionArg localBaseDrawActionArg2 = (BaseDrawActionArg)aeo(paramString).acquire();
+    BaseDrawActionArg localBaseDrawActionArg1 = localBaseDrawActionArg2;
+    if (localBaseDrawActionArg2 == null) {
+      localBaseDrawActionArg1 = (BaseDrawActionArg)aep(paramString);
+    }
+    return localBaseDrawActionArg1;
+  }
+  
+  public abstract <T> T aep(String paramString);
 }
 
 

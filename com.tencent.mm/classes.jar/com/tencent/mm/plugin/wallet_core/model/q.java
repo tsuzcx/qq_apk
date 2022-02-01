@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.wallet_core.model;
 
 public final class q
 {
-  public int HYq;
-  public int HYr;
-  public int HYs;
-  public String HYt;
-  public String HYu;
-  public String HYv;
-  public String HYw;
+  public int OQq;
+  public int OQr;
+  public int OQs;
+  public String OQt;
+  public String OQu;
+  public String OQv;
+  public String OQw;
 }
 
 

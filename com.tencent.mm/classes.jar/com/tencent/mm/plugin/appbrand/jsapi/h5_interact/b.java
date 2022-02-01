@@ -1,17 +1,16 @@
 package com.tencent.mm.plugin.appbrand.jsapi.h5_interact;
 
+import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.service.c;
 
 public final class b
-  extends d<c>
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<com.tencent.mm.plugin.appbrand.service.c>
 {
   private static final int CTRL_INDEX = 459;
   private static final String NAME = "sendDataToH5";
   
   static final class a
-    implements com.tencent.mm.ipcinvoker.b<SendDataToH5FromMiniProgramEvent, IPCVoid>
+    implements d<SendDataToH5FromMiniProgramEvent, IPCVoid>
   {}
 }
 

@@ -1,32 +1,41 @@
 package com.tencent.mm.plugin.appbrand.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.api.e;
-import com.tencent.mm.plugin.appbrand.appcache.an;
-import com.tencent.mm.plugin.appbrand.appcache.bh;
+import com.tencent.mm.plugin.appbrand.widget.a.b;
+import com.tencent.mm.plugin.appbrand.widget.h;
+import com.tencent.mm.plugin.appbrand.widget.l;
+import com.tencent.mm.plugin.appbrand.widget.r;
 
 public final class p
-  implements e
+  implements b
 {
-  public final bh bub()
+  public final l bFH()
   {
-    AppMethodBeat.i(44229);
-    bh localbh = n.buL();
-    AppMethodBeat.o(44229);
-    return localbh;
+    AppMethodBeat.i(44231);
+    l locall = m.bFH();
+    AppMethodBeat.o(44231);
+    return locall;
   }
   
-  public final an buc()
+  public final r bFL()
   {
-    AppMethodBeat.i(44230);
-    an localan = (an)n.W(an.class);
-    AppMethodBeat.o(44230);
-    return localan;
+    AppMethodBeat.i(44232);
+    r localr = m.bFL();
+    AppMethodBeat.o(44232);
+    return localr;
+  }
+  
+  public final h bFR()
+  {
+    AppMethodBeat.i(44233);
+    h localh = m.bFR();
+    AppMethodBeat.o(44233);
+    return localh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.p
  * JD-Core Version:    0.7.0.1
  */

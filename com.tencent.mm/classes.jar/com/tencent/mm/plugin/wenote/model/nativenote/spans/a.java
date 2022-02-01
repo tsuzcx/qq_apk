@@ -4,21 +4,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public final q JIU;
-  public int qSZ;
-  public int qTa;
+  public final q QIm;
+  public int uvf;
+  public int uvg;
   
   public a(q paramq, int paramInt1, int paramInt2)
   {
-    this.JIU = paramq;
-    this.qSZ = paramInt1;
-    this.qTa = paramInt2;
+    this.QIm = paramq;
+    this.uvf = paramInt1;
+    this.uvg = paramInt2;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(30624);
-    String str = this.JIU.name() + " - " + this.qSZ + "/" + this.qTa;
+    String str = this.QIm.name() + " - " + this.uvf + "/" + this.uvg;
     AppMethodBeat.o(30624);
     return str;
   }

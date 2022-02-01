@@ -6,39 +6,39 @@ import java.util.Map;
 
 public final class b
 {
-  private static b SOl;
-  private final Map<String, a> SOm;
+  private static b aaqj;
+  private final Map<String, a> aaqk;
   
   b()
   {
     AppMethodBeat.i(10117);
-    this.SOm = new HashMap();
+    this.aaqk = new HashMap();
     AppMethodBeat.o(10117);
   }
   
-  public static b hwG()
+  public static b iAJ()
   {
     AppMethodBeat.i(10116);
-    if (SOl == null) {
-      SOl = new b();
+    if (aaqj == null) {
+      aaqj = new b();
     }
-    b localb = SOl;
+    b localb = aaqj;
     AppMethodBeat.o(10116);
     return localb;
   }
   
-  public final a bta(String paramString)
+  public final a bGc(String paramString)
   {
     AppMethodBeat.i(10118);
-    paramString = (a)this.SOm.get(paramString);
+    paramString = (a)this.aaqk.get(paramString);
     AppMethodBeat.o(10118);
     return paramString;
   }
   
-  public final void btb(String paramString)
+  public final void bGd(String paramString)
   {
     AppMethodBeat.i(10119);
-    this.SOm.remove(paramString);
+    this.aaqk.remove(paramString);
     AppMethodBeat.o(10119);
   }
 }

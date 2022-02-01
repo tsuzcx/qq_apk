@@ -3,6 +3,7 @@ package com.tencent.kinda.framework.module.base;
 import com.tencent.kinda.framework.animate.MMKAnimator;
 import com.tencent.kinda.framework.app.KLogServiceImpl;
 import com.tencent.kinda.framework.app.KOfflinePayServiceImpl;
+import com.tencent.kinda.framework.app.KPaySettingsServiceImpl;
 import com.tencent.kinda.framework.app.KWCPayServiceImpl;
 import com.tencent.kinda.framework.app.KindaAddPayCardServiceImpl;
 import com.tencent.kinda.framework.app.KindaDeviceFrameDrawLoopCallback;
@@ -21,6 +22,7 @@ import com.tencent.kinda.framework.app.KindaShakeCheckingManager;
 import com.tencent.kinda.framework.app.KindaTimerService;
 import com.tencent.kinda.framework.app.KindaUtilityServiceImpl;
 import com.tencent.kinda.framework.app.MMKindaFaceRegManagerImpl;
+import com.tencent.kinda.framework.app.MMKindaFinderRegManagerImpl;
 import com.tencent.kinda.framework.app.UIPageControllerImpl;
 import com.tencent.kinda.framework.module.impl.ContactServiceImpl;
 import com.tencent.kinda.framework.module.impl.KindaCacheServiceImpl;
@@ -87,11 +89,13 @@ public class KindaBaseServiceModule
     registerNativeModule("KindaPayCardManager", KindaPayCardManagerImpl.class);
     registerNativeModule("KindaFaceRegManager", MMKindaFaceRegManagerImpl.class);
     registerNativeModule("RsaCryptUtil", RsaCryptUtilImpl.class);
+    registerNativeModule("KindaFinderRegManager", MMKindaFinderRegManagerImpl.class);
     registerNativeModule("SecureCtrItem", KindaSecureCtrItemImpl.class);
     registerNativeModule("KAddPayCardService", KindaAddPayCardServiceImpl.class);
     registerNativeModule("KindaNotify", KindaNotifyImpl.class);
     registerNativeModule("KUtilityService", KindaUtilityServiceImpl.class);
     registerNativeModule("KindaWebService", KindaWebServiceImpl.class);
+    registerNativeModule("KPaySettingsService", KPaySettingsServiceImpl.class);
     AppMethodBeat.o(18618);
   }
   

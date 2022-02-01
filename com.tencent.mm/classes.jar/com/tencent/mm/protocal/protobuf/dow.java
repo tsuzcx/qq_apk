@@ -1,101 +1,91 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
-import java.util.LinkedList;
 
 public final class dow
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int MPS;
-  public SKBuiltinBuffer_t MSr;
+  public String Soo;
+  public String Sop;
+  public String jump_url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32414);
+    AppMethodBeat.i(250285);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.MSr == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: ResData");
-        AppMethodBeat.o(32414);
-        throw paramVarArgs;
+      if (this.Soo != null) {
+        paramVarArgs.f(1, this.Soo);
       }
-      paramVarArgs.aM(1, this.MPS);
-      if (this.MSr != null)
-      {
-        paramVarArgs.ni(2, this.MSr.computeSize());
-        this.MSr.writeFields(paramVarArgs);
+      if (this.Sop != null) {
+        paramVarArgs.f(2, this.Sop);
       }
-      AppMethodBeat.o(32414);
+      if (this.jump_url != null) {
+        paramVarArgs.f(3, this.jump_url);
+      }
+      AppMethodBeat.o(250285);
       return 0;
     }
-    int i;
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.Soo == null) {
+        break label334;
+      }
+    }
+    label334:
+    for (int i = g.a.a.b.b.a.g(1, this.Soo) + 0;; i = 0)
     {
-      i = g.a.a.b.b.a.bu(1, this.MPS) + 0;
       paramInt = i;
-      if (this.MSr != null) {
-        paramInt = i + g.a.a.a.nh(2, this.MSr.computeSize());
+      if (this.Sop != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.Sop);
       }
-      AppMethodBeat.o(32414);
-      return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+      i = paramInt;
+      if (this.jump_url != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.jump_url);
+      }
+      AppMethodBeat.o(250285);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
         }
-      }
-      if (this.MSr == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: ResData");
-        AppMethodBeat.o(32414);
-        throw paramVarArgs;
-      }
-      AppMethodBeat.o(32414);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
-      dow localdow = (dow)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
-      {
-      default: 
-        AppMethodBeat.o(32414);
-        return -1;
-      case 1: 
-        localdow.MPS = ((g.a.a.a.a)localObject1).UbS.zi();
-        AppMethodBeat.o(32414);
+        AppMethodBeat.o(250285);
         return 0;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
+      if (paramInt == 3)
       {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new SKBuiltinBuffer_t();
-        localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-        localdow.MSr = ((SKBuiltinBuffer_t)localObject1);
-        paramInt += 1;
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        dow localdow = (dow)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(250285);
+          return -1;
+        case 1: 
+          localdow.Soo = locala.abFh.readString();
+          AppMethodBeat.o(250285);
+          return 0;
+        case 2: 
+          localdow.Sop = locala.abFh.readString();
+          AppMethodBeat.o(250285);
+          return 0;
+        }
+        localdow.jump_url = locala.abFh.readString();
+        AppMethodBeat.o(250285);
+        return 0;
       }
-      AppMethodBeat.o(32414);
-      return 0;
+      AppMethodBeat.o(250285);
+      return -1;
     }
-    AppMethodBeat.o(32414);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dow
  * JD-Core Version:    0.7.0.1
  */

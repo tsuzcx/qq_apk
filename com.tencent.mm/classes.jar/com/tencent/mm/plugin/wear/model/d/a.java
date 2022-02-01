@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.wear.model.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.cd.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cay;
-import com.tencent.mm.protocal.protobuf.caz;
+import com.tencent.mm.protocal.protobuf.ciz;
+import com.tencent.mm.protocal.protobuf.cja;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
@@ -19,27 +19,27 @@ public final class a
   implements m
 {
   private i callback;
-  public String dGL;
-  public String dGP;
-  private d iUB;
+  public String fzB;
+  public String fzF;
+  private d lKU;
   
   public a(String paramString1, String paramString2)
   {
     AppMethodBeat.i(30054);
-    this.dGL = paramString1;
-    this.dGP = paramString2;
+    this.fzB = paramString1;
+    this.fzF = paramString2;
     Object localObject = new d.a();
     ((d.a)localObject).funcId = 1091;
     ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/device/register";
-    ((d.a)localObject).iLN = new cay();
-    ((d.a)localObject).iLO = new caz();
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBU = new ciz();
+    ((d.a)localObject).lBV = new cja();
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.iUB = ((d.a)localObject).aXF();
-    localObject = (cay)this.iUB.iLK.iLR;
-    ((cay)localObject).KOi = new b(paramString1.getBytes());
-    ((cay)localObject).KOk = new b(paramString2.getBytes());
-    ((cay)localObject).Mgr = new b("5".getBytes());
+    this.lKU = ((d.a)localObject).bgN();
+    localObject = (ciz)d.b.b(this.lKU.lBR);
+    ((ciz)localObject).RPd = new b(paramString1.getBytes());
+    ((ciz)localObject).RPf = new b(paramString2.getBytes());
+    ((ciz)localObject).Tqd = new b("5".getBytes());
     AppMethodBeat.o(30054);
   }
   
@@ -47,7 +47,7 @@ public final class a
   {
     AppMethodBeat.i(30055);
     this.callback = parami;
-    int i = dispatch(paramg, this.iUB, this);
+    int i = dispatch(paramg, this.lKU, this);
     AppMethodBeat.o(30055);
     return i;
   }

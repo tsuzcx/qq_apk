@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.webview.e;
 
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.luggage.c.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.net.URI;
@@ -11,10 +12,18 @@ import java.util.List;
 
 public final class b
 {
-  private static String bxh(String paramString)
+  public static boolean ane(String paramString)
+  {
+    AppMethodBeat.i(292966);
+    boolean bool = c.ane(paramString);
+    AppMethodBeat.o(292966);
+    return bool;
+  }
+  
+  private static String bIK(String paramString)
   {
     AppMethodBeat.i(79103);
-    if (!com.tencent.mm.plugin.webview.luggage.c.b.afC(paramString))
+    if (!c.ane(paramString))
     {
       AppMethodBeat.o(79103);
       return null;
@@ -82,7 +91,7 @@ public final class b
         }
         localObject1 = paramString;
         localObject2 = paramString;
-        paramString = bxi(paramString);
+        paramString = bIL(paramString);
         AppMethodBeat.o(79103);
         return paramString;
         i = 443;
@@ -115,7 +124,7 @@ public final class b
     }
   }
   
-  private static String bxi(String paramString)
+  private static String bIL(String paramString)
   {
     AppMethodBeat.i(79104);
     Uri localUri = Uri.parse(paramString);
@@ -148,10 +157,10 @@ public final class b
     }
   }
   
-  public static String bxj(String paramString)
+  public static String bIM(String paramString)
   {
     AppMethodBeat.i(79105);
-    paramString = bxh(paramString);
+    paramString = bIK(paramString);
     if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(79105);
@@ -162,10 +171,10 @@ public final class b
     return paramString;
   }
   
-  public static String bxk(String paramString)
+  public static String bIN(String paramString)
   {
     AppMethodBeat.i(79106);
-    Object localObject1 = bxh(paramString);
+    Object localObject1 = bIK(paramString);
     if (Util.isNullOrNil((String)localObject1))
     {
       Log.e("MicroMsg.WebViewCacheUtils", "evaluateResURLWithScheme, original url is invalid = %s", new Object[] { paramString });

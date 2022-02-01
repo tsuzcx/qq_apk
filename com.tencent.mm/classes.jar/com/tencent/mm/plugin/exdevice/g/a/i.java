@@ -1,24 +1,25 @@
 package com.tencent.mm.plugin.exdevice.g.a;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.an.t;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.z;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.exdevice.model.ad;
-import com.tencent.mm.plugin.exdevice.ui.SportProfileUIC;
-import com.tencent.mm.protocal.protobuf.bes;
-import com.tencent.mm.protocal.protobuf.bxb;
-import com.tencent.mm.protocal.protobuf.bxc;
-import com.tencent.mm.protocal.protobuf.ecx;
-import com.tencent.mm.protocal.protobuf.ffn;
-import com.tencent.mm.protocal.protobuf.ffo;
-import com.tencent.mm.protocal.protobuf.sg;
+import com.tencent.mm.plugin.exdevice.model.ae;
+import com.tencent.mm.plugin.exdevice.ui.e;
+import com.tencent.mm.protocal.protobuf.blw;
+import com.tencent.mm.protocal.protobuf.cev;
+import com.tencent.mm.protocal.protobuf.cew;
+import com.tencent.mm.protocal.protobuf.emy;
+import com.tencent.mm.protocal.protobuf.fqo;
+import com.tencent.mm.protocal.protobuf.fqp;
+import com.tencent.mm.protocal.protobuf.rz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.IAutoDBItem;
 import com.tencent.mm.storage.bv;
+import com.tencent.mm.ui.component.g;
+import com.tencent.mm.ui.component.g.a;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -26,37 +27,37 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class i
-  extends com.tencent.mm.plugin.exdevice.b.a<bxb, bxc>
+  extends com.tencent.mm.plugin.exdevice.b.a<cev, cew>
 {
   public String appName;
   private Context context;
   public String coverUrl;
-  public String msN;
-  public String rCo;
-  public String rCp;
-  public String rCq;
-  public List<ecx> rCr;
-  public List<ffo> rCs;
-  public ffn rCt;
-  public ArrayList<String> rCu;
-  public List<bes> rCv;
-  public List<sg> rCw;
-  public boolean rCx;
-  public int rCy;
-  public boolean rCz;
-  private final WeakReference<com.tencent.mm.plugin.exdevice.b.b<i>> rxQ;
+  public String pqW;
   public String source;
   public String username;
+  private final WeakReference<com.tencent.mm.plugin.exdevice.b.b<i>> vdw;
+  public String vhW;
+  public String vhX;
+  public String vhY;
+  public List<emy> vhZ;
+  public List<fqp> vib;
+  public fqo vic;
+  public ArrayList<String> vie;
+  public List<blw> vif;
+  public List<rz> vig;
+  public boolean vih;
+  public int vii;
+  public boolean vij;
   
   public i(Context paramContext, String paramString1, String paramString2, com.tencent.mm.plugin.exdevice.b.b<i> paramb)
   {
-    AppMethodBeat.i(231695);
+    AppMethodBeat.i(278539);
     Log.i("MicroMsg.NetSceneGetProfileDetail", "NetSceneGetProfileDetail, username: %s, appName: %s", new Object[] { paramString1, paramString2 });
     this.context = paramContext;
     this.username = paramString1;
     this.appName = paramString2;
-    this.rxQ = new WeakReference(paramb);
-    AppMethodBeat.o(231695);
+    this.vdw = new WeakReference(paramb);
+    AppMethodBeat.o(278539);
   }
   
   public final int getType()
@@ -76,61 +77,61 @@ public final class i
     Object localObject1;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      localObject1 = (bxc)cgq();
-      Object localObject2 = com.tencent.mm.ui.component.a.PRN;
-      ((SportProfileUIC)com.tencent.mm.ui.component.a.ko(this.context).get(SportProfileUIC.class)).rMR = ((bxc)localObject1);
-      this.coverUrl = ((bxc)localObject1).McL;
-      this.rCp = ((bxc)localObject1).rCp;
-      this.rCs = ((bxc)localObject1).McN;
-      this.rCt = ((bxc)localObject1).LpZ;
-      this.rCq = ((bxc)localObject1).McP;
-      this.source = ((bxc)localObject1).source;
-      this.msN = ((bxc)localObject1).McQ;
-      this.rCr = ((bxc)localObject1).KHS;
-      this.rCx = ((bxc)localObject1).rCx;
-      this.rCv = ((bxc)localObject1).KHh;
-      this.rCw = ((bxc)localObject1).McR;
-      this.rCu = new ArrayList();
-      this.rCy = ((bxc)localObject1).rJh;
-      this.rCz = ((bxc)localObject1).McS;
-      this.rCo = ((bxc)localObject1).rCo;
-      if (((bxc)localObject1).McO != null) {
-        this.rCu.addAll(((bxc)localObject1).McO);
+      localObject1 = (cew)ctC();
+      Object localObject2 = g.Xox;
+      ((e)g.lm(this.context).i(e.class)).vsB = ((cew)localObject1);
+      this.coverUrl = ((cew)localObject1).Tmm;
+      this.vhX = ((cew)localObject1).vhX;
+      this.vib = ((cew)localObject1).Tmo;
+      this.vic = ((cew)localObject1).Srw;
+      this.vhY = ((cew)localObject1).Tmq;
+      this.source = ((cew)localObject1).source;
+      this.pqW = ((cew)localObject1).Tmr;
+      this.vhZ = ((cew)localObject1).RJm;
+      this.vih = ((cew)localObject1).vih;
+      this.vif = ((cew)localObject1).RIz;
+      this.vig = ((cew)localObject1).Tms;
+      this.vie = new ArrayList();
+      this.vii = ((cew)localObject1).voP;
+      this.vij = ((cew)localObject1).Tmt;
+      this.vhW = ((cew)localObject1).vhW;
+      if (((cew)localObject1).Tmp != null) {
+        this.vie.addAll(((cew)localObject1).Tmp);
       }
-      this.rCr = new LinkedList();
-      if (((bxc)localObject1).KHS != null) {
-        this.rCr.addAll(((bxc)localObject1).KHS);
+      this.vhZ = new LinkedList();
+      if (((cew)localObject1).RJm != null) {
+        this.vhZ.addAll(((cew)localObject1).RJm);
       }
       Object localObject3;
-      if ((this.username != null) && (!this.username.equalsIgnoreCase(z.aTY())))
+      if ((this.username != null) && (!this.username.equalsIgnoreCase(z.bcZ())))
       {
-        if (!this.rCx) {
-          ad.cKN().anE(this.username);
+        if (!this.vih) {
+          ae.cZA().avD(this.username);
         }
       }
       else
       {
-        if (((bxc)localObject1).KHh == null) {
+        if (((cew)localObject1).RIz == null) {
           break label576;
         }
         localObject2 = new ArrayList();
-        localObject3 = ((bxc)localObject1).KHh.iterator();
+        localObject3 = ((cew)localObject1).RIz.iterator();
       }
       for (;;)
       {
         if (!((Iterator)localObject3).hasNext()) {
           break label524;
         }
-        Object localObject4 = (bes)((Iterator)localObject3).next();
-        bg.aVF();
-        if (com.tencent.mm.model.c.aSN().bjG(((bes)localObject4).username))
+        Object localObject4 = (blw)((Iterator)localObject3).next();
+        bh.beI();
+        if (com.tencent.mm.model.c.bbL().bwd(((blw)localObject4).username))
         {
           com.tencent.mm.plugin.exdevice.g.b.a.c localc = new com.tencent.mm.plugin.exdevice.g.b.a.c();
-          localc.field_username = ((bes)localObject4).username;
-          localc.field_step = ((bes)localObject4).lCq;
+          localc.field_username = ((blw)localObject4).username;
+          localc.field_step = ((blw)localObject4).oxQ;
           ((ArrayList)localObject2).add(localc);
           continue;
-          localObject2 = ad.cKN();
+          localObject2 = ae.cZA();
           localObject3 = this.username;
           if (((com.tencent.mm.plugin.exdevice.g.b.b.a)localObject2).a(new com.tencent.mm.plugin.exdevice.g.b.b("hardcode_rank_id", "hardcode_app_name", (String)localObject3)) != null) {
             break;
@@ -143,28 +144,28 @@ public final class i
           ((com.tencent.mm.plugin.exdevice.g.b.b.a)localObject2).insert((IAutoDBItem)localObject4);
           break;
         }
-        bg.azz().a(new h(((bes)localObject4).username, null), 0);
+        bh.aGY().a(new h(((blw)localObject4).username, null), 0);
       }
       label524:
       Log.d("MicroMsg.NetSceneGetProfileDetail", "follows %d %s", new Object[] { Integer.valueOf(((ArrayList)localObject2).size()), ((ArrayList)localObject2).toString() });
-      if (z.aTY().equalsIgnoreCase(this.username)) {
-        ad.cKN().dn((List)localObject2);
+      if (z.bcZ().equalsIgnoreCase(this.username)) {
+        ae.cZA().jdMethod_do((List)localObject2);
       }
       label576:
-      this.rCw = new ArrayList();
-      if (((bxc)localObject1).McR != null) {
-        this.rCw.addAll(((bxc)localObject1).McR);
+      this.vig = new ArrayList();
+      if (((cew)localObject1).Tms != null) {
+        this.vig.addAll(((cew)localObject1).Tms);
       }
-      this.rCx = ((bxc)localObject1).rCx;
+      this.vih = ((cew)localObject1).vih;
       localObject1 = new com.tencent.mm.plugin.exdevice.g.b.a.a();
-      ((com.tencent.mm.plugin.exdevice.g.b.a.a)localObject1).field_championMotto = this.rCp;
+      ((com.tencent.mm.plugin.exdevice.g.b.a.a)localObject1).field_championMotto = this.vhX;
       ((com.tencent.mm.plugin.exdevice.g.b.a.a)localObject1).field_championUrl = this.coverUrl;
       ((com.tencent.mm.plugin.exdevice.g.b.a.a)localObject1).field_username = this.username;
-      ad.cKP().a((com.tencent.mm.plugin.exdevice.g.b.a.a)localObject1);
+      ae.cZC().a((com.tencent.mm.plugin.exdevice.g.b.a.a)localObject1);
     }
-    if (this.rxQ != null)
+    if (this.vdw != null)
     {
-      localObject1 = (com.tencent.mm.plugin.exdevice.b.b)this.rxQ.get();
+      localObject1 = (com.tencent.mm.plugin.exdevice.b.b)this.vdw.get();
       if (localObject1 != null) {
         ((com.tencent.mm.plugin.exdevice.b.b)localObject1).a(paramInt2, paramInt3, paramString, this);
       }
@@ -175,7 +176,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.g.a.i
  * JD-Core Version:    0.7.0.1
  */

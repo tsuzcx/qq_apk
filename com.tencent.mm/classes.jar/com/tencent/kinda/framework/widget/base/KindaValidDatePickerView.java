@@ -2,6 +2,7 @@ package com.tencent.kinda.framework.widget.base;
 
 import android.content.Context;
 import android.widget.EditText;
+import com.tencent.kinda.framework.R.string;
 import com.tencent.kinda.framework.widget.tools.MMKViewUtil;
 import com.tencent.kinda.gen.KValidDatePickerView;
 import com.tencent.kinda.gen.KValidDatePickerViewOnSelectCallback;
@@ -9,8 +10,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.framework.app.UIPageFragmentActivity;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.widget.picker.b;
-import com.tencent.mm.ui.widget.picker.b.a;
+import com.tencent.mm.ui.widget.picker.a;
+import com.tencent.mm.ui.widget.picker.a.a;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -23,7 +24,7 @@ public class KindaValidDatePickerView
 {
   private UIPageFragmentActivity activity;
   KValidDatePickerViewOnSelectCallback callback;
-  private b datePicker;
+  private a datePicker;
   private TenpaySecureEditText mEditText;
   private int mMonthOfYear = -1;
   private String mSelected;
@@ -37,7 +38,7 @@ public class KindaValidDatePickerView
     this.mEditText.setFocusable(false);
     this.mEditText.setBackground(null);
     this.mEditText.setIsValidThru(true);
-    this.mEditText.setHint(2131767557);
+    this.mEditText.setHint(R.string.wallet_card_date_hint);
     this.mEditText.setPadding(0, 0, 0, 0);
     this.mEditText.setTextSize(0, MMKViewUtil.dpToPx(paramContext, 17.0F));
     if ((paramContext instanceof UIPageFragmentActivity)) {
@@ -68,9 +69,9 @@ public class KindaValidDatePickerView
     {
       this.activity.hideVKB();
       this.activity.hideTenpayKB();
-      this.datePicker = new b(this.activity);
-      this.datePicker.bg(true, false);
-      this.datePicker.QSU = new b.a()
+      this.datePicker = new a(this.activity);
+      this.datePicker.bq(true, false);
+      this.datePicker.YrF = new a.a()
       {
         public void onResult(boolean paramAnonymousBoolean, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
         {
@@ -78,7 +79,7 @@ public class KindaValidDatePickerView
           KindaValidDatePickerView.this.datePicker.hide();
           if (paramAnonymousBoolean)
           {
-            Object localObject = KindaValidDatePickerView.this.datePicker.hcf();
+            Object localObject = KindaValidDatePickerView.this.datePicker.idn();
             if (Util.isNullOrNil((String)localObject))
             {
               AppMethodBeat.o(18974);
@@ -106,17 +107,17 @@ public class KindaValidDatePickerView
       localObject = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA).format((Date)localObject).split("-");
       if (localObject.length >= 3)
       {
-        this.datePicker.aY(Util.safeParseInt(localObject[0]), Util.safeParseInt(localObject[1]), Util.safeParseInt(localObject[2]));
-        this.datePicker.aZ(Util.safeParseInt(localObject[0]) + 30, 12, 31);
+        this.datePicker.bc(Util.safeParseInt(localObject[0]), Util.safeParseInt(localObject[1]), Util.safeParseInt(localObject[2]));
+        this.datePicker.bd(Util.safeParseInt(localObject[0]) + 30, 12, 31);
       }
       for (;;)
       {
-        this.datePicker.aX(this.mYear, this.mMonthOfYear + 1, 1);
+        this.datePicker.bb(this.mYear, this.mMonthOfYear + 1, 1);
         this.datePicker.show();
         AppMethodBeat.o(18976);
         return;
-        this.datePicker.aY(Util.safeParseInt(localObject[0]), 1, 1);
-        this.datePicker.aZ(Util.safeParseInt(localObject[0]) + 30, 12, 31);
+        this.datePicker.bc(Util.safeParseInt(localObject[0]), 1, 1);
+        this.datePicker.bd(Util.safeParseInt(localObject[0]) + 30, 12, 31);
       }
     }
     if (this.datePicker != null) {
@@ -132,7 +133,7 @@ public class KindaValidDatePickerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaValidDatePickerView
  * JD-Core Version:    0.7.0.1
  */

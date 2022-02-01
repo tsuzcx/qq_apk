@@ -14,87 +14,99 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.utils.y;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.finder.b.c;
+import com.tencent.mm.plugin.finder.b.d;
+import com.tencent.mm.plugin.finder.b.e;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.utils.aj;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.aa;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.av;
+import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.ay;
 import com.tencent.mm.ui.widget.MMEditText;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderExtendReadingEditView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "addBtn", "Landroid/widget/TextView;", "bgView", "Landroid/view/View;", "closeBtn", "onAddListener", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "link", "", "onCloseListener", "Lkotlin/Function0;", "tipsTv", "titleTv", "urlEditText", "Lcom/tencent/mm/ui/widget/MMEditText;", "checkEnableAdd", "isUrlValid", "", "url", "refreshTips", "requestEditFocus", "setListener", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderExtendReadingEditView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "addBtn", "Landroid/widget/TextView;", "bgView", "Landroid/view/View;", "closeBtn", "onAddListener", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "link", "", "onCloseListener", "Lkotlin/Function0;", "tipsTv", "titleTipsTv", "titleTv", "urlEditText", "Lcom/tencent/mm/ui/widget/MMEditText;", "checkEnableAdd", "isUrlValid", "", "url", "refreshTips", "requestEditFocus", "setListener", "plugin-finder_release"})
 public final class FinderExtendReadingEditView
   extends RelativeLayout
 {
+  public kotlin.g.a.b<? super String, x> AWB;
+  public kotlin.g.a.a<x> AWC;
+  private final TextView AWD;
+  public final MMEditText AWE;
+  private final TextView AWF;
+  private final TextView AWG;
   private final String TAG;
-  private final View cBH;
-  private final View hRd;
-  private final TextView pJV;
+  private final View cCj;
+  private final View kFA;
   private final TextView titleTv;
-  public kotlin.g.a.b<? super String, x> wlE;
-  public kotlin.g.a.a<x> wlF;
-  private final TextView wlG;
-  public final MMEditText wlH;
   
   public FinderExtendReadingEditView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(168315);
     this.TAG = "Finder.FinderExtendReadingEditView";
-    paramContext = aa.jQ(getContext()).inflate(2131494244, null);
+    paramContext = ad.kS(getContext()).inflate(b.g.finder_extend_reading_edit_view, null);
     addView(paramContext, (ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-1, -1));
-    final View localView = paramContext.findViewById(2131300819);
-    p.g(localView, "view.findViewById(R.id.f…xtend_reading_edit_close)");
-    this.hRd = localView;
-    localView = paramContext.findViewById(2131300817);
-    p.g(localView, "view.findViewById(R.id.f…_extend_reading_edit_add)");
-    this.wlG = ((TextView)localView);
-    localView = paramContext.findViewById(2131309249);
-    p.g(localView, "view.findViewById(R.id.title_tv)");
+    final View localView = paramContext.findViewById(b.f.finder_extend_reading_edit_close);
+    p.j(localView, "view.findViewById(R.id.f…xtend_reading_edit_close)");
+    this.kFA = localView;
+    localView = paramContext.findViewById(b.f.finder_extend_reading_edit_add);
+    p.j(localView, "view.findViewById(R.id.f…_extend_reading_edit_add)");
+    this.AWD = ((TextView)localView);
+    localView = paramContext.findViewById(b.f.title_tv);
+    p.j(localView, "view.findViewById(R.id.title_tv)");
     this.titleTv = ((TextView)localView);
-    ao.a((Paint)this.titleTv.getPaint(), 0.8F);
-    localView = findViewById(2131306573);
+    ar.a((Paint)this.titleTv.getPaint(), 0.8F);
+    localView = findViewById(b.f.reading_layout);
     localView.post((Runnable)new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(168307);
         View localView = localView;
-        Object localObject = this.wlI.getContext();
-        p.g(localObject, "context");
-        int i = (int)((Context)localObject).getResources().getDimension(2131165296);
+        Object localObject = this.AWH.getContext();
+        p.j(localObject, "context");
+        int i = (int)((Context)localObject).getResources().getDimension(b.d.Edge_2A);
         localObject = localView;
-        p.g(localObject, "layout");
+        p.j(localObject, "layout");
         int j = ((View)localObject).getTop();
-        localObject = this.wlI.getContext();
-        p.g(localObject, "context");
-        int k = (int)((Context)localObject).getResources().getDimension(2131165296);
+        localObject = this.AWH.getContext();
+        p.j(localObject, "context");
+        int k = (int)((Context)localObject).getResources().getDimension(b.d.Edge_2A);
         localObject = localView;
-        p.g(localObject, "layout");
-        localView.setPadding(i, j, k, ((View)localObject).getBottom() + av.aD(this.wlI.getContext()));
+        p.j(localObject, "layout");
+        localView.setPadding(i, j, k, ((View)localObject).getBottom() + ay.aB(this.AWH.getContext()));
         AppMethodBeat.o(168307);
       }
     });
-    localView = paramContext.findViewById(2131300820);
-    p.g(localView, "view.findViewById(R.id.f…r_extend_reading_edit_et)");
-    this.wlH = ((MMEditText)localView);
-    localView = paramContext.findViewById(2131300821);
-    p.g(localView, "view.findViewById(R.id.f…extend_reading_edit_tips)");
-    this.pJV = ((TextView)localView);
-    paramContext = paramContext.findViewById(2131300818);
-    p.g(paramContext, "view.findViewById(R.id.f…r_extend_reading_edit_bg)");
-    this.cBH = paramContext;
-    this.hRd.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    localView = paramContext.findViewById(b.f.finder_extend_reading_edit_et);
+    p.j(localView, "view.findViewById(R.id.f…r_extend_reading_edit_et)");
+    this.AWE = ((MMEditText)localView);
+    localView = paramContext.findViewById(b.f.finder_extend_reading_edit_tips);
+    p.j(localView, "view.findViewById(R.id.f…extend_reading_edit_tips)");
+    this.AWF = ((TextView)localView);
+    localView = paramContext.findViewById(b.f.finder_extend_reading_edit_bg);
+    p.j(localView, "view.findViewById(R.id.f…r_extend_reading_edit_bg)");
+    this.cCj = localView;
+    paramContext = paramContext.findViewById(b.f.finder_extend_reading_tips);
+    p.j(paramContext, "view.findViewById(R.id.finder_extend_reading_tips)");
+    this.AWG = ((TextView)paramContext);
+    this.kFA.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(168308);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderExtendReadingEditView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        paramAnonymousView = FinderExtendReadingEditView.d(this.wlI);
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderExtendReadingEditView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        paramAnonymousView = FinderExtendReadingEditView.d(this.AWH);
         if (paramAnonymousView != null) {
           paramAnonymousView.invoke();
         }
@@ -102,15 +114,15 @@ public final class FinderExtendReadingEditView
         AppMethodBeat.o(168308);
       }
     });
-    this.cBH.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.cCj.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(168309);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderExtendReadingEditView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        paramAnonymousView = FinderExtendReadingEditView.d(this.wlI);
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderExtendReadingEditView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        paramAnonymousView = FinderExtendReadingEditView.d(this.AWH);
         if (paramAnonymousView != null) {
           paramAnonymousView.invoke();
         }
@@ -118,12 +130,13 @@ public final class FinderExtendReadingEditView
         AppMethodBeat.o(168309);
       }
     });
-    this.wlH.addTextChangedListener((TextWatcher)new TextWatcher()
+    this.AWG.setText((CharSequence)((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vuB, this.AWG.getContext().getString(b.j.finder_extend_reading_edit_tips1)));
+    this.AWE.addTextChangedListener((TextWatcher)new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
         AppMethodBeat.i(168310);
-        this.wlI.dGF();
+        this.AWH.eiE();
         AppMethodBeat.o(168310);
       }
       
@@ -131,8 +144,8 @@ public final class FinderExtendReadingEditView
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    dGE();
-    dGF();
+    eiD();
+    eiE();
     AppMethodBeat.o(168315);
   }
   
@@ -141,58 +154,61 @@ public final class FinderExtendReadingEditView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(168316);
     this.TAG = "Finder.FinderExtendReadingEditView";
-    paramContext = aa.jQ(getContext()).inflate(2131494244, null);
+    paramContext = ad.kS(getContext()).inflate(b.g.finder_extend_reading_edit_view, null);
     addView(paramContext, (ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-1, -1));
-    paramAttributeSet = paramContext.findViewById(2131300819);
-    p.g(paramAttributeSet, "view.findViewById(R.id.f…xtend_reading_edit_close)");
-    this.hRd = paramAttributeSet;
-    paramAttributeSet = paramContext.findViewById(2131300817);
-    p.g(paramAttributeSet, "view.findViewById(R.id.f…_extend_reading_edit_add)");
-    this.wlG = ((TextView)paramAttributeSet);
-    paramAttributeSet = paramContext.findViewById(2131309249);
-    p.g(paramAttributeSet, "view.findViewById(R.id.title_tv)");
+    paramAttributeSet = paramContext.findViewById(b.f.finder_extend_reading_edit_close);
+    p.j(paramAttributeSet, "view.findViewById(R.id.f…xtend_reading_edit_close)");
+    this.kFA = paramAttributeSet;
+    paramAttributeSet = paramContext.findViewById(b.f.finder_extend_reading_edit_add);
+    p.j(paramAttributeSet, "view.findViewById(R.id.f…_extend_reading_edit_add)");
+    this.AWD = ((TextView)paramAttributeSet);
+    paramAttributeSet = paramContext.findViewById(b.f.title_tv);
+    p.j(paramAttributeSet, "view.findViewById(R.id.title_tv)");
     this.titleTv = ((TextView)paramAttributeSet);
-    ao.a((Paint)this.titleTv.getPaint(), 0.8F);
-    paramAttributeSet = findViewById(2131306573);
+    ar.a((Paint)this.titleTv.getPaint(), 0.8F);
+    paramAttributeSet = findViewById(b.f.reading_layout);
     paramAttributeSet.post((Runnable)new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(168307);
         View localView = localView;
-        Object localObject = this.wlI.getContext();
-        p.g(localObject, "context");
-        int i = (int)((Context)localObject).getResources().getDimension(2131165296);
+        Object localObject = this.AWH.getContext();
+        p.j(localObject, "context");
+        int i = (int)((Context)localObject).getResources().getDimension(b.d.Edge_2A);
         localObject = localView;
-        p.g(localObject, "layout");
+        p.j(localObject, "layout");
         int j = ((View)localObject).getTop();
-        localObject = this.wlI.getContext();
-        p.g(localObject, "context");
-        int k = (int)((Context)localObject).getResources().getDimension(2131165296);
+        localObject = this.AWH.getContext();
+        p.j(localObject, "context");
+        int k = (int)((Context)localObject).getResources().getDimension(b.d.Edge_2A);
         localObject = localView;
-        p.g(localObject, "layout");
-        localView.setPadding(i, j, k, ((View)localObject).getBottom() + av.aD(this.wlI.getContext()));
+        p.j(localObject, "layout");
+        localView.setPadding(i, j, k, ((View)localObject).getBottom() + ay.aB(this.AWH.getContext()));
         AppMethodBeat.o(168307);
       }
     });
-    paramAttributeSet = paramContext.findViewById(2131300820);
-    p.g(paramAttributeSet, "view.findViewById(R.id.f…r_extend_reading_edit_et)");
-    this.wlH = ((MMEditText)paramAttributeSet);
-    paramAttributeSet = paramContext.findViewById(2131300821);
-    p.g(paramAttributeSet, "view.findViewById(R.id.f…extend_reading_edit_tips)");
-    this.pJV = ((TextView)paramAttributeSet);
-    paramContext = paramContext.findViewById(2131300818);
-    p.g(paramContext, "view.findViewById(R.id.f…r_extend_reading_edit_bg)");
-    this.cBH = paramContext;
-    this.hRd.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    paramAttributeSet = paramContext.findViewById(b.f.finder_extend_reading_edit_et);
+    p.j(paramAttributeSet, "view.findViewById(R.id.f…r_extend_reading_edit_et)");
+    this.AWE = ((MMEditText)paramAttributeSet);
+    paramAttributeSet = paramContext.findViewById(b.f.finder_extend_reading_edit_tips);
+    p.j(paramAttributeSet, "view.findViewById(R.id.f…extend_reading_edit_tips)");
+    this.AWF = ((TextView)paramAttributeSet);
+    paramAttributeSet = paramContext.findViewById(b.f.finder_extend_reading_edit_bg);
+    p.j(paramAttributeSet, "view.findViewById(R.id.f…r_extend_reading_edit_bg)");
+    this.cCj = paramAttributeSet;
+    paramContext = paramContext.findViewById(b.f.finder_extend_reading_tips);
+    p.j(paramContext, "view.findViewById(R.id.finder_extend_reading_tips)");
+    this.AWG = ((TextView)paramContext);
+    this.kFA.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(168308);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderExtendReadingEditView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        paramAnonymousView = FinderExtendReadingEditView.d(this.wlI);
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderExtendReadingEditView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        paramAnonymousView = FinderExtendReadingEditView.d(this.AWH);
         if (paramAnonymousView != null) {
           paramAnonymousView.invoke();
         }
@@ -200,15 +216,15 @@ public final class FinderExtendReadingEditView
         AppMethodBeat.o(168308);
       }
     });
-    this.cBH.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.cCj.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(168309);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderExtendReadingEditView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        paramAnonymousView = FinderExtendReadingEditView.d(this.wlI);
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderExtendReadingEditView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        paramAnonymousView = FinderExtendReadingEditView.d(this.AWH);
         if (paramAnonymousView != null) {
           paramAnonymousView.invoke();
         }
@@ -216,12 +232,13 @@ public final class FinderExtendReadingEditView
         AppMethodBeat.o(168309);
       }
     });
-    this.wlH.addTextChangedListener((TextWatcher)new TextWatcher()
+    this.AWG.setText((CharSequence)((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vuB, this.AWG.getContext().getString(b.j.finder_extend_reading_edit_tips1)));
+    this.AWE.addTextChangedListener((TextWatcher)new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
         AppMethodBeat.i(168310);
-        this.wlI.dGF();
+        this.AWH.eiE();
         AppMethodBeat.o(168310);
       }
       
@@ -229,8 +246,8 @@ public final class FinderExtendReadingEditView
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    dGE();
-    dGF();
+    eiD();
+    eiE();
     AppMethodBeat.o(168316);
   }
   
@@ -239,58 +256,61 @@ public final class FinderExtendReadingEditView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(168317);
     this.TAG = "Finder.FinderExtendReadingEditView";
-    paramContext = aa.jQ(getContext()).inflate(2131494244, null);
+    paramContext = ad.kS(getContext()).inflate(b.g.finder_extend_reading_edit_view, null);
     addView(paramContext, (ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-1, -1));
-    paramAttributeSet = paramContext.findViewById(2131300819);
-    p.g(paramAttributeSet, "view.findViewById(R.id.f…xtend_reading_edit_close)");
-    this.hRd = paramAttributeSet;
-    paramAttributeSet = paramContext.findViewById(2131300817);
-    p.g(paramAttributeSet, "view.findViewById(R.id.f…_extend_reading_edit_add)");
-    this.wlG = ((TextView)paramAttributeSet);
-    paramAttributeSet = paramContext.findViewById(2131309249);
-    p.g(paramAttributeSet, "view.findViewById(R.id.title_tv)");
+    paramAttributeSet = paramContext.findViewById(b.f.finder_extend_reading_edit_close);
+    p.j(paramAttributeSet, "view.findViewById(R.id.f…xtend_reading_edit_close)");
+    this.kFA = paramAttributeSet;
+    paramAttributeSet = paramContext.findViewById(b.f.finder_extend_reading_edit_add);
+    p.j(paramAttributeSet, "view.findViewById(R.id.f…_extend_reading_edit_add)");
+    this.AWD = ((TextView)paramAttributeSet);
+    paramAttributeSet = paramContext.findViewById(b.f.title_tv);
+    p.j(paramAttributeSet, "view.findViewById(R.id.title_tv)");
     this.titleTv = ((TextView)paramAttributeSet);
-    ao.a((Paint)this.titleTv.getPaint(), 0.8F);
-    paramAttributeSet = findViewById(2131306573);
+    ar.a((Paint)this.titleTv.getPaint(), 0.8F);
+    paramAttributeSet = findViewById(b.f.reading_layout);
     paramAttributeSet.post((Runnable)new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(168307);
         View localView = localView;
-        Object localObject = this.wlI.getContext();
-        p.g(localObject, "context");
-        int i = (int)((Context)localObject).getResources().getDimension(2131165296);
+        Object localObject = this.AWH.getContext();
+        p.j(localObject, "context");
+        int i = (int)((Context)localObject).getResources().getDimension(b.d.Edge_2A);
         localObject = localView;
-        p.g(localObject, "layout");
+        p.j(localObject, "layout");
         int j = ((View)localObject).getTop();
-        localObject = this.wlI.getContext();
-        p.g(localObject, "context");
-        int k = (int)((Context)localObject).getResources().getDimension(2131165296);
+        localObject = this.AWH.getContext();
+        p.j(localObject, "context");
+        int k = (int)((Context)localObject).getResources().getDimension(b.d.Edge_2A);
         localObject = localView;
-        p.g(localObject, "layout");
-        localView.setPadding(i, j, k, ((View)localObject).getBottom() + av.aD(this.wlI.getContext()));
+        p.j(localObject, "layout");
+        localView.setPadding(i, j, k, ((View)localObject).getBottom() + ay.aB(this.AWH.getContext()));
         AppMethodBeat.o(168307);
       }
     });
-    paramAttributeSet = paramContext.findViewById(2131300820);
-    p.g(paramAttributeSet, "view.findViewById(R.id.f…r_extend_reading_edit_et)");
-    this.wlH = ((MMEditText)paramAttributeSet);
-    paramAttributeSet = paramContext.findViewById(2131300821);
-    p.g(paramAttributeSet, "view.findViewById(R.id.f…extend_reading_edit_tips)");
-    this.pJV = ((TextView)paramAttributeSet);
-    paramContext = paramContext.findViewById(2131300818);
-    p.g(paramContext, "view.findViewById(R.id.f…r_extend_reading_edit_bg)");
-    this.cBH = paramContext;
-    this.hRd.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    paramAttributeSet = paramContext.findViewById(b.f.finder_extend_reading_edit_et);
+    p.j(paramAttributeSet, "view.findViewById(R.id.f…r_extend_reading_edit_et)");
+    this.AWE = ((MMEditText)paramAttributeSet);
+    paramAttributeSet = paramContext.findViewById(b.f.finder_extend_reading_edit_tips);
+    p.j(paramAttributeSet, "view.findViewById(R.id.f…extend_reading_edit_tips)");
+    this.AWF = ((TextView)paramAttributeSet);
+    paramAttributeSet = paramContext.findViewById(b.f.finder_extend_reading_edit_bg);
+    p.j(paramAttributeSet, "view.findViewById(R.id.f…r_extend_reading_edit_bg)");
+    this.cCj = paramAttributeSet;
+    paramContext = paramContext.findViewById(b.f.finder_extend_reading_tips);
+    p.j(paramContext, "view.findViewById(R.id.finder_extend_reading_tips)");
+    this.AWG = ((TextView)paramContext);
+    this.kFA.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(168308);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderExtendReadingEditView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        paramAnonymousView = FinderExtendReadingEditView.d(this.wlI);
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderExtendReadingEditView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        paramAnonymousView = FinderExtendReadingEditView.d(this.AWH);
         if (paramAnonymousView != null) {
           paramAnonymousView.invoke();
         }
@@ -298,15 +318,15 @@ public final class FinderExtendReadingEditView
         AppMethodBeat.o(168308);
       }
     });
-    this.cBH.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.cCj.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(168309);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderExtendReadingEditView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        paramAnonymousView = FinderExtendReadingEditView.d(this.wlI);
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderExtendReadingEditView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        paramAnonymousView = FinderExtendReadingEditView.d(this.AWH);
         if (paramAnonymousView != null) {
           paramAnonymousView.invoke();
         }
@@ -314,12 +334,13 @@ public final class FinderExtendReadingEditView
         AppMethodBeat.o(168309);
       }
     });
-    this.wlH.addTextChangedListener((TextWatcher)new TextWatcher()
+    this.AWG.setText((CharSequence)((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vuB, this.AWG.getContext().getString(b.j.finder_extend_reading_edit_tips1)));
+    this.AWE.addTextChangedListener((TextWatcher)new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
         AppMethodBeat.i(168310);
-        this.wlI.dGF();
+        this.AWH.eiE();
         AppMethodBeat.o(168310);
       }
       
@@ -327,61 +348,61 @@ public final class FinderExtendReadingEditView
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    dGE();
-    dGF();
+    eiD();
+    eiE();
     AppMethodBeat.o(168317);
   }
   
-  public final void dGE()
+  public final void eiD()
   {
     AppMethodBeat.i(168313);
-    Object localObject = y.vXH;
-    localObject = y.dCC();
+    Object localObject = aj.AGc;
+    localObject = aj.edZ();
     if (!Util.isNullOrNil((String)localObject))
     {
-      p.h(localObject, "url");
+      p.k(localObject, "url");
       if (Util.isNullOrNil((String)localObject)) {
-        break label54;
+        break label57;
       }
     }
-    label54:
+    label57:
     for (int i = 1; i == 0; i = 0)
     {
-      this.pJV.setVisibility(8);
+      this.AWF.setVisibility(8);
       AppMethodBeat.o(168313);
       return;
     }
-    if (p.j(this.wlH.getText().toString(), localObject))
+    if (p.h(this.AWE.getText().toString(), localObject))
     {
-      this.pJV.setVisibility(8);
+      this.AWF.setVisibility(8);
       AppMethodBeat.o(168313);
       return;
     }
-    this.pJV.setVisibility(0);
-    this.pJV.setText((CharSequence)getContext().getString(2131759694, new Object[] { localObject }));
-    this.pJV.setOnClickListener((View.OnClickListener)new b(this, (String)localObject));
+    this.AWF.setVisibility(0);
+    this.AWF.setText((CharSequence)getContext().getString(b.j.finder_extend_reading_edit_tips2, new Object[] { localObject }));
+    this.AWF.setOnClickListener((View.OnClickListener)new b(this, (String)localObject));
     AppMethodBeat.o(168313);
   }
   
-  public final void dGF()
+  public final void eiE()
   {
     AppMethodBeat.i(168314);
-    final String str = this.wlH.getText().toString();
+    final String str = this.AWE.getText().toString();
     if (!Util.isNullOrNil(str))
     {
-      this.wlG.setOnClickListener((View.OnClickListener)new a(this, str));
-      this.wlG.setTextColor(getResources().getColor(2131099844));
-      this.wlG.setBackgroundResource(2131232490);
+      this.AWD.setOnClickListener((View.OnClickListener)new a(this, str));
+      this.AWD.setTextColor(getResources().getColor(b.c.White));
+      this.AWD.setBackgroundResource(b.e.finder_btn_orange_enable);
       AppMethodBeat.o(168314);
       return;
     }
-    this.wlG.setOnClickListener(null);
-    this.wlG.setTextColor(getResources().getColor(2131100410));
-    this.wlG.setBackgroundResource(2131232488);
+    this.AWD.setOnClickListener(null);
+    this.AWD.setTextColor(getResources().getColor(b.c.finder_btn_disable_color));
+    this.AWD.setBackgroundResource(b.e.finder_btn_orange_disable);
     AppMethodBeat.o(168314);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class a
     implements View.OnClickListener
   {
@@ -391,16 +412,16 @@ public final class FinderExtendReadingEditView
     {
       AppMethodBeat.i(168311);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderExtendReadingEditView$checkEnableAdd$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      FinderExtendReadingEditView.c(this.wlI).invoke(str);
-      FinderExtendReadingEditView.a(this.wlI).setText((CharSequence)"");
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderExtendReadingEditView$checkEnableAdd$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      FinderExtendReadingEditView.c(this.AWH).invoke(str);
+      FinderExtendReadingEditView.a(this.AWH).setText((CharSequence)"");
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/FinderExtendReadingEditView$checkEnableAdd$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(168311);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
@@ -410,11 +431,11 @@ public final class FinderExtendReadingEditView
     {
       AppMethodBeat.i(168312);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderExtendReadingEditView$refreshTips$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      FinderExtendReadingEditView.a(this.wlI).setText((CharSequence)this.wlK);
-      FinderExtendReadingEditView.b(this.wlI).setVisibility(8);
-      FinderExtendReadingEditView.a(this.wlI).setSelection(FinderExtendReadingEditView.a(this.wlI).getText().length());
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderExtendReadingEditView$refreshTips$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      FinderExtendReadingEditView.a(this.AWH).setText((CharSequence)this.AWJ);
+      FinderExtendReadingEditView.b(this.AWH).setVisibility(8);
+      FinderExtendReadingEditView.a(this.AWH).setSelection(FinderExtendReadingEditView.a(this.AWH).getText().length());
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/FinderExtendReadingEditView$refreshTips$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(168312);
     }
@@ -422,7 +443,7 @@ public final class FinderExtendReadingEditView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.FinderExtendReadingEditView
  * JD-Core Version:    0.7.0.1
  */

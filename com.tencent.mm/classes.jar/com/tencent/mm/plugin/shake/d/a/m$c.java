@@ -12,7 +12,7 @@ public final class m$c
   public String thumbUrl;
   public String title;
   
-  public static c aNp(String paramString)
+  public static c aXY(String paramString)
   {
     AppMethodBeat.i(28343);
     Map localMap = XmlParser.parseXml(paramString, "product", null);
@@ -40,7 +40,7 @@ public final class m$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.d.a.m.c
  * JD-Core Version:    0.7.0.1
  */

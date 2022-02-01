@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import g.a.a.b;
 
 public final class o
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String Desc;
-  public String IconUrl;
-  public String Title;
-  public String xIy;
-  public String xJt;
-  public int xJv;
+  public String CMB;
+  public String CMD;
+  public String CNA;
+  public int CNC;
+  public String CNj;
+  public String fwr;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -19,91 +19,91 @@ public final class o
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.IconUrl == null)
+      if (this.CNj == null)
       {
         paramVarArgs = new b("Not all required fields were included: IconUrl");
         AppMethodBeat.o(41715);
         throw paramVarArgs;
       }
-      if (this.Title == null)
+      if (this.fwr == null)
       {
         paramVarArgs = new b("Not all required fields were included: Title");
         AppMethodBeat.o(41715);
         throw paramVarArgs;
       }
-      if (this.xIy == null)
+      if (this.CMD == null)
       {
         paramVarArgs = new b("Not all required fields were included: JumpUrl");
         AppMethodBeat.o(41715);
         throw paramVarArgs;
       }
-      if (this.IconUrl != null) {
-        paramVarArgs.e(1, this.IconUrl);
+      if (this.CNj != null) {
+        paramVarArgs.f(1, this.CNj);
       }
-      if (this.Title != null) {
-        paramVarArgs.e(2, this.Title);
+      if (this.fwr != null) {
+        paramVarArgs.f(2, this.fwr);
       }
-      if (this.Desc != null) {
-        paramVarArgs.e(3, this.Desc);
+      if (this.CMB != null) {
+        paramVarArgs.f(3, this.CMB);
       }
-      if (this.xIy != null) {
-        paramVarArgs.e(4, this.xIy);
+      if (this.CMD != null) {
+        paramVarArgs.f(4, this.CMD);
       }
-      paramVarArgs.aM(5, this.xJv);
-      if (this.xJt != null) {
-        paramVarArgs.e(6, this.xJt);
+      paramVarArgs.aY(5, this.CNC);
+      if (this.CNA != null) {
+        paramVarArgs.f(6, this.CNA);
       }
       AppMethodBeat.o(41715);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.IconUrl == null) {
+      if (this.CNj == null) {
         break label646;
       }
     }
     label646:
-    for (int i = g.a.a.b.b.a.f(1, this.IconUrl) + 0;; i = 0)
+    for (int i = g.a.a.b.b.a.g(1, this.CNj) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.Title != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.Title);
+      if (this.fwr != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.fwr);
       }
       i = paramInt;
-      if (this.Desc != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.Desc);
+      if (this.CMB != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.CMB);
       }
       paramInt = i;
-      if (this.xIy != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.xIy);
+      if (this.CMD != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.CMD);
       }
-      i = paramInt + g.a.a.b.b.a.bu(5, this.xJv);
+      i = paramInt + g.a.a.b.b.a.bM(5, this.CNC);
       paramInt = i;
-      if (this.xJt != null) {
-        paramInt = i + g.a.a.b.b.a.f(6, this.xJt);
+      if (this.CNA != null) {
+        paramInt = i + g.a.a.b.b.a.g(6, this.CNA);
       }
       AppMethodBeat.o(41715);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.IconUrl == null)
+        if (this.CNj == null)
         {
           paramVarArgs = new b("Not all required fields were included: IconUrl");
           AppMethodBeat.o(41715);
           throw paramVarArgs;
         }
-        if (this.Title == null)
+        if (this.fwr == null)
         {
           paramVarArgs = new b("Not all required fields were included: Title");
           AppMethodBeat.o(41715);
           throw paramVarArgs;
         }
-        if (this.xIy == null)
+        if (this.CMD == null)
         {
           paramVarArgs = new b("Not all required fields were included: JumpUrl");
           AppMethodBeat.o(41715);
@@ -122,27 +122,27 @@ public final class o
           AppMethodBeat.o(41715);
           return -1;
         case 1: 
-          localo.IconUrl = locala.UbS.readString();
+          localo.CNj = locala.abFh.readString();
           AppMethodBeat.o(41715);
           return 0;
         case 2: 
-          localo.Title = locala.UbS.readString();
+          localo.fwr = locala.abFh.readString();
           AppMethodBeat.o(41715);
           return 0;
         case 3: 
-          localo.Desc = locala.UbS.readString();
+          localo.CMB = locala.abFh.readString();
           AppMethodBeat.o(41715);
           return 0;
         case 4: 
-          localo.xIy = locala.UbS.readString();
+          localo.CMD = locala.abFh.readString();
           AppMethodBeat.o(41715);
           return 0;
         case 5: 
-          localo.xJv = locala.UbS.zi();
+          localo.CNC = locala.abFh.AK();
           AppMethodBeat.o(41715);
           return 0;
         }
-        localo.xJt = locala.UbS.readString();
+        localo.CNA = locala.abFh.readString();
         AppMethodBeat.o(41715);
         return 0;
       }
@@ -153,7 +153,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.protobuf.o
  * JD-Core Version:    0.7.0.1
  */

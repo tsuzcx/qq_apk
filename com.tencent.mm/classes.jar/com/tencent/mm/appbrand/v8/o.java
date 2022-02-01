@@ -1,8 +1,8 @@
 package com.tencent.mm.appbrand.v8;
 
 import android.text.TextUtils;
-import com.eclipsesource.v8.V8Context;
-import com.eclipsesource.v8.V8Object;
+import com.eclipsesource.mmv8.V8Context;
+import com.eclipsesource.mmv8.V8Object;
 
 public abstract class o
 {
@@ -22,11 +22,11 @@ public abstract class o
   {
     if (TextUtils.isEmpty(this.mKey))
     {
-      a(paramm, paramm.XJ().getGlobalObject());
+      a(paramm, paramm.acm().getGlobalObject());
       return this;
     }
-    V8Object localV8Object = paramm.XJ().newV8Object();
-    paramm.XJ().add(this.mKey, localV8Object);
+    V8Object localV8Object = paramm.acm().newV8Object();
+    paramm.acm().add(this.mKey, localV8Object);
     a(paramm, localV8Object);
     localV8Object.release();
     return this;
@@ -38,7 +38,7 @@ public abstract class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.o
  * JD-Core Version:    0.7.0.1
  */

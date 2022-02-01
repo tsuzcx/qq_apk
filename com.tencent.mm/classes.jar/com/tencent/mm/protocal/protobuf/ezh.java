@@ -1,132 +1,108 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
+import java.util.LinkedList;
 
 public final class ezh
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String MVg;
-  public int NcY;
-  public com.tencent.mm.bw.b NvI;
-  public com.tencent.mm.bw.b NvJ;
-  public String NvK;
-  public String NvL;
+  public String Username;
+  public dmz UzK;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32550);
+    AppMethodBeat.i(56263);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.MVg == null)
+      if (this.UzK == null)
       {
-        paramVarArgs = new g.a.a.b("Not all required fields were included: Msg");
-        AppMethodBeat.o(32550);
+        paramVarArgs = new b("Not all required fields were included: Position");
+        AppMethodBeat.o(56263);
         throw paramVarArgs;
       }
-      paramVarArgs.aM(1, this.NcY);
-      if (this.MVg != null) {
-        paramVarArgs.e(2, this.MVg);
+      if (this.Username != null) {
+        paramVarArgs.f(1, this.Username);
       }
-      if (this.NvI != null) {
-        paramVarArgs.c(3, this.NvI);
+      if (this.UzK != null)
+      {
+        paramVarArgs.oE(2, this.UzK.computeSize());
+        this.UzK.writeFields(paramVarArgs);
       }
-      if (this.NvJ != null) {
-        paramVarArgs.c(4, this.NvJ);
-      }
-      if (this.NvK != null) {
-        paramVarArgs.e(5, this.NvK);
-      }
-      if (this.NvL != null) {
-        paramVarArgs.e(6, this.NvL);
-      }
-      AppMethodBeat.o(32550);
+      AppMethodBeat.o(56263);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.bu(1, this.NcY) + 0;
-      paramInt = i;
-      if (this.MVg != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.MVg);
+    if (paramInt == 1) {
+      if (this.Username == null) {
+        break label396;
       }
-      i = paramInt;
-      if (this.NvI != null) {
-        i = paramInt + g.a.a.b.b.a.b(3, this.NvI);
-      }
-      paramInt = i;
-      if (this.NvJ != null) {
-        paramInt = i + g.a.a.b.b.a.b(4, this.NvJ);
-      }
-      i = paramInt;
-      if (this.NvK != null) {
-        i = paramInt + g.a.a.b.b.a.f(5, this.NvK);
-      }
-      paramInt = i;
-      if (this.NvL != null) {
-        paramInt = i + g.a.a.b.b.a.f(6, this.NvL);
-      }
-      AppMethodBeat.o(32550);
-      return paramInt;
     }
-    if (paramInt == 2)
+    label396:
+    for (paramInt = g.a.a.b.b.a.g(1, this.Username) + 0;; paramInt = 0)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+      int i = paramInt;
+      if (this.UzK != null) {
+        i = paramInt + g.a.a.a.oD(2, this.UzK.computeSize());
+      }
+      AppMethodBeat.o(56263);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
         }
+        if (this.UzK == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: Position");
+          AppMethodBeat.o(56263);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(56263);
+        return 0;
       }
-      if (this.MVg == null)
+      if (paramInt == 3)
       {
-        paramVarArgs = new g.a.a.b("Not all required fields were included: Msg");
-        AppMethodBeat.o(32550);
-        throw paramVarArgs;
-      }
-      AppMethodBeat.o(32550);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      ezh localezh = (ezh)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
-      {
-      default: 
-        AppMethodBeat.o(32550);
-        return -1;
-      case 1: 
-        localezh.NcY = locala.UbS.zi();
-        AppMethodBeat.o(32550);
-        return 0;
-      case 2: 
-        localezh.MVg = locala.UbS.readString();
-        AppMethodBeat.o(32550);
-        return 0;
-      case 3: 
-        localezh.NvI = locala.UbS.hPo();
-        AppMethodBeat.o(32550);
-        return 0;
-      case 4: 
-        localezh.NvJ = locala.UbS.hPo();
-        AppMethodBeat.o(32550);
-        return 0;
-      case 5: 
-        localezh.NvK = locala.UbS.readString();
-        AppMethodBeat.o(32550);
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        ezh localezh = (ezh)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(56263);
+          return -1;
+        case 1: 
+          localezh.Username = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(56263);
+          return 0;
+        }
+        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          dmz localdmz = new dmz();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localdmz.parseFrom((byte[])localObject);
+          }
+          localezh.UzK = localdmz;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(56263);
         return 0;
       }
-      localezh.NvL = locala.UbS.readString();
-      AppMethodBeat.o(32550);
-      return 0;
+      AppMethodBeat.o(56263);
+      return -1;
     }
-    AppMethodBeat.o(32550);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ezh
  * JD-Core Version:    0.7.0.1
  */

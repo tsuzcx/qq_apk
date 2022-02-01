@@ -1,204 +1,228 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.model.z;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.cd.b;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bbn;
-import com.tencent.mm.protocal.protobuf.cni;
-import com.tencent.mm.protocal.protobuf.cnw;
-import com.tencent.mm.protocal.protobuf.cnx;
+import com.tencent.mm.plugin.finder.report.n;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.aua;
+import com.tencent.mm.protocal.protobuf.aub;
+import com.tencent.mm.protocal.protobuf.bhh;
+import com.tencent.mm.protocal.protobuf.bid;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
-import kotlin.a.j;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneMegaVideoGetBullet;", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneMegaVideoBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "videoObjectId", "", "videoNonceId", "", "videoTimeStamps", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(JLjava/lang/String;JLcom/tencent/mm/protobuf/ByteString;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "pullType", "", "getPullType", "()I", "setPullType", "(I)V", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "getVideoObjectId", "()J", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getBulletList", "", "Lcom/tencent/mm/protocal/protobuf/MegaVideoBulletCommentInfo;", "getMaxTime", "getMinTime", "getRespLastBuffer", "getType", "onCgiEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinerGetFavFeed;", "Lcom/tencent/mm/plugin/findersdk/cgi/NetSceneFinderBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "finderUserName", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "topicId", "", "tabType", "", "(Ljava/lang/String;Lcom/tencent/mm/protobuf/ByteString;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;JI)V", "TAG", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "objectList", "", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "getObjectList", "()Ljava/util/List;", "setObjectList", "(Ljava/util/List;)V", "pullType", "getPullType", "()I", "setPullType", "(I)V", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getContinueFlag", "getFeedList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "getMegaVideoCount", "getRespLastBuffer", "getTopicId", "getTopics", "Lcom/tencent/mm/protocal/protobuf/FinderTopicInfo;", "getTotalCount", "getType", "onCgiEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "plugin-finder_release"})
 public final class ct
-  extends cr
-  implements m
+  extends com.tencent.mm.plugin.findersdk.b.g
 {
-  public static final a twI;
+  private final String TAG;
   private i callback;
-  private final b lastBuffer;
   public int pullType;
-  private d rr;
-  public final long twG;
+  public d rr;
   
-  static
+  private ct(String paramString, b paramb, bid parambid, long paramLong)
   {
-    AppMethodBeat.i(242556);
-    twI = new a((byte)0);
-    AppMethodBeat.o(242556);
-  }
-  
-  public ct(long paramLong1, String paramString, long paramLong2, b paramb, bbn parambbn)
-  {
-    AppMethodBeat.i(242555);
-    this.twG = paramLong1;
-    this.lastBuffer = paramb;
-    paramb = new cnw();
-    ap localap = ap.tuF;
-    paramb.Mul = ap.b(parambbn);
-    paramb.twG = this.twG;
-    paramb.lastBuffer = this.lastBuffer;
-    paramb.LOd = paramString;
-    paramb.MtO = paramLong2;
-    paramb.username = z.aUg();
-    paramString = new d.a();
-    paramString.MB("/cgi-bin/micromsg-bin/megavideogetbulletcomment");
-    paramString.sG(getType());
-    paramString.c((a)paramb);
-    paramString.d((a)new cnx());
-    paramString = paramString.aXF();
-    p.g(paramString, "builder.buildInstance()");
+    super(parambid);
+    AppMethodBeat.i(232012);
+    this.TAG = "Finder.NetSceneFinerGetFavFeed";
+    d.a locala = new d.a();
+    locala.vD(getType());
+    aua localaua = new aua();
+    localaua.lastBuffer = paramb;
+    paramb = ao.xcj;
+    localaua.SDi = ao.a(parambid);
+    localaua.finderUsername = paramString;
+    localaua.fEH = 0;
+    localaua.xee = paramLong;
+    paramString = ao.xcj;
+    localaua.SCW = ao.dnP();
+    locala.c((com.tencent.mm.cd.a)localaua);
+    locala.vD(getType());
+    locala.d((com.tencent.mm.cd.a)new aub());
+    locala.TW("/cgi-bin/micromsg-bin/findergetfavlist");
+    paramString = locala.bgN();
+    p.j(paramString, "builder.buildInstance()");
     this.rr = paramString;
-    paramb = new StringBuilder("NetSceneGetMegaVideoBullet videoObjectId ").append(this.twG).append(" lastBuffer ").append(this.lastBuffer).append(" md5:");
-    paramString = this.lastBuffer;
-    if (paramString != null) {}
-    for (paramString = paramString.zy;; paramString = null)
-    {
-      Log.i("Finder.NetSceneGetMegaVideoBullet", com.tencent.mm.b.g.getMessageDigest(paramString));
-      AppMethodBeat.o(242555);
-      return;
-    }
+    AppMethodBeat.o(232012);
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, s params)
   {
-    Object localObject1 = null;
-    AppMethodBeat.i(242550);
+    AppMethodBeat.i(232003);
+    Log.i(this.TAG, "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
+    params = this.TAG;
+    Object localObject1 = new StringBuilder("server increatment size:");
+    Object localObject2 = this.rr.bhY();
+    if (localObject2 == null)
+    {
+      paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFavListResponse");
+      AppMethodBeat.o(232003);
+      throw paramString;
+    }
+    Log.i(params, ((aub)localObject2).object.size());
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      Object localObject2 = new StringBuilder("count:").append(cZo().size()).append(" ,lastbuf ");
-      params = cYz();
-      if (params != null) {}
-      for (params = params.zy;; params = null)
+      params = this.rr.bhY();
+      if (params == null)
       {
-        localObject2 = new StringBuffer(com.tencent.mm.b.g.getMessageDigest(params) + " min:" + cZp() + " max: ==>" + cZq());
-        params = (Iterable)cZo();
-        paramInt1 = 0;
-        params = params.iterator();
-        while (params.hasNext())
-        {
-          localObject3 = params.next();
-          if (paramInt1 < 0) {
-            j.hxH();
-          }
-          localObject3 = (cni)localObject3;
-          ((StringBuffer)localObject2).append("# " + paramInt1 + ':' + ((cni)localObject3).content + ',' + ((cni)localObject3).iXu + ", ");
-          paramInt1 += 1;
-        }
+        paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFavListResponse");
+        AppMethodBeat.o(232003);
+        throw paramString;
       }
-      Object localObject3 = new StringBuilder("getBulletList videoObjectId ").append(this.twG).append(' ');
-      b localb = this.lastBuffer;
-      params = localObject1;
-      if (localb != null) {
-        params = localb.zy;
+      params = (aub)params;
+      localObject1 = com.tencent.mm.plugin.finder.preload.a.zKe;
+      localObject1 = params.SDf;
+      params = params.object;
+      p.j(params, "resp.`object`");
+      com.tencent.mm.plugin.finder.preload.a.a((bhh)localObject1, (List)params, 3966);
+      params = ((Iterable)dow()).iterator();
+      while (params.hasNext())
+      {
+        localObject1 = (FinderObject)params.next();
+        localObject2 = n.zWF;
+        n.c((FinderObject)localObject1, this.xbu);
       }
-      Log.i("Finder.NetSceneGetMegaVideoBullet", com.tencent.mm.b.g.getMessageDigest(params) + ' ' + (StringBuffer)localObject2);
     }
-    params = this.callback;
-    if (params != null)
+    if (this.callback != null)
     {
+      params = this.callback;
+      if (params == null) {
+        p.iCn();
+      }
       params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
-      AppMethodBeat.o(242550);
-      return;
     }
-    AppMethodBeat.o(242550);
-  }
-  
-  public final b cYz()
-  {
-    AppMethodBeat.i(242552);
-    Object localObject = this.rr.aYK();
-    if (localObject == null)
-    {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.MegaVideoGetBulletCommentResponse");
-      AppMethodBeat.o(242552);
-      throw ((Throwable)localObject);
-    }
-    localObject = ((cnx)localObject).lastBuffer;
-    AppMethodBeat.o(242552);
-    return localObject;
-  }
-  
-  public final List<cni> cZo()
-  {
-    AppMethodBeat.i(242551);
-    Object localObject = this.rr.aYK();
-    if (localObject == null)
-    {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.MegaVideoGetBulletCommentResponse");
-      AppMethodBeat.o(242551);
-      throw ((Throwable)localObject);
-    }
-    localObject = ((cnx)localObject).commentList;
-    p.g(localObject, "(rr.responseProtoBuf as …mentResponse).commentList");
-    localObject = (List)localObject;
-    AppMethodBeat.o(242551);
-    return localObject;
-  }
-  
-  public final long cZp()
-  {
-    AppMethodBeat.i(242553);
-    Object localObject = this.rr.aYK();
-    if (localObject == null)
-    {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.MegaVideoGetBulletCommentResponse");
-      AppMethodBeat.o(242553);
-      throw ((Throwable)localObject);
-    }
-    long l = ((cnx)localObject).Mum;
-    AppMethodBeat.o(242553);
-    return l;
-  }
-  
-  public final long cZq()
-  {
-    AppMethodBeat.i(242554);
-    Object localObject = this.rr.aYK();
-    if (localObject == null)
-    {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.MegaVideoGetBulletCommentResponse");
-      AppMethodBeat.o(242554);
-      throw ((Throwable)localObject);
-    }
-    long l = ((cnx)localObject).Mun;
-    AppMethodBeat.o(242554);
-    return l;
+    AppMethodBeat.o(232003);
   }
   
   public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
-    AppMethodBeat.i(242549);
+    AppMethodBeat.i(232002);
     this.callback = parami;
     int i = dispatch(paramg, (s)this.rr, (m)this);
-    AppMethodBeat.o(242549);
+    AppMethodBeat.o(232002);
     return i;
+  }
+  
+  public final int dom()
+  {
+    AppMethodBeat.i(232006);
+    Object localObject = this.rr.bhY();
+    if (localObject == null)
+    {
+      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFavListResponse");
+      AppMethodBeat.o(232006);
+      throw ((Throwable)localObject);
+    }
+    int i = ((aub)localObject).zwD;
+    AppMethodBeat.o(232006);
+    return i;
+  }
+  
+  public final b don()
+  {
+    AppMethodBeat.i(232009);
+    Object localObject = this.rr.bhY();
+    if (localObject == null)
+    {
+      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFavListResponse");
+      AppMethodBeat.o(232009);
+      throw ((Throwable)localObject);
+    }
+    localObject = ((aub)localObject).lastBuffer;
+    AppMethodBeat.o(232009);
+    return localObject;
+  }
+  
+  public final int doo()
+  {
+    AppMethodBeat.i(232011);
+    Object localObject = this.rr.bhY();
+    if (localObject == null)
+    {
+      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFavListResponse");
+      AppMethodBeat.o(232011);
+      throw ((Throwable)localObject);
+    }
+    int i = ((aub)localObject).continueFlag;
+    AppMethodBeat.o(232011);
+    return i;
+  }
+  
+  public final LinkedList<FinderObject> dow()
+  {
+    AppMethodBeat.i(232004);
+    Object localObject = this.rr.bhY();
+    if (localObject == null)
+    {
+      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFavListResponse");
+      AppMethodBeat.o(232004);
+      throw ((Throwable)localObject);
+    }
+    localObject = ((aub)localObject).object;
+    p.j(localObject, "(rr.responseProtoBuf as …FavListResponse).`object`");
+    AppMethodBeat.o(232004);
+    return localObject;
+  }
+  
+  public final int dpe()
+  {
+    AppMethodBeat.i(232005);
+    Object localObject = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder("favCount = ");
+    com.tencent.mm.cd.a locala = this.rr.bhY();
+    if (locala == null)
+    {
+      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFavListResponse");
+      AppMethodBeat.o(232005);
+      throw ((Throwable)localObject);
+    }
+    Log.i((String)localObject, ((aub)locala).jlf);
+    localObject = this.rr.bhY();
+    if (localObject == null)
+    {
+      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFavListResponse");
+      AppMethodBeat.o(232005);
+      throw ((Throwable)localObject);
+    }
+    int i = ((aub)localObject).jlf;
+    AppMethodBeat.o(232005);
+    return i;
+  }
+  
+  public final long dpf()
+  {
+    AppMethodBeat.i(232007);
+    Object localObject = this.rr.bhX();
+    if (localObject == null)
+    {
+      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFavListRequest");
+      AppMethodBeat.o(232007);
+      throw ((Throwable)localObject);
+    }
+    long l = ((aua)localObject).xee;
+    AppMethodBeat.o(232007);
+    return l;
   }
   
   public final int getType()
   {
-    return 6865;
+    return 3966;
   }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneMegaVideoGetBullet$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.ct
  * JD-Core Version:    0.7.0.1
  */

@@ -21,25 +21,25 @@ public class APLogEncryptor
   
   private static byte[] assembleHeader(int paramInt)
   {
-    AppMethodBeat.i(193434);
+    AppMethodBeat.i(254028);
     System.arraycopy(APBytesUtil.int2bytes(paramInt), 0, header, 3, 4);
     byte[] arrayOfByte = header;
-    AppMethodBeat.o(193434);
+    AppMethodBeat.o(254028);
     return arrayOfByte;
   }
   
   public static APLogEncryptor create()
   {
-    AppMethodBeat.i(193431);
+    AppMethodBeat.i(254015);
     APLogEncryptor localAPLogEncryptor = new APLogEncryptor();
     localAPLogEncryptor.init();
-    AppMethodBeat.o(193431);
+    AppMethodBeat.o(254015);
     return localAPLogEncryptor;
   }
   
   private void init()
   {
-    AppMethodBeat.i(193432);
+    AppMethodBeat.i(254017);
     try
     {
       header[0] = 2;
@@ -47,22 +47,22 @@ public class APLogEncryptor
       SecretKeySpec localSecretKeySpec = new SecretKeySpec(ENCRYPT_KEY.getBytes(), "AES");
       this.encryptCipher = Cipher.getInstance("AES/ECB/NoPadding");
       this.encryptCipher.init(1, localSecretKeySpec);
-      AppMethodBeat.o(193432);
+      AppMethodBeat.o(254017);
       return;
     }
     catch (NoSuchPaddingException localNoSuchPaddingException)
     {
-      AppMethodBeat.o(193432);
+      AppMethodBeat.o(254017);
       return;
     }
     catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
     {
-      AppMethodBeat.o(193432);
+      AppMethodBeat.o(254017);
       return;
     }
     catch (InvalidKeyException localInvalidKeyException)
     {
-      AppMethodBeat.o(193432);
+      AppMethodBeat.o(254017);
     }
   }
   
@@ -83,7 +83,7 @@ public class APLogEncryptor
   
   public byte[] encrypt(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(193433);
+    AppMethodBeat.i(254021);
     int i = paramArrayOfByte.length;
     int j = i % 16;
     byte[] arrayOfByte1 = paramArrayOfByte;
@@ -121,13 +121,13 @@ public class APLogEncryptor
     System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, arrayOfByte1.length);
     System.arraycopy(paramArrayOfByte, 0, arrayOfByte2, arrayOfByte1.length, paramArrayOfByte.length);
     arrayOfByte2[(arrayOfByte2.length - 1)] = 0;
-    AppMethodBeat.o(193433);
+    AppMethodBeat.o(254021);
     return arrayOfByte2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.comm.log.processor.APLogEncryptor
  * JD-Core Version:    0.7.0.1
  */

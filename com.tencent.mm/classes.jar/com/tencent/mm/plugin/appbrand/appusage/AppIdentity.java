@@ -9,7 +9,7 @@ public final class AppIdentity
   implements Parcelable
 {
   public static final Parcelable.Creator<AppIdentity> CREATOR;
-  public final int iOo;
+  public final int cBU;
   public final String username;
   
   static
@@ -23,14 +23,14 @@ public final class AppIdentity
   {
     AppMethodBeat.i(44630);
     this.username = paramParcel.readString();
-    this.iOo = paramParcel.readInt();
+    this.cBU = paramParcel.readInt();
     AppMethodBeat.o(44630);
   }
   
   public AppIdentity(String paramString, int paramInt)
   {
     this.username = paramString;
-    this.iOo = paramInt;
+    this.cBU = paramInt;
   }
   
   public final int describeContents()
@@ -42,13 +42,13 @@ public final class AppIdentity
   {
     AppMethodBeat.i(44629);
     paramParcel.writeString(this.username);
-    paramParcel.writeInt(this.iOo);
+    paramParcel.writeInt(this.cBU);
     AppMethodBeat.o(44629);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.AppIdentity
  * JD-Core Version:    0.7.0.1
  */

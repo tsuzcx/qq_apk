@@ -1,51 +1,62 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.s;
-import com.tencent.mm.protocal.protobuf.epr;
-import com.tencent.mm.vending.g.d.b;
-import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.i.g.a;
+import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.appstorage.r;
+import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.q;
+import java.io.ByteArrayOutputStream;
+import java.nio.ByteBuffer;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiVerifyPlugin;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "()V", "invoke", "", "service", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-wechat-full-sdk_release"})
 public final class cw
-  extends d<s>
+  extends c<v>
 {
-  public static final int CTRL_INDEX = 313;
-  public static final String NAME = "verifyPlugin";
-  @Deprecated
-  public static final cw.a lCt;
+  public static final int CTRL_INDEX = -2;
+  public static final String NAME = "uploadToCommonCDN";
   
-  static
+  private static String c(v paramv, String paramString)
   {
-    AppMethodBeat.i(147901);
-    lCt = new cw.a((byte)0);
-    AppMethodBeat.o(147901);
+    AppMethodBeat.i(45705);
+    paramv = paramv.getRuntime().getFileSystem().adL(paramString);
+    if (paramv == null)
+    {
+      AppMethodBeat.o(45705);
+      return "";
+    }
+    paramv = paramv.bOF();
+    AppMethodBeat.o(45705);
+    return paramv;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
-  static final class b
-    extends q
-    implements a<x>
+  private static ByteBuffer cD(Object paramObject)
   {
-    b(cw paramcw, String paramString, s params, int paramInt)
+    AppMethodBeat.i(273491);
+    if ((paramObject instanceof String)) {
+      paramObject = ByteBuffer.wrap(((String)paramObject).getBytes());
+    }
+    for (;;)
     {
-      super();
+      AppMethodBeat.o(273491);
+      return paramObject;
+      if ((paramObject instanceof ByteBuffer)) {
+        paramObject = (ByteBuffer)paramObject;
+      } else {
+        paramObject = null;
+      }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "response", "Lcom/tencent/mm/protocal/protobuf/VerifyPluginResponse;", "kotlin.jvm.PlatformType", "onTerminate"})
-  static final class c<T>
-    implements d.b<epr>
-  {
-    c(cw paramcw, String paramString, s params, int paramInt) {}
-  }
+  static final class a
+    implements com.tencent.mm.ipcinvoker.d<Bundle, Bundle>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.cw
  * JD-Core Version:    0.7.0.1
  */

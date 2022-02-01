@@ -8,28 +8,28 @@ import java.util.concurrent.Executors;
 
 public class c
 {
-  private static c ROq;
-  public ExecutorService ROp;
+  private static c ZqW;
+  public ExecutorService ZqV;
   private Handler handler;
   
   private c()
   {
     AppMethodBeat.i(174600);
-    this.ROp = Executors.newSingleThreadExecutor();
+    this.ZqV = Executors.newSingleThreadExecutor();
     this.handler = new Handler(Looper.getMainLooper());
     AppMethodBeat.o(174600);
   }
   
-  public static c hkZ()
+  public static c ioy()
   {
     AppMethodBeat.i(174601);
-    if (ROq == null) {}
+    if (ZqW == null) {}
     try
     {
-      if (ROq == null) {
-        ROq = new c();
+      if (ZqW == null) {
+        ZqW = new c();
       }
-      c localc = ROq;
+      c localc = ZqW;
       AppMethodBeat.o(174601);
       return localc;
     }
@@ -41,7 +41,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.scanlib.a.c
  * JD-Core Version:    0.7.0.1
  */

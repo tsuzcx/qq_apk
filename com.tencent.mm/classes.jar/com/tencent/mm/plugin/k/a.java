@@ -1,33 +1,31 @@
 package com.tencent.mm.plugin.k;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.Log;
 
-public abstract class a
+public final class a
 {
-  public abstract boolean dispatchKeyEvent(KeyEvent paramKeyEvent);
+  private static Boolean ubv = Boolean.FALSE;
   
-  public abstract boolean dispatchTouchEvent(MotionEvent paramMotionEvent);
-  
-  public abstract boolean edH();
-  
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public abstract void onBackPressed();
-  
-  public abstract void onCreate(Bundle paramBundle);
-  
-  public abstract void onDestroy();
-  
-  public abstract void onPause();
-  
-  public abstract void onResume();
+  public static boolean cPp()
+  {
+    AppMethodBeat.i(204957);
+    boolean bool = ((b)h.ae(b.class)).a(b.a.vGz, false);
+    if (ubv.booleanValue() != bool)
+    {
+      ubv = Boolean.valueOf(bool);
+      Log.i("MicroMsg.VideoPlayConfig", "enableReadSampleZero :%b", new Object[] { Boolean.valueOf(bool) });
+    }
+    AppMethodBeat.o(204957);
+    return bool;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.k.a
  * JD-Core Version:    0.7.0.1
  */

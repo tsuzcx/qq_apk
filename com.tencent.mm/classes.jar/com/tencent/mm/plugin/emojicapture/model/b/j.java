@@ -9,7 +9,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.z;
+import com.tencent.mm.compatible.deviceinfo.aa;
 import com.tencent.mm.compatible.i.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -19,21 +19,21 @@ import kotlin.g.b.p;
 import kotlin.n.n;
 import kotlin.x;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixVideoDecoderAsync;", "Lcom/tencent/mm/plugin/emojicapture/model/mix/IEmojiMixDecoder;", "videoPath", "", "videoDuration", "", "surface", "Landroid/view/Surface;", "(Ljava/lang/String;ILandroid/view/Surface;)V", "TAG", "codecCallback", "com/tencent/mm/plugin/emojicapture/model/mix/EmojiMixVideoDecoderAsync$codecCallback$1", "Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixVideoDecoderAsync$codecCallback$1;", "decoder", "Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;", "decoderThread", "Landroid/os/HandlerThread;", "kotlin.jvm.PlatformType", "extractor", "Lcom/tencent/mm/compatible/video/VFSMediaExtractor;", "inputEos", "", "inputSampleTime", "", "mediaFormat", "Landroid/media/MediaFormat;", "mime", "pauseDecoderLock", "Ljava/lang/Object;", "getPauseDecoderLock", "()Ljava/lang/Object;", "init", "processDecodeBuffer", "", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "release", "sendDecoderEos", "setPauseDecode", "pause", "startDecode", "plugin-emojicapture_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixVideoDecoderAsync;", "Lcom/tencent/mm/plugin/emojicapture/model/mix/IEmojiMixDecoder;", "videoPath", "", "videoDuration", "", "surface", "Landroid/view/Surface;", "(Ljava/lang/String;ILandroid/view/Surface;)V", "TAG", "codecCallback", "com/tencent/mm/plugin/emojicapture/model/mix/EmojiMixVideoDecoderAsync$codecCallback$1", "Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixVideoDecoderAsync$codecCallback$1;", "decoder", "Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;", "decoderThread", "Landroid/os/HandlerThread;", "kotlin.jvm.PlatformType", "extractor", "Lcom/tencent/mm/compatible/video/VFSMediaExtractor;", "inputEos", "", "inputSampleTime", "", "mediaFormat", "Landroid/media/MediaFormat;", "mime", "pauseDecoderLock", "Ljava/lang/Object;", "getPauseDecoderLock", "()Ljava/lang/Object;", "init", "processDecodeBuffer", "", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "release", "sendDecoderEos", "setPauseDecode", "pause", "startDecode", "plugin-emojicapture_release"})
 public final class j
   extends l
 {
   final String TAG;
+  private String aFM;
   private HandlerThread decoderThread;
-  z iec;
-  c jto;
+  aa kSN;
   MediaFormat mediaFormat;
-  private String mime;
-  private final Object rqc;
-  boolean rqe;
-  long rqf;
-  private final a rqg;
+  c miS;
   private final Surface surface;
+  private final Object uVI;
+  boolean uVK;
+  long uVL;
+  private final a uVM;
   private final int videoDuration;
   private final String videoPath;
   
@@ -44,31 +44,31 @@ public final class j
     this.videoDuration = paramInt;
     this.surface = paramSurface;
     this.TAG = "MicroMsg.EmojiMixVideoDecoderAsync";
-    this.jto = new c();
-    this.mime = "";
-    this.decoderThread = com.tencent.f.c.d.hA("EmojiMixVideoDecoderAsync_decodeThread", 5);
-    this.rqc = new Object();
-    this.rqg = new a(this);
+    this.miS = new c();
+    this.aFM = "";
+    this.decoderThread = com.tencent.e.c.d.ik("EmojiMixVideoDecoderAsync_decodeThread", 5);
+    this.uVI = new Object();
+    this.uVM = new a(this);
     try
     {
       Log.i(this.TAG, "create decoder with path: " + this.videoPath);
-      this.jto.setDataSource(this.videoPath);
-      int i = this.jto.getTrackCount();
+      this.miS.setDataSource(this.videoPath);
+      int i = this.miS.getTrackCount();
       paramInt = 0;
       while (paramInt < i)
       {
-        paramString = this.jto.getTrackFormat(paramInt);
-        p.g(paramString, "extractor.getTrackFormat(i)");
+        paramString = this.miS.getTrackFormat(paramInt);
+        p.j(paramString, "extractor.getTrackFormat(i)");
         paramSurface = paramString.getString("mime");
-        p.g(paramSurface, "trackFormat.getString(MediaFormat.KEY_MIME)");
-        if (n.e((CharSequence)paramSurface, (CharSequence)"video") == true)
+        p.j(paramSurface, "trackFormat.getString(MediaFormat.KEY_MIME)");
+        if (n.g((CharSequence)paramSurface, (CharSequence)"video") == true)
         {
           paramSurface = paramString.getString("mime");
-          p.g(paramSurface, "trackFormat.getString(MediaFormat.KEY_MIME)");
-          this.mime = paramSurface;
+          p.j(paramSurface, "trackFormat.getString(MediaFormat.KEY_MIME)");
+          this.aFM = paramSurface;
           this.mediaFormat = paramString;
-          Log.i(this.TAG, "find video format " + this.mediaFormat + ", mime: " + this.mime);
-          this.jto.selectTrack(paramInt);
+          Log.i(this.TAG, "find video format " + this.mediaFormat + ", mime: " + this.aFM);
+          this.miS.selectTrack(paramInt);
           AppMethodBeat.o(297);
           return;
         }
@@ -83,15 +83,15 @@ public final class j
     }
   }
   
-  public final void cJx()
+  public final void cYf()
   {
     AppMethodBeat.i(295);
-    synchronized (this.rqc)
+    synchronized (this.uVI)
     {
       try
       {
-        this.rqc.notifyAll();
-        x localx = x.SXb;
+        this.uVI.notifyAll();
+        x localx = x.aazN;
         AppMethodBeat.o(295);
         return;
       }
@@ -108,32 +108,32 @@ public final class j
   public final int init()
   {
     AppMethodBeat.i(293);
-    if ((this.mediaFormat != null) && (!Util.isNullOrNil(this.mime))) {
+    if ((this.mediaFormat != null) && (!Util.isNullOrNil(this.aFM))) {
       try
       {
-        this.iec = z.DZ(this.mime);
-        Object localObject = this.iec;
+        this.kSN = aa.KR(this.aFM);
+        Object localObject = this.kSN;
         if (localObject != null) {
-          ((z)localObject).a(this.mediaFormat, this.surface, 0);
+          ((aa)localObject).a(this.mediaFormat, this.surface, 0);
         }
-        if (com.tencent.mm.compatible.util.d.oD(23))
+        if (com.tencent.mm.compatible.util.d.qV(23))
         {
           this.decoderThread.start();
           localObject = this.decoderThread;
-          p.g(localObject, "decoderThread");
+          p.j(localObject, "decoderThread");
           localObject = new Handler(((HandlerThread)localObject).getLooper());
-          z localz = this.iec;
-          if (localz != null) {
-            localz.setCallback((MediaCodec.Callback)this.rqg, (Handler)localObject);
+          aa localaa = this.kSN;
+          if (localaa != null) {
+            localaa.a((MediaCodec.Callback)this.uVM, (Handler)localObject);
           }
         }
         for (;;)
         {
           AppMethodBeat.o(293);
           return 0;
-          localObject = this.iec;
+          localObject = this.kSN;
           if (localObject != null) {
-            ((z)localObject).setCallback((MediaCodec.Callback)this.rqg);
+            ((aa)localObject).a((MediaCodec.Callback)this.uVM);
           }
         }
         AppMethodBeat.o(293);
@@ -155,14 +155,14 @@ public final class j
     try
     {
       this.decoderThread.quit();
-      z localz = this.iec;
-      if (localz != null) {
-        localz.stop();
+      aa localaa = this.kSN;
+      if (localaa != null) {
+        localaa.stop();
       }
-      localz = this.iec;
-      if (localz != null)
+      localaa = this.kSN;
+      if (localaa != null)
       {
-        localz.release();
+        localaa.release();
         AppMethodBeat.o(296);
         return;
       }
@@ -178,9 +178,9 @@ public final class j
   public final void startDecode()
   {
     AppMethodBeat.i(294);
-    if (this.iec == null)
+    if (this.kSN == null)
     {
-      localObject = this.rqy;
+      localObject = this.uWe;
       if (localObject != null)
       {
         ((a)localObject).invoke();
@@ -190,31 +190,31 @@ public final class j
       AppMethodBeat.o(294);
       return;
     }
-    Object localObject = this.iec;
+    Object localObject = this.kSN;
     if (localObject != null)
     {
-      ((z)localObject).start();
+      ((aa)localObject).start();
       AppMethodBeat.o(294);
       return;
     }
     AppMethodBeat.o(294);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/emojicapture/model/mix/EmojiMixVideoDecoderAsync$codecCallback$1", "Landroid/media/MediaCodec$Callback;", "onError", "", "codec", "Landroid/media/MediaCodec;", "e", "Landroid/media/MediaCodec$CodecException;", "onInputBufferAvailable", "index", "", "onOutputBufferAvailable", "info", "Landroid/media/MediaCodec$BufferInfo;", "onOutputFormatChanged", "format", "Landroid/media/MediaFormat;", "plugin-emojicapture_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/emojicapture/model/mix/EmojiMixVideoDecoderAsync$codecCallback$1", "Landroid/media/MediaCodec$Callback;", "onError", "", "codec", "Landroid/media/MediaCodec;", "e", "Landroid/media/MediaCodec$CodecException;", "onInputBufferAvailable", "index", "", "onOutputBufferAvailable", "info", "Landroid/media/MediaCodec$BufferInfo;", "onOutputFormatChanged", "format", "Landroid/media/MediaFormat;", "plugin-emojicapture_release"})
   public static final class a
     extends MediaCodec.Callback
   {
     public final void onError(MediaCodec paramMediaCodec, MediaCodec.CodecException paramCodecException)
     {
       AppMethodBeat.i(292);
-      p.h(paramMediaCodec, "codec");
-      p.h(paramCodecException, "e");
-      Log.e(this.rqh.TAG, "onError, codec:" + paramMediaCodec + ", " + paramCodecException.isRecoverable() + ' ' + paramCodecException.isTransient() + ' ' + paramCodecException.getDiagnosticInfo());
+      p.k(paramMediaCodec, "codec");
+      p.k(paramCodecException, "e");
+      Log.e(this.uVN.TAG, "onError, codec:" + paramMediaCodec + ", " + paramCodecException.isRecoverable() + ' ' + paramCodecException.isTransient() + ' ' + paramCodecException.getDiagnosticInfo());
       if ((!paramCodecException.isRecoverable()) && (!paramCodecException.isTransient()))
       {
-        j.a(this.rqh);
-        this.rqh.release();
-        paramMediaCodec = this.rqh.rqy;
+        j.a(this.uVN);
+        this.uVN.release();
+        paramMediaCodec = this.uVN.uWe;
         if (paramMediaCodec != null)
         {
           paramMediaCodec.invoke();
@@ -228,8 +228,8 @@ public final class j
     public final void onInputBufferAvailable(MediaCodec paramMediaCodec, int paramInt)
     {
       AppMethodBeat.i(290);
-      p.h(paramMediaCodec, "codec");
-      Log.i(this.rqh.TAG, "onInputBufferAvailable ".concat(String.valueOf(paramInt)));
+      p.k(paramMediaCodec, "codec");
+      Log.i(this.uVN.TAG, "onInputBufferAvailable ".concat(String.valueOf(paramInt)));
       if (paramInt >= 0) {}
       for (;;)
       {
@@ -237,44 +237,44 @@ public final class j
         long l;
         try
         {
-          if (this.rqh.rqe) {
+          if (this.uVN.uVK) {
             break label282;
           }
-          paramMediaCodec = this.rqh.iec;
+          paramMediaCodec = this.uVN.kSN;
           if (paramMediaCodec == null) {
             break label307;
           }
           paramMediaCodec = paramMediaCodec.getInputBuffer(paramInt);
           if (paramMediaCodec == null)
           {
-            Log.w(this.rqh.TAG, "inputBuffer is null");
+            Log.w(this.uVN.TAG, "inputBuffer is null");
             AppMethodBeat.o(290);
             return;
           }
           paramMediaCodec.clear();
-          j = this.rqh.jto.readSampleData(paramMediaCodec, 0);
-          this.rqh.jto.advance();
+          j = this.uVN.miS.readSampleData(paramMediaCodec, 0);
+          this.uVN.miS.advance();
           paramMediaCodec.position(0);
-          l = this.rqh.jto.getSampleTime();
-          Log.i(this.rqh.TAG, "sampleTime: " + l + ", sampleSize: " + j);
-          if (l <= this.rqh.rqf) {
+          l = this.uVN.miS.getSampleTime();
+          Log.i(this.uVN.TAG, "sampleTime: " + l + ", sampleSize: " + j);
+          if (l <= this.uVN.uVL) {
             break label312;
           }
-          this.rqh.rqf = l;
+          this.uVN.uVL = l;
         }
         catch (Exception paramMediaCodec)
         {
           label196:
-          Log.printErrStackTrace(this.rqh.TAG, (Throwable)paramMediaCodec, "onInputBufferAvailable", new Object[0]);
+          Log.printErrStackTrace(this.uVN.TAG, (Throwable)paramMediaCodec, "onInputBufferAvailable", new Object[0]);
         }
-        Log.i(this.rqh.TAG, "read sample end");
+        Log.i(this.uVN.TAG, "read sample end");
         boolean bool = true;
         label211:
-        this.rqh.rqe = bool;
-        paramMediaCodec = this.rqh.iec;
+        this.uVN.uVK = bool;
+        paramMediaCodec = this.uVN.kSN;
         if (paramMediaCodec != null)
         {
-          if (this.rqh.rqe)
+          if (this.uVN.uVK)
           {
             i = 4;
             paramMediaCodec.a(paramInt, j, l, i);
@@ -307,9 +307,9 @@ public final class j
     public final void onOutputBufferAvailable(MediaCodec paramMediaCodec, int paramInt, MediaCodec.BufferInfo paramBufferInfo)
     {
       AppMethodBeat.i(289);
-      p.h(paramMediaCodec, "codec");
-      p.h(paramBufferInfo, "info");
-      Log.i(this.rqh.TAG, "onOutputBufferAvailable " + paramInt + ", flags " + paramBufferInfo.flags);
+      p.k(paramMediaCodec, "codec");
+      p.k(paramBufferInfo, "info");
+      Log.i(this.uVN.TAG, "onOutputBufferAvailable " + paramInt + ", flags " + paramBufferInfo.flags);
       if (paramInt >= 0) {}
       for (;;)
       {
@@ -321,22 +321,22 @@ public final class j
             break label268;
           }
           l1 = paramBufferInfo.presentationTimeUs;
-          Log.i(this.rqh.TAG, "presentationTimeUs: " + l1 + ", inputSampleTime: " + this.rqh.rqf);
-          paramMediaCodec = this.rqh.iec;
+          Log.i(this.uVN.TAG, "presentationTimeUs: " + l1 + ", inputSampleTime: " + this.uVN.uVL);
+          paramMediaCodec = this.uVN.kSN;
           if (paramMediaCodec != null) {
             paramMediaCodec.releaseOutputBuffer(paramInt, true);
           }
-          j.a(this.rqh, paramBufferInfo);
-          if (this.rqh.rqe)
+          j.a(this.uVN, paramBufferInfo);
+          if (this.uVN.uVK)
           {
-            l2 = this.rqh.rqf;
+            l2 = this.uVN.uVL;
             if (0L <= l1) {
               break label300;
             }
-            Log.i(this.rqh.TAG, "receive eos!");
-            j.a(this.rqh);
-            this.rqh.release();
-            paramMediaCodec = this.rqh.rqy;
+            Log.i(this.uVN.TAG, "receive eos!");
+            j.a(this.uVN);
+            this.uVN.release();
+            paramMediaCodec = this.uVN.uWe;
             if (paramMediaCodec == null) {
               continue;
             }
@@ -351,7 +351,7 @@ public final class j
         }
         catch (Exception paramMediaCodec)
         {
-          Log.printErrStackTrace(this.rqh.TAG, (Throwable)paramMediaCodec, "onOutputBufferAvailable", new Object[0]);
+          Log.printErrStackTrace(this.uVN.TAG, (Throwable)paramMediaCodec, "onOutputBufferAvailable", new Object[0]);
           continue;
         }
         AppMethodBeat.o(289);
@@ -359,7 +359,7 @@ public final class j
         AppMethodBeat.o(289);
         return;
         label268:
-        paramMediaCodec = this.rqh.iec;
+        paramMediaCodec = this.uVN.kSN;
         if (paramMediaCodec != null)
         {
           paramMediaCodec.releaseOutputBuffer(paramInt, false);
@@ -376,17 +376,17 @@ public final class j
     public final void onOutputFormatChanged(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
     {
       AppMethodBeat.i(291);
-      p.h(paramMediaCodec, "codec");
-      p.h(paramMediaFormat, "format");
-      Log.i(this.rqh.TAG, "onOutputFormatChanged ".concat(String.valueOf(paramMediaFormat)));
-      this.rqh.mediaFormat = paramMediaFormat;
+      p.k(paramMediaCodec, "codec");
+      p.k(paramMediaFormat, "format");
+      Log.i(this.uVN.TAG, "onOutputFormatChanged ".concat(String.valueOf(paramMediaFormat)));
+      this.uVN.mediaFormat = paramMediaFormat;
       AppMethodBeat.o(291);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.b.j
  * JD-Core Version:    0.7.0.1
  */

@@ -8,17 +8,18 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.d;
-import com.tencent.mm.av.q;
-import com.tencent.mm.g.a.cz;
-import com.tencent.mm.g.a.cz.b;
-import com.tencent.mm.g.a.tt;
-import com.tencent.mm.g.a.tt.a;
-import com.tencent.mm.g.a.tw;
+import com.tencent.mm.ay.d;
+import com.tencent.mm.ay.q;
+import com.tencent.mm.f.a.dd;
+import com.tencent.mm.f.a.dd.b;
+import com.tencent.mm.f.a.uw;
+import com.tencent.mm.f.a.uw.a;
+import com.tencent.mm.f.a.uz;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.plugin.webview.model.c.a;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.i;
+import com.tencent.mm.plugin.webview.ui.tools.jsapi.k;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -35,21 +36,21 @@ import org.json.JSONObject;
 public class bb
   extends bs<com.tencent.mm.plugin.webview.luggage.g>
 {
-  private static int ehW;
+  private static int gcn;
   
-  public static void afY(int paramInt)
+  public static void anM(int paramInt)
   {
-    ehW = paramInt;
+    gcn = paramInt;
   }
   
-  public static int gcm()
+  public static int gVg()
   {
-    return ehW;
+    return gcn;
   }
   
-  public static void gcn()
+  public static void gVh()
   {
-    ehW = 0;
+    gcn = 0;
   }
   
   public final void a(final Context paramContext, final String paramString, final br.a parama)
@@ -75,7 +76,7 @@ public class bb
       switch (paramString.optInt("sendAppMessageScene", 0))
       {
       default: 
-        i.baY(paramString.optString("img_url"));
+        k.bmW(paramString.optString("img_url"));
         localObject1 = new HashMap();
         ((HashMap)localObject1).put("img_url", paramString.optString("img_url"));
         ((HashMap)localObject1).put("desc", paramString.optString("desc"));
@@ -87,7 +88,7 @@ public class bb
         ((Intent)localObject2).putExtra("mutil_select_is_ret", true);
         ((Intent)localObject2).putExtra("webview_params", (Serializable)localObject1);
         ((Intent)localObject2).putExtra("Retr_Msg_Type", 2);
-        com.tencent.mm.br.c.a((MMActivity)paramContext, ".ui.transmit.SelectConversationUI", (Intent)localObject2, 1, new MMActivity.a()
+        com.tencent.mm.by.c.a((MMActivity)paramContext, ".ui.transmit.SelectConversationUI", (Intent)localObject2, 1, new MMActivity.a()
         {
           public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
           {
@@ -117,9 +118,9 @@ public class bb
                 AppMethodBeat.o(78619);
                 return;
               }
-              q.bcQ();
-              Object localObject2 = d.EP(paramString.optString("img_url"));
-              Object localObject3 = bb.bZ(paramString);
+              q.bmg();
+              Object localObject2 = d.LI(paramString.optString("img_url"));
+              Object localObject3 = bb.ck(paramString);
               if ((localObject2 != null) && (!((Bitmap)localObject2).isRecycled()))
               {
                 Log.i("MicroMsg.JsApiSendAppMessage", "thumb image is not null");
@@ -128,46 +129,46 @@ public class bb
                 ((WXMediaMessage)localObject3).thumbData = ((ByteArrayOutputStream)localObject4).toByteArray();
               }
               Object localObject4 = com.tencent.mm.pluginsdk.model.app.h.o((String)localObject1, true, false);
-              localObject2 = new tt();
-              ((tt)localObject2).eaf.dCE = ((WXMediaMessage)localObject3);
-              ((tt)localObject2).eaf.appId = ((String)localObject1);
-              localObject3 = ((tt)localObject2).eaf;
+              localObject2 = new uw();
+              ((uw)localObject2).fUc.fvl = ((WXMediaMessage)localObject3);
+              ((uw)localObject2).fUc.appId = ((String)localObject1);
+              localObject3 = ((uw)localObject2).fUc;
               if (localObject4 == null)
               {
                 localObject1 = "";
-                ((tt.a)localObject3).appName = ((String)localObject1);
-                ((tt)localObject2).eaf.toUser = str;
-                ((tt)localObject2).eaf.dMG = 2;
+                ((uw.a)localObject3).appName = ((String)localObject1);
+                ((uw)localObject2).fUc.toUser = str;
+                ((uw)localObject2).fUc.fFO = 2;
                 if (!Util.isNullOrNil(paramString.optString("src_username"))) {
-                  break label500;
+                  break label501;
                 }
-                ((tt)localObject2).eaf.eai = null;
+                ((uw)localObject2).fUc.fUf = null;
               }
               for (;;)
               {
-                ((tt)localObject2).eaf.eaj = paramString.optString("shareUrl");
-                ((tt)localObject2).eaf.eak = paramString.optString("currentUrl");
-                ((tt)localObject2).eaf.eal = paramString.optString("preVerifyAppId");
+                ((uw)localObject2).fUc.fUg = paramString.optString("shareUrl");
+                ((uw)localObject2).fUc.fUh = paramString.optString("currentUrl");
+                ((uw)localObject2).fUc.fUi = paramString.optString("preVerifyAppId");
                 EventCenter.instance.publish((IEvent)localObject2);
                 paramAnonymousIntent = paramAnonymousIntent.getStringExtra("custom_send_text");
                 if (!Util.isNullOrNil(paramAnonymousIntent))
                 {
-                  localObject1 = new tw();
-                  ((tw)localObject1).eaq.dkV = str;
-                  ((tw)localObject1).eaq.content = paramAnonymousIntent;
-                  ((tw)localObject1).eaq.type = ab.JG(str);
-                  ((tw)localObject1).eaq.flags = 0;
+                  localObject1 = new uz();
+                  ((uz)localObject1).fUn.fcD = str;
+                  ((uz)localObject1).fUn.content = paramAnonymousIntent;
+                  ((uz)localObject1).fUn.type = ab.QZ(str);
+                  ((uz)localObject1).fUn.flags = 0;
                   EventCenter.instance.publish((IEvent)localObject1);
                 }
-                com.tencent.mm.ui.base.h.cD(paramContext, paramContext.getResources().getString(2131755986));
+                com.tencent.mm.ui.base.h.cO(paramContext, paramContext.getResources().getString(c.i.app_shared));
                 parama.i(null, null);
                 AppMethodBeat.o(78619);
                 return;
                 localObject1 = ((com.tencent.mm.pluginsdk.model.app.g)localObject4).field_appName;
                 break;
-                label500:
-                ((tt)localObject2).eaf.eag = paramString.optString("src_username");
-                ((tt)localObject2).eaf.eah = paramString.optString("src_displayname");
+                label501:
+                ((uw)localObject2).fUc.fUd = paramString.optString("src_username");
+                ((uw)localObject2).fUc.fUe = paramString.optString("src_displayname");
               }
             }
             parama.i("cancel", null);
@@ -179,21 +180,21 @@ public class bb
       }
     }
     Log.i("MicroMsg.JsApiSendAppMessage", "favoriteUrl");
-    Object localObject1 = new cz();
+    Object localObject1 = new dd();
     Object localObject2 = new c.a();
     ((c.a)localObject2).url = paramString.optString("shareUrl");
     ((c.a)localObject2).thumbUrl = paramString.optString("img_url");
     ((c.a)localObject2).title = paramString.optString("title");
     ((c.a)localObject2).desc = paramString.optString("desc");
-    ((c.a)localObject2).dNI = paramString.optString("appid");
+    ((c.a)localObject2).appid = paramString.optString("appid");
     if ((paramContext != null) && ((paramContext instanceof MMActivity)))
     {
-      ((cz)localObject1).dFZ.activity = ((Activity)paramContext);
-      ((cz)localObject1).dFZ.dGf = 36;
+      ((dd)localObject1).fyI.activity = ((Activity)paramContext);
+      ((dd)localObject1).fyI.fyP = 36;
     }
-    ((cz)localObject1).dFZ.dGh = new a.c()
+    ((dd)localObject1).fyI.fyR = new a.c()
     {
-      public final void bDY() {}
+      public final void bPL() {}
       
       public final void onHide()
       {
@@ -205,9 +206,9 @@ public class bb
       
       public final void onShow() {}
     };
-    com.tencent.mm.plugin.webview.model.c.a((cz)localObject1, (c.a)localObject2);
+    com.tencent.mm.plugin.webview.model.c.a((dd)localObject1, (c.a)localObject2);
     EventCenter.instance.publish((IEvent)localObject1);
-    if (((cz)localObject1).dGa.ret != 0) {
+    if (((dd)localObject1).fyJ.ret != 0) {
       parama.i("fail", null);
     }
     AppMethodBeat.o(78620);
@@ -215,7 +216,7 @@ public class bb
   
   public final void b(b<com.tencent.mm.plugin.webview.luggage.g>.a paramb) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 2;
   }

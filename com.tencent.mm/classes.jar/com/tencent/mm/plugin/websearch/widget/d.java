@@ -2,19 +2,19 @@ package com.tencent.mm.plugin.websearch.widget;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.plugin.websearch.api.WidgetData;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
 {
-  private static final d IIf;
+  private static final d PCB;
   
   static
   {
     AppMethodBeat.i(116638);
-    IIf = new d();
+    PCB = new d();
     AppMethodBeat.o(116638);
   }
   
@@ -24,7 +24,7 @@ public final class d
     Bundle localBundle = new Bundle();
     localBundle.putInt("action", 1);
     localBundle.putParcelable("data", paramWidgetData);
-    paramWidgetData = (Bundle)h.a(MainProcessIPCService.dkO, localBundle, d.a.class);
+    paramWidgetData = (Bundle)j.a(MainProcessIPCService.PROCESS_NAME, localBundle, d.a.class);
     if (paramWidgetData != null)
     {
       boolean bool = paramWidgetData.getBoolean("result");
@@ -41,7 +41,7 @@ public final class d
     Bundle localBundle = new Bundle();
     localBundle.putInt("action", 4);
     localBundle.putParcelable("data", paramWidgetData);
-    h.a(MainProcessIPCService.dkO, localBundle, d.a.class, null);
+    j.a(MainProcessIPCService.PROCESS_NAME, localBundle, d.a.class, null);
     AppMethodBeat.o(116635);
   }
   
@@ -52,7 +52,7 @@ public final class d
     localBundle.putInt("action", 3);
     localBundle.putParcelable("data", paramWidgetData);
     localBundle.putString("err", paramString);
-    h.a(MainProcessIPCService.dkO, localBundle, d.a.class, null);
+    j.a(MainProcessIPCService.PROCESS_NAME, localBundle, d.a.class, null);
     AppMethodBeat.o(116633);
   }
   
@@ -67,7 +67,7 @@ public final class d
     Bundle localBundle = new Bundle();
     localBundle.putInt("action", 5);
     localBundle.putParcelable("data", paramWidgetData);
-    h.a(MainProcessIPCService.dkO, localBundle, d.a.class, null);
+    j.a(MainProcessIPCService.PROCESS_NAME, localBundle, d.a.class, null);
     AppMethodBeat.o(116636);
   }
   
@@ -78,7 +78,7 @@ public final class d
     localBundle.putInt("action", 7);
     localBundle.putParcelable("data", paramWidgetData);
     localBundle.putString("err", paramString);
-    h.a(MainProcessIPCService.dkO, localBundle, d.a.class, null);
+    j.a(MainProcessIPCService.PROCESS_NAME, localBundle, d.a.class, null);
     AppMethodBeat.o(116634);
   }
   
@@ -89,13 +89,13 @@ public final class d
     Bundle localBundle = new Bundle();
     localBundle.putInt("action", 6);
     localBundle.putParcelable("data", paramWidgetData);
-    h.a(MainProcessIPCService.dkO, localBundle, d.a.class, null);
+    j.a(MainProcessIPCService.PROCESS_NAME, localBundle, d.a.class, null);
     AppMethodBeat.o(116637);
   }
   
-  public static d fYU()
+  public static d gRK()
   {
-    return IIf;
+    return PCB;
   }
 }
 

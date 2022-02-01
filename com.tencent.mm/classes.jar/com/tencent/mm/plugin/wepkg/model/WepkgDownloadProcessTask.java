@@ -13,15 +13,15 @@ public class WepkgDownloadProcessTask
   extends BaseWepkgProcessTask
 {
   public static final Parcelable.Creator<WepkgDownloadProcessTask> CREATOR;
-  public int JMZ;
-  public String JNn;
-  public long JNo;
-  public WePkgDownloader.IWepkgUpdateCallback.RetCode JNp;
+  public String QMG;
+  public long QMH;
+  public WePkgDownloader.IWepkgUpdateCallback.RetCode QMI;
+  public int QMs;
   public String downloadUrl;
-  public String eig;
   public int fileType;
-  public Runnable lyv;
+  public String gcx;
   public String md5;
+  public Runnable otv;
   public String pkgPath;
   public String version;
   
@@ -41,55 +41,54 @@ public class WepkgDownloadProcessTask
     AppMethodBeat.o(110698);
   }
   
-  public final void a(Parcel paramParcel, int paramInt)
-  {
-    AppMethodBeat.i(110702);
-    paramParcel.writeInt(this.fileType);
-    paramParcel.writeString(this.eig);
-    paramParcel.writeString(this.JNn);
-    paramParcel.writeString(this.downloadUrl);
-    paramParcel.writeLong(this.JNo);
-    paramParcel.writeString(this.version);
-    paramParcel.writeString(this.md5);
-    paramParcel.writeInt(this.JMZ);
-    paramParcel.writeString(this.pkgPath);
-    paramParcel.writeParcelable(this.JNp, paramInt);
-    AppMethodBeat.o(110702);
-  }
-  
-  public final void bjj()
+  public final void RW()
   {
     AppMethodBeat.i(110699);
-    bDJ();
     WePkgDownloader.IWepkgUpdateCallback local1 = new WePkgDownloader.IWepkgUpdateCallback()
     {
       public final void a(String paramAnonymousString1, String paramAnonymousString2, WePkgDownloader.IWepkgUpdateCallback.RetCode paramAnonymousRetCode)
       {
         AppMethodBeat.i(110696);
         Log.i("MicroMsg.Wepkg.WepkgDownloadProcessTask", "onPkgUpdatingCallback errCode:%s", new Object[] { paramAnonymousRetCode });
-        WepkgDownloadProcessTask.this.eig = paramAnonymousString1;
+        WepkgDownloadProcessTask.this.gcx = paramAnonymousString1;
         WepkgDownloadProcessTask.this.pkgPath = paramAnonymousString2;
-        WepkgDownloadProcessTask.this.JNp = paramAnonymousRetCode;
-        WepkgDownloadProcessTask.this.bDK();
+        WepkgDownloadProcessTask.this.QMI = paramAnonymousRetCode;
+        WepkgDownloadProcessTask.this.bPk();
         WepkgDownloadProcessTask.a(WepkgDownloadProcessTask.this);
         AppMethodBeat.o(110696);
       }
     };
     if (this.fileType == 1)
     {
-      WePkgDownloader.gkM().a(this.eig, local1);
+      WePkgDownloader.heD().a(this.gcx, local1);
       AppMethodBeat.o(110699);
       return;
     }
-    WePkgDownloader.gkM().a(this.fileType, Util.nullAsNil(this.eig), "", Util.nullAsNil(this.JNn), Util.nullAsNil(this.downloadUrl), this.JNo, Util.nullAsNil(this.version), "", Util.nullAsNil(this.md5), this.JMZ, local1);
+    WePkgDownloader.heD().a(this.fileType, Util.nullAsNil(this.gcx), "", Util.nullAsNil(this.QMG), Util.nullAsNil(this.downloadUrl), this.QMH, Util.nullAsNil(this.version), "", Util.nullAsNil(this.md5), this.QMs, local1);
     AppMethodBeat.o(110699);
   }
   
-  public final void bjk()
+  public final void a(Parcel paramParcel, int paramInt)
+  {
+    AppMethodBeat.i(110702);
+    paramParcel.writeInt(this.fileType);
+    paramParcel.writeString(this.gcx);
+    paramParcel.writeString(this.QMG);
+    paramParcel.writeString(this.downloadUrl);
+    paramParcel.writeLong(this.QMH);
+    paramParcel.writeString(this.version);
+    paramParcel.writeString(this.md5);
+    paramParcel.writeInt(this.QMs);
+    paramParcel.writeString(this.pkgPath);
+    paramParcel.writeParcelable(this.QMI, paramInt);
+    AppMethodBeat.o(110702);
+  }
+  
+  public final void bsK()
   {
     AppMethodBeat.i(110700);
-    if (this.lyv != null) {
-      this.lyv.run();
+    if (this.otv != null) {
+      this.otv.run();
     }
     AppMethodBeat.o(110700);
   }
@@ -98,21 +97,21 @@ public class WepkgDownloadProcessTask
   {
     AppMethodBeat.i(110701);
     this.fileType = paramParcel.readInt();
-    this.eig = paramParcel.readString();
-    this.JNn = paramParcel.readString();
+    this.gcx = paramParcel.readString();
+    this.QMG = paramParcel.readString();
     this.downloadUrl = paramParcel.readString();
-    this.JNo = paramParcel.readLong();
+    this.QMH = paramParcel.readLong();
     this.version = paramParcel.readString();
     this.md5 = paramParcel.readString();
-    this.JMZ = paramParcel.readInt();
+    this.QMs = paramParcel.readInt();
     this.pkgPath = paramParcel.readString();
-    this.JNp = ((WePkgDownloader.IWepkgUpdateCallback.RetCode)paramParcel.readParcelable(WePkgDownloader.IWepkgUpdateCallback.RetCode.class.getClassLoader()));
+    this.QMI = ((WePkgDownloader.IWepkgUpdateCallback.RetCode)paramParcel.readParcelable(WePkgDownloader.IWepkgUpdateCallback.RetCode.class.getClassLoader()));
     AppMethodBeat.o(110701);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.model.WepkgDownloadProcessTask
  * JD-Core Version:    0.7.0.1
  */

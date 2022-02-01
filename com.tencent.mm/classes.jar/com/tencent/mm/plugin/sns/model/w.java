@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.plugin.sns.storage.l;
 import com.tencent.mm.plugin.sns.storage.t;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.protocal.protobuf.eaw;
-import com.tencent.mm.protocal.protobuf.eax;
-import com.tencent.mm.protocal.protobuf.eay;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.ekw;
+import com.tencent.mm.protocal.protobuf.ekx;
+import com.tencent.mm.protocal.protobuf.eky;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
@@ -24,49 +24,49 @@ public final class w
   extends q
   implements com.tencent.mm.network.m
 {
-  public LinkedList<eaw> DIZ;
-  public int DJa;
+  public LinkedList<ekw> JVZ;
+  public int JWa;
   public i callback;
-  private int dJY;
+  private int fCN;
   private String md5;
   private d rr;
   
   public w(int paramInt)
   {
     AppMethodBeat.i(95648);
-    this.DIZ = null;
-    this.dJY = paramInt;
+    this.JVZ = null;
+    this.fCN = paramInt;
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new eax();
-    ((d.a)localObject).iLO = new eay();
+    ((d.a)localObject).lBU = new ekx();
+    ((d.a)localObject).lBV = new eky();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/mmsnstaglist";
     ((d.a)localObject).funcId = 292;
-    ((d.a)localObject).iLP = 116;
+    ((d.a)localObject).lBW = 116;
     ((d.a)localObject).respCmdId = 1000000116;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = aj.faS().aQr("@__weixintsnstag").field_md5;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = aj.fOM().bbr("@__weixintsnstag").field_md5;
     if (localObject == null) {
       localObject = "";
     }
     for (;;)
     {
       this.md5 = ((String)localObject);
-      eax localeax = (eax)this.rr.iLK.iLR;
-      localeax.OpCode = paramInt;
-      localeax.Nas = ((String)localObject);
+      ekx localekx = (ekx)d.b.b(this.rr.lBR);
+      localekx.RLe = paramInt;
+      localekx.UmM = ((String)localObject);
       AppMethodBeat.o(95648);
       return;
     }
   }
   
-  public static com.tencent.mm.plugin.sns.storage.s a(com.tencent.mm.plugin.sns.storage.s params, eaw parameaw)
+  public static com.tencent.mm.plugin.sns.storage.s a(com.tencent.mm.plugin.sns.storage.s params, ekw paramekw)
   {
     AppMethodBeat.i(95650);
-    params.field_tagId = parameaw.Nar;
-    params.field_tagName = Util.nullAs(parameaw.xMo, "");
-    params.field_count = parameaw.oTz;
-    params.gX(parameaw.oTA);
-    Log.d("MicroMsg.NetSceneSnsTagList", "tagInfo getList: " + parameaw.toString());
+    params.field_tagId = paramekw.UmL;
+    params.field_tagName = Util.nullAs(paramekw.CQx, "");
+    params.field_count = paramekw.rVx;
+    params.hF(paramekw.rVy);
+    Log.d("MicroMsg.NetSceneSnsTagList", "tagInfo getList: " + paramekw.toString());
     AppMethodBeat.o(95650);
     return params;
   }
@@ -86,26 +86,26 @@ public final class w
     return false;
   }
   
-  private static boolean b(com.tencent.mm.plugin.sns.storage.s params, eaw parameaw)
+  private static boolean b(com.tencent.mm.plugin.sns.storage.s params, ekw paramekw)
   {
     boolean bool2 = false;
     AppMethodBeat.i(95654);
     params = params.field_memberList.split(",");
-    parameaw = parameaw.oTA.iterator();
+    paramekw = paramekw.rVy.iterator();
     label83:
     label90:
     label93:
     for (;;)
     {
       boolean bool1 = bool2;
-      if (parameaw.hasNext())
+      if (paramekw.hasNext())
       {
-        dqi localdqi = (dqi)parameaw.next();
+        eaf localeaf = (eaf)paramekw.next();
         i = 0;
         if (i >= params.length) {
           break label90;
         }
-        if (!params[i].equals(localdqi)) {
+        if (!params[i].equals(localeaf)) {
           break label83;
         }
       }
@@ -123,24 +123,24 @@ public final class w
     }
   }
   
-  public final List<String> Jp(long paramLong)
+  public final List<String> QI(long paramLong)
   {
     AppMethodBeat.i(95652);
     LinkedList localLinkedList = new LinkedList();
-    if (this.DIZ == null)
+    if (this.JVZ == null)
     {
       AppMethodBeat.o(95652);
       return localLinkedList;
     }
-    Iterator localIterator = this.DIZ.iterator();
+    Iterator localIterator = this.JVZ.iterator();
     while (localIterator.hasNext())
     {
-      eaw localeaw = (eaw)localIterator.next();
-      if (localeaw.Nar == paramLong)
+      ekw localekw = (ekw)localIterator.next();
+      if (localekw.UmL == paramLong)
       {
-        localIterator = localeaw.oTA.iterator();
+        localIterator = localekw.rVy.iterator();
         while (localIterator.hasNext()) {
-          localLinkedList.add(((dqi)localIterator.next()).MTo);
+          localLinkedList.add(((eaf)localIterator.next()).Ufy);
         }
         AppMethodBeat.o(95652);
         return localLinkedList;
@@ -174,20 +174,20 @@ public final class w
       AppMethodBeat.o(95653);
       return;
     }
-    Object localObject1 = (eay)((d)params).iLL.iLR;
-    Log.d("MicroMsg.NetSceneSnsTagList", "[onGYNetEnd]State：%s", new Object[] { Integer.valueOf(this.DJa) });
-    this.DJa = ((eay)localObject1).DJa;
-    this.DIZ = ((eay)localObject1).oTA;
-    params = ((eay)localObject1).Nas;
+    Object localObject1 = (eky)d.c.b(((d)params).lBS);
+    Log.d("MicroMsg.NetSceneSnsTagList", "[onGYNetEnd]State：%s", new Object[] { Integer.valueOf(this.JWa) });
+    this.JWa = ((eky)localObject1).JWa;
+    this.JVZ = ((eky)localObject1).rVy;
+    params = ((eky)localObject1).UmM;
     if (this.md5.equals(params))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(95653);
       return;
     }
-    paramArrayOfByte = aj.faU().ffg();
+    paramArrayOfByte = aj.fOO().fTb();
     Object localObject2;
-    if (this.dJY != 3) {
+    if (this.fCN != 3) {
       localObject2 = paramArrayOfByte.iterator();
     }
     label507:
@@ -197,15 +197,15 @@ public final class w
       if (((Iterator)localObject2).hasNext())
       {
         localObject3 = (Long)((Iterator)localObject2).next();
-        Iterator localIterator = ((eay)localObject1).oTA.iterator();
-        eaw localeaw;
+        Iterator localIterator = ((eky)localObject1).rVy.iterator();
+        ekw localekw;
         do
         {
           if (!localIterator.hasNext()) {
             break;
           }
-          localeaw = (eaw)localIterator.next();
-        } while (((Long)localObject3).longValue() != localeaw.Nar);
+          localekw = (ekw)localIterator.next();
+        } while (((Long)localObject3).longValue() != localekw.UmL);
       }
       for (paramInt1 = 1;; paramInt1 = 0)
       {
@@ -213,31 +213,31 @@ public final class w
           break label507;
         }
         ((Iterator)localObject2).remove();
-        aj.faU().JM(((Long)localObject3).longValue());
+        aj.fOO().Rg(((Long)localObject3).longValue());
         break;
-        localObject1 = ((eay)localObject1).oTA.iterator();
+        localObject1 = ((eky)localObject1).rVy.iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          localObject2 = (eaw)((Iterator)localObject1).next();
-          if (!a(paramArrayOfByte, Long.valueOf(((eaw)localObject2).Nar)))
+          localObject2 = (ekw)((Iterator)localObject1).next();
+          if (!a(paramArrayOfByte, Long.valueOf(((ekw)localObject2).UmL)))
           {
             localObject3 = new com.tencent.mm.plugin.sns.storage.s();
-            a((com.tencent.mm.plugin.sns.storage.s)localObject3, (eaw)localObject2);
-            aj.faU().a((com.tencent.mm.plugin.sns.storage.s)localObject3);
+            a((com.tencent.mm.plugin.sns.storage.s)localObject3, (ekw)localObject2);
+            aj.fOO().a((com.tencent.mm.plugin.sns.storage.s)localObject3);
           }
           else
           {
-            localObject3 = aj.faU().JL(((eaw)localObject2).Nar);
-            if (((((com.tencent.mm.plugin.sns.storage.s)localObject3).field_tagName != null) && (!((com.tencent.mm.plugin.sns.storage.s)localObject3).field_tagName.equals(((eaw)localObject2).xMo))) || (((com.tencent.mm.plugin.sns.storage.s)localObject3).field_count != ((eaw)localObject2).oTz) || (b((com.tencent.mm.plugin.sns.storage.s)localObject3, (eaw)localObject2)))
+            localObject3 = aj.fOO().Rf(((ekw)localObject2).UmL);
+            if (((((com.tencent.mm.plugin.sns.storage.s)localObject3).field_tagName != null) && (!((com.tencent.mm.plugin.sns.storage.s)localObject3).field_tagName.equals(((ekw)localObject2).CQx))) || (((com.tencent.mm.plugin.sns.storage.s)localObject3).field_count != ((ekw)localObject2).rVx) || (b((com.tencent.mm.plugin.sns.storage.s)localObject3, (ekw)localObject2)))
             {
-              a((com.tencent.mm.plugin.sns.storage.s)localObject3, (eaw)localObject2);
-              aj.faU().a((com.tencent.mm.plugin.sns.storage.s)localObject3);
+              a((com.tencent.mm.plugin.sns.storage.s)localObject3, (ekw)localObject2);
+              aj.fOO().a((com.tencent.mm.plugin.sns.storage.s)localObject3);
             }
           }
         }
-        paramArrayOfByte = aj.faS().aQr("@__weixintsnstag");
+        paramArrayOfByte = aj.fOM().bbr("@__weixintsnstag");
         paramArrayOfByte.field_md5 = params;
-        aj.faS().a(paramArrayOfByte);
+        aj.fOM().a(paramArrayOfByte);
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
         AppMethodBeat.o(95653);
         return;
@@ -247,7 +247,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.w
  * JD-Core Version:    0.7.0.1
  */

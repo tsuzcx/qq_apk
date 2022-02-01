@@ -5,18 +5,18 @@ import kotlin.g.a.a;
 import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
 final class a$a
   extends q
   implements a<Boolean>
 {
-  public static final a pfD;
+  public static final a shH;
   
   static
   {
-    AppMethodBeat.i(192282);
-    pfD = new a();
-    AppMethodBeat.o(192282);
+    AppMethodBeat.i(195700);
+    shH = new a();
+    AppMethodBeat.o(195700);
   }
   
   a$a()

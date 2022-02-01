@@ -1,19 +1,19 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cu;
+import com.tencent.mm.f.c.cx;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class bq
-  extends cu
+  extends cx
 {
   protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(225990);
+    AppMethodBeat.i(239411);
     IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
     localMAutoDBInfo.fields = new Field[3];
     localMAutoDBInfo.columns = new String[4];
@@ -33,28 +33,28 @@ public final class bq
     localMAutoDBInfo.columns[3] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
     info = localMAutoDBInfo;
-    AppMethodBeat.o(225990);
+    AppMethodBeat.o(239411);
   }
   
   public bq()
   {
-    AppMethodBeat.i(225989);
+    AppMethodBeat.i(239409);
     this.field_encryptUsername = "";
     this.field_username = "";
-    AppMethodBeat.o(225989);
+    AppMethodBeat.o(239409);
   }
   
   public bq(String paramString)
   {
     this();
-    AppMethodBeat.i(225988);
+    AppMethodBeat.i(239407);
     String str = paramString;
     if (paramString == null) {
       str = "";
     }
     this.field_encryptUsername = str;
     this.field_modifyTime = System.currentTimeMillis();
-    AppMethodBeat.o(225988);
+    AppMethodBeat.o(239407);
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
@@ -64,7 +64,7 @@ public final class bq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.bq
  * JD-Core Version:    0.7.0.1
  */

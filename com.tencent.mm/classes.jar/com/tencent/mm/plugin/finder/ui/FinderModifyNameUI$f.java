@@ -13,7 +13,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
 final class FinderModifyNameUI$f
   implements View.OnTouchListener
 {
@@ -21,23 +21,23 @@ final class FinderModifyNameUI$f
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(252541);
-    kotlin.g.b.p.g(paramMotionEvent, "event");
+    AppMethodBeat.i(275835);
+    kotlin.g.b.p.j(paramMotionEvent, "event");
     int j = paramMotionEvent.getAction();
     if (paramView == null)
     {
       paramView = new t("null cannot be cast to non-null type android.widget.TextView");
-      AppMethodBeat.o(252541);
+      AppMethodBeat.o(275835);
       throw paramView;
     }
     paramView = (TextView)paramView;
-    Spannable localSpannable = this.vJd;
+    Spannable localSpannable = this.Aqe;
     Object localObject1;
     int k;
     int i;
     if ((j == 1) || (j == 3))
     {
-      localObject1 = (ClickableSpan[])localSpannable.getSpans(0, this.vJd.length(), ClickableSpan.class);
+      localObject1 = (ClickableSpan[])localSpannable.getSpans(0, this.Aqe.length(), ClickableSpan.class);
       if (localObject1 != null)
       {
         k = localObject1.length;
@@ -48,7 +48,7 @@ final class FinderModifyNameUI$f
           if ((localObject2 instanceof com.tencent.mm.pluginsdk.ui.span.p))
           {
             ((com.tencent.mm.pluginsdk.ui.span.p)localObject2).setIsPressed(false);
-            this.vJe.invalidate();
+            this.Aqf.invalidate();
           }
           i += 1;
         }
@@ -75,8 +75,8 @@ final class FinderModifyNameUI$f
     }
     for (boolean bool = true;; bool = false)
     {
-      Log.i(FinderModifyNameUI.a(this.vMt), "touch " + paramMotionEvent.getX() + ", " + paramMotionEvent.getY() + ", ret:" + bool);
-      AppMethodBeat.o(252541);
+      Log.i(FinderModifyNameUI.a(this.Ati), "touch " + paramMotionEvent.getX() + ", " + paramMotionEvent.getY() + ", ret:" + bool);
+      AppMethodBeat.o(275835);
       return bool;
       if (j != 0) {
         break;
@@ -84,7 +84,7 @@ final class FinderModifyNameUI$f
       if ((localObject1 instanceof com.tencent.mm.pluginsdk.ui.span.p))
       {
         ((com.tencent.mm.pluginsdk.ui.span.p)localObject1).setIsPressed(true);
-        this.vJe.invalidate();
+        this.Aqf.invalidate();
       }
       Selection.setSelection(localSpannable, localSpannable.getSpanStart(localObject1), localSpannable.getSpanEnd(localObject1));
       break;
@@ -94,7 +94,7 @@ final class FinderModifyNameUI$f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderModifyNameUI.f
  * JD-Core Version:    0.7.0.1
  */

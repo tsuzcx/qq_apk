@@ -2,145 +2,247 @@ package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import g.a.a.b;
-import java.util.LinkedList;
 
 public final class aji
-  extends dpc
+  extends com.tencent.mm.cd.a
 {
-  public dpg LoD;
-  public ajj LsS;
+  public String ActivityID;
+  public String AesKey;
+  public String AttachedText;
+  public String AttachedTextColor;
+  public String DesignerID;
+  public String EmojiAttr;
+  public String EncryptUrl;
+  public String ExternMd5;
+  public String ExternUrl;
+  public String LensId;
+  public String Md5;
+  public String ProductID;
+  public String StN;
+  public String ThumbUrl;
+  public String Url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(214287);
+    AppMethodBeat.i(104759);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
+      if (this.Md5 == null)
       {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(214287);
+        paramVarArgs = new b("Not all required fields were included: Md5");
+        AppMethodBeat.o(104759);
         throw paramVarArgs;
       }
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.ni(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+      if (this.Md5 != null) {
+        paramVarArgs.f(1, this.Md5);
       }
-      if (this.LsS != null)
-      {
-        paramVarArgs.ni(2, this.LsS.computeSize());
-        this.LsS.writeFields(paramVarArgs);
+      if (this.Url != null) {
+        paramVarArgs.f(2, this.Url);
       }
-      if (this.LoD != null)
-      {
-        paramVarArgs.ni(100, this.LoD.computeSize());
-        this.LoD.writeFields(paramVarArgs);
+      if (this.ThumbUrl != null) {
+        paramVarArgs.f(3, this.ThumbUrl);
       }
-      AppMethodBeat.o(214287);
+      if (this.DesignerID != null) {
+        paramVarArgs.f(4, this.DesignerID);
+      }
+      if (this.EncryptUrl != null) {
+        paramVarArgs.f(5, this.EncryptUrl);
+      }
+      if (this.AesKey != null) {
+        paramVarArgs.f(6, this.AesKey);
+      }
+      if (this.ProductID != null) {
+        paramVarArgs.f(7, this.ProductID);
+      }
+      if (this.ExternUrl != null) {
+        paramVarArgs.f(8, this.ExternUrl);
+      }
+      if (this.ExternMd5 != null) {
+        paramVarArgs.f(9, this.ExternMd5);
+      }
+      if (this.ActivityID != null) {
+        paramVarArgs.f(10, this.ActivityID);
+      }
+      if (this.AttachedText != null) {
+        paramVarArgs.f(11, this.AttachedText);
+      }
+      if (this.AttachedTextColor != null) {
+        paramVarArgs.f(12, this.AttachedTextColor);
+      }
+      if (this.LensId != null) {
+        paramVarArgs.f(13, this.LensId);
+      }
+      if (this.EmojiAttr != null) {
+        paramVarArgs.f(14, this.EmojiAttr);
+      }
+      if (this.StN != null) {
+        paramVarArgs.f(15, this.StN);
+      }
+      AppMethodBeat.o(104759);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label678;
+      if (this.Md5 == null) {
+        break label1122;
       }
     }
-    label678:
-    for (int i = g.a.a.a.nh(1, this.BaseResponse.computeSize()) + 0;; i = 0)
+    label1122:
+    for (int i = g.a.a.b.b.a.g(1, this.Md5) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.LsS != null) {
-        paramInt = i + g.a.a.a.nh(2, this.LsS.computeSize());
+      if (this.Url != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.Url);
       }
       i = paramInt;
-      if (this.LoD != null) {
-        i = paramInt + g.a.a.a.nh(100, this.LoD.computeSize());
+      if (this.ThumbUrl != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.ThumbUrl);
       }
-      AppMethodBeat.o(214287);
+      paramInt = i;
+      if (this.DesignerID != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.DesignerID);
+      }
+      i = paramInt;
+      if (this.EncryptUrl != null) {
+        i = paramInt + g.a.a.b.b.a.g(5, this.EncryptUrl);
+      }
+      paramInt = i;
+      if (this.AesKey != null) {
+        paramInt = i + g.a.a.b.b.a.g(6, this.AesKey);
+      }
+      i = paramInt;
+      if (this.ProductID != null) {
+        i = paramInt + g.a.a.b.b.a.g(7, this.ProductID);
+      }
+      paramInt = i;
+      if (this.ExternUrl != null) {
+        paramInt = i + g.a.a.b.b.a.g(8, this.ExternUrl);
+      }
+      i = paramInt;
+      if (this.ExternMd5 != null) {
+        i = paramInt + g.a.a.b.b.a.g(9, this.ExternMd5);
+      }
+      paramInt = i;
+      if (this.ActivityID != null) {
+        paramInt = i + g.a.a.b.b.a.g(10, this.ActivityID);
+      }
+      i = paramInt;
+      if (this.AttachedText != null) {
+        i = paramInt + g.a.a.b.b.a.g(11, this.AttachedText);
+      }
+      paramInt = i;
+      if (this.AttachedTextColor != null) {
+        paramInt = i + g.a.a.b.b.a.g(12, this.AttachedTextColor);
+      }
+      i = paramInt;
+      if (this.LensId != null) {
+        i = paramInt + g.a.a.b.b.a.g(13, this.LensId);
+      }
+      paramInt = i;
+      if (this.EmojiAttr != null) {
+        paramInt = i + g.a.a.b.b.a.g(14, this.EmojiAttr);
+      }
+      i = paramInt;
+      if (this.StN != null) {
+        i = paramInt + g.a.a.b.b.a.g(15, this.StN);
+      }
+      AppMethodBeat.o(104759);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dpc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dpc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.BaseResponse == null)
+        if (this.Md5 == null)
         {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(214287);
+          paramVarArgs = new b("Not all required fields were included: Md5");
+          AppMethodBeat.o(104759);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(214287);
+        AppMethodBeat.o(104759);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         aji localaji = (aji)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(214287);
+          AppMethodBeat.o(104759);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localaji.BaseResponse = ((BaseResponse)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(214287);
+          localaji.Md5 = locala.abFh.readString();
+          AppMethodBeat.o(104759);
           return 0;
         case 2: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new ajj();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((ajj)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localaji.LsS = ((ajj)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(214287);
+          localaji.Url = locala.abFh.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 3: 
+          localaji.ThumbUrl = locala.abFh.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 4: 
+          localaji.DesignerID = locala.abFh.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 5: 
+          localaji.EncryptUrl = locala.abFh.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 6: 
+          localaji.AesKey = locala.abFh.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 7: 
+          localaji.ProductID = locala.abFh.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 8: 
+          localaji.ExternUrl = locala.abFh.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 9: 
+          localaji.ExternMd5 = locala.abFh.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 10: 
+          localaji.ActivityID = locala.abFh.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 11: 
+          localaji.AttachedText = locala.abFh.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 12: 
+          localaji.AttachedTextColor = locala.abFh.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 13: 
+          localaji.LensId = locala.abFh.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 14: 
+          localaji.EmojiAttr = locala.abFh.readString();
+          AppMethodBeat.o(104759);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new dpg();
-          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((dpg)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-          localaji.LoD = ((dpg)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(214287);
+        localaji.StN = locala.abFh.readString();
+        AppMethodBeat.o(104759);
         return 0;
       }
-      AppMethodBeat.o(214287);
+      AppMethodBeat.o(104759);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.aji
  * JD-Core Version:    0.7.0.1
  */

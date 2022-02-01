@@ -26,126 +26,114 @@ public final class l
   extends d
   implements g
 {
-  private final c SZH;
-  private final kotlin.l.b.a.b.e.b.h SZI;
-  private g.a TLU;
-  private final i TLa;
-  private final f TLb;
-  private Collection<? extends ag> TMF;
-  private aj TMG;
-  private aj TMH;
-  private aj TMI;
-  private final a.q TMJ;
-  private final j TcN;
-  private List<? extends as> TlE;
+  private final c aaCB;
+  private final kotlin.l.b.a.b.e.b.h aaCC;
+  private final j aaFH;
+  private List<? extends as> aaOy;
+  private final i abnD;
+  private final f abnE;
+  private g.a abow;
+  private Collection<? extends ag> abph;
+  private aj abpi;
+  private aj abpj;
+  private aj abpk;
+  private final a.q abpl;
   
   public l(j paramj, kotlin.l.b.a.b.b.l paraml, kotlin.l.b.a.b.b.a.g paramg, kotlin.l.b.a.b.f.f paramf, ba paramba, a.q paramq, c paramc, kotlin.l.b.a.b.e.b.h paramh, i parami, f paramf1)
   {
     super(paraml, paramg, paramf, localan, paramba);
     AppMethodBeat.i(60488);
-    this.TcN = paramj;
-    this.TMJ = paramq;
-    this.SZH = paramc;
-    this.SZI = paramh;
-    this.TLa = parami;
-    this.TLb = paramf1;
-    this.TLU = g.a.TMp;
+    this.aaFH = paramj;
+    this.abpl = paramq;
+    this.aaCB = paramc;
+    this.aaCC = paramh;
+    this.abnD = parami;
+    this.abnE = paramf1;
+    this.abow = g.a.aboR;
     AppMethodBeat.o(60488);
   }
   
   public final void a(List<? extends as> paramList, aj paramaj1, aj paramaj2, g.a parama)
   {
     AppMethodBeat.i(60483);
-    p.h(paramList, "declaredTypeParameters");
-    p.h(paramaj1, "underlyingType");
-    p.h(paramaj2, "expandedType");
-    p.h(parama, "isExperimentalCoroutineInReleaseEnvironment");
-    p.h(paramList, "declaredTypeParameters");
-    this.Tka = paramList;
-    this.TMG = paramaj1;
-    this.TMH = paramaj2;
-    this.TlE = kotlin.l.b.a.b.b.at.a(this);
+    p.k(paramList, "declaredTypeParameters");
+    p.k(paramaj1, "underlyingType");
+    p.k(paramaj2, "expandedType");
+    p.k(parama, "isExperimentalCoroutineInReleaseEnvironment");
+    lx(paramList);
+    this.abpi = paramaj1;
+    this.abpj = paramaj2;
+    this.aaOy = kotlin.l.b.a.b.b.at.a(this);
     paramaj1 = (kotlin.l.b.a.b.b.h)this;
-    paramList = hBx();
+    paramList = iFM();
     if (paramList != null)
     {
-      paramList = paramList.hAM();
+      paramList = paramList.iEZ();
       if (paramList != null) {}
     }
     else
     {
-      paramList = (kotlin.l.b.a.b.j.f.h)h.b.TKa;
+      paramList = (kotlin.l.b.a.b.j.f.h)h.b.abmC;
     }
     for (;;)
     {
       paramList = bc.a(paramaj1, paramList, (b)new d.a(this));
-      p.g(paramList, "TypeUtils.makeUnsubstitu…s)?.defaultType\n        }");
-      this.TMI = paramList;
-      this.TMF = hBR();
-      this.TLU = parama;
+      p.j(paramList, "TypeUtils.makeUnsubstitu…s)?.defaultType\n        }");
+      this.abpk = paramList;
+      this.abph = iGg();
+      this.abow = parama;
       AppMethodBeat.o(60483);
       return;
     }
   }
   
-  public final aj hAG()
+  public final aj iET()
   {
     AppMethodBeat.i(60485);
-    aj localaj = this.TMI;
+    aj localaj = this.abpk;
     if (localaj == null) {
-      p.btv("defaultTypeImpl");
+      p.bGy("defaultTypeImpl");
     }
     AppMethodBeat.o(60485);
     return localaj;
   }
   
-  public final j hAI()
+  public final j iEV()
   {
-    return this.TcN;
+    return this.aaFH;
   }
   
-  public final List<as> hBU()
-  {
-    AppMethodBeat.i(60487);
-    List localList = this.TlE;
-    if (localList == null) {
-      p.btv("typeConstructorParameters");
-    }
-    AppMethodBeat.o(60487);
-    return localList;
-  }
-  
-  public final aj hBv()
+  public final aj iFK()
   {
     AppMethodBeat.i(60481);
-    aj localaj = this.TMG;
+    aj localaj = this.abpi;
     if (localaj == null) {
-      p.btv("underlyingType");
+      p.bGy("underlyingType");
     }
     AppMethodBeat.o(60481);
     return localaj;
   }
   
-  public final aj hBw()
+  public final aj iFL()
   {
     AppMethodBeat.i(60482);
-    aj localaj = this.TMH;
+    aj localaj = this.abpj;
     if (localaj == null) {
-      p.btv("expandedType");
+      p.bGy("expandedType");
     }
     AppMethodBeat.o(60482);
     return localaj;
   }
   
-  public final e hBx()
+  public final e iFM()
   {
     AppMethodBeat.i(60484);
-    if (ad.ap((ab)hBw()))
+    if (ad.ap((ab)iFL()))
     {
       AppMethodBeat.o(60484);
       return null;
     }
-    kotlin.l.b.a.b.b.h localh = hBw().hKE().hzS();
+    kotlin.l.b.a.b.b.h localh = iFL().iOU().iEf();
     Object localObject = localh;
     if (!(localh instanceof e)) {
       localObject = null;
@@ -155,19 +143,30 @@ public final class l
     return localObject;
   }
   
-  public final c hLj()
+  public final List<as> iGj()
   {
-    return this.SZH;
+    AppMethodBeat.i(60487);
+    List localList = this.aaOy;
+    if (localList == null) {
+      p.bGy("typeConstructorParameters");
+    }
+    AppMethodBeat.o(60487);
+    return localList;
   }
   
-  public final kotlin.l.b.a.b.e.b.h hLk()
+  public final c iPB()
   {
-    return this.SZI;
+    return this.aaCB;
+  }
+  
+  public final kotlin.l.b.a.b.e.b.h iPC()
+  {
+    return this.aaCC;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.b.l
  * JD-Core Version:    0.7.0.1
  */

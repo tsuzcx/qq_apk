@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cm3" android:background="@drawable/yq" android:paddingTop="@dimen/bt" android:paddingBottom="@dimen/bt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/c5" android:paddingEnd="@dimen/c5"
+<com.tencent.mm.plugin.finder.view.FlowTextMixView android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cm3" android:background="@drawable/yq" android:paddingTop="@dimen/bt" android:paddingBottom="@dimen/bt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/c5" android:paddingEnd="@dimen/c5"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cm2" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:src="@raw/finder_live_icon" app:iconColor="@color/BW_0_Alpha_0_5" />
-    <TextView android:textSize="@dimen/bd" android:textStyle="bold" android:textColor="@color/FG_0" android:id="@id/cm4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="@string/cn9" android:includeFontPadding="false" />
+    <TextView android:textSize="@dimen/bd" android:textStyle="bold" android:textColor="@color/FG_0" android:id="@id/cm4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:maxWidth="@dimen/ca" android:text="@string/cn9" android:includeFontPadding="false" />
     <View android:id="@id/cm1" android:background="@color/BW_0_Alpha_0_1" android:layout_width="1.0dip" android:layout_height="@dimen/c5" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c5" />
-    <TextView android:textSize="@dimen/bd" android:textColor="@color/FG_1" android:id="@id/cm0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="@string/ckq" android:includeFontPadding="false" />
-</LinearLayout>
+    <TextView android:textSize="@dimen/bd" android:textColor="@color/FG_1" android:id="@id/cm0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:minWidth="@dimen/ci" android:text="@string/ckq" android:includeFontPadding="false" />
+</com.tencent.mm.plugin.finder.view.FlowTextMixView>

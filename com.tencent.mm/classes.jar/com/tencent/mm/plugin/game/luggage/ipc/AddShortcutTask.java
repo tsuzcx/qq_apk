@@ -15,7 +15,7 @@ public class AddShortcutTask
 {
   public static final Parcelable.Creator<AddShortcutTask> CREATOR;
   public String appId;
-  public Runnable lyv;
+  public Runnable otv;
   public boolean success;
   public String username;
   
@@ -35,7 +35,7 @@ public class AddShortcutTask
     AppMethodBeat.o(83037);
   }
   
-  public final void bjj()
+  public final void RW()
   {
     AppMethodBeat.i(83033);
     if ((Util.isNullOrNil(this.appId)) || (Util.isNullOrNil(this.username)))
@@ -47,7 +47,7 @@ public class AddShortcutTask
     }
     e.a(MMApplicationContext.getContext(), this.username, this.appId, new e.a()
     {
-      public final void pI(boolean paramAnonymousBoolean)
+      public final void sf(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(83031);
         AddShortcutTask.this.success = paramAnonymousBoolean;
@@ -58,11 +58,11 @@ public class AddShortcutTask
     AppMethodBeat.o(83033);
   }
   
-  public final void bjk()
+  public final void bsK()
   {
     AppMethodBeat.i(83034);
-    if (this.lyv != null) {
-      this.lyv.run();
+    if (this.otv != null) {
+      this.otv.run();
     }
     AppMethodBeat.o(83034);
   }

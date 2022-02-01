@@ -1,145 +1,112 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q.a;
-import com.tencent.mm.ak.q.b;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ctc;
-import com.tencent.mm.protocal.protobuf.dmf;
+import com.tencent.mm.protocal.protobuf.dvv;
+import com.tencent.mm.protocal.protobuf.dvw;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
 
 public final class o
-  extends p
-  implements m, e
+  extends q
+  implements m, f
 {
-  private final s iMO;
-  private boolean sPX;
-  private String sQb;
+  private i callback;
+  private d rr;
+  private boolean wvU;
+  private String wvY;
   
   public o(long paramLong, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(103613);
-    this.sPX = false;
-    this.sQb = "";
-    this.iMO = new f();
-    j.a locala = (j.a)this.iMO.getReqObj();
-    locala.sPJ.LSY = p.sQc;
-    locala.sPJ.LTb = paramLong;
-    locala.sPJ.MPK = paramString1;
-    locala.sPJ.MPL = paramString2;
-    AppMethodBeat.o(103613);
+    AppMethodBeat.i(103610);
+    this.wvU = false;
+    this.wvY = null;
+    Object localObject = new d.a();
+    ((d.a)localObject).lBU = new dvv();
+    ((d.a)localObject).lBV = new dvw();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/registerface";
+    ((d.a)localObject).funcId = getType();
+    ((d.a)localObject).lBW = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (dvv)d.b.b(this.rr.lBR);
+    ((dvv)localObject).TbM = paramLong;
+    ((dvv)localObject).UbO = paramString1;
+    ((dvv)localObject).UbP = paramString2;
+    AppMethodBeat.o(103610);
   }
   
-  final void ary(String paramString)
-  {
-    AppMethodBeat.i(103616);
-    ((j.a)this.iMO.getReqObj()).sPJ.LSY = paramString;
-    AppMethodBeat.o(103616);
-  }
-  
-  public final void c(int paramInt1, int paramInt2, String paramString, s params)
-  {
-    boolean bool2 = true;
-    AppMethodBeat.i(103615);
-    Log.d("MicroMsg.NetSceneFaceRegFaceRsa", "hy: onGYNetEnd  errType:" + paramInt1 + " errCode:" + paramInt2);
-    params = (j.b)params.getRespObj();
-    boolean bool1;
-    int i;
-    if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      if (params.sPK.MPN == 0)
-      {
-        bool1 = true;
-        this.sPX = bool1;
-        this.sQb = params.sPK.MPM;
-        i = params.sPK.MPN;
-        boolean bool3 = this.sPX;
-        paramInt2 = params.sPK.MPN;
-        if (Util.isNullOrNil(this.sQb)) {
-          break label189;
-        }
-        bool1 = bool2;
-        label129:
-        Log.i("MicroMsg.NetSceneFaceRegFaceRsa", "hy: is verify ok: %b, youtuRet; %d, has random pwd: %b", new Object[] { Boolean.valueOf(bool3), Integer.valueOf(paramInt2), Boolean.valueOf(bool1) });
-      }
-    }
-    for (;;)
-    {
-      this.callback.onSceneEnd(paramInt1, i, paramString, this);
-      AppMethodBeat.o(103615);
-      return;
-      bool1 = false;
-      break;
-      label189:
-      bool1 = false;
-      break label129;
-      i = paramInt2;
-      if (params != null)
-      {
-        i = paramInt2;
-        if (params.sPK != null)
-        {
-          i = paramInt2;
-          if (params.sPK.MPN != 0)
-          {
-            Log.i("MicroMsg.NetSceneFaceRegFaceRsa", "hy: has detail ret. use");
-            i = params.sPK.MPN;
-          }
-        }
-      }
-    }
-  }
-  
-  public final boolean cSO()
+  public final boolean dhS()
   {
     return true;
   }
   
-  public final String cSP()
+  public final String dhT()
   {
-    return this.sQb;
+    return this.wvY;
   }
   
-  final int f(g paramg)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(103614);
-    this.iMO.getReqObj();
-    int i = dispatch(paramg, this.iMO, this);
-    AppMethodBeat.o(103614);
+    AppMethodBeat.i(103611);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(103611);
     return i;
-  }
-  
-  protected final ctc f(s params)
-  {
-    AppMethodBeat.i(103617);
-    params = ((j.b)params.getRespObj()).sPK.LTd;
-    AppMethodBeat.o(103617);
-    return params;
   }
   
   public final int getType()
   {
-    return 930;
+    return 918;
   }
   
-  public final int securityLimitCount()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    return 3;
+    AppMethodBeat.i(103612);
+    params = (dvw)d.c.b(((d)params).lBS);
+    boolean bool;
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      if (params.UbR == 0)
+      {
+        bool = true;
+        this.wvU = bool;
+        this.wvY = params.UbQ;
+        paramInt1 = params.UbR;
+        Log.i("MicroMsg.NetSceneFaceRegFace", "hy: is Verified: %b", new Object[] { Boolean.valueOf(this.wvU) });
+      }
+    }
+    for (;;)
+    {
+      if (this.callback != null) {
+        this.callback.onSceneEnd(paramInt2, paramInt1, paramString, this);
+      }
+      AppMethodBeat.o(103612);
+      return;
+      bool = false;
+      break;
+      paramInt1 = paramInt3;
+      if (params != null)
+      {
+        paramInt1 = paramInt3;
+        if (params.UbR != 0)
+        {
+          Log.i("MicroMsg.NetSceneFaceRegFace", "hy: has detail ret. use");
+          paramInt1 = params.UbR;
+        }
+      }
+    }
   }
-  
-  public final q.b securityVerificationChecked(s params)
-  {
-    return q.b.iMq;
-  }
-  
-  public final void setSecurityCheckError(q.a parama) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.b.o
  * JD-Core Version:    0.7.0.1
  */

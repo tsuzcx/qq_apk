@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.finder.ui;
 
 import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderWxMsgUIC;
+import com.tencent.mm.plugin.finder.viewmodel.component.at;
 import com.tencent.mm.ui.component.UIComponent;
 import java.util.HashMap;
 import java.util.Set;
 import kotlin.a.ak;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderWxMsgUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "getCommentScene", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderWxMsgUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "getCommentScene", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "plugin-finder_release"})
 public final class FinderWxMsgUI
   extends MMFinderUI
 {
@@ -27,16 +27,16 @@ public final class FinderWxMsgUI
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(252803);
+    AppMethodBeat.i(287381);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(252803);
+    AppMethodBeat.o(287381);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(252802);
+    AppMethodBeat.i(287380);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -47,7 +47,7 @@ public final class FinderWxMsgUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(252802);
+    AppMethodBeat.o(287380);
     return localView1;
   }
   
@@ -58,9 +58,9 @@ public final class FinderWxMsgUI
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(252801);
-    Set localSet = ak.setOf(FinderWxMsgUIC.class);
-    AppMethodBeat.o(252801);
+    AppMethodBeat.i(287379);
+    Set localSet = ak.setOf(at.class);
+    AppMethodBeat.o(287379);
     return localSet;
   }
   

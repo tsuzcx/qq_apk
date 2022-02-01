@@ -11,7 +11,7 @@ public class BroadcastHelper
   public static void setIntentPackageName(Intent paramIntent)
   {
     AppMethodBeat.i(156176);
-    if (d.oD(26)) {
+    if (d.qV(26)) {
       paramIntent.setPackage(MMApplicationContext.getPackageName());
     }
     AppMethodBeat.o(156176);

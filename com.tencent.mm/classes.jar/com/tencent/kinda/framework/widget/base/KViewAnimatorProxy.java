@@ -2,18 +2,22 @@ package com.tencent.kinda.framework.widget.base;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import com.tencent.kinda.framework.animate.KindaGlobalAnimator;
 import com.tencent.kinda.framework.widget.tools.ColorUtil;
 import com.tencent.kinda.gen.Align;
 import com.tencent.kinda.gen.DynamicColor;
 import com.tencent.kinda.gen.IUIPagePlatformDelegate;
 import com.tencent.kinda.gen.KPoint;
+import com.tencent.kinda.gen.KRect;
 import com.tencent.kinda.gen.KView;
 import com.tencent.kinda.gen.KViewOnClickCallback;
 import com.tencent.kinda.gen.KViewOnLongClickCallback;
 import com.tencent.kinda.gen.KViewOnTouchCallback;
 import com.tencent.kinda.gen.PositionType;
 import com.tencent.kinda.gen.Visible;
+import com.tencent.kinda.gen.VoidCallback;
+import com.tencent.kinda.gen.VoidKRectCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 
@@ -171,9 +175,9 @@ public class KViewAnimatorProxy
   
   public float getMarginBottom()
   {
-    AppMethodBeat.i(214466);
+    AppMethodBeat.i(263352);
     float f = this.mKView.getMarginBottom();
-    AppMethodBeat.o(214466);
+    AppMethodBeat.o(263352);
     return f;
   }
   
@@ -197,9 +201,9 @@ public class KViewAnimatorProxy
   
   public float getMarginRight()
   {
-    AppMethodBeat.i(214464);
+    AppMethodBeat.i(263350);
     float f = this.mKView.getMarginRight();
-    AppMethodBeat.o(214464);
+    AppMethodBeat.o(263350);
     return f;
   }
   
@@ -210,9 +214,9 @@ public class KViewAnimatorProxy
   
   public float getMarginTop()
   {
-    AppMethodBeat.i(214462);
+    AppMethodBeat.i(263348);
     float f = this.mKView.getMarginTop();
-    AppMethodBeat.o(214462);
+    AppMethodBeat.o(263348);
     return f;
   }
   
@@ -311,6 +315,11 @@ public class KViewAnimatorProxy
     return 0.0F;
   }
   
+  public boolean getSecure()
+  {
+    return false;
+  }
+  
   public DynamicColor getShadowColor()
   {
     return null;
@@ -380,6 +389,8 @@ public class KViewAnimatorProxy
   
   public void removeBlurEffect() {}
   
+  public void requestFrameImpl(VoidKRectCallback paramVoidKRectCallback) {}
+  
   public void requestLayout() {}
   
   public void setAccessibilityString(String paramString) {}
@@ -403,7 +414,18 @@ public class KViewAnimatorProxy
   {
     AppMethodBeat.i(18815);
     paramDynamicColor = ValueAnimator.ofFloat(new float[] { (float)ColorUtil.getColorByMode(this.mKView.getBackgroundColor()), (float)ColorUtil.getColorByMode(paramDynamicColor) });
-    paramDynamicColor.addUpdateListener(new KViewAnimatorProxy.1(this));
+    paramDynamicColor.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    {
+      public void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+      {
+        AppMethodBeat.i(18808);
+        float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
+        paramAnonymousValueAnimator = new DynamicColor(f, 0L);
+        KViewAnimatorProxy.this.mKView.setBackgroundColor(paramAnonymousValueAnimator);
+        Log.d("base_MMKView", "已经给背景颜色设置动画KView：" + KViewAnimatorProxy.this.mKView + "，value：" + Long.toHexString(ColorUtil.absColor(f)));
+        AppMethodBeat.o(18808);
+      }
+    });
     KindaGlobalAnimator.addAnimator(paramDynamicColor);
     AppMethodBeat.o(18815);
   }
@@ -441,6 +463,8 @@ public class KViewAnimatorProxy
   
   public void setFlexShrink(float paramFloat) {}
   
+  public void setFrameImpl(KRect paramKRect, VoidCallback paramVoidCallback) {}
+  
   public void setHeight(float paramFloat)
   {
     AppMethodBeat.i(18810);
@@ -467,11 +491,11 @@ public class KViewAnimatorProxy
   
   public void setMarginBottom(float paramFloat)
   {
-    AppMethodBeat.i(214465);
+    AppMethodBeat.i(263351);
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.mKView, "marginBottom", new float[] { this.mKView.getMarginBottom(), paramFloat });
     localObjectAnimator.setDuration(KindaGlobalAnimator.animateDuration());
     KindaGlobalAnimator.addAnimator(localObjectAnimator);
-    AppMethodBeat.o(214465);
+    AppMethodBeat.o(263351);
   }
   
   public void setMarginBottomPercent(float paramFloat) {}
@@ -489,22 +513,22 @@ public class KViewAnimatorProxy
   
   public void setMarginRight(float paramFloat)
   {
-    AppMethodBeat.i(214463);
+    AppMethodBeat.i(263349);
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.mKView, "marginRight", new float[] { this.mKView.getMarginRight(), paramFloat });
     localObjectAnimator.setDuration(KindaGlobalAnimator.animateDuration());
     KindaGlobalAnimator.addAnimator(localObjectAnimator);
-    AppMethodBeat.o(214463);
+    AppMethodBeat.o(263349);
   }
   
   public void setMarginRightPercent(float paramFloat) {}
   
   public void setMarginTop(float paramFloat)
   {
-    AppMethodBeat.i(214461);
+    AppMethodBeat.i(263347);
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.mKView, "marginTop", new float[] { this.mKView.getMarginTop(), paramFloat });
     localObjectAnimator.setDuration(KindaGlobalAnimator.animateDuration());
     KindaGlobalAnimator.addAnimator(localObjectAnimator);
-    AppMethodBeat.o(214461);
+    AppMethodBeat.o(263347);
   }
   
   public void setMarginTopPercent(float paramFloat) {}
@@ -581,6 +605,8 @@ public class KViewAnimatorProxy
     AppMethodBeat.o(18821);
   }
   
+  public void setSecure(boolean paramBoolean) {}
+  
   public void setShadowColor(DynamicColor paramDynamicColor) {}
   
   public void setShadowOffset(float paramFloat) {}
@@ -637,7 +663,7 @@ public class KViewAnimatorProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KViewAnimatorProxy
  * JD-Core Version:    0.7.0.1
  */

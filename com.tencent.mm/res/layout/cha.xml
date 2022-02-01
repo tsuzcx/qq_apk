@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.hld.keyboard.S9ExceptionSoundKeyboard android:orientation="vertical" android:id="@id/h8v" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="@dimen/aup"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/cb">
+        <RelativeLayout android:id="@id/xt" android:layout_width="@dimen/cn" android:layout_height="@dimen/ce">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="10.0dip" android:layout_height="20.0dip" android:src="@raw/icons_filled_back" android:layout_centerVertical="true" android:layout_marginStart="15.0dip" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/avg" android:textColor="@color/ahz" android:id="@id/ir3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jjr" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ce">
+        <RelativeLayout android:id="@id/kav" android:background="@color/w0" android:layout_width="fill_parent" android:layout_height="@dimen/cp" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb">
+            <com.tencent.mm.plugin.hld.view.ImeCheckBox android:id="@id/kau" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/cb" android:paddingEnd="@dimen/cb" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="bottom|center" android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/aaq" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/ce">
+        <Button android:textSize="@dimen/t" android:textStyle="bold" android:layout_gravity="center_horizontal" android:id="@id/k5a" android:layout_width="@dimen/c1" android:layout_height="@dimen/cl" android:text="@string/jjb" style="@style/ou" />
+    </LinearLayout>
+</com.tencent.mm.plugin.hld.keyboard.S9ExceptionSoundKeyboard>

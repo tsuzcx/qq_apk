@@ -5,6 +5,7 @@ import android.view.Surface;
 import com.tencent.tav.core.ExportConfig;
 import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMSampleBuffer;
+import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.TextureInfo;
 import com.tencent.tav.decoder.muxer.IMediaMuxer;
 
@@ -21,13 +22,13 @@ public abstract interface AssetWriterVideoEncoder
   
   public abstract CGSize getEncodeSize();
   
-  public abstract void inputVideoTexture(TextureInfo paramTextureInfo);
-  
   public abstract boolean isEncodeToEndOfStream();
   
   public abstract boolean isNeedVideoOutputTexture();
   
   public abstract boolean prepare(ExportConfig paramExportConfig, MediaFormat paramMediaFormat);
+  
+  public abstract void processVideoTexture(TextureInfo paramTextureInfo, CMTime paramCMTime);
   
   public abstract void release();
   
@@ -45,7 +46,7 @@ public abstract interface AssetWriterVideoEncoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.decoder.AssetWriterVideoEncoder
  * JD-Core Version:    0.7.0.1
  */

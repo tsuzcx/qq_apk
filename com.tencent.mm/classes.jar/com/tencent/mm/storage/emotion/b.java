@@ -29,9 +29,9 @@ public final class b
   public final void a(bg parambg)
   {
     AppMethodBeat.i(183927);
-    Object localObject = parambg.gWW;
+    Object localObject = parambg.jHU;
     this.db.delete("EmojiDesignerProduct", "designerUin=? ", new String[] { localObject });
-    parambg = parambg.LGy.iterator();
+    parambg = parambg.ziJ.iterator();
     while (parambg.hasNext())
     {
       localObject = (a)parambg.next();
@@ -41,7 +41,7 @@ public final class b
   }
   
   /* Error */
-  public final bg akn(int paramInt)
+  public final bg asK(int paramInt)
   {
     // Byte code:
     //   0: ldc 111
@@ -52,7 +52,7 @@ public final class b
     //   12: astore 4
     //   14: aload 4
     //   16: iload_1
-    //   17: putfield 58	com/tencent/mm/storage/bg:gWW	I
+    //   17: putfield 58	com/tencent/mm/storage/bg:jHU	I
     //   20: aload_0
     //   21: getfield 45	com/tencent/mm/storage/emotion/b:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
     //   24: ldc 28
@@ -84,7 +84,7 @@ public final class b
     //   79: aload 5
     //   81: invokevirtual 135	com/tencent/mm/storage/emotion/a:convertFrom	(Landroid/database/Cursor;)V
     //   84: aload 4
-    //   86: getfield 78	com/tencent/mm/storage/bg:LGy	Ljava/util/LinkedList;
+    //   86: getfield 78	com/tencent/mm/storage/bg:ziJ	Ljava/util/LinkedList;
     //   89: aload_2
     //   90: invokevirtual 139	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   93: pop
@@ -162,7 +162,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.b
  * JD-Core Version:    0.7.0.1
  */

@@ -7,18 +7,18 @@ import org.json.JSONObject;
 
 final class n
 {
-  private o csD;
-  private MMHandler csE;
+  private o cqI;
+  private MMHandler cqJ;
   
   n(o paramo)
   {
     AppMethodBeat.i(140332);
-    this.csD = paramo;
-    this.csE = new MMHandler("Js2JavaAsyncHandler_" + this.csD.hashCode());
+    this.cqI = paramo;
+    this.cqJ = new MMHandler("Js2JavaAsyncHandler_" + this.cqI.hashCode());
     AppMethodBeat.o(140332);
   }
   
-  private static m cM(String paramString)
+  private static m dg(String paramString)
   {
     AppMethodBeat.i(140335);
     try
@@ -35,21 +35,21 @@ final class n
     return null;
   }
   
-  final String i(final String paramString, boolean paramBoolean)
+  final String j(final String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(140333);
     if (paramBoolean)
     {
-      paramString = j(paramString, true);
+      paramString = k(paramString, true);
       AppMethodBeat.o(140333);
       return paramString;
     }
-    this.csE.post(new Runnable()
+    this.cqJ.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(140330);
-        n.this.j(paramString, false);
+        n.this.k(paramString, false);
         AppMethodBeat.o(140330);
       }
     });
@@ -57,25 +57,25 @@ final class n
     return "";
   }
   
-  final String j(String paramString, boolean paramBoolean)
+  final String k(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(140334);
-    Object localObject = cM(paramString);
+    Object localObject = dg(paramString);
     if (localObject == null)
     {
       AppMethodBeat.o(140334);
       return "";
     }
-    Log.i("Js2JavaMessageQueue", "processImpl, jsMsg.type = %s", new Object[] { ((m)localObject).KW().name() });
+    Log.i("Js2JavaMessageQueue", "processImpl, jsMsg.type = %s", new Object[] { ((m)localObject).NM().name() });
     paramString = null;
-    switch (2.csG[localObject.KW().ordinal()])
+    switch (2.cqL[localObject.NM().ordinal()])
     {
     default: 
       if (paramString != null) {
         break;
       }
     }
-    for (localObject = "null";; localObject = paramString.KW().name())
+    for (localObject = "null";; localObject = paramString.NM().name())
     {
       Log.v("Js2JavaMessageQueue", "processImpl, javaMsg.type = %s", new Object[] { localObject });
       if (paramString != null) {
@@ -83,13 +83,13 @@ final class n
       }
       AppMethodBeat.o(140334);
       return "";
-      this.csD.csJ.KY();
+      this.cqI.cqO.NO();
       break;
-      paramString = this.csD.a((m)localObject, paramBoolean);
+      paramString = this.cqI.a((m)localObject, paramBoolean);
       break;
-      this.csD.a((m)localObject);
+      this.cqI.a((m)localObject);
       break;
-      this.csD.b((m)localObject);
+      this.cqI.b((m)localObject);
       break;
     }
     label181:

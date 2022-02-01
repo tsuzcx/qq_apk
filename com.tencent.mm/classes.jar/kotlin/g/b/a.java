@@ -5,23 +5,23 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/jvm/internal/ArrayIterator;", "T", "", "array", "", "([Ljava/lang/Object;)V", "getArray", "()[Ljava/lang/Object;", "[Ljava/lang/Object;", "index", "", "hasNext", "", "next", "()Ljava/lang/Object;", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/jvm/internal/ArrayIterator;", "T", "", "array", "", "([Ljava/lang/Object;)V", "getArray", "()[Ljava/lang/Object;", "[Ljava/lang/Object;", "index", "", "hasNext", "", "next", "()Ljava/lang/Object;", "kotlin-stdlib"})
 final class a<T>
   implements Iterator<T>, kotlin.g.b.a.a
 {
-  private final T[] SYh;
+  private final T[] aaAT;
   private int index;
   
   public a(T[] paramArrayOfT)
   {
     AppMethodBeat.i(129329);
-    this.SYh = paramArrayOfT;
+    this.aaAT = paramArrayOfT;
     AppMethodBeat.o(129329);
   }
   
   public final boolean hasNext()
   {
-    return this.index < this.SYh.length;
+    return this.index < this.aaAT.length;
   }
   
   public final T next()
@@ -29,7 +29,7 @@ final class a<T>
     AppMethodBeat.i(129328);
     try
     {
-      Object localObject = this.SYh;
+      Object localObject = this.aaAT;
       int i = this.index;
       this.index = (i + 1);
       localObject = localObject[i];

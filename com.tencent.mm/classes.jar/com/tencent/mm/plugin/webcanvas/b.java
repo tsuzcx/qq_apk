@@ -2,1016 +2,995 @@ package com.tencent.mm.plugin.webcanvas;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.g.b.z.d;
 import kotlin.l;
 import kotlin.n.n;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasHttpImageStreamFetcher;", "Lcom/github/henryye/nativeiv/stream/IImageStreamFetcher;", "()V", "connectionTimeoutMs", "", "readTimeoutMs", "accept", "", "obj", "", "fetch", "Lcom/github/henryye/nativeiv/stream/IImageStreamFetcher$StreamFetchResult;", "config", "Lcom/github/henryye/nativeiv/ImageDecodeConfig;", "getSourceTypeName", "", "toFileName", "Companion", "webview-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasHttpImageStreamFetcher;", "Lcom/github/henryye/nativeiv/stream/IImageStreamFetcher;", "()V", "connectionTimeoutMs", "", "readTimeoutMs", "accept", "", "obj", "", "fetch", "Lcom/github/henryye/nativeiv/stream/IImageStreamFetcher$StreamFetchResult;", "config", "Lcom/github/henryye/nativeiv/ImageDecodeConfig;", "getSourceTypeName", "", "toFileName", "Companion", "webview-sdk_release"})
 public final class b
   implements com.github.henryye.nativeiv.b.b
 {
-  public static final a IzB;
-  private int bbs = 30000;
-  private int bbt = 30000;
+  public static final b.a PtF;
+  private int aKQ = 30000;
+  private int aKR = 30000;
   
   static
   {
-    AppMethodBeat.i(224619);
-    IzB = new a((byte)0);
-    AppMethodBeat.o(224619);
+    AppMethodBeat.i(205673);
+    PtF = new b.a((byte)0);
+    AppMethodBeat.o(205673);
+  }
+  
+  public final boolean V(Object paramObject)
+  {
+    AppMethodBeat.i(205666);
+    p.k(paramObject, "obj");
+    if (((paramObject instanceof String)) && ((n.M((String)paramObject, "http://", false)) || (n.M((String)paramObject, "https://", false))))
+    {
+      AppMethodBeat.o(205666);
+      return true;
+    }
+    AppMethodBeat.o(205666);
+    return false;
   }
   
   /* Error */
   public final com.github.henryye.nativeiv.b.b.a a(Object paramObject, com.github.henryye.nativeiv.ImageDecodeConfig paramImageDecodeConfig)
   {
     // Byte code:
-    //   0: ldc 67
-    //   2: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 87
+    //   2: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
-    //   6: ldc 68
-    //   8: invokestatic 74	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   6: ldc 64
+    //   8: invokestatic 70	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
     //   11: aload_2
-    //   12: ldc 75
-    //   14: invokestatic 74	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   12: ldc 88
+    //   14: invokestatic 70	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
     //   17: aload_1
-    //   18: checkcast 77	java/lang/String
+    //   18: checkcast 72	java/lang/String
     //   21: astore 7
-    //   23: new 79	com/github/henryye/nativeiv/b/b$a
+    //   23: new 90	com/github/henryye/nativeiv/b/b$a
     //   26: dup
-    //   27: invokespecial 80	com/github/henryye/nativeiv/b/b$a:<init>	()V
+    //   27: invokespecial 91	com/github/henryye/nativeiv/b/b$a:<init>	()V
     //   30: astore 16
-    //   32: new 82	java/lang/StringBuilder
+    //   32: new 93	java/lang/StringBuilder
     //   35: dup
-    //   36: invokespecial 83	java/lang/StringBuilder:<init>	()V
+    //   36: invokespecial 94	java/lang/StringBuilder:<init>	()V
     //   39: astore_2
-    //   40: getstatic 89	com/tencent/mm/plugin/webcanvas/m:IAG	Lcom/tencent/mm/plugin/webcanvas/m;
+    //   40: getstatic 100	com/tencent/mm/plugin/webcanvas/m:PuL	Lcom/tencent/mm/plugin/webcanvas/m;
     //   43: astore 6
     //   45: aload_2
-    //   46: invokestatic 93	com/tencent/mm/plugin/webcanvas/m:fWH	()Ljava/lang/String;
-    //   49: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   52: ldc 99
-    //   54: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   46: invokestatic 104	com/tencent/mm/plugin/webcanvas/m:gPp	()Ljava/lang/String;
+    //   49: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: ldc 110
+    //   54: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   57: aload 7
-    //   59: invokestatic 105	com/tencent/mm/sdk/platformtools/MD5Util:getMD5String	(Ljava/lang/String;)Ljava/lang/String;
-    //   62: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   65: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   59: invokestatic 116	com/tencent/mm/sdk/platformtools/MD5Util:getMD5String	(Ljava/lang/String;)Ljava/lang/String;
+    //   62: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   65: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   68: astore 17
     //   70: aload 17
-    //   72: invokestatic 114	com/tencent/mm/vfs/s:YS	(Ljava/lang/String;)Z
+    //   72: invokestatic 125	com/tencent/mm/vfs/u:agG	(Ljava/lang/String;)Z
     //   75: istore 5
-    //   77: ldc 116
-    //   79: new 82	java/lang/StringBuilder
+    //   77: ldc 127
+    //   79: new 93	java/lang/StringBuilder
     //   82: dup
-    //   83: ldc 118
-    //   85: invokespecial 121	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   83: ldc 129
+    //   85: invokespecial 132	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   88: aload_1
-    //   89: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   89: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   92: bipush 32
-    //   94: invokevirtual 127	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   94: invokevirtual 138	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   97: aload 17
-    //   99: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   102: ldc 129
-    //   104: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   99: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   102: ldc 140
+    //   104: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   107: iload 5
-    //   109: invokevirtual 132	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   112: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   115: invokestatic 137	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   109: invokevirtual 143	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   112: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   115: invokestatic 148	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   118: iload 5
-    //   120: ifeq +108 -> 228
-    //   123: ldc 116
-    //   125: ldc 139
-    //   127: invokestatic 142	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   120: ifeq +109 -> 229
+    //   123: ldc 127
+    //   125: ldc 150
+    //   127: invokestatic 153	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   130: aload 16
-    //   132: new 144	java/io/BufferedInputStream
+    //   132: new 155	java/io/BufferedInputStream
     //   135: dup
     //   136: aload 17
-    //   138: invokestatic 148	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   141: invokespecial 151	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   144: checkcast 153	java/io/InputStream
-    //   147: putfield 157	com/github/henryye/nativeiv/b/b$a:inputStream	Ljava/io/InputStream;
-    //   150: ldc 67
-    //   152: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   138: invokestatic 159	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   141: invokespecial 162	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   144: checkcast 164	java/io/InputStream
+    //   147: putfield 168	com/github/henryye/nativeiv/b/b$a:aFw	Ljava/io/InputStream;
+    //   150: ldc 87
+    //   152: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   155: aload 16
     //   157: areturn
     //   158: astore_1
-    //   159: ldc 116
+    //   159: ldc 127
     //   161: aload_1
-    //   162: checkcast 159	java/lang/Throwable
-    //   165: ldc 160
+    //   162: checkcast 170	java/lang/Throwable
+    //   165: ldc 171
     //   167: iconst_0
     //   168: anewarray 4	java/lang/Object
-    //   171: invokestatic 164	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   174: getstatic 170	kotlin/g/b/ae:SYK	Lkotlin/g/b/ae;
+    //   171: invokestatic 175	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   174: getstatic 181	kotlin/g/b/af:aaBG	Lkotlin/g/b/af;
     //   177: astore_2
-    //   178: invokestatic 176	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
-    //   181: ldc 177
-    //   183: invokevirtual 183	android/content/Context:getString	(I)Ljava/lang/String;
-    //   186: astore_2
-    //   187: aload_2
-    //   188: ldc 185
-    //   190: invokestatic 188	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   193: aload_2
-    //   194: iconst_1
-    //   195: anewarray 4	java/lang/Object
-    //   198: dup
-    //   199: iconst_0
-    //   200: aload_1
-    //   201: invokevirtual 189	java/lang/Exception:toString	()Ljava/lang/String;
-    //   204: aastore
-    //   205: iconst_1
-    //   206: invokestatic 195	java/util/Arrays:copyOf	([Ljava/lang/Object;I)[Ljava/lang/Object;
-    //   209: invokestatic 199	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   212: astore_1
-    //   213: aload_1
-    //   214: ldc 201
-    //   216: invokestatic 188	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   219: aload 16
-    //   221: aload_1
-    //   222: putfield 205	com/github/henryye/nativeiv/b/b$a:errorMsg	Ljava/lang/String;
-    //   225: goto -75 -> 150
-    //   228: new 207	kotlin/g/b/z$d
-    //   231: dup
-    //   232: invokespecial 208	kotlin/g/b/z$d:<init>	()V
-    //   235: astore 18
-    //   237: aload 18
-    //   239: iconst_0
-    //   240: putfield 211	kotlin/g/b/z$d:SYE	I
-    //   243: aconst_null
-    //   244: astore 6
-    //   246: aconst_null
-    //   247: astore_2
-    //   248: aconst_null
-    //   249: astore_1
-    //   250: ldc 213
-    //   252: invokestatic 219	com/tencent/mm/kernel/g:af	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
-    //   255: checkcast 213	com/tencent/mm/plugin/expt/b/b
-    //   258: getstatic 225	com/tencent/mm/plugin/expt/b/b$a:skc	Lcom/tencent/mm/plugin/expt/b/b$a;
-    //   261: iconst_0
-    //   262: invokeinterface 228 3 0
-    //   267: istore 5
-    //   269: new 11	com/tencent/mm/plugin/webcanvas/b$b
-    //   272: dup
-    //   273: aload 18
-    //   275: invokespecial 231	com/tencent/mm/plugin/webcanvas/b$b:<init>	(Lkotlin/g/b/z$d;)V
-    //   278: astore 19
-    //   280: iconst_0
-    //   281: istore_3
-    //   282: iload_3
-    //   283: ifne +1302 -> 1585
-    //   286: iload 5
-    //   288: ifeq +104 -> 392
-    //   291: aload_1
-    //   292: astore 12
-    //   294: aload_2
-    //   295: astore 13
-    //   297: aload 6
-    //   299: astore 14
-    //   301: aload 7
-    //   303: astore 15
-    //   305: aload_1
-    //   306: astore 8
-    //   308: aload_2
-    //   309: astore 9
-    //   311: aload 6
-    //   313: astore 10
-    //   315: aload 7
-    //   317: invokestatic 237	com/tencent/mm/network/d:RQ	(Ljava/lang/String;)Lcom/tencent/mm/network/z;
-    //   320: checkcast 239	com/tencent/mm/network/y
-    //   323: astore_1
-    //   324: aload_1
-    //   325: checkcast 241	com/tencent/mm/network/z
-    //   328: invokevirtual 244	com/tencent/mm/network/z:bjU	()V
-    //   331: aload_1
-    //   332: ifnonnull +96 -> 428
-    //   335: aload_1
-    //   336: astore 12
-    //   338: aload_2
-    //   339: astore 13
-    //   341: aload 6
-    //   343: astore 14
-    //   345: aload 7
-    //   347: astore 15
-    //   349: aload_1
-    //   350: astore 8
-    //   352: aload_2
-    //   353: astore 9
-    //   355: aload 6
-    //   357: astore 10
-    //   359: aload 16
-    //   361: ldc 246
-    //   363: putfield 205	com/github/henryye/nativeiv/b/b$a:errorMsg	Ljava/lang/String;
-    //   366: aload_2
-    //   367: ifnull +7 -> 374
-    //   370: aload_2
-    //   371: invokevirtual 251	java/io/OutputStream:close	()V
-    //   374: aload 6
-    //   376: ifnull +8 -> 384
-    //   379: aload 6
-    //   381: invokevirtual 252	java/io/InputStream:close	()V
-    //   384: ldc 67
-    //   386: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   389: aload 16
-    //   391: areturn
-    //   392: aload_1
-    //   393: astore 12
-    //   395: aload_2
-    //   396: astore 13
-    //   398: aload 6
-    //   400: astore 14
-    //   402: aload 7
-    //   404: astore 15
-    //   406: aload_1
-    //   407: astore 8
-    //   409: aload_2
-    //   410: astore 9
-    //   412: aload 6
-    //   414: astore 10
-    //   416: aload 7
-    //   418: invokestatic 256	com/tencent/mm/network/d:RP	(Ljava/lang/String;)Lcom/tencent/mm/network/x;
-    //   421: checkcast 239	com/tencent/mm/network/y
-    //   424: astore_1
-    //   425: goto -94 -> 331
-    //   428: aload_1
-    //   429: astore 12
-    //   431: aload_2
-    //   432: astore 13
-    //   434: aload 6
-    //   436: astore 14
-    //   438: aload 7
-    //   440: astore 15
-    //   442: aload_1
-    //   443: astore 8
-    //   445: aload_2
-    //   446: astore 9
-    //   448: aload 6
-    //   450: astore 10
-    //   452: invokestatic 262	com/tencent/mm/av/t:bcZ	()Z
-    //   455: ifeq +140 -> 595
-    //   458: aload_1
-    //   459: astore 12
-    //   461: aload_2
-    //   462: astore 13
-    //   464: aload 6
-    //   466: astore 14
-    //   468: aload 7
-    //   470: astore 15
-    //   472: aload_1
-    //   473: astore 8
-    //   475: aload_2
-    //   476: astore 9
-    //   478: aload 6
-    //   480: astore 10
-    //   482: aload 7
-    //   484: invokestatic 265	com/tencent/mm/av/t:fm	(Ljava/lang/String;)Z
-    //   487: ifeq +108 -> 595
-    //   490: aload_1
-    //   491: astore 12
-    //   493: aload_2
-    //   494: astore 13
-    //   496: aload 6
-    //   498: astore 14
-    //   500: aload 7
-    //   502: astore 15
-    //   504: aload_1
-    //   505: astore 8
-    //   507: aload_2
-    //   508: astore 9
-    //   510: aload 6
-    //   512: astore 10
-    //   514: getstatic 270	com/tencent/mm/protocal/d:KyO	I
-    //   517: invokestatic 273	com/tencent/mm/av/t:tt	(I)Ljava/lang/String;
-    //   520: astore 11
-    //   522: aload_1
-    //   523: astore 12
-    //   525: aload_2
-    //   526: astore 13
-    //   528: aload 6
-    //   530: astore 14
-    //   532: aload 7
-    //   534: astore 15
-    //   536: aload_1
-    //   537: astore 8
-    //   539: aload_2
-    //   540: astore 9
-    //   542: aload 6
-    //   544: astore 10
-    //   546: ldc 116
-    //   548: ldc_w 275
-    //   551: iconst_1
-    //   552: anewarray 4	java/lang/Object
-    //   555: dup
-    //   556: iconst_0
-    //   557: aload 11
-    //   559: aastore
-    //   560: invokestatic 278	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   563: aload_1
-    //   564: astore 12
-    //   566: aload_2
-    //   567: astore 13
-    //   569: aload 6
-    //   571: astore 14
-    //   573: aload 7
-    //   575: astore 15
-    //   577: aload_1
-    //   578: astore 8
-    //   580: aload_2
-    //   581: astore 9
-    //   583: aload 6
-    //   585: astore 10
-    //   587: aload_1
-    //   588: aload 11
-    //   590: invokeinterface 281 2 0
-    //   595: aload_1
-    //   596: astore 12
-    //   598: aload_2
-    //   599: astore 13
-    //   601: aload 6
-    //   603: astore 14
-    //   605: aload 7
-    //   607: astore 15
-    //   609: aload_1
-    //   610: astore 8
-    //   612: aload_2
-    //   613: astore 9
-    //   615: aload 6
-    //   617: astore 10
-    //   619: aload_1
-    //   620: iconst_1
-    //   621: invokeinterface 285 2 0
-    //   626: aload_1
-    //   627: astore 12
-    //   629: aload_2
-    //   630: astore 13
-    //   632: aload 6
-    //   634: astore 14
-    //   636: aload 7
-    //   638: astore 15
-    //   640: aload_1
-    //   641: astore 8
-    //   643: aload_2
-    //   644: astore 9
-    //   646: aload 6
-    //   648: astore 10
-    //   650: aload_1
-    //   651: ldc_w 287
-    //   654: invokeinterface 290 2 0
-    //   659: aload_1
-    //   660: astore 12
-    //   662: aload_2
-    //   663: astore 13
-    //   665: aload 6
-    //   667: astore 14
-    //   669: aload 7
-    //   671: astore 15
-    //   673: aload_1
-    //   674: astore 8
-    //   676: aload_2
-    //   677: astore 9
-    //   679: aload 6
-    //   681: astore 10
-    //   683: aload_1
-    //   684: aload_0
-    //   685: getfield 61	com/tencent/mm/plugin/webcanvas/b:bbs	I
-    //   688: invokeinterface 293 2 0
-    //   693: aload_1
-    //   694: astore 12
-    //   696: aload_2
-    //   697: astore 13
-    //   699: aload 6
-    //   701: astore 14
-    //   703: aload 7
-    //   705: astore 15
-    //   707: aload_1
-    //   708: astore 8
-    //   710: aload_2
-    //   711: astore 9
-    //   713: aload 6
-    //   715: astore 10
-    //   717: aload_1
-    //   718: aload_0
-    //   719: getfield 63	com/tencent/mm/plugin/webcanvas/b:bbt	I
-    //   722: invokeinterface 296 2 0
-    //   727: aload_1
-    //   728: astore 12
-    //   730: aload_2
-    //   731: astore 13
-    //   733: aload 6
-    //   735: astore 14
-    //   737: aload 7
-    //   739: astore 15
-    //   741: aload_1
-    //   742: astore 8
-    //   744: aload_2
-    //   745: astore 9
-    //   747: aload 6
-    //   749: astore 10
-    //   751: aload 19
-    //   753: aload_1
-    //   754: invokeinterface 300 1 0
-    //   759: invokevirtual 304	com/tencent/mm/plugin/webcanvas/b$b:Dz	(I)Z
-    //   762: ifeq +548 -> 1310
-    //   765: aload_1
-    //   766: astore 12
-    //   768: aload_2
-    //   769: astore 13
-    //   771: aload 6
-    //   773: astore 14
-    //   775: aload 7
-    //   777: astore 15
-    //   779: aload_1
-    //   780: astore 8
-    //   782: aload_2
-    //   783: astore 9
-    //   785: aload 6
-    //   787: astore 10
-    //   789: aload_1
-    //   790: ldc_w 306
-    //   793: invokeinterface 309 2 0
-    //   798: astore 11
-    //   800: aload_1
-    //   801: astore 12
-    //   803: aload_2
-    //   804: astore 13
-    //   806: aload 6
-    //   808: astore 14
-    //   810: aload 7
-    //   812: astore 15
-    //   814: aload_1
-    //   815: astore 8
-    //   817: aload_2
-    //   818: astore 9
-    //   820: aload 6
-    //   822: astore 10
-    //   824: aload 11
-    //   826: ldc_w 311
-    //   829: invokestatic 188	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   832: aload_1
-    //   833: astore 8
-    //   835: aload_2
-    //   836: astore 9
-    //   838: aload 6
-    //   840: astore 10
-    //   842: aload 18
+    //   178: invokestatic 187	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   181: getstatic 192	com/tencent/mm/plugin/ay/a$a:appbrand_game_image_stream_error_http_inner	I
+    //   184: invokevirtual 198	android/content/Context:getString	(I)Ljava/lang/String;
+    //   187: astore_2
+    //   188: aload_2
+    //   189: ldc 200
+    //   191: invokestatic 203	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   194: aload_2
+    //   195: iconst_1
+    //   196: anewarray 4	java/lang/Object
+    //   199: dup
+    //   200: iconst_0
+    //   201: aload_1
+    //   202: invokevirtual 204	java/lang/Exception:toString	()Ljava/lang/String;
+    //   205: aastore
+    //   206: iconst_1
+    //   207: invokestatic 210	java/util/Arrays:copyOf	([Ljava/lang/Object;I)[Ljava/lang/Object;
+    //   210: invokestatic 214	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   213: astore_1
+    //   214: aload_1
+    //   215: ldc 216
+    //   217: invokestatic 203	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   220: aload 16
+    //   222: aload_1
+    //   223: putfield 220	com/github/henryye/nativeiv/b/b$a:errorMsg	Ljava/lang/String;
+    //   226: goto -76 -> 150
+    //   229: new 222	kotlin/g/b/aa$d
+    //   232: dup
+    //   233: invokespecial 223	kotlin/g/b/aa$d:<init>	()V
+    //   236: astore 18
+    //   238: aload 18
+    //   240: iconst_0
+    //   241: putfield 226	kotlin/g/b/aa$d:aaBA	I
+    //   244: aconst_null
+    //   245: astore 6
+    //   247: aconst_null
+    //   248: astore_2
+    //   249: aconst_null
+    //   250: astore_1
+    //   251: ldc 228
+    //   253: invokestatic 234	com/tencent/mm/kernel/h:ae	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+    //   256: checkcast 228	com/tencent/mm/plugin/expt/b/b
+    //   259: getstatic 240	com/tencent/mm/plugin/expt/b/b$a:vUw	Lcom/tencent/mm/plugin/expt/b/b$a;
+    //   262: iconst_0
+    //   263: invokeinterface 243 3 0
+    //   268: istore 5
+    //   270: new 245	com/tencent/mm/plugin/webcanvas/b$b
+    //   273: dup
+    //   274: aload 18
+    //   276: invokespecial 248	com/tencent/mm/plugin/webcanvas/b$b:<init>	(Lkotlin/g/b/aa$d;)V
+    //   279: astore 19
+    //   281: iconst_0
+    //   282: istore_3
+    //   283: iload_3
+    //   284: ifne +1304 -> 1588
+    //   287: iload 5
+    //   289: ifeq +105 -> 394
+    //   292: aload_1
+    //   293: astore 12
+    //   295: aload_2
+    //   296: astore 13
+    //   298: aload 6
+    //   300: astore 14
+    //   302: aload 7
+    //   304: astore 15
+    //   306: aload_1
+    //   307: astore 8
+    //   309: aload_2
+    //   310: astore 9
+    //   312: aload 6
+    //   314: astore 10
+    //   316: aload 7
+    //   318: invokestatic 254	com/tencent/mm/network/d:Zq	(Ljava/lang/String;)Lcom/tencent/mm/network/z;
+    //   321: checkcast 256	com/tencent/mm/network/y
+    //   324: astore_1
+    //   325: aload_1
+    //   326: checkcast 258	com/tencent/mm/network/z
+    //   329: invokevirtual 261	com/tencent/mm/network/z:btB	()V
+    //   332: aload_1
+    //   333: ifnonnull +97 -> 430
+    //   336: aload_1
+    //   337: astore 12
+    //   339: aload_2
+    //   340: astore 13
+    //   342: aload 6
+    //   344: astore 14
+    //   346: aload 7
+    //   348: astore 15
+    //   350: aload_1
+    //   351: astore 8
+    //   353: aload_2
+    //   354: astore 9
+    //   356: aload 6
+    //   358: astore 10
+    //   360: aload 16
+    //   362: ldc_w 263
+    //   365: putfield 220	com/github/henryye/nativeiv/b/b$a:errorMsg	Ljava/lang/String;
+    //   368: aload_2
+    //   369: ifnull +7 -> 376
+    //   372: aload_2
+    //   373: invokevirtual 268	java/io/OutputStream:close	()V
+    //   376: aload 6
+    //   378: ifnull +8 -> 386
+    //   381: aload 6
+    //   383: invokevirtual 269	java/io/InputStream:close	()V
+    //   386: ldc 87
+    //   388: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   391: aload 16
+    //   393: areturn
+    //   394: aload_1
+    //   395: astore 12
+    //   397: aload_2
+    //   398: astore 13
+    //   400: aload 6
+    //   402: astore 14
+    //   404: aload 7
+    //   406: astore 15
+    //   408: aload_1
+    //   409: astore 8
+    //   411: aload_2
+    //   412: astore 9
+    //   414: aload 6
+    //   416: astore 10
+    //   418: aload 7
+    //   420: invokestatic 273	com/tencent/mm/network/d:Zp	(Ljava/lang/String;)Lcom/tencent/mm/network/x;
+    //   423: checkcast 256	com/tencent/mm/network/y
+    //   426: astore_1
+    //   427: goto -95 -> 332
+    //   430: aload_1
+    //   431: astore 12
+    //   433: aload_2
+    //   434: astore 13
+    //   436: aload 6
+    //   438: astore 14
+    //   440: aload 7
+    //   442: astore 15
+    //   444: aload_1
+    //   445: astore 8
+    //   447: aload_2
+    //   448: astore 9
+    //   450: aload 6
+    //   452: astore 10
+    //   454: invokestatic 279	com/tencent/mm/ay/t:bmq	()Z
+    //   457: ifeq +140 -> 597
+    //   460: aload_1
+    //   461: astore 12
+    //   463: aload_2
+    //   464: astore 13
+    //   466: aload 6
+    //   468: astore 14
+    //   470: aload 7
+    //   472: astore 15
+    //   474: aload_1
+    //   475: astore 8
+    //   477: aload_2
+    //   478: astore 9
+    //   480: aload 6
+    //   482: astore 10
+    //   484: aload 7
+    //   486: invokestatic 282	com/tencent/mm/ay/t:fX	(Ljava/lang/String;)Z
+    //   489: ifeq +108 -> 597
+    //   492: aload_1
+    //   493: astore 12
+    //   495: aload_2
+    //   496: astore 13
+    //   498: aload 6
+    //   500: astore 14
+    //   502: aload 7
+    //   504: astore 15
+    //   506: aload_1
+    //   507: astore 8
+    //   509: aload_2
+    //   510: astore 9
+    //   512: aload 6
+    //   514: astore 10
+    //   516: getstatic 287	com/tencent/mm/protocal/d:RAD	I
+    //   519: invokestatic 290	com/tencent/mm/ay/t:wt	(I)Ljava/lang/String;
+    //   522: astore 11
+    //   524: aload_1
+    //   525: astore 12
+    //   527: aload_2
+    //   528: astore 13
+    //   530: aload 6
+    //   532: astore 14
+    //   534: aload 7
+    //   536: astore 15
+    //   538: aload_1
+    //   539: astore 8
+    //   541: aload_2
+    //   542: astore 9
+    //   544: aload 6
+    //   546: astore 10
+    //   548: ldc 127
+    //   550: ldc_w 292
+    //   553: iconst_1
+    //   554: anewarray 4	java/lang/Object
+    //   557: dup
+    //   558: iconst_0
+    //   559: aload 11
+    //   561: aastore
+    //   562: invokestatic 295	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   565: aload_1
+    //   566: astore 12
+    //   568: aload_2
+    //   569: astore 13
+    //   571: aload 6
+    //   573: astore 14
+    //   575: aload 7
+    //   577: astore 15
+    //   579: aload_1
+    //   580: astore 8
+    //   582: aload_2
+    //   583: astore 9
+    //   585: aload 6
+    //   587: astore 10
+    //   589: aload_1
+    //   590: aload 11
+    //   592: invokeinterface 298 2 0
+    //   597: aload_1
+    //   598: astore 12
+    //   600: aload_2
+    //   601: astore 13
+    //   603: aload 6
+    //   605: astore 14
+    //   607: aload 7
+    //   609: astore 15
+    //   611: aload_1
+    //   612: astore 8
+    //   614: aload_2
+    //   615: astore 9
+    //   617: aload 6
+    //   619: astore 10
+    //   621: aload_1
+    //   622: iconst_1
+    //   623: invokeinterface 302 2 0
+    //   628: aload_1
+    //   629: astore 12
+    //   631: aload_2
+    //   632: astore 13
+    //   634: aload 6
+    //   636: astore 14
+    //   638: aload 7
+    //   640: astore 15
+    //   642: aload_1
+    //   643: astore 8
+    //   645: aload_2
+    //   646: astore 9
+    //   648: aload 6
+    //   650: astore 10
+    //   652: aload_1
+    //   653: ldc_w 304
+    //   656: invokeinterface 307 2 0
+    //   661: aload_1
+    //   662: astore 12
+    //   664: aload_2
+    //   665: astore 13
+    //   667: aload 6
+    //   669: astore 14
+    //   671: aload 7
+    //   673: astore 15
+    //   675: aload_1
+    //   676: astore 8
+    //   678: aload_2
+    //   679: astore 9
+    //   681: aload 6
+    //   683: astore 10
+    //   685: aload_1
+    //   686: aload_0
+    //   687: getfield 58	com/tencent/mm/plugin/webcanvas/b:aKQ	I
+    //   690: invokeinterface 310 2 0
+    //   695: aload_1
+    //   696: astore 12
+    //   698: aload_2
+    //   699: astore 13
+    //   701: aload 6
+    //   703: astore 14
+    //   705: aload 7
+    //   707: astore 15
+    //   709: aload_1
+    //   710: astore 8
+    //   712: aload_2
+    //   713: astore 9
+    //   715: aload 6
+    //   717: astore 10
+    //   719: aload_1
+    //   720: aload_0
+    //   721: getfield 60	com/tencent/mm/plugin/webcanvas/b:aKR	I
+    //   724: invokeinterface 313 2 0
+    //   729: aload_1
+    //   730: astore 12
+    //   732: aload_2
+    //   733: astore 13
+    //   735: aload 6
+    //   737: astore 14
+    //   739: aload 7
+    //   741: astore 15
+    //   743: aload_1
+    //   744: astore 8
+    //   746: aload_2
+    //   747: astore 9
+    //   749: aload 6
+    //   751: astore 10
+    //   753: aload 19
+    //   755: aload_1
+    //   756: invokeinterface 317 1 0
+    //   761: invokevirtual 321	com/tencent/mm/plugin/webcanvas/b$b:Hi	(I)Z
+    //   764: ifeq +549 -> 1313
+    //   767: aload_1
+    //   768: astore 12
+    //   770: aload_2
+    //   771: astore 13
+    //   773: aload 6
+    //   775: astore 14
+    //   777: aload 7
+    //   779: astore 15
+    //   781: aload_1
+    //   782: astore 8
+    //   784: aload_2
+    //   785: astore 9
+    //   787: aload 6
+    //   789: astore 10
+    //   791: aload_1
+    //   792: ldc_w 323
+    //   795: invokeinterface 326 2 0
+    //   800: astore 11
+    //   802: aload_1
+    //   803: astore 12
+    //   805: aload_2
+    //   806: astore 13
+    //   808: aload 6
+    //   810: astore 14
+    //   812: aload 7
+    //   814: astore 15
+    //   816: aload_1
+    //   817: astore 8
+    //   819: aload_2
+    //   820: astore 9
+    //   822: aload 6
+    //   824: astore 10
+    //   826: aload 11
+    //   828: ldc_w 328
+    //   831: invokestatic 203	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   834: aload_1
+    //   835: astore 8
+    //   837: aload_2
+    //   838: astore 9
+    //   840: aload 6
+    //   842: astore 10
     //   844: aload 18
-    //   846: getfield 211	kotlin/g/b/z$d:SYE	I
-    //   849: iconst_1
-    //   850: iadd
-    //   851: putfield 211	kotlin/g/b/z$d:SYE	I
-    //   854: aload_1
-    //   855: astore 8
-    //   857: aload_2
-    //   858: astore 9
-    //   860: aload 6
-    //   862: astore 10
-    //   864: aload 18
-    //   866: getfield 211	kotlin/g/b/z$d:SYE	I
-    //   869: istore_3
-    //   870: iload_3
-    //   871: bipush 15
-    //   873: if_icmpge +45 -> 918
-    //   876: iconst_0
-    //   877: istore_3
-    //   878: aload_2
-    //   879: ifnull +7 -> 886
-    //   882: aload_2
-    //   883: invokevirtual 251	java/io/OutputStream:close	()V
-    //   886: aload 6
-    //   888: ifnull +8 -> 896
-    //   891: aload 6
-    //   893: invokevirtual 252	java/io/InputStream:close	()V
-    //   896: aload_1
-    //   897: invokeinterface 314 1 0
-    //   902: aload 11
-    //   904: astore 7
-    //   906: goto -624 -> 282
-    //   909: astore 7
-    //   911: aload 11
-    //   913: astore 7
-    //   915: goto -633 -> 282
-    //   918: aload_1
-    //   919: astore 8
-    //   921: aload_2
-    //   922: astore 9
-    //   924: aload 6
-    //   926: astore 10
-    //   928: aload 18
-    //   930: iconst_0
-    //   931: putfield 211	kotlin/g/b/z$d:SYE	I
-    //   934: aload 11
-    //   936: astore 7
-    //   938: iconst_1
-    //   939: istore 4
-    //   941: aload_1
-    //   942: astore 12
-    //   944: aload_2
-    //   945: astore 13
-    //   947: aload 6
-    //   949: astore 14
-    //   951: aload 7
-    //   953: astore 15
-    //   955: aload_1
-    //   956: astore 8
-    //   958: aload_2
-    //   959: astore 9
-    //   961: aload 6
-    //   963: astore 10
-    //   965: sipush 1024
-    //   968: newarray byte
-    //   970: astore 11
-    //   972: iconst_0
-    //   973: istore_3
-    //   974: aload_1
-    //   975: astore 12
-    //   977: aload_2
-    //   978: astore 13
-    //   980: aload 6
-    //   982: astore 14
-    //   984: aload 7
-    //   986: astore 15
-    //   988: aload_1
-    //   989: astore 8
-    //   991: aload_2
-    //   992: astore 9
-    //   994: aload 6
-    //   996: astore 10
-    //   998: new 82	java/lang/StringBuilder
-    //   1001: dup
-    //   1002: invokespecial 83	java/lang/StringBuilder:<init>	()V
-    //   1005: aload 17
-    //   1007: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1010: ldc_w 316
-    //   1013: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1016: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1019: invokestatic 320	com/tencent/mm/vfs/s:LM	(Ljava/lang/String;)Ljava/io/OutputStream;
-    //   1022: astore_2
-    //   1023: aload 6
-    //   1025: ifnull +40 -> 1065
-    //   1028: aload_1
-    //   1029: astore 12
-    //   1031: aload_2
-    //   1032: astore 13
-    //   1034: aload 6
-    //   1036: astore 14
-    //   1038: aload 7
-    //   1040: astore 15
-    //   1042: aload_1
-    //   1043: astore 8
-    //   1045: aload_2
-    //   1046: astore 9
-    //   1048: aload 6
-    //   1050: astore 10
-    //   1052: aload 6
-    //   1054: aload 11
-    //   1056: invokevirtual 324	java/io/InputStream:read	([B)I
-    //   1059: istore_3
-    //   1060: iload_3
-    //   1061: iconst_m1
-    //   1062: if_icmpeq +289 -> 1351
-    //   1065: aload_1
-    //   1066: astore 12
-    //   1068: aload_2
-    //   1069: astore 13
-    //   1071: aload 6
-    //   1073: astore 14
-    //   1075: aload 7
-    //   1077: astore 15
-    //   1079: aload_1
-    //   1080: astore 8
-    //   1082: aload_2
-    //   1083: astore 9
-    //   1085: aload 6
-    //   1087: astore 10
-    //   1089: aload_2
-    //   1090: aload 11
-    //   1092: iconst_0
-    //   1093: iload_3
-    //   1094: invokevirtual 328	java/io/OutputStream:write	([BII)V
-    //   1097: goto -74 -> 1023
-    //   1100: astore 11
-    //   1102: aload 15
-    //   1104: astore 7
-    //   1106: aload 14
-    //   1108: astore 6
-    //   1110: aload 13
-    //   1112: astore_2
-    //   1113: aload 12
-    //   1115: astore_1
-    //   1116: aload_1
-    //   1117: astore 8
-    //   1119: aload_2
-    //   1120: astore 9
-    //   1122: aload 6
-    //   1124: astore 10
-    //   1126: aload 18
-    //   1128: iconst_0
-    //   1129: putfield 211	kotlin/g/b/z$d:SYE	I
-    //   1132: aload_1
-    //   1133: astore 8
-    //   1135: aload_2
-    //   1136: astore 9
-    //   1138: aload 6
-    //   1140: astore 10
-    //   1142: getstatic 170	kotlin/g/b/ae:SYK	Lkotlin/g/b/ae;
-    //   1145: astore 12
-    //   1147: aload_1
-    //   1148: astore 8
-    //   1150: aload_2
-    //   1151: astore 9
-    //   1153: aload 6
-    //   1155: astore 10
-    //   1157: invokestatic 176	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
-    //   1160: ldc 177
-    //   1162: invokevirtual 183	android/content/Context:getString	(I)Ljava/lang/String;
-    //   1165: astore 12
-    //   1167: aload_1
-    //   1168: astore 8
-    //   1170: aload_2
-    //   1171: astore 9
-    //   1173: aload 6
-    //   1175: astore 10
-    //   1177: aload 12
-    //   1179: ldc 185
-    //   1181: invokestatic 188	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   1184: aload_1
-    //   1185: astore 8
-    //   1187: aload_2
-    //   1188: astore 9
-    //   1190: aload 6
-    //   1192: astore 10
-    //   1194: aload 12
-    //   1196: iconst_1
-    //   1197: anewarray 4	java/lang/Object
-    //   1200: dup
-    //   1201: iconst_0
-    //   1202: aload 11
-    //   1204: invokevirtual 189	java/lang/Exception:toString	()Ljava/lang/String;
-    //   1207: aastore
-    //   1208: iconst_1
-    //   1209: invokestatic 195	java/util/Arrays:copyOf	([Ljava/lang/Object;I)[Ljava/lang/Object;
-    //   1212: invokestatic 199	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   1215: astore 12
-    //   1217: aload_1
-    //   1218: astore 8
-    //   1220: aload_2
-    //   1221: astore 9
-    //   1223: aload 6
-    //   1225: astore 10
-    //   1227: aload 12
-    //   1229: ldc 201
-    //   1231: invokestatic 188	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   1234: aload_1
-    //   1235: astore 8
-    //   1237: aload_2
-    //   1238: astore 9
-    //   1240: aload 6
-    //   1242: astore 10
-    //   1244: aload 16
-    //   1246: aload 12
-    //   1248: putfield 205	com/github/henryye/nativeiv/b/b$a:errorMsg	Ljava/lang/String;
-    //   1251: aload_1
-    //   1252: astore 8
-    //   1254: aload_2
-    //   1255: astore 9
-    //   1257: aload 6
-    //   1259: astore 10
-    //   1261: ldc 116
-    //   1263: aload 11
-    //   1265: checkcast 159	java/lang/Throwable
-    //   1268: ldc 160
-    //   1270: iconst_0
-    //   1271: anewarray 4	java/lang/Object
-    //   1274: invokestatic 164	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1277: aload_2
-    //   1278: ifnull +7 -> 1285
-    //   1281: aload_2
-    //   1282: invokevirtual 251	java/io/OutputStream:close	()V
-    //   1285: aload 6
-    //   1287: ifnull +8 -> 1295
-    //   1290: aload 6
-    //   1292: invokevirtual 252	java/io/InputStream:close	()V
-    //   1295: aload_1
-    //   1296: ifnull +229 -> 1525
-    //   1299: aload_1
-    //   1300: invokeinterface 314 1 0
-    //   1305: iconst_1
-    //   1306: istore_3
-    //   1307: goto -1025 -> 282
-    //   1310: aload_1
-    //   1311: astore 12
-    //   1313: aload_2
-    //   1314: astore 13
-    //   1316: aload 6
-    //   1318: astore 14
-    //   1320: aload 7
-    //   1322: astore 15
-    //   1324: aload_1
-    //   1325: astore 8
-    //   1327: aload_2
-    //   1328: astore 9
-    //   1330: aload 6
-    //   1332: astore 10
-    //   1334: aload_1
-    //   1335: invokeinterface 332 1 0
-    //   1340: astore 6
-    //   1342: aload 18
-    //   1344: iconst_0
-    //   1345: putfield 211	kotlin/g/b/z$d:SYE	I
-    //   1348: goto -410 -> 938
-    //   1351: aload_1
-    //   1352: astore 12
-    //   1354: aload_2
-    //   1355: astore 13
-    //   1357: aload 6
-    //   1359: astore 14
-    //   1361: aload 7
-    //   1363: astore 15
-    //   1365: aload_1
-    //   1366: astore 8
-    //   1368: aload_2
-    //   1369: astore 9
-    //   1371: aload 6
-    //   1373: astore 10
-    //   1375: new 334	com/tencent/mm/vfs/o
-    //   1378: dup
-    //   1379: new 82	java/lang/StringBuilder
-    //   1382: dup
-    //   1383: invokespecial 83	java/lang/StringBuilder:<init>	()V
-    //   1386: aload 17
-    //   1388: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1391: ldc_w 316
-    //   1394: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1397: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1400: invokespecial 335	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
-    //   1403: new 334	com/tencent/mm/vfs/o
-    //   1406: dup
-    //   1407: aload 17
-    //   1409: invokespecial 335	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
-    //   1412: invokevirtual 339	com/tencent/mm/vfs/o:am	(Lcom/tencent/mm/vfs/o;)Z
-    //   1415: pop
-    //   1416: aload_1
-    //   1417: astore 12
-    //   1419: aload_2
-    //   1420: astore 13
-    //   1422: aload 6
-    //   1424: astore 14
-    //   1426: aload 7
-    //   1428: astore 15
-    //   1430: aload_1
-    //   1431: astore 8
-    //   1433: aload_2
-    //   1434: astore 9
-    //   1436: aload 6
-    //   1438: astore 10
-    //   1440: aload 16
-    //   1442: new 144	java/io/BufferedInputStream
-    //   1445: dup
-    //   1446: aload 17
-    //   1448: invokestatic 148	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   1451: invokespecial 151	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   1454: checkcast 153	java/io/InputStream
-    //   1457: putfield 157	com/github/henryye/nativeiv/b/b$a:inputStream	Ljava/io/InputStream;
-    //   1460: aload_1
-    //   1461: astore 12
-    //   1463: aload_2
-    //   1464: astore 13
-    //   1466: aload 6
-    //   1468: astore 14
-    //   1470: aload 7
-    //   1472: astore 15
-    //   1474: aload_1
-    //   1475: astore 8
-    //   1477: aload_2
-    //   1478: astore 9
-    //   1480: aload 6
-    //   1482: astore 10
-    //   1484: ldc 116
-    //   1486: ldc_w 341
-    //   1489: invokestatic 142	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1492: aload_2
-    //   1493: ifnull +7 -> 1500
-    //   1496: aload_2
-    //   1497: invokevirtual 251	java/io/OutputStream:close	()V
-    //   1500: aload 6
-    //   1502: invokevirtual 252	java/io/InputStream:close	()V
-    //   1505: aload_1
-    //   1506: invokeinterface 314 1 0
-    //   1511: iload 4
-    //   1513: istore_3
-    //   1514: goto -1232 -> 282
-    //   1517: astore 8
-    //   1519: iload 4
-    //   1521: istore_3
-    //   1522: goto -1240 -> 282
-    //   1525: iconst_1
-    //   1526: istore_3
-    //   1527: goto -1245 -> 282
-    //   1530: astore 8
-    //   1532: iconst_1
-    //   1533: istore_3
-    //   1534: goto -1252 -> 282
-    //   1537: astore 7
-    //   1539: aload 10
-    //   1541: astore 6
-    //   1543: aload 9
-    //   1545: astore_2
-    //   1546: aload 8
-    //   1548: astore_1
-    //   1549: aload_2
-    //   1550: ifnull +7 -> 1557
-    //   1553: aload_2
-    //   1554: invokevirtual 251	java/io/OutputStream:close	()V
-    //   1557: aload 6
-    //   1559: ifnull +8 -> 1567
-    //   1562: aload 6
-    //   1564: invokevirtual 252	java/io/InputStream:close	()V
-    //   1567: aload_1
-    //   1568: ifnull +9 -> 1577
-    //   1571: aload_1
-    //   1572: invokeinterface 314 1 0
-    //   1577: ldc 67
-    //   1579: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1582: aload 7
-    //   1584: athrow
-    //   1585: ldc 67
-    //   1587: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1590: aload 16
-    //   1592: areturn
-    //   1593: astore_1
-    //   1594: goto -17 -> 1577
-    //   1597: astore 7
-    //   1599: goto -50 -> 1549
-    //   1602: astore 7
-    //   1604: goto -55 -> 1549
-    //   1607: astore 11
-    //   1609: goto -493 -> 1116
-    //   1612: astore 8
-    //   1614: aload 11
-    //   1616: astore 7
-    //   1618: aload 8
-    //   1620: astore 11
-    //   1622: goto -506 -> 1116
-    //   1625: astore 11
-    //   1627: goto -511 -> 1116
-    //   1630: astore_1
-    //   1631: goto -1247 -> 384
+    //   846: aload 18
+    //   848: getfield 226	kotlin/g/b/aa$d:aaBA	I
+    //   851: iconst_1
+    //   852: iadd
+    //   853: putfield 226	kotlin/g/b/aa$d:aaBA	I
+    //   856: aload_1
+    //   857: astore 8
+    //   859: aload_2
+    //   860: astore 9
+    //   862: aload 6
+    //   864: astore 10
+    //   866: aload 18
+    //   868: getfield 226	kotlin/g/b/aa$d:aaBA	I
+    //   871: istore_3
+    //   872: iload_3
+    //   873: bipush 15
+    //   875: if_icmpge +45 -> 920
+    //   878: iconst_0
+    //   879: istore_3
+    //   880: aload_2
+    //   881: ifnull +7 -> 888
+    //   884: aload_2
+    //   885: invokevirtual 268	java/io/OutputStream:close	()V
+    //   888: aload 6
+    //   890: ifnull +8 -> 898
+    //   893: aload 6
+    //   895: invokevirtual 269	java/io/InputStream:close	()V
+    //   898: aload_1
+    //   899: invokeinterface 331 1 0
+    //   904: aload 11
+    //   906: astore 7
+    //   908: goto -625 -> 283
+    //   911: astore 7
+    //   913: aload 11
+    //   915: astore 7
+    //   917: goto -634 -> 283
+    //   920: aload_1
+    //   921: astore 8
+    //   923: aload_2
+    //   924: astore 9
+    //   926: aload 6
+    //   928: astore 10
+    //   930: aload 18
+    //   932: iconst_0
+    //   933: putfield 226	kotlin/g/b/aa$d:aaBA	I
+    //   936: aload 11
+    //   938: astore 7
+    //   940: iconst_1
+    //   941: istore 4
+    //   943: aload_1
+    //   944: astore 12
+    //   946: aload_2
+    //   947: astore 13
+    //   949: aload 6
+    //   951: astore 14
+    //   953: aload 7
+    //   955: astore 15
+    //   957: aload_1
+    //   958: astore 8
+    //   960: aload_2
+    //   961: astore 9
+    //   963: aload 6
+    //   965: astore 10
+    //   967: sipush 1024
+    //   970: newarray byte
+    //   972: astore 11
+    //   974: iconst_0
+    //   975: istore_3
+    //   976: aload_1
+    //   977: astore 12
+    //   979: aload_2
+    //   980: astore 13
+    //   982: aload 6
+    //   984: astore 14
+    //   986: aload 7
+    //   988: astore 15
+    //   990: aload_1
+    //   991: astore 8
+    //   993: aload_2
+    //   994: astore 9
+    //   996: aload 6
+    //   998: astore 10
+    //   1000: new 93	java/lang/StringBuilder
+    //   1003: dup
+    //   1004: invokespecial 94	java/lang/StringBuilder:<init>	()V
+    //   1007: aload 17
+    //   1009: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1012: ldc_w 333
+    //   1015: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1018: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1021: invokestatic 337	com/tencent/mm/vfs/u:Te	(Ljava/lang/String;)Ljava/io/OutputStream;
+    //   1024: astore_2
+    //   1025: aload 6
+    //   1027: ifnull +40 -> 1067
+    //   1030: aload_1
+    //   1031: astore 12
+    //   1033: aload_2
+    //   1034: astore 13
+    //   1036: aload 6
+    //   1038: astore 14
+    //   1040: aload 7
+    //   1042: astore 15
+    //   1044: aload_1
+    //   1045: astore 8
+    //   1047: aload_2
+    //   1048: astore 9
+    //   1050: aload 6
+    //   1052: astore 10
+    //   1054: aload 6
+    //   1056: aload 11
+    //   1058: invokevirtual 341	java/io/InputStream:read	([B)I
+    //   1061: istore_3
+    //   1062: iload_3
+    //   1063: iconst_m1
+    //   1064: if_icmpeq +290 -> 1354
+    //   1067: aload_1
+    //   1068: astore 12
+    //   1070: aload_2
+    //   1071: astore 13
+    //   1073: aload 6
+    //   1075: astore 14
+    //   1077: aload 7
+    //   1079: astore 15
+    //   1081: aload_1
+    //   1082: astore 8
+    //   1084: aload_2
+    //   1085: astore 9
+    //   1087: aload 6
+    //   1089: astore 10
+    //   1091: aload_2
+    //   1092: aload 11
+    //   1094: iconst_0
+    //   1095: iload_3
+    //   1096: invokevirtual 345	java/io/OutputStream:write	([BII)V
+    //   1099: goto -74 -> 1025
+    //   1102: astore 11
+    //   1104: aload 15
+    //   1106: astore 7
+    //   1108: aload 14
+    //   1110: astore 6
+    //   1112: aload 13
+    //   1114: astore_2
+    //   1115: aload 12
+    //   1117: astore_1
+    //   1118: aload_1
+    //   1119: astore 8
+    //   1121: aload_2
+    //   1122: astore 9
+    //   1124: aload 6
+    //   1126: astore 10
+    //   1128: aload 18
+    //   1130: iconst_0
+    //   1131: putfield 226	kotlin/g/b/aa$d:aaBA	I
+    //   1134: aload_1
+    //   1135: astore 8
+    //   1137: aload_2
+    //   1138: astore 9
+    //   1140: aload 6
+    //   1142: astore 10
+    //   1144: getstatic 181	kotlin/g/b/af:aaBG	Lkotlin/g/b/af;
+    //   1147: astore 12
+    //   1149: aload_1
+    //   1150: astore 8
+    //   1152: aload_2
+    //   1153: astore 9
+    //   1155: aload 6
+    //   1157: astore 10
+    //   1159: invokestatic 187	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   1162: getstatic 192	com/tencent/mm/plugin/ay/a$a:appbrand_game_image_stream_error_http_inner	I
+    //   1165: invokevirtual 198	android/content/Context:getString	(I)Ljava/lang/String;
+    //   1168: astore 12
+    //   1170: aload_1
+    //   1171: astore 8
+    //   1173: aload_2
+    //   1174: astore 9
+    //   1176: aload 6
+    //   1178: astore 10
+    //   1180: aload 12
+    //   1182: ldc 200
+    //   1184: invokestatic 203	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   1187: aload_1
+    //   1188: astore 8
+    //   1190: aload_2
+    //   1191: astore 9
+    //   1193: aload 6
+    //   1195: astore 10
+    //   1197: aload 12
+    //   1199: iconst_1
+    //   1200: anewarray 4	java/lang/Object
+    //   1203: dup
+    //   1204: iconst_0
+    //   1205: aload 11
+    //   1207: invokevirtual 204	java/lang/Exception:toString	()Ljava/lang/String;
+    //   1210: aastore
+    //   1211: iconst_1
+    //   1212: invokestatic 210	java/util/Arrays:copyOf	([Ljava/lang/Object;I)[Ljava/lang/Object;
+    //   1215: invokestatic 214	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   1218: astore 12
+    //   1220: aload_1
+    //   1221: astore 8
+    //   1223: aload_2
+    //   1224: astore 9
+    //   1226: aload 6
+    //   1228: astore 10
+    //   1230: aload 12
+    //   1232: ldc 216
+    //   1234: invokestatic 203	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   1237: aload_1
+    //   1238: astore 8
+    //   1240: aload_2
+    //   1241: astore 9
+    //   1243: aload 6
+    //   1245: astore 10
+    //   1247: aload 16
+    //   1249: aload 12
+    //   1251: putfield 220	com/github/henryye/nativeiv/b/b$a:errorMsg	Ljava/lang/String;
+    //   1254: aload_1
+    //   1255: astore 8
+    //   1257: aload_2
+    //   1258: astore 9
+    //   1260: aload 6
+    //   1262: astore 10
+    //   1264: ldc 127
+    //   1266: aload 11
+    //   1268: checkcast 170	java/lang/Throwable
+    //   1271: ldc 171
+    //   1273: iconst_0
+    //   1274: anewarray 4	java/lang/Object
+    //   1277: invokestatic 175	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1280: aload_2
+    //   1281: ifnull +7 -> 1288
+    //   1284: aload_2
+    //   1285: invokevirtual 268	java/io/OutputStream:close	()V
+    //   1288: aload 6
+    //   1290: ifnull +8 -> 1298
+    //   1293: aload 6
+    //   1295: invokevirtual 269	java/io/InputStream:close	()V
+    //   1298: aload_1
+    //   1299: ifnull +229 -> 1528
+    //   1302: aload_1
+    //   1303: invokeinterface 331 1 0
+    //   1308: iconst_1
+    //   1309: istore_3
+    //   1310: goto -1027 -> 283
+    //   1313: aload_1
+    //   1314: astore 12
+    //   1316: aload_2
+    //   1317: astore 13
+    //   1319: aload 6
+    //   1321: astore 14
+    //   1323: aload 7
+    //   1325: astore 15
+    //   1327: aload_1
+    //   1328: astore 8
+    //   1330: aload_2
+    //   1331: astore 9
+    //   1333: aload 6
+    //   1335: astore 10
+    //   1337: aload_1
+    //   1338: invokeinterface 349 1 0
+    //   1343: astore 6
+    //   1345: aload 18
+    //   1347: iconst_0
+    //   1348: putfield 226	kotlin/g/b/aa$d:aaBA	I
+    //   1351: goto -411 -> 940
+    //   1354: aload_1
+    //   1355: astore 12
+    //   1357: aload_2
+    //   1358: astore 13
+    //   1360: aload 6
+    //   1362: astore 14
+    //   1364: aload 7
+    //   1366: astore 15
+    //   1368: aload_1
+    //   1369: astore 8
+    //   1371: aload_2
+    //   1372: astore 9
+    //   1374: aload 6
+    //   1376: astore 10
+    //   1378: new 351	com/tencent/mm/vfs/q
+    //   1381: dup
+    //   1382: new 93	java/lang/StringBuilder
+    //   1385: dup
+    //   1386: invokespecial 94	java/lang/StringBuilder:<init>	()V
+    //   1389: aload 17
+    //   1391: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1394: ldc_w 333
+    //   1397: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1400: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1403: invokespecial 352	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
+    //   1406: new 351	com/tencent/mm/vfs/q
+    //   1409: dup
+    //   1410: aload 17
+    //   1412: invokespecial 352	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
+    //   1415: invokevirtual 356	com/tencent/mm/vfs/q:aj	(Lcom/tencent/mm/vfs/q;)Z
+    //   1418: pop
+    //   1419: aload_1
+    //   1420: astore 12
+    //   1422: aload_2
+    //   1423: astore 13
+    //   1425: aload 6
+    //   1427: astore 14
+    //   1429: aload 7
+    //   1431: astore 15
+    //   1433: aload_1
+    //   1434: astore 8
+    //   1436: aload_2
+    //   1437: astore 9
+    //   1439: aload 6
+    //   1441: astore 10
+    //   1443: aload 16
+    //   1445: new 155	java/io/BufferedInputStream
+    //   1448: dup
+    //   1449: aload 17
+    //   1451: invokestatic 159	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   1454: invokespecial 162	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   1457: checkcast 164	java/io/InputStream
+    //   1460: putfield 168	com/github/henryye/nativeiv/b/b$a:aFw	Ljava/io/InputStream;
+    //   1463: aload_1
+    //   1464: astore 12
+    //   1466: aload_2
+    //   1467: astore 13
+    //   1469: aload 6
+    //   1471: astore 14
+    //   1473: aload 7
+    //   1475: astore 15
+    //   1477: aload_1
+    //   1478: astore 8
+    //   1480: aload_2
+    //   1481: astore 9
+    //   1483: aload 6
+    //   1485: astore 10
+    //   1487: ldc 127
+    //   1489: ldc_w 358
+    //   1492: invokestatic 153	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1495: aload_2
+    //   1496: ifnull +7 -> 1503
+    //   1499: aload_2
+    //   1500: invokevirtual 268	java/io/OutputStream:close	()V
+    //   1503: aload 6
+    //   1505: invokevirtual 269	java/io/InputStream:close	()V
+    //   1508: aload_1
+    //   1509: invokeinterface 331 1 0
+    //   1514: iload 4
+    //   1516: istore_3
+    //   1517: goto -1234 -> 283
+    //   1520: astore 8
+    //   1522: iload 4
+    //   1524: istore_3
+    //   1525: goto -1242 -> 283
+    //   1528: iconst_1
+    //   1529: istore_3
+    //   1530: goto -1247 -> 283
+    //   1533: astore 8
+    //   1535: iconst_1
+    //   1536: istore_3
+    //   1537: goto -1254 -> 283
+    //   1540: astore 7
+    //   1542: aload 10
+    //   1544: astore 6
+    //   1546: aload 9
+    //   1548: astore_2
+    //   1549: aload 8
+    //   1551: astore_1
+    //   1552: aload_2
+    //   1553: ifnull +7 -> 1560
+    //   1556: aload_2
+    //   1557: invokevirtual 268	java/io/OutputStream:close	()V
+    //   1560: aload 6
+    //   1562: ifnull +8 -> 1570
+    //   1565: aload 6
+    //   1567: invokevirtual 269	java/io/InputStream:close	()V
+    //   1570: aload_1
+    //   1571: ifnull +9 -> 1580
+    //   1574: aload_1
+    //   1575: invokeinterface 331 1 0
+    //   1580: ldc 87
+    //   1582: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1585: aload 7
+    //   1587: athrow
+    //   1588: ldc 87
+    //   1590: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1593: aload 16
+    //   1595: areturn
+    //   1596: astore_1
+    //   1597: goto -17 -> 1580
+    //   1600: astore 7
+    //   1602: goto -50 -> 1552
+    //   1605: astore 7
+    //   1607: goto -55 -> 1552
+    //   1610: astore 11
+    //   1612: goto -494 -> 1118
+    //   1615: astore 8
+    //   1617: aload 11
+    //   1619: astore 7
+    //   1621: aload 8
+    //   1623: astore 11
+    //   1625: goto -507 -> 1118
+    //   1628: astore 11
+    //   1630: goto -512 -> 1118
+    //   1633: astore_1
+    //   1634: goto -1248 -> 386
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1634	0	this	b
-    //   0	1634	1	paramObject	Object
-    //   0	1634	2	paramImageDecodeConfig	com.github.henryye.nativeiv.ImageDecodeConfig
-    //   281	1253	3	i	int
-    //   939	581	4	j	int
-    //   75	212	5	bool	boolean
-    //   43	1520	6	localObject1	Object
-    //   21	884	7	localObject2	Object
-    //   909	1	7	localException1	java.lang.Exception
-    //   913	558	7	localObject3	Object
-    //   1537	46	7	localObject4	Object
-    //   1597	1	7	localObject5	Object
-    //   1602	1	7	localObject6	Object
-    //   1616	1	7	localObject7	Object
-    //   306	1170	8	localObject8	Object
-    //   1517	1	8	localException2	java.lang.Exception
-    //   1530	17	8	localException3	java.lang.Exception
-    //   1612	7	8	localException4	java.lang.Exception
-    //   309	1235	9	localImageDecodeConfig1	com.github.henryye.nativeiv.ImageDecodeConfig
-    //   313	1227	10	localObject9	Object
-    //   520	571	11	localObject10	Object
-    //   1100	164	11	localException5	java.lang.Exception
-    //   1607	8	11	localException6	java.lang.Exception
-    //   1620	1	11	localException7	java.lang.Exception
-    //   1625	1	11	localException8	java.lang.Exception
-    //   292	1170	12	localObject11	Object
-    //   295	1170	13	localImageDecodeConfig2	com.github.henryye.nativeiv.ImageDecodeConfig
-    //   299	1170	14	localObject12	Object
-    //   303	1170	15	localObject13	Object
-    //   30	1561	16	locala	com.github.henryye.nativeiv.b.b.a
-    //   68	1379	17	str	String
-    //   235	1108	18	locald	z.d
-    //   278	474	19	localb	b
+    //   0	1637	0	this	b
+    //   0	1637	1	paramObject	Object
+    //   0	1637	2	paramImageDecodeConfig	com.github.henryye.nativeiv.ImageDecodeConfig
+    //   282	1255	3	i	int
+    //   941	582	4	j	int
+    //   75	213	5	bool	boolean
+    //   43	1523	6	localObject1	Object
+    //   21	886	7	localObject2	Object
+    //   911	1	7	localException1	java.lang.Exception
+    //   915	559	7	localObject3	Object
+    //   1540	46	7	localObject4	Object
+    //   1600	1	7	localObject5	Object
+    //   1605	1	7	localObject6	Object
+    //   1619	1	7	localObject7	Object
+    //   307	1172	8	localObject8	Object
+    //   1520	1	8	localException2	java.lang.Exception
+    //   1533	17	8	localException3	java.lang.Exception
+    //   1615	7	8	localException4	java.lang.Exception
+    //   310	1237	9	localImageDecodeConfig1	com.github.henryye.nativeiv.ImageDecodeConfig
+    //   314	1229	10	localObject9	Object
+    //   522	571	11	localObject10	Object
+    //   1102	165	11	localException5	java.lang.Exception
+    //   1610	8	11	localException6	java.lang.Exception
+    //   1623	1	11	localException7	java.lang.Exception
+    //   1628	1	11	localException8	java.lang.Exception
+    //   293	1172	12	localObject11	Object
+    //   296	1172	13	localImageDecodeConfig2	com.github.henryye.nativeiv.ImageDecodeConfig
+    //   300	1172	14	localObject12	Object
+    //   304	1172	15	localObject13	Object
+    //   30	1564	16	locala	com.github.henryye.nativeiv.b.b.a
+    //   68	1382	17	str	String
+    //   236	1110	18	locald	kotlin.g.b.aa.d
+    //   279	475	19	localb	b.b
     // Exception table:
     //   from	to	target	type
     //   123	150	158	java/lang/Exception
-    //   882	886	909	java/lang/Exception
-    //   891	896	909	java/lang/Exception
-    //   896	902	909	java/lang/Exception
-    //   315	324	1100	java/lang/Exception
-    //   359	366	1100	java/lang/Exception
-    //   416	425	1100	java/lang/Exception
-    //   452	458	1100	java/lang/Exception
-    //   482	490	1100	java/lang/Exception
-    //   514	522	1100	java/lang/Exception
-    //   546	563	1100	java/lang/Exception
-    //   587	595	1100	java/lang/Exception
-    //   619	626	1100	java/lang/Exception
-    //   650	659	1100	java/lang/Exception
-    //   683	693	1100	java/lang/Exception
-    //   717	727	1100	java/lang/Exception
-    //   751	765	1100	java/lang/Exception
-    //   789	800	1100	java/lang/Exception
-    //   824	832	1100	java/lang/Exception
-    //   965	972	1100	java/lang/Exception
-    //   998	1023	1100	java/lang/Exception
-    //   1052	1060	1100	java/lang/Exception
-    //   1089	1097	1100	java/lang/Exception
-    //   1334	1342	1100	java/lang/Exception
-    //   1375	1416	1100	java/lang/Exception
-    //   1440	1460	1100	java/lang/Exception
-    //   1484	1492	1100	java/lang/Exception
-    //   1496	1500	1517	java/lang/Exception
-    //   1500	1511	1517	java/lang/Exception
-    //   1281	1285	1530	java/lang/Exception
-    //   1290	1295	1530	java/lang/Exception
-    //   1299	1305	1530	java/lang/Exception
-    //   315	324	1537	finally
-    //   359	366	1537	finally
-    //   416	425	1537	finally
-    //   452	458	1537	finally
-    //   482	490	1537	finally
-    //   514	522	1537	finally
-    //   546	563	1537	finally
-    //   587	595	1537	finally
-    //   619	626	1537	finally
-    //   650	659	1537	finally
-    //   683	693	1537	finally
-    //   717	727	1537	finally
-    //   751	765	1537	finally
-    //   789	800	1537	finally
-    //   824	832	1537	finally
-    //   842	854	1537	finally
-    //   864	870	1537	finally
-    //   928	934	1537	finally
-    //   965	972	1537	finally
-    //   998	1023	1537	finally
-    //   1052	1060	1537	finally
-    //   1089	1097	1537	finally
-    //   1126	1132	1537	finally
-    //   1142	1147	1537	finally
-    //   1157	1167	1537	finally
-    //   1177	1184	1537	finally
-    //   1194	1217	1537	finally
-    //   1227	1234	1537	finally
-    //   1244	1251	1537	finally
-    //   1261	1277	1537	finally
-    //   1334	1342	1537	finally
-    //   1375	1416	1537	finally
-    //   1440	1460	1537	finally
-    //   1484	1492	1537	finally
-    //   1553	1557	1593	java/lang/Exception
-    //   1562	1567	1593	java/lang/Exception
-    //   1571	1577	1593	java/lang/Exception
-    //   324	331	1597	finally
-    //   1342	1348	1602	finally
-    //   324	331	1607	java/lang/Exception
-    //   842	854	1612	java/lang/Exception
-    //   864	870	1612	java/lang/Exception
-    //   928	934	1612	java/lang/Exception
-    //   1342	1348	1625	java/lang/Exception
-    //   370	374	1630	java/lang/Exception
-    //   379	384	1630	java/lang/Exception
+    //   884	888	911	java/lang/Exception
+    //   893	898	911	java/lang/Exception
+    //   898	904	911	java/lang/Exception
+    //   316	325	1102	java/lang/Exception
+    //   360	368	1102	java/lang/Exception
+    //   418	427	1102	java/lang/Exception
+    //   454	460	1102	java/lang/Exception
+    //   484	492	1102	java/lang/Exception
+    //   516	524	1102	java/lang/Exception
+    //   548	565	1102	java/lang/Exception
+    //   589	597	1102	java/lang/Exception
+    //   621	628	1102	java/lang/Exception
+    //   652	661	1102	java/lang/Exception
+    //   685	695	1102	java/lang/Exception
+    //   719	729	1102	java/lang/Exception
+    //   753	767	1102	java/lang/Exception
+    //   791	802	1102	java/lang/Exception
+    //   826	834	1102	java/lang/Exception
+    //   967	974	1102	java/lang/Exception
+    //   1000	1025	1102	java/lang/Exception
+    //   1054	1062	1102	java/lang/Exception
+    //   1091	1099	1102	java/lang/Exception
+    //   1337	1345	1102	java/lang/Exception
+    //   1378	1419	1102	java/lang/Exception
+    //   1443	1463	1102	java/lang/Exception
+    //   1487	1495	1102	java/lang/Exception
+    //   1499	1503	1520	java/lang/Exception
+    //   1503	1514	1520	java/lang/Exception
+    //   1284	1288	1533	java/lang/Exception
+    //   1293	1298	1533	java/lang/Exception
+    //   1302	1308	1533	java/lang/Exception
+    //   316	325	1540	finally
+    //   360	368	1540	finally
+    //   418	427	1540	finally
+    //   454	460	1540	finally
+    //   484	492	1540	finally
+    //   516	524	1540	finally
+    //   548	565	1540	finally
+    //   589	597	1540	finally
+    //   621	628	1540	finally
+    //   652	661	1540	finally
+    //   685	695	1540	finally
+    //   719	729	1540	finally
+    //   753	767	1540	finally
+    //   791	802	1540	finally
+    //   826	834	1540	finally
+    //   844	856	1540	finally
+    //   866	872	1540	finally
+    //   930	936	1540	finally
+    //   967	974	1540	finally
+    //   1000	1025	1540	finally
+    //   1054	1062	1540	finally
+    //   1091	1099	1540	finally
+    //   1128	1134	1540	finally
+    //   1144	1149	1540	finally
+    //   1159	1170	1540	finally
+    //   1180	1187	1540	finally
+    //   1197	1220	1540	finally
+    //   1230	1237	1540	finally
+    //   1247	1254	1540	finally
+    //   1264	1280	1540	finally
+    //   1337	1345	1540	finally
+    //   1378	1419	1540	finally
+    //   1443	1463	1540	finally
+    //   1487	1495	1540	finally
+    //   1556	1560	1596	java/lang/Exception
+    //   1565	1570	1596	java/lang/Exception
+    //   1574	1580	1596	java/lang/Exception
+    //   325	332	1600	finally
+    //   1345	1351	1605	finally
+    //   325	332	1610	java/lang/Exception
+    //   844	856	1615	java/lang/Exception
+    //   866	872	1615	java/lang/Exception
+    //   930	936	1615	java/lang/Exception
+    //   1345	1351	1628	java/lang/Exception
+    //   372	376	1633	java/lang/Exception
+    //   381	386	1633	java/lang/Exception
   }
   
-  public final boolean accept(Object paramObject)
-  {
-    AppMethodBeat.i(224617);
-    p.h(paramObject, "obj");
-    if (((paramObject instanceof String)) && ((n.J((String)paramObject, "http://", false)) || (n.J((String)paramObject, "https://", false))))
-    {
-      AppMethodBeat.o(224617);
-      return true;
-    }
-    AppMethodBeat.o(224617);
-    return false;
-  }
-  
-  public final String sS()
+  public final String qG()
   {
     return "http";
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasHttpImageStreamFetcher$Companion;", "", "()V", "MAX_REDIRECTS_COUNT", "", "TAG", "", "webview-sdk_release"})
-  public static final class a {}
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"needRedirect", "", "respCode", "", "invoke"})
-  static final class b
-    extends q
-    implements kotlin.g.a.b<Integer, Boolean>
-  {
-    b(z.d paramd)
-    {
-      super();
-    }
-    
-    public final boolean Dz(int paramInt)
-    {
-      return (this.IzC.SYE < 15) && ((paramInt == 301) || (paramInt == 302));
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webcanvas.b
  * JD-Core Version:    0.7.0.1
  */

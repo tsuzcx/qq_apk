@@ -8,32 +8,32 @@ import java.util.List;
 public final class h
   implements a
 {
-  private g qcz;
+  private g tyw;
   
   public h(g paramg)
   {
-    this.qcz = paramg;
+    this.tyw = paramg;
   }
   
   public final void onCreate()
   {
     AppMethodBeat.i(113478);
-    this.qcz.notifyDataSetChanged();
+    this.tyw.notifyDataSetChanged();
     AppMethodBeat.o(113478);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(113479);
-    if (this.qcz != null)
+    if (this.tyw != null)
     {
-      g localg = this.qcz;
-      localg.pXo.release();
-      localg.pXo = null;
-      localg.pXz.clear();
+      g localg = this.tyw;
+      localg.ttl.release();
+      localg.ttl = null;
+      localg.tup.clear();
       localg.mContext = null;
-      localg.qcx = null;
-      this.qcz = null;
+      localg.tyu = null;
+      this.tyw = null;
     }
     AppMethodBeat.o(113479);
   }
@@ -41,8 +41,8 @@ public final class h
   public final void onNotify()
   {
     AppMethodBeat.i(113480);
-    if (this.qcz != null) {
-      this.qcz.notifyDataSetChanged();
+    if (this.tyw != null) {
+      this.tyw.notifyDataSetChanged();
     }
     AppMethodBeat.o(113480);
   }

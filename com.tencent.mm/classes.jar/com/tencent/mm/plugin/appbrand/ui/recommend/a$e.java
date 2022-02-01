@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.ui.recommend;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$Companion;", "", "()V", "CardType_App", "", "CardType_Audio", "CardType_BigVideo", "CardType_Goods", "CardType_ImageText", "CardType_Video", "TAG", "", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$Companion;", "", "()V", "CardType_App", "", "CardType_Audio", "CardType_BigVideo", "CardType_Goods", "CardType_ImageText", "CardType_Video", "TAG", "", "plugin-appbrand-integration_release"})
 public final class a$e {}
 
 

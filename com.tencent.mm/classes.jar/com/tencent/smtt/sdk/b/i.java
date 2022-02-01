@@ -17,70 +17,70 @@ public class i
   
   public void clearFormData(Context paramContext)
   {
-    AppMethodBeat.i(188536);
+    AppMethodBeat.i(197467);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "webViewDatabaseClearFormData", new Class[] { Context.class }, new Object[] { paramContext });
-    AppMethodBeat.o(188536);
+    AppMethodBeat.o(197467);
   }
   
   public void clearHttpAuthUsernamePassword(Context paramContext)
   {
-    AppMethodBeat.i(188540);
+    AppMethodBeat.i(197472);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "webViewDatabaseClearHttpAuthUsernamePassword", new Class[] { Context.class }, new Object[] { paramContext });
-    AppMethodBeat.o(188540);
+    AppMethodBeat.o(197472);
   }
   
   public void clearUsernamePassword(Context paramContext)
   {
-    AppMethodBeat.i(188538);
+    AppMethodBeat.i(197470);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "webViewDatabaseClearUsernamePassword", new Class[] { Context.class }, new Object[] { paramContext });
-    AppMethodBeat.o(188538);
+    AppMethodBeat.o(197470);
   }
   
   public boolean hasFormData(Context paramContext)
   {
-    AppMethodBeat.i(188541);
+    AppMethodBeat.i(197473);
     paramContext = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "webViewDatabaseHasFormData", new Class[] { Context.class }, new Object[] { paramContext });
     if (paramContext == null)
     {
-      AppMethodBeat.o(188541);
+      AppMethodBeat.o(197473);
       return false;
     }
     boolean bool = ((Boolean)paramContext).booleanValue();
-    AppMethodBeat.o(188541);
+    AppMethodBeat.o(197473);
     return bool;
   }
   
   public boolean hasHttpAuthUsernamePassword(Context paramContext)
   {
-    AppMethodBeat.i(188539);
+    AppMethodBeat.i(197471);
     paramContext = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "webViewDatabaseHasHttpAuthUsernamePassword", new Class[] { Context.class }, new Object[] { paramContext });
     if (paramContext == null)
     {
-      AppMethodBeat.o(188539);
+      AppMethodBeat.o(197471);
       return false;
     }
     boolean bool = ((Boolean)paramContext).booleanValue();
-    AppMethodBeat.o(188539);
+    AppMethodBeat.o(197471);
     return bool;
   }
   
   public boolean hasUsernamePassword(Context paramContext)
   {
-    AppMethodBeat.i(188537);
+    AppMethodBeat.i(197469);
     paramContext = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "webViewDatabaseHasUsernamePassword", new Class[] { Context.class }, new Object[] { paramContext });
     if (paramContext == null)
     {
-      AppMethodBeat.o(188537);
+      AppMethodBeat.o(197469);
       return false;
     }
     boolean bool = ((Boolean)paramContext).booleanValue();
-    AppMethodBeat.o(188537);
+    AppMethodBeat.o(197469);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.sdk.b.i
  * JD-Core Version:    0.7.0.1
  */

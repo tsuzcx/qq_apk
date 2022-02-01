@@ -1,6 +1,6 @@
 package com.tencent.mm.compatible.deviceinfo;
 
-public final class h
+final class h
   implements d.a
 {}
 

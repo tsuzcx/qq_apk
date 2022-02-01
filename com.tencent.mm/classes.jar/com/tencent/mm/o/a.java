@@ -1,8 +1,8 @@
 package com.tencent.mm.o;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bb;
-import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.f.c.bb;
+import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
@@ -12,15 +12,15 @@ import java.util.Map;
 public class a
   extends bb
 {
-  public static final String gNj;
   public static IAutoDBItem.MAutoDBInfo info;
+  public static final String jxD;
   
   static
   {
     AppMethodBeat.i(42762);
     IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[28];
-    localMAutoDBInfo.columns = new String[29];
+    localMAutoDBInfo.fields = new Field[29];
+    localMAutoDBInfo.columns = new String[30];
     StringBuilder localStringBuilder = new StringBuilder();
     localMAutoDBInfo.columns[0] = "msgCount";
     localMAutoDBInfo.colsMap.put("msgCount", "INTEGER default '0' ");
@@ -134,10 +134,14 @@ public class a
     localMAutoDBInfo.columns[27] = "hbMarkRed";
     localMAutoDBInfo.colsMap.put("hbMarkRed", "INTEGER default '0' ");
     localStringBuilder.append(" hbMarkRed INTEGER default '0' ");
-    localMAutoDBInfo.columns[28] = "rowid";
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[28] = "remitMarkRed";
+    localMAutoDBInfo.colsMap.put("remitMarkRed", "INTEGER default '0' ");
+    localStringBuilder.append(" remitMarkRed INTEGER default '0' ");
+    localMAutoDBInfo.columns[29] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
     info = localMAutoDBInfo;
-    gNj = null;
+    jxD = null;
     AppMethodBeat.o(42762);
   }
   
@@ -155,34 +159,34 @@ public class a
     return info;
   }
   
-  public final void oT(int paramInt)
+  public final void rn(int paramInt)
   {
     AppMethodBeat.i(42760);
     int i = this.field_attrflag | paramInt;
     if ((this.field_attrflag >= 0) && (this.field_attrflag < 536870912) && ((i >= 536870912) || (i < 0)) && (this.field_username.contains("@")))
     {
       Log.i("Conversition", "wrong add attr flag: %s, %s, %s, %s", new Object[] { this.field_username, Integer.valueOf(this.field_attrflag), Integer.valueOf(paramInt), Util.getStack() });
-      e.Cxv.a(20435, new Object[] { Integer.valueOf(2), Integer.valueOf(this.field_attrflag), Integer.valueOf(paramInt), this.field_username });
+      f.Iyx.a(20435, new Object[] { Integer.valueOf(2), Integer.valueOf(this.field_attrflag), Integer.valueOf(paramInt), this.field_username });
     }
-    nx(this.field_attrflag | paramInt);
+    pL(this.field_attrflag | paramInt);
     AppMethodBeat.o(42760);
   }
   
-  public final void oU(int paramInt)
+  public final void ro(int paramInt)
   {
     AppMethodBeat.i(42761);
-    nx(this.field_attrflag & (paramInt ^ 0xFFFFFFFF));
+    pL(this.field_attrflag & (paramInt ^ 0xFFFFFFFF));
     AppMethodBeat.o(42761);
   }
   
-  public final boolean oV(int paramInt)
+  public final boolean rp(int paramInt)
   {
     return (this.field_attrflag & paramInt) != 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.o.a
  * JD-Core Version:    0.7.0.1
  */

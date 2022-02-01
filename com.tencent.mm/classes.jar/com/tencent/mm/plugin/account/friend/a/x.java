@@ -1,56 +1,56 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.lz;
-import com.tencent.mm.protocal.protobuf.ma;
+import com.tencent.mm.protocal.protobuf.lp;
+import com.tencent.mm.protocal.protobuf.lq;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class x
   extends q
   implements m
 {
-  public static int keX = 0;
-  public static int keY = 1;
-  public static int keZ = -85;
+  public static int mWw = 0;
+  public static int mWx = 1;
+  public static int mWy = -85;
   private i callback;
-  private int kfa;
-  private String kfb;
-  private int kfc;
+  private String mWA;
+  private int mWB;
+  private int mWz;
   private final d rr;
   
   public x(a parama, String paramString, int paramInt)
   {
     AppMethodBeat.i(131086);
-    this.kfa = -1;
-    this.kfc = 0;
-    switch (1.kfd[parama.ordinal()])
+    this.mWz = -1;
+    this.mWB = 0;
+    switch (1.mWC[parama.ordinal()])
     {
     }
     for (;;)
     {
-      this.kfb = paramString;
-      this.kfc = paramInt;
+      this.mWA = paramString;
+      this.mWB = paramInt;
       parama = new d.a();
-      parama.iLN = new lz();
-      parama.iLO = new ma();
+      parama.lBU = new lp();
+      parama.lBV = new lq();
       parama.uri = "/cgi-bin/micromsg-bin/bindgooglecontact";
       parama.funcId = 487;
-      parama.iLP = 0;
+      parama.lBW = 0;
       parama.respCmdId = 0;
-      this.rr = parama.aXF();
+      this.rr = parama.bgN();
       AppMethodBeat.o(131086);
       return;
-      this.kfa = 1;
+      this.mWz = 1;
       continue;
-      this.kfa = 2;
+      this.mWz = 2;
     }
   }
   
@@ -59,10 +59,10 @@ public final class x
     AppMethodBeat.i(131087);
     Log.i("MicroMsg.GoogleContact.NetSceneInviteGoogleContact", "doScene");
     this.callback = parami;
-    parami = (lz)this.rr.iLK.iLR;
-    parami.KMz = this.kfa;
-    parami.KPA = this.kfb;
-    parami.KPB = this.kfc;
+    parami = (lp)d.b.b(this.rr.lBR);
+    parami.RNt = this.mWz;
+    parami.RQy = this.mWA;
+    parami.RQz = this.mWB;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(131087);
     return i;
@@ -86,9 +86,9 @@ public final class x
     static
     {
       AppMethodBeat.i(131085);
-      kfe = new a("MM_BIND_GCONTACT_OPCODE_BIND", 0);
-      kff = new a("MM_BIND_GCONTACT_OPCODE_UNBIND", 1);
-      kfg = new a[] { kfe, kff };
+      mWD = new a("MM_BIND_GCONTACT_OPCODE_BIND", 0);
+      mWE = new a("MM_BIND_GCONTACT_OPCODE_UNBIND", 1);
+      mWF = new a[] { mWD, mWE };
       AppMethodBeat.o(131085);
     }
     

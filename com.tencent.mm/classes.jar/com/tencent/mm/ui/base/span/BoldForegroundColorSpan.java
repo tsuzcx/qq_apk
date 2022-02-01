@@ -3,7 +3,7 @@ package com.tencent.mm.ui.base.span;
 import android.text.TextPaint;
 import android.text.style.ForegroundColorSpan;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 
 public class BoldForegroundColorSpan
   extends ForegroundColorSpan
@@ -15,15 +15,15 @@ public class BoldForegroundColorSpan
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
-    AppMethodBeat.i(205306);
+    AppMethodBeat.i(193032);
     super.updateDrawState(paramTextPaint);
-    ao.a(paramTextPaint, 0.8F);
-    AppMethodBeat.o(205306);
+    ar.a(paramTextPaint, 0.8F);
+    AppMethodBeat.o(193032);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.span.BoldForegroundColorSpan
  * JD-Core Version:    0.7.0.1
  */

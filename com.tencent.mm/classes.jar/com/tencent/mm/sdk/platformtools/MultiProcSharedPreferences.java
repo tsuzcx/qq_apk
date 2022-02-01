@@ -8,8 +8,8 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.pm.ApplicationInfo;
 import android.os.Looper;
 import android.util.LruCache;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -124,7 +124,7 @@ public class MultiProcSharedPreferences
   
   public static SharedPreferences getSharedPreferences(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(215391);
+    AppMethodBeat.i(263149);
     MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV(paramString);
     if (MultiProcSharedPreferences.DynamicConfigStorage.isEnabledMultiProcSP())
     {
@@ -138,7 +138,7 @@ public class MultiProcSharedPreferences
       for (;;)
       {
         MultiProcessMMKV.transport2MMKV(paramContext, localMultiProcessMMKV);
-        AppMethodBeat.o(215391);
+        AppMethodBeat.o(263149);
         return localMultiProcessMMKV;
         paramContext = localMultiProcSharedPreferences;
         if ((paramInt & 0x4) != 0) {
@@ -157,14 +157,14 @@ public class MultiProcSharedPreferences
     }
     Log.i("MicroMsg.MultiProcSharedPreferences", "sp: %s, use system sp.", new Object[] { paramString });
     paramContext = paramContext.getSharedPreferences(paramString, paramInt);
-    AppMethodBeat.o(215391);
+    AppMethodBeat.o(263149);
     return paramContext;
   }
   
   @SuppressLint({"SdCardPath"})
   private File getSharedPrefsDir(Context paramContext)
   {
-    AppMethodBeat.i(215392);
+    AppMethodBeat.i(263151);
     String str2 = paramContext.getApplicationInfo().dataDir;
     String str1;
     if (str2 != null)
@@ -175,7 +175,7 @@ public class MultiProcSharedPreferences
     else
     {
       Log.w("MicroMsg.MultiProcSharedPreferences", "Failed to retrive data path by ApplicationInfo.dataDir, use prefix hardcoded version instead.");
-      str1 = "/data/data/" + paramContext.getPackageName();
+      str1 = paramContext.getCacheDir().getParent();
     }
     Log.i("MicroMsg.MultiProcSharedPreferences", "Path to store sp data: ".concat(String.valueOf(str1)));
     paramContext = new File(str1, "shared_prefs");
@@ -184,7 +184,7 @@ public class MultiProcSharedPreferences
     }
     for (;;)
     {
-      AppMethodBeat.o(215392);
+      AppMethodBeat.o(263151);
       return paramContext;
       if ((!paramContext.canRead()) || (!paramContext.canWrite()))
       {
@@ -196,18 +196,18 @@ public class MultiProcSharedPreferences
   
   private boolean hasFileChangedUnexpectedly()
   {
-    AppMethodBeat.i(215396);
+    AppMethodBeat.i(263157);
     if (this.mDiskWritesInFlight > 0)
     {
-      AppMethodBeat.o(215396);
+      AppMethodBeat.o(263157);
       return false;
     }
     if ((this.mStatTimestamp != this.mFile.lastModified()) || (this.mStatSize != this.mFile.length()))
     {
-      AppMethodBeat.o(215396);
+      AppMethodBeat.o(263157);
       return true;
     }
-    AppMethodBeat.o(215396);
+    AppMethodBeat.o(263157);
     return false;
   }
   
@@ -215,14 +215,14 @@ public class MultiProcSharedPreferences
   private void loadFromDiskLocked()
   {
     // Byte code:
-    //   0: ldc_w 346
+    //   0: ldc_w 347
     //   3: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: getfield 94	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mShouldLockFile	Z
     //   10: ifeq +10 -> 20
     //   13: aload_0
     //   14: getfield 86	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mFileLock	Lcom/tencent/mm/sdk/platformtools/FLock;
-    //   17: invokevirtual 349	com/tencent/mm/sdk/platformtools/FLock:lockRead	()V
+    //   17: invokevirtual 350	com/tencent/mm/sdk/platformtools/FLock:lockRead	()V
     //   20: aload_0
     //   21: getfield 100	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mLoaded	Z
     //   24: istore_1
@@ -233,53 +233,53 @@ public class MultiProcSharedPreferences
     //   33: ifeq +35 -> 68
     //   36: aload_0
     //   37: getfield 86	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mFileLock	Lcom/tencent/mm/sdk/platformtools/FLock;
-    //   40: invokevirtual 352	com/tencent/mm/sdk/platformtools/FLock:unlock	()V
-    //   43: ldc_w 346
+    //   40: invokevirtual 353	com/tencent/mm/sdk/platformtools/FLock:unlock	()V
+    //   43: ldc_w 347
     //   46: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   49: return
     //   50: astore_2
     //   51: ldc 29
     //   53: aload_2
-    //   54: ldc_w 354
+    //   54: ldc_w 355
     //   57: iconst_0
     //   58: anewarray 4	java/lang/Object
-    //   61: invokestatic 358	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   61: invokestatic 359	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   64: goto -44 -> 20
     //   67: astore_2
-    //   68: ldc_w 346
+    //   68: ldc_w 347
     //   71: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   74: return
     //   75: aload_0
     //   76: getfield 90	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mBackupFile	Ljava/io/File;
-    //   79: invokevirtual 312	java/io/File:exists	()Z
+    //   79: invokevirtual 313	java/io/File:exists	()Z
     //   82: ifeq +23 -> 105
     //   85: aload_0
     //   86: getfield 88	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mFile	Ljava/io/File;
-    //   89: invokevirtual 361	java/io/File:delete	()Z
+    //   89: invokevirtual 362	java/io/File:delete	()Z
     //   92: pop
     //   93: aload_0
     //   94: getfield 90	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mBackupFile	Ljava/io/File;
     //   97: aload_0
     //   98: getfield 88	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mFile	Ljava/io/File;
-    //   101: invokevirtual 365	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   101: invokevirtual 366	java/io/File:renameTo	(Ljava/io/File;)Z
     //   104: pop
     //   105: aload_0
     //   106: getfield 88	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mFile	Ljava/io/File;
-    //   109: invokevirtual 312	java/io/File:exists	()Z
+    //   109: invokevirtual 313	java/io/File:exists	()Z
     //   112: ifeq +44 -> 156
     //   115: aload_0
     //   116: getfield 88	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mFile	Ljava/io/File;
-    //   119: invokevirtual 318	java/io/File:canRead	()Z
+    //   119: invokevirtual 319	java/io/File:canRead	()Z
     //   122: ifne +34 -> 156
     //   125: ldc 29
     //   127: new 145	java/lang/StringBuilder
     //   130: dup
-    //   131: ldc_w 367
-    //   134: invokespecial 290	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   131: ldc_w 368
+    //   134: invokespecial 369	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   137: aload_0
     //   138: getfield 88	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mFile	Ljava/io/File;
-    //   141: invokevirtual 370	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   144: ldc_w 372
+    //   141: invokevirtual 372	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   144: ldc_w 374
     //   147: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   150: invokevirtual 156	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   153: invokestatic 287	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
@@ -293,7 +293,7 @@ public class MultiProcSharedPreferences
     //   166: astore_2
     //   167: aload_0
     //   168: getfield 88	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mFile	Ljava/io/File;
-    //   171: invokevirtual 318	java/io/File:canRead	()Z
+    //   171: invokevirtual 319	java/io/File:canRead	()Z
     //   174: istore_1
     //   175: iload_1
     //   176: ifeq +67 -> 243
@@ -303,15 +303,15 @@ public class MultiProcSharedPreferences
     //   184: astore 4
     //   186: aload 8
     //   188: astore 5
-    //   190: new 374	java/io/BufferedInputStream
+    //   190: new 376	java/io/BufferedInputStream
     //   193: dup
-    //   194: new 376	java/io/FileInputStream
+    //   194: new 378	java/io/FileInputStream
     //   197: dup
     //   198: aload_0
     //   199: getfield 88	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mFile	Ljava/io/File;
-    //   202: invokespecial 379	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   202: invokespecial 381	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   205: sipush 16384
-    //   208: invokespecial 382	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   208: invokespecial 384	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
     //   211: astore 9
     //   213: aload 6
     //   215: astore_3
@@ -320,7 +320,7 @@ public class MultiProcSharedPreferences
     //   220: aload 8
     //   222: astore 5
     //   224: aload 9
-    //   226: invokestatic 388	com/tencent/mm/sdk/platformtools/XmlUtils:readMapXml	(Ljava/io/InputStream;)Ljava/util/HashMap;
+    //   226: invokestatic 390	com/tencent/mm/sdk/platformtools/XmlUtils:readMapXml	(Ljava/io/InputStream;)Ljava/util/HashMap;
     //   229: astore_2
     //   230: aload_2
     //   231: astore_3
@@ -329,7 +329,7 @@ public class MultiProcSharedPreferences
     //   235: aload_2
     //   236: astore 5
     //   238: aload 9
-    //   240: invokevirtual 391	java/io/BufferedInputStream:close	()V
+    //   240: invokevirtual 393	java/io/BufferedInputStream:close	()V
     //   243: aload_0
     //   244: iconst_1
     //   245: putfield 100	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mLoaded	Z
@@ -341,34 +341,34 @@ public class MultiProcSharedPreferences
     //   257: aload_0
     //   258: aload_0
     //   259: getfield 88	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mFile	Ljava/io/File;
-    //   262: invokevirtual 335	java/io/File:lastModified	()J
+    //   262: invokevirtual 336	java/io/File:lastModified	()J
     //   265: putfield 102	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mStatTimestamp	J
     //   268: aload_0
     //   269: aload_0
     //   270: getfield 88	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mFile	Ljava/io/File;
-    //   273: invokevirtual 337	java/io/File:length	()J
+    //   273: invokevirtual 338	java/io/File:length	()J
     //   276: putfield 104	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mStatSize	J
     //   279: aload_0
-    //   280: invokevirtual 394	java/lang/Object:notifyAll	()V
+    //   280: invokevirtual 396	java/lang/Object:notifyAll	()V
     //   283: aload_0
     //   284: getfield 94	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mShouldLockFile	Z
     //   287: ifeq +130 -> 417
     //   290: aload_0
     //   291: getfield 86	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mFileLock	Lcom/tencent/mm/sdk/platformtools/FLock;
-    //   294: invokevirtual 352	com/tencent/mm/sdk/platformtools/FLock:unlock	()V
-    //   297: ldc_w 346
+    //   294: invokevirtual 353	com/tencent/mm/sdk/platformtools/FLock:unlock	()V
+    //   297: ldc_w 347
     //   300: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   303: return
     //   304: astore_2
     //   305: ldc 29
-    //   307: ldc_w 395
+    //   307: ldc_w 397
     //   310: iconst_1
     //   311: anewarray 4	java/lang/Object
     //   314: dup
     //   315: iconst_0
     //   316: aload_2
     //   317: aastore
-    //   318: invokestatic 397	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   318: invokestatic 399	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   321: aload_3
     //   322: astore_2
     //   323: goto -80 -> 243
@@ -378,48 +378,48 @@ public class MultiProcSharedPreferences
     //   331: ifeq +10 -> 341
     //   334: aload_0
     //   335: getfield 86	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mFileLock	Lcom/tencent/mm/sdk/platformtools/FLock;
-    //   338: invokevirtual 352	com/tencent/mm/sdk/platformtools/FLock:unlock	()V
-    //   341: ldc_w 346
+    //   338: invokevirtual 353	com/tencent/mm/sdk/platformtools/FLock:unlock	()V
+    //   341: ldc_w 347
     //   344: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   347: aload_2
     //   348: athrow
     //   349: astore_2
     //   350: ldc 29
-    //   352: ldc_w 395
+    //   352: ldc_w 397
     //   355: iconst_1
     //   356: anewarray 4	java/lang/Object
     //   359: dup
     //   360: iconst_0
     //   361: aload_2
     //   362: aastore
-    //   363: invokestatic 397	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   363: invokestatic 399	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   366: aload 4
     //   368: astore_2
     //   369: goto -126 -> 243
     //   372: astore_2
     //   373: ldc 29
-    //   375: ldc_w 395
+    //   375: ldc_w 397
     //   378: iconst_1
     //   379: anewarray 4	java/lang/Object
     //   382: dup
     //   383: iconst_0
     //   384: aload_2
     //   385: aastore
-    //   386: invokestatic 397	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   386: invokestatic 399	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   389: aload 5
     //   391: astore_2
     //   392: goto -149 -> 243
     //   395: aload_0
-    //   396: new 399	java/util/HashMap
+    //   396: new 401	java/util/HashMap
     //   399: dup
-    //   400: invokespecial 400	java/util/HashMap:<init>	()V
+    //   400: invokespecial 402	java/util/HashMap:<init>	()V
     //   403: putfield 96	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mMap	Ljava/util/Map;
     //   406: goto -127 -> 279
     //   409: astore_2
-    //   410: ldc_w 346
+    //   410: ldc_w 347
     //   413: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   416: return
-    //   417: ldc_w 346
+    //   417: ldc_w 347
     //   420: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   423: return
     //   424: astore_3
@@ -480,16 +480,16 @@ public class MultiProcSharedPreferences
   
   private File makeBackupFile(File paramFile)
   {
-    AppMethodBeat.i(215393);
+    AppMethodBeat.i(263152);
     paramFile = new File(paramFile.getPath() + ".bak");
-    AppMethodBeat.o(215393);
+    AppMethodBeat.o(263152);
     return paramFile;
   }
   
   private static void setFilePermissionsFromMode(File paramFile, int paramInt)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(215397);
+    AppMethodBeat.i(263160);
     if ((paramInt & 0x1) == 0) {}
     for (boolean bool1 = true;; bool1 = false)
     {
@@ -499,7 +499,7 @@ public class MultiProcSharedPreferences
         bool1 = true;
       }
       paramFile.setWritable(true, bool1);
-      AppMethodBeat.o(215397);
+      AppMethodBeat.o(263160);
       return;
     }
   }
@@ -523,7 +523,7 @@ public class MultiProcSharedPreferences
           }
         }
       };
-      h.RTc.ba(local1);
+      h.ZvG.bh(local1);
       AppMethodBeat.o(156234);
       return;
     }
@@ -655,23 +655,23 @@ public class MultiProcSharedPreferences
   public String getString(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: ldc_w 482
+    //   0: ldc_w 484
     //   3: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: monitorenter
     //   8: aload_0
-    //   9: invokespecial 425	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:awaitLoadedLocked	()V
+    //   9: invokespecial 427	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:awaitLoadedLocked	()V
     //   12: aload_0
     //   13: getfield 96	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mMap	Ljava/util/Map;
     //   16: aload_1
-    //   17: invokeinterface 449 2 0
+    //   17: invokeinterface 451 2 0
     //   22: checkcast 277	java/lang/String
     //   25: astore_1
     //   26: aload_1
     //   27: ifnull +13 -> 40
     //   30: aload_0
     //   31: monitorexit
-    //   32: ldc_w 482
+    //   32: ldc_w 484
     //   35: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   38: aload_1
     //   39: areturn
@@ -681,7 +681,7 @@ public class MultiProcSharedPreferences
     //   45: astore_1
     //   46: aload_0
     //   47: monitorexit
-    //   48: ldc_w 482
+    //   48: ldc_w 484
     //   51: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   54: aload_1
     //   55: athrow
@@ -694,30 +694,29 @@ public class MultiProcSharedPreferences
     //   from	to	target	type
     //   8	26	45	finally
     //   30	32	45	finally
-    //   46	48	45	finally
   }
   
   /* Error */
   public Set<String> getStringSet(String paramString, Set<String> paramSet)
   {
     // Byte code:
-    //   0: ldc_w 485
+    //   0: ldc_w 487
     //   3: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: monitorenter
     //   8: aload_0
-    //   9: invokespecial 425	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:awaitLoadedLocked	()V
+    //   9: invokespecial 427	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:awaitLoadedLocked	()V
     //   12: aload_0
     //   13: getfield 96	com/tencent/mm/sdk/platformtools/MultiProcSharedPreferences:mMap	Ljava/util/Map;
     //   16: aload_1
-    //   17: invokeinterface 449 2 0
-    //   22: checkcast 487	java/util/Set
+    //   17: invokeinterface 451 2 0
+    //   22: checkcast 489	java/util/Set
     //   25: astore_1
     //   26: aload_1
     //   27: ifnull +13 -> 40
     //   30: aload_0
     //   31: monitorexit
-    //   32: ldc_w 485
+    //   32: ldc_w 487
     //   35: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   38: aload_1
     //   39: areturn
@@ -727,7 +726,7 @@ public class MultiProcSharedPreferences
     //   45: astore_1
     //   46: aload_0
     //   47: monitorexit
-    //   48: ldc_w 485
+    //   48: ldc_w 487
     //   51: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   54: aload_1
     //   55: athrow
@@ -740,7 +739,6 @@ public class MultiProcSharedPreferences
     //   from	to	target	type
     //   8	26	45	finally
     //   30	32	45	finally
-    //   46	48	45	finally
   }
   
   public void registerOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener)
@@ -759,7 +757,7 @@ public class MultiProcSharedPreferences
   
   public void startReloadIfChangedUnexpectedly()
   {
-    AppMethodBeat.i(215395);
+    AppMethodBeat.i(263156);
     try
     {
       if (!hasFileChangedUnexpectedly()) {
@@ -770,7 +768,7 @@ public class MultiProcSharedPreferences
     }
     finally
     {
-      AppMethodBeat.o(215395);
+      AppMethodBeat.o(263156);
     }
   }
   
@@ -1311,17 +1309,15 @@ public class MultiProcSharedPreferences
       //   16	26	82	java/lang/Exception
       //   65	75	99	java/lang/Exception
       //   41	55	218	finally
-      //   107	109	218	finally
-      //   219	221	218	finally
       //   26	41	229	finally
-      //   109	191	229	finally
-      //   221	229	229	finally
+      //   107	191	229	finally
+      //   219	229	229	finally
       //   266	277	229	finally
       //   277	289	229	finally
       //   293	298	229	finally
       //   333	371	229	finally
       //   409	425	229	finally
-      //   455	463	229	finally
+      //   453	463	229	finally
       //   464	480	229	finally
       //   480	534	229	finally
       //   534	539	229	finally
@@ -1329,18 +1325,17 @@ public class MultiProcSharedPreferences
       //   201	211	258	java/lang/Exception
       //   308	318	325	java/lang/Exception
       //   371	409	452	finally
-      //   453	455	452	finally
       //   277	289	463	org/xmlpull/v1/XmlPullParserException
       //   293	298	463	org/xmlpull/v1/XmlPullParserException
       //   333	371	463	org/xmlpull/v1/XmlPullParserException
       //   409	425	463	org/xmlpull/v1/XmlPullParserException
-      //   455	463	463	org/xmlpull/v1/XmlPullParserException
+      //   453	463	463	org/xmlpull/v1/XmlPullParserException
       //   435	445	566	java/lang/Exception
       //   277	289	574	java/io/IOException
       //   293	298	574	java/io/IOException
       //   333	371	574	java/io/IOException
       //   409	425	574	java/io/IOException
-      //   455	463	574	java/io/IOException
+      //   453	463	574	java/io/IOException
       //   549	559	594	java/lang/Exception
       //   240	250	609	java/lang/Exception
     }
@@ -1388,7 +1383,11 @@ public class MultiProcSharedPreferences
         this.mClear = true;
         return this;
       }
-      finally {}
+      finally
+      {
+        localObject = finally;
+        throw localObject;
+      }
     }
     
     public final boolean commit()
@@ -1542,7 +1541,7 @@ public class MultiProcSharedPreferences
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.MultiProcSharedPreferences
  * JD-Core Version:    0.7.0.1
  */

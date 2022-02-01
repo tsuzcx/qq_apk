@@ -1,279 +1,370 @@
 package com.tencent.mm.ui.base;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.view.KeyEvent;
-import android.view.KeyEvent.DispatcherState;
-import android.view.MotionEvent;
+import android.text.TextUtils.TruncateAt;
+import android.view.ActionProvider;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.MenuItem;
+import android.view.MenuItem.OnActionExpandListener;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.SubMenu;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.PopupWindow;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.as;
+import com.tencent.mm.cr.a.c;
 
-public class p
-  extends PopupWindow
+public final class p
+  implements MenuItem
 {
-  private View.OnTouchListener ORN;
+  public CharSequence BOZ;
+  public boolean HhK;
+  private CharSequence Ig;
+  private Drawable Qjf;
+  public boolean WkQ;
+  public TextUtils.TruncateAt WkR;
+  private int WkS;
+  public boolean WkT;
+  public ContextMenu.ContextMenuInfo WkU;
+  private MenuItem.OnMenuItemClickListener WkV;
+  public boolean WkW;
+  public q.d WkX;
+  public q.h WkY;
+  public boolean fUV;
+  public int iconColor;
+  private Intent intent;
+  private int ka;
+  private int kh;
   private Context mContext;
+  public String ozt;
+  public boolean qfB;
+  private int zDq;
   
-  public p(Context paramContext)
+  public p(Context paramContext, int paramInt1, int paramInt2)
   {
-    super(paramContext);
-    AppMethodBeat.i(159247);
-    this.mContext = null;
+    AppMethodBeat.i(159237);
+    this.HhK = false;
+    this.BOZ = null;
+    this.qfB = false;
+    this.WkT = true;
+    this.WkW = false;
+    this.WkX = null;
+    this.WkY = null;
     this.mContext = paramContext;
-    super.setBackgroundDrawable(null);
-    setContentView(new a(this.mContext));
-    AppMethodBeat.o(159247);
+    this.kh = paramInt1;
+    this.ka = paramInt2;
+    this.iconColor = paramContext.getResources().getColor(a.c.FG_0);
+    AppMethodBeat.o(159237);
   }
   
-  public p(View paramView)
+  public final MenuItem FO(boolean paramBoolean)
   {
-    super(paramView);
-    AppMethodBeat.i(159248);
-    this.mContext = null;
-    super.setBackgroundDrawable(null);
-    AppMethodBeat.o(159248);
+    this.qfB = paramBoolean;
+    return this;
   }
   
-  public p(View paramView, int paramInt1, int paramInt2)
+  public final void a(ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    super(paramView, paramInt1, paramInt2);
-    AppMethodBeat.i(159249);
-    this.mContext = null;
-    super.setBackgroundDrawable(null);
-    AppMethodBeat.o(159249);
+    this.WkU = paramContextMenuInfo;
   }
   
-  public p(View paramView, int paramInt1, int paramInt2, boolean paramBoolean)
+  public final void a(q.h paramh)
   {
-    super(paramView, paramInt1, paramInt2, paramBoolean);
-    AppMethodBeat.i(159250);
-    this.mContext = null;
-    super.setBackgroundDrawable(null);
-    AppMethodBeat.o(159250);
+    this.WkY = paramh;
   }
   
-  public void dismiss()
+  public final boolean collapseActionView()
   {
-    AppMethodBeat.i(159251);
-    try
-    {
-      super.dismiss();
-      AppMethodBeat.o(159251);
-      return;
+    return false;
+  }
+  
+  public final boolean expandActionView()
+  {
+    return false;
+  }
+  
+  public final MenuItem f(Drawable paramDrawable, int paramInt)
+  {
+    AppMethodBeat.i(251869);
+    this.Qjf = paramDrawable;
+    this.iconColor = paramInt;
+    if (this.WkX != null) {
+      this.WkX.a(this);
     }
-    catch (Exception localException)
-    {
-      as.e("MicroMsg.MMPopupWindow", "dismiss exception, e = " + localException.getMessage(), new Object[0]);
-      AppMethodBeat.o(159251);
-    }
+    AppMethodBeat.o(251869);
+    return this;
   }
   
-  public Drawable getBackground()
+  public final ActionProvider getActionProvider()
   {
-    AppMethodBeat.i(159252);
-    Object localObject = getContentView();
-    if (localObject == null)
-    {
-      AppMethodBeat.o(159252);
-      return null;
-    }
-    if ((localObject instanceof a))
-    {
-      localObject = ((View)localObject).getBackground();
-      AppMethodBeat.o(159252);
-      return localObject;
-    }
-    AppMethodBeat.o(159252);
     return null;
   }
   
-  public void setBackgroundDrawable(Drawable paramDrawable)
+  public final View getActionView()
   {
-    int i = -2;
-    AppMethodBeat.i(159254);
-    View localView = getContentView();
-    if (localView == null)
-    {
-      AppMethodBeat.o(159254);
-      return;
-    }
-    Object localObject1 = localView.getContext();
-    if ((localView instanceof a))
-    {
-      localView.setBackgroundDrawable(paramDrawable);
-      AppMethodBeat.o(159254);
-      return;
-    }
-    Object localObject2 = localView.getLayoutParams();
-    if ((localObject2 != null) && (((ViewGroup.LayoutParams)localObject2).height == -2)) {}
-    for (;;)
-    {
-      localObject1 = new a((Context)localObject1);
-      localObject2 = new FrameLayout.LayoutParams(-1, i);
-      ((a)localObject1).setBackgroundDrawable(paramDrawable);
-      ((a)localObject1).addView(localView, (ViewGroup.LayoutParams)localObject2);
-      super.setContentView((View)localObject1);
-      AppMethodBeat.o(159254);
-      return;
-      i = -1;
-    }
+    return null;
   }
   
-  public void setContentView(View paramView)
+  public final char getAlphabeticShortcut()
   {
-    int i = -2;
-    AppMethodBeat.i(159253);
-    Object localObject = getContentView();
-    if (localObject == null) {
-      super.setContentView(paramView);
-    }
-    while (!(localObject instanceof a))
-    {
-      super.setContentView(paramView);
-      AppMethodBeat.o(159253);
-      return;
-    }
-    localObject = (a)localObject;
-    ((a)localObject).removeAllViews();
-    if (paramView == null)
-    {
-      super.setContentView((View)localObject);
-      AppMethodBeat.o(159253);
-      return;
-    }
-    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-    if ((localLayoutParams != null) && (localLayoutParams.height == -2)) {}
-    for (;;)
-    {
-      ((a)localObject).addView(paramView, new FrameLayout.LayoutParams(-1, i));
-      super.setContentView((View)localObject);
-      AppMethodBeat.o(159253);
-      return;
-      i = -1;
-    }
+    return '\000';
   }
   
-  public void setTouchInterceptor(View.OnTouchListener paramOnTouchListener)
+  public final int getGroupId()
   {
-    this.ORN = paramOnTouchListener;
+    return this.ka;
   }
   
-  final class a
-    extends FrameLayout
+  public final Drawable getIcon()
   {
-    a(Context paramContext)
+    AppMethodBeat.i(159239);
+    if (this.Qjf == null)
     {
-      super();
-    }
-    
-    public final boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
-    {
-      AppMethodBeat.i(159242);
-      if (paramKeyEvent.getKeyCode() == 4)
+      if ((this.WkS != 0) && (this.mContext != null))
       {
-        if (getKeyDispatcherState() == null)
-        {
-          bool = super.dispatchKeyEvent(paramKeyEvent);
-          AppMethodBeat.o(159242);
-          return bool;
-        }
-        KeyEvent.DispatcherState localDispatcherState;
-        if ((paramKeyEvent.getAction() == 0) && (paramKeyEvent.getRepeatCount() == 0))
-        {
-          localDispatcherState = getKeyDispatcherState();
-          if (localDispatcherState != null) {
-            localDispatcherState.startTracking(paramKeyEvent, this);
-          }
-          AppMethodBeat.o(159242);
-          return true;
-        }
-        if (paramKeyEvent.getAction() == 1)
-        {
-          localDispatcherState = getKeyDispatcherState();
-          if ((localDispatcherState != null) && (localDispatcherState.isTracking(paramKeyEvent)) && (!paramKeyEvent.isCanceled()))
-          {
-            p.this.dismiss();
-            AppMethodBeat.o(159242);
-            return true;
-          }
-        }
-        bool = super.dispatchKeyEvent(paramKeyEvent);
-        AppMethodBeat.o(159242);
-        return bool;
+        localDrawable = this.mContext.getResources().getDrawable(this.WkS);
+        AppMethodBeat.o(159239);
+        return localDrawable;
       }
-      boolean bool = super.dispatchKeyEvent(paramKeyEvent);
-      AppMethodBeat.o(159242);
+      AppMethodBeat.o(159239);
+      return null;
+    }
+    Drawable localDrawable = this.Qjf;
+    AppMethodBeat.o(159239);
+    return localDrawable;
+  }
+  
+  public final Intent getIntent()
+  {
+    return this.intent;
+  }
+  
+  public final int getItemId()
+  {
+    return this.kh;
+  }
+  
+  public final ContextMenu.ContextMenuInfo getMenuInfo()
+  {
+    return this.WkU;
+  }
+  
+  public final char getNumericShortcut()
+  {
+    return '\000';
+  }
+  
+  public final int getOrder()
+  {
+    return 0;
+  }
+  
+  public final SubMenu getSubMenu()
+  {
+    return null;
+  }
+  
+  public final CharSequence getTitle()
+  {
+    AppMethodBeat.i(159238);
+    if (this.Ig == null)
+    {
+      if ((this.zDq != 0) && (this.mContext != null))
+      {
+        localObject = this.mContext.getString(this.zDq);
+        AppMethodBeat.o(159238);
+        return localObject;
+      }
+      AppMethodBeat.o(159238);
+      return null;
+    }
+    Object localObject = this.Ig;
+    AppMethodBeat.o(159238);
+    return localObject;
+  }
+  
+  public final CharSequence getTitleCondensed()
+  {
+    return null;
+  }
+  
+  public final CharSequence hJQ()
+  {
+    return this.BOZ;
+  }
+  
+  public final boolean hasSubMenu()
+  {
+    return false;
+  }
+  
+  public final boolean isActionViewExpanded()
+  {
+    return false;
+  }
+  
+  public final boolean isCheckable()
+  {
+    return false;
+  }
+  
+  public final boolean isChecked()
+  {
+    return false;
+  }
+  
+  public final boolean isEnabled()
+  {
+    return true;
+  }
+  
+  public final boolean isVisible()
+  {
+    return true;
+  }
+  
+  public final MenuItem mo(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(251875);
+    this.WkS = paramInt1;
+    this.iconColor = paramInt2;
+    if (this.WkX != null) {
+      this.WkX.a(this);
+    }
+    AppMethodBeat.o(251875);
+    return this;
+  }
+  
+  public final boolean performClick()
+  {
+    AppMethodBeat.i(159240);
+    if (this.WkV != null)
+    {
+      boolean bool = this.WkV.onMenuItemClick(this);
+      AppMethodBeat.o(159240);
       return bool;
     }
-    
-    public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
-    {
-      AppMethodBeat.i(159243);
-      if ((p.a(p.this) != null) && (p.a(p.this).onTouch(this, paramMotionEvent)))
-      {
-        AppMethodBeat.o(159243);
-        return true;
-      }
-      boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(159243);
-      return bool;
+    AppMethodBeat.o(159240);
+    return false;
+  }
+  
+  public final MenuItem setActionProvider(ActionProvider paramActionProvider)
+  {
+    return null;
+  }
+  
+  public final MenuItem setActionView(int paramInt)
+  {
+    return null;
+  }
+  
+  public final MenuItem setActionView(View paramView)
+  {
+    return null;
+  }
+  
+  public final MenuItem setAlphabeticShortcut(char paramChar)
+  {
+    return this;
+  }
+  
+  public final MenuItem setCheckable(boolean paramBoolean)
+  {
+    return this;
+  }
+  
+  public final MenuItem setChecked(boolean paramBoolean)
+  {
+    return this;
+  }
+  
+  public final MenuItem setEnabled(boolean paramBoolean)
+  {
+    return this;
+  }
+  
+  public final MenuItem setIcon(int paramInt)
+  {
+    AppMethodBeat.i(251871);
+    this.WkS = paramInt;
+    if (this.WkX != null) {
+      this.WkX.a(this);
     }
-    
-    protected final int[] onCreateDrawableState(int paramInt)
-    {
-      AppMethodBeat.i(159241);
-      int[] arrayOfInt = super.onCreateDrawableState(paramInt);
-      AppMethodBeat.o(159241);
-      return arrayOfInt;
+    AppMethodBeat.o(251871);
+    return this;
+  }
+  
+  public final MenuItem setIcon(Drawable paramDrawable)
+  {
+    AppMethodBeat.i(251865);
+    this.Qjf = paramDrawable;
+    if (this.WkX != null) {
+      this.WkX.a(this);
     }
-    
-    public final boolean onTouchEvent(MotionEvent paramMotionEvent)
-    {
-      AppMethodBeat.i(159244);
-      int i = (int)paramMotionEvent.getX();
-      int j = (int)paramMotionEvent.getY();
-      if ((paramMotionEvent.getAction() == 0) && ((i < 0) || (i >= getWidth()) || (j < 0) || (j >= getHeight())))
-      {
-        p.this.dismiss();
-        AppMethodBeat.o(159244);
-        return true;
-      }
-      if (paramMotionEvent.getAction() == 4)
-      {
-        p.this.dismiss();
-        AppMethodBeat.o(159244);
-        return true;
-      }
-      boolean bool = super.onTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(159244);
-      return bool;
-    }
-    
-    public final void sendAccessibilityEvent(int paramInt)
-    {
-      AppMethodBeat.i(159245);
-      if (getChildCount() == 1) {
-        getChildAt(0).sendAccessibilityEvent(paramInt);
-      }
-      for (;;)
-      {
-        super.sendAccessibilityEvent(paramInt);
-        AppMethodBeat.o(159245);
-        return;
-        super.sendAccessibilityEvent(paramInt);
-      }
-    }
+    AppMethodBeat.o(251865);
+    return this;
+  }
+  
+  public final MenuItem setIntent(Intent paramIntent)
+  {
+    this.intent = paramIntent;
+    return this;
+  }
+  
+  public final MenuItem setNumericShortcut(char paramChar)
+  {
+    return this;
+  }
+  
+  public final MenuItem setOnActionExpandListener(MenuItem.OnActionExpandListener paramOnActionExpandListener)
+  {
+    return null;
+  }
+  
+  public final MenuItem setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
+  {
+    this.WkV = paramOnMenuItemClickListener;
+    return this;
+  }
+  
+  public final MenuItem setShortcut(char paramChar1, char paramChar2)
+  {
+    return this;
+  }
+  
+  public final void setShowAsAction(int paramInt) {}
+  
+  public final MenuItem setShowAsActionFlags(int paramInt)
+  {
+    return null;
+  }
+  
+  public final MenuItem setTitle(int paramInt)
+  {
+    this.zDq = paramInt;
+    return this;
+  }
+  
+  public final MenuItem setTitle(CharSequence paramCharSequence)
+  {
+    this.Ig = paramCharSequence;
+    return this;
+  }
+  
+  public final MenuItem setTitleCondensed(CharSequence paramCharSequence)
+  {
+    return this;
+  }
+  
+  public final MenuItem setVisible(boolean paramBoolean)
+  {
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.base.p
  * JD-Core Version:    0.7.0.1
  */

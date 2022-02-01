@@ -3,24 +3,27 @@ package com.tencent.mm.plugin.webview.ui.tools.browser.view;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.e;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
+import androidx.appcompat.app.e;
+import com.tencent.mm.plugin.webview.c.j;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BaseBrowseDialog;", "Landroid/support/v7/app/AppCompatDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "initContentView", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onCreateDialogView", "Landroid/view/View;", "release", "Companion", "plugin-webview_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BaseBrowseDialog;", "Landroidx/appcompat/app/AppCompatDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "initContentView", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onCreateDialogView", "Landroid/view/View;", "release", "Companion", "plugin-webview_release"})
 public abstract class a
   extends e
 {
-  public static final a JlQ = new a((byte)0);
+  public static final a Qji = new a((byte)0);
   
   public a(Context paramContext)
   {
-    super(paramContext, 2131820796);
+    super(paramContext, c.j.BrowserDialog);
   }
+  
+  public abstract View gZK();
   
   public void onCreate(Bundle paramBundle)
   {
@@ -40,7 +43,7 @@ public abstract class a
     }
     paramBundle = getWindow();
     if (paramBundle != null) {
-      paramBundle.setWindowAnimations(2131820793);
+      paramBundle.setWindowAnimations(c.j.BottomToTopSlowAnimation);
     }
     paramBundle = getWindow();
     Object localObject;
@@ -49,23 +52,23 @@ public abstract class a
       paramBundle = paramBundle.getDecorView();
       if (paramBundle != null)
       {
-        p.g(paramBundle, "this");
+        p.j(paramBundle, "this");
         localObject = paramBundle.getContext();
         if (localObject == null) {
-          break label186;
+          break label187;
         }
         localObject = ((Context)localObject).getResources();
         if (localObject == null) {
-          break label186;
+          break label187;
         }
         localObject = ((Resources)localObject).getDisplayMetrics();
         if (localObject == null) {
-          break label186;
+          break label187;
         }
       }
     }
-    label186:
-    for (int i = ((DisplayMetrics)localObject).widthPixels;; i = com.tencent.mm.cb.a.jn(paramBundle.getContext()))
+    label187:
+    for (int i = ((DisplayMetrics)localObject).widthPixels;; i = com.tencent.mm.ci.a.kr(paramBundle.getContext()))
     {
       paramBundle.setMinimumWidth(i);
       paramBundle.setPadding(0, 0, 0, 0);
@@ -80,14 +83,12 @@ public abstract class a
           paramBundle.gravity = 80;
         }
       }
-      setContentView(onCreateDialogView());
+      setContentView(gZK());
       return;
     }
   }
   
-  public abstract View onCreateDialogView();
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BaseBrowseDialog$Companion;", "", "()V", "TAG", "", "plugin-webview_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/view/BaseBrowseDialog$Companion;", "", "()V", "TAG", "", "plugin-webview_release"})
   public static final class a {}
 }
 

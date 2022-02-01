@@ -1,56 +1,83 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
-public class faw
-  extends com.tencent.mm.bw.a
+public final class faw
+  extends com.tencent.mm.cd.a
 {
-  public String Nxh;
-  public LinkedList<String> Nxi;
-  
-  public faw()
-  {
-    AppMethodBeat.i(212146);
-    this.Nxi = new LinkedList();
-    AppMethodBeat.o(212146);
-  }
+  public String TsD;
+  public String Tuh;
+  public String UAM;
+  public String appid;
+  public String fdH;
+  public String tyH;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(212147);
+    AppMethodBeat.i(123678);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Nxh != null) {
-        paramVarArgs.e(1, this.Nxh);
+      if (this.appid != null) {
+        paramVarArgs.f(1, this.appid);
       }
-      paramVarArgs.e(2, 1, this.Nxi);
-      AppMethodBeat.o(212147);
+      if (this.fdH != null) {
+        paramVarArgs.f(2, this.fdH);
+      }
+      if (this.Tuh != null) {
+        paramVarArgs.f(3, this.Tuh);
+      }
+      if (this.UAM != null) {
+        paramVarArgs.f(4, this.UAM);
+      }
+      if (this.tyH != null) {
+        paramVarArgs.f(5, this.tyH);
+      }
+      if (this.TsD != null) {
+        paramVarArgs.f(6, this.TsD);
+      }
+      AppMethodBeat.o(123678);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Nxh == null) {
-        break label274;
+      if (this.appid == null) {
+        break label518;
       }
     }
-    label274:
-    for (paramInt = g.a.a.b.b.a.f(1, this.Nxh) + 0;; paramInt = 0)
+    label518:
+    for (int i = g.a.a.b.b.a.g(1, this.appid) + 0;; i = 0)
     {
-      int i = g.a.a.a.c(2, 1, this.Nxi);
-      AppMethodBeat.o(212147);
-      return paramInt + i;
+      paramInt = i;
+      if (this.fdH != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.fdH);
+      }
+      i = paramInt;
+      if (this.Tuh != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.Tuh);
+      }
+      paramInt = i;
+      if (this.UAM != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.UAM);
+      }
+      i = paramInt;
+      if (this.tyH != null) {
+        i = paramInt + g.a.a.b.b.a.g(5, this.tyH);
+      }
+      paramInt = i;
+      if (this.TsD != null) {
+        paramInt = i + g.a.a.b.b.a.g(6, this.TsD);
+      }
+      AppMethodBeat.o(123678);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.Nxi.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(212147);
+        AppMethodBeat.o(123678);
         return 0;
       }
       if (paramInt == 3)
@@ -60,18 +87,34 @@ public class faw
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(212147);
+          AppMethodBeat.o(123678);
           return -1;
         case 1: 
-          localfaw.Nxh = locala.UbS.readString();
-          AppMethodBeat.o(212147);
+          localfaw.appid = locala.abFh.readString();
+          AppMethodBeat.o(123678);
+          return 0;
+        case 2: 
+          localfaw.fdH = locala.abFh.readString();
+          AppMethodBeat.o(123678);
+          return 0;
+        case 3: 
+          localfaw.Tuh = locala.abFh.readString();
+          AppMethodBeat.o(123678);
+          return 0;
+        case 4: 
+          localfaw.UAM = locala.abFh.readString();
+          AppMethodBeat.o(123678);
+          return 0;
+        case 5: 
+          localfaw.tyH = locala.abFh.readString();
+          AppMethodBeat.o(123678);
           return 0;
         }
-        localfaw.Nxi.add(locala.UbS.readString());
-        AppMethodBeat.o(212147);
+        localfaw.TsD = locala.abFh.readString();
+        AppMethodBeat.o(123678);
         return 0;
       }
-      AppMethodBeat.o(212147);
+      AppMethodBeat.o(123678);
       return -1;
     }
   }

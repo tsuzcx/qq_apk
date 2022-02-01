@@ -1,183 +1,196 @@
 package com.tencent.mm.plugin.finder.profile;
 
 import android.app.Activity;
-import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.m;
-import android.support.v7.widget.RecyclerView.s;
-import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
 import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.h;
+import androidx.recyclerview.widget.RecyclerView.m;
+import androidx.recyclerview.widget.RecyclerView.s;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.convert.by;
-import com.tencent.mm.plugin.finder.storage.al;
+import com.tencent.mm.plugin.finder.b.d;
+import com.tencent.mm.plugin.finder.convert.cc;
+import com.tencent.mm.plugin.finder.convert.cf;
+import com.tencent.mm.plugin.finder.model.bp;
+import com.tencent.mm.plugin.finder.storage.ak;
 import com.tencent.mm.plugin.finder.view.manager.FinderStaggeredGridLayoutManager;
-import com.tencent.mm.plugin.finder.viewmodel.FinderRecyclerViewPool;
+import com.tencent.mm.plugin.finder.viewmodel.c;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.component.g;
+import com.tencent.mm.ui.component.g.a;
 import com.tencent.mm.view.recyclerview.e;
 import kotlin.g.a.b;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/profile/FinderProfileLayoutConfig;", "Lcom/tencent/mm/plugin/finder/storage/IFinderLayoutConfig;", "context", "Landroid/app/Activity;", "isSelfFlag", "", "(Landroid/app/Activity;Z)V", "getContext", "()Landroid/app/Activity;", "()Z", "getDefaultConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "getItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "extraMap", "Lkotlin/Function1;", "", "getItemDecoration", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "Landroid/content/Context;", "getViewPool", "Landroid/support/v7/widget/RecyclerView$RecycledViewPool;", "Lcom/tencent/mm/ui/MMActivity;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/profile/FinderProfileLayoutConfig;", "Lcom/tencent/mm/plugin/finder/storage/IFinderLayoutConfig;", "context", "Landroid/app/Activity;", "isSelfFlag", "", "(Landroid/app/Activity;Z)V", "getContext", "()Landroid/app/Activity;", "()Z", "getDefaultConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "getItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "extraMap", "Lkotlin/Function1;", "", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroidx/recyclerview/widget/RecyclerView$LayoutManager;", "Landroid/content/Context;", "getViewPool", "Landroidx/recyclerview/widget/RecyclerView$RecycledViewPool;", "Lcom/tencent/mm/ui/MMActivity;", "plugin-finder_release"})
 public final class a
-  extends al
+  extends ak
 {
-  private final Activity dKq;
-  final boolean tFN;
+  private final Activity fDf;
+  final boolean xnY;
   
   public a(Activity paramActivity, boolean paramBoolean)
   {
-    AppMethodBeat.i(249976);
-    this.dKq = paramActivity;
-    this.tFN = paramBoolean;
-    AppMethodBeat.o(249976);
+    AppMethodBeat.i(280719);
+    this.fDf = paramActivity;
+    this.xnY = paramBoolean;
+    AppMethodBeat.o(280719);
   }
   
-  public final com.tencent.mm.view.recyclerview.f G(final b<? super Integer, ? extends e<?>> paramb)
+  public static e<?> dNd()
   {
-    AppMethodBeat.i(249974);
+    AppMethodBeat.i(280717);
+    if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED))
+    {
+      localObject = (Throwable)new RuntimeException("type invalid");
+      AppMethodBeat.o(280717);
+      throw ((Throwable)localObject);
+    }
+    Log.printInfoStack("FinderGridLayoutConfig", "type invalid", new Object[0]);
+    Object localObject = (e)new com.tencent.mm.plugin.finder.convert.f();
+    AppMethodBeat.o(280717);
+    return localObject;
+  }
+  
+  public final com.tencent.mm.view.recyclerview.f O(final b<? super Integer, ? extends e<?>> paramb)
+  {
+    AppMethodBeat.i(280716);
     paramb = (com.tencent.mm.view.recyclerview.f)new a(this, paramb);
-    AppMethodBeat.o(249974);
+    AppMethodBeat.o(280716);
     return paramb;
   }
   
-  public final RecyclerView.LayoutManager eS(Context paramContext)
+  public final RecyclerView.LayoutManager eW(Context paramContext)
   {
-    AppMethodBeat.i(249972);
-    p.h(paramContext, "context");
+    AppMethodBeat.i(280714);
+    p.k(paramContext, "context");
     paramContext = new FinderStaggeredGridLayoutManager(2);
     paramContext.setItemPrefetchEnabled(true);
     paramContext = (RecyclerView.LayoutManager)paramContext;
-    AppMethodBeat.o(249972);
+    AppMethodBeat.o(280714);
     return paramContext;
   }
   
-  public final RecyclerView.m f(MMActivity paramMMActivity)
+  public final RecyclerView.m g(MMActivity paramMMActivity)
   {
-    AppMethodBeat.i(249975);
-    p.h(paramMMActivity, "context");
-    com.tencent.mm.ui.component.a locala = com.tencent.mm.ui.component.a.PRN;
-    paramMMActivity = ((FinderRecyclerViewPool)com.tencent.mm.ui.component.a.b((AppCompatActivity)paramMMActivity).get(FinderRecyclerViewPool.class)).wuw;
-    AppMethodBeat.o(249975);
+    AppMethodBeat.i(280718);
+    p.k(paramMMActivity, "context");
+    g localg = g.Xox;
+    paramMMActivity = ((c)g.b((AppCompatActivity)paramMMActivity).i(c.class)).BgV;
+    AppMethodBeat.o(280718);
     return paramMMActivity;
   }
   
   public final RecyclerView.h getItemDecoration()
   {
-    AppMethodBeat.i(249973);
+    AppMethodBeat.i(280715);
     RecyclerView.h localh = (RecyclerView.h)new b();
-    AppMethodBeat.o(249973);
+    AppMethodBeat.o(280715);
     return localh;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/profile/FinderProfileLayoutConfig$getItemConvertFactory$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/profile/FinderProfileLayoutConfig$getItemConvertFactory$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
   public static final class a
     implements com.tencent.mm.view.recyclerview.f
   {
     a(b paramb) {}
     
-    public final e<?> EC(int paramInt)
+    public final e<?> yx(int paramInt)
     {
-      AppMethodBeat.i(249970);
-      switch (paramInt)
+      AppMethodBeat.i(278417);
+      if ((paramInt == 4) || (paramInt == 9) || (paramInt == 2))
       {
-      default: 
-        localObject = paramb;
-        if (localObject != null)
-        {
-          e locale = (e)((b)localObject).invoke(Integer.valueOf(paramInt));
-          localObject = locale;
-          if (locale != null) {
-            break label163;
-          }
-        }
-        if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED))
-        {
-          localObject = (Throwable)new RuntimeException("type invalid");
-          AppMethodBeat.o(249970);
-          throw ((Throwable)localObject);
-        }
-        break;
-      case 2: 
-      case 4: 
-      case 9: 
-        localObject = new by();
-        ((by)localObject).tFI = Boolean.valueOf(this.uZh.tFN);
+        localObject = new cc();
+        ((cc)localObject).xor = Boolean.valueOf(this.zPB.xnY);
         localObject = (e)localObject;
-        AppMethodBeat.o(249970);
+        AppMethodBeat.o(278417);
         return localObject;
       }
-      Log.printInfoStack("FinderGridLayoutConfig", "type invalid", new Object[0]);
-      Object localObject = (e)new com.tencent.mm.plugin.finder.convert.f();
-      label163:
-      AppMethodBeat.o(249970);
+      if (paramInt == bp.class.hashCode())
+      {
+        localObject = (e)new cf();
+        AppMethodBeat.o(278417);
+        return localObject;
+      }
+      Object localObject = paramb;
+      if (localObject != null)
+      {
+        e locale = (e)((b)localObject).invoke(Integer.valueOf(paramInt));
+        localObject = locale;
+        if (locale != null) {}
+      }
+      else
+      {
+        localObject = a.dNd();
+      }
+      AppMethodBeat.o(278417);
       return localObject;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/profile/FinderProfileLayoutConfig$getItemDecoration$1", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/profile/FinderProfileLayoutConfig$getItemDecoration$1", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "plugin-finder_release"})
   public static final class b
     extends RecyclerView.h
   {
     public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
     {
-      AppMethodBeat.i(249971);
-      p.h(paramRect, "outRect");
-      p.h(paramView, "view");
-      p.h(paramRecyclerView, "parent");
-      p.h(params, "state");
+      AppMethodBeat.i(275588);
+      p.k(paramRect, "outRect");
+      p.k(paramView, "view");
+      p.k(paramRecyclerView, "parent");
+      p.k(params, "state");
       paramRecyclerView = paramView.getContext();
-      p.g(paramRecyclerView, "view.context");
-      int i = (int)paramRecyclerView.getResources().getDimension(2131165277);
+      p.j(paramRecyclerView, "view.context");
+      int i = (int)paramRecyclerView.getResources().getDimension(b.d.Edge_0_5_A);
       paramRecyclerView = paramView.getContext();
-      p.g(paramRecyclerView, "view.context");
-      int j = (int)paramRecyclerView.getResources().getDimension(2131166347);
+      p.j(paramRecyclerView, "view.context");
+      int j = (int)paramRecyclerView.getResources().getDimension(b.d.finder_0_25_A);
       paramRecyclerView = paramView.getLayoutParams();
       if (paramRecyclerView == null)
       {
-        paramRect = new t("null cannot be cast to non-null type android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams");
-        AppMethodBeat.o(249971);
+        paramRect = new t("null cannot be cast to non-null type androidx.recyclerview.widget.StaggeredGridLayoutManager.LayoutParams");
+        AppMethodBeat.o(275588);
         throw paramRect;
       }
-      if (((StaggeredGridLayoutManager.LayoutParams)paramRecyclerView).mJ())
+      if (((StaggeredGridLayoutManager.LayoutParams)paramRecyclerView).mF())
       {
         paramRect.left = 0;
         paramRect.right = 0;
         paramRect.bottom = 0;
         paramRect.top = 0;
-        AppMethodBeat.o(249971);
+        AppMethodBeat.o(275588);
         return;
       }
       paramView = paramView.getLayoutParams();
       if (paramView == null)
       {
-        paramRect = new t("null cannot be cast to non-null type android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams");
-        AppMethodBeat.o(249971);
+        paramRect = new t("null cannot be cast to non-null type androidx.recyclerview.widget.StaggeredGridLayoutManager.LayoutParams");
+        AppMethodBeat.o(275588);
         throw paramRect;
       }
-      if (((StaggeredGridLayoutManager.LayoutParams)paramView).kj() % 2 == 0)
+      if (((StaggeredGridLayoutManager.LayoutParams)paramView).kv() % 2 == 0)
       {
         paramRect.left = i;
         paramRect.right = j;
         paramRect.bottom = j;
         paramRect.top = j;
-        AppMethodBeat.o(249971);
+        AppMethodBeat.o(275588);
         return;
       }
       paramRect.left = j;
       paramRect.right = i;
       paramRect.bottom = j;
       paramRect.top = j;
-      AppMethodBeat.o(249971);
+      AppMethodBeat.o(275588);
     }
   }
 }

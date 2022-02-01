@@ -7,8 +7,8 @@ public enum g$c
   static
   {
     AppMethodBeat.i(107422);
-    tkS = new c("TYPE_IMAGE_AND_VIDEO");
-    tkT = new c[] { tkS };
+    wRq = new c("TYPE_IMAGE_AND_VIDEO");
+    wRr = new c[] { wRq };
     AppMethodBeat.o(107422);
   }
   

@@ -11,41 +11,41 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class f
 {
-  private static AtomicInteger xwf;
+  private static AtomicInteger CAa;
   
   static
   {
-    AppMethodBeat.i(186829);
-    xwf = new AtomicInteger(0);
-    AppMethodBeat.o(186829);
+    AppMethodBeat.i(231258);
+    CAa = new AtomicInteger(0);
+    AppMethodBeat.o(231258);
   }
   
-  public static void cyc()
+  public static void cMx()
   {
-    AppMethodBeat.i(186827);
-    xwf.getAndIncrement();
-    AppMethodBeat.o(186827);
+    AppMethodBeat.i(231254);
+    CAa.getAndIncrement();
+    AppMethodBeat.o(231254);
   }
   
   public static void remove()
   {
-    AppMethodBeat.i(186828);
-    int i = xwf.decrementAndGet();
+    AppMethodBeat.i(231256);
+    int i = CAa.decrementAndGet();
     Log.i("MicroMsg.LuggageGameWebViewActivityStack", "remove count = ".concat(String.valueOf(i)));
     if (i <= 0)
     {
-      if (a.dTW() != null)
+      if (a.exd() != null)
       {
-        a locala = a.dTW();
+        a locala = a.exd();
         Log.i("MicroMsg.GameJsCore", "stop");
-        locala.xzp = a.a.xzA;
-        locala.azS("onStop");
-        locala.cve = new MTimerHandler(new a.3(locala), false);
-        locala.cve.startTimer(300000L);
+        locala.CDu = a.a.CDF;
+        locala.aJE("onStop");
+        locala.cts = new MTimerHandler(new a.3(locala), false);
+        locala.cts.startTimer(300000L);
       }
-      b.vC();
+      b.tA();
     }
-    AppMethodBeat.o(186828);
+    AppMethodBeat.o(231256);
   }
 }
 

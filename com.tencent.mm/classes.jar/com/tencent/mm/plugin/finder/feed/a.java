@@ -3,21 +3,21 @@ package com.tencent.mm.plugin.finder.feed;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/FinderAtTimelineUIContract;", "", "()V", "Companion", "Presenter", "ViewCallback", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderAtTimelineUIContract;", "", "()V", "Companion", "Presenter", "ViewCallback", "plugin-finder_release"})
 public final class a
 {
   private static final String TAG = "Finder.FinderAtTimelineUIContract";
-  public static final a tLx;
+  public static final a xvd;
   
   static
   {
-    AppMethodBeat.i(243673);
-    tLx = new a((byte)0);
+    AppMethodBeat.i(287188);
+    xvd = new a((byte)0);
     TAG = "Finder.FinderAtTimelineUIContract";
-    AppMethodBeat.o(243673);
+    AppMethodBeat.o(287188);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/FinderAtTimelineUIContract$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderAtTimelineUIContract$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
 }
 

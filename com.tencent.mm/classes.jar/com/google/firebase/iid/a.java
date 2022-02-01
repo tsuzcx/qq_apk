@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 
 public final class a
 {
-  public static KeyPair ym()
+  public static KeyPair yG()
   {
     AppMethodBeat.i(4149);
     try
@@ -28,7 +28,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.a
  * JD-Core Version:    0.7.0.1
  */

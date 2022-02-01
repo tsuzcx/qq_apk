@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.multitalk.ui.widget.projector;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.s;
 import android.view.View;
 import android.widget.FrameLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.multitalk.ui.widget.projector.recyclerview.ScreenThumbLayoutManager;
 import com.tencent.mm.plugin.multitalk.ui.widget.projector.recyclerview.b;
@@ -20,188 +20,188 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenProjectThumbUI;", "", "context", "Landroid/content/Context;", "statusManager", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;)V", "TOTAL_PAGES", "", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "currentPage", "isLastPage", "", "isLoading", "mCurrentHeight", "getMCurrentHeight", "()I", "setMCurrentHeight", "(I)V", "value", "mCurrentIndex", "getMCurrentIndex", "setMCurrentIndex", "mCurrentStr", "", "mCurrentWidth", "getMCurrentWidth", "setMCurrentWidth", "mItemDecoration", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/recyclerview/ScreenThumbLayoutItemDecoration;", "mMaxCount", "getMMaxCount", "setMMaxCount", "mScreenShadowBg", "Landroid/view/View;", "mScreenThumbAdapter", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/recyclerview/ScreenProjectThumbLayoutAdapter;", "getMScreenThumbAdapter", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/recyclerview/ScreenProjectThumbLayoutAdapter;", "setMScreenThumbAdapter", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/recyclerview/ScreenProjectThumbLayoutAdapter;)V", "mScreenThumbIndexRoot", "Landroid/widget/FrameLayout;", "mScreenThumbIndexUI", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenProjectThumbIndexUI;", "mScreenThumbRootView", "mThumbnailLayoutManager", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/recyclerview/ScreenThumbLayoutManager;", "screenThumbRecyclerView", "Landroid/support/v7/widget/RecyclerView;", "getStatusManager", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;", "setStatusManager", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;)V", "thumbnailList", "Ljava/util/concurrent/CopyOnWriteArrayList;", "Landroid/graphics/Bitmap;", "thumbnailUiLayout", "getThumbnailUiLayout", "()Landroid/view/View;", "setThumbnailUiLayout", "(Landroid/view/View;)V", "applyClickEvent", "", "applyCurrentThumbnail", "pageIndex", "mCurrentPageWidth", "mCurrentPageHeight", "getLayout", "viewGroup", "hide", "loadNextPage", "onThumbnailLoad", "thumbnail", "show", "showIndexText", "str", "switchToDoodleIndex", "switchToPage", "Companion", "plugin-multitalk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenProjectThumbUI;", "", "context", "Landroid/content/Context;", "statusManager", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;)V", "TOTAL_PAGES", "", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "currentPage", "isLastPage", "", "isLoading", "mCurrentHeight", "getMCurrentHeight", "()I", "setMCurrentHeight", "(I)V", "value", "mCurrentIndex", "getMCurrentIndex", "setMCurrentIndex", "mCurrentStr", "", "mCurrentWidth", "getMCurrentWidth", "setMCurrentWidth", "mItemDecoration", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/recyclerview/ScreenThumbLayoutItemDecoration;", "mMaxCount", "getMMaxCount", "setMMaxCount", "mScreenShadowBg", "Landroid/view/View;", "mScreenThumbAdapter", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/recyclerview/ScreenProjectThumbLayoutAdapter;", "getMScreenThumbAdapter", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/recyclerview/ScreenProjectThumbLayoutAdapter;", "setMScreenThumbAdapter", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/recyclerview/ScreenProjectThumbLayoutAdapter;)V", "mScreenThumbIndexRoot", "Landroid/widget/FrameLayout;", "mScreenThumbIndexUI", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenProjectThumbIndexUI;", "mScreenThumbRootView", "mThumbnailLayoutManager", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/recyclerview/ScreenThumbLayoutManager;", "screenThumbRecyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "getStatusManager", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;", "setStatusManager", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;)V", "thumbnailList", "Ljava/util/concurrent/CopyOnWriteArrayList;", "Landroid/graphics/Bitmap;", "thumbnailUiLayout", "getThumbnailUiLayout", "()Landroid/view/View;", "setThumbnailUiLayout", "(Landroid/view/View;)V", "applyClickEvent", "", "applyCurrentThumbnail", "pageIndex", "mCurrentPageWidth", "mCurrentPageHeight", "getLayout", "viewGroup", "hide", "loadNextPage", "onThumbnailLoad", "thumbnail", "show", "showIndexText", "str", "switchToDoodleIndex", "switchToPage", "Companion", "plugin-multitalk_release"})
 public final class o
 {
-  static int zXR;
-  public static final o.a zXS;
+  static int FDD;
+  public static final o.a FDE;
+  int FDA;
+  int FDB;
+  int FDC;
+  String FDn;
+  public CopyOnWriteArrayList<Bitmap> FDp;
+  View FDq;
+  ScreenThumbLayoutManager FDr;
+  e FDs;
+  b FDt;
+  RecyclerView FDu;
+  FrameLayout FDv;
+  n FDw;
+  FrameLayout FDx;
+  View FDy;
+  int FDz;
+  a Fwg;
   Context context;
   boolean isLoading;
-  boolean jUX;
   int mMaxCount;
-  int rmJ;
-  a zQD;
-  String zXB;
-  public CopyOnWriteArrayList<Bitmap> zXD;
-  View zXE;
-  ScreenThumbLayoutManager zXF;
-  e zXG;
-  b zXH;
-  RecyclerView zXI;
-  FrameLayout zXJ;
-  n zXK;
-  FrameLayout zXL;
-  View zXM;
-  int zXN;
-  int zXO;
-  int zXP;
-  int zXQ;
+  boolean mMk;
+  int uPV;
   
   static
   {
-    AppMethodBeat.i(240048);
-    zXS = new o.a((byte)0);
-    zXR = 10;
-    AppMethodBeat.o(240048);
+    AppMethodBeat.i(196498);
+    FDE = new o.a((byte)0);
+    FDD = 10;
+    AppMethodBeat.o(196498);
   }
   
   public o(Context paramContext, a parama)
   {
-    AppMethodBeat.i(240047);
+    AppMethodBeat.i(196496);
     this.context = paramContext;
-    this.zQD = parama;
-    this.zXD = new CopyOnWriteArrayList();
-    this.rmJ = -1;
+    this.Fwg = parama;
+    this.FDp = new CopyOnWriteArrayList();
+    this.uPV = -1;
     this.mMaxCount = -1;
-    this.zXQ = 3;
-    AppMethodBeat.o(240047);
+    this.FDC = 3;
+    AppMethodBeat.o(196496);
   }
   
-  private void epF()
+  private void eZt()
   {
-    AppMethodBeat.i(240044);
-    FrameLayout localFrameLayout = this.zXL;
+    AppMethodBeat.i(196491);
+    FrameLayout localFrameLayout = this.FDx;
     if (localFrameLayout != null)
     {
       localFrameLayout.removeAllViews();
-      n localn = this.zXK;
+      n localn = this.FDw;
       if (localn != null)
       {
         localn.c(this.context, localFrameLayout);
-        AppMethodBeat.o(240044);
+        AppMethodBeat.o(196491);
         return;
       }
-      AppMethodBeat.o(240044);
+      AppMethodBeat.o(196491);
       return;
     }
-    AppMethodBeat.o(240044);
+    AppMethodBeat.o(196491);
   }
   
-  public final void RB(int paramInt)
+  public final void XR(int paramInt)
   {
-    AppMethodBeat.i(240046);
-    if ((this.zXI != null) && (paramInt >= 0) && (this.mMaxCount >= 0))
+    AppMethodBeat.i(196494);
+    if ((this.FDu != null) && (paramInt >= 0) && (this.mMaxCount >= 0))
     {
-      Object localObject = this.zXK;
+      Object localObject = this.FDw;
       if (localObject != null) {
-        ((n)localObject).aGE(paramInt + 1 + '/' + this.mMaxCount);
+        ((n)localObject).aQS(paramInt + 1 + '/' + this.mMaxCount);
       }
-      localObject = this.zXH;
+      localObject = this.FDt;
       if (localObject != null) {
-        ((b)localObject).RB(paramInt);
+        ((b)localObject).XR(paramInt);
       }
-      localObject = this.zXF;
+      localObject = this.FDr;
       if (localObject != null)
       {
-        RecyclerView localRecyclerView = this.zXI;
+        RecyclerView localRecyclerView = this.FDu;
         if (localRecyclerView == null) {
-          p.hyc();
+          p.iCn();
         }
         ((ScreenThumbLayoutManager)localObject).smoothScrollToPosition(localRecyclerView, new RecyclerView.s(), paramInt);
-        AppMethodBeat.o(240046);
+        AppMethodBeat.o(196494);
         return;
       }
     }
-    AppMethodBeat.o(240046);
+    AppMethodBeat.o(196494);
   }
   
-  public final void aGE(String paramString)
+  public final void aQS(String paramString)
   {
-    AppMethodBeat.i(240042);
-    p.h(paramString, "str");
-    Object localObject = this.zXL;
+    AppMethodBeat.i(196488);
+    p.k(paramString, "str");
+    Object localObject = this.FDx;
     if (localObject != null) {
       ((FrameLayout)localObject).setVisibility(0);
     }
-    this.zXB = paramString;
-    localObject = this.zXK;
+    this.FDn = paramString;
+    localObject = this.FDw;
     if (localObject != null)
     {
-      ((n)localObject).aGE(paramString);
-      AppMethodBeat.o(240042);
+      ((n)localObject).aQS(paramString);
+      AppMethodBeat.o(196488);
       return;
     }
-    AppMethodBeat.o(240042);
+    AppMethodBeat.o(196488);
   }
   
-  public final void epE()
+  public final void eZs()
   {
-    AppMethodBeat.i(240041);
+    AppMethodBeat.i(196487);
     Bundle localBundle = new Bundle();
-    localBundle.putInt("thumb_current_page", this.zXP);
-    this.zQD.a(a.c.zVy, localBundle);
-    AppMethodBeat.o(240041);
+    localBundle.putInt("thumb_current_page", this.FDB);
+    this.Fwg.a(a.c.FBi, localBundle);
+    AppMethodBeat.o(196487);
   }
   
   public final void hide()
   {
-    AppMethodBeat.i(240043);
-    epF();
-    if ((this.zQD.epf() == 90) || (this.zQD.epf() == 270))
+    AppMethodBeat.i(196490);
+    eZt();
+    if ((this.Fwg.eYV() == 90) || (this.Fwg.eYV() == 270))
     {
-      localObject = this.zXI;
+      localObject = this.FDu;
       if (localObject != null)
       {
         ((RecyclerView)localObject).setVisibility(4);
-        AppMethodBeat.o(240043);
+        AppMethodBeat.o(196490);
         return;
       }
-      AppMethodBeat.o(240043);
+      AppMethodBeat.o(196490);
       return;
     }
-    Object localObject = this.zXI;
+    Object localObject = this.FDu;
     if (localObject != null) {
       ((RecyclerView)localObject).setVisibility(4);
     }
-    localObject = this.zXM;
+    localObject = this.FDy;
     if (localObject != null)
     {
       ((View)localObject).setVisibility(4);
-      AppMethodBeat.o(240043);
+      AppMethodBeat.o(196490);
       return;
     }
-    AppMethodBeat.o(240043);
+    AppMethodBeat.o(196490);
   }
   
   public final void show()
   {
-    AppMethodBeat.i(240045);
-    epF();
-    Object localObject = this.zXK;
+    AppMethodBeat.i(196492);
+    eZt();
+    Object localObject = this.FDw;
     if (localObject != null) {
-      ((n)localObject).eoD();
+      ((n)localObject).dGn();
     }
-    localObject = this.zXL;
-    if (localObject != null) {
-      ((FrameLayout)localObject).setVisibility(0);
-    }
-    localObject = this.zXJ;
+    localObject = this.FDx;
     if (localObject != null) {
       ((FrameLayout)localObject).setVisibility(0);
     }
-    localObject = this.zXI;
+    localObject = this.FDv;
+    if (localObject != null) {
+      ((FrameLayout)localObject).setVisibility(0);
+    }
+    localObject = this.FDu;
     if (localObject != null) {
       ((RecyclerView)localObject).setVisibility(0);
     }
-    localObject = this.zXM;
+    localObject = this.FDy;
     if (localObject != null) {
       ((View)localObject).setVisibility(0);
     }
-    RB(this.rmJ);
-    AppMethodBeat.o(240045);
+    XR(this.uPV);
+    AppMethodBeat.o(196492);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenProjectThumbUI$applyClickEvent$2", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/recyclerview/ScreenProjectThumbScrollListener;", "getTotalPageCount", "", "isLastPage", "", "isLoading", "loadMoreItems", "", "plugin-multitalk_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenProjectThumbUI$applyClickEvent$2", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/recyclerview/ScreenProjectThumbScrollListener;", "getTotalPageCount", "", "isLastPage", "", "isLoading", "loadMoreItems", "", "plugin-multitalk_release"})
   public static final class b
     extends c
   {
@@ -210,34 +210,34 @@ public final class o
       super();
     }
     
-    public final void epH()
+    public final void eZv()
     {
-      AppMethodBeat.i(240037);
-      o.b(this.zXT);
-      o localo = this.zXT;
+      AppMethodBeat.i(199729);
+      o.b(this.FDF);
+      o localo = this.FDF;
       o.a(localo, o.c(localo) + 1);
-      this.zXT.epE();
-      AppMethodBeat.o(240037);
+      this.FDF.eZs();
+      AppMethodBeat.o(199729);
     }
     
-    public final boolean epI()
+    public final boolean eZw()
     {
-      AppMethodBeat.i(240038);
-      boolean bool = o.d(this.zXT);
-      AppMethodBeat.o(240038);
+      AppMethodBeat.i(199731);
+      boolean bool = o.d(this.FDF);
+      AppMethodBeat.o(199731);
       return bool;
     }
     
     public final boolean isLoading()
     {
-      AppMethodBeat.i(240039);
-      boolean bool = o.a(this.zXT);
-      AppMethodBeat.o(240039);
+      AppMethodBeat.i(199734);
+      boolean bool = o.a(this.FDF);
+      AppMethodBeat.o(199734);
       return bool;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "view", "Landroid/view/View;", "tag", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "view", "Landroid/view/View;", "tag", "", "invoke"})
   static final class c
     extends q
     implements m<View, Integer, x>
@@ -250,7 +250,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.projector.o
  * JD-Core Version:    0.7.0.1
  */

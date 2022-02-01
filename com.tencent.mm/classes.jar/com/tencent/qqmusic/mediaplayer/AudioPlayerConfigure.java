@@ -84,7 +84,7 @@ public class AudioPlayerConfigure
   {
     AppMethodBeat.i(114394);
     if (paramILog != null) {
-      paramILog.i("AudioPlayerConfigure", "QQMusicAudioPlayer codec version:1.29.1");
+      paramILog.i("AudioPlayerConfigure", "QQMusicAudioPlayer codec version:1.30.3");
     }
     Logger.setLog(paramILog);
     AppMethodBeat.o(114394);
@@ -99,7 +99,7 @@ public class AudioPlayerConfigure
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.AudioPlayerConfigure
  * JD-Core Version:    0.7.0.1
  */

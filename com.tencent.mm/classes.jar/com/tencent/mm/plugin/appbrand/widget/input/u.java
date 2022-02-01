@@ -5,8 +5,9 @@ import android.content.res.Resources;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
 import android.view.View;
+import androidx.core.g.w;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.widget.d.a;
+import com.tencent.mm.plugin.appbrand.widget.e.a;
 import com.tencent.mm.sdk.platformtools.KeyBoardUtil;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.Iterator;
@@ -15,30 +16,54 @@ import java.util.LinkedHashSet;
 public final class u
   implements a
 {
-  private static Integer otI = null;
-  private int crS;
-  private final int[] crT;
-  private final Rect crU;
-  private boolean crV;
-  private View crW;
-  private final LinkedHashSet<c> crY;
-  b otH;
+  private static Integer rvV = null;
+  private int cpY;
+  private final int[] cpZ;
+  private final Rect cqa;
+  private boolean cqb;
+  private View cqc;
+  private final LinkedHashSet<c> cqe;
+  public int rvS;
+  ap rvT;
+  b rvU;
   
-  public u()
+  u()
   {
     AppMethodBeat.i(131506);
-    this.crS = 0;
-    this.crT = new int[2];
-    this.crU = new Rect();
-    this.crV = false;
-    this.crY = new LinkedHashSet();
+    this.rvS = 1;
+    this.cpY = 0;
+    this.cpZ = new int[2];
+    this.cqa = new Rect();
+    this.cqb = false;
+    this.cqe = new LinkedHashSet();
     AppMethodBeat.o(131506);
+  }
+  
+  private static boolean T(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(230546);
+    if (paramInt <= 0)
+    {
+      AppMethodBeat.o(230546);
+      return false;
+    }
+    if (rvV == null) {
+      rvV = Integer.valueOf(KeyBoardUtil.getValidPanelHeight(paramContext));
+    }
+    if (rvV.intValue() != paramInt)
+    {
+      rvV = Integer.valueOf(paramInt);
+      AppMethodBeat.o(230546);
+      return true;
+    }
+    AppMethodBeat.o(230546);
+    return false;
   }
   
   private void a(a parama)
   {
     AppMethodBeat.i(131511);
-    Iterator localIterator = ((LinkedHashSet)this.crY.clone()).iterator();
+    Iterator localIterator = ((LinkedHashSet)this.cqe.clone()).iterator();
     while (localIterator.hasNext()) {
       parama.c((c)localIterator.next());
     }
@@ -48,13 +73,13 @@ public final class u
   private Context getContext()
   {
     AppMethodBeat.i(131508);
-    if (this.crW == null)
+    if (this.cqc == null)
     {
       localContext = MMApplicationContext.getContext();
       AppMethodBeat.o(131508);
       return localContext;
     }
-    Context localContext = this.crW.getContext();
+    Context localContext = this.cqc.getContext();
     AppMethodBeat.o(131508);
     return localContext;
   }
@@ -62,16 +87,16 @@ public final class u
   private int getFrameHeight()
   {
     AppMethodBeat.i(131509);
-    if (this.crW == null) {}
-    for (Object localObject = null; localObject == null; localObject = this.crW.getRootView())
+    if (this.cqc == null) {}
+    for (Object localObject = null; localObject == null; localObject = this.cqc.getRootView())
     {
       AppMethodBeat.o(131509);
       return 0;
     }
-    localObject = this.crU;
-    getWindowVisibleDisplayFrame((Rect)localObject);
-    if (android.support.v4.view.u.az(this.crW)) {}
-    for (int i = this.crW.getMeasuredHeight();; i = getContext().getResources().getDisplayMetrics().heightPixels)
+    localObject = this.cqa;
+    m((Rect)localObject);
+    if (w.ah(this.cqc)) {}
+    for (int i = this.cqc.getMeasuredHeight();; i = getContext().getResources().getDisplayMetrics().heightPixels)
     {
       int j = ((Rect)localObject).top;
       AppMethodBeat.o(131509);
@@ -79,23 +104,72 @@ public final class u
     }
   }
   
-  private void getWindowVisibleDisplayFrame(Rect paramRect)
+  public static int getValidPanelHeight(Context paramContext)
+  {
+    AppMethodBeat.i(230547);
+    if (rvV == null) {
+      rvV = Integer.valueOf(KeyBoardUtil.getValidPanelHeight(paramContext));
+    }
+    int i = rvV.intValue();
+    AppMethodBeat.o(230547);
+    return i;
+  }
+  
+  private void ks(boolean paramBoolean)
+  {
+    AppMethodBeat.i(230542);
+    if (this.rvU != null) {
+      this.rvU.ca(paramBoolean);
+    }
+    AppMethodBeat.o(230542);
+  }
+  
+  private void m(Rect paramRect)
   {
     AppMethodBeat.i(131507);
-    if (this.crW != null)
+    if (this.cqc != null)
     {
-      this.crW.getWindowVisibleDisplayFrame(paramRect);
-      this.crW.getLocationInWindow(this.crT);
-      paramRect.top = this.crT[1];
+      this.cqc.getWindowVisibleDisplayFrame(paramRect);
+      this.cqc.getLocationInWindow(this.cpZ);
+      paramRect.top = this.cpZ[1];
     }
     AppMethodBeat.o(131507);
+  }
+  
+  public final void DP(int paramInt)
+  {
+    AppMethodBeat.i(230544);
+    this.rvS = paramInt;
+    switch (this.rvS)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(230544);
+      return;
+      if (this.rvT != null)
+      {
+        this.rvT.close();
+        this.rvT.cpl();
+        AppMethodBeat.o(230544);
+        return;
+        if (this.rvT == null)
+        {
+          this.rvS = 1;
+          AppMethodBeat.o(230544);
+          return;
+        }
+        this.rvT.cpk();
+        this.rvT.start();
+      }
+    }
   }
   
   public final void a(c paramc)
   {
     AppMethodBeat.i(131512);
-    if ((paramc != null) && (!this.crY.contains(paramc))) {
-      this.crY.add(paramc);
+    if ((paramc != null) && (!this.cqe.contains(paramc))) {
+      this.cqe.add(paramc);
     }
     AppMethodBeat.o(131512);
   }
@@ -104,89 +178,78 @@ public final class u
   {
     AppMethodBeat.i(131513);
     if (paramc != null) {
-      this.crY.remove(paramc);
+      this.cqe.remove(paramc);
     }
     AppMethodBeat.o(131513);
   }
   
-  public final void bZ(View paramView)
+  public final void cr(View paramView)
   {
-    int j = 1;
+    int i = 1;
     AppMethodBeat.i(131510);
-    this.crW = paramView;
-    paramView = this.crU;
-    getWindowVisibleDisplayFrame(paramView);
-    int k = paramView.height();
-    if (this.crS == 0) {
-      this.crS = k;
-    }
-    final int m = getFrameHeight() - k;
-    if (m > 0)
+    this.cqc = paramView;
+    if (1 != this.rvS)
     {
-      paramView = getContext();
-      if (m <= 0) {
-        break label234;
-      }
-      if (otI == null) {
-        otI = Integer.valueOf(KeyBoardUtil.getValidPanelHeight(paramView));
-      }
-      if (otI.intValue() == m) {
-        break label234;
-      }
-      otI = Integer.valueOf(m);
-      i = 1;
+      AppMethodBeat.o(131510);
+      return;
+    }
+    paramView = this.cqa;
+    m(paramView);
+    int j = paramView.height();
+    if (this.cpY == 0) {
+      this.cpY = j;
+    }
+    final int k = getFrameHeight() - j;
+    final boolean bool;
+    if (k > 0)
+    {
+      bool = T(getContext(), k);
       a(new a()
       {
         public final void c(u.c paramAnonymousc)
         {
           AppMethodBeat.i(131504);
-          if (paramAnonymousc.getHeight() != m) {
-            paramAnonymousc.hF(m);
+          if (paramAnonymousc.getHeight() != k) {
+            paramAnonymousc.iF(k);
           }
           AppMethodBeat.o(131504);
         }
       });
-      if ((this.otH != null) && ((i != 0) || (this.otH.getHeight() != m))) {
-        this.otH.hF(m);
+      if ((this.rvU != null) && ((bool) || (this.rvU.getHeight() != k))) {
+        this.rvU.iF(k);
       }
     }
-    final boolean bool;
-    if (getFrameHeight() > k)
+    if (getFrameHeight() > j)
     {
       bool = true;
-      label164:
-      if (this.crV == bool) {
-        break label245;
+      if (this.cqb == bool) {
+        break label200;
       }
     }
-    label234:
-    label245:
-    for (int i = j;; i = 0)
+    for (;;)
     {
       if (i != 0)
       {
-        if (this.otH != null) {
-          this.otH.bQ(bool);
-        }
+        ks(bool);
         a(new a()
         {
           public final void c(u.c paramAnonymousc)
           {
             AppMethodBeat.i(131505);
-            paramAnonymousc.bQ(bool);
+            paramAnonymousc.ca(bool);
             AppMethodBeat.o(131505);
           }
         });
       }
-      this.crV = bool;
-      this.crS = k;
-      this.crW = null;
+      this.cqb = bool;
+      this.cpY = j;
+      this.cqc = null;
       AppMethodBeat.o(131510);
       return;
-      i = 0;
-      break;
       bool = false;
-      break label164;
+      break;
+      label200:
+      i = 0;
     }
   }
   
@@ -201,16 +264,16 @@ public final class u
   
   public static abstract interface c
   {
-    public abstract void bQ(boolean paramBoolean);
+    public abstract void ca(boolean paramBoolean);
     
     public abstract int getHeight();
     
-    public abstract void hF(int paramInt);
+    public abstract void iF(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.u
  * JD-Core Version:    0.7.0.1
  */

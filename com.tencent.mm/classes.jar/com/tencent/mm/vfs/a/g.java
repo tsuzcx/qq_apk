@@ -7,56 +7,56 @@ import java.util.NoSuchElementException;
 final class g<S, T>
   implements Iterator<T>
 {
-  private final Iterator<? extends S> ReR;
-  private T ReT;
-  private boolean ReU;
-  private final f.a<S, T> ReY;
+  private final Iterator<? extends S> YFL;
+  private T YFN;
+  private boolean YFO;
+  private final f.a<S, T> YFS;
   
   g(Iterator<? extends S> paramIterator, f.a<S, T> parama)
   {
-    this.ReR = paramIterator;
-    this.ReY = parama;
+    this.YFL = paramIterator;
+    this.YFS = parama;
   }
   
   public final boolean hasNext()
   {
-    AppMethodBeat.i(187780);
-    if (this.ReU)
+    AppMethodBeat.i(237087);
+    if (this.YFO)
     {
-      AppMethodBeat.o(187780);
+      AppMethodBeat.o(237087);
       return true;
     }
-    if (this.ReR.hasNext())
+    if (this.YFL.hasNext())
     {
-      Object localObject = this.ReR.next();
-      this.ReT = this.ReY.er(localObject);
-      this.ReU = true;
-      AppMethodBeat.o(187780);
+      Object localObject = this.YFL.next();
+      this.YFN = this.YFS.ex(localObject);
+      this.YFO = true;
+      AppMethodBeat.o(237087);
       return true;
     }
-    AppMethodBeat.o(187780);
+    AppMethodBeat.o(237087);
     return false;
   }
   
   public final T next()
   {
-    AppMethodBeat.i(187781);
-    if ((!this.ReU) && (!hasNext()))
+    AppMethodBeat.i(237089);
+    if ((!this.YFO) && (!hasNext()))
     {
       localObject = new NoSuchElementException();
-      AppMethodBeat.o(187781);
+      AppMethodBeat.o(237089);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.ReT;
-    this.ReT = null;
-    this.ReU = false;
-    AppMethodBeat.o(187781);
+    Object localObject = this.YFN;
+    this.YFN = null;
+    this.YFO = false;
+    AppMethodBeat.o(237089);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vfs.a.g
  * JD-Core Version:    0.7.0.1
  */

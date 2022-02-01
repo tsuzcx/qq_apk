@@ -1,55 +1,55 @@
 package kotlin.l.b.a.b.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l.b.a.b.h.j.a;
-import kotlin.l.b.a.b.h.j.b;
+import kotlin.l.b.a.b.h.k.a;
+import kotlin.l.b.a.b.h.k.b;
 
 public enum a$b$b
-  implements j.a
+  implements k.a
 {
-  private static j.b<b> Txp;
+  private static k.b<b> abag;
   private final int value;
   
   static
   {
     AppMethodBeat.i(58425);
-    TxK = new b("CLASS", 0, 0);
-    TxL = new b("INTERFACE", 1, 1);
-    TxM = new b("ENUM_CLASS", 2, 2);
-    TxN = new b("ENUM_ENTRY", 3, 3);
-    TxO = new b("ANNOTATION_CLASS", 4, 4);
-    TxP = new b("OBJECT", 5, 5);
-    TxQ = new b("COMPANION_OBJECT", 6, 6);
-    TxR = new b[] { TxK, TxL, TxM, TxN, TxO, TxP, TxQ };
-    Txp = new j.b() {};
+    abaB = new b("CLASS", 0, 0);
+    abaC = new b("INTERFACE", 1, 1);
+    abaD = new b("ENUM_CLASS", 2, 2);
+    abaE = new b("ENUM_ENTRY", 3, 3);
+    abaF = new b("ANNOTATION_CLASS", 4, 4);
+    abaG = new b("OBJECT", 5, 5);
+    abaH = new b("COMPANION_OBJECT", 6, 6);
+    abaI = new b[] { abaB, abaC, abaD, abaE, abaF, abaG, abaH };
+    abag = new k.b() {};
     AppMethodBeat.o(58425);
   }
   
-  private a$b$b(int paramInt1, int paramInt2)
+  private a$b$b(int paramInt)
   {
-    this.value = paramInt1;
+    this.value = paramInt;
   }
   
-  public static b auf(int paramInt)
+  public static b aDZ(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 0: 
-      return TxK;
+      return abaB;
     case 1: 
-      return TxL;
+      return abaC;
     case 2: 
-      return TxM;
+      return abaD;
     case 3: 
-      return TxN;
+      return abaE;
     case 4: 
-      return TxO;
+      return abaF;
     case 5: 
-      return TxP;
+      return abaG;
     }
-    return TxQ;
+    return abaH;
   }
   
   public final int getNumber()
@@ -59,7 +59,7 @@ public enum a$b$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.e.a.b.b
  * JD-Core Version:    0.7.0.1
  */

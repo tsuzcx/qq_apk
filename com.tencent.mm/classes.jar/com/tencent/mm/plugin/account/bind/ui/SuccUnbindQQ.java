@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.account.bind.a.f;
+import com.tencent.mm.plugin.account.bind.a.i;
 import com.tencent.mm.ui.MMWizardActivity;
 
 public class SuccUnbindQQ
@@ -12,14 +14,14 @@ public class SuccUnbindQQ
 {
   public int getLayoutId()
   {
-    return 2131496637;
+    return a.f.succ_unbindqq;
   }
   
   public void initView()
   {
     AppMethodBeat.i(110200);
-    setMMTitle(2131766895);
-    addTextOptionMenu(0, getString(2131755858), new MenuItem.OnMenuItemClickListener()
+    setMMTitle(a.i.unbind_qq);
+    addTextOptionMenu(0, getString(a.i.app_finish), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
@@ -62,7 +64,7 @@ public class SuccUnbindQQ
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.SuccUnbindQQ
  * JD-Core Version:    0.7.0.1
  */

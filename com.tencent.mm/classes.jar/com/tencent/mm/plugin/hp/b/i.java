@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.hp.b;
 
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kk;
+import com.tencent.mm.f.a.lb;
 import com.tencent.mm.protocal.b.a.a;
 import com.tencent.mm.protocal.b.a.b;
 import com.tencent.mm.sdk.event.EventCenter;
@@ -28,22 +28,22 @@ public final class i
       public final void run()
       {
         AppMethodBeat.i(117442);
-        kk localkk = new kk();
+        lb locallb = new lb();
         b localb = new b();
-        localb.title = this.dqb;
+        localb.title = this.cWz;
         localb.msg = paramString2;
-        localb.KBq = new LinkedList();
+        localb.RDg = new LinkedList();
         a locala = new a();
-        locala.KBo = paramString3;
-        localb.KBq.add(locala);
+        locala.RDe = paramString3;
+        localb.RDg.add(locala);
         locala = new a();
-        locala.KBo = paramString4;
-        localb.KBq.add(locala);
-        localkk.dPw.type = 1;
-        localkk.dPw.dPx = localb;
-        localkk.dPw.dPy = paramOnClickListener1;
-        localkk.dPw.dPz = paramOnClickListener2;
-        EventCenter.instance.publish(localkk);
+        locala.RDe = paramString4;
+        localb.RDg.add(locala);
+        locallb.fIK.type = 1;
+        locallb.fIK.fIL = localb;
+        locallb.fIK.fIM = paramOnClickListener1;
+        locallb.fIK.fIN = paramOnClickListener2;
+        EventCenter.instance.publish(locallb);
         AppMethodBeat.o(117442);
       }
     });

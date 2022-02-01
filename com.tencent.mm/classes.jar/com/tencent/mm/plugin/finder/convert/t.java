@@ -1,164 +1,249 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.a;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.ViewGroup;
+import android.widget.FrameLayout.LayoutParams;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.i;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.ad;
-import com.tencent.mm.plugin.finder.video.FinderFullSeekBarLayout;
-import com.tencent.mm.plugin.finder.video.FinderVideoLayout.b;
-import com.tencent.mm.plugin.finder.video.k;
-import com.tencent.mm.plugin.finder.view.FinderMediaBanner;
-import com.tencent.mm.plugin.finder.view.adapter.FinderMediaBannerAdapter;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.widget.imageview.WeImageView;
-import java.util.List;
-import kotlin.g.a.m;
+import com.tencent.mm.plugin.finder.b.e;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.model.aj;
+import com.tencent.mm.plugin.finder.model.f;
+import com.tencent.mm.view.d;
+import com.tencent.mm.view.recyclerview.e;
+import com.tencent.mm.view.recyclerview.i;
+import java.util.HashSet;
+import java.util.Iterator;
 import kotlin.g.b.p;
-import kotlin.g.b.q;
 import kotlin.l;
-import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedFullVideoConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedFullConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedVideo;", "videoCore", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;", "contract", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedContract;", "safeMode", "", "tabType", "", "(Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;Lcom/tencent/mm/plugin/finder/feed/FinderFeedContract;ZI)V", "convertMedia", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "formatSecToMin", "", "second", "getLayoutId", "jumpToMegaVideo", "context", "Landroid/content/Context;", "onBindViewHolder", "isHotPatch", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedFullMergedHeaderConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderHeaderFullMergedData;", "()V", "feedCommentFailedNotifyConvert", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedCommentFailedNotifyConvert;", "feedMsgNotifyConvert", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedMsgNotifyConvert;", "feedMsgNotifyHolder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "privateMsgNotifyConvert", "Lcom/tencent/mm/plugin/finder/convert/FinderPrivateMsgNotifyConvert;", "privateMsgNotifyHolder", "getLayoutId", "", "handleCommentFailed", "", "parent", "Landroid/view/ViewGroup;", "item", "holder", "position", "type", "isHotPatch", "", "payloads", "", "", "onBindViewHolder", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "Companion", "plugin-finder_release"})
 public final class t
-  extends o<ad>
+  extends e<aj>
 {
-  public static final a tCP;
-  private final i tAi;
-  private final k tCD;
+  public static final a xlh;
+  private final ad xlc;
+  private final ca xld;
+  private final j xle;
+  private i xlf;
+  private i xlg;
   
   static
   {
-    AppMethodBeat.i(243008);
-    tCP = new a((byte)0);
-    AppMethodBeat.o(243008);
+    AppMethodBeat.i(285300);
+    xlh = new a((byte)0);
+    AppMethodBeat.o(285300);
   }
   
-  public t(k paramk, i parami, boolean paramBoolean, int paramInt)
+  public t()
   {
-    super(parami, paramBoolean, paramInt);
-    AppMethodBeat.i(243006);
-    this.tCD = paramk;
-    this.tAi = parami;
-    AppMethodBeat.o(243006);
+    AppMethodBeat.i(285299);
+    this.xlc = new ad();
+    this.xld = new ca();
+    this.xle = new j();
+    AppMethodBeat.o(285299);
   }
   
-  private void a(com.tencent.mm.view.recyclerview.h paramh, ad paramad, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
+  public final void a(RecyclerView paramRecyclerView, i parami, int paramInt)
   {
-    AppMethodBeat.i(243003);
-    p.h(paramh, "holder");
-    p.h(paramad, "item");
-    super.a(paramh, (BaseFinderFeed)paramad, paramInt1, paramInt2, paramBoolean, paramList);
-    if (paramad.isPreview)
+    AppMethodBeat.i(285296);
+    p.k(paramRecyclerView, "recyclerView");
+    p.k(parami, "holder");
+    Object localObject1 = com.tencent.mm.ui.ad.kS(parami.getContext());
+    paramInt = b.g._feed_header_msg_notify_item;
+    Object localObject2 = parami.amk;
+    if (localObject2 == null)
     {
-      paramInt1 = com.tencent.mm.cb.a.n(paramh.getContext(), 2131100411);
-      paramad = paramh.Mn(2131297134);
-      p.g(paramad, "holder.getView<View>(R.id.avatar_iv)");
-      paramad.setEnabled(false);
-      paramad = paramh.Mn(2131305436);
-      p.g(paramad, "holder.getView<View>(R.id.nickname)");
-      paramad.setEnabled(false);
-      paramad = paramh.Mn(2131301674);
-      if (paramad != null)
+      paramRecyclerView = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(285296);
+      throw paramRecyclerView;
+    }
+    localObject1 = ((LayoutInflater)localObject1).inflate(paramInt, (ViewGroup)localObject2, false);
+    localObject2 = com.tencent.mm.ui.ad.kS(parami.getContext());
+    paramInt = b.g._feed_header_private_msg_notify_item;
+    View localView = parami.amk;
+    if (localView == null)
+    {
+      paramRecyclerView = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(285296);
+      throw paramRecyclerView;
+    }
+    localObject2 = ((LayoutInflater)localObject2).inflate(paramInt, (ViewGroup)localView, false);
+    paramInt = d.e(paramRecyclerView.getContext(), 6.0F);
+    localView = ((View)localObject2).findViewById(b.f.msg_layout);
+    Object localObject3;
+    if (localView != null)
+    {
+      localObject3 = localView.getLayoutParams();
+      if (localObject3 == null)
       {
-        ((TextView)paramad.findViewById(2131307800)).setTextColor(paramInt1);
-        ((WeImageView)paramad.findViewById(2131302494)).setIconColor(paramInt1);
-        paramList = paramad.findViewById(2131307809);
-        p.g(paramList, "opLayout.findViewById<Vi….id.share_icon_container)");
-        paramList.setEnabled(false);
-        ((TextView)paramad.findViewById(2131303177)).setTextColor(paramInt1);
-        paramList = ar.m(paramh.getContext(), 2131690243, paramInt1);
-        ((ImageView)paramad.findViewById(2131302492)).setImageDrawable(paramList);
-        paramList = paramad.findViewById(2131297154);
-        p.g(paramList, "opLayout.findViewById<Vi…d.awesome_icon_container)");
-        paramList.setEnabled(false);
-        ((TextView)paramad.findViewById(2131298937)).setTextColor(paramInt1);
-        ((WeImageView)paramad.findViewById(2131302490)).setIconColor(paramInt1);
-        paramad = paramad.findViewById(2131298948);
-        p.g(paramad, "opLayout.findViewById<Vi…d.comment_icon_container)");
-        paramad.setEnabled(false);
-        paramad = paramh.Mn(2131297153);
-        p.g(paramad, "holder.getView<View>(R.id.awesome_ground_layout)");
-        paramad.setVisibility(4);
-        paramh = paramh.Mn(2131308992);
-        p.g(paramh, "collapseTextLayout");
-        paramh.setEnabled(false);
-        AppMethodBeat.o(243003);
-        return;
+        paramRecyclerView = new kotlin.t("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
+        AppMethodBeat.o(285296);
+        throw paramRecyclerView;
+      }
+      localObject3 = (FrameLayout.LayoutParams)localObject3;
+      ((FrameLayout.LayoutParams)localObject3).topMargin = (paramInt * 2);
+      ((FrameLayout.LayoutParams)localObject3).bottomMargin = paramInt;
+      localView.setBackgroundResource(b.e.feed_full_msg_layout_selector);
+    }
+    localView = ((View)localObject2).findViewById(b.f.msg_layout);
+    if (localView != null)
+    {
+      localObject3 = localView.getLayoutParams();
+      if (localObject3 == null)
+      {
+        paramRecyclerView = new kotlin.t("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
+        AppMethodBeat.o(285296);
+        throw paramRecyclerView;
+      }
+      localObject3 = (FrameLayout.LayoutParams)localObject3;
+      ((FrameLayout.LayoutParams)localObject3).topMargin = paramInt;
+      ((FrameLayout.LayoutParams)localObject3).bottomMargin = paramInt;
+      localView.setBackgroundResource(b.e.feed_full_msg_layout_selector);
+    }
+    localView = parami.amk;
+    if (localView == null)
+    {
+      paramRecyclerView = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(285296);
+      throw paramRecyclerView;
+    }
+    ((ViewGroup)localView).addView((View)localObject1);
+    parami = parami.amk;
+    if (parami == null)
+    {
+      paramRecyclerView = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(285296);
+      throw paramRecyclerView;
+    }
+    ((ViewGroup)parami).addView((View)localObject2);
+    parami = new i((View)localObject1);
+    parami.setRecyclerView(paramRecyclerView);
+    this.xlf = parami;
+    parami = new i((View)localObject2);
+    parami.setRecyclerView(paramRecyclerView);
+    this.xlg = parami;
+    parami = this.xlc;
+    localObject1 = this.xlf;
+    if (localObject1 == null) {
+      p.bGy("feedMsgNotifyHolder");
+    }
+    parami.a(paramRecyclerView, (i)localObject1, -5);
+    parami = this.xld;
+    localObject1 = this.xlg;
+    if (localObject1 == null) {
+      p.bGy("privateMsgNotifyHolder");
+    }
+    parami.a(paramRecyclerView, (i)localObject1, -6);
+    AppMethodBeat.o(285296);
+  }
+  
+  public final void a(i parami, aj paramaj, int paramInt)
+  {
+    AppMethodBeat.i(285297);
+    p.k(parami, "holder");
+    p.k(paramaj, "item");
+    Object localObject1 = this.xlf;
+    if (localObject1 == null) {
+      p.bGy("feedMsgNotifyHolder");
+    }
+    ((i)localObject1).ez(paramaj.msgNotifyData);
+    localObject1 = this.xlg;
+    if (localObject1 == null) {
+      p.bGy("privateMsgNotifyHolder");
+    }
+    ((i)localObject1).ez(paramaj.xCY);
+    localObject1 = this.xlf;
+    if (localObject1 == null) {
+      p.bGy("feedMsgNotifyHolder");
+    }
+    ad.a((i)localObject1, paramaj.msgNotifyData);
+    localObject1 = this.xld;
+    Object localObject2 = this.xlg;
+    if (localObject2 == null) {
+      p.bGy("privateMsgNotifyHolder");
+    }
+    ((ca)localObject1).a((i)localObject2, paramaj.xCY, paramInt);
+    localObject1 = parami.amk;
+    if (localObject1 == null)
+    {
+      parami = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(285297);
+      throw parami;
+    }
+    localObject1 = (ViewGroup)localObject1;
+    localObject2 = new HashSet();
+    int i = ((ViewGroup)localObject1).getChildCount();
+    paramInt = 0;
+    Object localObject3;
+    while (paramInt < i)
+    {
+      localObject3 = ((ViewGroup)localObject1).getChildAt(paramInt);
+      p.j(localObject3, "child");
+      if (((View)localObject3).getId() == b.f.comment_failed_notify_layout) {
+        ((HashSet)localObject2).add(localObject3);
+      }
+      paramInt += 1;
+    }
+    localObject2 = ((Iterable)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext()) {
+      ((ViewGroup)localObject1).removeView((View)((Iterator)localObject2).next());
+    }
+    paramInt = d.e(((ViewGroup)localObject1).getContext(), 6.0F);
+    paramaj = ((Iterable)paramaj.xDc).iterator();
+    while (paramaj.hasNext())
+    {
+      localObject2 = (f)paramaj.next();
+      if (((f)localObject2).zAc != 1)
+      {
+        localObject3 = com.tencent.mm.ui.ad.kS(parami.getContext()).inflate(b.g._feed_header_comment_failed_notify_item, (ViewGroup)localObject1, false);
+        Object localObject4 = ((View)localObject3).findViewById(b.f.msg_layout);
+        if (localObject4 != null)
+        {
+          localObject5 = ((View)localObject4).getLayoutParams();
+          if (localObject5 == null)
+          {
+            parami = new kotlin.t("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
+            AppMethodBeat.o(285297);
+            throw parami;
+          }
+          localObject5 = (FrameLayout.LayoutParams)localObject5;
+          ((FrameLayout.LayoutParams)localObject5).topMargin = paramInt;
+          ((FrameLayout.LayoutParams)localObject5).bottomMargin = paramInt;
+          ((View)localObject4).setBackgroundResource(b.e.feed_full_msg_layout_selector);
+        }
+        localObject4 = parami.amk;
+        if (localObject4 == null)
+        {
+          parami = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
+          AppMethodBeat.o(285297);
+          throw parami;
+        }
+        ((ViewGroup)localObject4).addView((View)localObject3);
+        localObject3 = new i((View)localObject3);
+        ((i)localObject3).setRecyclerView(parami.getRecyclerView());
+        ((i)localObject3).ez(localObject2);
+        localObject4 = this.xle;
+        Object localObject5 = ((i)localObject3).getRecyclerView();
+        p.j(localObject5, "h.recyclerView");
+        ((j)localObject4).a((RecyclerView)localObject5, (i)localObject3, -4);
+        localObject4 = this.xle;
+        p.j(localObject2, "data");
+        ((j)localObject4).a((i)localObject3, (f)localObject2);
       }
     }
-    AppMethodBeat.o(243003);
-  }
-  
-  public final void a(RecyclerView paramRecyclerView, com.tencent.mm.view.recyclerview.h paramh, int paramInt)
-  {
-    AppMethodBeat.i(243001);
-    p.h(paramRecyclerView, "recyclerView");
-    p.h(paramh, "holder");
-    super.a(paramRecyclerView, paramh, paramInt);
-    paramh = (FinderMediaBanner)paramh.Mn(2131304549);
-    paramh.setAdapter((RecyclerView.a)new FinderMediaBannerAdapter(this.tCD));
-    paramh.setViewPool(this.tAi.dcf());
-    paramh.setParentRecyclerView(paramRecyclerView);
-    paramh.getIndicator().setShowOnlyOneIndicator(false);
-    AppMethodBeat.o(243001);
+    AppMethodBeat.o(285297);
   }
   
   public final int getLayoutId()
   {
-    return 2131492881;
+    return b.g._feed_full_merged_header_layout;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedFullVideoConvert$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedFullMergedHeaderConvert$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/finder/convert/FinderFeedFullVideoConvert$convertMedia$4$1"})
-  static final class b
-    extends q
-    implements kotlin.g.a.a<Boolean>
-  {
-    b(t paramt, com.tencent.mm.view.recyclerview.h paramh)
-    {
-      super();
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/finder/convert/FinderFeedFullVideoConvert$convertMedia$4$2"})
-  static final class c
-    extends q
-    implements kotlin.g.a.a<Boolean>
-  {
-    c(t paramt, com.tencent.mm.view.recyclerview.h paramh)
-    {
-      super();
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/finder/convert/FinderFeedFullVideoConvert$convertMedia$4$3"})
-  static final class d
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    d(t paramt, com.tencent.mm.view.recyclerview.h paramh)
-    {
-      super();
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "isPause", "", "playInfo", "Lcom/tencent/mm/plugin/finder/video/FinderVideoLayout$PlayInfo;", "invoke"})
-  static final class e
-    extends q
-    implements m<Boolean, FinderVideoLayout.b, x>
-  {
-    e(ad paramad, com.tencent.mm.view.recyclerview.h paramh, FinderFullSeekBarLayout paramFinderFullSeekBarLayout)
-    {
-      super();
-    }
-  }
 }
 
 

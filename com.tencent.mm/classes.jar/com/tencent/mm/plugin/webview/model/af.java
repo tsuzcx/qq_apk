@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.epj;
-import com.tencent.mm.protocal.protobuf.epk;
+import com.tencent.mm.protocal.protobuf.ezu;
+import com.tencent.mm.protocal.protobuf.ezv;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class af
@@ -18,23 +18,23 @@ public final class af
   implements m
 {
   private i callback;
-  public final d iUB;
+  public final d lKU;
   
   public af(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(78940);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new epj();
-    ((d.a)localObject).iLO = new epk();
+    ((d.a)localObject).lBU = new ezu();
+    ((d.a)localObject).lBV = new ezv();
     ((d.a)localObject).uri = "/cgi-bin/mmo2o-bin/verifybeaconjspermission";
     ((d.a)localObject).funcId = 1702;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.iUB = ((d.a)localObject).aXF();
-    localObject = (epj)this.iUB.iLK.iLR;
-    ((epj)localObject).Url = paramString1;
-    ((epj)localObject).dNI = paramString2;
-    ((epj)localObject).dHx = paramString3;
+    this.lKU = ((d.a)localObject).bgN();
+    localObject = (ezu)d.b.b(this.lKU.lBR);
+    ((ezu)localObject).Url = paramString1;
+    ((ezu)localObject).appid = paramString2;
+    ((ezu)localObject).fAo = paramString3;
     AppMethodBeat.o(78940);
   }
   
@@ -42,7 +42,7 @@ public final class af
   {
     AppMethodBeat.i(78941);
     this.callback = parami;
-    int i = dispatch(paramg, this.iUB, this);
+    int i = dispatch(paramg, this.lKU, this);
     AppMethodBeat.o(78941);
     return i;
   }

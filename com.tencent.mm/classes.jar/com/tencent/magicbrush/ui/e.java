@@ -6,38 +6,38 @@ import com.tencent.magicbrush.handler.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/magicbrush/ui/EglSurfaceSwapLockerAFHandler;", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler;", "Ljava/lang/Runnable;", "runtime", "Lcom/tencent/magicbrush/MBRuntime;", "jsThreadHandler", "Lcom/tencent/magicbrush/handler/MBJsThreadHandler;", "(Lcom/tencent/magicbrush/MBRuntime;Lcom/tencent/magicbrush/handler/MBJsThreadHandler;)V", "frameTimeMillis", "", "strategy", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "getStrategy", "()Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "onCreate", "", "onDestroy", "onPause", "onResume", "run", "lib-magicbrush-nano_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/magicbrush/ui/EglSurfaceSwapLockerAFHandler;", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler;", "Ljava/lang/Runnable;", "runtime", "Lcom/tencent/magicbrush/MBRuntime;", "jsThreadHandler", "Lcom/tencent/magicbrush/handler/MBJsThreadHandler;", "(Lcom/tencent/magicbrush/MBRuntime;Lcom/tencent/magicbrush/handler/MBJsThreadHandler;)V", "frameTimeMillis", "", "strategy", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "getStrategy", "()Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "onCreate", "", "onDestroy", "onPause", "onResume", "run", "lib-magicbrush-nano_release"})
 final class e
   extends a
   implements Runnable
 {
-  private final a.b cOG;
-  private double cOL;
+  private double cPA;
+  private final a.b cPv;
   
   public e(MBRuntime paramMBRuntime, c paramc)
   {
     super(paramMBRuntime, paramc);
-    AppMethodBeat.i(206871);
-    this.cOG = a.b.cOA;
-    AppMethodBeat.o(206871);
+    AppMethodBeat.i(205129);
+    this.cPv = a.b.cPp;
+    AppMethodBeat.o(205129);
   }
   
-  public final a.b RB()
+  public final a.b Vo()
   {
-    return this.cOG;
+    return this.cPv;
   }
   
   public final void onCreate() {}
   
   public final void onPause()
   {
-    this.cOL = 0.0D;
+    this.cPA = 0.0D;
   }
   
   public final void onResume()
   {
     AppMethodBeat.i(140222);
-    this.cOw.post((Runnable)this);
+    this.cPl.post((Runnable)this);
     AppMethodBeat.o(140222);
   }
   
@@ -46,19 +46,19 @@ final class e
     AppMethodBeat.i(140223);
     if (this.isRunning)
     {
-      this.cOw.post((Runnable)this);
-      if (this.cOL == 0.0D) {
-        this.cOL = SystemClock.elapsedRealtime();
+      this.cPl.post((Runnable)this);
+      if (this.cPA == 0.0D) {
+        this.cPA = SystemClock.elapsedRealtime();
       }
-      h(this.cOL);
-      this.cOL = SystemClock.elapsedRealtime();
+      h(this.cPA);
+      this.cPA = SystemClock.elapsedRealtime();
     }
     AppMethodBeat.o(140223);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.magicbrush.ui.e
  * JD-Core Version:    0.7.0.1
  */

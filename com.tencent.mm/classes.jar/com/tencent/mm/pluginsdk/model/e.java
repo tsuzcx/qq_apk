@@ -1,96 +1,59 @@
 package com.tencent.mm.pluginsdk.model;
 
-import android.content.Context;
+import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.b;
-import com.tencent.mm.ak.h.c;
-import com.tencent.mm.g.a.ls;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.bp;
-import com.tencent.mm.model.bp.b;
-import com.tencent.mm.model.c;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.de;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.bx;
-import com.tencent.mm.storage.by;
 
 public final class e
-  implements h
 {
-  public final h.b b(h.a parama)
+  private static int QUS = 0;
+  private static int QUT = 1;
+  private static String TAG = "MicroMsg.C2CTransferConfig";
+  
+  public static boolean lS(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(30937);
-    de localde = parama.heO;
-    if ((localde == null) || (localde.xKb != 47))
+    AppMethodBeat.i(216608);
+    int i = ((b)h.ae(b.class)).a(b.a.vGc, QUS);
+    String str2 = Build.MODEL.toLowerCase();
+    String str3 = TAG;
+    String str1;
+    if (i == QUT)
     {
-      Log.f("MicroMsg.EmojiExtension", "parseEmojiMsg failed, invalid cmdAM");
-      AppMethodBeat.o(30937);
-      return null;
-    }
-    Object localObject1 = z.a(localde.KHl);
-    Object localObject2 = z.a(localde.KHm);
-    bg.aVF();
-    if (((String)c.azQ().get(2, null)).equals(localObject1))
-    {
-      localObject1 = localObject2;
-      localObject2 = z.a(localde.KHn);
-      ((com.tencent.mm.plugin.emoji.b.d)g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().a((String)localObject1, (String)localObject2, localde.Brn, localde.KHq, parama);
-      localObject1 = bp.Ky(localde.KHq);
-      if (localObject1 != null)
-      {
-        Log.i("MicroMsg.EmojiExtension", "bizClientMsgId = %s", new Object[] { ((bp.b)localObject1).iEr });
-        if ((((bp.b)localObject1).iEw != null) && (((bp.b)localObject1).scene == 1))
-        {
-          parama = z.a(localde.KHl);
-          bg.aVF();
-          c.azQ().set(73729, Integer.valueOf(1));
-          localObject2 = new bx();
-          ((bx)localObject2).field_content = MMApplicationContext.getContext().getString(2131763488);
-          ((bx)localObject2).field_createtime = Util.nowSecond();
-          ((bx)localObject2).field_imgpath = "";
-          ((bx)localObject2).field_sayhicontent = ((bx)localObject2).field_content;
-          ((bx)localObject2).field_sayhiuser = parama;
-          ((bx)localObject2).field_scene = 18;
-          if (localde.oTW <= 3) {
-            break label372;
-          }
-        }
+      str1 = "mediaCodec";
+      Log.i(str3, "transferType:%s model:%s select %s mode", new Object[] { Integer.valueOf(i), str2, str1 });
+      if (i != QUT) {
+        break label101;
       }
     }
-    label372:
-    for (int i = localde.oTW;; i = 3)
+    label101:
+    for (i = 1;; i = 0)
     {
-      ((bx)localObject2).field_status = i;
-      ((bx)localObject2).field_svrid = localde.Brn;
-      ((bx)localObject2).field_talker = parama;
-      ((bx)localObject2).field_type = localde.xKb;
-      ((bx)localObject2).field_isSend = 0;
-      ((bx)localObject2).field_sayhiencryptuser = parama;
-      ((bx)localObject2).field_ticket = ((bp.b)localObject1).iEw;
-      com.tencent.mm.bj.d.bgO().a((bx)localObject2);
-      localObject1 = new ls();
-      ((ls)localObject1).dRd.dRe = parama;
-      EventCenter.instance.publish((IEvent)localObject1);
-      AppMethodBeat.o(30937);
-      return null;
+      if (i == 0) {
+        break label106;
+      }
+      AppMethodBeat.o(216608);
+      return true;
+      str1 = "x264";
       break;
     }
+    label106:
+    i = ((b)h.ae(b.class)).a(b.a.vGb, 3000);
+    Log.i(TAG, "rawWidth %d rawHeight:%d limit:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) });
+    if (Math.max(paramInt2, paramInt1) >= i)
+    {
+      AppMethodBeat.o(216608);
+      return true;
+    }
+    AppMethodBeat.o(216608);
+    return false;
   }
-  
-  public final void b(h.c paramc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.e
  * JD-Core Version:    0.7.0.1
  */

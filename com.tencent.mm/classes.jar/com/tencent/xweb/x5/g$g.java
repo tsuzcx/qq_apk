@@ -5,24 +5,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g$g
   extends com.tencent.xweb.JsResult
 {
-  public com.tencent.smtt.export.external.interfaces.JsResult SFh;
+  public com.tencent.smtt.export.external.interfaces.JsResult aags;
   
   public g$g(com.tencent.smtt.export.external.interfaces.JsResult paramJsResult)
   {
-    this.SFh = paramJsResult;
+    this.aags = paramJsResult;
   }
   
   public final void cancel()
   {
     AppMethodBeat.i(153855);
-    this.SFh.cancel();
+    this.aags.cancel();
     AppMethodBeat.o(153855);
   }
   
   public final void confirm()
   {
     AppMethodBeat.i(153854);
-    this.SFh.confirm();
+    this.aags.confirm();
     AppMethodBeat.o(153854);
   }
   
@@ -30,7 +30,7 @@ public final class g$g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.x5.g.g
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.report.kvdata;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class IMBehaviorMsgOP
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
   public int appMsgInnerType;
   public int count;
@@ -16,28 +16,28 @@ public class IMBehaviorMsgOP
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.msgType);
-      paramVarArgs.aM(2, this.msgOpType);
-      paramVarArgs.aM(3, this.appMsgInnerType);
-      paramVarArgs.aM(4, this.count);
+      paramVarArgs.aY(1, this.msgType);
+      paramVarArgs.aY(2, this.msgOpType);
+      paramVarArgs.aY(3, this.appMsgInnerType);
+      paramVarArgs.aY(4, this.count);
       AppMethodBeat.o(151537);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.bu(1, this.msgType);
-      int i = g.a.a.b.b.a.bu(2, this.msgOpType);
-      int j = g.a.a.b.b.a.bu(3, this.appMsgInnerType);
-      int k = g.a.a.b.b.a.bu(4, this.count);
+      paramInt = g.a.a.b.b.a.bM(1, this.msgType);
+      int i = g.a.a.b.b.a.bM(2, this.msgOpType);
+      int j = g.a.a.b.b.a.bM(3, this.appMsgInnerType);
+      int k = g.a.a.b.b.a.bM(4, this.count);
       AppMethodBeat.o(151537);
       return paramInt + 0 + i + j + k;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
       AppMethodBeat.o(151537);
@@ -53,19 +53,19 @@ public class IMBehaviorMsgOP
         AppMethodBeat.o(151537);
         return -1;
       case 1: 
-        localIMBehaviorMsgOP.msgType = locala.UbS.zi();
+        localIMBehaviorMsgOP.msgType = locala.abFh.AK();
         AppMethodBeat.o(151537);
         return 0;
       case 2: 
-        localIMBehaviorMsgOP.msgOpType = locala.UbS.zi();
+        localIMBehaviorMsgOP.msgOpType = locala.abFh.AK();
         AppMethodBeat.o(151537);
         return 0;
       case 3: 
-        localIMBehaviorMsgOP.appMsgInnerType = locala.UbS.zi();
+        localIMBehaviorMsgOP.appMsgInnerType = locala.abFh.AK();
         AppMethodBeat.o(151537);
         return 0;
       }
-      localIMBehaviorMsgOP.count = locala.UbS.zi();
+      localIMBehaviorMsgOP.count = locala.abFh.AK();
       AppMethodBeat.o(151537);
       return 0;
     }
@@ -75,7 +75,7 @@ public class IMBehaviorMsgOP
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.report.kvdata.IMBehaviorMsgOP
  * JD-Core Version:    0.7.0.1
  */

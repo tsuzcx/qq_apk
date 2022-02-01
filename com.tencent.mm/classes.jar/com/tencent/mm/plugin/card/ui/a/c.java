@@ -11,20 +11,23 @@ public final class c
     super(paramMMActivity);
   }
   
-  public final boolean cwJ()
+  public final boolean cKm()
   {
-    return this.qeD;
+    AppMethodBeat.i(250846);
+    boolean bool = cJq();
+    AppMethodBeat.o(250846);
+    return bool;
   }
   
-  public final boolean cwM()
+  public final boolean cKp()
   {
     return false;
   }
   
-  public final boolean cwN()
+  public final boolean cKq()
   {
     AppMethodBeat.i(113639);
-    if ((this.qeD) && (super.cwN()))
+    if ((cJq()) && (super.cKq()))
     {
       AppMethodBeat.o(113639);
       return true;
@@ -33,12 +36,12 @@ public final class c
     return false;
   }
   
-  public final boolean cwR()
+  public final boolean cKu()
   {
     return false;
   }
   
-  public final boolean cwS()
+  public final boolean cKv()
   {
     return false;
   }

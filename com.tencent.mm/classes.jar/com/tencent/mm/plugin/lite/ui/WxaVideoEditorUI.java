@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.lite.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
+import androidx.appcompat.app.ActionBar;
+import com.tencent.luggage.f.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 
@@ -11,17 +12,17 @@ public class WxaVideoEditorUI
 {
   public int getLayoutId()
   {
-    return 2131494699;
+    return a.c.flutter_layout;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(198950);
+    AppMethodBeat.i(234282);
     super.onCreate(paramBundle);
     if (getSupportActionBar() != null) {
       getSupportActionBar().hide();
     }
-    AppMethodBeat.o(198950);
+    AppMethodBeat.o(234282);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

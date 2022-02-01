@@ -1,43 +1,36 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.model.internal.i;
-import com.tencent.mm.protocal.protobuf.bcw;
+import com.tencent.mm.plugin.finder.feed.model.internal.k;
+import com.tencent.mm.plugin.finder.storage.an;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/model/FinderPlacedDivider;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "divider", "Lcom/tencent/mm/protocal/protobuf/FinderStreamDivider;", "(Lcom/tencent/mm/protocal/protobuf/FinderStreamDivider;)V", "getDivider", "()Lcom/tencent/mm/protocal/protobuf/FinderStreamDivider;", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderMsgNotify;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;", "mention", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "(Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;)V", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemType", "plugin-finder_release"})
 public final class bg
-  implements bo
+  extends a
 {
-  public final bcw tOP;
-  
-  public bg(bcw parambcw)
+  public bg(an paraman)
   {
-    AppMethodBeat.i(248844);
-    this.tOP = parambcw;
-    AppMethodBeat.o(248844);
+    super(paraman);
+    AppMethodBeat.i(166409);
+    AppMethodBeat.o(166409);
   }
   
-  public final int a(i parami)
+  public final int a(k paramk)
   {
-    AppMethodBeat.i(248843);
-    p.h(parami, "obj");
-    AppMethodBeat.o(248843);
-    return -1;
+    AppMethodBeat.i(166408);
+    p.k(paramk, "obj");
+    AppMethodBeat.o(166408);
+    return 0;
   }
   
-  public final int cxn()
+  public final int bAQ()
   {
-    return this.tOP.LLE;
-  }
-  
-  public final long lT()
-  {
-    AppMethodBeat.i(248842);
-    long l = this.tOP.hashCode();
-    AppMethodBeat.o(248842);
-    return l;
+    AppMethodBeat.i(166407);
+    int i = bg.class.getName().hashCode();
+    AppMethodBeat.o(166407);
+    return i;
   }
 }
 

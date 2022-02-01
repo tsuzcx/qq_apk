@@ -7,7 +7,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.xweb.x;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/websearch/webview/WebSearchChromeClient;", "Lcom/tencent/xweb/WebChromeClient;", "()V", "TAG", "", "onConsoleMessage", "", "consoleMessage", "Landroid/webkit/ConsoleMessage;", "ui-websearch_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/websearch/webview/WebSearchChromeClient;", "Lcom/tencent/xweb/WebChromeClient;", "()V", "TAG", "", "onConsoleMessage", "", "consoleMessage", "Landroid/webkit/ConsoleMessage;", "ui-websearch_release"})
 public final class e
   extends x
 {
@@ -16,7 +16,7 @@ public final class e
   public final boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
     String str2 = null;
-    AppMethodBeat.i(198058);
+    AppMethodBeat.i(197942);
     String str3 = this.TAG;
     Integer localInteger;
     Object localObject;
@@ -49,7 +49,7 @@ public final class e
       }
       Log.i(str3, "onConsoleMessage %d %s %s %s", new Object[] { localInteger, localObject, str1, str2 });
       boolean bool = super.onConsoleMessage(paramConsoleMessage);
-      AppMethodBeat.o(198058);
+      AppMethodBeat.o(197942);
       return bool;
       localInteger = null;
       break;
@@ -58,7 +58,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.webview.e
  * JD-Core Version:    0.7.0.1
  */

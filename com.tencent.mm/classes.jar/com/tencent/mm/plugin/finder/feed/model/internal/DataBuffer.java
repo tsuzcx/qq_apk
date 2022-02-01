@@ -8,7 +8,7 @@ import java.util.List;
 import kotlin.a.j;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "T", "Ljava/util/ArrayList;", "buffer", "(Ljava/util/ArrayList;)V", "t", "(Ljava/lang/Object;Ljava/util/ArrayList;)V", "", "offset", "", "getOffset", "()I", "totalSize", "getTotalSize", "clearBuffer", "", "contains", "", "element", "(Ljava/lang/Object;)Z", "get", "index", "(I)Ljava/lang/Object;", "getBuffer", "setBuffer", "elements", "", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "T", "Ljava/util/ArrayList;", "buffer", "(Ljava/util/ArrayList;)V", "t", "(Ljava/lang/Object;Ljava/util/ArrayList;)V", "", "offset", "", "getOffset", "()I", "totalSize", "getTotalSize", "clearBuffer", "", "contains", "", "element", "(Ljava/lang/Object;)Z", "get", "index", "(I)Ljava/lang/Object;", "getBuffer", "setBuffer", "elements", "", "Companion", "plugin-finder-base_release"})
 public final class DataBuffer<T>
   extends ArrayList<T>
 {
@@ -18,56 +18,56 @@ public final class DataBuffer<T>
   
   static
   {
-    AppMethodBeat.i(244989);
+    AppMethodBeat.i(259458);
     Companion = new a((byte)0);
-    AppMethodBeat.o(244989);
+    AppMethodBeat.o(259458);
   }
   
   public DataBuffer(T paramT, ArrayList<T> paramArrayList)
   {
-    AppMethodBeat.i(244987);
+    AppMethodBeat.i(259455);
     this.buffer = ((List)paramArrayList);
     add(paramT);
-    AppMethodBeat.o(244987);
+    AppMethodBeat.o(259455);
   }
   
   public DataBuffer(ArrayList<T> paramArrayList)
   {
-    AppMethodBeat.i(244985);
+    AppMethodBeat.i(259451);
     this.buffer = ((List)paramArrayList);
-    AppMethodBeat.o(244985);
+    AppMethodBeat.o(259451);
   }
   
   public final void clearBuffer()
   {
-    AppMethodBeat.i(244982);
+    AppMethodBeat.i(259444);
     this.buffer.clear();
-    AppMethodBeat.o(244982);
+    AppMethodBeat.o(259444);
   }
   
   public final boolean contains(Object paramObject)
   {
-    AppMethodBeat.i(244984);
+    AppMethodBeat.i(259449);
     if ((super.contains(paramObject)) || (this.buffer.contains(paramObject)))
     {
-      AppMethodBeat.o(244984);
+      AppMethodBeat.o(259449);
       return true;
     }
-    AppMethodBeat.o(244984);
+    AppMethodBeat.o(259449);
     return false;
   }
   
   public final T get(int paramInt)
   {
-    AppMethodBeat.i(244981);
+    AppMethodBeat.i(259443);
     if (paramInt < size())
     {
       localObject = super.get(paramInt);
-      AppMethodBeat.o(244981);
+      AppMethodBeat.o(259443);
       return localObject;
     }
     Object localObject = this.buffer.get(paramInt - size() + getOffset());
-    AppMethodBeat.o(244981);
+    AppMethodBeat.o(259443);
     return localObject;
   }
   
@@ -78,76 +78,76 @@ public final class DataBuffer<T>
   
   public final int getOffset()
   {
-    AppMethodBeat.i(244980);
-    Object localObject = j.kv(this);
+    AppMethodBeat.i(259440);
+    Object localObject = j.lr(this);
     if (localObject != null)
     {
       int i = this.buffer.indexOf(localObject);
-      AppMethodBeat.o(244980);
+      AppMethodBeat.o(259440);
       return i + 1;
     }
-    AppMethodBeat.o(244980);
+    AppMethodBeat.o(259440);
     return 0;
   }
   
   public final int getSize()
   {
-    AppMethodBeat.i(244992);
+    AppMethodBeat.i(259463);
     int i = super.size();
-    AppMethodBeat.o(244992);
+    AppMethodBeat.o(259463);
     return i;
   }
   
   public final int getTotalSize()
   {
-    AppMethodBeat.i(244979);
+    AppMethodBeat.i(259439);
     int i = size();
     int j = this.buffer.size();
     int k = getOffset();
-    AppMethodBeat.o(244979);
+    AppMethodBeat.o(259439);
     return i + (j - k);
   }
   
   public final T remove(int paramInt)
   {
-    AppMethodBeat.i(244991);
+    AppMethodBeat.i(259461);
     Object localObject = removeAt(paramInt);
-    AppMethodBeat.o(244991);
+    AppMethodBeat.o(259461);
     return localObject;
   }
   
   public final Object removeAt(int paramInt)
   {
-    AppMethodBeat.i(244990);
+    AppMethodBeat.i(259459);
     Object localObject = super.remove(paramInt);
-    AppMethodBeat.o(244990);
+    AppMethodBeat.o(259459);
     return localObject;
   }
   
   public final boolean setBuffer(Collection<? extends T> paramCollection)
   {
-    AppMethodBeat.i(244983);
+    AppMethodBeat.i(259448);
     clearBuffer();
     if (paramCollection == null)
     {
-      AppMethodBeat.o(244983);
+      AppMethodBeat.o(259448);
       return false;
     }
     Log.i("DataBuffer", "[addAllBuffer] " + paramCollection.size());
     boolean bool = this.buffer.addAll(paramCollection);
-    AppMethodBeat.o(244983);
+    AppMethodBeat.o(259448);
     return bool;
   }
   
   public final int size()
   {
-    AppMethodBeat.i(244993);
+    AppMethodBeat.i(259464);
     int i = getSize();
-    AppMethodBeat.o(244993);
+    AppMethodBeat.o(259464);
     return i;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer$Companion;", "", "()V", "TAG", "", "plugin-finder-base_release"})
   public static final class a {}
 }
 

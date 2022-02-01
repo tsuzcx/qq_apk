@@ -1,8 +1,10 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
+import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.plugin.webview.luggage.c.c;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MD5Util;
@@ -17,7 +19,7 @@ public class x
   {
     AppMethodBeat.i(78559);
     Log.i("MicroMsg.JsApiGetOpenDeviceId", "invokeInMM");
-    paramContext = com.tencent.mm.plugin.webview.luggage.c.b.Zc(paramString);
+    paramContext = c.agO(paramString);
     if (paramContext == null)
     {
       Log.e("MicroMsg.JsApiGetOpenDeviceId", "data is null");
@@ -26,8 +28,8 @@ public class x
       return;
     }
     paramString = paramContext.optString("preVerifyAppId");
-    paramContext = q.dr(true);
-    String str = q.aoG();
+    paramContext = q.dR(true);
+    String str = q.auM();
     if ((!Util.isNullOrNil(paramContext)) && (!Util.isNullOrNil(str)) && (!Util.isNullOrNil(paramString)))
     {
       paramContext = MD5Util.getMD5String(MD5Util.getMD5String(paramString + paramContext));
@@ -52,9 +54,9 @@ public class x
     }
   }
   
-  public final void b(com.tencent.luggage.d.b<g>.a paramb) {}
+  public final void b(b<g>.a paramb) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 1;
   }

@@ -1,27 +1,36 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.d;
-import com.tencent.mm.ui.widget.MMNeat7extView.b;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.R.h;
 
 final class bd$c
-  implements MMNeat7extView.b
+  extends c.a
 {
-  public final void a(Exception paramException, String paramString1, String paramString2)
+  TextView XjK;
+  View vpA;
+  TextView wRL;
+  
+  public final View getMainContainerView()
   {
-    AppMethodBeat.i(37417);
-    if (!d.KyP)
-    {
-      HashMap localHashMap = new HashMap(2);
-      localHashMap.put("Content", paramString1);
-      localHashMap.put("Exception", paramException.toString());
-      localHashMap.put("Stack", paramException.getStackTrace());
-      h.CyF.e("NeatTextView", paramString2, localHashMap);
-    }
-    AppMethodBeat.o(37417);
+    return this.vpA;
+  }
+  
+  public final c.a ip(View paramView)
+  {
+    AppMethodBeat.i(37372);
+    super.create(paramView);
+    this.timeTV = ((TextView)paramView.findViewById(R.h.dzs));
+    this.userTV = ((TextView)paramView.findViewById(R.h.chatting_user_tv));
+    this.XjK = ((TextView)paramView.findViewById(R.h.chatting_content_itv));
+    this.wRL = ((TextView)paramView.findViewById(R.h.dzb));
+    this.checkBox = ((CheckBox)paramView.findViewById(R.h.dwZ));
+    this.maskView = paramView.findViewById(R.h.dyD);
+    this.vpA = paramView.findViewById(R.h.dyo);
+    AppMethodBeat.o(37372);
+    return this;
   }
 }
 

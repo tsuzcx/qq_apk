@@ -4,7 +4,7 @@ import com.tencent.thumbplayer.api.proxy.TPDownloadParamData;
 
 final class f$h
 {
-  TPDownloadParamData SbH;
+  TPDownloadParamData ZEs;
   String mimeType;
   String name;
   String url;

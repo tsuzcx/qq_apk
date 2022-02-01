@@ -5,27 +5,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class y
-  extends z
+  extends aa
 {
-  public ap DZh;
-  public List<z> aQz;
-  public int hH;
+  public int Kmw;
+  public int Kmx;
+  public int Kmy;
+  public int Kmz;
+  public List<aa> ayS;
+  public int cornerRadius;
   
   public y()
   {
-    AppMethodBeat.i(96321);
-    this.aQz = new ArrayList();
-    AppMethodBeat.o(96321);
+    AppMethodBeat.i(96320);
+    this.ayS = new ArrayList();
+    AppMethodBeat.o(96320);
   }
   
-  public final List<z> eXg()
+  public final List<aa> fKw()
   {
-    return this.aQz;
+    return this.ayS;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.y
  * JD-Core Version:    0.7.0.1
  */

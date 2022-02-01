@@ -5,8 +5,6 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
@@ -14,39 +12,41 @@ import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.plugin.normsg.a.d;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.pluginsdk.ui.applet.aa;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.t.b;
 import com.tencent.mm.ui.tools.b.c;
+import com.tencent.mm.ui.w.b;
 import com.tencent.mm.ui.widget.MMEditText;
 
 public class SayHiEditUI
   extends MMActivity
   implements i
 {
-  private MMEditText PYw;
-  private ProgressDialog gtM = null;
+  private MMEditText Xvu;
+  private ProgressDialog iXX = null;
   
   public int getLayoutId()
   {
-    return 2131496129;
+    return R.i.ekz;
   }
   
   public void initView()
   {
     AppMethodBeat.i(37967);
-    this.PYw = ((MMEditText)findViewById(2131307219));
-    this.PYw.requestFocus();
-    this.PYw.addTextChangedListener(new a((byte)0));
-    this.PYw.setOnEditorActionListener(new TextView.OnEditorActionListener()
+    this.Xvu = ((MMEditText)findViewById(R.h.dTd));
+    this.Xvu.requestFocus();
+    this.Xvu.addTextChangedListener(new SayHiEditUI.a((byte)0));
+    this.Xvu.setOnEditorActionListener(new TextView.OnEditorActionListener()
     {
       public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
@@ -61,8 +61,8 @@ public class SayHiEditUI
         return false;
       }
     });
-    c.f(this.PYw).aoq(100).a(null);
-    addTextOptionMenu(0, getString(2131755976), new MenuItem.OnMenuItemClickListener()
+    c.i(this.Xvu).axx(100).a(null);
+    addTextOptionMenu(0, getString(R.l.app_send), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
@@ -72,7 +72,7 @@ public class SayHiEditUI
         AppMethodBeat.o(37963);
         return false;
       }
-    }, null, t.b.OGU);
+    }, null, w.b.Wao);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -90,8 +90,8 @@ public class SayHiEditUI
   {
     AppMethodBeat.i(37965);
     super.onCreate(paramBundle);
-    bg.azz().a(30, this);
-    setMMTitle(2131763455);
+    bh.aGY().a(30, this);
+    setMMTitle(R.l.nearby_friend_say_hi);
     initView();
     AppMethodBeat.o(37965);
   }
@@ -99,7 +99,7 @@ public class SayHiEditUI
   public void onDestroy()
   {
     AppMethodBeat.i(37966);
-    bg.azz().b(30, this);
+    bh.aGY().b(30, this);
     super.onDestroy();
     AppMethodBeat.o(37966);
   }
@@ -113,17 +113,17 @@ public class SayHiEditUI
     {
       try
       {
-        if (this.gtM != null)
+        if (this.iXX != null)
         {
-          this.gtM.dismiss();
-          this.gtM = null;
+          this.iXX.dismiss();
+          this.iXX = null;
         }
         switch (paramInt2)
         {
         default: 
           i = 0;
           if (i == 0) {
-            break label178;
+            break label185;
           }
           AppMethodBeat.o(37968);
           return;
@@ -135,14 +135,14 @@ public class SayHiEditUI
         AppMethodBeat.o(37968);
         return;
       }
-      Toast.makeText(this, 2131763456, 0).show();
+      Toast.makeText(this, R.l.nearby_friend_say_hi_black_list, 0).show();
       continue;
-      Toast.makeText(this, 2131763459, 0).show();
+      Toast.makeText(this, R.l.nearby_friend_say_hi_spam, 0).show();
     }
-    label178:
+    label185:
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      h.cD(this, getString(2131757788));
+      h.cO(this, getString(R.l.confirm_dialog_sent));
       finish();
       AppMethodBeat.o(37968);
       return;
@@ -155,11 +155,11 @@ public class SayHiEditUI
     }
     if ((paramInt2 == -101) && (!Util.isNullOrNil(paramString)))
     {
-      h.a(this, paramString, getString(2131755998), getString(2131755921), null);
+      h.a(this, paramString, getString(R.l.app_tip), getString(R.l.app_ok), null);
       AppMethodBeat.o(37968);
       return;
     }
-    Toast.makeText(this, 2131763457, 0).show();
+    Toast.makeText(this, R.l.nearby_friend_say_hi_failed, 0).show();
     AppMethodBeat.o(37968);
   }
   
@@ -168,33 +168,10 @@ public class SayHiEditUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  static final class a
-    implements TextWatcher
-  {
-    private boolean hsV = false;
-    
-    public final void afterTextChanged(Editable paramEditable) {}
-    
-    public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-    
-    public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-    {
-      AppMethodBeat.i(37964);
-      if (this.hsV)
-      {
-        AppMethodBeat.o(37964);
-        return;
-      }
-      this.hsV = true;
-      d.AEF.au(3, 2, 10);
-      AppMethodBeat.o(37964);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.contact.SayHiEditUI
  * JD-Core Version:    0.7.0.1
  */

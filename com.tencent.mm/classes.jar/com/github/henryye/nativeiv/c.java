@@ -6,158 +6,99 @@ import com.github.henryye.nativeiv.api.IImageDecodeService.b;
 import com.github.henryye.nativeiv.api.a;
 import com.github.henryye.nativeiv.bitmap.BitmapType;
 import com.github.henryye.nativeiv.bitmap.IBitmap;
-import com.github.henryye.nativeiv.bitmap.NativeBitmapStruct;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 public class c
 {
-  private static final Object baw;
-  b baA;
-  BitmapType bar;
-  IBitmap bax;
-  IImageDecodeService.b bay;
-  a baz;
+  private static final Object aJU;
+  BitmapType aJO;
+  IBitmap aJV;
+  IImageDecodeService.b aJW;
+  a aJX;
+  b aJY;
   
   static
   {
     AppMethodBeat.i(127335);
-    baw = new Object();
+    aJU = new Object();
     AppMethodBeat.o(127335);
   }
   
   public c(b paramb, a parama)
   {
     AppMethodBeat.i(127334);
-    this.bar = null;
-    this.bax = new a();
-    this.baA = paramb;
-    this.baz = parama;
+    this.aJO = null;
+    this.aJV = new c.a();
+    this.aJY = paramb;
+    this.aJX = parama;
     AppMethodBeat.o(127334);
   }
   
-  private void sQ()
+  private void qE()
   {
-    AppMethodBeat.i(219796);
-    if (this.bax != null) {
-      this.bax.recycle();
+    AppMethodBeat.i(219688);
+    if (this.aJV != null) {
+      this.aJV.recycle();
     }
-    AppMethodBeat.o(219796);
+    AppMethodBeat.o(219688);
   }
   
   public final void a(com.github.henryye.nativeiv.bitmap.b<Bitmap> paramb)
   {
-    AppMethodBeat.i(219797);
+    AppMethodBeat.i(219693);
     BitmapType localBitmapType = BitmapType.Legacy;
-    synchronized (baw)
+    synchronized (aJU)
     {
-      if (this.bax.getType() == localBitmapType) {
-        sQ();
+      if (this.aJV.getType() == localBitmapType) {
+        qE();
       }
-      b localb = this.baA;
+      b localb = this.aJY;
       int i = hashCode();
-      Map localMap = (Map)localb.bau.get(i);
+      Map localMap = (Map)localb.aJS.get(i);
       Object localObject1 = localMap;
       if (localMap == null) {
         localObject1 = new HashMap(2);
       }
       ((Map)localObject1).put(localBitmapType, paramb);
-      localb.bau.append(i, localObject1);
-      AppMethodBeat.o(219797);
+      localb.aJS.append(i, localObject1);
+      AppMethodBeat.o(219693);
       return;
     }
   }
   
-  public final void forceSetUseType(BitmapType paramBitmapType)
+  public final com.github.henryye.nativeiv.bitmap.d f(InputStream paramInputStream)
   {
-    this.bar = paramBitmapType;
-  }
-  
-  public final com.github.henryye.nativeiv.bitmap.d h(InputStream paramInputStream)
-  {
-    AppMethodBeat.i(219794);
-    sQ();
+    AppMethodBeat.i(219684);
+    qE();
     if (paramInputStream != null)
     {
-      paramInputStream = i(paramInputStream);
-      AppMethodBeat.o(219794);
+      paramInputStream = g(paramInputStream);
+      AppMethodBeat.o(219684);
       return paramInputStream;
     }
-    AppMethodBeat.o(219794);
+    AppMethodBeat.o(219684);
     return null;
   }
   
-  protected com.github.henryye.nativeiv.bitmap.d i(InputStream paramInputStream)
+  public final void forceSetUseType(BitmapType paramBitmapType)
   {
-    AppMethodBeat.i(219795);
-    paramInputStream = com.github.henryye.nativeiv.c.d.k(paramInputStream);
-    AppMethodBeat.o(219795);
+    this.aJO = paramBitmapType;
+  }
+  
+  protected com.github.henryye.nativeiv.bitmap.d g(InputStream paramInputStream)
+  {
+    AppMethodBeat.i(219686);
+    paramInputStream = com.github.henryye.nativeiv.c.d.i(paramInputStream);
+    AppMethodBeat.o(219686);
     return paramInputStream;
-  }
-  
-  static final class a
-    implements IBitmap<Object>
-  {
-    public final void decodeInputStream(InputStream paramInputStream, ImageDecodeConfig paramImageDecodeConfig, com.github.henryye.nativeiv.bitmap.c paramc)
-    {
-      AppMethodBeat.i(127332);
-      paramInputStream = new IOException("Stub");
-      AppMethodBeat.o(127332);
-      throw paramInputStream;
-    }
-    
-    public final long getDecodeTime()
-    {
-      return 0L;
-    }
-    
-    public final BitmapType getType()
-    {
-      return BitmapType.Undefined;
-    }
-    
-    public final Object provide()
-    {
-      return null;
-    }
-    
-    public final void recycle() {}
-  }
-  
-  static final class b
-    implements IBitmap<NativeBitmapStruct>
-  {
-    public final void decodeInputStream(InputStream paramInputStream, ImageDecodeConfig paramImageDecodeConfig, com.github.henryye.nativeiv.bitmap.c paramc)
-    {
-      AppMethodBeat.i(127333);
-      if (paramInputStream == null)
-      {
-        paramInputStream = new IOException("Null input stream");
-        AppMethodBeat.o(127333);
-        throw paramInputStream;
-      }
-      AppMethodBeat.o(127333);
-    }
-    
-    public final long getDecodeTime()
-    {
-      return 0L;
-    }
-    
-    public final BitmapType getType()
-    {
-      return BitmapType.Native;
-    }
-    
-    public final void recycle() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.github.henryye.nativeiv.c
  * JD-Core Version:    0.7.0.1
  */

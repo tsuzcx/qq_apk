@@ -7,13 +7,15 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.aa;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.ar;
 
 public class AAQueryListH5UrlFooterView
   extends LinearLayout
 {
-  private TextView jUR;
+  private TextView mMe;
   
   public AAQueryListH5UrlFooterView(Context paramContext)
   {
@@ -42,19 +44,19 @@ public class AAQueryListH5UrlFooterView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(63502);
-    this.jUR = ((TextView)aa.jQ(paramContext).inflate(2131492903, this, true).findViewById(2131296303));
-    ao.a(this.jUR.getPaint(), 0.8F);
+    this.mMe = ((TextView)ad.kS(paramContext).inflate(a.g.aa_record_list_h5url_footer, this, true).findViewById(a.f.aa_record_bottom_link_tv));
+    ar.a(this.mMe.getPaint(), 0.8F);
     AppMethodBeat.o(63502);
   }
   
   public TextView getBottomLinkTv()
   {
-    return this.jUR;
+    return this.mMe;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.AAQueryListH5UrlFooterView
  * JD-Core Version:    0.7.0.1
  */

@@ -5,13 +5,14 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.j;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
-import com.tencent.mm.ui.tools.u;
+import com.tencent.mm.ui.tools.v;
 
 public class IconSwitchKeyValuePreference
   extends IconPreference
 {
-  private TextView BfZ;
+  private TextView GZI;
   private int status = 0;
   
   public IconSwitchKeyValuePreference(Context paramContext, AttributeSet paramAttributeSet)
@@ -27,39 +28,39 @@ public class IconSwitchKeyValuePreference
   private void updateView()
   {
     AppMethodBeat.i(142568);
-    if (this.BfZ == null)
+    if (this.GZI == null)
     {
       AppMethodBeat.o(142568);
       return;
     }
     int i = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 2.0F);
-    this.BfZ.setTextColor(u.kG(this.mContext));
+    this.GZI.setTextColor(v.lD(this.mContext));
     if (this.status == 0)
     {
-      this.BfZ.setCompoundDrawablesWithIntrinsicBounds(2131691586, 0, 0, 0);
-      this.BfZ.setCompoundDrawablePadding(i);
+      this.GZI.setCompoundDrawablesWithIntrinsicBounds(a.j.status_accountunkey, 0, 0, 0);
+      this.GZI.setCompoundDrawablePadding(i);
       AppMethodBeat.o(142568);
       return;
     }
     if (this.status == 1)
     {
-      this.BfZ.setCompoundDrawablesWithIntrinsicBounds(2131691584, 0, 0, 0);
-      this.BfZ.setCompoundDrawablePadding(i);
+      this.GZI.setCompoundDrawablesWithIntrinsicBounds(a.j.status_accountkey, 0, 0, 0);
+      this.GZI.setCompoundDrawablePadding(i);
       AppMethodBeat.o(142568);
       return;
     }
     if (this.status == 2)
     {
-      this.BfZ.setCompoundDrawablesWithIntrinsicBounds(2131691585, 0, 0, 0);
-      this.BfZ.setCompoundDrawablePadding(i);
+      this.GZI.setCompoundDrawablesWithIntrinsicBounds(a.j.status_accountkey_off, 0, 0, 0);
+      this.GZI.setCompoundDrawablePadding(i);
       AppMethodBeat.o(142568);
       return;
     }
-    this.BfZ.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    this.GZI.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
     AppMethodBeat.o(142568);
   }
   
-  public final void alK(int paramInt)
+  public final void auJ(int paramInt)
   {
     AppMethodBeat.i(142567);
     this.status = paramInt;
@@ -71,14 +72,14 @@ public class IconSwitchKeyValuePreference
   {
     AppMethodBeat.i(142566);
     super.onBindView(paramView);
-    this.BfZ = ((TextView)paramView.findViewById(16908304));
+    this.GZI = ((TextView)paramView.findViewById(16908304));
     updateView();
     AppMethodBeat.o(142566);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.IconSwitchKeyValuePreference
  * JD-Core Version:    0.7.0.1
  */

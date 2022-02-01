@@ -6,104 +6,106 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.g.b.p;
 import kotlin.l;
 import org.libpag.PAGView;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/view/FinderLiveGiftSendBtn;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "CONTINUE_CLICK_SHORT_PAG", "", "CONTINUE_KEEP_DURATION", "", "SINGLE_CLICK_SHORT_PAG", "TAG", "continueClickPag", "fullScreenSendAgainContainer", "Landroid/view/View;", "fullScreenSendAgainPag", "Lorg/libpag/PAGView;", "singleClickPag", "singleClickPagTask", "Ljava/lang/Runnable;", "getSingleClickPagTask", "()Ljava/lang/Runnable;", "doSingleClickPagTask", "", "release", "removeClickPagTask", "resetSendAgainPagPath", "path", "showContinueClickSendAgain", "longClick", "", "showSingleClickSendAgian", "stopSendAgainPag", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/FinderLiveGiftSendBtn;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "CONTINUE_CLICK_SHORT_PAG", "", "CONTINUE_KEEP_DURATION", "", "SINGLE_CLICK_SHORT_PAG", "TAG", "continueClickPag", "fullScreenSendAgainContainer", "Landroid/view/View;", "fullScreenSendAgainPag", "Lorg/libpag/PAGView;", "singleClickPag", "singleClickPagTask", "Ljava/lang/Runnable;", "getSingleClickPagTask", "()Ljava/lang/Runnable;", "doSingleClickPagTask", "", "release", "removeClickPagTask", "resetSendAgainPagPath", "path", "showContinueClickSendAgain", "longClick", "", "showSingleClickSendAgian", "stopSendAgainPag", "plugin-finder_release"})
 public final class FinderLiveGiftSendBtn
   extends RelativeLayout
 {
   public final String TAG;
-  public final long uyA;
-  private final View uyB;
-  public final PAGView uyC;
-  public String uyD;
-  private String uyE;
-  public final Runnable uyF;
-  private final String uyy;
-  private final String uyz;
+  private final String yUp;
+  private final String yUq;
+  public final long yUr;
+  private final View yUs;
+  public final PAGView yUt;
+  public String yUu;
+  private String yUv;
+  public final Runnable yUw;
   
   public FinderLiveGiftSendBtn(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(247458);
-    AppMethodBeat.o(247458);
+    AppMethodBeat.i(269497);
+    AppMethodBeat.o(269497);
   }
   
   public FinderLiveGiftSendBtn(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(247457);
+    AppMethodBeat.i(269496);
     this.TAG = "FinderLiveGiftSendBtn";
-    this.uyy = "assets://finder_live_gift_continue_click_short.pag";
-    this.uyz = "assets://finder_live_gift_single_click_short.pag";
-    this.uyA = 500L;
-    this.uyD = this.uyy;
-    this.uyE = this.uyz;
-    View.inflate(paramContext, 2131494402, (ViewGroup)this);
-    paramContext = findViewById(2131300988);
-    p.g(paramContext, "findViewById(R.id.finder…reen_gift_send_container)");
-    this.uyB = paramContext;
-    paramContext = this.uyB.findViewById(2131300986);
-    p.g(paramContext, "fullScreenSendAgainConta…reen_gift_send_again_pag)");
-    this.uyC = ((PAGView)paramContext);
-    this.uyF = ((Runnable)new Runnable()
+    this.yUp = "assets://finder_live_gift_continue_click_short.pag";
+    this.yUq = "assets://finder_live_gift_single_click_short.pag";
+    this.yUr = 500L;
+    this.yUu = this.yUp;
+    this.yUv = this.yUq;
+    View.inflate(paramContext, b.g.finder_live_gift_send_btn_ui, (ViewGroup)this);
+    paramContext = findViewById(b.f.finder_live_full_screen_gift_send_container);
+    p.j(paramContext, "findViewById(R.id.finder…reen_gift_send_container)");
+    this.yUs = paramContext;
+    paramContext = this.yUs.findViewById(b.f.finder_live_full_screen_gift_send_again_pag);
+    p.j(paramContext, "fullScreenSendAgainConta…reen_gift_send_again_pag)");
+    this.yUt = ((PAGView)paramContext);
+    this.yUw = ((Runnable)new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(247453);
-        this.uyG.dit();
-        AppMethodBeat.o(247453);
+        AppMethodBeat.i(237669);
+        this.yUx.dFa();
+        AppMethodBeat.o(237669);
       }
     });
-    AppMethodBeat.o(247457);
+    AppMethodBeat.o(269496);
   }
   
-  public final void atQ(String paramString)
+  public final void aCU(String paramString)
   {
-    AppMethodBeat.i(247456);
-    if ((p.j(this.uyC.getPath(), paramString) ^ true)) {
-      this.uyC.setPath(paramString);
+    AppMethodBeat.i(269495);
+    if ((p.h(this.yUt.getPath(), paramString) ^ true)) {
+      this.yUt.setPath(paramString);
     }
-    AppMethodBeat.o(247456);
+    AppMethodBeat.o(269495);
   }
   
-  public final void dit()
+  public final void dFa()
   {
-    AppMethodBeat.i(247454);
+    AppMethodBeat.i(269493);
     Log.i(this.TAG, "showSingleClickSendAgian");
-    if ((p.j(this.uyC.getPath(), this.uyE) ^ true))
+    if ((p.h(this.yUt.getPath(), this.yUv) ^ true))
     {
-      diu();
-      atQ(this.uyE);
-      this.uyC.setRepeatCount(-1);
-      this.uyC.setProgress(0.0D);
+      dFb();
+      aCU(this.yUv);
+      this.yUt.setRepeatCount(-1);
+      this.yUt.setProgress(0.0D);
     }
-    if (!this.uyC.isPlaying()) {
-      this.uyC.play();
+    if (!this.yUt.isPlaying()) {
+      this.yUt.play();
     }
-    AppMethodBeat.o(247454);
+    AppMethodBeat.o(269493);
   }
   
-  public final void diu()
+  public final void dFb()
   {
-    AppMethodBeat.i(247455);
-    if (this.uyC.isPlaying()) {
-      this.uyC.stop();
+    AppMethodBeat.i(269494);
+    if (this.yUt.isPlaying()) {
+      this.yUt.stop();
     }
-    AppMethodBeat.o(247455);
+    AppMethodBeat.o(269494);
   }
   
   public final Runnable getSingleClickPagTask()
   {
-    return this.uyF;
+    return this.yUw;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.view.FinderLiveGiftSendBtn
  * JD-Core Version:    0.7.0.1
  */

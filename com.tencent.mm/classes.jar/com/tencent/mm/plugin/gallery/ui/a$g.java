@@ -8,15 +8,17 @@ import android.os.Looper;
 import android.text.TextUtils;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.i.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.VideoMediaItem;
 import com.tencent.mm.plugin.gallery.model.e;
+import com.tencent.mm.plugin.gallery.model.g;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import org.json.JSONArray;
@@ -26,25 +28,25 @@ import org.json.JSONObject;
 public final class a$g
   implements Runnable
 {
-  private static HashMap<TextView, g> xnK;
-  private boolean ifz;
-  private WeakReference<TextView> sTx;
-  private GalleryItem.VideoMediaItem xnI;
-  private a xnJ;
+  private static HashMap<TextView, g> Cac;
+  private GalleryItem.VideoMediaItem Caa;
+  private a Cab;
+  private boolean kUn;
+  private WeakReference<TextView> wzt;
   
   static
   {
     AppMethodBeat.i(111406);
-    xnK = new HashMap();
+    Cac = new HashMap();
     AppMethodBeat.o(111406);
   }
   
   private a$g(TextView paramTextView, GalleryItem.VideoMediaItem paramVideoMediaItem, a parama)
   {
     AppMethodBeat.i(111397);
-    this.sTx = new WeakReference(paramTextView);
-    this.xnI = paramVideoMediaItem;
-    this.xnJ = parama;
+    this.wzt = new WeakReference(paramTextView);
+    this.Caa = paramVideoMediaItem;
+    this.Cab = parama;
     AppMethodBeat.o(111397);
   }
   
@@ -57,28 +59,28 @@ public final class a$g
       AppMethodBeat.o(111399);
       return;
     }
-    if (xnK.containsKey(paramTextView))
+    if (Cac.containsKey(paramTextView))
     {
-      g localg = (g)xnK.get(paramTextView);
+      g localg = (g)Cac.get(paramTextView);
       if (localg != null)
       {
-        if (localg.xnI.equals(paramVideoMediaItem))
+        if (localg.Caa.equals(paramVideoMediaItem))
         {
           AppMethodBeat.o(111399);
           return;
         }
-        if (paramTextView.equals(localg.sTx.get()))
+        if (paramTextView.equals(localg.wzt.get()))
         {
-          localg.sTx = new WeakReference(null);
-          localg.ifz = true;
+          localg.wzt = new WeakReference(null);
+          localg.kUn = true;
         }
       }
     }
-    if (paramVideoMediaItem.jkS >= 0)
+    if (paramVideoMediaItem.maT >= 0)
     {
-      Log.i("MicroMsg.AlbumAdapter", "Directly attach durationMs %d to tv, path %s", new Object[] { Integer.valueOf(paramVideoMediaItem.jkS), paramVideoMediaItem });
-      j(paramTextView, paramVideoMediaItem.jkS);
-      xnK.remove(paramTextView);
+      Log.i("MicroMsg.AlbumAdapter", "Directly attach durationMs %d to tv, path %s", new Object[] { Integer.valueOf(paramVideoMediaItem.maT), paramVideoMediaItem });
+      j(paramTextView, paramVideoMediaItem.maT);
+      Cac.remove(paramTextView);
       AppMethodBeat.o(111399);
       return;
     }
@@ -100,19 +102,19 @@ public final class a$g
           return;
         }
         a.g.k(paramAnonymousg, paramAnonymousInt);
-        a.g.dRT().remove(paramAnonymousg);
+        a.g.euv().remove(paramAnonymousg);
         AppMethodBeat.o(111396);
       }
     });
-    e.dQL().aq(paramVideoMediaItem);
-    xnK.put(paramTextView, paramVideoMediaItem);
+    e.etm().av(paramVideoMediaItem);
+    Cac.put(paramTextView, paramVideoMediaItem);
     AppMethodBeat.o(111399);
   }
   
-  private static boolean ayX(String paramString)
+  private static boolean aFp(String paramString)
   {
     AppMethodBeat.i(173745);
-    Object localObject1 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.skT, "");
+    Object localObject1 = ((b)h.ae(b.class)).a(b.a.vVw, "");
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
       AppMethodBeat.o(173745);
@@ -132,7 +134,7 @@ public final class a$g
         localObject2 = ((JSONArray)localObject1).optJSONObject(i);
         if ((Build.MANUFACTURER.equalsIgnoreCase(((JSONObject)localObject2).optString("brand"))) && (Build.MODEL.equalsIgnoreCase(((JSONObject)localObject2).optString("model"))))
         {
-          long l = s.boW(paramString);
+          long l = u.bBQ(paramString);
           if ((j != 0) && (l > j * 1024 * 1024))
           {
             Log.i("MicroMsg.AlbumAdapter", "hit devices but it is too big, fileSize: %s, maxSize: %s, filePath: %s", new Object[] { Long.valueOf(l), Integer.valueOf(j), paramString });
@@ -164,17 +166,17 @@ public final class a$g
     }
   }
   
-  public static void dRR()
+  public static void eut()
   {
     AppMethodBeat.i(111398);
-    xnK.clear();
+    Cac.clear();
     AppMethodBeat.o(111398);
   }
   
-  private void dRS()
+  private void euu()
   {
     AppMethodBeat.i(173746);
-    if (this.xnI == null)
+    if (this.Caa == null)
     {
       AppMethodBeat.o(173746);
       return;
@@ -182,20 +184,20 @@ public final class a$g
     long l = Util.currentTicks();
     try
     {
-      String str = this.xnI.aQn();
+      String str = this.Caa.aZe();
       Object localObject = SightVideoJNI.getSimpleMp4InfoVFS(str);
       Log.d("MicroMsg.AlbumAdapter", "get simple mp4 info %s", new Object[] { localObject });
       localObject = new JSONObject((String)localObject);
-      this.xnI.jkS = ((JSONObject)localObject).getInt("videoDuration");
-      this.xnI.videoHeight = ((JSONObject)localObject).getInt("videoHeight");
-      this.xnI.videoWidth = ((JSONObject)localObject).getInt("videoWidth");
-      this.xnI.videoBitRate = ((JSONObject)localObject).getInt("videoBitrate");
-      this.xnI.videoFrameRate = ((JSONObject)localObject).getInt("videoFPS");
-      this.xnI.ihS = SightVideoJNI.getMp4RotateVFS(str);
-      this.xnI.videoIFrameInterval = 0;
-      this.xnI.jkQ = com.tencent.mm.plugin.gallery.a.b.azg(((JSONObject)localObject).getString("videoType"));
-      this.xnI.jkR = com.tencent.mm.plugin.gallery.a.b.azg(((JSONObject)localObject).getString("audioType"));
-      Log.d("MicroMsg.AlbumAdapter", "loadItemFromSimpleMP4Info mediaItem: %s", new Object[] { this.xnI });
+      this.Caa.maT = ((JSONObject)localObject).getInt("videoDuration");
+      this.Caa.videoHeight = ((JSONObject)localObject).getInt("videoHeight");
+      this.Caa.videoWidth = ((JSONObject)localObject).getInt("videoWidth");
+      this.Caa.videoBitRate = ((JSONObject)localObject).getInt("videoBitrate");
+      this.Caa.videoFrameRate = ((JSONObject)localObject).getInt("videoFPS");
+      this.Caa.kWG = SightVideoJNI.getMp4RotateVFS(str);
+      this.Caa.videoIFrameInterval = 0;
+      this.Caa.maR = com.tencent.mm.plugin.gallery.a.c.aIG(((JSONObject)localObject).getString("videoType"));
+      this.Caa.maS = com.tencent.mm.plugin.gallery.a.c.aIG(((JSONObject)localObject).getString("audioType"));
+      Log.d("MicroMsg.AlbumAdapter", "loadItemFromSimpleMP4Info mediaItem: %s", new Object[] { this.Caa });
       Log.i("MicroMsg.AlbumAdapter", "loadItemFromSimpleMP4Info used %sms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
       AppMethodBeat.o(173746);
       return;
@@ -241,7 +243,7 @@ public final class a$g
       AppMethodBeat.o(111401);
       return false;
     }
-    boolean bool = this.xnI.equals(((g)paramObject).xnI);
+    boolean bool = this.Caa.equals(((g)paramObject).Caa);
     AppMethodBeat.o(111401);
     return bool;
   }
@@ -249,7 +251,7 @@ public final class a$g
   public final int hashCode()
   {
     AppMethodBeat.i(111402);
-    int i = this.xnI.hashCode();
+    int i = this.Caa.hashCode();
     AppMethodBeat.o(111402);
     return i;
   }
@@ -257,7 +259,7 @@ public final class a$g
   public final void run()
   {
     AppMethodBeat.i(111404);
-    if (this.ifz)
+    if (this.kUn)
     {
       AppMethodBeat.o(111404);
       return;
@@ -265,36 +267,36 @@ public final class a$g
     int i;
     label123:
     long l;
-    c localc;
+    com.tencent.mm.compatible.i.c localc;
     String str1;
-    if (ayX(this.xnI.aQn()))
+    if (aFp(this.Caa.aZe()))
     {
-      dRS();
-      if (this.ifz) {
+      euu();
+      if (this.kUn) {
         break label818;
       }
       if (Looper.myLooper() == Looper.getMainLooper())
       {
-        if (this.xnJ != null) {
-          this.xnJ.a(this, this.xnI.jkS);
+        if (this.Cab != null) {
+          this.Cab.a(this, this.Caa.maT);
         }
         AppMethodBeat.o(111404);
       }
     }
     else
     {
-      if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.skt, 0) == 1) {}
+      if (((b)h.ae(b.class)).a(b.a.vUO, 0) == 1) {}
       for (i = 1;; i = 0)
       {
         if (i == 0) {
           break label123;
         }
-        dRS();
+        euu();
         break;
       }
       l = Util.currentTicks();
-      localc = new c();
-      str1 = this.xnI.aQn();
+      localc = new com.tencent.mm.compatible.i.c();
+      str1 = this.Caa.aZe();
     }
     for (;;)
     {
@@ -304,7 +306,7 @@ public final class a$g
       try
       {
         localc.setDataSource(str1);
-        int j = localc.gLF.getTrackCount();
+        int j = localc.jvU.getTrackCount();
         localObject1 = null;
         localObject4 = null;
         i = 0;
@@ -339,67 +341,67 @@ public final class a$g
           localObject5 = localObject4;
           break label840;
         }
-        if (this.xnI != null)
+        if (this.Caa != null)
         {
           if (localObject6 != null)
           {
-            localObject1 = this.xnI;
+            localObject1 = this.Caa;
             if (localObject6.containsKey("durationUs")) {
               continue;
             }
             i = 0;
-            ((GalleryItem.VideoMediaItem)localObject1).jkS = i;
-            localObject1 = this.xnI;
+            ((GalleryItem.VideoMediaItem)localObject1).maT = i;
+            localObject1 = this.Caa;
             if (localObject6.containsKey("height")) {
               continue;
             }
             i = 0;
             ((GalleryItem.VideoMediaItem)localObject1).videoHeight = i;
-            localObject1 = this.xnI;
+            localObject1 = this.Caa;
             if (localObject6.containsKey("width")) {
               continue;
             }
             i = 0;
             ((GalleryItem.VideoMediaItem)localObject1).videoWidth = i;
-            localObject4 = this.xnI;
+            localObject4 = this.Caa;
             if (localObject6.containsKey("mime")) {
               continue;
             }
             localObject1 = "";
-            ((GalleryItem.VideoMediaItem)localObject4).jkQ = ((String)localObject1);
-            localObject1 = this.xnI;
+            ((GalleryItem.VideoMediaItem)localObject4).maR = ((String)localObject1);
+            localObject1 = this.Caa;
             if (localObject6.containsKey("bitrate")) {
               continue;
             }
             i = 0;
             ((GalleryItem.VideoMediaItem)localObject1).videoBitRate = i;
-            localObject1 = this.xnI;
+            localObject1 = this.Caa;
             if (localObject6.containsKey("i-frame-interval")) {
               continue;
             }
             i = 0;
             ((GalleryItem.VideoMediaItem)localObject1).videoIFrameInterval = i;
-            localObject1 = this.xnI;
+            localObject1 = this.Caa;
             if (localObject6.containsKey("frame-rate")) {
               continue;
             }
             i = 0;
             ((GalleryItem.VideoMediaItem)localObject1).videoFrameRate = i;
-            this.xnI.ihS = SightVideoJNI.getMp4RotateVFS(str1);
+            this.Caa.kWG = SightVideoJNI.getMp4RotateVFS(str1);
           }
           if (localObject5 != null)
           {
-            localObject4 = this.xnI;
+            localObject4 = this.Caa;
             if (localObject5.containsKey("mime")) {
               continue;
             }
             localObject1 = "";
-            ((GalleryItem.VideoMediaItem)localObject4).jkR = ((String)localObject1);
+            ((GalleryItem.VideoMediaItem)localObject4).maS = ((String)localObject1);
           }
         }
-        Log.d("MicroMsg.AlbumAdapter", "loadItemFromExtractor mediaItem: %s", new Object[] { this.xnI });
+        Log.d("MicroMsg.AlbumAdapter", "loadItemFromExtractor mediaItem: %s", new Object[] { this.Caa });
         Log.d("MicroMsg.AlbumAdapter", "mediaItem format:%s, videoPath:%s", new Object[] { localObject6, str1 });
-        localc.gLF.release();
+        localc.jvU.release();
       }
       catch (Exception localException)
       {
@@ -407,12 +409,12 @@ public final class a$g
         MediaFormat localMediaFormat;
         String str2;
         Log.d("MicroMsg.AlbumAdapter", "Video extractor init failed. video path = [%s] e = [%s]", new Object[] { str1, localException.getMessage() });
-        localc.gLF.release();
+        localc.jvU.release();
         continue;
       }
       finally
       {
-        localc.gLF.release();
+        localc.jvU.release();
         AppMethodBeat.o(111404);
       }
       Log.i("MicroMsg.AlbumAdapter", "loadItemFromExtractor used %sms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
@@ -450,7 +452,7 @@ public final class a$g
             {
               AppMethodBeat.i(111395);
               if (a.g.a(a.g.this) != null) {
-                a.g.a(a.g.this).a(a.g.this, a.g.b(a.g.this).jkS);
+                a.g.a(a.g.this).a(a.g.this, a.g.b(a.g.this).maT);
               }
               AppMethodBeat.o(111395);
             }
@@ -486,7 +488,7 @@ public final class a$g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.a.g
  * JD-Core Version:    0.7.0.1
  */

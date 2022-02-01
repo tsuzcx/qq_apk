@@ -1,6 +1,6 @@
 package com.tencent.mm.booter.notification.queue;
 
-import android.support.v4.app.v;
+import androidx.core.app.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.booter.notification.NotificationItem;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -13,44 +13,44 @@ import java.util.Queue;
 public final class b
   implements Iterable<NotificationItem>
 {
-  public NotificationQueue goq;
-  public a gor;
-  public int mark;
+  public a iSA;
+  public int iSy;
+  public NotificationQueue iSz;
   
   private b()
   {
     AppMethodBeat.i(20022);
-    this.mark = -1;
-    this.goq = new NotificationQueue();
-    this.gor = new a();
+    this.iSy = -1;
+    this.iSz = new NotificationQueue();
+    this.iSA = new a();
     restore();
     AppMethodBeat.o(20022);
   }
   
-  public static final b alj()
+  public static final b arh()
   {
     AppMethodBeat.i(20021);
-    b localb = a.aln();
+    b localb = a.arl();
     AppMethodBeat.o(20021);
     return localb;
   }
   
-  private Queue<Integer> alm()
+  private Queue<Integer> ark()
   {
     AppMethodBeat.i(20027);
     LinkedList localLinkedList1 = new LinkedList();
     LinkedList localLinkedList2 = new LinkedList();
-    Object localObject1 = this.goq;
-    if (((NotificationQueue)localObject1).goo == null) {
+    Object localObject1 = this.iSz;
+    if (((NotificationQueue)localObject1).iSx == null) {
       ((NotificationQueue)localObject1).restore();
     }
-    localLinkedList2.addAll(((NotificationQueue)localObject1).goo);
+    localLinkedList2.addAll(((NotificationQueue)localObject1).iSx);
     localObject1 = localLinkedList2.iterator();
     Object localObject2;
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (NotificationItem)((Iterator)localObject1).next();
-      if (((NotificationItem)localObject2).goh)
+      if (((NotificationItem)localObject2).iSq)
       {
         localLinkedList1.add(Integer.valueOf(((NotificationItem)localObject2).id));
         Log.d("MicroMsg.Notification.Queue", "remove allcustom: %d", new Object[] { Integer.valueOf(((NotificationItem)localObject2).id) });
@@ -58,16 +58,16 @@ public final class b
     }
     localLinkedList2.clear();
     localLinkedList2 = new LinkedList();
-    localObject1 = this.gor;
-    if (((a)localObject1).gom == null) {
+    localObject1 = this.iSA;
+    if (((a)localObject1).iSv == null) {
       ((a)localObject1).restore();
     }
-    localLinkedList2.addAll(((a)localObject1).gom);
+    localLinkedList2.addAll(((a)localObject1).iSv);
     localObject1 = localLinkedList2.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (a.a)((Iterator)localObject1).next();
-      if (((a.a)localObject2).goh)
+      if (((a.a)localObject2).iSq)
       {
         localLinkedList1.add(Integer.valueOf(((a.a)localObject2).notificationId));
         Log.d("MicroMsg.Notification.Queue", "remove allcustom: %d", new Object[] { Integer.valueOf(((a.a)localObject2).notificationId) });
@@ -78,7 +78,7 @@ public final class b
     return localLinkedList1;
   }
   
-  public final int Da(String paramString)
+  public final int JR(String paramString)
   {
     AppMethodBeat.i(20031);
     int i = getId(paramString);
@@ -87,43 +87,43 @@ public final class b
       AppMethodBeat.o(20031);
       return i;
     }
-    i = o(paramString, true);
+    i = r(paramString, true);
     AppMethodBeat.o(20031);
     return i;
   }
   
-  public final void a(v paramv, int paramInt)
+  public final void a(h paramh, int paramInt)
   {
-    AppMethodBeat.i(20030);
-    if (paramv == null)
+    AppMethodBeat.i(199068);
+    if (paramh == null)
     {
       Log.e("MicroMsg.Notification.Queue", "manager is null???");
-      AppMethodBeat.o(20030);
+      AppMethodBeat.o(199068);
       return;
     }
-    paramv.cancel(paramInt);
-    nX(paramInt);
-    AppMethodBeat.o(20030);
+    paramh.cancel(paramInt);
+    qm(paramInt);
+    AppMethodBeat.o(199068);
   }
   
-  public final NotificationItem alk()
+  public final NotificationItem ari()
   {
     AppMethodBeat.i(20025);
     int i = 0;
     Object localObject;
-    if (i < this.goq.size())
+    if (i < this.iSz.size())
     {
-      localObject = this.goq;
-      if (((NotificationQueue)localObject).goo == null) {
+      localObject = this.iSz;
+      if (((NotificationQueue)localObject).iSx == null) {
         ((NotificationQueue)localObject).restore();
       }
-      localObject = (NotificationItem)((NotificationQueue)localObject).goo.get(i);
-      if (((NotificationItem)localObject).goh)
+      localObject = (NotificationItem)((NotificationQueue)localObject).iSx.get(i);
+      if (((NotificationItem)localObject).iSq)
       {
-        if (this.gor.remove(((NotificationItem)localObject).id)) {
+        if (this.iSA.remove(((NotificationItem)localObject).id)) {
           Log.d("MicroMsg.NotificationAppMsgQueue", "remove: [%s]", new Object[] { ((NotificationItem)localObject).toString() });
         }
-        this.goq.d((NotificationItem)localObject);
+        this.iSz.d((NotificationItem)localObject);
       }
     }
     for (;;)
@@ -136,7 +136,7 @@ public final class b
     }
   }
   
-  public final Queue<Integer> all()
+  public final Queue<Integer> arj()
   {
     AppMethodBeat.i(20026);
     LinkedList localLinkedList = new LinkedList();
@@ -146,7 +146,7 @@ public final class b
       localLinkedList.add(Integer.valueOf(i));
       i += 1;
     }
-    localLinkedList.addAll(alm());
+    localLinkedList.addAll(ark());
     AppMethodBeat.o(20026);
     return localLinkedList;
   }
@@ -154,7 +154,7 @@ public final class b
   public final void cancel(int paramInt)
   {
     AppMethodBeat.i(20029);
-    a(v.P(MMApplicationContext.getContext()), paramInt);
+    a(h.M(MMApplicationContext.getContext()), paramInt);
     AppMethodBeat.o(20029);
   }
   
@@ -166,7 +166,7 @@ public final class b
       AppMethodBeat.o(20028);
       return -1;
     }
-    Iterator localIterator = this.gor.iterator();
+    Iterator localIterator = this.iSA.iterator();
     while (localIterator.hasNext())
     {
       a.a locala = (a.a)localIterator.next();
@@ -184,31 +184,31 @@ public final class b
   public final Iterator<NotificationItem> iterator()
   {
     AppMethodBeat.i(20033);
-    Object localObject = this.goq;
-    if (((NotificationQueue)localObject).goo == null) {
+    Object localObject = this.iSz;
+    if (((NotificationQueue)localObject).iSx == null) {
       ((NotificationQueue)localObject).restore();
     }
-    localObject = ((NotificationQueue)localObject).goo.iterator();
+    localObject = ((NotificationQueue)localObject).iSx.iterator();
     AppMethodBeat.o(20033);
     return localObject;
   }
   
-  public final void nX(int paramInt)
+  public final void qm(int paramInt)
   {
     AppMethodBeat.i(20024);
-    this.gor.remove(paramInt);
-    NotificationItem localNotificationItem = this.goq.nW(paramInt);
+    this.iSA.remove(paramInt);
+    NotificationItem localNotificationItem = this.iSz.ql(paramInt);
     if (localNotificationItem != null) {
       localNotificationItem.clear();
     }
     AppMethodBeat.o(20024);
   }
   
-  public final int o(String paramString, boolean paramBoolean)
+  public final int r(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(20032);
     long l = System.currentTimeMillis();
-    Iterator localIterator = this.gor.iterator();
+    Iterator localIterator = this.iSA.iterator();
     a.a locala;
     for (String str = ""; localIterator.hasNext(); str = str + locala.notificationId + ",") {
       locala = (a.a)localIterator.next();
@@ -246,26 +246,26 @@ public final class b
   public final void restore()
   {
     AppMethodBeat.i(20023);
-    this.goq.restore();
-    this.gor.restore();
+    this.iSz.restore();
+    this.iSA.restore();
     AppMethodBeat.o(20023);
   }
   
   static final class a
   {
-    private static final b gos;
+    private static final b iSB;
     
     static
     {
       AppMethodBeat.i(20020);
-      gos = new b((byte)0);
+      iSB = new b((byte)0);
       AppMethodBeat.o(20020);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.booter.notification.queue.b
  * JD-Core Version:    0.7.0.1
  */

@@ -7,9 +7,9 @@ import android.view.animation.Animation;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.f.h;
-import com.tencent.f.i;
-import com.tencent.f.i.d;
+import com.tencent.e.h;
+import com.tencent.e.i;
+import com.tencent.e.i.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.flash.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -17,17 +17,17 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class FaceNumberLayout
   extends LinearLayout
 {
-  private static final int wIO;
+  private static final int BCg;
+  private d BCh;
+  private Runnable BCi;
   private int currentIndex;
-  private int jcu;
-  private d wIP;
-  private Runnable wIQ;
+  private int total;
   
   static
   {
-    AppMethodBeat.i(186713);
-    wIO = a.dKX();
-    AppMethodBeat.o(186713);
+    AppMethodBeat.i(191802);
+    BCg = a.epB();
+    AppMethodBeat.o(191802);
   }
   
   public FaceNumberLayout(Context paramContext, AttributeSet paramAttributeSet)
@@ -43,53 +43,53 @@ public class FaceNumberLayout
   private FaceNumberLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
   {
     super(paramContext, paramAttributeSet, paramInt, 0);
-    AppMethodBeat.i(186709);
+    AppMethodBeat.i(191780);
     this.currentIndex = 0;
-    this.jcu = 0;
-    this.wIQ = new Runnable()
+    this.total = 0;
+    this.BCi = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(186708);
+        AppMethodBeat.i(191147);
         Log.i("MicroMsg.FaceFlashManagerNumberView", "showNumberRunnable current index:%s", new Object[] { Integer.valueOf(FaceNumberLayout.a(FaceNumberLayout.this)) });
         if (FaceNumberLayout.this.getChildAt(FaceNumberLayout.a(FaceNumberLayout.this)) != null)
         {
           FaceNumberView localFaceNumberView = (FaceNumberView)FaceNumberLayout.this.getChildAt(FaceNumberLayout.a(FaceNumberLayout.this));
           Log.i("MicroMsg.FaceFlashManagerNumberView", "show");
-          localFaceNumberView.wIS.setVisibility(4);
-          localFaceNumberView.wIT.clearAnimation();
-          localFaceNumberView.wIU.setFillAfter(true);
-          localFaceNumberView.wIU.setDuration(500L);
-          localFaceNumberView.wIT.startAnimation(localFaceNumberView.wIU);
-          localFaceNumberView.wIT.setVisibility(0);
+          localFaceNumberView.BCk.setVisibility(4);
+          localFaceNumberView.BCl.clearAnimation();
+          localFaceNumberView.BCm.setFillAfter(true);
+          localFaceNumberView.BCm.setDuration(500L);
+          localFaceNumberView.BCl.startAnimation(localFaceNumberView.BCm);
+          localFaceNumberView.BCl.setVisibility(0);
           FaceNumberLayout.a(FaceNumberLayout.this, FaceNumberLayout.a(FaceNumberLayout.this) + 1);
           if (FaceNumberLayout.a(FaceNumberLayout.this) <= FaceNumberLayout.b(FaceNumberLayout.this)) {
-            FaceNumberLayout.a(FaceNumberLayout.this, h.RTc.n(FaceNumberLayout.c(FaceNumberLayout.this), FaceNumberLayout.wIO));
+            FaceNumberLayout.a(FaceNumberLayout.this, h.ZvG.n(FaceNumberLayout.c(FaceNumberLayout.this), FaceNumberLayout.BCg));
           }
         }
-        AppMethodBeat.o(186708);
+        AppMethodBeat.o(191147);
       }
     };
-    AppMethodBeat.o(186709);
+    AppMethodBeat.o(191780);
   }
   
-  public final void dLn()
+  public final void epT()
   {
-    AppMethodBeat.i(186711);
+    AppMethodBeat.i(191792);
     Log.i("MicroMsg.FaceFlashManagerNumberView", "startShowNumber");
-    if ((this.wIP != null) && (!this.wIP.isDone()) && (!this.wIP.isCancelled())) {
-      this.wIP.cancel(true);
+    if ((this.BCh != null) && (!this.BCh.isDone()) && (!this.BCh.isCancelled())) {
+      this.BCh.cancel(true);
     }
-    this.wIP = h.RTc.aV(this.wIQ);
-    AppMethodBeat.o(186711);
+    this.BCh = h.ZvG.bc(this.BCi);
+    AppMethodBeat.o(191792);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(186712);
+    AppMethodBeat.i(191795);
     Log.i("MicroMsg.FaceFlashManagerNumberView", "release");
-    if ((this.wIP != null) && (!this.wIP.isDone()) && (!this.wIP.isCancelled())) {
-      this.wIP.cancel(true);
+    if ((this.BCh != null) && (!this.BCh.isDone()) && (!this.BCh.isCancelled())) {
+      this.BCh.cancel(true);
     }
     int i = 0;
     while (i < getChildCount())
@@ -97,18 +97,18 @@ public class FaceNumberLayout
       ((FaceNumberView)getChildAt(i)).release();
       i += 1;
     }
-    AppMethodBeat.o(186712);
+    AppMethodBeat.o(191795);
   }
   
   public void setNumbers(String paramString)
   {
-    AppMethodBeat.i(186710);
+    AppMethodBeat.i(191786);
     Log.i("MicroMsg.FaceFlashManagerNumberView", "setNumbers %s", new Object[] { paramString });
-    this.jcu = paramString.length();
+    this.total = paramString.length();
     this.currentIndex = getChildCount();
-    setWeightSum(this.jcu);
+    setWeightSum(this.total);
     int i = 0;
-    while (i < this.jcu)
+    while (i < this.total)
     {
       FaceNumberView localFaceNumberView = new FaceNumberView(getContext());
       localFaceNumberView.setNumber(String.valueOf(paramString.charAt(i)));
@@ -118,7 +118,7 @@ public class FaceNumberLayout
       addView(localFaceNumberView, localLayoutParams);
       i += 1;
     }
-    AppMethodBeat.o(186710);
+    AppMethodBeat.o(191786);
   }
 }
 

@@ -8,6 +8,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.plugin.downloader.model.o;
 import com.tencent.mm.plugin.downloader.model.o.a;
+import com.tencent.mm.plugin.webview.c.c;
+import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import com.tencent.mm.ui.base.h;
@@ -20,14 +22,14 @@ public class ba
   private void a(long paramLong, br.a parama)
   {
     AppMethodBeat.i(78616);
-    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.Cw(paramLong);
+    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.IF(paramLong);
     if ((locala != null) && (locala.field_fromDownloadApp))
     {
       locala.field_fromDownloadApp = false;
       locala.field_showNotification = true;
       com.tencent.mm.plugin.downloader.model.d.e(locala);
     }
-    if (f.cBv().Cq(paramLong)) {
+    if (f.cPZ().Iz(paramLong)) {
       parama.i(null, null);
     }
     for (;;)
@@ -43,6 +45,14 @@ public class ba
   {
     AppMethodBeat.i(78615);
     Log.i("MicroMsg.JsApiResumeDownloadTask", "invokeInMM");
+    if (com.tencent.mm.plugin.webview.luggage.c.a.gVm())
+    {
+      Log.i("MicroMsg.JsApiResumeDownloadTask", "resumeDownloadTask isTeenMode and ignore");
+      com.tencent.mm.plugin.webview.luggage.c.a.ja(paramContext);
+      parama.i("cancel", null);
+      AppMethodBeat.o(78615);
+      return;
+    }
     final long l;
     try
     {
@@ -71,7 +81,7 @@ public class ba
     if (paramString.optInt("ignoreNetwork", 0) == 1) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.Cw(l);
+      com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.IF(l);
       locala.field_scene = i;
       locala.field_uiarea = j;
       locala.field_noticeId = k;
@@ -109,12 +119,12 @@ public class ba
       AppMethodBeat.o(78615);
       return;
     }
-    h.a(paramContext, paramContext.getString(2131768552), paramContext.getString(2131768553), paramContext.getString(2131768547), paramContext.getString(2131755761), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    h.a(paramContext, paramContext.getString(c.i.webview_download_ui_download_not_in_wifi_tips), paramContext.getString(c.i.webview_download_ui_download_not_in_wifi_title), paramContext.getString(c.i.webview_download_ui_btn_state_to_download), paramContext.getString(c.i.app_cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(78612);
-        ba.a(ba.this, l, this.xxf);
+        ba.a(ba.this, l, this.CBo);
         paramAnonymousDialogInterface.dismiss();
         AppMethodBeat.o(78612);
       }
@@ -127,13 +137,13 @@ public class ba
         parama.i("fail_network_not_wifi", null);
         AppMethodBeat.o(78613);
       }
-    }, 2131101414);
+    }, c.c.wechat_green);
     AppMethodBeat.o(78615);
   }
   
   public final void b(com.tencent.luggage.d.b<s>.a paramb) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 2;
   }

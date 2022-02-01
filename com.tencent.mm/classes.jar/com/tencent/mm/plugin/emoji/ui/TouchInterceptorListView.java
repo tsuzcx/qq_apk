@@ -20,81 +20,84 @@ import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.emoji.i.b;
+import com.tencent.mm.plugin.emoji.i.c;
+import com.tencent.mm.plugin.emoji.i.d;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class TouchInterceptorListView
   extends ListView
 {
-  private int afE;
-  private int afF;
-  private GestureDetector mDJ;
+  private int lO;
+  private int lP;
   private int mHeight;
   private Rect mTempRect;
   private final int mTouchSlop;
   private WindowManager mWindowManager;
   private WindowManager.LayoutParams mWindowParams;
-  private int qXo;
-  private ImageView riR;
-  private int riS;
-  private int riT;
-  private int riU;
-  private int riV;
-  private a riW;
-  private b riX;
-  private c riY;
-  private int riZ;
-  private int rja;
-  private int rjb;
-  private Bitmap rjc;
-  private int rjd;
-  private int rje;
-  private Drawable rjf;
-  private int rjg;
+  private GestureDetector pCU;
+  private int uAc;
+  private ImageView uMa;
+  private int uMb;
+  private int uMc;
+  private int uMd;
+  private int uMe;
+  private a uMf;
+  private b uMg;
+  private c uMh;
+  private int uMi;
+  private int uMj;
+  private int uMk;
+  private Bitmap uMl;
+  private int uMm;
+  private int uMn;
+  private Drawable uMo;
+  private int uMp;
   
   public TouchInterceptorListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(109090);
-    this.rjb = -1;
+    this.uMk = -1;
     this.mTempRect = new Rect();
-    this.rjg = 0;
+    this.uMp = 0;
     this.mTouchSlop = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     paramContext = getResources();
-    this.qXo = (paramContext.getDimensionPixelSize(2131166272) + 1);
-    this.rje = (this.qXo / 2);
-    this.rjd = (this.qXo * 2);
-    this.rjg = paramContext.getDimensionPixelOffset(2131166279);
+    this.uAc = (paramContext.getDimensionPixelSize(i.c.emoji_item_list_height) + 1);
+    this.uMn = (this.uAc / 2);
+    this.uMm = (this.uAc * 2);
+    this.uMp = paramContext.getDimensionPixelOffset(i.c.emoji_itme_drag_width);
     AppMethodBeat.o(109090);
   }
   
-  private void cHP()
+  private void cWw()
   {
     AppMethodBeat.i(109095);
-    if (this.riR != null)
+    if (this.uMa != null)
     {
-      this.riR.setVisibility(8);
-      ((WindowManager)getContext().getSystemService("window")).removeView(this.riR);
-      this.riR.setImageDrawable(null);
-      this.riR = null;
+      this.uMa.setVisibility(8);
+      ((WindowManager)getContext().getSystemService("window")).removeView(this.uMa);
+      this.uMa.setImageDrawable(null);
+      this.uMa = null;
     }
-    if (this.rjc != null)
+    if (this.uMl != null)
     {
-      Log.i("MicroMsg.emoji.TouchInterceptorListView", "bitmap recycle %s", new Object[] { this.rjc });
-      this.rjc.recycle();
-      this.rjc = null;
+      Log.i("MicroMsg.emoji.TouchInterceptorListView", "bitmap recycle %s", new Object[] { this.uMl });
+      this.uMl.recycle();
+      this.uMl = null;
     }
-    if (this.rjf != null) {
-      this.rjf.setLevel(0);
+    if (this.uMo != null) {
+      this.uMo.setLevel(0);
     }
     AppMethodBeat.o(109095);
   }
   
-  private int fD(int paramInt1, int paramInt2)
+  private int ga(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(109092);
     if (paramInt2 < 0)
     {
-      i = fD(paramInt1, this.qXo + paramInt2);
+      i = ga(paramInt1, this.uAc + paramInt2);
       if (i > 0)
       {
         AppMethodBeat.o(109092);
@@ -118,7 +121,7 @@ public class TouchInterceptorListView
     return -1;
   }
   
-  private void lv(boolean paramBoolean)
+  private void mG(boolean paramBoolean)
   {
     AppMethodBeat.i(109093);
     int i = 0;
@@ -153,7 +156,7 @@ public class TouchInterceptorListView
         return;
       }
       localObject1 = ((View)localObject2).getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject1).height = this.qXo;
+      ((ViewGroup.LayoutParams)localObject1).height = this.uAc;
       ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
       ((View)localObject2).setVisibility(0);
       i += 1;
@@ -163,30 +166,30 @@ public class TouchInterceptorListView
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(109091);
-    if ((this.riY != null) && (this.mDJ == null) && (this.rjb == 0)) {
-      this.mDJ = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener()
+    if ((this.uMh != null) && (this.pCU == null) && (this.uMk == 0)) {
+      this.pCU = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener()
       {
         public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
         {
-          AppMethodBeat.i(240179);
+          AppMethodBeat.i(257086);
           b localb = new b();
-          localb.bm(paramAnonymousMotionEvent);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/emoji/ui/TouchInterceptorListView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+          localb.bn(paramAnonymousMotionEvent);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/emoji/ui/TouchInterceptorListView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
           boolean bool = super.onContextClick(paramAnonymousMotionEvent);
           com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/emoji/ui/TouchInterceptorListView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-          AppMethodBeat.o(240179);
+          AppMethodBeat.o(257086);
           return bool;
         }
         
         public final boolean onDoubleTap(MotionEvent paramAnonymousMotionEvent)
         {
-          AppMethodBeat.i(240178);
+          AppMethodBeat.i(257085);
           b localb = new b();
-          localb.bm(paramAnonymousMotionEvent);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/emoji/ui/TouchInterceptorListView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+          localb.bn(paramAnonymousMotionEvent);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/emoji/ui/TouchInterceptorListView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
           boolean bool = super.onDoubleTap(paramAnonymousMotionEvent);
           com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/emoji/ui/TouchInterceptorListView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
-          AppMethodBeat.o(240178);
+          AppMethodBeat.o(257085);
           return bool;
         }
         
@@ -216,29 +219,29 @@ public class TouchInterceptorListView
         
         public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
         {
-          AppMethodBeat.i(240177);
+          AppMethodBeat.i(257084);
           b localb = new b();
-          localb.bm(paramAnonymousMotionEvent);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/emoji/ui/TouchInterceptorListView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.axR());
+          localb.bn(paramAnonymousMotionEvent);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/emoji/ui/TouchInterceptorListView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
           super.onLongPress(paramAnonymousMotionEvent);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/emoji/ui/TouchInterceptorListView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-          AppMethodBeat.o(240177);
+          AppMethodBeat.o(257084);
         }
         
         public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
         {
-          AppMethodBeat.i(240176);
+          AppMethodBeat.i(257083);
           b localb = new b();
-          localb.bm(paramAnonymousMotionEvent);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/emoji/ui/TouchInterceptorListView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+          localb.bn(paramAnonymousMotionEvent);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/emoji/ui/TouchInterceptorListView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
           boolean bool = super.onSingleTapUp(paramAnonymousMotionEvent);
           com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/emoji/ui/TouchInterceptorListView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-          AppMethodBeat.o(240176);
+          AppMethodBeat.o(257083);
           return bool;
         }
       });
     }
-    if ((this.riW != null) || (this.riX != null)) {
+    if ((this.uMf != null) || (this.uMg != null)) {
       switch (paramMotionEvent.getAction())
       {
       }
@@ -254,19 +257,19 @@ public class TouchInterceptorListView
       if (k != -1)
       {
         Object localObject = (ViewGroup)getChildAt(k - getFirstVisiblePosition());
-        this.riU = (j - ((ViewGroup)localObject).getLeft());
-        this.riV = (i - ((ViewGroup)localObject).getTop());
-        this.afE = ((int)paramMotionEvent.getRawX() - j);
-        this.afF = ((int)paramMotionEvent.getRawY() - i);
-        if (j < this.rjg)
+        this.uMd = (j - ((ViewGroup)localObject).getLeft());
+        this.uMe = (i - ((ViewGroup)localObject).getTop());
+        this.lO = ((int)paramMotionEvent.getRawX() - j);
+        this.lP = ((int)paramMotionEvent.getRawY() - i);
+        if (j < this.uMp)
         {
           ((ViewGroup)localObject).setDrawingCacheEnabled(true);
           paramMotionEvent = Bitmap.createBitmap(((ViewGroup)localObject).getDrawingCache());
-          cHP();
+          cWw();
           this.mWindowParams = new WindowManager.LayoutParams();
           this.mWindowParams.gravity = 49;
-          this.mWindowParams.x = (j - this.riU + this.afE);
-          this.mWindowParams.y = (i - this.riV + this.afF);
+          this.mWindowParams.x = (j - this.uMd + this.lO);
+          this.mWindowParams.y = (i - this.uMe + this.lP);
           this.mWindowParams.height = -2;
           this.mWindowParams.width = -2;
           this.mWindowParams.flags = 920;
@@ -274,24 +277,24 @@ public class TouchInterceptorListView
           this.mWindowParams.windowAnimations = 0;
           localObject = getContext();
           ImageView localImageView = new ImageView((Context)localObject);
-          localImageView.setBackgroundColor(((Context)localObject).getResources().getColor(2131101424));
-          localImageView.setBackgroundResource(2131232185);
+          localImageView.setBackgroundColor(((Context)localObject).getResources().getColor(i.b.white));
+          localImageView.setBackgroundResource(i.d.emotionstore_emotionmanaged_cellshadow);
           localImageView.setPadding(0, 0, 0, 0);
           localImageView.setImageBitmap(paramMotionEvent);
-          this.rjc = paramMotionEvent;
+          this.uMl = paramMotionEvent;
           this.mWindowManager = ((WindowManager)((Context)localObject).getSystemService("window"));
           this.mWindowManager.addView(localImageView, this.mWindowParams);
-          this.riR = localImageView;
-          this.riS = k;
-          this.riT = this.riS;
+          this.uMa = localImageView;
+          this.uMb = k;
+          this.uMc = this.uMb;
           this.mHeight = getHeight();
           j = this.mTouchSlop;
-          this.riZ = Math.min(i - j, this.mHeight / 3);
-          this.rja = Math.max(j + i, this.mHeight * 2 / 3);
+          this.uMi = Math.min(i - j, this.mHeight / 3);
+          this.uMj = Math.max(j + i, this.mHeight * 2 / 3);
           AppMethodBeat.o(109091);
           return false;
         }
-        cHP();
+        cWw();
       }
     }
   }
@@ -303,14 +306,14 @@ public class TouchInterceptorListView
     AppMethodBeat.i(109094);
     Object localObject1;
     Object localObject2;
-    if (this.mDJ != null)
+    if (this.pCU != null)
     {
-      localObject1 = this.mDJ;
-      localObject2 = new com.tencent.mm.hellhoundlib.b.a().bl(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).axQ(), "com/tencent/mm/plugin/emoji/ui/TouchInterceptorListView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-      com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((GestureDetector)localObject1).onTouchEvent((MotionEvent)((com.tencent.mm.hellhoundlib.b.a)localObject2).pG(0)), "com/tencent/mm/plugin/emoji/ui/TouchInterceptorListView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      localObject1 = this.pCU;
+      localObject2 = new com.tencent.mm.hellhoundlib.b.a().bm(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.b(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aFh(), "com/tencent/mm/plugin/emoji/ui/TouchInterceptorListView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((GestureDetector)localObject1).onTouchEvent((MotionEvent)((com.tencent.mm.hellhoundlib.b.a)localObject2).sf(0)), "com/tencent/mm/plugin/emoji/ui/TouchInterceptorListView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
     }
-    if (((this.riW != null) || (this.riX != null)) && (this.riR != null))
+    if (((this.uMf != null) || (this.uMg != null)) && (this.uMa != null))
     {
       int k = paramMotionEvent.getAction();
       switch (k)
@@ -323,27 +326,27 @@ public class TouchInterceptorListView
           AppMethodBeat.o(109094);
           return true;
           localObject1 = this.mTempRect;
-          this.riR.getDrawingRect((Rect)localObject1);
-          cHP();
-          if ((this.rjb == 1) && (paramMotionEvent.getX() > ((Rect)localObject1).right * 3 / 4))
+          this.uMa.getDrawingRect((Rect)localObject1);
+          cWw();
+          if ((this.uMk == 1) && (paramMotionEvent.getX() > ((Rect)localObject1).right * 3 / 4))
           {
-            lv(true);
+            mG(true);
           }
           else
           {
-            if ((this.riX != null) && (this.riS >= 0)) {
+            if ((this.uMg != null) && (this.uMb >= 0)) {
               getCount();
             }
-            lv(false);
+            mG(false);
           }
         }
       }
       int i = (int)paramMotionEvent.getX();
       int i1 = (int)paramMotionEvent.getY();
-      if (this.rjb == 1)
+      if (this.uMk == 1)
       {
         float f = 1.0F;
-        j = this.riR.getWidth();
+        j = this.uMa.getWidth();
         if (i > j / 2) {
           f = (j - i) / (j / 2);
         }
@@ -355,50 +358,50 @@ public class TouchInterceptorListView
       label464:
       int i3;
       int i4;
-      if ((this.rjb == 0) || (this.rjb == 2))
+      if ((this.uMk == 0) || (this.uMk == 2))
       {
-        this.mWindowParams.x = (i - this.riU + this.afE);
-        this.mWindowParams.y = (i1 - this.riV + this.afF);
-        this.mWindowManager.updateViewLayout(this.riR, this.mWindowParams);
-        if (this.rjf != null)
+        this.mWindowParams.x = (i - this.uMd + this.lO);
+        this.mWindowParams.y = (i1 - this.uMe + this.lP);
+        this.mWindowManager.updateViewLayout(this.uMa, this.mWindowParams);
+        if (this.uMo != null)
         {
-          j = this.riR.getWidth();
+          j = this.uMa.getWidth();
           if (i1 <= getHeight() * 3 / 4) {
             break label698;
           }
-          this.rjf.setLevel(2);
+          this.uMo.setLevel(2);
         }
-        i2 = i1 - this.riV - this.rje;
-        j = fD(0, i2);
+        i2 = i1 - this.uMe - this.uMn;
+        j = ga(0, i2);
         if (j < 0) {
           break label735;
         }
         i = j;
-        if (j <= this.riT) {
+        if (j <= this.uMc) {
           i = j + 1;
         }
         if (i < 0) {
           break label746;
         }
-        if ((k != 0) && (i == this.riS)) {
+        if ((k != 0) && (i == this.uMb)) {
           break label910;
         }
-        this.riS = i;
-        Log.d("MicroMsg.emoji.TouchInterceptorListView", "doExpansion mDragPos:%d mSrcDragPos:%d", new Object[] { Integer.valueOf(this.riS), Integer.valueOf(this.riT) });
+        this.uMb = i;
+        Log.d("MicroMsg.emoji.TouchInterceptorListView", "doExpansion mDragPos:%d mSrcDragPos:%d", new Object[] { Integer.valueOf(this.uMb), Integer.valueOf(this.uMc) });
         Log.d("MicroMsg.emoji.TouchInterceptorListView", "getFirstVisiblePosition:%d", new Object[] { Integer.valueOf(getFirstVisiblePosition()) });
         Log.d("MicroMsg.emoji.TouchInterceptorListView", "getHeaderViewsCount:%d", new Object[] { Integer.valueOf(getHeaderViewsCount()) });
-        i2 = this.riS;
+        i2 = this.uMb;
         i3 = getFirstVisiblePosition();
         i4 = getHeaderViewsCount();
-        paramMotionEvent = getChildAt(this.riT - getFirstVisiblePosition());
+        paramMotionEvent = getChildAt(this.uMc - getFirstVisiblePosition());
         k = 0;
         label597:
         localObject1 = getChildAt(k);
         if (localObject1 == null) {
           break label910;
         }
-        j = this.qXo;
-        if ((this.riS >= i4) || (k != i4)) {
+        j = this.uAc;
+        if ((this.uMb >= i4) || (k != i4)) {
           break label767;
         }
         if (!localObject1.equals(paramMotionEvent)) {
@@ -420,10 +423,10 @@ public class TouchInterceptorListView
         label698:
         if ((j > 0) && (i > j / 4))
         {
-          this.rjf.setLevel(1);
+          this.uMo.setLevel(1);
           break label419;
         }
-        this.rjf.setLevel(0);
+        this.uMo.setLevel(0);
         break label419;
         label735:
         i = j;
@@ -435,16 +438,16 @@ public class TouchInterceptorListView
         label746:
         break;
         label748:
-        j = this.rjd;
+        j = this.uMm;
         Log.d("MicroMsg.emoji.TouchInterceptorListView", "1. height = mItemHeightExpanded");
         i = 0;
         continue;
         label767:
         if (localObject1.equals(paramMotionEvent))
         {
-          if ((this.riS == this.riT) || (getPositionForView((View)localObject1) == getCount()))
+          if ((this.uMb == this.uMc) || (getPositionForView((View)localObject1) == getCount()))
           {
-            j = this.qXo;
+            j = this.uAc;
             Log.d("MicroMsg.emoji.TouchInterceptorListView", "2. visibility = View.INVISIBLE");
             i = 4;
           }
@@ -457,9 +460,9 @@ public class TouchInterceptorListView
         }
         else if (k == i2 - i3)
         {
-          if ((this.riS >= i4) && (this.riS < getCount()))
+          if ((this.uMb >= i4) && (this.uMb < getCount()))
           {
-            j = this.rjd;
+            j = this.uMm;
             Log.d("MicroMsg.emoji.TouchInterceptorListView", "3. height = mItemHeightExpanded;");
             i = 0;
           }
@@ -477,16 +480,16 @@ public class TouchInterceptorListView
       }
       label910:
       if (i1 >= this.mHeight / 3) {
-        this.riZ = (this.mHeight / 3);
+        this.uMi = (this.mHeight / 3);
       }
       if (i1 <= this.mHeight * 2 / 3) {
-        this.rja = (this.mHeight * 2 / 3);
+        this.uMj = (this.mHeight * 2 / 3);
       }
-      if (i1 > this.rja) {
+      if (i1 > this.uMj) {
         if (getLastVisiblePosition() < getCount() - 1)
         {
           i = n;
-          if (i1 > (this.mHeight + this.rja) / 2) {
+          if (i1 > (this.mHeight + this.uMj) / 2) {
             i = 16;
           }
         }
@@ -494,15 +497,15 @@ public class TouchInterceptorListView
       for (;;)
       {
         label1000:
-        if ((i != 0) && (!d.oE(8)))
+        if ((i != 0) && (!d.qW(8)))
         {
           smoothScrollBy(i, 30);
           break;
           i = 1;
           continue;
           i = m;
-          if (i1 < this.riZ) {
-            if (i1 >= this.riZ / 2) {
+          if (i1 < this.uMi) {
+            if (i1 >= this.uMi / 2) {
               break label1085;
             }
           }
@@ -530,23 +533,23 @@ public class TouchInterceptorListView
   
   public void setDragListener(a parama)
   {
-    this.riW = parama;
+    this.uMf = parama;
   }
   
   public void setDropListener(b paramb)
   {
-    this.riX = paramb;
+    this.uMg = paramb;
   }
   
   public void setRemoveListener(c paramc)
   {
-    this.riY = paramc;
+    this.uMh = paramc;
   }
   
   public void setTrashcan(Drawable paramDrawable)
   {
-    this.rjf = paramDrawable;
-    this.rjb = 2;
+    this.uMo = paramDrawable;
+    this.uMk = 2;
   }
   
   public static abstract interface a {}

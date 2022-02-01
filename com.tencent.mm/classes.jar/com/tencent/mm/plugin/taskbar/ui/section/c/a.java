@@ -1,240 +1,196 @@
 package com.tencent.mm.plugin.taskbar.ui.section.c;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ay.q;
 import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
-import com.tencent.mm.plugin.taskbar.ui.section.b.a;
-import com.tencent.mm.plugin.taskbar.ui.section.e.b;
-import com.tencent.mm.plugin.taskbar.ui.section.g;
-import com.tencent.mm.protocal.protobuf.cru;
-import com.tencent.mm.protocal.protobuf.cso;
-import com.tencent.mm.protocal.protobuf.css;
+import com.tencent.mm.plugin.taskbar.d.c;
+import com.tencent.mm.plugin.taskbar.d.g;
+import com.tencent.mm.plugin.taskbar.e;
+import com.tencent.mm.plugin.taskbar.ui.section.d;
+import com.tencent.mm.plugin.taskbar.ui.section.other.a.b;
+import com.tencent.mm.plugin.taskbar.ui.section.other.b;
+import com.tencent.mm.plugin.taskbar.ui.section.other.b.a;
+import com.tencent.mm.protocal.protobuf.dar;
+import com.tencent.mm.protocal.protobuf.dbn;
+import com.tencent.mm.protocal.protobuf.dbr;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.widget.imageview.WeImageView;
-import com.tencent.mm.vfs.s;
-import java.util.HashMap;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.vfs.u;
 import java.util.List;
 import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.t;
+import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/taskbar/ui/section/music/TaskBarSectionMusicView;", "Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionListView;", "context", "Landroid/content/Context;", "callback", "Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView$Callback;", "sectionType", "", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "(Landroid/content/Context;Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView$Callback;ILandroid/util/AttributeSet;I)V", "canAddToMinimize", "", "onBindViewHolder", "", "viewHolder", "Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionListView$BaseViewHolder;", "pos", "onCreateViewHolder", "p0", "Landroid/view/ViewGroup;", "p1", "titleName", "", "Companion", "plugin-taskbar_release"})
-@SuppressLint({"ViewConstructor"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/taskbar/ui/section/music/TaskBarSectionOtherViewMusicHelper;", "Lcom/tencent/mm/plugin/taskbar/ui/section/other/TaskBarSectionOtherViewBaseHelper;", "callback", "Lcom/tencent/mm/plugin/taskbar/ui/section/other/TaskBarSectionOtherViewBaseHelper$Callback;", "(Lcom/tencent/mm/plugin/taskbar/ui/section/other/TaskBarSectionOtherViewBaseHelper$Callback;)V", "getDefaultImageRes", "", "data", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "getSubtitle", "", "loadFromUrl", "", "viewHolder", "Lcom/tencent/mm/plugin/taskbar/ui/section/other/TaskBarSectionOtherView$BaseViewHolder;", "musicMultiTaskData", "Lcom/tencent/mm/protocal/protobuf/MusicMultiTaskData;", "onBindViewHolder", "pos", "viewModel", "Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionViewModel;", "plugin-taskbar_release"})
 public final class a
-  extends com.tencent.mm.plugin.taskbar.ui.section.e
+  extends b
 {
-  public static final a.a FVO;
-  private HashMap _$_findViewCache;
-  
-  static
+  public a(b.a parama)
   {
-    AppMethodBeat.i(238544);
-    FVO = new a.a((byte)0);
-    AppMethodBeat.o(238544);
+    super(parama);
+    AppMethodBeat.i(214374);
+    AppMethodBeat.o(214374);
   }
   
-  private a(Context paramContext, b.a parama, int paramInt)
+  private static void a(a.b paramb, dbn paramdbn)
   {
-    super(paramContext, parama, paramInt, null, 0);
-    AppMethodBeat.i(238543);
-    AppMethodBeat.o(238543);
+    String str = null;
+    AppMethodBeat.i(214371);
+    paramb.image.setImageDrawable(null);
+    Object localObject = paramdbn.lVY;
+    if (localObject != null) {
+      str = ((dbr)localObject).Ruw;
+    }
+    localObject = (CharSequence)str;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        str = paramdbn.TIU;
+      }
+      if (str == null) {
+        break;
+      }
+      Log.i("TaskBarSectionMusicView", "use url: ".concat(String.valueOf(str)));
+      q.bml().a(str, paramb.image, e.Mnc);
+      AppMethodBeat.o(214371);
+      return;
+    }
+    AppMethodBeat.o(214371);
   }
   
-  public a(Context paramContext, b.a parama, int paramInt, char paramChar)
+  public final void a(int paramInt, final a.b paramb, d paramd)
   {
-    this(paramContext, parama, paramInt, (byte)0);
-  }
-  
-  public final e.b K(ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(238541);
-    p.h(paramViewGroup, "p0");
-    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131496656, paramViewGroup, false);
-    p.g(paramViewGroup, "LayoutInflater.from(p0.c…st_music_item, p0, false)");
-    paramViewGroup = new e.b(paramViewGroup);
-    AppMethodBeat.o(238541);
-    return paramViewGroup;
-  }
-  
-  public final void a(e.b paramb, int paramInt)
-  {
-    AppMethodBeat.i(238542);
-    p.h(paramb, "viewHolder");
-    Object localObject3 = new cso();
+    AppMethodBeat.i(214369);
+    p.k(paramb, "viewHolder");
+    p.k(paramd, "viewModel");
+    super.a(paramInt, paramb, paramd);
+    final dbn localdbn = new dbn();
     for (;;)
     {
       try
       {
-        ((cso)localObject3).parseFrom(((MultiTaskInfo)getViewModel().FVI.get(paramInt)).field_data);
-        localObject1 = paramb.FVD;
-        p.g(localObject1, "viewHolder.defaultImage");
-        ((WeImageView)localObject1).setVisibility(0);
+        localdbn.parseFrom(((MultiTaskInfo)paramd.MqV.get(paramInt)).field_data);
+        localObject = paramb.Mrl;
+        p.j(localObject, "viewHolder.defaultImage");
+        ((ImageView)localObject).setVisibility(0);
         paramb.image.setImageDrawable(null);
-        localObject1 = ((cso)localObject3).jfy;
-        Object localObject2;
-        if (localObject1 != null)
+        localObject = localdbn.lVY;
+        if (localObject != null)
         {
-          localObject2 = ((css)localObject1).jfz;
-          if (localObject2 != null)
+          String str = ((dbr)localObject).lVZ;
+          if (str != null)
           {
-            localObject1 = ((cso)localObject3).jfy;
-            if (localObject1 == null) {
-              break label476;
+            localObject = localdbn.lVY;
+            if (localObject == null) {
+              break label262;
             }
-            localObject1 = ((css)localObject1).Ktp;
-            localObject1 = (CharSequence)localObject1;
-            if ((localObject1 != null) && (((CharSequence)localObject1).length() != 0)) {
-              break label482;
+            localObject = ((dbr)localObject).Ruw;
+            localObject = (CharSequence)localObject;
+            if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
+              break label268;
             }
             i = 1;
-            if ((i != 0) && (s.YS((String)localObject2)))
-            {
-              localObject1 = BitmapUtil.decodeFileWithSample((String)localObject2);
-              if (localObject1 != null)
-              {
-                Log.i("TaskBarSectionMusicView", "use cover path: ".concat(String.valueOf(localObject2)));
-                paramb.image.setImageBitmap((Bitmap)localObject1);
-              }
+            if ((i == 0) || (!u.agG(str))) {
+              break label274;
+            }
+            localObject = h.ZvG.bg((Runnable)new a(str, this, localdbn, paramb));
+            if (localObject != null) {
+              continue;
             }
           }
         }
-        localObject1 = paramb.image;
-        p.g(localObject1, "viewHolder.image");
-        if (((ImageView)localObject1).getDrawable() == null)
-        {
-          localObject1 = ((cso)localObject3).jfy;
-          if (localObject1 != null)
-          {
-            localObject2 = ((css)localObject1).Ktp;
-            localObject1 = localObject2;
-            if (localObject2 != null) {}
-          }
-          else
-          {
-            localObject1 = ((cso)localObject3).MxD;
-          }
-          if (localObject1 != null)
-          {
-            Log.i("TaskBarSectionMusicView", "use url: ".concat(String.valueOf(localObject1)));
-            localObject2 = com.tencent.mm.loader.e.hXU;
-            localObject2 = com.tencent.mm.loader.e.aJs();
-            localObject3 = paramb.image;
-            p.g(localObject3, "viewHolder.image");
-            ((com.tencent.mm.loader.a)localObject2).a((String)localObject1, (ImageView)localObject3, getThumbLoaderOption());
-          }
-        }
-        localObject1 = paramb.hbb;
-        p.g(localObject1, "viewHolder.title");
-        ((TextView)localObject1).setText((CharSequence)((MultiTaskInfo)getViewModel().FVI.get(paramInt)).erh().title);
-        localObject1 = paramb.orb;
-        p.g(localObject1, "viewHolder.subTitle");
-        ((TextView)localObject1).setText((CharSequence)"");
-        localObject1 = ((MultiTaskInfo)getViewModel().FVI.get(paramInt)).erh().nickname;
-        if (localObject1 == null) {
-          break label594;
-        }
-        if (((CharSequence)localObject1).length() <= 0) {
-          break label487;
-        }
-        i = 1;
-        if (i != 1) {
-          break label594;
-        }
-        localObject1 = paramb.orb;
-        p.g(localObject1, "viewHolder.subTitle");
-        localObject1 = ((TextView)localObject1).getParent();
-        if (localObject1 != null) {
-          break;
-        }
-        paramb = new t("null cannot be cast to non-null type android.widget.LinearLayout");
-        AppMethodBeat.o(238542);
-        throw paramb;
+        a(paramb, localdbn);
+        localObject = x.aazN;
+        paramb = paramb.jMg;
+        p.j(paramb, "viewHolder.title");
+        paramb.setText((CharSequence)((MultiTaskInfo)paramd.MqV.get(paramInt)).fbc().title);
+        AppMethodBeat.o(214369);
+        return;
       }
       catch (Throwable paramb)
       {
         Log.e("TaskBarSectionMusicView", "MusicMultiTaskData parse failed");
-        AppMethodBeat.o(238542);
+        AppMethodBeat.o(214369);
         return;
       }
-      label476:
-      localObject1 = null;
+      label262:
+      Object localObject = null;
       continue;
-      label482:
+      label268:
       int i = 0;
       continue;
-      label487:
-      i = 0;
+      label274:
+      a(paramb, localdbn);
+      localObject = x.aazN;
     }
-    ((LinearLayout)localObject1).setGravity(0);
-    Object localObject1 = paramb.orb;
-    p.g(localObject1, "viewHolder.subTitle");
-    ((TextView)localObject1).setVisibility(0);
-    paramb = paramb.orb;
-    p.g(paramb, "viewHolder.subTitle");
-    paramb.setText((CharSequence)(((MultiTaskInfo)getViewModel().FVI.get(paramInt)).erh().nickname + getResources().getString(2131763368)));
-    AppMethodBeat.o(238542);
-    return;
-    label594:
-    localObject1 = paramb.orb;
-    p.g(localObject1, "viewHolder.subTitle");
-    ((TextView)localObject1).setVisibility(8);
-    paramb = paramb.orb;
-    p.g(paramb, "viewHolder.subTitle");
-    paramb = paramb.getParent();
-    if (paramb == null)
+  }
+  
+  public final String p(MultiTaskInfo paramMultiTaskInfo)
+  {
+    AppMethodBeat.i(214373);
+    paramMultiTaskInfo = com.tencent.mm.ci.a.ba(MMApplicationContext.getContext(), d.g.MmW);
+    p.j(paramMultiTaskInfo, "ResourceHelper.getString…r_section_subtitle_music)");
+    AppMethodBeat.o(214373);
+    return paramMultiTaskInfo;
+  }
+  
+  public final int q(MultiTaskInfo paramMultiTaskInfo)
+  {
+    AppMethodBeat.i(214372);
+    p.k(paramMultiTaskInfo, "data");
+    int i = d.c.Mml;
+    AppMethodBeat.o(214372);
+    return i;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/taskbar/ui/section/music/TaskBarSectionOtherViewMusicHelper$onBindViewHolder$1$1"})
+  static final class a
+    implements Runnable
+  {
+    a(String paramString, a parama, dbn paramdbn, a.b paramb) {}
+    
+    public final void run()
     {
-      paramb = new t("null cannot be cast to non-null type android.widget.LinearLayout");
-      AppMethodBeat.o(238542);
-      throw paramb;
+      AppMethodBeat.i(215426);
+      Bitmap localBitmap = BitmapUtil.decodeFileWithSample(this.JbK, 512, 512);
+      if (localBitmap != null)
+      {
+        Log.i("TaskBarSectionMusicView", "use cover path: " + this.JbK);
+        paramb.image.post((Runnable)new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(215115);
+            jdField_this.Mrc.image.setImageBitmap(this.cLr);
+            AppMethodBeat.o(215115);
+          }
+        });
+        AppMethodBeat.o(215426);
+        return;
+      }
+      paramb.image.post((Runnable)new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(214246);
+          a.b(this.Mrd.Mrc, this.Mrd.Mrb);
+          AppMethodBeat.o(214246);
+        }
+      });
+      AppMethodBeat.o(215426);
     }
-    ((LinearLayout)paramb).setGravity(16);
-    AppMethodBeat.o(238542);
-  }
-  
-  public final View ewN()
-  {
-    AppMethodBeat.i(238545);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(2131299174));
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = findViewById(2131299174);
-      this._$_findViewCache.put(Integer.valueOf(2131299174), localView1);
-    }
-    AppMethodBeat.o(238545);
-    return localView1;
-  }
-  
-  public final String fvi()
-  {
-    AppMethodBeat.i(238540);
-    String str = getContext().getString(2131755732);
-    p.g(str, "context.getString(R.stri…nd_taskbar_section_music)");
-    AppMethodBeat.o(238540);
-    return str;
-  }
-  
-  public final boolean fvj()
-  {
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.taskbar.ui.section.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.content.WakefulBroadcastReceiver;
+import androidx.legacy.content.WakefulBroadcastReceiver;
 import com.google.android.gms.common.stats.StatsUtils;
 import com.google.android.gms.common.stats.WakeLockTracker;
 import javax.annotation.Nonnull;
@@ -75,7 +75,7 @@ public abstract class GCoreWakefulBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.stats.GCoreWakefulBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

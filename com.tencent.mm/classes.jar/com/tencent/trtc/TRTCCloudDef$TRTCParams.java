@@ -7,6 +7,7 @@ public class TRTCCloudDef$TRTCParams
   public int role = 20;
   public int roomId = 0;
   public int sdkAppId = 0;
+  public String strRoomId = "";
   public String streamId;
   public String userDefineRecordId;
   public String userId = "";
@@ -20,8 +21,19 @@ public class TRTCCloudDef$TRTCParams
     this.userId = paramString1;
     this.userSig = paramString2;
     this.roomId = paramInt2;
+    this.strRoomId = "";
     this.privateMapKey = paramString3;
     this.businessInfo = paramString4;
+  }
+  
+  public TRTCCloudDef$TRTCParams(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    this.sdkAppId = paramInt;
+    this.userId = paramString1;
+    this.userSig = paramString2;
+    this.strRoomId = paramString3;
+    this.privateMapKey = paramString4;
+    this.businessInfo = paramString5;
   }
   
   public TRTCCloudDef$TRTCParams(TRTCParams paramTRTCParams)
@@ -30,6 +42,7 @@ public class TRTCCloudDef$TRTCParams
     this.userId = paramTRTCParams.userId;
     this.userSig = paramTRTCParams.userSig;
     this.roomId = paramTRTCParams.roomId;
+    this.strRoomId = paramTRTCParams.strRoomId;
     this.role = paramTRTCParams.role;
     this.streamId = paramTRTCParams.streamId;
     this.userDefineRecordId = paramTRTCParams.userDefineRecordId;
@@ -39,7 +52,7 @@ public class TRTCCloudDef$TRTCParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.trtc.TRTCCloudDef.TRTCParams
  * JD-Core Version:    0.7.0.1
  */

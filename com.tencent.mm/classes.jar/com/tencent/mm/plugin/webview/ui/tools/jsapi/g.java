@@ -1,78 +1,81 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.util.SparseArray;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.by.c;
+import com.tencent.mm.plugin.webview.d.c.a;
+import com.tencent.mm.plugin.webview.d.h;
+import com.tencent.mm.plugin.webview.d.n;
+import java.util.Map;
+import kotlin.g.b.p;
+import kotlin.l;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/JsApiOpenStoreEmoticonDetailPage;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "controlByte", "", "getControlByte", "()I", "funcName", "", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
 public final class g
+  extends a
 {
-  private static final SparseArray<f> Jvo;
-  private static volatile f Jvp;
+  private static final int IIl = 415;
+  public static final g Qqd;
+  private static final String fXz = "openStoreEmoticonDetailPage";
   
   static
   {
-    AppMethodBeat.i(82017);
-    Jvo = new SparseArray();
-    Jvp = null;
-    AppMethodBeat.o(82017);
+    AppMethodBeat.i(216862);
+    Qqd = new g();
+    IIl = 415;
+    fXz = "openStoreEmoticonDetailPage";
+    AppMethodBeat.o(216862);
   }
   
-  public static f ahd(int paramInt)
+  public final boolean a(com.tencent.mm.plugin.webview.d.f paramf, n paramn)
   {
-    AppMethodBeat.i(82015);
-    try
-    {
-      if (Jvo.get(paramInt) == null)
-      {
-        localf = new f(paramInt);
-        Jvo.put(paramInt, localf);
-      }
-      f localf = (f)Jvo.get(paramInt);
-      Jvp = localf;
-      return localf;
+    AppMethodBeat.i(216860);
+    p.k(paramf, "env");
+    p.k(paramn, "msg");
+    Object localObject2 = paramn.params.get("productId");
+    Object localObject1 = localObject2;
+    if (!(localObject2 instanceof String)) {
+      localObject1 = null;
     }
-    finally
+    localObject1 = (String)localObject1;
+    localObject2 = (CharSequence)localObject1;
+    int i;
+    if ((localObject2 == null) || (((CharSequence)localObject2).length() == 0))
     {
-      AppMethodBeat.o(82015);
-    }
-  }
-  
-  public static void detach()
-  {
-    AppMethodBeat.i(82016);
-    Log.i("MicroMsg.MsgHandlerHolder", "detach");
-    int i = 0;
-    try
-    {
-      while (i < Jvo.size())
-      {
-        Jvo.valueAt(i);
-        Jvo.keyAt(i);
-        i += 1;
+      i = 1;
+      if (i == 0) {
+        break label138;
       }
-      Jvo.clear();
-      if (Jvp != null) {
-        Jvp = null;
-      }
-      AppMethodBeat.o(82016);
-      return;
+      paramf = paramf.PNo;
+      paramn = paramn.POu;
+      localObject1 = new StringBuilder();
+      localObject2 = f.Qqb;
+      paramf.h(paramn, f.fXz + ":fail empty productId", null);
     }
-    finally
+    for (;;)
     {
-      AppMethodBeat.o(82016);
+      AppMethodBeat.o(216860);
+      return true;
+      i = 0;
+      break;
+      label138:
+      localObject2 = new Intent();
+      ((Intent)localObject2).putExtra("extra_id", (String)localObject1);
+      ((Intent)localObject2).putExtra("preceding_scence", 12);
+      ((Intent)localObject2).putExtra("download_entrance_scene", 12);
+      c.b(paramf.context, "emoji", ".ui.EmojiStoreDetailUI", (Intent)localObject2);
+      paramf.PNo.h(paramn.POu, fXz + ":ok", null);
     }
   }
   
-  @Deprecated
-  public static f ghF()
+  public final String fCm()
   {
-    AppMethodBeat.i(82014);
-    if (Jvp == null) {
-      Jvp = new f(0);
-    }
-    f localf = Jvp;
-    AppMethodBeat.o(82014);
-    return localf;
+    return fXz;
+  }
+  
+  public final int fCn()
+  {
+    return IIl;
   }
 }
 

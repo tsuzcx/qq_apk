@@ -8,19 +8,22 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 
 public class MMPwdInputView
   extends LinearLayout
 {
-  private boolean BpS;
-  private ImageView BpT;
-  private ImageView BpU;
-  private ImageView BpV;
-  private ImageView BpW;
-  private a BpX;
-  private MMPwdInputView.b BpY;
-  public StringBuilder gBy;
-  public int sWx;
+  private boolean Hkl;
+  private ImageView Hkm;
+  private ImageView Hkn;
+  private ImageView Hko;
+  private ImageView Hkp;
+  private a Hkq;
+  private MMPwdInputView.b Hkr;
+  public StringBuilder jlE;
+  public int wCv;
   
   public MMPwdInputView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,23 +34,23 @@ public class MMPwdInputView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27697);
-    this.gBy = new StringBuilder();
-    this.BpS = false;
-    this.BpY = MMPwdInputView.b.Bqa;
-    paramContext = inflate(getContext(), 2131495992, null);
-    this.BpT = ((ImageView)paramContext.findViewById(2131301545));
-    this.BpU = ((ImageView)paramContext.findViewById(2131307433));
-    this.BpV = ((ImageView)paramContext.findViewById(2131309038));
-    this.BpW = ((ImageView)paramContext.findViewById(2131301708));
-    this.BpT.setImageResource(2131231110);
-    this.BpU.setImageResource(2131231110);
-    this.BpV.setImageResource(2131231110);
-    this.BpW.setImageResource(2131231110);
+    this.jlE = new StringBuilder();
+    this.Hkl = false;
+    this.Hkr = MMPwdInputView.b.Hkt;
+    paramContext = inflate(getContext(), R.i.ekk, null);
+    this.Hkm = ((ImageView)paramContext.findViewById(R.h.dHa));
+    this.Hkn = ((ImageView)paramContext.findViewById(R.h.second));
+    this.Hko = ((ImageView)paramContext.findViewById(R.h.dWy));
+    this.Hkp = ((ImageView)paramContext.findViewById(R.h.dHF));
+    this.Hkm.setImageResource(R.g.dmj);
+    this.Hkn.setImageResource(R.g.dmj);
+    this.Hko.setImageResource(R.g.dmj);
+    this.Hkp.setImageResource(R.g.dmj);
     addView(paramContext);
     AppMethodBeat.o(27697);
   }
   
-  private static void w(ImageView paramImageView, String paramString)
+  private static void v(ImageView paramImageView, String paramString)
   {
     AppMethodBeat.i(27700);
     if (paramImageView == null)
@@ -57,112 +60,126 @@ public class MMPwdInputView
     }
     if (paramString.equals("0"))
     {
-      paramImageView.setImageResource(2131231100);
+      paramImageView.setImageResource(R.g.dlZ);
       AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("1"))
     {
-      paramImageView.setImageResource(2131231101);
+      paramImageView.setImageResource(R.g.dma);
       AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("2"))
     {
-      paramImageView.setImageResource(2131231102);
+      paramImageView.setImageResource(R.g.dmb);
       AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("3"))
     {
-      paramImageView.setImageResource(2131231103);
+      paramImageView.setImageResource(R.g.dmc);
       AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("4"))
     {
-      paramImageView.setImageResource(2131231104);
+      paramImageView.setImageResource(R.g.dmd);
       AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("5"))
     {
-      paramImageView.setImageResource(2131231105);
+      paramImageView.setImageResource(R.g.dme);
       AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("6"))
     {
-      paramImageView.setImageResource(2131231106);
+      paramImageView.setImageResource(R.g.dmf);
       AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("7"))
     {
-      paramImageView.setImageResource(2131231107);
+      paramImageView.setImageResource(R.g.dmg);
       AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("8"))
     {
-      paramImageView.setImageResource(2131231108);
+      paramImageView.setImageResource(R.g.dmh);
       AppMethodBeat.o(27700);
       return;
     }
     if (paramString.equals("9"))
     {
-      paramImageView.setImageResource(2131231109);
+      paramImageView.setImageResource(R.g.dmi);
       AppMethodBeat.o(27700);
       return;
     }
-    paramImageView.setImageResource(2131231110);
+    paramImageView.setImageResource(R.g.dmj);
     AppMethodBeat.o(27700);
   }
   
-  public final void byC()
+  public final void aVa(String paramString)
+  {
+    AppMethodBeat.i(27703);
+    if ((TextUtils.isEmpty(paramString)) || (this.Hkl))
+    {
+      AppMethodBeat.o(27703);
+      return;
+    }
+    this.jlE.append(paramString);
+    djb();
+    frX();
+    AppMethodBeat.o(27703);
+  }
+  
+  public final void bJQ()
   {
     AppMethodBeat.i(27702);
-    if (this.sWx > 0) {
-      this.gBy.delete(0, this.sWx);
+    if (this.wCv > 0) {
+      this.jlE.delete(0, this.wCv);
     }
-    cTV();
-    eFX();
+    djb();
+    frX();
     AppMethodBeat.o(27702);
   }
   
-  public final void cTV()
+  public final void djb()
   {
     AppMethodBeat.i(27701);
-    if (this.gBy != null)
+    if (this.jlE != null)
     {
-      this.sWx = this.gBy.length();
-      if (this.sWx < 4) {
+      this.wCv = this.jlE.length();
+      if (this.wCv < 4) {
         break label79;
       }
     }
     label79:
-    for (this.BpS = true;; this.BpS = false)
+    for (this.Hkl = true;; this.Hkl = false)
     {
-      if (this.BpX != null) {
-        this.BpX.z(this.BpS, this.gBy.toString());
+      if (this.Hkq != null) {
+        this.Hkq.E(this.Hkl, this.jlE.toString());
       }
       AppMethodBeat.o(27701);
       return;
-      this.sWx = 0;
+      this.wCv = 0;
       break;
     }
   }
   
-  public final void eFX()
+  public final void frX()
   {
     AppMethodBeat.i(27699);
     int i = 0;
     if (i < 4)
     {
       String str;
-      if (this.sWx > i)
+      if (this.wCv > i)
       {
-        str = this.gBy.toString().charAt(i);
+        str = this.jlE.toString().charAt(i);
         label46:
         switch (i)
         {
@@ -174,65 +191,51 @@ public class MMPwdInputView
         break;
         str = "";
         break label46;
-        w(this.BpT, str);
+        v(this.Hkm, str);
         continue;
-        w(this.BpU, str);
+        v(this.Hkn, str);
         continue;
-        w(this.BpV, str);
+        v(this.Hko, str);
         continue;
-        w(this.BpW, str);
+        v(this.Hkp, str);
       }
     }
     AppMethodBeat.o(27699);
   }
   
-  public final void input(String paramString)
-  {
-    AppMethodBeat.i(27703);
-    if ((TextUtils.isEmpty(paramString)) || (this.BpS))
-    {
-      AppMethodBeat.o(27703);
-      return;
-    }
-    this.gBy.append(paramString);
-    cTV();
-    eFX();
-    AppMethodBeat.o(27703);
-  }
-  
   public void setNumberStyle(MMPwdInputView.b paramb)
   {
-    this.BpY = paramb;
+    this.Hkr = paramb;
   }
   
   public void setNumberWidth(int paramInt)
   {
     AppMethodBeat.i(27698);
-    if (this.BpT != null)
+    if (this.Hkm != null)
     {
-      ViewGroup.LayoutParams localLayoutParams = this.BpT.getLayoutParams();
+      ViewGroup.LayoutParams localLayoutParams = this.Hkm.getLayoutParams();
       localLayoutParams.width = paramInt;
-      this.BpT.setLayoutParams(localLayoutParams);
-      this.BpU.setLayoutParams(localLayoutParams);
-      this.BpV.setLayoutParams(localLayoutParams);
-      this.BpW.setLayoutParams(localLayoutParams);
+      this.Hkm.setLayoutParams(localLayoutParams);
+      this.Hkn.setLayoutParams(localLayoutParams);
+      this.Hko.setLayoutParams(localLayoutParams);
+      this.Hkp.setLayoutParams(localLayoutParams);
     }
     AppMethodBeat.o(27698);
   }
   
   public void setOnFinishInputListener(a parama)
   {
-    this.BpX = parama;
+    this.Hkq = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void z(boolean paramBoolean, String paramString);
+    public abstract void E(boolean paramBoolean, String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.ui.widget.MMPwdInputView
  * JD-Core Version:    0.7.0.1
  */

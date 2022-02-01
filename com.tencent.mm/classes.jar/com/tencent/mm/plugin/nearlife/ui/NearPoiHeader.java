@@ -8,12 +8,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 
 public class NearPoiHeader
   extends LinearLayout
 {
-  private TextView hPW;
-  private ImageView zky;
+  private ImageView EPO;
+  private TextView kEs;
   
   public NearPoiHeader(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,16 +37,16 @@ public class NearPoiHeader
   private void init(Context paramContext)
   {
     AppMethodBeat.i(26623);
-    paramContext = View.inflate(paramContext, 2131495807, this);
-    this.zky = ((ImageView)paramContext.findViewById(2131303730));
-    this.hPW = ((TextView)paramContext.findViewById(2131303166));
+    paramContext = View.inflate(paramContext, R.i.ejm, this);
+    this.EPO = ((ImageView)paramContext.findViewById(R.h.location_icon));
+    this.kEs = ((TextView)paramContext.findViewById(R.h.dLh));
     AppMethodBeat.o(26623);
   }
   
   public void setText(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(26624);
-    this.hPW.setText(paramCharSequence);
+    this.kEs.setText(paramCharSequence);
     AppMethodBeat.o(26624);
   }
 }

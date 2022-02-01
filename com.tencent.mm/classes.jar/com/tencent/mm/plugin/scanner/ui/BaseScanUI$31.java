@@ -15,16 +15,16 @@ final class BaseScanUI$31
   {
     AppMethodBeat.i(169984);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/scanner/ui/BaseScanUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    BaseScanUI.z(this.CJV);
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/scanner/ui/BaseScanUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    BaseScanUI.z(this.IPw);
     a.a(this, "com/tencent/mm/plugin/scanner/ui/BaseScanUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(169984);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.BaseScanUI.31
  * JD-Core Version:    0.7.0.1
  */

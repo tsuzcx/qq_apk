@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageView android:id="@id/a7b" app:layout_constraintDimensionRatio="235:100" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" style="@style/fh" />
-    <android.support.constraint.Barrier android:id="@id/a78" android:layout_width="wrap_content" android:layout_height="wrap_content" app:barrierDirection="is_" app:constraint_referenced_ids="biz_slot_show_desc_tv,biz_slot_title_neat_tv" />
+    <androidx.constraintlayout.widget.Barrier android:id="@id/a78" android:layout_width="wrap_content" android:layout_height="wrap_content" app:barrierDirection="is_" app:constraint_referenced_ids="biz_slot_show_desc_tv,biz_slot_title_neat_tv" />
     <include layout="@layout/wv" />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

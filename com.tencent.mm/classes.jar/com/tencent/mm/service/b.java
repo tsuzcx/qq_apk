@@ -28,7 +28,7 @@ public abstract interface b
       attachInterface(this, "com.tencent.mm.service.IMMServiceStub_AIDL");
     }
     
-    public static b P(IBinder paramIBinder)
+    public static b T(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -40,9 +40,9 @@ public abstract interface b
       return new a(paramIBinder);
     }
     
-    public static b gxE()
+    public static b htC()
     {
-      return a.NJW;
+      return a.UXx;
     }
     
     public IBinder asBinder()
@@ -119,7 +119,7 @@ public abstract interface b
     static final class a
       implements b
     {
-      public static b NJW;
+      public static b UXx;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -145,10 +145,10 @@ public abstract interface b
               {
                 localIBinder = parama.asBinder();
                 localParcel1.writeStrongBinder(localIBinder);
-                if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (b.a.gxE() == null)) {
+                if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (b.a.htC() == null)) {
                   break;
                 }
-                b.a.gxE().a(paramIntent, parama);
+                b.a.htC().a(paramIntent, parama);
               }
             }
             else
@@ -189,9 +189,9 @@ public abstract interface b
             localParcel1.writeInt(1);
             paramIntent.writeToParcel(localParcel1, 0);
           }
-          while ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (b.a.gxE() != null))
+          while ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (b.a.htC() != null))
           {
-            b.a.gxE().bs(paramIntent);
+            b.a.htC().bs(paramIntent);
             return;
             localParcel1.writeInt(0);
           }
@@ -221,9 +221,9 @@ public abstract interface b
             localParcel1.writeInt(1);
             paramIntent.writeToParcel(localParcel1, 0);
           }
-          while ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (b.a.gxE() != null))
+          while ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (b.a.htC() != null))
           {
-            b.a.gxE().bw(paramIntent);
+            b.a.htC().bw(paramIntent);
             return;
             localParcel1.writeInt(0);
           }
@@ -253,9 +253,9 @@ public abstract interface b
             localParcel1.writeInt(1);
             paramIntent.writeToParcel(localParcel1, 0);
           }
-          while ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (b.a.gxE() != null))
+          while ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (b.a.htC() != null))
           {
-            b.a.gxE().startService(paramIntent);
+            b.a.htC().startService(paramIntent);
             return;
             localParcel1.writeInt(0);
           }
@@ -276,7 +276,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.service.b
  * JD-Core Version:    0.7.0.1
  */

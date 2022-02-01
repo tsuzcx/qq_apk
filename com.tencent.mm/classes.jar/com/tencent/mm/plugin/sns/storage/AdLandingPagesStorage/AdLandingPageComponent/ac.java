@@ -1,15 +1,16 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
-import com.tencent.mm.plugin.sns.storage.ADXml.b;
-
 public final class ac
-  extends q
+  extends r
 {
-  public ADXml.b DZA;
+  public String KmS;
+  public int KmT;
+  public int KmU;
+  public String Kmh;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ac
  * JD-Core Version:    0.7.0.1
  */

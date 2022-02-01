@@ -4,8 +4,9 @@
     <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
       xmlns:android="http://schemas.android.com/apk/res/android">
         <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <Button android:id="@id/gc2" android:layout_marginLeft="@dimen/cb" android:layout_marginTop="@dimen/cb" android:text="基础包版本" android:onClick="onClick" style="@style/ow" />
+            <Button android:id="@id/gc2" android:layout_marginLeft="@dimen/cb" android:layout_marginTop="@dimen/cb" android:text="代码包入口" android:onClick="onClick" style="@style/ow" />
             <Button android:id="@id/b8d" android:layout_marginLeft="@dimen/cb" android:layout_marginTop="@dimen/cb" android:text="大秒开入口" android:onClick="onClick" style="@style/ow" />
+            <Button android:id="@id/k3i" android:layout_marginLeft="@dimen/cb" android:layout_marginTop="@dimen/cb" android:text="Web入口" android:onClick="onClick" style="@style/ow" />
         </LinearLayout>
         <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <Button android:id="@id/ff" android:layout_marginLeft="@dimen/cb" android:layout_marginTop="@dimen/cb" android:text="广告入口" android:onClick="onClick" style="@style/ow" />
@@ -13,8 +14,8 @@
             <Button android:id="@id/gtu" android:layout_marginLeft="@dimen/cb" android:layout_marginTop="@dimen/cb" android:text="推荐卡片入口" android:onClick="onClick" style="@style/ow" />
         </LinearLayout>
         <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <Button android:id="@id/g2" android:layout_marginLeft="@dimen/cb" android:layout_marginTop="@dimen/cb" android:text="测试Canvas" android:onClick="onClick" style="@style/ow" />
-            <Button android:id="@id/cb1" android:layout_marginLeft="@dimen/cb" android:layout_marginTop="@dimen/cb" android:text="测试秒开" android:onClick="onClick" style="@style/ow" />
+            <Button android:id="@id/d_p" android:layout_marginLeft="@dimen/cb" android:layout_marginTop="@dimen/cb" android:text="直播入口" android:onClick="onClick" style="@style/ow" />
+            <Button android:id="@id/cb1" android:layout_marginLeft="@dimen/cb" android:layout_marginTop="@dimen/cb" android:text="公众号秒开" android:onClick="onClick" style="@style/ow" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

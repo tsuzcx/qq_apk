@@ -14,35 +14,35 @@ public final class b
   extends a
   implements Runnable
 {
+  private j BFk;
+  private WeakReference<l> BFl;
   private int errorCode;
-  private j wTn;
-  private WeakReference<l> wTo;
   
   public b(j paramj)
   {
-    AppMethodBeat.i(187307);
+    AppMethodBeat.i(255039);
     this.errorCode = -2;
-    this.wTn = paramj;
-    this.wTo = new WeakReference(paramj.wWZ);
-    this.wTn.wWZ = null;
-    AppMethodBeat.o(187307);
+    this.BFk = paramj;
+    this.BFl = new WeakReference(paramj.BIU);
+    this.BFk.BIU = null;
+    AppMethodBeat.o(255039);
   }
   
-  public final boolean execute()
+  public final boolean aEv()
   {
     AppMethodBeat.i(52501);
     final k localk;
     if ((this.errorCode == -2) || (this.errorCode == -3))
     {
-      localk = new k(this.wTn);
-      localk.wXa = this;
+      localk = new k(this.BFk);
+      localk.BIV = this;
       localk.resultCode = this.errorCode;
-      localk.wXb = new LinkedList();
-      localk.wWd = h.bE(this.wTn.query, false);
-      if (this.wTn.handler != null) {
+      localk.BIW = new LinkedList();
+      localk.BHY = h.bJ(this.BFk.query, false);
+      if (this.BFk.handler != null) {
         break label113;
       }
-      l locall = (l)this.wTo.get();
+      l locall = (l)this.BFl.get();
       if (locall != null) {
         locall.b(localk);
       }
@@ -52,7 +52,7 @@ public final class b
       AppMethodBeat.o(52501);
       return true;
       label113:
-      this.wTn.handler.post(new Runnable()
+      this.BFk.handler.post(new Runnable()
       {
         public final void run()
         {
@@ -87,7 +87,7 @@ public final class b
     AppMethodBeat.i(52502);
     try
     {
-      execute();
+      aEv();
       AppMethodBeat.o(52502);
       return;
     }
@@ -99,7 +99,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b
  * JD-Core Version:    0.7.0.1
  */

@@ -20,14 +20,14 @@ final class FMessageConversationUI$2
   {
     AppMethodBeat.i(29038);
     Object localObject = new b();
-    ((b)localObject).bm(paramView);
-    a.b("com/tencent/mm/plugin/subapp/ui/friend/FMessageConversationUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+    ((b)localObject).bn(paramView);
+    a.c("com/tencent/mm/plugin/subapp/ui/friend/FMessageConversationUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
     localObject = new Intent().putExtra("Search_Scene", 2).putExtra("MMActivity.OverrideEnterAnimation", 0).putExtra("MMActivity.OverrideExitAnimation", 0);
     paramView = null;
     if (Build.VERSION.SDK_INT >= 21) {
-      paramView = ActivityOptions.makeSceneTransitionAnimation(this.FKR, new Pair[0]).toBundle();
+      paramView = ActivityOptions.makeSceneTransitionAnimation(this.MeO, new Pair[0]).toBundle();
     }
-    d.b(this.FKR.getContext(), ".ui.FTSAddFriendUI", (Intent)localObject, paramView);
+    d.b(this.MeO.getContext(), ".ui.FTSAddFriendUI", (Intent)localObject, paramView);
     a.a(this, "com/tencent/mm/plugin/subapp/ui/friend/FMessageConversationUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(29038);
   }

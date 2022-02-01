@@ -1,81 +1,96 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
+import java.util.LinkedList;
 
 public final class cyf
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public float bottom;
-  public float left;
-  public float right;
-  public float top;
+  public ahx TGF;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91570);
+    AppMethodBeat.i(43108);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.E(1, this.top);
-      paramVarArgs.E(2, this.bottom);
-      paramVarArgs.E(3, this.left);
-      paramVarArgs.E(4, this.right);
-      AppMethodBeat.o(91570);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = g.a.a.b.b.a.fS(1);
-      int i = g.a.a.b.b.a.fS(2);
-      int j = g.a.a.b.b.a.fS(3);
-      int k = g.a.a.b.b.a.fS(4);
-      AppMethodBeat.o(91570);
-      return paramInt + 4 + 0 + (i + 4) + (j + 4) + (k + 4);
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
-        }
-      }
-      AppMethodBeat.o(91570);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      cyf localcyf = (cyf)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (this.TGF == null)
       {
-      default: 
-        AppMethodBeat.o(91570);
-        return -1;
-      case 1: 
-        localcyf.top = Float.intBitsToFloat(locala.UbS.zm());
-        AppMethodBeat.o(91570);
-        return 0;
-      case 2: 
-        localcyf.bottom = Float.intBitsToFloat(locala.UbS.zm());
-        AppMethodBeat.o(91570);
-        return 0;
-      case 3: 
-        localcyf.left = Float.intBitsToFloat(locala.UbS.zm());
-        AppMethodBeat.o(91570);
-        return 0;
+        paramVarArgs = new b("Not all required fields were included: DisturbSetting");
+        AppMethodBeat.o(43108);
+        throw paramVarArgs;
       }
-      localcyf.right = Float.intBitsToFloat(locala.UbS.zm());
-      AppMethodBeat.o(91570);
+      if (this.TGF != null)
+      {
+        paramVarArgs.oE(1, this.TGF.computeSize());
+        this.TGF.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(43108);
       return 0;
     }
-    AppMethodBeat.o(91570);
-    return -1;
+    if (paramInt == 1) {
+      if (this.TGF == null) {
+        break label336;
+      }
+    }
+    label336:
+    for (paramInt = g.a.a.a.oD(1, this.TGF.computeSize()) + 0;; paramInt = 0)
+    {
+      AppMethodBeat.o(43108);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
+        }
+        if (this.TGF == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: DisturbSetting");
+          AppMethodBeat.o(43108);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(43108);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        cyf localcyf = (cyf)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(43108);
+          return -1;
+        }
+        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          ahx localahx = new ahx();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localahx.parseFrom((byte[])localObject);
+          }
+          localcyf.TGF = localahx;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(43108);
+        return 0;
+      }
+      AppMethodBeat.o(43108);
+      return -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cyf
  * JD-Core Version:    0.7.0.1
  */

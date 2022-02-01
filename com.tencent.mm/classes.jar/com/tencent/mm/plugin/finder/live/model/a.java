@@ -1,436 +1,227 @@
 package com.tencent.mm.plugin.finder.live.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
-import com.tencent.mm.plugin.finder.live.viewmodel.g.j;
-import com.tencent.mm.plugin.finder.live.viewmodel.i;
-import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.aut;
-import com.tencent.mm.protocal.protobuf.auv;
-import com.tencent.mm.protocal.protobuf.ave;
-import com.tencent.mm.protocal.protobuf.avn;
-import com.tencent.mm.protocal.protobuf.awi;
-import com.tencent.mm.protocal.protobuf.awr;
-import com.tencent.mm.protocal.protobuf.axl;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.LinkedList<Lcom.tencent.mm.protocal.protobuf.aut;>;
-import java.util.LinkedList<Lcom.tencent.mm.protocal.protobuf.axl;>;
-import kotlin.a.j;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import kotlin.f;
+import kotlin.g;
 import kotlin.g.b.p;
-import kotlin.g.b.q;
 import kotlin.l;
+import kotlin.n.n;
+import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/model/FinderLiveAppMsgManager;", "", "()V", "TAG", "", "chooseAlertInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveMsgBoxInfo;", "info1", "info2", "updateAppMsg", "", "roomData", "Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderLiveRoomData;", "appMsgList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;", "updateTemplateInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveTemplateInfo;", "fromJoinLive", "", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/BeautySuitDataManager;", "", "()V", "MMKV_BEAUTY_VALUE", "", "MMKV_KEY_SUIT_ID", "SUIT_NOT_SELECT", "", "TAG", "value", "currentSuitSelect", "getCurrentSuitSelect", "()I", "setCurrentSuitSelect", "(I)V", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "Lkotlin/Lazy;", "buildBeautyKey", "suitId", "beautyId", "getBeauty", "getDefaultBeauty", "setBeauty", "", "beautyValue", "setBeautyToDefault", "ReportTools", "plugin-finder_release"})
 public final class a
 {
-  private static final String TAG = "FinderLiveAppMsgManager";
-  public static final a uhJ;
+  private static final f lrB;
+  public static final a ydb;
   
   static
   {
-    AppMethodBeat.i(245996);
-    uhJ = new a();
-    TAG = "FinderLiveAppMsgManager";
-    AppMethodBeat.o(245996);
+    AppMethodBeat.i(255339);
+    ydb = new a();
+    lrB = g.ar((kotlin.g.a.a)a.b.ydd);
+    AppMethodBeat.o(255339);
   }
   
-  private static awr a(awr paramawr1, awr paramawr2)
+  public static void Nl(int paramInt)
   {
-    switch (paramawr1.type)
-    {
-    }
-    do
-    {
-      do
-      {
-        return paramawr1;
-      } while ((paramawr2.type != 20011) && (paramawr2.type != 20007));
-      return paramawr2;
-    } while (paramawr2.type != 20007);
-    return paramawr2;
+    AppMethodBeat.i(255320);
+    MultiProcessMMKV localMultiProcessMMKV = bcJ();
+    StringBuilder localStringBuilder = new StringBuilder("MMKV_KEY_SUIT_ID_");
+    p.j(h.aHE(), "MMKernel.account()");
+    localMultiProcessMMKV.putInt(b.getUin(), paramInt);
+    AppMethodBeat.o(255320);
   }
   
-  public static void a(com.tencent.mm.plugin.finder.live.viewmodel.g paramg, LinkedList<aut> paramLinkedList)
+  public static MultiProcessMMKV bcJ()
   {
-    AppMethodBeat.i(245993);
-    p.h(paramg, "roomData");
-    StringBuilder localStringBuilder1 = new StringBuilder("updateAppMsg:");
-    int i;
-    label41:
-    Object localObject1;
-    int j;
-    Object localObject4;
-    label116:
-    label378:
-    StringBuilder localStringBuilder2;
-    if (paramLinkedList != null)
-    {
-      Iterator localIterator = ((Iterable)paramLinkedList).iterator();
-      i = 0;
-      paramLinkedList = null;
-      localObject1 = paramLinkedList;
-      if (!localIterator.hasNext()) {
-        break label702;
-      }
-      localObject1 = localIterator.next();
-      j = i + 1;
-      if (i < 0) {
-        j.hxH();
-      }
-      localObject4 = (aut)localObject1;
-      localObject3 = new StringBuilder("(").append(i).append(")[msgType:");
-      label145:
-      boolean bool;
-      if (localObject4 != null)
-      {
-        localObject1 = Integer.valueOf(((aut)localObject4).ybm);
-        localObject3 = ((StringBuilder)localObject3).append(((Integer)localObject1).intValue()).append(",payload is empty:");
-        if (localObject4 == null) {
-          break label323;
-        }
-        localObject1 = ((aut)localObject4).LFB;
-        if (localObject1 != null) {
-          break label329;
-        }
-        bool = true;
-        label153:
-        localObject3 = ((StringBuilder)localObject3).append(bool).append(",fromUser:");
-        if (localObject4 == null) {
-          break label335;
-        }
-        localObject1 = ((aut)localObject4).LFE;
-        if (localObject1 == null) {
-          break label335;
-        }
-        localObject1 = ((avn)localObject1).contact;
-        if (localObject1 == null) {
-          break label335;
-        }
-        localObject1 = ((FinderContact)localObject1).nickname;
-        label203:
-        localObject3 = ((StringBuilder)localObject3).append((String)localObject1).append(",toUser:");
-        if (localObject4 == null) {
-          break label341;
-        }
-        localObject1 = ((aut)localObject4).LFz;
-        if (localObject1 == null) {
-          break label341;
-        }
-        localObject1 = ((avn)localObject1).contact;
-        if (localObject1 == null) {
-          break label341;
-        }
-      }
-      label312:
-      label323:
-      label329:
-      label335:
-      label341:
-      for (localObject1 = ((FinderContact)localObject1).nickname;; localObject1 = null)
-      {
-        localStringBuilder1.append((String)localObject1 + "] ");
-        if (localObject4 != null) {}
-        switch (((aut)localObject4).ybm)
-        {
-        default: 
-          i = j;
-          break label41;
-          localObject1 = null;
-          break label116;
-          localObject1 = null;
-          break label145;
-          bool = false;
-          break label153;
-          localObject1 = null;
-          break label203;
-        }
-      }
-      localObject3 = (com.tencent.mm.bw.a)new ave();
-      localObject1 = ((aut)localObject4).LFB;
-      if (localObject1 != null) {
-        localObject1 = ((com.tencent.mm.bw.b)localObject1).toByteArray();
-      }
-      try
-      {
-        ((com.tencent.mm.bw.a)localObject3).parseFrom((byte[])localObject1);
-        localObject1 = localObject3;
-      }
-      catch (Exception localException1)
-      {
-        for (;;)
-        {
-          Log.printDebugStack("safeParser", "", new Object[] { localException1 });
-          localObject2 = null;
-          continue;
-          localObject2 = null;
-        }
-      }
-      localObject1 = (ave)localObject1;
-      if (localObject1 != null)
-      {
-        localObject1 = ((ave)localObject1).LFK;
-        localObject4 = TAG;
-        localStringBuilder2 = new StringBuilder("parseMsgBoxInfo:");
-        if (localObject1 != null) {
-          break label750;
-        }
-      }
-    }
-    label555:
-    awr localawr;
-    label702:
-    label740:
-    label750:
-    for (Object localObject3 = "";; localObject3 = localawr)
-    {
-      Log.i((String)localObject4, com.tencent.mm.ac.g.bN(localObject3));
-      if (paramLinkedList == null)
-      {
-        i = j;
-        paramLinkedList = (LinkedList<aut>)localObject1;
-        break;
-        localObject1 = null;
-        break label378;
-      }
-      Object localObject2;
-      if (localObject2 != null)
-      {
-        if (paramLinkedList == null) {
-          p.hyc();
-        }
-        paramLinkedList = a(paramLinkedList, (awr)localObject2);
-      }
-      for (;;)
-      {
-        i = j;
-        break;
-        localObject3 = (com.tencent.mm.bw.a)new auv();
-        localObject2 = ((aut)localObject4).LFB;
-        if (localObject2 != null) {
-          localObject2 = ((com.tencent.mm.bw.b)localObject2).toByteArray();
-        }
-        try
-        {
-          ((com.tencent.mm.bw.a)localObject3).parseFrom((byte[])localObject2);
-          localObject2 = localObject3;
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
-          {
-            Log.printDebugStack("safeParser", "", new Object[] { localException2 });
-            localawr = null;
-            continue;
-            localawr = null;
-          }
-        }
-        localObject2 = (auv)localObject2;
-        if (localObject2 != null)
-        {
-          localObject2 = ((auv)localObject2).LFK;
-          localObject4 = TAG;
-          localStringBuilder2 = new StringBuilder("parseMsgBoxInfo:");
-          if (localObject2 != null) {
-            break label740;
-          }
-        }
-        for (localObject3 = "";; localObject3 = localawr)
-        {
-          Log.i((String)localObject4, com.tencent.mm.ac.g.bN(localObject3));
-          if (paramLinkedList == null)
-          {
-            i = j;
-            paramLinkedList = (LinkedList<aut>)localObject2;
-            break;
-            localObject2 = null;
-            break label555;
-          }
-          if (localawr == null) {
-            break label312;
-          }
-          if (paramLinkedList == null) {
-            p.hyc();
-          }
-          paramLinkedList = a(paramLinkedList, localawr);
-          break label312;
-          localawr = null;
-          if (localawr != null) {
-            d.h((kotlin.g.a.a)new g.j(paramg, localawr));
-          }
-          Log.i(TAG, localStringBuilder1.toString());
-          AppMethodBeat.o(245993);
-          return;
-        }
-      }
-    }
+    AppMethodBeat.i(255323);
+    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)lrB.getValue();
+    AppMethodBeat.o(255323);
+    return localMultiProcessMMKV;
   }
   
-  public static void a(com.tencent.mm.plugin.finder.live.viewmodel.g paramg, LinkedList<axl> paramLinkedList, boolean paramBoolean)
+  public static int dxL()
   {
-    AppMethodBeat.i(245994);
-    p.h(paramg, "roomData");
-    StringBuilder localStringBuilder1 = new StringBuilder("updateTemplateInfo(fromJoinLive:" + paramBoolean + "):");
-    LinkedList localLinkedList = new LinkedList();
-    if (paramLinkedList != null)
-    {
-      Iterator localIterator = ((Iterable)paramLinkedList).iterator();
-      int i = 0;
-      if (localIterator.hasNext())
-      {
-        paramLinkedList = localIterator.next();
-        int j = i + 1;
-        if (i < 0) {
-          j.hxH();
-        }
-        Object localObject2 = (axl)paramLinkedList;
-        Object localObject1 = new StringBuilder("(").append(i).append(")[msgType:");
-        label137:
-        label164:
-        boolean bool;
-        if (localObject2 != null)
-        {
-          paramLinkedList = Integer.valueOf(((axl)localObject2).infoType);
-          localObject1 = ((StringBuilder)localObject1).append(paramLinkedList.intValue()).append(",payload is empty:");
-          if (localObject2 == null) {
-            break label271;
-          }
-          paramLinkedList = ((axl)localObject2).LHW;
-          if (paramLinkedList != null) {
-            break label276;
-          }
-          bool = true;
-          label171:
-          localObject1 = ((StringBuilder)localObject1).append(bool).append(",versionWording:");
-          if (localObject2 == null) {
-            break label282;
-          }
-          paramLinkedList = ((axl)localObject2).LHX;
-          label196:
-          localStringBuilder1.append(paramLinkedList + ",seq:" + ((axl)localObject2).jlm + "}] ");
-          if (localObject2 != null) {
-            switch (((axl)localObject2).infoType)
-            {
-            }
-          }
-        }
-        for (;;)
-        {
-          i = j;
-          break;
-          paramLinkedList = null;
-          break label137;
-          label271:
-          paramLinkedList = null;
-          break label164;
-          label276:
-          bool = false;
-          break label171;
-          label282:
-          paramLinkedList = null;
-          break label196;
-          localObject1 = (com.tencent.mm.bw.a)new awi();
-          paramLinkedList = ((axl)localObject2).LHW;
-          if (paramLinkedList != null) {}
-          for (paramLinkedList = paramLinkedList.toByteArray();; paramLinkedList = null)
-          {
-            try
-            {
-              ((com.tencent.mm.bw.a)localObject1).parseFrom(paramLinkedList);
-              paramLinkedList = (LinkedList<axl>)localObject1;
-            }
-            catch (Exception paramLinkedList)
-            {
-              for (;;)
-              {
-                Log.printDebugStack("safeParser", "", new Object[] { paramLinkedList });
-                paramLinkedList = null;
-                continue;
-                paramLinkedList = null;
-                continue;
-                i = 2147483647;
-                continue;
-                paramLinkedList = null;
-              }
-              if (!d.a(localLinkedList, (kotlin.g.a.b)new a((awi)localObject2))) {
-                break label553;
-              }
-              Log.i(TAG, "updateTemplateInfo remove the last same item id:" + ((awi)localObject2).id + '!');
-              localLinkedList.add(localObject2);
-              i = j;
-            }
-            localObject2 = (awi)paramLinkedList;
-            if (localObject2 == null) {
-              break label484;
-            }
-            paramLinkedList = ((awi)localObject2).id;
-            if ((paramLinkedList == null) || (paramg.atX(paramLinkedList))) {
-              break label567;
-            }
-            paramLinkedList = paramg.uEa;
-            if (paramLinkedList == null) {
-              break label489;
-            }
-            paramLinkedList = paramLinkedList.tWe;
-            if (paramLinkedList == null) {
-              break label489;
-            }
-            i = paramLinkedList.LHb;
-            paramLinkedList = paramg.uEa;
-            if (paramLinkedList == null) {
-              break label496;
-            }
-            paramLinkedList = paramLinkedList.tWe;
-            if (paramLinkedList == null) {
-              break label496;
-            }
-            paramLinkedList = paramLinkedList.id;
-            if ((!p.j(((awi)localObject2).id, paramLinkedList)) || (((awi)localObject2).LHb <= i)) {
-              break label501;
-            }
-            Log.i(TAG, "updateTemplateInfo drop the old time lottteryInfo:" + com.tencent.mm.ac.g.bN(localObject2) + '!');
-            i = j;
-            break;
-          }
-          label484:
-          label489:
-          label496:
-          label501:
-          break;
-          label553:
-          label567:
-          String str = TAG;
-          StringBuilder localStringBuilder2 = new StringBuilder("updateTemplateInfo ");
-          localObject1 = localObject2;
-          if (localObject2 == null) {
-            localObject1 = "";
-          }
-          Log.e(str, com.tencent.mm.ac.g.bN(localObject1) + " fail," + paramLinkedList + " have show!");
-        }
-      }
-    }
-    Log.i(TAG, localStringBuilder1.toString());
-    if (localLinkedList.size() > 0) {
-      paramg.b(localLinkedList, paramBoolean);
-    }
-    AppMethodBeat.o(245994);
+    AppMethodBeat.i(255317);
+    MultiProcessMMKV localMultiProcessMMKV = bcJ();
+    StringBuilder localStringBuilder = new StringBuilder("MMKV_KEY_SUIT_ID_");
+    p.j(h.aHE(), "MMKernel.account()");
+    int i = localMultiProcessMMKV.getInt(b.getUin(), -1000);
+    AppMethodBeat.o(255317);
+    return i;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "item", "Lcom/tencent/mm/protocal/protobuf/FinderLiveLotteryInfo;", "invoke"})
-  static final class a
-    extends q
-    implements kotlin.g.a.b<awi, Boolean>
+  public static int gE(int paramInt1, int paramInt2)
   {
-    a(awi paramawi)
+    int i = 40;
+    switch (paramInt1)
     {
-      super();
+    default: 
+      paramInt1 = 0;
+      return paramInt1;
+    case 0: 
+      paramInt1 = i;
+      switch (paramInt2)
+      {
+      case 5: 
+      case 8: 
+      default: 
+        return 0;
+      case 0: 
+        return 35;
+      case 1: 
+        return 20;
+      case 2: 
+        return 20;
+      case 3: 
+        return 0;
+      case 10: 
+        return 0;
+      case 4: 
+        return 10;
+      case 6: 
+        return 80;
+      case 7: 
+        return 80;
+      case 13: 
+        return 10;
+      case 11: 
+        return 10;
+      case 12: 
+        return 10;
+      }
+      return 30;
+    case 1: 
+      paramInt1 = i;
+      switch (paramInt2)
+      {
+      case 2: 
+      case 5: 
+      case 8: 
+      default: 
+        return 0;
+      case 0: 
+        return 60;
+      case 1: 
+        return 30;
+      case 3: 
+        return 0;
+      case 10: 
+        return 0;
+      case 4: 
+        return 30;
+      case 6: 
+        return 90;
+      case 7: 
+        return 90;
+      case 13: 
+        return 20;
+      case 11: 
+        return 20;
+      case 12: 
+        return 30;
+      }
+      return 30;
+    }
+    paramInt1 = i;
+    switch (paramInt2)
+    {
+    case 1: 
+    case 5: 
+    case 8: 
+    case 11: 
+    default: 
+      return 0;
+    case 0: 
+      return 90;
+    case 2: 
+      return 70;
+    case 3: 
+      return 0;
+    case 10: 
+      return 0;
+    case 4: 
+      return 35;
+    case 6: 
+      return 100;
+    case 7: 
+      return 100;
+    case 13: 
+      return 30;
+    case 12: 
+      return 50;
+    }
+    return 30;
+  }
+  
+  public static int gF(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(255330);
+    String str = gG(paramInt1, paramInt2);
+    paramInt1 = bcJ().getInt(str, gE(paramInt1, paramInt2));
+    AppMethodBeat.o(255330);
+    return paramInt1;
+  }
+  
+  public static String gG(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(255333);
+    Object localObject = new StringBuilder("MMKV_BEAUTY_VALUE_");
+    p.j(h.aHE(), "MMKernel.account()");
+    localObject = b.getUin() + "_" + paramInt1 + "_" + paramInt2;
+    AppMethodBeat.o(255333);
+    return localObject;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/BeautySuitDataManager$ReportTools;", "", "()V", "makeBeautyInfoJson", "", "plugin-finder_release"})
+  public static final class a
+  {
+    public static final a ydc;
+    
+    static
+    {
+      AppMethodBeat.i(227930);
+      ydc = new a();
+      AppMethodBeat.o(227930);
+    }
+    
+    public static String dxM()
+    {
+      AppMethodBeat.i(227928);
+      Object localObject1 = new JSONObject();
+      Object localObject2 = a.ydb;
+      int i = a.dxL();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(a.gF(i, 0)).append(";");
+      ((StringBuilder)localObject2).append(a.gF(i, 8)).append(";");
+      ((StringBuilder)localObject2).append(a.gF(i, 1)).append(";");
+      ((StringBuilder)localObject2).append(a.gF(i, 2)).append(";");
+      ((StringBuilder)localObject2).append(a.gF(i, 3)).append(";");
+      ((StringBuilder)localObject2).append(a.gF(i, 10)).append(";");
+      ((StringBuilder)localObject2).append(a.gF(i, 4)).append(";");
+      ((StringBuilder)localObject2).append(a.gF(i, 5)).append(";");
+      ((StringBuilder)localObject2).append(a.gF(i, 6)).append(";");
+      ((StringBuilder)localObject2).append(a.gF(i, 7)).append(";");
+      ((StringBuilder)localObject2).append(a.gF(i, 13)).append(";");
+      ((StringBuilder)localObject2).append(a.gF(i, 11)).append(";");
+      ((StringBuilder)localObject2).append(a.gF(i, 12)).append(";");
+      ((StringBuilder)localObject2).append(a.gF(i, 9));
+      ((JSONObject)localObject1).put("type", i + 1);
+      ((JSONObject)localObject1).put("result", ((StringBuilder)localObject2).toString());
+      localObject1 = ((JSONObject)localObject1).toString();
+      p.j(localObject1, "beautyJson.toString()");
+      localObject1 = n.l((String)localObject1, ",", ";", false);
+      AppMethodBeat.o(227928);
+      return localObject1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.model.a
  * JD-Core Version:    0.7.0.1
  */

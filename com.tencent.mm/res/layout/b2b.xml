@@ -2,11 +2,11 @@
 <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <FrameLayout android:paddingTop="@dimen/cb" android:paddingBottom="@dimen/cb" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <android.support.constraint.ConstraintLayout android:id="@id/eql" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/eql" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/eq9" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_location" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
             <TextView android:gravity="center_vertical" android:id="@id/eqn" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/cb" android:layout_weight="1.0" app:layout_constraintLeft_toRightOf="@id/eq9" app:layout_constraintTop_toTopOf="g8m" style="@style/zi" />
             <TextView android:textSize="@dimen/k6" android:textColor="@color/FG_2" android:ellipsize="end" android:id="@id/eqo" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cl" android:layout_marginTop="@dimen/bt" android:text="@string/eku" android:maxLines="1" app:layout_constraintHorizontal_weight="1.0" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toBottomOf="@id/eqn" />
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <LinearLayout android:orientation="horizontal" android:id="@id/eqh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <com.tencent.mm.ui.widget.MMProcessBar android:id="@id/eqz" android:background="@drawable/ae0" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" />
             <TextView android:textSize="@dimen/t" android:textColor="@color/FG_2" android:gravity="center_vertical" android:id="@id/er0" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/cb" android:text="@string/ekl" />

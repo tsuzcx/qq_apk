@@ -3,46 +3,34 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bes
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int index;
-  public int lCq;
-  public String username;
+  public int SPG;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32211);
+    AppMethodBeat.i(204244);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.index);
-      if (this.username != null) {
-        paramVarArgs.e(2, this.username);
-      }
-      paramVarArgs.aM(3, this.lCq);
-      AppMethodBeat.o(32211);
+      ((g.a.a.c.a)paramVarArgs[0]).aY(1, this.SPG);
+      AppMethodBeat.o(204244);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bu(1, this.index) + 0;
-      paramInt = i;
-      if (this.username != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.username);
-      }
-      i = g.a.a.b.b.a.bu(3, this.lCq);
-      AppMethodBeat.o(32211);
-      return paramInt + i;
+      paramInt = g.a.a.b.b.a.bM(1, this.SPG);
+      AppMethodBeat.o(204244);
+      return paramInt + 0;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      AppMethodBeat.o(32211);
+      AppMethodBeat.o(204244);
       return 0;
     }
     if (paramInt == 3)
@@ -52,28 +40,20 @@ public final class bes
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(32211);
+        AppMethodBeat.o(204244);
         return -1;
-      case 1: 
-        localbes.index = locala.UbS.zi();
-        AppMethodBeat.o(32211);
-        return 0;
-      case 2: 
-        localbes.username = locala.UbS.readString();
-        AppMethodBeat.o(32211);
-        return 0;
       }
-      localbes.lCq = locala.UbS.zi();
-      AppMethodBeat.o(32211);
+      localbes.SPG = locala.abFh.AK();
+      AppMethodBeat.o(204244);
       return 0;
     }
-    AppMethodBeat.o(32211);
+    AppMethodBeat.o(204244);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bes
  * JD-Core Version:    0.7.0.1
  */

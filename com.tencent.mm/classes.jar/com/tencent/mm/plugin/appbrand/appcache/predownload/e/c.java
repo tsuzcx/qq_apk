@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.appbrand.appcache.predownload.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fl;
+import com.tencent.mm.f.c.fs;
 import com.tencent.mm.plugin.appbrand.ab.b;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class c
-  extends fl
+  extends fs
   implements b
 {
-  static final IAutoDBItem.MAutoDBInfo iBg;
-  static final String[] kJX;
+  static final IAutoDBItem.MAutoDBInfo lqK;
+  static final String[] nDP;
   
   static
   {
     int i = 0;
     AppMethodBeat.i(44437);
-    kJX = new String[] { "appId", "type", "version", "packageKey", "packageType" };
+    nDP = new String[] { "appId", "type", "version", "packageKey", "packageType" };
     Object localObject1 = new IAutoDBItem.MAutoDBInfo();
     ((IAutoDBItem.MAutoDBInfo)localObject1).fields = new Field[16];
     ((IAutoDBItem.MAutoDBInfo)localObject1).columns = new String[17];
@@ -88,9 +88,9 @@ public final class c
     ((StringBuilder)localObject2).append(" cmdSequence LONG");
     ((IAutoDBItem.MAutoDBInfo)localObject1).columns[16] = "rowid";
     ((IAutoDBItem.MAutoDBInfo)localObject1).sql = ((StringBuilder)localObject2).toString();
-    iBg = (IAutoDBItem.MAutoDBInfo)localObject1;
+    lqK = (IAutoDBItem.MAutoDBInfo)localObject1;
     localObject1 = " PRIMARY KEY ( ";
-    localObject2 = kJX;
+    localObject2 = nDP;
     int j = localObject2.length;
     while (i < j)
     {
@@ -101,24 +101,24 @@ public final class c
     localObject1 = ((String)localObject1).replaceFirst(",", "");
     localObject1 = (String)localObject1 + " )";
     localObject2 = new StringBuilder();
-    Object localObject3 = iBg;
+    Object localObject3 = lqK;
     ((IAutoDBItem.MAutoDBInfo)localObject3).sql = (((IAutoDBItem.MAutoDBInfo)localObject3).sql + "," + (String)localObject1);
     AppMethodBeat.o(44437);
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    return iBg;
+    return lqK;
   }
   
   public final String[] getKeys()
   {
-    return kJX;
+    return nDP;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.predownload.e.c
  * JD-Core Version:    0.7.0.1
  */

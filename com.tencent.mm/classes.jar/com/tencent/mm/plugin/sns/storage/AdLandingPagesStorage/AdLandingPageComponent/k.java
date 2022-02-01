@@ -1,15 +1,20 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
+import java.util.List;
+
 public final class k
-  extends q
+  extends r
 {
-  public String ecK;
-  public String username;
-  public int weAppType;
+  public List<String> Kle;
+  
+  public k(List<String> paramList)
+  {
+    this.Kle = paramList;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.k
  * JD-Core Version:    0.7.0.1
  */

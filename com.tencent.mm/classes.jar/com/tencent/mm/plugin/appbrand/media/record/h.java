@@ -5,20 +5,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MD5Util;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 import java.io.IOException;
 
 public class h
 {
-  private static a ndQ;
+  private static a qeh;
   
   static
   {
     AppMethodBeat.i(175889);
-    ndQ = new a()
+    qeh = new a()
     {
-      public final void ef(String paramAnonymousString)
+      public final void eG(String paramAnonymousString)
       {
         AppMethodBeat.i(175888);
         System.loadLibrary(paramAnonymousString);
@@ -28,7 +27,7 @@ public class h
     AppMethodBeat.o(175889);
   }
   
-  public static short[] G(byte[] paramArrayOfByte, int paramInt)
+  public static short[] F(byte[] paramArrayOfByte, int paramInt)
   {
     short[] arrayOfShort = new short[paramInt / 2];
     paramInt = 0;
@@ -44,13 +43,17 @@ public class h
   {
     try
     {
-      ndQ = parama;
+      qeh = parama;
       return;
     }
-    finally {}
+    finally
+    {
+      parama = finally;
+      throw parama;
+    }
   }
   
-  public static String acG(String paramString)
+  public static String akA(String paramString)
   {
     AppMethodBeat.i(146325);
     if (TextUtils.isEmpty(paramString))
@@ -82,7 +85,7 @@ public class h
     return "";
   }
   
-  public static boolean acH(String paramString)
+  public static boolean akB(String paramString)
   {
     AppMethodBeat.i(146326);
     if (TextUtils.isEmpty(paramString))
@@ -114,19 +117,19 @@ public class h
     return false;
   }
   
-  public static boolean acI(String paramString)
+  public static boolean akC(String paramString)
   {
     boolean bool1 = false;
     AppMethodBeat.i(146327);
-    paramString = new o(paramString);
-    if (!paramString.exists()) {}
+    paramString = new q(paramString);
+    if (!paramString.ifE()) {}
     for (;;)
     {
       boolean bool2;
       try
       {
         Log.i("MicroMsg.Record.AudioRecordUtil", "new audio file");
-        bool2 = paramString.createNewFile();
+        bool2 = paramString.ifM();
         bool1 = bool2;
       }
       catch (IOException paramString)
@@ -142,10 +145,10 @@ public class h
       AppMethodBeat.o(146327);
       return bool1;
       Log.i("MicroMsg.Record.AudioRecordUtil", "delete audio file");
-      paramString.delete();
+      paramString.cFq();
       try
       {
-        bool2 = paramString.createNewFile();
+        bool2 = paramString.ifM();
         bool1 = bool2;
       }
       catch (IOException paramString)
@@ -159,15 +162,15 @@ public class h
     }
   }
   
-  public static long acJ(String paramString)
+  public static long akD(String paramString)
   {
     AppMethodBeat.i(146328);
-    o localo = new o(paramString);
+    q localq = new q(paramString);
     long l = -1L;
-    if (localo.exists())
+    if (localq.ifE())
     {
       Log.i("MicroMsg.Record.AudioRecordUtil", "exist audio file");
-      l = localo.length();
+      l = localq.length();
     }
     for (;;)
     {
@@ -177,22 +180,26 @@ public class h
     }
   }
   
-  public static a bPg()
+  public static a cbw()
   {
     try
     {
-      a locala = ndQ;
+      a locala = qeh;
       return locala;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public static String et(String paramString1, String paramString2)
+  public static String eH(String paramString1, String paramString2)
   {
     AppMethodBeat.i(146324);
-    o localo = new o(b.aKJ(), "AudioRecord");
-    if (!localo.exists()) {
-      localo.mkdirs();
+    q localq = new q(b.aSL(), "AudioRecord");
+    if (!localq.ifE()) {
+      localq.ifL();
     }
     paramString2 = new StringBuilder("audio").append(MD5Util.getMD5String(String.valueOf(paramString2)));
     if (!TextUtils.isEmpty(paramString1)) {
@@ -203,9 +210,9 @@ public class h
     for (;;)
     {
       paramString1 = paramString1;
-      paramString2 = new o(localo, paramString1);
-      Log.d("MicroMsg.Record.AudioRecordUtil", "getAudioFilePath audio name %s path %s", new Object[] { paramString1, paramString2.hes() });
-      paramString1 = aa.z(paramString2.her());
+      paramString2 = new q(localq, paramString1);
+      Log.d("MicroMsg.Record.AudioRecordUtil", "getAudioFilePath audio name %s path %s", new Object[] { paramString1, paramString2.ifG() });
+      paramString1 = paramString2.bOF();
       AppMethodBeat.o(146324);
       return paramString1;
       if ("mp3".equalsIgnoreCase(paramString1)) {
@@ -220,7 +227,7 @@ public class h
   
   public static abstract interface a
   {
-    public abstract void ef(String paramString);
+    public abstract void eG(String paramString);
   }
 }
 

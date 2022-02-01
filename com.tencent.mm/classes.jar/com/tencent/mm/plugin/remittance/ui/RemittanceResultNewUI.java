@@ -7,14 +7,15 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.text.TextUtils;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
@@ -24,21 +25,26 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import androidx.appcompat.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.aaa;
+import com.tencent.mm.an.q;
+import com.tencent.mm.f.a.abh;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.remittance.model.ac;
+import com.tencent.mm.plugin.remittance.model.ak;
 import com.tencent.mm.plugin.wallet_core.id_verify.util.RealnameGuideHelper;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
 import com.tencent.mm.plugin.wallet_core.ui.view.WalletSuccPageAwardWidget;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.protocal.protobuf.vt;
+import com.tencent.mm.protocal.protobuf.vv;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.ClipboardHelper;
@@ -47,81 +53,81 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.base.q.g;
 import com.tencent.mm.wallet_core.ui.WalletTextView;
-import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.g;
 import java.util.List;
 
 @com.tencent.mm.ui.base.a(19)
 public class RemittanceResultNewUI
   extends RemittanceResultUI
 {
-  private static int[] Cxc = null;
-  private PayInfo BDB;
-  private LinearLayout Cre;
-  private e.a.a.c CsF;
-  private WalletSuccPageAwardWidget CsG;
-  private boolean CsL;
-  private IListener<aaa> CsM;
-  private LinearLayout CuN;
-  private LinearLayout CuO;
-  private LinearLayout CuP;
-  private TextView CuQ;
-  private TextView CuR;
-  private TextView CuS;
-  private TextView CuT;
-  private TextView CuU;
-  private int CvI;
-  private Orders CwO;
-  private boolean CwP;
-  private TextView CwQ;
-  private ViewGroup CwR;
-  private TextView CwS;
-  private WalletTextView CwT;
-  private ViewGroup CwU;
-  private ViewGroup CwV;
-  private ViewGroup CwW;
-  private TextView CwX;
-  private TextView CwY;
-  private WalletTextView CwZ;
-  private vt Cxa;
-  private Button Cxb;
+  private static int[] Ivv = null;
+  private PayInfo HzF;
+  private LinearLayout IoD;
+  private e.a.a.c Iqj;
+  private WalletSuccPageAwardWidget Iqk;
+  private boolean Iqp;
+  private IListener<abh> Iqq;
+  private LinearLayout IsC;
+  private LinearLayout IsD;
+  private LinearLayout IsE;
+  private TextView IsF;
+  private TextView IsG;
+  private TextView IsH;
+  private TextView IsI;
+  private TextView IsJ;
+  private int Ity;
+  private Orders Ivh;
+  private boolean Ivi;
+  private TextView Ivj;
+  private ViewGroup Ivk;
+  private TextView Ivl;
+  private WalletTextView Ivm;
+  private ViewGroup Ivn;
+  private ViewGroup Ivo;
+  private ViewGroup Ivp;
+  private TextView Ivq;
+  private TextView Ivr;
+  private WalletTextView Ivs;
+  private vv Ivt;
+  private Button Ivu;
   private int mPayScene;
   private String mReceiverName;
-  private int ppd;
-  private int ppe;
-  private com.tencent.mm.ui.widget.b.a pqr;
-  private o.g rJj;
-  private View.OnTouchListener tia;
-  private View.OnLongClickListener tib;
+  private int syc;
+  private int syd;
+  private com.tencent.mm.ui.widget.b.a szq;
+  private q.g voR;
+  private View.OnTouchListener wOs;
+  private View.OnLongClickListener wOt;
   
   public RemittanceResultNewUI()
   {
     AppMethodBeat.i(68287);
-    this.CsL = false;
-    this.CsM = new IListener() {};
-    this.pqr = null;
-    this.CvI = 0;
-    this.rJj = new o.g()
+    this.Iqp = false;
+    this.Iqq = new IListener() {};
+    this.szq = null;
+    this.Ity = 0;
+    this.voR = new q.g()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
         AppMethodBeat.i(68281);
         paramAnonymousMenuItem = "";
-        if (Util.isEqual(RemittanceResultNewUI.c(RemittanceResultNewUI.this), 2131306872)) {
+        if (Util.isEqual(RemittanceResultNewUI.c(RemittanceResultNewUI.this), a.f.remittance_desc_content_tv)) {
           paramAnonymousMenuItem = RemittanceResultNewUI.d(RemittanceResultNewUI.this).getText().toString().trim();
         }
-        while (!Util.isEqual(RemittanceResultNewUI.c(RemittanceResultNewUI.this), 2131306844))
+        while (!Util.isEqual(RemittanceResultNewUI.c(RemittanceResultNewUI.this), a.f.remittance_address_content_ll))
         {
           ClipboardHelper.setText(MMApplicationContext.getContext(), null, paramAnonymousMenuItem);
-          com.tencent.mm.ui.base.h.cD(RemittanceResultNewUI.this, RemittanceResultNewUI.this.getString(2131755773));
+          com.tencent.mm.ui.base.h.cO(RemittanceResultNewUI.this, RemittanceResultNewUI.this.getString(a.i.app_copy_ok));
           AppMethodBeat.o(68281);
           return;
         }
         paramAnonymousMenuItem = new StringBuilder();
         paramAnonymousMenuItem.append(RemittanceResultNewUI.e(RemittanceResultNewUI.this).getText().toString().trim() + " ");
         String str = RemittanceResultNewUI.b(RemittanceResultNewUI.this).getText().toString().trim();
-        if (str.endsWith(RemittanceResultNewUI.this.getString(2131764512))) {
+        if (str.endsWith(RemittanceResultNewUI.this.getString(a.i.remittance_desc_operation_collapse))) {
           paramAnonymousMenuItem.append(str.substring(0, str.length() - 4));
         }
         for (;;)
@@ -132,15 +138,31 @@ public class RemittanceResultNewUI
         }
       }
     };
-    this.tia = new RemittanceResultNewUI.4(this);
-    this.tib = new View.OnLongClickListener()
+    this.wOs = new View.OnTouchListener()
+    {
+      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(68282);
+        switch (paramAnonymousMotionEvent.getAction())
+        {
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(68282);
+          return false;
+          RemittanceResultNewUI.a(RemittanceResultNewUI.this, (int)paramAnonymousMotionEvent.getRawX());
+          RemittanceResultNewUI.b(RemittanceResultNewUI.this, (int)paramAnonymousMotionEvent.getRawY());
+        }
+      }
+    };
+    this.wOt = new View.OnLongClickListener()
     {
       public final boolean onLongClick(View paramAnonymousView)
       {
         AppMethodBeat.i(68283);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/remittance/ui/RemittanceResultNewUI$6", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/remittance/ui/RemittanceResultNewUI$6", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
         Log.d("MicroMsg.RemittanceResultNewUI", "onLongClick");
         if (RemittanceResultNewUI.f(RemittanceResultNewUI.this) == null) {
           RemittanceResultNewUI.a(RemittanceResultNewUI.this, new com.tencent.mm.ui.widget.b.a(RemittanceResultNewUI.this.getContext()));
@@ -155,73 +177,73 @@ public class RemittanceResultNewUI
     AppMethodBeat.o(68287);
   }
   
-  private ViewGroup ca(String paramString, boolean paramBoolean)
+  private ViewGroup ck(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(68294);
     Log.i("MicroMsg.RemittanceResultNewUI", "setF2FNameView");
     int i;
     if (paramBoolean)
     {
-      localViewGroup = (ViewGroup)getLayoutInflater().inflate(2131494059, this.CwV, false);
-      localCdnImageView = (CdnImageView)localViewGroup.findViewById(2131306862);
-      localTextView = (TextView)localViewGroup.findViewById(2131306531);
-      if ((Util.isNullOrNil(this.mReceiverName)) && (this.BDB.iqp != null))
+      localViewGroup = (ViewGroup)getLayoutInflater().inflate(a.g.f2f_transfer_single_big_avatar_detail_item, this.Ivo, false);
+      localCdnImageView = (CdnImageView)localViewGroup.findViewById(a.f.remittance_busi_logo);
+      localTextView = (TextView)localViewGroup.findViewById(a.f.rbru_rcvr_tv);
+      if ((Util.isNullOrNil(this.mReceiverName)) && (this.HzF.lfu != null))
       {
         i = BackwardSupportUtil.BitmapFactory.fromDPToPix(this, 56.0F);
         localCdnImageView.setRoundCorner(true);
-        localCdnImageView.s(this.BDB.iqp.getString("extinfo_key_27"), i, i, 2131231957);
+        localCdnImageView.w(this.HzF.lfu.getString("extinfo_key_27"), i, i, a.e.default_avatar);
       }
       for (;;)
       {
         localTextView.setText(paramString);
-        this.CwV.addView(localViewGroup);
+        this.Ivo.addView(localViewGroup);
         AppMethodBeat.o(68294);
         return localViewGroup;
         a.b.a(localCdnImageView, this.mReceiverName, 0.06F, false);
       }
     }
-    ViewGroup localViewGroup = (ViewGroup)getLayoutInflater().inflate(2131494058, this.CwV, false);
-    CdnImageView localCdnImageView = (CdnImageView)localViewGroup.findViewById(2131306862);
-    TextView localTextView = (TextView)localViewGroup.findViewById(2131306531);
-    if ((Util.isNullOrNil(this.mReceiverName)) && (this.BDB.iqp != null))
+    ViewGroup localViewGroup = (ViewGroup)getLayoutInflater().inflate(a.g.f2f_transfer_new_detail_item, this.Ivo, false);
+    CdnImageView localCdnImageView = (CdnImageView)localViewGroup.findViewById(a.f.remittance_busi_logo);
+    TextView localTextView = (TextView)localViewGroup.findViewById(a.f.rbru_rcvr_tv);
+    if ((Util.isNullOrNil(this.mReceiverName)) && (this.HzF.lfu != null))
     {
       i = BackwardSupportUtil.BitmapFactory.fromDPToPix(this, 28.0F);
       localCdnImageView.setRoundCorner(true);
-      localCdnImageView.s(this.BDB.iqp.getString("extinfo_key_27"), i, i, 2131231957);
+      localCdnImageView.w(this.HzF.lfu.getString("extinfo_key_27"), i, i, a.e.default_avatar);
     }
     for (;;)
     {
       localTextView.setText(paramString);
-      this.CwV.addView(localViewGroup);
+      this.Ivo.addView(localViewGroup);
       AppMethodBeat.o(68294);
       return localViewGroup;
       a.b.a(localCdnImageView, this.mReceiverName, 0.06F, false);
     }
   }
   
-  private View eOk()
+  private View fAZ()
   {
     boolean bool = true;
     AppMethodBeat.i(68295);
-    if (this.CwO != null)
+    if (this.Ivh != null)
     {
-      if (this.CwO.CoZ > 0.0D) {}
+      if (this.Ivh.Imo > 0.0D) {}
       for (;;)
       {
         Log.i("MicroMsg.RemittanceResultNewUI", "need set charge fee: %s", new Object[] { Boolean.valueOf(bool) });
-        if (this.CwO.CoZ <= 0.0D) {
+        if (this.Ivh.Imo <= 0.0D) {
           break;
         }
-        String str1 = getString(2131764589);
-        String str2 = f.d(this.CwO.CoZ, this.CwO.AOl);
-        ViewGroup localViewGroup = (ViewGroup)getLayoutInflater().inflate(2131494056, this.CwV, false);
-        TextView localTextView1 = (TextView)localViewGroup.findViewById(2131309249);
-        ImageView localImageView = (ImageView)localViewGroup.findViewById(2131297134);
-        TextView localTextView2 = (TextView)localViewGroup.findViewById(2131299510);
+        String str1 = getString(a.i.remittance_result_charge_fee_wording);
+        String str2 = g.d(this.Ivh.Imo, this.Ivh.GHz);
+        ViewGroup localViewGroup = (ViewGroup)getLayoutInflater().inflate(a.g.f2f_transfer_detail_item, this.Ivo, false);
+        TextView localTextView1 = (TextView)localViewGroup.findViewById(a.f.title_tv);
+        ImageView localImageView = (ImageView)localViewGroup.findViewById(a.f.avatar_iv);
+        TextView localTextView2 = (TextView)localViewGroup.findViewById(a.f.desc_tv);
         localTextView1.setText(str1);
         localImageView.setVisibility(8);
         localTextView2.setText(str2);
-        this.CwV.addView(localViewGroup);
+        this.Ivo.addView(localViewGroup);
         AppMethodBeat.o(68295);
         return localViewGroup;
         bool = false;
@@ -231,7 +253,7 @@ public class RemittanceResultNewUI
     return null;
   }
   
-  private void eOl()
+  private void fBa()
   {
     AppMethodBeat.i(68296);
     Log.i("MicroMsg.RemittanceResultNewUI", "endRemittance");
@@ -266,11 +288,11 @@ public class RemittanceResultNewUI
       AppMethodBeat.o(68296);
       return;
     }
-    eOm();
+    fBb();
     AppMethodBeat.o(68296);
   }
   
-  private void eOm()
+  private void fBb()
   {
     AppMethodBeat.i(68297);
     Log.i("MicroMsg.RemittanceResultNewUI", "doEndRemittance");
@@ -291,7 +313,7 @@ public class RemittanceResultNewUI
           Intent localIntent = new Intent();
           localIntent.putExtra("Chat_User", RemittanceResultNewUI.l(RemittanceResultNewUI.this));
           localIntent.putExtra("finish_direct", false);
-          com.tencent.mm.br.c.f(RemittanceResultNewUI.this, ".ui.chatting.ChattingUI", localIntent);
+          com.tencent.mm.by.c.f(RemittanceResultNewUI.this, ".ui.chatting.ChattingUI", localIntent);
           AppMethodBeat.o(68286);
           return;
         }
@@ -302,15 +324,15 @@ public class RemittanceResultNewUI
     AppMethodBeat.o(68297);
   }
   
-  public static int m(Context paramContext, String paramString, int paramInt)
+  public static int n(Context paramContext, String paramString, int paramInt)
   {
     int i = 1;
     AppMethodBeat.i(68292);
-    int j = com.tencent.mm.cb.a.fromDPToPix(paramContext, 16);
-    if (Cxc == null) {
-      Cxc = KeyBoardUtil.getScreenWH(paramContext);
+    int j = com.tencent.mm.ci.a.fromDPToPix(paramContext, 16);
+    if (Ivv == null) {
+      Ivv = KeyBoardUtil.getScreenWH(paramContext);
     }
-    j = (Cxc[0] - com.tencent.mm.cb.a.fromDPToPix(paramContext, 88) - paramInt) / j;
+    j = (Ivv[0] - com.tencent.mm.ci.a.fromDPToPix(paramContext, 88) - paramInt) / j;
     int k = paramString.length();
     paramInt = k / j;
     if (paramInt > 2) {
@@ -335,7 +357,7 @@ public class RemittanceResultNewUI
     return paramInt;
   }
   
-  protected final boolean eOn()
+  protected final boolean fBc()
   {
     return false;
   }
@@ -344,19 +366,19 @@ public class RemittanceResultNewUI
   {
     AppMethodBeat.i(68288);
     Log.i("MicroMsg.RemittanceResultNewUI", "finish this %s %s", new Object[] { this, Util.getStack() });
-    if (this.CsL)
+    if (this.Iqp)
     {
       AppMethodBeat.o(68288);
       return;
     }
     super.finish();
-    this.CsL = true;
+    this.Iqp = true;
     AppMethodBeat.o(68288);
   }
   
   public int getLayoutId()
   {
-    return 2131496110;
+    return a.g.remittance_result_new_ui;
   }
   
   public void initView()
@@ -365,56 +387,68 @@ public class RemittanceResultNewUI
     setBackBtn(null);
     showHomeBtn(false);
     enableBackMenu(false);
-    this.CwQ = ((TextView)findViewById(2131305815));
-    this.CwR = ((ViewGroup)findViewById(2131300296));
-    this.CwS = ((TextView)findViewById(2131300290));
-    this.CwT = ((WalletTextView)findViewById(2131300288));
-    this.CwU = ((ViewGroup)findViewById(2131300294));
-    this.CwV = ((ViewGroup)findViewById(2131300295));
-    this.CwW = ((ViewGroup)findViewById(2131305484));
-    this.CwX = ((TextView)findViewById(2131305483));
-    this.CwY = ((TextView)findViewById(2131305480));
-    this.CwZ = ((WalletTextView)findViewById(2131305479));
-    this.Cxb = ((Button)findViewById(2131309392));
-    this.Cxb.setOnClickListener(new RemittanceResultNewUI.2(this));
-    this.CsG = ((WalletSuccPageAwardWidget)findViewById(2131297151));
-    this.CuN = ((LinearLayout)findViewById(2131306906));
-    this.CuO = ((LinearLayout)findViewById(2131306870));
-    this.Cre = ((LinearLayout)findViewById(2131306843));
-    this.CuP = ((LinearLayout)findViewById(2131306844));
-    this.CuQ = ((TextView)findViewById(2131306875));
-    this.CuR = ((TextView)findViewById(2131306872));
-    this.CuS = ((TextView)findViewById(2131305219));
-    this.CuT = ((TextView)findViewById(2131296552));
-    this.CuU = ((TextView)findViewById(2131296551));
-    Object localObject1 = f.getDisplayName(this.mReceiverName);
+    this.Ivj = ((TextView)findViewById(a.f.pay_succ_wording_tv));
+    this.Ivk = ((ViewGroup)findViewById(a.f.f2f_transfer_result_money_layout));
+    this.Ivl = ((TextView)findViewById(a.f.f2f_money_unit_tv));
+    this.Ivm = ((WalletTextView)findViewById(a.f.f2f_money_amount_tv));
+    this.Ivn = ((ViewGroup)findViewById(a.f.f2f_transfer_detail_layout));
+    this.Ivo = ((ViewGroup)findViewById(a.f.f2f_transfer_detail_list_layout));
+    this.Ivp = ((ViewGroup)findViewById(a.f.normal_transfer_result_money_layout));
+    this.Ivq = ((TextView)findViewById(a.f.normal_transfer_desc_tv));
+    this.Ivr = ((TextView)findViewById(a.f.normal_money_unit_tv));
+    this.Ivs = ((WalletTextView)findViewById(a.f.normal_money_amount_tv));
+    this.Ivu = ((Button)findViewById(a.f.transfer_finish_button));
+    this.Ivu.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(68280);
+        b localb = new b();
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/remittance/ui/RemittanceResultNewUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        RemittanceResultNewUI.a(RemittanceResultNewUI.this);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/remittance/ui/RemittanceResultNewUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(68280);
+      }
+    });
+    this.Iqk = ((WalletSuccPageAwardWidget)findViewById(a.f.award_widget));
+    this.IsC = ((LinearLayout)findViewById(a.f.remittance_info_container));
+    this.IsD = ((LinearLayout)findViewById(a.f.remittance_desc_container));
+    this.IoD = ((LinearLayout)findViewById(a.f.remittance_address_container));
+    this.IsE = ((LinearLayout)findViewById(a.f.remittance_address_content_ll));
+    this.IsF = ((TextView)findViewById(a.f.remittance_desc_tv));
+    this.IsG = ((TextView)findViewById(a.f.remittance_desc_content_tv));
+    this.IsH = ((TextView)findViewById(a.f.name_telephone_tv));
+    this.IsI = ((TextView)findViewById(a.f.address_detail_tv));
+    this.IsJ = ((TextView)findViewById(a.f.address_detail_spread_tv));
+    Object localObject1 = g.PJ(this.mReceiverName);
     if ((this.mPayScene == 31) || (this.mPayScene == 5))
     {
-      this.CwY.setText(f.bpp(this.CwO.AOl));
-      this.CwZ.setText(f.formatMoney2f(this.CwO.dDO));
+      this.Ivr.setText(g.bCm(this.Ivh.GHz));
+      this.Ivs.setText(g.formatMoney2f(this.Ivh.fwy));
       if (this.mPayScene == 31)
       {
-        localObject1 = getString(2131764592, new Object[] { localObject1 });
+        localObject1 = getString(a.i.remittance_result_receiver_desc, new Object[] { localObject1 });
         if (!Util.isNullOrNil((String)localObject1)) {
-          this.CwX.setText(l.b(this, (CharSequence)localObject1, this.CwX.getTextSize()));
+          this.Ivq.setText(l.b(this, (CharSequence)localObject1, this.Ivq.getTextSize()));
         }
         for (;;)
         {
-          this.CwW.setVisibility(0);
-          if (this.CwO.CoZ > 0.0D)
+          this.Ivp.setVisibility(0);
+          if (this.Ivh.Imo > 0.0D)
           {
-            eOk();
-            ((ViewGroup.MarginLayoutParams)this.CwU.getLayoutParams()).topMargin = com.tencent.mm.cb.a.fromDPToPix(this, 20);
-            this.CwU.setVisibility(0);
-            this.CwV.setVisibility(0);
+            fAZ();
+            ((ViewGroup.MarginLayoutParams)this.Ivn.getLayoutParams()).topMargin = com.tencent.mm.ci.a.fromDPToPix(this, 20);
+            this.Ivn.setVisibility(0);
+            this.Ivo.setVisibility(0);
           }
-          ((com.tencent.mm.plugin.fingerprint.b.h)g.af(com.tencent.mm.plugin.fingerprint.b.h.class)).i(this);
+          ((com.tencent.mm.plugin.fingerprint.b.h)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.fingerprint.b.h.class)).j(this);
           AppMethodBeat.o(68291);
           return;
-          this.CwX.setVisibility(8);
+          this.Ivq.setVisibility(8);
         }
       }
-      if ((this.BDB.iqp == null) || (!this.BDB.iqp.getBoolean("extinfo_key_10"))) {
+      if ((this.HzF.lfu == null) || (!this.HzF.lfu.getBoolean("extinfo_key_10"))) {
         break label1506;
       }
     }
@@ -433,39 +467,39 @@ public class RemittanceResultNewUI
         Log.i("MicroMsg.RemittanceResultNewUI", "isEmojiReward: %s", new Object[] { Boolean.valueOf(bool) });
         if (bool)
         {
-          this.CwX.setText(getString(2131764551));
+          this.Ivq.setText(getString(a.i.remittance_emoji_reward_desc));
           break;
         }
-        if ((this.CwO.HZd == null) || (this.CwO.HZd.get(0) == null) || (TextUtils.isEmpty(((Orders.Commodity)this.CwO.HZd.get(0)).AOa))) {
+        if ((this.Ivh.ORd == null) || (this.Ivh.ORd.get(0) == null) || (TextUtils.isEmpty(((Orders.Commodity)this.Ivh.ORd.get(0)).GHo))) {
           break;
         }
-        this.CwX.setText(((Orders.Commodity)this.CwO.HZd.get(0)).AOa);
+        this.Ivq.setText(((Orders.Commodity)this.Ivh.ORd.get(0)).GHo);
         break;
         localObject1 = getInput().getByteArray("key_succpage_resp");
         if (localObject1 != null) {
-          this.Cxa = new vt();
+          this.Ivt = new vv();
         }
         try
         {
-          this.Cxa.parseFrom((byte[])localObject1);
-          this.CsF = this.Cxa.Iah;
-          localObject3 = f.getDisplayName(this.mReceiverName);
-          this.CwS.setText(f.bpp(this.CwO.AOl));
-          this.CwT.setText(f.formatMoney2f(this.CwO.dDO));
-          this.CwV.removeAllViews();
+          this.Ivt.parseFrom((byte[])localObject1);
+          this.Iqj = this.Ivt.OSs;
+          localObject3 = g.PJ(this.mReceiverName);
+          this.Ivl.setText(g.bCm(this.Ivh.GHz));
+          this.Ivm.setText(g.formatMoney2f(this.Ivh.fwy));
+          this.Ivo.removeAllViews();
           if ((this.mPayScene == 32) || (this.mPayScene == 33) || (this.mPayScene == 48))
           {
             localObject1 = localObject3;
             if (Util.isNullOrNil((String)localObject3))
             {
               localObject1 = localObject3;
-              if (this.BDB.iqp != null) {
-                localObject1 = this.BDB.iqp.getString("extinfo_key_28");
+              if (this.HzF.lfu != null) {
+                localObject1 = this.HzF.lfu.getString("extinfo_key_28");
               }
             }
             localObject3 = "";
-            if (this.BDB.iqp != null) {
-              localObject3 = this.BDB.iqp.getString("extinfo_key_2");
+            if (this.HzF.lfu != null) {
+              localObject3 = this.HzF.lfu.getString("extinfo_key_2");
             }
             localObject4 = localObject1;
             if (localObject1 != null)
@@ -481,66 +515,66 @@ public class RemittanceResultNewUI
             if (Util.isNullOrNil((String)localObject4)) {
               break label1430;
             }
-            localObject1 = f.bps((String)localObject3);
+            localObject1 = g.bCp((String)localObject3);
             localObject1 = (String)localObject4 + "(" + (String)localObject1 + ")";
             Log.i("MicroMsg.RemittanceResultNewUI", "setF2FReceiverRemarkView");
-            localObject4 = this.BDB.iqp.getString("extinfo_key_3");
-            String str = this.BDB.iqp.getString("extinfo_key_8");
+            localObject4 = this.HzF.lfu.getString("extinfo_key_3");
+            String str = this.HzF.lfu.getString("extinfo_key_8");
             if (Util.isNullOrNil((String)localObject4)) {
               break label1450;
             }
-            localObject3 = (ViewGroup)getLayoutInflater().inflate(2131494057, this.CwV, false);
-            localObject5 = (TextView)((ViewGroup)localObject3).findViewById(2131309249);
-            localTextView1 = (TextView)((ViewGroup)localObject3).findViewById(2131299510);
+            localObject3 = (ViewGroup)getLayoutInflater().inflate(a.g.f2f_transfer_detail_item_2, this.Ivo, false);
+            localObject5 = (TextView)((ViewGroup)localObject3).findViewById(a.f.title_tv);
+            localTextView1 = (TextView)((ViewGroup)localObject3).findViewById(a.f.desc_tv);
             if (Util.isNullOrNil(str)) {
               break label1435;
             }
             ((TextView)localObject5).setText(str);
             localTextView1.setText((CharSequence)localObject4);
             Log.i("MicroMsg.RemittanceResultNewUI", "setF2FPayerRemarkView");
-            str = this.BDB.iqp.getString("extinfo_key_6");
-            localObject5 = this.BDB.iqp.getString("extinfo_key_7");
+            str = this.HzF.lfu.getString("extinfo_key_6");
+            localObject5 = this.HzF.lfu.getString("extinfo_key_7");
             if (Util.isNullOrNil((String)localObject5)) {
               break label1470;
             }
-            localObject4 = (ViewGroup)getLayoutInflater().inflate(2131494057, this.CwV, false);
-            localTextView1 = (TextView)((ViewGroup)localObject4).findViewById(2131309249);
-            TextView localTextView2 = (TextView)((ViewGroup)localObject4).findViewById(2131299510);
+            localObject4 = (ViewGroup)getLayoutInflater().inflate(a.g.f2f_transfer_detail_item_2, this.Ivo, false);
+            localTextView1 = (TextView)((ViewGroup)localObject4).findViewById(a.f.title_tv);
+            TextView localTextView2 = (TextView)((ViewGroup)localObject4).findViewById(a.f.desc_tv);
             if (Util.isNullOrNil(str)) {
               break label1455;
             }
             localTextView1.setText(str);
             localTextView2.setText((CharSequence)localObject5);
-            localObject5 = eOk();
+            localObject5 = fAZ();
             if ((localObject3 == null) && (localObject4 == null) && (localObject5 == null)) {
               break label1495;
             }
             bool = false;
-            this.CwU.setVisibility(0);
-            this.CwV.setVisibility(0);
-            if (!WalletSuccPageAwardWidget.a(this.CsF)) {
+            this.Ivn.setVisibility(0);
+            this.Ivo.setVisibility(0);
+            if (!WalletSuccPageAwardWidget.a(this.Iqj)) {
               break label1476;
             }
             str = "";
-            if (this.CwO.HZd.size() > 0) {
-              str = ((Orders.Commodity)this.CwO.HZd.get(0)).dDM;
+            if (this.Ivh.ORd.size() > 0) {
+              str = ((Orders.Commodity)this.Ivh.ORd.get(0)).fww;
             }
             Log.i("MicroMsg.RemittanceResultNewUI", "transId: %s", new Object[] { str });
-            this.CsG.a(this, this.CsF, str, true, (ImageView)findViewById(2131297171));
-            this.CsG.init();
-            this.CsG.setVisibility(0);
-            ca((String)localObject1, false);
+            this.Iqk.a(this, this.Iqj, str, true, (ImageView)findViewById(a.f.background));
+            this.Iqk.init();
+            this.Iqk.setVisibility(0);
+            ck((String)localObject1, false);
             if (localObject3 != null) {
-              this.CwV.addView((View)localObject3);
+              this.Ivo.addView((View)localObject3);
             }
             if (localObject4 != null) {
-              this.CwV.addView((View)localObject4);
+              this.Ivo.addView((View)localObject4);
             }
             if (localObject5 != null) {
-              this.CwV.addView((View)localObject5);
+              this.Ivo.addView((View)localObject5);
             }
           }
-          this.CwR.setVisibility(0);
+          this.Ivk.setVisibility(0);
         }
         catch (Exception localException)
         {
@@ -548,22 +582,22 @@ public class RemittanceResultNewUI
           {
             Object localObject5;
             TextView localTextView1;
-            this.Cxa = null;
-            this.CsF = null;
+            this.Ivt = null;
+            this.Iqj = null;
             Log.printErrStackTrace("MicroMsg.RemittanceResultNewUI", localException, "parse f2FPaySucPageResp error: %s", new Object[] { localException.getMessage() });
             continue;
             Object localObject2 = localObject3;
             continue;
-            ((TextView)localObject5).setText(getString(2131757670));
+            ((TextView)localObject5).setText(getString(a.i.collect_create_qrcode_receiver_msg_title));
             continue;
             Object localObject3 = null;
             continue;
-            localTextView1.setText(getString(2131757669));
+            localTextView1.setText(getString(a.i.collect_create_qrcode_payer_msg_title));
             continue;
             Object localObject4 = null;
             continue;
-            this.CsG.setVisibility(8);
-            ca(localObject2, bool);
+            this.Iqk.setVisibility(8);
+            ck(localObject2, bool);
             continue;
             bool = true;
             continue;
@@ -578,22 +612,22 @@ public class RemittanceResultNewUI
   {
     AppMethodBeat.i(68289);
     super.onCreate(paramBundle);
-    if (com.tencent.mm.compatible.util.d.oD(21))
+    if (com.tencent.mm.compatible.util.d.qV(21))
     {
-      if (!com.tencent.mm.compatible.util.d.oD(23)) {
+      if (!com.tencent.mm.compatible.util.d.qV(23)) {
         break label126;
       }
-      getWindow().setStatusBarColor(getResources().getColor(2131101424));
+      getWindow().setStatusBarColor(getResources().getColor(a.c.white));
     }
     for (;;)
     {
       if (getSupportActionBar() != null) {
         getSupportActionBar().hide();
       }
-      this.CsM.alive();
-      this.CwO = ((Orders)getInput().getParcelable("key_orders"));
-      this.BDB = ((PayInfo)getInput().getParcelable("key_pay_info"));
-      if (this.BDB != null) {
+      this.Iqq.alive();
+      this.Ivh = ((Orders)getInput().getParcelable("key_orders"));
+      this.HzF = ((PayInfo)getInput().getParcelable("key_pay_info"));
+      if (this.HzF != null) {
         break;
       }
       Log.e("MicroMsg.RemittanceResultNewUI", "payInfo is null!!!");
@@ -601,17 +635,17 @@ public class RemittanceResultNewUI
       AppMethodBeat.o(68289);
       return;
       label126:
-      getWindow().setStatusBarColor(getResources().getColor(2131099687));
+      getWindow().setStatusBarColor(getResources().getColor(a.c.BW_90));
     }
     String str = "";
     paramBundle = "";
-    if (this.BDB.iqp != null)
+    if (this.HzF.lfu != null)
     {
-      this.CwP = this.BDB.iqp.getBoolean("extinfo_key_4");
-      str = this.BDB.iqp.getString("extinfo_key_1");
-      paramBundle = this.BDB.iqp.getString("extinfo_key_16");
+      this.Ivi = this.HzF.lfu.getBoolean("extinfo_key_4");
+      str = this.HzF.lfu.getString("extinfo_key_1");
+      paramBundle = this.HzF.lfu.getString("extinfo_key_16");
     }
-    int i = this.BDB.dVv;
+    int i = this.HzF.fOY;
     this.mPayScene = i;
     this.mReceiverName = str;
     Log.i("MicroMsg.RemittanceResultNewUI", "payScene: %s", new Object[] { Integer.valueOf(i) });
@@ -619,7 +653,7 @@ public class RemittanceResultNewUI
     if (this.mPayScene == 31)
     {
       Log.i("MicroMsg.RemittanceResultNewUI", "transId: %s", new Object[] { paramBundle });
-      com.tencent.mm.plugin.remittance.a.c.eMU().eMX().jM(paramBundle, this.mReceiverName);
+      com.tencent.mm.plugin.remittance.a.c.fzJ().fzM().kd(paramBundle, this.mReceiverName);
     }
     AppMethodBeat.o(68289);
   }
@@ -628,7 +662,7 @@ public class RemittanceResultNewUI
   {
     AppMethodBeat.i(68293);
     super.onCreateContextMenu(paramContextMenu, paramView, paramContextMenuInfo);
-    paramContextMenu.add(0, 0, 0, getString(2131755772));
+    paramContextMenu.add(0, 0, 0, getString(a.i.app_copy));
     AppMethodBeat.o(68293);
   }
   
@@ -636,9 +670,9 @@ public class RemittanceResultNewUI
   {
     AppMethodBeat.i(68301);
     super.onDestroy();
-    this.CsM.dead();
-    if (WalletSuccPageAwardWidget.a(this.CsF)) {
-      this.CsG.onDestroy();
+    this.Iqq.dead();
+    if (WalletSuccPageAwardWidget.a(this.Iqj)) {
+      this.Iqk.onDestroy();
     }
     AppMethodBeat.o(68301);
   }
@@ -647,7 +681,7 @@ public class RemittanceResultNewUI
   {
     AppMethodBeat.i(68290);
     if (paramInt == 4) {
-      eOl();
+      fBa();
     }
     boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
     AppMethodBeat.o(68290);
@@ -658,8 +692,8 @@ public class RemittanceResultNewUI
   {
     AppMethodBeat.i(68300);
     super.onResume();
-    if (WalletSuccPageAwardWidget.a(this.CsF)) {
-      this.CsG.onResume();
+    if (WalletSuccPageAwardWidget.a(this.Iqj)) {
+      this.Iqk.onResume();
     }
     AppMethodBeat.o(68300);
   }
@@ -667,9 +701,9 @@ public class RemittanceResultNewUI
   public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(68298);
-    if (WalletSuccPageAwardWidget.a(this.CsF))
+    if (WalletSuccPageAwardWidget.a(this.Iqj))
     {
-      bool = this.CsG.onSceneEnd(paramInt1, paramInt2, paramString, paramq);
+      bool = this.Iqk.onSceneEnd(paramInt1, paramInt2, paramString, paramq);
       AppMethodBeat.o(68298);
       return bool;
     }

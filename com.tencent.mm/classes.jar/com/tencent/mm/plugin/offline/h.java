@@ -8,14 +8,15 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.zv;
+import com.tencent.mm.an.q;
+import com.tencent.mm.f.a.abc;
 import com.tencent.mm.plugin.offline.a.n;
 import com.tencent.mm.plugin.offline.a.p;
 import com.tencent.mm.plugin.offline.ui.WalletOfflineEntranceUI;
 import com.tencent.mm.plugin.wallet_core.model.Authen;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.wallet.f;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -28,21 +29,21 @@ import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 public class h
   extends d
 {
-  public final void P(Activity paramActivity)
+  public final void Q(Activity paramActivity)
   {
     int i = 2;
     AppMethodBeat.i(66237);
     int j;
     if (paramActivity != null)
     {
-      j = this.dQL.getInt("offline_from_scene", -1);
+      j = this.fKb.getInt("offline_from_scene", -1);
       if (j != 1) {
         break label96;
       }
     }
     for (;;)
     {
-      com.tencent.mm.plugin.report.service.h.CyF.a(14096, new Object[] { Integer.valueOf(i) });
+      com.tencent.mm.plugin.report.service.h.IzE.a(14096, new Object[] { Integer.valueOf(i) });
       Intent localIntent = new Intent(paramActivity, WalletOfflineEntranceUI.class);
       localIntent.putExtra("key_from_scene", j);
       localIntent.putExtra("is_offline_create", true);
@@ -72,26 +73,27 @@ public class h
     {
       paramMMActivity = new g(paramMMActivity, parami)
       {
-        private void ezl()
+        private void fkQ()
         {
           AppMethodBeat.i(66231);
           n localn = new n(System.currentTimeMillis(), h.j(h.this).getInt("offline_from_scene", -1));
-          this.Ruz.a(localn, false, 1);
+          this.YVX.a(localn, false, 1);
           AppMethodBeat.o(66231);
         }
         
         public final boolean onSceneEnd(final int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
         {
           AppMethodBeat.i(66229);
-          label167:
+          label187:
           Object localObject;
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
           {
             if ((paramAnonymousq instanceof com.tencent.mm.plugin.offline.a.k))
             {
               Log.i("MicroMsg.OfflineProcess", "Offline is Create ");
-              ezl();
+              fkQ();
               h.a(h.this).putBoolean("is_offline_create", true);
+              com.tencent.mm.plugin.report.service.h.IzE.a(22805, new Object[] { Integer.valueOf(3) });
             }
             for (;;)
             {
@@ -100,44 +102,44 @@ public class h
               if ((paramAnonymousq instanceof n))
               {
                 Log.i("MicroMsg.OfflineProcess", "OfflineQueryUser is ok ");
-                paramAnonymousString = this.Ruz;
+                paramAnonymousString = this.YVX;
                 if ((paramAnonymousString.tipDialog == null) || ((paramAnonymousString.tipDialog != null) && (!paramAnonymousString.tipDialog.isShowing())))
                 {
                   if (paramAnonymousString.tipDialog != null) {
                     paramAnonymousString.tipDialog.dismiss();
                   }
                   if (paramAnonymousString.mContext != null) {
-                    break label167;
+                    break label187;
                   }
                   Log.w("MicroMsg.WalletNetSceneMgr", "activity has destroyed!!!");
                 }
                 for (;;)
                 {
-                  paramAnonymousString = new zv();
-                  paramAnonymousString.efR.scene = 8;
-                  paramAnonymousString.efS.efJ = new Runnable()
+                  paramAnonymousString = new abc();
+                  paramAnonymousString.gah.scene = 8;
+                  paramAnonymousString.gai.fZZ = new Runnable()
                   {
                     public final void run()
                     {
                       AppMethodBeat.i(66226);
                       Log.d("MicroMsg.OfflineProcess", "tofutest do callback");
-                      h.this.a(h.1.this.activity, 0, h.b(h.this));
-                      h.1.this.Ruz.closeTipDialog();
+                      h.this.a(h.1.a(h.1.this), 0, h.b(h.this));
+                      h.1.b(h.1.this).closeTipDialog();
                       AppMethodBeat.o(66226);
                     }
                   };
                   EventCenter.instance.publish(paramAnonymousString);
                   break;
-                  paramAnonymousString.tipDialog = com.tencent.mm.wallet_core.ui.h.a(paramAnonymousString.mContext, false, new i.8(paramAnonymousString));
+                  paramAnonymousString.tipDialog = com.tencent.mm.wallet_core.ui.i.a(paramAnonymousString.mContext, false, new i.8(paramAnonymousString));
                 }
               }
               if ((paramAnonymousq instanceof com.tencent.mm.plugin.offline.a.i))
               {
                 paramAnonymousq = (com.tencent.mm.plugin.offline.a.i)paramAnonymousq;
-                if ("1".equals(paramAnonymousq.AJx))
+                if ("1".equals(paramAnonymousq.GCE))
                 {
                   paramAnonymousString = this.activity;
-                  paramAnonymousq = paramAnonymousq.dSf;
+                  paramAnonymousq = paramAnonymousq.fLC;
                   localObject = new Bundle();
                   ((Bundle)localObject).putParcelable("key_authen", new Authen());
                   ((Bundle)localObject).putString("key_pwd1", h.k(h.this).getString("key_pwd1"));
@@ -150,14 +152,14 @@ public class h
                 else
                 {
                   h.c(h.this).putBoolean("back_to_coin_purse_ui", true);
-                  ezl();
+                  fkQ();
                 }
               }
               else if ((paramAnonymousq instanceof p))
               {
-                com.tencent.mm.plugin.offline.c.a.aJj("");
-                k.ezn();
-                k.ezo().AKa = null;
+                com.tencent.mm.plugin.offline.c.a.aTF("");
+                k.fkT();
+                k.fkU().GDh = null;
                 h.this.a(this.activity, 0, h.d(h.this));
               }
             }
@@ -169,13 +171,13 @@ public class h
             if (paramAnonymousInt2 == 410)
             {
               localObject = this.activity;
-              paramAnonymousInt1 = paramAnonymousq.AJL;
-              com.tencent.mm.ui.base.h.c((Context)localObject, paramAnonymousString, "", ((MMActivity)localObject).getString(2131768113), ((MMActivity)localObject).getString(2131755761), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+              paramAnonymousInt1 = paramAnonymousq.GCT;
+              com.tencent.mm.ui.base.h.c((Context)localObject, paramAnonymousString, "", ((MMActivity)localObject).getString(a.i.wallet_pay_bankcard_add), ((MMActivity)localObject).getString(a.i.app_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
               {
                 public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                 {
                   AppMethodBeat.i(66227);
-                  f.aE(this.val$activity, paramAnonymousInt1);
+                  f.aW(this.val$activity, paramAnonymousInt1);
                   h.this.a(this.val$activity, 0, h.n(h.this));
                   AppMethodBeat.o(66227);
                 }
@@ -201,12 +203,12 @@ public class h
           AppMethodBeat.i(66230);
           String str = (String)paramAnonymousVarArgs[0];
           h.e(h.this).putString("key_pwd1", str);
-          Object localObject2 = com.tencent.mm.plugin.offline.c.a.eAn();
+          Object localObject2 = com.tencent.mm.plugin.offline.c.a.flR();
           Object localObject1 = localObject2;
           if (localObject2 == null)
           {
             Log.e("MicroMsg.OfflineProcess", "no support bank car for offline");
-            localObject1 = com.tencent.mm.plugin.offline.c.a.eAo();
+            localObject1 = com.tencent.mm.plugin.offline.c.a.flS();
           }
           if (localObject1 == null)
           {
@@ -215,10 +217,10 @@ public class h
             return false;
           }
           localObject2 = h.f(h.this).getString("oper");
-          if (!com.tencent.mm.plugin.offline.c.a.eAj())
+          if (!com.tencent.mm.plugin.offline.c.a.flN())
           {
             Log.i("MicroMsg.OfflineProcess", "Offline is not Create ");
-            this.Ruz.a(new com.tencent.mm.plugin.offline.a.k((Bankcard)localObject1, (String)paramAnonymousVarArgs[0], h.g(h.this).getInt("offline_chg_fee", 0)), true, 1);
+            this.YVX.a(new com.tencent.mm.plugin.offline.a.k((Bankcard)localObject1, (String)paramAnonymousVarArgs[0], h.g(h.this).getInt("offline_chg_fee", 0)), true, 1);
           }
           for (;;)
           {
@@ -229,22 +231,22 @@ public class h
               Log.i("MicroMsg.OfflineProcess", "oper == ".concat(String.valueOf(localObject2)));
               if (((String)localObject2).equals("create"))
               {
-                this.Ruz.a(new com.tencent.mm.plugin.offline.a.k((Bankcard)localObject1, (String)paramAnonymousVarArgs[0], h.h(h.this).getInt("offline_chg_fee", 0)), true, 1);
+                this.YVX.a(new com.tencent.mm.plugin.offline.a.k((Bankcard)localObject1, (String)paramAnonymousVarArgs[0], h.h(h.this).getInt("offline_chg_fee", 0)), true, 1);
               }
               else if (((String)localObject2).equals("clr"))
               {
-                this.Ruz.a(new com.tencent.mm.plugin.offline.a.i((Bankcard)localObject1, str, "clr", 0, ""), true, 1);
+                this.YVX.a(new com.tencent.mm.plugin.offline.a.i((Bankcard)localObject1, str, "clr", 0, ""), true, 1);
               }
               else if (((String)localObject2).equals("changeto"))
               {
-                this.Ruz.a(new com.tencent.mm.plugin.offline.a.i((Bankcard)localObject1, str, "changeto", h.i(h.this).getInt("offline_chg_fee"), ""), true, 1);
+                this.YVX.a(new com.tencent.mm.plugin.offline.a.i((Bankcard)localObject1, str, "changeto", h.i(h.this).getInt("offline_chg_fee"), ""), true, 1);
               }
               else
               {
                 if (!((String)localObject2).equals("freeze")) {
                   break;
                 }
-                this.Ruz.a(new p(str), true, 1);
+                this.YVX.a(new p(str), true, 1);
               }
             }
           }
@@ -272,7 +274,7 @@ public class h
   {
     AppMethodBeat.i(66234);
     if ((paramActivity instanceof WalletCheckPwdUI)) {
-      P(paramActivity);
+      Q(paramActivity);
     }
     AppMethodBeat.o(66234);
   }
@@ -280,9 +282,9 @@ public class h
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(66236);
-    P(paramActivity);
+    Q(paramActivity);
     if ((paramBundle != null) && (paramBundle.getBoolean("is_offline_create"))) {
-      com.tencent.mm.plugin.offline.c.a.aA((WalletBaseUI)paramActivity);
+      com.tencent.mm.plugin.offline.c.a.aG((WalletBaseUI)paramActivity);
     }
     AppMethodBeat.o(66236);
   }
@@ -292,12 +294,12 @@ public class h
     return false;
   }
   
-  public final String dKC()
+  public final String epb()
   {
     return "OfflineProcess";
   }
   
-  public final void g(Activity paramActivity, int paramInt)
+  public final void h(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(66235);
     if (paramActivity != null) {

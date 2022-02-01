@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public abstract class t<V, C extends h<V>>
 {
-  protected static boolean e(int paramInt, int... paramVarArgs)
+  protected static boolean d(int paramInt, int... paramVarArgs)
   {
     boolean bool2 = false;
     int i = 0;
@@ -33,19 +33,19 @@ public abstract class t<V, C extends h<V>>
   
   public abstract void a(WXRTEditText paramWXRTEditText, V paramV);
   
-  public abstract int cEq();
+  public abstract int cSW();
   
   protected abstract g r(WXRTEditText paramWXRTEditText);
   
   public final boolean s(WXRTEditText paramWXRTEditText)
   {
     g localg = r(paramWXRTEditText);
-    return !a(paramWXRTEditText.getText(), localg, q.qTC).isEmpty();
+    return !a(paramWXRTEditText.getText(), localg, q.uvI).isEmpty();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.spans.t
  * JD-Core Version:    0.7.0.1
  */

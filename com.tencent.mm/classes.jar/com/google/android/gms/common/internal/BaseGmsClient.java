@@ -210,15 +210,12 @@ public abstract class BaseGmsClient<T extends IInterface>
   
   private final boolean zzcq()
   {
-    for (;;)
+    synchronized (this.mLock)
     {
-      synchronized (this.mLock)
+      if (this.zzrm == 3)
       {
-        if (this.zzrm == 3)
-        {
-          bool = true;
-          return bool;
-        }
+        bool = true;
+        return bool;
       }
       boolean bool = false;
     }
@@ -591,15 +588,14 @@ public abstract class BaseGmsClient<T extends IInterface>
     //   from	to	target	type
     //   86	118	140	finally
     //   118	120	140	finally
-    //   141	143	140	finally
     //   79	86	145	android/os/DeadObjectException
-    //   143	145	145	android/os/DeadObjectException
+    //   141	145	145	android/os/DeadObjectException
     //   79	86	152	java/lang/SecurityException
-    //   143	145	152	java/lang/SecurityException
+    //   141	145	152	java/lang/SecurityException
     //   79	86	155	android/os/RemoteException
-    //   143	145	155	android/os/RemoteException
+    //   141	145	155	android/os/RemoteException
     //   79	86	172	java/lang/RuntimeException
-    //   143	145	172	java/lang/RuntimeException
+    //   141	145	172	java/lang/RuntimeException
   }
   
   public Feature[] getRequiredFeatures()
@@ -673,15 +669,12 @@ public abstract class BaseGmsClient<T extends IInterface>
   
   public boolean isConnected()
   {
-    for (;;)
+    synchronized (this.mLock)
     {
-      synchronized (this.mLock)
+      if (this.zzrm == 4)
       {
-        if (this.zzrm == 4)
-        {
-          bool = true;
-          return bool;
-        }
+        bool = true;
+        return bool;
       }
       boolean bool = false;
     }
@@ -693,20 +686,20 @@ public abstract class BaseGmsClient<T extends IInterface>
     {
       synchronized (this.mLock)
       {
-        if (this.zzrm != 2)
-        {
-          if (this.zzrm != 3) {
+        if (this.zzrm != 2) {
+          if (this.zzrm == 3)
+          {
             break label40;
+            return bool;
           }
-          break label35;
-          return bool;
+          else
+          {
+            bool = false;
+          }
         }
       }
-      label35:
-      boolean bool = true;
-      continue;
       label40:
-      bool = false;
+      boolean bool = true;
     }
   }
   
@@ -859,7 +852,6 @@ public abstract class BaseGmsClient<T extends IInterface>
           try
           {
             this.zzrv = true;
-            unregister();
             return;
           }
           finally {}
@@ -879,7 +871,11 @@ public abstract class BaseGmsClient<T extends IInterface>
         this.zzli = null;
         return;
       }
-      finally {}
+      finally
+      {
+        localObject = finally;
+        throw localObject;
+      }
     }
     
     public void unregister()
@@ -1246,7 +1242,7 @@ public abstract class BaseGmsClient<T extends IInterface>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.gms.common.internal.BaseGmsClient
  * JD-Core Version:    0.7.0.1
  */

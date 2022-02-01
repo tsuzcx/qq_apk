@@ -17,7 +17,7 @@ import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 public final class i
   extends KeyBoardUtil
 {
-  public static final void C(Context paramContext, int paramInt)
+  public static final void E(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(155904);
     int j = KeyBoardUtil.getMinPanelHeightPx(paramContext);
@@ -40,12 +40,12 @@ public final class i
     }
   }
   
-  public static final int apt()
+  public static final int avL()
   {
     return CONTENT_HEIGHT;
   }
   
-  public static final int apu()
+  public static final int avM()
   {
     AppMethodBeat.i(155905);
     int i = MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).getInt("com.tencent.mm.compatible.util.keybord.height", 0);
@@ -54,7 +54,7 @@ public final class i
   }
   
   @TargetApi(11)
-  public static final void v(Activity paramActivity)
+  public static final void u(Activity paramActivity)
   {
     AppMethodBeat.i(155903);
     if (paramActivity == null)
@@ -65,14 +65,14 @@ public final class i
     Rect localRect = new Rect();
     paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
     int i = localRect.top;
-    int j = a.u(paramActivity);
+    int j = a.t(paramActivity);
     CONTENT_HEIGHT = paramActivity.getResources().getDisplayMetrics().heightPixels - j - i;
     AppMethodBeat.o(155903);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.compatible.util.i
  * JD-Core Version:    0.7.0.1
  */

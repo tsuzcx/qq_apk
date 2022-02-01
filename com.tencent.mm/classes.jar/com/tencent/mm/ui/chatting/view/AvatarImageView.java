@@ -5,7 +5,7 @@ import android.graphics.Canvas;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.patmsg.ui.AvatarPatImageView;
 import com.tencent.mm.plugin.sns.ui.e.a;
 import com.tencent.mm.plugin.story.api.e;
@@ -17,10 +17,10 @@ public class AvatarImageView
   extends AvatarPatImageView
   implements m
 {
-  private i EQN;
-  private String FeZ;
-  private boolean PGf;
+  private i LeM;
+  private String LtE;
   private final String TAG;
+  private boolean XaX;
   private int pageType;
   
   public AvatarImageView(Context paramContext, AttributeSet paramAttributeSet)
@@ -34,16 +34,16 @@ public class AvatarImageView
     AppMethodBeat.i(36689);
     this.TAG = "MicroMsg.AvatarImageView";
     this.pageType = -1;
-    this.EQN = null;
-    this.FeZ = "";
-    this.PGf = true;
-    this.EQN = ((e)g.ah(e.class)).getStoryUIFactory().hj(paramContext);
-    this.EQN.ba(this);
+    this.LeM = null;
+    this.LtE = "";
+    this.XaX = true;
+    this.LeM = ((e)h.ag(e.class)).getStoryUIFactory().ik(paramContext);
+    this.LeM.g(this);
     setLayerType(1, null);
     AppMethodBeat.o(36689);
   }
   
-  public final void cr(String paramString, boolean paramBoolean)
+  public final void cF(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(36696);
     if ((TextUtils.isEmpty(paramString)) || (getContext() == null))
@@ -51,7 +51,7 @@ public class AvatarImageView
       AppMethodBeat.o(36696);
       return;
     }
-    if (paramString.equals(this.FeZ)) {
+    if (paramString.equals(this.LtE)) {
       if (paramBoolean) {
         break label53;
       }
@@ -65,11 +65,11 @@ public class AvatarImageView
     }
   }
   
-  public final void fL(String paramString, int paramInt)
+  public final void gp(String paramString, int paramInt)
   {
     AppMethodBeat.i(36695);
-    this.EQN.fL(paramString, paramInt);
-    this.FeZ = paramString;
+    this.LeM.gp(paramString, paramInt);
+    this.LtE = paramString;
     this.pageType = paramInt;
     AppMethodBeat.o(36695);
   }
@@ -79,7 +79,7 @@ public class AvatarImageView
     AppMethodBeat.i(36697);
     super.onDetachedFromWindow();
     if (this.pageType != -1) {
-      a.b(this.pageType, this.FeZ, this);
+      a.b(this.pageType, this.LtE, this);
     }
     AppMethodBeat.o(36697);
   }
@@ -88,13 +88,13 @@ public class AvatarImageView
   {
     AppMethodBeat.i(36690);
     super.onDraw(paramCanvas);
-    if (this.PGf)
+    if (this.XaX)
     {
-      this.EQN.a(paramCanvas, true, 0);
+      this.LeM.a(paramCanvas, true, 0);
       AppMethodBeat.o(36690);
       return;
     }
-    this.EQN.a(paramCanvas, false, 0);
+    this.LeM.a(paramCanvas, false, 0);
     AppMethodBeat.o(36690);
   }
   
@@ -107,13 +107,13 @@ public class AvatarImageView
   
   public void setChattingBG(boolean paramBoolean)
   {
-    this.PGf = paramBoolean;
+    this.XaX = paramBoolean;
   }
   
   public void setShowStoryHint(boolean paramBoolean)
   {
     AppMethodBeat.i(36694);
-    this.EQN.setShowStoryHint(paramBoolean);
+    this.LeM.setShowStoryHint(paramBoolean);
     AppMethodBeat.o(36694);
   }
 }

@@ -7,8 +7,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ao
 {
-  final zzi bMP;
-  final Messenger bMs;
+  final Messenger bJX;
+  final zzi bKu;
   
   ao(IBinder paramIBinder)
   {
@@ -16,15 +16,15 @@ final class ao
     String str = paramIBinder.getInterfaceDescriptor();
     if ("android.os.IMessenger".equals(str))
     {
-      this.bMs = new Messenger(paramIBinder);
-      this.bMP = null;
+      this.bJX = new Messenger(paramIBinder);
+      this.bKu = null;
       AppMethodBeat.o(4270);
       return;
     }
     if ("com.google.android.gms.iid.IMessengerCompat".equals(str))
     {
-      this.bMP = new zzi(paramIBinder);
-      this.bMs = null;
+      this.bKu = new zzi(paramIBinder);
+      this.bJX = null;
       AppMethodBeat.o(4270);
       return;
     }
@@ -43,7 +43,7 @@ final class ao
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.ao
  * JD-Core Version:    0.7.0.1
  */

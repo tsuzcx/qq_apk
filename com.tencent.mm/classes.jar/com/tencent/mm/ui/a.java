@@ -1,142 +1,194 @@
 package com.tencent.mm.ui;
 
-import android.text.Layout;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.view.Window;
+import androidx.appcompat.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.e;
+import com.tencent.mm.ah.a.g;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.widget.imageview.WeImageView;
+import com.tencent.mm.util.b.a;
+import com.tencent.mm.util.i;
 
 public final class a
 {
-  private ImageView Gmy;
-  private View JoP;
-  private ImageView OwD;
-  public ViewGroup OwE;
-  public WeImageView OwF;
-  public TextView OwG;
-  public ViewGroup OwH;
-  public WeImageView OwI;
-  public ImageView OwJ;
-  public ImageView OwK;
-  private ImageView OwL;
-  public ImageView OwM;
-  private View OwN;
-  private ImageView hNZ;
-  public TextView jVO;
-  
-  public a(View paramView)
+  public static void a(final ActionBar paramActionBar, final boolean paramBoolean, final w paramw, final Menu paramMenu)
   {
-    AppMethodBeat.i(141266);
-    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-    if (localLayoutParams == null) {
-      localLayoutParams = new ViewGroup.LayoutParams(-2, -1);
-    }
-    for (;;)
+    AppMethodBeat.i(218544);
+    Object localObject = i.YyX;
+    if (i.a(b.a.Yyu, 1) != 1)
     {
-      paramView.setLayoutParams(localLayoutParams);
-      this.jVO = ((TextView)paramView.findViewById(2131309202));
-      this.OwD = ((ImageView)paramView.findViewById(2131309234));
-      this.OwE = ((ViewGroup)paramView.findViewById(2131309204));
-      this.OwF = ((WeImageView)paramView.findViewById(2131309203));
-      this.OwG = ((TextView)paramView.findViewById(2131308718));
-      this.OwH = ((ViewGroup)paramView.findViewById(2131308720));
-      this.OwI = ((WeImageView)paramView.findViewById(2131308719));
-      this.Gmy = ((ImageView)paramView.findViewById(2131305120));
-      this.OwJ = ((ImageView)paramView.findViewById(2131301690));
-      this.OwK = ((ImageView)paramView.findViewById(2131305879));
-      this.OwL = ((ImageView)paramView.findViewById(2131306328));
-      this.JoP = paramView.findViewById(2131297046);
-      this.hNZ = ((ImageView)paramView.findViewById(2131297047));
-      this.OwM = ((ImageView)paramView.findViewById(2131306820));
-      this.OwN = paramView;
-      AppMethodBeat.o(141266);
-      return;
-      localLayoutParams.width = -2;
-      localLayoutParams.height = -1;
-    }
-  }
-  
-  public final void AR(boolean paramBoolean)
-  {
-    AppMethodBeat.i(141268);
-    ImageView localImageView = this.Gmy;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localImageView.setVisibility(i);
-      AppMethodBeat.o(141268);
+      AppMethodBeat.o(218544);
       return;
     }
-  }
-  
-  public final void AS(boolean paramBoolean)
-  {
-    AppMethodBeat.i(141269);
-    ImageView localImageView = this.OwL;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
+    localObject = paramActionBar.getCustomView();
+    if (localObject == null)
     {
-      localImageView.setVisibility(i);
-      AppMethodBeat.o(141269);
+      AppMethodBeat.o(218544);
       return;
     }
-  }
-  
-  public final void ap(CharSequence paramCharSequence)
-  {
-    AppMethodBeat.i(205098);
-    if ((paramCharSequence == null) || (Util.isNullOrNil(paramCharSequence.toString())))
+    final View localView = ((View)localObject).findViewById(a.g.actionbar_center_layout);
+    if (localView == null)
     {
-      this.OwG.setVisibility(8);
-      AppMethodBeat.o(205098);
+      Log.d("MicroMsg.ActionBarCenterHelper", "setActionTitleCenter, centerLayout is null");
+      AppMethodBeat.o(218544);
       return;
     }
-    this.OwG.setVisibility(0);
-    this.OwG.setText(paramCharSequence);
-    if (com.tencent.mm.cb.a.jk(this.OwG.getContext()))
+    Log.i("MicroMsg.ActionBarCenterHelper", "setActionTitleCenter, customView measuredWidth outside is %s, isActionbarCenterLayoutMode is %s, customView: %s， context: %s.", new Object[] { Integer.valueOf(((View)localObject).getMeasuredWidth()), Boolean.valueOf(paramBoolean), localObject, ((View)localObject).getContext() });
+    ((View)localObject).post(new Runnable()
     {
-      this.OwG.setTextSize(1, 14.0F);
-      this.jVO.setTextSize(1, 18.0F);
-    }
-    AppMethodBeat.o(205098);
-  }
-  
-  public final void gGI()
-  {
-    AppMethodBeat.i(205099);
-    if (this.hNZ != null) {
-      this.hNZ.setImageResource(2131689492);
-    }
-    AppMethodBeat.o(205099);
-  }
-  
-  public final void setClickListener(View.OnClickListener paramOnClickListener)
-  {
-    AppMethodBeat.i(141270);
-    this.JoP.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(141270);
-  }
-  
-  public final void setTitle(CharSequence paramCharSequence)
-  {
-    AppMethodBeat.i(141267);
-    this.jVO.setText(paramCharSequence);
-    if (com.tencent.mm.cb.a.jk(this.jVO.getContext())) {
-      this.jVO.setTextSize(0, com.tencent.mm.cb.a.aH(this.jVO.getContext(), 2131165186) * com.tencent.mm.cb.a.ji(this.jVO.getContext()));
-    }
-    AppMethodBeat.o(141267);
+      public final void run()
+      {
+        AppMethodBeat.i(198944);
+        Log.i("MicroMsg.ActionBarCenterHelper", "setActionTitleCenter, customView measuredWidth inside is %s, customView : %s .", new Object[] { Integer.valueOf(this.VPB.getMeasuredWidth()), this.VPB });
+        Object localObject;
+        int i;
+        if (this.VPB != paramActionBar.getCustomView())
+        {
+          Log.w("MicroMsg.ActionBarCenterHelper", "setActionTitleCenter, customView is not equals current actionbar's custom, customView width old = %s customView = %s， context : %s.", new Object[] { Integer.valueOf(this.VPB.getMeasuredWidth()), this.VPB, this.VPB.getContext() });
+          if (paramActionBar.getCustomView() != null) {
+            Log.w("MicroMsg.ActionBarCenterHelper", "setActionTitleCenter, customView is not equals current actionbar's custom, customView width new = %s, customView = %s， context : %s.", new Object[] { Integer.valueOf(paramActionBar.getCustomView().getMeasuredWidth()), paramActionBar.getCustomView(), paramActionBar.getCustomView().getContext() });
+          }
+        }
+        else
+        {
+          localObject = this.VPB.getContext();
+          i = com.tencent.mm.ci.a.kr((Context)localObject);
+          if (!ar.hIH()) {
+            break label369;
+          }
+          if ((!(localObject instanceof Activity)) || (((Activity)localObject).getWindow() == null) || (((Activity)localObject).getWindow().getDecorView() == null)) {
+            break label785;
+          }
+          i = ((Activity)localObject).getWindow().getDecorView().getMeasuredWidth();
+        }
+        label772:
+        label777:
+        label780:
+        label785:
+        for (;;)
+        {
+          int j = this.VPB.getMeasuredWidth();
+          int k = j;
+          int m;
+          if (j == 0)
+          {
+            k = j;
+            if ("com.tencent.mm.ui.chatting.ChattingUIFragment".equals(paramw.bpE()))
+            {
+              m = 0;
+              k = 0;
+              j = m;
+              if (paramMenu != null)
+              {
+                j = m;
+                if (paramMenu.size() > 0)
+                {
+                  m = 0;
+                  for (;;)
+                  {
+                    j = k;
+                    if (m >= paramMenu.size()) {
+                      break;
+                    }
+                    localObject = paramMenu.getItem(m);
+                    j = k;
+                    if (localObject != null)
+                    {
+                      j = k;
+                      if (((MenuItem)localObject).isEnabled())
+                      {
+                        j = k;
+                        if (((MenuItem)localObject).isVisible()) {
+                          j = k + 1;
+                        }
+                      }
+                    }
+                    m += 1;
+                    k = j;
+                  }
+                  Log.w("MicroMsg.ActionBarCenterHelper", "setActionTitleCenter, actionBar.getCustomView() is null.");
+                  break;
+                  label369:
+                  i = com.tencent.mm.ci.a.kr((Context)localObject);
+                  continue;
+                }
+              }
+              if (j <= 1) {
+                break label780;
+              }
+            }
+          }
+          for (k = j;; k = 1)
+          {
+            m = (int)this.VPB.getContext().getResources().getDimension(a.e.Edge_5A) * k;
+            k = i - m;
+            Log.i("MicroMsg.ActionBarCenterHelper", "setActionTitleCenter, menu width is %s, defaultMenuWidth: %s.", new Object[] { Integer.valueOf(j * (int)this.VPB.getContext().getResources().getDimension(a.e.Edge_5A)), Integer.valueOf(m) });
+            localView.setVisibility(0);
+            if ((localView != null) && (k != 0))
+            {
+              localObject = this.VPB.findViewById(a.g.actionbar_up_indicator);
+              j = (int)this.VPB.getResources().getDimension(a.e.Edge_6A);
+              if (localObject == null) {
+                break label777;
+              }
+              j = ((View)localObject).getMeasuredWidth();
+            }
+            for (;;)
+            {
+              if (!paramBoolean)
+              {
+                localObject = this.VPB.findViewById(a.g.actionbar_operate_area);
+                if (localObject != null)
+                {
+                  localMarginLayoutParams = (ViewGroup.MarginLayoutParams)((View)localObject).getLayoutParams();
+                  localMarginLayoutParams.leftMargin = 0;
+                  ((View)localObject).setLayoutParams(localMarginLayoutParams);
+                }
+                localObject = (ViewGroup.MarginLayoutParams)localView.getLayoutParams();
+                ((ViewGroup.MarginLayoutParams)localObject).leftMargin = j;
+                localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+                AppMethodBeat.o(198944);
+                return;
+              }
+              m = this.VPB.getLeft();
+              int n = i - k - m;
+              int i1 = Math.max(n - m, j);
+              ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)localView.getLayoutParams();
+              localMarginLayoutParams.width = (i - (i1 + m) * 2);
+              localMarginLayoutParams.leftMargin = i1;
+              localView.setLayoutParams(localMarginLayoutParams);
+              Log.i("MicroMsg.ActionBarCenterHelper", "setActionTitleCenter, backViewWidth: %s, menuAreaWidth: %s, leftMargin: %s, titleWidth: %s, activityWidth: %s, customMeasuredWidth: %s, customPadding: %s, customRealWidth: %s.", new Object[] { Integer.valueOf(j), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(localMarginLayoutParams.width), Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(this.VPB.getWidth()) });
+              if (localObject != null) {
+                if (i1 != 0) {
+                  break label772;
+                }
+              }
+              for (;;)
+              {
+                localView.setPadding(j, 0, j, 0);
+                AppMethodBeat.o(198944);
+                return;
+                j = 0;
+              }
+            }
+          }
+        }
+      }
+    });
+    AppMethodBeat.o(218544);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.a
  * JD-Core Version:    0.7.0.1
  */

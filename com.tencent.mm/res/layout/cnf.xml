@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/BW_97" android:padding="@dimen/ct" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_gravity="bottom|center|right" android:id="@id/gxm" android:background="@drawable/d2o" android:layout_width="@dimen/bu" android:layout_height="@dimen/bw">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_delemoji" app:iconColor="@color/fo" />
+    </FrameLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:id="@id/kz0" android:layout_marginBottom="@dimen/ct" style="@style/k1" />
+        <LinearLayout android:id="@id/kz1" android:layout_marginBottom="@dimen/ct" style="@style/k1" />
+        <LinearLayout android:id="@id/kz2" android:layout_marginBottom="@dimen/ct" style="@style/k1" />
+        <LinearLayout android:id="@id/kz3" android:layout_marginRight="@dimen/bw" android:layout_marginBottom="@dimen/ct" style="@style/k1" />
+        <LinearLayout android:id="@id/kz4" android:layout_marginRight="@dimen/bw" style="@style/k1" />
+    </LinearLayout>
+</FrameLayout>

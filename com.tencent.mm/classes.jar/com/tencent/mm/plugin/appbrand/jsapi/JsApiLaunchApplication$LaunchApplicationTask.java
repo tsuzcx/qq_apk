@@ -10,8 +10,8 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.lp;
-import com.tencent.mm.g.a.lp.b;
+import com.tencent.mm.f.a.mg;
+import com.tencent.mm.f.a.mg.b;
 import com.tencent.mm.opensdk.modelmsg.WXAppExtendObject;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyTransparentUIProcessTask;
@@ -29,11 +29,11 @@ class JsApiLaunchApplication$LaunchApplicationTask
 {
   public static final Parcelable.Creator<LaunchApplicationTask> CREATOR;
   public String appId;
-  public int dDG;
-  public Bundle dFP;
   public String extInfo;
-  public Runnable lyv;
-  public String lzV;
+  public int fwp;
+  public Bundle fyw;
+  public Runnable otv;
+  public String ovl;
   public boolean success;
   
   static
@@ -60,43 +60,43 @@ class JsApiLaunchApplication$LaunchApplicationTask
     AppMethodBeat.i(45501);
     JsApiLaunchApplication.a locala = new JsApiLaunchApplication.a(new JsApiLaunchApplication.a.a()
     {
-      public final void u(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
+      public final void x(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
       {
         AppMethodBeat.i(45499);
         Log.i("MicroMsg.JsApiLaunchApplication", "onLaunchAppCallback(launchRet : %s, launchSuccess : %s)", new Object[] { Boolean.valueOf(paramAnonymousBoolean1), Boolean.valueOf(paramAnonymousBoolean2) });
         if (paramAnonymousBoolean1)
         {
           JsApiLaunchApplication.LaunchApplicationTask.this.success = true;
-          parama.bDH();
+          parama.bPh();
           AppMethodBeat.o(45499);
           return;
         }
         JsApiLaunchApplication.LaunchApplicationTask.this.success = false;
-        parama.bDH();
+        parama.bPh();
         AppMethodBeat.o(45499);
       }
     });
     parama = new WXAppExtendObject();
     parama.extInfo = this.extInfo;
     parama = new WXMediaMessage(parama);
-    parama.sdkVer = 637928960;
+    parama.sdkVer = 637992960;
     parama.messageExt = this.extInfo;
-    Object localObject = new lp();
-    ((lp)localObject).dQT.dCE = parama;
-    ((lp)localObject).dQT.appId = this.appId;
-    ((lp)localObject).dQT.dDG = this.dDG;
-    ((lp)localObject).dQT.context = paramContext;
-    ((lp)localObject).dQT.dFP = this.dFP;
-    ((lp)localObject).dQT.dQV = locala;
+    Object localObject = new mg();
+    ((mg)localObject).fKj.fvl = parama;
+    ((mg)localObject).fKj.appId = this.appId;
+    ((mg)localObject).fKj.fwp = this.fwp;
+    ((mg)localObject).fKj.context = paramContext;
+    ((mg)localObject).fKj.fyw = this.fyw;
+    ((mg)localObject).fKj.fKl = locala;
     EventCenter.instance.publish((IEvent)localObject);
-    boolean bool1 = ((lp)localObject).dQU.dQW;
+    boolean bool1 = ((mg)localObject).fKk.fKm;
     boolean bool2 = bool1;
     if (!bool1)
     {
-      if ((Util.isNullOrNil(this.appId)) || (Util.isNullOrNil(this.lzV))) {
+      if ((Util.isNullOrNil(this.appId)) || (Util.isNullOrNil(this.ovl))) {
         break label379;
       }
-      parama = this.appId + "://" + this.lzV;
+      parama = this.appId + "://" + this.ovl;
       localObject = new Intent("android.intent.action.VIEW", Uri.parse(parama));
       Log.i("MicroMsg.JsApiLaunchApplication", "launchApplication by opensdk failed, try to launch by scheme(%s).", new Object[] { parama });
       ((Intent)localObject).addFlags(268435456);
@@ -111,18 +111,18 @@ class JsApiLaunchApplication$LaunchApplicationTask
       if (Util.nullAsNil(MMApplicationContext.getPackageName()).equals(parama)) {
         break label392;
       }
-      locala.iMQ = false;
-      locala.lzY = false;
-      locala.lzZ = false;
-      locala.dQW = false;
-      bool1 = h.a(paramContext, (Intent)localObject, null, locala, this.dFP);
+      locala.lCY = false;
+      locala.ovo = false;
+      locala.ovp = false;
+      locala.fKm = false;
+      bool1 = h.a(paramContext, (Intent)localObject, null, locala, this.fyw);
     }
     label392:
     for (;;)
     {
       for (bool2 = bool1;; bool2 = bool1)
       {
-        locala.hj(bool2);
+        locala.hZ(bool2);
         AppMethodBeat.o(45501);
         return;
         label370:
@@ -134,14 +134,14 @@ class JsApiLaunchApplication$LaunchApplicationTask
     }
   }
   
-  public final void bjk()
+  public final void bsK()
   {
     AppMethodBeat.i(45502);
     Log.i("MicroMsg.JsApiLaunchApplication", "runInClientProcess");
-    if (this.lyv != null)
+    if (this.otv != null)
     {
       Log.i("MicroMsg.JsApiLaunchApplication", "runInClientProcess asyncCallback != null");
-      this.lyv.run();
+      this.otv.run();
     }
     AppMethodBeat.o(45502);
   }
@@ -150,11 +150,11 @@ class JsApiLaunchApplication$LaunchApplicationTask
   {
     boolean bool = true;
     AppMethodBeat.i(45503);
-    this.dDG = paramParcel.readInt();
+    this.fwp = paramParcel.readInt();
     this.appId = paramParcel.readString();
-    this.lzV = paramParcel.readString();
+    this.ovl = paramParcel.readString();
     this.extInfo = paramParcel.readString();
-    this.dFP = paramParcel.readBundle();
+    this.fyw = paramParcel.readBundle();
     if (paramParcel.readByte() == 1) {}
     for (;;)
     {
@@ -168,11 +168,11 @@ class JsApiLaunchApplication$LaunchApplicationTask
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(45504);
-    paramParcel.writeInt(this.dDG);
+    paramParcel.writeInt(this.fwp);
     paramParcel.writeString(this.appId);
-    paramParcel.writeString(this.lzV);
+    paramParcel.writeString(this.ovl);
     paramParcel.writeString(this.extInfo);
-    paramParcel.writeBundle(this.dFP);
+    paramParcel.writeBundle(this.fyw);
     if (this.success) {}
     for (paramInt = 1;; paramInt = 0)
     {
@@ -184,7 +184,7 @@ class JsApiLaunchApplication$LaunchApplicationTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.JsApiLaunchApplication.LaunchApplicationTask
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,19 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.content.Intent;
-import com.tencent.luggage.h.f.c;
-import com.tencent.luggage.sdk.g.a;
+import com.tencent.luggage.k.f.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.pluginsdk.wallet.e;
+import com.tencent.mm.plugin.appbrand.v;
 import com.tencent.mm.sdk.platformtools.Log;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class ca
-  extends d<k>
+  extends c<com.tencent.mm.plugin.appbrand.service.c>
 {
-  public static final int CTRL_INDEX = 403;
-  public static final String NAME = "openOfflinePayView";
-  final int lBa;
-  
-  public ca()
-  {
-    AppMethodBeat.i(174758);
-    this.lBa = a.aK(this);
-    AppMethodBeat.o(174758);
-  }
+  public static final int CTRL_INDEX = 192;
+  public static final String NAME = "openSetting";
 }
 
 

@@ -1,35 +1,33 @@
 package com.tencent.mm.plugin.appbrand.xweb_ext.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.o;
 import kotlin.f;
 import kotlin.g;
 import kotlin.g.a.a;
-import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/BaseResApplyAdapterCoreLogic;", "", "()V", "cacheDir", "Lcom/tencent/mm/vfs/VFSFile;", "getCacheDir", "()Lcom/tencent/mm/vfs/VFSFile;", "cacheDir$delegate", "Lkotlin/Lazy;", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/BaseResApplyAdapterCoreLogic;", "", "()V", "cacheDir", "Lcom/tencent/mm/vfs/VFSFile;", "getCacheDir", "()Lcom/tencent/mm/vfs/VFSFile;", "cacheDir$delegate", "Lkotlin/Lazy;", "plugin-appbrand-integration_release"})
 public abstract class b
 {
-  private final f mJQ = g.ah((a)a.oGL);
+  private final f pKI = g.ar((a)a.rIB);
   
-  protected final o cdJ()
+  protected final com.tencent.mm.vfs.q cqW()
   {
-    return (o)this.mJQ.getValue();
+    return (com.tencent.mm.vfs.q)this.pKI.getValue();
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/vfs/VFSFile;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/vfs/VFSFile;", "invoke"})
   static final class a
-    extends q
-    implements a<o>
+    extends kotlin.g.b.q
+    implements a<com.tencent.mm.vfs.q>
   {
-    public static final a oGL;
+    public static final a rIB;
     
     static
     {
-      AppMethodBeat.i(229710);
-      oGL = new a();
-      AppMethodBeat.o(229710);
+      AppMethodBeat.i(271176);
+      rIB = new a();
+      AppMethodBeat.o(271176);
     }
     
     a()

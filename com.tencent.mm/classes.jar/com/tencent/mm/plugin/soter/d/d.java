@@ -12,10 +12,10 @@ import com.tencent.soter.core.c.i;
 
 public final class d
 {
-  public static e flM()
+  public static e gai()
   {
     AppMethodBeat.i(130840);
-    flN();
+    gaj();
     Object localObject2 = MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath());
     if (localObject2 == null)
     {
@@ -33,14 +33,14 @@ public final class d
       return localObject1;
     }
     Log.w("MicroMsg.SoterDeviceInfoManager", "hy: no cpu id and uid retrieved. load again");
-    localObject2 = a.hlo();
+    localObject2 = a.ioN();
     if (localObject2 != null)
     {
-      localObject1 = ((i)localObject2).FhU;
+      localObject1 = ((i)localObject2).Lwz;
       localObject2 = String.valueOf(((i)localObject2).uid);
       if ((!Util.isNullOrNil((String)localObject1)) && (!Util.isNullOrNil((String)localObject2)))
       {
-        kV((String)localObject1, (String)localObject2);
+        lr((String)localObject1, (String)localObject2);
         localObject1 = new e((String)localObject1, (String)localObject2);
         AppMethodBeat.o(130840);
         return localObject1;
@@ -51,7 +51,7 @@ public final class d
     return localObject1;
   }
   
-  public static void flN()
+  public static void gaj()
   {
     AppMethodBeat.i(130841);
     MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath());
@@ -75,7 +75,7 @@ public final class d
     AppMethodBeat.o(130841);
   }
   
-  public static void kV(String paramString1, String paramString2)
+  public static void lr(String paramString1, String paramString2)
   {
     AppMethodBeat.i(130842);
     Object localObject = MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath());
@@ -94,7 +94,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.d.d
  * JD-Core Version:    0.7.0.1
  */

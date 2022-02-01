@@ -1,60 +1,106 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class cln
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String pqv;
+  public LinkedList<clp> Ttd;
+  public LinkedList<Integer> Tte;
+  public int scene;
+  public String sessionId;
+  
+  public cln()
+  {
+    AppMethodBeat.i(209727);
+    this.Ttd = new LinkedList();
+    this.Tte = new LinkedList();
+    AppMethodBeat.o(209727);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(169922);
+    AppMethodBeat.i(209731);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.pqv != null) {
-        paramVarArgs.e(1, this.pqv);
+      if (this.sessionId != null) {
+        paramVarArgs.f(1, this.sessionId);
       }
-      AppMethodBeat.o(169922);
+      paramVarArgs.aY(2, this.scene);
+      paramVarArgs.e(3, 8, this.Ttd);
+      paramVarArgs.e(4, 2, this.Tte);
+      AppMethodBeat.o(209731);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.pqv == null) {
-        break label213;
+      if (this.sessionId == null) {
+        break label443;
       }
     }
-    label213:
-    for (paramInt = g.a.a.b.b.a.f(1, this.pqv) + 0;; paramInt = 0)
+    label443:
+    for (paramInt = g.a.a.b.b.a.g(1, this.sessionId) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(169922);
-      return paramInt;
+      int i = g.a.a.b.b.a.bM(2, this.scene);
+      int j = g.a.a.a.c(3, 8, this.Ttd);
+      int k = g.a.a.a.c(4, 2, this.Tte);
+      AppMethodBeat.o(209731);
+      return paramInt + i + j + k;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.Ttd.clear();
+        this.Tte.clear();
+        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(169922);
+        AppMethodBeat.o(209731);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         cln localcln = (cln)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(169922);
+          AppMethodBeat.o(209731);
           return -1;
+        case 1: 
+          localcln.sessionId = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(209731);
+          return 0;
+        case 2: 
+          localcln.scene = ((g.a.a.a.a)localObject).abFh.AK();
+          AppMethodBeat.o(209731);
+          return 0;
+        case 3: 
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            clp localclp = new clp();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localclp.parseFrom((byte[])localObject);
+            }
+            localcln.Ttd.add(localclp);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(209731);
+          return 0;
         }
-        localcln.pqv = locala.UbS.readString();
-        AppMethodBeat.o(169922);
+        localcln.Tte.add(Integer.valueOf(((g.a.a.a.a)localObject).abFh.AK()));
+        AppMethodBeat.o(209731);
         return 0;
       }
-      AppMethodBeat.o(169922);
+      AppMethodBeat.o(209731);
       return -1;
     }
   }

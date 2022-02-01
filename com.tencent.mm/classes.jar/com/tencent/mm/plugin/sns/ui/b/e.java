@@ -16,36 +16,36 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class e
   extends a
 {
-  private boolean DsW;
-  private float ETS;
-  private AnimatorSet ETT;
-  private ViewOutlineProvider ETU;
-  float auL;
+  private boolean JzI;
+  private float LhU;
+  private AnimatorSet LhV;
+  private ViewOutlineProvider LhW;
+  float yT;
   
   public e(Activity paramActivity, View paramView, Bundle paramBundle, boolean paramBoolean)
   {
     super(paramActivity, paramView, false);
-    AppMethodBeat.i(203876);
-    this.ETU = new ViewOutlineProvider()
+    AppMethodBeat.i(216220);
+    this.LhW = new ViewOutlineProvider()
     {
       public final void getOutline(View paramAnonymousView, Outline paramAnonymousOutline)
       {
-        AppMethodBeat.i(203875);
-        paramAnonymousOutline.setRoundRect(0, 0, paramAnonymousView.getWidth(), paramAnonymousView.getHeight(), e.this.auL);
-        AppMethodBeat.o(203875);
+        AppMethodBeat.i(267635);
+        paramAnonymousOutline.setRoundRect(0, 0, paramAnonymousView.getWidth(), paramAnonymousView.getHeight(), e.this.yT);
+        AppMethodBeat.o(267635);
       }
     };
-    aG(paramBundle);
-    this.ETS = com.tencent.mm.cb.a.fromDPToPix(this.ETH, 8);
-    this.auL = this.ETS;
-    this.DsW = paramBoolean;
+    aC(paramBundle);
+    this.LhU = com.tencent.mm.ci.a.fromDPToPix(this.LhJ, 8);
+    this.yT = this.LhU;
+    this.JzI = paramBoolean;
     Object localObject = this.view;
     ((View)localObject).setClipToOutline(true);
-    ((View)localObject).setOutlineProvider(this.ETU);
+    ((View)localObject).setOutlineProvider(this.LhW);
     paramActivity = ObjectAnimator.ofFloat(localObject, "alpha", new float[] { 0.0F, 1.0F });
     paramActivity.setDuration(400L);
     int i = 90;
-    if (this.DsW) {
+    if (this.JzI) {
       i = -90;
     }
     paramView = ObjectAnimator.ofFloat(localObject, "rotation", new float[] { i, 0.0F });
@@ -60,36 +60,36 @@ public final class e
       f1 = f3;
       if (this.targetHeight != 0)
       {
-        f1 = this.ETM * 1.0F / this.targetWidth;
-        f2 = this.ETL * 1.0F / this.targetHeight;
+        f1 = this.LhO * 1.0F / this.targetWidth;
+        f2 = this.LhN * 1.0F / this.targetHeight;
       }
     }
     paramBundle = ObjectAnimator.ofFloat(localObject, "scaleX", new float[] { f1, 1.0F });
     ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(localObject, "scaleY", new float[] { f2, 1.0F });
     paramBundle.setDuration(400L);
     localObjectAnimator1.setDuration(400L);
-    f1 = this.ETJ;
-    f2 = this.ETL / 2.0F;
-    f3 = this.ETK;
-    f4 = this.ETM / 2.0F;
+    f1 = this.LhL;
+    f2 = this.LhN / 2.0F;
+    f3 = this.LhM;
+    f4 = this.LhO / 2.0F;
     float f5 = this.targetWidth / 2.0F;
     float f6 = this.targetHeight / 2.0F;
     ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(localObject, "translationX", new float[] { f1 + f2 - f5, 0.0F });
     ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(localObject, "translationY", new float[] { f3 + f4 - f6, 0.0F });
     localObjectAnimator2.setDuration(400L);
     localObjectAnimator3.setDuration(400L);
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { this.ETS, 0.0F });
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { this.LhU, 0.0F });
     localValueAnimator.setDuration(200L);
     localValueAnimator.setStartDelay(300L);
     localValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
-        AppMethodBeat.i(203871);
+        AppMethodBeat.i(213097);
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        e.this.auL = f;
-        this.ETV.invalidateOutline();
-        AppMethodBeat.o(203871);
+        e.this.yT = f;
+        this.LhX.invalidateOutline();
+        AppMethodBeat.o(213097);
       }
     });
     localObject = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
@@ -99,58 +99,58 @@ public final class e
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
-        AppMethodBeat.i(203872);
-        if (e.this.ETI != null)
+        AppMethodBeat.i(269373);
+        if (e.this.LhK != null)
         {
-          float f = ((Float)this.ETX.getAnimatedValue()).floatValue();
-          e.this.ETI.bX(f);
+          float f = ((Float)this.LhZ.getAnimatedValue()).floatValue();
+          e.this.LhK.ca(f);
         }
-        AppMethodBeat.o(203872);
+        AppMethodBeat.o(269373);
       }
     });
-    this.ETT = new AnimatorSet();
-    this.ETT.playTogether(new Animator[] { paramActivity, paramView, paramBundle, localObjectAnimator1, localObjectAnimator2, localObjectAnimator3, localValueAnimator, localObject });
-    this.ETT.addListener(new Animator.AnimatorListener()
+    this.LhV = new AnimatorSet();
+    this.LhV.playTogether(new Animator[] { paramActivity, paramView, paramBundle, localObjectAnimator1, localObjectAnimator2, localObjectAnimator3, localValueAnimator, localObject });
+    this.LhV.addListener(new Animator.AnimatorListener()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
       
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(203874);
-        if (e.this.ETI != null) {
-          e.this.ETI.onAnimationEnd();
+        AppMethodBeat.i(226475);
+        if (e.this.LhK != null) {
+          e.this.LhK.onAnimationEnd();
         }
-        AppMethodBeat.o(203874);
+        AppMethodBeat.o(226475);
       }
       
       public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
       
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(203873);
-        if (e.this.ETI != null) {
-          e.this.ETI.onAnimationStart();
+        AppMethodBeat.i(226473);
+        if (e.this.LhK != null) {
+          e.this.LhK.onAnimationStart();
         }
-        AppMethodBeat.o(203873);
+        AppMethodBeat.o(226473);
       }
     });
-    AppMethodBeat.o(203876);
+    AppMethodBeat.o(216220);
   }
   
-  public final void fkj()
+  public final void fYs()
   {
-    AppMethodBeat.i(203877);
-    if ((this.ETT != null) && (!this.ETT.isStarted()))
+    AppMethodBeat.i(216223);
+    if ((this.LhV != null) && (!this.LhV.isStarted()))
     {
-      this.ETT.setStartDelay(0L);
-      this.ETT.start();
+      this.LhV.setStartDelay(0L);
+      this.LhV.start();
     }
-    AppMethodBeat.o(203877);
+    AppMethodBeat.o(216223);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.b.e
  * JD-Core Version:    0.7.0.1
  */

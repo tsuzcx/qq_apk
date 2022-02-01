@@ -6,19 +6,25 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.SparseIntArray;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.b.p;
-import com.tencent.mm.g.a.ad;
-import com.tencent.mm.g.a.hd;
-import com.tencent.mm.g.a.ma;
+import com.tencent.mm.f.a.ae;
+import com.tencent.mm.f.a.hk;
+import com.tencent.mm.f.a.mr;
+import com.tencent.mm.kernel.n;
 import com.tencent.mm.model.z;
+import com.tencent.mm.network.g;
+import com.tencent.mm.plugin.account.model.e;
 import com.tencent.mm.plugin.account.ui.FacebookAuthUI;
+import com.tencent.mm.plugin.setting.b.i;
+import com.tencent.mm.plugin.setting.b.k;
+import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
 import com.tencent.mm.sdk.event.EventCenter;
@@ -43,53 +49,53 @@ public class SettingsMoreSafeUI
   extends MMPreference
   implements i, MStorageEx.IOnStorageChange
 {
-  private SparseIntArray Dba;
-  private String Ddg;
-  private String Ddh;
-  private ProgressDialog gtM;
+  private SparseIntArray JgB;
+  private String JiJ;
+  private String JiK;
+  private ProgressDialog iXX;
   private com.tencent.mm.ui.base.preference.f screen;
   
   public SettingsMoreSafeUI()
   {
     AppMethodBeat.i(74264);
-    this.Ddg = null;
-    this.Dba = new SparseIntArray();
-    this.Dba.put(0, 2131765370);
-    this.Dba.put(-82, 2131765304);
-    this.Dba.put(-83, 2131765301);
-    this.Dba.put(-84, 2131765302);
-    this.Dba.put(-85, 2131765295);
-    this.Dba.put(-86, 2131765306);
+    this.JiJ = null;
+    this.JgB = new SparseIntArray();
+    this.JgB.put(0, b.i.settings_confirm_email_success_tip);
+    this.JgB.put(-82, b.i.setting_unbind_qq_err_one_left);
+    this.JgB.put(-83, b.i.setting_unbind_qq_err_has_unbind);
+    this.JgB.put(-84, b.i.setting_unbind_qq_err_hasbinded);
+    this.JgB.put(-85, b.i.setting_unbind_email_err_bindedbyother);
+    this.JgB.put(-86, b.i.setting_unbind_qq_err_qmail);
     AppMethodBeat.o(74264);
   }
   
-  private void eTj()
+  private void fGn()
   {
     AppMethodBeat.i(74271);
-    Preference localPreference = this.screen.bmg("settings_email_addr");
+    Preference localPreference = this.screen.byG("settings_email_addr");
     Assert.assertNotNull(localPreference);
-    String str = (String)com.tencent.mm.kernel.g.aAh().azQ().get(5, null);
-    Integer localInteger = (Integer)com.tencent.mm.kernel.g.aAh().azQ().get(7, null);
+    String str = (String)com.tencent.mm.kernel.h.aHG().aHp().b(5, null);
+    Integer localInteger = (Integer)com.tencent.mm.kernel.h.aHG().aHp().b(7, null);
     if ((localInteger != null) && ((localInteger.intValue() & 0x2) != 0))
     {
-      localPreference.setSummary(2131765379);
+      localPreference.auI(b.i.settings_email_addr_verified);
       AppMethodBeat.o(74271);
       return;
     }
     if (str != null)
     {
-      localPreference.setSummary(2131765378);
+      localPreference.auI(b.i.settings_email_addr_not_verified);
       AppMethodBeat.o(74271);
       return;
     }
-    localPreference.setSummary(2131765294);
+    localPreference.auI(b.i.setting_unbind);
     AppMethodBeat.o(74271);
   }
   
-  private void eTk()
+  private void fGo()
   {
     AppMethodBeat.i(74273);
-    IconSwitchKeyValuePreference localIconSwitchKeyValuePreference = (IconSwitchKeyValuePreference)this.screen.bmg("settings_phone_security");
+    IconSwitchKeyValuePreference localIconSwitchKeyValuePreference = (IconSwitchKeyValuePreference)this.screen.byG("settings_phone_security");
     if (localIconSwitchKeyValuePreference == null)
     {
       Log.e("MicroMsg.SettingsMoreSafeUI", "phone_security preference is null");
@@ -98,97 +104,97 @@ public class SettingsMoreSafeUI
     }
     if (ChannelUtil.isGPVersion())
     {
-      this.screen.jdMethod_do("settings_phone_security", true);
+      this.screen.dz("settings_phone_security", true);
       AppMethodBeat.o(74273);
       return;
     }
-    if (com.tencent.mm.y.c.axV().a(ar.a.Ogg))
+    if (com.tencent.mm.aa.c.aFn().a(ar.a.Vuw))
     {
-      localIconSwitchKeyValuePreference.alF(0);
+      localIconSwitchKeyValuePreference.aak(0);
       AppMethodBeat.o(74273);
       return;
     }
-    localIconSwitchKeyValuePreference.alF(8);
+    localIconSwitchKeyValuePreference.aak(8);
     AppMethodBeat.o(74273);
   }
   
-  private void eTl()
+  private void fGp()
   {
     AppMethodBeat.i(74274);
-    Preference localPreference = this.screen.bmg("settings_facebook");
+    Preference localPreference = this.screen.byG("settings_facebook");
     if (localPreference == null)
     {
       Log.e("MicroMsg.SettingsMoreSafeUI", "updateFacebook Preference null");
       AppMethodBeat.o(74274);
       return;
     }
-    if ((WeChatBrands.Business.Entries.MeSetSecurityFacebook.banned()) || (!z.aUC()))
+    if ((WeChatBrands.Business.Entries.MeSetSecurityFacebook.banned()) || (!z.bdE()))
     {
-      this.screen.e(localPreference);
+      this.screen.d(localPreference);
       AppMethodBeat.o(74274);
       return;
     }
-    if (!z.aUF())
+    if (!z.bdH())
     {
-      localPreference.setSummary(getString(2131765355));
+      localPreference.aF(getString(b.i.settings_bind_qq_unbind));
       AppMethodBeat.o(74274);
       return;
     }
-    localPreference.setSummary((String)com.tencent.mm.kernel.g.aAh().azQ().get(65826, null));
+    localPreference.aF((String)com.tencent.mm.kernel.h.aHG().aHp().b(65826, null));
     AppMethodBeat.o(74274);
   }
   
-  private void eTm()
+  private void fGq()
   {
     AppMethodBeat.i(74275);
-    Preference localPreference = this.screen.bmg("settings_bind_qq");
+    Preference localPreference = this.screen.byG("settings_bind_qq");
     if (localPreference == null)
     {
       Log.e("MicroMsg.SettingsMoreSafeUI", "updateUin Preference null");
       AppMethodBeat.o(74275);
       return;
     }
-    int i = ((Integer)com.tencent.mm.kernel.g.aAh().azQ().get(9, Integer.valueOf(0))).intValue();
+    int i = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().b(9, Integer.valueOf(0))).intValue();
     if (i == 0)
     {
       Log.i("MicroMsg.SettingsMoreSafeUI", "updateUin 0 Preference");
-      if (Util.getInt(com.tencent.mm.n.h.aqJ().getValue("BindQQSwitch"), 1) != 1) {
-        this.screen.jdMethod_do("settings_uin", true);
+      if (Util.getInt(com.tencent.mm.n.h.axc().getValue("BindQQSwitch"), 1) != 1) {
+        this.screen.dz("settings_uin", true);
       }
     }
     for (;;)
     {
       if (WeChatBrands.Business.Entries.MeSetSecurityQQ.banned()) {
-        this.screen.e(localPreference);
+        this.screen.d(localPreference);
       }
       AppMethodBeat.o(74275);
       return;
-      localPreference.setSummary(2131765355);
+      localPreference.auI(b.i.settings_bind_qq_unbind);
       continue;
-      localPreference.setSummary(new p(i));
+      localPreference.aF(new p(i));
     }
   }
   
   public int getResourceId()
   {
-    return 2132017273;
+    return b.k.settings_pref_more_safe;
   }
   
   public void initView()
   {
     AppMethodBeat.i(74267);
-    setMMTitle(2131765483);
+    setMMTitle(b.i.settings_more_safe);
     this.screen = getPreferenceScreen();
-    if (((Integer)com.tencent.mm.kernel.g.aAh().azQ().get(9, Integer.valueOf(0))).intValue() == 0) {
-      if (Util.getInt(com.tencent.mm.n.h.aqJ().getValue("BindQQSwitch"), 1) != 1)
+    if (((Integer)com.tencent.mm.kernel.h.aHG().aHp().b(9, Integer.valueOf(0))).intValue() == 0) {
+      if (Util.getInt(com.tencent.mm.n.h.axc().getValue("BindQQSwitch"), 1) != 1)
       {
-        this.screen.jdMethod_do("settings_uin", true);
+        this.screen.dz("settings_uin", true);
         Log.i("MicroMsg.SettingsMoreSafeUI", "summerqq BindQQSwitch off");
       }
     }
     for (;;)
     {
-      this.Ddg = com.tencent.mm.n.h.aqJ().getValue("CloseAcctUrl");
+      this.JiJ = com.tencent.mm.n.h.axc().getValue("CloseAcctUrl");
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -219,27 +225,27 @@ public class SettingsMoreSafeUI
     {
       AppMethodBeat.o(74277);
       return;
-      if ((com.tencent.mm.kernel.g.azz() != null) && (com.tencent.mm.kernel.g.azz().iMw != null)) {
-        com.tencent.mm.kernel.g.azz().iMw.fz(false);
+      if ((com.tencent.mm.kernel.h.aGY() != null) && (com.tencent.mm.kernel.h.aGY().lCD != null)) {
+        com.tencent.mm.kernel.h.aGY().lCD.gk(false);
       }
-      paramIntent = new hd();
+      paramIntent = new hk();
       EventCenter.instance.publish(paramIntent);
-      com.tencent.mm.plugin.setting.c.jRu.Xe();
-      com.tencent.mm.kernel.g.aAh().azQ().remove(this);
-      paramIntent = new ma();
-      paramIntent.dRA.status = 0;
-      paramIntent.dRA.bDZ = 3;
+      com.tencent.mm.plugin.setting.c.mIH.abH();
+      com.tencent.mm.kernel.h.aHG().aHp().remove(this);
+      paramIntent = new mr();
+      paramIntent.fKQ.status = 0;
+      paramIntent.fKQ.bnA = 3;
       EventCenter.instance.publish(paramIntent);
-      paramIntent = new ad();
-      paramIntent.dDb.dDc = true;
+      paramIntent = new ae();
+      paramIntent.fvH.fvI = true;
       EventCenter.instance.publish(paramIntent);
       MMEntryLock.unlock("show_whatsnew");
-      com.tencent.mm.kernel.l.s(this, true);
+      n.v(this, true);
       paramIntent = new Intent();
       paramIntent.addFlags(67108864);
       paramIntent.putExtra("Intro_Switch", true);
-      com.tencent.mm.plugin.setting.c.jRt.o(paramIntent, getContext());
-      com.tencent.mm.platformtools.t.Q(this, null);
+      com.tencent.mm.plugin.setting.c.mIG.n(paramIntent, getContext());
+      com.tencent.mm.platformtools.t.O(this, null);
       finish();
     }
   }
@@ -249,7 +255,7 @@ public class SettingsMoreSafeUI
     AppMethodBeat.i(74265);
     super.onCreate(paramBundle);
     initView();
-    com.tencent.mm.kernel.g.azz().a(256, this);
+    com.tencent.mm.kernel.h.aGY().a(256, this);
     AppMethodBeat.o(74265);
   }
   
@@ -257,17 +263,17 @@ public class SettingsMoreSafeUI
   {
     AppMethodBeat.i(74266);
     super.onDestroy();
-    com.tencent.mm.kernel.g.azz().b(256, this);
+    com.tencent.mm.kernel.h.aGY().b(256, this);
     AppMethodBeat.o(74266);
   }
   
   public void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
   {
     AppMethodBeat.i(74272);
-    eTm();
-    eTj();
-    eTl();
-    eTk();
+    fGq();
+    fGn();
+    fGp();
+    fGo();
     AppMethodBeat.o(74272);
   }
   
@@ -299,19 +305,19 @@ public class SettingsMoreSafeUI
     int i;
     if (paramf.equals("settings_email_addr"))
     {
-      paramf = (Integer)com.tencent.mm.kernel.g.aAh().azQ().get(7, null);
+      paramf = (Integer)com.tencent.mm.kernel.h.aHG().aHp().b(7, null);
       if ((paramf != null) && ((paramf.intValue() & 0x2) != 0))
       {
         i = 1;
-        paramf = (String)com.tencent.mm.kernel.g.aAh().azQ().get(5, null);
+        paramf = (String)com.tencent.mm.kernel.h.aHG().aHp().b(5, null);
         if ((i == 0) && (Util.isNullOrNil(paramf))) {
           break label251;
         }
         paramf = new Intent(getContext(), SettingsModifyEmailAddrUI.class);
-        paramf = new com.tencent.mm.hellhoundlib.b.a().bl(paramf);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/plugin/setting/ui/setting/SettingsMoreSafeUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramf.pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsMoreSafeUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramf = new com.tencent.mm.hellhoundlib.b.a().bm(paramf);
+        com.tencent.mm.hellhoundlib.a.a.b(this, paramf.aFh(), "com/tencent/mm/plugin/setting/ui/setting/SettingsMoreSafeUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramf.sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsMoreSafeUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
       for (;;)
       {
@@ -320,36 +326,36 @@ public class SettingsMoreSafeUI
         i = 0;
         break;
         label251:
-        if (this.gtM != null)
+        if (this.iXX != null)
         {
           Log.w("MicroMsg.SettingsMoreSafeUI", "do get email input, but tips dialog has not dismissed");
-          this.gtM.dismiss();
-          this.gtM = null;
+          this.iXX.dismiss();
+          this.iXX = null;
         }
-        paramf = Util.nullAs(com.tencent.mm.platformtools.t.dy(getContext()), "");
-        com.tencent.mm.ui.base.h.a(getContext(), getString(2131765467), paramf, getString(2131765468), 50, new h.b()
+        paramf = Util.nullAs(com.tencent.mm.platformtools.t.dv(getContext()), "");
+        com.tencent.mm.ui.base.h.a(getContext(), getString(b.i.settings_modify_email_addr), paramf, getString(b.i.settings_modify_email_addr_warning), 50, new h.b()
         {
           public final boolean onFinish(final CharSequence paramAnonymousCharSequence)
           {
             AppMethodBeat.i(74263);
             if (!Util.isValidEmail(paramAnonymousCharSequence.toString()))
             {
-              com.tencent.mm.ui.base.h.cD(SettingsMoreSafeUI.this.getContext(), SettingsMoreSafeUI.this.getString(2131767024));
+              com.tencent.mm.ui.base.h.cO(SettingsMoreSafeUI.this.getContext(), SettingsMoreSafeUI.this.getString(b.i.verify_email_err_tip));
               AppMethodBeat.o(74263);
               return false;
             }
-            com.tencent.mm.plugin.setting.c.jRu.WZ();
-            paramAnonymousCharSequence = new com.tencent.mm.plugin.account.model.e(com.tencent.mm.plugin.account.model.e.kir, paramAnonymousCharSequence.toString());
-            com.tencent.mm.kernel.g.azz().a(paramAnonymousCharSequence, 0);
+            com.tencent.mm.plugin.setting.c.mIH.abC();
+            paramAnonymousCharSequence = new e(e.mZR, paramAnonymousCharSequence.toString());
+            com.tencent.mm.kernel.h.aGY().a(paramAnonymousCharSequence, 0);
             SettingsMoreSafeUI localSettingsMoreSafeUI = SettingsMoreSafeUI.this;
             AppCompatActivity localAppCompatActivity = SettingsMoreSafeUI.this.getContext();
-            SettingsMoreSafeUI.this.getString(2131755998);
-            SettingsMoreSafeUI.a(localSettingsMoreSafeUI, com.tencent.mm.ui.base.h.a(localAppCompatActivity, SettingsMoreSafeUI.this.getString(2131765356), true, new DialogInterface.OnCancelListener()
+            SettingsMoreSafeUI.this.getString(b.i.app_tip);
+            SettingsMoreSafeUI.a(localSettingsMoreSafeUI, com.tencent.mm.ui.base.h.a(localAppCompatActivity, SettingsMoreSafeUI.this.getString(b.i.settings_binding), true, new DialogInterface.OnCancelListener()
             {
               public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
               {
                 AppMethodBeat.i(74262);
-                com.tencent.mm.kernel.g.azz().a(paramAnonymousCharSequence);
+                com.tencent.mm.kernel.h.aGY().a(paramAnonymousCharSequence);
                 AppMethodBeat.o(74262);
               }
             }));
@@ -362,7 +368,7 @@ public class SettingsMoreSafeUI
     if (paramf.equals("settings_bind_qq"))
     {
       if (WeChatBrands.Business.Entries.MeSetSecurityQQ.checkAvailable(this)) {
-        com.tencent.mm.plugin.setting.c.jRt.g(new Intent(), this);
+        com.tencent.mm.plugin.setting.c.mIG.g(new Intent(), this);
       }
       AppMethodBeat.o(74270);
       return true;
@@ -371,22 +377,22 @@ public class SettingsMoreSafeUI
     if (paramf.equals("settings_phone_security"))
     {
       Intent localIntent = new Intent();
-      if (com.tencent.mm.y.c.axV().a(ar.a.Ogg))
+      if (com.tencent.mm.aa.c.aFn().a(ar.a.Vuw))
       {
         i = 1;
-        com.tencent.mm.y.c.axV().b(ar.a.Ogg, false);
-        ((IconPreference)paramPreference).alF(8);
-        j = ((Integer)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.Ogi, Integer.valueOf(0))).intValue();
-        com.tencent.mm.plugin.report.service.h.CyF.a(10939, new Object[] { Integer.valueOf(j) });
+        com.tencent.mm.aa.c.aFn().b(ar.a.Vuw, false);
+        ((IconPreference)paramPreference).aak(8);
+        j = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.Vuy, Integer.valueOf(0))).intValue();
+        com.tencent.mm.plugin.report.service.h.IzE.a(10939, new Object[] { Integer.valueOf(j) });
         if (!Util.isServiceRunning(this, "com.tencent.server.back.BackEngine")) {
           break label569;
         }
-        paramf = getString(2131764104, new Object[] { Integer.valueOf(j), Integer.valueOf(1), Integer.valueOf(i) });
+        paramf = getString(b.i.qqpimsecure_jump_url, new Object[] { Integer.valueOf(j), Integer.valueOf(1), Integer.valueOf(i) });
         label511:
         localIntent.putExtra("rawUrl", paramf);
         localIntent.putExtra("show_bottom", false);
         localIntent.putExtra("showShare", false);
-        com.tencent.mm.br.c.b(getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
+        com.tencent.mm.by.c.b(getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
       }
     }
     for (;;)
@@ -396,30 +402,30 @@ public class SettingsMoreSafeUI
       i = 0;
       break;
       label569:
-      paramf = getString(2131764104, new Object[] { Integer.valueOf(j), Integer.valueOf(0), Integer.valueOf(i) });
+      paramf = getString(b.i.qqpimsecure_jump_url, new Object[] { Integer.valueOf(j), Integer.valueOf(0), Integer.valueOf(i) });
       break label511;
       if (paramf.equals("settings_delete_account"))
       {
         paramf = new Intent();
-        if (!Util.isNullOrNil(this.Ddg))
+        if (!Util.isNullOrNil(this.JiJ))
         {
-          paramf.putExtra("rawUrl", this.Ddg + "&lang=" + LocaleUtil.getCurrentLanguage(getContext()));
+          paramf.putExtra("rawUrl", this.JiJ + "&lang=" + LocaleUtil.getCurrentLanguage(getContext()));
           paramf.putExtra("showShare", true);
-          paramf.putExtra("hardcode_jspermission", JsapiPermissionWrapper.Kzm);
-          com.tencent.mm.br.c.b(getContext(), "webview", ".ui.tools.WebViewUI", paramf, 2);
+          paramf.putExtra("hardcode_jspermission", JsapiPermissionWrapper.RBc);
+          com.tencent.mm.by.c.b(getContext(), "webview", ".ui.tools.WebViewUI", paramf, 2);
         }
       }
       else if (paramf.equals("settings_dump_personal_data"))
       {
         paramf = new Intent();
-        if (!Util.isNullOrNil(this.Ddh))
+        if (!Util.isNullOrNil(this.JiK))
         {
-          paramf.putExtra("rawUrl", this.Ddh);
+          paramf.putExtra("rawUrl", this.JiK);
           paramf.putExtra("showShare", false);
           paramf.putExtra("needRedirect", false);
           paramf.putExtra("neverGetA8Key", false);
-          paramf.putExtra("hardcode_jspermission", JsapiPermissionWrapper.Kzm);
-          com.tencent.mm.br.c.b(getContext(), "webview", ".ui.tools.WebViewUI", paramf);
+          paramf.putExtra("hardcode_jspermission", JsapiPermissionWrapper.RBc);
+          com.tencent.mm.by.c.b(getContext(), "webview", ".ui.tools.WebViewUI", paramf);
         }
       }
     }
@@ -428,28 +434,28 @@ public class SettingsMoreSafeUI
   public void onResume()
   {
     AppMethodBeat.i(74268);
-    eTm();
-    eTj();
-    eTl();
-    Object localObject = com.tencent.mm.n.h.aqJ().getValue("ShowExportUserDataEntry");
+    fGq();
+    fGn();
+    fGp();
+    Object localObject = com.tencent.mm.n.h.axc().getValue("ShowExportUserDataEntry");
     if (!Util.isNullOrNil((String)localObject)) {
-      this.Ddh = ((String)localObject);
+      this.JiK = ((String)localObject);
     }
     for (;;)
     {
-      eTk();
-      localObject = this.screen.bmg("settings_about_domainmail");
-      this.screen.e((Preference)localObject);
-      if (Util.isNullOrNil(this.Ddg))
+      fGo();
+      localObject = this.screen.byG("settings_about_domainmail");
+      this.screen.d((Preference)localObject);
+      if (Util.isNullOrNil(this.JiJ))
       {
-        localObject = this.screen.bmg("settings_delete_account");
-        this.screen.e((Preference)localObject);
+        localObject = this.screen.byG("settings_delete_account");
+        this.screen.d((Preference)localObject);
       }
       super.onResume();
       AppMethodBeat.o(74268);
       return;
-      this.Ddh = "";
-      this.screen.jdMethod_do("settings_dump_personal_data", true);
+      this.JiK = "";
+      this.screen.dz("settings_dump_personal_data", true);
     }
   }
   
@@ -457,28 +463,28 @@ public class SettingsMoreSafeUI
   {
     AppMethodBeat.i(74276);
     Log.d("MicroMsg.SettingsMoreSafeUI", "onSceneEnd " + paramInt1 + " errCode " + paramInt2 + " errMsg " + paramString + "  " + paramq.getType());
-    if (this.gtM != null)
+    if (this.iXX != null)
     {
-      this.gtM.dismiss();
-      this.gtM = null;
+      this.iXX.dismiss();
+      this.iXX = null;
     }
     int i;
     if (paramq.getType() == 256)
     {
-      if (((paramInt1 != 0) || (paramInt2 != 0)) && (com.tencent.mm.plugin.setting.c.jRu.a(this, paramInt1, paramInt2, paramString)))
+      if (((paramInt1 != 0) || (paramInt2 != 0)) && (com.tencent.mm.plugin.setting.c.mIH.a(this, paramInt1, paramInt2, paramString)))
       {
         AppMethodBeat.o(74276);
         return;
       }
-      i = this.Dba.get(paramInt2);
-      paramq = getString(2131765369, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      i = this.JgB.get(paramInt2);
+      paramq = getString(b.i.settings_confirm_email_fail_tip, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       paramString = paramq;
       if (i == 0) {}
     }
     try
     {
       paramString = getString(i);
-      com.tencent.mm.ui.base.h.cD(getContext(), paramString);
+      com.tencent.mm.ui.base.h.cO(getContext(), paramString);
       AppMethodBeat.o(74276);
       return;
     }
@@ -501,7 +507,7 @@ public class SettingsMoreSafeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsMoreSafeUI
  * JD-Core Version:    0.7.0.1
  */

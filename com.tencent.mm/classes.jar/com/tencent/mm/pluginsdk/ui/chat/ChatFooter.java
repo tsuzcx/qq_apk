@@ -26,18 +26,15 @@ import android.os.Message;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputFilter.LengthFilter;
+import android.text.SpanWatcher;
 import android.text.Spannable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.util.Pair;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
 import android.view.DisplayCutout;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
@@ -45,7 +42,6 @@ import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
 import android.view.View.OnFocusChangeListener;
 import android.view.View.OnKeyListener;
-import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -73,16 +69,26 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.R.a;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.j;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
+import com.tencent.mm.an.t;
 import com.tencent.mm.api.ad;
 import com.tencent.mm.chatroom.d.aa;
 import com.tencent.mm.compatible.util.q;
-import com.tencent.mm.g.a.rk;
-import com.tencent.mm.g.b.a.lj;
-import com.tencent.mm.g.c.eo;
+import com.tencent.mm.f.a.sj;
+import com.tencent.mm.f.b.a.al;
+import com.tencent.mm.f.b.a.og;
+import com.tencent.mm.f.c.et;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.cl;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.cm;
 import com.tencent.mm.model.z;
 import com.tencent.mm.modelvoiceaddr.g.b;
 import com.tencent.mm.plugin.expt.b.b.a;
@@ -90,8 +96,6 @@ import com.tencent.mm.plugin.groupsolitaire.PluginGroupSolitaire;
 import com.tencent.mm.plugin.groupsolitaire.ui.d.b;
 import com.tencent.mm.plugin.groupsolitaire.ui.d.c;
 import com.tencent.mm.plugin.groupsolitaire.ui.d.d;
-import com.tencent.mm.plugin.secdata.ui.SecDataUIC;
-import com.tencent.mm.plugin.secdata.ui.SecDataUIC.a;
 import com.tencent.mm.plugin.transvoice.ui.LanguageChoiceLayout;
 import com.tencent.mm.plugin.transvoice.ui.LanguageChoiceLayout.4;
 import com.tencent.mm.plugin.transvoice.ui.LanguageChoiceLayout.a;
@@ -99,14 +103,16 @@ import com.tencent.mm.plugin.transvoice.ui.SoundWaveView;
 import com.tencent.mm.plugin.transvoice.ui.SoundWaveView.d;
 import com.tencent.mm.plugin.transvoice.ui.b.d;
 import com.tencent.mm.plugin.websearch.PluginWebSearch;
+import com.tencent.mm.pluginsdk.model.app.af;
 import com.tencent.mm.pluginsdk.model.app.ap;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel.a;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k.a;
-import com.tencent.mm.protocal.protobuf.buv;
-import com.tencent.mm.protocal.protobuf.czj;
-import com.tencent.mm.protocal.protobuf.egj;
+import com.tencent.mm.pointers.PInt;
+import com.tencent.mm.protocal.protobuf.ccn;
+import com.tencent.mm.protocal.protobuf.diw;
+import com.tencent.mm.protocal.protobuf.eql;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
@@ -125,19 +131,20 @@ import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.ca;
 import com.tencent.mm.ui.MMFragment;
-import com.tencent.mm.ui.at;
 import com.tencent.mm.ui.au;
-import com.tencent.mm.ui.av;
-import com.tencent.mm.ui.base.u;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.ay;
+import com.tencent.mm.ui.base.w;
 import com.tencent.mm.ui.blur.BlurView;
-import com.tencent.mm.ui.chatting.d.ab.a;
-import com.tencent.mm.ui.chatting.d.ab.c;
-import com.tencent.mm.ui.chatting.d.b.r;
+import com.tencent.mm.ui.chatting.d.ac.a;
+import com.tencent.mm.ui.chatting.d.ac.c;
 import com.tencent.mm.ui.chatting.view.MMChattingListView;
+import com.tencent.mm.ui.u;
 import com.tencent.mm.ui.widget.MMEditText.d;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
 import com.tencent.mm.ui.widget.edittext.a.c;
@@ -152,258 +159,263 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import kotlin.g.b.z.f;
+import kotlin.g.b.aa.f;
+import kotlin.g.b.p;
 
 public class ChatFooter
   extends FrameLayout
-  implements com.tencent.mm.plugin.websearch.a.a.a, h.a, com.tencent.mm.ui.tools.g
+  implements com.tencent.mm.plugin.websearch.a.a.a, h.a, com.tencent.mm.ui.tools.h
 {
-  private static com.tencent.mm.plugin.websearch.a.a.c KiM;
-  private static int KjB;
-  public static final String KlG;
-  private static final int[] Klv;
-  private static final int[] Klw;
+  private static com.tencent.mm.plugin.websearch.a.a.c RjA;
+  private static int Rko;
+  private static final int[] Rmi;
+  private static final int[] Rmj;
+  public static final String Rmt;
   private static int count;
   private final long ANIMATION_DURATION;
-  public com.tencent.mm.ui.widget.cedit.api.c ECK;
-  public com.tencent.mm.ui.base.p FQS;
-  private TextView FQT;
-  private ImageView FQU;
-  public View FQV;
-  private int GtE;
-  com.tencent.mm.plugin.transvoice.a.b GvE;
-  private String GvJ;
-  private int GvK;
-  private MTimerHandler GvL;
-  private boolean GvM;
-  private MMHandler GvO;
-  private com.tencent.mm.modelvoiceaddr.b.b GvX;
-  private List<String> GvY;
-  private int GyD;
-  private int IFI;
-  f KbA;
-  public n Kdp;
-  public boolean Kds;
-  private i KiA;
-  public m KiB;
-  private com.tencent.mm.plugin.groupsolitaire.ui.d KiC;
-  private b KiD;
-  private g KiE;
-  private f KiF;
-  public final a KiG;
-  public boolean KiH;
-  private boolean KiI;
-  public boolean KiJ;
-  private boolean KiK;
-  private ImageView KiL;
-  public ViewGroup KiN;
-  private TextView KiO;
-  private View KiP;
-  private InputMethodManager KiQ;
-  private int KiR;
-  private boolean KiS;
-  private boolean KiT;
-  private boolean KiU;
-  public boolean KiV;
-  public boolean KiW;
-  private boolean KiX;
-  public int KiY;
-  private int KiZ;
-  public String Kij;
-  public AppPanel Kik;
-  public TextView Kil;
-  private Button Kim;
-  public ImageButton Kin;
-  private View Kio;
-  public ChatFooterBottom Kip;
-  private TextView Kiq;
-  public ImageButton Kir;
-  public ImageView Kis;
-  public ImageButton Kit;
-  public MaxHeightScrollView Kiu;
-  private com.tencent.mm.ui.widget.a.d Kiv;
-  public LinearLayout Kiw;
-  public RelativeLayout Kix;
-  private TextView Kiy;
-  private WeImageView Kiz;
-  private Animation KjA;
-  public ViewGroup KjC;
-  private View KjD;
-  private BlurView KjE;
-  private View KjF;
-  private View KjG;
-  private ImageView KjH;
-  private ImageView KjI;
-  private View KjJ;
-  private TextView KjK;
-  private ImageView KjL;
-  private View KjM;
-  private View KjN;
-  private WeImageView KjO;
-  private TextView KjP;
-  private View KjQ;
-  private WeImageView KjR;
-  private TextView KjS;
-  private View KjT;
-  private BlurView KjU;
-  private com.tencent.mm.plugin.transvoice.ui.b KjV;
-  private com.tencent.mm.plugin.transvoice.a.a KjW;
-  private com.tencent.mm.modelvoiceaddr.h KjX;
-  public com.tencent.mm.ui.base.p KjY;
-  private com.tencent.mm.plugin.transvoice.a.c KjZ;
-  private ChattingScrollLayout Kja;
-  private boolean Kjb;
-  private int Kjc;
-  private int Kjd;
-  private boolean Kje;
-  public boolean Kjf;
-  private boolean Kjg;
-  private int Kjh;
-  private boolean Kji;
-  private int Kjj;
-  private int Kjk;
-  private int Kjl;
-  private int Kjm;
-  private boolean Kjn;
-  private String Kjo;
-  private ab.c Kjp;
-  private ab.a Kjq;
-  private d.c Kjr;
-  com.tencent.mm.g.b.a.j Kjs;
-  public c Kjt;
-  public d Kju;
-  private m.a Kjv;
-  private boolean Kjw;
-  public MMFragment Kjx;
-  public b Kjy;
-  private Animation Kjz;
-  private WeImageView KkA;
-  private View KkB;
-  private View KkC;
-  private ViewGroup KkD;
-  private View KkE;
-  private View KkF;
-  private WeImageView KkG;
-  private WeImageView KkH;
-  private View KkI;
-  private View KkJ;
-  private WeImageView KkK;
-  private ViewGroup KkL;
-  private View KkM;
-  private View KkN;
-  private View KkO;
-  private WeImageView KkP;
-  private View KkQ;
-  private int KkR;
-  private int KkS;
-  private boolean KkT;
-  private ChatFooterPanel.a KkU;
-  private AppPanel.b KkV;
-  private b KkW;
-  public i KkX;
-  private int KkY;
-  private boolean KkZ;
-  private l Kka;
-  private j Kkb;
-  private k Kkc;
-  private boolean Kkd;
-  private boolean Kke;
-  public boolean Kkf;
-  private float Kkg;
-  private com.tencent.mm.ui.base.p Kkh;
-  private View Kki;
-  private View Kkj;
-  private ViewGroup Kkk;
-  private EditText Kkl;
-  private SoundWaveView Kkm;
-  private ImageView Kkn;
-  private ViewGroup Kko;
-  private TextView Kkp;
-  private WeImageView Kkq;
-  public LanguageChoiceLayout Kkr;
-  private TextView Kks;
-  private ViewGroup Kkt;
-  private TextView Kku;
-  private ViewGroup Kkv;
-  private ViewGroup Kkw;
-  private View Kkx;
-  private View Kky;
-  private WeImageView Kkz;
-  private final int KlA;
-  private volatile boolean KlB;
-  private MMHandler KlC;
-  private boolean KlD;
-  private int KlE;
-  private boolean KlF;
-  private int KlH;
-  private View KlI;
-  private int KlJ;
-  private int KlK;
-  private int KlL;
-  private int KlM;
-  private int KlN;
-  private int KlO;
-  private Runnable KlP;
-  private Runnable KlQ;
-  private int KlR;
-  private int KlS;
-  e KlT;
-  e KlU;
-  private Map<Integer, String> KlV;
-  private boolean KlW;
-  private int Kla;
-  private TextWatcher Klb;
-  ValueAnimator Klc;
-  ValueAnimator Kld;
-  ValueAnimator Kle;
-  ValueAnimator Klf;
-  ValueAnimator Klg;
-  ValueAnimator.AnimatorUpdateListener Klh;
-  private int[] Kli;
-  private final int Klj;
-  private final int Klk;
-  private final int Kll;
-  private final int Klm;
-  private final int Kln;
-  private final int Klo;
-  private final float Klp;
-  private int Klq;
-  private int Klr;
-  private int Kls;
-  private int Klt;
-  private int Klu;
-  private int Klx;
-  private boolean Kly;
-  private final int Klz;
+  public boolean BSf;
+  public com.tencent.mm.ui.widget.cedit.api.c KQB;
+  public com.tencent.mm.ui.base.r MkT;
+  private TextView MkU;
+  private ImageView MkV;
+  public View MkW;
+  private int NgX;
+  com.tencent.mm.plugin.transvoice.a.b NiX;
+  private String Njc;
+  private int Njd;
+  private MTimerHandler Nje;
+  private boolean Njf;
+  private MMHandler Njh;
+  private com.tencent.mm.modelvoiceaddr.b.b Njq;
+  private List<String> Njr;
+  private int Nmf;
+  private int PAa;
+  f Rcf;
+  public n RdV;
+  public boolean RdY;
+  public String RiT;
+  public AppPanel RiU;
+  public TextView RiV;
+  private Button RiW;
+  public ImageButton RiX;
+  private View RiY;
+  public ChatFooterBottom RiZ;
+  public ViewGroup RjB;
+  private TextView RjC;
+  private View RjD;
+  private InputMethodManager RjE;
+  private int RjF;
+  private boolean RjG;
+  private boolean RjH;
+  private boolean RjI;
+  public boolean RjJ;
+  public boolean RjK;
+  private boolean RjL;
+  private int RjM;
+  private ChattingScrollLayout RjN;
+  private boolean RjO;
+  private int RjP;
+  private int RjQ;
+  private boolean RjR;
+  public boolean RjS;
+  private boolean RjT;
+  private int RjU;
+  private boolean RjV;
+  private int RjW;
+  private int RjX;
+  private int RjY;
+  private int RjZ;
+  private TextView Rja;
+  public ImageButton Rjb;
+  public ImageView Rjc;
+  public ImageButton Rjd;
+  public MaxHeightScrollView Rje;
+  private com.tencent.mm.ui.widget.a.d Rjf;
+  public LinearLayout Rjg;
+  public RelativeLayout Rjh;
+  private RelativeLayout Rji;
+  private TextView Rjj;
+  private ImageView Rjk;
+  private TextView Rjl;
+  private WeImageView Rjm;
+  private i Rjn;
+  public m Rjo;
+  private com.tencent.mm.plugin.groupsolitaire.ui.d Rjp;
+  private b Rjq;
+  private g Rjr;
+  private f Rjs;
+  public final a Rjt;
+  public boolean Rju;
+  private boolean Rjv;
+  public boolean Rjw;
+  private boolean Rjx;
+  private boolean Rjy;
+  private ImageView Rjz;
+  private View RkA;
+  private WeImageView RkB;
+  private TextView RkC;
+  private View RkD;
+  private WeImageView RkE;
+  private TextView RkF;
+  private View RkG;
+  private BlurView RkH;
+  private com.tencent.mm.plugin.transvoice.ui.b RkI;
+  private com.tencent.mm.plugin.transvoice.a.a RkJ;
+  private com.tencent.mm.modelvoiceaddr.h RkK;
+  public com.tencent.mm.ui.base.r RkL;
+  private com.tencent.mm.plugin.transvoice.a.c RkM;
+  private l RkN;
+  private j RkO;
+  private k RkP;
+  private boolean RkQ;
+  private boolean RkR;
+  public boolean RkS;
+  private float RkT;
+  private com.tencent.mm.ui.base.r RkU;
+  private View RkV;
+  private View RkW;
+  private ViewGroup RkX;
+  private EditText RkY;
+  private SoundWaveView RkZ;
+  private boolean Rka;
+  private String Rkb;
+  private ac.c Rkc;
+  private ac.a Rkd;
+  private d.c Rke;
+  com.tencent.mm.f.b.a.m Rkf;
+  public c Rkg;
+  public d Rkh;
+  private m.a Rki;
+  private boolean Rkj;
+  public MMFragment Rkk;
+  public b Rkl;
+  private Animation Rkm;
+  private Animation Rkn;
+  public ViewGroup Rkp;
+  private View Rkq;
+  private BlurView Rkr;
+  private View Rks;
+  private View Rkt;
+  private ImageView Rku;
+  private ImageView Rkv;
+  private View Rkw;
+  private TextView Rkx;
+  private ImageView Rky;
+  private View Rkz;
+  private View RlA;
+  private View RlB;
+  private WeImageView RlC;
+  private View RlD;
+  private int RlE;
+  private int RlF;
+  private boolean RlG;
+  private ChatFooterPanel.a RlH;
+  private AppPanel.b RlI;
+  private b RlJ;
+  public i RlK;
+  private int RlL;
+  private boolean RlM;
+  private int RlN;
+  private TextWatcher RlO;
+  ValueAnimator RlP;
+  ValueAnimator RlQ;
+  ValueAnimator RlR;
+  ValueAnimator RlS;
+  ValueAnimator RlT;
+  ValueAnimator.AnimatorUpdateListener RlU;
+  private int[] RlV;
+  private final int RlW;
+  private final int RlX;
+  private final int RlY;
+  private final int RlZ;
+  private ImageView Rla;
+  private ViewGroup Rlb;
+  private TextView Rlc;
+  private WeImageView Rld;
+  public LanguageChoiceLayout Rle;
+  private TextView Rlf;
+  private ViewGroup Rlg;
+  private TextView Rlh;
+  private ViewGroup Rli;
+  private ViewGroup Rlj;
+  private View Rlk;
+  private View Rll;
+  private WeImageView Rlm;
+  private WeImageView Rln;
+  private View Rlo;
+  private View Rlp;
+  private ViewGroup Rlq;
+  private View Rlr;
+  private View Rls;
+  private WeImageView Rlt;
+  private WeImageView Rlu;
+  private View Rlv;
+  private View Rlw;
+  private WeImageView Rlx;
+  private ViewGroup Rly;
+  private View Rlz;
+  private int RmA;
+  private int RmB;
+  private Runnable RmC;
+  private Runnable RmD;
+  private int RmE;
+  private int RmF;
+  e RmG;
+  e RmH;
+  private Map<Integer, String> RmI;
+  private boolean RmJ;
+  private final int Rma;
+  private final int Rmb;
+  private final float Rmc;
+  private int Rmd;
+  private int Rme;
+  private int Rmf;
+  private int Rmg;
+  private int Rmh;
+  private int Rmk;
+  private boolean Rml;
+  private final int Rmm;
+  private final int Rmn;
+  private volatile boolean Rmo;
+  private MMHandler Rmp;
+  private boolean Rmq;
+  private int Rmr;
+  private boolean Rms;
+  private int Rmu;
+  private View Rmv;
+  private int Rmw;
+  private int Rmx;
+  private int Rmy;
+  private int Rmz;
   private Activity activity;
-  private String dRL;
-  private boolean gYo;
-  private com.tencent.mm.ui.tools.h gyh;
-  public Button han;
-  private ViewGroup jLy;
-  private View jxm;
+  private String fLi;
+  private View fyN;
+  public int jJL;
+  private boolean jJo;
+  public Button jLo;
+  public ChatFooterPanel jPN;
+  private com.tencent.mm.ui.tools.i jij;
+  private ViewGroup mCC;
   public final MMHandler mHandler;
   private String mSessionId;
   private int maxHeight;
-  private int oXi;
-  private boolean qPk;
-  private final MMHandler qPx;
-  public ChatFooterPanel rum;
-  public View teZ;
-  private ImageView tfa;
-  public View tfb;
-  public View tfc;
+  private int pIk;
   private String toUser;
-  private boolean wxq;
-  public boolean xfU;
+  private final MMHandler urD;
+  private boolean urq;
+  public View wLn;
+  private ImageView wLo;
+  public View wLp;
+  public View wLq;
+  private boolean zQA;
   
   static
   {
     AppMethodBeat.i(31717);
     count = 0;
-    Klv = new int[] { 0, 15, 30, 45, 60, 75, 90, 95, 100 };
-    Klw = new int[] { 2131689550, 2131689551, 2131689552, 2131689553, 2131689554, 2131689555, 2131689556, 2131689557 };
-    KlG = MMApplicationContext.getPackageName() + "chat_footer_sp";
+    Rmi = new int[] { 0, 15, 30, 45, 60, 75, 90, 95, 100 };
+    Rmj = new int[] { R.k.amp1, R.k.amp2, R.k.amp3, R.k.amp4, R.k.amp5, R.k.amp6, R.k.amp7, R.k.amp8 };
+    Rmt = MMApplicationContext.getPackageName() + "chat_footer_sp";
     AppMethodBeat.o(31717);
   }
   
@@ -416,45 +428,46 @@ public class ChatFooter
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(31573);
-    this.jxm = null;
-    this.ECK = null;
-    this.han = null;
-    this.Kil = null;
-    this.KiE = null;
-    this.KiF = null;
-    this.KiG = new a((byte)0);
-    this.KiH = false;
-    this.KiI = false;
-    this.KiJ = false;
-    this.KiK = false;
-    this.qPk = false;
-    this.KiT = false;
-    this.KiU = false;
-    this.KiV = false;
-    this.Kds = false;
-    this.KiW = false;
-    this.KiX = true;
-    this.wxq = false;
-    this.KiY = 0;
-    this.KiZ = -1;
-    this.Kjd = 0;
-    this.xfU = false;
-    this.Kje = false;
-    this.Kjf = true;
-    this.Kjg = false;
-    this.Kjh = 0;
-    this.Kji = false;
-    this.Kjn = false;
-    this.Kjo = com.tencent.mm.plugin.fts.a.d.Nj(73);
-    this.mSessionId = com.tencent.mm.plugin.fts.a.d.Nj(73);
-    this.Kjp = null;
-    this.Kjq = new ab.a()
+    this.fyN = null;
+    this.KQB = null;
+    this.jLo = null;
+    this.RiV = null;
+    this.Rjr = null;
+    this.Rjs = null;
+    this.Rjt = new a((byte)0);
+    this.Rju = false;
+    this.Rjv = false;
+    this.Rjw = false;
+    this.Rjx = false;
+    this.Rjy = false;
+    this.urq = false;
+    this.RjH = false;
+    this.RjI = false;
+    this.RjJ = false;
+    this.RdY = false;
+    this.RjK = false;
+    this.RjL = true;
+    this.zQA = false;
+    this.jJL = 0;
+    this.RjM = -1;
+    this.RjQ = 0;
+    this.BSf = false;
+    this.RjR = false;
+    this.RjS = true;
+    this.RjT = false;
+    this.RjU = 0;
+    this.RjV = false;
+    this.Rka = false;
+    this.Rkb = com.tencent.mm.plugin.fts.a.d.Sx(73);
+    this.mSessionId = com.tencent.mm.plugin.fts.a.d.Sx(73);
+    this.Rkc = null;
+    this.Rkd = new ac.a()
     {
       public final void hide()
       {
         AppMethodBeat.i(184906);
         if (ChatFooter.a(ChatFooter.this) != null) {
-          ChatFooter.a(ChatFooter.this).setBackgroundResource(2131233330);
+          ChatFooter.a(ChatFooter.this).setBackgroundResource(R.g.list_item_top_normal);
         }
         AppMethodBeat.o(184906);
       }
@@ -463,19 +476,19 @@ public class ChatFooter
       {
         AppMethodBeat.i(184905);
         if (ChatFooter.a(ChatFooter.this) != null) {
-          ChatFooter.a(ChatFooter.this).setBackgroundResource(2131233331);
+          ChatFooter.a(ChatFooter.this).setBackgroundResource(R.g.list_item_top_normal_no_line);
         }
         AppMethodBeat.o(184905);
       }
     };
-    this.Kjr = new d.c()
+    this.Rke = new d.c()
     {
-      public final int dYg()
+      public final int eBE()
       {
         AppMethodBeat.i(185759);
         if (ChatFooter.b(ChatFooter.this) != null)
         {
-          int i = ChatFooter.b(ChatFooter.this).dYg();
+          int i = ChatFooter.b(ChatFooter.this).eBE();
           AppMethodBeat.o(185759);
           return i;
         }
@@ -483,7 +496,7 @@ public class ChatFooter
         return 0;
       }
       
-      public final boolean dYh()
+      public final boolean eBF()
       {
         AppMethodBeat.i(185760);
         if (ChatFooter.c(ChatFooter.this) == 0)
@@ -495,13 +508,13 @@ public class ChatFooter
         return false;
       }
     };
-    this.Kjs = new com.tencent.mm.g.b.a.j();
-    this.Kjv = new m.a()
+    this.Rkf = new com.tencent.mm.f.b.a.m();
+    this.Rki = new m.a()
     {
       public final void clear()
       {
         AppMethodBeat.i(185778);
-        ChatFooter.this.dYi();
+        ChatFooter.this.eBG();
         AppMethodBeat.o(185778);
       }
     };
@@ -532,66 +545,66 @@ public class ChatFooter
         }
       }
     };
-    this.Kjw = false;
-    this.gYo = false;
-    paramAttributeSet = com.tencent.mm.plugin.transvoice.a.c.Guc;
-    this.KjZ = com.tencent.mm.plugin.transvoice.a.c.fAu();
-    this.Kka = l.KmL;
-    this.Kkb = j.KmD;
-    this.Kkc = k.KmH;
-    this.Kkd = false;
-    this.Kke = false;
-    this.Kkf = false;
-    this.Kkg = 0.5F;
-    this.KkT = true;
-    this.KkU = new ChatFooterPanel.a()
+    this.Rkj = false;
+    this.jJo = false;
+    paramAttributeSet = com.tencent.mm.plugin.transvoice.a.c.Nhv;
+    this.RkM = com.tencent.mm.plugin.transvoice.a.c.gsv();
+    this.RkN = l.Rnx;
+    this.RkO = j.Rnp;
+    this.RkP = k.Rnt;
+    this.RkQ = false;
+    this.RkR = false;
+    this.RkS = false;
+    this.RkT = 0.5F;
+    this.RlG = true;
+    this.RlH = new ChatFooterPanel.a()
     {
-      public final void aHC()
+      public final void aDN()
       {
-        AppMethodBeat.i(232243);
-        ChatFooter.as(ChatFooter.this);
-        ChatFooter.aw(ChatFooter.this);
-        ChatFooter.A(ChatFooter.this).setVisibility(8);
+        AppMethodBeat.i(275734);
+        ChatFooter.at(ChatFooter.this);
+        ChatFooter.au(ChatFooter.this).setVisibility(0);
+        ChatFooter.av(ChatFooter.this).setVisibility(0);
+        ChatFooter.B(ChatFooter.this).setVisibility(8);
         ChatFooter.a(ChatFooter.this, true);
-        ChatFooter.av(ChatFooter.this);
+        ChatFooter.c(ChatFooter.this, R.g.dnf);
+        if (ChatFooter.k(ChatFooter.this) != null) {
+          ChatFooter.k(ChatFooter.this).performClick();
+        }
+        AppMethodBeat.o(275734);
+      }
+      
+      public final void aDO()
+      {
+        AppMethodBeat.i(275741);
+        ChatFooter.at(ChatFooter.this);
+        ChatFooter.aw(ChatFooter.this);
+        ChatFooter.B(ChatFooter.this).setVisibility(8);
+        ChatFooter.a(ChatFooter.this, true);
+        ChatFooter.c(ChatFooter.this, R.g.dnf);
         InputConnection localInputConnection = ChatFooter.d(ChatFooter.this).getInputConnection();
         if (localInputConnection != null)
         {
           localInputConnection.sendKeyEvent(new KeyEvent(0, 67));
           localInputConnection.sendKeyEvent(new KeyEvent(1, 67));
         }
-        ChatFooter.this.Kjs.ekh -= 1L;
-        AppMethodBeat.o(232243);
-      }
-      
-      public final void aHD()
-      {
-        AppMethodBeat.i(232241);
-        ChatFooter.as(ChatFooter.this);
-        ChatFooter.at(ChatFooter.this).setVisibility(0);
-        ChatFooter.au(ChatFooter.this).setVisibility(0);
-        ChatFooter.A(ChatFooter.this).setVisibility(8);
-        ChatFooter.a(ChatFooter.this, true);
-        ChatFooter.av(ChatFooter.this);
-        if (ChatFooter.k(ChatFooter.this) != null) {
-          ChatFooter.k(ChatFooter.this).performClick();
-        }
-        AppMethodBeat.o(232241);
+        ChatFooter.this.Rkf.geM -= 1L;
+        AppMethodBeat.o(275741);
       }
       
       public final void append(String paramAnonymousString)
       {
-        AppMethodBeat.i(232244);
-        ChatFooter.as(ChatFooter.this);
+        AppMethodBeat.i(275745);
+        ChatFooter.at(ChatFooter.this);
         ChatFooter.aw(ChatFooter.this);
-        ChatFooter.A(ChatFooter.this).setVisibility(8);
+        ChatFooter.B(ChatFooter.this).setVisibility(8);
         ChatFooter.a(ChatFooter.this, true);
-        ChatFooter.av(ChatFooter.this);
+        ChatFooter.c(ChatFooter.this, R.g.dnf);
         try
         {
-          ChatFooter.d(ChatFooter.this).bol(paramAnonymousString);
-          ChatFooter.this.Kjs.ekh += 1L;
-          AppMethodBeat.o(232244);
+          ChatFooter.d(ChatFooter.this).bBa(paramAnonymousString);
+          ChatFooter.this.Rkf.geM += 1L;
+          AppMethodBeat.o(275745);
           return;
         }
         catch (Exception paramAnonymousString)
@@ -603,101 +616,104 @@ public class ChatFooter
         }
       }
       
-      public final void eP(boolean paramAnonymousBoolean)
+      public final void eE(boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(232242);
+        AppMethodBeat.i(275738);
         Log.i("MicroMsg.ChatFooter", "onToSendTextEnable: %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
-        ChatFooter.as(ChatFooter.this);
-        ChatFooter.aw(ChatFooter.this);
-        ChatFooter.A(ChatFooter.this).setVisibility(8);
-        ChatFooter.av(ChatFooter.this);
-        if (ChatFooter.d(ChatFooter.this) != null) {
-          ChatFooter.this.setToSendTextColor(paramAnonymousBoolean);
+        if (ChatFooter.c(ChatFooter.this) == 2)
+        {
+          ChatFooter.at(ChatFooter.this);
+          ChatFooter.aw(ChatFooter.this);
+          ChatFooter.B(ChatFooter.this).setVisibility(8);
+          ChatFooter.c(ChatFooter.this, R.g.dnf);
+          if (ChatFooter.d(ChatFooter.this) != null) {
+            ChatFooter.this.setToSendTextColor(paramAnonymousBoolean);
+          }
         }
-        AppMethodBeat.o(232242);
+        AppMethodBeat.o(275738);
       }
     };
-    this.KkV = new AppPanel.b()
+    this.RlI = new AppPanel.b()
     {
-      public final void gqc()
+      public final void hla()
       {
-        AppMethodBeat.i(232245);
+        AppMethodBeat.i(284929);
         boolean bool = com.tencent.mm.pluginsdk.permission.b.a(ChatFooter.e(ChatFooter.this), "android.permission.RECORD_AUDIO", 80, "", "");
         Log.i("MicroMsg.ChatFooter", "summerper checkPermission checkmicrophone[%s], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), Util.getStack(), ChatFooter.e(ChatFooter.this) });
         if (!bool)
         {
-          AppMethodBeat.o(232245);
+          AppMethodBeat.o(284929);
           return;
         }
-        int i = bg.azz().aYS();
+        int i = bh.aGY().bih();
         if ((i == 4) || (i == 6))
         {
           ChatFooter.ax(ChatFooter.this);
-          AppMethodBeat.o(232245);
+          AppMethodBeat.o(284929);
           return;
         }
         if ((ChatFooter.n(ChatFooter.this) == null) || (!ChatFooter.n(ChatFooter.this).isShowing())) {
-          ChatFooter.a(ChatFooter.this, com.tencent.mm.ui.base.h.n(ChatFooter.this.getContext(), 2131767334, 2131755998));
+          ChatFooter.a(ChatFooter.this, com.tencent.mm.ui.base.h.p(ChatFooter.this.getContext(), R.l.voip_net_unavailable, R.l.app_tip));
         }
-        AppMethodBeat.o(232245);
+        AppMethodBeat.o(284929);
       }
     };
-    this.KkW = new b()
+    this.RlJ = new b()
     {
       public final String getTalkerUserName()
       {
-        AppMethodBeat.i(232246);
+        AppMethodBeat.i(287745);
         if (ChatFooter.f(ChatFooter.this) == null)
         {
-          str = ChatFooter.q(ChatFooter.this);
-          AppMethodBeat.o(232246);
+          str = ChatFooter.r(ChatFooter.this);
+          AppMethodBeat.o(287745);
           return str;
         }
         String str = ChatFooter.f(ChatFooter.this).getTalkerUserName();
-        AppMethodBeat.o(232246);
+        AppMethodBeat.o(287745);
         return str;
       }
       
-      public final com.tencent.mm.ui.chatting.i.b grp()
+      public final com.tencent.mm.ui.chatting.i.b hmo()
       {
         return null;
       }
       
-      public final com.tencent.mm.ui.chatting.e.a grq()
+      public final com.tencent.mm.ui.chatting.e.a hmp()
       {
         return null;
       }
     };
-    this.qPx = new MMHandler()
+    this.urD = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
-        AppMethodBeat.i(232250);
+        AppMethodBeat.i(265147);
         super.handleMessage(paramAnonymousMessage);
         Log.d("MicroMsg.ChatFooter", "pennqin, dismiss window by too short.");
-        ChatFooter.A(ChatFooter.this).setBackgroundResource(2131233164);
-        ChatFooter.A(ChatFooter.this).setEnabled(true);
-        if (ChatFooter.this.Kkf)
+        ChatFooter.B(ChatFooter.this).setBackgroundResource(R.g.input_bg);
+        ChatFooter.B(ChatFooter.this).setEnabled(true);
+        if (ChatFooter.this.RkS)
         {
-          ChatFooter.K(ChatFooter.this);
-          u.u(ChatFooter.this.getContext(), ChatFooter.this.getContext().getResources().getString(2131757297), 2131691713);
-          AppMethodBeat.o(232250);
+          ChatFooter.L(ChatFooter.this);
+          w.w(ChatFooter.this.getContext(), ChatFooter.this.getContext().getResources().getString(R.l.chatfooter_too_short_new), R.k.voice_to_short);
+          AppMethodBeat.o(265147);
           return;
         }
-        if (ChatFooter.L(ChatFooter.this) != null) {
-          ChatFooter.L(ChatFooter.this).dismiss();
+        if (ChatFooter.M(ChatFooter.this) != null) {
+          ChatFooter.M(ChatFooter.this).dismiss();
         }
-        AppMethodBeat.o(232250);
+        AppMethodBeat.o(265147);
       }
     };
-    this.KkY = 0;
-    this.KkZ = false;
-    this.Kla = 1;
-    this.Klb = new TextWatcher()
+    this.RlL = 0;
+    this.RlM = false;
+    this.RlN = 1;
+    this.RlO = new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
-        AppMethodBeat.i(232251);
+        AppMethodBeat.i(269815);
         int i;
         int j;
         int m;
@@ -707,35 +723,35 @@ public class ChatFooter
           i = ChatFooter.aA(ChatFooter.this).getWidth();
           j = ChatFooter.aB(ChatFooter.this).getLineCount();
           m = j - ChatFooter.aC(ChatFooter.this);
-          if ((m != 0) && (ChatFooter.this.KlT == ChatFooter.e.Kmr) && (i == ChatFooter.aD(ChatFooter.this)))
+          if ((m != 0) && (ChatFooter.this.RmG == ChatFooter.e.Rne) && (i == ChatFooter.aD(ChatFooter.this)))
           {
-            i = at.fromDPToPix(ChatFooter.this.getContext(), 5);
+            i = aw.fromDPToPix(ChatFooter.this.getContext(), 5);
             k = ChatFooter.aB(ChatFooter.this).getLineHeight() * m;
             if (m <= 0) {
               break label251;
             }
             m = ChatFooter.aA(ChatFooter.this).getHeight();
-            if (!ChatFooter.this.xfU) {
+            if (!ChatFooter.this.BSf) {
               break label257;
             }
-            ChatFooter.c(ChatFooter.this, Math.min(Math.max(ChatFooter.aE(ChatFooter.this), i + (m + k)), ChatFooter.aF(ChatFooter.this)));
+            ChatFooter.d(ChatFooter.this, Math.min(Math.max(ChatFooter.aE(ChatFooter.this), i + (m + k)), ChatFooter.aF(ChatFooter.this)));
           }
         }
         for (;;)
         {
           Log.d("MicroMsg.ChatFooter", "afterTextChanged transHeight:%s, nowLineCount:%s, lastLineCount:%s", new Object[] { Integer.valueOf(ChatFooter.aH(ChatFooter.this)), Integer.valueOf(j), Integer.valueOf(ChatFooter.aC(ChatFooter.this)) });
           ChatFooter.aI(ChatFooter.this);
-          ChatFooter.d(ChatFooter.this, j);
-          if (1 == ChatFooter.C(ChatFooter.this).Gua) {
-            ChatFooter.C(ChatFooter.this).GtZ = 1;
+          ChatFooter.e(ChatFooter.this, j);
+          if (1 == ChatFooter.D(ChatFooter.this).Nht) {
+            ChatFooter.D(ChatFooter.this).Nhs = 1;
           }
-          AppMethodBeat.o(232251);
+          AppMethodBeat.o(269815);
           return;
           label251:
           i = -i;
           break;
           label257:
-          ChatFooter.c(ChatFooter.this, Math.min(Math.max(ChatFooter.aE(ChatFooter.this), i + (m + k)), ChatFooter.aG(ChatFooter.this)));
+          ChatFooter.d(ChatFooter.this, Math.min(Math.max(ChatFooter.aE(ChatFooter.this), i + (m + k)), ChatFooter.aG(ChatFooter.this)));
         }
       }
       
@@ -743,102 +759,102 @@ public class ChatFooter
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     };
-    this.Klc = ValueAnimator.ofInt(new int[] { 250, 960 }).setDuration(200L);
-    this.Kld = ValueAnimator.ofInt(new int[] { 40, 800 }).setDuration(200L);
-    this.Kle = ValueAnimator.ofInt(new int[] { 72, 0 }).setDuration(200L);
-    this.Klf = ValueAnimator.ofInt(new int[] { 22, 0 }).setDuration(200L);
-    this.Klg = ValueAnimator.ofInt(new int[] { 8, 0 }).setDuration(200L);
-    this.Klh = new ValueAnimator.AnimatorUpdateListener()
+    this.RlP = ValueAnimator.ofInt(new int[] { 250, 960 }).setDuration(200L);
+    this.RlQ = ValueAnimator.ofInt(new int[] { 40, 800 }).setDuration(200L);
+    this.RlR = ValueAnimator.ofInt(new int[] { 72, 0 }).setDuration(200L);
+    this.RlS = ValueAnimator.ofInt(new int[] { 22, 0 }).setDuration(200L);
+    this.RlT = ValueAnimator.ofInt(new int[] { 8, 0 }).setDuration(200L);
+    this.RlU = new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
-        AppMethodBeat.i(232261);
+        AppMethodBeat.i(220726);
         FrameLayout.LayoutParams localLayoutParams1 = (FrameLayout.LayoutParams)ChatFooter.bg(ChatFooter.this).getLayoutParams();
         FrameLayout.LayoutParams localLayoutParams2 = (FrameLayout.LayoutParams)ChatFooter.bh(ChatFooter.this).getLayoutParams();
-        if (ChatFooter.this.Klc == paramAnonymousValueAnimator)
+        if (ChatFooter.this.RlP == paramAnonymousValueAnimator)
         {
-          localLayoutParams1.width = at.fromDPToPix(ChatFooter.this.getContext(), ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
-          localLayoutParams2.width = at.fromDPToPix(ChatFooter.this.getContext(), ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
+          localLayoutParams1.width = aw.fromDPToPix(ChatFooter.this.getContext(), ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
+          localLayoutParams2.width = aw.fromDPToPix(ChatFooter.this.getContext(), ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
         }
         for (;;)
         {
           ChatFooter.bg(ChatFooter.this).setLayoutParams(localLayoutParams1);
           ChatFooter.bh(ChatFooter.this).setLayoutParams(localLayoutParams2);
-          AppMethodBeat.o(232261);
+          AppMethodBeat.o(220726);
           return;
-          if (ChatFooter.this.Kld == paramAnonymousValueAnimator)
+          if (ChatFooter.this.RlQ == paramAnonymousValueAnimator)
           {
-            localLayoutParams1.height = at.fromDPToPix(ChatFooter.this.getContext(), ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
-            localLayoutParams2.height = at.fromDPToPix(ChatFooter.this.getContext(), ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
+            localLayoutParams1.height = aw.fromDPToPix(ChatFooter.this.getContext(), ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
+            localLayoutParams2.height = aw.fromDPToPix(ChatFooter.this.getContext(), ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
           }
-          else if (ChatFooter.this.Kle == paramAnonymousValueAnimator)
+          else if (ChatFooter.this.RlR == paramAnonymousValueAnimator)
           {
-            localLayoutParams1.topMargin = at.fromDPToPix(ChatFooter.this.getContext(), ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
-            localLayoutParams2.topMargin = at.fromDPToPix(ChatFooter.this.getContext(), ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
+            localLayoutParams1.topMargin = aw.fromDPToPix(ChatFooter.this.getContext(), ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
+            localLayoutParams2.topMargin = aw.fromDPToPix(ChatFooter.this.getContext(), ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
           }
-          else if (ChatFooter.this.Klf == paramAnonymousValueAnimator)
+          else if (ChatFooter.this.RlS == paramAnonymousValueAnimator)
           {
-            localLayoutParams1.rightMargin = at.fromDPToPix(ChatFooter.this.getContext(), ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
-            localLayoutParams2.rightMargin = at.fromDPToPix(ChatFooter.this.getContext(), ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
+            localLayoutParams1.rightMargin = aw.fromDPToPix(ChatFooter.this.getContext(), ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
+            localLayoutParams2.rightMargin = aw.fromDPToPix(ChatFooter.this.getContext(), ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
           }
-          else if (ChatFooter.this.Klg == paramAnonymousValueAnimator)
+          else if (ChatFooter.this.RlT == paramAnonymousValueAnimator)
           {
-            localLayoutParams1.bottomMargin = at.fromDPToPix(ChatFooter.this.getContext(), ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
-            localLayoutParams2.bottomMargin = at.fromDPToPix(ChatFooter.this.getContext(), ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
+            localLayoutParams1.bottomMargin = aw.fromDPToPix(ChatFooter.this.getContext(), ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
+            localLayoutParams2.bottomMargin = aw.fromDPToPix(ChatFooter.this.getContext(), ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue());
           }
         }
       }
     };
-    this.Kli = new int[] { 2131690025, 2131690026, 2131690027, 2131690028, 2131690029, 2131690030, 2131690031, 2131690032, 2131690033, 2131690034 };
+    this.RlV = new int[] { R.k.count_down_0, R.k.count_down_1, R.k.count_down_2, R.k.count_down_3, R.k.count_down_4, R.k.count_down_5, R.k.count_down_6, R.k.count_down_7, R.k.count_down_8, R.k.count_down_9 };
     this.ANIMATION_DURATION = 200L;
-    this.Klj = 60;
-    this.Klk = at.fromDPToPix(getContext(), 114);
-    this.Kll = (au.az(getContext()).x - at.fromDPToPix(getContext(), 32));
-    this.Klm = at.fromDPToPix(getContext(), 92);
-    this.Kln = Math.min(at.fromDPToPix(getContext(), 320), au.az(getContext()).x - at.fromDPToPix(getContext(), 32));
-    this.Klo = at.fromDPToPix(getContext(), 176);
-    this.Klp = (at.fromDPToPix(getContext(), 160) / 50.0F);
-    this.Klq = at.fromDPToPix(getContext(), 114);
+    this.RlW = 60;
+    this.RlX = aw.fromDPToPix(getContext(), 114);
+    this.RlY = (com.tencent.mm.ui.ax.au(getContext()).x - aw.fromDPToPix(getContext(), 32));
+    this.RlZ = aw.fromDPToPix(getContext(), 92);
+    this.Rma = Math.min(aw.fromDPToPix(getContext(), 320), com.tencent.mm.ui.ax.au(getContext()).x - aw.fromDPToPix(getContext(), 32));
+    this.Rmb = aw.fromDPToPix(getContext(), 176);
+    this.Rmc = (aw.fromDPToPix(getContext(), 160) / 50.0F);
+    this.Rmd = aw.fromDPToPix(getContext(), 114);
     this.maxHeight = 0;
-    this.Klr = 0;
-    this.Kls = 0;
-    this.GyD = 0;
-    this.Klt = at.fromDPToPix(getContext(), 176);
-    this.Klu = 60;
-    this.Klx = 0;
-    this.Kly = false;
-    this.Klz = 4097;
-    this.KlA = 4098;
-    this.KlC = new MMHandler()
+    this.Rme = 0;
+    this.Rmf = 0;
+    this.Nmf = 0;
+    this.Rmg = aw.fromDPToPix(getContext(), 176);
+    this.Rmh = 60;
+    this.Rmk = 0;
+    this.Rml = false;
+    this.Rmm = 4097;
+    this.Rmn = 4098;
+    this.Rmp = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
-        AppMethodBeat.i(232270);
+        AppMethodBeat.i(280238);
         super.handleMessage(paramAnonymousMessage);
         switch (paramAnonymousMessage.what)
         {
         }
         for (;;)
         {
-          AppMethodBeat.o(232270);
+          AppMethodBeat.o(280238);
           return;
-          ChatFooter.i(ChatFooter.this, true);
+          ChatFooter.j(ChatFooter.this, true);
           paramAnonymousMessage = ChatFooter.bt(ChatFooter.this).getLayoutParams();
           int i = ChatFooter.bt(ChatFooter.this).getBottom() - ChatFooter.bt(ChatFooter.this).getTop();
-          if (ChatFooter.this.gqJ())
+          if (ChatFooter.this.hlI())
           {
-            if (ChatFooter.y(ChatFooter.this) != null) {
-              ChatFooter.y(ChatFooter.this).setVisibility(8);
+            if (ChatFooter.z(ChatFooter.this) != null) {
+              ChatFooter.z(ChatFooter.this).setVisibility(8);
             }
             ChatFooter.this.setAppPanelVisible(8);
             ChatFooter.bt(ChatFooter.this).setVisibility(4);
           }
           if (i <= 3)
           {
-            ChatFooter.i(ChatFooter.this, false);
+            ChatFooter.j(ChatFooter.this, false);
             ChatFooter.bt(ChatFooter.this).setVisibility(4);
-            ChatFooter.i(ChatFooter.this, ChatFooter.this.getKeyBordHeightPX());
-            AppMethodBeat.o(232270);
+            ChatFooter.j(ChatFooter.this, ChatFooter.this.getKeyBordHeightPX());
+            AppMethodBeat.o(280238);
             return;
           }
           paramAnonymousMessage.height = Math.max(i - 60, 1);
@@ -848,156 +864,156 @@ public class ChatFooter
         }
       }
     };
-    this.KlD = false;
-    this.KlE = 0;
-    this.KlF = false;
-    this.KlH = -1;
-    this.KlI = null;
-    this.KlJ = at.aH(getContext(), 2131165232);
-    this.KlK = at.aH(getContext(), 2131165303);
-    this.KlL = at.fromDPToPix(getContext(), 25);
-    this.KlM = at.fromDPToPix(getContext(), 55);
-    this.KlN = 0;
-    this.KlO = at.fromDPToPix(getContext(), 50);
-    this.KlP = new Runnable()
+    this.Rmq = false;
+    this.Rmr = 0;
+    this.Rms = false;
+    this.Rmu = -1;
+    this.Rmv = null;
+    this.Rmw = aw.aZ(getContext(), R.f.ChattingFootSendMinWidth);
+    this.Rmx = aw.aZ(getContext(), R.f.Edge_4A);
+    this.Rmy = aw.fromDPToPix(getContext(), 25);
+    this.Rmz = aw.fromDPToPix(getContext(), 55);
+    this.RmA = 0;
+    this.RmB = aw.fromDPToPix(getContext(), 50);
+    this.RmC = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(185390);
+        AppMethodBeat.i(278264);
         ChatFooter.this.postDelayed(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(232280);
-            if (ChatFooter.k.KmJ == ChatFooter.al(ChatFooter.this))
+            AppMethodBeat.i(218482);
+            if (ChatFooter.k.Rnv == ChatFooter.am(ChatFooter.this))
             {
-              ChatFooter.ae(ChatFooter.this).setText(ChatFooter.this.getResources().getText(2131767146));
-              ChatFooter.ao(ChatFooter.this);
+              ChatFooter.af(ChatFooter.this).setText(ChatFooter.this.getResources().getText(R.l.eUH));
+              ChatFooter.ap(ChatFooter.this);
             }
             for (;;)
             {
               ChatFooter.by(ChatFooter.this);
-              AppMethodBeat.o(232280);
+              AppMethodBeat.o(218482);
               return;
-              ChatFooter.ae(ChatFooter.this).setText(ChatFooter.this.getResources().getText(2131767150));
-              ChatFooter.am(ChatFooter.this);
+              ChatFooter.af(ChatFooter.this).setText(ChatFooter.this.getResources().getText(R.l.eUJ));
+              ChatFooter.an(ChatFooter.this);
             }
           }
         }, 100L);
-        AppMethodBeat.o(185390);
+        AppMethodBeat.o(278264);
       }
     };
-    this.KlQ = new Runnable()
+    this.RmD = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(185811);
-        ChatFooter.M(ChatFooter.this).dismiss();
-        AppMethodBeat.o(185811);
+        AppMethodBeat.i(286438);
+        ChatFooter.N(ChatFooter.this).dismiss();
+        AppMethodBeat.o(286438);
       }
     };
-    this.KlR = at.fromDPToPix(getContext(), 16);
-    this.KlS = at.fromDPToPix(getContext(), 25);
-    this.KlT = e.Kmp;
-    this.KlU = this.KlT;
-    this.KlV = new HashMap();
-    this.KlW = false;
-    this.GvX = new com.tencent.mm.modelvoiceaddr.b.b();
-    this.GvY = new ArrayList();
-    this.GvJ = "";
-    this.GvK = 0;
-    this.GvM = false;
-    this.GtE = com.tencent.mm.modelvoiceaddr.g.jwq;
+    this.RmE = aw.fromDPToPix(getContext(), 16);
+    this.RmF = aw.fromDPToPix(getContext(), 25);
+    this.RmG = e.Rnc;
+    this.RmH = this.RmG;
+    this.RmI = new HashMap();
+    this.RmJ = false;
+    this.Njq = new com.tencent.mm.modelvoiceaddr.b.b();
+    this.Njr = new ArrayList();
+    this.Njc = "";
+    this.Njd = 0;
+    this.Njf = false;
+    this.NgX = com.tencent.mm.modelvoiceaddr.g.mlT;
     long l = System.currentTimeMillis();
-    this.KiQ = ((InputMethodManager)paramContext.getSystemService("input_method"));
-    this.jxm = inflate(paramContext, 2131493491, this);
-    this.ECK = ((com.tencent.mm.ui.widget.cedit.api.c)findViewById(2131298415));
-    this.ECK.refresh(((PluginWebSearch)com.tencent.mm.kernel.g.ah(PluginWebSearch.class)).isUseSysEditText());
-    this.gyh = new com.tencent.mm.ui.tools.h((Activity)paramContext);
-    this.gyh.Quk = this;
-    if (com.tencent.mm.ui.ao.gJI()) {
-      this.ECK.setImeOptions(268435456);
+    this.RjE = ((InputMethodManager)paramContext.getSystemService("input_method"));
+    this.fyN = inflate(paramContext, R.i.eco, this);
+    this.KQB = ((com.tencent.mm.ui.widget.cedit.api.c)findViewById(R.h.dxd));
+    this.KQB.refresh(((PluginWebSearch)com.tencent.mm.kernel.h.ag(PluginWebSearch.class)).isUseSysEditText());
+    this.jij = new com.tencent.mm.ui.tools.i((Activity)paramContext);
+    this.jij.XSx = this;
+    if (com.tencent.mm.ui.ar.hIF()) {
+      this.KQB.setImeOptions(268435456);
     }
-    paramAttributeSet = com.tencent.mm.ui.widget.cedit.api.d.a(this.ECK);
+    paramAttributeSet = com.tencent.mm.ui.widget.cedit.api.d.a(this.KQB);
     paramInt = 8192;
-    if (com.tencent.mm.kernel.g.aAc()) {
-      paramInt = Util.getInt(com.tencent.mm.n.h.aqJ().getValue("InputLimitSessionTextMsg"), 8192);
+    if (com.tencent.mm.kernel.h.aHB()) {
+      paramInt = Util.getInt(com.tencent.mm.n.h.axc().getValue("InputLimitSessionTextMsg"), 8192);
     }
-    paramAttributeSet.aoq(paramInt * 2).a(null);
-    this.ECK.getInputExtras(true).putBoolean("IS_CHAT_EDITOR", true);
+    paramAttributeSet.axx(paramInt * 2).a(null);
+    this.KQB.getInputExtras(true).putBoolean("IS_CHAT_EDITOR", true);
     paramAttributeSet = new a.e()
     {
-      public final void A(List<a.c> paramAnonymousList, int paramAnonymousInt)
+      public final void B(List<a.c> paramAnonymousList, int paramAnonymousInt)
       {
-        AppMethodBeat.i(232223);
-        long l = cl.aWB();
+        AppMethodBeat.i(273365);
+        long l = cm.bfF();
         if ((paramAnonymousInt != 8) && (paramAnonymousInt != 1))
         {
-          if (((com.tencent.mm.plugin.websearch.api.c)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.websearch.api.c.class)).isOpenInlineC2CTag())
+          if (((com.tencent.mm.plugin.websearch.api.c)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.websearch.api.c.class)).isOpenInlineC2CTag())
           {
             localChatFooter = ChatFooter.this;
-            if ((localChatFooter.Kjy == null) || (localChatFooter.Kjy.grq() == null) || ((!((com.tencent.mm.ui.chatting.d.b.h)localChatFooter.Kjy.grq().bh(com.tencent.mm.ui.chatting.d.b.h.class)).gPu()) && (!((com.tencent.mm.ui.chatting.d.b.i)localChatFooter.Kjy.grq().bh(com.tencent.mm.ui.chatting.d.b.i.class)).gPw()))) {
-              break label377;
+            if ((localChatFooter.Rkl == null) || (localChatFooter.Rkl.hmp() == null) || ((!((com.tencent.mm.ui.chatting.d.b.h)localChatFooter.Rkl.hmp().bC(com.tencent.mm.ui.chatting.d.b.h.class)).hOK()) && (!((com.tencent.mm.ui.chatting.d.b.i)localChatFooter.Rkl.hmp().bC(com.tencent.mm.ui.chatting.d.b.i.class)).hOP()))) {
+              break label379;
             }
             paramAnonymousInt = 0;
             if (paramAnonymousInt != 0)
             {
-              paramAnonymousList.add(new a.c(paramContext.getString(2131766606), 2));
-              ChatFooter.d(ChatFooter.this).gYG();
-              if (!ab.Eq(ChatFooter.q(ChatFooter.this))) {
-                break label382;
+              paramAnonymousList.add(new a.c(paramContext.getString(R.l.tag_search_word), 2));
+              ChatFooter.d(ChatFooter.this).hZx();
+              if (!ab.Lj(ChatFooter.r(ChatFooter.this))) {
+                break label384;
               }
               paramAnonymousInt = 2;
-              label174:
-              com.tencent.mm.plugin.websearch.a.b.a(paramAnonymousInt, ChatFooter.q(ChatFooter.this), ChatFooter.r(ChatFooter.this), 1, "", ChatFooter.s(ChatFooter.this), 1, l);
+              label175:
+              com.tencent.mm.plugin.websearch.a.b.a(paramAnonymousInt, ChatFooter.r(ChatFooter.this), ChatFooter.s(ChatFooter.this), 1, "", ChatFooter.t(ChatFooter.this), 1, l);
             }
           }
           ChatFooter localChatFooter = ChatFooter.this;
-          if ((localChatFooter.Kjy == null) || (localChatFooter.Kjy.grq() == null) || ((!((com.tencent.mm.ui.chatting.d.b.h)localChatFooter.Kjy.grq().bh(com.tencent.mm.ui.chatting.d.b.h.class)).gPu()) && (!((com.tencent.mm.ui.chatting.d.b.i)localChatFooter.Kjy.grq().bh(com.tencent.mm.ui.chatting.d.b.i.class)).gPw()))) {
-            break label387;
+          if ((localChatFooter.Rkl == null) || (localChatFooter.Rkl.hmp() == null) || ((!((com.tencent.mm.ui.chatting.d.b.h)localChatFooter.Rkl.hmp().bC(com.tencent.mm.ui.chatting.d.b.h.class)).hOK()) && (!((com.tencent.mm.ui.chatting.d.b.i)localChatFooter.Rkl.hmp().bC(com.tencent.mm.ui.chatting.d.b.i.class)).hOP()))) {
+            break label389;
           }
           paramAnonymousInt = 0;
-          label285:
+          label286:
           if (paramAnonymousInt != 0)
           {
-            paramAnonymousList.add(new a.c(paramContext.getString(2131759440), 3));
-            ChatFooter.d(ChatFooter.this).gYG();
-            if (!ab.Eq(ChatFooter.q(ChatFooter.this))) {
-              break label392;
+            paramAnonymousList.add(new a.c(paramContext.getString(R.l.find_friends_search), 3));
+            ChatFooter.d(ChatFooter.this).hZx();
+            if (!ab.Lj(ChatFooter.r(ChatFooter.this))) {
+              break label394;
             }
           }
         }
-        label387:
-        label392:
+        label384:
+        label389:
+        label394:
         for (paramAnonymousInt = 2;; paramAnonymousInt = 1)
         {
-          com.tencent.mm.plugin.websearch.a.b.a(paramAnonymousInt, ChatFooter.q(ChatFooter.this), ChatFooter.r(ChatFooter.this), 1, "", ChatFooter.s(ChatFooter.this), 2, l);
-          AppMethodBeat.o(232223);
+          com.tencent.mm.plugin.websearch.a.b.a(paramAnonymousInt, ChatFooter.r(ChatFooter.this), ChatFooter.s(ChatFooter.this), 1, "", ChatFooter.t(ChatFooter.this), 2, l);
+          AppMethodBeat.o(273365);
           return;
-          label377:
+          label379:
           paramAnonymousInt = 1;
           break;
-          label382:
           paramAnonymousInt = 1;
-          break label174;
+          break label175;
           paramAnonymousInt = 1;
-          break label285;
+          break label286;
         }
       }
       
       public final void a(View paramAnonymousView, a.c paramAnonymousc, String paramAnonymousString)
       {
-        AppMethodBeat.i(232224);
-        long l2 = cl.aWB();
+        AppMethodBeat.i(273366);
+        long l2 = cm.bfF();
         if (paramAnonymousc.id == 2)
         {
-          ChatFooter.d(ChatFooter.this).getText().insert(ChatFooter.d(ChatFooter.this).getSelectionStart(), paramContext.getString(2131766606));
-          ChatFooter.d(ChatFooter.this).gYG();
-          if (ab.Eq(ChatFooter.q(ChatFooter.this))) {}
+          ChatFooter.d(ChatFooter.this).getText().insert(ChatFooter.d(ChatFooter.this).getSelectionStart(), paramContext.getString(R.l.tag_search_word));
+          ChatFooter.d(ChatFooter.this).hZx();
+          if (ab.Lj(ChatFooter.r(ChatFooter.this))) {}
           for (i = 2;; i = 1)
           {
-            com.tencent.mm.plugin.websearch.a.b.a(i, ChatFooter.q(ChatFooter.this), ChatFooter.r(ChatFooter.this), 2, "", ChatFooter.s(ChatFooter.this), 1, l2);
-            AppMethodBeat.o(232224);
+            com.tencent.mm.plugin.websearch.a.b.a(i, ChatFooter.r(ChatFooter.this), ChatFooter.s(ChatFooter.this), 2, "", ChatFooter.t(ChatFooter.this), 1, l2);
+            AppMethodBeat.o(273366);
             return;
           }
         }
@@ -1005,21 +1021,21 @@ public class ChatFooter
         if (paramAnonymousc.id == 3)
         {
           ChatFooter.d(ChatFooter.this).clearFocus();
-          ChatFooter.t(ChatFooter.this);
+          ChatFooter.u(ChatFooter.this);
           paramAnonymousView = ChatFooter.d(ChatFooter.this).getText().toString();
-          paramAnonymousc = com.tencent.mm.plugin.websearch.a.c.IFY;
+          paramAnonymousc = com.tencent.mm.plugin.websearch.a.c.PAp;
           Object localObject1 = ChatFooter.this.getContext();
-          paramAnonymousc = ChatFooter.q(ChatFooter.this);
+          paramAnonymousc = ChatFooter.r(ChatFooter.this);
           Object localObject2 = ChatFooter.this;
-          paramAnonymousString = ChatFooter.s(ChatFooter.this);
+          paramAnonymousString = ChatFooter.t(ChatFooter.this);
           i = ChatFooter.d(ChatFooter.this).getSelectionStart();
-          kotlin.g.b.p.h(localObject1, "context");
-          kotlin.g.b.p.h(paramAnonymousc, "talker");
-          kotlin.g.b.p.h(localObject2, "listener");
-          kotlin.g.b.p.h(paramAnonymousView, "query");
-          kotlin.g.b.p.h(paramAnonymousString, "sessionId");
-          z.f localf = new z.f();
-          localf.SYG = new egj();
+          p.k(localObject1, "context");
+          p.k(paramAnonymousc, "talker");
+          p.k(localObject2, "listener");
+          p.k(paramAnonymousView, "query");
+          p.k(paramAnonymousString, "sessionId");
+          aa.f localf = new aa.f();
+          localf.aaBC = new eql();
           HashMap localHashMap = new HashMap();
           ((Map)localHashMap).put("scene", "72");
           ((Map)localHashMap).put("sessionId", paramAnonymousString);
@@ -1028,136 +1044,136 @@ public class ChatFooter
           if (!TextUtils.isEmpty((CharSequence)paramAnonymousView))
           {
             Map localMap = (Map)localHashMap;
-            String str = q.encode(paramAnonymousView, "utf8");
-            kotlin.g.b.p.g(str, "URLEncoder.encode(query, \"utf8\")");
+            String str = q.an(paramAnonymousView, "utf8");
+            p.j(str, "URLEncoder.encode(query, \"utf8\")");
             localMap.put("query", str);
             ((Map)localHashMap).put("cursorIndex", String.valueOf(i));
           }
-          com.tencent.mm.plugin.websearch.a.c.bg((Map)localHashMap);
-          ((egj)localf.SYG).url = com.tencent.mm.plugin.websearch.a.c.bf((Map)localHashMap);
-          ((egj)localf.SYG).talker = paramAnonymousc;
-          ((egj)localf.SYG).sessionId = paramAnonymousString;
-          ((egj)localf.SYG).scene = 72;
-          ((egj)localf.SYG).dDv = "";
-          ((egj)localf.SYG).hes = "";
-          ((egj)localf.SYG).vkj = 2;
+          com.tencent.mm.plugin.websearch.a.c.ba((Map)localHashMap);
+          ((eql)localf.aaBC).url = com.tencent.mm.plugin.websearch.a.c.aZ((Map)localHashMap);
+          ((eql)localf.aaBC).talker = paramAnonymousc;
+          ((eql)localf.aaBC).sessionId = paramAnonymousString;
+          ((eql)localf.aaBC).scene = 72;
+          ((eql)localf.aaBC).fwe = "";
+          ((eql)localf.aaBC).jQi = "";
+          ((eql)localf.aaBC).xbJ = 2;
           localObject2 = new com.tencent.mm.plugin.websearch.a.c.a((com.tencent.mm.plugin.websearch.a.a.a)localObject2, localf, paramAnonymousc, paramAnonymousString);
-          localObject1 = new com.tencent.mm.plugin.websearch.a.a.c((Context)localObject1, (egj)localf.SYG, (com.tencent.mm.plugin.websearch.a.a.a)localObject2);
+          localObject1 = new com.tencent.mm.plugin.websearch.a.a.c((Context)localObject1, (eql)localf.aaBC, (com.tencent.mm.plugin.websearch.a.a.a)localObject2);
           ((com.tencent.mm.plugin.websearch.a.a.c)localObject1).show();
           localObject2 = ((com.tencent.mm.plugin.websearch.a.a.c)localObject1).getWindow();
           if (localObject2 != null) {
             ((Window)localObject2).setLayout(-1, -1);
           }
-          localObject2 = new lj();
-          ((lj)localObject2).enl = 1L;
-          ((lj)localObject2).eYC = 0L;
-          ((lj)localObject2).eYD = 2L;
-          ((lj)localObject2).eEP = cl.aWB();
-          if (!ab.Eq(paramAnonymousc)) {
-            break label781;
+          localObject2 = new og();
+          ((og)localObject2).giq = 1L;
+          ((og)localObject2).hbm = 0L;
+          ((og)localObject2).hbn = 2L;
+          ((og)localObject2).gDb = cm.bfF();
+          if (!ab.Lj(paramAnonymousc)) {
+            break label782;
           }
           l1 = 2L;
-          ((lj)localObject2).etp = l1;
-          ((lj)localObject2).yD(paramAnonymousc);
-          ((lj)localObject2).yE(paramAnonymousString);
-          ((lj)localObject2).yF(paramAnonymousView);
-          ((lj)localObject2).bfK();
+          ((og)localObject2).gpu = l1;
+          ((og)localObject2).Fe(paramAnonymousc);
+          ((og)localObject2).Ff(paramAnonymousString);
+          ((og)localObject2).Fg(paramAnonymousView);
+          ((og)localObject2).bpa();
           com.tencent.mm.plugin.websearch.api.ar.a((com.tencent.mm.plugin.report.a)localObject2);
-          Log.i(com.tencent.mm.plugin.websearch.a.c.TAG, "startTagSearchDialog url:" + ((egj)localf.SYG).url);
+          Log.i(com.tencent.mm.plugin.websearch.a.c.TAG, "startTagSearchDialog url:" + ((eql)localf.aaBC).url);
           ChatFooter.e((com.tencent.mm.plugin.websearch.a.a.c)localObject1);
-          ChatFooter.d(ChatFooter.this).gYG();
-          if (!ab.Eq(ChatFooter.q(ChatFooter.this))) {
-            break label787;
+          ChatFooter.d(ChatFooter.this).hZx();
+          if (!ab.Lj(ChatFooter.r(ChatFooter.this))) {
+            break label788;
           }
         }
-        label781:
-        label787:
+        label782:
+        label788:
         for (int i = 2;; i = 1)
         {
-          com.tencent.mm.plugin.websearch.a.b.a(i, ChatFooter.q(ChatFooter.this), ChatFooter.r(ChatFooter.this), 2, paramAnonymousView, ChatFooter.s(ChatFooter.this), 2, l2);
-          ChatFooter.c(ChatFooter.this, com.tencent.mm.plugin.fts.a.d.Nj(73));
-          AppMethodBeat.o(232224);
+          com.tencent.mm.plugin.websearch.a.b.a(i, ChatFooter.r(ChatFooter.this), ChatFooter.s(ChatFooter.this), 2, paramAnonymousView, ChatFooter.t(ChatFooter.this), 2, l2);
+          ChatFooter.c(ChatFooter.this, com.tencent.mm.plugin.fts.a.d.Sx(73));
+          AppMethodBeat.o(273366);
           return;
           l1 = 1L;
           break;
         }
       }
     };
-    this.ECK.a(((com.tencent.mm.plugin.websearch.api.c)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.websearch.api.c.class)).getNeedReuseBrands(), ((com.tencent.mm.plugin.websearch.api.c)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.websearch.api.c.class)).getNeedReuseItems(), LocaleUtil.getCurrentLanguage(paramContext), paramAttributeSet);
-    this.ECK.setKeyCodeEnterListener(new MMEditText.d()
+    this.KQB.a(((com.tencent.mm.plugin.websearch.api.c)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.websearch.api.c.class)).getNeedReuseBrands(), ((com.tencent.mm.plugin.websearch.api.c)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.websearch.api.c.class)).getNeedReuseItems(), LocaleUtil.getCurrentLanguage(paramContext), paramAttributeSet);
+    this.KQB.setKeyCodeEnterListener(new MMEditText.d()
     {
-      private long INI = 0L;
+      private long PKa = 0L;
       
-      public final boolean aiD(int paramAnonymousInt)
+      public final boolean aqF(int paramAnonymousInt)
       {
-        AppMethodBeat.i(232225);
-        if ((paramAnonymousInt == 66) && (cl.aWA() - this.INI > 1000L) && (com.tencent.mm.ui.ao.gJN()) && (com.tencent.mm.ui.aw.b(com.tencent.mm.ui.aw.gWy(), ChatFooter.e(ChatFooter.this).getTaskId())))
+        AppMethodBeat.i(282521);
+        if ((paramAnonymousInt == 66) && (cm.bfE() - this.PKa > 1000L) && (com.tencent.mm.ui.ar.hIO()) && (com.tencent.mm.ui.ar.hIH()))
         {
           Log.i("MicroMsg.ChatFooter", "KeyCode Enter");
-          this.INI = cl.aWA();
+          this.PKa = cm.bfE();
           ChatFooter.k(ChatFooter.this).performClick();
-          AppMethodBeat.o(232225);
+          AppMethodBeat.o(282521);
           return true;
         }
-        AppMethodBeat.o(232225);
+        AppMethodBeat.o(282521);
         return false;
       }
     });
-    this.ECK.addTextChangedListener(new TextWatcher()
+    this.KQB.addTextChangedListener(new TextWatcher()
     {
-      private List<ForegroundColorSpan> EDf;
+      private List<ForegroundColorSpan> KQU;
       
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
-        AppMethodBeat.i(232227);
+        AppMethodBeat.i(278593);
         paramAnonymousEditable = ChatFooter.d(ChatFooter.this).getText();
-        Object localObject = this.EDf.iterator();
+        Object localObject = this.KQU.iterator();
         while (((Iterator)localObject).hasNext()) {
           paramAnonymousEditable.removeSpan((ForegroundColorSpan)((Iterator)localObject).next());
         }
-        this.EDf.clear();
+        this.KQU.clear();
         localObject = ChatFooter.d(ChatFooter.this).getText().toString();
-        if (((com.tencent.mm.plugin.websearch.api.c)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.websearch.api.c.class)).isOpenInlineC2CTag())
+        if (((com.tencent.mm.plugin.websearch.api.c)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.websearch.api.c.class)).isOpenInlineC2CTag())
         {
-          localObject = k.a.Krb.matcher((CharSequence)localObject);
+          localObject = k.a.Rsi.matcher((CharSequence)localObject);
           while (((Matcher)localObject).find())
           {
             int i = ((Matcher)localObject).start();
             int j = ((Matcher)localObject).end();
-            ForegroundColorSpan localForegroundColorSpan = new ForegroundColorSpan(ChatFooter.this.getResources().getColor(2131099784));
-            this.EDf.add(localForegroundColorSpan);
+            ForegroundColorSpan localForegroundColorSpan = new ForegroundColorSpan(ChatFooter.this.getResources().getColor(R.e.Link_100));
+            this.KQU.add(localForegroundColorSpan);
             paramAnonymousEditable.setSpan(localForegroundColorSpan, i, j, 33);
           }
         }
-        AppMethodBeat.o(232227);
+        AppMethodBeat.o(278593);
       }
       
       public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    if (KiM != null)
+    if (RjA != null)
     {
-      KiM.dismiss();
-      KiM = null;
+      RjA.dismiss();
+      RjA = null;
     }
     paramAttributeSet = new View.OnFocusChangeListener()
     {
       public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(232284);
+        AppMethodBeat.i(279064);
         Log.i("MicroMsg.ChatFooter", "onFocusChange: %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
-        AppMethodBeat.o(232284);
+        AppMethodBeat.o(279064);
       }
     };
-    this.ECK.setOnFocusChangeListener(paramAttributeSet);
+    this.KQB.setOnFocusChangeListener(paramAttributeSet);
     if (Build.VERSION.SDK_INT == 28) {
-      this.ECK.setBreakStrategy(1);
+      this.KQB.setBreakStrategy(1);
     }
-    paramAttributeSet = new rk();
-    paramAttributeSet.dXZ.dYa = new com.tencent.mm.pluginsdk.ui.a.a()
+    paramAttributeSet = new sj();
+    paramAttributeSet.fRQ.fRR = new com.tencent.mm.pluginsdk.ui.a.a()
     {
-      public final void beB(final String paramAnonymousString)
+      public final void bqX(final String paramAnonymousString)
       {
         AppMethodBeat.i(185818);
         Log.e("MicroMsg.ChatFooter", "hakon onImageReceived, %s", new Object[] { paramAnonymousString });
@@ -1167,7 +1183,7 @@ public class ChatFooter
           AppMethodBeat.o(185818);
           return;
         }
-        com.tencent.mm.ui.base.h.a(ChatFooter.this.getContext(), ChatFooter.this.getContext().getString(2131758959), "", new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+        com.tencent.mm.ui.base.h.a(ChatFooter.this.getContext(), ChatFooter.this.getContext().getString(R.l.eEr), "", new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
           {
@@ -1192,27 +1208,30 @@ public class ChatFooter
       }
     };
     EventCenter.instance.publish(paramAttributeSet);
-    this.Kiw = ((LinearLayout)this.jxm.findViewById(2131308991));
-    this.Kiu = ((MaxHeightScrollView)this.jxm.findViewById(2131309006));
-    this.ECK.setMaxHeight(this.Kiu.getMaxHeight() - this.Kiu.getPaddingBottom() - this.Kiu.getPaddingTop());
-    this.Kip = ((ChatFooterBottom)findViewById(2131298409));
-    this.jLy = ((ViewGroup)findViewById(2131298293));
-    this.Kio = findViewById(2131298434);
-    this.Kir = ((ImageButton)this.jxm.findViewById(2131298395));
-    this.Kis = ((ImageView)this.jxm.findViewById(2131298396));
-    this.han = ((Button)this.jxm.findViewById(2131298547));
-    this.Kix = ((RelativeLayout)this.jxm.findViewById(2131304970));
-    this.Kiy = ((TextView)this.jxm.findViewById(2131304968));
-    this.Kiz = ((WeImageView)this.jxm.findViewById(2131304969));
-    this.KiL = ((ImageView)this.jxm.findViewById(2131306142));
-    this.han.setTextSize(0, com.tencent.mm.cb.a.aH(paramContext, 2131165581) * com.tencent.mm.cb.a.ji(paramContext));
-    this.Kim = ((Button)this.jxm.findViewById(2131309989));
-    this.Kin = ((ImageButton)findViewById(2131298512));
-    qT(false);
-    gqS();
-    this.KiA = new i(getContext(), getRootView(), this, new i.a()
+    this.Rjg = ((LinearLayout)this.fyN.findViewById(R.h.dWt));
+    this.Rje = ((MaxHeightScrollView)this.fyN.findViewById(R.h.dWv));
+    this.KQB.setMaxHeight(this.Rje.getMaxHeight() - this.Rje.getPaddingBottom() - this.Rje.getPaddingTop());
+    this.RiZ = ((ChatFooterBottom)findViewById(R.h.dwY));
+    this.mCC = ((ViewGroup)findViewById(R.h.dvn));
+    this.RiY = findViewById(R.h.dxu);
+    this.Rjb = ((ImageButton)this.fyN.findViewById(R.h.dwS));
+    this.Rjc = ((ImageView)this.fyN.findViewById(R.h.dwT));
+    this.jLo = ((Button)this.fyN.findViewById(R.h.dzh));
+    this.Rjh = ((RelativeLayout)this.fyN.findViewById(R.h.dMX));
+    this.Rji = ((RelativeLayout)this.fyN.findViewById(R.h.dIY));
+    this.Rjj = ((TextView)this.fyN.findViewById(R.h.dIZ));
+    this.Rjk = ((ImageView)this.fyN.findViewById(R.h.dIX));
+    this.Rjl = ((TextView)this.fyN.findViewById(R.h.dMV));
+    this.Rjm = ((WeImageView)this.fyN.findViewById(R.h.dMW));
+    this.Rjz = ((ImageView)this.fyN.findViewById(R.h.dRo));
+    this.jLo.setTextSize(0, com.tencent.mm.ci.a.aZ(paramContext, R.f.SmallBtnTextSize) * com.tencent.mm.ci.a.km(paramContext));
+    this.RiW = ((Button)this.fyN.findViewById(R.h.eak));
+    this.RiX = ((ImageButton)findViewById(R.h.dyF));
+    tV(false);
+    hlR();
+    this.Rjn = new i(getContext(), getRootView(), this, new i.a()
     {
-      public final void beZ(String paramAnonymousString)
+      public final void brv(String paramAnonymousString)
       {
         AppMethodBeat.i(185752);
         Intent localIntent = new Intent();
@@ -1231,33 +1250,33 @@ public class ChatFooter
         localIntent.addFlags(67108864);
         if (ChatFooter.i(ChatFooter.this) != null)
         {
-          com.tencent.mm.br.c.a(ChatFooter.i(ChatFooter.this), "gallery", ".ui.GalleryEntryUI", localIntent, 217);
+          com.tencent.mm.by.c.a(ChatFooter.i(ChatFooter.this), "gallery", ".ui.GalleryEntryUI", localIntent, 217);
           AppMethodBeat.o(185752);
           return;
         }
-        com.tencent.mm.br.c.b(paramContext, "gallery", ".ui.GalleryEntryUI", localIntent, 217);
+        com.tencent.mm.by.c.b(paramContext, "gallery", ".ui.GalleryEntryUI", localIntent, 217);
         AppMethodBeat.o(185752);
       }
     });
-    this.KiA.Knk = this;
+    this.Rjn.RnW = this;
     paramAttributeSet = getContext();
     getRootView();
-    this.ECK.gYG();
-    this.KiB = new m(paramAttributeSet);
-    this.KiB.Kjv = this.Kjv;
-    Log.d("MicroMsg.ChatFooter", "send edittext ime option %s", new Object[] { Integer.valueOf(this.ECK.getImeOptions()) });
-    this.ECK.a(new com.tencent.mm.ui.widget.cedit.api.c.a()
+    this.KQB.hZx();
+    this.Rjo = new m(paramAttributeSet);
+    this.Rjo.Rki = this.Rki;
+    Log.d("MicroMsg.ChatFooter", "send edittext ime option %s", new Object[] { Integer.valueOf(this.KQB.getImeOptions()) });
+    this.KQB.a(new com.tencent.mm.ui.widget.cedit.api.c.a()
     {
-      public final boolean ZY(int paramAnonymousInt)
+      public final boolean rQ(int paramAnonymousInt)
       {
-        AppMethodBeat.i(232222);
+        AppMethodBeat.i(291416);
         if ((paramAnonymousInt == 4) || ((paramAnonymousInt == 0) && (ChatFooter.j(ChatFooter.this))))
         {
           ChatFooter.k(ChatFooter.this).performClick();
-          AppMethodBeat.o(232222);
+          AppMethodBeat.o(291416);
           return true;
         }
-        AppMethodBeat.o(232222);
+        AppMethodBeat.o(291416);
         return false;
       }
     });
@@ -1268,98 +1287,40 @@ public class ChatFooter
         AppMethodBeat.i(185754);
         ChatFooter.this.setToSendTextColor(true);
         if (ChatFooter.l(ChatFooter.this) != null) {
-          ChatFooter.l(ChatFooter.this).X(paramAnonymousMotionEvent);
+          ChatFooter.l(ChatFooter.this).ag(paramAnonymousMotionEvent);
         }
         ChatFooter.m(ChatFooter.this);
         AppMethodBeat.o(185754);
         return false;
       }
     };
-    this.ECK.setOnTouchListener(paramAttributeSet);
-    paramAttributeSet = new View.OnLongClickListener()
-    {
-      public final boolean onLongClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(185755);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$13", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
-        paramAnonymousView = ClipboardHelper.getText(paramContext);
-        com.tencent.mm.plugin.report.service.h.CyF.n(1014L, 0L, 1L);
-        com.tencent.mm.plugin.c.a.bqE();
-        if (com.tencent.mm.plugin.c.a.D(paramAnonymousView))
-        {
-          com.tencent.mm.plugin.report.service.h.CyF.n(1014L, 1L, 1L);
-          Log.i("MicroMsg.ChatFooter", "anti paste text %s", new Object[] { paramAnonymousView });
-          com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$13", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-          AppMethodBeat.o(185755);
-          return true;
-        }
-        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$13", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-        AppMethodBeat.o(185755);
-        return false;
-      }
-    };
-    this.ECK.setOnLongClickListener(paramAttributeSet);
-    this.ECK.setCustomSelectionActionModeCallback(new ActionMode.Callback()
-    {
-      public final boolean onActionItemClicked(ActionMode paramAnonymousActionMode, MenuItem paramAnonymousMenuItem)
-      {
-        return false;
-      }
-      
-      public final boolean onCreateActionMode(ActionMode paramAnonymousActionMode, Menu paramAnonymousMenu)
-      {
-        AppMethodBeat.i(185756);
-        paramAnonymousActionMode = ClipboardHelper.getText(paramContext);
-        com.tencent.mm.plugin.report.service.h.CyF.n(1014L, 5L, 1L);
-        com.tencent.mm.plugin.c.a.bqE();
-        if (com.tencent.mm.plugin.c.a.D(paramAnonymousActionMode))
-        {
-          Log.i("MicroMsg.ChatFooter", "anti paste text %s", new Object[] { paramAnonymousActionMode });
-          com.tencent.mm.plugin.report.service.h.CyF.n(1014L, 6L, 1L);
-          if (paramAnonymousMenu.size() > 0)
-          {
-            paramAnonymousMenu.removeItem(16908322);
-            if (com.tencent.mm.compatible.util.d.oD(23)) {
-              paramAnonymousMenu.removeItem(16908340);
-            }
-          }
-        }
-        AppMethodBeat.o(185756);
-        return true;
-      }
-      
-      public final void onDestroyActionMode(ActionMode paramAnonymousActionMode) {}
-      
-      public final boolean onPrepareActionMode(ActionMode paramAnonymousActionMode, Menu paramAnonymousMenu)
-      {
-        return false;
-      }
-    });
-    this.han.setOnClickListener(new View.OnClickListener()
+    this.KQB.setOnTouchListener(paramAttributeSet);
+    paramAttributeSet = new ChatFooter.5(this, paramContext);
+    this.KQB.setOnLongClickListener(paramAttributeSet);
+    this.KQB.setCustomSelectionActionModeCallback(new ChatFooter.6(this, paramContext));
+    this.jLo.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         for (;;)
         {
           boolean bool;
-          label274:
+          label308:
           try
           {
             AppMethodBeat.i(31499);
             Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-            ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
             paramAnonymousView = ChatFooter.d(ChatFooter.this).getText().toString();
             Log.i("MicroMsg.ChatFooter", "send msg onClick");
             if ((paramAnonymousView.trim().length() == 0) && (paramAnonymousView.length() != 0))
             {
               Log.d("MicroMsg.ChatFooter", "empty message cant be sent");
               if ((ChatFooter.n(ChatFooter.this) == null) || (!ChatFooter.n(ChatFooter.this).isShowing())) {
-                ChatFooter.a(ChatFooter.this, com.tencent.mm.ui.base.h.n(ChatFooter.this.getContext(), 2131757358, 2131755998));
+                ChatFooter.a(ChatFooter.this, com.tencent.mm.ui.base.h.p(ChatFooter.this.getContext(), R.l.euK, R.l.app_tip));
               }
-              ChatFooter.this.gqP();
+              ChatFooter.this.hlO();
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(31499);
               return;
@@ -1369,42 +1330,44 @@ public class ChatFooter
             {
               Log.i("MicroMsg.ChatFooter", "paste clip board to send");
               ChatFooter.c(ChatFooter.this, true);
-              ChatFooter.d(ChatFooter.this, ClipboardHelper.isCopyFromWX(ChatFooter.d(ChatFooter.this).getText()));
             }
+            ChatFooter.d(ChatFooter.this, ChatFooter.d(ChatFooter.this).getSimilarPasteChange());
+            ChatFooter.e(ChatFooter.this, ClipboardHelper.isCopyFromWX(ChatFooter.d(ChatFooter.this).getText()));
+            ChatFooter.d(ChatFooter.this).hZA();
             if (ChatFooter.o(ChatFooter.this) == null) {
-              break label344;
+              break label378;
             }
             localObject = ChatFooter.o(ChatFooter.this);
-            if (((com.tencent.mm.plugin.groupsolitaire.ui.d)localObject).ygD == null) {
-              break label339;
+            if (((com.tencent.mm.plugin.groupsolitaire.ui.d)localObject).DqF == null) {
+              break label373;
             }
-            bool = ((com.tencent.mm.plugin.groupsolitaire.ui.d)localObject).ygD.isShowing();
+            bool = ((com.tencent.mm.plugin.groupsolitaire.ui.d)localObject).DqF.isShowing();
           }
           finally {}
           if ((paramAnonymousView != null) && (paramAnonymousView.length() > 0) && (ChatFooter.l(ChatFooter.this) != null)) {
-            ChatFooter.this.dYi();
+            ChatFooter.this.eBG();
           }
           ChatFooter.a(ChatFooter.this, paramAnonymousView.length());
           if (ChatFooter.a(ChatFooter.this, paramAnonymousView))
           {
             Log.i("MicroMsg.ChatFooter", "this is a quote msg");
             continue;
-            label339:
+            label373:
             bool = false;
           }
           else
           {
-            label344:
+            label378:
             while (!bool)
             {
               bool = false;
-              break label274;
+              break label308;
               if (ChatFooter.a(ChatFooter.this, paramAnonymousView, bool))
               {
                 Log.i("MicroMsg.ChatFooter", "this is a group solitatire msg");
                 break;
               }
-              if ((ChatFooter.l(ChatFooter.this) == null) || (!ChatFooter.l(ChatFooter.this).aDN(paramAnonymousView))) {
+              if ((ChatFooter.l(ChatFooter.this) == null) || (!ChatFooter.l(ChatFooter.this).aNX(paramAnonymousView))) {
                 break;
               }
               ChatFooter.p(ChatFooter.this);
@@ -1417,169 +1380,158 @@ public class ChatFooter
         }
       }
     });
-    if (com.tencent.mm.ui.ao.gJH()) {}
-    label2504:
+    if (com.tencent.mm.ui.ar.hIE()) {}
+    label1936:
+    label2602:
     for (;;)
     {
       boolean bool = false;
-      label1880:
-      this.Kkf = bool;
-      this.Kkg = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.slX, 0.5F);
-      Log.i("MicroMsg.ChatFooter", "isNewTrans2Txt:%s, transOperationAreaFactor:%s", new Object[] { Boolean.valueOf(this.Kkf), Float.valueOf(this.Kkg) });
-      this.KjW = new com.tencent.mm.plugin.transvoice.a.a();
-      if (this.Kkf)
+      this.RkS = bool;
+      this.RkT = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vWM, 0.5F);
+      Log.i("MicroMsg.ChatFooter", "isNewTrans2Txt:%s, transOperationAreaFactor:%s", new Object[] { Boolean.valueOf(this.RkS), Float.valueOf(this.RkT) });
+      this.RkJ = new com.tencent.mm.plugin.transvoice.a.a();
+      if (this.RkS)
       {
-        this.KkS = ((int)(com.tencent.mm.cb.a.jn(paramContext) * this.Kkg));
-        Log.d("MicroMsg.ChatFooter", "newVoice2txtVoiceModeChangeLine: %s, newVoice2txtTransModeChangeLine: %s.", new Object[] { Integer.valueOf(this.KkR), Integer.valueOf(this.KkS) });
-        this.Kim.setOnTouchListener(new View.OnTouchListener()
+        paramInt = com.tencent.mm.ui.ar.au(paramContext).x;
+        this.RlF = ((int)(paramInt * this.RkT));
+        Log.d("MicroMsg.ChatFooter", "newVoice2txtVoiceModeChangeLine: %s, newVoice2txtTransModeChangeLine: %s, screenWidth:%s", new Object[] { Integer.valueOf(this.RlE), Integer.valueOf(this.RlF), Integer.valueOf(paramInt) });
+        this.RiW.setOnTouchListener(new View.OnTouchListener()
         {
           public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
           {
-            AppMethodBeat.i(232234);
-            if (paramAnonymousView != ChatFooter.A(ChatFooter.this))
+            AppMethodBeat.i(222531);
+            if (paramAnonymousView != ChatFooter.B(ChatFooter.this))
             {
-              AppMethodBeat.o(232234);
+              AppMethodBeat.o(222531);
               return false;
             }
-            if (ChatFooter.this.KlT == ChatFooter.e.Kmp)
+            if (ChatFooter.this.RmG == ChatFooter.e.Rnc)
             {
-              ChatFooter.b(ChatFooter.this, au.az(ChatFooter.this.getContext()).y - paramContext.getResources().getDimensionPixelSize(2131167111) - av.aD(paramContext));
+              ChatFooter.b(ChatFooter.this, com.tencent.mm.ui.ax.au(ChatFooter.this.getContext()).y - paramContext.getResources().getDimensionPixelSize(R.f.dlP) - ay.aB(paramContext));
               switch (paramAnonymousMotionEvent.getAction())
               {
               }
             }
             for (;;)
             {
-              AppMethodBeat.o(232234);
+              AppMethodBeat.o(222531);
               return true;
-              ChatFooter.b(ChatFooter.this, au.az(ChatFooter.this.getContext()).y - paramContext.getResources().getDimensionPixelSize(2131167111) - av.aD(paramContext) + ChatFooter.B(ChatFooter.this));
+              ChatFooter.b(ChatFooter.this, com.tencent.mm.ui.ax.au(ChatFooter.this.getContext()).y - paramContext.getResources().getDimensionPixelSize(R.f.dlP) - ay.aB(paramContext) + ChatFooter.C(ChatFooter.this));
               break;
-              ChatFooter.C(ChatFooter.this).GtX = 1;
-              paramAnonymousView = com.tencent.mm.cj.a.Owq;
-              com.tencent.mm.cj.a.AQ(false);
-              ChatFooter.C(ChatFooter.this).ofl = System.currentTimeMillis();
-              ChatFooter.C(ChatFooter.this).GtK = ((int)paramAnonymousMotionEvent.getRawX());
-              ChatFooter.C(ChatFooter.this).GtL = ((int)paramAnonymousMotionEvent.getRawY());
+              ChatFooter.D(ChatFooter.this).Nhq = 1;
+              paramAnonymousView = com.tencent.mm.cq.a.VPo;
+              com.tencent.mm.cq.a.Ff(false);
+              ChatFooter.D(ChatFooter.this).rgW = System.currentTimeMillis();
+              ChatFooter.D(ChatFooter.this).Nhd = ((int)paramAnonymousMotionEvent.getRawX());
+              ChatFooter.D(ChatFooter.this).Nhe = ((int)paramAnonymousMotionEvent.getRawY());
               ChatFooter.a(ChatFooter.this, null);
               long l = System.nanoTime();
               ChatFooter.a(ChatFooter.this, new com.tencent.mm.modelvoiceaddr.h(String.valueOf(l & 0xFFFFFFFF)));
-              ChatFooter.E(ChatFooter.this).b(ChatFooter.D(ChatFooter.this));
+              ChatFooter.F(ChatFooter.this).b(ChatFooter.E(ChatFooter.this));
               if ((ChatFooter.this.getContext() instanceof Activity)) {
                 ((Activity)ChatFooter.this.getContext()).getWindow().addFlags(128);
               }
-              ChatFooter.A(ChatFooter.this).setBackgroundResource(2131234634);
-              ChatFooter.A(ChatFooter.this).setText(2131757295);
+              ChatFooter.B(ChatFooter.this).setBackgroundResource(R.g.record_shape_press);
+              ChatFooter.B(ChatFooter.this).setText(R.l.chatfooter_releasetofinish);
               if (ChatFooter.l(ChatFooter.this) != null) {
-                ChatFooter.l(ChatFooter.this).ehN();
+                ChatFooter.l(ChatFooter.this).eRu();
               }
-              ChatFooter.A(ChatFooter.this).setContentDescription(ChatFooter.this.getContext().getString(2131757222));
+              ChatFooter.B(ChatFooter.this).setContentDescription(ChatFooter.this.getContext().getString(R.l.chat_footer_switch_press_btn));
               continue;
-              if ((ChatFooter.F(ChatFooter.this) == null) || (!ChatFooter.F(ChatFooter.this).isShowing()))
+              if ((ChatFooter.G(ChatFooter.this) == null) || (!ChatFooter.G(ChatFooter.this).isShowing()))
               {
                 Log.e("MicroMsg.NewVoice2txt", "window status err!!!");
               }
-              else if ((paramAnonymousMotionEvent.getX() > 0.0F) && (paramAnonymousMotionEvent.getX() < ChatFooter.A(ChatFooter.this).getWidth()) && (paramAnonymousMotionEvent.getRawY() > ChatFooter.G(ChatFooter.this)))
+              else if ((paramAnonymousMotionEvent.getX() > 0.0F) && (paramAnonymousMotionEvent.getX() < ChatFooter.B(ChatFooter.this).getWidth()) && (paramAnonymousMotionEvent.getRawY() > ChatFooter.H(ChatFooter.this)))
               {
-                if (ChatFooter.this.KlT != ChatFooter.e.Kmp)
+                if (ChatFooter.this.RmG != ChatFooter.e.Rnc)
                 {
-                  ChatFooter.this.KlU = ChatFooter.this.KlT;
-                  ChatFooter.this.KlT = ChatFooter.e.Kmp;
-                  ChatFooter.H(ChatFooter.this);
+                  ChatFooter.this.RmH = ChatFooter.this.RmG;
+                  ChatFooter.this.RmG = ChatFooter.e.Rnc;
+                  ChatFooter.I(ChatFooter.this);
                 }
               }
-              else if (paramAnonymousMotionEvent.getRawX() > ChatFooter.I(ChatFooter.this))
+              else if (paramAnonymousMotionEvent.getX() > ChatFooter.J(ChatFooter.this))
               {
-                if (ChatFooter.e.Kmr != ChatFooter.this.KlT) {
+                if (ChatFooter.e.Rne != ChatFooter.this.RmG) {
                   if (!WeChatBrands.Business.Entries.SessionSpeech2TextSnd.checkAvailable(paramAnonymousView.getContext()))
                   {
-                    ChatFooter.this.KlT = ChatFooter.e.Kmq;
-                    ChatFooter.this.KlU = ChatFooter.this.KlT;
-                    ChatFooter.H(ChatFooter.this);
+                    ChatFooter.this.RmG = ChatFooter.e.Rnd;
+                    ChatFooter.this.RmH = ChatFooter.this.RmG;
+                    ChatFooter.I(ChatFooter.this);
                   }
                   else
                   {
-                    ChatFooter.this.KlU = ChatFooter.this.KlT;
-                    ChatFooter.this.KlT = ChatFooter.e.Kmr;
-                    ChatFooter.H(ChatFooter.this);
+                    ChatFooter.this.RmH = ChatFooter.this.RmG;
+                    ChatFooter.this.RmG = ChatFooter.e.Rne;
+                    ChatFooter.I(ChatFooter.this);
                   }
                 }
               }
-              else if (ChatFooter.e.Kmq != ChatFooter.this.KlT)
+              else if (ChatFooter.e.Rnd != ChatFooter.this.RmG)
               {
-                ChatFooter.this.KlU = ChatFooter.this.KlT;
-                ChatFooter.this.KlT = ChatFooter.e.Kmq;
-                ChatFooter.H(ChatFooter.this);
+                ChatFooter.this.RmH = ChatFooter.this.RmG;
+                ChatFooter.this.RmG = ChatFooter.e.Rnd;
+                ChatFooter.I(ChatFooter.this);
                 continue;
                 Log.d("MicroMsg.NewVoice2txt", "begin finishCutShortSentence.");
-                ChatFooter.E(ChatFooter.this).fAr();
+                ChatFooter.F(ChatFooter.this).gss();
                 Log.d("MicroMsg.NewVoice2txt", "end finishCutShortSentence.");
-                ChatFooter.C(ChatFooter.this).GtM = System.currentTimeMillis();
-                ChatFooter.C(ChatFooter.this).GtN = ((int)paramAnonymousMotionEvent.getRawX());
-                ChatFooter.C(ChatFooter.this).GtO = ((int)paramAnonymousMotionEvent.getRawY());
-                if ((ChatFooter.this.GvE != null) && (ChatFooter.J(ChatFooter.this)))
+                ChatFooter.D(ChatFooter.this).Nhf = System.currentTimeMillis();
+                ChatFooter.D(ChatFooter.this).Nhg = ((int)paramAnonymousMotionEvent.getRawX());
+                ChatFooter.D(ChatFooter.this).Nhh = ((int)paramAnonymousMotionEvent.getRawY());
+                if ((ChatFooter.this.NiX != null) && (ChatFooter.K(ChatFooter.this)))
                 {
                   if (!WeChatBrands.Business.Entries.SessionSpeech2TextSnd.checkAvailable(paramAnonymousView.getContext()))
                   {
-                    ChatFooter.A(ChatFooter.this).setBackgroundResource(2131233164);
-                    ChatFooter.A(ChatFooter.this).setEnabled(true);
-                    if (ChatFooter.this.Kkf) {
-                      ChatFooter.K(ChatFooter.this);
+                    ChatFooter.B(ChatFooter.this).setBackgroundResource(R.g.input_bg);
+                    ChatFooter.B(ChatFooter.this).setEnabled(true);
+                    if (ChatFooter.this.RkS) {
+                      ChatFooter.L(ChatFooter.this);
                     }
-                    if (ChatFooter.L(ChatFooter.this) == null) {
+                    if (ChatFooter.M(ChatFooter.this) == null) {
                       continue;
                     }
-                    ChatFooter.L(ChatFooter.this).dismiss();
+                    ChatFooter.M(ChatFooter.this).dismiss();
                     continue;
                   }
-                  ChatFooter.this.GvE.GtF = false;
-                  paramAnonymousView = ChatFooter.this.GvE;
-                  Log.d("MicroMsg.SceneVoiceInputAddr2", "reTrigger!!! canReTrigger: %s.", new Object[] { Boolean.valueOf(paramAnonymousView.GtG) });
-                  if ((paramAnonymousView.GtG) && ((!((com.tencent.mm.modelvoiceaddr.c)paramAnonymousView.jwn).bir()) || (!com.tencent.mm.kernel.g.azz().a(paramAnonymousView.jwn, 0)))) {
-                    paramAnonymousView.fAt();
+                  ChatFooter.this.NiX.NgY = false;
+                  paramAnonymousView = ChatFooter.this.NiX;
+                  Log.d("MicroMsg.SceneVoiceInputAddr2", "reTrigger!!! canReTrigger: %s.", new Object[] { Boolean.valueOf(paramAnonymousView.NgZ) });
+                  if ((paramAnonymousView.NgZ) && ((!((com.tencent.mm.modelvoiceaddr.c)paramAnonymousView.mlQ).brP()) || (!com.tencent.mm.kernel.h.aGY().a(paramAnonymousView.mlQ, 0)))) {
+                    paramAnonymousView.gsu();
                   }
                 }
                 if ((ChatFooter.this.getContext() instanceof Activity)) {
                   ((Activity)ChatFooter.this.getContext()).getWindow().clearFlags(128);
                 }
-                ChatFooter.this.gqR();
+                ChatFooter.this.hlQ();
               }
             }
           }
         });
-        this.Klc.addUpdateListener(this.Klh);
-        this.Kld.addUpdateListener(this.Klh);
-        this.Kle.addUpdateListener(this.Klh);
-        this.Klf.addUpdateListener(this.Klh);
-        this.Klg.addUpdateListener(this.Klh);
+        this.RlP.addUpdateListener(this.RlU);
+        this.RlQ.addUpdateListener(this.RlU);
+        this.RlR.addUpdateListener(this.RlU);
+        this.RlS.addUpdateListener(this.RlU);
+        this.RlT.addUpdateListener(this.RlU);
       }
       for (;;)
       {
-        this.Kin.setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
-          {
-            AppMethodBeat.i(232233);
-            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bm(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$25", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-            ChatFooter.z(ChatFooter.this);
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$25", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(232233);
-          }
-        });
-        gqn();
-        this.Kir.setVisibility(0);
-        this.Kir.setContentDescription(getContext().getString(2131757214));
-        this.Kir.setOnClickListener(new View.OnClickListener()
+        this.RiX.setOnClickListener(new ChatFooter.20(this));
+        hlm();
+        this.Rjb.setVisibility(0);
+        this.Rjb.setContentDescription(getContext().getString(R.l.chat_footer_app_btn_fold));
+        this.Rjb.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             int j = -1;
-            AppMethodBeat.i(232231);
+            AppMethodBeat.i(273425);
             Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-            ((com.tencent.mm.hellhoundlib.b.b)localObject1).bm(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$23", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).axR());
-            localObject1 = ChatFooter.u(ChatFooter.this);
+            ((com.tencent.mm.hellhoundlib.b.b)localObject1).bn(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$25", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aFi());
+            localObject1 = ChatFooter.v(ChatFooter.this);
             ChatFooter localChatFooter = ChatFooter.this;
             int i = j;
             if (localChatFooter.getAppPanelUnCertainEnterArrayList() != null)
@@ -1593,12 +1545,12 @@ public class ChatFooter
                 {
                   Object localObject2 = (a.a)localChatFooter.getAppPanelUnCertainEnterArrayList().get(i);
                   k = j;
-                  if (((a.a)localObject2).KhR == 1)
+                  if (((a.a)localObject2).red_dot == 1)
                   {
                     k = j;
-                    if (!ChatFooter.beY(((a.a)localObject2).KhQ))
+                    if (!ChatFooter.bru(((a.a)localObject2).RiB))
                     {
-                      localObject2 = ((a.a)localObject2).KhQ;
+                      localObject2 = ((a.a)localObject2).RiB;
                       MultiProcessMMKV.getMMKV("plus_uncertain_enter").edit().putBoolean((String)localObject2, true);
                       k = j;
                       if (j == -1) {
@@ -1611,54 +1563,44 @@ public class ChatFooter
                 i = j;
               }
             }
-            localChatFooter.Kis.setVisibility(8);
+            localChatFooter.Rjc.setVisibility(8);
             ((ImageButton)localObject1).setTag(Integer.valueOf(i));
-            ChatFooter.this.go(paramAnonymousView);
-            if ((z.aUQ().booleanValue()) && (ChatFooter.this.Kjt != null))
+            ChatFooter.this.hy(paramAnonymousView);
+            if ((z.bdS().booleanValue()) && (ChatFooter.this.Rkg != null))
             {
-              paramAnonymousView = ChatFooter.this.Kjt;
+              paramAnonymousView = ChatFooter.this.Rkg;
               localObject1 = Boolean.TRUE;
               paramAnonymousView.a((Boolean)localObject1, (Boolean)localObject1);
             }
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$23", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(232231);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$25", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(273425);
           }
         });
         Log.i("MicroMsg.ChatFooter", "[init]");
-        this.Kio.setOnTouchListener(new View.OnTouchListener()
+        this.RiY.setOnTouchListener(new View.OnTouchListener()
         {
           public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
           {
             return true;
           }
         });
-        this.Kjc = (((Activity)paramContext).getWindow().getAttributes().softInputMode & 0xF0);
-        if ((this.Kjc != 16) && (this.Kjc != 48))
+        this.RjP = (((Activity)paramContext).getWindow().getAttributes().softInputMode & 0xF0);
+        if ((this.RjP != 16) && (this.RjP != 48))
         {
-          com.tencent.mm.plugin.report.service.h.CyF.dN(1062, 8);
-          if (this.Kjc != 16) {
-            this.Kjc = 48;
+          com.tencent.mm.plugin.report.service.h.IzE.el(1062, 8);
+          if (this.RjP != 16) {
+            this.RjP = 48;
           }
         }
-        this.Kjk = KeyBoardUtil.getValidPanelHeight(paramContext);
-        aiC(getKeyBordHeightPX());
-        if (com.tencent.mm.compatible.util.d.oD(24)) {
-          this.Kje = ((Activity)getContext()).isInMultiWindowMode();
+        this.RjX = KeyBoardUtil.getValidPanelHeight(paramContext);
+        aqE(getKeyBordHeightPX());
+        if (com.tencent.mm.compatible.util.d.qV(24)) {
+          this.RjR = ((Activity)getContext()).isInMultiWindowMode();
         }
-        gqm();
-        this.Kiz.setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
-          {
-            AppMethodBeat.i(31502);
-            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bm(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-            ChatFooter.p(ChatFooter.this);
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(31502);
-          }
-        });
+        hll();
+        this.Rjm.setOnClickListener(new ChatFooter.9(this));
+        this.Rjk.setOnClickListener(new ChatFooter.10(this));
+        this.Rjj.setOnClickListener(new ChatFooter.11(this));
         Log.d("MicroMsg.ChatFooter", "init time: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
         AppMethodBeat.o(31573);
         return;
@@ -1672,80 +1614,80 @@ public class ChatFooter
         if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.DEBUG))
         {
           bool = true;
-          break label1880;
+          break label1936;
         }
-        if (1 != ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.slW, 1)) {
-          break label2504;
+        if (1 != ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vWL, 1)) {
+          break label2602;
         }
         bool = true;
-        break label1880;
-        KjB = com.tencent.mm.cb.a.jn(paramContext) / 2 + com.tencent.mm.cb.a.fromDPToPix(paramContext, 30);
-        this.KjV = new com.tencent.mm.plugin.transvoice.ui.b(paramContext);
-        this.KjV.Gwa = new b.d()
+        break label1936;
+        Rko = com.tencent.mm.ci.a.kr(paramContext) / 2 + com.tencent.mm.ci.a.fromDPToPix(paramContext, 30);
+        this.RkI = new com.tencent.mm.plugin.transvoice.ui.b(paramContext);
+        this.RkI.Njt = new b.d()
         {
-          public final void aTP(final String paramAnonymousString)
+          public final void bfn(final String paramAnonymousString)
           {
-            AppMethodBeat.i(232236);
+            AppMethodBeat.i(271999);
             ChatFooter.this.postDelayed(new Runnable()
             {
               public final void run()
               {
-                AppMethodBeat.i(31506);
+                AppMethodBeat.i(185341);
                 Log.i("MicroMsg.ChatFooter", "onTxtMsgSend, msg is null or nil? %s.", new Object[] { Boolean.valueOf(Util.isNullOrNil(paramAnonymousString)) });
                 if ((ChatFooter.l(ChatFooter.this) != null) && (!Util.isNullOrNil(paramAnonymousString))) {
-                  ChatFooter.l(ChatFooter.this).aDN(paramAnonymousString);
+                  ChatFooter.l(ChatFooter.this).aNX(paramAnonymousString);
                 }
-                AppMethodBeat.o(31506);
+                AppMethodBeat.o(185341);
               }
             }, 200L);
-            AppMethodBeat.o(232236);
+            AppMethodBeat.o(271999);
           }
           
-          public final void aTQ(String paramAnonymousString)
+          public final void bfo(String paramAnonymousString)
           {
-            AppMethodBeat.i(232238);
+            AppMethodBeat.i(272004);
             if (ChatFooter.l(ChatFooter.this) != null) {
-              ChatFooter.l(ChatFooter.this).aDO(paramAnonymousString);
+              ChatFooter.l(ChatFooter.this).aNY(paramAnonymousString);
             }
-            AppMethodBeat.o(232238);
+            AppMethodBeat.o(272004);
           }
           
-          public final boolean b(String paramAnonymousString, Long paramAnonymousLong)
+          public final boolean d(String paramAnonymousString, Long paramAnonymousLong)
           {
-            AppMethodBeat.i(232237);
+            AppMethodBeat.i(272002);
             Log.i("MicroMsg.ChatFooter", "onVoiceMsgSend, fileName: %s.", new Object[] { paramAnonymousString });
             if (paramAnonymousLong != null) {}
             for (int i = paramAnonymousLong.intValue();; i = 0)
             {
               if (ChatFooter.l(ChatFooter.this) != null)
               {
-                boolean bool = ChatFooter.l(ChatFooter.this).eu(paramAnonymousString, i);
-                AppMethodBeat.o(232237);
+                boolean bool = ChatFooter.l(ChatFooter.this).eV(paramAnonymousString, i);
+                AppMethodBeat.o(272002);
                 return bool;
               }
-              AppMethodBeat.o(232237);
+              AppMethodBeat.o(272002);
               return false;
             }
           }
           
-          public final void fAI()
+          public final void gsJ()
           {
-            AppMethodBeat.i(232235);
-            if (ChatFooter.M(ChatFooter.this).isShowing()) {
-              ChatFooter.M(ChatFooter.this).dismiss();
+            AppMethodBeat.i(271997);
+            if (ChatFooter.N(ChatFooter.this).isShowing()) {
+              ChatFooter.N(ChatFooter.this).dismiss();
             }
-            ChatFooter.this.Kjf = true;
-            AppMethodBeat.o(232235);
+            ChatFooter.this.RjS = true;
+            AppMethodBeat.o(271997);
           }
         };
-        this.Kim.setOnTouchListener(new View.OnTouchListener()
+        this.RiW.setOnTouchListener(new View.OnTouchListener()
         {
           public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
           {
-            AppMethodBeat.i(232239);
-            if (paramAnonymousView != ChatFooter.A(ChatFooter.this))
+            AppMethodBeat.i(289890);
+            if (paramAnonymousView != ChatFooter.B(ChatFooter.this))
             {
-              AppMethodBeat.o(232239);
+              AppMethodBeat.o(289890);
               return false;
             }
             switch (paramAnonymousMotionEvent.getAction())
@@ -1753,233 +1695,233 @@ public class ChatFooter
             }
             for (;;)
             {
-              AppMethodBeat.o(232239);
+              AppMethodBeat.o(289890);
               return true;
-              Log.i("MicroMsg.RcdBtnEvent", "on MotionEvent.ACTION_DOWN:[%d]", new Object[] { Integer.valueOf(ChatFooter.grm()) });
-              paramAnonymousView = com.tencent.mm.cj.a.Owq;
-              com.tencent.mm.cj.a.AQ(false);
-              ChatFooter.C(ChatFooter.this).ofl = System.currentTimeMillis();
-              ChatFooter.C(ChatFooter.this).GtK = ((int)paramAnonymousMotionEvent.getRawX());
-              ChatFooter.C(ChatFooter.this).GtL = ((int)paramAnonymousMotionEvent.getRawY());
-              ChatFooter.N(ChatFooter.this);
-              if ((ChatFooter.O(ChatFooter.this)) && (ChatFooter.L(ChatFooter.this) != null))
+              Log.i("MicroMsg.RcdBtnEvent", "on MotionEvent.ACTION_DOWN:[%d]", new Object[] { Integer.valueOf(ChatFooter.hml()) });
+              paramAnonymousView = com.tencent.mm.cq.a.VPo;
+              com.tencent.mm.cq.a.Ff(false);
+              ChatFooter.D(ChatFooter.this).rgW = System.currentTimeMillis();
+              ChatFooter.D(ChatFooter.this).Nhd = ((int)paramAnonymousMotionEvent.getRawX());
+              ChatFooter.D(ChatFooter.this).Nhe = ((int)paramAnonymousMotionEvent.getRawY());
+              ChatFooter.O(ChatFooter.this);
+              if ((ChatFooter.P(ChatFooter.this)) && (ChatFooter.M(ChatFooter.this) != null))
               {
-                ChatFooter.P(ChatFooter.this);
-                if (ChatFooter.Q(ChatFooter.this) != null) {
-                  ChatFooter.Q(ChatFooter.this).getBlurController().destroy();
-                }
+                ChatFooter.Q(ChatFooter.this);
                 if (ChatFooter.R(ChatFooter.this) != null) {
                   ChatFooter.R(ChatFooter.this).getBlurController().destroy();
                 }
+                if (ChatFooter.S(ChatFooter.this) != null) {
+                  ChatFooter.S(ChatFooter.this).getBlurController().destroy();
+                }
               }
-              Log.i("MicroMsg.RcdBtnEvent", "trans voice opener: %s, blur mode opener: %s.", new Object[] { Boolean.valueOf(ChatFooter.S(ChatFooter.this)), ChatFooter.T(ChatFooter.this) });
-              if (ChatFooter.S(ChatFooter.this)) {}
-              for (ChatFooter.C(ChatFooter.this).GtX = 1;; ChatFooter.C(ChatFooter.this).GtX = 0)
+              Log.i("MicroMsg.RcdBtnEvent", "trans voice opener: %s, blur mode opener: %s.", new Object[] { Boolean.valueOf(ChatFooter.T(ChatFooter.this)), ChatFooter.U(ChatFooter.this) });
+              if (ChatFooter.T(ChatFooter.this)) {}
+              for (ChatFooter.D(ChatFooter.this).Nhq = 1;; ChatFooter.D(ChatFooter.this).Nhq = 0)
               {
                 ChatFooter.a(ChatFooter.this, null);
                 long l = System.nanoTime();
                 ChatFooter.a(ChatFooter.this, new com.tencent.mm.modelvoiceaddr.h(String.valueOf(l & 0xFFFFFFFF)));
-                ChatFooter.E(ChatFooter.this).b(ChatFooter.D(ChatFooter.this));
+                ChatFooter.F(ChatFooter.this).b(ChatFooter.E(ChatFooter.this));
                 if ((ChatFooter.this.getContext() instanceof Activity)) {
                   ((Activity)ChatFooter.this.getContext()).getWindow().addFlags(128);
                 }
-                if ((ChatFooter.U(ChatFooter.this)) || (ChatFooter.V(ChatFooter.this))) {
+                if ((ChatFooter.V(ChatFooter.this)) || (ChatFooter.W(ChatFooter.this))) {
                   break;
                 }
-                ChatFooter.e(ChatFooter.this, true);
-                ChatFooter.A(ChatFooter.this).setBackgroundResource(2131234634);
-                ChatFooter.A(ChatFooter.this).setText(2131757295);
+                ChatFooter.f(ChatFooter.this, true);
+                ChatFooter.B(ChatFooter.this).setBackgroundResource(R.g.record_shape_press);
+                ChatFooter.B(ChatFooter.this).setText(R.l.chatfooter_releasetofinish);
                 if (ChatFooter.l(ChatFooter.this) != null) {
-                  ChatFooter.l(ChatFooter.this).ehN();
+                  ChatFooter.l(ChatFooter.this).eRu();
                 }
-                ChatFooter.A(ChatFooter.this).setContentDescription(ChatFooter.this.getContext().getString(2131757222));
+                ChatFooter.B(ChatFooter.this).setContentDescription(ChatFooter.this.getContext().getString(R.l.chat_footer_switch_press_btn));
                 break;
               }
-              if ((ChatFooter.L(ChatFooter.this) == null) || (!ChatFooter.L(ChatFooter.this).isShowing()))
+              if ((ChatFooter.M(ChatFooter.this) == null) || (!ChatFooter.M(ChatFooter.this).isShowing()))
               {
-                if (ChatFooter.L(ChatFooter.this) == null) {}
+                if (ChatFooter.M(ChatFooter.this) == null) {}
                 for (boolean bool = true;; bool = false)
                 {
                   Log.e("MicroMsg.RcdBtnEvent", "hint window status err, window is null: %s.", new Object[] { Boolean.valueOf(bool) });
                   break;
                 }
               }
-              if (ChatFooter.S(ChatFooter.this))
+              if (ChatFooter.T(ChatFooter.this))
               {
-                if ((ChatFooter.W(ChatFooter.this) == null) || (ChatFooter.X(ChatFooter.this) == null)) {
-                  Log.e("MicroMsg.RcdBtnEvent", "[arthurdan.initRcdBtn] Notice!!! voice2txtRealHintArea is %s, voice2txtOpeLayout is %s.", new Object[] { ChatFooter.W(ChatFooter.this), ChatFooter.X(ChatFooter.this) });
+                if ((ChatFooter.X(ChatFooter.this) == null) || (ChatFooter.Y(ChatFooter.this) == null)) {
+                  Log.e("MicroMsg.RcdBtnEvent", "[arthurdan.initRcdBtn] Notice!!! voice2txtRealHintArea is %s, voice2txtOpeLayout is %s.", new Object[] { ChatFooter.X(ChatFooter.this), ChatFooter.Y(ChatFooter.this) });
                 }
-                if ((paramAnonymousMotionEvent.getX() > 0.0F) && (paramAnonymousMotionEvent.getY() > -ChatFooter.Y(ChatFooter.this) / 3) && (paramAnonymousMotionEvent.getX() < ChatFooter.A(ChatFooter.this).getWidth()))
+                if ((paramAnonymousMotionEvent.getX() > 0.0F) && (paramAnonymousMotionEvent.getY() > -ChatFooter.Z(ChatFooter.this) / 3) && (paramAnonymousMotionEvent.getX() < ChatFooter.B(ChatFooter.this).getWidth()))
                 {
-                  if (ChatFooter.Z(ChatFooter.this) != ChatFooter.l.KmM)
+                  if (ChatFooter.aa(ChatFooter.this) != ChatFooter.l.Rny)
                   {
                     Log.i("MicroMsg.RcdBtnEvent", "active MODE_HINT_1.");
-                    ChatFooter.a(ChatFooter.this, ChatFooter.l.KmM);
-                    if (ChatFooter.aa(ChatFooter.this))
+                    ChatFooter.a(ChatFooter.this, ChatFooter.l.Rny);
+                    if (ChatFooter.ab(ChatFooter.this))
                     {
-                      ChatFooter.ab(ChatFooter.this).animate().cancel();
                       ChatFooter.ac(ChatFooter.this).animate().cancel();
-                      if (ChatFooter.j.KmE == ChatFooter.T(ChatFooter.this))
+                      ChatFooter.ad(ChatFooter.this).animate().cancel();
+                      if (ChatFooter.j.Rnq == ChatFooter.U(ChatFooter.this))
                       {
-                        ChatFooter.Q(ChatFooter.this).setAlpha(0.5F);
-                        ChatFooter.Q(ChatFooter.this).animate().alpha(1.0F).setDuration(300L).start();
-                        ChatFooter.Q(ChatFooter.this).alW(ChatFooter.this.getResources().getColor(2131101312)).F(ChatFooter.e(ChatFooter.this).getWindow().getDecorView().getBackground()).BJ(true);
+                        ChatFooter.R(ChatFooter.this).setAlpha(0.5F);
+                        ChatFooter.R(ChatFooter.this).animate().alpha(1.0F).setDuration(300L).start();
+                        ChatFooter.R(ChatFooter.this).auW(ChatFooter.this.getResources().getColor(R.e.dkM)).L(ChatFooter.e(ChatFooter.this).getWindow().getDecorView().getBackground()).Gd(true);
                       }
                       for (;;)
                       {
-                        ChatFooter.M(ChatFooter.this).getContentView().animate().alpha(0.0F).setDuration(200L).start();
-                        ChatFooter.ad(ChatFooter.this).setVisibility(0);
-                        ChatFooter.ae(ChatFooter.this).setVisibility(8);
-                        ChatFooter.X(ChatFooter.this).setVisibility(8);
-                        ChatFooter.a(ChatFooter.this, ChatFooter.k.KmH);
-                        ChatFooter.af(ChatFooter.this);
+                        ChatFooter.N(ChatFooter.this).getContentView().animate().alpha(0.0F).setDuration(200L).start();
+                        ChatFooter.ae(ChatFooter.this).setVisibility(0);
+                        ChatFooter.af(ChatFooter.this).setVisibility(8);
+                        ChatFooter.Y(ChatFooter.this).setVisibility(8);
+                        ChatFooter.a(ChatFooter.this, ChatFooter.k.Rnt);
+                        ChatFooter.ag(ChatFooter.this);
                         break;
-                        ChatFooter.W(ChatFooter.this).setBackgroundResource(2131235439);
+                        ChatFooter.X(ChatFooter.this).setBackgroundResource(R.g.dpt);
                       }
                     }
                   }
                 }
                 else
                 {
-                  if (ChatFooter.Z(ChatFooter.this) != ChatFooter.l.KmN)
+                  if (ChatFooter.aa(ChatFooter.this) != ChatFooter.l.Rnz)
                   {
                     Log.i("MicroMsg.RcdBtnEvent", "active MODE_HINT_2.");
-                    ChatFooter.a(ChatFooter.this, ChatFooter.l.KmN);
-                    if (!ChatFooter.aa(ChatFooter.this)) {
-                      ChatFooter.ag(ChatFooter.this);
+                    ChatFooter.a(ChatFooter.this, ChatFooter.l.Rnz);
+                    if (!ChatFooter.ab(ChatFooter.this)) {
+                      ChatFooter.ah(ChatFooter.this);
                     }
-                    Log.i("MicroMsg.RcdBtnEvent", "init rx: %f, x: %f, shw: %d.", new Object[] { Float.valueOf(paramAnonymousMotionEvent.getRawX()), Float.valueOf(paramAnonymousMotionEvent.getX()), Integer.valueOf(ChatFooter.grn()) });
-                    if (paramAnonymousMotionEvent.getRawX() > ChatFooter.grn())
+                    Log.i("MicroMsg.RcdBtnEvent", "init rx: %f, x: %f, shw: %d.", new Object[] { Float.valueOf(paramAnonymousMotionEvent.getRawX()), Float.valueOf(paramAnonymousMotionEvent.getX()), Integer.valueOf(ChatFooter.hmm()) });
+                    if (paramAnonymousMotionEvent.getRawX() > ChatFooter.hmm())
                     {
-                      ChatFooter.a(ChatFooter.this, ChatFooter.k.KmI);
+                      ChatFooter.a(ChatFooter.this, ChatFooter.k.Rnu);
                       Log.i("MicroMsg.RcdBtnEvent", "init MODE_TRANS");
-                      label1030:
-                      if (ChatFooter.j.KmE != ChatFooter.T(ChatFooter.this)) {
-                        break label1308;
+                      label1034:
+                      if (ChatFooter.j.Rnq != ChatFooter.U(ChatFooter.this)) {
+                        break label1312;
                       }
-                      ChatFooter.Q(ChatFooter.this).alW(0).F(null).BJ(false);
+                      ChatFooter.R(ChatFooter.this).auW(0).L(null).Gd(false);
                     }
                     for (;;)
                     {
-                      ChatFooter.M(ChatFooter.this).getContentView().animate().alpha(1.0F).setDuration(200L).start();
-                      ChatFooter.ad(ChatFooter.this).setVisibility(8);
-                      ChatFooter.ae(ChatFooter.this).setVisibility(0);
-                      ChatFooter.X(ChatFooter.this).setVisibility(0);
-                      ChatFooter.ab(ChatFooter.this).setVisibility(0);
+                      ChatFooter.N(ChatFooter.this).getContentView().animate().alpha(1.0F).setDuration(200L).start();
+                      ChatFooter.ae(ChatFooter.this).setVisibility(8);
+                      ChatFooter.af(ChatFooter.this).setVisibility(0);
+                      ChatFooter.Y(ChatFooter.this).setVisibility(0);
                       ChatFooter.ac(ChatFooter.this).setVisibility(0);
-                      ChatFooter.ab(ChatFooter.this).setAlpha(0.0F);
+                      ChatFooter.ad(ChatFooter.this).setVisibility(0);
                       ChatFooter.ac(ChatFooter.this).setAlpha(0.0F);
-                      ChatFooter.ab(ChatFooter.this).animate().translationX(ChatFooter.aj(ChatFooter.this)).translationY(ChatFooter.ai(ChatFooter.this)).scaleX(1.0F).scaleY(1.0F).alpha(1.0F).setDuration(150L).withEndAction(ChatFooter.ah(ChatFooter.this)).start();
-                      ChatFooter.ac(ChatFooter.this).animate().translationX(ChatFooter.aj(ChatFooter.this)).translationY(ChatFooter.ai(ChatFooter.this)).scaleX(1.0F).scaleY(1.0F).alpha(1.0F).setDuration(150L).start();
+                      ChatFooter.ad(ChatFooter.this).setAlpha(0.0F);
+                      ChatFooter.ac(ChatFooter.this).animate().translationX(ChatFooter.ak(ChatFooter.this)).translationY(ChatFooter.aj(ChatFooter.this)).scaleX(1.0F).scaleY(1.0F).alpha(1.0F).setDuration(150L).withEndAction(ChatFooter.ai(ChatFooter.this)).start();
+                      ChatFooter.ad(ChatFooter.this).animate().translationX(ChatFooter.ak(ChatFooter.this)).translationY(ChatFooter.aj(ChatFooter.this)).scaleX(1.0F).scaleY(1.0F).alpha(1.0F).setDuration(150L).start();
                       break;
-                      ChatFooter.a(ChatFooter.this, ChatFooter.k.KmJ);
+                      ChatFooter.a(ChatFooter.this, ChatFooter.k.Rnv);
                       Log.i("MicroMsg.RcdBtnEvent", "init MODE_CANCEL");
-                      break label1030;
-                      label1308:
-                      ChatFooter.W(ChatFooter.this).setBackgroundColor(0);
+                      break label1034;
+                      label1312:
+                      ChatFooter.X(ChatFooter.this).setBackgroundColor(0);
                     }
                   }
-                  if (ChatFooter.ak(ChatFooter.this))
+                  if (ChatFooter.al(ChatFooter.this))
                   {
-                    Log.i("MicroMsg.RcdBtnEvent", "active rx: %f, x: %f, shw: %d.", new Object[] { Float.valueOf(paramAnonymousMotionEvent.getRawX()), Float.valueOf(paramAnonymousMotionEvent.getX()), Integer.valueOf(ChatFooter.grn()) });
-                    if ((paramAnonymousMotionEvent.getRawX() > ChatFooter.grn()) && (ChatFooter.k.KmI != ChatFooter.al(ChatFooter.this)))
+                    Log.i("MicroMsg.RcdBtnEvent", "active rx: %f, x: %f, shw: %d.", new Object[] { Float.valueOf(paramAnonymousMotionEvent.getRawX()), Float.valueOf(paramAnonymousMotionEvent.getX()), Integer.valueOf(ChatFooter.hmm()) });
+                    if ((paramAnonymousMotionEvent.getRawX() > ChatFooter.hmm()) && (ChatFooter.k.Rnu != ChatFooter.am(ChatFooter.this)))
                     {
                       Log.i("MicroMsg.RcdBtnEvent", "active MODE_TRANS.");
-                      ChatFooter.a(ChatFooter.this, ChatFooter.k.KmI);
-                      ChatFooter.ae(ChatFooter.this).setText(ChatFooter.this.getResources().getText(2131767150));
-                      ChatFooter.am(ChatFooter.this);
+                      ChatFooter.a(ChatFooter.this, ChatFooter.k.Rnu);
+                      ChatFooter.af(ChatFooter.this).setText(ChatFooter.this.getResources().getText(R.l.eUJ));
                       ChatFooter.an(ChatFooter.this);
+                      ChatFooter.ao(ChatFooter.this);
                     }
-                    else if ((paramAnonymousMotionEvent.getRawX() <= ChatFooter.grn()) && (ChatFooter.k.KmJ != ChatFooter.al(ChatFooter.this)))
+                    else if ((paramAnonymousMotionEvent.getRawX() <= ChatFooter.hmm()) && (ChatFooter.k.Rnv != ChatFooter.am(ChatFooter.this)))
                     {
                       Log.i("MicroMsg.RcdBtnEvent", "active MODE_CANCEL.");
-                      ChatFooter.a(ChatFooter.this, ChatFooter.k.KmJ);
-                      ChatFooter.ae(ChatFooter.this).setText(ChatFooter.this.getResources().getText(2131767146));
-                      ChatFooter.ao(ChatFooter.this);
+                      ChatFooter.a(ChatFooter.this, ChatFooter.k.Rnv);
+                      ChatFooter.af(ChatFooter.this).setText(ChatFooter.this.getResources().getText(R.l.eUH));
                       ChatFooter.ap(ChatFooter.this);
+                      ChatFooter.aq(ChatFooter.this);
                     }
                   }
                 }
               }
               else
               {
-                if ((ChatFooter.aq(ChatFooter.this) == null) || (ChatFooter.ar(ChatFooter.this) == null)) {
-                  Log.e("MicroMsg.RcdBtnEvent", "[arthurdan.initRcdBtn] Notice!!! rcdAnimArea is %s, rcdCancelArea is %s", new Object[] { ChatFooter.aq(ChatFooter.this), ChatFooter.ar(ChatFooter.this) });
+                if ((ChatFooter.ar(ChatFooter.this) == null) || (ChatFooter.as(ChatFooter.this) == null)) {
+                  Log.e("MicroMsg.RcdBtnEvent", "[arthurdan.initRcdBtn] Notice!!! rcdAnimArea is %s, rcdCancelArea is %s", new Object[] { ChatFooter.ar(ChatFooter.this), ChatFooter.as(ChatFooter.this) });
                 }
-                if ((paramAnonymousMotionEvent.getX() > 0.0F) && (paramAnonymousMotionEvent.getY() > -ChatFooter.Y(ChatFooter.this) / 2) && (paramAnonymousMotionEvent.getX() < ChatFooter.A(ChatFooter.this).getWidth()))
+                if ((paramAnonymousMotionEvent.getX() > 0.0F) && (paramAnonymousMotionEvent.getY() > -ChatFooter.Z(ChatFooter.this) / 2) && (paramAnonymousMotionEvent.getX() < ChatFooter.B(ChatFooter.this).getWidth()))
                 {
-                  if (ChatFooter.aq(ChatFooter.this) != null) {
-                    ChatFooter.aq(ChatFooter.this).setVisibility(0);
+                  if (ChatFooter.ar(ChatFooter.this) != null) {
+                    ChatFooter.ar(ChatFooter.this).setVisibility(0);
                   }
-                  if (ChatFooter.ar(ChatFooter.this) != null)
+                  if (ChatFooter.as(ChatFooter.this) != null)
                   {
-                    ChatFooter.A(ChatFooter.this).setText(2131757295);
-                    ChatFooter.ar(ChatFooter.this).setVisibility(8);
+                    ChatFooter.B(ChatFooter.this).setText(R.l.chatfooter_releasetofinish);
+                    ChatFooter.as(ChatFooter.this).setVisibility(8);
                   }
                 }
                 else
                 {
-                  if (ChatFooter.aq(ChatFooter.this) != null) {
-                    ChatFooter.aq(ChatFooter.this).setVisibility(8);
+                  if (ChatFooter.ar(ChatFooter.this) != null) {
+                    ChatFooter.ar(ChatFooter.this).setVisibility(8);
                   }
-                  if (ChatFooter.ar(ChatFooter.this) != null)
+                  if (ChatFooter.as(ChatFooter.this) != null)
                   {
-                    ChatFooter.A(ChatFooter.this).setTextSize(0, com.tencent.mm.cb.a.aH(ChatFooter.this.getContext(), 2131165535) * com.tencent.mm.cb.a.ji(ChatFooter.this.getContext()));
-                    ChatFooter.A(ChatFooter.this).setText(2131757279);
-                    ChatFooter.ar(ChatFooter.this).setVisibility(0);
+                    ChatFooter.B(ChatFooter.this).setTextSize(0, com.tencent.mm.ci.a.aZ(ChatFooter.this.getContext(), R.f.NormalTextSize) * com.tencent.mm.ci.a.km(ChatFooter.this.getContext()));
+                    ChatFooter.B(ChatFooter.this).setText(R.l.chatfooter_cancel_tips);
+                    ChatFooter.as(ChatFooter.this).setVisibility(0);
                     continue;
-                    ChatFooter.E(ChatFooter.this).fAr();
+                    ChatFooter.F(ChatFooter.this).gss();
                     if ((ChatFooter.this.getContext() instanceof Activity)) {
                       ((Activity)ChatFooter.this.getContext()).getWindow().clearFlags(128);
                     }
-                    ChatFooter.C(ChatFooter.this).GtM = System.currentTimeMillis();
-                    ChatFooter.C(ChatFooter.this).GtN = ((int)paramAnonymousMotionEvent.getRawX());
-                    ChatFooter.C(ChatFooter.this).GtO = ((int)paramAnonymousMotionEvent.getRawY());
-                    Log.i("MicroMsg.RcdBtnEvent", "enter on MotionEvent.ACTION_UP/ACTION_CANCEL:[%d]", new Object[] { Integer.valueOf(ChatFooter.grm()) });
-                    ChatFooter.this.gqR();
-                    Log.i("MicroMsg.RcdBtnEvent", "enter on MotionEvent.ACTION_UP/ACTION_CANCEL:[%d]", new Object[] { Integer.valueOf(ChatFooter.gro()) });
+                    ChatFooter.D(ChatFooter.this).Nhf = System.currentTimeMillis();
+                    ChatFooter.D(ChatFooter.this).Nhg = ((int)paramAnonymousMotionEvent.getRawX());
+                    ChatFooter.D(ChatFooter.this).Nhh = ((int)paramAnonymousMotionEvent.getRawY());
+                    Log.i("MicroMsg.RcdBtnEvent", "enter on MotionEvent.ACTION_UP/ACTION_CANCEL:[%d]", new Object[] { Integer.valueOf(ChatFooter.hml()) });
+                    ChatFooter.this.hlQ();
+                    Log.i("MicroMsg.RcdBtnEvent", "enter on MotionEvent.ACTION_UP/ACTION_CANCEL:[%d]", new Object[] { Integer.valueOf(ChatFooter.hmn()) });
                   }
                 }
               }
             }
           }
         });
-        this.Kim.setOnKeyListener(new View.OnKeyListener()
+        this.RiW.setOnKeyListener(new View.OnKeyListener()
         {
           public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
           {
-            AppMethodBeat.i(232240);
+            AppMethodBeat.i(280181);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bm(paramAnonymousView);
-            localb.pH(paramAnonymousInt);
-            localb.bm(paramAnonymousKeyEvent);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$29", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.axR());
+            localb.bn(paramAnonymousView);
+            localb.sg(paramAnonymousInt);
+            localb.bn(paramAnonymousKeyEvent);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$31", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.aFi());
             switch (paramAnonymousKeyEvent.getAction())
             {
             }
             for (;;)
             {
-              com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$29", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
-              AppMethodBeat.o(232240);
+              com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$31", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
+              AppMethodBeat.o(280181);
               return false;
-              if (((paramAnonymousInt == 23) || (paramAnonymousInt == 66)) && (!ChatFooter.V(ChatFooter.this)) && (!ChatFooter.U(ChatFooter.this)))
+              if (((paramAnonymousInt == 23) || (paramAnonymousInt == 66)) && (!ChatFooter.W(ChatFooter.this)) && (!ChatFooter.V(ChatFooter.this)))
               {
-                ChatFooter.f(ChatFooter.this, true);
-                ChatFooter.A(ChatFooter.this).setBackgroundResource(2131234634);
-                ChatFooter.A(ChatFooter.this).setText(2131757295);
+                ChatFooter.g(ChatFooter.this, true);
+                ChatFooter.B(ChatFooter.this).setBackgroundResource(R.g.record_shape_press);
+                ChatFooter.B(ChatFooter.this).setText(R.l.chatfooter_releasetofinish);
                 if (ChatFooter.l(ChatFooter.this) != null) {
-                  ChatFooter.l(ChatFooter.this).ehN();
+                  ChatFooter.l(ChatFooter.this).eRu();
                 }
-                ChatFooter.A(ChatFooter.this).setContentDescription(ChatFooter.this.getContext().getString(2131757222));
+                ChatFooter.B(ChatFooter.this).setContentDescription(ChatFooter.this.getContext().getString(R.l.chat_footer_switch_press_btn));
                 continue;
                 if ((paramAnonymousInt == 23) || (paramAnonymousInt == 66))
                 {
-                  ChatFooter.A(ChatFooter.this).setBackgroundResource(2131233164);
-                  ChatFooter.A(ChatFooter.this).setText(2131757294);
+                  ChatFooter.B(ChatFooter.this).setBackgroundResource(R.g.input_bg);
+                  ChatFooter.B(ChatFooter.this).setText(R.l.chatfooter_presstorcd);
                   if (ChatFooter.l(ChatFooter.this) != null) {
-                    ChatFooter.l(ChatFooter.this).ehI();
+                    ChatFooter.l(ChatFooter.this).eRp();
                   }
-                  ChatFooter.f(ChatFooter.this, false);
+                  ChatFooter.g(ChatFooter.this, false);
                 }
               }
             }
@@ -1989,49 +1931,57 @@ public class ChatFooter
     }
   }
   
-  private void Ai(boolean paramBoolean)
+  private void Em(boolean paramBoolean)
+  {
+    AppMethodBeat.i(285099);
+    En(paramBoolean);
+    hlk();
+    AppMethodBeat.o(285099);
+  }
+  
+  private void Eo(boolean paramBoolean)
   {
     AppMethodBeat.i(31598);
     if (paramBoolean)
     {
-      this.Kiw.setVisibility(0);
-      this.Kiu.setVisibility(0);
-      aW(true, false);
+      this.Rjg.setVisibility(0);
+      this.Rje.setVisibility(0);
+      bi(true, false);
       AppMethodBeat.o(31598);
       return;
     }
-    this.Kiw.setVisibility(8);
-    this.Kiu.setVisibility(8);
-    aW(false, false);
+    this.Rjg.setVisibility(8);
+    this.Rje.setVisibility(8);
+    bi(false, false);
     AppMethodBeat.o(31598);
   }
   
-  private void Al(boolean paramBoolean)
+  private void Er(boolean paramBoolean)
   {
     AppMethodBeat.i(31673);
-    if (this.Kit == null)
+    if (this.Rjd == null)
     {
       AppMethodBeat.o(31673);
       return;
     }
-    if ((this.Kly) && (paramBoolean))
+    if ((this.Rml) && (paramBoolean))
     {
       AppMethodBeat.o(31673);
       return;
     }
-    if ((!this.Kly) && (!paramBoolean))
+    if ((!this.Rml) && (!paramBoolean))
     {
       AppMethodBeat.o(31673);
       return;
     }
-    this.Kly = paramBoolean;
+    this.Rml = paramBoolean;
     if (paramBoolean)
     {
-      this.Kit.setImageDrawable(getContext().getResources().getDrawable(2131231777));
+      this.Rjd.setImageDrawable(getContext().getResources().getDrawable(R.g.chatting_setmode_keyboard_btn));
       AppMethodBeat.o(31673);
       return;
     }
-    this.Kit.setImageDrawable(getContext().getResources().getDrawable(2131690793));
+    this.Rjd.setImageDrawable(getContext().getResources().getDrawable(R.k.icons_outlined_emoji));
     AppMethodBeat.o(31673);
   }
   
@@ -2040,11 +1990,11 @@ public class ChatFooter
     AppMethodBeat.i(31658);
     if (paramBoolean)
     {
-      if (this.rum == null) {
-        gqm();
+      if (this.jPN == null) {
+        hll();
       }
-      this.rum.animate().cancel();
-      if ((this.rum.getVisibility() == 0) && (this.rum.getAlpha() == 1.0F))
+      this.jPN.animate().cancel();
+      if ((this.jPN.getVisibility() == 0) && (this.jPN.getAlpha() == 1.0F))
       {
         if (paramRunnable != null)
         {
@@ -2054,14 +2004,14 @@ public class ChatFooter
       }
       else
       {
-        this.rum.setVisibility(0);
-        this.rum.setAlpha(0.0F);
-        this.rum.animate().setDuration(200L).alpha(1.0F).withEndAction(paramRunnable).start();
-        this.rum.setToSendText(this.ECK.getText().toString());
+        this.jPN.setVisibility(0);
+        this.jPN.setAlpha(0.0F);
+        this.jPN.animate().setDuration(200L).alpha(1.0F).withEndAction(paramRunnable).start();
+        this.jPN.setToSendText(this.KQB.getText().toString());
         AppMethodBeat.o(31658);
       }
     }
-    else if ((this.rum == null) || (this.rum.getVisibility() == 4) || (this.rum.getAlpha() == 0.0F))
+    else if ((this.jPN == null) || (this.jPN.getVisibility() == 4) || (this.jPN.getAlpha() == 0.0F))
     {
       if (paramRunnable != null)
       {
@@ -2071,17 +2021,17 @@ public class ChatFooter
     }
     else
     {
-      this.rum.animate().cancel();
-      this.rum.animate().setDuration(200L).alpha(0.0F).withEndAction(new Runnable()
+      this.jPN.animate().cancel();
+      this.jPN.animate().setDuration(200L).alpha(0.0F).withEndAction(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(232265);
-          ChatFooter.y(ChatFooter.this).setVisibility(4);
+          AppMethodBeat.i(272418);
+          ChatFooter.z(ChatFooter.this).setVisibility(4);
           if (paramRunnable != null) {
             paramRunnable.run();
           }
-          AppMethodBeat.o(232265);
+          AppMethodBeat.o(272418);
         }
       }).start();
     }
@@ -2093,11 +2043,11 @@ public class ChatFooter
     AppMethodBeat.i(163216);
     if (paramBoolean)
     {
-      if (this.Kik == null) {
-        gqn();
+      if (this.RiU == null) {
+        hlm();
       }
-      this.Kik.animate().cancel();
-      if ((this.Kik.getVisibility() == 0) && (this.Kik.getAlpha() == 1.0F)) {
+      this.RiU.animate().cancel();
+      if ((this.RiU.getVisibility() == 0) && (this.RiU.getAlpha() == 1.0F)) {
         if (paramRunnable != null) {
           paramRunnable.run();
         }
@@ -2105,150 +2055,138 @@ public class ChatFooter
     }
     for (;;)
     {
-      this.ECK.gYF();
+      this.KQB.hZw();
       AppMethodBeat.o(163216);
       return;
       setAppPanelVisible(0);
-      this.Kik.setAlpha(0.0F);
-      this.Kik.animate().setDuration(200L).alpha(1.0F).withEndAction(paramRunnable).setListener(new Animator.AnimatorListener()
+      this.RiU.setAlpha(0.0F);
+      this.RiU.animate().setDuration(200L).alpha(1.0F).withEndAction(paramRunnable).setListener(new Animator.AnimatorListener()
       {
         public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
         
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(232264);
+          AppMethodBeat.i(280739);
           ChatFooter.bo(ChatFooter.this);
           ChatFooter.bp(ChatFooter.this).animate().setListener(null);
-          AppMethodBeat.o(232264);
+          AppMethodBeat.o(280739);
         }
         
         public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
         
         public final void onAnimationStart(Animator paramAnonymousAnimator) {}
       }).start();
-      this.Kik.setUncertainEnterLocation(paramInt);
-      this.Kik.refresh();
+      this.RiU.setUncertainEnterLocation(paramInt);
+      this.RiU.bfU();
       continue;
-      this.Kik.animate().cancel();
-      if ((this.Kik.getVisibility() == 4) || (this.Kik.getAlpha() == 0.0F))
+      this.RiU.animate().cancel();
+      if ((this.RiU.getVisibility() == 4) || (this.RiU.getAlpha() == 0.0F))
       {
         if (paramRunnable != null) {
           paramRunnable.run();
         }
       }
       else {
-        this.Kik.animate().setDuration(200L).alpha(0.0F).withEndAction(new Runnable()
+        this.RiU.animate().setDuration(200L).alpha(0.0F).withEndAction(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(185796);
+            AppMethodBeat.i(290224);
             ChatFooter.this.setAppPanelVisible(4);
             if (paramRunnable != null) {
               paramRunnable.run();
             }
-            AppMethodBeat.o(185796);
+            AppMethodBeat.o(290224);
           }
         });
       }
     }
   }
   
-  private void aR(int paramInt1, int paramInt2, int paramInt3)
+  private void aV(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(185825);
     if (1 == paramInt3) {}
     for (boolean bool = true; ((paramInt1 == 1) || (paramInt1 == 2) || (paramInt1 == 3) || (paramInt1 == 4)) && (paramInt2 == 0); bool = false)
     {
-      if (this.Kjp == null) {
+      if (this.Rkc == null) {
         break label111;
       }
-      this.Kjp.BP(bool);
+      this.Rkc.Gk(bool);
       AppMethodBeat.o(185825);
       return;
     }
-    if ((paramInt1 == 0) && ((paramInt2 == 1) || (paramInt2 == 2) || (paramInt2 == 3) || (paramInt2 == 4)) && (this.Kjp != null)) {
-      this.Kjp.BQ(bool);
+    if ((paramInt1 == 0) && ((paramInt2 == 1) || (paramInt2 == 2) || (paramInt2 == 3) || (paramInt2 == 4)) && (this.Rkc != null)) {
+      this.Rkc.Gl(bool);
     }
     label111:
     AppMethodBeat.o(185825);
   }
   
-  private void aW(boolean paramBoolean1, boolean paramBoolean2)
+  private void appendText(String paramString)
   {
-    AppMethodBeat.i(31599);
-    if (paramBoolean1)
+    AppMethodBeat.i(285100);
+    if (this.KQB == null)
     {
-      if ((this.Kix.getTag() != null) && ((this.Kix.getTag() instanceof ca)))
-      {
-        this.Kix.setVisibility(0);
-        ca localca = (ca)this.Kix.getTag();
-        this.Kiy.setText(com.tencent.mm.pluginsdk.ui.span.l.c(getContext(), com.tencent.mm.plugin.msgquote.model.a.a(getContext(), this.Kiy.getTextSize(), localca)));
-        AppMethodBeat.o(31599);
-        return;
-      }
-      this.Kix.setVisibility(8);
-      AppMethodBeat.o(31599);
+      AppMethodBeat.o(285100);
       return;
     }
-    if (paramBoolean2)
-    {
-      this.Kix.setTag(null);
-      this.Kiy.setText("");
-    }
-    this.Kix.setVisibility(8);
-    AppMethodBeat.o(31599);
+    this.KQB.append(paramString);
+    this.KQB.setSelection(this.KQB.getText().length());
+    this.KQB.hZB();
+    AppMethodBeat.o(285100);
   }
   
-  private void aiB(int paramInt)
+  private void aqD(int paramInt)
   {
     AppMethodBeat.i(31666);
-    if (paramInt == this.KiY)
+    if (paramInt == this.jJL)
     {
       AppMethodBeat.o(31666);
       return;
     }
-    if (this.han.getVisibility() == 8) {
-      gqP();
+    if (this.jLo.getVisibility() == 8) {
+      hlO();
     }
-    if (((paramInt == 0) && (this.Kiu.getVisibility() == 8)) || (paramInt == 3) || ((paramInt == 0) && (this.Kiu.getVisibility() == 8))) {
-      gqP();
+    if (((paramInt == 0) && (this.Rje.getVisibility() == 8)) || (paramInt == 3) || ((paramInt == 0) && (this.Rje.getVisibility() == 8))) {
+      hlO();
     }
     AppMethodBeat.o(31666);
   }
   
-  private void aiC(int paramInt)
+  private void aqE(int paramInt)
   {
     AppMethodBeat.i(31680);
     Log.i("MicroMsg.ChatFooter", "[refreshBottomHeight] keyborPx:%d", new Object[] { Integer.valueOf(paramInt) });
     com.tencent.mm.compatible.util.i.setFixedHeight(false);
     int i;
-    if ((as.bjp(this.Kij)) || (as.bjq(this.Kij)))
+    if ((as.bvK(this.RiT)) || (as.bvL(this.RiT)))
     {
       paramInt = com.tencent.mm.compatible.util.i.getValidPanelHeight(getContext(), paramInt, 43);
-      i = ad.bD(getContext());
-      if ((!this.KiX) || (this.Kje)) {
+      i = ad.bC(getContext());
+      if ((!this.RjL) || (this.RjR)) {
         break label367;
       }
     }
     label367:
-    for (this.Kjk = paramInt;; this.Kjk = KeyBoardUtil.getValidPanelHeight(getContext()))
+    for (this.RjX = paramInt;; this.RjX = KeyBoardUtil.getValidPanelHeight(getContext()))
     {
-      paramInt = Math.max(i, this.Kjk);
-      this.Kjl = paramInt;
-      if (paramInt != this.Kjj) {
-        this.Kjj = paramInt;
+      paramInt = Math.max(i, this.RjX);
+      this.RjY = paramInt;
+      if (paramInt != this.RjW) {
+        this.RjW = paramInt;
       }
-      Log.i("MicroMsg.ChatFooter", "refreshBottomHeight: %s, %s, %s, %s, %s", new Object[] { Boolean.valueOf(this.KiX), Boolean.valueOf(this.Kje), Integer.valueOf(this.Kjk), Integer.valueOf(this.Kjj), Boolean.valueOf(KeyBoardUtil.isPortOrientation(getContext())) });
-      Object localObject = this.Kip.getLayoutParams();
-      if ((localObject != null) && (((ViewGroup.LayoutParams)localObject).height != this.Kjj))
+      Log.i("MicroMsg.ChatFooter", "refreshBottomHeight: %s, %s, %s, %s, %s", new Object[] { Boolean.valueOf(this.RjL), Boolean.valueOf(this.RjR), Integer.valueOf(this.RjX), Integer.valueOf(this.RjW), Boolean.valueOf(KeyBoardUtil.isPortOrientation(getContext())) });
+      Object localObject = this.RiZ.getLayoutParams();
+      if ((localObject != null) && (((ViewGroup.LayoutParams)localObject).height != this.RjW))
       {
-        ((ViewGroup.LayoutParams)localObject).height = this.Kjj;
-        this.Kip.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        this.Kip.requestLayout();
+        ((ViewGroup.LayoutParams)localObject).height = this.RjW;
+        this.RiZ.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        this.RiZ.requestLayout();
       }
-      if (this.Kjb)
+      if (this.RjO)
       {
-        paramInt = -this.Kjj;
+        paramInt = -this.RjW;
         localObject = (ViewGroup.MarginLayoutParams)getLayoutParams();
         if ((localObject != null) && (((ViewGroup.MarginLayoutParams)localObject).bottomMargin != paramInt))
         {
@@ -2256,19 +2194,19 @@ public class ChatFooter
           setLayoutParams((ViewGroup.LayoutParams)localObject);
         }
       }
-      if (this.Kik != null)
+      if (this.RiU != null)
       {
-        this.Kik.setPortHeighPx(this.Kjk);
-        this.Kik.gpZ();
+        this.RiU.setPortHeighPx(this.RjX);
+        this.RiU.hkX();
       }
-      if (this.Kdp != null)
+      if (this.RdV != null)
       {
-        paramInt = this.Kjk + this.Kio.getHeight();
-        localObject = this.Kdp.getLayoutParams();
+        paramInt = this.RjX + this.RiY.getHeight();
+        localObject = this.RdV.getLayoutParams();
         if ((localObject != null) && (((ViewGroup.LayoutParams)localObject).height != paramInt))
         {
           ((ViewGroup.LayoutParams)localObject).height = paramInt;
-          this.Kdp.setLayoutParams((ViewGroup.LayoutParams)localObject);
+          this.RdV.setLayoutParams((ViewGroup.LayoutParams)localObject);
         }
       }
       AppMethodBeat.o(31680);
@@ -2278,74 +2216,86 @@ public class ChatFooter
     }
   }
   
-  private void aiw(int paramInt)
+  private void aqy(int paramInt)
   {
     AppMethodBeat.i(31593);
-    if (this.Kin == null)
+    if (this.RiX == null)
     {
       AppMethodBeat.o(31593);
       return;
     }
-    if (paramInt == 2131231778) {}
+    if (paramInt == R.g.dnf) {}
     for (int i = 1;; i = 0)
     {
-      if (this.Kin != null)
+      if (this.RiX != null)
       {
         if (i == 0) {
           break label83;
         }
-        this.Kin.setContentDescription(getContext().getString(2131757221));
+        this.RiX.setContentDescription(getContext().getString(R.l.chat_footer_switch_mode_voice_btn));
       }
       for (;;)
       {
-        this.Kin.setImageResource(paramInt);
-        this.Kin.setPadding(0, 0, 0, 0);
+        this.RiX.setImageResource(paramInt);
+        this.RiX.setPadding(0, 0, 0, 0);
         AppMethodBeat.o(31593);
         return;
         label83:
-        this.Kin.setContentDescription(getContext().getString(2131757220));
+        this.RiX.setContentDescription(getContext().getString(R.l.chat_footer_switch_mode_keybord_btn));
       }
     }
-  }
-  
-  private void appendText(String paramString)
-  {
-    AppMethodBeat.i(232296);
-    if (this.ECK == null)
-    {
-      AppMethodBeat.o(232296);
-      return;
-    }
-    this.ECK.append(paramString);
-    this.ECK.setSelection(this.ECK.getText().length());
-    this.ECK.gYJ();
-    AppMethodBeat.o(232296);
   }
   
   private void b(int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(185824);
-    gqM();
-    if (this.Kja != null)
+    hlL();
+    if (this.RjN != null)
     {
-      if ((this.Kji) && (this.KiY == 1))
+      if ((this.RjV) && (this.jJL == 1))
       {
-        this.Kja.c(0, false, paramInt2, paramInt3);
+        this.RjN.c(0, false, paramInt2, paramInt3);
         AppMethodBeat.o(185824);
         return;
       }
-      this.Kja.c(paramInt1, paramBoolean, paramInt2, paramInt3);
+      this.RjN.c(paramInt1, paramBoolean, paramInt2, paramInt3);
       AppMethodBeat.o(185824);
       return;
     }
-    if ((this.KiY == 0) || (this.KiY == 1)) {
-      this.Kip.setVisibility(8);
+    if ((this.jJL == 0) || (this.jJL == 1)) {
+      this.RiZ.setVisibility(8);
     }
     Log.e("MicroMsg.ChatFooter", "scrollParent: scrollParent is not ChattingScrollLayout");
     AppMethodBeat.o(185824);
   }
   
-  static boolean beY(String paramString)
+  private void bi(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(31599);
+    if (paramBoolean1)
+    {
+      if ((this.Rjh.getTag() != null) && ((this.Rjh.getTag() instanceof ca)))
+      {
+        this.Rjh.setVisibility(0);
+        ca localca = (ca)this.Rjh.getTag();
+        this.Rjl.setText(com.tencent.mm.pluginsdk.ui.span.l.c(getContext(), com.tencent.mm.plugin.msgquote.model.a.a(getContext(), this.Rjl.getTextSize(), localca)));
+        AppMethodBeat.o(31599);
+        return;
+      }
+      this.Rjh.setVisibility(8);
+      AppMethodBeat.o(31599);
+      return;
+    }
+    if (paramBoolean2)
+    {
+      this.Rjh.setTag(null);
+      this.Rjl.setText("");
+    }
+    this.Rjh.setVisibility(8);
+    AppMethodBeat.o(31599);
+  }
+  
+  static boolean bru(String paramString)
   {
     AppMethodBeat.i(163219);
     boolean bool = MultiProcessMMKV.getMMKV("plus_uncertain_enter").getBoolean(paramString, false);
@@ -2353,28 +2303,15 @@ public class ChatFooter
     return bool;
   }
   
-  private boolean dYe()
-  {
-    AppMethodBeat.i(31608);
-    if (this.KiC != null)
-    {
-      boolean bool = this.KiC.dYe();
-      AppMethodBeat.o(31608);
-      return bool;
-    }
-    AppMethodBeat.o(31608);
-    return false;
-  }
-  
-  private boolean db(String paramString, boolean paramBoolean)
+  private boolean jdMethod_do(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(179783);
-    if (gqQ())
+    if (hlP())
     {
       AppMethodBeat.o(179783);
       return false;
     }
-    if ((this.Kjy == null) || (Util.isNullOrNil(this.Kjy.getTalkerUserName())))
+    if ((this.Rkl == null) || (Util.isNullOrNil(this.Rkl.getTalkerUserName())))
     {
       Log.i("MicroMsg.ChatFooter", "ifInterceptGroupSolitatireMsg username == null");
       AppMethodBeat.o(179783);
@@ -2382,13 +2319,13 @@ public class ChatFooter
     }
     try
     {
-      String str = this.Kjy.getTalkerUserName();
-      if ((((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.j.class)).aBg(str)) && (paramBoolean))
+      String str = this.Rkl.getTalkerUserName();
+      if ((((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aKU(str)) && (paramBoolean))
       {
-        this.KiC.dYf();
+        this.Rjp.eBD();
         try
         {
-          localObject = ((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.emoji.b.a.class)).alW(paramString);
+          localObject = ((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.emoji.b.a.class)).atQ(paramString);
           paramString = (String)localObject;
         }
         catch (Exception localException)
@@ -2399,23 +2336,23 @@ public class ChatFooter
             Log.e("MicroMsg.ChatFooter", "ifInterceptGroupSolitatireMsg() emojiSoftBank2Unicode %s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
           }
           com.tencent.mm.plugin.groupsolitaire.b.b.b(locala1);
-          locala2 = com.tencent.mm.plugin.groupsolitaire.b.b.a(localException, this.KiC.ygN, locala1);
-          if (!locala2.yfF) {
+          locala2 = com.tencent.mm.plugin.groupsolitaire.b.b.a(localException, this.Rjp.DqP, locala1);
+          if (!locala2.DpH) {
             break label296;
           }
           com.tencent.mm.plugin.groupsolitaire.b.b.c(locala2);
           label296:
-          locala2.field_lastActiveTime = cl.aWB();
+          locala2.field_lastActiveTime = cm.bfF();
           if (locala1 == null) {
             break label391;
           }
         }
-        localObject = ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ah(PluginGroupSolitaire.class)).getGroupSolitatireManager().ia(paramString, str);
+        localObject = ((PluginGroupSolitaire)com.tencent.mm.kernel.h.ag(PluginGroupSolitaire.class)).getGroupSolitatireManager().ij(paramString, str);
         if ((((Integer)((Pair)localObject).first).intValue() > 0) && (((Pair)localObject).second != null))
         {
           localObject = (com.tencent.mm.plugin.groupsolitaire.c.a)((Pair)localObject).second;
-          com.tencent.mm.plugin.groupsolitaire.b.b.a(str, z.aTY(), (com.tencent.mm.plugin.groupsolitaire.c.a)localObject);
-          com.tencent.mm.plugin.groupsolitaire.c.a locala1 = com.tencent.mm.plugin.groupsolitaire.b.b.a((com.tencent.mm.plugin.groupsolitaire.c.a)localObject, ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ah(PluginGroupSolitaire.class)).getGroupSolitatireStorage().r(str, ((com.tencent.mm.plugin.groupsolitaire.c.a)localObject).field_key, true), z.aTY(), 1);
+          com.tencent.mm.plugin.groupsolitaire.b.b.a(str, z.bcZ(), (com.tencent.mm.plugin.groupsolitaire.c.a)localObject);
+          com.tencent.mm.plugin.groupsolitaire.c.a locala1 = com.tencent.mm.plugin.groupsolitaire.b.b.a((com.tencent.mm.plugin.groupsolitaire.c.a)localObject, ((PluginGroupSolitaire)com.tencent.mm.kernel.h.ag(PluginGroupSolitaire.class)).getGroupSolitatireStorage().t(str, ((com.tencent.mm.plugin.groupsolitaire.c.a)localObject).field_key, true), z.bcZ(), 1);
           if (locala1 == null)
           {
             Log.i("MicroMsg.ChatFooter", "ifInterceptGroupSolitatireMsg storageGroupSolitatire == null");
@@ -2425,16 +2362,16 @@ public class ChatFooter
           com.tencent.mm.plugin.groupsolitaire.c.a locala2;
           paramBoolean = true;
           com.tencent.mm.plugin.groupsolitaire.b.b.a(locala2, paramBoolean, true);
-          PluginGroupSolitaire localPluginGroupSolitaire = (PluginGroupSolitaire)com.tencent.mm.kernel.g.ah(PluginGroupSolitaire.class);
+          PluginGroupSolitaire localPluginGroupSolitaire = (PluginGroupSolitaire)com.tencent.mm.kernel.h.ag(PluginGroupSolitaire.class);
           if (locala1.field_active == 0) {}
           for (paramBoolean = true;; paramBoolean = false)
           {
             localPluginGroupSolitaire.sendGroupSolitatire(paramString, str, localException, locala2, locala1, paramBoolean);
-            if (this.KiD != null) {
-              this.KiD.aBt(paramString);
+            if (this.Rjq != null) {
+              this.Rjq.aLh(paramString);
             }
-            this.KiC.reset();
-            gqj();
+            this.Rjp.reset();
+            hlh();
             AppMethodBeat.o(179783);
             return true;
             label391:
@@ -2454,20 +2391,33 @@ public class ChatFooter
     return false;
   }
   
+  private boolean eBC()
+  {
+    AppMethodBeat.i(31608);
+    if (this.Rjp != null)
+    {
+      boolean bool = this.Rjp.eBC();
+      AppMethodBeat.o(31608);
+      return bool;
+    }
+    AppMethodBeat.o(31608);
+    return false;
+  }
+  
   private int getDefaultLangType()
   {
     AppMethodBeat.i(185418);
-    int i = com.tencent.mm.modelvoiceaddr.g.jwp;
+    int i = com.tencent.mm.modelvoiceaddr.g.mlS;
     String str = LocaleUtil.getCurrentLanguage(getContext());
     if ((str.equals("zh_CN")) || (str.equals("zh_HK")) || (str.equals("zh_TW"))) {
-      i = com.tencent.mm.modelvoiceaddr.g.jwq;
+      i = com.tencent.mm.modelvoiceaddr.g.mlT;
     }
     for (;;)
     {
       AppMethodBeat.o(185418);
       return i;
       if (str.equals("en")) {
-        i = com.tencent.mm.modelvoiceaddr.g.jws;
+        i = com.tencent.mm.modelvoiceaddr.g.mlV;
       }
     }
   }
@@ -2476,21 +2426,21 @@ public class ChatFooter
   {
     AppMethodBeat.i(185417);
     SharedPreferences localSharedPreferences = getContext().getSharedPreferences("voice2txt_sp", 0);
-    int j = localSharedPreferences.getInt(this.Kij, com.tencent.mm.modelvoiceaddr.g.jwp);
-    if (this.Kkr != null)
+    int j = localSharedPreferences.getInt(this.RiT, com.tencent.mm.modelvoiceaddr.g.mlS);
+    if (this.Rle != null)
     {
-      Iterator localIterator = this.Kkr.Guo.gzD.iterator();
+      Iterator localIterator = this.Rle.NhH.jjG.iterator();
       do
       {
         if (!localIterator.hasNext()) {
           break;
         }
-      } while (((com.tencent.mm.plugin.transvoice.ui.a.a.a)localIterator.next()).Gwt != j);
+      } while (((com.tencent.mm.plugin.transvoice.ui.a.a.a)localIterator.next()).NjM != j);
       for (i = 1; i == 0; i = 0)
       {
         i = getDefaultLangType();
-        if (com.tencent.mm.modelvoiceaddr.g.jwp != i) {
-          localSharedPreferences.edit().putInt(this.Kij, i).apply();
+        if (com.tencent.mm.modelvoiceaddr.g.mlS != i) {
+          localSharedPreferences.edit().putInt(this.RiT, i).apply();
         }
         AppMethodBeat.o(185417);
         return i;
@@ -2499,224 +2449,229 @@ public class ChatFooter
       return j;
     }
     int i = getDefaultLangType();
-    if (com.tencent.mm.modelvoiceaddr.g.jwp != i) {
-      localSharedPreferences.edit().putInt(this.Kij, i).apply();
+    if (com.tencent.mm.modelvoiceaddr.g.mlS != i) {
+      localSharedPreferences.edit().putInt(this.RiT, i).apply();
     }
     AppMethodBeat.o(185417);
     return i;
   }
   
-  private void gqG()
+  private void hlF()
   {
     AppMethodBeat.i(31640);
-    this.jxm.findViewById(2131298549).setVisibility(0);
+    this.fyN.findViewById(R.h.dzi).setVisibility(0);
     AppMethodBeat.o(31640);
   }
   
-  private void gqH()
+  private void hlG()
   {
     AppMethodBeat.i(31641);
     Log.i("MicroMsg.ChatFooter", "jacks chatting footer disable enter button send");
-    this.KiU = false;
-    this.ECK.setImeOptions(0);
-    this.ECK.setInputType(this.ECK.getInputType() | 0x40);
+    this.RjI = false;
+    this.KQB.setImeOptions(0);
+    this.KQB.setInputType(this.KQB.getInputType() | 0x40);
     AppMethodBeat.o(31641);
   }
   
-  private void gqM()
+  private void hlL()
   {
     AppMethodBeat.i(31660);
-    if (this.Kja == null)
+    if (this.RjN == null)
     {
       ViewParent localViewParent = getParent();
       if ((localViewParent instanceof ChattingScrollLayout))
       {
-        this.Kja = ((ChattingScrollLayout)localViewParent);
-        this.Kjb = true;
+        this.RjN = ((ChattingScrollLayout)localViewParent);
+        this.RjO = true;
       }
     }
     AppMethodBeat.o(31660);
   }
   
-  private void gqN()
+  private void hlM()
   {
     AppMethodBeat.i(31668);
-    if (!this.wxq)
+    if (!this.zQA)
     {
       Log.i("MicroMsg.ChatFooter", "updateKeyboardProvider: not resumed %s", new Object[] { Util.getStack() });
       AppMethodBeat.o(31668);
       return;
     }
-    if ((this.Kje) || (!this.KiX))
+    if ((this.RjR) || (!this.RjL))
     {
-      this.gyh.close();
+      this.jij.close();
       ((Activity)getContext()).getWindow().setSoftInputMode(18);
       AppMethodBeat.o(31668);
       return;
     }
-    ((Activity)getContext()).getWindow().setSoftInputMode(this.Kjc | 0x2);
-    this.gyh.start();
+    ((Activity)getContext()).getWindow().setSoftInputMode(this.RjP | 0x2);
+    this.jij.start();
     AppMethodBeat.o(31668);
   }
   
-  private void gqX()
+  private void hlW()
   {
     AppMethodBeat.i(31687);
-    this.KjN.setVisibility(8);
-    this.KjQ.setVisibility(8);
-    this.KjN.setScaleX(0.5F);
-    this.KjN.setScaleY(0.5F);
-    this.KjQ.setScaleX(0.5F);
-    this.KjQ.setScaleY(0.5F);
-    this.KjN.setTranslationX(this.KlL);
-    this.KjN.setTranslationY(-this.KlM);
-    this.KjQ.setTranslationX(-this.KlL);
-    this.KjQ.setTranslationY(-this.KlM);
-    gqY();
-    gqZ();
+    this.RkA.setVisibility(8);
+    this.RkD.setVisibility(8);
+    this.RkA.setScaleX(0.5F);
+    this.RkA.setScaleY(0.5F);
+    this.RkD.setScaleX(0.5F);
+    this.RkD.setScaleY(0.5F);
+    this.RkA.setTranslationX(this.Rmy);
+    this.RkA.setTranslationY(-this.Rmz);
+    this.RkD.setTranslationX(-this.Rmy);
+    this.RkD.setTranslationY(-this.Rmz);
+    hlX();
+    hlY();
     AppMethodBeat.o(31687);
   }
   
-  private void gqY()
+  private void hlX()
   {
     AppMethodBeat.i(31688);
-    this.KjO.setIconColor(getResources().getColor(2131100046));
-    this.KjP.setTextColor(getResources().getColor(2131101315));
-    this.KjN.setBackgroundDrawable(getResources().getDrawable(2131235440));
+    this.RkB.setIconColor(getResources().getColor(R.e.black_per90));
+    this.RkC.setTextColor(getResources().getColor(R.e.dkO));
+    this.RkA.setBackgroundDrawable(getResources().getDrawable(R.g.voice2txt_normal_bg));
     AppMethodBeat.o(31688);
   }
   
-  private void gqZ()
+  private void hlY()
   {
     AppMethodBeat.i(31689);
-    this.KjR.setIconColor(getResources().getColor(2131100046));
-    this.KjS.setTextColor(getResources().getColor(2131101315));
-    this.KjQ.setBackgroundDrawable(getResources().getDrawable(2131235440));
+    this.RkE.setIconColor(getResources().getColor(R.e.black_per90));
+    this.RkF.setTextColor(getResources().getColor(R.e.dkO));
+    this.RkD.setBackgroundDrawable(getResources().getDrawable(R.g.voice2txt_normal_bg));
     AppMethodBeat.o(31689);
   }
   
-  private void gqh()
-  {
-    AppMethodBeat.i(31572);
-    if (this.Kjs != null)
-    {
-      com.tencent.mm.g.b.a.j localj = this.Kjs;
-      localj.ekg = 0L;
-      localj.eke = 0L;
-      localj.ekf = 0L;
-      localj.ekh = 0L;
-      localj.bK(0L).bL(0L);
-    }
-    AppMethodBeat.o(31572);
-  }
-  
-  private void gqn()
-  {
-    AppMethodBeat.i(31594);
-    String str;
-    if (this.Kjy == null)
-    {
-      str = this.Kij;
-      this.Kik = ((AppPanel)findViewById(2131298318));
-      this.Kik.setOnSwitchPanelListener(this.KkV);
-      this.Kik.setChattingContext(this.KkW);
-      this.Kik.setPortHeighPx(KeyBoardUtil.getValidPanelHeight(getContext()));
-      if ((!ab.JE(str)) && (!ab.Jv(str))) {
-        break label124;
-      }
-      this.Kik.init(0);
-    }
-    for (;;)
-    {
-      this.Kiq = ((TextView)findViewById(2131298319));
-      AppMethodBeat.o(31594);
-      return;
-      str = this.Kjy.getTalkerUserName();
-      break;
-      label124:
-      if (ab.IT(str)) {
-        this.Kik.init(4);
-      } else if (ab.Eq(str)) {
-        this.Kik.init(2);
-      } else {
-        this.Kik.init(1);
-      }
-    }
-  }
-  
-  private void gqp()
-  {
-    AppMethodBeat.i(185399);
-    this.Klc.start();
-    this.Kld.start();
-    this.Kle.start();
-    this.Klf.start();
-    this.Klg.start();
-    this.KkM.animate().alpha(1.0F).setDuration(200L).start();
-    this.KkN.animate().alpha(1.0F).setDuration(200L).start();
-    this.Kkw.animate().alpha(1.0F).translationY(0.0F).setDuration(300L).start();
-    grd();
-    AppMethodBeat.o(185399);
-  }
-  
-  private void gqq()
-  {
-    AppMethodBeat.i(31617);
-    if (this.KiS)
-    {
-      this.tfb.setVisibility(8);
-      this.tfc.setVisibility(8);
-      this.FQV.setVisibility(8);
-      this.teZ.setVisibility(8);
-      this.KjC.setVisibility(0);
-      this.KjF.setVisibility(0);
-      this.KjG.setVisibility(0);
-      this.KjI.setVisibility(8);
-      this.KjJ.setVisibility(0);
-      this.KjK.setVisibility(8);
-      this.KjM.setVisibility(8);
-      this.KjN.setVisibility(8);
-      this.KjQ.setVisibility(8);
-      this.Kkc = k.KmH;
-      this.Kka = l.KmL;
-      AppMethodBeat.o(31617);
-      return;
-    }
-    this.tfb.setVisibility(0);
-    this.tfc.setVisibility(8);
-    this.FQV.setVisibility(8);
-    this.teZ.setVisibility(8);
-    this.KjC.setVisibility(8);
-    AppMethodBeat.o(31617);
-  }
-  
-  private void gra()
+  private void hlZ()
   {
     AppMethodBeat.i(31690);
     String str = LocaleUtil.getCurrentLanguage(getContext());
     if ((str.equals("zh_CN")) || (str.equals("zh_HK")) || (str.equals("zh_TW")))
     {
-      this.KjL.setImageResource(2131691704);
-      this.KjR.setImageResource(2131691706);
+      this.Rky.setImageResource(R.k.voice2txt_hint_trans_chs);
+      this.RkE.setImageResource(R.k.voice2txt_trans_chs_img);
       AppMethodBeat.o(31690);
       return;
     }
     if (str.equals("en"))
     {
-      this.KjL.setImageResource(2131691705);
-      this.KjR.setImageResource(2131691707);
+      this.Rky.setImageResource(R.k.voice2txt_hint_trans_eng);
+      this.RkE.setImageResource(R.k.voice2txt_trans_eng_img);
     }
     AppMethodBeat.o(31690);
   }
   
-  private void grb()
+  private void hlf()
+  {
+    AppMethodBeat.i(31572);
+    if (this.Rkf != null)
+    {
+      com.tencent.mm.f.b.a.m localm = this.Rkf;
+      localm.geL = 0L;
+      localm.geJ = 0L;
+      localm.geK = 0L;
+      localm.geM = 0L;
+      localm.bZ(0L).ca(0L);
+    }
+    AppMethodBeat.o(31572);
+  }
+  
+  private void hlk()
+  {
+    if (this.fyN == null) {}
+  }
+  
+  private void hlm()
+  {
+    AppMethodBeat.i(31594);
+    String str;
+    if (this.Rkl == null)
+    {
+      str = this.RiT;
+      this.RiU = ((AppPanel)findViewById(R.h.dvu));
+      this.RiU.setOnSwitchPanelListener(this.RlI);
+      this.RiU.setChattingContext(this.RlJ);
+      this.RiU.setPortHeighPx(KeyBoardUtil.getValidPanelHeight(getContext()));
+      if ((!ab.QX(str)) && (!ab.QO(str))) {
+        break label124;
+      }
+      this.RiU.init(0);
+    }
+    for (;;)
+    {
+      this.Rja = ((TextView)findViewById(R.h.dvv));
+      AppMethodBeat.o(31594);
+      return;
+      str = this.Rkl.getTalkerUserName();
+      break;
+      label124:
+      if (ab.Qm(str)) {
+        this.RiU.init(4);
+      } else if (ab.Lj(str)) {
+        this.RiU.init(2);
+      } else {
+        this.RiU.init(1);
+      }
+    }
+  }
+  
+  private void hlo()
+  {
+    AppMethodBeat.i(185399);
+    this.RlP.start();
+    this.RlQ.start();
+    this.RlR.start();
+    this.RlS.start();
+    this.RlT.start();
+    this.Rlz.animate().alpha(1.0F).setDuration(200L).start();
+    this.RlA.animate().alpha(1.0F).setDuration(200L).start();
+    this.Rlj.animate().alpha(1.0F).translationY(0.0F).setDuration(300L).start();
+    hmc();
+    AppMethodBeat.o(185399);
+  }
+  
+  private void hlp()
+  {
+    AppMethodBeat.i(31617);
+    if (this.RjG)
+    {
+      this.wLp.setVisibility(8);
+      this.wLq.setVisibility(8);
+      this.MkW.setVisibility(8);
+      this.wLn.setVisibility(8);
+      this.Rkp.setVisibility(0);
+      this.Rks.setVisibility(0);
+      this.Rkt.setVisibility(0);
+      this.Rkv.setVisibility(8);
+      this.Rkw.setVisibility(0);
+      this.Rkx.setVisibility(8);
+      this.Rkz.setVisibility(8);
+      this.RkA.setVisibility(8);
+      this.RkD.setVisibility(8);
+      this.RkP = k.Rnt;
+      this.RkN = l.Rnx;
+      AppMethodBeat.o(31617);
+      return;
+    }
+    this.wLp.setVisibility(0);
+    this.wLq.setVisibility(8);
+    this.MkW.setVisibility(8);
+    this.wLn.setVisibility(8);
+    this.Rkp.setVisibility(8);
+    AppMethodBeat.o(31617);
+  }
+  
+  private void hma()
   {
     AppMethodBeat.i(185403);
-    int k = this.Kkk.getWidth();
-    int m = this.Kkk.getHeight();
+    int k = this.RkX.getWidth();
+    int m = this.RkX.getHeight();
     int j = 0;
     int i = 0;
-    switch (83.Kmh[this.KlT.ordinal()])
+    switch (85.RmU[this.RmG.ordinal()])
     {
     }
     for (;;)
@@ -2727,11 +2682,11 @@ public class ChatFooter
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
-          AppMethodBeat.i(232283);
+          AppMethodBeat.i(263346);
           int i = ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue();
           ((ViewGroup.MarginLayoutParams)ChatFooter.aA(ChatFooter.this).getLayoutParams()).width = i;
           ChatFooter.aA(ChatFooter.this).requestLayout();
-          AppMethodBeat.o(232283);
+          AppMethodBeat.o(263346);
         }
       });
       ValueAnimator localValueAnimator2 = ValueAnimator.ofInt(new int[] { m, i }).setDuration(200L);
@@ -2739,11 +2694,11 @@ public class ChatFooter
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
-          AppMethodBeat.i(232285);
+          AppMethodBeat.i(208904);
           int i = ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue();
           ((ViewGroup.MarginLayoutParams)ChatFooter.aA(ChatFooter.this).getLayoutParams()).height = i;
           ChatFooter.aA(ChatFooter.this).requestLayout();
-          AppMethodBeat.o(232285);
+          AppMethodBeat.o(208904);
         }
       });
       AnimatorSet localAnimatorSet = new AnimatorSet();
@@ -2751,37 +2706,37 @@ public class ChatFooter
       localAnimatorSet.start();
       AppMethodBeat.o(185403);
       return;
-      j = this.Klt;
-      i = this.GyD;
+      j = this.Rmg;
+      i = this.Nmf;
       continue;
-      j = this.Kll;
-      i = this.Klq;
+      j = this.RlY;
+      i = this.Rmd;
       continue;
-      j = this.Klm;
-      i = this.GyD;
+      j = this.RlZ;
+      i = this.Nmf;
     }
   }
   
-  private void grc()
+  private void hmb()
   {
     float f2 = 0.0F;
     AppMethodBeat.i(185404);
-    float f3 = this.Kkk.getTranslationX();
+    float f3 = this.RkX.getTranslationX();
     float f1 = f2;
-    switch (83.Kmh[this.KlT.ordinal()])
+    switch (85.RmU[this.RmG.ordinal()])
     {
     }
-    for (f1 = f2;; f1 = -(au.az(getContext()).x / 2 - at.fromDPToPix(getContext(), 76)))
+    for (f1 = f2;; f1 = -(com.tencent.mm.ui.ax.au(getContext()).x / 2 - aw.fromDPToPix(getContext(), 76)))
     {
       ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { f3, f1 }).setDuration(200L);
       localValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
-          AppMethodBeat.i(232286);
+          AppMethodBeat.i(211617);
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
           ChatFooter.aA(ChatFooter.this).setTranslationX(f);
-          AppMethodBeat.o(232286);
+          AppMethodBeat.o(211617);
         }
       });
       localValueAnimator.start();
@@ -2790,17 +2745,17 @@ public class ChatFooter
     }
   }
   
-  private void grd()
+  private void hmc()
   {
     AppMethodBeat.i(185405);
-    this.Kkk.setAlpha(0.0F);
-    this.Kkk.setTranslationY(at.fromDPToPix(getContext(), 56));
-    this.Kkn.setAlpha(0);
-    this.Kkn.setTranslationY(at.fromDPToPix(getContext(), 56));
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.Kkk, "translationY", new float[] { this.Kkk.getTranslationY(), 0.0F });
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.Kkk, "alpha", new float[] { 0.0F, 1.0F });
-    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(this.Kkn, "translationY", new float[] { this.Kkn.getTranslationY(), 0.0F });
-    ObjectAnimator localObjectAnimator4 = ObjectAnimator.ofInt(this.Kkn, "alpha", new int[] { 0, 255 });
+    this.RkX.setAlpha(0.0F);
+    this.RkX.setTranslationY(aw.fromDPToPix(getContext(), 56));
+    this.Rla.setAlpha(0);
+    this.Rla.setTranslationY(aw.fromDPToPix(getContext(), 56));
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.RkX, "translationY", new float[] { this.RkX.getTranslationY(), 0.0F });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.RkX, "alpha", new float[] { 0.0F, 1.0F });
+    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(this.Rla, "translationY", new float[] { this.Rla.getTranslationY(), 0.0F });
+    ObjectAnimator localObjectAnimator4 = ObjectAnimator.ofInt(this.Rla, "alpha", new int[] { 0, 255 });
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.setDuration(200L);
     localAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2, localObjectAnimator3, localObjectAnimator4 });
@@ -2808,124 +2763,124 @@ public class ChatFooter
     AppMethodBeat.o(185405);
   }
   
-  private void gre()
+  private void hmd()
   {
     AppMethodBeat.i(185406);
-    this.Kkm.setVisibility(8);
-    this.Kkp.setVisibility(0);
-    this.Kkp.setTextColor(getContext().getResources().getColor(2131100042));
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.Kkt.getLayoutParams();
+    this.RkZ.setVisibility(8);
+    this.Rlc.setVisibility(0);
+    this.Rlc.setTextColor(getContext().getResources().getColor(R.e.black));
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.Rlg.getLayoutParams();
     localLayoutParams.addRule(13);
     localLayoutParams.removeRule(21);
     localLayoutParams.removeRule(12);
-    this.Kkp.setText(String.format(getContext().getResources().getString(2131763538), new Object[] { Integer.valueOf(this.Klu) }));
-    this.Kkt.requestLayout();
+    this.Rlc.setText(String.format(getContext().getResources().getString(R.l.eMz), new Object[] { Integer.valueOf(this.Rmh) }));
+    this.Rlg.requestLayout();
     AppMethodBeat.o(185406);
   }
   
-  private void grf()
+  private void hme()
   {
     AppMethodBeat.i(185407);
-    this.Kkm.setVisibility(8);
-    this.Kkp.setVisibility(0);
-    this.Kkp.setTextColor(getContext().getResources().getColor(2131100584));
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.Kkt.getLayoutParams();
+    this.RkZ.setVisibility(8);
+    this.Rlc.setVisibility(0);
+    this.Rlc.setTextColor(getContext().getResources().getColor(R.e.half_alpha_black));
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.Rlg.getLayoutParams();
     localLayoutParams.removeRule(13);
     localLayoutParams.addRule(21);
     localLayoutParams.addRule(12);
-    this.Kkp.setText(String.format(getContext().getResources().getString(2131763538), new Object[] { Integer.valueOf(this.Klu) }));
-    this.Kkt.requestLayout();
+    this.Rlc.setText(String.format(getContext().getResources().getString(R.l.eMz), new Object[] { Integer.valueOf(this.Rmh) }));
+    this.Rlg.requestLayout();
     AppMethodBeat.o(185407);
   }
   
-  private void grg()
+  private void hmf()
   {
     AppMethodBeat.i(185408);
-    this.Kkm.setVisibility(0);
-    this.Kkp.setVisibility(8);
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.Kkt.getLayoutParams();
+    this.RkZ.setVisibility(0);
+    this.Rlc.setVisibility(8);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.Rlg.getLayoutParams();
     localLayoutParams.removeRule(21);
     localLayoutParams.removeRule(12);
     localLayoutParams.addRule(13);
-    this.Kkt.requestLayout();
-    ((RelativeLayout.LayoutParams)this.Kkm.getLayoutParams()).bottomMargin = 0;
-    this.Kkm.requestLayout();
+    this.Rlg.requestLayout();
+    ((RelativeLayout.LayoutParams)this.RkZ.getLayoutParams()).bottomMargin = 0;
+    this.RkZ.requestLayout();
     AppMethodBeat.o(185408);
   }
   
-  private void grh()
+  private void hmg()
   {
     AppMethodBeat.i(185409);
-    this.KkM.animate().translationY(0.0F).alpha(1.0F).setDuration(100L).withEndAction(new Runnable()
+    this.Rlz.animate().translationY(0.0F).alpha(1.0F).setDuration(100L).withEndAction(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(232287);
+        AppMethodBeat.i(275245);
         ChatFooter.bz(ChatFooter.this).setVisibility(8);
-        ChatFooter.bA(ChatFooter.this).C(ChatFooter.this.getResources().getColor(2131100042), 0.5F);
-        AppMethodBeat.o(232287);
+        ChatFooter.bA(ChatFooter.this).C(ChatFooter.this.getResources().getColor(R.e.black), 0.5F);
+        AppMethodBeat.o(275245);
       }
     }).start();
-    this.KkN.animate().translationY(0.0F).alpha(1.0F).setDuration(100L).start();
-    this.KkO.animate().translationY(0.0F).setDuration(100L).start();
-    if (this.Klu < 10) {
-      gre();
+    this.RlA.animate().translationY(0.0F).alpha(1.0F).setDuration(100L).start();
+    this.RlB.animate().translationY(0.0F).setDuration(100L).start();
+    if (this.Rmh < 10) {
+      hmd();
     }
     for (;;)
     {
-      this.Kku.setVisibility(0);
-      this.Kks.setVisibility(8);
-      this.Kkl.setVisibility(8);
-      this.Kkn.setImageDrawable(com.tencent.mm.ui.ar.m(getContext(), 2131690705, getContext().getResources().getColor(2131099773)));
-      this.Kkn.animate().translationX(0.0F).setDuration(150L).start();
-      this.Kkk.setActivated(true);
-      grb();
-      grc();
+      this.Rlh.setVisibility(0);
+      this.Rlf.setVisibility(8);
+      this.RkY.setVisibility(8);
+      this.Rla.setImageDrawable(au.o(getContext(), R.k.icons_filled_voice2txt_cursor, getContext().getResources().getColor(R.e.LightGreen)));
+      this.Rla.animate().translationX(0.0F).setDuration(150L).start();
+      this.RkX.setActivated(true);
+      hma();
+      hmb();
       AppMethodBeat.o(185409);
       return;
-      grg();
-      this.Kkm.a(SoundWaveView.d.Gvp);
+      hmf();
+      this.RkZ.a(SoundWaveView.d.NiI);
     }
   }
   
-  private void gri()
+  private void hmh()
   {
     AppMethodBeat.i(185410);
-    this.KkB.setVisibility(4);
-    this.Kkz.C(getResources().getColor(2131099844), 0.5F);
-    this.Kkx.setBackgroundDrawable(getResources().getDrawable(2131234240));
-    this.Kkx.animate().scaleX(1.0F).scaleY(1.0F).setDuration(150L).start();
+    this.Rlo.setVisibility(4);
+    this.Rlm.C(getResources().getColor(R.e.White), 0.5F);
+    this.Rlk.setBackgroundDrawable(getResources().getDrawable(R.g.doj));
+    this.Rlk.animate().scaleX(1.0F).scaleY(1.0F).setDuration(150L).start();
     AppMethodBeat.o(185410);
   }
   
-  private void grj()
+  private void hmi()
   {
     AppMethodBeat.i(185411);
-    this.KkC.setVisibility(4);
-    this.KkA.C(getResources().getColor(2131099844), 0.5F);
-    this.Kky.setBackgroundDrawable(getResources().getDrawable(2131234240));
-    this.Kky.animate().scaleX(1.0F).scaleY(1.0F).setDuration(100L).start();
+    this.Rlp.setVisibility(4);
+    this.Rln.C(getResources().getColor(R.e.White), 0.5F);
+    this.Rll.setBackgroundDrawable(getResources().getDrawable(R.g.doj));
+    this.Rll.animate().scaleX(1.0F).scaleY(1.0F).setDuration(100L).start();
     AppMethodBeat.o(185411);
   }
   
-  private void grk()
+  private void hmj()
   {
     AppMethodBeat.i(185412);
-    int j = at.fromDPToPix(getContext(), 20);
-    if ((this.Kkl.getText() != null) && (this.Kkl.getText().length() > 0)) {}
-    for (int i = this.Kkl.getText().length();; i = 0)
+    int j = aw.fromDPToPix(getContext(), 20);
+    if ((this.RkY.getText() != null) && (this.RkY.getText().length() > 0)) {}
+    for (int i = this.RkY.getText().length();; i = 0)
     {
-      this.Kkl.setSelection(i);
-      this.Kkl.setPadding(j, j, j, j);
-      this.Kkw.setVisibility(8);
-      this.Kku.setVisibility(8);
-      this.KkL.setVisibility(4);
-      this.KkD.setVisibility(0);
-      this.Kkq.setVisibility(0);
-      com.tencent.mm.cj.a.a locala = com.tencent.mm.cj.a.Owq;
-      com.tencent.mm.cj.a.gGt();
-      this.Kkp.setVisibility(8);
-      this.Kkm.setVisibility(8);
+      this.RkY.setSelection(i);
+      this.RkY.setPadding(j, j, j, j);
+      this.Rlj.setVisibility(8);
+      this.Rlh.setVisibility(8);
+      this.Rly.setVisibility(4);
+      this.Rlq.setVisibility(0);
+      this.Rld.setVisibility(0);
+      com.tencent.mm.cq.a.a locala = com.tencent.mm.cq.a.VPo;
+      com.tencent.mm.cq.a.hFa();
+      this.Rlc.setVisibility(8);
+      this.RkZ.setVisibility(8);
       AppMethodBeat.o(185412);
       return;
     }
@@ -2943,202 +2898,147 @@ public class ChatFooter
     return false;
   }
   
-  private void j(int paramInt1, boolean paramBoolean, final int paramInt2)
+  private void l(int paramInt1, boolean paramBoolean, final int paramInt2)
   {
     int j = 0;
     AppMethodBeat.i(163218);
     Log.i("MicroMsg.ChatFooter", "switchPanel: %s, %s", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean) });
-    if (this.Kjn)
+    if (this.Rka)
     {
       AppMethodBeat.o(163218);
       return;
     }
-    if ((paramInt1 != 0) && (z.aUQ().booleanValue()) && (this.Kjt != null))
+    if ((paramInt1 != 0) && (z.bdS().booleanValue()) && (this.Rkg != null))
     {
-      this.Kjt.a(Boolean.TRUE, Boolean.FALSE);
-      this.Kjt.b(Boolean.TRUE, Boolean.FALSE);
+      this.Rkg.a(Boolean.TRUE, Boolean.FALSE);
+      this.Rkg.b(Boolean.TRUE, Boolean.FALSE);
     }
-    aiB(paramInt1);
-    if (this.Kio != null) {
-      this.Kio.setVisibility(0);
+    aqD(paramInt1);
+    if (this.RiY != null) {
+      this.RiY.setVisibility(0);
     }
+    this.Rji.setVisibility(8);
     switch (paramInt1)
     {
     default: 
-      if (((this.KiY != 0) || (paramInt1 != 1)) && ((this.KiY != 1) || (paramInt1 != 0))) {
+      if (((this.jJL != 0) || (paramInt1 != 1)) && ((this.jJL != 1) || (paramInt1 != 0))) {
         break;
       }
     }
     for (paramInt2 = 1;; paramInt2 = 0)
     {
-      aR(this.KiY, paramInt1, paramInt2);
+      aV(this.jJL, paramInt1, paramInt2);
       int i;
-      label203:
-      com.tencent.mm.emoji.c.b localb;
-      label229:
+      label211:
+      Object localObject;
+      label237:
       int k;
-      if (this.KiY != paramInt1)
+      if (this.jJL != paramInt1)
       {
         i = 1;
-        this.KiY = paramInt1;
-        if (this.KiY != 2) {
-          break label521;
+        this.jJL = paramInt1;
+        if (this.jJL != 2) {
+          break label564;
         }
-        Al(true);
-        localb = com.tencent.mm.emoji.c.b.hcd;
-        com.tencent.mm.emoji.c.b.awa();
-        k = this.Kjd;
-        if (this.Kjp != null) {
-          break label537;
+        Er(true);
+        localObject = com.tencent.mm.emoji.c.b.jNn;
+        com.tencent.mm.emoji.c.b.aCZ();
+        k = this.RjQ;
+        if (this.Rkc != null) {
+          break label580;
         }
       }
-      label521:
-      label537:
-      for (paramInt1 = j;; paramInt1 = this.Kjp.dYg())
+      label564:
+      label580:
+      for (paramInt1 = j;; paramInt1 = this.Rkc.eBE())
       {
         b(k, paramBoolean, paramInt2, paramInt1);
         if (i != 0) {
-          com.tencent.f.h.RTc.o(new Runnable()
+          com.tencent.e.h.ZvG.o(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(232269);
-              if ((ChatFooter.f(ChatFooter.this) != null) && (ChatFooter.f(ChatFooter.this).grq() != null))
+              AppMethodBeat.i(254201);
+              if ((ChatFooter.f(ChatFooter.this) != null) && (ChatFooter.f(ChatFooter.this).hmp() != null))
               {
-                com.tencent.mm.ui.chatting.d.b.aw localaw = (com.tencent.mm.ui.chatting.d.b.aw)ChatFooter.f(ChatFooter.this).grq().bh(com.tencent.mm.ui.chatting.d.b.aw.class);
-                if (localaw != null) {
-                  localaw.gRB();
+                com.tencent.mm.ui.chatting.d.b.ax localax = (com.tencent.mm.ui.chatting.d.b.ax)ChatFooter.f(ChatFooter.this).hmp().bC(com.tencent.mm.ui.chatting.d.b.ax.class);
+                if (localax != null) {
+                  localax.hQY();
                 }
               }
-              AppMethodBeat.o(232269);
+              AppMethodBeat.o(254201);
             }
           }, 300L);
         }
-        if (this.KiF != null) {
-          this.KiF.kE(this.KiY, this.Kjd);
+        if (this.Rjs != null) {
+          this.Rjs.lX(this.jJL, this.RjQ);
         }
         AppMethodBeat.o(163218);
         return;
-        if ((!this.KiX) || (this.Kje)) {}
-        for (this.Kjd = 0;; this.Kjd = this.oXi)
+        if ((!this.RjL) || (this.RjR)) {}
+        for (this.RjQ = 0;; this.RjQ = this.pIk)
         {
           a(false, null);
           a(false, null, -1);
+          localObject = com.tencent.mm.plugin.hld.f.l.DHK;
+          if (!com.tencent.mm.plugin.hld.f.l.eHA()) {
+            break;
+          }
+          this.Rji.setVisibility(0);
+          localObject = com.tencent.mm.plugin.hld.f.l.DHK;
+          com.tencent.mm.plugin.hld.f.l.eHB().putInt("ime_old_user_guide_show", 2);
           break;
         }
-        this.Kjd = this.Kjl;
-        this.Kip.setVisibility(0);
+        this.RjQ = this.RjY;
+        this.RiZ.setVisibility(0);
         a(false, new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(232267);
+            AppMethodBeat.i(249619);
             ChatFooter.bs(ChatFooter.this);
-            AppMethodBeat.o(232267);
+            AppMethodBeat.o(249619);
           }
         }, -1);
         break;
-        this.Kjd = this.Kjk;
-        this.Kip.setVisibility(0);
+        this.RjQ = this.RjX;
+        this.RiZ.setVisibility(0);
         a(false, new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(232268);
-            ChatFooter.h(ChatFooter.this, paramInt2);
-            AppMethodBeat.o(232268);
+            AppMethodBeat.i(197270);
+            ChatFooter.i(ChatFooter.this, paramInt2);
+            AppMethodBeat.o(197270);
           }
         });
-        this.KiA.grx();
-        Ah(false);
-        if (this.KiR != 2) {
+        this.Rjn.hmw();
+        Em(false);
+        if (this.RjF != 2) {
           break;
         }
-        aiz(1);
+        aqB(1);
         break;
-        this.Kjd = 0;
+        this.RjQ = 0;
         a(false, null);
         a(false, null, -1);
-        gpb();
-        gqO();
+        hjU();
+        hlN();
         break;
-        if (this.Kio != null) {
-          this.Kio.setVisibility(4);
+        if (this.RiY != null) {
+          this.RiY.setVisibility(4);
         }
-        this.Kjd = this.Kjm;
+        this.RjQ = this.RjZ;
         a(false, null);
         a(false, null, -1);
         break;
         i = 0;
-        break label203;
-        Al(false);
-        localb = com.tencent.mm.emoji.c.b.hcd;
-        com.tencent.mm.emoji.c.b.awb();
-        break label229;
+        break label211;
+        Er(false);
+        localObject = com.tencent.mm.emoji.c.b.jNn;
+        com.tencent.mm.emoji.c.b.aDa();
+        break label237;
       }
-    }
-  }
-  
-  private void qT(boolean paramBoolean)
-  {
-    AppMethodBeat.i(31584);
-    this.gYo = paramBoolean;
-    if (this.Kjz == null)
-    {
-      this.Kjz = AnimationUtils.loadAnimation(getContext(), 2130772119);
-      this.Kjz.setDuration(150L);
-    }
-    if (this.KjA == null)
-    {
-      this.KjA = AnimationUtils.loadAnimation(getContext(), 2130772124);
-      this.KjA.setDuration(150L);
-    }
-    if ((this.han == null) || (this.Kir == null))
-    {
-      Log.i("MicroMsg.ChatFooter", "canSend:%B, return sendBtn == null || mAttachButton == null", new Object[] { Boolean.valueOf(paramBoolean) });
-      AppMethodBeat.o(31584);
-      return;
-    }
-    if (this.Kjw)
-    {
-      if (this.Kir.getVisibility() != 0) {
-        this.Kir.setVisibility(0);
-      }
-      AppMethodBeat.o(31584);
-      return;
-    }
-    if ((this.han.getVisibility() == 0) && (paramBoolean))
-    {
-      Log.i("MicroMsg.ChatFooter", "canSend true ! sendBtn is visible");
-      AppMethodBeat.o(31584);
-      return;
-    }
-    if ((this.Kir.getVisibility() == 0) && (!paramBoolean))
-    {
-      Log.i("MicroMsg.ChatFooter", "canSend false ! AttachButton is visible");
-      AppMethodBeat.o(31584);
-      return;
-    }
-    if (paramBoolean)
-    {
-      gqV();
-      this.Kir.startAnimation(this.KjA);
-      this.Kir.setVisibility(8);
-      Am(false);
-    }
-    for (;;)
-    {
-      Log.i("MicroMsg.ChatFooter", "jacks canSend:%B", new Object[] { Boolean.valueOf(paramBoolean) });
-      this.han.getParent().requestLayout();
-      AppMethodBeat.o(31584);
-      return;
-      this.Kir.startAnimation(this.Kjz);
-      if ((!this.KiI) && (!this.KiW))
-      {
-        this.Kir.setVisibility(0);
-        Am(true);
-      }
-      gqU();
     }
   }
   
@@ -3151,87 +3051,391 @@ public class ChatFooter
       AppMethodBeat.o(185400);
       return;
     }
-    switch (83.Kmh[this.KlT.ordinal()])
+    switch (85.RmU[this.RmG.ordinal()])
     {
     }
     for (;;)
     {
-      this.Klu = paramInt;
+      this.Rmh = paramInt;
       AppMethodBeat.o(185400);
       return;
       int i = 60 - paramInt;
-      int j = (int)(this.Klp * i);
-      this.Klt = Math.min(this.Klo + j, this.Kln);
-      Log.d("MicroMsg.ChatFooter", "voiceWidth:%s, duration:%s, offset:%s", new Object[] { Integer.valueOf(this.Klt), Integer.valueOf(i), Integer.valueOf(j) });
-      ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { this.Kkk.getWidth(), this.Klt }).setDuration(200L);
+      int j = (int)(this.Rmc * i);
+      this.Rmg = Math.min(this.Rmb + j, this.Rma);
+      Log.d("MicroMsg.ChatFooter", "voiceWidth:%s, duration:%s, offset:%s", new Object[] { Integer.valueOf(this.Rmg), Integer.valueOf(i), Integer.valueOf(j) });
+      ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { this.RkX.getWidth(), this.Rmg }).setDuration(200L);
       localValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
-          AppMethodBeat.i(232282);
+          AppMethodBeat.i(271083);
           int i = ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue();
           ((ViewGroup.MarginLayoutParams)ChatFooter.aA(ChatFooter.this).getLayoutParams()).width = i;
           ChatFooter.aA(ChatFooter.this).requestLayout();
-          AppMethodBeat.o(232282);
+          AppMethodBeat.o(271083);
         }
       });
       localValueAnimator.start();
       if (paramInt < 10)
       {
-        gre();
+        hmd();
         continue;
         if (paramInt < 10) {
-          grf();
+          hme();
         }
       }
     }
   }
   
-  public final void Ah(boolean paramBoolean)
+  private void tV(boolean paramBoolean)
+  {
+    AppMethodBeat.i(31584);
+    this.jJo = paramBoolean;
+    if (this.Rkm == null)
+    {
+      this.Rkm = AnimationUtils.loadAnimation(getContext(), R.a.pop_in);
+      this.Rkm.setDuration(150L);
+    }
+    if (this.Rkn == null)
+    {
+      this.Rkn = AnimationUtils.loadAnimation(getContext(), R.a.pop_out);
+      this.Rkn.setDuration(150L);
+    }
+    if ((this.jLo == null) || (this.Rjb == null))
+    {
+      Log.i("MicroMsg.ChatFooter", "canSend:%B, return sendBtn == null || mAttachButton == null", new Object[] { Boolean.valueOf(paramBoolean) });
+      AppMethodBeat.o(31584);
+      return;
+    }
+    if (this.Rkj)
+    {
+      if (this.Rjb.getVisibility() != 0) {
+        this.Rjb.setVisibility(0);
+      }
+      AppMethodBeat.o(31584);
+      return;
+    }
+    if ((this.jLo.getVisibility() == 0) && (paramBoolean))
+    {
+      Log.i("MicroMsg.ChatFooter", "canSend true ! sendBtn is visible");
+      AppMethodBeat.o(31584);
+      return;
+    }
+    if ((this.Rjb.getVisibility() == 0) && (!paramBoolean))
+    {
+      Log.i("MicroMsg.ChatFooter", "canSend false ! AttachButton is visible");
+      AppMethodBeat.o(31584);
+      return;
+    }
+    if (paramBoolean)
+    {
+      hlU();
+      this.Rjb.startAnimation(this.Rkn);
+      this.Rjb.setVisibility(8);
+      Es(false);
+    }
+    for (;;)
+    {
+      Log.i("MicroMsg.ChatFooter", "jacks canSend:%B", new Object[] { Boolean.valueOf(paramBoolean) });
+      this.jLo.getParent().requestLayout();
+      AppMethodBeat.o(31584);
+      return;
+      this.Rjb.startAnimation(this.Rkm);
+      if ((!this.Rjv) && (!this.RjK))
+      {
+        this.Rjb.setVisibility(0);
+        Es(true);
+      }
+      hlT();
+    }
+  }
+  
+  public final void A(int paramInt, boolean paramBoolean)
+  {
+    int j = 0;
+    AppMethodBeat.i(31670);
+    Log.i("MicroMsg.ChatFooter", "onKeyboardHeightChanged: %s, %s, %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), Integer.valueOf(this.RjP) });
+    if (!this.RjS)
+    {
+      AppMethodBeat.o(31670);
+      return;
+    }
+    Object localObject = this.KQB;
+    if (paramInt > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ((com.tencent.mm.ui.widget.cedit.api.c)localObject).Hm(bool);
+      if (!this.RjT)
+      {
+        localObject = com.tencent.mm.plugin.secdata.ui.a.JbV;
+        if (((diw)com.tencent.mm.plugin.secdata.ui.a.a.c(getContext(), 4, diw.class)).TQp != 1) {
+          break label149;
+        }
+      }
+      if (paramInt > 0) {
+        break;
+      }
+      this.BSf = false;
+      AppMethodBeat.o(31670);
+      return;
+    }
+    this.BSf = true;
+    AppMethodBeat.o(31670);
+    return;
+    label149:
+    if (com.tencent.mm.ui.f.a.hWR())
+    {
+      if (paramInt <= 0)
+      {
+        this.BSf = false;
+        AppMethodBeat.o(31670);
+        return;
+      }
+      this.BSf = true;
+      AppMethodBeat.o(31670);
+      return;
+    }
+    int i;
+    if ((this.RkS) && (this.RkU != null) && (this.RkU.isShowing()))
+    {
+      if ((paramInt <= 0) || (u.kL(getContext())))
+      {
+        this.BSf = false;
+        if (u.kL(getContext())) {
+          this.BSf = true;
+        }
+        this.RkY.setCursorVisible(false);
+        this.Rli.animate().translationY(0.0F).setDuration(200L).start();
+        this.RkX.animate().translationY(0.0F).setDuration(200L).start();
+        this.Rla.animate().translationY(0.0F).setDuration(200L).start();
+        this.Rld.animate().translationY(0.0F).setDuration(200L).start();
+        if (this.RkX.getHeight() < this.Rmf)
+        {
+          localObject = ValueAnimator.ofInt(new int[] { this.RkX.getHeight(), this.Rmf }).setDuration(200L);
+          ((ValueAnimator)localObject).addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+          {
+            public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+            {
+              AppMethodBeat.i(271217);
+              int i = ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue();
+              ((ViewGroup.MarginLayoutParams)ChatFooter.aA(ChatFooter.this).getLayoutParams()).height = i;
+              ChatFooter.aA(ChatFooter.this).requestLayout();
+              AppMethodBeat.o(271217);
+            }
+          });
+          ((ValueAnimator)localObject).start();
+          AppMethodBeat.o(31670);
+        }
+      }
+      else
+      {
+        this.BSf = true;
+        this.RkY.setCursorVisible(true);
+        Log.d("MicroMsg.ChatFooter", "height:%s, WeUIToolHelper.getDisplayRealSize(getContext()).y - newVoice2txtOpeArea.getBottom():%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(com.tencent.mm.ui.ax.au(getContext()).y - this.Rli.getBottom()) });
+        i = com.tencent.mm.ui.ax.au(getContext()).y;
+        localObject = new int[2];
+        this.Rli.getLocationOnScreen((int[])localObject);
+        j = localObject[1];
+        int k = this.Rli.getHeight();
+        int m = com.tencent.mm.ui.ax.aB(getContext());
+        this.Rli.animate().translationY(-(paramInt - (i - (j + k)) + m)).setDuration(200L).start();
+        paramInt = i - (this.Rli.getHeight() + paramInt) - aw.fromDPToPix(getContext(), 24);
+        i = this.RkX.getHeight() + this.Rla.getHeight() + aw.fromDPToPix(getContext(), 48);
+        Log.d("MicroMsg.ChatFooter", "leftSpcaeDown:%s, editDown:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+        this.Rme = (paramInt - aw.fromDPToPix(getContext(), 52));
+        if (this.Rme < this.RlX)
+        {
+          Log.i("MicroMsg.ChatFooter", "invalid maxHeightWhenKeyboard, value:%s", new Object[] { Integer.valueOf(this.Rme) });
+          this.Rme = this.RlX;
+        }
+        this.Rmf = this.RkX.getHeight();
+        localObject = new int[2];
+        this.Rla.getLocationOnScreen((int[])localObject);
+        j = localObject[1] + this.Rla.getHeight();
+        if (j > paramInt)
+        {
+          j -= paramInt;
+          if (i > paramInt)
+          {
+            k = this.RkX.getLayoutParams().height;
+            localObject = ValueAnimator.ofInt(new int[] { k, k - (i - paramInt) }).setDuration(200L);
+            ((ValueAnimator)localObject).addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+            {
+              public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+              {
+                AppMethodBeat.i(288350);
+                int i = ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue();
+                ChatFooter.aA(ChatFooter.this).getLayoutParams().height = i;
+                ChatFooter.aA(ChatFooter.this).requestLayout();
+                AppMethodBeat.o(288350);
+              }
+            });
+            ((ValueAnimator)localObject).start();
+          }
+          this.RkX.animate().translationY(-j).setDuration(200L).start();
+          this.Rla.animate().translationY(-j).setDuration(200L).start();
+          this.Rld.animate().translationY(-j).setDuration(200L).start();
+        }
+      }
+      AppMethodBeat.o(31670);
+      return;
+    }
+    if ((!this.RjR) && (this.RjL))
+    {
+      if (this.RjV == paramBoolean) {
+        break label972;
+      }
+      i = 1;
+      this.RjV = paramBoolean;
+      if (paramInt <= 0) {
+        break label1032;
+      }
+      if (this.pIk == paramInt) {
+        break label1104;
+      }
+      this.pIk = paramInt;
+      com.tencent.mm.compatible.util.i.E(getContext(), paramInt);
+      aqE(paramInt);
+    }
+    label972:
+    label1104:
+    for (paramInt = 1;; paramInt = 0)
+    {
+      if (!this.BSf)
+      {
+        l(1, true, -1);
+        this.RjM = -1;
+      }
+      while ((paramInt == 0) && (i == 0))
+      {
+        this.BSf = true;
+        if (this.Rjq != null) {
+          this.Rjq.ua(this.BSf);
+        }
+        AppMethodBeat.o(31670);
+        return;
+        i = 0;
+        break;
+      }
+      this.RjQ = this.pIk;
+      i = this.RjQ;
+      if (this.Rkc == null) {}
+      for (paramInt = j;; paramInt = this.Rkc.eBE())
+      {
+        b(i, true, 1, paramInt);
+        break;
+      }
+      if (this.BSf)
+      {
+        if (this.RjM == -1) {
+          break label1094;
+        }
+        l(this.RjM, true, -1);
+        this.RjM = -1;
+      }
+      for (;;)
+      {
+        if (this.jJL == 1)
+        {
+          Log.i("MicroMsg.ChatFooter", "keyboard not open");
+          l(0, true, -1);
+        }
+        this.BSf = false;
+        break;
+        l(0, true, -1);
+      }
+    }
+  }
+  
+  public final void D(String paramString, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(31607);
+    if (eBC())
+    {
+      Log.i("MicroMsg.ChatFooter", "setLastText() isBackFromGroupSolitatire");
+      AppMethodBeat.o(31607);
+      return;
+    }
+    if ((paramBoolean) && ((paramString == null) || (paramString.length() == 0) || (this.KQB == null)))
+    {
+      this.KQB.setText("");
+      hlf();
+      AppMethodBeat.o(31607);
+      return;
+    }
+    this.Rju = true;
+    this.KQB.setText(com.tencent.mm.pluginsdk.ui.span.l.b(getContext(), paramString, this.KQB.getTextSize()));
+    this.Rju = false;
+    if ((paramInt < 0) || (paramInt > this.KQB.getText().length()))
+    {
+      this.KQB.setSelection(this.KQB.getText().length());
+      AppMethodBeat.o(31607);
+      return;
+    }
+    this.KQB.setSelection(paramInt);
+    AppMethodBeat.o(31607);
+  }
+  
+  public final void Ed(boolean paramBoolean)
+  {
+    AppMethodBeat.i(31633);
+    this.RiU.Ed(paramBoolean);
+    AppMethodBeat.o(31633);
+  }
+  
+  public final void Ee(boolean paramBoolean)
+  {
+    AppMethodBeat.i(31634);
+    this.RiU.Ee(paramBoolean);
+    AppMethodBeat.o(31634);
+  }
+  
+  public final void En(boolean paramBoolean)
   {
     AppMethodBeat.i(31588);
-    Log.i("MicroMsg.ChatFooter", "pureForcusEdtChange: %s, %s", new Object[] { Boolean.valueOf(paramBoolean), this.ECK });
-    if (this.ECK == null)
+    Log.i("MicroMsg.ChatFooter", "pureForcusEdtChange: %s, %s", new Object[] { Boolean.valueOf(paramBoolean), this.KQB });
+    if (this.KQB == null)
     {
       AppMethodBeat.o(31588);
       return;
     }
     if (paramBoolean)
     {
-      this.ECK.gYJ();
+      this.KQB.hZB();
       AppMethodBeat.o(31588);
       return;
     }
-    this.ECK.clearFocus();
+    this.KQB.clearFocus();
     AppMethodBeat.o(31588);
   }
   
-  public final void Aj(boolean paramBoolean)
+  public final void Ep(boolean paramBoolean)
   {
     AppMethodBeat.i(31654);
     Log.i("MicroMsg.ChatFooter", "withoutLastText: ");
     hideVKB();
-    Ah(paramBoolean);
+    hlk();
+    En(paramBoolean);
     AppMethodBeat.o(31654);
   }
   
-  public final void Ak(boolean paramBoolean)
+  public final void Eq(boolean paramBoolean)
   {
-    AppMethodBeat.i(258252);
-    i(0, paramBoolean, -1);
-    AppMethodBeat.o(258252);
+    AppMethodBeat.i(293348);
+    k(0, paramBoolean, -1);
+    AppMethodBeat.o(293348);
   }
   
-  public final void Am(boolean paramBoolean)
+  public final void Es(boolean paramBoolean)
   {
     AppMethodBeat.i(163220);
-    if (this.Kir == null)
+    if (this.Rjb == null)
     {
       Log.e("MicroMsg.ChatFooter", "mAttachButton is null");
       AppMethodBeat.o(163220);
       return;
     }
-    if (this.Kis != null) {
+    if (this.Rjc != null) {
       if ((paramBoolean) && (getAppPanelUnCertainEnterArrayList() != null) && (getAppPanelUnCertainEnterArrayList().size() > 0))
       {
         Iterator localIterator = getAppPanelUnCertainEnterArrayList().iterator();
@@ -3242,18 +3446,18 @@ public class ChatFooter
             break;
           }
           locala = (a.a)localIterator.next();
-        } while ((locala.KhR != 1) || (beY(locala.KhQ)));
+        } while ((locala.red_dot != 1) || (bru(locala.RiB)));
       }
     }
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        this.Kis.setVisibility(0);
+        this.Rjc.setVisibility(0);
         AppMethodBeat.o(163220);
         return;
       }
-      this.Kis.setVisibility(8);
+      this.Rjc.setVisibility(8);
       AppMethodBeat.o(163220);
       return;
     }
@@ -3262,38 +3466,38 @@ public class ChatFooter
   public final void a(int paramInt, boolean paramBoolean1, com.tencent.mm.modelvoiceaddr.h paramh, boolean paramBoolean2)
   {
     AppMethodBeat.i(185826);
-    Log.d("MicroMsg.ChatFooter", "startTrans, hasStartTrans: %s, isForce: %s.", new Object[] { Boolean.valueOf(this.KlW), Boolean.valueOf(paramBoolean2) });
+    Log.d("MicroMsg.ChatFooter", "startTrans, hasStartTrans: %s, isForce: %s.", new Object[] { Boolean.valueOf(this.RmJ), Boolean.valueOf(paramBoolean2) });
     if (paramBoolean2) {
-      if (this.KlW)
+      if (this.RmJ)
       {
-        if (this.GvE != null) {
-          this.GvE.az(false, true);
+        if (this.NiX != null) {
+          this.NiX.aM(false, true);
         }
-        this.GvO.removeMessages(5000);
-        this.GvL.stopTimer();
+        this.Njh.removeMessages(5000);
+        this.Nje.stopTimer();
       }
     }
-    while (!this.KlW)
+    while (!this.RmJ)
     {
-      this.KlW = true;
-      this.GvE = new com.tencent.mm.plugin.transvoice.a.b(paramh, paramInt, new g.b()
+      this.RmJ = true;
+      this.NiX = new com.tencent.mm.plugin.transvoice.a.b(paramh, paramInt, new g.b()
       {
         public final void b(String[] paramAnonymousArrayOfString, List<String> paramAnonymousList)
         {
-          AppMethodBeat.i(232290);
-          Log.d("MicroMsg.ChatFooter", "newVoice2txt onRes, %s.", new Object[] { ChatFooter.this.GvE });
+          AppMethodBeat.i(279868);
+          Log.d("MicroMsg.ChatFooter", "newVoice2txt onRes, %s.", new Object[] { ChatFooter.this.NiX });
           ChatFooter.bB(ChatFooter.this).clear();
           if (!Util.isNullOrNil(paramAnonymousList)) {
             ChatFooter.bB(ChatFooter.this).addAll(paramAnonymousList);
           }
           if (!ChatFooter.aS(ChatFooter.this))
           {
-            ChatFooter.g(ChatFooter.this, true);
+            ChatFooter.h(ChatFooter.this, true);
             ChatFooter.aB(ChatFooter.this).setFocusable(true);
             ChatFooter.aB(ChatFooter.this).setFocusableInTouchMode(true);
             ChatFooter.aB(ChatFooter.this).requestFocus();
           }
-          if ((ChatFooter.this.GvE != null) && (!ChatFooter.this.GvE.GtF))
+          if ((ChatFooter.this.NiX != null) && (!ChatFooter.this.NiX.NgY))
           {
             ChatFooter.bC(ChatFooter.this).removeMessages(5000);
             ChatFooter.bC(ChatFooter.this).sendEmptyMessageDelayed(5000, 5000L);
@@ -3302,51 +3506,51 @@ public class ChatFooter
           {
             ChatFooter.aM(ChatFooter.this).put(Integer.valueOf(ChatFooter.aL(ChatFooter.this)), paramAnonymousArrayOfString[0]);
             if (ChatFooter.aM(ChatFooter.this) != null) {
-              ChatFooter.C(ChatFooter.this).GtV = paramAnonymousArrayOfString[0].length();
+              ChatFooter.D(ChatFooter.this).Nho = paramAnonymousArrayOfString[0].length();
             }
             Log.d("MicroMsg.ChatFooter", "newVoice2txt onRes, curTxt: %s.", new Object[] { paramAnonymousArrayOfString[0] });
           }
-          AppMethodBeat.o(232290);
+          AppMethodBeat.o(279868);
         }
         
-        public final void biv()
+        public final void brT()
         {
-          AppMethodBeat.i(232292);
+          AppMethodBeat.i(279870);
           Log.d("MicroMsg.ChatFooter", "onRecordFin.");
-          AppMethodBeat.o(232292);
+          AppMethodBeat.o(279870);
         }
         
-        public final void biz()
+        public final void brX()
         {
-          AppMethodBeat.i(232293);
-          if ((ChatFooter.this.GvE != null) && (!ChatFooter.this.GvE.GtF))
+          AppMethodBeat.i(279871);
+          if ((ChatFooter.this.NiX != null) && (!ChatFooter.this.NiX.NgY))
           {
-            Log.d("MicroMsg.ChatFooter", "onRecognizeFinish, %s.", new Object[] { Boolean.valueOf(ChatFooter.this.GvE.GtF) });
-            ChatFooter.C(ChatFooter.this).GtY = 1;
-            ChatFooter.C(ChatFooter.this).GtU = System.currentTimeMillis();
-            ChatFooter.g(ChatFooter.this, false);
+            Log.d("MicroMsg.ChatFooter", "onRecognizeFinish, %s.", new Object[] { Boolean.valueOf(ChatFooter.this.NiX.NgY) });
+            ChatFooter.D(ChatFooter.this).Nhr = 1;
+            ChatFooter.D(ChatFooter.this).Nhn = System.currentTimeMillis();
+            ChatFooter.h(ChatFooter.this, false);
             ChatFooter.aU(ChatFooter.this);
-            ChatFooter.this.GvE = null;
+            ChatFooter.this.NiX = null;
             ChatFooter.bC(ChatFooter.this).removeMessages(5000);
             ChatFooter.aT(ChatFooter.this).stopTimer();
             ChatFooter.aN(ChatFooter.this);
           }
-          AppMethodBeat.o(232293);
+          AppMethodBeat.o(279871);
         }
         
         public final void c(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, long paramAnonymousLong)
         {
-          AppMethodBeat.i(232291);
+          AppMethodBeat.i(279869);
           Log.d("MicroMsg.ChatFooter", "onError, errType: %d, errCode: %d, localCode: %d, voiceid: %d.", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3), Long.valueOf(paramAnonymousLong) });
-          ChatFooter.C(ChatFooter.this).GtY = 0;
-          ChatFooter.C(ChatFooter.this).GtU = System.currentTimeMillis();
+          ChatFooter.D(ChatFooter.this).Nhr = 0;
+          ChatFooter.D(ChatFooter.this).Nhn = System.currentTimeMillis();
           ChatFooter.aU(ChatFooter.this);
-          AppMethodBeat.o(232291);
+          AppMethodBeat.o(279869);
         }
       });
-      this.GvE.GtF = paramBoolean1;
-      this.GvE.start();
-      this.GvL.startTimer(500L);
+      this.NiX.NgY = paramBoolean1;
+      this.NiX.start();
+      this.Nje.startTimer(500L);
       AppMethodBeat.o(185826);
       return;
     }
@@ -3358,12 +3562,12 @@ public class ChatFooter
     boolean bool2 = true;
     AppMethodBeat.i(31575);
     Log.i("MicroMsg.ChatFooter", "onResume: %s, %s", new Object[] { Boolean.valueOf(KeyBoardUtil.isPortOrientation(paramContext)), Integer.valueOf(getContext().getResources().getConfiguration().orientation) });
-    this.wxq = true;
+    this.zQA = true;
     this.activity = paramActivity;
-    if ((this.Kjc == 48) && (this.KiY == 1) && (!this.Kjn))
+    if ((this.RjP == 48) && (this.jJL == 1) && (!this.Rka))
     {
-      this.xfU = false;
-      j(0, false, -1);
+      this.BSf = false;
+      l(0, false, -1);
     }
     boolean bool1 = bool2;
     if (getContext().getResources().getConfiguration().orientation != 1)
@@ -3374,53 +3578,53 @@ public class ChatFooter
     }
     else
     {
-      this.KiX = bool1;
-      if (com.tencent.mm.compatible.util.d.oD(24)) {
-        this.Kje = ((Activity)getContext()).isInMultiWindowMode();
+      this.RjL = bool1;
+      if (com.tencent.mm.compatible.util.d.qV(24)) {
+        this.RjR = ((Activity)getContext()).isInMultiWindowMode();
       }
-      gqN();
-      gqS();
-      if (ap.gni().JXr) {
-        ap.gni().iu(MMApplicationContext.getContext());
+      hlM();
+      hlR();
+      if (ap.hhK().QXL) {
+        ap.hhK().jx(MMApplicationContext.getContext());
       }
-      if ((!this.Kip.grr()) && (this.rum != null)) {
-        this.rum.onResume();
+      if ((!this.RiZ.hmq()) && (this.jPN != null)) {
+        this.jPN.onResume();
       }
-      if ((this.Kjw) || (!this.KiU)) {
+      if ((this.Rkj) || (!this.RjI)) {
         break label332;
       }
-      gqH();
+      hlG();
     }
     for (;;)
     {
-      aiC(getKeyBordHeightPX());
-      if (this.Kik != null) {
-        this.Kik.context = paramContext;
+      aqE(getKeyBordHeightPX());
+      if (this.RiU != null) {
+        this.RiU.context = paramContext;
       }
-      this.KiA.Knj = false;
-      if (!this.Kds) {
-        gqG();
+      this.Rjn.RnV = false;
+      if (!this.RdY) {
+        hlF();
       }
-      gql();
+      hlj();
       post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(184931);
-          com.tencent.mm.compatible.util.i.v(ChatFooter.e(ChatFooter.this));
+          com.tencent.mm.compatible.util.i.u(ChatFooter.e(ChatFooter.this));
           AppMethodBeat.o(184931);
         }
       });
-      if ((this.Kja != null) && (this.Kjy != null)) {
-        this.Kja.a((ChattingScrollLayout.a)this.Kjy.grq().bh(r.class));
+      if ((this.RjN != null) && (this.Rkl != null)) {
+        this.RjN.a((ChattingScrollLayout.a)this.Rkl.hmp().bC(com.tencent.mm.ui.chatting.d.b.r.class));
       }
       AppMethodBeat.o(31575);
       return;
       bool1 = false;
       break;
       label332:
-      if ((this.Kjw) && (!this.KiU)) {
-        gqF();
+      if ((this.Rkj) && (!this.RjI)) {
+        hlE();
       }
     }
   }
@@ -3428,27 +3632,27 @@ public class ChatFooter
   public final void a(b paramb)
   {
     AppMethodBeat.i(31574);
-    this.Kjy = paramb;
-    this.KiC = new com.tencent.mm.plugin.groupsolitaire.ui.d(getContext(), this.Kjy.grp(), new d.d()
+    this.Rkl = paramb;
+    this.Rjp = new com.tencent.mm.plugin.groupsolitaire.ui.d(getContext(), this.Rkl.hmo(), new d.d()
     {
-      public final void aBt(String paramAnonymousString)
+      public final void aLh(String paramAnonymousString)
       {
-        AppMethodBeat.i(232230);
+        AppMethodBeat.i(273668);
         if ((ChatFooter.l(ChatFooter.this) != null) && (!Util.isNullOrNil(paramAnonymousString))) {
-          ChatFooter.l(ChatFooter.this).aBt(paramAnonymousString);
+          ChatFooter.l(ChatFooter.this).aLh(paramAnonymousString);
         }
-        AppMethodBeat.o(232230);
+        AppMethodBeat.o(273668);
       }
       
-      public final void dYi()
+      public final void eBG()
       {
-        AppMethodBeat.i(232229);
-        ChatFooter.this.dYi();
-        ChatFooter.this.gqj();
-        AppMethodBeat.o(232229);
+        AppMethodBeat.i(273667);
+        ChatFooter.this.eBG();
+        ChatFooter.this.hlh();
+        AppMethodBeat.o(273667);
       }
     });
-    this.KiC.ygR = this.Kjr;
+    this.Rjp.DqT = this.Rke;
     AppMethodBeat.o(31574);
   }
   
@@ -3459,103 +3663,162 @@ public class ChatFooter
     {
       public final void run()
       {
-        AppMethodBeat.i(185363);
-        ChatFooter.A(ChatFooter.this).setBackgroundResource(2131233164);
-        ChatFooter.A(ChatFooter.this).setText(2131757294);
-        if (ChatFooter.this.Kkf)
+        AppMethodBeat.i(185794);
+        ChatFooter.B(ChatFooter.this).setBackgroundResource(R.g.input_bg);
+        ChatFooter.B(ChatFooter.this).setText(R.l.chatfooter_presstorcd);
+        if (ChatFooter.this.RkS)
         {
-          switch (ChatFooter.83.Kmi[paramh.ordinal()])
+          switch (ChatFooter.85.RmV[paramh.ordinal()])
           {
           }
           for (;;)
           {
-            AppMethodBeat.o(185363);
+            AppMethodBeat.o(185794);
             return;
-            if (ChatFooter.F(ChatFooter.this) != null) {
-              ChatFooter.K(ChatFooter.this);
+            if (ChatFooter.G(ChatFooter.this) != null) {
+              ChatFooter.L(ChatFooter.this);
             }
           }
         }
-        if (ChatFooter.L(ChatFooter.this) != null)
+        if (ChatFooter.M(ChatFooter.this) != null)
         {
-          ChatFooter.L(ChatFooter.this).dismiss();
-          if (ChatFooter.M(ChatFooter.this) != null) {
-            ChatFooter.M(ChatFooter.this).getContentView().animate().alpha(0.0F).setDuration(300L).withEndAction(ChatFooter.bi(ChatFooter.this)).start();
+          ChatFooter.M(ChatFooter.this).dismiss();
+          if (ChatFooter.N(ChatFooter.this) != null) {
+            ChatFooter.N(ChatFooter.this).getContentView().animate().alpha(0.0F).setDuration(300L).withEndAction(ChatFooter.bi(ChatFooter.this)).start();
           }
           ChatFooter.bj(ChatFooter.this).setVisibility(0);
           ChatFooter.bk(ChatFooter.this).setVisibility(8);
           ChatFooter.bl(ChatFooter.this).setVisibility(8);
-          ChatFooter.ar(ChatFooter.this).setVisibility(8);
-          ChatFooter.X(ChatFooter.this).setVisibility(8);
-          ChatFooter.aq(ChatFooter.this).setVisibility(0);
+          ChatFooter.as(ChatFooter.this).setVisibility(8);
+          ChatFooter.Y(ChatFooter.this).setVisibility(8);
+          ChatFooter.ar(ChatFooter.this).setVisibility(0);
         }
+        ChatFooter.g(ChatFooter.this, false);
         ChatFooter.f(ChatFooter.this, false);
-        ChatFooter.e(ChatFooter.this, false);
-        AppMethodBeat.o(185363);
+        AppMethodBeat.o(185794);
       }
     });
     AppMethodBeat.o(185822);
   }
   
-  public final void a(buv parambuv) {}
+  public final void a(ccn paramccn) {}
   
   public final void a(String paramString, Boolean paramBoolean, CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(232302);
+    AppMethodBeat.i(285145);
     if (paramBoolean.booleanValue()) {
-      a.b.d(this.KiL, paramString);
+      a.b.d(this.Rjz, paramString);
     }
     for (;;)
     {
       setHint(paramCharSequence);
-      this.KiL.setVisibility(0);
-      AppMethodBeat.o(232302);
+      this.Rjz.setVisibility(0);
+      AppMethodBeat.o(285145);
       return;
-      a.b.c(this.KiL, paramString);
+      a.b.c(this.Rjz, paramString);
     }
-  }
-  
-  public final boolean aT(ca paramca)
-  {
-    AppMethodBeat.i(31678);
-    if (this.KiD != null) {
-      this.KiD.ehQ();
-    }
-    this.Kix.setTag(paramca);
-    this.KiR = 1;
-    Ai(true);
-    this.Kim.setVisibility(8);
-    aiw(2131231778);
-    if (this.Kdp != null)
-    {
-      this.Kdp.setVisibility(8);
-      this.Kds = false;
-      this.Kdp.reset();
-    }
-    showVKB();
-    Ah(true);
-    beX("");
-    AppMethodBeat.o(31678);
-    return true;
-  }
-  
-  public final void aX(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(31632);
-    this.Kik.zW(paramBoolean1);
-    this.Kik.zX(paramBoolean2);
-    AppMethodBeat.o(31632);
   }
   
   public final void addTextChangedListener(TextWatcher paramTextWatcher)
   {
     AppMethodBeat.i(31615);
-    this.KkX = new i(paramTextWatcher);
-    this.ECK.addTextChangedListener(this.KkX);
+    this.RlK = new i(paramTextWatcher);
+    this.KQB.addTextChangedListener(this.RlK);
     AppMethodBeat.o(31615);
   }
   
-  public final void aiA(int paramInt)
+  public final void aqA(int paramInt)
+  {
+    AppMethodBeat.i(31622);
+    if (this.RkS)
+    {
+      if ((this.RkZ != null) && (this.RkZ.getVisibility() == 0)) {
+        this.RkZ.ajY(paramInt);
+      }
+      AppMethodBeat.o(31622);
+      return;
+    }
+    if (this.RjG)
+    {
+      i = 0;
+      for (;;)
+      {
+        if (i < Rmj.length)
+        {
+          if ((paramInt >= Rmi[i]) && (paramInt < Rmi[(i + 1)])) {
+            this.Rku.setBackgroundDrawable(com.tencent.mm.ci.a.m(getContext(), Rmj[i]));
+          }
+        }
+        else
+        {
+          if ((paramInt != -1) || (this.MkT == null)) {
+            break;
+          }
+          this.MkT.dismiss();
+          this.MkW.setVisibility(0);
+          this.RjB.setVisibility(8);
+          this.wLn.setVisibility(8);
+          AppMethodBeat.o(31622);
+          return;
+        }
+        i += 1;
+      }
+    }
+    int i = 0;
+    for (;;)
+    {
+      if (i < Rmj.length)
+      {
+        if ((paramInt >= Rmi[i]) && (paramInt < Rmi[(i + 1)])) {
+          this.wLo.setBackgroundDrawable(com.tencent.mm.ci.a.m(getContext(), Rmj[i]));
+        }
+      }
+      else
+      {
+        if ((paramInt == -1) && (this.MkT != null))
+        {
+          this.MkT.dismiss();
+          this.MkW.setVisibility(0);
+          this.RjB.setVisibility(8);
+          this.wLn.setVisibility(8);
+        }
+        AppMethodBeat.o(31622);
+        return;
+      }
+      i += 1;
+    }
+  }
+  
+  public final void aqB(int paramInt)
+  {
+    AppMethodBeat.i(31624);
+    this.RjF = paramInt;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(31624);
+      return;
+      Eo(true);
+      this.RiW.setVisibility(8);
+      aqy(R.g.dnf);
+      AppMethodBeat.o(31624);
+      return;
+      Eo(false);
+      this.RiW.setVisibility(0);
+      hlO();
+      aqy(R.g.chatting_setmode_keyboard_btn);
+      if ((z.bdS().booleanValue()) && (this.Rkg != null))
+      {
+        c localc = this.Rkg;
+        Boolean localBoolean = Boolean.TRUE;
+        localc.b(localBoolean, localBoolean);
+      }
+    }
+  }
+  
+  public final void aqC(int paramInt)
   {
     AppMethodBeat.i(185823);
     b(paramInt, true, 0, 0);
@@ -3563,51 +3826,51 @@ public class ChatFooter
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
-  public final void aix(int paramInt)
+  public final void aqz(int paramInt)
   {
     AppMethodBeat.i(31616);
     Object localObject1;
-    if (this.Kkf)
+    if (this.RkS)
     {
-      if (this.Kkh == null)
+      if (this.RkU == null)
       {
-        this.Kkh = new com.tencent.mm.ui.base.p(View.inflate(getContext(), 2131495852, null), -1, -1, true);
-        this.Kkh.setSoftInputMode(16);
-        this.Kkh.setOnDismissListener(new PopupWindow.OnDismissListener()
+        this.RkU = new com.tencent.mm.ui.base.r(View.inflate(getContext(), R.i.dOM, null), -1, -1, true);
+        this.RkU.setSoftInputMode(16);
+        this.RkU.setOnDismissListener(new PopupWindow.OnDismissListener()
         {
           public final void onDismiss()
           {
-            AppMethodBeat.i(179765);
-            if ((ChatFooter.this.KlT == ChatFooter.e.Kmr) && (ChatFooter.aJ(ChatFooter.this)))
+            AppMethodBeat.i(286311);
+            if ((ChatFooter.this.RmG == ChatFooter.e.Rne) && (ChatFooter.aJ(ChatFooter.this)))
             {
               Log.i("MicroMsg.ChatFooter", "dismiss from keyback, need cancelRecording");
-              ChatFooter.C(ChatFooter.this).setExitType(6);
-              ChatFooter.l(ChatFooter.this).ehM();
+              ChatFooter.D(ChatFooter.this).setExitType(6);
+              ChatFooter.l(ChatFooter.this).eRt();
             }
             ChatFooter.aK(ChatFooter.this);
-            ChatFooter.e(ChatFooter.this, 0);
-            AppMethodBeat.o(179765);
+            ChatFooter.f(ChatFooter.this, 0);
+            AppMethodBeat.o(286311);
           }
         });
-        this.Kki = this.Kkh.getContentView().findViewById(2131305385);
-        this.Kkj = this.Kkh.getContentView().findViewById(2131305407);
-        this.Kkk = ((ViewGroup)this.Kkh.getContentView().findViewById(2131305381));
-        this.Kkm = ((SoundWaveView)this.Kkh.getContentView().findViewById(2131305387));
-        this.Kkl = ((EditText)this.Kkh.getContentView().findViewById(2131305379));
-        this.Kkn = ((ImageView)this.Kkh.getContentView().findViewById(2131305378));
-        this.Kko = ((ViewGroup)this.Kkh.getContentView().findViewById(2131305386));
-        this.Kkp = ((TextView)this.Kkh.getContentView().findViewById(2131305377));
-        this.Kkq = ((WeImageView)this.Kkh.getContentView().findViewById(2131305382));
-        this.Kkr = ((LanguageChoiceLayout)this.Kkh.getContentView().findViewById(2131305399));
-        this.Kks = ((TextView)this.Kkh.getContentView().findViewById(2131305383));
-        this.Kkt = ((ViewGroup)this.Kkh.getContentView().findViewById(2131305388));
-        this.Kku = ((TextView)this.Kkh.getContentView().findViewById(2131305380));
-        this.Kkr.setSelectLanguageListener(new LanguageChoiceLayout.a()
+        this.RkV = this.RkU.getContentView().findViewById(R.h.dOQ);
+        this.RkW = this.RkU.getContentView().findViewById(R.h.dPd);
+        this.RkX = ((ViewGroup)this.RkU.getContentView().findViewById(R.h.dOM));
+        this.RkZ = ((SoundWaveView)this.RkU.getContentView().findViewById(R.h.dOS));
+        this.RkY = ((EditText)this.RkU.getContentView().findViewById(R.h.dOK));
+        this.Rla = ((ImageView)this.RkU.getContentView().findViewById(R.h.dOJ));
+        this.Rlb = ((ViewGroup)this.RkU.getContentView().findViewById(R.h.dOR));
+        this.Rlc = ((TextView)this.RkU.getContentView().findViewById(R.h.dOI));
+        this.Rld = ((WeImageView)this.RkU.getContentView().findViewById(R.h.dON));
+        this.Rle = ((LanguageChoiceLayout)this.RkU.getContentView().findViewById(R.h.dOX));
+        this.Rlf = ((TextView)this.RkU.getContentView().findViewById(R.h.dOO));
+        this.Rlg = ((ViewGroup)this.RkU.getContentView().findViewById(R.h.dOT));
+        this.Rlh = ((TextView)this.RkU.getContentView().findViewById(R.h.dOL));
+        this.Rle.setSelectLanguageListener(new LanguageChoiceLayout.a()
         {
-          public final void acq(int paramAnonymousInt)
+          public final void ajX(int paramAnonymousInt)
           {
-            AppMethodBeat.i(232252);
-            ChatFooter.f(ChatFooter.this, paramAnonymousInt);
+            AppMethodBeat.i(291529);
+            ChatFooter.g(ChatFooter.this, paramAnonymousInt);
             if (Util.isNullOrNil((String)ChatFooter.aM(ChatFooter.this).get(Integer.valueOf(ChatFooter.aL(ChatFooter.this)))))
             {
               long l2 = System.nanoTime() | 0xFFFFFFFF;
@@ -3616,65 +3879,65 @@ public class ChatFooter
                 l1 = Math.abs(l2);
               }
               com.tencent.mm.modelvoiceaddr.h localh = new com.tencent.mm.modelvoiceaddr.h(String.valueOf(l1));
-              ChatFooter.D(ChatFooter.this).a(localh);
-              ChatFooter.this.getContext().getSharedPreferences("voice2txt_sp", 0).edit().putInt(ChatFooter.q(ChatFooter.this), ChatFooter.aL(ChatFooter.this)).apply();
+              ChatFooter.E(ChatFooter.this).a(localh);
+              ChatFooter.this.getContext().getSharedPreferences("voice2txt_sp", 0).edit().putInt(ChatFooter.r(ChatFooter.this), ChatFooter.aL(ChatFooter.this)).apply();
               ChatFooter.this.a(ChatFooter.aL(ChatFooter.this), false, localh, true);
             }
             for (;;)
             {
-              ChatFooter.C(ChatFooter.this).GtQ = System.currentTimeMillis();
-              ChatFooter.C(ChatFooter.this).GtT = 0;
-              ChatFooter.C(ChatFooter.this).GtU = 0L;
-              ChatFooter.C(ChatFooter.this).GtV = 0;
-              ChatFooter.C(ChatFooter.this).GtY = 0;
-              ChatFooter.C(ChatFooter.this).GtZ = 0;
-              ChatFooter.C(ChatFooter.this).Gua = 0;
-              AppMethodBeat.o(232252);
+              ChatFooter.D(ChatFooter.this).Nhj = System.currentTimeMillis();
+              ChatFooter.D(ChatFooter.this).Nhm = 0;
+              ChatFooter.D(ChatFooter.this).Nhn = 0L;
+              ChatFooter.D(ChatFooter.this).Nho = 0;
+              ChatFooter.D(ChatFooter.this).Nhr = 0;
+              ChatFooter.D(ChatFooter.this).Nhs = 0;
+              ChatFooter.D(ChatFooter.this).Nht = 0;
+              AppMethodBeat.o(291529);
               return;
               ChatFooter.aN(ChatFooter.this);
             }
           }
         });
-        this.Kkq.setOnClickListener(new View.OnClickListener()
+        this.Rld.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
-            AppMethodBeat.i(185353);
+            AppMethodBeat.i(286224);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bm(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$40", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+            localb.bn(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$42", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
             if (ChatFooter.aO(ChatFooter.this)) {
               ChatFooter.aP(ChatFooter.this).hideSoftInputFromWindow(ChatFooter.aB(ChatFooter.this).getWindowToken(), 0);
             }
             paramAnonymousView = ChatFooter.aQ(ChatFooter.this);
             int i = ChatFooter.aL(ChatFooter.this);
             paramAnonymousView.setVisibility(0);
-            paramAnonymousView.hSz.post(new LanguageChoiceLayout.4(paramAnonymousView, i));
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$40", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(185353);
+            paramAnonymousView.kGW.post(new LanguageChoiceLayout.4(paramAnonymousView, i));
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$42", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(286224);
           }
         });
-        this.Kkl.setMaxLines(2147483647);
-        this.Kkl.setHorizontallyScrolling(false);
-        this.Kkl.setOnEditorActionListener(new TextView.OnEditorActionListener()
+        this.RkY.setMaxLines(2147483647);
+        this.RkY.setHorizontallyScrolling(false);
+        this.RkY.setOnEditorActionListener(new TextView.OnEditorActionListener()
         {
           public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
           {
-            AppMethodBeat.i(232253);
+            AppMethodBeat.i(268725);
             if ((4 == paramAnonymousInt) || (66 == paramAnonymousKeyEvent.getAction()))
             {
               paramAnonymousTextView = ChatFooter.aB(ChatFooter.this).getText().toString();
               if (ChatFooter.l(ChatFooter.this) != null)
               {
                 if (!Util.isNullOrNil(paramAnonymousTextView)) {
-                  ChatFooter.l(ChatFooter.this).aDN(paramAnonymousTextView);
+                  ChatFooter.l(ChatFooter.this).aNX(paramAnonymousTextView);
                 }
-                ChatFooter.l(ChatFooter.this).ehM();
+                ChatFooter.l(ChatFooter.this).eRt();
               }
-              AppMethodBeat.o(232253);
+              AppMethodBeat.o(268725);
               return true;
             }
-            AppMethodBeat.o(232253);
+            AppMethodBeat.o(268725);
             return false;
           }
         });
@@ -3682,134 +3945,134 @@ public class ChatFooter
         {
           public final void run()
           {
-            AppMethodBeat.i(31531);
+            AppMethodBeat.i(185357);
             ChatFooter.aR(ChatFooter.this);
-            AppMethodBeat.o(31531);
+            AppMethodBeat.o(185357);
           }
         });
-        this.Kkl.setOnTouchListener(new View.OnTouchListener()
+        this.RkY.setOnTouchListener(new View.OnTouchListener()
         {
           public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
           {
-            AppMethodBeat.i(232254);
+            AppMethodBeat.i(291594);
             if (ChatFooter.aS(ChatFooter.this))
             {
-              ChatFooter.g(ChatFooter.this, false);
-              if (ChatFooter.this.GvE != null) {
-                ChatFooter.this.GvE.az(false, true);
+              ChatFooter.h(ChatFooter.this, false);
+              if (ChatFooter.this.NiX != null) {
+                ChatFooter.this.NiX.aM(false, true);
               }
               ChatFooter.aT(ChatFooter.this).stopTimer();
               ChatFooter.aB(ChatFooter.this).setText((CharSequence)ChatFooter.aM(ChatFooter.this).get(Integer.valueOf(ChatFooter.aL(ChatFooter.this))));
-              ChatFooter.C(ChatFooter.this).GtY = 0;
-              ChatFooter.C(ChatFooter.this).GtU = System.currentTimeMillis();
+              ChatFooter.D(ChatFooter.this).Nhr = 0;
+              ChatFooter.D(ChatFooter.this).Nhn = System.currentTimeMillis();
               ChatFooter.aU(ChatFooter.this);
             }
-            ChatFooter.C(ChatFooter.this).Gua = 1;
-            AppMethodBeat.o(232254);
+            ChatFooter.D(ChatFooter.this).Nht = 1;
+            AppMethodBeat.o(291594);
             return false;
           }
         });
-        this.Kkv = ((ViewGroup)this.Kkh.getContentView().findViewById(2131305384));
-        this.Kkw = ((ViewGroup)this.Kkh.getContentView().findViewById(2131305410));
-        this.Kkx = this.Kkh.getContentView().findViewById(2131305374);
-        this.Kky = this.Kkh.getContentView().findViewById(2131305408);
-        this.Kkz = ((WeImageView)this.Kkh.getContentView().findViewById(2131305375));
-        this.KkA = ((WeImageView)this.Kkh.getContentView().findViewById(2131305409));
-        this.KkB = this.Kkh.getContentView().findViewById(2131305376);
-        this.KkC = this.Kkh.getContentView().findViewById(2131305412);
-        this.KkD = ((ViewGroup)this.Kkh.getContentView().findViewById(2131305411));
-        this.KkE = this.Kkh.getContentView().findViewById(2131305390);
-        this.KkE.setOnClickListener(new View.OnClickListener()
+        this.Rli = ((ViewGroup)this.RkU.getContentView().findViewById(R.h.dOP));
+        this.Rlj = ((ViewGroup)this.RkU.getContentView().findViewById(R.h.dPg));
+        this.Rlk = this.RkU.getContentView().findViewById(R.h.dOF);
+        this.Rll = this.RkU.getContentView().findViewById(R.h.dPe);
+        this.Rlm = ((WeImageView)this.RkU.getContentView().findViewById(R.h.dOG));
+        this.Rln = ((WeImageView)this.RkU.getContentView().findViewById(R.h.dPf));
+        this.Rlo = this.RkU.getContentView().findViewById(R.h.dOH);
+        this.Rlp = this.RkU.getContentView().findViewById(R.h.dPi);
+        this.Rlq = ((ViewGroup)this.RkU.getContentView().findViewById(R.h.dPh));
+        this.Rlr = this.RkU.getContentView().findViewById(R.h.dOV);
+        this.Rlr.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
-            AppMethodBeat.i(232255);
+            AppMethodBeat.i(266617);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bm(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$44", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+            localb.bn(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$46", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
             ChatFooter.aV(ChatFooter.this);
-            ChatFooter.C(ChatFooter.this).setExitType(6);
-            ChatFooter.l(ChatFooter.this).ehM();
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$44", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(232255);
+            ChatFooter.D(ChatFooter.this).setExitType(6);
+            ChatFooter.l(ChatFooter.this).eRt();
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$46", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(266617);
           }
         });
-        this.KkF = this.Kkh.getContentView().findViewById(2131305405);
-        this.KkF.setOnClickListener(new View.OnClickListener()
+        this.Rls = this.RkU.getContentView().findViewById(R.h.dPb);
+        this.Rls.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
-            AppMethodBeat.i(232256);
+            AppMethodBeat.i(185360);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bm(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$45", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+            localb.bn(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$47", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
             if (ChatFooter.l(ChatFooter.this) != null)
             {
               ChatFooter.aV(ChatFooter.this);
-              ChatFooter.C(ChatFooter.this).setExitType(7);
-              ChatFooter.l(ChatFooter.this).eu(ChatFooter.l(ChatFooter.this).getFileName(), ChatFooter.aW(ChatFooter.this));
-              ChatFooter.K(ChatFooter.this);
+              ChatFooter.D(ChatFooter.this).setExitType(7);
+              ChatFooter.l(ChatFooter.this).eV(ChatFooter.l(ChatFooter.this).getFileName(), ChatFooter.aW(ChatFooter.this));
+              ChatFooter.L(ChatFooter.this);
             }
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$45", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(232256);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$47", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(185360);
           }
         });
-        this.KkI = this.Kkh.getContentView().findViewById(2131305402);
-        this.KkI.setOnClickListener(new View.OnClickListener()
+        this.Rlv = this.RkU.getContentView().findViewById(R.h.dOY);
+        this.Rlv.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
-            AppMethodBeat.i(232257);
+            AppMethodBeat.i(185793);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bm(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$46", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+            localb.bn(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$48", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
             if ((ChatFooter.aX(ChatFooter.this).getVisibility() == 0) && (8 == ChatFooter.aY(ChatFooter.this).getVisibility()))
             {
               paramAnonymousView = ChatFooter.aB(ChatFooter.this).getText().toString();
               if ((ChatFooter.l(ChatFooter.this) != null) && (!Util.isNullOrNil(paramAnonymousView)))
               {
                 ChatFooter.aV(ChatFooter.this);
-                ChatFooter.C(ChatFooter.this).GtS = ChatFooter.aL(ChatFooter.this);
-                ChatFooter.C(ChatFooter.this).GtW = paramAnonymousView.length();
-                if (1 != ChatFooter.C(ChatFooter.this).GtZ) {
+                ChatFooter.D(ChatFooter.this).Nhl = ChatFooter.aL(ChatFooter.this);
+                ChatFooter.D(ChatFooter.this).Nhp = paramAnonymousView.length();
+                if (1 != ChatFooter.D(ChatFooter.this).Nhs) {
                   break label210;
                 }
-                ChatFooter.C(ChatFooter.this).setExitType(8);
+                ChatFooter.D(ChatFooter.this).setExitType(8);
               }
             }
             for (;;)
             {
-              ChatFooter.l(ChatFooter.this).aDN(paramAnonymousView);
-              ChatFooter.l(ChatFooter.this).ehM();
+              ChatFooter.l(ChatFooter.this).aNX(paramAnonymousView);
+              ChatFooter.l(ChatFooter.this).eRt();
               ChatFooter.d(ChatFooter.this, paramAnonymousView);
-              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$46", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-              AppMethodBeat.o(232257);
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$48", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+              AppMethodBeat.o(185793);
               return;
               label210:
-              ChatFooter.C(ChatFooter.this).setExitType(5);
+              ChatFooter.D(ChatFooter.this).setExitType(5);
             }
           }
         });
-        this.KkG = ((WeImageView)this.Kkh.getContentView().findViewById(2131305391));
-        this.KkH = ((WeImageView)this.Kkh.getContentView().findViewById(2131305406));
-        this.KkJ = this.Kkh.getContentView().findViewById(2131305404);
-        this.KkK = ((WeImageView)this.Kkh.getContentView().findViewById(2131305403));
-        this.KkL = ((ViewGroup)this.Kkh.getContentView().findViewById(2131305413));
-        this.KkM = this.Kkh.getContentView().findViewById(2131305415);
-        this.KkN = this.Kkh.getContentView().findViewById(2131305417);
-        this.KkO = this.Kkh.getContentView().findViewById(2131305416);
-        this.KkP = ((WeImageView)this.Kkh.getContentView().findViewById(2131305414));
-        localObject1 = (RelativeLayout.LayoutParams)this.KkL.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject1).height = (getContext().getResources().getDimensionPixelSize(2131167111) + av.aD(getContext()));
-        this.KkL.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        localObject1 = (FrameLayout.LayoutParams)this.KkP.getLayoutParams();
-        ((FrameLayout.LayoutParams)localObject1).bottomMargin = (av.aD(getContext()) + at.fromDPToPix(getContext(), 14));
-        this.KkP.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        this.GvL = new MTimerHandler(new MTimerHandler.CallBack()
+        this.Rlt = ((WeImageView)this.RkU.getContentView().findViewById(R.h.dOW));
+        this.Rlu = ((WeImageView)this.RkU.getContentView().findViewById(R.h.dPc));
+        this.Rlw = this.RkU.getContentView().findViewById(R.h.dPa);
+        this.Rlx = ((WeImageView)this.RkU.getContentView().findViewById(R.h.dOZ));
+        this.Rly = ((ViewGroup)this.RkU.getContentView().findViewById(R.h.dPj));
+        this.Rlz = this.RkU.getContentView().findViewById(R.h.dPl);
+        this.RlA = this.RkU.getContentView().findViewById(R.h.dPn);
+        this.RlB = this.RkU.getContentView().findViewById(R.h.dPm);
+        this.RlC = ((WeImageView)this.RkU.getContentView().findViewById(R.h.dPk));
+        localObject1 = (RelativeLayout.LayoutParams)this.Rly.getLayoutParams();
+        ((RelativeLayout.LayoutParams)localObject1).height = (getContext().getResources().getDimensionPixelSize(R.f.dlP) + ay.aB(getContext()));
+        this.Rly.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        localObject1 = (FrameLayout.LayoutParams)this.RlC.getLayoutParams();
+        ((FrameLayout.LayoutParams)localObject1).bottomMargin = (ay.aB(getContext()) + aw.fromDPToPix(getContext(), 14));
+        this.RlC.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        this.Nje = new MTimerHandler(new MTimerHandler.CallBack()
         {
           public final boolean onTimerExpired()
           {
-            AppMethodBeat.i(232258);
+            AppMethodBeat.i(290676);
             int i = ChatFooter.aZ(ChatFooter.this);
             ChatFooter.ba(ChatFooter.this);
             switch (i % 3)
@@ -3818,7 +4081,7 @@ public class ChatFooter
             for (;;)
             {
               ChatFooter.bb(ChatFooter.this);
-              AppMethodBeat.o(232258);
+              AppMethodBeat.o(290676);
               return true;
               ChatFooter.e(ChatFooter.this, "·");
               continue;
@@ -3828,24 +4091,24 @@ public class ChatFooter
             }
           }
         }, true);
-        this.GvO = new MMHandler(new MMHandler.Callback()
+        this.Njh = new MMHandler(new MMHandler.Callback()
         {
           public final boolean handleMessage(Message paramAnonymousMessage)
           {
-            AppMethodBeat.i(232259);
+            AppMethodBeat.i(279448);
             switch (paramAnonymousMessage.what)
             {
             }
             for (;;)
             {
-              AppMethodBeat.o(232259);
+              AppMethodBeat.o(279448);
               return true;
-              ChatFooter.C(ChatFooter.this).GtT = 1;
-              ChatFooter.C(ChatFooter.this).GtU = System.currentTimeMillis();
-              ChatFooter.C(ChatFooter.this).GtY = 0;
+              ChatFooter.D(ChatFooter.this).Nhm = 1;
+              ChatFooter.D(ChatFooter.this).Nhn = System.currentTimeMillis();
+              ChatFooter.D(ChatFooter.this).Nhr = 0;
               ChatFooter.aT(ChatFooter.this).stopTimer();
-              if (ChatFooter.this.GvE != null) {
-                ChatFooter.this.GvE.az(false, false);
+              if (ChatFooter.this.NiX != null) {
+                ChatFooter.this.NiX.aM(false, false);
               }
               if (!Util.isNullOrNil((String)ChatFooter.aM(ChatFooter.this).get(Integer.valueOf(ChatFooter.aL(ChatFooter.this)))))
               {
@@ -3858,258 +4121,258 @@ public class ChatFooter
             }
           }
         });
-        this.KkQ = this.Kkh.getContentView().findViewById(2131305389);
-        this.Kkh.setClippingEnabled(false);
+        this.RlD = this.RkU.getContentView().findViewById(R.h.dOU);
+        this.RkU.setClippingEnabled(false);
       }
       paramInt = getTransLangTypeByTalker();
-      if (com.tencent.mm.modelvoiceaddr.g.jwp == paramInt)
+      if (com.tencent.mm.modelvoiceaddr.g.mlS == paramInt)
       {
-        this.GtE = com.tencent.mm.modelvoiceaddr.g.jwq;
-        if (this.Kkr != null) {
-          this.Kkr.setSelectedLang(this.GtE);
+        this.NgX = com.tencent.mm.modelvoiceaddr.g.mlT;
+        if (this.Rle != null) {
+          this.Rle.setSelectedLang(this.NgX);
         }
-        Log.d("MicroMsg.ChatFooter", "curTxt:%s", new Object[] { Integer.valueOf(this.KlV.size()) });
-        if ((com.tencent.mm.kernel.g.aAh().azQ().getBoolean(ar.a.OnI, true)) || (!com.tencent.mm.kernel.g.aAh().azQ().getBoolean(ar.a.OnJ, true))) {
+        Log.d("MicroMsg.ChatFooter", "curTxt:%s", new Object[] { Integer.valueOf(this.RmI.size()) });
+        if ((com.tencent.mm.kernel.h.aHG().aHp().getBoolean(ar.a.VCW, true)) || (!com.tencent.mm.kernel.h.aHG().aHp().getBoolean(ar.a.VCX, true))) {
           break label1675;
         }
-        this.Kku.setTranslationY(at.fromDPToPix(getContext(), 12));
-        this.Kku.setVisibility(0);
-        this.Kku.setAlpha(0.0F);
-        this.Kku.setText(getContext().getResources().getString(2131763541));
-        this.Kku.animate().alpha(1.0F).translationY(0.0F).setDuration(1000L).setStartDelay(500L).start();
+        this.Rlh.setTranslationY(aw.fromDPToPix(getContext(), 12));
+        this.Rlh.setVisibility(0);
+        this.Rlh.setAlpha(0.0F);
+        this.Rlh.setText(getContext().getResources().getString(R.l.eMC));
+        this.Rlh.animate().alpha(1.0F).translationY(0.0F).setDuration(1000L).setStartDelay(500L).start();
         label1180:
-        this.Kkk.setTranslationY(0.0F);
-        this.Kkn.setTranslationY(0.0F);
-        this.Kkq.setTranslationY(0.0F);
-        this.Kkv.setTranslationY(0.0F);
-        paramInt = at.fromDPToPix(getContext(), 20);
-        this.Kkl.setPadding(paramInt, paramInt, paramInt, 0);
-        this.Kkl.addTextChangedListener(this.Klb);
-        this.Kkl.setVisibility(8);
-        this.Kkl.setCursorVisible(false);
-        this.Kkm.setVisibility(0);
-        this.Kks.setVisibility(8);
-        this.KkI.setEnabled(true);
-        this.Kkk.setActivated(true);
-        this.KkK.setImageDrawable(com.tencent.mm.ui.ar.m(getContext(), 2131690537, getContext().getResources().getColor(2131099710)));
-        this.Kkn.setImageDrawable(com.tencent.mm.ui.ar.m(getContext(), 2131690705, getContext().getResources().getColor(2131099773)));
-        localObject1 = (FrameLayout.LayoutParams)this.KkM.getLayoutParams();
-        ((FrameLayout.LayoutParams)localObject1).width = at.fromDPToPix(getContext(), 250);
-        ((FrameLayout.LayoutParams)localObject1).height = at.fromDPToPix(getContext(), 40);
-        ((FrameLayout.LayoutParams)localObject1).topMargin = at.fromDPToPix(getContext(), 72);
-        ((FrameLayout.LayoutParams)localObject1).rightMargin = at.fromDPToPix(getContext(), 22);
-        ((FrameLayout.LayoutParams)localObject1).bottomMargin = at.fromDPToPix(getContext(), 8);
-        this.KkM.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        this.KkM.setAlpha(0.0F);
-        localObject1 = (FrameLayout.LayoutParams)this.KkN.getLayoutParams();
-        ((FrameLayout.LayoutParams)localObject1).width = at.fromDPToPix(getContext(), 250);
-        ((FrameLayout.LayoutParams)localObject1).height = at.fromDPToPix(getContext(), 40);
-        ((FrameLayout.LayoutParams)localObject1).topMargin = at.fromDPToPix(getContext(), 72);
-        ((FrameLayout.LayoutParams)localObject1).rightMargin = at.fromDPToPix(getContext(), 22);
-        ((FrameLayout.LayoutParams)localObject1).bottomMargin = at.fromDPToPix(getContext(), 8);
-        this.KkN.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        this.KkN.setAlpha(0.0F);
-        this.Kkw.setTranslationY(this.KlS);
-        this.Kkw.setAlpha(0.0F);
-        this.Kkm.setVisibility(8);
-        this.KkQ.setVisibility(0);
-        if (!com.tencent.mm.ui.ao.isDarkMode()) {
+        this.RkX.setTranslationY(0.0F);
+        this.Rla.setTranslationY(0.0F);
+        this.Rld.setTranslationY(0.0F);
+        this.Rli.setTranslationY(0.0F);
+        paramInt = aw.fromDPToPix(getContext(), 20);
+        this.RkY.setPadding(paramInt, paramInt, paramInt, 0);
+        this.RkY.addTextChangedListener(this.RlO);
+        this.RkY.setVisibility(8);
+        this.RkY.setCursorVisible(false);
+        this.RkZ.setVisibility(0);
+        this.Rlf.setVisibility(8);
+        this.Rlv.setEnabled(true);
+        this.RkX.setActivated(true);
+        this.Rlx.setImageDrawable(au.o(getContext(), R.k.icons_filled_done, getContext().getResources().getColor(R.e.Brand)));
+        this.Rla.setImageDrawable(au.o(getContext(), R.k.icons_filled_voice2txt_cursor, getContext().getResources().getColor(R.e.LightGreen)));
+        localObject1 = (FrameLayout.LayoutParams)this.Rlz.getLayoutParams();
+        ((FrameLayout.LayoutParams)localObject1).width = aw.fromDPToPix(getContext(), 250);
+        ((FrameLayout.LayoutParams)localObject1).height = aw.fromDPToPix(getContext(), 40);
+        ((FrameLayout.LayoutParams)localObject1).topMargin = aw.fromDPToPix(getContext(), 72);
+        ((FrameLayout.LayoutParams)localObject1).rightMargin = aw.fromDPToPix(getContext(), 22);
+        ((FrameLayout.LayoutParams)localObject1).bottomMargin = aw.fromDPToPix(getContext(), 8);
+        this.Rlz.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        this.Rlz.setAlpha(0.0F);
+        localObject1 = (FrameLayout.LayoutParams)this.RlA.getLayoutParams();
+        ((FrameLayout.LayoutParams)localObject1).width = aw.fromDPToPix(getContext(), 250);
+        ((FrameLayout.LayoutParams)localObject1).height = aw.fromDPToPix(getContext(), 40);
+        ((FrameLayout.LayoutParams)localObject1).topMargin = aw.fromDPToPix(getContext(), 72);
+        ((FrameLayout.LayoutParams)localObject1).rightMargin = aw.fromDPToPix(getContext(), 22);
+        ((FrameLayout.LayoutParams)localObject1).bottomMargin = aw.fromDPToPix(getContext(), 8);
+        this.RlA.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        this.RlA.setAlpha(0.0F);
+        this.Rlj.setTranslationY(this.RmF);
+        this.Rlj.setAlpha(0.0F);
+        this.RkZ.setVisibility(8);
+        this.RlD.setVisibility(0);
+        if (!com.tencent.mm.ui.ar.isDarkMode()) {
           break label1759;
         }
-        this.Kkj.setBackground(getContext().getResources().getDrawable(2131234236));
+        this.RkW.setBackground(getContext().getResources().getDrawable(R.g.doh));
       }
       for (;;)
       {
-        this.KlF = false;
-        this.Kkh.showAtLocation(this, 49, 0, 0);
-        gqp();
-        this.Kkq.setVisibility(8);
+        this.Rms = false;
+        this.RkU.showAtLocation(this, 49, 0, 0);
+        hlo();
+        this.Rld.setVisibility(8);
         post(new Runnable()
         {
           public final void run()
           {
             int i = 1;
-            AppMethodBeat.i(185362);
+            AppMethodBeat.i(31552);
             ChatFooter.bc(ChatFooter.this);
             if (ChatFooter.bd(ChatFooter.this) != null)
             {
               ChattingScrollLayout localChattingScrollLayout = ChatFooter.bd(ChatFooter.this);
               int j = ChatFooter.be(ChatFooter.this).getHeight();
               int k = ChatFooter.bf(ChatFooter.this).getHeight();
-              int m = au.aD(ChatFooter.this.getContext());
+              int m = com.tencent.mm.ui.ax.aB(ChatFooter.this.getContext());
               int n = ChatFooter.a(ChatFooter.this).getHeight();
-              if ((localChattingScrollLayout.KmY == null) || (localChattingScrollLayout.KmY.getListView() == null)) {
-                break label315;
+              if ((localChattingScrollLayout.RnK == null) || (localChattingScrollLayout.RnK.getListView() == null)) {
+                break label317;
               }
-              int i1 = localChattingScrollLayout.KmY.getListView().getFirstVisiblePosition();
-              int i2 = localChattingScrollLayout.KmY.getListView().getHeaderViewsCount();
-              i1 = localChattingScrollLayout.KmY.getListView().getLastVisiblePosition() - localChattingScrollLayout.KmY.getListView().getHeaderViewsCount() - (i1 - i2);
-              if ((i1 < 0) || (i1 >= localChattingScrollLayout.KmY.getListView().getChildCount())) {
-                break label315;
+              int i1 = localChattingScrollLayout.RnK.getListView().getFirstVisiblePosition();
+              int i2 = localChattingScrollLayout.RnK.getListView().getHeaderViewsCount();
+              i1 = localChattingScrollLayout.RnK.getListView().getLastVisiblePosition() - localChattingScrollLayout.RnK.getListView().getHeaderViewsCount() - (i1 - i2);
+              if ((i1 < 0) || (i1 >= localChattingScrollLayout.RnK.getListView().getChildCount())) {
+                break label317;
               }
-              View localView = localChattingScrollLayout.KmY.getListView().getChildAt(i1);
+              View localView = localChattingScrollLayout.RnK.getListView().getChildAt(i1);
               if (localView == null) {
-                break label315;
+                break label317;
               }
               int[] arrayOfInt = new int[2];
               localView.getLocationOnScreen(arrayOfInt);
               i1 = arrayOfInt[1];
-              if (localView.getHeight() + i1 <= au.az(localChattingScrollLayout.getContext()).y - (j + k - m - n)) {
-                break label315;
+              if (localView.getHeight() + i1 <= com.tencent.mm.ui.ax.au(localChattingScrollLayout.getContext()).y - (j + k - m - n)) {
+                break label317;
               }
             }
             for (;;)
             {
               if (i != 0)
               {
-                ChatFooter.g(ChatFooter.this, ChatFooter.be(ChatFooter.this).getHeight() + ChatFooter.bf(ChatFooter.this).getHeight() - au.aD(ChatFooter.this.getContext()) - ChatFooter.a(ChatFooter.this).getHeight());
-                ChatFooter.e(ChatFooter.this, 4);
+                ChatFooter.h(ChatFooter.this, ChatFooter.be(ChatFooter.this).getHeight() + ChatFooter.bf(ChatFooter.this).getHeight() - com.tencent.mm.ui.ax.aB(ChatFooter.this.getContext()) - ChatFooter.a(ChatFooter.this).getHeight());
+                ChatFooter.f(ChatFooter.this, 4);
               }
-              AppMethodBeat.o(185362);
+              AppMethodBeat.o(31552);
               return;
-              label315:
+              label317:
               i = 0;
             }
           }
         });
         AppMethodBeat.o(31616);
         return;
-        this.GtE = paramInt;
+        this.NgX = paramInt;
         break;
         label1675:
-        this.Kku.setTranslationY(at.fromDPToPix(getContext(), 30));
-        this.Kku.setVisibility(0);
-        this.Kku.setAlpha(0.0F);
-        this.Kku.setText(getContext().getResources().getString(2131763545));
-        this.Kku.animate().alpha(1.0F).translationY(0.0F).setDuration(200L).setStartDelay(0L).start();
+        this.Rlh.setTranslationY(aw.fromDPToPix(getContext(), 30));
+        this.Rlh.setVisibility(0);
+        this.Rlh.setAlpha(0.0F);
+        this.Rlh.setText(getContext().getResources().getString(R.l.eMD));
+        this.Rlh.animate().alpha(1.0F).translationY(0.0F).setDuration(200L).setStartDelay(0L).start();
         break label1180;
         label1759:
-        this.Kkj.setBackground(getContext().getResources().getDrawable(2131234237));
+        this.RkW.setBackground(getContext().getResources().getDrawable(R.g.doi));
       }
     }
-    this.KkY = 0;
+    this.RlL = 0;
     int i;
-    if (this.KiS) {
-      i = com.tencent.mm.cb.a.fromDPToPix(getContext(), 280);
+    if (this.RjG) {
+      i = com.tencent.mm.ci.a.fromDPToPix(getContext(), 280);
     }
     for (;;)
     {
       int j = BackwardSupportUtil.BitmapFactory.fromDPToPix(getContext(), 50.0F);
       if (paramInt + j < i)
       {
-        this.KkY = -1;
-        if (this.FQS == null)
+        this.RlL = -1;
+        if (this.MkT == null)
         {
-          this.FQS = new com.tencent.mm.ui.base.p(View.inflate(getContext(), 2131496849, null), -1, -2);
-          this.KiN = ((ViewGroup)this.FQS.getContentView().findViewById(2131309985));
-          this.tfb = this.FQS.getContentView().findViewById(2131309979);
-          this.tfa = ((ImageView)this.FQS.getContentView().findViewById(2131310091));
-          this.KiO = ((TextView)this.FQS.getContentView().findViewById(2131309988));
-          this.KiO.setTextSize(0, com.tencent.mm.cb.a.aH(getContext(), 2131166855) * com.tencent.mm.cb.a.ji(getContext()));
-          this.tfc = this.FQS.getContentView().findViewById(2131309981);
-          this.FQT = ((TextView)this.FQS.getContentView().findViewById(2131309983));
-          this.FQT.setTextSize(0, com.tencent.mm.cb.a.aH(getContext(), 2131166855) * com.tencent.mm.cb.a.ji(getContext()));
-          this.FQU = ((ImageView)this.FQS.getContentView().findViewById(2131309982));
-          this.FQV = this.FQS.getContentView().findViewById(2131309984);
-          this.teZ = this.FQS.getContentView().findViewById(2131309986);
-          this.KjC = ((ViewGroup)this.FQS.getContentView().findViewById(2131309933));
-          this.KjD = this.FQS.getContentView().findViewById(2131309926);
-          this.KjG = this.FQS.getContentView().findViewById(2131309937);
-          this.KjH = ((ImageView)this.FQS.getContentView().findViewById(2131309938));
-          this.KjI = ((ImageView)this.FQS.getContentView().findViewById(2131309925));
-          this.KjJ = this.FQS.getContentView().findViewById(2131309927);
-          this.KjK = ((TextView)this.FQS.getContentView().findViewById(2131309930));
-          this.KjL = ((ImageView)this.FQS.getContentView().findViewById(2131309928));
-          this.KjM = this.FQS.getContentView().findViewById(2131309932);
-          this.KjN = this.FQS.getContentView().findViewById(2131309922);
-          this.KjO = ((WeImageView)this.FQS.getContentView().findViewById(2131309923));
-          this.KjP = ((TextView)this.FQS.getContentView().findViewById(2131309924));
-          this.KjQ = this.FQS.getContentView().findViewById(2131309934);
-          this.KjR = ((WeImageView)this.FQS.getContentView().findViewById(2131309935));
-          this.KjS = ((TextView)this.FQS.getContentView().findViewById(2131309936));
-          this.KjT = View.inflate(getContext(), 2131494989, null);
+          this.MkT = new com.tencent.mm.ui.base.r(View.inflate(getContext(), R.i.elU, null), -1, -2);
+          this.RjB = ((ViewGroup)this.MkT.getContentView().findViewById(R.h.voice_rcd_hint_rcding));
+          this.wLp = this.MkT.getContentView().findViewById(R.h.voice_rcd_hint_anim_area);
+          this.wLo = ((ImageView)this.MkT.getContentView().findViewById(R.h.eav));
+          this.RjC = ((TextView)this.MkT.getContentView().findViewById(R.h.eaj));
+          this.RjC.setTextSize(0, com.tencent.mm.ci.a.aZ(getContext(), R.f.dlE) * com.tencent.mm.ci.a.km(getContext()));
+          this.wLq = this.MkT.getContentView().findViewById(R.h.voice_rcd_hint_cancel_area);
+          this.MkU = ((TextView)this.MkT.getContentView().findViewById(R.h.voice_rcd_hint_cancel_text));
+          this.MkU.setTextSize(0, com.tencent.mm.ci.a.aZ(getContext(), R.f.dlE) * com.tencent.mm.ci.a.km(getContext()));
+          this.MkV = ((ImageView)this.MkT.getContentView().findViewById(R.h.voice_rcd_hint_cancel_icon));
+          this.MkW = this.MkT.getContentView().findViewById(R.h.eai);
+          this.wLn = this.MkT.getContentView().findViewById(R.h.voice_rcd_hint_tooshort);
+          this.Rkp = ((ViewGroup)this.MkT.getContentView().findViewById(R.h.dZN));
+          this.Rkq = this.MkT.getContentView().findViewById(R.h.dZH);
+          this.Rkt = this.MkT.getContentView().findViewById(R.h.dZR);
+          this.Rku = ((ImageView)this.MkT.getContentView().findViewById(R.h.dZS));
+          this.Rkv = ((ImageView)this.MkT.getContentView().findViewById(R.h.dZG));
+          this.Rkw = this.MkT.getContentView().findViewById(R.h.dZI);
+          this.Rkx = ((TextView)this.MkT.getContentView().findViewById(R.h.dZL));
+          this.Rky = ((ImageView)this.MkT.getContentView().findViewById(R.h.dZJ));
+          this.Rkz = this.MkT.getContentView().findViewById(R.h.dZM);
+          this.RkA = this.MkT.getContentView().findViewById(R.h.dZD);
+          this.RkB = ((WeImageView)this.MkT.getContentView().findViewById(R.h.dZE));
+          this.RkC = ((TextView)this.MkT.getContentView().findViewById(R.h.dZF));
+          this.RkD = this.MkT.getContentView().findViewById(R.h.dZO);
+          this.RkE = ((WeImageView)this.MkT.getContentView().findViewById(R.h.dZP));
+          this.RkF = ((TextView)this.MkT.getContentView().findViewById(R.h.dZQ));
+          this.RkG = View.inflate(getContext(), R.i.ehu, null);
         }
       }
       try
       {
-        if (j.KmE == this.Kkb)
+        if (j.Rnq == this.RkO)
         {
           localObject1 = this.activity.getWindow().getDecorView();
           Drawable localDrawable = ((View)localObject1).getBackground();
-          this.KjE = new BlurView(getContext());
-          paramInt = com.tencent.mm.cb.a.fromDPToPix(getContext(), 14);
-          BlurView localBlurView = this.KjE.L((ViewGroup)localObject1).alW(getResources().getColor(2131101312)).F(localDrawable).b(new com.tencent.mm.ui.blur.f(getContext())).cw(15.0F).gMs();
-          localBlurView.Kx = (paramInt * 1.0F);
-          localBlurView.PcA = true;
-          localBlurView.alX(this.KkY).gMt();
-          this.KjU = new BlurView(getContext());
-          this.KjU.alW(getResources().getColor(2131101312));
-          this.KjU.L((ViewGroup)localObject1).F(localDrawable).b(new com.tencent.mm.ui.blur.f(getContext())).cw(15.0F).gMs().gMt();
+          this.Rkr = new BlurView(getContext());
+          paramInt = com.tencent.mm.ci.a.fromDPToPix(getContext(), 14);
+          BlurView localBlurView = this.Rkr.T((ViewGroup)localObject1).auW(getResources().getColor(R.e.dkM)).L(localDrawable).b(new com.tencent.mm.ui.blur.f(getContext())).cO(15.0F).hLz();
+          localBlurView.zj = (paramInt * 1.0F);
+          localBlurView.WvM = true;
+          localBlurView.auX(this.RlL).hLA();
+          this.RkH = new BlurView(getContext());
+          this.RkH.auW(getResources().getColor(R.e.dkM));
+          this.RkH.T((ViewGroup)localObject1).L(localDrawable).b(new com.tencent.mm.ui.blur.f(getContext())).cO(15.0F).hLz().hLA();
         }
-        Log.i("MicroMsg.ChatFooter", "transVoiceBlurMode: %s.", new Object[] { this.Kkb });
-        switch (83.Kmg[this.Kkb.ordinal()])
+        Log.i("MicroMsg.ChatFooter", "transVoiceBlurMode: %s.", new Object[] { this.RkO });
+        switch (85.RmT[this.RkO.ordinal()])
         {
         default: 
-          this.KjY.setClippingEnabled(false);
-          this.KjY.getContentView().setAlpha(0.0F);
-          this.KjY.setOnDismissListener(new PopupWindow.OnDismissListener()
+          this.RkL.setClippingEnabled(false);
+          this.RkL.getContentView().setAlpha(0.0F);
+          this.RkL.setOnDismissListener(new PopupWindow.OnDismissListener()
           {
             public final void onDismiss()
             {
-              AppMethodBeat.i(232260);
-              ChatFooter.M(ChatFooter.this).getContentView().setAlpha(0.0F);
-              AppMethodBeat.o(232260);
+              AppMethodBeat.i(287528);
+              ChatFooter.N(ChatFooter.this).getContentView().setAlpha(0.0F);
+              AppMethodBeat.o(287528);
             }
           });
-          ((TextView)this.FQS.getContentView().findViewById(2131309929)).setTextSize(0, com.tencent.mm.cb.a.aH(getContext(), 2131167103) * com.tencent.mm.cb.a.ji(getContext()));
-          gqq();
-          if (this.KkY != -1)
+          ((TextView)this.MkT.getContentView().findViewById(R.h.dZK)).setTextSize(0, com.tencent.mm.ci.a.aZ(getContext(), R.f.dlO) * com.tencent.mm.ci.a.km(getContext()));
+          hlp();
+          if (this.RlL != -1)
           {
-            this.teZ.setVisibility(8);
-            this.KiN.setVisibility(8);
-            this.FQV.setVisibility(0);
+            this.wLn.setVisibility(8);
+            this.RjB.setVisibility(8);
+            this.MkW.setVisibility(0);
             new MMHandler().post(new Runnable()
             {
               public final void run()
               {
-                AppMethodBeat.i(31552);
-                if (ChatFooter.S(ChatFooter.this))
+                AppMethodBeat.i(185363);
+                if (ChatFooter.T(ChatFooter.this))
                 {
-                  ChatFooter.aq(ChatFooter.this).setVisibility(8);
-                  ChatFooter.W(ChatFooter.this).setVisibility(0);
-                  AppMethodBeat.o(31552);
+                  ChatFooter.ar(ChatFooter.this).setVisibility(8);
+                  ChatFooter.X(ChatFooter.this).setVisibility(0);
+                  AppMethodBeat.o(185363);
                   return;
                 }
-                ChatFooter.aq(ChatFooter.this).setVisibility(0);
-                ChatFooter.W(ChatFooter.this).setVisibility(8);
-                AppMethodBeat.o(31552);
+                ChatFooter.ar(ChatFooter.this).setVisibility(0);
+                ChatFooter.X(ChatFooter.this).setVisibility(8);
+                AppMethodBeat.o(185363);
               }
             });
-            if (this.KiS)
+            if (this.RjG)
             {
-              gra();
-              this.Kke = false;
-              gqX();
-              this.KjY.showAtLocation(this, 49, 0, 0);
-              this.Kkd = false;
-              if (this.KlD)
+              hlZ();
+              this.RkR = false;
+              hlW();
+              this.RkL.showAtLocation(this, 49, 0, 0);
+              this.RkQ = false;
+              if (this.Rmq)
               {
-                this.KlD = false;
-                if (j.KmE != this.Kkb) {
+                this.Rmq = false;
+                if (j.Rnq != this.RkO) {
                   break label3133;
                 }
-                this.KjE.alW(getResources().getColor(2131101312)).F(this.activity.getWindow().getDecorView().getBackground()).BJ(true);
+                this.Rkr.auW(getResources().getColor(R.e.dkM)).L(this.activity.getWindow().getDecorView().getBackground()).Gd(true);
               }
             }
-            this.FQS.showAtLocation(this, 49, 0, this.KkY);
+            this.MkT.showAtLocation(this, 49, 0, this.RlL);
           }
           else
           {
             AppMethodBeat.o(31616);
             return;
-            i = com.tencent.mm.cb.a.fromDPToPix(getContext(), 180);
+            i = com.tencent.mm.ci.a.fromDPToPix(getContext(), 180);
             continue;
-            this.KkY = ((paramInt - i) / 2 + j);
+            this.RlL = ((paramInt - i) / 2 + j);
           }
           break;
         }
@@ -4118,129 +4381,38 @@ public class ChatFooter
       {
         for (;;)
         {
-          this.Kkb = j.KmF;
-          this.KkZ = true;
+          this.RkO = j.Rnr;
+          this.RlM = true;
           continue;
-          this.KjC.removeView(this.KjD);
-          Object localObject2 = new RelativeLayout.LayoutParams(getResources().getDimensionPixelSize(2131167099), getResources().getDimensionPixelSize(2131167099));
+          this.Rkp.removeView(this.Rkq);
+          Object localObject2 = new RelativeLayout.LayoutParams(getResources().getDimensionPixelSize(R.f.dlN), getResources().getDimensionPixelSize(R.f.dlN));
           ((RelativeLayout.LayoutParams)localObject2).addRule(14);
           ((RelativeLayout.LayoutParams)localObject2).addRule(10);
-          this.KjE.addView(this.KjD, (ViewGroup.LayoutParams)localObject2);
-          this.KjC.addView(this.KjE, (ViewGroup.LayoutParams)localObject2);
-          this.KjF = this.KjE;
+          this.Rkr.addView(this.Rkq, (ViewGroup.LayoutParams)localObject2);
+          this.Rkp.addView(this.Rkr, (ViewGroup.LayoutParams)localObject2);
+          this.Rks = this.Rkr;
           localObject2 = new FrameLayout.LayoutParams(-1, -1);
-          this.KjU.addView(this.KjT, (ViewGroup.LayoutParams)localObject2);
-          this.KjY = new com.tencent.mm.ui.base.p(this.KjU, -1, -1);
+          this.RkH.addView(this.RkG, (ViewGroup.LayoutParams)localObject2);
+          this.RkL = new com.tencent.mm.ui.base.r(this.RkH, -1, -1);
           continue;
-          this.KjF = this.KjD;
-          this.KjF.setBackgroundResource(2131235439);
-          this.KjT.setBackgroundColor(getResources().getColor(2131101314));
-          this.KjY = new com.tencent.mm.ui.base.p(this.KjT, -1, -1);
+          this.Rks = this.Rkq;
+          this.Rks.setBackgroundResource(R.g.dpt);
+          this.RkG.setBackgroundColor(getResources().getColor(R.e.dkN));
+          this.RkL = new com.tencent.mm.ui.base.r(this.RkG, -1, -1);
           continue;
           label3133:
-          this.KjF.setBackgroundResource(2131235439);
+          this.Rks.setBackgroundResource(R.g.dpt);
         }
       }
     }
   }
   
-  public final void aiy(int paramInt)
-  {
-    AppMethodBeat.i(31622);
-    if (this.Kkf)
-    {
-      if ((this.Kkm != null) && (this.Kkm.getVisibility() == 0)) {
-        this.Kkm.acr(paramInt);
-      }
-      AppMethodBeat.o(31622);
-      return;
-    }
-    if (this.KiS)
-    {
-      i = 0;
-      for (;;)
-      {
-        if (i < Klw.length)
-        {
-          if ((paramInt >= Klv[i]) && (paramInt < Klv[(i + 1)])) {
-            this.KjH.setBackgroundDrawable(com.tencent.mm.cb.a.l(getContext(), Klw[i]));
-          }
-        }
-        else
-        {
-          if ((paramInt != -1) || (this.FQS == null)) {
-            break;
-          }
-          this.FQS.dismiss();
-          this.FQV.setVisibility(0);
-          this.KiN.setVisibility(8);
-          this.teZ.setVisibility(8);
-          AppMethodBeat.o(31622);
-          return;
-        }
-        i += 1;
-      }
-    }
-    int i = 0;
-    for (;;)
-    {
-      if (i < Klw.length)
-      {
-        if ((paramInt >= Klv[i]) && (paramInt < Klv[(i + 1)])) {
-          this.tfa.setBackgroundDrawable(com.tencent.mm.cb.a.l(getContext(), Klw[i]));
-        }
-      }
-      else
-      {
-        if ((paramInt == -1) && (this.FQS != null))
-        {
-          this.FQS.dismiss();
-          this.FQV.setVisibility(0);
-          this.KiN.setVisibility(8);
-          this.teZ.setVisibility(8);
-        }
-        AppMethodBeat.o(31622);
-        return;
-      }
-      i += 1;
-    }
-  }
-  
-  public final void aiz(int paramInt)
-  {
-    AppMethodBeat.i(31624);
-    this.KiR = paramInt;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(31624);
-      return;
-      Ai(true);
-      this.Kim.setVisibility(8);
-      aiw(2131231778);
-      AppMethodBeat.o(31624);
-      return;
-      Ai(false);
-      this.Kim.setVisibility(0);
-      gqP();
-      aiw(2131231777);
-      if ((z.aUQ().booleanValue()) && (this.Kjt != null))
-      {
-        c localc = this.Kjt;
-        Boolean localBoolean = Boolean.TRUE;
-        localc.b(localBoolean, localBoolean);
-      }
-    }
-  }
-  
-  public final void bA(int paramInt, boolean paramBoolean)
+  public final void bM(int paramInt, boolean paramBoolean)
   {
     boolean bool2 = true;
     boolean bool1 = true;
     AppMethodBeat.i(31625);
-    aiz(paramInt);
+    aqB(paramInt);
     switch (paramInt)
     {
     default: 
@@ -4250,53 +4422,102 @@ public class ChatFooter
     case 1: 
       if (paramBoolean)
       {
-        Ah(true);
+        Em(true);
         showVKB();
-        if (this.ECK.length() > 0) {}
+        if (this.KQB.length() > 0) {}
         for (paramBoolean = bool1;; paramBoolean = false)
         {
-          qT(paramBoolean);
+          tV(paramBoolean);
           AppMethodBeat.o(31625);
           return;
         }
       }
-      if (this.ECK.length() > 0) {}
+      if (this.KQB.length() > 0) {}
       for (paramBoolean = bool2;; paramBoolean = false)
       {
-        qT(paramBoolean);
+        tV(paramBoolean);
         AppMethodBeat.o(31625);
         return;
       }
     }
-    i(0, true, -1);
-    qT(false);
+    k(0, true, -1);
+    tV(false);
     AppMethodBeat.o(31625);
   }
   
-  public final void beX(String paramString)
+  public final void be(String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(31602);
+    if (this.Rjt.Rnb.containsKey(paramString1)) {}
+    Object localObject;
+    for (paramString1 = (LinkedList)this.Rjt.Rnb.get(paramString1);; paramString1 = (String)localObject)
+    {
+      localObject = new HashMap(1);
+      ((HashMap)localObject).put(paramString3, paramString2);
+      paramString1.add(localObject);
+      AppMethodBeat.o(31602);
+      return;
+      localObject = new LinkedList();
+      this.Rjt.Rnb.put(paramString1, localObject);
+    }
+  }
+  
+  public final void bj(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(31632);
+    this.RiU.Eb(paramBoolean1);
+    this.RiU.Ec(paramBoolean2);
+    AppMethodBeat.o(31632);
+  }
+  
+  public final boolean bm(ca paramca)
+  {
+    AppMethodBeat.i(31678);
+    if (this.Rjq != null) {
+      this.Rjq.eRx();
+    }
+    this.Rjh.setTag(paramca);
+    this.RjF = 1;
+    Eo(true);
+    this.RiW.setVisibility(8);
+    aqy(R.g.dnf);
+    if (this.RdV != null)
+    {
+      this.RdV.setVisibility(8);
+      this.RdY = false;
+      this.RdV.reset();
+    }
+    showVKB();
+    Em(true);
+    brt("");
+    AppMethodBeat.o(31678);
+    return true;
+  }
+  
+  public final void brt(String paramString)
   {
     AppMethodBeat.i(31675);
     com.tencent.mm.plugin.groupsolitaire.ui.d locald;
     String str2;
-    if ((this.KiC != null) && (this.han != null) && (this.Kjy != null))
+    if ((this.Rjp != null) && (this.jLo != null) && (this.Rkl != null))
     {
-      locald = this.KiC;
-      str2 = this.Kjy.getTalkerUserName();
-      localObject = this.han;
-      Log.i("MicroMsg.groupsolitaire.SuggestSolitatireTips", "checkIfShow supportAnalyze:%s supportShow:%s", new Object[] { Boolean.valueOf(((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.j.class)).aBf(str2)), Boolean.valueOf(((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.j.class)).aBg(str2)) });
-      locald.ygS = ((View)localObject);
+      locald = this.Rjp;
+      str2 = this.Rkl.getTalkerUserName();
+      localObject = this.jLo;
+      Log.i("MicroMsg.groupsolitaire.SuggestSolitatireTips", "checkIfShow supportAnalyze:%s supportShow:%s", new Object[] { Boolean.valueOf(((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aKT(str2)), Boolean.valueOf(((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aKU(str2)) });
+      locald.DqU = ((View)localObject);
       locald.content = paramString;
-      if (((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.j.class)).aBf(str2))
+      if (((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aKT(str2))
       {
-        if ((Util.isNullOrNil(paramString)) || (paramString.equals(locald.ygH))) {
+        if ((Util.isNullOrNil(paramString)) || (paramString.equals(locald.DqJ))) {
           break label324;
         }
-        com.tencent.f.h.RTc.bqo("GroupSolitaireCheck");
+        com.tencent.e.h.ZvG.bDh("GroupSolitaireCheck");
       }
     }
     try
     {
-      localObject = ((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.emoji.b.a.class)).alW(paramString);
+      localObject = ((com.tencent.mm.plugin.emoji.b.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.emoji.b.a.class)).atQ(paramString);
       paramString = (String)localObject;
     }
     catch (Exception localException)
@@ -4306,188 +4527,158 @@ public class ChatFooter
         Log.e("MicroMsg.groupsolitaire.SuggestSolitatireTips", "checkIfShow() emojiSoftBank2Unicode %s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
       }
     }
-    locald.ygP.setContent(paramString);
-    locald.ygP.aBs(locald.ygk);
-    com.tencent.f.h.RTc.a(locald.ygP, 500L, "GroupSolitaireCheck");
+    locald.DqR.setContent(paramString);
+    locald.DqR.aLg(locald.Dqm);
+    com.tencent.e.h.ZvG.a(locald.DqR, 500L, "GroupSolitaireCheck");
     Object localObject = paramString;
-    if (Util.isNullOrNil(locald.ygH))
+    if (Util.isNullOrNil(locald.DqJ))
     {
-      locald.ygQ.setContent(paramString);
-      locald.ygQ.aBs(locald.ygk);
-      com.tencent.f.h.RTc.a(locald.ygQ, 500L, "GroupSolitaireCopyCheck");
+      locald.DqS.setContent(paramString);
+      locald.DqS.aLg(locald.Dqm);
+      com.tencent.e.h.ZvG.a(locald.DqS, 500L, "GroupSolitaireCopyCheck");
       localObject = paramString;
     }
     for (;;)
     {
-      locald.ygH = ((String)localObject);
-      locald.ygk = str2;
+      locald.DqJ = ((String)localObject);
+      locald.Dqm = str2;
       AppMethodBeat.o(31675);
       return;
       label324:
       String str1 = paramString;
       if (Util.isNullOrNil(paramString))
       {
-        locald.dYf();
+        locald.eBD();
         str1 = paramString;
       }
     }
   }
   
-  public final void bj(String paramString1, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(31602);
-    if (this.KiG.Kmo.containsKey(paramString1)) {}
-    Object localObject;
-    for (paramString1 = (LinkedList)this.KiG.Kmo.get(paramString1);; paramString1 = (String)localObject)
-    {
-      localObject = new HashMap(1);
-      ((HashMap)localObject).put(paramString3, paramString2);
-      paramString1.add(localObject);
-      AppMethodBeat.o(31602);
-      return;
-      localObject = new LinkedList();
-      this.KiG.Kmo.put(paramString1, localObject);
-    }
-  }
-  
-  public final void cDd()
+  public final void cRI()
   {
     AppMethodBeat.i(31610);
-    this.KjZ.setExitType(1);
-    this.Kim.setEnabled(false);
-    this.Kim.setBackgroundResource(2131234632);
-    if (this.Kkf)
+    this.RkM.setExitType(1);
+    this.RiW.setEnabled(false);
+    this.RiW.setBackgroundResource(R.g.record_shape_disable);
+    if (this.RkS)
     {
-      this.Kkh.update();
-      this.qPx.sendEmptyMessageDelayed(0, 500L);
+      this.RkU.update();
+      this.urD.sendEmptyMessageDelayed(0, 500L);
       AppMethodBeat.o(31610);
       return;
     }
-    if (this.FQS != null)
+    if (this.MkT != null)
     {
-      this.teZ.setVisibility(0);
-      this.KiN.setVisibility(8);
-      this.FQV.setVisibility(8);
-      this.FQS.update();
-      this.KjY.dismiss();
+      this.wLn.setVisibility(0);
+      this.RjB.setVisibility(8);
+      this.MkW.setVisibility(8);
+      this.MkT.update();
+      this.RkL.dismiss();
     }
-    this.qPx.sendEmptyMessageDelayed(0, 500L);
+    this.urD.sendEmptyMessageDelayed(0, 500L);
     AppMethodBeat.o(31610);
-  }
-  
-  public final void dYi()
-  {
-    AppMethodBeat.i(31679);
-    if (this.ECK != null)
-    {
-      this.ECK.setText("");
-      gqh();
-      if (this.rum != null) {
-        this.rum.setToSendText("");
-      }
-    }
-    AppMethodBeat.o(31679);
   }
   
   public final void destroy()
   {
     AppMethodBeat.i(31578);
-    if (this.rum != null)
+    if (this.jPN != null)
     {
       Log.i("MicroMsg.ChatFooter", "jacks chat footer destroy smiley panel");
-      this.rum.goC();
-      this.rum.destroy();
-      this.rum.animate().cancel();
-      this.rum = null;
+      this.jPN.hjm();
+      this.jPN.destroy();
+      this.jPN.animate().cancel();
+      this.jPN = null;
     }
-    if (this.Kdp != null)
+    if (this.RdV != null)
     {
-      this.Kdp.destroy();
-      this.Kdp = null;
-      this.Kds = false;
+      this.RdV.destroy();
+      this.RdV = null;
+      this.RdY = false;
     }
-    if (this.KiD != null) {
-      this.KiD.release();
+    if (this.Rjq != null) {
+      this.Rjq.release();
     }
-    if (this.KiB != null)
+    if (this.Rjo != null)
     {
-      this.KiB.Kjv = null;
-      this.KiB.Knu = null;
-      this.KiB.hide();
+      this.Rjo.Rki = null;
+      this.Rjo.Rog = null;
+      this.Rjo.hide();
     }
-    if (this.FQS != null)
+    if (this.MkT != null)
     {
-      if (this.KjE != null) {
-        this.KjE.getBlurController().destroy();
+      if (this.Rkr != null) {
+        this.Rkr.getBlurController().destroy();
       }
-      if (this.KjU != null) {
-        this.KjU.getBlurController().destroy();
+      if (this.RkH != null) {
+        this.RkH.getBlurController().destroy();
       }
     }
     Log.i("MicroMsg.ChatFooter", "jacks destroy chat footer.");
-    this.ECK.destroy();
+    this.KQB.destroy();
     AppMethodBeat.o(31578);
   }
   
-  public final int gK(String paramString, int paramInt)
+  public final void eBG()
   {
-    AppMethodBeat.i(163213);
-    int i = paramInt;
-    if (this.KiG.Kmo.containsKey(paramString))
+    AppMethodBeat.i(31679);
+    if (this.KQB != null)
     {
-      i = paramInt;
-      if (((LinkedList)this.KiG.Kmo.get(paramString)).size() > 0) {
-        i = paramInt | 0x1;
+      this.KQB.setText("");
+      hlf();
+      if (this.jPN != null) {
+        this.jPN.setToSendText("");
       }
     }
-    paramInt = i;
-    if (this.KiJ) {
-      if (!this.KiK) {
-        break label78;
-      }
-    }
-    label78:
-    for (paramInt = 4;; paramInt = 8)
+    AppMethodBeat.o(31679);
+  }
+  
+  public final void gO(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(285153);
+    if (paramInt == 2)
     {
-      paramInt = i | paramInt;
-      AppMethodBeat.o(163213);
-      return paramInt;
+      appendText("#" + paramString + " ");
+      AppMethodBeat.o(285153);
+      return;
     }
+    appendText(paramString + " ");
+    AppMethodBeat.o(285153);
   }
   
   public ArrayList<a.a> getAppPanelUnCertainEnterArrayList()
   {
     AppMethodBeat.i(163215);
-    ArrayList localArrayList = this.Kik.getAppPanelUnCertainEnterArrayList();
+    ArrayList localArrayList = this.RiU.getAppPanelUnCertainEnterArrayList();
     AppMethodBeat.o(163215);
     return localArrayList;
   }
   
   public String getAtSomebody()
   {
-    return this.KiG.Kmm;
+    return this.Rjt.RmZ;
   }
   
   public int getBarGroupHeight()
   {
     AppMethodBeat.i(31585);
-    if (this.KiP == null) {
-      this.KiP = findViewById(2131298434);
+    if (this.RjD == null) {
+      this.RjD = findViewById(R.h.dxu);
     }
-    if (this.KiP != null)
+    if (this.RjD != null)
     {
-      i = this.KiP.getHeight();
+      i = this.RjD.getHeight();
       AppMethodBeat.o(31585);
       return i;
     }
-    int i = getResources().getDimensionPixelSize(2131165310);
+    int i = getResources().getDimensionPixelSize(R.f.Edge_7A);
     AppMethodBeat.o(31585);
     return i;
   }
   
   public f getCallback()
   {
-    return this.KbA;
+    return this.Rcf;
   }
   
   public char getCharAtCursor()
@@ -4506,22 +4697,22 @@ public class ChatFooter
   
   public int getCurrentScrollHeight()
   {
-    return this.Kjd;
+    return this.RjQ;
   }
   
-  public ab.a getIOnToDoBarCallback()
+  public ac.a getIOnToDoBarCallback()
   {
-    return this.Kjq;
+    return this.Rkd;
   }
   
   public int getInsertPos()
   {
-    return this.KiG.Kmn;
+    return this.Rjt.Rna;
   }
   
   public boolean getIsVoiceInputPanleShow()
   {
-    return this.Kds;
+    return this.RdY;
   }
   
   public int getKeyBordHeightPX()
@@ -4534,15 +4725,15 @@ public class ChatFooter
   
   public String getLastContent()
   {
-    return this.KiG.Kml;
+    return this.Rjt.RmY;
   }
   
   public long getLastQuoteMsgId()
   {
     AppMethodBeat.i(31612);
-    if ((this.Kix.getTag() != null) && ((this.Kix.getTag() instanceof ca)))
+    if ((this.Rjh.getTag() != null) && ((this.Rjh.getTag() instanceof ca)))
     {
-      long l = ((ca)this.Kix.getTag()).field_msgId;
+      long l = ((ca)this.Rjh.getTag()).field_msgId;
       AppMethodBeat.o(31612);
       return l;
     }
@@ -4553,30 +4744,30 @@ public class ChatFooter
   public String getLastText()
   {
     AppMethodBeat.i(31611);
-    if (this.ECK == null)
+    if (this.KQB == null)
     {
       AppMethodBeat.o(31611);
       return "";
     }
-    String str = this.ECK.getText().toString();
+    String str = this.KQB.getText().toString();
     AppMethodBeat.o(31611);
     return str;
   }
   
   public int getMode()
   {
-    return this.KiR;
+    return this.RjF;
   }
   
   public View getPanel()
   {
-    return this.Kip;
+    return this.RiZ;
   }
   
   public int getSelectionStart()
   {
     AppMethodBeat.i(31613);
-    int i = this.ECK.getSelectionStart();
+    int i = this.KQB.getSelectionStart();
     AppMethodBeat.o(31613);
     return i;
   }
@@ -4590,254 +4781,130 @@ public class ChatFooter
   {
     AppMethodBeat.i(31684);
     int i;
-    if (this.KiY == 0) {
-      i = getHeight() - this.Kjj;
+    if (this.jJL == 0) {
+      i = getHeight() - this.RjW;
     }
     for (;;)
     {
       AppMethodBeat.o(31684);
       return i;
-      int j = getHeight() - this.Kjj + getKeyBordHeightPX();
+      int j = getHeight() - this.RjW + getKeyBordHeightPX();
       i = j;
-      if (this.Kjp != null) {
-        i = j - this.Kjp.dYg();
+      if (this.Rkc != null) {
+        i = j - this.Rkc.eBE();
       }
     }
   }
   
-  public final void gf(String paramString, int paramInt)
+  public final boolean hideVKB()
   {
-    AppMethodBeat.i(232305);
-    if (paramInt == 2)
+    AppMethodBeat.i(31659);
+    if (getKeyBordHeightPX() / 2 <= getBottom())
     {
-      appendText("#" + paramString + " ");
-      AppMethodBeat.o(232305);
-      return;
+      boolean bool = Util.hideVKB(this);
+      AppMethodBeat.o(31659);
+      return bool;
     }
-    appendText(paramString + " ");
-    AppMethodBeat.o(232305);
+    AppMethodBeat.o(31659);
+    return false;
   }
   
-  public final void go(View paramView)
-  {
-    int i = -1;
-    AppMethodBeat.i(163212);
-    if (this.KiD != null) {
-      this.KiD.ehP();
-    }
-    Log.i("MicroMsg.ChatFooter", "click attach btn: %s, %s", new Object[] { Integer.valueOf(this.Kik.getVisibility()), Boolean.valueOf(this.Kip.grr()) });
-    if (this.KiY == 3)
-    {
-      if (this.KiR == 1)
-      {
-        showVKB();
-        AppMethodBeat.o(163212);
-        return;
-      }
-      i(0, true, -1);
-      AppMethodBeat.o(163212);
-      return;
-    }
-    Object localObject;
-    if (paramView == null)
-    {
-      i(3, true, i);
-      if ((this.Kdp != null) && (this.Kdp.getVisibility() == 0) && (this.Kds))
-      {
-        Log.d("MicroMsg.ChatFooter", "voiceInputPanel is VISIBLE, set appPanel VISIBLE");
-        this.Kdp.setVisibility(8);
-        this.Kds = false;
-        this.Kdp.reset();
-      }
-      paramView = ap.gni();
-      localObject = MMApplicationContext.getContext();
-      if ((com.tencent.mm.kernel.g.aAc()) && (localObject != null)) {
-        break label284;
-      }
-      label187:
-      ap.gni().iu(MMApplicationContext.getContext());
-      if ((ab.Ix(this.toUser)) && (aa.ame()))
-      {
-        paramView = this.toUser;
-        if (!ab.JO(paramView)) {
-          break label530;
-        }
-        i = 2;
-      }
-    }
-    for (;;)
-    {
-      for (;;)
-      {
-        localObject = new com.tencent.mm.g.b.a.af();
-        ((com.tencent.mm.g.b.a.af)localObject).ik(paramView);
-        ((com.tencent.mm.g.b.a.af)localObject).ejW = 1L;
-        ((com.tencent.mm.g.b.a.af)localObject).enM = i;
-        ((com.tencent.mm.g.b.a.af)localObject).bfK();
-        AppMethodBeat.o(163212);
-        return;
-        if (paramView.getTag() == null) {
-          break;
-        }
-        i = ((Integer)paramView.getTag()).intValue();
-        break;
-        try
-        {
-          label284:
-          String str = com.tencent.mm.n.h.aqJ().getValue("ShowAPPSuggestion");
-          if ((Util.isNullOrNil(str)) || (Integer.valueOf(str).intValue() != 1)) {
-            Log.w("MicroMsg.SuggestionAppListLogic", "cfgShowAppSuggestion %s, return", new Object[] { str });
-          }
-        }
-        catch (Exception localException)
-        {
-          Log.e("MicroMsg.SuggestionAppListLogic", "exception in getSuggestionAppList, %s", new Object[] { localException.getMessage() });
-          if (paramView.JXl)
-          {
-            Log.w("MicroMsg.SuggestionAppListLogic", "SuggestionApp is Loading");
-            break label187;
-          }
-          Log.i("MicroMsg.SuggestionAppListLogic", "getSuggestionAppList");
-          paramView.JXl = true;
-          if (System.currentTimeMillis() - paramView.JXo < 43200000L)
-          {
-            Log.d("MicroMsg.SuggestionAppListLogic", "not now");
-            paramView.JXl = false;
-            break label187;
-          }
-          com.tencent.mm.kernel.g.aAi();
-          paramView.JXo = com.tencent.mm.kernel.g.aAh().azQ().akg(352275);
-          if (System.currentTimeMillis() - paramView.JXo < 43200000L)
-          {
-            Log.w("MicroMsg.SuggestionAppListLogic", "not now sp");
-            paramView.JXl = false;
-            break label187;
-          }
-          if (paramView.lang == null) {
-            paramView.lang = LocaleUtil.loadApplicationLanguage(((Context)localObject).getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0), (Context)localObject);
-          }
-          paramView = new com.tencent.mm.pluginsdk.model.app.af(paramView.lang, new LinkedList());
-          com.tencent.mm.plugin.r.a.eAV();
-          com.tencent.mm.pluginsdk.model.app.e.a(4, paramView);
-        }
-      }
-      break label187;
-      label530:
-      if (ab.JN(paramView)) {
-        i = 1;
-      } else {
-        i = 0;
-      }
-    }
-  }
-  
-  public final void goD()
-  {
-    AppMethodBeat.i(31591);
-    this.KiV = true;
-    if (this.rum != null) {
-      this.rum.goD();
-    }
-    AppMethodBeat.o(31591);
-  }
-  
-  public final void gpb()
+  public final void hjU()
   {
     AppMethodBeat.i(31601);
-    if (!this.Kds)
+    if (!this.RdY)
     {
       AppMethodBeat.o(31601);
       return;
     }
-    this.Kds = false;
-    if (this.Kdp != null)
+    this.RdY = false;
+    if (this.RdV != null)
     {
       int i = getKeyBordHeightPX();
-      int j = this.Kio.getHeight();
-      this.Kdp.animate().cancel();
-      this.Kdp.animate().translationY(i + j).withEndAction(new Runnable()
+      int j = this.RiY.getHeight();
+      this.RdV.animate().cancel();
+      this.RdV.animate().translationY(i + j).withEndAction(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(31529);
+          AppMethodBeat.i(31531);
           if (ChatFooter.az(ChatFooter.this) != null)
           {
             ChatFooter.az(ChatFooter.this).destroy();
             ChatFooter.az(ChatFooter.this).setVisibility(8);
           }
-          AppMethodBeat.o(31529);
+          AppMethodBeat.o(31531);
         }
       }).start();
     }
-    this.ECK.setText("");
+    this.KQB.setText("");
     AppMethodBeat.o(31601);
   }
   
-  public final void gqA()
+  public final void hjp()
   {
-    AppMethodBeat.i(31636);
-    AppPanel localAppPanel = this.Kik;
-    localAppPanel.KgZ = true;
-    localAppPanel.KgQ.Ab(false);
-    localAppPanel.gpV();
-    Log.i("MicroMsg.AppPanel", "disableServiceRemittance %s", new Object[] { Util.getStack().toString() });
-    AppMethodBeat.o(31636);
+    AppMethodBeat.i(31591);
+    this.RjJ = true;
+    if (this.jPN != null) {
+      this.jPN.hjp();
+    }
+    AppMethodBeat.o(31591);
   }
   
-  public final void gqB()
+  public final void hlA()
   {
-    AppMethodBeat.i(232298);
-    this.Kik.gpN();
-    AppMethodBeat.o(232298);
+    AppMethodBeat.i(285110);
+    this.RiU.hkL();
+    AppMethodBeat.o(285110);
   }
   
-  public final void gqC()
+  public final void hlB()
   {
-    AppMethodBeat.i(232299);
-    AppPanel localAppPanel = this.Kik;
-    localAppPanel.KgQ.Khp.value = false;
-    localAppPanel.gpV();
-    AppMethodBeat.o(232299);
+    AppMethodBeat.i(285112);
+    AppPanel localAppPanel = this.RiU;
+    localAppPanel.RhB.Ria.value = false;
+    localAppPanel.hkT();
+    AppMethodBeat.o(285112);
   }
   
-  public final void gqD()
+  public final void hlC()
   {
     AppMethodBeat.i(31637);
-    if (this.Kit != null) {
-      this.Kit.setVisibility(8);
+    if (this.Rjd != null) {
+      this.Rjd.setVisibility(8);
     }
     AppMethodBeat.o(31637);
   }
   
-  public final void gqE()
+  public final void hlD()
   {
     AppMethodBeat.i(31638);
-    AppPanel localAppPanel = this.Kik;
-    localAppPanel.Kha = true;
-    localAppPanel.KgQ.Af(false);
-    localAppPanel.gpV();
+    AppPanel localAppPanel = this.RiU;
+    localAppPanel.RhL = true;
+    localAppPanel.RhB.Ek(false);
+    localAppPanel.hkT();
     AppMethodBeat.o(31638);
   }
   
-  public final void gqF()
+  public final void hlE()
   {
     AppMethodBeat.i(31639);
     Log.i("MicroMsg.ChatFooter", "jacks chatting footer enable enter button send");
-    this.KiU = true;
-    this.ECK.setImeOptions(4);
-    this.ECK.setInputType(this.ECK.getInputType() & 0xFFFFFFBF);
+    this.RjI = true;
+    this.KQB.setImeOptions(4);
+    this.KQB.setInputType(this.KQB.getInputType() & 0xFFFFFFBF);
     AppMethodBeat.o(31639);
   }
   
-  public final boolean gqI()
+  public final boolean hlH()
   {
     AppMethodBeat.i(31645);
-    if ((this.Kjx == null) || (this.Kjx.getView() == null))
+    if ((this.Rkk == null) || (this.Rkk.getView() == null))
     {
       AppMethodBeat.o(31645);
       return false;
     }
-    Object localObject = this.Kjx.getView().findViewById(2131304715);
+    Object localObject = this.Rkk.getView().findViewById(R.h.mm_content_fl);
     if (localObject == null)
     {
       AppMethodBeat.o(31645);
@@ -4845,7 +4912,7 @@ public class ChatFooter
     }
     Rect localRect = new Rect();
     ((View)localObject).getGlobalVisibleRect(localRect);
-    if (com.tencent.mm.compatible.util.d.oD(28))
+    if (com.tencent.mm.compatible.util.d.qV(28))
     {
       localObject = ((View)localObject).getRootWindowInsets().getDisplayCutout();
       if (localObject == null) {}
@@ -4862,61 +4929,61 @@ public class ChatFooter
     }
   }
   
-  public final boolean gqJ()
+  public final boolean hlI()
   {
-    return this.KiY != 0;
+    return this.jJL != 0;
   }
   
-  public final void gqK()
+  public final void hlJ()
   {
     AppMethodBeat.i(31653);
     postDelayed(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(232263);
+        AppMethodBeat.i(185796);
         Log.i("MicroMsg.ChatFooter", "withLastText: ");
         ChatFooter.this.showVKB();
         ChatFooter.a(ChatFooter.this, true);
-        AppMethodBeat.o(232263);
+        AppMethodBeat.o(185796);
       }
     }, 500L);
     AppMethodBeat.o(31653);
   }
   
-  public final void gqL()
+  public final void hlK()
   {
     AppMethodBeat.i(31655);
-    if ((this.Kdp != null) && (this.Kdp.isShown())) {
-      this.Kdp.grA();
+    if ((this.RdV != null) && (this.RdV.isShown())) {
+      this.RdV.hmz();
     }
     AppMethodBeat.o(31655);
   }
   
-  public final void gqO()
+  public final void hlN()
   {
-    AppMethodBeat.i(232301);
-    if (this.KiB != null)
+    AppMethodBeat.i(285139);
+    if (this.Rjo != null)
     {
-      this.KiB.Knv = false;
-      this.KiB.hide();
+      this.Rjo.Roh = false;
+      this.Rjo.hide();
     }
-    AppMethodBeat.o(232301);
+    AppMethodBeat.o(285139);
   }
   
-  public final void gqP()
+  public final void hlO()
   {
     AppMethodBeat.i(31674);
-    if (this.KiC != null) {
-      this.KiC.dYf();
+    if (this.Rjp != null) {
+      this.Rjp.eBD();
     }
     AppMethodBeat.o(31674);
   }
   
-  public final boolean gqQ()
+  public final boolean hlP()
   {
     AppMethodBeat.i(31677);
-    if ((this.Kix.getTag() != null) && ((this.Kix.getTag() instanceof ca)) && (this.Kiw.isShown()) && (this.Kix.isShown()))
+    if ((this.Rjh.getTag() != null) && ((this.Rjh.getTag() instanceof ca)) && (this.Rjg.isShown()) && (this.Rjh.isShown()))
     {
       AppMethodBeat.o(31677);
       return true;
@@ -4925,30 +4992,30 @@ public class ChatFooter
     return false;
   }
   
-  public final void gqR()
+  public final void hlQ()
   {
     AppMethodBeat.i(31681);
-    this.Kim.setBackgroundResource(2131233164);
-    this.Kim.setText(2131757294);
+    this.RiW.setBackgroundResource(R.g.input_bg);
+    this.RiW.setText(R.l.chatfooter_presstorcd);
     Object localObject;
-    if (this.Kkf)
+    if (this.RkS)
     {
-      if (!this.KlF)
+      if (!this.Rms)
       {
-        this.KlF = true;
-        if (this.KiD == null) {
+        this.Rms = true;
+        if (this.Rjq == null) {
           break label299;
         }
-        this.KjZ.GtP = this.KiD.aas();
-        if ((this.Kkh == null) || (!this.Kkh.isShowing())) {
+        this.RkM.Nhi = this.Rjq.aff();
+        if ((this.RkU == null) || (!this.RkU.isShowing())) {
           break label299;
         }
-        if (e.Kmq == this.KlT)
+        if (e.Rnd == this.RmG)
         {
-          this.KkT = false;
-          this.KiD.ehL();
-          this.KjZ.setExitType(2);
-          com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OnJ, Boolean.FALSE);
+          this.RlG = false;
+          this.Rjq.eRs();
+          this.RkM.setExitType(2);
+          com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VCX, Boolean.FALSE);
           AppMethodBeat.o(31681);
         }
       }
@@ -4957,254 +5024,181 @@ public class ChatFooter
         AppMethodBeat.o(31681);
         return;
       }
-      if (e.Kmr == this.KlT)
+      if (e.Rne == this.RmG)
       {
-        if (this.KlE <= 0) {
-          this.KlE = ((int)this.KiD.aas());
+        if (this.Rmr <= 0) {
+          this.Rmr = ((int)this.Rjq.aff());
         }
-        if (!Util.isNullOrNil(this.KiD.getFileName()))
+        if (!Util.isNullOrNil(this.Rjq.getFileName()))
         {
-          localObject = com.tencent.mm.cj.a.Owq;
-          com.tencent.mm.cj.a.a.blJ(this.KiD.getFileName());
+          localObject = com.tencent.mm.cq.a.VPo;
+          com.tencent.mm.cq.a.a.byi(this.Rjq.getFileName());
         }
-        this.KiD.ehJ();
-        grk();
-        this.GvO.sendEmptyMessageDelayed(5000, 5000L);
-        com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OnJ, Boolean.FALSE);
+        this.Rjq.eRq();
+        hmj();
+        this.Njh.sendEmptyMessageDelayed(5000, 5000L);
+        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VCX, Boolean.FALSE);
         AppMethodBeat.o(31681);
         return;
       }
-      if (e.Kmp == this.KlT)
+      if (e.Rnc == this.RmG)
       {
-        this.KkT = false;
-        this.KiD.ehI();
-        com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OnI, Boolean.FALSE);
+        this.RlG = false;
+        this.Rjq.eRp();
+        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VCW, Boolean.FALSE);
       }
       label299:
       AppMethodBeat.o(31681);
       return;
     }
-    this.qPk = false;
-    if (this.KiD != null)
+    this.urq = false;
+    if (this.Rjq != null)
     {
-      this.KjZ.GtP = this.KiD.aas();
-      if (this.KiS)
+      this.RkM.Nhi = this.Rjq.aff();
+      if (this.RjG)
       {
-        if (k.KmH != this.Kkc)
+        if (k.Rnt != this.RkP)
         {
-          this.KlD = true;
-          if ((this.FQS != null) && (this.FQS.isShowing()))
+          this.Rmq = true;
+          if ((this.MkT != null) && (this.MkT.isShowing()))
           {
-            if (k.KmJ == this.Kkc)
+            if (k.Rnv == this.RkP)
             {
               Log.i("MicroMsg.ChatFooter", "do not send voice.");
-              this.KjZ.setExitType(2);
-              this.KiD.ehL();
+              this.RkM.setExitType(2);
+              this.Rjq.eRs();
               AppMethodBeat.o(31681);
               return;
             }
             Log.i("MicroMsg.ChatFooter", "trans voice to txt.");
-            this.KiD.ehJ();
-            localObject = this.KiD.getFileName();
-            final long l = this.KiD.aas();
+            this.Rjq.eRq();
+            localObject = this.Rjq.getFileName();
+            final long l = this.Rjq.aff();
             Log.i("transvoice", "fileName: %s, voiceLen: %d.", new Object[] { localObject, Long.valueOf(l) });
             if (NetStatusUtil.isConnected(getContext()))
             {
-              if (this.KjX.isValid())
+              if (this.RkK.isValid())
               {
-                this.KjV.aTN((String)localObject);
-                this.KjV.GvG = l;
-                this.KjV.talker = this.Kij;
-                this.KjV.show();
-                this.KjV.c(this.KjX);
-                this.Kjf = false;
+                this.RkI.bfl((String)localObject);
+                this.RkI.NiZ = l;
+                this.RkI.talker = this.RiT;
+                this.RkI.show();
+                this.RkI.c(this.RkK);
+                this.RjS = false;
                 AppMethodBeat.o(31681);
                 return;
               }
-              this.KjZ.setExitType(3);
+              this.RkM.setExitType(3);
               locala = new com.tencent.mm.ui.widget.a.d.a(getContext());
-              locala.boo(getResources().getString(2131767167));
-              locala.bou(getResources().getString(2131767168));
-              locala.aoX(getResources().getColor(2131099784));
+              locala.bBd(getResources().getString(R.l.eUT));
+              locala.bBj(getResources().getString(R.l.eUU));
+              locala.ayl(getResources().getColor(R.e.Link_100));
               locala.c(new DialogInterface.OnClickListener()
               {
                 public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
                 {
-                  AppMethodBeat.i(232271);
-                  ChatFooter.l(ChatFooter.this).aDO(this.val$fileName);
-                  AppMethodBeat.o(232271);
+                  AppMethodBeat.i(285404);
+                  ChatFooter.l(ChatFooter.this).aNY(this.val$fileName);
+                  AppMethodBeat.o(285404);
                 }
               });
-              locala.Dk(false);
-              locala.hbn().show();
+              locala.HG(false);
+              locala.icu().show();
               AppMethodBeat.o(31681);
               return;
             }
-            this.KjZ.setExitType(4);
+            this.RkM.setExitType(4);
             com.tencent.mm.ui.widget.a.d.a locala = new com.tencent.mm.ui.widget.a.d.a(getContext());
-            locala.boo(getResources().getString(2131763513));
-            locala.bou(getResources().getString(2131763515));
-            locala.aoX(getResources().getColor(2131099784));
-            locala.bov(getResources().getString(2131763514));
+            locala.bBd(getResources().getString(R.l.eMs));
+            locala.bBj(getResources().getString(R.l.eMu));
+            locala.ayl(getResources().getColor(R.e.Link_100));
+            locala.bBk(getResources().getString(R.l.eMt));
             locala.c(new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
-                AppMethodBeat.i(232272);
-                ChatFooter.l(ChatFooter.this).eu(this.val$fileName, (int)l);
-                AppMethodBeat.o(232272);
+                AppMethodBeat.i(292189);
+                ChatFooter.l(ChatFooter.this).eV(this.val$fileName, (int)l);
+                AppMethodBeat.o(292189);
               }
             });
             locala.d(new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
-                AppMethodBeat.i(232273);
-                ChatFooter.l(ChatFooter.this).aDO(this.val$fileName);
-                AppMethodBeat.o(232273);
+                AppMethodBeat.i(268307);
+                ChatFooter.l(ChatFooter.this).aNY(this.val$fileName);
+                AppMethodBeat.o(268307);
               }
             });
-            locala.hbn().show();
+            locala.icu().show();
             AppMethodBeat.o(31681);
           }
         }
         else
         {
-          this.KiD.ehI();
+          this.Rjq.eRp();
           AppMethodBeat.o(31681);
         }
       }
       else
       {
-        if ((this.tfc != null) && (this.tfc.getVisibility() == 0))
+        if ((this.wLq != null) && (this.wLq.getVisibility() == 0))
         {
-          this.KjZ.setExitType(2);
-          this.KiD.ehL();
+          this.RkM.setExitType(2);
+          this.Rjq.eRs();
           AppMethodBeat.o(31681);
           return;
         }
-        this.KiD.ehI();
+        this.Rjq.eRp();
       }
     }
     AppMethodBeat.o(31681);
   }
   
-  public final void gqS()
+  public final void hlR()
   {
     AppMethodBeat.i(31683);
-    bg.aVF();
-    this.Kjw = ((Boolean)com.tencent.mm.model.c.azQ().get(66832, Boolean.FALSE)).booleanValue();
-    if (this.ECK != null) {
-      this.ECK.setEnableSendBtn(this.Kjw);
+    bh.beI();
+    this.Rkj = ((Boolean)com.tencent.mm.model.c.aHp().b(66832, Boolean.FALSE)).booleanValue();
+    if (this.KQB != null) {
+      this.KQB.setEnableSendBtn(this.Rkj);
     }
     AppMethodBeat.o(31683);
   }
   
-  public final boolean gqT()
+  public final boolean hlS()
   {
-    AppMethodBeat.i(232303);
-    if ((this.Kjy != null) && (this.Kjy.grq() != null))
+    AppMethodBeat.i(285147);
+    if ((this.Rkl != null) && (this.Rkl.hmp() != null))
     {
-      if ((!((com.tencent.mm.ui.chatting.d.b.h)this.Kjy.grq().bh(com.tencent.mm.ui.chatting.d.b.h.class)).gPu()) && (!((com.tencent.mm.ui.chatting.d.b.i)this.Kjy.grq().bh(com.tencent.mm.ui.chatting.d.b.i.class)).gPw()))
+      if ((!((com.tencent.mm.ui.chatting.d.b.h)this.Rkl.hmp().bC(com.tencent.mm.ui.chatting.d.b.h.class)).hOK()) && (!((com.tencent.mm.ui.chatting.d.b.i)this.Rkl.hmp().bC(com.tencent.mm.ui.chatting.d.b.i.class)).hOP()))
       {
-        AppMethodBeat.o(232303);
+        AppMethodBeat.o(285147);
         return true;
       }
-      AppMethodBeat.o(232303);
+      AppMethodBeat.o(285147);
       return false;
     }
-    AppMethodBeat.o(232303);
+    AppMethodBeat.o(285147);
     return true;
   }
   
-  public final void gqU()
+  public final void hlT()
   {
     AppMethodBeat.i(31685);
-    if ((this.han == null) || (this.han.getVisibility() == 8))
+    if ((this.jLo == null) || (this.jLo.getVisibility() == 8))
     {
       AppMethodBeat.o(31685);
       return;
     }
-    if (this.KlJ == 0)
+    if (this.Rmw == 0)
     {
-      this.KlJ = this.han.getWidth();
-      this.KlK = this.Kir.getWidth();
+      this.Rmw = this.jLo.getWidth();
+      this.Rmx = this.Rjb.getWidth();
     }
     ValueAnimator localValueAnimator = new ValueAnimator();
-    localValueAnimator.setIntValues(new int[] { this.KlJ, this.KlK });
-    localValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
-    {
-      public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
-      {
-        AppMethodBeat.i(185386);
-        int i = ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue();
-        paramAnonymousValueAnimator = ChatFooter.k(ChatFooter.this).getLayoutParams();
-        paramAnonymousValueAnimator.width = i;
-        ChatFooter.k(ChatFooter.this).setLayoutParams(paramAnonymousValueAnimator);
-        float f = (i - ChatFooter.bv(ChatFooter.this)) / (ChatFooter.bw(ChatFooter.this) - ChatFooter.bv(ChatFooter.this));
-        ChatFooter.k(ChatFooter.this).setAlpha(f);
-        AppMethodBeat.o(185386);
-      }
-    });
-    localValueAnimator.addListener(new Animator.AnimatorListener()
-    {
-      public final void onAnimationCancel(Animator paramAnonymousAnimator)
-      {
-        AppMethodBeat.i(232276);
-        ChatFooter.k(ChatFooter.this).setVisibility(8);
-        AppMethodBeat.o(232276);
-      }
-      
-      public final void onAnimationEnd(Animator paramAnonymousAnimator)
-      {
-        AppMethodBeat.i(232275);
-        if (!ChatFooter.bx(ChatFooter.this))
-        {
-          ChatFooter.k(ChatFooter.this).setVisibility(8);
-          AppMethodBeat.o(232275);
-          return;
-        }
-        Log.i("MicroMsg.ChatFooter", "animHideSendBtn onAnimationEnd!! cansend change:%s", new Object[] { Boolean.valueOf(ChatFooter.bx(ChatFooter.this)) });
-        ChatFooter.this.gqV();
-        AppMethodBeat.o(232275);
-      }
-      
-      public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
-      
-      public final void onAnimationStart(Animator paramAnonymousAnimator)
-      {
-        AppMethodBeat.i(232274);
-        ChatFooter.k(ChatFooter.this).setVisibility(0);
-        AppMethodBeat.o(232274);
-      }
-    });
-    localValueAnimator.setDuration(150L);
-    localValueAnimator.start();
-    AppMethodBeat.o(31685);
-  }
-  
-  public final void gqV()
-  {
-    AppMethodBeat.i(31686);
-    if (this.han == null)
-    {
-      AppMethodBeat.o(31686);
-      return;
-    }
-    if (this.KlJ == 0)
-    {
-      this.KlJ = this.han.getWidth();
-      this.KlK = this.Kir.getWidth();
-    }
-    if (this.KlJ == 0)
-    {
-      this.han.startAnimation(this.Kjz);
-      this.han.setVisibility(0);
-      AppMethodBeat.o(31686);
-      return;
-    }
-    ValueAnimator localValueAnimator = new ValueAnimator();
-    localValueAnimator.setIntValues(new int[] { this.KlK, this.KlJ });
+    localValueAnimator.setIntValues(new int[] { this.Rmw, this.Rmx });
     localValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
@@ -5219,204 +5213,277 @@ public class ChatFooter
         AppMethodBeat.o(185810);
       }
     });
-    localValueAnimator.setDuration(150L);
     localValueAnimator.addListener(new Animator.AnimatorListener()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(232279);
-        ChatFooter.k(ChatFooter.this).setVisibility(0);
-        ChatFooter.u(ChatFooter.this).setVisibility(8);
-        ChatFooter.j(ChatFooter.this, false);
-        AppMethodBeat.o(232279);
+        AppMethodBeat.i(268458);
+        ChatFooter.k(ChatFooter.this).setVisibility(8);
+        AppMethodBeat.o(268458);
       }
       
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(232278);
-        paramAnonymousAnimator = ChatFooter.k(ChatFooter.this).getLayoutParams();
-        paramAnonymousAnimator.width = -2;
-        ChatFooter.k(ChatFooter.this).setLayoutParams(paramAnonymousAnimator);
-        ChatFooter.u(ChatFooter.this).setVisibility(8);
-        ChatFooter.j(ChatFooter.this, false);
+        AppMethodBeat.i(268457);
         if (!ChatFooter.bx(ChatFooter.this))
         {
-          Log.i("MicroMsg.ChatFooter", "animShowSendBtn onAnimationEnd!! cansend change:%s", new Object[] { Boolean.valueOf(ChatFooter.bx(ChatFooter.this)) });
-          ChatFooter.u(ChatFooter.this).setVisibility(0);
-          ChatFooter.j(ChatFooter.this, true);
-          ChatFooter.this.gqU();
+          ChatFooter.k(ChatFooter.this).setVisibility(8);
+          AppMethodBeat.o(268457);
+          return;
         }
-        AppMethodBeat.o(232278);
+        Log.i("MicroMsg.ChatFooter", "animHideSendBtn onAnimationEnd!! cansend change:%s", new Object[] { Boolean.valueOf(ChatFooter.bx(ChatFooter.this)) });
+        ChatFooter.this.hlU();
+        AppMethodBeat.o(268457);
       }
       
       public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
       
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(232277);
+        AppMethodBeat.i(268455);
         ChatFooter.k(ChatFooter.this).setVisibility(0);
-        AppMethodBeat.o(232277);
+        AppMethodBeat.o(268455);
+      }
+    });
+    localValueAnimator.setDuration(150L);
+    localValueAnimator.start();
+    AppMethodBeat.o(31685);
+  }
+  
+  public final void hlU()
+  {
+    AppMethodBeat.i(31686);
+    if (this.jLo == null)
+    {
+      AppMethodBeat.o(31686);
+      return;
+    }
+    if (this.Rmw == 0)
+    {
+      this.Rmw = this.jLo.getWidth();
+      this.Rmx = this.Rjb.getWidth();
+    }
+    if (this.Rmw == 0)
+    {
+      this.jLo.startAnimation(this.Rkm);
+      this.jLo.setVisibility(0);
+      AppMethodBeat.o(31686);
+      return;
+    }
+    ValueAnimator localValueAnimator = new ValueAnimator();
+    localValueAnimator.setIntValues(new int[] { this.Rmx, this.Rmw });
+    localValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    {
+      public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+      {
+        AppMethodBeat.i(292403);
+        int i = ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue();
+        paramAnonymousValueAnimator = ChatFooter.k(ChatFooter.this).getLayoutParams();
+        paramAnonymousValueAnimator.width = i;
+        ChatFooter.k(ChatFooter.this).setLayoutParams(paramAnonymousValueAnimator);
+        float f = (i - ChatFooter.bv(ChatFooter.this)) / (ChatFooter.bw(ChatFooter.this) - ChatFooter.bv(ChatFooter.this));
+        ChatFooter.k(ChatFooter.this).setAlpha(f);
+        AppMethodBeat.o(292403);
+      }
+    });
+    localValueAnimator.setDuration(150L);
+    localValueAnimator.addListener(new Animator.AnimatorListener()
+    {
+      public final void onAnimationCancel(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(286674);
+        ChatFooter.k(ChatFooter.this).setVisibility(0);
+        ChatFooter.v(ChatFooter.this).setVisibility(8);
+        ChatFooter.k(ChatFooter.this, false);
+        AppMethodBeat.o(286674);
+      }
+      
+      public final void onAnimationEnd(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(286672);
+        paramAnonymousAnimator = ChatFooter.k(ChatFooter.this).getLayoutParams();
+        paramAnonymousAnimator.width = -2;
+        ChatFooter.k(ChatFooter.this).setLayoutParams(paramAnonymousAnimator);
+        ChatFooter.v(ChatFooter.this).setVisibility(8);
+        ChatFooter.k(ChatFooter.this, false);
+        if (!ChatFooter.bx(ChatFooter.this))
+        {
+          Log.i("MicroMsg.ChatFooter", "animShowSendBtn onAnimationEnd!! cansend change:%s", new Object[] { Boolean.valueOf(ChatFooter.bx(ChatFooter.this)) });
+          ChatFooter.v(ChatFooter.this).setVisibility(0);
+          ChatFooter.k(ChatFooter.this, true);
+          ChatFooter.this.hlT();
+        }
+        AppMethodBeat.o(286672);
+      }
+      
+      public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
+      
+      public final void onAnimationStart(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(286670);
+        ChatFooter.k(ChatFooter.this).setVisibility(0);
+        AppMethodBeat.o(286670);
       }
     });
     localValueAnimator.start();
     AppMethodBeat.o(31686);
   }
   
-  public final void gqW()
+  public final void hlV()
   {
-    AppMethodBeat.i(232304);
-    if ((this.Kir != null) && (this.Kir.getVisibility() == 0))
+    AppMethodBeat.i(285148);
+    if ((this.Rjb != null) && (this.Rjb.getVisibility() == 0))
     {
-      Am(true);
-      AppMethodBeat.o(232304);
+      Es(true);
+      AppMethodBeat.o(285148);
       return;
     }
-    AppMethodBeat.o(232304);
+    AppMethodBeat.o(285148);
   }
   
-  public final void gqi()
+  public final void hlg()
   {
-    AppMethodBeat.i(232295);
-    if (!Util.isNullOrNil(this.ECK.getText()))
+    AppMethodBeat.i(285087);
+    if (!Util.isNullOrNil(this.KQB.getText()))
     {
-      this.ECK.setText("");
-      if (this.rum != null) {
-        this.rum.setToSendText("");
+      this.KQB.setText("");
+      if (this.jPN != null) {
+        this.jPN.setToSendText("");
       }
     }
-    Ah(false);
-    gqh();
-    AppMethodBeat.o(232295);
+    En(false);
+    hlf();
+    AppMethodBeat.o(285087);
   }
   
-  public final void gqj()
+  public final void hlh()
   {
     AppMethodBeat.i(31581);
-    if (!Util.isNullOrNil(this.Kiy.getText())) {
-      this.Kiy.setText("");
+    if (!Util.isNullOrNil(this.Rjl.getText())) {
+      this.Rjl.setText("");
     }
-    if (this.Kix.getTag() != null) {
-      this.Kix.setTag(null);
+    if (this.Rjh.getTag() != null) {
+      this.Rjh.setTag(null);
     }
-    this.Kix.setVisibility(8);
+    this.Rjh.setVisibility(8);
     AppMethodBeat.o(31581);
   }
   
-  public final void gqk()
+  public final void hli()
   {
     AppMethodBeat.i(31583);
-    if (this.Kik == null)
+    if (this.RiU == null)
     {
       AppMethodBeat.o(31583);
       return;
     }
-    this.Kik.gpK();
+    this.RiU.hkI();
     AppMethodBeat.o(31583);
   }
   
-  public final void gql()
+  public final void hlj()
   {
     AppMethodBeat.i(31587);
-    this.Kit = ((ImageButton)this.jxm.findViewById(2131298551));
-    this.Kit.setVisibility(0);
-    if (!com.tencent.mm.kernel.g.aAh().azQ().getBoolean(ar.a.OgW, true)) {
-      this.jxm.findViewById(2131298552).setVisibility(0);
+    this.Rjd = ((ImageButton)this.fyN.findViewById(R.h.dzk));
+    this.Rjd.setVisibility(0);
+    if (!com.tencent.mm.kernel.h.aHG().aHp().getBoolean(ar.a.Vvm, true)) {
+      this.fyN.findViewById(R.h.dzl).setVisibility(0);
     }
     for (;;)
     {
-      this.jxm.findViewById(2131298552).setVisibility(8);
-      this.Kit.setOnClickListener(new View.OnClickListener()
+      this.fyN.findViewById(R.h.dzl).setVisibility(8);
+      this.Rjd.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(232232);
+          AppMethodBeat.i(228158);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$24", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          paramAnonymousView = com.tencent.mm.emoji.c.b.hcd;
-          com.tencent.mm.emoji.c.b.avZ();
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$26", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          paramAnonymousView = com.tencent.mm.emoji.c.b.jNn;
+          com.tencent.mm.emoji.c.b.aCY();
           if (ChatFooter.l(ChatFooter.this) != null) {
-            ChatFooter.l(ChatFooter.this).ehO();
+            ChatFooter.l(ChatFooter.this).eRv();
           }
           if (ChatFooter.c(ChatFooter.this) == 2) {
             ChatFooter.this.showVKB();
           }
           for (;;)
           {
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$24", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(232232);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$26", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(228158);
             return;
-            if (ChatFooter.v(ChatFooter.this)) {
-              ChatFooter.this.goD();
+            if (ChatFooter.w(ChatFooter.this)) {
+              ChatFooter.this.hjp();
             }
-            ChatFooter.this.gqo();
-            if (!com.tencent.mm.kernel.g.aAh().azQ().getBoolean(ar.a.OgW, false))
+            ChatFooter.this.hln();
+            if (!com.tencent.mm.kernel.h.aHG().aHp().getBoolean(ar.a.Vvm, false))
             {
-              com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OgW, Boolean.TRUE);
-              ChatFooter.w(ChatFooter.this).findViewById(2131298552).setVisibility(8);
+              com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vvm, Boolean.TRUE);
+              ChatFooter.x(ChatFooter.this).findViewById(R.h.dzl).setVisibility(8);
             }
           }
         }
       });
-      if (this.KiB != null) {
-        this.KiB.Knt = this.Kit;
+      if (this.Rjo != null) {
+        this.Rjo.Rof = this.Rjd;
       }
-      if (this.KiC != null) {
-        this.KiC.ygE = this.jxm;
+      if (this.Rjp != null) {
+        this.Rjp.DqG = this.fyN;
       }
       AppMethodBeat.o(31587);
       return;
-      this.jxm.findViewById(2131298552).setVisibility(8);
+      this.fyN.findViewById(R.h.dzl).setVisibility(8);
     }
   }
   
-  public final void gqm()
+  public final void hll()
   {
     boolean bool = true;
     AppMethodBeat.i(31590);
-    if ((e.Knc == null) || (getContext() == null))
+    if ((e.RnO == null) || (getContext() == null))
     {
       if (getContext() == null)
       {
         Log.e("MicroMsg.ChatFooter", "[initSmiley] context always is null! %s", new Object[] { Util.getStack() });
-        this.rum = new d(MMApplicationContext.getContext());
+        this.jPN = new d(MMApplicationContext.getContext());
         AppMethodBeat.o(31590);
         return;
       }
-      this.rum = new d(getContext());
+      this.jPN = new d(getContext());
       AppMethodBeat.o(31590);
       return;
     }
-    if (this.rum != null) {
-      this.rum.destroy();
+    if (this.jPN != null) {
+      this.jPN.destroy();
     }
-    this.rum = e.Knc.eZ(getContext());
+    this.jPN = e.RnO.fd(getContext());
     ChatFooterPanel localChatFooterPanel;
-    if (this.rum != null)
+    if (this.jPN != null)
     {
-      this.rum.setEntranceScene(ChatFooterPanel.KbC);
-      this.rum.setVisibility(8);
-      this.rum.setFooterType(this.IFI);
-      if (this.Kip != null) {
-        this.Kip.addView(this.rum, -1, -1);
+      this.jPN.setEntranceScene(ChatFooterPanel.Rch);
+      this.jPN.setVisibility(8);
+      this.jPN.setFooterType(this.PAa);
+      if (this.RiZ != null) {
+        this.RiZ.addView(this.jPN, -1, -1);
       }
-      this.rum.setOnTextOperationListener(this.KkU);
-      localChatFooterPanel = this.rum;
-      if (this.ECK.getText().length() <= 0) {
+      this.jPN.setOnTextOperationListener(this.RlH);
+      localChatFooterPanel = this.jPN;
+      if (this.KQB.getText().length() <= 0) {
         break label271;
       }
     }
     for (;;)
     {
       localChatFooterPanel.setSendButtonEnable(bool);
-      if (this.Kjy != null) {
-        this.rum.setTalkerName(this.Kjy.getTalkerUserName());
+      if (this.Rkl != null) {
+        this.jPN.setTalkerName(this.Rkl.getTalkerUserName());
       }
-      this.rum.onResume();
-      if (this.KiV) {
-        goD();
+      this.jPN.onResume();
+      if (this.RjJ) {
+        hjp();
       }
-      setSmileyPanelCallback(this.KbA);
+      setSmileyPanelCallback(this.Rcf);
       AppMethodBeat.o(31590);
       return;
       label271:
@@ -5424,118 +5491,129 @@ public class ChatFooter
     }
   }
   
-  public final void gqo()
+  public final void hln()
   {
     AppMethodBeat.i(31597);
-    this.KiR = 1;
-    Ai(true);
-    if (this.ECK.length() > 0) {}
+    this.RjF = 1;
+    Eo(true);
+    if (this.KQB.length() > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      qT(bool);
-      this.Kim.setVisibility(8);
-      aiw(2131231778);
-      if (this.Kdp != null)
+      tV(bool);
+      this.RiW.setVisibility(8);
+      aqy(R.g.dnf);
+      if (this.RdV != null)
       {
-        this.Kdp.setVisibility(8);
-        this.Kds = false;
-        this.Kdp.reset();
+        this.RdV.setVisibility(8);
+        this.RdY = false;
+        this.RdV.reset();
       }
-      i(2, true, -1);
+      k(2, true, -1);
       AppMethodBeat.o(31597);
       return;
     }
   }
   
-  public final void gqr()
+  public final void hlq()
   {
     AppMethodBeat.i(31620);
-    if (this.Kkf)
+    if (this.RkS)
     {
-      this.Kkm.setVisibility(0);
-      this.KkQ.setVisibility(8);
+      this.RkZ.setVisibility(0);
+      this.RlD.setVisibility(8);
       AppMethodBeat.o(31620);
       return;
     }
-    this.FQV.setVisibility(8);
-    this.KiN.setVisibility(0);
+    this.MkW.setVisibility(8);
+    this.RjB.setVisibility(0);
     AppMethodBeat.o(31620);
   }
   
-  public final void gqs()
+  public final void hlr()
   {
     AppMethodBeat.i(31626);
-    Ai(true);
-    this.Kin.setVisibility(8);
-    this.Kim.setVisibility(8);
+    Eo(true);
+    this.RiX.setVisibility(8);
+    this.RiW.setVisibility(8);
     AppMethodBeat.o(31626);
   }
   
-  public final void gqt()
+  public final void hls()
   {
     AppMethodBeat.i(31627);
-    if (this.Kin != null) {
-      this.Kin.setVisibility(0);
+    if (this.RiX != null) {
+      this.RiX.setVisibility(0);
     }
     AppMethodBeat.o(31627);
   }
   
-  public final void gqu()
+  public final void hlt()
   {
     AppMethodBeat.i(31628);
-    AppPanel localAppPanel = this.Kik;
-    localAppPanel.KgQ.Khn.value = false;
-    localAppPanel.gpV();
+    AppPanel localAppPanel = this.RiU;
+    localAppPanel.RhB.RhY.value = false;
+    localAppPanel.hkT();
     AppMethodBeat.o(31628);
   }
   
-  public final void gqv()
+  public final void hlu()
   {
     AppMethodBeat.i(31629);
-    AppPanel localAppPanel = this.Kik;
-    localAppPanel.KgQ.KhF.value = false;
-    localAppPanel.gpV();
+    AppPanel localAppPanel = this.RiU;
+    localAppPanel.RhB.Riq.value = false;
+    localAppPanel.hkT();
     AppMethodBeat.o(31629);
   }
   
-  public final void gqw()
+  public final void hlv()
   {
     AppMethodBeat.i(31630);
-    AppPanel localAppPanel = this.Kik;
-    localAppPanel.KgQ.Kho.value = false;
-    localAppPanel.gpV();
+    AppPanel localAppPanel = this.RiU;
+    localAppPanel.RhB.RhZ.value = false;
+    localAppPanel.hkT();
     AppMethodBeat.o(31630);
   }
   
-  public final void gqx()
+  public final void hlw()
   {
     AppMethodBeat.i(31631);
-    AppPanel localAppPanel = this.Kik;
-    localAppPanel.KgQ.Khr.value = false;
-    localAppPanel.gpV();
+    AppPanel localAppPanel = this.RiU;
+    localAppPanel.RhB.Ric.value = false;
+    localAppPanel.hkT();
     AppMethodBeat.o(31631);
   }
   
-  public final void gqy()
+  public final void hlx()
   {
     AppMethodBeat.i(31635);
-    AppPanel localAppPanel = this.Kik;
-    localAppPanel.KgY = true;
-    localAppPanel.KgQ.Ae(false);
-    localAppPanel.gpV();
+    AppPanel localAppPanel = this.RiU;
+    localAppPanel.RhJ = true;
+    localAppPanel.RhB.Ej(false);
+    localAppPanel.hkT();
     Log.i("MicroMsg.AppPanel", "disableServiceLuckyMoney %s", new Object[] { Util.getStack().toString() });
     AppMethodBeat.o(31635);
   }
   
-  public final void gqz()
+  public final void hly()
   {
-    this.Kik.Khb = true;
+    this.RiU.RhM = true;
   }
   
-  public final boolean grl()
+  public final void hlz()
+  {
+    AppMethodBeat.i(31636);
+    AppPanel localAppPanel = this.RiU;
+    localAppPanel.RhK = true;
+    localAppPanel.RhB.Eg(false);
+    localAppPanel.hkT();
+    Log.i("MicroMsg.AppPanel", "disableServiceRemittance %s", new Object[] { Util.getStack().toString() });
+    AppMethodBeat.o(31636);
+  }
+  
+  public final boolean hmk()
   {
     AppMethodBeat.i(185416);
-    if ((this.Kkh != null) && (this.Kkh.isShowing()))
+    if ((this.RkU != null) && (this.RkU.isShowing()))
     {
       AppMethodBeat.o(185416);
       return true;
@@ -5544,36 +5622,176 @@ public class ChatFooter
     return false;
   }
   
-  public final boolean hideVKB()
+  public final int ht(String paramString, int paramInt)
   {
-    AppMethodBeat.i(31659);
-    if (getKeyBordHeightPX() / 2 <= getBottom())
+    AppMethodBeat.i(163213);
+    int i = paramInt;
+    if (this.Rjt.Rnb.containsKey(paramString))
     {
-      boolean bool = Util.hideVKB(this);
-      AppMethodBeat.o(31659);
-      return bool;
+      i = paramInt;
+      if (((LinkedList)this.Rjt.Rnb.get(paramString)).size() > 0) {
+        i = paramInt | 0x1;
+      }
     }
-    AppMethodBeat.o(31659);
-    return false;
+    paramInt = i;
+    if (this.Rjw)
+    {
+      if (this.Rjy)
+      {
+        paramInt = 4;
+        paramInt = i | paramInt;
+      }
+    }
+    else
+    {
+      i = paramInt;
+      if (this.Rjx) {
+        if (!this.Rjy) {
+          break label107;
+        }
+      }
+    }
+    label107:
+    for (i = 16;; i = 32)
+    {
+      i = paramInt | i;
+      AppMethodBeat.o(163213);
+      return i;
+      paramInt = 8;
+      break;
+    }
   }
   
-  public final void i(int paramInt1, boolean paramBoolean, int paramInt2)
+  public final void hy(View paramView)
+  {
+    int i = -1;
+    AppMethodBeat.i(163212);
+    if (this.Rjq != null) {
+      this.Rjq.eRw();
+    }
+    Log.i("MicroMsg.ChatFooter", "click attach btn: %s, %s", new Object[] { Integer.valueOf(this.RiU.getVisibility()), Boolean.valueOf(this.RiZ.hmq()) });
+    if (this.jJL == 3)
+    {
+      if (this.RjF == 1)
+      {
+        showVKB();
+        AppMethodBeat.o(163212);
+        return;
+      }
+      k(0, true, -1);
+      AppMethodBeat.o(163212);
+      return;
+    }
+    Object localObject;
+    if (paramView == null)
+    {
+      k(3, true, i);
+      if ((this.RdV != null) && (this.RdV.getVisibility() == 0) && (this.RdY))
+      {
+        Log.d("MicroMsg.ChatFooter", "voiceInputPanel is VISIBLE, set appPanel VISIBLE");
+        this.RdV.setVisibility(8);
+        this.RdY = false;
+        this.RdV.reset();
+      }
+      paramView = ap.hhK();
+      localObject = MMApplicationContext.getContext();
+      if ((com.tencent.mm.kernel.h.aHB()) && (localObject != null)) {
+        break label284;
+      }
+      label187:
+      ap.hhK().jx(MMApplicationContext.getContext());
+      if ((ab.PP(this.toUser)) && (aa.asf()))
+      {
+        paramView = this.toUser;
+        if (!ab.Rh(paramView)) {
+          break label530;
+        }
+        i = 2;
+      }
+    }
+    for (;;)
+    {
+      for (;;)
+      {
+        localObject = new al();
+        ((al)localObject).jd(paramView);
+        ((al)localObject).geB = 1L;
+        ((al)localObject).giO = i;
+        ((al)localObject).bpa();
+        AppMethodBeat.o(163212);
+        return;
+        if (paramView.getTag() == null) {
+          break;
+        }
+        i = ((Integer)paramView.getTag()).intValue();
+        break;
+        try
+        {
+          label284:
+          String str = com.tencent.mm.n.h.axc().getValue("ShowAPPSuggestion");
+          if ((Util.isNullOrNil(str)) || (Integer.valueOf(str).intValue() != 1)) {
+            Log.w("MicroMsg.SuggestionAppListLogic", "cfgShowAppSuggestion %s, return", new Object[] { str });
+          }
+        }
+        catch (Exception localException)
+        {
+          Log.e("MicroMsg.SuggestionAppListLogic", "exception in getSuggestionAppList, %s", new Object[] { localException.getMessage() });
+          if (paramView.QXF)
+          {
+            Log.w("MicroMsg.SuggestionAppListLogic", "SuggestionApp is Loading");
+            break label187;
+          }
+          Log.i("MicroMsg.SuggestionAppListLogic", "getSuggestionAppList");
+          paramView.QXF = true;
+          if (System.currentTimeMillis() - paramView.QXI < 43200000L)
+          {
+            Log.d("MicroMsg.SuggestionAppListLogic", "not now");
+            paramView.QXF = false;
+            break label187;
+          }
+          com.tencent.mm.kernel.h.aHH();
+          paramView.QXI = com.tencent.mm.kernel.h.aHG().aHp().ahV(352275);
+          if (System.currentTimeMillis() - paramView.QXI < 43200000L)
+          {
+            Log.w("MicroMsg.SuggestionAppListLogic", "not now sp");
+            paramView.QXF = false;
+            break label187;
+          }
+          if (paramView.lang == null) {
+            paramView.lang = LocaleUtil.loadApplicationLanguage(((Context)localObject).getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0), (Context)localObject);
+          }
+          paramView = new af(paramView.lang, new LinkedList());
+          com.tencent.mm.plugin.ab.a.fmC();
+          com.tencent.mm.pluginsdk.model.app.e.a(4, paramView);
+        }
+      }
+      break label187;
+      label530:
+      if (ab.Rg(paramView)) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+    }
+  }
+  
+  public final void k(int paramInt1, boolean paramBoolean, int paramInt2)
   {
     boolean bool = true;
     AppMethodBeat.i(163217);
-    Log.i("MicroMsg.ChatFooter", "configPanel: %s, %s, %s, %s, %s", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Boolean.valueOf(this.xfU), Boolean.valueOf(this.Kje), Boolean.valueOf(this.KiX) });
+    Log.i("MicroMsg.ChatFooter", "configPanel: %s, %s, %s, %s, %s", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Boolean.valueOf(this.BSf), Boolean.valueOf(this.RjR), Boolean.valueOf(this.RjL) });
     int i;
     int j;
     label98:
     int k;
-    if ((this.Kje) || (!this.KiX))
+    if ((this.RjR) || (!this.RjL))
     {
       i = 1;
-      if ((paramInt1 != 1) || (this.xfU)) {
+      if ((paramInt1 != 1) || (this.BSf)) {
         break label199;
       }
       j = 1;
-      if ((paramInt1 == 1) || (!this.xfU)) {
+      if ((paramInt1 == 1) || (!this.BSf)) {
         break label205;
       }
       k = 1;
@@ -5581,25 +5799,25 @@ public class ChatFooter
       if ((i == 0) && ((j != 0) || (k != 0))) {
         break label211;
       }
-      j(paramInt1, paramBoolean, paramInt2);
+      l(paramInt1, paramBoolean, paramInt2);
       label135:
       if (j != 0)
       {
-        this.Kjh = 0;
+        this.RjU = 0;
         post(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(232266);
+            AppMethodBeat.i(271986);
             ChatFooter.a(ChatFooter.this, true);
             ChatFooter.this.setToSendTextColor(true);
-            boolean bool = ChatFooter.aP(ChatFooter.this).showSoftInput(ChatFooter.d(ChatFooter.this).gYG(), 0);
+            boolean bool = ChatFooter.aP(ChatFooter.this).showSoftInput(ChatFooter.d(ChatFooter.this).hZx(), 0);
             ChatFooter.bq(ChatFooter.this);
             Log.i("MicroMsg.ChatFooter", "showSoftInput %b, %s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(ChatFooter.br(ChatFooter.this)) });
             if ((!bool) && (ChatFooter.br(ChatFooter.this) < 10)) {
               ChatFooter.this.postDelayed(this, 100L);
             }
-            AppMethodBeat.o(232266);
+            AppMethodBeat.o(271986);
           }
         });
       }
@@ -5618,7 +5836,7 @@ public class ChatFooter
     label219:
     for (paramBoolean = bool;; paramBoolean = false)
     {
-      this.xfU = paramBoolean;
+      this.BSf = paramBoolean;
       AppMethodBeat.o(163217);
       return;
       i = 0;
@@ -5627,50 +5845,44 @@ public class ChatFooter
       break label98;
       k = 0;
       break label113;
-      this.KiZ = paramInt1;
+      this.RjM = paramInt1;
       break label135;
     }
   }
   
-  public final void l(final boolean paramBoolean, long paramLong)
+  public final void ns(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(31582);
-    if ((this.Kix.getTag() != null) && ((this.Kix.getTag() instanceof ca)) && (Util.isEqual(paramLong, ((ca)this.Kix.getTag()).field_msgId))) {
-      MMHandlerThread.postToMainThread(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(185798);
-          if (!paramBoolean) {
-            com.tencent.mm.ui.base.h.c(ChatFooter.this.getContext(), ChatFooter.this.getContext().getString(2131763193), "", true);
-          }
-          ChatFooter.this.gqj();
-          AppMethodBeat.o(185798);
-        }
-      });
-    }
-    AppMethodBeat.o(31582);
-  }
-  
-  public final void mC(String paramString1, String paramString2)
-  {
-    this.dRL = paramString1;
+    AppMethodBeat.i(285093);
+    this.fLi = paramString1;
     this.toUser = paramString2;
+    if (this.KQB != null) {
+      if (!ab.Lj(paramString2)) {
+        break label73;
+      }
+    }
+    label73:
+    for (int i = 2;; i = 1)
+    {
+      this.KQB.getInputExtras(true).putInt("wechat_scene", i);
+      this.KQB.getInputExtras(true).putBoolean("if_support_wx_emoji", true);
+      AppMethodBeat.o(285093);
+      return;
+    }
   }
   
-  public final HashMap<String, String> mD(String paramString1, String paramString2)
+  public final HashMap<String, String> nt(String paramString1, String paramString2)
   {
     AppMethodBeat.i(31603);
     long l = System.currentTimeMillis();
     if (Util.isNullOrNil(paramString2))
     {
-      if (this.KiG.Kmo.containsKey(paramString1)) {
-        this.KiG.Kmo.remove(paramString1);
+      if (this.Rjt.Rnb.containsKey(paramString1)) {
+        this.Rjt.Rnb.remove(paramString1);
       }
       AppMethodBeat.o(31603);
       return null;
     }
-    if ((!this.KiG.Kmo.containsKey(paramString1)) || (((LinkedList)this.KiG.Kmo.get(paramString1)).size() <= 0))
+    if ((!this.Rjt.Rnb.containsKey(paramString1)) || (((LinkedList)this.Rjt.Rnb.get(paramString1)).size() <= 0))
     {
       AppMethodBeat.o(31603);
       return null;
@@ -5692,11 +5904,11 @@ public class ChatFooter
     Log.i("MicroMsg.ChatFooter", "after split @ :%s", new Object[] { localObject });
     if (((List)localObject).size() <= 0)
     {
-      ((LinkedList)this.KiG.Kmo.get(paramString1)).clear();
+      ((LinkedList)this.Rjt.Rnb.get(paramString1)).clear();
       AppMethodBeat.o(31603);
       return null;
     }
-    paramString1 = (LinkedList)this.KiG.Kmo.get(paramString1);
+    paramString1 = (LinkedList)this.Rjt.Rnb.get(paramString1);
     if ((paramString1 != null) && (paramString1.size() > 0))
     {
       Log.i("MicroMsg.ChatFooter", "[getAtSomebodyUsernames] size:%s", new Object[] { Integer.valueOf(paramString1.size()) });
@@ -5736,9 +5948,9 @@ public class ChatFooter
   {
     AppMethodBeat.i(31579);
     super.onAttachedToWindow();
-    gqN();
-    gqM();
-    aiC(getKeyBordHeightPX());
+    hlM();
+    hlL();
+    aqE(getKeyBordHeightPX());
     AppMethodBeat.o(31579);
   }
   
@@ -5746,21 +5958,24 @@ public class ChatFooter
   {
     AppMethodBeat.i(31643);
     super.onConfigurationChanged(paramConfiguration);
-    if (com.tencent.mm.compatible.util.d.oD(24)) {
-      this.Kje = ((Activity)getContext()).isInMultiWindowMode();
+    if (com.tencent.mm.compatible.util.d.qV(24)) {
+      this.RjR = ((Activity)getContext()).isInMultiWindowMode();
     }
     if (paramConfiguration.orientation == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      this.KiX = bool;
-      i(0, false, -1);
-      gqN();
-      Log.i("MicroMsg.ChatFooter", "onConfigurationChanged: %s, %s, %s", new Object[] { paramConfiguration, Boolean.valueOf(this.KiX), Boolean.valueOf(this.Kje) });
-      aiC(getKeyBordHeightPX());
-      paramConfiguration = com.tencent.mm.plugin.patmsg.ui.b.ARN;
-      paramConfiguration = com.tencent.mm.plugin.patmsg.ui.b.eBs();
+      this.RjL = bool;
+      k(0, false, -1);
+      hlM();
+      Log.i("MicroMsg.ChatFooter", "onConfigurationChanged: %s, %s, %s", new Object[] { paramConfiguration, Boolean.valueOf(this.RjL), Boolean.valueOf(this.RjR) });
+      aqE(getKeyBordHeightPX());
+      paramConfiguration = com.tencent.mm.plugin.patmsg.ui.b.GKZ;
+      paramConfiguration = com.tencent.mm.plugin.patmsg.ui.b.fmZ();
       if (paramConfiguration != null) {
         paramConfiguration.dismiss();
+      }
+      if (com.tencent.mm.ui.chatting.atsomeone.d.hWR()) {
+        com.tencent.mm.ui.chatting.atsomeone.d.dismissDialog();
       }
       AppMethodBeat.o(31643);
       return;
@@ -5771,20 +5986,20 @@ public class ChatFooter
   {
     AppMethodBeat.i(31580);
     super.onDetachedFromWindow();
-    this.gyh.close();
-    this.Kja = null;
-    this.Kjb = false;
+    this.jij.close();
+    this.RjN = null;
+    this.RjO = false;
     AppMethodBeat.o(31580);
   }
   
   public final void onDismiss()
   {
-    AppMethodBeat.i(232306);
-    this.ECK.gYJ();
-    this.Kjg = false;
+    AppMethodBeat.i(285155);
+    this.KQB.hZB();
+    this.RjT = false;
     showVKB();
-    KiM = null;
-    AppMethodBeat.o(232306);
+    RjA = null;
+    AppMethodBeat.o(285155);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -5800,30 +6015,30 @@ public class ChatFooter
   {
     AppMethodBeat.i(31577);
     Log.i("MicroMsg.ChatFooter", "onPause");
-    this.wxq = false;
-    if ((this.Kjc == 48) && (this.KiY == 1) && (!this.Kjn))
+    this.zQA = false;
+    if ((this.RjP == 48) && (this.jJL == 1) && (!this.Rka))
     {
-      this.xfU = false;
-      j(0, true, -1);
+      this.BSf = false;
+      l(0, true, -1);
     }
-    this.gyh.close();
-    if (this.rum != null) {
-      this.rum.onPause();
+    this.jij.close();
+    if (this.jPN != null) {
+      this.jPN.onPause();
     }
-    if ((this.Kds) && (this.Kdp != null)) {
-      this.Kdp.pause();
+    if ((this.RdY) && (this.RdV != null)) {
+      this.RdV.pause();
     }
-    if (this.KiD != null) {
-      this.KiD.onPause();
+    if (this.Rjq != null) {
+      this.Rjq.onPause();
     }
-    if (this.KiB != null) {
-      this.KiB.hide();
+    if (this.Rjo != null) {
+      this.Rjo.hide();
     }
-    if ((this.FQS != null) && (this.FQS.isShowing())) {
-      this.FQS.dismiss();
+    if ((this.MkT != null) && (this.MkT.isShowing())) {
+      this.MkT.dismiss();
     }
-    gqP();
-    this.ECK.onPause();
+    hlO();
+    this.KQB.onPause();
     AppMethodBeat.o(31577);
   }
   
@@ -5835,24 +6050,44 @@ public class ChatFooter
     AppMethodBeat.o(31672);
   }
   
+  public final void q(final boolean paramBoolean, long paramLong)
+  {
+    AppMethodBeat.i(31582);
+    if ((this.Rjh.getTag() != null) && ((this.Rjh.getTag() instanceof ca)) && (Util.isEqual(paramLong, ((ca)this.Rjh.getTag()).field_msgId))) {
+      MMHandlerThread.postToMainThread(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(185798);
+          if (!paramBoolean) {
+            com.tencent.mm.ui.base.h.c(ChatFooter.this.getContext(), ChatFooter.this.getContext().getString(R.l.eMc), "", true);
+          }
+          ChatFooter.this.hlh();
+          AppMethodBeat.o(185798);
+        }
+      });
+    }
+    AppMethodBeat.o(31582);
+  }
+  
   public void setAppPanelListener(AppPanel.a parama)
   {
     AppMethodBeat.i(31649);
-    this.Kik.setAppPanelListener(parama);
+    this.RiU.setAppPanelListener(parama);
     AppMethodBeat.o(31649);
   }
   
   public void setAppPanelTip(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(31595);
-    if ((this.Kiq == null) || (this.Kik == null))
+    if ((this.Rja == null) || (this.RiU == null))
     {
       AppMethodBeat.o(31595);
       return;
     }
-    this.Kiq.setText(paramCharSequence);
+    this.Rja.setText(paramCharSequence);
     if (!Util.isNullOrNil(paramCharSequence)) {
-      if (this.Kik.getVisibility() != 0) {
+      if (this.RiU.getVisibility() != 0) {
         break label66;
       }
     }
@@ -5868,32 +6103,32 @@ public class ChatFooter
   public void setAppPanelTipVisible(boolean paramBoolean)
   {
     AppMethodBeat.i(31596);
-    if (this.Kiq == null)
+    if (this.Rja == null)
     {
       AppMethodBeat.o(31596);
       return;
     }
-    if (TextUtils.isEmpty(this.Kiq.getText()))
+    if (TextUtils.isEmpty(this.Rja.getText()))
     {
-      this.Kiq.setVisibility(8);
+      this.Rja.setVisibility(8);
       AppMethodBeat.o(31596);
       return;
     }
     if (paramBoolean)
     {
-      localObject = this.Kiq.getContext();
-      i = this.Kip.getHeight();
+      localObject = this.Rja.getContext();
+      i = this.RiZ.getHeight();
       int j = getKeyBordHeightPX();
-      int k = com.tencent.mm.cb.a.fromDPToPix((Context)localObject, 32);
-      localObject = this.Kiq.getLayoutParams();
+      int k = com.tencent.mm.ci.a.fromDPToPix((Context)localObject, 32);
+      localObject = this.Rja.getLayoutParams();
       if ((localObject != null) && ((localObject instanceof ViewGroup.MarginLayoutParams)))
       {
         localObject = (ViewGroup.MarginLayoutParams)localObject;
         ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = (i - j + k);
-        this.Kiq.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        this.Rja.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
     }
-    Object localObject = this.Kiq;
+    Object localObject = this.Rja;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -5906,15 +6141,15 @@ public class ChatFooter
   public void setAppPanelUnCertainEnterArrayList(ArrayList<a.a> paramArrayList)
   {
     AppMethodBeat.i(163214);
-    this.Kik.setAppPanelUnCertainEnterArrayList(paramArrayList);
+    this.RiU.setAppPanelUnCertainEnterArrayList(paramArrayList);
     AppMethodBeat.o(163214);
   }
   
   public void setAppPanelVisible(int paramInt)
   {
     AppMethodBeat.i(31642);
-    if (this.Kik != null) {
-      this.Kik.setVisibility(paramInt);
+    if (this.RiU != null) {
+      this.RiU.setVisibility(paramInt);
     }
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
@@ -5927,7 +6162,7 @@ public class ChatFooter
   
   public void setAtSomebody(String paramString)
   {
-    this.KiG.Kmm = paramString;
+    this.Rjt.RmZ = paramString;
   }
   
   public void setBottomPanelVisibility(int paramInt)
@@ -5935,18 +6170,18 @@ public class ChatFooter
     AppMethodBeat.i(31644);
     if (paramInt == 0)
     {
-      this.Kip.setVisibility(paramInt);
+      this.RiZ.setVisibility(paramInt);
       AppMethodBeat.o(31644);
       return;
     }
-    i(0, true, -1);
+    k(0, true, -1);
     AppMethodBeat.o(31644);
   }
   
   public void setCattingRootLayoutId(int paramInt)
   {
-    this.KlI = null;
-    this.KlH = paramInt;
+    this.Rmv = null;
+    this.Rmu = paramInt;
   }
   
   public void setDefaultSmileyByDetail(String paramString)
@@ -5954,10 +6189,10 @@ public class ChatFooter
     AppMethodBeat.i(31600);
     if (!Util.isNullOrNil(paramString))
     {
-      if (this.rum == null) {
-        gqm();
+      if (this.jPN == null) {
+        hll();
       }
-      this.rum.setDefaultEmojiByDetail(paramString);
+      this.jPN.setDefaultEmojiByDetail(paramString);
     }
     AppMethodBeat.o(31600);
   }
@@ -5966,21 +6201,21 @@ public class ChatFooter
   public void setEditTextOnDragListener(View.OnDragListener paramOnDragListener)
   {
     AppMethodBeat.i(31647);
-    this.ECK.setOnDragListener(paramOnDragListener);
+    this.KQB.setOnDragListener(paramOnDragListener);
     AppMethodBeat.o(31647);
   }
   
   public void setExitType(int paramInt)
   {
     AppMethodBeat.i(185414);
-    com.tencent.mm.plugin.transvoice.a.c.a locala = com.tencent.mm.plugin.transvoice.a.c.Guc;
-    com.tencent.mm.plugin.transvoice.a.c.fAu().setExitType(paramInt);
+    com.tencent.mm.plugin.transvoice.a.c.a locala = com.tencent.mm.plugin.transvoice.a.c.Nhv;
+    com.tencent.mm.plugin.transvoice.a.c.gsv().setExitType(paramInt);
     AppMethodBeat.o(185414);
   }
   
   public void setFooterEventListener(b paramb)
   {
-    this.KiD = paramb;
+    this.Rjq = paramb;
   }
   
   public void setFooterStatus(boolean paramBoolean) {}
@@ -5988,37 +6223,37 @@ public class ChatFooter
   public void setFooterType(int paramInt)
   {
     AppMethodBeat.i(31576);
-    this.IFI = paramInt;
-    if (this.rum != null) {
-      this.rum.setFooterType(paramInt);
+    this.PAa = paramInt;
+    if (this.jPN != null) {
+      this.jPN.setFooterType(paramInt);
     }
     AppMethodBeat.o(31576);
   }
   
   public void setHint(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(232297);
-    if (this.ECK != null) {
-      this.ECK.setHint(paramCharSequence);
+    AppMethodBeat.i(285104);
+    if (this.KQB != null) {
+      this.KQB.setHint(paramCharSequence);
     }
-    AppMethodBeat.o(232297);
+    AppMethodBeat.o(285104);
   }
   
-  public void setIOnTodoViewCallback(ab.c paramc)
+  public void setIOnTodoViewCallback(ac.c paramc)
   {
-    this.Kjp = paramc;
+    this.Rkc = paramc;
   }
   
   public void setIgnoreScroll(Boolean paramBoolean)
   {
     AppMethodBeat.i(31661);
-    this.Kjn = paramBoolean.booleanValue();
+    this.Rka = paramBoolean.booleanValue();
     AppMethodBeat.o(31661);
   }
   
   public void setInsertPos(int paramInt)
   {
-    this.KiG.Kmn = paramInt;
+    this.Rjt.Rna = paramInt;
   }
   
   public void setIsMultiWindow(boolean paramBoolean)
@@ -6026,15 +6261,15 @@ public class ChatFooter
     int i = 1;
     AppMethodBeat.i(31667);
     Log.i("MicroMsg.ChatFooter", "setIsMultiWindow: %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (this.Kje != paramBoolean) {}
+    if (this.RjR != paramBoolean) {}
     for (;;)
     {
-      this.Kje = paramBoolean;
-      gqN();
+      this.RjR = paramBoolean;
+      hlM();
       if (i != 0)
       {
-        aiC(getKeyBordHeightPX());
-        i(0, false, -1);
+        aqE(getKeyBordHeightPX());
+        k(0, false, -1);
       }
       AppMethodBeat.o(31667);
       return;
@@ -6045,13 +6280,13 @@ public class ChatFooter
   public void setKeyboardShow(Boolean paramBoolean)
   {
     AppMethodBeat.i(31662);
-    this.xfU = paramBoolean.booleanValue();
+    this.BSf = paramBoolean.booleanValue();
     AppMethodBeat.o(31662);
   }
   
   public void setLastContent(String paramString)
   {
-    this.KiG.Kml = paramString;
+    this.Rjt.RmY = paramString;
   }
   
   public void setLastQuoteMsgId(long paramLong)
@@ -6059,77 +6294,77 @@ public class ChatFooter
     AppMethodBeat.i(31605);
     if (paramLong != 0L)
     {
-      ca localca = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).eiy().Hb(paramLong);
-      if (((localca.fqJ & 0x4) == 4) || (localca.getType() == 10000))
+      ca localca = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).eSe().Oq(paramLong);
+      if (((localca.hxx & 0x4) == 4) || (localca.getType() == 10000))
       {
-        Log.e("MicroMsg.ChatFooter", "msg(%s) is revoked!", new Object[] { localca.getType() + "," + (localca.fqJ & 0x4) });
-        com.tencent.mm.ui.base.h.c(getContext(), getContext().getString(2131763193), "", true);
+        Log.e("MicroMsg.ChatFooter", "msg(%s) is revoked!", new Object[] { localca.getType() + "," + (localca.hxx & 0x4) });
+        com.tencent.mm.ui.base.h.c(getContext(), getContext().getString(R.l.eMc), "", true);
         AppMethodBeat.o(31605);
         return;
       }
-      this.Kix.setTag(localca);
+      this.Rjh.setTag(localca);
       AppMethodBeat.o(31605);
       return;
     }
-    this.Kix.setTag(null);
+    this.Rjh.setTag(null);
     AppMethodBeat.o(31605);
   }
   
   public void setLastText(String paramString)
   {
     AppMethodBeat.i(31606);
-    z(paramString, -1, true);
+    D(paramString, -1, true);
     AppMethodBeat.o(31606);
   }
   
   public void setLbsMode(boolean paramBoolean)
   {
-    this.KiI = paramBoolean;
+    this.Rjv = paramBoolean;
   }
   
   public void setMode(int paramInt)
   {
     AppMethodBeat.i(31623);
-    bA(paramInt, true);
+    bM(paramInt, true);
     AppMethodBeat.o(31623);
   }
   
   public void setOnEditFocusChangeListener(View.OnFocusChangeListener paramOnFocusChangeListener)
   {
     AppMethodBeat.i(31648);
-    this.ECK.setOnFocusChangeListener(paramOnFocusChangeListener);
+    this.KQB.setOnFocusChangeListener(paramOnFocusChangeListener);
     AppMethodBeat.o(31648);
   }
   
   public void setOnFooterPanelSwitchListener(f paramf)
   {
-    this.KiF = paramf;
+    this.Rjs = paramf;
   }
   
   public void setOnFooterSwitchListener(g paramg)
   {
     AppMethodBeat.i(31650);
-    this.KiE = paramg;
+    this.Rjr = paramg;
     if (paramg == null)
     {
       AppMethodBeat.o(31650);
       return;
     }
-    paramg = findViewById(2131298513);
+    paramg = findViewById(R.h.dyG);
     paramg.setVisibility(0);
     paramg.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(232262);
+        AppMethodBeat.i(289948);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$54", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/chat/ChatFooter$56", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (ChatFooter.bm(ChatFooter.this) != null) {
-          ChatFooter.bm(ChatFooter.this).An(false);
+          ChatFooter.bm(ChatFooter.this).Et(false);
         }
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$54", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(232262);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/chat/ChatFooter$56", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(289948);
       }
     });
     AppMethodBeat.o(31650);
@@ -6138,12 +6373,12 @@ public class ChatFooter
   public void setRecordNormalWording(String paramString)
   {
     AppMethodBeat.i(31618);
-    if ((paramString == null) || (this.KiO == null))
+    if ((paramString == null) || (this.RjC == null))
     {
       AppMethodBeat.o(31618);
       return;
     }
-    this.KiO.setText(paramString);
+    this.RjC.setText(paramString);
     AppMethodBeat.o(31618);
   }
   
@@ -6152,30 +6387,30 @@ public class ChatFooter
   public void setSmileyPanelCallback(f paramf)
   {
     AppMethodBeat.i(31592);
-    this.KbA = paramf;
-    if (this.rum != null) {
-      this.rum.setCallback(paramf);
+    this.Rcf = paramf;
+    if (this.jPN != null) {
+      this.jPN.setCallback(paramf);
     }
     AppMethodBeat.o(31592);
   }
   
   public void setSmileyPanelCallback2(j paramj)
   {
-    this.KiB.Knu = paramj;
+    this.Rjo.Rog = paramj;
   }
   
   public void setSwitchButtonMode(int paramInt)
   {
     AppMethodBeat.i(31651);
-    if (paramInt == this.Klx)
+    if (paramInt == this.Rmk)
     {
       AppMethodBeat.o(31651);
       return;
     }
-    this.Klx = paramInt;
-    ImageView localImageView1 = (ImageView)findViewById(2131308798);
-    ImageView localImageView2 = (ImageView)findViewById(2131305628);
-    if (this.Klx == 1)
+    this.Rmk = paramInt;
+    ImageView localImageView1 = (ImageView)findViewById(R.h.dVW);
+    ImageView localImageView2 = (ImageView)findViewById(R.h.dQD);
+    if (this.Rmk == 1)
     {
       localImageView1.setVisibility(8);
       localImageView2.setVisibility(0);
@@ -6189,25 +6424,25 @@ public class ChatFooter
   
   public void setTipsShowCallback(c paramc)
   {
-    this.Kjt = paramc;
+    this.Rkg = paramc;
   }
   
   @TargetApi(11)
   public void setToSendTextColor(final boolean paramBoolean)
   {
     AppMethodBeat.i(31652);
-    if (com.tencent.mm.compatible.util.d.oD(11))
+    if (com.tencent.mm.compatible.util.d.qV(11))
     {
       com.tencent.mm.compatible.a.a.a(11, new com.tencent.mm.compatible.a.a.a()
       {
         public final void run()
         {
-          AppMethodBeat.i(185794);
+          AppMethodBeat.i(185367);
           Message localMessage = new Message();
           localMessage.what = 1002;
           localMessage.obj = Boolean.valueOf(paramBoolean);
           ChatFooter.bn(ChatFooter.this).sendMessage(localMessage);
-          AppMethodBeat.o(185794);
+          AppMethodBeat.o(185367);
         }
       });
       AppMethodBeat.o(31652);
@@ -6215,49 +6450,49 @@ public class ChatFooter
     }
     if (paramBoolean)
     {
-      this.ECK.setTextColor(getResources().getColor(2131100806));
+      this.KQB.setTextColor(getResources().getColor(R.e.mm_edit_text_color));
       AppMethodBeat.o(31652);
       return;
     }
-    this.ECK.setTextColor(getResources().getColor(2131100584));
-    Ah(false);
+    this.KQB.setTextColor(getResources().getColor(R.e.half_alpha_black));
+    Em(false);
     AppMethodBeat.o(31652);
   }
   
   public void setUserName(String paramString)
   {
     AppMethodBeat.i(31682);
-    this.Kij = paramString;
-    if (this.rum != null) {
-      this.rum.setTalkerName(this.Kij);
+    this.RiT = paramString;
+    if (this.jPN != null) {
+      this.jPN.setTalkerName(this.RiT);
     }
-    if (this.Kik != null) {}
+    if (this.RiU != null) {}
     for (boolean bool = true;; bool = false)
     {
       Log.i("MicroMsg.ChatFooter", "setusername: %s, %s", new Object[] { paramString, Boolean.valueOf(bool) });
-      if (this.Kik == null) {
+      if (this.RiU == null) {
         break label167;
       }
-      if ((!ab.JE(this.Kij)) && (!ab.Jv(this.Kij))) {
+      if ((!ab.QX(this.RiT)) && (!ab.QO(this.RiT))) {
         break;
       }
-      this.Kik.setServiceShowFlag(0);
+      this.RiU.setServiceShowFlag(0);
       AppMethodBeat.o(31682);
       return;
     }
-    if (ab.IT(this.Kij))
+    if (ab.Qm(this.RiT))
     {
-      this.Kik.setServiceShowFlag(4);
+      this.RiU.setServiceShowFlag(4);
       AppMethodBeat.o(31682);
       return;
     }
-    if (ab.Eq(this.Kij))
+    if (ab.Lj(this.RiT))
     {
-      this.Kik.setServiceShowFlag(2);
+      this.RiU.setServiceShowFlag(2);
       AppMethodBeat.o(31682);
       return;
     }
-    this.Kik.setServiceShowFlag(1);
+    this.RiU.setServiceShowFlag(1);
     label167:
     AppMethodBeat.o(31682);
   }
@@ -6267,20 +6502,20 @@ public class ChatFooter
     AppMethodBeat.i(31619);
     if (-1 == paramInt)
     {
-      this.KjG.setVisibility(0);
-      this.KjI.setVisibility(8);
+      this.Rkt.setVisibility(0);
+      this.Rkv.setVisibility(8);
       AppMethodBeat.o(31619);
       return;
     }
     if ((paramInt >= 0) && (paramInt < 10))
     {
-      if (8 == this.KjI.getVisibility())
+      if (8 == this.Rkv.getVisibility())
       {
-        this.KjG.setVisibility(8);
-        this.KjI.setVisibility(0);
+        this.Rkt.setVisibility(8);
+        this.Rkv.setVisibility(0);
       }
-      if (this.KjI != null) {
-        this.KjI.setImageResource(this.Kli[paramInt]);
+      if (this.Rkv != null) {
+        this.Rkv.setImageResource(this.RlV[paramInt]);
       }
     }
     AppMethodBeat.o(31619);
@@ -6288,13 +6523,13 @@ public class ChatFooter
   
   public void setVoiceInputShowCallback(d paramd)
   {
-    this.Kju = paramd;
+    this.Rkh = paramd;
   }
   
   public void setVoiceReactArea(int paramInt)
   {
     AppMethodBeat.i(185401);
-    if (this.Kkf)
+    if (this.RkS)
     {
       setNewVoice2TxtCountDown(paramInt);
       AppMethodBeat.o(185401);
@@ -6302,7 +6537,7 @@ public class ChatFooter
     }
     if (paramInt < 10)
     {
-      if (this.KiS)
+      if (this.RjG)
       {
         setVoice2txtCountDown(paramInt);
         AppMethodBeat.o(185401);
@@ -6310,11 +6545,11 @@ public class ChatFooter
       }
       if (-1 == paramInt)
       {
-        setRecordNormalWording(getResources().getString(2131757277));
+        setRecordNormalWording(getResources().getString(R.l.chatfooter_cancel_rcd));
         AppMethodBeat.o(185401);
         return;
       }
-      setRecordNormalWording(getResources().getQuantityString(2131623938, paramInt, new Object[] { Integer.valueOf(paramInt) }));
+      setRecordNormalWording(getResources().getQuantityString(R.j.emj, paramInt, new Object[] { Integer.valueOf(paramInt) }));
     }
     AppMethodBeat.o(185401);
   }
@@ -6322,20 +6557,20 @@ public class ChatFooter
   public void setWordCountLimit(int paramInt)
   {
     AppMethodBeat.i(31646);
-    this.Kil = ((TextView)this.jxm.findViewById(2131298594));
-    this.ECK.setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt) });
+    this.RiV = ((TextView)this.fyN.findViewById(R.h.chatting_wordcount_tv));
+    this.KQB.setFilters(new InputFilter[] { new InputFilter.LengthFilter(paramInt) });
     AppMethodBeat.o(31646);
   }
   
   public final void showVKB()
   {
     AppMethodBeat.i(31656);
-    if ((this.Kjx != null) && (this.Kjx.isSupportNavigationSwipeBack()) && (this.Kjx.getSwipeBackLayout() != null)) {
-      this.Kjx.getSwipeBackLayout().setOnceDisEnableGesture(true);
+    if ((this.Rkk != null) && (this.Rkk.isSupportNavigationSwipeBack()) && (this.Rkk.getSwipeBackLayout() != null)) {
+      this.Rkk.getSwipeBackLayout().setOnceDisEnableGesture(true);
     }
-    if (!gqI())
+    if (!hlH())
     {
-      i(1, true, -1);
+      k(1, true, -1);
       AppMethodBeat.o(31656);
       return;
     }
@@ -6343,243 +6578,17 @@ public class ChatFooter
     AppMethodBeat.o(31656);
   }
   
-  public final void y(int paramInt, boolean paramBoolean)
-  {
-    int j = 0;
-    AppMethodBeat.i(31670);
-    Log.i("MicroMsg.ChatFooter", "onKeyboardHeightChanged: %s, %s, %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), Integer.valueOf(this.Kjc) });
-    if (!this.Kjf)
-    {
-      AppMethodBeat.o(31670);
-      return;
-    }
-    Object localObject = this.ECK;
-    if (paramInt > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ((com.tencent.mm.ui.widget.cedit.api.c)localObject).CS(bool);
-      if (!this.Kjg)
-      {
-        localObject = SecDataUIC.CWq;
-        if (((czj)SecDataUIC.a.c(getContext(), 4, czj.class)).MEF != 1) {
-          break label149;
-        }
-      }
-      if (paramInt > 0) {
-        break;
-      }
-      this.xfU = false;
-      AppMethodBeat.o(31670);
-      return;
-    }
-    this.xfU = true;
-    AppMethodBeat.o(31670);
-    return;
-    label149:
-    int i;
-    if ((this.Kkf) && (this.Kkh != null) && (this.Kkh.isShowing()))
-    {
-      if (paramInt <= 0)
-      {
-        this.xfU = false;
-        this.Kkl.setCursorVisible(false);
-        this.Kkv.animate().translationY(0.0F).setDuration(200L).start();
-        this.Kkk.animate().translationY(0.0F).setDuration(200L).start();
-        this.Kkn.animate().translationY(0.0F).setDuration(200L).start();
-        this.Kkq.animate().translationY(0.0F).setDuration(200L).start();
-        if (this.Kkk.getHeight() < this.Kls)
-        {
-          localObject = ValueAnimator.ofInt(new int[] { this.Kkk.getHeight(), this.Kls }).setDuration(200L);
-          ((ValueAnimator)localObject).addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
-          {
-            public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
-            {
-              AppMethodBeat.i(185376);
-              int i = ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue();
-              ((ViewGroup.MarginLayoutParams)ChatFooter.aA(ChatFooter.this).getLayoutParams()).height = i;
-              ChatFooter.aA(ChatFooter.this).requestLayout();
-              AppMethodBeat.o(185376);
-            }
-          });
-          ((ValueAnimator)localObject).start();
-          AppMethodBeat.o(31670);
-        }
-      }
-      else
-      {
-        this.xfU = true;
-        this.Kkl.setCursorVisible(true);
-        Log.d("MicroMsg.ChatFooter", "height:%s, WeUIToolHelper.getDisplayRealSize(getContext()).y - newVoice2txtOpeArea.getBottom():%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(au.az(getContext()).y - this.Kkv.getBottom()) });
-        i = au.az(getContext()).y;
-        localObject = new int[2];
-        this.Kkv.getLocationOnScreen((int[])localObject);
-        j = localObject[1];
-        int k = this.Kkv.getHeight();
-        int m = au.aD(getContext());
-        this.Kkv.animate().translationY(-(paramInt - (i - (j + k)) + m)).setDuration(200L).start();
-        paramInt = i - (this.Kkv.getHeight() + paramInt) - at.fromDPToPix(getContext(), 24);
-        i = this.Kkk.getHeight() + this.Kkn.getHeight() + at.fromDPToPix(getContext(), 48);
-        Log.d("MicroMsg.ChatFooter", "leftSpcaeDown:%s, editDown:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
-        this.Klr = (paramInt - at.fromDPToPix(getContext(), 52));
-        if (this.Klr < this.Klk)
-        {
-          Log.i("MicroMsg.ChatFooter", "invalid maxHeightWhenKeyboard, value:%s", new Object[] { Integer.valueOf(this.Klr) });
-          this.Klr = this.Klk;
-        }
-        this.Kls = this.Kkk.getHeight();
-        localObject = new int[2];
-        this.Kkn.getLocationOnScreen((int[])localObject);
-        j = localObject[1] + this.Kkn.getHeight();
-        if (j > paramInt)
-        {
-          j -= paramInt;
-          if (i > paramInt)
-          {
-            k = this.Kkk.getLayoutParams().height;
-            localObject = ValueAnimator.ofInt(new int[] { k, k - (i - paramInt) }).setDuration(200L);
-            ((ValueAnimator)localObject).addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
-            {
-              public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
-              {
-                AppMethodBeat.i(185804);
-                int i = ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue();
-                ChatFooter.aA(ChatFooter.this).getLayoutParams().height = i;
-                ChatFooter.aA(ChatFooter.this).requestLayout();
-                AppMethodBeat.o(185804);
-              }
-            });
-            ((ValueAnimator)localObject).start();
-          }
-          this.Kkk.animate().translationY(-j).setDuration(200L).start();
-          this.Kkn.animate().translationY(-j).setDuration(200L).start();
-          this.Kkq.animate().translationY(-j).setDuration(200L).start();
-        }
-      }
-      AppMethodBeat.o(31670);
-      return;
-    }
-    if ((!this.Kje) && (this.KiX))
-    {
-      if (this.Kji == paramBoolean) {
-        break label913;
-      }
-      i = 1;
-      this.Kji = paramBoolean;
-      if (paramInt <= 0) {
-        break label973;
-      }
-      if (this.oXi == paramInt) {
-        break label1045;
-      }
-      this.oXi = paramInt;
-      com.tencent.mm.compatible.util.i.C(getContext(), paramInt);
-      aiC(paramInt);
-    }
-    label913:
-    label1045:
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if (!this.xfU)
-      {
-        j(1, true, -1);
-        this.KiZ = -1;
-      }
-      while ((paramInt == 0) && (i == 0))
-      {
-        this.xfU = true;
-        if (this.KiD != null) {
-          this.KiD.qY(this.xfU);
-        }
-        AppMethodBeat.o(31670);
-        return;
-        i = 0;
-        break;
-      }
-      this.Kjd = this.oXi;
-      i = this.Kjd;
-      if (this.Kjp == null) {}
-      for (paramInt = j;; paramInt = this.Kjp.dYg())
-      {
-        b(i, true, 1, paramInt);
-        break;
-      }
-      label973:
-      if (this.xfU)
-      {
-        if (this.KiZ == -1) {
-          break label1035;
-        }
-        j(this.KiZ, true, -1);
-        this.KiZ = -1;
-      }
-      for (;;)
-      {
-        if (this.KiY == 1)
-        {
-          Log.i("MicroMsg.ChatFooter", "keyboard not open");
-          j(0, true, -1);
-        }
-        this.xfU = false;
-        break;
-        j(0, true, -1);
-      }
-    }
-  }
-  
-  public final void z(String paramString, int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(31607);
-    if (dYe())
-    {
-      Log.i("MicroMsg.ChatFooter", "setLastText() isBackFromGroupSolitatire");
-      AppMethodBeat.o(31607);
-      return;
-    }
-    if ((paramBoolean) && ((paramString == null) || (paramString.length() == 0) || (this.ECK == null)))
-    {
-      this.ECK.setText("");
-      gqh();
-      AppMethodBeat.o(31607);
-      return;
-    }
-    this.KiH = true;
-    this.ECK.setText(com.tencent.mm.pluginsdk.ui.span.l.b(getContext(), paramString, this.ECK.getTextSize()));
-    this.KiH = false;
-    if ((paramInt < 0) || (paramInt > this.ECK.getText().length()))
-    {
-      this.ECK.setSelection(this.ECK.getText().length());
-      AppMethodBeat.o(31607);
-      return;
-    }
-    this.ECK.setSelection(paramInt);
-    AppMethodBeat.o(31607);
-  }
-  
-  public final void zY(boolean paramBoolean)
-  {
-    AppMethodBeat.i(31633);
-    this.Kik.zY(paramBoolean);
-    AppMethodBeat.o(31633);
-  }
-  
-  public final void zZ(boolean paramBoolean)
-  {
-    AppMethodBeat.i(31634);
-    this.Kik.zZ(paramBoolean);
-    AppMethodBeat.o(31634);
-  }
-  
   public static final class a
   {
-    public String Kml;
-    String Kmm;
-    int Kmn;
-    HashMap<String, LinkedList<HashMap<String, String>>> Kmo;
+    public String RmY;
+    String RmZ;
+    int Rna;
+    HashMap<String, LinkedList<HashMap<String, String>>> Rnb;
     
     private a()
     {
       AppMethodBeat.i(31558);
-      this.Kmo = new HashMap();
+      this.Rnb = new HashMap();
       AppMethodBeat.o(31558);
     }
   }
@@ -6588,9 +6597,9 @@ public class ChatFooter
   {
     public abstract String getTalkerUserName();
     
-    public abstract com.tencent.mm.ui.chatting.i.b grp();
+    public abstract com.tencent.mm.ui.chatting.i.b hmo();
     
-    public abstract com.tencent.mm.ui.chatting.e.a grq();
+    public abstract com.tencent.mm.ui.chatting.e.a hmp();
   }
   
   public static abstract interface c
@@ -6602,7 +6611,7 @@ public class ChatFooter
   
   public static abstract interface d
   {
-    public abstract void q(Boolean paramBoolean);
+    public abstract void x(Boolean paramBoolean);
   }
   
   static enum e
@@ -6610,10 +6619,10 @@ public class ChatFooter
     static
     {
       AppMethodBeat.i(185398);
-      Kmp = new e("MODE_VOICE", 0);
-      Kmq = new e("MODE_CANCEL", 1);
-      Kmr = new e("MODE_TRANS", 2);
-      Kms = new e[] { Kmp, Kmq, Kmr };
+      Rnc = new e("MODE_VOICE", 0);
+      Rnd = new e("MODE_CANCEL", 1);
+      Rne = new e("MODE_TRANS", 2);
+      Rnf = new e[] { Rnc, Rnd, Rne };
       AppMethodBeat.o(185398);
     }
     
@@ -6622,12 +6631,12 @@ public class ChatFooter
   
   public static abstract interface f
   {
-    public abstract void kE(int paramInt1, int paramInt2);
+    public abstract void lX(int paramInt1, int paramInt2);
   }
   
   public static abstract interface g
   {
-    public abstract boolean An(boolean paramBoolean);
+    public abstract boolean Et(boolean paramBoolean);
   }
   
   public static enum h
@@ -6635,13 +6644,13 @@ public class ChatFooter
     static
     {
       AppMethodBeat.i(185821);
-      Kmt = new h("SendVoice", 0);
-      Kmu = new h("StopRecord", 1);
-      Kmv = new h("Reset", 2);
-      Kmw = new h("Cancel", 3);
-      Kmx = new h("Pause", 4);
-      Kmy = new h("Error", 5);
-      Kmz = new h[] { Kmt, Kmu, Kmv, Kmw, Kmx, Kmy };
+      Rng = new h("SendVoice", 0);
+      Rnh = new h("StopRecord", 1);
+      Rni = new h("Reset", 2);
+      Rnj = new h("Cancel", 3);
+      Rnk = new h("Pause", 4);
+      Rnl = new h("Error", 5);
+      Rnm = new h[] { Rng, Rnh, Rni, Rnj, Rnk, Rnl };
       AppMethodBeat.o(185821);
     }
     
@@ -6651,16 +6660,16 @@ public class ChatFooter
   public final class i
     implements TextWatcher
   {
-    TextWatcher KmA;
-    private boolean KmB;
-    private boolean KmC;
+    TextWatcher JiE;
+    private boolean Rnn;
+    private boolean Rno;
     
     public i(TextWatcher paramTextWatcher)
     {
       AppMethodBeat.i(31559);
-      this.KmB = false;
-      this.KmC = com.tencent.mm.compatible.util.d.oE(11);
-      this.KmA = paramTextWatcher;
+      this.Rnn = false;
+      this.Rno = com.tencent.mm.compatible.util.d.qW(11);
+      this.JiE = paramTextWatcher;
       AppMethodBeat.o(31559);
     }
     
@@ -6668,9 +6677,9 @@ public class ChatFooter
     {
       boolean bool = true;
       AppMethodBeat.i(31560);
-      if ((ChatFooter.j(ChatFooter.this)) && (this.KmB) && (paramEditable.length() > 0))
+      if ((ChatFooter.j(ChatFooter.this)) && (this.Rnn) && (paramEditable.length() > 0))
       {
-        this.KmB = false;
+        this.Rnn = false;
         ChatFooter.d(ChatFooter.this).setText(paramEditable.subSequence(0, paramEditable.length() - 1));
         if (ChatFooter.d(ChatFooter.this).length() > 0)
         {
@@ -6681,13 +6690,13 @@ public class ChatFooter
         AppMethodBeat.o(31560);
         return;
       }
-      this.KmA.afterTextChanged(paramEditable);
-      if (ChatFooter.x(ChatFooter.this) != null)
+      this.JiE.afterTextChanged(paramEditable);
+      if (ChatFooter.y(ChatFooter.this) != null)
       {
         if (ChatFooter.d(ChatFooter.this).getLineCount() > 1)
         {
-          ChatFooter.x(ChatFooter.this).setVisibility(0);
-          ChatFooter.x(ChatFooter.this).setText(paramEditable.length() + "/140");
+          ChatFooter.y(ChatFooter.this).setVisibility(0);
+          ChatFooter.y(ChatFooter.this).setText(paramEditable.length() + "/140");
         }
       }
       else {
@@ -6698,13 +6707,13 @@ public class ChatFooter
       for (;;)
       {
         ChatFooter.b(ChatFooter.this, bool);
-        if (ChatFooter.y(ChatFooter.this) != null) {
-          ChatFooter.y(ChatFooter.this).setSendButtonEnable(bool);
+        if (ChatFooter.z(ChatFooter.this) != null) {
+          ChatFooter.z(ChatFooter.this).setSendButtonEnable(bool);
         }
         Log.d("VOICEDEBUG", "Last Text Time = " + System.currentTimeMillis());
         AppMethodBeat.o(31560);
         return;
-        ChatFooter.x(ChatFooter.this).setVisibility(8);
+        ChatFooter.y(ChatFooter.this).setVisibility(8);
         break;
         label306:
         bool = false;
@@ -6714,7 +6723,7 @@ public class ChatFooter
     public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
     {
       AppMethodBeat.i(31561);
-      this.KmA.beforeTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
+      this.JiE.beforeTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
       Log.d("VOICEDEBUG", "First Text Time = " + System.currentTimeMillis());
       AppMethodBeat.o(31561);
     }
@@ -6725,20 +6734,83 @@ public class ChatFooter
       if ((ChatFooter.j(ChatFooter.this)) && (paramInt2 == 0) && (paramInt1 == paramCharSequence.length() - 1) && (paramInt3 == 1) && (paramCharSequence.charAt(paramCharSequence.length() - 1) == '\n'))
       {
         Log.i("MicroMsg.ChatFooter", "text changed, enter button");
-        this.KmB = true;
+        this.Rnn = true;
         AppMethodBeat.o(31562);
         return;
       }
-      this.KmA.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
-      ChatFooter.this.Kjs.ekf += 1L;
-      ChatFooter.this.Kjs.abY();
-      if (ChatFooter.this.Kjs.ekc == 0L) {
-        ChatFooter.this.Kjs.abX();
+      long l = Util.currentTicks();
+      int j = 0;
+      int i = j;
+      Spannable localSpannable;
+      int k;
+      Object localObject1;
+      if (paramInt3 > 0)
+      {
+        i = j;
+        if ((paramCharSequence instanceof Spannable))
+        {
+          localSpannable = (Spannable)paramCharSequence;
+          k = paramInt1 + paramInt3;
+          localObject1 = (com.tencent.mm.ui.widget.a[])localSpannable.getSpans(paramInt1, k, com.tencent.mm.ui.widget.a.class);
+          if (localObject1 != null)
+          {
+            i = j;
+            if (localObject1.length > 0) {}
+          }
+          else
+          {
+            localObject1 = (SpanWatcher[])localSpannable.getSpans(0, localSpannable.length(), SpanWatcher.class);
+            if (localObject1 == null) {
+              break label532;
+            }
+            j = localObject1.length;
+            int m = localObject1.length;
+            i = 0;
+            while (i < m)
+            {
+              localSpannable.removeSpan(localObject1[i]);
+              i += 1;
+            }
+          }
+        }
       }
-      if (ChatFooter.y(ChatFooter.this) != null) {
-        ChatFooter.y(ChatFooter.this).setToSendText(ChatFooter.d(ChatFooter.this).getText().toString());
+      label532:
+      for (i = j;; i = 0)
+      {
+        Object localObject2 = com.tencent.mm.cl.h.htZ();
+        ChatFooter.this.getContext();
+        float f = ChatFooter.d(ChatFooter.this).getTextSize();
+        if (!Util.isNullOrNil(localSpannable.toString()))
+        {
+          j = Math.round(f);
+          PInt localPInt = new PInt();
+          localPInt.value = ((com.tencent.mm.cl.h)localObject2).UYU;
+          localObject2 = com.tencent.mm.cl.b.htF().a(localSpannable, j, localPInt, paramInt1, k);
+          com.tencent.mm.cl.g.htS().a((Spannable)localObject2, j, localPInt.value, paramInt1, k);
+        }
+        if (localObject1 != null)
+        {
+          k = localObject1.length;
+          j = 0;
+          while (j < k)
+          {
+            localSpannable.setSpan(localObject1[j], 0, localSpannable.length(), 18);
+            j += 1;
+          }
+        }
+        Log.i("MicroMsg.ChatFooter", "onTextChanged: cost %s; start:%s, count:%s, watcherCount:%s", new Object[] { Long.valueOf(Util.ticksToNow(l)), Integer.valueOf(paramInt1), Integer.valueOf(paramInt3), Integer.valueOf(i) });
+        this.JiE.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
+        ChatFooter.this.Rkf.geK += 1L;
+        ChatFooter.this.Rkf.agL();
+        if (ChatFooter.this.Rkf.geH == 0L) {
+          ChatFooter.this.Rkf.agK();
+        }
+        if (ChatFooter.z(ChatFooter.this) != null) {
+          ChatFooter.z(ChatFooter.this).setToSendText(ChatFooter.d(ChatFooter.this).getText().toString());
+        }
+        AppMethodBeat.o(31562);
+        return;
       }
-      AppMethodBeat.o(31562);
     }
   }
   
@@ -6747,10 +6819,10 @@ public class ChatFooter
     static
     {
       AppMethodBeat.i(31565);
-      KmD = new j("MODE_INVALID", 0);
-      KmE = new j("MODE_BLUR", 1);
-      KmF = new j("MODE_NORMAL", 2);
-      KmG = new j[] { KmD, KmE, KmF };
+      Rnp = new j("MODE_INVALID", 0);
+      Rnq = new j("MODE_BLUR", 1);
+      Rnr = new j("MODE_NORMAL", 2);
+      Rns = new j[] { Rnp, Rnq, Rnr };
       AppMethodBeat.o(31565);
     }
     
@@ -6762,10 +6834,10 @@ public class ChatFooter
     static
     {
       AppMethodBeat.i(31568);
-      KmH = new k("MODE_INVALID", 0);
-      KmI = new k("MODE_TRANS", 1);
-      KmJ = new k("MODE_CANCEL", 2);
-      KmK = new k[] { KmH, KmI, KmJ };
+      Rnt = new k("MODE_INVALID", 0);
+      Rnu = new k("MODE_TRANS", 1);
+      Rnv = new k("MODE_CANCEL", 2);
+      Rnw = new k[] { Rnt, Rnu, Rnv };
       AppMethodBeat.o(31568);
     }
     
@@ -6777,10 +6849,10 @@ public class ChatFooter
     static
     {
       AppMethodBeat.i(31571);
-      KmL = new l("MODE_HINT_INVALID", 0);
-      KmM = new l("MODE_HINT_1", 1);
-      KmN = new l("MODE_HINT_2", 2);
-      KmO = new l[] { KmL, KmM, KmN };
+      Rnx = new l("MODE_HINT_INVALID", 0);
+      Rny = new l("MODE_HINT_1", 1);
+      Rnz = new l("MODE_HINT_2", 2);
+      RnA = new l[] { Rnx, Rny, Rnz };
       AppMethodBeat.o(31571);
     }
     
@@ -6789,7 +6861,7 @@ public class ChatFooter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.ChatFooter
  * JD-Core Version:    0.7.0.1
  */

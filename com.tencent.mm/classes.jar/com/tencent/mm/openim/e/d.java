@@ -8,11 +8,11 @@ import com.tencent.mm.storagebase.h;
 import java.util.LinkedList;
 import java.util.List;
 
-public final class d
+public class d
   extends MAutoStorage<c>
 {
   public static final String[] SQL_CREATE;
-  public h iFy;
+  public h lvy;
   
   static
   {
@@ -24,14 +24,14 @@ public final class d
   public d(h paramh)
   {
     super(paramh, c.info, "OpenIMAppIdInfo", null);
-    this.iFy = paramh;
+    this.lvy = paramh;
   }
   
-  public final List<String> Sd(String paramString)
+  public final List<String> ZF(String paramString)
   {
     AppMethodBeat.i(151331);
     LinkedList localLinkedList = new LinkedList();
-    paramString = this.iFy.rawQuery("select distinct appid from OpenIMAppIdInfo where appid=? ", new String[] { paramString }, 2);
+    paramString = this.lvy.rawQuery("select distinct appid from OpenIMAppIdInfo where appid=? ", new String[] { paramString }, 2);
     if (paramString.moveToFirst()) {
       do
       {
@@ -57,7 +57,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.openim.e.d
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.fav.b.f;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fav.a.aa;
+import com.tencent.mm.plugin.fav.a.ab;
 import com.tencent.mm.plugin.fav.a.j;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -15,7 +15,7 @@ import java.util.List<Ljava.lang.String;>;
 
 public final class e
   extends MAutoStorage<j>
-  implements aa
+  implements ab
 {
   private ISQLiteDatabase db;
   
@@ -25,7 +25,7 @@ public final class e
     this.db = paramISQLiteDatabase;
   }
   
-  private static List<Integer> dF(List<Integer> paramList)
+  private static List<Integer> dL(List<Integer> paramList)
   {
     AppMethodBeat.i(101721);
     if (Util.isNullOrNil(paramList))
@@ -109,7 +109,7 @@ public final class e
     return localArrayList;
   }
   
-  private static List<Integer> dG(List<Integer> paramList)
+  private static List<Integer> dM(List<Integer> paramList)
   {
     AppMethodBeat.i(101722);
     if (Util.isNullOrNil(paramList))
@@ -191,7 +191,7 @@ public final class e
     return localArrayList;
   }
   
-  public final void Ea(long paramLong)
+  public final void Ko(long paramLong)
   {
     AppMethodBeat.i(101724);
     String str = "delete from FavSearchInfo where localId = ".concat(String.valueOf(paramLong));
@@ -199,7 +199,7 @@ public final class e
     AppMethodBeat.o(101724);
   }
   
-  public final j Eb(long paramLong)
+  public final j Kp(long paramLong)
   {
     j localj = null;
     AppMethodBeat.i(101725);
@@ -220,7 +220,7 @@ public final class e
     return localj;
   }
   
-  public final boolean asc(String paramString)
+  public final boolean aAd(String paramString)
   {
     AppMethodBeat.i(101723);
     if (Util.isNullOrNil(paramString))
@@ -278,8 +278,8 @@ public final class e
       }
     }
     paramList2 = "select localId from FavSearchInfo" + " where " + paramList1;
-    localObject = dF(paramList);
-    paramList = dG(paramList);
+    localObject = dL(paramList);
+    paramList = dM(paramList);
     if (Util.isNullOrNil((List)localObject))
     {
       paramList1 = paramList2;
@@ -313,7 +313,7 @@ public final class e
         if (!Util.isNullOrNil((List)localObject)) {
           paramList2 = paramList1 + " or ";
         }
-        paramList1 = paramList2 + "subtype & " + j.HV(((Integer)paramList.get(0)).intValue()) + " != 0";
+        paramList1 = paramList2 + "subtype & " + j.LF(((Integer)paramList.get(0)).intValue()) + " != 0";
         i = 1;
         for (;;)
         {
@@ -322,7 +322,7 @@ public final class e
             break;
           }
           j = ((Integer)paramList.get(i)).intValue();
-          paramList1 = paramList1 + " or subtype & " + j.HV(j) + " != 0";
+          paramList1 = paramList1 + " or subtype & " + j.LF(j) + " != 0";
           i += 1;
         }
       }
@@ -346,7 +346,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.b.f.e
  * JD-Core Version:    0.7.0.1
  */

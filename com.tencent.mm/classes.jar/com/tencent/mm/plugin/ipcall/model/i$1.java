@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.ipcall.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.bn;
+import com.tencent.mm.f.a.bs;
 import com.tencent.mm.sdk.event.IListener;
 
 final class i$1
-  extends IListener<bn>
+  extends IListener<bs>
 {
   i$1(i parami)
   {
     AppMethodBeat.i(161382);
-    this.__eventId = bn.class.getName().hashCode();
+    this.__eventId = bs.class.getName().hashCode();
     AppMethodBeat.o(161382);
   }
 }

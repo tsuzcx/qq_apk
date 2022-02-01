@@ -14,11 +14,11 @@ public class QualitySession
   public static final Parcelable.Creator<QualitySession> CREATOR;
   public String appId;
   public int apptype;
-  public final String kEY;
-  public int nJE;
-  public int nLk;
-  public long nLl;
-  public boolean nLm;
+  public final String cBH;
+  public int qLQ;
+  public int qNx;
+  public long qNy;
+  public boolean qNz;
   public int scene;
   
   static
@@ -31,20 +31,20 @@ public class QualitySession
   protected QualitySession(Parcel paramParcel)
   {
     AppMethodBeat.i(48228);
-    this.nLl = 0L;
-    this.nLm = false;
-    this.kEY = paramParcel.readString();
+    this.qNy = 0L;
+    this.qNz = false;
+    this.cBH = paramParcel.readString();
     this.appId = paramParcel.readString();
-    this.nJE = paramParcel.readInt();
+    this.qLQ = paramParcel.readInt();
     this.apptype = paramParcel.readInt();
     this.scene = paramParcel.readInt();
-    this.nLk = paramParcel.readInt();
-    this.nLl = paramParcel.readLong();
+    this.qNx = paramParcel.readInt();
+    this.qNy = paramParcel.readLong();
     if (paramParcel.readByte() > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.nLm = bool;
-      Log.i("MicroMsg.AppBrand.QualitySession", "secondary <init> instanceId[%s] apptype[%d] scene[%d] appversion[%d] UIReadyT[%d] isNewUser[%b]", new Object[] { this.kEY, Integer.valueOf(this.apptype), Integer.valueOf(this.scene), Integer.valueOf(this.nLk), Long.valueOf(this.nLl), Boolean.valueOf(this.nLm) });
+      this.qNz = bool;
+      Log.i("MicroMsg.AppBrand.QualitySession", "secondary <init> instanceId[%s] apptype[%d] scene[%d] appversion[%d] UIReadyT[%d] isNewUser[%b]", new Object[] { this.cBH, Integer.valueOf(this.apptype), Integer.valueOf(this.scene), Integer.valueOf(this.qNx), Long.valueOf(this.qNy), Boolean.valueOf(this.qNz) });
       AppMethodBeat.o(48228);
       return;
     }
@@ -53,26 +53,26 @@ public class QualitySession
   public QualitySession(String paramString, AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
   {
     AppMethodBeat.i(48226);
-    this.nLl = 0L;
-    this.nLm = false;
-    this.kEY = paramString;
+    this.qNy = 0L;
+    this.qNz = false;
+    this.cBH = paramString;
     this.appId = paramAppBrandInitConfigWC.appId;
-    switch (paramAppBrandInitConfigWC.eix)
+    switch (paramAppBrandInitConfigWC.cBI)
     {
     }
     for (;;)
     {
-      this.apptype = (paramAppBrandInitConfigWC.cyo + 1000);
+      this.apptype = (paramAppBrandInitConfigWC.cwR + 1000);
       this.scene = paramAppBrandStatObject.scene;
-      this.nLk = paramAppBrandInitConfigWC.appVersion;
-      Log.i("MicroMsg.AppBrand.QualitySession", "primary <init> instanceId[%s] apptype[%d] scene[%d] appversion[%d]", new Object[] { this.kEY, Integer.valueOf(this.apptype), Integer.valueOf(this.scene), Integer.valueOf(this.nLk) });
+      this.qNx = paramAppBrandInitConfigWC.appVersion;
+      Log.i("MicroMsg.AppBrand.QualitySession", "primary <init> instanceId[%s] apptype[%d] scene[%d] appversion[%d]", new Object[] { this.cBH, Integer.valueOf(this.apptype), Integer.valueOf(this.scene), Integer.valueOf(this.qNx) });
       AppMethodBeat.o(48226);
       return;
-      this.nJE = 1;
+      this.qLQ = 1;
       continue;
-      this.nJE = 2;
+      this.qLQ = 2;
       continue;
-      this.nJE = 3;
+      this.qLQ = 3;
     }
   }
   
@@ -84,14 +84,14 @@ public class QualitySession
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(48227);
-    paramParcel.writeString(this.kEY);
+    paramParcel.writeString(this.cBH);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.nJE);
+    paramParcel.writeInt(this.qLQ);
     paramParcel.writeInt(this.apptype);
     paramParcel.writeInt(this.scene);
-    paramParcel.writeInt(this.nLk);
-    paramParcel.writeLong(this.nLl);
-    if (this.nLm) {}
+    paramParcel.writeInt(this.qNx);
+    paramParcel.writeLong(this.qNy);
+    if (this.qNz) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
@@ -102,7 +102,7 @@ public class QualitySession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.quality.QualitySession
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package kotlin;
 
-@l(hxD={1, 1, 16}, hxE={"kotlin/ExceptionsKt__ExceptionsKt"}, hxG=1)
+@l(iBK={1, 1, 16}, iBL={"kotlin/ExceptionsKt__ExceptionsKt"}, iBN=1)
 public final class a
   extends b
 {}

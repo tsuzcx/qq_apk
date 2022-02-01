@@ -13,11 +13,11 @@ import com.tencent.mm.pluginsdk.ui.a.b;
 public class SwitchContactDialogCustomView
   extends LinearLayout
 {
-  private TextView Xy;
-  private TextView zpj;
-  private ImageView zpk;
-  private TextView zpl;
-  private TextView zpm;
+  private TextView EUG;
+  private ImageView EUH;
+  private TextView EUI;
+  private TextView EUJ;
+  private TextView eM;
   
   public SwitchContactDialogCustomView(Context paramContext)
   {
@@ -28,34 +28,34 @@ public class SwitchContactDialogCustomView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(90742);
-    LayoutInflater.from(paramContext).inflate(2131492988, this);
-    this.Xy = ((TextView)findViewById(2131309195));
-    this.zpj = ((TextView)findViewById(2131299180));
-    this.zpk = ((ImageView)findViewById(2131305908));
-    this.zpl = ((TextView)findViewById(2131299495));
-    this.zpm = ((TextView)findViewById(2131308715));
+    LayoutInflater.from(paramContext).inflate(b.c.alert_comfirm_custom_area, this);
+    this.eM = ((TextView)findViewById(b.b.title));
+    this.EUG = ((TextView)findViewById(b.b.content));
+    this.EUH = ((ImageView)findViewById(b.b.photo));
+    this.EUI = ((TextView)findViewById(b.b.desc));
+    this.EUJ = ((TextView)findViewById(b.b.sub_desc));
     AppMethodBeat.o(90742);
   }
   
   public void setContent(String paramString)
   {
     AppMethodBeat.i(90744);
-    this.zpj.setText(paramString);
+    this.EUG.setText(paramString);
     AppMethodBeat.o(90744);
   }
   
   public void setDesc(String paramString)
   {
     AppMethodBeat.i(90745);
-    this.zpl.setText(paramString);
+    this.EUI.setText(paramString);
     AppMethodBeat.o(90745);
   }
   
   public void setOnPhotoOnClick(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(90748);
-    if (this.zpk != null) {
-      this.zpk.setOnClickListener(paramOnClickListener);
+    if (this.EUH != null) {
+      this.EUH.setOnClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(90748);
   }
@@ -63,21 +63,21 @@ public class SwitchContactDialogCustomView
   public void setPhoto(String paramString)
   {
     AppMethodBeat.i(90747);
-    a.b.c(this.zpk, paramString);
+    a.b.c(this.EUH, paramString);
     AppMethodBeat.o(90747);
   }
   
   public void setSubDesc(String paramString)
   {
     AppMethodBeat.i(90746);
-    this.zpm.setText(paramString);
+    this.EUJ.setText(paramString);
     AppMethodBeat.o(90746);
   }
   
   public void setTilte(String paramString)
   {
     AppMethodBeat.i(90743);
-    this.Xy.setText(paramString);
+    this.eM.setText(paramString);
     AppMethodBeat.o(90743);
   }
 }

@@ -15,14 +15,14 @@ final class LuckyMoneyPrepareUI$19
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(213485);
+    AppMethodBeat.i(274859);
     paramDialogInterface.dismiss();
-    AppMethodBeat.o(213485);
+    AppMethodBeat.o(274859);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyPrepareUI.19
  * JD-Core Version:    0.7.0.1
  */

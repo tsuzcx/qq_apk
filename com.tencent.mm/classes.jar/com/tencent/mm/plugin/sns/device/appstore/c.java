@@ -9,22 +9,22 @@ import java.util.List;
 
 final class c
 {
-  String DEW;
-  String DEX;
-  List<String> DEY;
-  List<String> DEZ;
-  String DFa;
+  String JRR;
+  String JRS;
+  List<String> JRT;
+  List<String> JRU;
+  String JRV;
   int mPriority;
   
-  final Collection<b> eZC()
+  final Collection<b> fNu()
   {
-    AppMethodBeat.i(202645);
+    AppMethodBeat.i(196966);
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = this.DEY;
-    Object localObject2 = this.DEZ;
+    Object localObject1 = this.JRT;
+    Object localObject2 = this.JRU;
     if ((localObject1 == null) || (((List)localObject1).isEmpty()))
     {
-      AppMethodBeat.o(202645);
+      AppMethodBeat.o(196966);
       return localArrayList;
     }
     if ((localObject2 != null) && (!((List)localObject2).isEmpty())) {
@@ -35,15 +35,15 @@ final class c
       String str = (String)((Iterator)localObject2).next();
       Iterator localIterator = ((List)localObject1).iterator();
       while (localIterator.hasNext()) {
-        localArrayList.add(b.B((String)localIterator.next(), str, this.DEW, this.DEX));
+        localArrayList.add(b.H((String)localIterator.next(), str, this.JRR, this.JRS));
       }
       continue;
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        localArrayList.add(b.B((String)((Iterator)localObject1).next(), "", this.DEW, this.DEX));
+        localArrayList.add(b.H((String)((Iterator)localObject1).next(), "", this.JRR, this.JRS));
       }
     }
-    AppMethodBeat.o(202645);
+    AppMethodBeat.o(196966);
     return localArrayList;
   }
   
@@ -52,16 +52,16 @@ final class c
   {
     private static int a(c paramc1, c paramc2)
     {
-      AppMethodBeat.i(202643);
+      AppMethodBeat.i(199343);
       try
       {
         int i = Integer.compare(paramc1.mPriority, paramc2.mPriority);
-        AppMethodBeat.o(202643);
+        AppMethodBeat.o(199343);
         return i;
       }
       catch (Throwable paramc1)
       {
-        AppMethodBeat.o(202643);
+        AppMethodBeat.o(199343);
       }
       return 0;
     }
@@ -69,7 +69,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.device.appstore.c
  * JD-Core Version:    0.7.0.1
  */

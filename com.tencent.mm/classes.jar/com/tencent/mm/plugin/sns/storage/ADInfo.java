@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.sns.storage;
 
-import android.support.annotation.Keep;
 import android.text.TextUtils;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.k;
+import com.tencent.mm.plugin.sns.ad.adxml.AdClickActionInfo;
+import com.tencent.mm.plugin.sns.data.m;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -24,6 +25,7 @@ public class ADInfo
   public static int ADChainStrengthenDefaultWording = 0;
   public static int ADChainStrengthenUserInfoFormatWording = 0;
   public static final int AD_ACTION_TYPE_FINDER = 9;
+  public static final int AD_ACTION_TYPE_FINDER_FEEDS = 12;
   public static final int AD_ACTION_TYPE_FINDER_LIVE = 10;
   public static final int AD_ACTION_TYPE_FINDER_TOPIC = 11;
   public static final int AD_ACTION_TYPE_SCAN = 8;
@@ -54,6 +56,8 @@ public class ADInfo
   public String adDislikeInfoTitle_en;
   public String adDislikeInfoTitle_tw;
   public int adDupSnsIdDel;
+  public String adExtTailWording;
+  public int adExtTailWordingExchangeValue;
   public String adInfoSyncBuffer;
   public boolean adInfoSyncBufferImm;
   public c adUnlikeInfo;
@@ -66,6 +70,7 @@ public class ADInfo
   public boolean forbidClick;
   public HashMap<String, String> mappedCanvasCardExt;
   public long noExposureExpireTime;
+  public String pId;
   public String traceid;
   public String uxInfo;
   public String viewId;
@@ -74,11 +79,11 @@ public class ADInfo
   
   static
   {
-    AppMethodBeat.i(202813);
+    AppMethodBeat.i(263159);
     waidPkgCache = new HashMap();
     ADChainStrengthenDefaultWording = 0;
     ADChainStrengthenUserInfoFormatWording = 1;
-    AppMethodBeat.o(202813);
+    AppMethodBeat.o(263159);
   }
   
   public ADInfo()
@@ -107,6 +112,7 @@ public class ADInfo
     this.forbidClick = false;
     this.adInfoSyncBuffer = "";
     this.adInfoSyncBufferImm = false;
+    this.pId = "";
     AppMethodBeat.o(96259);
   }
   
@@ -136,6 +142,7 @@ public class ADInfo
     this.forbidClick = false;
     this.adInfoSyncBuffer = "";
     this.adInfoSyncBufferImm = false;
+    this.pId = "";
     this.bLandingPagesAd = false;
     feed(paramString);
     AppMethodBeat.o(96260);
@@ -178,12 +185,14 @@ public class ADInfo
     this.adActionPOILink = Util.nullAs((String)localMap.get(".ADInfo.adActionExt.adActionExtPOI.POILink"), "");
     this.adChainType = Util.safeParseInt((String)localMap.get(".ADInfo.adActionExt.adChainType"));
     this.adChainTypeExpireTime = Util.safeParseInt((String)localMap.get(".ADInfo.adActionExt.adChainTypeExpireTime"));
+    this.adExtTailWording = Util.nullAs((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.WordingComplexString"), "");
+    this.adExtTailWordingExchangeValue = Util.safeParseInt((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.WordingComplexExchangeValue"));
     String str1 = Util.nullAs((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.Wording"), "");
     this.adActionExtTailType = Util.safeParseInt((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.WordingType"));
     this.adActionExtTailLink = Util.nullAs((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.WordingLink"), "");
     int i;
-    label644:
-    label705:
+    label690:
+    label751:
     if (this.adActionExtTailType == ADChainStrengthenUserInfoFormatWording)
     {
       String str2 = Util.nullAs((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.WordingRepAndroid"), "");
@@ -193,20 +202,20 @@ public class ADInfo
       for (??? = Util.nullAs((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.UserNameList.UserName"), "");; ??? = Util.nullAs((String)localMap.get(".ADInfo.adActionExt.adChainStrengthen.UserNameList.UserName" + i), ""))
       {
         if (Util.isNullOrNil((String)???)) {
-          break label588;
+          break label634;
         }
         this.adActionExtUserList.add(???);
         i += 1;
         break;
       }
-      label588:
+      label634:
       if (str2.indexOf("%s") >= 0)
       {
         i = 1;
         int j = str2.indexOf("%");
         int k = str2.lastIndexOf("%");
         if ((Util.isNullOrNil(str2)) || (i == 0) || (j != k)) {
-          break label812;
+          break label858;
         }
         this.adActionExtTailWording = str2;
         this.bLandingPagesAd = localMap.containsKey(".ADInfo.adCanvasInfo");
@@ -215,32 +224,32 @@ public class ADInfo
         this.mappedCanvasCardExt = new HashMap();
         i = 0;
         if (i != 0) {
-          break label844;
+          break label890;
         }
       }
     }
-    label812:
-    label844:
+    label858:
+    label890:
     for (??? = ".ADInfo.adCanvasExt.adCardItemList.cardItem";; ??? = ".ADInfo.adCanvasExt.adCardItemList.cardItem" + i)
     {
       str1 = (String)localMap.get((String)??? + ".cardTpId");
       ??? = (String)localMap.get((String)??? + ".cardExt");
       if (Util.isNullOrNil(str1)) {
-        break label869;
+        break label915;
       }
       this.mappedCanvasCardExt.put(str1, ???);
       i += 1;
-      break label705;
+      break label751;
       i = 0;
       break;
       this.adActionExtTailWording = str1;
       this.adActionExtTailType = ADChainStrengthenDefaultWording;
-      break label644;
+      break label690;
       this.adActionExtTailWording = str1;
       this.adActionExtTailType = ADChainStrengthenDefaultWording;
-      break label644;
+      break label690;
     }
-    label869:
+    label915:
     paramString = Pattern.compile("<adCanvasExt>[\\s\\S]*</adCanvasExt>").matcher(paramString);
     if (paramString.find())
     {
@@ -255,8 +264,8 @@ public class ADInfo
       this.actionExtWeApp = new b();
       this.actionExtWeApp.appUserName = paramString;
       this.actionExtWeApp.appVersion = ((String)localMap.get(".ADInfo.adActionExt.adActionExtWeApp.appVersion"));
-      this.actionExtWeApp.dCx = ((String)localMap.get(".ADInfo.adActionExt.adActionExtWeApp.relativePagePath"));
-      this.actionExtWeApp.weAppType = Util.safeParseInt((String)localMap.get(".ADInfo.adActionExt.adActionExtWeApp.miniProgramType"));
+      this.actionExtWeApp.fve = ((String)localMap.get(".ADInfo.adActionExt.adActionExtWeApp.relativePagePath"));
+      this.actionExtWeApp.Jxz = Util.safeParseInt((String)localMap.get(".ADInfo.adActionExt.adActionExtWeApp.miniProgramType"));
     }
     this.adUnlikeInfo = new c(localMap, ".ADInfo");
     this.adDislikeInfoTitle_cn = Util.nullAs((String)localMap.get(".ADInfo.dislikeInfo.Title.zh"), "");
@@ -276,7 +285,7 @@ public class ADInfo
         this.adInfoSyncBufferImm = bool1;
         this.adVoteInfoExt = new d(localMap);
         this.waidPkg = Util.nullAsNil((String)localMap.get(".ADInfo.appWaid.pkg"));
-        ??? = k.aOb(this.uxInfo);
+        ??? = m.aYT(this.uxInfo);
         paramString = (String)???;
         if (TextUtils.isEmpty((CharSequence)???))
         {
@@ -298,14 +307,15 @@ public class ADInfo
           if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty((CharSequence)???)))
           {
             this.actionExtAppJump = new a();
-            this.actionExtAppJump.LG = paramString;
+            this.actionExtAppJump.abY = paramString;
             this.actionExtAppJump.appId = ((String)???);
-            this.actionExtAppJump.appPageUrl = Util.nullAs((String)localMap.get(".ADInfo.adActionExt.adActionSchemaJump" + ".appPageUrlAndroid"), "");
+            this.actionExtAppJump.JxO = Util.nullAs((String)localMap.get(".ADInfo.adActionExt.adActionSchemaJump" + ".appPageUrlAndroid"), "");
             this.actionExtAppJump.appName = Util.nullAs((String)localMap.get(".ADInfo.adActionExt.adActionSchemaJump" + ".appName"), "");
           }
         }
         this.contractAdEndTime = Util.safeParseInt((String)localMap.get(".ADInfo.adGroupEndTime"));
         this.adDupSnsIdDel = Util.safeParseInt((String)localMap.get(".ADInfo.adDupSnsIdDel"));
+        this.pId = Util.nullAsNil(m.aYZ(this.uxInfo));
         AppMethodBeat.o(96261);
         return;
         bool1 = false;
@@ -317,16 +327,16 @@ public class ADInfo
   
   public static String getWaidPkgByUxInfo(String paramString)
   {
-    AppMethodBeat.i(202812);
+    AppMethodBeat.i(263158);
     ??? = "";
-    String str = k.aOb(paramString);
+    String str = m.aYT(paramString);
     if (!TextUtils.isEmpty(str)) {}
     for (;;)
     {
       synchronized (waidPkgCache)
       {
         paramString = Util.nullAsNil((String)waidPkgCache.get(str));
-        AppMethodBeat.o(202812);
+        AppMethodBeat.o(263158);
         return paramString;
       }
       Log.e("MicroMsg.ADInfo", "getWaidPkgByUxInfo, aid is empty, uxinfo=".concat(String.valueOf(paramString)));
@@ -334,65 +344,82 @@ public class ADInfo
     }
   }
   
+  public boolean isWeApp(AdClickActionInfo paramAdClickActionInfo)
+  {
+    AppMethodBeat.i(263154);
+    if (paramAdClickActionInfo == null)
+    {
+      AppMethodBeat.o(263154);
+      return false;
+    }
+    if ((paramAdClickActionInfo.Jxx == 4) && (!Util.isNullOrNil(paramAdClickActionInfo.uMJ)))
+    {
+      AppMethodBeat.o(263154);
+      return true;
+    }
+    AppMethodBeat.o(263154);
+    return false;
+  }
+  
   public boolean isWeapp()
   {
     return (this.adActionType == 4) && (this.actionExtWeApp != null);
   }
   
-  public static final class a
+  public static class a
   {
-    public String LG;
+    public String JxO;
+    public String abY;
     public String appId;
     public String appName;
-    public String appPageUrl;
     
-    public final String toString()
+    public String toString()
     {
-      AppMethodBeat.i(202810);
-      String str = "appId=" + this.appId + ", pkg=" + this.LG + ", appName=" + this.appName + ", pageUrl=" + this.appPageUrl;
-      AppMethodBeat.o(202810);
+      AppMethodBeat.i(196980);
+      String str = "appId=" + this.appId + ", pkg=" + this.abY + ", appName=" + this.appName + ", pageUrl=" + this.JxO;
+      AppMethodBeat.o(196980);
       return str;
     }
   }
   
-  public static final class b
+  public static class b
   {
+    public int Jxz;
     public String appUserName;
     public String appVersion;
-    public String dCx;
-    public int weAppType;
+    public String fve;
   }
   
-  public static final class c
+  public static class c
   {
-    public int DVT;
-    private List<a> DVU;
-    public Map<String, List<a>> DVV;
-    public String DVW;
-    public String DVX;
-    public String DVY;
+    public int Kjd;
+    private List<a> Kje;
+    public Map<String, List<a>> Kjf;
+    public String Kjg;
+    public String Kjh;
+    public String Kji;
     
     public c()
     {
       AppMethodBeat.i(96252);
-      this.DVT = 0;
-      this.DVU = new ArrayList();
-      this.DVV = new HashMap();
-      this.DVW = "";
-      this.DVX = "";
-      this.DVY = "";
+      this.Kjd = 0;
+      this.Kje = new ArrayList();
+      this.Kjf = new HashMap();
+      this.Kjg = "";
+      this.Kjh = "";
+      this.Kji = "";
       AppMethodBeat.o(96252);
     }
     
     public c(Map<String, String> paramMap, String paramString)
     {
       AppMethodBeat.i(96253);
-      this.DVT = 0;
-      this.DVU = new ArrayList();
-      this.DVV = new HashMap();
-      this.DVW = "";
-      this.DVX = "";
-      this.DVY = "";
+      this.Kjd = 0;
+      this.Kje = new ArrayList();
+      this.Kjf = new HashMap();
+      this.Kjg = "";
+      this.Kjh = "";
+      this.Kji = "";
       String str2 = paramString + ".dislikeInfo.ReasonList";
       int i = 0;
       String str1 = str2 + ".Reason";
@@ -403,20 +430,20 @@ public class ADInfo
       {
         if (paramMap.get(str1 + ".ReasonId") != null)
         {
-          this.DVU.add(new a(Util.nullAs((String)paramMap.get(str1 + ".Wording.zh"), ""), Util.nullAs((String)paramMap.get(str1 + ".Wording.tw"), ""), Util.nullAs((String)paramMap.get(str1 + ".Wording.en"), ""), Util.safeParseInt((String)paramMap.get(str1 + ".ReasonId"))));
+          this.Kje.add(new a(Util.nullAs((String)paramMap.get(str1 + ".Wording.zh"), ""), Util.nullAs((String)paramMap.get(str1 + ".Wording.tw"), ""), Util.nullAs((String)paramMap.get(str1 + ".Wording.en"), ""), Util.safeParseInt((String)paramMap.get(str1 + ".ReasonId"))));
           i += 1;
           break;
         }
-        this.DVT = Util.safeParseInt((String)paramMap.get(paramString + ".dislikeInfo.unReceiveAdInterval"));
-        this.DVW = Util.nullAs((String)paramMap.get(paramString + ".dislikeInfo.forbidClickReason.zh"), "");
-        this.DVX = Util.nullAs((String)paramMap.get(paramString + ".dislikeInfo.forbidClickReason.tw"), "");
-        this.DVY = Util.nullAs((String)paramMap.get(paramString + ".dislikeInfo.forbidClickReason.en"), "");
+        this.Kjd = Util.safeParseInt((String)paramMap.get(paramString + ".dislikeInfo.unReceiveAdInterval"));
+        this.Kjg = Util.nullAs((String)paramMap.get(paramString + ".dislikeInfo.forbidClickReason.zh"), "");
+        this.Kjh = Util.nullAs((String)paramMap.get(paramString + ".dislikeInfo.forbidClickReason.tw"), "");
+        this.Kji = Util.nullAs((String)paramMap.get(paramString + ".dislikeInfo.forbidClickReason.en"), "");
         AppMethodBeat.o(96253);
         return;
       }
     }
     
-    public final List<a> fcH()
+    public final List<a> fQA()
     {
       AppMethodBeat.i(96251);
       Object localObject = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
@@ -425,78 +452,100 @@ public class ADInfo
       }
       for (;;)
       {
-        if (!this.DVV.containsKey(localObject))
+        if (!this.Kjf.containsKey(localObject))
         {
           ArrayList localArrayList = new ArrayList();
-          Iterator localIterator = this.DVU.iterator();
+          Iterator localIterator = this.Kje.iterator();
           while (localIterator.hasNext())
           {
             a locala = (a)localIterator.next();
-            if (("zh_CN".equals(localObject)) && (!Util.isNullOrNil(locala.DWa))) {
+            if (("zh_CN".equals(localObject)) && (!Util.isNullOrNil(locala.Kjk))) {
               localArrayList.add(locala);
-            } else if ((("zh_TW".equals(localObject)) || ("zh_HK".equals(localObject))) && (!Util.isNullOrNil(locala.DWb))) {
+            } else if ((("zh_TW".equals(localObject)) || ("zh_HK".equals(localObject))) && (!Util.isNullOrNil(locala.Kjl))) {
               localArrayList.add(locala);
-            } else if (("en".equals(localObject)) && (!Util.isNullOrNil(locala.DWc))) {
+            } else if (("en".equals(localObject)) && (!Util.isNullOrNil(locala.Kjm))) {
               localArrayList.add(locala);
             }
           }
-          this.DVV.put(localObject, localArrayList);
+          this.Kjf.put(localObject, localArrayList);
         }
-        localObject = (List)this.DVV.get(localObject);
+        localObject = (List)this.Kjf.get(localObject);
         AppMethodBeat.o(96251);
         return localObject;
       }
     }
     
-    public final boolean fcI()
+    public final boolean fQB()
     {
-      AppMethodBeat.i(202811);
-      if (fcH().size() > 0)
+      AppMethodBeat.i(194647);
+      if (fQA().size() > 0)
       {
-        AppMethodBeat.o(202811);
+        AppMethodBeat.o(194647);
         return true;
       }
-      AppMethodBeat.o(202811);
+      AppMethodBeat.o(194647);
       return false;
     }
     
     public static final class a
     {
-      public static int DVZ = 101;
-      public long DDs = 0L;
-      public String DWa = "";
-      public String DWb = "";
-      public String DWc = "";
-      public int DWd = 0;
-      public long DWe = 0L;
+      public static int Kjj = 101;
+      public long JPX;
+      public String Kjk;
+      public String Kjl;
+      public String Kjm;
+      public int Kjn;
+      public int Kjo;
+      public LinkedList<Integer> Kjp;
+      public long Kjq;
       
-      public a() {}
+      public a()
+      {
+        AppMethodBeat.i(268991);
+        this.Kjk = "";
+        this.Kjl = "";
+        this.Kjm = "";
+        this.Kjn = 0;
+        this.Kjp = new LinkedList();
+        this.JPX = 0L;
+        this.Kjq = 0L;
+        AppMethodBeat.o(268991);
+      }
       
       public a(String paramString1, String paramString2, String paramString3, int paramInt)
       {
-        this.DWa = paramString1;
-        this.DWb = paramString2;
-        this.DWc = paramString3;
-        this.DWd = paramInt;
+        AppMethodBeat.i(268990);
+        this.Kjk = "";
+        this.Kjl = "";
+        this.Kjm = "";
+        this.Kjn = 0;
+        this.Kjp = new LinkedList();
+        this.JPX = 0L;
+        this.Kjq = 0L;
+        this.Kjk = paramString1;
+        this.Kjl = paramString2;
+        this.Kjm = paramString3;
+        this.Kjn = paramInt;
+        AppMethodBeat.o(268990);
       }
     }
   }
   
-  public static final class d
+  public static class d
   {
-    public ArrayList<ADInfo.e> DWf;
+    public ArrayList<ADInfo.e> Kjr;
     
     public d()
     {
       AppMethodBeat.i(96255);
-      this.DWf = new ArrayList();
+      this.Kjr = new ArrayList();
       AppMethodBeat.o(96255);
     }
     
     public d(Map<String, String> paramMap)
     {
       AppMethodBeat.i(96254);
-      this.DWf = new ArrayList();
+      this.Kjr = new ArrayList();
       int i = 0;
       for (;;)
       {
@@ -512,8 +561,8 @@ public class ADInfo
           }
           locale = new ADInfo.e();
           locale.id = str;
-          locale.DWg = Util.safeParseInt((String)paramMap.get((String)localObject + ".scoring"));
-          locale.DWh = Util.safeParseInt((String)paramMap.get((String)localObject + ".friends"));
+          locale.Kjs = Util.safeParseInt((String)paramMap.get((String)localObject + ".scoring"));
+          locale.Kjt = Util.safeParseInt((String)paramMap.get((String)localObject + ".friends"));
           str = (String)localObject + ".friendsList.userName";
           j = 0;
           label188:
@@ -528,20 +577,20 @@ public class ADInfo
           if (TextUtils.isEmpty((CharSequence)localObject)) {
             break label288;
           }
-          locale.DWi.add(localObject);
+          locale.Kju.add(localObject);
           j += 1;
           break label188;
           localObject = ".ADInfo.adActionExt.adVoteInfoExt.voteItemList.voteResultInfo" + i;
           break;
         }
         label288:
-        this.DWf.add(locale);
+        this.Kjr.add(locale);
         i += 1;
       }
       AppMethodBeat.o(96254);
     }
     
-    private ADInfo.e aPS(String paramString)
+    private ADInfo.e baQ(String paramString)
     {
       AppMethodBeat.i(96257);
       if (TextUtils.isEmpty(paramString))
@@ -549,7 +598,7 @@ public class ADInfo
         AppMethodBeat.o(96257);
         return null;
       }
-      Iterator localIterator = this.DWf.iterator();
+      Iterator localIterator = this.Kjr.iterator();
       while (localIterator.hasNext())
       {
         ADInfo.e locale = (ADInfo.e)localIterator.next();
@@ -563,12 +612,12 @@ public class ADInfo
       return null;
     }
     
-    public final int kr(String paramString1, String paramString2)
+    public final int kM(String paramString1, String paramString2)
     {
       int j = 0;
       AppMethodBeat.i(96256);
-      paramString1 = aPS(paramString1);
-      paramString2 = aPS(paramString2);
+      paramString1 = baQ(paramString1);
+      paramString2 = baQ(paramString2);
       int i;
       if (paramString1 == null)
       {
@@ -585,10 +634,10 @@ public class ADInfo
         i = i * 100 / (j + i);
         AppMethodBeat.o(96256);
         return i;
-        i = paramString1.DWg;
+        i = paramString1.Kjs;
         break;
         label62:
-        j = paramString2.DWg;
+        j = paramString2.Kjs;
       }
       label71:
       AppMethodBeat.o(96256);
@@ -598,22 +647,22 @@ public class ADInfo
   
   public static final class e
   {
-    public int DWg;
-    public int DWh;
-    public ArrayList<String> DWi;
+    public int Kjs;
+    public int Kjt;
+    public ArrayList<String> Kju;
     public String id;
     
     public e()
     {
       AppMethodBeat.i(96258);
-      this.DWi = new ArrayList();
+      this.Kju = new ArrayList();
       AppMethodBeat.o(96258);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.ADInfo
  * JD-Core Version:    0.7.0.1
  */

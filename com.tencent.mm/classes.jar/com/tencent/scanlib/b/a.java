@@ -13,33 +13,33 @@ import java.util.List;
 
 public class a
 {
-  protected Object CCt;
-  protected com.tencent.qbar.a ROD;
+  protected Object Brg;
   protected String TAG;
-  protected boolean gKM;
+  protected com.tencent.qbar.a Zrj;
+  protected boolean jvb;
   
   public a(String paramString)
   {
     AppMethodBeat.i(3546);
     this.TAG = "BaseQBarAIDecoder";
-    this.CCt = new Object();
-    this.ROD = new com.tencent.qbar.a();
+    this.Brg = new Object();
+    this.Zrj = new com.tencent.qbar.a();
     this.TAG = (this.TAG + "_" + paramString);
     AppMethodBeat.o(3546);
   }
   
-  private List<a.a> T(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  private List<a.a> V(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(3549);
     long l = System.currentTimeMillis();
-    paramInt1 = this.ROD.S(paramArrayOfByte, paramInt1, paramInt2);
+    paramInt1 = this.Zrj.U(paramArrayOfByte, paramInt1, paramInt2);
     if (paramInt1 < 0)
     {
       Log.e(this.TAG, "scanImage result ".concat(String.valueOf(paramInt1)));
       AppMethodBeat.o(3549);
       return null;
     }
-    paramArrayOfByte = this.ROD.hkc();
+    paramArrayOfByte = this.Zrj.iny();
     if ((paramArrayOfByte == null) || (paramArrayOfByte.size() == 0)) {
       Log.e(this.TAG, String.format("get no results ,cost %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
     }
@@ -48,15 +48,15 @@ public class a
     return paramArrayOfByte;
   }
   
-  public final void H(List<QbarNative.QBarCodeDetectInfo> paramList, List<QbarNative.QBarPoint> paramList1)
+  public final void N(List<QbarNative.QBarCodeDetectInfo> paramList, List<QbarNative.QBarPoint> paramList1)
   {
     AppMethodBeat.i(3550);
-    this.ROD.F(paramList, paramList1);
+    this.Zrj.L(paramList, paramList1);
     Log.i(this.TAG, String.format("get detect code result %d", new Object[] { Integer.valueOf(paramList.size()) }));
     AppMethodBeat.o(3550);
   }
   
-  public final int T(int[] paramArrayOfInt)
+  public final int S(int[] paramArrayOfInt)
   {
     AppMethodBeat.i(3554);
     if (paramArrayOfInt != null)
@@ -81,17 +81,17 @@ public class a
     arrayOfInt1[1] = 1;
     arrayOfInt1[2] = 4;
     arrayOfInt1[3] = 5;
-    int i = this.ROD.l(arrayOfInt1, arrayOfInt1.length);
+    int i = this.Zrj.l(arrayOfInt1, arrayOfInt1.length);
     AppMethodBeat.o(3554);
     return i;
   }
   
-  public final List<a.a> U(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final List<a.a> W(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(3553);
-    synchronized (this.CCt)
+    synchronized (this.Brg)
     {
-      paramArrayOfByte = T(paramArrayOfByte, paramInt1, paramInt2);
+      paramArrayOfByte = V(paramArrayOfByte, paramInt1, paramInt2);
       AppMethodBeat.o(3553);
       return paramArrayOfByte;
     }
@@ -115,7 +115,7 @@ public class a
       AppMethodBeat.o(3548);
       return null;
     }
-    paramArrayOfInt = T(arrayOfByte, paramPoint.x, paramPoint.y);
+    paramArrayOfInt = V(arrayOfByte, paramPoint.x, paramPoint.y);
     AppMethodBeat.o(3548);
     return paramArrayOfInt;
   }
@@ -127,29 +127,29 @@ public class a
     //   0: sipush 3547
     //   3: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 162	com/tencent/scanlib/b/a:gKM	Z
+    //   7: getfield 163	com/tencent/scanlib/b/a:jvb	Z
     //   10: ifeq +10 -> 20
     //   13: sipush 3547
     //   16: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   19: return
     //   20: aload_0
-    //   21: getfield 29	com/tencent/scanlib/b/a:CCt	Ljava/lang/Object;
+    //   21: getfield 29	com/tencent/scanlib/b/a:Brg	Ljava/lang/Object;
     //   24: astore_3
     //   25: aload_3
     //   26: monitorenter
     //   27: aload_0
-    //   28: getfield 34	com/tencent/scanlib/b/a:ROD	Lcom/tencent/qbar/a;
+    //   28: getfield 34	com/tencent/scanlib/b/a:Zrj	Lcom/tencent/qbar/a;
     //   31: iload_1
-    //   32: ldc 164
-    //   34: ldc 166
+    //   32: ldc 165
+    //   34: ldc 167
     //   36: aload_2
-    //   37: invokevirtual 169	com/tencent/qbar/a:a	(ILjava/lang/String;Ljava/lang/String;Lcom/tencent/qbar/QbarNative$QbarAiModelParam;)I
+    //   37: invokevirtual 170	com/tencent/qbar/a:a	(ILjava/lang/String;Ljava/lang/String;Lcom/tencent/qbar/QbarNative$QbarAiModelParam;)I
     //   40: istore_1
     //   41: iload_1
     //   42: ifeq +28 -> 70
     //   45: aload_0
     //   46: getfield 27	com/tencent/scanlib/b/a:TAG	Ljava/lang/String;
-    //   49: ldc 171
+    //   49: ldc 172
     //   51: iload_1
     //   52: invokestatic 71	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   55: invokevirtual 75	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
@@ -161,10 +161,10 @@ public class a
     //   69: return
     //   70: aload_0
     //   71: iconst_1
-    //   72: putfield 162	com/tencent/scanlib/b/a:gKM	Z
+    //   72: putfield 163	com/tencent/scanlib/b/a:jvb	Z
     //   75: aload_0
     //   76: getfield 27	com/tencent/scanlib/b/a:TAG	Ljava/lang/String;
-    //   79: ldc 173
+    //   79: ldc 174
     //   81: invokestatic 111	com/tencent/stubs/logger/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   84: aload_3
     //   85: monitorexit
@@ -191,11 +191,10 @@ public class a
     //   from	to	target	type
     //   20	27	93	java/lang/Exception
     //   86	92	93	java/lang/Exception
-    //   104	112	93	java/lang/Exception
+    //   102	112	93	java/lang/Exception
     //   27	41	101	finally
     //   45	63	101	finally
     //   70	86	101	finally
-    //   102	104	101	finally
   }
   
   public final byte[] a(byte[] paramArrayOfByte, Point paramPoint, int paramInt, Rect arg4, int[] paramArrayOfInt)
@@ -234,7 +233,7 @@ public class a
         m = ???.top;
         arrayOfByte = new byte[i * j * 3 / 2];
       }
-      synchronized (this.CCt)
+      synchronized (this.Brg)
       {
         paramInt = d.a(arrayOfByte, paramArrayOfInt, paramArrayOfByte, paramPoint.x, paramPoint.y, k, m, i, j, paramInt);
         if (paramInt != 0)
@@ -261,13 +260,13 @@ public class a
   
   public final boolean hasInited()
   {
-    return this.gKM;
+    return this.jvb;
   }
   
-  public final QbarNative.QBarZoomInfo hlb()
+  public final QbarNative.QBarZoomInfo ioA()
   {
     AppMethodBeat.i(3551);
-    QbarNative.QBarZoomInfo localQBarZoomInfo = this.ROD.hkd();
+    QbarNative.QBarZoomInfo localQBarZoomInfo = this.Zrj.inz();
     AppMethodBeat.o(3551);
     return localQBarZoomInfo;
   }
@@ -275,11 +274,11 @@ public class a
   public final void release()
   {
     AppMethodBeat.i(3555);
-    synchronized (this.CCt)
+    synchronized (this.Brg)
     {
-      this.gKM = false;
-      if (this.ROD != null) {
-        this.ROD.release();
+      this.jvb = false;
+      if (this.Zrj != null) {
+        this.Zrj.release();
       }
       AppMethodBeat.o(3555);
       return;

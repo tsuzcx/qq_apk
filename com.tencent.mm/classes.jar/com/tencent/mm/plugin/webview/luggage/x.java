@@ -8,33 +8,33 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class x
 {
-  private boolean IVm;
-  private String IVn;
-  private String IVo;
-  private String IVp;
-  private String IVq;
-  private String IVr;
-  private String IVs;
+  private boolean PRC;
+  private String PRD;
+  private String PRE;
+  private String PRF;
+  private String PRG;
+  private String PRH;
+  private String PRI;
   private String lang;
   
   public x(Bundle paramBundle)
   {
     AppMethodBeat.i(78478);
-    this.IVm = paramBundle.getBoolean("close_window_confirm_dialog_switch");
-    this.IVn = paramBundle.getString("close_window_confirm_dialog_title_cn");
-    this.IVo = paramBundle.getString("close_window_confirm_dialog_title_eng");
-    this.IVp = paramBundle.getString("close_window_confirm_dialog_ok_cn");
-    this.IVq = paramBundle.getString("close_window_confirm_dialog_ok_eng");
-    this.IVr = paramBundle.getString("close_window_confirm_dialog_cancel_cn");
-    this.IVs = paramBundle.getString("close_window_confirm_dialog_cancel_eng");
+    this.PRC = paramBundle.getBoolean("close_window_confirm_dialog_switch");
+    this.PRD = paramBundle.getString("close_window_confirm_dialog_title_cn");
+    this.PRE = paramBundle.getString("close_window_confirm_dialog_title_eng");
+    this.PRF = paramBundle.getString("close_window_confirm_dialog_ok_cn");
+    this.PRG = paramBundle.getString("close_window_confirm_dialog_ok_eng");
+    this.PRH = paramBundle.getString("close_window_confirm_dialog_cancel_cn");
+    this.PRI = paramBundle.getString("close_window_confirm_dialog_cancel_eng");
     this.lang = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
     AppMethodBeat.o(78478);
   }
   
-  public final boolean gci()
+  public final boolean gVc()
   {
     AppMethodBeat.i(78479);
-    if ((this.IVm) && (!Util.isNullOrNil(gcj())) && (!Util.isNullOrNil(gck())) && (!Util.isNullOrNil(gcl())))
+    if ((this.PRC) && (!Util.isNullOrNil(gVd())) && (!Util.isNullOrNil(gVe())) && (!Util.isNullOrNil(gVf())))
     {
       AppMethodBeat.o(78479);
       return true;
@@ -43,44 +43,44 @@ public final class x
     return false;
   }
   
-  public final String gcj()
+  public final String gVd()
   {
     AppMethodBeat.i(78480);
     if ("zh_CN".equals(this.lang))
     {
-      str = this.IVn;
+      str = this.PRD;
       AppMethodBeat.o(78480);
       return str;
     }
-    String str = this.IVo;
+    String str = this.PRE;
     AppMethodBeat.o(78480);
     return str;
   }
   
-  public final String gck()
+  public final String gVe()
   {
     AppMethodBeat.i(78481);
     if ("zh_CN".equals(this.lang))
     {
-      str = this.IVp;
+      str = this.PRF;
       AppMethodBeat.o(78481);
       return str;
     }
-    String str = this.IVq;
+    String str = this.PRG;
     AppMethodBeat.o(78481);
     return str;
   }
   
-  public final String gcl()
+  public final String gVf()
   {
     AppMethodBeat.i(78482);
     if ("zh_CN".equals(this.lang))
     {
-      str = this.IVr;
+      str = this.PRH;
       AppMethodBeat.o(78482);
       return str;
     }
-    String str = this.IVs;
+    String str = this.PRI;
     AppMethodBeat.o(78482);
     return str;
   }

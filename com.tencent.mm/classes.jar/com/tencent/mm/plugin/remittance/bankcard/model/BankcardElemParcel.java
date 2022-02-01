@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ajr;
-import com.tencent.mm.protocal.protobuf.jg;
+import com.tencent.mm.protocal.protobuf.aks;
+import com.tencent.mm.protocal.protobuf.iv;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -14,17 +14,17 @@ public class BankcardElemParcel
   implements Parcelable
 {
   public static final Parcelable.Creator<BankcardElemParcel> CREATOR;
-  public String CiX;
-  public int CiY;
-  public int CiZ;
-  public String Cja;
-  public String Cjb;
-  public String Cjc;
-  public ArrayList<EnterTimeParcel> Cjd;
-  public String Cje;
-  public long Cjf;
-  public String dDj;
-  public String ynT;
+  public String DNV;
+  public String IfQ;
+  public int IfR;
+  public int IfS;
+  public String IfT;
+  public String IfU;
+  public String IfV;
+  public ArrayList<EnterTimeParcel> IfW;
+  public String IfX;
+  public long IfY;
+  public String fvP;
   
   static
   {
@@ -38,41 +38,41 @@ public class BankcardElemParcel
   public BankcardElemParcel(Parcel paramParcel)
   {
     AppMethodBeat.i(67402);
-    this.dDj = paramParcel.readString();
-    this.ynT = paramParcel.readString();
-    this.CiX = paramParcel.readString();
-    this.CiY = paramParcel.readInt();
-    this.CiZ = paramParcel.readInt();
-    this.Cjd = new ArrayList();
-    paramParcel.readTypedList(this.Cjd, EnterTimeParcel.CREATOR);
-    this.Cja = paramParcel.readString();
-    this.Cjb = paramParcel.readString();
-    this.Cjc = paramParcel.readString();
-    this.Cje = paramParcel.readString();
-    this.Cjf = paramParcel.readLong();
+    this.fvP = paramParcel.readString();
+    this.DNV = paramParcel.readString();
+    this.IfQ = paramParcel.readString();
+    this.IfR = paramParcel.readInt();
+    this.IfS = paramParcel.readInt();
+    this.IfW = new ArrayList();
+    paramParcel.readTypedList(this.IfW, EnterTimeParcel.CREATOR);
+    this.IfT = paramParcel.readString();
+    this.IfU = paramParcel.readString();
+    this.IfV = paramParcel.readString();
+    this.IfX = paramParcel.readString();
+    this.IfY = paramParcel.readLong();
     AppMethodBeat.o(67402);
   }
   
-  public BankcardElemParcel(jg paramjg)
+  public BankcardElemParcel(iv paramiv)
   {
     AppMethodBeat.i(67401);
-    this.dDj = paramjg.dDj;
-    this.ynT = paramjg.ynT;
-    this.CiX = paramjg.CiX;
-    this.CiY = paramjg.CiY;
-    this.CiZ = paramjg.CiZ;
-    this.Cja = paramjg.Cja;
-    this.Cjb = paramjg.Cjb;
-    this.Cjc = paramjg.Cjc;
-    this.Cjd = new ArrayList();
-    Iterator localIterator = paramjg.KNO.iterator();
+    this.fvP = paramiv.fvP;
+    this.DNV = paramiv.DNV;
+    this.IfQ = paramiv.IfQ;
+    this.IfR = paramiv.IfR;
+    this.IfS = paramiv.IfS;
+    this.IfT = paramiv.IfT;
+    this.IfU = paramiv.IfU;
+    this.IfV = paramiv.IfV;
+    this.IfW = new ArrayList();
+    Iterator localIterator = paramiv.ROI.iterator();
     while (localIterator.hasNext())
     {
-      EnterTimeParcel localEnterTimeParcel = new EnterTimeParcel((ajr)localIterator.next());
-      this.Cjd.add(localEnterTimeParcel);
+      EnterTimeParcel localEnterTimeParcel = new EnterTimeParcel((aks)localIterator.next());
+      this.IfW.add(localEnterTimeParcel);
     }
-    this.Cje = paramjg.KNQ;
-    this.Cjf = paramjg.Cjf;
+    this.IfX = paramiv.ROK;
+    this.IfY = paramiv.IfY;
     AppMethodBeat.o(67401);
   }
   
@@ -84,23 +84,23 @@ public class BankcardElemParcel
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(67403);
-    paramParcel.writeString(this.dDj);
-    paramParcel.writeString(this.ynT);
-    paramParcel.writeString(this.CiX);
-    paramParcel.writeInt(this.CiY);
-    paramParcel.writeInt(this.CiZ);
-    paramParcel.writeTypedList(this.Cjd);
-    paramParcel.writeString(this.Cja);
-    paramParcel.writeString(this.Cjb);
-    paramParcel.writeString(this.Cjc);
-    paramParcel.writeString(this.Cje);
-    paramParcel.writeLong(this.Cjf);
+    paramParcel.writeString(this.fvP);
+    paramParcel.writeString(this.DNV);
+    paramParcel.writeString(this.IfQ);
+    paramParcel.writeInt(this.IfR);
+    paramParcel.writeInt(this.IfS);
+    paramParcel.writeTypedList(this.IfW);
+    paramParcel.writeString(this.IfT);
+    paramParcel.writeString(this.IfU);
+    paramParcel.writeString(this.IfV);
+    paramParcel.writeString(this.IfX);
+    paramParcel.writeLong(this.IfY);
     AppMethodBeat.o(67403);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.model.BankcardElemParcel
  * JD-Core Version:    0.7.0.1
  */

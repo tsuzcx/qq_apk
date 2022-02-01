@@ -9,7 +9,6 @@ public class g
   public int certificateVerifyPolicy = 2;
   public int connectionCount = 1;
   public String customHeader = "";
-  public boolean ehd;
   public String emojiExtinfo = "";
   public int expectImageFormat = 1;
   public int field_advideoflag = 0;
@@ -57,27 +56,29 @@ public class g
   public int field_videosource = 0;
   public String field_wxmsgparam = "";
   public byte[] fileBuffer;
-  public int fuQ = -1;
-  public int gqA = -1;
-  public String gqB = "";
-  public int gqC = 0;
-  public int gqD = 0;
-  public String[] gqE = null;
-  public boolean gqF = true;
-  public boolean gqG = false;
-  public boolean gqH = false;
-  public String gqI = "";
-  public Map<String, String> gqJ = null;
-  public boolean gqK = false;
-  public boolean gqL = false;
-  public boolean gqM = false;
-  public boolean gqN = false;
-  public int gqO;
-  public int gqP = 1;
-  public g.b gqQ;
-  public a gqy;
-  public int gqz = -1;
+  public boolean gbt;
+  public int hDp = -1;
   public String hlsVideoFlag = "";
+  public a iUG;
+  public int iUH = -1;
+  public int iUI = -1;
+  public String iUJ = "";
+  public int iUK = 0;
+  public int iUL = 0;
+  public String[] iUM = null;
+  public boolean iUN = true;
+  public boolean iUO = false;
+  public boolean iUP = false;
+  public String iUQ = "";
+  public Map<String, String> iUR = null;
+  public boolean iUS = false;
+  public boolean iUT = false;
+  public boolean iUU = false;
+  public boolean iUV = false;
+  public int iUW;
+  public int iUX = 1;
+  public g.b iUY;
+  public int iUZ = 0;
   public boolean isColdSnsData = false;
   public boolean isHLSVideo = false;
   public boolean isHotSnsVideo = false;
@@ -88,39 +89,49 @@ public class g
   public String taskName = "task_default";
   public byte[] thumbnailBuffer;
   
-  public final boolean alO()
+  public final boolean arN()
   {
-    return this.gqP == 2;
+    return this.iUX == 2;
   }
   
-  public final boolean alP()
+  public final boolean arO()
   {
-    return this.gqP == 3;
+    return this.iUX == 3;
   }
   
-  public final boolean alQ()
+  public final boolean arP()
   {
-    return this.gqP == 1;
+    return this.iUX == 1;
   }
   
-  public final boolean alR()
+  public final boolean arQ()
   {
-    return this.gqP == 4;
+    return this.iUX == 4;
   }
   
-  public final boolean alS()
+  public final boolean arR()
   {
-    return this.gqP == 6;
+    return this.iUX == 5;
   }
   
-  public final boolean alT()
+  public final boolean arS()
   {
-    return this.gqP == 8;
+    return this.iUX == 6;
   }
   
-  public final boolean alU()
+  public final boolean arT()
   {
-    return this.gqP == 7;
+    return this.iUX == 8;
+  }
+  
+  public final boolean arU()
+  {
+    return this.iUX == 7;
+  }
+  
+  public final boolean arV()
+  {
+    return this.iUZ == 1;
   }
   
   public static abstract interface a

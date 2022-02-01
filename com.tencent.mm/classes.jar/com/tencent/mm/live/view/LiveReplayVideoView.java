@@ -14,7 +14,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.google.android.exoplayer2.Format;
 import com.google.android.exoplayer2.e;
-import com.google.android.exoplayer2.g;
 import com.google.android.exoplayer2.g.a.a;
 import com.google.android.exoplayer2.g.f.a;
 import com.google.android.exoplayer2.g.h;
@@ -22,116 +21,149 @@ import com.google.android.exoplayer2.h.g.a;
 import com.google.android.exoplayer2.h.j;
 import com.google.android.exoplayer2.h.k;
 import com.google.android.exoplayer2.h.n;
-import com.google.android.exoplayer2.h.w;
 import com.google.android.exoplayer2.m;
 import com.google.android.exoplayer2.q.a;
 import com.google.android.exoplayer2.source.h.a;
+import com.google.android.exoplayer2.source.r;
 import com.google.android.exoplayer2.u;
 import com.google.android.exoplayer2.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.live.b.e;
+import com.tencent.mm.live.b.f;
+import com.tencent.mm.live.b.g;
+import com.tencent.mm.live.b.h;
 import com.tencent.mm.pluginsdk.ui.tools.RedesignVideoPlayerSeekBar;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.au;
 import java.io.IOException;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/view/LiveReplayVideoView;", "Landroid/widget/RelativeLayout;", "Lcom/google/android/exoplayer2/Player$EventListener;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "BANDWIDTH_METER", "Lcom/google/android/exoplayer2/upstream/DefaultBandwidthMeter;", "REPEATER_DELAY", "", "TAG", "", "closeBtn", "Landroid/widget/ImageView;", "dataSourceFactory", "Lcom/google/android/exoplayer2/upstream/DataSource$Factory;", "eventHandler", "Landroid/os/Handler;", "footerGroup", "Landroid/view/ViewGroup;", "headerGroup", "isVideoEnd", "", "onCloseClickListener", "Lkotlin/Function1;", "Landroid/view/View;", "Lkotlin/ParameterName;", "name", "view", "", "getOnCloseClickListener", "()Lkotlin/jvm/functions/Function1;", "setOnCloseClickListener", "(Lkotlin/jvm/functions/Function1;)V", "player", "Lcom/google/android/exoplayer2/SimpleExoPlayer;", "repeaterHandler", "repeaterTask", "com/tencent/mm/live/view/LiveReplayVideoView$repeaterTask$1", "Lcom/tencent/mm/live/view/LiveReplayVideoView$repeaterTask$1;", "textureView", "Landroid/view/TextureView;", "titleTv", "Landroid/widget/TextView;", "userAgent", "kotlin.jvm.PlatformType", "videoSeekBar", "Lcom/tencent/mm/pluginsdk/ui/tools/RedesignVideoPlayerSeekBar;", "videoSeekBarDragCallback", "Lkotlin/Function0;", "getVideoSeekBarDragCallback", "()Lkotlin/jvm/functions/Function0;", "setVideoSeekBarDragCallback", "(Lkotlin/jvm/functions/Function0;)V", "buildDefaultDataSourceFactory", "buildDefaultHttpDataSourceFactory", "Lcom/google/android/exoplayer2/upstream/HttpDataSource$Factory;", "bandwidthMeter", "finish", "getLayoutId", "initVideoPlayer", "onDestroy", "onLoadingChanged", "p0", "onPlaybackParametersChanged", "Lcom/google/android/exoplayer2/PlaybackParameters;", "onPlayerError", "ex", "Lcom/google/android/exoplayer2/ExoPlaybackException;", "onPlayerStateChanged", "playWhenReady", "playbackState", "onPositionDiscontinuity", "onRepeatModeChanged", "onTimelineChanged", "Lcom/google/android/exoplayer2/Timeline;", "p1", "", "onTracksChanged", "Lcom/google/android/exoplayer2/source/TrackGroupArray;", "Lcom/google/android/exoplayer2/trackselection/TrackSelectionArray;", "postRepeaterTask", "release", "reset", "start", "url", "toggleHeaderAndFooter", "ExoMediaSourceEventListener", "plugin-logic_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/view/LiveReplayVideoView;", "Landroid/widget/RelativeLayout;", "Lcom/google/android/exoplayer2/Player$EventListener;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "BANDWIDTH_METER", "Lcom/google/android/exoplayer2/upstream/DefaultBandwidthMeter;", "REPEATER_DELAY", "", "TAG", "", "closeBtn", "Landroid/widget/ImageView;", "dataSourceFactory", "Lcom/google/android/exoplayer2/upstream/DataSource$Factory;", "eventHandler", "Landroid/os/Handler;", "footerGroup", "Landroid/view/ViewGroup;", "headerGroup", "isVideoEnd", "", "onCloseClickListener", "Lkotlin/Function1;", "Landroid/view/View;", "Lkotlin/ParameterName;", "name", "view", "", "getOnCloseClickListener", "()Lkotlin/jvm/functions/Function1;", "setOnCloseClickListener", "(Lkotlin/jvm/functions/Function1;)V", "player", "Lcom/google/android/exoplayer2/SimpleExoPlayer;", "repeaterHandler", "repeaterTask", "com/tencent/mm/live/view/LiveReplayVideoView$repeaterTask$1", "Lcom/tencent/mm/live/view/LiveReplayVideoView$repeaterTask$1;", "textureView", "Landroid/view/TextureView;", "titleTv", "Landroid/widget/TextView;", "userAgent", "kotlin.jvm.PlatformType", "videoSeekBar", "Lcom/tencent/mm/pluginsdk/ui/tools/RedesignVideoPlayerSeekBar;", "videoSeekBarDragCallback", "Lkotlin/Function0;", "getVideoSeekBarDragCallback", "()Lkotlin/jvm/functions/Function0;", "setVideoSeekBarDragCallback", "(Lkotlin/jvm/functions/Function0;)V", "buildDefaultDataSourceFactory", "buildDefaultHttpDataSourceFactory", "Lcom/google/android/exoplayer2/upstream/HttpDataSource$Factory;", "bandwidthMeter", "finish", "getLayoutId", "initVideoPlayer", "onDestroy", "onLoadingChanged", "p0", "onPlaybackParametersChanged", "Lcom/google/android/exoplayer2/PlaybackParameters;", "onPlayerError", "ex", "Lcom/google/android/exoplayer2/ExoPlaybackException;", "onPlayerStateChanged", "playWhenReady", "playbackState", "onPositionDiscontinuity", "onRepeatModeChanged", "onTimelineChanged", "Lcom/google/android/exoplayer2/Timeline;", "p1", "", "onTracksChanged", "Lcom/google/android/exoplayer2/source/TrackGroupArray;", "Lcom/google/android/exoplayer2/trackselection/TrackSelectionArray;", "postRepeaterTask", "release", "reset", "start", "url", "toggleHeaderAndFooter", "ExoMediaSourceEventListener", "plugin-logic_release"})
 public final class LiveReplayVideoView
   extends RelativeLayout
   implements q.a
 {
   private final String TAG;
-  private TextureView bec;
-  public g.a bwl;
+  private TextureView aND;
+  public g.a bfN;
   public final Handler eventHandler;
-  private final ImageView hTd;
-  public v hWJ;
-  private final ViewGroup hWK;
-  private final ViewGroup hWL;
-  public RedesignVideoPlayerSeekBar hWM;
-  private kotlin.g.a.a<kotlin.x> hWN;
-  private final com.google.android.exoplayer2.h.l hWO;
-  public boolean hWP;
-  private final long hWQ;
-  public final Handler hWR;
-  private kotlin.g.a.b<? super View, kotlin.x> hWS;
-  public final b hWT;
+  private final ImageView kHA;
+  public v kLl;
+  private final ViewGroup kLm;
+  private final ViewGroup kLn;
+  public RedesignVideoPlayerSeekBar kLo;
+  private kotlin.g.a.a<kotlin.x> kLp;
+  private final com.google.android.exoplayer2.h.l kLq;
+  public boolean kLr;
+  private final long kLs;
+  public final Handler kLt;
+  private kotlin.g.a.b<? super View, kotlin.x> kLu;
+  public final b kLv;
   public final TextView titleTv;
   private final String userAgent;
   
   public LiveReplayVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(208588);
-    AppMethodBeat.o(208588);
+    AppMethodBeat.i(197540);
+    AppMethodBeat.o(197540);
   }
   
   public LiveReplayVideoView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(208587);
+    AppMethodBeat.i(197537);
     this.TAG = "MicroMsg.LiveReplayVideoView";
     this.eventHandler = new Handler(Looper.getMainLooper());
-    this.userAgent = com.google.android.exoplayer2.i.x.h(paramContext, paramContext.getString(2131755908));
-    this.hWO = new com.google.android.exoplayer2.h.l();
-    this.hWQ = 1000L;
-    this.hWR = new Handler();
-    this.hWT = new b(this);
+    this.userAgent = com.google.android.exoplayer2.i.x.i(paramContext, paramContext.getString(b.h.app_name));
+    this.kLq = new com.google.android.exoplayer2.h.l();
+    this.kLs = 1000L;
+    this.kLt = new Handler();
+    this.kLv = new b(this);
     View.inflate(paramContext, getLayoutId(), (ViewGroup)this);
-    paramContext = findViewById(2131303278);
-    kotlin.g.b.p.g(paramContext, "findViewById(R.id.live_after_replay_close_icon)");
-    this.hTd = ((ImageView)paramContext);
-    paramContext = findViewById(2131303287);
-    kotlin.g.b.p.g(paramContext, "findViewById(R.id.live_after_replay_title_tv)");
+    paramContext = findViewById(b.e.live_after_replay_close_icon);
+    kotlin.g.b.p.j(paramContext, "findViewById(R.id.live_after_replay_close_icon)");
+    this.kHA = ((ImageView)paramContext);
+    paramContext = findViewById(b.e.live_after_replay_title_tv);
+    kotlin.g.b.p.j(paramContext, "findViewById(R.id.live_after_replay_title_tv)");
     this.titleTv = ((TextView)paramContext);
-    paramContext = findViewById(2131303285);
-    kotlin.g.b.p.g(paramContext, "findViewById(R.id.live_after_replay_texture_view)");
-    this.bec = ((TextureView)paramContext);
-    this.hWM = ((RedesignVideoPlayerSeekBar)findViewById(2131303281));
-    paramContext = findViewById(2131303286);
-    kotlin.g.b.p.g(paramContext, "findViewById(R.id.live_after_replay_title_group)");
-    this.hWK = ((ViewGroup)paramContext);
-    paramContext = findViewById(2131303279);
-    kotlin.g.b.p.g(paramContext, "findViewById(R.id.live_after_replay_footer_group)");
-    this.hWL = ((ViewGroup)paramContext);
-    this.hTd.setImageDrawable(ar.e(getResources().getDrawable(2131690514), -1));
-    paramContext = new com.google.android.exoplayer2.g.c((f.a)new a.a((com.google.android.exoplayer2.h.d)this.hWO));
+    paramContext = findViewById(b.e.live_after_replay_texture_view);
+    kotlin.g.b.p.j(paramContext, "findViewById(R.id.live_after_replay_texture_view)");
+    this.aND = ((TextureView)paramContext);
+    this.kLo = ((RedesignVideoPlayerSeekBar)findViewById(b.e.live_after_replay_seek_bar));
+    paramContext = findViewById(b.e.live_after_replay_title_group);
+    kotlin.g.b.p.j(paramContext, "findViewById(R.id.live_after_replay_title_group)");
+    this.kLm = ((ViewGroup)paramContext);
+    paramContext = findViewById(b.e.live_after_replay_footer_group);
+    kotlin.g.b.p.j(paramContext, "findViewById(R.id.live_after_replay_footer_group)");
+    this.kLn = ((ViewGroup)paramContext);
+    this.kHA.setImageDrawable(au.e(getResources().getDrawable(b.g.icons_filled_close), -1));
+    paramContext = new com.google.android.exoplayer2.g.c((f.a)new a.a((com.google.android.exoplayer2.h.d)this.kLq));
     paramAttributeSet = new com.google.android.exoplayer2.c(new k());
-    this.hWJ = g.a((u)new com.google.android.exoplayer2.d(getContext()), (h)paramContext, (m)paramAttributeSet);
+    this.kLl = com.google.android.exoplayer2.g.a((u)new com.google.android.exoplayer2.d(getContext()), (h)paramContext, (m)paramAttributeSet);
     paramContext = getContext();
-    kotlin.g.b.p.g(paramContext, "context");
-    paramAttributeSet = (w)this.hWO;
-    com.google.android.exoplayer2.h.l locall = this.hWO;
+    kotlin.g.b.p.j(paramContext, "context");
+    paramAttributeSet = (com.google.android.exoplayer2.h.w)this.kLq;
+    com.google.android.exoplayer2.h.l locall = this.kLq;
     String str = this.userAgent;
-    kotlin.g.b.p.g(str, "userAgent");
-    this.bwl = ((g.a)new n(paramContext, paramAttributeSet, (g.a)new com.google.android.exoplayer2.h.p(str, (w)locall, true)));
-    paramContext = this.hWJ;
+    kotlin.g.b.p.j(str, "userAgent");
+    this.bfN = ((g.a)new n(paramContext, paramAttributeSet, (g.a)new com.google.android.exoplayer2.h.p(str, (com.google.android.exoplayer2.h.w)locall, true)));
+    paramContext = this.kLl;
     if (paramContext != null) {
       paramContext.a((q.a)this);
     }
-    paramContext = this.hWJ;
+    paramContext = this.kLl;
     if (paramContext != null) {
-      paramContext.c(this.bec);
+      paramContext.c(this.aND);
     }
-    this.hTd.setOnClickListener((View.OnClickListener)new LiveReplayVideoView.1(this));
-    this.bec.setOnClickListener((View.OnClickListener)new LiveReplayVideoView.2(this));
-    paramContext = this.hWM;
+    this.kHA.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(202132);
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/view/LiveReplayVideoView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+        localObject = this.kLw.getOnCloseClickListener();
+        if (localObject != null)
+        {
+          kotlin.g.b.p.j(paramAnonymousView, "it");
+          ((kotlin.g.a.b)localObject).invoke(paramAnonymousView);
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/view/LiveReplayVideoView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(202132);
+      }
+    });
+    this.aND.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(198980);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/view/LiveReplayVideoView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        LiveReplayVideoView.f(this.kLw);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/view/LiveReplayVideoView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(198980);
+      }
+    });
+    paramContext = this.kLo;
     if (paramContext != null) {
       paramContext.setPlayBtnOnClickListener((View.OnClickListener)new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(208567);
+          AppMethodBeat.i(199245);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/view/LiveReplayVideoView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          paramAnonymousView = LiveReplayVideoView.c(this.hWU);
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/view/LiveReplayVideoView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          paramAnonymousView = LiveReplayVideoView.c(this.kLw);
           if (paramAnonymousView != null)
           {
-            if (!paramAnonymousView.tj()) {
+            if (!paramAnonymousView.rb()) {
               break label93;
             }
-            paramAnonymousView.aO(false);
-            paramAnonymousView = LiveReplayVideoView.b(this.hWU);
+            paramAnonymousView.aM(false);
+            paramAnonymousView = LiveReplayVideoView.b(this.kLw);
             if (paramAnonymousView != null) {
               paramAnonymousView.setIsPlay(false);
             }
@@ -139,16 +171,16 @@ public final class LiveReplayVideoView
           for (;;)
           {
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/view/LiveReplayVideoView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(208567);
+            AppMethodBeat.o(199245);
             return;
             label93:
-            if (LiveReplayVideoView.g(this.hWU))
+            if (LiveReplayVideoView.g(this.kLw))
             {
-              LiveReplayVideoView.i(this.hWU);
-              LiveReplayVideoView.h(this.hWU);
+              LiveReplayVideoView.i(this.kLw);
+              LiveReplayVideoView.h(this.kLw);
             }
-            paramAnonymousView.aO(true);
-            paramAnonymousView = LiveReplayVideoView.b(this.hWU);
+            paramAnonymousView.aM(true);
+            paramAnonymousView = LiveReplayVideoView.b(this.kLw);
             if (paramAnonymousView != null) {
               paramAnonymousView.setIsPlay(true);
             }
@@ -156,101 +188,115 @@ public final class LiveReplayVideoView
         }
       });
     }
-    paramContext = this.hWM;
+    paramContext = this.kLo;
     if (paramContext != null)
     {
       paramContext.setIplaySeekCallback((com.tencent.mm.plugin.sight.decode.ui.b)new com.tencent.mm.plugin.sight.decode.ui.b()
       {
-        public final void aJq()
+        public final void aRo()
         {
-          AppMethodBeat.i(208568);
-          Log.i(LiveReplayVideoView.a(this.hWU), "onSeekPre");
-          v localv = LiveReplayVideoView.c(this.hWU);
+          AppMethodBeat.i(189317);
+          Log.i(LiveReplayVideoView.a(this.kLw), "onSeekPre");
+          v localv = LiveReplayVideoView.c(this.kLw);
           if (localv != null)
           {
-            localv.aO(false);
-            AppMethodBeat.o(208568);
+            localv.aM(false);
+            AppMethodBeat.o(189317);
             return;
           }
-          AppMethodBeat.o(208568);
+          AppMethodBeat.o(189317);
         }
         
-        public final void rk(int paramAnonymousInt)
+        public final void tY(int paramAnonymousInt)
         {
-          AppMethodBeat.i(208569);
-          Log.i(LiveReplayVideoView.a(this.hWU), "onSeekTo ".concat(String.valueOf(paramAnonymousInt)));
-          Object localObject = LiveReplayVideoView.c(this.hWU);
+          AppMethodBeat.i(189319);
+          Log.i(LiveReplayVideoView.a(this.kLw), "onSeekTo ".concat(String.valueOf(paramAnonymousInt)));
+          Object localObject = LiveReplayVideoView.c(this.kLw);
           if (localObject != null) {
             ((v)localObject).seekTo(paramAnonymousInt * 1000L);
           }
-          localObject = LiveReplayVideoView.c(this.hWU);
+          localObject = LiveReplayVideoView.c(this.kLw);
           if (localObject != null) {
-            ((v)localObject).aO(true);
+            ((v)localObject).aM(true);
           }
-          localObject = this.hWU.getVideoSeekBarDragCallback();
+          localObject = this.kLw.getVideoSeekBarDragCallback();
           if (localObject != null) {
             ((kotlin.g.a.a)localObject).invoke();
           }
-          if (LiveReplayVideoView.g(this.hWU))
+          if (LiveReplayVideoView.g(this.kLw))
           {
-            LiveReplayVideoView.h(this.hWU);
-            LiveReplayVideoView.i(this.hWU);
+            LiveReplayVideoView.h(this.kLw);
+            LiveReplayVideoView.i(this.kLw);
           }
-          AppMethodBeat.o(208569);
+          AppMethodBeat.o(189319);
         }
       });
-      AppMethodBeat.o(208587);
+      AppMethodBeat.o(197537);
       return;
     }
-    AppMethodBeat.o(208587);
+    AppMethodBeat.o(197537);
   }
   
   private final int getLayoutId()
   {
-    return 2131495223;
+    return b.f.live_after_replay_ui;
+  }
+  
+  public final void I(int paramInt)
+  {
+    AppMethodBeat.i(197523);
+    Log.i(this.TAG, "onRepeatModeChanged");
+    AppMethodBeat.o(197523);
   }
   
   public final void a(e parame)
   {
-    AppMethodBeat.i(208581);
+    AppMethodBeat.i(197516);
     Log.i(this.TAG, "onPlayerError");
-    AppMethodBeat.o(208581);
+    AppMethodBeat.o(197516);
   }
   
-  public final void aA(int paramInt)
+  public final void a(r paramr, com.google.android.exoplayer2.g.g paramg)
   {
-    AppMethodBeat.i(208585);
-    Log.i(this.TAG, "onRepeatModeChanged");
-    AppMethodBeat.o(208585);
+    AppMethodBeat.i(197515);
+    Log.i(this.TAG, "onTracksChanged");
+    AppMethodBeat.o(197515);
   }
   
-  public final void aJp()
+  public final void aP(boolean paramBoolean)
   {
-    AppMethodBeat.i(208578);
-    this.hWR.removeCallbacks((Runnable)this.hWT);
-    this.hWR.post((Runnable)this.hWT);
-    AppMethodBeat.o(208578);
-  }
-  
-  public final void aR(boolean paramBoolean)
-  {
-    AppMethodBeat.i(208583);
+    AppMethodBeat.i(197521);
     Log.i(this.TAG, "onLoadingChanged");
-    AppMethodBeat.o(208583);
+    AppMethodBeat.o(197521);
+  }
+  
+  public final void aRn()
+  {
+    AppMethodBeat.i(197511);
+    this.kLt.removeCallbacks((Runnable)this.kLv);
+    this.kLt.post((Runnable)this.kLv);
+    AppMethodBeat.o(197511);
   }
   
   public final void b(com.google.android.exoplayer2.p paramp)
   {
-    AppMethodBeat.i(208579);
+    AppMethodBeat.i(197513);
     Log.i(this.TAG, "onPlaybackParametersChanged");
-    AppMethodBeat.o(208579);
+    AppMethodBeat.o(197513);
   }
   
-  public final void c(boolean paramBoolean, int paramInt)
+  public final void b(com.google.android.exoplayer2.w paramw, Object paramObject)
+  {
+    AppMethodBeat.i(197525);
+    Log.i(this.TAG, "onTimelineChanged");
+    AppMethodBeat.o(197525);
+  }
+  
+  public final void e(boolean paramBoolean, int paramInt)
   {
     v localv1 = null;
     long l2 = 0L;
-    AppMethodBeat.i(208582);
+    AppMethodBeat.i(197520);
     Log.i(this.TAG, "onPlayerStateChanged playWhenReady:" + paramBoolean + " playbackState:" + paramInt);
     switch (paramInt)
     {
@@ -260,25 +306,25 @@ public final class LiveReplayVideoView
     label282:
     do
     {
-      AppMethodBeat.o(208582);
+      AppMethodBeat.o(197520);
       return;
       String str = this.TAG;
       StringBuilder localStringBuilder = new StringBuilder("duration:");
-      localObject = this.hWJ;
+      localObject = this.kLl;
       if (localObject != null)
       {
         localObject = Long.valueOf(((v)localObject).getDuration());
         localStringBuilder = localStringBuilder.append(localObject).append("ms curPosition:");
-        v localv2 = this.hWJ;
+        v localv2 = this.kLl;
         localObject = localv1;
         if (localv2 != null) {
           localObject = Long.valueOf(localv2.getDuration());
         }
         Log.i(str, localObject + "ms");
-        localObject = this.hWM;
+        localObject = this.kLo;
         if (localObject != null)
         {
-          localv1 = this.hWJ;
+          localv1 = this.kLl;
           if (localv1 == null) {
             break label277;
           }
@@ -287,165 +333,151 @@ public final class LiveReplayVideoView
       for (long l1 = localv1.getDuration();; l1 = 0L)
       {
         ((RedesignVideoPlayerSeekBar)localObject).setVideoTotalTime((int)(l1 / 1000L));
-        localObject = this.hWM;
+        localObject = this.kLo;
         if (localObject == null) {
           break label282;
         }
-        localv1 = this.hWJ;
+        localv1 = this.kLl;
         l1 = l2;
         if (localv1 != null) {
           l1 = localv1.getCurrentPosition();
         }
-        ((RedesignVideoPlayerSeekBar)localObject).xv((int)(l1 / 1000L));
-        AppMethodBeat.o(208582);
+        ((RedesignVideoPlayerSeekBar)localObject).AS((int)(l1 / 1000L));
+        AppMethodBeat.o(197520);
         return;
         localObject = null;
         break;
       }
-      AppMethodBeat.o(208582);
+      AppMethodBeat.o(197520);
       return;
-      AppMethodBeat.o(208582);
+      AppMethodBeat.o(197520);
       return;
-      this.hWP = true;
-      localObject = this.hWJ;
+      this.kLr = true;
+      localObject = this.kLl;
       if (localObject != null) {
         ((v)localObject).seekTo(0L);
       }
-      localObject = this.hWM;
+      localObject = this.kLo;
       if (localObject != null) {
         ((RedesignVideoPlayerSeekBar)localObject).setIsPlay(false);
       }
-      this.hWR.removeCallbacks((Runnable)this.hWT);
-      localObject = this.hWJ;
+      this.kLt.removeCallbacks((Runnable)this.kLv);
+      localObject = this.kLl;
     } while (localObject == null);
-    ((v)localObject).aO(false);
-    AppMethodBeat.o(208582);
+    ((v)localObject).aM(false);
+    AppMethodBeat.o(197520);
   }
   
   public final kotlin.g.a.b<View, kotlin.x> getOnCloseClickListener()
   {
-    return this.hWS;
+    return this.kLu;
   }
   
   public final kotlin.g.a.a<kotlin.x> getVideoSeekBarDragCallback()
   {
-    return this.hWN;
+    return this.kLp;
+  }
+  
+  public final void rs()
+  {
+    AppMethodBeat.i(197522);
+    Log.i(this.TAG, "onPositionDiscontinuity");
+    AppMethodBeat.o(197522);
   }
   
   public final void setOnCloseClickListener(kotlin.g.a.b<? super View, kotlin.x> paramb)
   {
-    this.hWS = paramb;
+    this.kLu = paramb;
   }
   
   public final void setVideoSeekBarDragCallback(kotlin.g.a.a<kotlin.x> parama)
   {
-    this.hWN = parama;
+    this.kLp = parama;
   }
   
-  public final void tA()
-  {
-    AppMethodBeat.i(208584);
-    Log.i(this.TAG, "onPositionDiscontinuity");
-    AppMethodBeat.o(208584);
-  }
-  
-  public final void ty()
-  {
-    AppMethodBeat.i(208586);
-    Log.i(this.TAG, "onTimelineChanged");
-    AppMethodBeat.o(208586);
-  }
-  
-  public final void tz()
-  {
-    AppMethodBeat.i(208580);
-    Log.i(this.TAG, "onTracksChanged");
-    AppMethodBeat.o(208580);
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/view/LiveReplayVideoView$ExoMediaSourceEventListener;", "Lcom/google/android/exoplayer2/source/AdaptiveMediaSourceEventListener;", "Lcom/google/android/exoplayer2/source/ExtractorMediaSource$EventListener;", "(Lcom/tencent/mm/live/view/LiveReplayVideoView;)V", "onDownstreamFormatChanged", "", "trackType", "", "trackFormat", "Lcom/google/android/exoplayer2/Format;", "trackSelectionReason", "trackSelectionData", "", "mediaTimeMs", "", "onHasEndTag", "onLoadCanceled", "dataSpec", "Lcom/google/android/exoplayer2/upstream/DataSpec;", "dataType", "mediaStartTimeMs", "mediaEndTimeMs", "elapsedRealtimeMs", "loadDurationMs", "bytesLoaded", "onLoadCompleted", "onLoadError", "error", "Ljava/io/IOException;", "wasCanceled", "", "onLoadStarted", "onUpstreamDiscarded", "plugin-logic_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/view/LiveReplayVideoView$ExoMediaSourceEventListener;", "Lcom/google/android/exoplayer2/source/AdaptiveMediaSourceEventListener;", "Lcom/google/android/exoplayer2/source/ExtractorMediaSource$EventListener;", "(Lcom/tencent/mm/live/view/LiveReplayVideoView;)V", "onDownstreamFormatChanged", "", "trackType", "", "trackFormat", "Lcom/google/android/exoplayer2/Format;", "trackSelectionReason", "trackSelectionData", "", "mediaTimeMs", "", "onHasEndTag", "onLoadCanceled", "dataSpec", "Lcom/google/android/exoplayer2/upstream/DataSpec;", "dataType", "mediaStartTimeMs", "mediaEndTimeMs", "elapsedRealtimeMs", "loadDurationMs", "bytesLoaded", "onLoadCompleted", "onLoadError", "error", "Ljava/io/IOException;", "wasCanceled", "", "onLoadStarted", "onUpstreamDiscarded", "plugin-logic_release"})
   public final class a
     implements com.google.android.exoplayer2.source.b, h.a
   {
     public final void a(int paramInt, Format paramFormat, long paramLong)
     {
-      AppMethodBeat.i(208574);
-      Log.d(LiveReplayVideoView.a(this.hWU), "onDownstreamFormatChanged, trackType:%s, trackFormat:%s, mediaTimeMs:%s", new Object[] { Integer.valueOf(paramInt), paramFormat, Long.valueOf(paramLong) });
-      AppMethodBeat.o(208574);
+      AppMethodBeat.i(194576);
+      Log.d(LiveReplayVideoView.a(this.kLw), "onDownstreamFormatChanged, trackType:%s, trackFormat:%s, mediaTimeMs:%s", new Object[] { Integer.valueOf(paramInt), paramFormat, Long.valueOf(paramLong) });
+      AppMethodBeat.o(194576);
+    }
+    
+    public final void a(j paramj, int paramInt1, int paramInt2, Format paramFormat, int paramInt3, Object paramObject, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, IOException paramIOException, boolean paramBoolean)
+    {
+      AppMethodBeat.i(194573);
+      paramObject = LiveReplayVideoView.b(this.kLw);
+      if (paramObject != null) {
+        paramObject.setIsPlay(false);
+      }
+      Log.printErrStackTrace(LiveReplayVideoView.a(this.kLw), (Throwable)paramIOException, "onLoadError1, IOException, dataSpec:%s, trackType:%s, trackFormat:%s, mediaStartTimeMs:%s, mediaEndTimeMs:%s, elapsedRealtimeMs:%s, loadDurationMs:%s, bytesLoaded:%s, wasCanceled:%s", new Object[] { paramj, Integer.valueOf(paramInt2), paramFormat, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(paramLong4), Long.valueOf(paramLong5), Boolean.valueOf(paramBoolean) });
+      AppMethodBeat.o(194573);
     }
     
     public final void a(j paramj, int paramInt, Format paramFormat, long paramLong1, long paramLong2, long paramLong3)
     {
-      AppMethodBeat.i(208570);
-      Log.d(LiveReplayVideoView.a(this.hWU), "onLoadStarted, dataSpec:%s, trackType:%s, trackFormat:%s, mediaStartTimeMs:%s, mediaEndTimeMs:%s, elapsedRealtimeMs:%s", new Object[] { paramj, Integer.valueOf(paramInt), paramFormat, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) });
-      AppMethodBeat.o(208570);
-    }
-    
-    public final void a(j paramj, int paramInt, Format paramFormat, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, IOException paramIOException, boolean paramBoolean)
-    {
-      AppMethodBeat.i(208573);
-      RedesignVideoPlayerSeekBar localRedesignVideoPlayerSeekBar = LiveReplayVideoView.b(this.hWU);
-      if (localRedesignVideoPlayerSeekBar != null) {
-        localRedesignVideoPlayerSeekBar.setIsPlay(false);
-      }
-      Log.printErrStackTrace(LiveReplayVideoView.a(this.hWU), (Throwable)paramIOException, "onLoadError1, IOException, dataSpec:%s, trackType:%s, trackFormat:%s, mediaStartTimeMs:%s, mediaEndTimeMs:%s, elapsedRealtimeMs:%s, loadDurationMs:%s, bytesLoaded:%s, wasCanceled:%s", new Object[] { paramj, Integer.valueOf(paramInt), paramFormat, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(paramLong4), Long.valueOf(paramLong5), Boolean.valueOf(paramBoolean) });
-      AppMethodBeat.o(208573);
+      AppMethodBeat.i(194560);
+      Log.d(LiveReplayVideoView.a(this.kLw), "onLoadStarted, dataSpec:%s, trackType:%s, trackFormat:%s, mediaStartTimeMs:%s, mediaEndTimeMs:%s, elapsedRealtimeMs:%s", new Object[] { paramj, Integer.valueOf(paramInt), paramFormat, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) });
+      AppMethodBeat.o(194560);
     }
     
     public final void b(j paramj, int paramInt, Format paramFormat, long paramLong1, long paramLong2, long paramLong3)
     {
-      AppMethodBeat.i(208571);
-      Log.d(LiveReplayVideoView.a(this.hWU), "onLoadCompleted, dataSpec:%s, trackType:%s, trackFormat:%s, mediaStartTimeMs:%s, mediaEndTimeMs:%s, elapsedRealtimeMs:%s", new Object[] { paramj, Integer.valueOf(paramInt), paramFormat, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) });
-      AppMethodBeat.o(208571);
+      AppMethodBeat.i(194564);
+      Log.d(LiveReplayVideoView.a(this.kLw), "onLoadCompleted, dataSpec:%s, trackType:%s, trackFormat:%s, mediaStartTimeMs:%s, mediaEndTimeMs:%s, elapsedRealtimeMs:%s", new Object[] { paramj, Integer.valueOf(paramInt), paramFormat, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) });
+      AppMethodBeat.o(194564);
     }
     
     public final void c(j paramj, int paramInt, Format paramFormat, long paramLong1, long paramLong2, long paramLong3)
     {
-      AppMethodBeat.i(208572);
-      Log.d(LiveReplayVideoView.a(this.hWU), "onLoadCanceled, dataSpec:%s, trackType:%s, trackFormat:%s, mediaStartTimeMs:%s, mediaEndTimeMs:%s, elapsedRealtimeMs:%s", new Object[] { paramj, Integer.valueOf(paramInt), paramFormat, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) });
-      AppMethodBeat.o(208572);
+      AppMethodBeat.i(194568);
+      Log.d(LiveReplayVideoView.a(this.kLw), "onLoadCanceled, dataSpec:%s, trackType:%s, trackFormat:%s, mediaStartTimeMs:%s, mediaEndTimeMs:%s, elapsedRealtimeMs:%s", new Object[] { paramj, Integer.valueOf(paramInt), paramFormat, Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) });
+      AppMethodBeat.o(194568);
     }
     
     public final void onLoadError(IOException paramIOException)
     {
-      AppMethodBeat.i(208576);
-      Log.printErrStackTrace(LiveReplayVideoView.a(this.hWU), (Throwable)paramIOException, "onLoadError2, IOException", new Object[0]);
-      paramIOException = LiveReplayVideoView.b(this.hWU);
+      AppMethodBeat.i(194581);
+      Log.printErrStackTrace(LiveReplayVideoView.a(this.kLw), (Throwable)paramIOException, "onLoadError2, IOException", new Object[0]);
+      paramIOException = LiveReplayVideoView.b(this.kLw);
       if (paramIOException != null)
       {
         paramIOException.setIsPlay(false);
-        AppMethodBeat.o(208576);
+        AppMethodBeat.o(194581);
         return;
       }
-      AppMethodBeat.o(208576);
+      AppMethodBeat.o(194581);
     }
     
-    public final void vl()
+    public final void tj()
     {
-      AppMethodBeat.i(208575);
-      Log.d(LiveReplayVideoView.a(this.hWU), "onHasEndTag");
-      AppMethodBeat.o(208575);
+      AppMethodBeat.i(194577);
+      Log.d(LiveReplayVideoView.a(this.kLw), "onHasEndTag");
+      AppMethodBeat.o(194577);
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/live/view/LiveReplayVideoView$repeaterTask$1", "Ljava/lang/Runnable;", "run", "", "plugin-logic_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/live/view/LiveReplayVideoView$repeaterTask$1", "Ljava/lang/Runnable;", "run", "", "plugin-logic_release"})
   public static final class b
     implements Runnable
   {
     public final void run()
     {
       Long localLong = null;
-      AppMethodBeat.i(208577);
-      Object localObject1 = LiveReplayVideoView.c(this.hWU);
+      AppMethodBeat.i(199552);
+      Object localObject1 = LiveReplayVideoView.c(this.kLw);
       Object localObject2;
       if (localObject1 != null)
       {
         localObject1 = Long.valueOf(((v)localObject1).getCurrentPosition());
-        localObject2 = LiveReplayVideoView.c(this.hWU);
+        localObject2 = LiveReplayVideoView.c(this.kLw);
         if (localObject2 != null) {
-          localLong = Long.valueOf(((v)localObject2).getBufferedPosition());
+          localLong = Long.valueOf(((v)localObject2).rd());
         }
-        localObject2 = LiveReplayVideoView.b(this.hWU);
+        localObject2 = LiveReplayVideoView.b(this.kLw);
         if (localObject2 != null) {
           if (localObject1 == null) {
             break label160;
@@ -455,10 +487,10 @@ public final class LiveReplayVideoView
       label160:
       for (long l = ((Long)localObject1).longValue();; l = 0L)
       {
-        ((RedesignVideoPlayerSeekBar)localObject2).xv((int)(l / 1000L));
-        Log.i(LiveReplayVideoView.a(this.hWU), "repeaterTask curPosition:" + localObject1 + "ms bufferedPosition:" + localLong + "ms");
-        LiveReplayVideoView.d(this.hWU).postDelayed((Runnable)this, LiveReplayVideoView.e(this.hWU));
-        AppMethodBeat.o(208577);
+        ((RedesignVideoPlayerSeekBar)localObject2).AS((int)(l / 1000L));
+        Log.i(LiveReplayVideoView.a(this.kLw), "repeaterTask curPosition:" + localObject1 + "ms bufferedPosition:" + localLong + "ms");
+        LiveReplayVideoView.d(this.kLw).postDelayed((Runnable)this, LiveReplayVideoView.e(this.kLw));
+        AppMethodBeat.o(199552);
         return;
         localObject1 = null;
         break;
@@ -468,7 +500,7 @@ public final class LiveReplayVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.view.LiveReplayVideoView
  * JD-Core Version:    0.7.0.1
  */

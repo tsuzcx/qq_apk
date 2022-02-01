@@ -12,358 +12,364 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.ui.aa;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.plugin.finder.b.c;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.utils.v;
+import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.ar;
+import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderChooseOriginalView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "flag", "getFlag", "()I", "setFlag", "(I)V", "onFlagChangedListener", "Lkotlin/Function1;", "", "getOnFlagChangedListener", "()Lkotlin/jvm/functions/Function1;", "setOnFlagChangedListener", "(Lkotlin/jvm/functions/Function1;)V", "tipTv", "Landroid/widget/TextView;", "getTipTv", "()Landroid/widget/TextView;", "setTipTv", "(Landroid/widget/TextView;)V", "refreshView", "setOriginalFlag", "original", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderChooseOriginalView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "flag", "getFlag", "()I", "setFlag", "(I)V", "onFlagChangedListener", "Lkotlin/Function1;", "", "getOnFlagChangedListener", "()Lkotlin/jvm/functions/Function1;", "setOnFlagChangedListener", "(Lkotlin/jvm/functions/Function1;)V", "tipTv", "Landroid/widget/TextView;", "getTipTv", "()Landroid/widget/TextView;", "setTipTv", "(Landroid/widget/TextView;)V", "refreshView", "setOriginalFlag", "original", "plugin-finder_release"})
 public final class FinderChooseOriginalView
   extends LinearLayout
 {
+  private kotlin.g.a.b<? super Integer, x> AUP;
   private final String TAG;
-  private int cSx;
-  private TextView jBS;
-  private kotlin.g.a.b<? super Integer, x> wjV;
+  private int cUP;
+  private TextView mrN;
   
   public FinderChooseOriginalView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(254687);
+    AppMethodBeat.i(291378);
     this.TAG = "Finder.FinderChooseOriginalView";
-    this.cSx = 1;
+    this.cUP = 1;
     setOrientation(1);
-    aa.jQ(getContext()).inflate(2131494216, (ViewGroup)this, true);
-    paramContext = findViewById(2131305716);
-    kotlin.g.b.p.g(paramContext, "findViewById(R.id.original_tip_tv)");
-    this.jBS = ((TextView)paramContext);
+    ad.kS(getContext()).inflate(b.g.finder_choose_original_view, (ViewGroup)this, true);
+    paramContext = findViewById(b.f.original_tip_tv);
+    p.j(paramContext, "findViewById(R.id.original_tip_tv)");
+    this.mrN = ((TextView)paramContext);
     setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(254684);
+        AppMethodBeat.i(267924);
         Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject1).bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).axR());
-        paramAnonymousView = new d(this.wjW.getContext());
-        paramAnonymousView.Ml(2131494556);
-        localObject1 = (TextView)paramAnonymousView.lJI.findViewById(2131305720);
-        kotlin.g.b.p.g(localObject1, "titleTv");
-        ao.a((Paint)((TextView)localObject1).getPaint(), 0.8F);
-        localObject1 = paramAnonymousView.lJI.findViewById(2131305721);
-        Object localObject2 = paramAnonymousView.lJI.findViewById(2131305719);
-        if (this.wjW.getFlag() == 1)
+        ((com.tencent.mm.hellhoundlib.b.b)localObject1).bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aFi());
+        paramAnonymousView = new e(this.AUQ.getContext());
+        paramAnonymousView.RB(b.g.finder_original_type_bottom_sheet);
+        localObject1 = (TextView)paramAnonymousView.oFW.findViewById(b.f.original_type_title);
+        p.j(localObject1, "titleTv");
+        ar.a((Paint)((TextView)localObject1).getPaint(), 0.8F);
+        localObject1 = paramAnonymousView.oFW.findViewById(b.f.original_type_yes_iv);
+        Object localObject2 = paramAnonymousView.oFW.findViewById(b.f.original_type_no_iv);
+        if (this.AUQ.getFlag() == 1)
         {
-          kotlin.g.b.p.g(localObject1, "yesIv");
+          p.j(localObject1, "yesIv");
           ((View)localObject1).setVisibility(0);
-          kotlin.g.b.p.g(localObject2, "noIv");
+          p.j(localObject2, "noIv");
           ((View)localObject2).setVisibility(8);
-          localObject1 = com.tencent.mm.plugin.finder.utils.p.vVY;
-          int i = com.tencent.mm.plugin.finder.utils.p.dBU();
-          localObject1 = paramAnonymousView.lJI.findViewById(2131305453);
-          kotlin.g.b.p.g(localObject1, "rootView.findViewById<Te…R.id.no_original_desc_tv)");
-          ((TextView)localObject1).setText((CharSequence)this.wjW.getContext().getString(2131760395, new Object[] { String.valueOf(i) }));
+          localObject1 = v.ADV;
+          int i = v.edi();
+          localObject1 = paramAnonymousView.oFW.findViewById(b.f.no_original_desc_tv);
+          p.j(localObject1, "rootView.findViewById<Te…R.id.no_original_desc_tv)");
+          ((TextView)localObject1).setText((CharSequence)this.AUQ.getContext().getString(b.j.finder_original_type_no_desc, new Object[] { String.valueOf(i) }));
           if (i <= 0) {
-            break label327;
+            break label336;
           }
-          paramAnonymousView.lJI.findViewById(2131305711).setOnClickListener((View.OnClickListener)new a(paramAnonymousView, this));
+          paramAnonymousView.oFW.findViewById(b.f.original_no_layout).setOnClickListener((View.OnClickListener)new a(paramAnonymousView, this));
         }
         for (;;)
         {
-          paramAnonymousView.lJI.findViewById(2131305722).setOnClickListener((View.OnClickListener)new b(paramAnonymousView, this));
-          paramAnonymousView.lJI.findViewById(2131305718).setOnClickListener((View.OnClickListener)new c(paramAnonymousView, this));
-          paramAnonymousView.dGm();
+          paramAnonymousView.oFW.findViewById(b.f.original_yes_layout).setOnClickListener((View.OnClickListener)new b(paramAnonymousView, this));
+          paramAnonymousView.oFW.findViewById(b.f.original_type_help).setOnClickListener((View.OnClickListener)new c(paramAnonymousView, this));
+          paramAnonymousView.eik();
           a.a(this, "com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(254684);
+          AppMethodBeat.o(267924);
           return;
-          kotlin.g.b.p.g(localObject1, "yesIv");
+          p.j(localObject1, "yesIv");
           ((View)localObject1).setVisibility(8);
-          kotlin.g.b.p.g(localObject2, "noIv");
+          p.j(localObject2, "noIv");
           ((View)localObject2).setVisibility(0);
           break;
-          label327:
-          localObject1 = paramAnonymousView.lJI.findViewById(2131305711);
-          kotlin.g.b.p.g(localObject1, "rootView.findViewById<Vi…(R.id.original_no_layout)");
+          label336:
+          localObject1 = paramAnonymousView.oFW.findViewById(b.f.original_no_layout);
+          p.j(localObject1, "rootView.findViewById<Vi…(R.id.original_no_layout)");
           ((View)localObject1).setClickable(false);
-          localObject1 = (TextView)paramAnonymousView.lJI.findViewById(2131305454);
-          localObject2 = this.wjW.getContext();
-          kotlin.g.b.p.g(localObject2, "context");
-          ((TextView)localObject1).setTextColor(((Context)localObject2).getResources().getColor(2131099685));
+          localObject1 = (TextView)paramAnonymousView.oFW.findViewById(b.f.no_original_title_tv);
+          localObject2 = this.AUQ.getContext();
+          p.j(localObject2, "context");
+          ((TextView)localObject1).setTextColor(((Context)localObject2).getResources().getColor(b.c.BW_70));
         }
       }
       
-      @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$1$1"})
+      @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$1$1"})
       static final class a
         implements View.OnClickListener
       {
-        a(d paramd, FinderChooseOriginalView.1 param1) {}
+        a(e parame, FinderChooseOriginalView.1 param1) {}
         
         public final void onClick(View paramView)
         {
-          AppMethodBeat.i(254680);
+          AppMethodBeat.i(290152);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramView);
-          a.b("com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          jdField_this.wjW.setOriginalFlag(2);
-          this.tru.bMo();
+          localb.bn(paramView);
+          a.c("com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          jdField_this.AUQ.setOriginalFlag(2);
+          this.wZH.bYF();
           a.a(this, "com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(254680);
+          AppMethodBeat.o(290152);
         }
       }
       
-      @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$1$2"})
+      @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$1$2"})
       static final class b
         implements View.OnClickListener
       {
-        b(d paramd, FinderChooseOriginalView.1 param1) {}
+        b(e parame, FinderChooseOriginalView.1 param1) {}
         
         public final void onClick(View paramView)
         {
-          AppMethodBeat.i(254681);
+          AppMethodBeat.i(279722);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramView);
-          a.b("com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          jdField_this.wjW.setOriginalFlag(1);
-          this.tru.bMo();
+          localb.bn(paramView);
+          a.c("com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          jdField_this.AUQ.setOriginalFlag(1);
+          this.wZH.bYF();
           a.a(this, "com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(254681);
+          AppMethodBeat.o(279722);
         }
       }
       
-      @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$1$3"})
+      @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$1$3"})
       static final class c
         implements View.OnClickListener
       {
-        c(d paramd, FinderChooseOriginalView.1 param1) {}
+        c(e parame, FinderChooseOriginalView.1 param1) {}
         
         public final void onClick(View paramView)
         {
-          AppMethodBeat.i(254683);
+          AppMethodBeat.i(281491);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramView);
-          a.b("com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          paramView = new d(jdField_this.wjW.getContext());
-          paramView.Ml(2131494551);
-          paramView.lJI.findViewById(2131298769).setOnClickListener((View.OnClickListener)new View.OnClickListener()
+          localb.bn(paramView);
+          a.c("com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          paramView = new e(jdField_this.AUQ.getContext());
+          paramView.RB(b.g.finder_original_define_bottom_sheet);
+          paramView.oFW.findViewById(b.f.close_bottom_sheet_layout).setOnClickListener((View.OnClickListener)new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
-              AppMethodBeat.i(254682);
+              AppMethodBeat.i(267023);
               com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-              localb.bm(paramAnonymousView);
-              a.b("com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$3$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-              this.tru.bMo();
+              localb.bn(paramAnonymousView);
+              a.c("com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$3$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+              this.wZH.bYF();
               a.a(this, "com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$3$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-              AppMethodBeat.o(254682);
+              AppMethodBeat.o(267023);
             }
           });
-          paramView.dGm();
-          this.tru.bMo();
+          paramView.eik();
+          this.wZH.bYF();
           a.a(this, "com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(254683);
+          AppMethodBeat.o(281491);
         }
       }
     });
-    AppMethodBeat.o(254687);
+    AppMethodBeat.o(291378);
   }
   
   public FinderChooseOriginalView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(254688);
+    AppMethodBeat.i(291379);
     this.TAG = "Finder.FinderChooseOriginalView";
-    this.cSx = 1;
+    this.cUP = 1;
     setOrientation(1);
-    aa.jQ(getContext()).inflate(2131494216, (ViewGroup)this, true);
-    paramContext = findViewById(2131305716);
-    kotlin.g.b.p.g(paramContext, "findViewById(R.id.original_tip_tv)");
-    this.jBS = ((TextView)paramContext);
+    ad.kS(getContext()).inflate(b.g.finder_choose_original_view, (ViewGroup)this, true);
+    paramContext = findViewById(b.f.original_tip_tv);
+    p.j(paramContext, "findViewById(R.id.original_tip_tv)");
+    this.mrN = ((TextView)paramContext);
     setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(254684);
+        AppMethodBeat.i(267924);
         Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject1).bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).axR());
-        paramAnonymousView = new d(this.wjW.getContext());
-        paramAnonymousView.Ml(2131494556);
-        localObject1 = (TextView)paramAnonymousView.lJI.findViewById(2131305720);
-        kotlin.g.b.p.g(localObject1, "titleTv");
-        ao.a((Paint)((TextView)localObject1).getPaint(), 0.8F);
-        localObject1 = paramAnonymousView.lJI.findViewById(2131305721);
-        Object localObject2 = paramAnonymousView.lJI.findViewById(2131305719);
-        if (this.wjW.getFlag() == 1)
+        ((com.tencent.mm.hellhoundlib.b.b)localObject1).bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aFi());
+        paramAnonymousView = new e(this.AUQ.getContext());
+        paramAnonymousView.RB(b.g.finder_original_type_bottom_sheet);
+        localObject1 = (TextView)paramAnonymousView.oFW.findViewById(b.f.original_type_title);
+        p.j(localObject1, "titleTv");
+        ar.a((Paint)((TextView)localObject1).getPaint(), 0.8F);
+        localObject1 = paramAnonymousView.oFW.findViewById(b.f.original_type_yes_iv);
+        Object localObject2 = paramAnonymousView.oFW.findViewById(b.f.original_type_no_iv);
+        if (this.AUQ.getFlag() == 1)
         {
-          kotlin.g.b.p.g(localObject1, "yesIv");
+          p.j(localObject1, "yesIv");
           ((View)localObject1).setVisibility(0);
-          kotlin.g.b.p.g(localObject2, "noIv");
+          p.j(localObject2, "noIv");
           ((View)localObject2).setVisibility(8);
-          localObject1 = com.tencent.mm.plugin.finder.utils.p.vVY;
-          int i = com.tencent.mm.plugin.finder.utils.p.dBU();
-          localObject1 = paramAnonymousView.lJI.findViewById(2131305453);
-          kotlin.g.b.p.g(localObject1, "rootView.findViewById<Te…R.id.no_original_desc_tv)");
-          ((TextView)localObject1).setText((CharSequence)this.wjW.getContext().getString(2131760395, new Object[] { String.valueOf(i) }));
+          localObject1 = v.ADV;
+          int i = v.edi();
+          localObject1 = paramAnonymousView.oFW.findViewById(b.f.no_original_desc_tv);
+          p.j(localObject1, "rootView.findViewById<Te…R.id.no_original_desc_tv)");
+          ((TextView)localObject1).setText((CharSequence)this.AUQ.getContext().getString(b.j.finder_original_type_no_desc, new Object[] { String.valueOf(i) }));
           if (i <= 0) {
-            break label327;
+            break label336;
           }
-          paramAnonymousView.lJI.findViewById(2131305711).setOnClickListener((View.OnClickListener)new a(paramAnonymousView, this));
+          paramAnonymousView.oFW.findViewById(b.f.original_no_layout).setOnClickListener((View.OnClickListener)new a(paramAnonymousView, this));
         }
         for (;;)
         {
-          paramAnonymousView.lJI.findViewById(2131305722).setOnClickListener((View.OnClickListener)new b(paramAnonymousView, this));
-          paramAnonymousView.lJI.findViewById(2131305718).setOnClickListener((View.OnClickListener)new c(paramAnonymousView, this));
-          paramAnonymousView.dGm();
+          paramAnonymousView.oFW.findViewById(b.f.original_yes_layout).setOnClickListener((View.OnClickListener)new b(paramAnonymousView, this));
+          paramAnonymousView.oFW.findViewById(b.f.original_type_help).setOnClickListener((View.OnClickListener)new c(paramAnonymousView, this));
+          paramAnonymousView.eik();
           a.a(this, "com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(254684);
+          AppMethodBeat.o(267924);
           return;
-          kotlin.g.b.p.g(localObject1, "yesIv");
+          p.j(localObject1, "yesIv");
           ((View)localObject1).setVisibility(8);
-          kotlin.g.b.p.g(localObject2, "noIv");
+          p.j(localObject2, "noIv");
           ((View)localObject2).setVisibility(0);
           break;
-          label327:
-          localObject1 = paramAnonymousView.lJI.findViewById(2131305711);
-          kotlin.g.b.p.g(localObject1, "rootView.findViewById<Vi…(R.id.original_no_layout)");
+          label336:
+          localObject1 = paramAnonymousView.oFW.findViewById(b.f.original_no_layout);
+          p.j(localObject1, "rootView.findViewById<Vi…(R.id.original_no_layout)");
           ((View)localObject1).setClickable(false);
-          localObject1 = (TextView)paramAnonymousView.lJI.findViewById(2131305454);
-          localObject2 = this.wjW.getContext();
-          kotlin.g.b.p.g(localObject2, "context");
-          ((TextView)localObject1).setTextColor(((Context)localObject2).getResources().getColor(2131099685));
+          localObject1 = (TextView)paramAnonymousView.oFW.findViewById(b.f.no_original_title_tv);
+          localObject2 = this.AUQ.getContext();
+          p.j(localObject2, "context");
+          ((TextView)localObject1).setTextColor(((Context)localObject2).getResources().getColor(b.c.BW_70));
         }
       }
       
-      @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$1$1"})
+      @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$1$1"})
       static final class a
         implements View.OnClickListener
       {
-        a(d paramd, FinderChooseOriginalView.1 param1) {}
+        a(e parame, FinderChooseOriginalView.1 param1) {}
         
         public final void onClick(View paramView)
         {
-          AppMethodBeat.i(254680);
+          AppMethodBeat.i(290152);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramView);
-          a.b("com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          jdField_this.wjW.setOriginalFlag(2);
-          this.tru.bMo();
+          localb.bn(paramView);
+          a.c("com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          jdField_this.AUQ.setOriginalFlag(2);
+          this.wZH.bYF();
           a.a(this, "com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(254680);
+          AppMethodBeat.o(290152);
         }
       }
       
-      @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$1$2"})
+      @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$1$2"})
       static final class b
         implements View.OnClickListener
       {
-        b(d paramd, FinderChooseOriginalView.1 param1) {}
+        b(e parame, FinderChooseOriginalView.1 param1) {}
         
         public final void onClick(View paramView)
         {
-          AppMethodBeat.i(254681);
+          AppMethodBeat.i(279722);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramView);
-          a.b("com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          jdField_this.wjW.setOriginalFlag(1);
-          this.tru.bMo();
+          localb.bn(paramView);
+          a.c("com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          jdField_this.AUQ.setOriginalFlag(1);
+          this.wZH.bYF();
           a.a(this, "com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(254681);
+          AppMethodBeat.o(279722);
         }
       }
       
-      @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$1$3"})
+      @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$1$3"})
       static final class c
         implements View.OnClickListener
       {
-        c(d paramd, FinderChooseOriginalView.1 param1) {}
+        c(e parame, FinderChooseOriginalView.1 param1) {}
         
         public final void onClick(View paramView)
         {
-          AppMethodBeat.i(254683);
+          AppMethodBeat.i(281491);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramView);
-          a.b("com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          paramView = new d(jdField_this.wjW.getContext());
-          paramView.Ml(2131494551);
-          paramView.lJI.findViewById(2131298769).setOnClickListener((View.OnClickListener)new View.OnClickListener()
+          localb.bn(paramView);
+          a.c("com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          paramView = new e(jdField_this.AUQ.getContext());
+          paramView.RB(b.g.finder_original_define_bottom_sheet);
+          paramView.oFW.findViewById(b.f.close_bottom_sheet_layout).setOnClickListener((View.OnClickListener)new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
-              AppMethodBeat.i(254682);
+              AppMethodBeat.i(267023);
               com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-              localb.bm(paramAnonymousView);
-              a.b("com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$3$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-              this.tru.bMo();
+              localb.bn(paramAnonymousView);
+              a.c("com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$3$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+              this.wZH.bYF();
               a.a(this, "com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$3$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-              AppMethodBeat.o(254682);
+              AppMethodBeat.o(267023);
             }
           });
-          paramView.dGm();
-          this.tru.bMo();
+          paramView.eik();
+          this.wZH.bYF();
           a.a(this, "com/tencent/mm/plugin/finder/view/FinderChooseOriginalView$1$$special$$inlined$apply$lambda$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(254683);
+          AppMethodBeat.o(281491);
         }
       }
     });
-    AppMethodBeat.o(254688);
+    AppMethodBeat.o(291379);
   }
   
   public final int getFlag()
   {
-    return this.cSx;
+    return this.cUP;
   }
   
   public final kotlin.g.a.b<Integer, x> getOnFlagChangedListener()
   {
-    return this.wjV;
+    return this.AUP;
   }
   
   public final TextView getTipTv()
   {
-    return this.jBS;
+    return this.mrN;
   }
   
   public final void setFlag(int paramInt)
   {
-    this.cSx = paramInt;
+    this.cUP = paramInt;
   }
   
   public final void setOnFlagChangedListener(kotlin.g.a.b<? super Integer, x> paramb)
   {
-    this.wjV = paramb;
+    this.AUP = paramb;
   }
   
   public final void setOriginalFlag(int paramInt)
   {
-    AppMethodBeat.i(254686);
-    this.cSx = paramInt;
-    if (this.cSx == 1) {
-      this.jBS.setText(2131760385);
+    AppMethodBeat.i(291377);
+    this.cUP = paramInt;
+    if (this.cUP == 1) {
+      this.mrN.setText(b.j.finder_original_feed_tip);
     }
     for (;;)
     {
-      kotlin.g.a.b localb = this.wjV;
+      kotlin.g.a.b localb = this.AUP;
       if (localb == null) {
         break;
       }
       localb.invoke(Integer.valueOf(paramInt));
-      AppMethodBeat.o(254686);
+      AppMethodBeat.o(291377);
       return;
-      if (this.cSx == 2) {
-        this.jBS.setText(2131760343);
+      if (this.cUP == 2) {
+        this.mrN.setText(b.j.finder_no_original_feed_tip);
       } else {
-        this.jBS.setText((CharSequence)"");
+        this.mrN.setText((CharSequence)"");
       }
     }
-    AppMethodBeat.o(254686);
+    AppMethodBeat.o(291377);
   }
   
   public final void setTipTv(TextView paramTextView)
   {
-    AppMethodBeat.i(254685);
-    kotlin.g.b.p.h(paramTextView, "<set-?>");
-    this.jBS = paramTextView;
-    AppMethodBeat.o(254685);
+    AppMethodBeat.i(291376);
+    p.k(paramTextView, "<set-?>");
+    this.mrN = paramTextView;
+    AppMethodBeat.o(291376);
   }
 }
 

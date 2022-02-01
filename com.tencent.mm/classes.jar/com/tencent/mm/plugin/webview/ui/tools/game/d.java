@@ -1,140 +1,168 @@
 package com.tencent.mm.plugin.webview.ui.tools.game;
 
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.f.a.jj;
+import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class d
+public class d
 {
-  private static final Map<String, Map<Integer, Object>> Jqm;
+  long CvJ;
+  long CvK;
+  private long QnC;
+  Bundle QnD;
+  public a QnE;
+  long mStartTime;
   
-  static
+  public d()
   {
-    AppMethodBeat.i(80872);
-    Jqm = new HashMap();
-    AppMethodBeat.o(80872);
+    AppMethodBeat.i(80856);
+    this.QnC = 0L;
+    this.CvJ = 0L;
+    this.mStartTime = 0L;
+    this.CvK = 0L;
+    this.QnE = new a();
+    AppMethodBeat.o(80856);
   }
   
-  public static void S(String paramString, Map<Integer, Object> paramMap)
+  public static void bj(Bundle paramBundle)
   {
-    AppMethodBeat.i(80869);
-    if (Util.isNullOrNil(paramString))
+    AppMethodBeat.i(80857);
+    if (paramBundle == null)
     {
-      AppMethodBeat.o(80869);
+      AppMethodBeat.o(80857);
       return;
     }
-    Map localMap = (Map)Jqm.get(paramString);
-    if (localMap != null)
+    Object localObject = paramBundle.keySet();
+    if (localObject == null)
     {
-      localMap.putAll(paramMap);
-      AppMethodBeat.o(80869);
+      AppMethodBeat.o(80857);
       return;
     }
-    Jqm.put(paramString, paramMap);
-    AppMethodBeat.o(80869);
-  }
-  
-  public static void a(String paramString, e parame)
-  {
-    AppMethodBeat.i(211314);
-    if (Util.isNullOrNil(paramString))
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      AppMethodBeat.o(211314);
-      return;
-    }
-    TreeMap localTreeMap = new TreeMap(new Comparator() {});
-    localTreeMap.putAll(parame.dTR());
-    localTreeMap.putAll(parame.dTS());
-    parame = (Map)Jqm.remove(paramString);
-    paramString = localTreeMap;
-    if (parame != null)
-    {
-      parame.putAll(localTreeMap);
-      paramString = parame;
-    }
-    if (paramString.containsKey(Integer.valueOf(b.Jqx))) {}
-    for (boolean bool = ((Boolean)paramString.remove(Integer.valueOf(b.Jqx))).booleanValue();; bool = true)
-    {
-      paramString = bP(paramString);
-      Log.i("MicroMsg.GameWebReport", "report web performance. isReportNow: %b, reportData: [%s]", new Object[] { Boolean.valueOf(bool), paramString });
-      h.CyF.a(16142, paramString, bool, false);
-      AppMethodBeat.o(211314);
-      return;
-    }
-  }
-  
-  public static String bP(Map<Integer, Object> paramMap)
-  {
-    AppMethodBeat.i(80871);
-    if ((paramMap == null) || (paramMap.isEmpty()))
-    {
-      AppMethodBeat.o(80871);
-      return "";
-    }
-    int j = ((Integer)Collections.max(paramMap.keySet())).intValue();
-    int i = ((Integer)Collections.min(paramMap.keySet())).intValue();
-    j = Math.min(j, 200);
-    StringBuffer localStringBuffer = new StringBuffer();
-    while (i <= j)
-    {
-      Object localObject = paramMap.get(Integer.valueOf(i));
-      if (localObject != null) {
-        localStringBuffer.append(localObject);
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str = (String)((Iterator)localObject).next();
+        localJSONObject.put(str, paramBundle.get(str));
       }
-      localStringBuffer.append(",");
-      i += 1;
+      paramBundle = new jj();
     }
-    if (localStringBuffer.length() > 0) {
-      localStringBuffer.deleteCharAt(localStringBuffer.length() - 1);
+    catch (JSONException paramBundle)
+    {
+      AppMethodBeat.o(80857);
+      return;
     }
-    paramMap = localStringBuffer.toString();
-    AppMethodBeat.o(80871);
-    return paramMap;
+    paramBundle.fGE.Vh = 4;
+    paramBundle.fGE.param = localJSONObject.toString();
+    EventCenter.instance.publish(paramBundle);
+    AppMethodBeat.o(80857);
   }
   
-  public static enum a
+  private String bmG(String paramString)
   {
-    public static int Jqn = 21;
-    public static int Jqo = 22;
-    public static int Jqp = 23;
-    public static int Jqq = 24;
-    public static int Jqr = 25;
-    public static int Jqs = 26;
-    public static int Jqt = 27;
-    public static int Jqu = 28;
-    public static int Jqv = 29;
+    AppMethodBeat.i(80858);
+    Matcher localMatcher = Pattern.compile("\\(.*?\\)").matcher(paramString);
+    while (localMatcher.find()) {
+      try
+      {
+        String str2 = Util.nullAsNil(localMatcher.group());
+        String str1 = str2.replace("(", "").replace(")", "").replace(" ", "");
+        String[] arrayOfString;
+        if (str1.contains("__ALLSTAYTIME__"))
+        {
+          str1 = str1.replace("__ALLSTAYTIME__", String.valueOf(this.QnC / 1000L));
+          arrayOfString = str1.split("\\+");
+          if (arrayOfString.length == 2) {
+            str1 = String.valueOf(Util.safeParseLong(arrayOfString[0]) + Util.safeParseLong(arrayOfString[1]));
+          }
+          paramString = paramString.replace(str2, str1);
+        }
+        else if (str2.contains("__FOREGROUNDTIME__"))
+        {
+          str1 = str1.replace("__FOREGROUNDTIME__", String.valueOf(this.CvJ / 1000L));
+          arrayOfString = str1.split("\\+");
+          if (arrayOfString.length == 2) {
+            str1 = String.valueOf(Util.safeParseLong(arrayOfString[0]) + Util.safeParseLong(arrayOfString[1]));
+          }
+          paramString = paramString.replace(str2, str1);
+        }
+      }
+      catch (NumberFormatException paramString)
+      {
+        Log.i("MicroMsg.GamePageTimeReport", "matchTimeMark, err:%s", new Object[] { paramString.getMessage() });
+        AppMethodBeat.o(80858);
+        return null;
+      }
+    }
+    AppMethodBeat.o(80858);
+    return paramString;
   }
   
-  public static enum b
+  protected void ah(Bundle paramBundle) {}
+  
+  public final class a
   {
-    public static int JqA = 32;
-    public static int JqB = 33;
-    public static int JqC = 34;
-    public static int JqD = 38;
-    public static int JqE = 39;
-    public static int JqF = 40;
-    public static int JqG = 41;
-    public static int JqH = 42;
-    public static int JqI = 43;
-    public static int JqJ = 44;
-    public static int JqK = 45;
-    public static int JqL = 49;
-    public static int JqM = 50;
-    public static int JqN = 51;
-    public static int JqO = 52;
-    public static int JqP = 53;
-    public static int JqQ = 54;
-    public static int JqR = 55;
-    public static int JqS = 56;
-    public static int Jqx = 1000;
-    public static int Jqy = 30;
-    public static int Jqz = 31;
+    public a() {}
+    
+    public final void OR()
+    {
+      AppMethodBeat.i(80852);
+      d.this.mStartTime = System.currentTimeMillis();
+      d.this.CvK = System.currentTimeMillis();
+      AppMethodBeat.o(80852);
+    }
+    
+    public final void bk(Bundle paramBundle)
+    {
+      AppMethodBeat.i(80853);
+      d.this.QnD = paramBundle;
+      Log.i("MicroMsg.GamePageTimeReport", "setGamePageReportData");
+      if ((paramBundle != null) && (paramBundle.getBoolean("game_page_report_time_begin")))
+      {
+        d.this.CvJ = 0L;
+        d.this.mStartTime = System.currentTimeMillis();
+        d.this.CvK = System.currentTimeMillis();
+      }
+      AppMethodBeat.o(80853);
+    }
+    
+    public final void hay()
+    {
+      d.this.QnD = null;
+      d.this.mStartTime = 0L;
+      d.this.CvJ = 0L;
+      d.this.mStartTime = 0L;
+      d.this.CvK = 0L;
+    }
+    
+    public final void onPause()
+    {
+      AppMethodBeat.i(80855);
+      if (d.this.CvK != 0L) {
+        d.this.CvJ += System.currentTimeMillis() - d.this.CvK;
+      }
+      AppMethodBeat.o(80855);
+    }
+    
+    public final void onResume()
+    {
+      AppMethodBeat.i(80854);
+      if (d.this.CvK != 0L) {
+        d.this.CvK = System.currentTimeMillis();
+      }
+      AppMethodBeat.o(80854);
+    }
   }
 }
 

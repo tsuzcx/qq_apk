@@ -7,13 +7,13 @@ public class e
   
   public e()
   {
-    this.qPN = "-1";
+    this.urT = "-1";
     this.type = 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.a.e
  * JD-Core Version:    0.7.0.1
  */

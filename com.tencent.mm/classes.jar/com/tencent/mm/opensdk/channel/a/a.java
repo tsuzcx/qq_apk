@@ -12,31 +12,31 @@ public class a
 {
   public static Object a(int paramInt, String paramString)
   {
-    AppMethodBeat.i(190382);
+    AppMethodBeat.i(254615);
     switch (paramInt)
     {
     }
     try
     {
       Log.e("MicroMsg.SDK.PluginProvider.Resolver", "unknown type");
-      AppMethodBeat.o(190382);
+      AppMethodBeat.o(254615);
       return null;
       paramString = Double.valueOf(paramString);
-      AppMethodBeat.o(190382);
+      AppMethodBeat.o(254615);
       return paramString;
       paramString = Float.valueOf(paramString);
-      AppMethodBeat.o(190382);
+      AppMethodBeat.o(254615);
       return paramString;
       paramString = Boolean.valueOf(paramString);
-      AppMethodBeat.o(190382);
+      AppMethodBeat.o(254615);
       return paramString;
-      AppMethodBeat.o(190382);
+      AppMethodBeat.o(254615);
       return paramString;
       paramString = Long.valueOf(paramString);
-      AppMethodBeat.o(190382);
+      AppMethodBeat.o(254615);
       return paramString;
       paramString = Integer.valueOf(paramString);
-      AppMethodBeat.o(190382);
+      AppMethodBeat.o(254615);
       return paramString;
     }
     catch (Exception paramString)
@@ -51,16 +51,16 @@ public class a
   public static String a(Bundle paramBundle, String paramString)
   {
     Object localObject = null;
-    AppMethodBeat.i(190381);
+    AppMethodBeat.i(254611);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(190381);
+      AppMethodBeat.o(254611);
       return null;
     }
     try
     {
       paramBundle = paramBundle.getString(paramString);
-      AppMethodBeat.o(190381);
+      AppMethodBeat.o(254611);
       return paramBundle;
     }
     catch (Exception paramBundle)
@@ -94,11 +94,11 @@ public class a
         localIntent.putExtras((Bundle)localObject);
       }
       localObject = paramContext.getPackageName();
-      localIntent.putExtra("_mmessage_sdkVersion", 637928960);
+      localIntent.putExtra("_mmessage_sdkVersion", 637992960);
       localIntent.putExtra("_mmessage_appPackage", (String)localObject);
       localIntent.putExtra("_mmessage_content", parama.c);
       localIntent.putExtra("_mmessage_support_content_type", parama.d);
-      localIntent.putExtra("_mmessage_checksum", a(parama.c, 637928960, (String)localObject));
+      localIntent.putExtra("_mmessage_checksum", a(parama.c, 637992960, (String)localObject));
       paramContext.sendBroadcast(localIntent, str);
       Log.d("MicroMsg.SDK.MMessage", "send mm message, intent=" + localIntent + ", perm=" + str);
       AppMethodBeat.o(3827);
@@ -634,7 +634,7 @@ public class a
   
   public static byte[] a(String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(190379);
+    AppMethodBeat.i(254601);
     Object localObject = new StringBuffer();
     if (paramString1 != null) {
       ((StringBuffer)localObject).append(paramString1);
@@ -681,7 +681,7 @@ public class a
       }
       paramString1 = new String((char[])localObject);
       paramString1 = paramString1.getBytes();
-      AppMethodBeat.o(190379);
+      AppMethodBeat.o(254601);
       return paramString1;
       while (paramInt < j)
       {
@@ -706,7 +706,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.channel.a.a
  * JD-Core Version:    0.7.0.1
  */

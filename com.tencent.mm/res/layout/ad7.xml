@@ -26,5 +26,5 @@
         <SeekBar android:id="@id/coe" android:layout_width="200.0dip" android:layout_height="wrap_content" android:max="100" />
         <TextView android:id="@id/coj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/ct" />
     </LinearLayout>
-    <android.support.v7.widget.RecyclerView android:id="@id/cik" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/cik" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </LinearLayout>

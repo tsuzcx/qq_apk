@@ -1,86 +1,138 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
+import java.util.LinkedList;
 
 public final class dsl
-  extends com.tencent.mm.bw.a
+  extends dyl
 {
-  public String MUO;
-  public int MUP;
-  public String dSf;
+  public String RUi;
+  public String RUp;
+  public int time_stamp;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152686);
+    AppMethodBeat.i(124544);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.MUO != null) {
-        paramVarArgs.e(1, this.MUO);
+      if (this.RUp == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: brand_user_name");
+        AppMethodBeat.o(124544);
+        throw paramVarArgs;
       }
-      if (this.dSf != null) {
-        paramVarArgs.e(2, this.dSf);
+      if (this.RUi == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: bizchat_id");
+        AppMethodBeat.o(124544);
+        throw paramVarArgs;
       }
-      paramVarArgs.aM(3, this.MUP);
-      AppMethodBeat.o(152686);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
+      }
+      if (this.RUp != null) {
+        paramVarArgs.f(2, this.RUp);
+      }
+      if (this.RUi != null) {
+        paramVarArgs.f(3, this.RUi);
+      }
+      paramVarArgs.aY(4, this.time_stamp);
+      AppMethodBeat.o(124544);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.MUO == null) {
-        break label318;
+      if (this.BaseRequest == null) {
+        break label548;
       }
     }
-    label318:
-    for (paramInt = g.a.a.b.b.a.f(1, this.MUO) + 0;; paramInt = 0)
+    label548:
+    for (int i = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.dSf != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.dSf);
+      paramInt = i;
+      if (this.RUp != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.RUp);
       }
-      paramInt = g.a.a.b.b.a.bu(3, this.MUP);
-      AppMethodBeat.o(152686);
+      i = paramInt;
+      if (this.RUi != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.RUi);
+      }
+      paramInt = g.a.a.b.b.a.bM(4, this.time_stamp);
+      AppMethodBeat.o(124544);
       return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(152686);
+        if (this.RUp == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: brand_user_name");
+          AppMethodBeat.o(124544);
+          throw paramVarArgs;
+        }
+        if (this.RUi == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: bizchat_id");
+          AppMethodBeat.o(124544);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(124544);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         dsl localdsl = (dsl)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(152686);
+          AppMethodBeat.o(124544);
           return -1;
         case 1: 
-          localdsl.MUO = locala.UbS.readString();
-          AppMethodBeat.o(152686);
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            jg localjg = new jg();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localjg.parseFrom((byte[])localObject);
+            }
+            localdsl.BaseRequest = localjg;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(124544);
           return 0;
         case 2: 
-          localdsl.dSf = locala.UbS.readString();
-          AppMethodBeat.o(152686);
+          localdsl.RUp = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(124544);
+          return 0;
+        case 3: 
+          localdsl.RUi = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(124544);
           return 0;
         }
-        localdsl.MUP = locala.UbS.zi();
-        AppMethodBeat.o(152686);
+        localdsl.time_stamp = ((g.a.a.a.a)localObject).abFh.AK();
+        AppMethodBeat.o(124544);
         return 0;
       }
-      AppMethodBeat.o(152686);
+      AppMethodBeat.o(124544);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dsl
  * JD-Core Version:    0.7.0.1
  */

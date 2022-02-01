@@ -16,9 +16,9 @@ import java.util.ArrayList;
 public final class GalleryEntryUI
   extends HellActivity
 {
-  private int het;
+  private int CaM;
+  private int jQj;
   private boolean mInit = false;
-  private int xos;
   
   protected final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
@@ -59,11 +59,11 @@ public final class GalleryEntryUI
     Log.i("MicroMsg.GalleryEntryUI", "on create");
     super.onCreate(paramBundle);
     Log.i("MicroMsg.GalleryEntryUI", "checktask onCreate:%s#0x%x task:%s", new Object[] { getClass().getSimpleName(), Integer.valueOf(hashCode()), Util.getActivityTaskInfo(this) });
-    this.het = getIntent().getIntExtra("query_source_type", 3);
-    this.xos = getIntent().getIntExtra("query_media_type", 1);
-    Log.i("MicroMsg.GalleryEntryUI", "query souce: " + this.het + ", queryType: " + this.xos);
-    e.dQK().setQueryType(this.xos);
-    e.dQK().mcq = this.het;
+    this.jQj = getIntent().getIntExtra("query_source_type", 3);
+    this.CaM = getIntent().getIntExtra("query_media_type", 1);
+    Log.i("MicroMsg.GalleryEntryUI", "query souce: " + this.jQj + ", queryType: " + this.CaM);
+    e.etl().setQueryType(this.CaM);
+    e.etl().pag = this.jQj;
     AppMethodBeat.o(111501);
   }
   
@@ -102,7 +102,7 @@ public final class GalleryEntryUI
       Intent localIntent = new Intent(this, ImagePreviewUI.class);
       localIntent.addFlags(67108864);
       localIntent.putExtra("max_select_count", ((Intent)localObject).getIntExtra("max_select_count", 9));
-      localIntent.putExtra("query_source_type", this.het);
+      localIntent.putExtra("query_source_type", this.jQj);
       localIntent.putExtra("isPreviewPhoto", ((Intent)localObject).getBooleanExtra("isPreviewPhoto", false));
       localIntent.putExtra("preview_image", ((Intent)localObject).getBooleanExtra("preview_image", false));
       localIntent.putExtra("key_force_hide_edit_image_button", getIntent().getBooleanExtra("key_force_hide_edit_image_button", false));
@@ -154,7 +154,7 @@ public final class GalleryEntryUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.GalleryEntryUI
  * JD-Core Version:    0.7.0.1
  */

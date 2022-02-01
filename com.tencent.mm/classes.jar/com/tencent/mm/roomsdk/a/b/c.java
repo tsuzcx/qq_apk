@@ -6,60 +6,60 @@ import java.util.List;
 public abstract class c
   implements a<c>
 {
-  public String KHy = "";
+  public String RIR = "";
   public String chatroomName = null;
-  public int dRN = 0;
-  public List<String> dSU = new LinkedList();
-  public List<String> dSX = new LinkedList();
-  public List<String> dSZ = new LinkedList();
-  public List<String> dTa = new LinkedList();
-  public List<String> grX = new LinkedList();
-  public List<String> grY = new LinkedList();
-  public List<String> grZ = new LinkedList();
+  public int fLk = 0;
+  public List<String> fMr = new LinkedList();
+  public List<String> fMt = new LinkedList();
+  public List<String> fMv = new LinkedList();
+  public List<String> fMw = new LinkedList();
+  public List<String> iWi = new LinkedList();
+  public List<String> iWj = new LinkedList();
+  public List<String> iWk = new LinkedList();
   
-  public final List<String> gvH()
+  public final List<String> hrF()
   {
-    return this.dSX;
+    return this.fMt;
   }
   
-  public final List<String> gvI()
+  public final List<String> hrG()
   {
-    return this.grY;
+    return this.iWj;
   }
   
-  public final List<String> gvJ()
+  public final List<String> hrH()
   {
-    return this.dSZ;
+    return this.fMv;
   }
   
-  public final List<String> gvK()
+  public final List<String> hrI()
   {
-    return this.dTa;
+    return this.fMw;
   }
   
-  public final List<String> gvL()
+  public final List<String> hrJ()
   {
-    return this.grZ;
+    return this.iWk;
   }
   
-  public final List<String> gvM()
+  public final List<String> hrK()
   {
-    return this.grX;
+    return this.iWi;
   }
   
-  public final String gvN()
+  public final String hrL()
   {
     return this.chatroomName;
   }
   
-  public final int gvO()
+  public final int hrM()
   {
-    return this.dRN;
+    return this.fLk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.roomsdk.a.b.c
  * JD-Core Version:    0.7.0.1
  */

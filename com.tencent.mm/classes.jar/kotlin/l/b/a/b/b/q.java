@@ -13,19 +13,19 @@ public final class q
   public static final e a(y paramy, b paramb, a parama)
   {
     AppMethodBeat.i(56850);
-    p.h(paramy, "$this$resolveClassByFqName");
-    p.h(paramb, "fqName");
-    p.h(parama, "lookupLocation");
-    if (paramb.TCR.TCW.isEmpty())
+    p.k(paramy, "$this$resolveClassByFqName");
+    p.k(paramb, "fqName");
+    p.k(parama, "lookupLocation");
+    if (paramb.abfE.abfJ.isEmpty())
     {
       AppMethodBeat.o(56850);
       return null;
     }
-    Object localObject1 = paramb.hJf();
-    p.g(localObject1, "fqName.parent()");
-    localObject1 = paramy.e((b)localObject1).hAp();
-    Object localObject2 = paramb.hJg();
-    p.g(localObject2, "fqName.shortName()");
+    Object localObject1 = paramb.iNz();
+    p.j(localObject1, "fqName.parent()");
+    localObject1 = paramy.e((b)localObject1).iEC();
+    Object localObject2 = paramb.iNA();
+    p.j(localObject2, "fqName.shortName()");
     localObject2 = ((h)localObject1).c((f)localObject2, parama);
     localObject1 = localObject2;
     if (!(localObject2 instanceof e)) {
@@ -37,16 +37,16 @@ public final class q
       AppMethodBeat.o(56850);
       return localObject1;
     }
-    localObject1 = paramb.hJf();
-    p.g(localObject1, "fqName.parent()");
+    localObject1 = paramb.iNz();
+    p.j(localObject1, "fqName.parent()");
     paramy = a(paramy, (b)localObject1, parama);
     if (paramy != null)
     {
-      paramy = paramy.hAN();
+      paramy = paramy.iFa();
       if (paramy != null)
       {
-        paramb = paramb.hJg();
-        p.g(paramb, "fqName.shortName()");
+        paramb = paramb.iNA();
+        p.j(paramb, "fqName.shortName()");
       }
     }
     for (paramy = paramy.c(paramb, parama);; paramy = null)
@@ -63,7 +63,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.q
  * JD-Core Version:    0.7.0.1
  */

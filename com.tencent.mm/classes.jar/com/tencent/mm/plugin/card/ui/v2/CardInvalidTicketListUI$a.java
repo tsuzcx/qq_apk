@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.card.ui.v2;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/card/ui/v2/CardInvalidTicketListUI$Companion;", "", "()V", "TAG", "", "plugin-card_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/card/ui/v2/CardInvalidTicketListUI$Companion;", "", "()V", "TAG", "", "plugin-card_release"})
 public final class CardInvalidTicketListUI$a {}
 
 

@@ -1,33 +1,33 @@
 package com.tencent.mm.plugin.appbrand.widget.tabbar;
 
 import android.graphics.Bitmap;
-import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.appbrand.v;
 
 public abstract class d
 {
   int index = -1;
-  s kGT;
-  String oFe;
-  c oFf;
-  a oFg;
-  protected volatile e oFh;
+  v nAz;
+  String rGO;
+  c rGP;
+  a rGQ;
+  protected volatile e rGR;
   
   public d(String paramString, c paramc)
   {
-    this.oFe = paramString;
-    this.oFf = paramc;
+    this.rGO = paramString;
+    this.rGP = paramc;
   }
   
-  public d(String paramString, c paramc, s params)
+  public d(String paramString, c paramc, v paramv)
   {
-    this.oFe = paramString;
-    this.kGT = params;
-    this.oFf = paramc;
+    this.rGO = paramString;
+    this.nAz = paramv;
+    this.rGP = paramc;
   }
   
-  protected final void X(Bitmap paramBitmap)
+  protected final void V(Bitmap paramBitmap)
   {
-    e locale = this.oFh;
+    e locale = this.rGR;
     if (locale != null) {
       locale.a(paramBitmap, this);
     }
@@ -35,27 +35,27 @@ public abstract class d
   
   public final void a(a parama)
   {
-    this.oFg = parama;
+    this.rGQ = parama;
   }
   
   public final void a(e parame)
   {
-    this.oFh = parame;
+    this.rGR = parame;
   }
   
   public final void cancel()
   {
-    this.oFh = null;
+    this.rGR = null;
   }
   
-  public abstract void cdf();
+  public abstract void cqr();
   
-  public final String cdg()
+  public final String cqs()
   {
-    if ((this.oFe == null) || (this.oFe.isEmpty())) {
+    if ((this.rGO == null) || (this.rGO.isEmpty())) {
       return null;
     }
-    return this.oFe;
+    return this.rGO;
   }
   
   public final void setIndex(int paramInt)
@@ -70,7 +70,7 @@ public abstract class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.tabbar.d
  * JD-Core Version:    0.7.0.1
  */

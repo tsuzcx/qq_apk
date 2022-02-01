@@ -24,15 +24,12 @@ class MP3Header
   MP3Header()
   {
     AppMethodBeat.i(114320);
-    int[] arrayOfInt1 = { 0, 32, 64, 96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448 };
-    int[] arrayOfInt2 = { 0, 32, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 384 };
-    int[] arrayOfInt3 = { 0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320 };
-    Object localObject = { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 };
-    localObject = new int[][] { { 0, 32, 48, 56, 64, 80, 96, 112, 128, 144, 160, 176, 192, 224, 256 }, localObject, { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 } };
-    this.bitrate = new int[][][] { { arrayOfInt1, arrayOfInt2, arrayOfInt3 }, localObject };
-    arrayOfInt1 = new int[] { 11025, 12000, 8000, 0 };
-    arrayOfInt2 = new int[] { 44100, 48000, 32000, 0 };
-    this.samplingRate = new int[][] { arrayOfInt1, { 0, 0, 0, 0 }, { 22050, 24000, 16000, 0 }, arrayOfInt2 };
+    Object localObject = { { 0, 32, 64, 96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448 }, { 0, 32, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 384 }, { 0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320 } };
+    int[] arrayOfInt = { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 };
+    this.bitrate = new int[][][] { localObject, { { 0, 32, 48, 56, 64, 80, 96, 112, 128, 144, 160, 176, 192, 224, 256 }, arrayOfInt, { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 } } };
+    arrayOfInt = new int[] { 11025, 12000, 8000, 0 };
+    localObject = new int[] { 44100, 48000, 32000, 0 };
+    this.samplingRate = new int[][] { arrayOfInt, { 0, 0, 0, 0 }, { 22050, 24000, 16000, 0 }, localObject };
     AppMethodBeat.o(114320);
   }
   
@@ -105,7 +102,7 @@ class MP3Header
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.codec.mp3.MP3Header
  * JD-Core Version:    0.7.0.1
  */

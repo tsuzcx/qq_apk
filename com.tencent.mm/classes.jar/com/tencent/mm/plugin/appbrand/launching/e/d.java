@@ -5,7 +5,7 @@ import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.report.w;
+import com.tencent.mm.plugin.appbrand.report.x;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -17,31 +17,31 @@ import java.util.concurrent.TimeUnit;
 public final class d
   extends a
 {
-  private static final Map<String, d> mZi;
+  private static final Map<String, d> pZG;
   private final WeakReference<Context> mContextRef;
-  private final String mZj;
-  private final String mZk;
+  private final String pZH;
+  private final String pZI;
   
   static
   {
     AppMethodBeat.i(47452);
-    mZi = new ConcurrentHashMap();
+    pZG = new ConcurrentHashMap();
     AppMethodBeat.o(47452);
   }
   
   d(Context paramContext, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(47449);
-    this.mZj = paramString;
-    this.mZk = paramContext.getClass().getName();
+    this.pZH = paramString;
+    this.pZI = paramContext.getClass().getName();
     this.mContextRef = new WeakReference(paramContext);
-    this.mYV = paramBoolean;
-    mZi.put(paramString, this);
+    this.pZt = paramBoolean;
+    pZG.put(paramString, this);
     new a(paramString).startTimer(TimeUnit.SECONDS.toMillis(300L));
     AppMethodBeat.o(47449);
   }
   
-  public static d acl(String paramString)
+  public static d akf(String paramString)
   {
     AppMethodBeat.i(47448);
     if (Util.isNullOrNil(paramString))
@@ -49,17 +49,9 @@ public final class d
       AppMethodBeat.o(47448);
       return null;
     }
-    paramString = (d)mZi.remove(paramString);
+    paramString = (d)pZG.remove(paramString);
     AppMethodBeat.o(47448);
     return paramString;
-  }
-  
-  protected final Context bOf()
-  {
-    AppMethodBeat.i(47451);
-    Context localContext = (Context)this.mContextRef.get();
-    AppMethodBeat.o(47451);
-    return localContext;
   }
   
   protected final void c(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
@@ -68,10 +60,18 @@ public final class d
     super.c(paramAppBrandInitConfigWC, paramAppBrandStatObject);
     if (paramAppBrandInitConfigWC != null)
     {
-      paramAppBrandStatObject = w.nHZ;
-      w.i(paramAppBrandInitConfigWC);
+      paramAppBrandStatObject = x.qKl;
+      x.g(paramAppBrandInitConfigWC);
     }
     AppMethodBeat.o(47450);
+  }
+  
+  protected final Context caz()
+  {
+    AppMethodBeat.i(47451);
+    Context localContext = (Context)this.mContextRef.get();
+    AppMethodBeat.o(47451);
+    return localContext;
   }
   
   static final class a
@@ -84,9 +84,9 @@ public final class d
         public final boolean onTimerExpired()
         {
           AppMethodBeat.i(47446);
-          d locald = d.acl(d.a.this);
+          d locald = d.akf(d.a.this);
           if (locald != null) {
-            locald.bOc();
+            locald.caw();
           }
           AppMethodBeat.o(47446);
           return false;
@@ -99,7 +99,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.e.d
  * JD-Core Version:    0.7.0.1
  */

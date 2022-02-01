@@ -31,7 +31,7 @@ public final class FacebookRequestError
   public static final int INVALID_ERROR_CODE = -1;
   public static final int INVALID_HTTP_STATUS_CODE = -1;
   private final Object batchRequestResult;
-  private final FacebookRequestError.Category category;
+  private final Category category;
   private final HttpURLConnection connection;
   private final int errorCode;
   private final String errorMessage;
@@ -92,7 +92,7 @@ public final class FacebookRequestError
       }
     }
     label145:
-    for (paramString1 = FacebookRequestError.Category.OTHER;; paramString1 = paramString2.classify(paramInt2, paramInt3, paramBoolean))
+    for (paramString1 = Category.OTHER;; paramString1 = paramString2.classify(paramInt2, paramInt3, paramBoolean))
     {
       this.category = paramString1;
       this.errorRecoveryMessage = paramString2.getRecoveryMessage(this.category);
@@ -203,25 +203,25 @@ public final class FacebookRequestError
     //   0: ldc 2
     //   2: monitorenter
     //   3: sipush 17029
-    //   6: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: invokestatic 219	com/facebook/FacebookSdk:getApplicationId	()Ljava/lang/String;
-    //   12: invokestatic 225	com/facebook/internal/FetchedAppSettingsManager:getAppSettingsWithoutQuery	(Ljava/lang/String;)Lcom/facebook/internal/FetchedAppSettings;
+    //   6: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: invokestatic 220	com/facebook/FacebookSdk:getApplicationId	()Ljava/lang/String;
+    //   12: invokestatic 226	com/facebook/internal/FetchedAppSettingsManager:getAppSettingsWithoutQuery	(Ljava/lang/String;)Lcom/facebook/internal/FetchedAppSettings;
     //   15: astore_0
     //   16: aload_0
     //   17: ifnonnull +18 -> 35
-    //   20: invokestatic 228	com/facebook/internal/FacebookRequestErrorClassification:getDefaultErrorClassification	()Lcom/facebook/internal/FacebookRequestErrorClassification;
+    //   20: invokestatic 229	com/facebook/internal/FacebookRequestErrorClassification:getDefaultErrorClassification	()Lcom/facebook/internal/FacebookRequestErrorClassification;
     //   23: astore_0
     //   24: sipush 17029
-    //   27: invokestatic 100	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   27: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   30: ldc 2
     //   32: monitorexit
     //   33: aload_0
     //   34: areturn
     //   35: aload_0
-    //   36: invokevirtual 231	com/facebook/internal/FetchedAppSettings:getErrorClassification	()Lcom/facebook/internal/FacebookRequestErrorClassification;
+    //   36: invokevirtual 232	com/facebook/internal/FetchedAppSettings:getErrorClassification	()Lcom/facebook/internal/FacebookRequestErrorClassification;
     //   39: astore_0
     //   40: sipush 17029
-    //   43: invokestatic 100	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   43: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   46: goto -16 -> 30
     //   49: astore_0
     //   50: ldc 2
@@ -249,7 +249,7 @@ public final class FacebookRequestError
     return this.batchRequestResult;
   }
   
-  public final FacebookRequestError.Category getCategory()
+  public final Category getCategory()
   {
     return this.category;
   }
@@ -344,6 +344,21 @@ public final class FacebookRequestError
     AppMethodBeat.o(17030);
   }
   
+  public static enum Category
+  {
+    static
+    {
+      AppMethodBeat.i(17023);
+      LOGIN_RECOVERABLE = new Category("LOGIN_RECOVERABLE", 0);
+      OTHER = new Category("OTHER", 1);
+      TRANSIENT = new Category("TRANSIENT", 2);
+      $VALUES = new Category[] { LOGIN_RECOVERABLE, OTHER, TRANSIENT };
+      AppMethodBeat.o(17023);
+    }
+    
+    private Category() {}
+  }
+  
   static class Range
   {
     private final int end;
@@ -363,7 +378,7 @@ public final class FacebookRequestError
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.FacebookRequestError
  * JD-Core Version:    0.7.0.1
  */

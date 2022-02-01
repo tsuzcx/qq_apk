@@ -14,29 +14,29 @@ public final class c
   implements ITPAssetResourceLoadingDataRequest
 {
   private static String TAG = "TPAssetResourceLoadingDataRequest";
-  int RZY;
-  private long Sae;
-  private long Saf;
-  private boolean Sag;
-  private volatile long Sah;
-  private long Sai;
-  b Saj;
-  String Sak;
+  int ZCI;
+  private long ZCO;
+  private long ZCP;
+  private boolean ZCQ;
+  private volatile long ZCR;
+  private long ZCS;
+  b ZCT;
+  String ZCU;
   private volatile long mCurrentOffset;
   private RandomAccessFile mRandomAccessFile;
   
   public c(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    this.Sae = paramLong1;
+    this.ZCO = paramLong1;
     this.mCurrentOffset = paramLong1;
-    this.Sah = paramLong1;
-    this.Saf = paramLong2;
-    this.Sag = paramBoolean;
+    this.ZCR = paramLong1;
+    this.ZCP = paramLong2;
+    this.ZCQ = paramBoolean;
   }
   
   private boolean a(long paramLong, byte[] paramArrayOfByte, String paramString)
   {
-    AppMethodBeat.i(189264);
+    AppMethodBeat.i(220709);
     boolean bool2 = false;
     for (;;)
     {
@@ -103,13 +103,13 @@ public final class c
         bool1 = bool2;
       }
     }
-    AppMethodBeat.o(189264);
+    AppMethodBeat.o(220709);
     return bool1;
     try
     {
       this.mRandomAccessFile.close();
       label203:
-      AppMethodBeat.o(189264);
+      AppMethodBeat.o(220709);
       throw paramArrayOfByte;
     }
     catch (IOException paramString)
@@ -121,7 +121,7 @@ public final class c
     }
   }
   
-  public final int OF(long paramLong)
+  public final int WV(long paramLong)
   {
     int i = -1;
     for (;;)
@@ -129,24 +129,24 @@ public final class c
       long l;
       try
       {
-        AppMethodBeat.i(189261);
-        l = this.Sah;
+        AppMethodBeat.i(220700);
+        l = this.ZCR;
         if (paramLong >= l)
         {
-          AppMethodBeat.o(189261);
+          AppMethodBeat.o(220700);
           return i;
         }
-        if (paramLong < this.Sae)
+        if (paramLong < this.ZCO)
         {
           g.e(TAG, "Offset less than mRequestedOffset");
-          AppMethodBeat.o(189261);
+          AppMethodBeat.o(220700);
           continue;
         }
         i = (int)Math.min(1048576L, l - paramLong);
       }
       finally {}
-      g.i(TAG, "getDataReadyLength, readyLength:" + i + ", realOffset:" + l + ", requestOffset:" + paramLong + ", requestNum:" + this.RZY);
-      AppMethodBeat.o(189261);
+      g.i(TAG, "getDataReadyLength, readyLength:" + i + ", realOffset:" + l + ", requestOffset:" + paramLong + ", requestNum:" + this.ZCI);
+      AppMethodBeat.o(220700);
     }
   }
   
@@ -157,17 +157,17 @@ public final class c
   
   public final int getRequestNum()
   {
-    return this.RZY;
+    return this.ZCI;
   }
   
   public final long getRequestedLength()
   {
-    return this.Saf;
+    return this.ZCP;
   }
   
   public final long getRequestedOffset()
   {
-    return this.Sae;
+    return this.ZCO;
   }
   
   public final void notifyDataReady(long paramLong1, long paramLong2)
@@ -176,63 +176,63 @@ public final class c
     {
       try
       {
-        AppMethodBeat.i(189262);
-        if (paramLong1 + paramLong2 > this.Sae + this.Saf)
+        AppMethodBeat.i(220704);
+        if (paramLong1 + paramLong2 > this.ZCO + this.ZCP)
         {
           g.e(TAG, "data exceed the max request offset");
-          AppMethodBeat.o(189262);
+          AppMethodBeat.o(220704);
           return;
         }
-        if (paramLong1 < this.Sae) {
+        if (paramLong1 < this.ZCO) {
           g.w(TAG, "the notify data offset is less than request offset");
         }
         if (paramLong1 + paramLong2 < this.mCurrentOffset)
         {
           g.e(TAG, "data not reach current offset");
-          AppMethodBeat.o(189262);
+          AppMethodBeat.o(220704);
           continue;
         }
         this.mCurrentOffset = (paramLong1 + paramLong2);
       }
       finally {}
-      this.Sah = this.mCurrentOffset;
-      g.i(TAG, "notifyDataReady, mRealOffset: " + this.Sah + ", readyOffset:" + paramLong1 + ", readyLength:" + paramLong2 + ", requestNum:" + this.RZY);
-      AppMethodBeat.o(189262);
+      this.ZCR = this.mCurrentOffset;
+      g.i(TAG, "notifyDataReady, mRealOffset: " + this.ZCR + ", readyOffset:" + paramLong1 + ", readyLength:" + paramLong2 + ", requestNum:" + this.ZCI);
+      AppMethodBeat.o(220704);
     }
   }
   
   public final void respondWithData(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(189263);
-    if (this.Sai > this.Saf)
+    AppMethodBeat.i(220707);
+    if (this.ZCS > this.ZCP)
     {
       g.i(TAG, "respond full data");
-      AppMethodBeat.o(189263);
+      AppMethodBeat.o(220707);
       return;
     }
     int i = paramArrayOfByte.length;
     a locala = new a((byte)0);
-    locala.Sal = this.mCurrentOffset;
+    locala.ZCV = this.mCurrentOffset;
     locala.data = paramArrayOfByte;
-    if (this.Saj != null)
+    if (this.ZCT != null)
     {
-      paramArrayOfByte = this.Saj.obtainMessage();
+      paramArrayOfByte = this.ZCT.obtainMessage();
       paramArrayOfByte.what = 256;
       paramArrayOfByte.arg1 = i;
       paramArrayOfByte.arg2 = 0;
       paramArrayOfByte.obj = locala;
-      this.Saj.sendMessage(paramArrayOfByte);
+      this.ZCT.sendMessage(paramArrayOfByte);
     }
     g.i(TAG, "respond data from:" + this.mCurrentOffset + ", dataLength:" + i);
     this.mCurrentOffset += i;
-    long l = this.Sai;
-    this.Sai = (i + l);
-    AppMethodBeat.o(189263);
+    long l = this.ZCS;
+    this.ZCS = (i + l);
+    AppMethodBeat.o(220707);
   }
   
   static final class a
   {
-    long Sal;
+    long ZCV;
     byte[] data;
   }
   
@@ -246,22 +246,22 @@ public final class c
     
     public final void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(189260);
+      AppMethodBeat.i(220685);
       switch (paramMessage.what)
       {
       }
       for (;;)
       {
-        AppMethodBeat.o(189260);
+        AppMethodBeat.o(220685);
         return;
         Object localObject = (c.a)paramMessage.obj;
-        long l = ((c.a)localObject).Sal;
+        long l = ((c.a)localObject).ZCV;
         localObject = ((c.a)localObject).data;
         int i = paramMessage.arg1;
         if (!c.a(c.this, l, (byte[])localObject, c.a(c.this)))
         {
           g.e(c.TAG, "write data failed");
-          AppMethodBeat.o(189260);
+          AppMethodBeat.o(220685);
           return;
         }
         c.a(c.this, i + l);

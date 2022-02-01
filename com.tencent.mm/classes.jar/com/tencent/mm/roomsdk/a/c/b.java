@@ -3,108 +3,109 @@ package com.tencent.mm.roomsdk.a.c;
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.c;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.s;
 
 public final class b
   extends a
 {
-  public com.tencent.mm.ak.q gNg;
-  i gNh;
+  public q jxA;
+  i jxB;
   
   public b(boolean paramBoolean)
   {
     AppMethodBeat.i(152775);
-    this.gNh = new i()
+    this.jxB = new i()
     {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.q paramAnonymousq)
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
       {
         AppMethodBeat.i(152774);
-        if (b.this.gNg.equals(paramAnonymousq))
+        if (b.this.jxA.equals(paramAnonymousq))
         {
-          g.aAi();
-          g.aAg().hqi.b(paramAnonymousq.getType(), b.this.gNh);
+          com.tencent.mm.kernel.h.aHH();
+          com.tencent.mm.kernel.h.aHF().kcd.b(paramAnonymousq.getType(), b.this.jxB);
           if (b.this.tipDialog != null) {
             b.this.tipDialog.dismiss();
           }
           if ((paramAnonymousq instanceof com.tencent.mm.roomsdk.a.a)) {
-            ((com.tencent.mm.roomsdk.a.a)paramAnonymousq).a(b.this.NDO);
+            ((com.tencent.mm.roomsdk.a.a)paramAnonymousq).a(b.this.URl);
           }
-          if (b.this.NDO != null) {
-            b.this.NDO.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, b.this.NDO);
+          if (b.this.URl != null) {
+            b.this.URl.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, b.this.URl);
           }
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
           {
-            if (b.this.NDM != null)
+            if (b.this.URj != null)
             {
-              b.this.NDM.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, b.this.NDM);
+              b.this.URj.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, b.this.URj);
               AppMethodBeat.o(152774);
             }
           }
-          else if (b.this.NDN != null) {
-            b.this.NDN.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, b.this.NDN);
+          else if (b.this.URk != null) {
+            b.this.URk.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, b.this.URk);
           }
         }
         AppMethodBeat.o(152774);
       }
     };
-    this.NDL = paramBoolean;
+    this.URi = paramBoolean;
     AppMethodBeat.o(152775);
   }
   
   public final void a(Context paramContext, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppMethodBeat.i(223896);
-    if (this.gNg == null)
+    AppMethodBeat.i(219959);
+    if (this.jxA == null)
     {
-      AppMethodBeat.o(223896);
+      AppMethodBeat.o(219959);
       return;
     }
-    this.tipDialog = h.a(paramContext, paramString2, paramBoolean2, paramOnCancelListener);
-    aJu();
-    AppMethodBeat.o(223896);
+    this.tipDialog = com.tencent.mm.ui.base.h.a(paramContext, paramString2, paramBoolean2, paramOnCancelListener);
+    aRu();
+    AppMethodBeat.o(219959);
   }
   
-  public final void aJu()
+  public final void aRu()
   {
     AppMethodBeat.i(152777);
-    if (this.gNg == null)
+    if (this.jxA == null)
     {
       AppMethodBeat.o(152777);
       return;
     }
-    Log.i("MicroMsg.RoomCallbackFactory", "request scene %s", new Object[] { this.gNg });
-    if ((this.tipDialog != null) || (this.NDM != null) || (this.NDN != null) || (this.NDO != null))
+    Log.i("MicroMsg.RoomCallbackFactory", "request scene %s", new Object[] { this.jxA });
+    if ((this.tipDialog != null) || (this.URj != null) || (this.URk != null) || (this.URl != null))
     {
-      g.aAi();
-      g.aAg().hqi.a(this.gNg.getType(), this.gNh);
+      com.tencent.mm.kernel.h.aHH();
+      com.tencent.mm.kernel.h.aHF().kcd.a(this.jxA.getType(), this.jxB);
     }
-    g.aAi();
-    g.aAg().hqi.a(this.gNg, 0);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.a(this.jxA, 0);
     AppMethodBeat.o(152777);
   }
   
   public final void cancel()
   {
     AppMethodBeat.i(152776);
-    if (this.gNg == null)
+    if (this.jxA == null)
     {
       AppMethodBeat.o(152776);
       return;
     }
-    g.aAi();
-    g.aAg().hqi.a(this.gNg);
-    g.aAi();
-    g.aAg().hqi.b(this.gNg.getType(), this.gNh);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.a(this.jxA);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.b(this.jxA.getType(), this.jxB);
     AppMethodBeat.o(152776);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.roomsdk.a.c.b
  * JD-Core Version:    0.7.0.1
  */

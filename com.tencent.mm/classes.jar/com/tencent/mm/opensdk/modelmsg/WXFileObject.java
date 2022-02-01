@@ -8,7 +8,7 @@ import com.tencent.mm.opensdk.utils.b;
 public class WXFileObject
   implements WXMediaMessage.IMediaObject
 {
-  private static final int CONTENT_LENGTH_LIMIT = 10485760;
+  private static final int CONTENT_LENGTH_LIMIT = 1920991232;
   private static final String TAG = "MicroMsg.SDK.WXFileObject";
   private int contentLengthLimit;
   public byte[] fileData;
@@ -16,27 +16,27 @@ public class WXFileObject
   
   public WXFileObject()
   {
-    AppMethodBeat.i(190400);
-    this.contentLengthLimit = 10485760;
+    AppMethodBeat.i(254954);
+    this.contentLengthLimit = 1920991232;
     this.fileData = null;
     this.filePath = null;
-    AppMethodBeat.o(190400);
+    AppMethodBeat.o(254954);
   }
   
   public WXFileObject(String paramString)
   {
-    AppMethodBeat.i(190402);
-    this.contentLengthLimit = 10485760;
+    AppMethodBeat.i(254957);
+    this.contentLengthLimit = 1920991232;
     this.filePath = paramString;
-    AppMethodBeat.o(190402);
+    AppMethodBeat.o(254957);
   }
   
   public WXFileObject(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(190401);
-    this.contentLengthLimit = 10485760;
+    AppMethodBeat.i(254956);
+    this.contentLengthLimit = 1920991232;
     this.fileData = paramArrayOfByte;
-    AppMethodBeat.o(190401);
+    AppMethodBeat.o(254956);
   }
   
   private int getFileSize(String paramString)
@@ -118,7 +118,7 @@ public class WXFileObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXFileObject
  * JD-Core Version:    0.7.0.1
  */

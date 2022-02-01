@@ -2,16 +2,14 @@ package com.tencent.sqlitelint;
 
 public final class BuildConfig
 {
-  public static final String APPLICATION_ID = "com.tencent.sqlitelint";
   public static final String BUILD_TYPE = "release";
   public static final boolean DEBUG = false;
   public static final String FLAVOR = "full";
-  public static final int VERSION_CODE = 1;
-  public static final String VERSION_NAME = "0.7.8.28";
+  public static final String LIBRARY_PACKAGE_NAME = "com.tencent.sqlitelint";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.sqlitelint.BuildConfig
  * JD-Core Version:    0.7.0.1
  */

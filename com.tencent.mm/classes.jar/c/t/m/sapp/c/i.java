@@ -22,7 +22,7 @@ public class i
   
   public i(Context paramContext, List<a> paramList, boolean paramBoolean)
   {
-    AppMethodBeat.i(222977);
+    AppMethodBeat.i(254684);
     this.b = null;
     this.c = false;
     this.d = null;
@@ -33,12 +33,12 @@ public class i
     this.b = new ArrayList();
     this.b.addAll(paramList);
     this.e = new c(this.a);
-    AppMethodBeat.o(222977);
+    AppMethodBeat.o(254684);
   }
   
   public final String a()
   {
-    AppMethodBeat.i(222982);
+    AppMethodBeat.i(254695);
     JSONObject localJSONObject1 = new JSONObject();
     Object localObject1 = this.a.getFilesDir().getAbsolutePath() + File.separator + q.b;
     try
@@ -75,7 +75,7 @@ public class i
     catch (Exception localException)
     {
       e.a(this.a).a("DRG", "reqDerror:" + localException.toString());
-      AppMethodBeat.o(222982);
+      AppMethodBeat.o(254695);
       return null;
     }
     String str = localException.toString();
@@ -83,17 +83,17 @@ public class i
     Object localObject2 = new StringBuilder();
     ((e)localObject1).a("DRG", "req:" + str);
     str = m.b(str, "sE0zy%DVqLnXA$hmNZ8NBwcg7FDrvi!q");
-    AppMethodBeat.o(222982);
+    AppMethodBeat.o(254695);
     return str;
   }
   
   public final boolean a(String paramString)
   {
-    AppMethodBeat.i(222979);
+    AppMethodBeat.i(254688);
     paramString = q.d(m.a(paramString, "sE0zy%DVqLnXA$hmNZ8NBwcg7FDrvi!q"));
     if (paramString == null)
     {
-      AppMethodBeat.o(222979);
+      AppMethodBeat.o(254688);
       return false;
     }
     this.d = q.e(paramString);
@@ -111,10 +111,10 @@ public class i
         {
           e.a(this.a).a("DRG", "to download:".concat(String.valueOf(paramString)));
           this.e.b(this.d);
-          AppMethodBeat.o(222979);
+          AppMethodBeat.o(254688);
           return true;
         }
-        AppMethodBeat.o(222979);
+        AppMethodBeat.o(254688);
         return false;
       }
     }
@@ -122,7 +122,7 @@ public class i
   
   public final boolean a(List<a> paramList1, List<a> paramList2)
   {
-    AppMethodBeat.i(222980);
+    AppMethodBeat.i(254690);
     paramList1 = paramList1.iterator();
     boolean bool = true;
     label178:
@@ -151,7 +151,7 @@ public class i
         }
         bool = false;
         break;
-        AppMethodBeat.o(222980);
+        AppMethodBeat.o(254690);
         return bool;
       }
     }
@@ -159,24 +159,24 @@ public class i
   
   public final boolean b()
   {
-    AppMethodBeat.i(222983);
+    AppMethodBeat.i(254697);
     long l = q.a(this.a, "__last_check_update_time___sapp", Long.valueOf(0L)).longValue();
     if (System.currentTimeMillis() - l > 3600000L)
     {
-      AppMethodBeat.o(222983);
+      AppMethodBeat.o(254697);
       return true;
     }
-    AppMethodBeat.o(222983);
+    AppMethodBeat.o(254697);
     return false;
   }
   
   public final boolean c()
   {
-    AppMethodBeat.i(222981);
+    AppMethodBeat.i(254692);
     Object localObject = a();
     if (localObject == null)
     {
-      AppMethodBeat.o(222981);
+      AppMethodBeat.o(254692);
       return false;
     }
     localObject = ((String)localObject).getBytes();
@@ -196,30 +196,30 @@ public class i
           localObject = new String(arrayOfByte);
           e.a(this.a).a("DRG", "response suc,try:".concat(String.valueOf(j)));
           boolean bool = a((String)localObject);
-          AppMethodBeat.o(222981);
+          AppMethodBeat.o(254692);
           return bool;
         }
         q.a(10000L);
       }
     }
-    AppMethodBeat.o(222981);
+    AppMethodBeat.o(254692);
     return false;
   }
   
   public void run()
   {
-    AppMethodBeat.i(222978);
+    AppMethodBeat.i(254686);
     boolean bool = b();
     e.a(this.a).a("DRG", "t:" + bool + ",i:" + this.f);
     c();
     q.b(this.a, "__last_check_update_time___sapp", Long.valueOf(System.currentTimeMillis()));
     e.a(this.a).d();
-    AppMethodBeat.o(222978);
+    AppMethodBeat.o(254686);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     c.t.m.sapp.c.i
  * JD-Core Version:    0.7.0.1
  */

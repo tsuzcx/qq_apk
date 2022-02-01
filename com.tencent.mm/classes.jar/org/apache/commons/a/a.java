@@ -9,15 +9,22 @@ public final class a
   @Deprecated
   public static final Charset ISO_8859_1 = StandardCharsets.ISO_8859_1;
   @Deprecated
-  public static final Charset US_ASCII = StandardCharsets.US_ASCII;
-  @Deprecated
-  public static final Charset UTF_16 = StandardCharsets.UTF_16;
-  @Deprecated
-  public static final Charset UTF_16BE = StandardCharsets.UTF_16BE;
-  @Deprecated
-  public static final Charset UTF_16LE = StandardCharsets.UTF_16LE;
-  @Deprecated
   public static final Charset UTF_8 = StandardCharsets.UTF_8;
+  @Deprecated
+  public static final Charset abvr;
+  @Deprecated
+  public static final Charset abvs;
+  @Deprecated
+  public static final Charset abvt;
+  @Deprecated
+  public static final Charset abvu = StandardCharsets.US_ASCII;
+  
+  static
+  {
+    abvr = StandardCharsets.UTF_16;
+    abvs = StandardCharsets.UTF_16BE;
+    abvt = StandardCharsets.UTF_16LE;
+  }
   
   public static Charset b(Charset paramCharset)
   {
@@ -34,7 +41,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.apache.commons.a.a
  * JD-Core Version:    0.7.0.1
  */

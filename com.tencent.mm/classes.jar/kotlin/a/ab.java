@@ -4,16 +4,16 @@ import java.util.Iterator;
 import kotlin.g.b.a.a;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/collections/IntIterator;", "", "", "()V", "next", "()Ljava/lang/Integer;", "nextInt", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/collections/IntIterator;", "", "", "()V", "next", "()Ljava/lang/Integer;", "nextInt", "kotlin-stdlib"})
 public abstract class ab
   implements Iterator<Integer>, a
 {
-  public abstract int nextInt();
-  
   public void remove()
   {
     throw new UnsupportedOperationException("Operation is not supported for read-only collection");
   }
+  
+  public abstract int zD();
 }
 
 

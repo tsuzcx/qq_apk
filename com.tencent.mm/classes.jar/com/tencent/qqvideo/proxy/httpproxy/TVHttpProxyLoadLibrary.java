@@ -770,22 +770,20 @@ public final class TVHttpProxyLoadLibrary
     //   55	63	121	finally
     //   72	75	121	finally
     //   82	121	121	finally
-    //   122	125	121	finally
     //   133	136	121	finally
     //   140	151	176	java/lang/reflect/InvocationTargetException
     //   169	175	176	java/lang/reflect/InvocationTargetException
-    //   216	224	176	java/lang/reflect/InvocationTargetException
+    //   214	224	176	java/lang/reflect/InvocationTargetException
     //   151	169	213	finally
-    //   214	216	213	finally
     //   140	151	224	java/lang/Exception
     //   169	175	224	java/lang/Exception
-    //   216	224	224	java/lang/Exception
+    //   214	224	224	java/lang/Exception
     //   303	318	343	java/lang/UnsatisfiedLinkError
     //   336	342	343	java/lang/UnsatisfiedLinkError
-    //   523	532	343	java/lang/UnsatisfiedLinkError
+    //   521	532	343	java/lang/UnsatisfiedLinkError
     //   350	363	389	java/lang/UnsatisfiedLinkError
     //   382	388	389	java/lang/UnsatisfiedLinkError
-    //   629	638	389	java/lang/UnsatisfiedLinkError
+    //   626	638	389	java/lang/UnsatisfiedLinkError
     //   417	431	466	java/lang/Exception
     //   434	452	466	java/lang/Exception
     //   455	461	466	java/lang/Exception
@@ -798,29 +796,26 @@ public final class TVHttpProxyLoadLibrary
     //   492	498	502	finally
     //   500	502	502	finally
     //   318	336	519	finally
-    //   521	523	519	finally
     //   303	318	532	java/lang/reflect/InvocationTargetException
     //   336	342	532	java/lang/reflect/InvocationTargetException
-    //   523	532	532	java/lang/reflect/InvocationTargetException
+    //   521	532	532	java/lang/reflect/InvocationTargetException
     //   303	318	590	java/lang/Throwable
     //   336	342	590	java/lang/Throwable
-    //   523	532	590	java/lang/Throwable
+    //   521	532	590	java/lang/Throwable
     //   363	382	624	finally
-    //   626	629	624	finally
     //   350	363	638	java/lang/reflect/InvocationTargetException
     //   382	388	638	java/lang/reflect/InvocationTargetException
-    //   629	638	638	java/lang/reflect/InvocationTargetException
+    //   626	638	638	java/lang/reflect/InvocationTargetException
     //   350	363	704	java/lang/Throwable
     //   382	388	704	java/lang/Throwable
-    //   629	638	704	java/lang/Throwable
+    //   626	638	704	java/lang/Throwable
     //   743	758	783	java/lang/reflect/InvocationTargetException
     //   776	782	783	java/lang/reflect/InvocationTargetException
-    //   827	835	783	java/lang/reflect/InvocationTargetException
+    //   825	835	783	java/lang/reflect/InvocationTargetException
     //   758	776	824	finally
-    //   825	827	824	finally
     //   743	758	835	java/lang/Exception
     //   776	782	835	java/lang/Exception
-    //   827	835	835	java/lang/Exception
+    //   825	835	835	java/lang/Exception
     //   507	511	882	java/io/IOException
     //   738	743	886	java/io/IOException
     //   398	414	890	finally
@@ -901,7 +896,7 @@ public final class TVHttpProxyLoadLibrary
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqvideo.proxy.httpproxy.TVHttpProxyLoadLibrary
  * JD-Core Version:    0.7.0.1
  */

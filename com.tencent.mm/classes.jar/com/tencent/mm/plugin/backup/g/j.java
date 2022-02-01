@@ -11,24 +11,24 @@ import java.util.Queue;
 
 public final class j
 {
-  private static int oQe = 60000;
-  private a oLY;
-  long oQf;
-  long oQg;
-  long oQh;
-  long oQi;
-  long oQj;
-  int oQk;
-  Queue<Long> oQl;
-  MTimerHandler oQm;
+  private static int rSb = 60000;
+  private a rNQ;
+  long rSc;
+  long rSd;
+  long rSe;
+  long rSf;
+  long rSg;
+  int rSh;
+  Queue<Long> rSi;
+  MTimerHandler rSj;
   
   public j(a parama)
   {
     AppMethodBeat.i(21736);
-    this.oQf = 0L;
-    this.oQk = 0;
-    this.oQl = new LinkedList();
-    this.oQm = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
+    this.rSc = 0L;
+    this.rSh = 0;
+    this.rSi = new LinkedList();
+    this.rSj = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -51,7 +51,7 @@ public final class j
             j.b(j.this, j.c(j.this));
             j.f(j.this);
             j.c(j.this, Util.nowMilliSecond());
-            j.g(j.this).cfI();
+            j.g(j.this).csW();
             if (j.c(j.this) < 102400L) {
               break label277;
             }
@@ -59,7 +59,7 @@ public final class j
             {
               j.a(j.this, 0);
               j.d(j.this, 0L);
-              j.g(j.this).Bf(0);
+              j.g(j.this).EG(0);
               Log.i("MicroMsg.BackupSpeedCalculator", "backupGetSpeedTimeHandler is not low speed now.");
             }
             AppMethodBeat.o(21735);
@@ -80,7 +80,7 @@ public final class j
               if (j.h(j.this) == 0)
               {
                 j.a(j.this, 1);
-                j.g(j.this).Bf(1);
+                j.g(j.this).EG(1);
                 j.d(j.this, Util.nowMilliSecond());
                 Log.e("MicroMsg.BackupSpeedCalculator", "backupGetSpeedTimeHandler is too low speed! backupLowSpeedStartTime[%d]", new Object[] { Long.valueOf(j.i(j.this)) });
               }
@@ -88,11 +88,11 @@ public final class j
               {
                 if (j.i(j.this) > 0L)
                 {
-                  if (Util.milliSecondsToNow(j.i(j.this)) > j.cgL())
+                  if (Util.milliSecondsToNow(j.i(j.this)) > j.bru())
                   {
                     Log.e("MicroMsg.BackupSpeedCalculator", "backupGetSpeedTimeHandler low speed overtime, overtime[%d]", new Object[] { Long.valueOf(Util.milliSecondsToNow(j.i(j.this))) });
                     j.a(j.this, 2);
-                    j.g(j.this).cfJ();
+                    j.g(j.this).csX();
                     j.d(j.this, 0L);
                     AppMethodBeat.o(21735);
                     return false;
@@ -108,18 +108,18 @@ public final class j
             else if (j.h(j.this) != 1)
             {
               j.a(j.this, 1);
-              j.g(j.this).Bf(1);
+              j.g(j.this).EG(1);
               Log.e("MicroMsg.BackupSpeedCalculator", "backupGetSpeedTimeHandler is weak now.");
             }
           }
         }
       }
     }, true);
-    this.oLY = parama;
+    this.rNQ = parama;
     AppMethodBeat.o(21736);
   }
   
-  static String Bx(long paramLong)
+  static String HK(long paramLong)
   {
     AppMethodBeat.i(21737);
     if (paramLong >> 30 > 0L)
@@ -148,16 +148,16 @@ public final class j
   
   public static abstract interface a
   {
-    public abstract void Bf(int paramInt);
+    public abstract void EG(int paramInt);
     
-    public abstract void cfI();
+    public abstract void csW();
     
-    public abstract void cfJ();
+    public abstract void csX();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.g.j
  * JD-Core Version:    0.7.0.1
  */

@@ -16,13 +16,13 @@ public final class t$k
   public final void a(View paramView, a parama, ca paramca)
   {
     AppMethodBeat.i(34603);
-    s.a(paramView, parama.Pwc.getContext(), parama.getTalkerUserName());
+    s.a(paramView, parama.WQv.getContext(), parama.getTalkerUserName());
     AppMethodBeat.o(34603);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.t.k
  * JD-Core Version:    0.7.0.1
  */

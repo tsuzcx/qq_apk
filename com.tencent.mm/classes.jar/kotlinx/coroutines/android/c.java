@@ -12,10 +12,10 @@ import kotlin.ResultKt;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"MAX_DELAY", "", "Main", "Lkotlinx/coroutines/android/HandlerDispatcher;", "Main$annotations", "()V", "choreographer", "Landroid/view/Choreographer;", "awaitFrame", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "postFrameCallback", "", "cont", "Lkotlinx/coroutines/CancellableContinuation;", "updateChoreographerAndPostFrameCallback", "asCoroutineDispatcher", "Landroid/os/Handler;", "name", "", "from", "asHandler", "Landroid/os/Looper;", "async", "", "kotlinx-coroutines-android"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"MAX_DELAY", "", "Main", "Lkotlinx/coroutines/android/HandlerDispatcher;", "Main$annotations", "()V", "choreographer", "Landroid/view/Choreographer;", "awaitFrame", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "postFrameCallback", "", "cont", "Lkotlinx/coroutines/CancellableContinuation;", "updateChoreographerAndPostFrameCallback", "asCoroutineDispatcher", "Landroid/os/Handler;", "name", "", "from", "asHandler", "Landroid/os/Looper;", "async", "", "kotlinx-coroutines-android"})
 public final class c
 {
-  public static final b TVv;
+  public static final b abxZ;
   
   static
   {
@@ -23,12 +23,12 @@ public final class c
     try
     {
       Object localObject1 = Result.Companion;
-      localObject1 = Result.constructor-impl(new a(k(Looper.getMainLooper()), "Main"));
+      localObject1 = Result.constructor-impl(new a(m(Looper.getMainLooper()), "Main"));
       localObject3 = localObject1;
       if (Result.isFailure-impl(localObject1)) {
         localObject3 = null;
       }
-      TVv = (b)localObject3;
+      abxZ = (b)localObject3;
       AppMethodBeat.o(107780);
       return;
     }
@@ -42,7 +42,7 @@ public final class c
     }
   }
   
-  public static final Handler k(Looper paramLooper)
+  public static final Handler m(Looper paramLooper)
   {
     AppMethodBeat.i(107779);
     if (Build.VERSION.SDK_INT < 16)
@@ -81,7 +81,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.android.c
  * JD-Core Version:    0.7.0.1
  */

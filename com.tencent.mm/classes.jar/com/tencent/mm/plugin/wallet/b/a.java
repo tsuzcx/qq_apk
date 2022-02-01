@@ -1,23 +1,19 @@
 package com.tencent.mm.plugin.wallet.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.plugin.wallet.a.s;
-import com.tencent.mm.plugin.wallet_core.model.al;
-import com.tencent.mm.plugin.wallet_core.model.an;
+import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 
 public final class a
 {
-  public static boolean aeG(int paramInt)
+  public static boolean amt(int paramInt)
   {
     AppMethodBeat.i(69858);
-    g.aAi();
-    if ((((Integer)g.aAh().azQ().get(ar.a.NVW, Integer.valueOf(-1))).intValue() < paramInt) && (paramInt > 0))
+    com.tencent.mm.kernel.h.aHH();
+    if ((((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VjW, Integer.valueOf(-1))).intValue() < paramInt) && (paramInt > 0))
     {
       AppMethodBeat.o(69858);
       return true;
@@ -26,25 +22,25 @@ public final class a
     return false;
   }
   
-  public static boolean fPB()
+  public static boolean gIe()
   {
     AppMethodBeat.i(69859);
-    com.tencent.mm.plugin.fingerprint.d.a locala = (com.tencent.mm.plugin.fingerprint.d.a)g.af(com.tencent.mm.plugin.fingerprint.d.a.class);
+    com.tencent.mm.plugin.fingerprint.d.a locala = (com.tencent.mm.plugin.fingerprint.d.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.fingerprint.d.a.class);
     Object localObject = new StringBuilder("mgr==null?");
-    al localal;
+    am localam;
     StringBuilder localStringBuilder;
     if (locala == null)
     {
       bool = true;
       Log.i("MicroMsg.WalletUtil", bool);
       if (locala != null) {
-        Log.i("MicroMsg.WalletUtil", " mgr.isSupportAndLoadSuccess()=" + locala.dJT());
+        Log.i("MicroMsg.WalletUtil", " mgr.isSupportAndLoadSuccess()=" + locala.eos());
       }
-      s.fOg();
-      localObject = s.fOh();
-      localal = ((an)localObject).fRs();
+      s.gGL();
+      localObject = s.gGM();
+      localam = ((com.tencent.mm.plugin.wallet_core.model.ao)localObject).gJY();
       localStringBuilder = new StringBuilder("config==null?");
-      if (localal != null) {
+      if (localam != null) {
         break label212;
       }
     }
@@ -52,11 +48,11 @@ public final class a
     for (boolean bool = true;; bool = false)
     {
       Log.i("MicroMsg.WalletUtil", bool);
-      if (localal != null) {
-        Log.i("MicroMsg.WalletUtil", "config.isSupportTouchPay()=" + localal.fRa());
+      if (localam != null) {
+        Log.i("MicroMsg.WalletUtil", "config.isSupportTouchPay()=" + localam.gJG());
       }
-      Log.i("MicroMsg.WalletUtil", "userInfoManger.isReg()=" + ((an)localObject).fRk());
-      if ((locala == null) || (!locala.dJT()) || (localal == null) || (!localal.fRa()) || (!((an)localObject).fRk())) {
+      Log.i("MicroMsg.WalletUtil", "userInfoManger.isReg()=" + ((com.tencent.mm.plugin.wallet_core.model.ao)localObject).gJQ());
+      if ((locala == null) || (!locala.eos()) || (localam == null) || (!localam.gJG()) || (!((com.tencent.mm.plugin.wallet_core.model.ao)localObject).gJQ())) {
         break label217;
       }
       AppMethodBeat.o(69859);
@@ -69,22 +65,22 @@ public final class a
     return false;
   }
   
-  public static boolean fPC()
+  public static boolean gIf()
   {
     AppMethodBeat.i(69860);
-    com.tencent.mm.plugin.fingerprint.d.a locala = (com.tencent.mm.plugin.fingerprint.d.a)g.af(com.tencent.mm.plugin.fingerprint.d.a.class);
+    com.tencent.mm.plugin.fingerprint.d.a locala = (com.tencent.mm.plugin.fingerprint.d.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.fingerprint.d.a.class);
     if (locala == null)
     {
       Log.w("MicroMsg.WalletUtil", "no finger mgr!");
       AppMethodBeat.o(69860);
       return false;
     }
-    s.fOg();
-    an localan = s.fOh();
-    al localal = localan.fRs();
-    h.CyF.dN(916, 0);
-    Log.i("MicroMsg.WalletUtil", "support faceid: %s, %s, %s", new Object[] { Boolean.valueOf(locala.dKb()), Boolean.valueOf(localal.fRa()), Boolean.valueOf(localan.fRk()) });
-    if ((locala.dKb()) && (localal.fRa()) && (localan.fRk()))
+    s.gGL();
+    com.tencent.mm.plugin.wallet_core.model.ao localao = s.gGM();
+    am localam = localao.gJY();
+    com.tencent.mm.plugin.report.service.h.IzE.el(916, 0);
+    Log.i("MicroMsg.WalletUtil", "support faceid: %s, %s, %s", new Object[] { Boolean.valueOf(locala.eoA()), Boolean.valueOf(localam.gJG()), Boolean.valueOf(localao.gJQ()) });
+    if ((locala.eoA()) && (localam.gJG()) && (localao.gJQ()))
     {
       AppMethodBeat.o(69860);
       return true;

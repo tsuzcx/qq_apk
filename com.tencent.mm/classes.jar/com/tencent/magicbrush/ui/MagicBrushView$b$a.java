@@ -1,43 +1,21 @@
 package com.tencent.magicbrush.ui;
 
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import android.view.TextureView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/magicbrush/ui/MagicBrushView$MBRendererView$Companion;", "", "()V", "RENDER_MODE_FLAG_LIVE", "", "RENDER_MODE_FLAG_NORMAL", "RENDER_MODE_FLAG_RECORD", "lib-magicbrush-nano_release"})
 public final class MagicBrushView$b$a
 {
-  public static Object a(MagicBrushView.b paramb)
+  static
   {
-    AppMethodBeat.i(182583);
-    paramb = paramb.getThisView();
-    if (paramb != null)
-    {
-      if ((paramb instanceof TextureView))
-      {
-        paramb = ((TextureView)paramb).getSurfaceTexture();
-        AppMethodBeat.o(182583);
-        return paramb;
-      }
-      if ((paramb instanceof SurfaceView))
-      {
-        paramb = ((SurfaceView)paramb).getHolder();
-        p.g(paramb, "it.holder");
-        paramb = paramb.getSurface();
-        AppMethodBeat.o(182583);
-        return paramb;
-      }
-    }
-    AppMethodBeat.o(182583);
-    return null;
+    AppMethodBeat.i(205402);
+    cPS = new a();
+    AppMethodBeat.o(205402);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.magicbrush.ui.MagicBrushView.b.a
  * JD-Core Version:    0.7.0.1
  */

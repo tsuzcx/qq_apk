@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.multitalk.ui.widget;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/ui/widget/MultiTalkSmallWindow$Companion;", "", "()V", "AUDIO_MODE", "", "TAG", "", "VIDOE_MODE", "plugin-multitalk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/MultiTalkSmallWindow$Companion;", "", "()V", "AUDIO_MODE", "", "TAG", "", "VIDOE_MODE", "plugin-multitalk_release"})
 public final class n$a {}
 
 

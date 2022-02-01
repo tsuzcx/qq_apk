@@ -1,71 +1,56 @@
 package com.tencent.mm.plugin.finder.video;
 
+import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.utils.y;
-import com.tencent.mm.plugin.vlog.model.ac;
-import com.tencent.mm.plugin.vlog.model.i;
-import com.tencent.mm.protocal.protobuf.acn;
-import com.tencent.mm.protocal.protobuf.cjl;
-import com.tencent.mm.videocomposition.c.a;
-import com.tencent.mm.videocomposition.n;
-import com.tencent.mm.xeffect.effect.EffectManager;
-import kotlin.g.a.a;
+import com.tencent.mm.media.i.f;
+import com.tencent.mm.media.j.c;
+import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.g.a.b;
 import kotlin.g.b.p;
-import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/video/FinderVideoThumbFetcherFactory;", "", "()V", "getThumbFetcher", "Lcom/tencent/mm/videocomposition/ITrackThumbFetcher;", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "width", "", "height", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/video/FinderVideoRemuxer;", "Lcom/tencent/mm/media/remuxer/MediaCodecRemuxer;", "musicPath", "", "filePath", "mixType", "", "outputFilePath", "cropRect", "Landroid/graphics/Rect;", "outputWidth", "outputHeight", "outputBitrate", "outputAudioBitrate", "outputAudioSampleRate", "outputAudioChannelCount", "outputFps", "startTimeMs", "", "endTimeMs", "useSoftEncode", "", "enableHevc", "videoMinQP", "videoMaxQP", "forceLandscape", "iFrame", "progressListener", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "progress", "", "finishCallback", "path", "videoWidth", "videoHeight", "(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Landroid/graphics/Rect;IIIIIIIJJZZIIZILkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;II)V", "TAG", "getRenderer", "Lcom/tencent/mm/media/render/MixRenderer;", "plugin-finder_release"})
 public final class o
+  extends f
 {
-  public static final o wfX;
+  private final String TAG;
   
-  static
+  public o(String paramString1, String paramString2, int paramInt1, String paramString3, Rect paramRect, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, long paramLong1, long paramLong2, int paramInt9, b<? super Float, x> paramb, b<? super String, x> paramb1, int paramInt10, int paramInt11)
   {
-    AppMethodBeat.i(254381);
-    wfX = new o();
-    AppMethodBeat.o(254381);
+    super(paramString1, paramString2, paramInt1, paramString3, paramRect, paramInt10, paramInt11, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramLong1, paramLong2, false, false, 0, 0, false, paramInt9, paramb, paramb1);
+    AppMethodBeat.i(271112);
+    this.TAG = "Finder.FinderVideoRemuxer";
+    AppMethodBeat.o(271112);
   }
   
-  public static com.tencent.mm.videocomposition.g m(final cjl paramcjl)
+  public final c aUZ()
   {
-    AppMethodBeat.i(254380);
-    p.h(paramcjl, "media");
-    Object localObject1 = paramcjl.MfU;
-    Object localObject2 = y.vXH;
-    if ((!y.h(paramcjl)) && (localObject1 != null))
+    AppMethodBeat.i(168169);
+    if (this.kXp) {}
+    for (Object localObject = new n(aUX(), aUY(), getOutputWidth(), getOutputHeight(), 2);; localObject = new n(aUX(), aUY(), getOutputWidth(), getOutputHeight()))
     {
-      paramcjl = new EffectManager();
-      localObject2 = i.d((acn)localObject1, paramcjl);
-      localObject1 = i.d((acn)localObject1);
-      ((com.tencent.mm.plugin.recordvideo.ui.editor.b.c)localObject1).start();
-      ((ac)localObject2).O((b)localObject1);
-      long l = ((ac)localObject2).Gez.getPlayStart();
-      c.a locala = com.tencent.mm.videocomposition.c.RgU;
-      paramcjl = (com.tencent.mm.videocomposition.g)new w(l, (com.tencent.mm.videocomposition.g)c.a.b(((ac)localObject2).getComposition()), (a)new a((com.tencent.mm.plugin.recordvideo.ui.editor.b.c)localObject1, paramcjl));
-      AppMethodBeat.o(254380);
-      return paramcjl;
-    }
-    paramcjl = (com.tencent.mm.videocomposition.g)new g(paramcjl);
-    AppMethodBeat.o(254380);
-    return paramcjl;
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements a<x>
-  {
-    a(com.tencent.mm.plugin.recordvideo.ui.editor.b.c paramc, EffectManager paramEffectManager)
-    {
-      super();
+      Rect localRect = aVb();
+      if (localRect == null) {
+        p.iCn();
+      }
+      p.k(localRect, "rect");
+      ((c)localObject).kYu = localRect;
+      int i = getVideoWidth();
+      int j = getVideoHeight();
+      ((n)localObject).videoWidth = i;
+      ((n)localObject).videoHeight = j;
+      Log.i(((n)localObject).TAG, "setVideoSize: " + i + ", " + j);
+      Log.i(this.TAG, "videoWidth: " + getVideoWidth() + ", videoHeight: " + getVideoHeight() + ", cropRect:" + aVb());
+      localObject = (c)localObject;
+      AppMethodBeat.o(168169);
+      return localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.o
  * JD-Core Version:    0.7.0.1
  */

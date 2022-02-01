@@ -11,12 +11,12 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
 {
-  public static final a BOL;
+  public static final a HLr;
   
   static
   {
     AppMethodBeat.i(101522);
-    BOL = new a();
+    HLr = new a();
     AppMethodBeat.o(101522);
   }
   
@@ -26,7 +26,7 @@ public final class a
     if (paramInt == 0)
     {
       Boolean localBoolean;
-      if ((com.tencent.mm.q.a.o(paramActivity, true)) || (com.tencent.mm.q.a.cC(paramActivity)) || (com.tencent.mm.q.a.cA(paramActivity)))
+      if ((com.tencent.mm.q.a.p(paramActivity, true)) || (com.tencent.mm.q.a.cy(paramActivity)) || (com.tencent.mm.q.a.cw(paramActivity)))
       {
         Log.i("MicroMsg.VideoCaptureJumper", "startStoryCapture, voip or multitalk running");
         localBoolean = Boolean.FALSE;
@@ -78,7 +78,7 @@ public final class a
     localIntent.putExtra("KEY_PARAMS_EXIT_ANIM", paramInt3);
     Log.i("MicroMsg.VideoCaptureJumper", "configProvider: %s", new Object[] { paramRecordConfigProvider });
     ((Activity)paramContext).startActivityForResult(localIntent, paramInt1);
-    h(paramContext, paramInt2, paramInt3);
+    i(paramContext, paramInt2, paramInt3);
     AppMethodBeat.o(101518);
     return true;
   }
@@ -98,38 +98,18 @@ public final class a
     localIntent.putExtra("KEY_PARAMS_EXIT_ANIM", paramInt3);
     Log.i("MicroMsg.VideoCaptureJumper", "configProvider : $provider");
     ((Activity)paramContext).startActivityForResult(localIntent, paramInt1);
-    h(paramContext, paramInt2, paramInt3);
+    i(paramContext, paramInt2, paramInt3);
     AppMethodBeat.o(168713);
     return true;
   }
   
   public static boolean a(Context paramContext, int paramInt, RecordConfigProvider paramRecordConfigProvider)
   {
-    AppMethodBeat.i(101519);
-    Intent localIntent = a((Activity)paramContext, "com.tencent.mm.plugin.recordvideo.activity.MMRecordUI", 0);
-    if (localIntent == null)
-    {
-      AppMethodBeat.o(101519);
-      return false;
-    }
-    localIntent.putExtra("KEY_PARAMS_CONFIG", paramRecordConfigProvider);
-    localIntent.putExtra("KEY_PARAMS_TO_WHERE", 0);
-    localIntent.putExtra("KEY_PARAMS_EXIT_ANIM", 2130772162);
-    localIntent.putExtra("KEY_PARAMS_SELECTED_BIZ_INT", 0);
-    Log.i("MicroMsg.VideoCaptureJumper", "configProvider: %s", new Object[] { paramRecordConfigProvider });
-    ((Activity)paramContext).startActivityForResult(localIntent, paramInt);
-    h(paramContext, 2130772161, 2130772162);
-    AppMethodBeat.o(101519);
-    return true;
-  }
-  
-  public static boolean a(Context paramContext, RecordConfigProvider paramRecordConfigProvider)
-  {
-    AppMethodBeat.i(101517);
+    AppMethodBeat.i(191583);
     Intent localIntent = a((Activity)paramContext, "com.tencent.mm.plugin.recordvideo.activity.MMRecordUI", 2);
     if (localIntent == null)
     {
-      AppMethodBeat.o(101517);
+      AppMethodBeat.o(191583);
       return false;
     }
     localIntent.putExtra("KEY_PARAMS_CONFIG", paramRecordConfigProvider);
@@ -137,12 +117,32 @@ public final class a
     localIntent.putExtra("KEY_PARAMS_EXIT_ANIM", -1);
     Log.i("MicroMsg.VideoCaptureJumper", "configProvider : $provider");
     ((Activity)paramContext).startActivityForResult(localIntent, 121);
-    h(paramContext, 2130772161, -1);
-    AppMethodBeat.o(101517);
+    i(paramContext, paramInt, -1);
+    AppMethodBeat.o(191583);
     return true;
   }
   
-  private static void h(Context paramContext, int paramInt1, int paramInt2)
+  public static boolean b(Context paramContext, int paramInt1, int paramInt2, int paramInt3, RecordConfigProvider paramRecordConfigProvider)
+  {
+    AppMethodBeat.i(191588);
+    Intent localIntent = a((Activity)paramContext, "com.tencent.mm.plugin.recordvideo.activity.MMRecordUI", 0);
+    if (localIntent == null)
+    {
+      AppMethodBeat.o(191588);
+      return false;
+    }
+    localIntent.putExtra("KEY_PARAMS_CONFIG", paramRecordConfigProvider);
+    localIntent.putExtra("KEY_PARAMS_TO_WHERE", 0);
+    localIntent.putExtra("KEY_PARAMS_EXIT_ANIM", paramInt3);
+    localIntent.putExtra("KEY_PARAMS_SELECTED_BIZ_INT", 0);
+    Log.i("MicroMsg.VideoCaptureJumper", "configProvider: %s", new Object[] { paramRecordConfigProvider });
+    ((Activity)paramContext).startActivityForResult(localIntent, paramInt1);
+    i(paramContext, paramInt2, paramInt3);
+    AppMethodBeat.o(191588);
+    return true;
+  }
+  
+  private static void i(Context paramContext, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(101521);
     if ((paramInt1 != -1) && (paramInt2 != -1)) {
@@ -153,7 +153,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.jumper.a
  * JD-Core Version:    0.7.0.1
  */

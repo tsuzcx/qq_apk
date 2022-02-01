@@ -36,13 +36,13 @@ public class VideoTexture
   public VideoTexture(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this(paramInt1, paramInt2, paramInt3, paramInt4, RenderContext.createTexture(paramInt3));
-    AppMethodBeat.i(218381);
-    AppMethodBeat.o(218381);
+    AppMethodBeat.i(191761);
+    AppMethodBeat.o(191761);
   }
   
   public VideoTexture(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(218382);
+    AppMethodBeat.i(191765);
     this.frameSyncObject = new Object();
     this.quitFlag = false;
     this.preferRotation = 0;
@@ -55,7 +55,7 @@ public class VideoTexture
     {
       this.textureInfo = new TextureInfo(paramInt5, paramInt3, paramInt1, paramInt2, null, paramInt4);
       this.preferRotation = paramInt4;
-      AppMethodBeat.o(218382);
+      AppMethodBeat.o(191765);
       return;
       this.surfaceTexture.setOnFrameAvailableListener(this);
       reflectLooper();
@@ -64,7 +64,7 @@ public class VideoTexture
   
   public VideoTexture(TextureInfo paramTextureInfo)
   {
-    AppMethodBeat.i(218380);
+    AppMethodBeat.i(191758);
     this.frameSyncObject = new Object();
     this.quitFlag = false;
     this.preferRotation = 0;
@@ -78,7 +78,7 @@ public class VideoTexture
       paramTextureInfo = new float[16];
       this.surfaceTexture.getTransformMatrix(paramTextureInfo);
       this.preferRotation = 0;
-      AppMethodBeat.o(218380);
+      AppMethodBeat.o(191758);
       return;
       this.surfaceTexture.setOnFrameAvailableListener(this);
       reflectLooper();
@@ -87,7 +87,7 @@ public class VideoTexture
   
   private Matrix getTextureMatrix(SurfaceTexture paramSurfaceTexture, int paramInt)
   {
-    AppMethodBeat.i(218388);
+    AppMethodBeat.i(191801);
     Object localObject = new float[16];
     paramSurfaceTexture.getTransformMatrix((float[])localObject);
     float f1 = localObject[0];
@@ -116,7 +116,7 @@ public class VideoTexture
         ((Matrix)localObject).invert(localMatrix);
         paramSurfaceTexture.postConcat(localMatrix);
       }
-      AppMethodBeat.o(218388);
+      AppMethodBeat.o(191801);
       return paramSurfaceTexture;
       paramSurfaceTexture.setValues(new float[] { f1, f2, f3, f4, f5, f6, 0.0F, 0.0F, 1.0F });
     }
@@ -124,13 +124,13 @@ public class VideoTexture
   
   private boolean isIdentity()
   {
-    AppMethodBeat.i(218379);
+    AppMethodBeat.i(191755);
     if ((this.textureMatrix == null) || (this.textureMatrix.isIdentity()))
     {
-      AppMethodBeat.o(218379);
+      AppMethodBeat.o(191755);
       return true;
     }
-    AppMethodBeat.o(218379);
+    AppMethodBeat.o(191755);
     return false;
   }
   
@@ -141,7 +141,7 @@ public class VideoTexture
   
   private void reflectLooper()
   {
-    AppMethodBeat.i(218383);
+    AppMethodBeat.i(191772);
     Object localObject3 = SurfaceTexture.class.getDeclaredClasses();
     int j = localObject3.length;
     int i = 0;
@@ -155,7 +155,7 @@ public class VideoTexture
     {
       if (localObject1 == null)
       {
-        AppMethodBeat.o(218383);
+        AppMethodBeat.o(191772);
         return;
         i += 1;
         break;
@@ -166,13 +166,13 @@ public class VideoTexture
         localObject3 = this.surfaceTexture.getClass().getDeclaredField("mEventHandler");
         ((Field)localObject3).setAccessible(true);
         ((Field)localObject3).set(this.surfaceTexture, localObject1);
-        AppMethodBeat.o(218383);
+        AppMethodBeat.o(191772);
         return;
       }
       catch (Exception localException)
       {
         Logger.e("VideoTexture", "reflectLooper", localException);
-        AppMethodBeat.o(218383);
+        AppMethodBeat.o(191772);
         return;
       }
       Object localObject2 = null;
@@ -181,35 +181,35 @@ public class VideoTexture
   
   private void releaseFilter()
   {
-    AppMethodBeat.i(218390);
+    AppMethodBeat.i(191807);
     if (this.copyFilter != null) {
       this.copyFilter.release();
     }
-    AppMethodBeat.o(218390);
+    AppMethodBeat.o(191807);
   }
   
   private void releaseTextureInfo()
   {
-    AppMethodBeat.i(218391);
+    AppMethodBeat.i(191809);
     if (this.textureInfo != null)
     {
       this.textureInfo.release();
       this.textureInfo = null;
     }
-    AppMethodBeat.o(218391);
+    AppMethodBeat.o(191809);
   }
   
   boolean awaitNewImage()
   {
-    AppMethodBeat.i(218384);
+    AppMethodBeat.i(191773);
     boolean bool = awaitNewImage(3000L);
-    AppMethodBeat.o(218384);
+    AppMethodBeat.o(191773);
     return bool;
   }
   
   public boolean awaitNewImage(long paramLong)
   {
-    AppMethodBeat.i(218385);
+    AppMethodBeat.i(191779);
     int i = (int)Math.ceil((float)paramLong * 1.0F / 50.0F);
     synchronized (this.frameSyncObject)
     {
@@ -229,13 +229,13 @@ public class VideoTexture
       this.frameAvailable = false;
       if (i == 0)
       {
-        AppMethodBeat.o(218385);
+        AppMethodBeat.o(191779);
         return false;
       }
       if (this.quitFlag)
       {
         this.quitFlag = false;
-        AppMethodBeat.o(218385);
+        AppMethodBeat.o(191779);
         return false;
       }
     }
@@ -249,13 +249,13 @@ public class VideoTexture
       ((Matrix)???).setValues(new float[] { -arrayOfFloat[4], 0.0F, arrayOfFloat[4], 0.0F, arrayOfFloat[0], arrayOfFloat[2], arrayOfFloat[6], arrayOfFloat[7], arrayOfFloat[8] });
     }
     this.textureInfo.setTextureMatrix((Matrix)???);
-    AppMethodBeat.o(218385);
+    AppMethodBeat.o(191779);
     return true;
   }
   
   public TextureInfo copyTexture()
   {
-    AppMethodBeat.i(218393);
+    AppMethodBeat.i(191815);
     if (this.copyFilter == null)
     {
       this.copyFilter = new Filter();
@@ -264,7 +264,7 @@ public class VideoTexture
       this.copyFilter.setRenderForScreen(false);
     }
     TextureInfo localTextureInfo = this.copyFilter.applyFilter(this.textureInfo, null, this.textureInfo.getTextureMatrix());
-    AppMethodBeat.o(218393);
+    AppMethodBeat.o(191815);
     return localTextureInfo;
   }
   
@@ -285,52 +285,52 @@ public class VideoTexture
   
   public void onFrameAvailable(SurfaceTexture arg1)
   {
-    AppMethodBeat.i(218386);
+    AppMethodBeat.i(191784);
     synchronized (this.frameSyncObject)
     {
       if (this.frameAvailable)
       {
         new RuntimeException("frameAvailable already set, frame could be dropped");
-        AppMethodBeat.o(218386);
+        AppMethodBeat.o(191784);
         return;
       }
       this.frameAvailable = true;
       this.frameSyncObject.notifyAll();
-      AppMethodBeat.o(218386);
+      AppMethodBeat.o(191784);
       return;
     }
   }
   
   public void quitIfWaiting()
   {
-    AppMethodBeat.i(218387);
+    AppMethodBeat.i(191790);
     synchronized (this.frameSyncObject)
     {
       this.quitFlag = true;
       this.frameSyncObject.notifyAll();
-      AppMethodBeat.o(218387);
+      AppMethodBeat.o(191790);
       return;
     }
   }
   
   public void release()
   {
-    AppMethodBeat.i(218389);
+    AppMethodBeat.i(191803);
     releaseTextureInfo();
     releaseSurfaceTexture();
     releaseFilter();
-    AppMethodBeat.o(218389);
+    AppMethodBeat.o(191803);
   }
   
   public void releaseSurfaceTexture()
   {
-    AppMethodBeat.i(218392);
+    AppMethodBeat.i(191813);
     if (this.surfaceTexture != null)
     {
       this.surfaceTexture.release();
       this.surfaceTexture = null;
     }
-    AppMethodBeat.o(218392);
+    AppMethodBeat.o(191813);
   }
   
   public void setRenderContext(RenderContext paramRenderContext)
@@ -345,18 +345,18 @@ public class VideoTexture
   
   public Matrix surfaceTextureMatrix()
   {
-    AppMethodBeat.i(218378);
+    AppMethodBeat.i(191748);
     if ((isIdentity()) && (isOES())) {
       this.textureMatrix = getTextureMatrix(this.surfaceTexture, this.preferRotation);
     }
     Matrix localMatrix = this.textureMatrix;
-    AppMethodBeat.o(218378);
+    AppMethodBeat.o(191748);
     return localMatrix;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.decoder.VideoTexture
  * JD-Core Version:    0.7.0.1
  */

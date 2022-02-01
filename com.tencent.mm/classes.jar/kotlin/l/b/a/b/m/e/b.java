@@ -6,7 +6,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import kotlin.a.j;
-import kotlin.aa;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
 import kotlin.l.b.a.b.a.g;
@@ -33,14 +32,15 @@ import kotlin.m;
 import kotlin.o;
 import kotlin.t;
 import kotlin.x;
+import kotlin.z;
 
 public final class b
 {
   private static final ab a(ab paramab, List<d> paramList)
   {
     AppMethodBeat.i(61274);
-    if (paramab.hKB().size() == paramList.size()) {}
-    for (int i = 1; (aa.SXc) && (i == 0); i = 0)
+    if (paramab.iOR().size() == paramList.size()) {}
+    for (int i = 1; (z.aazO) && (i == 0); i = 0)
     {
       paramab = (Throwable)new AssertionError("Incorrect type arguments ".concat(String.valueOf(paramList)));
       AppMethodBeat.o(61274);
@@ -52,33 +52,33 @@ public final class b
     if (localIterator.hasNext())
     {
       paramList = (d)localIterator.next();
-      boolean bool = paramList.hLP();
-      if ((aa.SXc) && (!bool))
+      boolean bool = paramList.iQh();
+      if ((z.aazO) && (!bool))
       {
-        paramab = c.TFl;
-        paramab = c.a.T((kotlin.g.a.b)d.TQb);
-        paramab = (Throwable)new AssertionError("Only consistent enhanced type projection can be converted to type projection, but [" + paramab.k((l)paramList.TOv) + ": <" + paramab.b(paramList.TQd) + ", " + paramab.b(paramList.TQe) + ">] was found");
+        paramab = c.abhP;
+        paramab = c.a.aj((kotlin.g.a.b)d.absA);
+        paramab = (Throwable)new AssertionError("Only consistent enhanced type projection can be converted to type projection, but [" + paramab.k((l)paramList.abqV) + ": <" + paramab.b(paramList.absC) + ", " + paramab.b(paramList.absD) + ">] was found");
         AppMethodBeat.o(61274);
         throw paramab;
       }
       e locale = new e(paramList);
-      if (p.j(paramList.TQd, paramList.TQe)) {
-        paramList = (av)new ax(paramList.TQd);
+      if (p.h(paramList.absC, paramList.absD)) {
+        paramList = (av)new ax(paramList.absC);
       }
       for (;;)
       {
         localCollection.add(paramList);
         break;
-        if ((g.x(paramList.TQd)) && (paramList.TOv.hAJ() != bh.TOR)) {
-          paramList = (av)new ax(locale.c(bh.TOS), paramList.TQe);
-        } else if (g.A(paramList.TQe)) {
-          paramList = (av)new ax(locale.c(bh.TOR), paramList.TQd);
+        if ((g.x(paramList.absC)) && (paramList.abqV.iEW() != bh.abrq)) {
+          paramList = (av)new ax(locale.c(bh.abrr), paramList.absD);
+        } else if (g.A(paramList.absD)) {
+          paramList = (av)new ax(locale.c(bh.abrq), paramList.absC);
         } else {
-          paramList = (av)new ax(locale.c(bh.TOS), paramList.TQe);
+          paramList = (av)new ax(locale.c(bh.abrr), paramList.absD);
         }
       }
     }
-    paramab = az.a(paramab, (List)localCollection, paramab.hzL());
+    paramab = az.a(paramab, (List)localCollection, paramab.iDY());
     AppMethodBeat.o(61274);
     return paramab;
   }
@@ -91,29 +91,29 @@ public final class b
       AppMethodBeat.o(61271);
       return null;
     }
-    if (paramav.hLH())
+    if (paramav.iPZ())
     {
       AppMethodBeat.o(61271);
       return paramav;
     }
-    ab localab = paramav.hBy();
-    p.g(localab, "typeProjection.type");
-    if (!bc.b(localab, (kotlin.g.a.b)b.TQa))
+    ab localab = paramav.iFN();
+    p.j(localab, "typeProjection.type");
+    if (!bc.b(localab, (kotlin.g.a.b)b.absz))
     {
       AppMethodBeat.o(61271);
       return paramav;
     }
-    bh localbh = paramav.hLI();
-    p.g(localbh, "typeProjection.projectionKind");
-    if (localbh == bh.TOS)
+    bh localbh = paramav.iQa();
+    p.j(localbh, "typeProjection.projectionKind");
+    if (localbh == bh.abrr)
     {
-      paramav = (av)new ax(localbh, (ab)aP(localab).TPZ);
+      paramav = (av)new ax(localbh, (ab)aP(localab).absy);
       AppMethodBeat.o(61271);
       return paramav;
     }
     if (paramBoolean)
     {
-      paramav = (av)new ax(localbh, (ab)aP(localab).TPY);
+      paramav = (av)new ax(localbh, (ab)aP(localab).absx);
       AppMethodBeat.o(61271);
       return paramav;
     }
@@ -125,13 +125,13 @@ public final class b
   private static final a<d> a(d paramd)
   {
     AppMethodBeat.i(61275);
-    Object localObject1 = aP(paramd.TQd);
-    ab localab1 = (ab)((a)localObject1).TPY;
-    localObject1 = (ab)((a)localObject1).TPZ;
-    Object localObject2 = aP(paramd.TQe);
-    ab localab2 = (ab)((a)localObject2).TPY;
-    localObject2 = (ab)((a)localObject2).TPZ;
-    paramd = new a(new d(paramd.TOv, (ab)localObject1, localab2), new d(paramd.TOv, localab1, (ab)localObject2));
+    Object localObject1 = aP(paramd.absC);
+    ab localab1 = (ab)((a)localObject1).absx;
+    localObject1 = (ab)((a)localObject1).absy;
+    Object localObject2 = aP(paramd.absD);
+    ab localab2 = (ab)((a)localObject2).absx;
+    localObject2 = (ab)((a)localObject2).absy;
+    paramd = new a(new d(paramd.abqV, (ab)localObject1, localab2), new d(paramd.abqV, localab1, (ab)localObject2));
     AppMethodBeat.o(61275);
     return paramd;
   }
@@ -139,16 +139,16 @@ public final class b
   public static final a<ab> aP(ab paramab)
   {
     AppMethodBeat.i(61273);
-    p.h(paramab, "type");
+    p.k(paramab, "type");
     if (y.al(paramab))
     {
       localObject1 = aP((ab)y.an(paramab));
       localObject2 = aP((ab)y.ao(paramab));
-      paramab = new a(be.a(ac.a(y.an((ab)((a)localObject1).TPY), y.ao((ab)((a)localObject2).TPY)), paramab), be.a(ac.a(y.an((ab)((a)localObject1).TPZ), y.ao((ab)((a)localObject2).TPZ)), paramab));
+      paramab = new a(be.a(ac.a(y.an((ab)((a)localObject1).absx), y.ao((ab)((a)localObject2).absx)), paramab), be.a(ac.a(y.an((ab)((a)localObject1).absy), y.ao((ab)((a)localObject2).absy)), paramab));
       AppMethodBeat.o(61273);
       return paramab;
     }
-    Object localObject4 = paramab.hKE();
+    Object localObject4 = paramab.iOU();
     if (kotlin.l.b.a.b.j.a.a.d.ad(paramab))
     {
       if (localObject4 == null)
@@ -157,32 +157,32 @@ public final class b
         AppMethodBeat.o(61273);
         throw paramab;
       }
-      localObject3 = ((kotlin.l.b.a.b.j.a.a.b)localObject4).hKF();
+      localObject3 = ((kotlin.l.b.a.b.j.a.a.b)localObject4).iOV();
       localObject1 = new a(paramab);
-      localObject2 = ((av)localObject3).hBy();
-      p.g(localObject2, "typeProjection.type");
+      localObject2 = ((av)localObject3).iFN();
+      p.j(localObject2, "typeProjection.type");
       localObject2 = ((a)localObject1).aQ((ab)localObject2);
-      localObject4 = ((av)localObject3).hLI();
-      switch (c.haE[localObject4.ordinal()])
+      localObject4 = ((av)localObject3).iQa();
+      switch (c.jLJ[localObject4.ordinal()])
       {
       default: 
         paramab = (Throwable)new AssertionError("Only nontrivial projections should have been captured, not: ".concat(String.valueOf(localObject3)));
         AppMethodBeat.o(61273);
         throw paramab;
       case 1: 
-        paramab = kotlin.l.b.a.b.m.d.a.aM(paramab).hzj();
-        p.g(paramab, "type.builtIns.nullableAnyType");
+        paramab = kotlin.l.b.a.b.m.d.a.aM(paramab).iDv();
+        p.j(paramab, "type.builtIns.nullableAnyType");
         paramab = new a(localObject2, paramab);
         AppMethodBeat.o(61273);
         return paramab;
       }
-      paramab = kotlin.l.b.a.b.m.d.a.aM(paramab).hzh();
-      p.g(paramab, "type.builtIns.nothingType");
+      paramab = kotlin.l.b.a.b.m.d.a.aM(paramab).iDt();
+      p.j(paramab, "type.builtIns.nothingType");
       paramab = new a(((a)localObject1).aQ((ab)paramab), localObject2);
       AppMethodBeat.o(61273);
       return paramab;
     }
-    if ((paramab.hKB().isEmpty()) || (paramab.hKB().size() != ((at)localObject4).getParameters().size()))
+    if ((paramab.iOR().isEmpty()) || (paramab.iOR().size() != ((at)localObject4).iCb().size()))
     {
       paramab = new a(paramab, paramab);
       AppMethodBeat.o(61273);
@@ -190,18 +190,18 @@ public final class b
     }
     Object localObject1 = new ArrayList();
     Object localObject2 = new ArrayList();
-    Object localObject3 = (Iterable)paramab.hKB();
-    localObject4 = ((at)localObject4).getParameters();
-    p.g(localObject4, "typeConstructor.parameters");
+    Object localObject3 = (Iterable)paramab.iOR();
+    localObject4 = ((at)localObject4).iCb();
+    p.j(localObject4, "typeConstructor.parameters");
     localObject3 = j.c((Iterable)localObject3, (Iterable)localObject4).iterator();
     while (((Iterator)localObject3).hasNext())
     {
       Object localObject5 = (o)((Iterator)localObject3).next();
-      localObject4 = (av)((o)localObject5).first;
-      localObject5 = (as)((o)localObject5).second;
-      p.g(localObject5, "typeParameter");
+      localObject4 = (av)((o)localObject5).Mx;
+      localObject5 = (as)((o)localObject5).My;
+      p.j(localObject5, "typeParameter");
       localObject5 = b((av)localObject4, (as)localObject5);
-      if (((av)localObject4).hLH())
+      if (((av)localObject4).iPZ())
       {
         ((ArrayList)localObject1).add(localObject5);
         ((ArrayList)localObject2).add(localObject5);
@@ -209,8 +209,8 @@ public final class b
       else
       {
         localObject5 = a((d)localObject5);
-        localObject4 = (d)((a)localObject5).TPY;
-        localObject5 = (d)((a)localObject5).TPZ;
+        localObject4 = (d)((a)localObject5).absx;
+        localObject5 = (d)((a)localObject5).absy;
         ((ArrayList)localObject1).add(localObject4);
         ((ArrayList)localObject2).add(localObject5);
       }
@@ -221,7 +221,7 @@ public final class b
     {
       localObject3 = ((Iterable)localObject3).iterator();
       if (((Iterator)localObject3).hasNext()) {
-        if (!((d)((Iterator)localObject3).next()).hLP())
+        if (!((d)((Iterator)localObject3).next()).iQh())
         {
           i = 1;
           label634:
@@ -233,8 +233,8 @@ public final class b
           if (i == 0) {
             break label699;
           }
-          localObject1 = kotlin.l.b.a.b.m.d.a.aM(paramab).hzh();
-          p.g(localObject1, "type.builtIns.nothingType");
+          localObject1 = kotlin.l.b.a.b.m.d.a.aM(paramab).iDt();
+          p.j(localObject1, "type.builtIns.nothingType");
         }
       }
     }
@@ -256,7 +256,7 @@ public final class b
   private static final d b(av paramav, as paramas)
   {
     AppMethodBeat.i(61270);
-    Object localObject = ba.a(paramas.hAJ(), paramav);
+    Object localObject = ba.a(paramas.iEW(), paramav);
     switch (c.$EnumSwitchMapping$0[localObject.ordinal()])
     {
     default: 
@@ -264,27 +264,27 @@ public final class b
       AppMethodBeat.o(61270);
       throw paramav;
     case 1: 
-      localObject = paramav.hBy();
-      p.g(localObject, "type");
-      paramav = paramav.hBy();
-      p.g(paramav, "type");
+      localObject = paramav.iFN();
+      p.j(localObject, "type");
+      paramav = paramav.iFN();
+      p.j(paramav, "type");
       paramav = new d(paramas, (ab)localObject, paramav);
       AppMethodBeat.o(61270);
       return paramav;
     case 2: 
-      paramav = paramav.hBy();
-      p.g(paramav, "type");
-      localObject = kotlin.l.b.a.b.j.d.a.G((l)paramas).hzj();
-      p.g(localObject, "typeParameter.builtIns.nullableAnyType");
+      paramav = paramav.iFN();
+      p.j(paramav, "type");
+      localObject = kotlin.l.b.a.b.j.d.a.G((l)paramas).iDv();
+      p.j(localObject, "typeParameter.builtIns.nullableAnyType");
       paramav = new d(paramas, paramav, (ab)localObject);
       AppMethodBeat.o(61270);
       return paramav;
     }
-    localObject = kotlin.l.b.a.b.j.d.a.G((l)paramas).hzh();
-    p.g(localObject, "typeParameter.builtIns.nothingType");
+    localObject = kotlin.l.b.a.b.j.d.a.G((l)paramas).iDt();
+    p.j(localObject, "typeParameter.builtIns.nothingType");
     localObject = (ab)localObject;
-    paramav = paramav.hBy();
-    p.g(paramav, "type");
+    paramav = paramav.iFN();
+    p.j(paramav, "type");
     paramav = new d(paramas, (ab)localObject, paramav);
     AppMethodBeat.o(61270);
     return paramav;
@@ -294,7 +294,7 @@ public final class b
   {
     AppMethodBeat.i(61272);
     ba localba = ba.d((ay)new c());
-    p.g(localba, "TypeSubstitutor.create(o…ojection\n        }\n    })");
+    p.j(localba, "TypeSubstitutor.create(o…ojection\n        }\n    })");
     paramav = localba.d(paramav);
     AppMethodBeat.o(61272);
     return paramav;
@@ -312,9 +312,9 @@ public final class b
     public final ab aQ(ab paramab)
     {
       AppMethodBeat.i(61262);
-      p.h(paramab, "$this$makeNullableIfNeeded");
-      paramab = bc.c(paramab, this.TIv.hEa());
-      p.g(paramab, "TypeUtils.makeNullableIf…s, type.isMarkedNullable)");
+      p.k(paramab, "$this$makeNullableIfNeeded");
+      paramab = bc.c(paramab, this.abkZ.iIu());
+      p.j(paramab, "TypeUtils.makeNullableIf…s, type.isMarkedNullable)");
       AppMethodBeat.o(61262);
       return paramab;
     }
@@ -324,12 +324,12 @@ public final class b
     extends q
     implements kotlin.g.a.b<bg, Boolean>
   {
-    public static final b TQa;
+    public static final b absz;
     
     static
     {
       AppMethodBeat.i(61264);
-      TQa = new b();
+      absz = new b();
       AppMethodBeat.o(61264);
     }
     
@@ -345,7 +345,7 @@ public final class b
     public final av d(at paramat)
     {
       AppMethodBeat.i(61265);
-      p.h(paramat, "key");
+      p.k(paramat, "key");
       if (!(paramat instanceof kotlin.l.b.a.b.j.a.a.b)) {
         paramat = null;
       }
@@ -357,13 +357,13 @@ public final class b
           AppMethodBeat.o(61265);
           return null;
         }
-        if (paramat.hKF().hLH())
+        if (paramat.iOV().iPZ())
         {
-          paramat = (av)new ax(bh.TOS, paramat.hKF().hBy());
+          paramat = (av)new ax(bh.abrr, paramat.iOV().iFN());
           AppMethodBeat.o(61265);
           return paramat;
         }
-        paramat = paramat.hKF();
+        paramat = paramat.iOV();
         AppMethodBeat.o(61265);
         return paramat;
       }
@@ -374,12 +374,12 @@ public final class b
     extends q
     implements kotlin.g.a.b<i, x>
   {
-    public static final d TQb;
+    public static final d absA;
     
     static
     {
       AppMethodBeat.i(61267);
-      TQb = new d();
+      absA = new d();
       AppMethodBeat.o(61267);
     }
     
@@ -401,10 +401,10 @@ public final class b
     public final bh c(bh parambh)
     {
       AppMethodBeat.i(61269);
-      p.h(parambh, "variance");
-      if (parambh == this.TQc.TOv.hAJ())
+      p.k(parambh, "variance");
+      if (parambh == this.absB.abqV.iEW())
       {
-        parambh = bh.TOQ;
+        parambh = bh.abrp;
         AppMethodBeat.o(61269);
         return parambh;
       }
@@ -415,7 +415,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.e.b
  * JD-Core Version:    0.7.0.1
  */

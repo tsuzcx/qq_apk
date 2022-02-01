@@ -1,20 +1,24 @@
 package kotlinx.coroutines;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/IncompleteStateBox;", "", "state", "Lkotlinx/coroutines/Incomplete;", "(Lkotlinx/coroutines/Incomplete;)V", "kotlinx-coroutines-core"})
-final class bq
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"asCoroutineDispatcher", "Lkotlinx/coroutines/CoroutineDispatcher;", "Ljava/util/concurrent/Executor;", "from", "Lkotlinx/coroutines/ExecutorCoroutineDispatcher;", "Ljava/util/concurrent/ExecutorService;", "asExecutor", "kotlinx-coroutines-core"})
+public final class bq
 {
-  public final bp TUM;
-  
-  public bq(bp parambp)
+  public static final bn a(ExecutorService paramExecutorService)
   {
-    this.TUM = parambp;
+    AppMethodBeat.i(205119);
+    paramExecutorService = (bn)new bp((Executor)paramExecutorService);
+    AppMethodBeat.o(205119);
+    return paramExecutorService;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     kotlinx.coroutines.bq
  * JD-Core Version:    0.7.0.1
  */

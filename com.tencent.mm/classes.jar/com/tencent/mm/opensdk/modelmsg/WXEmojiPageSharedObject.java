@@ -22,7 +22,7 @@ public class WXEmojiPageSharedObject
   
   public WXEmojiPageSharedObject(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt3, String paramString5)
   {
-    AppMethodBeat.i(190429);
+    AppMethodBeat.i(255226);
     this.tid = paramInt2;
     this.title = paramString1;
     this.desc = paramString2;
@@ -31,7 +31,7 @@ public class WXEmojiPageSharedObject
     this.pageType = paramInt3;
     this.url = paramString5;
     this.type = paramInt1;
-    AppMethodBeat.o(190429);
+    AppMethodBeat.o(255226);
   }
   
   public boolean checkArgs()

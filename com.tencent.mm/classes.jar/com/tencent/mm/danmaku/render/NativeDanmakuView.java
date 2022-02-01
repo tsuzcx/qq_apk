@@ -10,7 +10,7 @@ import com.tencent.mm.danmaku.e.e;
 public class NativeDanmakuView
   extends View
 {
-  a gPX;
+  a jAq;
   
   public NativeDanmakuView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,37 +24,37 @@ public class NativeDanmakuView
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(241703);
+    AppMethodBeat.i(278670);
     super.onDetachedFromWindow();
-    if (this.gPX != null) {
-      this.gPX.onDestroy();
+    if (this.jAq != null) {
+      this.jAq.onDestroy();
     }
-    AppMethodBeat.o(241703);
+    AppMethodBeat.o(278670);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(241701);
+    AppMethodBeat.i(278668);
     e.d("NativeDanmakuView", "onDraw");
-    if (this.gPX != null) {
-      this.gPX.onDraw(paramCanvas);
+    if (this.jAq != null) {
+      this.jAq.onDraw(paramCanvas);
     }
-    AppMethodBeat.o(241701);
+    AppMethodBeat.o(278668);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(241702);
+    AppMethodBeat.i(278669);
     e.d("NativeDanmakuView", "onLayout");
-    if (this.gPX != null) {
-      this.gPX.ate();
+    if (this.jAq != null) {
+      this.jAq.azS();
     }
-    AppMethodBeat.o(241702);
+    AppMethodBeat.o(278669);
   }
   
   public static abstract interface a
   {
-    public abstract void ate();
+    public abstract void azS();
     
     public abstract void onDestroy();
     
@@ -63,7 +63,7 @@ public class NativeDanmakuView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.danmaku.render.NativeDanmakuView
  * JD-Core Version:    0.7.0.1
  */

@@ -3,24 +3,22 @@ package com.tencent.mm.ui.contact;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.g;
-import android.support.v4.app.k;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
+import androidx.fragment.app.e;
+import androidx.fragment.app.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.d;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMFragment;
 
 public class OpenIMAddressUI
   extends MMActivity
 {
-  public MMFragment PSI;
+  public MMFragment Xpv;
   
   public int getLayoutId()
   {
-    return 2131495886;
+    return R.i.ejK;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -30,9 +28,9 @@ public class OpenIMAddressUI
     paramBundle = getSupportFragmentManager();
     if (paramBundle.findFragmentById(16908290) == null)
     {
-      this.PSI = new OpenIMAddressUI.OpenIMAddressUIFragment();
-      this.PSI.setArguments(getIntent().getExtras());
-      paramBundle.beginTransaction().a(2131302666, this.PSI).commit();
+      this.Xpv = new OpenIMAddressUI.OpenIMAddressUIFragment();
+      this.Xpv.setArguments(getIntent().getExtras());
+      paramBundle.beginTransaction().a(R.h.dJi, this.Xpv).in();
     }
     AppMethodBeat.o(37918);
   }
@@ -45,7 +43,7 @@ public class OpenIMAddressUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.contact.OpenIMAddressUI
  * JD-Core Version:    0.7.0.1
  */

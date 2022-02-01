@@ -1,29 +1,25 @@
 package com.tencent.mm.emoji.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.e;
-import com.tencent.mm.bb.g;
-import com.tencent.mm.bb.k;
-import com.tencent.mm.bb.o;
+import com.tencent.mm.be.e;
+import com.tencent.mm.be.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
-import kotlin.g.b.p;
-import kotlin.l;
 import org.xmlpull.v1.XmlPullParser;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/model/EggListParser;", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "()V", "TAG", "", "eggList", "Lcom/tencent/mm/modelpackage/EggList;", "getEggList", "()Lcom/tencent/mm/modelpackage/EggList;", "parse", "", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "parseTag", "tag", "validEggInfo", "", "info", "Lcom/tencent/mm/modelpackage/EggInfo;", "Companion", "plugin-emojisdk_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/model/EggListParser;", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "()V", "TAG", "", "eggList", "Lcom/tencent/mm/modelpackage/EggList;", "getEggList", "()Lcom/tencent/mm/modelpackage/EggList;", "parse", "", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "parseTag", "tag", "validEggInfo", "", "info", "Lcom/tencent/mm/modelpackage/EggInfo;", "Companion", "plugin-emojisdk_release"})
 public final class i
   extends a
 {
-  public static final i.a gXd;
+  public static final i.a jIb;
   private final String TAG;
-  public final g gXc;
+  public final g jIa;
   
   static
   {
     AppMethodBeat.i(160330);
-    gXd = new i.a((byte)0);
+    jIb = new i.a((byte)0);
     AppMethodBeat.o(160330);
   }
   
@@ -31,20 +27,20 @@ public final class i
   {
     AppMethodBeat.i(105507);
     this.TAG = "MicroMsg.EggListParser";
-    this.gXc = new g();
+    this.jIa = new g();
     AppMethodBeat.o(105507);
   }
   
   protected final void a(String paramString, XmlPullParser paramXmlPullParser)
   {
+    int k = 4;
     boolean bool2 = true;
     AppMethodBeat.i(105506);
-    p.h(paramString, "tag");
-    p.h(paramXmlPullParser, "parser");
+    kotlin.g.b.p.k(paramString, "tag");
+    kotlin.g.b.p.k(paramXmlPullParser, "parser");
     label56:
     label71:
     h localh;
-    int k;
     boolean bool1;
     int i;
     switch (paramString.hashCode())
@@ -57,11 +53,10 @@ public final class i
         AppMethodBeat.o(105506);
         return;
       } while (!paramString.equals("Item"));
-      localh = new h(p.j(paramString, "ItemNew"));
+      localh = new h(kotlin.g.b.p.h(paramString, "ItemNew"));
       localh.c(paramXmlPullParser);
-      paramXmlPullParser = localh.gWZ;
-      k = 4;
-      switch (paramXmlPullParser.jgP)
+      paramXmlPullParser = localh.jHX;
+      switch (paramXmlPullParser.lXs)
       {
       default: 
         bool1 = false;
@@ -72,22 +67,22 @@ public final class i
     for (;;)
     {
       label150:
-      paramString = paramXmlPullParser.jgQ.iterator();
+      paramString = paramXmlPullParser.lXt.iterator();
       for (;;)
       {
         if (paramString.hasNext())
         {
-          o localo = (o)paramString.next();
-          if (localo.jhn > i)
+          com.tencent.mm.be.p localp = (com.tencent.mm.be.p)paramString.next();
+          if (localp.lXQ > i)
           {
-            localo.jhn = 0;
+            localp.lXQ = 0;
             continue;
             if (!paramString.equals("ItemNew")) {
               break;
             }
             break label71;
             if (paramXmlPullParser.type == 0) {
-              break label512;
+              break label566;
             }
             paramXmlPullParser.type = 0;
             i = 3;
@@ -107,7 +102,7 @@ public final class i
             if (1 != paramXmlPullParser.type) {
               break label150;
             }
-            if (paramXmlPullParser.gXT != null) {}
+            if (paramXmlPullParser.jIS != null) {}
             for (bool1 = true;; bool1 = false)
             {
               i = k;
@@ -120,7 +115,7 @@ public final class i
             }
             bool1 = bool2;
             i = k;
-            if (paramXmlPullParser.gWY != null) {
+            if (paramXmlPullParser.jHW != null) {
               break label150;
             }
             bool1 = false;
@@ -131,14 +126,14 @@ public final class i
             if (paramXmlPullParser.type != 3) {
               break label150;
             }
-            paramString = paramXmlPullParser.gXT;
+            paramString = paramXmlPullParser.jIS;
             if (paramString != null)
             {
-              paramString = paramString.jhm;
+              paramString = paramString.lXO;
               label362:
               if (paramString != null)
               {
-                paramString = (CharSequence)paramXmlPullParser.gXT.jhl;
+                paramString = (CharSequence)paramXmlPullParser.jIS.lXN;
                 if ((paramString != null) && (paramString.length() != 0)) {
                   break label419;
                 }
@@ -158,17 +153,35 @@ public final class i
               paramString = null;
               break label362;
             }
+            bool1 = bool2;
+            i = k;
+            if (paramXmlPullParser.type != 4) {
+              break label150;
+            }
+            paramString = paramXmlPullParser.jIc;
+            if (paramString != null) {}
+            for (paramString = paramString.lXm;; paramString = null)
+            {
+              bool1 = bool2;
+              i = k;
+              if (paramString != null) {
+                break;
+              }
+              bool1 = false;
+              i = k;
+              break;
+            }
           }
         }
       }
-      Log.i(this.TAG, "validEggInfo: " + paramXmlPullParser.name + ", " + paramXmlPullParser.jgP + ", " + paramXmlPullParser.type + ", " + bool1);
+      Log.i(this.TAG, "validEggInfo: " + paramXmlPullParser.name + ", " + paramXmlPullParser.lXs + ", " + paramXmlPullParser.type + ", " + bool1);
       if (!bool1) {
         break label56;
       }
-      this.gXc.jgS.add(localh.gWZ);
+      this.jIa.lXv.add(localh.jHX);
       AppMethodBeat.o(105506);
       return;
-      label512:
+      label566:
       i = 3;
       bool1 = bool2;
     }
@@ -177,15 +190,15 @@ public final class i
   public final void c(XmlPullParser paramXmlPullParser)
   {
     AppMethodBeat.i(105505);
-    p.h(paramXmlPullParser, "parser");
-    this.gXc.jgT = e(paramXmlPullParser, "version");
+    kotlin.g.b.p.k(paramXmlPullParser, "parser");
+    this.jIa.bLJ = e(paramXmlPullParser, "version");
     super.c(paramXmlPullParser);
     AppMethodBeat.o(105505);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.b.i
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,6 @@ import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.MarginLayoutParams;
@@ -19,112 +18,119 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.live.api.LiveConfig;
-import com.tencent.mm.live.b.o.e;
-import com.tencent.mm.live.b.r;
-import com.tencent.mm.live.b.x;
+import com.tencent.mm.live.b.e;
+import com.tencent.mm.live.b.f;
+import com.tencent.mm.live.b.g;
+import com.tencent.mm.live.b.h;
+import com.tencent.mm.live.b.i;
+import com.tencent.mm.live.b.l.d;
+import com.tencent.mm.live.b.o;
+import com.tencent.mm.live.b.u;
 import com.tencent.mm.live.d.d;
 import com.tencent.mm.model.z;
-import com.tencent.mm.protocal.protobuf.civ;
+import com.tencent.mm.protocal.protobuf.crq;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.at;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.ax;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/ui/LiveUID;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "RANGE_ROOM", "", "RANGE_SELF_ONLY", "TAG", "", "curRange", "fromSence", "hasBeenEnterReplay", "", "liveConfig", "Lcom/tencent/mm/live/api/LiveConfig;", "profileBackBtn", "Landroid/widget/ImageView;", "profileContentGroup", "Landroid/view/View;", "profileDescTv", "Landroid/widget/TextView;", "profileGeneratingTipTv", "profileGeneratingTv", "profileIconIv", "profileRangeBtn", "profileRangeClose", "profileRangeContentPanel", "profileRangeFinishBtn", "Landroid/widget/Button;", "profileRangePanel", "profileRangeRoomGroup", "profileRangeRoomSelect", "profileRangeSelfGroup", "profileRangeSelfSelect", "profileRangeTipTv", "profileReplayBtn", "profileTitleTv", "doReplaySwitch", "", "getLayoutId", "hideRangePanel", "initConfig", "initRangePanel", "initViews", "isAnchor", "liveInfo", "Lcom/tencent/mm/protocal/protobuf/LiveInfo;", "isReplayClosed", "isReplayDeprecated", "isReplayGenerated", "loadLiveInfo", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "replayClosed", "replayDeprecated", "replayGenerated", "replayGenerating", "setWindowStyle", "showRangePanel", "updateReplayRange", "plugin-logic_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/ui/LiveUID;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "RANGE_ROOM", "", "RANGE_SELF_ONLY", "TAG", "", "curRange", "fromSence", "hasBeenEnterReplay", "", "liveConfig", "Lcom/tencent/mm/live/api/LiveConfig;", "profileBackBtn", "Landroid/widget/ImageView;", "profileContentGroup", "Landroid/view/View;", "profileDescTv", "Landroid/widget/TextView;", "profileGeneratingTipTv", "profileGeneratingTv", "profileIconIv", "profileRangeBtn", "profileRangeClose", "profileRangeContentPanel", "profileRangeFinishBtn", "Landroid/widget/Button;", "profileRangePanel", "profileRangeRoomGroup", "profileRangeRoomSelect", "profileRangeSelfGroup", "profileRangeSelfSelect", "profileRangeTipTv", "profileReplayBtn", "profileTitleTv", "doReplaySwitch", "", "getLayoutId", "hideRangePanel", "initConfig", "initRangePanel", "initViews", "isAnchor", "liveInfo", "Lcom/tencent/mm/protocal/protobuf/LiveInfo;", "isReplayClosed", "isReplayDeprecated", "isReplayGenerated", "loadLiveInfo", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "replayClosed", "replayDeprecated", "replayGenerated", "replayGenerating", "setWindowStyle", "showRangePanel", "updateReplayRange", "plugin-logic_release"})
 public final class LiveUID
   extends MMActivity
   implements i
 {
   private final String TAG;
-  private int hTW;
-  private int hUA;
-  private boolean hUB;
-  private ImageView hUf;
-  private TextView hUg;
-  private TextView hUh;
-  private View hUi;
-  private TextView hUj;
-  private TextView hUk;
-  private TextView hUl;
-  private Button hUm;
-  private View hUn;
-  private ImageView hUo;
-  private View hUp;
-  private View hUq;
-  private ImageView hUr;
-  private View hUs;
-  private ImageView hUt;
-  private View hUu;
-  private ImageView hUv;
-  private Button hUw;
-  private final int hUx;
-  private final int hUy;
-  private LiveConfig hUz;
+  private ImageView kIE;
+  private TextView kIF;
+  private TextView kIG;
+  private View kIH;
+  private TextView kII;
+  private TextView kIJ;
+  private TextView kIK;
+  private Button kIL;
+  private View kIM;
+  private ImageView kIN;
+  private View kIO;
+  private View kIP;
+  private ImageView kIQ;
+  private View kIR;
+  private ImageView kIS;
+  private View kIT;
+  private ImageView kIU;
+  private Button kIV;
+  private final int kIW;
+  private final int kIX;
+  private LiveConfig kIY;
+  private int kIZ;
+  private int kIv;
+  private boolean kJa;
   
   public LiveUID()
   {
-    AppMethodBeat.i(208408);
+    AppMethodBeat.i(195586);
     this.TAG = "MicroMsg.LiveUID";
-    this.hUy = 1;
-    this.hUA = this.hUx;
-    AppMethodBeat.o(208408);
+    this.kIX = 1;
+    this.kIZ = this.kIW;
+    AppMethodBeat.o(195586);
   }
   
-  private final void aIZ()
+  private final void aQX()
   {
-    AppMethodBeat.i(208404);
-    int i = this.hUA;
+    AppMethodBeat.i(195556);
+    int i = this.kIZ;
     TextView localTextView;
     AppCompatActivity localAppCompatActivity;
-    if (i == this.hUx)
+    if (i == this.kIW)
     {
-      localTextView = this.hUj;
+      localTextView = this.kII;
       if (localTextView != null)
       {
         localAppCompatActivity = getContext();
-        p.g(localAppCompatActivity, "context");
-        localTextView.setText((CharSequence)localAppCompatActivity.getResources().getString(2131762370));
-        AppMethodBeat.o(208404);
+        p.j(localAppCompatActivity, "context");
+        localTextView.setText((CharSequence)localAppCompatActivity.getResources().getString(b.h.live_replay_range_only_self));
+        AppMethodBeat.o(195556);
         return;
       }
-      AppMethodBeat.o(208404);
+      AppMethodBeat.o(195556);
       return;
     }
-    if (i == this.hUy)
+    if (i == this.kIX)
     {
-      localTextView = this.hUj;
+      localTextView = this.kII;
       if (localTextView != null)
       {
         localAppCompatActivity = getContext();
-        p.g(localAppCompatActivity, "context");
-        localTextView.setText((CharSequence)localAppCompatActivity.getResources().getString(2131762371));
-        AppMethodBeat.o(208404);
+        p.j(localAppCompatActivity, "context");
+        localTextView.setText((CharSequence)localAppCompatActivity.getResources().getString(b.h.live_replay_range_room));
+        AppMethodBeat.o(195556);
         return;
       }
     }
-    AppMethodBeat.o(208404);
+    AppMethodBeat.o(195556);
   }
   
-  private final void aJa()
+  private final void aQY()
   {
-    AppMethodBeat.i(208405);
-    Object localObject = this.hUq;
+    AppMethodBeat.i(195558);
+    Object localObject = this.kIP;
     if (localObject != null)
     {
       localObject = ((View)localObject).animate();
       if (localObject != null)
       {
-        localObject = ((ViewPropertyAnimator)localObject).translationY(au.az((Context)getContext()).y);
+        localObject = ((ViewPropertyAnimator)localObject).translationY(ax.au((Context)getContext()).y);
         if (localObject == null) {}
       }
     }
@@ -137,74 +143,74 @@ public final class LiveUID
         break;
       }
       ((ViewPropertyAnimator)localObject).start();
-      AppMethodBeat.o(208405);
+      AppMethodBeat.o(195558);
       return;
     }
-    AppMethodBeat.o(208405);
+    AppMethodBeat.o(195558);
   }
   
-  private final void aJb()
+  private final void aQZ()
   {
-    AppMethodBeat.i(208406);
-    Object localObject = this.hUm;
+    AppMethodBeat.i(195562);
+    Object localObject = this.kIL;
     if (localObject != null) {
       ((Button)localObject).setVisibility(8);
     }
-    localObject = this.hUl;
+    localObject = this.kIK;
     if (localObject != null) {
       ((TextView)localObject).setVisibility(0);
     }
-    localObject = this.hUf;
+    localObject = this.kIE;
     if (localObject != null) {
       ((ImageView)localObject).setVisibility(8);
     }
-    localObject = this.hUg;
+    localObject = this.kIF;
     if (localObject != null) {}
     for (localObject = ((TextView)localObject).getLayoutParams(); localObject == null; localObject = null)
     {
       localObject = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-      AppMethodBeat.o(208406);
+      AppMethodBeat.o(195562);
       throw ((Throwable)localObject);
     }
-    ((ViewGroup.MarginLayoutParams)localObject).topMargin = at.fromDPToPix((Context)getContext(), 72);
-    localObject = this.hUg;
+    ((ViewGroup.MarginLayoutParams)localObject).topMargin = aw.fromDPToPix((Context)getContext(), 72);
+    localObject = this.kIF;
     if (localObject != null)
     {
       ((TextView)localObject).requestLayout();
-      AppMethodBeat.o(208406);
+      AppMethodBeat.o(195562);
       return;
     }
-    AppMethodBeat.o(208406);
+    AppMethodBeat.o(195562);
   }
   
   public final int getLayoutId()
   {
-    return 2131495274;
+    return b.f.live_replay_profile_ui;
   }
   
   public final void onBackPressed()
   {
-    AppMethodBeat.i(208403);
-    View localView = this.hUp;
+    AppMethodBeat.i(195554);
+    View localView = this.kIO;
     if ((localView != null) && (localView.isShown() == true))
     {
-      aJa();
-      AppMethodBeat.o(208403);
+      aQY();
+      AppMethodBeat.o(195554);
       return;
     }
     super.onBackPressed();
-    AppMethodBeat.o(208403);
+    AppMethodBeat.o(195554);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(208400);
-    setTheme(2131820572);
+    AppMethodBeat.i(195548);
+    setTheme(b.i.AppTheme_DarkMode_NoTitleTransparent);
     supportRequestWindowFeature(1);
     super.onCreate(paramBundle);
-    this.hTW = getIntent().getIntExtra("FROM_SENCE", 2);
+    this.kIv = getIntent().getIntExtra("FROM_SENCE", 2);
     long l;
-    switch (this.hTW)
+    switch (this.kIv)
     {
     default: 
       setSelfNavigationBarVisible(8);
@@ -214,35 +220,35 @@ public final class LiveUID
       {
         getWindow().clearFlags(67108864);
         paramBundle = getWindow();
-        p.g(paramBundle, "window");
+        p.j(paramBundle, "window");
         paramBundle = paramBundle.getDecorView();
-        p.g(paramBundle, "window.decorView");
+        p.j(paramBundle, "window.decorView");
         paramBundle.setSystemUiVisibility(1280);
         getWindow().addFlags(-2147483648);
         paramBundle = getWindow();
-        p.g(paramBundle, "window");
+        p.j(paramBundle, "window");
         paramBundle.setStatusBarColor(0);
       }
       getWindow().setFormat(-3);
       getWindow().setSoftInputMode(3);
-      this.hUz = ((LiveConfig)getIntent().getParcelableExtra("KEY_PARAMS_CONFIG"));
-      if (this.hUz != null)
+      this.kIY = ((LiveConfig)getIntent().getParcelableExtra("KEY_PARAMS_CONFIG"));
+      if (this.kIY != null)
       {
-        paramBundle = x.hJf;
-        x.a(new civ());
-        paramBundle = x.hJf;
-        paramBundle = x.aGr();
-        localObject = this.hUz;
+        paramBundle = u.kwz;
+        u.a(new crq());
+        paramBundle = u.kwz;
+        paramBundle = u.aOr();
+        localObject = this.kIY;
         if (localObject != null)
         {
           l = ((LiveConfig)localObject).getLiveId();
           label246:
-          paramBundle.hyH = l;
-          paramBundle = x.hJf;
-          paramBundle = this.hUz;
+          paramBundle.klE = l;
+          paramBundle = u.kwz;
+          paramBundle = this.kIY;
           if (paramBundle != null)
           {
-            localObject = paramBundle.aBD();
+            localObject = paramBundle.aJg();
             paramBundle = (Bundle)localObject;
             if (localObject != null) {}
           }
@@ -250,12 +256,12 @@ public final class LiveUID
           {
             paramBundle = "";
           }
-          x.GQ(paramBundle);
-          paramBundle = x.hJf;
-          paramBundle = this.hUz;
+          u.Ob(paramBundle);
+          paramBundle = u.kwz;
+          paramBundle = this.kIY;
           if (paramBundle != null)
           {
-            localObject = paramBundle.aBG();
+            localObject = paramBundle.aJk();
             paramBundle = (Bundle)localObject;
             if (localObject != null) {}
           }
@@ -263,28 +269,28 @@ public final class LiveUID
           {
             paramBundle = "";
           }
-          x.GS(paramBundle);
+          u.Od(paramBundle);
         }
       }
       else
       {
         paramBundle = this.TAG;
         localObject = new StringBuilder("initConfig liveId:");
-        x localx = x.hJf;
-        localObject = ((StringBuilder)localObject).append(x.aGr().hyH).append(" wechatRoomId:");
-        localx = x.hJf;
-        Log.i(paramBundle, x.aGm());
-        this.hUf = ((ImageView)findViewById(2131303532));
-        this.hUg = ((TextView)findViewById(2131303533));
-        this.hUh = ((TextView)findViewById(2131303517));
-        this.hUi = findViewById(2131303523);
-        this.hUj = ((TextView)findViewById(2131303531));
-        this.hUk = ((TextView)findViewById(2131303515));
-        this.hUl = ((TextView)findViewById(2131303518));
-        this.hUm = ((Button)findViewById(2131303513));
-        this.hUn = findViewById(2131303516);
-        this.hUo = ((ImageView)findViewById(2131303512));
-        paramBundle = this.hUn;
+        u localu = u.kwz;
+        localObject = ((StringBuilder)localObject).append(u.aOr().klE).append(" wechatRoomId:");
+        localu = u.kwz;
+        Log.i(paramBundle, u.aOm());
+        this.kIE = ((ImageView)findViewById(b.e.live_replay_profile_status_icon));
+        this.kIF = ((TextView)findViewById(b.e.live_replay_profile_title_tv));
+        this.kIG = ((TextView)findViewById(b.e.live_replay_profile_desc_tv));
+        this.kIH = findViewById(b.e.live_replay_profile_range_group);
+        this.kII = ((TextView)findViewById(b.e.live_replay_profile_range_tip_tv));
+        this.kIJ = ((TextView)findViewById(b.e.live_replay_profile_btn_tip_tv));
+        this.kIK = ((TextView)findViewById(b.e.live_replay_profile_generating_tv));
+        this.kIL = ((Button)findViewById(b.e.live_replay_profile_btn));
+        this.kIM = findViewById(b.e.live_replay_profile_content_group);
+        this.kIN = ((ImageView)findViewById(b.e.live_replay_profile_back_btn));
+        paramBundle = this.kIM;
         if (paramBundle == null) {
           break label614;
         }
@@ -298,117 +304,117 @@ public final class LiveUID
         break label619;
       }
       paramBundle = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-      AppMethodBeat.o(208400);
+      AppMethodBeat.o(195548);
       throw paramBundle;
-      paramBundle = x.hJf;
-      if (p.j(x.aGt(), z.aTY()))
+      paramBundle = u.kwz;
+      if (p.h(u.aOt(), z.bcZ()))
       {
-        d.aIE();
+        d.aQC();
         break;
       }
-      d.aIG();
+      d.aQE();
       break;
-      paramBundle = x.hJf;
-      if (p.j(x.aGt(), z.aTY()))
+      paramBundle = u.kwz;
+      if (p.h(u.aOt(), z.bcZ()))
       {
-        d.aIF();
+        d.aQD();
         break;
       }
-      d.aIH();
+      d.aQF();
       break;
       l = 0L;
       break label246;
     }
     label619:
     paramBundle = (ViewGroup.MarginLayoutParams)paramBundle;
-    int i = au.eu((Context)getContext());
-    paramBundle.topMargin = (au.getStatusBarHeight((Context)getContext()) + i);
-    paramBundle = this.hUf;
+    int i = ax.ew((Context)getContext());
+    paramBundle.topMargin = (ax.getStatusBarHeight((Context)getContext()) + i);
+    paramBundle = this.kIE;
     if (paramBundle != null) {
       paramBundle.setVisibility(8);
     }
-    paramBundle = this.hUg;
+    paramBundle = this.kIF;
     if (paramBundle != null) {}
     for (paramBundle = paramBundle.getLayoutParams(); paramBundle == null; paramBundle = null)
     {
       paramBundle = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-      AppMethodBeat.o(208400);
+      AppMethodBeat.o(195548);
       throw paramBundle;
     }
-    ((ViewGroup.MarginLayoutParams)paramBundle).topMargin = at.fromDPToPix((Context)getContext(), 72);
-    paramBundle = this.hUg;
+    ((ViewGroup.MarginLayoutParams)paramBundle).topMargin = aw.fromDPToPix((Context)getContext(), 72);
+    paramBundle = this.kIF;
     if (paramBundle != null) {
       paramBundle.requestLayout();
     }
-    paramBundle = this.hUi;
+    paramBundle = this.kIH;
     if (paramBundle != null) {
       paramBundle.setOnClickListener((View.OnClickListener)new g(this));
     }
-    paramBundle = this.hUo;
+    paramBundle = this.kIN;
     if (paramBundle != null) {
       paramBundle.setOnClickListener((View.OnClickListener)new h(this));
     }
-    paramBundle = g.aAh();
-    p.g(paramBundle, "MMKernel.storage()");
-    paramBundle = (String)paramBundle.azQ().get(2);
-    Object localObject = x.hJf;
-    if (Util.isEqual(paramBundle, x.aGt()))
+    paramBundle = h.aHG();
+    p.j(paramBundle, "MMKernel.storage()");
+    paramBundle = (String)paramBundle.aHp().get(2);
+    Object localObject = u.kwz;
+    if (Util.isEqual(paramBundle, u.aOt()))
     {
-      paramBundle = this.hUi;
+      paramBundle = this.kIH;
       if (paramBundle != null) {
         paramBundle.setVisibility(0);
       }
     }
     for (;;)
     {
-      aIZ();
-      this.hUp = findViewById(2131303525);
-      this.hUq = findViewById(2131303522);
-      this.hUr = ((ImageView)findViewById(2131303521));
-      this.hUs = findViewById(2131303530);
-      this.hUt = ((ImageView)findViewById(2131303529));
-      this.hUu = findViewById(2131303528);
-      this.hUv = ((ImageView)findViewById(2131303527));
-      this.hUw = ((Button)findViewById(2131303520));
-      paramBundle = this.hUp;
+      aQX();
+      this.kIO = findViewById(b.e.live_replay_profile_range_panel);
+      this.kIP = findViewById(b.e.live_replay_profile_range_content_panel);
+      this.kIQ = ((ImageView)findViewById(b.e.live_replay_profile_range_content_close));
+      this.kIR = findViewById(b.e.live_replay_profile_range_self_group);
+      this.kIS = ((ImageView)findViewById(b.e.live_replay_profile_range_self_check));
+      this.kIT = findViewById(b.e.live_replay_profile_range_room_group);
+      this.kIU = ((ImageView)findViewById(b.e.live_replay_profile_range_room_check));
+      this.kIV = ((Button)findViewById(b.e.live_replay_profile_range_content_btn));
+      paramBundle = this.kIO;
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
-      paramBundle = this.hUq;
+      paramBundle = this.kIP;
       if (paramBundle != null) {
-        paramBundle.setTranslationY(au.az((Context)getContext()).y);
+        paramBundle.setTranslationY(ax.au((Context)getContext()).y);
       }
-      paramBundle = this.hUs;
+      paramBundle = this.kIR;
       if (paramBundle != null) {
         paramBundle.setOnClickListener((View.OnClickListener)new b(this));
       }
-      paramBundle = this.hUu;
+      paramBundle = this.kIT;
       if (paramBundle != null) {
         paramBundle.setOnClickListener((View.OnClickListener)new c(this));
       }
-      paramBundle = this.hUp;
+      paramBundle = this.kIO;
       if (paramBundle != null) {
         paramBundle.setOnClickListener((View.OnClickListener)new d(this));
       }
-      paramBundle = this.hUw;
+      paramBundle = this.kIV;
       if (paramBundle != null) {
         paramBundle.setOnClickListener((View.OnClickListener)new e(this));
       }
-      paramBundle = this.hUr;
+      paramBundle = this.kIQ;
       if (paramBundle != null) {
         paramBundle.setOnClickListener((View.OnClickListener)new f(this));
       }
-      paramBundle = r.hIg;
-      r.aGb();
-      paramBundle = g.aAg();
-      p.g(paramBundle, "MMKernel.network()");
-      paramBundle.azz().a(3806, (i)this);
-      paramBundle = g.aAg();
-      p.g(paramBundle, "MMKernel.network()");
-      paramBundle.azz().a(3712, (i)this);
-      AppMethodBeat.o(208400);
+      paramBundle = o.kvA;
+      o.aOb();
+      paramBundle = h.aHF();
+      p.j(paramBundle, "MMKernel.network()");
+      paramBundle.aGY().a(3806, (i)this);
+      paramBundle = h.aHF();
+      p.j(paramBundle, "MMKernel.network()");
+      paramBundle.aGY().a(3712, (i)this);
+      AppMethodBeat.o(195548);
       return;
-      paramBundle = this.hUi;
+      paramBundle = this.kIH;
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
@@ -417,51 +423,51 @@ public final class LiveUID
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(208402);
+    AppMethodBeat.i(195551);
     super.onDestroy();
-    Object localObject = g.aAg();
-    p.g(localObject, "MMKernel.network()");
-    ((com.tencent.mm.kernel.b)localObject).azz().b(3806, (i)this);
-    localObject = g.aAg();
-    p.g(localObject, "MMKernel.network()");
-    ((com.tencent.mm.kernel.b)localObject).azz().b(3712, (i)this);
-    if (this.hUz != null)
+    Object localObject = h.aHF();
+    p.j(localObject, "MMKernel.network()");
+    ((c)localObject).aGY().b(3806, (i)this);
+    localObject = h.aHF();
+    p.j(localObject, "MMKernel.network()");
+    ((c)localObject).aGY().b(3712, (i)this);
+    if (this.kIY != null)
     {
-      localObject = x.hJf;
-      x.and();
+      localObject = u.kwz;
+      u.ate();
     }
-    AppMethodBeat.o(208402);
+    AppMethodBeat.o(195551);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(208401);
+    AppMethodBeat.i(195550);
     super.onResume();
-    AppMethodBeat.o(208401);
+    AppMethodBeat.o(195550);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
-    AppMethodBeat.i(208407);
+    AppMethodBeat.i(195583);
     Log.i(this.TAG, "errType:" + paramInt1 + ", errCode:" + paramInt2);
     if ((paramq instanceof com.tencent.mm.live.b.a.b))
     {
-      paramString = x.hJf;
+      paramString = u.kwz;
       int i;
-      if (x.aGr().MnK)
+      if (u.aOr().TyE)
       {
-        i = this.hUy;
-        this.hUA = i;
-        aIZ();
+        i = this.kIX;
+        this.kIZ = i;
+        aQX();
         if ((paramInt1 != 0) || (paramInt2 != 0)) {
           break label1160;
         }
-        paramString = x.hJf;
-        paramString = x.aGr();
-        if (!p.j(paramString.MnL, paramString.MnM)) {
+        paramString = u.kwz;
+        paramString = u.aOr();
+        if (!p.h(paramString.TyF, paramString.TyG)) {
           break label319;
         }
-        paramString = (CharSequence)paramString.MnI;
+        paramString = (CharSequence)paramString.SMa;
         if ((paramString != null) && (paramString.length() != 0)) {
           break label309;
         }
@@ -475,34 +481,34 @@ public final class LiveUID
         if (paramInt1 == 0) {
           break label419;
         }
-        paramString = this.hUl;
+        paramString = this.kIK;
         if (paramString != null) {
           paramString.setVisibility(8);
         }
-        paramString = this.hUk;
+        paramString = this.kIJ;
         if (paramString != null) {
           paramString.setVisibility(8);
         }
-        paramString = this.hUm;
+        paramString = this.kIL;
         if (paramString != null) {
           paramString.setVisibility(0);
         }
-        paramString = this.hUm;
+        paramString = this.kIL;
         if (paramString != null)
         {
           paramq = getContext();
-          p.g(paramq, "context");
-          paramString.setText((CharSequence)paramq.getResources().getString(2131762248));
+          p.j(paramq, "context");
+          paramString.setText((CharSequence)paramq.getResources().getString(b.h.live_after_replay_scan));
         }
-        paramString = this.hUm;
+        paramString = this.kIL;
         if (paramString != null) {
           paramString.setOnClickListener((View.OnClickListener)new k(this));
         }
-        paramString = this.hUf;
+        paramString = this.kIE;
         if (paramString != null) {
           paramString.setVisibility(8);
         }
-        paramString = this.hUg;
+        paramString = this.kIF;
         if (paramString == null) {
           break label368;
         }
@@ -518,17 +524,17 @@ public final class LiveUID
           break label373;
         }
         paramString = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-        AppMethodBeat.o(208407);
+        AppMethodBeat.o(195583);
         throw paramString;
-        i = this.hUx;
+        i = this.kIW;
         break;
         paramInt1 = 0;
         break label130;
         paramInt1 = 0;
         break label136;
-        if (paramString.MnK)
+        if (paramString.TyE)
         {
-          paramString = (CharSequence)paramString.MnI;
+          paramString = (CharSequence)paramString.SMa;
           if ((paramString == null) || (paramString.length() == 0)) {}
           for (paramInt1 = 1;; paramInt1 = 0)
           {
@@ -543,75 +549,75 @@ public final class LiveUID
         break label136;
       }
       label373:
-      ((ViewGroup.MarginLayoutParams)paramString).topMargin = at.fromDPToPix((Context)getContext(), 72);
-      paramString = this.hUg;
+      ((ViewGroup.MarginLayoutParams)paramString).topMargin = aw.fromDPToPix((Context)getContext(), 72);
+      paramString = this.kIF;
       if (paramString != null)
       {
         paramString.requestLayout();
-        AppMethodBeat.o(208407);
+        AppMethodBeat.o(195583);
         return;
       }
-      AppMethodBeat.o(208407);
+      AppMethodBeat.o(195583);
       return;
       label419:
-      paramString = x.hJf;
-      paramInt1 = x.aGr().status;
-      paramString = o.e.hGR;
-      if (paramInt1 == o.e.aFB())
+      paramString = u.kwz;
+      paramInt1 = u.aOr().status;
+      paramString = l.d.kuw;
+      if (paramInt1 == l.d.aNI())
       {
         paramInt1 = 1;
         if (paramInt1 == 0) {
           break label779;
         }
-        paramString = this.hUg;
+        paramString = this.kIF;
         if (paramString != null)
         {
           paramq = getContext();
-          p.g(paramq, "context");
-          paramString.setText((CharSequence)paramq.getResources().getString(2131762368));
+          p.j(paramq, "context");
+          paramString.setText((CharSequence)paramq.getResources().getString(b.h.live_replay_profile_title_invalid));
         }
-        paramString = this.hUh;
+        paramString = this.kIG;
         if (paramString != null)
         {
           paramq = getContext();
-          p.g(paramq, "context");
-          paramString.setText((CharSequence)paramq.getResources().getString(2131762363));
+          p.j(paramq, "context");
+          paramString.setText((CharSequence)paramq.getResources().getString(b.h.live_replay_profile_desc_invalid));
         }
-        paramString = this.hUl;
+        paramString = this.kIK;
         if (paramString != null) {
           paramString.setVisibility(8);
         }
-        paramString = this.hUk;
+        paramString = this.kIJ;
         if (paramString != null) {
           paramString.setVisibility(8);
         }
-        paramString = this.hUm;
+        paramString = this.kIL;
         if (paramString != null) {
           paramString.setVisibility(0);
         }
-        paramString = this.hUm;
+        paramString = this.kIL;
         if (paramString != null)
         {
           paramq = getContext();
-          p.g(paramq, "context");
-          paramString.setText((CharSequence)paramq.getResources().getString(2131755873));
+          p.j(paramq, "context");
+          paramString.setText((CharSequence)paramq.getResources().getString(b.h.app_i_know));
         }
-        paramString = this.hUm;
+        paramString = this.kIL;
         if (paramString != null) {
           paramString.setOnClickListener((View.OnClickListener)new j(this));
         }
-        paramString = this.hUf;
+        paramString = this.kIE;
         if (paramString != null) {
           paramString.setVisibility(0);
         }
-        paramString = this.hUf;
+        paramString = this.kIE;
         if (paramString != null)
         {
           paramq = getContext();
-          p.g(paramq, "context");
-          paramString.setImageDrawable(paramq.getResources().getDrawable(2131690471));
+          p.j(paramq, "context");
+          paramString.setImageDrawable(paramq.getResources().getDrawable(b.g.icons_dark_help));
         }
-        paramString = this.hUg;
+        paramString = this.kIF;
         if (paramString == null) {
           break label728;
         }
@@ -623,82 +629,82 @@ public final class LiveUID
           break label733;
         }
         paramString = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-        AppMethodBeat.o(208407);
+        AppMethodBeat.o(195583);
         throw paramString;
         paramInt1 = 0;
         break;
       }
       label733:
-      ((ViewGroup.MarginLayoutParams)paramString).topMargin = at.fromDPToPix((Context)getContext(), 40);
-      paramString = this.hUg;
+      ((ViewGroup.MarginLayoutParams)paramString).topMargin = aw.fromDPToPix((Context)getContext(), 40);
+      paramString = this.kIF;
       if (paramString != null)
       {
         paramString.requestLayout();
-        AppMethodBeat.o(208407);
+        AppMethodBeat.o(195583);
         return;
       }
-      AppMethodBeat.o(208407);
+      AppMethodBeat.o(195583);
       return;
       label779:
-      paramString = x.hJf;
-      paramString = x.aGr();
+      paramString = u.kwz;
+      paramString = u.aOr();
       paramInt1 = paramString.status;
-      paramq = o.e.hGR;
-      if ((paramInt1 == o.e.aFA()) && (!paramString.MnK))
+      paramq = l.d.kuw;
+      if ((paramInt1 == l.d.aNH()) && (!paramString.TyE))
       {
         paramInt1 = 1;
         if (paramInt1 == 0) {
           break label1149;
         }
-        paramString = this.hUg;
+        paramString = this.kIF;
         if (paramString != null)
         {
           paramq = getContext();
-          p.g(paramq, "context");
-          paramString.setText((CharSequence)paramq.getResources().getString(2131762366));
+          p.j(paramq, "context");
+          paramString.setText((CharSequence)paramq.getResources().getString(b.h.live_replay_profile_title_closed));
         }
-        paramString = this.hUh;
+        paramString = this.kIG;
         if (paramString != null)
         {
           paramq = getContext();
-          p.g(paramq, "context");
-          paramString.setText((CharSequence)paramq.getResources().getString(2131762362));
+          p.j(paramq, "context");
+          paramString.setText((CharSequence)paramq.getResources().getString(b.h.live_replay_profile_desc_closed));
         }
-        paramString = this.hUl;
+        paramString = this.kIK;
         if (paramString != null) {
           paramString.setVisibility(8);
         }
-        paramString = this.hUk;
+        paramString = this.kIJ;
         if (paramString != null) {
           paramString.setVisibility(8);
         }
-        paramString = this.hUm;
+        paramString = this.kIL;
         if (paramString != null) {
           paramString.setVisibility(0);
         }
-        paramString = this.hUm;
+        paramString = this.kIL;
         if (paramString != null)
         {
           paramq = getContext();
-          p.g(paramq, "context");
-          paramString.setText((CharSequence)paramq.getResources().getString(2131755873));
+          p.j(paramq, "context");
+          paramString.setText((CharSequence)paramq.getResources().getString(b.h.app_i_know));
         }
-        paramString = this.hUm;
+        paramString = this.kIL;
         if (paramString != null) {
           paramString.setOnClickListener((View.OnClickListener)new i(this));
         }
-        paramString = this.hUf;
+        paramString = this.kIE;
         if (paramString != null) {
           paramString.setVisibility(0);
         }
-        paramString = this.hUf;
+        paramString = this.kIE;
         if (paramString != null)
         {
           paramq = getContext();
-          p.g(paramq, "context");
-          paramString.setImageDrawable(paramq.getResources().getDrawable(2131690471));
+          p.j(paramq, "context");
+          paramString.setImageDrawable(paramq.getResources().getDrawable(b.g.icons_dark_help));
         }
-        paramString = this.hUg;
+        paramString = this.kIF;
         if (paramString == null) {
           break label1098;
         }
@@ -710,30 +716,30 @@ public final class LiveUID
           break label1103;
         }
         paramString = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-        AppMethodBeat.o(208407);
+        AppMethodBeat.o(195583);
         throw paramString;
         paramInt1 = 0;
         break;
       }
       label1103:
-      ((ViewGroup.MarginLayoutParams)paramString).topMargin = at.fromDPToPix((Context)getContext(), 40);
-      paramString = this.hUg;
+      ((ViewGroup.MarginLayoutParams)paramString).topMargin = aw.fromDPToPix((Context)getContext(), 40);
+      paramString = this.kIF;
       if (paramString != null)
       {
         paramString.requestLayout();
-        AppMethodBeat.o(208407);
+        AppMethodBeat.o(195583);
         return;
       }
-      AppMethodBeat.o(208407);
+      AppMethodBeat.o(195583);
       return;
       label1149:
-      aJb();
-      AppMethodBeat.o(208407);
+      aQZ();
+      AppMethodBeat.o(195583);
       return;
       label1160:
-      aJb();
+      aQZ();
     }
-    AppMethodBeat.o(208407);
+    AppMethodBeat.o(195583);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -742,25 +748,25 @@ public final class LiveUID
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/live/ui/LiveUID$hideRangePanel$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-logic_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/live/ui/LiveUID$hideRangePanel$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "plugin-logic_release"})
   public static final class a
     extends AnimatorListenerAdapter
   {
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(208389);
-      paramAnimator = LiveUID.l(this.hUC);
+      AppMethodBeat.i(199338);
+      paramAnimator = LiveUID.l(this.kJb);
       if (paramAnimator != null)
       {
         paramAnimator.setVisibility(8);
-        AppMethodBeat.o(208389);
+        AppMethodBeat.o(199338);
         return;
       }
-      AppMethodBeat.o(208389);
+      AppMethodBeat.o(199338);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
@@ -768,35 +774,35 @@ public final class LiveUID
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(208390);
+      AppMethodBeat.i(193759);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/LiveUID$initRangePanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      if (LiveUID.b(this.hUC)) {
-        if (LiveUID.d(this.hUC) != LiveUID.e(this.hUC)) {
-          d.aIB();
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/ui/LiveUID$initRangePanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      if (LiveUID.b(this.kJb)) {
+        if (LiveUID.d(this.kJb) != LiveUID.e(this.kJb)) {
+          d.aQz();
         }
       }
       for (;;)
       {
-        LiveUID.a(this.hUC, LiveUID.e(this.hUC));
-        paramView = LiveUID.f(this.hUC);
+        LiveUID.a(this.kJb, LiveUID.e(this.kJb));
+        paramView = LiveUID.f(this.kJb);
         if (paramView != null) {
           paramView.setVisibility(0);
         }
-        paramView = LiveUID.g(this.hUC);
+        paramView = LiveUID.g(this.kJb);
         if (paramView != null) {
           paramView.setVisibility(8);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/ui/LiveUID$initRangePanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(208390);
+        AppMethodBeat.o(193759);
         return;
-        d.aIx();
+        d.aQv();
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
@@ -804,35 +810,35 @@ public final class LiveUID
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(208391);
+      AppMethodBeat.i(193416);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/LiveUID$initRangePanel$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      if (LiveUID.b(this.hUC)) {
-        if (LiveUID.d(this.hUC) != LiveUID.h(this.hUC)) {
-          d.aIC();
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/ui/LiveUID$initRangePanel$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      if (LiveUID.b(this.kJb)) {
+        if (LiveUID.d(this.kJb) != LiveUID.h(this.kJb)) {
+          d.aQA();
         }
       }
       for (;;)
       {
-        LiveUID.a(this.hUC, LiveUID.h(this.hUC));
-        paramView = LiveUID.f(this.hUC);
+        LiveUID.a(this.kJb, LiveUID.h(this.kJb));
+        paramView = LiveUID.f(this.kJb);
         if (paramView != null) {
           paramView.setVisibility(8);
         }
-        paramView = LiveUID.g(this.hUC);
+        paramView = LiveUID.g(this.kJb);
         if (paramView != null) {
           paramView.setVisibility(0);
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/ui/LiveUID$initRangePanel$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(208391);
+        AppMethodBeat.o(193416);
         return;
-        d.aIy();
+        d.aQw();
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class d
     implements View.OnClickListener
   {
@@ -840,17 +846,17 @@ public final class LiveUID
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(208392);
+      AppMethodBeat.i(194344);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/LiveUID$initRangePanel$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      LiveUID.i(this.hUC);
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/ui/LiveUID$initRangePanel$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      LiveUID.i(this.kJb);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/ui/LiveUID$initRangePanel$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(208392);
+      AppMethodBeat.o(194344);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class e
     implements View.OnClickListener
   {
@@ -858,19 +864,19 @@ public final class LiveUID
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(208393);
+      AppMethodBeat.i(188239);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/LiveUID$initRangePanel$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      LiveUID.j(this.hUC);
-      LiveUID.k(this.hUC);
-      LiveUID.i(this.hUC);
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/ui/LiveUID$initRangePanel$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      LiveUID.j(this.kJb);
+      LiveUID.k(this.kJb);
+      LiveUID.i(this.kJb);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/ui/LiveUID$initRangePanel$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(208393);
+      AppMethodBeat.o(188239);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class f
     implements View.OnClickListener
   {
@@ -878,17 +884,17 @@ public final class LiveUID
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(208394);
+      AppMethodBeat.i(194393);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/LiveUID$initRangePanel$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      LiveUID.i(this.hUC);
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/ui/LiveUID$initRangePanel$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      LiveUID.i(this.kJb);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/ui/LiveUID$initRangePanel$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(208394);
+      AppMethodBeat.o(194393);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class g
     implements View.OnClickListener
   {
@@ -896,17 +902,17 @@ public final class LiveUID
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(208395);
+      AppMethodBeat.i(199949);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/LiveUID$initViews$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      LiveUID.a(this.hUC);
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/ui/LiveUID$initViews$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      LiveUID.a(this.kJb);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/ui/LiveUID$initViews$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(208395);
+      AppMethodBeat.o(199949);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class h
     implements View.OnClickListener
   {
@@ -914,17 +920,17 @@ public final class LiveUID
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(208396);
+      AppMethodBeat.i(200499);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/LiveUID$initViews$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      this.hUC.finish();
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/ui/LiveUID$initViews$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      this.kJb.finish();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/ui/LiveUID$initViews$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(208396);
+      AppMethodBeat.o(200499);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class i
     implements View.OnClickListener
   {
@@ -932,17 +938,17 @@ public final class LiveUID
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(208397);
+      AppMethodBeat.i(200580);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/LiveUID$replayClosed$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      this.hUC.finish();
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/ui/LiveUID$replayClosed$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      this.kJb.finish();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/ui/LiveUID$replayClosed$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(208397);
+      AppMethodBeat.o(200580);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class j
     implements View.OnClickListener
   {
@@ -950,17 +956,17 @@ public final class LiveUID
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(208398);
+      AppMethodBeat.i(198928);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/LiveUID$replayDeprecated$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      this.hUC.finish();
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/ui/LiveUID$replayDeprecated$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      this.kJb.finish();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/ui/LiveUID$replayDeprecated$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(208398);
+      AppMethodBeat.o(198928);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class k
     implements View.OnClickListener
   {
@@ -968,35 +974,35 @@ public final class LiveUID
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(208399);
+      AppMethodBeat.i(199828);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/LiveUID$replayGenerated$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-      localObject = new Intent((Context)this.hUC.getContext(), LiveUIB.class);
-      ((Intent)localObject).putExtra("FROM_SENCE", LiveUID.m(this.hUC));
-      paramView = this.hUC.getContext();
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/live/ui/LiveUID$replayGenerated$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramView, "com/tencent/mm/live/ui/LiveUID$replayGenerated$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramView = x.hJf;
-      if (p.j(x.aGt(), z.aTY())) {
-        d.aIz();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/ui/LiveUID$replayGenerated$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+      localObject = new Intent((Context)this.kJb.getContext(), LiveUIB.class);
+      ((Intent)localObject).putExtra("FROM_SENCE", LiveUID.m(this.kJb));
+      paramView = this.kJb.getContext();
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/live/ui/LiveUID$replayGenerated$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramView, "com/tencent/mm/live/ui/LiveUID$replayGenerated$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramView = u.kwz;
+      if (p.h(u.aOt(), z.bcZ())) {
+        d.aQx();
       }
       for (;;)
       {
-        LiveUID.c(this.hUC);
+        LiveUID.c(this.kJb);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/ui/LiveUID$replayGenerated$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(208399);
+        AppMethodBeat.o(199828);
         return;
-        d.aII();
+        d.aQG();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.ui.LiveUID
  * JD-Core Version:    0.7.0.1
  */

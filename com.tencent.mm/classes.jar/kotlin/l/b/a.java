@@ -4,54 +4,54 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.List;
 import kotlin.a.j;
-import kotlin.g.b.aa;
+import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.l.b;
 import kotlin.l.b.a.b.b.e;
 import kotlin.l.b.a.b.b.f;
 import kotlin.l.b.a.b.b.h;
-import kotlin.l.b.a.b.m.ab;
 import kotlin.l.b.a.b.m.at;
 import kotlin.l.b.a.w;
 import kotlin.l.c;
-import kotlin.l.o;
+import kotlin.l.u;
+import kotlin.l.v;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"jvmErasure", "Lkotlin/reflect/KClass;", "Lkotlin/reflect/KClassifier;", "getJvmErasure", "(Lkotlin/reflect/KClassifier;)Lkotlin/reflect/KClass;", "Lkotlin/reflect/KType;", "jvmErasure$annotations", "(Lkotlin/reflect/KType;)V", "(Lkotlin/reflect/KType;)Lkotlin/reflect/KClass;", "kotlin-reflection"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"jvmErasure", "Lkotlin/reflect/KClass;", "Lkotlin/reflect/KClassifier;", "getJvmErasure", "(Lkotlin/reflect/KClassifier;)Lkotlin/reflect/KClass;", "Lkotlin/reflect/KType;", "jvmErasure$annotations", "(Lkotlin/reflect/KType;)V", "(Lkotlin/reflect/KType;)Lkotlin/reflect/KClass;", "kotlin-reflection"})
 public final class a
 {
   public static final b<?> a(c paramc)
   {
     AppMethodBeat.i(56267);
-    kotlin.g.b.p.h(paramc, "$this$jvmErasure");
+    p.k(paramc, "$this$jvmErasure");
     if ((paramc instanceof b))
     {
       paramc = (b)paramc;
       AppMethodBeat.o(56267);
       return paramc;
     }
-    if ((paramc instanceof kotlin.l.p))
+    if ((paramc instanceof v))
     {
-      List localList = ((kotlin.l.p)paramc).hyo();
+      List localList = ((v)paramc).iCz();
       Iterator localIterator = ((Iterable)localList).iterator();
       Object localObject;
       int i;
       if (localIterator.hasNext())
       {
         localObject = localIterator.next();
-        paramc = (o)localObject;
+        paramc = (u)localObject;
         if (paramc == null)
         {
           paramc = new kotlin.t("null cannot be cast to non-null type kotlin.reflect.jvm.internal.KTypeImpl");
           AppMethodBeat.o(56267);
           throw paramc;
         }
-        h localh = ((kotlin.l.b.a.t)paramc).Tbs.hKE().hzS();
+        h localh = ((kotlin.l.b.a.t)paramc).aaEm.iOU().iEf();
         paramc = localh;
         if (!(localh instanceof e)) {
           paramc = null;
         }
         paramc = (e)paramc;
-        if ((paramc != null) && (paramc.hzB() != f.Thf) && (paramc.hzB() != f.Thi))
+        if ((paramc != null) && (paramc.iDN() != f.aaJZ) && (paramc.iDN() != f.aaKc))
         {
           i = 1;
           label166:
@@ -62,10 +62,10 @@ public final class a
       }
       for (paramc = (c)localObject;; paramc = null)
       {
-        localObject = (o)paramc;
+        localObject = (u)paramc;
         paramc = (c)localObject;
         if (localObject == null) {
-          paramc = (o)j.kt(localList);
+          paramc = (u)j.lp(localList);
         }
         if (paramc != null)
         {
@@ -74,7 +74,7 @@ public final class a
             break label255;
           }
         }
-        paramc = aa.bp(Object.class);
+        paramc = kotlin.g.b.ab.bO(Object.class);
         AppMethodBeat.o(56267);
         return paramc;
         i = 0;
@@ -91,11 +91,11 @@ public final class a
     return paramc;
   }
   
-  private static b<?> a(o paramo)
+  private static b<?> a(u paramu)
   {
     AppMethodBeat.i(56266);
-    kotlin.g.b.p.h(paramo, "$this$jvmErasure");
-    Object localObject = paramo.hyn();
+    p.k(paramu, "$this$jvmErasure");
+    Object localObject = paramu.iCy();
     if (localObject != null)
     {
       localObject = a((c)localObject);
@@ -103,9 +103,9 @@ public final class a
     }
     else
     {
-      paramo = (Throwable)new w("Cannot calculate JVM erasure for type: ".concat(String.valueOf(paramo)));
+      paramu = (Throwable)new w("Cannot calculate JVM erasure for type: ".concat(String.valueOf(paramu)));
       AppMethodBeat.o(56266);
-      throw paramo;
+      throw paramu;
     }
     AppMethodBeat.o(56266);
     return localObject;
@@ -113,7 +113,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a
  * JD-Core Version:    0.7.0.1
  */

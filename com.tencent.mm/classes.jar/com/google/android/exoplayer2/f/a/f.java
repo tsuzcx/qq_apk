@@ -8,14 +8,14 @@ import java.util.List;
 final class f
   implements d
 {
-  private final List<com.google.android.exoplayer2.f.a> bAF;
+  private final List<com.google.android.exoplayer2.f.a> bkh;
   
   public f(List<com.google.android.exoplayer2.f.a> paramList)
   {
-    this.bAF = paramList;
+    this.bkh = paramList;
   }
   
-  public final int ai(long paramLong)
+  public final int al(long paramLong)
   {
     if (paramLong < 0L) {
       return 0;
@@ -23,12 +23,12 @@ final class f
     return -1;
   }
   
-  public final List<com.google.android.exoplayer2.f.a> aj(long paramLong)
+  public final List<com.google.android.exoplayer2.f.a> am(long paramLong)
   {
     AppMethodBeat.i(92786);
     if (paramLong >= 0L)
     {
-      localList = this.bAF;
+      localList = this.bkh;
       AppMethodBeat.o(92786);
       return localList;
     }
@@ -37,7 +37,7 @@ final class f
     return localList;
   }
   
-  public final long eH(int paramInt)
+  public final long eX(int paramInt)
   {
     AppMethodBeat.i(92785);
     if (paramInt == 0) {}
@@ -49,14 +49,14 @@ final class f
     }
   }
   
-  public final int wa()
+  public final int ua()
   {
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.f.a.f
  * JD-Core Version:    0.7.0.1
  */

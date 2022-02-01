@@ -9,7 +9,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
@@ -19,30 +19,30 @@ import org.json.JSONObject;
 
 public final class b
 {
-  public static long AUF;
-  public static final b AUL;
-  public static final b AUM;
-  public static final Runnable AUN;
-  public static final MMHandler AUg;
   public static boolean DEBUG;
-  public boolean ded = false;
+  public static final MMHandler GNB;
+  public static long GOa;
+  public static final b GOg;
+  public static final b GOh;
+  public static final Runnable GOi;
+  public boolean dih = false;
   
   static
   {
     AppMethodBeat.i(125000);
-    AUF = 1200000L;
-    AUL = new b();
-    AUg = new MMHandler(Looper.getMainLooper());
-    AUM = new b((byte)0);
-    AUN = new a((byte)0);
+    GOa = 1200000L;
+    GOg = new b();
+    GNB = new MMHandler(Looper.getMainLooper());
+    GOh = new b((byte)0);
+    GOi = new a((byte)0);
     DEBUG = false;
     AppMethodBeat.o(125000);
   }
   
-  public static boolean bF(float paramFloat)
+  public static boolean bL(float paramFloat)
   {
     AppMethodBeat.i(124999);
-    Object localObject1 = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.rRB, "");
+    Object localObject1 = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vxX, "");
     int i;
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
@@ -90,12 +90,12 @@ public final class b
     }
   }
   
-  public static long eCr()
+  public static long fob()
   {
     if (DEBUG) {
       return 8000L;
     }
-    return AUF;
+    return GOa;
   }
   
   static final class a
@@ -106,11 +106,11 @@ public final class b
       AppMethodBeat.i(124996);
       Log.i("MicroMsg.ProcessElf", "send check broadcast!");
       ElfCheckRequest localElfCheckRequest = new ElfCheckRequest();
-      localElfCheckRequest.dap = b.eCr();
+      localElfCheckRequest.FNJ = b.fob();
       Intent localIntent = new Intent("ACTION_ELF_CHECK");
       localIntent.putExtra("MicroMsg.ElfCheckRequest", localElfCheckRequest);
       MMApplicationContext.getContext().sendBroadcast(localIntent);
-      b.AUg.postDelayed(this, b.eCr());
+      b.GNB.postDelayed(this, b.fob());
       AppMethodBeat.o(124996);
     }
   }
@@ -130,16 +130,16 @@ public final class b
           AppMethodBeat.o(124998);
           return;
         }
-        if (!paramIntent.ded) {
-          b.AUg.removeCallbacksAndMessages(null);
+        if (!paramIntent.dih) {
+          b.GNB.removeCallbacksAndMessages(null);
         }
-        MMHandler localMMHandler = b.AUg;
-        if ((paramIntent.ded) && (paramIntent.AUn) && (paramIntent.AUo)) {
-          localMMHandler.postDelayed(new ElfCheckResponse.1(paramIntent, paramContext), paramIntent.AUr);
+        MMHandler localMMHandler = b.GNB;
+        if ((paramIntent.dih) && (paramIntent.GNI) && (paramIntent.GNJ)) {
+          localMMHandler.postDelayed(new ElfCheckResponse.1(paramIntent, paramContext), paramIntent.GNM);
         }
         for (boolean bool = true;; bool = false)
         {
-          Log.i("MicroMsg.ProcessElf", "[onReceive] %s, isEnable:%s, CHECK_TIME:%s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramIntent.ded), Long.valueOf(b.eCr()) });
+          Log.i("MicroMsg.ProcessElf", "[onReceive] %s, isEnable:%s, CHECK_TIME:%s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramIntent.dih), Long.valueOf(b.fob()) });
           AppMethodBeat.o(124998);
           return;
           Log.w("MicroMsg.ElfCheckResponse", "can't call process[%s]", new Object[] { paramIntent.processName });
@@ -166,7 +166,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.elf.b
  * JD-Core Version:    0.7.0.1
  */

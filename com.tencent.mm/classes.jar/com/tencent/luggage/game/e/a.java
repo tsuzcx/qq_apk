@@ -1,12 +1,14 @@
 package com.tencent.luggage.game.e;
 
 import android.util.SparseIntArray;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.luggage.a.e;
 import com.tencent.magicbrush.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.h.c;
-import com.tencent.mm.plugin.appbrand.h.d;
+import com.tencent.mm.plugin.appbrand.k;
+import com.tencent.mm.plugin.appbrand.k.c;
+import com.tencent.mm.plugin.appbrand.k.d;
 import com.tencent.mm.plugin.appbrand.w.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -15,51 +17,48 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class a
 {
-  private static a cxH;
+  private static a cwk;
   public String appId;
-  public ArrayList<String> cxA;
-  public boolean cxB;
-  public int cxC;
-  public double cxD;
-  public int cxE;
-  public CopyOnWriteArrayList<Long> cxF;
-  private final a cxG;
-  public h.c cxI;
-  private int cxt;
-  public long cxu;
-  public long cxv;
-  boolean cxw;
-  public d cxx;
-  public int cxy;
-  private float cxz;
+  public ArrayList<String> csC;
+  public int csG;
+  private int cwb;
+  public long cwc;
+  public long cwd;
+  boolean cwe;
+  public d cwf;
+  public int cwg;
+  private float cwh;
+  public CopyOnWriteArrayList<Long> cwi;
+  private final a cwj;
+  public k.c cwl;
   
   public a()
   {
     AppMethodBeat.i(130697);
-    this.cxt = 0;
-    this.cxu = 0L;
-    this.cxv = 0L;
+    this.cwb = 0;
+    this.cwc = 0L;
+    this.cwd = 0L;
     this.appId = "";
-    this.cxw = false;
-    this.cxy = -1;
-    this.cxz = -1.0F;
-    this.cxE = 1004;
-    this.cxF = new CopyOnWriteArrayList();
-    this.cxG = new a((byte)0);
-    this.cxI = new h.c()
+    this.cwe = false;
+    this.cwg = -1;
+    this.cwh = -1.0F;
+    this.csG = 1004;
+    this.cwi = new CopyOnWriteArrayList();
+    this.cwj = new a((byte)0);
+    this.cwl = new k.c()
     {
-      public final void a(h.d paramAnonymousd)
+      public final void a(k.d paramAnonymousd)
       {
         AppMethodBeat.i(130691);
         Log.i("MicroMsg.MBNiReporter", "hy: onPause");
         paramAnonymousd = a.this;
-        if (paramAnonymousd.cxw)
+        if (paramAnonymousd.cwe)
         {
           Log.i("MicroMsg.MBNiReporter", "hy: hasReported!");
           AppMethodBeat.o(130691);
           return;
         }
-        com.tencent.f.h.RTc.aX(new a.5(paramAnonymousd));
+        h.ZvG.be(new a.5(paramAnonymousd));
         AppMethodBeat.o(130691);
       }
       
@@ -77,7 +76,7 @@ public class a
         Log.i("MicroMsg.MBNiReporter", "hy: onDestroy");
         a locala = a.this;
         Log.i("MicroMsg.MBNiReporter", "hy: release!");
-        com.tencent.mm.plugin.appbrand.h.b(locala.appId, locala.cxI);
+        k.b(locala.appId, locala.cwl);
         AppMethodBeat.o(130692);
       }
       
@@ -91,16 +90,16 @@ public class a
     AppMethodBeat.o(130697);
   }
   
-  public static a Nn()
+  public static a Qf()
   {
     AppMethodBeat.i(130698);
-    if (cxH == null) {}
+    if (cwk == null) {}
     try
     {
-      if (cxH == null) {
-        cxH = new a();
+      if (cwk == null) {
+        cwk = new a();
       }
-      a locala = cxH;
+      a locala = cwk;
       AppMethodBeat.o(130698);
       return locala;
     }
@@ -113,7 +112,7 @@ public class a
   static final class a
     extends SparseIntArray
   {
-    final boolean hM(int paramInt)
+    final boolean iM(int paramInt)
     {
       AppMethodBeat.i(130696);
       if (super.indexOfKey(paramInt) >= 0)
@@ -128,25 +127,25 @@ public class a
   
   final class b
   {
-    int cxM;
-    long cxN;
-    double cxO;
+    int cwo;
+    long cwp;
+    double cwq;
     
     b() {}
   }
   
   final class c
   {
-    int cxM;
-    long cxN;
-    double cxO;
+    int cwo;
+    long cwp;
+    double cwq;
     
     c() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.game.e.a
  * JD-Core Version:    0.7.0.1
  */

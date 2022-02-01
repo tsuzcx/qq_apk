@@ -14,15 +14,15 @@ import java.io.IOException;
 public final class c
   implements s
 {
-  private s.b qvE;
+  private s.b tUD;
   private String url;
   
   public c(String paramString)
   {
     AppMethodBeat.i(63773);
-    this.qvE = new s.b()
+    this.tUD = new s.b()
     {
-      public final Bitmap So(String paramAnonymousString)
+      public final Bitmap ZQ(String paramAnonymousString)
       {
         AppMethodBeat.i(63772);
         paramAnonymousString = BitmapUtil.decodeFile(paramAnonymousString, null);
@@ -37,10 +37,10 @@ public final class c
   public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
   {
     AppMethodBeat.i(63775);
-    if (s.a.jNh == parama) {}
+    if (s.a.mEp == parama) {}
     try
     {
-      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, b.aKj(this.url), false);
+      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, b.aUH(this.url), false);
       AppMethodBeat.o(63775);
       return paramBitmap;
     }
@@ -53,49 +53,44 @@ public final class c
     }
   }
   
-  public final void a(s.a parama, String paramString) {}
+  public final void a(s.a parama) {}
   
-  public final void ad(String paramString, boolean paramBoolean) {}
+  public final s.b bvp()
+  {
+    return this.tUD;
+  }
   
-  public final String blA()
+  public final String bvq()
   {
     AppMethodBeat.i(63774);
-    String str = b.aKj(this.url);
+    String str = b.aUH(this.url);
     AppMethodBeat.o(63774);
     return str;
   }
   
-  public final String blB()
+  public final String bvr()
   {
     return this.url;
   }
   
-  public final String blC()
+  public final String bvs()
   {
     return this.url;
   }
   
-  public final boolean blD()
+  public final boolean bvt()
   {
     return true;
   }
   
-  public final boolean blE()
-  {
-    return false;
-  }
-  
-  public final Bitmap blF()
+  public final Bitmap bvu()
   {
     return null;
   }
   
-  public final void blG() {}
+  public final void bvv() {}
   
-  public final s.b blz()
-  {
-    return this.qvE;
-  }
+  public final void bvw() {}
   
   public final String getCacheKey()
   {

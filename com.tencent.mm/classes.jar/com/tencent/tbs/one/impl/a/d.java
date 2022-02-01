@@ -1,7 +1,10 @@
 package com.tencent.tbs.one.impl.a;
 
+import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
+import android.os.Process;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.text.SimpleDateFormat;
@@ -11,8 +14,8 @@ import java.util.Locale;
 public final class d
 {
   public static String a;
-  public static String b;
-  public static String c;
+  private static String b;
+  private static String c;
   private static String d;
   
   public static String a()
@@ -104,6 +107,27 @@ public final class d
     return str;
   }
   
+  public static String a(Context paramContext)
+  {
+    AppMethodBeat.i(292922);
+    if ((TextUtils.isEmpty(b)) && (paramContext.checkPermission("android.permission.READ_PHONE_STATE", Process.myPid(), Process.myUid()) == 0)) {
+      paramContext = (TelephonyManager)paramContext.getSystemService("phone");
+    }
+    try
+    {
+      b = paramContext.getDeviceId();
+      c = paramContext.getSubscriberId();
+      label53:
+      paramContext = b;
+      AppMethodBeat.o(292922);
+      return paramContext;
+    }
+    catch (Exception paramContext)
+    {
+      break label53;
+    }
+  }
+  
   public static String a(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(173922);
@@ -131,7 +155,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tbs.one.impl.a.d
  * JD-Core Version:    0.7.0.1
  */

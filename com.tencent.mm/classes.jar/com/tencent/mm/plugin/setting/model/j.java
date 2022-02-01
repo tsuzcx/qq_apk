@@ -1,17 +1,19 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bwx;
-import com.tencent.mm.protocal.protobuf.bwy;
+import com.tencent.mm.protocal.protobuf.cen;
+import com.tencent.mm.protocal.protobuf.ceo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
@@ -30,13 +32,13 @@ public final class j
   {
     AppMethodBeat.i(73773);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new bwx();
-    ((d.a)localObject).iLO = new bwy();
+    ((d.a)localObject).lBU = new cen();
+    ((d.a)localObject).lBV = new ceo();
     ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaapp/autofill/getinfo";
     ((d.a)localObject).funcId = 1191;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (bwx)this.rr.iLK.iLR;
-    ((bwx)localObject).source = 2;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (cen)d.b.b(this.rr.lBR);
+    ((cen)localObject).source = 2;
     LinkedList localLinkedList = new LinkedList();
     localLinkedList.add("invoice_info.title");
     localLinkedList.add("invoice_info.tax_number");
@@ -48,12 +50,12 @@ public final class j
     localLinkedList.add("invoice_info.company_address_detail");
     localLinkedList.add("invoice_info.company_address_postcode");
     localLinkedList.add("invoice_info.phone");
-    ((bwx)localObject).McG = localLinkedList;
-    ((bwx)localObject).McF = false;
+    ((cen)localObject).Tmf = localLinkedList;
+    ((cen)localObject).Tme = false;
     AppMethodBeat.o(73773);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(73775);
     this.callback = parami;
@@ -74,14 +76,14 @@ public final class j
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
       Log.i("MicroMsg.NetSceneGetUserAutoFillInfo", "return is 0.now we parse the json and resetList..");
-      params = (bwy)((d)params).iLL.iLR;
-      if (params.McH == null) {}
+      params = (ceo)d.c.b(((d)params).lBS);
+      if (params.Tmg == null) {}
     }
     try
     {
-      boolean bool = new JSONObject(params.McH).getBoolean("has_invoice_info");
+      boolean bool = new JSONObject(params.Tmg).getBoolean("has_invoice_info");
       Log.i("MicroMsg.NetSceneGetUserAutoFillInfo", "has_invoice_info is ..".concat(String.valueOf(bool)));
-      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.Obg, Boolean.valueOf(bool));
+      h.aHG().aHp().set(ar.a.Vpj, Boolean.valueOf(bool));
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(73774);
       return;

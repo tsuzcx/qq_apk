@@ -17,10 +17,10 @@ public class YtLivenessNetProtoHelper$LiveStyleRequester$SeleceData
   
   public YtLivenessNetProtoHelper$LiveStyleRequester$SeleceData(float paramFloat, int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(187295);
+    AppMethodBeat.i(247506);
     this.platform = 2;
     this.protocal = 1;
-    this.version = "3.6.4.3";
+    this.version = "3.6.4.4";
     this.change_point_num = 2;
     this.android_data = new YtLivenessNetProtoHelper.LiveStyleRequester.LiveStyleAndroidData();
     this.android_data.lux = paramFloat;
@@ -32,12 +32,12 @@ public class YtLivenessNetProtoHelper$LiveStyleRequester$SeleceData
       this.config = paramString3;
     }
     this.client_version = paramString2;
-    AppMethodBeat.o(187295);
+    AppMethodBeat.o(247506);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.YtLivenessNetProtoHelper.LiveStyleRequester.SeleceData
  * JD-Core Version:    0.7.0.1
  */

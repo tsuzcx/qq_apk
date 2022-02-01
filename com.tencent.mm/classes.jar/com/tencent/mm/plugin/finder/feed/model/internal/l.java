@@ -1,45 +1,17 @@
 package com.tencent.mm.plugin.finder.feed.model.internal;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
+import kotlin.g.a.a;
+import kotlin.g.a.b;
+import kotlin.x;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer;", "T", "A", "", "policy", "Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer$Policy;", "name", "", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer$Policy;Ljava/lang/String;)V", "buffer", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer$PageData;", "empty", "Ljava/util/concurrent/locks/Condition;", "kotlin.jvm.PlatformType", "length", "", "getLength", "()I", "setLength", "(I)V", "lock", "Ljava/util/concurrent/locks/ReentrantLock;", "clear", "", "makeList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "offer", "page", "take", "count", "expiredTimeMs", "", "callback", "Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer$Callback;", "Callback", "Companion", "PageData", "Policy", "plugin-finder_release"})
-public final class l<T, A>
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/internal/IPreload;", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "", "getCache", "", "call", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "request", "Lkotlin/Function0;", "setCache", "response", "plugin-finder-base_release"})
+public abstract interface l<T extends k>
 {
-  public static final a tYK;
-  private final ReentrantLock dgE;
-  private final String name;
-  private final Condition tYH;
-  private final LinkedList<Object<T, A>> tYI;
-  private final l.b tYJ;
+  public abstract void F(a<x> parama);
   
-  static
-  {
-    AppMethodBeat.i(245035);
-    tYK = new a((byte)0);
-    AppMethodBeat.o(245035);
-  }
+  public abstract void I(b<? super IResponse<T>, x> paramb);
   
-  public l()
-  {
-    this(null, null, 3);
-  }
-  
-  private l(l.b paramb, String paramString)
-  {
-    AppMethodBeat.i(245033);
-    this.tYJ = paramb;
-    this.name = paramString;
-    this.dgE = new ReentrantLock();
-    this.tYH = this.dgE.newCondition();
-    this.tYI = new LinkedList();
-    AppMethodBeat.o(245033);
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
+  public abstract void a(IResponse<T> paramIResponse);
 }
 
 

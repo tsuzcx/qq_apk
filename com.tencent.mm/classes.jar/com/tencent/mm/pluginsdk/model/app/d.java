@@ -27,7 +27,7 @@ public final class d
     this.db = paramISQLiteDatabase;
   }
   
-  public final void Mo(long paramLong)
+  public final void TQ(long paramLong)
   {
     AppMethodBeat.i(151652);
     String str = " update appattach set status = 198 , lastModifyTime = " + Util.nowSecond() + " where rowid = " + paramLong;
@@ -36,7 +36,7 @@ public final class d
     AppMethodBeat.o(151652);
   }
   
-  public final c Mp(long paramLong)
+  public final c TR(long paramLong)
   {
     AppMethodBeat.i(151655);
     c localc = new c();
@@ -59,7 +59,7 @@ public final class d
     return bool;
   }
   
-  public final c bdx(String paramString)
+  public final c bpR(String paramString)
   {
     AppMethodBeat.i(151653);
     c localc = new c();
@@ -80,7 +80,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.d
  * JD-Core Version:    0.7.0.1
  */

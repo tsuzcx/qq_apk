@@ -12,10 +12,10 @@ import android.graphics.Path.FillType;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
-import android.support.v4.content.b;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.plugin.ball.a.b;
+import com.tencent.mm.plugin.ball.a.c;
 import com.tencent.mm.plugin.gif.MMAnimateView;
 
 public class CircleAnimateView
@@ -30,7 +30,7 @@ public class CircleAnimateView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(106371);
     this.progress = -2147483648L;
-    eH(paramContext);
+    eK(paramContext);
     AppMethodBeat.o(106371);
   }
   
@@ -39,15 +39,15 @@ public class CircleAnimateView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(106370);
     this.progress = -2147483648L;
-    eH(paramContext);
+    eK(paramContext);
     AppMethodBeat.o(106370);
   }
   
-  private void eH(Context paramContext)
+  private void eK(Context paramContext)
   {
     AppMethodBeat.i(106372);
-    this.defaultWidth = a.aH(paramContext, 2131166391);
-    this.defaultHeight = a.aH(paramContext, 2131166391);
+    this.defaultWidth = com.tencent.mm.ci.a.aZ(paramContext, a.c.float_ball_default_icon_size);
+    this.defaultHeight = com.tencent.mm.ci.a.aZ(paramContext, a.c.float_ball_default_icon_size);
     AppMethodBeat.o(106372);
   }
   
@@ -63,20 +63,20 @@ public class CircleAnimateView
     {
       i = getWidth();
       if (getWidth() <= 0) {
-        break label443;
+        break label445;
       }
       j = getWidth();
       localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
       localObject = new Canvas(localBitmap);
       if (!localBitmap.isRecycled()) {
-        break label568;
+        break label570;
       }
       localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
       localObject = new Canvas(localBitmap);
     }
-    label282:
-    label543:
-    label568:
+    label284:
+    label545:
+    label570:
     for (;;)
     {
       super.draw((Canvas)localObject);
@@ -89,31 +89,31 @@ public class CircleAnimateView
         {
           i = getWidth();
           if (getWidth() <= 0) {
-            break label493;
+            break label495;
           }
           j = getWidth();
           float f1 = i / 2.0F;
           float f2 = j / 2.0F;
-          float f3 = a.fromDPToPix(getContext(), 1.5F);
+          float f3 = com.tencent.mm.ci.a.fromDPToPix(getContext(), 1.5F);
           float f4 = i * 0.75F / 2.0F - f3;
           localPaint = new Paint();
           localPaint.setAntiAlias(true);
           localPaint.setStyle(Paint.Style.STROKE);
           localPaint.setStrokeWidth(f3);
-          localPaint.setColor(b.n(getContext(), 2131099657));
+          localPaint.setColor(androidx.core.content.a.w(getContext(), a.b.BW_0_Alpha_0_1));
           ((Canvas)localObject).drawCircle(f1, f2, f4, localPaint);
-          localPaint.setColor(b.n(getContext(), 2131101414));
+          localPaint.setColor(androidx.core.content.a.w(getContext(), a.b.wechat_green));
           ((Canvas)localObject).drawArc(f1 - f4, f2 - f4, f1 + f4, f2 + f4, -90.0F, (float)this.progress / 100.0F * 360.0F, false, localPaint);
         }
       }
       else
       {
         if (getWidth() <= 0) {
-          break label518;
+          break label520;
         }
         i = getWidth();
         if (getWidth() <= 0) {
-          break label543;
+          break label545;
         }
         j = getWidth();
       }
@@ -139,7 +139,7 @@ public class CircleAnimateView
         }
         i = this.defaultWidth;
         break;
-        label443:
+        label445:
         if (getMeasuredHeight() > 0)
         {
           j = getMeasuredHeight();
@@ -154,7 +154,7 @@ public class CircleAnimateView
         }
         i = this.defaultWidth;
         break label113;
-        label493:
+        label495:
         if (getMeasuredHeight() > 0)
         {
           j = getMeasuredHeight();
@@ -165,10 +165,10 @@ public class CircleAnimateView
         if (getMeasuredWidth() > 0)
         {
           i = getMeasuredWidth();
-          break label282;
+          break label284;
         }
         i = this.defaultWidth;
-        break label282;
+        break label284;
         if (getMeasuredHeight() > 0) {
           j = getMeasuredHeight();
         } else {
@@ -188,7 +188,7 @@ public class CircleAnimateView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.view.CircleAnimateView
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.mm.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class HomeUI$29
@@ -13,6 +14,12 @@ final class HomeUI$29
   {
     AppMethodBeat.i(33207);
     paramDialogInterface.dismiss();
+    paramDialogInterface = HomeUI.c(this.VWJ);
+    Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/ui/HomeUI$35", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramDialogInterface, "com/tencent/mm/ui/HomeUI$35", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(33207);
   }
 }

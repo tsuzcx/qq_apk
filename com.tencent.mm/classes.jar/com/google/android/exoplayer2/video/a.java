@@ -11,19 +11,19 @@ import java.util.List;
 
 public final class a
 {
-  public final float bHl;
-  public final List<byte[]> bds;
-  public final int biD;
+  public final List<byte[]> aMS;
+  public final int aSh;
+  public final float bqU;
   public final int height;
   public final int width;
   
   private a(List<byte[]> paramList, int paramInt1, int paramInt2, int paramInt3, float paramFloat)
   {
-    this.bds = paramList;
-    this.biD = paramInt1;
+    this.aMS = paramList;
+    this.aSh = paramInt1;
     this.width = paramInt2;
     this.height = paramInt3;
-    this.bHl = paramFloat;
+    this.bqU = paramFloat;
   }
   
   public static a K(m paramm)
@@ -33,7 +33,7 @@ public final class a
     int k;
     try
     {
-      paramm.eZ(4);
+      paramm.fu(4);
       k = (paramm.readUnsignedByte() & 0x3) + 1;
       if (k == 3)
       {
@@ -70,7 +70,7 @@ public final class a
       paramm = k.k((byte[])localArrayList.get(0), k, paramm.length);
       i = paramm.width;
       j = paramm.height;
-      f = paramm.bHl;
+      f = paramm.bqU;
     }
     for (;;)
     {
@@ -87,7 +87,7 @@ public final class a
     AppMethodBeat.i(93251);
     int i = paramm.readUnsignedShort();
     int j = paramm.position;
-    paramm.eZ(i);
+    paramm.fu(i);
     paramm = d.j(paramm.data, j, i);
     AppMethodBeat.o(93251);
     return paramm;
@@ -95,7 +95,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.video.a
  * JD-Core Version:    0.7.0.1
  */

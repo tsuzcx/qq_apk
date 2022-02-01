@@ -16,24 +16,27 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.an.q;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.collect.reward.a.a;
 import com.tencent.mm.plugin.collect.reward.a.a.a;
+import com.tencent.mm.plugin.collect.reward.a.g;
 import com.tencent.mm.plugin.collect.reward.b.b;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.l;
-import com.tencent.mm.protocal.protobuf.wv;
+import com.tencent.mm.protocal.protobuf.wz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.ui.aa;
 import com.tencent.mm.ui.base.MMGridView;
 import com.tencent.mm.ui.widget.MMEditText;
-import com.tencent.mm.ui.x;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,27 +47,27 @@ public class QrRewardSetMoneyUI
   extends QrRewardBaseUI
 {
   private String desc;
-  private String lRD;
-  private TextView mPa;
-  private int qyg;
-  private ImageView qyu;
-  private MMGridView qzf;
-  private Button qzg;
-  private MMEditText qzh;
-  private TextView qzi;
-  private TextView qzj;
-  private SparseArray<WalletFormView> qzk;
-  private List<Integer> qzl;
-  private List<Integer> qzm;
-  private boolean qzn;
-  private Runnable qzo;
-  private TextWatcher qzp;
+  private String oOi;
+  private TextView pPT;
+  private int tXg;
+  private ImageView tXu;
+  private MMGridView tYf;
+  private Button tYg;
+  private MMEditText tYh;
+  private TextView tYi;
+  private TextView tYj;
+  private SparseArray<WalletFormView> tYk;
+  private List<Integer> tYl;
+  private List<Integer> tYm;
+  private boolean tYn;
+  private Runnable tYo;
+  private TextWatcher tYp;
   
   public QrRewardSetMoneyUI()
   {
     AppMethodBeat.i(64019);
-    this.qzn = false;
-    this.qzo = new Runnable()
+    this.tYn = false;
+    this.tYo = new Runnable()
     {
       public final void run()
       {
@@ -73,7 +76,7 @@ public class QrRewardSetMoneyUI
         AppMethodBeat.o(64014);
       }
     };
-    this.qzp = new TextWatcher()
+    this.tYp = new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
@@ -108,15 +111,15 @@ public class QrRewardSetMoneyUI
     AppMethodBeat.o(64019);
   }
   
-  private boolean cAf()
+  private boolean cOF()
   {
     AppMethodBeat.i(64024);
     int i = 0;
-    while (i < this.qzl.size())
+    while (i < this.tYl.size())
     {
-      if (!((Integer)this.qzl.get(i)).equals(this.qzm.get(i)))
+      if (!((Integer)this.tYl.get(i)).equals(this.tYm.get(i)))
       {
-        Log.i("MicroMsg.QrRewardSetMoneyUI", "modify money: %s, %s", new Object[] { this.qzl.get(i), this.qzm.get(i) });
+        Log.i("MicroMsg.QrRewardSetMoneyUI", "modify money: %s, %s", new Object[] { this.tYl.get(i), this.tYm.get(i) });
         AppMethodBeat.o(64024);
         return true;
       }
@@ -126,15 +129,15 @@ public class QrRewardSetMoneyUI
     return false;
   }
   
-  private void cAg()
+  private void cOG()
   {
     AppMethodBeat.i(64025);
     int i = 0;
-    if (i < this.qzm.size())
+    if (i < this.tYm.size())
     {
-      WalletFormView localWalletFormView = (WalletFormView)LayoutInflater.from(getContext()).inflate(2131496009, null);
-      localWalletFormView.a(this.qzp);
-      int j = ((Integer)this.qzm.get(i)).intValue();
+      WalletFormView localWalletFormView = (WalletFormView)LayoutInflater.from(getContext()).inflate(a.g.qr_reward_setting_item, null);
+      localWalletFormView.a(this.tYp);
+      int j = ((Integer)this.tYm.get(i)).intValue();
       int k = j / 100;
       double d = j / 100.0D;
       if (d > k) {
@@ -143,7 +146,7 @@ public class QrRewardSetMoneyUI
       for (;;)
       {
         setEditFocusListener(localWalletFormView, 2, false);
-        this.qzk.put(i, localWalletFormView);
+        this.tYk.put(i, localWalletFormView);
         i += 1;
         break;
         localWalletFormView.setText(String.format("%d", new Object[] { Integer.valueOf(k) }));
@@ -154,40 +157,40 @@ public class QrRewardSetMoneyUI
   
   public int getLayoutId()
   {
-    return 2131496011;
+    return a.g.qr_reward_setting_ui;
   }
   
   public void initView()
   {
     AppMethodBeat.i(64021);
-    this.qzf = ((MMGridView)findViewById(2131306447));
-    this.qzg = ((Button)findViewById(2131306446));
-    this.qzi = ((TextView)findViewById(2131306443));
-    this.qyu = ((ImageView)findViewById(2131306444));
-    this.qzh = ((MMEditText)findViewById(2131306448));
-    this.mPa = ((TextView)findViewById(2131306449));
-    this.qzj = ((TextView)findViewById(2131306445));
-    String str = z.aUa();
+    this.tYf = ((MMGridView)findViewById(a.f.qrsu_money_layout_new));
+    this.tYg = ((Button)findViewById(a.f.qrsu_gen_btn));
+    this.tYi = ((TextView)findViewById(a.f.qrsu_alert_tv));
+    this.tXu = ((ImageView)findViewById(a.f.qrsu_avatar_iv));
+    this.tYh = ((MMEditText)findViewById(a.f.qrsu_reward_et));
+    this.pPT = ((TextView)findViewById(a.f.qrsu_title_tv));
+    this.tYj = ((TextView)findViewById(a.f.qrsu_bottom_tips_tv));
+    String str = z.bdb();
     Object localObject = str;
     if (Util.isNullOrNil(str)) {
-      localObject = z.aUb();
+      localObject = z.bdc();
     }
-    this.mPa.setText(l.c(getContext(), (CharSequence)localObject));
-    a.b.a(this.qyu, z.aTY(), 0.06F, false);
+    this.pPT.setText(l.c(getContext(), (CharSequence)localObject));
+    a.b.a(this.tXu, z.bcZ(), 0.06F, false);
     localObject = new a((byte)0);
-    this.qzf.setAdapter((ListAdapter)localObject);
+    this.tYf.setAdapter((ListAdapter)localObject);
     if (!Util.isNullOrNil(this.desc)) {
-      this.qzh.setText(l.b(this, this.desc, this.qzh.getTextSize()));
+      this.tYh.setText(l.b(this, this.desc, this.tYh.getTextSize()));
     }
-    this.qzi.setText(getString(2131764129, new Object[] { Math.round(this.qyg / 100.0F) }));
-    if (this.qzn)
+    this.tYi.setText(getString(a.i.qr_reward_set_money_exceed_text, new Object[] { Math.round(this.tXg / 100.0F) }));
+    if (this.tYn)
     {
-      this.qzg.setText(2131764110);
-      this.qzj.setVisibility(8);
+      this.tYg.setText(a.i.qr_reward_first_set_money_btn_text);
+      this.tYj.setVisibility(8);
     }
-    this.qzg.setOnClickListener(new x()
+    this.tYg.setOnClickListener(new aa()
     {
-      public final void czW()
+      public final void cOw()
       {
         AppMethodBeat.i(64010);
         if (!QrRewardSetMoneyUI.a(QrRewardSetMoneyUI.this)) {
@@ -195,7 +198,7 @@ public class QrRewardSetMoneyUI
         }
         for (;;)
         {
-          h.CyF.a(14721, new Object[] { Integer.valueOf(1), Integer.valueOf(2) });
+          com.tencent.mm.plugin.report.service.h.IzE.a(14721, new Object[] { Integer.valueOf(1), Integer.valueOf(2) });
           AppMethodBeat.o(64010);
           return;
           Log.i("MicroMsg.QrRewardSetMoneyUI", "amt error!");
@@ -209,23 +212,23 @@ public class QrRewardSetMoneyUI
   {
     AppMethodBeat.i(64020);
     super.onCreate(paramBundle);
-    setMMTitle(2131764132);
+    setMMTitle(a.i.qr_reward_set_money_title);
     addSceneEndListener(1562);
-    paramBundle = Util.stringToList((String)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.Oep, ""), ",");
-    this.qzl = new ArrayList();
+    paramBundle = Util.stringToList((String)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VsA, ""), ",");
+    this.tYl = new ArrayList();
     if (paramBundle.isEmpty())
     {
       Log.i("MicroMsg.QrRewardSetMoneyUI", "use client hardcode amt list");
-      this.qzl = Arrays.asList(b.qxL);
+      this.tYl = Arrays.asList(b.tWL);
     }
     for (;;)
     {
-      this.qzm = new ArrayList(this.qzl);
-      this.qyg = ((Integer)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.Oeo, Integer.valueOf(20000))).intValue();
-      this.qzn = getIntent().getBooleanExtra("key_first_flag", false);
+      this.tYm = new ArrayList(this.tYl);
+      this.tXg = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.Vsz, Integer.valueOf(20000))).intValue();
+      this.tYn = getIntent().getBooleanExtra("key_first_flag", false);
       this.desc = getIntent().getStringExtra("key_desc_word");
-      this.qzk = new SparseArray();
-      cAg();
+      this.tYk = new SparseArray();
+      cOG();
       initView();
       AppMethodBeat.o(64020);
       return;
@@ -233,7 +236,7 @@ public class QrRewardSetMoneyUI
       while (paramBundle.hasNext())
       {
         String str = (String)paramBundle.next();
-        this.qzl.add(Integer.valueOf(Util.getInt(str, 0)));
+        this.tYl.add(Integer.valueOf(Util.getInt(str, 0)));
       }
     }
   }
@@ -243,29 +246,29 @@ public class QrRewardSetMoneyUI
     AppMethodBeat.i(64022);
     super.onDestroy();
     removeSceneEndListener(1562);
-    MMHandlerThread.removeRunnable(this.qzo);
+    MMHandlerThread.removeRunnable(this.tYo);
     AppMethodBeat.o(64022);
   }
   
   public boolean onSceneEnd(int paramInt1, int paramInt2, final String paramString, q paramq)
   {
     AppMethodBeat.i(64023);
-    if ((paramq instanceof com.tencent.mm.plugin.collect.reward.a.g))
+    if ((paramq instanceof g))
     {
-      paramString = (com.tencent.mm.plugin.collect.reward.a.g)paramq;
+      paramString = (g)paramq;
       paramString.a(new a.a()
       {
         public final void g(q paramAnonymousq)
         {
           AppMethodBeat.i(64013);
-          QrRewardSetMoneyUI.a(QrRewardSetMoneyUI.this, paramString.qxG.Cog);
-          QrRewardSetMoneyUI.b(QrRewardSetMoneyUI.this, paramString.qxG.desc);
+          QrRewardSetMoneyUI.a(QrRewardSetMoneyUI.this, paramString.tWG.IkZ);
+          QrRewardSetMoneyUI.b(QrRewardSetMoneyUI.this, paramString.tWG.desc);
           paramAnonymousq = new Intent();
-          paramAnonymousq.putExtra("key_desc", paramString.qxG.desc);
-          paramAnonymousq.putExtra("key_photo_url", paramString.qxG.Cog);
-          paramAnonymousq.putExtra("key_photo_aeskey", paramString.qxG.Lhl);
-          paramAnonymousq.putExtra("key_photo_width", paramString.qxG.Lhq);
-          paramAnonymousq.putExtra("key_icon_width", paramString.qxG.Lhm);
+          paramAnonymousq.putExtra("key_desc", paramString.tWG.desc);
+          paramAnonymousq.putExtra("key_photo_url", paramString.tWG.IkZ);
+          paramAnonymousq.putExtra("key_photo_aeskey", paramString.tWG.Siz);
+          paramAnonymousq.putExtra("key_photo_width", paramString.tWG.SiE);
+          paramAnonymousq.putExtra("key_icon_width", paramString.tWG.SiA);
           paramAnonymousq.putExtra("key_return_from_first", QrRewardSetMoneyUI.c(QrRewardSetMoneyUI.this));
           QrRewardSetMoneyUI.this.setResult(-1, paramAnonymousq);
           QrRewardSetMoneyUI.this.finish();
@@ -276,14 +279,14 @@ public class QrRewardSetMoneyUI
         public final void g(q paramAnonymousq)
         {
           AppMethodBeat.i(64012);
-          Log.e("MicroMsg.QrRewardSetMoneyUI", "set code error: %s, %s", new Object[] { Integer.valueOf(paramString.qxG.dDN), paramString.qxG.qwn });
-          if (!Util.isNullOrNil(paramString.qxG.qwn))
+          Log.e("MicroMsg.QrRewardSetMoneyUI", "set code error: %s, %s", new Object[] { Integer.valueOf(paramString.tWG.fwx), paramString.tWG.tVo });
+          if (!Util.isNullOrNil(paramString.tWG.tVo))
           {
-            Toast.makeText(QrRewardSetMoneyUI.this, paramString.qxG.qwn, 1).show();
+            Toast.makeText(QrRewardSetMoneyUI.this, paramString.tWG.tVo, 1).show();
             AppMethodBeat.o(64012);
             return;
           }
-          Toast.makeText(QrRewardSetMoneyUI.this, 2131764127, 1).show();
+          Toast.makeText(QrRewardSetMoneyUI.this, a.i.qr_reward_set_code_failure_text, 1).show();
           AppMethodBeat.o(64012);
         }
       }).c(new a.a()

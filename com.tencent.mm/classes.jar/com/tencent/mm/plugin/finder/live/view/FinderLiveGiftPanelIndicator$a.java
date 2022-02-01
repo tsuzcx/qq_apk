@@ -1,11 +1,13 @@
 package com.tencent.mm.plugin.finder.live.view;
 
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.report.live.s.aw;
+import com.tencent.mm.plugin.finder.live.report.m;
+import com.tencent.mm.plugin.finder.live.report.s.bk;
+import com.tencent.mm.plugin.finder.live.utils.a;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/live/view/FinderLiveGiftPanelIndicator$attachViewPager$1", "Landroid/support/v4/view/ViewPager$OnPageChangeListener;", "onPageScrollStateChanged", "", "p0", "", "onPageScrolled", "p1", "", "p2", "onPageSelected", "selectedIndex", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/live/view/FinderLiveGiftPanelIndicator$attachViewPager$1", "Landroidx/viewpager/widget/ViewPager$OnPageChangeListener;", "onPageScrollStateChanged", "", "p0", "", "onPageScrolled", "p1", "", "p2", "onPageSelected", "selectedIndex", "plugin-finder_release"})
 public final class FinderLiveGiftPanelIndicator$a
   implements ViewPager.OnPageChangeListener
 {
@@ -15,20 +17,20 @@ public final class FinderLiveGiftPanelIndicator$a
   
   public final void onPageSelected(int paramInt)
   {
-    AppMethodBeat.i(247445);
-    this.uyv.setCurrentChoosedIndicator(paramInt);
-    Object localObject = com.tencent.mm.plugin.finder.utils.m.vVH;
-    if (!com.tencent.mm.plugin.finder.utils.m.dBP())
+    AppMethodBeat.i(280304);
+    this.yUm.setCurrentChoosedIndicator(paramInt);
+    Object localObject = a.yRm;
+    if (!a.dEy())
     {
-      localObject = com.tencent.mm.plugin.finder.report.live.m.vli;
-      com.tencent.mm.plugin.finder.report.live.m.a(s.aw.vss, "", 0);
+      localObject = m.yCt;
+      m.a(s.bk.yMq, "", 0);
     }
-    AppMethodBeat.o(247445);
+    AppMethodBeat.o(280304);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.view.FinderLiveGiftPanelIndicator.a
  * JD-Core Version:    0.7.0.1
  */

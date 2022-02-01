@@ -6,23 +6,23 @@ import java.util.Map;
 public abstract interface c
   extends a
 {
-  public abstract void aa(String paramString1, String paramString2, String paramString3);
+  public abstract void X(String paramString1, String paramString2, String paramString3);
   
-  public abstract void aoe(String paramString);
+  public abstract void awc(String paramString);
   
-  public abstract String cMD();
+  public abstract String dbr();
   
-  public abstract String cME();
+  public abstract String dbs();
   
-  public abstract Map<String, Boolean> cMF();
+  public abstract Map<String, Boolean> dbt();
   
-  public abstract String cMG();
+  public abstract String dbu();
   
-  public abstract void gk(String paramString1, String paramString2);
+  public abstract void gy(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -9,17 +9,22 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.q;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.ay.q;
+import com.tencent.mm.by.c;
+import com.tencent.mm.plugin.topstory.ui.c.a;
+import com.tencent.mm.plugin.topstory.ui.c.c;
+import com.tencent.mm.plugin.topstory.ui.c.d;
+import com.tencent.mm.plugin.topstory.ui.c.f;
+import com.tencent.mm.plugin.topstory.ui.d;
 import com.tencent.mm.plugin.topstory.ui.video.l;
 import com.tencent.mm.plugin.topstory.ui.video.n;
 import com.tencent.mm.plugin.topstory.ui.video.o;
 import com.tencent.mm.plugin.topstory.ui.video.r;
 import com.tencent.mm.plugin.websearch.api.ai;
-import com.tencent.mm.protocal.protobuf.aca;
-import com.tencent.mm.protocal.protobuf.dyi;
-import com.tencent.mm.protocal.protobuf.eit;
-import com.tencent.mm.protocal.protobuf.eiw;
+import com.tencent.mm.protocal.protobuf.aci;
+import com.tencent.mm.protocal.protobuf.eij;
+import com.tencent.mm.protocal.protobuf.esv;
+import com.tencent.mm.protocal.protobuf.esy;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.MMNeat7extView;
@@ -31,243 +36,108 @@ public final class h
   extends com.tencent.mm.plugin.topstory.ui.video.h
   implements a
 {
-  public ImageView GmA;
-  public TextView GoH;
-  public View GoM;
-  public View GoN;
-  public View GoO;
-  public TextView GoP;
-  public TextView GoQ;
-  public ImageView GoR;
-  public ImageView GoS;
-  public View GoT;
-  public FrameLayout GoZ;
-  public com.tencent.mm.plugin.topstory.ui.video.f GpP;
-  public View GpQ;
-  public ImageView GpR;
-  public View GpS;
-  public View GpT;
-  public View GpU;
-  public TextView GpV;
-  public View GpW;
-  public TextView GpX;
-  public ImageView GpY;
-  private boolean GpZ;
-  public View Gpw;
-  public View Gpx;
-  public MMNeat7extView pIO;
-  public View psf;
-  public View rAO;
-  public TextView xYx;
+  public TextView Ddd;
+  public MMNeat7extView HyV;
+  public ImageView MZm;
+  public View NbA;
+  public TextView NbB;
+  public TextView NbC;
+  public ImageView NbD;
+  public ImageView NbE;
+  public View NbF;
+  public FrameLayout NbL;
+  public TextView Nbt;
+  public View Nby;
+  public View Nbz;
+  public com.tencent.mm.plugin.topstory.ui.video.f NcB;
+  public View NcC;
+  public ImageView NcD;
+  public View NcE;
+  public View NcF;
+  public View NcG;
+  public TextView NcH;
+  public View NcI;
+  public TextView NcJ;
+  public ImageView NcK;
+  private boolean NcL;
+  public View Nci;
+  public View Ncj;
+  public View sBm;
+  public View vgv;
   
   public h(View paramView, b paramb, boolean paramBoolean)
   {
     super(paramView, paramb);
-    this.GpZ = paramBoolean;
+    this.NcL = paramBoolean;
   }
   
-  public final void dhM()
+  public final void Ah(boolean paramBoolean)
+  {
+    AppMethodBeat.i(126494);
+    super.Ah(paramBoolean);
+    grS();
+    this.MZd.ajB(gqw());
+    if (this.NcB.aL(paramBoolean, false))
+    {
+      gqv();
+      super.gqu();
+    }
+    AppMethodBeat.o(126494);
+  }
+  
+  public final void dCA()
   {
     AppMethodBeat.i(126489);
     Log.d("MicroMsg.TopStory.TopStoryListVideoItemHolder", "showMaskView %d", new Object[] { Integer.valueOf(hashCode()) });
-    this.GpU.animate().cancel();
-    this.GpT.animate().cancel();
-    this.GpS.animate().cancel();
-    this.GpS.setAlpha(0.8F);
-    this.GpU.setAlpha(0.8F);
-    this.GpT.setAlpha(0.8F);
+    this.NcG.animate().cancel();
+    this.NcF.animate().cancel();
+    this.NcE.animate().cancel();
+    this.NcE.setAlpha(0.8F);
+    this.NcG.setAlpha(0.8F);
+    this.NcF.setAlpha(0.8F);
     AppMethodBeat.o(126489);
   }
   
-  public final void fU(View paramView)
+  public final View getWowView()
   {
-    AppMethodBeat.i(126488);
-    super.fU(paramView);
-    this.GoZ = ((FrameLayout)paramView.findViewById(2131309842));
-    this.GmA = ((ImageView)paramView.findViewById(2131308308));
-    this.xYx = ((TextView)paramView.findViewById(2131308313));
-    this.pIO = ((MMNeat7extView)paramView.findViewById(2131309249));
-    this.GoT = paramView.findViewById(2131308307);
-    this.rAO = paramView.findViewById(2131307810);
-    this.GpQ = paramView.findViewById(2131310543);
-    this.GpR = ((ImageView)paramView.findViewById(2131310542));
-    this.GoH = ((TextView)paramView.findViewById(2131310541));
-    this.Gpx = paramView.findViewById(2131304874);
-    this.Gpw = paramView.findViewById(2131304887);
-    this.GoM = paramView.findViewById(2131297709);
-    this.GpV = ((TextView)paramView.findViewById(2131297674));
-    this.GoN = paramView.findViewById(2131308853);
-    this.GoO = paramView.findViewById(2131308857);
-    this.GpW = paramView.findViewById(2131308861);
-    this.GoP = ((TextView)paramView.findViewById(2131308854));
-    this.GoQ = ((TextView)paramView.findViewById(2131308858));
-    this.GpX = ((TextView)paramView.findViewById(2131308862));
-    this.GoR = ((ImageView)paramView.findViewById(2131308852));
-    this.GoS = ((ImageView)paramView.findViewById(2131308856));
-    this.GpY = ((ImageView)paramView.findViewById(2131308860));
-    this.GpS = paramView.findViewById(2131297650);
-    this.GpT = paramView.findViewById(2131302297);
-    this.GpU = paramView.findViewById(2131301673);
-    this.psf = paramView.findViewById(2131301669);
-    if (this.GpZ)
-    {
-      this.GoM.setVisibility(0);
-      AppMethodBeat.o(126488);
-      return;
-    }
-    this.GoM.setVisibility(8);
-    AppMethodBeat.o(126488);
+    return this.NcC;
   }
   
-  public final void fV(View paramView)
-  {
-    AppMethodBeat.i(126496);
-    if ((com.tencent.mm.plugin.topstory.a.h.fxR()) && (paramView.getId() == this.pIO.getId())) {
-      this.Gmr.fyF().Gob = true;
-    }
-    super.fV(paramView);
-    AppMethodBeat.o(126496);
-  }
-  
-  public final void fW(View paramView)
-  {
-    int i = 1;
-    AppMethodBeat.i(126497);
-    Object localObject1;
-    Object localObject2;
-    if (paramView.getId() == this.pIO.getId())
-    {
-      if ((this.GjH != null) && (!Util.isNullOrNil(this.GjH.IEH)))
-      {
-        paramView = this.GjH.IEH;
-        localObject1 = new Intent();
-        ((Intent)localObject1).putExtra("rawUrl", paramView);
-        com.tencent.mm.br.c.b(this.Gmr.eeF(), "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", (Intent)localObject1);
-        if (this.Gmr.fyF().GnZ)
-        {
-          this.GpP.crC();
-          this.Gmr.fyF().cXa();
-        }
-        this.Gmr.fyB().k(this.GjH);
-        ((com.tencent.mm.plugin.topstory.a.b)g.ah(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.Gmr.fyD(), this.GjH, fyz(), 1, "");
-        AppMethodBeat.o(126497);
-      }
-    }
-    else
-    {
-      if (paramView.getId() == this.rAO.getId())
-      {
-        com.tencent.mm.plugin.websearch.api.a.a.pl(8);
-        a(this.Gmr, this.Gmr.eeF(), this.GpP, fyz());
-        AppMethodBeat.o(126497);
-        return;
-      }
-      if (paramView.getId() == this.Gpw.getId())
-      {
-        this.Gmr.ay(this.Gpw, fyz());
-        AppMethodBeat.o(126497);
-        return;
-      }
-      if ((paramView.getId() == this.GoP.getId()) || (paramView.getId() == this.GoQ.getId()))
-      {
-        this.Gmr.fyA().Gnu = true;
-        this.Gmr.fyF().stopPlay();
-        this.GpP.fyY();
-        paramView = (dyi)paramView.getTag();
-        localObject1 = com.tencent.mm.plugin.topstory.a.h.a(this.Gmr.fyD());
-        ((eit)localObject1).sGQ = UUID.randomUUID().toString();
-        ((eit)localObject1).NhX = this.GjH.psI;
-        ((eit)localObject1).Nib = paramView.MXW;
-        ((eit)localObject1).Nic = null;
-        ((eit)localObject1).Nid = paramView;
-        ((eit)localObject1).guh = this.Gmr.Zx();
-        ((eit)localObject1).Nie = this.Gmr.fyA().Gnu;
-        localObject2 = ((eit)localObject1).IDO.iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          aca localaca = (aca)((Iterator)localObject2).next();
-          if ("show_tag_list".equals(localaca.key)) {
-            localaca.LmD = paramView.id;
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      if (i == 0)
-      {
-        localObject2 = new aca();
-        ((aca)localObject2).key = "show_tag_list";
-        ((aca)localObject2).LmD = paramView.id;
-        ((eit)localObject1).IDO.add(localObject2);
-      }
-      ai.a(this.Gmr.eeF(), (eit)localObject1, 10001);
-      com.tencent.mm.plugin.websearch.api.a.a.pl(28);
-      ((com.tencent.mm.plugin.topstory.a.b)g.ah(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.Gmr.fyD(), this.GjH, fyz(), 4, paramView.dQx + ":" + paramView.id);
-      AppMethodBeat.o(126497);
-      return;
-      if ((paramView.getId() == this.GmA.getId()) || (paramView.getId() == this.xYx.getId()) || (paramView.getId() == this.GoT.getId()))
-      {
-        if (n.a(this.GjH, this.Gmr.eeF()))
-        {
-          ((com.tencent.mm.plugin.topstory.a.b)g.ah(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.Gmr.fyD(), this.GjH, fyz(), 3, "");
-          AppMethodBeat.o(126497);
-        }
-      }
-      else if (paramView.getId() == this.GpQ.getId())
-      {
-        this.Gmr.a(this.GjH, paramView);
-        if (this.GjH.NiC)
-        {
-          this.GpR.setImageResource(2131691661);
-          this.GoH.setTextColor(this.GoH.getResources().getColor(2131101284));
-          AppMethodBeat.o(126497);
-          return;
-        }
-        this.GpR.setImageResource(2131691662);
-        this.GoH.setTextColor(this.GoH.getResources().getColor(2131101427));
-      }
-      AppMethodBeat.o(126497);
-      return;
-      i = 0;
-    }
-  }
-  
-  public final void fyx()
+  public final void gqu()
   {
     AppMethodBeat.i(126492);
-    super.fyx();
+    super.gqu();
     AppMethodBeat.o(126492);
   }
   
-  public final void fyy()
+  public final void gqv()
   {
     AppMethodBeat.i(126491);
-    super.fyy();
-    this.GpU.animate().cancel();
-    this.GpT.animate().cancel();
-    this.GpU.setAlpha(0.0F);
-    this.GpT.setAlpha(0.0F);
+    super.gqv();
+    this.NcG.animate().cancel();
+    this.NcF.animate().cancel();
+    this.NcG.setAlpha(0.0F);
+    this.NcF.setAlpha(0.0F);
     AppMethodBeat.o(126491);
   }
   
-  public final void fzR()
+  public final void grS()
   {
     AppMethodBeat.i(126490);
     Log.d("MicroMsg.TopStory.TopStoryListVideoItemHolder", "hideMaskView %d", new Object[] { Integer.valueOf(hashCode()) });
-    this.GpU.animate().cancel();
-    this.GpT.animate().cancel();
-    this.GpS.animate().cancel();
-    this.GpS.setAlpha(0.0F);
-    this.GpU.setAlpha(0.0F);
-    this.GpT.setAlpha(0.0F);
+    this.NcG.animate().cancel();
+    this.NcF.animate().cancel();
+    this.NcE.animate().cancel();
+    this.NcE.setAlpha(0.0F);
+    this.NcG.setAlpha(0.0F);
+    this.NcF.setAlpha(0.0F);
     AppMethodBeat.o(126490);
   }
   
-  public final boolean fzi()
+  public final boolean grh()
   {
     AppMethodBeat.i(126493);
-    if ((this.GpU.getAlpha() != 0.0F) && (this.GpT.getAlpha() != 0.0F))
+    if ((this.NcG.getAlpha() != 0.0F) && (this.NcF.getAlpha() != 0.0F))
     {
       AppMethodBeat.o(126493);
       return true;
@@ -276,192 +146,327 @@ public final class h
     return false;
   }
   
-  public final void fzj()
+  public final void gri()
   {
     AppMethodBeat.i(126495);
-    if (!Util.isNullOrNil(this.GjH.title))
+    if (!Util.isNullOrNil(this.MWs.title))
     {
-      this.pIO.aw(this.GjH.title);
-      this.pIO.setVisibility(0);
-      this.pIO.requestLayout();
-      this.pIO.setOnClickListener(this.ko);
-      this.xYx.setText(this.GjH.source);
-      if (!n.i(this.GjH)) {
-        break label966;
+      this.HyV.aL(this.MWs.title);
+      this.HyV.setVisibility(0);
+      this.HyV.requestLayout();
+      this.HyV.setOnClickListener(this.bwV);
+      this.Ddd.setText(this.MWs.source);
+      if (!n.i(this.MWs)) {
+        break label964;
       }
-      this.GoT.setVisibility(0);
-      label91:
-      this.GmA.setOnClickListener(this.ko);
-      this.xYx.setOnClickListener(this.ko);
-      this.GoT.setOnClickListener(this.ko);
-      if (Util.isNullOrNil(this.GjH.MwR)) {
-        break label978;
+      this.NbF.setVisibility(0);
+      label90:
+      this.MZm.setOnClickListener(this.bwV);
+      this.Ddd.setOnClickListener(this.bwV);
+      this.NbF.setOnClickListener(this.bwV);
+      if (Util.isNullOrNil(this.MWs.TIg)) {
+        break label976;
       }
-      q.bcV().a(this.GjH.MwR, this.GmA, com.tencent.mm.plugin.topstory.ui.c.GjU);
-      label157:
-      if (!this.Gmr.fyI()) {
-        break label991;
+      q.bml().a(this.MWs.TIg, this.MZm, d.MWF);
+      label156:
+      if (!this.MZd.gqF()) {
+        break label989;
       }
-      this.rAO.setVisibility(0);
-      this.rAO.setOnClickListener(this.ko);
-      label188:
-      if (!this.Gmr.fyJ()) {
-        break label1003;
+      this.vgv.setVisibility(0);
+      this.vgv.setOnClickListener(this.bwV);
+      label187:
+      if (!this.MZd.gqG()) {
+        break label1001;
       }
-      this.Gpw.setTag(this.GjH);
-      this.Gpw.setOnClickListener(this.ko);
-      this.Gpw.setVisibility(0);
-      this.Gpx.setVisibility(0);
-      label238:
-      this.Gpw.setTag(this.GjH);
-      this.Gpw.setOnClickListener(this.ko);
-      this.psf.setOnClickListener(this.ko);
-      this.GpS.setVisibility(0);
-      this.GpT.setVisibility(0);
-      this.GpU.setVisibility(0);
-      if (this.GpP == null)
+      this.Nci.setTag(this.MWs);
+      this.Nci.setOnClickListener(this.bwV);
+      this.Nci.setVisibility(0);
+      this.Ncj.setVisibility(0);
+      label237:
+      this.Nci.setTag(this.MWs);
+      this.Nci.setOnClickListener(this.bwV);
+      this.sBm.setOnClickListener(this.bwV);
+      this.NcE.setVisibility(0);
+      this.NcF.setVisibility(0);
+      this.NcG.setVisibility(0);
+      if (this.NcB == null)
       {
-        this.GpP = new f(this.Gmr.eeF(), this.Gmr, this);
-        this.GoZ.removeAllViews();
-        localObject = this.GoZ;
-        com.tencent.mm.plugin.topstory.ui.video.f localf = this.GpP;
-        Log.i("MicroMsg.TopStory.TopStoryBaseVideoHolder", "lxl getVideoViewLayoutParams: %s, %s", new Object[] { Integer.valueOf(this.Gmr.getVideoWidth()), Integer.valueOf(this.Gmr.getVideoHeight()) });
-        ((FrameLayout)localObject).addView(localf, new FrameLayout.LayoutParams(this.Gmr.getVideoWidth(), this.Gmr.getVideoHeight()));
+        this.NcB = new f(this.MZd.eOa(), this.MZd, this);
+        this.NbL.removeAllViews();
+        localObject = this.NbL;
+        com.tencent.mm.plugin.topstory.ui.video.f localf = this.NcB;
+        Log.i("MicroMsg.TopStory.TopStoryBaseVideoHolder", "lxl getVideoViewLayoutParams: %s, %s", new Object[] { Integer.valueOf(this.MZd.getVideoWidth()), Integer.valueOf(this.MZd.getVideoHeight()) });
+        ((FrameLayout)localObject).addView(localf, new FrameLayout.LayoutParams(this.MZd.getVideoWidth(), this.MZd.getVideoHeight()));
       }
-      this.GpP.a(this.GjH, fyz());
-      if (this.Gmr.fyH() == fyz()) {
-        super.fyx();
+      this.NcB.a(this.MWs, gqw());
+      if (this.MZd.gqE() == gqw()) {
+        super.gqu();
       }
-      this.GpV.setText(this.GjH.xDQ);
-      if ((!this.GpZ) || (this.GjH.xuO.size() <= 0)) {
-        break label1066;
+      this.NcH.setText(this.MWs.CHR);
+      if ((!this.NcL) || (this.MWs.Crg.size() <= 0)) {
+        break label1064;
       }
-      this.GoM.setVisibility(0);
-      Object localObject = (dyi)this.GjH.xuO.get(0);
-      this.GoP.setTag(localObject);
-      this.GoP.setText(((dyi)localObject).dQx);
-      this.GoP.setVisibility(0);
-      this.GoP.setOnClickListener(this.ko);
-      this.GoN.setVisibility(0);
-      this.GoR.setVisibility(8);
-      if (!Util.isNullOrNil(((dyi)localObject).icon))
+      this.Nby.setVisibility(0);
+      Object localObject = (eij)this.MWs.Crg.get(0);
+      this.NbB.setTag(localObject);
+      this.NbB.setText(((eij)localObject).wording);
+      this.NbB.setVisibility(0);
+      this.NbB.setOnClickListener(this.bwV);
+      this.Nbz.setVisibility(0);
+      this.NbD.setVisibility(8);
+      if (!Util.isNullOrNil(((eij)localObject).icon))
       {
-        q.bcV().a(((dyi)localObject).icon, this.GoR, com.tencent.mm.plugin.topstory.ui.c.GjV);
-        this.GoR.setVisibility(0);
+        q.bml().a(((eij)localObject).icon, this.NbD, d.MWG);
+        this.NbD.setVisibility(0);
       }
-      if (this.GjH.xuO.size() <= 1) {
-        break label1024;
+      if (this.MWs.Crg.size() <= 1) {
+        break label1022;
       }
-      localObject = (dyi)this.GjH.xuO.get(1);
-      this.GoQ.setTag(localObject);
-      this.GoQ.setText(((dyi)localObject).dQx);
-      this.GoQ.setOnClickListener(this.ko);
-      this.GoQ.setVisibility(0);
-      this.GoO.setVisibility(0);
-      this.GoS.setVisibility(8);
-      if (!Util.isNullOrNil(((dyi)localObject).icon))
+      localObject = (eij)this.MWs.Crg.get(1);
+      this.NbC.setTag(localObject);
+      this.NbC.setText(((eij)localObject).wording);
+      this.NbC.setOnClickListener(this.bwV);
+      this.NbC.setVisibility(0);
+      this.NbA.setVisibility(0);
+      this.NbE.setVisibility(8);
+      if (!Util.isNullOrNil(((eij)localObject).icon))
       {
-        q.bcV().a(((dyi)localObject).icon, this.GoS, com.tencent.mm.plugin.topstory.ui.c.GjV);
-        this.GoS.setVisibility(0);
+        q.bml().a(((eij)localObject).icon, this.NbE, d.MWG);
+        this.NbE.setVisibility(0);
       }
-      label718:
-      if (this.GjH.xuO.size() <= 2) {
-        break label1045;
+      label717:
+      if (this.MWs.Crg.size() <= 2) {
+        break label1043;
       }
-      localObject = (dyi)this.GjH.xuO.get(2);
-      this.GpX.setTag(localObject);
-      this.GpX.setText(((dyi)localObject).dQx);
-      this.GpX.setOnClickListener(this.ko);
-      this.GpX.setVisibility(0);
-      this.GpW.setVisibility(0);
-      this.GpY.setVisibility(8);
-      if (!Util.isNullOrNil(((dyi)localObject).icon))
+      localObject = (eij)this.MWs.Crg.get(2);
+      this.NcJ.setTag(localObject);
+      this.NcJ.setText(((eij)localObject).wording);
+      this.NcJ.setOnClickListener(this.bwV);
+      this.NcJ.setVisibility(0);
+      this.NcI.setVisibility(0);
+      this.NcK.setVisibility(8);
+      if (!Util.isNullOrNil(((eij)localObject).icon))
       {
-        q.bcV().a(((dyi)localObject).icon, this.GpY, com.tencent.mm.plugin.topstory.ui.c.GjV);
-        this.GpY.setVisibility(0);
+        q.bml().a(((eij)localObject).icon, this.NcK, d.MWG);
+        this.NcK.setVisibility(0);
       }
-      label837:
-      if (this.Gmr.fyH() != fyz()) {
-        dhM();
+      label836:
+      if (this.MZd.gqE() != gqw()) {
+        dCA();
       }
-      if ((this.GjH.Nix & 0x80) <= 0) {
-        break label1111;
+      if ((this.MWs.Uvd & 0x80) <= 0) {
+        break label1109;
       }
-      this.GpQ.setVisibility(0);
-      this.GpQ.setOnClickListener(this.ko);
-      if (!this.GjH.NiC) {
-        break label1078;
+      this.NcC.setVisibility(0);
+      this.NcC.setOnClickListener(this.bwV);
+      if (!this.MWs.Uvi) {
+        break label1076;
       }
-      this.GpR.setImageResource(2131691661);
-      this.GoH.setTextColor(this.GoH.getResources().getColor(2131101284));
+      this.NcD.setImageResource(c.f.top_story_wow_selected);
+      this.Nbt.setTextColor(this.Nbt.getResources().getColor(c.a.top_story_wow_like));
     }
     for (;;)
     {
-      this.GoH.setText(com.tencent.mm.plugin.topstory.ui.c.abR(this.GjH.NiH));
+      this.Nbt.setText(d.ajw(this.MWs.Uvm));
       AppMethodBeat.o(126495);
       return;
-      this.pIO.setVisibility(8);
+      this.HyV.setVisibility(8);
       break;
-      label966:
-      this.GoT.setVisibility(8);
-      break label91;
-      label978:
-      this.GmA.setImageResource(2131231957);
-      break label157;
-      label991:
-      this.rAO.setVisibility(8);
-      break label188;
-      label1003:
-      this.Gpw.setVisibility(8);
-      this.Gpx.setVisibility(8);
-      break label238;
-      label1024:
-      this.GoO.setVisibility(8);
-      this.GoQ.setVisibility(8);
-      break label718;
-      label1045:
-      this.GpW.setVisibility(8);
-      this.GpX.setVisibility(8);
-      break label837;
-      label1066:
-      this.GoM.setVisibility(8);
-      break label837;
-      label1078:
-      this.GpR.setImageResource(2131691662);
-      this.GoH.setTextColor(this.GoH.getResources().getColor(2131101427));
+      label964:
+      this.NbF.setVisibility(8);
+      break label90;
+      label976:
+      this.MZm.setImageResource(c.c.default_avatar);
+      break label156;
+      label989:
+      this.vgv.setVisibility(8);
+      break label187;
+      label1001:
+      this.Nci.setVisibility(8);
+      this.Ncj.setVisibility(8);
+      break label237;
+      label1022:
+      this.NbA.setVisibility(8);
+      this.NbC.setVisibility(8);
+      break label717;
+      label1043:
+      this.NcI.setVisibility(8);
+      this.NcJ.setVisibility(8);
+      break label836;
+      label1064:
+      this.Nby.setVisibility(8);
+      break label836;
+      label1076:
+      this.NcD.setImageResource(c.f.top_story_wow_unselected);
+      this.Nbt.setTextColor(this.Nbt.getResources().getColor(c.a.white_text_color));
     }
-    label1111:
-    this.GpQ.setVisibility(8);
+    label1109:
+    this.NcC.setVisibility(8);
     AppMethodBeat.o(126495);
   }
   
-  public final com.tencent.mm.plugin.topstory.ui.video.f fzk()
+  public final com.tencent.mm.plugin.topstory.ui.video.f grj()
   {
-    return this.GpP;
+    return this.NcB;
   }
   
-  public final View getWowView()
+  public final void hd(View paramView)
   {
-    return this.GpQ;
-  }
-  
-  public final void wu(boolean paramBoolean)
-  {
-    AppMethodBeat.i(126494);
-    super.wu(paramBoolean);
-    fzR();
-    this.Gmr.abV(fyz());
-    if (this.GpP.ay(paramBoolean, false))
+    AppMethodBeat.i(126488);
+    super.hd(paramView);
+    this.NbL = ((FrameLayout)paramView.findViewById(c.d.video_view_container));
+    this.MZm = ((ImageView)paramView.findViewById(c.d.source_iv));
+    this.Ddd = ((TextView)paramView.findViewById(c.d.source_tv));
+    this.HyV = ((MMNeat7extView)paramView.findViewById(c.d.title_tv));
+    this.NbF = paramView.findViewById(c.d.source_arrow);
+    this.vgv = paramView.findViewById(c.d.share_iv);
+    this.NcC = paramView.findViewById(c.d.wow_iv);
+    this.NcD = ((ImageView)paramView.findViewById(c.d.wow_icon_view));
+    this.Nbt = ((TextView)paramView.findViewById(c.d.wow_icon_text));
+    this.Ncj = paramView.findViewById(c.d.more_divider);
+    this.Nci = paramView.findViewById(c.d.more_iv);
+    this.Nby = paramView.findViewById(c.d.bottom_tag_layout);
+    this.NcH = ((TextView)paramView.findViewById(c.d.bottom_desc_tv));
+    this.Nbz = paramView.findViewById(c.d.tag_1_ll);
+    this.NbA = paramView.findViewById(c.d.tag_2_ll);
+    this.NcI = paramView.findViewById(c.d.tag_3_ll);
+    this.NbB = ((TextView)paramView.findViewById(c.d.tag_1_tv));
+    this.NbC = ((TextView)paramView.findViewById(c.d.tag_2_tv));
+    this.NcJ = ((TextView)paramView.findViewById(c.d.tag_3_tv));
+    this.NbD = ((ImageView)paramView.findViewById(c.d.tag_1_icon));
+    this.NbE = ((ImageView)paramView.findViewById(c.d.tag_2_icon));
+    this.NcK = ((ImageView)paramView.findViewById(c.d.tag_3_icon));
+    this.NcE = paramView.findViewById(c.d.body_mask);
+    this.NcF = paramView.findViewById(c.d.header_mask);
+    this.NcG = paramView.findViewById(c.d.footer_mask);
+    this.sBm = paramView.findViewById(c.d.footer_layout);
+    if (this.NcL)
     {
-      fyy();
-      super.fyx();
+      this.Nby.setVisibility(0);
+      AppMethodBeat.o(126488);
+      return;
     }
-    AppMethodBeat.o(126494);
+    this.Nby.setVisibility(8);
+    AppMethodBeat.o(126488);
+  }
+  
+  public final void he(View paramView)
+  {
+    AppMethodBeat.i(126496);
+    if ((com.tencent.mm.plugin.topstory.a.h.gpM()) && (paramView.getId() == this.HyV.getId())) {
+      this.MZd.gqC().NaO = true;
+    }
+    super.he(paramView);
+    AppMethodBeat.o(126496);
+  }
+  
+  public final void hf(View paramView)
+  {
+    int i = 1;
+    AppMethodBeat.i(126497);
+    Object localObject1;
+    Object localObject2;
+    if (paramView.getId() == this.HyV.getId())
+    {
+      if ((this.MWs != null) && (!Util.isNullOrNil(this.MWs.PyZ)))
+      {
+        paramView = this.MWs.PyZ;
+        localObject1 = new Intent();
+        ((Intent)localObject1).putExtra("rawUrl", paramView);
+        c.b(this.MZd.eOa(), "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", (Intent)localObject1);
+        if (this.MZd.gqC().NaM)
+        {
+          this.NcB.cEI();
+          this.MZd.gqC().dmi();
+        }
+        this.MZd.gqy().k(this.MWs);
+        ((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.MZd.gqA(), this.MWs, gqw(), 1, "");
+        AppMethodBeat.o(126497);
+      }
+    }
+    else
+    {
+      if (paramView.getId() == this.vgv.getId())
+      {
+        com.tencent.mm.plugin.websearch.api.a.a.rE(8);
+        a(this.MZd, this.MZd.eOa(), this.NcB, gqw());
+        AppMethodBeat.o(126497);
+        return;
+      }
+      if (paramView.getId() == this.Nci.getId())
+      {
+        this.MZd.aD(this.Nci, gqw());
+        AppMethodBeat.o(126497);
+        return;
+      }
+      if ((paramView.getId() == this.NbB.getId()) || (paramView.getId() == this.NbC.getId()))
+      {
+        this.MZd.gqx().Nah = true;
+        this.MZd.gqC().stopPlay();
+        this.NcB.gqX();
+        paramView = (eij)paramView.getTag();
+        localObject1 = com.tencent.mm.plugin.topstory.a.h.a(this.MZd.gqA());
+        ((esv)localObject1).wmL = UUID.randomUUID().toString();
+        ((esv)localObject1).UuD = this.MWs.Crh;
+        ((esv)localObject1).UuH = paramView.Ukr;
+        ((esv)localObject1).UuI = null;
+        ((esv)localObject1).UuJ = paramView;
+        ((esv)localObject1).iYs = this.MZd.aeg();
+        ((esv)localObject1).UuK = this.MZd.gqx().Nah;
+        localObject2 = ((esv)localObject1).Pye.iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          aci localaci = (aci)((Iterator)localObject2).next();
+          if ("show_tag_list".equals(localaci.key)) {
+            localaci.SnW = paramView.id;
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      if (i == 0)
+      {
+        localObject2 = new aci();
+        ((aci)localObject2).key = "show_tag_list";
+        ((aci)localObject2).SnW = paramView.id;
+        ((esv)localObject1).Pye.add(localObject2);
+      }
+      ai.a(this.MZd.eOa(), (esv)localObject1, 10001);
+      com.tencent.mm.plugin.websearch.api.a.a.rE(28);
+      ((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.MZd.gqA(), this.MWs, gqw(), 4, paramView.wording + ":" + paramView.id);
+      AppMethodBeat.o(126497);
+      return;
+      if ((paramView.getId() == this.MZm.getId()) || (paramView.getId() == this.Ddd.getId()) || (paramView.getId() == this.NbF.getId()))
+      {
+        if (n.a(this.MWs, this.MZd.eOa()))
+        {
+          ((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.MZd.gqA(), this.MWs, gqw(), 3, "");
+          AppMethodBeat.o(126497);
+        }
+      }
+      else if (paramView.getId() == this.NcC.getId())
+      {
+        this.MZd.a(this.MWs, paramView);
+        if (this.MWs.Uvi)
+        {
+          this.NcD.setImageResource(c.f.top_story_wow_selected);
+          this.Nbt.setTextColor(this.Nbt.getResources().getColor(c.a.top_story_wow_like));
+          AppMethodBeat.o(126497);
+          return;
+        }
+        this.NcD.setImageResource(c.f.top_story_wow_unselected);
+        this.Nbt.setTextColor(this.Nbt.getResources().getColor(c.a.white_text_color));
+      }
+      AppMethodBeat.o(126497);
+      return;
+      i = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.list.h
  * JD-Core Version:    0.7.0.1
  */

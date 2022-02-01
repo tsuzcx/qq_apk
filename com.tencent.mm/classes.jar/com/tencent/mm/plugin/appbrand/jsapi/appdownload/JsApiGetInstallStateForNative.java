@@ -6,9 +6,9 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ac.b;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.v;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -19,7 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class JsApiGetInstallStateForNative
-  extends d<s>
+  extends c<v>
 {
   public static final int CTRL_INDEX = 656;
   public static final String NAME = "getInstallStateForNative";
@@ -28,15 +28,15 @@ public final class JsApiGetInstallStateForNative
     extends MainProcessTask
   {
     public static final Parcelable.Creator<GetInstallStateTask> CREATOR;
-    private int csv;
-    private s kAr;
-    private p lAi;
-    private boolean lAq;
-    private String lDg;
-    private JSONArray lDh;
-    private boolean lDi;
+    private int cqA;
     private String mPackageName;
     private String mVersionName;
+    private v ntA;
+    private boolean ovH;
+    private o ovz;
+    private String oyI;
+    private JSONArray oyJ;
+    private boolean oyK;
     
     static
     {
@@ -52,26 +52,25 @@ public final class JsApiGetInstallStateForNative
       AppMethodBeat.o(45795);
     }
     
-    public GetInstallStateTask(p paramp, s params, int paramInt, JSONObject paramJSONObject)
+    public GetInstallStateTask(o paramo, v paramv, int paramInt, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(45794);
-      bDJ();
-      this.lAi = paramp;
-      this.kAr = params;
-      this.csv = paramInt;
+      this.ovz = paramo;
+      this.ntA = paramv;
+      this.cqA = paramInt;
       this.mPackageName = paramJSONObject.optString("packageName");
-      paramp = paramJSONObject.optJSONArray("packageNameArray");
-      if (paramp != null) {
-        this.lDg = paramp.toString();
+      paramo = paramJSONObject.optJSONArray("packageNameArray");
+      if (paramo != null) {
+        this.oyI = paramo.toString();
       }
-      this.lAq = true;
+      this.ovH = true;
       AppMethodBeat.o(45794);
     }
     
-    public final void bjj()
+    public final void RW()
     {
       AppMethodBeat.i(45796);
-      if (!Util.isNullOrNil(this.lDg)) {}
+      if (!Util.isNullOrNil(this.oyI)) {}
       for (;;)
       {
         int i;
@@ -79,8 +78,8 @@ public final class JsApiGetInstallStateForNative
         boolean bool;
         try
         {
-          localObject1 = new JSONArray(this.lDg);
-          this.lDh = new JSONArray();
+          localObject1 = new JSONArray(this.oyI);
+          this.oyJ = new JSONArray();
           i = 0;
           if (i >= ((JSONArray)localObject1).length()) {
             break label266;
@@ -110,7 +109,7 @@ public final class JsApiGetInstallStateForNative
                 ((JSONObject)localObject2).put("versionCode", j);
                 ((JSONObject)localObject2).put("versionName", str1);
               }
-              this.lDh.put(localObject2);
+              this.oyJ.put(localObject2);
             }
             catch (JSONException localJSONException1)
             {
@@ -126,17 +125,17 @@ public final class JsApiGetInstallStateForNative
         {
           String str1;
           Log.e("MicroMsg.JsApiGetInstallStateForNative", localJSONException2.getMessage());
-          this.lAq = true;
+          this.ovH = true;
         }
         str1 = ((PackageInfo)localObject2).versionName;
         continue;
         for (;;)
         {
-          bDU();
+          bPt();
           AppMethodBeat.o(45796);
           return;
           label266:
-          this.lAq = false;
+          this.ovH = false;
         }
         Object localObject1 = b.getPackageInfo(MMApplicationContext.getContext(), this.mPackageName);
         label293:
@@ -154,9 +153,9 @@ public final class JsApiGetInstallStateForNative
             break label392;
           }
         }
-        for (this.lDi = false;; this.lDi = true)
+        for (this.oyK = false;; this.oyK = true)
         {
-          this.lAq = false;
+          this.ovH = false;
           break;
           i = ((PackageInfo)localObject1).versionCode;
           break label293;
@@ -177,34 +176,34 @@ public final class JsApiGetInstallStateForNative
       }
     }
     
-    public final void bjk()
+    public final void bsK()
     {
       boolean bool = true;
       AppMethodBeat.i(45797);
-      if (this.kAr == null) {}
+      if (this.ntA == null) {}
       for (;;)
       {
         Log.d("MicroMsg.JsApiGetInstallStateForNative", "callback, service is null: %b", new Object[] { Boolean.valueOf(bool) });
-        bDK();
-        if (!this.lAq) {
+        bPk();
+        if (!this.ovH) {
           break;
         }
-        this.kAr.i(this.csv, this.lAi.h("fail", null));
+        this.ntA.j(this.cqA, this.ovz.h("fail", null));
         AppMethodBeat.o(45797);
         return;
         bool = false;
       }
       HashMap localHashMap = new HashMap();
-      if (this.lDh != null) {
-        localHashMap.put("result", this.lDh);
+      if (this.oyJ != null) {
+        localHashMap.put("result", this.oyJ);
       }
       for (;;)
       {
-        this.kAr.i(this.csv, this.lAi.n("ok", localHashMap));
+        this.ntA.j(this.cqA, this.ovz.m("ok", localHashMap));
         AppMethodBeat.o(45797);
         return;
         localHashMap.put("versionName", this.mVersionName);
-        localHashMap.put("isInstalled", Boolean.valueOf(this.lDi));
+        localHashMap.put("isInstalled", Boolean.valueOf(this.oyK));
       }
     }
     
@@ -213,11 +212,11 @@ public final class JsApiGetInstallStateForNative
       boolean bool2 = true;
       AppMethodBeat.i(45798);
       this.mPackageName = paramParcel.readString();
-      this.lDg = paramParcel.readString();
+      this.oyI = paramParcel.readString();
       if (paramParcel.readInt() == 1)
       {
         bool1 = true;
-        this.lAq = bool1;
+        this.ovH = bool1;
         if (paramParcel.readInt() != 1) {
           break label93;
         }
@@ -225,7 +224,7 @@ public final class JsApiGetInstallStateForNative
       label93:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.lDi = bool1;
+        this.oyK = bool1;
         this.mVersionName = paramParcel.readString();
         paramParcel = paramParcel.readString();
         if (paramParcel == null) {
@@ -233,7 +232,7 @@ public final class JsApiGetInstallStateForNative
         }
         try
         {
-          this.lDh = new JSONArray(paramParcel);
+          this.oyJ = new JSONArray(paramParcel);
           AppMethodBeat.o(45798);
           return;
         }
@@ -253,25 +252,25 @@ public final class JsApiGetInstallStateForNative
       int i = 1;
       AppMethodBeat.i(45799);
       paramParcel.writeString(this.mPackageName);
-      paramParcel.writeString(this.lDg);
-      if (this.lAq)
+      paramParcel.writeString(this.oyI);
+      if (this.ovH)
       {
         paramInt = 1;
         paramParcel.writeInt(paramInt);
-        if (!this.lDi) {
+        if (!this.oyK) {
           break label94;
         }
         paramInt = i;
         label47:
         paramParcel.writeInt(paramInt);
         paramParcel.writeString(this.mVersionName);
-        if (this.lDh == null) {
+        if (this.oyJ == null) {
           break label99;
         }
       }
       label94:
       label99:
-      for (String str = this.lDh.toString();; str = null)
+      for (String str = this.oyJ.toString();; str = null)
       {
         paramParcel.writeString(str);
         AppMethodBeat.o(45799);

@@ -2,6 +2,7 @@ package com.tencent.mm.view;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Rect;
 import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,10 +26,15 @@ import com.tencent.mm.api.e;
 import com.tencent.mm.api.h;
 import com.tencent.mm.api.j;
 import com.tencent.mm.api.r;
+import com.tencent.mm.bv.a.a;
+import com.tencent.mm.bv.a.c;
+import com.tencent.mm.bv.a.e;
+import com.tencent.mm.bv.a.f;
+import com.tencent.mm.compatible.util.i;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.ax;
 import com.tencent.mm.view.footer.SelectColorBar;
 import com.tencent.mm.view.footer.SelectColorBar.a;
 
@@ -36,35 +42,35 @@ public abstract class a
   extends e
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private boolean PpR = true;
-  private View RiA;
-  private PhotoEditText RiB;
-  private Switch RiC;
-  protected h[] Riw;
-  private View Rix;
-  private com.tencent.mm.view.footer.a Riy;
-  private View Riz;
-  private com.tencent.mm.view.b.a dhg;
-  private ab.a diP;
-  public boolean diT = true;
-  private com.tencent.mm.bt.b drS;
-  private View nZg;
-  private Button sTL;
-  private Button zDY;
-  private ChatFooterPanel zdv;
+  private Button FiX;
+  private boolean WKm = true;
+  protected h[] YKd;
+  private View YKe;
+  private com.tencent.mm.view.footer.a YKf;
+  private View YKg;
+  private View YKh;
+  private PhotoEditText YKi;
+  private Switch YKj;
+  private com.tencent.mm.view.b.a eYN;
+  public boolean faA = true;
+  private ab.a faw;
+  private com.tencent.mm.ca.b fkE;
+  private View raR;
+  private ChatFooterPanel rzI;
+  private Button wzH;
   
   public a(Context paramContext)
   {
     super(paramContext);
   }
   
-  public final void DC(boolean paramBoolean)
+  public final void Ic(boolean paramBoolean)
   {
     Log.i("MicroMsg.BaseDrawingView", "[hideSimleyPanel] isHide:%s", new Object[] { Boolean.valueOf(paramBoolean) });
-    if ((this.zdv.getVisibility() == 0) && (paramBoolean))
+    if ((this.rzI.getVisibility() == 0) && (paramBoolean))
     {
-      this.zdv.setVisibility(8);
-      localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772130);
+      this.rzI.setVisibility(8);
+      localAnimation = AnimationUtils.loadAnimation(getContext(), a.a.push_down_out);
       localAnimation.setAnimationListener(new Animation.AnimationListener()
       {
         public final void onAnimationEnd(Animation paramAnonymousAnimation)
@@ -83,12 +89,12 @@ public abstract class a
           AppMethodBeat.o(9350);
         }
       });
-      this.zdv.startAnimation(localAnimation);
+      this.rzI.startAnimation(localAnimation);
     }
-    while ((this.zdv.getVisibility() != 8) || (paramBoolean)) {
+    while ((this.rzI.getVisibility() != 8) || (paramBoolean)) {
       return;
     }
-    Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772132);
+    Animation localAnimation = AnimationUtils.loadAnimation(getContext(), a.a.push_up_in);
     localAnimation.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
@@ -102,31 +108,31 @@ public abstract class a
       
       public final void onAnimationStart(Animation paramAnonymousAnimation) {}
     });
-    this.zdv.startAnimation(localAnimation);
+    this.rzI.startAnimation(localAnimation);
   }
   
   public View getActionBar()
   {
-    if (this.nZg == null)
+    if (this.raR == null)
     {
-      this.nZg = LayoutInflater.from(getContext()).inflate(2131495927, null);
-      if (!ao.aQ(getContext())) {
-        break label122;
+      this.raR = LayoutInflater.from(getContext()).inflate(a.f.photoedit_actionbar_view, null);
+      if (!ar.aN(getContext())) {
+        break label125;
       }
     }
-    label122:
-    for (int i = ao.aP(getContext()) + 0;; i = 0)
+    label125:
+    for (int i = ar.aM(getContext()) + 0;; i = 0)
     {
-      this.nZg.setPadding(0, i, 0, 0);
-      this.zDY = ((Button)this.nZg.findViewById(2131299843));
-      this.zDY.setOnClickListener(new View.OnClickListener()
+      this.raR.setPadding(0, i, 0, 0);
+      this.FiX = ((Button)this.raR.findViewById(a.e.edit_text_ok));
+      this.FiX.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(9348);
           Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/BaseDrawingView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/view/BaseDrawingView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
           int i;
           if (a.this.getTextEditView().getVisibility() == 0)
           {
@@ -150,17 +156,17 @@ public abstract class a
           }
         }
       });
-      this.sTL = ((Button)this.nZg.findViewById(2131299840));
-      this.sTL.setOnClickListener(new View.OnClickListener()
+      this.wzH = ((Button)this.raR.findViewById(a.e.edit_text_cancel));
+      this.wzH.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(9354);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/BaseDrawingView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/view/BaseDrawingView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           if (a.this.getTextEditView().getVisibility() == 0) {
-            a.this.getPresenter().gtg();
+            a.this.getPresenter().hot();
           }
           for (;;)
           {
@@ -171,40 +177,40 @@ public abstract class a
           }
         }
       });
-      return this.nZg;
+      return this.raR;
     }
   }
   
   public <T extends com.tencent.mm.view.b.a> T getBaseBoardView()
   {
-    if (this.dhg == null) {
-      this.dhg = hfv();
+    if (this.eYN == null) {
+      this.eYN = igR();
     }
-    return this.dhg;
+    return this.eYN;
   }
   
   public <T extends com.tencent.mm.view.footer.a> T getBaseFooterView()
   {
-    if (this.Riy == null) {
-      this.Riy = hfw();
+    if (this.YKf == null) {
+      this.YKf = igS();
     }
-    return this.Riy;
+    return this.YKf;
   }
   
   public ChatFooterPanel getChatFooterPanel()
   {
     boolean bool = false;
-    if (this.zdv == null) {}
+    if (this.rzI == null) {}
     try
     {
-      this.zdv = ad.bC(getContext());
-      this.zdv.setEntranceScene(ChatFooterPanel.KbD);
-      this.zdv.setShowSmiley(false);
-      this.zdv.setShowClose(true);
-      this.zdv.setVisibility(8);
-      this.zdv.onResume();
-      ac localac = ad.VK();
-      localac.djc = new ac.a()
+      this.rzI = ad.bB(getContext());
+      this.rzI.setEntranceScene(ChatFooterPanel.Rci);
+      this.rzI.setShowSmiley(false);
+      this.rzI.setShowClose(true);
+      this.rzI.setVisibility(8);
+      this.rzI.onResume();
+      ac localac = ad.aaf();
+      localac.faJ = new ac.a()
       {
         public final void a(r paramAnonymousr)
         {
@@ -219,13 +225,13 @@ public abstract class a
         {
           AppMethodBeat.i(9358);
           a.this.setActionBarVisible(true);
-          a.this.DC(true);
+          a.this.Ic(true);
           a.this.setFooterVisible(true);
           AppMethodBeat.o(9358);
         }
       };
-      this.zdv.setCallback(localac);
-      return this.zdv;
+      this.rzI.setCallback(localac);
+      return this.rzI;
     }
     catch (Exception localException)
     {
@@ -240,56 +246,56 @@ public abstract class a
   
   public ab.a getConfig()
   {
-    return this.diP;
+    return this.faw;
   }
   
   public abstract h[] getFeatures();
   
   public View getFooterBg()
   {
-    if (this.Rix == null)
+    if (this.YKe == null)
     {
-      this.Rix = LayoutInflater.from(getContext()).inflate(2131494714, null);
-      this.Rix.setVisibility(8);
+      this.YKe = LayoutInflater.from(getContext()).inflate(a.f.footer_bg_view, null);
+      this.YKe.setVisibility(8);
     }
-    return this.Rix;
+    return this.YKe;
   }
   
-  public com.tencent.mm.bt.b getPresenter()
+  public com.tencent.mm.ca.b getPresenter()
   {
-    if (this.drS == null)
+    if (this.fkE == null)
     {
-      this.drS = new com.tencent.mm.bt.a();
-      this.drS.a(this);
+      this.fkE = new com.tencent.mm.ca.a();
+      this.fkE.a(this);
     }
-    return this.drS;
+    return this.fkE;
   }
   
   public View getRubbishView()
   {
-    if (this.Riz == null) {
-      this.RiA = LayoutInflater.from(getContext()).inflate(2131496128, this, false);
+    if (this.YKg == null) {
+      this.YKh = LayoutInflater.from(getContext()).inflate(a.f.rubbish_view, this, false);
     }
-    return this.RiA;
+    return this.YKh;
   }
   
   public View getTextEditView()
   {
-    if (this.Riz == null)
+    if (this.YKg == null)
     {
-      this.Riz = LayoutInflater.from(getContext()).inflate(2131493876, null);
-      this.RiB = ((PhotoEditText)this.Riz.findViewById(2131308994));
-      int k = (int)this.RiB.getResources().getDimension(2131166208);
-      int j = (int)this.RiB.getResources().getDimension(2131166088);
+      this.YKg = LayoutInflater.from(getContext()).inflate(a.f.edit_text_view, null);
+      this.YKi = ((PhotoEditText)this.YKg.findViewById(a.e.text_edit));
+      int k = (int)this.YKi.getResources().getDimension(a.c.edit_text_padding);
+      int j = (int)this.YKi.getResources().getDimension(a.c.color_select_layout_height);
       int i = j;
-      if (ao.aQ(getContext())) {
-        i = j + ao.aP(getContext());
+      if (ar.aN(getContext())) {
+        i = j + ar.aM(getContext());
       }
-      this.RiB.setPadding(k, i, k, 0);
-      final SelectColorBar localSelectColorBar = (SelectColorBar)this.Riz.findViewById(2131307511);
-      this.RiC = ((Switch)this.Riz.findViewById(2131297362));
-      this.RiC.setTag(Integer.valueOf(-707825));
-      this.RiC.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+      this.YKi.setPadding(k, i, k, 0);
+      final SelectColorBar localSelectColorBar = (SelectColorBar)this.YKg.findViewById(a.e.select_color_bar);
+      this.YKj = ((Switch)this.YKg.findViewById(a.e.bg_switch));
+      this.YKj.setTag(Integer.valueOf(-707825));
+      this.YKj.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
       {
         public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
         {
@@ -306,11 +312,11 @@ public abstract class a
           AppMethodBeat.o(9355);
         }
       });
-      this.RiB.setTextColor(-1);
+      this.YKi.setTextColor(-1);
       localSelectColorBar.setSelectColor(-1);
       localSelectColorBar.setSelectColorListener(new SelectColorBar.a()
       {
-        public final void acC(int paramAnonymousInt)
+        public final void akj(int paramAnonymousInt)
         {
           AppMethodBeat.i(9356);
           if (a.c(a.this).isChecked())
@@ -325,16 +331,16 @@ public abstract class a
         }
       });
     }
-    return this.Riz;
+    return this.YKg;
   }
   
-  protected abstract com.tencent.mm.view.b.a hfv();
+  protected abstract com.tencent.mm.view.b.a igR();
   
-  protected abstract com.tencent.mm.view.footer.a hfw();
+  protected abstract com.tencent.mm.view.footer.a igS();
   
-  public final boolean hfx()
+  public final boolean igT()
   {
-    return (this.zdv.getVisibility() == 0) || (getTextEditView().getVisibility() == 0);
+    return (this.rzI.getVisibility() == 0) || (getTextEditView().getVisibility() == 0);
   }
   
   protected void onAttachedToWindow()
@@ -356,7 +362,40 @@ public abstract class a
     if (getTextEditView().getVisibility() == 0)
     {
       getViewTreeObserver().removeOnGlobalLayoutListener(this);
-      this.RiB.postDelayed(new a.5(this), 160L);
+      this.YKi.postDelayed(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(9353);
+          Rect localRect = new Rect();
+          a.this.getWindowVisibleDisplayFrame(localRect);
+          int i;
+          if (a.this.getBottom() - localRect.bottom >= 300)
+          {
+            i = 1;
+            a.this.getResources().getDisplayMetrics();
+            if (i != 0) {
+              break label145;
+            }
+            i = a.this.getBottom() - (int)a.this.getResources().getDimension(a.c.color_select_layout_height);
+          }
+          for (;;)
+          {
+            if (a.b(a.this).getHeight() != i) {
+              a.b(a.this).setHeight(i);
+            }
+            a.this.getViewTreeObserver().removeOnGlobalLayoutListener(a.this);
+            a.this.getViewTreeObserver().addOnGlobalLayoutListener(a.this);
+            AppMethodBeat.o(9353);
+            return;
+            i = 0;
+            break;
+            label145:
+            i = a.this.getBottom() - i.avM() - (int)a.this.getResources().getDimension(a.c.color_select_layout_height);
+            Log.e("MicroMsg.BaseDrawingView", "[onKeyboardChanged] height:%s", new Object[] { Integer.valueOf(i) });
+          }
+        }
+      }, 160L);
     }
   }
   
@@ -367,15 +406,15 @@ public abstract class a
   
   public void setActionBarVisible(boolean paramBoolean)
   {
-    if (this.diT == paramBoolean)
+    if (this.faA == paramBoolean)
     {
       Log.w("MicroMsg.BaseDrawingView", "[setActionBarVisible] isShowActionBar == isShow");
       return;
     }
-    this.diT = paramBoolean;
+    this.faA = paramBoolean;
     if (paramBoolean)
     {
-      localAnimation = AnimationUtils.loadAnimation(getContext(), 2130771981);
+      localAnimation = AnimationUtils.loadAnimation(getContext(), a.a.alpha_in);
       localAnimation.setAnimationListener(new Animation.AnimationListener()
       {
         public final void onAnimationEnd(Animation paramAnonymousAnimation)
@@ -393,7 +432,7 @@ public abstract class a
       getActionBar().startAnimation(localAnimation);
       return;
     }
-    Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130771982);
+    Animation localAnimation = AnimationUtils.loadAnimation(getContext(), a.a.alpha_out);
     localAnimation.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
@@ -420,7 +459,7 @@ public abstract class a
   {
     if (paramBoolean)
     {
-      localAnimation = AnimationUtils.loadAnimation(getContext(), 2130771981);
+      localAnimation = AnimationUtils.loadAnimation(getContext(), a.a.alpha_in);
       localAnimation.setAnimationListener(new Animation.AnimationListener()
       {
         public final void onAnimationEnd(Animation paramAnonymousAnimation)
@@ -438,7 +477,7 @@ public abstract class a
       getActionBar().startAnimation(localAnimation);
       return;
     }
-    Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130771982);
+    Animation localAnimation = AnimationUtils.loadAnimation(getContext(), a.a.alpha_out);
     localAnimation.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
@@ -458,22 +497,22 @@ public abstract class a
   
   public void setFooterVisible(boolean paramBoolean)
   {
-    if ((this.PpR != paramBoolean) && (getConfig().diT))
+    if ((this.WKm != paramBoolean) && (getConfig().faA))
     {
       getBaseFooterView().setFooterVisible(paramBoolean);
       setFooterBgVisible(paramBoolean);
-      this.PpR = paramBoolean;
+      this.WKm = paramBoolean;
     }
   }
   
   public void setup(ab.a parama)
   {
-    this.diP = parama;
+    this.faw = parama;
     getPresenter().a(getConfig());
     removeAllViews();
     parama = new FrameLayout.LayoutParams(-1, -1);
     addView(getBaseBoardView(), parama);
-    parama = new FrameLayout.LayoutParams(-1, (int)getResources().getDimension(2131166334));
+    parama = new FrameLayout.LayoutParams(-1, (int)getResources().getDimension(a.c.feature_select_all_layout_height));
     parama.gravity = 80;
     addView(getFooterBg(), parama);
     addView(getBaseFooterView(), parama);
@@ -483,16 +522,16 @@ public abstract class a
     getViewTreeObserver().addOnGlobalLayoutListener(this);
     parama = (FrameLayout.LayoutParams)getRubbishView().getLayoutParams();
     parama.gravity = 81;
-    parama.bottomMargin += au.aD(getContext());
-    parama.bottomMargin += com.tencent.mm.cb.a.fromDPToPix(getContext(), 32);
+    parama.bottomMargin += ax.aB(getContext());
+    parama.bottomMargin += com.tencent.mm.ci.a.fromDPToPix(getContext(), 32);
     getRubbishView().setVisibility(8);
     addView(getRubbishView(), parama);
-    parama = new FrameLayout.LayoutParams(-1, ad.bD(getContext()));
+    parama = new FrameLayout.LayoutParams(-1, ad.bC(getContext()));
     parama.gravity = 80;
-    parama.bottomMargin += au.aD(getContext());
+    parama.bottomMargin += ax.aB(getContext());
     addView(getChatFooterPanel(), parama);
-    new FrameLayout.LayoutParams(-1, (int)getResources().getDimension(2131165255)).gravity = 48;
-    if (this.diP.diT)
+    new FrameLayout.LayoutParams(-1, (int)getResources().getDimension(a.c.DefaultActionbarHeightLand)).gravity = 48;
+    if (this.faw.faA)
     {
       addView(getActionBar());
       return;
@@ -502,7 +541,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.view.a
  * JD-Core Version:    0.7.0.1
  */

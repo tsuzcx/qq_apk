@@ -1,291 +1,229 @@
 package com.tencent.mm.ui.o;
 
-import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.jg.JgClassChecked;
+import android.view.MotionEvent;
+import android.view.ViewConfiguration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.i;
-import com.tencent.xweb.WebView;
-import com.tencent.xweb.ac;
-import com.tencent.xweb.z;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLDecoder;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import java.util.HashSet;
+import java.util.Iterator;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@SuppressLint({"SetJavaScriptEnabled"})
-@JgClassChecked(author=20, fComment="checked", lastDate="20140429", reviewer=20, vComment={com.jg.EType.JSEXECUTECHECK})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/recyclerview/GalleryScrollHelper;", "", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "downX", "", "downY", "isLongPressed", "", "isTouchEnd", "isTouchMoved", "longClickEnable", "getLongClickEnable", "()Z", "setLongClickEnable", "(Z)V", "longPressRunnable", "Ljava/lang/Runnable;", "longPressedTimeout", "", "onClick", "Lkotlin/Function0;", "", "getOnClick", "()Lkotlin/jvm/functions/Function0;", "setOnClick", "(Lkotlin/jvm/functions/Function0;)V", "onLongClick", "getOnLongClick", "setOnLongClick", "scrollConsumers", "Ljava/util/HashSet;", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollConsumer;", "Lkotlin/collections/HashSet;", "scrollType", "touchSlop", "addScrollConsumer", "consumer", "cancelLongPress", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "getScrollType", "removeScrollConsumer", "trackTouchEvent", "Companion", "libmmui_release"})
 public final class b
-  extends i
 {
-  static final float[] QjT;
-  static final float[] QjU;
-  static final FrameLayout.LayoutParams QjV;
-  private WebView IJw;
-  private a QAU;
-  private ProgressDialog QjX;
-  private ImageView QjY;
-  private FrameLayout QjZ;
-  private String mUrl;
+  private static String TAG;
+  public static final a XLG;
+  private boolean INK;
+  private boolean XLA;
+  private boolean XLB;
+  public int XLC;
+  kotlin.g.a.a<Boolean> XLD;
+  public boolean XLE;
+  private final HashSet<a> XLF;
+  private final int XLz;
+  private final int bvH;
+  private float dit;
+  private float diu;
+  public final Runnable jLe;
   
   static
   {
-    AppMethodBeat.i(152881);
-    QjT = new float[] { 20.0F, 60.0F };
-    QjU = new float[] { 40.0F, 60.0F };
-    QjV = new FrameLayout.LayoutParams(-1, -1);
-    AppMethodBeat.o(152881);
+    AppMethodBeat.i(140944);
+    XLG = new a((byte)0);
+    TAG = "MicroMsg.GalleryScrollHelper";
+    AppMethodBeat.o(140944);
   }
   
-  public b(Context paramContext, String paramString, a parama)
+  public b(Context paramContext)
   {
-    super(paramContext, 16973840);
-    this.mUrl = paramString;
-    this.QAU = parama;
+    AppMethodBeat.i(140943);
+    this.XLE = true;
+    this.jLe = ((Runnable)new b(this));
+    this.XLF = new HashSet();
+    paramContext = ViewConfiguration.get(paramContext);
+    this.XLz = (ViewConfiguration.getLongPressTimeout() + 100);
+    p.j(paramContext, "config");
+    this.bvH = paramContext.getScaledTouchSlop();
+    AppMethodBeat.o(140943);
   }
   
-  protected final void onCreate(Bundle paramBundle)
+  public final void a(a parama)
   {
-    AppMethodBeat.i(152879);
-    super.onCreate(paramBundle);
-    this.QjX = new ProgressDialog(getContext());
-    this.QjX.requestWindowFeature(1);
-    this.QjX.setMessage(getContext().getString(2131766886));
-    requestWindowFeature(1);
-    this.QjZ = new FrameLayout(getContext());
-    this.QjY = new ImageView(getContext());
-    this.QjY.setOnClickListener(new View.OnClickListener()
+    AppMethodBeat.i(140940);
+    p.k(parama, "consumer");
+    this.XLF.add(parama);
+    AppMethodBeat.o(140940);
+  }
+  
+  public final void at(MotionEvent paramMotionEvent)
+  {
+    int i = 1;
+    boolean bool = false;
+    AppMethodBeat.i(140941);
+    p.k(paramMotionEvent, "event");
+    switch (paramMotionEvent.getActionMasked())
     {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(152871);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/twitter/TwitterDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        b.a(b.this).onCancel();
-        b.this.dismiss();
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/twitter/TwitterDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(152871);
-      }
-    });
-    paramBundle = getContext().getResources().getDrawable(2131231846);
-    this.QjY.setImageDrawable(paramBundle);
-    this.QjY.setVisibility(4);
-    int i = this.QjY.getDrawable().getIntrinsicWidth() / 2;
-    paramBundle = new LinearLayout(getContext());
-    this.IJw = new WebView(getContext());
-    this.IJw.setVerticalScrollBarEnabled(false);
-    this.IJw.setHorizontalScrollBarEnabled(false);
-    this.IJw.setWebViewClient(new b((byte)0));
-    this.IJw.getSettings().setJavaScriptEnabled(true);
-    this.IJw.loadUrl(this.mUrl);
-    this.IJw.setLayoutParams(QjV);
-    this.IJw.setVisibility(4);
-    paramBundle.setPadding(i, i, i, i);
-    paramBundle.addView(this.IJw);
-    this.QjZ.addView(paramBundle);
-    this.QjZ.addView(this.QjY, new ViewGroup.LayoutParams(-2, -2));
-    addContentView(this.QjZ, new ViewGroup.LayoutParams(-1, -1));
-    AppMethodBeat.o(152879);
-  }
-  
-  public final boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
-  {
-    AppMethodBeat.i(152880);
-    if (paramInt == 4)
-    {
-      this.QAU.onCancel();
-      dismiss();
-      AppMethodBeat.o(152880);
-      return true;
     }
-    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(152880);
-    return bool;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void E(Bundle paramBundle);
-    
-    public abstract void gYy();
-    
-    public abstract void onCancel();
-  }
-  
-  @JgClassChecked(author=20, fComment="checked", lastDate="20140429", reviewer=20, vComment={com.jg.EType.JSEXECUTECHECK})
-  final class b
-    extends ac
-  {
-    boolean Qkb = true;
-    
-    private b() {}
-    
-    private static Bundle bnG(String paramString)
+    for (;;)
     {
-      AppMethodBeat.i(152877);
-      Bundle localBundle = new Bundle();
-      if (paramString != null)
+      AppMethodBeat.o(140941);
+      return;
+      this.dit = paramMotionEvent.getX();
+      this.diu = paramMotionEvent.getY();
+      this.XLA = false;
+      this.INK = false;
+      this.XLB = false;
+      this.XLC = 0;
+      MMHandlerThread.postToMainThreadDelayed(this.jLe, this.XLz);
+      Log.d(TAG, "downX:" + this.dit + "  downY:" + this.diu);
+      AppMethodBeat.o(140941);
+      return;
+      float f1 = paramMotionEvent.getX();
+      float f2 = paramMotionEvent.getY();
+      float f3 = f1 - this.dit;
+      float f4 = f2 - this.diu;
+      if (!this.INK)
       {
-        paramString = paramString.split("&");
-        int j = paramString.length;
-        int i = 0;
-        while (i < j)
-        {
-          String[] arrayOfString = paramString[i].split("=");
-          localBundle.putString(URLDecoder.decode(arrayOfString[0]), URLDecoder.decode(arrayOfString[1]));
-          i += 1;
+        if ((Math.abs(f1 - this.dit) > this.bvH) || (Math.abs(f2 - this.diu) > this.bvH)) {
+          bool = true;
         }
+        this.INK = bool;
       }
-      AppMethodBeat.o(152877);
-      return localBundle;
-    }
-    
-    private static Bundle bnH(String paramString)
-    {
-      AppMethodBeat.i(152878);
-      paramString = paramString.replace("wechatapp", "http");
-      try
+      if (this.INK)
       {
-        paramString = new URL(paramString);
-        Bundle localBundle = bnG(paramString.getQuery());
-        localBundle.putAll(bnG(paramString.getRef()));
-        AppMethodBeat.o(152878);
-        return localBundle;
-      }
-      catch (MalformedURLException paramString)
-      {
-        paramString = new Bundle();
-        AppMethodBeat.o(152878);
-      }
-      return paramString;
-    }
-    
-    public final void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(152874);
-      super.a(paramWebView, paramInt, paramString1, paramString2);
-      this.Qkb = false;
-      paramWebView = b.a(b.this);
-      new com.tencent.mm.ui.h.a.b(paramString1, paramInt, paramString2);
-      paramWebView.gYy();
-      try
-      {
-        b.this.dismiss();
-        b.b(b.this).dismiss();
-        AppMethodBeat.o(152874);
-        return;
-      }
-      catch (Exception paramWebView)
-      {
-        Log.printErrStackTrace("MicroMsg.TwitterDialog", paramWebView, "", new Object[0]);
-        AppMethodBeat.o(152874);
-      }
-    }
-    
-    public final boolean a(WebView paramWebView, String paramString)
-    {
-      AppMethodBeat.i(152873);
-      Log.d("Twitter-WebView", "Redirect URL: ".concat(String.valueOf(paramString)));
-      if (paramString.startsWith("wechatapp://sign-in-twitter.wechatapp.com/"))
-      {
-        paramWebView = bnH(paramString);
-        if (paramWebView.getString("denied") == null) {
-          b.a(b.this).E(paramWebView);
-        }
-        for (;;)
+        MMHandlerThread.removeRunnable(this.jLe);
+        if (this.XLC == 0)
         {
-          b.this.dismiss();
-          AppMethodBeat.o(152873);
-          return true;
-          b.a(b.this).onCancel();
-        }
-      }
-      paramWebView = b.this.getContext();
-      paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
-      paramString = new com.tencent.mm.hellhoundlib.b.a().bl(paramString);
-      com.tencent.mm.hellhoundlib.a.a.a(paramWebView, paramString.axQ(), "com/tencent/mm/ui/twitter/TwitterDialog$TwitterWebViewClient", "shouldOverrideUrlLoading", "(Lcom/tencent/xweb/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramWebView.startActivity((Intent)paramString.pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramWebView, "com/tencent/mm/ui/twitter/TwitterDialog$TwitterWebViewClient", "shouldOverrideUrlLoading", "(Lcom/tencent/xweb/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(152873);
-      return true;
-    }
-    
-    public final void b(WebView paramWebView, String paramString)
-    {
-      AppMethodBeat.i(152876);
-      super.b(paramWebView, paramString);
-      this.Qkb = false;
-      try
-      {
-        b.b(b.this).dismiss();
-        b.c(b.this).setBackgroundColor(0);
-        b.d(b.this).setVisibility(0);
-        b.e(b.this).setVisibility(0);
-        AppMethodBeat.o(152876);
-        return;
-      }
-      catch (Exception paramWebView)
-      {
-        for (;;)
-        {
-          Log.printErrStackTrace("MicroMsg.TwitterDialog", paramWebView, "", new Object[0]);
-        }
-      }
-    }
-    
-    public final void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
-    {
-      AppMethodBeat.i(152875);
-      Log.d("Twitter-WebView", "Webview loading URL: ".concat(String.valueOf(paramString)));
-      super.b(paramWebView, paramString, paramBitmap);
-      try
-      {
-        b.b(b.this).show();
-        b.b(b.this).setOnDismissListener(new DialogInterface.OnDismissListener()
-        {
-          public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
-          {
-            AppMethodBeat.i(152872);
-            if ((b.b.this.Qkb) && (b.this != null))
-            {
-              b.a(b.this).onCancel();
-              b.this.dismiss();
-            }
-            AppMethodBeat.o(152872);
+          if (Math.abs(f4) <= Math.abs(f3)) {
+            break label332;
           }
-        });
-        AppMethodBeat.o(152875);
-        return;
+          if (f4 >= 0.0F) {
+            break label326;
+          }
+        }
       }
-      catch (Exception paramWebView)
+      for (;;)
       {
-        Log.printErrStackTrace("MicroMsg.TwitterDialog", paramWebView, "", new Object[0]);
-        AppMethodBeat.o(152875);
+        this.XLC = i;
+        Log.d(TAG, "scrollType " + this.XLC + " move: " + f3 + ", " + f4);
+        AppMethodBeat.o(140941);
+        return;
+        label326:
+        i = 2;
+        continue;
+        label332:
+        if (f3 < 0.0F) {
+          i = 4;
+        } else {
+          i = 8;
+        }
       }
+      MMHandlerThread.removeRunnable(this.jLe);
+      this.XLC = 0;
+      this.XLB = true;
+    }
+  }
+  
+  public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    boolean bool1 = false;
+    AppMethodBeat.i(140942);
+    p.k(paramMotionEvent, "event");
+    Log.d(TAG, "dispatchTouchEvent " + paramMotionEvent.getAction() + ", " + paramMotionEvent.getX() + ' ' + paramMotionEvent.getY());
+    int i = this.XLC;
+    int j;
+    boolean bool2;
+    switch (paramMotionEvent.getActionMasked())
+    {
+    default: 
+      j = 1;
+      if (this.XLA) {
+        bool1 = true;
+      }
+      bool2 = bool1;
+      if (!bool1)
+      {
+        bool2 = bool1;
+        if (j != 0)
+        {
+          Iterator localIterator = this.XLF.iterator();
+          for (;;)
+          {
+            bool2 = bool1;
+            if (!localIterator.hasNext()) {
+              break;
+            }
+            a locala = (a)localIterator.next();
+            bool2 = bool1;
+            if (bool1) {
+              break;
+            }
+            if ((this.INK) && ((locala.ggJ() & i) == 0)) {
+              break label273;
+            }
+            bool1 = locala.a(paramMotionEvent, this.INK, i) | bool1;
+          }
+        }
+      }
+      break;
+    case 2: 
+      label206:
+      if (!this.XLB) {}
+      break;
+    }
+    for (i = 0;; i = 1)
+    {
+      int k = this.XLC;
+      Log.d(TAG, "scrollType " + this.XLC);
+      j = i;
+      i = k;
+      break;
+      i = 15;
+      j = 1;
+      break;
+      AppMethodBeat.o(140942);
+      return bool2;
+      label273:
+      break label206;
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/recyclerview/GalleryScrollHelper$Companion;", "", "()V", "ScrollAll", "", "ScrollDown", "ScrollLeft", "ScrollNone", "ScrollRight", "ScrollUp", "TAG", "", "scrollHorizontal", "", "type", "scrollVertical", "libmmui_release"})
+  public static final class a {}
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  static final class b
+    implements Runnable
+  {
+    b(b paramb) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(140939);
+      Log.d(b.access$getTAG$cp(), "MSG_STORY_LONG_PRESS_CHECK");
+      if (this.XLH.XLE)
+      {
+        kotlin.g.a.a locala = this.XLH.XLD;
+        if (locala == null) {
+          break label64;
+        }
+        if (((Boolean)locala.invoke()).booleanValue() == true) {
+          b.a(this.XLH);
+        }
+      }
+      AppMethodBeat.o(140939);
+      return;
+      label64:
+      AppMethodBeat.o(140939);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.o.b
  * JD-Core Version:    0.7.0.1
  */

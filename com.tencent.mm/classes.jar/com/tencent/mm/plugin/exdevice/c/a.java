@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.j.e;
 import com.tencent.mm.plugin.exdevice.j.f;
 import com.tencent.mm.plugin.exdevice.k.b;
-import com.tencent.mm.plugin.exdevice.model.ae;
+import com.tencent.mm.plugin.exdevice.model.af;
 import com.tencent.mm.plugin.exdevice.model.c;
 import com.tencent.mm.plugin.exdevice.service.i.a;
 import com.tencent.mm.plugin.exdevice.service.u;
@@ -13,19 +13,19 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class a
   extends i.a
 {
-  private static a rxt = null;
+  private static a vcZ = null;
   
-  public static a cKe()
+  public static a cYO()
   {
     AppMethodBeat.i(23145);
-    if (rxt == null)
+    if (vcZ == null)
     {
       locala = new a();
-      rxt = locala;
+      vcZ = locala;
       AppMethodBeat.o(23145);
       return locala;
     }
-    a locala = rxt;
+    a locala = vcZ;
     AppMethodBeat.o(23145);
     return locala;
   }
@@ -45,8 +45,8 @@ public final class a
     label110:
     for (int i = 1;; i = 0)
     {
-      com.tencent.mm.plugin.exdevice.h.a.q(paramLong, i);
-      str = b.bw(paramArrayOfByte);
+      com.tencent.mm.plugin.exdevice.h.a.s(paramLong, i);
+      str = b.bK(paramArrayOfByte);
       if (str != null) {
         break label116;
       }
@@ -58,7 +58,7 @@ public final class a
     }
     label116:
     Log.d("MicroMsg.exdevice.DeviceRequestManager", "data dump = %s", new Object[] { str });
-    new a(paramInt1, paramLong, paramInt2, paramInt3, paramArrayOfByte).cKf();
+    new a(paramInt1, paramLong, paramInt2, paramInt3, paramArrayOfByte).cYP();
     AppMethodBeat.o(23146);
   }
   
@@ -66,24 +66,24 @@ public final class a
     implements Runnable
   {
     private int mCmdId = -1;
-    private long pkb = -1L;
-    private int rxu = -1;
-    private int rxv;
-    private byte[] rxw = null;
+    private long smk = -1L;
+    private int vda = -1;
+    private int vdb;
+    private byte[] vdc = null;
     
     public a(int paramInt1, long paramLong, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
     {
-      this.pkb = paramLong;
-      this.rxu = paramInt2;
+      this.smk = paramLong;
+      this.vda = paramInt2;
       this.mCmdId = paramInt3;
-      this.rxw = paramArrayOfByte;
-      this.rxv = paramInt1;
+      this.vdc = paramArrayOfByte;
+      this.vdb = paramInt1;
     }
     
-    public final void cKf()
+    public final void cYP()
     {
       AppMethodBeat.i(23143);
-      if ((this.pkb == -1L) || (this.rxu == -1) || (this.mCmdId == -1))
+      if ((this.smk == -1L) || (this.vda == -1) || (this.mCmdId == -1))
       {
         Log.e("MicroMsg.RequestProcessThread", "invalid arguments, do nothing");
         AppMethodBeat.o(23143);
@@ -96,31 +96,31 @@ public final class a
         AppMethodBeat.o(23143);
         return;
       case 10001: 
-        localObject = new e(this.rxv, this.pkb, this.rxu, this.mCmdId, this.rxw);
-        u.cLy().a((ae)localObject);
+        localObject = new e(this.vdb, this.smk, this.vda, this.mCmdId, this.vdc);
+        u.dal().a((af)localObject);
         AppMethodBeat.o(23143);
         return;
       case 10002: 
-        k.cKl().b(this.rxv, this.pkb, this.rxu, this.mCmdId, this.rxw);
+        k.cYV().b(this.vdb, this.smk, this.vda, this.mCmdId, this.vdc);
         AppMethodBeat.o(23143);
         return;
       }
-      Object localObject = new f(this.rxv, this.pkb, this.rxu, this.mCmdId, this.rxw);
-      u.cLy().a((ae)localObject);
+      Object localObject = new f(this.vdb, this.smk, this.vda, this.mCmdId, this.vdc);
+      u.dal().a((af)localObject);
       AppMethodBeat.o(23143);
     }
     
     public final void run()
     {
       AppMethodBeat.i(23144);
-      cKf();
+      cYP();
       AppMethodBeat.o(23144);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.c.a
  * JD-Core Version:    0.7.0.1
  */

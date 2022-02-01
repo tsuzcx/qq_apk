@@ -2,8 +2,6 @@
 <resources>
     <item type="drawable" name="b72">false</item>
     <item type="drawable" name="b75">false</item>
-    <item type="drawable" name="b9r">false</item>
-    <item type="drawable" name="b9v">false</item>
     <item type="drawable" name="b9y">false</item>
     <item type="drawable" name="b9z">false</item>
     <item type="drawable" name="b_0">false</item>
@@ -182,6 +180,7 @@
     <item type="drawable" name="bjs">false</item>
     <item type="drawable" name="bjt">false</item>
     <item type="drawable" name="bju">false</item>
+    <item type="drawable" name="bk1">false</item>
     <item type="drawable" name="bk4">false</item>
     <item type="drawable" name="bk5">false</item>
     <item type="drawable" name="bk6">false</item>

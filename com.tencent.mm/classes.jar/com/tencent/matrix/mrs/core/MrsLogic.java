@@ -3,7 +3,7 @@ package com.tencent.matrix.mrs.core;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.matrix.g.c;
+import com.tencent.matrix.e.c;
 import java.util.TimeZone;
 
 public final class MrsLogic
@@ -175,7 +175,7 @@ public final class MrsLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.mrs.core.MrsLogic
  * JD-Core Version:    0.7.0.1
  */

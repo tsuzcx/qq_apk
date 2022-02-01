@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.finder.nearby.video;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoContract;", "", "Presenter", "ViewCallback", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoContract;", "", "Presenter", "ViewCallback", "plugin-finder-nearby_release"})
 public abstract interface a {}
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aa.b.b.a;
+import com.tencent.mm.ac.b.b.a;
 import com.tencent.mm.model.ad.b;
 import com.tencent.mm.modelappbrand.LogInfo;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -19,7 +19,7 @@ public final class f
     super("log", paramInt);
   }
   
-  public final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
+  public final void a(com.tencent.mm.ac.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
   {
     AppMethodBeat.i(121312);
     for (;;)
@@ -45,15 +45,15 @@ public final class f
         }
         else
         {
-          com.tencent.mm.plugin.appbrand.dynamic.debugger.a.d(parama.ayQ().getString("__page_view_id", null), localArrayList);
-          parama1.bt(a(true, "", null));
+          com.tencent.mm.plugin.appbrand.dynamic.debugger.a.d(parama.aGj().getString("__page_view_id", null), localArrayList);
+          parama1.bt(i(true, ""));
           AppMethodBeat.o(121312);
           return;
         }
       }
       catch (JSONException parama)
       {
-        parama1.bt(a(false, "dataArray is null", null));
+        parama1.bt(i(false, "dataArray is null"));
         AppMethodBeat.o(121312);
         return;
       }
@@ -63,7 +63,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.f
  * JD-Core Version:    0.7.0.1
  */

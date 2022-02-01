@@ -1,15 +1,16 @@
 package com.tencent.mm.plugin.aa.model.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.wallet_core.model.k;
+import com.tencent.mm.protocal.protobuf.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.net.URLEncoder;
@@ -22,35 +23,35 @@ public final class f
 {
   private i callback;
   public String chatroomName;
-  private d hJu;
-  private com.tencent.mm.protocal.protobuf.f jTe;
-  public com.tencent.mm.protocal.protobuf.g jTf;
+  private d kwO;
+  private com.tencent.mm.protocal.protobuf.g mKs;
+  public h mKt;
   
   public f(long paramLong1, String paramString1, int paramInt1, int paramInt2, long paramLong2, String paramString2)
   {
     AppMethodBeat.i(63379);
     d.a locala = new d.a();
-    locala.iLN = new com.tencent.mm.protocal.protobuf.f();
-    locala.iLO = new com.tencent.mm.protocal.protobuf.g();
+    locala.lBU = new com.tencent.mm.protocal.protobuf.g();
+    locala.lBV = new h();
     locala.funcId = 1624;
     locala.uri = "/cgi-bin/mmpay-bin/newaalaunchbymoney";
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.hJu = locala.aXF();
-    this.jTe = ((com.tencent.mm.protocal.protobuf.f)this.hJu.iLK.iLR);
+    this.kwO = locala.bgN();
+    this.mKs = ((com.tencent.mm.protocal.protobuf.g)d.b.b(this.kwO.lBR));
     this.chatroomName = paramString2;
     try
     {
-      this.jTe.KBv = paramInt1;
-      this.jTe.KBw = paramLong1;
-      this.jTe.title = URLEncoder.encode(paramString1, "UTF-8");
-      this.jTe.KBx = new LinkedList();
-      this.jTe.scene = paramInt2;
-      this.jTe.KBt = paramString2;
-      this.jTe.KBy = k.fQy();
-      Log.d("MicroMsg.NetSceneAALaunchByMoney", "location %s", new Object[] { this.jTe.KBy });
-      this.jTe.KBz = paramLong2;
-      Log.i("MicroMsg.NetSceneAALaunchByMoney", "NetSceneAALaunchByMoney, total_num: %s, per_amount: %s, title: %s, payer_list: %s, scene: %s, groupid: %s, timestamp", new Object[] { Integer.valueOf(this.jTe.KBv), Long.valueOf(this.jTe.KBw), this.jTe.title, this.jTe.KBx, Integer.valueOf(this.jTe.scene), this.jTe.KBt, Long.valueOf(this.jTe.KBz) });
+      this.mKs.RDl = paramInt1;
+      this.mKs.RDm = paramLong1;
+      this.mKs.title = URLEncoder.encode(paramString1, "UTF-8");
+      this.mKs.RDn = new LinkedList();
+      this.mKs.scene = paramInt2;
+      this.mKs.RDj = paramString2;
+      this.mKs.RDo = k.gJe();
+      Log.d("MicroMsg.NetSceneAALaunchByMoney", "location %s", new Object[] { this.mKs.RDo });
+      this.mKs.RDp = paramLong2;
+      Log.i("MicroMsg.NetSceneAALaunchByMoney", "NetSceneAALaunchByMoney, total_num: %s, per_amount: %s, title: %s, payer_list: %s, scene: %s, groupid: %s, timestamp", new Object[] { Integer.valueOf(this.mKs.RDl), Long.valueOf(this.mKs.RDm), this.mKs.title, this.mKs.RDn, Integer.valueOf(this.mKs.scene), this.mKs.RDj, Long.valueOf(this.mKs.RDp) });
       AppMethodBeat.o(63379);
       return;
     }
@@ -63,41 +64,42 @@ public final class f
     }
   }
   
-  public f(long paramLong1, String paramString1, List<String> paramList, int paramInt, long paramLong2, String paramString2, String paramString3, String paramString4, String paramString5)
+  public f(long paramLong1, String paramString1, List<String> paramList, int paramInt, long paramLong2, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    AppMethodBeat.i(63378);
+    AppMethodBeat.i(247236);
     d.a locala = new d.a();
-    locala.iLN = new com.tencent.mm.protocal.protobuf.f();
-    locala.iLO = new com.tencent.mm.protocal.protobuf.g();
+    locala.lBU = new com.tencent.mm.protocal.protobuf.g();
+    locala.lBV = new h();
     locala.funcId = 1624;
     locala.uri = "/cgi-bin/mmpay-bin/newaalaunchbymoney";
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
     this.chatroomName = paramString2;
-    this.hJu = locala.aXF();
-    this.jTe = ((com.tencent.mm.protocal.protobuf.f)this.hJu.iLK.iLR);
-    this.hJu.setIsUserCmd(true);
+    this.kwO = locala.bgN();
+    this.mKs = ((com.tencent.mm.protocal.protobuf.g)d.b.b(this.kwO.lBR));
+    this.kwO.setIsUserCmd(true);
     if (paramList != null) {}
     try
     {
       if (paramList.size() > 0)
       {
-        this.jTe.KBv = paramList.size();
-        this.jTe.KBw = paramLong1;
-        this.jTe.title = URLEncoder.encode(paramString1, "UTF-8");
-        this.jTe.KBx = new LinkedList();
-        this.jTe.KBx.addAll(paramList);
-        this.jTe.scene = paramInt;
-        this.jTe.KBt = paramString2;
-        this.jTe.KBy = k.fQy();
-        this.jTe.KBz = paramLong2;
-        this.jTe.KBA = paramString3;
-        this.jTe.KBB = paramString4;
-        this.jTe.KBC = paramString5;
-        Log.d("MicroMsg.NetSceneAALaunchByMoney", "location %s", new Object[] { this.jTe.KBy });
+        this.mKs.RDl = paramList.size();
+        this.mKs.RDm = paramLong1;
+        this.mKs.title = URLEncoder.encode(paramString1, "UTF-8");
+        this.mKs.RDn = new LinkedList();
+        this.mKs.RDn.addAll(paramList);
+        this.mKs.scene = paramInt;
+        this.mKs.RDj = paramString2;
+        this.mKs.RDo = k.gJe();
+        this.mKs.RDp = paramLong2;
+        this.mKs.RDq = paramString3;
+        this.mKs.RDr = paramString4;
+        this.mKs.RDs = paramString5;
+        this.mKs.RDt = paramString6;
+        Log.d("MicroMsg.NetSceneAALaunchByMoney", "location %s", new Object[] { this.mKs.RDo });
       }
-      Log.i("MicroMsg.NetSceneAALaunchByMoney", "NetSceneAALaunchByMoney, total_num: %s, per_amount: %s, title: %s, payer_list: %s, scene: %s, groupid: %s, timestamp: %s, pic_cdn_url: %s, pic_cdn_thumb_url: %s, pf_order_no: %s", new Object[] { Integer.valueOf(this.jTe.KBv), Long.valueOf(this.jTe.KBw), this.jTe.title, this.jTe.KBx, Integer.valueOf(this.jTe.scene), this.jTe.KBt, Long.valueOf(this.jTe.KBz), Util.nullAs(this.jTe.KBA, ""), Util.nullAs(this.jTe.KBB, ""), Util.nullAs(this.jTe.KBC, "") });
-      AppMethodBeat.o(63378);
+      Log.i("MicroMsg.NetSceneAALaunchByMoney", "NetSceneAALaunchByMoney, total_num: %s, per_amount: %s, title: %s, payer_list: %s, scene: %s, groupid: %s, timestamp: %s, pic_cdn_url: %s, pic_cdn_thumb_url: %s, pf_order_no: %s,pic_cdn_md5:%s", new Object[] { Integer.valueOf(this.mKs.RDl), Long.valueOf(this.mKs.RDm), this.mKs.title, this.mKs.RDn, Integer.valueOf(this.mKs.scene), this.mKs.RDj, Long.valueOf(this.mKs.RDp), Util.nullAs(this.mKs.RDq, ""), Util.nullAs(this.mKs.RDr, ""), Util.nullAs(this.mKs.RDs, ""), Util.nullAs(this.mKs.RDt, "") });
+      AppMethodBeat.o(247236);
       return;
     }
     catch (Exception paramString1)
@@ -114,7 +116,7 @@ public final class f
     AppMethodBeat.i(63380);
     Log.i("MicroMsg.NetSceneAALaunchByMoney", "doScene");
     this.callback = parami;
-    int i = dispatch(paramg, this.hJu, this);
+    int i = dispatch(paramg, this.kwO, this);
     AppMethodBeat.o(63380);
     return i;
   }
@@ -128,14 +130,14 @@ public final class f
   {
     AppMethodBeat.i(63381);
     Log.i("MicroMsg.NetSceneAALaunchByMoney", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.jTf = ((com.tencent.mm.protocal.protobuf.g)((d)params).iLL.iLR);
-    paramInt1 = this.jTf.dDN;
-    params = this.jTf.qwn;
-    if (this.jTf.KBu == null) {}
+    this.mKt = ((h)d.c.b(((d)params).lBS));
+    paramInt1 = this.mKt.fwx;
+    params = this.mKt.tVo;
+    if (this.mKt.RDk == null) {}
     for (boolean bool = true;; bool = false)
     {
-      Log.i("MicroMsg.NetSceneAALaunchByMoney", "retcode: %s, retmsg: %s, msgxml==null: %s, billNo: %s", new Object[] { Integer.valueOf(paramInt1), params, Boolean.valueOf(bool), this.jTf.KBs });
-      Log.d("MicroMsg.NetSceneAALaunchByMoney", "msgxml: %s", new Object[] { this.jTf.KBu });
+      Log.i("MicroMsg.NetSceneAALaunchByMoney", "retcode: %s, retmsg: %s, msgxml==null: %s, billNo: %s", new Object[] { Integer.valueOf(paramInt1), params, Boolean.valueOf(bool), this.mKt.RDi });
+      Log.d("MicroMsg.NetSceneAALaunchByMoney", "msgxml: %s", new Object[] { this.mKt.RDk });
       if (this.callback != null) {
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       }
@@ -146,7 +148,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.cgi.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,75 +1,54 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import android.content.Intent;
-import android.os.Build.VERSION;
+import android.content.res.Resources;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.plugin.appbrand.task.p;
+import com.tencent.mm.plugin.appbrand.utils.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.MMActivity.a;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
-public class av
-  implements aa, MMActivity.a
+public enum av
 {
-  public final int requestCode;
-  
-  protected av()
+  public static void a(int paramInt, y paramy)
   {
-    AppMethodBeat.i(47308);
-    this.requestCode = (av.class.hashCode() & 0xFFFF);
-    AppMethodBeat.o(47308);
+    AppMethodBeat.i(283135);
+    a(MMApplicationContext.getResources().getString(paramInt), paramy);
+    AppMethodBeat.o(283135);
   }
   
-  public void bNL() {}
-  
-  public void bNM()
+  public static void a(String paramString, y paramy)
   {
-    AppMethodBeat.i(47309);
-    if (d.oD(17)) {
-      onReady();
-    }
-    AppMethodBeat.o(47309);
-  }
-  
-  public final boolean bNh()
-  {
-    return true;
-  }
-  
-  public final void d(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    AppMethodBeat.i(47310);
-    if (this.requestCode != paramInt1)
+    AppMethodBeat.i(283138);
+    Log.e("MicroMsg.AppBrand.PrepareQuickAccess", "toast: %s, step:%s", new Object[] { paramString, paramy.getClass().getName() });
+    if (!paramy.bZy())
     {
-      AppMethodBeat.o(47310);
+      AppMethodBeat.o(283138);
       return;
     }
-    if (paramInt2 == -1)
+    MMHandlerThread.postToMainThread(new Runnable()
     {
-      Log.i("MicroMsg.AppBrand.PreLaunchCheckForXWEB", "onActivityResult, tbs download ok");
-      com.tencent.mm.plugin.appbrand.task.h.bWb().zn(0);
-      onReady();
-      AppMethodBeat.o(47310);
-      return;
-    }
-    if (paramInt2 == 2)
-    {
-      Log.i("MicroMsg.AppBrand.PreLaunchCheckForXWEB", "onActivityResult, tbs cancel loading, download in background");
-      bNL();
-      AppMethodBeat.o(47310);
-      return;
-    }
-    Log.i("MicroMsg.AppBrand.PreLaunchCheckForXWEB", "onActivityResult, tbs download unknown error, resultCode = %d, apiLevel = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(Build.VERSION.SDK_INT) });
-    com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(366L, 8L, 1L, false);
-    bNM();
-    AppMethodBeat.o(47310);
+      public final void run()
+      {
+        AppMethodBeat.i(47313);
+        Toast.makeText(MMApplicationContext.getContext(), this.val$text, 0).show();
+        AppMethodBeat.o(47313);
+      }
+    });
+    AppMethodBeat.o(283138);
   }
   
-  public void onReady() {}
+  public static String getMMString(int paramInt, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(47318);
+    paramVarArgs = h.getMMString(paramInt, paramVarArgs);
+    AppMethodBeat.o(47318);
+    return paramVarArgs;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.av
  * JD-Core Version:    0.7.0.1
  */

@@ -4,17 +4,17 @@ import android.view.MotionEvent;
 
 public abstract interface g
 {
-  public abstract void M(MotionEvent paramMotionEvent);
+  public abstract void T(MotionEvent paramMotionEvent);
   
   public abstract void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract void chY();
+  public abstract void cvk();
   
-  public abstract void chZ();
+  public abstract void cvl();
   
-  public abstract void cia();
+  public abstract void cvm();
   
-  public abstract void cib();
+  public abstract void cvn();
   
   public abstract void onOrientationChange(int paramInt);
 }

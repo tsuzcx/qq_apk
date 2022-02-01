@@ -6,16 +6,16 @@ import com.tencent.mm.plugin.appbrand.w.a;
 
 public final class d
 {
-  public static void pl(int paramInt)
+  public static void rE(int paramInt)
   {
-    AppMethodBeat.i(226857);
-    ((a)e.N(a.class)).idkeyStat(1419L, paramInt, 1L, false);
-    AppMethodBeat.o(226857);
+    AppMethodBeat.i(271252);
+    ((a)e.L(a.class)).idkeyStat(1419L, paramInt, 1L, false);
+    AppMethodBeat.o(271252);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.d
  * JD-Core Version:    0.7.0.1
  */

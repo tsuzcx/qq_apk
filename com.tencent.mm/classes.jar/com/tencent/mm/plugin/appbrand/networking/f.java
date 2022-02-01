@@ -10,19 +10,19 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/networking/NetworkServiceBySystemReceiver;", "Lcom/tencent/mm/plugin/appbrand/networking/NetworkServiceImpl;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;)V", "TAG", "", "appContext", "Landroid/content/Context;", "getAppContext", "()Landroid/content/Context;", "mNetworkStateChangedReceiver", "com/tencent/mm/plugin/appbrand/networking/NetworkServiceBySystemReceiver$mNetworkStateChangedReceiver$1", "Lcom/tencent/mm/plugin/appbrand/networking/NetworkServiceBySystemReceiver$mNetworkStateChangedReceiver$1;", "onRegister", "", "onUnregister", "luggage-wxa-app_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/networking/NetworkServiceBySystemReceiver;", "Lcom/tencent/mm/plugin/appbrand/networking/NetworkServiceImpl;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;)V", "TAG", "", "appContext", "Landroid/content/Context;", "getAppContext", "()Landroid/content/Context;", "mNetworkStateChangedReceiver", "com/tencent/mm/plugin/appbrand/networking/NetworkServiceBySystemReceiver$mNetworkStateChangedReceiver$1", "Lcom/tencent/mm/plugin/appbrand/networking/NetworkServiceBySystemReceiver$mNetworkStateChangedReceiver$1;", "onRegister", "", "onUnregister", "luggage-wxa-app_release"})
 public final class f
   extends g
 {
   private final String TAG;
-  private final NetworkServiceBySystemReceiver.mNetworkStateChangedReceiver.1 njB;
+  private final NetworkServiceBySystemReceiver.mNetworkStateChangedReceiver.1 qkZ;
   
   public f(AppBrandRuntime paramAppBrandRuntime)
   {
     super(paramAppBrandRuntime);
     AppMethodBeat.i(135584);
     this.TAG = "Luggage.WXA.NetworkServiceBySystemReceiver";
-    this.njB = new NetworkServiceBySystemReceiver.mNetworkStateChangedReceiver.1(this);
+    this.qkZ = new NetworkServiceBySystemReceiver.mNetworkStateChangedReceiver.1(this);
     AppMethodBeat.o(135584);
   }
   
@@ -31,20 +31,20 @@ public final class f
     AppMethodBeat.i(176454);
     Context localContext = MMApplicationContext.getContext();
     if (localContext == null) {
-      p.hyc();
+      p.iCn();
     }
     AppMethodBeat.o(176454);
     return localContext;
   }
   
-  public final void aBc()
+  public final void aIF()
   {
     AppMethodBeat.i(135582);
-    super.aBc();
+    super.aIF();
     try
     {
       Context localContext = getAppContext();
-      BroadcastReceiver localBroadcastReceiver = (BroadcastReceiver)this.njB;
+      BroadcastReceiver localBroadcastReceiver = (BroadcastReceiver)this.qkZ;
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
       localContext.registerReceiver(localBroadcastReceiver, localIntentFilter);
@@ -58,13 +58,13 @@ public final class f
     }
   }
   
-  public final void aBd()
+  public final void aIG()
   {
     AppMethodBeat.i(135583);
-    super.aBd();
+    super.aIG();
     try
     {
-      getAppContext().unregisterReceiver((BroadcastReceiver)this.njB);
+      getAppContext().unregisterReceiver((BroadcastReceiver)this.qkZ);
       AppMethodBeat.o(135583);
       return;
     }
@@ -77,7 +77,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.networking.f
  * JD-Core Version:    0.7.0.1
  */

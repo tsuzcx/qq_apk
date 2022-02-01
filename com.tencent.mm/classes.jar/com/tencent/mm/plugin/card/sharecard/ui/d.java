@@ -10,18 +10,18 @@ import java.util.ArrayList;
 public final class d
   implements a
 {
-  private c pXq;
+  private c ttn;
   
   public d(c paramc)
   {
-    this.pXq = paramc;
+    this.ttn = paramc;
   }
   
   public final void onCreate()
   {
     AppMethodBeat.i(113080);
-    if (this.pXq != null) {
-      am.ctQ().add(this.pXq);
+    if (this.ttn != null) {
+      am.cHs().add(this.ttn);
     }
     AppMethodBeat.o(113080);
   }
@@ -29,13 +29,13 @@ public final class d
   public final void onDestroy()
   {
     AppMethodBeat.i(113081);
-    if (this.pXq != null)
+    if (this.ttn != null)
     {
-      am.ctQ().remove(this.pXq);
-      Object localObject = this.pXq;
-      ((c)localObject).pXo.release();
-      ((c)localObject).pXo = null;
-      ((c)localObject).ebf();
+      am.cHs().remove(this.ttn);
+      Object localObject = this.ttn;
+      ((c)localObject).ttl.release();
+      ((c)localObject).ttl = null;
+      ((c)localObject).eKd();
       int i = (int)(((c)localObject).endTime - ((c)localObject).beginTime);
       localObject = new ArrayList();
       IDKey localIDKey1 = new IDKey();
@@ -48,8 +48,8 @@ public final class d
       localIDKey2.SetValue(i);
       ((ArrayList)localObject).add(localIDKey1);
       ((ArrayList)localObject).add(localIDKey2);
-      h.CyF.b((ArrayList)localObject, true);
-      this.pXq = null;
+      h.IzE.b((ArrayList)localObject, true);
+      this.ttn = null;
     }
     AppMethodBeat.o(113081);
   }
@@ -57,8 +57,8 @@ public final class d
   public final void onNotify()
   {
     AppMethodBeat.i(113082);
-    if (this.pXq != null) {
-      this.pXq.onNotifyChange(null, null);
+    if (this.ttn != null) {
+      this.ttn.onNotifyChange(null, null);
     }
     AppMethodBeat.o(113082);
   }

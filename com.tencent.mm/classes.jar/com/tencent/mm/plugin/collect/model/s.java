@@ -14,32 +14,58 @@ import org.json.JSONObject;
 public final class s
   extends m
 {
-  public int dKt;
-  public boolean iGD;
+  public boolean isRetry;
   private int limit;
-  public List<a> qwH;
-  public long qwd;
-  public int qwe;
-  public int type;
+  public boolean lwF;
+  public int tVD;
+  public int tVE;
+  public int tVF;
+  public int tVG;
+  public String tVH;
+  public List<h> tVI;
+  public long tVc;
   
-  public s(int paramInt1, long paramLong, String paramString, int paramInt2)
+  public s(int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(63846);
-    this.qwH = new ArrayList();
-    this.iGD = false;
+    AppMethodBeat.i(63843);
+    this.lwF = false;
+    this.isRetry = false;
+    this.tVI = new ArrayList();
     this.limit = paramInt2;
+    this.tVE = 0;
     HashMap localHashMap = new HashMap();
     localHashMap.put("type", String.valueOf(paramInt1));
     localHashMap.put("from_timestamp", String.valueOf(paramLong));
-    localHashMap.put("last_bill_id", paramString);
+    localHashMap.put("direction_flag", "0");
     localHashMap.put("num", String.valueOf(paramInt2));
+    localHashMap.put("choose_flag", String.valueOf(paramInt3));
     setRequestData(localHashMap);
-    AppMethodBeat.o(63846);
+    AppMethodBeat.o(63843);
+  }
+  
+  public s(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    AppMethodBeat.i(63844);
+    this.lwF = false;
+    this.isRetry = false;
+    this.tVI = new ArrayList();
+    this.isRetry = true;
+    this.limit = paramInt3;
+    this.tVE = paramInt2;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("type", String.valueOf(paramInt1));
+    localHashMap.put("from_timestamp", String.valueOf(paramLong));
+    localHashMap.put("direction_flag", String.valueOf(paramInt2));
+    localHashMap.put("num", String.valueOf(paramInt3));
+    localHashMap.put("choose_flag", String.valueOf(paramInt4));
+    localHashMap.put("try_num", String.valueOf(paramInt5));
+    setRequestData(localHashMap);
+    AppMethodBeat.o(63844);
   }
   
   public final int getFuncId()
   {
-    return 1963;
+    return 1993;
   }
   
   public final int getTenpayCgicmd()
@@ -49,26 +75,28 @@ public final class s
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/f2frcvdlist";
+    return "/cgi-bin/mmpay-bin/f2frcvrcdhissta";
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(63847);
-    this.qwe = paramJSONObject.optInt("total_num");
-    this.dKt = paramJSONObject.optInt("total_amt");
-    this.qwd = paramJSONObject.optLong("from_timestamp", 0L);
-    this.type = paramJSONObject.optInt("type", 0);
+    AppMethodBeat.i(63845);
+    Log.d("MicroMsg.NetSceneTenpayF2fHistoryRecordList", "json: %s", new Object[] { paramJSONObject.toString() });
+    this.tVD = paramJSONObject.optInt("choose_flag", 0);
+    this.tVc = paramJSONObject.optLong("from_timestamp", -1L);
+    this.tVF = paramJSONObject.optInt("finish_flag", 0);
+    this.tVG = paramJSONObject.optInt("try_num", 0);
+    this.tVH = paramJSONObject.optString("retmsg", "");
     paramString = paramJSONObject.optJSONArray("records");
     if ((paramString == null) || (paramString.length() <= 0))
     {
-      Log.i("MicroMsg.NetSceneTenpayF2fRecordList", "empty records");
-      if (this.qwH.size() < this.limit)
+      Log.i("MicroMsg.NetSceneTenpayF2fHistoryRecordList", "empty records");
+      if (this.tVF == 1)
       {
-        Log.i("MicroMsg.NetSceneTenpayF2fRecordList", "finish query");
-        this.iGD = true;
+        Log.i("MicroMsg.NetSceneTenpayF2fHistoryRecordList", "finish query");
+        this.lwF = true;
       }
-      AppMethodBeat.o(63847);
+      AppMethodBeat.o(63845);
       return;
     }
     paramInt = 0;
@@ -76,20 +104,19 @@ public final class s
       try
       {
         paramJSONObject = paramString.getJSONObject(paramInt);
-        a locala = new a();
-        locala.qvC = paramJSONObject.optString("bill_id");
-        locala.qvD = paramJSONObject.optString("trans_id");
-        locala.timestamp = paramJSONObject.optLong("timestamp", 0L);
-        locala.desc = paramJSONObject.optString("desc");
-        locala.dFu = paramJSONObject.optInt("fee", 0);
-        this.qwH.add(locala);
+        h localh = new h();
+        localh.type = paramJSONObject.optInt("type", 0);
+        localh.tVc = paramJSONObject.optLong("from_timestamp", 0L);
+        localh.tVd = paramJSONObject.optInt("total_num", 0);
+        localh.fDi = paramJSONObject.optInt("total_amt", 0);
+        this.tVI.add(localh);
         paramInt += 1;
       }
       catch (JSONException paramJSONObject)
       {
         for (;;)
         {
-          Log.printErrStackTrace("MicroMsg.NetSceneTenpayF2fRecordList", paramJSONObject, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.NetSceneTenpayF2fHistoryRecordList", paramJSONObject, "", new Object[0]);
         }
       }
     }

@@ -1,11 +1,11 @@
 package com.tencent.mm.xeffect.effect;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 15}, hxE={""}, hxF={"Lcom/tencent/mm/xeffect/effect/StickerDecoderFactoryWrapper;", "Lcom/tencent/mm/xeffect/effect/IStickerDecoderFactory;", "factory", "(Lcom/tencent/mm/xeffect/effect/IStickerDecoderFactory;)V", "getFactory", "()Lcom/tencent/mm/xeffect/effect/IStickerDecoderFactory;", "getDecoder", "Lcom/tencent/mm/xeffect/effect/IStickerDecoder;", "bytes", "", "path", "", "renderlib_release"})
+@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/xeffect/effect/StickerDecoderFactoryWrapper;", "Lcom/tencent/mm/xeffect/effect/IStickerDecoderFactory;", "factory", "(Lcom/tencent/mm/xeffect/effect/IStickerDecoderFactory;)V", "getFactory", "()Lcom/tencent/mm/xeffect/effect/IStickerDecoderFactory;", "getDecoder", "Lcom/tencent/mm/xeffect/effect/IStickerDecoder;", "bytes", "", "path", "", "renderlib_release"})
 @Keep
 public final class StickerDecoderFactoryWrapper
   implements IStickerDecoderFactory
@@ -14,29 +14,29 @@ public final class StickerDecoderFactoryWrapper
   
   public StickerDecoderFactoryWrapper(IStickerDecoderFactory paramIStickerDecoderFactory)
   {
-    AppMethodBeat.i(237106);
+    AppMethodBeat.i(195871);
     this.factory = paramIStickerDecoderFactory;
-    AppMethodBeat.o(237106);
+    AppMethodBeat.o(195871);
   }
   
   public final IStickerDecoder getDecoder(String paramString)
   {
-    AppMethodBeat.i(237104);
-    p.h(paramString, "path");
-    z.auD();
+    AppMethodBeat.i(195868);
+    p.k(paramString, "path");
+    ab.aBy();
     paramString = (IStickerDecoder)new StickerDecoderWrapper(this.factory.getDecoder(paramString));
-    AppMethodBeat.o(237104);
+    AppMethodBeat.o(195868);
     return paramString;
   }
   
   public final IStickerDecoder getDecoder(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(237105);
-    p.h(paramArrayOfByte, "bytes");
-    z.auD();
+    AppMethodBeat.i(195869);
+    p.k(paramArrayOfByte, "bytes");
+    ab.aBy();
     new StringBuilder("getDecoder from bytes: ").append(paramArrayOfByte.length);
     paramArrayOfByte = (IStickerDecoder)new StickerDecoderWrapper(this.factory.getDecoder(paramArrayOfByte));
-    AppMethodBeat.o(237105);
+    AppMethodBeat.o(195869);
     return paramArrayOfByte;
   }
   
@@ -47,7 +47,7 @@ public final class StickerDecoderFactoryWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.xeffect.effect.StickerDecoderFactoryWrapper
  * JD-Core Version:    0.7.0.1
  */

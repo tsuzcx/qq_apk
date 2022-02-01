@@ -3,7 +3,7 @@ package com.tencent.mm.emoji.loader.d;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
+import com.tencent.mm.ae.d;
 import com.tencent.mm.emoji.view.BaseEmojiView;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.emotion.EmojiInfo;
@@ -13,19 +13,19 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/loader/request/EmojiViewRequest;", "Lcom/tencent/mm/emoji/loader/request/ViewRequest;", "Lcom/tencent/mm/emoji/view/BaseEmojiView;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "view", "callback", "Lcom/tencent/mm/emoji/loader/request/Request$Callback;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Lcom/tencent/mm/emoji/view/BaseEmojiView;Lcom/tencent/mm/emoji/loader/request/Request$Callback;)V", "getCallback", "()Lcom/tencent/mm/emoji/loader/request/Request$Callback;", "setCallback", "(Lcom/tencent/mm/emoji/loader/request/Request$Callback;)V", "netLoad", "", "start", "", "cancel", "", "onLoad", "success", "async", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/loader/request/EmojiViewRequest;", "Lcom/tencent/mm/emoji/loader/request/ViewRequest;", "Lcom/tencent/mm/emoji/view/BaseEmojiView;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "view", "callback", "Lcom/tencent/mm/emoji/loader/request/Request$Callback;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Lcom/tencent/mm/emoji/view/BaseEmojiView;Lcom/tencent/mm/emoji/loader/request/Request$Callback;)V", "getCallback", "()Lcom/tencent/mm/emoji/loader/request/Request$Callback;", "setCallback", "(Lcom/tencent/mm/emoji/loader/request/Request$Callback;)V", "netLoad", "", "start", "", "cancel", "", "onLoad", "success", "async", "plugin-emojisdk_release"})
 public class f
   extends j<BaseEmojiView>
 {
-  i.a gWA;
-  private boolean gWB;
+  i.a jHw;
+  private boolean jHx;
   private long start;
   
   public f(EmojiInfo paramEmojiInfo, BaseEmojiView paramBaseEmojiView, i.a parama)
   {
     super(paramEmojiInfo, (View)paramBaseEmojiView);
     AppMethodBeat.i(105470);
-    this.gWA = parama;
+    this.jHw = parama;
     this.start = System.currentTimeMillis();
     AppMethodBeat.o(105470);
   }
@@ -34,33 +34,33 @@ public class f
   {
     AppMethodBeat.i(105469);
     super.cancel();
-    this.gWA = null;
+    this.jHw = null;
     AppMethodBeat.o(105469);
   }
   
-  public void dR(final boolean paramBoolean)
+  public void eq(final boolean paramBoolean)
   {
     final Drawable localDrawable = null;
     AppMethodBeat.i(105468);
-    String str = g.auD();
+    String str = g.aBy();
     StringBuilder localStringBuilder = new StringBuilder("onLoad ").append(this).append(' ');
-    Object localObject = this.gWH;
+    Object localObject = this.jHE;
     if (localObject != null)
     {
       localObject = (BaseEmojiView)((WeakReference)localObject).get();
       Log.d(str, localObject + ' ' + paramBoolean);
-      if (this.gWB)
+      if (this.jHx)
       {
-        localObject = com.tencent.mm.search.c.a.NJv;
-        if (com.tencent.mm.search.c.a.MH(this.start))
+        localObject = com.tencent.mm.search.c.a.UWW;
+        if (com.tencent.mm.search.c.a.Up(this.start))
         {
-          localObject = com.tencent.mm.search.c.a.NJv;
-          com.tencent.mm.search.c.a.gxx();
-          localObject = com.tencent.mm.search.c.a.NJv;
-          com.tencent.mm.search.c.a.MG(System.currentTimeMillis() - this.start);
+          localObject = com.tencent.mm.search.c.a.UWW;
+          com.tencent.mm.search.c.a.htv();
+          localObject = com.tencent.mm.search.c.a.UWW;
+          com.tencent.mm.search.c.a.Uo(System.currentTimeMillis() - this.start);
         }
       }
-      localObject = this.gWH;
+      localObject = this.jHE;
       if (localObject == null) {
         break label190;
       }
@@ -69,9 +69,9 @@ public class f
     for (localObject = (BaseEmojiView)((WeakReference)localObject).get();; localObject = null)
     {
       if (paramBoolean) {
-        localDrawable = new com.tencent.mm.emoji.loader.b.a().a(this.gWm, (m)new b(this));
+        localDrawable = new com.tencent.mm.emoji.loader.b.a().a(this.jHh, (m)new b(this));
       }
-      d.h((kotlin.g.a.a)new a(this, paramBoolean, localDrawable, (BaseEmojiView)localObject));
+      d.uiThread((kotlin.g.a.a)new a(this, paramBoolean, localDrawable, (BaseEmojiView)localObject));
       AppMethodBeat.o(105468);
       return;
       localObject = null;
@@ -82,18 +82,18 @@ public class f
   public void start(boolean paramBoolean)
   {
     AppMethodBeat.i(105467);
-    if (this.gWm.hRx())
+    if (this.jHh.hBp())
     {
-      dR(true);
+      eq(true);
       AppMethodBeat.o(105467);
       return;
     }
-    this.gWB = true;
-    d.h((kotlin.g.a.a)new c(this));
+    this.jHx = true;
+    d.uiThread((kotlin.g.a.a)new c(this));
     AppMethodBeat.o(105467);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class a
     extends q
     implements kotlin.g.a.a<x>
@@ -104,7 +104,7 @@ public class f
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "width", "", "height", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "width", "", "height", "invoke"})
   static final class b
     extends q
     implements m<Integer, Integer, x>
@@ -115,7 +115,7 @@ public class f
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class c
     extends q
     implements kotlin.g.a.a<x>
@@ -128,7 +128,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.d.f
  * JD-Core Version:    0.7.0.1
  */

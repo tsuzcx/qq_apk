@@ -1,7 +1,7 @@
 package kotlinx.coroutines.android;
 
 import android.os.Build.VERSION;
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -11,7 +11,7 @@ import kotlin.d.f.c;
 import kotlin.l;
 import kotlinx.coroutines.CoroutineExceptionHandler;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/android/AndroidExceptionPreHandler;", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "Lkotlinx/coroutines/CoroutineExceptionHandler;", "()V", "_preHandler", "", "handleException", "", "context", "Lkotlin/coroutines/CoroutineContext;", "exception", "", "preHandler", "Ljava/lang/reflect/Method;", "kotlinx-coroutines-android"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/android/AndroidExceptionPreHandler;", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "Lkotlinx/coroutines/CoroutineExceptionHandler;", "()V", "_preHandler", "", "handleException", "", "context", "Lkotlin/coroutines/CoroutineContext;", "exception", "", "preHandler", "Ljava/lang/reflect/Method;", "kotlinx-coroutines-android"})
 @Keep
 public final class AndroidExceptionPreHandler
   extends a
@@ -21,7 +21,7 @@ public final class AndroidExceptionPreHandler
   
   public AndroidExceptionPreHandler()
   {
-    super((f.c)CoroutineExceptionHandler.TTS);
+    super((f.c)CoroutineExceptionHandler.abww);
     AppMethodBeat.i(107783);
     this._preHandler = this;
     AppMethodBeat.o(107783);
@@ -29,12 +29,12 @@ public final class AndroidExceptionPreHandler
   
   private final Method preHandler()
   {
-    AppMethodBeat.i(187962);
+    AppMethodBeat.i(243910);
     Object localObject1 = this._preHandler;
     if (localObject1 != (AndroidExceptionPreHandler)this)
     {
       localObject1 = (Method)localObject1;
-      AppMethodBeat.o(187962);
+      AppMethodBeat.o(243910);
       return localObject1;
     }
     for (;;)
@@ -61,7 +61,7 @@ public final class AndroidExceptionPreHandler
         continue;
       }
       this._preHandler = localObject1;
-      AppMethodBeat.o(187962);
+      AppMethodBeat.o(243910);
       return localObject1;
       i = 0;
       continue;
@@ -100,7 +100,7 @@ public final class AndroidExceptionPreHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     kotlinx.coroutines.android.AndroidExceptionPreHandler
  * JD-Core Version:    0.7.0.1
  */

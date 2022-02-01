@@ -11,16 +11,16 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"runInMMActivity", "", "context", "Landroid/content/Context;", "block", "Lkotlin/Function1;", "Lcom/tencent/mm/ui/MMActivity;", "ProxyFunction", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"runInMMActivity", "", "context", "Landroid/content/Context;", "block", "Lkotlin/Function1;", "Lcom/tencent/mm/ui/MMActivity;", "ProxyFunction", "plugin-appbrand-integration_release"})
 public final class d
 {
   public static final void b(Context paramContext, b<? super MMActivity, x> paramb)
   {
-    AppMethodBeat.i(228895);
-    p.h(paramb, "block");
+    AppMethodBeat.i(282630);
+    p.k(paramb, "block");
     int i = paramb.hashCode();
-    a locala = a.nbk;
-    a.bOJ().put(paramb.hashCode(), paramb);
+    a locala = a.qbz;
+    a.caZ().put(paramb.hashCode(), paramb);
     if (MMApplicationContext.isAppBrandProcess())
     {
       paramb = paramContext;
@@ -28,7 +28,7 @@ public final class d
         paramb = MMApplicationContext.getContext();
       }
       com.tencent.mm.plugin.appbrand.ipc.a.b(paramb, (AppBrandProxyUIProcessTask.ProcessRequest)new ProxyRequest(i), null);
-      AppMethodBeat.o(228895);
+      AppMethodBeat.o(282630);
       return;
     }
     paramb = paramContext;
@@ -36,12 +36,12 @@ public final class d
       paramb = MMApplicationContext.getContext();
     }
     com.tencent.mm.plugin.appbrand.ipc.a.a(paramb, (AppBrandProxyUIProcessTask.ProcessRequest)new ProxyRequest(i), null);
-    AppMethodBeat.o(228895);
+    AppMethodBeat.o(282630);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.jsapi.d
  * JD-Core Version:    0.7.0.1
  */

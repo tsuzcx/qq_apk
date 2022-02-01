@@ -7,22 +7,23 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.account.model.j;
 import com.tencent.mm.plugin.account.model.k;
-import com.tencent.mm.plugin.account.model.l;
-import com.tencent.mm.protocal.protobuf.dua;
+import com.tencent.mm.protocal.protobuf.eec;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.h.a.c;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.i.a.c;
 import com.tencent.mm.ui.widget.a.d;
 import com.tencent.mm.ui.widget.a.f.a;
 import com.tencent.mm.ui.widget.a.f.c;
@@ -30,31 +31,31 @@ import com.tencent.mm.ui.widget.a.f.c;
 @a(3)
 public class ShareToFacebookRedirectUI
   extends MMActivity
-  implements com.tencent.mm.ak.i
+  implements i
 {
   private static String TAG = "MicroMsg.ShareToFacebookRedirectUI";
-  private com.tencent.mm.ui.base.q gut;
-  private String ksh;
-  private String ksi;
-  private String ksj;
-  private String ksk;
+  private s iYE;
+  private String njQ;
+  private String njR;
+  private String njS;
+  private String njT;
   
-  private void bpW()
+  private void bAi()
   {
     AppMethodBeat.i(128741);
     Log.i(TAG, "refreshFacebookToken");
-    long l = Util.nullAsNil((Long)g.aAh().azQ().get(65831, null));
-    String str = Util.nullAsNil((String)g.aAh().azQ().get(65830, null));
+    long l = Util.nullAsNil((Long)com.tencent.mm.kernel.h.aHG().aHp().b(65831, null));
+    String str = Util.nullAsNil((String)com.tencent.mm.kernel.h.aHG().aHp().b(65830, null));
     if ((Util.milliSecondsToNow(l) > 86400000L) && (str.length() > 0))
     {
-      c localc = new c(getString(2131759094));
-      localc.bnE(str);
-      new k(localc, new l()
+      c localc = new c(getString(r.j.facebook_app_id));
+      localc.bAo(str);
+      new j(localc, new k()
       {
-        public final void E(Bundle paramAnonymousBundle)
+        public final void K(Bundle paramAnonymousBundle)
         {
           AppMethodBeat.i(128733);
-          super.E(paramAnonymousBundle);
+          super.K(paramAnonymousBundle);
           AppMethodBeat.o(128733);
         }
         
@@ -68,41 +69,41 @@ public class ShareToFacebookRedirectUI
           }
           AppMethodBeat.o(128734);
         }
-      }).bnw();
+      }).bxF();
       AppMethodBeat.o(128741);
       return;
     }
-    bpw();
+    bzI();
     AppMethodBeat.o(128741);
   }
   
-  private void bpw()
+  private void bzI()
   {
     AppMethodBeat.i(128742);
     Log.i(TAG, "doSend");
     final f.a locala = new f.a(this);
-    locala.aC(this.ksh).box(this.ksj).aD(this.ksi).boy(getString(2131755767)).apa(2131755983).c(new f.c()
+    locala.aR(this.njQ).bBm(this.njS).aS(this.njR).bBn(getString(r.j.app_comment)).ayp(r.j.app_share).c(new f.c()
     {
-      public final void e(boolean paramAnonymousBoolean, String paramAnonymousString)
+      public final void g(boolean paramAnonymousBoolean, String paramAnonymousString)
       {
         AppMethodBeat.i(128736);
         ShareToFacebookRedirectUI.this.hideVKB();
-        locala.kdo.dismiss();
+        locala.mUO.dismiss();
         if (paramAnonymousBoolean)
         {
-          dua localdua = new dua();
+          eec localeec = new eec();
           String str = paramAnonymousString;
           if (Util.isNullOrNil(paramAnonymousString)) {
             str = " ";
           }
-          localdua.xJz = str;
-          localdua.Name = ShareToFacebookRedirectUI.b(ShareToFacebookRedirectUI.this);
-          localdua.KHk = ShareToFacebookRedirectUI.c(ShareToFacebookRedirectUI.this);
-          localdua.AAN = ShareToFacebookRedirectUI.d(ShareToFacebookRedirectUI.this);
-          localdua.MVL = ShareToFacebookRedirectUI.e(ShareToFacebookRedirectUI.this);
-          paramAnonymousString = new com.tencent.mm.plugin.account.model.i(localdua);
-          g.azz().a(paramAnonymousString, 0);
-          ShareToFacebookRedirectUI.a(ShareToFacebookRedirectUI.this, h.a(ShareToFacebookRedirectUI.this, "", false, new DialogInterface.OnCancelListener()
+          localeec.CNG = str;
+          localeec.CMP = ShareToFacebookRedirectUI.b(ShareToFacebookRedirectUI.this);
+          localeec.RIC = ShareToFacebookRedirectUI.c(ShareToFacebookRedirectUI.this);
+          localeec.GtP = ShareToFacebookRedirectUI.d(ShareToFacebookRedirectUI.this);
+          localeec.Uie = ShareToFacebookRedirectUI.e(ShareToFacebookRedirectUI.this);
+          paramAnonymousString = new com.tencent.mm.plugin.account.model.h(localeec);
+          com.tencent.mm.kernel.h.aGY().a(paramAnonymousString, 0);
+          ShareToFacebookRedirectUI.a(ShareToFacebookRedirectUI.this, com.tencent.mm.ui.base.h.a(ShareToFacebookRedirectUI.this, "", false, new DialogInterface.OnCancelListener()
           {
             public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
             {
@@ -122,10 +123,10 @@ public class ShareToFacebookRedirectUI
     AppMethodBeat.o(128742);
   }
   
-  private void cb(String paramString1, String paramString2)
+  private void ch(String paramString1, String paramString2)
   {
     AppMethodBeat.i(128743);
-    h.a(getContext(), paramString2, paramString1, new DialogInterface.OnClickListener()
+    com.tencent.mm.ui.base.h.a(getContext(), paramString2, paramString1, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -161,8 +162,8 @@ public class ShareToFacebookRedirectUI
       if (!bool) {
         break;
       }
-      bpW();
-      bpw();
+      bAi();
+      bzI();
       AppMethodBeat.o(128744);
       return;
     }
@@ -174,13 +175,13 @@ public class ShareToFacebookRedirectUI
   {
     AppMethodBeat.i(128738);
     super.onCreate(paramBundle);
-    g.azz().a(433, this);
-    this.ksh = getIntent().getStringExtra("title");
-    this.ksi = getIntent().getStringExtra("digest");
-    this.ksj = getIntent().getStringExtra("img");
-    this.ksk = getIntent().getStringExtra("link");
-    Log.i(TAG, "title %s, digest:%s, img:%s, link:%s", new Object[] { this.ksh, this.ksi, this.ksj, this.ksk });
-    if (!z.aUF())
+    com.tencent.mm.kernel.h.aGY().a(433, this);
+    this.njQ = getIntent().getStringExtra("title");
+    this.njR = getIntent().getStringExtra("digest");
+    this.njS = getIntent().getStringExtra("img");
+    this.njT = getIntent().getStringExtra("link");
+    Log.i(TAG, "title %s, digest:%s, img:%s, link:%s", new Object[] { this.njQ, this.njR, this.njS, this.njT });
+    if (!z.bdH())
     {
       paramBundle = new Intent(this, FacebookAuthUI.class);
       paramBundle.putExtra("is_force_unbind", true);
@@ -188,48 +189,48 @@ public class ShareToFacebookRedirectUI
       AppMethodBeat.o(128738);
       return;
     }
-    bpW();
-    bpw();
+    bAi();
+    bzI();
     AppMethodBeat.o(128738);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(128739);
-    g.azz().b(433, this);
+    com.tencent.mm.kernel.h.aGY().b(433, this);
     super.onDestroy();
     AppMethodBeat.o(128739);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(128740);
     Log.i(TAG, "type:%d, code:%d, msg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     hideVKB();
-    this.gut.dismiss();
+    this.iYE.dismiss();
     if ((paramInt1 == 4) && (paramInt2 == -68))
     {
       paramq = paramString;
       if (Util.isNullOrNil(paramString)) {
         paramq = "error";
       }
-      cb(getString(2131755998), paramq);
+      ch(getString(r.j.app_tip), paramq);
       AppMethodBeat.o(128740);
       return;
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramString = getString(2131765834);
+      paramString = getString(r.j.share_ok);
       new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface) {}
       };
-      h.cD(this, paramString);
+      com.tencent.mm.ui.base.h.cO(this, paramString);
       finish();
       AppMethodBeat.o(128740);
       return;
     }
-    h.a(getContext(), "err(" + paramInt2 + "," + paramInt1 + ")", getString(2131755998), new DialogInterface.OnClickListener()
+    com.tencent.mm.ui.base.h.a(getContext(), "err(" + paramInt2 + "," + paramInt1 + ")", getString(r.j.app_tip), new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -249,7 +250,7 @@ public class ShareToFacebookRedirectUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.ShareToFacebookRedirectUI
  * JD-Core Version:    0.7.0.1
  */

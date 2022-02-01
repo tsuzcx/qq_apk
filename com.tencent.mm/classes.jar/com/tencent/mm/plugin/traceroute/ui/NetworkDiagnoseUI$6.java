@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.traceroute.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bu.a;
+import com.tencent.mm.model.bv.a;
 import com.tencent.mm.model.z;
 import com.tencent.mm.network.g;
 import com.tencent.mm.plugin.traceroute.b.a;
@@ -18,7 +18,7 @@ import com.tencent.mm.sdk.thread.ThreadPool;
 import java.util.Map;
 
 final class NetworkDiagnoseUI$6
-  implements bu.a
+  implements bv.a
 {
   NetworkDiagnoseUI$6(NetworkDiagnoseUI paramNetworkDiagnoseUI) {}
   
@@ -30,57 +30,57 @@ final class NetworkDiagnoseUI$6
       AppMethodBeat.o(29715);
       return;
     }
-    String str = z.aTY();
-    NetworkDiagnoseUI.a(this.Gsi, new a(str));
-    NetworkDiagnoseUI.d(this.Gsi).c(paramg.getIPsString(true), true);
-    NetworkDiagnoseUI.d(this.Gsi).c(paramg.getIPsString(false), false);
-    NetworkDiagnoseUI.d(this.Gsi).Grn = new a.d()
+    String str = z.bcZ();
+    NetworkDiagnoseUI.a(this.NeT, new a(str));
+    NetworkDiagnoseUI.d(this.NeT).c(paramg.getIPsString(true), true);
+    NetworkDiagnoseUI.d(this.NeT).c(paramg.getIPsString(false), false);
+    NetworkDiagnoseUI.d(this.NeT).NdY = new a.d()
     {
       public final void onFinished()
       {
         AppMethodBeat.i(29711);
-        NetworkDiagnoseUI.i(NetworkDiagnoseUI.6.this.Gsi).sendEmptyMessageDelayed(2, 500L);
+        NetworkDiagnoseUI.i(NetworkDiagnoseUI.6.this.NeT).sendEmptyMessageDelayed(2, 500L);
         AppMethodBeat.o(29711);
       }
     };
-    NetworkDiagnoseUI.d(this.Gsi).Grm = new a.e()
+    NetworkDiagnoseUI.d(this.NeT).NdX = new a.e()
     {
-      public final void fAf()
+      public final void gsg()
       {
         AppMethodBeat.i(29712);
-        NetworkDiagnoseUI.i(NetworkDiagnoseUI.6.this.Gsi).sendEmptyMessageDelayed(1, 500L);
+        NetworkDiagnoseUI.i(NetworkDiagnoseUI.6.this.NeT).sendEmptyMessageDelayed(1, 500L);
         AppMethodBeat.o(29712);
       }
     };
-    NetworkDiagnoseUI.d(this.Gsi).Grp = new a.b()
+    NetworkDiagnoseUI.d(this.NeT).Nea = new a.b()
     {
-      public final void fAd()
+      public final void gse()
       {
         AppMethodBeat.i(29713);
-        NetworkDiagnoseUI.i(NetworkDiagnoseUI.6.this.Gsi).sendEmptyMessage(3);
+        NetworkDiagnoseUI.i(NetworkDiagnoseUI.6.this.NeT).sendEmptyMessage(3);
         AppMethodBeat.o(29713);
       }
     };
-    NetworkDiagnoseUI.d(this.Gsi).Gro = new a.c()
+    NetworkDiagnoseUI.d(this.NeT).NdZ = new a.c()
     {
-      public final void fAe()
+      public final void gsf()
       {
         AppMethodBeat.i(29714);
-        NetworkDiagnoseUI.i(NetworkDiagnoseUI.6.this.Gsi).sendEmptyMessage(4);
+        NetworkDiagnoseUI.i(NetworkDiagnoseUI.6.this.NeT).sendEmptyMessage(4);
         AppMethodBeat.o(29714);
       }
     };
-    paramg = NetworkDiagnoseUI.d(this.Gsi);
-    if ((paramg.Grl == null) || (paramg.Grl.size() == 0)) {
+    paramg = NetworkDiagnoseUI.d(this.NeT);
+    if ((paramg.NdW == null) || (paramg.NdW.size() == 0)) {
       Log.e("MicroMsg.MMTraceRoute", "no iplist");
     }
     for (;;)
     {
-      NetworkDiagnoseUI.j(this.Gsi).startTimer(1200L);
+      NetworkDiagnoseUI.j(this.NeT).startTimer(1200L);
       AppMethodBeat.o(29715);
       return;
-      if (a.Grh == null) {
-        a.Grh = new c();
+      if (a.NdS == null) {
+        a.NdS = new c();
       }
       ThreadPool.post(new a.j(paramg, (byte)0), "MMTraceRoute_start");
     }
@@ -88,7 +88,7 @@ final class NetworkDiagnoseUI$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.traceroute.ui.NetworkDiagnoseUI.6
  * JD-Core Version:    0.7.0.1
  */

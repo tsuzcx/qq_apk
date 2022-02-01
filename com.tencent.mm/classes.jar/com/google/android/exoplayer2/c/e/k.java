@@ -9,30 +9,30 @@ final class k
   static void a(int paramInt, i parami)
   {
     AppMethodBeat.i(92179);
-    int m = parami.em(6);
+    int m = parami.eA(6);
     int i = 0;
     if (i < m + 1)
     {
-      switch (parami.em(16))
+      switch (parami.eA(16))
       {
       }
       for (;;)
       {
         i += 1;
         break;
-        if (parami.uI()) {}
-        for (int j = parami.em(4) + 1; parami.uI(); j = 1)
+        if (parami.sD()) {}
+        for (int j = parami.eA(4) + 1; parami.sD(); j = 1)
         {
-          int n = parami.em(8);
+          int n = parami.eA(8);
           k = 0;
           while (k < n + 1)
           {
-            parami.en(eo(paramInt - 1));
-            parami.en(eo(paramInt - 1));
+            parami.eB(eC(paramInt - 1));
+            parami.eB(eC(paramInt - 1));
             k += 1;
           }
         }
-        if (parami.em(2) != 0)
+        if (parami.eA(2) != 0)
         {
           parami = new o("to reserved bits must be zero after mapping coupling steps");
           AppMethodBeat.o(92179);
@@ -43,16 +43,16 @@ final class k
           k = 0;
           while (k < paramInt)
           {
-            parami.en(4);
+            parami.eB(4);
             k += 1;
           }
         }
         int k = 0;
         while (k < j)
         {
-          parami.en(8);
-          parami.en(8);
-          parami.en(8);
+          parami.eB(8);
+          parami.eB(8);
+          parami.eB(8);
           k += 1;
         }
       }
@@ -63,14 +63,14 @@ final class k
   public static boolean a(int paramInt, m paramm, boolean paramBoolean)
   {
     AppMethodBeat.i(92177);
-    if (paramm.xd() < 7)
+    if (paramm.vg() < 7)
     {
       if (paramBoolean)
       {
         AppMethodBeat.o(92177);
         return false;
       }
-      paramm = new o("too short header: " + paramm.xd());
+      paramm = new o("too short header: " + paramm.vg());
       AppMethodBeat.o(92177);
       throw paramm;
     }
@@ -103,12 +103,12 @@ final class k
   static c[] a(i parami)
   {
     AppMethodBeat.i(92178);
-    int j = parami.em(6) + 1;
+    int j = parami.eA(6) + 1;
     c[] arrayOfc = new c[j];
     int i = 0;
     while (i < j)
     {
-      arrayOfc[i] = new c(parami.uI(), parami.em(16), parami.em(16), parami.em(8));
+      arrayOfc[i] = new c(parami.sD(), parami.eA(16), parami.eA(16), parami.eA(8));
       i += 1;
     }
     AppMethodBeat.o(92178);
@@ -118,7 +118,7 @@ final class k
   static void b(i parami)
   {
     AppMethodBeat.i(92180);
-    int m = parami.em(6);
+    int m = parami.eA(6);
     int i = 0;
     int n;
     int[] arrayOfInt;
@@ -127,29 +127,29 @@ final class k
     int i1;
     if (i < m + 1)
     {
-      if (parami.em(16) > 2)
+      if (parami.eA(16) > 2)
       {
         parami = new o("residueType greater than 2 is not decodable");
         AppMethodBeat.o(92180);
         throw parami;
       }
-      parami.en(24);
-      parami.en(24);
-      parami.en(24);
-      n = parami.em(6) + 1;
-      parami.en(8);
+      parami.eB(24);
+      parami.eB(24);
+      parami.eB(24);
+      n = parami.eA(6) + 1;
+      parami.eB(8);
       arrayOfInt = new int[n];
       j = 0;
       if (j < n)
       {
-        i1 = parami.em(3);
-        if (!parami.uI()) {
+        i1 = parami.eA(3);
+        if (!parami.sD()) {
           break label196;
         }
       }
     }
     label196:
-    for (int k = parami.em(5);; k = 0)
+    for (int k = parami.eA(5);; k = 0)
     {
       arrayOfInt[j] = (k * 8 + i1);
       j += 1;
@@ -161,7 +161,7 @@ final class k
         while (k < 8)
         {
           if ((arrayOfInt[j] & 1 << k) != 0) {
-            parami.en(8);
+            parami.eB(8);
           }
           k += 1;
         }
@@ -177,11 +177,11 @@ final class k
   static void c(i parami)
   {
     AppMethodBeat.i(92181);
-    int n = parami.em(6);
+    int n = parami.eA(6);
     int i = 0;
     while (i < n + 1)
     {
-      int j = parami.em(16);
+      int j = parami.eA(16);
       int k;
       switch (j)
       {
@@ -190,26 +190,26 @@ final class k
         AppMethodBeat.o(92181);
         throw parami;
       case 0: 
-        parami.en(8);
-        parami.en(16);
-        parami.en(16);
-        parami.en(6);
-        parami.en(8);
-        k = parami.em(4);
+        parami.eB(8);
+        parami.eB(16);
+        parami.eB(16);
+        parami.eB(6);
+        parami.eB(8);
+        k = parami.eA(4);
         j = 0;
       }
       while (j < k + 1)
       {
-        parami.en(8);
+        parami.eB(8);
         j += 1;
         continue;
-        int i1 = parami.em(5);
+        int i1 = parami.eA(5);
         k = -1;
         int[] arrayOfInt1 = new int[i1];
         j = 0;
         while (j < i1)
         {
-          arrayOfInt1[j] = parami.em(4);
+          arrayOfInt1[j] = parami.eA(4);
           m = k;
           if (arrayOfInt1[j] > k) {
             m = arrayOfInt1[j];
@@ -221,21 +221,21 @@ final class k
         j = 0;
         while (j < arrayOfInt2.length)
         {
-          arrayOfInt2[j] = (parami.em(3) + 1);
-          m = parami.em(2);
+          arrayOfInt2[j] = (parami.eA(3) + 1);
+          m = parami.eA(2);
           if (m > 0) {
-            parami.en(8);
+            parami.eB(8);
           }
           k = 0;
           while (k < 1 << m)
           {
-            parami.en(8);
+            parami.eB(8);
             k += 1;
           }
           j += 1;
         }
-        parami.en(2);
-        int i2 = parami.em(4);
+        parami.eB(2);
+        int i2 = parami.eA(4);
         k = 0;
         j = 0;
         int m = 0;
@@ -244,7 +244,7 @@ final class k
           m += arrayOfInt2[arrayOfInt1[j]];
           while (k < m)
           {
-            parami.en(i2);
+            parami.eB(i2);
             k += 1;
           }
           j += 1;
@@ -255,7 +255,7 @@ final class k
     AppMethodBeat.o(92181);
   }
   
-  public static int eo(int paramInt)
+  public static int eC(int paramInt)
   {
     int i = 0;
     while (paramInt > 0)
@@ -266,53 +266,85 @@ final class k
     return i;
   }
   
+  public static final class a
+  {
+    public final int aZv;
+    public final long[] aZw;
+    public final int aZx;
+    public final boolean aZy;
+    public final int entries;
+    
+    public a(int paramInt1, int paramInt2, long[] paramArrayOfLong, int paramInt3, boolean paramBoolean)
+    {
+      this.aZv = paramInt1;
+      this.entries = paramInt2;
+      this.aZw = paramArrayOfLong;
+      this.aZx = paramInt3;
+      this.aZy = paramBoolean;
+    }
+  }
+  
+  public static final class b
+  {
+    public final String[] aZz;
+    public final int length;
+    public final String vendor;
+    
+    public b(String paramString, String[] paramArrayOfString, int paramInt)
+    {
+      this.vendor = paramString;
+      this.aZz = paramArrayOfString;
+      this.length = paramInt;
+    }
+  }
+  
   public static final class c
   {
-    public final boolean bpY;
-    public final int bpZ;
-    public final int bqa;
-    public final int bqb;
+    public final boolean aZA;
+    public final int aZB;
+    public final int aZC;
+    public final int aZD;
     
     public c(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
     {
-      this.bpY = paramBoolean;
-      this.bpZ = paramInt1;
-      this.bqa = paramInt2;
-      this.bqb = paramInt3;
+      this.aZA = paramBoolean;
+      this.aZB = paramInt1;
+      this.aZC = paramInt2;
+      this.aZD = paramInt3;
     }
   }
   
   public static final class d
   {
-    public final long bqc;
-    public final int bqd;
-    public final int bqe;
-    public final int bqf;
-    public final int bqg;
-    public final int bqh;
-    public final boolean bqi;
+    public final long aZE;
+    public final int aZF;
+    public final int aZG;
+    public final int aZH;
+    public final int aZI;
+    public final int aZJ;
+    public final boolean aZK;
     public final int channels;
     public final byte[] data;
     public final long sampleRate;
     
     public d(long paramLong1, int paramInt1, long paramLong2, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean, byte[] paramArrayOfByte)
     {
-      this.bqc = paramLong1;
+      this.aZE = paramLong1;
       this.channels = paramInt1;
       this.sampleRate = paramLong2;
-      this.bqd = paramInt2;
-      this.bqe = paramInt3;
-      this.bqf = paramInt4;
-      this.bqg = paramInt5;
-      this.bqh = paramInt6;
-      this.bqi = paramBoolean;
+      this.aZF = paramInt2;
+      this.aZG = paramInt3;
+      this.aZH = paramInt4;
+      this.aZI = paramInt5;
+      this.aZJ = paramInt6;
+      this.aZK = paramBoolean;
       this.data = paramArrayOfByte;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.c.e.k
  * JD-Core Version:    0.7.0.1
  */

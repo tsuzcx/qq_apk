@@ -41,7 +41,7 @@ public final class s
     return paramVarArgs;
   }
   
-  public final o GJ(long paramLong)
+  public final o NP(long paramLong)
   {
     AppMethodBeat.i(41492);
     o localo = new o();
@@ -55,7 +55,7 @@ public final class s
     return null;
   }
   
-  public final Cursor On(int paramInt)
+  public final Cursor TG(int paramInt)
   {
     AppMethodBeat.i(183866);
     Cursor localCursor = rawQuery("select * from GameRawMessage where showType = " + paramInt + " and showInMsgList = 1 and isHidden = 0" + " order by isRead, createTime desc", new String[0]);
@@ -63,11 +63,31 @@ public final class s
     return localCursor;
   }
   
-  public final int Oo(int paramInt)
+  public final o TH(int paramInt)
+  {
+    o localo = null;
+    AppMethodBeat.i(190777);
+    Cursor localCursor = TG(paramInt);
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(190777);
+      return null;
+    }
+    if (localCursor.moveToFirst())
+    {
+      localo = new o();
+      localo.convertFrom(localCursor);
+    }
+    localCursor.close();
+    AppMethodBeat.o(190777);
+    return localo;
+  }
+  
+  public final int TI(int paramInt)
   {
     int i = 0;
     AppMethodBeat.i(184805);
-    Cursor localCursor = On(paramInt);
+    Cursor localCursor = TG(paramInt);
     if (localCursor == null)
     {
       AppMethodBeat.o(184805);
@@ -82,7 +102,7 @@ public final class s
     return paramInt;
   }
   
-  public final int Op(int paramInt)
+  public final int TJ(int paramInt)
   {
     int i = 0;
     AppMethodBeat.i(183867);
@@ -101,15 +121,15 @@ public final class s
     return paramInt;
   }
   
-  public final boolean Oq(int paramInt)
+  public final boolean TK(int paramInt)
   {
-    AppMethodBeat.i(204170);
+    AppMethodBeat.i(190822);
     boolean bool = execSQL("GameRawMessage", "delete from GameRawMessage where showType = ".concat(String.valueOf(paramInt)));
-    AppMethodBeat.o(204170);
+    AppMethodBeat.o(190822);
     return bool;
   }
   
-  public final o aAk(String paramString)
+  public final o aJW(String paramString)
   {
     AppMethodBeat.i(184804);
     paramString = rawQuery("select * from GameRawMessage where gameMsgId = \"" + paramString + "\"", new String[0]);
@@ -214,7 +234,7 @@ public final class s
   
   public final boolean d(long[] paramArrayOfLong)
   {
-    AppMethodBeat.i(204169);
+    AppMethodBeat.i(190815);
     if (paramArrayOfLong.length != 0)
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -230,78 +250,21 @@ public final class s
       }
       localStringBuilder.append(")");
       boolean bool = execSQL("GameRawMessage", String.format("delete from GameRawMessage where %s", new Object[] { localStringBuilder.toString() }));
-      AppMethodBeat.o(204169);
+      AppMethodBeat.o(190815);
       return bool;
     }
-    AppMethodBeat.o(204169);
+    AppMethodBeat.o(190815);
     return false;
   }
   
-  public final void dVA()
-  {
-    AppMethodBeat.i(204168);
-    execSQL("GameRawMessage", "delete from GameRawMessage");
-    AppMethodBeat.o(204168);
-  }
-  
-  public final c.b dVB()
-  {
-    AppMethodBeat.i(204171);
-    c.b localb = new c.b();
-    try
-    {
-      long l = System.currentTimeMillis();
-      Cursor localCursor = rawQuery("select count(*) from GameRawMessage where rawXML like \"%<chatmsg%\" and isRead=0", new String[0]);
-      if (localCursor != null)
-      {
-        if (localCursor.moveToFirst())
-        {
-          int i = localCursor.getInt(0);
-          if (i > 0)
-          {
-            localb.xtZ = true;
-            localb.xua = i;
-          }
-        }
-        localCursor.close();
-        if (localb.xtZ)
-        {
-          Log.i("MicroMsg.GameMessageStorage", "unread logic costtime:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-          AppMethodBeat.o(204171);
-          return localb;
-        }
-      }
-      localCursor = rawQuery("select count(*) from GameRawMessage where rawXML like \"%<chatmsg%\"", new String[0]);
-      if (localCursor == null)
-      {
-        AppMethodBeat.o(204171);
-        return localb;
-      }
-      if ((localCursor.moveToFirst()) && (localCursor.getInt(0) > 0)) {
-        localb.xtZ = true;
-      }
-      localCursor.close();
-      Log.i("MicroMsg.GameMessageStorage", "loop logic costtime:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Log.i("MicroMsg.GameMessageStorage", "errMsg:%s", new Object[] { localException.getMessage() });
-      }
-    }
-    AppMethodBeat.o(204171);
-    return localb;
-  }
-  
-  public final void dVw()
+  public final void eyE()
   {
     AppMethodBeat.i(41495);
     execSQL("GameRawMessage", "update GameRawMessage set isHidden = 0 where isHidden = 1");
     AppMethodBeat.o(41495);
   }
   
-  public final void dVx()
+  public final void eyF()
   {
     AppMethodBeat.i(41496);
     String str = D(new int[] { 2, 5, 6, 10, 11, 100 });
@@ -309,7 +272,7 @@ public final class s
     AppMethodBeat.o(41496);
   }
   
-  public final void dVy()
+  public final void eyG()
   {
     AppMethodBeat.i(183865);
     String str = "delete from GameRawMessage where createTime < (" + "select createTime from GameRawMessage order by createTime desc limit 100000,1" + ")";
@@ -317,7 +280,7 @@ public final class s
     AppMethodBeat.o(183865);
   }
   
-  public final int dVz()
+  public final int eyH()
   {
     int i = 0;
     AppMethodBeat.i(41497);
@@ -335,10 +298,67 @@ public final class s
     AppMethodBeat.o(41497);
     return i;
   }
+  
+  public final void eyI()
+  {
+    AppMethodBeat.i(190805);
+    execSQL("GameRawMessage", "delete from GameRawMessage");
+    AppMethodBeat.o(190805);
+  }
+  
+  public final c.b eyJ()
+  {
+    AppMethodBeat.i(190836);
+    c.b localb = new c.b();
+    try
+    {
+      long l = System.currentTimeMillis();
+      Cursor localCursor = rawQuery("select count(*) from GameRawMessage where rawXML like \"%<chatmsg%\" and isRead=0", new String[0]);
+      if (localCursor != null)
+      {
+        if (localCursor.moveToFirst())
+        {
+          int i = localCursor.getInt(0);
+          if (i > 0)
+          {
+            localb.Cqq = true;
+            localb.Cqr = i;
+          }
+        }
+        localCursor.close();
+        if (localb.Cqq)
+        {
+          Log.i("MicroMsg.GameMessageStorage", "unread logic costtime:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+          AppMethodBeat.o(190836);
+          return localb;
+        }
+      }
+      localCursor = rawQuery("select count(*) from GameRawMessage where rawXML like \"%<chatmsg%\"", new String[0]);
+      if (localCursor == null)
+      {
+        AppMethodBeat.o(190836);
+        return localb;
+      }
+      if ((localCursor.moveToFirst()) && (localCursor.getInt(0) > 0)) {
+        localb.Cqq = true;
+      }
+      localCursor.close();
+      Log.i("MicroMsg.GameMessageStorage", "loop logic costtime:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.i("MicroMsg.GameMessageStorage", "errMsg:%s", new Object[] { localException.getMessage() });
+      }
+    }
+    AppMethodBeat.o(190836);
+    return localb;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.s
  * JD-Core Version:    0.7.0.1
  */

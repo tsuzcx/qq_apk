@@ -5,14 +5,14 @@ import java.util.Arrays;
 
 public final class g
 {
-  private int aHK;
-  public final f[] bED;
+  private int aNf;
+  public final f[] bof;
   public final int length;
   
   public g(f... paramVarArgs)
   {
     AppMethodBeat.i(92949);
-    this.bED = paramVarArgs;
+    this.bof = paramVarArgs;
     this.length = paramVarArgs.length;
     AppMethodBeat.o(92949);
   }
@@ -31,7 +31,7 @@ public final class g
       return false;
     }
     paramObject = (g)paramObject;
-    boolean bool = Arrays.equals(this.bED, paramObject.bED);
+    boolean bool = Arrays.equals(this.bof, paramObject.bof);
     AppMethodBeat.o(92952);
     return bool;
   }
@@ -39,25 +39,25 @@ public final class g
   public final int hashCode()
   {
     AppMethodBeat.i(92951);
-    if (this.aHK == 0) {
-      this.aHK = (Arrays.hashCode(this.bED) + 527);
+    if (this.aNf == 0) {
+      this.aNf = (Arrays.hashCode(this.bof) + 527);
     }
-    int i = this.aHK;
+    int i = this.aNf;
     AppMethodBeat.o(92951);
     return i;
   }
   
-  public final f[] wB()
+  public final f[] uC()
   {
     AppMethodBeat.i(92950);
-    f[] arrayOff = (f[])this.bED.clone();
+    f[] arrayOff = (f[])this.bof.clone();
     AppMethodBeat.o(92950);
     return arrayOff;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.g.g
  * JD-Core Version:    0.7.0.1
  */

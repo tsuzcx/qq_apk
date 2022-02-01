@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.record.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fq;
+import com.tencent.mm.f.c.fx;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class j
-  extends fq
+  extends fx
   implements c
 {
   public static IAutoDBItem.MAutoDBInfo info;
@@ -97,6 +97,15 @@ public final class j
     AppMethodBeat.o(140937);
   }
   
+  public final boolean equals(Object paramObject)
+  {
+    if (!(paramObject instanceof j)) {}
+    while (this.field_localId != ((j)paramObject).field_localId) {
+      return false;
+    }
+    return true;
+  }
+  
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
@@ -133,7 +142,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.record.a.j
  * JD-Core Version:    0.7.0.1
  */

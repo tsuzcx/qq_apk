@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/nm" android:clipChildren="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="56.0dip">
+    <FrameLayout android:id="@id/nm" android:clipChildren="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/apv">
         <LinearLayout android:orientation="vertical" android:id="@id/nq" android:layout_width="fill_parent" android:layout_height="fill_parent">
             <TextView android:textSize="@dimen/t" android:textColor="#e6ffffff" android:gravity="center" android:id="@id/ns" android:layout_width="fill_parent" android:layout_height="@dimen/b9" android:text="@string/sb" />
             <View android:background="#1a000000" android:layout_width="fill_parent" android:layout_height="1.0px" />
@@ -10,8 +10,7 @@
             </LinearLayout>
         </LinearLayout>
     </FrameLayout>
-    <FrameLayout android:id="@id/jsw" android:background="@color/ac_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <FrameLayout android:id="@id/nn" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_alignParentBottom="true" />
     <com.tencent.mm.plugin.taskbar.api.GyroView android:id="@id/dmt" android:layout_width="@dimen/a8w" android:layout_height="@dimen/a8v" android:layout_marginBottom="@dimen/b9" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopViewContainer android:id="@id/bnw" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="56.0dip" />
+    <com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopContainerView android:id="@id/bnw" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/nn" android:layout_width="fill_parent" android:layout_height="@dimen/apv" android:layout_alignParentBottom="true" />
 </RelativeLayout>

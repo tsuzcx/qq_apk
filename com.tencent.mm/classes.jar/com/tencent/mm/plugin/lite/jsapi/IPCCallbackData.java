@@ -11,37 +11,37 @@ class IPCCallbackData
   implements Parcelable
 {
   public static final Parcelable.Creator<IPCCallbackData> CREATOR;
-  public boolean cqT;
-  public String cqU;
-  public String cqV;
-  public boolean yEe;
+  public boolean EfR;
+  public boolean coH;
+  public String coI;
+  public String coJ;
   
   static
   {
-    AppMethodBeat.i(198821);
+    AppMethodBeat.i(233949);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(198821);
+    AppMethodBeat.o(233949);
   }
   
   public IPCCallbackData()
   {
-    this.cqT = false;
-    this.yEe = false;
-    this.cqU = null;
-    this.cqV = null;
+    this.coH = false;
+    this.EfR = false;
+    this.coI = null;
+    this.coJ = null;
   }
   
   public IPCCallbackData(Parcel paramParcel)
   {
-    AppMethodBeat.i(198818);
-    this.cqT = false;
-    this.yEe = false;
-    this.cqU = null;
-    this.cqV = null;
+    AppMethodBeat.i(233942);
+    this.coH = false;
+    this.EfR = false;
+    this.coI = null;
+    this.coJ = null;
     if (paramParcel.readInt() == 1)
     {
       bool1 = true;
-      this.cqT = bool1;
+      this.coH = bool1;
       if (paramParcel.readInt() != 1) {
         break label88;
       }
@@ -49,10 +49,10 @@ class IPCCallbackData
     label88:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.yEe = bool1;
-      this.cqU = paramParcel.readString();
-      this.cqV = paramParcel.readString();
-      AppMethodBeat.o(198818);
+      this.EfR = bool1;
+      this.coI = paramParcel.readString();
+      this.coJ = paramParcel.readString();
+      AppMethodBeat.o(233942);
       return;
       bool1 = false;
       break;
@@ -64,23 +64,23 @@ class IPCCallbackData
     return 0;
   }
   
-  public final JSONObject ecy()
+  public final JSONObject eLB()
   {
-    AppMethodBeat.i(198820);
-    if (this.cqV == null)
+    AppMethodBeat.i(233947);
+    if (this.coJ == null)
     {
-      AppMethodBeat.o(198820);
+      AppMethodBeat.o(233947);
       return null;
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject(this.cqV);
-      AppMethodBeat.o(198820);
+      JSONObject localJSONObject = new JSONObject(this.coJ);
+      AppMethodBeat.o(233947);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
     {
-      AppMethodBeat.o(198820);
+      AppMethodBeat.o(233947);
     }
     return null;
   }
@@ -88,12 +88,12 @@ class IPCCallbackData
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    AppMethodBeat.i(198819);
-    if (this.cqT)
+    AppMethodBeat.i(233945);
+    if (this.coH)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.yEe) {
+      if (!this.EfR) {
         break label62;
       }
     }
@@ -101,9 +101,9 @@ class IPCCallbackData
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.cqU);
-      paramParcel.writeString(this.cqV);
-      AppMethodBeat.o(198819);
+      paramParcel.writeString(this.coI);
+      paramParcel.writeString(this.coJ);
+      AppMethodBeat.o(233945);
       return;
       paramInt = 0;
       break;

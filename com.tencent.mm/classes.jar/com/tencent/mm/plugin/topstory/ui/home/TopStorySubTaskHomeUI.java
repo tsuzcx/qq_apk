@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.topstory.ui.c.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
@@ -13,18 +14,18 @@ import com.tencent.mm.ui.base.a;
 public class TopStorySubTaskHomeUI
   extends MMActivity
 {
-  private b Gkl;
+  private b MWZ;
   
   public TopStorySubTaskHomeUI()
   {
     AppMethodBeat.i(126020);
-    this.Gkl = new b(this, false);
+    this.MWZ = new b(this, false);
     AppMethodBeat.o(126020);
   }
   
   public int getLayoutId()
   {
-    return 2131496744;
+    return c.e.top_story_home_ui;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -32,14 +33,14 @@ public class TopStorySubTaskHomeUI
     AppMethodBeat.i(126021);
     super.onCreate(paramBundle);
     Log.i("MicroMsg.TopStory.TopStoryHomeUI", "use TopStoryHomeUI");
-    this.Gkl.onCreate(paramBundle);
+    this.MWZ.onCreate(paramBundle);
     AppMethodBeat.o(126021);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(126025);
-    this.Gkl.onDestroy();
+    this.MWZ.onDestroy();
     super.onDestroy();
     AppMethodBeat.o(126025);
   }
@@ -47,7 +48,7 @@ public class TopStorySubTaskHomeUI
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(126022);
-    boolean bool = this.Gkl.abS(paramInt);
+    boolean bool = this.MWZ.ajx(paramInt);
     AppMethodBeat.o(126022);
     return bool;
   }
@@ -55,7 +56,7 @@ public class TopStorySubTaskHomeUI
   public void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(126026);
-    this.Gkl.onNewIntent(paramIntent);
+    this.MWZ.onNewIntent(paramIntent);
     super.onNewIntent(paramIntent);
     AppMethodBeat.o(126026);
   }
@@ -63,7 +64,7 @@ public class TopStorySubTaskHomeUI
   public void onPause()
   {
     AppMethodBeat.i(126024);
-    this.Gkl.onPause();
+    this.MWZ.onPause();
     super.onPause();
     AppMethodBeat.o(126024);
   }
@@ -72,7 +73,7 @@ public class TopStorySubTaskHomeUI
   {
     AppMethodBeat.i(126023);
     super.onResume();
-    this.Gkl.onResume();
+    this.MWZ.onResume();
     AppMethodBeat.o(126023);
   }
   
@@ -80,7 +81,7 @@ public class TopStorySubTaskHomeUI
   {
     AppMethodBeat.i(126027);
     super.onSaveInstanceState(paramBundle);
-    this.Gkl.onSaveInstanceState(paramBundle);
+    this.MWZ.onSaveInstanceState(paramBundle);
     AppMethodBeat.o(126027);
   }
   
@@ -92,7 +93,7 @@ public class TopStorySubTaskHomeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.home.TopStorySubTaskHomeUI
  * JD-Core Version:    0.7.0.1
  */

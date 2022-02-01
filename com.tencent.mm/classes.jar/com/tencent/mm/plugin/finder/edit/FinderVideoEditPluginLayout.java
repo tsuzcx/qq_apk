@@ -14,19 +14,19 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.jf;
-import com.tencent.mm.plugin.recordvideo.b.f;
+import com.tencent.mm.f.b.a.lo;
+import com.tencent.mm.plugin.recordvideo.b.e;
+import com.tencent.mm.plugin.recordvideo.b.g;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
-import com.tencent.mm.plugin.recordvideo.plugin.ab;
+import com.tencent.mm.plugin.recordvideo.plugin.ac;
 import com.tencent.mm.plugin.recordvideo.plugin.cropvideo.EditorVideoPlayView;
-import com.tencent.mm.plugin.recordvideo.plugin.h;
 import com.tencent.mm.plugin.recordvideo.plugin.i;
+import com.tencent.mm.plugin.recordvideo.plugin.j;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.EditorVideoPluginLayoutNew;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
-import com.tencent.mm.plugin.recordvideo.plugin.q;
-import com.tencent.mm.plugin.recordvideo.plugin.s;
+import com.tencent.mm.plugin.recordvideo.plugin.r;
 import com.tencent.mm.plugin.recordvideo.ui.WxCropOperationLayout;
 import com.tencent.mm.plugin.recordvideo.ui.WxCropOperationLayout.j;
 import com.tencent.mm.plugin.recordvideo.ui.editor.EditorAudioView;
@@ -35,13 +35,12 @@ import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/edit/FinderVideoEditPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/EditorVideoPluginLayoutNew;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "invertMatrix", "Landroid/graphics/Matrix;", "getPlayerView", "Landroid/view/View;", "getScale", "", "values", "", "initLogic", "", "navigator", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "startRemux", "statusChange", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus$RecordStatus;", "param", "Landroid/os/Bundle;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/edit/FinderVideoEditPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/EditorVideoPluginLayoutNew;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "invertMatrix", "Landroid/graphics/Matrix;", "getPlayerView", "Landroid/view/View;", "getScale", "", "values", "", "initLogic", "", "navigator", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "startRemux", "statusChange", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus$RecordStatus;", "param", "Landroid/os/Bundle;", "plugin-finder_release"})
 public final class FinderVideoEditPluginLayout
   extends EditorVideoPluginLayoutNew
 {
-  private Matrix tHm;
+  private Matrix xpW;
   
   public FinderVideoEditPluginLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -50,10 +49,10 @@ public final class FinderVideoEditPluginLayout
     AppMethodBeat.o(165510);
   }
   
-  private static float l(float[] paramArrayOfFloat)
+  private static float m(float[] paramArrayOfFloat)
   {
     AppMethodBeat.i(165507);
-    p.h(paramArrayOfFloat, "values");
+    p.k(paramArrayOfFloat, "values");
     float f1 = paramArrayOfFloat[0];
     float f2 = paramArrayOfFloat[3];
     double d1 = f1 * f1;
@@ -65,114 +64,158 @@ public final class FinderVideoEditPluginLayout
   
   public final void a(com.tencent.mm.plugin.recordvideo.activity.a parama, RecordConfigProvider paramRecordConfigProvider)
   {
+    Object localObject1 = null;
     AppMethodBeat.i(165506);
-    p.h(parama, "navigator");
-    p.h(paramRecordConfigProvider, "configProvider");
+    p.k(parama, "navigator");
+    p.k(paramRecordConfigProvider, "configProvider");
     super.a(parama, paramRecordConfigProvider);
-    parama = paramRecordConfigProvider.jkf;
-    if (parama != null)
+    paramRecordConfigProvider = paramRecordConfigProvider.mab;
+    Object localObject2;
+    float f1;
+    float f2;
+    if (paramRecordConfigProvider != null)
     {
-      paramRecordConfigProvider = getPreviewPlugin().zyd.getParent();
-      p.g(paramRecordConfigProvider, "previewPlugin.videoPlayView.parent");
-      paramRecordConfigProvider = paramRecordConfigProvider.getParent();
-      if (paramRecordConfigProvider == null)
+      parama = getPreviewPlugin().Fdy;
+      if (parama != null)
       {
-        parama = new t("null cannot be cast to non-null type android.widget.RelativeLayout");
+        parama = parama.getParent();
+        if (parama == null) {}
+      }
+      for (parama = parama.getParent(); parama == null; parama = null)
+      {
+        parama = new kotlin.t("null cannot be cast to non-null type android.widget.RelativeLayout");
         AppMethodBeat.o(165506);
         throw parama;
       }
-      paramRecordConfigProvider = (RelativeLayout)paramRecordConfigProvider;
-      Object localObject = getContext();
-      p.g(localObject, "context");
-      localObject = new WxCropOperationLayout((Context)localObject);
-      ((WxCropOperationLayout)localObject).getVisibilityRect().set((Rect)parama.getParcelable("cropRect"));
-      paramRecordConfigProvider.addView((View)localObject, new ViewGroup.LayoutParams(-1, -1));
-      ((WxCropOperationLayout)localObject).setStyle(WxCropOperationLayout.j.BZJ);
-      ((WxCropOperationLayout)localObject).bringToFront();
-      localObject = parama.getFloatArray("matrix");
-      paramRecordConfigProvider = parama.getFloatArray("offset");
+      parama = (RelativeLayout)parama;
+      localObject2 = getContext();
+      p.j(localObject2, "context");
+      localObject2 = new WxCropOperationLayout((Context)localObject2);
+      ((WxCropOperationLayout)localObject2).getVisibilityRect().set((Rect)paramRecordConfigProvider.getParcelable("cropRect"));
+      parama.addView((View)localObject2, new ViewGroup.LayoutParams(-1, -1));
+      ((WxCropOperationLayout)localObject2).setStyle(WxCropOperationLayout.j.HWy);
+      ((WxCropOperationLayout)localObject2).bringToFront();
+      localObject2 = paramRecordConfigProvider.getFloatArray("matrix");
+      paramRecordConfigProvider = paramRecordConfigProvider.getFloatArray("offset");
       parama = paramRecordConfigProvider;
       if (paramRecordConfigProvider == null) {
         parama = new float[2];
       }
-      p.g(parama, "getFloatArray(\"offset\") ?: FloatArray(2)");
-      float f1 = parama[0];
-      float f2 = parama[1];
-      if (localObject != null)
+      p.j(parama, "getFloatArray(\"offset\") ?: FloatArray(2)");
+      f1 = parama[0];
+      f2 = parama[1];
+      if (localObject2 != null)
       {
-        parama = new Matrix();
-        parama.setValues((float[])localObject);
-        getPreviewPlugin().zyd.setScaleX(l((float[])localObject));
-        getPreviewPlugin().zyd.setScaleY(l((float[])localObject));
-        getPreviewPlugin().zyd.setTranslationX(f1);
-        getPreviewPlugin().zyd.setTranslationY(f2);
-        Log.i("MicroMsg.EditorVideoPluginLayoutNew", "translationX=" + getPreviewPlugin().zyd.getTranslationX() + " translationY=" + getPreviewPlugin().zyd.getTranslationY() + ' ' + "scaleX=" + getPreviewPlugin().zyd.getScaleX() + " offsetX=" + f1 + " offsetY=" + f2 + " matrix=" + parama);
-        this.tHm = new Matrix();
-        parama.invert(this.tHm);
+        paramRecordConfigProvider = new Matrix();
+        paramRecordConfigProvider.setValues((float[])localObject2);
+        parama = getPreviewPlugin().Fdy;
+        if (parama != null) {
+          parama.setScaleX(m((float[])localObject2));
+        }
+        parama = getPreviewPlugin().Fdy;
+        if (parama != null) {
+          parama.setScaleY(m((float[])localObject2));
+        }
+        parama = getPreviewPlugin().Fdy;
+        if (parama != null) {
+          parama.setTranslationX(f1);
+        }
+        parama = getPreviewPlugin().Fdy;
+        if (parama != null) {
+          parama.setTranslationY(f2);
+        }
+        localObject2 = new StringBuilder("translationX=");
+        parama = getPreviewPlugin().Fdy;
+        if (parama == null) {
+          break label486;
+        }
+        parama = Float.valueOf(parama.getTranslationX());
+        localObject2 = ((StringBuilder)localObject2).append(parama).append(" translationY=");
+        parama = getPreviewPlugin().Fdy;
+        if (parama == null) {
+          break label491;
+        }
       }
     }
-    getCropVideoPlugin().BSz = true;
-    AppMethodBeat.o(165506);
+    label486:
+    label491:
+    for (parama = Float.valueOf(parama.getTranslationY());; parama = null)
+    {
+      localObject2 = ((StringBuilder)localObject2).append(parama).append(' ').append("scaleX=");
+      VideoPlayerTextureView localVideoPlayerTextureView = getPreviewPlugin().Fdy;
+      parama = localObject1;
+      if (localVideoPlayerTextureView != null) {
+        parama = Float.valueOf(localVideoPlayerTextureView.getScaleX());
+      }
+      Log.i("MicroMsg.EditorVideoPluginLayoutNew", parama + " offsetX=" + f1 + " offsetY=" + f2 + " matrix=" + paramRecordConfigProvider);
+      this.xpW = new Matrix();
+      paramRecordConfigProvider.invert(this.xpW);
+      getCropVideoPlugin().HPo = true;
+      AppMethodBeat.o(165506);
+      return;
+      parama = null;
+      break;
+    }
   }
   
   public final void a(d.c paramc, Bundle paramBundle)
   {
     AppMethodBeat.i(165509);
-    p.h(paramc, "status");
+    p.k(paramc, "status");
     switch (b.$EnumSwitchMapping$0[paramc.ordinal()])
     {
     default: 
-      if (paramc != d.c.BVq) {
+      if (paramc != d.c.HSe) {
         Log.e("MicroMsg.EditorVideoPluginLayoutNew", "unknown status ".concat(String.valueOf(paramc)));
       }
       super.a(paramc, paramBundle);
       AppMethodBeat.o(165509);
       return;
     }
-    paramc = getBgPlugin().eKD();
+    paramc = getBgPlugin().fwV();
     getPreviewPlugin().release();
     getItemContainerPlugin().onPause();
     getAddMusicPlugin().onPause();
     int i = 0;
-    if (getMoreMenuPlugin().BQn) {
+    if (getMoreMenuPlugin().HNb) {
       i = 1;
     }
-    paramBundle = CaptureDataManager.BOb;
-    p.g(paramBundle, "CaptureDataManager.INSTANCE");
+    paramBundle = CaptureDataManager.HKJ;
+    p.j(paramBundle, "CaptureDataManager.INSTANCE");
     paramBundle.getExtData().putInt("key_extra_feature_flag", i);
-    if (getMoreMenuPlugin().bxP == 2)
+    if (getMoreMenuPlugin().bhr == 2)
     {
-      paramBundle = CaptureDataManager.BOb;
-      p.g(paramBundle, "CaptureDataManager.INSTANCE");
-      paramBundle.getExtData().putString("key_group_list", getMoreMenuPlugin().eKy());
-      paramc = new f(getAddMusicPlugin().wgL.getMuteOrigin(), getAddMusicPlugin().wgG, getItemContainerPlugin().d(this.tHm), getItemContainerPlugin().getEditorDataList(), getItemContainerPlugin().eKr(), getPreviewPlugin().dvv, getPreviewPlugin().iqg, new ArrayList(), paramc, getItemContainerPlugin().eKr());
+      paramBundle = CaptureDataManager.HKJ;
+      p.j(paramBundle, "CaptureDataManager.INSTANCE");
+      paramBundle.getExtData().putString("key_group_list", getMoreMenuPlugin().fwQ());
+      paramc = new g(getAddMusicPlugin().AQb.getMuteOrigin(), getAddMusicPlugin().AQf, getItemContainerPlugin().d(this.xpW), getItemContainerPlugin().getEditorDataList(), getItemContainerPlugin().fwI(), getPreviewPlugin().fod, getPreviewPlugin().endTime, new ArrayList(), paramc, getItemContainerPlugin().fwI());
       Log.i("MicroMsg.EditorVideoPluginLayoutNew", "edit config: ".concat(String.valueOf(paramc)));
       getReMuxPlugin().a(paramc);
-      paramc = com.tencent.mm.plugin.recordvideo.d.c.BXI;
-      com.tencent.mm.plugin.recordvideo.d.c.x("KEY_ADD_EMOJI_COUNT_INT", Integer.valueOf(getItemContainerPlugin().eKu()));
-      paramc = com.tencent.mm.plugin.recordvideo.d.c.BXI;
-      com.tencent.mm.plugin.recordvideo.d.c.x("KEY_ADD_TEXT_COUNT_INT", Integer.valueOf(getItemContainerPlugin().eKv()));
-      paramc = com.tencent.mm.plugin.recordvideo.d.c.BXI;
-      if (getAddMusicPlugin().wgG != null) {
+      paramc = com.tencent.mm.plugin.recordvideo.d.c.HUw;
+      com.tencent.mm.plugin.recordvideo.d.c.w("KEY_ADD_EMOJI_COUNT_INT", Integer.valueOf(getItemContainerPlugin().fwM()));
+      paramc = com.tencent.mm.plugin.recordvideo.d.c.HUw;
+      com.tencent.mm.plugin.recordvideo.d.c.w("KEY_ADD_TEXT_COUNT_INT", Integer.valueOf(getItemContainerPlugin().fwN()));
+      paramc = com.tencent.mm.plugin.recordvideo.d.c.HUw;
+      if (getAddMusicPlugin().AQf != null) {
         break label504;
       }
       i = 0;
       label341:
-      com.tencent.mm.plugin.recordvideo.d.c.x("KEY_SELECT_MUSIC_INT", Integer.valueOf(i));
-      paramc = com.tencent.mm.plugin.recordvideo.d.c.BXI;
-      if (!getAddMusicPlugin().wgL.getMuteOrigin()) {
+      com.tencent.mm.plugin.recordvideo.d.c.w("KEY_SELECT_MUSIC_INT", Integer.valueOf(i));
+      paramc = com.tencent.mm.plugin.recordvideo.d.c.HUw;
+      if (!getAddMusicPlugin().AQb.getMuteOrigin()) {
         break label509;
       }
       i = 0;
       label370:
-      com.tencent.mm.plugin.recordvideo.d.c.x("KEY_SELECT_ORIGIN_INT", Integer.valueOf(i));
-      paramc = com.tencent.mm.plugin.recordvideo.d.c.BXI;
-      com.tencent.mm.plugin.recordvideo.d.c.x("KEY_AFTER_EDIT_INT", Integer.valueOf(1));
-      paramc = com.tencent.mm.plugin.recordvideo.d.c.BXI;
-      com.tencent.mm.plugin.recordvideo.d.c.VI(13);
-      paramc = com.tencent.mm.plugin.recordvideo.d.c.BXI;
-      com.tencent.mm.plugin.recordvideo.d.c.eKX().ry(System.currentTimeMillis());
-      paramc = com.tencent.mm.plugin.recordvideo.d.c.BXI;
+      com.tencent.mm.plugin.recordvideo.d.c.w("KEY_SELECT_ORIGIN_INT", Integer.valueOf(i));
+      paramc = com.tencent.mm.plugin.recordvideo.d.c.HUw;
+      com.tencent.mm.plugin.recordvideo.d.c.w("KEY_AFTER_EDIT_INT", Integer.valueOf(1));
+      paramc = com.tencent.mm.plugin.recordvideo.d.c.HUw;
+      com.tencent.mm.plugin.recordvideo.d.c.acr(13);
+      paramc = com.tencent.mm.plugin.recordvideo.d.c.HUw;
+      com.tencent.mm.plugin.recordvideo.d.c.fxq().vA(System.currentTimeMillis());
+      paramc = com.tencent.mm.plugin.recordvideo.d.c.HUw;
       paramc = getConfigProvider();
       if (paramc == null) {
         break label514;
@@ -181,21 +224,21 @@ public final class FinderVideoEditPluginLayout
     label514:
     for (i = paramc.scene;; i = 0)
     {
-      com.tencent.mm.plugin.recordvideo.d.c.VJ(i);
-      paramc = com.tencent.mm.plugin.recordvideo.model.audio.c.BPD;
-      paramc = com.tencent.mm.plugin.recordvideo.model.audio.c.eKi();
+      com.tencent.mm.plugin.recordvideo.d.c.acs(i);
+      paramc = com.tencent.mm.plugin.recordvideo.model.audio.c.HMp;
+      paramc = com.tencent.mm.plugin.recordvideo.model.audio.c.fwy();
       if (paramc == null) {
         break label519;
       }
-      paramc.eKe();
+      paramc.fwu();
       AppMethodBeat.o(165509);
       return;
-      if (getMoreMenuPlugin().bxP != 3) {
+      if (getMoreMenuPlugin().bhr != 3) {
         break;
       }
-      paramBundle = CaptureDataManager.BOb;
-      p.g(paramBundle, "CaptureDataManager.INSTANCE");
-      paramBundle.getExtData().putString("key_black_list", getMoreMenuPlugin().eKy());
+      paramBundle = CaptureDataManager.HKJ;
+      p.j(paramBundle, "CaptureDataManager.INSTANCE");
+      paramBundle.getExtData().putString("key_black_list", getMoreMenuPlugin().fwQ());
       break;
       label504:
       i = 1;
@@ -214,7 +257,7 @@ public final class FinderVideoEditPluginLayout
     Object localObject = new FrameLayout(getContext());
     ((FrameLayout)localObject).setBackgroundColor(-16777216);
     a locala = new a(this, getContext());
-    setPreviewPlugin(new s((VideoPlayerTextureView)locala, (d)this, (TextView)findViewById(2131309744)));
+    setPreviewPlugin(new com.tencent.mm.plugin.recordvideo.plugin.t((VideoPlayerTextureView)locala, (d)this, (TextView)findViewById(b.e.video_debug_info)));
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
     localLayoutParams.gravity = 17;
     ((FrameLayout)localObject).addView((View)locala, (ViewGroup.LayoutParams)localLayoutParams);
@@ -223,7 +266,7 @@ public final class FinderVideoEditPluginLayout
     return localObject;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/edit/FinderVideoEditPluginLayout$getPlayerView$playerView$1", "Lcom/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditorVideoPlayView;", "setVideoCenter", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/edit/FinderVideoEditPluginLayout$getPlayerView$playerView$1", "Lcom/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditorVideoPlayView;", "setVideoCenter", "", "plugin-finder_release"})
   public static final class a
     extends EditorVideoPlayView
   {
@@ -232,12 +275,12 @@ public final class FinderVideoEditPluginLayout
       super();
     }
     
-    public final void crn() {}
+    public final void cEw() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.edit.FinderVideoEditPluginLayout
  * JD-Core Version:    0.7.0.1
  */

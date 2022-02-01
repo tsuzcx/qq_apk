@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.mall.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.aba;
-import com.tencent.mm.g.a.aba.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.a.aci;
+import com.tencent.mm.f.a.aci.a;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 
 final class MallIndexUI$8
-  extends IListener<aba>
+  extends IListener<aci>
 {
   MallIndexUI$8(MallIndexUI paramMallIndexUI)
   {
     AppMethodBeat.i(160813);
-    this.__eventId = aba.class.getName().hashCode();
+    this.__eventId = aci.class.getName().hashCode();
     AppMethodBeat.o(160813);
   }
   
-  private static boolean a(aba paramaba)
+  private static boolean a(aci paramaci)
   {
     AppMethodBeat.i(66105);
-    paramaba = paramaba.eim.dNk;
-    Log.i("MicorMsg.MallIndexUI", "get result %s", new Object[] { paramaba });
-    if ("agree_privacy".equals(paramaba))
+    paramaci = paramaci.gcD.fGw;
+    Log.i("MicorMsg.MallIndexUI", "get result %s", new Object[] { paramaci });
+    if ("agree_privacy".equals(paramaci))
     {
-      g.aAi();
-      g.aAh().azQ().set(ar.a.Oha, Boolean.TRUE);
+      h.aHH();
+      h.aHG().aHp().set(ar.a.Vvq, Boolean.TRUE);
     }
     AppMethodBeat.o(66105);
     return false;

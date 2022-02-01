@@ -14,20 +14,20 @@ final class NewVoipVideoFragment$14
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(235718);
+    AppMethodBeat.i(241349);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/voip/ui/NewVoipVideoFragment$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    if ((this.Hef.Hen != null) && (this.Hef.Hen.get() != null)) {
-      ((c)this.Hef.Hen.get()).fFM();
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/voip/ui/NewVoipVideoFragment$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    if ((this.NUZ.NVe != null) && (this.NUZ.NVe.get() != null)) {
+      ((c)this.NUZ.NVe.get()).gxX();
     }
     a.a(this, "com/tencent/mm/plugin/voip/ui/NewVoipVideoFragment$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(235718);
+    AppMethodBeat.o(241349);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.NewVoipVideoFragment.14
  * JD-Core Version:    0.7.0.1
  */

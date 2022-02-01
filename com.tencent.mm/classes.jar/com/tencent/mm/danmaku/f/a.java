@@ -9,73 +9,73 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class a
 {
-  private static final AtomicInteger QH;
-  private static volatile Application gQX;
-  private static volatile boolean gQY;
+  private static final AtomicInteger Nu;
+  private static volatile Application jBq;
+  private static volatile boolean jBr;
   
   static
   {
-    AppMethodBeat.i(241779);
-    QH = new AtomicInteger(1);
-    AppMethodBeat.o(241779);
+    AppMethodBeat.i(270733);
+    Nu = new AtomicInteger(1);
+    AppMethodBeat.o(270733);
   }
   
-  public static boolean atn()
+  public static boolean aAd()
   {
     return Build.VERSION.SDK_INT >= 11;
   }
   
-  public static boolean ato()
+  public static boolean aAe()
   {
     return Build.VERSION.SDK_INT >= 16;
   }
   
-  public static boolean atp()
+  public static boolean aAf()
   {
     return Build.VERSION.SDK_INT >= 17;
   }
   
-  public static boolean atq()
+  public static boolean aAg()
   {
     return Build.VERSION.SDK_INT >= 26;
   }
   
-  public static Application atr()
+  public static Application aAh()
   {
-    AppMethodBeat.i(241778);
-    Application localApplication = c.arU();
+    AppMethodBeat.i(270732);
+    Application localApplication = c.ayF();
     if (localApplication != null)
     {
-      AppMethodBeat.o(241778);
+      AppMethodBeat.o(270732);
       return localApplication;
     }
-    if (!gQY) {}
+    if (!jBr) {}
     try
     {
-      boolean bool = gQY;
+      boolean bool = jBr;
       if (!bool) {}
       try
       {
         localApplication = (Application)Class.forName("android.app.ActivityThread").getMethod("currentApplication", new Class[0]).invoke(null, new Object[0]);
-        gQX = localApplication;
+        jBq = localApplication;
         if (localApplication != null) {
-          gQY = true;
+          jBr = true;
         }
       }
       catch (Throwable localThrowable)
       {
         for (;;)
         {
-          gQY = true;
+          jBr = true;
         }
       }
-      localApplication = gQX;
-      AppMethodBeat.o(241778);
+      localApplication = jBq;
+      AppMethodBeat.o(270732);
       return localApplication;
     }
     finally
     {
-      AppMethodBeat.o(241778);
+      AppMethodBeat.o(270732);
     }
   }
 }

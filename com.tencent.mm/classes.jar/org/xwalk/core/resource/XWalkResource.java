@@ -10,6 +10,7 @@ import java.lang.ref.WeakReference;
 public class XWalkResource
   extends Resources
 {
+  public static final String TAG = "XWalkResource";
   private WeakReference<Context> mWeChatContext;
   
   public XWalkResource(Resources paramResources, Context paramContext)
@@ -35,16 +36,17 @@ public class XWalkResource
     return localObject;
   }
   
-  public void onConfigurationChanged(Configuration paramConfiguration)
+  public void updateConfiguration(Configuration paramConfiguration, DisplayMetrics paramDisplayMetrics)
   {
-    AppMethodBeat.i(155345);
-    super.updateConfiguration(paramConfiguration, getDisplayMetrics());
-    AppMethodBeat.o(155345);
+    AppMethodBeat.i(204857);
+    new StringBuilder("[updateConfiguration] locale:").append(paramConfiguration.locale);
+    super.updateConfiguration(paramConfiguration, paramDisplayMetrics);
+    AppMethodBeat.o(204857);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.resource.XWalkResource
  * JD-Core Version:    0.7.0.1
  */

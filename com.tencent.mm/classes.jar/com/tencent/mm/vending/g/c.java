@@ -3,9 +3,9 @@ package com.tencent.mm.vending.g;
 public abstract interface c<_Var>
   extends com.tencent.mm.vending.e.a, d<_Var>
 {
-  public abstract c<_Var> Du(boolean paramBoolean);
+  public abstract c<_Var> HR(boolean paramBoolean);
   
-  public abstract c<_Var> Oc(long paramLong);
+  public abstract c<_Var> Wo(long paramLong);
   
   public abstract c<_Var> b(com.tencent.mm.vending.e.b paramb);
   
@@ -19,9 +19,9 @@ public abstract interface c<_Var>
   
   public abstract <_Ret> c<_Ret> f(com.tencent.mm.vending.c.a<_Ret, _Var> parama);
   
-  public abstract b hdx();
+  public abstract b ieE();
   
-  public abstract d<_Var> hdy();
+  public abstract d<_Var> ieF();
   
   public abstract void stop();
   
@@ -32,7 +32,7 @@ public abstract interface c<_Var>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.vending.g.c
  * JD-Core Version:    0.7.0.1
  */

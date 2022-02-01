@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.boots.a;
 public final class g
 {
   public String appId;
-  public String crh;
-  public String cri;
+  public String coX;
+  public String coY;
   public int errorCode;
   public int fileSize;
-  public Integer pkH;
-  public Integer pkI;
-  public Integer pkJ;
-  public String pkK;
-  public String pkL;
+  public Integer smQ;
+  public Integer smR;
+  public Integer smS;
+  public String smT;
+  public String smU;
 }
 
 

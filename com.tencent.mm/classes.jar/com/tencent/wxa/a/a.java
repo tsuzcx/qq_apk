@@ -10,22 +10,22 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public final class a
 {
-  public k.c SxT;
-  private LinkedBlockingQueue<b> SxU;
-  private k.c SxV;
-  private k bbv;
-  boolean chu;
+  public k.c ZZa;
+  private LinkedBlockingQueue<b> ZZb;
+  private k.c ZZc;
+  private k aKT;
+  boolean nAV;
   
   public a(c paramc, String paramString)
   {
-    AppMethodBeat.i(206312);
-    this.chu = true;
-    this.SxU = new LinkedBlockingQueue();
-    this.SxV = new k.c()
+    AppMethodBeat.i(224814);
+    this.nAV = true;
+    this.ZZb = new LinkedBlockingQueue();
+    this.ZZc = new k.c()
     {
       public final void a(j paramAnonymousj, k.d paramAnonymousd)
       {
-        AppMethodBeat.i(206310);
+        AppMethodBeat.i(224810);
         String str = paramAnonymousj.method;
         int i = -1;
         switch (str.hashCode())
@@ -34,8 +34,8 @@ public final class a
           switch (i)
           {
           default: 
-            if (a.this.SxT != null) {
-              a.this.SxT.a(paramAnonymousj, paramAnonymousd);
+            if (a.this.ZZa != null) {
+              a.this.ZZa.a(paramAnonymousj, paramAnonymousd);
             }
             break;
           }
@@ -43,7 +43,7 @@ public final class a
         }
         do
         {
-          AppMethodBeat.o(206310);
+          AppMethodBeat.o(224810);
           return;
           if (!str.equals("onDartChannelReady")) {
             break;
@@ -51,60 +51,60 @@ public final class a
           i = 0;
           break;
           com.tencent.wxa.c.a.d("WxaRouter.SafeMethodChannel", "onMethodCall onDartChannelReady", new Object[0]);
-        } while (a.this.chu);
-        a.this.hrL();
-        AppMethodBeat.o(206310);
+        } while (a.this.nAV);
+        a.this.ivx();
+        AppMethodBeat.o(224810);
       }
     };
-    this.bbv = new k(paramc, paramString);
-    this.bbv.a(this.SxV);
-    this.bbv.a("onCheckDartChannelReady", null, new k.d()
+    this.aKT = new k(paramc, paramString);
+    this.aKT.a(this.ZZc);
+    this.aKT.a("onCheckDartChannelReady", null, new k.d()
     {
       public final void b(String paramAnonymousString1, String paramAnonymousString2, Object paramAnonymousObject) {}
       
-      public final void ba(Object paramAnonymousObject)
+      public final void bb(Object paramAnonymousObject)
       {
-        AppMethodBeat.i(206311);
-        if (!a.this.chu) {
-          a.this.hrL();
+        AppMethodBeat.i(224812);
+        if (!a.this.nAV) {
+          a.this.ivx();
         }
-        AppMethodBeat.o(206311);
+        AppMethodBeat.o(224812);
       }
       
-      public final void dLv() {}
+      public final void epZ() {}
     });
-    AppMethodBeat.o(206312);
+    AppMethodBeat.o(224814);
   }
   
   public final void a(String paramString, Object paramObject, k.d paramd)
   {
-    AppMethodBeat.i(206313);
-    if (this.chu)
+    AppMethodBeat.i(224816);
+    if (this.nAV)
     {
-      this.bbv.a(paramString, paramObject, paramd);
+      this.aKT.a(paramString, paramObject, paramd);
       com.tencent.wxa.c.a.d("WxaRouter.SafeMethodChannel", "invokeMethod invoke method %s", new Object[] { paramString });
-      AppMethodBeat.o(206313);
+      AppMethodBeat.o(224816);
       return;
     }
-    this.SxU.offer(new b(paramString, paramObject, paramd));
+    this.ZZb.offer(new b(paramString, paramObject, paramd));
     com.tencent.wxa.c.a.d("WxaRouter.SafeMethodChannel", "invokeMethod add invoke method %s", new Object[] { paramString });
-    AppMethodBeat.o(206313);
+    AppMethodBeat.o(224816);
   }
   
-  public final void hrL()
+  public final void ivx()
   {
-    AppMethodBeat.i(206314);
-    this.chu = true;
-    while (!this.SxU.isEmpty())
+    AppMethodBeat.i(224818);
+    this.nAV = true;
+    while (!this.ZZb.isEmpty())
     {
-      b localb = (b)this.SxU.poll();
+      b localb = (b)this.ZZb.poll();
       if (localb != null)
       {
-        this.bbv.a(localb.method, localb.SxX, localb.SxY);
+        this.aKT.a(localb.method, localb.ZZe, localb.ZZf);
         com.tencent.wxa.c.a.d("WxaRouter.SafeMethodChannel", "notifyChannelReady doing invoke method %s", new Object[] { localb.method });
       }
     }
-    AppMethodBeat.o(206314);
+    AppMethodBeat.o(224818);
   }
 }
 

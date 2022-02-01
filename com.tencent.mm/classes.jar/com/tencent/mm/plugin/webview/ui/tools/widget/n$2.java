@@ -7,7 +7,7 @@ import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
 final class n$2
   implements View.OnLongClickListener
 {
@@ -17,9 +17,9 @@ final class n$2
   {
     AppMethodBeat.i(82692);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
-    n.g(this.JzC);
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
+    n.g(this.QxO);
     a.a(false, this, "com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
     AppMethodBeat.o(82692);
     return false;

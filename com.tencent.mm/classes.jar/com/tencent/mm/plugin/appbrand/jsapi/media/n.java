@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.media;
 
 import android.content.Context;
 import android.widget.Toast;
+import com.tencent.luggage.b.a.a.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -14,7 +15,7 @@ public final class n
   public static final int CTRL_INDEX = 217;
   public static final String NAME = "saveImageToPhotosAlbum";
   
-  final boolean aaa(String paramString)
+  final boolean ahR(String paramString)
   {
     AppMethodBeat.i(139881);
     boolean bool = Util.nullAsNil(paramString).toLowerCase().contains("image");
@@ -22,7 +23,7 @@ public final class n
     return bool;
   }
   
-  final String aab(String paramString)
+  final String ahS(String paramString)
   {
     AppMethodBeat.i(139882);
     paramString = AndroidMediaUtil.getExportImagePath(paramString);
@@ -30,7 +31,7 @@ public final class n
     return paramString;
   }
   
-  final void aac(String paramString)
+  final void ahT(String paramString)
   {
     AppMethodBeat.i(139883);
     MMHandlerThread.postToMainThread(new Runnable()
@@ -38,7 +39,7 @@ public final class n
       public final void run()
       {
         AppMethodBeat.i(139880);
-        Toast.makeText(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(2131758218, new Object[] { AndroidMediaUtil.getToastSysCameraPath() }), 1).show();
+        Toast.makeText(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(a.g.cropimage_saved, new Object[] { AndroidMediaUtil.getToastSysCameraPath() }), 1).show();
         AppMethodBeat.o(139880);
       }
     });
@@ -47,7 +48,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.n
  * JD-Core Version:    0.7.0.1
  */

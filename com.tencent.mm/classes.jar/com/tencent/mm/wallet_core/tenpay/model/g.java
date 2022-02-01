@@ -10,23 +10,23 @@ import org.json.JSONObject;
 public class g
   extends p
 {
-  protected JSONObject RuJ;
-  public boolean RuK;
-  public int RuL;
-  public boolean RuM;
+  protected JSONObject YWh;
+  public boolean YWi;
+  public int YWj;
+  public boolean YWk;
   
   public g(Map<String, String> paramMap)
   {
     AppMethodBeat.i(72891);
-    this.RuK = false;
-    this.RuL = 0;
-    this.RuM = false;
+    this.YWi = false;
+    this.YWj = 0;
+    this.YWk = false;
     Log.i("MicroMsg.NetSceneDelayQueryOrder", "NetSceneDelayQueryOrder call");
     setRequestData(paramMap);
     AppMethodBeat.o(72891);
   }
   
-  public final void ag(boolean paramBoolean, int paramInt)
+  public final void au(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(72892);
     HashMap localHashMap = new HashMap();
@@ -57,9 +57,9 @@ public class g
     return "/cgi-bin/mmpay-bin/tenpay/payorderquery";
   }
   
-  public final JSONObject hhL()
+  public final JSONObject ijm()
   {
-    return this.RuJ;
+    return this.YWh;
   }
   
   public void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
@@ -67,12 +67,12 @@ public class g
     AppMethodBeat.i(72893);
     super.onGYNetEnd(paramInt, paramString, paramJSONObject);
     JSONObject localJSONObject1 = paramJSONObject;
-    if (ac.jPC) {}
+    if (ac.mGM) {}
     try
     {
       localJSONObject1 = new JSONObject("{\"retcode\":268447844,\"retmsg\":\"系统麻烦请稍后再试\",\"can_pay_retry\":1,\"show_retmsg_type\":1}");
       Log.i("MicroMsg.NetSceneDelayQueryOrder", "errCode = " + paramInt + "errMsg=" + paramString);
-      this.RuJ = localJSONObject1;
+      this.YWh = localJSONObject1;
       if (localJSONObject1 != null)
       {
         Log.d("MicroMsg.NetSceneDelayQueryOrder", "ret json: %s", new Object[] { localJSONObject1.toString() });
@@ -83,8 +83,8 @@ public class g
       label129:
       for (boolean bool = true;; bool = false)
       {
-        this.RuK = bool;
-        this.RuL = localJSONObject1.optInt("show_retmsg_type");
+        this.YWi = bool;
+        this.YWj = localJSONObject1.optInt("show_retmsg_type");
         AppMethodBeat.o(72893);
         return;
       }
@@ -100,7 +100,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.wallet_core.tenpay.model.g
  * JD-Core Version:    0.7.0.1
  */

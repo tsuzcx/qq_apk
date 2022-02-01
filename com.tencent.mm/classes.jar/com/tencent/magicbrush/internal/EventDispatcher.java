@@ -1,6 +1,6 @@
 package com.tencent.magicbrush.internal;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.magicbrush.a.c.c;
 import com.tencent.magicbrush.e;
 import com.tencent.magicbrush.e.b;
@@ -16,15 +16,15 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/magicbrush/internal/EventDispatcher;", "", "magicbrush", "Lcom/tencent/magicbrush/MagicBrush;", "(Lcom/tencent/magicbrush/MagicBrush;)V", "getMagicbrush", "()Lcom/tencent/magicbrush/MagicBrush;", "dispatchTryCatch", "", "T", "R", "l", "Lcom/tencent/magicbrush/utils/ListenerList;", "block", "Lkotlin/Function1;", "getRenderingContextListener", "Lcom/tencent/magicbrush/ui/MagicBrushView$RenderingContextListener;", "virtualElementId", "", "onConsole", "output", "", "onFirstFrameRendered", "onJSError", "exception", "stack", "contextId", "onScreenCanvasRenderingContextCreated", "type", "lib-magicbrush-nano_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/magicbrush/internal/EventDispatcher;", "", "magicbrush", "Lcom/tencent/magicbrush/MagicBrush;", "(Lcom/tencent/magicbrush/MagicBrush;)V", "getMagicbrush", "()Lcom/tencent/magicbrush/MagicBrush;", "dispatchTryCatch", "", "T", "R", "l", "Lcom/tencent/magicbrush/utils/ListenerList;", "block", "Lkotlin/Function1;", "getRenderingContextListener", "Lcom/tencent/magicbrush/ui/MagicBrushView$RenderingContextListener;", "virtualElementId", "", "onConsole", "output", "", "onFirstFrameRendered", "onJSError", "exception", "stack", "contextId", "onScreenCanvasRenderingContextCreated", "type", "lib-magicbrush-nano_release"})
 public final class EventDispatcher
 {
-  private final e cui;
+  private final e csn;
   
   public EventDispatcher(e parame)
   {
     AppMethodBeat.i(140198);
-    this.cui = parame;
+    this.csn = parame;
     AppMethodBeat.o(140198);
   }
   
@@ -48,8 +48,8 @@ public final class EventDispatcher
   public final void onConsole(String paramString)
   {
     AppMethodBeat.i(140194);
-    p.h(paramString, "output");
-    a(this.cui.cLx, (b)new a(paramString));
+    p.k(paramString, "output");
+    a(this.csn.cMh, (b)new a(paramString));
     AppMethodBeat.o(140194);
   }
   
@@ -57,7 +57,7 @@ public final class EventDispatcher
   public final void onFirstFrameRendered()
   {
     AppMethodBeat.i(140195);
-    a(this.cui.cLy, (b)b.cOq);
+    a(this.csn.cMi, (b)b.cPe);
     AppMethodBeat.o(140195);
   }
   
@@ -65,9 +65,9 @@ public final class EventDispatcher
   public final void onJSError(String paramString1, final String paramString2, final int paramInt)
   {
     AppMethodBeat.i(140193);
-    p.h(paramString1, "exception");
-    p.h(paramString2, "stack");
-    a(this.cui.cLx, (b)new c(paramString1, paramString2, paramInt));
+    p.k(paramString1, "exception");
+    p.k(paramString2, "stack");
+    a(this.csn.cMh, (b)new c(paramString1, paramString2, paramInt));
     AppMethodBeat.o(140193);
   }
   
@@ -77,7 +77,7 @@ public final class EventDispatcher
     AppMethodBeat.i(140196);
     try
     {
-      this.cui.cLz.find(paramInt1).getRenderingContextListeners().c((b)new d(paramInt2));
+      this.csn.cMj.find(paramInt1).getRenderingContextListeners().c((b)new d(paramInt2));
       AppMethodBeat.o(140196);
       return;
     }
@@ -88,7 +88,7 @@ public final class EventDispatcher
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/magicbrush/MagicBrush$JSStuffListener;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/magicbrush/MagicBrush$JSStuffListener;", "invoke"})
   static final class a
     extends q
     implements b<e.d, x>
@@ -99,17 +99,17 @@ public final class EventDispatcher
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/magicbrush/MagicBrush$FirstFrameListener;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/magicbrush/MagicBrush$FirstFrameListener;", "invoke"})
   static final class b
     extends q
     implements b<e.b, x>
   {
-    public static final b cOq;
+    public static final b cPe;
     
     static
     {
       AppMethodBeat.i(140190);
-      cOq = new b();
+      cPe = new b();
       AppMethodBeat.o(140190);
     }
     
@@ -119,7 +119,7 @@ public final class EventDispatcher
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/magicbrush/MagicBrush$JSStuffListener;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/magicbrush/MagicBrush$JSStuffListener;", "invoke"})
   static final class c
     extends q
     implements b<e.d, x>
@@ -130,7 +130,7 @@ public final class EventDispatcher
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/magicbrush/ui/MagicBrushView$RenderingContextListener;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/magicbrush/ui/MagicBrushView$RenderingContextListener;", "invoke"})
   static final class d
     extends q
     implements b<MagicBrushView.g, x>
@@ -143,7 +143,7 @@ public final class EventDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.magicbrush.internal.EventDispatcher
  * JD-Core Version:    0.7.0.1
  */

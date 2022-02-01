@@ -14,8 +14,8 @@ import android.widget.FrameLayout;
 public abstract class AbstractPopView
   extends FrameLayout
 {
-  protected a RpZ;
-  protected int Rqa = 0;
+  protected a YRx;
+  protected int YRy = 0;
   
   public AbstractPopView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,8 +29,8 @@ public abstract class AbstractPopView
   
   public void dismiss()
   {
-    if (this.RpZ != null) {
-      this.RpZ.onDismiss();
+    if (this.YRx != null) {
+      this.YRx.onDismiss();
     }
   }
   
@@ -69,14 +69,14 @@ public abstract class AbstractPopView
   
   public abstract WindowManager.LayoutParams getWindowLayoutParams();
   
-  public abstract void hI(View paramView);
+  public abstract void jd(View paramView);
   
-  protected final void kO(Context paramContext)
+  protected final void lK(Context paramContext)
   {
     if ((paramContext instanceof Activity)) {}
     for (paramContext = (Activity)paramContext;; paramContext = null)
     {
-      this.Rqa = 0;
+      this.YRy = 0;
       if (paramContext != null)
       {
         paramContext = paramContext.findViewById(16908290);
@@ -84,7 +84,7 @@ public abstract class AbstractPopView
         int[] arrayOfInt2 = new int[2];
         paramContext.getLocationOnScreen(arrayOfInt1);
         paramContext.getLocationInWindow(arrayOfInt2);
-        this.Rqa = (arrayOfInt1[1] - arrayOfInt2[1]);
+        this.YRy = (arrayOfInt1[1] - arrayOfInt2[1]);
       }
       return;
       if ((paramContext instanceof ContextThemeWrapper))
@@ -114,7 +114,7 @@ public abstract class AbstractPopView
   
   public void setOnDismissCallback(a parama)
   {
-    this.RpZ = parama;
+    this.YRx = parama;
   }
   
   public static abstract interface a
@@ -124,7 +124,7 @@ public abstract class AbstractPopView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.view.popview.AbstractPopView
  * JD-Core Version:    0.7.0.1
  */

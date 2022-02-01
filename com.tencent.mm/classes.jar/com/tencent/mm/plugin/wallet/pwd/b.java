@@ -5,14 +5,15 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.plugin.wallet.pwd.a.l;
 import com.tencent.mm.plugin.wallet.pwd.ui.WalletPasswordSettingUI;
-import com.tencent.mm.plugin.wallet_core.c.w;
-import com.tencent.mm.plugin.wallet_core.model.v;
+import com.tencent.mm.plugin.wallet_core.c.x;
+import com.tencent.mm.plugin.wallet_core.model.w;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletPwdConfirmUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletSetPasswordUI;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
@@ -26,7 +27,7 @@ public class b
 {
   public final int a(MMActivity paramMMActivity, int paramInt)
   {
-    return 2131768320;
+    return a.i.wallet_set_password_finish_confirm;
   }
   
   public final g a(MMActivity paramMMActivity, i parami)
@@ -46,11 +47,11 @@ public class b
             AppMethodBeat.o(69499);
             return localObject;
           case 0: 
-            localObject = this.activity.getString(2131767643);
+            localObject = this.activity.getString(a.i.wallet_check_pwd_modify_pwd_tip);
             AppMethodBeat.o(69499);
             return localObject;
           }
-          Object localObject = this.activity.getString(2131768096);
+          Object localObject = this.activity.getString(a.i.wallet_password_setting_ui_modify);
           AppMethodBeat.o(69499);
           return localObject;
         }
@@ -65,7 +66,7 @@ public class b
           AppMethodBeat.i(69498);
           String str = (String)paramAnonymousVarArgs[0];
           paramAnonymousVarArgs = (String)paramAnonymousVarArgs[1];
-          this.Ruz.a(new w(str, 3, paramAnonymousVarArgs), true, 1);
+          this.YVX.a(new x(str, 3, paramAnonymousVarArgs), true, 1);
           AppMethodBeat.o(69498);
           return true;
         }
@@ -85,7 +86,7 @@ public class b
             if ((paramAnonymousq instanceof l))
             {
               b.this.a(this.activity, 0, b.a(b.this));
-              h.cD(this.activity, this.activity.getString(2131768078));
+              h.cO(this.activity, this.activity.getString(a.i.wallet_password_setting_success_tip));
             }
             AppMethodBeat.o(69501);
             return true;
@@ -97,7 +98,7 @@ public class b
               public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
               {
                 AppMethodBeat.i(69500);
-                b.this.g(b.2.this.activity, 0);
+                b.this.h(b.2.a(b.2.this), 0);
                 AppMethodBeat.o(69500);
               }
             });
@@ -111,9 +112,9 @@ public class b
         public final boolean r(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(69502);
-          paramAnonymousVarArgs = (v)paramAnonymousVarArgs[0];
+          paramAnonymousVarArgs = (w)paramAnonymousVarArgs[0];
           String str = b.b(b.this).getString("key_pwd1");
-          this.Ruz.a(new l(str, paramAnonymousVarArgs.kdF), true, 1);
+          this.YVX.a(new l(str, paramAnonymousVarArgs.mVf), true, 1);
           AppMethodBeat.o(69502);
           return true;
         }
@@ -130,7 +131,9 @@ public class b
   {
     AppMethodBeat.i(69504);
     Log.d("MicroMsg.ProcessManager", "start Process : ModifyPwdProcess");
-    b(paramActivity, WalletCheckPwdUI.class, paramBundle);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("key_anim_type", 1);
+    a(paramActivity, WalletCheckPwdUI.class, paramBundle, localBundle);
     AppMethodBeat.o(69504);
     return this;
   }
@@ -165,7 +168,7 @@ public class b
       AppMethodBeat.o(69509);
       return false;
     }
-    h.a(paramWalletBaseUI, paramString, null, paramWalletBaseUI.getString(2131768320), false, new DialogInterface.OnClickListener()
+    h.a(paramWalletBaseUI, paramString, null, paramWalletBaseUI.getString(a.i.wallet_set_password_finish_confirm), false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -194,12 +197,12 @@ public class b
     return false;
   }
   
-  public final String dKC()
+  public final String epb()
   {
     return "ModifyPwdProcess";
   }
   
-  public final void g(Activity paramActivity, int paramInt)
+  public final void h(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(69506);
     if ((paramActivity instanceof WalletPwdConfirmUI)) {

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.scanner.l.g;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class f
@@ -16,11 +17,11 @@ public final class f
     super(paramContext);
     AppMethodBeat.i(51812);
     this.mView = null;
-    setLayoutResource(2131495955);
+    setLayoutResource(l.g.IEl);
     AppMethodBeat.o(51812);
   }
   
-  public final View getView(View paramView, ViewGroup paramViewGroup)
+  public final View c(View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(51813);
     if (this.mView == null) {
@@ -34,14 +35,14 @@ public final class f
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(258591);
+    AppMethodBeat.i(292833);
     super.onBindView(paramView);
-    AppMethodBeat.o(258591);
+    AppMethodBeat.o(292833);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.f
  * JD-Core Version:    0.7.0.1
  */

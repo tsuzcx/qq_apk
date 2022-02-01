@@ -1,21 +1,16 @@
 package com.tencent.mm.plugin.appbrand.config;
 
 import android.database.Cursor;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.os.Parcelable.Creator;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.hz;
+import com.tencent.mm.f.c.ii;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.List<Lcom.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaWidgetInfo;>;
 import java.util.Locale;
 import java.util.Map;
 import org.json.JSONArray;
@@ -23,14 +18,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class WxaAttributes
-  extends hz
+  extends ii
 {
-  public static final IAutoDBItem.MAutoDBInfo kLR;
-  private a lgo;
-  private c lgp;
-  private WxaVersionInfo lgq;
-  private List<WxaEntryInfo> lgr = null;
-  private b lgs;
+  public static final IAutoDBItem.MAutoDBInfo nFK;
+  private a oaO;
+  private c oaP;
+  private WxaAttributes.WxaVersionInfo oaQ;
+  private List<WxaAttributes.WxaEntryInfo> oaR = null;
+  private b oaS;
   
   static
   {
@@ -125,28 +120,28 @@ public final class WxaAttributes
     localStringBuilder.append(" bizMenu TEXT");
     localMAutoDBInfo.columns[21] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
-    kLR = localMAutoDBInfo;
+    nFK = localMAutoDBInfo;
     AppMethodBeat.o(123525);
   }
   
-  private static JSONObject XH(String paramString)
+  private static JSONObject aft(String paramString)
   {
-    AppMethodBeat.i(225286);
+    AppMethodBeat.i(187108);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(225286);
+      AppMethodBeat.o(187108);
       return null;
     }
     try
     {
       paramString = new JSONObject(paramString);
-      AppMethodBeat.o(225286);
+      AppMethodBeat.o(187108);
       return paramString;
     }
     catch (JSONException paramString)
     {
       com.tencent.mm.sdk.platformtools.Log.printErrStackTrace("MicroMsg.AppBrand.WxaAttributes", paramString, "createJsonObjectOrNull", new Object[0]);
-      AppMethodBeat.o(225286);
+      AppMethodBeat.o(187108);
     }
     return null;
   }
@@ -174,9 +169,9 @@ public final class WxaAttributes
           locala.type = ((JSONObject)localObject).optInt("type");
           JSONObject localJSONObject = new JSONObject(((JSONObject)localObject).optString("value", ""));
           locala.userName = localJSONObject.optString("userName", "");
-          locala.dCx = localJSONObject.optString("pagePath", "");
+          locala.fve = localJSONObject.optString("pagePath", "");
           locala.version = localJSONObject.optInt("version");
-          locala.lgC = k(((JSONObject)localObject).optJSONArray("sub_button_list"));
+          locala.obe = k(((JSONObject)localObject).optJSONArray("sub_button_list"));
           localArrayList.add(locala);
           i += 1;
         }
@@ -192,23 +187,44 @@ public final class WxaAttributes
     return localObject;
   }
   
-  public final a bAn()
+  public final String bFa()
+  {
+    AppMethodBeat.i(187106);
+    Object localObject = new HashMap();
+    ((Map)localObject).put("NickName", this.field_nickname);
+    ((Map)localObject).put("BrandIconURL", this.field_brandIconURL);
+    ((Map)localObject).put("BigHeadImgUrl", this.field_bigHeadURL);
+    ((Map)localObject).put("SmallHeadImgUrl", this.field_smallHeadURL);
+    ((Map)localObject).put("Signature", this.field_signature);
+    ((Map)localObject).put("WxAppOpt", Integer.valueOf(this.field_appOpt));
+    ((Map)localObject).put("RegisterSource", aft(this.field_registerSource));
+    ((Map)localObject).put("WxaAppInfo", aft(this.field_appInfo));
+    ((Map)localObject).put("WxaAppVersionInfo", aft(this.field_versionInfo));
+    ((Map)localObject).put("BindWxaInfo", aft(this.field_bindWxaInfo));
+    ((Map)localObject).put("WxaAppDynamic", aft(this.field_dynamicInfo));
+    ((Map)localObject).put("MMBizMenu", aft(this.field_bizMenu));
+    localObject = new JSONObject((Map)localObject).toString();
+    AppMethodBeat.o(187106);
+    return localObject;
+  }
+  
+  public final a bLF()
   {
     AppMethodBeat.i(123518);
-    if (this.lgo == null) {
-      this.lgo = a.XI(this.field_appInfo);
+    if (this.oaO == null) {
+      this.oaO = a.afu(this.field_appInfo);
     }
-    a locala = this.lgo;
+    a locala = this.oaO;
     AppMethodBeat.o(123518);
     return locala;
   }
   
-  public final c bAo()
+  public final c bLG()
   {
     boolean bool2 = true;
     int i = 0;
     AppMethodBeat.i(123519);
-    if (this.lgp == null) {
+    if (this.oaP == null) {
       try
       {
         Object localObject1 = new JSONObject(this.field_dynamicInfo);
@@ -216,85 +232,87 @@ public final class WxaAttributes
         if (localObject1 == null) {
           localObject2 = new JSONObject();
         }
-        this.lgp = new c();
+        this.oaP = new c();
         Object localObject3 = ((JSONObject)localObject2).optJSONObject("NewSetting");
         localObject1 = localObject3;
         if (localObject3 == null) {
           localObject1 = new JSONObject();
         }
-        this.lgp.lgD.cza = ((JSONObject)localObject1).optInt("MaxLocalstorageSize", 5);
-        this.lgp.lgD.lgF = ((JSONObject)localObject1).optInt("OpendataMaxLocalstorageSize", 5);
-        this.lgp.lgD.lgG = ((JSONObject)localObject1).optInt("MaxCodeSize", 5);
-        this.lgp.lgD.lex = ((JSONObject)localObject1).optInt("ExpendedMaxWebviewDepth", 5);
-        this.lgp.lgD.cyJ = ((JSONObject)localObject1).optInt("MaxBackgroundLifespan", 600);
-        this.lgp.lgD.cyK = ((JSONObject)localObject1).optInt("MaxRequestConcurrent", 5);
-        this.lgp.lgD.cyL = ((JSONObject)localObject1).optInt("MaxUploadConcurrent", 5);
-        this.lgp.lgD.cyM = ((JSONObject)localObject1).optInt("MaxDownloadConcurrent", 5);
-        this.lgp.lgD.cyN = ((JSONObject)localObject1).optInt("MaxWebsocketConnect", 2);
-        this.lgp.lgD.cyO = ((JSONObject)localObject1).optInt("MaxWorkerConcurrent", 1);
-        localObject3 = this.lgp.lgD;
+        this.oaP.obf.cxI = ((JSONObject)localObject1).optInt("Uint32MaxLocalstorageSizeInMB", 5);
+        this.oaP.obf.obh = ((JSONObject)localObject1).optInt("Uint32OpendataMaxLocalstorageSizeInMB", 5);
+        this.oaP.obf.obi = ((JSONObject)localObject1).optInt("MaxCodeSize", 5);
+        this.oaP.obf.nYK = ((JSONObject)localObject1).optInt("ExpendedMaxWebviewDepth", 5);
+        this.oaP.obf.cxo = ((JSONObject)localObject1).optInt("MaxBackgroundLifespan", 600);
+        this.oaP.obf.cxp = ((JSONObject)localObject1).optInt("MaxRequestConcurrent", 10);
+        this.oaP.obf.cxq = ((JSONObject)localObject1).optInt("MaxUploadConcurrent", 10);
+        this.oaP.obf.cxr = ((JSONObject)localObject1).optInt("MaxDownloadConcurrent", 10);
+        this.oaP.obf.cxs = ((JSONObject)localObject1).optInt("MaxWebsocketConnect", 5);
+        this.oaP.obf.cxt = ((JSONObject)localObject1).optInt("MaxWorkerConcurrent", 1);
+        localObject3 = this.oaP.obf;
         if (((JSONObject)localObject1).optInt("WebsocketSkipPortCheck", 0) != 0)
         {
           bool1 = true;
-          ((WxaAttributes.c.a)localObject3).cyP = bool1;
-          localObject3 = this.lgp.lgD;
+          ((WxaAttributes.c.a)localObject3).cxu = bool1;
+          localObject3 = this.oaP.obf;
           if (((JSONObject)localObject1).optInt("TLSSkipHostnameCheck", 0) == 0) {
-            break label827;
+            break label871;
           }
           bool1 = true;
-          ((WxaAttributes.c.a)localObject3).cyQ = bool1;
-          this.lgp.lgD.lgH = ((JSONObject)localObject1).optInt("MaxFileStorageSize", 10);
-          this.lgp.lgD.lgI = ((JSONObject)localObject1).optInt("BackgroundNetworkInterruptedTimeout", 5);
-          localObject3 = this.lgp.lgD;
+          ((WxaAttributes.c.a)localObject3).cxv = bool1;
+          this.oaP.obf.obk = ((JSONObject)localObject1).optInt("Uint32MaxFileStorageSizeInMB", 10);
+          this.oaP.obf.obl = ((JSONObject)localObject1).optInt("Uint32MaxTempFileStorageSizeInMB", 300);
+          this.oaP.obf.obm = ((JSONObject)localObject1).optInt("Uint32MinTempFileStorageSizeInMB", 100);
+          this.oaP.obf.obn = ((JSONObject)localObject1).optInt("BackgroundNetworkInterruptedTimeout", 5);
+          localObject3 = this.oaP.obf;
           if (((JSONObject)localObject1).optInt("CanKeepAliveByAudioPlay", 0) <= 0) {
-            break label832;
+            break label876;
           }
           bool1 = true;
-          ((WxaAttributes.c.a)localObject3).ley = bool1;
-          this.lgp.lgD.leC = ((JSONObject)localObject1).optInt("LifeSpanBeforeSuspend", 5);
-          this.lgp.lgD.leD = ((JSONObject)localObject1).optInt("LifeSpanAfterSuspend", 300);
-          localObject3 = this.lgp.lgD;
+          ((WxaAttributes.c.a)localObject3).nYL = bool1;
+          this.oaP.obf.nYP = ((JSONObject)localObject1).optInt("LifeSpanBeforeSuspend", 5);
+          this.oaP.obf.nYQ = ((JSONObject)localObject1).optInt("LifeSpanAfterSuspend", 300);
+          localObject3 = this.oaP.obf;
           if (((JSONObject)localObject1).optInt("ScanCodeEnableZZM", 0) == 0) {
-            break label837;
+            break label881;
           }
           bool1 = true;
-          ((WxaAttributes.c.a)localObject3).cyY = bool1;
-          localObject3 = this.lgp.lgD;
+          ((WxaAttributes.c.a)localObject3).cxG = bool1;
+          localObject3 = this.oaP.obf;
           if (((JSONObject)localObject1).optInt("CanPreFetchData", 0) <= 0) {
-            break label842;
+            break label886;
           }
           bool1 = true;
-          ((WxaAttributes.c.a)localObject3).kXI = bool1;
-          localObject3 = this.lgp.lgD;
+          ((WxaAttributes.c.a)localObject3).nRU = bool1;
+          localObject3 = this.oaP.obf;
           if (((JSONObject)localObject1).optInt("CanPeriodFetchData", 0) <= 0) {
-            break label847;
+            break label891;
           }
           bool1 = true;
-          ((WxaAttributes.c.a)localObject3).kXJ = bool1;
-          this.lgp.lgD.kXK = ((JSONObject)localObject1).optInt("PeriodFetchData", 0);
-          this.lgp.lgD.kXL = ((JSONObject)localObject1).optInt("PeriodFetchDataDay", 7);
-          this.lgp.lgD.leb = ((JSONObject)localObject1).optInt("GuaranteeFlag", 0);
-          localObject3 = this.lgp.lgD;
+          ((WxaAttributes.c.a)localObject3).nRV = bool1;
+          this.oaP.obf.nRW = ((JSONObject)localObject1).optInt("PeriodFetchData", 0);
+          this.oaP.obf.nRX = ((JSONObject)localObject1).optInt("PeriodFetchDataDay", 7);
+          this.oaP.obf.nYp = ((JSONObject)localObject1).optInt("GuaranteeFlag", 0);
+          localObject3 = this.oaP.obf;
           if (((JSONObject)localObject1).optInt("CanShowLoadingAdvert", 0) <= 0) {
-            break label852;
+            break label896;
           }
           bool1 = bool2;
-          ((WxaAttributes.c.a)localObject3).lgJ = bool1;
-          this.lgp.lgD.lec = ((JSONObject)localObject1).optInt("BrandOfficialLabel", 0);
-          this.lgp.lgD.lgK = ((JSONObject)localObject1).optLong("OpenWxaWaitUpdateMaxMicSec", 13000L);
-          this.lgp.lgD.lgL = ((JSONObject)localObject1).optLong("OpenWxaWaitUpdateMaxMicSecForWeakNet", 10000L);
-          this.lgp.lgD.lgM = ((JSONObject)localObject1).optLong("OpenWxaWaitUpdateMinMicSec", 0L);
-          this.lgp.lgD.lgN = ((JSONObject)localObject1).optLong("NextTryOpenWxaDisMicSec", 10000L);
+          ((WxaAttributes.c.a)localObject3).obo = bool1;
+          this.oaP.obf.nYq = ((JSONObject)localObject1).optInt("BrandOfficialLabel", 0);
+          this.oaP.obf.obp = ((JSONObject)localObject1).optLong("OpenWxaWaitUpdateMaxMicSec", 13000L);
+          this.oaP.obf.obq = ((JSONObject)localObject1).optLong("OpenWxaWaitUpdateMaxMicSecForWeakNet", 10000L);
+          this.oaP.obf.obr = ((JSONObject)localObject1).optLong("OpenWxaWaitUpdateMinMicSec", 0L);
+          this.oaP.obf.obs = ((JSONObject)localObject1).optLong("NextTryOpenWxaDisMicSec", 10000L);
           localObject1 = ((JSONObject)localObject2).optJSONArray("NewCategories");
           if (localObject1 == null) {
-            break label857;
+            break label901;
           }
-          this.lgp.lgE = new LinkedList();
+          this.oaP.obg = new LinkedList();
           while (i < ((JSONArray)localObject1).length())
           {
             localObject2 = ((JSONArray)localObject1).optJSONObject(i);
             if (localObject2 != null) {
-              this.lgp.lgE.add(new Pair(((JSONObject)localObject2).optString("first"), ((JSONObject)localObject2).optString("second")));
+              this.oaP.obg.add(new Pair(((JSONObject)localObject2).optString("first"), ((JSONObject)localObject2).optString("second")));
             }
             i += 1;
           }
@@ -308,57 +326,57 @@ public final class WxaAttributes
           continue;
           boolean bool1 = false;
           continue;
-          label827:
+          label871:
           bool1 = false;
           continue;
-          label832:
+          label876:
           bool1 = false;
           continue;
-          label837:
+          label881:
           bool1 = false;
           continue;
-          label842:
+          label886:
           bool1 = false;
           continue;
-          label847:
+          label891:
           bool1 = false;
           continue;
-          label852:
+          label896:
           bool1 = false;
         }
       }
     }
-    label857:
-    c localc = this.lgp;
+    label901:
+    c localc = this.oaP;
     AppMethodBeat.o(123519);
     return localc;
   }
   
-  public final WxaVersionInfo bAp()
+  public final WxaAttributes.WxaVersionInfo bLH()
   {
     AppMethodBeat.i(123520);
-    if ((this.lgq == null) && (!Util.isNullOrNil(this.field_versionInfo)))
+    if ((this.oaQ == null) && (!Util.isNullOrNil(this.field_versionInfo)))
     {
-      localWxaVersionInfo = WxaVersionInfo.XJ(this.field_versionInfo);
-      this.lgq = localWxaVersionInfo;
+      localWxaVersionInfo = WxaAttributes.WxaVersionInfo.afv(this.field_versionInfo);
+      this.oaQ = localWxaVersionInfo;
       AppMethodBeat.o(123520);
       return localWxaVersionInfo;
     }
-    WxaVersionInfo localWxaVersionInfo = this.lgq;
+    WxaAttributes.WxaVersionInfo localWxaVersionInfo = this.oaQ;
     AppMethodBeat.o(123520);
     return localWxaVersionInfo;
   }
   
-  public final List<WxaEntryInfo> bAq()
+  public final List<WxaAttributes.WxaEntryInfo> bLI()
   {
     AppMethodBeat.i(123521);
-    if ((this.lgr == null) && (!Util.isNullOrNil(this.field_bindWxaInfo))) {
+    if ((this.oaR == null) && (!Util.isNullOrNil(this.field_bindWxaInfo))) {
       try
       {
         JSONArray localJSONArray = new JSONObject(this.field_bindWxaInfo).optJSONArray("bizEntryInfo");
         if (localJSONArray != null)
         {
-          this.lgr = new LinkedList();
+          this.oaR = new LinkedList();
           int i = 0;
           while (i < localJSONArray.length())
           {
@@ -368,21 +386,21 @@ public final class WxaAttributes
               String str = localJSONObject.optString("username");
               if (!Util.isNullOrNil(str))
               {
-                WxaEntryInfo localWxaEntryInfo = new WxaEntryInfo();
+                WxaAttributes.WxaEntryInfo localWxaEntryInfo = new WxaAttributes.WxaEntryInfo();
                 localWxaEntryInfo.username = str;
                 localWxaEntryInfo.title = localJSONObject.optString("title");
                 localWxaEntryInfo.iconUrl = localJSONObject.optString("icon_url");
-                this.lgr.add(localWxaEntryInfo);
+                this.oaR.add(localWxaEntryInfo);
               }
             }
             i += 1;
           }
         }
-        localList = this.lgr;
+        localList = this.oaR;
       }
       catch (Exception localException)
       {
-        this.lgr = null;
+        this.oaR = null;
       }
     }
     List localList;
@@ -390,18 +408,18 @@ public final class WxaAttributes
     return localList;
   }
   
-  public final b bAr()
+  public final b bLJ()
   {
     AppMethodBeat.i(123522);
-    if ((this.lgs == null) && (!Util.isNullOrNil(this.field_bizMenu))) {}
+    if ((this.oaS == null) && (!Util.isNullOrNil(this.field_bizMenu))) {}
     try
     {
       Object localObject = new JSONObject(this.field_bizMenu);
-      this.lgs = new b();
-      this.lgs.dhT = ((JSONObject)localObject).optInt("interactive_mode", 0);
-      this.lgs.type = ((JSONObject)localObject).optInt("type", 0);
-      this.lgs.lgB = k(((JSONObject)localObject).optJSONArray("button_list"));
-      localObject = this.lgs;
+      this.oaS = new b();
+      this.oaS.eZA = ((JSONObject)localObject).optInt("interactive_mode", 0);
+      this.oaS.type = ((JSONObject)localObject).optInt("type", 0);
+      this.oaS.obd = k(((JSONObject)localObject).optJSONArray("button_list"));
+      localObject = this.oaS;
       AppMethodBeat.o(123522);
       return localObject;
     }
@@ -409,15 +427,15 @@ public final class WxaAttributes
     {
       for (;;)
       {
-        this.lgs = null;
+        this.oaS = null;
       }
     }
   }
   
-  public final void bAs()
+  public final void bLK()
   {
     int i = 0;
-    AppMethodBeat.i(225284);
+    AppMethodBeat.i(187102);
     String str1 = String.format(Locale.ENGLISH, ">>>>>> WxaAttributes(%s|%s|%s)START >>>>>>", new Object[] { this.field_username, this.field_appId, this.field_nickname });
     String str2 = ">>> field_appInfo=" + this.field_appInfo;
     String str3 = ">>> field_versionInfo=" + this.field_versionInfo;
@@ -428,45 +446,24 @@ public final class WxaAttributes
       com.tencent.stubs.logger.Log.println(4, "MicroMsg.AppBrand.WxaAttributes", new String[] { str1, str2, str3, str4, str5 }[i]);
       i += 1;
     }
-    AppMethodBeat.o(225284);
-  }
-  
-  public final String bua()
-  {
-    AppMethodBeat.i(225285);
-    Object localObject = new HashMap();
-    ((Map)localObject).put("NickName", this.field_nickname);
-    ((Map)localObject).put("BrandIconURL", this.field_brandIconURL);
-    ((Map)localObject).put("BigHeadImgUrl", this.field_bigHeadURL);
-    ((Map)localObject).put("SmallHeadImgUrl", this.field_smallHeadURL);
-    ((Map)localObject).put("Signature", this.field_signature);
-    ((Map)localObject).put("WxAppOpt", Integer.valueOf(this.field_appOpt));
-    ((Map)localObject).put("RegisterSource", XH(this.field_registerSource));
-    ((Map)localObject).put("WxaAppInfo", XH(this.field_appInfo));
-    ((Map)localObject).put("WxaAppVersionInfo", XH(this.field_versionInfo));
-    ((Map)localObject).put("BindWxaInfo", XH(this.field_bindWxaInfo));
-    ((Map)localObject).put("WxaAppDynamic", XH(this.field_dynamicInfo));
-    ((Map)localObject).put("MMBizMenu", XH(this.field_bizMenu));
-    localObject = new JSONObject((Map)localObject).toString();
-    AppMethodBeat.o(225285);
-    return localObject;
+    AppMethodBeat.o(187102);
   }
   
   public final void convertFrom(Cursor paramCursor)
   {
     AppMethodBeat.i(123517);
     super.convertFrom(paramCursor);
-    this.lgo = null;
-    this.lgp = null;
-    this.lgq = null;
-    this.lgr = null;
-    this.lgs = null;
+    this.oaO = null;
+    this.oaP = null;
+    this.oaQ = null;
+    this.oaR = null;
+    this.oaS = null;
     AppMethodBeat.o(123517);
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    return kLR;
+    return nFK;
   }
   
   public final String toString()
@@ -477,755 +474,24 @@ public final class WxaAttributes
     return str;
   }
   
-  public static final class WxaEntryInfo
-    implements Parcelable
-  {
-    public static final Parcelable.Creator<WxaEntryInfo> CREATOR;
-    public String iconUrl;
-    public String lgO;
-    public String title;
-    public String username;
-    
-    static
-    {
-      AppMethodBeat.i(123495);
-      CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(123495);
-    }
-    
-    public WxaEntryInfo() {}
-    
-    protected WxaEntryInfo(Parcel paramParcel)
-    {
-      AppMethodBeat.i(123494);
-      this.username = paramParcel.readString();
-      this.title = paramParcel.readString();
-      this.lgO = paramParcel.readString();
-      this.iconUrl = paramParcel.readString();
-      AppMethodBeat.o(123494);
-    }
-    
-    public final int describeContents()
-    {
-      return 0;
-    }
-    
-    public final void writeToParcel(Parcel paramParcel, int paramInt)
-    {
-      AppMethodBeat.i(123493);
-      paramParcel.writeString(this.username);
-      paramParcel.writeString(this.title);
-      paramParcel.writeString(this.lgO);
-      paramParcel.writeString(this.iconUrl);
-      AppMethodBeat.o(123493);
-    }
-  }
-  
-  public static class WxaPluginCodeInfo
-    implements Parcelable
-  {
-    public static final Parcelable.Creator<WxaPluginCodeInfo> CREATOR;
-    public List<Integer> contexts;
-    public boolean lgP;
-    public String md5;
-    public String prefixPath;
-    public String provider;
-    public int version;
-    
-    static
-    {
-      AppMethodBeat.i(123500);
-      CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(123500);
-    }
-    
-    public WxaPluginCodeInfo()
-    {
-      AppMethodBeat.i(175234);
-      this.contexts = new LinkedList();
-      AppMethodBeat.o(175234);
-    }
-    
-    protected WxaPluginCodeInfo(Parcel paramParcel)
-    {
-      AppMethodBeat.i(123499);
-      this.contexts = new LinkedList();
-      this.provider = paramParcel.readString();
-      this.version = paramParcel.readInt();
-      this.md5 = paramParcel.readString();
-      this.prefixPath = paramParcel.readString();
-      if (paramParcel.readByte() == 1) {}
-      for (;;)
-      {
-        this.lgP = bool;
-        if (this.contexts == null) {
-          this.contexts = new LinkedList();
-        }
-        paramParcel.readList(this.contexts, Integer.class.getClassLoader());
-        AppMethodBeat.o(123499);
-        return;
-        bool = false;
-      }
-    }
-    
-    public static List<WxaPluginCodeInfo> a(List<WxaAttributes.WxaWidgetInfo> paramList, Object paramObject, int paramInt)
-    {
-      AppMethodBeat.i(225281);
-      Object localObject = null;
-      if (paramList != null)
-      {
-        Iterator localIterator = paramList.iterator();
-        for (paramList = (List<WxaAttributes.WxaWidgetInfo>)localObject; localIterator.hasNext(); paramList = ((WxaAttributes.WxaWidgetInfo)localObject).lhk)
-        {
-          localObject = (WxaAttributes.WxaWidgetInfo)localIterator.next();
-          if (((WxaAttributes.WxaWidgetInfo)localObject).packageType != paramInt) {
-            break label76;
-          }
-        }
-      }
-      for (;;)
-      {
-        localObject = paramList;
-        if (paramList == null) {
-          localObject = cz(paramObject);
-        }
-        AppMethodBeat.o(225281);
-        return localObject;
-        label76:
-        break;
-        paramList = null;
-      }
-    }
-    
-    public static List<WxaPluginCodeInfo> cz(Object paramObject)
-    {
-      AppMethodBeat.i(225282);
-      if (paramObject == null)
-      {
-        AppMethodBeat.o(225282);
-        return null;
-      }
-      for (;;)
-      {
-        int i;
-        try
-        {
-          if ((paramObject instanceof String))
-          {
-            paramObject = new JSONArray((String)paramObject);
-            if (paramObject != null)
-            {
-              i = paramObject.length();
-              if (i != 0) {}
-            }
-            else
-            {
-              AppMethodBeat.o(225282);
-              return null;
-            }
-          }
-          else
-          {
-            if ((paramObject instanceof JSONArray))
-            {
-              paramObject = (JSONArray)paramObject;
-              continue;
-            }
-            com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.AppBrand.WxaAttributes.WxaPluginCodeInfo", "WxaPluginCodeInfo.optPluginCodeInfoList() invalid pluginCodeObj:%s", new Object[] { paramObject.getClass().getName() });
-            paramObject = null;
-            continue;
-          }
-          LinkedList localLinkedList = new LinkedList();
-          i = 0;
-          if (i < paramObject.length())
-          {
-            Object localObject = paramObject.getJSONObject(i);
-            if (localObject == null) {
-              break label336;
-            }
-            WxaPluginCodeInfo localWxaPluginCodeInfo = new WxaPluginCodeInfo();
-            localWxaPluginCodeInfo.provider = ((JSONObject)localObject).optString("plugin_id");
-            localWxaPluginCodeInfo.version = ((JSONObject)localObject).optInt("inner_version");
-            localWxaPluginCodeInfo.md5 = ((JSONObject)localObject).optString("md5");
-            localWxaPluginCodeInfo.prefixPath = ((JSONObject)localObject).optString("prefix_path");
-            if (!((JSONObject)localObject).optBoolean("auto_update"))
-            {
-              if (((JSONObject)localObject).optInt("auto_update", 0) <= 0) {
-                break label343;
-              }
-              break label331;
-              localWxaPluginCodeInfo.lgP = bool;
-              localObject = ((JSONObject)localObject).optJSONArray("contexts");
-              if ((localObject != null) && (((JSONArray)localObject).length() > 0)) {
-                break label348;
-              }
-              localWxaPluginCodeInfo.contexts.add(Integer.valueOf(0));
-              localLinkedList.add(localWxaPluginCodeInfo);
-              break label336;
-              if (j < ((JSONArray)localObject).length())
-              {
-                localWxaPluginCodeInfo.contexts.add(Integer.valueOf(((JSONArray)localObject).optInt(j)));
-                j += 1;
-                continue;
-              }
-              continue;
-            }
-          }
-          else
-          {
-            AppMethodBeat.o(225282);
-            return localLinkedList;
-          }
-        }
-        catch (JSONException paramObject)
-        {
-          com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.AppBrand.WxaAttributes.WxaPluginCodeInfo", "parse json array, e = %s", new Object[] { paramObject });
-          AppMethodBeat.o(225282);
-          return null;
-        }
-        label331:
-        boolean bool = true;
-        continue;
-        label336:
-        i += 1;
-        continue;
-        label343:
-        bool = false;
-        continue;
-        label348:
-        int j = 0;
-      }
-    }
-    
-    public int describeContents()
-    {
-      return 0;
-    }
-    
-    public void writeToParcel(Parcel paramParcel, int paramInt)
-    {
-      AppMethodBeat.i(123498);
-      paramParcel.writeString(this.provider);
-      paramParcel.writeInt(this.version);
-      paramParcel.writeString(this.md5);
-      paramParcel.writeString(this.prefixPath);
-      if (this.lgP) {}
-      for (paramInt = 1;; paramInt = 0)
-      {
-        paramParcel.writeByte((byte)paramInt);
-        paramParcel.writeList(this.contexts);
-        AppMethodBeat.o(123498);
-        return;
-      }
-    }
-  }
-  
-  public static final class WxaVersionCoverImageInfo
-    implements Parcelable
-  {
-    public static final Parcelable.Creator<WxaVersionCoverImageInfo> CREATOR;
-    public String lgQ;
-    public String lgR;
-    
-    static
-    {
-      AppMethodBeat.i(123504);
-      CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(123504);
-    }
-    
-    public WxaVersionCoverImageInfo() {}
-    
-    protected WxaVersionCoverImageInfo(Parcel paramParcel)
-    {
-      AppMethodBeat.i(123503);
-      this.lgQ = paramParcel.readString();
-      this.lgR = paramParcel.readString();
-      AppMethodBeat.o(123503);
-    }
-    
-    public final int describeContents()
-    {
-      return 0;
-    }
-    
-    public final void writeToParcel(Parcel paramParcel, int paramInt)
-    {
-      AppMethodBeat.i(123502);
-      paramParcel.writeString(this.lgQ);
-      paramParcel.writeString(this.lgR);
-      AppMethodBeat.o(123502);
-    }
-  }
-  
-  public static final class WxaVersionInfo
-    implements Parcelable
-  {
-    public static final Parcelable.Creator<WxaVersionInfo> CREATOR;
-    public int appVersion;
-    public boolean cBF;
-    public int cyu;
-    public List<WxaAttributes.WxaWidgetInfo> jmL;
-    public String lgS;
-    public String lgT;
-    public WxaAttributes.WxaVersionCoverImageInfo lgU;
-    public List<WxaAttributes.WxaPluginCodeInfo> lgV;
-    public int lgW;
-    public boolean lgX;
-    public String lgY;
-    public String lgZ;
-    public String lha;
-    public long lhb;
-    public String lhc;
-    public String lhd;
-    public String lhe;
-    public String lhf;
-    public List<WxaAttributes.WxaVersionModuleInfo> moduleList;
-    
-    static
-    {
-      AppMethodBeat.i(123509);
-      CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(123509);
-    }
-    
-    public WxaVersionInfo()
-    {
-      this.lhc = "";
-      this.lhd = "";
-      this.lhe = "";
-      this.lhf = "";
-      this.cBF = false;
-    }
-    
-    protected WxaVersionInfo(Parcel paramParcel)
-    {
-      AppMethodBeat.i(123508);
-      this.lhc = "";
-      this.lhd = "";
-      this.lhe = "";
-      this.lhf = "";
-      this.cBF = false;
-      this.appVersion = paramParcel.readInt();
-      this.cyu = paramParcel.readInt();
-      this.lgS = paramParcel.readString();
-      this.lgT = paramParcel.readString();
-      this.lgU = ((WxaAttributes.WxaVersionCoverImageInfo)paramParcel.readParcelable(WxaAttributes.WxaVersionCoverImageInfo.class.getClassLoader()));
-      this.lgV = paramParcel.createTypedArrayList(WxaAttributes.WxaPluginCodeInfo.CREATOR);
-      this.lgW = paramParcel.readInt();
-      this.moduleList = paramParcel.createTypedArrayList(WxaAttributes.WxaVersionModuleInfo.CREATOR);
-      if (paramParcel.readByte() != 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.lgX = bool;
-        this.lgY = paramParcel.readString();
-        this.lgZ = paramParcel.readString();
-        this.lha = paramParcel.readString();
-        this.jmL = paramParcel.createTypedArrayList(WxaAttributes.WxaWidgetInfo.CREATOR);
-        this.lhc = paramParcel.readString();
-        this.lhd = paramParcel.readString();
-        this.lhe = paramParcel.readString();
-        this.lhf = paramParcel.readString();
-        boolean[] arrayOfBoolean = new boolean[1];
-        paramParcel.readBooleanArray(arrayOfBoolean);
-        this.cBF = arrayOfBoolean[0];
-        AppMethodBeat.o(123508);
-        return;
-      }
-    }
-    
-    public static WxaVersionInfo XJ(String paramString)
-    {
-      AppMethodBeat.i(123506);
-      if (Util.isNullOrNil(paramString))
-      {
-        AppMethodBeat.o(123506);
-        return null;
-      }
-      l = Util.currentTicks();
-      try
-      {
-        JSONObject localJSONObject1 = new JSONObject(paramString);
-        WxaVersionInfo localWxaVersionInfo = new WxaVersionInfo();
-        localWxaVersionInfo.appVersion = localJSONObject1.optInt("AppVersion", 0);
-        localWxaVersionInfo.cyu = localJSONObject1.optInt("VersionState", -1);
-        localWxaVersionInfo.lgS = localJSONObject1.optString("VersionMD5");
-        localWxaVersionInfo.lgT = localJSONObject1.optString("device_orientation");
-        localWxaVersionInfo.lgZ = localJSONObject1.optString("client_js_ext_info");
-        localWxaVersionInfo.lgW = localJSONObject1.optInt("code_size");
-        JSONObject localJSONObject2 = localJSONObject1.optJSONObject("loading_image_info");
-        if (localJSONObject2 != null)
-        {
-          localWxaVersionInfo.lgU = new WxaAttributes.WxaVersionCoverImageInfo();
-          localWxaVersionInfo.lgU.lgQ = localJSONObject2.optString("url");
-          localWxaVersionInfo.lgU.lgR = localJSONObject2.optString("progressbar_color");
-        }
-        JSONObject localJSONObject3 = localJSONObject1.optJSONObject("fake_native_loading_style_info");
-        if (localJSONObject3 != null)
-        {
-          localJSONObject2 = localJSONObject3.optJSONObject("white_style");
-          localJSONObject3 = localJSONObject3.optJSONObject("black_style");
-          if (localJSONObject2 != null)
-          {
-            if (localJSONObject2.has("navigation_bar_text_color")) {
-              localWxaVersionInfo.lhc = localJSONObject2.optString("navigation_bar_text_color");
-            }
-            if (localJSONObject2.has("background_color")) {
-              localWxaVersionInfo.lhd = localJSONObject2.optString("background_color");
-            }
-          }
-          if (localJSONObject3 != null)
-          {
-            if (localJSONObject3.has("navigation_bar_text_color")) {
-              localWxaVersionInfo.lhe = localJSONObject3.optString("navigation_bar_text_color");
-            }
-            if (localJSONObject3.has("background_color")) {
-              localWxaVersionInfo.lhf = localJSONObject3.optString("background_color");
-            }
-          }
-        }
-        localWxaVersionInfo.moduleList = WxaAttributes.WxaVersionModuleInfo.l(localJSONObject1.optJSONArray("module_list"));
-        localWxaVersionInfo.lgX = localJSONObject1.optBoolean("UseModule", false);
-        localWxaVersionInfo.lgY = localJSONObject1.optString("EntranceModule");
-        localWxaVersionInfo.lha = localJSONObject1.optString("without_lib_md5");
-        localWxaVersionInfo.jmL = WxaAttributes.WxaWidgetInfo.m(localJSONObject1.optJSONArray("widget_list"));
-        localWxaVersionInfo.lgV = WxaAttributes.WxaPluginCodeInfo.a(localWxaVersionInfo.jmL, localJSONObject1.opt("separated_plugin_list"), 22);
-        localWxaVersionInfo.lhb = localJSONObject1.optLong("ForceSyncUpdateWhenLaunchLastInterval", -1L);
-        localWxaVersionInfo.cBF = localJSONObject1.optBoolean("resizable", false);
-        com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AppBrand.WxaAttributes", "|runProfiled| WxaVersionInfo.fromJson cost:%d, length:%d", new Object[] { Long.valueOf(Util.currentTicks() - l), Integer.valueOf(paramString.length()) });
-        paramString = localWxaVersionInfo;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AppBrand.WxaAttributes", "|runProfiled| WxaVersionInfo.fromJson cost:%d, length:%d", new Object[] { Long.valueOf(Util.currentTicks() - l), Integer.valueOf(paramString.length()) });
-          paramString = null;
-        }
-      }
-      finally
-      {
-        com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AppBrand.WxaAttributes", "|runProfiled| WxaVersionInfo.fromJson cost:%d, length:%d", new Object[] { Long.valueOf(Util.currentTicks() - l), Integer.valueOf(paramString.length()) });
-        AppMethodBeat.o(123506);
-      }
-      AppMethodBeat.o(123506);
-      return paramString;
-    }
-    
-    public final int describeContents()
-    {
-      return 0;
-    }
-    
-    public final void writeToParcel(Parcel paramParcel, int paramInt)
-    {
-      AppMethodBeat.i(123507);
-      paramParcel.writeInt(this.appVersion);
-      paramParcel.writeInt(this.cyu);
-      paramParcel.writeString(this.lgS);
-      paramParcel.writeString(this.lgT);
-      paramParcel.writeParcelable(this.lgU, paramInt);
-      paramParcel.writeTypedList(this.lgV);
-      paramParcel.writeInt(this.lgW);
-      paramParcel.writeTypedList(this.moduleList);
-      if (this.lgX) {}
-      for (byte b = 1;; b = 0)
-      {
-        paramParcel.writeByte(b);
-        paramParcel.writeString(this.lgY);
-        paramParcel.writeString(this.lgZ);
-        paramParcel.writeString(this.lha);
-        paramParcel.writeTypedList(this.jmL);
-        paramParcel.writeString(this.lhc);
-        paramParcel.writeString(this.lhd);
-        paramParcel.writeString(this.lhe);
-        paramParcel.writeString(this.lhf);
-        paramParcel.writeBooleanArray(new boolean[] { this.cBF });
-        AppMethodBeat.o(123507);
-        return;
-      }
-    }
-  }
-  
-  public static class WxaVersionModuleInfo
-    implements Parcelable
-  {
-    public static final Parcelable.Creator<WxaVersionModuleInfo> CREATOR;
-    public String[] aliases;
-    public boolean independent;
-    public String lha;
-    public List<WxaAttributes.WxaPluginCodeInfo> lhg;
-    public List<WxaAttributes.WxaWidgetInfo> lhh;
-    private JSONObject lhi;
-    public String md5;
-    public String name;
-    public int size;
-    
-    static
-    {
-      AppMethodBeat.i(123516);
-      CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(123516);
-    }
-    
-    public WxaVersionModuleInfo() {}
-    
-    protected WxaVersionModuleInfo(Parcel paramParcel)
-    {
-      AppMethodBeat.i(123515);
-      this.name = paramParcel.readString();
-      this.md5 = paramParcel.readString();
-      if (paramParcel.readByte() != 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.independent = bool;
-        this.size = paramParcel.readInt();
-        this.aliases = paramParcel.createStringArray();
-        this.lhg = paramParcel.createTypedArrayList(WxaAttributes.WxaPluginCodeInfo.CREATOR);
-        this.lha = paramParcel.readString();
-        this.lhh = paramParcel.createTypedArrayList(WxaAttributes.WxaWidgetInfo.CREATOR);
-        AppMethodBeat.o(123515);
-        return;
-      }
-    }
-    
-    private static String[] F(JSONObject paramJSONObject)
-    {
-      int i = 0;
-      AppMethodBeat.i(123513);
-      paramJSONObject = paramJSONObject.optJSONArray("alias");
-      if ((paramJSONObject == null) || (paramJSONObject.length() <= 0))
-      {
-        AppMethodBeat.o(123513);
-        return new String[0];
-      }
-      String[] arrayOfString = new String[paramJSONObject.length()];
-      while (i < paramJSONObject.length())
-      {
-        arrayOfString[i] = paramJSONObject.optString(i);
-        i += 1;
-      }
-      AppMethodBeat.o(123513);
-      return arrayOfString;
-    }
-    
-    public static List<WxaVersionModuleInfo> XK(String paramString)
-    {
-      AppMethodBeat.i(123512);
-      if (Util.isNullOrNil(paramString))
-      {
-        AppMethodBeat.o(123512);
-        return null;
-      }
-      try
-      {
-        Object localObject = new JSONArray(paramString);
-        int i = ((JSONArray)localObject).length();
-        if (i <= 0)
-        {
-          AppMethodBeat.o(123512);
-          return null;
-        }
-        localObject = l((JSONArray)localObject);
-        AppMethodBeat.o(123512);
-        return localObject;
-      }
-      catch (JSONException localJSONException)
-      {
-        com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.AppBrand.WxaAttributes.WxaVersionModuleInfo", "parse json array, json = %s, e = %s", new Object[] { paramString, localJSONException });
-        AppMethodBeat.o(123512);
-      }
-      return null;
-    }
-    
-    public static List<WxaVersionModuleInfo> l(JSONArray paramJSONArray)
-    {
-      AppMethodBeat.i(123511);
-      if (paramJSONArray == null)
-      {
-        AppMethodBeat.o(123511);
-        return null;
-      }
-      try
-      {
-        LinkedList localLinkedList = new LinkedList();
-        int i = 0;
-        while (i < paramJSONArray.length())
-        {
-          JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-          if (localJSONObject != null)
-          {
-            WxaVersionModuleInfo localWxaVersionModuleInfo = new WxaVersionModuleInfo();
-            localWxaVersionModuleInfo.lhi = localJSONObject;
-            localWxaVersionModuleInfo.name = localJSONObject.getString("name");
-            localWxaVersionModuleInfo.md5 = localJSONObject.getString("md5");
-            localWxaVersionModuleInfo.size = localJSONObject.optInt("size", 0);
-            localWxaVersionModuleInfo.independent = localJSONObject.optBoolean("independent", false);
-            localWxaVersionModuleInfo.aliases = F(localJSONObject);
-            localWxaVersionModuleInfo.lha = localJSONObject.optString("without_lib_md5");
-            localWxaVersionModuleInfo.lhh = WxaAttributes.WxaWidgetInfo.m(localJSONObject.optJSONArray("widget_list"));
-            localWxaVersionModuleInfo.lhg = WxaAttributes.WxaPluginCodeInfo.a(localWxaVersionModuleInfo.lhh, localJSONObject.opt("separated_plugin_list"), 23);
-            localLinkedList.add(localWxaVersionModuleInfo);
-          }
-          i += 1;
-        }
-        AppMethodBeat.o(123511);
-        return localLinkedList;
-      }
-      catch (JSONException paramJSONArray)
-      {
-        com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.AppBrand.WxaAttributes.WxaVersionModuleInfo", "parse json array, e = %s", new Object[] { paramJSONArray });
-        AppMethodBeat.o(123511);
-      }
-      return null;
-    }
-    
-    public int describeContents()
-    {
-      return 0;
-    }
-    
-    public void writeToParcel(Parcel paramParcel, int paramInt)
-    {
-      AppMethodBeat.i(123514);
-      paramParcel.writeString(this.name);
-      paramParcel.writeString(this.md5);
-      if (this.independent) {}
-      for (byte b = 1;; b = 0)
-      {
-        paramParcel.writeByte(b);
-        paramParcel.writeInt(this.size);
-        paramParcel.writeStringArray(this.aliases);
-        paramParcel.writeTypedList(this.lhg);
-        paramParcel.writeString(this.lha);
-        paramParcel.writeTypedList(this.lhh);
-        AppMethodBeat.o(123514);
-        return;
-      }
-    }
-  }
-  
-  public static class WxaWidgetInfo
-    implements Parcelable
-  {
-    public static final Parcelable.Creator<WxaWidgetInfo> CREATOR;
-    public String lhj;
-    public List<WxaAttributes.WxaPluginCodeInfo> lhk;
-    public int packageType;
-    
-    static
-    {
-      AppMethodBeat.i(175239);
-      CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(175239);
-    }
-    
-    public WxaWidgetInfo() {}
-    
-    protected WxaWidgetInfo(Parcel paramParcel)
-    {
-      AppMethodBeat.i(175238);
-      this.packageType = paramParcel.readInt();
-      this.lhj = paramParcel.readString();
-      this.lhk = paramParcel.createTypedArrayList(WxaAttributes.WxaPluginCodeInfo.CREATOR);
-      AppMethodBeat.o(175238);
-    }
-    
-    public static List<WxaWidgetInfo> XL(String paramString)
-    {
-      AppMethodBeat.i(175236);
-      if (Util.isNullOrNil(paramString))
-      {
-        AppMethodBeat.o(175236);
-        return null;
-      }
-      try
-      {
-        paramString = m(new JSONArray(paramString));
-        AppMethodBeat.o(175236);
-        return paramString;
-      }
-      catch (JSONException paramString)
-      {
-        com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.AppBrand.WxaAttributes.WxaPluginCodeInfo", "parse json array, e = %s", new Object[] { paramString });
-        AppMethodBeat.o(175236);
-      }
-      return null;
-    }
-    
-    public static List<WxaWidgetInfo> m(JSONArray paramJSONArray)
-    {
-      AppMethodBeat.i(225283);
-      if (paramJSONArray != null) {}
-      try
-      {
-        int i = paramJSONArray.length();
-        if (i <= 0)
-        {
-          AppMethodBeat.o(225283);
-          return null;
-        }
-        LinkedList localLinkedList = new LinkedList();
-        i = 0;
-        while (i < paramJSONArray.length())
-        {
-          JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-          if (localJSONObject != null)
-          {
-            WxaWidgetInfo localWxaWidgetInfo = new WxaWidgetInfo();
-            localWxaWidgetInfo.packageType = localJSONObject.optInt("package_type");
-            localWxaWidgetInfo.lhj = localJSONObject.optString("wxapkg_md5");
-            if (org.apache.commons.b.a.contains(com.tencent.mm.cp.a.RwY, localWxaWidgetInfo.packageType))
-            {
-              localWxaWidgetInfo.lhk = WxaAttributes.WxaPluginCodeInfo.cz(localJSONObject.opt("separated_plugin_list"));
-              localLinkedList.add(localWxaWidgetInfo);
-            }
-          }
-          i += 1;
-        }
-        AppMethodBeat.o(225283);
-        return localLinkedList;
-      }
-      catch (JSONException paramJSONArray)
-      {
-        com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.AppBrand.WxaAttributes.WxaPluginCodeInfo", "parse json array, e = %s", new Object[] { paramJSONArray });
-        AppMethodBeat.o(225283);
-      }
-      return null;
-    }
-    
-    public int describeContents()
-    {
-      return 0;
-    }
-    
-    public void writeToParcel(Parcel paramParcel, int paramInt)
-    {
-      AppMethodBeat.i(175237);
-      paramParcel.writeInt(this.packageType);
-      paramParcel.writeString(this.lhj);
-      paramParcel.writeTypedList(this.lhk);
-      AppMethodBeat.o(175237);
-    }
-  }
-  
   public static final class a
   {
-    public long czf = 0L;
-    public long kWb = 0L;
-    public String ldJ;
-    public String lgA;
-    public String lgt;
-    private int lgu;
-    public List<String> lgv;
-    public List<String> lgw;
-    public List<String> lgx;
-    public List<String> lgy;
-    public List<String> lgz;
+    public long cxN = 0L;
+    public long nQo = 0L;
+    public String nXX;
+    public String oaU;
+    private int oaV;
+    public List<String> oaW;
+    public List<String> oaX;
+    public List<String> oaY;
+    public List<String> oaZ;
+    public List<String> oba;
+    public List<String> obb;
+    public String obc;
     public int originalFlag;
     public int serviceType;
     
-    public static a XI(String paramString)
+    public static a afu(String paramString)
     {
       AppMethodBeat.i(123490);
       if (Util.isNullOrNil(paramString))
@@ -1241,24 +507,25 @@ public final class WxaAttributes
         JSONObject localJSONObject2 = localJSONObject1.optJSONObject("RunningFlagInfo");
         if (localJSONObject2 != null)
         {
-          locala.czf = localJSONObject2.optLong("RunningFlag");
-          locala.lgt = localJSONObject2.optString("AppOpenForbiddenUrl");
-          locala.kWb = localJSONObject2.optLong("CanNotStarWxaBeforeTime", 0L);
+          locala.cxN = localJSONObject2.optLong("RunningFlag");
+          locala.oaU = localJSONObject2.optString("AppOpenForbiddenUrl");
+          locala.nQo = localJSONObject2.optLong("CanNotStarWxaBeforeTime", 0L);
         }
         localJSONObject2 = localJSONObject1.optJSONObject("Network");
         if (localJSONObject2 != null)
         {
-          locala.lgv = ad.n(localJSONObject2.optJSONArray("RequestDomain"));
-          locala.lgw = ad.n(localJSONObject2.optJSONArray("WsRequestDomain"));
-          locala.lgx = ad.n(localJSONObject2.optJSONArray("UploadDomain"));
-          locala.lgy = ad.n(localJSONObject2.optJSONArray("DownloadDomain"));
-          locala.lgz = ad.n(localJSONObject2.optJSONArray("UDPDomain"));
+          locala.oaW = ad.n(localJSONObject2.optJSONArray("RequestDomain"));
+          locala.oaX = ad.n(localJSONObject2.optJSONArray("WsRequestDomain"));
+          locala.oaY = ad.n(localJSONObject2.optJSONArray("UploadDomain"));
+          locala.oaZ = ad.n(localJSONObject2.optJSONArray("DownloadDomain"));
+          locala.oba = ad.n(localJSONObject2.optJSONArray("UDPDomain"));
+          locala.obb = ad.n(localJSONObject2.optJSONArray("TCPDomain"));
         }
-        locala.lgu = localJSONObject1.optInt("WechatPluginApp", 0);
+        locala.oaV = localJSONObject1.optInt("WechatPluginApp", 0);
         locala.serviceType = localJSONObject1.optInt("AppServiceType", 0);
-        locala.lgA = localJSONObject1.optString("fromBusinessUsername");
+        locala.obc = localJSONObject1.optString("fromBusinessUsername");
         locala.originalFlag = localJSONObject1.optInt("OriginalFlag", 0);
-        locala.ldJ = localJSONObject1.optString("OriginalRedirectUrl");
+        locala.nXX = localJSONObject1.optString("OriginalRedirectUrl");
         paramString = locala;
       }
       catch (Exception localException)
@@ -1273,83 +540,75 @@ public final class WxaAttributes
       return paramString;
     }
     
-    public final boolean NA()
+    public final boolean Qv()
     {
       return this.serviceType == 4;
     }
     
-    public final boolean bAt()
+    public final boolean bLL()
     {
-      return (this.lgu > 0) || (this.serviceType == 7);
+      return (this.oaV > 0) || (this.serviceType == 7);
     }
   }
   
   public static final class b
   {
-    public int dhT;
-    public List<a> lgB;
+    public int eZA;
+    public List<WxaAttributes.b.a> obd;
     public int type;
-    
-    public static final class a
-    {
-      public String dCx;
-      public List<a> lgC;
-      public String name;
-      public int type;
-      public String userName;
-      public int version;
-    }
   }
   
   public static final class c
   {
-    public a lgD;
-    public List<Pair<String, String>> lgE;
+    public a obf;
+    public List<Pair<String, String>> obg;
     
     public c()
     {
       AppMethodBeat.i(123491);
-      this.lgD = new a();
+      this.obf = new a();
       AppMethodBeat.o(123491);
     }
     
     public static final class a
     {
-      public int cyJ;
-      public int cyK;
-      public int cyL;
-      public int cyM;
-      public int cyN;
-      public int cyO;
-      public boolean cyP;
-      public boolean cyQ;
-      public boolean cyY;
-      public int cza;
-      public boolean kXI;
-      public boolean kXJ;
-      public int kXK;
-      public int kXL;
-      public int leC;
-      public int leD;
-      public int leb;
-      public int lec;
-      public int lex;
-      public boolean ley;
-      public int lgF;
-      public int lgG;
-      public int lgH;
-      public int lgI;
-      public boolean lgJ;
-      public long lgK;
-      public long lgL;
-      public long lgM;
-      public long lgN;
+      public boolean cxG;
+      public int cxI;
+      public int cxo;
+      public int cxp;
+      public int cxq;
+      public int cxr;
+      public int cxs;
+      public int cxt;
+      public boolean cxu;
+      public boolean cxv;
+      public boolean nRU;
+      public boolean nRV;
+      public int nRW;
+      public int nRX;
+      public int nYK;
+      public boolean nYL;
+      public int nYP;
+      public int nYQ;
+      public int nYp;
+      public int nYq;
+      public int obh;
+      public int obi;
+      public int obk;
+      public int obl;
+      public int obm;
+      public int obn;
+      public boolean obo;
+      public long obp;
+      public long obq;
+      public long obr;
+      public long obs;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.WxaAttributes
  * JD-Core Version:    0.7.0.1
  */

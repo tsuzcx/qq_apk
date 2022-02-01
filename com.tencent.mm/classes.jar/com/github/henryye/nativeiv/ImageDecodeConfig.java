@@ -1,7 +1,7 @@
 package com.github.henryye.nativeiv;
 
 import android.graphics.Bitmap.Config;
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 @Keep
@@ -34,7 +34,7 @@ public class ImageDecodeConfig
   @Keep
   public static Object createConfig(int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4, double paramDouble)
   {
-    AppMethodBeat.i(219802);
+    AppMethodBeat.i(219719);
     ImageDecodeConfig localImageDecodeConfig = new ImageDecodeConfig();
     localImageDecodeConfig.mPremultiplyAlpha = paramBoolean;
     if (paramInt1 == 8)
@@ -50,7 +50,7 @@ public class ImageDecodeConfig
       localImageDecodeConfig.mPreferredWidth = paramInt3;
       localImageDecodeConfig.mPreferredHeight = paramInt4;
       localImageDecodeConfig.mPreferredScale = paramDouble;
-      AppMethodBeat.o(219802);
+      AppMethodBeat.o(219719);
       return localImageDecodeConfig;
       if (paramInt1 == 4)
       {
@@ -99,31 +99,31 @@ public class ImageDecodeConfig
   @Keep
   public int getNativeReferrerPolicy()
   {
-    AppMethodBeat.i(219801);
-    switch (1.baB[this.mReferrerPolicy.ordinal()])
+    AppMethodBeat.i(219712);
+    switch (1.aJZ[this.mReferrerPolicy.ordinal()])
     {
     default: 
-      AppMethodBeat.o(219801);
+      AppMethodBeat.o(219712);
       return 0;
     case 1: 
-      AppMethodBeat.o(219801);
+      AppMethodBeat.o(219712);
       return 1;
     }
-    AppMethodBeat.o(219801);
+    AppMethodBeat.o(219712);
     return 2;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(219803);
+    AppMethodBeat.i(219723);
     String str = "ImageDecodeConfig{mConfig=" + this.mConfig + ", mPremultiplyAlpha=" + this.mPremultiplyAlpha + ", mReferrerPolicy=" + this.mReferrerPolicy + ", mPreferredWidth=" + this.mPreferredWidth + ", mPreferredHeight=" + this.mPreferredHeight + ", mPreferredScale=" + this.mPreferredScale + '}';
-    AppMethodBeat.o(219803);
+    AppMethodBeat.o(219723);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.github.henryye.nativeiv.ImageDecodeConfig
  * JD-Core Version:    0.7.0.1
  */

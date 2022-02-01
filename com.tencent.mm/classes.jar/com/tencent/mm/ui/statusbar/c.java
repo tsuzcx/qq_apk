@@ -20,14 +20,14 @@ import java.util.WeakHashMap;
 
 public class c
 {
-  private static final WeakHashMap<Activity, c> OLL;
+  private static final WeakHashMap<Activity, c> Wfk;
+  public static final boolean XMC;
   @SuppressLint({"StaticFieldLeak"})
-  private static final c QoB;
-  public static final boolean Qow;
-  private WeakReference<View> QoA;
-  private final Set<WeakReference<a>> Qox;
-  private boolean Qoy;
-  public int Qoz;
+  private static final c XMH;
+  private final Set<WeakReference<a>> XMD;
+  private boolean XME;
+  int XMF;
+  private WeakReference<View> XMG;
   private final WeakReference<Activity> mActivityRef;
   
   static
@@ -36,14 +36,14 @@ public class c
     if ((Build.VERSION.SDK_INT >= 21) && (!Meizu.hasSmartBar())) {}
     for (boolean bool = true;; bool = false)
     {
-      Qow = bool;
-      QoB = new c()
+      XMC = bool;
+      XMH = new c()
       {
         public final void a(c.a paramAnonymousa) {}
         
         public final void b(c.a paramAnonymousa) {}
       };
-      OLL = new WeakHashMap();
+      Wfk = new WeakHashMap();
       AppMethodBeat.o(133824);
       return;
     }
@@ -52,28 +52,28 @@ public class c
   private c(Activity paramActivity)
   {
     AppMethodBeat.i(133819);
-    this.Qox = new HashSet();
-    this.Qoy = false;
-    this.Qoz = 0;
+    this.XMD = new HashSet();
+    this.XME = false;
+    this.XMF = 0;
     this.mActivityRef = new WeakReference(paramActivity);
     AppMethodBeat.o(133819);
   }
   
-  public static c bt(Activity paramActivity)
+  public static c bA(Activity paramActivity)
   {
     AppMethodBeat.i(133822);
-    if ((!Qow) || (paramActivity == null))
+    if ((!XMC) || (paramActivity == null))
     {
-      paramActivity = QoB;
+      paramActivity = XMH;
       AppMethodBeat.o(133822);
       return paramActivity;
     }
-    c localc2 = (c)OLL.get(paramActivity);
+    c localc2 = (c)Wfk.get(paramActivity);
     c localc1 = localc2;
     if (localc2 == null)
     {
       localc1 = new c(paramActivity);
-      OLL.put(paramActivity, localc1);
+      Wfk.put(paramActivity, localc1);
     }
     AppMethodBeat.o(133822);
     return localc1;
@@ -83,9 +83,9 @@ public class c
   {
     AppMethodBeat.i(133820);
     Object localObject1;
-    if (!this.Qoy)
+    if (!this.XME)
     {
-      this.Qoy = true;
+      this.XME = true;
       localObject1 = (Activity)this.mActivityRef.get();
       if ((localObject1 != null) && (((Activity)localObject1).getWindow() != null)) {}
     }
@@ -93,9 +93,9 @@ public class c
     {
       if (parama != null)
       {
-        this.Qox.add(new WeakReference(parama));
-        if (this.Qoz > 0) {
-          parama.yf(this.Qoz);
+        this.XMD.add(new WeakReference(parama));
+        if (this.XMF > 0) {
+          parama.BF(this.XMF);
         }
       }
       AppMethodBeat.o(133820);
@@ -119,7 +119,7 @@ public class c
       }
       catch (Exception localException)
       {
-        this.Qoy = false;
+        this.XME = false;
         Log.e("MicroMsg.StatusBarHeightWatcher", "setOnApplyWindowInsetsListener e=%s", new Object[] { localException });
       }
       ((View)localObject3).setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener()
@@ -137,7 +137,7 @@ public class c
         }
       });
       ((View)localObject3).requestApplyInsets();
-      this.QoA = new WeakReference(localObject3);
+      this.XMG = new WeakReference(localObject3);
       break;
       break;
       label201:
@@ -157,35 +157,35 @@ public class c
     AppMethodBeat.i(133821);
     if (parama != null)
     {
-      Iterator localIterator = new LinkedList(this.Qox).iterator();
+      Iterator localIterator = new LinkedList(this.XMD).iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
         if ((parama == localWeakReference.get()) || (localWeakReference.get() == null)) {
-          this.Qox.remove(localWeakReference);
+          this.XMD.remove(localWeakReference);
         }
       }
     }
     AppMethodBeat.o(133821);
   }
   
-  public final void requestApplyInsets()
+  public final void hXX()
   {
-    AppMethodBeat.i(196231);
-    if ((this.QoA != null) && (this.QoA.get() != null)) {
-      ((View)this.QoA.get()).requestApplyInsets();
+    AppMethodBeat.i(237484);
+    if ((this.XMG != null) && (this.XMG.get() != null)) {
+      ((View)this.XMG.get()).requestApplyInsets();
     }
-    AppMethodBeat.o(196231);
+    AppMethodBeat.o(237484);
   }
   
   public static abstract interface a
   {
-    public abstract void yf(int paramInt);
+    public abstract void BF(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.statusbar.c
  * JD-Core Version:    0.7.0.1
  */

@@ -11,17 +11,17 @@ import java.util.Map;
 
 public final class i
 {
-  public static i jMH;
-  private Map<String, String> jMI;
+  public static i mDP;
+  private Map<String, String> mDQ;
   
   static
   {
     AppMethodBeat.i(127692);
-    jMH = new i();
+    mDP = new i();
     AppMethodBeat.o(127692);
   }
   
-  public final Map<String, String> dq(Context paramContext)
+  public final Map<String, String> dn(Context paramContext)
   {
     AppMethodBeat.i(127691);
     for (;;)
@@ -43,9 +43,9 @@ public final class i
           AppMethodBeat.o(127691);
           return null;
         }
-        if (this.jMI == null)
+        if (this.mDQ == null)
         {
-          this.jMI = new HashMap();
+          this.mDQ = new HashMap();
           i = 0;
           Object localObject = new StringBuilder(".config.format");
           if (i == 0)
@@ -62,19 +62,19 @@ public final class i
             if ((Util.isNullOrNil(paramContext)) || (Util.isNullOrNil((String)localObject))) {
               break label291;
             }
-            this.jMI.put(paramContext, localObject);
+            this.mDQ.put(paramContext, localObject);
             break label291;
           }
         }
         else
         {
-          paramContext = this.jMI;
+          paramContext = this.mDQ;
           AppMethodBeat.o(127691);
           return paramContext;
         }
         paramContext = Integer.valueOf(i);
         continue;
-        paramContext = this.jMI;
+        paramContext = this.mDQ;
         AppMethodBeat.o(127691);
         return paramContext;
       }

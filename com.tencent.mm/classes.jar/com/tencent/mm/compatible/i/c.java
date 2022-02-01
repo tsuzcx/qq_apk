@@ -10,35 +10,35 @@ import java.nio.ByteBuffer;
 @TargetApi(16)
 public final class c
 {
-  public final MediaExtractor gLF;
+  public final MediaExtractor jvU;
   
   public c()
   {
     AppMethodBeat.i(155923);
-    this.gLF = new MediaExtractor();
+    this.jvU = new MediaExtractor();
     AppMethodBeat.o(155923);
   }
   
   public final boolean advance()
   {
     AppMethodBeat.i(186058);
-    boolean bool = this.gLF.advance();
+    boolean bool = this.jvU.advance();
     AppMethodBeat.o(186058);
     return bool;
   }
   
   public final int getSampleFlags()
   {
-    AppMethodBeat.i(204401);
-    int i = this.gLF.getSampleFlags();
-    AppMethodBeat.o(204401);
+    AppMethodBeat.i(250572);
+    int i = this.jvU.getSampleFlags();
+    AppMethodBeat.o(250572);
     return i;
   }
   
   public final long getSampleTime()
   {
     AppMethodBeat.i(186059);
-    long l = this.gLF.getSampleTime();
+    long l = this.jvU.getSampleTime();
     AppMethodBeat.o(186059);
     return l;
   }
@@ -46,7 +46,7 @@ public final class c
   public final int getSampleTrackIndex()
   {
     AppMethodBeat.i(155936);
-    int i = this.gLF.getSampleTrackIndex();
+    int i = this.jvU.getSampleTrackIndex();
     AppMethodBeat.o(155936);
     return i;
   }
@@ -54,7 +54,7 @@ public final class c
   public final int getTrackCount()
   {
     AppMethodBeat.i(186057);
-    int i = this.gLF.getTrackCount();
+    int i = this.jvU.getTrackCount();
     AppMethodBeat.o(186057);
     return i;
   }
@@ -62,51 +62,51 @@ public final class c
   public final MediaFormat getTrackFormat(int paramInt)
   {
     AppMethodBeat.i(155930);
-    MediaFormat localMediaFormat = this.gLF.getTrackFormat(paramInt);
+    MediaFormat localMediaFormat = this.jvU.getTrackFormat(paramInt);
     AppMethodBeat.o(155930);
     return localMediaFormat;
   }
   
   public final int readSampleData(ByteBuffer paramByteBuffer, int paramInt)
   {
-    AppMethodBeat.i(204400);
-    paramInt = this.gLF.readSampleData(paramByteBuffer, paramInt);
-    AppMethodBeat.o(204400);
+    AppMethodBeat.i(250568);
+    paramInt = this.jvU.readSampleData(paramByteBuffer, paramInt);
+    AppMethodBeat.o(250568);
     return paramInt;
   }
   
   public final void release()
   {
     AppMethodBeat.i(186056);
-    this.gLF.release();
+    this.jvU.release();
     AppMethodBeat.o(186056);
   }
   
   public final void seekTo(long paramLong, int paramInt)
   {
     AppMethodBeat.i(155933);
-    this.gLF.seekTo(paramLong, paramInt);
+    this.jvU.seekTo(paramLong, paramInt);
     AppMethodBeat.o(155933);
   }
   
   public final void selectTrack(int paramInt)
   {
     AppMethodBeat.i(155931);
-    this.gLF.selectTrack(paramInt);
+    this.jvU.selectTrack(paramInt);
     AppMethodBeat.o(155931);
   }
   
   public final void setDataSource(FileDescriptor paramFileDescriptor)
   {
     AppMethodBeat.i(155926);
-    this.gLF.setDataSource(paramFileDescriptor);
+    this.jvU.setDataSource(paramFileDescriptor);
     AppMethodBeat.o(155926);
   }
   
   public final void setDataSource(FileDescriptor paramFileDescriptor, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(155927);
-    this.gLF.setDataSource(paramFileDescriptor, paramLong1, paramLong2);
+    this.jvU.setDataSource(paramFileDescriptor, paramLong1, paramLong2);
     AppMethodBeat.o(155927);
   }
   
@@ -118,10 +118,10 @@ public final class c
     //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
     //   6: iconst_0
-    //   7: invokestatic 96	com/tencent/mm/vfs/s:k	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   7: invokestatic 96	com/tencent/mm/vfs/u:n	(Ljava/lang/String;Z)Ljava/lang/String;
     //   10: ifnull +52 -> 62
     //   13: aload_0
-    //   14: getfield 25	com/tencent/mm/compatible/i/c:gLF	Landroid/media/MediaExtractor;
+    //   14: getfield 25	com/tencent/mm/compatible/i/c:jvU	Landroid/media/MediaExtractor;
     //   17: aload_1
     //   18: aconst_null
     //   19: invokevirtual 99	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;Ljava/util/Map;)V
@@ -145,10 +145,10 @@ public final class c
     //   59: invokestatic 126	com/tencent/stubs/logger/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   62: aload_1
     //   63: ldc 128
-    //   65: invokestatic 132	com/tencent/mm/vfs/s:nv	(Ljava/lang/String;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
+    //   65: invokestatic 132	com/tencent/mm/vfs/u:om	(Ljava/lang/String;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
     //   68: astore 4
     //   70: aload_0
-    //   71: getfield 25	com/tencent/mm/compatible/i/c:gLF	Landroid/media/MediaExtractor;
+    //   71: getfield 25	com/tencent/mm/compatible/i/c:jvU	Landroid/media/MediaExtractor;
     //   74: aload 4
     //   76: invokevirtual 138	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
     //   79: invokevirtual 80	android/media/MediaExtractor:setDataSource	(Ljava/io/FileDescriptor;)V
@@ -191,7 +191,7 @@ public final class c
     //   156: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   159: invokestatic 126	com/tencent/stubs/logger/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   162: aload_0
-    //   163: getfield 25	com/tencent/mm/compatible/i/c:gLF	Landroid/media/MediaExtractor;
+    //   163: getfield 25	com/tencent/mm/compatible/i/c:jvU	Landroid/media/MediaExtractor;
     //   166: aload_1
     //   167: aconst_null
     //   168: invokevirtual 99	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;Ljava/util/Map;)V
@@ -240,13 +240,13 @@ public final class c
   public final void unselectTrack(int paramInt)
   {
     AppMethodBeat.i(155932);
-    this.gLF.unselectTrack(paramInt);
+    this.jvU.unselectTrack(paramInt);
     AppMethodBeat.o(155932);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.compatible.i.c
  * JD-Core Version:    0.7.0.1
  */

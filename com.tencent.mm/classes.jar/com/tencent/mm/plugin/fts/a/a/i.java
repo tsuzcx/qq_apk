@@ -10,46 +10,46 @@ import java.lang.ref.WeakReference;
 public abstract class i
   extends a
 {
-  private WeakReference<l> wTo;
-  public j wWO;
-  public k wWP;
+  private WeakReference<l> BFl;
+  public j BIJ;
+  public k BIK;
   
   public i(j paramj)
   {
-    this.wWO = paramj;
-    this.wTo = new WeakReference(paramj.wWZ);
-    this.wWO.wWZ = null;
+    this.BIJ = paramj;
+    this.BFl = new WeakReference(paramj.BIU);
+    this.BIJ.BIU = null;
   }
   
   protected void a(k paramk)
   {
-    paramk.wWd = h.bE(this.wWO.query, false);
+    paramk.BHY = h.bJ(this.BIJ.query, false);
     paramk.resultCode = -5;
   }
   
-  public final boolean execute()
+  public final boolean aEv()
   {
-    Object localObject1 = this.wWO;
+    Object localObject1 = this.BIJ;
     if (!Util.isNullOrNil(((j)localObject1).query)) {}
     try
     {
       ((j)localObject1).query = new String(((j)localObject1).query.getBytes("UTF8"), "UTF8");
       label37:
-      this.wWP = new k(this.wWO);
+      this.BIK = new k(this.BIJ);
       try
       {
-        this.wWP.wXa = this;
-        a(this.wWP);
-        this.wWP.resultCode = 0;
-        if (this.wWO.handler == null)
+        this.BIK.BIV = this;
+        a(this.BIK);
+        this.BIK.resultCode = 0;
+        if (this.BIJ.handler == null)
         {
-          localObject1 = (l)this.wTo.get();
+          localObject1 = (l)this.BFl.get();
           if (localObject1 != null) {
-            ((l)localObject1).b(this.wWP);
+            ((l)localObject1).b(this.BIK);
           }
           return true;
         }
-        this.wWO.handler.post(new Runnable()
+        this.BIJ.handler.post(new Runnable()
         {
           public final void run()
           {
@@ -67,25 +67,25 @@ public abstract class i
       {
         if ((localException instanceof InterruptedException))
         {
-          this.wWP.resultCode = 1;
+          this.BIK.resultCode = 1;
           throw localException;
         }
       }
       finally
       {
-        if (this.wWO.handler == null)
+        if (this.BIJ.handler == null)
         {
-          l locall = (l)this.wTo.get();
+          l locall = (l)this.BFl.get();
           if (locall != null) {
-            locall.b(this.wWP);
+            locall.b(this.BIK);
           }
         }
         for (;;)
         {
           throw localObject2;
-          this.wWP.resultCode = -1;
+          this.BIK.resultCode = -1;
           break;
-          this.wWO.handler.post(new Runnable()
+          this.BIJ.handler.post(new Runnable()
           {
             public final void run()
             {
@@ -108,7 +108,7 @@ public abstract class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.a.i
  * JD-Core Version:    0.7.0.1
  */

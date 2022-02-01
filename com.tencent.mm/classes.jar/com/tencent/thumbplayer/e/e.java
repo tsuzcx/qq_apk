@@ -15,73 +15,73 @@ import java.util.ArrayList;
 public final class e
   implements ITPPreloadProxy
 {
-  private a RZK;
-  private ITPPreloadProxy.IPreloadListener RZL;
-  private ITPDownloadProxy RZp;
-  private boolean RZq;
+  private ITPDownloadProxy ZBZ;
+  private boolean ZCa;
+  private a ZCu;
+  private ITPPreloadProxy.IPreloadListener ZCv;
   private Context mContext;
   private int mServiceType;
   
   public e(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(189222);
-    this.RZq = false;
-    this.RZK = new a((byte)0);
-    this.RZL = new d("TPPreloadProxyImpl");
+    AppMethodBeat.i(220521);
+    this.ZCa = false;
+    this.ZCu = new a((byte)0);
+    this.ZCv = new d("TPPreloadProxyImpl");
     this.mContext = paramContext;
     this.mServiceType = paramInt;
-    hny();
-    AppMethodBeat.o(189222);
+    iqZ();
+    AppMethodBeat.o(220521);
   }
   
-  private void hny()
+  private void iqZ()
   {
-    AppMethodBeat.i(189223);
+    AppMethodBeat.i(220527);
     int i = 3;
-    while ((i > 0) && (!this.RZq))
+    while ((i > 0) && (!this.ZCa))
     {
       int j = i;
       try
       {
-        b localb = g.a.hnA().aru(this.mServiceType);
+        b localb = g.a.irb().aBh(this.mServiceType);
         if (localb != null)
         {
           j = i;
-          if (localb.hnx() != null)
+          if (localb.iqY() != null)
           {
             j = i;
-            this.RZp = localb.hnx();
+            this.ZBZ = localb.iqY();
             j = i;
-            this.RZp.setLogListener(this.RZK);
+            this.ZBZ.setLogListener(this.ZCu);
             j = i;
-            this.RZp.setUserData("qq_is_vip", Boolean.valueOf(a.hnr()));
+            this.ZBZ.setUserData("qq_is_vip", Boolean.valueOf(a.iqS()));
             j = i;
-            if (!TextUtils.isEmpty(a.hnn()))
+            if (!TextUtils.isEmpty(a.iqO()))
             {
               j = i;
-              this.RZp.setUserData("user_uin", a.hnn());
+              this.ZBZ.setUserData("user_uin", a.iqO());
             }
             j = i;
             if (!TextUtils.isEmpty(a.getAppVersionName(this.mContext)))
             {
               j = i;
-              this.RZp.setUserData("app_version_name", a.getAppVersionName(this.mContext));
+              this.ZBZ.setUserData("app_version_name", a.getAppVersionName(this.mContext));
             }
             j = i;
-            if (a.li(this.mContext) != -1L)
+            if (a.mg(this.mContext) != -1L)
             {
               j = i;
-              this.RZp.setUserData("app_version_code", String.valueOf(a.li(this.mContext)));
+              this.ZBZ.setUserData("app_version_code", String.valueOf(a.mg(this.mContext)));
             }
             j = i;
-            this.RZp.setUserData("carrier_pesudo_code", a.hno());
+            this.ZBZ.setUserData("carrier_pesudo_code", a.iqP());
             j = i;
-            this.RZp.setUserData("carrier_pesudo_state", Integer.valueOf(a.hnp()));
+            this.ZBZ.setUserData("carrier_pesudo_state", Integer.valueOf(a.iqQ()));
             j = i;
-            this.RZp.setUserData("external_network_ip", a.hnq());
+            this.ZBZ.setUserData("external_network_ip", a.iqR());
             j = i;
-            this.RZq = true;
-            AppMethodBeat.o(189223);
+            this.ZCa = true;
+            AppMethodBeat.o(220527);
             return;
           }
         }
@@ -95,7 +95,7 @@ public final class e
         com.tencent.thumbplayer.utils.g.e("TPPreloadProxyImpl", localException);
       }
     }
-    AppMethodBeat.o(189223);
+    AppMethodBeat.o(220527);
   }
   
   public final String getPlayErrorCodeStr(int paramInt)
@@ -105,41 +105,41 @@ public final class e
   
   public final boolean isAvailable()
   {
-    return (this.RZp != null) && (this.RZq);
+    return (this.ZBZ != null) && (this.ZCa);
   }
   
   public final void pushEvent(int paramInt)
   {
-    AppMethodBeat.i(189227);
+    AppMethodBeat.i(220540);
     if (!isAvailable())
     {
-      AppMethodBeat.o(189227);
+      AppMethodBeat.o(220540);
       return;
     }
     try
     {
-      this.RZp.pushEvent(paramInt);
-      AppMethodBeat.o(189227);
+      this.ZBZ.pushEvent(paramInt);
+      AppMethodBeat.o(220540);
       return;
     }
     catch (Throwable localThrowable)
     {
       com.tencent.thumbplayer.utils.g.e("TPPreloadProxyImpl", localThrowable);
-      AppMethodBeat.o(189227);
+      AppMethodBeat.o(220540);
     }
   }
   
   public final void setPreloadListener(ITPPreloadProxy.IPreloadListener paramIPreloadListener)
   {
-    AppMethodBeat.i(189224);
+    AppMethodBeat.i(220529);
     if (paramIPreloadListener == null)
     {
-      this.RZL = new d("TPPreloadProxyImpl");
-      AppMethodBeat.o(189224);
+      this.ZCv = new d("TPPreloadProxyImpl");
+      AppMethodBeat.o(220529);
       return;
     }
-    this.RZL = paramIPreloadListener;
-    AppMethodBeat.o(189224);
+    this.ZCv = paramIPreloadListener;
+    AppMethodBeat.o(220529);
   }
   
   public final int startClipPreload(String paramString, ArrayList<TPDownloadParamData> paramArrayList)
@@ -149,13 +149,13 @@ public final class e
   
   public final int startPreload(String paramString, TPDownloadParamData paramTPDownloadParamData)
   {
-    AppMethodBeat.i(189225);
+    AppMethodBeat.i(220536);
     if (!isAvailable())
     {
-      hny();
+      iqZ();
       if (!isAvailable())
       {
-        AppMethodBeat.o(189225);
+        AppMethodBeat.o(220536);
         return -1;
       }
     }
@@ -164,8 +164,8 @@ public final class e
       paramTPDownloadParamData = i.b(null, paramTPDownloadParamData);
       try
       {
-        int i = this.RZp.startPreload(paramString, paramTPDownloadParamData, this.RZK);
-        AppMethodBeat.o(189225);
+        int i = this.ZBZ.startPreload(paramString, paramTPDownloadParamData, this.ZCu);
+        AppMethodBeat.o(220536);
         return i;
       }
       catch (Throwable paramString)
@@ -173,28 +173,28 @@ public final class e
         com.tencent.thumbplayer.utils.g.e("TPPreloadProxyImpl", paramString);
       }
     }
-    AppMethodBeat.o(189225);
+    AppMethodBeat.o(220536);
     return -1;
   }
   
   public final void stopPreload(int paramInt)
   {
-    AppMethodBeat.i(189226);
-    if (this.RZp == null)
+    AppMethodBeat.i(220538);
+    if (this.ZBZ == null)
     {
-      AppMethodBeat.o(189226);
+      AppMethodBeat.o(220538);
       return;
     }
     try
     {
-      this.RZp.stopPreload(paramInt);
-      AppMethodBeat.o(189226);
+      this.ZBZ.stopPreload(paramInt);
+      AppMethodBeat.o(220538);
       return;
     }
     catch (Throwable localThrowable)
     {
       com.tencent.thumbplayer.utils.g.e("TPPreloadProxyImpl", localThrowable);
-      AppMethodBeat.o(189226);
+      AppMethodBeat.o(220538);
     }
   }
   
@@ -205,61 +205,61 @@ public final class e
     
     public final int d(String paramString1, int paramInt, String paramString2, String paramString3)
     {
-      AppMethodBeat.i(189215);
+      AppMethodBeat.i(220501);
       com.tencent.thumbplayer.utils.g.d(paramString2, "[" + paramString1 + ":" + paramInt + "] " + paramString3);
-      AppMethodBeat.o(189215);
+      AppMethodBeat.o(220501);
       return 0;
     }
     
     public final int e(String paramString1, int paramInt, String paramString2, String paramString3)
     {
-      AppMethodBeat.i(189218);
+      AppMethodBeat.i(220507);
       com.tencent.thumbplayer.utils.g.e(paramString2, "[" + paramString1 + ":" + paramInt + "] " + paramString3);
-      AppMethodBeat.o(189218);
+      AppMethodBeat.o(220507);
       return 0;
     }
     
     public final int i(String paramString1, int paramInt, String paramString2, String paramString3)
     {
-      AppMethodBeat.i(189216);
+      AppMethodBeat.i(220504);
       com.tencent.thumbplayer.utils.g.i(paramString2, "[" + paramString1 + ":" + paramInt + "] " + paramString3);
-      AppMethodBeat.o(189216);
+      AppMethodBeat.o(220504);
       return 0;
     }
     
     public final void onPrepareDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString)
     {
-      AppMethodBeat.i(189221);
+      AppMethodBeat.i(220512);
       e.a(e.this).onPrepareDownloadProgressUpdate(paramInt1, paramInt2, paramLong1, paramLong2);
-      AppMethodBeat.o(189221);
+      AppMethodBeat.o(220512);
     }
     
     public final void onPrepareError(int paramInt1, int paramInt2, String paramString)
     {
-      AppMethodBeat.i(189220);
+      AppMethodBeat.i(220509);
       e.a(e.this).onPrepareError();
-      AppMethodBeat.o(189220);
+      AppMethodBeat.o(220509);
     }
     
     public final void onPrepareOK()
     {
-      AppMethodBeat.i(189219);
+      AppMethodBeat.i(220508);
       e.a(e.this).onPrepareSuccess();
-      AppMethodBeat.o(189219);
+      AppMethodBeat.o(220508);
     }
     
     public final int w(String paramString1, int paramInt, String paramString2, String paramString3)
     {
-      AppMethodBeat.i(189217);
+      AppMethodBeat.i(220505);
       com.tencent.thumbplayer.utils.g.w(paramString2, "[" + paramString1 + ":" + paramInt + "] " + paramString3);
-      AppMethodBeat.o(189217);
+      AppMethodBeat.o(220505);
       return 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.e.e
  * JD-Core Version:    0.7.0.1
  */

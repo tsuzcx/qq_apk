@@ -1,20 +1,20 @@
 package com.tencent.mm.modelsfs;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.FilterOutputStream;
 
 public final class b
   extends FilterOutputStream
 {
-  private a jiU;
+  private a lYR;
   
-  public b(o paramo, long paramLong)
+  public b(q paramq, long paramLong)
   {
-    super(s.d(paramo, false));
+    super(u.e(paramq, false));
     AppMethodBeat.i(155982);
-    this.jiU = new a(paramLong);
+    this.lYR = new a(paramLong);
     AppMethodBeat.o(155982);
   }
   
@@ -22,8 +22,8 @@ public final class b
   {
     AppMethodBeat.i(155984);
     super.close();
-    if (this.jiU != null) {
-      this.jiU.free();
+    if (this.lYR != null) {
+      this.lYR.free();
     }
     AppMethodBeat.o(155984);
   }
@@ -31,14 +31,14 @@ public final class b
   public final void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(155983);
-    this.jiU.B(paramArrayOfByte, paramInt2);
+    this.lYR.B(paramArrayOfByte, paramInt2);
     super.write(paramArrayOfByte, paramInt1, paramInt2);
     AppMethodBeat.o(155983);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelsfs.b
  * JD-Core Version:    0.7.0.1
  */

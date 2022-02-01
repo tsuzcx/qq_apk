@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_3" android:id="@id/cfy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="@dimen/bt" android:layout_marginStart="@dimen/cb" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_3" android:id="@id/cfz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="@dimen/bt" android:layout_marginEnd="@dimen/cb" android:layout_alignParentEnd="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/jvq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+        <TextView android:textSize="@dimen/t" android:textColor="@color/ag2" android:id="@id/jvr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/bt" android:text="@string/jc1" android:includeFontPadding="false" />
+        <TextView android:textSize="@dimen/t" android:textColor="@color/Brand_100" android:id="@id/jvp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:includeFontPadding="false" />
+    </LinearLayout>
+    <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_3" android:id="@id/cfy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="@dimen/bt" android:layout_below="@id/jvq" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_3" android:gravity="right" android:id="@id/cfz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="@dimen/bt" android:text="aaaaa" android:layout_below="@id/jvq" android:layout_alignParentEnd="true" />
 </RelativeLayout>

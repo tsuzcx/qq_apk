@@ -9,31 +9,31 @@ import kotlin.g.b.p;
 public abstract class w
   implements kotlin.l.b.a.b.d.a.e.v
 {
-  public static final a Tnu = new a((byte)0);
+  public static final a aaQo = new a((byte)0);
   
   public boolean equals(Object paramObject)
   {
-    return ((paramObject instanceof w)) && (p.j(hCJ(), ((w)paramObject).hCJ()));
+    return ((paramObject instanceof w)) && (p.h(iHa(), ((w)paramObject).iHa()));
   }
-  
-  protected abstract Type hCJ();
   
   public int hashCode()
   {
-    return hCJ().hashCode();
+    return iHa().hashCode();
   }
+  
+  protected abstract Type iHa();
   
   public String toString()
   {
-    return getClass().getName() + ": " + hCJ();
+    return getClass().getName() + ": " + iHa();
   }
   
   public static final class a
   {
-    public static w b(Type paramType)
+    public static w j(Type paramType)
     {
       AppMethodBeat.i(57504);
-      p.h(paramType, "type");
+      p.k(paramType, "type");
       if (((paramType instanceof Class)) && (((Class)paramType).isPrimitive()))
       {
         paramType = (w)new v((Class)paramType);
@@ -60,7 +60,7 @@ public abstract class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.d.b.w
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/cp" android:layout_weight="1.0">
+        <TextView android:gravity="center_vertical" android:id="@id/ld" android:layout_width="@dimen/em" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i2" android:singleLine="true" style="@style/mi" />
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="@dimen/cb">
+            <ImageView android:id="@id/dw0" android:layout_width="@dimen/cn" android:layout_height="@dimen/cr" android:scaleType="centerCrop" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="@dimen/cb">
+            <ImageView android:id="@id/dw1" android:layout_width="@dimen/cn" android:layout_height="@dimen/cr" android:scaleType="centerCrop" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="@dimen/cb">
+            <ImageView android:id="@id/dw2" android:layout_width="@dimen/cn" android:layout_height="@dimen/cr" android:scaleType="centerCrop" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="@dimen/cb">
+            <ImageView android:id="@id/dw3" android:layout_width="@dimen/cn" android:layout_height="@dimen/cr" android:scaleType="centerCrop" />
+        </RelativeLayout>
+    </LinearLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/c5" android:layout_height="@dimen/ce" android:src="@raw/icons_filled_arrow" app:iconColor="@color/wz" />
+</LinearLayout>

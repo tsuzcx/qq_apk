@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.wallet_payu.order.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.daw;
-import com.tencent.mm.protocal.protobuf.dax;
+import com.tencent.mm.protocal.protobuf.dkk;
+import com.tencent.mm.protocal.protobuf.dkl;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.wallet_core.c.w;
@@ -23,16 +23,16 @@ public final class b
   {
     AppMethodBeat.i(72059);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new daw();
-    ((d.a)localObject).iLO = new dax();
+    ((d.a)localObject).lBU = new dkk();
+    ((d.a)localObject).lBV = new dkl();
     ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/payudeluserroll";
     ((d.a)localObject).funcId = 1544;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (daw)this.rr.iLK.iLR;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (dkk)d.b.b(this.rr.lBR);
     if (!Util.isNullOrNil(paramString)) {
-      ((daw)localObject).AOT = paramString;
+      ((dkk)localObject).GIh = paramString;
     }
     AppMethodBeat.o(72059);
   }

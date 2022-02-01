@@ -7,7 +7,7 @@ import java.util.Map;
 public abstract interface h
   extends a
 {
-  public abstract void M(Context paramContext, String paramString1, String paramString2);
+  public abstract void U(Context paramContext, String paramString1, String paramString2);
   
   public abstract void a(Context paramContext, int paramInt, String paramString1, String paramString2, Map<String, String> paramMap);
   
@@ -25,7 +25,7 @@ public abstract interface h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.h
  * JD-Core Version:    0.7.0.1
  */

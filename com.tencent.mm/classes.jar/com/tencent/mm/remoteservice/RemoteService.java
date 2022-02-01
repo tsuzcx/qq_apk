@@ -12,12 +12,12 @@ import java.lang.reflect.Constructor;
 public class RemoteService
   extends Service
 {
-  private c.a NCz;
+  private c.a UQb;
   
   public RemoteService()
   {
     AppMethodBeat.i(152742);
-    this.NCz = new c.a()
+    this.UQb = new c.a()
     {
       public final void a(String paramAnonymousString1, String paramAnonymousString2, Bundle paramAnonymousBundle, b paramAnonymousb)
       {
@@ -33,8 +33,8 @@ public class RemoteService
           }
           for (paramAnonymousString1 = (a)paramAnonymousString1[0].newInstance((Object[])localObject);; paramAnonymousString1 = (a)((Class)localObject).newInstance())
           {
-            paramAnonymousString1.NCv = paramAnonymousb;
-            paramAnonymousString1.NCu = RemoteService.this;
+            paramAnonymousString1.UPX = paramAnonymousb;
+            paramAnonymousString1.UPW = RemoteService.this;
             paramAnonymousString1.onCallback(paramAnonymousString2, paramAnonymousBundle, false);
             AppMethodBeat.o(152741);
             return;
@@ -55,7 +55,7 @@ public class RemoteService
   {
     AppMethodBeat.i(152743);
     new StringBuilder("onBind, threadId:").append(Thread.currentThread().getId());
-    paramIntent = this.NCz;
+    paramIntent = this.UQb;
     AppMethodBeat.o(152743);
     return paramIntent;
   }
@@ -87,7 +87,7 @@ public class RemoteService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.remoteservice.RemoteService
  * JD-Core Version:    0.7.0.1
  */

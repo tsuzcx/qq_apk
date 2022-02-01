@@ -7,15 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ContactMobileInfoPreference
   extends Preference
 {
-  private TextView Beb;
-  private String knP;
-  private TextView mPa;
+  private TextView GXX;
   private String mTitle;
+  private String nfH;
+  private TextView pPT;
   
   public ContactMobileInfoPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,20 +28,20 @@ public class ContactMobileInfoPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27015);
-    setLayoutResource(2131495538);
+    setLayoutResource(R.i.mm_preference);
     AppMethodBeat.o(27015);
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27017);
-    this.mPa = ((TextView)paramView.findViewById(2131309195));
-    this.Beb = ((TextView)paramView.findViewById(2131304739));
-    if (this.mPa != null) {
-      this.mPa.setText(this.mTitle);
+    this.pPT = ((TextView)paramView.findViewById(R.h.title));
+    this.GXX = ((TextView)paramView.findViewById(R.h.mobile));
+    if (this.pPT != null) {
+      this.pPT.setText(this.mTitle);
     }
-    if (this.Beb != null) {
-      this.Beb.setText(this.knP);
+    if (this.GXX != null) {
+      this.GXX.setText(this.nfH);
     }
     super.onBindView(paramView);
     AppMethodBeat.o(27017);
@@ -50,9 +52,9 @@ public class ContactMobileInfoPreference
     AppMethodBeat.i(27016);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2131495570, localViewGroup);
+    localLayoutInflater.inflate(R.i.eiU, localViewGroup);
     AppMethodBeat.o(27016);
     return paramViewGroup;
   }

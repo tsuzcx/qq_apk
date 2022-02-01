@@ -8,31 +8,31 @@ import java.util.List;
 final class b
   implements d
 {
-  public static final b bDs;
-  private final List<com.google.android.exoplayer2.f.a> bAF;
+  public static final b bmT;
+  private final List<com.google.android.exoplayer2.f.a> bkh;
   
   static
   {
     AppMethodBeat.i(92875);
-    bDs = new b();
+    bmT = new b();
     AppMethodBeat.o(92875);
   }
   
   private b()
   {
     AppMethodBeat.i(92872);
-    this.bAF = Collections.emptyList();
+    this.bkh = Collections.emptyList();
     AppMethodBeat.o(92872);
   }
   
   public b(com.google.android.exoplayer2.f.a parama)
   {
     AppMethodBeat.i(92871);
-    this.bAF = Collections.singletonList(parama);
+    this.bkh = Collections.singletonList(parama);
     AppMethodBeat.o(92871);
   }
   
-  public final int ai(long paramLong)
+  public final int al(long paramLong)
   {
     if (paramLong < 0L) {
       return 0;
@@ -40,12 +40,12 @@ final class b
     return -1;
   }
   
-  public final List<com.google.android.exoplayer2.f.a> aj(long paramLong)
+  public final List<com.google.android.exoplayer2.f.a> am(long paramLong)
   {
     AppMethodBeat.i(92874);
     if (paramLong >= 0L)
     {
-      localList = this.bAF;
+      localList = this.bkh;
       AppMethodBeat.o(92874);
       return localList;
     }
@@ -54,7 +54,7 @@ final class b
     return localList;
   }
   
-  public final long eH(int paramInt)
+  public final long eX(int paramInt)
   {
     AppMethodBeat.i(92873);
     if (paramInt == 0) {}
@@ -66,14 +66,14 @@ final class b
     }
   }
   
-  public final int wa()
+  public final int ua()
   {
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.f.f.b
  * JD-Core Version:    0.7.0.1
  */

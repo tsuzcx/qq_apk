@@ -5,7 +5,7 @@
     <ListView android:id="@id/hf1" android:background="@color/kz" android:focusable="false" android:visibility="gone" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" style="@style/np" />
     <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/hew" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="48.0dip" android:layout_marginRight="30.0dip">
         <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="14.0dip" android:text="@string/ggd" />
-        <android.support.v7.widget.RecyclerView android:id="@id/dk8" android:layout_width="wrap_content" android:layout_height="fill_parent" android:overScrollMode="never" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/dk8" android:layout_width="wrap_content" android:layout_height="fill_parent" android:overScrollMode="never" />
     </LinearLayout>
     <RelativeLayout android:id="@id/ja3" android:background="@color/kz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/hek" android:paddingTop="20.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">

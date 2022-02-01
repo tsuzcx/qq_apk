@@ -31,14 +31,14 @@ public class n
     if ((paramObject instanceof n))
     {
       paramObject = (n)paramObject;
-      if (Rs() == null)
+      if (Vc() == null)
       {
-        if (paramObject.Rs() != null) {}
+        if (paramObject.Vc() != null) {}
       }
       else {
-        while (Rs().equals(paramObject.Rs()))
+        while (Vc().equals(paramObject.Vc()))
         {
-          if ((!getName().equals(paramObject.getName())) || (!getSignature().equals(paramObject.getSignature())) || (!p.j(hxQ(), paramObject.hxQ()))) {
+          if ((!getName().equals(paramObject.getName())) || (!getSignature().equals(paramObject.getSignature())) || (!p.h(iBY(), paramObject.iBY()))) {
             break;
           }
           AppMethodBeat.o(128938);
@@ -50,7 +50,7 @@ public class n
     }
     if ((paramObject instanceof kotlin.l.e))
     {
-      boolean bool = paramObject.equals(hxR());
+      boolean bool = paramObject.equals(iBZ());
       AppMethodBeat.o(128938);
       return bool;
     }
@@ -66,8 +66,8 @@ public class n
   public int hashCode()
   {
     AppMethodBeat.i(128939);
-    if (Rs() == null) {}
-    for (int i = 0;; i = Rs().hashCode() * 31)
+    if (Vc() == null) {}
+    for (int i = 0;; i = Vc().hashCode() * 31)
     {
       int j = getName().hashCode();
       int k = getSignature().hashCode();
@@ -76,10 +76,10 @@ public class n
     }
   }
   
-  protected final a hxP()
+  protected final a iBX()
   {
     AppMethodBeat.i(128937);
-    kotlin.l.e locale = aa.a(this);
+    kotlin.l.e locale = ab.a(this);
     AppMethodBeat.o(128937);
     return locale;
   }
@@ -87,7 +87,7 @@ public class n
   public String toString()
   {
     AppMethodBeat.i(128940);
-    Object localObject = hxR();
+    Object localObject = iBZ();
     if (localObject != this)
     {
       localObject = localObject.toString();
@@ -106,7 +106,7 @@ public class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.g.b.n
  * JD-Core Version:    0.7.0.1
  */

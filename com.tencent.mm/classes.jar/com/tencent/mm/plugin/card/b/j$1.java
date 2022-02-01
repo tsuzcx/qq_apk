@@ -11,14 +11,14 @@ final class j$1
   public final void run()
   {
     AppMethodBeat.i(112671);
-    j.k(this.pRG, this.pRH, this.pRI, this.gsA);
-    Log.i("MicroMsg.CardMarkCodeMgr", "run the unmark task, the card is " + this.pRG + " system.time:" + System.currentTimeMillis());
+    j.m(this.tnG, this.tnH, this.tnI, this.iWM);
+    Log.i("MicroMsg.CardMarkCodeMgr", "run the unmark task, the card is " + this.tnG + " system.time:" + System.currentTimeMillis());
     AppMethodBeat.o(112671);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.b.j.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.kinda.framework.sns_cross;
 
 import android.content.Context;
 import android.os.Bundle;
+import com.tencent.kinda.framework.R.string;
 import com.tencent.kinda.gen.ITransmitKvData;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
@@ -13,16 +14,16 @@ public class T2BSceneServiceImpl
   {
     AppMethodBeat.i(18719);
     ITransmitKvData localITransmitKvData = super.generateSnsUseCaseData();
-    if ((this.mBean.getPayInfo() == null) || (this.mBean.getPayInfo().iqp == null))
+    if ((this.mBean.getPayInfo() == null) || (this.mBean.getPayInfo().lfu == null))
     {
       AppMethodBeat.o(18719);
       return localITransmitKvData;
     }
-    Object localObject = this.mBean.getPayInfo().iqp;
+    Object localObject = this.mBean.getPayInfo().lfu;
     String str = ((Bundle)localObject).getString("extinfo_key_3");
     localObject = ((Bundle)localObject).getString("extinfo_key_4");
-    str = this.mBean.getContext().getString(2131756534, new Object[] { str, localObject }) + this.mBean.getTrueName();
-    localITransmitKvData.putString("cashier_desc", this.mBean.getContext().getString(2131764505, new Object[] { str }));
+    str = this.mBean.getContext().getString(R.string.bank_remit_select_payee_name_with_remark, new Object[] { str, localObject }) + this.mBean.getTrueName();
+    localITransmitKvData.putString("cashier_desc", this.mBean.getContext().getString(R.string.remittance_collect_pay_wrords, new Object[] { str }));
     AppMethodBeat.o(18719);
     return localITransmitKvData;
   }

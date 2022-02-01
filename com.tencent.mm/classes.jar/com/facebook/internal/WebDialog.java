@@ -48,6 +48,9 @@ import com.facebook.FacebookServiceException;
 import com.facebook.GraphRequest;
 import com.facebook.GraphRequest.Callback;
 import com.facebook.GraphResponse;
+import com.facebook.common.R.drawable;
+import com.facebook.common.R.string;
+import com.facebook.common.R.style;
 import com.facebook.share.internal.ShareInternalUtility;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
@@ -64,7 +67,7 @@ public class WebDialog
 {
   private static final int API_EC_DIALOG_CANCEL = 4201;
   private static final int BACKGROUND_GRAY = -872415232;
-  private static final int DEFAULT_THEME = 2131821742;
+  private static final int DEFAULT_THEME = R.style.com_facebook_activity_theme;
   static final boolean DISABLE_SSL_CHECK_FOR_TESTING = false;
   private static final String DISPLAY_TOUCH = "touch";
   private static final String LOG_TAG = "FacebookSDK.WebDialog";
@@ -151,7 +154,7 @@ public class WebDialog
         AppMethodBeat.o(7680);
       }
     });
-    Drawable localDrawable = getContext().getResources().getDrawable(2131231885);
+    Drawable localDrawable = getContext().getResources().getDrawable(R.drawable.com_facebook_close);
     this.crossImageView.setImageDrawable(localDrawable);
     this.crossImageView.setVisibility(4);
     AppMethodBeat.o(7716);
@@ -224,23 +227,7 @@ public class WebDialog
   {
     AppMethodBeat.i(7717);
     LinearLayout localLinearLayout = new LinearLayout(getContext());
-    this.webView = new WebView(getContext())
-    {
-      public void onWindowFocusChanged(boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(7681);
-        try
-        {
-          super.onWindowFocusChanged(paramAnonymousBoolean);
-          AppMethodBeat.o(7681);
-          return;
-        }
-        catch (NullPointerException localNullPointerException)
-        {
-          AppMethodBeat.o(7681);
-        }
-      }
-    };
+    this.webView = new WebDialog.3(this, getContext());
     this.webView.setVerticalScrollBarEnabled(false);
     this.webView.setHorizontalScrollBarEnabled(false);
     this.webView.setWebViewClient(new DialogWebViewClient(null));
@@ -332,7 +319,7 @@ public class WebDialog
     super.onCreate(paramBundle);
     this.spinner = new ProgressDialog(getContext());
     this.spinner.requestWindowFeature(1);
-    this.spinner.setMessage(getContext().getString(2131757728));
+    this.spinner.setMessage(getContext().getString(R.string.com_facebook_loading));
     this.spinner.setCanceledOnTouchOutside(false);
     this.spinner.setOnCancelListener(new DialogInterface.OnCancelListener()
     {
@@ -729,10 +716,10 @@ public class WebDialog
         {
           paramWebView = WebDialog.this.getContext();
           paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
-          paramString = new com.tencent.mm.hellhoundlib.b.a().bl(paramString);
-          com.tencent.mm.hellhoundlib.a.a.a(paramWebView, paramString.axQ(), "com/facebook/internal/WebDialog$DialogWebViewClient", "shouldOverrideUrlLoading", "(Landroid/webkit/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramWebView.startActivity((Intent)paramString.pG(0));
-          com.tencent.mm.hellhoundlib.a.a.a(paramWebView, "com/facebook/internal/WebDialog$DialogWebViewClient", "shouldOverrideUrlLoading", "(Landroid/webkit/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramString = new com.tencent.mm.hellhoundlib.b.a().bm(paramString);
+          com.tencent.mm.hellhoundlib.a.a.b(paramWebView, paramString.aFh(), "com/facebook/internal/WebDialog$DialogWebViewClient", "shouldOverrideUrlLoading", "(Landroid/webkit/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramWebView.startActivity((Intent)paramString.sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramWebView, "com/facebook/internal/WebDialog$DialogWebViewClient", "shouldOverrideUrlLoading", "(Landroid/webkit/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(7687);
           return true;
         }
@@ -915,7 +902,7 @@ public class WebDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.internal.WebDialog
  * JD-Core Version:    0.7.0.1
  */

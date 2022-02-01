@@ -2,8 +2,8 @@ package com.tencent.mm.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.im;
-import com.tencent.mm.protocal.protobuf.in;
+import com.tencent.mm.protocal.protobuf.ib;
+import com.tencent.mm.protocal.protobuf.ic;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.IAutoDBItem;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
@@ -52,7 +52,7 @@ public final class k
     AppMethodBeat.o(32818);
   }
   
-  private static void a(LinkedList<im> paramLinkedList, n paramn)
+  private static void a(LinkedList<ib> paramLinkedList, n paramn)
   {
     AppMethodBeat.i(32821);
     if (paramn.field_startTime > paramn.field_endTime)
@@ -61,19 +61,19 @@ public final class k
       return;
     }
     Object localObject = paramLinkedList.iterator();
-    im localim1;
+    ib localib1;
     int i;
     for (;;)
     {
       if (((Iterator)localObject).hasNext())
       {
-        localim1 = (im)((Iterator)localObject).next();
-        if (paramn.field_startTime < localim1.endTime) {
-          if (paramn.field_endTime < localim1.startTime)
+        localib1 = (ib)((Iterator)localObject).next();
+        if (paramn.field_startTime < localib1.endTime) {
+          if (paramn.field_endTime < localib1.startTime)
           {
-            localObject = new im();
-            ((im)localObject).startTime = paramn.field_startTime;
-            ((im)localObject).endTime = paramn.field_endTime;
+            localObject = new ib();
+            ((ib)localObject).startTime = paramn.field_startTime;
+            ((ib)localObject).endTime = paramn.field_endTime;
             paramLinkedList.add(localObject);
             i = 1;
           }
@@ -84,31 +84,31 @@ public final class k
     {
       if (i == 0)
       {
-        localObject = new im();
-        ((im)localObject).startTime = paramn.field_startTime;
-        ((im)localObject).endTime = paramn.field_endTime;
+        localObject = new ib();
+        ((ib)localObject).startTime = paramn.field_startTime;
+        ((ib)localObject).endTime = paramn.field_endTime;
         paramLinkedList.add(localObject);
       }
       AppMethodBeat.o(32821);
       return;
-      if (paramn.field_startTime < localim1.startTime) {
-        localim1.startTime = paramn.field_startTime;
+      if (paramn.field_startTime < localib1.startTime) {
+        localib1.startTime = paramn.field_startTime;
       }
-      if (paramn.field_endTime > localim1.endTime)
+      if (paramn.field_endTime > localib1.endTime)
       {
-        localim1.endTime = paramn.field_endTime;
+        localib1.endTime = paramn.field_endTime;
         for (;;)
         {
           if (!((Iterator)localObject).hasNext()) {
             break label266;
           }
-          im localim2 = (im)((Iterator)localObject).next();
-          if (paramn.field_endTime <= localim2.startTime) {
+          ib localib2 = (ib)((Iterator)localObject).next();
+          if (paramn.field_endTime <= localib2.startTime) {
             break label266;
           }
-          if (paramn.field_endTime <= localim2.endTime)
+          if (paramn.field_endTime <= localib2.endTime)
           {
-            localim1.endTime = localim2.endTime;
+            localib1.endTime = localib2.endTime;
             ((Iterator)localObject).remove();
             i = 1;
             break;
@@ -164,7 +164,7 @@ public final class k
             }
             for (;;)
             {
-              if ((paramLinkedList1 != null) && (paramLinkedList1.KMB.size() > 0) && (l2 >= ((im)paramLinkedList1.KMB.getFirst()).startTime) && (l1 <= ((im)paramLinkedList1.KMB.getLast()).endTime)) {
+              if ((paramLinkedList1 != null) && (paramLinkedList1.RNv.size() > 0) && (l2 >= ((ib)paramLinkedList1.RNv.getFirst()).startTime) && (l1 <= ((ib)paramLinkedList1.RNv.getLast()).endTime)) {
                 break label322;
               }
               paramLinkedList3.add(str);
@@ -184,24 +184,24 @@ public final class k
                 paramLinkedList1 = null;
               }
             }
-            paramLinkedList1 = paramLinkedList1.KMB;
+            paramLinkedList1 = paramLinkedList1.RNv;
             j = 0;
             if ((j >= paramLinkedList1.size()) || (l1 > l2)) {
-              break label569;
+              break label602;
             }
-            localObject = (im)paramLinkedList1.get(j);
+            localObject = (ib)paramLinkedList1.get(j);
             k = i;
             l3 = l1;
-            if (l1 <= ((im)localObject).endTime) {
-              if (l1 < ((im)localObject).startTime)
+            if (l1 <= ((ib)localObject).endTime) {
+              if (l1 < ((ib)localObject).startTime)
               {
                 i = 1;
                 paramLinkedList3.add(str);
                 paramLinkedList4.add(Long.valueOf(l1));
-                if (l2 < ((im)localObject).startTime)
+                if (l2 < ((ib)localObject).startTime)
                 {
                   paramLinkedList4.add(Long.valueOf(l2));
-                  l1 = ((im)localObject).startTime;
+                  l1 = ((ib)localObject).startTime;
                   i = 1;
                 }
               }
@@ -210,7 +210,7 @@ public final class k
         }
       }
     }
-    label569:
+    label602:
     for (;;)
     {
       if (l1 <= l2)
@@ -227,19 +227,20 @@ public final class k
       paramLinkedList4.add(Long.valueOf(l1));
       paramLinkedList4.add(Long.valueOf(l2));
       break;
-      paramLinkedList4.add(Long.valueOf(((im)localObject).startTime));
-      l3 = ((im)localObject).endTime;
+      paramLinkedList4.add(Long.valueOf(((ib)localObject).startTime));
+      l3 = ((ib)localObject).endTime;
       k = i;
       j += 1;
       i = k;
       l1 = l3;
       break label330;
+      Log.i("MicroMsg.BackupMoveTimeStorage", "getSessionRequestTimeInteval, resultSession size:%s, resultTimeInterval:%s", new Object[] { Integer.valueOf(paramLinkedList3.size()), Integer.valueOf(paramLinkedList4.size()) });
       AppMethodBeat.o(32819);
       return;
     }
   }
   
-  public final boolean aHo()
+  public final boolean aPo()
   {
     AppMethodBeat.i(32822);
     boolean bool = this.db.execSQL("BackupMoveTime", "delete from BackupMoveTime");
@@ -248,10 +249,10 @@ public final class k
     return bool;
   }
   
-  public final void i(String paramString, LinkedList<n> paramLinkedList)
+  public final void j(String paramString, LinkedList<n> paramLinkedList)
   {
     AppMethodBeat.i(32820);
-    Log.i("MicroMsg.BackupMoveTimeStorage", "start mergeDataByDeviceIdSession.");
+    Log.i("MicroMsg.BackupMoveTimeStorage", "start mergeDataByDeviceId.");
     HashMap localHashMap = new HashMap();
     Object localObject1 = "SELECT * FROM BackupMoveTime WHERE deviceId = \"" + paramString + "\" ";
     Log.d("MicroMsg.BackupMoveTimeStorage", "getAllDataByDevice:".concat(String.valueOf(localObject1)));
@@ -280,20 +281,20 @@ public final class k
       localObject2 = (j)localHashMap.get(((n)localObject1).field_sessionName);
       if (localObject2 == null)
       {
-        localObject2 = new im();
-        ((im)localObject2).startTime = ((n)localObject1).field_startTime;
-        ((im)localObject2).endTime = ((n)localObject1).field_endTime;
+        localObject2 = new ib();
+        ((ib)localObject2).startTime = ((n)localObject1).field_startTime;
+        ((ib)localObject2).endTime = ((n)localObject1).field_endTime;
         j localj = new j();
         localj.field_deviceId = paramString;
         localj.field_sessionName = ((n)localObject1).field_sessionName;
-        localj.field_moveTime = new in();
-        localj.field_moveTime.KMB = new LinkedList();
-        localj.field_moveTime.KMB.add(localObject2);
+        localj.field_moveTime = new ic();
+        localj.field_moveTime.RNv = new LinkedList();
+        localj.field_moveTime.RNv.add(localObject2);
         localHashMap.put(((n)localObject1).field_sessionName, localj);
       }
       else
       {
-        a(((j)localObject2).field_moveTime.KMB, (n)localObject1);
+        a(((j)localObject2).field_moveTime.RNv, (n)localObject1);
       }
     }
     paramString = localHashMap.keySet().iterator();
@@ -307,7 +308,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.k
  * JD-Core Version:    0.7.0.1
  */

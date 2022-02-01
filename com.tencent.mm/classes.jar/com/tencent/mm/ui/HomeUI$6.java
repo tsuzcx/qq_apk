@@ -15,15 +15,15 @@ final class HomeUI$6
   
   public final boolean onLongClick(View paramView)
   {
-    AppMethodBeat.i(232553);
+    AppMethodBeat.i(246668);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/ui/HomeUI$14", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
+    localb.bn(paramView);
+    a.c("com/tencent/mm/ui/HomeUI$14", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
     if ((BuildInfo.DEBUG) || (CrashReportFactory.hasDebuger()) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE)) {
-      HomeUI.o(this.ODr);
+      HomeUI.o(this.VWJ);
     }
     a.a(false, this, "com/tencent/mm/ui/HomeUI$14", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-    AppMethodBeat.o(232553);
+    AppMethodBeat.o(246668);
     return false;
   }
 }

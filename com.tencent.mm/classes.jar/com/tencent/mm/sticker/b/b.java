@@ -1,23 +1,23 @@
 package com.tencent.mm.sticker.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.q.b;
-import com.tencent.mm.bw.a;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.q.b;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bph;
-import com.tencent.mm.protocal.protobuf.bpi;
+import com.tencent.mm.protocal.protobuf.bxb;
+import com.tencent.mm.protocal.protobuf.bxc;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/sticker/net/NetSceneGetLensList;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "()V", "TAG", "", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "securityLimitCount", "securityVerificationChecked", "Lcom/tencent/mm/modelbase/NetSceneBase$SecurityCheckStatus;", "plugin-sticker_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/sticker/net/NetSceneGetLensList;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "()V", "TAG", "", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "securityLimitCount", "securityVerificationChecked", "Lcom/tencent/mm/modelbase/NetSceneBase$SecurityCheckStatus;", "plugin-sticker_release"})
 public final class b
   extends q
   implements m
@@ -31,14 +31,14 @@ public final class b
     AppMethodBeat.i(105980);
     this.TAG = "MicroMsg.NetSceneGetLensList";
     Object localObject = new d.a();
-    ((d.a)localObject).c((a)new bph());
-    ((d.a)localObject).d((a)new bpi());
-    ((d.a)localObject).MB("/cgi-bin/micromsg-bin/getlenslist");
-    ((d.a)localObject).sG(3847);
-    ((d.a)localObject).sI(0);
-    ((d.a)localObject).sJ(0);
-    localObject = ((d.a)localObject).aXF();
-    p.g(localObject, "builder.buildInstance()");
+    ((d.a)localObject).c((a)new bxb());
+    ((d.a)localObject).d((a)new bxc());
+    ((d.a)localObject).TW("/cgi-bin/micromsg-bin/getlenslist");
+    ((d.a)localObject).vD(3847);
+    ((d.a)localObject).vF(0);
+    ((d.a)localObject).vG(0);
+    localObject = ((d.a)localObject).bgN();
+    p.j(localObject, "builder.buildInstance()");
     this.rr = ((d)localObject);
     AppMethodBeat.o(105980);
   }
@@ -67,25 +67,25 @@ public final class b
     }
     if ((paramInt2 == 4) && (paramInt3 == 2))
     {
-      paramString = this.rr.aYJ();
+      paramString = this.rr.bhX();
       if (paramString == null)
       {
         paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetLensListRequest");
         AppMethodBeat.o(105977);
         throw paramString;
       }
-      paramString = (bph)paramString;
-      params = this.rr.aYK();
+      paramString = (bxb)paramString;
+      params = this.rr.bhY();
       if (params == null)
       {
         paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetLensListResponse");
         AppMethodBeat.o(105977);
         throw paramString;
       }
-      params = (bpi)params;
-      if (params.LXB != null)
+      params = (bxc)params;
+      if (params.TgS != null)
       {
-        paramString.LXB = params.LXB;
+        paramString.TgS = params.TgS;
         doScene(dispatcher(), this.callback);
       }
     }
@@ -100,8 +100,8 @@ public final class b
   public final q.b securityVerificationChecked(s params)
   {
     AppMethodBeat.i(105979);
-    p.h(params, "rr");
-    params = q.b.iMq;
+    p.k(params, "rr");
+    params = q.b.lCx;
     AppMethodBeat.o(105979);
     return params;
   }

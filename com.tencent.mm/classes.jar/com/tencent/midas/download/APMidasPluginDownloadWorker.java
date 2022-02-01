@@ -31,17 +31,17 @@ class APMidasPluginDownloadWorker
   
   private static void closeQuietly(Closeable paramCloseable)
   {
-    AppMethodBeat.i(193242);
+    AppMethodBeat.i(253034);
     if (paramCloseable != null) {}
     try
     {
       paramCloseable.close();
-      AppMethodBeat.o(193242);
+      AppMethodBeat.o(253034);
       return;
     }
     catch (IOException paramCloseable)
     {
-      AppMethodBeat.o(193242);
+      AppMethodBeat.o(253034);
     }
   }
   
@@ -595,45 +595,45 @@ class APMidasPluginDownloadWorker
   
   private static boolean isPluginAlreadyExist(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(193243);
+    AppMethodBeat.i(253036);
     APLog.d("PluginDownloadWorker", "plugin already exist in midasplugins test, file name = ".concat(String.valueOf(paramString1)));
     APLog.d("PluginDownloadWorker", "plugin already exist in midasplugins test, md5 = ".concat(String.valueOf(paramString2)));
     if (TextUtils.isEmpty(paramString1))
     {
       APLog.e("PluginDownloadWorker", "plugin already exist in midasplugins test error, empty file name!");
-      AppMethodBeat.o(193243);
+      AppMethodBeat.o(253036);
       return false;
     }
     if (TextUtils.isEmpty(paramString2))
     {
       APLog.e("PluginDownloadWorker", "plugin already exist in midasplugins test error, empty md5!");
-      AppMethodBeat.o(193243);
+      AppMethodBeat.o(253036);
       return false;
     }
     if (paramContext == null)
     {
       APLog.e("PluginDownloadWorker", "plugin already exist in midasplugins test error, null context!");
-      AppMethodBeat.o(193243);
+      AppMethodBeat.o(253036);
       return false;
     }
     if (TextUtils.isEmpty(paramString3))
     {
       APLog.e("PluginDownloadWorker", "plugin already exist in midasplugins test error, empty saveDir!");
-      AppMethodBeat.o(193243);
+      AppMethodBeat.o(253036);
       return false;
     }
     paramContext = APPluginConfig.getPluginPath(paramContext);
     if (paramContext == null)
     {
       APLog.e("PluginDownloadWorker", "plugin already exist in midasplugins error, cannot get plugin path!");
-      AppMethodBeat.o(193243);
+      AppMethodBeat.o(253036);
       return false;
     }
     paramContext = new File(paramContext, paramString1);
     if (!paramContext.exists())
     {
       APLog.d("PluginDownloadWorker", "plugin already exist in midasplugins test, plugin not exist! Name = ".concat(String.valueOf(paramString1)));
-      AppMethodBeat.o(193243);
+      AppMethodBeat.o(253036);
       return false;
     }
     for (;;)
@@ -647,7 +647,7 @@ class APMidasPluginDownloadWorker
         if (APPluginUtils.copyFile(paramContext.getCanonicalPath(), paramString3, paramString1))
         {
           APLog.d("PluginDownloadWorker", "plugin already exist in midasplugins test, plugin exist & md5 correct & copy success!");
-          AppMethodBeat.o(193243);
+          AppMethodBeat.o(253036);
           return true;
         }
         APLog.e("PluginDownloadWorker", "plugin already exist in midasplugins test, plugin exist & md5 correct & copy fail!");
@@ -658,7 +658,7 @@ class APMidasPluginDownloadWorker
         continue;
       }
       APLog.e("PluginDownloadWorker", "plugin already exist in midasplugins test, final false!");
-      AppMethodBeat.o(193243);
+      AppMethodBeat.o(253036);
       return false;
       APLog.d("PluginDownloadWorker", "plugin already exist in midasplugins test, plugin exist & md5 not correct!");
     }
@@ -666,7 +666,7 @@ class APMidasPluginDownloadWorker
   
   public void run()
   {
-    AppMethodBeat.i(193240);
+    AppMethodBeat.i(253030);
     APLog.d("PluginDownloadWorker", "About to enter critical region！");
     try
     {
@@ -729,18 +729,18 @@ class APMidasPluginDownloadWorker
       this.downListener.onDownloadSuccess();
       APLog.d("PluginDownloadWorker", "About to leave critical region");
       APLog.d("PluginDownloadWorker", "Leave critical region");
-      AppMethodBeat.o(193240);
+      AppMethodBeat.o(253030);
       return;
     }
     finally
     {
-      AppMethodBeat.o(193240);
+      AppMethodBeat.o(253030);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.download.APMidasPluginDownloadWorker
  * JD-Core Version:    0.7.0.1
  */

@@ -6,24 +6,24 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
-  public g iqW;
-  MMSightCameraGLSurfaceView zEa;
+  MMSightCameraGLSurfaceView FiZ;
+  public g lgb;
   
   public a(MMSightCameraGLSurfaceView paramMMSightCameraGLSurfaceView)
   {
     AppMethodBeat.i(94764);
-    this.iqW = new g()
+    this.lgb = new g()
     {
-      public final boolean ai(byte[] paramAnonymousArrayOfByte)
+      public final boolean ar(byte[] paramAnonymousArrayOfByte)
       {
         AppMethodBeat.i(94762);
-        if (a.this.zEa != null)
+        if (a.this.FiZ != null)
         {
-          MMSightCameraGLSurfaceView localMMSightCameraGLSurfaceView = a.this.zEa;
-          if ((paramAnonymousArrayOfByte == null) || (localMMSightCameraGLSurfaceView.zEc == null) || (localMMSightCameraGLSurfaceView.zEc.kxV)) {
+          MMSightCameraGLSurfaceView localMMSightCameraGLSurfaceView = a.this.FiZ;
+          if ((paramAnonymousArrayOfByte == null) || (localMMSightCameraGLSurfaceView.Fjb == null) || (localMMSightCameraGLSurfaceView.Fjb.nqV)) {
             break label76;
           }
-          localMMSightCameraGLSurfaceView.zEc.b(paramAnonymousArrayOfByte, localMMSightCameraGLSurfaceView.kxW, localMMSightCameraGLSurfaceView.kxX, localMMSightCameraGLSurfaceView.iqx, false);
+          localMMSightCameraGLSurfaceView.Fjb.b(paramAnonymousArrayOfByte, localMMSightCameraGLSurfaceView.nqW, localMMSightCameraGLSurfaceView.nqX, localMMSightCameraGLSurfaceView.lfC, false);
           localMMSightCameraGLSurfaceView.requestRender();
         }
         for (;;)
@@ -35,33 +35,33 @@ public final class a
         }
       }
     };
-    this.zEa = paramMMSightCameraGLSurfaceView;
+    this.FiZ = paramMMSightCameraGLSurfaceView;
     AppMethodBeat.o(94764);
   }
   
   public final void a(byte[] paramArrayOfByte, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(94763);
-    if (this.zEa != null) {
-      this.zEa.e(paramArrayOfByte, paramInt, paramBoolean);
+    if (this.FiZ != null) {
+      this.FiZ.e(paramArrayOfByte, paramInt, paramBoolean);
     }
     AppMethodBeat.o(94763);
   }
   
-  public final void aEy()
+  public final void aMN()
   {
     AppMethodBeat.i(94766);
-    if (this.zEa != null) {
-      this.zEa.aEy();
+    if (this.FiZ != null) {
+      this.FiZ.aMN();
     }
     AppMethodBeat.o(94766);
   }
   
-  public final void aq(int paramInt1, int paramInt2, int paramInt3)
+  public final void av(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(94765);
     Log.d("MicroMsg.MMSightCameraDrawController", "cameraPreviewWidth: " + paramInt1 + " cameraPreviewHeight : " + paramInt2 + " rotate : " + paramInt3);
-    if (this.zEa != null) {
+    if (this.FiZ != null) {
       if ((paramInt3 != 0) && (paramInt3 != 180)) {
         break label95;
       }
@@ -72,7 +72,7 @@ public final class a
       if ((paramInt3 == 0) || (paramInt3 == 180)) {
         paramInt1 = paramInt2;
       }
-      this.zEa.aq(i, paramInt1, paramInt3);
+      this.FiZ.av(i, paramInt1, paramInt3);
       AppMethodBeat.o(94765);
       return;
     }
@@ -80,7 +80,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.cameraglview.a
  * JD-Core Version:    0.7.0.1
  */

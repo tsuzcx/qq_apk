@@ -6,17 +6,17 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
 final class f$b$a
   extends q
   implements a<x>
 {
-  public static final a tNh;
+  public static final a xwW;
   
   static
   {
     AppMethodBeat.i(178221);
-    tNh = new a();
+    xwW = new a();
     AppMethodBeat.o(178221);
   }
   

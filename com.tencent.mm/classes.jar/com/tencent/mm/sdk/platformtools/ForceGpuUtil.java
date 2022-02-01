@@ -39,9 +39,9 @@ public class ForceGpuUtil
   
   public static int getMaxTextureSize()
   {
-    AppMethodBeat.i(230294);
+    AppMethodBeat.i(193840);
     int i = Help30Impl.getInstance().getMaxTextureSize();
-    AppMethodBeat.o(230294);
+    AppMethodBeat.o(193840);
     return i;
   }
   
@@ -59,7 +59,7 @@ public class ForceGpuUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.ForceGpuUtil
  * JD-Core Version:    0.7.0.1
  */

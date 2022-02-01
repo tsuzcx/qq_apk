@@ -33,37 +33,37 @@ import kotlin.l;
 import kotlin.t;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout;", "Landroid/widget/FrameLayout;", "Landroid/view/ScaleGestureDetector$OnScaleGestureListener;", "Landroid/view/GestureDetector$OnGestureListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "backgroundView", "Landroid/view/View;", "getBackgroundView", "()Landroid/view/View;", "backgroundView$delegate", "Lkotlin/Lazy;", "cropLayout", "Lcom/tencent/mm/ui/widget/cropview/DragExitCropLayout;", "downMotionEvent", "Landroid/view/MotionEvent;", "indexOriginalParent", "isCanScale", "", "isInitFinish", "isPreViewMode", "()Z", "setPreViewMode", "(Z)V", "isRemoving", "isReverting", "lastMotionEvent", "linePaint", "Landroid/graphics/Paint;", "scaleDetector", "Landroid/view/ScaleGestureDetector;", "scaleListener", "Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout$OnScaleListener;", "getScaleListener", "()Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout$OnScaleListener;", "setScaleListener", "(Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout$OnScaleListener;)V", "touchDetector", "Landroid/view/GestureDetector;", "getTouchDetector", "()Landroid/view/GestureDetector;", "touchDetector$delegate", "touchOriginalParent", "Landroid/view/ViewGroup;", "touchView", "getTouchView", "setTouchView", "(Landroid/view/View;)V", "videoBaseLine", "", "addTouchView", "", "attachToDecorView", "view", "dispatchTouchEvent", "ev", "dpToPx", "dp", "draw", "canvas", "Landroid/graphics/Canvas;", "onDown", "e", "onFling", "e1", "e2", "velocityX", "velocityY", "onLongPress", "onScale", "detector", "onScaleBegin", "onScaleEnd", "onScroll", "distanceX", "distanceY", "onShowPress", "onSingleTapUp", "onTouchEvent", "onTouchScale", "onTouchScaleBegin", "onTouchScaleEnd", "removeTouchView", "finishRemove", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "revertViewTo", "finishCall", "Lkotlin/Function0;", "Companion", "OnScaleListener", "libmmui_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout;", "Landroid/widget/FrameLayout;", "Landroid/view/ScaleGestureDetector$OnScaleGestureListener;", "Landroid/view/GestureDetector$OnGestureListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "backgroundView", "Landroid/view/View;", "getBackgroundView", "()Landroid/view/View;", "backgroundView$delegate", "Lkotlin/Lazy;", "cropLayout", "Lcom/tencent/mm/ui/widget/cropview/DragExitCropLayout;", "downMotionEvent", "Landroid/view/MotionEvent;", "indexOriginalParent", "isCanScale", "", "isInitFinish", "isPreViewMode", "()Z", "setPreViewMode", "(Z)V", "isRemoving", "isReverting", "lastMotionEvent", "linePaint", "Landroid/graphics/Paint;", "scaleDetector", "Landroid/view/ScaleGestureDetector;", "scaleListener", "Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout$OnScaleListener;", "getScaleListener", "()Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout$OnScaleListener;", "setScaleListener", "(Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout$OnScaleListener;)V", "touchDetector", "Landroid/view/GestureDetector;", "getTouchDetector", "()Landroid/view/GestureDetector;", "touchDetector$delegate", "touchOriginalParent", "Landroid/view/ViewGroup;", "touchView", "getTouchView", "setTouchView", "(Landroid/view/View;)V", "videoBaseLine", "", "addTouchView", "", "attachToDecorView", "view", "dispatchTouchEvent", "ev", "dpToPx", "dp", "draw", "canvas", "Landroid/graphics/Canvas;", "onDown", "e", "onFling", "e1", "e2", "velocityX", "velocityY", "onLongPress", "onScale", "detector", "onScaleBegin", "onScaleEnd", "onScroll", "distanceX", "distanceY", "onShowPress", "onSingleTapUp", "onTouchEvent", "onTouchScale", "onTouchScaleBegin", "onTouchScaleEnd", "removeTouchView", "finishRemove", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "revertViewTo", "finishCall", "Lkotlin/Function0;", "Companion", "OnScaleListener", "libmmui_release"})
 public class TouchMediaPreviewLayout
   extends FrameLayout
   implements GestureDetector.OnGestureListener, ScaleGestureDetector.OnScaleGestureListener
 {
-  private static boolean QFC;
-  private static boolean QFD;
-  public static final TouchMediaPreviewLayout.a QFE;
-  private final Paint GQi;
-  private boolean QFA;
-  private final float QFB;
-  private final f QFq;
-  private MotionEvent QFr;
-  public boolean QFs;
-  private boolean QFt;
-  private ScaleGestureDetector QFu;
-  private TouchMediaPreviewLayout.b QFv;
-  private boolean QFw;
-  private final DragExitCropLayout QFx;
-  private ViewGroup QFy;
-  private boolean QFz;
-  private MotionEvent aXM;
-  private final f wbH;
-  private int wxy;
-  private View yTH;
+  private static boolean YdY;
+  private static boolean YdZ;
+  public static final a Yea;
+  private final f AOG;
+  private int BlP;
+  private View ExE;
+  private final Paint NFZ;
+  private final f YdM;
+  private MotionEvent YdN;
+  public boolean YdO;
+  private boolean YdP;
+  private ScaleGestureDetector YdQ;
+  private b YdR;
+  private boolean YdS;
+  private final DragExitCropLayout YdT;
+  private ViewGroup YdU;
+  private boolean YdV;
+  private boolean YdW;
+  private final float YdX;
+  private MotionEvent aHh;
   
   static
   {
     AppMethodBeat.i(164342);
-    QFE = new TouchMediaPreviewLayout.a((byte)0);
-    QFD = true;
+    Yea = new a((byte)0);
+    YdZ = true;
     AppMethodBeat.o(164342);
   }
   
@@ -71,11 +71,11 @@ public class TouchMediaPreviewLayout
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164361);
-    this.QFq = g.ah((kotlin.g.a.a)new c(this));
-    this.QFu = new ScaleGestureDetector(getContext(), (ScaleGestureDetector.OnScaleGestureListener)this);
-    this.wbH = g.ah((kotlin.g.a.a)new g(this));
+    this.YdM = g.ar((kotlin.g.a.a)new c(this));
+    this.YdQ = new ScaleGestureDetector(getContext(), (ScaleGestureDetector.OnScaleGestureListener)this);
+    this.AOG = g.ar((kotlin.g.a.a)new g(this));
     paramContext = getContext();
-    p.g(paramContext, "context");
+    p.j(paramContext, "context");
     paramContext = new DragExitCropLayout(paramContext);
     paramContext.setLayoutParams((ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
     paramContext.setTag("TouchPhotoLayout");
@@ -84,20 +84,20 @@ public class TouchMediaPreviewLayout
     paramContext.setEnableOverScroll(false);
     paramContext.setEnableDragExit(true);
     paramAttributeSet = paramContext.getContext();
-    p.g(paramAttributeSet, "context");
+    p.j(paramAttributeSet, "context");
     paramContext.setBackgroundColor(paramAttributeSet.getResources().getColor(17170445));
-    this.QFx = paramContext;
+    this.YdT = paramContext;
     paramContext = getContext();
-    p.g(paramContext, "context");
+    p.j(paramContext, "context");
     paramContext = paramContext.getResources();
-    p.g(paramContext, "context.resources");
-    this.QFB = (paramContext.getDisplayMetrics().heightPixels * 0.4F);
+    p.j(paramContext, "context.resources");
+    this.YdX = (paramContext.getDisplayMetrics().heightPixels * 0.4F);
     paramContext = new Paint(1);
-    paramContext.setStrokeWidth(gZl());
+    paramContext.setStrokeWidth(iab());
     paramContext.setStyle(Paint.Style.STROKE);
     paramContext.setColor(-16711936);
-    this.GQi = paramContext;
-    if (QFC) {
+    this.NFZ = paramContext;
+    if (YdY) {
       setBackgroundColor(0);
     }
     AppMethodBeat.o(164361);
@@ -107,11 +107,11 @@ public class TouchMediaPreviewLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164362);
-    this.QFq = g.ah((kotlin.g.a.a)new c(this));
-    this.QFu = new ScaleGestureDetector(getContext(), (ScaleGestureDetector.OnScaleGestureListener)this);
-    this.wbH = g.ah((kotlin.g.a.a)new g(this));
+    this.YdM = g.ar((kotlin.g.a.a)new c(this));
+    this.YdQ = new ScaleGestureDetector(getContext(), (ScaleGestureDetector.OnScaleGestureListener)this);
+    this.AOG = g.ar((kotlin.g.a.a)new g(this));
     paramContext = getContext();
-    p.g(paramContext, "context");
+    p.j(paramContext, "context");
     paramContext = new DragExitCropLayout(paramContext);
     paramContext.setLayoutParams((ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
     paramContext.setTag("TouchPhotoLayout");
@@ -120,53 +120,41 @@ public class TouchMediaPreviewLayout
     paramContext.setEnableOverScroll(false);
     paramContext.setEnableDragExit(true);
     paramAttributeSet = paramContext.getContext();
-    p.g(paramAttributeSet, "context");
+    p.j(paramAttributeSet, "context");
     paramContext.setBackgroundColor(paramAttributeSet.getResources().getColor(17170445));
-    this.QFx = paramContext;
+    this.YdT = paramContext;
     paramContext = getContext();
-    p.g(paramContext, "context");
+    p.j(paramContext, "context");
     paramContext = paramContext.getResources();
-    p.g(paramContext, "context.resources");
-    this.QFB = (paramContext.getDisplayMetrics().heightPixels * 0.4F);
+    p.j(paramContext, "context.resources");
+    this.YdX = (paramContext.getDisplayMetrics().heightPixels * 0.4F);
     paramContext = new Paint(1);
-    paramContext.setStrokeWidth(gZl());
+    paramContext.setStrokeWidth(iab());
     paramContext.setStyle(Paint.Style.STROKE);
     paramContext.setColor(-16711936);
-    this.GQi = paramContext;
-    if (QFC) {
+    this.NFZ = paramContext;
+    if (YdY) {
       setBackgroundColor(0);
     }
     AppMethodBeat.o(164362);
   }
   
-  private final void Q(final kotlin.g.a.b<? super View, x> paramb)
+  private final void ae(final kotlin.g.a.b<? super View, x> paramb)
   {
     AppMethodBeat.i(164349);
-    if (!this.QFA)
+    if (!this.YdW)
     {
       final float f = getBackgroundView().getAlpha();
-      this.QFA = true;
-      this.QFx.a((kotlin.g.a.a)new d(this, paramb), (ValueAnimator.AnimatorUpdateListener)new e(this, f));
+      this.YdW = true;
+      this.YdT.a((kotlin.g.a.a)new d(this, paramb), (ValueAnimator.AnimatorUpdateListener)new e(this, f));
     }
     AppMethodBeat.o(164349);
-  }
-  
-  private final float gZl()
-  {
-    AppMethodBeat.i(164359);
-    Object localObject = getContext();
-    p.g(localObject, "context");
-    localObject = ((Context)localObject).getResources();
-    p.g(localObject, "context.resources");
-    float f = TypedValue.applyDimension(1, 2.0F, ((Resources)localObject).getDisplayMetrics());
-    AppMethodBeat.o(164359);
-    return f;
   }
   
   private final View getBackgroundView()
   {
     AppMethodBeat.i(164343);
-    View localView = (View)this.QFq.getValue();
+    View localView = (View)this.YdM.getValue();
     AppMethodBeat.o(164343);
     return localView;
   }
@@ -174,37 +162,49 @@ public class TouchMediaPreviewLayout
   private final GestureDetector getTouchDetector()
   {
     AppMethodBeat.i(164344);
-    GestureDetector localGestureDetector = (GestureDetector)this.wbH.getValue();
+    GestureDetector localGestureDetector = (GestureDetector)this.AOG.getValue();
     AppMethodBeat.o(164344);
     return localGestureDetector;
+  }
+  
+  private final float iab()
+  {
+    AppMethodBeat.i(164359);
+    Object localObject = getContext();
+    p.j(localObject, "context");
+    localObject = ((Context)localObject).getResources();
+    p.j(localObject, "context.resources");
+    float f = TypedValue.applyDimension(1, 2.0F, ((Resources)localObject).getDisplayMetrics());
+    AppMethodBeat.o(164359);
+    return f;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(164345);
-    p.h(paramMotionEvent, "ev");
+    p.k(paramMotionEvent, "ev");
     if (paramMotionEvent.getAction() == 0)
     {
-      localObject = TouchableLayout.Rni;
-      TouchableLayout.apU((int)paramMotionEvent.getRawX());
-      localObject = TouchableLayout.Rni;
-      TouchableLayout.apV((int)paramMotionEvent.getRawY());
+      localObject = TouchableLayout.YOD;
+      TouchableLayout.azt((int)paramMotionEvent.getRawX());
+      localObject = TouchableLayout.YOD;
+      TouchableLayout.azu((int)paramMotionEvent.getRawY());
     }
-    this.QFu.onTouchEvent(paramMotionEvent);
+    this.YdQ.onTouchEvent(paramMotionEvent);
     Object localObject = getTouchDetector();
-    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bl(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.axQ(), "com/tencent/mm/ui/widget/TouchMediaPreviewLayout", "dispatchTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-    com.tencent.mm.hellhoundlib.a.a.a(localObject, ((GestureDetector)localObject).onTouchEvent((MotionEvent)locala.pG(0)), "com/tencent/mm/ui/widget/TouchMediaPreviewLayout", "dispatchTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-    this.aXM = paramMotionEvent;
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bm(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aFh(), "com/tencent/mm/ui/widget/TouchMediaPreviewLayout", "dispatchTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    com.tencent.mm.hellhoundlib.a.a.a(localObject, ((GestureDetector)localObject).onTouchEvent((MotionEvent)locala.sf(0)), "com/tencent/mm/ui/widget/TouchMediaPreviewLayout", "dispatchTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    this.aHh = paramMotionEvent;
     if (paramMotionEvent.getAction() == 0)
     {
-      Log.i("TouchPhotoLayout", "[dispatchTouchEvent] down... visibility=" + getVisibility() + " isCanScale=" + this.QFt + " isInitFinish=" + this.QFz);
-      this.QFr = MotionEvent.obtain(paramMotionEvent);
+      Log.i("TouchPhotoLayout", "[dispatchTouchEvent] down... visibility=" + getVisibility() + " isCanScale=" + this.YdP + " isInitFinish=" + this.YdV);
+      this.YdN = MotionEvent.obtain(paramMotionEvent);
     }
-    if ((!this.QFt) && ((paramMotionEvent.getAction() & 0xFF) == 5) && (paramMotionEvent.getPointerCount() == 2))
+    if ((!this.YdP) && ((paramMotionEvent.getAction() & 0xFF) == 5) && (paramMotionEvent.getPointerCount() == 2))
     {
-      localObject = this.QFv;
-      if ((localObject == null) || (((TouchMediaPreviewLayout.b)localObject).onScaleBegin(this.QFu) != true)) {
+      localObject = this.YdR;
+      if ((localObject == null) || (((b)localObject).onScaleBegin(this.YdQ) != true)) {
         break label359;
       }
     }
@@ -217,15 +217,15 @@ public class TouchMediaPreviewLayout
         getBackgroundView().setAlpha(0.0F);
         getBackgroundView().setVisibility(0);
       }
-      this.QFt = bool;
-      if (this.QFt)
+      this.YdP = bool;
+      if (this.YdP)
       {
-        localObject = MotionEvent.obtain(this.aXM);
-        p.g(localObject, "cancelEvent");
+        localObject = MotionEvent.obtain(this.aHh);
+        p.j(localObject, "cancelEvent");
         ((MotionEvent)localObject).setAction(3);
         super.dispatchTouchEvent((MotionEvent)localObject);
       }
-      if (this.QFt) {
+      if (this.YdP) {
         break;
       }
       bool = super.dispatchTouchEvent(paramMotionEvent);
@@ -234,21 +234,21 @@ public class TouchMediaPreviewLayout
     }
     if ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1))
     {
-      if ((QFD) || (this.QFx.getContentViewScale()[0] < 1.5F)) {
+      if ((YdZ) || (this.YdT.getContentViewScale()[0] < 1.5F)) {
         break label519;
       }
       bool = true;
-      this.QFs = bool;
-      Log.i("TouchPhotoLayout", "[onTouchScaleEnd] isPreViewMode=" + this.QFs + " isCanScale=" + this.QFt + " isInitFinish=" + this.QFz);
+      this.YdO = bool;
+      Log.i("TouchPhotoLayout", "[onTouchScaleEnd] isPreViewMode=" + this.YdO + " isCanScale=" + this.YdP + " isInitFinish=" + this.YdV);
       float f = paramMotionEvent.getX();
-      localObject = this.QFr;
+      localObject = this.YdN;
       if (localObject == null) {
-        p.hyc();
+        p.iCn();
       }
-      if ((Math.abs(f - ((MotionEvent)localObject).getX()) < 5.0F) || (!this.QFs)) {
+      if ((Math.abs(f - ((MotionEvent)localObject).getX()) < 5.0F) || (!this.YdO)) {
         break label524;
       }
-      this.QFx.ad(paramMotionEvent);
+      this.YdT.am(paramMotionEvent);
     }
     for (;;)
     {
@@ -258,55 +258,55 @@ public class TouchMediaPreviewLayout
       bool = false;
       break;
       label524:
-      gZk();
+      iaa();
     }
   }
   
   public void draw(Canvas paramCanvas)
   {
     AppMethodBeat.i(164358);
-    p.h(paramCanvas, "canvas");
+    p.k(paramCanvas, "canvas");
     super.draw(paramCanvas);
-    if (QFC)
+    if (YdY)
     {
-      float f = this.QFB;
+      float f = this.YdX;
       Object localObject = getContext();
-      p.g(localObject, "context");
+      p.j(localObject, "context");
       localObject = ((Context)localObject).getResources();
-      p.g(localObject, "context.resources");
-      paramCanvas.drawLine(0.0F, f, ((Resources)localObject).getDisplayMetrics().widthPixels, this.QFB, this.GQi);
+      p.j(localObject, "context.resources");
+      paramCanvas.drawLine(0.0F, f, ((Resources)localObject).getDisplayMetrics().widthPixels, this.YdX, this.NFZ);
     }
     AppMethodBeat.o(164358);
   }
   
-  public final void gZk()
+  public final b getScaleListener()
   {
-    AppMethodBeat.i(164347);
-    if (!this.QFw)
-    {
-      this.QFw = true;
-      this.QFs = false;
-      Q((kotlin.g.a.b)new f(this));
-    }
-    AppMethodBeat.o(164347);
-  }
-  
-  public final TouchMediaPreviewLayout.b getScaleListener()
-  {
-    return this.QFv;
+    return this.YdR;
   }
   
   public final View getTouchView()
   {
-    return this.yTH;
+    return this.ExE;
+  }
+  
+  public final void iaa()
+  {
+    AppMethodBeat.i(164347);
+    if (!this.YdS)
+    {
+      this.YdS = true;
+      this.YdO = false;
+      ae((kotlin.g.a.b)new f(this));
+    }
+    AppMethodBeat.o(164347);
   }
   
   public boolean onDown(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(164351);
-    p.h(paramMotionEvent, "e");
-    if (this.QFz) {
-      this.QFx.onDown(paramMotionEvent);
+    p.k(paramMotionEvent, "e");
+    if (this.YdV) {
+      this.YdT.onDown(paramMotionEvent);
     }
     AppMethodBeat.o(164351);
     return true;
@@ -315,10 +315,10 @@ public class TouchMediaPreviewLayout
   public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(164352);
-    p.h(paramMotionEvent1, "e1");
-    p.h(paramMotionEvent2, "e2");
-    if ((this.QFz) && (this.QFs)) {
-      this.QFx.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    p.k(paramMotionEvent1, "e1");
+    p.k(paramMotionEvent2, "e2");
+    if ((this.YdV) && (this.YdO)) {
+      this.YdT.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
     AppMethodBeat.o(164352);
     return true;
@@ -326,29 +326,29 @@ public class TouchMediaPreviewLayout
   
   public void onLongPress(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(204893);
+    AppMethodBeat.i(193550);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bm(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/TouchMediaPreviewLayout", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.axR());
+    localb.bn(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/TouchMediaPreviewLayout", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/TouchMediaPreviewLayout", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-    AppMethodBeat.o(204893);
+    AppMethodBeat.o(193550);
   }
   
   public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
     AppMethodBeat.i(164357);
-    p.h(paramScaleGestureDetector, "detector");
-    if ((this.QFz) && (this.QFt))
+    p.k(paramScaleGestureDetector, "detector");
+    if ((this.YdV) && (this.YdP))
     {
-      this.QFx.onScale(paramScaleGestureDetector);
-      TouchMediaPreviewLayout.b localb = this.QFv;
+      this.YdT.onScale(paramScaleGestureDetector);
+      b localb = this.YdR;
       if (localb != null) {
         localb.onScale(paramScaleGestureDetector);
       }
-      if (p.j(getBackgroundView().getTag(), Boolean.TRUE)) {
+      if (p.h(getBackgroundView().getTag(), Boolean.TRUE)) {
         getBackgroundView().animate().cancel();
       }
-      getBackgroundView().setAlpha((this.QFx.getContentViewScale()[0] - 1.0F) / 0.5F);
+      getBackgroundView().setAlpha((this.YdT.getContentViewScale()[0] - 1.0F) / 0.5F);
     }
     AppMethodBeat.o(164357);
     return true;
@@ -357,8 +357,8 @@ public class TouchMediaPreviewLayout
   public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
   {
     AppMethodBeat.i(164355);
-    p.h(paramScaleGestureDetector, "detector");
-    boolean bool = this.QFt;
+    p.k(paramScaleGestureDetector, "detector");
+    boolean bool = this.YdP;
     AppMethodBeat.o(164355);
     return bool;
   }
@@ -366,17 +366,17 @@ public class TouchMediaPreviewLayout
   public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
   {
     AppMethodBeat.i(164356);
-    p.h(paramScaleGestureDetector, "detector");
+    p.k(paramScaleGestureDetector, "detector");
     AppMethodBeat.o(164356);
   }
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(164353);
-    p.h(paramMotionEvent1, "e1");
-    p.h(paramMotionEvent2, "e2");
-    if ((this.QFt) && (this.QFz)) {
-      this.QFx.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    p.k(paramMotionEvent1, "e1");
+    p.k(paramMotionEvent2, "e2");
+    if ((this.YdP) && (this.YdV)) {
+      this.YdT.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
     AppMethodBeat.o(164353);
     return true;
@@ -388,9 +388,9 @@ public class TouchMediaPreviewLayout
   {
     AppMethodBeat.i(164350);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bm(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/TouchMediaPreviewLayout", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
-    p.h(paramMotionEvent, "e");
+    localb.bn(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/TouchMediaPreviewLayout", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+    p.k(paramMotionEvent, "e");
     com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/widget/TouchMediaPreviewLayout", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
     AppMethodBeat.o(164350);
     return true;
@@ -399,7 +399,7 @@ public class TouchMediaPreviewLayout
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(164346);
-    if (this.QFt)
+    if (this.YdP)
     {
       AppMethodBeat.o(164346);
       return true;
@@ -411,20 +411,28 @@ public class TouchMediaPreviewLayout
   
   public final void setPreViewMode(boolean paramBoolean)
   {
-    this.QFs = paramBoolean;
+    this.YdO = paramBoolean;
   }
   
-  public final void setScaleListener(TouchMediaPreviewLayout.b paramb)
+  public final void setScaleListener(b paramb)
   {
-    this.QFv = paramb;
+    this.YdR = paramb;
   }
   
   public final void setTouchView(View paramView)
   {
-    this.yTH = paramView;
+    this.ExE = paramView;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/View;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout$Companion;", "", "()V", "ANIMATION_DURATION", "", "INIT_BG_ALPHA", "", "TAG", "", "isRevertImmediately", "", "()Z", "setRevertImmediately", "(Z)V", "isShowVideoBaseLine", "setShowVideoBaseLine", "libmmui_release"})
+  public static final class a {}
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/widget/TouchMediaPreviewLayout$OnScaleListener;", "Landroid/view/ScaleGestureDetector$OnScaleGestureListener;", "libmmui_release"})
+  public static abstract interface b
+    extends ScaleGestureDetector.OnScaleGestureListener
+  {}
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/View;", "invoke"})
   static final class c
     extends q
     implements kotlin.g.a.a<View>
@@ -435,7 +443,7 @@ public class TouchMediaPreviewLayout
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class d
     extends q
     implements kotlin.g.a.a<x>
@@ -446,7 +454,7 @@ public class TouchMediaPreviewLayout
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
   static final class e
     implements ValueAnimator.AnimatorUpdateListener
   {
@@ -463,12 +471,12 @@ public class TouchMediaPreviewLayout
         throw paramValueAnimator;
       }
       float f = ((Float)paramValueAnimator).floatValue();
-      TouchMediaPreviewLayout.j(this.QFF).setAlpha(Math.min(f, 1.0F - f));
+      TouchMediaPreviewLayout.j(this.Yeb).setAlpha(Math.min(f, 1.0F - f));
       AppMethodBeat.o(164339);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "invoke"})
   static final class f
     extends q
     implements kotlin.g.a.b<View, x>
@@ -479,7 +487,7 @@ public class TouchMediaPreviewLayout
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/GestureDetector;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/GestureDetector;", "invoke"})
   static final class g
     extends q
     implements kotlin.g.a.a<GestureDetector>
@@ -492,7 +500,7 @@ public class TouchMediaPreviewLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.TouchMediaPreviewLayout
  * JD-Core Version:    0.7.0.1
  */

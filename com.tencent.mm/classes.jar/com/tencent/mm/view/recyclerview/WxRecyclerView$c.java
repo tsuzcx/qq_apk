@@ -5,17 +5,17 @@ import kotlin.g.a.a;
 import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
 final class WxRecyclerView$c
   extends q
   implements a<Boolean>
 {
-  public static final c RrU;
+  public static final c YTu;
   
   static
   {
     AppMethodBeat.i(164739);
-    RrU = new c();
+    YTu = new c();
     AppMethodBeat.o(164739);
   }
   

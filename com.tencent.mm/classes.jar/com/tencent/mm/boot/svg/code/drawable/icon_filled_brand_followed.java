@@ -126,7 +126,7 @@ public class icon_filled_brand_followed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.icon_filled_brand_followed
  * JD-Core Version:    0.7.0.1
  */

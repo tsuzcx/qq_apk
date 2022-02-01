@@ -5,7 +5,7 @@ import com.tencent.kinda.gen.KRealNameService;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.id_verify.util.a.a;
-import com.tencent.mm.plugin.wallet_core.model.t;
+import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d.i;
@@ -58,8 +58,8 @@ public class KindaRealNameServiceImpl
     if ((paramVoidCallback1 instanceof MMActivity)) {}
     for (paramVoidCallback1 = (MMActivity)paramVoidCallback1;; paramVoidCallback1 = null)
     {
-      t.fQC();
-      t.b(paramVoidCallback1, locali, 1);
+      u.gJi();
+      u.b(paramVoidCallback1, locali, 1);
       AppMethodBeat.o(18508);
       return;
     }

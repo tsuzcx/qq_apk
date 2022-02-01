@@ -1,45 +1,37 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ay.a;
-import com.tencent.mm.model.ay.b;
-import com.tencent.mm.model.ay.b.a;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.model.az.a;
+import com.tencent.mm.model.az.b;
+import com.tencent.mm.network.aa;
 import com.tencent.mm.network.x;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.topstory.a.c.e;
 import com.tencent.mm.plugin.topstory.a.c.k;
+import com.tencent.mm.plugin.topstory.ui.c.g;
 import com.tencent.mm.plugin.websearch.api.a.a;
 import com.tencent.mm.plugin.websearch.api.ai;
-import com.tencent.mm.protocal.protobuf.aca;
-import com.tencent.mm.protocal.protobuf.ado;
-import com.tencent.mm.protocal.protobuf.any;
-import com.tencent.mm.protocal.protobuf.dky;
-import com.tencent.mm.protocal.protobuf.dyi;
-import com.tencent.mm.protocal.protobuf.eir;
-import com.tencent.mm.protocal.protobuf.eit;
-import com.tencent.mm.protocal.protobuf.eiu;
-import com.tencent.mm.protocal.protobuf.eiw;
-import com.tencent.mm.protocal.protobuf.eiy;
-import com.tencent.mm.protocal.protobuf.eoj;
-import com.tencent.mm.protocal.protobuf.eqn;
-import com.tencent.mm.protocal.protobuf.eqz;
-import com.tencent.mm.protocal.protobuf.era;
-import com.tencent.mm.protocal.protobuf.fam;
-import com.tencent.mm.protocal.protobuf.vg;
+import com.tencent.mm.protocal.protobuf.aci;
+import com.tencent.mm.protocal.protobuf.aoz;
+import com.tencent.mm.protocal.protobuf.eij;
+import com.tencent.mm.protocal.protobuf.est;
+import com.tencent.mm.protocal.protobuf.esv;
+import com.tencent.mm.protocal.protobuf.esw;
+import com.tencent.mm.protocal.protobuf.esy;
+import com.tencent.mm.protocal.protobuf.eta;
+import com.tencent.mm.protocal.protobuf.flf;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.bv;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.vfs.ad;
 import java.io.BufferedReader;
 import java.io.Closeable;
 import java.io.InputStream;
@@ -56,76 +48,76 @@ import org.json.JSONObject;
 
 public final class n
 {
-  public boolean GhN;
-  public b GlS;
-  public int GnE;
-  k GnF;
-  private int GnG;
-  private int GnH;
-  public com.tencent.mm.plugin.topstory.a.c.h GnI;
-  public com.tencent.mm.ak.i gNh;
+  public boolean MTh;
+  public b MYE;
+  public int Nar;
+  k Nas;
+  private int Nat;
+  private int Nau;
+  public com.tencent.mm.plugin.topstory.a.c.h Nav;
+  public com.tencent.mm.an.i jxB;
   
   public n()
   {
     AppMethodBeat.i(126125);
-    this.gNh = new com.tencent.mm.ak.i()
+    this.jxB = new com.tencent.mm.an.i()
     {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, final String paramAnonymousString, com.tencent.mm.ak.q paramAnonymousq)
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, final String paramAnonymousString, q paramAnonymousq)
       {
         boolean bool = true;
         AppMethodBeat.i(126123);
         Log.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "onSceneEnd, errType: %s, errCode: %s, scene: %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousq });
-        if (paramAnonymousq.equals(n.this.GnF))
+        if (paramAnonymousq.equals(n.this.Nas))
         {
-          g.azz().b(1943, n.this.gNh);
-          n.this.GnF = null;
+          com.tencent.mm.kernel.h.aGY().b(1943, n.this.jxB);
+          n.this.Nas = null;
           paramAnonymousq = (k)paramAnonymousq;
           if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
           {
-            Log.e("MicroMsg.TopStory.TopStoryVideoDataMgr", "fetch page failed!, response json: %s", new Object[] { paramAnonymousq.fxZ().MaZ });
-            a.pl(2);
-            n.this.GlS.aTE(paramAnonymousString);
-            n.this.GhN = false;
+            Log.e("MicroMsg.TopStory.TopStoryVideoDataMgr", "fetch page failed!, response json: %s", new Object[] { paramAnonymousq.gpU().Tkw });
+            a.rE(2);
+            n.this.MYE.bfc(paramAnonymousString);
+            n.this.MTh = false;
             AppMethodBeat.o(126123);
             return;
           }
           paramAnonymousString = new n.a(n.this, (byte)0);
-          n.a.a(paramAnonymousString, paramAnonymousq.fxZ().MaZ);
-          if (paramAnonymousq.GjJ.offset == 0) {}
+          n.a.a(paramAnonymousString, paramAnonymousq.gpU().Tkw);
+          if (paramAnonymousq.MWu.offset == 0) {}
           for (;;)
           {
             n.a.a(paramAnonymousString, bool);
-            com.tencent.f.h.RTc.b(paramAnonymousString, "TopStory.DecodeRecommendResultTask");
+            com.tencent.e.h.ZvG.d(paramAnonymousString, "TopStory.DecodeRecommendResultTask");
             AppMethodBeat.o(126123);
             return;
             bool = false;
           }
         }
-        if (paramAnonymousq.equals(n.this.GnI))
+        if (paramAnonymousq.equals(n.this.Nav))
         {
-          g.azz().b(1943, n.this.gNh);
-          n.this.GnI = null;
+          com.tencent.mm.kernel.h.aGY().b(1943, n.this.jxB);
+          n.this.Nav = null;
           paramAnonymousString = (com.tencent.mm.plugin.topstory.a.c.h)paramAnonymousq;
           if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
           {
             Log.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "requestRelVideo failed!, errType:%s, errCode:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-            a.pl(2);
+            a.rE(2);
             AppMethodBeat.o(126123);
             return;
           }
-          Log.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "onSceneEnd relevantVideoNetScene %s", new Object[] { paramAnonymousString.fxZ().MaZ });
-          com.tencent.f.h.RTc.b(new Runnable()
+          Log.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "onSceneEnd relevantVideoNetScene %s", new Object[] { paramAnonymousString.gpU().Tkw });
+          com.tencent.e.h.ZvG.d(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(126122);
               try
               {
-                Object localObject = new JSONObject(paramAnonymousString.fxZ().MaZ).optJSONArray("data");
+                Object localObject = new JSONObject(paramAnonymousString.gpU().Tkw).optJSONArray("data");
                 if ((localObject != null) && (((JSONArray)localObject).length() > 0))
                 {
-                  localObject = n.b(n.this.GlS.fyL(), (JSONArray)localObject);
-                  paramAnonymousString.GjK.Niz.NhV.addAll((Collection)localObject);
+                  localObject = n.b(n.this.MYE.gqI(), (JSONArray)localObject);
+                  paramAnonymousString.MWv.Uvf.UuB.addAll((Collection)localObject);
                   Log.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "netSceneTopStoryRelevantVideo add result list %d", new Object[] { Integer.valueOf(((List)localObject).size()) });
                 }
                 AppMethodBeat.o(126122);
@@ -145,605 +137,605 @@ public final class n
   }
   
   /* Error */
-  private static eiw a(JSONObject paramJSONObject, long paramLong1, long paramLong2, String paramString, boolean paramBoolean)
+  private static esy a(JSONObject paramJSONObject, long paramLong1, long paramLong2, String paramString, boolean paramBoolean)
   {
     // Byte code:
-    //   0: ldc 57
-    //   2: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 49
+    //   2: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: ldc 59
-    //   8: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   6: ldc 51
+    //   8: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   11: astore 9
     //   13: aload_0
-    //   14: ldc 67
-    //   16: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   14: ldc 59
+    //   16: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   19: astore 10
     //   21: aload_0
-    //   22: ldc 69
+    //   22: ldc 61
     //   24: iconst_0
-    //   25: invokevirtual 73	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   25: invokevirtual 65	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   28: istore 7
     //   30: aload 9
-    //   32: invokestatic 79	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
-    //   35: ifne +1311 -> 1346
-    //   38: new 81	com/tencent/mm/protocal/protobuf/eiw
+    //   32: invokestatic 71	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   35: ifne +1310 -> 1345
+    //   38: new 73	com/tencent/mm/protocal/protobuf/esy
     //   41: dup
-    //   42: invokespecial 82	com/tencent/mm/protocal/protobuf/eiw:<init>	()V
+    //   42: invokespecial 74	com/tencent/mm/protocal/protobuf/esy:<init>	()V
     //   45: astore 8
     //   47: aload 8
     //   49: aload 9
-    //   51: putfield 86	com/tencent/mm/protocal/protobuf/eiw:psI	Ljava/lang/String;
+    //   51: putfield 78	com/tencent/mm/protocal/protobuf/esy:Crh	Ljava/lang/String;
     //   54: aload_0
     //   55: aload 8
-    //   57: invokestatic 90	com/tencent/mm/plugin/topstory/ui/video/n:b	(Lorg/json/JSONObject;Lcom/tencent/mm/protocal/protobuf/eiw;)V
+    //   57: invokestatic 82	com/tencent/mm/plugin/topstory/ui/video/n:b	(Lorg/json/JSONObject;Lcom/tencent/mm/protocal/protobuf/esy;)V
     //   60: iload 6
     //   62: aload 8
     //   64: aload_0
-    //   65: invokestatic 93	com/tencent/mm/plugin/topstory/ui/video/n:a	(ZLcom/tencent/mm/protocal/protobuf/eiw;Lorg/json/JSONObject;)V
+    //   65: invokestatic 85	com/tencent/mm/plugin/topstory/ui/video/n:a	(ZLcom/tencent/mm/protocal/protobuf/esy;Lorg/json/JSONObject;)V
     //   68: aload 8
-    //   70: getfield 96	com/tencent/mm/protocal/protobuf/eiw:videoUrl	Ljava/lang/String;
-    //   73: invokestatic 79	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   70: getfield 88	com/tencent/mm/protocal/protobuf/esy:videoUrl	Ljava/lang/String;
+    //   73: invokestatic 71	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   76: ifeq +8 -> 84
     //   79: bipush 11
-    //   81: invokestatic 101	com/tencent/mm/plugin/websearch/api/a/a:pl	(I)V
+    //   81: invokestatic 93	com/tencent/mm/plugin/websearch/api/a/a:rE	(I)V
     //   84: aload 8
     //   86: iload 7
-    //   88: putfield 104	com/tencent/mm/protocal/protobuf/eiw:Eso	I
+    //   88: putfield 96	com/tencent/mm/protocal/protobuf/esy:KFK	I
     //   91: aload 8
     //   93: aload_0
-    //   94: ldc 106
-    //   96: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   99: putfield 108	com/tencent/mm/protocal/protobuf/eiw:title	Ljava/lang/String;
+    //   94: ldc 98
+    //   96: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   99: putfield 100	com/tencent/mm/protocal/protobuf/esy:title	Ljava/lang/String;
     //   102: aload 8
     //   104: aload_0
-    //   105: ldc 110
-    //   107: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   110: putfield 113	com/tencent/mm/protocal/protobuf/eiw:msN	Ljava/lang/String;
+    //   105: ldc 102
+    //   107: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   110: putfield 105	com/tencent/mm/protocal/protobuf/esy:pqW	Ljava/lang/String;
     //   113: aload 8
     //   115: aload_0
-    //   116: ldc 115
-    //   118: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   121: putfield 118	com/tencent/mm/protocal/protobuf/eiw:xDQ	Ljava/lang/String;
+    //   116: ldc 107
+    //   118: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   121: putfield 110	com/tencent/mm/protocal/protobuf/esy:CHR	Ljava/lang/String;
     //   124: aload 8
     //   126: aload_0
-    //   127: ldc 120
-    //   129: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   132: putfield 123	com/tencent/mm/protocal/protobuf/eiw:IED	Ljava/lang/String;
+    //   127: ldc 112
+    //   129: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   132: putfield 115	com/tencent/mm/protocal/protobuf/esy:PyV	Ljava/lang/String;
     //   135: aload 8
     //   137: aload_0
-    //   138: ldc 125
-    //   140: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   143: putfield 128	com/tencent/mm/protocal/protobuf/eiw:IEE	Ljava/lang/String;
+    //   138: ldc 117
+    //   140: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   143: putfield 120	com/tencent/mm/protocal/protobuf/esy:PyW	Ljava/lang/String;
     //   146: aload 8
     //   148: aload_0
-    //   149: ldc 130
-    //   151: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   154: putfield 133	com/tencent/mm/protocal/protobuf/eiw:IEF	Ljava/lang/String;
+    //   149: ldc 122
+    //   151: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   154: putfield 125	com/tencent/mm/protocal/protobuf/esy:PyX	Ljava/lang/String;
     //   157: aload 8
     //   159: aload_0
-    //   160: ldc 135
-    //   162: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   165: putfield 137	com/tencent/mm/protocal/protobuf/eiw:source	Ljava/lang/String;
+    //   160: ldc 127
+    //   162: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   165: putfield 129	com/tencent/mm/protocal/protobuf/esy:source	Ljava/lang/String;
     //   168: aload 8
     //   170: aload_0
-    //   171: ldc 139
-    //   173: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   176: putfield 142	com/tencent/mm/protocal/protobuf/eiw:eby	Ljava/lang/String;
+    //   171: ldc 131
+    //   173: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   176: putfield 134	com/tencent/mm/protocal/protobuf/esy:fVx	Ljava/lang/String;
     //   179: aload 8
     //   181: aload_0
-    //   182: ldc 144
-    //   184: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   187: putfield 147	com/tencent/mm/protocal/protobuf/eiw:rCq	Ljava/lang/String;
+    //   182: ldc 136
+    //   184: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   187: putfield 139	com/tencent/mm/protocal/protobuf/esy:vhY	Ljava/lang/String;
     //   190: aload 8
     //   192: aload_0
-    //   193: ldc 149
-    //   195: ldc2_w 150
-    //   198: invokevirtual 155	org/json/JSONObject:optLong	(Ljava/lang/String;J)J
-    //   201: putfield 159	com/tencent/mm/protocal/protobuf/eiw:Nip	J
+    //   193: ldc 141
+    //   195: ldc2_w 142
+    //   198: invokevirtual 147	org/json/JSONObject:optLong	(Ljava/lang/String;J)J
+    //   201: putfield 151	com/tencent/mm/protocal/protobuf/esy:UuV	J
     //   204: aload 8
     //   206: aload_0
-    //   207: ldc 161
-    //   209: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   212: putfield 164	com/tencent/mm/protocal/protobuf/eiw:Niq	Ljava/lang/String;
+    //   207: ldc 153
+    //   209: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   212: putfield 156	com/tencent/mm/protocal/protobuf/esy:UuW	Ljava/lang/String;
     //   215: aload 8
     //   217: aload_0
-    //   218: ldc 166
-    //   220: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   223: putfield 169	com/tencent/mm/protocal/protobuf/eiw:Nir	Ljava/lang/String;
+    //   218: ldc 158
+    //   220: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   223: putfield 161	com/tencent/mm/protocal/protobuf/esy:UuX	Ljava/lang/String;
     //   226: aload 8
     //   228: aload_0
-    //   229: ldc 171
-    //   231: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   234: putfield 174	com/tencent/mm/protocal/protobuf/eiw:IEG	Ljava/lang/String;
+    //   229: ldc 163
+    //   231: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   234: putfield 166	com/tencent/mm/protocal/protobuf/esy:PyY	Ljava/lang/String;
     //   237: aload 8
     //   239: aload_0
-    //   240: ldc 176
-    //   242: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   245: putfield 179	com/tencent/mm/protocal/protobuf/eiw:IEH	Ljava/lang/String;
+    //   240: ldc 168
+    //   242: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   245: putfield 171	com/tencent/mm/protocal/protobuf/esy:PyZ	Ljava/lang/String;
     //   248: aload 8
     //   250: aload_0
-    //   251: ldc 181
-    //   253: invokevirtual 184	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   256: putfield 187	com/tencent/mm/protocal/protobuf/eiw:Nis	I
+    //   251: ldc 173
+    //   253: invokevirtual 176	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   256: putfield 179	com/tencent/mm/protocal/protobuf/esy:UuY	I
     //   259: aload 8
     //   261: aload_0
-    //   262: ldc 189
-    //   264: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   267: putfield 192	com/tencent/mm/protocal/protobuf/eiw:MwR	Ljava/lang/String;
+    //   262: ldc 181
+    //   264: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   267: putfield 184	com/tencent/mm/protocal/protobuf/esy:TIg	Ljava/lang/String;
     //   270: aload 8
     //   272: aload_0
-    //   273: ldc 194
+    //   273: ldc 186
     //   275: aload 8
-    //   277: getfield 159	com/tencent/mm/protocal/protobuf/eiw:Nip	J
-    //   280: invokevirtual 155	org/json/JSONObject:optLong	(Ljava/lang/String;J)J
-    //   283: putfield 197	com/tencent/mm/protocal/protobuf/eiw:Niy	J
+    //   277: getfield 151	com/tencent/mm/protocal/protobuf/esy:UuV	J
+    //   280: invokevirtual 147	org/json/JSONObject:optLong	(Ljava/lang/String;J)J
+    //   283: putfield 189	com/tencent/mm/protocal/protobuf/esy:Uve	J
     //   286: aload 8
-    //   288: invokestatic 201	com/tencent/mm/sdk/platformtools/Util:currentTicks	()J
-    //   291: putfield 204	com/tencent/mm/protocal/protobuf/eiw:timestamp	J
+    //   288: invokestatic 193	com/tencent/mm/sdk/platformtools/Util:currentTicks	()J
+    //   291: putfield 196	com/tencent/mm/protocal/protobuf/esy:timestamp	J
     //   294: aload 8
     //   296: iconst_0
-    //   297: putfield 207	com/tencent/mm/protocal/protobuf/eiw:dEF	Z
+    //   297: putfield 199	com/tencent/mm/protocal/protobuf/esy:fxt	Z
     //   300: aload 8
     //   302: aload 10
-    //   304: putfield 210	com/tencent/mm/protocal/protobuf/eiw:wWb	Ljava/lang/String;
+    //   304: putfield 202	com/tencent/mm/protocal/protobuf/esy:BHW	Ljava/lang/String;
     //   307: aload 8
     //   309: lload_1
-    //   310: putfield 213	com/tencent/mm/protocal/protobuf/eiw:Niu	J
+    //   310: putfield 205	com/tencent/mm/protocal/protobuf/esy:Uva	J
     //   313: aload 8
     //   315: lload_3
-    //   316: putfield 216	com/tencent/mm/protocal/protobuf/eiw:dDw	J
+    //   316: putfield 208	com/tencent/mm/protocal/protobuf/esy:fwf	J
     //   319: aload 8
     //   321: aload 5
-    //   323: putfield 219	com/tencent/mm/protocal/protobuf/eiw:Nit	Ljava/lang/String;
+    //   323: putfield 211	com/tencent/mm/protocal/protobuf/esy:UuZ	Ljava/lang/String;
     //   326: aload 8
     //   328: aload_0
-    //   329: ldc 221
+    //   329: ldc 213
     //   331: iconst_0
-    //   332: invokevirtual 73	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   335: putfield 224	com/tencent/mm/protocal/protobuf/eiw:Nix	I
+    //   332: invokevirtual 65	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   335: putfield 216	com/tencent/mm/protocal/protobuf/esy:Uvd	I
     //   338: aload 8
     //   340: aload_0
-    //   341: ldc 226
-    //   343: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   346: putfield 229	com/tencent/mm/protocal/protobuf/eiw:BmI	Ljava/lang/String;
+    //   341: ldc 218
+    //   343: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   346: putfield 221	com/tencent/mm/protocal/protobuf/esy:fvZ	Ljava/lang/String;
     //   349: aload 8
     //   351: aload_0
-    //   352: ldc 231
+    //   352: ldc 223
     //   354: iconst_1
-    //   355: invokevirtual 73	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   358: putfield 234	com/tencent/mm/protocal/protobuf/eiw:NiJ	I
+    //   355: invokevirtual 65	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   358: putfield 226	com/tencent/mm/protocal/protobuf/esy:Uvo	I
     //   361: aload_0
-    //   362: ldc 236
-    //   364: invokevirtual 240	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   362: ldc 228
+    //   364: invokevirtual 232	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   367: astore 5
     //   369: aload 5
-    //   371: ifnull +43 -> 414
+    //   371: ifnull +42 -> 413
     //   374: aload 8
     //   376: aload 5
-    //   378: ldc 242
-    //   380: invokevirtual 245	org/json/JSONObject:optBoolean	(Ljava/lang/String;)Z
-    //   383: putfield 248	com/tencent/mm/protocal/protobuf/eiw:NiC	Z
+    //   378: ldc 234
+    //   380: invokevirtual 237	org/json/JSONObject:optBoolean	(Ljava/lang/String;)Z
+    //   383: putfield 240	com/tencent/mm/protocal/protobuf/esy:Uvi	Z
     //   386: aload 8
     //   388: aload 5
-    //   390: ldc 250
-    //   392: ldc 252
-    //   394: invokevirtual 255	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   397: putfield 258	com/tencent/mm/protocal/protobuf/eiw:NiD	Ljava/lang/String;
+    //   390: ldc 242
+    //   392: ldc 244
+    //   394: invokevirtual 247	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   397: putfield 250	com/tencent/mm/protocal/protobuf/esy:zGJ	Ljava/lang/String;
     //   400: aload 8
     //   402: aload 5
-    //   404: ldc_w 260
-    //   407: iconst_0
-    //   408: invokevirtual 73	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   411: putfield 263	com/tencent/mm/protocal/protobuf/eiw:NiH	I
-    //   414: aload_0
-    //   415: ldc_w 265
-    //   418: invokevirtual 269	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   421: astore 5
-    //   423: aload 5
-    //   425: ifnull +16 -> 441
-    //   428: aload 8
-    //   430: getfield 273	com/tencent/mm/protocal/protobuf/eiw:IDO	Ljava/util/LinkedList;
-    //   433: aload 5
-    //   435: invokevirtual 279	org/json/JSONArray:toString	()Ljava/lang/String;
-    //   438: invokestatic 285	com/tencent/mm/plugin/topstory/a/h:q	(Ljava/util/List;Ljava/lang/String;)V
-    //   441: aload_0
-    //   442: ldc_w 287
-    //   445: invokevirtual 269	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   448: astore 5
-    //   450: aload 5
-    //   452: ifnull +10 -> 462
-    //   455: aload 5
-    //   457: aload 8
-    //   459: invokestatic 290	com/tencent/mm/plugin/topstory/ui/video/n:a	(Lorg/json/JSONArray;Lcom/tencent/mm/protocal/protobuf/eiw;)V
-    //   462: aload_0
-    //   463: ldc_w 292
-    //   466: iconst_0
-    //   467: invokevirtual 295	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
-    //   470: ifne +15 -> 485
-    //   473: aload_0
-    //   474: ldc_w 297
-    //   477: invokevirtual 240	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   480: aload 8
-    //   482: invokestatic 299	com/tencent/mm/plugin/topstory/ui/video/n:a	(Lorg/json/JSONObject;Lcom/tencent/mm/protocal/protobuf/eiw;)V
-    //   485: aload_0
-    //   486: ldc_w 301
-    //   489: invokevirtual 269	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   492: astore 5
-    //   494: aload 5
-    //   496: ifnull +313 -> 809
-    //   499: aload 5
-    //   501: iconst_0
-    //   502: invokevirtual 304	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
-    //   505: astore 5
-    //   507: aload 8
-    //   509: new 306	com/tencent/mm/protocal/protobuf/eip
-    //   512: dup
-    //   513: invokespecial 307	com/tencent/mm/protocal/protobuf/eip:<init>	()V
-    //   516: putfield 311	com/tencent/mm/protocal/protobuf/eiw:NiI	Lcom/tencent/mm/protocal/protobuf/eip;
-    //   519: aload 8
-    //   521: getfield 311	com/tencent/mm/protocal/protobuf/eiw:NiI	Lcom/tencent/mm/protocal/protobuf/eip;
-    //   524: aload 5
-    //   526: ldc_w 313
-    //   529: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   532: putfield 316	com/tencent/mm/protocal/protobuf/eip:NhM	Ljava/lang/String;
-    //   535: aload 8
-    //   537: getfield 311	com/tencent/mm/protocal/protobuf/eiw:NiI	Lcom/tencent/mm/protocal/protobuf/eip;
-    //   540: aload 5
-    //   542: ldc_w 318
-    //   545: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   548: putfield 320	com/tencent/mm/protocal/protobuf/eip:id	Ljava/lang/String;
-    //   551: aload 5
-    //   553: ldc_w 322
-    //   556: invokevirtual 269	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   559: iconst_0
-    //   560: invokevirtual 304	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
-    //   563: astore 5
-    //   565: aload 8
-    //   567: getfield 311	com/tencent/mm/protocal/protobuf/eiw:NiI	Lcom/tencent/mm/protocal/protobuf/eip;
-    //   570: aload 5
-    //   572: ldc_w 324
-    //   575: invokevirtual 184	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   578: putfield 327	com/tencent/mm/protocal/protobuf/eip:LHa	I
-    //   581: aload 8
-    //   583: getfield 311	com/tencent/mm/protocal/protobuf/eiw:NiI	Lcom/tencent/mm/protocal/protobuf/eip;
-    //   586: aload 5
-    //   588: ldc_w 329
-    //   591: invokevirtual 184	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   594: putfield 332	com/tencent/mm/protocal/protobuf/eip:iqg	I
-    //   597: aload 8
-    //   599: getfield 311	com/tencent/mm/protocal/protobuf/eiw:NiI	Lcom/tencent/mm/protocal/protobuf/eip;
-    //   602: aload 5
-    //   604: ldc_w 334
-    //   607: invokevirtual 184	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   610: putfield 337	com/tencent/mm/protocal/protobuf/eip:NhL	I
-    //   613: aload 8
-    //   615: getfield 311	com/tencent/mm/protocal/protobuf/eiw:NiI	Lcom/tencent/mm/protocal/protobuf/eip;
-    //   618: aload 5
-    //   620: ldc_w 339
-    //   623: invokevirtual 184	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   626: putfield 341	com/tencent/mm/protocal/protobuf/eip:type	I
-    //   629: aload 8
-    //   631: getfield 311	com/tencent/mm/protocal/protobuf/eiw:NiI	Lcom/tencent/mm/protocal/protobuf/eip;
-    //   634: aload 5
-    //   636: ldc_w 318
-    //   639: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   642: putfield 344	com/tencent/mm/protocal/protobuf/eip:lYE	Ljava/lang/String;
-    //   645: new 61	org/json/JSONObject
-    //   648: dup
-    //   649: aload 5
-    //   651: ldc_w 346
-    //   654: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   657: invokespecial 349	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   660: astore 5
-    //   662: aload 8
-    //   664: getfield 311	com/tencent/mm/protocal/protobuf/eiw:NiI	Lcom/tencent/mm/protocal/protobuf/eip;
-    //   667: new 351	com/tencent/mm/protocal/protobuf/eio
-    //   670: dup
-    //   671: invokespecial 352	com/tencent/mm/protocal/protobuf/eio:<init>	()V
-    //   674: putfield 356	com/tencent/mm/protocal/protobuf/eip:NhN	Lcom/tencent/mm/protocal/protobuf/eio;
-    //   677: aload 8
-    //   679: getfield 311	com/tencent/mm/protocal/protobuf/eiw:NiI	Lcom/tencent/mm/protocal/protobuf/eip;
-    //   682: getfield 356	com/tencent/mm/protocal/protobuf/eip:NhN	Lcom/tencent/mm/protocal/protobuf/eio;
-    //   685: aload 5
-    //   687: ldc 106
-    //   689: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   692: putfield 357	com/tencent/mm/protocal/protobuf/eio:title	Ljava/lang/String;
-    //   695: aload 8
-    //   697: getfield 311	com/tencent/mm/protocal/protobuf/eiw:NiI	Lcom/tencent/mm/protocal/protobuf/eip;
-    //   700: getfield 356	com/tencent/mm/protocal/protobuf/eip:NhN	Lcom/tencent/mm/protocal/protobuf/eio;
-    //   703: aload 5
-    //   705: ldc_w 359
-    //   708: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   711: putfield 361	com/tencent/mm/protocal/protobuf/eio:desc	Ljava/lang/String;
-    //   714: aload 8
-    //   716: getfield 311	com/tencent/mm/protocal/protobuf/eiw:NiI	Lcom/tencent/mm/protocal/protobuf/eip;
-    //   719: getfield 356	com/tencent/mm/protocal/protobuf/eip:NhN	Lcom/tencent/mm/protocal/protobuf/eio;
-    //   722: aload 5
-    //   724: ldc_w 363
-    //   727: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   730: putfield 366	com/tencent/mm/protocal/protobuf/eio:ecK	Ljava/lang/String;
-    //   733: aload 8
-    //   735: getfield 311	com/tencent/mm/protocal/protobuf/eiw:NiI	Lcom/tencent/mm/protocal/protobuf/eip;
-    //   738: getfield 356	com/tencent/mm/protocal/protobuf/eip:NhN	Lcom/tencent/mm/protocal/protobuf/eio;
-    //   741: aload 5
-    //   743: ldc_w 368
-    //   746: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   749: putfield 371	com/tencent/mm/protocal/protobuf/eio:NhJ	Ljava/lang/String;
-    //   752: aload 8
-    //   754: getfield 311	com/tencent/mm/protocal/protobuf/eiw:NiI	Lcom/tencent/mm/protocal/protobuf/eip;
-    //   757: getfield 356	com/tencent/mm/protocal/protobuf/eip:NhN	Lcom/tencent/mm/protocal/protobuf/eio;
-    //   760: aload 5
-    //   762: ldc_w 373
-    //   765: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   768: putfield 376	com/tencent/mm/protocal/protobuf/eio:NhK	Ljava/lang/String;
-    //   771: aload 8
-    //   773: getfield 311	com/tencent/mm/protocal/protobuf/eiw:NiI	Lcom/tencent/mm/protocal/protobuf/eip;
-    //   776: getfield 356	com/tencent/mm/protocal/protobuf/eip:NhN	Lcom/tencent/mm/protocal/protobuf/eio;
-    //   779: aload 5
-    //   781: ldc_w 378
-    //   784: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   787: putfield 380	com/tencent/mm/protocal/protobuf/eio:appId	Ljava/lang/String;
-    //   790: aload 8
-    //   792: getfield 311	com/tencent/mm/protocal/protobuf/eiw:NiI	Lcom/tencent/mm/protocal/protobuf/eip;
-    //   795: getfield 356	com/tencent/mm/protocal/protobuf/eip:NhN	Lcom/tencent/mm/protocal/protobuf/eio;
-    //   798: aload 5
-    //   800: ldc_w 382
-    //   803: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   806: putfield 385	com/tencent/mm/protocal/protobuf/eio:uNR	Ljava/lang/String;
-    //   809: aload_0
-    //   810: ldc_w 387
-    //   813: invokevirtual 240	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   816: astore 5
-    //   818: aload 5
-    //   820: ifnull +101 -> 921
-    //   823: aload 8
-    //   825: new 389	com/tencent/mm/protocal/protobuf/eir
-    //   828: dup
-    //   829: invokespecial 390	com/tencent/mm/protocal/protobuf/eir:<init>	()V
-    //   832: putfield 394	com/tencent/mm/protocal/protobuf/eiw:Niz	Lcom/tencent/mm/protocal/protobuf/eir;
-    //   835: aload 8
-    //   837: getfield 394	com/tencent/mm/protocal/protobuf/eiw:Niz	Lcom/tencent/mm/protocal/protobuf/eir;
-    //   840: aload 5
-    //   842: ldc_w 396
-    //   845: iconst_2
-    //   846: invokevirtual 73	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   849: putfield 399	com/tencent/mm/protocal/protobuf/eir:Kmn	I
-    //   852: aload 8
-    //   854: getfield 394	com/tencent/mm/protocal/protobuf/eiw:Niz	Lcom/tencent/mm/protocal/protobuf/eir;
-    //   857: aload 5
-    //   859: ldc_w 401
-    //   862: ldc 252
-    //   864: invokevirtual 255	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   867: putfield 404	com/tencent/mm/protocal/protobuf/eir:NhS	Ljava/lang/String;
-    //   870: aload 8
-    //   872: getfield 394	com/tencent/mm/protocal/protobuf/eiw:Niz	Lcom/tencent/mm/protocal/protobuf/eir;
-    //   875: aload 5
-    //   877: ldc_w 406
-    //   880: iconst_1
-    //   881: invokevirtual 73	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   884: putfield 409	com/tencent/mm/protocal/protobuf/eir:NhR	I
-    //   887: aload 8
-    //   889: getfield 394	com/tencent/mm/protocal/protobuf/eiw:Niz	Lcom/tencent/mm/protocal/protobuf/eir;
-    //   892: aload 5
-    //   894: ldc_w 411
-    //   897: iconst_0
-    //   898: invokevirtual 73	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   901: putfield 414	com/tencent/mm/protocal/protobuf/eir:NhT	I
-    //   904: aload 8
-    //   906: getfield 394	com/tencent/mm/protocal/protobuf/eiw:Niz	Lcom/tencent/mm/protocal/protobuf/eir;
-    //   909: aload 5
-    //   911: ldc_w 416
-    //   914: iconst_0
-    //   915: invokevirtual 73	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   918: putfield 419	com/tencent/mm/protocal/protobuf/eir:NhU	I
-    //   921: aload_0
-    //   922: ldc_w 421
-    //   925: invokevirtual 240	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   928: astore_0
-    //   929: aload_0
-    //   930: ifnull +350 -> 1280
-    //   933: aload 8
-    //   935: new 81	com/tencent/mm/protocal/protobuf/eiw
-    //   938: dup
-    //   939: invokespecial 82	com/tencent/mm/protocal/protobuf/eiw:<init>	()V
-    //   942: putfield 425	com/tencent/mm/protocal/protobuf/eiw:NiG	Lcom/tencent/mm/protocal/protobuf/eiw;
-    //   945: aload 8
-    //   947: getfield 425	com/tencent/mm/protocal/protobuf/eiw:NiG	Lcom/tencent/mm/protocal/protobuf/eiw;
-    //   950: aload_0
-    //   951: ldc 67
-    //   953: ldc 252
-    //   955: invokevirtual 255	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   958: putfield 210	com/tencent/mm/protocal/protobuf/eiw:wWb	Ljava/lang/String;
-    //   961: aload 8
-    //   963: getfield 425	com/tencent/mm/protocal/protobuf/eiw:NiG	Lcom/tencent/mm/protocal/protobuf/eiw;
-    //   966: aload_0
-    //   967: ldc 106
-    //   969: ldc 252
-    //   971: invokevirtual 255	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   974: putfield 108	com/tencent/mm/protocal/protobuf/eiw:title	Ljava/lang/String;
-    //   977: aload 8
-    //   979: getfield 425	com/tencent/mm/protocal/protobuf/eiw:NiG	Lcom/tencent/mm/protocal/protobuf/eiw;
-    //   982: aload_0
-    //   983: ldc 69
-    //   985: iconst_0
-    //   986: invokevirtual 73	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   989: putfield 104	com/tencent/mm/protocal/protobuf/eiw:Eso	I
-    //   992: aload 8
-    //   994: getfield 425	com/tencent/mm/protocal/protobuf/eiw:NiG	Lcom/tencent/mm/protocal/protobuf/eiw;
-    //   997: aload_0
-    //   998: ldc 181
-    //   1000: iconst_0
-    //   1001: invokevirtual 73	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   1004: putfield 187	com/tencent/mm/protocal/protobuf/eiw:Nis	I
-    //   1007: aload 8
-    //   1009: getfield 425	com/tencent/mm/protocal/protobuf/eiw:NiG	Lcom/tencent/mm/protocal/protobuf/eiw;
-    //   1012: aload_0
-    //   1013: ldc 59
-    //   1015: ldc 252
-    //   1017: invokevirtual 255	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   1020: putfield 86	com/tencent/mm/protocal/protobuf/eiw:psI	Ljava/lang/String;
-    //   1023: aload_0
-    //   1024: ldc_w 287
-    //   1027: invokevirtual 269	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   1030: astore 5
-    //   1032: aload 5
-    //   1034: ifnull +13 -> 1047
-    //   1037: aload 5
-    //   1039: aload 8
-    //   1041: getfield 425	com/tencent/mm/protocal/protobuf/eiw:NiG	Lcom/tencent/mm/protocal/protobuf/eiw;
-    //   1044: invokestatic 290	com/tencent/mm/plugin/topstory/ui/video/n:a	(Lorg/json/JSONArray;Lcom/tencent/mm/protocal/protobuf/eiw;)V
-    //   1047: aload_0
-    //   1048: ldc_w 297
-    //   1051: invokevirtual 240	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   1054: astore 5
-    //   1056: aload 5
-    //   1058: ifnull +13 -> 1071
-    //   1061: aload 5
-    //   1063: aload 8
-    //   1065: getfield 425	com/tencent/mm/protocal/protobuf/eiw:NiG	Lcom/tencent/mm/protocal/protobuf/eiw;
-    //   1068: invokestatic 299	com/tencent/mm/plugin/topstory/ui/video/n:a	(Lorg/json/JSONObject;Lcom/tencent/mm/protocal/protobuf/eiw;)V
-    //   1071: aload_0
-    //   1072: ldc_w 265
-    //   1075: invokevirtual 269	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   1078: astore 5
-    //   1080: aload 5
-    //   1082: ifnull +19 -> 1101
-    //   1085: aload 8
-    //   1087: getfield 425	com/tencent/mm/protocal/protobuf/eiw:NiG	Lcom/tencent/mm/protocal/protobuf/eiw;
-    //   1090: getfield 273	com/tencent/mm/protocal/protobuf/eiw:IDO	Ljava/util/LinkedList;
-    //   1093: aload 5
-    //   1095: invokevirtual 279	org/json/JSONArray:toString	()Ljava/lang/String;
-    //   1098: invokestatic 285	com/tencent/mm/plugin/topstory/a/h:q	(Ljava/util/List;Ljava/lang/String;)V
-    //   1101: aload_0
-    //   1102: aload 8
-    //   1104: getfield 425	com/tencent/mm/protocal/protobuf/eiw:NiG	Lcom/tencent/mm/protocal/protobuf/eiw;
-    //   1107: invokestatic 90	com/tencent/mm/plugin/topstory/ui/video/n:b	(Lorg/json/JSONObject;Lcom/tencent/mm/protocal/protobuf/eiw;)V
-    //   1110: iload 6
-    //   1112: aload 8
-    //   1114: getfield 425	com/tencent/mm/protocal/protobuf/eiw:NiG	Lcom/tencent/mm/protocal/protobuf/eiw;
-    //   1117: aload_0
-    //   1118: invokestatic 93	com/tencent/mm/plugin/topstory/ui/video/n:a	(ZLcom/tencent/mm/protocal/protobuf/eiw;Lorg/json/JSONObject;)V
-    //   1121: aload 8
-    //   1123: getfield 425	com/tencent/mm/protocal/protobuf/eiw:NiG	Lcom/tencent/mm/protocal/protobuf/eiw;
-    //   1126: aload 8
-    //   1128: getfield 137	com/tencent/mm/protocal/protobuf/eiw:source	Ljava/lang/String;
-    //   1131: putfield 137	com/tencent/mm/protocal/protobuf/eiw:source	Ljava/lang/String;
-    //   1134: aload 8
-    //   1136: getfield 425	com/tencent/mm/protocal/protobuf/eiw:NiG	Lcom/tencent/mm/protocal/protobuf/eiw;
-    //   1139: aload 8
-    //   1141: getfield 142	com/tencent/mm/protocal/protobuf/eiw:eby	Ljava/lang/String;
-    //   1144: putfield 142	com/tencent/mm/protocal/protobuf/eiw:eby	Ljava/lang/String;
-    //   1147: aload 8
-    //   1149: getfield 425	com/tencent/mm/protocal/protobuf/eiw:NiG	Lcom/tencent/mm/protocal/protobuf/eiw;
-    //   1152: aload 8
-    //   1154: getfield 192	com/tencent/mm/protocal/protobuf/eiw:MwR	Ljava/lang/String;
-    //   1157: putfield 192	com/tencent/mm/protocal/protobuf/eiw:MwR	Ljava/lang/String;
-    //   1160: aload 8
-    //   1162: getfield 425	com/tencent/mm/protocal/protobuf/eiw:NiG	Lcom/tencent/mm/protocal/protobuf/eiw;
-    //   1165: aload 8
-    //   1167: getfield 197	com/tencent/mm/protocal/protobuf/eiw:Niy	J
-    //   1170: putfield 197	com/tencent/mm/protocal/protobuf/eiw:Niy	J
-    //   1173: aload 8
-    //   1175: getfield 425	com/tencent/mm/protocal/protobuf/eiw:NiG	Lcom/tencent/mm/protocal/protobuf/eiw;
-    //   1178: aload 8
-    //   1180: getfield 113	com/tencent/mm/protocal/protobuf/eiw:msN	Ljava/lang/String;
-    //   1183: putfield 113	com/tencent/mm/protocal/protobuf/eiw:msN	Ljava/lang/String;
-    //   1186: aload 8
-    //   1188: getfield 425	com/tencent/mm/protocal/protobuf/eiw:NiG	Lcom/tencent/mm/protocal/protobuf/eiw;
-    //   1191: aload 8
-    //   1193: getfield 118	com/tencent/mm/protocal/protobuf/eiw:xDQ	Ljava/lang/String;
-    //   1196: putfield 118	com/tencent/mm/protocal/protobuf/eiw:xDQ	Ljava/lang/String;
-    //   1199: aload 8
-    //   1201: getfield 425	com/tencent/mm/protocal/protobuf/eiw:NiG	Lcom/tencent/mm/protocal/protobuf/eiw;
-    //   1204: aload 8
-    //   1206: getfield 164	com/tencent/mm/protocal/protobuf/eiw:Niq	Ljava/lang/String;
-    //   1209: putfield 164	com/tencent/mm/protocal/protobuf/eiw:Niq	Ljava/lang/String;
-    //   1212: aload 8
-    //   1214: getfield 425	com/tencent/mm/protocal/protobuf/eiw:NiG	Lcom/tencent/mm/protocal/protobuf/eiw;
-    //   1217: aload 8
-    //   1219: getfield 123	com/tencent/mm/protocal/protobuf/eiw:IED	Ljava/lang/String;
-    //   1222: putfield 123	com/tencent/mm/protocal/protobuf/eiw:IED	Ljava/lang/String;
-    //   1225: aload 8
-    //   1227: getfield 425	com/tencent/mm/protocal/protobuf/eiw:NiG	Lcom/tencent/mm/protocal/protobuf/eiw;
-    //   1230: aload 8
-    //   1232: getfield 128	com/tencent/mm/protocal/protobuf/eiw:IEE	Ljava/lang/String;
-    //   1235: putfield 128	com/tencent/mm/protocal/protobuf/eiw:IEE	Ljava/lang/String;
-    //   1238: aload 8
-    //   1240: getfield 425	com/tencent/mm/protocal/protobuf/eiw:NiG	Lcom/tencent/mm/protocal/protobuf/eiw;
-    //   1243: aload 8
-    //   1245: getfield 133	com/tencent/mm/protocal/protobuf/eiw:IEF	Ljava/lang/String;
-    //   1248: putfield 133	com/tencent/mm/protocal/protobuf/eiw:IEF	Ljava/lang/String;
-    //   1251: aload 8
-    //   1253: getfield 425	com/tencent/mm/protocal/protobuf/eiw:NiG	Lcom/tencent/mm/protocal/protobuf/eiw;
-    //   1256: aload 8
-    //   1258: getfield 164	com/tencent/mm/protocal/protobuf/eiw:Niq	Ljava/lang/String;
-    //   1261: putfield 164	com/tencent/mm/protocal/protobuf/eiw:Niq	Ljava/lang/String;
-    //   1264: aload 8
-    //   1266: getfield 425	com/tencent/mm/protocal/protobuf/eiw:NiG	Lcom/tencent/mm/protocal/protobuf/eiw;
-    //   1269: aload_0
-    //   1270: ldc 144
-    //   1272: ldc 252
-    //   1274: invokevirtual 255	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   1277: putfield 147	com/tencent/mm/protocal/protobuf/eiw:rCq	Ljava/lang/String;
-    //   1280: aload 8
-    //   1282: getfield 96	com/tencent/mm/protocal/protobuf/eiw:videoUrl	Ljava/lang/String;
-    //   1285: invokestatic 79	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
-    //   1288: ifne +51 -> 1339
-    //   1291: ldc_w 427
-    //   1294: ldc_w 429
-    //   1297: iconst_3
-    //   1298: anewarray 4	java/lang/Object
-    //   1301: dup
-    //   1302: iconst_0
-    //   1303: aload 8
-    //   1305: getfield 86	com/tencent/mm/protocal/protobuf/eiw:psI	Ljava/lang/String;
-    //   1308: aastore
-    //   1309: dup
-    //   1310: iconst_1
-    //   1311: aload 8
-    //   1313: getfield 96	com/tencent/mm/protocal/protobuf/eiw:videoUrl	Ljava/lang/String;
-    //   1316: aastore
-    //   1317: dup
-    //   1318: iconst_2
-    //   1319: aload 8
-    //   1321: getfield 432	com/tencent/mm/protocal/protobuf/eiw:Niv	J
-    //   1324: invokestatic 438	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1327: aastore
-    //   1328: invokestatic 443	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1331: ldc 57
-    //   1333: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1336: aload 8
-    //   1338: areturn
-    //   1339: ldc 57
-    //   1341: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1344: aconst_null
-    //   1345: areturn
-    //   1346: ldc 57
-    //   1348: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1351: aconst_null
-    //   1352: areturn
-    //   1353: astore 5
-    //   1355: goto -546 -> 809
-    //   1358: astore 5
-    //   1360: goto -551 -> 809
+    //   404: ldc 252
+    //   406: iconst_0
+    //   407: invokevirtual 65	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   410: putfield 255	com/tencent/mm/protocal/protobuf/esy:Uvm	I
+    //   413: aload_0
+    //   414: ldc_w 257
+    //   417: invokevirtual 261	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   420: astore 5
+    //   422: aload 5
+    //   424: ifnull +16 -> 440
+    //   427: aload 8
+    //   429: getfield 265	com/tencent/mm/protocal/protobuf/esy:Pye	Ljava/util/LinkedList;
+    //   432: aload 5
+    //   434: invokevirtual 271	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   437: invokestatic 277	com/tencent/mm/plugin/topstory/a/h:s	(Ljava/util/List;Ljava/lang/String;)V
+    //   440: aload_0
+    //   441: ldc_w 279
+    //   444: invokevirtual 261	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   447: astore 5
+    //   449: aload 5
+    //   451: ifnull +10 -> 461
+    //   454: aload 5
+    //   456: aload 8
+    //   458: invokestatic 282	com/tencent/mm/plugin/topstory/ui/video/n:a	(Lorg/json/JSONArray;Lcom/tencent/mm/protocal/protobuf/esy;)V
+    //   461: aload_0
+    //   462: ldc_w 284
+    //   465: iconst_0
+    //   466: invokevirtual 287	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
+    //   469: ifne +15 -> 484
+    //   472: aload_0
+    //   473: ldc_w 289
+    //   476: invokevirtual 232	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   479: aload 8
+    //   481: invokestatic 291	com/tencent/mm/plugin/topstory/ui/video/n:a	(Lorg/json/JSONObject;Lcom/tencent/mm/protocal/protobuf/esy;)V
+    //   484: aload_0
+    //   485: ldc_w 293
+    //   488: invokevirtual 261	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   491: astore 5
+    //   493: aload 5
+    //   495: ifnull +313 -> 808
+    //   498: aload 5
+    //   500: iconst_0
+    //   501: invokevirtual 296	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
+    //   504: astore 5
+    //   506: aload 8
+    //   508: new 298	com/tencent/mm/protocal/protobuf/esr
+    //   511: dup
+    //   512: invokespecial 299	com/tencent/mm/protocal/protobuf/esr:<init>	()V
+    //   515: putfield 303	com/tencent/mm/protocal/protobuf/esy:Uvn	Lcom/tencent/mm/protocal/protobuf/esr;
+    //   518: aload 8
+    //   520: getfield 303	com/tencent/mm/protocal/protobuf/esy:Uvn	Lcom/tencent/mm/protocal/protobuf/esr;
+    //   523: aload 5
+    //   525: ldc_w 305
+    //   528: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   531: putfield 308	com/tencent/mm/protocal/protobuf/esr:Uus	Ljava/lang/String;
+    //   534: aload 8
+    //   536: getfield 303	com/tencent/mm/protocal/protobuf/esy:Uvn	Lcom/tencent/mm/protocal/protobuf/esr;
+    //   539: aload 5
+    //   541: ldc_w 310
+    //   544: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   547: putfield 312	com/tencent/mm/protocal/protobuf/esr:id	Ljava/lang/String;
+    //   550: aload 5
+    //   552: ldc_w 314
+    //   555: invokevirtual 261	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   558: iconst_0
+    //   559: invokevirtual 296	org/json/JSONArray:optJSONObject	(I)Lorg/json/JSONObject;
+    //   562: astore 5
+    //   564: aload 8
+    //   566: getfield 303	com/tencent/mm/protocal/protobuf/esy:Uvn	Lcom/tencent/mm/protocal/protobuf/esr;
+    //   569: aload 5
+    //   571: ldc_w 316
+    //   574: invokevirtual 176	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   577: putfield 319	com/tencent/mm/protocal/protobuf/esr:MFF	I
+    //   580: aload 8
+    //   582: getfield 303	com/tencent/mm/protocal/protobuf/esy:Uvn	Lcom/tencent/mm/protocal/protobuf/esr;
+    //   585: aload 5
+    //   587: ldc_w 321
+    //   590: invokevirtual 176	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   593: putfield 323	com/tencent/mm/protocal/protobuf/esr:endTime	I
+    //   596: aload 8
+    //   598: getfield 303	com/tencent/mm/protocal/protobuf/esy:Uvn	Lcom/tencent/mm/protocal/protobuf/esr;
+    //   601: aload 5
+    //   603: ldc_w 325
+    //   606: invokevirtual 176	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   609: putfield 328	com/tencent/mm/protocal/protobuf/esr:Uur	I
+    //   612: aload 8
+    //   614: getfield 303	com/tencent/mm/protocal/protobuf/esy:Uvn	Lcom/tencent/mm/protocal/protobuf/esr;
+    //   617: aload 5
+    //   619: ldc_w 330
+    //   622: invokevirtual 176	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   625: putfield 332	com/tencent/mm/protocal/protobuf/esr:type	I
+    //   628: aload 8
+    //   630: getfield 303	com/tencent/mm/protocal/protobuf/esy:Uvn	Lcom/tencent/mm/protocal/protobuf/esr;
+    //   633: aload 5
+    //   635: ldc_w 310
+    //   638: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   641: putfield 335	com/tencent/mm/protocal/protobuf/esr:oWx	Ljava/lang/String;
+    //   644: new 53	org/json/JSONObject
+    //   647: dup
+    //   648: aload 5
+    //   650: ldc_w 337
+    //   653: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   656: invokespecial 340	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   659: astore 5
+    //   661: aload 8
+    //   663: getfield 303	com/tencent/mm/protocal/protobuf/esy:Uvn	Lcom/tencent/mm/protocal/protobuf/esr;
+    //   666: new 342	com/tencent/mm/protocal/protobuf/esq
+    //   669: dup
+    //   670: invokespecial 343	com/tencent/mm/protocal/protobuf/esq:<init>	()V
+    //   673: putfield 347	com/tencent/mm/protocal/protobuf/esr:Uut	Lcom/tencent/mm/protocal/protobuf/esq;
+    //   676: aload 8
+    //   678: getfield 303	com/tencent/mm/protocal/protobuf/esy:Uvn	Lcom/tencent/mm/protocal/protobuf/esr;
+    //   681: getfield 347	com/tencent/mm/protocal/protobuf/esr:Uut	Lcom/tencent/mm/protocal/protobuf/esq;
+    //   684: aload 5
+    //   686: ldc 98
+    //   688: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   691: putfield 348	com/tencent/mm/protocal/protobuf/esq:title	Ljava/lang/String;
+    //   694: aload 8
+    //   696: getfield 303	com/tencent/mm/protocal/protobuf/esy:Uvn	Lcom/tencent/mm/protocal/protobuf/esr;
+    //   699: getfield 347	com/tencent/mm/protocal/protobuf/esr:Uut	Lcom/tencent/mm/protocal/protobuf/esq;
+    //   702: aload 5
+    //   704: ldc_w 350
+    //   707: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   710: putfield 352	com/tencent/mm/protocal/protobuf/esq:desc	Ljava/lang/String;
+    //   713: aload 8
+    //   715: getfield 303	com/tencent/mm/protocal/protobuf/esy:Uvn	Lcom/tencent/mm/protocal/protobuf/esr;
+    //   718: getfield 347	com/tencent/mm/protocal/protobuf/esr:Uut	Lcom/tencent/mm/protocal/protobuf/esq;
+    //   721: aload 5
+    //   723: ldc_w 354
+    //   726: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   729: putfield 357	com/tencent/mm/protocal/protobuf/esq:fWP	Ljava/lang/String;
+    //   732: aload 8
+    //   734: getfield 303	com/tencent/mm/protocal/protobuf/esy:Uvn	Lcom/tencent/mm/protocal/protobuf/esr;
+    //   737: getfield 347	com/tencent/mm/protocal/protobuf/esr:Uut	Lcom/tencent/mm/protocal/protobuf/esq;
+    //   740: aload 5
+    //   742: ldc_w 359
+    //   745: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   748: putfield 362	com/tencent/mm/protocal/protobuf/esq:Uup	Ljava/lang/String;
+    //   751: aload 8
+    //   753: getfield 303	com/tencent/mm/protocal/protobuf/esy:Uvn	Lcom/tencent/mm/protocal/protobuf/esr;
+    //   756: getfield 347	com/tencent/mm/protocal/protobuf/esr:Uut	Lcom/tencent/mm/protocal/protobuf/esq;
+    //   759: aload 5
+    //   761: ldc_w 364
+    //   764: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   767: putfield 367	com/tencent/mm/protocal/protobuf/esq:Uuq	Ljava/lang/String;
+    //   770: aload 8
+    //   772: getfield 303	com/tencent/mm/protocal/protobuf/esy:Uvn	Lcom/tencent/mm/protocal/protobuf/esr;
+    //   775: getfield 347	com/tencent/mm/protocal/protobuf/esr:Uut	Lcom/tencent/mm/protocal/protobuf/esq;
+    //   778: aload 5
+    //   780: ldc_w 369
+    //   783: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   786: putfield 371	com/tencent/mm/protocal/protobuf/esq:appId	Ljava/lang/String;
+    //   789: aload 8
+    //   791: getfield 303	com/tencent/mm/protocal/protobuf/esy:Uvn	Lcom/tencent/mm/protocal/protobuf/esr;
+    //   794: getfield 347	com/tencent/mm/protocal/protobuf/esr:Uut	Lcom/tencent/mm/protocal/protobuf/esq;
+    //   797: aload 5
+    //   799: ldc_w 373
+    //   802: invokevirtual 57	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   805: putfield 375	com/tencent/mm/protocal/protobuf/esq:avatar	Ljava/lang/String;
+    //   808: aload_0
+    //   809: ldc_w 377
+    //   812: invokevirtual 232	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   815: astore 5
+    //   817: aload 5
+    //   819: ifnull +101 -> 920
+    //   822: aload 8
+    //   824: new 379	com/tencent/mm/protocal/protobuf/est
+    //   827: dup
+    //   828: invokespecial 380	com/tencent/mm/protocal/protobuf/est:<init>	()V
+    //   831: putfield 384	com/tencent/mm/protocal/protobuf/esy:Uvf	Lcom/tencent/mm/protocal/protobuf/est;
+    //   834: aload 8
+    //   836: getfield 384	com/tencent/mm/protocal/protobuf/esy:Uvf	Lcom/tencent/mm/protocal/protobuf/est;
+    //   839: aload 5
+    //   841: ldc_w 386
+    //   844: iconst_2
+    //   845: invokevirtual 65	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   848: putfield 389	com/tencent/mm/protocal/protobuf/est:Rna	I
+    //   851: aload 8
+    //   853: getfield 384	com/tencent/mm/protocal/protobuf/esy:Uvf	Lcom/tencent/mm/protocal/protobuf/est;
+    //   856: aload 5
+    //   858: ldc_w 391
+    //   861: ldc 244
+    //   863: invokevirtual 247	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   866: putfield 394	com/tencent/mm/protocal/protobuf/est:Uuy	Ljava/lang/String;
+    //   869: aload 8
+    //   871: getfield 384	com/tencent/mm/protocal/protobuf/esy:Uvf	Lcom/tencent/mm/protocal/protobuf/est;
+    //   874: aload 5
+    //   876: ldc_w 396
+    //   879: iconst_1
+    //   880: invokevirtual 65	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   883: putfield 399	com/tencent/mm/protocal/protobuf/est:Uux	I
+    //   886: aload 8
+    //   888: getfield 384	com/tencent/mm/protocal/protobuf/esy:Uvf	Lcom/tencent/mm/protocal/protobuf/est;
+    //   891: aload 5
+    //   893: ldc_w 401
+    //   896: iconst_0
+    //   897: invokevirtual 65	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   900: putfield 404	com/tencent/mm/protocal/protobuf/est:Uuz	I
+    //   903: aload 8
+    //   905: getfield 384	com/tencent/mm/protocal/protobuf/esy:Uvf	Lcom/tencent/mm/protocal/protobuf/est;
+    //   908: aload 5
+    //   910: ldc_w 406
+    //   913: iconst_0
+    //   914: invokevirtual 65	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   917: putfield 409	com/tencent/mm/protocal/protobuf/est:UuA	I
+    //   920: aload_0
+    //   921: ldc_w 411
+    //   924: invokevirtual 232	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   927: astore_0
+    //   928: aload_0
+    //   929: ifnull +350 -> 1279
+    //   932: aload 8
+    //   934: new 73	com/tencent/mm/protocal/protobuf/esy
+    //   937: dup
+    //   938: invokespecial 74	com/tencent/mm/protocal/protobuf/esy:<init>	()V
+    //   941: putfield 415	com/tencent/mm/protocal/protobuf/esy:Uvl	Lcom/tencent/mm/protocal/protobuf/esy;
+    //   944: aload 8
+    //   946: getfield 415	com/tencent/mm/protocal/protobuf/esy:Uvl	Lcom/tencent/mm/protocal/protobuf/esy;
+    //   949: aload_0
+    //   950: ldc 59
+    //   952: ldc 244
+    //   954: invokevirtual 247	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   957: putfield 202	com/tencent/mm/protocal/protobuf/esy:BHW	Ljava/lang/String;
+    //   960: aload 8
+    //   962: getfield 415	com/tencent/mm/protocal/protobuf/esy:Uvl	Lcom/tencent/mm/protocal/protobuf/esy;
+    //   965: aload_0
+    //   966: ldc 98
+    //   968: ldc 244
+    //   970: invokevirtual 247	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   973: putfield 100	com/tencent/mm/protocal/protobuf/esy:title	Ljava/lang/String;
+    //   976: aload 8
+    //   978: getfield 415	com/tencent/mm/protocal/protobuf/esy:Uvl	Lcom/tencent/mm/protocal/protobuf/esy;
+    //   981: aload_0
+    //   982: ldc 61
+    //   984: iconst_0
+    //   985: invokevirtual 65	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   988: putfield 96	com/tencent/mm/protocal/protobuf/esy:KFK	I
+    //   991: aload 8
+    //   993: getfield 415	com/tencent/mm/protocal/protobuf/esy:Uvl	Lcom/tencent/mm/protocal/protobuf/esy;
+    //   996: aload_0
+    //   997: ldc 173
+    //   999: iconst_0
+    //   1000: invokevirtual 65	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   1003: putfield 179	com/tencent/mm/protocal/protobuf/esy:UuY	I
+    //   1006: aload 8
+    //   1008: getfield 415	com/tencent/mm/protocal/protobuf/esy:Uvl	Lcom/tencent/mm/protocal/protobuf/esy;
+    //   1011: aload_0
+    //   1012: ldc 51
+    //   1014: ldc 244
+    //   1016: invokevirtual 247	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   1019: putfield 78	com/tencent/mm/protocal/protobuf/esy:Crh	Ljava/lang/String;
+    //   1022: aload_0
+    //   1023: ldc_w 279
+    //   1026: invokevirtual 261	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   1029: astore 5
+    //   1031: aload 5
+    //   1033: ifnull +13 -> 1046
+    //   1036: aload 5
+    //   1038: aload 8
+    //   1040: getfield 415	com/tencent/mm/protocal/protobuf/esy:Uvl	Lcom/tencent/mm/protocal/protobuf/esy;
+    //   1043: invokestatic 282	com/tencent/mm/plugin/topstory/ui/video/n:a	(Lorg/json/JSONArray;Lcom/tencent/mm/protocal/protobuf/esy;)V
+    //   1046: aload_0
+    //   1047: ldc_w 289
+    //   1050: invokevirtual 232	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   1053: astore 5
+    //   1055: aload 5
+    //   1057: ifnull +13 -> 1070
+    //   1060: aload 5
+    //   1062: aload 8
+    //   1064: getfield 415	com/tencent/mm/protocal/protobuf/esy:Uvl	Lcom/tencent/mm/protocal/protobuf/esy;
+    //   1067: invokestatic 291	com/tencent/mm/plugin/topstory/ui/video/n:a	(Lorg/json/JSONObject;Lcom/tencent/mm/protocal/protobuf/esy;)V
+    //   1070: aload_0
+    //   1071: ldc_w 257
+    //   1074: invokevirtual 261	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   1077: astore 5
+    //   1079: aload 5
+    //   1081: ifnull +19 -> 1100
+    //   1084: aload 8
+    //   1086: getfield 415	com/tencent/mm/protocal/protobuf/esy:Uvl	Lcom/tencent/mm/protocal/protobuf/esy;
+    //   1089: getfield 265	com/tencent/mm/protocal/protobuf/esy:Pye	Ljava/util/LinkedList;
+    //   1092: aload 5
+    //   1094: invokevirtual 271	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   1097: invokestatic 277	com/tencent/mm/plugin/topstory/a/h:s	(Ljava/util/List;Ljava/lang/String;)V
+    //   1100: aload_0
+    //   1101: aload 8
+    //   1103: getfield 415	com/tencent/mm/protocal/protobuf/esy:Uvl	Lcom/tencent/mm/protocal/protobuf/esy;
+    //   1106: invokestatic 82	com/tencent/mm/plugin/topstory/ui/video/n:b	(Lorg/json/JSONObject;Lcom/tencent/mm/protocal/protobuf/esy;)V
+    //   1109: iload 6
+    //   1111: aload 8
+    //   1113: getfield 415	com/tencent/mm/protocal/protobuf/esy:Uvl	Lcom/tencent/mm/protocal/protobuf/esy;
+    //   1116: aload_0
+    //   1117: invokestatic 85	com/tencent/mm/plugin/topstory/ui/video/n:a	(ZLcom/tencent/mm/protocal/protobuf/esy;Lorg/json/JSONObject;)V
+    //   1120: aload 8
+    //   1122: getfield 415	com/tencent/mm/protocal/protobuf/esy:Uvl	Lcom/tencent/mm/protocal/protobuf/esy;
+    //   1125: aload 8
+    //   1127: getfield 129	com/tencent/mm/protocal/protobuf/esy:source	Ljava/lang/String;
+    //   1130: putfield 129	com/tencent/mm/protocal/protobuf/esy:source	Ljava/lang/String;
+    //   1133: aload 8
+    //   1135: getfield 415	com/tencent/mm/protocal/protobuf/esy:Uvl	Lcom/tencent/mm/protocal/protobuf/esy;
+    //   1138: aload 8
+    //   1140: getfield 134	com/tencent/mm/protocal/protobuf/esy:fVx	Ljava/lang/String;
+    //   1143: putfield 134	com/tencent/mm/protocal/protobuf/esy:fVx	Ljava/lang/String;
+    //   1146: aload 8
+    //   1148: getfield 415	com/tencent/mm/protocal/protobuf/esy:Uvl	Lcom/tencent/mm/protocal/protobuf/esy;
+    //   1151: aload 8
+    //   1153: getfield 184	com/tencent/mm/protocal/protobuf/esy:TIg	Ljava/lang/String;
+    //   1156: putfield 184	com/tencent/mm/protocal/protobuf/esy:TIg	Ljava/lang/String;
+    //   1159: aload 8
+    //   1161: getfield 415	com/tencent/mm/protocal/protobuf/esy:Uvl	Lcom/tencent/mm/protocal/protobuf/esy;
+    //   1164: aload 8
+    //   1166: getfield 189	com/tencent/mm/protocal/protobuf/esy:Uve	J
+    //   1169: putfield 189	com/tencent/mm/protocal/protobuf/esy:Uve	J
+    //   1172: aload 8
+    //   1174: getfield 415	com/tencent/mm/protocal/protobuf/esy:Uvl	Lcom/tencent/mm/protocal/protobuf/esy;
+    //   1177: aload 8
+    //   1179: getfield 105	com/tencent/mm/protocal/protobuf/esy:pqW	Ljava/lang/String;
+    //   1182: putfield 105	com/tencent/mm/protocal/protobuf/esy:pqW	Ljava/lang/String;
+    //   1185: aload 8
+    //   1187: getfield 415	com/tencent/mm/protocal/protobuf/esy:Uvl	Lcom/tencent/mm/protocal/protobuf/esy;
+    //   1190: aload 8
+    //   1192: getfield 110	com/tencent/mm/protocal/protobuf/esy:CHR	Ljava/lang/String;
+    //   1195: putfield 110	com/tencent/mm/protocal/protobuf/esy:CHR	Ljava/lang/String;
+    //   1198: aload 8
+    //   1200: getfield 415	com/tencent/mm/protocal/protobuf/esy:Uvl	Lcom/tencent/mm/protocal/protobuf/esy;
+    //   1203: aload 8
+    //   1205: getfield 156	com/tencent/mm/protocal/protobuf/esy:UuW	Ljava/lang/String;
+    //   1208: putfield 156	com/tencent/mm/protocal/protobuf/esy:UuW	Ljava/lang/String;
+    //   1211: aload 8
+    //   1213: getfield 415	com/tencent/mm/protocal/protobuf/esy:Uvl	Lcom/tencent/mm/protocal/protobuf/esy;
+    //   1216: aload 8
+    //   1218: getfield 115	com/tencent/mm/protocal/protobuf/esy:PyV	Ljava/lang/String;
+    //   1221: putfield 115	com/tencent/mm/protocal/protobuf/esy:PyV	Ljava/lang/String;
+    //   1224: aload 8
+    //   1226: getfield 415	com/tencent/mm/protocal/protobuf/esy:Uvl	Lcom/tencent/mm/protocal/protobuf/esy;
+    //   1229: aload 8
+    //   1231: getfield 120	com/tencent/mm/protocal/protobuf/esy:PyW	Ljava/lang/String;
+    //   1234: putfield 120	com/tencent/mm/protocal/protobuf/esy:PyW	Ljava/lang/String;
+    //   1237: aload 8
+    //   1239: getfield 415	com/tencent/mm/protocal/protobuf/esy:Uvl	Lcom/tencent/mm/protocal/protobuf/esy;
+    //   1242: aload 8
+    //   1244: getfield 125	com/tencent/mm/protocal/protobuf/esy:PyX	Ljava/lang/String;
+    //   1247: putfield 125	com/tencent/mm/protocal/protobuf/esy:PyX	Ljava/lang/String;
+    //   1250: aload 8
+    //   1252: getfield 415	com/tencent/mm/protocal/protobuf/esy:Uvl	Lcom/tencent/mm/protocal/protobuf/esy;
+    //   1255: aload 8
+    //   1257: getfield 156	com/tencent/mm/protocal/protobuf/esy:UuW	Ljava/lang/String;
+    //   1260: putfield 156	com/tencent/mm/protocal/protobuf/esy:UuW	Ljava/lang/String;
+    //   1263: aload 8
+    //   1265: getfield 415	com/tencent/mm/protocal/protobuf/esy:Uvl	Lcom/tencent/mm/protocal/protobuf/esy;
+    //   1268: aload_0
+    //   1269: ldc 136
+    //   1271: ldc 244
+    //   1273: invokevirtual 247	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   1276: putfield 139	com/tencent/mm/protocal/protobuf/esy:vhY	Ljava/lang/String;
+    //   1279: aload 8
+    //   1281: getfield 88	com/tencent/mm/protocal/protobuf/esy:videoUrl	Ljava/lang/String;
+    //   1284: invokestatic 71	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   1287: ifne +51 -> 1338
+    //   1290: ldc_w 417
+    //   1293: ldc_w 419
+    //   1296: iconst_3
+    //   1297: anewarray 4	java/lang/Object
+    //   1300: dup
+    //   1301: iconst_0
+    //   1302: aload 8
+    //   1304: getfield 78	com/tencent/mm/protocal/protobuf/esy:Crh	Ljava/lang/String;
+    //   1307: aastore
+    //   1308: dup
+    //   1309: iconst_1
+    //   1310: aload 8
+    //   1312: getfield 88	com/tencent/mm/protocal/protobuf/esy:videoUrl	Ljava/lang/String;
+    //   1315: aastore
+    //   1316: dup
+    //   1317: iconst_2
+    //   1318: aload 8
+    //   1320: getfield 422	com/tencent/mm/protocal/protobuf/esy:Uvb	J
+    //   1323: invokestatic 428	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1326: aastore
+    //   1327: invokestatic 433	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1330: ldc 49
+    //   1332: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1335: aload 8
+    //   1337: areturn
+    //   1338: ldc 49
+    //   1340: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1343: aconst_null
+    //   1344: areturn
+    //   1345: ldc 49
+    //   1347: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1350: aconst_null
+    //   1351: areturn
+    //   1352: astore 5
+    //   1354: goto -546 -> 808
+    //   1357: astore 5
+    //   1359: goto -551 -> 808
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1363	0	paramJSONObject	JSONObject
-    //   0	1363	1	paramLong1	long
-    //   0	1363	3	paramLong2	long
-    //   0	1363	5	paramString	String
-    //   0	1363	6	paramBoolean	boolean
+    //   0	1362	0	paramJSONObject	JSONObject
+    //   0	1362	1	paramLong1	long
+    //   0	1362	3	paramLong2	long
+    //   0	1362	5	paramString	String
+    //   0	1362	6	paramBoolean	boolean
     //   28	59	7	i	int
-    //   45	1292	8	localeiw	eiw
+    //   45	1291	8	localesy	esy
     //   11	39	9	str1	String
     //   19	284	10	str2	String
     // Exception table:
     //   from	to	target	type
-    //   485	494	1353	java/lang/Exception
-    //   499	809	1358	java/lang/Exception
+    //   484	493	1352	java/lang/Exception
+    //   498	808	1357	java/lang/Exception
   }
   
-  private static List<eiw> a(boolean paramBoolean, JSONArray paramJSONArray)
+  private static List<esy> a(boolean paramBoolean, JSONArray paramJSONArray)
   {
     AppMethodBeat.i(126134);
     ArrayList localArrayList = new ArrayList();
@@ -761,11 +753,11 @@ public final class n
         if (j < ((JSONArray)localObject).length())
         {
           JSONObject localJSONObject = (JSONObject)((JSONArray)localObject).get(j);
-          eiw localeiw = a(localJSONObject, l1, l2, str, paramBoolean);
-          if (localeiw != null)
+          esy localesy = a(localJSONObject, l1, l2, str, paramBoolean);
+          if (localesy != null)
           {
-            Log.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "videoid: %s, videoUrl: %s, videoSize: %s", new Object[] { localeiw.psI, localeiw.videoUrl, Long.valueOf(localeiw.Niv) });
-            localArrayList.add(localeiw);
+            Log.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "videoid: %s, videoUrl: %s, videoSize: %s", new Object[] { localesy.Crh, localesy.videoUrl, Long.valueOf(localesy.Uvb) });
+            localArrayList.add(localesy);
           }
           for (;;)
           {
@@ -781,7 +773,7 @@ public final class n
     return localArrayList;
   }
   
-  private static void a(eiw parameiw, String paramString1, String paramString2)
+  private static void a(esy paramesy, String paramString1, String paramString2)
   {
     AppMethodBeat.i(126142);
     Object localObject7 = null;
@@ -801,21 +793,21 @@ public final class n
     Object localObject5 = localObject7;
     try
     {
-      j = fzz();
+      j = grA();
       localObject3 = localJSONArray;
       localObject4 = localObject8;
       localInputStream2 = localInputStream1;
       localObject1 = localObject9;
       localObject2 = str;
       localObject5 = localObject7;
-      k = ape();
+      k = avq();
       localObject3 = localJSONArray;
       localObject4 = localObject8;
       localInputStream2 = localInputStream1;
       localObject1 = localObject9;
       localObject2 = str;
       localObject5 = localObject7;
-      m = fzA();
+      m = grB();
       localObject3 = localJSONArray;
       localObject4 = localObject8;
       localInputStream2 = localInputStream1;
@@ -838,37 +830,37 @@ public final class n
       localObject1 = localObject9;
       localObject2 = str;
       localObject5 = localObject7;
-      paramString1 = com.tencent.mm.network.d.RR(paramString1);
+      paramString1 = com.tencent.mm.network.d.Zr(paramString1);
       localObject3 = paramString1;
       localObject4 = localObject8;
       localInputStream2 = localInputStream1;
       localObject1 = paramString1;
       localObject2 = str;
       localObject5 = localObject7;
-      paramString1.bjX();
+      paramString1.btG();
       localObject3 = paramString1;
       localObject4 = localObject8;
       localInputStream2 = localInputStream1;
       localObject1 = paramString1;
       localObject2 = str;
       localObject5 = localObject7;
-      paramString1.setConnectTimeout(3000);
+      paramString1.xz(3000);
       localObject3 = paramString1;
       localObject4 = localObject8;
       localInputStream2 = localInputStream1;
       localObject1 = paramString1;
       localObject2 = str;
       localObject5 = localObject7;
-      paramString1.setReadTimeout(3000);
+      paramString1.xA(3000);
       localObject3 = paramString1;
       localObject4 = localObject8;
       localInputStream2 = localInputStream1;
       localObject1 = paramString1;
       localObject2 = str;
       localObject5 = localObject7;
-      localInputStream1 = paramString1.jFs.getInputStream();
+      localInputStream1 = paramString1.mvV.getInputStream();
     }
-    catch (Throwable parameiw)
+    catch (Throwable paramesy)
     {
       int j;
       int k;
@@ -878,17 +870,17 @@ public final class n
         localObject1 = localObject3;
         localObject2 = localObject4;
         localObject5 = localInputStream2;
-        Log.printErrStackTrace("MicroMsg.TopStory.TopStoryVideoDataMgr", parameiw, "getVideoUrlByVideoApi error: %s", new Object[] { parameiw.getMessage() });
+        Log.printErrStackTrace("MicroMsg.TopStory.TopStoryVideoDataMgr", paramesy, "getVideoUrlByVideoApi error: %s", new Object[] { paramesy.getMessage() });
         if (localObject4 != null) {
           ((x)localObject4).disconnect();
         }
         if (localObject3 != null) {
-          ((com.tencent.mm.network.aa)localObject3).disconnect();
+          ((aa)localObject3).disconnect();
         }
         if (localInputStream2 == null) {
           break;
         }
-        com.tencent.mm.vfs.aa.closeQuietly(localInputStream2);
+        ad.closeQuietly(localInputStream2);
         AppMethodBeat.o(126142);
         return;
         localObject3 = localJSONArray;
@@ -904,21 +896,21 @@ public final class n
         localObject1 = localObject9;
         localObject2 = localx;
         localObject5 = localObject7;
-        localx.setUseCaches(true);
+        localx.gM(true);
         localObject3 = localJSONArray;
         localObject4 = localx;
         localInputStream2 = localInputStream1;
         localObject1 = localObject9;
         localObject2 = localx;
         localObject5 = localObject7;
-        localx.setConnectTimeout(3000);
+        localx.xz(3000);
         localObject3 = localJSONArray;
         localObject4 = localx;
         localInputStream2 = localInputStream1;
         localObject1 = localObject9;
         localObject2 = localx;
         localObject5 = localObject7;
-        localx.setReadTimeout(3000);
+        localx.xA(3000);
         localObject3 = localJSONArray;
         localObject4 = localx;
         localInputStream2 = localInputStream1;
@@ -987,7 +979,7 @@ public final class n
             localObject1 = paramString1;
             localObject2 = localx;
             localObject5 = localInputStream1;
-            parameiw.Niv = ((JSONObject)localObject8).optLong("fs");
+            paramesy.Uvb = ((JSONObject)localObject8).optLong("fs");
           }
         }
         else
@@ -1170,28 +1162,28 @@ public final class n
                     localObject1 = paramString1;
                     localObject2 = localx;
                     localObject5 = localInputStream1;
-                    localObject7 = new eiy();
+                    localObject7 = new eta();
                     localObject3 = paramString1;
                     localObject4 = localx;
                     localInputStream2 = localInputStream1;
                     localObject1 = paramString1;
                     localObject2 = localx;
                     localObject5 = localInputStream1;
-                    ((eiy)localObject7).url = ((String)localObject6);
+                    ((eta)localObject7).url = ((String)localObject6);
                     localObject3 = paramString1;
                     localObject4 = localx;
                     localInputStream2 = localInputStream1;
                     localObject1 = paramString1;
                     localObject2 = localx;
                     localObject5 = localInputStream1;
-                    ((eiy)localObject7).NiF = n;
+                    ((eta)localObject7).Uvk = n;
                     localObject3 = paramString1;
                     localObject4 = localx;
                     localInputStream2 = localInputStream1;
                     localObject1 = paramString1;
                     localObject2 = localx;
                     localObject5 = localInputStream1;
-                    parameiw.Niw.add(localObject7);
+                    paramesy.Uvc.add(localObject7);
                   }
                 }
               }
@@ -1212,7 +1204,7 @@ public final class n
       if (localInputStream1 == null) {
         break label1845;
       }
-      com.tencent.mm.vfs.aa.closeQuietly(localInputStream1);
+      ad.closeQuietly(localInputStream1);
       AppMethodBeat.o(126142);
       return;
     }
@@ -1225,11 +1217,11 @@ public final class n
       if (localObject1 == null) {
         break label1827;
       }
-      ((com.tencent.mm.network.aa)localObject1).disconnect();
+      ((aa)localObject1).disconnect();
       if (localObject5 == null) {
         break label1837;
       }
-      com.tencent.mm.vfs.aa.closeQuietly((Closeable)localObject5);
+      ad.closeQuietly((Closeable)localObject5);
       AppMethodBeat.o(126142);
     }
     localObject3 = paramString1;
@@ -1271,70 +1263,70 @@ public final class n
     return;
   }
   
-  private static void a(JSONArray paramJSONArray, eiw parameiw)
+  private static void a(JSONArray paramJSONArray, esy paramesy)
   {
     AppMethodBeat.i(126136);
     int i = 0;
     while (i < paramJSONArray.length())
     {
-      dyi localdyi = new dyi();
-      localdyi.id = paramJSONArray.getJSONObject(i).optString("id");
-      localdyi.dQx = paramJSONArray.getJSONObject(i).optString("wording");
-      localdyi.MXW = paramJSONArray.getJSONObject(i).optLong("category");
-      localdyi.actionType = paramJSONArray.getJSONObject(i).optInt("actionType");
-      localdyi.url = paramJSONArray.getJSONObject(i).optString("url");
-      localdyi.title = paramJSONArray.getJSONObject(i).optString("title");
-      localdyi.oqZ = paramJSONArray.getJSONObject(i).optString("subTitle");
-      localdyi.icon = paramJSONArray.getJSONObject(i).optString("icon");
-      parameiw.xuO.add(localdyi);
+      eij localeij = new eij();
+      localeij.id = paramJSONArray.getJSONObject(i).optString("id");
+      localeij.wording = paramJSONArray.getJSONObject(i).optString("wording");
+      localeij.Ukr = paramJSONArray.getJSONObject(i).optLong("category");
+      localeij.actionType = paramJSONArray.getJSONObject(i).optInt("actionType");
+      localeij.url = paramJSONArray.getJSONObject(i).optString("url");
+      localeij.title = paramJSONArray.getJSONObject(i).optString("title");
+      localeij.rsw = paramJSONArray.getJSONObject(i).optString("subTitle");
+      localeij.icon = paramJSONArray.getJSONObject(i).optString("icon");
+      paramesy.Crg.add(localeij);
       i += 1;
     }
     AppMethodBeat.o(126136);
   }
   
-  private static void a(JSONObject paramJSONObject, eiw parameiw)
+  private static void a(JSONObject paramJSONObject, esy paramesy)
   {
     AppMethodBeat.i(126137);
-    parameiw.NiE = new eiu();
-    parameiw.NiE.Nil = paramJSONObject.optString("detailWording");
-    parameiw.NiE.Nim = paramJSONObject.optString("detailUrl");
+    paramesy.Uvj = new esw();
+    paramesy.Uvj.UuR = paramJSONObject.optString("detailWording");
+    paramesy.Uvj.UuS = paramJSONObject.optString("detailUrl");
     paramJSONObject = paramJSONObject.optJSONArray("feedbackData");
     if (paramJSONObject != null)
     {
       int i = 0;
       while (i < paramJSONObject.length())
       {
-        any localany = new any();
-        localany.id = paramJSONObject.optJSONObject(i).optString("id", "");
-        localany.dQx = paramJSONObject.optJSONObject(i).optString("wording", "");
-        localany.LzD = paramJSONObject.optJSONObject(i).optBoolean("isUseToConfirm", false);
-        parameiw.NiE.Nin.add(localany);
+        aoz localaoz = new aoz();
+        localaoz.id = paramJSONObject.optJSONObject(i).optString("id", "");
+        localaoz.wording = paramJSONObject.optJSONObject(i).optString("wording", "");
+        localaoz.SCd = paramJSONObject.optJSONObject(i).optBoolean("isUseToConfirm", false);
+        paramesy.Uvj.UuT.add(localaoz);
         i += 1;
       }
     }
     AppMethodBeat.o(126137);
   }
   
-  private static void a(boolean paramBoolean, eiw parameiw, JSONObject paramJSONObject)
+  private static void a(boolean paramBoolean, esy paramesy, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(126140);
-    parameiw.Nio = paramJSONObject.optString("thumbUrl");
+    paramesy.UuU = paramJSONObject.optString("thumbUrl");
     if (paramBoolean) {
-      parameiw.thumbWidth = 360;
+      paramesy.thumbWidth = 360;
     }
-    for (parameiw.thumbHeight = 640;; parameiw.thumbHeight = 280)
+    for (paramesy.thumbHeight = 640;; paramesy.thumbHeight = 280)
     {
-      if (Util.isNullOrNil(parameiw.Nio)) {
-        parameiw.Nio = ("http://shp.qpic.cn/qqvideo_ori/0/" + parameiw.psI + String.format("_%s_%s/0", new Object[] { Integer.valueOf(parameiw.thumbWidth), Integer.valueOf(parameiw.thumbHeight) }));
+      if (Util.isNullOrNil(paramesy.UuU)) {
+        paramesy.UuU = ("http://shp.qpic.cn/qqvideo_ori/0/" + paramesy.Crh + String.format("_%s_%s/0", new Object[] { Integer.valueOf(paramesy.thumbWidth), Integer.valueOf(paramesy.thumbHeight) }));
       }
-      Log.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "setThumbnailUrl %s %s", new Object[] { parameiw.psI, parameiw.Nio });
+      Log.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "setThumbnailUrl %s %s", new Object[] { paramesy.Crh, paramesy.UuU });
       AppMethodBeat.o(126140);
       return;
-      parameiw.thumbWidth = 496;
+      paramesy.thumbWidth = 496;
     }
   }
   
-  private static boolean a(int paramInt, eiw parameiw, JSONObject paramJSONObject)
+  private static boolean a(int paramInt, esy paramesy, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(126141);
     if (paramInt == 1) {}
@@ -1353,19 +1345,19 @@ public final class n
             if ((!localJSONObject.has("url")) || (!localJSONObject.has("filesize"))) {
               break label243;
             }
-            parameiw.Niv = localJSONObject.optInt("filesize", 0);
-            eiy localeiy = new eiy();
-            localeiy.url = localJSONObject.optString("url");
-            localeiy.NiF = 0;
-            parameiw.Niw.add(localeiy);
+            paramesy.Uvb = localJSONObject.optInt("filesize", 0);
+            eta localeta = new eta();
+            localeta.url = localJSONObject.optString("url");
+            localeta.Uvk = 0;
+            paramesy.Uvc.add(localeta);
             break label243;
             paramJSONObject = paramJSONObject.optJSONObject("ctnInfo");
             continue;
           }
-          parameiw.Nio = paramJSONObject.optString("coverUrl");
-          if (parameiw.Niv > 0L)
+          paramesy.UuU = paramJSONObject.optString("coverUrl");
+          if (paramesy.Uvb > 0L)
           {
-            boolean bool = Util.isNullOrNil(parameiw.Niw);
+            boolean bool = Util.isNullOrNil(paramesy.Uvc);
             if (!bool) {}
           }
           else
@@ -1380,9 +1372,9 @@ public final class n
           return false;
         }
       }
-      catch (Exception parameiw)
+      catch (Exception paramesy)
       {
-        Log.e("MicroMsg.TopStory.TopStoryVideoDataMgr", "setVideoInfoByCdn exception: " + parameiw.getMessage());
+        Log.e("MicroMsg.TopStory.TopStoryVideoDataMgr", "setVideoInfoByCdn exception: " + paramesy.getMessage());
         AppMethodBeat.o(126141);
         return false;
       }
@@ -1393,87 +1385,60 @@ public final class n
     }
   }
   
-  public static boolean a(final eiw parameiw, final Context paramContext)
+  public static boolean a(esy paramesy, Context paramContext)
   {
-    AppMethodBeat.i(236393);
-    if (parameiw != null)
+    AppMethodBeat.i(202669);
+    if (paramesy != null)
     {
-      Log.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "jumpToProfile sJumpType:%s", new Object[] { Integer.valueOf(parameiw.NiJ) });
+      Log.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "jumpToProfile sJumpType:%s", new Object[] { Integer.valueOf(paramesy.Uvo) });
       Object localObject;
-      if (parameiw.NiJ == 1)
+      if (paramesy.Uvo == 1)
       {
-        if (!Util.isNullOrNil(parameiw.eby))
+        if (!Util.isNullOrNil(paramesy.fVx))
         {
           localObject = new Intent();
-          ((Intent)localObject).putExtra("rawUrl", parameiw.eby);
-          com.tencent.mm.br.c.b(paramContext, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
-          AppMethodBeat.o(236393);
+          ((Intent)localObject).putExtra("rawUrl", paramesy.fVx);
+          com.tencent.mm.by.c.b(paramContext, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+          AppMethodBeat.o(202669);
           return true;
         }
       }
-      else if ((parameiw.NiJ == 2) && (!TextUtils.isEmpty(parameiw.BmI)))
+      else if ((paramesy.Uvo == 2) && (!TextUtils.isEmpty(paramesy.fvZ)))
       {
-        localObject = ((l)g.af(l.class)).aSN().Kn(parameiw.BmI);
-        if ((localObject != null) && ((int)((com.tencent.mm.contact.c)localObject).gMZ > 0))
+        localObject = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL().RG(paramesy.fvZ);
+        if ((localObject != null) && ((int)((com.tencent.mm.contact.d)localObject).jxt > 0))
         {
           Log.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "jumpToProfile contact exist");
           localObject = new Intent();
-          ((Intent)localObject).putExtra("Contact_User", parameiw.BmI);
+          ((Intent)localObject).putExtra("Contact_User", paramesy.fvZ);
           ((Intent)localObject).putExtra("biz_profile_tab_type", 1);
-          com.tencent.mm.br.c.b(paramContext, "profile", ".ui.ContactInfoUI", (Intent)localObject);
+          com.tencent.mm.by.c.b(paramContext, "profile", ".ui.ContactInfoUI", (Intent)localObject);
         }
         for (;;)
         {
-          AppMethodBeat.o(236393);
+          AppMethodBeat.o(202669);
           return true;
           Log.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "jumpToProfile contact not exist, getNow");
-          final boolean[] arrayOfBoolean = new boolean[1];
+          boolean[] arrayOfBoolean = new boolean[1];
           arrayOfBoolean[0] = false;
-          localObject = com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(2131762443), true, new DialogInterface.OnCancelListener()
-          {
-            public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-            {
-              this.GnP[0] = true;
-            }
-          });
+          localObject = com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(c.g.loading), true, new n.3(arrayOfBoolean));
           try
           {
-            ay.a.iDq.a(parameiw.BmI, "", new ay.b.a()
-            {
-              public final void p(String paramAnonymousString, boolean paramAnonymousBoolean)
-              {
-                AppMethodBeat.i(236391);
-                this.GnQ.dismiss();
-                Log.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "jumpToProfile getNow:%s, isCancel:%s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Boolean.valueOf(arrayOfBoolean[0]) });
-                if (arrayOfBoolean[0] != 0)
-                {
-                  AppMethodBeat.o(236391);
-                  return;
-                }
-                if (paramAnonymousBoolean)
-                {
-                  paramAnonymousString = new Intent();
-                  paramAnonymousString.putExtra("Contact_User", parameiw.BmI);
-                  paramAnonymousString.putExtra("biz_profile_tab_type", 1);
-                  com.tencent.mm.br.c.b(paramContext, "profile", ".ui.ContactInfoUI", paramAnonymousString);
-                }
-                AppMethodBeat.o(236391);
-              }
-            });
+            az.a.ltq.a(paramesy.fvZ, "", new n.4((s)localObject, arrayOfBoolean, paramesy, paramContext));
           }
-          catch (Throwable parameiw)
+          catch (Throwable paramesy)
           {
-            ((com.tencent.mm.ui.base.q)localObject).dismiss();
-            Log.e("MicroMsg.TopStory.TopStoryVideoDataMgr", "jumpToProfile err:%s", new Object[] { parameiw.getMessage() });
+            ((s)localObject).dismiss();
+            Log.e("MicroMsg.TopStory.TopStoryVideoDataMgr", "jumpToProfile err:%s", new Object[] { paramesy.getMessage() });
           }
         }
       }
     }
-    AppMethodBeat.o(236393);
+    AppMethodBeat.o(202669);
     return false;
   }
   
-  public static int ape()
+  public static int avq()
   {
     AppMethodBeat.i(126144);
     switch (NetStatusUtil.getNetType(MMApplicationContext.getContext()))
@@ -1506,35 +1471,35 @@ public final class n
     return 0;
   }
   
-  private static void b(JSONObject paramJSONObject, eiw parameiw)
+  private static void b(JSONObject paramJSONObject, esy paramesy)
   {
     AppMethodBeat.i(126138);
     String str1 = paramJSONObject.optString("videoPlatform");
     String str2 = paramJSONObject.optString("videoApi");
     paramJSONObject = paramJSONObject.optJSONObject("videoInfo");
-    if ((paramJSONObject != null) && (c(paramJSONObject, parameiw)))
+    if ((paramJSONObject != null) && (c(paramJSONObject, paramesy)))
     {
-      paramJSONObject = com.tencent.mm.plugin.topstory.a.h.hJ(parameiw.Niw);
+      paramJSONObject = com.tencent.mm.plugin.topstory.a.h.iy(paramesy.Uvc);
       if (paramJSONObject != null)
       {
-        parameiw.videoUrl = paramJSONObject.url;
-        parameiw.NiF = paramJSONObject.NiF;
+        paramesy.videoUrl = paramJSONObject.url;
+        paramesy.Uvk = paramJSONObject.Uvk;
       }
     }
-    if ((Util.isNullOrNil(parameiw.videoUrl)) && (!Util.isNullOrNil(str2)))
+    if ((Util.isNullOrNil(paramesy.videoUrl)) && (!Util.isNullOrNil(str2)))
     {
-      a(parameiw, str2, str1);
-      if (Util.isNullOrNil(parameiw.Niw))
+      a(paramesy, str2, str1);
+      if (Util.isNullOrNil(paramesy.Uvc))
       {
-        a.pl(29);
+        a.rE(29);
         Log.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "setVideoInfoByVideoApi retry");
-        a(parameiw, str2, str1);
+        a(paramesy, str2, str1);
       }
-      paramJSONObject = com.tencent.mm.plugin.topstory.a.h.hJ(parameiw.Niw);
+      paramJSONObject = com.tencent.mm.plugin.topstory.a.h.iy(paramesy.Uvc);
       if (paramJSONObject != null)
       {
-        parameiw.videoUrl = paramJSONObject.url;
-        parameiw.NiF = paramJSONObject.NiF;
+        paramesy.videoUrl = paramJSONObject.url;
+        paramesy.Uvk = paramJSONObject.Uvk;
       }
     }
     AppMethodBeat.o(126138);
@@ -1554,7 +1519,7 @@ public final class n
     return paramString1;
   }
   
-  private static boolean c(JSONObject paramJSONObject, eiw parameiw)
+  private static boolean c(JSONObject paramJSONObject, esy paramesy)
   {
     AppMethodBeat.i(126139);
     JSONObject localJSONObject = null;
@@ -1563,17 +1528,17 @@ public final class n
     }
     if (localJSONObject != null)
     {
-      parameiw.NiA = localJSONObject.optInt("cdnScene", 0);
-      parameiw.NiB = localJSONObject.optInt("cdnSourceType", 0);
+      paramesy.Uvg = localJSONObject.optInt("cdnScene", 0);
+      paramesy.Uvh = localJSONObject.optInt("cdnSourceType", 0);
     }
-    if ((parameiw.NiA == 1) || (parameiw.NiB == 2))
+    if ((paramesy.Uvg == 1) || (paramesy.Uvh == 2))
     {
-      if (!a(parameiw.NiA, parameiw, localJSONObject))
+      if (!a(paramesy.Uvg, paramesy, localJSONObject))
       {
         AppMethodBeat.o(126139);
         return false;
       }
-      Log.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "useCdnData, cdnScene:%s, vid:%s, title:%s, size:%s", new Object[] { Integer.valueOf(parameiw.NiA), parameiw.psI, parameiw.title, Long.valueOf(parameiw.Niv) });
+      Log.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "useCdnData, cdnScene:%s, vid:%s, title:%s, size:%s", new Object[] { Integer.valueOf(paramesy.Uvg), paramesy.Crh, paramesy.title, Long.valueOf(paramesy.Uvb) });
       AppMethodBeat.o(126139);
       return true;
     }
@@ -1581,7 +1546,19 @@ public final class n
     return false;
   }
   
-  private static int fzA()
+  private static int grA()
+  {
+    AppMethodBeat.i(126143);
+    if (ai.isFreeSimCard())
+    {
+      AppMethodBeat.o(126143);
+      return 2;
+    }
+    AppMethodBeat.o(126143);
+    return -1;
+  }
+  
+  private static int grB()
   {
     AppMethodBeat.i(126145);
     int j = NetStatusUtil.getISPCode(MMApplicationContext.getContext());
@@ -1614,47 +1591,27 @@ public final class n
     return 0;
   }
   
-  private static int fzz()
+  public static boolean i(esy paramesy)
   {
-    AppMethodBeat.i(126143);
-    if (ai.isFreeSimCard())
+    AppMethodBeat.i(202668);
+    if (paramesy != null)
     {
-      AppMethodBeat.o(126143);
-      return 2;
-    }
-    AppMethodBeat.o(126143);
-    return -1;
-  }
-  
-  public static boolean i(eiw parameiw)
-  {
-    AppMethodBeat.i(236392);
-    if (parameiw != null)
-    {
-      if ((parameiw.NiJ == 1) && (!TextUtils.isEmpty(parameiw.eby)))
+      if ((paramesy.Uvo == 1) && (!TextUtils.isEmpty(paramesy.fVx)))
       {
-        AppMethodBeat.o(236392);
+        AppMethodBeat.o(202668);
         return true;
       }
-      if ((parameiw.NiJ == 2) && (!TextUtils.isEmpty(parameiw.BmI)))
+      if ((paramesy.Uvo == 2) && (!TextUtils.isEmpty(paramesy.fvZ)))
       {
-        AppMethodBeat.o(236392);
+        AppMethodBeat.o(202668);
         return true;
       }
     }
-    AppMethodBeat.o(236392);
+    AppMethodBeat.o(202668);
     return false;
   }
   
-  public final List<eiw> GW()
-  {
-    AppMethodBeat.i(126126);
-    LinkedList localLinkedList = this.GlS.fyD().Nif;
-    AppMethodBeat.o(126126);
-    return localLinkedList;
-  }
-  
-  public final void a(final eit parameit, int paramInt)
+  public final void a(esv paramesv, int paramInt)
   {
     AppMethodBeat.i(126132);
     ArrayList localArrayList = new ArrayList();
@@ -1662,7 +1619,7 @@ public final class n
     {
       try
       {
-        List localList = GW();
+        List localList = eiH();
         if ((Util.isNullOrNil(localList)) || (paramInt >= localList.size())) {
           return;
         }
@@ -1672,157 +1629,13 @@ public final class n
           int i = paramInt;
           if ((i < localList.size()) && (i < paramInt + 10))
           {
-            localArrayList.add(((eiw)localList.get(i)).psI);
+            localArrayList.add(((esy)localList.get(i)).Crh);
             i += 1;
             continue;
           }
-          parameit = new e(parameit, localArrayList);
-          g.azz().a(parameit, 0);
-          g.azz().a(parameit.getType(), new com.tencent.mm.ak.i()
-          {
-            public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, final String paramAnonymousString, com.tencent.mm.ak.q paramAnonymousq)
-            {
-              AppMethodBeat.i(126121);
-              if (((paramAnonymousq instanceof e)) && (paramAnonymousq.equals(parameit)))
-              {
-                g.azz().b(parameit.getType(), this);
-                if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
-                {
-                  Log.e("MicroMsg.TopStory.TopStoryVideoDataMgr", "fetch videourl failed!, errType %s, errCode %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-                  AppMethodBeat.o(126121);
-                  return;
-                }
-                paramAnonymousString = (dky)((e)paramAnonymousq).rr.iLL.iLR;
-                com.tencent.f.h.RTc.aX(new com.tencent.f.i.h()
-                {
-                  public final String getKey()
-                  {
-                    return "requestVideoUrlResultParse";
-                  }
-                  
-                  public final void run()
-                  {
-                    AppMethodBeat.i(126120);
-                    ArrayList localArrayList = new ArrayList();
-                    ??? = paramAnonymousString.MOS.KKx.iterator();
-                    Object localObject4;
-                    Object localObject3;
-                    Object localObject5;
-                    Object localObject6;
-                    while (((Iterator)???).hasNext())
-                    {
-                      localObject4 = (era)((Iterator)???).next();
-                      localObject3 = new eiw();
-                      if (!Util.isNullOrNil(((era)localObject4).Nor.pLq))
-                      {
-                        ((eiw)localObject3).psI = ((era)localObject4).Nor.pLq;
-                        if ((((era)localObject4).Not != null) && (((era)localObject4).Not.NnT == 1)) {
-                          if ((((era)localObject4).Not.NnV != null) && (!Util.isNullOrNil(((era)localObject4).Not.NnV.Lfy)))
-                          {
-                            ((eiw)localObject3).Niw.clear();
-                            ((eiw)localObject3).NiB = ((era)localObject4).Not.NnW;
-                            localObject4 = ((era)localObject4).Not.NnV.Lfy.iterator();
-                            while (((Iterator)localObject4).hasNext())
-                            {
-                              localObject5 = (eoj)((Iterator)localObject4).next();
-                              localObject6 = new eiy();
-                              ((eiy)localObject6).url = ((eoj)localObject5).Nmh.yO();
-                              ((eiy)localObject6).NiF = 0;
-                              ((eiw)localObject3).Niw.add(localObject6);
-                              ((eiw)localObject3).Niv = ((eoj)localObject5).Nmj;
-                            }
-                            localObject4 = com.tencent.mm.plugin.topstory.a.h.hJ(((eiw)localObject3).Niw);
-                            if (localObject4 != null)
-                            {
-                              ((eiw)localObject3).videoUrl = ((eiy)localObject4).url;
-                              ((eiw)localObject3).NiF = ((eiy)localObject4).NiF;
-                            }
-                          }
-                        }
-                        for (;;)
-                        {
-                          localArrayList.add(localObject3);
-                          break;
-                          if ((((era)localObject4).Not != null) && (((era)localObject4).Not.NnT == 2))
-                          {
-                            if ((((era)localObject4).Not.NnU != null) && (!Util.isNullOrNil(((era)localObject4).Not.NnU.Lfy)))
-                            {
-                              ((eiw)localObject3).Niw.clear();
-                              ((eiw)localObject3).NiB = ((era)localObject4).Not.NnW;
-                              localObject4 = ((era)localObject4).Not.NnU.Lfy.iterator();
-                              while (((Iterator)localObject4).hasNext())
-                              {
-                                localObject5 = (eoj)((Iterator)localObject4).next();
-                                localObject6 = new eiy();
-                                ((eiy)localObject6).url = ((eoj)localObject5).Nmh.yO();
-                                ((eiy)localObject6).NiF = 0;
-                                ((eiw)localObject3).Niw.add(localObject6);
-                                ((eiw)localObject3).Niv = ((eoj)localObject5).Nmj;
-                              }
-                              localObject4 = com.tencent.mm.plugin.topstory.a.h.hJ(((eiw)localObject3).Niw);
-                              if (localObject4 != null)
-                              {
-                                ((eiw)localObject3).videoUrl = ((eiy)localObject4).url;
-                                ((eiw)localObject3).NiF = ((eiy)localObject4).NiF;
-                              }
-                            }
-                          }
-                          else if (!Util.isNullOrNil(((era)localObject4).Nou))
-                          {
-                            ((eiw)localObject3).Niw.clear();
-                            n.b((eiw)localObject3, ((era)localObject4).Nou, "");
-                            localObject5 = com.tencent.mm.plugin.topstory.a.h.hJ(((eiw)localObject3).Niw);
-                            if (localObject5 != null)
-                            {
-                              ((eiw)localObject3).videoUrl = ((eiy)localObject5).url;
-                              ((eiw)localObject3).NiF = ((eiy)localObject5).NiF;
-                              if (((era)localObject4).Not != null) {
-                                ((eiw)localObject3).NiB = ((era)localObject4).Not.NnW;
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                    for (;;)
-                    {
-                      int i;
-                      synchronized (n.this)
-                      {
-                        localObject3 = n.this.GW();
-                        if (Util.isNullOrNil((List)localObject3))
-                        {
-                          AppMethodBeat.o(126120);
-                          return;
-                        }
-                        i = 0;
-                        if (i >= ((List)localObject3).size()) {
-                          break;
-                        }
-                        localObject4 = (eiw)((List)localObject3).get(i);
-                        localObject5 = localArrayList.iterator();
-                        if (((Iterator)localObject5).hasNext())
-                        {
-                          localObject6 = (eiw)((Iterator)localObject5).next();
-                          if (!((eiw)localObject4).psI.equals(((eiw)localObject6).psI)) {
-                            continue;
-                          }
-                          ((eiw)localObject4).Niw = ((eiw)localObject6).Niw;
-                          ((eiw)localObject4).Niv = ((eiw)localObject6).Niv;
-                          ((eiw)localObject4).videoUrl = ((eiw)localObject6).videoUrl;
-                          ((eiw)localObject4).NiB = ((eiw)localObject6).NiB;
-                          Log.d("MicroMsg.TopStory.TopStoryVideoDataMgr", "item title:%s, after url:%s", new Object[] { ((eiw)localObject4).title, ((eiw)localObject4).videoUrl });
-                        }
-                      }
-                      i += 1;
-                    }
-                    AppMethodBeat.o(126120);
-                  }
-                });
-              }
-              AppMethodBeat.o(126121);
-            }
-          });
+          paramesv = new e(paramesv, localArrayList);
+          com.tencent.mm.kernel.h.aGY().a(paramesv, 0);
+          com.tencent.mm.kernel.h.aGY().a(paramesv.getType(), new n.1(this, paramesv));
           AppMethodBeat.o(126132);
           return;
         }
@@ -1835,14 +1648,14 @@ public final class n
     }
   }
   
-  public final void acc(int paramInt)
+  public final void ajI(int paramInt)
   {
     AppMethodBeat.i(126129);
     if (paramInt >= 0) {}
     try
     {
-      if (paramInt < GW().size()) {
-        GW().remove(paramInt);
+      if (paramInt < eiH().size()) {
+        eiH().remove(paramInt);
       }
       return;
     }
@@ -1852,16 +1665,16 @@ public final class n
     }
   }
   
-  public final eiw acd(int paramInt)
+  public final esy ajJ(int paramInt)
   {
     AppMethodBeat.i(126130);
     if (paramInt >= 0) {}
     try
     {
-      if (paramInt < GW().size())
+      if (paramInt < eiH().size())
       {
-        eiw localeiw = (eiw)GW().get(paramInt);
-        return localeiw;
+        esy localesy = (esy)eiH().get(paramInt);
+        return localesy;
       }
       return null;
     }
@@ -1871,102 +1684,102 @@ public final class n
     }
   }
   
-  public final boolean ace(int paramInt)
+  public final boolean ajK(int paramInt)
   {
     AppMethodBeat.i(126131);
-    if (this.GhN)
+    if (this.MTh)
     {
       Log.w("MicroMsg.TopStory.TopStoryVideoDataMgr", "RequestingData");
       AppMethodBeat.o(126131);
       return false;
     }
     Log.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "requestData: %s", new Object[] { Integer.valueOf(paramInt) });
-    this.GhN = true;
-    eit localeit = com.tencent.mm.plugin.topstory.a.h.a(this.GlS.fyD());
-    localeit.offset = paramInt;
+    this.MTh = true;
+    esv localesv = com.tencent.mm.plugin.topstory.a.h.a(this.MYE.gqA());
+    localesv.offset = paramInt;
     Object localObject1;
-    if (!Util.isNullOrNil(this.GlS.fyD().NhX))
+    if (!Util.isNullOrNil(this.MYE.gqA().UuD))
     {
-      localObject1 = new aca();
-      ((aca)localObject1).key = "relevant_vid";
-      ((aca)localObject1).LmD = this.GlS.fyD().NhX;
-      localeit.IDO.add(localObject1);
+      localObject1 = new aci();
+      ((aci)localObject1).key = "relevant_vid";
+      ((aci)localObject1).SnW = this.MYE.gqA().UuD;
+      localesv.Pye.add(localObject1);
     }
-    if (!Util.isNullOrNil(this.GlS.fyD().NhY))
+    if (!Util.isNullOrNil(this.MYE.gqA().UuE))
     {
-      localObject1 = new aca();
-      ((aca)localObject1).key = "relevant_expand";
-      ((aca)localObject1).LmD = this.GlS.fyD().NhY;
-      localeit.IDO.add(localObject1);
+      localObject1 = new aci();
+      ((aci)localObject1).key = "relevant_expand";
+      ((aci)localObject1).SnW = this.MYE.gqA().UuE;
+      localesv.Pye.add(localObject1);
     }
-    if (!Util.isNullOrNil(this.GlS.fyD().NhZ))
+    if (!Util.isNullOrNil(this.MYE.gqA().UuF))
     {
-      localObject1 = new aca();
-      ((aca)localObject1).key = "relevant_pre_searchid";
-      ((aca)localObject1).LmD = this.GlS.fyD().NhZ;
-      localeit.IDO.add(localObject1);
+      localObject1 = new aci();
+      ((aci)localObject1).key = "relevant_pre_searchid";
+      ((aci)localObject1).SnW = this.MYE.gqA().UuF;
+      localesv.Pye.add(localObject1);
     }
-    if (!Util.isNullOrNil(this.GlS.fyD().Nia))
+    if (!Util.isNullOrNil(this.MYE.gqA().UuG))
     {
-      localObject1 = new aca();
-      ((aca)localObject1).key = "relevant_shared_openid";
-      ((aca)localObject1).LmD = this.GlS.fyD().Nia;
-      localeit.IDO.add(localObject1);
+      localObject1 = new aci();
+      ((aci)localObject1).key = "relevant_shared_openid";
+      ((aci)localObject1).SnW = this.MYE.gqA().UuG;
+      localesv.Pye.add(localObject1);
     }
-    if (this.GlS.fyD().Nid != null)
+    if (this.MYE.gqA().UuJ != null)
     {
-      localObject1 = new aca();
-      ((aca)localObject1).key = "rec_category";
-      ((aca)localObject1).LmC = this.GlS.fyD().Nid.MXW;
-      localeit.IDO.add(localObject1);
-      localObject1 = localeit.IDO.iterator();
+      localObject1 = new aci();
+      ((aci)localObject1).key = "rec_category";
+      ((aci)localObject1).SnV = this.MYE.gqA().UuJ.Ukr;
+      localesv.Pye.add(localObject1);
+      localObject1 = localesv.Pye.iterator();
       do
       {
         if (!((Iterator)localObject1).hasNext()) {
           break;
         }
-      } while (!"show_tag_list".equals(((aca)((Iterator)localObject1).next()).key));
+      } while (!"show_tag_list".equals(((aci)((Iterator)localObject1).next()).key));
     }
     for (paramInt = 0;; paramInt = 1)
     {
-      if ((this.GlS.fyD().Nid != null) && (paramInt != 0))
+      if ((this.MYE.gqA().UuJ != null) && (paramInt != 0))
       {
-        localObject1 = new aca();
-        ((aca)localObject1).key = "show_tag_list";
-        ((aca)localObject1).LmD = this.GlS.fyD().Nid.id;
-        localeit.IDO.add(localObject1);
+        localObject1 = new aci();
+        ((aci)localObject1).key = "show_tag_list";
+        ((aci)localObject1).SnW = this.MYE.gqA().UuJ.id;
+        localesv.Pye.add(localObject1);
       }
-      localObject1 = new aca();
-      ((aca)localObject1).key = "fetch_seed_videoinfo";
+      localObject1 = new aci();
+      ((aci)localObject1).key = "fetch_seed_videoinfo";
       label521:
       Object localObject2;
       label653:
       com.tencent.mm.plugin.topstory.a.b.c localc;
-      if ((this.GlS.fyD().Nid != null) && (!Util.isNullOrNil(this.GlS.fyD().Nid.id)))
+      if ((this.MYE.gqA().UuJ != null) && (!Util.isNullOrNil(this.MYE.gqA().UuJ.id)))
       {
-        ((aca)localObject1).LmC = 0L;
-        localeit.IDO.add(localObject1);
-        if (fzy() == 1)
+        ((aci)localObject1).SnV = 0L;
+        localesv.Pye.add(localObject1);
+        if (grz() == 1)
         {
-          localObject1 = acd(0);
-          localObject2 = new aca();
-          ((aca)localObject2).key = "first_video_tag_list";
-          ((aca)localObject2).LmD = com.tencent.mm.plugin.topstory.a.h.hK(((eiw)localObject1).xuO).toString();
-          localeit.IDO.add(localObject2);
+          localObject1 = ajJ(0);
+          localObject2 = new aci();
+          ((aci)localObject2).key = "first_video_tag_list";
+          ((aci)localObject2).SnW = com.tencent.mm.plugin.topstory.a.h.iz(((esy)localObject1).Crg).toString();
+          localesv.Pye.add(localObject2);
         }
-        localObject1 = this.GlS.fyB();
-        if (((o)localObject1).GnR.size() <= 0) {
+        localObject1 = this.MYE.gqy();
+        if (((o)localObject1).NaE.size() <= 0) {
           break label928;
         }
         localObject2 = new ArrayList();
-        ((List)localObject2).addAll(((o)localObject1).GnR.values());
+        ((List)localObject2).addAll(((o)localObject1).NaE.values());
         localObject1 = new StringBuffer("");
         localObject2 = ((List)localObject2).iterator();
         if (!((Iterator)localObject2).hasNext()) {
           break label779;
         }
         localc = (com.tencent.mm.plugin.topstory.a.b.c)((Iterator)localObject2).next();
-        if (!localc.GjI) {
+        if (!localc.MWt) {
           break label774;
         }
       }
@@ -1975,15 +1788,15 @@ public final class n
       {
         ((StringBuffer)localObject1).append(paramInt);
         ((StringBuffer)localObject1).append("_");
-        ((StringBuffer)localObject1).append(localc.GjH.psI);
+        ((StringBuffer)localObject1).append(localc.MWs.Crh);
         ((StringBuffer)localObject1).append(";");
         break label653;
-        localObject1 = new aca();
-        ((aca)localObject1).key = "rec_category";
-        ((aca)localObject1).LmC = this.GlS.fyD().Nib;
-        localeit.IDO.add(localObject1);
+        localObject1 = new aci();
+        ((aci)localObject1).key = "rec_category";
+        ((aci)localObject1).SnV = this.MYE.gqA().UuH;
+        localesv.Pye.add(localObject1);
         break;
-        ((aca)localObject1).LmC = 1L;
+        ((aci)localObject1).SnV = 1L;
         break label521;
       }
       label779:
@@ -1992,44 +1805,52 @@ public final class n
       {
         if (!Util.isNullOrNil((String)localObject1))
         {
-          localObject2 = new aca();
-          ((aca)localObject2).key = "client_exposed_info";
-          ((aca)localObject2).LmD = ((String)localObject1);
-          localeit.IDO.add(localObject2);
+          localObject2 = new aci();
+          ((aci)localObject2).key = "client_exposed_info";
+          ((aci)localObject2).SnW = ((String)localObject1);
+          localesv.Pye.add(localObject2);
         }
-        localObject1 = new aca();
-        ((aca)localObject1).key = "is_prefetch";
-        ((aca)localObject1).LmC = this.GnE;
-        localeit.IDO.add(localObject1);
-        if (this.GnF != null)
+        localObject1 = new aci();
+        ((aci)localObject1).key = "is_prefetch";
+        ((aci)localObject1).SnV = this.Nar;
+        localesv.Pye.add(localObject1);
+        if (this.Nas != null)
         {
-          g.azz().a(this.GnF);
-          this.GnF = null;
+          com.tencent.mm.kernel.h.aGY().a(this.Nas);
+          this.Nas = null;
         }
-        this.GnF = new k(localeit);
-        g.azz().a(this.GnF, 0);
-        g.azz().a(1943, this.gNh);
-        a.pl(0);
+        this.Nas = new k(localesv);
+        com.tencent.mm.kernel.h.aGY().a(this.Nas, 0);
+        com.tencent.mm.kernel.h.aGY().a(1943, this.jxB);
+        a.rE(0);
         AppMethodBeat.o(126131);
         return true;
       }
     }
   }
   
-  public final int fzy()
+  public final List<esy> eiH()
+  {
+    AppMethodBeat.i(126126);
+    LinkedList localLinkedList = this.MYE.gqA().UuL;
+    AppMethodBeat.o(126126);
+    return localLinkedList;
+  }
+  
+  public final int grz()
   {
     AppMethodBeat.i(126127);
-    int i = GW().size();
+    int i = eiH().size();
     AppMethodBeat.o(126127);
     return i;
   }
   
-  public final void h(eiw parameiw)
+  public final void h(esy paramesy)
   {
     AppMethodBeat.i(126128);
     try
     {
-      GW().add(parameiw);
+      eiH().add(paramesy);
       return;
     }
     finally
@@ -2041,25 +1862,25 @@ public final class n
   public final void onUIDestroy()
   {
     AppMethodBeat.i(126133);
-    if (this.GnF != null)
+    if (this.Nas != null)
     {
-      g.azz().a(this.GnF);
-      this.GnF = null;
+      com.tencent.mm.kernel.h.aGY().a(this.Nas);
+      this.Nas = null;
     }
-    if (this.GnI != null)
+    if (this.Nav != null)
     {
-      g.azz().a(this.GnI);
-      this.GnI = null;
+      com.tencent.mm.kernel.h.aGY().a(this.Nav);
+      this.Nav = null;
     }
-    g.azz().b(1943, this.gNh);
+    com.tencent.mm.kernel.h.aGY().b(1943, this.jxB);
     AppMethodBeat.o(126133);
   }
   
   final class a
     implements Runnable
   {
-    private String sTh;
-    private boolean xwi;
+    private boolean CAd;
+    private String wzd;
     
     private a() {}
     
@@ -2072,35 +1893,35 @@ public final class n
       //   5: new 44	org/json/JSONObject
       //   8: dup
       //   9: aload_0
-      //   10: getfield 29	com/tencent/mm/plugin/topstory/ui/video/n$a:sTh	Ljava/lang/String;
+      //   10: getfield 29	com/tencent/mm/plugin/topstory/ui/video/n$a:wzd	Ljava/lang/String;
       //   13: invokespecial 47	org/json/JSONObject:<init>	(Ljava/lang/String;)V
       //   16: astore_1
       //   17: aload_0
-      //   18: getfield 19	com/tencent/mm/plugin/topstory/ui/video/n$a:GnK	Lcom/tencent/mm/plugin/topstory/ui/video/n;
+      //   18: getfield 19	com/tencent/mm/plugin/topstory/ui/video/n$a:Nax	Lcom/tencent/mm/plugin/topstory/ui/video/n;
       //   21: aload_1
       //   22: aload_0
-      //   23: getfield 32	com/tencent/mm/plugin/topstory/ui/video/n$a:xwi	Z
+      //   23: getfield 32	com/tencent/mm/plugin/topstory/ui/video/n$a:CAd	Z
       //   26: invokestatic 50	com/tencent/mm/plugin/topstory/ui/video/n:a	(Lcom/tencent/mm/plugin/topstory/ui/video/n;Lorg/json/JSONObject;Z)V
       //   29: aload_0
-      //   30: getfield 19	com/tencent/mm/plugin/topstory/ui/video/n$a:GnK	Lcom/tencent/mm/plugin/topstory/ui/video/n;
+      //   30: getfield 19	com/tencent/mm/plugin/topstory/ui/video/n$a:Nax	Lcom/tencent/mm/plugin/topstory/ui/video/n;
       //   33: iconst_0
-      //   34: putfield 53	com/tencent/mm/plugin/topstory/ui/video/n:GhN	Z
+      //   34: putfield 53	com/tencent/mm/plugin/topstory/ui/video/n:MTh	Z
       //   37: ldc 36
       //   39: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   42: return
       //   43: astore_1
       //   44: aload_0
-      //   45: getfield 19	com/tencent/mm/plugin/topstory/ui/video/n$a:GnK	Lcom/tencent/mm/plugin/topstory/ui/video/n;
+      //   45: getfield 19	com/tencent/mm/plugin/topstory/ui/video/n$a:Nax	Lcom/tencent/mm/plugin/topstory/ui/video/n;
       //   48: iconst_0
-      //   49: putfield 53	com/tencent/mm/plugin/topstory/ui/video/n:GhN	Z
+      //   49: putfield 53	com/tencent/mm/plugin/topstory/ui/video/n:MTh	Z
       //   52: ldc 36
       //   54: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   57: return
       //   58: astore_1
       //   59: aload_0
-      //   60: getfield 19	com/tencent/mm/plugin/topstory/ui/video/n$a:GnK	Lcom/tencent/mm/plugin/topstory/ui/video/n;
+      //   60: getfield 19	com/tencent/mm/plugin/topstory/ui/video/n$a:Nax	Lcom/tencent/mm/plugin/topstory/ui/video/n;
       //   63: iconst_0
-      //   64: putfield 53	com/tencent/mm/plugin/topstory/ui/video/n:GhN	Z
+      //   64: putfield 53	com/tencent/mm/plugin/topstory/ui/video/n:MTh	Z
       //   67: ldc 36
       //   69: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   72: aload_1
@@ -2120,7 +1941,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.n
  * JD-Core Version:    0.7.0.1
  */

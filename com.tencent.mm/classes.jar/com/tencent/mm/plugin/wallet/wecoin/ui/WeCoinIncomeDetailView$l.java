@@ -1,24 +1,28 @@
 package com.tencent.mm.plugin.wallet.wecoin.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class WeCoinIncomeDetailView$l
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public static final l HPb;
+  WeCoinIncomeDetailView$l(WeCoinIncomeDetailView paramWeCoinIncomeDetailView) {}
   
-  static
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(212852);
-    HPb = new l();
-    AppMethodBeat.o(212852);
+    AppMethodBeat.i(204361);
+    b localb = new b();
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinIncomeDetailView$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    WeCoinIncomeDetailView.a(this.OHe);
+    a.a(this, "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinIncomeDetailView$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(204361);
   }
-  
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

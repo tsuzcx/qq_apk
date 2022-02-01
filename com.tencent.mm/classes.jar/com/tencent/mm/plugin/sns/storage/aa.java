@@ -5,13 +5,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storagebase.h;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.f;
+import com.tencent.mm.vfs.u;
 import java.util.Iterator;
 
 public final class aa
 {
-  public boolean EmY = false;
+  public boolean KAh = false;
   
   public static int a(h paramh1, h paramh2, String paramString)
   {
@@ -67,10 +67,10 @@ public final class aa
     }
   }
   
-  public static void aQM(String paramString)
+  public static void bbM(String paramString)
   {
     AppMethodBeat.i(97650);
-    Object localObject = s.dC(paramString, false);
+    Object localObject = u.dP(paramString, false);
     if (localObject == null)
     {
       AppMethodBeat.o(97650);
@@ -79,11 +79,11 @@ public final class aa
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      e locale = (e)((Iterator)localObject).next();
-      if ((!locale.RbJ) && (locale.name.startsWith("SnsMicroMsg.dberr")))
+      f localf = (f)((Iterator)localObject).next();
+      if ((!localf.YCj) && (localf.name.startsWith("SnsMicroMsg.dberr")))
       {
-        Log.i("MicroMsg.TrimSnsDb", "find error %s", new Object[] { paramString + locale.name });
-        locale.hdW();
+        Log.i("MicroMsg.TrimSnsDb", "find error %s", new Object[] { paramString + localf.name });
+        localf.cFq();
       }
     }
     AppMethodBeat.o(97650);
@@ -91,7 +91,7 @@ public final class aa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.aa
  * JD-Core Version:    0.7.0.1
  */

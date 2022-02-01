@@ -15,24 +15,24 @@ import java.util.LinkedList;
 final class i
   implements n
 {
-  public final int byu;
-  private final j byv;
+  private final j bhW;
+  public final int group;
   
   public i(j paramj, int paramInt)
   {
-    this.byv = paramj;
-    this.byu = paramInt;
+    this.bhW = paramj;
+    this.group = paramInt;
   }
   
-  public final void Y(long paramLong)
+  public final void ab(long paramLong)
   {
     AppMethodBeat.i(62864);
-    j localj = this.byv;
-    int i = this.byu;
-    m localm = localj.bvQ[i];
-    if ((localj.bwd) && (paramLong > localm.bwO.vy()))
+    j localj = this.bhW;
+    int i = this.group;
+    m localm = localj.bfs[i];
+    if ((localj.bfF) && (paramLong > localm.bgq.tw()))
     {
-      localm.bwO.vH();
+      localm.bgq.tF();
       AppMethodBeat.o(62864);
       return;
     }
@@ -43,29 +43,29 @@ final class i
   public final int b(k paramk, e parame, boolean paramBoolean)
   {
     AppMethodBeat.i(62863);
-    j localj = this.byv;
-    int k = this.byu;
-    if (localj.vz())
+    j localj = this.bhW;
+    int k = this.group;
+    if (localj.tx())
     {
       AppMethodBeat.o(62863);
       return -3;
     }
-    if (!localj.byA.isEmpty())
+    if (!localj.bib.isEmpty())
     {
       label75:
       int j;
-      if (localj.byA.size() > 1)
+      if (localj.bib.size() > 1)
       {
-        int m = ((f)localj.byA.getFirst()).uid;
+        int m = ((f)localj.bib.getFirst()).uid;
         i = 0;
-        if (i < localj.bvQ.length) {
-          if (localj.byF[i] != 0)
+        if (i < localj.bfs.length) {
+          if (localj.big[i] != 0)
           {
-            localObject1 = localj.bvQ[i].bwO;
-            j = ((l)localObject1).eD(((l)localObject1).bwG);
-            if (((l)localObject1).vF())
+            localObject1 = localj.bfs[i].bgq;
+            j = ((l)localObject1).eT(((l)localObject1).bgi);
+            if (((l)localObject1).tD())
             {
-              j = localObject1.bwB[j];
+              j = localObject1.bgd[j];
               label140:
               if (j != m) {
                 break label177;
@@ -78,9 +78,9 @@ final class i
           if (i == 0) {
             break label192;
           }
-          localj.byA.removeFirst();
+          localj.bib.removeFirst();
           break;
-          j = ((l)localObject1).bwM;
+          j = ((l)localObject1).bgo;
           break label140;
           label177:
           i += 1;
@@ -88,22 +88,22 @@ final class i
         }
       }
       label192:
-      Object localObject1 = (f)localj.byA.getFirst();
-      Format localFormat = ((f)localObject1).bxk;
-      if (!localFormat.equals(localj.byB))
+      Object localObject1 = (f)localj.bib.getFirst();
+      Format localFormat = ((f)localObject1).bgM;
+      if (!localFormat.equals(localj.bic))
       {
-        b.a locala = localj.byl;
+        b.a locala = localj.bhN;
         i = localj.trackType;
-        j = ((f)localObject1).bxl;
-        Object localObject2 = ((f)localObject1).bxm;
-        long l = ((f)localObject1).bxn;
-        if (locala.bvb != null) {
+        j = ((f)localObject1).bgN;
+        Object localObject2 = ((f)localObject1).bgO;
+        long l = ((f)localObject1).bgP;
+        if (locala.beD != null) {
           locala.handler.post(new b.a.5(locala, i, localFormat, j, localObject2, l));
         }
       }
-      localj.byB = localFormat;
+      localj.bic = localFormat;
     }
-    int i = localj.bvQ[k].a(paramk, parame, paramBoolean, localj.bwd, localj.bwa);
+    int i = localj.bfs[k].a(paramk, parame, paramBoolean, localj.bfF, localj.bfC);
     AppMethodBeat.o(62863);
     return i;
   }
@@ -111,9 +111,9 @@ final class i
   public final boolean isReady()
   {
     AppMethodBeat.i(62861);
-    j localj = this.byv;
-    int i = this.byu;
-    if ((localj.bwd) || ((!localj.vz()) && (localj.bvQ[i].bwO.vF())))
+    j localj = this.bhW;
+    int i = this.group;
+    if ((localj.bfF) || ((!localj.tx()) && (localj.bfs[i].bgq.tD())))
     {
       AppMethodBeat.o(62861);
       return true;
@@ -122,16 +122,16 @@ final class i
     return false;
   }
   
-  public final void vs()
+  public final void tq()
   {
     AppMethodBeat.i(62862);
-    this.byv.byx.vs();
+    this.bhW.tq();
     AppMethodBeat.o(62862);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.source.b.i
  * JD-Core Version:    0.7.0.1
  */

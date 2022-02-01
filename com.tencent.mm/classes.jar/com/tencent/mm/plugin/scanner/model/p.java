@@ -1,79 +1,72 @@
 package com.tencent.mm.plugin.scanner.model;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.pv;
-import com.tencent.mm.protocal.protobuf.pw;
-import com.tencent.mm.sdk.platformtools.LocaleUtil;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.aj.k.b;
+import com.tencent.mm.plugin.scanner.util.o;
+import com.tencent.mm.plugin.scanner.util.o.a;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class p
-  extends q
-  implements m
 {
-  private i callback;
-  private com.tencent.mm.ak.d rr;
-  
-  public p(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2, int paramInt3)
+  public static String a(Context paramContext, o.a parama)
   {
-    AppMethodBeat.i(51631);
-    Object localObject = new d.a();
-    ((d.a)localObject).iLN = new pv();
-    ((d.a)localObject).iLO = new pw();
-    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/bizscanproductreport";
-    ((d.a)localObject).funcId = 1064;
-    ((d.a)localObject).iLP = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (pv)this.rr.iLK.iLR;
-    ((pv)localObject).hid = com.tencent.mm.protocal.d.KyJ;
-    ((pv)localObject).hie = com.tencent.mm.protocal.d.KyI;
-    ((pv)localObject).hif = com.tencent.mm.protocal.d.KyL;
-    ((pv)localObject).hig = com.tencent.mm.protocal.d.KyM;
-    ((pv)localObject).hih = LocaleUtil.getApplicationLanguage();
-    ((pv)localObject).hii = 11294;
-    ((pv)localObject).hij = null;
-    ((pv)localObject).CEN = paramString1;
-    ((pv)localObject).CEM = paramString2;
-    ((pv)localObject).type = paramInt1;
-    ((pv)localObject).value = paramString3;
-    ((pv)localObject).count = paramInt2;
-    ((pv)localObject).AKt = paramInt3;
-    Log.v("MircoMsg.NetSceneScanProductReport", "statid:".concat(String.valueOf(paramString2)));
-    AppMethodBeat.o(51631);
+    AppMethodBeat.i(51634);
+    k.b localb = new k.b();
+    localb.appId = adp(parama.field_functionType);
+    localb.title = parama.field_title;
+    localb.description = parama.field_source;
+    localb.type = 10;
+    localb.url = parama.field_shareurl;
+    localb.action = "";
+    localb.appName = o.aE(paramContext, parama.field_type);
+    localb.thumburl = parama.field_thumburl;
+    localb.lmv = parama.field_type;
+    localb.lmw = o.c(parama);
+    paramContext = k.b.a(localb, null, null);
+    AppMethodBeat.o(51634);
+    return paramContext;
   }
   
-  public final int doScene(g paramg, i parami)
+  public static String adp(int paramInt)
   {
-    AppMethodBeat.i(51633);
-    this.callback = parami;
-    int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(51633);
-    return i;
+    if (paramInt == 4) {
+      return "wxfbc915ff7c30e335";
+    }
+    if (paramInt == 3) {
+      return "wx482a4001c37e2b74";
+    }
+    return "wxfbc915ff7c30e335";
   }
   
-  public final int getType()
+  public static o.a fP(String paramString, int paramInt)
   {
-    return 1064;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(51632);
-    Log.d("MircoMsg.NetSceneScanProductReport", "errType = " + paramInt2 + ", errCode = " + paramInt3);
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(51632);
+    AppMethodBeat.i(51635);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(51635);
+      return null;
+    }
+    int i = o.aXB(paramString);
+    if (i == 3)
+    {
+      paramString = o.fQ(paramString, paramInt);
+      AppMethodBeat.o(51635);
+      return paramString;
+    }
+    if (i == 4)
+    {
+      paramString = o.aXC(paramString);
+      AppMethodBeat.o(51635);
+      return paramString;
+    }
+    AppMethodBeat.o(51635);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.p
  * JD-Core Version:    0.7.0.1
  */

@@ -6,20 +6,20 @@ import java.io.Writer;
 final class GLTextureView$l
   extends Writer
 {
-  private StringBuilder EjO;
+  private StringBuilder KwX;
   
   GLTextureView$l()
   {
     AppMethodBeat.i(115608);
-    this.EjO = new StringBuilder();
+    this.KwX = new StringBuilder();
     AppMethodBeat.o(115608);
   }
   
-  private void fw()
+  private void gU()
   {
     AppMethodBeat.i(115612);
-    if (this.EjO.length() > 0) {
-      this.EjO.delete(0, this.EjO.length());
+    if (this.KwX.length() > 0) {
+      this.KwX.delete(0, this.KwX.length());
     }
     AppMethodBeat.o(115612);
   }
@@ -27,14 +27,14 @@ final class GLTextureView$l
   public final void close()
   {
     AppMethodBeat.i(115609);
-    fw();
+    gU();
     AppMethodBeat.o(115609);
   }
   
   public final void flush()
   {
     AppMethodBeat.i(115610);
-    fw();
+    gU();
     AppMethodBeat.o(115610);
   }
   
@@ -46,13 +46,13 @@ final class GLTextureView$l
     {
       char c = paramArrayOfChar[(paramInt1 + i)];
       if (c == '\n') {
-        fw();
+        gU();
       }
       for (;;)
       {
         i += 1;
         break;
-        this.EjO.append(c);
+        this.KwX.append(c);
       }
     }
     AppMethodBeat.o(115611);
@@ -60,7 +60,7 @@ final class GLTextureView$l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.GLTextureView.l
  * JD-Core Version:    0.7.0.1
  */

@@ -3,52 +3,80 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class eaf
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int MYT;
+  public String Ufy;
+  public boolean Ufz;
   
-  public final int op(int paramInt, Object... paramVarArgs)
+  public final eaf btQ(String paramString)
   {
-    AppMethodBeat.i(125796);
-    if (paramInt == 0)
-    {
-      ((g.a.a.c.a)paramVarArgs[0]).aM(1, this.MYT);
-      AppMethodBeat.o(125796);
-      return 0;
+    this.Ufy = paramString;
+    this.Ufz = true;
+    return this;
+  }
+  
+  public final int computeSize()
+  {
+    AppMethodBeat.i(2387);
+    int i = 0;
+    if (this.Ufz) {
+      i = g.a.a.b.b.a.g(1, this.Ufy) + 0;
     }
-    if (paramInt == 1)
-    {
-      paramInt = g.a.a.b.b.a.bu(1, this.MYT);
-      AppMethodBeat.o(125796);
-      return paramInt + 0;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
-        }
+    AppMethodBeat.o(2387);
+    return i + 0;
+  }
+  
+  public final eaf de(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(198946);
+    paramArrayOfByte = new g.a.a.a.a(paramArrayOfByte, unknownTagHandler);
+    for (int i = getNextFieldNumber(paramArrayOfByte); i > 0; i = getNextFieldNumber(paramArrayOfByte)) {
+      if (!populateBuilderWithField(paramArrayOfByte, this, i)) {
+        paramArrayOfByte.iUs();
       }
-      AppMethodBeat.o(125796);
-      return 0;
     }
-    if (paramInt == 3)
+    AppMethodBeat.o(198946);
+    return this;
+  }
+  
+  public final boolean populateBuilderWithField(g.a.a.a.a parama, com.tencent.mm.cd.a parama1, int paramInt)
+  {
+    AppMethodBeat.i(2390);
+    parama1 = (eaf)parama1;
+    boolean bool = true;
+    switch (paramInt)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      eaf localeaf = (eaf)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
-      {
-      default: 
-        AppMethodBeat.o(125796);
-        return -1;
-      }
-      localeaf.MYT = locala.UbS.zi();
-      AppMethodBeat.o(125796);
-      return 0;
+    default: 
+      bool = false;
     }
-    AppMethodBeat.o(125796);
-    return -1;
+    for (;;)
+    {
+      AppMethodBeat.o(2390);
+      return bool;
+      parama1.btQ(parama.abFh.readString());
+    }
+  }
+  
+  public final byte[] toByteArray()
+  {
+    AppMethodBeat.i(2388);
+    byte[] arrayOfByte = super.toByteArray();
+    AppMethodBeat.o(2388);
+    return arrayOfByte;
+  }
+  
+  public final String toString()
+  {
+    return this.Ufy;
+  }
+  
+  public final void writeFields(g.a.a.c.a parama)
+  {
+    AppMethodBeat.i(2389);
+    if (this.Ufz) {
+      parama.f(1, this.Ufy);
+    }
+    AppMethodBeat.o(2389);
   }
 }
 

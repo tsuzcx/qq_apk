@@ -6,6 +6,7 @@ import android.app.Application.ActivityLifecycleCallbacks;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.card.d.c;
 import com.tencent.mm.plugin.card.d.r;
 import com.tencent.mm.plugin.card.model.am;
@@ -17,9 +18,9 @@ import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 public final class b
   implements Application.ActivityLifecycleCallbacks
 {
-  private int pYP = 0;
+  private int tuL = 0;
   
-  public static Application bWY()
+  public static Application cjC()
   {
     AppMethodBeat.i(113172);
     Application localApplication = (Application)MMApplicationContext.getContext().getApplicationContext();
@@ -40,37 +41,37 @@ public final class b
   public final void onActivityStarted(Activity paramActivity)
   {
     AppMethodBeat.i(113173);
-    if (this.pYP < 0)
+    if (this.tuL < 0)
     {
       if ((paramActivity == null) || (!(paramActivity instanceof CardDetailUI))) {
         break label90;
       }
       paramActivity = (CardDetailUI)paramActivity;
-      if (paramActivity.pZb != null)
+      if (paramActivity.tuX != null)
       {
-        com.tencent.mm.plugin.card.ui.view.g localg = paramActivity.pZb.pZz;
+        com.tencent.mm.plugin.card.ui.view.g localg = paramActivity.tuX.tvv;
         if ((localg != null) && ((localg instanceof m)))
         {
           Log.i("MicroMsg.CardAcitivityLifecycleListener", "CardAcitivityLifecycleListener on activity from background to foreground！is showing CardDetailUI,updateCodeView!");
-          paramActivity.pZb.pZz.d(c.qkS);
+          paramActivity.tuX.tvv.d(c.tGO);
         }
       }
     }
     for (;;)
     {
-      this.pYP += 1;
+      this.tuL += 1;
       AppMethodBeat.o(113173);
       return;
       label90:
-      com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
+      h.aHJ().postToWorker(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(113171);
           Log.i("MicroMsg.CardAcitivityLifecycleListener", "CardAcitivityLifecycleListener on activity from background to foreground！doUpdateOfflineDynamicCard!");
-          com.tencent.mm.plugin.card.b.g localg = am.cug();
+          com.tencent.mm.plugin.card.b.g localg = am.cHI();
           if (localg != null) {
-            localg.a(r.qlh);
+            localg.a(r.tHd);
           }
           AppMethodBeat.o(113171);
         }
@@ -80,7 +81,7 @@ public final class b
   
   public final void onActivityStopped(Activity paramActivity)
   {
-    this.pYP -= 1;
+    this.tuL -= 1;
   }
 }
 

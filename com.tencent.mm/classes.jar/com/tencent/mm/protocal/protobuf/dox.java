@@ -1,85 +1,86 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
 
 public final class dox
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int MSs;
-  public String MSt;
+  public boolean TVW;
+  public String title;
+  public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152669);
+    AppMethodBeat.i(91635);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.MSt == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: ResKey");
-        AppMethodBeat.o(152669);
-        throw paramVarArgs;
+      if (this.title != null) {
+        paramVarArgs.f(1, this.title);
       }
-      paramVarArgs.aM(1, this.MSs);
-      if (this.MSt != null) {
-        paramVarArgs.e(2, this.MSt);
+      if (this.url != null) {
+        paramVarArgs.f(2, this.url);
       }
-      AppMethodBeat.o(152669);
+      paramVarArgs.co(3, this.TVW);
+      AppMethodBeat.o(91635);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.bu(1, this.MSs) + 0;
-      paramInt = i;
-      if (this.MSt != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.MSt);
+    if (paramInt == 1) {
+      if (this.title == null) {
+        break label318;
       }
-      AppMethodBeat.o(152669);
-      return paramInt;
     }
-    if (paramInt == 2)
+    label318:
+    for (paramInt = g.a.a.b.b.a.g(1, this.title) + 0;; paramInt = 0)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+      int i = paramInt;
+      if (this.url != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.url);
+      }
+      paramInt = g.a.a.b.b.a.gL(3);
+      AppMethodBeat.o(91635);
+      return i + (paramInt + 1);
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
         }
-      }
-      if (this.MSt == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: ResKey");
-        AppMethodBeat.o(152669);
-        throw paramVarArgs;
-      }
-      AppMethodBeat.o(152669);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      dox localdox = (dox)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
-      {
-      default: 
-        AppMethodBeat.o(152669);
-        return -1;
-      case 1: 
-        localdox.MSs = locala.UbS.zi();
-        AppMethodBeat.o(152669);
+        AppMethodBeat.o(91635);
         return 0;
       }
-      localdox.MSt = locala.UbS.readString();
-      AppMethodBeat.o(152669);
-      return 0;
+      if (paramInt == 3)
+      {
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        dox localdox = (dox)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(91635);
+          return -1;
+        case 1: 
+          localdox.title = locala.abFh.readString();
+          AppMethodBeat.o(91635);
+          return 0;
+        case 2: 
+          localdox.url = locala.abFh.readString();
+          AppMethodBeat.o(91635);
+          return 0;
+        }
+        localdox.TVW = locala.abFh.AB();
+        AppMethodBeat.o(91635);
+        return 0;
+      }
+      AppMethodBeat.o(91635);
+      return -1;
     }
-    AppMethodBeat.o(152669);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dox
  * JD-Core Version:    0.7.0.1
  */

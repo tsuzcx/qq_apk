@@ -4,35 +4,35 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract interface a
 {
-  public static final a ctX = new a()
+  public static final a csc = new a()
   {
     public final void a(c paramAnonymousc)
     {
       AppMethodBeat.i(140459);
-      paramAnonymousc.a(b.cua);
+      paramAnonymousc.a(b.csf);
       AppMethodBeat.o(140459);
     }
     
     public final void a(String paramAnonymousString, c paramAnonymousc)
     {
       AppMethodBeat.i(140460);
-      paramAnonymousc.a(b.cua);
+      paramAnonymousc.a(b.csf);
       AppMethodBeat.o(140460);
     }
   };
-  public static final a ctY = new a()
+  public static final a csd = new a()
   {
     public final void a(c paramAnonymousc)
     {
       AppMethodBeat.i(140461);
-      paramAnonymousc.a(b.cub);
+      paramAnonymousc.a(b.csg);
       AppMethodBeat.o(140461);
     }
     
     public final void a(String paramAnonymousString, c paramAnonymousc)
     {
       AppMethodBeat.i(140462);
-      paramAnonymousc.a(b.cub);
+      paramAnonymousc.a(b.csg);
       AppMethodBeat.o(140462);
     }
   };

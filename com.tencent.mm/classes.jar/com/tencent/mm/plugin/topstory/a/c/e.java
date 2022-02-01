@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.topstory.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ado;
-import com.tencent.mm.protocal.protobuf.dkx;
-import com.tencent.mm.protocal.protobuf.dky;
-import com.tencent.mm.protocal.protobuf.eit;
+import com.tencent.mm.protocal.protobuf.adv;
+import com.tencent.mm.protocal.protobuf.dun;
+import com.tencent.mm.protocal.protobuf.duo;
+import com.tencent.mm.protocal.protobuf.esv;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -22,29 +22,29 @@ public final class e
   extends q
   implements m
 {
-  private eit GjJ;
+  private esv MWu;
   private i callback;
   public d rr;
   
-  public e(eit parameit, List<String> paramList)
+  public e(esv paramesv, List<String> paramList)
   {
     AppMethodBeat.i(91011);
     Log.i("MicroMsg.TopStory.NetSceneTopStoryGetVideoUrl", "Create NetSceneTopStoryGetVideoUrl Video");
-    this.GjJ = parameit;
-    parameit = new d.a();
-    parameit.funcId = getType();
-    parameit.uri = "/cgi-bin/mmsearch-bin/recommendgetvideourl";
-    parameit.iLN = new dkx();
-    parameit.iLO = new dky();
-    this.rr = parameit.aXF();
-    parameit = (dkx)this.rr.iLK.iLR;
+    this.MWu = paramesv;
+    paramesv = new d.a();
+    paramesv.funcId = getType();
+    paramesv.uri = "/cgi-bin/mmsearch-bin/recommendgetvideourl";
+    paramesv.lBU = new dun();
+    paramesv.lBV = new duo();
+    this.rr = paramesv.bgN();
+    paramesv = (dun)d.b.b(this.rr.lBR);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       String str = (String)paramList.next();
-      ado localado = new ado();
-      localado.pLq = str;
-      parameit.MOR.add(localado);
+      adv localadv = new adv();
+      localadv.sSY = str;
+      paramesv.UaQ.add(localadv);
     }
     AppMethodBeat.o(91011);
   }
@@ -73,7 +73,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.a.c.e
  * JD-Core Version:    0.7.0.1
  */

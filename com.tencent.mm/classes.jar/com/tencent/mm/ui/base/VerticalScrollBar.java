@@ -13,104 +13,131 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ah.a.c;
+import com.tencent.mm.ah.a.d;
+import com.tencent.mm.ah.a.e;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.k;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.at;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.ax;
 
 public abstract class VerticalScrollBar
   extends View
 {
-  View OTO;
-  private boolean OWK = false;
-  public a OWL;
-  private int OWM;
-  private int OWN;
-  private int OWO;
-  private int OWP = 0;
-  private int backgroundColor;
-  private int bxP;
-  private float haa;
+  protected float DUZ;
+  protected int DVa;
+  protected String[] DVb;
+  protected float DVc = 0.0F;
+  private r DVd;
+  protected TextView DVe;
+  private int DVf;
+  private int WmF = 0;
+  protected View Wnb;
+  private boolean WpW = false;
+  public a WpX;
+  protected int WpY;
+  protected int WpZ;
+  private int Wqa;
+  protected int backgroundColor;
+  private int bhr;
+  private float jLb;
   private Context mContext;
-  private int mEX;
-  private int mEY;
   private int maxHeight;
+  private int pEj;
+  private int pEk;
   private Paint paint;
-  private int textColor;
-  private float textSize;
-  protected float yuV;
-  protected int yuW;
-  protected String[] yuX;
-  private float yuY = 0.0F;
-  private p yuZ;
-  private TextView yva;
-  private int yvb;
+  protected int textColor;
+  protected float textSize;
   
   public VerticalScrollBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    ann();
+    atp();
     this.mContext = paramContext;
     setFocusable(true);
     setFocusableInTouchMode(true);
-    this.yvb = BackwardSupportUtil.BitmapFactory.fromDPToPix(paramContext, 3.0F);
-    this.OTO = inflate(paramContext, getToastLayoutId(), null);
-    this.OWO = BackwardSupportUtil.BitmapFactory.fromDPToPix(paramContext, this.yuW);
-    this.mEX = this.mContext.getResources().getDisplayMetrics().widthPixels;
-    this.mEY = this.mContext.getResources().getDisplayMetrics().heightPixels;
-    this.yuZ = new p(this.OTO, this.OWO, this.OWO);
-    this.yva = ((TextView)this.OTO.findViewById(2131307861));
-    this.textColor = at.aO(this.mContext, 2130968576);
-    this.OWM = this.mContext.getResources().getColor(2131101427);
-    this.backgroundColor = paramContext.getResources().getColor(2131101414);
-    this.OWN = at.fromDPToPix(getContext(), 7);
+    this.DVf = BackwardSupportUtil.BitmapFactory.fromDPToPix(paramContext, 3.0F);
+    this.Wnb = inflate(paramContext, getToastLayoutId(), null);
+    this.Wqa = BackwardSupportUtil.BitmapFactory.fromDPToPix(paramContext, this.DVa);
+    this.pEj = this.mContext.getResources().getDisplayMetrics().widthPixels;
+    this.pEk = this.mContext.getResources().getDisplayMetrics().heightPixels;
+    this.DVd = new r(this.Wnb, this.Wqa, this.Wqa);
+    this.DVe = ((TextView)this.Wnb.findViewById(a.g.show_head_toast_text));
+    this.textColor = aw.bg(this.mContext, a.c.Alphabet_text_color);
+    this.WpY = this.mContext.getResources().getColor(a.d.white_text_color);
+    this.backgroundColor = paramContext.getResources().getColor(a.d.wechat_green);
+    this.WpZ = aw.fromDPToPix(getContext(), 7);
     this.paint = new Paint();
     this.paint.setAntiAlias(true);
-    int i = (int)(a.aH(this.mContext, 2131165260) * a.ji(this.mContext));
-    this.maxHeight = (Math.max(this.mEY, this.mEX) - au.eu(this.mContext) - au.getStatusBarHeight(this.mContext) - au.aD(this.mContext) - i);
-    this.OWP = ((int)(this.maxHeight / (this.yuX.length * this.yuV)));
+    int i = (int)(a.aZ(this.mContext, a.e.DefaultTabbarHeight) * a.km(this.mContext));
+    this.maxHeight = (Math.max(this.pEk, this.pEj) - ax.ew(this.mContext) - ax.getStatusBarHeight(this.mContext) - ax.aB(this.mContext) - i);
+    this.WmF = ((int)(this.maxHeight / (this.DVb.length * this.DUZ)));
   }
   
-  protected abstract void ann();
+  protected void a(Canvas paramCanvas, float paramFloat1, float paramFloat2, float paramFloat3, Paint paramPaint, int paramInt)
+  {
+    paramCanvas.drawCircle(paramFloat1, paramFloat2, paramFloat3, paramPaint);
+  }
+  
+  protected void a(Canvas paramCanvas, float paramFloat1, float paramFloat2, Paint paramPaint, int paramInt, boolean paramBoolean)
+  {
+    paramCanvas.drawText(this.DVb[paramInt], paramFloat1, paramFloat2, paramPaint);
+  }
+  
+  protected abstract void atp();
+  
+  protected void byB(String paramString)
+  {
+    this.DVe.setText(paramString);
+  }
   
   protected abstract int getToastLayoutId();
+  
+  public final void hKy()
+  {
+    this.WpX = null;
+  }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     final int i = getMeasuredHeight();
     final int j = getMeasuredWidth();
-    int k = at.fromDPToPix(getContext(), 9);
-    this.textSize = at.fromDPToPix(getContext(), 11);
+    int k = aw.fromDPToPix(getContext(), 9);
+    this.textSize = aw.fromDPToPix(getContext(), 11);
     float f;
-    if (this.textSize > this.OWP)
+    label80:
+    label234:
+    boolean bool;
+    if (this.textSize > this.WmF)
     {
-      f = this.OWP;
+      f = this.WmF;
       this.textSize = f;
       if (this.textSize >= k) {
-        break label322;
+        break label343;
       }
       f = k;
-      label80:
       this.textSize = f;
       this.paint.setTextSize(this.textSize);
-      if (this.yuY != this.textSize)
+      if (this.DVc != this.textSize)
       {
-        this.yuY = this.textSize;
+        this.DVc = this.textSize;
         post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(142456);
-            if (VerticalScrollBar.this.yuX.length <= 0)
+            if (VerticalScrollBar.this.DVb.length <= 0)
             {
               AppMethodBeat.o(142456);
               return;
             }
-            int i = (int)VerticalScrollBar.a(VerticalScrollBar.this).measureText(VerticalScrollBar.this.yuX[(VerticalScrollBar.this.yuX.length - 1)]);
+            int i = (int)VerticalScrollBar.a(VerticalScrollBar.this).measureText(VerticalScrollBar.this.DVb[(VerticalScrollBar.this.DVb.length - 1)]);
             int k = a.fromDPToPix(VerticalScrollBar.this.getContext(), 16) + i;
-            int j = (int)(VerticalScrollBar.this.yuX.length * VerticalScrollBar.b(VerticalScrollBar.this) * VerticalScrollBar.this.yuV);
+            int j = (int)(VerticalScrollBar.this.DVb.length * VerticalScrollBar.this.textSize * VerticalScrollBar.this.DUZ);
             Log.i("MicroMsg.VerticalScrollBar", "onDraw newHeight:%s, viewHeight:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
             i = j;
             if (j == 0) {
@@ -128,34 +155,41 @@ public abstract class VerticalScrollBar
           }
         });
       }
-      if ((this.OWK) && (this.bxP != 0))
+      if ((this.WpW) && (this.bhr != 0))
       {
         this.paint.setStyle(Paint.Style.FILL);
         this.paint.setColor(this.backgroundColor);
-        paramCanvas.drawCircle(j / 2.0F, this.textSize / 2.0F + this.bxP * this.textSize * this.yuV + at.fromDPToPix(this.mContext, 1), this.OWN, this.paint);
+        a(paramCanvas, j / 2.0F, this.textSize / 2.0F + this.bhr * this.textSize * this.DUZ + aw.fromDPToPix(this.mContext, 1), this.WpZ, this.paint, this.bhr);
       }
       this.paint.setTextAlign(Paint.Align.CENTER);
       i = 0;
-      label229:
-      if (i >= this.yuX.length) {
+      if (i >= this.DVb.length) {
         return;
       }
-      if ((!this.OWK) || (this.bxP == 0) || (this.bxP != i)) {
-        break label330;
+      if ((!this.WpW) || (this.bhr != i)) {
+        break label351;
       }
-      this.paint.setColor(this.OWM);
+      bool = true;
+      label261:
+      if ((!this.WpW) || (this.bhr == 0) || (this.bhr != i)) {
+        break label357;
+      }
+      this.paint.setColor(this.WpY);
     }
     for (;;)
     {
-      paramCanvas.drawText(this.yuX[i], j / 2.0F, this.textSize + i * this.textSize * this.yuV, this.paint);
+      a(paramCanvas, j / 2, this.textSize + i * this.textSize * this.DUZ, this.paint, i, bool);
       i += 1;
-      break label229;
+      break label234;
       f = this.textSize;
       break;
-      label322:
+      label343:
       f = this.textSize;
       break label80;
-      label330:
+      label351:
+      bool = false;
+      break label261;
+      label357:
       this.paint.setColor(this.textColor);
     }
   }
@@ -164,38 +198,40 @@ public abstract class VerticalScrollBar
   {
     if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2))
     {
-      this.OWK = true;
-      this.haa = paramMotionEvent.getY();
-      if (this.haa < 0.0F) {
-        this.haa = 0.0F;
+      this.WpW = true;
+      this.jLb = paramMotionEvent.getY();
+      if (this.jLb < 0.0F) {
+        this.jLb = 0.0F;
       }
-      if (this.haa > getMeasuredHeight()) {
-        this.haa = getMeasuredHeight();
+      if (this.jLb > getMeasuredHeight()) {
+        this.jLb = getMeasuredHeight();
       }
-      int j = (int)(this.haa / (this.textSize * this.yuV));
+      int j = (int)(this.jLb / (this.textSize * this.DUZ));
       int i = j;
-      if (j >= this.yuX.length) {
-        i = this.yuX.length - 1;
+      if (j >= this.DVb.length) {
+        i = this.DVb.length - 1;
       }
-      this.bxP = i;
-      if (this.bxP != -1) {
-        break label294;
+      this.bhr = i;
+      if (this.bhr != -1) {
+        break label304;
       }
-      this.yva.setText(2131765029);
-      i = this.mEX - at.fromDPToPix(getContext(), 120);
-      j = (int)(this.textSize / 2.0F + this.bxP * this.textSize * this.yuV - this.OWO / 2.0D + (paramMotionEvent.getRawY() - paramMotionEvent.getY()));
+      byB(getResources().getString(a.k.scroll_bar_search));
+      i = this.pEj - aw.fromDPToPix(getContext(), 120);
+      int[] arrayOfInt = new int[2];
+      getLocationInWindow(arrayOfInt);
+      j = (int)(this.textSize / 2.0F + this.bhr * this.textSize * this.DUZ - this.Wqa / 2.0D + arrayOfInt[1]);
       if (paramMotionEvent.getAction() == 0) {
-        this.yuZ.showAtLocation(this, 0, i, j);
+        this.DVd.showAtLocation(this, 0, i, j);
       }
       if (paramMotionEvent.getAction() == 2) {
-        this.yuZ.update(i, j, this.OWO, this.OWO);
+        this.DVd.update(i, j, this.Wqa, this.Wqa);
       }
-      if (this.OWL != null)
+      if (this.WpX != null)
       {
-        if (this.bxP != -1) {
-          break label313;
+        if (this.bhr != -1) {
+          break label320;
         }
-        this.OWL.DP(a.aI(getContext(), 2131765029));
+        this.WpX.KH(a.ba(getContext(), a.k.scroll_bar_search));
       }
     }
     for (;;)
@@ -203,31 +239,31 @@ public abstract class VerticalScrollBar
       invalidate();
       if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
       {
-        this.yuZ.dismiss();
-        this.OWK = false;
+        this.DVd.dismiss();
+        this.WpW = false;
       }
       return true;
-      label294:
-      this.yva.setText(this.yuX[this.bxP]);
+      label304:
+      byB(this.DVb[this.bhr]);
       break;
-      label313:
-      this.OWL.DP(this.yuX[this.bxP]);
+      label320:
+      this.WpX.KH(this.DVb[this.bhr]);
     }
   }
   
   public void setOnScrollBarTouchListener(a parama)
   {
-    this.OWL = parama;
+    this.WpX = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void DP(String paramString);
+    public abstract void KH(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.VerticalScrollBar
  * JD-Core Version:    0.7.0.1
  */

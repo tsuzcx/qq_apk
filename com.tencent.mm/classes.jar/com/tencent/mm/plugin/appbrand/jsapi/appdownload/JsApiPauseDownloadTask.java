@@ -4,17 +4,17 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.s;
-import com.tencent.mm.plugin.appbrand.service.c;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.v;
 import com.tencent.mm.plugin.downloader.g.a;
+import com.tencent.mm.plugin.downloader.model.d;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public final class JsApiPauseDownloadTask
-  extends com.tencent.mm.plugin.appbrand.jsapi.d<c>
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<com.tencent.mm.plugin.appbrand.service.c>
 {
   public static final int CTRL_INDEX = 443;
   public static final String NAME = "pauseDownloadTask";
@@ -23,12 +23,12 @@ public final class JsApiPauseDownloadTask
     extends MainProcessTask
   {
     public static final Parcelable.Creator<PauseDownloadTask> CREATOR;
-    private int csv;
-    private s kAr;
-    private p lAi;
-    private boolean lAq;
-    private String lAr;
-    private long lAs;
+    private int cqA;
+    private v ntA;
+    private boolean ovH;
+    private String ovI;
+    private long ovJ;
+    private o ovz;
     
     static
     {
@@ -44,30 +44,30 @@ public final class JsApiPauseDownloadTask
       AppMethodBeat.o(45852);
     }
     
-    public PauseDownloadTask(p paramp, s params, int paramInt, JSONObject paramJSONObject)
+    public PauseDownloadTask(o paramo, v paramv, int paramInt, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(45851);
-      this.lAi = paramp;
-      this.kAr = params;
-      this.csv = paramInt;
-      this.lAs = paramJSONObject.optLong("downloadId");
-      this.lAq = true;
+      this.ovz = paramo;
+      this.ntA = paramv;
+      this.cqA = paramInt;
+      this.ovJ = paramJSONObject.optLong("downloadId");
+      this.ovH = true;
       AppMethodBeat.o(45851);
     }
     
-    public final void bjj()
+    public final void RW()
     {
       boolean bool = true;
       AppMethodBeat.i(45853);
-      Log.i("MicroMsg.JsApiPauseDownloadTask", "doPauseDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.lAs) });
-      if (this.lAs <= 0L) {}
+      Log.i("MicroMsg.JsApiPauseDownloadTask", "doPauseDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.ovJ) });
+      if (this.ovJ <= 0L) {}
       a locala;
-      for (this.lAr = "downloadId invalid";; this.lAr = "downloadId invalid")
+      for (this.ovI = "downloadId invalid";; this.ovI = "downloadId invalid")
       {
-        bDU();
+        bPt();
         AppMethodBeat.o(45853);
         return;
-        locala = com.tencent.mm.plugin.downloader.model.d.Cw(this.lAs);
+        locala = d.IF(this.ovJ);
         if (locala != null) {
           break;
         }
@@ -75,31 +75,31 @@ public final class JsApiPauseDownloadTask
       if (locala.field_downloadInWifi)
       {
         locala.field_downloadInWifi = false;
-        com.tencent.mm.plugin.downloader.model.d.e(locala);
+        d.e(locala);
       }
-      if (!f.cBv().Cp(this.lAs)) {}
+      if (!f.cPZ().Iy(this.ovJ)) {}
       for (;;)
       {
-        this.lAq = bool;
+        this.ovH = bool;
         break;
         bool = false;
       }
     }
     
-    public final void bjk()
+    public final void bsK()
     {
       AppMethodBeat.i(45854);
-      if (this.lAq)
+      if (this.ovH)
       {
-        if (Util.isNullOrNil(this.lAr)) {}
-        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.lAr }))
+        if (Util.isNullOrNil(this.ovI)) {}
+        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.ovI }))
         {
-          this.kAr.i(this.csv, this.lAi.h(str, null));
+          this.ntA.j(this.cqA, this.ovz.h(str, null));
           AppMethodBeat.o(45854);
           return;
         }
       }
-      this.kAr.i(this.csv, this.lAi.h("ok", null));
+      this.ntA.j(this.cqA, this.ovz.h("ok", null));
       AppMethodBeat.o(45854);
     }
     
@@ -107,12 +107,12 @@ public final class JsApiPauseDownloadTask
     {
       boolean bool = true;
       AppMethodBeat.i(45855);
-      this.lAs = paramParcel.readLong();
+      this.ovJ = paramParcel.readLong();
       if (paramParcel.readInt() == 1) {}
       for (;;)
       {
-        this.lAq = bool;
-        this.lAr = paramParcel.readString();
+        this.ovH = bool;
+        this.ovI = paramParcel.readString();
         AppMethodBeat.o(45855);
         return;
         bool = false;
@@ -122,12 +122,12 @@ public final class JsApiPauseDownloadTask
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45856);
-      paramParcel.writeLong(this.lAs);
-      if (this.lAq) {}
+      paramParcel.writeLong(this.ovJ);
+      if (this.ovH) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeInt(paramInt);
-        paramParcel.writeString(this.lAr);
+        paramParcel.writeString(this.ovI);
         AppMethodBeat.o(45856);
         return;
       }

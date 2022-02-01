@@ -1,18 +1,18 @@
 package com.tencent.mm.ui.chatting.d.b;
 
 import com.tencent.mm.storage.ca;
-import com.tencent.mm.ui.chatting.d.af;
+import com.tencent.mm.ui.chatting.d.ag;
 
 public abstract interface x
-  extends af
+  extends ag
 {
-  public abstract void Nx(long paramLong);
+  public abstract void VJ(long paramLong);
   
-  public abstract boolean cd(ca paramca);
+  public abstract boolean cx(ca paramca);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.b.x
  * JD-Core Version:    0.7.0.1
  */

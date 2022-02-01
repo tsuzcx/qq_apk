@@ -11,14 +11,14 @@ class AnimationHelperImpl22
   @TargetApi(8)
   public void cancelAnimation(View paramView, Animation paramAnimation)
   {
-    AppMethodBeat.i(215284);
+    AppMethodBeat.i(262250);
     paramAnimation.cancel();
-    AppMethodBeat.o(215284);
+    AppMethodBeat.o(262250);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.AnimationHelperImpl22
  * JD-Core Version:    0.7.0.1
  */

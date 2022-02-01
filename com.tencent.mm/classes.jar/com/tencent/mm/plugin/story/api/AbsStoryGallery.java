@@ -23,25 +23,25 @@ public abstract class AbsStoryGallery
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public abstract void UE(int paramInt);
-  
   public abstract void a(PullDownListView paramPullDownListView);
   
-  public abstract void aaB(int paramInt);
+  public abstract void aD(boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract void aaC(int paramInt);
+  public abstract void abq(int paramInt);
   
-  public abstract void ar(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void ahW(int paramInt);
   
-  public abstract void fmO();
+  public abstract void ahX(int paramInt);
   
-  public abstract void fmP();
+  public abstract void gbh();
   
-  public abstract void fmQ();
+  public abstract void gbi();
   
-  public abstract void fmR();
+  public abstract void gbj();
   
-  public abstract void fmS();
+  public abstract void gbk();
+  
+  public abstract void gbl();
   
   public abstract boolean onBackPressed();
   
@@ -63,11 +63,11 @@ public abstract class AbsStoryGallery
   
   public abstract void setStoryBrowseUIListener(g paramg);
   
-  public abstract void vI(boolean paramBoolean);
+  public abstract void zm(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.api.AbsStoryGallery
  * JD-Core Version:    0.7.0.1
  */

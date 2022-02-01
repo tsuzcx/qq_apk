@@ -240,7 +240,6 @@ public class AndroidOSafety
     //   185	200	253	finally
     //   208	223	253	finally
     //   231	246	253	finally
-    //   254	257	253	finally
   }
   
   public static void replaceTargetVersion(ApplicationInfo paramApplicationInfo)
@@ -335,7 +334,7 @@ public class AndroidOSafety
   
   private static int safetyImpl(Activity paramActivity)
   {
-    AppMethodBeat.i(215282);
+    AppMethodBeat.i(262837);
     if (prepare())
     {
       Object localObject = getStyleableWindow();
@@ -354,24 +353,24 @@ public class AndroidOSafety
         if (!bool2) {
           break;
         }
-        AppMethodBeat.o(215282);
+        AppMethodBeat.o(262837);
         return 1;
       }
       if (bool3)
       {
-        AppMethodBeat.o(215282);
+        AppMethodBeat.o(262837);
         return 2;
       }
       if (bool1)
       {
-        AppMethodBeat.o(215282);
+        AppMethodBeat.o(262837);
         return 3;
       }
-      AppMethodBeat.o(215282);
+      AppMethodBeat.o(262837);
       return 0;
     }
     Log.e("MicroMsg.AndroidOSafety", "prepare Failed %s", new Object[] { paramActivity });
-    AppMethodBeat.o(215282);
+    AppMethodBeat.o(262837);
     return 4;
   }
   
@@ -391,7 +390,7 @@ public class AndroidOSafety
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.AndroidOSafety
  * JD-Core Version:    0.7.0.1
  */

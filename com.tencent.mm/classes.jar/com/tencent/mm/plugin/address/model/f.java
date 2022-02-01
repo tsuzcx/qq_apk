@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.address.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.address.a.a;
-import com.tencent.mm.protocal.protobuf.djj;
-import com.tencent.mm.protocal.protobuf.djn;
-import com.tencent.mm.protocal.protobuf.djo;
+import com.tencent.mm.protocal.protobuf.dsy;
+import com.tencent.mm.protocal.protobuf.dtc;
+import com.tencent.mm.protocal.protobuf.dtd;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
@@ -22,24 +22,24 @@ public final class f
   implements m
 {
   private i callback;
-  public int ksR;
+  public int nky;
   private d rr;
   
   public f(int paramInt)
   {
     AppMethodBeat.i(20780);
-    this.ksR = 0;
+    this.nky = 0;
     d.a locala = new d.a();
-    locala.iLN = new djn();
-    locala.iLO = new djo();
+    locala.lBU = new dtc();
+    locala.lBV = new dtd();
     locala.uri = "/cgi-bin/micromsg-bin/rcptinforemove";
     locala.funcId = 416;
-    locala.iLP = 201;
+    locala.lBW = 201;
     locala.respCmdId = 1000000201;
-    this.rr = locala.aXF();
-    this.ksR = paramInt;
+    this.rr = locala.bgN();
+    this.nky = paramInt;
     Log.d("MicroMsg.NetSceneRcptInfoRemove", "remove Id ".concat(String.valueOf(paramInt)));
-    ((djn)this.rr.iLK.iLR).id = paramInt;
+    ((dtc)d.b.b(this.rr.lBR)).id = paramInt;
     AppMethodBeat.o(20780);
   }
   
@@ -63,14 +63,14 @@ public final class f
     Log.d("MicroMsg.NetSceneRcptInfoRemove", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = (djo)((d)params).iLL.iLR;
-      if (params.MNs.MNv != null)
+      params = (dtd)d.c.b(((d)params).lBS);
+      if (params.TZl.TZo != null)
       {
-        Log.d("MicroMsg.NetSceneRcptInfoRemove", "resp.rImpl.rcptinfolist.rcptinfolist " + params.MNs.MNv.size());
-        a.bqb();
-        a.bqd().t(params.MNs.MNv);
-        a.bqb();
-        a.bqd().bqf();
+        Log.d("MicroMsg.NetSceneRcptInfoRemove", "resp.rImpl.rcptinfolist.rcptinfolist " + params.TZl.TZo.size());
+        a.bAn();
+        a.bAp().u(params.TZl.TZo);
+        a.bAn();
+        a.bAp().bAs();
       }
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
@@ -79,7 +79,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.address.model.f
  * JD-Core Version:    0.7.0.1
  */

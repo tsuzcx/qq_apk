@@ -4,9 +4,9 @@ public abstract interface e
 {
   public static abstract interface a
   {
-    public abstract void aXh();
+    public abstract void bgo();
     
-    public abstract void aXi();
+    public abstract void bgp();
   }
 }
 

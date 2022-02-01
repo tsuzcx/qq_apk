@@ -8,11 +8,16 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface b
   extends a
 {
-  public abstract void a(Context paramContext, b.a parama1, b.a parama2);
+  public abstract void a(Context paramContext, a parama1, a parama2);
   
   public abstract void a(Context paramContext, String paramString, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener);
   
-  public abstract void a(Context paramContext, String paramString, b.a parama1, b.a parama2, b.a parama3);
+  public abstract void a(Context paramContext, String paramString, a parama1, a parama2, a parama3);
+  
+  public static abstract interface a
+  {
+    public abstract void onClick();
+  }
 }
 
 

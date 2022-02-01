@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(60528);
-    TNb = new k("NOT_COMPUTED", 0);
-    TNc = new k("COMPUTING", 1);
-    TNd = new k("RECURSION_WAS_DETECTED", 2);
-    TNe = new k[] { TNb, TNc, TNd };
+    abpD = new k("NOT_COMPUTED", 0);
+    abpE = new k("COMPUTING", 1);
+    abpF = new k("RECURSION_WAS_DETECTED", 2);
+    abpG = new k[] { abpD, abpE, abpF };
     AppMethodBeat.o(60528);
   }
   

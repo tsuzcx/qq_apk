@@ -17,9 +17,9 @@ public class APMidasPluginDownloadManager
   
   private APMidasPluginDownloadManager()
   {
-    AppMethodBeat.i(193246);
+    AppMethodBeat.i(253040);
     this.executorService = getExecutorService();
-    AppMethodBeat.o(193246);
+    AppMethodBeat.o(253040);
   }
   
   /* Error */
@@ -65,47 +65,47 @@ public class APMidasPluginDownloadManager
   
   private ExecutorService getExecutorService()
   {
-    AppMethodBeat.i(193249);
+    AppMethodBeat.i(253046);
     if (this.executorService == null) {
       this.executorService = Executors.newFixedThreadPool(1, threadFactory("Plugin Download Thread", false));
     }
     ExecutorService localExecutorService = this.executorService;
-    AppMethodBeat.o(193249);
+    AppMethodBeat.o(253046);
     return localExecutorService;
   }
   
   static void startDownload(Context paramContext, ArrayList<APMidasPluginDownInfo> paramArrayList, IAPMidasPluginDownListener paramIAPMidasPluginDownListener)
   {
-    AppMethodBeat.i(193247);
+    AppMethodBeat.i(253042);
     File localFile = paramContext.getApplicationContext().getDir("midaspluginsTemp", 0);
     new APMidasPluginDownloadManager().enqueue(new APMidasPluginDownloadWorker(paramContext, paramArrayList, localFile, paramIAPMidasPluginDownListener));
-    AppMethodBeat.o(193247);
+    AppMethodBeat.o(253042);
   }
   
   private static ThreadFactory threadFactory(String paramString, final boolean paramBoolean)
   {
-    AppMethodBeat.i(193250);
+    AppMethodBeat.i(253047);
     paramString = new ThreadFactory()
     {
       private AtomicInteger netThreadCount;
       
       public final Thread newThread(Runnable paramAnonymousRunnable)
       {
-        AppMethodBeat.i(193239);
+        AppMethodBeat.i(252989);
         paramAnonymousRunnable = new Thread(paramAnonymousRunnable, this.val$name + " " + this.netThreadCount.getAndIncrement());
         paramAnonymousRunnable.setPriority(10);
         paramAnonymousRunnable.setDaemon(paramBoolean);
-        AppMethodBeat.o(193239);
+        AppMethodBeat.o(252989);
         return paramAnonymousRunnable;
       }
     };
-    AppMethodBeat.o(193250);
+    AppMethodBeat.o(253047);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.download.APMidasPluginDownloadManager
  * JD-Core Version:    0.7.0.1
  */

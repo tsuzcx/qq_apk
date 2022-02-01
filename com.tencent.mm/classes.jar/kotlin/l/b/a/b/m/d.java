@@ -9,12 +9,12 @@ import kotlin.l.b.a.b.m.c.q;
 
 public final class d
 {
-  public static final d TNj;
+  public static final d abpL;
   
   static
   {
     AppMethodBeat.i(60575);
-    TNj = new d();
+    abpL = new d();
     AppMethodBeat.o(60575);
   }
   
@@ -114,9 +114,9 @@ public final class d
   public final boolean a(q paramq, h paramh1, h paramh2)
   {
     AppMethodBeat.i(60572);
-    p.h(paramq, "context");
-    p.h(paramh1, "a");
-    p.h(paramh2, "b");
+    p.k(paramq, "context");
+    p.k(paramh1, "a");
+    p.k(paramh2, "b");
     boolean bool = b(paramq, paramh1, paramh2);
     AppMethodBeat.o(60572);
     return bool;
@@ -124,7 +124,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.d
  * JD-Core Version:    0.7.0.1
  */

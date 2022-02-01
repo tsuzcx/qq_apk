@@ -11,22 +11,22 @@ import org.json.JSONObject;
 public final class a
 {
   public String app_id;
-  public String iwv;
-  public String ixw;
-  public int nHh;
-  public String pRX;
-  public String pRY;
-  public String pRZ;
-  public String pSa;
-  public int pSb;
-  public String pSc;
-  public int pSd;
-  public String pSe;
-  public String pSf;
-  public String pSg;
-  public boolean pSh;
-  public String pnW;
+  public int end_time;
+  public String llI;
+  public String lmL;
+  public int qJt;
+  public String swW;
   public String title;
+  public String tnX;
+  public String tnY;
+  public String tnZ;
+  public String toa;
+  public String tob;
+  public int toc;
+  public String tod;
+  public String toe;
+  public String tof;
+  public boolean tog;
   public String userName;
   
   private static LinkedList<a> a(JSONArray paramJSONArray, boolean paramBoolean)
@@ -43,23 +43,23 @@ public final class a
     {
       JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
       a locala = new a();
-      locala.pRX = localJSONObject.optString("card_tp_id");
-      locala.nHh = localJSONObject.optInt("card_type");
-      locala.ixw = localJSONObject.optString("color");
-      locala.iwv = localJSONObject.optString("logo_url");
+      locala.tnX = localJSONObject.optString("card_tp_id");
+      locala.qJt = localJSONObject.optInt("card_type");
+      locala.lmL = localJSONObject.optString("color");
+      locala.llI = localJSONObject.optString("logo_url");
       locala.title = localJSONObject.optString("title");
-      locala.pRY = localJSONObject.optString("sub_title");
-      locala.pRZ = localJSONObject.optString("aux_title");
-      locala.pSa = localJSONObject.optString("encrypt_code");
+      locala.tnY = localJSONObject.optString("sub_title");
+      locala.tnZ = localJSONObject.optString("aux_title");
+      locala.toa = localJSONObject.optString("encrypt_code");
       locala.userName = localJSONObject.optString("from_user_name");
       locala.app_id = localJSONObject.optString("app_id");
-      locala.pSb = localJSONObject.optInt("end_time");
-      locala.pSc = localJSONObject.optString("card_user_id");
-      locala.pSd = localJSONObject.optInt("choose_optional");
-      locala.pSf = localJSONObject.optString("invoice_item");
-      locala.pSg = localJSONObject.optString("invoice_status");
-      locala.pSe = localJSONObject.optString("invoice_title");
-      locala.pSh = paramBoolean;
+      locala.end_time = localJSONObject.optInt("end_time");
+      locala.tob = localJSONObject.optString("card_user_id");
+      locala.toc = localJSONObject.optInt("choose_optional");
+      locala.toe = localJSONObject.optString("invoice_item");
+      locala.tof = localJSONObject.optString("invoice_status");
+      locala.tod = localJSONObject.optString("invoice_title");
+      locala.tog = paramBoolean;
       localLinkedList.add(locala);
       i += 1;
     }
@@ -67,7 +67,7 @@ public final class a
     return localLinkedList;
   }
   
-  public static LinkedList<a> aji(String paramString)
+  public static LinkedList<a> aqV(String paramString)
   {
     AppMethodBeat.i(112714);
     if (TextUtils.isEmpty(paramString))
@@ -89,7 +89,7 @@ public final class a
     return null;
   }
   
-  public static LinkedList<a> ajj(String paramString)
+  public static LinkedList<a> aqW(String paramString)
   {
     AppMethodBeat.i(112715);
     if (TextUtils.isEmpty(paramString))

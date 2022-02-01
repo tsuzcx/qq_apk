@@ -23,13 +23,13 @@ public final class y
   public final ab b(kotlin.l.b.a.b.b.y paramy)
   {
     AppMethodBeat.i(60123);
-    p.h(paramy, "module");
-    a locala = g.TcO.Tem;
-    p.g(locala, "KotlinBuiltIns.FQ_NAMES.uLong");
+    p.k(paramy, "module");
+    a locala = g.aaFI.aaHg;
+    p.j(locala, "KotlinBuiltIns.FQ_NAMES.uLong");
     paramy = s.b(paramy, locala);
     if (paramy != null)
     {
-      paramy = paramy.hAG();
+      paramy = paramy.iET();
       if (paramy != null)
       {
         paramy = (ab)paramy;
@@ -37,8 +37,8 @@ public final class y
         return paramy;
       }
     }
-    paramy = u.bun("Unsigned type ULong not found");
-    p.g(paramy, "ErrorUtils.createErrorTy…ed type ULong not found\")");
+    paramy = u.bHp("Unsigned type ULong not found");
+    p.j(paramy, "ErrorUtils.createErrorTy…ed type ULong not found\")");
     paramy = (ab)paramy;
     AppMethodBeat.o(60123);
     return paramy;
@@ -54,7 +54,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.j.b.y
  * JD-Core Version:    0.7.0.1
  */

@@ -4,31 +4,29 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
 import com.tencent.mm.compatible.util.Exif;
-import com.tencent.mm.g.a.ay;
-import com.tencent.mm.g.a.to;
-import com.tencent.mm.g.a.to.a;
-import com.tencent.mm.g.a.tp;
-import com.tencent.mm.g.b.a.go;
-import com.tencent.mm.g.c.fx;
+import com.tencent.mm.f.a.ba;
+import com.tencent.mm.f.a.uq;
+import com.tencent.mm.f.a.uq.a;
+import com.tencent.mm.f.a.ur;
+import com.tencent.mm.f.b.a.it;
+import com.tencent.mm.f.c.ge;
 import com.tencent.mm.kernel.api.c;
-import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.plugin.scanner.h.b;
-import com.tencent.mm.plugin.scanner.model.aj;
-import com.tencent.mm.plugin.scanner.model.ak;
-import com.tencent.mm.plugin.scanner.model.m;
-import com.tencent.mm.plugin.scanner.util.k;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.scanner.model.ah;
+import com.tencent.mm.plugin.scanner.model.ai;
 import com.tencent.mm.plugin.scanner.util.k.a;
 import com.tencent.mm.plugin.scanner.util.k.b;
-import com.tencent.mm.plugin.scanner.util.p;
-import com.tencent.mm.plugin.scanner.util.p.a;
-import com.tencent.mm.plugin.scanner.util.p.b;
-import com.tencent.mm.protocal.protobuf.ctn;
+import com.tencent.mm.plugin.scanner.util.l;
+import com.tencent.mm.plugin.scanner.util.l.a;
+import com.tencent.mm.plugin.scanner.util.l.b;
+import com.tencent.mm.protocal.protobuf.dcm;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.event.IListener;
@@ -37,91 +35,85 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MD5Util;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storagebase.h.b;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
 public class PluginScanTranslation
   extends com.tencent.mm.kernel.b.f
-  implements i, com.tencent.mm.kernel.api.bucket.a, c, e
+  implements i, com.tencent.mm.kernel.api.bucket.a, c, f
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private k CzC;
-  private b CzD;
-  private HashMap<Integer, ak> CzE;
-  private HashMap<Integer, go> CzF;
-  private HashMap<Integer, Long> CzG;
-  private k.b CzH;
-  private IListener<ay> CzI;
-  private IListener<to> CzJ;
+  private l IBk;
+  private com.tencent.mm.plugin.scanner.i.b IBl;
+  private HashMap<Integer, ai> IBm;
+  private HashMap<Integer, it> IBn;
+  private HashMap<Integer, Long> IBo;
+  private l.b IBp;
+  private IListener<ba> IBq;
+  private IListener<uq> IBr;
   
   static
   {
     AppMethodBeat.i(120855);
     HashMap localHashMap = new HashMap();
     baseDBFactories = localHashMap;
-    localHashMap.put(Integer.valueOf("scan_translation_result_table".hashCode()), new h.b()
-    {
-      public final String[] getSQLs()
-      {
-        return b.SQL_CREATE;
-      }
-    });
+    localHashMap.put(Integer.valueOf("scan_translation_result_table".hashCode()), new PluginScanTranslation.1());
     AppMethodBeat.o(120855);
   }
   
   public PluginScanTranslation()
   {
     AppMethodBeat.i(120843);
-    this.CzC = new k();
-    this.CzE = new HashMap();
-    this.CzF = new HashMap();
-    this.CzG = new HashMap();
-    this.CzH = new k.b()
+    this.IBk = new l();
+    this.IBm = new HashMap();
+    this.IBn = new HashMap();
+    this.IBo = new HashMap();
+    this.IBp = new l.b()
     {
       public final void d(int paramAnonymousInt, Bitmap paramAnonymousBitmap)
       {
         AppMethodBeat.i(120838);
-        if (PluginScanTranslation.this.CzE.containsKey(Integer.valueOf(paramAnonymousInt)))
+        if (PluginScanTranslation.this.IBm.containsKey(Integer.valueOf(paramAnonymousInt)))
         {
-          if ((PluginScanTranslation.this.CzF.containsKey(Integer.valueOf(paramAnonymousInt))) && (PluginScanTranslation.this.CzG.containsKey(Integer.valueOf(paramAnonymousInt))))
+          if ((PluginScanTranslation.this.IBn.containsKey(Integer.valueOf(paramAnonymousInt))) && (PluginScanTranslation.this.IBo.containsKey(Integer.valueOf(paramAnonymousInt))))
           {
-            ((go)PluginScanTranslation.this.CzF.get(Integer.valueOf(paramAnonymousInt))).eJW = (System.currentTimeMillis() - ((Long)PluginScanTranslation.this.CzG.get(Integer.valueOf(paramAnonymousInt))).longValue());
-            ((go)PluginScanTranslation.this.CzF.get(Integer.valueOf(paramAnonymousInt))).bfK();
-            PluginScanTranslation.this.CzF.remove(Integer.valueOf(paramAnonymousInt));
-            PluginScanTranslation.this.CzG.remove(Integer.valueOf(paramAnonymousInt));
-            Log.i("MicroMsg.PluginScanTranslation", "translationReports size %d, translationUpload size %d", new Object[] { Integer.valueOf(PluginScanTranslation.this.CzF.size()), Integer.valueOf(PluginScanTranslation.this.CzG.size()) });
+            ((it)PluginScanTranslation.this.IBn.get(Integer.valueOf(paramAnonymousInt))).gCN = (System.currentTimeMillis() - ((Long)PluginScanTranslation.this.IBo.get(Integer.valueOf(paramAnonymousInt))).longValue());
+            ((it)PluginScanTranslation.this.IBn.get(Integer.valueOf(paramAnonymousInt))).bpa();
+            PluginScanTranslation.this.IBn.remove(Integer.valueOf(paramAnonymousInt));
+            PluginScanTranslation.this.IBo.remove(Integer.valueOf(paramAnonymousInt));
+            Log.i("MicroMsg.PluginScanTranslation", "translationReports size %d, translationUpload size %d", new Object[] { Integer.valueOf(PluginScanTranslation.this.IBn.size()), Integer.valueOf(PluginScanTranslation.this.IBo.size()) });
           }
-          if (!com.tencent.mm.kernel.g.aAc())
+          if (!h.aHB())
           {
             AppMethodBeat.o(120838);
             return;
           }
-          String str = ((PluginScanTranslation)com.tencent.mm.kernel.g.ah(PluginScanTranslation.class)).genTranslationResultImgPath("jpg");
+          String str = ((PluginScanTranslation)h.ag(PluginScanTranslation.class)).genTranslationResultImgPath("jpg");
           try
           {
             BitmapUtil.saveBitmapToImage(paramAnonymousBitmap, 80, Bitmap.CompressFormat.JPEG, str, false);
-            Object localObject = new aj();
-            paramAnonymousBitmap = (ak)PluginScanTranslation.this.CzE.get(Integer.valueOf(paramAnonymousInt));
-            ((aj)localObject).field_originMD5 = MD5Util.getMD5String(paramAnonymousBitmap.jrK + s.boX(paramAnonymousBitmap.jrK));
-            ((aj)localObject).field_resultFile = str;
-            ((aj)localObject).field_fromLang = paramAnonymousBitmap.eab;
-            ((aj)localObject).field_toLang = paramAnonymousBitmap.eac;
-            ((aj)localObject).field_brand = paramAnonymousBitmap.brand;
+            Object localObject = new ah();
+            paramAnonymousBitmap = (ai)PluginScanTranslation.this.IBm.get(Integer.valueOf(paramAnonymousInt));
+            ((ah)localObject).field_originMD5 = MD5Util.getMD5String(paramAnonymousBitmap.mhn + u.bBR(paramAnonymousBitmap.mhn));
+            ((ah)localObject).field_resultFile = str;
+            ((ah)localObject).field_fromLang = paramAnonymousBitmap.fTW;
+            ((ah)localObject).field_toLang = paramAnonymousBitmap.fTX;
+            ((ah)localObject).field_brand = paramAnonymousBitmap.brand;
             Log.i("MicroMsg.PluginScanTranslation", "translate %d success, insert translate result %s", new Object[] { Integer.valueOf(paramAnonymousInt), str });
-            ((PluginScanTranslation)com.tencent.mm.kernel.g.ah(PluginScanTranslation.class)).getTranslationResultStorage().a((aj)localObject);
-            localObject = new tp();
-            ((tp)localObject).dZZ.dEb = paramAnonymousInt;
-            ((tp)localObject).dZZ.dDz = true;
-            ((tp)localObject).dZZ.eaa = str;
-            ((tp)localObject).dZZ.eab = paramAnonymousBitmap.eab;
-            ((tp)localObject).dZZ.eac = paramAnonymousBitmap.eac;
-            if (PluginScanTranslation.this.CzF.containsKey(Integer.valueOf(paramAnonymousInt))) {
-              ((tp)localObject).dZZ.source = ((int)((go)PluginScanTranslation.this.CzF.get(Integer.valueOf(paramAnonymousInt))).eDV);
+            ((PluginScanTranslation)h.ag(PluginScanTranslation.class)).getTranslationResultStorage().a((ah)localObject);
+            localObject = new ur();
+            ((ur)localObject).fTU.fwM = paramAnonymousInt;
+            ((ur)localObject).fTU.fwi = true;
+            ((ur)localObject).fTU.fTV = str;
+            ((ur)localObject).fTU.fTW = paramAnonymousBitmap.fTW;
+            ((ur)localObject).fTU.fTX = paramAnonymousBitmap.fTX;
+            if (PluginScanTranslation.this.IBn.containsKey(Integer.valueOf(paramAnonymousInt))) {
+              ((ur)localObject).fTU.source = ((int)((it)PluginScanTranslation.this.IBn.get(Integer.valueOf(paramAnonymousInt))).gBe);
             }
             EventCenter.instance.publish((IEvent)localObject);
-            PluginScanTranslation.this.CzE.remove(Integer.valueOf(paramAnonymousInt));
+            PluginScanTranslation.this.IBm.remove(Integer.valueOf(paramAnonymousInt));
             AppMethodBeat.o(120838);
             return;
           }
@@ -134,107 +126,104 @@ public class PluginScanTranslation
         AppMethodBeat.o(120838);
       }
     };
-    this.CzI = new IListener() {};
-    this.CzJ = new IListener()
+    this.IBq = new IListener() {};
+    this.IBr = new IListener()
     {
-      private boolean a(to paramAnonymousto)
+      private boolean a(uq paramAnonymousuq)
       {
         AppMethodBeat.i(120841);
-        if (!Util.isNullOrNil(paramAnonymousto.dZY.filePath)) {
+        if (!Util.isNullOrNil(paramAnonymousuq.fTT.filePath)) {
           try
           {
-            Log.i("MicroMsg.PluginScanTranslation", "request to translate img %s, sessionId %d", new Object[] { paramAnonymousto.dZY.filePath, Integer.valueOf(paramAnonymousto.dZY.dEb) });
-            Object localObject1 = MD5Util.getMD5String(paramAnonymousto.dZY.filePath + s.boX(paramAnonymousto.dZY.filePath));
-            localObject1 = ((PluginScanTranslation)com.tencent.mm.kernel.g.ah(PluginScanTranslation.class)).getTranslationResultStorage().aMG((String)localObject1);
+            Log.i("MicroMsg.PluginScanTranslation", "request to translate img %s, sessionId %d", new Object[] { paramAnonymousuq.fTT.filePath, Integer.valueOf(paramAnonymousuq.fTT.fwM) });
+            Object localObject1 = MD5Util.getMD5String(paramAnonymousuq.fTT.filePath + u.bBR(paramAnonymousuq.fTT.filePath));
+            localObject1 = ((PluginScanTranslation)h.ag(PluginScanTranslation.class)).getTranslationResultStorage().aXn((String)localObject1);
             if (localObject1 != null)
             {
               Log.i("MicroMsg.PluginScanTranslation", "already has translation result");
-              localObject2 = ((fx)localObject1).field_resultFile;
-              if (s.YS((String)localObject2))
+              localObject2 = ((ge)localObject1).field_resultFile;
+              if (u.agG((String)localObject2))
               {
-                localObject3 = new tp();
-                ((tp)localObject3).dZZ.dEb = paramAnonymousto.dZY.dEb;
-                ((tp)localObject3).dZZ.dDz = true;
-                ((tp)localObject3).dZZ.eaa = ((String)localObject2);
-                ((tp)localObject3).dZZ.eab = ((fx)localObject1).field_fromLang;
-                ((tp)localObject3).dZZ.eac = ((fx)localObject1).field_toLang;
+                localObject3 = new ur();
+                ((ur)localObject3).fTU.fwM = paramAnonymousuq.fTT.fwM;
+                ((ur)localObject3).fTU.fwi = true;
+                ((ur)localObject3).fTU.fTV = ((String)localObject2);
+                ((ur)localObject3).fTU.fTW = ((ge)localObject1).field_fromLang;
+                ((ur)localObject3).fTU.fTX = ((ge)localObject1).field_toLang;
                 EventCenter.instance.publish((IEvent)localObject3);
-                PluginScanTranslation.this.CzE.remove(Integer.valueOf(paramAnonymousto.dZY.dEb));
+                PluginScanTranslation.this.IBm.remove(Integer.valueOf(paramAnonymousuq.fTT.fwM));
                 AppMethodBeat.o(120841);
                 return true;
               }
               Log.w("MicroMsg.PluginScanTranslation", "can not find old translation result!");
             }
-            Object localObject3 = new go();
-            ((go)localObject3).eDV = a.Wo(paramAnonymousto.dZY.scene);
-            PluginScanTranslation.this.CzF.put(Integer.valueOf(paramAnonymousto.dZY.dEb), localObject3);
-            ak localak = new ak();
-            localak.jrK = paramAnonymousto.dZY.filePath;
-            localak.CHv = paramAnonymousto.dZY.filePath;
-            int i = Exif.fromFile(paramAnonymousto.dZY.filePath).getOrientationInDegree();
+            Object localObject3 = new it();
+            ((it)localObject3).gBe = b.ade(paramAnonymousuq.fTT.scene);
+            PluginScanTranslation.this.IBn.put(Integer.valueOf(paramAnonymousuq.fTT.fwM), localObject3);
+            ai localai = new ai();
+            localai.mhn = paramAnonymousuq.fTT.filePath;
+            localai.IMH = paramAnonymousuq.fTT.filePath;
+            int i = Exif.fromFile(paramAnonymousuq.fTT.filePath).getOrientationInDegree();
             Log.i("MicroMsg.PluginScanTranslation", "original img degree %s", new Object[] { Integer.valueOf(i) });
-            Object localObject2 = paramAnonymousto.dZY.filePath;
-            final String str = p.aMv(paramAnonymousto.dZY.filePath);
+            Object localObject2 = paramAnonymousuq.fTT.filePath;
+            final String str = com.tencent.mm.plugin.scanner.util.k.aXA(paramAnonymousuq.fTT.filePath);
             localObject1 = localObject2;
             if (i != 0)
             {
-              Bitmap localBitmap = BitmapUtil.decodeFile(paramAnonymousto.dZY.filePath, new BitmapFactory.Options());
+              Bitmap localBitmap = BitmapUtil.decodeFile(paramAnonymousuq.fTT.filePath, new BitmapFactory.Options());
               localObject1 = localObject2;
               if (localBitmap != null)
               {
                 localObject2 = BitmapUtil.rotate(localBitmap, i);
-                localObject1 = ((f)com.tencent.mm.kernel.g.ah(f.class)).genScanTmpImgPath("jpg");
+                localObject1 = ((g)h.ag(g.class)).genScanTmpImgPath("jpg");
                 BitmapUtil.saveBitmapToImage((Bitmap)localObject2, 80, Bitmap.CompressFormat.JPEG, (String)localObject1, false);
-                localak.CHv = ((String)localObject1);
+                localai.IMH = ((String)localObject1);
               }
             }
-            PluginScanTranslation.this.CzE.put(Integer.valueOf(paramAnonymousto.dZY.dEb), localak);
+            PluginScanTranslation.this.IBm.put(Integer.valueOf(paramAnonymousuq.fTT.fwM), localai);
             final long l = System.currentTimeMillis();
-            PluginScanTranslation.this.CzG.put(Integer.valueOf(paramAnonymousto.dZY.dEb), Long.valueOf(l));
-            ((f)com.tencent.mm.kernel.g.ah(f.class)).getScanCdnService().a(str, (String)localObject1, com.tencent.mm.i.a.MediaType_IMAGE, new p.a()
+            PluginScanTranslation.this.IBo.put(Integer.valueOf(paramAnonymousuq.fTT.fwM), Long.valueOf(l));
+            com.tencent.mm.plugin.scanner.util.k.a(str, (String)localObject1, com.tencent.mm.i.a.MediaType_IMAGE, new k.a()
             {
-              public final void a(String paramAnonymous2String, p.b paramAnonymous2b)
+              public final void a(String paramAnonymous2String, k.b paramAnonymous2b)
               {
-                AppMethodBeat.i(120840);
+                AppMethodBeat.i(212277);
                 if ((!Util.isNullOrNil(paramAnonymous2String)) && (paramAnonymous2String.equals(str)))
                 {
-                  this.CzM.eJU = (System.currentTimeMillis() - l);
-                  Log.i("MicroMsg.PluginScanTranslation", "upload img cost %d", new Object[] { Long.valueOf(this.CzM.eJU) });
-                  this.CzM.uq(paramAnonymous2b.fileId);
-                  this.CzM.ur(paramAnonymous2b.aeskey);
-                  switch (paramAnonymous2b.errCode)
-                  {
-                  }
+                  this.IBu.gJx = (System.currentTimeMillis() - l);
+                  Log.i("MicroMsg.PluginScanTranslation", "upload img cost %d", new Object[] { Long.valueOf(this.IBu.gJx) });
+                  this.IBu.zP(paramAnonymous2b.fileId);
+                  this.IBu.zQ(paramAnonymous2b.aeskey);
                 }
-                for (;;)
+                switch (paramAnonymous2b.errCode)
                 {
-                  AppMethodBeat.o(120840);
+                default: 
+                  this.IBu.gBP = 3L;
+                  this.IBu.gCN = (System.currentTimeMillis() - l);
+                  this.IBu.bpa();
+                  PluginScanTranslation.this.IBn.remove(Integer.valueOf(this.IBw.fTT.fwM));
+                  PluginScanTranslation.this.IBo.remove(Integer.valueOf(this.IBw.fTT.fwM));
+                  Log.i("MicroMsg.PluginScanTranslation", "translationReports size %d, translationUpload size %d, errCode: %s", new Object[] { Integer.valueOf(PluginScanTranslation.this.IBn.size()), Integer.valueOf(PluginScanTranslation.this.IBo.size()), Integer.valueOf(paramAnonymous2b.errCode) });
+                  PluginScanTranslation.access$300(PluginScanTranslation.this, this.IBw.fTT.fwM);
+                  AppMethodBeat.o(212277);
                   return;
-                  if (!Util.isNullOrNil(new String[] { paramAnonymous2b.fileId, paramAnonymous2b.aeskey }))
-                  {
-                    Log.i("MicroMsg.PluginScanTranslation", "upload img success, fileId %s", new Object[] { paramAnonymous2b.fileId });
-                    paramAnonymous2String = new m(this.CzO.dZY.scene, this.CzO.dZY.dEb, (int)s.boW(this.CzP), paramAnonymous2b.fileId, paramAnonymous2b.aeskey);
-                    com.tencent.mm.kernel.g.azz().a(paramAnonymous2String, 0);
-                    AppMethodBeat.o(120840);
-                    return;
-                  }
-                  this.CzM.eEt = 3L;
-                  this.CzM.eJW = (System.currentTimeMillis() - l);
-                  this.CzM.bfK();
-                  PluginScanTranslation.this.CzF.remove(Integer.valueOf(this.CzO.dZY.dEb));
-                  PluginScanTranslation.this.CzG.remove(Integer.valueOf(this.CzO.dZY.dEb));
-                  Log.i("MicroMsg.PluginScanTranslation", "translationReports size %d, translationUpload size %d", new Object[] { Integer.valueOf(PluginScanTranslation.this.CzF.size()), Integer.valueOf(PluginScanTranslation.this.CzG.size()) });
-                  PluginScanTranslation.access$300(PluginScanTranslation.this, this.CzO.dZY.dEb);
-                  AppMethodBeat.o(120840);
-                  return;
-                  this.CzM.eEt = 3L;
-                  this.CzM.eJW = (System.currentTimeMillis() - l);
-                  this.CzM.bfK();
-                  PluginScanTranslation.this.CzF.remove(Integer.valueOf(this.CzO.dZY.dEb));
-                  PluginScanTranslation.this.CzG.remove(Integer.valueOf(this.CzO.dZY.dEb));
-                  Log.i("MicroMsg.PluginScanTranslation", "translationReports size %d, translationUpload size %d", new Object[] { Integer.valueOf(PluginScanTranslation.this.CzF.size()), Integer.valueOf(PluginScanTranslation.this.CzG.size()) });
-                  PluginScanTranslation.access$300(PluginScanTranslation.this, this.CzO.dZY.dEb);
                 }
+                if (!Util.isNullOrNil(new String[] { paramAnonymous2b.fileId, paramAnonymous2b.aeskey }))
+                {
+                  Log.i("MicroMsg.PluginScanTranslation", "upload img success, fileId %s", new Object[] { paramAnonymous2b.fileId });
+                  paramAnonymous2String = new com.tencent.mm.plugin.scanner.model.k(this.IBw.fTT.scene, this.IBw.fTT.fwM, (int)u.bBQ(this.IBx), paramAnonymous2b.fileId, paramAnonymous2b.aeskey);
+                  h.aGY().a(paramAnonymous2String, 0);
+                  AppMethodBeat.o(212277);
+                  return;
+                }
+                this.IBu.gBP = 3L;
+                this.IBu.gCN = (System.currentTimeMillis() - l);
+                this.IBu.bpa();
+                PluginScanTranslation.this.IBn.remove(Integer.valueOf(this.IBw.fTT.fwM));
+                PluginScanTranslation.this.IBo.remove(Integer.valueOf(this.IBw.fTT.fwM));
+                Log.i("MicroMsg.PluginScanTranslation", "translationReports size %d, translationUpload size %d", new Object[] { Integer.valueOf(PluginScanTranslation.this.IBn.size()), Integer.valueOf(PluginScanTranslation.this.IBo.size()) });
+                PluginScanTranslation.access$300(PluginScanTranslation.this, this.IBw.fTT.fwM);
+                AppMethodBeat.o(212277);
               }
             });
             AppMethodBeat.o(120841);
@@ -243,7 +232,7 @@ public class PluginScanTranslation
           catch (Exception localException)
           {
             Log.printErrStackTrace("MicroMsg.PluginScanTranslation", localException, "", new Object[0]);
-            PluginScanTranslation.access$300(PluginScanTranslation.this, paramAnonymousto.dZY.dEb);
+            PluginScanTranslation.access$300(PluginScanTranslation.this, paramAnonymousuq.fTT.fwM);
           }
         }
         AppMethodBeat.o(120841);
@@ -256,18 +245,18 @@ public class PluginScanTranslation
   private void sendTranslationFailEvent(int paramInt)
   {
     AppMethodBeat.i(120848);
-    tp localtp = new tp();
-    localtp.dZZ.dEb = paramInt;
-    localtp.dZZ.dDz = false;
-    if (this.CzE.containsKey(Integer.valueOf(paramInt)))
+    ur localur = new ur();
+    localur.fTU.fwM = paramInt;
+    localur.fTU.fwi = false;
+    if (this.IBm.containsKey(Integer.valueOf(paramInt)))
     {
-      go localgo = (go)this.CzF.get(Integer.valueOf(paramInt));
-      if (localgo != null) {
-        localtp.dZZ.source = ((int)localgo.eDV);
+      it localit = (it)this.IBn.get(Integer.valueOf(paramInt));
+      if (localit != null) {
+        localur.fTU.source = ((int)localit.gBe);
       }
     }
-    EventCenter.instance.publish(localtp);
-    this.CzE.remove(Integer.valueOf(paramInt));
+    EventCenter.instance.publish(localur);
+    this.IBm.remove(Integer.valueOf(paramInt));
     AppMethodBeat.o(120848);
   }
   
@@ -281,7 +270,7 @@ public class PluginScanTranslation
   public String genScanTranslateBgImgPath(String paramString)
   {
     AppMethodBeat.i(120852);
-    paramString = String.format("%s.%s", new Object[] { ((f)com.tencent.mm.kernel.g.ah(f.class)).getScanImageSaveDir() + "scan_translation_bg", paramString });
+    paramString = String.format("%s.%s", new Object[] { ((g)h.ag(g.class)).getScanImageSaveDir() + "scan_translation_bg", paramString });
     AppMethodBeat.o(120852);
     return paramString;
   }
@@ -294,17 +283,17 @@ public class PluginScanTranslation
     return paramString;
   }
   
-  public k getTranslationRender()
+  public l getTranslationRender()
   {
-    return this.CzC;
+    return this.IBk;
   }
   
-  public fx getTranslationResult(String paramString)
+  public ge getTranslationResult(String paramString)
   {
     AppMethodBeat.i(120847);
-    String str = MD5Util.getMD5String(paramString + s.boX(paramString));
+    String str = MD5Util.getMD5String(paramString + u.bBR(paramString));
     Log.i("MicroMsg.PluginScanTranslation", "getTranslationResult %s, md5 %s", new Object[] { paramString, str });
-    paramString = getTranslationResultStorage().aMG(str);
+    paramString = getTranslationResultStorage().aXn(str);
     AppMethodBeat.o(120847);
     return paramString;
   }
@@ -312,39 +301,39 @@ public class PluginScanTranslation
   public String getTranslationResultDir()
   {
     AppMethodBeat.i(120850);
-    String str = ((f)com.tencent.mm.kernel.g.ah(f.class)).getAccScannerPath() + "scan_result/";
+    String str = ((g)h.ag(g.class)).getAccScannerPath() + "scan_result/";
     AppMethodBeat.o(120850);
     return str;
   }
   
-  public b getTranslationResultStorage()
+  public com.tencent.mm.plugin.scanner.i.b getTranslationResultStorage()
   {
     AppMethodBeat.i(120846);
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (this.CzD == null) {
-      this.CzD = new b(com.tencent.mm.kernel.g.aAh().hqK);
+    h.aHE().aGH();
+    if (this.IBl == null) {
+      this.IBl = new com.tencent.mm.plugin.scanner.i.b(h.aHG().kcF);
     }
-    b localb = this.CzD;
+    com.tencent.mm.plugin.scanner.i.b localb = this.IBl;
     AppMethodBeat.o(120846);
     return localb;
   }
   
-  public void onAccountInitialized(e.c paramc)
+  public void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(120844);
-    EventCenter.instance.add(this.CzJ);
-    EventCenter.instance.add(this.CzI);
-    com.tencent.mm.kernel.g.azz().a(294, this);
-    s.bpc(getTranslationResultDir());
+    EventCenter.instance.add(this.IBr);
+    EventCenter.instance.add(this.IBq);
+    h.aGY().a(294, this);
+    u.bBX(getTranslationResultDir());
     AppMethodBeat.o(120844);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(120845);
-    EventCenter.instance.removeListener(this.CzJ);
-    EventCenter.instance.removeListener(this.CzI);
-    com.tencent.mm.kernel.g.azz().b(294, this);
+    EventCenter.instance.removeListener(this.IBr);
+    EventCenter.instance.removeListener(this.IBq);
+    h.aGY().b(294, this);
     AppMethodBeat.o(120845);
   }
   
@@ -354,29 +343,29 @@ public class PluginScanTranslation
     Log.i("MicroMsg.PluginScanTranslation", "onSceneEnd errType %d, errCode %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramq.getType() == 294)
     {
-      int i = ((m)paramq).dEb;
+      int i = ((com.tencent.mm.plugin.scanner.model.k)paramq).fwM;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = ((m)paramq).CFD;
+        paramString = ((com.tencent.mm.plugin.scanner.model.k)paramq).IKQ;
         if (paramString != null)
         {
-          Log.i("MicroMsg.PluginScanTranslation", "session %d, angle %f, translationInfos length %d", new Object[] { Integer.valueOf(i), Float.valueOf(((m)paramq).angle), Integer.valueOf(paramString.size()) });
-          if (this.CzF.containsKey(Integer.valueOf(i))) {
-            ((go)this.CzF.get(Integer.valueOf(i))).eJV = (System.currentTimeMillis() - ((m)paramq).CFE);
+          Log.i("MicroMsg.PluginScanTranslation", "session %d, angle %f, translationInfos length %d", new Object[] { Integer.valueOf(i), Float.valueOf(((com.tencent.mm.plugin.scanner.model.k)paramq).angle), Integer.valueOf(paramString.size()) });
+          if (this.IBn.containsKey(Integer.valueOf(i))) {
+            ((it)this.IBn.get(Integer.valueOf(i))).gJy = (System.currentTimeMillis() - ((com.tencent.mm.plugin.scanner.model.k)paramq).IKR);
           }
-          if ((paramString.size() > 0) && (this.CzE.containsKey(Integer.valueOf(i))))
+          if ((paramString.size() > 0) && (this.IBm.containsKey(Integer.valueOf(i))))
           {
-            Object localObject = (ak)this.CzE.get(Integer.valueOf(i));
-            ((ak)localObject).eab = ((ctn)((m)paramq).rr.iLL.iLR).Myw;
-            ((ak)localObject).eac = ((m)paramq).ePR();
-            ((ak)localObject).brand = ((ctn)((m)paramq).rr.iLL.iLR).Myy;
-            if (this.CzF.containsKey(Integer.valueOf(i))) {
-              ((go)this.CzF.get(Integer.valueOf(i))).eEt = 1L;
+            Object localObject = (ai)this.IBm.get(Integer.valueOf(i));
+            ((ai)localObject).fTW = ((dcm)d.c.b(((com.tencent.mm.plugin.scanner.model.k)paramq).rr.lBS)).TJX;
+            ((ai)localObject).fTX = ((com.tencent.mm.plugin.scanner.model.k)paramq).fCM();
+            ((ai)localObject).brand = ((dcm)d.c.b(((com.tencent.mm.plugin.scanner.model.k)paramq).rr.lBS)).TJZ;
+            if (this.IBn.containsKey(Integer.valueOf(i))) {
+              ((it)this.IBn.get(Integer.valueOf(i))).gBP = 1L;
             }
-            k localk = ((PluginScanTranslation)com.tencent.mm.kernel.g.ah(PluginScanTranslation.class)).getTranslationRender();
-            float f = ((m)paramq).angle;
-            localObject = ((ak)localObject).CHv;
-            paramq = this.CzH;
+            l locall = ((PluginScanTranslation)h.ag(PluginScanTranslation.class)).getTranslationRender();
+            float f = ((com.tencent.mm.plugin.scanner.model.k)paramq).angle;
+            localObject = ((ai)localObject).IMH;
+            paramq = this.IBp;
             if ((i != 0) && (paramString != null) && (paramString.size() > 0) && (paramq != null))
             {
               localObject = BitmapUtil.decodeFile((String)localObject, new BitmapFactory.Options());
@@ -386,35 +375,35 @@ public class PluginScanTranslation
                 AppMethodBeat.o(120849);
                 return;
               }
-              if ((localk.CUc != 0) && (i != localk.CUc))
+              if ((locall.IZx != 0) && (i != locall.IZx))
               {
-                Log.i("MicroMsg.ScanTranslationRender", "stop current session %d, start new session %d", new Object[] { Integer.valueOf(localk.CUc), Integer.valueOf(i) });
-                localk.eRW();
+                Log.i("MicroMsg.ScanTranslationRender", "stop current session %d, start new session %d", new Object[] { Integer.valueOf(locall.IZx), Integer.valueOf(i) });
+                locall.fEV();
               }
-              localk.CUc = i;
-              localk.CUd = paramq;
-              localk.CUe = new k.a(localk, i, paramString, f, (Bitmap)localObject);
-              localk.CUe.y(new Void[0]);
+              locall.IZx = i;
+              locall.IZy = paramq;
+              locall.IZz = new l.a(locall, i, paramString, f, (Bitmap)localObject);
+              locall.IZz.y(new Void[0]);
             }
             AppMethodBeat.o(120849);
             return;
           }
-          if ((this.CzF.containsKey(Integer.valueOf(i))) && (this.CzG.containsKey(Integer.valueOf(i)))) {
-            ((go)this.CzF.get(Integer.valueOf(i))).eJW = (System.currentTimeMillis() - ((Long)this.CzG.get(Integer.valueOf(i))).longValue());
+          if ((this.IBn.containsKey(Integer.valueOf(i))) && (this.IBo.containsKey(Integer.valueOf(i)))) {
+            ((it)this.IBn.get(Integer.valueOf(i))).gCN = (System.currentTimeMillis() - ((Long)this.IBo.get(Integer.valueOf(i))).longValue());
           }
           sendTranslationFailEvent(i);
         }
         AppMethodBeat.o(120849);
         return;
       }
-      if ((this.CzF.containsKey(Integer.valueOf(i))) && (this.CzG.containsKey(Integer.valueOf(i))))
+      if ((this.IBn.containsKey(Integer.valueOf(i))) && (this.IBo.containsKey(Integer.valueOf(i))))
       {
-        ((go)this.CzF.get(Integer.valueOf(i))).eJW = (System.currentTimeMillis() - ((Long)this.CzG.get(Integer.valueOf(i))).longValue());
-        ((go)this.CzF.get(Integer.valueOf(i))).eEt = 5L;
-        ((go)this.CzF.get(Integer.valueOf(i))).bfK();
-        this.CzF.remove(Integer.valueOf(i));
-        this.CzG.remove(Integer.valueOf(i));
-        Log.i("MicroMsg.PluginScanTranslation", "translationReports size %d, translationUpload size %d", new Object[] { Integer.valueOf(this.CzF.size()), Integer.valueOf(this.CzG.size()) });
+        ((it)this.IBn.get(Integer.valueOf(i))).gCN = (System.currentTimeMillis() - ((Long)this.IBo.get(Integer.valueOf(i))).longValue());
+        ((it)this.IBn.get(Integer.valueOf(i))).gBP = 5L;
+        ((it)this.IBn.get(Integer.valueOf(i))).bpa();
+        this.IBn.remove(Integer.valueOf(i));
+        this.IBo.remove(Integer.valueOf(i));
+        Log.i("MicroMsg.PluginScanTranslation", "translationReports size %d, translationUpload size %d", new Object[] { Integer.valueOf(this.IBn.size()), Integer.valueOf(this.IBo.size()) });
       }
       sendTranslationFailEvent(i);
     }
@@ -423,7 +412,7 @@ public class PluginScanTranslation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.PluginScanTranslation
  * JD-Core Version:    0.7.0.1
  */

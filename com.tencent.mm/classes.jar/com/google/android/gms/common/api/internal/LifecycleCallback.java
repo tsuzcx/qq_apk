@@ -3,7 +3,7 @@ package com.google.android.gms.common.api.internal;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.google.android.gms.common.annotation.KeepForSdk;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.FileDescriptor;
@@ -87,7 +87,7 @@ public class LifecycleCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.LifecycleCallback
  * JD-Core Version:    0.7.0.1
  */

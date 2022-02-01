@@ -34,7 +34,7 @@ public class RealSetStrokeStyleActionNormalArg
   public final boolean a(d paramd, Canvas paramCanvas)
   {
     AppMethodBeat.i(145093);
-    paramd.kZl.setColor(this.color);
+    paramd.nTw.setColor(this.color);
     AppMethodBeat.o(145093);
     return true;
   }
@@ -119,7 +119,7 @@ public class RealSetStrokeStyleActionNormalArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetStrokeStyleActionNormalArg
  * JD-Core Version:    0.7.0.1
  */

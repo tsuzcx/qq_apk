@@ -13,14 +13,14 @@ import com.tencent.mm.plugin.story.f.r;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/view/CommentAvatarImageView;", "Landroid/widget/ImageView;", "Lcom/tencent/mm/plugin/story/api/IStoryStatusNotifyListener;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "hintBg", "getHintBg", "()I", "setHintBg", "(I)V", "hintProxy", "Lcom/tencent/mm/plugin/story/api/IStoryHintProxy;", "tagName", "", "bindUsername", "", "userName", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onNotifyStoryStatusChanged", "username", "isRead", "", "setShowStoryHint", "show", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/view/CommentAvatarImageView;", "Landroid/widget/ImageView;", "Lcom/tencent/mm/plugin/story/api/IStoryStatusNotifyListener;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "hintBg", "getHintBg", "()I", "setHintBg", "(I)V", "hintProxy", "Lcom/tencent/mm/plugin/story/api/IStoryHintProxy;", "tagName", "", "bindUsername", "", "userName", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onNotifyStoryStatusChanged", "username", "isRead", "", "setShowStoryHint", "show", "plugin-story_release"})
 public final class CommentAvatarImageView
   extends ImageView
   implements m
 {
-  private final i EQN;
-  private String FeZ;
-  private int ktQ;
+  private final i LeM;
+  private String LtE;
+  private int nlE;
   
   public CommentAvatarImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,35 +33,35 @@ public final class CommentAvatarImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(120011);
-    this.FeZ = "";
+    this.LtE = "";
     setLayerType(1, null);
-    this.EQN = r.Fnv.hj(paramContext);
-    this.EQN.ba((View)this);
-    this.EQN.setOnClickListener(this.EQN.fne());
+    this.LeM = r.LHx.ik(paramContext);
+    this.LeM.g((View)this);
+    this.LeM.setOnClickListener(this.LeM.gbx());
     AppMethodBeat.o(120011);
   }
   
-  public final void aSD(String paramString)
+  public final void bdH(String paramString)
   {
     AppMethodBeat.i(120009);
-    p.h(paramString, "userName");
-    this.EQN.fL(paramString, 6);
-    if (!TextUtils.equals((CharSequence)this.FeZ, (CharSequence)paramString)) {
-      this.FeZ = paramString;
+    p.k(paramString, "userName");
+    this.LeM.gp(paramString, 6);
+    if (!TextUtils.equals((CharSequence)this.LtE, (CharSequence)paramString)) {
+      this.LtE = paramString;
     }
     AppMethodBeat.o(120009);
   }
   
-  public final void cr(String paramString, boolean paramBoolean)
+  public final void cF(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(120010);
-    p.h(paramString, "username");
+    p.k(paramString, "username");
     if ((TextUtils.isEmpty((CharSequence)paramString)) || (getContext() == null))
     {
       AppMethodBeat.o(120010);
       return;
     }
-    if (p.j(paramString, this.FeZ)) {
+    if (p.h(paramString, this.LtE)) {
       if (paramBoolean) {
         break label62;
       }
@@ -77,27 +77,27 @@ public final class CommentAvatarImageView
   
   public final int getHintBg()
   {
-    return this.ktQ;
+    return this.nlE;
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(120007);
-    p.h(paramCanvas, "canvas");
+    p.k(paramCanvas, "canvas");
     super.onDraw(paramCanvas);
-    this.EQN.a(paramCanvas, false, this.ktQ);
+    this.LeM.a(paramCanvas, false, this.nlE);
     AppMethodBeat.o(120007);
   }
   
   public final void setHintBg(int paramInt)
   {
-    this.ktQ = paramInt;
+    this.nlE = paramInt;
   }
   
   public final void setShowStoryHint(boolean paramBoolean)
   {
     AppMethodBeat.i(120008);
-    this.EQN.setShowStoryHint(paramBoolean);
+    this.LeM.setShowStoryHint(paramBoolean);
     AppMethodBeat.o(120008);
   }
 }

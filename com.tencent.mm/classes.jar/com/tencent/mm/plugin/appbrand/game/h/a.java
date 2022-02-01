@@ -16,29 +16,32 @@ import kotlin.l;
 import kotlin.n.n;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/game/util/WAGameSelfRestart;", "", "()V", "prepare_restart", "", "selfRestart", "suicide", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/game/util/WAGameSelfRestart;", "", "()V", "prepare_restart", "", "selfRestart", "suicide", "plugin-appbrand-integration_release"})
 public final class a
 {
-  public static final a lvA;
+  public static final a oqw;
   
   static
   {
     AppMethodBeat.i(50397);
-    lvA = new a();
+    oqw = new a();
     AppMethodBeat.o(50397);
   }
   
-  public static void bDC()
+  public static void bPa()
   {
     AppMethodBeat.i(50396);
-    Object localObject = MMApplicationContext.getContext();
-    p.g(localObject, "context");
-    PendingIntent localPendingIntent = PendingIntent.getActivity((Context)localObject, -1, ((Context)localObject).getPackageManager().getLaunchIntentForPackage(((Context)localObject).getPackageName()), 268435456);
-    localObject = (AlarmManager)((Context)localObject).getSystemService("alarm");
-    if (localObject == null) {
-      p.hyc();
+    Object localObject2 = MMApplicationContext.getContext();
+    p.j(localObject2, "context");
+    Object localObject1 = PendingIntent.getActivity((Context)localObject2, -1, ((Context)localObject2).getPackageManager().getLaunchIntentForPackage(((Context)localObject2).getPackageName()), 268435456);
+    localObject2 = (AlarmManager)((Context)localObject2).getSystemService("alarm");
+    if (localObject2 == null) {
+      p.iCn();
     }
-    ((AlarmManager)localObject).set(1, System.currentTimeMillis() + 100L, localPendingIntent);
+    localObject1 = c.a(1, c.a(System.currentTimeMillis() + 100L, new com.tencent.mm.hellhoundlib.b.a().bm(localObject1)));
+    com.tencent.mm.hellhoundlib.a.a.b(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aFh(), "com/tencent/mm/plugin/appbrand/game/util/WAGameSelfRestart", "prepare_restart", "()V", "android/app/AlarmManager_EXEC_", "set", "(IJLandroid/app/PendingIntent;)V");
+    ((AlarmManager)localObject2).set(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject1).sf(0)).intValue(), ((Long)c.a((com.tencent.mm.hellhoundlib.b.a)localObject1).sf(1)).longValue(), (PendingIntent)c.aFj().sf(2));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject2, "com/tencent/mm/plugin/appbrand/game/util/WAGameSelfRestart", "prepare_restart", "()V", "android/app/AlarmManager_EXEC_", "set", "(IJLandroid/app/PendingIntent;)V");
     AppMethodBeat.o(50396);
   }
   
@@ -53,33 +56,33 @@ public final class a
       throw ((Throwable)localObject1);
     }
     localObject1 = ((ActivityManager)localObject1).getRunningAppProcesses();
-    p.g(localObject1, "am.runningAppProcesses");
+    p.j(localObject1, "am.runningAppProcesses");
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next();
       Object localObject3 = ((ActivityManager.RunningAppProcessInfo)localObject2).processName;
-      p.g(localObject3, "it.processName");
-      if (n.e((CharSequence)localObject3, (CharSequence)(MMApplicationContext.getPackageName() + ":")))
+      p.j(localObject3, "it.processName");
+      if (n.g((CharSequence)localObject3, (CharSequence)(MMApplicationContext.getPackageName() + ":")))
       {
         localObject2 = c.a(((ActivityManager.RunningAppProcessInfo)localObject2).pid, new com.tencent.mm.hellhoundlib.b.a());
         localObject3 = new Object();
-        com.tencent.mm.hellhoundlib.a.a.a(localObject3, ((com.tencent.mm.hellhoundlib.b.a)localObject2).axQ(), "com/tencent/mm/plugin/appbrand/game/util/WAGameSelfRestart", "suicide", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-        Process.killProcess(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).pG(0)).intValue());
-        com.tencent.mm.hellhoundlib.a.a.a(localObject3, "com/tencent/mm/plugin/appbrand/game/util/WAGameSelfRestart", "suicide", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+        com.tencent.mm.hellhoundlib.a.a.b(localObject3, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aFh(), "com/tencent/mm/plugin/appbrand/game/util/WAGameSelfRestart", "suicide", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+        Process.killProcess(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject2).sf(0)).intValue());
+        com.tencent.mm.hellhoundlib.a.a.c(localObject3, "com/tencent/mm/plugin/appbrand/game/util/WAGameSelfRestart", "suicide", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
       }
     }
     localObject1 = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
     Object localObject2 = new Object();
-    com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).axQ(), "com/tencent/mm/plugin/appbrand/game/util/WAGameSelfRestart", "suicide", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-    Process.killProcess(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject1).pG(0)).intValue());
-    com.tencent.mm.hellhoundlib.a.a.a(localObject2, "com/tencent/mm/plugin/appbrand/game/util/WAGameSelfRestart", "suicide", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+    com.tencent.mm.hellhoundlib.a.a.b(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aFh(), "com/tencent/mm/plugin/appbrand/game/util/WAGameSelfRestart", "suicide", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+    Process.killProcess(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject1).sf(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.c(localObject2, "com/tencent/mm/plugin/appbrand/game/util/WAGameSelfRestart", "suicide", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
     AppMethodBeat.o(50395);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.h.a
  * JD-Core Version:    0.7.0.1
  */

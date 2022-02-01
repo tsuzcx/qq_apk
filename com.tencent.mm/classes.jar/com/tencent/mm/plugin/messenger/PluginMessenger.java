@@ -7,6 +7,8 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -14,19 +16,21 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.j;
-import com.tencent.mm.aj.p;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.g.b.a.gs;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.model.br;
-import com.tencent.mm.model.cj;
+import com.tencent.mm.am.j;
+import com.tencent.mm.am.k;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.t;
+import com.tencent.mm.f.b.a.ix;
+import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.model.ck;
+import com.tencent.mm.plugin.messenger.a.e;
 import com.tencent.mm.plugin.messenger.a.e.a;
 import com.tencent.mm.plugin.messenger.a.e.b;
-import com.tencent.mm.plugin.messenger.d.c.a;
-import com.tencent.mm.plugin.messenger.d.d;
+import com.tencent.mm.plugin.messenger.a.e.c;
+import com.tencent.mm.plugin.messenger.e.c.a;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.messenger.foundation.a.v;
+import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.sdk.crash.CrashReportFactory;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -34,55 +38,54 @@ import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.as;
-import com.tencent.mm.ui.base.u;
-import com.tencent.mm.ui.e.d;
+import com.tencent.mm.ui.base.w;
+import com.tencent.mm.ui.f.d;
 import com.tencent.mm.ui.widget.a.f.a;
-import com.tencent.mm.ui.widget.a.f.c;
-import com.tencent.mm.vfs.y;
+import com.tencent.mm.vfs.ab;
+import com.tencent.mm.vfs.u;
 import com.tencent.neattextview.textview.view.NeatTextView;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
 public class PluginMessenger
   extends com.tencent.mm.kernel.b.f
-  implements com.tencent.mm.ak.i, com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.plugin.messenger.a.c
+  implements i, com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.plugin.messenger.a.c
 {
-  private ProgressDialog gtM;
-  private com.tencent.mm.openim.b.q zoE;
-  a zoF;
-  private com.tencent.mm.plugin.messenger.d.a zoG;
-  private d zoH;
-  private e.b zoI;
-  private e.b zoJ;
-  private e.b zoK;
-  private e.a zoL;
-  private e.a zoM;
-  private e.a zoN;
-  private e.a zoO;
-  private e.a zoP;
-  private e.a zoQ;
-  private e.a zoR;
-  private e.a zoS;
-  private e.a zoT;
-  private com.tencent.mm.plugin.messenger.foundation.a.q zoU;
-  private e.b zoV;
-  private e.b zoW;
-  private e.b zoX;
+  private com.tencent.mm.openim.b.q ETV;
+  a ETW;
+  private com.tencent.mm.plugin.messenger.e.a ETX;
+  private com.tencent.mm.plugin.messenger.e.d ETY;
+  private e.c ETZ;
+  private e.c EUa;
+  private e.c EUb;
+  private e.a EUc;
+  private e.a EUd;
+  private e.a EUe;
+  private e.a EUf;
+  private e.a EUg;
+  private e.a EUh;
+  private e.a EUi;
+  private e.a EUj;
+  private e.a EUk;
+  private e.c EUl;
+  private e.c EUm;
+  private e.c EUn;
+  private e.b EUo;
+  private ProgressDialog iXX;
   
   public PluginMessenger()
   {
     AppMethodBeat.i(90721);
-    this.gtM = null;
-    this.zoF = new a();
-    this.zoG = new com.tencent.mm.plugin.messenger.d.a();
-    this.zoH = new d();
-    this.zoI = new e.b() {};
-    this.zoJ = new e.b() {};
-    this.zoK = new e.b() {};
-    this.zoL = new e.a()
+    this.iXX = null;
+    this.ETW = new a();
+    this.ETX = new com.tencent.mm.plugin.messenger.e.a();
+    this.ETY = new com.tencent.mm.plugin.messenger.e.d();
+    this.ETZ = new e.c() {};
+    this.EUa = new e.c() {};
+    this.EUb = new e.c() {};
+    this.EUc = new e.a()
     {
       public final String f(Map<String, String> paramAnonymousMap, String paramAnonymousString)
       {
@@ -97,7 +100,7 @@ public class PluginMessenger
         return paramAnonymousMap;
       }
     };
-    this.zoM = new e.a()
+    this.EUd = new e.a()
     {
       public final String f(Map<String, String> paramAnonymousMap, String paramAnonymousString)
       {
@@ -112,7 +115,7 @@ public class PluginMessenger
         return paramAnonymousMap;
       }
     };
-    this.zoN = new e.a()
+    this.EUe = new e.a()
     {
       public final String f(Map<String, String> paramAnonymousMap, String paramAnonymousString)
       {
@@ -127,7 +130,7 @@ public class PluginMessenger
         return paramAnonymousMap;
       }
     };
-    this.zoO = new e.a()
+    this.EUf = new e.a()
     {
       public final String f(Map<String, String> paramAnonymousMap, String paramAnonymousString)
       {
@@ -142,7 +145,7 @@ public class PluginMessenger
         return paramAnonymousMap;
       }
     };
-    this.zoP = new e.a()
+    this.EUg = new e.a()
     {
       public final String f(Map<String, String> paramAnonymousMap, String paramAnonymousString)
       {
@@ -157,7 +160,7 @@ public class PluginMessenger
         return paramAnonymousMap;
       }
     };
-    this.zoQ = new e.a()
+    this.EUh = new e.a()
     {
       public final String f(Map<String, String> paramAnonymousMap, String paramAnonymousString)
       {
@@ -199,126 +202,139 @@ public class PluginMessenger
         return paramAnonymousMap;
       }
     };
-    this.zoR = new e.a()
+    this.EUi = new e.a()
     {
       public final String f(Map<String, String> paramAnonymousMap, String paramAnonymousString)
       {
-        AppMethodBeat.i(194459);
+        AppMethodBeat.i(212869);
         if (paramAnonymousMap == null)
         {
-          AppMethodBeat.o(194459);
+          AppMethodBeat.o(212869);
           return null;
         }
         paramAnonymousMap = Util.nullAsNil((String)paramAnonymousMap.get(paramAnonymousString + ".title"));
-        AppMethodBeat.o(194459);
+        AppMethodBeat.o(212869);
         return paramAnonymousMap;
       }
     };
-    this.zoS = new e.a()
+    this.EUj = new e.a()
     {
       public final String f(Map<String, String> paramAnonymousMap, String paramAnonymousString)
       {
-        AppMethodBeat.i(194460);
+        AppMethodBeat.i(213413);
         if (paramAnonymousMap == null)
         {
-          AppMethodBeat.o(194460);
+          AppMethodBeat.o(213413);
           return null;
         }
+        if (paramAnonymousMap.containsKey(paramAnonymousString + ".redpacketinfo"))
+        {
+          AppMethodBeat.o(213413);
+          return "";
+        }
         paramAnonymousMap = Util.nullAsNil((String)paramAnonymousMap.get(paramAnonymousString + ".title"));
-        AppMethodBeat.o(194460);
+        AppMethodBeat.o(213413);
         return paramAnonymousMap;
       }
     };
-    this.zoT = new e.a()
+    this.EUk = new e.a()
     {
       public final String f(Map<String, String> paramAnonymousMap, String paramAnonymousString)
       {
-        AppMethodBeat.i(194461);
+        AppMethodBeat.i(213433);
         if (paramAnonymousMap == null)
         {
-          AppMethodBeat.o(194461);
+          AppMethodBeat.o(213433);
           return null;
         }
         Log.d("MicroMsg.PluginMessenger", "mHandleNewLinkHistoryDigestListener %s", new Object[] { Util.nullAsNil((String)paramAnonymousMap.get(paramAnonymousString + ".title")) });
         paramAnonymousMap = Util.nullAsNil((String)paramAnonymousMap.get(paramAnonymousString + ".title"));
-        AppMethodBeat.o(194461);
+        AppMethodBeat.o(213433);
         return paramAnonymousMap;
       }
     };
-    this.zoU = new com.tencent.mm.plugin.messenger.foundation.a.q()
-    {
-      public final void onNewXmlReceived(String paramAnonymousString, Map<String, String> paramAnonymousMap, h.a paramAnonymousa)
-      {
-        AppMethodBeat.i(194462);
-        if ("secmsg".equals(paramAnonymousString))
-        {
-          paramAnonymousa = Util.nullAsNil((String)paramAnonymousMap.get(".sysmsg.secmsg.session"));
-          paramAnonymousString = Util.nullAsNil((String)paramAnonymousMap.get(".sysmsg.secmsg.newmsgid"));
-          int i = Util.safeParseInt((String)paramAnonymousMap.get(".sysmsg.secmsg.sec_msg_node.sfn"));
-          String str1 = Util.nullAsNil((String)paramAnonymousMap.get(".sysmsg.secmsg.sec_msg_node.show-h5"));
-          int j = Util.safeParseInt((String)paramAnonymousMap.get(".sysmsg.secmsg.sec_msg_node.clip-len"));
-          String str2 = Util.nullAsNil((String)paramAnonymousMap.get(".sysmsg.secmsg.sec_msg_node.share-tip-url"));
-          int k = Util.safeParseInt((String)paramAnonymousMap.get(".sysmsg.secmsg.sec_msg_node.fold-reduce"));
-          int m = Util.safeParseInt((String)paramAnonymousMap.get(".sysmsg.secmsg.sec_msg_node.media-to-emoji"));
-          int n = Util.safeParseInt((String)paramAnonymousMap.get(".sysmsg.secmsg.sec_msg_node.block-range"));
-          Log.i("MicroMsg.PluginMessenger", "msgId:%s [%d],[%s],[%d],[%s],[%d],[%d],[%d]", new Object[] { Long.valueOf(Util.safeParseLong(paramAnonymousString)), Integer.valueOf(i), str1, Integer.valueOf(j), str2, Integer.valueOf(k), Integer.valueOf(n), Integer.valueOf(m) });
-          paramAnonymousMap = new HashMap();
-          paramAnonymousMap.put(".msgsource.sec_msg_node.sfn", String.valueOf(i));
-          paramAnonymousMap.put(".msgsource.sec_msg_node.show-h5", str1);
-          paramAnonymousMap.put(".msgsource.sec_msg_node.clip-len", String.valueOf(j));
-          paramAnonymousMap.put(".msgsource.sec_msg_node.share-tip-url", str2);
-          paramAnonymousMap.put(".msgsource.sec_msg_node.fold-reduce", String.valueOf(k));
-          paramAnonymousMap.put(".msgsource.sec_msg_node.media-to-emoji", String.valueOf(m));
-          paramAnonymousMap.put(".msgsource.sec_msg_node.block-range", String.valueOf(n));
-          if (!Util.isNullOrNil(new String[] { paramAnonymousa, paramAnonymousString }))
-          {
-            paramAnonymousa = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).eiy().aJ(paramAnonymousa, Util.safeParseLong(paramAnonymousString));
-            if ((!Util.isNullOrNil(paramAnonymousa.field_talker)) && (paramAnonymousa.field_msgSvrId > 0L))
-            {
-              br.a(paramAnonymousa, br.A(paramAnonymousMap));
-              AppMethodBeat.o(194462);
-              return;
-            }
-            Log.i("MicroMsg.PluginMessenger", "msg %s not found!", new Object[] { paramAnonymousString });
-            br.d(Util.safeParseLong(paramAnonymousString), br.A(paramAnonymousMap));
-          }
-        }
-        AppMethodBeat.o(194462);
-      }
-    };
-    this.zoV = new e.b() {};
-    this.zoW = new e.b() {};
-    this.zoX = new e.b()
+    this.EUl = new e.c() {};
+    this.EUm = new e.c() {};
+    this.EUn = new e.c()
     {
       public final CharSequence a(final Map<String, String> paramAnonymousMap, String paramAnonymousString, Bundle paramAnonymousBundle, final WeakReference<Context> paramAnonymousWeakReference, WeakReference<NeatTextView> paramAnonymousWeakReference1)
       {
-        AppMethodBeat.i(194467);
+        AppMethodBeat.i(213458);
         if (paramAnonymousMap == null)
         {
-          AppMethodBeat.o(194467);
+          AppMethodBeat.o(213458);
           return null;
+        }
+        if (paramAnonymousMap.containsKey(paramAnonymousString + ".redpacketinfo"))
+        {
+          AppMethodBeat.o(213458);
+          return "";
         }
         paramAnonymousBundle = Util.nullAsNil((String)paramAnonymousMap.get(paramAnonymousString + ".title"));
         paramAnonymousMap = (String)paramAnonymousMap.get(paramAnonymousString + ".url");
         paramAnonymousString = new SpannableString(paramAnonymousBundle);
         if (!TextUtils.isEmpty(paramAnonymousMap)) {
-          paramAnonymousString.setSpan(new com.tencent.mm.plugin.messenger.a.a()
+          paramAnonymousString.setSpan(new com.tencent.mm.plugin.messenger.a.a(paramAnonymousWeakReference, paramAnonymousMap)
           {
             public final void onClickImp(View paramAnonymous2View)
             {
-              AppMethodBeat.i(194466);
+              AppMethodBeat.i(213379);
               paramAnonymous2View = (Context)paramAnonymousWeakReference.get();
               if (paramAnonymous2View != null)
               {
                 Intent localIntent = new Intent();
                 localIntent.putExtra("rawUrl", paramAnonymousMap);
-                com.tencent.mm.br.c.b(paramAnonymous2View, "webview", ".ui.tools.WebViewUI", localIntent);
+                com.tencent.mm.by.c.b(paramAnonymous2View, "webview", ".ui.tools.WebViewUI", localIntent);
               }
-              AppMethodBeat.o(194466);
+              AppMethodBeat.o(213379);
             }
           }, 0, paramAnonymousBundle.length(), 33);
         }
-        AppMethodBeat.o(194467);
+        AppMethodBeat.o(213458);
+        return paramAnonymousString;
+      }
+    };
+    this.EUo = new e.b()
+    {
+      public final Boolean al(Map<String, String> paramAnonymousMap)
+      {
+        AppMethodBeat.i(213466);
+        boolean bool = paramAnonymousMap.containsKey(".sysmsg.sysmsgtemplate.content_template.link_list.link.redpacketinfo");
+        AppMethodBeat.o(213466);
+        return Boolean.valueOf(bool);
+      }
+      
+      public final CharSequence m(Map<String, String> paramAnonymousMap, String paramAnonymousString)
+      {
+        AppMethodBeat.i(213469);
+        long l1 = com.tencent.mm.ae.d.Nb(Util.nullAsNil((String)paramAnonymousMap.get(".sysmsg.sysmsgtemplate.content_template.link_list.link.redpacketinfo." + "objectid")));
+        long l2 = com.tencent.mm.ae.d.Nb(Util.nullAsNil((String)paramAnonymousMap.get(".sysmsg.sysmsgtemplate.content_template.link_list.link.redpacketinfo." + "liveid")));
+        String str1 = Util.nullAsNil((String)paramAnonymousMap.get(".sysmsg.sysmsgtemplate.content_template.link_list.link.redpacketinfo." + "objectnonceid"));
+        String str3 = Util.nullAsNil((String)paramAnonymousMap.get(".sysmsg.sysmsgtemplate.content_template.link_list.link.redpacketinfo." + "findernickname"));
+        paramAnonymousMap = Util.nullAsNil((String)paramAnonymousMap.get(".sysmsg.sysmsgtemplate.content_template.link_list.link.redpacketinfo." + "redpacketsendid"));
+        String str2 = MMApplicationContext.getContext().getResources().getString(b.d.finder_live_red_packet_name);
+        str3 = MMApplicationContext.getContext().getResources().getString(b.d.finder_live_red_packet_tips, new Object[] { str3, str2 });
+        int i = str3.indexOf(str2);
+        if ((i != -1) && (str2.length() + i <= str3.length()))
+        {
+          paramAnonymousString = l.c(MMApplicationContext.getContext(), str3);
+          int j = MMApplicationContext.getContext().getResources().getIdentifier("systemmessages_hongbaoicon", "drawable", MMApplicationContext.getContext().getPackageName());
+          Object localObject = MMApplicationContext.getContext().getDrawable(j);
+          if (localObject != null)
+          {
+            j = MMApplicationContext.getContext().getResources().getDimensionPixelOffset(b.a.RedPacketWidth);
+            ((Drawable)localObject).setBounds(0, 0, j, j);
+            localObject = new com.tencent.mm.ui.widget.a((Drawable)localObject, 1);
+            j = str3.indexOf(' ');
+            if ((j >= 0) && (j < str3.length() - 1)) {
+              paramAnonymousString.setSpan(localObject, j, j + 1, 18);
+            }
+          }
+          paramAnonymousString.setSpan(new PluginMessenger.8.1(this, Long.valueOf(l1), Long.valueOf(l2), str1, paramAnonymousMap), i, str2.length() + i, 33);
+          AppMethodBeat.o(213469);
+          return paramAnonymousString;
+        }
+        AppMethodBeat.o(213469);
         return paramAnonymousString;
       }
     };
@@ -342,18 +358,18 @@ public class PluginMessenger
   
   public static String getAccSelectRecordPath()
   {
-    AppMethodBeat.i(194474);
-    if (!com.tencent.mm.vfs.s.YS("wcf://selectrecord/")) {
-      com.tencent.mm.vfs.s.boN("wcf://selectrecord/");
+    AppMethodBeat.i(213242);
+    if (!u.agG("wcf://selectrecord/")) {
+      u.bBD("wcf://selectrecord/");
     }
-    AppMethodBeat.o(194474);
+    AppMethodBeat.o(213242);
     return "wcf://selectrecord/";
   }
   
   private String getFirstSwitchContactTipsPrefsKey(String paramString1, String paramString2)
   {
     AppMethodBeat.i(90734);
-    String str = (String)com.tencent.mm.kernel.g.aAh().azQ().get(2, "");
+    String str = (String)com.tencent.mm.kernel.h.aHG().aHp().b(2, "");
     paramString1 = "FirstSwitchContactTips_" + paramString1 + "_" + paramString2 + "_" + str;
     AppMethodBeat.o(90734);
     return paramString1;
@@ -362,7 +378,7 @@ public class PluginMessenger
   private String getSwitchContactPrefsKey(String paramString1, String paramString2)
   {
     AppMethodBeat.i(90737);
-    String str = (String)com.tencent.mm.kernel.g.aAh().azQ().get(2, "");
+    String str = (String)com.tencent.mm.kernel.h.aHG().aHp().b(2, "");
     paramString1 = "switch_contact_prefs_" + paramString1 + "_" + paramString2 + "_" + str;
     AppMethodBeat.o(90737);
     return paramString1;
@@ -418,14 +434,14 @@ public class PluginMessenger
       paramBundle = (String)paramMap.get(paramString1 + ".window_template.template");
       str3 = (String)paramMap.get(paramString1 + ".window_template.tp_username");
       localObject1 = (String)paramMap.get(paramString1 + ".window_template.headimgurl");
-      if ((!Util.isNullOrNil((String)localObject1)) && (p.aYB().Mx(str3) == null))
+      if ((!Util.isNullOrNil((String)localObject1)) && (com.tencent.mm.am.q.bhP().TS(str3) == null))
       {
-        localObject2 = new com.tencent.mm.aj.i();
-        ((com.tencent.mm.aj.i)localObject2).username = str3;
-        ((com.tencent.mm.aj.i)localObject2).iKW = ((String)localObject1);
-        ((com.tencent.mm.aj.i)localObject2).fuz = 3;
-        ((com.tencent.mm.aj.i)localObject2).fv(false);
-        p.aYB().b((com.tencent.mm.aj.i)localObject2);
+        localObject2 = new j();
+        ((j)localObject2).username = str3;
+        ((j)localObject2).lBd = ((String)localObject1);
+        ((j)localObject2).hDc = 3;
+        ((j)localObject2).gg(false);
+        com.tencent.mm.am.q.bhP().b((j)localObject2);
       }
       if ((paramBoolean) && (isSwitchContact(str3, paramString2)))
       {
@@ -440,7 +456,7 @@ public class PluginMessenger
       str8 = (String)paramMap.get(paramString1 + ".window_template.confirm_wording");
       localObject2 = "";
       localObject3 = "";
-      paramBundle = com.tencent.mm.plugin.messenger.d.c.aFd(paramBundle);
+      paramBundle = com.tencent.mm.plugin.messenger.e.c.aPn(paramBundle);
       if ((paramBundle == null) || (paramBundle.size() <= 0)) {
         break label1163;
       }
@@ -459,7 +475,7 @@ public class PluginMessenger
             if (locala.type != 0) {
               break;
             }
-            localArrayList.add(new SpannableString(com.tencent.mm.pluginsdk.ui.span.l.c(MMApplicationContext.getContext(), locala.content)));
+            localArrayList.add(new SpannableString(l.c(MMApplicationContext.getContext(), locala.content)));
           }
         }
       } while (locala.type != 1);
@@ -507,13 +523,13 @@ public class PluginMessenger
           {
             if (j == 1)
             {
-              paramMap = new gs();
-              paramMap.uu(str2);
-              paramMap.uv(paramString2);
-              paramMap.eKO = 1L;
-              paramMap.eKP = 1L;
-              paramMap.eKQ = 3L;
-              paramMap.bfK();
+              paramMap = new ix();
+              paramMap.zT(str2);
+              paramMap.zU(paramString2);
+              paramMap.gKs = 1L;
+              paramMap.gKt = 1L;
+              paramMap.gKu = 3L;
+              paramMap.bpa();
             }
             for (;;)
             {
@@ -522,26 +538,26 @@ public class PluginMessenger
               return;
               if (j == 0)
               {
-                paramMap = new gs();
-                paramMap.uu(str2);
-                paramMap.uv(paramString2);
-                paramMap.eKO = 1L;
-                paramMap.eKP = 1L;
-                paramMap.eKQ = 2L;
-                paramMap.bfK();
+                paramMap = new ix();
+                paramMap.zT(str2);
+                paramMap.zU(paramString2);
+                paramMap.gKs = 1L;
+                paramMap.gKt = 1L;
+                paramMap.gKu = 2L;
+                paramMap.bpa();
               }
             }
           }
           if (isFirstSwitchContactTips(str3, paramString2))
           {
             markFirstSwitchContactTips(str3, paramString2);
-            paramMap = new gs();
-            paramMap.uu(str2);
-            paramMap.uv(paramString2);
-            paramMap.eKO = 1L;
-            paramMap.eKP = 1L;
-            paramMap.eKQ = 1L;
-            paramMap.bfK();
+            paramMap = new ix();
+            paramMap.zT(str2);
+            paramMap.zU(paramString2);
+            paramMap.gKs = 1L;
+            paramMap.gKt = 1L;
+            paramMap.gKu = 1L;
+            paramMap.bpa();
             showSwitchContactDialog((Context)paramWeakReference.get(), str2, concactSpannable(localArrayList).toString(), str3, str4, str5, (String)localObject3, (String)localObject2, paramString2, str6, str7, str8);
           }
           label1163:
@@ -570,19 +586,19 @@ public class PluginMessenger
     Intent localIntent = new Intent();
     localIntent.putExtra("Chat_User", paramString);
     localIntent.putExtra("Chat_Mode", 1);
-    com.tencent.mm.br.c.f(MMApplicationContext.getContext(), ".ui.chatting.ChattingUI", localIntent);
+    com.tencent.mm.by.c.f(MMApplicationContext.getContext(), ".ui.chatting.ChattingUI", localIntent);
     AppMethodBeat.o(90732);
   }
   
-  public void configure(com.tencent.mm.kernel.b.g paramg)
+  public void configure(g paramg)
   {
     AppMethodBeat.i(90725);
-    if (paramg.aBb())
+    if (paramg.aIE())
     {
-      com.tencent.mm.kernel.g.aAi();
-      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.messenger.a.b.class, this.zoF);
-      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.messenger.a.e.class, this.zoG);
-      y.at("selectrecord", "selectrecord", 3);
+      com.tencent.mm.kernel.h.aHH();
+      com.tencent.mm.kernel.h.b(com.tencent.mm.plugin.messenger.a.b.class, this.ETW);
+      com.tencent.mm.kernel.h.b(e.class, this.ETX);
+      ab.aE("selectrecord", "selectrecord", 1);
     }
     AppMethodBeat.o(90725);
   }
@@ -594,11 +610,11 @@ public class PluginMessenger
     AppMethodBeat.o(90724);
   }
   
-  public void execute(com.tencent.mm.kernel.b.g paramg)
+  public void execute(g paramg)
   {
     AppMethodBeat.i(90726);
-    if (paramg.aBb()) {
-      pin(com.tencent.mm.plugin.w.a.eMS());
+    if (paramg.aIE()) {
+      pin(com.tencent.mm.plugin.ah.a.fzH());
     }
     AppMethodBeat.o(90726);
   }
@@ -625,42 +641,43 @@ public class PluginMessenger
     AppMethodBeat.o(90735);
   }
   
-  public void onAccountInitialized(e.c paramc)
+  public void onAccountInitialized(com.tencent.mm.kernel.f.c paramc)
   {
     AppMethodBeat.i(90727);
-    paramc = this.zoG;
-    ((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class)).getSysCmdMsgExtension().a("sysmsgtemplate", paramc.zqJ);
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).a("link_plain", this.zoI);
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).a("link_succeed_contact", this.zoJ);
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).a("link_jump_chat", this.zoK);
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).a("link_live", this.zoV);
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).a("comment_link_profile", this.zoW);
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).a("link_url", this.zoX);
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).a("link_plain", this.zoL);
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).a("link_succeed_contact", this.zoM);
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).a("link_jump_chat", this.zoN);
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).a("link_revoke", this.zoO);
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).a("link_revoke_qrcode", this.zoP);
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).a("link_profile", this.zoQ);
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).a("new_link_succeed_contact", this.zoR);
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).a("link_revoke_unbindapp", this.zoP);
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).a("link_url", this.zoS);
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).a("link_history", this.zoT);
-    ((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class)).getSysCmdMsgExtension().a("secmsg", this.zoU);
-    com.tencent.mm.kernel.g.azz().a(853, this);
-    paramc = this.zoH;
-    paramc.zqQ = new com.tencent.mm.plugin.messenger.e.a();
-    paramc.zqR = new com.tencent.mm.plugin.messenger.e.c();
-    paramc.zqS = new com.tencent.mm.plugin.messenger.e.b();
+    paramc = this.ETX;
+    ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension().a("sysmsgtemplate", paramc.EWk);
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).a("link_plain", this.ETZ);
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).a("link_succeed_contact", this.EUa);
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).a("link_jump_chat", this.EUb);
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).a("link_live", this.EUl);
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).a("comment_link_profile", this.EUm);
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).a("link_url", this.EUn);
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).a("link_plain", this.EUc);
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).a("link_succeed_contact", this.EUd);
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).a("link_jump_chat", this.EUe);
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).a("link_revoke", this.EUf);
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).a("link_revoke_qrcode", this.EUg);
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).a("link_profile", this.EUh);
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).a("new_link_succeed_contact", this.EUi);
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).a("link_revoke_unbindapp", this.EUg);
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).a("link_url", this.EUj);
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).a("link_history", this.EUk);
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).a(this.EUo);
+    ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension().a("secmsg", com.tencent.mm.plugin.messenger.c.a.EVW);
+    com.tencent.mm.kernel.h.aGY().a(853, this);
+    paramc = this.ETY;
+    paramc.EWr = new com.tencent.mm.plugin.messenger.f.a();
+    paramc.EWs = new com.tencent.mm.plugin.messenger.f.c();
+    paramc.EWt = new com.tencent.mm.plugin.messenger.f.b();
     new MMHandler().postDelayed(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(194468);
-        int i = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSP().eiE();
-        int j = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSP().eiF();
-        com.tencent.mm.plugin.report.service.h.CyF.a(20460, new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-        AppMethodBeat.o(194468);
+        AppMethodBeat.i(212976);
+        int i = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbN().eSk();
+        int j = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbN().eSl();
+        com.tencent.mm.plugin.report.service.h.IzE.a(20460, new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+        AppMethodBeat.o(212976);
       }
     }, 60000L);
     AppMethodBeat.o(90727);
@@ -669,63 +686,64 @@ public class PluginMessenger
   public void onAccountRelease()
   {
     AppMethodBeat.i(90728);
-    Object localObject = this.zoG;
-    ((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class)).getSysCmdMsgExtension().b("sysmsgtemplate", ((com.tencent.mm.plugin.messenger.d.a)localObject).zqJ);
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).aDU("link_plain");
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).aDU("link_succeed_contact");
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).aDU("link_jump_chat");
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).aDU("link_live");
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).aDU("comment_link_profile");
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).aDU("link_url");
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).aDV("link_plain");
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).aDV("link_succeed_contact");
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).aDV("link_jump_chat");
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).aDV("link_revoke");
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).aDV("link_revoke_qrcode");
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).aDV("link_profile");
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).aDV("new_link_succeed_contact");
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).aDV("link_revoke_unbindapp");
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).aDV("link_url");
-    ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.e.class)).aDV("link_history");
-    ((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class)).getSysCmdMsgExtension().b("secmsg", this.zoU);
-    com.tencent.mm.kernel.g.azz().b(853, this);
-    localObject = this.zoH;
-    if (((d)localObject).zqQ != null) {
-      ((d)localObject).zqQ.release();
+    Object localObject = this.ETX;
+    ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension().b("sysmsgtemplate", ((com.tencent.mm.plugin.messenger.e.a)localObject).EWk);
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).aOe("link_plain");
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).aOe("link_succeed_contact");
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).aOe("link_jump_chat");
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).aOe("link_live");
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).aOe("comment_link_profile");
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).aOe("link_url");
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).aOf("link_plain");
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).aOf("link_succeed_contact");
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).aOf("link_jump_chat");
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).aOf("link_revoke");
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).aOf("link_revoke_qrcode");
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).aOf("link_profile");
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).aOf("new_link_succeed_contact");
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).aOf("link_revoke_unbindapp");
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).aOf("link_url");
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).aOf("link_history");
+    ((e)com.tencent.mm.kernel.h.ae(e.class)).b(this.EUo);
+    ((v)com.tencent.mm.kernel.h.ag(v.class)).getSysCmdMsgExtension().b("secmsg", com.tencent.mm.plugin.messenger.c.a.EVW);
+    com.tencent.mm.kernel.h.aGY().b(853, this);
+    localObject = this.ETY;
+    if (((com.tencent.mm.plugin.messenger.e.d)localObject).EWr != null) {
+      ((com.tencent.mm.plugin.messenger.e.d)localObject).EWr.release();
     }
-    if (((d)localObject).zqR != null) {
-      ((d)localObject).zqR.release();
+    if (((com.tencent.mm.plugin.messenger.e.d)localObject).EWs != null) {
+      ((com.tencent.mm.plugin.messenger.e.d)localObject).EWs.release();
     }
-    if (((d)localObject).zqS != null) {
-      ((d)localObject).zqS.release();
+    if (((com.tencent.mm.plugin.messenger.e.d)localObject).EWt != null) {
+      ((com.tencent.mm.plugin.messenger.e.d)localObject).EWt.release();
     }
     AppMethodBeat.o(90728);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
   {
     AppMethodBeat.i(90731);
     try
     {
       if (CrashReportFactory.hasDebuger()) {
-        u.makeText(MMApplicationContext.getContext(), String.format("errType %s errCode %s errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString }), 1).show();
+        w.makeText(MMApplicationContext.getContext(), String.format("errType %s errCode %s errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString }), 1).show();
       }
       if (paramq.getType() == 853)
       {
-        if (this.gtM != null)
+        if (this.iXX != null)
         {
-          this.gtM.dismiss();
-          this.gtM = null;
+          this.iXX.dismiss();
+          this.iXX = null;
         }
-        if (paramq.equals(this.zoE))
+        if (paramq.equals(this.ETV))
         {
           paramString = (com.tencent.mm.openim.b.q)paramq;
           if (paramInt2 == 0)
           {
-            saveSwitchContact(paramString.jGZ, paramString.jHj);
-            startChattingUI(paramString.jGZ);
+            saveSwitchContact(paramString.myd, paramString.myn);
+            startChattingUI(paramString.myd);
           }
-          Log.w("MicroMsg.PluginMessenger", "onSceneEnd VerifyOpenIMContact errCode: " + paramInt2 + " errType: " + paramInt1 + " userName: " + paramString.jGZ + " ticket: " + paramString.jHi + " talkerUsername: " + paramString.jHj);
+          Log.w("MicroMsg.PluginMessenger", "onSceneEnd VerifyOpenIMContact errCode: " + paramInt2 + " errType: " + paramInt1 + " userName: " + paramString.myd + " ticket: " + paramString.mym + " talkerUsername: " + paramString.myn);
         }
       }
       AppMethodBeat.o(90731);
@@ -744,7 +762,7 @@ public class PluginMessenger
     f.a locala = new f.a(paramContext);
     SwitchContactDialogCustomView localSwitchContactDialogCustomView = new SwitchContactDialogCustomView(paramContext);
     if (Util.isNullOrNil(paramString9)) {
-      localSwitchContactDialogCustomView.setTilte(paramContext.getString(2131763795));
+      localSwitchContactDialogCustomView.setTilte(paramContext.getString(b.d.openim_switch_user_title));
     }
     for (;;)
     {
@@ -756,71 +774,71 @@ public class PluginMessenger
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(194469);
+          AppMethodBeat.i(213450);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/messenger/PluginMessenger$18", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/messenger/PluginMessenger$18", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           paramAnonymousView = new Intent();
           paramAnonymousView.putExtra("Contact_User", paramString3);
-          paramAnonymousView.putExtra(e.d.OyT, paramString5);
-          com.tencent.mm.br.c.b(paramContext, "profile", ".ui.ContactInfoUI", paramAnonymousView, 0);
+          paramAnonymousView.putExtra(f.d.VRW, paramString5);
+          com.tencent.mm.by.c.b(paramContext, "profile", ".ui.ContactInfoUI", paramAnonymousView, 0);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/messenger/PluginMessenger$18", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(194469);
+          AppMethodBeat.o(213450);
         }
       });
       paramString2 = paramString10;
       if (Util.isNullOrNil(paramString10)) {
-        paramString2 = paramContext.getString(2131763792);
+        paramString2 = paramContext.getString(b.d.openim_not_do);
       }
       paramString5 = paramString11;
       if (Util.isNullOrNil(paramString11)) {
-        paramString5 = paramContext.getString(2131763794);
+        paramString5 = paramContext.getString(b.d.openim_switch_user);
       }
-      locala.hu(localSwitchContactDialogCustomView).boA(paramString5).boB(paramString2).a(new f.c()new f.c
+      locala.iK(localSwitchContactDialogCustomView).bBp(paramString5).bBq(paramString2).a(new com.tencent.mm.ui.widget.a.f.c()new com.tencent.mm.ui.widget.a.f.c
       {
-        public final void e(boolean paramAnonymousBoolean, String paramAnonymousString)
+        public final void g(boolean paramAnonymousBoolean, String paramAnonymousString)
         {
-          AppMethodBeat.i(194470);
-          paramAnonymousString = new gs();
-          paramAnonymousString.uu(paramString1);
-          paramAnonymousString.uv(paramString8);
-          paramAnonymousString.eKO = 1L;
-          paramAnonymousString.eKP = 1L;
-          paramAnonymousString.eKR = 1L;
-          paramAnonymousString.bfK();
-          AppMethodBeat.o(194470);
+          AppMethodBeat.i(213532);
+          paramAnonymousString = new ix();
+          paramAnonymousString.zT(paramString1);
+          paramAnonymousString.zU(paramString8);
+          paramAnonymousString.gKs = 1L;
+          paramAnonymousString.gKt = 1L;
+          paramAnonymousString.gKv = 1L;
+          paramAnonymousString.bpa();
+          AppMethodBeat.o(213532);
         }
-      }, new f.c()
+      }, new com.tencent.mm.ui.widget.a.f.c()
       {
-        public final void e(boolean paramAnonymousBoolean, String paramAnonymousString)
+        public final void g(boolean paramAnonymousBoolean, String paramAnonymousString)
         {
-          AppMethodBeat.i(194472);
-          if ((paramAnonymousBoolean) && (as.bjp(paramString3)))
+          AppMethodBeat.i(212870);
+          if ((paramAnonymousBoolean) && (as.bvK(paramString3)))
           {
-            paramAnonymousString = new gs();
-            paramAnonymousString.uu(paramString1);
-            paramAnonymousString.eKO = 1L;
-            paramAnonymousString.uv(paramString8);
-            paramAnonymousString.eKP = 1L;
-            paramAnonymousString.eKR = 2L;
-            paramAnonymousString.bfK();
+            paramAnonymousString = new ix();
+            paramAnonymousString.zT(paramString1);
+            paramAnonymousString.gKs = 1L;
+            paramAnonymousString.zU(paramString8);
+            paramAnonymousString.gKt = 1L;
+            paramAnonymousString.gKv = 2L;
+            paramAnonymousString.bpa();
             PluginMessenger.access$202(PluginMessenger.this, new com.tencent.mm.openim.b.q(paramString3, paramString4, 0));
-            PluginMessenger.this.zoE.jHj = paramString8;
-            com.tencent.mm.kernel.g.azz().a(PluginMessenger.this.zoE, 0);
+            PluginMessenger.this.ETV.myn = paramString8;
+            com.tencent.mm.kernel.h.aGY().a(PluginMessenger.this.ETV, 0);
             paramAnonymousString = PluginMessenger.this;
             Context localContext = paramContext;
-            paramContext.getString(2131755998);
-            PluginMessenger.access$302(paramAnonymousString, com.tencent.mm.ui.base.h.a(localContext, paramContext.getString(2131763796), true, new DialogInterface.OnCancelListener()
+            paramContext.getString(b.d.app_tip);
+            PluginMessenger.access$302(paramAnonymousString, com.tencent.mm.ui.base.h.a(localContext, paramContext.getString(b.d.openim_switch_user_verify), true, new DialogInterface.OnCancelListener()
             {
               public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
               {
-                AppMethodBeat.i(90709);
-                com.tencent.mm.kernel.g.azz().a(PluginMessenger.this.zoE);
-                AppMethodBeat.o(90709);
+                AppMethodBeat.i(213338);
+                com.tencent.mm.kernel.h.aGY().a(PluginMessenger.this.ETV);
+                AppMethodBeat.o(213338);
               }
             }));
           }
-          AppMethodBeat.o(194472);
+          AppMethodBeat.o(212870);
         }
       }).show();
       AppMethodBeat.o(90733);

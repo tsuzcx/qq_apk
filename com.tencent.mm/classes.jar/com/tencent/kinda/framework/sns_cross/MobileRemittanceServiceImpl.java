@@ -10,15 +10,15 @@ public class MobileRemittanceServiceImpl
 {
   public ITransmitKvData generateSnsUseCaseData()
   {
-    AppMethodBeat.i(214458);
+    AppMethodBeat.i(263959);
     ITransmitKvData localITransmitKvData = super.generateSnsUseCaseData();
-    if ((this.mBean.getPayInfo() == null) || (this.mBean.getPayInfo().iqp == null))
+    if ((this.mBean.getPayInfo() == null) || (this.mBean.getPayInfo().lfu == null))
     {
-      AppMethodBeat.o(214458);
+      AppMethodBeat.o(263959);
       return localITransmitKvData;
     }
-    localITransmitKvData.putString("cashier_desc", this.mBean.getPayInfo().iqp.getString("extinfo_key_12"));
-    AppMethodBeat.o(214458);
+    localITransmitKvData.putString("cashier_desc", this.mBean.getPayInfo().lfu.getString("extinfo_key_12"));
+    AppMethodBeat.o(263959);
     return localITransmitKvData;
   }
 }

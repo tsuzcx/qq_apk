@@ -1,50 +1,50 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.e;
+import com.google.b.a.b;
+import com.google.b.a.e;
 
 public final class a$z
   extends e
 {
-  public int GXO = 0;
-  public long GXP = 0L;
-  public a.az RDq = null;
-  public a.bb[] REK = a.bb.hjl();
+  public int NOc = 0;
+  public long NOd = 0L;
+  public a.ay ZeS = null;
+  public a.ba[] Zgp = a.ba.ikV();
   public String groupId = "";
   
   public a$z()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public final int Ig()
+  public final int JG()
   {
-    int j = super.Ig();
+    int j = super.JG();
     int i = j;
     if (!this.groupId.equals("")) {
-      i = j + b.f(1, this.groupId);
+      i = j + b.g(1, this.groupId);
     }
     j = i;
-    if (this.GXO != 0) {
-      j = i + b.bu(2, this.GXO);
+    if (this.NOc != 0) {
+      j = i + b.bM(2, this.NOc);
     }
     i = j;
-    if (this.GXP != 0L) {
-      i = j + b.r(3, this.GXP);
+    if (this.NOd != 0L) {
+      i = j + b.p(3, this.NOd);
     }
     j = i;
-    if (this.REK != null)
+    if (this.Zgp != null)
     {
       j = i;
-      if (this.REK.length > 0)
+      if (this.Zgp.length > 0)
       {
         j = 0;
-        while (j < this.REK.length)
+        while (j < this.Zgp.length)
         {
-          a.bb localbb = this.REK[j];
+          a.ba localba = this.Zgp[j];
           int k = i;
-          if (localbb != null) {
-            k = i + b.b(4, localbb);
+          if (localba != null) {
+            k = i + b.b(4, localba);
           }
           j += 1;
           i = k;
@@ -53,8 +53,8 @@ public final class a$z
       }
     }
     i = j;
-    if (this.RDq != null) {
-      i = j + b.b(5, this.RDq);
+    if (this.ZeS != null) {
+      i = j + b.b(5, this.ZeS);
     }
     return i;
   }
@@ -62,28 +62,28 @@ public final class a$z
   public final void a(b paramb)
   {
     if (!this.groupId.equals("")) {
-      paramb.e(1, this.groupId);
+      paramb.f(1, this.groupId);
     }
-    if (this.GXO != 0) {
-      paramb.bs(2, this.GXO);
+    if (this.NOc != 0) {
+      paramb.bJ(2, this.NOc);
     }
-    if (this.GXP != 0L) {
-      paramb.q(3, this.GXP);
+    if (this.NOd != 0L) {
+      paramb.r(3, this.NOd);
     }
-    if ((this.REK != null) && (this.REK.length > 0))
+    if ((this.Zgp != null) && (this.Zgp.length > 0))
     {
       int i = 0;
-      while (i < this.REK.length)
+      while (i < this.Zgp.length)
       {
-        a.bb localbb = this.REK[i];
-        if (localbb != null) {
-          paramb.a(4, localbb);
+        a.ba localba = this.Zgp[i];
+        if (localba != null) {
+          paramb.a(4, localba);
         }
         i += 1;
       }
     }
-    if (this.RDq != null) {
-      paramb.a(5, this.RDq);
+    if (this.ZeS != null) {
+      paramb.a(5, this.ZeS);
     }
     super.a(paramb);
   }

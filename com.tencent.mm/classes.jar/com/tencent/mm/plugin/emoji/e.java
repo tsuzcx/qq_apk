@@ -1,269 +1,255 @@
 package com.tencent.mm.plugin.emoji;
 
+import android.text.SpannableString;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.n.f;
-import com.tencent.mm.plugin.emoji.b.c;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.gif.MMWXGFJNI;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.zero.b.a;
-import com.tencent.mm.sdk.platformtools.ImgUtil;
-import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.NetStatusUtil;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.ui.h.c.b;
+import com.tencent.mm.ui.tools.g;
+import com.tencent.mm.ui.tools.g.a;
+import com.tencent.mm.ui.widget.a;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.m;
+import kotlin.t;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emoji/EmojiString;", "", "origin", "", "sizePx", "", "(Ljava/lang/String;I)V", "clipList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/emoji/EmojiString$Clip;", "Lkotlin/collections/ArrayList;", "getOrigin", "()Ljava/lang/String;", "getSizePx", "()I", "getTextCount", "mode", "Lcom/tencent/mm/ui/tools/InputTextLengthFilter$Mode;", "subString", "length", "Clip", "ClipType", "plugin-emojisdk_release"})
 public final class e
-  implements c
 {
-  private static e qWy;
+  private final String origin;
+  private final ArrayList<a> uzf;
+  private final int uzg;
   
-  public static int a(byte[] paramArrayOfByte, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public e(String paramString, int paramInt)
   {
-    AppMethodBeat.i(199780);
-    long l = Util.currentTicks();
-    paramString1 = ImgUtil.identifyImgType(paramString1);
-    int i = 7;
-    if (".gif".equals(paramString1)) {
-      i = 3;
-    }
-    int k = MMWXGFJNI.getErrorCode();
-    int j = k;
-    if (k == 0)
+    AppMethodBeat.i(231407);
+    this.origin = paramString;
+    this.uzg = paramInt;
+    this.uzf = new ArrayList();
+    paramString = b.a(MMApplicationContext.getContext(), (CharSequence)this.origin, this.uzg);
+    if ((paramString instanceof SpannableString))
     {
-      paramString1 = s.k(paramString2, true);
-      k = paramArrayOfByte.length;
-      j = ((b)g.af(b.class)).a(b.a.sle, 25);
-      if (j < 0) {
-        break label192;
-      }
-      paramInt1 = MMWXGFJNI.pic2WxamWithWH(paramString1, paramArrayOfByte, k, i, j, paramInt1, paramInt2, paramInt3, paramInt4);
-      if (s.boW(paramString2) <= 0L) {
-        paramInt1 = -10;
-      }
-      if (paramInt1 == 0) {
-        break label200;
-      }
-      h.CyF.dN(944, 0);
-    }
-    for (j = paramInt1;; j = paramInt1)
-    {
-      Log.i("MicroMsg.HevcHelperService", "pic2wxam %d, %d, %d, %d，%s", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Long.valueOf(s.boW(paramString2)), Long.valueOf(Util.ticksToNow(l)), s.k(paramString2, true) });
-      AppMethodBeat.o(199780);
-      return j;
-      label192:
-      j = cEQ();
-      break;
-      label200:
-      h.CyF.dN(944, 2);
-      h.CyF.n(944L, 3L, Util.ticksToNow(l));
-    }
-  }
-  
-  public static e cEM()
-  {
-    AppMethodBeat.i(104534);
-    if (qWy == null) {
-      qWy = new e();
-    }
-    e locale = qWy;
-    AppMethodBeat.o(104534);
-    return locale;
-  }
-  
-  private static int cEQ()
-  {
-    AppMethodBeat.i(104542);
-    try
-    {
-      if (NetStatusUtil.isWifi(MMApplicationContext.getContext())) {
-        i = Util.getInt(((a)g.af(a.class)).aqJ().getValue("CompressPicLevelForWifi"), 60);
-      }
-      for (;;)
+      Object localObject1 = (a[])((SpannableString)paramString).getSpans(0, paramString.length(), a.class);
+      p.j(localObject1, "fixImageSpanList");
+      kotlin.a.e.a((Object[])localObject1, (Comparator)new Comparator() {});
+      int k = localObject1.length;
+      int i = 0;
+      Object localObject2;
+      int j;
+      for (paramInt = 0; i < k; paramInt = j)
       {
-        i = Math.round(39.0F - i / 5.0F);
-        AppMethodBeat.o(104542);
-        return i;
-        if (NetStatusUtil.is2G(MMApplicationContext.getContext())) {
-          i = Util.getInt(((a)g.af(a.class)).aqJ().getValue("CompressPicLevelFor2G"), 40);
-        } else if (NetStatusUtil.is3G(MMApplicationContext.getContext())) {
-          i = Util.getInt(((a)g.af(a.class)).aqJ().getValue("CompressPicLevelFor3G"), 40);
-        } else {
-          i = Util.getInt(((a)g.af(a.class)).aqJ().getValue("CompressPicLevelFor4G"), 60);
+        localObject2 = localObject1[i];
+        int m = ((SpannableString)paramString).getSpanStart(localObject2);
+        j = ((SpannableString)paramString).getSpanEnd(localObject2);
+        if (paramInt < m)
+        {
+          localObject2 = this.uzf;
+          localb = b.uzk;
+          str = this.origin;
+          if (str == null)
+          {
+            paramString = new t("null cannot be cast to non-null type java.lang.String");
+            AppMethodBeat.o(231407);
+            throw paramString;
+          }
+          str = str.substring(paramInt, m);
+          p.j(str, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+          ((ArrayList)localObject2).add(new a(paramInt, m, localb, str));
         }
+        localObject2 = this.uzf;
+        b localb = b.uzj;
+        String str = this.origin;
+        if (str == null)
+        {
+          paramString = new t("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(231407);
+          throw paramString;
+        }
+        str = str.substring(m, j);
+        p.j(str, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+        ((ArrayList)localObject2).add(new a(m, j, localb, str));
+        i += 1;
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      if (paramInt < this.origin.length())
       {
-        int i = 60;
+        paramString = this.uzf;
+        i = this.origin.length();
+        localObject1 = b.uzk;
+        localObject2 = this.origin;
+        j = this.origin.length();
+        if (localObject2 == null)
+        {
+          paramString = new t("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(231407);
+          throw paramString;
+        }
+        localObject2 = ((String)localObject2).substring(paramInt, j);
+        p.j(localObject2, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+        paramString.add(new a(paramInt, i, (b)localObject1, (String)localObject2));
       }
     }
+    AppMethodBeat.o(231407);
   }
   
-  public final String alX(String paramString)
+  public final int a(g.a parama)
   {
-    AppMethodBeat.i(104536);
-    if (Util.isNullOrNil(paramString))
+    AppMethodBeat.i(231404);
+    p.k(parama, "mode");
+    int i = 0;
+    Iterator localIterator = ((Iterable)this.uzf).iterator();
+    if (localIterator.hasNext())
     {
-      AppMethodBeat.o(104536);
-      return paramString;
-    }
-    paramString = paramString + "_hevc";
-    AppMethodBeat.o(104536);
-    return paramString;
-  }
-  
-  public final byte[] bn(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(104539);
-    long l = Util.currentTicks();
-    int j = MMWXGFJNI.getErrorCode();
-    byte[] arrayOfByte = null;
-    int k;
-    if (j == 0)
-    {
-      arrayOfByte = MMWXGFJNI.nativeWxam2PicBuf(paramArrayOfByte);
-      if (arrayOfByte == null) {
-        h.CyF.dN(944, 1);
-      }
-    }
-    else
-    {
-      k = paramArrayOfByte.length;
-      if (arrayOfByte != null) {
-        break label135;
-      }
-    }
-    label135:
-    for (int i = 0;; i = arrayOfByte.length)
-    {
-      Log.i("MicroMsg.HevcHelperService", "wxam2pic %d, %d, %d, %d", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), Long.valueOf(Util.ticksToNow(l)) });
-      AppMethodBeat.o(104539);
-      return arrayOfByte;
-      h.CyF.dN(944, 5);
-      h.CyF.n(944L, 6L, Util.ticksToNow(l));
-      break;
-    }
-  }
-  
-  public final boolean cEN()
-  {
-    AppMethodBeat.i(104535);
-    int i = MMWXGFJNI.getErrorCode();
-    Log.i("MicroMsg.HevcHelperService", "checkHevcReady: %s", new Object[] { Integer.valueOf(i) });
-    if (i == 0)
-    {
-      AppMethodBeat.o(104535);
-      return true;
-    }
-    AppMethodBeat.o(104535);
-    return false;
-  }
-  
-  public final boolean cEO()
-  {
-    AppMethodBeat.i(104540);
-    boolean bool = ((b)g.af(b.class)).a(b.a.rOh, false);
-    Log.i("MicroMsg.HevcHelperService", "hevc upload %s", new Object[] { Boolean.valueOf(bool) });
-    if ((cEN()) && (bool))
-    {
-      AppMethodBeat.o(104540);
-      return true;
-    }
-    AppMethodBeat.o(104540);
-    return false;
-  }
-  
-  public final boolean cEP()
-  {
-    AppMethodBeat.i(104541);
-    boolean bool = ((b)g.af(b.class)).a(b.a.rOi, false);
-    Log.i("MicroMsg.HevcHelperService", "hevc download %s", new Object[] { Boolean.valueOf(bool) });
-    if ((cEN()) && (bool))
-    {
-      AppMethodBeat.o(104541);
-      return true;
-    }
-    AppMethodBeat.o(104541);
-    return false;
-  }
-  
-  public final int fO(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(104537);
-    long l = Util.currentTicks();
-    String str = ImgUtil.identifyImgType(paramString1);
-    int j = 0;
-    int i;
-    if (".png".equals(str))
-    {
-      j = 1;
-      int k = MMWXGFJNI.getErrorCode();
-      i = k;
-      if (k == 0)
+      a locala = (a)localIterator.next();
+      b localb = locala.uzi;
+      switch (f.$EnumSwitchMapping$0[localb.ordinal()])
       {
-        i = MMWXGFJNI.pic2Wxam(s.k(paramString1, false), s.k(paramString2, true), j, cEQ());
-        if (s.boW(paramString2) <= 0L) {
-          i = -10;
-        }
-        if (i == 0) {
-          break label170;
-        }
-        h.CyF.dN(944, 0);
+      default: 
+        parama = new m();
+        AppMethodBeat.o(231404);
+        throw parama;
       }
-    }
-    for (;;)
-    {
-      Log.i("MicroMsg.HevcHelperService", "pic2wxam %d, %d, %d, %d, %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Long.valueOf(s.boW(paramString1)), Long.valueOf(s.boW(paramString2)), Long.valueOf(Util.ticksToNow(l)) });
-      AppMethodBeat.o(104537);
-      return i;
-      if (!".gif".equals(str)) {
+      for (int j = g.a(locala.content, parama);; j = 2)
+      {
+        i = j + i;
         break;
       }
-      j = 3;
-      break;
-      label170:
-      h.CyF.dN(944, 2);
-      h.CyF.n(944L, 3L, Util.ticksToNow(l));
+    }
+    AppMethodBeat.o(231404);
+    return i;
+  }
+  
+  public final String b(int paramInt, g.a parama)
+  {
+    AppMethodBeat.i(231405);
+    p.k(parama, "mode");
+    StringBuffer localStringBuffer = new StringBuffer();
+    Object localObject = (e)this;
+    int i = 0;
+    localObject = ((Iterable)((e)localObject).uzf).iterator();
+    if (((Iterator)localObject).hasNext())
+    {
+      a locala = (a)((Iterator)localObject).next();
+      b localb = locala.uzi;
+      int j;
+      switch (f.jLJ[localb.ordinal()])
+      {
+      default: 
+        parama = new m();
+        AppMethodBeat.o(231405);
+        throw parama;
+      case 1: 
+        j = g.a(locala.content, parama);
+        label130:
+        if (i + j <= paramInt) {
+          p.j(localStringBuffer.append(locala.content), "outputBuffer.append(clip.content)");
+        }
+        break;
+      }
+      while (i + j <= paramInt)
+      {
+        i += j;
+        break;
+        j = 2;
+        break label130;
+      }
+      if ((locala.uzi == b.uzk) && (i < paramInt)) {
+        localStringBuffer.append(g.hV(locala.content, paramInt - i));
+      }
+    }
+    parama = localStringBuffer.toString();
+    p.j(parama, "outputBuffer.toString()");
+    AppMethodBeat.o(231405);
+    return parama;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emoji/EmojiString$Clip;", "", "start", "", "end", "type", "Lcom/tencent/mm/plugin/emoji/EmojiString$ClipType;", "content", "", "(IILcom/tencent/mm/plugin/emoji/EmojiString$ClipType;Ljava/lang/String;)V", "getContent", "()Ljava/lang/String;", "getEnd", "()I", "getStart", "getType", "()Lcom/tencent/mm/plugin/emoji/EmojiString$ClipType;", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "toString", "plugin-emojisdk_release"})
+  public static final class a
+  {
+    final String content;
+    private final int end;
+    private final int start;
+    final e.b uzi;
+    
+    public a(int paramInt1, int paramInt2, e.b paramb, String paramString)
+    {
+      AppMethodBeat.i(224957);
+      this.start = paramInt1;
+      this.end = paramInt2;
+      this.uzi = paramb;
+      this.content = paramString;
+      AppMethodBeat.o(224957);
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(224964);
+      if (this != paramObject)
+      {
+        if ((paramObject instanceof a))
+        {
+          paramObject = (a)paramObject;
+          if ((this.start != paramObject.start) || (this.end != paramObject.end) || (!p.h(this.uzi, paramObject.uzi)) || (!p.h(this.content, paramObject.content))) {}
+        }
+      }
+      else
+      {
+        AppMethodBeat.o(224964);
+        return true;
+      }
+      AppMethodBeat.o(224964);
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      int j = 0;
+      AppMethodBeat.i(224962);
+      int k = this.start;
+      int m = this.end;
+      Object localObject = this.uzi;
+      if (localObject != null) {}
+      for (int i = localObject.hashCode();; i = 0)
+      {
+        localObject = this.content;
+        if (localObject != null) {
+          j = localObject.hashCode();
+        }
+        AppMethodBeat.o(224962);
+        return (i + (k * 31 + m) * 31) * 31 + j;
+      }
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(224959);
+      String str = "Clip(start=" + this.start + ", end=" + this.end + ", type=" + this.uzi + ", content=" + this.content + ")";
+      AppMethodBeat.o(224959);
+      return str;
     }
   }
   
-  public final int nativeWxam2Pic(String paramString1, String paramString2)
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emoji/EmojiString$ClipType;", "", "(Ljava/lang/String;I)V", "EMOJI", "WORD", "plugin-emojisdk_release"})
+  public static enum b
   {
-    AppMethodBeat.i(104538);
-    long l = Util.currentTicks();
-    int j = MMWXGFJNI.getErrorCode();
-    int i = j;
-    if (j == 0)
+    static
     {
-      i = MMWXGFJNI.wxam2Pic(s.k(paramString1, false), s.k(paramString2, true));
-      if (s.boW(paramString2) <= 0L) {
-        i = -10;
-      }
-      if (i == 0) {
-        break label121;
-      }
-      h.CyF.dN(944, 1);
+      AppMethodBeat.i(224597);
+      b localb1 = new b("EMOJI", 0);
+      uzj = localb1;
+      b localb2 = new b("WORD", 1);
+      uzk = localb2;
+      uzl = new b[] { localb1, localb2 };
+      AppMethodBeat.o(224597);
     }
-    for (;;)
-    {
-      Log.i("MicroMsg.HevcHelperService", "wxam2pic %d, %d, %d, %d", new Object[] { Integer.valueOf(i), Long.valueOf(s.boW(paramString1)), Long.valueOf(s.boW(paramString2)), Long.valueOf(Util.ticksToNow(l)) });
-      AppMethodBeat.o(104538);
-      return i;
-      label121:
-      h.CyF.dN(944, 5);
-      h.CyF.n(944L, 6L, Util.ticksToNow(l));
-    }
+    
+    private b() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,167 +1,109 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import android.content.Context;
-import android.content.ContextWrapper;
-import android.content.res.AssetManager;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
+import android.view.MotionEvent;
+import android.view.ViewConfiguration;
+import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ce.e;
-import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.plugin.appbrand.widget.input.panel.c;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.plugin.appbrand.jsapi.ae.e;
+import com.tencent.mm.plugin.appbrand.jsapi.ae.e.f;
+import com.tencent.mm.plugin.appbrand.widget.base.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Locale;
 
-final class ak
-  extends c
+final class ak<Input extends EditText,  extends af>
 {
-  private static final int ovy;
-  private e ovx = null;
+  final String TAG;
+  final Input rxC;
+  final float rxD;
+  e.f rxE;
+  MotionEvent rxF;
+  boolean rxG;
+  final Runnable rxH;
+  final Runnable rxI;
   
-  static
+  ak(Input paramInput)
   {
-    AppMethodBeat.i(49920);
-    ovy = MMApplicationContext.getContext().getResources().getDimensionPixelSize(2131165535);
-    AppMethodBeat.o(49920);
+    AppMethodBeat.i(136577);
+    this.rxG = false;
+    this.rxH = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(136575);
+        ak.this.rxG = true;
+        Log.v(ak.this.TAG, "[apptouch] pendingCheckForTap run, pointerDown TRUE");
+        ak.this.rxC.postDelayed(ak.this.rxI, ViewConfiguration.getLongPressTimeout());
+        AppMethodBeat.o(136575);
+      }
+    };
+    this.rxI = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(136576);
+        if (!ak.this.rxG)
+        {
+          AppMethodBeat.o(136576);
+          return;
+        }
+        e.f localf = e.cO(ak.this.rxC);
+        if ((ak.this.rxE == null) || (Math.abs(ak.this.rxE.x - localf.x) > 1.0F) || (Math.abs(ak.this.rxE.y - localf.y) > 1.0F))
+        {
+          Log.v(ak.this.TAG, "check long press timeout, but view has moved.");
+          AppMethodBeat.o(136576);
+          return;
+        }
+        if (ak.this.rxF == null)
+        {
+          AppMethodBeat.o(136576);
+          return;
+        }
+        ak.this.rxG = false;
+        ak.this.rxC.removeCallbacks(ak.this.rxH);
+        AppMethodBeat.o(136576);
+      }
+    };
+    this.rxC = paramInput;
+    this.TAG = ("MicroMsg.AppBrand.InputFakeTapEventEmitter" + String.format(Locale.US, "[%s]", new Object[] { paramInput.toString() }));
+    this.rxD = ViewConfiguration.get(paramInput.getContext()).getScaledTouchSlop();
+    AppMethodBeat.o(136577);
   }
   
-  public final e cbY()
+  final boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2)
   {
-    AppMethodBeat.i(49919);
-    if (this.ovx == null) {
-      this.ovx = new a();
+    AppMethodBeat.i(136579);
+    float f1 = paramMotionEvent1.getX(paramMotionEvent1.getActionIndex());
+    float f2 = paramMotionEvent1.getY(paramMotionEvent1.getActionIndex());
+    float f3 = paramMotionEvent2.getX(paramMotionEvent2.getActionIndex());
+    float f4 = paramMotionEvent2.getY(paramMotionEvent2.getActionIndex());
+    Log.v(this.TAG, "[apptouch] checkTapArea touchSlop %f, X[%f:%f], Y[%f:%f], [%s : %s]", new Object[] { Float.valueOf(this.rxD), Float.valueOf(f1), Float.valueOf(f3), Float.valueOf(f2), Float.valueOf(f4), a.L(paramMotionEvent1), a.L(paramMotionEvent2) });
+    if ((Math.abs(f4 - f2) <= this.rxD) && (Math.abs(f3 - f1) <= this.rxD))
+    {
+      AppMethodBeat.o(136579);
+      return true;
     }
-    e locale = this.ovx;
-    AppMethodBeat.o(49919);
-    return locale;
+    AppMethodBeat.o(136579);
+    return false;
   }
   
-  static final class a
-    extends e
+  final void cpi()
   {
-    private String[] ovz;
-    
-    static
+    AppMethodBeat.i(136578);
+    this.rxG = false;
+    this.rxC.removeCallbacks(this.rxH);
+    this.rxC.removeCallbacks(this.rxI);
+    this.rxE = null;
+    if (this.rxF != null)
     {
-      AppMethodBeat.i(49910);
-      j.UJ("com.tencent.mm.plugin.emoji.PluginEmoji");
-      AppMethodBeat.o(49910);
+      this.rxF.recycle();
+      this.rxF = null;
     }
-    
-    a()
-    {
-      super();
-      AppMethodBeat.i(49905);
-      this.ovz = null;
-      this.ovz = MMApplicationContext.getContext().getResources().getStringArray(2130903071);
-      AppMethodBeat.o(49905);
-    }
-    
-    public final Drawable Al(int paramInt)
-    {
-      AppMethodBeat.i(49906);
-      f.cbc();
-      ak.b localb = new ak.b(Am(paramInt), ak.ovy, (byte)0);
-      AppMethodBeat.o(49906);
-      return localb;
-    }
-    
-    public final String Am(int paramInt)
-    {
-      AppMethodBeat.i(49907);
-      if ((this.ovz == null) || (paramInt < 0) || (paramInt > this.ovz.length - 1))
-      {
-        AppMethodBeat.o(49907);
-        return "";
-      }
-      Object localObject2 = this.ovz[paramInt].split(" ");
-      Object localObject1 = Character.toChars(Integer.decode(localObject2[0]).intValue());
-      localObject2 = Character.toChars(Integer.decode(localObject2[1]).intValue());
-      localObject1 = (char[])localObject1 + (char[])localObject2;
-      AppMethodBeat.o(49907);
-      return localObject1;
-    }
-    
-    public final String An(int paramInt)
-    {
-      AppMethodBeat.i(49909);
-      String str = Am(paramInt);
-      AppMethodBeat.o(49909);
-      return str;
-    }
-    
-    public final int cbZ()
-    {
-      return 0;
-    }
-    
-    public final int cca()
-    {
-      if (this.ovz != null) {
-        return this.ovz.length;
-      }
-      return 0;
-    }
-  }
-  
-  static final class c
-    extends ContextWrapper
-  {
-    private Resources mResources;
-    
-    public c(Context paramContext)
-    {
-      super();
-    }
-    
-    public final Resources getResources()
-    {
-      AppMethodBeat.i(49917);
-      if ((this.mResources != null) && ((this.mResources instanceof ak.d)))
-      {
-        localResources = this.mResources;
-        AppMethodBeat.o(49917);
-        return localResources;
-      }
-      Resources localResources = super.getResources();
-      this.mResources = new ak.d(localResources.getAssets(), localResources.getDisplayMetrics(), localResources.getConfiguration());
-      localResources = this.mResources;
-      AppMethodBeat.o(49917);
-      return localResources;
-    }
-  }
-  
-  static final class d
-    extends Resources
-  {
-    d(AssetManager paramAssetManager, DisplayMetrics paramDisplayMetrics, Configuration paramConfiguration)
-    {
-      super(paramDisplayMetrics, paramConfiguration);
-    }
-    
-    public final String[] getStringArray(int paramInt)
-    {
-      AppMethodBeat.i(49918);
-      if (2130903069 == paramInt)
-      {
-        AppMethodBeat.o(49918);
-        return new String[0];
-      }
-      if (2130903070 == paramInt)
-      {
-        AppMethodBeat.o(49918);
-        return new String[0];
-      }
-      String[] arrayOfString = super.getStringArray(paramInt);
-      AppMethodBeat.o(49918);
-      return arrayOfString;
-    }
+    AppMethodBeat.o(136578);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.ak
  * JD-Core Version:    0.7.0.1
  */

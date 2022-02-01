@@ -5,11 +5,11 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.p;
-import android.support.v4.app.p.a;
-import android.support.v4.content.c;
 import android.view.accessibility.AccessibilityEvent;
+import androidx.fragment.app.FragmentActivity;
+import androidx.g.a.a;
+import androidx.g.a.a.a;
+import androidx.g.b.b;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.SignInAccount;
 import com.google.android.gms.common.annotation.KeepName;
@@ -200,24 +200,24 @@ public class SignInHubActivity
   }
   
   final class zzd
-    implements p.a<Void>
+    implements a.a<Void>
   {
     private zzd() {}
     
-    public final c<Void> onCreateLoader(int paramInt, Bundle paramBundle)
+    public final b<Void> onCreateLoader(int paramInt, Bundle paramBundle)
     {
-      AppMethodBeat.i(88302);
+      AppMethodBeat.i(204152);
       paramBundle = new zzf(SignInHubActivity.this, GoogleApiClient.getAllClients());
-      AppMethodBeat.o(88302);
+      AppMethodBeat.o(204152);
       return paramBundle;
     }
     
-    public final void onLoaderReset(c<Void> paramc) {}
+    public final void onLoaderReset(b<Void> paramb) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.gms.auth.api.signin.internal.SignInHubActivity
  * JD-Core Version:    0.7.0.1
  */

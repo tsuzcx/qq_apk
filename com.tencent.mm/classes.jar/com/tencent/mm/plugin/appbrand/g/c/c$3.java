@@ -13,8 +13,8 @@ public final class c$3
   public final void a(e parame)
   {
     AppMethodBeat.i(158960);
-    if (this.lkL != null) {
-      this.lkL.a(parame);
+    if (this.ofx != null) {
+      this.ofx.a(parame);
     }
     AppMethodBeat.o(158960);
   }
@@ -22,16 +22,16 @@ public final class c$3
   public final void b(e parame)
   {
     AppMethodBeat.i(158959);
-    this.lkJ.lkE.remove(this.lkK.llm);
-    if (this.lkL != null) {
-      this.lkL.b(parame);
+    this.ofv.ofq.remove(this.ofw.ofY);
+    if (this.ofx != null) {
+      this.ofx.b(parame);
     }
     AppMethodBeat.o(158959);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.c.c.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.f.c.av;
 import com.tencent.mm.k.a.a.c;
 import com.tencent.mm.k.a.a.d;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
@@ -53,7 +53,7 @@ public final class aj
     AppMethodBeat.o(43167);
   }
   
-  public final List<c> Nf(long paramLong)
+  public final List<c> UR(long paramLong)
   {
     AppMethodBeat.i(43164);
     LinkedList localLinkedList = new LinkedList();
@@ -62,11 +62,11 @@ public final class aj
       AppMethodBeat.o(43164);
       return localLinkedList;
     }
-    Iterator localIterator = this.field_seqBlockInfo.gCC.iterator();
+    Iterator localIterator = this.field_seqBlockInfo.jmI.iterator();
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
-      if (localc.gCB <= paramLong) {
+      if (localc.jmH <= paramLong) {
         localLinkedList.add(localc);
       }
     }
@@ -74,7 +74,7 @@ public final class aj
     return localLinkedList;
   }
   
-  public final List<c> Ng(long paramLong)
+  public final List<c> US(long paramLong)
   {
     AppMethodBeat.i(43165);
     LinkedList localLinkedList = new LinkedList();
@@ -83,11 +83,11 @@ public final class aj
       AppMethodBeat.o(43165);
       return localLinkedList;
     }
-    Iterator localIterator = this.field_seqBlockInfo.gCC.iterator();
+    Iterator localIterator = this.field_seqBlockInfo.jmI.iterator();
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
-      if (localc.gCy > paramLong) {
+      if (localc.jmE > paramLong) {
         localLinkedList.add(localc);
       }
     }
@@ -110,11 +110,11 @@ public final class aj
     if (this.field_seqBlockInfo != null)
     {
       ((StringBuilder)localObject).append("block:");
-      Iterator localIterator = this.field_seqBlockInfo.gCC.iterator();
+      Iterator localIterator = this.field_seqBlockInfo.jmI.iterator();
       while (localIterator.hasNext())
       {
         c localc = (c)localIterator.next();
-        ((StringBuilder)localObject).append("[").append(localc.gCy).append(":").append(localc.gCz).append("][").append(localc.gCA).append(":").append(localc.gCB).append("] | ");
+        ((StringBuilder)localObject).append("[").append(localc.jmE).append(":").append(localc.jmF).append("][").append(localc.jmG).append(":").append(localc.jmH).append("] | ");
       }
     }
     localObject = ((StringBuilder)localObject).toString();
@@ -124,7 +124,7 @@ public final class aj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.aj
  * JD-Core Version:    0.7.0.1
  */

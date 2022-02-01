@@ -16,18 +16,20 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.plugin.webview.c.g;
 import com.tencent.mm.ui.MMActivity;
 
 public class WebViewSearchContentInputFooter
   extends LinearLayout
 {
-  private View JAA;
-  private EditText JAB;
-  private View JAC;
-  private View JAD;
-  private TextView JAE;
-  private a JAF;
-  private View okM;
+  private View QyK;
+  private EditText QyL;
+  private View QyM;
+  private View QyN;
+  private TextView QyO;
+  private a QyP;
+  private View rne;
   
   public WebViewSearchContentInputFooter(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -48,54 +50,66 @@ public class WebViewSearchContentInputFooter
   private void init()
   {
     AppMethodBeat.i(82299);
-    View localView = inflate(getContext(), 2131497076, this);
-    this.JAB = ((EditText)localView.findViewById(2131299910));
-    this.okM = localView.findViewById(2131298770);
-    this.JAC = localView.findViewById(2131306087);
-    this.JAD = localView.findViewById(2131305427);
-    this.JAE = ((TextView)localView.findViewById(2131302641));
-    this.JAA = localView.findViewById(2131302678);
-    this.okM.setOnClickListener(new WebViewSearchContentInputFooter.1(this));
-    this.JAC.setOnClickListener(new View.OnClickListener()
+    View localView = inflate(getContext(), c.g.webview_search_content_input_footer, this);
+    this.QyL = ((EditText)localView.findViewById(c.f.edittext));
+    this.rne = localView.findViewById(c.f.close_btn);
+    this.QyM = localView.findViewById(c.f.pre_word_v);
+    this.QyN = localView.findViewById(c.f.next_word_v);
+    this.QyO = ((TextView)localView.findViewById(c.f.index_tv));
+    this.QyK = localView.findViewById(c.f.input_footer_container);
+    this.rne.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(82290);
+        b localb = new b();
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        WebViewSearchContentInputFooter.this.hide();
+        a.a(this, "com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(82290);
+      }
+    });
+    this.QyM.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(82291);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (WebViewSearchContentInputFooter.c(WebViewSearchContentInputFooter.this) != null) {
-          WebViewSearchContentInputFooter.c(WebViewSearchContentInputFooter.this).gbS();
+          WebViewSearchContentInputFooter.c(WebViewSearchContentInputFooter.this).gUN();
         }
         a.a(this, "com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(82291);
       }
     });
-    this.JAD.setOnClickListener(new View.OnClickListener()
+    this.QyN.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(82292);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (WebViewSearchContentInputFooter.c(WebViewSearchContentInputFooter.this) != null) {
-          WebViewSearchContentInputFooter.c(WebViewSearchContentInputFooter.this).gbT();
+          WebViewSearchContentInputFooter.c(WebViewSearchContentInputFooter.this).gUO();
         }
         a.a(this, "com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(82292);
       }
     });
-    this.JAB.setOnKeyListener(new View.OnKeyListener()
+    this.QyL.setOnKeyListener(new View.OnKeyListener()
     {
       public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
         AppMethodBeat.i(82293);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        localb.pH(paramAnonymousInt);
-        localb.bm(paramAnonymousKeyEvent);
-        a.b("com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter$4", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        localb.sg(paramAnonymousInt);
+        localb.bn(paramAnonymousKeyEvent);
+        a.c("com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter$4", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.aFi());
         if (WebViewSearchContentInputFooter.c(WebViewSearchContentInputFooter.this) != null) {
           WebViewSearchContentInputFooter.c(WebViewSearchContentInputFooter.this).c(paramAnonymousInt, paramAnonymousKeyEvent);
         }
@@ -115,7 +129,7 @@ public class WebViewSearchContentInputFooter
         return false;
       }
     });
-    this.JAB.setOnFocusChangeListener(new View.OnFocusChangeListener()
+    this.QyL.setOnFocusChangeListener(new View.OnFocusChangeListener()
     {
       public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
       {
@@ -131,7 +145,7 @@ public class WebViewSearchContentInputFooter
         AppMethodBeat.o(82294);
       }
     });
-    this.JAB.addTextChangedListener(new TextWatcher()
+    this.QyL.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable) {}
       
@@ -152,12 +166,12 @@ public class WebViewSearchContentInputFooter
         AppMethodBeat.o(82295);
       }
     });
-    this.JAB.setSelectAllOnFocus(true);
+    this.QyL.setSelectAllOnFocus(true);
     reset();
     AppMethodBeat.o(82299);
   }
   
-  public final void H(int paramInt1, int paramInt2, boolean paramBoolean)
+  public final void O(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     boolean bool = true;
     AppMethodBeat.i(82305);
@@ -166,19 +180,19 @@ public class WebViewSearchContentInputFooter
       AppMethodBeat.o(82305);
       return;
     }
-    Object localObject = this.JAE;
+    Object localObject = this.QyO;
     if (paramInt2 == 0)
     {
       paramInt1 = 0;
       ((TextView)localObject).setText(String.format("%d/%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-      localObject = this.JAD;
+      localObject = this.QyN;
       if (paramInt2 <= 0) {
         break label108;
       }
       paramBoolean = true;
       label70:
       ((View)localObject).setEnabled(paramBoolean);
-      localObject = this.JAC;
+      localObject = this.QyM;
       if (paramInt2 <= 0) {
         break label113;
       }
@@ -200,29 +214,29 @@ public class WebViewSearchContentInputFooter
   public String getSearchContent()
   {
     AppMethodBeat.i(82306);
-    String str = this.JAB.getText().toString();
+    String str = this.QyL.getText().toString();
     AppMethodBeat.o(82306);
     return str;
   }
   
-  public final void giD()
+  public final void hcd()
   {
     AppMethodBeat.i(82301);
-    this.JAB.setText("");
+    this.QyL.setText("");
     AppMethodBeat.o(82301);
   }
   
   public final void hide()
   {
     AppMethodBeat.i(82304);
-    Context localContext = this.JAB.getContext();
+    Context localContext = this.QyL.getContext();
     if ((localContext instanceof MMActivity)) {
-      ((MMActivity)localContext).hideVKB(this.JAB);
+      ((MMActivity)localContext).hideVKB(this.QyL);
     }
-    this.JAB.clearFocus();
+    this.QyL.clearFocus();
     setVisibility(8);
-    if (this.JAF != null) {
-      this.JAF.gbR();
+    if (this.QyP != null) {
+      this.QyP.gUM();
     }
     AppMethodBeat.o(82304);
   }
@@ -242,22 +256,22 @@ public class WebViewSearchContentInputFooter
   public final void reset()
   {
     AppMethodBeat.i(82300);
-    this.JAE.setText("");
-    this.JAC.setEnabled(false);
-    this.JAD.setEnabled(false);
+    this.QyO.setText("");
+    this.QyM.setEnabled(false);
+    this.QyN.setEnabled(false);
     AppMethodBeat.o(82300);
   }
   
   public void setActionDelegate(a parama)
   {
-    this.JAF = parama;
+    this.QyP = parama;
   }
   
   public final void show()
   {
     AppMethodBeat.i(82303);
     setVisibility(0);
-    this.JAB.requestFocus();
+    this.QyL.requestFocus();
     postDelayed(new Runnable()
     {
       public final void run()
@@ -278,16 +292,16 @@ public class WebViewSearchContentInputFooter
     
     public abstract boolean c(int paramInt, KeyEvent paramKeyEvent);
     
-    public abstract void gbR();
+    public abstract void gUM();
     
-    public abstract void gbS();
+    public abstract void gUN();
     
-    public abstract void gbT();
+    public abstract void gUO();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.WebViewSearchContentInputFooter
  * JD-Core Version:    0.7.0.1
  */

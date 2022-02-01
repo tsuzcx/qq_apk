@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bto;
-import com.tencent.mm.protocal.protobuf.btp;
+import com.tencent.mm.protocal.protobuf.cbg;
+import com.tencent.mm.protocal.protobuf.cbh;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class q
-  extends com.tencent.mm.ak.q
+  extends com.tencent.mm.an.q
   implements m
 {
-  private i heq;
+  private i jQg;
   public final d rr;
   public Object tag;
   
@@ -25,18 +25,18 @@ public final class q
     AppMethodBeat.i(78888);
     Log.d("MicroMsg.NetSceneGetReadingModeInfoProxy", "NetSceneSetOAuthScope doScene url[%s], userAgent[%s], width[%d], height[%d]", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new bto();
-    ((d.a)localObject).iLO = new btp();
+    ((d.a)localObject).lBU = new cbg();
+    ((d.a)localObject).lBV = new cbh();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getreadingmodeinfo";
     ((d.a)localObject).funcId = 673;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (bto)this.rr.iLK.iLR;
-    ((bto)localObject).URL = paramString1;
-    ((bto)localObject).Mae = paramString2;
-    ((bto)localObject).Width = paramInt1;
-    ((bto)localObject).Height = paramInt2;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (cbg)d.b.b(this.rr.lBR);
+    ((cbg)localObject).URL = paramString1;
+    ((cbg)localObject).Tjx = paramString2;
+    ((cbg)localObject).Width = paramInt1;
+    ((cbg)localObject).Height = paramInt2;
     AppMethodBeat.o(78888);
   }
   
@@ -44,7 +44,7 @@ public final class q
   {
     AppMethodBeat.i(78890);
     Log.i("MicroMsg.NetSceneGetReadingModeInfoProxy", "doScene");
-    this.heq = parami;
+    this.jQg = parami;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(78890);
     return i;
@@ -59,7 +59,7 @@ public final class q
   {
     AppMethodBeat.i(78889);
     Log.i("MicroMsg.NetSceneGetReadingModeInfoProxy", "errType = " + paramInt2 + ", errCode = " + paramInt3);
-    this.heq.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    this.jQg.onSceneEnd(paramInt2, paramInt3, paramString, this);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       Log.e("MicroMsg.NetSceneGetReadingModeInfoProxy", "errType = " + paramInt2 + ", errCode = " + paramInt3);

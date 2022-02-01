@@ -9,32 +9,32 @@ import java.util.List;
 public final class d
 {
   private static final Object mLock;
-  private static volatile d sQC;
-  private List<a> sQD = null;
+  private static volatile d wwy;
+  private List<a> wwz = null;
   
   static
   {
     AppMethodBeat.i(103701);
-    sQC = null;
+    wwy = null;
     mLock = new Object();
     AppMethodBeat.o(103701);
   }
   
-  public static final d cSR()
+  public static final d dhV()
   {
     AppMethodBeat.i(103697);
-    if (sQC == null) {
+    if (wwy == null) {
       synchronized (mLock)
       {
-        if (sQC == null) {
-          sQC = new d();
+        if (wwy == null) {
+          wwy = new d();
         }
-        d locald = sQC;
+        d locald = wwy;
         AppMethodBeat.o(103697);
         return locald;
       }
     }
-    ??? = sQC;
+    ??? = wwy;
     AppMethodBeat.o(103697);
     return ???;
   }
@@ -62,7 +62,7 @@ public final class d
     //   30: aload_2
     //   31: monitorenter
     //   32: aload_0
-    //   33: getfield 39	com/tencent/mm/plugin/facedetect/model/d:sQD	Ljava/util/List;
+    //   33: getfield 39	com/tencent/mm/plugin/facedetect/model/d:wwz	Ljava/util/List;
     //   36: ifnonnull +18 -> 54
     //   39: aload_0
     //   40: new 57	java/util/ArrayList
@@ -70,9 +70,9 @@ public final class d
     //   44: iconst_5
     //   45: invokespecial 59	java/util/ArrayList:<init>	(I)V
     //   48: invokestatic 65	java/util/Collections:synchronizedList	(Ljava/util/List;)Ljava/util/List;
-    //   51: putfield 39	com/tencent/mm/plugin/facedetect/model/d:sQD	Ljava/util/List;
+    //   51: putfield 39	com/tencent/mm/plugin/facedetect/model/d:wwz	Ljava/util/List;
     //   54: aload_0
-    //   55: getfield 39	com/tencent/mm/plugin/facedetect/model/d:sQD	Ljava/util/List;
+    //   55: getfield 39	com/tencent/mm/plugin/facedetect/model/d:wwz	Ljava/util/List;
     //   58: new 6	com/tencent/mm/plugin/facedetect/model/d$a
     //   61: dup
     //   62: aload_0
@@ -107,10 +107,9 @@ public final class d
     //   11	23	83	finally
     //   26	32	83	finally
     //   75	80	83	finally
-    //   91	98	83	finally
+    //   89	98	83	finally
     //   32	54	88	finally
     //   54	75	88	finally
-    //   89	91	88	finally
   }
   
   public final void b(b paramb)
@@ -118,21 +117,21 @@ public final class d
     AppMethodBeat.i(103700);
     synchronized (mLock)
     {
-      if (this.sQD != null) {
-        this.sQD.remove(new a(paramb));
+      if (this.wwz != null) {
+        this.wwz.remove(new a(paramb));
       }
       AppMethodBeat.o(103700);
       return;
     }
   }
   
-  public final void bB(byte[] paramArrayOfByte)
+  public final void bP(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(103699);
     synchronized (mLock)
     {
       Log.v("MicroMsg.FaceCameraDataCallbackHolder", "hy: publish data:".concat(String.valueOf(paramArrayOfByte)));
-      if ((this.sQD == null) || (this.sQD.size() == 0))
+      if ((this.wwz == null) || (this.wwz.size() == 0))
       {
         Log.w("MicroMsg.FaceCameraDataCallbackHolder", "hy: nothing's listening to preview data");
         AppMethodBeat.o(103699);
@@ -144,14 +143,14 @@ public final class d
         AppMethodBeat.o(103699);
         return;
       }
-      Iterator localIterator = this.sQD.iterator();
+      Iterator localIterator = this.wwz.iterator();
       if (localIterator.hasNext())
       {
         a locala = (a)localIterator.next();
         int i = paramArrayOfByte.length;
-        locala.data = ((byte[])locala.sQE.cSS().e(Integer.valueOf(i)));
+        locala.data = ((byte[])locala.wwA.dhW().h(Integer.valueOf(i)));
         System.arraycopy(paramArrayOfByte, 0, locala.data, 0, i);
-        locala.sQE.bC(locala.data);
+        locala.wwA.bQ(locala.data);
       }
     }
     AppMethodBeat.o(103699);
@@ -159,13 +158,13 @@ public final class d
   
   public final void clear()
   {
-    AppMethodBeat.i(186365);
+    AppMethodBeat.i(193897);
     synchronized (mLock)
     {
-      if (this.sQD != null) {
-        this.sQD.clear();
+      if (this.wwz != null) {
+        this.wwz.clear();
       }
-      AppMethodBeat.o(186365);
+      AppMethodBeat.o(193897);
       return;
     }
   }
@@ -173,32 +172,32 @@ public final class d
   final class a
   {
     byte[] data;
-    d.b sQE;
+    d.b wwA;
     
     a(d.b paramb)
     {
-      this.sQE = paramb;
+      this.wwA = paramb;
     }
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(186364);
+      AppMethodBeat.i(194625);
       if (!(paramObject instanceof a))
       {
-        AppMethodBeat.o(186364);
+        AppMethodBeat.o(194625);
         return false;
       }
-      boolean bool = this.sQE.equals(((a)paramObject).sQE);
-      AppMethodBeat.o(186364);
+      boolean bool = this.wwA.equals(((a)paramObject).wwA);
+      AppMethodBeat.o(194625);
       return bool;
     }
   }
   
   public static abstract interface b
   {
-    public abstract void bC(byte[] paramArrayOfByte);
+    public abstract void bQ(byte[] paramArrayOfByte);
     
-    public abstract a<byte[]> cSS();
+    public abstract a<byte[]> dhW();
   }
 }
 

@@ -8,12 +8,12 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class b
 {
-  private static int gLf = 0;
+  private static int jvu = 0;
   
-  public static boolean apl()
+  public static boolean avx()
   {
     AppMethodBeat.i(155860);
-    if (gLf == 0)
+    if (jvu == 0)
     {
       SharedPreferences localSharedPreferences = MMApplicationContext.getDefaultPreference();
       if ((localSharedPreferences == null) || (!localSharedPreferences.getBoolean("settings_support_swipe", true))) {
@@ -21,7 +21,7 @@ public final class b
       }
     }
     label49:
-    for (gLf = 1; gLf == 1; gLf = 2)
+    for (jvu = 1; jvu == 1; jvu = 2)
     {
       AppMethodBeat.o(155860);
       return true;
@@ -30,7 +30,7 @@ public final class b
     return false;
   }
   
-  public static void du(boolean paramBoolean)
+  public static void dU(boolean paramBoolean)
   {
     AppMethodBeat.i(155861);
     SharedPreferences localSharedPreferences = MMApplicationContext.getDefaultPreference();
@@ -44,7 +44,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.compatible.h.b
  * JD-Core Version:    0.7.0.1
  */

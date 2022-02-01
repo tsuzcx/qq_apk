@@ -1,66 +1,66 @@
 package com.tencent.mm.plugin.appbrand.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.debugger.o;
+import com.tencent.mm.plugin.appbrand.debugger.q;
 import com.tencent.mm.plugin.appbrand.m.c;
 import com.tencent.mm.plugin.appbrand.m.i;
 import com.tencent.mm.plugin.appbrand.m.x;
-import com.tencent.mm.plugin.appbrand.page.at;
-import com.tencent.mm.plugin.appbrand.page.bb;
+import com.tencent.mm.plugin.appbrand.page.av;
+import com.tencent.mm.plugin.appbrand.page.bd;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.xweb.WebView;
 
 public enum e
 {
-  public static final e[] nGR;
+  public static final e[] qJc;
   
   static
   {
     AppMethodBeat.i(48043);
-    nGH = new e("X5", 0);
-    nGI = new e("MMV8", 1);
-    nGJ = new e("WebViewBased", 2);
-    nGK = new e("NativeScript", 3);
-    nGL = new e("NodeJS", 4);
-    nGM = new e("J2V8", 5);
-    nGN = new e("WebViewX5", 6);
-    nGO = new e("WebViewXW", 7);
-    nGP = new e("WebViewSystem", 8);
-    nGQ = new e("Invalid", 9);
-    nGS = new e[] { nGH, nGI, nGJ, nGK, nGL, nGM, nGN, nGO, nGP, nGQ };
-    nGR = new e[] { nGI, nGM, nGL };
+    qIS = new e("X5", 0);
+    qIT = new e("MMV8", 1);
+    qIU = new e("WebViewBased", 2);
+    qIV = new e("NativeScript", 3);
+    qIW = new e("NodeJS", 4);
+    qIX = new e("J2V8", 5);
+    qIY = new e("WebViewX5", 6);
+    qIZ = new e("WebViewXW", 7);
+    qJa = new e("WebViewSystem", 8);
+    qJb = new e("Invalid", 9);
+    qJd = new e[] { qIS, qIT, qIU, qIV, qIW, qIX, qIY, qIZ, qJa, qJb };
+    qJc = new e[] { qIT, qIX, qIW };
     AppMethodBeat.o(48043);
   }
   
   private e() {}
   
-  public static e d(i parami)
+  public static e f(i parami)
   {
     AppMethodBeat.i(48041);
     if ((parami instanceof c))
     {
-      parami = nGM;
+      parami = qIX;
       AppMethodBeat.o(48041);
       return parami;
     }
     if ((parami instanceof x))
     {
-      parami = nGL;
+      parami = qIW;
       AppMethodBeat.o(48041);
       return parami;
     }
-    if ((parami instanceof o))
+    if ((parami instanceof q))
     {
-      parami = nGQ;
+      parami = qJb;
       AppMethodBeat.o(48041);
       return parami;
     }
-    if ((parami instanceof bb))
+    if ((parami instanceof bd))
     {
-      if (!(parami instanceof at)) {
+      if (!(parami instanceof av)) {
         break label221;
       }
-      parami = ((at)parami).nsV;
+      parami = ((av)parami).quO;
     }
     label221:
     for (;;)
@@ -70,24 +70,24 @@ public enum e
         parami = (WebView)parami;
         if (parami.isSysKernel())
         {
-          parami = nGP;
+          parami = qJa;
           AppMethodBeat.o(48041);
           return parami;
         }
         if (parami.isXWalkKernel())
         {
-          parami = nGO;
+          parami = qIZ;
           AppMethodBeat.o(48041);
           return parami;
         }
         if (parami.getX5WebViewExtension() != null)
         {
-          parami = nGN;
+          parami = qIY;
           AppMethodBeat.o(48041);
           return parami;
         }
       }
-      parami = nGQ;
+      parami = qJb;
       AppMethodBeat.o(48041);
       return parami;
       if (BuildInfo.DEBUG)
@@ -100,18 +100,18 @@ public enum e
           throw parami;
         }
       }
-      parami = nGQ;
+      parami = qJb;
       AppMethodBeat.o(48041);
       return parami;
     }
   }
   
-  public static String e(i parami)
+  public static String g(i parami)
   {
     AppMethodBeat.i(48042);
-    String str2 = d(parami).name();
+    String str2 = f(parami).name();
     String str1 = str2;
-    if ((parami instanceof o)) {
+    if ((parami instanceof q)) {
       str1 = str2 + "(remote_debug)";
     }
     AppMethodBeat.o(48042);
@@ -120,7 +120,7 @@ public enum e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.e
  * JD-Core Version:    0.7.0.1
  */

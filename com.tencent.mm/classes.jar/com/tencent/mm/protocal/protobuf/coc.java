@@ -3,96 +3,51 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class coc
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String ErZ;
-  public int Esb;
-  public String LIb;
-  public String country;
-  public float dTj;
-  public String fuJ;
-  public String fuK;
-  public String jlI;
-  public String kHV;
-  public float latitude;
+  public String RUC;
+  public String error_msg;
+  public int ret;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(209760);
+    AppMethodBeat.i(263691);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.E(1, this.dTj);
-      paramVarArgs.E(2, this.latitude);
-      if (this.fuK != null) {
-        paramVarArgs.e(3, this.fuK);
+      paramVarArgs.aY(1, this.ret);
+      if (this.error_msg != null) {
+        paramVarArgs.f(2, this.error_msg);
       }
-      if (this.kHV != null) {
-        paramVarArgs.e(4, this.kHV);
+      if (this.RUC != null) {
+        paramVarArgs.f(3, this.RUC);
       }
-      if (this.ErZ != null) {
-        paramVarArgs.e(5, this.ErZ);
-      }
-      if (this.LIb != null) {
-        paramVarArgs.e(6, this.LIb);
-      }
-      paramVarArgs.aM(7, this.Esb);
-      if (this.fuJ != null) {
-        paramVarArgs.e(8, this.fuJ);
-      }
-      if (this.jlI != null) {
-        paramVarArgs.e(9, this.jlI);
-      }
-      if (this.country != null) {
-        paramVarArgs.e(10, this.country);
-      }
-      AppMethodBeat.o(209760);
+      AppMethodBeat.o(263691);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.fS(1) + 4 + 0 + (g.a.a.b.b.a.fS(2) + 4);
+      int i = g.a.a.b.b.a.bM(1, this.ret) + 0;
       paramInt = i;
-      if (this.fuK != null) {
-        paramInt = i + g.a.a.b.b.a.f(3, this.fuK);
+      if (this.error_msg != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.error_msg);
       }
       i = paramInt;
-      if (this.kHV != null) {
-        i = paramInt + g.a.a.b.b.a.f(4, this.kHV);
+      if (this.RUC != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.RUC);
       }
-      paramInt = i;
-      if (this.ErZ != null) {
-        paramInt = i + g.a.a.b.b.a.f(5, this.ErZ);
-      }
-      i = paramInt;
-      if (this.LIb != null) {
-        i = paramInt + g.a.a.b.b.a.f(6, this.LIb);
-      }
-      i += g.a.a.b.b.a.bu(7, this.Esb);
-      paramInt = i;
-      if (this.fuJ != null) {
-        paramInt = i + g.a.a.b.b.a.f(8, this.fuJ);
-      }
-      i = paramInt;
-      if (this.jlI != null) {
-        i = paramInt + g.a.a.b.b.a.f(9, this.jlI);
-      }
-      paramInt = i;
-      if (this.country != null) {
-        paramInt = i + g.a.a.b.b.a.f(10, this.country);
-      }
-      AppMethodBeat.o(209760);
-      return paramInt;
+      AppMethodBeat.o(263691);
+      return i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      AppMethodBeat.o(209760);
+      AppMethodBeat.o(263691);
       return 0;
     }
     if (paramInt == 3)
@@ -102,50 +57,22 @@ public final class coc
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(209760);
+        AppMethodBeat.o(263691);
         return -1;
       case 1: 
-        localcoc.dTj = Float.intBitsToFloat(locala.UbS.zm());
-        AppMethodBeat.o(209760);
+        localcoc.ret = locala.abFh.AK();
+        AppMethodBeat.o(263691);
         return 0;
       case 2: 
-        localcoc.latitude = Float.intBitsToFloat(locala.UbS.zm());
-        AppMethodBeat.o(209760);
-        return 0;
-      case 3: 
-        localcoc.fuK = locala.UbS.readString();
-        AppMethodBeat.o(209760);
-        return 0;
-      case 4: 
-        localcoc.kHV = locala.UbS.readString();
-        AppMethodBeat.o(209760);
-        return 0;
-      case 5: 
-        localcoc.ErZ = locala.UbS.readString();
-        AppMethodBeat.o(209760);
-        return 0;
-      case 6: 
-        localcoc.LIb = locala.UbS.readString();
-        AppMethodBeat.o(209760);
-        return 0;
-      case 7: 
-        localcoc.Esb = locala.UbS.zi();
-        AppMethodBeat.o(209760);
-        return 0;
-      case 8: 
-        localcoc.fuJ = locala.UbS.readString();
-        AppMethodBeat.o(209760);
-        return 0;
-      case 9: 
-        localcoc.jlI = locala.UbS.readString();
-        AppMethodBeat.o(209760);
+        localcoc.error_msg = locala.abFh.readString();
+        AppMethodBeat.o(263691);
         return 0;
       }
-      localcoc.country = locala.UbS.readString();
-      AppMethodBeat.o(209760);
+      localcoc.RUC = locala.abFh.readString();
+      AppMethodBeat.o(263691);
       return 0;
     }
-    AppMethodBeat.o(209760);
+    AppMethodBeat.o(263691);
     return -1;
   }
 }

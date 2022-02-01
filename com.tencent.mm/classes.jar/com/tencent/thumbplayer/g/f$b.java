@@ -6,9 +6,9 @@ import java.util.Map;
 
 final class f$b
 {
-  Map<String, String> Sbw;
-  ParcelFileDescriptor Sbx;
-  ITPMediaAsset Sby;
+  Map<String, String> ZEh;
+  ParcelFileDescriptor ZEi;
+  ITPMediaAsset ZEj;
   String url;
 }
 

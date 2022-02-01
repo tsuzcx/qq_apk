@@ -6,24 +6,24 @@ import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import kotlin.g.b.p;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"value", "Landroid/text/SpannableString;", "contentSpan", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "getContentSpan", "(Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;)Landroid/text/SpannableString;", "setContentSpan", "(Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;Landroid/text/SpannableString;)V", "displayNameSpan", "getDisplayNameSpan", "setDisplayNameSpan", "replyDisplayNameSpan", "getReplyDisplayNameSpan", "setReplyDisplayNameSpan", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"value", "Landroid/text/SpannableString;", "contentSpan", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "getContentSpan", "(Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;)Landroid/text/SpannableString;", "setContentSpan", "(Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;Landroid/text/SpannableString;)V", "displayNameSpan", "getDisplayNameSpan", "setDisplayNameSpan", "replyDisplayNameSpan", "getReplyDisplayNameSpan", "setReplyDisplayNameSpan", "plugin-finder_release"})
 public final class o
 {
   public static final SpannableString a(FinderCommentInfo paramFinderCommentInfo)
   {
     AppMethodBeat.i(166379);
-    p.h(paramFinderCommentInfo, "$this$contentSpan");
-    Object localObject1 = n.uNU;
-    Object localObject2 = (SpannableString)n.dkv().get(paramFinderCommentInfo.content);
+    p.k(paramFinderCommentInfo, "$this$contentSpan");
+    Object localObject1 = n.zAi;
+    Object localObject2 = (SpannableString)n.dKs().get(paramFinderCommentInfo.content);
     localObject1 = localObject2;
     if (localObject2 == null)
     {
-      com.tencent.e.f.h.ez("{displayNameSpan} username=" + paramFinderCommentInfo.username + " get SpannableString without cache!");
+      com.tencent.d.f.h.eF("{displayNameSpan} username=" + paramFinderCommentInfo.username + " get SpannableString without cache!");
       localObject1 = com.tencent.mm.pluginsdk.ui.span.l.c(MMApplicationContext.getContext(), (CharSequence)paramFinderCommentInfo.content);
-      localObject2 = n.uNU;
-      n.dkv().put(paramFinderCommentInfo.content, localObject1);
+      localObject2 = n.zAi;
+      n.dKs().put(paramFinderCommentInfo.content, localObject1);
     }
-    p.g(localObject1, "value");
+    p.j(localObject1, "value");
     AppMethodBeat.o(166379);
     return localObject1;
   }

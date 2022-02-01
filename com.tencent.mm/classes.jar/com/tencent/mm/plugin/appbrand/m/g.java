@@ -5,15 +5,15 @@ public abstract interface g
 {
   public abstract void b(g paramg, String paramString);
   
-  public abstract boolean bMB();
+  public abstract boolean bYS();
   
-  public abstract int bMC();
+  public abstract int bYT();
   
   public abstract void destroy();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.m.g
  * JD-Core Version:    0.7.0.1
  */

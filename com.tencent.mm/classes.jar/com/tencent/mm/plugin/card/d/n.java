@@ -12,13 +12,15 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a;
-import com.tencent.mm.av.a.a.c;
-import com.tencent.mm.av.a.a.c.a;
-import com.tencent.mm.av.a.c.h;
-import com.tencent.mm.av.q;
+import com.tencent.mm.ay.a.a;
+import com.tencent.mm.ay.a.a.c;
+import com.tencent.mm.ay.a.a.c.a;
+import com.tencent.mm.ay.a.c.h;
+import com.tencent.mm.ay.q;
+import com.tencent.mm.plugin.card.a.a;
+import com.tencent.mm.plugin.card.a.g;
 import com.tencent.mm.plugin.card.model.m;
-import com.tencent.mm.protocal.protobuf.uz;
+import com.tencent.mm.protocal.protobuf.vb;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -26,38 +28,38 @@ import com.tencent.mm.ui.MMActivity;
 
 public final class n
 {
-  public static void a(final Context paramContext, ImageView paramImageView, String paramString, int paramInt1, final int paramInt2)
+  public static void a(final Context paramContext, ImageView paramImageView, String paramString, int paramInt1, final int paramInt2, final int paramInt3)
   {
-    AppMethodBeat.i(113862);
+    AppMethodBeat.i(252568);
     if ((paramImageView == null) || (TextUtils.isEmpty(paramString)))
     {
-      AppMethodBeat.o(113862);
+      AppMethodBeat.o(252568);
       return;
     }
     if (!TextUtils.isEmpty(paramString))
     {
       Object localObject = new c.a();
-      ((c.a)localObject).prefixPath = com.tencent.mm.loader.j.b.aKJ();
-      q.bcW();
-      ((c.a)localObject).jbw = null;
-      ((c.a)localObject).fullPath = m.ajp(paramString);
-      ((c.a)localObject).jbf = true;
-      ((c.a)localObject).iaT = false;
-      ((c.a)localObject).jbd = true;
-      ((c.a)localObject).hZA = paramInt1;
-      ((c.a)localObject).hZz = paramInt1;
-      ((c.a)localObject).jbq = 2131231570;
-      localObject = ((c.a)localObject).bdv();
-      q.bcV().a(paramString, paramImageView, (c)localObject, new h()
+      ((c.a)localObject).prefixPath = com.tencent.mm.loader.j.b.aSL();
+      q.bmm();
+      ((c.a)localObject).lRV = null;
+      ((c.a)localObject).fullPath = m.arc(paramString);
+      ((c.a)localObject).lRD = true;
+      ((c.a)localObject).kPz = false;
+      ((c.a)localObject).lRB = true;
+      ((c.a)localObject).kOg = paramInt1;
+      ((c.a)localObject).kOf = paramInt1;
+      ((c.a)localObject).lRP = paramInt2;
+      localObject = ((c.a)localObject).bmL();
+      q.bml().a(paramString, paramImageView, (c)localObject, new h()
       {
-        public final Bitmap a(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.av.a.d.b paramAnonymousb)
+        public final Bitmap a(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.ay.a.d.b paramAnonymousb)
         {
           return null;
         }
         
         public final void b(String paramAnonymousString, View paramAnonymousView) {}
         
-        public final void b(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.av.a.d.b paramAnonymousb)
+        public final void b(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.ay.a.d.b paramAnonymousb)
         {
           AppMethodBeat.i(113855);
           if (paramAnonymousb.bitmap != null)
@@ -67,23 +69,23 @@ public final class n
               public final void run()
               {
                 AppMethodBeat.i(113854);
-                n.1.this.qlc.setImageBitmap(this.jUL);
-                n.1.this.qlc.setColorFilter(n.1.this.nnl, PorterDuff.Mode.SRC_IN);
+                n.1.this.tGY.setImageBitmap(this.mLY);
+                n.1.this.tGY.setColorFilter(n.1.this.qoT, PorterDuff.Mode.SRC_IN);
                 AppMethodBeat.o(113854);
               }
             });
             AppMethodBeat.o(113855);
             return;
           }
-          n.b(this.qlc, this.qld, paramInt2);
+          n.b(this.tGY, paramInt2, paramInt3);
           AppMethodBeat.o(113855);
         }
       });
-      AppMethodBeat.o(113862);
+      AppMethodBeat.o(252568);
       return;
     }
-    b(paramImageView, 2131231570, paramInt2);
-    AppMethodBeat.o(113862);
+    b(paramImageView, paramInt2, paramInt3);
+    AppMethodBeat.o(252568);
   }
   
   public static void a(View paramView, LinearLayout paramLinearLayout)
@@ -105,18 +107,18 @@ public final class n
     if (!TextUtils.isEmpty(paramString))
     {
       Object localObject = new c.a();
-      ((c.a)localObject).prefixPath = com.tencent.mm.loader.j.b.aKJ();
-      q.bcW();
-      ((c.a)localObject).jbw = null;
-      ((c.a)localObject).fullPath = m.ajp(paramString);
-      ((c.a)localObject).jbf = true;
-      ((c.a)localObject).iaT = paramBoolean;
-      ((c.a)localObject).jbd = true;
-      ((c.a)localObject).hZA = paramInt1;
-      ((c.a)localObject).hZz = paramInt1;
-      ((c.a)localObject).jbq = paramInt2;
-      localObject = ((c.a)localObject).bdv();
-      q.bcV().a(paramString, paramImageView, (c)localObject);
+      ((c.a)localObject).prefixPath = com.tencent.mm.loader.j.b.aSL();
+      q.bmm();
+      ((c.a)localObject).lRV = null;
+      ((c.a)localObject).fullPath = m.arc(paramString);
+      ((c.a)localObject).lRD = true;
+      ((c.a)localObject).kPz = paramBoolean;
+      ((c.a)localObject).lRB = true;
+      ((c.a)localObject).kOg = paramInt1;
+      ((c.a)localObject).kOf = paramInt1;
+      ((c.a)localObject).lRP = paramInt2;
+      localObject = ((c.a)localObject).bmL();
+      q.bml().a(paramString, paramImageView, (c)localObject);
       AppMethodBeat.o(113861);
       return;
     }
@@ -127,11 +129,11 @@ public final class n
   public static void a(MMActivity paramMMActivity, com.tencent.mm.plugin.card.base.b paramb)
   {
     AppMethodBeat.i(113864);
-    paramMMActivity.setActionbarColor(l.ake(paramb.csQ().ixw));
+    paramMMActivity.setActionbarColor(l.arR(paramb.cGs().lmL));
     AppMethodBeat.o(113864);
   }
   
-  public static String akl(String paramString)
+  public static String arY(String paramString)
   {
     AppMethodBeat.i(113860);
     if (Util.isNullOrNil(paramString))
@@ -163,22 +165,22 @@ public final class n
       public final void run()
       {
         AppMethodBeat.i(113856);
-        this.qlc.setImageResource(paramInt1);
-        this.qlc.setColorFilter(paramInt2, PorterDuff.Mode.SRC_IN);
+        this.tGY.setImageResource(paramInt1);
+        this.tGY.setColorFilter(paramInt2, PorterDuff.Mode.SRC_IN);
         AppMethodBeat.o(113856);
       }
     });
     AppMethodBeat.o(113863);
   }
   
-  public static void d(MMActivity paramMMActivity)
+  public static void e(MMActivity paramMMActivity)
   {
     AppMethodBeat.i(113865);
-    paramMMActivity.setActionbarColor(paramMMActivity.getResources().getColor(2131101424));
+    paramMMActivity.setActionbarColor(paramMMActivity.getResources().getColor(a.a.white));
     AppMethodBeat.o(113865);
   }
   
-  public static Rect dC(View paramView)
+  public static Rect ea(View paramView)
   {
     AppMethodBeat.i(113858);
     Rect localRect = new Rect();
@@ -207,28 +209,28 @@ public final class n
     {
       AppMethodBeat.o(113866);
       return;
-      paramTextView.setText(2131757176);
+      paramTextView.setText(a.g.tlU);
       AppMethodBeat.o(113866);
       return;
-      paramTextView.setText(2131757171);
+      paramTextView.setText(a.g.tlP);
       AppMethodBeat.o(113866);
       return;
-      paramTextView.setText(2131757174);
+      paramTextView.setText(a.g.tlS);
       AppMethodBeat.o(113866);
       return;
-      paramTextView.setText(2131757173);
+      paramTextView.setText(a.g.tlR);
       AppMethodBeat.o(113866);
       return;
-      paramTextView.setText(2131757177);
+      paramTextView.setText(a.g.tlV);
       AppMethodBeat.o(113866);
       return;
-      paramTextView.setText(2131757178);
+      paramTextView.setText(a.g.tlW);
       AppMethodBeat.o(113866);
       return;
-      paramTextView.setText(2131757172);
+      paramTextView.setText(a.g.tlQ);
       AppMethodBeat.o(113866);
       return;
-      paramTextView.setText(2131757175);
+      paramTextView.setText(a.g.tlT);
     }
   }
 }

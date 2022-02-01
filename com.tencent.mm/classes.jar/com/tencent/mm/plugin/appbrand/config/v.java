@@ -2,48 +2,75 @@ package com.tencent.mm.plugin.appbrand.config;
 
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.app.b.a;
-import com.tencent.mm.plugin.appbrand.utils.ag;
+import com.tencent.mm.plugin.appbrand.utils.ai;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.IAutoDBItem;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.ISQLiteDatabaseEx;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/config/WxaAttrAvailableBackupStorage;", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttrStorage;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;)V", "insertOrUpdate", "", "record", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes;", "CREATOR", "Constants", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/config/WxaAttrAvailableBackupStorage;", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttrStorage;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabaseEx;)V", "insertOrUpdate", "", "record", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes;", "removeForAppIdAndVersionLessThan", "appId", "", "version", "", "CREATOR", "Constants", "plugin-appbrand-integration_release"})
 public final class v
   extends x
 {
-  public static final String[] iBh;
-  public static final b lfN;
-  private final ISQLiteDatabaseEx kOg;
+  public static final String[] lqL;
+  public static final b oan;
+  private final ISQLiteDatabaseEx nHd;
   
   static
   {
-    AppMethodBeat.i(228170);
-    lfN = new b((byte)0);
-    iBh = new String[] { x.getCreateSQLs(WxaAttributes.kLR, "WxaAttrAvailableBackupTable") };
-    AppMethodBeat.o(228170);
+    AppMethodBeat.i(270165);
+    oan = new b((byte)0);
+    lqL = new String[] { x.getCreateSQLs(WxaAttributes.nFK, "WxaAttrAvailableBackupTable") };
+    AppMethodBeat.o(270165);
   }
   
   public v(ISQLiteDatabaseEx paramISQLiteDatabaseEx)
   {
     super((ISQLiteDatabase)paramISQLiteDatabaseEx, "WxaAttrAvailableBackupTable", null);
-    AppMethodBeat.i(228169);
-    this.kOg = paramISQLiteDatabaseEx;
-    AppMethodBeat.o(228169);
+    AppMethodBeat.i(270164);
+    this.nHd = paramISQLiteDatabaseEx;
+    AppMethodBeat.o(270164);
+  }
+  
+  public final boolean bY(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(270163);
+    CharSequence localCharSequence = (CharSequence)paramString;
+    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(270163);
+      return false;
+    }
+    Log.i("MicroMsg.AppBrand.WxaAttrAvailableBackupStorage", "removeForAppIdAndVersionLessThan(appId:" + paramString + ", version:" + paramInt + ')');
+    try
+    {
+      paramString = super.d(paramString, new String[] { "versionInfo" });
+      if ((paramString != null) && (paramString.bLH().appVersion < paramInt))
+      {
+        super.delete((IAutoDBItem)paramString, new String[0]);
+        AppMethodBeat.o(270163);
+        return true;
+      }
+    }
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(270163);
+    }
+    return false;
   }
   
   public final boolean d(WxaAttributes paramWxaAttributes)
   {
-    AppMethodBeat.i(228168);
+    AppMethodBeat.i(270162);
     if (paramWxaAttributes == null)
     {
-      AppMethodBeat.o(228168);
+      AppMethodBeat.o(270162);
       return false;
     }
     Object localObject1 = new StringBuilder("WxaAttrAvailableBackupStorage.insertOrUpdate(").append(paramWxaAttributes.field_username).append('|').append(paramWxaAttributes.field_appId).append('|');
-    Object localObject2 = paramWxaAttributes.bAp();
+    Object localObject2 = paramWxaAttributes.bLH();
     int i;
     long l;
     boolean bool;
@@ -64,7 +91,7 @@ public final class v
       if (localObject1 == null) {
         paramWxaAttributes = "";
       }
-      bool = ag.LB();
+      bool = ai.Or();
       l = SystemClock.elapsedRealtime() - l;
       if ((l <= 32L) || (!bool)) {
         break label275;
@@ -74,7 +101,7 @@ public final class v
     for (;;)
     {
       bool = localBoolean.booleanValue();
-      AppMethodBeat.o(228168);
+      AppMethodBeat.o(270162);
       return bool;
       i = -1;
       break;
@@ -86,26 +113,12 @@ public final class v
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/config/WxaAttrAvailableBackupStorage$CREATOR;", "Lcom/tencent/mm/plugin/appbrand/app/AppBrandDBStorageRegistry$IStorageCreator;", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttrAvailableBackupStorage;", "()V", "create", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "plugin-appbrand-integration_release"})
-  public static final class a
-    implements b.a<v>
-  {
-    public static final a lfO;
-    
-    static
-    {
-      AppMethodBeat.i(228167);
-      lfO = new a();
-      AppMethodBeat.o(228167);
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/config/WxaAttrAvailableBackupStorage$Constants;", "", "()V", "TABLE_CREATE", "", "", "kotlin.jvm.PlatformType", "[Ljava/lang/String;", "TABLE_NAME", "TAG", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/config/WxaAttrAvailableBackupStorage$Constants;", "", "()V", "TABLE_CREATE", "", "", "kotlin.jvm.PlatformType", "[Ljava/lang/String;", "TABLE_NAME", "TAG", "plugin-appbrand-integration_release"})
   public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.v
  * JD-Core Version:    0.7.0.1
  */

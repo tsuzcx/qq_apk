@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.appbrand.u.b;
 
-import com.tencent.luggage.h.e;
+import com.tencent.luggage.k.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appstorage.o;
-import com.tencent.mm.plugin.appbrand.appstorage.q;
-import com.tencent.mm.plugin.appbrand.appstorage.v;
-import com.tencent.mm.plugin.appbrand.appstorage.z;
+import com.tencent.mm.plugin.appbrand.appstorage.ab;
+import com.tencent.mm.plugin.appbrand.appstorage.p;
+import com.tencent.mm.plugin.appbrand.appstorage.r;
+import com.tencent.mm.plugin.appbrand.appstorage.x;
 import com.tencent.mm.plugin.appbrand.config.l;
 import com.tencent.mm.plugin.appbrand.s.a;
-import com.tencent.mm.plugin.appbrand.utils.x.a;
+import com.tencent.mm.plugin.appbrand.utils.z.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.List;
@@ -19,11 +19,11 @@ import org.json.JSONObject;
 
 public final class b
 {
-  private static a nkg = null;
+  private static a qlE = null;
   
   public static void a(a parama)
   {
-    nkg = parama;
+    qlE = parama;
   }
   
   public static JSONObject ac(AppBrandRuntime paramAppBrandRuntime)
@@ -33,7 +33,7 @@ public final class b
     try
     {
       localJSONObject1.put("appId", paramAppBrandRuntime.mAppId);
-      if (paramAppBrandRuntime.OT() != null) {
+      if (paramAppBrandRuntime.Sp() != null) {
         break label369;
       }
       i = 0;
@@ -42,19 +42,19 @@ public final class b
     {
       try
       {
-        localJSONObject2.put("maxWebsocketConcurrent", ((a)localObject).nhI);
-        localJSONObject2.put("socketDomains", e.H(((a)localObject).cyU));
-        localJSONObject2.put("websocketSkipPortCheck", ((a)localObject).cyP);
-        localJSONObject2.put("websocketTimeoutMS", ((a)localObject).nhF);
+        localJSONObject2.put("maxWebsocketConcurrent", ((a)localObject).qir);
+        localJSONObject2.put("socketDomains", e.E(((a)localObject).cxB));
+        localJSONObject2.put("websocketSkipPortCheck", ((a)localObject).cxu);
+        localJSONObject2.put("websocketTimeoutMS", ((a)localObject).qio);
         localJSONObject2.put("headerFilterMode", ((a)localObject).mode);
-        localJSONObject2.put("blacklistHeaders", e.H(((a)localObject).nhJ));
-        localJSONObject2.put("whitelistHeaders", e.H(((a)localObject).nhK));
+        localJSONObject2.put("blacklistHeaders", e.E(((a)localObject).qis));
+        localJSONObject2.put("whitelistHeaders", e.E(((a)localObject).qit));
         localJSONObject2.put("referer", ((a)localObject).referer);
-        localJSONObject2.put("canSkipCheckDomainsByArg", ((a)localObject).nhC);
-        localJSONObject2.put("shouldCheckDomains", ((a)localObject).nhD);
-        localJSONObject2.put("userAgentString", ((a)localObject).nhM);
+        localJSONObject2.put("canSkipCheckDomainsByArg", ((a)localObject).qil);
+        localJSONObject2.put("shouldCheckDomains", ((a)localObject).qim);
+        localJSONObject2.put("userAgentString", ((a)localObject).qiv);
         localJSONObject1.put("networkConfig", localJSONObject2);
-        localObject = (x.a)paramAppBrandRuntime.av(x.a.class);
+        localObject = (z.a)paramAppBrandRuntime.au(z.a.class);
         if (localObject == null) {
           break label323;
         }
@@ -68,22 +68,22 @@ public final class b
           {
             Object localObject;
             JSONObject localJSONObject2;
-            localJSONObject2.put("nativeBufferSizeLimitByte", ((x.a)localObject).ldb);
-            localJSONObject2.put("itemBase64", ((x.a)localObject).ohn);
-            localJSONObject2.put("itemID", ((x.a)localObject).ohm);
-            localJSONObject2.put("itemKey", ((x.a)localObject).ohl);
-            localJSONObject2.put("outKey", ((x.a)localObject).ohk);
+            localJSONObject2.put("nativeBufferSizeLimitByte", ((z.a)localObject).nXk);
+            localJSONObject2.put("itemBase64", ((z.a)localObject).rjb);
+            localJSONObject2.put("itemID", ((z.a)localObject).rja);
+            localJSONObject2.put("itemKey", ((z.a)localObject).riZ);
+            localJSONObject2.put("outKey", ((z.a)localObject).riY);
             localJSONObject1.put("nativeBufferConfig", localJSONObject2);
             b(paramAppBrandRuntime, localJSONObject1);
-            if (nkg != null) {
-              nkg.a(paramAppBrandRuntime, localJSONObject1);
+            if (qlE != null) {
+              qlE.a(paramAppBrandRuntime, localJSONObject1);
             }
             Log.v("MicroMsg.PrepareDataForNodeHelper", "prepareDataForNode :%s", new Object[] { localJSONObject1.toString() });
             AppMethodBeat.o(147390);
             return localJSONObject1;
-            int i = paramAppBrandRuntime.OT().leE.pkgVersion;
+            int i = paramAppBrandRuntime.Sp().nYR.pkgVersion;
             continue;
-            i = paramAppBrandRuntime.OT().leE.kNW;
+            i = paramAppBrandRuntime.Sp().nYR.nHY;
             i += 1;
             continue;
             localJSONException1 = localJSONException1;
@@ -102,11 +102,11 @@ public final class b
       }
     }
     localJSONObject1.put("appversion", i);
-    if (paramAppBrandRuntime.OT() == null)
+    if (paramAppBrandRuntime.Sp() == null)
     {
       i = 0;
       localJSONObject1.put("appstate", i);
-      localObject = (a)paramAppBrandRuntime.av(a.class);
+      localObject = (a)paramAppBrandRuntime.au(a.class);
       if (localObject != null) {
         localJSONObject2 = new JSONObject();
       }
@@ -116,14 +116,14 @@ public final class b
   private static void b(AppBrandRuntime paramAppBrandRuntime, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(147391);
-    if (!(paramAppBrandRuntime.getFileSystem() instanceof v))
+    if (!(paramAppBrandRuntime.getFileSystem() instanceof x))
     {
       paramAppBrandRuntime = new IllegalStateException("getFileSystem not LuggageFileSystemRegistry");
       AppMethodBeat.o(147391);
       throw paramAppBrandRuntime;
     }
     JSONObject localJSONObject = new JSONObject();
-    paramAppBrandRuntime = ((v)paramAppBrandRuntime.getFileSystem()).kTe;
+    paramAppBrandRuntime = ((x)paramAppBrandRuntime.getFileSystem()).nNC;
     int i = 0;
     Object localObject4;
     Object localObject3;
@@ -131,14 +131,14 @@ public final class b
     {
       if (i < paramAppBrandRuntime.size())
       {
-        Object localObject1 = (q)paramAppBrandRuntime.get(i);
+        Object localObject1 = (r)paramAppBrandRuntime.get(i);
         long l;
-        if ((localObject1 instanceof z))
+        if ((localObject1 instanceof ab))
         {
-          localObject4 = (z)localObject1;
-          localObject1 = ((z)localObject4).kSr;
-          localObject3 = ((z)localObject4).kTj;
-          l = ((z)localObject4).kTk;
+          localObject4 = (ab)localObject1;
+          localObject1 = ((ab)localObject4).nMO;
+          localObject3 = ((ab)localObject4).nNI;
+          l = ((ab)localObject4).nNJ;
           Log.i("MicroMsg.PrepareDataForNodeHelper", "prepareFSData rootPath:%s pathPrefix:%s quota:%d", new Object[] { localObject1, localObject3, Long.valueOf(l) });
         }
         try
@@ -162,12 +162,12 @@ public final class b
     paramAppBrandRuntime = paramAppBrandRuntime.iterator();
     while (paramAppBrandRuntime.hasNext())
     {
-      Object localObject2 = (q)paramAppBrandRuntime.next();
-      if ((localObject2 instanceof o))
+      Object localObject2 = (r)paramAppBrandRuntime.next();
+      if ((localObject2 instanceof p))
       {
-        localObject3 = (o)localObject2;
-        localObject2 = ((o)localObject3).kSr;
-        localObject3 = ((o)localObject3).kSq;
+        localObject3 = (p)localObject2;
+        localObject2 = ((p)localObject3).nMO;
+        localObject3 = ((p)localObject3).nMN;
         try
         {
           localObject4 = new JSONObject();
@@ -201,7 +201,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.u.b.b
  * JD-Core Version:    0.7.0.1
  */

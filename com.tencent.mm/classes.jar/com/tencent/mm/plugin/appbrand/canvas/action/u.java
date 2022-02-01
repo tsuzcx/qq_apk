@@ -39,11 +39,11 @@ public final class u
       }
       i = 1;
       break;
-      paramd.kZl.setFakeBoldText(true);
-      paramd.kZm.setFakeBoldText(true);
+      paramd.nTw.setFakeBoldText(true);
+      paramd.nTx.setFakeBoldText(true);
       continue;
-      paramd.kZl.setFakeBoldText(false);
-      paramd.kZm.setFakeBoldText(false);
+      paramd.nTw.setFakeBoldText(false);
+      paramd.nTx.setFakeBoldText(false);
     }
   }
   
@@ -56,7 +56,7 @@ public final class u
       AppMethodBeat.o(144932);
       return false;
     }
-    boolean bool = b(paramd, paramCanvas.cNw);
+    boolean bool = b(paramd, paramCanvas.cOk);
     AppMethodBeat.o(144932);
     return bool;
   }
@@ -84,7 +84,7 @@ public final class u
     return false;
   }
   
-  public final BaseDrawActionArg bzj()
+  public final BaseDrawActionArg bKy()
   {
     AppMethodBeat.i(144929);
     SetFontWeightArg localSetFontWeightArg = new SetFontWeightArg();
@@ -99,7 +99,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.u
  * JD-Core Version:    0.7.0.1
  */

@@ -5,13 +5,13 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 final class c$a
 {
-  int ibS = 0;
   String key = "";
+  int num = 0;
   
   public c$a(c paramc, String paramString, int paramInt)
   {
     this.key = paramString;
-    this.ibS = paramInt;
+    this.num = paramInt;
   }
   
   public final boolean equals(Object paramObject)
@@ -37,7 +37,7 @@ final class c$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.groupsolitaire.b.c.a
  * JD-Core Version:    0.7.0.1
  */

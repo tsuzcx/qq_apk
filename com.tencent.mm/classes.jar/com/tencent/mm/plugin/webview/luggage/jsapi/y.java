@@ -27,11 +27,11 @@ public class y
     localHashMap.put("memory", Long.valueOf(DeviceInfo.getTotalMemory(MMApplicationContext.getContext())));
     localHashMap.put("brand", Build.BRAND);
     localHashMap.put("model", Build.MODEL);
-    paramb.e("", localHashMap);
+    paramb.d("", localHashMap);
     AppMethodBeat.o(78560);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

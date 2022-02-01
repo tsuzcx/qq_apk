@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.matrix.d;
 import com.tencent.matrix.e;
-import com.tencent.matrix.g.c;
+import com.tencent.matrix.e.c;
 import com.tencent.mm.sdk.platformtools.IntentUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -18,7 +18,7 @@ import java.util.Map;
 public class MatrixStrategyNotifyBroadcast
   extends BroadcastReceiver
 {
-  public static final String dag = ;
+  public static final String dez = ;
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
@@ -33,7 +33,7 @@ public class MatrixStrategyNotifyBroadcast
     c.i("Matrix.StrategyNotifyBroadcast", "receive MatrixStrategyNotifyBroadcast, process: %s, strategy:%s action:%s", new Object[] { MMApplicationContext.getProcessName(), localObject1, paramContext });
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      b.Tn();
+      b.XW();
       return;
     }
     if (paramContext.equals("statusNotify"))
@@ -71,15 +71,15 @@ public class MatrixStrategyNotifyBroadcast
           break;
         }
       }
-      d.cPI.cPM.p(paramContext);
+      d.cQA.cQE.h(paramContext);
       return;
     }
-    e.j(paramIntent);
+    e.k(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.strategy.MatrixStrategyNotifyBroadcast
  * JD-Core Version:    0.7.0.1
  */

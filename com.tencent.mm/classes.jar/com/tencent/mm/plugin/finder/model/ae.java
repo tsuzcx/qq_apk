@@ -1,39 +1,18 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.model.internal.i;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/model/FinderFoldedFeed;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "feedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "id", "", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;J)V", "getFeedObject", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "getItemType", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderFeedTextCard;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedImage;", "feedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "plugin-finder_release"})
 public final class ae
-  implements bo
+  extends u
 {
-  public final FinderItem feedObject;
-  private final long id;
-  
-  public final int a(i parami)
+  public ae(FinderItem paramFinderItem)
   {
-    AppMethodBeat.i(248752);
-    p.h(parami, "obj");
-    if (((parami instanceof ae)) && (this.id == ((ae)parami).id))
-    {
-      AppMethodBeat.o(248752);
-      return 0;
-    }
-    AppMethodBeat.o(248752);
-    return -1;
-  }
-  
-  public final int cxn()
-  {
-    return 2017;
-  }
-  
-  public final long lT()
-  {
-    return this.id;
+    super(paramFinderItem);
+    AppMethodBeat.i(166387);
+    AppMethodBeat.o(166387);
   }
 }
 

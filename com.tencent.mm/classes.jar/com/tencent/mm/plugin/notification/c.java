@@ -9,8 +9,8 @@ import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.provider.Settings.System;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.a;
-import com.tencent.mm.model.cp;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.model.cq;
 import com.tencent.mm.n.g;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -65,8 +65,8 @@ public final class c
   private static void a(NotificationChannel paramNotificationChannel, SharedPreferences paramSharedPreferences)
   {
     AppMethodBeat.i(149369);
-    paramSharedPreferences = paramSharedPreferences.getString("settings.ringtone", com.tencent.mm.n.b.gLX);
-    if (aIY(paramSharedPreferences)) {
+    paramSharedPreferences = paramSharedPreferences.getString("settings.ringtone", com.tencent.mm.n.b.jwm);
+    if (aTu(paramSharedPreferences)) {
       paramNotificationChannel.setSound(Uri.parse(paramSharedPreferences), Notification.AUDIO_ATTRIBUTES_DEFAULT);
     }
     AppMethodBeat.o(149369);
@@ -75,16 +75,16 @@ public final class c
   private static void a(Context paramContext, NotificationManager paramNotificationManager, String paramString, boolean paramBoolean1, boolean paramBoolean2, SharedPreferences paramSharedPreferences)
   {
     AppMethodBeat.i(149367);
-    NotificationChannel localNotificationChannel = new NotificationChannel(paramString, paramContext.getString(2131763666), 4);
-    localNotificationChannel.setDescription(paramContext.getString(2131763665));
+    NotificationChannel localNotificationChannel = new NotificationChannel(paramString, paramContext.getString(e.a.notification_message_channel_name), 4);
+    localNotificationChannel.setDescription(paramContext.getString(e.a.notification_message_channel_desc));
     localNotificationChannel.enableLights(true);
     localNotificationChannel.setLightColor(-16711936);
     localNotificationChannel.setVibrationPattern(Util.VIRBRATOR_PATTERN);
     localNotificationChannel.enableVibration(paramBoolean1);
     if (paramBoolean2)
     {
-      paramContext = paramSharedPreferences.getString("settings.ringtone", com.tencent.mm.n.b.gLX);
-      if (aIY(paramContext))
+      paramContext = paramSharedPreferences.getString("settings.ringtone", com.tencent.mm.n.b.jwm);
+      if (aTu(paramContext))
       {
         Log.e("MicroMsg.NotificationManufacturerCompatibility", "sound = %s", new Object[] { Uri.parse(paramContext) });
         localNotificationChannel.setSound(Uri.parse(paramContext), Notification.AUDIO_ATTRIBUTES_DEFAULT);
@@ -98,8 +98,8 @@ public final class c
   private static void a(Context paramContext, NotificationManager paramNotificationManager, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, SharedPreferences paramSharedPreferences)
   {
     AppMethodBeat.i(149368);
-    NotificationChannel localNotificationChannel = new NotificationChannel(paramString, paramContext.getString(2131763666), 4);
-    localNotificationChannel.setDescription(paramContext.getString(2131763665));
+    NotificationChannel localNotificationChannel = new NotificationChannel(paramString, paramContext.getString(e.a.notification_message_channel_name), 4);
+    localNotificationChannel.setDescription(paramContext.getString(e.a.notification_message_channel_desc));
     localNotificationChannel.enableLights(true);
     localNotificationChannel.setLightColor(-16711936);
     localNotificationChannel.setVibrationPattern(Util.VIRBRATOR_PATTERN);
@@ -107,7 +107,7 @@ public final class c
     {
       localNotificationChannel.enableVibration(true);
       if (!paramBoolean1) {
-        break label123;
+        break label125;
       }
       if (paramBoolean4) {
         a(localNotificationChannel, paramSharedPreferences);
@@ -121,7 +121,7 @@ public final class c
       return;
       localNotificationChannel.enableVibration(paramBoolean3);
       break;
-      label123:
+      label125:
       if (paramBoolean2) {
         if (paramBoolean4) {
           a(localNotificationChannel, paramSharedPreferences);
@@ -140,7 +140,7 @@ public final class c
       AppMethodBeat.o(149365);
       return false;
     }
-    String str1 = a.apJ();
+    String str1 = a.awc();
     NotificationChannel localNotificationChannel = a(paramNotificationManager, str1);
     if (localNotificationChannel == null) {
       a(paramContext, paramNotificationManager, str1, paramBoolean1, paramBoolean2, paramSharedPreferences);
@@ -149,10 +149,10 @@ public final class c
     {
       AppMethodBeat.o(149365);
       return true;
-      cp.KL(com.tencent.mm.loader.j.b.aKB());
-      String str2 = cp.sj(2);
+      cq.Se(com.tencent.mm.loader.j.b.aSD());
+      String str2 = cq.vg(2);
       String[] arrayOfString = str2.split(";");
-      Log.i("MicroMsg.NotificationManufacturerCompatibility", "xiaomiNotificationCompatibility() lastVersion:%s curVersion:%s", new Object[] { str2, Integer.valueOf(d.KyO) });
+      Log.i("MicroMsg.NotificationManufacturerCompatibility", "xiaomiNotificationCompatibility() lastVersion:%s curVersion:%s", new Object[] { str2, Integer.valueOf(d.RAD) });
       if ((arrayOfString != null) && (arrayOfString.length == 2))
       {
         int i = Integer.parseInt(arrayOfString[0], 16);
@@ -163,7 +163,7 @@ public final class c
             {
               paramNotificationManager.deleteNotificationChannel(localNotificationChannel.getId());
               a(paramContext, paramNotificationManager, "message_channel_compatibility_id", paramBoolean1, paramBoolean2, paramSharedPreferences);
-              a.bcS("message_channel_compatibility_id");
+              a.boS("message_channel_compatibility_id");
             }
             catch (Exception paramContext)
             {
@@ -177,11 +177,11 @@ public final class c
     }
   }
   
-  public static boolean aIY(String paramString)
+  public static boolean aTu(String paramString)
   {
     AppMethodBeat.i(149372);
     if (!Util.isNullOrNil(paramString)) {}
-    for (boolean bool = t(Uri.parse(paramString));; bool = false)
+    for (boolean bool = k(Uri.parse(paramString));; bool = false)
     {
       Log.e("MicroMsg.NotificationManufacturerCompatibility", "sound = %s result = %s", new Object[] { Util.nullAs(paramString, "null"), Boolean.valueOf(bool) });
       AppMethodBeat.o(149372);
@@ -199,7 +199,7 @@ public final class c
       AppMethodBeat.o(149366);
       return false;
     }
-    String str = a.apJ();
+    String str = a.awc();
     NotificationChannel localNotificationChannel = a(paramNotificationManager, str);
     if (localNotificationChannel == null)
     {
@@ -218,11 +218,11 @@ public final class c
         try
         {
           if (localNotificationChannel.getSound() != null) {
-            g.Ej(localNotificationChannel.getSound().toString());
+            g.Lc(localNotificationChannel.getSound().toString());
           }
           paramNotificationManager.deleteNotificationChannel(localNotificationChannel.getId());
           a(paramContext, paramNotificationManager, "message_channel_compatibility_id", bool1, bool2, paramBoolean1, paramBoolean2, paramSharedPreferences);
-          a.bcS("message_channel_compatibility_id");
+          a.boS("message_channel_compatibility_id");
         }
         catch (Exception paramContext)
         {
@@ -237,34 +237,34 @@ public final class c
   }
   
   /* Error */
-  private static boolean t(Uri paramUri)
+  private static boolean k(Uri paramUri)
   {
     // Byte code:
-    //   0: ldc_w 300
+    //   0: ldc_w 306
     //   3: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: invokestatic 306	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
-    //   9: invokevirtual 310	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   6: invokestatic 312	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   9: invokevirtual 316	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   12: aload_0
-    //   13: ldc_w 312
-    //   16: invokevirtual 318	android/content/ContentResolver:openAssetFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+    //   13: ldc_w 318
+    //   16: invokevirtual 324	android/content/ContentResolver:openAssetFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
     //   19: astore_3
     //   20: aconst_null
     //   21: astore_2
-    //   22: new 320	com/tencent/mm/compatible/b/k
+    //   22: new 326	com/tencent/mm/compatible/b/k
     //   25: dup
-    //   26: invokespecial 323	com/tencent/mm/compatible/b/k:<init>	()V
+    //   26: invokespecial 329	com/tencent/mm/compatible/b/k:<init>	()V
     //   29: aload_3
-    //   30: invokevirtual 329	android/media/MediaPlayer:setDataSource	(Landroid/content/res/AssetFileDescriptor;)V
+    //   30: invokevirtual 335	android/media/MediaPlayer:setDataSource	(Landroid/content/res/AssetFileDescriptor;)V
     //   33: aload_3
     //   34: ifnull +7 -> 41
     //   37: aload_3
-    //   38: invokevirtual 334	android/content/res/AssetFileDescriptor:close	()V
-    //   41: ldc_w 300
+    //   38: invokevirtual 340	android/content/res/AssetFileDescriptor:close	()V
+    //   41: ldc_w 306
     //   44: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   47: iconst_1
     //   48: ireturn
     //   49: astore_2
-    //   50: ldc_w 300
+    //   50: ldc_w 306
     //   53: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   56: aload_2
     //   57: athrow
@@ -274,41 +274,41 @@ public final class c
     //   63: aload_2
     //   64: ifnull +65 -> 129
     //   67: aload_3
-    //   68: invokevirtual 334	android/content/res/AssetFileDescriptor:close	()V
-    //   71: ldc_w 300
+    //   68: invokevirtual 340	android/content/res/AssetFileDescriptor:close	()V
+    //   71: ldc_w 306
     //   74: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   77: aload_1
     //   78: athrow
     //   79: astore_1
     //   80: ldc 58
-    //   82: new 336	java/lang/StringBuilder
+    //   82: new 342	java/lang/StringBuilder
     //   85: dup
-    //   86: ldc_w 338
-    //   89: invokespecial 340	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   86: ldc_w 344
+    //   89: invokespecial 346	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   92: aload_0
-    //   93: invokevirtual 344	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   96: ldc_w 346
-    //   99: invokevirtual 349	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   93: invokevirtual 350	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   96: ldc_w 352
+    //   99: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   102: aload_1
-    //   103: invokevirtual 344	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   106: invokevirtual 350	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   109: invokestatic 354	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   112: ldc_w 300
+    //   103: invokevirtual 350	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   106: invokevirtual 356	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   109: invokestatic 360	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   112: ldc_w 306
     //   115: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   118: iconst_0
     //   119: ireturn
     //   120: astore_3
     //   121: aload_2
     //   122: aload_3
-    //   123: invokevirtual 358	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   123: invokevirtual 364	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   126: goto -55 -> 71
     //   129: aload_3
-    //   130: invokevirtual 334	android/content/res/AssetFileDescriptor:close	()V
+    //   130: invokevirtual 340	android/content/res/AssetFileDescriptor:close	()V
     //   133: goto -62 -> 71
     //   136: astore_1
     //   137: goto -57 -> 80
     //   140: astore_0
-    //   141: ldc_w 300
+    //   141: ldc_w 306
     //   144: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   147: aload_0
     //   148: athrow
@@ -363,7 +363,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.notification.c
  * JD-Core Version:    0.7.0.1
  */

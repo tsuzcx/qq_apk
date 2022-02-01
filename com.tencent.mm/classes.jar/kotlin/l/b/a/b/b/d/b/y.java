@@ -8,28 +8,28 @@ public final class y
   extends n
   implements kotlin.l.b.a.b.d.a.e.y
 {
-  private final w Tnw;
-  private final Annotation[] Tnx;
-  private final String Tny;
-  private final boolean Tnz;
+  private final w aaQq;
+  private final Annotation[] aaQr;
+  private final String aaQs;
+  private final boolean aaQt;
   
   public y(w paramw, Annotation[] paramArrayOfAnnotation, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(57517);
-    this.Tnw = paramw;
-    this.Tnx = paramArrayOfAnnotation;
-    this.Tny = paramString;
-    this.Tnz = paramBoolean;
+    this.aaQq = paramw;
+    this.aaQr = paramArrayOfAnnotation;
+    this.aaQs = paramString;
+    this.aaQt = paramBoolean;
     AppMethodBeat.o(57517);
   }
   
-  public final f hAH()
+  public final f iEU()
   {
     AppMethodBeat.i(57515);
-    Object localObject = this.Tny;
+    Object localObject = this.aaQs;
     if (localObject != null)
     {
-      localObject = f.bub((String)localObject);
+      localObject = f.bHe((String)localObject);
       AppMethodBeat.o(57515);
       return localObject;
     }
@@ -37,19 +37,19 @@ public final class y
     return null;
   }
   
-  public final boolean hDj()
+  public final boolean iHD()
   {
-    return this.Tnz;
+    return this.aaQt;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(57516);
     StringBuilder localStringBuilder = new StringBuilder().append(getClass().getName()).append(": ");
-    if (this.Tnz) {}
+    if (this.aaQt) {}
     for (String str = "vararg ";; str = "")
     {
-      str = str + hAH() + ": " + this.Tnw;
+      str = str + iEU() + ": " + this.aaQq;
       AppMethodBeat.o(57516);
       return str;
     }
@@ -57,7 +57,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.d.b.y
  * JD-Core Version:    0.7.0.1
  */

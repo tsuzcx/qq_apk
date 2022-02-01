@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.game.protobuf.bv;
 import com.tencent.mm.plugin.game.protobuf.bw;
+import com.tencent.mm.plugin.game.protobuf.bx;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -22,27 +22,27 @@ public final class aq
   implements m
 {
   private i callback;
-  public final d hhm;
+  public final d jTk;
   
   public aq(int paramInt1, LinkedList<String> paramLinkedList, int paramInt2, boolean paramBoolean)
   {
     AppMethodBeat.i(41610);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new bv();
-    ((d.a)localObject).iLO = new bw();
+    ((d.a)localObject).lBU = new bw();
+    ((d.a)localObject).lBV = new bx();
     ((d.a)localObject).uri = "/cgi-bin/mmgame-bin/newgetlibgamelist";
     ((d.a)localObject).funcId = getType();
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.hhm = ((d.a)localObject).aXF();
-    localObject = (bv)this.hhm.iLK.iLR;
-    ((bv)localObject).xLV = paramInt1;
-    ((bv)localObject).xLW = 15;
-    ((bv)localObject).xLl = LocaleUtil.getApplicationLanguage();
-    ((bv)localObject).keh = Util.getSimCountryCode(MMApplicationContext.getContext());
-    ((bv)localObject).xLX = paramInt2;
-    ((bv)localObject).xLF = paramLinkedList;
-    ((bv)localObject).xLY = paramBoolean;
+    this.jTk = ((d.a)localObject).bgN();
+    localObject = (bw)d.b.b(this.jTk.lBR);
+    ((bw)localObject).CQe = paramInt1;
+    ((bw)localObject).CQf = 15;
+    ((bw)localObject).CPt = LocaleUtil.getApplicationLanguage();
+    ((bw)localObject).mVH = Util.getSimCountryCode(MMApplicationContext.getContext());
+    ((bw)localObject).CQg = paramInt2;
+    ((bw)localObject).CPO = paramLinkedList;
+    ((bw)localObject).CQh = paramBoolean;
     AppMethodBeat.o(41610);
   }
   
@@ -50,7 +50,7 @@ public final class aq
   {
     AppMethodBeat.i(41611);
     this.callback = parami;
-    int i = dispatch(paramg, this.hhm, this);
+    int i = dispatch(paramg, this.jTk, this);
     AppMethodBeat.o(41611);
     return i;
   }
@@ -70,7 +70,7 @@ public final class aq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.aq
  * JD-Core Version:    0.7.0.1
  */

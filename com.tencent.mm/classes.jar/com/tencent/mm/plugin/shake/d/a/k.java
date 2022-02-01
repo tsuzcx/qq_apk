@@ -6,14 +6,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.ag;
-import com.tencent.mm.g.a.je;
-import com.tencent.mm.g.a.wq;
-import com.tencent.mm.g.a.wq.a;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.ao.af;
+import com.tencent.mm.f.a.ju;
+import com.tencent.mm.f.a.xw;
+import com.tencent.mm.f.a.xw.a;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.platformtools.ac;
-import com.tencent.mm.plugin.shake.b.d;
 import com.tencent.mm.plugin.shake.ui.TVInfoUI;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.sdk.event.EventCenter;
@@ -25,12 +24,7 @@ import com.tencent.mm.storage.bv;
 
 public final class k
 {
-  public static boolean XA(int paramInt)
-  {
-    return (7 == paramInt) || (6 == paramInt) || (8 == paramInt) || (9 == paramInt) || (10 == paramInt) || (12 == paramInt) || (13 == paramInt);
-  }
-  
-  public static void a(d paramd, Context paramContext, boolean paramBoolean)
+  public static void a(com.tencent.mm.plugin.shake.b.d paramd, Context paramContext, boolean paramBoolean)
   {
     int i = 4;
     AppMethodBeat.i(28323);
@@ -59,54 +53,54 @@ public final class k
       ((Intent)localObject1).putExtra("jsapiargs", (Bundle)localObject2);
       ((Intent)localObject1).putExtra("rawUrl", paramd.field_username);
       ((Intent)localObject1).putExtra("srcUsername", paramd.field_distance);
-      com.tencent.mm.plugin.shake.a.jRt.i((Intent)localObject1, paramContext);
+      com.tencent.mm.plugin.shake.a.mIG.h((Intent)localObject1, paramContext);
       AppMethodBeat.o(28323);
       return;
       localObject1 = paramd.field_username;
-      bg.aVF();
-      localObject2 = com.tencent.mm.model.c.aSN().Kn((String)localObject1);
+      bh.beI();
+      localObject2 = com.tencent.mm.model.c.bbL().RG((String)localObject1);
       if (localObject2 != null)
       {
         Intent localIntent = new Intent();
-        if ((com.tencent.mm.contact.c.oR(((ax)localObject2).field_type)) && (((as)localObject2).gBM()))
+        if ((com.tencent.mm.contact.d.rk(((ax)localObject2).field_type)) && (((as)localObject2).hxX()))
         {
-          ag.bah().MT((String)localObject1);
+          af.bjv().Uo((String)localObject1);
           if (paramd.field_distance.equals("1"))
           {
             localIntent.putExtra("Chat_User", (String)localObject1);
             localIntent.putExtra("finish_direct", true);
-            com.tencent.mm.plugin.shake.a.jRt.d(localIntent, paramContext);
+            com.tencent.mm.plugin.shake.a.mIG.d(localIntent, paramContext);
             AppMethodBeat.o(28323);
             return;
           }
         }
         localIntent.putExtra("Contact_User", (String)localObject1);
         localIntent.putExtra("force_get_contact", true);
-        com.tencent.mm.br.c.b(paramContext, "profile", ".ui.ContactInfoUI", localIntent);
+        com.tencent.mm.by.c.b(paramContext, "profile", ".ui.ContactInfoUI", localIntent);
         AppMethodBeat.o(28323);
         return;
         localObject1 = new Intent();
         ((Intent)localObject1).setClass(paramContext, TVInfoUI.class);
         ((Intent)localObject1).putExtra("key_TV_xml_bytes", paramd.field_lvbuffer);
         ((Intent)localObject1).putExtra("key_TV_come_from_shake", true);
-        paramd = new com.tencent.mm.hellhoundlib.b.a().bl(localObject1);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramd.axQ(), "com/tencent/mm/plugin/shake/shakemedia/model/ShakeTVLogic", "handleRedirect", "(Lcom/tencent/mm/plugin/shake/model/ShakeItem;Landroid/content/Context;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)paramd.pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/shake/shakemedia/model/ShakeTVLogic", "handleRedirect", "(Lcom/tencent/mm/plugin/shake/model/ShakeItem;Landroid/content/Context;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramd = new com.tencent.mm.hellhoundlib.b.a().bm(localObject1);
+        com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramd.aFh(), "com/tencent/mm/plugin/shake/shakemedia/model/ShakeTVLogic", "handleRedirect", "(Lcom/tencent/mm/plugin/shake/model/ShakeItem;Landroid/content/Context;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)paramd.sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/shake/shakemedia/model/ShakeTVLogic", "handleRedirect", "(Lcom/tencent/mm/plugin/shake/model/ShakeItem;Landroid/content/Context;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(28323);
         return;
-        localObject1 = new je();
-        ((je)localObject1).dNT.actionCode = 11;
-        ((je)localObject1).dNT.result = paramd.field_username;
-        ((je)localObject1).dNT.context = paramContext;
-        ((je)localObject1).callback = null;
+        localObject1 = new ju();
+        ((ju)localObject1).fHe.actionCode = 11;
+        ((ju)localObject1).fHe.result = paramd.field_username;
+        ((ju)localObject1).fHe.context = paramContext;
+        ((ju)localObject1).callback = null;
         EventCenter.instance.asyncPublish((IEvent)localObject1, Looper.myLooper());
         AppMethodBeat.o(28323);
         return;
         localObject1 = new Intent();
         ((Intent)localObject1).putExtra("key_product_id", paramd.field_username);
         ((Intent)localObject1).putExtra("key_product_scene", 9);
-        com.tencent.mm.br.c.b(paramContext, "product", ".ui.MallProductUI", (Intent)localObject1);
+        com.tencent.mm.by.c.b(paramContext, "product", ".ui.MallProductUI", (Intent)localObject1);
         AppMethodBeat.o(28323);
         return;
         if (paramBoolean) {}
@@ -126,14 +120,14 @@ public final class k
           AppMethodBeat.o(28323);
           return;
         }
-        paramd = new wq();
-        paramd.ecI.userName = paramContext;
-        paramd.ecI.ecK = Util.nullAs((String)localObject1, "");
-        paramd.ecI.ecL = 0;
-        paramd.ecI.scene = 1039;
-        paramd.ecI.appVersion = i;
+        paramd = new xw();
+        paramd.fWN.userName = paramContext;
+        paramd.fWN.fWP = Util.nullAs((String)localObject1, "");
+        paramd.fWN.fWQ = 0;
+        paramd.fWN.scene = 1039;
+        paramd.fWN.appVersion = i;
         EventCenter.instance.publish(paramd);
-        Log.i("Micromsg.ShakeTVLogic", "gotoAppBrand userName:%s, path:%s, scene:%d openType:%d version:%d", new Object[] { paramd.ecI.userName, paramd.ecI.ecK, Integer.valueOf(paramd.ecI.scene), Integer.valueOf(paramd.ecI.ecL), Integer.valueOf(paramd.ecI.appVersion) });
+        Log.i("Micromsg.ShakeTVLogic", "gotoAppBrand userName:%s, path:%s, scene:%d openType:%d version:%d", new Object[] { paramd.fWN.userName, paramd.fWN.fWP, Integer.valueOf(paramd.fWN.scene), Integer.valueOf(paramd.fWN.fWQ), Integer.valueOf(paramd.fWN.appVersion) });
       }
     }
   }
@@ -151,27 +145,32 @@ public final class k
         i = 17;
       }
       localIntent.putExtra("translate_link_scene", i);
-      paramString2 = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString2.axQ(), "com/tencent/mm/plugin/shake/shakemedia/model/ShakeTVLogic", "doShakeTvOpenTempSession", "(Ljava/lang/String;Ljava/lang/String;ILandroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramString2.pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/shake/shakemedia/model/ShakeTVLogic", "doShakeTvOpenTempSession", "(Ljava/lang/String;Ljava/lang/String;ILandroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramString2 = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramString2.aFh(), "com/tencent/mm/plugin/shake/shakemedia/model/ShakeTVLogic", "doShakeTvOpenTempSession", "(Ljava/lang/String;Ljava/lang/String;ILandroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramString2.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/shake/shakemedia/model/ShakeTVLogic", "doShakeTvOpenTempSession", "(Ljava/lang/String;Ljava/lang/String;ILandroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       Log.i("Micromsg.ShakeTVLogic", "doShakeTvHistoryItemClick start tempsession open deeplink");
-      com.tencent.mm.plugin.report.service.h.CyF.a(12108, new Object[] { Util.nullAsNil(paramString1), Integer.valueOf(paramInt), Integer.valueOf(1) });
+      com.tencent.mm.plugin.report.service.h.IzE.a(12108, new Object[] { Util.nullAsNil(paramString1), Integer.valueOf(paramInt), Integer.valueOf(1) });
       AppMethodBeat.o(28325);
       return;
     }
     AppMethodBeat.o(28325);
   }
   
-  public static boolean eUk()
+  public static boolean aez(int paramInt)
+  {
+    return (7 == paramInt) || (6 == paramInt) || (8 == paramInt) || (9 == paramInt) || (10 == paramInt) || (12 == paramInt) || (13 == paramInt);
+  }
+  
+  public static boolean fHm()
   {
     AppMethodBeat.i(28324);
-    if (ac.jOt)
+    if (ac.mFC)
     {
       AppMethodBeat.o(28324);
       return true;
     }
-    String str = com.tencent.mm.n.h.aqJ().getValue("ShowShakeTV");
+    String str = com.tencent.mm.n.h.axc().getValue("ShowShakeTV");
     Log.d("Micromsg.ShakeTVLogic", "DynamicConfig Get ShowShakeTV: %s", new Object[] { str });
     if ((!Util.isNullOrNil(str)) && (str.equals("1")))
     {
@@ -184,7 +183,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.d.a.k
  * JD-Core Version:    0.7.0.1
  */

@@ -8,12 +8,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.w;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
@@ -25,30 +19,42 @@ import android.view.View.OnCreateContextMenuListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
-import com.tencent.mm.ak.c.a;
-import com.tencent.mm.plugin.card.model.a.a.a;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.an.c.a;
+import com.tencent.mm.plugin.card.a.b;
+import com.tencent.mm.plugin.card.a.c;
+import com.tencent.mm.plugin.card.a.d;
+import com.tencent.mm.plugin.card.a.e;
+import com.tencent.mm.plugin.card.a.f;
+import com.tencent.mm.plugin.card.a.g;
+import com.tencent.mm.plugin.card.d.m;
 import com.tencent.mm.plugin.card.model.a.a.a.g;
 import com.tencent.mm.plugin.card.model.a.a.a.h;
 import com.tencent.mm.plugin.card.ui.v2.CardNewBaseUI;
 import com.tencent.mm.plugin.card.widget.MemberCardTopCropImageView;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.bqk;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.protocal.protobuf.ua;
-import com.tencent.mm.protocal.protobuf.ue;
-import com.tencent.mm.protocal.protobuf.un;
-import com.tencent.mm.protocal.protobuf.uv;
-import com.tencent.mm.protocal.protobuf.uw;
+import com.tencent.mm.protocal.protobuf.bye;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.protocal.protobuf.uc;
+import com.tencent.mm.protocal.protobuf.ug;
+import com.tencent.mm.protocal.protobuf.up;
+import com.tencent.mm.protocal.protobuf.ux;
+import com.tencent.mm.protocal.protobuf.uy;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.o.f;
-import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.q.f;
+import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.base.s;
 import com.tencent.mm.ui.widget.RoundCornerImageView;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
 import com.tencent.mm.view.RefreshLoadMoreLayout.a;
-import com.tencent.mm.view.RefreshLoadMoreLayout.c;
 import com.tencent.mm.view.recyclerview.WxRecyclerAdapter;
 import com.tencent.mm.view.recyclerview.WxRecyclerView;
 import com.tencent.mm.view.recyclerview.f;
@@ -58,137 +64,125 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import kotlin.a.j;
+import kotlin.g.b.aa.a;
 import kotlin.g.b.p;
-import kotlin.g.b.z.a;
+import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.t;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/card/ui/v3/VipCardListUI;", "Lcom/tencent/mm/plugin/card/ui/v2/CardNewBaseUI;", "()V", "TAG", "", "loadCount", "", "mCurrentSortInfo", "mCurrentSortWording", "mEmptyView", "Landroid/view/ViewGroup;", "mFirstLoad", "", "mHasLoadedSuccess", "mHeaderView", "mHistoryEntranceWording", "mHistoryMiniAppInfo", "Lcom/tencent/mm/protocal/protobuf/CardMiniAppInfo;", "mIconMoreList", "", "Lcom/tencent/mm/protocal/protobuf/CardHomePageFAQItem;", "mIsAll", "mIsLoading", "mNeedRefreshList", "mOffset", "mPhoneMemberEntranceWording", "mPhoneMemberMenuEntranceWording", "mPhoneMemberMiniAppInfo", "mPreviousSortInfo", "mProgressDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "mRefreshLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "mReqNum", "mSortInfoList", "Lcom/tencent/mm/protocal/protobuf/CardSortInfoList;", "mSortLayout", "mSortTv", "Landroid/widget/TextView;", "mTopPhoneVipCardLayout", "mTopPhoneVipCardTv", "mViewHeight", "mViewWidth", "mVipCardList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/card/ui/v3/VipCardListUI$VipCardConvertData;", "Lkotlin/collections/ArrayList;", "mVipCardListAdapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "mVipCardListRv", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "doDeleteVipCard", "", "cardId", "doLoadVipCardList", "refresh", "getLayoutId", "getPositionByUserCardId", "gotoCardDetailUI", "gotoVipHistoryCardListUI", "title", "initView", "loadSnapshot", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onFinishLocationThings", "ret", "isLocationOk", "onResume", "performMenuItemClicked", "item", "saveSnapshot", "showProgressDialog", "isShow", "(Ljava/lang/Boolean;)V", "showSortDialog", "updateIconMenu", "updateIconMenuByV4Protocol", "iconMenuData", "updateTopHeaderLayout", "updateViewByResp", "resp", "Lcom/tencent/mm/protocal/protobuf/GetMemberCardHomePageResponse;", "Companion", "VipCardConvertData", "VipCardConverter", "plugin-card_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/card/ui/v3/VipCardListUI;", "Lcom/tencent/mm/plugin/card/ui/v2/CardNewBaseUI;", "()V", "TAG", "", "loadCount", "", "mCurrentSortInfo", "mCurrentSortWording", "mEmptyView", "Landroid/view/ViewGroup;", "mFirstLoad", "", "mHasLoadedSuccess", "mHeaderView", "mHistoryEntranceWording", "mHistoryMiniAppInfo", "Lcom/tencent/mm/protocal/protobuf/CardMiniAppInfo;", "mIconMoreList", "", "Lcom/tencent/mm/protocal/protobuf/CardHomePageFAQItem;", "mIsAll", "mIsLoading", "mNeedRefreshList", "mOffset", "mPhoneMemberEntranceWording", "mPhoneMemberMenuEntranceWording", "mPhoneMemberMiniAppInfo", "mPreviousSortInfo", "mProgressDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "mRefreshLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "mReqNum", "mSortInfoList", "Lcom/tencent/mm/protocal/protobuf/CardSortInfoList;", "mSortLayout", "mSortTv", "Landroid/widget/TextView;", "mTopPhoneVipCardLayout", "mTopPhoneVipCardTv", "mViewHeight", "mViewWidth", "mVipCardList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/card/ui/v3/VipCardListUI$VipCardConvertData;", "Lkotlin/collections/ArrayList;", "mVipCardListAdapter", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "mVipCardListRv", "Lcom/tencent/mm/view/recyclerview/WxRecyclerView;", "doDeleteVipCard", "", "cardId", "doLoadVipCardList", "refresh", "getLayoutId", "getPositionByUserCardId", "gotoCardDetailUI", "gotoVipHistoryCardListUI", "title", "initView", "loadSnapshot", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onFinishLocationThings", "ret", "isLocationOk", "onResume", "performMenuItemClicked", "item", "saveSnapshot", "showProgressDialog", "isShow", "(Ljava/lang/Boolean;)V", "showSortDialog", "updateIconMenu", "updateIconMenuByV4Protocol", "iconMenuData", "updateTopHeaderLayout", "updateViewByResp", "resp", "Lcom/tencent/mm/protocal/protobuf/GetMemberCardHomePageResponse;", "Companion", "VipCardConvertData", "VipCardConverter", "plugin-card_release"})
 public final class VipCardListUI
   extends CardNewBaseUI
 {
-  public static final VipCardListUI.a qih;
+  public static final VipCardListUI.a tEd;
   private final String TAG;
-  private int aYN;
-  private int aYO;
-  private int fs;
-  private com.tencent.mm.ui.base.q gxX;
-  private boolean mGR;
-  private boolean mwr;
-  private ViewGroup qgI;
-  private RefreshLoadMoreLayout qgY;
-  private ViewGroup qgZ;
-  private int qhC;
-  private un qhG;
-  private String qhH;
-  private uw qhI;
-  private String qhJ;
-  private int qhK;
-  private int qhL;
-  private WxRecyclerView qhW;
-  private ViewGroup qhX;
-  private ViewGroup qhY;
-  private TextView qhZ;
-  private boolean qhf;
-  private boolean qhg;
-  private int qhk;
-  private TextView qhz;
-  private WxRecyclerAdapter<b> qia;
-  private final ArrayList<b> qib;
-  private boolean qic;
-  private un qid;
-  private String qie;
-  private String qif;
-  private List<? extends ue> qig;
+  private int aIj;
+  private int aIk;
+  private s jhZ;
+  private boolean pFW;
+  private boolean puR;
+  private ViewGroup tCE;
+  private RefreshLoadMoreLayout tCU;
+  private ViewGroup tCV;
+  private up tDC;
+  private String tDD;
+  private uy tDE;
+  private String tDF;
+  private int tDG;
+  private int tDH;
+  private WxRecyclerView tDS;
+  private ViewGroup tDT;
+  private ViewGroup tDU;
+  private TextView tDV;
+  private WxRecyclerAdapter<b> tDW;
+  private final ArrayList<b> tDX;
+  private boolean tDY;
+  private up tDZ;
+  private boolean tDb;
+  private boolean tDc;
+  private int tDg;
+  private TextView tDv;
+  private int tDy;
+  private String tEa;
+  private String tEb;
+  private List<? extends ug> tEc;
+  private int zP;
   
   static
   {
-    AppMethodBeat.i(201589);
-    qih = new VipCardListUI.a((byte)0);
-    AppMethodBeat.o(201589);
+    AppMethodBeat.i(248259);
+    tEd = new VipCardListUI.a((byte)0);
+    AppMethodBeat.o(248259);
   }
   
   public VipCardListUI()
   {
-    AppMethodBeat.i(201588);
+    AppMethodBeat.i(248257);
     this.TAG = "MicroMsg.VipCardListUI";
-    this.qib = new ArrayList();
-    this.qhC = 10;
-    this.qhJ = "";
-    this.mGR = true;
-    AppMethodBeat.o(201588);
+    this.tDX = new ArrayList();
+    this.tDy = 10;
+    this.tDF = "";
+    this.pFW = true;
+    AppMethodBeat.o(248257);
   }
   
-  private final void a(bqk parambqk)
+  private final void a(bye parambye)
   {
-    AppMethodBeat.i(201586);
-    this.qhI = parambqk.LUU;
-    parambqk = parambqk.Lds.iterator();
-    while (parambqk.hasNext())
+    AppMethodBeat.i(248251);
+    this.tDE = parambye.TdC;
+    parambye = parambye.SeF.iterator();
+    while (parambye.hasNext())
     {
-      ua localua = (ua)parambqk.next();
+      uc localuc = (uc)parambye.next();
       b localb = new b();
-      p.g(localua, "cardInfo");
-      localb.a(localua);
-      this.qib.add(localb);
+      p.j(localuc, "cardInfo");
+      localb.a(localuc);
+      this.tDX.add(localb);
     }
-    if (this.qib.isEmpty())
+    if (this.tDX.isEmpty())
     {
-      parambqk = this.qgI;
-      if (parambqk == null) {
-        p.btv("mEmptyView");
+      parambye = this.tCE;
+      if (parambye == null) {
+        p.bGy("mEmptyView");
       }
-      parambqk.setVisibility(0);
+      parambye.setVisibility(0);
     }
     for (;;)
     {
-      parambqk = this.qia;
-      if (parambqk == null) {
-        p.btv("mVipCardListAdapter");
+      parambye = this.tDW;
+      if (parambye == null) {
+        p.bGy("mVipCardListAdapter");
       }
-      parambqk.notifyDataSetChanged();
-      AppMethodBeat.o(201586);
+      parambye.notifyDataSetChanged();
+      AppMethodBeat.o(248251);
       return;
-      parambqk = this.qgI;
-      if (parambqk == null) {
-        p.btv("mEmptyView");
+      parambye = this.tCE;
+      if (parambye == null) {
+        p.bGy("mEmptyView");
       }
-      parambqk.setVisibility(8);
+      parambye.setVisibility(8);
     }
   }
   
-  private final void cW(final List<? extends ue> paramList)
+  private final void cKR()
   {
-    AppMethodBeat.i(201585);
-    if (paramList != null)
-    {
-      removeAllOptionMenu();
-      addIconOptionMenu(0, 0, 2131690843, (MenuItem.OnMenuItemClickListener)new l(paramList, this, paramList));
-      AppMethodBeat.o(201585);
-      return;
-    }
-    AppMethodBeat.o(201585);
-  }
-  
-  private final void cxp()
-  {
-    AppMethodBeat.i(201584);
-    Object localObject = (Collection)this.qig;
+    AppMethodBeat.i(248246);
+    Object localObject = (Collection)this.tEc;
     if ((localObject == null) || (((Collection)localObject).isEmpty())) {}
     for (int i = 1; i == 0; i = 0)
     {
-      cW(this.qig);
-      AppMethodBeat.o(201584);
+      cT(this.tEc);
+      AppMethodBeat.o(248246);
       return;
     }
-    localObject = new z.a();
-    ((z.a)localObject).SYB = false;
-    final z.a locala = new z.a();
-    locala.SYB = false;
-    if (this.qid != null)
+    localObject = new aa.a();
+    ((aa.a)localObject).aaBx = false;
+    final aa.a locala = new aa.a();
+    locala.aaBx = false;
+    if (this.tDZ != null)
     {
-      CharSequence localCharSequence = (CharSequence)this.qif;
+      CharSequence localCharSequence = (CharSequence)this.tEb;
       if ((localCharSequence != null) && (localCharSequence.length() != 0)) {
         break label180;
       }
@@ -197,73 +191,73 @@ public final class VipCardListUI
     for (i = 1;; i = 0)
     {
       if (i == 0) {
-        ((z.a)localObject).SYB = true;
+        ((aa.a)localObject).aaBx = true;
       }
-      if (this.qhG != null) {
-        locala.SYB = true;
+      if (this.tDC != null) {
+        locala.aaBx = true;
       }
-      if ((((z.a)localObject).SYB) || (locala.SYB))
+      if ((((aa.a)localObject).aaBx) || (locala.aaBx))
       {
         removeAllOptionMenu();
-        addIconOptionMenu(0, 0, 2131690843, (MenuItem.OnMenuItemClickListener)new k(this, (z.a)localObject, locala));
+        addIconOptionMenu(0, 0, a.f.icons_outlined_more, (MenuItem.OnMenuItemClickListener)new k(this, (aa.a)localObject, locala));
       }
-      AppMethodBeat.o(201584);
+      AppMethodBeat.o(248246);
       return;
     }
   }
   
-  private final void cxs()
+  private final void cKU()
   {
     int k = 1;
-    AppMethodBeat.i(201582);
+    AppMethodBeat.i(248240);
     int i;
     label130:
     int j;
-    if (this.qhK > 0) {
-      if (!((Collection)this.qib).isEmpty())
+    if (this.tDG > 0) {
+      if (!((Collection)this.tDX).isEmpty())
       {
         i = 1;
-        if ((i == 0) || (this.qhI == null)) {
+        if ((i == 0) || (this.tDE == null)) {
           break label317;
         }
-        localObject = this.qhz;
+        localObject = this.tDv;
         if (localObject == null) {
-          p.btv("mSortTv");
+          p.bGy("mSortTv");
         }
-        ((TextView)localObject).setText((CharSequence)this.qhJ);
-        localObject = this.qhX;
+        ((TextView)localObject).setText((CharSequence)this.tDF);
+        localObject = this.tDT;
         if (localObject == null) {
-          p.btv("mSortLayout");
+          p.bGy("mSortLayout");
         }
         ((ViewGroup)localObject).setVisibility(0);
-        localObject = this.qhX;
+        localObject = this.tDT;
         if (localObject == null) {
-          p.btv("mSortLayout");
+          p.bGy("mSortLayout");
         }
-        ((ViewGroup)localObject).setOnClickListener((View.OnClickListener)new m(this));
+        ((ViewGroup)localObject).setOnClickListener((View.OnClickListener)new VipCardListUI.m(this));
         i = 1;
-        localObject = (CharSequence)this.qie;
+        localObject = (CharSequence)this.tEa;
         if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
           break label346;
         }
         j = 1;
         label156:
-        if ((j != 0) || (this.qid == null)) {
+        if ((j != 0) || (this.tDZ == null)) {
           break label351;
         }
-        localObject = this.qhY;
+        localObject = this.tDU;
         if (localObject == null) {
-          p.btv("mTopPhoneVipCardLayout");
+          p.bGy("mTopPhoneVipCardLayout");
         }
         ((ViewGroup)localObject).setVisibility(0);
-        localObject = this.qhZ;
+        localObject = this.tDV;
         if (localObject == null) {
-          p.btv("mTopPhoneVipCardTv");
+          p.bGy("mTopPhoneVipCardTv");
         }
-        ((TextView)localObject).setText((CharSequence)this.qie);
-        localObject = this.qhY;
+        ((TextView)localObject).setText((CharSequence)this.tEa);
+        localObject = this.tDU;
         if (localObject == null) {
-          p.btv("mTopPhoneVipCardLayout");
+          p.bGy("mTopPhoneVipCardLayout");
         }
         ((ViewGroup)localObject).setOnClickListener((View.OnClickListener)new n(this));
         i = k;
@@ -274,23 +268,23 @@ public final class VipCardListUI
       if (i == 0) {
         break label378;
       }
-      localObject = this.qia;
+      localObject = this.tDW;
       if (localObject == null) {
-        p.btv("mVipCardListAdapter");
+        p.bGy("mVipCardListAdapter");
       }
-      localViewGroup = this.qgZ;
+      localViewGroup = this.tCV;
       if (localViewGroup == null) {
-        p.btv("mHeaderView");
+        p.bGy("mHeaderView");
       }
-      ((WxRecyclerAdapter)localObject).f((View)localViewGroup, 2, false);
-      AppMethodBeat.o(201582);
+      ((WxRecyclerAdapter)localObject).g((View)localViewGroup, 2, false);
+      AppMethodBeat.o(248240);
       return;
       i = 0;
       break;
       label317:
-      localObject = this.qhX;
+      localObject = this.tDT;
       if (localObject == null) {
-        p.btv("mSortLayout");
+        p.bGy("mSortLayout");
       }
       ((ViewGroup)localObject).setVisibility(8);
       i = 0;
@@ -299,309 +293,323 @@ public final class VipCardListUI
       j = 0;
       break label156;
       label351:
-      localObject = this.qhY;
+      localObject = this.tDU;
       if (localObject == null) {
-        p.btv("mTopPhoneVipCardLayout");
+        p.bGy("mTopPhoneVipCardLayout");
       }
       ((ViewGroup)localObject).setVisibility(8);
     }
     label378:
-    Object localObject = this.qia;
+    Object localObject = this.tDW;
     if (localObject == null) {
-      p.btv("mVipCardListAdapter");
+      p.bGy("mVipCardListAdapter");
     }
-    ViewGroup localViewGroup = this.qgZ;
+    ViewGroup localViewGroup = this.tCV;
     if (localViewGroup == null) {
-      p.btv("mHeaderView");
+      p.bGy("mHeaderView");
     }
     ((WxRecyclerAdapter)localObject).T(localViewGroup.hashCode(), false);
-    AppMethodBeat.o(201582);
+    AppMethodBeat.o(248240);
   }
   
-  private final void j(Boolean paramBoolean)
+  private final void cT(final List<? extends ug> paramList)
   {
-    AppMethodBeat.i(201587);
+    AppMethodBeat.i(248249);
+    if (paramList != null)
+    {
+      removeAllOptionMenu();
+      addIconOptionMenu(0, 0, a.f.icons_outlined_more, (MenuItem.OnMenuItemClickListener)new l(paramList, this, paramList));
+      AppMethodBeat.o(248249);
+      return;
+    }
+    AppMethodBeat.o(248249);
+  }
+  
+  private final void lN(final boolean paramBoolean)
+  {
+    int i = 0;
+    AppMethodBeat.i(248243);
+    Log.i(this.TAG, "do load vip card list: " + this.puR + ", " + this.zP + ", " + this.tDG);
+    Object localObject;
+    if ((this.tDb) && (!paramBoolean))
+    {
+      Log.w(this.TAG, "already load complete");
+      localObject = this.tCU;
+      if (localObject == null) {
+        p.bGy("mRefreshLayout");
+      }
+      ((RefreshLoadMoreLayout)localObject).azs(0);
+      AppMethodBeat.o(248243);
+      return;
+    }
+    if (this.puR)
+    {
+      Log.w(this.TAG, "is loading");
+      AppMethodBeat.o(248243);
+      return;
+    }
+    this.puR = true;
+    int j = this.zP;
+    if (paramBoolean)
+    {
+      localObject = this.tCU;
+      if (localObject == null) {
+        p.bGy("mRefreshLayout");
+      }
+      ((RefreshLoadMoreLayout)localObject).setHasBottomMore(true);
+    }
+    for (;;)
+    {
+      localObject = new com.tencent.mm.plugin.card.model.b.b(i, this.tDy, this.latitude, this.longitude, this.tDG).bhV().bhW();
+      p.j(localObject, "CgiGetMemberCardHomePage…ntCancelAfterDead().run()");
+      d.b((com.tencent.mm.vending.g.c)localObject, (kotlin.g.a.b)new e(this, paramBoolean)).b((com.tencent.mm.vending.e.b)this);
+      AppMethodBeat.o(248243);
+      return;
+      i = j;
+    }
+  }
+  
+  private final void n(Boolean paramBoolean)
+  {
+    AppMethodBeat.i(248254);
     if (paramBoolean == null)
     {
-      AppMethodBeat.o(201587);
+      AppMethodBeat.o(248254);
       return;
     }
     if (paramBoolean.booleanValue()) {}
-    for (paramBoolean = com.tencent.mm.ui.base.q.a((Context)getContext(), (CharSequence)getString(2131756029), true, 3, null);; paramBoolean = null)
+    for (paramBoolean = s.a((Context)getContext(), (CharSequence)getString(a.g.app_waiting), true, 3, null);; paramBoolean = null)
     {
-      this.gxX = paramBoolean;
-      AppMethodBeat.o(201587);
+      this.jhZ = paramBoolean;
+      AppMethodBeat.o(248254);
       return;
-      paramBoolean = this.gxX;
+      paramBoolean = this.jhZ;
       if (paramBoolean != null) {
         paramBoolean.dismiss();
       }
     }
   }
   
-  private final void kB(final boolean paramBoolean)
+  public final void ac(int paramInt, boolean paramBoolean)
   {
-    int i = 0;
-    AppMethodBeat.i(201583);
-    Log.i(this.TAG, "do load vip card list: " + this.mwr + ", " + this.fs + ", " + this.qhK);
-    Object localObject;
-    if ((this.qhf) && (!paramBoolean))
+    AppMethodBeat.i(248236);
+    if ((this.pFW) && (this.tDG == 1))
     {
-      Log.w(this.TAG, "already load complete");
-      localObject = this.qgY;
-      if (localObject == null) {
-        p.btv("mRefreshLayout");
-      }
-      ((RefreshLoadMoreLayout)localObject).apT(0);
-      AppMethodBeat.o(201583);
-      return;
-    }
-    if (this.mwr)
-    {
-      Log.w(this.TAG, "is loading");
-      AppMethodBeat.o(201583);
-      return;
-    }
-    this.mwr = true;
-    int j = this.fs;
-    if (paramBoolean)
-    {
-      localObject = this.qgY;
-      if (localObject == null) {
-        p.btv("mRefreshLayout");
-      }
-      ((RefreshLoadMoreLayout)localObject).setHasBottomMore(true);
-    }
-    for (;;)
-    {
-      localObject = new com.tencent.mm.plugin.card.model.b.b(i, this.qhC, this.latitude, this.dTj, this.qhK).aYH().aYI();
-      p.g(localObject, "CgiGetMemberCardHomePage…ntCancelAfterDead().run()");
-      d.b((com.tencent.mm.vending.g.c)localObject, (kotlin.g.a.b)new e(this, paramBoolean)).b((com.tencent.mm.vending.e.b)this);
-      AppMethodBeat.o(201583);
-      return;
-      i = j;
-    }
-  }
-  
-  public final void ad(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(201581);
-    if ((this.mGR) && (this.qhK == 1))
-    {
-      kB(true);
-      AppMethodBeat.o(201581);
+      lN(true);
+      AppMethodBeat.o(248236);
       return;
     }
     if (!paramBoolean) {
-      cxi();
+      cKL();
     }
-    AppMethodBeat.o(201581);
+    AppMethodBeat.o(248236);
   }
   
   public final int getLayoutId()
   {
-    return 2131493397;
+    return a.e.tiF;
   }
   
   public final void initView()
   {
-    AppMethodBeat.i(201578);
-    Object localObject1 = findViewById(2131298715);
-    p.g(localObject1, "findViewById(R.id.chpvv3_rv)");
-    this.qhW = ((WxRecyclerView)localObject1);
-    localObject1 = findViewById(2131298713);
-    p.g(localObject1, "findViewById(R.id.chpvv3_refresh_layout)");
-    this.qgY = ((RefreshLoadMoreLayout)localObject1);
-    localObject1 = findViewById(2131298711);
-    p.g(localObject1, "findViewById(R.id.chpvv3_empty_layout)");
-    this.qgI = ((ViewGroup)localObject1);
-    localObject1 = this.qhW;
+    AppMethodBeat.i(248232);
+    Object localObject1 = findViewById(a.d.teJ);
+    p.j(localObject1, "findViewById(R.id.chpvv3_rv)");
+    this.tDS = ((WxRecyclerView)localObject1);
+    localObject1 = findViewById(a.d.teH);
+    p.j(localObject1, "findViewById(R.id.chpvv3_refresh_layout)");
+    this.tCU = ((RefreshLoadMoreLayout)localObject1);
+    localObject1 = findViewById(a.d.teF);
+    p.j(localObject1, "findViewById(R.id.chpvv3_empty_layout)");
+    this.tCE = ((ViewGroup)localObject1);
+    localObject1 = this.tDS;
     if (localObject1 == null) {
-      p.btv("mVipCardListRv");
+      p.bGy("mVipCardListRv");
     }
     getContext();
     ((WxRecyclerView)localObject1).setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager(1, false));
-    this.qia = new WxRecyclerAdapter((f)new f(this), this.qib);
-    localObject1 = this.qia;
+    this.tDW = new WxRecyclerAdapter((f)new VipCardListUI.f(this), this.tDX);
+    localObject1 = this.tDW;
     if (localObject1 == null) {
-      p.btv("mVipCardListAdapter");
+      p.bGy("mVipCardListAdapter");
     }
-    ((WxRecyclerAdapter)localObject1).au(true);
-    localObject1 = this.qhW;
+    ((WxRecyclerAdapter)localObject1).aw(true);
+    localObject1 = this.tDS;
     if (localObject1 == null) {
-      p.btv("mVipCardListRv");
+      p.bGy("mVipCardListRv");
     }
-    Object localObject2 = this.qia;
+    Object localObject2 = this.tDW;
     if (localObject2 == null) {
-      p.btv("mVipCardListAdapter");
+      p.bGy("mVipCardListAdapter");
     }
     ((WxRecyclerView)localObject1).setAdapter((RecyclerView.a)localObject2);
-    localObject1 = new w((Context)getContext(), 1);
-    ((w)localObject1).setDrawable(getResources().getDrawable(2131231535));
-    localObject2 = this.qhW;
+    localObject1 = new androidx.recyclerview.widget.i((Context)getContext(), 1);
+    ((androidx.recyclerview.widget.i)localObject1).t(getResources().getDrawable(a.c.taj));
+    localObject2 = this.tDS;
     if (localObject2 == null) {
-      p.btv("mVipCardListRv");
+      p.bGy("mVipCardListRv");
     }
     ((WxRecyclerView)localObject2).b((RecyclerView.h)localObject1);
     localObject1 = getLayoutInflater();
-    localObject2 = this.qhW;
+    int i = a.e.tiD;
+    localObject2 = this.tDS;
     if (localObject2 == null) {
-      p.btv("mVipCardListRv");
+      p.bGy("mVipCardListRv");
     }
-    localObject1 = ((LayoutInflater)localObject1).inflate(2131493395, (ViewGroup)localObject2, false);
+    localObject1 = ((LayoutInflater)localObject1).inflate(i, (ViewGroup)localObject2, false);
     if (localObject1 == null)
     {
       localObject1 = new t("null cannot be cast to non-null type android.view.ViewGroup");
-      AppMethodBeat.o(201578);
+      AppMethodBeat.o(248232);
       throw ((Throwable)localObject1);
     }
-    this.qgZ = ((ViewGroup)localObject1);
-    localObject1 = this.qgZ;
+    this.tCV = ((ViewGroup)localObject1);
+    localObject1 = this.tCV;
     if (localObject1 == null) {
-      p.btv("mHeaderView");
+      p.bGy("mHeaderView");
     }
-    localObject1 = ((ViewGroup)localObject1).findViewById(2131298717);
-    p.g(localObject1, "mHeaderView.findViewById(R.id.chpvv3_sort_tv)");
-    this.qhz = ((TextView)localObject1);
-    localObject1 = this.qgZ;
+    localObject1 = ((ViewGroup)localObject1).findViewById(a.d.teL);
+    p.j(localObject1, "mHeaderView.findViewById(R.id.chpvv3_sort_tv)");
+    this.tDv = ((TextView)localObject1);
+    localObject1 = this.tCV;
     if (localObject1 == null) {
-      p.btv("mHeaderView");
+      p.bGy("mHeaderView");
     }
-    localObject1 = ((ViewGroup)localObject1).findViewById(2131298716);
-    p.g(localObject1, "mHeaderView.findViewById(R.id.chpvv3_sort_layout)");
-    this.qhX = ((ViewGroup)localObject1);
-    localObject1 = this.qgZ;
+    localObject1 = ((ViewGroup)localObject1).findViewById(a.d.teK);
+    p.j(localObject1, "mHeaderView.findViewById(R.id.chpvv3_sort_layout)");
+    this.tDT = ((ViewGroup)localObject1);
+    localObject1 = this.tCV;
     if (localObject1 == null) {
-      p.btv("mHeaderView");
+      p.bGy("mHeaderView");
     }
-    localObject1 = ((ViewGroup)localObject1).findViewById(2131298719);
-    p.g(localObject1, "mHeaderView.findViewById…top_phone_vipcard_layout)");
-    this.qhY = ((ViewGroup)localObject1);
-    localObject1 = this.qgZ;
+    localObject1 = ((ViewGroup)localObject1).findViewById(a.d.teN);
+    p.j(localObject1, "mHeaderView.findViewById…top_phone_vipcard_layout)");
+    this.tDU = ((ViewGroup)localObject1);
+    localObject1 = this.tCV;
     if (localObject1 == null) {
-      p.btv("mHeaderView");
+      p.bGy("mHeaderView");
     }
-    localObject1 = ((ViewGroup)localObject1).findViewById(2131298720);
-    p.g(localObject1, "mHeaderView.findViewById…vv3_top_phone_vipcard_tv)");
-    this.qhZ = ((TextView)localObject1);
-    localObject1 = this.qia;
+    localObject1 = ((ViewGroup)localObject1).findViewById(a.d.teO);
+    p.j(localObject1, "mHeaderView.findViewById…vv3_top_phone_vipcard_tv)");
+    this.tDV = ((TextView)localObject1);
+    localObject1 = this.tDW;
     if (localObject1 == null) {
-      p.btv("mVipCardListAdapter");
+      p.bGy("mVipCardListAdapter");
     }
-    localObject2 = this.qgZ;
+    localObject2 = this.tCV;
     if (localObject2 == null) {
-      p.btv("mHeaderView");
+      p.bGy("mHeaderView");
     }
-    ((WxRecyclerAdapter)localObject1).f((View)localObject2, 2, false);
-    localObject1 = this.qgY;
+    ((WxRecyclerAdapter)localObject1).g((View)localObject2, 2, false);
+    localObject1 = this.tCU;
     if (localObject1 == null) {
-      p.btv("mRefreshLayout");
+      p.bGy("mRefreshLayout");
     }
     ((RefreshLoadMoreLayout)localObject1).setEnableRefresh(false);
-    localObject1 = this.qgY;
+    localObject1 = this.tCU;
     if (localObject1 == null) {
-      p.btv("mRefreshLayout");
+      p.bGy("mRefreshLayout");
     }
-    ((RefreshLoadMoreLayout)localObject1).setActionCallback((RefreshLoadMoreLayout.a)new g(this));
-    AppMethodBeat.o(201578);
+    ((RefreshLoadMoreLayout)localObject1).setActionCallback((RefreshLoadMoreLayout.a)new VipCardListUI.g(this));
+    AppMethodBeat.o(248232);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(201577);
+    AppMethodBeat.i(248230);
     super.onCreate(paramBundle);
     initView();
-    setMMTitle(2131757100);
-    setActionbarColor(getResources().getColor(2131099648));
+    setMMTitle(a.g.tiT);
+    setActionbarColor(getResources().getColor(com.tencent.mm.plugin.card.a.a.BG_0));
     hideActionbarLine();
-    setBackBtn((MenuItem.OnMenuItemClickListener)new h(this));
-    paramBundle = com.tencent.mm.plugin.card.model.a.a.pVg;
-    paramBundle = a.a.cui();
+    setBackBtn((MenuItem.OnMenuItemClickListener)new VipCardListUI.h(this));
+    paramBundle = com.tencent.mm.plugin.card.model.a.a.trh;
+    paramBundle = com.tencent.mm.plugin.card.model.a.a.a.cHK();
     if (paramBundle != null)
     {
-      this.fs = paramBundle.qGg;
-      this.qhI = paramBundle.LUU;
-      this.qhG = paramBundle.LUQ;
-      this.qig = ((List)paramBundle.LUK);
-      this.qhH = paramBundle.LUR;
-      this.qid = paramBundle.LYc;
-      this.qie = paramBundle.LYe;
-      this.qif = paramBundle.LYd;
-      cxp();
+      this.zP = paramBundle.ufi;
+      this.tDE = paramBundle.TdC;
+      this.tDC = paramBundle.Tdy;
+      this.tEc = ((List)paramBundle.Tds);
+      this.tDD = paramBundle.Tdz;
+      this.tDZ = paramBundle.Tht;
+      this.tEa = paramBundle.Thv;
+      this.tEb = paramBundle.Thu;
+      cKR();
       a(paramBundle);
     }
-    paramBundle = com.tencent.mm.plugin.card.model.a.a.pVg;
-    paramBundle = a.a.cuj();
+    paramBundle = com.tencent.mm.plugin.card.model.a.a.trh;
+    paramBundle = com.tencent.mm.plugin.card.model.a.a.a.cHL();
     if (paramBundle != null)
     {
-      this.qhK = paramBundle.Leq;
-      String str = paramBundle.Les;
-      p.g(str, "cardSortInfo.sort_wording");
-      this.qhJ = str;
-      this.qhC = paramBundle.Ler;
-      this.qhL = this.qhK;
+      this.tDG = paramBundle.SfD;
+      String str = paramBundle.SfF;
+      p.j(str, "cardSortInfo.sort_wording");
+      this.tDF = str;
+      this.tDy = paramBundle.SfE;
+      this.tDH = this.tDG;
     }
-    cxs();
-    if (this.qhK != 1) {
-      kB(true);
+    cKU();
+    if (this.tDG != 1) {
+      lN(true);
     }
-    AppMethodBeat.o(201577);
+    AppMethodBeat.o(248230);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(201580);
+    AppMethodBeat.i(248235);
     super.onDestroy();
-    if (!this.qhg)
+    if (!this.tDc)
     {
       Log.i(this.TAG, "no data to save snapshot");
-      AppMethodBeat.o(201580);
+      AppMethodBeat.o(248235);
       return;
     }
-    Object localObject1 = new bqk();
-    ((bqk)localObject1).BaseResponse = new BaseResponse();
-    ((bqk)localObject1).BaseResponse.ErrMsg = new dqi();
-    Object localObject2 = this.qib.iterator();
+    Object localObject1 = new bye();
+    ((bye)localObject1).BaseResponse = new jh();
+    ((bye)localObject1).BaseResponse.Tef = new eaf();
+    Object localObject2 = this.tDX.iterator();
     while (((Iterator)localObject2).hasNext())
     {
       b localb = (b)((Iterator)localObject2).next();
-      if (localb.cxt() != null) {
-        ((bqk)localObject1).Lds.add(localb.cxt());
+      if (localb.cKV() != null) {
+        ((bye)localObject1).SeF.add(localb.cKV());
       }
     }
-    ((bqk)localObject1).LUU = this.qhI;
-    ((bqk)localObject1).qGg = this.fs;
-    ((bqk)localObject1).LUR = this.qhH;
-    ((bqk)localObject1).LUQ = this.qhG;
-    ((bqk)localObject1).LUK = ((LinkedList)this.qig);
-    ((bqk)localObject1).LYc = this.qid;
-    ((bqk)localObject1).LYd = this.qif;
-    ((bqk)localObject1).LYe = this.qie;
-    localObject2 = com.tencent.mm.plugin.card.model.a.a.pVg;
-    p.h(localObject1, "response");
+    ((bye)localObject1).TdC = this.tDE;
+    ((bye)localObject1).ufi = this.zP;
+    ((bye)localObject1).Tdz = this.tDD;
+    ((bye)localObject1).Tdy = this.tDC;
+    ((bye)localObject1).Tds = ((LinkedList)this.tEc);
+    ((bye)localObject1).Tht = this.tDZ;
+    ((bye)localObject1).Thu = this.tEb;
+    ((bye)localObject1).Thv = this.tEa;
+    localObject2 = com.tencent.mm.plugin.card.model.a.a.trh;
+    p.k(localObject1, "response");
     Log.d(com.tencent.mm.plugin.card.model.a.a.access$getTAG$cp(), "save vip card list snapshot");
-    d.i((kotlin.g.a.a)new a.a.g((bqk)localObject1));
-    localObject1 = new uv();
-    ((uv)localObject1).Leq = this.qhK;
-    ((uv)localObject1).Les = this.qhJ;
-    ((uv)localObject1).Ler = this.qhC;
-    localObject2 = com.tencent.mm.plugin.card.model.a.a.pVg;
-    p.h(localObject1, "sortInfo");
+    d.h((kotlin.g.a.a)new a.a.g((bye)localObject1));
+    localObject1 = new ux();
+    ((ux)localObject1).SfD = this.tDG;
+    ((ux)localObject1).SfF = this.tDF;
+    ((ux)localObject1).SfE = this.tDy;
+    localObject2 = com.tencent.mm.plugin.card.model.a.a.trh;
+    p.k(localObject1, "sortInfo");
     Log.d(com.tencent.mm.plugin.card.model.a.a.access$getTAG$cp(), "save vip card list snapshot");
-    d.i((kotlin.g.a.a)new a.a.h((uv)localObject1));
-    AppMethodBeat.o(201580);
+    d.h((kotlin.g.a.a)new a.a.h((ux)localObject1));
+    AppMethodBeat.o(248235);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(201579);
-    if (this.qic)
+    AppMethodBeat.i(248233);
+    if (this.tDY)
     {
-      kB(true);
-      this.qic = false;
+      lN(true);
+      this.tDY = false;
     }
     super.onResume();
-    AppMethodBeat.o(201579);
+    AppMethodBeat.o(248233);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -610,94 +618,94 @@ public final class VipCardListUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/card/ui/v3/VipCardListUI$VipCardConvertData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "()V", "vipCardInfo", "Lcom/tencent/mm/protocal/protobuf/CardElementCouponList;", "getVipCardInfo", "()Lcom/tencent/mm/protocal/protobuf/CardElementCouponList;", "setVipCardInfo", "(Lcom/tencent/mm/protocal/protobuf/CardElementCouponList;)V", "getItemId", "", "getItemType", "", "plugin-card_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/card/ui/v3/VipCardListUI$VipCardConvertData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "()V", "vipCardInfo", "Lcom/tencent/mm/protocal/protobuf/CardElementCouponList;", "getVipCardInfo", "()Lcom/tencent/mm/protocal/protobuf/CardElementCouponList;", "setVipCardInfo", "(Lcom/tencent/mm/protocal/protobuf/CardElementCouponList;)V", "getItemId", "", "getItemType", "", "plugin-card_release"})
   public static final class b
     implements com.tencent.mm.view.recyclerview.a
   {
-    public ua qii;
+    public uc tEe;
     
-    public final void a(ua paramua)
+    public final void a(uc paramuc)
     {
-      AppMethodBeat.i(201545);
-      p.h(paramua, "<set-?>");
-      this.qii = paramua;
-      AppMethodBeat.o(201545);
+      AppMethodBeat.i(251782);
+      p.k(paramuc, "<set-?>");
+      this.tEe = paramuc;
+      AppMethodBeat.o(251782);
     }
     
-    public final int cxn()
+    public final int bAQ()
     {
       return 1;
     }
     
-    public final ua cxt()
+    public final uc cKV()
     {
-      AppMethodBeat.i(201544);
-      ua localua = this.qii;
-      if (localua == null) {
-        p.btv("vipCardInfo");
+      AppMethodBeat.i(251779);
+      uc localuc = this.tEe;
+      if (localuc == null) {
+        p.bGy("vipCardInfo");
       }
-      AppMethodBeat.o(201544);
-      return localua;
+      AppMethodBeat.o(251779);
+      return localuc;
     }
     
-    public final long lT()
+    public final long mf()
     {
-      AppMethodBeat.i(201546);
-      ua localua = this.qii;
-      if (localua == null) {
-        p.btv("vipCardInfo");
+      AppMethodBeat.i(251784);
+      uc localuc = this.tEe;
+      if (localuc == null) {
+        p.bGy("vipCardInfo");
       }
-      long l = localua.KDM.hashCode();
-      AppMethodBeat.o(201546);
+      long l = localuc.RFf.hashCode();
+      AppMethodBeat.o(251784);
       return l;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/card/ui/v3/VipCardListUI$VipCardConverter;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/card/ui/v3/VipCardListUI$VipCardConvertData;", "(Lcom/tencent/mm/plugin/card/ui/v3/VipCardListUI;)V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "showDeleteConfirmDialog", "cardId", "", "updateCardLabelLayout", "couponLabelList", "", "Lcom/tencent/mm/protocal/protobuf/CardElementCouponLabel;", "labelLayout", "Landroid/widget/LinearLayout;", "plugin-card_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/card/ui/v3/VipCardListUI$VipCardConverter;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/card/ui/v3/VipCardListUI$VipCardConvertData;", "(Lcom/tencent/mm/plugin/card/ui/v3/VipCardListUI;)V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "showDeleteConfirmDialog", "cardId", "", "updateCardLabelLayout", "couponLabelList", "", "Lcom/tencent/mm/protocal/protobuf/CardElementCouponLabel;", "labelLayout", "Landroid/widget/LinearLayout;", "plugin-card_release"})
   public final class c
     extends com.tencent.mm.view.recyclerview.e<VipCardListUI.b>
   {
-    public final void a(RecyclerView paramRecyclerView, final com.tencent.mm.view.recyclerview.h paramh, int paramInt)
+    public final void a(RecyclerView paramRecyclerView, final com.tencent.mm.view.recyclerview.i parami, int paramInt)
     {
-      AppMethodBeat.i(201555);
-      p.h(paramRecyclerView, "recyclerView");
-      p.h(paramh, "holder");
-      ((RoundCornerImageView)paramh.Mn(2131298712)).lx(com.tencent.mm.cb.a.fromDPToPix((Context)this.qij.getContext(), 1), this.qij.getResources().getColor(2131099844));
-      paramh.aus.setOnClickListener((View.OnClickListener)new c(this, paramh));
-      paramh.aus.setOnLongClickListener((View.OnLongClickListener)new d(this, paramh));
-      AppMethodBeat.o(201555);
+      AppMethodBeat.i(249838);
+      p.k(paramRecyclerView, "recyclerView");
+      p.k(parami, "holder");
+      ((RoundCornerImageView)parami.RD(a.d.teG)).mP(com.tencent.mm.ci.a.fromDPToPix((Context)this.tEf.getContext(), 1), this.tEf.getResources().getColor(com.tencent.mm.plugin.card.a.a.White));
+      parami.amk.setOnClickListener((View.OnClickListener)new c(this, parami));
+      parami.amk.setOnLongClickListener((View.OnLongClickListener)new d(this, parami));
+      AppMethodBeat.o(249838);
     }
     
     public final int getLayoutId()
     {
-      return 2131493396;
+      return a.e.tiE;
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
-      a(VipCardListUI.c paramc, com.tencent.mm.view.recyclerview.h paramh, kotlin.g.a.a parama) {}
+      a(VipCardListUI.c paramc, com.tencent.mm.view.recyclerview.i parami, kotlin.g.a.a parama) {}
       
       public final void run()
       {
-        AppMethodBeat.i(201547);
-        VipCardListUI localVipCardListUI = this.qik.qij;
-        View localView = this.qhp.aus;
-        p.g(localView, "holder.itemView");
+        AppMethodBeat.i(246656);
+        VipCardListUI localVipCardListUI = this.tEg.tEf;
+        View localView = this.tDl.amk;
+        p.j(localView, "holder.itemView");
         VipCardListUI.a(localVipCardListUI, localView.getHeight());
-        localVipCardListUI = this.qik.qij;
-        localView = this.qhp.aus;
-        p.g(localView, "holder.itemView");
+        localVipCardListUI = this.tEg.tEf;
+        localView = this.tDl.amk;
+        p.j(localView, "holder.itemView");
         VipCardListUI.b(localVipCardListUI, localView.getWidth());
-        this.qgW.invoke();
-        AppMethodBeat.o(201547);
+        this.tCS.invoke();
+        AppMethodBeat.o(246656);
       }
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
     static final class b
-      extends kotlin.g.b.q
+      extends q
       implements kotlin.g.a.a<x>
     {
       b(VipCardListUI.c paramc, MemberCardTopCropImageView paramMemberCardTopCropImageView, VipCardListUI.b paramb)
@@ -706,156 +714,156 @@ public final class VipCardListUI
       }
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class c
       implements View.OnClickListener
     {
-      c(VipCardListUI.c paramc, com.tencent.mm.view.recyclerview.h paramh) {}
+      c(VipCardListUI.c paramc, com.tencent.mm.view.recyclerview.i parami) {}
       
       public final void onClick(View paramView)
       {
-        AppMethodBeat.i(201549);
+        AppMethodBeat.i(244324);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/VipCardListUI$VipCardConverter$onCreateViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-        paramView = (VipCardListUI.b)paramh.hgv();
-        localObject = paramView.cxt();
-        if (((ua)localObject).Ldc == 1) {
-          com.tencent.mm.plugin.card.d.b.a((MMActivity)this.qik.qij.getContext(), ((ua)localObject).Ldd);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/card/ui/v3/VipCardListUI$VipCardConverter$onCreateViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+        paramView = (VipCardListUI.b)parami.ihX();
+        localObject = paramView.cKV();
+        if (((uc)localObject).Sep == 1) {
+          com.tencent.mm.plugin.card.d.b.a((MMActivity)this.tEg.tEf.getContext(), ((uc)localObject).Seq);
         }
         for (;;)
         {
-          localObject = com.tencent.mm.plugin.report.service.h.CyF;
+          localObject = com.tencent.mm.plugin.report.service.h.IzE;
           long l = System.currentTimeMillis() / 1000L;
-          String str = paramView.cxt().KDM;
-          VipCardListUI localVipCardListUI = this.qik.qij;
-          paramView = paramView.cxt().KDM;
-          p.g(paramView, "vipCardConvertData.vipCardInfo.user_card_id");
+          String str = paramView.cKV().RFf;
+          VipCardListUI localVipCardListUI = this.tEg.tEf;
+          paramView = paramView.cKV().RFf;
+          p.j(paramView, "vipCardConvertData.vipCardInfo.user_card_id");
           ((com.tencent.mm.plugin.report.service.h)localObject).a(19748, new Object[] { Integer.valueOf(1), Long.valueOf(l), str, Integer.valueOf(VipCardListUI.b(localVipCardListUI, paramView)), Integer.valueOf(0) });
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/v3/VipCardListUI$VipCardConverter$onCreateViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(201549);
+          AppMethodBeat.o(244324);
           return;
-          if (((ua)localObject).Ldc == 2)
+          if (((uc)localObject).Sep == 2)
           {
-            com.tencent.mm.plugin.card.d.b.H(((ua)localObject).Lde.Hwr, ((ua)localObject).Lde.Hws, ((ua)localObject).Lde.IhZ);
+            com.tencent.mm.plugin.card.d.b.L(((uc)localObject).Ser.Ooe, ((uc)localObject).Ser.Oof, ((uc)localObject).Ser.Paq);
           }
           else
           {
-            localObject = this.qik.qij;
-            str = paramView.cxt().KDM;
-            p.g(str, "vipCardConvertData.vipCardInfo.user_card_id");
+            localObject = this.tEg.tEf;
+            str = paramView.cKV().RFf;
+            p.j(str, "vipCardConvertData.vipCardInfo.user_card_id");
             VipCardListUI.a((VipCardListUI)localObject, str);
           }
         }
       }
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
     static final class d
       implements View.OnLongClickListener
     {
-      d(VipCardListUI.c paramc, com.tencent.mm.view.recyclerview.h paramh) {}
+      d(VipCardListUI.c paramc, com.tencent.mm.view.recyclerview.i parami) {}
       
       public final boolean onLongClick(View paramView)
       {
-        AppMethodBeat.i(201552);
+        AppMethodBeat.i(245662);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/VipCardListUI$VipCardConverter$onCreateViewHolder$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-        final VipCardListUI.b localb = (VipCardListUI.b)paramh.hgv();
-        localObject = new com.tencent.mm.ui.widget.b.a((Context)this.qik.qij.getContext(), paramView);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/card/ui/v3/VipCardListUI$VipCardConverter$onCreateViewHolder$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+        final VipCardListUI.b localb = (VipCardListUI.b)parami.ihX();
+        localObject = new com.tencent.mm.ui.widget.b.a((Context)this.tEg.tEf.getContext(), paramView);
         ((com.tencent.mm.ui.widget.b.a)localObject).a((View.OnCreateContextMenuListener)new View.OnCreateContextMenuListener()
         {
           public final void onCreateContextMenu(ContextMenu paramAnonymousContextMenu, View paramAnonymousView, ContextMenu.ContextMenuInfo paramAnonymousContextMenuInfo)
           {
-            AppMethodBeat.i(201550);
-            paramAnonymousContextMenu.add(0, 1, 0, (CharSequence)this.qim.qik.qij.getString(2131755778));
-            AppMethodBeat.o(201550);
+            AppMethodBeat.i(251125);
+            paramAnonymousContextMenu.add(0, 1, 0, (CharSequence)this.tEi.tEg.tEf.getString(a.g.app_delete));
+            AppMethodBeat.o(251125);
           }
         });
-        ((com.tencent.mm.ui.widget.b.a)localObject).a((o.g)new o.g()
+        ((com.tencent.mm.ui.widget.b.a)localObject).a((q.g)new q.g()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
           {
-            AppMethodBeat.i(201551);
-            paramAnonymousMenuItem = this.qim.qik;
-            String str = localb.cxt().KDM;
-            p.g(str, "vipCardConvertData.vipCardInfo.user_card_id");
-            com.tencent.mm.ui.widget.a.e locale = new com.tencent.mm.ui.widget.a.e((Context)paramAnonymousMenuItem.qij.getContext(), 1, true);
-            TextView localTextView = new TextView((Context)paramAnonymousMenuItem.qij.getContext());
-            localTextView.setText((CharSequence)paramAnonymousMenuItem.qij.getString(2131757051));
+            AppMethodBeat.i(247355);
+            paramAnonymousMenuItem = this.tEi.tEg;
+            String str = localb.cKV().RFf;
+            p.j(str, "vipCardConvertData.vipCardInfo.user_card_id");
+            com.tencent.mm.ui.widget.a.e locale = new com.tencent.mm.ui.widget.a.e((Context)paramAnonymousMenuItem.tEf.getContext(), 1, true);
+            TextView localTextView = new TextView((Context)paramAnonymousMenuItem.tEf.getContext());
+            localTextView.setText((CharSequence)paramAnonymousMenuItem.tEf.getString(a.g.tkv));
             localTextView.setTextSize(1, 14.0F);
-            localTextView.setTextColor(paramAnonymousMenuItem.qij.getResources().getColor(2131100584));
+            localTextView.setTextColor(paramAnonymousMenuItem.tEf.getResources().getColor(com.tencent.mm.plugin.card.a.a.half_alpha_black));
             localTextView.setGravity(17);
-            paramAnonymousInt = paramAnonymousMenuItem.qij.getResources().getDimensionPixelSize(2131165314);
-            int i = paramAnonymousMenuItem.qij.getResources().getDimensionPixelSize(2131165296);
+            paramAnonymousInt = paramAnonymousMenuItem.tEf.getResources().getDimensionPixelSize(a.b.Edge_A);
+            int i = paramAnonymousMenuItem.tEf.getResources().getDimensionPixelSize(a.b.Edge_2A);
             localTextView.setPadding(paramAnonymousInt, i, paramAnonymousInt, i);
-            locale.V((View)localTextView, false);
-            locale.a((o.f)new VipCardListUI.c.e(paramAnonymousMenuItem));
-            locale.a((o.g)new VipCardListUI.c.f(paramAnonymousMenuItem, str));
-            locale.dGm();
-            AppMethodBeat.o(201551);
+            locale.Z((View)localTextView, false);
+            locale.a((q.f)new VipCardListUI.c.e(paramAnonymousMenuItem));
+            locale.a((q.g)new VipCardListUI.c.f(paramAnonymousMenuItem, str));
+            locale.eik();
+            AppMethodBeat.o(247355);
           }
         });
-        p.g(paramView, "it");
-        paramView = com.tencent.mm.plugin.card.d.m.dB(paramView);
-        ((com.tencent.mm.ui.widget.b.a)localObject).ez(paramView.x, paramView.y);
-        com.tencent.mm.plugin.report.service.h.CyF.a(19747, new Object[] { Integer.valueOf(1), Integer.valueOf(3) });
+        p.j(paramView, "it");
+        paramView = m.dZ(paramView);
+        ((com.tencent.mm.ui.widget.b.a)localObject).eY(paramView.x, paramView.y);
+        com.tencent.mm.plugin.report.service.h.IzE.a(19747, new Object[] { Integer.valueOf(1), Integer.valueOf(3) });
         com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/card/ui/v3/VipCardListUI$VipCardConverter$onCreateViewHolder$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-        AppMethodBeat.o(201552);
+        AppMethodBeat.o(245662);
         return false;
       }
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
     static final class e
-      implements o.f
+      implements q.f
     {
       e(VipCardListUI.c paramc) {}
       
-      public final void onCreateMMMenu(com.tencent.mm.ui.base.m paramm)
+      public final void onCreateMMMenu(o paramo)
       {
-        AppMethodBeat.i(201553);
-        paramm.a(1, this.qik.qij.getResources().getColor(2131100996), (CharSequence)this.qik.qij.getString(2131755778));
-        AppMethodBeat.o(201553);
+        AppMethodBeat.i(245592);
+        paramo.a(1, this.tEg.tEf.getResources().getColor(com.tencent.mm.plugin.card.a.a.red_text_color), (CharSequence)this.tEg.tEf.getString(a.g.app_delete));
+        AppMethodBeat.o(245592);
       }
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onMMMenuItemSelected"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onMMMenuItemSelected"})
     static final class f
-      implements o.g
+      implements q.g
     {
       f(VipCardListUI.c paramc, String paramString) {}
       
       public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
       {
-        AppMethodBeat.i(201554);
-        p.g(paramMenuItem, "menuItem");
+        AppMethodBeat.i(246727);
+        p.j(paramMenuItem, "menuItem");
         switch (paramMenuItem.getItemId())
         {
         }
         for (;;)
         {
-          AppMethodBeat.o(201554);
+          AppMethodBeat.o(246727);
           return;
-          VipCardListUI.c(this.qik.qij, this.qgl);
-          com.tencent.mm.plugin.report.service.h.CyF.a(19747, new Object[] { Integer.valueOf(1), Integer.valueOf(4) });
+          VipCardListUI.c(this.tEg.tEf, this.tCi);
+          com.tencent.mm.plugin.report.service.h.IzE.a(19747, new Object[] { Integer.valueOf(1), Integer.valueOf(4) });
         }
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/DeleteCardInTicketListResponse;", "kotlin.jvm.PlatformType", "call"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/DeleteCardInTicketListResponse;", "kotlin.jvm.PlatformType", "call"})
   static final class d<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
     d(VipCardListUI paramVipCardListUI, String paramString) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetMemberCardHomePageResponse;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetMemberCardHomePageResponse;", "kotlin.jvm.PlatformType", "invoke"})
   static final class e
-    extends kotlin.g.b.q
-    implements kotlin.g.a.b<c.a<bqk>, x>
+    extends q
+    implements kotlin.g.a.b<c.a<bye>, x>
   {
     e(VipCardListUI paramVipCardListUI, boolean paramBoolean)
     {
@@ -863,251 +871,160 @@ public final class VipCardListUI
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/card/ui/v3/VipCardListUI$initView$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-card_release"})
-  public static final class f
-    implements f
-  {
-    public final com.tencent.mm.view.recyclerview.e<?> EC(int paramInt)
-    {
-      AppMethodBeat.i(201559);
-      com.tencent.mm.view.recyclerview.e locale = (com.tencent.mm.view.recyclerview.e)new VipCardListUI.c(this.qij);
-      AppMethodBeat.o(201559);
-      return locale;
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/card/ui/v3/VipCardListUI$initView$2", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback;", "onLoadMoreBegin", "", "onLoadMoreEnd", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "plugin-card_release"})
-  public static final class g
-    extends RefreshLoadMoreLayout.a
-  {
-    public final void ED(int paramInt)
-    {
-      AppMethodBeat.i(201563);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.pH(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/VipCardListUI$initView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V", this, localb.axR());
-      super.ED(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/v3/VipCardListUI$initView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V");
-      AppMethodBeat.o(201563);
-    }
-    
-    public final void a(RefreshLoadMoreLayout.c<Object> paramc)
-    {
-      AppMethodBeat.i(201562);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramc);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/VipCardListUI$initView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.axR());
-      p.h(paramc, "reason");
-      Log.d(VipCardListUI.a(this.qij), "on load more end: " + VipCardListUI.d(this.qij));
-      if (VipCardListUI.e(this.qij)) {
-        VipCardListUI.f(this.qij).h(null);
-      }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/v3/VipCardListUI$initView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
-      AppMethodBeat.o(201562);
-    }
-    
-    public final void cxo()
-    {
-      AppMethodBeat.i(201561);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/VipCardListUI$initView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V", this);
-      Log.d(VipCardListUI.a(this.qij), "on load more");
-      d.h((kotlin.g.a.a)new a(this));
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/v3/VipCardListUI$initView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V");
-      AppMethodBeat.o(201561);
-    }
-    
-    public final void onRefreshEnd(RefreshLoadMoreLayout.c paramc)
-    {
-      AppMethodBeat.i(201564);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramc);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/VipCardListUI$initView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.axR());
-      super.onRefreshEnd(paramc);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/v3/VipCardListUI$initView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
-      AppMethodBeat.o(201564);
-    }
-    
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
-    static final class a
-      extends kotlin.g.b.q
-      implements kotlin.g.a.a<x>
-    {
-      a(VipCardListUI.g paramg)
-      {
-        super();
-      }
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
-  static final class h
-    implements MenuItem.OnMenuItemClickListener
-  {
-    h(VipCardListUI paramVipCardListUI) {}
-    
-    public final boolean onMenuItemClick(MenuItem paramMenuItem)
-    {
-      AppMethodBeat.i(201565);
-      this.qij.finish();
-      AppMethodBeat.o(201565);
-      return false;
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
   static final class i
-    implements o.f
+    implements q.f
   {
     i(VipCardListUI paramVipCardListUI) {}
     
-    public final void onCreateMMMenu(com.tencent.mm.ui.base.m paramm)
+    public final void onCreateMMMenu(o paramo)
     {
-      AppMethodBeat.i(201566);
-      Object localObject = VipCardListUI.g(this.qij);
+      AppMethodBeat.i(253836);
+      Object localObject = VipCardListUI.g(this.tEf);
       if (localObject == null) {
-        p.hyc();
+        p.iCn();
       }
-      localObject = ((uw)localObject).Let.iterator();
+      localObject = ((uy)localObject).SfG.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        uv localuv = (uv)((Iterator)localObject).next();
-        paramm.add(0, localuv.Leq, 1, (CharSequence)localuv.Les);
+        ux localux = (ux)((Iterator)localObject).next();
+        paramo.add(0, localux.SfD, 1, (CharSequence)localux.SfF);
       }
-      AppMethodBeat.o(201566);
+      AppMethodBeat.o(253836);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
   static final class j
-    implements o.g
+    implements q.g
   {
     j(VipCardListUI paramVipCardListUI) {}
     
     public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
     {
-      AppMethodBeat.i(201568);
-      p.g(paramMenuItem, "menuItem");
+      AppMethodBeat.i(253170);
+      p.j(paramMenuItem, "menuItem");
       paramInt = paramMenuItem.getItemId();
-      Log.i(VipCardListUI.a(this.qij), "click item: %s", new Object[] { Integer.valueOf(paramInt) });
+      Log.i(VipCardListUI.a(this.tEf), "click item: %s", new Object[] { Integer.valueOf(paramInt) });
       if (paramInt == 1)
       {
-        if (!VipCardListUI.h(this.qij))
+        if (!VipCardListUI.h(this.tEf))
         {
-          com.tencent.mm.ui.base.h.a((Context)this.qij.getContext(), this.qij.getString(2131757063), this.qij.getString(2131763890), this.qij.getString(2131762043), this.qij.getString(2131757785), false, (DialogInterface.OnClickListener)new DialogInterface.OnClickListener()
+          com.tencent.mm.ui.base.h.a((Context)this.tEf.getContext(), this.tEf.getString(a.g.tkA), this.tEf.getString(a.g.permission_tips_title), this.tEf.getString(a.g.jump_to_settings), this.tEf.getString(a.g.confirm_dialog_cancel), false, (DialogInterface.OnClickListener)new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
-              AppMethodBeat.i(201567);
-              this.qip.qij.startActivityForResult(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"), 564);
-              AppMethodBeat.o(201567);
+              AppMethodBeat.i(250076);
+              this.tEl.tEf.startActivityForResult(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"), 564);
+              AppMethodBeat.o(250076);
             }
           }, null);
-          AppMethodBeat.o(201568);
+          AppMethodBeat.o(253170);
           return;
         }
-        VipCardListUI.c(this.qij, VipCardListUI.j(this.qij));
-        VipCardListUI.d(this.qij, 1);
-        VipCardListUI.d(this.qij, paramMenuItem.getTitle().toString());
-        VipCardListUI.k(this.qij);
-        VipCardListUI.a(this.qij, true);
-        com.tencent.mm.plugin.report.service.h.CyF.a(19747, new Object[] { Integer.valueOf(1), Integer.valueOf(5) });
-        AppMethodBeat.o(201568);
+        VipCardListUI.c(this.tEf, VipCardListUI.j(this.tEf));
+        VipCardListUI.d(this.tEf, 1);
+        VipCardListUI.d(this.tEf, paramMenuItem.getTitle().toString());
+        VipCardListUI.k(this.tEf);
+        VipCardListUI.a(this.tEf, true);
+        com.tencent.mm.plugin.report.service.h.IzE.a(19747, new Object[] { Integer.valueOf(1), Integer.valueOf(5) });
+        AppMethodBeat.o(253170);
         return;
       }
-      VipCardListUI.c(this.qij, VipCardListUI.j(this.qij));
-      VipCardListUI.d(this.qij, paramInt);
-      VipCardListUI.d(this.qij, paramMenuItem.getTitle().toString());
-      VipCardListUI.k(this.qij);
-      VipCardListUI.a(this.qij, true);
-      com.tencent.mm.plugin.report.service.h.CyF.a(19747, new Object[] { Integer.valueOf(1), Integer.valueOf(6) });
-      AppMethodBeat.o(201568);
+      VipCardListUI.c(this.tEf, VipCardListUI.j(this.tEf));
+      VipCardListUI.d(this.tEf, paramInt);
+      VipCardListUI.d(this.tEf, paramMenuItem.getTitle().toString());
+      VipCardListUI.k(this.tEf);
+      VipCardListUI.a(this.tEf, true);
+      com.tencent.mm.plugin.report.service.h.IzE.a(19747, new Object[] { Integer.valueOf(1), Integer.valueOf(6) });
+      AppMethodBeat.o(253170);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class k
     implements MenuItem.OnMenuItemClickListener
   {
-    k(VipCardListUI paramVipCardListUI, z.a parama1, z.a parama2) {}
+    k(VipCardListUI paramVipCardListUI, aa.a parama1, aa.a parama2) {}
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(201571);
-      paramMenuItem = new com.tencent.mm.ui.widget.a.e((Context)this.qij.getContext(), 1, false);
-      paramMenuItem.a((o.f)new o.f()
+      AppMethodBeat.i(248004);
+      paramMenuItem = new com.tencent.mm.ui.widget.a.e((Context)this.tEf.getContext(), 1, false);
+      paramMenuItem.a((q.f)new q.f()
       {
-        public final void onCreateMMMenu(com.tencent.mm.ui.base.m paramAnonymousm)
+        public final void onCreateMMMenu(o paramAnonymouso)
         {
-          AppMethodBeat.i(201569);
-          if (this.qis.qiq.SYB) {
-            paramAnonymousm.add(0, 1, 0, (CharSequence)VipCardListUI.r(this.qis.qij));
+          AppMethodBeat.i(244343);
+          if (this.tEo.tEm.aaBx) {
+            paramAnonymouso.add(0, 1, 0, (CharSequence)VipCardListUI.r(this.tEo.tEf));
           }
-          if (this.qis.qir.SYB) {
-            paramAnonymousm.add(0, 2, 1, (CharSequence)VipCardListUI.q(this.qis.qij));
+          if (this.tEo.tEn.aaBx) {
+            paramAnonymouso.add(0, 2, 1, (CharSequence)VipCardListUI.q(this.tEo.tEf));
           }
-          AppMethodBeat.o(201569);
+          AppMethodBeat.o(244343);
         }
       });
-      paramMenuItem.a((o.g)new o.g()
+      paramMenuItem.a((q.g)new q.g()
       {
         public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
-          AppMethodBeat.i(201570);
-          p.g(paramAnonymousMenuItem, "menuItem");
+          AppMethodBeat.i(246328);
+          p.j(paramAnonymousMenuItem, "menuItem");
           Object localObject;
-          un localun;
+          up localup;
           if (paramAnonymousMenuItem.getItemId() == 1)
           {
-            VipCardListUI.m(this.qis.qij);
-            paramAnonymousMenuItem = VipCardListUI.n(this.qis.qij);
+            VipCardListUI.m(this.tEo.tEf);
+            paramAnonymousMenuItem = VipCardListUI.n(this.tEo.tEf);
             if (paramAnonymousMenuItem == null) {
-              p.hyc();
+              p.iCn();
             }
-            paramAnonymousMenuItem = paramAnonymousMenuItem.Hwr;
-            localObject = VipCardListUI.n(this.qis.qij);
+            paramAnonymousMenuItem = paramAnonymousMenuItem.Ooe;
+            localObject = VipCardListUI.n(this.tEo.tEf);
             if (localObject == null) {
-              p.hyc();
+              p.iCn();
             }
-            localObject = ((un)localObject).Hws;
-            localun = VipCardListUI.n(this.qis.qij);
-            if (localun == null) {
-              p.hyc();
+            localObject = ((up)localObject).Oof;
+            localup = VipCardListUI.n(this.tEo.tEf);
+            if (localup == null) {
+              p.iCn();
             }
-            com.tencent.mm.plugin.card.d.b.H(paramAnonymousMenuItem, (String)localObject, localun.IhZ);
-            com.tencent.mm.plugin.report.service.h.CyF.a(19747, new Object[] { Integer.valueOf(1), Integer.valueOf(7) });
-            AppMethodBeat.o(201570);
+            com.tencent.mm.plugin.card.d.b.L(paramAnonymousMenuItem, (String)localObject, localup.Paq);
+            com.tencent.mm.plugin.report.service.h.IzE.a(19747, new Object[] { Integer.valueOf(1), Integer.valueOf(7) });
+            AppMethodBeat.o(246328);
             return;
           }
           if (paramAnonymousMenuItem.getItemId() == 2)
           {
-            paramAnonymousMenuItem = VipCardListUI.p(this.qis.qij);
+            paramAnonymousMenuItem = VipCardListUI.p(this.tEo.tEf);
             if (paramAnonymousMenuItem == null) {
-              p.hyc();
+              p.iCn();
             }
-            paramAnonymousMenuItem = paramAnonymousMenuItem.Hwr;
-            localObject = VipCardListUI.p(this.qis.qij);
+            paramAnonymousMenuItem = paramAnonymousMenuItem.Ooe;
+            localObject = VipCardListUI.p(this.tEo.tEf);
             if (localObject == null) {
-              p.hyc();
+              p.iCn();
             }
-            localObject = ((un)localObject).Hws;
-            localun = VipCardListUI.p(this.qis.qij);
-            if (localun == null) {
-              p.hyc();
+            localObject = ((up)localObject).Oof;
+            localup = VipCardListUI.p(this.tEo.tEf);
+            if (localup == null) {
+              p.iCn();
             }
-            com.tencent.mm.plugin.card.d.b.H(paramAnonymousMenuItem, (String)localObject, localun.IhZ);
-            com.tencent.mm.plugin.report.service.h.CyF.a(19747, new Object[] { Integer.valueOf(1), Integer.valueOf(2) });
+            com.tencent.mm.plugin.card.d.b.L(paramAnonymousMenuItem, (String)localObject, localup.Paq);
+            com.tencent.mm.plugin.report.service.h.IzE.a(19747, new Object[] { Integer.valueOf(1), Integer.valueOf(2) });
           }
-          AppMethodBeat.o(201570);
+          AppMethodBeat.o(246328);
         }
       });
-      paramMenuItem.dGm();
-      com.tencent.mm.plugin.report.service.h.CyF.a(19747, new Object[] { Integer.valueOf(1), Integer.valueOf(1) });
-      AppMethodBeat.o(201571);
+      paramMenuItem.eik();
+      com.tencent.mm.plugin.report.service.h.IzE.a(19747, new Object[] { Integer.valueOf(1), Integer.valueOf(1) });
+      AppMethodBeat.o(248004);
       return false;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick", "com/tencent/mm/plugin/card/ui/v3/VipCardListUI$updateIconMenuByV4Protocol$1$1"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick", "com/tencent/mm/plugin/card/ui/v3/VipCardListUI$updateIconMenuByV4Protocol$1$1"})
   static final class l
     implements MenuItem.OnMenuItemClickListener
   {
@@ -1115,65 +1032,46 @@ public final class VipCardListUI
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(201574);
+      AppMethodBeat.i(247761);
       paramMenuItem = new com.tencent.mm.ui.widget.a.e((Context)jdField_this.getContext(), 1, false);
-      paramMenuItem.a((o.f)new o.f()
+      paramMenuItem.a((q.f)new q.f()
       {
-        public final void onCreateMMMenu(com.tencent.mm.ui.base.m paramAnonymousm)
+        public final void onCreateMMMenu(o paramAnonymouso)
         {
-          AppMethodBeat.i(201572);
-          Iterator localIterator = ((Iterable)this.qiv.qit).iterator();
+          AppMethodBeat.i(245433);
+          Iterator localIterator = ((Iterable)this.tEr.tEp).iterator();
           int i = 0;
           while (localIterator.hasNext())
           {
             Object localObject = localIterator.next();
             if (i < 0) {
-              j.hxH();
+              j.iBO();
             }
-            localObject = (ue)localObject;
-            paramAnonymousm.add(0, i, 1, (CharSequence)((ue)localObject).LdB);
-            Log.i(VipCardListUI.a(this.qiv.qij), "Icon menu content, index: " + i + ", wording: " + ((ue)localObject).LdB + ", jumpType:" + ((ue)localObject).LdC + ' ');
+            localObject = (ug)localObject;
+            paramAnonymouso.add(0, i, 1, (CharSequence)((ug)localObject).SeO);
+            Log.i(VipCardListUI.a(this.tEr.tEf), "Icon menu content, index: " + i + ", wording: " + ((ug)localObject).SeO + ", jumpType:" + ((ug)localObject).SeP + ' ');
             i += 1;
           }
-          AppMethodBeat.o(201572);
+          AppMethodBeat.o(245433);
         }
       });
-      paramMenuItem.a((o.g)new o.g()
+      paramMenuItem.a((q.g)new q.g()
       {
         public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
-          AppMethodBeat.i(201573);
-          VipCardListUI.a(this.qiv.qij, (ue)this.qiv.qiu.get(paramAnonymousInt));
-          AppMethodBeat.o(201573);
+          AppMethodBeat.i(245698);
+          VipCardListUI.a(this.tEr.tEf, (ug)this.tEr.tEq.get(paramAnonymousInt));
+          AppMethodBeat.o(245698);
         }
       });
-      paramMenuItem.dGm();
-      com.tencent.mm.plugin.report.service.h.CyF.a(19747, new Object[] { Integer.valueOf(1), Integer.valueOf(1) });
-      AppMethodBeat.o(201574);
+      paramMenuItem.eik();
+      com.tencent.mm.plugin.report.service.h.IzE.a(19747, new Object[] { Integer.valueOf(1), Integer.valueOf(1) });
+      AppMethodBeat.o(247761);
       return false;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class m
-    implements View.OnClickListener
-  {
-    m(VipCardListUI paramVipCardListUI) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(201575);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/VipCardListUI$updateTopHeaderLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      Log.d(VipCardListUI.a(this.qij), "click header view");
-      VipCardListUI.l(this.qij);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/v3/VipCardListUI$updateTopHeaderLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(201575);
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class n
     implements View.OnClickListener
   {
@@ -1181,35 +1079,35 @@ public final class VipCardListUI
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(201576);
+      AppMethodBeat.i(250176);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/v3/VipCardListUI$updateTopHeaderLayout$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-      VipCardListUI.m(this.qij);
-      paramView = VipCardListUI.n(this.qij);
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/card/ui/v3/VipCardListUI$updateTopHeaderLayout$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+      VipCardListUI.m(this.tEf);
+      paramView = VipCardListUI.n(this.tEf);
       if (paramView == null) {
-        p.hyc();
+        p.iCn();
       }
-      paramView = paramView.Hwr;
-      localObject = VipCardListUI.n(this.qij);
+      paramView = paramView.Ooe;
+      localObject = VipCardListUI.n(this.tEf);
       if (localObject == null) {
-        p.hyc();
+        p.iCn();
       }
-      localObject = ((un)localObject).Hws;
-      un localun = VipCardListUI.n(this.qij);
-      if (localun == null) {
-        p.hyc();
+      localObject = ((up)localObject).Oof;
+      up localup = VipCardListUI.n(this.tEf);
+      if (localup == null) {
+        p.iCn();
       }
-      com.tencent.mm.plugin.card.d.b.H(paramView, (String)localObject, localun.IhZ);
-      com.tencent.mm.plugin.report.service.h.CyF.a(19747, new Object[] { Integer.valueOf(1), Integer.valueOf(8) });
+      com.tencent.mm.plugin.card.d.b.L(paramView, (String)localObject, localup.Paq);
+      com.tencent.mm.plugin.report.service.h.IzE.a(19747, new Object[] { Integer.valueOf(1), Integer.valueOf(8) });
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/v3/VipCardListUI$updateTopHeaderLayout$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(201576);
+      AppMethodBeat.o(250176);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.v3.VipCardListUI
  * JD-Core Version:    0.7.0.1
  */

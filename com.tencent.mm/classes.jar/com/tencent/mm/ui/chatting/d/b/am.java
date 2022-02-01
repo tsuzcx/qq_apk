@@ -1,39 +1,15 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import com.tencent.mm.ui.chatting.d.af;
-import com.tencent.mm.ui.chatting.v;
-import java.util.ArrayList;
+import com.tencent.mm.ui.chatting.d.ag;
+import kotlin.l;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/chatting/component/api/IScanComponent;", "Lcom/tencent/mm/ui/chatting/component/IChattingComponent;", "app_release"})
 public abstract interface am
-  extends af
-{
-  public abstract boolean Nz(long paramLong);
-  
-  public abstract void amE(int paramInt);
-  
-  public abstract ArrayList<String> gQU();
-  
-  public abstract void gQV();
-  
-  public abstract void gQW();
-  
-  public abstract boolean gQX();
-  
-  public abstract v gQY();
-  
-  public abstract boolean gQZ();
-  
-  public abstract boolean gRa();
-  
-  public abstract boolean gRb();
-  
-  public abstract boolean gRc();
-  
-  public abstract boolean gRd();
-}
+  extends ag
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.b.am
  * JD-Core Version:    0.7.0.1
  */

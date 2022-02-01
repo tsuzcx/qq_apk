@@ -1,19 +1,19 @@
 package com.tencent.mm.modelcontrol;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
 {
-  public static boolean baV()
+  public static boolean bkl()
   {
-    AppMethodBeat.i(201781);
-    boolean bool = ((b)g.af(b.class)).a(b.a.sow, true);
+    AppMethodBeat.i(213647);
+    boolean bool = ((b)h.ae(b.class)).a(b.a.vZV, true);
     Log.i("MicroMsg.MediaExptUtil", "MediaExptUtil isFFmpegReplaceMp4v2: ".concat(String.valueOf(bool)));
-    AppMethodBeat.o(201781);
+    AppMethodBeat.o(213647);
     return bool;
   }
 }

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.music.g.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.j;
+import com.tencent.mm.bb.j;
 import com.tencent.mm.plugin.music.cache.c;
 import com.tencent.mm.plugin.music.cache.d;
 import com.tencent.mm.plugin.music.cache.d.a;
@@ -13,9 +13,8 @@ import com.tencent.mm.plugin.music.f.c.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import com.tencent.qqmusic.mediaplayer.network.IMediaHTTPConnection;
 import com.tencent.qqmusic.mediaplayer.util.Logger;
 import java.io.BufferedInputStream;
@@ -40,10 +39,10 @@ import java.util.Set;
 public final class a
   implements IMediaHTTPConnection
 {
-  private com.tencent.mm.plugin.music.cache.a Amp;
-  public URL Amq;
-  private byte[] Amr;
-  private final Map<String, String> Ams;
+  private com.tencent.mm.plugin.music.cache.a FTv;
+  public URL FTw;
+  private byte[] FTx;
+  private final Map<String, String> FTy;
   private boolean mAllowCrossDomainRedirect;
   private boolean mAllowCrossProtocolRedirect;
   private HttpURLConnection mConnection;
@@ -56,10 +55,10 @@ public final class a
   
   public a(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(198190);
+    AppMethodBeat.i(257038);
     this.mCurrentOffset = -1L;
     this.mURL = null;
-    this.Amq = null;
+    this.FTw = null;
     this.mHeaders = null;
     this.mConnection = null;
     this.mTotalSize = -1L;
@@ -67,9 +66,9 @@ public final class a
     this.mInputStream = null;
     this.mAllowCrossDomainRedirect = true;
     this.mAllowCrossProtocolRedirect = true;
-    this.Amr = new byte[1];
-    this.Ams = paramMap;
-    AppMethodBeat.o(198190);
+    this.FTx = new byte[1];
+    this.FTy = paramMap;
+    AppMethodBeat.o(257038);
   }
   
   private static final boolean isLocalHost(URL paramURL)
@@ -175,7 +174,7 @@ public final class a
         this.mConnection.setRequestProperty("Accept-Encoding", "");
       }
       m = this.mConnection.getResponseCode();
-      g.eT(this.Amq.toString(), m);
+      g.fu(this.FTw.toString(), m);
       Object localObject2;
       if ((m == 300) || (m == 301) || (m == 302) || (m == 303) || (m == 307))
       {
@@ -377,17 +376,17 @@ public final class a
     disconnect();
     this.mAllowCrossDomainRedirect = true;
     this.mURL = paramURL;
-    this.Amq = paramURL;
+    this.FTw = paramURL;
     this.mHeaders = paramMap;
     this.mTotalSize = -1L;
     this.mMimeType = "";
     if (MMApplicationContext.isMMProcess())
     {
       paramURL = this.mURL.toString();
-      if (!e.etK()) {
-        break label680;
+      if (!e.fdV()) {
+        break label677;
       }
-      paramURL = ((c)b.aS(c.class)).aHr(paramURL);
+      paramURL = ((c)b.bm(c.class)).aRF(paramURL);
     }
     for (;;)
     {
@@ -399,10 +398,10 @@ public final class a
         this.mURL = new URL(paramURL);
         if (this.mURL != null)
         {
-          g.H(this.mURL.toString(), paramMap);
-          paramURL = this.Amq.toString();
+          g.J(this.mURL.toString(), paramMap);
+          paramURL = this.FTw.toString();
           Logger.d("MicroMsg.Music.MMMediaHTTPConnection", "connect, originUrlStr: ".concat(String.valueOf(paramURL)));
-          localObject1 = (String)this.Ams.get(paramURL);
+          localObject1 = (String)this.FTy.get(paramURL);
           paramURL = paramMap;
           if (!"invalidReferrer".equals(localObject1))
           {
@@ -429,34 +428,34 @@ public final class a
         {
           paramURL.put("Referer", localObject1);
           Logger.i("MicroMsg.Music.MMMediaHTTPConnection", "headers=".concat(String.valueOf(paramURL)));
-          this.Amp = new com.tencent.mm.plugin.music.cache.a(this);
-          paramURL = this.Amp;
-          paramMap = paramURL.AiB.Amq.toString();
-          paramURL.AiC = new d(paramMap);
-          paramURL.AiC.jPY = paramURL.AiB.getSize();
-          localObject1 = paramURL.AiC;
+          this.FTv = new com.tencent.mm.plugin.music.cache.a(this);
+          paramURL = this.FTv;
+          paramMap = paramURL.FPy.FTw.toString();
+          paramURL.FPz = new d(paramMap);
+          paramURL.FPz.mHi = paramURL.FPy.getSize();
+          localObject1 = paramURL.FPz;
           Log.i("MicroMsg.Music.IndexBitMgr", "initData");
           long l;
-          if (((d)localObject1).jPY <= 0L)
+          if (((d)localObject1).mHi <= 0L)
           {
             Log.e("MicroMsg.Music.IndexBitMgr", "fileLength is invalid!");
-            paramURL.AiD = new h(paramMap);
-            if (new o(paramURL.AiD.fileName).exists()) {
-              break label1299;
+            paramURL.FPA = new h(paramMap);
+            if (new q(paramURL.FPA.fileName).ifE()) {
+              break label1296;
             }
             Log.i("MicroMsg.Music.FileBytesCacheMgr", "piece file not exist, clear cache!");
-            paramURL.AiC.clearCache();
-            l = paramURL.AiB.getSize();
-            localObject1 = paramURL.AiD;
+            paramURL.FPz.clearCache();
+            l = paramURL.FPy.getSize();
+            localObject1 = paramURL.FPA;
             Logger.i("MicroMsg.Music.PieceFileCache", "open");
           }
           try
           {
-            localObject2 = new o(((h)localObject1).fileName);
-            if (!((o)localObject2).exists()) {
-              Log.i("MicroMsg.Music.PieceFileCache", "create file:%b", new Object[] { Boolean.valueOf(((o)localObject2).createNewFile()) });
+            localObject2 = new q(((h)localObject1).fileName);
+            if (!((q)localObject2).ifE()) {
+              Log.i("MicroMsg.Music.PieceFileCache", "create file:%b", new Object[] { Boolean.valueOf(((q)localObject2).ifM()) });
             }
-            ((h)localObject1).randomAccessFile = s.dB(aa.z(((o)localObject2).mUri), true);
+            ((h)localObject1).randomAccessFile = u.dO(((q)localObject2).getPath(), true);
             Logger.e("MicroMsg.Music.PieceFileCache", "create RandomAccessFile file  %s  success", new Object[] { ((h)localObject1).fileName });
           }
           catch (FileNotFoundException localFileNotFoundException)
@@ -481,20 +480,20 @@ public final class a
             Logger.e("MicroMsg.Music.PieceFileCache", "create RandomAccessFile file  %s  success", new Object[] { ((h)localObject1).fileName });
             AppMethodBeat.o(137428);
           }
-          paramURL.AiD.setLength(l);
-          g.bc(paramMap, l);
-          Log.i("MicroMsg.Music.FileBytesCacheMgr", "attach() fileLength is " + l + ",pieceFileCache length is " + paramURL.AiD.getLength());
-          localObject1 = paramURL.AiB.getMIMEType();
+          paramURL.FPA.bI(l);
+          g.bd(paramMap, l);
+          Log.i("MicroMsg.Music.FileBytesCacheMgr", "attach() fileLength is " + l + ",pieceFileCache length is " + paramURL.FPA.getLength());
+          localObject1 = paramURL.FPy.getMIMEType();
           if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!"application/octet-stream".equalsIgnoreCase((String)localObject1))) {
-            g.iW(paramMap, (String)localObject1);
+            g.jg(paramMap, (String)localObject1);
           }
-          paramURL.fs = -1;
+          paramURL.zP = -1;
           paramURL.mSize = 0;
-          paramURL.AiE = -1;
-          paramURL.AiF = 0;
+          paramURL.FPB = -1;
+          paramURL.FPC = 0;
           AppMethodBeat.o(137428);
           return true;
-          label680:
+          label677:
           Log.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
           paramURL = null;
           continue;
@@ -509,82 +508,82 @@ public final class a
             paramURL = new HashMap(paramURL);
             paramURL.put("Referer", localObject1);
             continue;
-            if ((((d)localObject1).jPY % 8192L == 0L) || (((d)localObject1).jPY < 8192L)) {}
-            for (((d)localObject1).count = ((int)(((d)localObject1).jPY / 8192L));; ((d)localObject1).count = ((int)(((d)localObject1).jPY / 8192L) + 1))
+            if ((((d)localObject1).mHi % 8192L == 0L) || (((d)localObject1).mHi < 8192L)) {}
+            for (((d)localObject1).count = ((int)(((d)localObject1).mHi / 8192L));; ((d)localObject1).count = ((int)(((d)localObject1).mHi / 8192L) + 1))
             {
-              if (((d)localObject1).jPY <= 8192L)
+              if (((d)localObject1).mHi <= 8192L)
               {
                 Log.i("MicroMsg.Music.IndexBitMgr", "fileLength < PIECE_SIZE, count should be 1");
                 ((d)localObject1).count = 1;
               }
-              Log.i("MicroMsg.Music.IndexBitMgr", "fileLength:%d, count:%d", new Object[] { Long.valueOf(((d)localObject1).jPY), Integer.valueOf(((d)localObject1).count) });
-              ((d)localObject1).AiI = new BitSet(((d)localObject1).count);
-              ((d)localObject1).dSF = g.aHy(((d)localObject1).mUrl);
-              if (!TextUtils.isEmpty(((d)localObject1).dSF)) {
-                break label937;
+              Log.i("MicroMsg.Music.IndexBitMgr", "fileLength:%d, count:%d", new Object[] { Long.valueOf(((d)localObject1).mHi), Integer.valueOf(((d)localObject1).count) });
+              ((d)localObject1).FPF = new BitSet(((d)localObject1).count);
+              ((d)localObject1).fMd = g.aRM(((d)localObject1).mUrl);
+              if (!TextUtils.isEmpty(((d)localObject1).fMd)) {
+                break label934;
               }
               Log.e("MicroMsg.Music.IndexBitMgr", "initData musicId is null!'");
               break;
             }
-            label937:
-            Log.i("MicroMsg.Music.IndexBitMgr", "musicId:%s", new Object[] { ((d)localObject1).dSF });
-            localObject2 = e.aHs(((d)localObject1).dSF);
+            label934:
+            Log.i("MicroMsg.Music.IndexBitMgr", "musicId:%s", new Object[] { ((d)localObject1).fMd });
+            localObject2 = e.aRG(((d)localObject1).fMd);
             if (localObject2 == null)
             {
               Log.e("MicroMsg.Music.IndexBitMgr", "initData pMusic is null!'");
             }
             else
             {
-              Log.i("MicroMsg.Music.IndexBitMgr", "initData music field_fileCacheComplete:%d", new Object[] { Integer.valueOf(((j)localObject2).jfB) });
-              if ((((j)localObject2).jfA == null) || (((j)localObject2).jfA.length == 0))
+              Log.i("MicroMsg.Music.IndexBitMgr", "initData music field_fileCacheComplete:%d", new Object[] { Integer.valueOf(((j)localObject2).lWb) });
+              if ((((j)localObject2).lWa == null) || (((j)localObject2).lWa.length == 0))
               {
                 Log.e("MicroMsg.Music.IndexBitMgr", "initData field_indexBitData is null!'");
               }
               else
               {
-                ((d)localObject1).AiI = d.a.bT(((j)localObject2).jfA);
-                if (((d)localObject1).AiI == null)
+                ((d)localObject1).FPF = d.a.cj(((j)localObject2).lWa);
+                if (((d)localObject1).FPF == null)
                 {
                   Log.e("MicroMsg.Music.IndexBitMgr", "initData bitSet is null");
-                  ((d)localObject1).AiI = new BitSet(((d)localObject1).count);
+                  ((d)localObject1).FPF = new BitSet(((d)localObject1).count);
                 }
-                label1224:
+                label1221:
                 do
                 {
                   for (;;)
                   {
-                    Log.i("MicroMsg.Music.IndexBitMgr", "initData bitSet:" + ((d)localObject1).AiI.toString());
-                    Log.i("MicroMsg.Music.IndexBitMgr", "initData bitSet count %d, cardinality:" + ((d)localObject1).count + "," + ((d)localObject1).AiI.cardinality());
+                    Log.i("MicroMsg.Music.IndexBitMgr", "initData bitSet:" + ((d)localObject1).FPF.toString());
+                    Log.i("MicroMsg.Music.IndexBitMgr", "initData bitSet count %d, cardinality:" + ((d)localObject1).count + "," + ((d)localObject1).FPF.cardinality());
                     break;
-                    if (((d)localObject1).count >= ((d)localObject1).AiI.cardinality()) {
-                      break label1224;
+                    if (((d)localObject1).count >= ((d)localObject1).FPF.cardinality()) {
+                      break label1221;
                     }
-                    Log.e("MicroMsg.Music.IndexBitMgr", "initData cont < bitSet.cardinality(), count:%d, cardinality:%d", new Object[] { Integer.valueOf(((d)localObject1).count), Integer.valueOf(((d)localObject1).AiI.cardinality()) });
+                    Log.e("MicroMsg.Music.IndexBitMgr", "initData cont < bitSet.cardinality(), count:%d, cardinality:%d", new Object[] { Integer.valueOf(((d)localObject1).count), Integer.valueOf(((d)localObject1).FPF.cardinality()) });
                     ((d)localObject1).clearCache();
                   }
-                } while (((j)localObject2).jfD == 1);
+                } while (((j)localObject2).lWd == 1);
                 Log.i("MicroMsg.Music.IndexBitMgr", "remove dirty bit set from db, reset cache complete to 0");
                 if (((d)localObject1).count > 1)
                 {
-                  ((d)localObject1).SH(((d)localObject1).count - 1);
-                  ((d)localObject1).SH(((d)localObject1).count - 2);
+                  ((d)localObject1).Ze(((d)localObject1).count - 1);
+                  ((d)localObject1).Ze(((d)localObject1).count - 2);
                 }
                 for (;;)
                 {
-                  ((d)localObject1).SE(0);
+                  ((d)localObject1).Zb(0);
                   break;
-                  ((d)localObject1).SH(((d)localObject1).count - 1);
+                  ((d)localObject1).Ze(((d)localObject1).count - 1);
                 }
-                label1299:
-                if ((paramURL.AiD.etL() != paramURL.AiB.getSize()) && (paramURL.AiB.getSize() != -1L))
+                label1296:
+                if ((paramURL.FPA.anL() != paramURL.FPy.getSize()) && (paramURL.FPy.getSize() != -1L))
                 {
                   Log.i("MicroMsg.Music.FileBytesCacheMgr", "piece file length is not equals to real file length exist, clear cache!");
-                  paramURL.AiC.clearCache();
-                  localObject1 = paramURL.AiD;
+                  paramURL.FPz.clearCache();
+                  localObject1 = paramURL.FPA;
                   Logger.i("MicroMsg.Music.PieceFileCache", "deleteFile");
-                  h.aHD(((h)localObject1).fileName);
+                  h.aRR(((h)localObject1).fileName);
                 }
-                else if (paramURL.AiB.getSize() == -1L)
+                else if (paramURL.FPy.getSize() == -1L)
                 {
                   Log.i("MicroMsg.Music.FileBytesCacheMgr", "getFileLength is -1, network is disconnect!");
                 }
@@ -607,15 +606,15 @@ public final class a
     teardownConnection();
     this.mHeaders = null;
     this.mURL = null;
-    if (this.Amp != null)
+    if (this.FTv != null)
     {
-      com.tencent.mm.plugin.music.cache.a locala = this.Amp;
-      locala.etB();
-      locala.AiC.etI();
-      locala.AiD.close();
-      locala.AiB = null;
+      com.tencent.mm.plugin.music.cache.a locala = this.FTv;
+      locala.fdO();
+      locala.FPz.fdT();
+      locala.FPA.close();
+      locala.FPy = null;
       Log.i("MicroMsg.Music.FileBytesCacheMgr", "detach()");
-      this.Amp = null;
+      this.FTv = null;
     }
     AppMethodBeat.o(137429);
   }
@@ -630,7 +629,7 @@ public final class a
       AppMethodBeat.o(137435);
       return str1;
     }
-    String str1 = g.aHB(this.Amq.toString());
+    String str1 = g.aRP(this.FTw.toString());
     if (!TextUtils.isEmpty(str1))
     {
       this.mMimeType = str1;
@@ -664,7 +663,7 @@ public final class a
       Logger.i("MicroMsg.Music.MMMediaHTTPConnection", "getMIMEType mimeType:".concat(String.valueOf(str2)));
       Log.d("MicroMsg.Music.MMMediaHTTPConnection", "getMIMEType cost time2 :%d!", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     }
-    String str2 = g.aHA(this.Amq.toString());
+    String str2 = g.aRO(this.FTw.toString());
     this.mMimeType = str2;
     if (!TextUtils.isEmpty(str2))
     {
@@ -685,9 +684,9 @@ public final class a
       AppMethodBeat.o(137434);
       return l;
     }
-    if (g.aHC(this.Amq.toString()) > 0L)
+    if (g.aRQ(this.FTw.toString()) > 0L)
     {
-      this.mTotalSize = g.aHC(this.Amq.toString());
+      this.mTotalSize = g.aRQ(this.FTw.toString());
       l = this.mTotalSize;
       AppMethodBeat.o(137434);
       return l;
@@ -712,9 +711,9 @@ public final class a
         Logger.e("MicroMsg.Music.MMMediaHTTPConnection", "getSize exception:%s", new Object[] { String.valueOf(localIOException) });
         this.mTotalSize = -1L;
       }
-      if (g.hv(this.Amq.toString()) > 0L)
+      if (g.ij(this.FTw.toString()) > 0L)
       {
-        this.mTotalSize = g.hv(this.Amq.toString());
+        this.mTotalSize = g.ij(this.FTw.toString());
         l = this.mTotalSize;
         AppMethodBeat.o(137434);
         return l;
@@ -735,10 +734,11 @@ public final class a
   public final int readAt(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(137433);
-    if (paramInt2 > this.Amr.length) {
-      this.Amr = new byte[paramInt2];
+    if (paramInt2 > this.FTx.length) {
+      this.FTx = new byte[paramInt2];
     }
-    Arrays.fill(this.Amr, 0, this.Amr.length, (byte)0);
+    Arrays.fill(this.FTx, 0, this.FTx.length, (byte)0);
+    label1292:
     for (;;)
     {
       Object localObject;
@@ -746,11 +746,11 @@ public final class a
       int i;
       try
       {
-        if (this.Amp == null) {
+        if ((g.aRU(this.mURL.toString())) || (this.FTv == null)) {
           continue;
         }
-        localObject = this.Amp;
-        arrayOfByte = this.Amr;
+        localObject = this.FTv;
+        arrayOfByte = this.FTx;
         j = (int)paramLong;
         if ((arrayOfByte != null) && (j >= 0) && (paramInt2 >= 0)) {
           continue;
@@ -761,21 +761,21 @@ public final class a
       {
         byte[] arrayOfByte;
         Logger.e("MicroMsg.Music.MMMediaHTTPConnection", "readAt " + paramLong + " / " + paramInt2 + " => " + paramArrayOfByte);
-        g.eU(this.Amq.toString(), 750);
+        g.fv(this.FTw.toString(), 750);
         teardownConnection();
         AppMethodBeat.o(137433);
         return -1010;
         i = j + paramInt2;
         l = i;
-        if (l <= ((com.tencent.mm.plugin.music.cache.a)localObject).AiB.getSize()) {
-          break label1279;
+        if (l <= ((com.tencent.mm.plugin.music.cache.a)localObject).FPy.getSize()) {
+          break label1292;
         }
-        Log.e("MicroMsg.Music.FileBytesCacheMgr", "read() endOffset is error,  startOffset %d, endOffset:%d, file length:%d ", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Long.valueOf(((com.tencent.mm.plugin.music.cache.a)localObject).AiB.getSize()) });
-        i = (int)((com.tencent.mm.plugin.music.cache.a)localObject).AiB.getSize() - j;
-        if (!((com.tencent.mm.plugin.music.cache.a)localObject).AiC.hp(j, i)) {
-          break label1286;
+        Log.e("MicroMsg.Music.FileBytesCacheMgr", "read() endOffset is error,  startOffset %d, endOffset:%d, file length:%d ", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Long.valueOf(((com.tencent.mm.plugin.music.cache.a)localObject).FPy.getSize()) });
+        i = (int)((com.tencent.mm.plugin.music.cache.a)localObject).FPy.getSize() - j;
+        if (!((com.tencent.mm.plugin.music.cache.a)localObject).FPz.iu(j, i)) {
+          break label1299;
         }
-        i = ((com.tencent.mm.plugin.music.cache.a)localObject).AiD.read(arrayOfByte, j, i);
+        i = ((com.tencent.mm.plugin.music.cache.a)localObject).FPA.b(arrayOfByte, j, i);
         continue;
         if ((this.mTotalSize <= 0L) || (paramLong < this.mTotalSize) || (paramInt2 <= 0)) {
           continue;
@@ -788,17 +788,17 @@ public final class a
           continue;
         }
         seekTo(paramLong);
-        i = this.mInputStream.read(this.Amr, 0, paramInt2);
+        i = this.mInputStream.read(this.FTx, 0, paramInt2);
         if (i != -1) {
           continue;
         }
         paramInt1 = 0;
         this.mCurrentOffset += paramInt1;
-        if (this.Amp == null) {
+        if (this.FTv == null) {
           continue;
         }
-        paramArrayOfByte = this.Amp;
-        localObject = this.Amr;
+        paramArrayOfByte = this.FTv;
+        localObject = this.FTx;
         m = (int)paramLong;
         if ((localObject != null) && (m >= 0) && (paramInt1 >= 0)) {
           continue;
@@ -806,72 +806,72 @@ public final class a
         Log.e("MicroMsg.Music.FileBytesCacheMgr", "write() params is invalid, offset:%d, size:%d", new Object[] { Integer.valueOf(m), Integer.valueOf(paramInt1) });
         AppMethodBeat.o(137433);
         return paramInt1;
-        System.arraycopy(this.Amr, 0, paramArrayOfByte, paramInt1, i);
+        System.arraycopy(this.FTx, 0, paramArrayOfByte, paramInt1, i);
         paramInt1 = i;
         continue;
       }
       catch (NoRouteToHostException paramArrayOfByte)
       {
         Logger.e("MicroMsg.Music.MMMediaHTTPConnection", "readAt " + paramLong + " / " + paramInt2 + " => " + paramArrayOfByte);
-        g.eU(this.Amq.toString(), 751);
+        g.fv(this.FTw.toString(), 751);
         teardownConnection();
         AppMethodBeat.o(137433);
         return -1010;
-        if (paramArrayOfByte.AiB.getSize() > 0L) {
+        if (paramArrayOfByte.FPy.getSize() > 0L) {
           continue;
         }
-        Log.e("MicroMsg.Music.FileBytesCacheMgr", "write() fileLength is error, file length is " + paramArrayOfByte.AiB.getSize());
+        Log.e("MicroMsg.Music.FileBytesCacheMgr", "write() fileLength is error, file length is " + paramArrayOfByte.FPy.getSize());
         continue;
       }
       catch (UnknownServiceException paramArrayOfByte)
       {
         Logger.e("MicroMsg.Music.MMMediaHTTPConnection", "readAt " + paramLong + " / " + paramInt2 + " => " + paramArrayOfByte);
-        g.eU(this.Amq.toString(), 752);
+        g.fv(this.FTw.toString(), 752);
         teardownConnection();
         AppMethodBeat.o(137433);
         return -1010;
         i = m + paramInt1;
         long l = i;
-        if (l <= paramArrayOfByte.AiB.getSize()) {
+        if (l <= paramArrayOfByte.FPy.getSize()) {
           continue;
         }
-        Log.e("MicroMsg.Music.FileBytesCacheMgr", "write() endOffset is error, endOffset:%d, file length:%d", new Object[] { Integer.valueOf(i), Long.valueOf(paramArrayOfByte.AiB.getSize()) });
+        Log.e("MicroMsg.Music.FileBytesCacheMgr", "write() endOffset is error, endOffset:%d, file length:%d", new Object[] { Integer.valueOf(i), Long.valueOf(paramArrayOfByte.FPy.getSize()) });
         continue;
       }
       catch (IOException paramArrayOfByte)
       {
         Logger.e("MicroMsg.Music.MMMediaHTTPConnection", "readAt " + paramLong + " / " + paramInt2 + " => -1 " + paramArrayOfByte);
-        g.eU(this.Amq.toString(), 753);
+        g.fv(this.FTw.toString(), 753);
         teardownConnection();
         AppMethodBeat.o(137433);
         return -1;
-        if ((!paramArrayOfByte.SB(m)) || (!paramArrayOfByte.SB(i))) {
-          break label1158;
+        if ((!paramArrayOfByte.YY(m)) || (!paramArrayOfByte.YY(i))) {
+          break label1171;
         }
-        if ((paramArrayOfByte.SC(m)) && (paramArrayOfByte.SC(i))) {
+        if ((paramArrayOfByte.YZ(m)) && (paramArrayOfByte.YZ(i))) {
           continue;
         }
-        if (!paramArrayOfByte.SC(m)) {
-          break label1134;
+        if (!paramArrayOfByte.YZ(m)) {
+          break label1147;
         }
-        paramArrayOfByte.J((byte[])localObject, m, paramInt1);
+        paramArrayOfByte.L((byte[])localObject, m, paramInt1);
         if (paramArrayOfByte.mSize != 81920) {
           continue;
         }
-        paramArrayOfByte.etB();
-        paramArrayOfByte.SD(i);
-        if (i != paramArrayOfByte.AiB.getSize()) {
+        paramArrayOfByte.fdO();
+        paramArrayOfByte.Za(i);
+        if (i != paramArrayOfByte.FPy.getSize()) {
           continue;
         }
-        paramArrayOfByte.etB();
-        paramArrayOfByte.SD(i);
+        paramArrayOfByte.fdO();
+        paramArrayOfByte.Za(i);
         continue;
       }
       catch (Exception paramArrayOfByte)
       {
         Logger.e("MicroMsg.Music.MMMediaHTTPConnection", "unknown exception ".concat(String.valueOf(paramArrayOfByte)));
         Logger.e("MicroMsg.Music.MMMediaHTTPConnection", "readAt " + paramLong + " / " + paramInt2 + " => -1");
-        g.eU(this.Amq.toString(), 754);
+        g.fv(this.FTw.toString(), 754);
         teardownConnection();
         AppMethodBeat.o(137433);
         return -1;
@@ -881,46 +881,45 @@ public final class a
         if (i != paramInt2) {
           Logger.i("MicroMsg.Music.MMMediaHTTPConnection", "read from cache, n%d, size %d " + i + "," + paramInt2);
         }
-        System.arraycopy(this.Amr, 0, paramArrayOfByte, paramInt1, i);
+        System.arraycopy(this.FTx, 0, paramArrayOfByte, paramInt1, i);
         AppMethodBeat.o(137433);
         return i;
-        if (((com.tencent.mm.plugin.music.cache.a)localObject).AiB.getSize() <= 0L)
+        if (((com.tencent.mm.plugin.music.cache.a)localObject).FPy.getSize() <= 0L)
         {
-          Log.e("MicroMsg.Music.FileBytesCacheMgr", "read(), fileLength is error, file length is " + ((com.tencent.mm.plugin.music.cache.a)localObject).AiB.getSize());
-          break label1286;
+          Log.e("MicroMsg.Music.FileBytesCacheMgr", "read(), fileLength is error, file length is " + ((com.tencent.mm.plugin.music.cache.a)localObject).FPy.getSize());
+          break label1299;
         }
       }
       int m;
-      label1134:
-      paramArrayOfByte.etB();
-      paramArrayOfByte.SD(m);
-      paramArrayOfByte.J((byte[])localObject, m, paramInt1);
+      label1147:
+      paramArrayOfByte.fdO();
+      paramArrayOfByte.Za(m);
+      paramArrayOfByte.L((byte[])localObject, m, paramInt1);
       continue;
-      label1158:
-      if ((paramArrayOfByte.SB(m)) && (!paramArrayOfByte.SB(i)) && (paramArrayOfByte.SC(m)))
+      label1171:
+      if ((paramArrayOfByte.YY(m)) && (!paramArrayOfByte.YY(i)) && (paramArrayOfByte.YZ(m)))
       {
         j = 81920 - paramArrayOfByte.mSize;
         int k = paramInt1 - j;
         if (j > 0) {
-          paramArrayOfByte.J((byte[])localObject, m, j);
+          paramArrayOfByte.L((byte[])localObject, m, j);
         }
-        paramArrayOfByte.etB();
+        paramArrayOfByte.fdO();
         m += j;
-        paramArrayOfByte.SD(m);
+        paramArrayOfByte.Za(m);
         if (k > 0) {
           paramArrayOfByte.h((byte[])localObject, j, m, k);
         }
       }
       else
       {
-        paramArrayOfByte.etB();
-        paramArrayOfByte.SD(m);
-        paramArrayOfByte.J((byte[])localObject, m, paramInt1);
+        paramArrayOfByte.fdO();
+        paramArrayOfByte.Za(m);
+        paramArrayOfByte.L((byte[])localObject, m, paramInt1);
         continue;
-        label1279:
         i = paramInt2;
         continue;
-        label1286:
+        label1299:
         i = -1;
       }
     }
@@ -928,7 +927,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.music.g.a.a
  * JD-Core Version:    0.7.0.1
  */

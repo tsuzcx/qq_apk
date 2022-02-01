@@ -8,19 +8,19 @@ import java.util.HashMap;
 final class a$a
   implements c
 {
-  private HashMap<String, Boolean> Amg;
+  private HashMap<String, Boolean> FTn;
   
   private a$a()
   {
     AppMethodBeat.i(137394);
-    this.Amg = new HashMap();
+    this.FTn = new HashMap();
     AppMethodBeat.o(137394);
   }
   
-  public final boolean aHU(String paramString)
+  public final boolean aSk(String paramString)
   {
     AppMethodBeat.i(137397);
-    if (this.Amg.containsKey(paramString))
+    if (this.FTn.containsKey(paramString))
     {
       AppMethodBeat.o(137397);
       return true;
@@ -54,13 +54,13 @@ final class a$a
       AppMethodBeat.o(137395);
       return false;
     }
-    if ((this.Amg.containsKey(paramString)) && (((Boolean)this.Amg.get(paramString)).booleanValue()))
+    if ((this.FTn.containsKey(paramString)) && (((Boolean)this.FTn.get(paramString)).booleanValue()))
     {
       Log.e("MicroMsg.Audio.AudioPlayerUtils", "LoadLibrary lib_name %s is loaded", new Object[] { paramString });
       AppMethodBeat.o(137395);
       return true;
     }
-    this.Amg.put(paramString, Boolean.TRUE);
+    this.FTn.put(paramString, Boolean.TRUE);
     System.loadLibrary(paramString);
     AppMethodBeat.o(137395);
     return true;

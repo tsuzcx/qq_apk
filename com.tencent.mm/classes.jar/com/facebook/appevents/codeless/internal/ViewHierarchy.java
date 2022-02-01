@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
-import android.support.v4.view.j;
 import android.util.Base64;
 import android.view.View;
 import android.view.View.AccessibilityDelegate;
@@ -24,6 +23,7 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import androidx.core.g.k;
 import com.facebook.internal.Utility;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.ByteArrayOutputStream;
@@ -449,7 +449,7 @@ public class ViewHierarchy
   {
     AppMethodBeat.i(17560);
     paramView = paramView.getParent();
-    if ((paramView != null) && (((paramView instanceof AdapterView)) || ((paramView instanceof j))))
+    if ((paramView != null) && (((paramView instanceof AdapterView)) || ((paramView instanceof k))))
     {
       AppMethodBeat.o(17560);
       return true;
@@ -594,7 +594,7 @@ public class ViewHierarchy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.facebook.appevents.codeless.internal.ViewHierarchy
  * JD-Core Version:    0.7.0.1
  */

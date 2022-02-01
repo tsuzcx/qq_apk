@@ -1,49 +1,85 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
+import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/ChildHandleNode;", "Lkotlinx/coroutines/JobCancellingNode;", "Lkotlinx/coroutines/JobSupport;", "Lkotlinx/coroutines/ChildHandle;", "parent", "childJob", "Lkotlinx/coroutines/ChildJob;", "(Lkotlinx/coroutines/JobSupport;Lkotlinx/coroutines/ChildJob;)V", "childCancelled", "", "cause", "", "invoke", "", "toString", "", "kotlinx-coroutines-core"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/ChildContinuation;", "Lkotlinx/coroutines/JobCancellingNode;", "Lkotlinx/coroutines/Job;", "parent", "child", "Lkotlinx/coroutines/CancellableContinuationImpl;", "(Lkotlinx/coroutines/Job;Lkotlinx/coroutines/CancellableContinuationImpl;)V", "invoke", "", "cause", "", "toString", "", "kotlinx-coroutines-core"})
 public final class r
-  extends bw<ca>
-  implements q
+  extends ca<by>
 {
-  public final s TTH;
+  public final n<?> abwl;
   
-  public r(ca paramca, s params)
+  public r(by paramby, n<?> paramn)
   {
-    super((bu)paramca);
-    AppMethodBeat.i(118196);
-    this.TTH = params;
-    AppMethodBeat.o(118196);
-  }
-  
-  public final boolean B(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118194);
-    boolean bool = ((ca)this.TUQ).B(paramThrowable);
-    AppMethodBeat.o(118194);
-    return bool;
+    super(paramby);
+    this.abwl = paramn;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(118195);
-    String str = "ChildHandle[" + this.TTH + ']';
-    AppMethodBeat.o(118195);
+    AppMethodBeat.i(118228);
+    String str = "ChildContinuation[" + this.abwl + ']';
+    AppMethodBeat.o(118228);
     return str;
   }
   
   public final void y(Throwable paramThrowable)
   {
-    AppMethodBeat.i(118192);
-    this.TTH.a((ci)this.TUQ);
-    AppMethodBeat.o(118192);
+    AppMethodBeat.i(118226);
+    n localn = this.abwl;
+    Throwable localThrowable = this.abwl.a(this.Gib);
+    int i;
+    if (localn.abwT != 0) {
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i == 0)
+      {
+        localn.A(localThrowable);
+        localn.iQR();
+      }
+      AppMethodBeat.o(118226);
+      return;
+      Object localObject = localn.aaAx;
+      paramThrowable = (Throwable)localObject;
+      if (!(localObject instanceof ax)) {
+        paramThrowable = null;
+      }
+      paramThrowable = (ax)paramThrowable;
+      if (paramThrowable == null)
+      {
+        i = 0;
+      }
+      else
+      {
+        do
+        {
+          do
+          {
+            localObject = paramThrowable._reusableCancellableContinuation;
+            if (!p.h(localObject, ay.abwS)) {
+              break;
+            }
+          } while (!ax.abwO.compareAndSet(paramThrowable, ay.abwS, localThrowable));
+          i = 1;
+          break;
+          if ((localObject instanceof Throwable))
+          {
+            i = 1;
+            break;
+          }
+        } while (!ax.abwO.compareAndSet(paramThrowable, localObject, null));
+        i = 0;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlinx.coroutines.r
  * JD-Core Version:    0.7.0.1
  */

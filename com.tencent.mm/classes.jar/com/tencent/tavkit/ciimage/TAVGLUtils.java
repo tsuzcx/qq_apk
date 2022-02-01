@@ -22,62 +22,62 @@ public class TAVGLUtils
   
   static
   {
-    AppMethodBeat.i(197335);
+    AppMethodBeat.i(211216);
     TAV_DEBUG_IMAGE_DIR = Environment.getExternalStorageDirectory().getPath() + "/TAV调试图片";
-    AppMethodBeat.o(197335);
+    AppMethodBeat.o(211216);
   }
   
   private static TextureInfo checkTextureInfo(TextureInfo paramTextureInfo)
   {
-    AppMethodBeat.i(197329);
+    AppMethodBeat.i(211208);
     if (paramTextureInfo.textureType == 3553)
     {
-      AppMethodBeat.o(197329);
+      AppMethodBeat.o(211208);
       return paramTextureInfo;
     }
     TextureInfo localTextureInfo = new TextureInfo(RenderContext.createTexture(3553), 3553, paramTextureInfo.width, paramTextureInfo.height, null, 0);
     TextureFilter localTextureFilter = new TextureFilter();
     localTextureFilter.setOutputTextureInfo(localTextureInfo);
     localTextureFilter.applyFilter(paramTextureInfo, null, paramTextureInfo.getTextureMatrix(), 1.0F, null);
-    AppMethodBeat.o(197329);
+    AppMethodBeat.o(211208);
     return localTextureInfo;
   }
   
   public static File newDebugImageFile(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(197331);
+    AppMethodBeat.i(211210);
     Object localObject = Long.toHexString(System.currentTimeMillis()) + "_id=" + paramInt1 + "_" + paramInt2 + "_" + paramInt3 + ".png";
     File localFile = new File(TAV_DEBUG_IMAGE_DIR);
     if ((!localFile.exists()) && (!localFile.mkdir()))
     {
       localObject = new RuntimeException("mkdir return false, path = " + localFile.getAbsolutePath());
-      AppMethodBeat.o(197331);
+      AppMethodBeat.o(211210);
       throw ((Throwable)localObject);
     }
     localObject = new File(TAV_DEBUG_IMAGE_DIR, (String)localObject);
-    AppMethodBeat.o(197331);
+    AppMethodBeat.o(211210);
     return localObject;
   }
   
   public static Bitmap saveBitmap(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(197325);
+    AppMethodBeat.i(211203);
     Bitmap localBitmap = saveBitmap(paramInt1, 3553, paramInt2, paramInt3);
-    AppMethodBeat.o(197325);
+    AppMethodBeat.o(211203);
     return localBitmap;
   }
   
   public static Bitmap saveBitmap(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(197326);
+    AppMethodBeat.i(211204);
     Bitmap localBitmap = saveBitmap(new TextureInfo(paramInt1, paramInt2, paramInt3, paramInt4, 0));
-    AppMethodBeat.o(197326);
+    AppMethodBeat.o(211204);
     return localBitmap;
   }
   
   public static Bitmap saveBitmap(TextureInfo paramTextureInfo)
   {
-    AppMethodBeat.i(197328);
+    AppMethodBeat.i(211206);
     Object localObject = checkTextureInfo(paramTextureInfo);
     paramTextureInfo = new int[1];
     GLES20.glGenFramebuffers(1, paramTextureInfo, 0);
@@ -92,36 +92,36 @@ public class TAVGLUtils
     ((Bitmap)localObject).copyPixelsFromBuffer(localByteBuffer);
     GLES20.glBindFramebuffer(36160, 0);
     GLES20.glDeleteFramebuffers(1, paramTextureInfo, 0);
-    AppMethodBeat.o(197328);
+    AppMethodBeat.o(211206);
     return localObject;
   }
   
   public static Bitmap saveBitmap(CIImage paramCIImage)
   {
-    AppMethodBeat.i(197327);
+    AppMethodBeat.i(211205);
     TextureInfo localTextureInfo = CIContext.newTextureInfo(paramCIImage.getSize().width, paramCIImage.getSize().height);
     CIImageFilter localCIImageFilter = new CIImageFilter();
     localCIImageFilter.setOutputTextureInfo(localTextureInfo);
     paramCIImage.draw(localCIImageFilter);
     paramCIImage = saveBitmap(localTextureInfo);
-    AppMethodBeat.o(197327);
+    AppMethodBeat.o(211205);
     return paramCIImage;
   }
   
   public static void saveBitmapToFile(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(197333);
+    AppMethodBeat.i(211213);
     saveBitmapToFile(paramBitmap, newDebugImageFile(0, paramBitmap.getWidth(), paramBitmap.getHeight()));
-    AppMethodBeat.o(197333);
+    AppMethodBeat.o(211213);
   }
   
   public static void saveBitmapToFile(Bitmap paramBitmap, File paramFile)
   {
-    AppMethodBeat.i(197334);
+    AppMethodBeat.i(211215);
     if (!paramFile.createNewFile())
     {
       paramBitmap = new RuntimeException("createNewFile return false, path = " + paramFile.getAbsolutePath());
-      AppMethodBeat.o(197334);
+      AppMethodBeat.o(211215);
       throw paramBitmap;
     }
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
@@ -131,26 +131,26 @@ public class TAVGLUtils
     paramFile.write(paramBitmap);
     paramFile.flush();
     paramFile.close();
-    AppMethodBeat.o(197334);
+    AppMethodBeat.o(211215);
   }
   
   public static void saveBitmapToFile(TextureInfo paramTextureInfo)
   {
-    AppMethodBeat.i(197330);
+    AppMethodBeat.i(211209);
     saveBitmapToFile(paramTextureInfo, newDebugImageFile(paramTextureInfo.textureID, paramTextureInfo.width, paramTextureInfo.height));
-    AppMethodBeat.o(197330);
+    AppMethodBeat.o(211209);
   }
   
   public static void saveBitmapToFile(TextureInfo paramTextureInfo, File paramFile)
   {
-    AppMethodBeat.i(197332);
+    AppMethodBeat.i(211211);
     saveBitmapToFile(saveBitmap(paramTextureInfo), paramFile);
-    AppMethodBeat.o(197332);
+    AppMethodBeat.o(211211);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tavkit.ciimage.TAVGLUtils
  * JD-Core Version:    0.7.0.1
  */

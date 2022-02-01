@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.plugin.wallet.pwd.c;
 import com.tencent.mm.plugin.wallet_core.c.d;
 import com.tencent.mm.pluginsdk.wallet.e;
-import com.tencent.mm.protocal.protobuf.dal;
+import com.tencent.mm.protocal.protobuf.djz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
@@ -17,10 +17,10 @@ import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 public class WalletResetPwdAdapterUI
   extends WalletBaseUI
 {
-  protected boolean CqH = false;
-  protected com.tencent.mm.plugin.wallet.a CqI = null;
-  protected String HKR = "";
-  protected String goe = null;
+  protected boolean Iog = false;
+  protected com.tencent.mm.plugin.wallet.a Ioh = null;
+  protected String OCM = "";
+  protected String iSn = null;
   
   public int getLayoutId()
   {
@@ -30,7 +30,7 @@ public class WalletResetPwdAdapterUI
   public void onBackPressed()
   {
     AppMethodBeat.i(69784);
-    if (!this.CqH)
+    if (!this.Iog)
     {
       Log.d("MicroMsg.WalletResetPwdAdapterUI", "back press not lock");
       finish();
@@ -46,8 +46,8 @@ public class WalletResetPwdAdapterUI
     AppMethodBeat.i(69781);
     super.onCreate(paramBundle);
     setContentViewVisibility(8);
-    this.HKR = getIntent().getStringExtra("reset_pwd_token");
-    Log.i("MicroMsg.WalletResetPwdAdapterUI", "token_by_resetPwd %s", new Object[] { this.HKR });
+    this.OCM = getIntent().getStringExtra("reset_pwd_token");
+    Log.i("MicroMsg.WalletResetPwdAdapterUI", "token_by_resetPwd %s", new Object[] { this.OCM });
     addSceneEndListener(580);
     if (getIntent() == null)
     {
@@ -102,14 +102,14 @@ public class WalletResetPwdAdapterUI
     {
       if ((paramq instanceof d))
       {
-        e.bfP(((d)paramq).fPP());
+        e.bsi(((d)paramq).gIv());
         paramString = new Bundle();
-        paramString.putString("kreq_token", this.HKR);
-        paramq = ((d)paramq).fPQ();
+        paramString.putString("kreq_token", this.OCM);
+        paramq = ((d)paramq).gIw();
         if (paramq != null)
         {
           paramString.putString("key_pwd_title", paramq.title);
-          paramString.putString("key_pwd_desc", paramq.MFO);
+          paramString.putString("key_pwd_desc", paramq.TRA);
         }
         com.tencent.mm.wallet_core.a.a(this, c.class, paramString, null);
         AppMethodBeat.o(69785);
@@ -119,7 +119,7 @@ public class WalletResetPwdAdapterUI
     else
     {
       setResult(-1000);
-      h.cD(this, paramString);
+      h.cO(this, paramString);
       finish();
       AppMethodBeat.o(69785);
       return true;
@@ -136,7 +136,7 @@ public class WalletResetPwdAdapterUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletResetPwdAdapterUI
  * JD-Core Version:    0.7.0.1
  */

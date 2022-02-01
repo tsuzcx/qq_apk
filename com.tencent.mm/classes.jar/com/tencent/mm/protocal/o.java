@@ -9,22 +9,22 @@ import java.util.List;
 
 public final class o
 {
+  public String Ejj = "";
   public String host = "";
   private int port = 80;
   private int type = 0;
-  public String yFq = "";
   
   public o() {}
   
   public o(int paramInt1, String paramString1, int paramInt2, String paramString2)
   {
     this.type = paramInt1;
-    this.yFq = paramString1;
+    this.Ejj = paramString1;
     this.port = paramInt2;
     this.host = paramString2;
   }
   
-  private static o bgc(String paramString)
+  private static o bsu(String paramString)
   {
     AppMethodBeat.i(133103);
     paramString = paramString.split(",");
@@ -37,7 +37,7 @@ public final class o
     try
     {
       localo.type = Util.getInt(paramString[0], 0);
-      localo.yFq = Util.nullAsNil(paramString[1]);
+      localo.Ejj = Util.nullAsNil(paramString[1]);
       localo.port = Util.getInt(paramString[2], 0);
       localo.host = Util.nullAsNil(paramString[3]);
       AppMethodBeat.o(133103);
@@ -51,7 +51,7 @@ public final class o
     return null;
   }
   
-  public static List<o> bgd(String paramString)
+  public static List<o> bsv(String paramString)
   {
     AppMethodBeat.i(133105);
     localLinkedList = new LinkedList();
@@ -67,7 +67,7 @@ public final class o
       int i = 0;
       while (i < j)
       {
-        o localo = bgc(arrayOfString[i]);
+        o localo = bsu(arrayOfString[i]);
         if (localo != null) {
           localLinkedList.add(localo);
         }
@@ -83,7 +83,7 @@ public final class o
     }
   }
   
-  public static String iz(List<o> paramList)
+  public static String jr(List<o> paramList)
   {
     AppMethodBeat.i(133104);
     Iterator localIterator = paramList.iterator();
@@ -95,7 +95,7 @@ public final class o
     return paramList;
   }
   
-  public static a mJ(String paramString1, String paramString2)
+  public static a nA(String paramString1, String paramString2)
   {
     AppMethodBeat.i(133106);
     Log.d("MicroMsg.MMBuiltInIP", "parsing network control params:");
@@ -124,29 +124,29 @@ public final class o
   public final String toString()
   {
     AppMethodBeat.i(133102);
-    String str = this.type + "," + this.yFq + "," + this.port + "," + this.host;
+    String str = this.type + "," + this.Ejj + "," + this.port + "," + this.host;
     AppMethodBeat.o(133102);
     return str;
   }
   
   public static final class a
   {
-    public final int[] KzK = null;
-    public final int[] KzL;
-    public final int KzM;
-    public final int KzN;
+    public final int[] RBA = null;
+    public final int[] RBB;
+    public final int RBC;
+    public final int RBD;
     
     public a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
     {
-      this.KzL = paramArrayOfInt;
-      this.KzM = paramInt1;
-      this.KzN = paramInt2;
+      this.RBB = paramArrayOfInt;
+      this.RBC = paramInt1;
+      this.RBD = paramInt2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.o
  * JD-Core Version:    0.7.0.1
  */

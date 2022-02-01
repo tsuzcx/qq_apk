@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="21.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="16.0dip">
+        <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/FG_0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jyt" android:layout_alignParentLeft="true" />
+        <TextView android:textSize="15.0sp" android:textColor="@color/FG_1" android:id="@id/krj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jys" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <com.tencent.mm.plugin.game.ui.chat_tab.GameHotMsgView android:id="@id/kpu" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:overScrollMode="always" />
+    <View android:background="@color/a" android:layout_width="fill_parent" android:layout_height="8.0dip" />
+</LinearLayout>

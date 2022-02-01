@@ -10,29 +10,29 @@ import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
 import com.tencent.mm.plugin.appbrand.config.b;
 import kotlin.g.b.p;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalConfigAssembler;", "", "()V", "assembleAppConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandAppConfig;", "runtime", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "assembleSysConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC;", "plugin-appbrand-integration_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalConfigAssembler;", "", "()V", "assembleAppConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandAppConfig;", "runtime", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "assembleSysConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandSysConfigWC;", "plugin-appbrand-integration_release"})
 public final class f
 {
-  public static final f nau;
+  public static final f qaJ;
   
   static
   {
     AppMethodBeat.i(50866);
-    nau = new f();
+    qaJ = new f();
     AppMethodBeat.o(50866);
   }
   
   public static final AppBrandSysConfigWC a(l paraml)
   {
     AppMethodBeat.i(50864);
-    p.h(paraml, "runtime");
-    AppBrandSysConfigWC localAppBrandSysConfigWC = (AppBrandSysConfigWC)XIPCInvoker.a(MainProcessIPCService.dkO, new IPCString(paraml.getAppId()), n.class);
+    p.k(paraml, "runtime");
+    AppBrandSysConfigWC localAppBrandSysConfigWC = (AppBrandSysConfigWC)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCString(paraml.getAppId()), n.class);
     if (localAppBrandSysConfigWC != null)
     {
-      localAppBrandSysConfigWC.leE = new WxaPkgWrappingInfo();
-      localAppBrandSysConfigWC.leE.kNW = paraml.bsC().eix;
-      localAppBrandSysConfigWC.leE.pkgVersion = paraml.bsC().appVersion;
-      localAppBrandSysConfigWC.leE.kNY = true;
+      localAppBrandSysConfigWC.nYR = new WxaPkgWrappingInfo();
+      localAppBrandSysConfigWC.nYR.nHY = paraml.bDy().cBI;
+      localAppBrandSysConfigWC.nYR.pkgVersion = paraml.bDy().appVersion;
+      localAppBrandSysConfigWC.nYR.nIa = true;
       AppMethodBeat.o(50864);
       return localAppBrandSysConfigWC;
     }
@@ -43,17 +43,17 @@ public final class f
   public static final b b(l paraml)
   {
     AppMethodBeat.i(50865);
-    p.h(paraml, "runtime");
-    b localb = b.cS(paraml.getAppId(), "{}");
-    localb.lcc = paraml.bsC().kHw;
-    p.g(localb, "AppBrandAppConfig.parse(…onfig.enterPath\n        }");
+    p.k(paraml, "runtime");
+    b localb = b.db(paraml.getAppId(), "{}");
+    localb.nWl = paraml.bDy().nBq;
+    p.j(localb, "AppBrandAppConfig.parse(…onfig.enterPath\n        }");
     AppMethodBeat.o(50865);
     return localb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.f
  * JD-Core Version:    0.7.0.1
  */

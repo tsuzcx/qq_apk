@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.shake.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.cd.b;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.shake.b.d;
 import com.tencent.mm.plugin.shake.b.e;
 import com.tencent.mm.plugin.shake.b.l.a;
 import com.tencent.mm.plugin.shake.b.l.b;
 import com.tencent.mm.plugin.shake.b.m;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.dpc;
-import com.tencent.mm.protocal.protobuf.dwz;
+import com.tencent.mm.protocal.protobuf.dyy;
+import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.eha;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.io.IOException;
@@ -20,61 +20,61 @@ import java.util.List;
 public final class j
   extends l.b
 {
-  public static j DiY;
-  public static boolean iCs = false;
-  public a DiX;
+  public static j JoE;
+  public static boolean lsn = false;
+  public a JoD;
   private boolean isActive;
-  private long ofl;
+  private long rgW;
   
   private j(l.a parama)
   {
     super(parama);
     AppMethodBeat.i(28310);
     this.isActive = false;
-    this.DiX = new a();
+    this.JoD = new a();
     AppMethodBeat.o(28310);
   }
   
   public static j a(l.a parama)
   {
     AppMethodBeat.i(28309);
-    if ((DiY == null) || (DiY.DgX == null)) {
-      DiY = new j(parama);
+    if ((JoE == null) || (JoE.JmD == null)) {
+      JoE = new j(parama);
     }
-    parama = DiY;
+    parama = JoE;
     AppMethodBeat.o(28309);
     return parama;
   }
   
-  private void g(List<d> paramList, long paramLong)
+  private void f(List<d> paramList, long paramLong)
   {
     AppMethodBeat.i(28314);
-    if (this.DgX != null) {
-      this.DgX.f(paramList, paramLong);
+    if (this.JmD != null) {
+      this.JmD.e(paramList, paramLong);
     }
     AppMethodBeat.o(28314);
   }
   
-  public final void eTQ()
+  public final void fGS()
   {
     AppMethodBeat.i(28313);
-    this.DiX.ZZ();
-    super.eTQ();
+    this.JoD.aeJ();
+    super.fGS();
     AppMethodBeat.o(28313);
   }
   
   public final void init()
   {
     AppMethodBeat.i(28312);
-    if (!iCs)
+    if (!lsn)
     {
-      if (!this.DiX.eUM())
+      if (!this.JoD.fHN())
       {
         Log.e("Micromsg.ShakeMusicMgr", "init MusicFingerPrintRecorder false");
         AppMethodBeat.o(28312);
         return;
       }
-      iCs = true;
+      lsn = true;
     }
     AppMethodBeat.o(28312);
   }
@@ -88,16 +88,16 @@ public final class j
   public final void start()
   {
     AppMethodBeat.i(28311);
-    if (this.DgX == null)
+    if (this.JmD == null)
     {
       Log.w("Micromsg.ShakeMusicMgr", "shakeGetListener == null");
       AppMethodBeat.o(28311);
       return;
     }
-    this.ofl = System.currentTimeMillis();
-    this.DiX.a(367, new a.a()
+    this.rgW = System.currentTimeMillis();
+    this.JoD.a(f.arZ(), new a.a()
     {
-      public final void b(dpc paramAnonymousdpc, long paramAnonymousLong, boolean paramAnonymousBoolean)
+      public final void b(dyy paramAnonymousdyy, long paramAnonymousLong, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(28308);
         if (j.a(j.this) == null)
@@ -106,8 +106,8 @@ public final class j
           AppMethodBeat.o(28308);
           return;
         }
-        dwz localdwz = (dwz)paramAnonymousdpc;
-        if (localdwz == null)
+        eha localeha = (eha)paramAnonymousdyy;
+        if (localeha == null)
         {
           Log.w("Micromsg.ShakeMusicMgr", "resp null & return");
           j.a(j.this, new ArrayList());
@@ -115,24 +115,24 @@ public final class j
           return;
         }
         Object localObject;
-        if (localdwz.MRg == 1)
+        if (localeha.Udm == 1)
         {
           if (paramAnonymousLong > j.b(j.this))
           {
             paramAnonymousLong = System.currentTimeMillis() - paramAnonymousLong;
-            if ((localdwz == null) || (Util.isNullOrNil(localdwz.MXf))) {
+            if ((localeha == null) || (Util.isNullOrNil(localeha.UjA))) {
               break label458;
             }
-            Log.w("Micromsg.ShakeMusicMgr", "resCallback Type:%d, xml:%s", new Object[] { Integer.valueOf(localdwz.MXe), localdwz.MXf });
-            localObject = localdwz.MXf;
-            paramAnonymousdpc = (dpc)localObject;
+            Log.w("Micromsg.ShakeMusicMgr", "resCallback Type:%d, xml:%s", new Object[] { Integer.valueOf(localeha.Ujz), localeha.UjA });
+            localObject = localeha.UjA;
+            paramAnonymousdyy = (dyy)localObject;
             if (localObject != null) {
-              paramAnonymousdpc = ((String)localObject).trim();
+              paramAnonymousdyy = ((String)localObject).trim();
             }
-            switch (localdwz.MXe)
+            switch (localeha.Ujz)
             {
             default: 
-              Log.w("Micromsg.ShakeMusicMgr", "parse unknown type:" + localdwz.MXe);
+              Log.w("Micromsg.ShakeMusicMgr", "parse unknown type:" + localeha.Ujz);
               j.a(j.this, new ArrayList());
               paramAnonymousBoolean = false;
             }
@@ -142,67 +142,67 @@ public final class j
             if (!paramAnonymousBoolean) {
               break label399;
             }
-            h.CyF.a(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(1), Integer.valueOf((int)(System.currentTimeMillis() - j.b(j.this))) });
-            h.CyF.n(835L, 0L, 1L);
+            h.IzE.a(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(1), Integer.valueOf((int)(System.currentTimeMillis() - j.b(j.this))) });
+            h.IzE.p(835L, 0L, 1L);
             AppMethodBeat.o(28308);
             return;
             paramAnonymousLong = System.currentTimeMillis() - j.b(j.this);
             break;
-            paramAnonymousBoolean = j.a(j.this, paramAnonymousdpc);
+            paramAnonymousBoolean = j.a(j.this, paramAnonymousdyy);
             continue;
-            paramAnonymousBoolean = j.b(j.this, paramAnonymousdpc);
+            paramAnonymousBoolean = j.b(j.this, paramAnonymousdyy);
             continue;
-            paramAnonymousBoolean = j.c(j.this, paramAnonymousdpc);
+            paramAnonymousBoolean = j.c(j.this, paramAnonymousdyy);
             continue;
-            paramAnonymousBoolean = j.d(j.this, paramAnonymousdpc);
+            paramAnonymousBoolean = j.d(j.this, paramAnonymousdyy);
             continue;
-            paramAnonymousBoolean = j.e(j.this, paramAnonymousdpc);
+            paramAnonymousBoolean = j.e(j.this, paramAnonymousdyy);
           }
           label399:
-          h.CyF.a(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(5), Long.valueOf(paramAnonymousLong) });
-          h.CyF.n(835L, 4L, 1L);
+          h.IzE.a(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(5), Long.valueOf(paramAnonymousLong) });
+          h.IzE.p(835L, 4L, 1L);
           AppMethodBeat.o(28308);
           return;
           label458:
           if (paramAnonymousBoolean)
           {
             j.a(j.this, new ArrayList());
-            h.CyF.a(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(4), Integer.valueOf((int)paramAnonymousLong) });
-            h.CyF.n(835L, 3L, 1L);
+            h.IzE.a(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(4), Integer.valueOf((int)paramAnonymousLong) });
+            h.IzE.p(835L, 3L, 1L);
             AppMethodBeat.o(28308);
             return;
           }
           j.a(j.this, new ArrayList());
-          h.CyF.a(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(3), Integer.valueOf((int)paramAnonymousLong) });
-          h.CyF.n(835L, 2L, 1L);
+          h.IzE.a(10987, new Object[] { Integer.valueOf(1), "", Integer.valueOf(3), Integer.valueOf((int)paramAnonymousLong) });
+          h.IzE.p(835L, 2L, 1L);
           AppMethodBeat.o(28308);
           return;
         }
-        paramAnonymousdpc = new ArrayList();
-        if (localdwz != null)
+        paramAnonymousdyy = new ArrayList();
+        if (localeha != null)
         {
           localObject = new d();
-          if ((localdwz.MXa != null) && (localdwz.MXa.getBuffer() != null)) {
-            ((d)localObject).field_username = localdwz.MXa.getBuffer().yO();
+          if ((localeha.Ujv != null) && (localeha.Ujv.Tkb != null)) {
+            ((d)localObject).field_username = localeha.Ujv.Tkb.Ap();
           }
-          if ((localdwz.MWZ != null) && (localdwz.MWZ.getBuffer() != null)) {
-            ((d)localObject).field_nickname = localdwz.MWZ.getBuffer().yO();
+          if ((localeha.Uju != null) && (localeha.Uju.Tkb != null)) {
+            ((d)localObject).field_nickname = localeha.Uju.Tkb.Ap();
           }
-          if ((localdwz.MXa != null) && (localdwz.MXa.getBuffer() != null)) {
-            ((d)localObject).field_distance = localdwz.MXa.getBuffer().yO();
+          if ((localeha.Ujv != null) && (localeha.Ujv.Tkb != null)) {
+            ((d)localObject).field_distance = localeha.Ujv.Tkb.Ap();
           }
-          if ((localdwz.LZX != null) && (localdwz.LZX.getBuffer() != null)) {
-            ((d)localObject).field_sns_bgurl = localdwz.LZX.getBuffer().yO();
+          if ((localeha.Tjq != null) && (localeha.Tjq.Tkb != null)) {
+            ((d)localObject).field_sns_bgurl = localeha.Tjq.Tkb.Ap();
           }
           ((d)localObject).field_type = 4;
           ((d)localObject).field_insertBatch = 1;
         }
         try
         {
-          ((d)localObject).field_lvbuffer = localdwz.toByteArray();
-          m.eUm().a((d)localObject, true);
-          paramAnonymousdpc.add(localObject);
-          j.c(j.this).f(paramAnonymousdpc, paramAnonymousLong);
+          ((d)localObject).field_lvbuffer = localeha.toByteArray();
+          m.fHo().a((d)localObject, true);
+          paramAnonymousdyy.add(localObject);
+          j.c(j.this).e(paramAnonymousdyy, paramAnonymousLong);
           AppMethodBeat.o(28308);
           return;
         }
@@ -220,7 +220,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.d.a.j
  * JD-Core Version:    0.7.0.1
  */

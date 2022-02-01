@@ -3,44 +3,44 @@ package com.tencent.mm.plugin.qqmail.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class av
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
   public int color;
-  public String dQx;
+  public String wording;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(198640);
+    AppMethodBeat.i(249689);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.dQx != null) {
-        paramVarArgs.e(1, this.dQx);
+      if (this.wording != null) {
+        paramVarArgs.f(1, this.wording);
       }
-      paramVarArgs.aM(2, this.color);
-      AppMethodBeat.o(198640);
+      paramVarArgs.aY(2, this.color);
+      AppMethodBeat.o(249689);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.dQx == null) {
+      if (this.wording == null) {
         break label258;
       }
     }
     label258:
-    for (paramInt = g.a.a.b.b.a.f(1, this.dQx) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.g(1, this.wording) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bu(2, this.color);
-      AppMethodBeat.o(198640);
+      int i = g.a.a.b.b.a.bM(2, this.color);
+      AppMethodBeat.o(249689);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(198640);
+        AppMethodBeat.o(249689);
         return 0;
       }
       if (paramInt == 3)
@@ -50,18 +50,18 @@ public final class av
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(198640);
+          AppMethodBeat.o(249689);
           return -1;
         case 1: 
-          localav.dQx = locala.UbS.readString();
-          AppMethodBeat.o(198640);
+          localav.wording = locala.abFh.readString();
+          AppMethodBeat.o(249689);
           return 0;
         }
-        localav.color = locala.UbS.zi();
-        AppMethodBeat.o(198640);
+        localav.color = locala.abFh.AK();
+        AppMethodBeat.o(249689);
         return 0;
       }
-      AppMethodBeat.o(198640);
+      AppMethodBeat.o(249689);
       return -1;
     }
   }

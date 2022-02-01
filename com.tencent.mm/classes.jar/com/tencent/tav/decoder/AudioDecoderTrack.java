@@ -8,6 +8,7 @@ import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.decoder.logger.Logger;
+import com.tencent.tav.report.AverageTimeReporter;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.ShortBuffer;
@@ -25,6 +26,8 @@ public class AudioDecoderTrack
   private AudioDecoder currentDecoder;
   private final Object currentDecoderLock;
   private CMTime currentSegmentStartTime;
+  private boolean decodeError;
+  private Exception decodeException;
   private IDecoder.DecodeType decodeType;
   private AudioDecoderCreateThread decoderCreateThread;
   private final DecoderThread decoderThread;
@@ -46,7 +49,7 @@ public class AudioDecoderTrack
   
   public AudioDecoderTrack()
   {
-    AppMethodBeat.i(218089);
+    AppMethodBeat.i(190091);
     this.preRead = false;
     this.frameDuration = new CMTime(92880L, 1000000);
     this.frameRate = 11;
@@ -65,10 +68,12 @@ public class AudioDecoderTrack
     this.audioMixer = new AudioMixer();
     this.audioInfo = new AudioInfo();
     this.isEmptyFrame = false;
+    this.decodeError = false;
+    this.decodeException = null;
     this._speed = 1.0F;
     this.started = false;
     this.duration = CMTime.CMTimeZero;
-    AppMethodBeat.o(218089);
+    AppMethodBeat.o(190091);
   }
   
   /* Error */
@@ -77,109 +82,109 @@ public class AudioDecoderTrack
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 203
-    //   4: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc 210
+    //   4: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_1
-    //   8: invokevirtual 209	com/tencent/tav/decoder/DecoderTrackSegment:getVideoAsset	()Lcom/tencent/tav/decoder/DecoderAssetTrack;
+    //   8: invokevirtual 216	com/tencent/tav/decoder/DecoderTrackSegment:getVideoAsset	()Lcom/tencent/tav/decoder/DecoderAssetTrack;
     //   11: astore 8
-    //   13: getstatic 71	com/tencent/tav/decoder/AudioDecoderTrack:TAG	Ljava/lang/String;
-    //   16: new 211	java/lang/StringBuilder
+    //   13: getstatic 74	com/tencent/tav/decoder/AudioDecoderTrack:TAG	Ljava/lang/String;
+    //   16: new 218	java/lang/StringBuilder
     //   19: dup
-    //   20: ldc 213
-    //   22: invokespecial 216	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   20: ldc 220
+    //   22: invokespecial 223	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   25: aload 8
-    //   27: getfield 221	com/tencent/tav/decoder/DecoderAssetTrack:assetPath	Ljava/lang/String;
-    //   30: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   33: ldc 227
-    //   35: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   38: invokevirtual 230	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   41: invokestatic 236	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   27: getfield 228	com/tencent/tav/decoder/DecoderAssetTrack:assetPath	Ljava/lang/String;
+    //   30: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: ldc 234
+    //   35: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   41: invokestatic 243	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   44: iconst_5
     //   45: istore_3
     //   46: aconst_null
     //   47: astore 5
     //   49: aload 5
-    //   51: ifnonnull +591 -> 642
+    //   51: ifnonnull +617 -> 668
     //   54: iload_3
-    //   55: ifle +587 -> 642
+    //   55: ifle +613 -> 668
     //   58: iload_3
     //   59: iconst_1
     //   60: isub
     //   61: istore_3
     //   62: aload_0
-    //   63: getfield 126	com/tencent/tav/decoder/AudioDecoderTrack:decoderCreateThread	Lcom/tencent/tav/decoder/AudioDecoderTrack$AudioDecoderCreateThread;
+    //   63: getfield 129	com/tencent/tav/decoder/AudioDecoderTrack:decoderCreateThread	Lcom/tencent/tav/decoder/AudioDecoderTrack$AudioDecoderCreateThread;
     //   66: ifnull +211 -> 277
     //   69: aload_0
-    //   70: getfield 126	com/tencent/tav/decoder/AudioDecoderTrack:decoderCreateThread	Lcom/tencent/tav/decoder/AudioDecoderTrack$AudioDecoderCreateThread;
-    //   73: invokestatic 240	com/tencent/tav/decoder/AudioDecoderTrack$AudioDecoderCreateThread:access$000	(Lcom/tencent/tav/decoder/AudioDecoderTrack$AudioDecoderCreateThread;)I
+    //   70: getfield 129	com/tencent/tav/decoder/AudioDecoderTrack:decoderCreateThread	Lcom/tencent/tav/decoder/AudioDecoderTrack$AudioDecoderCreateThread;
+    //   73: invokestatic 247	com/tencent/tav/decoder/AudioDecoderTrack$AudioDecoderCreateThread:access$000	(Lcom/tencent/tav/decoder/AudioDecoderTrack$AudioDecoderCreateThread;)I
     //   76: istore 4
     //   78: iload 4
     //   80: aload_0
-    //   81: getfield 105	com/tencent/tav/decoder/AudioDecoderTrack:segments	Ljava/util/ArrayList;
-    //   84: invokevirtual 244	java/util/ArrayList:size	()I
+    //   81: getfield 108	com/tencent/tav/decoder/AudioDecoderTrack:segments	Ljava/util/ArrayList;
+    //   84: invokevirtual 251	java/util/ArrayList:size	()I
     //   87: if_icmpge +157 -> 244
     //   90: aload_0
-    //   91: getfield 105	com/tencent/tav/decoder/AudioDecoderTrack:segments	Ljava/util/ArrayList;
+    //   91: getfield 108	com/tencent/tav/decoder/AudioDecoderTrack:segments	Ljava/util/ArrayList;
     //   94: iload 4
-    //   96: invokevirtual 248	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   99: checkcast 205	com/tencent/tav/decoder/DecoderTrackSegment
-    //   102: invokevirtual 209	com/tencent/tav/decoder/DecoderTrackSegment:getVideoAsset	()Lcom/tencent/tav/decoder/DecoderAssetTrack;
+    //   96: invokevirtual 255	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   99: checkcast 212	com/tencent/tav/decoder/DecoderTrackSegment
+    //   102: invokevirtual 216	com/tencent/tav/decoder/DecoderTrackSegment:getVideoAsset	()Lcom/tencent/tav/decoder/DecoderAssetTrack;
     //   105: aload 8
-    //   107: invokestatic 172	com/tencent/tav/decoder/AudioDecoderTrack:isSameExtractor	(Lcom/tencent/tav/decoder/DecoderAssetTrack;Lcom/tencent/tav/decoder/DecoderAssetTrack;)Z
+    //   107: invokestatic 179	com/tencent/tav/decoder/AudioDecoderTrack:isSameExtractor	(Lcom/tencent/tav/decoder/DecoderAssetTrack;Lcom/tencent/tav/decoder/DecoderAssetTrack;)Z
     //   110: ifeq +134 -> 244
     //   113: aload_0
-    //   114: getfield 128	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoderLock	Ljava/lang/Object;
+    //   114: getfield 131	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoderLock	Ljava/lang/Object;
     //   117: astore 6
     //   119: aload 6
     //   121: monitorenter
     //   122: aload_0
-    //   123: getfield 164	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
+    //   123: getfield 171	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
     //   126: ifnull +115 -> 241
     //   129: aload_0
-    //   130: getfield 164	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
-    //   133: getfield 252	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:extractor	Lcom/tencent/tav/decoder/DecoderAssetTrack;
+    //   130: getfield 171	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
+    //   133: getfield 259	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:extractor	Lcom/tencent/tav/decoder/DecoderAssetTrack;
     //   136: aload 8
-    //   138: invokestatic 172	com/tencent/tav/decoder/AudioDecoderTrack:isSameExtractor	(Lcom/tencent/tav/decoder/DecoderAssetTrack;Lcom/tencent/tav/decoder/DecoderAssetTrack;)Z
+    //   138: invokestatic 179	com/tencent/tav/decoder/AudioDecoderTrack:isSameExtractor	(Lcom/tencent/tav/decoder/DecoderAssetTrack;Lcom/tencent/tav/decoder/DecoderAssetTrack;)Z
     //   141: ifeq +100 -> 241
     //   144: aload_0
-    //   145: getfield 164	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
-    //   148: getfield 256	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:decoder	Lcom/tencent/tav/decoder/IDecoder;
+    //   145: getfield 171	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
+    //   148: getfield 263	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:decoder	Lcom/tencent/tav/decoder/IDecoder;
     //   151: ifnull +90 -> 241
     //   154: aload_0
-    //   155: getfield 164	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
-    //   158: getfield 256	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:decoder	Lcom/tencent/tav/decoder/IDecoder;
+    //   155: getfield 171	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
+    //   158: getfield 263	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:decoder	Lcom/tencent/tav/decoder/IDecoder;
     //   161: astore_2
     //   162: aload_0
-    //   163: getfield 105	com/tencent/tav/decoder/AudioDecoderTrack:segments	Ljava/util/ArrayList;
+    //   163: getfield 108	com/tencent/tav/decoder/AudioDecoderTrack:segments	Ljava/util/ArrayList;
     //   166: aload_0
-    //   167: getfield 164	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
-    //   170: getfield 257	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:segmentIndex	I
-    //   173: invokevirtual 248	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   167: getfield 171	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
+    //   170: getfield 264	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:segmentIndex	I
+    //   173: invokevirtual 255	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   176: aload_1
     //   177: if_acmpeq +17 -> 194
     //   180: aload_2
     //   181: aload_1
-    //   182: invokevirtual 261	com/tencent/tav/decoder/DecoderTrackSegment:getTimeRange	()Lcom/tencent/tav/coremedia/CMTimeRange;
+    //   182: invokevirtual 268	com/tencent/tav/decoder/DecoderTrackSegment:getTimeRange	()Lcom/tencent/tav/coremedia/CMTimeRange;
     //   185: aload_1
-    //   186: invokevirtual 265	com/tencent/tav/decoder/DecoderTrackSegment:getDecoderStartTime	()Lcom/tencent/tav/coremedia/CMTime;
-    //   189: invokeinterface 271 3 0
+    //   186: invokevirtual 272	com/tencent/tav/decoder/DecoderTrackSegment:getDecoderStartTime	()Lcom/tencent/tav/coremedia/CMTime;
+    //   189: invokeinterface 278 3 0
     //   194: aload_0
     //   195: aconst_null
-    //   196: putfield 164	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
-    //   199: getstatic 71	com/tencent/tav/decoder/AudioDecoderTrack:TAG	Ljava/lang/String;
-    //   202: new 211	java/lang/StringBuilder
+    //   196: putfield 171	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
+    //   199: getstatic 74	com/tencent/tav/decoder/AudioDecoderTrack:TAG	Ljava/lang/String;
+    //   202: new 218	java/lang/StringBuilder
     //   205: dup
-    //   206: ldc_w 273
-    //   209: invokespecial 216	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   206: ldc_w 280
+    //   209: invokespecial 223	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   212: aload_2
-    //   213: invokeinterface 276 1 0
-    //   218: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   221: invokevirtual 230	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   224: invokestatic 236	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   213: invokeinterface 283 1 0
+    //   218: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   221: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   224: invokestatic 243	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   227: aload 6
     //   229: monitorexit
-    //   230: ldc 203
-    //   232: invokestatic 158	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   230: ldc 210
+    //   232: invokestatic 165	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   235: aload_2
     //   236: astore_1
     //   237: aload_0
@@ -189,18 +194,18 @@ public class AudioDecoderTrack
     //   241: aload 6
     //   243: monitorexit
     //   244: aload_1
-    //   245: invokevirtual 261	com/tencent/tav/decoder/DecoderTrackSegment:getTimeRange	()Lcom/tencent/tav/coremedia/CMTimeRange;
+    //   245: invokevirtual 268	com/tencent/tav/decoder/DecoderTrackSegment:getTimeRange	()Lcom/tencent/tav/coremedia/CMTimeRange;
     //   248: ifnonnull +258 -> 506
-    //   251: ldc 203
-    //   253: invokestatic 158	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   251: ldc 210
+    //   253: invokestatic 165	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   256: aconst_null
     //   257: astore_1
     //   258: goto -21 -> 237
     //   261: astore_1
     //   262: aload 6
     //   264: monitorexit
-    //   265: ldc 203
-    //   267: invokestatic 158	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   265: ldc 210
+    //   267: invokestatic 165	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   270: aload_1
     //   271: athrow
     //   272: astore_1
@@ -208,92 +213,92 @@ public class AudioDecoderTrack
     //   274: monitorexit
     //   275: aload_1
     //   276: athrow
-    //   277: getstatic 71	com/tencent/tav/decoder/AudioDecoderTrack:TAG	Ljava/lang/String;
-    //   280: new 211	java/lang/StringBuilder
+    //   277: getstatic 74	com/tencent/tav/decoder/AudioDecoderTrack:TAG	Ljava/lang/String;
+    //   280: new 218	java/lang/StringBuilder
     //   283: dup
-    //   284: ldc_w 278
-    //   287: invokespecial 216	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   284: ldc_w 285
+    //   287: invokespecial 223	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   290: aload 8
-    //   292: getfield 221	com/tencent/tav/decoder/DecoderAssetTrack:assetPath	Ljava/lang/String;
-    //   295: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   298: invokevirtual 230	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   301: invokestatic 236	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   292: getfield 228	com/tencent/tav/decoder/DecoderAssetTrack:assetPath	Ljava/lang/String;
+    //   295: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   298: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   301: invokestatic 243	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   304: aload_0
-    //   305: getfield 164	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
+    //   305: getfield 171	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
     //   308: ifnull -64 -> 244
     //   311: aload_0
-    //   312: getfield 164	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
-    //   315: getfield 252	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:extractor	Lcom/tencent/tav/decoder/DecoderAssetTrack;
+    //   312: getfield 171	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
+    //   315: getfield 259	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:extractor	Lcom/tencent/tav/decoder/DecoderAssetTrack;
     //   318: aload 8
-    //   320: invokestatic 172	com/tencent/tav/decoder/AudioDecoderTrack:isSameExtractor	(Lcom/tencent/tav/decoder/DecoderAssetTrack;Lcom/tencent/tav/decoder/DecoderAssetTrack;)Z
+    //   320: invokestatic 179	com/tencent/tav/decoder/AudioDecoderTrack:isSameExtractor	(Lcom/tencent/tav/decoder/DecoderAssetTrack;Lcom/tencent/tav/decoder/DecoderAssetTrack;)Z
     //   323: ifeq -79 -> 244
     //   326: aload_0
-    //   327: getfield 164	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
-    //   330: getfield 256	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:decoder	Lcom/tencent/tav/decoder/IDecoder;
+    //   327: getfield 171	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
+    //   330: getfield 263	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:decoder	Lcom/tencent/tav/decoder/IDecoder;
     //   333: ifnull -89 -> 244
     //   336: aload_0
-    //   337: getfield 128	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoderLock	Ljava/lang/Object;
+    //   337: getfield 131	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoderLock	Ljava/lang/Object;
     //   340: astore 6
     //   342: aload 6
     //   344: monitorenter
     //   345: aload_0
-    //   346: getfield 164	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
+    //   346: getfield 171	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
     //   349: ifnull +140 -> 489
     //   352: aload_0
-    //   353: getfield 164	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
-    //   356: getfield 252	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:extractor	Lcom/tencent/tav/decoder/DecoderAssetTrack;
+    //   353: getfield 171	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
+    //   356: getfield 259	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:extractor	Lcom/tencent/tav/decoder/DecoderAssetTrack;
     //   359: aload 8
     //   361: if_acmpne +128 -> 489
     //   364: aload_0
-    //   365: getfield 164	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
-    //   368: getfield 256	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:decoder	Lcom/tencent/tav/decoder/IDecoder;
+    //   365: getfield 171	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
+    //   368: getfield 263	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:decoder	Lcom/tencent/tav/decoder/IDecoder;
     //   371: ifnull +118 -> 489
     //   374: aload_0
-    //   375: getfield 164	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
-    //   378: getfield 256	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:decoder	Lcom/tencent/tav/decoder/IDecoder;
+    //   375: getfield 171	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
+    //   378: getfield 263	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:decoder	Lcom/tencent/tav/decoder/IDecoder;
     //   381: astore_2
     //   382: aload_0
-    //   383: getfield 105	com/tencent/tav/decoder/AudioDecoderTrack:segments	Ljava/util/ArrayList;
+    //   383: getfield 108	com/tencent/tav/decoder/AudioDecoderTrack:segments	Ljava/util/ArrayList;
     //   386: aload_0
-    //   387: getfield 164	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
-    //   390: getfield 257	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:segmentIndex	I
-    //   393: invokevirtual 248	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   387: getfield 171	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
+    //   390: getfield 264	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:segmentIndex	I
+    //   393: invokevirtual 255	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   396: aload_1
     //   397: if_acmpeq +17 -> 414
     //   400: aload_2
     //   401: aload_1
-    //   402: invokevirtual 261	com/tencent/tav/decoder/DecoderTrackSegment:getTimeRange	()Lcom/tencent/tav/coremedia/CMTimeRange;
+    //   402: invokevirtual 268	com/tencent/tav/decoder/DecoderTrackSegment:getTimeRange	()Lcom/tencent/tav/coremedia/CMTimeRange;
     //   405: aload_1
-    //   406: invokevirtual 265	com/tencent/tav/decoder/DecoderTrackSegment:getDecoderStartTime	()Lcom/tencent/tav/coremedia/CMTime;
-    //   409: invokeinterface 271 3 0
-    //   414: getstatic 71	com/tencent/tav/decoder/AudioDecoderTrack:TAG	Ljava/lang/String;
-    //   417: new 211	java/lang/StringBuilder
+    //   406: invokevirtual 272	com/tencent/tav/decoder/DecoderTrackSegment:getDecoderStartTime	()Lcom/tencent/tav/coremedia/CMTime;
+    //   409: invokeinterface 278 3 0
+    //   414: getstatic 74	com/tencent/tav/decoder/AudioDecoderTrack:TAG	Ljava/lang/String;
+    //   417: new 218	java/lang/StringBuilder
     //   420: dup
-    //   421: ldc_w 273
-    //   424: invokespecial 216	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   421: ldc_w 280
+    //   424: invokespecial 223	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   427: aload_2
-    //   428: invokeinterface 276 1 0
-    //   433: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   436: ldc_w 280
-    //   439: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   428: invokeinterface 283 1 0
+    //   433: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   436: ldc_w 287
+    //   439: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   442: aload_0
-    //   443: getfield 114	com/tencent/tav/decoder/AudioDecoderTrack:segmentIndex	I
-    //   446: invokevirtual 283	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   449: ldc_w 285
-    //   452: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   443: getfield 117	com/tencent/tav/decoder/AudioDecoderTrack:segmentIndex	I
+    //   446: invokevirtual 290	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   449: ldc_w 292
+    //   452: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   455: aload_0
-    //   456: getfield 164	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
-    //   459: getfield 257	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:segmentIndex	I
-    //   462: invokevirtual 283	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   465: invokevirtual 230	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   468: invokestatic 236	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   456: getfield 171	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
+    //   459: getfield 264	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:segmentIndex	I
+    //   462: invokevirtual 290	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   465: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   468: invokestatic 243	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   471: aload_0
     //   472: aconst_null
-    //   473: putfield 164	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
+    //   473: putfield 171	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
     //   476: aload 6
     //   478: monitorexit
-    //   479: ldc 203
-    //   481: invokestatic 158	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   479: ldc 210
+    //   481: invokestatic 165	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   484: aload_2
     //   485: astore_1
     //   486: goto -249 -> 237
@@ -303,31 +308,31 @@ public class AudioDecoderTrack
     //   495: astore_1
     //   496: aload 6
     //   498: monitorexit
-    //   499: ldc 203
-    //   501: invokestatic 158	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   499: ldc 210
+    //   501: invokestatic 165	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   504: aload_1
     //   505: athrow
-    //   506: new 287	com/tencent/tav/decoder/AudioDecoder
+    //   506: new 294	com/tencent/tav/decoder/AudioDecoder
     //   509: dup
     //   510: aload 8
-    //   512: getfield 221	com/tencent/tav/decoder/DecoderAssetTrack:assetPath	Ljava/lang/String;
-    //   515: invokespecial 288	com/tencent/tav/decoder/AudioDecoder:<init>	(Ljava/lang/String;)V
+    //   512: getfield 228	com/tencent/tav/decoder/DecoderAssetTrack:assetPath	Ljava/lang/String;
+    //   515: invokespecial 295	com/tencent/tav/decoder/AudioDecoder:<init>	(Ljava/lang/String;)V
     //   518: astore 6
     //   520: aload 6
     //   522: aload_1
-    //   523: invokevirtual 261	com/tencent/tav/decoder/DecoderTrackSegment:getTimeRange	()Lcom/tencent/tav/coremedia/CMTimeRange;
+    //   523: invokevirtual 268	com/tencent/tav/decoder/DecoderTrackSegment:getTimeRange	()Lcom/tencent/tav/coremedia/CMTimeRange;
     //   526: aload_2
-    //   527: invokeinterface 271 3 0
-    //   532: getstatic 71	com/tencent/tav/decoder/AudioDecoderTrack:TAG	Ljava/lang/String;
-    //   535: new 211	java/lang/StringBuilder
+    //   527: invokeinterface 278 3 0
+    //   532: getstatic 74	com/tencent/tav/decoder/AudioDecoderTrack:TAG	Ljava/lang/String;
+    //   535: new 218	java/lang/StringBuilder
     //   538: dup
-    //   539: ldc_w 290
-    //   542: invokespecial 216	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   539: ldc_w 297
+    //   542: invokespecial 223	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   545: aload 8
-    //   547: getfield 221	com/tencent/tav/decoder/DecoderAssetTrack:assetPath	Ljava/lang/String;
-    //   550: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   553: invokevirtual 230	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   556: invokestatic 236	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   547: getfield 228	com/tencent/tav/decoder/DecoderAssetTrack:assetPath	Ljava/lang/String;
+    //   550: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   553: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   556: invokestatic 243	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   559: aload 6
     //   561: astore 5
     //   563: goto -514 -> 49
@@ -336,82 +341,96 @@ public class AudioDecoderTrack
     //   570: astore 5
     //   572: aload 7
     //   574: astore 6
-    //   576: getstatic 71	com/tencent/tav/decoder/AudioDecoderTrack:TAG	Ljava/lang/String;
-    //   579: new 211	java/lang/StringBuilder
+    //   576: getstatic 74	com/tencent/tav/decoder/AudioDecoderTrack:TAG	Ljava/lang/String;
+    //   579: new 218	java/lang/StringBuilder
     //   582: dup
-    //   583: ldc_w 292
-    //   586: invokespecial 216	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   583: ldc_w 299
+    //   586: invokespecial 223	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   589: aload 6
-    //   591: invokevirtual 295	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   594: invokevirtual 225	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   591: invokevirtual 302	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   594: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   597: aload 6
-    //   599: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   602: invokevirtual 230	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   605: invokestatic 301	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   599: invokevirtual 305	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   602: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   605: invokestatic 308	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   608: aload 5
     //   610: ifnull +10 -> 620
     //   613: aload 5
-    //   615: invokeinterface 304 1 0
-    //   620: aconst_null
-    //   621: astore 5
-    //   623: goto -574 -> 49
-    //   626: astore 5
-    //   628: aconst_null
-    //   629: astore 5
-    //   631: goto -582 -> 49
-    //   634: astore_1
-    //   635: ldc 203
-    //   637: invokestatic 158	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   640: aload_1
-    //   641: athrow
-    //   642: ldc 203
-    //   644: invokestatic 158	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   647: aload 5
-    //   649: astore_1
-    //   650: goto -413 -> 237
-    //   653: astore 6
-    //   655: goto -79 -> 576
+    //   615: invokeinterface 311 1 0
+    //   620: iload_3
+    //   621: ifne +68 -> 689
+    //   624: aload 8
+    //   626: getfield 228	com/tencent/tav/decoder/DecoderAssetTrack:assetPath	Ljava/lang/String;
+    //   629: ifnull +60 -> 689
+    //   632: aload 8
+    //   634: getfield 228	com/tencent/tav/decoder/DecoderAssetTrack:assetPath	Ljava/lang/String;
+    //   637: ldc_w 313
+    //   640: invokevirtual 319	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   643: ifne +46 -> 689
+    //   646: aload_0
+    //   647: iconst_1
+    //   648: putfield 154	com/tencent/tav/decoder/AudioDecoderTrack:decodeError	Z
+    //   651: aload_0
+    //   652: aload 6
+    //   654: putfield 156	com/tencent/tav/decoder/AudioDecoderTrack:decodeException	Ljava/lang/Exception;
+    //   657: goto +32 -> 689
+    //   660: astore_1
+    //   661: ldc 210
+    //   663: invokestatic 165	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   666: aload_1
+    //   667: athrow
+    //   668: ldc 210
+    //   670: invokestatic 165	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   673: aload 5
+    //   675: astore_1
+    //   676: goto -439 -> 237
+    //   679: astore 5
+    //   681: goto -61 -> 620
+    //   684: astore 6
+    //   686: goto -110 -> 576
+    //   689: aconst_null
+    //   690: astore 5
+    //   692: goto -643 -> 49
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	658	0	this	AudioDecoderTrack
-    //   0	658	1	paramDecoderTrackSegment	DecoderTrackSegment
-    //   0	658	2	paramCMTime	CMTime
-    //   45	17	3	i	int
+    //   0	695	0	this	AudioDecoderTrack
+    //   0	695	1	paramDecoderTrackSegment	DecoderTrackSegment
+    //   0	695	2	paramCMTime	CMTime
+    //   45	576	3	i	int
     //   76	19	4	j	int
-    //   47	575	5	localObject1	Object
-    //   626	1	5	localException1	Exception
-    //   629	19	5	localObject2	Object
-    //   117	481	6	localObject3	Object
-    //   653	1	6	localException2	Exception
+    //   47	627	5	localObject1	Object
+    //   679	1	5	localException1	Exception
+    //   690	1	5	localObject2	Object
+    //   117	536	6	localObject3	Object
+    //   684	1	6	localException2	Exception
     //   566	7	7	localException3	Exception
-    //   11	535	8	localDecoderAssetTrack	DecoderAssetTrack
+    //   11	622	8	localDecoderAssetTrack	DecoderAssetTrack
     // Exception table:
     //   from	to	target	type
     //   122	194	261	finally
     //   194	230	261	finally
-    //   241	244	261	finally
-    //   262	265	261	finally
     //   2	44	272	finally
     //   62	122	272	finally
     //   230	235	272	finally
+    //   241	244	272	finally
     //   244	256	272	finally
-    //   265	272	272	finally
+    //   262	272	272	finally
     //   277	345	272	finally
     //   479	484	272	finally
-    //   499	506	272	finally
+    //   489	492	272	finally
+    //   496	506	272	finally
     //   506	520	272	finally
     //   520	559	272	finally
     //   576	608	272	finally
-    //   635	642	272	finally
-    //   642	647	272	finally
+    //   624	657	272	finally
+    //   661	668	272	finally
+    //   668	673	272	finally
     //   345	414	495	finally
     //   414	479	495	finally
-    //   489	492	495	finally
-    //   496	499	495	finally
     //   520	559	566	java/lang/Exception
-    //   613	620	626	java/lang/Exception
-    //   613	620	634	finally
-    //   506	520	653	java/lang/Exception
+    //   613	620	660	finally
+    //   613	620	679	java/lang/Exception
+    //   506	520	684	java/lang/Exception
   }
   
   private void createNextDecoder(int paramInt)
@@ -421,16 +440,16 @@ public class AudioDecoderTrack
       int i;
       try
       {
-        AppMethodBeat.i(218113);
+        AppMethodBeat.i(190262);
         if ((this.segments == null) || (!this.preRead))
         {
-          AppMethodBeat.o(218113);
+          AppMethodBeat.o(190262);
           return;
         }
         i = paramInt + 1;
         if (i >= this.segments.size())
         {
-          AppMethodBeat.o(218113);
+          AppMethodBeat.o(190262);
           continue;
         }
         if (this.decoderCreateThread != null) {
@@ -452,12 +471,12 @@ public class AudioDecoderTrack
           {
             this.decoderCreateThread = new AudioDecoderCreateThread(localDecoderAssetTrack, null, i, null);
             this.decoderCreateThread.start();
-            AppMethodBeat.o(218113);
+            AppMethodBeat.o(190262);
           }
           catch (Exception localException)
           {
             Logger.e(TAG, "createNextDecoder", localException);
-            AppMethodBeat.o(218113);
+            AppMethodBeat.o(190262);
           }
         }
       }
@@ -467,7 +486,7 @@ public class AudioDecoderTrack
         this.nextDecoder.segmentIndex = paramInt;
       }
       label236:
-      AppMethodBeat.o(218113);
+      AppMethodBeat.o(190262);
     }
   }
   
@@ -475,7 +494,7 @@ public class AudioDecoderTrack
   {
     Object localObject2 = null;
     Object localObject3 = null;
-    AppMethodBeat.i(218109);
+    AppMethodBeat.i(190251);
     try
     {
       if (this.isReleased)
@@ -498,7 +517,7 @@ public class AudioDecoderTrack
     }
     finally
     {
-      AppMethodBeat.o(218109);
+      AppMethodBeat.o(190251);
     }
     Object localObject1;
     CMTime localCMTime;
@@ -520,7 +539,7 @@ public class AudioDecoderTrack
         this.isEmptyFrame = true;
         Logger.v(TAG, "doReadSample: return emptyBuffer currentDecoder == null");
         paramCMTime = new CMSampleBuffer(localCMTime, outputBuffer());
-        AppMethodBeat.o(218109);
+        AppMethodBeat.o(190251);
         return paramCMTime;
         if (this.lastSampleState.getTime().sub(this.currentSegmentStartTime).multi(this._speed).bigThan(((DecoderTrackSegment)localObject1).getScaledDuration().multi(this._speed))) {
           paramCMTime = CMSampleState.fromError(-1L);
@@ -548,7 +567,7 @@ public class AudioDecoderTrack
           localObject1 = getEmptyAudioBuffer();
         }
         paramCMTime = new CMSampleBuffer(localCMTime, (ByteBuffer)localObject1);
-        AppMethodBeat.o(218109);
+        AppMethodBeat.o(190251);
         return paramCMTime;
         paramCMTime = this.currentDecoder.readSample(CMTime.CMTimeInvalid);
         break;
@@ -561,7 +580,7 @@ public class AudioDecoderTrack
         for (paramCMTime = localObject3;; paramCMTime = this.currentDecoder.outputBuffer())
         {
           paramCMTime = new CMSampleBuffer((CMSampleState)localObject1, paramCMTime);
-          AppMethodBeat.o(218109);
+          AppMethodBeat.o(190251);
           return paramCMTime;
         }
       }
@@ -573,11 +592,11 @@ public class AudioDecoderTrack
         if ((paramCMTime.getStateCode() != -3L) && (paramCMTime.getStateCode() != -100L))
         {
           paramCMTime = new CMSampleBuffer(this.lastSampleState);
-          AppMethodBeat.o(218109);
+          AppMethodBeat.o(190251);
           return paramCMTime;
         }
         paramCMTime = new CMSampleBuffer(paramCMTime);
-        AppMethodBeat.o(218109);
+        AppMethodBeat.o(190251);
         return paramCMTime;
       }
       localCMTime = paramCMTime.getTime().sub(((DecoderTrackSegment)localObject1).getDecoderStartTime()).divide(this._speed);
@@ -591,7 +610,7 @@ public class AudioDecoderTrack
       for (paramCMTime = localObject2;; paramCMTime = this.currentDecoder.outputBuffer())
       {
         paramCMTime = new CMSampleBuffer((CMSampleState)localObject1, paramCMTime);
-        AppMethodBeat.o(218109);
+        AppMethodBeat.o(190251);
         return paramCMTime;
       }
     }
@@ -600,7 +619,7 @@ public class AudioDecoderTrack
   private int findSegmentIndexAt(CMTime paramCMTime, boolean paramBoolean)
   {
     int k = 0;
-    AppMethodBeat.i(218091);
+    AppMethodBeat.i(190105);
     CMTime localCMTime1 = CMTime.CMTimeZero;
     Iterator localIterator = this.segments.iterator();
     int i = 0;
@@ -626,20 +645,20 @@ public class AudioDecoderTrack
     {
       if (j != 0)
       {
-        AppMethodBeat.o(218091);
+        AppMethodBeat.o(190105);
         return i;
         localCMTime1 = localCMTime1.add(localCMTime2);
         i += 1;
         break;
       }
-      AppMethodBeat.o(218091);
+      AppMethodBeat.o(190105);
       return -1;
     }
   }
   
   private CMTime getSegmentStartTime(int paramInt)
   {
-    AppMethodBeat.i(218092);
+    AppMethodBeat.i(190108);
     CMTime localCMTime = CMTime.CMTimeZero;
     int i = 0;
     while (i < paramInt)
@@ -647,31 +666,31 @@ public class AudioDecoderTrack
       localCMTime = CMTime.add(localCMTime, ((DecoderTrackSegment)this.segments.get(i)).getScaledDuration());
       i += 1;
     }
-    AppMethodBeat.o(218092);
+    AppMethodBeat.o(190108);
     return localCMTime;
   }
   
   private static boolean isSameExtractor(DecoderAssetTrack paramDecoderAssetTrack1, DecoderAssetTrack paramDecoderAssetTrack2)
   {
-    AppMethodBeat.i(218115);
+    AppMethodBeat.i(190293);
     if ((paramDecoderAssetTrack1 != null) && (paramDecoderAssetTrack2 != null) && (paramDecoderAssetTrack1.assetPath != null) && (paramDecoderAssetTrack1.assetPath.equals(paramDecoderAssetTrack2.assetPath)))
     {
-      AppMethodBeat.o(218115);
+      AppMethodBeat.o(190293);
       return true;
     }
-    AppMethodBeat.o(218115);
+    AppMethodBeat.o(190293);
     return false;
   }
   
   private boolean nextSegment(boolean paramBoolean)
   {
-    AppMethodBeat.i(218104);
+    AppMethodBeat.i(190208);
     Logger.d(TAG, "nextSegment:".concat(String.valueOf(paramBoolean)));
     this.segmentIndex += 1;
     if (this.segmentIndex >= this.segments.size())
     {
       this.segmentIndex = -1;
-      AppMethodBeat.o(218104);
+      AppMethodBeat.o(190208);
       return false;
     }
     this.currentSegmentStartTime = getSegmentStartTime(this.segmentIndex);
@@ -718,10 +737,10 @@ public class AudioDecoderTrack
         }
         paramBoolean = true;
         Logger.d((String)???, paramBoolean + " " + this._speed);
-        AppMethodBeat.o(218104);
+        AppMethodBeat.o(190208);
         return true;
         localObject3 = finally;
-        AppMethodBeat.o(218104);
+        AppMethodBeat.o(190208);
         throw localObject3;
         ??? = CMTime.CMTimeInvalid;
       }
@@ -741,26 +760,26 @@ public class AudioDecoderTrack
   
   public void asyncReadNextSample(CMTime arg1)
   {
-    AppMethodBeat.i(218110);
+    AppMethodBeat.i(190254);
     if (this.decoderThread.pcmFrame == null) {
       synchronized (this.decoderThread)
       {
         if (this.decoderThread.pcmFrame == null) {
           this.decoderThread.action();
         }
-        AppMethodBeat.o(218110);
+        AppMethodBeat.o(190254);
         return;
       }
     }
-    AppMethodBeat.o(218110);
+    AppMethodBeat.o(190254);
   }
   
   public void clipRangeAndClearRange(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(218100);
+    AppMethodBeat.i(190147);
     if ((paramCMTimeRange == null) || (paramCMTimeRange.getDurationUs() <= 0L) || (this.segments.size() == 0))
     {
-      AppMethodBeat.o(218100);
+      AppMethodBeat.o(190147);
       return;
     }
     CMTime localCMTime1 = paramCMTimeRange.getStart();
@@ -773,15 +792,15 @@ public class AudioDecoderTrack
     if (localCMTime2.getTimeUs() < localCMTime3.getTimeUs()) {
       this.segments.add(new DecoderTrackSegment(new CMTimeRange(localCMTime2, new CMTime(localCMTime3.getTimeSeconds() - localCMTime2.getTimeSeconds())), null));
     }
-    AppMethodBeat.o(218100);
+    AppMethodBeat.o(190147);
   }
   
   public void clipRangeAndRemoveRange(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(218101);
+    AppMethodBeat.i(190163);
     if ((paramCMTimeRange == null) || (paramCMTimeRange.getDurationUs() <= 0L) || (this.segments.size() == 0))
     {
-      AppMethodBeat.o(218101);
+      AppMethodBeat.o(190163);
       return;
     }
     Object localObject = paramCMTimeRange.getStart();
@@ -789,7 +808,7 @@ public class AudioDecoderTrack
     int k = findSegmentIndexAt((CMTime)localObject, false);
     if (k == -1)
     {
-      AppMethodBeat.o(218101);
+      AppMethodBeat.o(190163);
       return;
     }
     int i = findSegmentIndexAt(localCMTime1, false);
@@ -829,44 +848,49 @@ public class AudioDecoderTrack
           break;
         }
       }
-      AppMethodBeat.o(218101);
+      AppMethodBeat.o(190163);
       return;
     }
   }
   
   public CMTime duration()
   {
-    AppMethodBeat.i(218093);
+    AppMethodBeat.i(190112);
     CMTime localCMTime = getSegmentStartTime(this.segments.size());
-    AppMethodBeat.o(218093);
+    AppMethodBeat.o(190112);
     return localCMTime;
   }
   
   public AudioInfo getAudioInfo()
   {
-    AppMethodBeat.i(218098);
+    AppMethodBeat.i(190136);
     if (this.currentDecoder != null)
     {
       localAudioInfo = this.currentDecoder.getAudioInfo();
-      AppMethodBeat.o(218098);
+      AppMethodBeat.o(190136);
       return localAudioInfo;
     }
     AudioInfo localAudioInfo = this.audioInfo;
-    AppMethodBeat.o(218098);
+    AppMethodBeat.o(190136);
     return localAudioInfo;
   }
   
   public CMTime getCurrentSampleTime()
   {
-    AppMethodBeat.i(218112);
+    AppMethodBeat.i(190259);
     CMTime localCMTime = this.lastSampleState.getTime();
-    AppMethodBeat.o(218112);
+    AppMethodBeat.o(190259);
     return localCMTime;
+  }
+  
+  public AverageTimeReporter getDecodePerformance()
+  {
+    return null;
   }
   
   public CMTime getDuration()
   {
-    AppMethodBeat.i(218111);
+    AppMethodBeat.i(190257);
     if (this.duration == CMTime.CMTimeZero)
     {
       localCMTime = CMTime.CMTimeZero;
@@ -877,13 +901,13 @@ public class AudioDecoderTrack
       this.duration = localCMTime;
     }
     CMTime localCMTime = this.duration;
-    AppMethodBeat.o(218111);
+    AppMethodBeat.o(190257);
     return localCMTime;
   }
   
   public ByteBuffer getEmptyAudioBuffer()
   {
-    AppMethodBeat.i(218106);
+    AppMethodBeat.i(190230);
     if (this.emptyAudioBuffer == null)
     {
       long l = this.audioInfo.channelCount * this.audioInfo.sampleRate * this.frameDuration.getTimeUs() / 1000000L;
@@ -900,7 +924,7 @@ public class AudioDecoderTrack
     }
     this.emptyAudioBuffer.position(0);
     Object localObject = this.emptyAudioBuffer;
-    AppMethodBeat.o(218106);
+    AppMethodBeat.o(190230);
     return localObject;
   }
   
@@ -931,20 +955,20 @@ public class AudioDecoderTrack
   
   public ByteBuffer outputBuffer()
   {
-    AppMethodBeat.i(218090);
+    AppMethodBeat.i(190094);
     if (this.isEmptyFrame)
     {
       localByteBuffer = getEmptyAudioBuffer();
-      AppMethodBeat.o(218090);
+      AppMethodBeat.o(190094);
       return localByteBuffer;
     }
     if (this.currentDecoder == null)
     {
-      AppMethodBeat.o(218090);
+      AppMethodBeat.o(190094);
       return null;
     }
     ByteBuffer localByteBuffer = this.currentDecoder.outputBuffer();
-    AppMethodBeat.o(218090);
+    AppMethodBeat.o(190094);
     return localByteBuffer;
   }
   
@@ -952,14 +976,14 @@ public class AudioDecoderTrack
   {
     try
     {
-      AppMethodBeat.i(218116);
+      AppMethodBeat.i(190298);
       if (this.audioMixer.getDestAudioChannelCount() != paramAudioInfo.channelCount)
       {
         this.audioMixer.release();
         this.audioMixer = new AudioMixer(paramAudioInfo.sampleRate, paramAudioInfo.channelCount);
       }
       paramByteBuffer = this.audioMixer.processBytes(paramByteBuffer, paramFloat2, paramFloat1, 1.0F);
-      AppMethodBeat.o(218116);
+      AppMethodBeat.o(190298);
       return paramByteBuffer;
     }
     finally {}
@@ -967,21 +991,27 @@ public class AudioDecoderTrack
   
   public CMSampleBuffer readSample()
   {
-    AppMethodBeat.i(218107);
+    AppMethodBeat.i(190232);
     CMSampleBuffer localCMSampleBuffer = readSample(CMTime.CMTimeInvalid);
-    AppMethodBeat.o(218107);
+    AppMethodBeat.o(190232);
     return localCMSampleBuffer;
   }
   
   public CMSampleBuffer readSample(CMTime paramCMTime)
   {
-    AppMethodBeat.i(218108);
+    AppMethodBeat.i(190238);
     Logger.v(TAG, "readSample: [start]".concat(String.valueOf(paramCMTime)));
     if (this.isReleased)
     {
       Logger.e(TAG, "readSample: [error] has released");
       paramCMTime = new CMSampleBuffer(CMSampleState.fromError(-1L));
-      AppMethodBeat.o(218108);
+      AppMethodBeat.o(190238);
+      return paramCMTime;
+    }
+    if (this.decodeError)
+    {
+      paramCMTime = new CMSampleBuffer(CMSampleState.fromExportError(-3L, -202, "", this.decodeException));
+      AppMethodBeat.o(190238);
       return paramCMTime;
     }
     synchronized (this.decoderThread.nextFrameDecoderLock)
@@ -992,7 +1022,7 @@ public class AudioDecoderTrack
         this.lastSampleState = new CMSampleState(DecoderThread.access$200(this.decoderThread).frameTime);
         createNextDecoder(this.segmentIndex);
         Logger.v(TAG, "readSample: [success] hit asyncRead - " + this.lastSampleState);
-        AppMethodBeat.o(218108);
+        AppMethodBeat.o(190238);
         return paramCMTime;
       }
       paramCMTime = doReadSample(paramCMTime);
@@ -1005,7 +1035,7 @@ public class AudioDecoderTrack
       this.lastSampleState = paramCMTime.getState();
       createNextDecoder(this.segmentIndex);
       Logger.v(TAG, "readSample: [success]  - " + this.lastSampleState);
-      AppMethodBeat.o(218108);
+      AppMethodBeat.o(190238);
       return paramCMTime;
     }
   }
@@ -1016,55 +1046,55 @@ public class AudioDecoderTrack
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 677
-    //   5: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 71	com/tencent/tav/decoder/AudioDecoderTrack:TAG	Ljava/lang/String;
-    //   11: ldc_w 679
-    //   14: invokestatic 236	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2: ldc_w 692
+    //   5: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: getstatic 74	com/tencent/tav/decoder/AudioDecoderTrack:TAG	Ljava/lang/String;
+    //   11: ldc_w 694
+    //   14: invokestatic 243	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   17: aload_0
-    //   18: getfield 137	com/tencent/tav/decoder/AudioDecoderTrack:decoderThread	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderThread;
-    //   21: invokevirtual 680	com/tencent/tav/decoder/AudioDecoderTrack$DecoderThread:release	()V
+    //   18: getfield 140	com/tencent/tav/decoder/AudioDecoderTrack:decoderThread	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderThread;
+    //   21: invokevirtual 695	com/tencent/tav/decoder/AudioDecoderTrack$DecoderThread:release	()V
     //   24: aload_0
     //   25: iconst_1
-    //   26: putfield 132	com/tencent/tav/decoder/AudioDecoderTrack:isReleased	Z
+    //   26: putfield 135	com/tencent/tav/decoder/AudioDecoderTrack:isReleased	Z
     //   29: aload_0
-    //   30: getfield 176	com/tencent/tav/decoder/AudioDecoderTrack:currentDecoder	Lcom/tencent/tav/decoder/AudioDecoder;
+    //   30: getfield 183	com/tencent/tav/decoder/AudioDecoderTrack:currentDecoder	Lcom/tencent/tav/decoder/AudioDecoder;
     //   33: ifnull +15 -> 48
     //   36: aload_0
-    //   37: getfield 176	com/tencent/tav/decoder/AudioDecoderTrack:currentDecoder	Lcom/tencent/tav/decoder/AudioDecoder;
-    //   40: invokevirtual 681	com/tencent/tav/decoder/AudioDecoder:release	()V
+    //   37: getfield 183	com/tencent/tav/decoder/AudioDecoderTrack:currentDecoder	Lcom/tencent/tav/decoder/AudioDecoder;
+    //   40: invokevirtual 696	com/tencent/tav/decoder/AudioDecoder:release	()V
     //   43: aload_0
     //   44: aconst_null
-    //   45: putfield 176	com/tencent/tav/decoder/AudioDecoderTrack:currentDecoder	Lcom/tencent/tav/decoder/AudioDecoder;
+    //   45: putfield 183	com/tencent/tav/decoder/AudioDecoderTrack:currentDecoder	Lcom/tencent/tav/decoder/AudioDecoder;
     //   48: aload_0
-    //   49: getfield 128	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoderLock	Ljava/lang/Object;
+    //   49: getfield 131	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoderLock	Ljava/lang/Object;
     //   52: astore_1
     //   53: aload_1
     //   54: monitorenter
     //   55: aload_0
-    //   56: getfield 164	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
+    //   56: getfield 171	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
     //   59: ifnull +15 -> 74
     //   62: aload_0
-    //   63: getfield 164	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
-    //   66: invokestatic 685	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:access$600	(Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;)V
+    //   63: getfield 171	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
+    //   66: invokestatic 700	com/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper:access$600	(Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;)V
     //   69: aload_0
     //   70: aconst_null
-    //   71: putfield 164	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
+    //   71: putfield 171	com/tencent/tav/decoder/AudioDecoderTrack:nextDecoder	Lcom/tencent/tav/decoder/AudioDecoderTrack$DecoderWrapper;
     //   74: aload_1
     //   75: monitorexit
-    //   76: getstatic 71	com/tencent/tav/decoder/AudioDecoderTrack:TAG	Ljava/lang/String;
-    //   79: ldc_w 687
-    //   82: invokestatic 236	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   85: ldc_w 677
-    //   88: invokestatic 158	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   76: getstatic 74	com/tencent/tav/decoder/AudioDecoderTrack:TAG	Ljava/lang/String;
+    //   79: ldc_w 702
+    //   82: invokestatic 243	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   85: ldc_w 692
+    //   88: invokestatic 165	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   91: aload_0
     //   92: monitorexit
     //   93: return
     //   94: astore_2
     //   95: aload_1
     //   96: monitorexit
-    //   97: ldc_w 677
-    //   100: invokestatic 158	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   97: ldc_w 692
+    //   100: invokestatic 165	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   103: aload_2
     //   104: athrow
     //   105: astore_1
@@ -1081,22 +1111,21 @@ public class AudioDecoderTrack
     //   from	to	target	type
     //   55	74	94	finally
     //   74	76	94	finally
-    //   95	97	94	finally
     //   2	48	105	finally
     //   48	55	105	finally
     //   76	91	105	finally
-    //   97	105	105	finally
+    //   95	105	105	finally
   }
   
   public CMSampleBuffer seekTo(CMTime paramCMTime, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(218105);
+    AppMethodBeat.i(190227);
     Logger.v(TAG, "seekTo:[time " + paramCMTime + "] [needRead " + paramBoolean1 + "] [quickSeek " + paramBoolean2 + "]");
     if (this.isReleased)
     {
       Logger.e(TAG, "seekTo: [failed] has released");
       paramCMTime = new CMSampleBuffer(CMSampleState.fromError(-1L));
-      AppMethodBeat.o(218105);
+      AppMethodBeat.o(190227);
       return paramCMTime;
     }
     synchronized (this.decoderThread.nextFrameDecoderLock)
@@ -1105,7 +1134,7 @@ public class AudioDecoderTrack
       if (!this.started)
       {
         Logger.w(TAG, "seekTo: [failed] un started, stack = " + Log.getStackTraceString(new RuntimeException()));
-        AppMethodBeat.o(218105);
+        AppMethodBeat.o(190227);
         return null;
       }
     }
@@ -1114,7 +1143,7 @@ public class AudioDecoderTrack
     {
       this.segmentIndex = -1;
       Logger.e(TAG, "seekTo: [failed] segmentIndex = -1");
-      AppMethodBeat.o(218105);
+      AppMethodBeat.o(190227);
       return null;
     }
     ??? = getSegmentStartTime(i);
@@ -1129,7 +1158,7 @@ public class AudioDecoderTrack
     {
       this.lastSampleState = new CMSampleState(paramCMTime);
       Logger.d(TAG, "seekTo: [failed] currentDecoder == null ");
-      AppMethodBeat.o(218105);
+      AppMethodBeat.o(190227);
       return null;
     }
     this.currentDecoder.seekTo(localDecoderTrackSegment.getDecoderStartTime().add((CMTime)???));
@@ -1137,19 +1166,19 @@ public class AudioDecoderTrack
     for (this.lastSampleState = new CMSampleState(paramCMTime.sub(this.frameDuration));; this.lastSampleState = new CMSampleState(paramCMTime))
     {
       Logger.v(TAG, "seekTo: [success] [lastSampleState " + this.lastSampleState + "]");
-      AppMethodBeat.o(218105);
+      AppMethodBeat.o(190227);
       return null;
     }
   }
   
   public void setAudioInfo(AudioInfo paramAudioInfo)
   {
-    AppMethodBeat.i(218099);
+    AppMethodBeat.i(190141);
     this.audioInfo = paramAudioInfo.clone();
     if (this.emptyAudioBuffer != null) {
       this.emptyAudioBuffer = null;
     }
-    AppMethodBeat.o(218099);
+    AppMethodBeat.o(190141);
   }
   
   public void setDecodeType(IDecoder.DecodeType paramDecodeType)
@@ -1159,10 +1188,10 @@ public class AudioDecoderTrack
   
   public void setFrameRate(int paramInt)
   {
-    AppMethodBeat.i(218097);
+    AppMethodBeat.i(190124);
     this.frameDuration = this.frameDuration.divide(paramInt / this.frameRate);
     this.frameRate = paramInt;
-    AppMethodBeat.o(218097);
+    AppMethodBeat.o(190124);
   }
   
   public void setTrackID(int paramInt)
@@ -1172,13 +1201,13 @@ public class AudioDecoderTrack
   
   public void setTrackSegments(List<DecoderTrackSegment> paramList)
   {
-    AppMethodBeat.i(218102);
+    AppMethodBeat.i(190165);
     if (this.segments == null) {
       this.segments = new ArrayList();
     }
     this.segments.clear();
     this.segments.addAll(paramList);
-    AppMethodBeat.o(218102);
+    AppMethodBeat.o(190165);
   }
   
   public void setVolume(float paramFloat)
@@ -1193,25 +1222,25 @@ public class AudioDecoderTrack
   
   public void start()
   {
-    AppMethodBeat.i(218094);
+    AppMethodBeat.i(190114);
     start(null);
-    AppMethodBeat.o(218094);
+    AppMethodBeat.o(190114);
   }
   
   public void start(IDecoderTrack.SurfaceCreator paramSurfaceCreator)
   {
-    AppMethodBeat.i(218095);
+    AppMethodBeat.i(190117);
     start(paramSurfaceCreator, null);
-    AppMethodBeat.o(218095);
+    AppMethodBeat.o(190117);
   }
   
   public void start(IDecoderTrack.SurfaceCreator paramSurfaceCreator, CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(218096);
+    AppMethodBeat.i(190121);
     if (this.segments.size() == 0)
     {
       release();
-      AppMethodBeat.o(218096);
+      AppMethodBeat.o(190121);
       return;
     }
     this.isReleased = false;
@@ -1220,7 +1249,7 @@ public class AudioDecoderTrack
     this.segmentIndex = -1;
     clipRangeAndRemoveRange(paramCMTimeRange);
     nextSegment(true);
-    AppMethodBeat.o(218096);
+    AppMethodBeat.o(190121);
   }
   
   class AudioDecoderCreateThread
@@ -1233,12 +1262,12 @@ public class AudioDecoderTrack
     private AudioDecoderCreateThread(DecoderAssetTrack paramDecoderAssetTrack, Surface paramSurface, int paramInt)
     {
       super();
-      AppMethodBeat.i(218081);
+      AppMethodBeat.i(190018);
       this.segmentIndex = 0;
       this.extractor = paramDecoderAssetTrack;
       this.outputSurface = paramSurface;
       this.segmentIndex = paramInt;
-      AppMethodBeat.o(218081);
+      AppMethodBeat.o(190018);
     }
     
     /* Error */
@@ -1509,7 +1538,7 @@ public class AudioDecoderTrack
     
     public void run()
     {
-      AppMethodBeat.i(218082);
+      AppMethodBeat.i(190022);
       ??? = AudioDecoderTrack.TAG;
       StringBuilder localStringBuilder = new StringBuilder("AudioDecoderCreateThread start - ").append(this.extractor.assetPath).append(" - ");
       if (this.outputSurface != null) {}
@@ -1520,7 +1549,7 @@ public class AudioDecoderTrack
           break;
         }
         AudioDecoderTrack.access$902(AudioDecoderTrack.this, null);
-        AppMethodBeat.o(218082);
+        AppMethodBeat.o(190022);
         return;
       }
       for (;;)
@@ -1554,12 +1583,12 @@ public class AudioDecoderTrack
             AudioDecoderTrack.access$1102(AudioDecoderTrack.this, null);
           }
           Logger.d(AudioDecoderTrack.TAG, "AudioDecoderCreateThread finish - " + this.extractor.assetPath);
-          AppMethodBeat.o(218082);
+          AppMethodBeat.o(190022);
           return;
           createDecoder();
           continue;
           localObject2 = finally;
-          AppMethodBeat.o(218082);
+          AppMethodBeat.o(190022);
           throw localObject2;
         }
       }
@@ -1583,15 +1612,15 @@ public class AudioDecoderTrack
     public DecoderThread()
     {
       super();
-      AppMethodBeat.i(218084);
+      AppMethodBeat.i(190045);
       this.nextFrameDecoderLock = new Object();
-      AppMethodBeat.o(218084);
+      AppMethodBeat.o(190045);
     }
     
     protected void doAction()
     {
       CMSampleBuffer localCMSampleBuffer = null;
-      AppMethodBeat.i(218085);
+      AppMethodBeat.i(190051);
       synchronized (this.nextFrameDecoderLock)
       {
         if (this.pcmFrame != null)
@@ -1617,7 +1646,7 @@ public class AudioDecoderTrack
             AudioDecoderTrack.CacheBuffer.access$2202(this.pcmFrame, AudioDecoderTrack.this.lastSampleState.getTime());
             AudioDecoderTrack.CacheBuffer.access$302(this.pcmFrame, localCMSampleBuffer.getTime());
           }
-          AppMethodBeat.o(218085);
+          AppMethodBeat.o(190051);
           return;
         }
         Logger.v(AudioDecoderTrack.TAG, "doAction: lastSampleTime.add(frameDuration)");
@@ -1634,19 +1663,19 @@ public class AudioDecoderTrack
     
     private void release()
     {
-      AppMethodBeat.i(218086);
+      AppMethodBeat.i(190062);
       Logger.d(AudioDecoderTrack.TAG, "Audio DecoderWrapper release: ");
       try
       {
         if (this.decoder != null) {
           this.decoder.release();
         }
-        AppMethodBeat.o(218086);
+        AppMethodBeat.o(190062);
         return;
       }
       catch (Exception localException)
       {
-        AppMethodBeat.o(218086);
+        AppMethodBeat.o(190062);
         return;
       }
       catch (Error localError)
@@ -1670,17 +1699,17 @@ public class AudioDecoderTrack
     
     public void run()
     {
-      AppMethodBeat.i(218088);
+      AppMethodBeat.i(190076);
       if (this.decoder != null) {
         this.decoder.release();
       }
-      AppMethodBeat.o(218088);
+      AppMethodBeat.o(190076);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.decoder.AudioDecoderTrack
  * JD-Core Version:    0.7.0.1
  */

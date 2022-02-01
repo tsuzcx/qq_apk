@@ -1,10 +1,9 @@
 package com.tencent.mm.plugin.hp.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.d;
-import com.tencent.mm.g.a.d.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.a.d;
+import com.tencent.mm.f.a.d.a;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
@@ -14,7 +13,7 @@ import com.tinkerboots.sdk.a;
 public final class f
   extends IListener<d>
 {
-  private static long dfO = 0L;
+  private static long jQC = 0L;
   
   public f()
   {
@@ -23,34 +22,34 @@ public final class f
     AppMethodBeat.o(161184);
   }
   
-  public static void GQ(long paramLong)
+  public static void Of(long paramLong)
   {
-    dfO = paramLong;
+    jQC = paramLong;
   }
   
   private static boolean a(d paramd)
   {
     AppMethodBeat.i(117435);
-    if (paramd.dBP.dBQ)
+    if (paramd.fur.fus)
     {
       AppMethodBeat.o(117435);
       return false;
     }
-    if (!g.aAc())
+    if (!h.aHB())
     {
       AppMethodBeat.o(117435);
       return false;
     }
-    if (dfO == 0L) {
-      dfO = ((Long)g.aAh().azQ().get(ar.a.Odn, Long.valueOf(0L))).longValue();
+    if (jQC == 0L) {
+      jQC = ((Long)h.aHG().aHp().get(ar.a.Vrx, Long.valueOf(0L))).longValue();
     }
     long l = System.currentTimeMillis();
-    if ((l - dfO >= 21600000L) && (a.hvX() != null))
+    if ((l - jQC >= 21600000L) && (a.izW() != null))
     {
-      a.hvX().Ey(false);
+      a.izW().Jb(false);
       Log.i("MicroMsg.Tinker.TinkerBootsActivateListener", "callback post task and fetchPatchUpdate false");
-      dfO = l;
-      g.aAh().azQ().set(ar.a.Odn, Long.valueOf(l));
+      jQC = l;
+      h.aHG().aHp().set(ar.a.Vrx, Long.valueOf(l));
     }
     AppMethodBeat.o(117435);
     return false;
@@ -58,7 +57,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.b.f
  * JD-Core Version:    0.7.0.1
  */

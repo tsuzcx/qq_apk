@@ -4,55 +4,57 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  public boolean bik;
-  public boolean gFA;
-  public int gFB;
-  public int gFC;
-  public int gFD;
-  public a gFE;
-  public boolean gFF;
-  public a gFG;
-  public boolean gFH;
-  public boolean gFI;
-  public int gFJ;
-  public int gFK;
-  public int gFL;
-  public int gFM;
-  public int gFN;
-  public boolean gFO;
-  public int gFP;
-  public int gFQ;
-  public int gFR;
-  public int gFS;
-  public int gFT;
-  public int gFU;
-  public int gFV;
-  public int gFW;
-  public int gFX;
-  public int gFY;
-  public long gFZ;
-  public int gFx;
-  public boolean gFy;
-  public int gFz;
-  public int gGa;
-  public int gGb;
-  public int gGc;
-  public int gGd;
-  public int gGe;
-  public int gGf;
-  public int gGg;
-  public int gGh;
-  public int gGi;
-  public int gGj;
-  public int gGk;
-  public int gGl;
-  public boolean gGm;
+  public boolean aRO;
+  public int jpH;
+  public boolean jpI;
+  public int jpJ;
+  public boolean jpK;
+  public int jpL;
+  public int jpM;
+  public int jpN;
+  public a jpO;
+  public boolean jpP;
+  public a jpQ;
+  public boolean jpR;
+  public boolean jpS;
+  public int jpT;
+  public int jpU;
+  public int jpV;
+  public int jpW;
+  public int jpX;
+  public boolean jpY;
+  public int jpZ;
+  public int jqa;
+  public int jqb;
+  public int jqc;
+  public int jqd;
+  public int jqe;
+  public int jqf;
+  public int jqg;
+  public int jqh;
+  public int jqi;
+  public long jqj;
+  public int jqk;
+  public int jql;
+  public int jqm;
+  public int jqn;
+  public int jqo;
+  public int jqp;
+  public int jqq;
+  public int jqr;
+  public int jqs;
+  public int jqt;
+  public int jqu;
+  public int jqv;
+  public int jqw;
+  public int jqx;
+  public boolean jqy;
   
   public c()
   {
     AppMethodBeat.i(155642);
-    this.gFE = new a();
-    this.gFG = new a();
+    this.jpO = new a();
+    this.jpQ = new a();
     reset();
     AppMethodBeat.o(155642);
   }
@@ -60,74 +62,75 @@ public final class c
   public final void reset()
   {
     AppMethodBeat.i(155643);
-    this.gFy = false;
-    this.gFx = 0;
-    this.gFA = false;
-    this.gFz = 0;
-    this.bik = false;
-    this.gFD = 0;
-    this.gFB = 0;
-    this.gFC = 0;
-    this.gFF = false;
-    this.gFE.reset();
-    this.gFH = false;
-    this.gFG.reset();
-    this.gFI = false;
-    this.gFJ = -1;
-    this.gFK = -1;
-    this.gFL = -1;
-    this.gFM = -1;
-    this.gFP = -1;
-    this.gFN = -1;
-    this.gFO = false;
-    this.gFP = -1;
-    this.gFN = -1;
-    this.gFO = false;
-    this.gFQ = -1;
-    this.gFQ = -1;
-    this.gFR = -1;
-    this.gFS = -1;
-    this.gFT = 0;
-    this.gFU = 1;
-    this.gFV = 1;
-    this.gFW = 1;
-    this.gFX = 1;
-    this.gFY = 1;
-    this.gGa = -1;
-    this.gFZ = 0L;
-    this.gGb = 0;
-    this.gGc = -1;
-    this.gGf = 0;
-    this.gGg = 0;
-    this.gGd = -1;
-    this.gGh = -1;
-    this.gGi = -1;
-    this.gGj = -1;
-    this.gGk = -1;
-    this.gGl = -1;
-    this.gGm = false;
+    this.jpI = false;
+    this.jpH = 0;
+    this.jpK = false;
+    this.jpJ = 0;
+    this.aRO = false;
+    this.jpN = 0;
+    this.jpL = 0;
+    this.jpM = 0;
+    this.jpP = false;
+    this.jpO.reset();
+    this.jpR = false;
+    this.jpQ.reset();
+    this.jpS = false;
+    this.jpT = -1;
+    this.jpU = -1;
+    this.jpV = -1;
+    this.jpW = -1;
+    this.jpZ = -1;
+    this.jpX = -1;
+    this.jpY = false;
+    this.jpZ = -1;
+    this.jpX = -1;
+    this.jpY = false;
+    this.jqa = -1;
+    this.jqa = -1;
+    this.jqb = -1;
+    this.jqc = -1;
+    this.jqd = 0;
+    this.jqe = 1;
+    this.jqf = 1;
+    this.jqg = 1;
+    this.jqh = 1;
+    this.jqi = 1;
+    this.jqk = -1;
+    this.jqj = 0L;
+    this.jql = 0;
+    this.jqm = -1;
+    this.jqq = 0;
+    this.jqr = 0;
+    this.jqn = -1;
+    this.jqs = -1;
+    this.jqt = -1;
+    this.jqu = -1;
+    this.jqv = -1;
+    this.jqw = -1;
+    this.jqx = -1;
+    this.jqy = false;
     AppMethodBeat.o(155643);
   }
   
   public final class a
   {
-    public int dYT;
+    public int fSM;
     public int fps;
-    public int gGn;
-    public int gGo;
-    public int gGp;
     public int height;
+    public int jqA;
+    public int jqB;
+    public int jqz;
     public int width;
     
     public a() {}
     
     public final void reset()
     {
-      this.gGn = 0;
+      this.jqz = 0;
       this.fps = 0;
-      this.gGo = -1;
-      this.dYT = 0;
-      this.gGp = 0;
+      this.jqA = -1;
+      this.fSM = 0;
+      this.jqB = 0;
       this.width = 0;
       this.height = 0;
     }
@@ -135,7 +138,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.c
  * JD-Core Version:    0.7.0.1
  */

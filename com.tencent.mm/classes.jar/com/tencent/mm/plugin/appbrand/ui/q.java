@@ -1,117 +1,172 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.app.Activity;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.RemoteException;
+import android.os.Bundle;
+import android.os.Looper;
+import androidx.appcompat.app.AppCompatActivity;
+import com.tencent.luggage.sdk.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
-import com.tencent.mm.plugin.appbrand.task.k.a;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import kotlin.g.b.p;
+import com.tencent.mm.plugin.appbrand.ak;
+import com.tencent.mm.plugin.appbrand.task.r;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.ui.component.UIComponent;
 import kotlin.l;
-import kotlin.x;
+import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIAccountReleaseHandler;", "", "()V", "TAG", "", "processForegroundImportance", "", "", "[Ljava/lang/Integer;", "getSerializedUin", "handleAccountRelease", "", "activity", "Landroid/app/Activity;", "finishHandler", "Lcom/tencent/mm/plugin/appbrand/task/AppBrandTaskUIController$FinishAllHandler;", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIBackPressedInterceptorComponent;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "H", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "mEatBackPressed", "", "mResetRunner", "Ljava/lang/Runnable;", "mWaitForEnterAnimationComplete", "enableBackPressNow", "", "onBackPressed", "onBroughtToFront", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onEnterAnimationComplete", "onNewIntent", "intent", "Landroid/content/Intent;", "onStart", "onStop", "Companion", "plugin-appbrand-integration_release"})
 public final class q
+  extends UIComponent
 {
-  private static final Integer[] nXq;
-  public static final q nXr;
+  @Deprecated
+  public static final q.a qZe;
+  private final MMHandler pRi;
+  private boolean qZb;
+  private boolean qZc;
+  private final Runnable qZd;
   
   static
   {
-    AppMethodBeat.i(51149);
-    nXr = new q();
-    nXq = new Integer[] { Integer.valueOf(100), Integer.valueOf(200) };
-    AppMethodBeat.o(51149);
+    AppMethodBeat.i(277988);
+    qZe = new q.a((byte)0);
+    AppMethodBeat.o(277988);
   }
   
-  public static void a(final Activity paramActivity, k.a parama)
+  public q(AppCompatActivity paramAppCompatActivity)
   {
-    AppMethodBeat.i(51148);
-    p.h(paramActivity, "activity");
-    p.h(parama, "finishHandler");
-    try
-    {
-      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = new ActivityManager.RunningAppProcessInfo();
-      ActivityManager.getMyMemoryState(localRunningAppProcessInfo);
-      parama = new a(parama, paramActivity);
-      if ((localRunningAppProcessInfo == null) || (!org.apache.commons.b.a.contains(nXq, Integer.valueOf(localRunningAppProcessInfo.importance))))
-      {
-        paramActivity = new StringBuilder("finish directly importance[");
-        if (localRunningAppProcessInfo != null)
-        {
-          i = localRunningAppProcessInfo.importance;
-          Log.i("MicroMsg.AppBrandUIAccountReleaseHandler", i + ']');
-          parama.invoke();
-          AppMethodBeat.o(51148);
-          return;
-        }
-      }
-    }
-    catch (RemoteException localRemoteException)
-    {
-      for (;;)
-      {
-        Object localObject = null;
-        continue;
-        int i = -1;
-      }
-      parama = (AppBrandProxyUIProcessTask.b)new b(parama);
-      com.tencent.mm.plugin.appbrand.ipc.a.a((Context)paramActivity, (AppBrandProxyUIProcessTask.ProcessRequest)new AccountReleaseProxyUILaunchRequest(), parama, new Intent().addFlags(67108864));
-      AppMethodBeat.o(51148);
-    }
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(277987);
+    this.pRi = new MMHandler(Looper.getMainLooper());
+    this.qZd = ((Runnable)new b(this));
+    AppMethodBeat.o(277987);
   }
   
-  public static final int bXC()
+  private final void ckl()
   {
-    AppMethodBeat.i(175219);
-    SharedPreferences localSharedPreferences = MMApplicationContext.getContext().getSharedPreferences("system_config_prefs", 0);
-    if (localSharedPreferences != null)
+    AppMethodBeat.i(277983);
+    if ((getActivity().isDestroyed()) || (getActivity().isFinishing()))
     {
-      int i = localSharedPreferences.getInt("default_uin", 0);
-      AppMethodBeat.o(175219);
-      return i;
+      AppMethodBeat.o(277983);
+      return;
     }
-    AppMethodBeat.o(175219);
-    return 0;
+    this.qZb = true;
+    this.pRi.postDelayed(this.qZd, 433L);
+    AppMethodBeat.o(277983);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"doFinish", "", "invoke"})
-  static final class a
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
+  public final void ckk()
   {
-    a(k.a parama, Activity paramActivity)
+    AppMethodBeat.i(277978);
+    this.pRi.removeCallbacks(this.qZd);
+    this.qZd.run();
+    AppMethodBeat.o(277978);
+  }
+  
+  public final boolean onBackPressed()
+  {
+    AppMethodBeat.i(277979);
+    Object localObject = r.qRZ;
+    localObject = getActivity();
+    if (localObject == null)
     {
-      super();
+      localObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.ui.AppBrandUI");
+      AppMethodBeat.o(277979);
+      throw ((Throwable)localObject);
     }
+    r.b((AppBrandUI)localObject, "onBackPressed(mEatBackPressed:" + this.qZc + ')');
+    if (this.qZc)
+    {
+      AppMethodBeat.o(277979);
+      return true;
+    }
+    localObject = getActivity();
+    if (localObject == null)
+    {
+      localObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.ui.AppBrandUI");
+      AppMethodBeat.o(277979);
+      throw ((Throwable)localObject);
+    }
+    ak localak = ((AppBrandUI)localObject).bBY();
+    localObject = localak;
+    if (!(localak instanceof b)) {
+      localObject = null;
+    }
+    localObject = (b)localObject;
+    if (localObject != null)
+    {
+      ((b)localObject).onBackPressed();
+      AppMethodBeat.o(277979);
+      return true;
+    }
+    AppMethodBeat.o(277979);
+    return false;
+  }
+  
+  public final void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(277981);
+    super.onCreate(paramBundle);
+    ckl();
+    AppMethodBeat.o(277981);
+  }
+  
+  public final void onDestroy()
+  {
+    AppMethodBeat.i(277986);
+    super.onDestroy();
+    this.pRi.removeCallbacksAndMessages(null);
+    AppMethodBeat.o(277986);
+  }
+  
+  public final void onNewIntent(Intent paramIntent)
+  {
+    AppMethodBeat.i(277982);
+    super.onNewIntent(paramIntent);
+    ckl();
+    AppMethodBeat.o(277982);
+  }
+  
+  public final void onStart()
+  {
+    AppMethodBeat.i(277984);
+    super.onStart();
+    if (!this.qZb) {
+      ckk();
+    }
+    AppMethodBeat.o(277984);
+  }
+  
+  public final void onStop()
+  {
+    AppMethodBeat.i(277985);
+    super.onStop();
+    this.pRi.removeCallbacks(this.qZd);
+    this.qZc = true;
+    this.qZb = false;
+    AppMethodBeat.o(277985);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  static final class b
+    implements Runnable
+  {
+    b(q paramq) {}
     
-    public final void invoke()
+    public final void run()
     {
-      AppMethodBeat.i(51146);
-      this.nXs.proceed();
-      paramActivity.finish();
-      AppMethodBeat.o(51146);
+      AppMethodBeat.i(276081);
+      if (com.tencent.mm.sdk.platformtools.Log.getLogLevel() <= 1)
+      {
+        q.ckm();
+        com.tencent.mm.sdk.platformtools.Log.d("MicroMsg.AppBrandUIBackPressedInterceptorComponent", "assign mEatBackPressed=false, stack:" + android.util.Log.getStackTraceString(new Throwable()));
+      }
+      q.a(this.qZf);
+      AppMethodBeat.o(276081);
     }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/ui/AccountReleaseProxyUILaunchResult;", "kotlin.jvm.PlatformType", "onReceiveResult"})
-  static final class b<R extends AppBrandProxyUIProcessTask.ProcessResult>
-    implements AppBrandProxyUIProcessTask.b<AccountReleaseProxyUILaunchResult>
-  {
-    b(q.a parama) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.q
  * JD-Core Version:    0.7.0.1
  */

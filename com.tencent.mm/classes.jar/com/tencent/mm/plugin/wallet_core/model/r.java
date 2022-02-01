@@ -8,32 +8,32 @@ import org.json.JSONObject;
 
 public final class r
 {
-  public String HWN;
-  public String HWO;
-  public int HYx;
-  public List<a> HYy;
-  public int pTI;
-  public boolean pTt;
+  public String OON;
+  public String OOO;
+  public int OQx;
+  public List<a> OQy;
+  public int tpK;
+  public boolean tpu;
   public String url;
   
   public r()
   {
-    AppMethodBeat.i(214194);
-    this.HYy = new ArrayList();
-    AppMethodBeat.o(214194);
+    AppMethodBeat.i(274622);
+    this.OQy = new ArrayList();
+    AppMethodBeat.o(274622);
   }
   
-  public static r bJ(JSONObject paramJSONObject)
+  public static r bU(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(214195);
+    AppMethodBeat.i(274623);
     if (paramJSONObject != null)
     {
       r localr = new r();
-      localr.HYx = paramJSONObject.optInt("block_layer_report_id");
-      localr.pTt = paramJSONObject.optBoolean("is_show");
-      localr.pTI = paramJSONObject.optInt("action_type");
-      localr.HWN = paramJSONObject.optString("tiny_app_username");
-      localr.HWO = paramJSONObject.optString("tiny_app_path");
+      localr.OQx = paramJSONObject.optInt("block_layer_report_id");
+      localr.tpu = paramJSONObject.optBoolean("is_show");
+      localr.tpK = paramJSONObject.optInt("action_type");
+      localr.OON = paramJSONObject.optString("tiny_app_username");
+      localr.OOO = paramJSONObject.optString("tiny_app_path");
       localr.url = paramJSONObject.optString("url");
       if (paramJSONObject.has("text_info_array"))
       {
@@ -45,27 +45,27 @@ public final class r
           {
             JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
             a locala = new a();
-            locala.HYt = localJSONObject.optString("main_wording");
-            locala.HYu = localJSONObject.optString("reminder_content");
-            locala.HYz = localJSONObject.optString("action_btn_text");
+            locala.OQt = localJSONObject.optString("main_wording");
+            locala.OQu = localJSONObject.optString("reminder_content");
+            locala.OQz = localJSONObject.optString("action_btn_text");
             locala.language = localJSONObject.optString("language");
-            localr.HYy.add(locala);
+            localr.OQy.add(locala);
             i += 1;
           }
         }
       }
-      AppMethodBeat.o(214195);
+      AppMethodBeat.o(274623);
       return localr;
     }
-    AppMethodBeat.o(214195);
+    AppMethodBeat.o(274623);
     return null;
   }
   
   public static final class a
   {
-    public String HYt;
-    public String HYu;
-    public String HYz;
+    public String OQt;
+    public String OQu;
+    public String OQz;
     public String language;
   }
 }

@@ -4,10 +4,10 @@ import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
+import com.tencent.mm.f.c.ax;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
@@ -17,25 +17,25 @@ public final class a
   implements View.OnClickListener
 {
   private Context context;
-  private a kgk;
+  private a mXJ;
   
   public a(Context paramContext, a parama)
   {
     this.context = paramContext;
-    this.kgk = parama;
+    this.mXJ = parama;
   }
   
   public final void onClick(final View paramView)
   {
     AppMethodBeat.i(131173);
     Object localObject = new b();
-    ((b)localObject).bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/friend/ui/AddContactListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+    ((b)localObject).bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/friend/ui/AddContactListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
     localObject = (b)paramView.getTag();
     paramView = ((b)localObject).username;
-    int i = ((b)localObject).kgm;
+    int i = ((b)localObject).mXL;
     final int j = ((b)localObject).position;
-    localObject = ((l)g.af(l.class)).aSN().Kn(paramView);
+    localObject = ((n)h.ae(n.class)).bbL().RG(paramView);
     if (Util.isNullOrNil(((ax)localObject).field_username)) {
       ((as)localObject).setUsername(paramView);
     }
@@ -46,39 +46,39 @@ public final class a
         AppMethodBeat.i(131172);
         if (paramAnonymousBoolean1)
         {
-          a.P(this.gAi);
-          a.a(a.this).Tj(paramView);
+          a.W(this.jkl);
+          a.a(a.this).aaP(paramView);
           AppMethodBeat.o(131172);
           return;
         }
-        a.a(a.this).ae(paramView, paramAnonymousBoolean2);
+        a.a(a.this).af(paramView, paramAnonymousBoolean2);
         AppMethodBeat.o(131172);
       }
     });
     LinkedList localLinkedList = new LinkedList();
     localLinkedList.add(Integer.valueOf(i));
-    ((com.tencent.mm.pluginsdk.ui.applet.a)localObject).h(paramView, localLinkedList);
+    ((com.tencent.mm.pluginsdk.ui.applet.a)localObject).i(paramView, localLinkedList);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/friend/ui/AddContactListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(131173);
   }
   
   public static abstract interface a
   {
-    public abstract void Tj(String paramString);
+    public abstract void aaP(String paramString);
     
-    public abstract void ae(String paramString, boolean paramBoolean);
+    public abstract void af(String paramString, boolean paramBoolean);
   }
   
   public static final class b
   {
-    public int kgm;
+    public int mXL;
     public int position;
     public String username;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.ui.a
  * JD-Core Version:    0.7.0.1
  */

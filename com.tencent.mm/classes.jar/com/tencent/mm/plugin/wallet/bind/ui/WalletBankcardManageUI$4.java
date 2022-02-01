@@ -5,14 +5,15 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.WeChatHosts;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.o.f;
-import com.tencent.mm.ui.base.o.g;
-import com.tencent.mm.ui.e.p;
+import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.q.f;
+import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.f.r;
 import com.tencent.mm.ui.widget.a.e;
-import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.g;
 
 final class WalletBankcardManageUI$4
   implements MenuItem.OnMenuItemClickListener
@@ -22,17 +23,17 @@ final class WalletBankcardManageUI$4
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(69104);
-    paramMenuItem = new e(this.HDv.getContext(), 1, false);
-    paramMenuItem.HLX = new o.f()
+    paramMenuItem = new e(this.Ovo.getContext(), 1, false);
+    paramMenuItem.ODT = new q.f()
     {
-      public final void onCreateMMMenu(m paramAnonymousm)
+      public final void onCreateMMMenu(o paramAnonymouso)
       {
         AppMethodBeat.i(69102);
-        paramAnonymousm.kV(0, 2131767502);
+        paramAnonymouso.mn(0, a.i.wallet_bankcard_manager_ui_help_text);
         AppMethodBeat.o(69102);
       }
     };
-    paramMenuItem.HLY = new o.g()
+    paramMenuItem.ODU = new q.g()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -47,21 +48,21 @@ final class WalletBankcardManageUI$4
           AppMethodBeat.o(69103);
           return;
           paramAnonymousMenuItem = new Intent();
-          paramAnonymousMenuItem.putExtra(e.p.OzJ, true);
-          paramAnonymousMenuItem.putExtra("rawUrl", "https://" + WeChatHosts.domainString(2131761715) + "/touch/product/weixinpay_app.html?platform=15&ADTAG=veda.weixinpay.wenti");
-          f.aA(WalletBankcardManageUI.4.this.HDv.getContext(), paramAnonymousMenuItem);
-          h.CyF.a(14422, new Object[] { Integer.valueOf(3) });
+          paramAnonymousMenuItem.putExtra(f.r.VSX, true);
+          paramAnonymousMenuItem.putExtra("rawUrl", "https://" + WeChatHosts.domainString(a.i.host_kf_qq_com) + "/touch/product/weixinpay_app.html?platform=15&ADTAG=veda.weixinpay.wenti");
+          g.aJ(WalletBankcardManageUI.4.this.Ovo.getContext(), paramAnonymousMenuItem);
+          h.IzE.a(14422, new Object[] { Integer.valueOf(3) });
         }
       }
     };
-    paramMenuItem.dGm();
+    paramMenuItem.eik();
     AppMethodBeat.o(69104);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.bind.ui.WalletBankcardManageUI.4
  * JD-Core Version:    0.7.0.1
  */

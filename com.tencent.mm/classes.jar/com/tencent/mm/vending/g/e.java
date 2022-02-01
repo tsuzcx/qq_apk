@@ -15,91 +15,91 @@ import junit.framework.Assert;
 public class e<_Var>
   implements c<_Var>
 {
-  public volatile boolean QZR;
-  volatile d QZS;
-  boolean QZT;
-  private Queue<a> QZU;
-  private volatile com.tencent.mm.vending.h.d QZV;
-  private volatile com.tencent.mm.vending.h.d QZW;
-  volatile boolean QZX;
-  private volatile Object QZY;
-  private volatile Object QZZ;
-  a Raa;
-  a Rab;
-  private long Rac;
-  private boolean Rad;
-  private b Rae;
-  private com.tencent.mm.vending.h.d Raf;
-  private f.a Rag;
-  List<Pair<d.a, com.tencent.mm.vending.h.d>> Rah;
-  private List<Pair<d.b, com.tencent.mm.vending.h.d>> Rai;
-  private boolean Raj;
-  boolean Rak;
-  private boolean Ral;
-  private Object Ram;
-  Object Ran;
+  private boolean YAA;
+  private boolean YAB;
+  private Object YAC;
+  private Object YAD;
+  public volatile boolean YAh;
+  private volatile d YAi;
+  private boolean YAj;
+  private Queue<a> YAk;
+  private volatile com.tencent.mm.vending.h.d YAl;
+  private volatile com.tencent.mm.vending.h.d YAm;
+  private volatile boolean YAn;
+  private volatile Object YAo;
+  private volatile Object YAp;
+  private a YAq;
+  private a YAr;
+  private long YAs;
+  private boolean YAt;
+  private b YAu;
+  private com.tencent.mm.vending.h.d YAv;
+  private f.a YAw;
+  private List<Pair<d.a, com.tencent.mm.vending.h.d>> YAx;
+  private List<Pair<d.b, com.tencent.mm.vending.h.d>> YAy;
+  private boolean YAz;
   private int mRetryCount;
   com.tencent.mm.vending.h.f mSchedulerInvoker;
   
   public e()
   {
     AppMethodBeat.i(74826);
-    this.QZR = false;
-    this.QZS = d.Raw;
-    this.QZT = false;
-    this.QZU = new LinkedList();
+    this.YAh = false;
+    this.YAi = d.YAM;
+    this.YAj = false;
+    this.YAk = new LinkedList();
     this.mRetryCount = 0;
-    this.Rac = -1L;
-    this.Rad = false;
-    this.Rae = new b();
-    this.Rag = new f.a()
+    this.YAs = -1L;
+    this.YAt = false;
+    this.YAu = new b();
+    this.YAw = new f.a()
     {
-      public final void em(Object paramAnonymousObject)
+      public final void es(Object paramAnonymousObject)
       {
         AppMethodBeat.i(74856);
-        ((Stack)f.hdF().RaE.get()).pop();
+        ((Stack)f.ieM().YAU.get()).pop();
         synchronized (e.this)
         {
-          e.this.Raa = e.this.Rab;
-          e.this.Rab = null;
-          if (!e.this.QZX) {
-            e.this.el(paramAnonymousObject);
+          e.a(e.this, e.a(e.this));
+          e.b(e.this);
+          if (!e.c(e.this)) {
+            e.a(e.this, paramAnonymousObject);
           }
-          if (e.this.QZT) {
+          if (e.d(e.this)) {
             com.tencent.mm.vending.f.a.i("Vending.Pipeline", "gonna retry, do not store functional result.", new Object[0]);
           }
-          if (e.this.QZS == e.d.RaA)
+          if (e.e(e.this) == e.d.YAQ)
           {
             com.tencent.mm.vending.f.a.i("Vending.Pipeline", "interrupted, just return", new Object[0]);
             AppMethodBeat.o(74856);
             return;
           }
-          if (e.this.QZS == e.d.Raz)
+          if (e.e(e.this) == e.d.YAP)
           {
             com.tencent.mm.vending.f.a.i("Vending.Pipeline", "pausing, just return.", new Object[0]);
             AppMethodBeat.o(74856);
             return;
           }
           com.tencent.mm.vending.f.a.i("Vending.Pipeline", "last one resolved, dequeue next.", new Object[0]);
-          e.this.QZS = e.d.Rax;
-          e.this.hdA();
-          e.this.hdD();
+          e.a(e.this, e.d.YAN);
+          e.f(e.this);
+          e.g(e.this);
           AppMethodBeat.o(74856);
           return;
         }
       }
       
-      public final void hdE()
+      public final void ieL()
       {
         AppMethodBeat.i(74855);
-        f localf = f.hdF();
+        f localf = f.ieM();
         e locale = e.this;
-        Stack localStack2 = (Stack)localf.RaE.get();
+        Stack localStack2 = (Stack)localf.YAU.get();
         Stack localStack1 = localStack2;
         if (localStack2 == null)
         {
           localStack1 = new Stack();
-          localf.RaE.set(localStack1);
+          localf.YAU.set(localStack1);
         }
         localStack1.push(locale);
         AppMethodBeat.o(74855);
@@ -108,41 +108,41 @@ public class e<_Var>
       public final void interrupt()
       {
         AppMethodBeat.i(74857);
-        e.this.Dv(true);
+        e.a(e.this, true);
         AppMethodBeat.o(74857);
       }
     };
-    this.Raj = false;
-    this.Rak = false;
-    this.Ral = false;
-    this.QZW = g.current();
-    this.QZV = this.QZW;
-    this.mSchedulerInvoker = new com.tencent.mm.vending.h.f(this.QZW, this.Rag);
+    this.YAz = false;
+    this.YAA = false;
+    this.YAB = false;
+    this.YAm = g.current();
+    this.YAl = this.YAm;
+    this.mSchedulerInvoker = new com.tencent.mm.vending.h.f(this.YAm, this.YAw);
     AppMethodBeat.o(74826);
   }
   
   private c<_Var> I(Object... paramVarArgs)
   {
     AppMethodBeat.i(177484);
-    if (this.QZS != d.Raw)
+    if (this.YAi != d.YAM)
     {
       AppMethodBeat.o(177484);
       return this;
     }
-    this.QZS = d.Rax;
+    this.YAi = d.YAN;
     if (paramVarArgs.length == 0) {
       paramVarArgs = null;
     }
     for (;;)
     {
-      el(paramVarArgs);
-      hdD();
+      eq(paramVarArgs);
+      ieK();
       AppMethodBeat.o(177484);
       return this;
       if (paramVarArgs.length == 1) {
         paramVarArgs = paramVarArgs[0];
       } else {
-        paramVarArgs = k.J(paramVarArgs);
+        paramVarArgs = k.K(paramVarArgs);
       }
     }
   }
@@ -150,115 +150,213 @@ public class e<_Var>
   private <_Ret> c<_Ret> a(com.tencent.mm.vending.c.a<_Ret, _Var> parama, boolean paramBoolean)
   {
     AppMethodBeat.i(74837);
-    hdz();
-    this.QZU.add(new a(parama, this.QZV, this.Rac, paramBoolean));
-    this.Rac = -1L;
-    if (this.QZS == d.Raw)
+    ieG();
+    this.YAk.add(new a(parama, this.YAl, this.YAs, paramBoolean));
+    this.YAs = -1L;
+    if (this.YAi == d.YAM)
     {
       AppMethodBeat.o(74837);
       return this;
     }
-    if (this.QZS != d.Rax)
+    if (this.YAi != d.YAN)
     {
       AppMethodBeat.o(74837);
       return this;
     }
-    hdD();
+    ieK();
     AppMethodBeat.o(74837);
     return this;
+  }
+  
+  private void a(Pair<d.a, com.tencent.mm.vending.h.d> paramPair, Object paramObject)
+  {
+    AppMethodBeat.i(74840);
+    com.tencent.mm.vending.h.d locald = (com.tencent.mm.vending.h.d)paramPair.second;
+    paramPair = new e.3(this, paramPair, paramObject);
+    if (locald == null)
+    {
+      com.tencent.mm.vending.f.a.e("Vending.Pipeline", "Default scheduler %s is not available!!!", new Object[] { this.YAm });
+      AppMethodBeat.o(74840);
+      return;
+    }
+    locald.arrange(paramPair);
+    AppMethodBeat.o(74840);
   }
   
   private void a(d.a parama, com.tencent.mm.vending.h.d paramd)
   {
     AppMethodBeat.i(74842);
-    this.QZR = true;
-    if (this.Rah == null) {
-      this.Rah = new LinkedList();
+    this.YAh = true;
+    if (this.YAx == null) {
+      this.YAx = new LinkedList();
     }
     parama = new Pair(parama, paramd);
-    if (this.Rak)
+    if (this.YAA)
     {
-      a(parama, this.Ran);
+      a(parama, this.YAD);
       AppMethodBeat.o(74842);
       return;
     }
-    this.Rah.add(parama);
+    this.YAx.add(parama);
     AppMethodBeat.o(74842);
   }
   
   private void a(d.b paramb, com.tencent.mm.vending.h.d paramd)
   {
     AppMethodBeat.i(74843);
-    this.QZR = true;
-    hdD();
-    if (this.Rai == null) {
-      this.Rai = new LinkedList();
+    this.YAh = true;
+    ieK();
+    if (this.YAy == null) {
+      this.YAy = new LinkedList();
     }
     paramb = new Pair(paramb, paramd);
-    if (this.Raj)
+    if (this.YAz)
     {
-      b(paramb, this.Ram);
+      b(paramb, this.YAC);
       AppMethodBeat.o(74843);
       return;
     }
-    this.Rai.add(paramb);
+    this.YAy.add(paramb);
     AppMethodBeat.o(74843);
   }
   
-  private void b(final Pair<d.b, com.tencent.mm.vending.h.d> paramPair, final Object paramObject)
+  private void b(Pair<d.b, com.tencent.mm.vending.h.d> paramPair, Object paramObject)
   {
     AppMethodBeat.i(177486);
-    final RuntimeException localRuntimeException = new RuntimeException("object is not right: ".concat(String.valueOf(paramObject)));
-    new com.tencent.mm.vending.h.f((com.tencent.mm.vending.h.d)paramPair.second, null).a(new com.tencent.mm.vending.c.a()
-    {
-      private Void buw()
-      {
-        AppMethodBeat.i(177476);
-        try
-        {
-          ((d.b)paramPair.first).bz(paramObject);
-          Void localVoid = QZL;
-          AppMethodBeat.o(177476);
-          return localVoid;
-        }
-        catch (ClassCastException localClassCastException)
-        {
-          if (localRuntimeException.getCause() == null) {
-            localRuntimeException.initCause(localClassCastException);
-          }
-          RuntimeException localRuntimeException = localRuntimeException;
-          AppMethodBeat.o(177476);
-          throw localRuntimeException;
-        }
-      }
-    }, null, this.Rad);
+    RuntimeException localRuntimeException = new RuntimeException("object is not right: ".concat(String.valueOf(paramObject)));
+    new com.tencent.mm.vending.h.f((com.tencent.mm.vending.h.d)paramPair.second, null).a(new e.4(this, paramPair, paramObject, localRuntimeException), null, this.YAt);
     AppMethodBeat.o(177486);
   }
   
-  static String ek(Object paramObject)
+  private static String ep(Object paramObject)
   {
-    AppMethodBeat.i(201255);
+    AppMethodBeat.i(247622);
     if (paramObject != null)
     {
       int i = paramObject.hashCode();
-      AppMethodBeat.o(201255);
+      AppMethodBeat.o(247622);
       return String.valueOf(i);
     }
-    AppMethodBeat.o(201255);
+    AppMethodBeat.o(247622);
     return null;
   }
   
-  private Object hdB()
+  private void eq(Object paramObject)
   {
     try
     {
-      AppMethodBeat.i(201254);
-      Object localObject1 = this.QZY;
-      this.QZZ = this.QZY;
-      this.QZY = null;
-      this.QZX = false;
-      com.tencent.mm.vending.f.a.d("Vending.Pipeline", "pop input(%s)", new Object[] { ek(localObject1) });
-      AppMethodBeat.o(201254);
+      AppMethodBeat.i(247624);
+      this.YAo = paramObject;
+      this.YAn = true;
+      com.tencent.mm.vending.f.a.d("Vending.Pipeline", "set input(%s)", new Object[] { ep(paramObject) });
+      AppMethodBeat.o(247624);
+      return;
+    }
+    finally
+    {
+      paramObject = finally;
+      throw paramObject;
+    }
+  }
+  
+  private void ieG()
+  {
+    AppMethodBeat.i(177485);
+    if (this.YAh)
+    {
+      e.c localc = new e.c("This Pipeline(%s) has terminate and do not allow any next().", new Object[] { this });
+      AppMethodBeat.o(177485);
+      throw localc;
+    }
+    AppMethodBeat.o(177485);
+  }
+  
+  /* Error */
+  private void ieH()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc_w 301
+    //   5: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_0
+    //   9: getfield 82	com/tencent/mm/vending/g/e:YAj	Z
+    //   12: ifeq +85 -> 97
+    //   15: aload_0
+    //   16: aload_0
+    //   17: getfield 89	com/tencent/mm/vending/g/e:mRetryCount	I
+    //   20: iconst_1
+    //   21: iadd
+    //   22: putfield 89	com/tencent/mm/vending/g/e:mRetryCount	I
+    //   25: ldc 188
+    //   27: ldc_w 303
+    //   30: iconst_2
+    //   31: anewarray 5	java/lang/Object
+    //   34: dup
+    //   35: iconst_0
+    //   36: aload_0
+    //   37: getfield 171	com/tencent/mm/vending/g/e:YAq	Lcom/tencent/mm/vending/g/e$a;
+    //   40: getfield 307	com/tencent/mm/vending/g/e$a:keH	Lcom/tencent/mm/vending/c/a;
+    //   43: invokevirtual 311	java/lang/Object:toString	()Ljava/lang/String;
+    //   46: aastore
+    //   47: dup
+    //   48: iconst_1
+    //   49: aload_0
+    //   50: getfield 89	com/tencent/mm/vending/g/e:mRetryCount	I
+    //   53: invokestatic 316	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   56: aastore
+    //   57: invokestatic 318	com/tencent/mm/vending/f/a:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   60: aload_0
+    //   61: iconst_0
+    //   62: putfield 82	com/tencent/mm/vending/g/e:YAj	Z
+    //   65: aload_0
+    //   66: getfield 87	com/tencent/mm/vending/g/e:YAk	Ljava/util/Queue;
+    //   69: checkcast 84	java/util/LinkedList
+    //   72: iconst_0
+    //   73: aload_0
+    //   74: getfield 171	com/tencent/mm/vending/g/e:YAq	Lcom/tencent/mm/vending/g/e$a;
+    //   77: invokevirtual 321	java/util/LinkedList:add	(ILjava/lang/Object;)V
+    //   80: aload_0
+    //   81: aload_0
+    //   82: getfield 323	com/tencent/mm/vending/g/e:YAp	Ljava/lang/Object;
+    //   85: invokespecial 139	com/tencent/mm/vending/g/e:eq	(Ljava/lang/Object;)V
+    //   88: ldc_w 301
+    //   91: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   94: aload_0
+    //   95: monitorexit
+    //   96: return
+    //   97: aload_0
+    //   98: iconst_0
+    //   99: putfield 89	com/tencent/mm/vending/g/e:mRetryCount	I
+    //   102: ldc_w 301
+    //   105: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   108: goto -14 -> 94
+    //   111: astore_1
+    //   112: aload_0
+    //   113: monitorexit
+    //   114: aload_1
+    //   115: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	116	0	this	e
+    //   111	4	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	94	111	finally
+    //   97	108	111	finally
+  }
+  
+  private Object ieI()
+  {
+    try
+    {
+      AppMethodBeat.i(247620);
+      Object localObject1 = this.YAo;
+      this.YAp = this.YAo;
+      this.YAo = null;
+      this.YAn = false;
+      com.tencent.mm.vending.f.a.d("Vending.Pipeline", "pop input(%s)", new Object[] { ep(localObject1) });
+      AppMethodBeat.o(247620);
       return localObject1;
     }
     finally
@@ -268,106 +366,75 @@ public class e<_Var>
     }
   }
   
-  private void hdz()
-  {
-    AppMethodBeat.i(177485);
-    if (this.QZR)
-    {
-      c localc = new c("This Pipeline(%s) has terminate and do not allow any next().", new Object[] { this });
-      AppMethodBeat.o(177485);
-      throw localc;
-    }
-    AppMethodBeat.o(177485);
-  }
-  
-  public c<_Var> Du(boolean paramBoolean)
+  private Object ieJ()
   {
     try
     {
-      this.Rad = paramBoolean;
-      return this;
+      Object localObject1 = this.YAo;
+      return localObject1;
     }
     finally
     {
-      localObject = finally;
-      throw localObject;
+      localObject2 = finally;
+      throw localObject2;
     }
   }
   
-  /* Error */
-  public final void Dv(boolean paramBoolean)
+  private void ieK()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc_w 277
-    //   5: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: aload_0
-    //   9: getfield 87	com/tencent/mm/vending/g/e:QZS	Lcom/tencent/mm/vending/g/e$d;
-    //   12: getstatic 280	com/tencent/mm/vending/g/e$d:RaA	Lcom/tencent/mm/vending/g/e$d;
-    //   15: if_acmpeq +13 -> 28
-    //   18: aload_0
-    //   19: getfield 87	com/tencent/mm/vending/g/e:QZS	Lcom/tencent/mm/vending/g/e$d;
-    //   22: getstatic 283	com/tencent/mm/vending/g/e$d:RaB	Lcom/tencent/mm/vending/g/e$d;
-    //   25: if_acmpne +12 -> 37
-    //   28: ldc_w 277
-    //   31: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   34: aload_0
-    //   35: monitorexit
-    //   36: return
-    //   37: iload_1
-    //   38: ifeq +43 -> 81
-    //   41: aload_0
-    //   42: getfield 94	com/tencent/mm/vending/g/e:QZU	Ljava/util/Queue;
-    //   45: invokeinterface 286 1 0
-    //   50: ifle +31 -> 81
-    //   53: ldc_w 256
-    //   56: ldc_w 288
-    //   59: iconst_1
-    //   60: anewarray 5	java/lang/Object
-    //   63: dup
-    //   64: iconst_0
-    //   65: aload_0
-    //   66: getfield 94	com/tencent/mm/vending/g/e:QZU	Ljava/util/Queue;
-    //   69: invokeinterface 286 1 0
-    //   74: invokestatic 293	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   77: aastore
-    //   78: invokestatic 296	com/tencent/mm/vending/f/a:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   81: aload_0
-    //   82: getstatic 280	com/tencent/mm/vending/g/e$d:RaA	Lcom/tencent/mm/vending/g/e$d;
-    //   85: putfield 87	com/tencent/mm/vending/g/e:QZS	Lcom/tencent/mm/vending/g/e$d;
-    //   88: aload_0
-    //   89: getfield 94	com/tencent/mm/vending/g/e:QZU	Ljava/util/Queue;
-    //   92: invokeinterface 299 1 0
-    //   97: aload_0
-    //   98: aconst_null
-    //   99: invokevirtual 146	com/tencent/mm/vending/g/e:el	(Ljava/lang/Object;)V
-    //   102: aload_0
-    //   103: getfield 301	com/tencent/mm/vending/g/e:Raf	Lcom/tencent/mm/vending/h/d;
-    //   106: ifnull +10 -> 116
-    //   109: aload_0
-    //   110: getfield 301	com/tencent/mm/vending/g/e:Raf	Lcom/tencent/mm/vending/h/d;
-    //   113: invokevirtual 304	com/tencent/mm/vending/h/d:cancel	()V
-    //   116: ldc_w 277
-    //   119: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   122: goto -88 -> 34
-    //   125: astore_2
-    //   126: aload_0
-    //   127: monitorexit
-    //   128: aload_2
-    //   129: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	130	0	this	e
-    //   0	130	1	paramBoolean	boolean
-    //   125	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	28	125	finally
-    //   28	34	125	finally
-    //   41	81	125	finally
-    //   81	116	125	finally
-    //   116	122	125	finally
+    AppMethodBeat.i(247626);
+    if (this.YAi != d.YAN)
+    {
+      AppMethodBeat.o(247626);
+      return;
+    }
+    this.YAi = d.YAO;
+    Object localObject2 = (a)this.YAk.peek();
+    if (localObject2 == null)
+    {
+      if (this.YAh)
+      {
+        this.YAi = d.YAR;
+        this.YAC = ieI();
+        this.YAz = true;
+        if (this.YAy != null)
+        {
+          localObject1 = this.YAy.iterator();
+          while (((Iterator)localObject1).hasNext()) {
+            b((Pair)((Iterator)localObject1).next(), this.YAC);
+          }
+          AppMethodBeat.o(247626);
+        }
+      }
+      else
+      {
+        this.YAi = d.YAN;
+      }
+      AppMethodBeat.o(247626);
+      return;
+    }
+    Object localObject1 = ((a)localObject2).keH;
+    com.tencent.mm.vending.h.d locald = ((a)localObject2).mScheduler;
+    long l = ((a)localObject2).mInterval;
+    boolean bool = ((a)localObject2).YAL;
+    if (this.YAi == d.YAP)
+    {
+      com.tencent.mm.vending.f.a.i("Vending.Pipeline", "This pipeline is Pausing. We will stop dequeueFunctionAndInvoke and waiting resume() call", new Object[0]);
+      AppMethodBeat.o(247626);
+      return;
+    }
+    this.YAr = ((a)this.YAk.poll());
+    this.mSchedulerInvoker.c(locald);
+    localObject2 = ieI();
+    if (l < 0L)
+    {
+      this.mSchedulerInvoker.a((com.tencent.mm.vending.c.a)localObject1, localObject2, bool);
+      AppMethodBeat.o(247626);
+      return;
+    }
+    this.YAv = g.current();
+    this.YAv.arrangeInterval(new e.5(this, (com.tencent.mm.vending.c.a)localObject1, localObject2, bool), l);
+    AppMethodBeat.o(247626);
   }
   
   public c<_Var> H(Object... paramVarArgs)
@@ -386,11 +453,101 @@ public class e<_Var>
     }
   }
   
-  public c<_Var> Oc(long paramLong)
+  public c<_Var> HR(boolean paramBoolean)
   {
     try
     {
-      this.Rac = paramLong;
+      this.YAt = paramBoolean;
+      return this;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  /* Error */
+  public final void HS(boolean paramBoolean)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc_w 408
+    //   5: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_0
+    //   9: getfield 80	com/tencent/mm/vending/g/e:YAi	Lcom/tencent/mm/vending/g/e$d;
+    //   12: getstatic 411	com/tencent/mm/vending/g/e$d:YAQ	Lcom/tencent/mm/vending/g/e$d;
+    //   15: if_acmpeq +13 -> 28
+    //   18: aload_0
+    //   19: getfield 80	com/tencent/mm/vending/g/e:YAi	Lcom/tencent/mm/vending/g/e$d;
+    //   22: getstatic 339	com/tencent/mm/vending/g/e$d:YAR	Lcom/tencent/mm/vending/g/e$d;
+    //   25: if_acmpne +12 -> 37
+    //   28: ldc_w 408
+    //   31: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   34: aload_0
+    //   35: monitorexit
+    //   36: return
+    //   37: iload_1
+    //   38: ifeq +42 -> 80
+    //   41: aload_0
+    //   42: getfield 87	com/tencent/mm/vending/g/e:YAk	Ljava/util/Queue;
+    //   45: invokeinterface 414 1 0
+    //   50: ifle +30 -> 80
+    //   53: ldc 188
+    //   55: ldc_w 416
+    //   58: iconst_1
+    //   59: anewarray 5	java/lang/Object
+    //   62: dup
+    //   63: iconst_0
+    //   64: aload_0
+    //   65: getfield 87	com/tencent/mm/vending/g/e:YAk	Ljava/util/Queue;
+    //   68: invokeinterface 414 1 0
+    //   73: invokestatic 316	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   76: aastore
+    //   77: invokestatic 419	com/tencent/mm/vending/f/a:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   80: aload_0
+    //   81: getstatic 411	com/tencent/mm/vending/g/e$d:YAQ	Lcom/tencent/mm/vending/g/e$d;
+    //   84: putfield 80	com/tencent/mm/vending/g/e:YAi	Lcom/tencent/mm/vending/g/e$d;
+    //   87: aload_0
+    //   88: getfield 87	com/tencent/mm/vending/g/e:YAk	Ljava/util/Queue;
+    //   91: invokeinterface 422 1 0
+    //   96: aload_0
+    //   97: aconst_null
+    //   98: invokespecial 139	com/tencent/mm/vending/g/e:eq	(Ljava/lang/Object;)V
+    //   101: aload_0
+    //   102: getfield 376	com/tencent/mm/vending/g/e:YAv	Lcom/tencent/mm/vending/h/d;
+    //   105: ifnull +10 -> 115
+    //   108: aload_0
+    //   109: getfield 376	com/tencent/mm/vending/g/e:YAv	Lcom/tencent/mm/vending/h/d;
+    //   112: invokevirtual 425	com/tencent/mm/vending/h/d:cancel	()V
+    //   115: ldc_w 408
+    //   118: invokestatic 129	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   121: goto -87 -> 34
+    //   124: astore_2
+    //   125: aload_0
+    //   126: monitorexit
+    //   127: aload_2
+    //   128: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	129	0	this	e
+    //   0	129	1	paramBoolean	boolean
+    //   124	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	28	124	finally
+    //   28	34	124	finally
+    //   41	80	124	finally
+    //   80	115	124	finally
+    //   115	121	124	finally
+  }
+  
+  public c<_Var> Wo(long paramLong)
+  {
+    try
+    {
+      this.YAs = paramLong;
       return this;
     }
     finally
@@ -431,7 +588,7 @@ public class e<_Var>
     try
     {
       AppMethodBeat.i(74844);
-      a(parama, this.QZW);
+      a(parama, this.YAm);
       AppMethodBeat.o(74844);
       return this;
     }
@@ -447,7 +604,7 @@ public class e<_Var>
     try
     {
       AppMethodBeat.i(74846);
-      a(paramb, this.QZW);
+      a(paramb, this.YAm);
       AppMethodBeat.o(74846);
       return this;
     }
@@ -490,29 +647,6 @@ public class e<_Var>
     }
   }
   
-  final void a(final Pair<d.a, com.tencent.mm.vending.h.d> paramPair, final Object paramObject)
-  {
-    AppMethodBeat.i(74840);
-    com.tencent.mm.vending.h.d locald = (com.tencent.mm.vending.h.d)paramPair.second;
-    paramPair = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(74854);
-        ((d.a)paramPair.first).cn(paramObject);
-        AppMethodBeat.o(74854);
-      }
-    };
-    if (locald == null)
-    {
-      com.tencent.mm.vending.f.a.e("Vending.Pipeline", "Default scheduler %s is not available!!!", new Object[] { this.QZW });
-      AppMethodBeat.o(74840);
-      return;
-    }
-    locald.arrange(paramPair);
-    AppMethodBeat.o(74840);
-  }
-  
   public c<_Var> b(com.tencent.mm.vending.e.b paramb)
   {
     AppMethodBeat.i(74829);
@@ -531,12 +665,12 @@ public class e<_Var>
       AppMethodBeat.o(74828);
       return this;
     }
-    this.QZV = paramd;
+    this.YAl = paramd;
     AppMethodBeat.o(74828);
     return this;
   }
   
-  public c<_Var> boF(String paramString)
+  public c<_Var> bBv(String paramString)
   {
     AppMethodBeat.i(74827);
     if (paramString == null)
@@ -545,8 +679,8 @@ public class e<_Var>
       AppMethodBeat.o(74827);
       return this;
     }
-    this.QZV = g.boH(paramString);
-    Assert.assertNotNull("mCurrentScheduler should not be null!", this.QZV);
+    this.YAl = g.bBx(paramString);
+    Assert.assertNotNull("mCurrentScheduler should not be null!", this.YAl);
     AppMethodBeat.o(74827);
     return this;
   }
@@ -556,7 +690,7 @@ public class e<_Var>
     try
     {
       AppMethodBeat.i(74838);
-      parama = a(parama, this.Rad);
+      parama = a(parama, this.YAt);
       AppMethodBeat.o(74838);
       return parama;
     }
@@ -570,7 +704,7 @@ public class e<_Var>
   public <_Ret> c<_Ret> d(com.tencent.mm.vending.c.a<_Ret, _Var> parama)
   {
     AppMethodBeat.i(74835);
-    parama = boF("Vending.LOGIC").c(parama);
+    parama = bBv("Vending.LOGIC").c(parama);
     AppMethodBeat.o(74835);
     return parama;
   }
@@ -578,208 +712,36 @@ public class e<_Var>
   public void dead()
   {
     AppMethodBeat.i(74833);
-    Dv(true);
+    HS(true);
     AppMethodBeat.o(74833);
   }
   
   public <_Ret> c<_Ret> e(com.tencent.mm.vending.c.a<_Ret, _Var> parama)
   {
     AppMethodBeat.i(74836);
-    parama = boF("Vending.HEAVY_WORK").c(parama);
+    parama = bBv("Vending.HEAVY_WORK").c(parama);
     AppMethodBeat.o(74836);
     return parama;
-  }
-  
-  final void el(Object paramObject)
-  {
-    try
-    {
-      AppMethodBeat.i(201256);
-      this.QZY = paramObject;
-      this.QZX = true;
-      com.tencent.mm.vending.f.a.d("Vending.Pipeline", "set input(%s)", new Object[] { ek(paramObject) });
-      AppMethodBeat.o(201256);
-      return;
-    }
-    finally
-    {
-      paramObject = finally;
-      throw paramObject;
-    }
   }
   
   public <_Ret> c<_Ret> f(com.tencent.mm.vending.c.a<_Ret, _Var> parama)
   {
     AppMethodBeat.i(74834);
-    parama = boF("Vending.UI").c(parama);
+    parama = bBv("Vending.UI").c(parama);
     AppMethodBeat.o(74834);
     return parama;
   }
   
-  /* Error */
-  final void hdA()
+  public final b ieE()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc_w 409
-    //   5: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: aload_0
-    //   9: getfield 89	com/tencent/mm/vending/g/e:QZT	Z
-    //   12: ifeq +86 -> 98
-    //   15: aload_0
-    //   16: aload_0
-    //   17: getfield 96	com/tencent/mm/vending/g/e:mRetryCount	I
-    //   20: iconst_1
-    //   21: iadd
-    //   22: putfield 96	com/tencent/mm/vending/g/e:mRetryCount	I
-    //   25: ldc_w 256
-    //   28: ldc_w 411
-    //   31: iconst_2
-    //   32: anewarray 5	java/lang/Object
-    //   35: dup
-    //   36: iconst_0
-    //   37: aload_0
-    //   38: getfield 413	com/tencent/mm/vending/g/e:Raa	Lcom/tencent/mm/vending/g/e$a;
-    //   41: getfield 417	com/tencent/mm/vending/g/e$a:hsM	Lcom/tencent/mm/vending/c/a;
-    //   44: invokevirtual 421	java/lang/Object:toString	()Ljava/lang/String;
-    //   47: aastore
-    //   48: dup
-    //   49: iconst_1
-    //   50: aload_0
-    //   51: getfield 96	com/tencent/mm/vending/g/e:mRetryCount	I
-    //   54: invokestatic 293	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   57: aastore
-    //   58: invokestatic 423	com/tencent/mm/vending/f/a:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   61: aload_0
-    //   62: iconst_0
-    //   63: putfield 89	com/tencent/mm/vending/g/e:QZT	Z
-    //   66: aload_0
-    //   67: getfield 94	com/tencent/mm/vending/g/e:QZU	Ljava/util/Queue;
-    //   70: checkcast 91	java/util/LinkedList
-    //   73: iconst_0
-    //   74: aload_0
-    //   75: getfield 413	com/tencent/mm/vending/g/e:Raa	Lcom/tencent/mm/vending/g/e$a;
-    //   78: invokevirtual 426	java/util/LinkedList:add	(ILjava/lang/Object;)V
-    //   81: aload_0
-    //   82: aload_0
-    //   83: getfield 252	com/tencent/mm/vending/g/e:QZZ	Ljava/lang/Object;
-    //   86: invokevirtual 146	com/tencent/mm/vending/g/e:el	(Ljava/lang/Object;)V
-    //   89: ldc_w 409
-    //   92: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   95: aload_0
-    //   96: monitorexit
-    //   97: return
-    //   98: aload_0
-    //   99: iconst_0
-    //   100: putfield 96	com/tencent/mm/vending/g/e:mRetryCount	I
-    //   103: ldc_w 409
-    //   106: invokestatic 136	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   109: goto -14 -> 95
-    //   112: astore_1
-    //   113: aload_0
-    //   114: monitorexit
-    //   115: aload_1
-    //   116: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	117	0	this	e
-    //   112	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	95	112	finally
-    //   98	109	112	finally
+    return this.YAu;
   }
   
-  final Object hdC()
+  public final d<_Var> ieF()
   {
     try
     {
-      Object localObject1 = this.QZY;
-      return localObject1;
-    }
-    finally
-    {
-      localObject2 = finally;
-      throw localObject2;
-    }
-  }
-  
-  final void hdD()
-  {
-    AppMethodBeat.i(201257);
-    if (this.QZS != d.Rax)
-    {
-      AppMethodBeat.o(201257);
-      return;
-    }
-    this.QZS = d.Ray;
-    final Object localObject2 = (a)this.QZU.peek();
-    if (localObject2 == null)
-    {
-      if (this.QZR)
-      {
-        this.QZS = d.RaB;
-        this.Ram = hdB();
-        this.Raj = true;
-        if (this.Rai != null)
-        {
-          localObject1 = this.Rai.iterator();
-          while (((Iterator)localObject1).hasNext()) {
-            b((Pair)((Iterator)localObject1).next(), this.Ram);
-          }
-          AppMethodBeat.o(201257);
-        }
-      }
-      else
-      {
-        this.QZS = d.Rax;
-      }
-      AppMethodBeat.o(201257);
-      return;
-    }
-    Object localObject1 = ((a)localObject2).hsM;
-    com.tencent.mm.vending.h.d locald = ((a)localObject2).mScheduler;
-    long l = ((a)localObject2).mInterval;
-    final boolean bool = ((a)localObject2).Rav;
-    if (this.QZS == d.Raz)
-    {
-      com.tencent.mm.vending.f.a.i("Vending.Pipeline", "This pipeline is Pausing. We will stop dequeueFunctionAndInvoke and waiting resume() call", new Object[0]);
-      AppMethodBeat.o(201257);
-      return;
-    }
-    this.Rab = ((a)this.QZU.poll());
-    this.mSchedulerInvoker.c(locald);
-    localObject2 = hdB();
-    if (l < 0L)
-    {
-      this.mSchedulerInvoker.a((com.tencent.mm.vending.c.a)localObject1, localObject2, bool);
-      AppMethodBeat.o(201257);
-      return;
-    }
-    this.Raf = g.current();
-    this.Raf.arrangeInterval(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(74862);
-        e.this.mSchedulerInvoker.a(this.Ras, localObject2, bool);
-        AppMethodBeat.o(74862);
-      }
-    }, l);
-    AppMethodBeat.o(201257);
-  }
-  
-  public final b hdx()
-  {
-    return this.Rae;
-  }
-  
-  public final d<_Var> hdy()
-  {
-    try
-    {
-      this.QZR = true;
+      this.YAh = true;
       return this;
     }
     finally
@@ -791,24 +753,24 @@ public class e<_Var>
   
   public final void stop()
   {
-    AppMethodBeat.i(258610);
-    Dv(true);
-    AppMethodBeat.o(258610);
+    AppMethodBeat.i(292711);
+    HS(true);
+    AppMethodBeat.o(292711);
   }
   
   static final class a
   {
-    public boolean Rav;
-    public com.tencent.mm.vending.c.a hsM;
+    public boolean YAL;
+    public com.tencent.mm.vending.c.a keH;
     public long mInterval;
     public com.tencent.mm.vending.h.d mScheduler;
     
     public a(com.tencent.mm.vending.c.a parama, com.tencent.mm.vending.h.d paramd, long paramLong, boolean paramBoolean)
     {
-      this.hsM = parama;
+      this.keH = parama;
       this.mScheduler = paramd;
       this.mInterval = paramLong;
-      this.Rav = paramBoolean;
+      this.YAL = paramBoolean;
     }
   }
   
@@ -822,9 +784,9 @@ public class e<_Var>
       AppMethodBeat.i(177479);
       synchronized (e.this)
       {
-        if (e.this.QZS != e.d.Raz)
+        if (e.e(e.this) != e.d.YAP)
         {
-          com.tencent.mm.vending.f.a.i("Vending.Pipeline", "state is not pausing %s, skip this wormhole", new Object[] { e.this.QZS });
+          com.tencent.mm.vending.f.a.i("Vending.Pipeline", "state is not pausing %s, skip this wormhole", new Object[] { e.e(e.this) });
           AppMethodBeat.o(177479);
           return;
         }
@@ -832,8 +794,8 @@ public class e<_Var>
         if (paramVarArgs.length == 0) {}
         for (paramVarArgs = null;; paramVarArgs = paramVarArgs[0])
         {
-          locale2.el(paramVarArgs);
-          com.tencent.mm.vending.f.a.i("Vending.Pipeline", "pipline(%s) wormhole(%s).", new Object[] { e.this, e.ek(e.this.hdC()) });
+          e.a(locale2, paramVarArgs);
+          com.tencent.mm.vending.f.a.i("Vending.Pipeline", "pipline(%s) wormhole(%s).", new Object[] { e.this, e.er(e.k(e.this)) });
           resume();
           AppMethodBeat.o(177479);
           return;
@@ -841,45 +803,45 @@ public class e<_Var>
             break;
           }
         }
-        paramVarArgs = k.J(paramVarArgs);
+        paramVarArgs = k.K(paramVarArgs);
       }
     }
     
-    public final void ej(Object paramObject)
+    public final void eo(Object paramObject)
     {
       AppMethodBeat.i(177477);
       synchronized (e.this)
       {
-        if (e.this.QZS == e.d.RaA)
+        if (e.e(e.this) == e.d.YAQ)
         {
           com.tencent.mm.vending.f.a.i("Vending.Pipeline", "interrupted, skip this interrupt.", new Object[0]);
           AppMethodBeat.o(177477);
           return;
         }
-        if ((!e.a(e.this)) && (e.this.QZS != e.d.Raz))
+        if ((!e.h(e.this)) && (e.e(e.this) != e.d.YAP))
         {
           com.tencent.mm.vending.f.a.i("Vending.Pipeline", "interrupt not in func scope or pending, skip this retryOrInterrupt.", new Object[0]);
           AppMethodBeat.o(177477);
           return;
         }
         com.tencent.mm.vending.f.a.i("Vending.Pipeline", "interrupt Pipeline(%s)", new Object[] { e.this });
-        e.this.Dv(false);
-        e.this.Rak = true;
-        e.this.Ran = paramObject;
-        if (e.this.Rah != null)
+        e.a(e.this, false);
+        e.i(e.this);
+        e.b(e.this, paramObject);
+        if (e.j(e.this) != null)
         {
-          Iterator localIterator = e.this.Rah.iterator();
+          Iterator localIterator = e.j(e.this).iterator();
           if (localIterator.hasNext())
           {
             Pair localPair = (Pair)localIterator.next();
-            e.this.a(localPair, paramObject);
+            e.a(e.this, localPair, paramObject);
           }
         }
       }
       AppMethodBeat.o(177477);
     }
     
-    public final void hdw()
+    public final void ieD()
     {
       AppMethodBeat.i(177478);
       for (;;)
@@ -888,21 +850,21 @@ public class e<_Var>
         {
           synchronized (e.this)
           {
-            if ((e.this.QZS == e.d.RaA) || (e.this.QZS == e.d.Raw))
+            if ((e.e(e.this) == e.d.YAQ) || (e.e(e.this) == e.d.YAM))
             {
-              com.tencent.mm.vending.f.a.w("Vending.Pipeline", "current is state(%s), ignore pause.", new Object[] { e.this.QZS });
+              com.tencent.mm.vending.f.a.w("Vending.Pipeline", "current is state(%s), ignore pause.", new Object[] { e.e(e.this) });
               AppMethodBeat.o(177478);
               return;
             }
-            if (!e.a(e.this)) {
+            if (!e.h(e.this)) {
               com.tencent.mm.vending.f.a.e("Vending.Pipeline", "you are using mario().pause() out of a functional scope on %s!", new Object[] { e.this });
             }
           }
         }
-        if (!e.b(e.this)) {
+        if (!e.l(e.this)) {
           com.tencent.mm.vending.f.a.e("Vending.Pipeline", "you are using mario().pause() out of calling thread on %s!", new Object[] { e.this });
         } else {
-          e.this.QZS = e.d.Raz;
+          e.a(e.this, e.d.YAP);
         }
       }
     }
@@ -912,35 +874,24 @@ public class e<_Var>
       AppMethodBeat.i(177480);
       synchronized (e.this)
       {
-        if (e.this.QZS != e.d.Raz)
+        if (e.e(e.this) != e.d.YAP)
         {
           com.tencent.mm.vending.f.a.e("Vending.Pipeline", "this Pipeline(%s) is not pausing! why call resume?", new Object[] { e.this });
           AppMethodBeat.o(177480);
           return;
         }
-        if (!e.a(e.this))
+        if (!e.h(e.this))
         {
-          e.this.QZS = e.d.Rax;
-          e.this.hdA();
-          if (!e.b(e.this)) {
-            e.this.hdD();
+          e.a(e.this, e.d.YAN);
+          e.f(e.this);
+          if (!e.l(e.this)) {
+            e.g(e.this);
           }
           AppMethodBeat.o(177480);
           return;
         }
-        e.this.QZS = e.d.Ray;
+        e.a(e.this, e.d.YAO);
       }
-    }
-  }
-  
-  public static final class c
-    extends Error
-  {
-    public c(String paramString, Object... paramVarArgs)
-    {
-      super();
-      AppMethodBeat.i(74804);
-      AppMethodBeat.o(74804);
     }
   }
   
@@ -949,13 +900,13 @@ public class e<_Var>
     static
     {
       AppMethodBeat.i(177483);
-      Raw = new d("Idle", 0);
-      Rax = new d("Resolved", 1);
-      Ray = new d("Invoking", 2);
-      Raz = new d("Pausing", 3);
-      RaA = new d("Interrupted", 4);
-      RaB = new d("AllDone", 5);
-      RaC = new d[] { Raw, Rax, Ray, Raz, RaA, RaB };
+      YAM = new d("Idle", 0);
+      YAN = new d("Resolved", 1);
+      YAO = new d("Invoking", 2);
+      YAP = new d("Pausing", 3);
+      YAQ = new d("Interrupted", 4);
+      YAR = new d("AllDone", 5);
+      YAS = new d[] { YAM, YAN, YAO, YAP, YAQ, YAR };
       AppMethodBeat.o(177483);
     }
     
@@ -964,7 +915,7 @@ public class e<_Var>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.vending.g.e
  * JD-Core Version:    0.7.0.1
  */

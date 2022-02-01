@@ -2,7 +2,7 @@
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:id="@id/dbc" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <View android:id="@id/ja2" android:background="@null" android:layout_width="120.0dip" android:layout_height="120.0dip" android:layout_centerHorizontal="true" />
+        <View android:id="@id/ja2" android:background="@null" android:layout_width="120.0dip" android:layout_height="120.0dip" android:layout_centerHorizontal="true" android:contentDescription="@string/dkj" />
         <TextView android:textSize="12.0sp" android:textColor="@color/BW_0_Alpha_0_3" android:id="@id/dbe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="90.0dip" android:text="@string/dkj" android:layout_centerHorizontal="true" />
     </RelativeLayout>
 </LinearLayout>

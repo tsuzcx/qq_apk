@@ -18,26 +18,26 @@ public class LuckyAvatarParticleView
   extends View
 {
   public static DisplayMetrics metrics;
+  private int EvZ;
+  private int Ewa;
+  private List<Rect> Ewb;
+  private List<Integer> Ewc;
+  private List<Integer> Ewd;
+  private int Ewe;
+  private int Ewf;
+  private int Ewg;
+  private int Ewh;
   private ValueAnimator animator;
   private long duration;
   private Paint paint;
-  private int ySc;
-  private int ySd;
-  private List<Rect> ySe;
-  private List<Integer> ySf;
-  private List<Integer> ySg;
-  private int ySh;
-  private int ySi;
-  private int ySj;
-  private int ySk;
   
   public LuckyAvatarParticleView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(65051);
-    this.ySe = new ArrayList();
-    this.ySf = new ArrayList();
-    this.ySg = new ArrayList();
+    this.Ewb = new ArrayList();
+    this.Ewc = new ArrayList();
+    this.Ewd = new ArrayList();
     this.paint = new Paint();
     AppMethodBeat.o(65051);
   }
@@ -45,8 +45,8 @@ public class LuckyAvatarParticleView
   private int getRandomRectWidth()
   {
     AppMethodBeat.i(65053);
-    int i = this.ySj;
-    int j = (int)(Math.random() * (this.ySk - this.ySj));
+    int i = this.Ewg;
+    int j = (int)(Math.random() * (this.Ewh - this.Ewg));
     AppMethodBeat.o(65053);
     return i + j;
   }
@@ -54,8 +54,8 @@ public class LuckyAvatarParticleView
   private int getRandomVelocity()
   {
     AppMethodBeat.i(65052);
-    int i = this.ySh;
-    int j = (int)(Math.random() * (this.ySi - this.ySh));
+    int i = this.Ewe;
+    int j = (int)(Math.random() * (this.Ewf - this.Ewe));
     AppMethodBeat.o(65052);
     return i + j;
   }
@@ -65,9 +65,9 @@ public class LuckyAvatarParticleView
     AppMethodBeat.i(65054);
     super.onDraw(paramCanvas);
     int i = 0;
-    while (i < this.ySe.size())
+    while (i < this.Ewb.size())
     {
-      paramCanvas.drawRect((Rect)this.ySe.get(i), this.paint);
+      paramCanvas.drawRect((Rect)this.Ewb.get(i), this.paint);
       i += 1;
     }
     AppMethodBeat.o(65054);
@@ -123,7 +123,7 @@ public class LuckyAvatarParticleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.f2f.ui.LuckyAvatarParticleView
  * JD-Core Version:    0.7.0.1
  */

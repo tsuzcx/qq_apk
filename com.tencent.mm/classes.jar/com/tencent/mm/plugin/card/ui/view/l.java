@@ -8,25 +8,27 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.plugin.card.a.d;
+import com.tencent.mm.plugin.card.a.e;
 import com.tencent.mm.plugin.card.ui.n;
-import com.tencent.mm.protocal.protobuf.abz;
-import com.tencent.mm.protocal.protobuf.agz;
-import com.tencent.mm.protocal.protobuf.ty;
+import com.tencent.mm.protocal.protobuf.acg;
+import com.tencent.mm.protocal.protobuf.ahl;
+import com.tencent.mm.protocal.protobuf.ua;
 import com.tencent.mm.ui.MMActivity;
 import java.util.LinkedList;
 
 public final class l
   extends i
 {
-  View qjZ;
-  LinearLayout qka;
-  boolean qkb = false;
+  View tFV;
+  LinearLayout tFW;
+  boolean tFX = false;
   
-  public final void cxw()
+  public final void cKY()
   {
     AppMethodBeat.i(113683);
-    if (this.qjZ != null) {
-      this.qjZ.setVisibility(8);
+    if (this.tFV != null) {
+      this.tFV.setVisibility(8);
     }
     AppMethodBeat.o(113683);
   }
@@ -36,61 +38,61 @@ public final class l
   public final void update()
   {
     AppMethodBeat.i(113682);
-    if (this.qjZ == null) {
-      this.qjZ = ((ViewStub)findViewById(2131298101)).inflate();
+    if (this.tFV == null) {
+      this.tFV = ((ViewStub)findViewById(a.d.tbT)).inflate();
     }
-    Object localObject = this.qjX.cvq().csR().LcB;
-    ((TextView)this.qjZ.findViewById(2131299562)).setText(((agz)localObject).title);
-    if ((((agz)localObject).LqE != null) && (((agz)localObject).LqE.size() > 0))
+    Object localObject = this.tFT.cIS().cGt().SdO;
+    ((TextView)this.tFV.findViewById(a.d.tfC)).setText(((ahl)localObject).title);
+    if ((((ahl)localObject).Ssc != null) && (((ahl)localObject).Ssc.size() > 0))
     {
-      this.qka = ((LinearLayout)this.qjZ.findViewById(2131299561));
-      this.qka.removeAllViews();
-      final LinkedList localLinkedList = ((agz)localObject).LqE;
-      final LayoutInflater localLayoutInflater = (LayoutInflater)this.qjX.cvt().getSystemService("layout_inflater");
-      if ((((agz)localObject).LqD >= localLinkedList.size()) || (this.qkb))
+      this.tFW = ((LinearLayout)this.tFV.findViewById(a.d.tfB));
+      this.tFW.removeAllViews();
+      final LinkedList localLinkedList = ((ahl)localObject).Ssc;
+      final LayoutInflater localLayoutInflater = (LayoutInflater)this.tFT.cIV().getSystemService("layout_inflater");
+      if ((((ahl)localObject).Ssb >= localLinkedList.size()) || (this.tFX))
       {
-        this.qjZ.findViewById(2131299560).setVisibility(8);
+        this.tFV.findViewById(a.d.tfA).setVisibility(8);
         i = 0;
         while (i < localLinkedList.size())
         {
-          localObject = (TextView)localLayoutInflater.inflate(2131493448, null, false);
-          ((TextView)localObject).setText(((abz)localLinkedList.get(i)).title);
-          this.qka.addView((View)localObject);
+          localObject = (TextView)localLayoutInflater.inflate(a.e.tjn, null, false);
+          ((TextView)localObject).setText(((acg)localLinkedList.get(i)).title);
+          this.tFW.addView((View)localObject);
           i += 1;
         }
-        this.qka.invalidate();
+        this.tFW.invalidate();
         AppMethodBeat.o(113682);
         return;
       }
       int i = 0;
-      while (i < ((agz)localObject).LqD)
+      while (i < ((ahl)localObject).Ssb)
       {
-        TextView localTextView = (TextView)localLayoutInflater.inflate(2131493448, null, false);
-        localTextView.setText(((abz)localLinkedList.get(i)).title);
-        this.qka.addView(localTextView);
+        TextView localTextView = (TextView)localLayoutInflater.inflate(a.e.tjn, null, false);
+        localTextView.setText(((acg)localLinkedList.get(i)).title);
+        this.tFW.addView(localTextView);
         i += 1;
       }
-      this.qka.invalidate();
-      this.qjZ.findViewById(2131299560).setVisibility(0);
-      this.qjZ.findViewById(2131299560).setOnClickListener(new View.OnClickListener()
+      this.tFW.invalidate();
+      this.tFV.findViewById(a.d.tfA).setVisibility(0);
+      this.tFV.findViewById(a.d.tfA).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(113681);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/card/ui/view/CardDetailTableView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          l.this.qkb = true;
-          l.this.qjZ.findViewById(2131299560).setVisibility(8);
-          int i = this.qkc.LqD;
+          localb.bn(paramAnonymousView);
+          a.c("com/tencent/mm/plugin/card/ui/view/CardDetailTableView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          l.this.tFX = true;
+          l.this.tFV.findViewById(a.d.tfA).setVisibility(8);
+          int i = this.tFY.Ssb;
           while (i < localLinkedList.size())
           {
-            paramAnonymousView = (TextView)localLayoutInflater.inflate(2131493448, null, false);
-            paramAnonymousView.setText(((abz)localLinkedList.get(i)).title);
-            l.this.qka.addView(paramAnonymousView);
+            paramAnonymousView = (TextView)localLayoutInflater.inflate(a.e.tjn, null, false);
+            paramAnonymousView.setText(((acg)localLinkedList.get(i)).title);
+            l.this.tFW.addView(paramAnonymousView);
             i += 1;
           }
-          l.this.qka.invalidate();
+          l.this.tFW.invalidate();
           a.a(this, "com/tencent/mm/plugin/card/ui/view/CardDetailTableView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(113681);
         }

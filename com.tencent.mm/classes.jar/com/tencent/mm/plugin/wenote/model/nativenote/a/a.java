@@ -11,19 +11,19 @@ import java.util.regex.Pattern;
 public final class a
 {
   private static String TAG;
-  private static f<String, Spanned> qPZ;
-  public static Spanned qQa;
+  private static f<String, Spanned> usf;
+  public static Spanned usg;
   
   static
   {
     AppMethodBeat.i(30381);
     TAG = "MicroMsg.ConvertHtmlToSpanned";
-    qPZ = new com.tencent.mm.memory.a.c(30);
-    qQa = null;
+    usf = new com.tencent.mm.memory.a.c(30);
+    usg = null;
     AppMethodBeat.o(30381);
   }
   
-  public static Spanned alS(String paramString)
+  public static Spanned atL(String paramString)
   {
     AppMethodBeat.i(30379);
     Object localObject = paramString;
@@ -31,13 +31,13 @@ public final class a
       localObject = "";
     }
     paramString = Pattern.compile("\n", 2).matcher((CharSequence)localObject).replaceAll("<br/>");
-    localObject = fromHtml(paramString);
-    qPZ.put(paramString, localObject);
+    localObject = atM(paramString);
+    usf.put(paramString, localObject);
     AppMethodBeat.o(30379);
     return localObject;
   }
   
-  private static Spanned fromHtml(String paramString)
+  private static Spanned atM(String paramString)
   {
     AppMethodBeat.i(30380);
     String str = paramString;
@@ -50,7 +50,7 @@ public final class a
     }
     try
     {
-      qQa = null;
+      usg = null;
       paramString = Html.fromHtml(paramString, null, new c());
       if (paramString == null)
       {
@@ -62,9 +62,9 @@ public final class a
     {
       for (;;)
       {
-        if (qQa != null)
+        if (usg != null)
         {
-          paramString = qQa;
+          paramString = usg;
           continue;
           int i = paramString.toString().length();
           if ((i > 1) && (paramString.toString().endsWith("\n")))
@@ -91,7 +91,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.a.a
  * JD-Core Version:    0.7.0.1
  */

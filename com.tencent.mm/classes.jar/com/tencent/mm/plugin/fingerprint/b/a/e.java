@@ -3,21 +3,22 @@ package com.tencent.mm.plugin.fingerprint.b.a;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fingerprint.b.p;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
-public final class e
+public class e
 {
+  public boolean ByJ = false;
+  public c ByS;
   public int errCode = -1;
   public String errMsg = "";
   public int retryCount = 0;
-  public boolean wFM = false;
-  public c wFV;
   
   public static e b(c paramc)
   {
     AppMethodBeat.i(64402);
     e locale = new e();
-    locale.wFV = paramc;
+    locale.ByS = paramc;
     switch (paramc.errCode)
     {
     default: 
@@ -33,9 +34,9 @@ public final class e
       }
     }
     locale.errCode = 2;
-    String str = MMApplicationContext.getContext().getString(2131766337);
+    String str = MMApplicationContext.getContext().getString(a.i.soter_on_error_common);
     if (paramc.errCode == 10308) {
-      str = MMApplicationContext.getContext().getString(2131766338);
+      str = MMApplicationContext.getContext().getString(a.i.soter_on_error_max_trial);
     }
     for (;;)
     {
@@ -43,12 +44,12 @@ public final class e
       break;
       if (paramc.errCode == 2007)
       {
-        p.wFK.wFM = true;
-        locale.wFM = true;
+        p.ByH.ByJ = true;
+        locale.ByJ = true;
       }
       else if (paramc.errCode == 2005)
       {
-        str = MMApplicationContext.getContext().getString(2131766339);
+        str = MMApplicationContext.getContext().getString(a.i.soter_on_sensor_error);
       }
     }
   }

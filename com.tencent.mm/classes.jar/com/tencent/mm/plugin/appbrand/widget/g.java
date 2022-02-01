@@ -1,24 +1,60 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
-import android.graphics.drawable.Drawable;
-import com.tencent.luggage.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.f.c.bg;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import java.lang.reflect.Field;
+import java.util.Map;
 
-public abstract interface g
-  extends b
+public final class g
+  extends bg
 {
-  public static final g olr = new g()
-  {
-    public final Drawable cab()
-    {
-      return null;
-    }
-  };
+  public static IAutoDBItem.MAutoDBInfo lqK;
   
-  public abstract Drawable cab();
+  static
+  {
+    AppMethodBeat.i(76398);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[6];
+    localMAutoDBInfo.columns = new String[7];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localMAutoDBInfo.columns[0] = "id";
+    localMAutoDBInfo.colsMap.put("id", "TEXT");
+    localStringBuilder.append(" id TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[1] = "cacheKey";
+    localMAutoDBInfo.colsMap.put("cacheKey", "TEXT");
+    localStringBuilder.append(" cacheKey TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[2] = "appId";
+    localMAutoDBInfo.colsMap.put("appId", "TEXT");
+    localStringBuilder.append(" appId TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[3] = "data";
+    localMAutoDBInfo.colsMap.put("data", "TEXT");
+    localStringBuilder.append(" data TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[4] = "interval";
+    localMAutoDBInfo.colsMap.put("interval", "INTEGER");
+    localStringBuilder.append(" interval INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[5] = "updateTime";
+    localMAutoDBInfo.colsMap.put("updateTime", "LONG");
+    localStringBuilder.append(" updateTime LONG");
+    localMAutoDBInfo.columns[6] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    lqK = localMAutoDBInfo;
+    AppMethodBeat.o(76398);
+  }
+  
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return lqK;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.g
  * JD-Core Version:    0.7.0.1
  */

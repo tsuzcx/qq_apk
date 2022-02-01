@@ -7,7 +7,7 @@ import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -27,7 +27,7 @@ public class i
   {
     AppMethodBeat.i(78527);
     Log.i("MicroMsg.JsApiChooseImage", "invoke");
-    Object localObject3 = paramb.ctb.csi;
+    Object localObject3 = paramb.crh.cqn;
     Object localObject1 = ((JSONObject)localObject3).optJSONArray("sourceType");
     int k;
     int i;
@@ -62,11 +62,11 @@ public class i
         Log.i("MicroMsg.JsApiChooseImage", "real scene = %d", new Object[] { Integer.valueOf(j) });
         if ((j == 2) || (j == 3))
         {
-          boolean bool = com.tencent.mm.pluginsdk.permission.b.a((Activity)((g)paramb.cta).mContext, "android.permission.CAMERA", 113, "", "");
+          boolean bool = com.tencent.mm.pluginsdk.permission.b.a((Activity)((g)paramb.crg).mContext, "android.permission.CAMERA", 113, "", "");
           Log.d("MicroMsg.JsApiChooseImage", " checkPermission checkcamera[%b]", new Object[] { Boolean.valueOf(bool) });
           if (!bool)
           {
-            paramb.c("android_permission_denied", null);
+            paramb.a("android_permission_denied", null);
             AppMethodBeat.o(78527);
             return;
           }
@@ -115,7 +115,7 @@ public class i
           ((Intent)localObject2).putExtra("key_pick_local_pic_send_raw", (Serializable)localObject1);
           ((Intent)localObject2).putExtra("query_media_type", 1);
           Log.i("MicroMsg.JsApiChooseImage", "doChooseImage: realScene: %d, count: %d, querySourceType: %d, sendRaw: %b", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), localObject1 });
-          ((MMActivity)((g)paramb.cta).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
+          ((MMActivity)((g)paramb.crg).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
           {
             public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
             {
@@ -136,13 +136,13 @@ public class i
                 switch (paramAnonymousInt2)
                 {
                 default: 
-                  paramb.e("fail", localHashMap);
+                  paramb.d("fail", localHashMap);
                 }
               }
               for (;;)
               {
                 label111:
-                ((MMActivity)((g)paramb.cta).mContext).mmSetOnActivityResultCallback(null);
+                ((MMActivity)((g)paramb.crg).mContext).mmSetOnActivityResultCallback(null);
                 AppMethodBeat.o(78526);
                 return;
                 label137:
@@ -157,14 +157,14 @@ public class i
                   if (paramAnonymousIntent != null) {
                     localHashMap.put("sourceType", paramAnonymousIntent);
                   }
-                  paramb.e("", localHashMap);
+                  paramb.d("", localHashMap);
                   break label111;
                 }
-                paramb.e("cancel", localHashMap);
+                paramb.d("cancel", localHashMap);
               }
             }
           });
-          c.a(((g)paramb.cta).mContext, "webview", ".ui.tools.OpenFileChooserUI", (Intent)localObject2, hashCode() & 0xFFFF, false);
+          c.a(((g)paramb.crg).mContext, "webview", ".ui.tools.OpenFileChooserUI", (Intent)localObject2, hashCode() & 0xFFFF, false);
           AppMethodBeat.o(78527);
           return;
           if ((!localObject4.booleanValue()) && (((Boolean)localObject3).booleanValue()))
@@ -183,7 +183,7 @@ public class i
     }
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

@@ -10,32 +10,32 @@ import kotlin.g.b.p;
 import kotlin.l;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/miniprogram_navigator/JsApiLaunchDevMiniProgram;", "Lcom/tencent/mm/plugin/appbrand/jsapi/miniprogram_navigator/JsApiLaunchMiniProgram;", "()V", "dispatchInJsThread", "", "onNavigationWillPerform", "service", "Lcom/tencent/luggage/sdk/jsapi/component/service/AppBrandServiceLU;", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/miniprogram_navigator/JsApiLaunchDevMiniProgram;", "Lcom/tencent/mm/plugin/appbrand/jsapi/miniprogram_navigator/JsApiLaunchMiniProgram;", "()V", "dispatchInJsThread", "", "onNavigationWillPerform", "service", "Lcom/tencent/luggage/sdk/jsapi/component/service/AppBrandServiceLU;", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
 public final class e
   extends f
 {
   public static final int CTRL_INDEX = 967;
   public static final String NAME = "launchDevMiniProgram";
-  public static final a meQ;
+  public static final e.a pcM;
   
   static
   {
-    AppMethodBeat.i(228429);
-    meQ = new a((byte)0);
-    AppMethodBeat.o(228429);
+    AppMethodBeat.i(265418);
+    pcM = new e.a((byte)0);
+    AppMethodBeat.o(265418);
   }
   
   protected final boolean a(d paramd, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(228428);
-    p.h(paramd, "service");
-    p.h(paramJSONObject, "data");
+    AppMethodBeat.i(265417);
+    p.k(paramd, "service");
+    p.k(paramJSONObject, "data");
     String str1 = paramJSONObject.optString("appId");
-    Object localObject = b.a(paramJSONObject.optString("envVersion"), b.meL);
+    Object localObject = b.a(paramJSONObject.optString("envVersion"), b.pcD);
     String str2 = paramJSONObject.optString("downloadURL");
     String str3 = paramJSONObject.optString("checkSumMd5");
     paramJSONObject = paramJSONObject.optString("extoptions");
-    if (b.meM == localObject)
+    if (b.pcE == localObject)
     {
       localObject = (CharSequence)str3;
       int i;
@@ -48,20 +48,20 @@ public final class e
         {
           localObject = new JsApiNavigateToDevMiniProgram.DevPkgInfo();
           ((JsApiNavigateToDevMiniProgram.DevPkgInfo)localObject).appId = str1;
-          ((JsApiNavigateToDevMiniProgram.DevPkgInfo)localObject).ecN = str2;
-          ((JsApiNavigateToDevMiniProgram.DevPkgInfo)localObject).ecO = str3;
-          ((JsApiNavigateToDevMiniProgram.DevPkgInfo)localObject).meX = paramJSONObject;
+          ((JsApiNavigateToDevMiniProgram.DevPkgInfo)localObject).fWS = str2;
+          ((JsApiNavigateToDevMiniProgram.DevPkgInfo)localObject).fWT = str3;
+          ((JsApiNavigateToDevMiniProgram.DevPkgInfo)localObject).pcT = paramJSONObject;
           try
           {
-            paramJSONObject = (IPCVoid)XIPCInvoker.a(MainProcessIPCService.dkO, localObject, JsApiNavigateToDevMiniProgram.a.class);
+            paramJSONObject = (IPCVoid)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, localObject, JsApiNavigateToDevMiniProgram.a.class);
             if (paramJSONObject != null)
             {
               i = 1;
               if (i != 0) {
                 break label225;
               }
-              paramd.i(paramInt, "fail save packageInfo failed");
-              AppMethodBeat.o(228428);
+              paramd.j(paramInt, "fail save packageInfo failed");
+              AppMethodBeat.o(265417);
               return false;
               i = 0;
             }
@@ -80,21 +80,18 @@ public final class e
       }
     }
     label225:
-    AppMethodBeat.o(228428);
+    AppMethodBeat.o(265417);
     return true;
   }
   
-  public final boolean bEa()
+  public final boolean bPy()
   {
     return false;
   }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/miniprogram_navigator/JsApiLaunchDevMiniProgram$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.e
  * JD-Core Version:    0.7.0.1
  */

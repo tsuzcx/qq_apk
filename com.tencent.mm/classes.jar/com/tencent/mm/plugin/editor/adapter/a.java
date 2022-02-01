@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.editor.adapter;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.l;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.l;
 import com.tencent.mm.hellhoundlib.b.b;
 
 public abstract class a
   extends RecyclerView.l
 {
-  private int qOk;
+  private int uqo;
   
-  public abstract void cCV();
+  public abstract void cRA();
   
-  public abstract void cCW();
+  public abstract void cRB();
   
-  public abstract void cCX();
+  public abstract void cRC();
   
   public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
     b localb = new b();
-    localb.bm(paramRecyclerView);
-    localb.pH(paramInt);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/editor/adapter/CollectEditorRecyclerViewAbstractScroller", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.axR());
+    localb.bn(paramRecyclerView);
+    localb.sg(paramInt);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/editor/adapter/CollectEditorRecyclerViewAbstractScroller", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
     super.onScrollStateChanged(paramRecyclerView, paramInt);
-    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/editor/adapter/CollectEditorRecyclerViewAbstractScroller", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/editor/adapter/CollectEditorRecyclerViewAbstractScroller", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
   }
   
   public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
     b localb = new b();
-    localb.bm(paramRecyclerView);
-    localb.pH(paramInt1);
-    localb.pH(paramInt2);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/editor/adapter/CollectEditorRecyclerViewAbstractScroller", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.axR());
-    if (Math.abs(paramInt2) > this.qOk)
+    localb.bn(paramRecyclerView);
+    localb.sg(paramInt1);
+    localb.sg(paramInt2);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/editor/adapter/CollectEditorRecyclerViewAbstractScroller", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aFi());
+    if (Math.abs(paramInt2) > this.uqo)
     {
       paramInt1 = 1;
       if (paramInt1 != 0)
@@ -40,21 +40,21 @@ public abstract class a
         if (paramRecyclerView.canScrollVertically(-1)) {
           break label91;
         }
-        cCX();
+        cRC();
       }
     }
     for (;;)
     {
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/editor/adapter/CollectEditorRecyclerViewAbstractScroller", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/editor/adapter/CollectEditorRecyclerViewAbstractScroller", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
       return;
       paramInt1 = 0;
       break;
       label91:
       if (paramRecyclerView.canScrollVertically(1)) {
         if (paramInt2 < 0) {
-          cCV();
+          cRA();
         } else if (paramInt2 > 0) {
-          cCW();
+          cRB();
         }
       }
     }
@@ -62,7 +62,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.adapter.a
  * JD-Core Version:    0.7.0.1
  */

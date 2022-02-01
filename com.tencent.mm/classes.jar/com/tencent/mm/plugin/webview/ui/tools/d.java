@@ -1,85 +1,51 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.wx_extension.a.a;
-import com.tencent.mm.ipcinvoker.wx_extension.a.a.a;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.c;
-import java.util.Map;
+import com.tencent.mm.plugin.performance.a.b;
 
 public final class d
 {
-  private static Boolean JeG = null;
+  private static Boolean QbJ = null;
   
-  private static boolean ges()
+  private static boolean gXu()
   {
-    AppMethodBeat.i(211041);
+    AppMethodBeat.i(268225);
     StringBuilder localStringBuilder = new StringBuilder(8);
-    int i = 0;
-    for (;;)
+    try
     {
-      char c;
-      if (i < 4) {
-        c = (char)(int)(1074974115182L >> (3 - i) * 8 & 0xFF);
-      }
-      try
+      localStringBuilder.append(b.aUn("´¼¸±µ«¿®¡£¸ ¨¦¢­§§"));
+      String str1;
+      return false;
+    }
+    finally
+    {
+      String str2 = localStringBuilder.toString();
+      localStringBuilder.delete(0, localStringBuilder.length());
+      localStringBuilder.append((d.class.hashCode() >>> 31 | 0x1) ^ 0x1);
+      if (!localStringBuilder.toString().equals(mE(str2, localStringBuilder.toString())))
       {
-        localStringBuilder.append(c);
-        i += 1;
-      }
-      finally
-      {
-        String str1;
-        String str2 = localStringBuilder.toString();
-        localStringBuilder.delete(0, localStringBuilder.length());
-        localStringBuilder.append((d.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-        if (localStringBuilder.toString().equals(jg(str2, localStringBuilder.toString()))) {
-          break label174;
-        }
-        AppMethodBeat.o(211041);
+        AppMethodBeat.o(268225);
         return true;
-        AppMethodBeat.o(211041);
       }
+      AppMethodBeat.o(268225);
     }
-    str1 = localStringBuilder.toString();
-    localStringBuilder.delete(0, localStringBuilder.length());
-    localStringBuilder.append((d.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-    if (!localStringBuilder.toString().equals(jg(str1, localStringBuilder.toString())))
-    {
-      AppMethodBeat.o(211041);
-      return true;
-    }
-    AppMethodBeat.o(211041);
-    return false;
-    label174:
     return false;
   }
   
-  public static String geu()
+  public static String gXv()
   {
     AppMethodBeat.i(79675);
     Object localObject1 = new StringBuilder(8);
-    int i = 0;
-    for (;;)
+    try
     {
-      char c;
-      if (i < 3) {
-        c = (char)(int)(1045787241L >> (2 - i) * 8 & 0xFF);
-      }
-      try
-      {
-        ((StringBuilder)localObject1).append(c);
-        i += 1;
-      }
-      finally
-      {
-        localObject1 = jg(((StringBuilder)localObject1).toString(), "");
-        AppMethodBeat.o(79675);
-      }
+      ((StringBuilder)localObject1).append(b.aUn("±¿¥®¨¨¸«¢°´®¬¦ö"));
+      return localObject1;
     }
-    localObject1 = jg(((StringBuilder)localObject1).toString(), "");
-    AppMethodBeat.o(79675);
-    return localObject1;
+    finally
+    {
+      localObject1 = mE(((StringBuilder)localObject1).toString(), "");
+      AppMethodBeat.o(79675);
+    }
     return localObject1;
   }
   
@@ -87,93 +53,44 @@ public final class d
   {
     AppMethodBeat.i(79676);
     StringBuilder localStringBuilder = new StringBuilder(8);
-    int i = 0;
-    for (;;)
+    try
     {
-      char c;
-      if (i < 5) {
-        c = (char)(int)(222416815156331L >> (4 - i) * 8 & 0xFF);
-      }
-      try
+      localStringBuilder.append(b.aUn("²¾º¯«©¹¨£­¶¥¬®¡¨"));
+      String str1;
+      return false;
+    }
+    finally
+    {
+      String str2 = localStringBuilder.toString();
+      localStringBuilder.delete(0, localStringBuilder.length());
+      localStringBuilder.append((d.class.hashCode() >>> 31 | 0x1) ^ 0x1);
+      if (!localStringBuilder.toString().equals(mE(str2, localStringBuilder.toString())))
       {
-        localStringBuilder.append(c);
-        i += 1;
-      }
-      finally
-      {
-        String str1;
-        String str2 = localStringBuilder.toString();
-        localStringBuilder.delete(0, localStringBuilder.length());
-        localStringBuilder.append((d.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-        if (localStringBuilder.toString().equals(jg(str2, localStringBuilder.toString()))) {
-          break label174;
-        }
         AppMethodBeat.o(79676);
         return true;
-        AppMethodBeat.o(79676);
       }
-    }
-    str1 = localStringBuilder.toString();
-    localStringBuilder.delete(0, localStringBuilder.length());
-    localStringBuilder.append((d.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-    if (!localStringBuilder.toString().equals(jg(str1, localStringBuilder.toString())))
-    {
       AppMethodBeat.o(79676);
-      return true;
     }
-    AppMethodBeat.o(79676);
-    return false;
-    label174:
     return false;
   }
   
   public static boolean isEnabled()
   {
     AppMethodBeat.i(79674);
-    if (JeG == null) {
-      JeG = Boolean.valueOf(ges());
+    if (QbJ == null) {
+      QbJ = Boolean.valueOf(gXu());
     }
-    boolean bool = JeG.booleanValue();
+    boolean bool = QbJ.booleanValue();
     AppMethodBeat.o(79674);
     return bool;
   }
   
-  private static String jg(String paramString1, String paramString2)
+  private static String mE(String paramString1, String paramString2)
   {
     AppMethodBeat.i(79677);
-    try
-    {
-      localObject = a.a.hnM;
-      localObject = a.Fu("100460");
-      if ((localObject == null) || (!((c)localObject).isValid()))
-      {
-        Log.w("MicroMsg.WebViewHelper", "check point 1, explained by src code.");
-        AppMethodBeat.o(79677);
-        return paramString2;
-      }
-    }
-    catch (Throwable paramString1)
-    {
-      Log.printErrStackTrace("MicroMsg.WebViewHelper", paramString1, "check point 1-1, explained by src code.", new Object[0]);
-      AppMethodBeat.o(79677);
-      return paramString2;
-    }
-    Object localObject = ((c)localObject).gzz();
-    if (localObject == null)
-    {
-      Log.w("MicroMsg.WebViewHelper", "check point 2, explained by src code.");
-      AppMethodBeat.o(79677);
-      return paramString2;
-    }
-    localObject = (String)((Map)localObject).get(paramString1);
-    if (localObject != null)
-    {
-      Log.i("MicroMsg.WebViewHelper", "st, sk: %s, val:%s", new Object[] { paramString1, localObject });
-      AppMethodBeat.o(79677);
-      return localObject;
-    }
+    paramString1 = com.tencent.mm.plugin.expt.h.d.dgX().a(paramString1, paramString2, false, true);
     AppMethodBeat.o(79677);
-    return paramString2;
+    return paramString1;
   }
 }
 

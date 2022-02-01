@@ -12,23 +12,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.WebResourceRequest;
 import com.tencent.xweb.WebResourceResponse;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.ac;
-import com.tencent.xweb.z;
+import com.tencent.xweb.aa;
+import com.tencent.xweb.ad;
 
 public final class a
   implements g
 {
-  private WebView lsg;
+  private WebView onc;
   
-  public final g.a Ma()
+  public final g.a OS()
   {
     AppMethodBeat.i(45121);
     g.a local1 = new g.a()
     {
-      public final void Mb()
+      public final void OT()
       {
         AppMethodBeat.i(45114);
-        this.lsh.setJavaScriptEnabled(true);
+        this.ond.setJavaScriptEnabled(true);
         AppMethodBeat.o(45114);
       }
     };
@@ -39,15 +39,15 @@ public final class a
   public final void a(final g.b paramb)
   {
     AppMethodBeat.i(45122);
-    this.lsg.setWebViewClient(new ac()
+    this.onc.setWebViewClient(new ad()
     {
-      private WebResourceResponse YL(String paramAnonymousString)
+      private WebResourceResponse agz(String paramAnonymousString)
       {
         AppMethodBeat.i(45118);
-        if (paramb.dn(paramAnonymousString))
+        if (paramb.dE(paramAnonymousString))
         {
-          paramAnonymousString = paramb.dr(g.b.cvx);
-          paramAnonymousString = new WebResourceResponse(paramAnonymousString.mimeType, paramAnonymousString.charset, paramAnonymousString.aFm);
+          paramAnonymousString = paramb.dI(g.b.ctM);
+          paramAnonymousString = new WebResourceResponse(paramAnonymousString.mimeType, paramAnonymousString.charset, paramAnonymousString.ctN);
           AppMethodBeat.o(45118);
           return paramAnonymousString;
         }
@@ -58,7 +58,7 @@ public final class a
       public final WebResourceResponse a(WebView paramAnonymousWebView, WebResourceRequest paramAnonymousWebResourceRequest)
       {
         AppMethodBeat.i(45117);
-        paramAnonymousWebView = YL(paramAnonymousWebResourceRequest.getUrl().toString());
+        paramAnonymousWebView = agz(paramAnonymousWebResourceRequest.getUrl().toString());
         AppMethodBeat.o(45117);
         return paramAnonymousWebView;
       }
@@ -66,7 +66,7 @@ public final class a
       public final WebResourceResponse a(WebView paramAnonymousWebView, WebResourceRequest paramAnonymousWebResourceRequest, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(45116);
-        paramAnonymousWebView = YL(paramAnonymousWebResourceRequest.getUrl().toString());
+        paramAnonymousWebView = agz(paramAnonymousWebResourceRequest.getUrl().toString());
         AppMethodBeat.o(45116);
         return paramAnonymousWebView;
       }
@@ -74,14 +74,14 @@ public final class a
       public final void b(WebView paramAnonymousWebView, String paramAnonymousString)
       {
         AppMethodBeat.i(45119);
-        paramb.LZ();
+        paramb.OR();
         AppMethodBeat.o(45119);
       }
       
       public final WebResourceResponse c(WebView paramAnonymousWebView, String paramAnonymousString)
       {
         AppMethodBeat.i(45115);
-        paramAnonymousWebView = YL(paramAnonymousString);
+        paramAnonymousWebView = agz(paramAnonymousString);
         AppMethodBeat.o(45115);
         return paramAnonymousWebView;
       }
@@ -89,63 +89,63 @@ public final class a
     AppMethodBeat.o(45122);
   }
   
-  public final void aF(Context paramContext)
+  public final void aC(Context paramContext)
   {
     AppMethodBeat.i(45120);
-    this.lsg = new WebView(paramContext);
+    this.onc = new WebView(paramContext);
     AppMethodBeat.o(45120);
+  }
+  
+  public final void dG(String paramString)
+  {
+    AppMethodBeat.i(45127);
+    this.onc.evaluateJavascript(paramString, null);
+    AppMethodBeat.o(45127);
   }
   
   public final void destroy()
   {
     AppMethodBeat.i(45128);
-    this.lsg.destroy();
+    this.onc.destroy();
     AppMethodBeat.o(45128);
-  }
-  
-  public final void dp(String paramString)
-  {
-    AppMethodBeat.i(45127);
-    this.lsg.evaluateJavascript(paramString, null);
-    AppMethodBeat.o(45127);
   }
   
   public final View getView()
   {
-    return this.lsg;
+    return this.onc;
   }
   
   public final void loadUrl(String paramString)
   {
     AppMethodBeat.i(45123);
-    this.lsg.loadUrl(paramString);
+    this.onc.loadUrl(paramString);
     AppMethodBeat.o(45123);
   }
   
   public final void requestLayout()
   {
     AppMethodBeat.i(45126);
-    this.lsg.requestLayout();
+    this.onc.requestLayout();
     AppMethodBeat.o(45126);
   }
   
   public final void setTranslationY(float paramFloat)
   {
     AppMethodBeat.i(45124);
-    this.lsg.setTranslationY(paramFloat);
+    this.onc.setTranslationY(paramFloat);
     AppMethodBeat.o(45124);
   }
   
   public final void setVisibility(int paramInt)
   {
     AppMethodBeat.i(45125);
-    this.lsg.setVisibility(paramInt);
+    this.onc.setVisibility(paramInt);
     AppMethodBeat.o(45125);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.d.a
  * JD-Core Version:    0.7.0.1
  */

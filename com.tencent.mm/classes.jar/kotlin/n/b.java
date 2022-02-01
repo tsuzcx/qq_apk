@@ -1,26 +1,13 @@
 package kotlin.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.k.f;
+import kotlin.k.e;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"category", "Lkotlin/text/CharCategory;", "", "getCategory", "(C)Lkotlin/text/CharCategory;", "directionality", "Lkotlin/text/CharDirectionality;", "getDirectionality", "(C)Lkotlin/text/CharDirectionality;", "checkRadix", "", "radix", "digitOf", "char", "isDefined", "", "isDigit", "isHighSurrogate", "isISOControl", "isIdentifierIgnorable", "isJavaIdentifierPart", "isJavaIdentifierStart", "isLetter", "isLetterOrDigit", "isLowSurrogate", "isLowerCase", "isTitleCase", "isUpperCase", "isWhitespace", "toLowerCase", "toTitleCase", "toUpperCase", "kotlin-stdlib"}, hxG=1)
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"category", "Lkotlin/text/CharCategory;", "", "getCategory", "(C)Lkotlin/text/CharCategory;", "directionality", "Lkotlin/text/CharDirectionality;", "getDirectionality", "(C)Lkotlin/text/CharDirectionality;", "checkRadix", "", "radix", "digitOf", "char", "isDefined", "", "isDigit", "isHighSurrogate", "isISOControl", "isIdentifierIgnorable", "isJavaIdentifierPart", "isJavaIdentifierStart", "isLetter", "isLetterOrDigit", "isLowSurrogate", "isLowerCase", "isTitleCase", "isUpperCase", "isWhitespace", "toLowerCase", "toTitleCase", "toUpperCase", "kotlin-stdlib"}, iBN=1)
 public class b
 {
-  public static final int avR(int paramInt)
-  {
-    AppMethodBeat.i(129422);
-    if ((2 > paramInt) || (36 < paramInt))
-    {
-      Throwable localThrowable = (Throwable)new IllegalArgumentException("radix " + paramInt + " was not in valid range " + new f(2, 36));
-      AppMethodBeat.o(129422);
-      throw localThrowable;
-    }
-    AppMethodBeat.o(129422);
-    return paramInt;
-  }
-  
-  public static final boolean isWhitespace(char paramChar)
+  public static final boolean O(char paramChar)
   {
     AppMethodBeat.i(129421);
     if ((Character.isWhitespace(paramChar)) || (Character.isSpaceChar(paramChar)))
@@ -30,6 +17,19 @@ public class b
     }
     AppMethodBeat.o(129421);
     return false;
+  }
+  
+  public static final int aFL(int paramInt)
+  {
+    AppMethodBeat.i(129422);
+    if ((2 > paramInt) || (36 < paramInt))
+    {
+      Throwable localThrowable = (Throwable)new IllegalArgumentException("radix " + paramInt + " was not in valid range " + new e(2, 36));
+      AppMethodBeat.o(129422);
+      throw localThrowable;
+    }
+    AppMethodBeat.o(129422);
+    return paramInt;
   }
 }
 

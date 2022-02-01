@@ -24,18 +24,25 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.setting.b.d;
+import com.tencent.mm.plugin.setting.b.e;
+import com.tencent.mm.plugin.setting.b.f;
+import com.tencent.mm.plugin.setting.b.g;
+import com.tencent.mm.plugin.setting.b.i;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.protocal.protobuf.bwi;
-import com.tencent.mm.protocal.protobuf.eku;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.protocal.protobuf.cdy;
+import com.tencent.mm.protocal.protobuf.euz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatHosts;
@@ -43,9 +50,10 @@ import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.contact.u;
-import com.tencent.mm.ui.e.m;
-import com.tencent.mm.ui.t.b;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.contact.w;
+import com.tencent.mm.ui.f.o;
+import com.tencent.mm.ui.w.b;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -54,32 +62,32 @@ public class SettingsTrustFriendUI
   extends MMActivity
   implements i
 {
-  private static int Dew = 5;
-  private boolean Dcl;
-  private List<String> Deu;
-  private a Dev;
-  private View oQL;
-  private com.tencent.mm.ui.base.q sOk;
-  private GridView wmW;
-  private TextView xVY;
+  private static int Jkc = 5;
+  private GridView AXZ;
+  private boolean JhM;
+  private List<String> Jka;
+  private a Jkb;
+  private View rSI;
+  private s wuf;
+  private TextView zQG;
   
-  private void eTA()
+  private void fGD()
   {
     AppMethodBeat.i(74490);
-    String str = (String)g.aAh().azQ().get(352277, null);
+    String str = (String)com.tencent.mm.kernel.h.aHG().aHp().b(352277, null);
     ArrayList localArrayList = new ArrayList();
     if (!Util.isNullOrNil(str)) {
       localArrayList = Util.stringsToList(str.split(","));
     }
     for (;;)
     {
-      if ((this.Deu.size() == localArrayList.size()) && (this.Deu.containsAll(localArrayList)))
+      if ((this.Jka.size() == localArrayList.size()) && (this.Jka.containsAll(localArrayList)))
       {
         finish();
         AppMethodBeat.o(74490);
         return;
       }
-      com.tencent.mm.ui.base.h.a(this, getString(2131764867), getString(2131755998), getString(2131755970), getString(2131755918), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      com.tencent.mm.ui.base.h.a(this, getString(b.i.save_label_msg), getString(b.i.app_tip), getString(b.i.app_save), getString(b.i.app_not_save), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -103,30 +111,30 @@ public class SettingsTrustFriendUI
   
   public int getLayoutId()
   {
-    return 2131496276;
+    return b.g.settings_trust_friend;
   }
   
   public void initView()
   {
     AppMethodBeat.i(74487);
-    setMMTitle(2131765649);
-    this.wmW = ((GridView)findViewById(2131309422));
-    this.Dev = new a((byte)0);
-    int i = getResources().getDimensionPixelSize(2131165528);
-    this.wmW.setColumnWidth(i);
-    this.wmW.setNumColumns(-1);
-    this.wmW.setStretchMode(1);
-    this.wmW.setHorizontalSpacing(getResources().getDimensionPixelSize(2131166503) * 2);
-    this.wmW.setVerticalSpacing(getResources().getDimensionPixelSize(2131166504));
-    this.wmW.setAdapter(this.Dev);
-    ((ViewGroup)this.wmW.getParent()).setOnClickListener(new View.OnClickListener()
+    setMMTitle(b.i.settings_trust_friend);
+    this.AXZ = ((GridView)findViewById(b.f.trust_friend_grid));
+    this.Jkb = new a((byte)0);
+    int i = getResources().getDimensionPixelSize(b.d.NormalAvatarWrapSize);
+    this.AXZ.setColumnWidth(i);
+    this.AXZ.setNumColumns(-1);
+    this.AXZ.setStretchMode(1);
+    this.AXZ.setHorizontalSpacing(getResources().getDimensionPixelSize(b.d.grid_item_left_right_padding) * 2);
+    this.AXZ.setVerticalSpacing(getResources().getDimensionPixelSize(b.d.grid_item_top_bottom_padding));
+    this.AXZ.setAdapter(this.Jkb);
+    ((ViewGroup)this.AXZ.getParent()).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(74473);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsTrustFriendUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/setting/ui/setting/SettingsTrustFriendUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (SettingsTrustFriendUI.b(SettingsTrustFriendUI.this))
         {
           SettingsTrustFriendUI.a(SettingsTrustFriendUI.this, false);
@@ -136,7 +144,7 @@ public class SettingsTrustFriendUI
         AppMethodBeat.o(74473);
       }
     });
-    this.wmW.setOnTouchListener(new View.OnTouchListener()
+    this.AXZ.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -152,34 +160,34 @@ public class SettingsTrustFriendUI
         return false;
       }
     });
-    this.wmW.setHorizontalScrollBarEnabled(false);
-    this.wmW.setVerticalScrollBarEnabled(false);
-    this.wmW.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.AXZ.setHorizontalScrollBarEnabled(false);
+    this.AXZ.setVerticalScrollBarEnabled(false);
+    this.AXZ.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(74475);
         b localb = new b();
-        localb.bm(paramAnonymousAdapterView);
-        localb.bm(paramAnonymousView);
-        localb.pH(paramAnonymousInt);
-        localb.zo(paramAnonymousLong);
-        a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsTrustFriendUI$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
+        localb.bn(paramAnonymousAdapterView);
+        localb.bn(paramAnonymousView);
+        localb.sg(paramAnonymousInt);
+        localb.Fs(paramAnonymousLong);
+        a.c("com/tencent/mm/plugin/setting/ui/setting/SettingsTrustFriendUI$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
         if (SettingsTrustFriendUI.c(SettingsTrustFriendUI.this).getItemViewType(paramAnonymousInt) == 1)
         {
           paramAnonymousAdapterView = new Intent();
           paramAnonymousAdapterView.putExtra("list_type", 12);
-          paramAnonymousAdapterView.putExtra("titile", SettingsTrustFriendUI.this.getString(2131755268));
+          paramAnonymousAdapterView.putExtra("titile", SettingsTrustFriendUI.this.getString(b.i.address_title_select_contact));
           paramAnonymousAdapterView.putExtra("scene", 2);
-          paramAnonymousAdapterView.putExtra("max_limit_num", SettingsTrustFriendUI.Dew);
+          paramAnonymousAdapterView.putExtra("max_limit_num", SettingsTrustFriendUI.Jkc);
           paramAnonymousAdapterView.putExtra("stay_in_wechat", true);
           paramAnonymousAdapterView.putExtra("already_select_contact", Util.listToString(SettingsTrustFriendUI.e(SettingsTrustFriendUI.this), ","));
-          paramAnonymousAdapterView.putExtra("block_contact", z.aTY());
-          paramAnonymousAdapterView.putExtra("list_attr", u.ll(u.ll(u.PWY, 256), 16777216));
+          paramAnonymousAdapterView.putExtra("block_contact", z.bcZ());
+          paramAnonymousAdapterView.putExtra("list_attr", w.mC(w.mC(w.XtQ, 256), 16777216));
           paramAnonymousAdapterView.putExtra("KBlockOpenImFav", true);
           paramAnonymousAdapterView.putExtra("without_openim", true);
-          paramAnonymousAdapterView.putExtra("too_many_member_tip_string", SettingsTrustFriendUI.this.getString(2131765651, new Object[] { Integer.valueOf(SettingsTrustFriendUI.Dew) }));
-          com.tencent.mm.br.c.c(SettingsTrustFriendUI.this, ".ui.contact.SelectContactUI", paramAnonymousAdapterView, 1);
+          paramAnonymousAdapterView.putExtra("too_many_member_tip_string", SettingsTrustFriendUI.this.getString(b.i.settings_trust_friend_max_limit_tip, new Object[] { Integer.valueOf(SettingsTrustFriendUI.Jkc) }));
+          com.tencent.mm.by.c.d(SettingsTrustFriendUI.this, ".ui.contact.SelectContactUI", paramAnonymousAdapterView, 1);
         }
         do
         {
@@ -205,40 +213,40 @@ public class SettingsTrustFriendUI
         }
       }
     });
-    this.xVY = ((TextView)findViewById(2131309421));
-    String str = getIntent().getStringExtra(e.m.Ozm);
+    this.zQG = ((TextView)findViewById(b.f.trust_friend_desc));
+    String str = getIntent().getStringExtra(f.o.VSA);
     if (!Util.isNullOrNil(str)) {
-      this.xVY.setText(str);
+      this.zQG.setText(str);
     }
     for (;;)
     {
-      this.oQL = findViewById(2131309425);
-      this.oQL.setVisibility(8);
-      ((TextView)this.oQL.findViewById(2131310330)).setText(getString(2131765652, new Object[] { Integer.valueOf(3) }));
-      this.oQL.findViewById(2131298778).setOnClickListener(new View.OnClickListener()
+      this.rSI = findViewById(b.f.trust_friend_warn_banner);
+      this.rSI.setVisibility(8);
+      ((TextView)this.rSI.findViewById(b.f.warn_tip)).setText(getString(b.i.settings_trust_friend_min_limit_tip, new Object[] { Integer.valueOf(3) }));
+      this.rSI.findViewById(b.f.close_icon).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(74476);
           b localb = new b();
-          localb.bm(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsTrustFriendUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          a.c("com/tencent/mm/plugin/setting/ui/setting/SettingsTrustFriendUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           SettingsTrustFriendUI.f(SettingsTrustFriendUI.this).setVisibility(8);
           a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsTrustFriendUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(74476);
         }
       });
-      findViewById(2131309423).setOnClickListener(new View.OnClickListener()
+      findViewById(b.f.trust_friend_link).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(74477);
           b localb = new b();
-          localb.bm(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsTrustFriendUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          a.c("com/tencent/mm/plugin/setting/ui/setting/SettingsTrustFriendUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           paramAnonymousView = new Intent();
-          paramAnonymousView.putExtra("rawUrl", "https://" + WeChatHosts.domainString(2131761748) + "/security/readtemplate?t=w_security_center_website/trusted_friend_guide");
-          com.tencent.mm.br.c.b(SettingsTrustFriendUI.this, "webview", ".ui.tools.WebViewUI", paramAnonymousView);
+          paramAnonymousView.putExtra("rawUrl", "https://" + WeChatHosts.domainString(b.i.host_weixin110_qq_com) + "/security/readtemplate?t=w_security_center_website/trusted_friend_guide");
+          com.tencent.mm.by.c.b(SettingsTrustFriendUI.this, "webview", ".ui.tools.WebViewUI", paramAnonymousView);
           a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsTrustFriendUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(74477);
         }
@@ -253,7 +261,7 @@ public class SettingsTrustFriendUI
           return true;
         }
       });
-      addTextOptionMenu(1, getString(2131755858), new MenuItem.OnMenuItemClickListener()
+      addTextOptionMenu(1, getString(b.i.app_finish), new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
@@ -262,11 +270,11 @@ public class SettingsTrustFriendUI
           AppMethodBeat.o(74479);
           return true;
         }
-      }, null, t.b.OGU);
+      }, null, w.b.Wao);
       showOptionMenu(true);
       AppMethodBeat.o(74487);
       return;
-      this.xVY.setText(getResources().getString(2131765653, new Object[] { Integer.valueOf(3) }));
+      this.zQG.setText(getResources().getString(b.i.settings_trust_friend_tip, new Object[] { Integer.valueOf(3) }));
     }
   }
   
@@ -279,9 +287,9 @@ public class SettingsTrustFriendUI
       paramIntent = paramIntent.getStringExtra("Select_Contact");
       if (!Util.isNullOrNil(paramIntent))
       {
-        this.Deu.clear();
-        this.Deu.addAll(Util.stringsToList(paramIntent.split(",")));
-        this.Dev.notifyDataSetChanged();
+        this.Jka.clear();
+        this.Jka.addAll(Util.stringsToList(paramIntent.split(",")));
+        this.Jkb.notifyDataSetChanged();
       }
     }
     AppMethodBeat.o(74488);
@@ -291,12 +299,12 @@ public class SettingsTrustFriendUI
   {
     AppMethodBeat.i(74484);
     super.onCreate(paramBundle);
-    paramBundle = (String)g.aAh().azQ().get(352277, null);
+    paramBundle = (String)com.tencent.mm.kernel.h.aHG().aHp().b(352277, null);
     if (!Util.isNullOrNil(paramBundle)) {
-      this.Deu = Util.stringsToList(paramBundle.split(","));
+      this.Jka = Util.stringsToList(paramBundle.split(","));
     }
-    if (this.Deu == null) {
-      this.Deu = new ArrayList();
+    if (this.Jka == null) {
+      this.Jka = new ArrayList();
     }
     getContentView().post(new Runnable()
     {
@@ -316,7 +324,7 @@ public class SettingsTrustFriendUI
     AppMethodBeat.i(74491);
     if (paramInt == 4)
     {
-      eTA();
+      fGD();
       AppMethodBeat.o(74491);
       return true;
     }
@@ -325,43 +333,43 @@ public class SettingsTrustFriendUI
     return bool;
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(74489);
     Log.d("MicroMsg.SettingsTrustFriendUI", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (this.sOk != null) {
-      this.sOk.dismiss();
+    if (this.wuf != null) {
+      this.wuf.dismiss();
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       if (paramq.getType() == 869)
       {
-        paramString = (bwi)((d)paramq.getReqResp()).iLL.iLR;
-        Dew = paramString.Mch;
-        paramString = paramString.KHC;
-        if (paramString.size() == this.Deu.size()) {
+        paramString = (cdy)d.c.b(((d)paramq.getReqResp()).lBS);
+        Jkc = paramString.TlF;
+        paramString = paramString.RIV;
+        if (paramString.size() == this.Jka.size()) {
           if (paramString.size() == 0) {
             paramInt1 = 0;
           }
         }
         while (paramInt1 != 0)
         {
-          this.Deu.clear();
+          this.Jka.clear();
           paramString = paramString.iterator();
           for (;;)
           {
             if (paramString.hasNext())
             {
-              paramq = (eku)paramString.next();
-              this.Deu.add(paramq.UserName);
+              paramq = (euz)paramString.next();
+              this.Jka.add(paramq.UserName);
               continue;
               paramq = paramString.iterator();
               for (;;)
               {
                 if (paramq.hasNext())
                 {
-                  eku localeku = (eku)paramq.next();
-                  if (!this.Deu.contains(localeku.UserName))
+                  euz localeuz = (euz)paramq.next();
+                  if (!this.Jka.contains(localeuz.UserName))
                   {
                     paramInt1 = 1;
                     break;
@@ -372,25 +380,25 @@ public class SettingsTrustFriendUI
               break;
             }
           }
-          this.Dev.notifyDataSetChanged();
+          this.Jkb.notifyDataSetChanged();
         }
-        if ((this.Deu.size() > 0) && (this.Deu.size() < 3)) {
-          this.oQL.setVisibility(0);
+        if ((this.Jka.size() > 0) && (this.Jka.size() < 3)) {
+          this.rSI.setVisibility(0);
         }
-        g.aAh().azQ().set(352277, Util.listToString(this.Deu, ","));
+        com.tencent.mm.kernel.h.aHG().aHp().i(352277, Util.listToString(this.Jka, ","));
         AppMethodBeat.o(74489);
         return;
       }
       if (paramq.getType() == 583)
       {
-        g.aAh().azQ().set(352277, Util.listToString(this.Deu, ","));
+        com.tencent.mm.kernel.h.aHG().aHp().i(352277, Util.listToString(this.Jka, ","));
         finish();
         AppMethodBeat.o(74489);
       }
     }
     else if (!Util.isNullOrNil(paramString))
     {
-      com.tencent.mm.ui.base.h.cD(this, paramString);
+      com.tencent.mm.ui.base.h.cO(this, paramString);
     }
     AppMethodBeat.o(74489);
   }
@@ -399,8 +407,8 @@ public class SettingsTrustFriendUI
   {
     AppMethodBeat.i(74485);
     super.onStart();
-    g.azz().a(869, this);
-    g.azz().a(583, this);
+    com.tencent.mm.kernel.h.aGY().a(869, this);
+    com.tencent.mm.kernel.h.aGY().a(583, this);
     AppMethodBeat.o(74485);
   }
   
@@ -408,8 +416,8 @@ public class SettingsTrustFriendUI
   {
     AppMethodBeat.i(74486);
     super.onStop();
-    g.azz().b(869, this);
-    g.azz().b(583, this);
+    com.tencent.mm.kernel.h.aGY().b(869, this);
+    com.tencent.mm.kernel.h.aGY().b(583, this);
     AppMethodBeat.o(74486);
   }
   
@@ -435,9 +443,9 @@ public class SettingsTrustFriendUI
         return i;
         if (i == 0) {
           i = 1;
-        } else if ((i > 0) && (i < SettingsTrustFriendUI.Dew)) {
+        } else if ((i > 0) && (i < SettingsTrustFriendUI.Jkc)) {
           i += 2;
-        } else if (i >= SettingsTrustFriendUI.Dew) {
+        } else if (i >= SettingsTrustFriendUI.Jkc) {
           i += 1;
         } else {
           i = 0;
@@ -477,7 +485,7 @@ public class SettingsTrustFriendUI
         AppMethodBeat.o(74482);
         return 1;
       }
-      if (i >= SettingsTrustFriendUI.Dew)
+      if (i >= SettingsTrustFriendUI.Jkc)
       {
         AppMethodBeat.o(74482);
         return 2;
@@ -501,27 +509,27 @@ public class SettingsTrustFriendUI
       AppMethodBeat.i(74483);
       if (paramView == null)
       {
-        paramView = SettingsTrustFriendUI.this.getLayoutInflater().inflate(2131496277, null);
-        Object localObject1 = (ImageView)paramView.findViewById(2131309419);
-        Object localObject2 = (ImageView)paramView.findViewById(2131309420);
-        TextView localTextView = (TextView)paramView.findViewById(2131309424);
+        paramView = SettingsTrustFriendUI.this.getLayoutInflater().inflate(b.g.settings_trust_friend_item, null);
+        Object localObject1 = (ImageView)paramView.findViewById(b.f.trust_friend_avatar);
+        Object localObject2 = (ImageView)paramView.findViewById(b.f.trust_friend_del_btn);
+        TextView localTextView = (TextView)paramView.findViewById(b.f.trust_friend_name);
         paramViewGroup = new a((byte)0);
-        paramViewGroup.COW = ((ImageView)localObject1);
-        paramViewGroup.DeA = ((ImageView)localObject2);
-        paramViewGroup.oSN = localTextView;
+        paramViewGroup.IUy = ((ImageView)localObject1);
+        paramViewGroup.Jkg = ((ImageView)localObject2);
+        paramViewGroup.rUM = localTextView;
         paramView.setTag(paramViewGroup);
         if (getItemViewType(paramInt) != 0) {
-          break label230;
+          break label234;
         }
         localObject1 = (String)SettingsTrustFriendUI.e(SettingsTrustFriendUI.this).get(paramInt);
-        localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn((String)localObject1);
-        paramViewGroup.COW.setScaleType(ImageView.ScaleType.FIT_XY);
-        a.b.c(paramViewGroup.COW, (String)localObject1);
-        paramViewGroup.oSN.setText(com.tencent.mm.pluginsdk.ui.span.l.b(SettingsTrustFriendUI.this, ((as)localObject2).arJ(), paramViewGroup.oSN.getTextSize()));
+        localObject2 = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().RG((String)localObject1);
+        paramViewGroup.IUy.setScaleType(ImageView.ScaleType.FIT_XY);
+        a.b.c(paramViewGroup.IUy, (String)localObject1);
+        paramViewGroup.rUM.setText(l.b(SettingsTrustFriendUI.this, ((as)localObject2).ays(), paramViewGroup.rUM.getTextSize()));
         if (!SettingsTrustFriendUI.b(SettingsTrustFriendUI.this)) {
-          break label218;
+          break label222;
         }
-        paramViewGroup.DeA.setVisibility(0);
+        paramViewGroup.Jkg.setVisibility(0);
       }
       for (;;)
       {
@@ -529,17 +537,17 @@ public class SettingsTrustFriendUI
         return paramView;
         paramViewGroup = (a)paramView.getTag();
         break;
-        label218:
-        paramViewGroup.DeA.setVisibility(8);
+        label222:
+        paramViewGroup.Jkg.setVisibility(8);
         continue;
-        label230:
-        paramViewGroup.oSN.setVisibility(4);
-        paramViewGroup.DeA.setVisibility(8);
-        paramViewGroup.COW.setScaleType(ImageView.ScaleType.FIT_XY);
+        label234:
+        paramViewGroup.rUM.setVisibility(4);
+        paramViewGroup.Jkg.setVisibility(8);
+        paramViewGroup.IUy.setScaleType(ImageView.ScaleType.FIT_XY);
         if (getItemViewType(paramInt) == 1) {
-          paramViewGroup.COW.setImageResource(2131231212);
+          paramViewGroup.IUy.setImageResource(b.e.big_add_selector);
         } else if (getItemViewType(paramInt) == 2) {
-          paramViewGroup.COW.setImageResource(2131231213);
+          paramViewGroup.IUy.setImageResource(b.e.big_del_selector);
         }
       }
     }
@@ -551,9 +559,9 @@ public class SettingsTrustFriendUI
     
     final class a
     {
-      ImageView COW;
-      ImageView DeA;
-      TextView oSN;
+      ImageView IUy;
+      ImageView Jkg;
+      TextView rUM;
       
       private a() {}
     }

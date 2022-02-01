@@ -1,48 +1,36 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.e;
+import com.google.b.a.b;
+import com.google.b.a.e;
+import com.google.b.a.g;
+import java.util.Arrays;
 
 public final class a$ao
   extends e
 {
-  public int GXO = 0;
-  public long GXP = 0L;
-  public String groupId = "";
+  public int Ufv = 0;
+  public byte[] buffer = g.ccX;
   
   public a$ao()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public final int Ig()
+  public final int JG()
   {
-    int j = super.Ig();
+    int j = super.JG() + b.bN(1, this.Ufv);
     int i = j;
-    if (!this.groupId.equals("")) {
-      i = j + b.f(1, this.groupId);
-    }
-    j = i;
-    if (this.GXO != 0) {
-      j = i + b.bu(2, this.GXO);
-    }
-    i = j;
-    if (this.GXP != 0L) {
-      i = j + b.r(3, this.GXP);
+    if (!Arrays.equals(this.buffer, g.ccX)) {
+      i = j + b.c(2, this.buffer);
     }
     return i;
   }
   
   public final void a(b paramb)
   {
-    if (!this.groupId.equals("")) {
-      paramb.e(1, this.groupId);
-    }
-    if (this.GXO != 0) {
-      paramb.bs(2, this.GXO);
-    }
-    if (this.GXP != 0L) {
-      paramb.q(3, this.GXP);
+    paramb.bK(1, this.Ufv);
+    if (!Arrays.equals(this.buffer, g.ccX)) {
+      paramb.b(2, this.buffer);
     }
     super.a(paramb);
   }

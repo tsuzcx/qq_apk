@@ -7,7 +7,7 @@ import com.tencent.mm.memory.ui.QPictureView;
 public class QFadeImageView
   extends QPictureView
 {
-  long DMd;
+  long JZg;
   String key;
   
   public QFadeImageView(Context paramContext, AttributeSet paramAttributeSet)
@@ -20,9 +20,9 @@ public class QFadeImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void T(long paramLong, String paramString)
+  public final void af(long paramLong, String paramString)
   {
-    this.DMd = paramLong;
+    this.JZg = paramLong;
     this.key = paramString;
   }
   
@@ -33,12 +33,12 @@ public class QFadeImageView
   
   public long getStartTimeMillis()
   {
-    return this.DMd;
+    return this.JZg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.widget.QFadeImageView
  * JD-Core Version:    0.7.0.1
  */

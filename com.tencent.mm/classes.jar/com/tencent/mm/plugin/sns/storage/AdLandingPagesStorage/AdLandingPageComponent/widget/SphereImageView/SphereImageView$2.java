@@ -28,11 +28,11 @@ final class SphereImageView$2
   {
     AppMethodBeat.i(97252);
     b localb = new b();
-    localb.bm(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/SphereImageView$2", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.axR());
-    if (this.Eks.Eko != null)
+    localb.bn(paramMotionEvent);
+    a.c("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/SphereImageView$2", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
+    if (this.KxB.Kxx != null)
     {
-      this.Eks.Eko.onLongClick(this.Eks);
+      this.KxB.Kxx.onLongClick(this.KxB);
       Log.i("SphereImageView.SphereView", "onLongPress, hash=" + hashCode());
     }
     a.a(this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/SphereImageView$2", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
@@ -50,11 +50,11 @@ final class SphereImageView$2
   {
     AppMethodBeat.i(97251);
     b localb = new b();
-    localb.bm(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/SphereImageView$2", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
-    if (this.Eks.Ekn != null)
+    localb.bn(paramMotionEvent);
+    a.c("com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/SphereImageView$2", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+    if (this.KxB.Kxw != null)
     {
-      this.Eks.Ekn.onClick(this.Eks);
+      this.KxB.Kxw.onClick(this.KxB);
       Log.i("SphereImageView.SphereView", "onClick, hash=" + hashCode());
     }
     a.a(true, this, "com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/widget/SphereImageView/SphereImageView$2", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
@@ -64,7 +64,7 @@ final class SphereImageView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.widget.SphereImageView.SphereImageView.2
  * JD-Core Version:    0.7.0.1
  */

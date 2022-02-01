@@ -2,25 +2,25 @@ package com.tencent.mm.loader.h.a;
 
 public final class a<T>
 {
-  protected b icf;
+  protected b kQM;
   protected T value;
   
   public a(c paramc)
   {
     this.value = paramc;
-    this.icf = b.icj;
+    this.kQM = b.kQQ;
   }
   
   public a(String paramString)
   {
     this.value = paramString;
-    this.icf = b.icj;
+    this.kQM = b.kQQ;
   }
   
   private a(String paramString, b paramb)
   {
     this.value = paramString;
-    this.icf = paramb;
+    this.kQM = paramb;
   }
   
   public static <T extends String> a<T> a(T paramT, b paramb)
@@ -28,17 +28,22 @@ public final class a<T>
     return new a(paramT, paramb);
   }
   
-  public static a aKt()
+  public static a aSv()
   {
     return new a("");
   }
   
-  public final b aKr()
+  public final T aSr()
   {
-    return this.icf;
+    return this.value;
   }
   
-  public final String aKs()
+  public final b aSt()
+  {
+    return this.kQM;
+  }
+  
+  public final String aSu()
   {
     return this.value.toString();
   }
@@ -48,7 +53,7 @@ public final class a<T>
     if (this.value != null)
     {
       if (((this.value instanceof c)) && ((paramObject instanceof a)) && ((((a)paramObject).value instanceof c))) {
-        return ((c)this.value).auA().equals(((c)((a)paramObject).value).auA());
+        return ((c)this.value).aBv().equals(((c)((a)paramObject).value).aBv());
       }
       if ((paramObject instanceof a)) {
         return this.value.equals(((a)paramObject).value);
@@ -76,14 +81,9 @@ public final class a<T>
       return "";
     }
     if ((this.value instanceof c)) {
-      return ((c)this.value).auA();
+      return ((c)this.value).aBv();
     }
     return this.value.toString();
-  }
-  
-  public final T value()
-  {
-    return this.value;
   }
 }
 

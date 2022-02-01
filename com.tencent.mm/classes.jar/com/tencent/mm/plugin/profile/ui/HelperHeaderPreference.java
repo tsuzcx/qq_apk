@@ -6,24 +6,28 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.l;
+import com.tencent.mm.f.c.ax;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.tools.u;
+import com.tencent.mm.ui.tools.v;
 import junit.framework.Assert;
 
+@Deprecated
 public class HelperHeaderPreference
   extends Preference
 {
-  private a Bgj;
+  private a GZS;
   private as contact;
-  private TextView gCd;
-  private ImageView gyr;
-  private boolean kac = false;
-  private TextView kib;
-  private TextView kuu;
+  private ImageView jiu;
+  private TextView jmj;
+  private boolean mRv = false;
+  private TextView mZA;
+  private TextView nmi;
   
   public HelperHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,12 +39,12 @@ public class HelperHeaderPreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void Mg(String paramString)
+  private void TB(String paramString)
   {
     AppMethodBeat.i(27252);
     Log.d("MicroMsg.HelperHeaderPreference", "updateAvatar : user = ".concat(String.valueOf(paramString)));
-    if ((this.gyr != null) && (this.contact.field_username.equals(paramString))) {
-      a.b.c(this.gyr, paramString);
+    if ((this.jiu != null) && (this.contact.field_username.equals(paramString))) {
+      a.b.c(this.jiu, paramString);
     }
     AppMethodBeat.o(27252);
   }
@@ -48,28 +52,28 @@ public class HelperHeaderPreference
   private void initView()
   {
     AppMethodBeat.i(27254);
-    if ((!this.kac) || (this.contact == null))
+    if ((!this.mRv) || (this.contact == null))
     {
-      Log.w("MicroMsg.HelperHeaderPreference", "initView : bindView = " + this.kac + "contact = " + this.contact);
+      Log.w("MicroMsg.HelperHeaderPreference", "initView : bindView = " + this.mRv + "contact = " + this.contact);
       AppMethodBeat.o(27254);
       return;
     }
-    Mg(this.contact.field_username);
-    if (this.kib != null) {
-      this.kib.setText(this.contact.arI());
+    TB(this.contact.field_username);
+    if (this.mZA != null) {
+      this.mZA.setText(this.contact.ayr());
     }
-    if (this.Bgj != null)
+    if (this.GZS != null)
     {
-      this.Bgj.a(this);
-      CharSequence localCharSequence = this.Bgj.getHint();
+      this.GZS.a(this);
+      CharSequence localCharSequence = this.GZS.getHint();
       if (localCharSequence != null)
       {
-        this.kuu.setText(localCharSequence);
-        this.kuu.setVisibility(0);
+        this.nmi.setText(localCharSequence);
+        this.nmi.setVisibility(0);
         AppMethodBeat.o(27254);
         return;
       }
-      this.kuu.setVisibility(8);
+      this.nmi.setVisibility(8);
     }
     AppMethodBeat.o(27254);
   }
@@ -82,7 +86,7 @@ public class HelperHeaderPreference
     {
       Assert.assertTrue(bool);
       this.contact = paramas;
-      this.Bgj = parama;
+      this.GZS = parama;
       initView();
       AppMethodBeat.o(27255);
       return;
@@ -92,35 +96,35 @@ public class HelperHeaderPreference
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27251);
-    this.gyr = ((ImageView)paramView.findViewById(2131299034));
-    this.gCd = ((TextView)paramView.findViewById(2131299084));
-    this.kib = ((TextView)paramView.findViewById(2131299068));
-    this.kuu = ((TextView)paramView.findViewById(2131299054));
-    this.kac = true;
+    this.jiu = ((ImageView)paramView.findViewById(R.h.contact_info_avatar_iv));
+    this.jmj = ((TextView)paramView.findViewById(R.h.contact_info_status_tv));
+    this.mZA = ((TextView)paramView.findViewById(R.h.contact_info_nickname_tv));
+    this.nmi = ((TextView)paramView.findViewById(R.h.contact_info_helper_hing_tv));
+    this.mRv = true;
     initView();
     super.onBindView(paramView);
     AppMethodBeat.o(27251);
   }
   
-  public final void sK(boolean paramBoolean)
+  public final void wb(boolean paramBoolean)
   {
     AppMethodBeat.i(27253);
-    if (this.Bgj == null)
+    if (this.GZS == null)
     {
       AppMethodBeat.o(27253);
       return;
     }
     if (paramBoolean)
     {
-      this.gCd.setTextColor(u.kF(this.mContext));
-      this.gCd.setText(2131765542);
-      this.gCd.setCompoundDrawablesWithIntrinsicBounds(2131235049, 0, 0, 0);
+      this.jmj.setTextColor(v.lC(this.mContext));
+      this.jmj.setText(R.l.settings_plugins_installed);
+      this.jmj.setCompoundDrawablesWithIntrinsicBounds(R.g.status_enable, 0, 0, 0);
       AppMethodBeat.o(27253);
       return;
     }
-    this.gCd.setTextColor(u.kG(this.mContext));
-    this.gCd.setText(2131765550);
-    this.gCd.setCompoundDrawablesWithIntrinsicBounds(2131235048, 0, 0, 0);
+    this.jmj.setTextColor(v.lD(this.mContext));
+    this.jmj.setText(R.l.settings_plugins_uninstalled);
+    this.jmj.setCompoundDrawablesWithIntrinsicBounds(R.g.status_disable, 0, 0, 0);
     AppMethodBeat.o(27253);
   }
   
@@ -133,7 +137,7 @@ public class HelperHeaderPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.HelperHeaderPreference
  * JD-Core Version:    0.7.0.1
  */

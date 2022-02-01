@@ -1,234 +1,195 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import android.text.TextUtils;
-import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.ab;
-import com.tencent.mm.ak.c.a;
-import com.tencent.mm.compatible.loader.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.b;
-import com.tencent.mm.plugin.appbrand.app.n;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgIntegrityChecker;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appcache.a.a.a;
-import com.tencent.mm.plugin.appbrand.appcache.ad;
-import com.tencent.mm.plugin.appbrand.appcache.bd;
-import com.tencent.mm.plugin.appbrand.appcache.bh;
-import com.tencent.mm.plugin.appbrand.appcache.bj;
-import com.tencent.mm.plugin.appbrand.appcache.bj.a;
-import com.tencent.mm.plugin.appbrand.debugger.DebuggerShell;
-import com.tencent.mm.plugin.appbrand.ui.AppBrand404PageUI;
-import com.tencent.mm.plugin.appbrand.utils.f;
-import com.tencent.mm.protocal.protobuf.bwc;
+import com.tencent.mm.protocal.protobuf.cqa;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.util.Locale;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
-final class ai
-  extends ag
-  implements aa
+public final class ai
+  extends MAutoStorage<aj>
 {
-  final String appId;
-  final String cBp;
-  final int dFL;
-  int dMe;
-  private final int[] mVs;
+  public static final String pWF;
   
-  ai(String paramString1, String paramString2, int paramInt)
+  static
   {
-    this(paramString1, paramString2, paramInt, (byte)0);
+    AppMethodBeat.i(47281);
+    pWF = MAutoStorage.getCreateSQLs(aj.nFK, "LaunchWxaAppRespTable");
+    AppMethodBeat.o(47281);
   }
   
-  private ai(String paramString1, String paramString2, int paramInt, byte paramByte)
+  public ai(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(new ad(paramString1, paramString2, 4));
-    AppMethodBeat.i(227089);
-    this.dMe = 4;
-    this.mVs = new int[] { 6, 12, 13 };
-    this.appId = paramString1;
-    this.cBp = paramString2;
-    this.dFL = paramInt;
-    if (a.contains(this.mVs, 4)) {
-      this.dMe = 4;
-    }
-    AppMethodBeat.o(227089);
+    super(paramISQLiteDatabase, aj.nFK, "LaunchWxaAppRespTable", aj.INDEX_CREATE);
   }
   
-  public final String brS()
+  private boolean a(aj paramaj, boolean paramBoolean)
   {
-    AppMethodBeat.i(47262);
-    String str = String.format(Locale.US, "appId %s, module %s, codeType %d, pkgType %d,queryKey:%s", new Object[] { this.appId, this.cBp, Integer.valueOf(this.dFL), Integer.valueOf(this.dMe), this.mVm });
-    AppMethodBeat.o(47262);
-    return str;
+    AppMethodBeat.i(47275);
+    paramaj.field_appIdHash = paramaj.field_appId.hashCode();
+    super.insertNotify(paramaj, paramBoolean);
+    paramBoolean = a(paramaj, new String[] { "appId" });
+    Log.i("MicroMsg.LaunchWxaAppCacheStorage", "insertNotify appId %s ret %B", new Object[] { paramaj.field_appId, Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(47275);
+    return paramBoolean;
   }
   
-  public final void prepare()
+  private boolean a(aj paramaj, boolean paramBoolean, String... paramVarArgs)
   {
-    AppMethodBeat.i(47263);
-    try
+    AppMethodBeat.i(47273);
+    int i;
+    if (!Util.isNullOrNil(paramVarArgs)) {
+      i = 0;
+    }
+    for (;;)
     {
-      Pair localPair = WxaPkgIntegrityChecker.D(this.mVm.toString(), this.dFL, 1);
-      if (localPair.second != null)
+      if (i < paramVarArgs.length)
       {
-        ((WxaPkgWrappingInfo)localPair.second).name = this.cBp;
-        e((WxaPkgWrappingInfo)localPair.second);
-        Log.i("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "%s prepare ok", new Object[] { brS() });
-        bNE();
-        AppMethodBeat.o(47263);
-        return;
+        if (paramVarArgs[i].equals("appId"))
+        {
+          paramVarArgs[i] = "appIdHash";
+          paramaj.field_appIdHash = paramaj.field_appId.hashCode();
+        }
+      }
+      else
+      {
+        paramBoolean = super.delete(paramaj, paramBoolean, paramVarArgs);
+        AppMethodBeat.o(47273);
+        return paramBoolean;
+      }
+      i += 1;
+    }
+  }
+  
+  private boolean b(aj paramaj, boolean paramBoolean, String... paramVarArgs)
+  {
+    AppMethodBeat.i(47276);
+    int i;
+    if (!Util.isNullOrNil(paramVarArgs)) {
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i < paramVarArgs.length)
+      {
+        if (paramVarArgs[i].equals("appId"))
+        {
+          paramVarArgs[i] = "appIdHash";
+          paramaj.field_appIdHash = paramaj.field_appId.hashCode();
+        }
+      }
+      else
+      {
+        paramBoolean = super.updateNotify(paramaj, paramBoolean, paramVarArgs);
+        Log.i("MicroMsg.LaunchWxaAppCacheStorage", "updateNotify appId %s, ret %B", new Object[] { paramaj.field_appId, Boolean.valueOf(paramBoolean) });
+        AppMethodBeat.o(47276);
+        return paramBoolean;
+      }
+      i += 1;
+    }
+  }
+  
+  public final aj a(String paramString, cqa paramcqa)
+  {
+    AppMethodBeat.i(47271);
+    if ((Util.isNullOrNil(paramString)) || (paramcqa == null))
+    {
+      AppMethodBeat.o(47271);
+      return null;
+    }
+    aj localaj = new aj();
+    localaj.b(paramcqa);
+    localaj.field_appId = paramString;
+    paramcqa = new aj();
+    paramcqa.field_appId = paramString;
+    boolean bool1;
+    boolean bool2;
+    if (!a(paramcqa, new String[] { "appId" }))
+    {
+      bool1 = true;
+      if ((!bool1) && (paramcqa.equals(localaj))) {
+        break label173;
+      }
+      bool2 = true;
+      label92:
+      Log.i("MicroMsg.LaunchWxaAppCacheStorage", "flush resp, appId %s, apply %B, insert %B", new Object[] { paramString, Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+      if (bool2)
+      {
+        if (!bool1) {
+          break label179;
+        }
+        a(localaj, false);
       }
     }
-    catch (NullPointerException localNullPointerException)
+    for (;;)
     {
-      if (!g.aAc())
-      {
-        e(null);
-        AppMethodBeat.o(47263);
-        return;
+      if (!bool2) {
+        break label199;
       }
-      AppMethodBeat.o(47263);
-      throw localNullPointerException;
-      if (Util.isNullOrNil(this.cBp)) {
-        localObject1 = n.buL().aX(this.appId, this.dFL);
+      if (!a(paramcqa, new String[] { "appId" })) {
+        break label199;
       }
-      Object localObject2;
-      for (;;)
-      {
-        localObject2 = new af(this.dFL, this)
-        {
-          protected final void b(WxaPkgLoadProgress paramAnonymousWxaPkgLoadProgress)
-          {
-            AppMethodBeat.i(47259);
-            super.b(paramAnonymousWxaPkgLoadProgress);
-            ai.this.c(paramAnonymousWxaPkgLoadProgress);
-            AppMethodBeat.o(47259);
-          }
-          
-          final String bND()
-          {
-            AppMethodBeat.i(47257);
-            String str = ai.this.brS();
-            AppMethodBeat.o(47257);
-            return str;
-          }
-          
-          final void d(WxaPkgWrappingInfo paramAnonymousWxaPkgWrappingInfo)
-          {
-            AppMethodBeat.i(47258);
-            ai.this.e(paramAnonymousWxaPkgWrappingInfo);
-            AppMethodBeat.o(47258);
-          }
-        };
-        Log.i("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "%s before download, url(%s)", new Object[] { brS(), localObject1 });
-        if (!Util.isNullOrNil((String)localObject1)) {
-          break label656;
-        }
-        e(null);
-        AppMethodBeat.o(47263);
-        return;
-        localObject1 = n.buL().a(this.mVm.toString(), this.dFL, new String[] { "versionMd5", "downloadURL" });
-        if (localObject1 == null)
-        {
-          Log.e("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "%s, NULL record", new Object[] { brS() });
-          localObject1 = null;
-        }
-        else
-        {
-          if ((!DebuggerShell.bAx()) || (TextUtils.isEmpty(((bd)localObject1).field_downloadURL))) {
-            break;
-          }
-          Log.i("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "getDownloadURL, with appId[%s], module[%s] hit monkey pushed url[%s]", new Object[] { this.appId, this.cBp, ((bd)localObject1).field_downloadURL });
-          localObject1 = ((bd)localObject1).field_downloadURL;
-        }
-      }
-      Log.i("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "%s, record md5:%s", new Object[] { brS(), ((bd)localObject1).field_versionMd5 });
-      Object localObject1 = ab.a(new com.tencent.mm.plugin.appbrand.appcache.i(this.appId, this.cBp, ((bd)localObject1).field_versionMd5, this.dFL, this.dMe));
-      if ((localObject1 == null) || (((c.a)localObject1).errType != 0) || (((c.a)localObject1).errCode != 0))
-      {
-        localObject2 = brS();
-        int i;
-        if (localObject1 == null)
-        {
-          i = -1;
-          label387:
-          if (localObject1 != null) {
-            break label475;
-          }
-          j = -1;
-          label393:
-          Log.e("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "%s, cgi failed, %d %d", new Object[] { localObject2, Integer.valueOf(i), Integer.valueOf(j) });
-          if (localObject1 != null) {
-            break label483;
-          }
-          i = -1;
-          label429:
-          if (localObject1 != null) {
-            break label491;
-          }
-        }
-        for (int j = -1;; j = ((c.a)localObject1).errCode)
-        {
-          ax.a(ax.getMMString(2131755620, new Object[] { Integer.valueOf(i), Integer.valueOf(j) }), this);
-          localObject1 = null;
-          break;
-          i = ((c.a)localObject1).errType;
-          break label387;
-          j = ((c.a)localObject1).errCode;
-          break label393;
-          i = ((c.a)localObject1).errType;
-          break label429;
-        }
-      }
-      Log.i("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "resp.errcode %d, resp.errmsg %s, resp.url %s", new Object[] { Integer.valueOf(((bwc)((c.a)localObject1).iLC).error_code), ((bwc)((c.a)localObject1).iLC).error_msg, ((bwc)((c.a)localObject1).iLC).gqB });
-      if (Util.isNullOrNil(((bwc)((c.a)localObject1).iLC).gqB))
-      {
-        if (((bwc)((c.a)localObject1).iLC).error_code != -1001) {
-          break label617;
-        }
-        AppBrand404PageUI.show(2131755653);
-        com.tencent.mm.plugin.appbrand.report.i.T(this.appId, 4, this.dFL + 1);
-      }
-      for (;;)
-      {
-        localObject1 = ((bwc)((c.a)localObject1).iLC).gqB;
-        break;
-        label617:
-        ax.a(f.getMMString(2131755623, new Object[] { Integer.valueOf(5), Integer.valueOf(((bwc)((c.a)localObject1).iLC).error_code) }), this);
-      }
-      label656:
-      if (!bj.a(this.mVm.toString(), this.dFL, (String)localObject1, (bj.a)localObject2, new a.a()
-      {
-        public final String bvJ()
-        {
-          AppMethodBeat.i(47260);
-          Object localObject = n.buL().a(ai.this.mVm.toString(), ai.this.dFL, new String[] { "versionMd5" });
-          localObject = "_" + ((bd)localObject).field_versionMd5;
-          AppMethodBeat.o(47260);
-          return localObject;
-        }
-      }))
-      {
-        Log.e("MicroMsg.AppBrand.LaunchPkgPrepareJobTestCode", "%s start downloadPkg failed", new Object[] { brS() });
-        e(null);
-      }
-      AppMethodBeat.o(47263);
-      return;
+      AppMethodBeat.o(47271);
+      return paramcqa;
+      bool1 = false;
+      break;
+      label173:
+      bool2 = false;
+      break label92;
+      label179:
+      b(localaj, false, new String[] { "appId" });
     }
-    catch (b localb)
+    label199:
+    AppMethodBeat.o(47271);
+    return localaj;
+  }
+  
+  public final boolean a(aj paramaj, String... paramVarArgs)
+  {
+    AppMethodBeat.i(47274);
+    int i;
+    if (!Util.isNullOrNil(paramVarArgs)) {
+      i = 0;
+    }
+    for (;;)
     {
-      label82:
-      label475:
-      label483:
-      label491:
-      break label82;
+      if (i < paramVarArgs.length)
+      {
+        if (paramVarArgs[i].equals("appId"))
+        {
+          paramVarArgs[i] = "appIdHash";
+          paramaj.field_appIdHash = paramaj.field_appId.hashCode();
+        }
+      }
+      else
+      {
+        boolean bool = super.get(paramaj, paramVarArgs);
+        AppMethodBeat.o(47274);
+        return bool;
+      }
+      i += 1;
     }
+  }
+  
+  public final boolean ho(String paramString)
+  {
+    AppMethodBeat.i(47272);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(47272);
+      return false;
+    }
+    aj localaj = new aj();
+    localaj.field_appId = paramString;
+    boolean bool = a(localaj, false, new String[] { "appId" });
+    AppMethodBeat.o(47272);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.ai
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class n
 {
-  public static String Bs(long paramLong)
+  public static String HF(long paramLong)
   {
     AppMethodBeat.i(121093);
     String str = "Token@".concat(String.valueOf(paramLong));
@@ -12,7 +12,7 @@ public final class n
     return str;
   }
   
-  public static String cO(Object paramObject)
+  public static String cP(Object paramObject)
   {
     AppMethodBeat.i(121092);
     StringBuilder localStringBuilder = new StringBuilder("Token@");
@@ -27,7 +27,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ac.n
  * JD-Core Version:    0.7.0.1
  */

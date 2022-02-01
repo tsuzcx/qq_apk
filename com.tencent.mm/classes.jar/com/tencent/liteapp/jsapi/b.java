@@ -7,25 +7,27 @@ import org.json.JSONObject;
 
 public final class b
 {
-  private long cqW;
-  private long cqX;
-  private long cqY;
+  private long coK;
+  private long coL;
+  private long coM;
+  private boolean coN;
   private String mAppId;
   
-  public b(String paramString, long paramLong1, long paramLong2, long paramLong3)
+  public b(String paramString, long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean)
   {
     this.mAppId = paramString;
-    this.cqW = paramLong1;
-    this.cqX = paramLong2;
-    this.cqY = paramLong3;
+    this.coK = paramLong1;
+    this.coL = paramLong2;
+    this.coM = paramLong3;
+    this.coN = paramBoolean;
   }
   
   public final void a(JSONObject paramJSONObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(197701);
-    if (this.cqY < 0L)
+    AppMethodBeat.i(258518);
+    if (this.coM < 0L)
     {
-      AppMethodBeat.o(197701);
+      AppMethodBeat.o(258518);
       return;
     }
     JSONObject localJSONObject = new JSONObject();
@@ -45,18 +47,18 @@ public final class b
         com.tencent.liteapp.b.b.e("WxaLiteApp.LiteAppJsApiCallback", paramJSONObject.toString(), new Object[0]);
         continue;
       }
-      LiteAppCenter.jsApiCallback(this.mAppId, this.cqW, this.cqX, this.cqY, localJSONObject.toString(), paramBoolean);
-      AppMethodBeat.o(197701);
+      LiteAppCenter.jsApiCallback(this.mAppId, this.coK, this.coL, this.coM, localJSONObject.toString(), paramBoolean, this.coN);
+      AppMethodBeat.o(258518);
       return;
       localJSONObject.put("data", new JSONObject());
     }
   }
   
-  public final void h(String paramString, boolean paramBoolean)
+  public final void i(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(197702);
+    AppMethodBeat.i(258519);
     JSONObject localJSONObject;
-    if (this.cqY >= 0L) {
+    if (this.coM >= 0L) {
       localJSONObject = new JSONObject();
     }
     for (;;)
@@ -75,8 +77,8 @@ public final class b
         com.tencent.liteapp.b.b.e("WxaLiteApp.LiteAppJsApiCallback", paramString.toString(), new Object[0]);
         continue;
       }
-      LiteAppCenter.jsApiCallback(this.mAppId, this.cqW, this.cqX, this.cqY, localJSONObject.toString(), paramBoolean);
-      AppMethodBeat.o(197702);
+      LiteAppCenter.jsApiCallback(this.mAppId, this.coK, this.coL, this.coM, localJSONObject.toString(), paramBoolean, this.coN);
+      AppMethodBeat.o(258519);
       return;
       localJSONObject.put("errMsg", "");
     }

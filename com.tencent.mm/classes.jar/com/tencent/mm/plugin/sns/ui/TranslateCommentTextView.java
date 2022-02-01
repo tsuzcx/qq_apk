@@ -6,12 +6,14 @@ import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.g;
 
 public class TranslateCommentTextView
   extends LinearLayout
 {
-  public SnsTranslateResultView ECF;
-  public MaskTextView ERU;
+  public SnsTranslateResultView KQw;
+  public MaskTextView LfZ;
   
   public TranslateCommentTextView(Context paramContext)
   {
@@ -32,26 +34,26 @@ public class TranslateCommentTextView
   private void init()
   {
     AppMethodBeat.i(99780);
-    LayoutInflater.from(getContext()).inflate(2131496712, this);
-    this.ERU = ((MaskTextView)findViewById(2131298967));
-    this.ECF = ((SnsTranslateResultView)findViewById(2131308248));
-    this.ECF.setVisibility(8);
+    LayoutInflater.from(getContext()).inflate(i.g.timeline_comment_translate_item_layout, this);
+    this.LfZ = ((MaskTextView)findViewById(i.f.comment_textview));
+    this.KQw = ((SnsTranslateResultView)findViewById(i.f.sns_translate_result_view));
+    this.KQw.setVisibility(8);
     AppMethodBeat.o(99780);
   }
   
   public TextView getOriginCommentTextView()
   {
-    return this.ERU;
+    return this.LfZ;
   }
   
   public SnsTranslateResultView getTranslateResultView()
   {
-    return this.ECF;
+    return this.KQw;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.TranslateCommentTextView
  * JD-Core Version:    0.7.0.1
  */

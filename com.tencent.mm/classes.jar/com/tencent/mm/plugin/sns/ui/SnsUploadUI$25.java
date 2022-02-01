@@ -1,26 +1,25 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 
 final class SnsUploadUI$25
-  implements View.OnLongClickListener
+  implements View.OnClickListener
 {
   SnsUploadUI$25(SnsUploadUI paramSnsUploadUI) {}
   
-  public final boolean onLongClick(View paramView)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(176384);
+    AppMethodBeat.i(176383);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/sns/ui/SnsUploadUI$9", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
-    SnsUploadUI.p(this.EPZ);
-    a.a(false, this, "com/tencent/mm/plugin/sns/ui/SnsUploadUI$9", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-    AppMethodBeat.o(176384);
-    return false;
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/sns/ui/SnsUploadUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    SnsUploadUI.p(this.LdU);
+    a.a(this, "com/tencent/mm/plugin/sns/ui/SnsUploadUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(176383);
   }
 }
 

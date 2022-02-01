@@ -5,14 +5,16 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.pluginsdk.ui.span.l;
 
 public class BankRemitDetailItemView
   extends LinearLayout
 {
-  private boolean Cku;
-  private TextView jVn;
-  private TextView mPa;
+  private boolean Ihn;
+  private TextView mMA;
+  private TextView pPT;
   
   public BankRemitDetailItemView(Context paramContext)
   {
@@ -23,7 +25,7 @@ public class BankRemitDetailItemView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(67502);
-    this.Cku = false;
+    this.Ihn = false;
     init();
     AppMethodBeat.o(67502);
   }
@@ -32,7 +34,7 @@ public class BankRemitDetailItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(67503);
-    this.Cku = false;
+    this.Ihn = false;
     init();
     AppMethodBeat.o(67503);
   }
@@ -41,8 +43,8 @@ public class BankRemitDetailItemView
   {
     super(paramContext);
     AppMethodBeat.i(67501);
-    this.Cku = false;
-    this.Cku = paramBoolean;
+    this.Ihn = false;
+    this.Ihn = paramBoolean;
     init();
     AppMethodBeat.o(67501);
   }
@@ -50,30 +52,30 @@ public class BankRemitDetailItemView
   private void init()
   {
     AppMethodBeat.i(67504);
-    if (this.Cku) {
-      inflate(getContext(), 2131493198, this);
+    if (this.Ihn) {
+      inflate(getContext(), a.g.bank_remit_detail_item_money_layout, this);
     }
     for (;;)
     {
-      this.mPa = ((TextView)findViewById(2131297745));
-      this.jVn = ((TextView)findViewById(2131297744));
+      this.pPT = ((TextView)findViewById(a.f.brdi_title_tv));
+      this.mMA = ((TextView)findViewById(a.f.brdi_desc_tv));
       AppMethodBeat.o(67504);
       return;
-      inflate(getContext(), 2131493197, this);
+      inflate(getContext(), a.g.bank_remit_detail_item_comm_layout, this);
     }
   }
   
   public final void a(String paramString, CharSequence paramCharSequence, boolean paramBoolean)
   {
     AppMethodBeat.i(67505);
-    this.mPa.setText(paramString);
+    this.pPT.setText(paramString);
     if (paramBoolean)
     {
-      this.jVn.setText(l.b(getContext(), paramCharSequence, this.jVn.getTextSize()));
+      this.mMA.setText(l.b(getContext(), paramCharSequence, this.mMA.getTextSize()));
       AppMethodBeat.o(67505);
       return;
     }
-    this.jVn.setText(paramCharSequence);
+    this.mMA.setText(paramCharSequence);
     AppMethodBeat.o(67505);
   }
   

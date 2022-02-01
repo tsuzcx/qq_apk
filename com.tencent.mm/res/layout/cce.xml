@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/fa3" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <FrameLayout android:id="@id/be9" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <RelativeLayout android:id="@id/j6z" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <ImageView android:id="@id/caz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-        <com.tencent.mm.plugin.whatsnew.ui.BubblesView android:id="@id/afg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <com.tencent.mm.plugin.whatsnew.ui.WhatsNewSubtitlesView android:layout_gravity="center_horizontal" android:id="@id/idu" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <com.tencent.mm.plugin.whatsnew.ui.LegacyCircleIndicator android:layout_gravity="end|bottom|center" android:id="@id/dxu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="106.0dip" android:layout_marginEnd="40.0dip" />
-        <TextView android:textSize="@dimen/t" android:textColor="@color/BW_100_Alpha_0_6" android:layout_gravity="end|bottom|center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="66.0dip" android:text="@string/j1e" android:layout_marginEnd="40.0dip" />
-    </FrameLayout>
-    <com.tencent.mm.ui.mogic.WxViewPager android:id="@id/j7k" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
-</merge>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/dp1" android:layout_width="fill_parent" android:layout_height="@dimen/cn" android:layout_below="@id/c2j">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/b46" android:padding="@dimen/c5" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@raw/icons_outlined_arrow" android:contentDescription="@string/b5x" android:rotation="90.0" />
+        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/ir3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g60" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/hd9" android:background="@drawable/ayc" android:layout_width="fill_parent" android:layout_height="@dimen/ci" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/cb">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/he6" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:layout_margin="@dimen/bt" android:src="@raw/icons_outlined_search" app:iconColor="@color/BW_70" />
+        <com.tencent.mm.ui.search.FTSEditTextView android:id="@id/db_" android:layout_width="0.0dip" android:layout_height="@dimen/ce" android:layout_weight="1.0" android:textCursorDrawable="@drawable/a70" />
+    </LinearLayout>
+    <View android:background="@color/x5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="@dimen/cb" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/jv4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.ui.base.AlphabetScrollBar android:id="@id/d_t" android:layout_width="@dimen/e" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

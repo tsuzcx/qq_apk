@@ -5,78 +5,78 @@ import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/report/StoryImageVideoIDKey;", "", "()V", "ID", "", "getID", "()J", "Key_CQError", "getKey_CQError", "Key_ConfigError", "getKey_ConfigError", "Key_RemuxFail", "getKey_RemuxFail", "Key_RemuxSucc", "getKey_RemuxSucc", "Key_RemuxTimes", "getKey_RemuxTimes", "Key_ZipAllCheckTimes", "getKey_ZipAllCheckTimes", "Key_ZipFail", "getKey_ZipFail", "Key_ZipSucc", "getKey_ZipSucc", "Key_ZipTimes", "getKey_ZipTimes", "TAG", "", "getTAG", "()Ljava/lang/String;", "markCQError", "", "markConfigError", "markRemux", "markRemuxFail", "markRemuxSucc", "markX264Disable", "markX264FailTimes", "markX264Times", "markZipAllCheckTimes", "markZipFail", "markZipSucc", "markZipTimes", "reportCodecTime", "t", "reportX264CostTime", "reportZipTime", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/report/StoryImageVideoIDKey;", "", "()V", "ID", "", "getID", "()J", "Key_CQError", "getKey_CQError", "Key_ConfigError", "getKey_ConfigError", "Key_RemuxFail", "getKey_RemuxFail", "Key_RemuxSucc", "getKey_RemuxSucc", "Key_RemuxTimes", "getKey_RemuxTimes", "Key_ZipAllCheckTimes", "getKey_ZipAllCheckTimes", "Key_ZipFail", "getKey_ZipFail", "Key_ZipSucc", "getKey_ZipSucc", "Key_ZipTimes", "getKey_ZipTimes", "TAG", "", "getTAG", "()Ljava/lang/String;", "markCQError", "", "markConfigError", "markRemux", "markRemuxFail", "markRemuxSucc", "markX264Disable", "markX264FailTimes", "markX264Times", "markZipAllCheckTimes", "markZipFail", "markZipSucc", "markZipTimes", "reportCodecTime", "t", "reportX264CostTime", "reportZipTime", "plugin-story_release"})
 public final class d
 {
-  private static final long BXJ = 1L;
-  private static final long BXK = 2L;
-  private static final long BXL = 4L;
-  private static final long BXM = 5L;
-  private static final long BXN = 7L;
-  private static final long BXO = 9L;
-  private static final long BXP = 10L;
-  private static final long BXQ = 11L;
-  private static final long BXR = 12L;
-  public static final d Fug;
+  private static final long HUA = 5L;
+  private static final long HUB = 7L;
+  private static final long HUC = 9L;
+  private static final long HUD = 10L;
+  private static final long HUE = 11L;
+  private static final long HUF = 12L;
+  private static final long HUx = 1L;
+  private static final long HUy = 2L;
+  private static final long HUz = 4L;
+  public static final d LOh;
   private static final String TAG = "MicroMsg.StoryImageVideoIDKey";
-  private static final long oIi = 1092L;
+  private static final long rJY = 1092L;
   
   static
   {
     AppMethodBeat.i(119424);
-    Fug = new d();
+    LOh = new d();
     TAG = "MicroMsg.StoryImageVideoIDKey";
-    oIi = 1092L;
-    BXJ = 1L;
-    BXK = 2L;
-    BXL = 4L;
-    BXM = 5L;
-    BXN = 7L;
-    BXO = 9L;
-    BXP = 10L;
-    BXQ = 11L;
-    BXR = 12L;
+    rJY = 1092L;
+    HUx = 1L;
+    HUy = 2L;
+    HUz = 4L;
+    HUA = 5L;
+    HUB = 7L;
+    HUC = 9L;
+    HUD = 10L;
+    HUE = 11L;
+    HUF = 12L;
     AppMethodBeat.o(119424);
   }
   
-  public static void Kr(long paramLong)
+  public static void RL(long paramLong)
   {
     AppMethodBeat.i(119423);
     Log.d(TAG, "reportZipTime ".concat(String.valueOf(paramLong)));
-    h.CyF.n(oIi, 13L, 1L);
-    h.CyF.n(oIi, 14L, paramLong);
+    h.IzE.p(rJY, 13L, 1L);
+    h.IzE.p(rJY, 14L, paramLong);
     AppMethodBeat.o(119423);
   }
   
-  public static void fpT()
+  public static void geo()
   {
     AppMethodBeat.i(119419);
     Log.d(TAG, "markZipFail");
-    h.CyF.n(oIi, BXL, 1L);
+    h.IzE.p(rJY, HUz, 1L);
     AppMethodBeat.o(119419);
   }
   
-  public static void fpU()
+  public static void gep()
   {
     AppMethodBeat.i(119420);
     Log.d(TAG, "markZipTimes");
-    h.CyF.n(oIi, BXM, 1L);
+    h.IzE.p(rJY, HUA, 1L);
     AppMethodBeat.o(119420);
   }
   
-  public static void fpV()
+  public static void geq()
   {
     AppMethodBeat.i(119421);
     Log.d(TAG, "markZipSucc");
-    h.CyF.n(oIi, BXP, 1L);
+    h.IzE.p(rJY, HUD, 1L);
     AppMethodBeat.o(119421);
   }
   
-  public static void fpW()
+  public static void ger()
   {
     AppMethodBeat.i(119422);
     Log.d(TAG, "markZipAllCheckTimes");
-    h.CyF.n(oIi, BXN, 1L);
+    h.IzE.p(rJY, HUB, 1L);
     AppMethodBeat.o(119422);
   }
 }

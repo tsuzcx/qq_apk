@@ -9,12 +9,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.danmaku.b.e;
 import com.tencent.mm.danmaku.render.h;
 import com.tencent.mm.danmaku.render.h.a;
-import com.tencent.mm.protocal.protobuf.cni;
+import com.tencent.mm.plugin.finder.b.c;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.protocal.protobuf.cwa;
 import kotlin.g.b.p;
-import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/megavideo/bullet/TextDanmakuRender;", "Lcom/tencent/mm/danmaku/render/ViewDanmakuRender;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "getItemViewType", "", "danmakuData", "", "onBindViewHolder", "", "itemViewType", "viewHolder", "Lcom/tencent/mm/danmaku/render/ViewDanmakuRender$ViewHolder;", "danmaku", "Lcom/tencent/mm/danmaku/data/ViewDanmaku;", "onCreateViewHolder", "TextViewHolder", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/bullet/TextDanmakuRender;", "Lcom/tencent/mm/danmaku/render/ViewDanmakuRender;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "getItemViewType", "", "danmakuData", "", "onBindViewHolder", "", "itemViewType", "viewHolder", "Lcom/tencent/mm/danmaku/render/ViewDanmakuRender$ViewHolder;", "danmaku", "Lcom/tencent/mm/danmaku/data/ViewDanmaku;", "onCreateViewHolder", "TextViewHolder", "plugin-finder_release"})
 public final class d
   extends h
 {
@@ -22,84 +25,84 @@ public final class d
   
   public d(Context paramContext)
   {
-    AppMethodBeat.i(248281);
+    AppMethodBeat.i(282799);
     this.context = paramContext;
-    AppMethodBeat.o(248281);
+    AppMethodBeat.o(282799);
   }
   
   public final void a(h.a parama, e parame)
   {
-    AppMethodBeat.i(248280);
-    p.h(parama, "viewHolder");
-    p.h(parame, "danmaku");
+    AppMethodBeat.i(282798);
+    p.k(parama, "viewHolder");
+    p.k(parame, "danmaku");
     parame = parame.getData();
     if (parame == null)
     {
       parama = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.MegaVideoBulletCommentInfo");
-      AppMethodBeat.o(248280);
+      AppMethodBeat.o(282798);
       throw parama;
     }
-    Object localObject = (cni)parame;
-    parame = ((a)parama).uKi;
-    parama = ((cni)localObject).content;
+    Object localObject = (cwa)parame;
+    parame = ((a)parama).zvR;
+    parama = ((cwa)localObject).content;
     Context localContext = parame.getContext();
-    p.g(localContext, "context");
-    int i = localContext.getResources().getColor(2131099679);
-    if ((((cni)localObject).extFlag & 0x1) != 0)
+    p.j(localContext, "context");
+    int i = localContext.getResources().getColor(b.c.BW_100_Alpha_0_8);
+    if ((((cwa)localObject).extFlag & 0x1) != 0)
     {
       parama = new StringBuilder();
       localContext = parame.getContext();
-      p.g(localContext, "context");
-      parama = localContext.getResources().getString(2131763008) + ((cni)localObject).content;
+      p.j(localContext, "context");
+      parama = localContext.getResources().getString(b.j.mega_video_bullet_self_header) + ((cwa)localObject).content;
       localObject = parame.getContext();
-      p.g(localObject, "context");
-      i = ((Context)localObject).getResources().getColor(2131100801);
+      p.j(localObject, "context");
+      i = ((Context)localObject).getResources().getColor(b.c.mega_video_bullet_self_prefix_color);
     }
     for (;;)
     {
-      parame.setText((CharSequence)parama);
+      parame.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(parame.getContext(), (CharSequence)parama));
       parame.setTextColor(i);
-      AppMethodBeat.o(248280);
+      AppMethodBeat.o(282798);
       return;
-      if ((((cni)localObject).extFlag & 0x2) != 0)
+      if ((((cwa)localObject).extFlag & 0x2) != 0)
       {
         parama = new StringBuilder();
         localContext = parame.getContext();
-        p.g(localContext, "context");
-        parama = localContext.getResources().getString(2131763004) + ((cni)localObject).content;
+        p.j(localContext, "context");
+        parama = localContext.getResources().getString(b.j.mega_video_bullet_finder_header) + ((cwa)localObject).content;
         localObject = parame.getContext();
-        p.g(localObject, "context");
-        i = ((Context)localObject).getResources().getColor(2131100412);
+        p.j(localObject, "context");
+        i = ((Context)localObject).getResources().getColor(b.c.finder_bullet_subtitle_prefix);
       }
     }
   }
   
-  public final h.a atg()
+  public final h.a azV()
   {
-    AppMethodBeat.i(248279);
-    Object localObject = LayoutInflater.from(this.context).inflate(2131495479, null);
-    p.g(localObject, "LayoutInflater.from(cont…mega_bullet_layout, null)");
+    AppMethodBeat.i(282796);
+    Object localObject = LayoutInflater.from(this.context).inflate(b.g.mega_video_mega_bullet_layout, null);
+    p.j(localObject, "LayoutInflater.from(cont…mega_bullet_layout, null)");
     localObject = (h.a)new a((View)localObject);
-    AppMethodBeat.o(248279);
+    AppMethodBeat.o(282796);
     return localObject;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/megavideo/bullet/TextDanmakuRender$TextViewHolder;", "Lcom/tencent/mm/danmaku/render/ViewDanmakuRender$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/finder/megavideo/bullet/TextDanmakuRender;Landroid/view/View;)V", "bulletTv", "Landroid/widget/TextView;", "getBulletTv", "()Landroid/widget/TextView;", "getItemView", "()Landroid/view/View;", "plugin-finder_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/bullet/TextDanmakuRender$TextViewHolder;", "Lcom/tencent/mm/danmaku/render/ViewDanmakuRender$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/finder/megavideo/bullet/TextDanmakuRender;Landroid/view/View;)V", "bulletTv", "Landroid/widget/TextView;", "getBulletTv", "()Landroid/widget/TextView;", "getItemView", "()Landroid/view/View;", "plugin-finder_release"})
   public final class a
     extends h.a
   {
-    private final View aus;
-    final TextView uKi;
+    private final View amk;
+    final TextView zvR;
     
     public a()
     {
       super();
-      AppMethodBeat.i(248278);
-      this.aus = localObject;
-      this$1 = this.aus.findViewById(2131297862);
-      p.g(d.this, "itemView.findViewById(R.id.bullet_tv)");
-      this.uKi = ((TextView)d.this);
-      AppMethodBeat.o(248278);
+      AppMethodBeat.i(288707);
+      this.amk = localObject;
+      this$1 = this.amk.findViewById(b.f.bullet_tv);
+      p.j(d.this, "itemView.findViewById(R.id.bullet_tv)");
+      this.zvR = ((TextView)d.this);
+      AppMethodBeat.o(288707);
     }
   }
 }

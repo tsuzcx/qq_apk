@@ -1,77 +1,81 @@
 package com.tencent.mm.plugin.scanner;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cs;
-import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.plugin.scanner.model.v;
+import com.tencent.mm.f.a.cw;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.y;
+import com.tencent.mm.plugin.scanner.model.t;
+import com.tencent.mm.plugin.scanner.util.k;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.vfs.ab;
+import com.tencent.mm.vfs.q;
 import java.util.Map;
+import kotlin.g.b.p;
 
 public class PluginScanner
   extends com.tencent.mm.kernel.b.f
-  implements com.tencent.mm.kernel.api.bucket.c, f
+  implements com.tencent.mm.kernel.api.bucket.c, g
 {
-  private static final IListener<cs> CzS;
-  private com.tencent.mm.plugin.scanner.util.p CzR;
+  private static final IListener<cw> IBz;
   
   static
   {
-    AppMethodBeat.i(240711);
-    CzS = new PluginScanner.1();
-    AppMethodBeat.o(240711);
+    AppMethodBeat.i(222960);
+    IBz = new PluginScanner.1();
+    AppMethodBeat.o(222960);
   }
   
   public PluginScanner()
   {
     AppMethodBeat.i(51554);
-    this.CzR = new com.tencent.mm.plugin.scanner.util.p();
     AppMethodBeat.o(51554);
   }
   
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(240710);
-    EventCenter.instance.add(CzS);
-    com.tencent.mm.vfs.y.b("ImageSearchFilePath", "image_search_temp/", 259200000L, 68);
-    AppMethodBeat.o(240710);
+    AppMethodBeat.i(222936);
+    EventCenter.instance.add(IBz);
+    ab.a("ImageSearchFilePath", "image_search_temp/", 259200000L, 70);
+    AppMethodBeat.o(222936);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(51555);
-    com.tencent.mm.br.b.bfQ("scanner");
-    pin(new com.tencent.mm.model.y(j.class));
-    if (paramg.aBb())
+    com.tencent.mm.by.b.bsj("scanner");
+    pin(new y(o.class));
+    if (paramg.aIE())
     {
-      paramg = v.CFW;
+      paramg = t.ILi;
       paramg = MMApplicationContext.getContext();
-      kotlin.g.b.p.h(paramg, "context");
-      com.tencent.mm.vfs.o localo = new com.tencent.mm.vfs.o(v.cF(paramg));
-      if (!localo.exists()) {
-        localo.mkdirs();
+      p.k(paramg, "context");
+      q localq = new q(t.cC(paramg));
+      if (!localq.ifE()) {
+        localq.ifL();
       }
-      v.j(paramg, "scan_goods/center_det.bin", v.cF(paramg) + "center_det.bin");
-      v.j(paramg, "scan_goods/center_det.param", v.cF(paramg) + "center_det.param");
-      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.scanner.api.c.class, new com.tencent.mm.plugin.scanner.g.b());
-      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.scanner.api.b.class, new com.tencent.mm.plugin.scanner.g.a());
-      paramg = com.tencent.mm.plugin.scanner.util.g.CTH;
+      t.j(paramg, "scan_goods/center_det.bin", t.cC(paramg) + "center_det.bin");
+      t.j(paramg, "scan_goods/center_det.param", t.cC(paramg) + "center_det.param");
+      h.b(com.tencent.mm.plugin.scanner.api.c.class, new com.tencent.mm.plugin.scanner.h.b());
+      h.b(com.tencent.mm.plugin.scanner.api.b.class, new com.tencent.mm.plugin.scanner.h.a());
+      paramg = com.tencent.mm.plugin.scanner.util.g.IYZ;
       com.tencent.mm.pluginsdk.cmd.b.a((com.tencent.mm.pluginsdk.cmd.a)new com.tencent.mm.plugin.scanner.util.g(), new String[] { "//scan" });
-      paramg = com.tencent.mm.plugin.scanner.box.a.a.a.CDH;
-      paramg = com.tencent.mm.plugin.webview.d.o.ISi;
-      com.tencent.mm.plugin.webview.d.o.bM((Map)com.tencent.mm.plugin.scanner.box.a.a.a.CDG.getValue());
+      paramg = com.tencent.mm.plugin.scanner.box.a.a.a.IIj;
+      paramg = com.tencent.mm.plugin.webview.d.o.POy;
+      com.tencent.mm.plugin.webview.d.o.bR((Map)com.tencent.mm.plugin.scanner.box.a.a.a.IIi.getValue());
       AppMethodBeat.o(51555);
       return;
     }
-    if (paramg.FY(":tools"))
+    if (paramg.MY(":tools"))
     {
-      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.scanner.api.c.class, new com.tencent.mm.plugin.scanner.g.b());
+      h.b(com.tencent.mm.plugin.scanner.api.c.class, new com.tencent.mm.plugin.scanner.h.b());
       AppMethodBeat.o(51555);
       return;
     }
-    if (paramg.FZ(":appbrand")) {
-      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.scanner.api.c.class, new com.tencent.mm.plugin.scanner.g.b());
+    if (paramg.MZ(":appbrand")) {
+      h.b(com.tencent.mm.plugin.scanner.api.c.class, new com.tencent.mm.plugin.scanner.h.b());
     }
     AppMethodBeat.o(51555);
   }
@@ -79,8 +83,8 @@ public class PluginScanner
   public String genScanCaptureImgPath(String paramString)
   {
     AppMethodBeat.i(51558);
-    j.eOR();
-    paramString = j.getScanImageSaveDir() + String.format("%s_%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), paramString });
+    o.fBS();
+    paramString = o.getScanImageSaveDir() + String.format("%s_%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), paramString });
     AppMethodBeat.o(51558);
     return paramString;
   }
@@ -88,42 +92,57 @@ public class PluginScanner
   public String genScanTmpImgPath(String paramString)
   {
     AppMethodBeat.i(51559);
-    j.eOR();
-    paramString = j.genScanTmpImgPath(paramString);
+    o.fBS();
+    paramString = o.getScanImageSaveDir() + String.format("%s_%d.%s", new Object[] { "tmp", Long.valueOf(System.currentTimeMillis()), paramString });
     AppMethodBeat.o(51559);
     return paramString;
+  }
+  
+  public String genScanTmpImgPath(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(222957);
+    o.fBS();
+    paramString1 = o.getScanImageSaveDir() + String.format("%s_%s.%s", new Object[] { "tmp", paramString1, paramString2 });
+    AppMethodBeat.o(222957);
+    return paramString1;
   }
   
   public String getAccScannerPath()
   {
     AppMethodBeat.i(51556);
-    j.eOR();
-    String str = j.getAccScannerPath();
+    o.fBS();
+    String str = o.getAccScannerPath();
     AppMethodBeat.o(51556);
     return str;
-  }
-  
-  public com.tencent.mm.plugin.scanner.util.p getScanCdnService()
-  {
-    return this.CzR;
   }
   
   public String getScanImageSaveDir()
   {
     AppMethodBeat.i(51557);
-    j.eOR();
-    String str = j.getScanImageSaveDir();
+    o.fBS();
+    String str = o.getScanImageSaveDir();
     AppMethodBeat.o(51557);
     return str;
   }
   
-  public void onAccountInitialized(e.c paramc) {}
+  public k getScanTranslateCdnService()
+  {
+    return k.IZu;
+  }
+  
+  public void onAccountInitialized(f.c paramc)
+  {
+    AppMethodBeat.i(222959);
+    o.fBS();
+    o.fBT();
+    AppMethodBeat.o(222959);
+  }
   
   public void onAccountRelease() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.PluginScanner
  * JD-Core Version:    0.7.0.1
  */

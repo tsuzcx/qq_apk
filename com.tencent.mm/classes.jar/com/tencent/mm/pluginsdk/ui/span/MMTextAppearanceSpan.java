@@ -4,7 +4,7 @@ import android.content.res.ColorStateList;
 import android.text.TextPaint;
 import android.text.style.TextAppearanceSpan;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 
 public class MMTextAppearanceSpan
   extends TextAppearanceSpan
@@ -27,16 +27,16 @@ public class MMTextAppearanceSpan
     {
       AppMethodBeat.o(152328);
       return;
-      ao.a(paramTextPaint, 0.1F);
+      ar.a(paramTextPaint, 0.1F);
       AppMethodBeat.o(152328);
       return;
-      ao.a(paramTextPaint, 0.8F);
+      ar.a(paramTextPaint, 0.8F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.span.MMTextAppearanceSpan
  * JD-Core Version:    0.7.0.1
  */

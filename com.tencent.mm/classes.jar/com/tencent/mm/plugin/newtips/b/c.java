@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.newtips.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ev;
-import com.tencent.mm.protocal.protobuf.ehy;
+import com.tencent.mm.f.c.fa;
+import com.tencent.mm.protocal.protobuf.esa;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Iterator;
@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.Map;
 
 public final class c
-  extends ev
+  extends fa
 {
   protected static IAutoDBItem.MAutoDBInfo info;
   
@@ -131,13 +131,13 @@ public final class c
     if (this.field_parents != null)
     {
       localObject1 = localObject2;
-      if (this.field_parents.gCs != null)
+      if (this.field_parents.jmy != null)
       {
         localObject1 = localObject2;
-        if (this.field_parents.gCs.size() > 0)
+        if (this.field_parents.jmy.size() > 0)
         {
           localObject1 = new StringBuilder();
-          localObject2 = this.field_parents.gCs.iterator();
+          localObject2 = this.field_parents.jmy.iterator();
           while (((Iterator)localObject2).hasNext()) {
             ((StringBuilder)localObject1).append((String)((Iterator)localObject2).next()).append(",");
           }
@@ -152,7 +152,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.newtips.b.c
  * JD-Core Version:    0.7.0.1
  */

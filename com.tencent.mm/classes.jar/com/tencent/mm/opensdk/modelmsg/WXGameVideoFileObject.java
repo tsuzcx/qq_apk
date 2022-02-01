@@ -17,20 +17,20 @@ public class WXGameVideoFileObject
   
   public WXGameVideoFileObject()
   {
-    AppMethodBeat.i(190374);
+    AppMethodBeat.i(254550);
     this.filePath = null;
     this.videoUrl = null;
     this.thumbUrl = null;
-    AppMethodBeat.o(190374);
+    AppMethodBeat.o(254550);
   }
   
   public WXGameVideoFileObject(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(190375);
+    AppMethodBeat.i(254551);
     this.filePath = paramString1;
     this.videoUrl = paramString2;
     this.thumbUrl = paramString3;
-    AppMethodBeat.o(190375);
+    AppMethodBeat.o(254551);
   }
   
   private int getFileSize(String paramString)
@@ -100,7 +100,7 @@ public class WXGameVideoFileObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXGameVideoFileObject
  * JD-Core Version:    0.7.0.1
  */

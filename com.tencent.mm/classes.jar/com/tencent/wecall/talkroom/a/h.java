@@ -1,19 +1,19 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.a.a.e;
+import com.google.b.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.pb.common.b.a.a.a.an;
+import com.tencent.pb.common.b.a.a.a.am;
 import com.tencent.pb.common.b.a.a.a.m;
 import com.tencent.pb.common.b.d;
 import com.tencent.pb.common.c.b;
-import com.tencent.wecall.talkroom.model.k;
+import com.tencent.wecall.talkroom.model.j;
 
 public final class h
   extends d
 {
+  public long DPJ;
   public String groupId;
   public int roomId;
-  public long ypH;
   
   public h(String paramString, int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
@@ -25,18 +25,18 @@ public final class h
       try
       {
         localm.groupId = paramString;
-        localm.GXO = paramInt1;
-        localm.GXP = paramLong;
-        localm.qrD = paramInt2;
-        localm.RDu = 2;
-        localm.netType = k.lx(com.tencent.pb.common.c.c.Hhs);
+        localm.NOc = paramInt1;
+        localm.NOd = paramLong;
+        localm.tQm = paramInt2;
+        localm.ZeW = 2;
+        localm.netType = j.mv(com.tencent.pb.common.c.c.NYh);
         if (paramInt3 != 0) {
           continue;
         }
-        localm.RDG = 0;
-        b.w(this.TAG2, new Object[] { "NetSceneRedirect redirect type:", Integer.valueOf(localm.RDG) });
-        this.mNetType = 3;
-        this.RCJ = com.tencent.wecall.talkroom.model.c.hqY().brj(paramString);
+        localm.Zfm = 0;
+        b.w(this.TAG2, new Object[] { "NetSceneRedirect redirect type:", Integer.valueOf(localm.Zfm) });
+        aAc(3);
+        aAd(com.tencent.wecall.talkroom.model.c.iuI().bEi(paramString));
       }
       catch (Exception paramString)
       {
@@ -46,11 +46,11 @@ public final class h
       c(211, localm);
       AppMethodBeat.o(175625);
       return;
-      localm.RDG = 1;
+      localm.Zfm = 1;
     }
   }
   
-  public final Object cO(byte[] paramArrayOfByte)
+  public final Object dn(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62546);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -59,7 +59,7 @@ public final class h
     {
       try
       {
-        paramArrayOfByte = (a.an)e.a(new a.an(), paramArrayOfByte, paramArrayOfByte.length);
+        paramArrayOfByte = (a.am)e.a(new a.am(), paramArrayOfByte, paramArrayOfByte.length);
         AppMethodBeat.o(62546);
         return paramArrayOfByte;
       }
@@ -78,7 +78,7 @@ public final class h
     return 211;
   }
   
-  public final String hiV()
+  public final String ikF()
   {
     return "CsCmd.Cmd_V_CSVoiceRedirectReq";
   }

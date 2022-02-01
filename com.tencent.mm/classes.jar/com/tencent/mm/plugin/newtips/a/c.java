@@ -2,17 +2,16 @@ package com.tencent.mm.plugin.newtips.a;
 
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.network.g;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dgf;
-import com.tencent.mm.protocal.protobuf.dgg;
+import com.tencent.mm.protocal.protobuf.dpz;
+import com.tencent.mm.protocal.protobuf.dqa;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 
@@ -21,24 +20,24 @@ public final class c
   implements m
 {
   private i callback;
-  private String dUb;
+  private String fND;
   private d rr;
   
   public c(String paramString)
   {
     AppMethodBeat.i(184028);
     d.a locala = new d.a();
-    locala.iLN = new dgf();
-    locala.iLO = new dgg();
+    locala.lBU = new dpz();
+    locala.lBV = new dqa();
     locala.uri = "/cgi-bin/micromsg-bin/pushnewtips";
     locala.funcId = 597;
-    this.rr = locala.aXF();
-    ((dgf)this.rr.iLK.iLR).KSL = paramString;
-    this.dUb = paramString;
+    this.rr = locala.bgN();
+    ((dpz)d.b.b(this.rr.lBR)).RTN = paramString;
+    this.fND = paramString;
     AppMethodBeat.o(184028);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(184030);
     Log.d("MicroMsg.NewTips.NetScenePushNewTips", "doScene");
@@ -63,19 +62,19 @@ public final class c
       AppMethodBeat.o(184029);
       return;
     }
-    params = (dgg)((d)params).iLL.iLR;
-    paramArrayOfByte = this.dUb;
-    boolean bool = params.MKT;
+    params = (dqa)d.c.b(((d)params).lBS);
+    paramArrayOfByte = this.fND;
+    boolean bool = params.TWO;
     Log.i("MicroMsg.NewTips.NewTipsHelper", "setLocalNewTipsState() uniqueId:%s isReject:%s", new Object[] { paramArrayOfByte, Boolean.valueOf(bool) });
-    MultiProcessMMKV.getMMKV("new_tips").edit().putBoolean(paramArrayOfByte, bool).commit();
+    g.getKV().edit().putBoolean(paramArrayOfByte, bool).commit();
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    Log.i("MicroMsg.NewTips.NetScenePushNewTips", "onGYNetEnd() uniqueId:%s IsReject:%s", new Object[] { this.dUb, Boolean.valueOf(params.MKT) });
+    Log.i("MicroMsg.NewTips.NetScenePushNewTips", "onGYNetEnd() uniqueId:%s IsReject:%s", new Object[] { this.fND, Boolean.valueOf(params.TWO) });
     AppMethodBeat.o(184029);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.newtips.a.c
  * JD-Core Version:    0.7.0.1
  */

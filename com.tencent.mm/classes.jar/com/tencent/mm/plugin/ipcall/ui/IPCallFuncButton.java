@@ -13,31 +13,33 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.R.a;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.n;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public class IPCallFuncButton
   extends LinearLayout
 {
-  private boolean ded;
-  private boolean edw;
+  private ImageView DWo;
+  private TextView DWp;
+  private Drawable DWq;
+  private Drawable DWr;
+  private Drawable DWs;
+  private boolean DWt;
+  private a DWu;
+  private View.OnTouchListener DWv;
+  private boolean dih;
+  private boolean fXF;
   private String text;
-  private ImageView ywk;
-  private TextView ywl;
-  private Drawable ywm;
-  private Drawable ywn;
-  private Drawable ywo;
-  private boolean ywp;
-  private IPCallFuncButton.a ywq;
-  private View.OnTouchListener ywr;
   
   public IPCallFuncButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(25799);
-    this.edw = false;
-    this.ded = true;
-    this.ywr = new View.OnTouchListener()
+    this.fXF = false;
+    this.dih = true;
+    this.DWv = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -68,7 +70,7 @@ public class IPCallFuncButton
             if (IPCallFuncButton.g(IPCallFuncButton.this) == null) {
               break label171;
             }
-            IPCallFuncButton.g(IPCallFuncButton.this).qA(IPCallFuncButton.e(IPCallFuncButton.this));
+            IPCallFuncButton.g(IPCallFuncButton.this).tC(IPCallFuncButton.e(IPCallFuncButton.this));
             break;
             IPCallFuncButton.d(IPCallFuncButton.this).setImageDrawable(IPCallFuncButton.c(IPCallFuncButton.this));
             IPCallFuncButton.a(IPCallFuncButton.this, true);
@@ -81,38 +83,38 @@ public class IPCallFuncButton
               IPCallFuncButton.d(IPCallFuncButton.this).setImageDrawable(IPCallFuncButton.f(IPCallFuncButton.this));
             }
             if (IPCallFuncButton.g(IPCallFuncButton.this) != null) {
-              IPCallFuncButton.g(IPCallFuncButton.this).qA(false);
+              IPCallFuncButton.g(IPCallFuncButton.this).tC(false);
             }
           }
         }
       }
     };
-    LayoutInflater.from(getContext()).inflate(2131495099, this);
-    this.ywk = ((ImageView)findViewById(2131297893));
-    this.ywl = ((TextView)findViewById(2131308977));
-    paramContext = getContext().getTheme().obtainStyledAttributes(paramAttributeSet, R.a.IPCallFuncButton, 0, 0);
-    this.ywm = paramContext.getDrawable(2);
-    this.ywn = paramContext.getDrawable(3);
-    this.ywp = paramContext.getBoolean(0, false);
-    this.ywo = paramContext.getDrawable(1);
-    int i = paramContext.getResourceId(4, 0);
+    LayoutInflater.from(getContext()).inflate(R.i.ehS, this);
+    this.DWo = ((ImageView)findViewById(R.h.button));
+    this.DWp = ((TextView)findViewById(R.h.text));
+    paramContext = getContext().getTheme().obtainStyledAttributes(paramAttributeSet, R.n.eWD, 0, 0);
+    this.DWq = paramContext.getDrawable(R.n.eWG);
+    this.DWr = paramContext.getDrawable(R.n.eWH);
+    this.DWt = paramContext.getBoolean(R.n.eWE, false);
+    this.DWs = paramContext.getDrawable(R.n.eWF);
+    int i = paramContext.getResourceId(R.n.eWI, 0);
     if (i != 0) {
       this.text = getContext().getString(i);
     }
     paramContext.recycle();
     if (!Util.isNullOrNil(this.text)) {
-      this.ywl.setText(this.text);
+      this.DWp.setText(this.text);
     }
     for (;;)
     {
-      if (this.ywm != null) {
-        this.ywk.setImageDrawable(this.ywm);
+      if (this.DWq != null) {
+        this.DWo.setImageDrawable(this.DWq);
       }
-      this.ywk.setClickable(true);
-      this.ywk.setOnTouchListener(this.ywr);
+      this.DWo.setClickable(true);
+      this.DWo.setOnTouchListener(this.DWv);
       AppMethodBeat.o(25799);
       return;
-      this.ywl.setVisibility(8);
+      this.DWp.setVisibility(8);
     }
   }
   
@@ -123,8 +125,8 @@ public class IPCallFuncButton
   
   public final boolean isChecked()
   {
-    if (this.ywp) {
-      return this.edw;
+    if (this.DWt) {
+      return this.fXF;
     }
     return false;
   }
@@ -132,12 +134,12 @@ public class IPCallFuncButton
   public void setCheckBoxMode(boolean paramBoolean)
   {
     AppMethodBeat.i(25801);
-    if (this.ywp != paramBoolean)
+    if (this.DWt != paramBoolean)
     {
-      this.ywp = paramBoolean;
-      this.edw = false;
-      if (this.ywm != null) {
-        this.ywk.setImageDrawable(this.ywm);
+      this.DWt = paramBoolean;
+      this.fXF = false;
+      if (this.DWq != null) {
+        this.DWo.setImageDrawable(this.DWq);
       }
     }
     AppMethodBeat.o(25801);
@@ -146,43 +148,43 @@ public class IPCallFuncButton
   public void setChecked(boolean paramBoolean)
   {
     AppMethodBeat.i(25803);
-    if ((paramBoolean != this.edw) && (this.ywp))
+    if ((paramBoolean != this.fXF) && (this.DWt))
     {
-      this.edw = paramBoolean;
-      if (this.edw)
+      this.fXF = paramBoolean;
+      if (this.fXF)
       {
-        this.ywk.setImageDrawable(this.ywn);
+        this.DWo.setImageDrawable(this.DWr);
         AppMethodBeat.o(25803);
         return;
       }
-      this.ywk.setImageDrawable(this.ywm);
+      this.DWo.setImageDrawable(this.DWq);
     }
     AppMethodBeat.o(25803);
   }
   
-  public void setClickCallback(IPCallFuncButton.a parama)
+  public void setClickCallback(a parama)
   {
-    this.ywq = parama;
+    this.DWu = parama;
   }
   
   public void setEnable(boolean paramBoolean)
   {
     AppMethodBeat.i(25802);
-    if (paramBoolean != this.ded)
+    if (paramBoolean != this.dih)
     {
-      this.ded = paramBoolean;
-      if ((this.ded) || (this.ywo == null)) {
+      this.dih = paramBoolean;
+      if ((this.dih) || (this.DWs == null)) {
         break label56;
       }
-      this.ywk.setImageDrawable(this.ywo);
+      this.DWo.setImageDrawable(this.DWs);
     }
     for (;;)
     {
-      this.edw = false;
+      this.fXF = false;
       AppMethodBeat.o(25802);
       return;
       label56:
-      this.ywk.setImageDrawable(this.ywm);
+      this.DWo.setImageDrawable(this.DWq);
     }
   }
   
@@ -190,8 +192,13 @@ public class IPCallFuncButton
   {
     AppMethodBeat.i(25800);
     this.text = paramString;
-    this.ywl.setText(this.text);
+    this.DWp.setText(this.text);
     AppMethodBeat.o(25800);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void tC(boolean paramBoolean);
   }
 }
 

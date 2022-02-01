@@ -11,96 +11,21 @@ import kotlin.l;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/util/LiveStatisticUtil;", "", "()V", "parseCdnLiveStatistics", "", "params", "Landroid/os/Bundle;", "parseLocalStatistics", "Lorg/json/JSONArray;", "localArray", "Ljava/util/ArrayList;", "Lcom/tencent/trtc/TRTCStatistics$TRTCLocalStatistics;", "parseRemoteStatistics", "remoteArray", "Lcom/tencent/trtc/TRTCStatistics$TRTCRemoteStatistics;", "parseTRTCLiveStatistics", "statistics", "Lcom/tencent/trtc/TRTCStatistics;", "plugin-core_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/util/LiveStatisticUtil;", "", "()V", "parseCdnLiveStatistics", "", "params", "Landroid/os/Bundle;", "parseLocalStatistics", "Lorg/json/JSONArray;", "localArray", "Ljava/util/ArrayList;", "Lcom/tencent/trtc/TRTCStatistics$TRTCLocalStatistics;", "parseRemoteStatistics", "remoteArray", "Lcom/tencent/trtc/TRTCStatistics$TRTCRemoteStatistics;", "parseTRTCLiveStatistics", "statistics", "Lcom/tencent/trtc/TRTCStatistics;", "plugin-core_release"})
 public final class b
 {
-  public static final b hEQ;
+  public static final b ksV;
   
   static
   {
-    AppMethodBeat.i(196750);
-    hEQ = new b();
-    AppMethodBeat.o(196750);
+    AppMethodBeat.i(198310);
+    ksV = new b();
+    AppMethodBeat.o(198310);
   }
   
-  public static String a(TRTCStatistics paramTRTCStatistics)
+  public static String E(Bundle paramBundle)
   {
-    AppMethodBeat.i(196747);
-    if (paramTRTCStatistics != null)
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("appCpu", paramTRTCStatistics.appCpu);
-      localJSONObject.put("systemCpu", paramTRTCStatistics.systemCpu);
-      localJSONObject.put("rtt", paramTRTCStatistics.rtt);
-      localJSONObject.put("upLoss", paramTRTCStatistics.upLoss);
-      localJSONObject.put("downLoss", paramTRTCStatistics.downLoss);
-      localJSONObject.put("sendBytes", paramTRTCStatistics.sendBytes);
-      localJSONObject.put("receiveBytes", paramTRTCStatistics.receiveBytes);
-      localJSONObject.put("LocalStatistics", k(paramTRTCStatistics.localArray));
-      localJSONObject.put("remoteStatistics", l(paramTRTCStatistics.remoteArray));
-      paramTRTCStatistics = localJSONObject.toString();
-      AppMethodBeat.o(196747);
-      return paramTRTCStatistics;
-    }
-    AppMethodBeat.o(196747);
-    return null;
-  }
-  
-  private static JSONArray k(ArrayList<TRTCStatistics.TRTCLocalStatistics> paramArrayList)
-  {
-    AppMethodBeat.i(196748);
-    JSONArray localJSONArray = new JSONArray();
-    if (paramArrayList != null)
-    {
-      paramArrayList = ((Iterable)paramArrayList).iterator();
-      while (paramArrayList.hasNext())
-      {
-        TRTCStatistics.TRTCLocalStatistics localTRTCLocalStatistics = (TRTCStatistics.TRTCLocalStatistics)paramArrayList.next();
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("width", localTRTCLocalStatistics.width);
-        localJSONObject.put("height", localTRTCLocalStatistics.height);
-        localJSONObject.put("frameRate", localTRTCLocalStatistics.frameRate);
-        localJSONObject.put("videoBitrate", localTRTCLocalStatistics.videoBitrate);
-        localJSONObject.put("audioSampleRate", localTRTCLocalStatistics.audioSampleRate);
-        localJSONObject.put("audioBitrate", localTRTCLocalStatistics.audioBitrate);
-        localJSONObject.put("streamType", localTRTCLocalStatistics.streamType);
-        localJSONArray.put(localJSONObject);
-      }
-    }
-    AppMethodBeat.o(196748);
-    return localJSONArray;
-  }
-  
-  private static JSONArray l(ArrayList<TRTCStatistics.TRTCRemoteStatistics> paramArrayList)
-  {
-    AppMethodBeat.i(196749);
-    JSONArray localJSONArray = new JSONArray();
-    if (paramArrayList != null)
-    {
-      paramArrayList = ((Iterable)paramArrayList).iterator();
-      while (paramArrayList.hasNext())
-      {
-        TRTCStatistics.TRTCRemoteStatistics localTRTCRemoteStatistics = (TRTCStatistics.TRTCRemoteStatistics)paramArrayList.next();
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("userId", localTRTCRemoteStatistics.userId);
-        localJSONObject.put("finalLoss", localTRTCRemoteStatistics.finalLoss);
-        localJSONObject.put("width", localTRTCRemoteStatistics.width);
-        localJSONObject.put("height", localTRTCRemoteStatistics.height);
-        localJSONObject.put("frameRate", localTRTCRemoteStatistics.frameRate);
-        localJSONObject.put("videoBitrate", localTRTCRemoteStatistics.videoBitrate);
-        localJSONObject.put("audioSampleRate", localTRTCRemoteStatistics.audioSampleRate);
-        localJSONObject.put("audioBitrate", localTRTCRemoteStatistics.audioBitrate);
-        localJSONObject.put("streamType", localTRTCRemoteStatistics.streamType);
-        localJSONArray.put(localJSONObject);
-      }
-    }
-    AppMethodBeat.o(196749);
-    return localJSONArray;
-  }
-  
-  public static String x(Bundle paramBundle)
-  {
-    AppMethodBeat.i(196746);
+    AppMethodBeat.i(198296);
     if (paramBundle != null)
     {
       JSONObject localJSONObject = new JSONObject();
@@ -121,16 +46,91 @@ public final class b
       localJSONObject.put("quality_level", paramBundle.getInt("NET_QUALITY_LEVEL"));
       localJSONObject.put("cdn_svr_ip", paramBundle.getString("SERVER_IP"));
       paramBundle = localJSONObject.toString();
-      AppMethodBeat.o(196746);
+      AppMethodBeat.o(198296);
       return paramBundle;
     }
-    AppMethodBeat.o(196746);
+    AppMethodBeat.o(198296);
     return null;
+  }
+  
+  public static String a(TRTCStatistics paramTRTCStatistics)
+  {
+    AppMethodBeat.i(198302);
+    if (paramTRTCStatistics != null)
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("appCpu", paramTRTCStatistics.appCpu);
+      localJSONObject.put("systemCpu", paramTRTCStatistics.systemCpu);
+      localJSONObject.put("rtt", paramTRTCStatistics.rtt);
+      localJSONObject.put("upLoss", paramTRTCStatistics.upLoss);
+      localJSONObject.put("downLoss", paramTRTCStatistics.downLoss);
+      localJSONObject.put("sendBytes", paramTRTCStatistics.sendBytes);
+      localJSONObject.put("receiveBytes", paramTRTCStatistics.receiveBytes);
+      localJSONObject.put("LocalStatistics", k(paramTRTCStatistics.localArray));
+      localJSONObject.put("remoteStatistics", l(paramTRTCStatistics.remoteArray));
+      paramTRTCStatistics = localJSONObject.toString();
+      AppMethodBeat.o(198302);
+      return paramTRTCStatistics;
+    }
+    AppMethodBeat.o(198302);
+    return null;
+  }
+  
+  private static JSONArray k(ArrayList<TRTCStatistics.TRTCLocalStatistics> paramArrayList)
+  {
+    AppMethodBeat.i(198305);
+    JSONArray localJSONArray = new JSONArray();
+    if (paramArrayList != null)
+    {
+      paramArrayList = ((Iterable)paramArrayList).iterator();
+      while (paramArrayList.hasNext())
+      {
+        TRTCStatistics.TRTCLocalStatistics localTRTCLocalStatistics = (TRTCStatistics.TRTCLocalStatistics)paramArrayList.next();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("width", localTRTCLocalStatistics.width);
+        localJSONObject.put("height", localTRTCLocalStatistics.height);
+        localJSONObject.put("frameRate", localTRTCLocalStatistics.frameRate);
+        localJSONObject.put("videoBitrate", localTRTCLocalStatistics.videoBitrate);
+        localJSONObject.put("audioSampleRate", localTRTCLocalStatistics.audioSampleRate);
+        localJSONObject.put("audioBitrate", localTRTCLocalStatistics.audioBitrate);
+        localJSONObject.put("streamType", localTRTCLocalStatistics.streamType);
+        localJSONArray.put(localJSONObject);
+      }
+    }
+    AppMethodBeat.o(198305);
+    return localJSONArray;
+  }
+  
+  private static JSONArray l(ArrayList<TRTCStatistics.TRTCRemoteStatistics> paramArrayList)
+  {
+    AppMethodBeat.i(198309);
+    JSONArray localJSONArray = new JSONArray();
+    if (paramArrayList != null)
+    {
+      paramArrayList = ((Iterable)paramArrayList).iterator();
+      while (paramArrayList.hasNext())
+      {
+        TRTCStatistics.TRTCRemoteStatistics localTRTCRemoteStatistics = (TRTCStatistics.TRTCRemoteStatistics)paramArrayList.next();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("userId", localTRTCRemoteStatistics.userId);
+        localJSONObject.put("finalLoss", localTRTCRemoteStatistics.finalLoss);
+        localJSONObject.put("width", localTRTCRemoteStatistics.width);
+        localJSONObject.put("height", localTRTCRemoteStatistics.height);
+        localJSONObject.put("frameRate", localTRTCRemoteStatistics.frameRate);
+        localJSONObject.put("videoBitrate", localTRTCRemoteStatistics.videoBitrate);
+        localJSONObject.put("audioSampleRate", localTRTCRemoteStatistics.audioSampleRate);
+        localJSONObject.put("audioBitrate", localTRTCRemoteStatistics.audioBitrate);
+        localJSONObject.put("streamType", localTRTCRemoteStatistics.streamType);
+        localJSONArray.put(localJSONObject);
+      }
+    }
+    AppMethodBeat.o(198309);
+    return localJSONArray;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.core.d.b
  * JD-Core Version:    0.7.0.1
  */

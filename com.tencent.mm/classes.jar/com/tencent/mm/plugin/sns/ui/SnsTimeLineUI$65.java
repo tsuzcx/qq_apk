@@ -10,9 +10,9 @@ import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoN
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.a;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.c;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordMediaReportInfo;
-import com.tencent.mm.plugin.sns.data.r;
-import com.tencent.mm.protocal.protobuf.cly;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.plugin.sns.data.t;
+import com.tencent.mm.protocal.protobuf.cuv;
+import com.tencent.mm.vfs.u;
 import com.tencent.xweb.util.d;
 
 final class SnsTimeLineUI$65
@@ -22,24 +22,24 @@ final class SnsTimeLineUI$65
   
   public final void a(Context paramContext, CaptureDataManager.CaptureVideoNormalModel paramCaptureVideoNormalModel, Bundle paramBundle)
   {
-    AppMethodBeat.i(203717);
-    r.aOz(paramCaptureVideoNormalModel.eJJ().y("KEY_EDIT_PUBLISHID_INT", Integer.valueOf(-1)));
-    paramBundle = new cly();
-    paramBundle.Mrn = true;
-    paramBundle.Mrm = false;
-    String str = s.bpb(paramCaptureVideoNormalModel.videoPath);
-    paramBundle = new SightCaptureResult(true, paramCaptureVideoNormalModel.videoPath, paramCaptureVideoNormalModel.thumbPath, str, d.getMD5(paramCaptureVideoNormalModel.videoPath), (int)(paramCaptureVideoNormalModel.BOd.longValue() / 1000L), paramBundle);
-    if (paramCaptureVideoNormalModel.BOe.booleanValue())
+    AppMethodBeat.i(224658);
+    t.aZv(paramCaptureVideoNormalModel.fvU().x("KEY_EDIT_PUBLISHID_INT", Integer.valueOf(-1)));
+    paramBundle = new cuv();
+    paramBundle.TCA = true;
+    paramBundle.TCz = false;
+    String str = u.bBW(paramCaptureVideoNormalModel.videoPath);
+    paramBundle = new SightCaptureResult(true, paramCaptureVideoNormalModel.videoPath, paramCaptureVideoNormalModel.thumbPath, str, d.getMD5(paramCaptureVideoNormalModel.videoPath), (int)(paramCaptureVideoNormalModel.HKL.longValue() / 1000L), paramBundle);
+    if (paramCaptureVideoNormalModel.HKM.booleanValue())
     {
-      paramBundle.zsy = true;
-      paramBundle.tkD = false;
-      paramBundle.zsG = paramCaptureVideoNormalModel.thumbPath;
+      paramBundle.EXZ = true;
+      paramBundle.wRb = false;
+      paramBundle.EYh = paramCaptureVideoNormalModel.thumbPath;
     }
     paramCaptureVideoNormalModel = new Intent();
     paramCaptureVideoNormalModel.putExtra("key_req_result", paramBundle);
     ((Activity)paramContext).setResult(-1, paramCaptureVideoNormalModel);
     ((Activity)paramContext).finish();
-    AppMethodBeat.o(203717);
+    AppMethodBeat.o(224658);
   }
   
   public final boolean a(Context paramContext, Bundle paramBundle, CaptureDataManager.a parama)
@@ -49,7 +49,7 @@ final class SnsTimeLineUI$65
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsTimeLineUI.65
  * JD-Core Version:    0.7.0.1
  */

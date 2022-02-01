@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet.pay.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.g;
 import com.tencent.mm.plugin.wallet_core.model.Authen;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
@@ -11,15 +11,15 @@ import org.json.JSONObject;
 public class c
   extends b
 {
-  private boolean HFQ;
+  private boolean OxJ;
   
   public c(Authen paramAuthen, Orders paramOrders, boolean paramBoolean)
   {
     super(paramAuthen, paramOrders);
-    this.HFQ = paramBoolean;
+    this.OxJ = paramBoolean;
   }
   
-  protected void aX(Map<String, String> paramMap) {}
+  protected void aR(Map<String, String> paramMap) {}
   
   public int doScene(g paramg, i parami)
   {

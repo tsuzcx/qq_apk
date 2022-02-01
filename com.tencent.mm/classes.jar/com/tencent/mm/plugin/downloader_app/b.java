@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 
 public final class b
 {
@@ -18,7 +18,7 @@ public final class b
       return;
     }
     String str = paramString;
-    if (ao.isDarkMode()) {
+    if (ar.isDarkMode()) {
       str = paramString + "_dark";
     }
     paramImageView.setImageResource(paramImageView.getResources().getIdentifier(str, "raw", paramImageView.getContext().getPackageName()));
@@ -27,7 +27,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.b
  * JD-Core Version:    0.7.0.1
  */

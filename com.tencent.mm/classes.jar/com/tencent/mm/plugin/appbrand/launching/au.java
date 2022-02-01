@@ -1,47 +1,92 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.e.h;
+import com.tencent.e.i;
+import com.tencent.e.i.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
-import com.tencent.mm.n.f;
-import com.tencent.mm.n.h;
-import com.tencent.mm.plugin.appbrand.w;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
 
-final class au
+abstract class au<T>
+  implements g, y, Callable<T>
 {
-  final String appId;
+  protected volatile long pWY = 0L;
+  protected volatile long pWZ = 0L;
+  protected volatile long pXa = 0L;
+  private boolean pXb = true;
   
-  au(String paramString)
+  public boolean bZy()
   {
-    this.appId = paramString;
+    return this.pXb;
   }
   
-  final boolean bNK()
+  final Future<T> caf()
   {
-    AppMethodBeat.i(47307);
-    if (h.aqJ().getInt("WeAppForbiddenSwitch", 0) == 1)
+    return h.ZvG.f(new a());
+  }
+  
+  public final T cag()
+  {
+    this.pWY = Util.nowMilliSecond();
+    try
     {
-      Log.i("MicroMsg.AppBrand.PreLaunchCheckForOversea", "startApp, WeAppForbiddenSwitch == 1, go webview, appId %s", new Object[] { this.appId });
-      Intent localIntent = new Intent().putExtra("rawUrl", w.Up(this.appId)).putExtra("forceHideShare", true);
-      Context localContext = MMApplicationContext.getContext();
-      if (!(localContext instanceof Activity)) {
-        localIntent.addFlags(268435456);
-      }
-      c.b(localContext, "webview", ".ui.tools.WebViewUI", localIntent);
-      AppMethodBeat.o(47307);
-      return true;
+      Object localObject1 = call();
+      return localObject1;
     }
-    AppMethodBeat.o(47307);
-    return false;
+    finally
+    {
+      this.pWZ = Util.nowMilliSecond();
+      this.pXa = (this.pWZ - this.pWY);
+    }
+  }
+  
+  public final String getKey()
+  {
+    return getTag();
+  }
+  
+  abstract String getTag();
+  
+  public void iR(boolean paramBoolean)
+  {
+    this.pXb = paramBoolean;
+  }
+  
+  final class a
+    implements g, Callable<T>
+  {
+    a() {}
+    
+    public final T call()
+    {
+      AppMethodBeat.i(249976);
+      au.this.pWY = Util.nowMilliSecond();
+      try
+      {
+        Object localObject1 = au.this.call();
+        return localObject1;
+      }
+      finally
+      {
+        au.this.pWZ = Util.nowMilliSecond();
+        au.this.pXa = (au.this.pWZ - au.this.pWY);
+        AppMethodBeat.o(249976);
+      }
+    }
+    
+    public final String getKey()
+    {
+      AppMethodBeat.i(249975);
+      String str = au.this.getKey();
+      AppMethodBeat.o(249975);
+      return str;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.au
  * JD-Core Version:    0.7.0.1
  */

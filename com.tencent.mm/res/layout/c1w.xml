@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="@dimen/k6" android:textColor="@color/BW_100_Alpha_0_5" android:gravity="center" android:id="@id/c3b" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginRight="@dimen/ci" android:text="@string/ry" android:maxLines="2" android:lineSpacingExtra="5.0dip" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
-</android.support.constraint.ConstraintLayout>
+    <TextView android:textSize="@dimen/kc" android:textColor="@color/BW_100_Alpha_0_3" android:gravity="center" android:id="@id/c3b" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginRight="@dimen/ci" android:text="@string/ry" android:maxLines="2" android:lineSpacingExtra="5.0dip" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+</androidx.constraintlayout.widget.ConstraintLayout>

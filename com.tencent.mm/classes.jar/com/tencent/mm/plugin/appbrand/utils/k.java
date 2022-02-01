@@ -1,49 +1,18 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.atomic.AtomicInteger;
-import kotlin.l;
+import android.content.ComponentCallbacks2;
+import android.content.res.Configuration;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/utils/CountDownLock;", "", "countDownCallback", "Ljava/lang/Runnable;", "count", "", "(Ljava/lang/Runnable;I)V", "counter", "Ljava/util/concurrent/atomic/AtomicInteger;", "countDown", "", "plugin-appbrand-integration_release"})
-public final class k
+public abstract class k
+  implements ComponentCallbacks2
 {
-  private final AtomicInteger counter;
-  private final Runnable ogR;
+  public void onConfigurationChanged(Configuration paramConfiguration) {}
   
-  public k(Runnable paramRunnable, int paramInt)
-  {
-    AppMethodBeat.i(51402);
-    this.ogR = paramRunnable;
-    if (paramInt > 0) {}
-    for (int i = 1; i == 0; i = 0)
-    {
-      paramRunnable = (Throwable)new IllegalArgumentException("count <= 0".toString());
-      AppMethodBeat.o(51402);
-      throw paramRunnable;
-    }
-    this.counter = new AtomicInteger(paramInt);
-    AppMethodBeat.o(51402);
-  }
-  
-  public final void countDown()
-  {
-    AppMethodBeat.i(51401);
-    if (this.counter.decrementAndGet() == 0)
-    {
-      Runnable localRunnable = this.ogR;
-      if (localRunnable != null)
-      {
-        localRunnable.run();
-        AppMethodBeat.o(51401);
-        return;
-      }
-    }
-    AppMethodBeat.o(51401);
-  }
+  public void onLowMemory() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.k
  * JD-Core Version:    0.7.0.1
  */

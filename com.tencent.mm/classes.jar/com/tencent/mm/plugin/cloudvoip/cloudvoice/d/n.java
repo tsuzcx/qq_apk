@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.cloudvoip.cloudvoice.d;
 import android.os.Bundle;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.network.p;
 import com.tencent.mm.network.p.a;
@@ -18,14 +18,14 @@ import com.tencent.mm.sdk.platformtools.NetStatusUtil;
   static
   {
     AppMethodBeat.i(90849);
-    qsC = new n("INSTANCE");
-    qsD = new n[] { qsC };
+    tRo = new n("INSTANCE");
+    tRp = new n[] { tRo };
     AppMethodBeat.o(90849);
   }
   
   private n() {}
   
-  final void EX(int paramInt)
+  final void IF(int paramInt)
   {
     AppMethodBeat.i(90847);
     final String str = MMApplicationContext.getProcessName();
@@ -33,31 +33,31 @@ import com.tencent.mm.sdk.platformtools.NetStatusUtil;
     Bundle localBundle = new Bundle();
     localBundle.putString("from_process", str);
     localBundle.putInt("opcode", paramInt);
-    h.a(MainProcessIPCService.dkO, localBundle, a.class, new d() {});
+    j.a(MainProcessIPCService.PROCESS_NAME, localBundle, a.class, new f() {});
     AppMethodBeat.o(90847);
   }
   
   static final class a
-    implements b<Bundle, Bundle>
+    implements d<Bundle, Bundle>
   {
-    private static String qsG;
-    private static final p qsH;
+    private static String tRs;
+    private static final p tRt;
     
     static
     {
       AppMethodBeat.i(90844);
-      qsH = new p.a()
+      tRt = new p.a()
       {
         public final void onNetworkChange(int paramAnonymousInt)
         {
           AppMethodBeat.i(90841);
           Object localObject = NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext());
           final String str = MMApplicationContext.getProcessName();
-          Log.i("MicroMsg.OpenVoice.OpenVoiceNetworkMgr", "hy: %s on network changed: %d, changed to %s, %s", new Object[] { str, Integer.valueOf(paramAnonymousInt), localObject, n.a.qsG });
+          Log.i("MicroMsg.OpenVoice.OpenVoiceNetworkMgr", "hy: %s on network changed: %d, changed to %s, %s", new Object[] { str, Integer.valueOf(paramAnonymousInt), localObject, n.a.tRs });
           localObject = new Bundle();
           ((Bundle)localObject).putString("from_process", str);
           ((Bundle)localObject).putInt("newState", paramAnonymousInt);
-          h.a(n.a.qsG, (Parcelable)localObject, n.a.a.class, new d() {});
+          j.a(n.a.tRs, (Parcelable)localObject, n.a.a.class, new f() {});
           AppMethodBeat.o(90841);
         }
       };
@@ -65,7 +65,7 @@ import com.tencent.mm.sdk.platformtools.NetStatusUtil;
     }
     
     static class a
-      implements b<Bundle, Bundle>
+      implements d<Bundle, Bundle>
     {}
   }
 }

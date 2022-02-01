@@ -11,25 +11,25 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class b
 {
-  private static b QYZ;
-  Map<c, a> QZa;
-  final SparseIntArray QZb;
-  final Handler QZc;
+  private static b Yzp;
+  Map<c, a> Yzq;
+  final SparseIntArray Yzr;
+  final Handler Yzs;
   
   static
   {
     AppMethodBeat.i(74893);
-    QYZ = null;
-    QYZ = new b();
+    Yzp = null;
+    Yzp = new b();
     AppMethodBeat.o(74893);
   }
   
   public b()
   {
     AppMethodBeat.i(74891);
-    this.QZa = new ConcurrentHashMap();
-    this.QZb = new SparseIntArray();
-    this.QZc = new Handler(com.tencent.mm.vending.i.b.hdL().RaP.getLooper())
+    this.Yzq = new ConcurrentHashMap();
+    this.Yzr = new SparseIntArray();
+    this.Yzs = new Handler(com.tencent.mm.vending.i.b.ieS().YBf.getLooper())
     {
       public final void handleMessage(Message arg1)
       {
@@ -43,10 +43,10 @@ public final class b
           AppMethodBeat.o(74894);
           return;
           locala.onCreate();
-          synchronized (locala.QYP)
+          synchronized (locala.Yzf)
           {
-            locala.QYS = true;
-            locala.QYP.notify();
+            locala.Yzi = true;
+            locala.Yzf.notify();
             AppMethodBeat.o(74894);
             return;
           }
@@ -61,32 +61,32 @@ public final class b
     AppMethodBeat.o(74891);
   }
   
-  public static b hdp()
+  public static b iew()
   {
-    return QYZ;
+    return Yzp;
   }
   
   public final void a(c paramc, a parama)
   {
     AppMethodBeat.i(74892);
-    if (!this.QZa.containsKey(paramc))
+    if (!this.Yzq.containsKey(paramc))
     {
-      this.QZa.put(paramc, parama);
+      this.Yzq.put(paramc, parama);
       com.tencent.mm.vending.f.a.i("Vending.InteractorManager", "presenter %s hash %s interactor %s looper %s", new Object[] { paramc, Integer.valueOf(paramc.hashCode()), parama, Looper.myLooper() });
-      int i = this.QZb.get(paramc.hashCode(), 0);
+      int i = this.Yzr.get(paramc.hashCode(), 0);
       if ((i > 0) && (i < 4))
       {
         if (i > 0) {
-          this.QZc.sendMessage(this.QZc.obtainMessage(1, parama));
+          this.Yzs.sendMessage(this.Yzs.obtainMessage(1, parama));
         }
         if (i >= 2) {
-          this.QZc.sendMessage(this.QZc.obtainMessage(2, parama));
+          this.Yzs.sendMessage(this.Yzs.obtainMessage(2, parama));
         }
         if (i >= 3) {
-          this.QZc.sendMessage(this.QZc.obtainMessage(3, parama));
+          this.Yzs.sendMessage(this.Yzs.obtainMessage(3, parama));
         }
         if (i >= 4) {
-          this.QZc.sendMessage(this.QZc.obtainMessage(4, parama));
+          this.Yzs.sendMessage(this.Yzs.obtainMessage(4, parama));
         }
       }
       AppMethodBeat.o(74892);
@@ -98,7 +98,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.vending.app.b
  * JD-Core Version:    0.7.0.1
  */

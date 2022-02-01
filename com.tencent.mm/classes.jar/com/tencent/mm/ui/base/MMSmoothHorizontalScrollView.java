@@ -14,9 +14,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MMSmoothHorizontalScrollView
   extends HorizontalScrollView
 {
-  private TranslateAnimation BAc;
-  private Interpolator OPZ;
-  private View OTc;
+  private TranslateAnimation Hvx;
+  private Interpolator Wjg;
+  private View Wmp;
   private float mLastMotionX;
   private Rect mRect;
   
@@ -25,7 +25,7 @@ public class MMSmoothHorizontalScrollView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142152);
     this.mRect = new Rect();
-    this.OPZ = new DecelerateInterpolator();
+    this.Wjg = new DecelerateInterpolator();
     setFadingEdgeLength(0);
     AppMethodBeat.o(142152);
   }
@@ -34,7 +34,7 @@ public class MMSmoothHorizontalScrollView
   {
     AppMethodBeat.i(142153);
     if (getChildCount() > 0) {
-      this.OTc = getChildAt(0);
+      this.Wmp = getChildAt(0);
     }
     AppMethodBeat.o(142153);
   }
@@ -45,7 +45,7 @@ public class MMSmoothHorizontalScrollView
     int i = 0;
     AppMethodBeat.i(142154);
     boolean bool;
-    if (this.OTc == null)
+    if (this.Wmp == null)
     {
       bool = super.onTouchEvent(paramMotionEvent);
       AppMethodBeat.o(142154);
@@ -69,7 +69,7 @@ public class MMSmoothHorizontalScrollView
       j = (int)(this.mLastMotionX - f) / 2;
       scrollBy(j, 0);
       this.mLastMotionX = f;
-      int k = this.OTc.getMeasuredWidth();
+      int k = this.Wmp.getMeasuredWidth();
       int m = getWidth();
       int n = getPaddingLeft();
       int i1 = getPaddingRight();
@@ -80,9 +80,9 @@ public class MMSmoothHorizontalScrollView
       if (i != 0)
       {
         if (this.mRect.isEmpty()) {
-          this.mRect.set(this.OTc.getLeft(), this.OTc.getTop(), this.OTc.getRight(), this.OTc.getBottom());
+          this.mRect.set(this.Wmp.getLeft(), this.Wmp.getTop(), this.Wmp.getRight(), this.Wmp.getBottom());
         }
-        this.OTc.layout(this.OTc.getLeft() - j, this.OTc.getTop(), this.OTc.getRight() - j, this.OTc.getBottom());
+        this.Wmp.layout(this.Wmp.getLeft() - j, this.Wmp.getTop(), this.Wmp.getRight() - j, this.Wmp.getBottom());
         continue;
         this.mLastMotionX = 0.0F;
         if (!this.mRect.isEmpty()) {}
@@ -91,11 +91,11 @@ public class MMSmoothHorizontalScrollView
           if (i == 0) {
             break label432;
           }
-          this.BAc = new TranslateAnimation(this.OTc.getLeft(), this.mRect.left, 0.0F, 0.0F);
-          this.BAc.setInterpolator(this.OPZ);
-          this.BAc.setDuration(Math.abs(this.OTc.getLeft() - this.mRect.left));
-          this.OTc.startAnimation(this.BAc);
-          this.OTc.layout(this.mRect.left, this.mRect.top, this.mRect.right, this.mRect.bottom);
+          this.Hvx = new TranslateAnimation(this.Wmp.getLeft(), this.mRect.left, 0.0F, 0.0F);
+          this.Hvx.setInterpolator(this.Wjg);
+          this.Hvx.setDuration(Math.abs(this.Wmp.getLeft() - this.mRect.left));
+          this.Wmp.startAnimation(this.Hvx);
+          this.Wmp.layout(this.mRect.left, this.mRect.top, this.mRect.right, this.mRect.bottom);
           this.mRect.setEmpty();
           break;
         }

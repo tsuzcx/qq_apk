@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.normsg.c.a.a;
 
 public final class a
 {
-  public static int TO(int paramInt)
+  public static int aaB(int paramInt)
   {
     switch (paramInt)
     {
@@ -28,7 +28,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.c.a.a.a
  * JD-Core Version:    0.7.0.1
  */

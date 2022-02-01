@@ -10,15 +10,15 @@ import org.json.JSONObject;
 public final class e
   extends a
 {
-  public String AOl;
-  private String CpP;
-  public int CpR;
-  public int Iuv;
-  public int Iuw;
-  public int cSx;
-  public int dJY;
-  public double qwJ;
+  public String GHz;
+  private String Ine;
+  public int Ing;
+  public int Pnf;
+  public int Png;
+  public int cUP;
+  public int fCN;
   public int status;
+  public double tVK;
   
   public e(String paramString1, String paramString2, int paramInt)
   {
@@ -28,10 +28,10 @@ public final class e
   public e(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(72174);
-    this.CpP = null;
-    this.CpP = paramString1;
-    this.dJY = 1;
-    this.cSx = paramInt2;
+    this.Ine = null;
+    this.Ine = paramString1;
+    this.fCN = 1;
+    this.cUP = paramInt2;
     HashMap localHashMap = new HashMap();
     localHashMap.put("trans_id", paramString1);
     localHashMap.put("receiver_name", paramString2);
@@ -40,7 +40,7 @@ public final class e
     AppMethodBeat.o(72174);
   }
   
-  public final int fPU()
+  public final int gIA()
   {
     return 25;
   }
@@ -54,12 +54,12 @@ public final class e
       AppMethodBeat.o(72175);
       return;
     }
-    this.CpR = paramJSONObject.optInt("pay_time");
-    this.qwJ = (paramJSONObject.optDouble("total_fee") / 100.0D);
-    this.AOl = paramJSONObject.optString("fee_type");
+    this.Ing = paramJSONObject.optInt("pay_time");
+    this.tVK = (paramJSONObject.optDouble("total_fee") / 100.0D);
+    this.GHz = paramJSONObject.optString("fee_type");
     this.status = paramJSONObject.optInt("pay_status");
-    this.Iuv = paramJSONObject.optInt("refund_time");
-    this.Iuw = paramJSONObject.optInt("receive_time");
+    this.Pnf = paramJSONObject.optInt("refund_time");
+    this.Png = paramJSONObject.optInt("receive_time");
     AppMethodBeat.o(72175);
   }
 }

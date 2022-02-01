@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.Serializable;
 import kotlin.g.b.p;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/Triple;", "A", "B", "C", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "first", "second", "third", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V", "getFirst", "()Ljava/lang/Object;", "Ljava/lang/Object;", "getSecond", "getThird", "component1", "component2", "component3", "copy", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Triple;", "equals", "", "other", "", "hashCode", "", "toString", "", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/Triple;", "A", "B", "C", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "first", "second", "third", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V", "getFirst", "()Ljava/lang/Object;", "Ljava/lang/Object;", "getSecond", "getThird", "component1", "component2", "component3", "copy", "(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Triple;", "equals", "", "other", "", "hashCode", "", "toString", "", "kotlin-stdlib"})
 public final class r<A, B, C>
   implements Serializable
 {
-  public final C SWY;
-  public final A first;
-  public final B second;
+  public final A Mx;
+  public final B My;
+  public final C aazK;
   
   public r(A paramA, B paramB, C paramC)
   {
-    this.first = paramA;
-    this.second = paramB;
-    this.SWY = paramC;
+    this.Mx = paramA;
+    this.My = paramB;
+    this.aazK = paramC;
   }
   
   public final boolean equals(Object paramObject)
@@ -27,7 +27,7 @@ public final class r<A, B, C>
       if ((paramObject instanceof r))
       {
         paramObject = (r)paramObject;
-        if ((!p.j(this.first, paramObject.first)) || (!p.j(this.second, paramObject.second)) || (!p.j(this.SWY, paramObject.SWY))) {}
+        if ((!p.h(this.Mx, paramObject.Mx)) || (!p.h(this.My, paramObject.My)) || (!p.h(this.aazK, paramObject.aazK))) {}
       }
     }
     else
@@ -43,12 +43,12 @@ public final class r<A, B, C>
   {
     int k = 0;
     AppMethodBeat.i(129587);
-    Object localObject = this.first;
+    Object localObject = this.Mx;
     int i;
     if (localObject != null)
     {
       i = localObject.hashCode();
-      localObject = this.second;
+      localObject = this.My;
       if (localObject == null) {
         break label80;
       }
@@ -56,7 +56,7 @@ public final class r<A, B, C>
     label80:
     for (int j = localObject.hashCode();; j = 0)
     {
-      localObject = this.SWY;
+      localObject = this.aazK;
       if (localObject != null) {
         k = localObject.hashCode();
       }
@@ -70,7 +70,7 @@ public final class r<A, B, C>
   public final String toString()
   {
     AppMethodBeat.i(129586);
-    String str = "(" + this.first + ", " + this.second + ", " + this.SWY + ')';
+    String str = "(" + this.Mx + ", " + this.My + ", " + this.aazK + ')';
     AppMethodBeat.o(129586);
     return str;
   }

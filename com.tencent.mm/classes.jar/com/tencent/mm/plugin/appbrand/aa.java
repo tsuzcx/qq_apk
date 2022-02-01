@@ -1,36 +1,27 @@
 package com.tencent.mm.plugin.appbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.base.g;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
-import org.json.JSONObject;
+import kotlin.l;
 
-final class aa
-  implements g
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/AppBrandWorkerCommonLibWorkerId;", "", "(Ljava/lang/String;I)V", "AD_WORKER_ID", "FIRST_USER_WORKER_ID", "luggage-wxa-app_release"})
+public enum aa
 {
-  public final h c(f paramf, JSONObject paramJSONObject)
+  static
   {
-    AppMethodBeat.i(134624);
-    if ((paramf instanceof h))
-    {
-      paramf = (h)paramf;
-      AppMethodBeat.o(134624);
-      return paramf;
-    }
-    if ((paramf instanceof s))
-    {
-      paramf = ((s)paramf).getCurrentPageView();
-      AppMethodBeat.o(134624);
-      return paramf;
-    }
-    AppMethodBeat.o(134624);
-    return null;
+    AppMethodBeat.i(245602);
+    aa localaa1 = new aa("AD_WORKER_ID", 0);
+    nxO = localaa1;
+    aa localaa2 = new aa("FIRST_USER_WORKER_ID", 1);
+    nxP = localaa2;
+    nxQ = new aa[] { localaa1, localaa2 };
+    AppMethodBeat.o(245602);
   }
+  
+  private aa() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.aa
  * JD-Core Version:    0.7.0.1
  */

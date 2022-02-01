@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.appbrand.message;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.a.b;
-import com.tencent.mm.ag.a.c;
-import com.tencent.mm.g.b.a.no;
-import com.tencent.mm.g.b.a.no.a;
-import com.tencent.mm.g.b.a.no.b;
-import com.tencent.mm.g.b.a.no.c;
-import com.tencent.mm.g.b.a.no.d;
-import com.tencent.mm.g.b.a.no.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.aj.b.c;
+import com.tencent.mm.aj.b.d;
+import com.tencent.mm.f.b.a.qo;
+import com.tencent.mm.f.b.a.qo.a;
+import com.tencent.mm.f.b.a.qo.b;
+import com.tencent.mm.f.b.a.qo.c;
+import com.tencent.mm.f.b.a.qo.d;
+import com.tencent.mm.f.b.a.qo.e;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.modelappbrand.m;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.a;
@@ -23,77 +23,77 @@ final class c$1$1
   public final void b(WxaAttributes paramWxaAttributes)
   {
     AppMethodBeat.i(47705);
-    c localc = ((m)g.af(m.class)).Lq(this.ngn.ngj.cyr);
-    Object localObject1 = no.d.fhV;
-    no.e locale2 = no.e.fhZ;
+    d locald = ((m)h.ae(m.class)).SJ(this.qgX.qgT.cwU);
+    Object localObject1 = qo.d.hlg;
+    qo.e locale2 = qo.e.hlk;
     Object localObject2 = localObject1;
-    no.e locale1 = locale2;
+    qo.e locale1 = locale2;
     label81:
     int i;
-    if (localc != null)
+    if (locald != null)
     {
-      if (localc.field_msgState == 1)
+      if (locald.field_msgState == 1)
       {
-        localObject1 = no.d.fhX;
-        if (localc.field_btnState != 2) {
+        localObject1 = qo.d.hli;
+        if (locald.field_btnState != 2) {
           break label248;
         }
-        locale1 = no.e.fib;
+        locale1 = qo.e.hlm;
         localObject2 = localObject1;
       }
     }
     else
     {
-      if (paramWxaAttributes.bAn() != null) {
+      if (paramWxaAttributes.bLF() != null) {
         break label283;
       }
       i = 0;
       label90:
-      localObject1 = new no().AJ(this.ngn.ngj.appId).AK(this.ngn.ngj.path).AL(this.ngn.ngj.path).AM(this.ngn.ngk);
-      if (!this.ngn.ngk.toLowerCase().endsWith("@chatroom")) {
+      localObject1 = new qo().Hv(this.qgX.qgT.appId).Hw(this.qgX.qgT.path).Hx(this.qgX.qgT.path).Hy(this.qgX.qgU);
+      if (!this.qgX.qgU.toLowerCase().endsWith("@chatroom")) {
         break label294;
       }
     }
     label283:
     label294:
-    for (paramWxaAttributes = no.c.fhS;; paramWxaAttributes = no.c.fhT)
+    for (paramWxaAttributes = qo.c.hld;; paramWxaAttributes = qo.c.hle)
     {
-      ((no)localObject1).fhy = paramWxaAttributes;
-      ((no)localObject1).fhz = no.b.fhP;
-      ((no)localObject1).erW = 0L;
-      paramWxaAttributes = ((no)localObject1).AN("");
-      paramWxaAttributes.fhD = no.a.mX(i + 1000);
-      paramWxaAttributes = paramWxaAttributes.ajq();
-      paramWxaAttributes.fhB = localObject2;
-      paramWxaAttributes.fhC = locale1;
-      paramWxaAttributes.bfK();
+      ((qo)localObject1).hkJ = paramWxaAttributes;
+      ((qo)localObject1).hkK = qo.b.hla;
+      ((qo)localObject1).gnP = 0L;
+      paramWxaAttributes = ((qo)localObject1).Hz("");
+      paramWxaAttributes.hkO = qo.a.pj(i + 1000);
+      paramWxaAttributes = paramWxaAttributes.aoX();
+      paramWxaAttributes.hkM = localObject2;
+      paramWxaAttributes.hkN = locale1;
+      paramWxaAttributes.bpa();
       AppMethodBeat.o(47705);
       return;
-      if (localc.field_msgState != 0) {
+      if (locald.field_msgState != 0) {
         break;
       }
-      localObject1 = no.d.fhW;
+      localObject1 = qo.d.hlh;
       break;
       label248:
-      if (localc.field_btnState != 0)
+      if (locald.field_btnState != 0)
       {
         localObject2 = localObject1;
         locale1 = locale2;
-        if (localc.field_btnState != 1) {
+        if (locald.field_btnState != 1) {
           break label81;
         }
       }
-      locale1 = no.e.fia;
+      locale1 = qo.e.hll;
       localObject2 = localObject1;
       break label81;
-      i = paramWxaAttributes.bAn().serviceType;
+      i = paramWxaAttributes.bLF().serviceType;
       break label90;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.message.c.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,78 +1,78 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.e;
-import com.google.a.a.g;
+import com.google.b.a.b;
+import com.google.b.a.e;
+import com.google.b.a.g;
 
 public final class a$a
   extends e
 {
-  public int GXO = 0;
-  public long GXP = 0L;
-  public int[] RDl = g.bYn;
-  public int RDm = 0;
-  public String[] RDn = g.EMPTY_STRING_ARRAY;
+  public int NOc = 0;
+  public long NOd = 0L;
+  public int[] ZeN = g.bZR;
+  public int ZeO = 0;
+  public String[] ZeP = g.EMPTY_STRING_ARRAY;
   public String groupId = "";
   
   public a$a()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public final int Ig()
+  public final int JG()
   {
-    int j = super.Ig();
+    int j = super.JG();
     int i = j;
     if (!this.groupId.equals("")) {
-      i = j + b.f(1, this.groupId);
+      i = j + b.g(1, this.groupId);
     }
     j = i;
-    if (this.GXO != 0) {
-      j = i + b.bu(2, this.GXO);
+    if (this.NOc != 0) {
+      j = i + b.bM(2, this.NOc);
     }
     i = j;
-    if (this.GXP != 0L) {
-      i = j + b.r(3, this.GXP);
+    if (this.NOd != 0L) {
+      i = j + b.p(3, this.NOd);
     }
     j = i;
     int k;
-    if (this.RDl != null)
+    if (this.ZeN != null)
     {
       j = i;
-      if (this.RDl.length > 0)
+      if (this.ZeN.length > 0)
       {
         j = 0;
         k = 0;
-        while (j < this.RDl.length)
+        while (j < this.ZeN.length)
         {
-          k += b.fY(this.RDl[j]);
+          k += b.gR(this.ZeN[j]);
           j += 1;
         }
-        j = i + k + this.RDl.length * 1;
+        j = i + k + this.ZeN.length * 1;
       }
     }
     i = j;
-    if (this.RDm != 0) {
-      i = j + b.bu(5, this.RDm);
+    if (this.ZeO != 0) {
+      i = j + b.bM(5, this.ZeO);
     }
     j = i;
-    if (this.RDn != null)
+    if (this.ZeP != null)
     {
       j = i;
-      if (this.RDn.length > 0)
+      if (this.ZeP.length > 0)
       {
         j = 0;
         k = 0;
         int n;
-        for (int m = 0; j < this.RDn.length; m = n)
+        for (int m = 0; j < this.ZeP.length; m = n)
         {
-          String str = this.RDn[j];
+          String str = this.ZeP[j];
           int i1 = k;
           n = m;
           if (str != null)
           {
             n = m + 1;
-            i1 = k + b.cb(str);
+            i1 = k + b.cv(str);
           }
           j += 1;
           k = i1;
@@ -87,35 +87,35 @@ public final class a$a
   {
     int j = 0;
     if (!this.groupId.equals("")) {
-      paramb.e(1, this.groupId);
+      paramb.f(1, this.groupId);
     }
-    if (this.GXO != 0) {
-      paramb.bs(2, this.GXO);
+    if (this.NOc != 0) {
+      paramb.bJ(2, this.NOc);
     }
-    if (this.GXP != 0L) {
-      paramb.q(3, this.GXP);
+    if (this.NOd != 0L) {
+      paramb.r(3, this.NOd);
     }
     int i;
-    if ((this.RDl != null) && (this.RDl.length > 0))
+    if ((this.ZeN != null) && (this.ZeN.length > 0))
     {
       i = 0;
-      while (i < this.RDl.length)
+      while (i < this.ZeN.length)
       {
-        paramb.bB(4, this.RDl[i]);
+        paramb.bK(4, this.ZeN[i]);
         i += 1;
       }
     }
-    if (this.RDm != 0) {
-      paramb.bs(5, this.RDm);
+    if (this.ZeO != 0) {
+      paramb.bJ(5, this.ZeO);
     }
-    if ((this.RDn != null) && (this.RDn.length > 0))
+    if ((this.ZeP != null) && (this.ZeP.length > 0))
     {
       i = j;
-      while (i < this.RDn.length)
+      while (i < this.ZeP.length)
       {
-        String str = this.RDn[i];
+        String str = this.ZeP[i];
         if (str != null) {
-          paramb.e(100, str);
+          paramb.f(100, str);
         }
         i += 1;
       }

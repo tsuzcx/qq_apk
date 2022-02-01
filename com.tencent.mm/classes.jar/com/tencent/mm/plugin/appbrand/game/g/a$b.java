@@ -5,6 +5,7 @@ import com.tencent.magicbrush.ui.MagicBrushView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.widget.c.c;
 import com.tencent.mm.modelcontrol.VideoTransPara;
+import com.tencent.mm.plugin.appbrand.game.f.a.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
 import kotlin.g.a.b;
@@ -13,9 +14,9 @@ import kotlin.x;
 final class a$b
   extends a.a
 {
-  c luH = null;
-  b.b luI = null;
-  private VideoTransPara luJ = null;
+  c opE = null;
+  b.b opF = null;
+  private VideoTransPara opG = null;
   
   a$b(MagicBrushView paramMagicBrushView)
   {
@@ -26,55 +27,59 @@ final class a$b
   {
     try
     {
-      this.luI = paramb;
+      this.opF = paramb;
       return;
     }
-    finally {}
+    finally
+    {
+      paramb = finally;
+      throw paramb;
+    }
   }
   
   @SuppressLint({"DefaultLocale"})
   final void a(c.b paramb, d<String> paramd)
   {
     AppMethodBeat.i(45315);
-    Object localObject = (MagicBrushView)this.luG.get();
+    Object localObject = (MagicBrushView)this.opD.get();
     if (localObject == null)
     {
       paramd.a(1, 111, "magic brush view not found", "");
       AppMethodBeat.o(45315);
       return;
     }
-    localObject = (com.tencent.mm.plugin.appbrand.game.f.a.d)((MagicBrushView)localObject).getRendererView();
+    localObject = (e)((MagicBrushView)localObject).getRendererView();
     if (localObject == null)
     {
       paramd.a(1, 111, "texture view not found", "");
       AppMethodBeat.o(45315);
       return;
     }
-    if (!((com.tencent.mm.plugin.appbrand.game.f.a.d)localObject).isAvailable()) {
+    if (!((e)localObject).isAvailable()) {
       paramd.a(1, 111, "view not prepared", "");
     }
-    this.luJ = new VideoTransPara();
-    this.luJ.videoBitrate = paramb.bitrate;
-    this.luJ.width = paramb.width;
-    this.luJ.height = paramb.height;
-    this.luJ.fps = paramb.fps;
-    this.luJ.iiH = paramb.gop;
-    this.luJ.iSV = 1;
-    this.luJ.iSU = 2;
-    this.luJ.duration = paramb.duration;
-    this.luJ.audioBitrate = 64000;
-    this.luJ.audioSampleRate = 44100;
-    this.luJ.iTf = 200;
-    Log.i("MicroMsg.BaseGameRecord.HardwareMgrImp", "hy: record param is %s", new Object[] { this.luJ });
-    this.luH = new c(this.luJ, ((com.tencent.mm.plugin.appbrand.game.f.a.d)localObject).getAbsSurfaceRenderer(), ((com.tencent.mm.plugin.appbrand.game.f.a.d)localObject).getEGLContext(), ((com.tencent.mm.plugin.appbrand.game.f.a.d)localObject).getPreviewTextureId(), new com.tencent.mm.media.widget.c.c.a()
+    this.opG = new VideoTransPara();
+    this.opG.videoBitrate = paramb.bitrate;
+    this.opG.width = paramb.width;
+    this.opG.height = paramb.height;
+    this.opG.fps = paramb.fps;
+    this.opG.kXt = paramb.gop;
+    this.opG.lJn = 1;
+    this.opG.lJm = 2;
+    this.opG.duration = paramb.duration;
+    this.opG.audioBitrate = 64000;
+    this.opG.audioSampleRate = 44100;
+    this.opG.lJy = 200;
+    Log.i("MicroMsg.BaseGameRecord.HardwareMgrImp", "hy: record param is %s", new Object[] { this.opG });
+    this.opE = new c(this.opG, ((e)localObject).getAbsSurfaceRenderer(), ((e)localObject).getEGLContext(), ((e)localObject).getPreviewTextureId(), new com.tencent.mm.media.widget.c.c.a()
     {
-      public final void zV(long paramAnonymousLong)
+      public final void Gc(long paramAnonymousLong)
       {
         AppMethodBeat.i(45312);
         try
         {
-          if (a.b.this.luI != null) {
-            a.b.this.luI.Bc(paramAnonymousLong / 1000L);
+          if (a.b.this.opF != null) {
+            a.b.this.opF.Ho(paramAnonymousLong / 1000L);
           }
           return;
         }
@@ -84,30 +89,30 @@ final class a$b
         }
       }
     });
-    if (paramb.lvz == null)
+    if (paramb.oqv == null)
     {
       AppMethodBeat.o(45315);
       return;
     }
-    if (paramb.lvy == null)
+    if (paramb.oqu == null)
     {
       AppMethodBeat.o(45315);
       return;
     }
     Log.e("MicroMsg.BaseGameRecord.HardwareMgrImp", "hy: can not get current bitmap! just a hint");
-    this.luH.setMute(true);
-    this.luH.s(((com.tencent.mm.plugin.appbrand.game.f.a.d)localObject).getSurfaceWidth(), ((com.tencent.mm.plugin.appbrand.game.f.a.d)localObject).getSurfaceHeight(), this.luJ.width, this.luJ.height);
-    this.luH.setFilePath(paramb.lvz.getAbsolutePath());
-    this.luH.rC(0);
-    int i = this.luH.b(0, false, 0);
+    this.opE.setMute(true);
+    this.opE.u(((e)localObject).getSurfaceWidth(), ((e)localObject).getSurfaceHeight(), this.opG.width, this.opG.height);
+    this.opE.setFilePath(paramb.oqv.bOF());
+    this.opE.uw(0);
+    int i = this.opE.b(0, false, 0);
     if (i != 0)
     {
       paramd.a(1, 110, String.format("media recoder start failed: %d", new Object[] { Integer.valueOf(i) }), "");
       AppMethodBeat.o(45315);
       return;
     }
-    this.luH.ish = true;
-    ((com.tencent.mm.plugin.appbrand.game.f.a.d)localObject).setOnTextureDrawFinishDelegate(new b() {});
+    this.opE.lhl = true;
+    ((e)localObject).setOnTextureDrawFinishDelegate(new b() {});
     Log.i("MicroMsg.BaseGameRecord.HardwareMgrImp", "hy: start succ!");
     paramd.a(0, 0, "ok", "");
     AppMethodBeat.o(45315);
@@ -116,19 +121,19 @@ final class a$b
   final void a(final d<String> paramd)
   {
     AppMethodBeat.i(45316);
-    if (this.luH == null)
+    if (this.opE == null)
     {
       paramd.a(1, -1, "no recorder", "");
       AppMethodBeat.o(45316);
       return;
     }
-    this.luH.E(new Runnable()
+    this.opE.E(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(45314);
         Log.i("MicroMsg.BaseGameRecord.HardwareMgrImp", "hy: stopRecord, stop callback");
-        a.b.this.luH.clear();
+        a.b.this.opE.clear();
         paramd.a(0, 0, "ok", "");
         AppMethodBeat.o(45314);
       }
@@ -139,59 +144,63 @@ final class a$b
   final void b(d<String> paramd)
   {
     AppMethodBeat.i(45317);
-    if (this.luH == null)
+    if (this.opE == null)
     {
       paramd.a(1, -1, "no recorder", "");
       AppMethodBeat.o(45317);
       return;
     }
-    this.luH.pause();
+    this.opE.pause();
     paramd.a(0, 0, "ok", "");
     AppMethodBeat.o(45317);
   }
   
-  final VideoTransPara bDA()
-  {
-    return this.luJ;
-  }
-  
-  final void bDz()
+  final void bOX()
   {
     try
     {
-      this.luI = null;
+      this.opF = null;
       return;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  final VideoTransPara bOY()
+  {
+    return this.opG;
   }
   
   final void c(d<String> paramd)
   {
     AppMethodBeat.i(45318);
-    if (this.luH == null)
+    if (this.opE == null)
     {
       paramd.a(1, -1, "no recorder", "");
       AppMethodBeat.o(45318);
       return;
     }
-    Object localObject = (MagicBrushView)this.luG.get();
+    Object localObject = (MagicBrushView)this.opD.get();
     if (localObject == null)
     {
       paramd.a(1, 111, "magic brush view not found", "");
       AppMethodBeat.o(45318);
       return;
     }
-    localObject = (com.tencent.mm.plugin.appbrand.game.f.a.d)((MagicBrushView)localObject).getRendererView();
+    localObject = (e)((MagicBrushView)localObject).getRendererView();
     if (localObject == null)
     {
       paramd.a(1, 111, "texture view not found", "");
       AppMethodBeat.o(45318);
       return;
     }
-    if (!((com.tencent.mm.plugin.appbrand.game.f.a.d)localObject).isAvailable()) {
+    if (!((e)localObject).isAvailable()) {
       paramd.a(1, 111, "view not prepared", "");
     }
-    this.luH.M(0, ((com.tencent.mm.plugin.appbrand.game.f.a.d)localObject).getSurfaceWidth(), ((com.tencent.mm.plugin.appbrand.game.f.a.d)localObject).getSurfaceHeight());
+    this.opE.P(0, ((e)localObject).getSurfaceWidth(), ((e)localObject).getSurfaceHeight());
     paramd.a(0, 0, "ok", "");
     AppMethodBeat.o(45318);
   }
@@ -199,10 +208,10 @@ final class a$b
   final void d(d<String> paramd)
   {
     AppMethodBeat.i(45319);
-    if (this.luH != null)
+    if (this.opE != null)
     {
-      this.luH.cancel();
-      this.luH.clear();
+      this.opE.cancel();
+      this.opE.clear();
     }
     paramd.a(0, 0, "ok", "");
     AppMethodBeat.o(45319);

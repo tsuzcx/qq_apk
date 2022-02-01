@@ -38,12 +38,12 @@ public class WWMediaMessage
   
   public void fromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(199013);
+    AppMethodBeat.i(233417);
     super.fromBundle(paramBundle);
     this.title = paramBundle.getString("_wwobject_title");
     this.description = paramBundle.getString("_wwobject_description");
     this.thumbData = paramBundle.getByteArray("_wwobject_thumbdata");
-    AppMethodBeat.o(199013);
+    AppMethodBeat.o(233417);
   }
   
   public final void setThumbImage(Bitmap paramBitmap)
@@ -92,7 +92,7 @@ public class WWMediaMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.wework.api.model.WWMediaMessage
  * JD-Core Version:    0.7.0.1
  */

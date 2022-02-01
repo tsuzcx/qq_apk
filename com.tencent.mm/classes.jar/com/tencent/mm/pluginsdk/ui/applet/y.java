@@ -4,12 +4,12 @@ public abstract interface y
 {
   public static abstract interface b
   {
-    public abstract void qB(boolean paramBoolean);
+    public abstract void tD(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.y
  * JD-Core Version:    0.7.0.1
  */

@@ -11,16 +11,16 @@ import com.tencent.mm.sdk.platformtools.Util;
 public final class MMEditText$c
   implements TextWatcher
 {
-  private TextView QCP;
-  public MMEditText.b QCQ = null;
-  private boolean QCR = false;
+  private TextView Ybs;
+  public MMEditText.b Ybt = null;
   private final int limit;
-  private EditText nBD;
+  private EditText qDO;
+  private boolean zxt = false;
   
   public MMEditText$c(EditText paramEditText, TextView paramTextView, int paramInt)
   {
-    this.nBD = paramEditText;
-    this.QCP = paramTextView;
+    this.qDO = paramEditText;
+    this.Ybs = paramTextView;
     this.limit = paramInt;
   }
   
@@ -56,20 +56,20 @@ public final class MMEditText$c
     {
       try
       {
-        this.nBD.setText(paramEditable);
-        if (this.QCR) {
+        this.qDO.setText(paramEditable);
+        if (this.zxt) {
           continue;
         }
-        i = this.nBD.getText().toString().length();
-        this.nBD.setSelection(i);
-        this.QCR = false;
+        i = this.qDO.getText().toString().length();
+        this.qDO.setSelection(i);
+        this.zxt = false;
       }
       catch (Exception localException)
       {
-        this.QCR = true;
+        this.zxt = true;
         Log.e("MicroMsg.MMEditText", "error ".concat(String.valueOf(localException.getMessage())));
-        this.nBD.setText(paramEditable);
-        this.nBD.setSelection(0);
+        this.qDO.setText(paramEditable);
+        this.qDO.setSelection(0);
         continue;
         continue;
       }
@@ -78,12 +78,12 @@ public final class MMEditText$c
         continue;
       }
       i = m;
-      if (this.QCP != null) {
-        this.QCP.setText(i / 2);
+      if (this.Ybs != null) {
+        this.Ybs.setText(i / 2);
       }
       AppMethodBeat.o(143352);
       return;
-      this.nBD.setSelection(0);
+      this.qDO.setSelection(0);
     }
   }
   
@@ -92,15 +92,15 @@ public final class MMEditText$c
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(143353);
-    if (this.QCQ != null) {
-      this.QCQ.boS();
+    if (this.Ybt != null) {
+      this.Ybt.bzd();
     }
     AppMethodBeat.o(143353);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.MMEditText.c
  * JD-Core Version:    0.7.0.1
  */

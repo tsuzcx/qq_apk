@@ -9,13 +9,13 @@ public abstract interface p
   
   public abstract boolean b(c paramc);
   
-  public abstract c fJ(String paramString);
+  public abstract c gu(String paramString);
   
-  public abstract void fK(String paramString);
+  public abstract void gv(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.api.p
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class a
+public class a
   extends MAutoStorage<b>
 {
   public static final String[] INDEX_CREATE;
@@ -30,7 +30,39 @@ public final class a
     this.db = paramISQLiteDatabase;
   }
   
-  public final b Hj(long paramLong)
+  public final b OA(long paramLong)
+  {
+    AppMethodBeat.i(88805);
+    if (paramLong <= 0L)
+    {
+      Log.e("MicroMsg.msgquote.MsgQuoteStorage", "quotedMsgId:%s", new Object[] { Long.valueOf(paramLong) });
+      AppMethodBeat.o(88805);
+      return null;
+    }
+    Object localObject = this.db.query("MsgQuote", b.info.columns, "quotedMsgId=?", new String[] { String.valueOf(paramLong) }, null, null, null);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(88805);
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    while (((Cursor)localObject).moveToNext())
+    {
+      b localb = new b();
+      localb.convertFrom((Cursor)localObject);
+      localArrayList.add(localb);
+    }
+    if (localArrayList.size() == 0)
+    {
+      AppMethodBeat.o(88805);
+      return null;
+    }
+    localObject = (b)localArrayList.get(0);
+    AppMethodBeat.o(88805);
+    return localObject;
+  }
+  
+  public final b Oy(long paramLong)
   {
     AppMethodBeat.i(88803);
     if (paramLong <= 0L)
@@ -62,7 +94,7 @@ public final class a
     return localObject;
   }
   
-  public final b Hk(long paramLong)
+  public final b Oz(long paramLong)
   {
     AppMethodBeat.i(88804);
     if (paramLong <= 0L)
@@ -91,38 +123,6 @@ public final class a
     }
     localObject = (b)localArrayList.get(0);
     AppMethodBeat.o(88804);
-    return localObject;
-  }
-  
-  public final b Hl(long paramLong)
-  {
-    AppMethodBeat.i(88805);
-    if (paramLong <= 0L)
-    {
-      Log.e("MicroMsg.msgquote.MsgQuoteStorage", "quotedMsgId:%s", new Object[] { Long.valueOf(paramLong) });
-      AppMethodBeat.o(88805);
-      return null;
-    }
-    Object localObject = this.db.query("MsgQuote", b.info.columns, "quotedMsgId=?", new String[] { String.valueOf(paramLong) }, null, null, null);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(88805);
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    while (((Cursor)localObject).moveToNext())
-    {
-      b localb = new b();
-      localb.convertFrom((Cursor)localObject);
-      localArrayList.add(localb);
-    }
-    if (localArrayList.size() == 0)
-    {
-      AppMethodBeat.o(88805);
-      return null;
-    }
-    localObject = (b)localArrayList.get(0);
-    AppMethodBeat.o(88805);
     return localObject;
   }
   
@@ -155,7 +155,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.msgquote.a.a
  * JD-Core Version:    0.7.0.1
  */

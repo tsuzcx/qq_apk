@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.gallery.picker.a;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.g;
-import android.support.v4.app.i;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.e;
+import androidx.fragment.app.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 
 public final class c
-  extends i
+  extends g
 {
   private final ArrayList<Fragment> fragments;
   
-  public c(g paramg, ArrayList<Fragment> paramArrayList)
+  public c(e parame, ArrayList<Fragment> paramArrayList)
   {
-    super(paramg);
+    super(parame);
     this.fragments = paramArrayList;
   }
   
@@ -27,15 +27,15 @@ public final class c
   
   public final Fragment getItem(int paramInt)
   {
-    AppMethodBeat.i(164774);
+    AppMethodBeat.i(241187);
     Fragment localFragment = (Fragment)this.fragments.get(paramInt);
-    AppMethodBeat.o(164774);
+    AppMethodBeat.o(241187);
     return localFragment;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.picker.a.c
  * JD-Core Version:    0.7.0.1
  */

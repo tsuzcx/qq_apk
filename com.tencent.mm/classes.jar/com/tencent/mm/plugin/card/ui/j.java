@@ -9,98 +9,99 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.plugin.card.a.d;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMVerticalTextView;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ui.base.r;
 import java.util.ArrayList;
 
 public final class j
 {
-  public Bitmap kuJ;
-  public p kuK;
-  ImageView kuL;
-  View kuM;
-  View.OnClickListener kuO;
-  com.tencent.mm.plugin.card.base.b pQV;
-  float pWC;
-  public Bitmap pWu;
-  boolean pZM;
-  MMActivity qdG;
-  Bitmap qdH;
-  TextView qdI;
-  TextView qdJ;
-  View qdK;
-  ImageView qdL;
-  MMVerticalTextView qdM;
-  MMVerticalTextView qdN;
-  ArrayList<Bitmap> qdO;
-  String qdP;
+  View nmA;
+  View.OnClickListener nmC;
+  public Bitmap nmx;
+  public r nmy;
+  ImageView nmz;
+  com.tencent.mm.plugin.card.base.b tmU;
+  public Bitmap tsr;
+  float tsz;
+  boolean tvI;
+  MMActivity tzD;
+  Bitmap tzE;
+  TextView tzF;
+  TextView tzG;
+  View tzH;
+  ImageView tzI;
+  MMVerticalTextView tzJ;
+  MMVerticalTextView tzK;
+  ArrayList<Bitmap> tzL;
+  String tzM;
   
   public j(MMActivity paramMMActivity)
   {
     AppMethodBeat.i(113550);
-    this.pZM = true;
-    this.qdH = null;
-    this.kuK = null;
-    this.pWC = 0.0F;
-    this.qdO = new ArrayList();
-    this.qdP = "";
-    this.kuO = new View.OnClickListener()
+    this.tvI = true;
+    this.tzE = null;
+    this.nmy = null;
+    this.tsz = 0.0F;
+    this.tzL = new ArrayList();
+    this.tzM = "";
+    this.nmC = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(113548);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/card/ui/CardPopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        if ((paramAnonymousView.getId() == 2131306037) || (paramAnonymousView.getId() == 2131306033))
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/card/ui/CardPopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        if ((paramAnonymousView.getId() == a.d.popupwd_qrcode_iv) || (paramAnonymousView.getId() == a.d.popupwd_barcode_iv))
         {
-          if ((j.this.kuK != null) && (j.this.kuK.isShowing())) {
-            j.this.kuK.dismiss();
+          if ((j.this.nmy != null) && (j.this.nmy.isShowing())) {
+            j.this.nmy.dismiss();
           }
-          if (!j.this.pQV.csz()) {
-            j.this.cwj();
+          if (!j.this.tmU.cGa()) {
+            j.this.cJL();
           }
         }
         a.a(this, "com/tencent/mm/plugin/card/ui/CardPopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(113548);
       }
     };
-    this.qdG = paramMMActivity;
+    this.tzD = paramMMActivity;
     AppMethodBeat.o(113550);
   }
   
-  private void bd(float paramFloat)
+  private void bc(float paramFloat)
   {
     AppMethodBeat.i(113551);
-    WindowManager.LayoutParams localLayoutParams = this.qdG.getWindow().getAttributes();
+    WindowManager.LayoutParams localLayoutParams = this.tzD.getWindow().getAttributes();
     localLayoutParams.screenBrightness = paramFloat;
-    this.qdG.getWindow().setAttributes(localLayoutParams);
+    this.tzD.getWindow().setAttributes(localLayoutParams);
     AppMethodBeat.o(113551);
   }
   
-  public final void cwi()
+  public final void cJK()
   {
     AppMethodBeat.i(113552);
-    if (this.pWC < 0.8F) {
-      bd(0.8F);
+    if (this.tsz < 0.8F) {
+      bc(0.8F);
     }
     AppMethodBeat.o(113552);
   }
   
-  public final void cwj()
+  public final void cJL()
   {
     AppMethodBeat.i(113553);
-    bd(this.pWC);
+    bc(this.tsz);
     AppMethodBeat.o(113553);
   }
   
-  public final void cwk()
+  public final void cJM()
   {
     AppMethodBeat.i(113554);
-    if ((this.kuK != null) && (this.kuK.isShowing())) {
-      this.kuL.setImageBitmap(this.kuJ);
+    if ((this.nmy != null) && (this.nmy.isShowing())) {
+      this.nmz.setImageBitmap(this.nmx);
     }
     AppMethodBeat.o(113554);
   }
@@ -108,12 +109,12 @@ public final class j
   final void recycleBmpList()
   {
     AppMethodBeat.i(113555);
-    if (this.qdO.size() > 2)
+    if (this.tzL.size() > 2)
     {
-      int i = this.qdO.size() - 1;
+      int i = this.tzL.size() - 1;
       while (i > 1)
       {
-        l.Z((Bitmap)this.qdO.remove(i));
+        l.X((Bitmap)this.tzL.remove(i));
         i -= 1;
       }
     }

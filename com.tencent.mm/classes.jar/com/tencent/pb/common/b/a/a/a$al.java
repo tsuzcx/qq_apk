@@ -1,38 +1,38 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.e;
+import com.google.b.a.b;
+import com.google.b.a.e;
 
 public final class a$al
   extends e
 {
-  public a.ba[] RFi = a.ba.hjk();
+  public a.az[] ZgN = a.az.ikU();
   
   public a$al()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public final int Ig()
+  public final int JG()
   {
-    int i = super.Ig();
+    int i = super.JG();
     int k = i;
-    if (this.RFi != null)
+    if (this.ZgN != null)
     {
       k = i;
-      if (this.RFi.length > 0)
+      if (this.ZgN.length > 0)
       {
         int j = 0;
         for (;;)
         {
           k = i;
-          if (j >= this.RFi.length) {
+          if (j >= this.ZgN.length) {
             break;
           }
-          a.ba localba = this.RFi[j];
+          a.az localaz = this.ZgN[j];
           k = i;
-          if (localba != null) {
-            k = i + b.b(1, localba);
+          if (localaz != null) {
+            k = i + b.b(1, localaz);
           }
           j += 1;
           i = k;
@@ -44,14 +44,14 @@ public final class a$al
   
   public final void a(b paramb)
   {
-    if ((this.RFi != null) && (this.RFi.length > 0))
+    if ((this.ZgN != null) && (this.ZgN.length > 0))
     {
       int i = 0;
-      while (i < this.RFi.length)
+      while (i < this.ZgN.length)
       {
-        a.ba localba = this.RFi[i];
-        if (localba != null) {
-          paramb.a(1, localba);
+        a.az localaz = this.ZgN[i];
+        if (localaz != null) {
+          paramb.a(1, localaz);
         }
         i += 1;
       }

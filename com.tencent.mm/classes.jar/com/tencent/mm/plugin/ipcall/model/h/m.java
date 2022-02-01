@@ -28,13 +28,13 @@ public final class m
     {
       paramk.field_status = 4;
       paramk.field_duration = paramLong;
-      i.eaz().a(paramk);
+      i.eJx().a(paramk);
     }
     AppMethodBeat.o(25564);
     return paramk;
   }
   
-  public static Cursor aCb(String paramString)
+  public static Cursor aMi(String paramString)
   {
     AppMethodBeat.i(25565);
     if (Util.isNullOrNil(paramString))
@@ -42,11 +42,11 @@ public final class m
       AppMethodBeat.o(25565);
       return null;
     }
-    paramString = i.eay().aBV(paramString);
+    paramString = i.eJw().aMc(paramString);
     if ((paramString != null) && (paramString.systemRowid != -1L))
     {
       long l = paramString.systemRowid;
-      paramString = i.eaz().db.query("IPCallRecord", l.ysL, "addressId=?", new String[] { String.valueOf(l) }, null, null, "calltime desc limit 4");
+      paramString = i.eJx().db.query("IPCallRecord", l.DSP, "addressId=?", new String[] { String.valueOf(l) }, null, null, "calltime desc limit 4");
       AppMethodBeat.o(25565);
       return paramString;
     }
@@ -66,25 +66,25 @@ public final class m
     if (paramk.systemRowid != -1L)
     {
       paramk.field_status = 7;
-      i.eaz().a(paramk);
+      i.eJx().a(paramk);
     }
     AppMethodBeat.o(25563);
     return paramk;
   }
   
-  public static ArrayList<k> ebb()
+  public static ArrayList<k> eJZ()
   {
     AppMethodBeat.i(25566);
     long l2 = System.currentTimeMillis();
-    Object localObject1 = i.eaz();
+    Object localObject1 = i.eJx();
     Object localObject2 = Calendar.getInstance();
     ((Calendar)localObject2).add(6, -30);
     long l1 = ((Calendar)localObject2).getTimeInMillis();
-    localObject1 = ((l)localObject1).db.query("IPCallRecord", l.ysL, "calltime>=?", new String[] { String.valueOf(l1) }, "addressId, phonenumber", null, "calltime desc");
+    localObject1 = ((l)localObject1).db.query("IPCallRecord", l.DSP, "calltime>=?", new String[] { String.valueOf(l1) }, "addressId, phonenumber", null, "calltime desc");
     if (((Cursor)localObject1).getCount() < 30)
     {
       ((Cursor)localObject1).close();
-      localObject1 = i.eaz().db.query("IPCallRecord", l.ysL, null, null, "addressId, phonenumber", null, "calltime desc");
+      localObject1 = i.eJx().db.query("IPCallRecord", l.DSP, null, null, "addressId, phonenumber", null, "calltime desc");
     }
     for (;;)
     {
@@ -125,16 +125,16 @@ public final class m
           Log.d("MicroMsg.IPCallRecordStorageLogic", "getRecentRecordGroupByUser, used: %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
           AppMethodBeat.o(25566);
           return localObject2;
-          localObject4 = a.bb(MMApplicationContext.getContext(), localk1.field_phonenumber);
-          localObject4 = i.eay().aBW((String)localObject4);
+          localObject4 = a.bn(MMApplicationContext.getContext(), localk1.field_phonenumber);
+          localObject4 = i.eJw().aMd((String)localObject4);
           if (localObject4 == null) {
             break label604;
           }
-          localObject5 = i.eaz();
+          localObject5 = i.eJx();
           if ((((l)localObject5).db instanceof h))
           {
             l1 = ((h)((l)localObject5).db).beginTransaction(-1L);
-            localObject5 = i.eaz().aCa(localk1.field_phonenumber);
+            localObject5 = i.eJx().aMh(localk1.field_phonenumber);
             if (!((Cursor)localObject5).moveToFirst()) {
               break label504;
             }
@@ -144,7 +144,7 @@ public final class m
             localk2 = new k();
             localk2.convertFrom((Cursor)localObject5);
             localk2.field_addressId = ((c)localObject4).systemRowid;
-            i.eaz().a(localk2);
+            i.eJx().a(localk2);
             ((Cursor)localObject5).moveToNext();
             continue;
           }
@@ -156,7 +156,7 @@ public final class m
         }
         continue;
         label504:
-        Object localObject4 = i.eaz();
+        Object localObject4 = i.eJx();
         if (((((l)localObject4).db instanceof h)) && (l1 != -1L)) {
           ((h)((l)localObject4).db).endTransaction(l1);
         }
@@ -181,7 +181,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.h.m
  * JD-Core Version:    0.7.0.1
  */

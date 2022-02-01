@@ -20,6 +20,7 @@ public class StnLogic
   public static final int NETWORK_UNAVAILABLE = 0;
   public static final int NETWORK_UNKNOWN = -1;
   public static int RESP_FAIL_HANDLE_DEFAULT = 0;
+  public static int RESP_FAIL_HANDLE_ECDH_VERSON_MISMATCH = 0;
   public static int RESP_FAIL_HANDLE_NORMAL = 0;
   public static int RESP_FAIL_HANDLE_SESSION_TIMEOUT = 0;
   public static int RESP_FAIL_HANDLE_TASK_END = 0;
@@ -51,6 +52,7 @@ public class StnLogic
       RESP_FAIL_HANDLE_DEFAULT = -1;
       RESP_FAIL_HANDLE_SESSION_TIMEOUT = -13;
       RESP_FAIL_HANDLE_TASK_END = -14;
+      RESP_FAIL_HANDLE_ECDH_VERSON_MISMATCH = -3800;
       callBack = null;
       return;
     }
@@ -354,7 +356,7 @@ public class StnLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mars.stn.StnLogic
  * JD-Core Version:    0.7.0.1
  */

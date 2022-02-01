@@ -1,16 +1,20 @@
 package com.tencent.mm.plugin.appbrand.debugger;
 
-import com.tencent.mm.protocal.protobuf.evg;
-
 public final class p
 {
-  public long lhG = 0L;
-  public evg liB;
-  public int liC;
+  public int cBI = -1;
+  public boolean cxj;
+  public boolean ocV = false;
+  public String ocW;
+  public String ocX;
+  public int ocY;
+  public int ocZ;
+  public int oda;
+  public String roomId;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.p
  * JD-Core Version:    0.7.0.1
  */

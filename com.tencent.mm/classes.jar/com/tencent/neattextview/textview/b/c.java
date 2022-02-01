@@ -23,15 +23,15 @@ public class c
   public final void a(Canvas paramCanvas, TextPaint paramTextPaint, List<d> paramList)
   {
     AppMethodBeat.i(39744);
-    kb(paramList);
+    kV(paramList);
     if (this.isPressed)
     {
       int i = paramTextPaint.getColor();
       int j = paramTextPaint.bgColor;
       boolean bool = paramTextPaint.isUnderlineText();
-      ((ClickableSpan)this.RAM).updateDrawState(paramTextPaint);
+      ((ClickableSpan)this.Zcp).updateDrawState(paramTextPaint);
       paramTextPaint.setColor(paramTextPaint.bgColor);
-      paramList = this.RAL.iterator();
+      paramList = this.Zco.iterator();
       while (paramList.hasNext()) {
         paramCanvas.drawRect((RectF)paramList.next(), paramTextPaint);
       }
@@ -45,7 +45,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.neattextview.textview.b.c
  * JD-Core Version:    0.7.0.1
  */

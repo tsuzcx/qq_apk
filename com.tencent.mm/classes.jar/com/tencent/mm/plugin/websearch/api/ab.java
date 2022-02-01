@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.faq;
-import com.tencent.mm.protocal.protobuf.far;
+import com.tencent.mm.protocal.protobuf.flj;
+import com.tencent.mm.protocal.protobuf.flk;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -20,29 +20,29 @@ public final class ab
   extends q
   implements m
 {
-  faq IEg;
-  far IEh;
+  flj Pyw;
+  flk Pyx;
   private i callback;
-  private d iUB;
+  private d lKU;
   
   public ab(int paramInt)
   {
     AppMethodBeat.i(117635);
-    this.IEg = new faq();
+    this.Pyw = new flj();
     d.a locala = new d.a();
     locala.funcId = 1948;
     locala.uri = "/cgi-bin/mmsearch-bin/websearchconfig";
-    locala.iLN = new faq();
-    locala.iLO = new far();
-    this.iUB = locala.aXF();
-    this.IEg = ((faq)this.iUB.iLK.iLR);
-    this.IEg.MaY = ai.aft(0);
-    this.IEg.rBI = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
-    this.IEg.pLm = ai.ait();
-    this.IEg.MlQ = ai.clJ();
-    this.IEg.MlR = ai.fYd();
-    this.IEg.Scene = paramInt;
-    this.IEg.KZg = 0L;
+    locala.lBU = new flj();
+    locala.lBV = new flk();
+    this.lKU = locala.bgN();
+    this.Pyw = ((flj)d.b.b(this.lKU.lBR));
+    this.Pyw.Tkv = ai.anh(0);
+    this.Pyw.vhq = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
+    this.Pyw.sSU = ai.anV();
+    this.Pyw.TwK = ai.czn();
+    this.Pyw.TwL = ai.gQO();
+    this.Pyw.CPw = paramInt;
+    this.Pyw.Sap = 0L;
     AppMethodBeat.o(117635);
   }
   
@@ -50,7 +50,7 @@ public final class ab
   {
     AppMethodBeat.i(117636);
     this.callback = parami;
-    int i = dispatch(paramg, this.iUB, this);
+    int i = dispatch(paramg, this.lKU, this);
     AppMethodBeat.o(117636);
     return i;
   }
@@ -70,9 +70,9 @@ public final class ab
       AppMethodBeat.o(117637);
       return;
     }
-    this.IEh = ((far)this.iUB.iLL.iLR);
-    if (this.IEh != null) {
-      Log.v("MicroMsg.WebSearch.NetSceneWebSearchConfig", "return data\n%s", new Object[] { this.IEh.MaZ });
+    this.Pyx = ((flk)d.c.b(this.lKU.lBS));
+    if (this.Pyx != null) {
+      Log.v("MicroMsg.WebSearch.NetSceneWebSearchConfig", "return data\n%s", new Object[] { this.Pyx.Tkw });
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(117637);
@@ -80,7 +80,7 @@ public final class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.ab
  * JD-Core Version:    0.7.0.1
  */

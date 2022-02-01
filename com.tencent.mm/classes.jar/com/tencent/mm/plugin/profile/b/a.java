@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.profile.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.aq;
-import com.tencent.mm.protocal.protobuf.brs;
-import com.tencent.mm.protocal.protobuf.brt;
+import com.tencent.mm.protocal.protobuf.ao;
+import com.tencent.mm.protocal.protobuf.bzo;
+import com.tencent.mm.protocal.protobuf.bzp;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
@@ -19,7 +19,7 @@ public final class a
   extends q
   implements m
 {
-  public brt BcU;
+  public bzp GWT;
   private i callback;
   public String errMsg;
   public final d rr;
@@ -31,17 +31,17 @@ public final class a
     Object localObject = new d.a();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getopenurl";
     ((d.a)localObject).funcId = 913;
-    ((d.a)localObject).iLN = new brs();
-    ((d.a)localObject).iLO = new brt();
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (brs)this.rr.iLK.iLR;
-    ((brs)localObject).scene = 1;
-    aq localaq = new aq();
-    localaq.username = paramString1;
-    localaq.dHx = paramString2;
-    localaq.BcW = paramString3;
-    localaq.content = paramString4;
-    ((brs)localObject).LYX = localaq;
+    ((d.a)localObject).lBU = new bzo();
+    ((d.a)localObject).lBV = new bzp();
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (bzo)d.b.b(this.rr.lBR);
+    ((bzo)localObject).scene = 1;
+    ao localao = new ao();
+    localao.username = paramString1;
+    localao.fAo = paramString2;
+    localao.GWV = paramString3;
+    localao.content = paramString4;
+    ((bzo)localObject).Tir = localao;
     AppMethodBeat.o(26901);
   }
   
@@ -70,7 +70,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.b.a
  * JD-Core Version:    0.7.0.1
  */

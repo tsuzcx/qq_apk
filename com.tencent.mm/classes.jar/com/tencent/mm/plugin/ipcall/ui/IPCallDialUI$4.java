@@ -13,7 +13,7 @@ final class IPCallDialUI$4
   {
     AppMethodBeat.i(25745);
     paramDialogInterface.dismiss();
-    this.yvx.finish();
+    this.DVB.finish();
     AppMethodBeat.o(25745);
   }
 }

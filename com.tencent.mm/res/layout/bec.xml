@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:id="@id/h93" android:background="@drawable/ban" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/gy2" android:fadingEdge="none" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
-    <RelativeLayout android:id="@id/ax4" android:background="@color/ac" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <View android:id="@id/fb5" android:layout_width="fill_parent" android:layout_height="@dimen/bu" />
+    <RelativeLayout android:id="@id/ax4" android:background="@color/UN_BW_0_Alpha_0_3" android:paddingTop="@dimen/cm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/xt" android:layout_width="@dimen/c5" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/cb" android:src="@raw/icons_outlined_arrow" android:rotation="90.0" android:layout_marginStart="@dimen/cc" app:iconColor="@color/BW_100_Alpha_0_8" />
+        <View android:id="@id/fb5" android:layout_width="fill_parent" android:layout_height="@dimen/cb" android:layout_below="@id/xt" />
         <FrameLayout android:id="@id/fb4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/av5" android:layout_below="@id/fb5" />
         <com.tencent.mm.plugin.mv.ui.view.MusicMvCommentFooter android:id="@id/av5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
     </RelativeLayout>

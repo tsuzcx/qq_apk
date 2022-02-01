@@ -1,22 +1,11 @@
 package com.tencent.mm.plugin.finder.viewmodel.component;
 
-import kotlin.g.b.t;
 import kotlin.l;
-import kotlin.l.d;
 
-@l(hxD={1, 1, 16})
-public final class a
-  extends t
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/viewmodel/component/ActionBarLayoutChangeListener;", "", "onLayoutLocChange", "", "locY", "", "plugin-finder_release"})
+public abstract interface a
 {
-  public a(FinderCommentDrawerUIC arg1) {}
-  
-  public final d Rs() {}
-  
-  public final Object get() {}
-  
-  public final String getName() {}
-  
-  public final String getSignature() {}
+  public abstract void Md(int paramInt);
 }
 
 

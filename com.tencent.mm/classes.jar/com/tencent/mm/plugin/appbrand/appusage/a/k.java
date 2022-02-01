@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dko;
+import com.tencent.mm.protocal.protobuf.dud;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appusage/recommend/MockData;", "", "()V", "fakeRecommendCard", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "getFakeRecommendCard", "()Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "setFakeRecommendCard", "(Lcom/tencent/mm/protocal/protobuf/RecommendCard;)V", "copyMockData", "", "mockData", "mock", "Ljava/util/LinkedList;", "pageNum", "", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appusage/recommend/MockData;", "", "()V", "fakeRecommendCard", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "getFakeRecommendCard", "()Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "setFakeRecommendCard", "(Lcom/tencent/mm/protocal/protobuf/RecommendCard;)V", "copyMockData", "", "mockData", "mock", "Ljava/util/LinkedList;", "pageNum", "", "plugin-appbrand-integration_release"})
 public final class k
 {
-  dko kXH;
+  dud nRT;
   
   public k()
   {
     AppMethodBeat.i(50332);
-    this.kXH = new dko();
+    this.nRT = new dud();
     AppMethodBeat.o(50332);
   }
   
-  final void a(dko paramdko)
+  final void a(dud paramdud)
   {
-    paramdko.gTT = this.kXH.gTT;
-    paramdko.nHd = this.kXH.nHd;
-    paramdko.nHf = this.kXH.nHf;
-    paramdko.MOw = this.kXH.MOw;
-    paramdko.qGI = "####客户端mock数据####商品";
-    paramdko.nHg = this.kXH.nHg;
-    paramdko.MOy = this.kXH.MOy;
-    paramdko.MOx = this.kXH.MOx;
-    paramdko.MOu = this.kXH.MOu;
-    paramdko.score = this.kXH.score;
-    paramdko.nHh = this.kXH.nHh;
-    paramdko.MOz = this.kXH.MOz;
+    paramdud.jEx = this.nRT.jEx;
+    paramdud.qJp = this.nRT.qJp;
+    paramdud.qJr = this.nRT.qJr;
+    paramdud.Uap = this.nRT.Uap;
+    paramdud.ufJ = "####客户端mock数据####商品";
+    paramdud.qJs = this.nRT.qJs;
+    paramdud.Uas = this.nRT.Uas;
+    paramdud.Uaq = this.nRT.Uaq;
+    paramdud.Uan = this.nRT.Uan;
+    paramdud.Uar = this.nRT.Uar;
+    paramdud.qJt = this.nRT.qJt;
+    paramdud.Uat = this.nRT.Uat;
   }
 }
 

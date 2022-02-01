@@ -6,6 +6,8 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.n.g;
+import com.tencent.mm.plugin.setting.b.i;
+import com.tencent.mm.plugin.setting.b.k;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
@@ -19,7 +21,7 @@ public class SettingsVoipSoundVibrateUI
   
   public int getResourceId()
   {
-    return 2132017277;
+    return b.k.settings_pref_notification_voip;
   }
   
   public void initView()
@@ -27,11 +29,11 @@ public class SettingsVoipSoundVibrateUI
     AppMethodBeat.i(74562);
     this.screen = getPreferenceScreen();
     this.screen.removeAll();
-    this.screen.addPreferencesFromResource(getResourceId());
-    this.screen.jdMethod_do("settings_voip_sound", false);
-    ((CheckBoxPreference)this.screen.bmg("settings_voip_sound")).setChecked(g.aqa());
-    this.screen.jdMethod_do("settings_voip_shake", false);
-    ((CheckBoxPreference)this.screen.bmg("settings_voip_shake")).setChecked(g.aqb());
+    this.screen.auC(getResourceId());
+    this.screen.dz("settings_voip_sound", false);
+    ((CheckBoxPreference)this.screen.byG("settings_voip_sound")).setChecked(g.awt());
+    this.screen.dz("settings_voip_shake", false);
+    ((CheckBoxPreference)this.screen.byG("settings_voip_shake")).setChecked(g.awu());
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -50,7 +52,7 @@ public class SettingsVoipSoundVibrateUI
   {
     AppMethodBeat.i(74561);
     super.onCreate(paramBundle);
-    setMMTitle(2131765694);
+    setMMTitle(b.i.settings_voip_sound_and_shake_title);
     AppMethodBeat.o(74561);
   }
   
@@ -74,14 +76,14 @@ public class SettingsVoipSoundVibrateUI
     paramf = paramPreference.mKey;
     if (paramf.equals("settings_voip_sound"))
     {
-      g.dH(((CheckBoxPreference)paramPreference).isChecked());
+      g.eh(((CheckBoxPreference)paramPreference).isChecked());
       initView();
       AppMethodBeat.o(74565);
       return true;
     }
     if (paramf.equals("settings_voip_shake"))
     {
-      g.dI(((CheckBoxPreference)paramPreference).isChecked());
+      g.ei(((CheckBoxPreference)paramPreference).isChecked());
       initView();
       Util.shake(this, ((CheckBoxPreference)paramPreference).isChecked());
       AppMethodBeat.o(74565);
@@ -107,7 +109,7 @@ public class SettingsVoipSoundVibrateUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsVoipSoundVibrateUI
  * JD-Core Version:    0.7.0.1
  */

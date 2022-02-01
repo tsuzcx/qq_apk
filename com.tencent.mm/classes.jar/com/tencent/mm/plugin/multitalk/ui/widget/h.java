@@ -5,157 +5,160 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.multitalk.a.b;
+import com.tencent.mm.plugin.multitalk.a.e;
+import com.tencent.mm.plugin.multitalk.a.g;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/ui/widget/MultiTalkMiniStatusLayout;", "", "rootView", "Landroid/view/View;", "(Landroid/view/View;)V", "cameraStatusIcon", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "context", "Landroid/content/Context;", "mStatusIconLayout", "muteStatusIcon", "getRootView", "()Landroid/view/View;", "setRootView", "showCameraIcon", "", "showMuteIcon", "refreshLayoutCauseDockChanged", "", "isDockerLeft", "refreshMiniView", "setDoubleIcon", "isMuteOn", "isCameraOn", "showSelfCameraIcon", "show", "showSelfMuteIcon", "plugin-multitalk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/MultiTalkMiniStatusLayout;", "", "rootView", "Landroid/view/View;", "(Landroid/view/View;)V", "cameraStatusIcon", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "context", "Landroid/content/Context;", "mStatusIconLayout", "muteStatusIcon", "getRootView", "()Landroid/view/View;", "setRootView", "showCameraIcon", "", "showMuteIcon", "refreshLayoutCauseDockChanged", "", "isDockerLeft", "refreshMiniView", "setDoubleIcon", "isMuteOn", "isCameraOn", "showSelfCameraIcon", "show", "showSelfMuteIcon", "plugin-multitalk_release"})
 public final class h
 {
+  private View Fyv;
+  private WeImageView Fyw;
+  private WeImageView Fyx;
+  boolean Fyy;
+  boolean Fyz;
   private Context context;
-  View lJI;
-  private View zST;
-  private WeImageView zSU;
-  private WeImageView zSV;
-  boolean zSW;
-  boolean zSX;
+  View oFW;
   
   public h(View paramView)
   {
-    AppMethodBeat.i(239786);
-    this.lJI = paramView;
-    this.context = this.lJI.getContext();
-    this.zSU = ((WeImageView)this.lJI.findViewById(2131305056));
-    paramView = this.zSU;
+    AppMethodBeat.i(199564);
+    this.oFW = paramView;
+    this.context = this.oFW.getContext();
+    this.Fyw = ((WeImageView)this.oFW.findViewById(a.e.multitalk_small_status_iv_camera));
+    paramView = this.Fyw;
     if (paramView != null) {
-      paramView.setImageResource(2131690703);
+      paramView.setImageResource(a.g.icons_filled_video_call);
     }
-    paramView = this.zSU;
+    paramView = this.Fyw;
     if (paramView != null) {
       paramView.setIconColor(Color.parseColor("#07C160"));
     }
-    paramView = this.zSU;
+    paramView = this.Fyw;
     if (paramView != null) {
       paramView.setVisibility(8);
     }
-    this.zSV = ((WeImageView)this.lJI.findViewById(2131305057));
-    paramView = this.zSV;
+    this.Fyx = ((WeImageView)this.oFW.findViewById(a.e.multitalk_small_status_iv_mute));
+    paramView = this.Fyx;
     if (paramView != null) {
-      paramView.setImageResource(2131690602);
+      paramView.setImageResource(a.g.icons_filled_mike);
     }
-    paramView = this.zSV;
+    paramView = this.Fyx;
     if (paramView != null)
     {
       Context localContext = this.context;
       if (localContext == null) {
-        p.hyc();
+        p.iCn();
       }
-      paramView.setIconColor(localContext.getResources().getColor(2131099710));
+      paramView.setIconColor(localContext.getResources().getColor(a.b.Brand));
     }
-    paramView = this.zSV;
+    paramView = this.Fyx;
     if (paramView != null) {
       paramView.setVisibility(8);
     }
-    this.zST = this.lJI.findViewById(2131302487);
-    paramView = this.zST;
+    this.Fyv = this.oFW.findViewById(a.e.icon_content_double);
+    paramView = this.Fyv;
     if (paramView != null)
     {
       paramView.setVisibility(8);
-      AppMethodBeat.o(239786);
+      AppMethodBeat.o(199564);
       return;
     }
-    AppMethodBeat.o(239786);
+    AppMethodBeat.o(199564);
   }
   
-  final void aa(boolean paramBoolean1, boolean paramBoolean2)
+  final void ak(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(239785);
-    Object localObject = this.zST;
+    AppMethodBeat.i(199559);
+    Object localObject = this.Fyv;
     if (localObject != null) {
       ((View)localObject).setVisibility(0);
     }
-    localObject = this.zSV;
+    localObject = this.Fyx;
     if (localObject != null) {
       ((WeImageView)localObject).setVisibility(0);
     }
-    localObject = this.zSU;
+    localObject = this.Fyw;
     if (localObject != null) {
       ((WeImageView)localObject).setVisibility(0);
     }
     Context localContext;
     if (!paramBoolean1)
     {
-      localObject = this.zSV;
+      localObject = this.Fyx;
       if (localObject != null) {
-        ((WeImageView)localObject).setImageResource(2131690602);
+        ((WeImageView)localObject).setImageResource(a.g.icons_filled_mike);
       }
-      localObject = this.zSV;
+      localObject = this.Fyx;
       if (localObject != null)
       {
         localContext = this.context;
         if (localContext == null) {
-          p.hyc();
+          p.iCn();
         }
-        ((WeImageView)localObject).setIconColor(localContext.getResources().getColor(2131099710));
+        ((WeImageView)localObject).setIconColor(localContext.getResources().getColor(a.b.Brand));
       }
     }
     while (paramBoolean2)
     {
-      localObject = this.zSU;
+      localObject = this.Fyw;
       if (localObject != null) {
-        ((WeImageView)localObject).setImageResource(2131690703);
+        ((WeImageView)localObject).setImageResource(a.g.icons_filled_video_call);
       }
-      localObject = this.zSU;
+      localObject = this.Fyw;
       if (localObject != null)
       {
         localContext = this.context;
         if (localContext == null) {
-          p.hyc();
+          p.iCn();
         }
-        ((WeImageView)localObject).setIconColor(localContext.getResources().getColor(2131099710));
-        AppMethodBeat.o(239785);
+        ((WeImageView)localObject).setIconColor(localContext.getResources().getColor(a.b.Brand));
+        AppMethodBeat.o(199559);
         return;
-        localObject = this.zSV;
+        localObject = this.Fyx;
         if (localObject != null) {
-          ((WeImageView)localObject).setImageResource(2131690602);
+          ((WeImageView)localObject).setImageResource(a.g.icons_filled_mike);
         }
-        localObject = this.zSV;
+        localObject = this.Fyx;
         if (localObject != null)
         {
           localContext = this.context;
           if (localContext == null) {
-            p.hyc();
+            p.iCn();
           }
-          ((WeImageView)localObject).setIconColor(localContext.getResources().getColor(2131099749));
+          ((WeImageView)localObject).setIconColor(localContext.getResources().getColor(a.b.FG_2));
         }
       }
       else
       {
-        AppMethodBeat.o(239785);
+        AppMethodBeat.o(199559);
         return;
       }
     }
-    localObject = this.zSU;
+    localObject = this.Fyw;
     if (localObject != null) {
-      ((WeImageView)localObject).setImageResource(2131690703);
+      ((WeImageView)localObject).setImageResource(a.g.icons_filled_video_call);
     }
-    localObject = this.zSU;
+    localObject = this.Fyw;
     if (localObject != null)
     {
       localContext = this.context;
       if (localContext == null) {
-        p.hyc();
+        p.iCn();
       }
-      ((WeImageView)localObject).setIconColor(localContext.getResources().getColor(2131099749));
-      AppMethodBeat.o(239785);
+      ((WeImageView)localObject).setIconColor(localContext.getResources().getColor(a.b.FG_2));
+      AppMethodBeat.o(199559);
       return;
     }
-    AppMethodBeat.o(239785);
+    AppMethodBeat.o(199559);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.h
  * JD-Core Version:    0.7.0.1
  */

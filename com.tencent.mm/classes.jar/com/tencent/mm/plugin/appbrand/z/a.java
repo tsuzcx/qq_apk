@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.z;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.contact.c;
-import com.tencent.mm.g.c.bb;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.f.c.bb;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.plugin.appbrand.service.e;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.as;
@@ -24,25 +24,25 @@ public final class a
     if ((paramaz != null) && (!Util.isNullOrNil(paramaz.field_username)))
     {
       parambw = paramaz.field_username;
-      as localas = ((l)g.af(l.class)).aSN().Kn(parambw);
-      if ((localas == null) || ((int)localas.gMZ == 0))
+      as localas = ((n)h.ae(n.class)).bbL().RG(parambw);
+      if ((localas == null) || ((int)localas.jxt == 0))
       {
         Log.e("MicroMsg.AppBrandConversionExtension", "contact is null or contactId is 0 for %s", new Object[] { parambw });
         AppMethodBeat.o(48310);
         return;
       }
-      if ((as.HF(parambw)) && (!ab.Jf(parambw)))
+      if ((as.OS(parambw)) && (!ab.Qy(parambw)))
       {
         Log.i("MicroMsg.AppBrandConversionExtension", "this conversation is a app brand contact!");
-        paramaz.Co("appbrandcustomerservicemsg");
-        ((e)g.af(e.class)).c(paramaz);
+        paramaz.Jc("appbrandcustomerservicemsg");
+        ((e)h.ae(e.class)).c(paramaz);
         AppMethodBeat.o(48310);
         return;
       }
-      if (ab.JB(parambw))
+      if (ab.QU(parambw))
       {
         Log.i("MicroMsg.AppBrandConversionExtension", "appBrandSuperConv is created");
-        paramaz.Co(null);
+        paramaz.Jc(null);
       }
     }
     AppMethodBeat.o(48310);

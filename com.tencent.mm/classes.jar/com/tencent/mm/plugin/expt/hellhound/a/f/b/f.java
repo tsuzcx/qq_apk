@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 
 public final class f
 {
-  public static boolean af(Activity paramActivity)
+  public static boolean ag(Activity paramActivity)
   {
     AppMethodBeat.i(177389);
     if (paramActivity == null)

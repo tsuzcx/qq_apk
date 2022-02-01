@@ -29,7 +29,11 @@ public abstract class OverlayAnimator
       this.c.cancel();
       return;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   protected abstract ValueAnimator createSegmentAnimator(int paramInt);
@@ -41,7 +45,11 @@ public abstract class OverlayAnimator
       this.c.end();
       return;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   protected AnimatorSet getAnimatorSet()
@@ -88,7 +96,7 @@ public abstract class OverlayAnimator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.vector.compat.utils.animation.OverlayAnimator
  * JD-Core Version:    0.7.0.1
  */

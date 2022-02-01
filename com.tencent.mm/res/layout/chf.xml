@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.hld.view.ImeTouchSoundView android:id="@id/h8v" android:background="@drawable/cxv" android:layout_width="fill_parent" android:layout_height="@dimen/asm"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/aso" android:textColor="@color/ah5" android:ellipsize="end" android:id="@id/ka9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_centerInParent="true" />
+    <TextView android:textSize="@dimen/ast" android:textColor="@color/ah6" android:id="@id/ka_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ass" android:layout_marginRight="@dimen/asr" android:text="@string/jkg" android:layout_alignParentRight="true" android:lineSpacingExtra="@dimen/asq" />
+</com.tencent.mm.plugin.hld.view.ImeTouchSoundView>

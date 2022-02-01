@@ -4,13 +4,13 @@ public abstract interface c<T>
 {
   public abstract void a(f.a<T> parama);
   
-  public abstract f.a<T> aAJ();
+  public abstract f.a<T> aIm();
   
   public abstract void prepare();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.kernel.a.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,597 +1,88 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.XmlParser;
 import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ca;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mm.storage.ar.a;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class br
 {
-  public static int iEW;
-  private static ConcurrentHashMap<Long, String> iEX;
-  private static int iEY;
-  private static float iEZ;
-  private static float iFa;
-  private static float iFb;
+  private static final Queue<Integer> luP;
+  public static final long[] luQ;
+  public static final int[] luR;
+  public static final int[] luS;
+  public static final int[] luT;
+  public static final int[] luU;
+  private static br luV;
+  public long[] luW;
+  public long[] luX;
   
   static
   {
-    AppMethodBeat.i(150189);
-    iEW = 0;
-    iEX = new ConcurrentHashMap();
-    iEY = 1;
-    iEZ = 0.75F;
-    iFa = 0.4F;
-    iFb = 0.5F;
-    AppMethodBeat.o(150189);
+    AppMethodBeat.i(42979);
+    luP = new ConcurrentLinkedQueue();
+    luQ = new long[] { 0L, 2000L, 5000L, 10000L, 30000L, 60000L, 180000L, 300000L, 600000L, 1800000L, 3600000L };
+    luR = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    luS = new int[] { 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40 };
+    luT = new int[] { 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170 };
+    luU = new int[] { 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200 };
+    AppMethodBeat.o(42979);
   }
   
-  public static int A(ca paramca)
+  private br()
   {
-    AppMethodBeat.i(150172);
-    if (paramca == null)
+    AppMethodBeat.i(42978);
+    Object localObject = (String)h.aHG().aHp().get(ar.a.VCO, "0,0,0,0,0,0,0,0,0,0,0,0");
+    this.luW = new long[12];
+    localObject = ((String)localObject).split(",");
+    int i = 0;
+    if (localObject.length < 12) {}
+    for (int j = localObject.length;; j = 12)
     {
-      AppMethodBeat.o(150172);
-      return 0;
-    }
-    paramca = XmlParser.parseXml(paramca.fqK, "msgsource", null);
-    if (paramca != null)
-    {
-      paramca = (String)paramca.get(".msgsource.bizflag");
-      if (Util.isNullOrNil(paramca)) {}
-    }
-    for (int i = Util.getInt(paramca, 0);; i = 0)
-    {
-      AppMethodBeat.o(150172);
-      return i;
-    }
-  }
-  
-  public static String A(Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(150185);
-    int i = Util.safeParseInt((String)paramMap.get(".msgsource.sec_msg_node.sfn"));
-    String str1 = Util.nullAsNil((String)paramMap.get(".msgsource.sec_msg_node.show-h5"));
-    int j = Util.safeParseInt((String)paramMap.get(".msgsource.sec_msg_node.clip-len"));
-    String str2 = Util.nullAsNil((String)paramMap.get(".msgsource.sec_msg_node.share-tip-url"));
-    int k = Util.safeParseInt((String)paramMap.get(".msgsource.sec_msg_node.fold-reduce"));
-    int m = Util.safeParseInt((String)paramMap.get(".msgsource.sec_msg_node.media-to-emoji"));
-    int n = Util.safeParseInt((String)paramMap.get(".msgsource.sec_msg_node.block-range"));
-    paramMap = new StringBuilder();
-    paramMap.append("<sec_msg_node>");
-    paramMap.append("<sfn>").append(i).append("</sfn>");
-    paramMap.append("<show-h5><![CDATA[").append(str1).append("]]></show-h5>");
-    paramMap.append("<clip-len>").append(j).append("</clip-len>");
-    paramMap.append("<share-tip-url><![CDATA[").append(str2).append("]]></share-tip-url>");
-    paramMap.append("<fold-reduce>").append(k).append("</fold-reduce>");
-    paramMap.append("<media-to-emoji>").append(m).append("</media-to-emoji>");
-    paramMap.append("<block-range>").append(n).append("</block-range>");
-    paramMap.append("</sec_msg_node>");
-    paramMap = paramMap.toString();
-    AppMethodBeat.o(150185);
-    return paramMap;
-  }
-  
-  public static String B(Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(163513);
-    int i = Util.safeParseInt((String)paramMap.get(".msgsource.alnode.cf"));
-    paramMap = new StringBuilder();
-    paramMap.append("<alnode>");
-    paramMap.append("<cf>").append(i).append("</cf>");
-    paramMap.append("</alnode>");
-    paramMap = paramMap.toString();
-    AppMethodBeat.o(163513);
-    return paramMap;
-  }
-  
-  public static boolean B(ca paramca)
-  {
-    AppMethodBeat.i(150174);
-    if ((paramca != null) && (!Util.isNullOrNil(paramca.fqK)))
-    {
-      paramca = XmlParser.parseXml(paramca.fqK, "msgsource", null);
-      if ((paramca != null) && (Util.safeParseInt((String)paramca.get(".msgsource.sec_msg_node.sfn")) == 1))
-      {
-        AppMethodBeat.o(150174);
-        return true;
+      if (i >= j) {
+        break label93;
       }
+      this.luW[i] = Util.getLong(localObject[i], 0L);
+      i += 1;
+      break;
     }
-    AppMethodBeat.o(150174);
-    return false;
-  }
-  
-  public static int C(ca paramca)
-  {
-    AppMethodBeat.i(225951);
-    if (iEY == 0)
+    label93:
+    localObject = (String)h.aHG().aHp().get(ar.a.VCP, "0,0,0,0,0,0,0,0,0,0,0,0");
+    this.luX = new long[12];
+    localObject = ((String)localObject).split(",");
+    i = k;
+    if (localObject.length < 12) {}
+    for (j = localObject.length;; j = 12)
     {
-      AppMethodBeat.o(225951);
-      return 0;
-    }
-    if ((paramca != null) && (!Util.isNullOrNil(paramca.fqK)))
-    {
-      paramca = XmlParser.parseXml(paramca.fqK, "msgsource", null);
-      if (paramca != null)
-      {
-        int i = Util.getInt((String)paramca.get(".msgsource.sec_msg_node.media-to-emoji"), 0);
-        AppMethodBeat.o(225951);
-        return i;
+      if (i >= j) {
+        break label175;
       }
+      this.luX[i] = Util.getLong(localObject[i], 0L);
+      i += 1;
+      break;
     }
-    AppMethodBeat.o(225951);
-    return 0;
+    label175:
+    AppMethodBeat.o(42978);
   }
   
-  public static boolean D(ca paramca)
+  public static br beX()
   {
-    AppMethodBeat.i(225952);
-    if (C(paramca) > 0)
-    {
-      AppMethodBeat.o(225952);
-      return true;
+    AppMethodBeat.i(42977);
+    if (luV == null) {
+      luV = new br();
     }
-    AppMethodBeat.o(225952);
-    return false;
-  }
-  
-  public static void E(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(150184);
-    if ((!Util.isNullOrNil(paramString)) && (paramLong > 0L) && (iEX.containsKey(Long.valueOf(paramLong))))
-    {
-      paramString = ((l)g.af(l.class)).eiy().aJ(paramString, paramLong);
-      if ((!Util.isNullOrNil(paramString.field_talker)) && (paramString.field_msgSvrId > 0L))
-      {
-        Log.i("MicroMsg.MsgSourceHelper", "found sec msg of %s", new Object[] { Long.valueOf(paramLong) });
-        a(paramString, (String)iEX.get(Long.valueOf(paramLong)));
-        iEX.remove(Long.valueOf(paramLong));
-      }
-    }
-    AppMethodBeat.o(150184);
-  }
-  
-  public static boolean E(ca paramca)
-  {
-    AppMethodBeat.i(225953);
-    int i = C(paramca);
-    if ((i == 2) || (i == 4))
-    {
-      AppMethodBeat.o(225953);
-      return true;
-    }
-    AppMethodBeat.o(225953);
-    return false;
-  }
-  
-  public static boolean F(ca paramca)
-  {
-    AppMethodBeat.i(225954);
-    int i = C(paramca);
-    if ((i == 3) || (i == 4))
-    {
-      AppMethodBeat.o(225954);
-      return true;
-    }
-    AppMethodBeat.o(225954);
-    return false;
-  }
-  
-  public static float G(ca paramca)
-  {
-    AppMethodBeat.i(225955);
-    if (!D(paramca))
-    {
-      AppMethodBeat.o(225955);
-      return 1.0F;
-    }
-    float f = iEZ;
-    AppMethodBeat.o(225955);
-    return f;
-  }
-  
-  public static float H(ca paramca)
-  {
-    AppMethodBeat.i(225956);
-    if (!D(paramca))
-    {
-      AppMethodBeat.o(225956);
-      return 1.0F;
-    }
-    float f = iFa;
-    AppMethodBeat.o(225956);
-    return f;
-  }
-  
-  public static float I(ca paramca)
-  {
-    AppMethodBeat.i(225957);
-    if (!D(paramca))
-    {
-      AppMethodBeat.o(225957);
-      return 1.0F;
-    }
-    float f = iFb;
-    AppMethodBeat.o(225957);
-    return f;
-  }
-  
-  public static void I(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(150170);
-    if ("bizflag".equals(paramString))
-    {
-      if (paramBoolean)
-      {
-        iEW |= 0x1;
-        AppMethodBeat.o(150170);
-        return;
-      }
-      iEW &= 0xFFFFFFFE;
-    }
-    AppMethodBeat.o(150170);
-  }
-  
-  public static boolean J(ca paramca)
-  {
-    AppMethodBeat.i(150175);
-    if (paramca != null)
-    {
-      int i = P(paramca);
-      if ((paramca.isText()) && (i >= 3))
-      {
-        AppMethodBeat.o(150175);
-        return true;
-      }
-      if ((paramca.gAz()) && (i >= 2))
-      {
-        AppMethodBeat.o(150175);
-        return true;
-      }
-    }
-    AppMethodBeat.o(150175);
-    return false;
-  }
-  
-  public static boolean K(ca paramca)
-  {
-    AppMethodBeat.i(150176);
-    if (paramca != null)
-    {
-      int i = P(paramca);
-      if ((paramca.isText()) && (i > 3))
-      {
-        AppMethodBeat.o(150176);
-        return true;
-      }
-      if ((paramca.gAz()) && (i > 2))
-      {
-        AppMethodBeat.o(150176);
-        return true;
-      }
-    }
-    AppMethodBeat.o(150176);
-    return false;
-  }
-  
-  public static void KA(String paramString)
-  {
-    AppMethodBeat.i(150188);
-    Log.i("MicroMsg.MsgSourceHelper", "parseMsgSource  has been Deprecated  by dk. at 20151218 [%s] %s ", new Object[] { paramString, "" });
-    AppMethodBeat.o(150188);
-  }
-  
-  public static String KB(String paramString)
-  {
-    AppMethodBeat.i(163514);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(163514);
-      return null;
-    }
-    paramString = XmlParser.parseXml(paramString, "msgsource", null);
-    if (paramString != null)
-    {
-      paramString = (String)paramString.get(".msgsource.sec_msg_node.uuid");
-      AppMethodBeat.o(163514);
-      return paramString;
-    }
-    AppMethodBeat.o(163514);
-    return null;
-  }
-  
-  public static String KC(String paramString)
-  {
-    AppMethodBeat.i(163515);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(163515);
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("<msgsource><sec_msg_node><uuid>").append(paramString).append("</uuid></sec_msg_node></msgsource>");
-    paramString = localStringBuilder.toString();
-    AppMethodBeat.o(163515);
-    return paramString;
-  }
-  
-  public static void L(ca paramca)
-  {
-    AppMethodBeat.i(150177);
-    if ((paramca != null) && (!Util.isNullOrNil(paramca.fqK)))
-    {
-      Object localObject = XmlParser.parseXml(paramca.fqK, "msgsource", null);
-      if ((localObject != null) && (Util.safeParseInt((String)((Map)localObject).get(".msgsource.sec_msg_node.sfn")) == 1)) {
-        try
-        {
-          localObject = paramca.fqK.substring(paramca.fqK.indexOf("<sec_msg_node"), paramca.fqK.indexOf("</sec_msg_node") + 12 + 2);
-          Log.i("MicroMsg.MsgSourceHelper", (String)localObject);
-          if (!Util.isNullOrNil((String)localObject))
-          {
-            String str = ((String)localObject).substring(((String)localObject).indexOf("<sfn"), ((String)localObject).indexOf("</sfn") + 3 + 2);
-            paramca.BB(paramca.fqK.replace((CharSequence)localObject, ((String)localObject).replace(str, "<sfn>0<sfn/>")));
-          }
-          AppMethodBeat.o(150177);
-          return;
-        }
-        catch (Exception paramca)
-        {
-          Log.printErrStackTrace("MicroMsg.MsgSourceHelper", paramca, "resetShareForbidden msg exception", new Object[0]);
-        }
-      }
-    }
-    AppMethodBeat.o(150177);
-  }
-  
-  @Deprecated
-  public static String M(ca paramca)
-  {
-    AppMethodBeat.i(150178);
-    if ((paramca != null) && (!Util.isNullOrNil(paramca.fqK)))
-    {
-      paramca = XmlParser.parseXml(paramca.fqK, "msgsource", null);
-      if (paramca != null)
-      {
-        paramca = (String)paramca.get(".msgsource.sec_msg_node.show-h5");
-        if (!Util.isNullOrNil(paramca))
-        {
-          AppMethodBeat.o(150178);
-          return paramca;
-        }
-      }
-    }
-    AppMethodBeat.o(150178);
-    return "";
-  }
-  
-  public static String N(ca paramca)
-  {
-    AppMethodBeat.i(150179);
-    if ((paramca != null) && (!Util.isNullOrNil(paramca.fqK)))
-    {
-      paramca = XmlParser.parseXml(paramca.fqK, "msgsource", null);
-      if (paramca != null)
-      {
-        paramca = (String)paramca.get(".msgsource.sec_msg_node.share-tip-url");
-        if (!Util.isNullOrNil(paramca))
-        {
-          AppMethodBeat.o(150179);
-          return paramca;
-        }
-      }
-    }
-    AppMethodBeat.o(150179);
-    return "";
-  }
-  
-  public static int O(ca paramca)
-  {
-    AppMethodBeat.i(150180);
-    if ((paramca != null) && (!Util.isNullOrNil(paramca.fqK)))
-    {
-      paramca = XmlParser.parseXml(paramca.fqK, "msgsource", null);
-      if (paramca != null)
-      {
-        int i = Util.safeParseInt((String)paramca.get(".msgsource.sec_msg_node.clip-len"));
-        AppMethodBeat.o(150180);
-        return i;
-      }
-    }
-    AppMethodBeat.o(150180);
-    return 0;
-  }
-  
-  public static int P(ca paramca)
-  {
-    AppMethodBeat.i(150182);
-    if ((paramca != null) && (!Util.isNullOrNil(paramca.fqK)))
-    {
-      paramca = XmlParser.parseXml(paramca.fqK, "msgsource", null);
-      if (paramca != null)
-      {
-        int i = Util.safeParseInt((String)paramca.get(".msgsource.sec_msg_node.fold-reduce"));
-        AppMethodBeat.o(150182);
-        return i;
-      }
-    }
-    AppMethodBeat.o(150182);
-    return 0;
-  }
-  
-  public static boolean Q(ca paramca)
-  {
-    AppMethodBeat.i(225958);
-    if ((paramca != null) && (!Util.isNullOrNil(paramca.fqK)))
-    {
-      paramca = XmlParser.parseXml(paramca.fqK, "msgsource", null);
-      if (paramca != null)
-      {
-        if (Util.safeParseInt((String)paramca.get(".msgsource.sec_msg_node.block-range")) != 0)
-        {
-          AppMethodBeat.o(225958);
-          return true;
-        }
-        AppMethodBeat.o(225958);
-        return false;
-      }
-    }
-    AppMethodBeat.o(225958);
-    return false;
-  }
-  
-  public static void a(ca paramca, int paramInt)
-  {
-    AppMethodBeat.i(163510);
-    if ((paramca != null) && (!Util.isNullOrNil(paramca.fqK)))
-    {
-      Map localMap = XmlParser.parseXml(paramca.fqK, "msgsource", null);
-      if (localMap != null)
-      {
-        localMap.put(".msgsource.sec_msg_node.clip-len", String.valueOf(paramInt));
-        a(paramca, A(localMap));
-      }
-    }
-    AppMethodBeat.o(163510);
-  }
-  
-  public static void a(ca paramca, String paramString)
-  {
-    AppMethodBeat.i(163511);
-    if (paramca != null)
-    {
-      String str2 = paramca.fqK;
-      String str1;
-      if (!Util.isNullOrNil(str2))
-      {
-        str1 = str2;
-        if (str2.trim().startsWith("<msgsource>")) {}
-      }
-      else
-      {
-        str1 = "<msgsource></msgsource>";
-      }
-      paramca.BB(str1.replaceAll("(?s)<sec_msg_node[^>]*>.*?</sec_msg_node>", "").replace("</msgsource>", paramString + "</msgsource>"));
-      ((l)g.af(l.class)).eiy().b(paramca.field_msgSvrId, paramca);
-    }
-    AppMethodBeat.o(163511);
-  }
-  
-  public static String aVV()
-  {
-    AppMethodBeat.i(150171);
-    Object localObject = new StringBuilder();
-    if (iEW != 0)
-    {
-      ((StringBuilder)localObject).append("<");
-      ((StringBuilder)localObject).append("bizflag");
-      ((StringBuilder)localObject).append(">");
-      ((StringBuilder)localObject).append(iEW);
-      ((StringBuilder)localObject).append("</");
-      ((StringBuilder)localObject).append("bizflag");
-      ((StringBuilder)localObject).append(">");
-    }
-    localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(150171);
-    return localObject;
-  }
-  
-  public static String aVW()
-  {
-    AppMethodBeat.i(150187);
-    String str = (String)g.aAh().azQ().get(70, null);
-    if (!Util.isNullOrNil(str)) {
-      g.aAh().azQ().set(70, "");
-    }
-    Log.d("MicroMsg.MsgSourceHelper", "getMsg ccr[%s]", new Object[] { str });
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("<msgsource>");
-    localStringBuilder.append(Util.nullAsNil(str));
-    if (iEW != 0)
-    {
-      localStringBuilder.append("<");
-      localStringBuilder.append("bizflag");
-      localStringBuilder.append(">");
-      localStringBuilder.append(iEW);
-      localStringBuilder.append("</");
-      localStringBuilder.append("bizflag");
-      localStringBuilder.append(">");
-    }
-    localStringBuilder.append("</msgsource>");
-    str = localStringBuilder.toString();
-    if ("<msgsource></msgsource>".equals(str))
-    {
-      AppMethodBeat.o(150187);
-      return "";
-    }
-    Log.d("MicroMsg.MsgSourceHelper", "getAndResetMsgSrcIn msgsource[%s]", new Object[] { str });
-    AppMethodBeat.o(150187);
-    return str;
-  }
-  
-  public static String ajw()
-  {
-    AppMethodBeat.i(150173);
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(Util.nullAsNil(aVV()));
-    if (((StringBuilder)localObject).length() > 0)
-    {
-      ((StringBuilder)localObject).insert(0, "<msgsource>");
-      ((StringBuilder)localObject).append("</msgsource>");
-      localObject = ((StringBuilder)localObject).toString();
-      AppMethodBeat.o(150173);
-      return localObject;
-    }
-    AppMethodBeat.o(150173);
-    return null;
-  }
-  
-  public static void b(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    iEY = paramInt;
-    iEZ = paramFloat1;
-    iFa = paramFloat2;
-    iFb = paramFloat3;
-  }
-  
-  public static void b(ca paramca, String paramString)
-  {
-    AppMethodBeat.i(163512);
-    String str2 = paramca.fqK;
-    String str1;
-    if (!Util.isNullOrNil(str2))
-    {
-      str1 = str2;
-      if (str2.trim().startsWith("<msgsource>")) {}
-    }
-    else
-    {
-      str1 = "<msgsource></msgsource>";
-    }
-    paramca.BB(str1.replaceAll("(?s)<alnode[^>]*>.*?</alnode>", "").replace("</msgsource>", paramString + "</msgsource>"));
-    AppMethodBeat.o(163512);
-  }
-  
-  public static void d(long paramLong, String paramString)
-  {
-    AppMethodBeat.i(150183);
-    if ((paramLong > 0L) && (!Util.isNullOrNil(paramString))) {
-      iEX.put(Long.valueOf(paramLong), paramString);
-    }
-    AppMethodBeat.o(150183);
+    br localbr = luV;
+    AppMethodBeat.o(42977);
+    return localbr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.br
  * JD-Core Version:    0.7.0.1
  */

@@ -28,14 +28,23 @@ public class WXAPIFactory
   {
     AppMethodBeat.i(3766);
     Log.d("MicroMsg.PaySdk.WXFactory", "createWXAPI, appId = " + paramString + ", checkSignature = " + paramBoolean);
-    paramContext = new WXApiImplV10(paramContext, paramString, paramBoolean);
+    paramContext = createWXAPI(paramContext, paramString, paramBoolean, 2);
     AppMethodBeat.o(3766);
+    return paramContext;
+  }
+  
+  public static IWXAPI createWXAPI(Context paramContext, String paramString, boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(253793);
+    Log.d("MicroMsg.PaySdk.WXFactory", "createWXAPI, appId = " + paramString + ", checkSignature = " + paramBoolean + ", launchMode = " + paramInt);
+    paramContext = new WXApiImplV10(paramContext, paramString, paramBoolean, paramInt);
+    AppMethodBeat.o(253793);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.openapi.WXAPIFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -6,47 +6,47 @@ import com.tencent.mm.pluginsdk.model.app.al;
 final class JsApiLaunchApplicationDirectly$a
   implements al
 {
-  volatile boolean dQW;
-  volatile boolean iMQ;
-  a lAu;
-  volatile boolean lzY;
-  volatile boolean lzZ;
+  volatile boolean fKm;
+  volatile boolean lCY;
+  a ovL;
+  volatile boolean ovo;
+  volatile boolean ovp;
   
   JsApiLaunchApplicationDirectly$a(a parama)
   {
-    this.lAu = parama;
+    this.ovL = parama;
   }
   
-  final void hj(boolean paramBoolean)
+  final void hZ(boolean paramBoolean)
   {
     AppMethodBeat.i(45536);
-    this.dQW = paramBoolean;
-    this.lzZ = true;
-    if ((this.iMQ) && (this.lAu != null)) {
-      this.lAu.u(paramBoolean, this.lzY);
+    this.fKm = paramBoolean;
+    this.ovp = true;
+    if ((this.lCY) && (this.ovL != null)) {
+      this.ovL.x(paramBoolean, this.ovo);
     }
     AppMethodBeat.o(45536);
   }
   
-  public final void v(boolean paramBoolean1, boolean paramBoolean2)
+  public final void y(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(226674);
-    this.iMQ = true;
-    this.lzY = paramBoolean1;
-    if ((this.lzZ) && (this.lAu != null)) {
-      this.lAu.u(this.dQW, paramBoolean1);
+    AppMethodBeat.i(272830);
+    this.lCY = true;
+    this.ovo = paramBoolean1;
+    if ((this.ovp) && (this.ovL != null)) {
+      this.ovL.x(this.fKm, paramBoolean1);
     }
-    AppMethodBeat.o(226674);
+    AppMethodBeat.o(272830);
   }
   
   static abstract interface a
   {
-    public abstract void u(boolean paramBoolean1, boolean paramBoolean2);
+    public abstract void x(boolean paramBoolean1, boolean paramBoolean2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.JsApiLaunchApplicationDirectly.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,47 @@
 package com.tencent.mm.plugin.voip.video.camera.a;
 
 import android.graphics.SurfaceTexture;
-import com.tencent.mm.compatible.deviceinfo.ac;
+import com.tencent.mm.compatible.deviceinfo.ad;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/voip/video/camera/common/BaseCaptureRenderer;", "", "()V", "bind", "", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "exchangeCapture", "focusOnFace", "faceLocation", "", "isClickScreen", "", "getCameraErrCode", "", "getCurrentCameraIsFace", "getDisplayOrientation", "getPreviewSize", "Lcom/tencent/mm/compatible/deviceinfo/Size;", "getRotateAngle", "initCapture", "dataCallback", "Lcom/tencent/mm/plugin/voip/video/camera/common/ICaptureRenderListener;", "bFaceFirst", "isCameraRemote180", "isMirror", "isPreviewing", "onOrientationChange", "rotation", "setDisplayOrientation", "startCapture", "stopCapture", "plugin-voip_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/voip/video/camera/common/BaseCaptureRenderer;", "", "()V", "bind", "", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "exchangeCapture", "focusOnFace", "faceLocation", "", "isClickScreen", "", "getCameraErrCode", "", "getCurrentCameraIsFace", "getDisplayOrientation", "getPreviewSize", "Lcom/tencent/mm/compatible/deviceinfo/Size;", "getRotateAngle", "initCapture", "dataCallback", "Lcom/tencent/mm/plugin/voip/video/camera/common/ICaptureRenderListener;", "bFaceFirst", "isCameraRemote180", "isMirror", "isPreviewing", "onOrientationChange", "rotation", "setDisplayOrientation", "startCapture", "stopCapture", "plugin-voip_release"})
 public abstract class a
 {
-  public abstract int a(b paramb, boolean paramBoolean);
+  public abstract int a(c paramc, boolean paramBoolean);
   
-  public abstract boolean dEO();
+  public abstract void eXS();
   
-  public abstract void eoc();
+  public abstract boolean egx();
   
-  public abstract boolean fKY();
+  public abstract int gDA();
   
-  public abstract boolean fKZ();
+  public abstract int gDB();
   
-  public abstract int fLa();
+  public abstract ad gDC();
   
-  public abstract int fLb();
+  public abstract void gDD();
   
-  public abstract ac fLc();
+  public abstract int gDE();
   
-  public abstract void fLd();
+  public abstract boolean gDF();
   
-  public abstract int fLe();
+  public abstract void gDG();
   
-  public abstract boolean fLf();
+  public abstract int gDH();
   
-  public abstract void fLg();
+  public abstract void gDI();
   
-  public abstract int fLh();
+  public abstract boolean gDy();
   
-  public abstract void fLi();
+  public abstract boolean gDz();
   
   public abstract void onOrientationChange(int paramInt);
   
-  public abstract void q(SurfaceTexture paramSurfaceTexture);
+  public abstract void t(SurfaceTexture paramSurfaceTexture);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.camera.a.a
  * JD-Core Version:    0.7.0.1
  */

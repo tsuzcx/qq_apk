@@ -4,15 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.p.c;
-import com.tencent.mm.pluginsdk.j.a.c.k;
 
 public class WxaPkgLoadProgress
-  implements Parcelable, c, k
+  implements Parcelable
 {
   public static final Parcelable.Creator<WxaPkgLoadProgress> CREATOR;
-  public long kNs;
-  public long kNt;
+  public long nHs;
+  public long nHt;
   public int progress;
   
   static
@@ -25,40 +23,35 @@ public class WxaPkgLoadProgress
   public WxaPkgLoadProgress()
   {
     this.progress = 0;
-    this.kNs = -1L;
-    this.kNt = -1L;
+    this.nHs = -1L;
+    this.nHt = -1L;
   }
   
   public WxaPkgLoadProgress(int paramInt, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(230564);
+    AppMethodBeat.i(225473);
     this.progress = 0;
-    this.kNs = -1L;
-    this.kNt = -1L;
+    this.nHs = -1L;
+    this.nHt = -1L;
     this.progress = paramInt;
-    this.kNs = paramLong1;
-    this.kNt = paramLong2;
-    if ((this.progress <= 0) && (this.kNs > 0L) && (this.kNt > 0L)) {
-      this.progress = Math.max(Math.round((float)this.kNs / (float)this.kNt * 100.0F), 0);
+    this.nHs = paramLong1;
+    this.nHt = paramLong2;
+    if ((this.progress <= 0) && (this.nHs > 0L) && (this.nHt > 0L)) {
+      this.progress = Math.max(Math.round((float)this.nHs / (float)this.nHt * 100.0F), 0);
     }
-    AppMethodBeat.o(230564);
+    AppMethodBeat.o(225473);
   }
   
   protected WxaPkgLoadProgress(Parcel paramParcel)
   {
     AppMethodBeat.i(90640);
     this.progress = 0;
-    this.kNs = -1L;
-    this.kNt = -1L;
+    this.nHs = -1L;
+    this.nHt = -1L;
     this.progress = paramParcel.readInt();
-    this.kNs = paramParcel.readLong();
-    this.kNt = paramParcel.readLong();
+    this.nHs = paramParcel.readLong();
+    this.nHt = paramParcel.readLong();
     AppMethodBeat.o(90640);
-  }
-  
-  public final long bww()
-  {
-    return this.kNs;
   }
   
   public int describeContents()
@@ -66,20 +59,10 @@ public class WxaPkgLoadProgress
     return 0;
   }
   
-  public final int getProgress()
-  {
-    return this.progress;
-  }
-  
-  public final long getTotalLength()
-  {
-    return this.kNt;
-  }
-  
   public String toString()
   {
     AppMethodBeat.i(90641);
-    String str = "WxaPkgLoadProgress{progress=" + this.progress + ", writtenLength=" + this.kNs + ", totalLength=" + this.kNt + '}';
+    String str = "WxaPkgLoadProgress{progress=" + this.progress + ", writtenLength=" + this.nHs + ", totalLength=" + this.nHt + '}';
     AppMethodBeat.o(90641);
     return str;
   }
@@ -88,14 +71,14 @@ public class WxaPkgLoadProgress
   {
     AppMethodBeat.i(90642);
     paramParcel.writeInt(this.progress);
-    paramParcel.writeLong(this.kNs);
-    paramParcel.writeLong(this.kNt);
+    paramParcel.writeLong(this.nHs);
+    paramParcel.writeLong(this.nHt);
     AppMethodBeat.o(90642);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress
  * JD-Core Version:    0.7.0.1
  */

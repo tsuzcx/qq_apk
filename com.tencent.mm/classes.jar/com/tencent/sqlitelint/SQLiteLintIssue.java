@@ -101,19 +101,19 @@ public class SQLiteLintIssue
     switch (paramInt)
     {
     default: 
-      paramContext = paramContext.getString(2131758327);
+      paramContext = paramContext.getString(R.string.diagnosis_level_suggestion);
     }
     for (;;)
     {
       AppMethodBeat.o(52857);
       return paramContext;
-      paramContext = paramContext.getString(2131758328);
+      paramContext = paramContext.getString(R.string.diagnosis_level_tips);
       continue;
-      paramContext = paramContext.getString(2131758327);
+      paramContext = paramContext.getString(R.string.diagnosis_level_suggestion);
       continue;
-      paramContext = paramContext.getString(2131758329);
+      paramContext = paramContext.getString(R.string.diagnosis_level_warning);
       continue;
-      paramContext = paramContext.getString(2131758326);
+      paramContext = paramContext.getString(R.string.diagnosis_level_error);
     }
   }
   
@@ -169,7 +169,7 @@ public class SQLiteLintIssue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.sqlitelint.SQLiteLintIssue
  * JD-Core Version:    0.7.0.1
  */

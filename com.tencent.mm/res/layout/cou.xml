@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/h9a" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip">
+        <TextView android:textSize="20.0dip" android:textColor="@color/fm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="minDampingFactor:" />
+        <EditText android:textSize="20.0dip" android:textColor="@android:color/holo_red_dark" android:gravity="center_horizontal" android:id="@id/kw2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip">
+        <TextView android:textSize="20.0dip" android:textColor="@color/fm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="maxDampingFactor:" />
+        <EditText android:textSize="20.0dip" android:textColor="@android:color/holo_red_dark" android:gravity="center_horizontal" android:id="@id/kw0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip">
+        <TextView android:textSize="20.0dip" android:textColor="@color/fm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="minSpringDuration:" />
+        <EditText android:textSize="20.0dip" android:textColor="@android:color/holo_red_dark" android:gravity="center_horizontal" android:id="@id/kw3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip">
+        <TextView android:textSize="20.0dip" android:textColor="@color/fm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="maxSpringDuration:" />
+        <EditText android:textSize="20.0dip" android:textColor="@android:color/holo_red_dark" android:gravity="center_horizontal" android:id="@id/kw1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip">
+        <TextView android:textSize="20.0dip" android:textColor="@color/fm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="decelerateRatio:" />
+        <EditText android:textSize="20.0dip" android:textColor="@android:color/holo_red_dark" android:gravity="center_horizontal" android:id="@id/kvz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip">
+        <Button android:id="@id/g52" android:layout_marginRight="36.0dip" android:text="mode" style="@style/p3" />
+        <TextView android:textSize="@dimen/is" android:textColor="@color/fr" android:id="@id/kzp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="default" />
+    </LinearLayout>
+    <Button android:textSize="20.0dip" android:id="@id/af2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="ok" />
+</LinearLayout>

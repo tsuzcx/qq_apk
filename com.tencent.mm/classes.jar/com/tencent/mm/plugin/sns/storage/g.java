@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.sns.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.sns.model.aj;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.adp;
+import com.tencent.mm.protocal.protobuf.adw;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
@@ -14,18 +15,18 @@ import java.util.List;
 
 public final class g
 {
-  public static boolean JG(long paramLong)
+  public static boolean QZ(long paramLong)
   {
     int i = 2;
     int j = 0;
     AppMethodBeat.i(97447);
-    Object localObject = aj.faO().JJ(paramLong);
+    Object localObject = aj.fOI().Rd(paramLong);
     if (localObject == null)
     {
       AppMethodBeat.o(97447);
       return false;
     }
-    String[] arrayOfString = ((String)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.OgS, "")).split("&");
+    String[] arrayOfString = ((String)h.aHG().aHp().get(ar.a.Vvi, "")).split("&");
     boolean bool1;
     if ((arrayOfString.length > 0) && (Util.getBoolean(arrayOfString[0], false)))
     {
@@ -50,7 +51,7 @@ public final class g
       bool1 = false;
       break;
     }
-    if (((SnsInfo)localObject).getTimeLine().ContentObj.LoU == 15) {
+    if (((SnsInfo)localObject).getTimeLine().ContentObj.Sqq == 15) {
       if (!bool1) {
         bool1 = true;
       }
@@ -69,7 +70,7 @@ public final class g
       }
       AppMethodBeat.o(97447);
       return false;
-      if (((SnsInfo)localObject).getTimeLine().ContentObj.LoU != 1) {
+      if (((SnsInfo)localObject).getTimeLine().ContentObj.Sqq != 1) {
         break label313;
       }
       if (bool2) {
@@ -82,18 +83,18 @@ public final class g
     label313:
     AppMethodBeat.o(97447);
     return false;
-    com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OgS, ((StringBuilder)localObject).toString());
-    k(Long.valueOf(paramLong));
+    h.aHG().aHp().set(ar.a.Vvi, ((StringBuilder)localObject).toString());
+    l(Long.valueOf(paramLong));
     AppMethodBeat.o(97447);
     return true;
   }
   
-  public static void JH(long paramLong)
+  public static void Ra(long paramLong)
   {
     boolean bool2 = true;
     int j = 0;
     AppMethodBeat.i(97448);
-    Object localObject = ((String)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.OgS, "")).split("&");
+    Object localObject = ((String)h.aHG().aHp().get(ar.a.Vvi, "")).split("&");
     boolean bool1;
     if ((localObject.length > 0) && (Util.getBoolean(localObject[0], false)))
     {
@@ -126,7 +127,7 @@ public final class g
     if (localArrayList.size() > 0) {}
     for (localObject = (Long)localArrayList.get(0);; localObject = null)
     {
-      k((Long)localObject);
+      l((Long)localObject);
       localObject = new StringBuilder().append(bool1).append("&").append(bool2);
       i = j;
       while (i < localArrayList.size())
@@ -135,20 +136,20 @@ public final class g
         i += 1;
       }
     }
-    com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OgS, ((StringBuilder)localObject).toString());
+    h.aHG().aHp().set(ar.a.Vvi, ((StringBuilder)localObject).toString());
     AppMethodBeat.o(97448);
   }
   
-  public static void k(Long paramLong)
+  public static void l(Long paramLong)
   {
     AppMethodBeat.i(97449);
-    com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OgT, paramLong);
+    h.aHG().aHp().set(ar.a.Vvj, paramLong);
     AppMethodBeat.o(97449);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.g
  * JD-Core Version:    0.7.0.1
  */

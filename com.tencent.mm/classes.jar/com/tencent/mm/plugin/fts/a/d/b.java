@@ -10,26 +10,26 @@ import java.util.List;
 public abstract class b
   implements e
 {
-  protected Context context;
-  protected int mve;
-  public e.b wXC;
+  private e.b BJy;
+  private Context context;
+  private int ptD;
   
   public b(Context paramContext, e.b paramb, int paramInt)
   {
     this.context = paramContext;
-    this.wXC = paramb;
-    this.mve = paramInt;
+    this.BJy = paramb;
+    this.ptD = paramInt;
   }
   
-  protected static boolean eP(List<? extends Object> paramList)
+  protected static boolean ff(List<? extends Object> paramList)
   {
     return (paramList != null) && (paramList.size() > 0);
   }
   
-  protected static <T> List<T> eQ(List<T> paramList)
+  protected static <T> List<T> fg(List<T> paramList)
   {
     Object localObject = paramList;
-    if (eP(paramList))
+    if (ff(paramList))
     {
       localObject = paramList;
       if (paramList.size() > 3) {
@@ -39,7 +39,7 @@ public abstract class b
     return localObject;
   }
   
-  public List<c> GE(long paramLong)
+  public List<c> NG(long paramLong)
   {
     return new ArrayList();
   }
@@ -49,14 +49,29 @@ public abstract class b
     return false;
   }
   
-  public int dOF()
+  public int eqW()
   {
     return 0;
+  }
+  
+  public final e.b eqX()
+  {
+    return this.BJy;
+  }
+  
+  protected final int eqY()
+  {
+    return this.ptD;
+  }
+  
+  protected final Context getContext()
+  {
+    return this.context;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.d.b
  * JD-Core Version:    0.7.0.1
  */

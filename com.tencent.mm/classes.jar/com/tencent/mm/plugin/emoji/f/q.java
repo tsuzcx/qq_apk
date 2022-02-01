@@ -1,20 +1,22 @@
 package com.tencent.mm.plugin.emoji.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q.b;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q.b;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.emoji.a.a.f;
-import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bso;
-import com.tencent.mm.protocal.protobuf.bsp;
+import com.tencent.mm.plugin.emoji.model.l;
+import com.tencent.mm.protocal.protobuf.akh;
+import com.tencent.mm.protocal.protobuf.cai;
+import com.tencent.mm.protocal.protobuf.caj;
+import com.tencent.mm.protocal.protobuf.eae;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,14 +24,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class q
-  extends com.tencent.mm.ak.q
+  extends com.tencent.mm.an.q
   implements m
 {
   private i callback;
   private int mScene;
-  public byte[] rcY;
-  private int rdk;
   private final d rr;
+  public byte[] uGe;
+  private int uGq;
   
   public q(int paramInt, byte[] paramArrayOfByte)
   {
@@ -39,79 +41,84 @@ public final class q
   private q(int paramInt, byte[] paramArrayOfByte, byte paramByte)
   {
     AppMethodBeat.i(108715);
-    this.rcY = null;
+    this.uGe = null;
     d.a locala = new d.a();
-    locala.iLN = new bso();
-    locala.iLO = new bsp();
+    locala.lBU = new cai();
+    locala.lBV = new caj();
     locala.uri = "/cgi-bin/micromsg-bin/mmgetpersonaldesigner";
     locala.funcId = 720;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    this.rdk = paramInt;
-    this.rcY = paramArrayOfByte;
+    this.rr = locala.bgN();
+    this.uGq = paramInt;
+    this.uGe = paramArrayOfByte;
     this.mScene = 0;
     AppMethodBeat.o(108715);
   }
   
-  public static com.tencent.mm.plugin.emoji.model.g a(bsp parambsp)
+  public static l a(caj paramcaj)
   {
     AppMethodBeat.i(108718);
     Log.d("MicroMsg.emoji.NetSceneGetPersonalDesigner", "getEmotionListModel");
-    if (parambsp == null)
+    if (paramcaj == null)
     {
       AppMethodBeat.o(108718);
       return null;
     }
-    com.tencent.mm.plugin.emoji.model.g localg = new com.tencent.mm.plugin.emoji.model.g();
-    if ((parambsp != null) && (parambsp.EmotionList != null))
+    l locall = new l();
+    if ((paramcaj != null) && (paramcaj.Tek != null))
     {
-      localg.rbs = parambsp.EmotionList.size();
+      locall.uEw = paramcaj.Tek.size();
       ArrayList localArrayList = new ArrayList();
-      parambsp = parambsp.EmotionList.iterator();
-      while (parambsp.hasNext())
+      paramcaj = paramcaj.Tek.iterator();
+      while (paramcaj.hasNext())
       {
-        EmotionSummary localEmotionSummary = (EmotionSummary)parambsp.next();
-        if (localEmotionSummary.ProductID != null) {
-          localArrayList.add(new f(localEmotionSummary));
+        akh localakh = (akh)paramcaj.next();
+        if (localakh.ProductID != null) {
+          localArrayList.add(new f(localakh));
         }
       }
-      localg.rbt = localArrayList;
+      locall.uEx = localArrayList;
     }
     AppMethodBeat.o(108718);
-    return localg;
+    return locall;
   }
   
-  public final bsp cGA()
+  public final caj cVj()
   {
-    if (this.rr == null) {
+    AppMethodBeat.i(257981);
+    if (this.rr == null)
+    {
+      AppMethodBeat.o(257981);
       return null;
     }
-    return (bsp)this.rr.iLL.iLR;
+    caj localcaj = (caj)d.c.b(this.rr.lBS);
+    AppMethodBeat.o(257981);
+    return localcaj;
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(108717);
     this.callback = parami;
-    parami = (bso)this.rr.iLK.iLR;
-    parami.DesignerUin = this.rdk;
-    if (this.rcY != null)
+    parami = (cai)d.b.b(this.rr.lBR);
+    parami.TdG = this.uGq;
+    if (this.uGe != null)
     {
-      parami.ReqBuf = z.aC(this.rcY);
-      parami.Scene = this.mScene;
-      if (parami.ReqBuf != null) {
+      parami.RJA = z.aN(this.uGe);
+      parami.CPw = this.mScene;
+      if (parami.RJA != null) {
         break label106;
       }
     }
     label106:
-    for (parami = "Buf is NULL";; parami = parami.ReqBuf.toString())
+    for (parami = "Buf is NULL";; parami = parami.RJA.toString())
     {
       Log.d("MicroMsg.emoji.NetSceneGetPersonalDesigner", parami);
       int i = dispatch(paramg, this.rr, this);
       AppMethodBeat.o(108717);
       return i;
-      parami.ReqBuf = new SKBuiltinBuffer_t();
+      parami.RJA = new eae();
       break;
     }
   }
@@ -125,9 +132,9 @@ public final class q
   {
     AppMethodBeat.i(108716);
     Log.i("MicroMsg.emoji.NetSceneGetPersonalDesigner", "NetSceneGetPersonalDesigner errType:%d,errcode:%d,errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    params = (bsp)((d)params).iLL.iLR;
-    if (params.ReqBuf != null) {
-      this.rcY = z.a(params.ReqBuf);
+    params = (caj)d.c.b(((d)params).lBS);
+    if (params.RJA != null) {
+      this.uGe = z.a(params.RJA);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(108716);
@@ -140,12 +147,12 @@ public final class q
   
   public final q.b securityVerificationChecked(s params)
   {
-    return q.b.iMq;
+    return q.b.lCx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.f.q
  * JD-Core Version:    0.7.0.1
  */

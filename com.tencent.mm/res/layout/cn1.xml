@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/i0"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/iqp" android:paddingTop="@dimen/cb" android:paddingBottom="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/i0">
+        <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:paddingLeft="@dimen/ih" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center_vertical" android:id="@android:id/icon" android:layout_width="@dimen/ba" android:layout_height="@dimen/ba" android:layout_marginRight="@dimen/k" android:scaleType="fitCenter" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="@dimen/cb" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:src="@raw/icons_outlined_nearby_person_divider" app:iconColor="@color/FG_2" />
+            <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" android:singleLine="false" style="@style/mi" />
+                <TextView android:textSize="@dimen/kc" android:textColor="@color/ag2" android:gravity="center" android:id="@id/iou" android:padding="@dimen/k5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k" android:minWidth="40.0dip" android:singleLine="true" style="@style/mk" />
+            </LinearLayout>
+            <include android:gravity="center|right" layout="@layout/b8r" />
+        </LinearLayout>
+        <TextView android:gravity="left" android:id="@android:id/summary" android:paddingLeft="@dimen/ih" android:paddingRight="@dimen/ih" android:layout_marginTop="@dimen/k5" android:layout_marginBottom="@dimen/k5" style="@style/m0" />
+    </LinearLayout>
+</LinearLayout>

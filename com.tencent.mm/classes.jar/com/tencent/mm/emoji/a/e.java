@@ -1,504 +1,444 @@
 package com.tencent.mm.emoji.a;
 
-import android.content.Context;
-import android.graphics.PointF;
-import android.graphics.drawable.Drawable;
+import android.graphics.RectF;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.gif.MMAnimateView;
+import com.tencent.mm.f.b.a.o;
 import com.tencent.mm.plugin.gif.MMGIFException;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ca;
 import com.tencent.mm.ui.widget.MMNeat7extView;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 import kotlin.g.b.p;
+import kotlin.l;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/egg/EmojiDynamicController;", "", "()V", "chatId", "", "getChatId", "()Ljava/lang/String;", "setChatId", "(Ljava/lang/String;)V", "holderCallback", "Lcom/tencent/mm/emoji/egg/EmojiAnimViewHolder$AnimCallback;", "holderPool", "Lcom/tencent/mm/emoji/egg/EmojiAnimViewPool;", "rootLocation", "", "rootView", "Landroid/widget/FrameLayout;", "getRootView", "()Landroid/widget/FrameLayout;", "setRootView", "(Landroid/widget/FrameLayout;)V", "stateCallback", "Lcom/tencent/mm/emoji/egg/EmojiDynamicController$StateCallback;", "getStateCallback", "()Lcom/tencent/mm/emoji/egg/EmojiDynamicController$StateCallback;", "setStateCallback", "(Lcom/tencent/mm/emoji/egg/EmojiDynamicController$StateCallback;)V", "checkMatch", "", "msgInfo", "Lcom/tencent/mm/storage/MsgInfo;", "checkRevoke", "", "onStop", "setPlayingKey", "itemHolder", "Lcom/tencent/mm/emoji/egg/EmojiAnimViewHolder;", "emojiKey", "updateItemView", "viewProvider", "Lcom/tencent/mm/emoji/egg/ChattingViewProvider;", "Companion", "StateCallback", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/egg/EmojiDynamicController;", "", "()V", "chatId", "", "getChatId", "()Ljava/lang/String;", "setChatId", "(Ljava/lang/String;)V", "holderCallback", "Lcom/tencent/mm/emoji/egg/EmojiAnimViewHolder$AnimCallback;", "holderPool", "Lcom/tencent/mm/emoji/egg/EmojiAnimViewPool;", "rootLocation", "", "rootView", "Landroid/widget/FrameLayout;", "getRootView", "()Landroid/widget/FrameLayout;", "setRootView", "(Landroid/widget/FrameLayout;)V", "stateCallback", "Lcom/tencent/mm/emoji/egg/EmojiDynamicController$StateCallback;", "getStateCallback", "()Lcom/tencent/mm/emoji/egg/EmojiDynamicController$StateCallback;", "setStateCallback", "(Lcom/tencent/mm/emoji/egg/EmojiDynamicController$StateCallback;)V", "checkMatch", "", "msgInfo", "Lcom/tencent/mm/storage/MsgInfo;", "checkMatchPatMsg", "", "playedIndex", "checkRevoke", "", "createHolder", "Lcom/tencent/mm/emoji/egg/EmojiAnimViewHolder;", "index", "animKey", "content", "emojiKey", "onStop", "setPlayingKey", "itemHolder", "updateItemView", "viewProvider", "Lcom/tencent/mm/emoji/egg/ChattingViewProvider;", "Companion", "StateCallback", "plugin-emojisdk_release"})
 public final class e
 {
   private static final String TAG = "MicroMsg.EmojiDynamicController";
-  public static final e.a gVu;
-  public FrameLayout gUY;
-  public final d gVq;
-  private final c.a gVr;
-  public String gVs;
-  public b gVt;
-  private final int[] osr;
+  public static final e.a jGq;
+  public FrameLayout jFQ;
+  private final int[] jGl;
+  public final d jGm;
+  private final c.a jGn;
+  public String jGo;
+  public b jGp;
   
   static
   {
-    AppMethodBeat.i(199893);
-    gVu = new e.a((byte)0);
+    AppMethodBeat.i(228530);
+    jGq = new e.a((byte)0);
     TAG = "MicroMsg.EmojiDynamicController";
-    AppMethodBeat.o(199893);
+    AppMethodBeat.o(228530);
   }
   
   public e()
   {
-    AppMethodBeat.i(199892);
-    this.osr = new int[2];
-    this.gVq = new d();
-    this.gVr = ((c.a)new c.a()
+    AppMethodBeat.i(228528);
+    this.jGl = new int[2];
+    this.jGm = new d();
+    this.jGn = ((c.a)new c.a()
     {
-      public final void a(long paramAnonymousLong, b.b paramAnonymousb)
+      public final void a(long paramAnonymousLong, String paramAnonymousString, b.a paramAnonymousa)
       {
-        AppMethodBeat.i(199888);
-        p.h(paramAnonymousb, "effect");
-        e.b localb = this.gVv.gVt;
+        AppMethodBeat.i(226329);
+        p.k(paramAnonymousString, "animKey");
+        p.k(paramAnonymousa, "config");
+        e.b localb = this.jGr.jGp;
         if (localb != null)
         {
-          localb.a(paramAnonymousLong, paramAnonymousb);
-          AppMethodBeat.o(199888);
+          localb.a(paramAnonymousLong, paramAnonymousString, paramAnonymousa);
+          AppMethodBeat.o(226329);
           return;
         }
-        AppMethodBeat.o(199888);
-      }
-      
-      public final void a(b.b paramAnonymousb)
-      {
-        AppMethodBeat.i(199887);
-        p.h(paramAnonymousb, "effect");
-        e.b localb = this.gVv.gVt;
-        if (localb != null)
-        {
-          localb.a(paramAnonymousb);
-          AppMethodBeat.o(199887);
-          return;
-        }
-        AppMethodBeat.o(199887);
+        AppMethodBeat.o(226329);
       }
       
       public final void a(c paramAnonymousc)
       {
-        AppMethodBeat.i(199886);
-        p.h(paramAnonymousc, "holder");
-        e.a(this.gVv).b(paramAnonymousc);
-        AppMethodBeat.o(199886);
+        AppMethodBeat.i(226327);
+        p.k(paramAnonymousc, "holder");
+        e.a(this.jGr).b(paramAnonymousc);
+        AppMethodBeat.o(226327);
+      }
+      
+      public final void a(String paramAnonymousString, b.a paramAnonymousa)
+      {
+        AppMethodBeat.i(226328);
+        p.k(paramAnonymousString, "animKey");
+        p.k(paramAnonymousa, "config");
+        e.b localb = this.jGr.jGp;
+        if (localb != null)
+        {
+          localb.a(paramAnonymousString, paramAnonymousa);
+          AppMethodBeat.o(226328);
+          return;
+        }
+        AppMethodBeat.o(226328);
       }
     });
-    AppMethodBeat.o(199892);
+    AppMethodBeat.o(228528);
+  }
+  
+  private final c a(ca paramca, int paramInt, String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(228526);
+    Object localObject = this.jGm;
+    paramca.apG();
+    localObject = ((d)localObject).aBo();
+    ((c)localObject).msgId = paramca.apG();
+    ((c)localObject).LD(paramString1);
+    ((c)localObject).jFP = paramInt;
+    ((c)localObject).msgType = paramca.getType();
+    ((c)localObject).jFQ = this.jFQ;
+    ((c)localObject).jGc = this.jGn;
+    if (paramca.apA() == 1)
+    {
+      ((c)localObject).jGb = new o();
+      paramca = ((c)localObject).jGb;
+      if (paramca != null)
+      {
+        paramString1 = com.tencent.mm.emoji.c.a.jNj;
+        if (com.tencent.mm.emoji.c.a.aCX())
+        {
+          paramInt = 1;
+          paramca.kY(paramInt);
+        }
+      }
+      else
+      {
+        paramca = com.tencent.mm.emoji.c.a.jNj;
+        com.tencent.mm.emoji.c.a.eA(false);
+      }
+    }
+    else
+    {
+      paramca = ((c)localObject).jGb;
+      if (paramca != null) {
+        paramca.iI(this.jGo);
+      }
+      paramca = ((c)localObject).jGb;
+      if (paramca != null) {
+        paramca.iH(paramString2);
+      }
+      if (a((c)localObject, paramString3)) {
+        break label226;
+      }
+      paramca = ((c)localObject).jGb;
+      if (paramca != null) {
+        paramca.kW(2);
+      }
+      paramca = ((c)localObject).jGb;
+      if (paramca != null) {
+        paramca.bpa();
+      }
+      this.jGm.b((c)localObject);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(228526);
+      return localObject;
+      paramInt = 0;
+      break;
+      label226:
+      paramca = ((c)localObject).jGb;
+      if (paramca != null) {
+        paramca.kW(1);
+      }
+    }
+  }
+  
+  private static boolean a(c paramc, String paramString)
+  {
+    AppMethodBeat.i(228508);
+    p.k(paramc, "itemHolder");
+    p.k(paramString, "emojiKey");
+    Log.i(TAG, "setPlayingKey: ".concat(String.valueOf(paramString)));
+    Object localObject1 = f.jGv;
+    Object localObject2 = ((Iterable)f.aBp().jFL).iterator();
+    for (;;)
+    {
+      if (((Iterator)localObject2).hasNext())
+      {
+        localObject1 = ((Iterator)localObject2).next();
+        if (p.h(((b.a)localObject1).key, paramString))
+        {
+          paramString = (String)localObject1;
+          paramString = (b.a)paramString;
+          if (paramString == null) {
+            break label402;
+          }
+          localObject1 = new StringBuilder();
+          localObject2 = com.tencent.mm.emoji.e.a.jPz;
+          localObject1 = com.tencent.mm.emoji.e.a.aDE() + paramString.jFM;
+          if (!u.agG((String)localObject1)) {
+            break label388;
+          }
+          p.k(paramString, "config");
+          p.k(localObject1, "filePath");
+          paramc.jFW = paramString;
+          paramString = paramc.jFW;
+          if ((paramString != null) && (paramString.jFN != null))
+          {
+            localObject2 = paramc.jGc;
+            if (localObject2 != null) {
+              ((c.a)localObject2).a(paramc.jFO, paramString);
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        paramc.jFU = new com.tencent.mm.plugin.gif.h(u.aY((String)localObject1, 0, -1));
+        if (paramc.jFU == null) {
+          continue;
+        }
+        paramString = paramc.jGb;
+        if (paramString != null) {
+          paramString.kX(1);
+        }
+      }
+      catch (Exception paramString)
+      {
+        Log.printErrStackTrace(paramc.TAG, (Throwable)paramString, "create anim", new Object[0]);
+        if (!(paramString instanceof MMGIFException)) {
+          continue;
+        }
+        com.tencent.mm.plugin.report.service.h.IzE.el(711, 21);
+        paramString = paramc.jGb;
+        if (paramString == null) {
+          continue;
+        }
+        paramString.kX(2);
+        paramString = paramc.jGb;
+        if (paramString == null) {
+          continue;
+        }
+        paramString.agM();
+        continue;
+        int i = 1;
+        continue;
+      }
+      paramString = paramc.jFU;
+      if (paramString == null) {
+        continue;
+      }
+      i = paramString.eAY();
+      paramString = paramc.jFU;
+      if (paramString != null) {
+        paramString.Uh(i);
+      }
+      paramString = paramc.jFU;
+      if (paramString != null) {
+        paramString.pI();
+      }
+      paramc = paramc.jFU;
+      if (paramc != null) {
+        paramc.pause();
+      }
+      AppMethodBeat.o(228508);
+      return true;
+      paramString = null;
+      break;
+      paramString = paramc.jGb;
+      if (paramString != null) {
+        paramString.kX(2);
+      }
+    }
+    label388:
+    paramc = f.jGv;
+    f.a.aBu();
+    for (;;)
+    {
+      AppMethodBeat.o(228508);
+      return false;
+      label402:
+      Log.i(TAG, "setPlayingKey: no config");
+    }
+  }
+  
+  public final int a(ca paramca, int paramInt)
+  {
+    AppMethodBeat.i(228488);
+    p.k(paramca, "msgInfo");
+    Object localObject1 = f.jGv;
+    localObject1 = f.a.t(paramca);
+    if (((Collection)localObject1).isEmpty()) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(228488);
+      return 0;
+    }
+    int j = ((List)localObject1).size();
+    if (paramInt < j)
+    {
+      String str1 = (String)((List)localObject1).get(paramInt);
+      String str2 = com.tencent.mm.plugin.emoji.i.b.avg(str1);
+      Object localObject2 = (CharSequence)str2;
+      if ((localObject2 == null) || (((CharSequence)localObject2).length() == 0)) {}
+      for (i = 1;; i = 0)
+      {
+        if (i == 0)
+        {
+          localObject2 = paramca.apG() + '_' + paramInt;
+          Log.i(TAG, "checkMatchPatMsg: ".concat(String.valueOf(localObject2)));
+          if (this.jGm.LE((String)localObject2) == null) {
+            a(paramca, paramInt, (String)localObject2, str1, str2);
+          }
+        }
+        paramInt += 1;
+        break;
+      }
+    }
+    paramInt = ((List)localObject1).size();
+    AppMethodBeat.o(228488);
+    return paramInt;
   }
   
   public final void a(a parama)
   {
-    AppMethodBeat.i(199891);
-    p.h(parama, "viewProvider");
-    Object localObject1;
-    if (this.gVq.gVo.size() > 0)
+    AppMethodBeat.i(228519);
+    p.k(parama, "viewProvider");
+    Object localObject;
+    if (this.jGm.jGk.size() > 0)
     {
-      localObject1 = this.gUY;
-      if (localObject1 != null) {
-        ((FrameLayout)localObject1).getLocationInWindow(this.osr);
+      localObject = this.jFQ;
+      if (localObject != null) {
+        ((FrameLayout)localObject).getLocationInWindow(this.jGl);
       }
     }
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = ((Iterable)this.gVq.gVo).iterator();
-    label157:
-    label289:
-    label337:
-    label853:
-    label856:
-    label879:
+    Iterator localIterator = ((Iterable)this.jGm.jGk).iterator();
+    label165:
+    label335:
+    label348:
+    label371:
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
-      localObject1 = parama.zh(localc.msgId);
+      localObject = parama.Fl(localc.msgId);
       boolean bool;
-      Object localObject2;
-      int i;
-      float f1;
-      float f2;
-      float f3;
-      float f4;
-      if (localObject1 != null)
+      if (localObject != null)
       {
-        bool = localc.b(parama.ck((View)localObject1));
-        localObject2 = this.osr;
-        p.h(localObject2, "rootLocation");
-        MMNeat7extView localMMNeat7extView = localc.gVa;
+        bool = localc.b(parama.c((View)localObject, localc.jFO));
+        int[] arrayOfInt1 = this.jGl;
+        p.k(arrayOfInt1, "rootLocation");
+        MMNeat7extView localMMNeat7extView = localc.jFS;
         if (localMMNeat7extView != null)
         {
-          localObject1 = localMMNeat7extView.getLayout();
-          if (localObject1 == null) {
-            break label856;
+          localObject = localMMNeat7extView.getLayout();
+          if (localObject == null) {
+            break label348;
           }
-          i = (int)((com.tencent.neattextview.textview.layout.a)localObject1).getLineWidth(0);
-          localObject1 = a.gUT;
-          localObject1 = a.a.a(localMMNeat7extView);
-          int[] arrayOfInt = new int[2];
-          localMMNeat7extView.getLocationInWindow(arrayOfInt);
-          int j = arrayOfInt[0];
-          int k = localObject2[0];
-          int m = arrayOfInt[1];
-          int n = localObject2[1];
-          f1 = ((PointF)localObject1).x;
-          f2 = j - k;
-          f3 = ((PointF)localObject1).y;
-          f4 = m - n;
-          if (localc.gVb != null) {
-            break label289;
+          localObject = a.jFJ;
+          localObject = a.a.a(localMMNeat7extView);
+          int[] arrayOfInt2 = new int[2];
+          localMMNeat7extView.getLocationInWindow(arrayOfInt2);
+          int i = arrayOfInt2[0] - arrayOfInt1[0];
+          int j = arrayOfInt2[1] - arrayOfInt1[1];
+          if (!((RectF)localObject).isEmpty()) {
+            break label335;
           }
-          Log.i(localc.TAG, "updateView: no drawable");
+          localMMNeat7extView.post((Runnable)new c.e(localc, localMMNeat7extView, i, j));
+          ((RectF)localObject).set(localc.jFV);
+          float f1 = ((RectF)localObject).centerX();
+          float f2 = i;
+          float f3 = localMMNeat7extView.getPaddingLeft();
+          float f4 = ((RectF)localObject).centerY();
+          localc.c(f1 + f2 + f3, j + f4 + localMMNeat7extView.getPaddingTop(), (int)((RectF)localObject).width());
         }
       }
       for (;;)
       {
         if (!bool) {
-          break label879;
+          break label371;
         }
         localArrayList.add(localc);
         break;
-        localObject1 = null;
-        break label157;
-        if (localc.gUY == null)
-        {
-          Log.i(localc.TAG, "updateView: no rootView");
-        }
-        else
-        {
-          if (localc.gUZ == null)
-          {
-            localObject1 = localc.gUY;
-            if (localObject1 == null) {
-              break label782;
-            }
-            localObject1 = ((FrameLayout)localObject1).getContext();
-            localc.gUZ = new MMAnimateView((Context)localObject1);
-            localObject1 = localc.gUY;
-            if (localObject1 != null) {
-              ((FrameLayout)localObject1).addView((View)localc.gUZ, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(i, i));
-            }
-            localObject1 = localc.gUZ;
-            if (localObject1 != null) {
-              ((MMAnimateView)localObject1).setVisibility(8);
-            }
-          }
-          localObject1 = localc.gUZ;
-          if (localObject1 != null)
-          {
-            localObject1 = ((MMAnimateView)localObject1).getLayoutParams();
-            localObject1 = (FrameLayout.LayoutParams)localObject1;
-            if (localObject1 != null) {
-              break label794;
-            }
-            localObject1 = new FrameLayout.LayoutParams(i, i);
-            localObject2 = localc.gUZ;
-            if (localObject2 != null) {
-              ((MMAnimateView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-            }
-          }
-          for (;;)
-          {
-            localObject1 = localc.gUZ;
-            if (localObject1 != null) {
-              ((MMAnimateView)localObject1).setTranslationX(f2 + f1 - i / 2);
-            }
-            localObject1 = localc.gUZ;
-            if (localObject1 != null) {
-              ((MMAnimateView)localObject1).setTranslationY(f3 + f4 - i / 2);
-            }
-            if (localc.gVd) {
-              break label853;
-            }
-            localObject1 = localc.gVi;
-            if (localObject1 != null) {
-              ((com.tencent.mm.g.b.a.l)localObject1).bfK();
-            }
-            localObject1 = localc.gUY;
-            if ((localObject1 != null) && (((FrameLayout)localObject1).getVisibility() == 8))
-            {
-              localObject1 = localc.gUY;
-              if (localObject1 != null) {
-                ((FrameLayout)localObject1).setVisibility(0);
-              }
-            }
-            localObject1 = localc.gUZ;
-            if ((localObject1 != null) && (((MMAnimateView)localObject1).getVisibility() == 8))
-            {
-              localObject1 = localc.gUZ;
-              if (localObject1 != null) {
-                ((MMAnimateView)localObject1).setVisibility(0);
-              }
-            }
-            localObject1 = localc.gUZ;
-            if (localObject1 != null) {
-              ((MMAnimateView)localObject1).setImageDrawable((Drawable)localc.gVb);
-            }
-            com.tencent.mm.ac.d.C(localc.gVg);
-            localObject1 = localc.gVc;
-            if (localObject1 != null)
-            {
-              localObject1 = ((b.a)localObject1).gUX;
-              if ((localObject1 != null) && (((b.b)localObject1).delay >= 0)) {
-                com.tencent.mm.ac.d.a(((b.b)localObject1).delay, localc.gVg);
-              }
-            }
-            localc.gVd = true;
-            com.tencent.mm.ac.d.C(localc.gVh);
-            localObject1 = localc.gUZ;
-            if (localObject1 == null) {
-              break label853;
-            }
-            ((MMAnimateView)localObject1).animate().scaleX(1.5F).scaleY(1.5F).setDuration(0L).withEndAction((Runnable)new c.d((MMAnimateView)localObject1, localc));
-            break;
-            localObject1 = null;
-            break label337;
-            localObject1 = null;
-            break label428;
-            if ((((FrameLayout.LayoutParams)localObject1).width != i) || (((FrameLayout.LayoutParams)localObject1).height != i))
-            {
-              ((FrameLayout.LayoutParams)localObject1).width = i;
-              ((FrameLayout.LayoutParams)localObject1).height = i;
-              localObject2 = localc.gUZ;
-              if (localObject2 != null) {
-                ((MMAnimateView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-              }
-            }
-          }
-          continue;
-          Log.i(localc.TAG, "updateView: no layout");
-          continue;
-          bool = localc.b(null);
-        }
+        localObject = null;
+        break label165;
+        localc.jFV.set((RectF)localObject);
+        break label258;
+        Log.i(localc.TAG, "updateView: no layout");
+        continue;
+        bool = localc.b(null);
       }
     }
-    label428:
+    label258:
     parama = ((Iterable)localArrayList).iterator();
-    label782:
-    label794:
     while (parama.hasNext())
     {
-      localObject1 = (c)parama.next();
-      this.gVq.b((c)localObject1);
+      localObject = (c)parama.next();
+      this.jGm.b((c)localObject);
     }
-    AppMethodBeat.o(199891);
+    AppMethodBeat.o(228519);
   }
   
   public final void onStop()
   {
-    AppMethodBeat.i(199890);
-    Log.i(TAG, "onStop: " + this.gVq.gVo.size());
-    Iterator localIterator = ((Iterable)this.gVq.gVo).iterator();
+    AppMethodBeat.i(228491);
+    Log.i(TAG, "onStop: " + this.jGm.jGk.size());
+    Iterator localIterator = ((Iterable)this.jGm.jGk).iterator();
     while (localIterator.hasNext()) {
       ((c)localIterator.next()).stop();
     }
-    this.gVq.gVo.clear();
-    AppMethodBeat.o(199890);
+    this.jGm.jGk.clear();
+    AppMethodBeat.o(228491);
   }
   
-  public final boolean q(ca paramca)
+  public final boolean r(ca paramca)
   {
-    AppMethodBeat.i(199889);
-    p.h(paramca, "msgInfo");
-    Object localObject1 = f.gVz;
-    Object localObject3 = f.a.r(paramca);
-    localObject1 = (CharSequence)localObject3;
-    if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
+    AppMethodBeat.i(228479);
+    p.k(paramca, "msgInfo");
+    Object localObject = f.jGv;
+    String str = f.a.s(paramca);
+    localObject = (CharSequence)str;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(199889);
+      AppMethodBeat.o(228479);
       return false;
     }
-    Object localObject2 = com.tencent.mm.plugin.emoji.h.b.anj((String)localObject3);
-    localObject1 = (CharSequence)localObject2;
-    if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0))
+    if (paramca.hzL())
     {
-      i = 1;
-      if (i == 0)
-      {
-        Object localObject4 = this.gVq;
-        long l = paramca.ajL();
-        localObject1 = new c();
-        ((c)localObject1).msgId = l;
-        ((d)localObject4).gVo.add(localObject1);
-        ((c)localObject1).msgId = paramca.ajL();
-        ((c)localObject1).gUY = this.gUY;
-        ((c)localObject1).gVj = this.gVr;
-        if (paramca.ajN() == 1)
-        {
-          ((c)localObject1).gVi = new com.tencent.mm.g.b.a.l();
-          paramca = ((c)localObject1).gVi;
-          if (paramca != null)
-          {
-            localObject4 = com.tencent.mm.emoji.c.a.hbZ;
-            if (!com.tencent.mm.emoji.c.a.avY()) {
-              break label619;
-            }
-            i = 1;
-            label207:
-            paramca.jE(i);
-          }
-          paramca = com.tencent.mm.emoji.c.a.hbZ;
-          com.tencent.mm.emoji.c.a.ed(false);
-        }
-        paramca = ((c)localObject1).gVi;
-        if (paramca != null) {
-          paramca.hQ(this.gVs);
-        }
-        paramca = ((c)localObject1).gVi;
-        if (paramca != null) {
-          paramca.hP((String)localObject3);
-        }
-        p.h(localObject1, "itemHolder");
-        p.h(localObject2, "emojiKey");
-        Log.i(TAG, "setPlayingKey: ".concat(String.valueOf(localObject2)));
-        paramca = f.gVz;
-        localObject3 = ((Iterable)f.auu().gUV).iterator();
-        for (;;)
-        {
-          if (((Iterator)localObject3).hasNext())
-          {
-            paramca = ((Iterator)localObject3).next();
-            if (p.j(((b.a)paramca).key, localObject2))
-            {
-              label343:
-              localObject2 = (b.a)paramca;
-              if (localObject2 == null) {
-                break label737;
-              }
-              paramca = new StringBuilder();
-              localObject3 = com.tencent.mm.emoji.e.a.hdT;
-              paramca = com.tencent.mm.emoji.e.a.aww() + ((b.a)localObject2).gUW;
-              if (!s.YS(paramca)) {
-                break label725;
-              }
-              p.h(localObject2, "config");
-              p.h(paramca, "filePath");
-              ((c)localObject1).gVc = ((b.a)localObject2);
-              localObject2 = ((c)localObject1).gVc;
-              if (localObject2 != null)
-              {
-                localObject2 = ((b.a)localObject2).gUX;
-                if (localObject2 != null)
-                {
-                  localObject3 = ((c)localObject1).gVj;
-                  if (localObject3 != null) {
-                    ((c.a)localObject3).a((b.b)localObject2);
-                  }
-                }
-              }
-            }
-          }
-        }
+      localObject = com.tencent.mm.plugin.emoji.i.b.avg(str);
+      CharSequence localCharSequence = (CharSequence)localObject;
+      if ((localCharSequence != null) && (localCharSequence.length() != 0)) {
+        break label135;
       }
     }
-    try
+    label135:
+    for (i = 1;; i = 0)
     {
-      ((c)localObject1).gVb = new com.tencent.mm.plugin.gif.h(s.aW(paramca, 0, -1));
-      if (((c)localObject1).gVb == null) {
-        break label629;
+      if (i == 0) {
+        a(paramca, 0, String.valueOf(paramca.apG()), str, (String)localObject);
       }
-      paramca = ((c)localObject1).gVi;
-      if (paramca != null) {
-        paramca.jD(1);
-      }
-    }
-    catch (Exception paramca)
-    {
-      for (;;)
-      {
-        label502:
-        Log.printErrStackTrace(((c)localObject1).TAG, (Throwable)paramca, "create anim", new Object[0]);
-        label619:
-        label629:
-        if ((paramca instanceof MMGIFException))
-        {
-          com.tencent.mm.plugin.report.service.h.CyF.dN(711, 21);
-          paramca = ((c)localObject1).gVi;
-          if (paramca != null) {
-            paramca.jD(2);
-          }
-          paramca = ((c)localObject1).gVi;
-          if (paramca != null)
-          {
-            paramca.abZ();
-            continue;
-            i = 1;
-          }
-        }
-      }
-    }
-    paramca = ((c)localObject1).gVb;
-    if (paramca != null)
-    {
-      i = paramca.dXA();
-      paramca = ((c)localObject1).gVb;
-      if (paramca != null) {
-        paramca.OH(i);
-      }
-      paramca = ((c)localObject1).gVb;
-      if (paramca != null) {
-        paramca.rU();
-      }
-      paramca = ((c)localObject1).gVb;
-      if (paramca != null) {
-        paramca.pause();
-      }
-      i = 1;
-      if (i != 0) {
-        break label749;
-      }
-      paramca = ((c)localObject1).gVi;
-      if (paramca != null) {
-        paramca.jC(2);
-      }
-      paramca = ((c)localObject1).gVi;
-      if (paramca != null) {
-        paramca.bfK();
-      }
-      this.gVq.b((c)localObject1);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(199889);
+      AppMethodBeat.o(228479);
       return false;
-      i = 0;
+      localObject = com.tencent.mm.plugin.emoji.i.b.avf(str);
       break;
-      i = 0;
-      break label207;
-      paramca = null;
-      break label343;
-      paramca = ((c)localObject1).gVi;
-      if (paramca == null) {
-        break label502;
-      }
-      paramca.jD(2);
-      break label502;
-      label725:
-      paramca = f.gVz;
-      f.a.auz();
-      for (;;)
-      {
-        i = 0;
-        break;
-        label737:
-        Log.i(TAG, "setPlayingKey: no config");
-      }
-      label749:
-      paramca = ((c)localObject1).gVi;
-      if (paramca != null) {
-        paramca.jC(1);
-      }
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/egg/EmojiDynamicController$StateCallback;", "", "onEnd", "", "onPlayScreenEffect", "msgId", "", "effect", "Lcom/tencent/mm/emoji/egg/EmojiAnimConfig$EmojiAnimScreenEffect;", "onScreenEffect", "onStart", "plugin-emojisdk_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/egg/EmojiDynamicController$StateCallback;", "", "onEnd", "", "onPlayScreenEffect", "msgId", "", "animKey", "", "config", "Lcom/tencent/mm/emoji/egg/EmojiAnimConfig$EmojiAnimItem;", "onScreenEffect", "onStart", "plugin-emojisdk_release"})
   public static abstract interface b
   {
-    public abstract void a(long paramLong, b.b paramb);
+    public abstract void a(long paramLong, String paramString, b.a parama);
     
-    public abstract void a(b.b paramb);
+    public abstract void a(String paramString, b.a parama);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.a.e
  * JD-Core Version:    0.7.0.1
  */

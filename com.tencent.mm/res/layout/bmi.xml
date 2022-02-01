@@ -2,5 +2,5 @@
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:id="@id/h0a" android:layout_width="fill_parent" android:layout_height="153.0dip" android:src="@drawable/cll" android:scaleType="fitCenter" />
-    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="17.0dip" android:textColor="@color/l4" android:gravity="center_vertical" android:id="@id/be9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/g4q" />
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="17.0dip" android:textColor="@color/l4" android:gravity="center" android:id="@id/be9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/g4q" />
 </LinearLayout>

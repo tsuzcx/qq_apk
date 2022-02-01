@@ -3,9 +3,10 @@ package com.tencent.mm.plugin.sns.ad.timeline.feedback.a;
 import android.view.View;
 import android.view.ViewParent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.g.k;
-import com.tencent.mm.plugin.sns.ad.i.i.a;
-import com.tencent.mm.plugin.sns.data.i;
+import com.tencent.mm.plugin.sns.ad.f.l;
+import com.tencent.mm.plugin.sns.ad.i.j.a;
+import com.tencent.mm.plugin.sns.data.k;
+import com.tencent.mm.plugin.sns.i.f;
 import com.tencent.mm.plugin.sns.model.aj;
 import com.tencent.mm.plugin.sns.storage.ADInfo;
 import com.tencent.mm.plugin.sns.storage.ADXml;
@@ -13,30 +14,30 @@ import com.tencent.mm.plugin.sns.storage.SnsInfo;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.ui.AdFrameLayout;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.adp;
+import com.tencent.mm.protocal.protobuf.adw;
 import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public final class b
-  implements i.a
+  implements j.a
 {
-  private String DyA;
-  private String DyB;
-  private int DyC;
-  private int DyD;
-  private int DyE;
-  private Long DyF;
-  private int DyG;
-  private long Dyz;
+  private long JIs;
+  private String JIt;
+  private String JIu;
+  private int JIv;
+  private int JIw;
+  private int JIx;
+  private Long JIy;
+  private int JIz;
   private int mScene;
   
-  public static i.a a(SnsInfo paramSnsInfo, boolean paramBoolean, View paramView, k paramk)
+  public static j.a a(SnsInfo paramSnsInfo, boolean paramBoolean, View paramView, l paraml)
   {
     int k = 2;
-    AppMethodBeat.i(202183);
+    AppMethodBeat.i(198129);
     if ((paramSnsInfo == null) || (paramView == null))
     {
-      AppMethodBeat.o(202183);
+      AppMethodBeat.o(198129);
       return null;
     }
     int i;
@@ -49,10 +50,10 @@ public final class b
         boolean bool = paramSnsInfo.isAd();
         if (!bool)
         {
-          AppMethodBeat.o(202183);
+          AppMethodBeat.o(198129);
           return null;
         }
-        if ((paramk != null) && (paramk.source != 0))
+        if ((paraml != null) && (paraml.source != 0))
         {
           i = 1;
           localObject1 = paramSnsInfo.getAdInfo();
@@ -60,41 +61,41 @@ public final class b
           if ((paramSnsInfo != null) && (localObject1 != null) && (localObject2 != null) && (paramView != null)) {
             break;
           }
-          AppMethodBeat.o(202183);
+          AppMethodBeat.o(198129);
           return null;
         }
       }
       catch (Throwable paramSnsInfo)
       {
-        AppMethodBeat.o(202183);
+        AppMethodBeat.o(198129);
         return null;
       }
       i = 0;
     }
     if (!paramSnsInfo.isAd())
     {
-      AppMethodBeat.o(202183);
+      AppMethodBeat.o(198129);
       return null;
     }
     b localb = new b();
-    localb.Dyz = paramSnsInfo.field_snsId;
-    localb.DyA = i.aNZ(((ADInfo)localObject1).uxInfo);
+    localb.JIs = paramSnsInfo.field_snsId;
+    localb.JIt = k.aYR(((ADInfo)localObject1).uxInfo);
     int j;
     if (i != 0)
     {
       j = 2;
       localb.mScene = j;
-      localb.DyB = ((ADXml)localObject2).adExtInfo;
+      localb.JIu = ((ADXml)localObject2).adExtInfo;
       if (!paramBoolean) {
-        break label356;
+        break label357;
       }
       j = k;
       label184:
-      localb.DyG = j;
+      localb.JIz = j;
       if (i == 0) {
-        break label362;
+        break label363;
       }
-      localObject1 = at(paramView, 2131296633);
+      localObject1 = ax(paramView, i.f.album_comment_list);
     }
     for (;;)
     {
@@ -102,7 +103,7 @@ public final class b
       {
         localObject2 = new int[2];
         ((View)localObject1).getLocationOnScreen((int[])localObject2);
-        localb.DyC = localObject2[1];
+        localb.JIv = localObject2[1];
       }
       if (paramView != null)
       {
@@ -111,21 +112,21 @@ public final class b
         i = paramView.getWidth();
         j = paramView.getHeight();
         k = localObject1[0];
-        localb.DyD = (i / 2 + k);
-        localb.DyE = (localObject1[1] + j / 2);
+        localb.JIw = (i / 2 + k);
+        localb.JIx = (localObject1[1] + j / 2);
       }
-      if ((paramk != null) && (paramSnsInfo.getTimeLine() != null) && (paramSnsInfo.getTimeLine().ContentObj != null) && (paramSnsInfo.getTimeLine().ContentObj.LoU == 15)) {
-        localb.DyF = Long.valueOf(paramk.IV(localb.Dyz));
+      if ((paraml != null) && (paramSnsInfo.getTimeLine() != null) && (paramSnsInfo.getTimeLine().ContentObj != null) && (paramSnsInfo.getTimeLine().ContentObj.Sqq == 15)) {
+        localb.JIy = Long.valueOf(paraml.Qo(localb.JIs));
       }
-      AppMethodBeat.o(202183);
+      AppMethodBeat.o(198129);
       return localb;
       j = 1;
       break;
-      label356:
+      label357:
       j = 1;
       break label184;
-      label362:
-      localObject1 = at(paramView, 2131308140);
+      label363:
+      localObject1 = ax(paramView, i.f.sns_item_root);
       paramBoolean = localObject1 instanceof AdFrameLayout;
       if (!paramBoolean) {
         localObject1 = paramView;
@@ -133,25 +134,25 @@ public final class b
     }
   }
   
-  public static i.a a(String paramString, View paramView, k paramk)
+  public static j.a a(String paramString, View paramView, l paraml)
   {
-    AppMethodBeat.i(202182);
+    AppMethodBeat.i(198115);
     try
     {
-      paramString = a(aj.faO().aQm(paramString), true, paramView, paramk);
-      AppMethodBeat.o(202182);
+      paramString = a(aj.fOI().bbl(paramString), true, paramView, paraml);
+      AppMethodBeat.o(198115);
       return paramString;
     }
     catch (Throwable paramString)
     {
-      AppMethodBeat.o(202182);
+      AppMethodBeat.o(198115);
     }
     return null;
   }
   
-  private static View at(View paramView, int paramInt)
+  private static View ax(View paramView, int paramInt)
   {
-    AppMethodBeat.i(202187);
+    AppMethodBeat.i(198142);
     View localView = paramView;
     if (paramView != null) {}
     for (;;)
@@ -167,42 +168,42 @@ public final class b
       }
       else
       {
-        AppMethodBeat.o(202187);
+        AppMethodBeat.o(198142);
         return localView;
       }
     }
   }
   
-  private String bie()
+  private String brC()
   {
-    AppMethodBeat.i(202186);
+    AppMethodBeat.i(198139);
     try
     {
-      Object localObject = eXR();
-      ((JSONObject)localObject).put("extInfo", eXS());
+      Object localObject = fLu();
+      ((JSONObject)localObject).put("extInfo", fLv());
       localObject = ((JSONObject)localObject).toString();
-      AppMethodBeat.o(202186);
+      AppMethodBeat.o(198139);
       return localObject;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(202186);
+      AppMethodBeat.o(198139);
     }
     return "{}";
   }
   
-  private JSONObject eXR()
+  private JSONObject fLu()
   {
-    AppMethodBeat.i(202184);
+    AppMethodBeat.i(198133);
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("snsid", String.valueOf(this.Dyz));
-      localJSONObject.put("uxinfo", Util.nullAs(this.DyA, ""));
+      localJSONObject.put("snsid", String.valueOf(this.JIs));
+      localJSONObject.put("uxinfo", Util.nullAs(this.JIt, ""));
       localJSONObject.put("scene", this.mScene);
-      localJSONObject.put("adExtInfo", Util.nullAs(this.DyB, ""));
+      localJSONObject.put("adExtInfo", Util.nullAs(this.JIu, ""));
       label70:
-      AppMethodBeat.o(202184);
+      AppMethodBeat.o(198133);
       return localJSONObject;
     }
     catch (Throwable localThrowable)
@@ -211,53 +212,53 @@ public final class b
     }
   }
   
-  private JSONObject eXS()
+  private JSONObject fLv()
   {
-    AppMethodBeat.i(202185);
+    AppMethodBeat.i(198136);
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("adOffSetTop", this.DyC);
-      localJSONObject.put("clickPosX", this.DyD);
-      localJSONObject.put("clickPosY", this.DyE);
-      if (this.DyF != null) {
-        localJSONObject.put("videoPlayTime", this.DyF.longValue());
+      localJSONObject.put("adOffSetTop", this.JIv);
+      localJSONObject.put("clickPosX", this.JIw);
+      localJSONObject.put("clickPosY", this.JIx);
+      if (this.JIy != null) {
+        localJSONObject.put("videoPlayTime", this.JIy.longValue());
       }
-      localJSONObject.put("buttonType", this.DyG);
+      localJSONObject.put("buttonType", this.JIz);
     }
     catch (Throwable localThrowable)
     {
       label78:
       break label78;
     }
-    AppMethodBeat.o(202185);
+    AppMethodBeat.o(198136);
     return localJSONObject;
   }
   
-  public final String eWH()
+  public final String fJK()
   {
     return "timeline_ad_feedback_and_sns_button_click";
   }
   
   public final String getContent()
   {
-    AppMethodBeat.i(202188);
+    AppMethodBeat.i(198143);
     try
     {
-      String str = bie();
-      AppMethodBeat.o(202188);
+      String str = brC();
+      AppMethodBeat.o(198143);
       return str;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(202188);
+      AppMethodBeat.o(198143);
     }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.timeline.feedback.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ public class APBaseHttpAns
   
   public APBaseHttpAns(APHttpHandle paramAPHttpHandle, IAPHttpAnsObserver paramIAPHttpAnsObserver, HashMap<String, APBaseHttpReq> paramHashMap, String paramString)
   {
-    AppMethodBeat.i(193284);
+    AppMethodBeat.i(253666);
     this.REQUESTMAX = 1;
     this.resultCode = -1;
     this.resultMsg = "";
@@ -32,51 +32,51 @@ public class APBaseHttpAns
     this.httpReqKey = paramString;
     this.observer = paramIAPHttpAnsObserver;
     this.httpHandler.register(this.httpReqKey, paramIAPHttpAnsObserver);
-    AppMethodBeat.o(193284);
+    AppMethodBeat.o(253666);
   }
   
   private void register(APBaseHttpReq paramAPBaseHttpReq)
   {
-    AppMethodBeat.i(193294);
+    AppMethodBeat.i(253683);
     this.httpReqMap.put(this.httpReqKey, paramAPBaseHttpReq);
-    AppMethodBeat.o(193294);
+    AppMethodBeat.o(253683);
   }
   
   private void sendErrorMessage()
   {
-    AppMethodBeat.i(193292);
+    AppMethodBeat.i(253679);
     Message localMessage = new Message();
     localMessage.what = 4;
     localMessage.obj = this;
     this.httpHandler.sendMessage(localMessage);
-    AppMethodBeat.o(193292);
+    AppMethodBeat.o(253679);
   }
   
   private void sendFinishMessage(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(193291);
+    AppMethodBeat.i(253678);
     paramArrayOfByte = new Message();
     paramArrayOfByte.what = 3;
     paramArrayOfByte.obj = this;
     this.httpHandler.sendMessage(paramArrayOfByte);
-    AppMethodBeat.o(193291);
+    AppMethodBeat.o(253678);
   }
   
   private void sendStopMessage()
   {
-    AppMethodBeat.i(193293);
+    AppMethodBeat.i(253680);
     Message localMessage = new Message();
     localMessage.what = 5;
     localMessage.obj = this;
     this.httpHandler.sendMessage(localMessage);
-    AppMethodBeat.o(193293);
+    AppMethodBeat.o(253680);
   }
   
   private void unRegister()
   {
-    AppMethodBeat.i(193295);
+    AppMethodBeat.i(253684);
     this.httpReqMap.remove(this.httpReqKey);
-    AppMethodBeat.o(193295);
+    AppMethodBeat.o(253684);
   }
   
   public String getErrorMessage()
@@ -101,78 +101,78 @@ public class APBaseHttpAns
   
   public void onError(APBaseHttpReq paramAPBaseHttpReq, int paramInt, String paramString)
   {
-    AppMethodBeat.i(193290);
+    AppMethodBeat.i(253677);
     this.errorMsg = paramString;
     this.resultMsg = paramString;
     this.resultCode = paramInt;
     unRegister();
     onErrorAns(paramAPBaseHttpReq);
     sendErrorMessage();
-    AppMethodBeat.o(193290);
+    AppMethodBeat.o(253677);
   }
   
   public void onErrorAns(APBaseHttpReq paramAPBaseHttpReq) {}
   
   public void onFinish(APBaseHttpReq paramAPBaseHttpReq)
   {
-    AppMethodBeat.i(193289);
+    AppMethodBeat.i(253676);
     unRegister();
     if (paramAPBaseHttpReq.getContent() == null)
     {
       this.resultCode = -1;
       this.resultMsg = "";
       sendErrorMessage();
-      AppMethodBeat.o(193289);
+      AppMethodBeat.o(253676);
       return;
     }
     this.httpClient = paramAPBaseHttpReq;
     onFinishAns(paramAPBaseHttpReq.getContent(), paramAPBaseHttpReq);
     sendFinishMessage(paramAPBaseHttpReq.getContent());
-    AppMethodBeat.o(193289);
+    AppMethodBeat.o(253676);
   }
   
   public void onFinishAns(byte[] paramArrayOfByte, APBaseHttpReq paramAPBaseHttpReq) {}
   
   public void onReceive(byte[] paramArrayOfByte, int paramInt, long paramLong, APBaseHttpReq paramAPBaseHttpReq)
   {
-    AppMethodBeat.i(193287);
+    AppMethodBeat.i(253672);
     onReceiveAns(paramArrayOfByte, paramInt, paramLong, paramAPBaseHttpReq);
-    AppMethodBeat.o(193287);
+    AppMethodBeat.o(253672);
   }
   
   public void onReceiveAns(byte[] paramArrayOfByte, int paramInt, long paramLong, APBaseHttpReq paramAPBaseHttpReq) {}
   
   public void onStart(APBaseHttpReq paramAPBaseHttpReq)
   {
-    AppMethodBeat.i(193286);
+    AppMethodBeat.i(253671);
     register(paramAPBaseHttpReq);
     onStartAns(paramAPBaseHttpReq);
-    AppMethodBeat.o(193286);
+    AppMethodBeat.o(253671);
   }
   
   public void onStartAns(APBaseHttpReq paramAPBaseHttpReq) {}
   
   public void onStop(APBaseHttpReq paramAPBaseHttpReq)
   {
-    AppMethodBeat.i(193288);
+    AppMethodBeat.i(253674);
     unRegister();
     onStopAns(paramAPBaseHttpReq);
     sendStopMessage();
-    AppMethodBeat.o(193288);
+    AppMethodBeat.o(253674);
   }
   
   public void onStopAns(APBaseHttpReq paramAPBaseHttpReq) {}
   
   public void reRegister()
   {
-    AppMethodBeat.i(193285);
+    AppMethodBeat.i(253669);
     this.httpHandler.register(this.httpReqKey, this.observer);
-    AppMethodBeat.o(193285);
+    AppMethodBeat.o(253669);
   }
   
   public void requestAgain()
   {
-    AppMethodBeat.i(193296);
+    AppMethodBeat.i(253685);
     if ((this.httpClient != null) && (this.requestAgainCount <= 1))
     {
       this.requestAgainCount += 1;
@@ -181,22 +181,22 @@ public class APBaseHttpAns
       {
         public void run()
         {
-          AppMethodBeat.i(193258);
+          AppMethodBeat.i(253663);
           APBaseHttpAns.this.httpClient.requestAgain();
-          AppMethodBeat.o(193258);
+          AppMethodBeat.o(253663);
         }
       }).start();
-      AppMethodBeat.o(193296);
+      AppMethodBeat.o(253685);
       return;
     }
     reRegister();
     onError(this.httpClient, -1, "");
-    AppMethodBeat.o(193296);
+    AppMethodBeat.o(253685);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.pay.http.APBaseHttpAns
  * JD-Core Version:    0.7.0.1
  */

@@ -5,12 +5,11 @@ import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.MutableContextWrapper;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build.VERSION;
-import android.support.annotation.Keep;
-import android.support.v4.view.u;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,49 +20,58 @@ import android.view.ViewStub;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.luggage.h.j;
-import com.tencent.luggage.sdk.d.d;
-import com.tencent.luggage.sdk.g.c;
+import androidx.annotation.Keep;
+import androidx.core.g.w;
+import com.tencent.luggage.k.j;
+import com.tencent.luggage.l.a.a;
+import com.tencent.luggage.l.a.b;
+import com.tencent.luggage.l.a.c;
+import com.tencent.luggage.l.a.d;
+import com.tencent.luggage.l.a.e;
+import com.tencent.luggage.l.a.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.a.g;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.h;
-import com.tencent.mm.plugin.appbrand.h.d;
-import com.tencent.mm.plugin.appbrand.launching.q;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
+import com.tencent.mm.plugin.appbrand.k;
+import com.tencent.mm.plugin.appbrand.k.d;
+import com.tencent.mm.plugin.appbrand.launching.p;
+import com.tencent.mm.plugin.appbrand.page.bz;
 import com.tencent.mm.plugin.appbrand.platform.window.a.o;
 import com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandOptionButton;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.system.AndroidContextUtil;
-import kotlin.x;
 
 @SuppressLint({"ViewConstructor"})
 public final class AppBrandUILoadingSplash
   extends com.tencent.mm.ui.statusbar.b
-  implements q, ab, ad, ae
+  implements p, aa, ac, ad
 {
-  AppBrandRuntime kEc;
-  private ImageView nSS;
-  private TextView nSV;
-  private AppBrandCircleProgressView nSX;
-  private TextView nTa;
-  private Boolean nTp;
-  private boolean nTq;
-  private kotlin.g.a.a<x> nUt;
-  private ViewStub nXA;
-  private ViewStub nXB;
-  private boolean nXC;
-  private a nXD;
-  private ViewGroup nXz;
+  private boolean nnk;
+  private AppBrandRuntime nxs;
+  private TextView qUB;
+  private Boolean qUQ;
+  private boolean qUR;
+  private ImageView qUt;
+  private TextView qUw;
+  private AppBrandCircleProgressView qUy;
+  private kotlin.g.a.a<kotlin.x> qVQ;
+  private ViewGroup qZh;
+  private ViewStub qZi;
+  private ViewStub qZj;
+  private boolean qZk;
+  private a qZl;
   
   @Keep
   public AppBrandUILoadingSplash(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(177512);
-    this.nXC = true;
-    this.nTq = false;
+    this.nnk = false;
+    this.qZk = true;
+    this.qUR = false;
     init();
     AppMethodBeat.o(177512);
   }
@@ -72,26 +80,48 @@ public final class AppBrandUILoadingSplash
   {
     super(paramContext);
     AppMethodBeat.i(147682);
-    this.nXC = true;
-    this.nTq = false;
-    this.kEc = paramAppBrandRuntime;
+    this.nnk = false;
+    this.qZk = true;
+    this.qUR = false;
+    this.nxs = paramAppBrandRuntime;
     init();
     AppMethodBeat.o(147682);
   }
   
-  private boolean OS()
+  private boolean So()
   {
-    AppMethodBeat.i(230008);
-    if ((this.kEc != null) && ((this.kEc instanceof d)) && (((d)this.kEc).OS()))
+    AppMethodBeat.i(234631);
+    if ((this.nxs != null) && ((this.nxs instanceof com.tencent.luggage.sdk.e.d)) && (((com.tencent.luggage.sdk.e.d)this.nxs).So()))
     {
-      AppMethodBeat.o(230008);
+      AppMethodBeat.o(234631);
       return true;
     }
-    AppMethodBeat.o(230008);
+    AppMethodBeat.o(234631);
     return false;
   }
   
-  private void btL()
+  private void aD(Context paramContext)
+  {
+    AppMethodBeat.i(234612);
+    int i;
+    if ((getContext() instanceof MutableContextWrapper))
+    {
+      ((MutableContextWrapper)getContext()).setBaseContext(paramContext);
+      i = getBgColor();
+      if (isDarkMode()) {
+        break label52;
+      }
+    }
+    label52:
+    for (boolean bool = true;; bool = false)
+    {
+      T(i, bool);
+      AppMethodBeat.o(234612);
+      return;
+    }
+  }
+  
+  private void bEK()
   {
     int j = -1;
     AppMethodBeat.i(177514);
@@ -101,73 +131,73 @@ public final class AppBrandUILoadingSplash
       {
         AppMethodBeat.i(169537);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/AppBrandUILoadingSplash$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        if (AppBrandUILoadingSplash.g(AppBrandUILoadingSplash.this) != null)
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/ui/AppBrandUILoadingSplash$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        if (AppBrandUILoadingSplash.a(AppBrandUILoadingSplash.this) != null)
         {
-          if (AppBrandUILoadingSplash.h(AppBrandUILoadingSplash.this))
+          if (AppBrandUILoadingSplash.j(AppBrandUILoadingSplash.this))
           {
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandUILoadingSplash$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(169537);
             return;
           }
-          h.a(AppBrandUILoadingSplash.g(AppBrandUILoadingSplash.this).mAppId, h.d.kzP);
-          AppBrandUILoadingSplash.g(AppBrandUILoadingSplash.this).finish();
+          k.a(AppBrandUILoadingSplash.a(AppBrandUILoadingSplash.this).mAppId, k.d.ntb);
+          AppBrandUILoadingSplash.a(AppBrandUILoadingSplash.this).finish();
         }
         for (;;)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandUILoadingSplash$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(169537);
           return;
-          if (AppBrandUILoadingSplash.i(AppBrandUILoadingSplash.this) != null) {
-            AppBrandUILoadingSplash.i(AppBrandUILoadingSplash.this).invoke();
+          if (AppBrandUILoadingSplash.k(AppBrandUILoadingSplash.this) != null) {
+            AppBrandUILoadingSplash.k(AppBrandUILoadingSplash.this).invoke();
           }
         }
       }
     };
-    AppBrandOptionButton localAppBrandOptionButton = (AppBrandOptionButton)this.nXz.findViewById(2131296428);
-    View localView = this.nXz.findViewById(2131296424);
+    AppBrandOptionButton localAppBrandOptionButton = (AppBrandOptionButton)this.qZh.findViewById(a.d.actionbar_capsule_option_btn);
+    View localView = this.qZh.findViewById(a.d.actionbar_capsule_area);
     if (isDarkMode())
     {
-      i = 2131231007;
+      i = a.c.app_brand_game_capsule_dark_background;
       localView.setBackgroundResource(i);
       localAppBrandOptionButton.reset();
       if (!isDarkMode()) {
-        break label129;
+        break label134;
       }
       i = -1;
-      label71:
+      label74:
       localAppBrandOptionButton.setColor(i);
-      localAppBrandOptionButton = (AppBrandOptionButton)this.nXz.findViewById(2131296427);
+      localAppBrandOptionButton = (AppBrandOptionButton)this.qZh.findViewById(a.d.actionbar_capsule_home_btn);
       localAppBrandOptionButton.reset();
       if (!isDarkMode()) {
-        break label135;
+        break label140;
       }
     }
-    label129:
-    label135:
+    label134:
+    label140:
     for (int i = j;; i = -16777216)
     {
       localAppBrandOptionButton.setColor(i);
       localAppBrandOptionButton.setOnClickListener(local4);
       AppMethodBeat.o(177514);
       return;
-      i = 2131231008;
+      i = a.c.app_brand_game_capsule_light_background;
       break;
       i = -16777216;
-      break label71;
+      break label74;
     }
   }
   
   private void d(Configuration paramConfiguration)
   {
     AppMethodBeat.i(147689);
-    if (!(this.kEc.getWindowAndroid() instanceof o))
+    if (!(this.nxs.getWindowAndroid() instanceof o))
     {
       AppMethodBeat.o(147689);
       return;
     }
-    Object localObject = AndroidContextUtil.castActivityOrNull(((o)this.kEc.getWindowAndroid()).mContext);
+    Object localObject = AndroidContextUtil.castActivityOrNull(((o)this.nxs.getWindowAndroid()).mContext);
     if (paramConfiguration.orientation == 2) {}
     for (int i = 1; (i != 0) && (localObject != null) && (Build.VERSION.SDK_INT >= 24) && (((Activity)localObject).isInMultiWindowMode()) && (((Activity)localObject).getRequestedOrientation() == 1); i = 0)
     {
@@ -185,9 +215,36 @@ public final class AppBrandUILoadingSplash
         AppMethodBeat.o(147689);
         return;
       }
-      y.a(paramConfiguration, false, false);
+      x.a(paramConfiguration, false, false);
     }
     AppMethodBeat.o(147689);
+  }
+  
+  private int getBgColor()
+  {
+    AppMethodBeat.i(234610);
+    Resources localResources = getResources();
+    if (this.nnk) {}
+    for (int i = a.a.White;; i = a.a.BG_2)
+    {
+      i = localResources.getColor(i);
+      AppMethodBeat.o(234610);
+      return i;
+    }
+  }
+  
+  private int getNameTextColor()
+  {
+    AppMethodBeat.i(234608);
+    if (this.nnk)
+    {
+      i = Color.parseColor("#E6000000");
+      AppMethodBeat.o(234608);
+      return i;
+    }
+    int i = getResources().getColor(a.a.normal_text_color);
+    AppMethodBeat.o(234608);
+    return i;
   }
   
   private void init()
@@ -195,47 +252,88 @@ public final class AppBrandUILoadingSplash
     AppMethodBeat.i(177513);
     setClickable(true);
     setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    LayoutInflater.from(getContext()).inflate(2131493017, this);
-    this.nSS = ((ImageView)findViewById(2131296847));
-    this.nSS.setImageDrawable(ak.bXP());
-    this.nSV = ((TextView)findViewById(2131296852));
-    this.nSX = ((AppBrandCircleProgressView)findViewById(2131298730));
-    this.nSX.setCircleColor(android.support.v4.content.b.n(getContext(), 2131099657));
-    this.nSX.setDotWidth(getResources().getDimensionPixelSize(2131165839));
-    this.nSX.setDotColor(android.support.v4.content.b.n(getContext(), 2131099710));
-    this.nSX.setCircleStrokeWidth(getResources().getDimensionPixelSize(2131165838));
-    this.nSX.setProgressColor(android.support.v4.content.b.n(getContext(), 2131099710));
-    this.nSX.setProgressWidth(getResources().getDimensionPixelSize(2131165840));
+    LayoutInflater.from(getContext()).inflate(a.e.app_brand_circle_splash_ui, this);
+    this.qUt = ((ImageView)findViewById(a.d.app_brand_loading_avatar));
+    this.qUt.setImageDrawable(ak.ckz());
+    this.qUw = ((TextView)findViewById(a.d.app_brand_loading_name));
+    this.qUy = ((AppBrandCircleProgressView)findViewById(a.d.circle_progress_view));
+    this.qUy.setCircleColor(androidx.core.content.a.w(getContext(), a.a.BW_0_Alpha_0_1));
+    this.qUy.setDotWidth(getResources().getDimensionPixelSize(a.b.app_brand_loading_dotWidth));
+    this.qUy.setDotColor(androidx.core.content.a.w(getContext(), a.a.Brand));
+    this.qUy.setCircleStrokeWidth(getResources().getDimensionPixelSize(a.b.app_brand_loading_circleWidth));
+    this.qUy.setProgressColor(androidx.core.content.a.w(getContext(), a.a.Brand));
+    this.qUy.setProgressWidth(getResources().getDimensionPixelSize(a.b.app_brand_loading_progressWidth));
     if (MMApplicationContext.isMainProcess()) {
-      this.nSX.setTransitionTimingMs(2147483647);
+      this.qUy.setTransitionTimingMs(2147483647);
     }
-    this.nXz = ((ViewGroup)findViewById(2131296853));
-    this.nXA = ((ViewStub)findViewById(2131297678));
-    this.nXB = ((ViewStub)findViewById(2131302998));
-    c.a("AppBrandUILoadingSplash setupRightButton", new Runnable()
+    this.qZh = ((ViewGroup)findViewById(a.d.app_brand_loading_root));
+    this.qZi = ((ViewStub)findViewById(a.d.bottom_label_placeholder));
+    this.qZj = ((ViewStub)findViewById(a.d.label_placeholder));
+    com.tencent.luggage.sdk.h.d.a("AppBrandUILoadingSplash setupRightButton", new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(147675);
-        LayoutInflater.from(AppBrandUILoadingSplash.this.getContext()).inflate(2131493016, AppBrandUILoadingSplash.a(AppBrandUILoadingSplash.this));
+        if ((AppBrandUILoadingSplash.a(AppBrandUILoadingSplash.this) != null) && (AppBrandUILoadingSplash.a(AppBrandUILoadingSplash.this).getDecorWidgetFactory() != null))
+        {
+          com.tencent.mm.plugin.appbrand.page.capsulebar.d locald = (com.tencent.mm.plugin.appbrand.page.capsulebar.d)AppBrandUILoadingSplash.a(AppBrandUILoadingSplash.this).getDecorWidgetFactory().d(AppBrandUILoadingSplash.this.getContext(), com.tencent.mm.plugin.appbrand.page.capsulebar.d.class);
+          AppBrandUILoadingSplash.this.setActionBar(locald);
+          AppMethodBeat.o(147675);
+          return;
+        }
+        LayoutInflater.from(AppBrandUILoadingSplash.this.getContext()).inflate(a.e.app_brand_capsule_bar_view_layout, AppBrandUILoadingSplash.b(AppBrandUILoadingSplash.this));
         AppMethodBeat.o(147675);
       }
     });
-    this.nSV.getLayoutParams().height = com.tencent.mm.plugin.appbrand.widget.b.eu(getContext());
-    btL();
+    this.qUw.getLayoutParams().height = com.tencent.mm.plugin.appbrand.widget.b.ew(getContext());
+    bEK();
     AppMethodBeat.o(177513);
   }
   
-  public final void C(kotlin.g.a.a<x> parama)
+  private boolean isDarkMode()
   {
-    this.nUt = parama;
+    AppMethodBeat.i(162234);
+    if (this.nnk)
+    {
+      AppMethodBeat.o(162234);
+      return false;
+    }
+    if (this.qUQ == null) {
+      this.qUQ = Boolean.valueOf(j.cEc.isDarkMode());
+    }
+    boolean bool = this.qUQ.booleanValue();
+    AppMethodBeat.o(162234);
+    return bool;
   }
   
-  public final void eo(String paramString1, String paramString2)
+  public final void A(kotlin.g.a.a<kotlin.x> parama)
+  {
+    this.qVQ = parama;
+  }
+  
+  public final void BU(int paramInt)
+  {
+    AppMethodBeat.i(147686);
+    this.qZh.setBackgroundColor(paramInt);
+    AppMethodBeat.o(147686);
+  }
+  
+  public final void ao(AppBrandRuntime paramAppBrandRuntime)
+  {
+    AppMethodBeat.i(234611);
+    Log.d("MicroMsg.AppBrandUILoadingSplash", "attachRuntime %s", new Object[] { paramAppBrandRuntime.Sq().fzM });
+    this.nxs = paramAppBrandRuntime;
+    if (AndroidContextUtil.castActivityOrNull(paramAppBrandRuntime.mContext) != null) {
+      aD(AndroidContextUtil.castActivityOrNull(paramAppBrandRuntime.mContext));
+    }
+    AppMethodBeat.o(234611);
+  }
+  
+  public final void eC(String paramString1, String paramString2)
   {
     AppMethodBeat.i(147683);
-    com.tencent.mm.modelappbrand.a.b.aXY().a(this.nSS, paramString1, null, g.iJB);
-    this.nSV.setText(paramString2);
+    com.tencent.mm.modelappbrand.a.b.bhh().a(this.qUt, paramString1, null, g.lzF);
+    this.qUw.setText(paramString2);
     AppMethodBeat.o(147683);
   }
   
@@ -249,27 +347,25 @@ public final class AppBrandUILoadingSplash
     return false;
   }
   
-  final boolean isDarkMode()
+  public final void jM(boolean paramBoolean)
   {
-    AppMethodBeat.i(162234);
-    if (this.nTp == null) {
-      this.nTp = Boolean.valueOf(j.cDv.isDarkMode());
-    }
-    boolean bool = this.nTp.booleanValue();
-    AppMethodBeat.o(162234);
-    return bool;
+    AppMethodBeat.i(234606);
+    this.nnk = paramBoolean;
+    this.qZh.setBackgroundColor(getBgColor());
+    this.qUw.setTextColor(getNameTextColor());
+    AppMethodBeat.o(234606);
   }
   
   public final void onAttachedToWindow()
   {
     AppMethodBeat.i(147685);
     super.onAttachedToWindow();
-    int i = getResources().getColor(2131099650);
+    int i = getBgColor();
     if (!isDarkMode()) {}
     for (boolean bool = true;; bool = false)
     {
-      S(i, bool);
-      this.nSX.bWT();
+      T(i, bool);
+      this.qUy.cjx();
       try
       {
         d(getContext().getResources().getConfiguration());
@@ -301,117 +397,91 @@ public final class AppBrandUILoadingSplash
   
   public final boolean post(Runnable paramRunnable)
   {
-    AppMethodBeat.i(230009);
+    AppMethodBeat.i(234634);
     if (paramRunnable == null)
     {
-      AppMethodBeat.o(230009);
+      AppMethodBeat.o(234634);
       return false;
     }
-    if ((!u.aD(this)) && (OS()))
+    if ((!w.al(this)) && (So()))
     {
       MMHandlerThread.postToMainThread(paramRunnable);
-      AppMethodBeat.o(230009);
+      AppMethodBeat.o(234634);
       return true;
     }
     boolean bool = super.post(paramRunnable);
-    AppMethodBeat.o(230009);
+    AppMethodBeat.o(234634);
     return bool;
   }
   
   public final boolean postDelayed(Runnable paramRunnable, long paramLong)
   {
-    AppMethodBeat.i(230010);
+    AppMethodBeat.i(234635);
     if (paramRunnable == null)
     {
-      AppMethodBeat.o(230010);
+      AppMethodBeat.o(234635);
       return false;
     }
-    if ((!u.aD(this)) && (OS()))
+    if ((!w.al(this)) && (So()))
     {
       MMHandlerThread.postToMainThreadDelayed(paramRunnable, paramLong);
-      AppMethodBeat.o(230010);
+      AppMethodBeat.o(234635);
       return true;
     }
     boolean bool = super.postDelayed(paramRunnable, paramLong);
-    AppMethodBeat.o(230010);
+    AppMethodBeat.o(234635);
     return bool;
+  }
+  
+  public final void setActionBar(View paramView)
+  {
+    AppMethodBeat.i(234605);
+    View localView = this.qZh.findViewById(a.d.app_brand_ui_loading_splash_action_bar);
+    if (localView != null) {
+      this.qZh.removeView(localView);
+    }
+    paramView.setId(a.d.app_brand_ui_loading_splash_action_bar);
+    this.qZh.addView(paramView, -1, paramView.getResources().getDimensionPixelSize(a.b.DefaultActionbarHeight));
+    AppMethodBeat.o(234605);
   }
   
   public final void setCanShowHideAnimation(boolean paramBoolean)
   {
-    this.nXC = paramBoolean;
+    this.qZk = paramBoolean;
   }
   
   public final void setLabelInjector(a parama)
   {
-    AppMethodBeat.i(230007);
-    this.nXD = parama;
-    if (this.nXD != null)
+    AppMethodBeat.i(234629);
+    this.qZl = parama;
+    if (this.qZl != null)
     {
-      this.nXD.a(this.nXB);
-      this.nXD.b(this.nXA);
+      this.qZl.a(this.qZj);
+      this.qZl.b(this.qZi);
     }
-    AppMethodBeat.o(230007);
+    AppMethodBeat.o(234629);
   }
   
   public final void setProgress(int paramInt)
   {
-    AppMethodBeat.i(230006);
-    this.nSX.setProgress(paramInt);
-    AppMethodBeat.o(230006);
+    AppMethodBeat.i(234621);
+    this.qUy.setProgress(paramInt);
+    AppMethodBeat.o(234621);
   }
   
-  public final void vy(final int paramInt)
+  public final void x(final kotlin.g.a.a<kotlin.x> parama)
   {
-    AppMethodBeat.i(147687);
-    if (this.kEc == null)
-    {
-      AppMethodBeat.o(147687);
-      return;
-    }
-    this.kEc.i(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(169538);
-        Log.i("MicroMsg.AppBrandUILoadingSplash", "onDataTransferState  state=" + paramInt);
-        if (paramInt == 3)
-        {
-          if (AppBrandUILoadingSplash.j(AppBrandUILoadingSplash.this) == null)
-          {
-            ((ViewStub)AppBrandUILoadingSplash.this.findViewById(2131297000)).inflate();
-            AppBrandUILoadingSplash.a(AppBrandUILoadingSplash.this, (TextView)AppBrandUILoadingSplash.this.findViewById(2131303696));
-          }
-          AppBrandUILoadingSplash.j(AppBrandUILoadingSplash.this).setVisibility(0);
-          AppBrandUILoadingSplash.j(AppBrandUILoadingSplash.this).setText(2131756048);
-          AppBrandUILoadingSplash.k(AppBrandUILoadingSplash.this).setVisibility(8);
-        }
-        AppMethodBeat.o(169538);
-      }
-    }, 0L);
-    AppMethodBeat.o(147687);
-  }
-  
-  public final void yu(int paramInt)
-  {
-    AppMethodBeat.i(147686);
-    this.nXz.setBackgroundColor(paramInt);
-    AppMethodBeat.o(147686);
-  }
-  
-  public final void z(final kotlin.g.a.a<x> parama)
-  {
-    AppMethodBeat.i(230005);
-    this.nTq = true;
-    Log.i("MicroMsg.AppBrandUILoadingSplash", "animateHide mCanShowHideAnimation[%b]", new Object[] { Boolean.valueOf(this.nXC) });
-    if (!this.nXC)
+    AppMethodBeat.i(234613);
+    this.qUR = true;
+    Log.i("MicroMsg.AppBrandUILoadingSplash", "animateHide mCanShowHideAnimation[%b]", new Object[] { Boolean.valueOf(this.qZk) });
+    if (!this.qZk)
     {
       Log.i("MicroMsg.AppBrandUILoadingSplash", "animateHide, start hide without animation");
       final ViewParent localViewParent = getParent();
       if (!(localViewParent instanceof ViewGroup))
       {
         Log.i("MicroMsg.AppBrandUILoadingSplash", "animateHide, wrong ViewGroup");
-        AppMethodBeat.o(230005);
+        AppMethodBeat.o(234613);
         return;
       }
       post(new Runnable()
@@ -428,7 +498,7 @@ public final class AppBrandUILoadingSplash
           AppMethodBeat.o(147679);
         }
       });
-      AppMethodBeat.o(230005);
+      AppMethodBeat.o(234613);
       return;
     }
     post(new Runnable()
@@ -444,7 +514,7 @@ public final class AppBrandUILoadingSplash
           AppMethodBeat.o(169536);
           return;
         }
-        AppBrandUILoadingSplash.b(AppBrandUILoadingSplash.this).bWU();
+        AppBrandUILoadingSplash.c(AppBrandUILoadingSplash.this).cjy();
         ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 255, 0 });
         localValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
         {
@@ -452,10 +522,10 @@ public final class AppBrandUILoadingSplash
           {
             AppMethodBeat.i(169534);
             int i = ((Integer)paramAnonymous2ValueAnimator.getAnimatedValue()).intValue();
-            int j = Color.argb(i, Color.red(this.nXF), Color.green(this.nXF), Color.blue(this.nXF));
-            AppBrandUILoadingSplash.a(AppBrandUILoadingSplash.this).setBackgroundColor(j);
+            int j = Color.argb(i, Color.red(this.qZn), Color.green(this.qZn), Color.blue(this.qZn));
+            AppBrandUILoadingSplash.b(AppBrandUILoadingSplash.this).setBackgroundColor(j);
             paramAnonymous2ValueAnimator = AppBrandUILoadingSplash.this;
-            if (!AppBrandUILoadingSplash.c(AppBrandUILoadingSplash.this)) {}
+            if (!AppBrandUILoadingSplash.e(AppBrandUILoadingSplash.this)) {}
             for (boolean bool = true;; bool = false)
             {
               AppBrandUILoadingSplash.a(paramAnonymous2ValueAnimator, j, bool);
@@ -467,9 +537,9 @@ public final class AppBrandUILoadingSplash
                     AppMethodBeat.i(169533);
                     Log.i("MicroMsg.AppBrandUILoadingSplash", "animateHide, hide ends && remove splash");
                     AppBrandUILoadingSplash.this.setVisibility(8);
-                    ((ViewGroup)AppBrandUILoadingSplash.3.1.this.nTy).removeView(AppBrandUILoadingSplash.this);
-                    if (AppBrandUILoadingSplash.3.this.nTx != null) {
-                      AppBrandUILoadingSplash.3.this.nTx.invoke();
+                    ((ViewGroup)AppBrandUILoadingSplash.3.1.this.qUZ).removeView(AppBrandUILoadingSplash.this);
+                    if (AppBrandUILoadingSplash.3.this.qUY != null) {
+                      AppBrandUILoadingSplash.3.this.qUY.invoke();
                     }
                     AppMethodBeat.o(169533);
                   }
@@ -482,7 +552,7 @@ public final class AppBrandUILoadingSplash
         });
         localValueAnimator.setStartDelay(Math.round(160.0F));
         localValueAnimator.setDuration(Math.round(40.0F));
-        localValueAnimator.setInterpolator(new android.support.v4.view.b.a());
+        localValueAnimator.setInterpolator(new androidx.f.a.a.a());
         localValueAnimator.start();
         localObject = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
         ((ValueAnimator)localObject).setDuration(Math.round(160.0F));
@@ -492,27 +562,58 @@ public final class AppBrandUILoadingSplash
           {
             AppMethodBeat.i(169535);
             float f = ((Float)paramAnonymous2ValueAnimator.getAnimatedValue()).floatValue();
-            AppBrandUILoadingSplash.d(AppBrandUILoadingSplash.this).setTextColor(Color.argb(Math.round(255.0F * f), Color.red(this.nnl), Color.green(this.nnl), Color.blue(this.nnl)));
-            AppBrandUILoadingSplash.b(AppBrandUILoadingSplash.this).setAlpha(f);
-            AppBrandUILoadingSplash.e(AppBrandUILoadingSplash.this).setAlpha(f);
-            AppBrandUILoadingSplash.f(AppBrandUILoadingSplash.this).setAlpha(f);
+            AppBrandUILoadingSplash.g(AppBrandUILoadingSplash.this).setTextColor(Color.argb(Math.round(255.0F * f), Color.red(this.qoT), Color.green(this.qoT), Color.blue(this.qoT)));
+            AppBrandUILoadingSplash.c(AppBrandUILoadingSplash.this).setAlpha(f);
+            AppBrandUILoadingSplash.h(AppBrandUILoadingSplash.this).setAlpha(f);
+            AppBrandUILoadingSplash.i(AppBrandUILoadingSplash.this).setAlpha(f);
             paramAnonymous2ValueAnimator = AppBrandUILoadingSplash.this;
-            int i = AppBrandUILoadingSplash.this.getResources().getColor(2131099650);
-            if (!AppBrandUILoadingSplash.c(AppBrandUILoadingSplash.this)) {}
+            int i = AppBrandUILoadingSplash.d(AppBrandUILoadingSplash.this);
+            if (!AppBrandUILoadingSplash.e(AppBrandUILoadingSplash.this)) {}
             for (boolean bool = true;; bool = false)
             {
-              paramAnonymous2ValueAnimator.S(i, bool);
+              paramAnonymous2ValueAnimator.T(i, bool);
               AppMethodBeat.o(169535);
               return;
             }
           }
         });
-        ((ValueAnimator)localObject).setInterpolator(new android.support.v4.view.b.b());
+        ((ValueAnimator)localObject).setInterpolator(new androidx.f.a.a.b());
         ((ValueAnimator)localObject).start();
         AppMethodBeat.o(169536);
       }
     });
-    AppMethodBeat.o(230005);
+    AppMethodBeat.o(234613);
+  }
+  
+  public final void yL(final int paramInt)
+  {
+    AppMethodBeat.i(147687);
+    if (this.nxs == null)
+    {
+      AppMethodBeat.o(147687);
+      return;
+    }
+    this.nxs.h(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(169538);
+        Log.i("MicroMsg.AppBrandUILoadingSplash", "onDataTransferState  state=" + paramInt);
+        if (paramInt == 3)
+        {
+          if (AppBrandUILoadingSplash.l(AppBrandUILoadingSplash.this) == null)
+          {
+            ((ViewStub)AppBrandUILoadingSplash.this.findViewById(a.d.appbrand_splash_loading_data_tip_viewstub)).inflate();
+            AppBrandUILoadingSplash.a(AppBrandUILoadingSplash.this, (TextView)AppBrandUILoadingSplash.this.findViewById(a.d.loading_data_tip));
+          }
+          AppBrandUILoadingSplash.l(AppBrandUILoadingSplash.this).setVisibility(0);
+          AppBrandUILoadingSplash.l(AppBrandUILoadingSplash.this).setText(a.g.appbrand_data_transfer_tip);
+          AppBrandUILoadingSplash.m(AppBrandUILoadingSplash.this).setVisibility(8);
+        }
+        AppMethodBeat.o(169538);
+      }
+    }, 0L);
+    AppMethodBeat.o(147687);
   }
   
   static abstract interface a
@@ -524,7 +625,7 @@ public final class AppBrandUILoadingSplash
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandUILoadingSplash
  * JD-Core Version:    0.7.0.1
  */

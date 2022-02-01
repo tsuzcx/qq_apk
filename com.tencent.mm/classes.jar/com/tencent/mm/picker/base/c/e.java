@@ -8,62 +8,62 @@ import java.util.TimerTask;
 public final class e
   extends TimerTask
 {
-  private final WheelView jKa;
-  private int jKf;
-  private int jKg;
+  private final WheelView mBd;
+  private int mBi;
+  private int mBj;
   private int offset;
   
   public e(WheelView paramWheelView, int paramInt)
   {
-    this.jKa = paramWheelView;
+    this.mBd = paramWheelView;
     this.offset = paramInt;
-    this.jKf = 2147483647;
-    this.jKg = 0;
+    this.mBi = 2147483647;
+    this.mBj = 0;
   }
   
   public final void run()
   {
     AppMethodBeat.i(175298);
-    if (this.jKf == 2147483647) {
-      this.jKf = this.offset;
+    if (this.mBi == 2147483647) {
+      this.mBi = this.offset;
     }
-    this.jKg = ((int)(this.jKf * 0.1F));
-    if (this.jKg == 0) {
-      if (this.jKf >= 0) {
+    this.mBj = ((int)(this.mBi * 0.1F));
+    if (this.mBj == 0) {
+      if (this.mBi >= 0) {
         break label92;
       }
     }
     label92:
-    for (this.jKg = -1; Math.abs(this.jKf) <= 1; this.jKg = 1)
+    for (this.mBj = -1; Math.abs(this.mBi) <= 1; this.mBj = 1)
     {
-      this.jKa.bkU();
-      this.jKa.getHandler().sendEmptyMessage(3000);
+      this.mBd.buH();
+      this.mBd.getHandler().sendEmptyMessage(3000);
       AppMethodBeat.o(175298);
       return;
     }
-    this.jKa.setTotalScrollY(this.jKa.getTotalScrollY() + this.jKg);
-    if (!this.jKa.jqj)
+    this.mBd.setTotalScrollY(this.mBd.getTotalScrollY() + this.mBj);
+    if (!this.mBd.mfK)
     {
-      float f1 = this.jKa.getItemHeight();
-      float f2 = -this.jKa.getInitPosition();
-      float f3 = this.jKa.getItemsCount() - 1 - this.jKa.getInitPosition();
-      if ((this.jKa.getTotalScrollY() <= f2 * f1) || (this.jKa.getTotalScrollY() >= f1 * f3))
+      float f1 = this.mBd.getItemHeight();
+      float f2 = -this.mBd.getInitPosition();
+      float f3 = this.mBd.getItemsCount() - 1 - this.mBd.getInitPosition();
+      if ((this.mBd.getTotalScrollY() <= f2 * f1) || (this.mBd.getTotalScrollY() >= f1 * f3))
       {
-        this.jKa.setTotalScrollY(this.jKa.getTotalScrollY() - this.jKg);
-        this.jKa.bkU();
-        this.jKa.getHandler().sendEmptyMessage(3000);
+        this.mBd.setTotalScrollY(this.mBd.getTotalScrollY() - this.mBj);
+        this.mBd.buH();
+        this.mBd.getHandler().sendEmptyMessage(3000);
         AppMethodBeat.o(175298);
         return;
       }
     }
-    this.jKa.getHandler().sendEmptyMessage(1000);
-    this.jKf -= this.jKg;
+    this.mBd.getHandler().sendEmptyMessage(1000);
+    this.mBi -= this.mBj;
     AppMethodBeat.o(175298);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.picker.base.c.e
  * JD-Core Version:    0.7.0.1
  */

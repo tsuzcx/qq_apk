@@ -20,18 +20,18 @@ import kotlin.l.b.a.b.m.bh;
 public final class ai
   extends e
 {
-  private final b<ab, Void> Tmr;
-  private final List<ab> Tms;
+  private final b<ab, Void> aaPl;
+  private final List<ab> aaPm;
   private boolean initialized;
   
   private ai(l paraml, kotlin.l.b.a.b.b.a.g paramg, boolean paramBoolean, bh parambh, f paramf, int paramInt, an paraman, aq paramaq, j paramj)
   {
     super(paramj, paraml, paramg, paramf, parambh, paramBoolean, paramInt, paraman, paramaq);
-    AppMethodBeat.i(186249);
-    this.Tms = new ArrayList(1);
+    AppMethodBeat.i(259654);
+    this.aaPm = new ArrayList(1);
     this.initialized = false;
-    this.Tmr = null;
-    AppMethodBeat.o(186249);
+    this.aaPl = null;
+    AppMethodBeat.o(259654);
   }
   
   private void L(ab paramab)
@@ -42,109 +42,109 @@ public final class ai
       AppMethodBeat.o(57325);
       return;
     }
-    this.Tms.add(paramab);
+    this.aaPm.add(paramab);
     AppMethodBeat.o(57325);
   }
   
   public static as a(l paraml, kotlin.l.b.a.b.b.a.g paramg, bh parambh, f paramf, int paramInt, j paramj)
   {
-    AppMethodBeat.i(186246);
+    AppMethodBeat.i(259648);
     if (paraml == null) {
-      atM(0);
+      aDG(0);
     }
     if (paramg == null) {
-      atM(1);
+      aDG(1);
     }
     if (parambh == null) {
-      atM(2);
+      aDG(2);
     }
     if (paramf == null) {
-      atM(3);
+      aDG(3);
     }
     if (paramj == null) {
-      atM(4);
+      aDG(4);
     }
-    paramg = a(paraml, paramg, false, parambh, paramf, paramInt, an.ThK, paramj);
-    paramg.K(a.G(paraml).hzk());
-    paramg.setInitialized();
+    paramg = a(paraml, paramg, false, parambh, paramf, paramInt, an.aaKE, paramj);
+    paramg.K(a.G(paraml).iDw());
+    paramg.iGP();
     if (paramg == null) {
-      atM(5);
+      aDG(5);
     }
-    AppMethodBeat.o(186246);
+    AppMethodBeat.o(259648);
     return paramg;
   }
   
   private static ai a(l paraml, kotlin.l.b.a.b.b.a.g paramg, boolean paramBoolean, bh parambh, f paramf, int paramInt, an paraman, aq paramaq, j paramj)
   {
-    AppMethodBeat.i(186248);
+    AppMethodBeat.i(259653);
     if (paraml == null) {
-      atM(12);
+      aDG(12);
     }
     if (paramg == null) {
-      atM(13);
+      aDG(13);
     }
     if (parambh == null) {
-      atM(14);
+      aDG(14);
     }
     if (paramf == null) {
-      atM(15);
+      aDG(15);
     }
     if (paraman == null) {
-      atM(16);
+      aDG(16);
     }
     if (paramaq == null) {
-      atM(17);
+      aDG(17);
     }
     if (paramj == null) {
-      atM(18);
+      aDG(18);
     }
     paraml = new ai(paraml, paramg, paramBoolean, parambh, paramf, paramInt, paraman, paramaq, paramj);
-    AppMethodBeat.o(186248);
+    AppMethodBeat.o(259653);
     return paraml;
   }
   
   public static ai a(l paraml, kotlin.l.b.a.b.b.a.g paramg, boolean paramBoolean, bh parambh, f paramf, int paramInt, an paraman, j paramj)
   {
-    AppMethodBeat.i(186247);
+    AppMethodBeat.i(259651);
     if (paraml == null) {
-      atM(6);
+      aDG(6);
     }
     if (paramg == null) {
-      atM(7);
+      aDG(7);
     }
     if (parambh == null) {
-      atM(8);
+      aDG(8);
     }
     if (paramf == null) {
-      atM(9);
+      aDG(9);
     }
     if (paraman == null) {
-      atM(10);
+      aDG(10);
     }
     if (paramj == null) {
-      atM(11);
+      aDG(11);
     }
-    paraml = a(paraml, paramg, paramBoolean, parambh, paramf, paramInt, paraman, aq.a.ThM, paramj);
-    AppMethodBeat.o(186247);
+    paraml = a(paraml, paramg, paramBoolean, parambh, paramf, paramInt, paraman, aq.a.aaKG, paramj);
+    AppMethodBeat.o(259651);
     return paraml;
   }
   
-  private void hCx()
+  private void iGN()
   {
     AppMethodBeat.i(57321);
     if (this.initialized)
     {
-      IllegalStateException localIllegalStateException = new IllegalStateException("Type parameter descriptor is already initialized: " + hCy());
+      IllegalStateException localIllegalStateException = new IllegalStateException("Type parameter descriptor is already initialized: " + iGO());
       AppMethodBeat.o(57321);
       throw localIllegalStateException;
     }
     AppMethodBeat.o(57321);
   }
   
-  private String hCy()
+  private String iGO()
   {
     AppMethodBeat.i(57322);
-    String str = hAH() + " declared in " + c.n(hzx());
+    String str = iEU() + " declared in " + c.n(iDJ());
     AppMethodBeat.o(57322);
     return str;
   }
@@ -153,14 +153,14 @@ public final class ai
   {
     AppMethodBeat.i(57326);
     if (paramab == null) {
-      atM(27);
+      aDG(27);
     }
-    if (this.Tmr == null)
+    if (this.aaPl == null)
     {
       AppMethodBeat.o(57326);
       return;
     }
-    this.Tmr.invoke(paramab);
+    this.aaPl.invoke(paramab);
     AppMethodBeat.o(57326);
   }
   
@@ -168,41 +168,41 @@ public final class ai
   {
     AppMethodBeat.i(57324);
     if (paramab == null) {
-      atM(26);
+      aDG(26);
     }
-    hCx();
+    iGN();
     L(paramab);
     AppMethodBeat.o(57324);
   }
   
-  protected final List<ab> hBW()
+  public final void iGP()
+  {
+    AppMethodBeat.i(57323);
+    iGN();
+    this.initialized = true;
+    AppMethodBeat.o(57323);
+  }
+  
+  protected final List<ab> iGl()
   {
     AppMethodBeat.i(57327);
     if (!this.initialized)
     {
-      localObject = new IllegalStateException("Type parameter descriptor is not initialized: " + hCy());
+      localObject = new IllegalStateException("Type parameter descriptor is not initialized: " + iGO());
       AppMethodBeat.o(57327);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.Tms;
+    Object localObject = this.aaPm;
     if (localObject == null) {
-      atM(28);
+      aDG(28);
     }
     AppMethodBeat.o(57327);
     return localObject;
   }
-  
-  public final void setInitialized()
-  {
-    AppMethodBeat.i(57323);
-    hCx();
-    this.initialized = true;
-    AppMethodBeat.o(57323);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.c.ai
  * JD-Core Version:    0.7.0.1
  */

@@ -11,27 +11,27 @@ import org.json.JSONObject;
 
 public final class MallOrderDetailObject
 {
-  public MallTransactionObject ANI;
-  public b ANJ;
-  public ArrayList<ProductSectionItem> ANK;
-  public List<a> ANL;
-  public List<MallOrderDetailObject.HelpCenter> ANM;
-  int ANN;
-  public String ANO;
-  public String ANP;
-  public int ANQ;
+  public MallTransactionObject GGW;
+  public b GGX;
+  public ArrayList<ProductSectionItem> GGY;
+  public List<a> GGZ;
+  public List<MallOrderDetailObject.HelpCenter> GHa;
+  int GHb;
+  public String GHc;
+  public String GHd;
+  public int GHe;
   public String appUserName;
-  public String rJd;
+  public String voL;
   
   public MallOrderDetailObject()
   {
     AppMethodBeat.i(66651);
-    this.ANM = new LinkedList();
-    this.ANN = -1;
+    this.GHa = new LinkedList();
+    this.GHb = -1;
     AppMethodBeat.o(66651);
   }
   
-  static ArrayList<ProductSectionItem> bf(JSONObject paramJSONObject)
+  static ArrayList<ProductSectionItem> bm(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(66652);
     paramJSONObject = paramJSONObject.getJSONObject("product_section");
@@ -58,11 +58,11 @@ public final class MallOrderDetailObject
         localProductSectionItem.name = localJSONObject.optString("name");
         try
         {
-          localProductSectionItem.APw = bg(localJSONObject);
+          localProductSectionItem.GIK = bn(localJSONObject);
           localProductSectionItem.count = localJSONObject.optInt("count");
           localProductSectionItem.price = localJSONObject.optString("price");
           localProductSectionItem.jumpUrl = localJSONObject.optString("jump_url");
-          localProductSectionItem.APx = localJSONObject.optString("pid");
+          localProductSectionItem.GIL = localJSONObject.optString("pid");
           localProductSectionItem.scene = localJSONObject.optInt("scene");
           localArrayList.add(localProductSectionItem);
           i += 1;
@@ -87,7 +87,7 @@ public final class MallOrderDetailObject
     return localArrayList;
   }
   
-  private static List<ProductSectionItem.Skus> bg(JSONObject paramJSONObject)
+  private static List<ProductSectionItem.Skus> bn(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(66653);
     paramJSONObject = paramJSONObject.getJSONArray("skus");
@@ -116,18 +116,18 @@ public final class MallOrderDetailObject
     public int jumpType;
     public String jumpUrl;
     public String name;
-    public boolean pSj;
+    public boolean toi;
     public int type = 0;
     public String value;
   }
   
   public static final class b
   {
-    public String ANR;
-    public String ANS;
-    public int hXs;
+    public String CMD;
+    public String GHf;
+    public String GHg;
     public String thumbUrl;
-    public String xIy;
+    public int time;
   }
 }
 

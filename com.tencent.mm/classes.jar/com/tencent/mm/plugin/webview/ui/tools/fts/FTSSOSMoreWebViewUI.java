@@ -13,67 +13,86 @@ import android.view.View.OnTouchListener;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.websearch.ui.widget.SOSEditTextView;
+import com.tencent.mm.plugin.webview.c.c;
+import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.plugin.webview.c.g;
+import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.vendor.MIUI;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.search.FTSEditTextView;
 
 public class FTSSOSMoreWebViewUI
   extends BaseSOSWebViewUI
 {
-  private View JoE;
-  private int Joe;
+  private View QlY;
+  private int Qlw;
   
-  public boolean awE()
+  public boolean aDV()
   {
     AppMethodBeat.i(80695);
-    ggL().gXf();
-    this.JoE.setVisibility(0);
-    boolean bool = super.awE();
+    haa().hXQ();
+    this.QlY.setVisibility(0);
+    boolean bool = super.aDV();
     AppMethodBeat.o(80695);
     return bool;
   }
   
-  public final int bXh()
+  public final int cjL()
   {
     AppMethodBeat.i(80693);
-    if ((d.oD(23)) && (!MIUI.isMIUIV8()))
+    if ((d.qV(23)) && (!MIUI.isMIUIV8()))
     {
-      i = getResources().getColor(2131101424);
+      i = getResources().getColor(c.c.white);
       AppMethodBeat.o(80693);
       return i;
     }
-    int i = super.bXh();
+    int i = super.cjL();
     AppMethodBeat.o(80693);
     return i;
   }
   
-  public final void eh(boolean paramBoolean)
+  public final void eF(boolean paramBoolean)
   {
     AppMethodBeat.i(80694);
-    super.eh(paramBoolean);
+    super.eF(paramBoolean);
     if (!paramBoolean)
     {
-      this.Jnb.setPadding(this.Joe, 0, this.Jnb.getPaddingRight(), 0);
-      ggL().gWY();
+      this.Qks.setPadding(this.Qlw, 0, this.Qks.getPaddingRight(), 0);
+      haa().hXB();
     }
-    ggL().gXf();
+    haa().hXQ();
     AppMethodBeat.o(80694);
+  }
+  
+  protected final void gZU()
+  {
+    AppMethodBeat.i(80696);
+    finish();
+    AppMethodBeat.o(80696);
+  }
+  
+  protected final void gZW()
+  {
+    AppMethodBeat.i(80698);
+    super.gZW();
+    this.QlY.setVisibility(0);
+    AppMethodBeat.o(80698);
   }
   
   protected String getHint()
   {
     AppMethodBeat.i(80697);
     int i = -1;
-    if ((getType() == 8) && (this.Jnz)) {
-      i = 2131761018;
+    if ((getType() == 8) && (this.QkQ)) {
+      i = c.i.fts_header_timeline_publisher;
     }
     while (i < 0)
     {
-      str = MMApplicationContext.getContext().getResources().getString(2131755972) + agR(getType());
+      str = MMApplicationContext.getContext().getResources().getString(c.i.app_search) + aoI(getType());
       AppMethodBeat.o(80697);
       return str;
       switch (getType())
@@ -81,78 +100,63 @@ public class FTSSOSMoreWebViewUI
       default: 
         break;
       case 1: 
-        i = 2131765075;
+        i = c.i.search_education_biz_contact;
         break;
       case 8: 
-        i = 2131761017;
+        i = c.i.fts_header_timeline;
         break;
       case 2: 
-        i = 2131765074;
+        i = c.i.search_education_article;
         break;
       case 16: 
-        i = 2131761015;
+        i = c.i.fts_header_poi;
         break;
       case 64: 
-        i = 2131755440;
+        i = c.i.app_brand_entrance;
         break;
       case 256: 
       case 384: 
-        i = 2131761004;
+        i = c.i.fts_header_emoji;
         break;
       case 128: 
-        i = 2131761005;
+        i = c.i.fts_header_emoji_product;
         break;
       case 512: 
-        i = 2131761013;
+        i = c.i.fts_header_music;
         break;
       case 1024: 
-        i = 2131761014;
+        i = c.i.fts_header_novel;
       }
     }
-    String str = MMApplicationContext.getContext().getResources().getString(2131765073, new Object[] { MMApplicationContext.getContext().getResources().getString(i) });
+    String str = MMApplicationContext.getContext().getResources().getString(c.i.search_detail_page_hint, new Object[] { MMApplicationContext.getContext().getResources().getString(i) });
     AppMethodBeat.o(80697);
     return str;
   }
   
   public int getLayoutId()
   {
-    return 2131496533;
-  }
-  
-  protected final void ggF()
-  {
-    AppMethodBeat.i(80696);
-    finish();
-    AppMethodBeat.o(80696);
-  }
-  
-  protected final void ggH()
-  {
-    AppMethodBeat.i(80698);
-    super.ggH();
-    this.JoE.setVisibility(0);
-    AppMethodBeat.o(80698);
+    return c.g.sos_more_webview_ui;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     boolean bool = false;
-    AppMethodBeat.i(211289);
+    AppMethodBeat.i(265887);
     super.onCreate(paramBundle);
-    this.JoE = findViewById(2131310394);
-    ggL().fYP();
-    ggL().gXf();
-    ggL().gWY();
-    this.Joe = a.fromDPToPix(this, 48);
+    this.QlY = findViewById(c.f.webview_keyboard_ll);
+    haa().gRA();
+    haa().hXQ();
+    haa().hXB();
+    this.Qlw = a.fromDPToPix(this, 48);
     if (getScene() == 24) {
-      this.JoE.setVisibility(4);
+      this.QlY.setVisibility(4);
     }
-    findViewById(2131307157).setOnTouchListener(new View.OnTouchListener()
+    findViewById(c.f.root).setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(80690);
-        FTSSOSMoreWebViewUI.this.ggL().vy.clearFocus();
+        FTSSOSMoreWebViewUI.this.haa().bGw.clearFocus();
         FTSSOSMoreWebViewUI.this.hideVKB();
         AppMethodBeat.o(80690);
         return false;
@@ -164,22 +168,22 @@ public class FTSSOSMoreWebViewUI
         public final void run()
         {
           AppMethodBeat.i(80691);
-          FTSSOSMoreWebViewUI.this.ggL().awD();
-          FTSSOSMoreWebViewUI.this.ggL().awC();
+          FTSSOSMoreWebViewUI.this.haa().aDU();
+          FTSSOSMoreWebViewUI.this.haa().aDT();
           AppMethodBeat.o(80691);
         }
       }, 128L);
     }
-    int i = getResources().getColor(2131101424);
-    if (!ao.isDarkMode()) {
+    int i = getResources().getColor(c.c.white);
+    if (!ar.isDarkMode()) {
       bool = true;
     }
-    bt(i, bool);
-    paramBundle = ggL().getClearBtn();
+    bF(i, bool);
+    paramBundle = haa().getClearBtn();
     if (paramBundle != null) {
       paramBundle.getDrawable().setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
     }
-    AppMethodBeat.o(211289);
+    AppMethodBeat.o(265887);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -190,7 +194,7 @@ public class FTSSOSMoreWebViewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.FTSSOSMoreWebViewUI
  * JD-Core Version:    0.7.0.1
  */

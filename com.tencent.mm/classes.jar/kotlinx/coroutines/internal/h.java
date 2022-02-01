@@ -6,20 +6,20 @@ import kotlin.Result.Companion;
 import kotlin.ResultKt;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"ANDROID_DETECTED", "", "getANDROID_DETECTED", "()Z", "kotlinx-coroutines-core"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"ANDROID_DETECTED", "", "getANDROID_DETECTED", "()Z", "kotlinx-coroutines-core"})
 public final class h
 {
-  private static final boolean TVL;
+  private static final boolean abzc;
   
   static
   {
-    AppMethodBeat.i(192448);
+    AppMethodBeat.i(205102);
     try
     {
       Object localObject1 = Result.Companion;
       localObject1 = Result.constructor-impl(Class.forName("android.os.Build"));
-      TVL = Result.isSuccess-impl(localObject1);
-      AppMethodBeat.o(192448);
+      abzc = Result.isSuccess-impl(localObject1);
+      AppMethodBeat.o(205102);
       return;
     }
     catch (Throwable localThrowable)
@@ -32,14 +32,14 @@ public final class h
     }
   }
   
-  public static final boolean hNG()
+  public static final boolean iSI()
   {
-    return TVL;
+    return abzc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.internal.h
  * JD-Core Version:    0.7.0.1
  */

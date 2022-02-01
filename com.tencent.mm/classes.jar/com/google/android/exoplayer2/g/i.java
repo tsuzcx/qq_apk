@@ -7,17 +7,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
 {
-  public final r bEF;
-  public final g bEG;
-  public final t[] bEH;
+  public final r boh;
+  public final g boi;
+  public final t[] boj;
   public final Object info;
   
   public i(r paramr, g paramg, Object paramObject, t[] paramArrayOft)
   {
-    this.bEF = paramr;
-    this.bEG = paramg;
+    this.boh = paramr;
+    this.boi = paramg;
     this.info = paramObject;
-    this.bEH = paramArrayOft;
+    this.boj = paramArrayOft;
   }
   
   public final boolean a(i parami)
@@ -29,7 +29,7 @@ public final class i
       return false;
     }
     int i = 0;
-    while (i < this.bEG.length)
+    while (i < this.boi.length)
     {
       if (!a(parami, i))
       {
@@ -50,7 +50,7 @@ public final class i
       AppMethodBeat.o(92954);
       return false;
     }
-    if ((x.j(this.bEG.bED[paramInt], parami.bEG.bED[paramInt])) && (x.j(this.bEH[paramInt], parami.bEH[paramInt])))
+    if ((x.h(this.boi.bof[paramInt], parami.boi.bof[paramInt])) && (x.h(this.boj[paramInt], parami.boj[paramInt])))
     {
       AppMethodBeat.o(92954);
       return true;
@@ -61,7 +61,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.g.i
  * JD-Core Version:    0.7.0.1
  */

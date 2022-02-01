@@ -10,16 +10,16 @@ public final class f<K, V>
   
   public f()
   {
-    AppMethodBeat.i(189634);
+    AppMethodBeat.i(222225);
     this.map = new HashMap();
-    AppMethodBeat.o(189634);
+    AppMethodBeat.o(222225);
   }
   
-  public final f<K, V> S(K paramK, V paramV)
+  public final f<K, V> L(K paramK, V paramV)
   {
-    AppMethodBeat.i(189635);
+    AppMethodBeat.i(222227);
     this.map.put(paramK, paramV);
-    AppMethodBeat.o(189635);
+    AppMethodBeat.o(222227);
     return this;
   }
 }

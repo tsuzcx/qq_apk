@@ -13,13 +13,13 @@ public final class b<T>
   implements View.OnClickListener
 {
   private Context context;
-  public d jLI;
+  public d mCM;
   
   public b(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(175345);
-    this.jLI = new d();
+    this.mCM = new d();
     this.context = paramContext;
     AppMethodBeat.o(175345);
   }
@@ -27,88 +27,82 @@ public final class b<T>
   public final void a(com.tencent.mm.picker.c.a parama)
   {
     AppMethodBeat.i(175346);
-    this.jKP = parama;
+    this.mBU = parama;
     Object localObject = this.context;
-    ble();
-    blb();
-    blc();
-    parama = this.jLI;
+    buT();
+    buQ();
+    buR();
+    parama = this.mCM;
     localObject = new WheelView((Context)localObject);
-    parama.jKW = this.jKP.jKW;
-    if (parama.jLL == null) {
-      parama.jLL = ((WheelView)localObject);
+    parama.mCb = this.mBU.mCb;
+    if (parama.mCQ == null) {
+      parama.mCQ = ((WheelView)localObject);
     }
-    parama.jLM = parama.jLL;
-    if (this.jKP.jKU != null) {
-      this.jLI.jKU = this.jKP.jKU;
+    parama.mCR = parama.mCQ;
+    if (this.mBU.mBZ != null) {
+      this.mCM.mBZ = this.mBU.mBZ;
     }
-    parama = this.jLI;
-    localObject = this.jKP.label;
+    parama = this.mCM;
+    localObject = this.mBU.label;
     if (localObject != null) {
-      parama.jLM.setLabel((String)localObject);
+      parama.mCR.setLabel((String)localObject);
     }
-    parama = this.jLI;
-    boolean bool = this.jKP.jKV;
-    parama.jLM.setCyclic(bool);
-    gd(this.jKP.ox);
-    this.jLI.setDividerColor(this.jKP.jKu);
-    this.jLI.jLw = this.jKP.jLw;
-    this.jLI.jLu = this.jKP.jLu;
-    parama = this.jLI;
-    bool = this.jKP.jKn;
-    parama.jLM.jKn = bool;
-    this.jLI.uQ(this.jKP.kn);
-    this.jLI.setDividerColor(this.jKP.jKu);
+    parama = this.mCM;
+    boolean bool = this.mBU.mCa;
+    parama.mCR.setCyclic(bool);
+    gP(this.mBU.bxO);
+    this.mCM.setDividerColor(this.mBU.mBx);
+    this.mCM.mCA = this.mBU.mCA;
+    this.mCM.mCy = this.mBU.mCy;
+    parama = this.mCM;
+    bool = this.mBU.mBq;
+    parama.mCR.mBq = bool;
+    this.mCM.xU(this.mBU.bwU);
+    this.mCM.setDividerColor(this.mBU.mBx);
     AppMethodBeat.o(175346);
   }
   
-  public final void a(com.tencent.mm.picker.d.b paramb)
-  {
-    this.jKP.jKU = paramb;
-    this.jLI.jKU = this.jKP.jKU;
-  }
-  
-  public final void aO(List<T> paramList)
+  public final void aM(List<T> paramList)
   {
     AppMethodBeat.i(175347);
-    d locald = this.jLI;
-    locald.jLN = paramList;
-    locald.jLM.setAdapter(new com.tencent.mm.picker.a.a(locald.jLN));
-    locald.jLM.setCurrentItem(0);
-    locald.jLM.setIsOptions(true);
+    d locald = this.mCM;
+    locald.mCS = paramList;
+    locald.mCR.setAdapter(new com.tencent.mm.picker.a.a(locald.mCS));
+    locald.mCR.setCurrentItem(0);
+    locald.mCR.setIsOptions(true);
     d.1 local1 = new d.1(locald);
-    if ((paramList != null) && (locald.jLO)) {
-      locald.jLM.setOnItemSelectedListener(local1);
+    if ((paramList != null) && (locald.mCT)) {
+      locald.mCR.setOnItemSelectedListener(local1);
     }
-    if (this.jLI != null) {
-      this.jLI.uQ(this.jKP.option);
+    if (this.mCM != null) {
+      this.mCM.xU(this.mBU.option);
     }
     AppMethodBeat.o(175347);
   }
   
-  public final boolean blf()
+  public final boolean buU()
   {
-    return this.jKP.jLv;
+    return this.mBU.mCz;
   }
   
-  public final void blg()
+  public final void buV()
   {
     AppMethodBeat.i(175349);
-    if (this.jKP.jKR != null)
+    if (this.mBU.mBW != null)
     {
-      int[] arrayOfInt = this.jLI.blk();
-      this.jKP.jKR.uP(arrayOfInt[0]);
+      int[] arrayOfInt = this.mCM.bva();
+      this.mBU.mBW.xT(arrayOfInt[0]);
     }
     AppMethodBeat.o(175349);
   }
   
-  public final WheelView blh()
+  public final WheelView buW()
   {
     AppMethodBeat.i(175350);
-    if (this.jLI.jLL == null) {
-      this.jLI.jLL = new WheelView(this.context);
+    if (this.mCM.mCQ == null) {
+      this.mCM.mCQ = new WheelView(this.context);
     }
-    WheelView localWheelView = this.jLI.jLL;
+    WheelView localWheelView = this.mCM.mCQ;
     AppMethodBeat.o(175350);
     return localWheelView;
   }
@@ -117,10 +111,10 @@ public final class b<T>
   {
     AppMethodBeat.i(175348);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/picker/view/OptionsPickerView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    localb.bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/picker/view/OptionsPickerView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
     if (((String)paramView.getTag()).equals("submit")) {
-      blg();
+      buV();
     }
     dismiss();
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/picker/view/OptionsPickerView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -130,13 +124,19 @@ public final class b<T>
   public final void setDividerHeight(float paramFloat)
   {
     AppMethodBeat.i(175351);
-    this.jLI.jLM.setDividerHeight(paramFloat);
+    this.mCM.mCR.setDividerHeight(paramFloat);
     AppMethodBeat.o(175351);
+  }
+  
+  public final void setOnValueChangedListener(com.tencent.mm.picker.d.b paramb)
+  {
+    this.mBU.mBZ = paramb;
+    this.mCM.mBZ = this.mBU.mBZ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.picker.f.b
  * JD-Core Version:    0.7.0.1
  */

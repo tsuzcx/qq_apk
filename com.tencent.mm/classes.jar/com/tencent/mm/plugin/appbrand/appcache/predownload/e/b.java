@@ -10,20 +10,20 @@ import com.tencent.mm.sdk.storage.MAutoStorage;
 public class b
   extends MAutoStorage<a>
 {
-  public static final String[] iBh;
-  private final ISQLiteDatabase kLX;
+  public static final String[] lqL;
+  private final ISQLiteDatabase nFQ;
   
   static
   {
     AppMethodBeat.i(44436);
-    iBh = new String[] { MAutoStorage.getCreateSQLs(a.iBg, "PredownloadBlockCgiRequest") };
+    lqL = new String[] { MAutoStorage.getCreateSQLs(a.lqK, "PredownloadBlockCgiRequest") };
     AppMethodBeat.o(44436);
   }
   
   public b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, a.iBg, "PredownloadBlockCgiRequest", a.INDEX_CREATE);
-    this.kLX = paramISQLiteDatabase;
+    super(paramISQLiteDatabase, a.lqK, "PredownloadBlockCgiRequest", a.INDEX_CREATE);
+    this.nFQ = paramISQLiteDatabase;
   }
   
   private Pair<Boolean, Integer> c(String paramString1, String paramString2, int paramInt1, int paramInt2)
@@ -32,7 +32,7 @@ public class b
     AppMethodBeat.i(44435);
     long l = Util.nowSecond();
     paramString1 = "select reportId from PredownloadBlockCgiRequest where " + paramString1 + "=? and startTime<" + l + " and " + l + "<endTime and cgiList like '%;" + paramInt1 + ";%' and sceneList like '%;" + paramInt2 + ";%'";
-    paramString1 = this.kLX.rawQuery(paramString1, new String[] { paramString2 });
+    paramString1 = this.nFQ.rawQuery(paramString1, new String[] { paramString2 });
     if ((paramString1 == null) || (paramString1.isClosed()))
     {
       paramString1 = Pair.create(Boolean.FALSE, Integer.valueOf(-1));
@@ -68,7 +68,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.predownload.e.b
  * JD-Core Version:    0.7.0.1
  */

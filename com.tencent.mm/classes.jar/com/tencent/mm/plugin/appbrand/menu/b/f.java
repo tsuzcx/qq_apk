@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.appbrand.menu.b;
 
 import com.tencent.mm.plugin.appbrand.menu.a.b;
-import com.tencent.mm.plugin.appbrand.page.ag;
+import com.tencent.mm.plugin.appbrand.page.ah;
 
 public final class f
-  implements b<ag>
+  implements b<ah>
 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.b.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.soter.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jv;
+import com.tencent.mm.f.a.kl;
 import com.tencent.mm.sdk.event.IListener;
 
 public final class c
-  extends IListener<jv>
+  extends IListener<kl>
 {
   public c()
   {
     AppMethodBeat.i(161755);
-    this.__eventId = jv.class.getName().hashCode();
+    this.__eventId = kl.class.getName().hashCode();
     AppMethodBeat.o(161755);
   }
 }

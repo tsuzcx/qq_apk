@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:id="@id/ipm" style="@style/mu" />
+    <com.tencent.mm.plugin.account.sdk.MMImeClearEditText android:id="@id/bxz" android:layout_width="0.0dip" android:layout_weight="1.0" android:imeOptions="actionDone" style="@style/ms" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/esl" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/safe_keyboard" android:layout_centerVertical="true" android:layout_marginStart="-8.0dip" app:iconColor="@color/FG_1" />
+</merge>

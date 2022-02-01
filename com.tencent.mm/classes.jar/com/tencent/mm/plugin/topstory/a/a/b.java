@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public final class b
 {
-  public static void fxU()
+  public static void gpP()
   {
     AppMethodBeat.i(91001);
     try
@@ -23,7 +23,7 @@ public final class b
       localIDKey2.SetKey(1);
       localArrayList.add(localIDKey1);
       localArrayList.add(localIDKey2);
-      h.CyF.b(localArrayList, false);
+      h.IzE.b(localArrayList, false);
       AppMethodBeat.o(91001);
       return;
     }

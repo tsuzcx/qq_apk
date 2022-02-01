@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.ac;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class j
@@ -40,7 +40,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ac.j
  * JD-Core Version:    0.7.0.1
  */

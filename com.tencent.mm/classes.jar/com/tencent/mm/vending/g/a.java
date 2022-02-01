@@ -12,14 +12,14 @@ public final class a
     AppMethodBeat.o(74802);
   }
   
-  public final void ej(Object paramObject)
+  public final void eo(Object paramObject)
   {
     AppMethodBeat.i(74800);
     com.tencent.mm.vending.f.a.w("Vending.DummyMario", "call DummyMario interrupt()", new Object[0]);
     AppMethodBeat.o(74800);
   }
   
-  public final void hdw()
+  public final void ieD()
   {
     AppMethodBeat.i(74801);
     com.tencent.mm.vending.f.a.w("Vending.DummyMario", "call DummyMario pending()", new Object[0]);
@@ -35,7 +35,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vending.g.a
  * JD-Core Version:    0.7.0.1
  */

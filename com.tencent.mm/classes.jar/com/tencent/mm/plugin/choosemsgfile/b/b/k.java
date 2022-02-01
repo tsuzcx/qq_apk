@@ -8,13 +8,17 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.b;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.g.c.eo;
+import com.tencent.mm.aj.k.b;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.ap;
+import com.tencent.mm.model.aq;
+import com.tencent.mm.plugin.chatroom.a.b;
+import com.tencent.mm.plugin.choosemsgfile.a.h;
+import com.tencent.mm.plugin.choosemsgfile.b.c.g;
+import com.tencent.mm.plugin.choosemsgfile.b.d.c;
 import com.tencent.mm.plugin.fav.ui.e;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.storage.ah;
 import com.tencent.mm.storage.as;
@@ -25,18 +29,18 @@ import com.tencent.mm.ui.widget.MMPinProgressBtn;
 public class k
   extends a<n>
 {
-  private String goe;
-  private k.b qnG;
-  public String qnQ;
-  private String qnT;
-  private Integer qnU;
-  private String qnV;
-  private String qnW;
+  private String iSn;
+  private String tMB;
+  private Integer tMC;
+  private String tMD;
+  private String tME;
+  private k.b tMt;
+  public String tMy;
   
-  public k(com.tencent.mm.plugin.choosemsgfile.b.c.g paramg, ca paramca, String paramString)
+  public k(g paramg, ca paramca, String paramString)
   {
     super(paramg, paramca);
-    this.qnQ = paramString;
+    this.tMy = paramString;
   }
   
   private void a(final n paramn)
@@ -60,21 +64,21 @@ public class k
     AppMethodBeat.o(123292);
   }
   
-  private String ajy()
+  private String apg()
   {
     AppMethodBeat.i(123290);
     Object localObject;
-    if (this.qnW == null)
+    if (this.tME == null)
     {
-      localObject = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().Kn(this.qnQ);
+      localObject = ((com.tencent.mm.plugin.messenger.foundation.a.n)h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL().RG(this.tMy);
       if (localObject == null) {
         break label59;
       }
     }
     label59:
-    for (this.qnW = ((ax)localObject).field_conRemark;; this.qnW = "")
+    for (this.tME = ((ax)localObject).field_conRemark;; this.tME = "")
     {
-      localObject = this.qnW;
+      localObject = this.tME;
       AppMethodBeat.o(123290);
       return localObject;
     }
@@ -83,137 +87,126 @@ public class k
   private void b(n paramn)
   {
     AppMethodBeat.i(123293);
-    switch (this.qnF)
+    switch (this.tMs)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(123293);
       return;
-      paramn.kdb.setVisibility(0);
-      paramn.qoc.setVisibility(8);
-      paramn.gxr.setVisibility(8);
-      paramn.qol.setVisibility(8);
-      paramn.qoj.setVisibility(8);
+      paramn.mUB.setVisibility(0);
+      paramn.tMK.setVisibility(8);
+      paramn.jbE.setVisibility(8);
+      paramn.tMT.setVisibility(8);
+      paramn.tMR.setVisibility(8);
       AppMethodBeat.o(123293);
       return;
-      paramn.kdb.setVisibility(0);
-      paramn.qoc.setVisibility(0);
-      paramn.gxr.setVisibility(8);
-      paramn.qol.setVisibility(8);
-      paramn.qoj.setVisibility(8);
-      if (this.aqi > 0)
+      paramn.mUB.setVisibility(0);
+      paramn.tMK.setVisibility(0);
+      paramn.jbE.setVisibility(8);
+      paramn.tMT.setVisibility(8);
+      paramn.tMR.setVisibility(8);
+      if (this.sL > 0)
       {
-        int i = (int)(this.fs / this.aqi * 100.0F);
+        int i = (int)(this.zP / this.sL * 100.0F);
         if ((i == -1) || (i >= 100))
         {
-          paramn.qoc.setProgress(100);
+          paramn.tMK.setProgress(100);
           AppMethodBeat.o(123293);
           return;
         }
-        paramn.qoc.setProgress(i);
+        paramn.tMK.setProgress(i);
         AppMethodBeat.o(123293);
         return;
-        paramn.kdb.setVisibility(8);
-        paramn.qoc.setVisibility(8);
-        paramn.gxr.setVisibility(0);
-        paramn.qol.setVisibility(0);
-        paramn.qoj.setVisibility(8);
+        paramn.mUB.setVisibility(8);
+        paramn.tMK.setVisibility(8);
+        paramn.jbE.setVisibility(0);
+        paramn.tMT.setVisibility(0);
+        paramn.tMR.setVisibility(8);
         AppMethodBeat.o(123293);
         return;
-        paramn.kdb.setVisibility(8);
-        paramn.qoc.setVisibility(8);
-        paramn.gxr.setVisibility(8);
-        paramn.qol.setVisibility(8);
-        paramn.qoj.setVisibility(0);
-        paramn.hPW.setText(getFileExt().toUpperCase() + " " + getContext().getString(2131757568));
+        paramn.mUB.setVisibility(8);
+        paramn.tMK.setVisibility(8);
+        paramn.jbE.setVisibility(8);
+        paramn.tMT.setVisibility(8);
+        paramn.tMR.setVisibility(0);
+        paramn.kEs.setText(getFileExt().toUpperCase() + " " + getContext().getString(a.h.choose_msg_file_fail_expire));
         AppMethodBeat.o(123293);
         return;
-        paramn.kdb.setVisibility(8);
-        paramn.qoc.setVisibility(8);
-        paramn.gxr.setVisibility(8);
-        paramn.qol.setVisibility(8);
-        paramn.qoj.setVisibility(0);
-        paramn.hPW.setText(getFileExt().toUpperCase() + " " + getContext().getString(2131757567));
+        paramn.mUB.setVisibility(8);
+        paramn.tMK.setVisibility(8);
+        paramn.jbE.setVisibility(8);
+        paramn.tMT.setVisibility(8);
+        paramn.tMR.setVisibility(0);
+        paramn.kEs.setText(getFileExt().toUpperCase() + " " + getContext().getString(a.h.choose_msg_file_fail_download));
         AppMethodBeat.o(123293);
         return;
-        paramn.kdb.setVisibility(8);
-        paramn.qoc.setVisibility(8);
-        paramn.gxr.setVisibility(0);
-        paramn.qol.setVisibility(0);
-        paramn.gxr.setChecked(false);
-        paramn.qoj.setVisibility(8);
+        paramn.mUB.setVisibility(8);
+        paramn.tMK.setVisibility(8);
+        paramn.jbE.setVisibility(0);
+        paramn.tMT.setVisibility(0);
+        paramn.jbE.setChecked(false);
+        paramn.tMR.setVisibility(8);
       }
     }
   }
   
-  private String cyB()
+  private k.b cMU()
+  {
+    AppMethodBeat.i(123283);
+    if (this.tMt == null) {
+      this.tMt = k.b.OQ(this.tMi.field_content);
+    }
+    k.b localb = this.tMt;
+    AppMethodBeat.o(123283);
+    return localb;
+  }
+  
+  private String cMW()
   {
     AppMethodBeat.i(123289);
     Object localObject;
-    if (this.qnV == null)
+    if (this.tMD == null)
     {
       localObject = null;
-      if (ab.Eq(this.qnQ)) {
-        localObject = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().Kd(this.qnQ);
+      if (ab.Lj(this.tMy)) {
+        localObject = ((b)h.ae(b.class)).bbV().Rw(this.tMy);
       }
       if (localObject == null) {
         break label75;
       }
     }
     label75:
-    for (this.qnV = ((ah)localObject).getDisplayName(getUsername());; this.qnV = "")
+    for (this.tMD = ((ah)localObject).PJ(getUsername());; this.tMD = "")
     {
-      localObject = this.qnV;
+      localObject = this.tMD;
       AppMethodBeat.o(123289);
       return localObject;
     }
   }
   
-  private k.b cyz()
-  {
-    AppMethodBeat.i(123283);
-    if (this.qnG == null) {
-      this.qnG = k.b.HD(this.qnv.field_content);
-    }
-    k.b localb = this.qnG;
-    AppMethodBeat.o(123283);
-    return localb;
-  }
-  
   public void a(View paramView, a parama)
   {
     AppMethodBeat.i(123291);
-    if ((!cys().Cb(this.qnv.field_msgId)) && (!isInvalid()))
+    if ((!cMN().Ik(this.tMi.field_msgId)) && (!isInvalid()))
     {
       if (isEnable())
       {
-        com.tencent.mm.plugin.choosemsgfile.b.d.c.g(getContext(), this.qnv.field_msgId);
+        c.g(getContext(), this.tMi.field_msgId);
         AppMethodBeat.o(123291);
         return;
       }
-      com.tencent.mm.plugin.choosemsgfile.b.d.c.V(getContext(), cys().mMaxCount);
+      c.aa(getContext(), cMN().mMaxCount);
     }
     AppMethodBeat.o(123291);
   }
   
-  public int cyA()
-  {
-    AppMethodBeat.i(123286);
-    if (this.qnU == null) {
-      this.qnU = Integer.valueOf(e.asl(getFileExt()));
-    }
-    int i = this.qnU.intValue();
-    AppMethodBeat.o(123286);
-    return i;
-  }
-  
-  public int cyt()
+  public int cMO()
   {
     AppMethodBeat.i(123288);
-    if (cyz() != null)
+    if (cMU() != null)
     {
-      int i = cyz().iwI;
+      int i = cMU().llX;
       AppMethodBeat.o(123288);
       return i;
     }
@@ -221,12 +214,23 @@ public class k
     return 0;
   }
   
+  public int cMV()
+  {
+    AppMethodBeat.i(123286);
+    if (this.tMC == null) {
+      this.tMC = Integer.valueOf(e.aAm(getFileExt()));
+    }
+    int i = this.tMC.intValue();
+    AppMethodBeat.o(123286);
+    return i;
+  }
+  
   public String getFileExt()
   {
     AppMethodBeat.i(123285);
-    if (cyz() != null)
+    if (cMU() != null)
     {
-      String str = cyz().iwJ;
+      String str = cMU().llY;
       AppMethodBeat.o(123285);
       return str;
     }
@@ -237,13 +241,13 @@ public class k
   public String getFileName()
   {
     AppMethodBeat.i(123287);
-    if (cyz() != null)
+    if (cMU() != null)
     {
-      Object localObject = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().Kn(this.qnQ);
+      Object localObject = ((com.tencent.mm.plugin.messenger.foundation.a.n)h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL().RG(this.tMy);
       if (localObject != null) {
-        this.qnT = ((as)localObject).arI();
+        this.tMB = ((as)localObject).ayr();
       }
-      localObject = cyz().title;
+      localObject = cMU().title;
       AppMethodBeat.o(123287);
       return localObject;
     }
@@ -259,17 +263,17 @@ public class k
   public String getUsername()
   {
     AppMethodBeat.i(123284);
-    if (this.goe == null) {
-      this.goe = com.tencent.mm.plugin.choosemsgfile.b.d.c.b(this.qnv, ab.Eq(this.qnQ));
+    if (this.iSn == null) {
+      this.iSn = c.b(this.tMi, ab.Lj(this.tMy));
     }
-    String str = this.goe;
+    String str = this.iSn;
     AppMethodBeat.o(123284);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.k
  * JD-Core Version:    0.7.0.1
  */

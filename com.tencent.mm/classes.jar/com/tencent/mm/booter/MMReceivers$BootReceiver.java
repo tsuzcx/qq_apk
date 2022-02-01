@@ -23,7 +23,7 @@ public class MMReceivers$BootReceiver
     new StringBuilder("system booted, pid=").append(Process.myPid());
     if (!b.c(paramContext, "auto", true))
     {
-      MMReceivers.AlarmReceiver.ck(paramContext);
+      MMReceivers.AlarmReceiver.cg(paramContext);
       Log.appenderFlush();
     }
     AppMethodBeat.o(131889);
@@ -31,7 +31,7 @@ public class MMReceivers$BootReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.booter.MMReceivers.BootReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ import com.tencent.kinda.gen.KScrollView;
 import com.tencent.kinda.gen.KScrollViewOnScrollCallback;
 import com.tencent.kinda.gen.KView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.ui.MMScrollView;
 import com.tencent.mm.wallet_core.ui.MMScrollView.a;
@@ -63,18 +63,18 @@ public class MMKScrollView
   
   public KPoint getContentOffset()
   {
-    AppMethodBeat.i(214561);
-    int i = a.E(((MMScrollView)getView()).getContext(), ((MMScrollView)getView()).getScrollX());
-    int j = a.E(((MMScrollView)getView()).getContext(), ((MMScrollView)getView()).getScrollY());
+    AppMethodBeat.i(263696);
+    int i = a.H(((MMScrollView)getView()).getContext(), ((MMScrollView)getView()).getScrollX());
+    int j = a.H(((MMScrollView)getView()).getContext(), ((MMScrollView)getView()).getScrollY());
     KPoint localKPoint = new KPoint(i, j);
     Log.printDebugStack("MMKViewLayout", "getContentOffset  X: %s, Y: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-    AppMethodBeat.o(214561);
+    AppMethodBeat.o(263696);
     return localKPoint;
   }
   
   public float getHeight()
   {
-    AppMethodBeat.i(214564);
+    AppMethodBeat.i(263701);
     if (KindaContext.get() != null)
     {
       DisplayMetrics localDisplayMetrics = KindaContext.get().getResources().getDisplayMetrics();
@@ -82,14 +82,19 @@ public class MMKScrollView
       int j = (int)MMKViewUtil.pxToDp(((MMScrollView)getView()).getContext(), localDisplayMetrics.heightPixels);
       Log.printDebugStack("MMKViewLayout", "getView() - %s scroolviewheight: %s,screenheight: %s", new Object[] { this, Integer.valueOf(i), Integer.valueOf(j) });
       float f = Math.min(i, j);
-      AppMethodBeat.o(214564);
+      AppMethodBeat.o(263701);
       return f;
     }
-    AppMethodBeat.o(214564);
+    AppMethodBeat.o(263701);
     return 0.0F;
   }
   
   public boolean getScrollToDimissKeyboardEnabled()
+  {
+    return false;
+  }
+  
+  public boolean getScrollWhenViewSizeEnough()
   {
     return false;
   }
@@ -123,27 +128,27 @@ public class MMKScrollView
   
   public void setContentOffset(KPoint paramKPoint)
   {
-    AppMethodBeat.i(214562);
+    AppMethodBeat.i(263698);
     final int i = (int)MMKViewUtil.dpToPx(((MMScrollView)getView()).getContext(), (int)paramKPoint.getX());
     final int j = (int)MMKViewUtil.dpToPx(((MMScrollView)getView()).getContext(), (int)paramKPoint.getY());
     ((MMScrollView)getView()).postDelayed(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(214560);
+        AppMethodBeat.i(262869);
         ((MMScrollView)MMKScrollView.this.getView()).scrollBy(i, j);
-        AppMethodBeat.o(214560);
+        AppMethodBeat.o(262869);
       }
     }, 150L);
     Log.printDebugStack("MMKViewLayout", "setContentOffset  X: %s, Y: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-    AppMethodBeat.o(214562);
+    AppMethodBeat.o(263698);
   }
   
   public void setContentOffset(KPoint paramKPoint, boolean paramBoolean)
   {
-    AppMethodBeat.i(214563);
+    AppMethodBeat.i(263700);
     setContentOffset(paramKPoint);
-    AppMethodBeat.o(214563);
+    AppMethodBeat.o(263700);
   }
   
   public void setOnScrollCallback(final KScrollViewOnScrollCallback paramKScrollViewOnScrollCallback)
@@ -165,6 +170,8 @@ public class MMKScrollView
   
   public void setScrollToDimissKeyboardEnabled(boolean paramBoolean) {}
   
+  public void setScrollWhenViewSizeEnough(boolean paramBoolean) {}
+  
   public void setShowScrollBar(boolean paramBoolean)
   {
     AppMethodBeat.i(19114);
@@ -176,7 +183,7 @@ public class MMKScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKScrollView
  * JD-Core Version:    0.7.0.1
  */

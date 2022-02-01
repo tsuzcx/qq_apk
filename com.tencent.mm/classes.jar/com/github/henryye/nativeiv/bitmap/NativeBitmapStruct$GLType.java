@@ -1,6 +1,6 @@
 package com.github.henryye.nativeiv.bitmap;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 
 @Keep
 public abstract interface NativeBitmapStruct$GLType

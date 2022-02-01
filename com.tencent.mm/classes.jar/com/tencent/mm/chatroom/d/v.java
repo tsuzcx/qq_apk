@@ -1,15 +1,15 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ejm;
-import com.tencent.mm.protocal.protobuf.ejn;
+import com.tencent.mm.protocal.protobuf.etp;
+import com.tencent.mm.protocal.protobuf.etq;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class v
@@ -25,16 +25,16 @@ public final class v
     AppMethodBeat.i(12495);
     d.a locala = new d.a();
     this.username = paramString2;
-    ejm localejm = new ejm();
-    localejm.KGO = paramString1;
-    localejm.NiT = paramString2;
-    locala.iLN = localejm;
-    locala.iLO = new ejn();
+    etp localetp = new etp();
+    localetp.RIi = paramString1;
+    localetp.Uvz = paramString2;
+    locala.lBU = localetp;
+    locala.lBV = new etq();
     locala.uri = "/cgi-bin/micromsg-bin/transferchatroomowner";
     locala.funcId = 990;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
+    this.rr = locala.bgN();
     AppMethodBeat.o(12495);
   }
   

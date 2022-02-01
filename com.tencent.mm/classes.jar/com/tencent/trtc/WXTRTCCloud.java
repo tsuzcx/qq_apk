@@ -49,17 +49,17 @@ public class WXTRTCCloud
     this.mPushListener = null;
     this.mMapMainStreamPlayListener = new HashMap();
     this.mMapSubStreamPlayListener = new HashMap();
-    this.mConfig.W = false;
-    this.mConfig.j = 1;
+    this.mConfig.X = false;
+    this.mConfig.k = 1;
     this.mCaptureAndEnc.a(this.mConfig);
-    this.mCaptureAndEnc.g(false);
+    this.mCaptureAndEnc.h(false);
     setLocalViewFillMode(0);
     AppMethodBeat.o(14312);
   }
   
   public static void destroySharedInstance()
   {
-    AppMethodBeat.i(222687);
+    AppMethodBeat.i(216182);
     try
     {
       if (sInstance != null)
@@ -72,7 +72,7 @@ public class WXTRTCCloud
     }
     finally
     {
-      AppMethodBeat.o(222687);
+      AppMethodBeat.o(216182);
     }
   }
   
@@ -132,7 +132,7 @@ public class WXTRTCCloud
   
   public void enableBlackStream(final boolean paramBoolean)
   {
-    AppMethodBeat.i(222690);
+    AppMethodBeat.i(216195);
     runOnMainThread(new Runnable()
     {
       public final void run()
@@ -140,7 +140,7 @@ public class WXTRTCCloud
         AppMethodBeat.i(14375);
         WXTRTCCloud.access$1400(WXTRTCCloud.this, "enableBlackStream " + paramBoolean);
         if (WXTRTCCloud.this.mCaptureAndEnc != null) {
-          WXTRTCCloud.this.mCaptureAndEnc.b(paramBoolean);
+          WXTRTCCloud.this.mCaptureAndEnc.c(paramBoolean);
         }
         AppMethodBeat.o(14375);
       }
@@ -156,7 +156,7 @@ public class WXTRTCCloud
         AppMethodBeat.o(14292);
       }
     });
-    AppMethodBeat.o(222690);
+    AppMethodBeat.o(216195);
   }
   
   public void enterRoom(TRTCCloudDef.TRTCParams paramTRTCParams, int paramInt)
@@ -187,9 +187,9 @@ public class WXTRTCCloud
   
   public int getMaxZoom()
   {
-    AppMethodBeat.i(222688);
-    int i = this.mCaptureAndEnc.q();
-    AppMethodBeat.o(222688);
+    AppMethodBeat.i(216187);
+    int i = this.mCaptureAndEnc.r();
+    AppMethodBeat.o(216187);
     return i;
   }
   
@@ -380,9 +380,9 @@ public class WXTRTCCloud
           default: 
             label512:
             m = TXCStatus.c(((TRTCRoomInfo.UserInfo)localObject1).userID, 2007);
-            k = TXCStatus.c(((TRTCRoomInfo.UserInfo)localObject1).userID, 6010, i);
-            n = TXCStatus.c(((TRTCRoomInfo.UserInfo)localObject1).userID, 6011, i);
-            j = TXCStatus.c(((TRTCRoomInfo.UserInfo)localObject1).userID, 6012, i);
+            k = TXCStatus.c(((TRTCRoomInfo.UserInfo)localObject1).userID, 6104, i);
+            n = TXCStatus.c(((TRTCRoomInfo.UserInfo)localObject1).userID, 6105, i);
+            j = TXCStatus.c(((TRTCRoomInfo.UserInfo)localObject1).userID, 6106, i);
           }
         }
         label844:
@@ -437,7 +437,7 @@ public class WXTRTCCloud
   
   public void notifyUserVoiceVolume(final ArrayList<TRTCCloudDef.TRTCVolumeInfo> paramArrayList, int paramInt)
   {
-    AppMethodBeat.i(222691);
+    AppMethodBeat.i(216199);
     runOnSDKThread(new Runnable()
     {
       public final void run()
@@ -482,8 +482,8 @@ public class WXTRTCCloud
               continue;
             }
             ((WXTRTCCloud.a)localObject1).a = i;
-            if (((WXTRTCCloud.a)localObject1).SpJ != null) {
-              localObject1 = (WXTRTCCloud.ITXAudioVolumeEvaluationListener)((WXTRTCCloud.a)localObject1).SpJ.get();
+            if (((WXTRTCCloud.a)localObject1).ZRo != null) {
+              localObject1 = (WXTRTCCloud.ITXAudioVolumeEvaluationListener)((WXTRTCCloud.a)localObject1).ZRo.get();
             }
           }
           for (;;)
@@ -541,7 +541,7 @@ public class WXTRTCCloud
         }
       }
     });
-    AppMethodBeat.o(222691);
+    AppMethodBeat.o(216199);
   }
   
   public void pausePusher()
@@ -554,7 +554,7 @@ public class WXTRTCCloud
         AppMethodBeat.i(160399);
         WXTRTCCloud.access$800(WXTRTCCloud.this, "pausePusher");
         if (WXTRTCCloud.this.mCaptureAndEnc != null) {
-          WXTRTCCloud.this.mCaptureAndEnc.g();
+          WXTRTCCloud.this.mCaptureAndEnc.h();
         }
         AppMethodBeat.o(160399);
       }
@@ -591,7 +591,7 @@ public class WXTRTCCloud
           locala.a = 0;
           break;
           label107:
-          locala.SpJ = new WeakReference(paramITXAudioVolumeEvaluationListener);
+          locala.ZRo = new WeakReference(paramITXAudioVolumeEvaluationListener);
         }
       }
     });
@@ -629,7 +629,7 @@ public class WXTRTCCloud
         AppMethodBeat.i(14305);
         WXTRTCCloud.access$1100(WXTRTCCloud.this, "resumePusher");
         if (WXTRTCCloud.this.mCaptureAndEnc != null) {
-          WXTRTCCloud.this.mCaptureAndEnc.h();
+          WXTRTCCloud.this.mCaptureAndEnc.i();
         }
         AppMethodBeat.o(14305);
       }
@@ -640,10 +640,10 @@ public class WXTRTCCloud
   public void setConfig(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(14316);
-    if ((paramBoolean1 != this.mConfig.K) || (paramBoolean2 != this.mConfig.L))
+    if ((paramBoolean1 != this.mConfig.L) || (paramBoolean2 != this.mConfig.M))
     {
-      this.mConfig.K = paramBoolean1;
-      this.mConfig.L = paramBoolean2;
+      this.mConfig.L = paramBoolean1;
+      this.mConfig.M = paramBoolean2;
       this.mCaptureAndEnc.a(this.mConfig);
     }
     AppMethodBeat.o(14316);
@@ -651,9 +651,9 @@ public class WXTRTCCloud
   
   public void setFocusPosition(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(222689);
+    AppMethodBeat.i(216189);
     this.mCaptureAndEnc.a(paramFloat1, paramFloat2);
-    AppMethodBeat.o(222689);
+    AppMethodBeat.o(216189);
   }
   
   public void setLocalSurface(final Surface paramSurface)
@@ -690,9 +690,9 @@ public class WXTRTCCloud
   
   public void setPushListener(ITXLivePushListener paramITXLivePushListener)
   {
-    AppMethodBeat.i(222692);
+    AppMethodBeat.i(216201);
     this.mPushListener = new WeakReference(paramITXLivePushListener);
-    AppMethodBeat.o(222692);
+    AppMethodBeat.o(216201);
   }
   
   public void setRemoteSubStreamSurface(final String paramString, final Surface paramSurface)
@@ -750,7 +750,7 @@ public class WXTRTCCloud
             localObject = ((TXCRenderAndDec)localObject).getVideoRender();
             if (localObject != null)
             {
-              ((e)localObject).c(paramInt1, paramInt2);
+              ((e)localObject).d(paramInt1, paramInt2);
               AppMethodBeat.o(14307);
               return;
             }
@@ -824,7 +824,7 @@ public class WXTRTCCloud
             localObject = ((TXCRenderAndDec)localObject).getVideoRender();
             if (localObject != null)
             {
-              ((e)localObject).c(paramInt1, paramInt2);
+              ((e)localObject).d(paramInt1, paramInt2);
               AppMethodBeat.o(14378);
               return;
             }
@@ -846,6 +846,7 @@ public class WXTRTCCloud
   public void startLocalAudio()
   {
     AppMethodBeat.i(14315);
+    this.mEnableEosMode = true;
     super.startLocalAudio();
     AppMethodBeat.o(14315);
   }
@@ -866,12 +867,12 @@ public class WXTRTCCloud
             if (paramBoolean) {
               locala.c = null;
             }
-            while ((locala.SpJ == null) && (locala.c == null))
+            while ((locala.ZRo == null) && (locala.c == null))
             {
               WXTRTCCloud.this.mMapAudioVolumeListener.remove(paramString);
               AppMethodBeat.o(14296);
               return;
-              locala.SpJ = null;
+              locala.ZRo = null;
             }
           }
           WXTRTCCloud.this.mMapAudioVolumeListener.remove(paramString);
@@ -910,14 +911,14 @@ public class WXTRTCCloud
   
   static final class a
   {
-    public WeakReference<WXTRTCCloud.ITXAudioVolumeEvaluationListener> SpJ = null;
+    public WeakReference<WXTRTCCloud.ITXAudioVolumeEvaluationListener> ZRo = null;
     public int a;
     public WeakReference<WXTRTCCloud.ITXAudioVolumeEvaluationListener> c = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.trtc.WXTRTCCloud
  * JD-Core Version:    0.7.0.1
  */

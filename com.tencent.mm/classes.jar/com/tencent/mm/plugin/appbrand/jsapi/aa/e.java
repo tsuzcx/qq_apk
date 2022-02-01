@@ -1,71 +1,74 @@
 package com.tencent.mm.plugin.appbrand.jsapi.aa;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.k;
+import com.tencent.mm.plugin.appbrand.jsapi.aa;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.utils.af;
+import com.tencent.mm.plugin.appbrand.utils.af.a;
+import com.tencent.mm.plugin.appbrand.utils.af.b;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import org.json.JSONObject;
 
 public final class e
-  extends a
+  extends aa
 {
-  public static final int CTRL_INDEX = 896;
-  public static final String NAME = "queryTrafficCardInfo";
+  public static final int CTRL_INDEX = 472;
+  public static final String NAME = "enableDeviceOrientationChangeListening";
+  private boolean poG;
+  protected af poH;
+  private af.b poI;
   
-  protected final void a(k paramk, int paramInt, com.huawei.a.a.a.a parama, JSONObject paramJSONObject)
+  public e()
   {
-    AppMethodBeat.i(226997);
-    if (paramJSONObject == null)
+    AppMethodBeat.i(137634);
+    this.poG = false;
+    this.poI = new af.b()
     {
-      parama = new HashMap();
-      parama.put("errCode", Integer.valueOf(b.muo.errorCode));
-      paramk.i(paramInt, n("fail:" + b.muo.errorMsg, parama));
-      Log.e("MicroMsg.JsApiQueryTrafficCardInfo", "deviceData is null, invoke fail: [%s] ! with appId[%s] callbackId[%d]", new Object[] { b.muo.errorMsg, paramk.getAppId(), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(226997);
-      return;
-    }
-    Object localObject = paramJSONObject.optString("issuerID");
-    int i = paramJSONObject.optInt("dataType");
-    try
-    {
-      parama = parama.n((String)localObject, i);
-      Log.d("MicroMsg.JsApiQueryTrafficCardInfo", "queryTrafficCardInfoString: [%s]! ", new Object[] { parama });
-      parama = new JSONObject(parama);
-      localObject = new HashMap();
-      if (parama == null)
+      public final void a(af.a paramAnonymousa1, final af.a paramAnonymousa2)
       {
-        ((Map)localObject).put("errCode", Integer.valueOf(b.mus.errorCode));
-        paramk.i(paramInt, n("fail:" + b.mus.errorMsg, (Map)localObject));
-        AppMethodBeat.o(226997);
-        return;
+        AppMethodBeat.i(137633);
+        Log.i("MicroMsg.JsApiEnableDeviceOrientation", "OrientationListener lastOrientation:" + paramAnonymousa1.name() + "; newOrientation:" + paramAnonymousa2.name());
+        MMHandlerThread.postToMainThreadDelayed(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(137632);
+            h.c(paramAnonymousa2);
+            AppMethodBeat.o(137632);
+          }
+        }, 500L);
+        AppMethodBeat.o(137633);
+      }
+    };
+    AppMethodBeat.o(137634);
+  }
+  
+  public final String a(com.tencent.mm.plugin.appbrand.jsapi.e parame, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(137635);
+    if (paramJSONObject.optBoolean("enable", false))
+    {
+      h.D(parame);
+      if (!this.poG)
+      {
+        this.poH = new af(parame.getContext(), this.poI);
+        this.poH.enable();
+        this.poG = true;
       }
     }
-    catch (Exception parama)
+    for (;;)
     {
-      for (;;)
+      parame = h("ok", null);
+      AppMethodBeat.o(137635);
+      return parame;
+      h.E(parame);
+      if (this.poG)
       {
-        Log.e("MicroMsg.JsApiQueryTrafficCardInfo", "call huawei remote interface fail: [%s] ! ", new Object[] { parama.getMessage() });
-        parama = null;
+        this.poH.disable();
+        this.poH = null;
+        this.poG = false;
       }
-      i = parama.optInt("resultCode");
-      if (i != b.mun.errorCode)
-      {
-        paramJSONObject = b.xq(i);
-        parama = paramJSONObject;
-        if (paramJSONObject == b.muQ) {
-          parama = b.muH;
-        }
-        ((Map)localObject).put("errCode", Integer.valueOf(parama.errorCode));
-        paramk.i(paramInt, n("fail:" + parama.errorMsg, (Map)localObject));
-        Log.e("MicroMsg.JsApiQueryTrafficCardInfo", "Return code from huawei remote interface! with RetCode rechargeCard[%d] ", new Object[] { Integer.valueOf(i) });
-        AppMethodBeat.o(226997);
-        return;
-      }
-      ((Map)localObject).put("errCode", Integer.valueOf(b.mun.errorCode));
-      ((Map)localObject).put("data", parama.optJSONObject("data"));
-      paramk.i(paramInt, n(b.mun.errorMsg, (Map)localObject));
-      AppMethodBeat.o(226997);
     }
   }
 }

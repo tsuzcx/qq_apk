@@ -12,11 +12,11 @@ import kotlin.l.b.a.b.m.a.i;
 public class t
   extends aj
 {
-  private final boolean TIm;
-  private final at TNJ;
-  private final String TNK;
-  private final List<av> ThC;
-  private final h Tly;
+  private final List<av> aaKw;
+  private final h aaOs;
+  private final boolean abkQ;
+  private final at abql;
+  private final String abqm;
   
   public t(at paramat, h paramh)
   {
@@ -32,19 +32,19 @@ public class t
   
   private t(at paramat, h paramh, List<? extends av> paramList, boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(186269);
-    this.TNJ = paramat;
-    this.Tly = paramh;
-    this.ThC = paramList;
-    this.TIm = paramBoolean;
-    this.TNK = paramString;
-    AppMethodBeat.o(186269);
+    AppMethodBeat.i(269841);
+    this.abql = paramat;
+    this.aaOs = paramh;
+    this.aaKw = paramList;
+    this.abkQ = paramBoolean;
+    this.abqm = paramString;
+    AppMethodBeat.o(269841);
   }
   
-  public aj EG(boolean paramBoolean)
+  public aj Jn(boolean paramBoolean)
   {
     AppMethodBeat.i(60659);
-    aj localaj = (aj)new t(this.TNJ, this.Tly, this.ThC, paramBoolean, null, 16);
+    aj localaj = (aj)new t(this.abql, this.aaOs, this.aaKw, paramBoolean, null, 16);
     AppMethodBeat.o(60659);
     return localaj;
   }
@@ -52,50 +52,50 @@ public class t
   public final aj d(g paramg)
   {
     AppMethodBeat.i(60657);
-    p.h(paramg, "newAnnotations");
+    p.k(paramg, "newAnnotations");
     paramg = (aj)this;
     AppMethodBeat.o(60657);
     return paramg;
   }
   
-  public final h hAp()
-  {
-    return this.Tly;
-  }
-  
-  public final boolean hEa()
-  {
-    return this.TIm;
-  }
-  
-  public final List<av> hKB()
-  {
-    return this.ThC;
-  }
-  
-  public final at hKE()
-  {
-    return this.TNJ;
-  }
-  
-  public String hLz()
-  {
-    return this.TNK;
-  }
-  
-  public final g hzL()
+  public final g iDY()
   {
     AppMethodBeat.i(60655);
-    Object localObject = g.TiC;
-    localObject = g.a.hBP();
+    Object localObject = g.aaLw;
+    localObject = g.a.iGe();
     AppMethodBeat.o(60655);
     return localObject;
+  }
+  
+  public final h iEC()
+  {
+    return this.aaOs;
+  }
+  
+  public final boolean iIu()
+  {
+    return this.abkQ;
+  }
+  
+  public final List<av> iOR()
+  {
+    return this.aaKw;
+  }
+  
+  public final at iOU()
+  {
+    return this.abql;
+  }
+  
+  public String iPS()
+  {
+    return this.abqm;
   }
   
   public t j(i parami)
   {
     AppMethodBeat.i(60661);
-    p.h(parami, "kotlinTypeRefiner");
+    p.k(parami, "kotlinTypeRefiner");
     AppMethodBeat.o(60661);
     return this;
   }
@@ -103,9 +103,9 @@ public class t
   public String toString()
   {
     AppMethodBeat.i(60656);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.TNJ.toString());
-    if (this.ThC.isEmpty()) {}
-    for (String str = "";; str = j.a((Iterable)this.ThC, (CharSequence)", ", (CharSequence)"<", (CharSequence)">", -1, (CharSequence)"...", null))
+    StringBuilder localStringBuilder = new StringBuilder().append(this.abql.toString());
+    if (this.aaKw.isEmpty()) {}
+    for (String str = "";; str = j.a((Iterable)this.aaKw, (CharSequence)", ", (CharSequence)"<", (CharSequence)">", -1, (CharSequence)"...", null))
     {
       str = str;
       AppMethodBeat.o(60656);
@@ -115,7 +115,7 @@ public class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.t
  * JD-Core Version:    0.7.0.1
  */

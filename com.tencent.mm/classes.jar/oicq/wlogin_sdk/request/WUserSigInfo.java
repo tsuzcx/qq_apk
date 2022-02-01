@@ -205,7 +205,7 @@ public class WUserSigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     oicq.wlogin_sdk.request.WUserSigInfo
  * JD-Core Version:    0.7.0.1
  */

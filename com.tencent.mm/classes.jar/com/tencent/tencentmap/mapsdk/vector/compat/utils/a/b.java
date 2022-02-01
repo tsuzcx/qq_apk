@@ -23,9 +23,9 @@ public class b
   
   public String toString()
   {
-    AppMethodBeat.i(199645);
+    AppMethodBeat.i(247350);
     String str = "Point{x=" + this.a + ", y=" + this.b + '}';
-    AppMethodBeat.o(199645);
+    AppMethodBeat.o(247350);
     return str;
   }
 }

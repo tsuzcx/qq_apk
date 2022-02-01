@@ -6,53 +6,57 @@ import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.c.b.a;
-import com.tencent.mm.plugin.sns.ad.i.g;
-import com.tencent.mm.plugin.sns.ad.i.i;
-import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.ad.b.b.a;
+import com.tencent.mm.plugin.sns.ad.i.h;
+import com.tencent.mm.plugin.sns.ad.i.j;
+import com.tencent.mm.plugin.sns.ad.landingpage.component.b.d;
+import com.tencent.mm.plugin.sns.data.t;
+import com.tencent.mm.plugin.sns.i.j;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.q;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.s;
 import com.tencent.mm.ui.widget.RoundedCornerFrameLayout;
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
 
 public final class c
-  extends com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.q
+  extends q
 {
-  com.tencent.mm.ui.base.q Dtl;
-  private final com.tencent.mm.plugin.sns.ad.landingpage.component.b.c Dts;
+  s JAc;
+  private final d JAj;
   
-  public c(Context paramContext, com.tencent.mm.plugin.sns.ad.landingpage.component.b.c paramc, ViewGroup paramViewGroup)
+  public c(Context paramContext, d paramd, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramc, paramViewGroup);
-    AppMethodBeat.i(201979);
-    this.Dts = paramc;
+    super(paramContext, paramd, paramViewGroup);
+    AppMethodBeat.i(269173);
+    this.JAj = paramd;
     try
     {
-      if ((this.Edn != null) && (this.Dts != null))
+      if ((this.KqQ != null) && (this.JAj != null))
       {
-        this.Edn.kv("finderUsername", this.Dts.finderUsername);
-        this.Edn.kv("finderLiveNoticeId", this.Dts.finderLiveNoticeId);
+        this.KqQ.kQ("finderUsername", this.JAj.finderUsername);
+        this.KqQ.kQ("finderLiveNoticeId", this.JAj.JxY);
       }
-      AppMethodBeat.o(201979);
+      AppMethodBeat.o(269173);
       return;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(201979);
+      AppMethodBeat.o(269173);
     }
   }
   
-  private static long aNJ(String paramString)
+  private static long aYu(String paramString)
   {
-    AppMethodBeat.i(201983);
+    AppMethodBeat.i(269177);
     if (paramString != null) {
       try
       {
         long l = Long.parseLong(paramString);
-        AppMethodBeat.o(201983);
+        AppMethodBeat.o(269177);
         return l;
       }
       catch (Throwable paramString)
@@ -60,127 +64,127 @@ public final class c
         Log.d("SnsAd.FinderLivingNoticeComp", "string to long has something wrong!!");
       }
     }
-    AppMethodBeat.o(201983);
+    AppMethodBeat.o(269177);
     return 0L;
   }
   
-  protected final void XJ(int paramInt)
+  protected final void aeK(int paramInt)
   {
-    AppMethodBeat.i(201982);
-    Button localButton = this.Edp;
-    RoundedCornerFrameLayout localRoundedCornerFrameLayout = this.Edo;
+    AppMethodBeat.i(269176);
+    Button localButton = this.KqS;
+    RoundedCornerFrameLayout localRoundedCornerFrameLayout = this.KqR;
     if ((localButton == null) || (localRoundedCornerFrameLayout == null))
     {
-      AppMethodBeat.o(201982);
+      AppMethodBeat.o(269176);
       return;
     }
     if (paramInt == 513)
     {
-      localButton.setText(this.context.getText(2131765957));
+      localButton.setText(this.context.getText(i.j.sns_ad_finder_living_notice_subscribed));
       localButton.setEnabled(false);
       localButton.setAlpha(0.6F);
       localRoundedCornerFrameLayout.setAlpha(0.6F);
-      AppMethodBeat.o(201982);
+      AppMethodBeat.o(269176);
       return;
     }
-    if (this.Dts != null) {
-      localButton.setText(this.Dts.title);
+    if (this.JAj != null) {
+      localButton.setText(this.JAj.title);
     }
     localButton.setEnabled(true);
     localButton.setAlpha(1.0F);
     localRoundedCornerFrameLayout.setAlpha(1.0F);
-    AppMethodBeat.o(201982);
+    AppMethodBeat.o(269176);
   }
   
-  public final void eWS()
+  public final void fKd()
   {
-    AppMethodBeat.i(201981);
+    AppMethodBeat.i(269175);
     try
     {
-      Log.d("SnsAd.FinderLivingNoticeComp", "openBtnUrl:: is called!");
-      ah localah = fds();
-      com.tencent.mm.plugin.sns.ad.landingpage.component.b.c localc = this.Dts;
-      if ((localah == null) || (localc == null))
+      Log.d("SnsAd.FinderLivingNoticeComp", "doBtnClick:: is called!");
+      ai localai = fRp();
+      d locald = this.JAj;
+      if ((localai == null) || (locald == null))
       {
         Log.e("SnsAd.FinderLivingNoticeComp", "the page data is null, it can't do anything!!!!!");
-        AppMethodBeat.o(201981);
+        AppMethodBeat.o(269175);
         return;
       }
       Object localObject1 = new com.tencent.mm.plugin.sns.ad.remote.a();
-      ((com.tencent.mm.plugin.sns.ad.remote.a)localObject1).Dxn = new c();
-      ((com.tencent.mm.plugin.sns.ad.remote.a)localObject1).Dxm = new b(this);
-      com.tencent.mm.plugin.sns.ad.remote.ipc.a locala = ((com.tencent.mm.plugin.sns.ad.remote.a)localObject1).eXy();
+      ((com.tencent.mm.plugin.sns.ad.remote.a)localObject1).JGU = new c();
+      ((com.tencent.mm.plugin.sns.ad.remote.a)localObject1).JGT = new b(this);
+      com.tencent.mm.plugin.sns.ad.remote.ipc.a locala = ((com.tencent.mm.plugin.sns.ad.remote.a)localObject1).fKZ();
       if (locala != null)
       {
         Bundle localBundle = new Bundle();
-        String str = r.Jb(aNJ(localah.getSnsId()));
-        Object localObject2 = localah.DZW;
+        String str = t.Qu(aYu(localai.getSnsId()));
+        Object localObject2 = localai.fQE();
         localObject1 = localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          localObject1 = localah.uxInfo;
+          localObject1 = localai.uxInfo;
         }
         localBundle.putString("sns_id", Util.nullAsNil(str));
         localBundle.putString("uxInfo", Util.nullAsNil((String)localObject1));
-        localBundle.putString("adExtInfo", Util.nullAsNil(localah.adExtInfo));
-        localBundle.putString("finderUsername", Util.nullAsNil(localc.finderUsername));
-        localBundle.putString("finderLiveNoticeId", Util.nullAsNil(localc.finderLiveNoticeId));
-        locala.aA(localBundle);
-        localObject2 = this.Dtl;
+        localBundle.putString("adExtInfo", Util.nullAsNil(localai.adExtInfo));
+        localBundle.putString("finderUsername", Util.nullAsNil(locald.finderUsername));
+        localBundle.putString("finderLiveNoticeId", Util.nullAsNil(locald.JxY));
+        locala.aw(localBundle);
+        localObject2 = this.JAc;
         localObject1 = localObject2;
         if (localObject2 == null)
         {
-          localObject1 = com.tencent.mm.plugin.sns.ad.landingpage.a.a.ap(this.context, 2131762443);
-          this.Dtl = ((com.tencent.mm.ui.base.q)localObject1);
+          localObject1 = com.tencent.mm.plugin.sns.ad.landingpage.a.a.aH(this.context, i.j.loading);
+          this.JAc = ((s)localObject1);
         }
-        if ((localObject1 != null) && (!((com.tencent.mm.ui.base.q)localObject1).isShowing())) {
-          ((com.tencent.mm.ui.base.q)localObject1).show();
+        if ((localObject1 != null) && (!((s)localObject1).isShowing())) {
+          ((s)localObject1).show();
         }
       }
-      AppMethodBeat.o(201981);
+      AppMethodBeat.o(269175);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(201981);
+      AppMethodBeat.o(269175);
     }
   }
   
-  public final void eWT()
+  public final void fKe()
   {
     int i = 257;
-    AppMethodBeat.i(201980);
+    AppMethodBeat.i(269174);
     try
     {
-      super.eWT();
-      Object localObject1 = fds();
-      Object localObject2 = this.Dts;
+      super.fKe();
+      Object localObject1 = fRp();
+      Object localObject2 = this.JAj;
       if ((localObject1 == null) || (localObject2 == null)) {
         Log.e("SnsAd.FinderLivingNoticeComp", "the page data or info is null, it can't do anything!!!!!");
       }
       for (;;)
       {
-        XJ(i);
+        aeK(i);
         Log.d("SnsAd.FinderLivingNoticeComp", "fillItem:: acquireLivingNoticeStatus is ".concat(String.valueOf(i)));
-        AppMethodBeat.o(201980);
+        AppMethodBeat.o(269174);
         return;
-        String str = r.Jb(aNJ(((ah)localObject1).getSnsId()));
+        String str = t.Qu(aYu(((ai)localObject1).getSnsId()));
         localObject1 = new Bundle();
         ((Bundle)localObject1).putString("sns_id", str);
-        ((Bundle)localObject1).putString("finderUsername", Util.nullAsNil(((com.tencent.mm.plugin.sns.ad.landingpage.component.b.c)localObject2).finderUsername));
-        ((Bundle)localObject1).putString("finderLiveNoticeId", Util.nullAsNil(((com.tencent.mm.plugin.sns.ad.landingpage.component.b.c)localObject2).finderLiveNoticeId));
+        ((Bundle)localObject1).putString("finderUsername", Util.nullAsNil(((d)localObject2).finderUsername));
+        ((Bundle)localObject1).putString("finderLiveNoticeId", Util.nullAsNil(((d)localObject2).JxY));
         localObject2 = new com.tencent.mm.plugin.sns.ad.remote.a();
-        ((com.tencent.mm.plugin.sns.ad.remote.a)localObject2).Dxn = new a();
-        ((com.tencent.mm.plugin.sns.ad.remote.a)localObject2).Dxm = new b(this, true);
-        localObject2 = ((com.tencent.mm.plugin.sns.ad.remote.a)localObject2).eXy();
+        ((com.tencent.mm.plugin.sns.ad.remote.a)localObject2).JGU = new a();
+        ((com.tencent.mm.plugin.sns.ad.remote.a)localObject2).JGT = new b(this, true);
+        localObject2 = ((com.tencent.mm.plugin.sns.ad.remote.a)localObject2).fKZ();
         if (localObject2 != null) {
-          i = g.getInt(((com.tencent.mm.plugin.sns.ad.remote.ipc.a)localObject2).aA((Bundle)localObject1), "status", 257);
+          i = h.getInt(((com.tencent.mm.plugin.sns.ad.remote.ipc.a)localObject2).aw((Bundle)localObject1), "status", 257);
         }
       }
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(201980);
+      AppMethodBeat.o(269174);
     }
   }
   
@@ -189,54 +193,54 @@ public final class c
   {
     public final Bundle a(final com.tencent.mm.plugin.sns.ad.remote.ipc.b paramb, Bundle paramBundle)
     {
-      AppMethodBeat.i(201974);
+      AppMethodBeat.i(269020);
       Bundle localBundle = new Bundle();
-      final String str1 = g.getString(paramBundle, "sns_id");
-      String str2 = g.getString(paramBundle, "finderUsername");
-      paramBundle = g.getString(paramBundle, "finderLiveNoticeId");
+      final String str1 = h.getString(paramBundle, "sns_id");
+      String str2 = h.getString(paramBundle, "finderUsername");
+      paramBundle = h.getString(paramBundle, "finderLiveNoticeId");
       if (!TextUtils.isEmpty(str1))
       {
-        localBundle.putInt("status", com.tencent.mm.plugin.sns.ad.widget.living.b.fu(str1, 1));
-        com.tencent.mm.plugin.sns.ad.c.b.a(str1, str2, paramBundle, new b.a()
+        localBundle.putInt("status", com.tencent.mm.plugin.sns.ad.widget.living.b.fX(str1, 1));
+        com.tencent.mm.plugin.sns.ad.b.b.a(str1, str2, paramBundle, new b.a()
         {
-          public final void b(String paramAnonymousString, int paramAnonymousInt, Object paramAnonymousObject)
+          public final void b(String paramAnonymousString, int paramAnonymousInt1, int paramAnonymousInt2, Object paramAnonymousObject)
           {
-            AppMethodBeat.i(201973);
+            AppMethodBeat.i(198037);
             try
             {
-              Log.i("SnsAd.FinderLivingNoticeComp", "Subscription out sns id is " + str1 + ", inner snsId is " + paramAnonymousString + "errorCode = " + paramAnonymousInt);
-              if (paramAnonymousInt == 0)
+              Log.i("SnsAd.FinderLivingNoticeComp", "Subscription out sns id is " + str1 + ", inner snsId is " + paramAnonymousString + "errorCode = " + paramAnonymousInt2);
+              if (paramAnonymousInt2 == 0)
               {
                 boolean bool = paramAnonymousObject instanceof Integer;
                 if (bool) {}
               }
               else
               {
-                AppMethodBeat.o(201973);
+                AppMethodBeat.o(198037);
                 return;
               }
-              com.tencent.mm.plugin.sns.ad.widget.living.b.fv(paramAnonymousString, ((Integer)paramAnonymousObject).intValue());
+              com.tencent.mm.plugin.sns.ad.widget.living.b.fY(paramAnonymousString, ((Integer)paramAnonymousObject).intValue());
               paramAnonymousString = paramb;
               if (paramAnonymousString == null)
               {
-                AppMethodBeat.o(201973);
+                AppMethodBeat.o(198037);
                 return;
               }
               paramAnonymousString = new Bundle();
               paramAnonymousString.putInt("status", ((Integer)paramAnonymousObject).intValue());
-              paramAnonymousString.putInt("errorCode", paramAnonymousInt);
-              paramb.aB(paramAnonymousString);
-              AppMethodBeat.o(201973);
+              paramAnonymousString.putInt("errorCode", paramAnonymousInt2);
+              paramb.ax(paramAnonymousString);
+              AppMethodBeat.o(198037);
               return;
             }
             catch (Throwable paramAnonymousString)
             {
-              AppMethodBeat.o(201973);
+              AppMethodBeat.o(198037);
             }
           }
         });
       }
-      AppMethodBeat.o(201974);
+      AppMethodBeat.o(269020);
       return localBundle;
     }
   }
@@ -244,8 +248,8 @@ public final class c
   static final class b
     implements com.tencent.mm.plugin.sns.ad.remote.a.a
   {
-    final Reference<c> Dtw;
-    final boolean Dtx;
+    final Reference<c> JAn;
+    final boolean JAo;
     
     b(c paramc)
     {
@@ -254,39 +258,39 @@ public final class c
     
     b(c paramc, boolean paramBoolean)
     {
-      AppMethodBeat.i(201975);
-      this.Dtw = new WeakReference(paramc);
-      this.Dtx = paramBoolean;
-      AppMethodBeat.o(201975);
+      AppMethodBeat.i(199668);
+      this.JAn = new WeakReference(paramc);
+      this.JAo = paramBoolean;
+      AppMethodBeat.o(199668);
     }
     
     @com.tencent.mm.plugin.sns.ad.remote.b
-    public final void az(Bundle paramBundle)
+    public final void av(Bundle paramBundle)
     {
-      AppMethodBeat.i(201976);
+      AppMethodBeat.i(199672);
       try
       {
         Log.d("SnsAd.FinderLivingNoticeComp", "OnSubscriptionOfFinderLivingOnClient is called");
-        int i = g.getInt(paramBundle, "status", 257);
-        int j = g.getInt(paramBundle, "errorCode", 0);
-        paramBundle = (c)this.Dtw.get();
+        int i = h.getInt(paramBundle, "status", 257);
+        int j = h.getInt(paramBundle, "errorCode", 0);
+        paramBundle = (c)this.JAn.get();
         if (paramBundle != null)
         {
-          com.tencent.mm.ui.base.q localq = paramBundle.Dtl;
-          if ((localq != null) && (localq.isShowing())) {
-            localq.dismiss();
+          s locals = paramBundle.JAc;
+          if ((locals != null) && (locals.isShowing())) {
+            locals.dismiss();
           }
-          if (!this.Dtx) {
-            com.tencent.mm.plugin.sns.ad.c.b.ao(paramBundle.context, j);
+          if (!this.JAo) {
+            com.tencent.mm.plugin.sns.ad.b.b.aG(paramBundle.context, j);
           }
-          paramBundle.XJ(i);
+          paramBundle.aeK(i);
         }
-        AppMethodBeat.o(201976);
+        AppMethodBeat.o(199672);
         return;
       }
       catch (Throwable paramBundle)
       {
-        AppMethodBeat.o(201976);
+        AppMethodBeat.o(199672);
       }
     }
   }
@@ -296,50 +300,50 @@ public final class c
   {
     public final Bundle a(final com.tencent.mm.plugin.sns.ad.remote.ipc.b paramb, final Bundle paramBundle)
     {
-      AppMethodBeat.i(201978);
-      final String str1 = g.getString(paramBundle, "sns_id");
-      final String str2 = g.getString(paramBundle, "uxInfo");
-      final String str3 = g.getString(paramBundle, "adExtInfo");
-      final String str4 = g.getString(paramBundle, "finderUsername");
-      paramBundle = g.getString(paramBundle, "finderLiveNoticeId");
-      com.tencent.mm.plugin.sns.ad.c.b.b(str1, str4, paramBundle, new b.a()
+      AppMethodBeat.i(195589);
+      final String str1 = h.getString(paramBundle, "sns_id");
+      final String str2 = h.getString(paramBundle, "uxInfo");
+      final String str3 = h.getString(paramBundle, "adExtInfo");
+      final String str4 = h.getString(paramBundle, "finderUsername");
+      paramBundle = h.getString(paramBundle, "finderLiveNoticeId");
+      com.tencent.mm.plugin.sns.ad.b.b.b(str1, str4, paramBundle, new b.a()
       {
-        public final void b(String paramAnonymousString, int paramAnonymousInt, Object paramAnonymousObject)
+        public final void b(String paramAnonymousString, int paramAnonymousInt1, int paramAnonymousInt2, Object paramAnonymousObject)
         {
-          AppMethodBeat.i(201977);
+          AppMethodBeat.i(249150);
           Log.i("SnsAd.FinderLivingNoticeComp", "Subscription out sns id is " + str1 + ", inner snsId is " + paramAnonymousString);
-          if (paramAnonymousInt == 0) {
-            com.tencent.mm.plugin.sns.ad.widget.living.b.fv(paramAnonymousString, 513);
+          if (paramAnonymousInt2 == 0) {
+            com.tencent.mm.plugin.sns.ad.widget.living.b.fY(paramAnonymousString, 513);
           }
-          for (int i = 513;; i = 257)
+          for (paramAnonymousInt1 = 513;; paramAnonymousInt1 = 257)
           {
             paramAnonymousObject = str2;
             String str1 = str3;
             String str2 = str4;
             String str3 = paramBundle;
-            com.tencent.mm.plugin.sns.ad.c.a locala = new com.tencent.mm.plugin.sns.ad.c.a();
-            locala.c(paramAnonymousString, paramAnonymousObject, str1, str2, str3, paramAnonymousInt, 0);
-            i.a(locala);
+            com.tencent.mm.plugin.sns.ad.b.a locala = new com.tencent.mm.plugin.sns.ad.b.a();
+            locala.c(paramAnonymousString, paramAnonymousObject, str1, str2, str3, paramAnonymousInt2, 0);
+            j.a(locala);
             if (paramb != null)
             {
               paramAnonymousString = new Bundle();
-              paramAnonymousString.putInt("errorCode", paramAnonymousInt);
-              paramAnonymousString.putInt("status", i);
-              paramb.aB(paramAnonymousString);
+              paramAnonymousString.putInt("errorCode", paramAnonymousInt2);
+              paramAnonymousString.putInt("status", paramAnonymousInt1);
+              paramb.ax(paramAnonymousString);
             }
-            AppMethodBeat.o(201977);
+            AppMethodBeat.o(249150);
             return;
           }
         }
       });
-      AppMethodBeat.o(201978);
+      AppMethodBeat.o(195589);
       return null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.landingpage.component.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -5,44 +5,46 @@ import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.preload.IAppBrandBatchPreloadController;
+import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public class e
-  extends bs<com.tencent.mm.plugin.webview.luggage.g>
+  extends bs<g>
 {
   public final void a(Context paramContext, String paramString, br.a parama) {}
   
-  public final void b(b<com.tencent.mm.plugin.webview.luggage.g>.a paramb)
+  public final void b(b<g>.a paramb)
   {
     AppMethodBeat.i(160421);
     Log.i("MicroMsg.Predownload.WebViewJsApiBatchPreloadMiniProgram", "invokeInOwn");
-    Object localObject = paramb.ctb.csi;
+    Object localObject = paramb.crh.cqn;
     if (localObject == null)
     {
       AppMethodBeat.o(160421);
       return;
     }
-    localObject = ((IAppBrandBatchPreloadController)com.tencent.mm.kernel.g.af(IAppBrandBatchPreloadController.class)).preload((JSONObject)localObject, true);
+    localObject = ((IAppBrandBatchPreloadController)h.ae(IAppBrandBatchPreloadController.class)).preload((JSONObject)localObject, true);
     if (!Util.isNullOrNil((String)localObject))
     {
       if ("ok".equalsIgnoreCase((String)localObject))
       {
-        paramb.c("", null);
+        paramb.a("", null);
         AppMethodBeat.o(160421);
         return;
       }
-      paramb.c((String)localObject, null);
+      paramb.a((String)localObject, null);
       AppMethodBeat.o(160421);
       return;
     }
-    paramb.c("error", null);
+    paramb.a("error", null);
     AppMethodBeat.o(160421);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

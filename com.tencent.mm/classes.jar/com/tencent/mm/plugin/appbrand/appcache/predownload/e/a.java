@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.appbrand.appcache.predownload.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fk;
+import com.tencent.mm.f.c.fr;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends fk
+  extends fr
 {
-  static final IAutoDBItem.MAutoDBInfo iBg;
+  static final IAutoDBItem.MAutoDBInfo lqK;
   
   static
   {
@@ -48,13 +48,13 @@ public final class a
     localStringBuilder.append(" reportId INTEGER");
     localMAutoDBInfo.columns[7] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
-    iBg = localMAutoDBInfo;
+    lqK = localMAutoDBInfo;
     AppMethodBeat.o(44432);
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    return iBg;
+    return lqK;
   }
   
   public final String toString()
@@ -67,7 +67,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.predownload.e.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.bc;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.plugin.appbrand.jsapi.i.c;
+import com.tencent.mm.plugin.appbrand.jsapi.az;
+import com.tencent.mm.plugin.appbrand.jsapi.g;
+import com.tencent.mm.plugin.appbrand.jsapi.h.c;
 import com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoView;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
@@ -12,112 +12,112 @@ import java.math.BigDecimal;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class b
-  implements i.c
+public class b
+  implements h.c
 {
-  AppBrandVideoView mAK;
-  private h mAL;
-  public MTimerHandler mAM;
-  public int mAN;
+  private AppBrandVideoView pzg;
+  private g pzh;
+  public MTimerHandler pzi;
+  public int pzj;
   
-  public b(AppBrandVideoView paramAppBrandVideoView, h paramh)
+  public b(AppBrandVideoView paramAppBrandVideoView, g paramg)
   {
-    AppMethodBeat.i(234907);
-    this.mAK = paramAppBrandVideoView;
-    this.mAL = paramh;
-    this.mAL.a(this);
-    AppMethodBeat.o(234907);
+    AppMethodBeat.i(228492);
+    this.pzg = paramAppBrandVideoView;
+    this.pzh = paramg;
+    this.pzh.a(this);
+    AppMethodBeat.o(228492);
   }
   
-  public final void a(bc parambc, JSONObject paramJSONObject)
+  public final void a(az paramaz, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(234911);
-    if ((!(parambc instanceof l)) && (!(parambc instanceof i))) {
-      Log.i("MicroMsg.Video.JsApiVideoCallback", "dispatchEvent event %s", new Object[] { parambc.getName() });
+    AppMethodBeat.i(228503);
+    if ((!(paramaz instanceof l)) && (!(paramaz instanceof i))) {
+      Log.i("MicroMsg.Video.JsApiVideoCallback", "dispatchEvent event %s", new Object[] { paramaz.getName() });
     }
-    this.mAL.a(parambc.Zh(paramJSONObject.toString()), null);
-    AppMethodBeat.o(234911);
+    this.pzh.a(paramaz.agU(paramJSONObject.toString()), null);
+    AppMethodBeat.o(228503);
   }
   
-  public final JSONObject bKv()
+  public final JSONObject bWg()
   {
-    AppMethodBeat.i(234912);
+    AppMethodBeat.i(228505);
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("data", this.mAK.getCookieData());
-    AppMethodBeat.o(234912);
+    localJSONObject.put("data", this.pzg.getCookieData());
+    AppMethodBeat.o(228505);
     return localJSONObject;
   }
   
-  public final void bKw()
+  public final void bWh()
   {
-    AppMethodBeat.i(234913);
-    if (this.mAM != null) {
-      this.mAM.stopTimer();
+    AppMethodBeat.i(228506);
+    if (this.pzi != null) {
+      this.pzi.stopTimer();
     }
-    AppMethodBeat.o(234913);
+    AppMethodBeat.o(228506);
   }
   
   public final void c(int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    AppMethodBeat.i(234910);
+    AppMethodBeat.i(228497);
     try
     {
       Log.i("MicroMsg.Video.JsApiVideoCallback", "onVideoFullScreenChange videoPlayerId=%d isFullScreen=%b direction:%d", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2) });
-      JSONObject localJSONObject = bKv();
+      JSONObject localJSONObject = bWg();
       localJSONObject.put("fullScreen", paramBoolean);
       localJSONObject.put("videoPlayerId", paramInt1);
       localJSONObject.put("direction", paramInt2);
       a(new b.e((byte)0), localJSONObject);
-      AppMethodBeat.o(234910);
+      AppMethodBeat.o(228497);
       return;
     }
     catch (JSONException localJSONException)
     {
       Log.e("MicroMsg.Video.JsApiVideoCallback", "onVideoFullScreenChange e=%s", new Object[] { localJSONException });
-      AppMethodBeat.o(234910);
+      AppMethodBeat.o(228497);
     }
   }
   
   public final void clean()
   {
-    AppMethodBeat.i(234909);
-    this.mAL.b(this);
-    bKw();
-    AppMethodBeat.o(234909);
+    AppMethodBeat.i(228496);
+    this.pzh.b(this);
+    bWh();
+    AppMethodBeat.o(228496);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(234908);
+    AppMethodBeat.i(228494);
     Log.d("MicroMsg.Video.JsApiVideoCallback", "onDestroy clean");
     clean();
-    this.mAK.setCallback(null);
-    AppMethodBeat.o(234908);
+    this.pzg.setCallback(null);
+    AppMethodBeat.o(228494);
   }
   
   public static final class i
-    extends bc
+    extends az
   {
     private static final int CTRL_INDEX = 548;
     private static final String NAME = "onVideoProgress";
   }
   
   public static final class j
-    extends bc
+    extends az
   {
     private static final int CTRL_INDEX = 484;
     private static final String NAME = "onVideoResourceError";
   }
   
   public static final class k
-    extends bc
+    extends az
   {
     private static final int CTRL_INDEX = 483;
     private static final String NAME = "onVideoResourceLoad";
   }
   
   static final class l
-    extends bc
+    extends az
   {
     private static final int CTRL_INDEX = 138;
     private static final String NAME = "onVideoTimeUpdate";
@@ -125,7 +125,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.c.b
  * JD-Core Version:    0.7.0.1
  */

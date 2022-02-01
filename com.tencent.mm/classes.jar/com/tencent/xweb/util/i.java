@@ -10,8 +10,8 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class i
 {
-  static boolean SEQ = false;
-  static int SER = -1;
+  static boolean aaga = false;
+  static int aagb = -1;
   
   private static ClassLoader a(String paramString1, String paramString2, String paramString3, ClassLoader paramClassLoader)
   {
@@ -23,7 +23,7 @@ public final class i
       if (paramString1.endsWith("classes.dex"))
       {
         str = paramString1;
-        if (!"true".equalsIgnoreCase(a.nS("NOT_USE_JAR_REPLACE_DEX", "tools")))
+        if (!"true".equalsIgnoreCase(a.oO("NOT_USE_JAR_REPLACE_DEX", "tools")))
         {
           str = paramString1.replace("classes.dex", "classes.dex.jar");
           if (!new File(str).exists()) {
@@ -44,38 +44,54 @@ public final class i
     }
   }
   
-  public static ClassLoader asW(int paramInt)
+  public static boolean aCN(int paramInt)
   {
-    int i = 1;
-    AppMethodBeat.i(219097);
+    AppMethodBeat.i(195820);
+    if (paramInt <= 0)
+    {
+      AppMethodBeat.o(195820);
+      return false;
+    }
+    if (!aaga)
+    {
+      aaga = true;
+      aagb = a.ivJ().aG("APK_LOAD_MIN_VER", null, -1);
+      Log.i("XWebClassLoaderWrapper", "support apk load min ver = " + aagb);
+    }
+    if (aagb <= 0)
+    {
+      AppMethodBeat.o(195820);
+      return false;
+    }
+    if (paramInt > aagb)
+    {
+      AppMethodBeat.o(195820);
+      return true;
+    }
+    AppMethodBeat.o(195820);
+    return false;
+  }
+  
+  public static ClassLoader aCO(int paramInt)
+  {
+    AppMethodBeat.i(195829);
     if (paramInt == -1)
     {
       Log.i("XWebClassLoaderWrapper", "getXWalkClassLoader version = -1");
-      AppMethodBeat.o(219097);
+      AppMethodBeat.o(195829);
       return null;
-    }
-    if (paramInt > 0)
-    {
-      if (!SEQ)
-      {
-        SEQ = true;
-        SER = a.hsb().av("APK_LOAD_MIN_VER", null, -1);
-        Log.i("XWebClassLoaderWrapper", "support apk load min ver = " + SER);
-      }
-      if ((SER <= 0) || (paramInt <= SER)) {}
     }
     Object localObject;
     String str1;
-    while (i != 0)
+    if (aCN(paramInt))
     {
       localObject = XWalkEnvironment.getDownloadApkPath(paramInt);
       str1 = XWalkEnvironment.getExtractedCoreDir(paramInt);
       String str2 = XWalkEnvironment.getOptimizedDexDir(paramInt);
       Log.i("XWebClassLoaderWrapper", "is apk load path  = ".concat(String.valueOf(localObject)));
-      localObject = bx((String)localObject, str2, str1);
-      AppMethodBeat.o(219097);
+      localObject = bv((String)localObject, str2, str1);
+      AppMethodBeat.o(195829);
       return localObject;
-      i = 0;
     }
     try
     {
@@ -84,22 +100,22 @@ public final class i
       boolean bool = new File(str1).exists();
       if (!bool)
       {
-        AppMethodBeat.o(219097);
+        AppMethodBeat.o(195829);
         return null;
       }
-      localObject = bx(str1, XWalkEnvironment.getOptimizedDexDir(paramInt), (String)localObject);
-      AppMethodBeat.o(219097);
+      localObject = bv(str1, XWalkEnvironment.getOptimizedDexDir(paramInt), (String)localObject);
+      AppMethodBeat.o(195829);
       return localObject;
     }
     catch (Exception localException)
     {
       Log.e("XWebClassLoaderWrapper", "getXWalkClassLoader error:" + localException.getMessage());
-      AppMethodBeat.o(219097);
+      AppMethodBeat.o(195829);
     }
     return null;
   }
   
-  public static ClassLoader bx(String paramString1, String paramString2, String paramString3)
+  public static ClassLoader bv(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(183532);
     paramString1 = a(paramString1, paramString2, paramString3, ClassLoader.getSystemClassLoader());
@@ -107,17 +123,17 @@ public final class i
     return paramString1;
   }
   
-  public static ClassLoader huI()
+  public static ClassLoader iyv()
   {
-    AppMethodBeat.i(219096);
-    ClassLoader localClassLoader = asW(XWalkEnvironment.getAvailableVersion());
-    AppMethodBeat.o(219096);
+    AppMethodBeat.i(195823);
+    ClassLoader localClassLoader = aCO(XWalkEnvironment.getAvailableVersion());
+    AppMethodBeat.o(195823);
     return localClassLoader;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.util.i
  * JD-Core Version:    0.7.0.1
  */

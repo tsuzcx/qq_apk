@@ -3,15 +3,18 @@ package com.tencent.mm.plugin.music.ui;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 
 public class MusicItemLayout
   extends LinearLayout
 {
-  private GestureDetector jKk;
+  private GestureDetector mBn;
   
   public MusicItemLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,7 +35,7 @@ public class MusicItemLayout
   private void initView()
   {
     AppMethodBeat.i(63207);
-    this.jKk = new GestureDetector(getContext(), new MusicItemLayout.a(this, (byte)0));
+    this.mBn = new GestureDetector(getContext(), new a((byte)0));
     AppMethodBeat.o(63207);
   }
   
@@ -40,14 +43,14 @@ public class MusicItemLayout
   {
     AppMethodBeat.i(63208);
     b.a locala = (b.a)getTag();
-    if (!locala.evh())
+    if (!locala.ffA())
     {
-      if ((locala.Ant.getX() > paramMotionEvent.getX()) || (paramMotionEvent.getX() > locala.Ant.getX() + locala.Ant.getMeasuredWidth()) || (locala.Ant.getY() > paramMotionEvent.getY())) {
+      if ((locala.FUz.getX() > paramMotionEvent.getX()) || (paramMotionEvent.getX() > locala.FUz.getX() + locala.FUz.getMeasuredWidth()) || (locala.FUz.getY() > paramMotionEvent.getY())) {
         break label125;
       }
       float f1 = paramMotionEvent.getY();
-      float f2 = locala.Ant.getY();
-      if (f1 > locala.Ant.getMeasuredHeight() + f2) {
+      float f2 = locala.FUz.getY();
+      if (f1 > locala.FUz.getMeasuredHeight() + f2) {
         break label125;
       }
     }
@@ -64,17 +67,101 @@ public class MusicItemLayout
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(63209);
-    GestureDetector localGestureDetector = this.jKk;
-    paramMotionEvent = new com.tencent.mm.hellhoundlib.b.a().bl(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, paramMotionEvent.axQ(), "com/tencent/mm/plugin/music/ui/MusicItemLayout", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)paramMotionEvent.pG(0)), "com/tencent/mm/plugin/music/ui/MusicItemLayout", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    GestureDetector localGestureDetector = this.mBn;
+    paramMotionEvent = new com.tencent.mm.hellhoundlib.b.a().bm(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b(localGestureDetector, paramMotionEvent.aFh(), "com/tencent/mm/plugin/music/ui/MusicItemLayout", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)paramMotionEvent.sf(0)), "com/tencent/mm/plugin/music/ui/MusicItemLayout", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
     AppMethodBeat.o(63209);
     return true;
+  }
+  
+  final class a
+    extends GestureDetector.SimpleOnGestureListener
+  {
+    private a() {}
+    
+    public final boolean onContextClick(MotionEvent paramMotionEvent)
+    {
+      AppMethodBeat.i(259982);
+      b localb = new b();
+      localb.bn(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/music/ui/MusicItemLayout$GestureListener", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+      boolean bool = super.onContextClick(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/music/ui/MusicItemLayout$GestureListener", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
+      AppMethodBeat.o(259982);
+      return bool;
+    }
+    
+    public final boolean onDoubleTap(MotionEvent paramMotionEvent)
+    {
+      AppMethodBeat.i(259980);
+      b localb = new b();
+      localb.bn(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/music/ui/MusicItemLayout$GestureListener", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+      boolean bool = super.onDoubleTap(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/music/ui/MusicItemLayout$GestureListener", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
+      AppMethodBeat.o(259980);
+      return bool;
+    }
+    
+    public final void onLongPress(MotionEvent paramMotionEvent)
+    {
+      AppMethodBeat.i(259978);
+      b localb = new b();
+      localb.bn(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/music/ui/MusicItemLayout$GestureListener", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
+      super.onLongPress(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/music/ui/MusicItemLayout$GestureListener", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
+      AppMethodBeat.o(259978);
+    }
+    
+    public final boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+    {
+      AppMethodBeat.i(63203);
+      if (Math.abs(paramFloat2) > Math.abs(paramFloat1))
+      {
+        paramMotionEvent1 = (b.a)MusicItemLayout.this.getTag();
+        if (paramFloat2 <= 0.0F) {
+          break label47;
+        }
+        paramMotionEvent1.ffC();
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(63203);
+        return false;
+        label47:
+        paramMotionEvent1.ffB();
+      }
+    }
+    
+    public final boolean onSingleTapUp(MotionEvent paramMotionEvent)
+    {
+      AppMethodBeat.i(63204);
+      Object localObject = new b();
+      ((b)localObject).bn(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/music/ui/MusicItemLayout$GestureListener", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, ((b)localObject).aFi());
+      localObject = (b.a)MusicItemLayout.this.getTag();
+      if (((b.a)localObject).ffA()) {
+        if ((paramMotionEvent.getY() <= ((b.a)localObject).FUy.getMeasuredHeight()) && (paramMotionEvent.getY() > 100.0F)) {
+          ((b.a)localObject).ffD();
+        }
+      }
+      for (;;)
+      {
+        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/music/ui/MusicItemLayout$GestureListener", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
+        AppMethodBeat.o(63204);
+        return false;
+        if ((paramMotionEvent.getY() >= ((b.a)localObject).FUB.getY() - 100.0F) && (paramMotionEvent.getY() < ((b.a)localObject).FUB.getMeasuredHeight() + ((b.a)localObject).FUB.getY())) {
+          ((b.a)localObject).ffD();
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.music.ui.MusicItemLayout
  * JD-Core Version:    0.7.0.1
  */

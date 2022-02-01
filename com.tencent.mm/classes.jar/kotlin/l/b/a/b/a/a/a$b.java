@@ -5,13 +5,13 @@ import kotlin.g.b.p;
 
 final class a$b
 {
-  final b.c Tfr;
+  final b.c aaIl;
   final int arity;
   
   public a$b(b.c paramc, int paramInt)
   {
     AppMethodBeat.i(56707);
-    this.Tfr = paramc;
+    this.aaIl = paramc;
     this.arity = paramInt;
     AppMethodBeat.o(56707);
   }
@@ -24,7 +24,7 @@ final class a$b
       if ((paramObject instanceof b))
       {
         paramObject = (b)paramObject;
-        if ((!p.j(this.Tfr, paramObject.Tfr)) || (this.arity != paramObject.arity)) {}
+        if ((!p.h(this.aaIl, paramObject.aaIl)) || (this.arity != paramObject.arity)) {}
       }
     }
     else
@@ -39,7 +39,7 @@ final class a$b
   public final int hashCode()
   {
     AppMethodBeat.i(56709);
-    b.c localc = this.Tfr;
+    b.c localc = this.aaIl;
     if (localc != null) {}
     for (int i = localc.hashCode();; i = 0)
     {
@@ -52,14 +52,14 @@ final class a$b
   public final String toString()
   {
     AppMethodBeat.i(56708);
-    String str = "KindWithArity(kind=" + this.Tfr + ", arity=" + this.arity + ")";
+    String str = "KindWithArity(kind=" + this.aaIl + ", arity=" + this.arity + ")";
     AppMethodBeat.o(56708);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlin.l.b.a.b.a.a.a.b
  * JD-Core Version:    0.7.0.1
  */

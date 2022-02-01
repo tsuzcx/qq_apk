@@ -19,9 +19,9 @@ import java.util.regex.Pattern;
 public final class a
   implements IKeyStepAnalyser
 {
-  static List<IKeyStepAnalyser.b> bL(List<IKeyStepAnalyser.StepLogInfo> paramList)
+  static List<IKeyStepAnalyser.b> bK(List<IKeyStepAnalyser.StepLogInfo> paramList)
   {
-    AppMethodBeat.i(221243);
+    AppMethodBeat.i(209169);
     ArrayList localArrayList = new ArrayList();
     HashMap localHashMap = new HashMap();
     int j = 0;
@@ -31,8 +31,8 @@ public final class a
     if (j < paramList.size())
     {
       localStepLogInfo = (IKeyStepAnalyser.StepLogInfo)paramList.get(j);
-      Log.v("MicroMsg.KeyStepAnalyser", "sortOutResult time:%d step:%s", new Object[] { Long.valueOf(localStepLogInfo.time), localStepLogInfo.mPw });
-      if (!"Start".equals(localStepLogInfo.mPw)) {
+      Log.v("MicroMsg.KeyStepAnalyser", "sortOutResult time:%d step:%s", new Object[] { Long.valueOf(localStepLogInfo.time), localStepLogInfo.pQp });
+      if (!"Start".equals(localStepLogInfo.pQp)) {
         break label377;
       }
       if (localObject != null) {
@@ -46,17 +46,17 @@ public final class a
       if (localObject != null)
       {
         if ("stepStart".equals(localStepLogInfo.errMsg)) {
-          localHashMap.put(localStepLogInfo.mPw, Long.valueOf(localStepLogInfo.time));
+          localHashMap.put(localStepLogInfo.pQp, Long.valueOf(localStepLogInfo.time));
         }
       }
       else
       {
         label180:
-        if ((!localStepLogInfo.bMX()) || (localObject == null)) {
+        if ((!localStepLogInfo.bZo()) || (localObject == null)) {
           break label380;
         }
         if (localHashMap.containsKey("Start")) {
-          localStepLogInfo.cCv = (localStepLogInfo.time - ((Long)localHashMap.get("Start")).longValue());
+          localStepLogInfo.cCY = (localStepLogInfo.time - ((Long)localHashMap.get("Start")).longValue());
         }
         localArrayList.add(0, localObject);
         i = 1;
@@ -70,21 +70,21 @@ public final class a
     {
       j += 1;
       break;
-      if ("CollectKeyInfo".equals(localStepLogInfo.mPw))
+      if ("CollectKeyInfo".equals(localStepLogInfo.pQp))
       {
-        String str = localStepLogInfo.mPy;
-        ((IKeyStepAnalyser.b)localObject).mPv.append(str).append("\n");
+        String str = localStepLogInfo.pQr;
+        ((IKeyStepAnalyser.b)localObject).pQo.append(str).append("\n");
         break label180;
       }
-      if (localHashMap.containsKey(localStepLogInfo.mPw)) {
-        localStepLogInfo.cCv = (localStepLogInfo.time - ((Long)localHashMap.get(localStepLogInfo.mPw)).longValue());
+      if (localHashMap.containsKey(localStepLogInfo.pQp)) {
+        localStepLogInfo.cCY = (localStepLogInfo.time - ((Long)localHashMap.get(localStepLogInfo.pQp)).longValue());
       }
-      ((IKeyStepAnalyser.b)localObject).mPu.add(localStepLogInfo);
+      ((IKeyStepAnalyser.b)localObject).pQn.add(localStepLogInfo);
       break label180;
       if ((i == 0) && (localObject != null)) {
         localArrayList.add(0, localObject);
       }
-      AppMethodBeat.o(221243);
+      AppMethodBeat.o(209169);
       return localArrayList;
       break label142;
     }
@@ -127,7 +127,7 @@ public final class a
     //   57: aload_2
     //   58: astore_0
     //   59: aload 4
-    //   61: invokestatic 174	com/tencent/mm/plugin/appbrand/keylogger/c:abR	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/keylogger/base/IKeyStepAnalyser$StepLogInfo;
+    //   61: invokestatic 174	com/tencent/mm/plugin/appbrand/keylogger/c:ajM	(Ljava/lang/String;)Lcom/tencent/mm/plugin/appbrand/keylogger/base/IKeyStepAnalyser$StepLogInfo;
     //   64: astore 4
     //   66: aload 4
     //   68: ifnull -24 -> 44
@@ -257,26 +257,26 @@ public final class a
   
   public final void a(final String paramString, final Pattern paramPattern, final long paramLong, IKeyStepAnalyser.a parama)
   {
-    AppMethodBeat.i(221240);
+    AppMethodBeat.i(209155);
     new MMHandler(String.format(Locale.ENGLISH, "KeyStepAnalyser:%s", new Object[] { paramString })).post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(221239);
+        AppMethodBeat.i(208800);
         a locala = a.this;
         Object localObject = paramString;
         Pattern localPattern = paramPattern;
         long l = paramLong;
-        IKeyStepAnalyser.a locala1 = this.mOu;
+        IKeyStepAnalyser.a locala1 = this.pPn;
         Log.i("MicroMsg.KeyStepAnalyser", "doAnalyse processName:%s sessionIdPattern:%s", new Object[] { localObject, localPattern.pattern() });
         if (locala1 != null)
         {
-          localObject = c.bMQ().V((String)localObject, l);
+          localObject = c.bZh().V((String)localObject, l);
           if ((localObject == null) || (((List)localObject).isEmpty()))
           {
             Log.i("MicroMsg.KeyStepAnalyser", "no keystep logs");
-            locala1.bM(new ArrayList());
-            AppMethodBeat.o(221239);
+            locala1.bL(new ArrayList());
+            AppMethodBeat.o(208800);
             return;
           }
           ArrayList localArrayList = new ArrayList();
@@ -292,21 +292,21 @@ public final class a
           if (localArrayList.isEmpty())
           {
             Log.i("MicroMsg.KeyStepAnalyser", "no keystep logs");
-            locala1.bM(new ArrayList());
-            AppMethodBeat.o(221239);
+            locala1.bL(new ArrayList());
+            AppMethodBeat.o(208800);
             return;
           }
-          locala1.bM(a.bL(locala.bK(localArrayList)));
+          locala1.bL(a.bK(locala.bJ(localArrayList)));
         }
-        AppMethodBeat.o(221239);
+        AppMethodBeat.o(208800);
       }
     });
-    AppMethodBeat.o(221240);
+    AppMethodBeat.o(209155);
   }
   
-  final List<IKeyStepAnalyser.StepLogInfo> bK(List<List<IKeyStepAnalyser.StepLogInfo>> paramList)
+  final List<IKeyStepAnalyser.StepLogInfo> bJ(List<List<IKeyStepAnalyser.StepLogInfo>> paramList)
   {
-    AppMethodBeat.i(221242);
+    AppMethodBeat.i(209163);
     ArrayList localArrayList = new ArrayList();
     PriorityQueue localPriorityQueue = new PriorityQueue(paramList.size(), new Comparator() {});
     int j = 0;
@@ -318,9 +318,9 @@ public final class a
       if (!((List)paramList.get(j)).isEmpty())
       {
         localObject = new a((byte)0);
-        ((a)localObject).mOw = ((IKeyStepAnalyser.StepLogInfo)((List)paramList.get(j)).get(0));
+        ((a)localObject).pPp = ((IKeyStepAnalyser.StepLogInfo)((List)paramList.get(j)).get(0));
         ((a)localObject).indexInArray = 0;
-        ((a)localObject).mOx = j;
+        ((a)localObject).pPq = j;
         localPriorityQueue.add(localObject);
         k = i + ((List)paramList.get(j)).size();
       }
@@ -330,41 +330,41 @@ public final class a
     if (j < i)
     {
       localObject = (a)localPriorityQueue.poll();
-      localArrayList.add(((a)localObject).mOw);
-      List localList = (List)paramList.get(((a)localObject).mOx);
+      localArrayList.add(((a)localObject).pPp);
+      List localList = (List)paramList.get(((a)localObject).pPq);
       k = ((a)localObject).indexInArray + 1;
       if (k >= localList.size())
       {
-        if (a.mOy == null)
+        if (a.pPr == null)
         {
-          a.mOy = new a();
+          a.pPr = new a();
           localObject = new IKeyStepAnalyser.StepLogInfo();
           ((IKeyStepAnalyser.StepLogInfo)localObject).time = 9223372036854775807L;
-          a.mOy.mOw = ((IKeyStepAnalyser.StepLogInfo)localObject);
+          a.pPr.pPp = ((IKeyStepAnalyser.StepLogInfo)localObject);
         }
-        localPriorityQueue.add(a.mOy);
+        localPriorityQueue.add(a.pPr);
       }
       for (;;)
       {
         j += 1;
         break;
         a locala = new a((byte)0);
-        locala.mOw = ((IKeyStepAnalyser.StepLogInfo)localList.get(k));
+        locala.pPp = ((IKeyStepAnalyser.StepLogInfo)localList.get(k));
         locala.indexInArray = k;
-        locala.mOx = ((a)localObject).mOx;
+        locala.pPq = ((a)localObject).pPq;
         localPriorityQueue.add(locala);
       }
     }
-    AppMethodBeat.o(221242);
+    AppMethodBeat.o(209163);
     return localArrayList;
   }
   
   static final class a
   {
-    static a mOy;
+    static a pPr;
     int indexInArray;
-    IKeyStepAnalyser.StepLogInfo mOw;
-    int mOx;
+    IKeyStepAnalyser.StepLogInfo pPp;
+    int pPq;
   }
 }
 

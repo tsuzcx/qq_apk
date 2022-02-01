@@ -1,24 +1,24 @@
 package com.tencent.luggage.game.d;
 
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.v;
 
 public class a
-  extends d<s>
+  extends c<v>
 {
   public static final int CTRL_INDEX = 585;
   public static final String NAME = "hideSplashScreen";
   
-  protected boolean Me()
+  protected boolean OW()
   {
     return false;
   }
   
-  protected void Mf() {}
+  protected void OX() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.game.d.a
  * JD-Core Version:    0.7.0.1
  */

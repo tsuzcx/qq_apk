@@ -1,140 +1,190 @@
 package com.tencent.mm.plugin.textstatus.i;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.hn;
-import com.tencent.mm.modelsns.d;
-import com.tencent.mm.plugin.textstatus.g.r;
-import com.tencent.mm.protocal.protobuf.axf;
-import com.tencent.mm.sdk.event.IListener;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.XmlParser;
-import java.lang.ref.SoftReference;
-import java.util.HashMap;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import com.tencent.mm.sdk.storage.sql.Column;
+import com.tencent.mm.sdk.storage.sql.SingleTable;
+import java.lang.reflect.Field;
 import java.util.Map;
-import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.o;
-import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/textstatus/third/LiveSingleton;", "Lcom/tencent/mm/plugin/textstatus/third/ISpecialViewSingleton;", "()V", "liveStatusListener", "com/tencent/mm/plugin/textstatus/third/LiveSingleton$liveStatusListener$1", "Lcom/tencent/mm/plugin/textstatus/third/LiveSingleton$liveStatusListener$1;", "viewCache", "Ljava/util/HashMap;", "", "Ljava/lang/ref/SoftReference;", "Lkotlin/Pair;", "Landroid/view/View;", "Lkotlin/Function0;", "", "Lkotlin/collections/HashMap;", "getView", "jumpInfo", "Lcom/tencent/mm/plugin/textstatus/proto/TextStatusJumpInfo;", "getViewAndRefresh", "refreshCallback", "refreshLiveStatue", "liveId", "liveStatus", "", "release", "Companion", "plugin-textstatus_release"})
-public final class c
-  implements b
+public abstract class c
+  extends IAutoDBItem
 {
-  public static final a Gcn;
-  private static final String TAG = "Third.LiveSingleton";
-  private HashMap<String, SoftReference<o<View, a<x>>>> Gcl;
-  private final b Gcm;
+  public static final Column C_CREATETIME;
+  public static final Column C_ROWID;
+  public static final Column C_USERNAME;
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS TextStatusReference_TextStatusId_index ON TextStatusReference(TextStatusId)" };
+  public static final Column MGW;
+  private static final int MHU = "TopicInfo".hashCode();
+  private static final int MIE;
+  private static final int MIJ;
+  private static final int MIK = "DeleteInMsgList".hashCode();
+  public static final Column MIs;
+  public static final Column MIv;
+  public static final Column MIw;
+  public static final SingleTable TABLE = new SingleTable("TextStatusReference");
+  public static final Column hHm;
+  private static final int hIO;
+  private static final int hVP;
+  private static final int hVT;
+  private static final int rowid_HASHCODE = "rowid".hashCode();
+  private boolean MHt = true;
+  private boolean MIC = true;
+  private boolean MID = true;
+  private boolean MIx = true;
+  public int field_CreateTime;
+  public int field_DeleteInMsgList;
+  public int field_Read;
+  public String field_TextStatusId;
+  public byte[] field_TopicInfo;
+  public String field_UserName;
+  public String field_thumbUrl;
+  private boolean hIa = true;
+  private boolean hVG = true;
+  private boolean hVK = true;
   
   static
   {
-    AppMethodBeat.i(216338);
-    Gcn = new a((byte)0);
-    TAG = "Third.LiveSingleton";
-    AppMethodBeat.o(216338);
+    C_ROWID = new Column("rowid", "long", "TextStatusReference", "");
+    MIs = new Column("textstatusid", "string", "TextStatusReference", "");
+    C_USERNAME = new Column("username", "string", "TextStatusReference", "");
+    C_CREATETIME = new Column("createtime", "int", "TextStatusReference", "");
+    hHm = new Column("thumburl", "string", "TextStatusReference", "");
+    MIv = new Column("read", "int", "TextStatusReference", "");
+    MGW = new Column("topicinfo", "byte[]", "TextStatusReference", "");
+    MIw = new Column("deleteinmsglist", "int", "TextStatusReference", "");
+    MIE = "TextStatusId".hashCode();
+    hVT = "UserName".hashCode();
+    hVP = "CreateTime".hashCode();
+    hIO = "thumbUrl".hashCode();
+    MIJ = "Read".hashCode();
   }
   
-  public c()
+  public static IAutoDBItem.MAutoDBInfo aoY()
   {
-    AppMethodBeat.i(216337);
-    this.Gcl = new HashMap();
-    this.Gcm = new b(this);
-    this.Gcm.alive();
-    AppMethodBeat.o(216337);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[7];
+    localMAutoDBInfo.columns = new String[8];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localMAutoDBInfo.columns[0] = "TextStatusId";
+    localMAutoDBInfo.colsMap.put("TextStatusId", "TEXT");
+    localStringBuilder.append(" TextStatusId TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[1] = "UserName";
+    localMAutoDBInfo.colsMap.put("UserName", "TEXT");
+    localStringBuilder.append(" UserName TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[2] = "CreateTime";
+    localMAutoDBInfo.colsMap.put("CreateTime", "INTEGER");
+    localStringBuilder.append(" CreateTime INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[3] = "thumbUrl";
+    localMAutoDBInfo.colsMap.put("thumbUrl", "TEXT");
+    localStringBuilder.append(" thumbUrl TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[4] = "Read";
+    localMAutoDBInfo.colsMap.put("Read", "INTEGER");
+    localStringBuilder.append(" Read INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[5] = "TopicInfo";
+    localMAutoDBInfo.colsMap.put("TopicInfo", "BLOB");
+    localStringBuilder.append(" TopicInfo BLOB");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[6] = "DeleteInMsgList";
+    localMAutoDBInfo.colsMap.put("DeleteInMsgList", "INTEGER");
+    localStringBuilder.append(" DeleteInMsgList INTEGER");
+    localMAutoDBInfo.columns[7] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    return localMAutoDBInfo;
   }
   
-  public final View a(r paramr)
+  public void convertFrom(Cursor paramCursor)
   {
-    AppMethodBeat.i(216334);
-    p.h(paramr, "jumpInfo");
-    Log.i(TAG, "getView jumpType:" + paramr.GaO);
-    if (p.j(paramr.GaO, "2"))
-    {
-      paramr = new ImageView(MMApplicationContext.getContext());
-      Context localContext = MMApplicationContext.getContext();
-      p.g(localContext, "MMApplicationContext.getContext()");
-      paramr.setImageDrawable(localContext.getResources().getDrawable(2131690266));
-      paramr = (View)paramr;
-      AppMethodBeat.o(216334);
-      return paramr;
+    String[] arrayOfString = paramCursor.getColumnNames();
+    if (arrayOfString == null) {
+      return;
     }
-    AppMethodBeat.o(216334);
-    return null;
-  }
-  
-  public final View a(r paramr, a<x> parama)
-  {
-    Object localObject2 = null;
-    AppMethodBeat.i(216335);
-    p.h(paramr, "jumpInfo");
-    p.h(parama, "refreshCallback");
-    Log.i(TAG, "getViewAndRefresh jumpType:" + paramr.GaO);
-    Object localObject1 = localObject2;
-    if (p.j(paramr.GaO, "2"))
+    int i = 0;
+    int j = arrayOfString.length;
+    label20:
+    int k;
+    if (i < j)
     {
-      d locald = new d();
-      locald.j("", XmlParser.parseXml(paramr.GaQ, "finderLive", null));
-      localObject1 = localObject2;
-      if (this.Gcl.get(locald.jlf.hJs) == null)
-      {
-        localObject1 = (View)new ImageView(MMApplicationContext.getContext());
-        paramr = (ImageView)localObject1;
-        localObject2 = MMApplicationContext.getContext();
-        p.g(localObject2, "MMApplicationContext.getContext()");
-        paramr.setImageDrawable(((Context)localObject2).getResources().getDrawable(2131690266));
-        paramr = (Map)this.Gcl;
-        localObject2 = locald.jlf.hJs;
-        p.g(localObject2, "shareLiveInfo.shareLive.liveId");
-        paramr.put(localObject2, new SoftReference(new o(localObject1, parama)));
+      k = arrayOfString[i].hashCode();
+      if (MIE != k) {
+        break label60;
+      }
+      this.field_TextStatusId = paramCursor.getString(i);
+    }
+    for (;;)
+    {
+      i += 1;
+      break label20;
+      break;
+      label60:
+      if (hVT == k) {
+        this.field_UserName = paramCursor.getString(i);
+      } else if (hVP == k) {
+        this.field_CreateTime = paramCursor.getInt(i);
+      } else if (hIO == k) {
+        this.field_thumbUrl = paramCursor.getString(i);
+      } else if (MIJ == k) {
+        this.field_Read = paramCursor.getInt(i);
+      } else if (MHU == k) {
+        this.field_TopicInfo = paramCursor.getBlob(i);
+      } else if (MIK == k) {
+        this.field_DeleteInMsgList = paramCursor.getInt(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
-    AppMethodBeat.o(216335);
-    return localObject1;
   }
   
-  public final void b(r paramr)
+  public ContentValues convertTo()
   {
-    AppMethodBeat.i(216336);
-    p.h(paramr, "jumpInfo");
-    Log.i(TAG, "release jumpType:" + paramr.GaO);
-    if (p.j(paramr.GaO, "2"))
-    {
-      d locald = new d();
-      locald.j("", XmlParser.parseXml(paramr.GaQ, "finderLive", null));
-      Log.i(TAG, "release liveId:" + locald.jlf.hJs);
-      this.Gcl.remove(locald.jlf.hJs);
+    ContentValues localContentValues = new ContentValues();
+    if (this.MIx) {
+      localContentValues.put("TextStatusId", this.field_TextStatusId);
     }
-    AppMethodBeat.o(216336);
+    if (this.hVK) {
+      localContentValues.put("UserName", this.field_UserName);
+    }
+    if (this.hVG) {
+      localContentValues.put("CreateTime", Integer.valueOf(this.field_CreateTime));
+    }
+    if (this.hIa) {
+      localContentValues.put("thumbUrl", this.field_thumbUrl);
+    }
+    if (this.MIC) {
+      localContentValues.put("Read", Integer.valueOf(this.field_Read));
+    }
+    if (this.MHt) {
+      localContentValues.put("TopicInfo", this.field_TopicInfo);
+    }
+    if (this.MID) {
+      localContentValues.put("DeleteInMsgList", Integer.valueOf(this.field_DeleteInMsgList));
+    }
+    if (this.systemRowid > 0L) {
+      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+    }
+    return localContentValues;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/textstatus/third/LiveSingleton$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-textstatus_release"})
-  public static final class a {}
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/textstatus/third/LiveSingleton$liveStatusListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/FeedUpdateEvent;", "callback", "", "event", "plugin-textstatus_release"})
-  public static final class b
-    extends IListener<hn>
+  public String[] getIndexCreateSQL()
   {
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/textstatus/third/LiveSingleton$liveStatusListener$1$callback$1$1"})
-    static final class a
-      extends q
-      implements a<x>
-    {
-      a(c.b paramb, hn paramhn)
-      {
-        super();
-      }
-    }
+    return INDEX_CREATE;
+  }
+  
+  public String getTableName()
+  {
+    return "TextStatusReference";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.i.c
  * JD-Core Version:    0.7.0.1
  */

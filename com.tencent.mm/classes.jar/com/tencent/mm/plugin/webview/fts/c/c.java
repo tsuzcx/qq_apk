@@ -7,7 +7,7 @@ import android.provider.Settings.System;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
@@ -17,7 +17,7 @@ import org.json.JSONObject;
 
 public final class c
 {
-  public static String AF(long paramLong)
+  public static String GN(long paramLong)
   {
     AppMethodBeat.i(78161);
     if (paramLong < 3600000L) {}
@@ -31,7 +31,7 @@ public final class c
     }
   }
   
-  public static int M(JSONObject paramJSONObject)
+  public static int Q(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(78163);
     if (paramJSONObject.has("visible"))
@@ -88,7 +88,7 @@ public final class c
     }
   }
   
-  public static String bX(JSONObject paramJSONObject)
+  public static String ci(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(78164);
     paramJSONObject = paramJSONObject.optJSONArray("playUrl");
@@ -108,7 +108,7 @@ public final class c
     return "";
   }
   
-  private static float dT(Context paramContext)
+  private static float dS(Context paramContext)
   {
     AppMethodBeat.i(78159);
     paramContext = paramContext.getContentResolver();
@@ -129,13 +129,13 @@ public final class c
     return f;
   }
   
-  public static float dV(Context paramContext)
+  public static float dT(Context paramContext)
   {
     AppMethodBeat.i(78160);
     WindowManager.LayoutParams localLayoutParams = ((Activity)paramContext).getWindow().getAttributes();
     if (localLayoutParams.screenBrightness < 0.0F)
     {
-      f = dT(paramContext);
+      f = dS(paramContext);
       AppMethodBeat.o(78160);
       return f;
     }
@@ -146,7 +146,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.c.c
  * JD-Core Version:    0.7.0.1
  */

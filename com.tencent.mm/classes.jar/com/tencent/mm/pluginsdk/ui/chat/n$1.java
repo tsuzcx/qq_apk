@@ -15,10 +15,10 @@ final class n$1
   {
     AppMethodBeat.i(31761);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/pluginsdk/ui/chat/VoiceInputPanel$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
-    if (n.a(this.Kop)) {
-      n.b(this.Kop);
+    localb.bn(paramView);
+    a.c("com/tencent/mm/pluginsdk/ui/chat/VoiceInputPanel$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
+    if (n.a(this.Rpb)) {
+      n.b(this.Rpb);
     }
     a.a(true, this, "com/tencent/mm/pluginsdk/ui/chat/VoiceInputPanel$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
     AppMethodBeat.o(31761);
@@ -27,7 +27,7 @@ final class n$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.n.1
  * JD-Core Version:    0.7.0.1
  */

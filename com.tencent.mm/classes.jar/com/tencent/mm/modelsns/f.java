@@ -1,40 +1,39 @@
 package com.tencent.mm.modelsns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.i.a.l;
-import com.tencent.mm.protocal.protobuf.bcl;
+import com.tencent.mm.protocal.protobuf.bjf;
 import java.util.Map;
 
 public final class f
-  implements j
+  implements k
 {
-  public bcl jld;
+  public bjf mbj;
   
   public f()
   {
-    AppMethodBeat.i(164142);
-    this.jld = new bcl();
-    AppMethodBeat.o(164142);
+    AppMethodBeat.i(260120);
+    this.mbj = new bjf();
+    AppMethodBeat.o(260120);
   }
   
-  public final String bfF()
+  public final String boV()
   {
-    AppMethodBeat.i(164143);
-    String str = l.b(this.jld);
-    AppMethodBeat.o(164143);
+    AppMethodBeat.i(260121);
+    String str = com.tencent.mm.plugin.findersdk.a.k.bf(2, com.tencent.mm.plugin.findersdk.a.k.a(this.mbj));
+    AppMethodBeat.o(260121);
     return str;
   }
   
-  public final void j(String paramString, Map<String, String> paramMap)
+  public final void i(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(164144);
-    this.jld = l.z(paramString, paramMap);
-    AppMethodBeat.o(164144);
+    AppMethodBeat.i(260123);
+    this.mbj = com.tencent.mm.plugin.findersdk.a.k.B(paramString + ".finder.detail", paramMap);
+    AppMethodBeat.o(260123);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsns.f
  * JD-Core Version:    0.7.0.1
  */

@@ -10,28 +10,28 @@ import org.json.JSONObject;
 public class c
   extends b
 {
-  public final void a(String paramString, JSONObject paramJSONObject)
+  public final void a(String paramString, JSONObject paramJSONObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(186903);
+    AppMethodBeat.i(231792);
     long l = paramJSONObject.optLong("download_id");
     if (l <= 0L)
     {
       Log.e("LiteAppJsApiCancelDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
-      this.yEn.aCS("invalid_downloadid");
-      AppMethodBeat.o(186903);
+      this.Ega.aNa("invalid_downloadid");
+      AppMethodBeat.o(231792);
       return;
     }
-    if (f.cBv().Cn(l) > 0)
+    if (f.cPZ().Iw(l) > 0)
     {
-      this.yEn.ecz();
-      AppMethodBeat.o(186903);
+      this.Ega.eLC();
+      AppMethodBeat.o(231792);
       return;
     }
-    this.yEn.aCS("fail");
-    AppMethodBeat.o(186903);
+    this.Ega.aNa("fail");
+    AppMethodBeat.o(231792);
   }
   
-  public final int dTw()
+  public final int ewF()
   {
     return 1;
   }

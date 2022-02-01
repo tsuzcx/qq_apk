@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.setting;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.br.c;
-import com.tencent.mm.plugin.messenger.foundation.a.q;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.by.c;
+import com.tencent.mm.plugin.messenger.foundation.a.t;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.e.m;
+import com.tencent.mm.ui.f.o;
 import java.util.Map;
 
 final class d$3
-  implements q
+  implements t
 {
   d$3(d paramd) {}
   
@@ -24,7 +24,7 @@ final class d$3
       if (!Util.isNullOrNil(paramString))
       {
         paramMap = new Intent();
-        paramMap.putExtra(e.m.Ozm, paramString);
+        paramMap.putExtra(f.o.VSA, paramString);
         c.b(MMApplicationContext.getContext(), "setting", ".ui.setting.SettingsTrustFriendUI", paramMap);
       }
     }

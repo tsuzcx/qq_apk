@@ -41,7 +41,7 @@ public class BitmapTracer
           return true;
         }
       }, true);
-      localMTimerHandler.startTimer(120000L);
+      localMTimerHandler.startTimer(3600000L);
       localMTimerHandler.setLogging(false);
     }
     for (;;)
@@ -50,14 +50,14 @@ public class BitmapTracer
       {
         public final void uncaughtException(MMUncaughtExceptionHandler paramAnonymousMMUncaughtExceptionHandler, String paramAnonymousString, Throwable paramAnonymousThrowable)
         {
-          AppMethodBeat.i(215293);
+          AppMethodBeat.i(263295);
           if (!(paramAnonymousThrowable instanceof OutOfMemoryError))
           {
-            AppMethodBeat.o(215293);
+            AppMethodBeat.o(263295);
             return;
           }
           BitmapTracer.access$300(1048576L, -1);
-          AppMethodBeat.o(215293);
+          AppMethodBeat.o(263295);
         }
       });
       AppMethodBeat.o(156097);
@@ -111,13 +111,13 @@ public class BitmapTracer
           //   65: invokestatic 65	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
           //   68: aload_0
           //   69: getfield 18	com/tencent/mm/sdk/platformtools/BitmapTracer$2:traceDumped	Z
-          //   72: ifne +133 -> 205
+          //   72: ifne +132 -> 204
           //   75: lload_2
           //   76: lload 4
           //   78: lsub
           //   79: ldc2_w 66
           //   82: lcmp
-          //   83: ifle +122 -> 205
+          //   83: ifle +121 -> 204
           //   86: invokestatic 72	java/lang/System:currentTimeMillis	()J
           //   89: lstore_2
           //   90: lload_2
@@ -144,101 +144,100 @@ public class BitmapTracer
           //   128: new 86	java/lang/StringBuilder
           //   131: dup
           //   132: invokespecial 87	java/lang/StringBuilder:<init>	()V
-          //   135: invokestatic 93	com/tencent/mm/loader/j/b:aKJ	()Ljava/lang/String;
+          //   135: invokestatic 93	com/tencent/mm/loader/j/b:aSL	()Ljava/lang/String;
           //   138: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
           //   141: ldc 99
           //   143: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
           //   146: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   149: iconst_0
-          //   150: invokestatic 108	com/tencent/mm/vfs/s:dw	(Ljava/lang/String;Z)Ljava/io/OutputStream;
-          //   153: invokespecial 111	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
-          //   156: invokespecial 112	java/io/PrintWriter:<init>	(Ljava/io/OutputStream;)V
-          //   159: astore 8
-          //   161: aload 8
-          //   163: astore_1
-          //   164: aload 8
-          //   166: lconst_0
-          //   167: iconst_m1
-          //   168: invokestatic 116	com/tencent/mm/sdk/platformtools/BitmapTracer:access$200	(Ljava/io/PrintWriter;JI)V
-          //   171: aload 8
-          //   173: invokestatic 122	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-          //   176: new 86	java/lang/StringBuilder
-          //   179: dup
-          //   180: invokespecial 87	java/lang/StringBuilder:<init>	()V
-          //   183: invokestatic 93	com/tencent/mm/loader/j/b:aKJ	()Ljava/lang/String;
-          //   186: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   189: ldc 124
-          //   191: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   194: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   197: invokestatic 130	android/os/Debug:dumpHprofData	(Ljava/lang/String;)V
-          //   200: aload_0
-          //   201: iconst_1
-          //   202: putfield 18	com/tencent/mm/sdk/platformtools/BitmapTracer$2:traceDumped	Z
-          //   205: ldc 26
-          //   207: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   210: iconst_1
-          //   211: ireturn
-          //   212: astore 9
-          //   214: aconst_null
-          //   215: astore 8
-          //   217: aload 8
-          //   219: astore_1
-          //   220: ldc 54
-          //   222: aload 9
-          //   224: ldc 132
-          //   226: iconst_0
-          //   227: anewarray 4	java/lang/Object
-          //   230: invokestatic 136	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-          //   233: aload 8
-          //   235: invokestatic 122	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-          //   238: goto -62 -> 176
-          //   241: astore 9
-          //   243: aload_1
-          //   244: astore 8
-          //   246: aload 9
-          //   248: astore_1
-          //   249: aload 8
-          //   251: invokestatic 122	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
-          //   254: ldc 26
-          //   256: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   259: aload_1
-          //   260: athrow
-          //   261: astore_1
-          //   262: ldc 54
-          //   264: aload_1
-          //   265: ldc 132
-          //   267: iconst_0
-          //   268: anewarray 4	java/lang/Object
-          //   271: invokestatic 136	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-          //   274: goto -74 -> 200
-          //   277: astore 9
-          //   279: aload_1
-          //   280: astore 8
-          //   282: aload 9
-          //   284: astore_1
-          //   285: goto -36 -> 249
-          //   288: astore 9
-          //   290: goto -73 -> 217
+          //   149: invokestatic 108	com/tencent/mm/vfs/u:Te	(Ljava/lang/String;)Ljava/io/OutputStream;
+          //   152: invokespecial 111	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
+          //   155: invokespecial 112	java/io/PrintWriter:<init>	(Ljava/io/OutputStream;)V
+          //   158: astore 8
+          //   160: aload 8
+          //   162: astore_1
+          //   163: aload 8
+          //   165: lconst_0
+          //   166: iconst_m1
+          //   167: invokestatic 116	com/tencent/mm/sdk/platformtools/BitmapTracer:access$200	(Ljava/io/PrintWriter;JI)V
+          //   170: aload 8
+          //   172: invokestatic 122	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+          //   175: new 86	java/lang/StringBuilder
+          //   178: dup
+          //   179: invokespecial 87	java/lang/StringBuilder:<init>	()V
+          //   182: invokestatic 93	com/tencent/mm/loader/j/b:aSL	()Ljava/lang/String;
+          //   185: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   188: ldc 124
+          //   190: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   193: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   196: invokestatic 130	android/os/Debug:dumpHprofData	(Ljava/lang/String;)V
+          //   199: aload_0
+          //   200: iconst_1
+          //   201: putfield 18	com/tencent/mm/sdk/platformtools/BitmapTracer$2:traceDumped	Z
+          //   204: ldc 26
+          //   206: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   209: iconst_1
+          //   210: ireturn
+          //   211: astore 9
+          //   213: aconst_null
+          //   214: astore 8
+          //   216: aload 8
+          //   218: astore_1
+          //   219: ldc 54
+          //   221: aload 9
+          //   223: ldc 132
+          //   225: iconst_0
+          //   226: anewarray 4	java/lang/Object
+          //   229: invokestatic 136	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   232: aload 8
+          //   234: invokestatic 122	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+          //   237: goto -62 -> 175
+          //   240: astore 9
+          //   242: aload_1
+          //   243: astore 8
+          //   245: aload 9
+          //   247: astore_1
+          //   248: aload 8
+          //   250: invokestatic 122	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+          //   253: ldc 26
+          //   255: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   258: aload_1
+          //   259: athrow
+          //   260: astore_1
+          //   261: ldc 54
+          //   263: aload_1
+          //   264: ldc 132
+          //   266: iconst_0
+          //   267: anewarray 4	java/lang/Object
+          //   270: invokestatic 136	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   273: goto -74 -> 199
+          //   276: astore 9
+          //   278: aload_1
+          //   279: astore 8
+          //   281: aload 9
+          //   283: astore_1
+          //   284: goto -36 -> 248
+          //   287: astore 9
+          //   289: goto -73 -> 216
           // Local variable table:
           //   start	length	slot	name	signature
-          //   0	293	0	this	2
-          //   0	293	1	paramAnonymousMessage	android.os.Message
+          //   0	292	0	this	2
+          //   0	292	1	paramAnonymousMessage	android.os.Message
           //   18	90	2	l1	long
           //   23	54	4	l2	long
           //   29	31	6	l3	long
-          //   159	122	8	localObject1	Object
-          //   212	11	9	localException1	java.lang.Exception
-          //   241	6	9	localObject2	Object
-          //   277	6	9	localObject3	Object
-          //   288	1	9	localException2	java.lang.Exception
+          //   158	122	8	localObject1	Object
+          //   211	11	9	localException1	java.lang.Exception
+          //   240	6	9	localObject2	Object
+          //   276	6	9	localObject3	Object
+          //   287	1	9	localException2	java.lang.Exception
           // Exception table:
           //   from	to	target	type
-          //   120	161	212	java/lang/Exception
-          //   120	161	241	finally
-          //   176	200	261	java/lang/Exception
-          //   164	171	277	finally
-          //   220	233	277	finally
-          //   164	171	288	java/lang/Exception
+          //   120	160	211	java/lang/Exception
+          //   120	160	240	finally
+          //   175	199	260	java/lang/Exception
+          //   163	170	276	finally
+          //   219	232	276	finally
+          //   163	170	287	java/lang/Exception
         }
       });
     }
@@ -483,15 +482,15 @@ public class BitmapTracer
   
   public static Bitmap trace(Bitmap paramBitmap, String arg1, BitmapFactory.Options paramOptions)
   {
-    AppMethodBeat.i(215295);
+    AppMethodBeat.i(262951);
     if (paramBitmap == null)
     {
-      AppMethodBeat.o(215295);
+      AppMethodBeat.o(262951);
       return null;
     }
     if ((paramBitmap.getAllocationByteCount() < 1048576) && (!WeChatEnvironment.isMonkeyEnv()))
     {
-      AppMethodBeat.o(215295);
+      AppMethodBeat.o(262951);
       return paramBitmap;
     }
     paramOptions = new BitmapTraceInfo(???, paramOptions);
@@ -503,7 +502,7 @@ public class BitmapTracer
         handler.sendEmptyMessageDelayed(0, 5000L);
         checkingScheduled = true;
       }
-      AppMethodBeat.o(215295);
+      AppMethodBeat.o(262951);
       return paramBitmap;
     }
   }
@@ -517,19 +516,19 @@ public class BitmapTracer
     
     BitmapTraceInfo(String paramString, BitmapFactory.Options paramOptions)
     {
-      AppMethodBeat.i(215294);
+      AppMethodBeat.i(261470);
       StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
       this.stack = ((StackTraceElement[])Arrays.copyOfRange(arrayOfStackTraceElement, 4, arrayOfStackTraceElement.length));
       this.source = paramString;
       this.options = paramOptions;
       this.acquiredTime = System.currentTimeMillis();
-      AppMethodBeat.o(215294);
+      AppMethodBeat.o(261470);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.BitmapTracer
  * JD-Core Version:    0.7.0.1
  */

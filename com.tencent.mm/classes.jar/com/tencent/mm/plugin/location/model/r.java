@@ -2,55 +2,55 @@ package com.tencent.mm.plugin.location.model;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bi.c;
+import com.tencent.mm.bk.c;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.location.a.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class r
-  implements com.tencent.mm.bi.a
+  implements com.tencent.mm.bk.a
 {
+  private b EkQ;
   private MMHandler handler;
   private List<c> listeners;
   private final String path;
-  private b yGW;
   
   public r()
   {
     AppMethodBeat.i(55772);
     this.listeners = new LinkedList();
-    Object localObject = new o(n.ecU());
-    if (!((o)localObject).exists()) {
-      ((o)localObject).mkdirs();
+    Object localObject = new q(n.eMm());
+    if (!((q)localObject).ifE()) {
+      ((q)localObject).ifL();
     }
-    this.path = (n.ecU() + "trackroominfolist.info");
+    this.path = (n.eMm() + "trackroominfolist.info");
     this.handler = new MMHandler(Looper.getMainLooper());
-    if (this.yGW == null)
+    if (this.EkQ == null)
     {
-      if (!s.YS(this.path))
+      if (!u.agG(this.path))
       {
-        this.yGW = new b();
+        this.EkQ = new b();
         AppMethodBeat.o(55772);
         return;
       }
       try
       {
-        localObject = s.aW(this.path, 0, -1);
-        this.yGW = ((b)new b().parseFrom((byte[])localObject));
+        localObject = u.aY(this.path, 0, -1);
+        this.EkQ = ((b)new b().parseFrom((byte[])localObject));
         AppMethodBeat.o(55772);
         return;
       }
       catch (Exception localException)
       {
         Log.printErrStackTrace("MicroMsg.TrackRoomListMgr", localException, "", new Object[0]);
-        this.yGW = new b();
+        this.EkQ = new b();
       }
     }
     AppMethodBeat.o(55772);
@@ -59,17 +59,17 @@ public final class r
   private boolean a(b paramb)
   {
     AppMethodBeat.i(182049);
-    Log.d("MicroMsg.TrackRoomListMgr", "infoFile infolist size %d", new Object[] { Integer.valueOf(paramb.yFr.size()) });
-    if (paramb.yFr.isEmpty())
+    Log.d("MicroMsg.TrackRoomListMgr", "infoFile infolist size %d", new Object[] { Integer.valueOf(paramb.Ejk.size()) });
+    if (paramb.Ejk.isEmpty())
     {
-      s.deleteFile(this.path);
+      u.deleteFile(this.path);
       AppMethodBeat.o(182049);
       return true;
     }
     try
     {
       paramb = paramb.toByteArray();
-      s.f(this.path, paramb, paramb.length);
+      u.f(this.path, paramb, paramb.length);
       AppMethodBeat.o(182049);
       return true;
     }
@@ -81,7 +81,7 @@ public final class r
     return false;
   }
   
-  private void ax(final String paramString1, final String paramString2, final String paramString3)
+  private void ar(final String paramString1, final String paramString2, final String paramString3)
   {
     AppMethodBeat.i(55778);
     Iterator localIterator = this.listeners.iterator();
@@ -93,7 +93,7 @@ public final class r
         public final void run()
         {
           AppMethodBeat.i(55771);
-          localc.Qa(paramString1);
+          localc.Xx(paramString1);
           AppMethodBeat.o(55771);
         }
       });
@@ -102,7 +102,7 @@ public final class r
   }
   
   /* Error */
-  public final LinkedList<String> PY(String paramString)
+  public final LinkedList<String> Xv(String paramString)
   {
     // Byte code:
     //   0: aload_0
@@ -110,8 +110,8 @@ public final class r
     //   2: ldc 180
     //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 82	com/tencent/mm/plugin/location/model/r:yGW	Lcom/tencent/mm/plugin/location/a/b;
-    //   11: getfield 122	com/tencent/mm/plugin/location/a/b:yFr	Ljava/util/LinkedList;
+    //   8: getfield 82	com/tencent/mm/plugin/location/model/r:EkQ	Lcom/tencent/mm/plugin/location/a/b;
+    //   11: getfield 122	com/tencent/mm/plugin/location/a/b:Ejk	Ljava/util/LinkedList;
     //   14: invokevirtual 181	java/util/LinkedList:iterator	()Ljava/util/Iterator;
     //   17: astore_2
     //   18: aload_2
@@ -127,7 +127,7 @@ public final class r
     //   42: invokevirtual 192	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   45: ifeq -27 -> 18
     //   48: aload_3
-    //   49: getfield 195	com/tencent/mm/plugin/location/a/a:dTe	Ljava/util/LinkedList;
+    //   49: getfield 195	com/tencent/mm/plugin/location/a/a:fMA	Ljava/util/LinkedList;
     //   52: invokevirtual 198	java/util/LinkedList:clone	()Ljava/lang/Object;
     //   55: checkcast 32	java/util/LinkedList
     //   58: astore_1
@@ -162,10 +162,10 @@ public final class r
     //   68	81	84	finally
   }
   
-  public final boolean PZ(String paramString)
+  public final boolean Xw(String paramString)
   {
     AppMethodBeat.i(55780);
-    if (PY(paramString).size() > 0)
+    if (Xv(paramString).size() > 0)
     {
       AppMethodBeat.o(55780);
       return true;
@@ -204,7 +204,7 @@ public final class r
         Log.i("MicroMsg.TrackRoomListMgr", "updateList talk: %s,  size: %d %f %f", new Object[] { paramString1, Integer.valueOf(((LinkedList)localObject).size()), Double.valueOf(paramDouble1), Double.valueOf(paramDouble2) });
         paramLinkedList = (LinkedList)((LinkedList)localObject).clone();
         boolean bool = paramLinkedList.isEmpty();
-        localObject = this.yGW.yFr.iterator();
+        localObject = this.EkQ.Ejk.iterator();
         if (((Iterator)localObject).hasNext())
         {
           com.tencent.mm.plugin.location.a.a locala = (com.tencent.mm.plugin.location.a.a)((Iterator)localObject).next();
@@ -213,14 +213,14 @@ public final class r
           }
           if (bool)
           {
-            this.yGW.yFr.remove(locala);
-            a(this.yGW);
-            ax(paramString1, paramString3, paramString4);
+            this.EkQ.Ejk.remove(locala);
+            a(this.EkQ);
+            ar(paramString1, paramString3, paramString4);
             AppMethodBeat.o(55777);
             return;
           }
-          locala.dTe = paramLinkedList;
-          locala.yFq = paramString2;
+          locala.fMA = paramLinkedList;
+          locala.Ejj = paramString2;
           locala.latitude = paramDouble1;
           locala.longitude = paramDouble2;
           continue;
@@ -232,20 +232,20 @@ public final class r
       finally {}
       Object localObject = new com.tencent.mm.plugin.location.a.a();
       ((com.tencent.mm.plugin.location.a.a)localObject).username = paramString1;
-      ((com.tencent.mm.plugin.location.a.a)localObject).dTe = paramLinkedList;
-      ((com.tencent.mm.plugin.location.a.a)localObject).yFq = paramString2;
+      ((com.tencent.mm.plugin.location.a.a)localObject).fMA = paramLinkedList;
+      ((com.tencent.mm.plugin.location.a.a)localObject).Ejj = paramString2;
       ((com.tencent.mm.plugin.location.a.a)localObject).latitude = paramDouble1;
       ((com.tencent.mm.plugin.location.a.a)localObject).longitude = paramDouble2;
-      this.yGW.yFr.add(localObject);
+      this.EkQ.Ejk.add(localObject);
       label262:
-      a(this.yGW);
-      ax(paramString1, paramString3, paramString4);
+      a(this.EkQ);
+      ar(paramString1, paramString3, paramString4);
       AppMethodBeat.o(55777);
     }
   }
   
   /* Error */
-  public final com.tencent.mm.plugin.location.a.a aCZ(String paramString)
+  public final com.tencent.mm.plugin.location.a.a aNj(String paramString)
   {
     // Byte code:
     //   0: aload_0
@@ -253,8 +253,8 @@ public final class r
     //   2: ldc 243
     //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 82	com/tencent/mm/plugin/location/model/r:yGW	Lcom/tencent/mm/plugin/location/a/b;
-    //   11: getfield 122	com/tencent/mm/plugin/location/a/b:yFr	Ljava/util/LinkedList;
+    //   8: getfield 82	com/tencent/mm/plugin/location/model/r:EkQ	Lcom/tencent/mm/plugin/location/a/b;
+    //   11: getfield 122	com/tencent/mm/plugin/location/a/b:Ejk	Ljava/util/LinkedList;
     //   14: invokevirtual 181	java/util/LinkedList:iterator	()Ljava/util/Iterator;
     //   17: astore_3
     //   18: aload_3
@@ -300,13 +300,13 @@ public final class r
     //   61	66	69	finally
   }
   
-  public final void aDa(String paramString)
+  public final void aNk(String paramString)
   {
     AppMethodBeat.i(55783);
-    if (this.yGW != null) {
-      this.yGW.yFs = paramString;
+    if (this.EkQ != null) {
+      this.EkQ.Ejl = paramString;
     }
-    a(this.yGW);
+    a(this.EkQ);
     AppMethodBeat.o(55783);
   }
   
@@ -326,50 +326,15 @@ public final class r
     }
   }
   
-  public final boolean bB(String paramString1, String paramString2)
+  public final boolean bE(String paramString1, String paramString2)
   {
     AppMethodBeat.i(55782);
-    boolean bool = PY(paramString1).contains(paramString2);
+    boolean bool = Xv(paramString1).contains(paramString2);
     AppMethodBeat.o(55782);
     return bool;
   }
   
-  public final boolean bgJ()
-  {
-    AppMethodBeat.i(55781);
-    String str;
-    do
-    {
-      Iterator localIterator = this.yGW.yFr.iterator();
-      Object localObject;
-      while (!((Iterator)localObject).hasNext())
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject = (com.tencent.mm.plugin.location.a.a)localIterator.next();
-        Log.d("MicroMsg.TrackRoomListMgr", "info :" + ((com.tencent.mm.plugin.location.a.a)localObject).dTe.size());
-        localObject = ((com.tencent.mm.plugin.location.a.a)localObject).dTe.iterator();
-      }
-      str = (String)((Iterator)localObject).next();
-      Log.d("MicroMsg.TrackRoomListMgr", "member :".concat(String.valueOf(str)));
-    } while (!str.equals(z.aTY()));
-    Log.i("MicroMsg.TrackRoomListMgr", "now is sharing location..");
-    AppMethodBeat.o(55781);
-    return true;
-    AppMethodBeat.o(55781);
-    return false;
-  }
-  
-  public final String bgK()
-  {
-    if (this.yGW != null) {
-      return this.yGW.yFs;
-    }
-    return "";
-  }
-  
-  public final void bgs()
+  public final void bpI()
   {
     for (;;)
     {
@@ -378,24 +343,24 @@ public final class r
       {
         AppMethodBeat.i(55784);
         LinkedList localLinkedList = new LinkedList();
-        if ((this.yGW.yFr != null) && (!this.yGW.yFr.isEmpty()))
+        if ((this.EkQ.Ejk != null) && (!this.EkQ.Ejk.isEmpty()))
         {
-          localObject2 = (com.tencent.mm.plugin.location.a.a[])this.yGW.yFr.toArray(new com.tencent.mm.plugin.location.a.a[0]);
+          localObject2 = (com.tencent.mm.plugin.location.a.a[])this.EkQ.Ejk.toArray(new com.tencent.mm.plugin.location.a.a[0]);
           int k = localObject2.length;
           j = 0;
           if (j < k)
           {
             Object localObject3 = localObject2[j];
-            if (Util.isNullOrNil(localObject3.dTe)) {
+            if (Util.isNullOrNil(localObject3.fMA)) {
               break label230;
             }
             int i = 1;
-            Iterator localIterator = localObject3.dTe.iterator();
+            Iterator localIterator = localObject3.fMA.iterator();
             if (localIterator.hasNext())
             {
               String str = (String)localIterator.next();
               Log.d("MicroMsg.TrackRoomListMgr", "member :".concat(String.valueOf(str)));
-              if (!str.equals(z.aTY())) {
+              if (!str.equals(z.bcZ())) {
                 break label227;
               }
               Log.i("MicroMsg.TrackRoomListMgr", "reset list info and remove self location info");
@@ -410,8 +375,8 @@ public final class r
           }
         }
         Object localObject2 = new b();
-        ((b)localObject2).yFr = localLinkedList;
-        ((b)localObject2).yFs = this.yGW.yFs;
+        ((b)localObject2).Ejk = localLinkedList;
+        ((b)localObject2).Ejl = this.EkQ.Ejl;
         a((b)localObject2);
         AppMethodBeat.o(55784);
         return;
@@ -423,10 +388,45 @@ public final class r
       j += 1;
     }
   }
+  
+  public final boolean bpY()
+  {
+    AppMethodBeat.i(55781);
+    String str;
+    do
+    {
+      Iterator localIterator = this.EkQ.Ejk.iterator();
+      Object localObject;
+      while (!((Iterator)localObject).hasNext())
+      {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject = (com.tencent.mm.plugin.location.a.a)localIterator.next();
+        Log.d("MicroMsg.TrackRoomListMgr", "info :" + ((com.tencent.mm.plugin.location.a.a)localObject).fMA.size());
+        localObject = ((com.tencent.mm.plugin.location.a.a)localObject).fMA.iterator();
+      }
+      str = (String)((Iterator)localObject).next();
+      Log.d("MicroMsg.TrackRoomListMgr", "member :".concat(String.valueOf(str)));
+    } while (!str.equals(z.bcZ()));
+    Log.i("MicroMsg.TrackRoomListMgr", "now is sharing location..");
+    AppMethodBeat.o(55781);
+    return true;
+    AppMethodBeat.o(55781);
+    return false;
+  }
+  
+  public final String bpZ()
+  {
+    if (this.EkQ != null) {
+      return this.EkQ.Ejl;
+    }
+    return "";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.location.model.r
  * JD-Core Version:    0.7.0.1
  */

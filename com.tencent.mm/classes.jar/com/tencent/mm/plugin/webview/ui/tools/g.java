@@ -1,133 +1,41 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.webview.model.az;
-import com.tencent.mm.plugin.webview.model.az.h;
-import com.tencent.mm.plugin.webview.model.az.i;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.qqvideo.proxy.api.IUtils;
-import java.util.ArrayList;
-import java.util.List;
+import kotlin.l;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/UrlParams;", "", "immersiveStyle", "", "immersiveBgDark", "(ZZ)V", "getImmersiveBgDark", "()Z", "setImmersiveBgDark", "(Z)V", "getImmersiveStyle", "setImmersiveStyle", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-webview_release"})
 public final class g
-  extends a
-  implements IUtils
 {
-  public g(WebViewUI paramWebViewUI)
-  {
-    super(paramWebViewUI);
-  }
+  boolean PQp = false;
+  boolean PQq = false;
   
-  public final void httpproxyReport(String... paramVarArgs)
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(79800);
-    Object localObject = geo().IMs.gdi();
-    if ((paramVarArgs == null) || (paramVarArgs.length == 0))
+    if (this != paramObject)
     {
-      paramVarArgs = geo().IMs.gdi();
-      if ((paramVarArgs.Jal == null) || (paramVarArgs.Jal.size() == 0)) {
-        AppMethodBeat.o(79800);
-      }
-    }
-    else
-    {
-      if (((az.i)localObject).Jal == null) {
-        ((az.i)localObject).Jal = new ArrayList();
-      }
-      for (;;)
+      if ((paramObject instanceof g))
       {
-        int i = 0;
-        while (i < paramVarArgs.length)
-        {
-          Log.i("MicroMsg.WebviewReporter", "WebViewVideoProxyReporter report info = %s", new Object[] { paramVarArgs[i] });
-          ((az.i)localObject).Jal.add(paramVarArgs[i]);
-          i += 1;
-        }
-        break;
-        ((az.i)localObject).Jal.clear();
+        paramObject = (g)paramObject;
+        if ((this.PQp != paramObject.PQp) || (this.PQq != paramObject.PQq)) {}
       }
     }
-    localObject = h.CyF;
-    h.r(12033, paramVarArgs.Jal);
-    paramVarArgs.Jal.clear();
-    AppMethodBeat.o(79800);
+    else {
+      return true;
+    }
+    return false;
   }
   
-  public final void idKeyReport(String paramString1, String paramString2, String paramString3)
+  public final int hashCode()
   {
-    AppMethodBeat.i(79801);
-    Log.i("MicroMsg.WebViewUI.UtilsImpl", "idkey report, id = %s, key = %s, value = %s", new Object[] { paramString1, paramString2, paramString3 });
-    if ((!Util.isNullOrNil(paramString1)) && (!Util.isNullOrNil(paramString2)) && (!Util.isNullOrNil(paramString3)))
-    {
-      int i = Util.getInt(paramString1, 0);
-      int j = Util.getInt(paramString2, 0);
-      int k = Util.getInt(paramString3, 0);
-      h.CyF.idkeyStat(i, j, k, false);
-    }
-    AppMethodBeat.o(79801);
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public final void javaUtilLog(int paramInt, String paramString1, String paramString2)
+  public final String toString()
   {
-    AppMethodBeat.i(79799);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(79799);
-      return;
-      Log.d(paramString1, paramString2);
-      AppMethodBeat.o(79799);
-      return;
-      Log.e(paramString1, paramString2);
-      AppMethodBeat.o(79799);
-      return;
-      Log.i(paramString1, paramString2);
-      AppMethodBeat.o(79799);
-      return;
-      Log.v(paramString1, paramString2);
-      AppMethodBeat.o(79799);
-      return;
-      Log.w(paramString1, paramString2);
-    }
-  }
-  
-  public final void kvReport(String... paramVarArgs)
-  {
-    AppMethodBeat.i(79802);
-    Object localObject = geo().IMs.gdj();
-    if ((paramVarArgs == null) || (paramVarArgs.length == 0))
-    {
-      paramVarArgs = geo().IMs.gdj();
-      if ((paramVarArgs.Jal == null) || (paramVarArgs.Jal.size() == 0)) {
-        AppMethodBeat.o(79802);
-      }
-    }
-    else
-    {
-      if (((az.h)localObject).Jal == null) {
-        ((az.h)localObject).Jal = new ArrayList();
-      }
-      for (;;)
-      {
-        int i = 0;
-        while (i < paramVarArgs.length)
-        {
-          Log.i("MicroMsg.WebviewReporter", "WebViewVideoDownloadReporter report info = %s", new Object[] { paramVarArgs[i] });
-          ((az.h)localObject).Jal.add(paramVarArgs[i]);
-          i += 1;
-        }
-        break;
-        ((az.h)localObject).Jal.clear();
-      }
-    }
-    localObject = h.CyF;
-    h.r(12666, paramVarArgs.Jal);
-    paramVarArgs.Jal.clear();
-    AppMethodBeat.o(79802);
+    AppMethodBeat.i(267558);
+    String str = "UrlParams(immersiveStyle=" + this.PQp + ", immersiveBgDark=" + this.PQq + ")";
+    AppMethodBeat.o(267558);
+    return str;
   }
 }
 

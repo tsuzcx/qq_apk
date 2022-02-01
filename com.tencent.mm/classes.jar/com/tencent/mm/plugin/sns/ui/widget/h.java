@@ -11,13 +11,13 @@ public final class h
 {
   public h(Drawable paramDrawable)
   {
-    super(paramDrawable);
+    super(paramDrawable, 1);
   }
   
   public final int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
   {
     AppMethodBeat.i(100564);
-    int i = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 4);
+    int i = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 4);
     paramInt1 = super.getSize(paramPaint, paramCharSequence, paramInt1, paramInt2, paramFontMetricsInt);
     AppMethodBeat.o(100564);
     return i + paramInt1;

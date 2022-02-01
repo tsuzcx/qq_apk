@@ -4,15 +4,15 @@
     <include layout="@layout/f8" />
     <View android:background="@color/e0" android:layout_width="fill_parent" android:layout_height="@dimen/rv" android:layout_marginTop="2.0dip" android:layout_marginBottom="18.0dip" android:layout_marginStart="@dimen/rl" android:layout_marginEnd="@dimen/rl" />
     <LinearLayout android:id="@id/qf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/rl" android:layout_marginEnd="@dimen/rl">
-        <android.support.constraint.ConstraintLayout android:orientation="horizontal" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <android.support.constraint.Guideline android:orientation="vertical" android:id="@id/dmp" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="0.75" />
-            <android.support.constraint.ConstraintLayout android:clickable="false" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginTop="0.0dip" android:layout_marginBottom="8.0dip" android:layout_marginStart="0.0dip" android:layout_marginEnd="8.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toStartOf="@id/dmp" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m">
+        <androidx.constraintlayout.widget.ConstraintLayout android:orientation="horizontal" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <androidx.constraintlayout.widget.Guideline android:orientation="vertical" android:id="@id/dmp" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="0.75" />
+            <androidx.constraintlayout.widget.ConstraintLayout android:clickable="false" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginTop="0.0dip" android:layout_marginBottom="8.0dip" android:layout_marginStart="0.0dip" android:layout_marginEnd="8.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toStartOf="@id/dmp" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m">
                 <TextView android:textSize="@dimen/l" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/qn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
                 <TextView android:textSize="@dimen/hc" android:textColor="#fffa7834" android:id="@id/qi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toBottomOf="@id/qn" />
                 <TextView android:textSize="@dimen/hc" android:textColor="#4d000000" android:id="@id/qo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/rm" app:layout_constraintBottom_toBottomOf="@id/qi" app:layout_constraintStart_toEndOf="@id/qi" app:layout_constraintTop_toTopOf="@id/qi" />
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
             <ImageView android:layout_gravity="center_vertical" android:id="@id/qh" android:layout_width="72.0dip" android:layout_height="72.0dip" android:scaleType="fitCenter" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
     <include layout="@layout/f6" />
 </LinearLayout>

@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.websearch.widget;
 
 import android.os.Bundle;
-import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.d;
 
 class a$c
-  implements b<Bundle, Bundle>
+  implements d<Bundle, Bundle>
 {}
 
 

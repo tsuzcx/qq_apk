@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.appbrand.jsapi.pay;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.k;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.jsapi.j;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
 import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
@@ -12,27 +12,27 @@ public final class l
   public static final int CTRL_INDEX = 691;
   public static final String NAME = "requestJointPayment";
   
-  public final void a(k paramk, JSONObject paramJSONObject, int paramInt)
+  public final void a(j paramj, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(226961);
+    AppMethodBeat.i(282831);
     if (paramJSONObject == null)
     {
-      paramk.i(paramInt, h("fail:invalid data", null));
-      AppMethodBeat.o(226961);
+      paramj.j(paramInt, h("fail:invalid data", null));
+      AppMethodBeat.o(282831);
       return;
     }
     try
     {
       paramJSONObject.put("key_joint_pay", true);
-      super.a(paramk, paramJSONObject, paramInt);
-      AppMethodBeat.o(226961);
+      super.a(paramj, paramJSONObject, paramInt);
+      AppMethodBeat.o(282831);
       return;
     }
     catch (Exception paramJSONObject)
     {
       Log.e("MicroMsg.JsApiRequestJointPayment", paramJSONObject.getMessage());
-      paramk.i(paramInt, h("fail", null));
-      AppMethodBeat.o(226961);
+      paramj.j(paramInt, h("fail", null));
+      AppMethodBeat.o(282831);
     }
   }
 }

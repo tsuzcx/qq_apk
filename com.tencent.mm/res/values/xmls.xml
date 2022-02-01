@@ -6,16 +6,23 @@
     <item type="xml" name="p">false</item>
     <item type="xml" name="u">false</item>
     <item type="xml" name="a1">false</item>
+    <item type="xml" name="a8">false</item>
     <item type="xml" name="aa">false</item>
     <item type="xml" name="ae">false</item>
     <item type="xml" name="ah">false</item>
     <item type="xml" name="ak">false</item>
     <item type="xml" name="al">false</item>
+    <item type="xml" name="do">false</item>
     <item type="xml" name="av">false</item>
     <item type="xml" name="b1">false</item>
+    <item type="xml" name="b4">false</item>
     <item type="xml" name="bs">false</item>
+    <item type="xml" name="dq">false</item>
     <item type="xml" name="cs">false</item>
     <item type="xml" name="d3">false</item>
     <item type="xml" name="dg">false</item>
+    <item type="xml" name="dl">false</item>
+    <item type="xml" name="dm">false</item>
     <item type="xml" name="dn">false</item>
+    <item type="xml" name="e0">false</item>
 </resources>

@@ -9,24 +9,26 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.card.a.b;
+import com.tencent.mm.plugin.card.a.d;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.ui.n;
-import com.tencent.mm.protocal.protobuf.abz;
-import com.tencent.mm.protocal.protobuf.ty;
-import com.tencent.mm.protocal.protobuf.uz;
+import com.tencent.mm.protocal.protobuf.acg;
+import com.tencent.mm.protocal.protobuf.ua;
+import com.tencent.mm.protocal.protobuf.vb;
 import com.tencent.mm.ui.MMActivity;
 
 public final class u
   extends i
 {
-  private View qks;
+  private View tGo;
   
-  public final void cxw()
+  public final void cKY()
   {
     AppMethodBeat.i(113708);
-    if (this.qks != null) {
-      this.qks.setVisibility(8);
+    if (this.tGo != null) {
+      this.tGo.setVisibility(8);
     }
     AppMethodBeat.o(113708);
   }
@@ -36,72 +38,72 @@ public final class u
   public final void update()
   {
     AppMethodBeat.i(113707);
-    if (this.qks == null) {
-      this.qks = ((ViewStub)findViewById(2131298185)).inflate();
+    if (this.tGo == null) {
+      this.tGo = ((ViewStub)findViewById(a.d.tcZ)).inflate();
     }
-    b localb = this.qjX.cvq();
-    MMActivity localMMActivity = this.qjX.cvt();
-    Object localObject = localb.csR().Lcz;
+    b localb = this.tFT.cIS();
+    MMActivity localMMActivity = this.tFT.cIV();
+    Object localObject = localb.cGt().SdM;
     TextView localTextView1;
     TextView localTextView2;
     LinearLayout localLinearLayout;
     LinearLayout.LayoutParams localLayoutParams1;
     LinearLayout.LayoutParams localLayoutParams2;
-    if (this.qks != null)
+    if (this.tGo != null)
     {
-      localTextView1 = (TextView)this.qks.findViewById(2131298186);
-      localTextView1.setText(((abz)localObject).title);
-      localTextView1.setTextColor(l.ake(localb.csQ().ixw));
-      localTextView2 = (TextView)this.qks.findViewById(2131298184);
-      localLinearLayout = (LinearLayout)this.qks.findViewById(2131298240);
+      localTextView1 = (TextView)this.tGo.findViewById(a.d.tda);
+      localTextView1.setText(((acg)localObject).title);
+      localTextView1.setTextColor(l.arR(localb.cGs().lmL));
+      localTextView2 = (TextView)this.tGo.findViewById(a.d.tcY);
+      localLinearLayout = (LinearLayout)this.tGo.findViewById(a.d.tdJ);
       localLayoutParams1 = (LinearLayout.LayoutParams)localLinearLayout.getLayoutParams();
-      if (!localb.csx()) {
-        break label418;
+      if (!localb.cFY()) {
+        break label428;
       }
       localLayoutParams2 = (LinearLayout.LayoutParams)localTextView1.getLayoutParams();
-      if (TextUtils.isEmpty(((abz)localObject).pRZ)) {
-        break label394;
+      if (TextUtils.isEmpty(((acg)localObject).tnZ)) {
+        break label403;
       }
-      localTextView2.setText(((abz)localObject).pRZ);
+      localTextView2.setText(((acg)localObject).tnZ);
       localTextView2.setVisibility(0);
-      localLayoutParams1.height = localMMActivity.getResources().getDimensionPixelOffset(2131166012);
-      localLayoutParams2.bottomMargin = localMMActivity.getResources().getDimensionPixelSize(2131165190);
+      localLayoutParams1.height = localMMActivity.getResources().getDimensionPixelOffset(a.b.sZO);
+      localLayoutParams2.bottomMargin = localMMActivity.getResources().getDimensionPixelSize(a.b.BasicPaddingSize);
       localObject = (LinearLayout.LayoutParams)localTextView2.getLayoutParams();
-      ((LinearLayout.LayoutParams)localObject).topMargin = localMMActivity.getResources().getDimensionPixelSize(2131165190);
+      ((LinearLayout.LayoutParams)localObject).topMargin = localMMActivity.getResources().getDimensionPixelSize(a.b.BasicPaddingSize);
       localTextView2.setLayoutParams((ViewGroup.LayoutParams)localObject);
       localTextView2.invalidate();
     }
     for (;;)
     {
-      localLayoutParams2.height = localMMActivity.getResources().getDimensionPixelSize(2131166014);
+      localLayoutParams2.height = localMMActivity.getResources().getDimensionPixelSize(a.b.sZQ);
       localTextView1.setLayoutParams(localLayoutParams2);
       localTextView1.invalidate();
-      int i = localMMActivity.getResources().getDimensionPixelSize(2131166016);
-      localTextView1.setBackgroundDrawable(l.h(localMMActivity, localb.csQ().ixw, i));
-      localTextView1.setTextColor(l.ap(localMMActivity, localb.csQ().ixw));
+      int i = localMMActivity.getResources().getDimensionPixelSize(a.b.sZS);
+      localTextView1.setBackgroundDrawable(l.g(localMMActivity, localb.cGs().lmL, i));
+      localTextView1.setTextColor(l.ap(localMMActivity, localb.cGs().lmL));
       localLinearLayout.setBackgroundDrawable(null);
-      localTextView1.setOnClickListener(this.qjX.cvu());
+      localTextView1.setOnClickListener(this.tFT.cIW());
       localLinearLayout.setLayoutParams(localLayoutParams1);
       localLinearLayout.invalidate();
-      this.qks.invalidate();
-      if (localb.csx()) {
+      this.tGo.invalidate();
+      if (localb.cFY()) {
         localLinearLayout.getLayoutParams();
       }
       AppMethodBeat.o(113707);
       return;
-      label394:
+      label403:
       localTextView2.setVisibility(8);
-      localLayoutParams1.height = localMMActivity.getResources().getDimensionPixelOffset(2131166013);
+      localLayoutParams1.height = localMMActivity.getResources().getDimensionPixelOffset(a.b.sZP);
     }
-    label418:
-    if (!TextUtils.isEmpty(((abz)localObject).pRZ))
+    label428:
+    if (!TextUtils.isEmpty(((acg)localObject).tnZ))
     {
-      localTextView2.setText(((abz)localObject).pRZ);
+      localTextView2.setText(((acg)localObject).tnZ);
       localTextView2.setVisibility(0);
     }
-    for (localLayoutParams1.height = localMMActivity.getResources().getDimensionPixelOffset(2131166026);; localLayoutParams1.height = localMMActivity.getResources().getDimensionPixelOffset(2131166027))
+    for (localLayoutParams1.height = localMMActivity.getResources().getDimensionPixelOffset(a.b.sZX);; localLayoutParams1.height = localMMActivity.getResources().getDimensionPixelOffset(a.b.sZY))
     {
-      localLinearLayout.setOnClickListener(this.qjX.cvu());
+      localLinearLayout.setOnClickListener(this.tFT.cIW());
       break;
       localTextView2.setVisibility(8);
     }

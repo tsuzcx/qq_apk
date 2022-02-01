@@ -11,18 +11,18 @@ final class h$4
   public final void onDismiss()
   {
     AppMethodBeat.i(126075);
-    if (h.a(this.Gmt))
+    if (h.a(this.MZf))
     {
-      this.Gmt.Gmr.fyF().eYd();
-      h.b(this.Gmt);
+      this.MZf.MZd.gqC().fLJ();
+      h.b(this.MZf);
     }
-    this.Gmt.Gmr.fyM();
+    this.MZf.MZd.gqJ();
     AppMethodBeat.o(126075);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.h.4
  * JD-Core Version:    0.7.0.1
  */

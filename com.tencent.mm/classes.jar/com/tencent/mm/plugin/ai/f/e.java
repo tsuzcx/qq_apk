@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.ai.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.hr;
+import com.tencent.mm.f.c.hy;
 import com.tencent.mm.plugin.ai.c.a;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
@@ -11,14 +11,13 @@ import java.util.Map;
 import org.json.JSONObject;
 
 public final class e
-  extends hr
+  extends hy
 {
   public static IAutoDBItem.MAutoDBInfo info;
-  private SimpleDateFormat kxO = null;
   
   static
   {
-    AppMethodBeat.i(238950);
+    AppMethodBeat.i(240296);
     IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
     localMAutoDBInfo.fields = new Field[6];
     localMAutoDBInfo.columns = new String[7];
@@ -49,15 +48,15 @@ public final class e
     localMAutoDBInfo.columns[6] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
     info = localMAutoDBInfo;
-    AppMethodBeat.o(238950);
+    AppMethodBeat.o(240296);
   }
   
-  public final boolean TN(String paramString)
+  public final boolean abx(String paramString)
   {
-    AppMethodBeat.i(238949);
+    AppMethodBeat.i(240294);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(238949);
+      AppMethodBeat.o(240294);
       return false;
     }
     try
@@ -70,15 +69,12 @@ public final class e
       label72:
       if ((this.field_appTbe <= 0L) || (this.field_appTen <= 0L))
       {
-        AppMethodBeat.o(238949);
+        AppMethodBeat.o(240294);
         return false;
       }
-      if (this.kxO == null) {
-        this.kxO = new SimpleDateFormat("yyyyMMdd");
-      }
-      this.field_appDs = Util.getInt(this.kxO.format(Long.valueOf(this.field_appTbe)), -1);
-      this.field_appHour = a.AU(this.field_appTbe);
-      AppMethodBeat.o(238949);
+      this.field_appDs = Util.getInt(a.bBg().format(Long.valueOf(this.field_appTbe)), -1);
+      this.field_appHour = a.He(this.field_appTbe);
+      AppMethodBeat.o(240294);
       return true;
     }
     catch (Exception paramString)
@@ -94,7 +90,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.ai.f.e
  * JD-Core Version:    0.7.0.1
  */

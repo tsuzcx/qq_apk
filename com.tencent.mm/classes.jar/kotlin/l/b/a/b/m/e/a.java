@@ -5,13 +5,13 @@ import kotlin.g.b.p;
 
 public final class a<T>
 {
-  final T TPY;
-  public final T TPZ;
+  final T absx;
+  public final T absy;
   
   public a(T paramT1, T paramT2)
   {
-    this.TPY = paramT1;
-    this.TPZ = paramT2;
+    this.absx = paramT1;
+    this.absy = paramT2;
   }
   
   public final boolean equals(Object paramObject)
@@ -22,7 +22,7 @@ public final class a<T>
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((!p.j(this.TPY, paramObject.TPY)) || (!p.j(this.TPZ, paramObject.TPZ))) {}
+        if ((!p.h(this.absx, paramObject.absx)) || (!p.h(this.absy, paramObject.absy))) {}
       }
     }
     else
@@ -38,11 +38,11 @@ public final class a<T>
   {
     int j = 0;
     AppMethodBeat.i(61258);
-    Object localObject = this.TPY;
+    Object localObject = this.absx;
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.TPZ;
+      localObject = this.absy;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -54,7 +54,7 @@ public final class a<T>
   public final String toString()
   {
     AppMethodBeat.i(61257);
-    String str = "ApproximationBounds(lower=" + this.TPY + ", upper=" + this.TPZ + ")";
+    String str = "ApproximationBounds(lower=" + this.absx + ", upper=" + this.absy + ")";
     AppMethodBeat.o(61257);
     return str;
   }

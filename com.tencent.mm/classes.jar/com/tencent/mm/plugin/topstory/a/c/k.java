@@ -2,20 +2,20 @@ package com.tencent.mm.plugin.topstory.a.c;
 
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.websearch.api.ai;
-import com.tencent.mm.protocal.protobuf.aca;
-import com.tencent.mm.protocal.protobuf.eit;
-import com.tencent.mm.protocal.protobuf.fal;
-import com.tencent.mm.protocal.protobuf.fam;
+import com.tencent.mm.protocal.protobuf.aci;
+import com.tencent.mm.protocal.protobuf.esv;
+import com.tencent.mm.protocal.protobuf.fle;
+import com.tencent.mm.protocal.protobuf.flf;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -24,47 +24,47 @@ public final class k
   extends q
   implements m
 {
-  public eit GjJ;
+  public esv MWu;
   private i callback;
   private d rr;
   
-  public k(eit parameit)
+  public k(esv paramesv)
   {
     AppMethodBeat.i(91025);
-    Log.i("MicroMsg.TopStory.NetSceneTopStoryVideo", "Create NetSceneTopStory Video contextId:%s searchId:%s", new Object[] { parameit.sGQ, parameit.hes });
-    this.GjJ = parameit;
+    Log.i("MicroMsg.TopStory.NetSceneTopStoryVideo", "Create NetSceneTopStory Video contextId:%s searchId:%s", new Object[] { paramesv.wmL, paramesv.jQi });
+    this.MWu = paramesv;
     Object localObject = new d.a();
     ((d.a)localObject).funcId = getType();
     ((d.a)localObject).uri = "/cgi-bin/mmsearch-bin/mmwebrecommend";
-    ((d.a)localObject).iLN = new fal();
-    ((d.a)localObject).iLO = new fam();
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (fal)this.rr.iLK.iLR;
-    ((fal)localObject).KZk = parameit.offset;
-    ((fal)localObject).MaY = ai.aft(1);
-    ((fal)localObject).LPT = parameit.dDv;
-    ((fal)localObject).MlQ = ai.clJ();
-    ((fal)localObject).Scene = parameit.scene;
-    ((fal)localObject).KZj = parameit.hes;
-    ((fal)localObject).Nva.addAll(parameit.IDO);
-    ((fal)localObject).NgA = ((int)parameit.Nib);
-    parameit = new aca();
-    parameit.key = "client_system_version";
-    parameit.LmC = Build.VERSION.SDK_INT;
-    ((fal)localObject).Nva.add(parameit);
-    parameit = new aca();
-    parameit.key = "netType";
-    parameit.LmD = ai.ait();
-    ((fal)localObject).Nva.add(parameit);
-    parameit = new aca();
-    parameit.key = "client_request_time";
-    parameit.LmD = String.valueOf(System.currentTimeMillis());
-    ((fal)localObject).Nva.add(parameit);
-    parameit = ((fal)localObject).Nva.iterator();
-    while (parameit.hasNext())
+    ((d.a)localObject).lBU = new fle();
+    ((d.a)localObject).lBV = new flf();
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (fle)d.b.b(this.rr.lBR);
+    ((fle)localObject).Sat = paramesv.offset;
+    ((fle)localObject).Tkv = ai.anh(1);
+    ((fle)localObject).SYn = paramesv.fwe;
+    ((fle)localObject).TwK = ai.czn();
+    ((fle)localObject).CPw = paramesv.scene;
+    ((fle)localObject).Sas = paramesv.jQi;
+    ((fle)localObject).UIj.addAll(paramesv.Pye);
+    ((fle)localObject).Ute = ((int)paramesv.UuH);
+    paramesv = new aci();
+    paramesv.key = "client_system_version";
+    paramesv.SnV = Build.VERSION.SDK_INT;
+    ((fle)localObject).UIj.add(paramesv);
+    paramesv = new aci();
+    paramesv.key = "netType";
+    paramesv.SnW = ai.anV();
+    ((fle)localObject).UIj.add(paramesv);
+    paramesv = new aci();
+    paramesv.key = "client_request_time";
+    paramesv.SnW = String.valueOf(System.currentTimeMillis());
+    ((fle)localObject).UIj.add(paramesv);
+    paramesv = ((fle)localObject).UIj.iterator();
+    while (paramesv.hasNext())
     {
-      localObject = (aca)parameit.next();
-      Log.i("MicroMsg.TopStory.NetSceneTopStoryVideo", "key: %s unit_value %s text_value %s", new Object[] { ((aca)localObject).key, Long.valueOf(((aca)localObject).LmC), ((aca)localObject).LmD });
+      localObject = (aci)paramesv.next();
+      Log.i("MicroMsg.TopStory.NetSceneTopStoryVideo", "key: %s unit_value %s text_value %s", new Object[] { ((aci)localObject).key, Long.valueOf(((aci)localObject).SnV), ((aci)localObject).SnW });
     }
     AppMethodBeat.o(91025);
   }
@@ -78,14 +78,17 @@ public final class k
     return i;
   }
   
-  public final fam fxZ()
-  {
-    return (fam)this.rr.iLL.iLR;
-  }
-  
   public final int getType()
   {
     return 1943;
+  }
+  
+  public final flf gpU()
+  {
+    AppMethodBeat.i(191140);
+    flf localflf = (flf)d.c.b(this.rr.lBS);
+    AppMethodBeat.o(191140);
+    return localflf;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
@@ -98,7 +101,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.a.c.k
  * JD-Core Version:    0.7.0.1
  */

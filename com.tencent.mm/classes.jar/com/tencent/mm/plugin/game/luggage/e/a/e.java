@@ -6,7 +6,7 @@ import com.tencent.luggage.d.p;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.protocal.protobuf.coq;
+import com.tencent.mm.protocal.protobuf.cxc;
 import org.json.JSONObject;
 
 public final class e
@@ -17,18 +17,18 @@ public final class e
     super(10);
   }
   
-  public final void a(Context paramContext, g paramg, final coq paramcoq)
+  public final void a(Context paramContext, g paramg, final cxc paramcxc)
   {
     AppMethodBeat.i(83108);
-    paramg.ctS.a(new d()
+    paramg.crX.a(new d()
     {
-      public final JSONObject Ld()
+      public final JSONObject NU()
       {
         AppMethodBeat.i(83107);
         try
         {
           JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("itemId", paramcoq.MuO);
+          localJSONObject.put("itemId", paramcxc.TFF);
           AppMethodBeat.o(83107);
           return localJSONObject;
         }

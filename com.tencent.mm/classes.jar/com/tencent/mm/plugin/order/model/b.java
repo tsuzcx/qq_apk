@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.order.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
@@ -12,40 +12,40 @@ import java.util.List;
 
 public final class b
 {
-  public HashSet<String> ANV;
+  public HashSet<String> GHj;
   
   public b()
   {
     AppMethodBeat.i(66658);
-    this.ANV = new HashSet();
-    and();
+    this.GHj = new HashSet();
+    ate();
     AppMethodBeat.o(66658);
   }
   
-  private void and()
+  private void ate()
   {
     AppMethodBeat.i(66659);
-    this.ANV.clear();
-    g.aAi();
-    Iterator localIterator = Util.stringsToList(((String)g.aAh().azQ().get(204803, "")).split(";")).iterator();
+    this.GHj.clear();
+    h.aHH();
+    Iterator localIterator = Util.stringsToList(((String)h.aHG().aHp().b(204803, "")).split(";")).iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if ((!Util.isNullOrNil(str)) && (!this.ANV.contains(str))) {
-        this.ANV.add(str);
+      if ((!Util.isNullOrNil(str)) && (!this.GHj.contains(str))) {
+        this.GHj.add(str);
       }
     }
-    g.aAi();
-    g.aAh().azQ().set(204817, Integer.valueOf(this.ANV.size()));
-    Log.d("MicroMsg.WalletOrdersManager", "notifyTrans.size() : " + this.ANV.size());
+    h.aHH();
+    h.aHG().aHp().i(204817, Integer.valueOf(this.GHj.size()));
+    Log.d("MicroMsg.WalletOrdersManager", "notifyTrans.size() : " + this.GHj.size());
     AppMethodBeat.o(66659);
   }
   
-  public final void Yy()
+  public final void adf()
   {
     AppMethodBeat.i(66660);
     StringBuffer localStringBuffer = new StringBuffer();
-    Iterator localIterator = this.ANV.iterator();
+    Iterator localIterator = this.GHj.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
@@ -53,8 +53,8 @@ public final class b
         localStringBuffer.append(str + ";");
       }
     }
-    g.aAi();
-    g.aAh().azQ().set(204803, localStringBuffer.toString());
+    h.aHH();
+    h.aHG().aHp().i(204803, localStringBuffer.toString());
     AppMethodBeat.o(66660);
   }
 }

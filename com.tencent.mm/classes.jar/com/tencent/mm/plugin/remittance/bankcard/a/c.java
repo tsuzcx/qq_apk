@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.remittance.bankcard.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.rq;
-import com.tencent.mm.protocal.protobuf.rr;
+import com.tencent.mm.protocal.protobuf.rj;
+import com.tencent.mm.protocal.protobuf.rk;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
   extends b
 {
-  public rr CiK;
+  public rk IfD;
   private final String TAG;
   private i callback;
   private d rr;
@@ -25,16 +25,16 @@ public final class c
     AppMethodBeat.i(67355);
     this.TAG = "MicroMsg.NetSceneBankRemitBusinessCallback";
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new rq();
-    ((d.a)localObject).iLO = new rr();
+    ((d.a)localObject).lBU = new rj();
+    ((d.a)localObject).lBV = new rk();
     ((d.a)localObject).funcId = 1340;
     ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/busscb_tsbc";
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (rq)this.rr.iLK.iLR;
-    ((rq)localObject).KZa = paramString1;
-    ((rq)localObject).CpP = paramString2;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (rj)d.b.b(this.rr.lBR);
+    ((rj)localObject).Saj = paramString1;
+    ((rj)localObject).Ine = paramString2;
     AppMethodBeat.o(67355);
   }
   
@@ -42,8 +42,8 @@ public final class c
   {
     AppMethodBeat.i(67357);
     Log.i("MicroMsg.NetSceneBankRemitBusinessCallback", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.CiK = ((rr)((d)params).iLL.iLR);
-    Log.i("MicroMsg.NetSceneBankRemitBusinessCallback", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.CiK.dDN), this.CiK.qwn });
+    this.IfD = ((rk)d.c.b(((d)params).lBS));
+    Log.i("MicroMsg.NetSceneBankRemitBusinessCallback", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.IfD.fwx), this.IfD.tVo });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
@@ -59,11 +59,13 @@ public final class c
     return i;
   }
   
-  public final void e(s params)
+  public final void f(s params)
   {
-    params = (rr)((d)params).iLL.iLR;
-    this.RtZ = params.dDN;
-    this.Rua = params.qwn;
+    AppMethodBeat.i(186719);
+    params = (rk)d.c.b(((d)params).lBS);
+    this.YVy = params.fwx;
+    this.YVz = params.tVo;
+    AppMethodBeat.o(186719);
   }
   
   public final int getType()

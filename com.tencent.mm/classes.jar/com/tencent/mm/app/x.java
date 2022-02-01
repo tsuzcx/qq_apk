@@ -1,8 +1,7 @@
 package com.tencent.mm.app;
 
-import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.plugin.report.f;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,52 +11,32 @@ import java.util.Locale;
 
 public final class x
 {
-  private static final List<a> dlZ;
-  private static final boolean[] dma;
+  private static final List<a> fdE;
+  private static final boolean[] fdF;
   
   static
   {
-    AppMethodBeat.i(200817);
-    dlZ = new ArrayList();
-    dma = new boolean[] { false };
-    AppMethodBeat.o(200817);
-  }
-  
-  public static void WF()
-  {
-    AppMethodBeat.i(200814);
-    synchronized (dma)
-    {
-      if (dma[0] != 0) {
-        e.Cxv.idkeyStat(1557L, 40L, 1L, true);
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(200814);
-        return;
-        synchronized (dlZ)
-        {
-          dlZ.add(new c());
-        }
-      }
-    }
+    AppMethodBeat.i(249301);
+    fdE = new ArrayList();
+    fdF = new boolean[] { false };
+    AppMethodBeat.o(249301);
   }
   
   public static void a(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(200813);
-    synchronized (dma)
+    AppMethodBeat.i(249296);
+    synchronized (fdF)
     {
-      if (dma[0] != 0) {
-        e.Cxv.a(paramInt, paramVarArgs);
+      if (fdF[0] != 0) {
+        f.Iyx.a(paramInt, paramVarArgs);
       }
       for (;;)
       {
-        AppMethodBeat.o(200813);
+        AppMethodBeat.o(249296);
         return;
-        synchronized (dlZ)
+        synchronized (fdE)
         {
-          dlZ.add(new d(paramInt, paramVarArgs));
+          fdE.add(new c(paramInt, paramVarArgs));
         }
       }
     }
@@ -65,28 +44,28 @@ public final class x
   
   public static void a(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(200810);
-    synchronized (dma)
+    AppMethodBeat.i(249291);
+    synchronized (fdF)
     {
-      if (dma[0] != 0) {
+      if (fdF[0] != 0) {
         com.tencent.mm.sdk.platformtools.Log.i(paramString1, paramString2, paramVarArgs);
       }
       for (;;)
       {
-        AppMethodBeat.o(200810);
+        AppMethodBeat.o(249291);
         return;
-        List localList = dlZ;
+        List localList = fdE;
         String str = paramString2;
         try
         {
           if (paramVarArgs.length > 0) {
             str = String.format(paramString2, paramVarArgs);
           }
-          dlZ.add(new e(4, paramString1, str));
+          fdE.add(new d(4, paramString1, str));
         }
         finally
         {
-          AppMethodBeat.o(200810);
+          AppMethodBeat.o(249291);
         }
       }
     }
@@ -94,16 +73,16 @@ public final class x
   
   public static void a(String paramString1, Throwable arg1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(200812);
+    AppMethodBeat.i(249295);
     for (;;)
     {
       StringBuilder localStringBuilder;
-      synchronized (dma)
+      synchronized (fdF)
       {
-        if (dma[0] != 0)
+        if (fdF[0] != 0)
         {
           com.tencent.mm.sdk.platformtools.Log.printErrStackTrace(paramString1, ???, paramString2, paramVarArgs);
-          AppMethodBeat.o(200812);
+          AppMethodBeat.o(249295);
           return;
         }
         localStringBuilder = new StringBuilder();
@@ -111,9 +90,9 @@ public final class x
         {
           localStringBuilder.append(String.format(paramString2, paramVarArgs));
           localStringBuilder.append("  ").append(android.util.Log.getStackTraceString(???));
-          synchronized (dlZ)
+          synchronized (fdE)
           {
-            dlZ.add(new e(6, paramString1, localStringBuilder.toString()));
+            fdE.add(new d(6, paramString1, localStringBuilder.toString()));
           }
         }
       }
@@ -123,28 +102,48 @@ public final class x
   
   public static void b(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(200811);
-    synchronized (dma)
+    AppMethodBeat.i(249293);
+    synchronized (fdF)
     {
-      if (dma[0] != 0) {
+      if (fdF[0] != 0) {
         com.tencent.mm.sdk.platformtools.Log.w(paramString1, paramString2, paramVarArgs);
       }
       for (;;)
       {
-        AppMethodBeat.o(200811);
+        AppMethodBeat.o(249293);
         return;
-        List localList = dlZ;
+        List localList = fdE;
         String str = paramString2;
         try
         {
           if (paramVarArgs.length > 0) {
             str = String.format(paramString2, paramVarArgs);
           }
-          dlZ.add(new e(5, paramString1, str));
+          fdE.add(new d(5, paramString1, str));
         }
         finally
         {
-          AppMethodBeat.o(200811);
+          AppMethodBeat.o(249293);
+        }
+      }
+    }
+  }
+  
+  public static void c(String paramString1, String paramString2, Object... arg2)
+  {
+    AppMethodBeat.i(249294);
+    synchronized (fdF)
+    {
+      if (fdF[0] != 0) {
+        com.tencent.mm.sdk.platformtools.Log.e(paramString1, paramString2, ???);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(249294);
+        return;
+        synchronized (fdE)
+        {
+          fdE.add(new d(6, paramString1, paramString2));
         }
       }
     }
@@ -152,36 +151,36 @@ public final class x
   
   public static void execute()
   {
-    AppMethodBeat.i(200816);
-    synchronized (dma)
+    AppMethodBeat.i(249300);
+    synchronized (fdF)
     {
-      synchronized (dlZ)
+      synchronized (fdE)
       {
-        Iterator localIterator = dlZ.iterator();
+        Iterator localIterator = fdE.iterator();
         if (localIterator.hasNext()) {
           ((a)localIterator.next()).execute();
         }
       }
     }
-    dma[0] = true;
-    AppMethodBeat.o(200816);
+    fdF[0] = true;
+    AppMethodBeat.o(249300);
   }
   
-  public static void f(ArrayList<IDKey> paramArrayList)
+  public static void ff(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(200815);
-    synchronized (dma)
+    AppMethodBeat.i(293015);
+    synchronized (fdF)
     {
-      if (dma[0] != 0) {
-        e.Cxv.b(paramArrayList, true);
+      if (fdF[0] != 0) {
+        f.Iyx.idkeyStat(paramInt1, paramInt2, 1L, true);
       }
       for (;;)
       {
-        AppMethodBeat.o(200815);
+        AppMethodBeat.o(293015);
         return;
-        synchronized (dlZ)
+        synchronized (fdE)
         {
-          dlZ.add(new b(paramArrayList));
+          fdE.add(new b(paramInt1, paramInt2));
         }
       }
     }
@@ -189,8 +188,8 @@ public final class x
   
   static abstract class a
   {
-    final SimpleDateFormat dmb = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.ENGLISH);
-    final String dmc = this.dmb.format(new Date());
+    final SimpleDateFormat fdG = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.ENGLISH);
+    final String fdH = this.fdG.format(new Date());
     
     abstract void execute();
   }
@@ -198,71 +197,55 @@ public final class x
   static final class b
     extends x.a
   {
-    final ArrayList<IDKey> dmd;
+    final int id;
+    final int key;
+    final int value;
     
-    b(ArrayList<IDKey> paramArrayList)
+    b(int paramInt1, int paramInt2)
     {
       super();
-      this.dmd = paramArrayList;
+      this.id = paramInt1;
+      this.key = paramInt2;
+      this.value = 1;
     }
     
     final void execute()
     {
-      AppMethodBeat.i(200806);
-      e.Cxv.b(this.dmd, true);
-      AppMethodBeat.o(200806);
+      AppMethodBeat.i(248792);
+      f.Iyx.idkeyStat(this.id, this.key, this.value, true);
+      AppMethodBeat.o(248792);
     }
   }
   
   static final class c
     extends x.a
   {
-    final int id = 1557;
-    final int key = 40;
-    final int value = 1;
+    final Object[] Zo;
+    final int id;
     
-    c()
+    c(int paramInt, Object... paramVarArgs)
     {
       super();
+      this.id = paramInt;
+      this.Zo = paramVarArgs;
     }
     
     final void execute()
     {
-      AppMethodBeat.i(200807);
-      e.Cxv.idkeyStat(this.id, this.key, this.value, true);
-      AppMethodBeat.o(200807);
+      AppMethodBeat.i(248919);
+      f.Iyx.a(this.id, true, true, false, this.Zo);
+      AppMethodBeat.o(248919);
     }
   }
   
   static final class d
     extends x.a
   {
-    final Object[] apH;
-    final int id;
-    
-    d(int paramInt, Object... paramVarArgs)
-    {
-      super();
-      this.id = paramInt;
-      this.apH = paramVarArgs;
-    }
-    
-    final void execute()
-    {
-      AppMethodBeat.i(200808);
-      e.Cxv.a(this.id, true, true, false, this.apH);
-      AppMethodBeat.o(200808);
-    }
-  }
-  
-  static final class e
-    extends x.a
-  {
     final int level;
     final String msg;
     final String tag;
     
-    e(int paramInt, String paramString1, String paramString2)
+    d(int paramInt, String paramString1, String paramString2)
     {
       super();
       this.level = paramInt;
@@ -272,34 +255,34 @@ public final class x
     
     final void execute()
     {
-      AppMethodBeat.i(200809);
+      AppMethodBeat.i(249515);
       switch (this.level)
       {
       }
       for (;;)
       {
-        AppMethodBeat.o(200809);
+        AppMethodBeat.o(249515);
         return;
-        com.tencent.mm.sdk.platformtools.Log.v("MicroMsg.PendingLogAndReport", "[%s @ %s] %s", new Object[] { this.tag, this.dmc, this.msg });
-        AppMethodBeat.o(200809);
+        com.tencent.mm.sdk.platformtools.Log.v("MicroMsg.PendingLogAndReport", "[%s @ %s] %s", new Object[] { this.tag, this.fdH, this.msg });
+        AppMethodBeat.o(249515);
         return;
-        com.tencent.mm.sdk.platformtools.Log.d("MicroMsg.PendingLogAndReport", "[%s @ %s] %s", new Object[] { this.tag, this.dmc, this.msg });
-        AppMethodBeat.o(200809);
+        com.tencent.mm.sdk.platformtools.Log.d("MicroMsg.PendingLogAndReport", "[%s @ %s] %s", new Object[] { this.tag, this.fdH, this.msg });
+        AppMethodBeat.o(249515);
         return;
-        com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.PendingLogAndReport", "[%s @ %s] %s", new Object[] { this.tag, this.dmc, this.msg });
-        AppMethodBeat.o(200809);
+        com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.PendingLogAndReport", "[%s @ %s] %s", new Object[] { this.tag, this.fdH, this.msg });
+        AppMethodBeat.o(249515);
         return;
-        com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.PendingLogAndReport", "[%s @ %s] %s", new Object[] { this.tag, this.dmc, this.msg });
-        AppMethodBeat.o(200809);
+        com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.PendingLogAndReport", "[%s @ %s] %s", new Object[] { this.tag, this.fdH, this.msg });
+        AppMethodBeat.o(249515);
         return;
-        com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.PendingLogAndReport", "[%s @ %s] %s", new Object[] { this.tag, this.dmc, this.msg });
+        com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.PendingLogAndReport", "[%s @ %s] %s", new Object[] { this.tag, this.fdH, this.msg });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.app.x
  * JD-Core Version:    0.7.0.1
  */

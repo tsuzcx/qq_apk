@@ -1,36 +1,46 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.e;
-import com.google.a.a.g;
-import java.util.Arrays;
+import com.google.b.a.b;
+import com.google.b.a.c;
+import com.google.b.a.e;
 
 public final class a$ap
   extends e
 {
-  public byte[] buffer = g.cbu;
-  public int iLen = 0;
+  private static volatile ap[] ZgO;
+  public int tQm = 0;
   
   public a$ap()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public final int Ig()
+  public static ap[] ikP()
   {
-    int j = super.Ig() + b.bC(1, this.iLen);
+    if (ZgO == null) {}
+    synchronized (c.ccQ)
+    {
+      if (ZgO == null) {
+        ZgO = new ap[0];
+      }
+      return ZgO;
+    }
+  }
+  
+  public final int JG()
+  {
+    int j = super.JG();
     int i = j;
-    if (!Arrays.equals(this.buffer, g.cbu)) {
-      i = j + b.c(2, this.buffer);
+    if (this.tQm != 0) {
+      i = j + b.bN(1, this.tQm);
     }
     return i;
   }
   
   public final void a(b paramb)
   {
-    paramb.bB(1, this.iLen);
-    if (!Arrays.equals(this.buffer, g.cbu)) {
-      paramb.b(2, this.buffer);
+    if (this.tQm != 0) {
+      paramb.bK(1, this.tQm);
     }
     super.a(paramb);
   }

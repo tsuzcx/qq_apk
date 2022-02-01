@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.finder.nearby.base;
 
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.mm.ui.MMActivity;
 import java.util.Iterator;
 import java.util.List;
 import kotlin.a.j;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/nearby/base/FragmentChangeObserver;", "Landroid/support/v4/view/ViewPager$OnPageChangeListener;", "Lcom/tencent/mm/plugin/finder/nearby/base/FragmentChangeListener;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "fragments", "", "Lcom/tencent/mm/plugin/finder/nearby/base/AbsNearByFragment;", "(Lcom/tencent/mm/ui/MMActivity;Ljava/util/List;)V", "getActivity", "()Lcom/tencent/mm/ui/MMActivity;", "lastIndex", "", "lastType", "onPageScrollStateChanged", "", "position", "onPageScrolled", "p0", "p1", "", "p2", "onPageSelected", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/base/FragmentChangeObserver;", "Landroidx/viewpager/widget/ViewPager$OnPageChangeListener;", "Lcom/tencent/mm/plugin/finder/nearby/base/FragmentChangeListener;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "fragments", "", "Lcom/tencent/mm/plugin/finder/nearby/base/AbsNearByFragment;", "(Lcom/tencent/mm/ui/MMActivity;Ljava/util/List;)V", "getActivity", "()Lcom/tencent/mm/ui/MMActivity;", "lastIndex", "", "lastType", "onPageScrollStateChanged", "", "position", "onPageScrolled", "p0", "p1", "", "p2", "onPageSelected", "Companion", "plugin-finder-nearby_release"})
 public abstract class b
   implements ViewPager.OnPageChangeListener, a
 {
-  public static final a uQl = new a((byte)0);
+  public static final a zDt = new a((byte)0);
   private final MMActivity activity;
   private final List<AbsNearByFragment> fragments;
   private int lastIndex;
@@ -42,7 +42,7 @@ public abstract class b
         Object localObject2 = localIterator.next();
         int j = i + 1;
         if (i < 0) {
-          j.hxH();
+          j.iBO();
         }
         localObject2 = (AbsNearByFragment)localObject2;
         if (paramInt == i)
@@ -60,7 +60,7 @@ public abstract class b
           i = j;
         }
       }
-      D(this.lastIndex, paramInt, this.lastType, ((AbsNearByFragment)this.fragments.get(paramInt)).dLS);
+      H(this.lastIndex, paramInt, this.lastType, ((AbsNearByFragment)this.fragments.get(paramInt)).fEH);
       if (localObject1 != null)
       {
         ((AbsNearByFragment)localObject1).onUserVisibleFocused();
@@ -68,10 +68,10 @@ public abstract class b
       }
     }
     this.lastIndex = paramInt;
-    this.lastType = ((AbsNearByFragment)this.fragments.get(paramInt)).dLS;
+    this.lastType = ((AbsNearByFragment)this.fragments.get(paramInt)).fEH;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/nearby/base/FragmentChangeObserver$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/base/FragmentChangeObserver$Companion;", "", "()V", "TAG", "", "plugin-finder-nearby_release"})
   public static final class a {}
 }
 

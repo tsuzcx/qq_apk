@@ -1,134 +1,56 @@
 ;if (this.NativeGlobal && this.NativeGlobal.initModule) {
     var that = this;
-    // OffscreenCanvas
-    if (!that.NativeGlobal.OffscreenCanvas) {
-        Object.defineProperty(this.NativeGlobal, 'OffscreenCanvas', {
-            get: function() {
-                if (this.hasInitedOffscreenCanvas) {
-                    return that.NativeGlobal.OffscreenCanvas_;
-                }
-                const ret = that.NativeGlobal.initModule('OffscreenCanvas');
-                if (ret) {
-                    this.hasInitedOffscreenCanvas = true;
-                    return that.NativeGlobal.OffscreenCanvas_;
-                } else {
-                    return undefined;
-                }
-                
-            }
-        });
-    }
+    
+    class LazyLoadModel {
+        parent = null;
+        name = "";
+        suppressConfigReadyWarning = false;
 
-    // Image
-    if (!that.NativeGlobal.Image) {
-        Object.defineProperty(this.NativeGlobal, 'Image', {
-            get: function() {
-                if (this.hasInitedImage) {
-                    return that.NativeGlobal.Image_;
-                }
-                const ret = that.NativeGlobal.initModule('Image');
-                if (ret) {
-                    this.hasInitedImage = true;
-                    return that.NativeGlobal.Image_;
-                } else {
-                    return undefined;
-                }
-                
-            }
-        });
-    }
+        constructor(parent, name, suppressConfigReadyWarning = false) {
+            this.parent = parent;
+            this.name = name;
+            this.suppressConfigReadyWarning = suppressConfigReadyWarning;
+        }
 
-    // MediaSdk
-    if (!that.NativeGlobal.MediaToolKit) {
-        Object.defineProperty(this.NativeGlobal, 'MediaToolKit', {
-            get: function() {
-                if (this.hasInitedMediaToolKit) {
-                    return that.NativeGlobal.MediaToolKit_;
-                }
-                const ret = that.NativeGlobal.initModule('MediaToolKit');
-                if (ret) {
-                    this.hasInitedMediaToolKit = true;
-                    return that.NativeGlobal.MediaToolKit_;
-                } else {
-                    return undefined;
-                }
-                
-            }
-        });
+        provideDelegateStr () {
+            return this.name + '_';
+        }
+    };
+    var consoleError = (msg) => {
+        if (that.NativeGlobal && that.NativeGlobal.log) {
+            NativeGlobal.log({level: 3, logs: [msg]});
+        }
     }
-    // CPU Profiler
-    if (!that.NativeGlobal.CpuProfiler) {
-        Object.defineProperty(this.NativeGlobal, 'CpuProfiler', {
-            get: function() {
-                if (this.hasInitedCpuProfiler) {
-                    return that.NativeGlobal.CpuProfiler_;
-                }
-                const ret = that.NativeGlobal.initModule('CpuProfiler');
-                if (ret) {
-                    this.hasInitedCpuProfiler = true;
-                    return that.NativeGlobal.CpuProfiler_;
-                } else {
-                    return undefined;
-                }
-                
-            }
-        });
-    }
+    var lazyLoadModels = [];
+    lazyLoadModels.push(new LazyLoadModel(that.NativeGlobal, 'OffscreenCanvas'));
+    lazyLoadModels.push(new LazyLoadModel(that.NativeGlobal, 'Image'));
+    lazyLoadModels.push(new LazyLoadModel(that.NativeGlobal, 'MediaToolKit'));
+    lazyLoadModels.push(new LazyLoadModel(that.NativeGlobal, 'CpuProfiler'));
+    lazyLoadModels.push(new LazyLoadModel(that.NativeGlobal, 'HeapProfiler'));
+    lazyLoadModels.push(new LazyLoadModel(that.NativeGlobal, 'Box2D'));
+    lazyLoadModels.push(new LazyLoadModel(that.NativeGlobal, 'Phys3D'));
+    lazyLoadModels.push(new LazyLoadModel(that.NativeGlobal, 'Profiler'));
 
-    // Heap Profiler
-    if (!that.NativeGlobal.HeapProfiler) {
-        Object.defineProperty(this.NativeGlobal, 'HeapProfiler', {
-            get: function() {
-                if (this.hasInitedHeapProfiler) {
-                    return that.NativeGlobal.HeapProfiler_;
-                }
-                const ret = that.NativeGlobal.initModule('HeapProfiler');
-                if (ret) {
-                    this.hasInitedHeapProfiler = true;
-                    return that.NativeGlobal.HeapProfiler_;
-                } else {
-                    return undefined;
-                }
-                
-            }
-        });
-    }
+    for (const model of lazyLoadModels) {
+        if (!model.parent[model.name]) {
+            Object.defineProperty(model.parent, model.name, {
+                get: function() {
+                    if (model.isTriggeredInit) {
+                        return model[model.provideDelegateStr()];
+                    }
+                    // Generate warning when calling lazy-load too early (before wxConfigReady event published). In most cases it's a bug.
+                    if (!that.NativeGlobal.globalSuppressLazyLoadConfigReadyWarning && !that.NativeGlobal.hasInitializedWxConfig && !model.suppressConfigReadyWarning) {
+                        consoleError('Calling lazy load model ' + model.name + ' too early! It may slow down start up and cost more memory usage.');
+                    }
+                    that.NativeGlobal.initModule(model.name);
+                    model.isTriggeredInit = true;
+                    return model[model.provideDelegateStr()];
+                },
 
-    // box2d
-    if (!that.NativeGlobal.Box2D) {
-        Object.defineProperty(this.NativeGlobal, 'Box2D', {
-            get: function() {
-                if (this.hasInitedBox2D) {
-                    return that.NativeGlobal.Box2D_;
+                set: function(value) {
+                    model[model.provideDelegateStr()] = value;
                 }
-                const ret = that.NativeGlobal.initModule('Box2D');
-                if (ret) {
-                    this.hasInitedBox2D = true;
-                    return that.NativeGlobal.Box2D_;
-                } else {
-                    return undefined;
-                }
-                
-            }
-        });
-    }
-
-    // Heap Profiler
-    if (!that.NativeGlobal.Phys3D) {
-        Object.defineProperty(this.NativeGlobal, 'Phys3D', {
-            get: function() {
-                if (this.hasInitedPhys3D) {
-                    return that.NativeGlobal.Phys3D_;
-                }
-                const ret = that.NativeGlobal.initModule('Phys3D');
-                if (ret) {
-                    this.hasInitedPhys3D = true;
-                    return that.NativeGlobal.Phys3D_;
-                } else {
-                    return undefined;
-                }
-                
-            }
-        });
+            });
+        }
     }
 };

@@ -404,22 +404,41 @@ public class a
   public static final String a(boolean paramBoolean)
   {
     AppMethodBeat.i(53857);
-    if (b.d())
-    {
+    String str = a(paramBoolean, 0);
+    AppMethodBeat.o(53857);
+    return str;
+  }
+  
+  public static final String a(boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(200189);
+    boolean bool;
+    if (paramInt == 64) {
+      bool = true;
+    }
+    while (bool) {
       if (paramBoolean)
       {
-        AppMethodBeat.o(53857);
+        AppMethodBeat.o(200189);
         return "x5.64.decouple.backup";
+        if (paramInt == 32) {
+          bool = false;
+        } else {
+          bool = b.d();
+        }
       }
-      AppMethodBeat.o(53857);
-      return "x5.64.backup";
+      else
+      {
+        AppMethodBeat.o(200189);
+        return "x5.64.backup";
+      }
     }
     if (paramBoolean)
     {
-      AppMethodBeat.o(53857);
+      AppMethodBeat.o(200189);
       return "x5.decouple.backup";
     }
-    AppMethodBeat.o(53857);
+    AppMethodBeat.o(200189);
     return "x5.backup";
   }
   
@@ -464,173 +483,199 @@ public class a
   public static int b(File paramFile)
   {
     // Byte code:
-    //   0: ldc_w 280
+    //   0: ldc_w 284
     //   3: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: ldc 2
-    //   8: monitorenter
-    //   9: new 282	java/util/jar/JarFile
+    //   6: ldc_w 286
+    //   9: new 152	java/lang/StringBuilder
     //   12: dup
-    //   13: aload_0
-    //   14: invokespecial 283	java/util/jar/JarFile:<init>	(Ljava/io/File;)V
-    //   17: astore_3
-    //   18: new 285	java/io/BufferedReader
-    //   21: dup
-    //   22: new 287	java/io/InputStreamReader
-    //   25: dup
-    //   26: aload_3
-    //   27: aload_3
-    //   28: ldc_w 289
-    //   31: invokevirtual 293	java/util/jar/JarFile:getJarEntry	(Ljava/lang/String;)Ljava/util/jar/JarEntry;
-    //   34: invokevirtual 297	java/util/jar/JarFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   37: invokespecial 300	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   40: invokespecial 303	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   43: astore_2
-    //   44: aload_2
-    //   45: invokevirtual 306	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   48: astore_0
-    //   49: aload_0
-    //   50: ifnull +60 -> 110
-    //   53: aload_0
-    //   54: ldc_w 308
-    //   57: invokevirtual 74	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   60: ifeq -16 -> 44
-    //   63: aload_0
-    //   64: ldc_w 310
-    //   67: invokevirtual 314	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   70: astore_0
-    //   71: aload_0
-    //   72: ifnull -28 -> 44
-    //   75: aload_0
-    //   76: arraylength
-    //   77: iconst_2
-    //   78: if_icmpne -34 -> 44
-    //   81: aload_0
-    //   82: iconst_1
-    //   83: aaload
-    //   84: invokevirtual 317	java/lang/String:trim	()Ljava/lang/String;
-    //   87: invokestatic 198	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   90: istore_1
-    //   91: aload_2
-    //   92: invokevirtual 318	java/io/BufferedReader:close	()V
-    //   95: aload_3
-    //   96: invokevirtual 319	java/util/jar/JarFile:close	()V
-    //   99: ldc 2
-    //   101: monitorexit
-    //   102: ldc_w 280
-    //   105: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   108: iload_1
-    //   109: ireturn
-    //   110: aload_2
-    //   111: invokevirtual 318	java/io/BufferedReader:close	()V
-    //   114: aload_3
-    //   115: invokevirtual 319	java/util/jar/JarFile:close	()V
-    //   118: ldc 2
-    //   120: monitorexit
-    //   121: ldc_w 280
-    //   124: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   127: iconst_m1
-    //   128: ireturn
-    //   129: astore_0
-    //   130: aconst_null
-    //   131: astore_0
-    //   132: aconst_null
-    //   133: astore_3
-    //   134: aload_0
-    //   135: ifnull +7 -> 142
-    //   138: aload_0
-    //   139: invokevirtual 318	java/io/BufferedReader:close	()V
-    //   142: aload_3
-    //   143: ifnull -25 -> 118
-    //   146: aload_3
-    //   147: invokevirtual 319	java/util/jar/JarFile:close	()V
-    //   150: goto -32 -> 118
-    //   153: astore_0
-    //   154: goto -36 -> 118
-    //   157: astore_0
-    //   158: aconst_null
-    //   159: astore_2
-    //   160: aconst_null
-    //   161: astore_3
-    //   162: aload_2
-    //   163: ifnull +7 -> 170
-    //   166: aload_2
-    //   167: invokevirtual 318	java/io/BufferedReader:close	()V
-    //   170: aload_3
-    //   171: ifnull +7 -> 178
-    //   174: aload_3
-    //   175: invokevirtual 319	java/util/jar/JarFile:close	()V
-    //   178: ldc_w 280
-    //   181: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   184: aload_0
-    //   185: athrow
-    //   186: astore_0
-    //   187: ldc 2
-    //   189: monitorexit
-    //   190: ldc_w 280
-    //   193: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   196: aload_0
-    //   197: athrow
-    //   198: astore_2
-    //   199: goto -21 -> 178
-    //   202: astore_0
-    //   203: aconst_null
-    //   204: astore_2
-    //   205: goto -43 -> 162
-    //   208: astore_0
-    //   209: goto -47 -> 162
-    //   212: astore_0
-    //   213: aconst_null
-    //   214: astore_0
-    //   215: goto -81 -> 134
-    //   218: astore_0
-    //   219: aload_2
+    //   13: ldc_w 288
+    //   16: invokespecial 291	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   19: aload_0
+    //   20: invokevirtual 294	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   23: ldc_w 296
+    //   26: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: aload_0
+    //   30: invokevirtual 62	java/io/File:exists	()Z
+    //   33: invokevirtual 299	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   36: ldc_w 301
+    //   39: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: aload_0
+    //   43: invokevirtual 304	java/io/File:canRead	()Z
+    //   46: invokevirtual 299	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   49: invokevirtual 165	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   52: invokestatic 53	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   55: ldc 2
+    //   57: monitorenter
+    //   58: new 306	java/util/jar/JarFile
+    //   61: dup
+    //   62: aload_0
+    //   63: invokespecial 307	java/util/jar/JarFile:<init>	(Ljava/io/File;)V
+    //   66: astore_3
+    //   67: new 309	java/io/BufferedReader
+    //   70: dup
+    //   71: new 311	java/io/InputStreamReader
+    //   74: dup
+    //   75: aload_3
+    //   76: aload_3
+    //   77: ldc_w 313
+    //   80: invokevirtual 317	java/util/jar/JarFile:getJarEntry	(Ljava/lang/String;)Ljava/util/jar/JarEntry;
+    //   83: invokevirtual 321	java/util/jar/JarFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   86: invokespecial 324	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   89: invokespecial 327	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   92: astore_2
+    //   93: aload_2
+    //   94: invokevirtual 330	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   97: astore_0
+    //   98: aload_0
+    //   99: ifnull +78 -> 177
+    //   102: aload_0
+    //   103: ldc_w 332
+    //   106: invokevirtual 74	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   109: ifeq -16 -> 93
+    //   112: aload_0
+    //   113: ldc_w 334
+    //   116: invokevirtual 338	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   119: astore_0
+    //   120: aload_0
+    //   121: ifnull -28 -> 93
+    //   124: aload_0
+    //   125: arraylength
+    //   126: iconst_2
+    //   127: if_icmpne -34 -> 93
+    //   130: aload_0
+    //   131: iconst_1
+    //   132: aaload
+    //   133: invokevirtual 341	java/lang/String:trim	()Ljava/lang/String;
+    //   136: astore_0
+    //   137: ldc_w 286
+    //   140: ldc_w 343
+    //   143: aload_0
+    //   144: invokestatic 347	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   147: invokevirtual 351	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   150: invokestatic 53	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   153: aload_0
+    //   154: invokestatic 198	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   157: istore_1
+    //   158: aload_2
+    //   159: invokevirtual 352	java/io/BufferedReader:close	()V
+    //   162: aload_3
+    //   163: invokevirtual 353	java/util/jar/JarFile:close	()V
+    //   166: ldc 2
+    //   168: monitorexit
+    //   169: ldc_w 284
+    //   172: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   175: iload_1
+    //   176: ireturn
+    //   177: aload_2
+    //   178: invokevirtual 352	java/io/BufferedReader:close	()V
+    //   181: aload_3
+    //   182: invokevirtual 353	java/util/jar/JarFile:close	()V
+    //   185: ldc 2
+    //   187: monitorexit
+    //   188: ldc_w 284
+    //   191: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   194: iconst_m1
+    //   195: ireturn
+    //   196: astore_0
+    //   197: aconst_null
+    //   198: astore_0
+    //   199: aconst_null
+    //   200: astore_3
+    //   201: aload_0
+    //   202: ifnull +7 -> 209
+    //   205: aload_0
+    //   206: invokevirtual 352	java/io/BufferedReader:close	()V
+    //   209: aload_3
+    //   210: ifnull -25 -> 185
+    //   213: aload_3
+    //   214: invokevirtual 353	java/util/jar/JarFile:close	()V
+    //   217: goto -32 -> 185
     //   220: astore_0
-    //   221: goto -87 -> 134
+    //   221: goto -36 -> 185
     //   224: astore_0
-    //   225: goto -107 -> 118
-    //   228: astore_0
-    //   229: goto -130 -> 99
+    //   225: aconst_null
+    //   226: astore_2
+    //   227: aconst_null
+    //   228: astore_3
+    //   229: aload_2
+    //   230: ifnull +7 -> 237
+    //   233: aload_2
+    //   234: invokevirtual 352	java/io/BufferedReader:close	()V
+    //   237: aload_3
+    //   238: ifnull +7 -> 245
+    //   241: aload_3
+    //   242: invokevirtual 353	java/util/jar/JarFile:close	()V
+    //   245: ldc_w 284
+    //   248: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   251: aload_0
+    //   252: athrow
+    //   253: astore_0
+    //   254: ldc 2
+    //   256: monitorexit
+    //   257: ldc_w 284
+    //   260: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   263: aload_0
+    //   264: athrow
+    //   265: astore_2
+    //   266: goto -21 -> 245
+    //   269: astore_0
+    //   270: aconst_null
+    //   271: astore_2
+    //   272: goto -43 -> 229
+    //   275: astore_0
+    //   276: goto -47 -> 229
+    //   279: astore_0
+    //   280: aconst_null
+    //   281: astore_0
+    //   282: goto -81 -> 201
+    //   285: astore_0
+    //   286: aload_2
+    //   287: astore_0
+    //   288: goto -87 -> 201
+    //   291: astore_0
+    //   292: goto -107 -> 185
+    //   295: astore_0
+    //   296: goto -130 -> 166
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	232	0	paramFile	File
-    //   90	19	1	i	int
-    //   43	124	2	localBufferedReader	java.io.BufferedReader
-    //   198	1	2	localException	Exception
-    //   204	16	2	localObject	Object
-    //   17	158	3	localJarFile	java.util.jar.JarFile
+    //   0	299	0	paramFile	File
+    //   157	19	1	i	int
+    //   92	142	2	localBufferedReader	java.io.BufferedReader
+    //   265	1	2	localException	Exception
+    //   271	16	2	localObject	Object
+    //   66	176	3	localJarFile	java.util.jar.JarFile
     // Exception table:
     //   from	to	target	type
-    //   9	18	129	java/lang/Exception
-    //   138	142	153	java/lang/Exception
-    //   146	150	153	java/lang/Exception
-    //   9	18	157	finally
-    //   91	99	186	finally
-    //   99	102	186	finally
-    //   110	118	186	finally
-    //   118	121	186	finally
-    //   138	142	186	finally
-    //   146	150	186	finally
-    //   166	170	186	finally
-    //   174	178	186	finally
-    //   178	186	186	finally
-    //   187	190	186	finally
-    //   166	170	198	java/lang/Exception
-    //   174	178	198	java/lang/Exception
-    //   18	44	202	finally
-    //   44	49	208	finally
-    //   53	71	208	finally
-    //   75	91	208	finally
-    //   18	44	212	java/lang/Exception
-    //   44	49	218	java/lang/Exception
-    //   53	71	218	java/lang/Exception
-    //   75	91	218	java/lang/Exception
-    //   110	118	224	java/lang/Exception
-    //   91	99	228	java/lang/Exception
+    //   58	67	196	java/lang/Exception
+    //   205	209	220	java/lang/Exception
+    //   213	217	220	java/lang/Exception
+    //   58	67	224	finally
+    //   158	166	253	finally
+    //   166	169	253	finally
+    //   177	185	253	finally
+    //   185	188	253	finally
+    //   205	209	253	finally
+    //   213	217	253	finally
+    //   233	237	253	finally
+    //   241	245	253	finally
+    //   245	253	253	finally
+    //   233	237	265	java/lang/Exception
+    //   241	245	265	java/lang/Exception
+    //   67	93	269	finally
+    //   93	98	275	finally
+    //   102	120	275	finally
+    //   124	158	275	finally
+    //   67	93	279	java/lang/Exception
+    //   93	98	285	java/lang/Exception
+    //   102	120	285	java/lang/Exception
+    //   124	158	285	java/lang/Exception
+    //   177	185	291	java/lang/Exception
+    //   158	166	295	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.utils.a
  * JD-Core Version:    0.7.0.1
  */

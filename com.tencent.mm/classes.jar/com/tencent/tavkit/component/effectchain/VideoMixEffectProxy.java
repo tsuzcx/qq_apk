@@ -27,27 +27,27 @@ public class VideoMixEffectProxy
   
   public VideoMixEffectProxy()
   {
-    AppMethodBeat.i(197460);
+    AppMethodBeat.i(211626);
     this.effects = new CopyOnWriteArrayList();
     this.filterProxies = new ArrayList();
     this.autoCheckEffectRemove = true;
-    AppMethodBeat.o(197460);
+    AppMethodBeat.o(211626);
   }
   
   public TAVVideoMixEffect.Filter createFilter()
   {
-    AppMethodBeat.i(197463);
+    AppMethodBeat.i(211635);
     FilterProxy localFilterProxy = new FilterProxy(null);
     this.filterProxies.add(localFilterProxy);
-    AppMethodBeat.o(197463);
+    AppMethodBeat.o(211635);
     return localFilterProxy;
   }
   
   public String effectId()
   {
-    AppMethodBeat.i(197462);
+    AppMethodBeat.i(211633);
     String str = "VideoMixEffectProxy" + Integer.toHexString(hashCode());
-    AppMethodBeat.o(197462);
+    AppMethodBeat.o(211633);
     return str;
   }
   
@@ -63,12 +63,12 @@ public class VideoMixEffectProxy
   
   public void notifyOnEffectRemove()
   {
-    AppMethodBeat.i(197461);
+    AppMethodBeat.i(211631);
     Iterator localIterator = this.filterProxies.iterator();
     while (localIterator.hasNext()) {
       FilterProxy.access$000((FilterProxy)localIterator.next());
     }
-    AppMethodBeat.o(197461);
+    AppMethodBeat.o(211631);
   }
   
   public void setAutoCheckEffectRemove(boolean paramBoolean)
@@ -90,18 +90,18 @@ public class VideoMixEffectProxy
     
     private FilterProxy()
     {
-      AppMethodBeat.i(197453);
+      AppMethodBeat.i(211611);
       this.filterMap = new HashMap();
       this.reportSession = new FilterChainReportSession();
-      AppMethodBeat.o(197453);
+      AppMethodBeat.o(211611);
     }
     
     private void checkRuntimeRelease(List<TAVVideoMixEffect> paramList)
     {
-      AppMethodBeat.i(197456);
+      AppMethodBeat.i(211615);
       if (!this.onEffectRemove)
       {
-        AppMethodBeat.o(197456);
+        AppMethodBeat.o(211615);
         return;
       }
       this.onEffectRemove = false;
@@ -125,15 +125,15 @@ public class VideoMixEffectProxy
           this.filterMap.remove(localObject);
         }
       }
-      AppMethodBeat.o(197456);
+      AppMethodBeat.o(211615);
     }
     
     private TAVVideoMixEffect.Filter getCacheFilter(TAVVideoMixEffect paramTAVVideoMixEffect)
     {
-      AppMethodBeat.i(197457);
+      AppMethodBeat.i(211616);
       if ((paramTAVVideoMixEffect == null) || (TextUtils.isEmpty(paramTAVVideoMixEffect.effectId())))
       {
-        AppMethodBeat.o(197457);
+        AppMethodBeat.o(211616);
         return null;
       }
       String str = paramTAVVideoMixEffect.effectId();
@@ -142,7 +142,7 @@ public class VideoMixEffectProxy
       }
       for (;;)
       {
-        AppMethodBeat.o(197457);
+        AppMethodBeat.o(211616);
         return paramTAVVideoMixEffect;
         paramTAVVideoMixEffect = paramTAVVideoMixEffect.createFilter();
         this.filterMap.put(str, paramTAVVideoMixEffect);
@@ -156,10 +156,10 @@ public class VideoMixEffectProxy
     
     public CIImage apply(TAVVideoMixEffect paramTAVVideoMixEffect, ImageCollection paramImageCollection, RenderInfo paramRenderInfo)
     {
-      AppMethodBeat.i(197455);
+      AppMethodBeat.i(211614);
       if (!(paramTAVVideoMixEffect instanceof VideoMixEffectProxy))
       {
-        AppMethodBeat.o(197455);
+        AppMethodBeat.o(211614);
         return null;
       }
       Object localObject = ((VideoMixEffectProxy)paramTAVVideoMixEffect).getEffects();
@@ -191,16 +191,16 @@ public class VideoMixEffectProxy
         }
         paramTAVVideoMixEffect = (TAVVideoMixEffect)localObject;
         break;
-        AppMethodBeat.o(197455);
+        AppMethodBeat.o(211614);
         return paramTAVVideoMixEffect;
       }
     }
     
     public String getReportKey()
     {
-      AppMethodBeat.i(197454);
+      AppMethodBeat.i(211613);
       String str = MemoryReportHelper.appendReportKey(this.filterMap.values());
-      AppMethodBeat.o(197454);
+      AppMethodBeat.o(211613);
       return str;
     }
     
@@ -208,7 +208,7 @@ public class VideoMixEffectProxy
     {
       try
       {
-        AppMethodBeat.i(197458);
+        AppMethodBeat.i(211618);
         Iterator localIterator = this.filterMap.values().iterator();
         while (localIterator.hasNext()) {
           ((TAVVideoMixEffect.Filter)localIterator.next()).release();
@@ -217,13 +217,13 @@ public class VideoMixEffectProxy
       }
       finally {}
       this.reportSession.commit();
-      AppMethodBeat.o(197458);
+      AppMethodBeat.o(211618);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tavkit.component.effectchain.VideoMixEffectProxy
  * JD-Core Version:    0.7.0.1
  */

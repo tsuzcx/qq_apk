@@ -5,7 +5,6 @@ import android.os.Looper;
 import android.os.MessageQueue;
 import android.os.MessageQueue.IdleHandler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.box.webview.BoxWebView;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
@@ -17,29 +16,29 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/box/BoxWebViewPreloadManager;", "", "()V", "TAG", "", "cacheWebView", "Lcom/tencent/mm/plugin/box/webview/BoxWebView;", "createWebViewHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "enablePreloadNextWebViewAfterGet", "", "enablePreloadWebView", "enablePreloadWebViewFromFindTab", "syncObject", "createBoxWebView", "fetchBoxWebView", "context", "Landroid/content/Context;", "callback", "Lkotlin/Function3;", "", "getCachedBoxWebView", "preloadBoxWebView", "delay", "", "preloadBoxWebViewInner", "runTask", "block", "Lkotlin/Function0;", "startPreloadBoxWebView", "scene", "", "Scene", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/BoxWebViewPreloadManager;", "", "()V", "TAG", "", "cacheWebView", "Lcom/tencent/mm/plugin/box/webview/BoxWebView;", "createWebViewHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "enablePreloadNextWebViewAfterGet", "", "enablePreloadWebView", "enablePreloadWebViewFromFindTab", "syncObject", "createBoxWebView", "fetchBoxWebView", "context", "Landroid/content/Context;", "callback", "Lkotlin/Function3;", "", "getCachedBoxWebView", "preloadBoxWebView", "delay", "", "preloadBoxWebViewInner", "runTask", "block", "Lkotlin/Function0;", "startPreloadBoxWebView", "scene", "", "Scene", "plugin-scan_release"})
 public final class h
 {
-  private static volatile BoxWebView CCp;
-  private static boolean CCq;
-  private static boolean CCr;
-  private static boolean CCs;
-  private static Object CCt;
-  private static MMHandler CCu;
-  public static final h CCv;
+  private static volatile BoxWebView Brc;
+  private static boolean Brd;
+  private static boolean Bre;
+  private static boolean Brf;
+  private static Object Brg;
+  private static MMHandler Brh;
+  public static final h IGZ;
   
   static
   {
-    AppMethodBeat.i(240252);
-    CCv = new h();
-    CCr = CCq;
-    CCt = new Object();
-    int i = ((b)g.af(b.class)).a(b.a.sel, 0);
-    int j = ((b)g.af(b.class)).a(b.a.sem, 0);
+    AppMethodBeat.i(223443);
+    IGZ = new h();
+    Bre = Brd;
+    Brg = new Object();
+    int i = ((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vNQ, 0);
+    int j = ((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vNR, 0);
     if ((i == 1) || (BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED))
     {
       bool = true;
-      CCq = bool;
+      Brd = bool;
       if ((j != 1) && (!BuildInfo.DEBUG) && (!BuildInfo.IS_FLAVOR_RED)) {
         break label221;
       }
@@ -47,13 +46,13 @@ public final class h
     label221:
     for (boolean bool = true;; bool = false)
     {
-      CCs = bool;
-      CCr = CCq;
-      Log.i("MicroMsg.BoxWebViewPreloadManager", "init enablePreloadWebView config: %d, configFindTab: %d, enablePreload: %b, enablePreloadAfterGet: %b, enablePreloadFromFindTab: %b", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Boolean.valueOf(CCq), Boolean.valueOf(CCr), Boolean.valueOf(CCs) });
+      Brf = bool;
+      Bre = Brd;
+      Log.i("MicroMsg.BoxWebViewPreloadManager", "init enablePreloadWebView config: %d, configFindTab: %d, enablePreload: %b, enablePreloadAfterGet: %b, enablePreloadFromFindTab: %b", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Boolean.valueOf(Brd), Boolean.valueOf(Bre), Boolean.valueOf(Brf) });
       long l = System.currentTimeMillis();
-      CCu = new MMHandler(Looper.getMainLooper());
+      Brh = new MMHandler(Looper.getMainLooper());
       Log.d("MicroMsg.BoxWebViewPreloadManager", "createWebViewHandlerThread start cost %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-      AppMethodBeat.o(240252);
+      AppMethodBeat.o(223443);
       return;
       bool = false;
       break;
@@ -62,10 +61,10 @@ public final class h
   
   public static final BoxWebView a(Context paramContext, kotlin.g.a.q<? super Boolean, ? super Boolean, ? super Boolean, x> paramq)
   {
-    AppMethodBeat.i(240249);
-    p.h(paramContext, "context");
-    p.h(paramq, "callback");
-    BoxWebView localBoxWebView = ePl();
+    AppMethodBeat.i(223427);
+    p.k(paramContext, "context");
+    p.k(paramq, "callback");
+    BoxWebView localBoxWebView = elI();
     boolean bool;
     if (localBoxWebView == null)
     {
@@ -74,92 +73,92 @@ public final class h
     }
     for (;;)
     {
-      paramq.d(Boolean.valueOf(CCq), Boolean.valueOf(CCs), Boolean.valueOf(bool));
-      if (CCr) {
-        aC(1, 1500L);
+      paramq.c(Boolean.valueOf(Brd), Boolean.valueOf(Brf), Boolean.valueOf(bool));
+      if (Bre) {
+        aO(1, 1500L);
       }
-      AppMethodBeat.o(240249);
+      AppMethodBeat.o(223427);
       return paramContext;
-      localBoxWebView.aG(paramContext);
+      localBoxWebView.aD(paramContext);
       bool = true;
       paramContext = localBoxWebView;
     }
   }
   
-  public static final void aC(int paramInt, long paramLong)
+  public static final void aO(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(240248);
-    if (!CCq)
+    AppMethodBeat.i(223426);
+    if (!Brd)
     {
-      AppMethodBeat.o(240248);
+      AppMethodBeat.o(223426);
       return;
     }
-    if (((paramInt == 1) && (CCr)) || ((paramInt == 2) && (CCs)))
+    if (((paramInt == 1) && (Bre)) || ((paramInt == 2) && (Brf)))
     {
       Log.v("MicroMsg.BoxWebViewPreloadManager", "alvinluo preloadBoxWebView delay: %d", new Object[] { Long.valueOf(paramLong) });
-      a locala = (a)a.CCw;
-      MMHandler localMMHandler = CCu;
+      a locala = (a)a.IHa;
+      MMHandler localMMHandler = Brh;
       if (localMMHandler != null)
       {
         localMMHandler.postDelayed((Runnable)new b(locala), paramLong);
-        AppMethodBeat.o(240248);
+        AppMethodBeat.o(223426);
         return;
       }
     }
-    AppMethodBeat.o(240248);
+    AppMethodBeat.o(223426);
   }
   
-  private static BoxWebView ePl()
+  private static BoxWebView elI()
   {
     x localx = null;
-    AppMethodBeat.i(240250);
-    Object localObject3 = CCt;
+    AppMethodBeat.i(223431);
+    Object localObject3 = Brg;
     Object localObject1 = localx;
     try
     {
-      if (CCp != null)
+      if (Brc != null)
       {
-        BoxWebView localBoxWebView = CCp;
+        BoxWebView localBoxWebView = Brc;
         if (localBoxWebView == null) {
-          p.hyc();
+          p.iCn();
         }
         localObject1 = localx;
         if (!localBoxWebView.isDestroyed())
         {
           Log.v("MicroMsg.BoxWebViewPreloadManager", "alvinluo fetchBoxWebView use preload webView");
-          localObject1 = CCp;
-          CCp = null;
+          localObject1 = Brc;
+          Brc = null;
         }
       }
-      localx = x.SXb;
+      localx = x.aazN;
       return localObject1;
     }
     finally
     {
-      AppMethodBeat.o(240250);
+      AppMethodBeat.o(223431);
     }
   }
   
   /* Error */
-  private final void ePm()
+  private final void elJ()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 243
+    //   2: ldc 244
     //   4: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: getstatic 224	com/tencent/mm/plugin/scanner/box/h:CCp	Lcom/tencent/mm/plugin/box/webview/BoxWebView;
+    //   7: getstatic 225	com/tencent/mm/plugin/scanner/box/h:Brc	Lcom/tencent/mm/plugin/box/webview/BoxWebView;
     //   10: astore_2
-    //   11: getstatic 224	com/tencent/mm/plugin/scanner/box/h:CCp	Lcom/tencent/mm/plugin/box/webview/BoxWebView;
+    //   11: getstatic 225	com/tencent/mm/plugin/scanner/box/h:Brc	Lcom/tencent/mm/plugin/box/webview/BoxWebView;
     //   14: astore_1
     //   15: aload_1
     //   16: ifnull +104 -> 120
     //   19: aload_1
-    //   20: invokevirtual 231	com/tencent/mm/plugin/box/webview/BoxWebView:isDestroyed	()Z
+    //   20: invokevirtual 232	com/tencent/mm/plugin/box/webview/BoxWebView:isDestroyed	()Z
     //   23: invokestatic 122	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   26: astore_1
     //   27: ldc 109
-    //   29: ldc 245
+    //   29: ldc 246
     //   31: iconst_2
     //   32: anewarray 4	java/lang/Object
     //   35: dup
@@ -170,38 +169,38 @@ public final class h
     //   40: iconst_1
     //   41: aload_1
     //   42: aastore
-    //   43: invokestatic 206	com/tencent/mm/sdk/platformtools/Log:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   46: getstatic 76	com/tencent/mm/plugin/scanner/box/h:CCt	Ljava/lang/Object;
+    //   43: invokestatic 207	com/tencent/mm/sdk/platformtools/Log:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   46: getstatic 76	com/tencent/mm/plugin/scanner/box/h:Brg	Ljava/lang/Object;
     //   49: astore_1
     //   50: aload_1
     //   51: monitorenter
-    //   52: getstatic 224	com/tencent/mm/plugin/scanner/box/h:CCp	Lcom/tencent/mm/plugin/box/webview/BoxWebView;
+    //   52: getstatic 225	com/tencent/mm/plugin/scanner/box/h:Brc	Lcom/tencent/mm/plugin/box/webview/BoxWebView;
     //   55: ifnull +21 -> 76
-    //   58: getstatic 224	com/tencent/mm/plugin/scanner/box/h:CCp	Lcom/tencent/mm/plugin/box/webview/BoxWebView;
+    //   58: getstatic 225	com/tencent/mm/plugin/scanner/box/h:Brc	Lcom/tencent/mm/plugin/box/webview/BoxWebView;
     //   61: astore_2
     //   62: aload_2
     //   63: ifnonnull +6 -> 69
-    //   66: invokestatic 227	kotlin/g/b/p:hyc	()V
+    //   66: invokestatic 228	kotlin/g/b/p:iCn	()V
     //   69: aload_2
-    //   70: invokevirtual 231	com/tencent/mm/plugin/box/webview/BoxWebView:isDestroyed	()Z
+    //   70: invokevirtual 232	com/tencent/mm/plugin/box/webview/BoxWebView:isDestroyed	()Z
     //   73: ifeq +33 -> 106
     //   76: ldc 109
-    //   78: ldc 247
-    //   80: invokestatic 236	com/tencent/mm/sdk/platformtools/Log:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   78: ldc 248
+    //   80: invokestatic 237	com/tencent/mm/sdk/platformtools/Log:v	(Ljava/lang/String;Ljava/lang/String;)V
     //   83: new 176	com/tencent/mm/plugin/box/webview/BoxWebView
     //   86: dup
-    //   87: new 249	android/content/MutableContextWrapper
+    //   87: new 250	android/content/MutableContextWrapper
     //   90: dup
-    //   91: invokestatic 255	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
-    //   94: invokespecial 256	android/content/MutableContextWrapper:<init>	(Landroid/content/Context;)V
-    //   97: checkcast 258	android/content/Context
+    //   91: invokestatic 256	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   94: invokespecial 257	android/content/MutableContextWrapper:<init>	(Landroid/content/Context;)V
+    //   97: checkcast 259	android/content/Context
     //   100: invokespecial 179	com/tencent/mm/plugin/box/webview/BoxWebView:<init>	(Landroid/content/Context;)V
-    //   103: putstatic 224	com/tencent/mm/plugin/scanner/box/h:CCp	Lcom/tencent/mm/plugin/box/webview/BoxWebView;
-    //   106: getstatic 242	kotlin/x:SXb	Lkotlin/x;
+    //   103: putstatic 225	com/tencent/mm/plugin/scanner/box/h:Brc	Lcom/tencent/mm/plugin/box/webview/BoxWebView;
+    //   106: getstatic 243	kotlin/x:aazN	Lkotlin/x;
     //   109: astore_2
     //   110: aload_1
     //   111: monitorexit
-    //   112: ldc 243
+    //   112: ldc 244
     //   114: invokestatic 159	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   117: aload_0
     //   118: monitorexit
@@ -212,7 +211,7 @@ public final class h
     //   125: astore_2
     //   126: aload_1
     //   127: monitorexit
-    //   128: ldc 243
+    //   128: ldc 244
     //   130: invokestatic 159	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   133: aload_2
     //   134: athrow
@@ -241,18 +240,18 @@ public final class h
     //   126	135	135	finally
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class a
     extends kotlin.g.b.q
     implements a<x>
   {
-    public static final a CCw;
+    public static final a IHa;
     
     static
     {
-      AppMethodBeat.i(240245);
-      CCw = new a();
-      AppMethodBeat.o(240245);
+      AppMethodBeat.i(222602);
+      IHa = new a();
+      AppMethodBeat.o(222602);
     }
     
     a()
@@ -261,7 +260,7 @@ public final class h
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -269,13 +268,13 @@ public final class h
     
     public final void run()
     {
-      AppMethodBeat.i(240247);
-      a locala = this.hvp;
+      AppMethodBeat.i(220929);
+      a locala = this.$block;
       Looper.myQueue().addIdleHandler((MessageQueue.IdleHandler)new a(locala));
-      AppMethodBeat.o(240247);
+      AppMethodBeat.o(220929);
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/kt/CommonKt$idle$1", "Landroid/os/MessageQueue$IdleHandler;", "queueIdle", "", "libktcomm_release"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/kt/CommonKt$idle$1", "Landroid/os/MessageQueue$IdleHandler;", "queueIdle", "", "libktcomm_release"})
     public static final class a
       implements MessageQueue.IdleHandler
     {
@@ -283,10 +282,10 @@ public final class h
       
       public final boolean queueIdle()
       {
-        AppMethodBeat.i(240246);
+        AppMethodBeat.i(219934);
         Looper.myQueue().removeIdleHandler((MessageQueue.IdleHandler)this);
-        this.hvp.invoke();
-        AppMethodBeat.o(240246);
+        this.$block.invoke();
+        AppMethodBeat.o(219934);
         return false;
       }
     }

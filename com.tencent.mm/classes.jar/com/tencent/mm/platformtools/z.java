@@ -2,13 +2,13 @@ package com.tencent.mm.platformtools;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.cd.b;
+import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.eaf;
 
 public final class z
 {
-  public static dqi Su(String paramString)
+  public static eaf ZW(String paramString)
   {
     AppMethodBeat.i(132979);
     if (paramString == null)
@@ -16,13 +16,13 @@ public final class z
       AppMethodBeat.o(132979);
       return null;
     }
-    dqi localdqi = new dqi();
-    localdqi.bhy(paramString);
+    eaf localeaf = new eaf();
+    localeaf.btQ(paramString);
     AppMethodBeat.o(132979);
-    return localdqi;
+    return localeaf;
   }
   
-  public static SKBuiltinBuffer_t Sv(String paramString)
+  public static eae ZX(String paramString)
   {
     AppMethodBeat.i(132982);
     if (paramString == null)
@@ -36,10 +36,10 @@ public final class z
       AppMethodBeat.o(132982);
       return null;
     }
-    SKBuiltinBuffer_t localSKBuiltinBuffer_t = new SKBuiltinBuffer_t();
-    localSKBuiltinBuffer_t.setBuffer(paramString);
+    eae localeae = new eae();
+    localeae.dc(paramString);
     AppMethodBeat.o(132982);
-    return localSKBuiltinBuffer_t;
+    return localeae;
   }
   
   public static String a(b paramb)
@@ -50,54 +50,54 @@ public final class z
       AppMethodBeat.o(132980);
       return null;
     }
-    paramb = paramb.yO();
+    paramb = paramb.Ap();
     AppMethodBeat.o(132980);
     return paramb;
   }
   
-  public static String a(dqi paramdqi)
+  public static String a(eaf parameaf)
   {
-    if (paramdqi == null) {
+    if (parameaf == null) {
       return null;
     }
-    return paramdqi.MTo;
+    return parameaf.Ufy;
   }
   
-  public static String a(dqi paramdqi, String paramString)
+  public static String a(eaf parameaf, String paramString)
   {
-    if (paramdqi == null) {
+    if (parameaf == null) {
       return paramString;
     }
-    return paramdqi.MTo;
+    return parameaf.Ufy;
   }
   
-  public static byte[] a(SKBuiltinBuffer_t paramSKBuiltinBuffer_t)
+  public static byte[] a(eae parameae)
   {
     AppMethodBeat.i(132977);
-    if ((paramSKBuiltinBuffer_t == null) || (paramSKBuiltinBuffer_t.getBuffer() == null))
+    if ((parameae == null) || (parameae.Tkb == null))
     {
       AppMethodBeat.o(132977);
       return null;
     }
-    paramSKBuiltinBuffer_t = paramSKBuiltinBuffer_t.getBuffer().toByteArray();
+    parameae = parameae.Tkb.toByteArray();
     AppMethodBeat.o(132977);
-    return paramSKBuiltinBuffer_t;
+    return parameae;
   }
   
-  public static byte[] a(SKBuiltinBuffer_t paramSKBuiltinBuffer_t, byte[] paramArrayOfByte)
+  public static byte[] a(eae parameae, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(132978);
-    if ((paramSKBuiltinBuffer_t == null) || (paramSKBuiltinBuffer_t.getBuffer() == null))
+    if ((parameae == null) || (parameae.Tkb == null))
     {
       AppMethodBeat.o(132978);
       return paramArrayOfByte;
     }
-    paramSKBuiltinBuffer_t = paramSKBuiltinBuffer_t.getBuffer().toByteArray();
+    parameae = parameae.Tkb.toByteArray();
     AppMethodBeat.o(132978);
-    return paramSKBuiltinBuffer_t;
+    return parameae;
   }
   
-  public static SKBuiltinBuffer_t aC(byte[] paramArrayOfByte)
+  public static eae aN(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(132976);
     if (paramArrayOfByte == null)
@@ -105,23 +105,23 @@ public final class z
       AppMethodBeat.o(132976);
       return null;
     }
-    SKBuiltinBuffer_t localSKBuiltinBuffer_t = new SKBuiltinBuffer_t();
-    localSKBuiltinBuffer_t.setBuffer(paramArrayOfByte);
+    eae localeae = new eae();
+    localeae.dc(paramArrayOfByte);
     AppMethodBeat.o(132976);
-    return localSKBuiltinBuffer_t;
+    return localeae;
   }
   
-  public static String b(SKBuiltinBuffer_t paramSKBuiltinBuffer_t)
+  public static String b(eae parameae)
   {
     AppMethodBeat.i(132981);
-    if ((paramSKBuiltinBuffer_t == null) || (paramSKBuiltinBuffer_t.getBuffer() == null))
+    if ((parameae == null) || (parameae.Tkb == null))
     {
       AppMethodBeat.o(132981);
       return null;
     }
-    paramSKBuiltinBuffer_t = paramSKBuiltinBuffer_t.getBuffer().yO();
+    parameae = parameae.Tkb.Ap();
     AppMethodBeat.o(132981);
-    return paramSKBuiltinBuffer_t;
+    return parameae;
   }
 }
 

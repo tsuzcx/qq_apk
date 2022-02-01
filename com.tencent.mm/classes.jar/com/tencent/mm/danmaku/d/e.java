@@ -4,20 +4,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  private long gQz;
+  private long jAS;
   public long mValue;
   
   public e(long paramLong)
   {
-    AppMethodBeat.i(241750);
+    AppMethodBeat.i(269291);
     this.mValue = paramLong;
-    this.gQz = this.mValue;
-    AppMethodBeat.o(241750);
+    this.jAS = this.mValue;
+    AppMethodBeat.o(269291);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.danmaku.d.e
  * JD-Core Version:    0.7.0.1
  */

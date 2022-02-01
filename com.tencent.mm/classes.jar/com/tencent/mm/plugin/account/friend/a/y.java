@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.mf;
-import com.tencent.mm.protocal.protobuf.mg;
+import com.tencent.mm.protocal.protobuf.lv;
+import com.tencent.mm.protocal.protobuf.lw;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class y
@@ -17,19 +17,19 @@ public final class y
   implements m
 {
   private i callback;
-  public d hJu;
+  public d kwO;
   
   public y(String paramString)
   {
     AppMethodBeat.i(184422);
     d.a locala = new d.a();
     locala.funcId = getType();
-    mf localmf = new mf();
-    localmf.dTx = paramString;
-    locala.iLN = localmf;
+    lv locallv = new lv();
+    locallv.fMS = paramString;
+    locala.lBU = locallv;
     locala.uri = "/cgi-bin/micromsg-bin/bindoldwx";
-    locala.iLO = new mg();
-    this.hJu = locala.aXF();
+    locala.lBV = new lw();
+    this.kwO = locala.bgN();
     AppMethodBeat.o(184422);
   }
   
@@ -37,7 +37,7 @@ public final class y
   {
     AppMethodBeat.i(184423);
     this.callback = parami;
-    int i = dispatch(paramg, this.hJu, this);
+    int i = dispatch(paramg, this.kwO, this);
     AppMethodBeat.o(184423);
     return i;
   }

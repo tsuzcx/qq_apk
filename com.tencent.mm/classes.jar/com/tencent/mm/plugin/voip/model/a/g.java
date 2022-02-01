@@ -1,28 +1,27 @@
 package com.tencent.mm.plugin.voip.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.cd.b;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.misc.a.a;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.voip.b.e;
 import com.tencent.mm.plugin.voip.c;
+import com.tencent.mm.plugin.voip.c.e;
 import com.tencent.mm.plugin.voip.model.l;
 import com.tencent.mm.plugin.voip.model.u;
 import com.tencent.mm.plugin.voip.model.v;
 import com.tencent.mm.plugin.voip.model.v2protocal;
 import com.tencent.mm.plugin.voip.model.x;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.csu;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.protocal.protobuf.etw;
-import com.tencent.mm.protocal.protobuf.etx;
-import com.tencent.mm.protocal.protobuf.euk;
+import com.tencent.mm.protocal.protobuf.dbt;
+import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.feh;
+import com.tencent.mm.protocal.protobuf.fei;
+import com.tencent.mm.protocal.protobuf.fev;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
@@ -32,57 +31,57 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class g
-  extends n<etw, etx>
+  extends n<feh, fei>
 {
-  public g(List<String> paramList, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, LinkedList<csu> paramLinkedList)
+  public g(List<String> paramList, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, LinkedList<dbt> paramLinkedList)
   {
     AppMethodBeat.i(115237);
     Object localObject1 = new d.a();
-    ((d.a)localObject1).iLN = new etw();
-    ((d.a)localObject1).iLO = new etx();
+    ((d.a)localObject1).lBU = new feh();
+    ((d.a)localObject1).lBV = new fei();
     ((d.a)localObject1).uri = "/cgi-bin/micromsg-bin/voipinvite";
     ((d.a)localObject1).funcId = 170;
-    ((d.a)localObject1).iLP = 63;
+    ((d.a)localObject1).lBW = 63;
     ((d.a)localObject1).respCmdId = 1000000063;
-    this.rr = ((d.a)localObject1).aXF();
-    localObject1 = (etw)this.rr.iLK.iLR;
+    this.rr = ((d.a)localObject1).bgN();
+    localObject1 = (feh)d.b.b(this.rr.lBR);
     Object localObject2 = new LinkedList();
     int i = 0;
     while (i < paramList.size())
     {
-      ((LinkedList)localObject2).add(new dqi().bhy((String)paramList.get(i)));
+      ((LinkedList)localObject2).add(new eaf().btQ((String)paramList.get(i)));
       i += 1;
     }
-    ((etw)localObject1).MKC = z.aTY();
-    ((etw)localObject1).NqW = ((LinkedList)localObject2);
-    ((etw)localObject1).NqV = ((LinkedList)localObject2).size();
-    ((etw)localObject1).Llx = paramInt1;
-    ((etw)localObject1).NbR = 0;
-    ((etw)localObject1).NqJ = paramInt2;
-    ((etw)localObject1).MKg = paramInt3;
-    paramList = new euk();
-    paramList.oUv = 2;
-    localObject2 = new SKBuiltinBuffer_t();
-    ((SKBuiltinBuffer_t)localObject2).setBuffer(paramArrayOfByte1);
-    paramList.KMS = ((SKBuiltinBuffer_t)localObject2);
-    ((etw)localObject1).NpJ = paramList;
-    paramList = new euk();
-    paramList.oUv = 3;
-    paramArrayOfByte1 = new SKBuiltinBuffer_t();
-    paramArrayOfByte1.setBuffer(paramArrayOfByte2);
-    paramList.KMS = paramArrayOfByte1;
-    ((etw)localObject1).NpK = paramList;
-    ((etw)localObject1).NpN = System.currentTimeMillis();
-    paramInt1 = ((a)com.tencent.mm.kernel.g.af(a.class)).Qr(2);
+    ((feh)localObject1).TWw = z.bcZ();
+    ((feh)localObject1).UDS = ((LinkedList)localObject2);
+    ((feh)localObject1).UDR = ((LinkedList)localObject2).size();
+    ((feh)localObject1).SmH = paramInt1;
+    ((feh)localObject1).Uon = 0;
+    ((feh)localObject1).UDF = paramInt2;
+    ((feh)localObject1).TWa = paramInt3;
+    paramList = new fev();
+    paramList.rWu = 2;
+    localObject2 = new eae();
+    ((eae)localObject2).dc(paramArrayOfByte1);
+    paramList.RNM = ((eae)localObject2);
+    ((feh)localObject1).UCF = paramList;
+    paramList = new fev();
+    paramList.rWu = 3;
+    paramArrayOfByte1 = new eae();
+    paramArrayOfByte1.dc(paramArrayOfByte2);
+    paramList.RNM = paramArrayOfByte1;
+    ((feh)localObject1).UCG = paramList;
+    ((feh)localObject1).UCJ = System.currentTimeMillis();
+    paramInt1 = ((a)com.tencent.mm.kernel.h.ae(a.class)).WE(2);
     Log.i("MicroMsg.NetSceneVoipInvite", "simType: %s", new Object[] { Integer.valueOf(paramInt1) });
     if (paramInt1 == 0) {
       paramInt1 = 0;
     }
     for (;;)
     {
-      ((etw)localObject1).NpO = paramInt1;
-      ((etw)localObject1).NpP = paramLinkedList.size();
-      ((etw)localObject1).NpQ = paramLinkedList;
+      ((feh)localObject1).UCK = paramInt1;
+      ((feh)localObject1).UCL = paramLinkedList.size();
+      ((feh)localObject1).UCM = paramLinkedList;
       AppMethodBeat.o(115237);
       return;
       if (paramInt1 == 3) {
@@ -95,7 +94,7 @@ public final class g
     }
   }
   
-  public final i fIF()
+  public final i gAU()
   {
     AppMethodBeat.i(115238);
     i local1 = new i()
@@ -103,142 +102,142 @@ public final class g
       public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
       {
         AppMethodBeat.i(115236);
-        e.Logi("MicroMsg.NetSceneVoipInvite", "Invite response:" + paramAnonymousInt1 + " errCode:" + paramAnonymousInt2 + " status:" + g.this.GWA.mStatus);
-        etx localetx = (etx)g.this.fIJ();
-        paramAnonymousq = (etw)((g)paramAnonymousq).fIK();
-        if ((paramAnonymousInt2 != 238) && (c.fFg().GYS.GZG))
+        e.Logi("MicroMsg.NetSceneVoipInvite", "Invite response:" + paramAnonymousInt1 + " errCode:" + paramAnonymousInt2 + " status:" + g.this.NMN.mStatus);
+        fei localfei = (fei)g.this.gAY();
+        paramAnonymousq = (feh)((g)paramAnonymousq).gAZ();
+        if ((paramAnonymousInt2 != 238) && (c.gxs().NPf.NPQ))
         {
-          c.fFg().b(localetx.LsZ, localetx.Lta, paramAnonymousq.NqJ);
+          c.gxs().b(localfei.Svu, localfei.Svv, paramAnonymousq.UDF);
           e.Loge("MicroMsg.NetSceneVoipInvite", " steve:[simucall] new simul call invite response  return!, DO NOT use inviteresp info,  I'm callee!!");
           AppMethodBeat.o(115236);
           return;
         }
-        if (g.this.GWA.mStatus != 2)
+        if (g.this.NMN.mStatus != 2)
         {
-          e.Loge("MicroMsg.NetSceneVoipInvite", " invite response with error status:" + g.this.GWA.mStatus + " should:2");
+          e.Loge("MicroMsg.NetSceneVoipInvite", " invite response with error status:" + g.this.NMN.mStatus + " should:2");
           AppMethodBeat.o(115236);
           return;
         }
-        g.this.GWA.GVV.Hbl = localetx.Nqe;
-        g.this.GWA.GVV.Hbm = localetx.Nqf;
-        g.this.GWA.GVV.Hbn = localetx.Nqg;
-        g.this.GWA.GVV.Hbo = localetx.Nqh;
-        g.this.GWA.GVV.Hbq = localetx.Nqj;
-        g.this.GWA.GVV.Hbp = localetx.Nqo;
-        g.this.GWA.GVV.HbV = localetx.NqZ;
-        g.this.GWA.GVV.HaF = localetx.NpV;
-        g.this.GWA.GVV.Hbs = localetx.Nqq;
-        g.this.GWA.adl(localetx.NpT);
-        g.this.GWA.GVV.HaJ = localetx.NpW;
-        if ((localetx.NpX != null) && (localetx.NpX.getBuffer() != null)) {
-          g.this.GWA.GVV.HaH = localetx.NpX.getBuffer().toByteArray();
+        g.this.NMN.NMi.NRx = localfei.UDa;
+        g.this.NMN.NMi.NRy = localfei.UDb;
+        g.this.NMN.NMi.NRz = localfei.UDc;
+        g.this.NMN.NMi.NRA = localfei.UDd;
+        g.this.NMN.NMi.NRC = localfei.UDf;
+        g.this.NMN.NMi.NRB = localfei.UDk;
+        g.this.NMN.NMi.NSh = localfei.UDV;
+        g.this.NMN.NMi.NQR = localfei.UCR;
+        g.this.NMN.NMi.NRE = localfei.UDm;
+        g.this.NMN.akW(localfei.UCP);
+        g.this.NMN.NMi.NQV = localfei.UCS;
+        if ((localfei.UCT != null) && (localfei.UCT.Tkb != null)) {
+          g.this.NMN.NMi.NQT = localfei.UCT.Tkb.toByteArray();
         }
-        if ((localetx.NpX != null) && (localetx.NpX.getILen() >= 12))
+        if ((localfei.UCT != null) && (localfei.UCT.Ufv >= 12))
         {
-          ByteBuffer localByteBuffer = ByteBuffer.wrap(localetx.NpX.getBuffer().toByteArray(), 8, 4);
+          ByteBuffer localByteBuffer = ByteBuffer.wrap(localfei.UCT.Tkb.toByteArray(), 8, 4);
           ByteOrder localByteOrder1 = ByteOrder.nativeOrder();
           ByteOrder localByteOrder2 = localByteBuffer.order();
           i = localByteBuffer.getInt();
           e.Logd("MicroMsg.NetSceneVoipInvite", "steve:nSvrBaseBRTuneRatio1:" + i + ", nativeOrder:" + localByteOrder1 + ", bbOrder:" + localByteOrder2);
-          g.this.GWA.GVV.Hbr = i;
+          g.this.NMN.NMi.NRD = i;
         }
-        e.Logi("MicroMsg.NetSceneVoipInvite", "setSvrConfig onInviteResp: audioTsdfBeyond3G = " + g.this.GWA.GVV.Hbl + ",audioTsdEdge = " + g.this.GWA.GVV.Hbm + ",passthroughQosAlgorithm = " + g.this.GWA.GVV.Hbn + ",fastPlayRepair = " + g.this.GWA.GVV.Hbo + ", audioDtx = " + g.this.GWA.GVV.Hbq + ",switchtcpPktCnt = " + g.this.GWA.GVV.HaE + ",SvrCfgListV = " + g.this.GWA.GVV.Hbp + ", setMaxBRForRelay=" + g.this.GWA.GVV.Hbs + ",EnableDataAccept = " + g.this.GWA.GVV.HbV + ",WifiScanInterval = " + g.this.GWA.GVV.HaJ + ",BaseBRTuneRatio=" + g.this.GWA.GVV.Hbr);
-        g.this.GWA.GVV.Hbt = localetx.Nqn;
-        e.Logi("MicroMsg.NetSceneVoipInvite", "inviteResp AudioAecMode5 = " + g.this.GWA.GVV.Hbt);
-        g.this.GWA.GVV.Hbu = localetx.Nqr;
-        e.Logi("MicroMsg.NetSceneVoipInvite", "inviteResp AudioEnableXnoiseSup = " + g.this.GWA.GVV.Hbu);
+        e.Logi("MicroMsg.NetSceneVoipInvite", "setSvrConfig onInviteResp: audioTsdfBeyond3G = " + g.this.NMN.NMi.NRx + ",audioTsdEdge = " + g.this.NMN.NMi.NRy + ",passthroughQosAlgorithm = " + g.this.NMN.NMi.NRz + ",fastPlayRepair = " + g.this.NMN.NMi.NRA + ", audioDtx = " + g.this.NMN.NMi.NRC + ",switchtcpPktCnt = " + g.this.NMN.NMi.NQQ + ",SvrCfgListV = " + g.this.NMN.NMi.NRB + ", setMaxBRForRelay=" + g.this.NMN.NMi.NRE + ",EnableDataAccept = " + g.this.NMN.NMi.NSh + ",WifiScanInterval = " + g.this.NMN.NMi.NQV + ",BaseBRTuneRatio=" + g.this.NMN.NMi.NRD);
+        g.this.NMN.NMi.NRF = localfei.UDj;
+        e.Logi("MicroMsg.NetSceneVoipInvite", "inviteResp AudioAecMode5 = " + g.this.NMN.NMi.NRF);
+        g.this.NMN.NMi.NRG = localfei.UDn;
+        e.Logi("MicroMsg.NetSceneVoipInvite", "inviteResp AudioEnableXnoiseSup = " + g.this.NMN.NMi.NRG);
         int i = e.getNetType(MMApplicationContext.getContext());
         if (paramAnonymousInt1 != 0)
         {
           if (paramAnonymousInt1 == 4)
           {
-            e.Logi("MicroMsg.NetSceneVoipInvite", "RoomId in InviteResp: " + localetx.LsZ + "," + localetx.Lta);
+            e.Logi("MicroMsg.NetSceneVoipInvite", "RoomId in InviteResp: " + localfei.Svu + "," + localfei.Svv);
             switch (paramAnonymousInt2)
             {
             default: 
-              g.this.GWA.GVV.Hcw.GXc = 12;
-              g.this.GWA.GVV.Hcw.GXo = 99;
-              h.CyF.a(11518, true, true, new Object[] { Integer.valueOf(c.fFg().fHU()), Long.valueOf(c.fFg().fHV()), Long.valueOf(c.fFg().fGu()), Integer.valueOf(5), Integer.valueOf(i) });
+              g.this.NMN.NMi.NSI.NNq = 12;
+              g.this.NMN.NMi.NSI.NNC = 99;
+              com.tencent.mm.plugin.report.service.h.IzE.a(11518, true, true, new Object[] { Integer.valueOf(c.gxs().gAn()), Long.valueOf(c.gxs().gAo()), Long.valueOf(c.gxs().gyI()), Integer.valueOf(5), Integer.valueOf(i) });
             }
             for (;;)
             {
-              g.this.GWA.GVV.Hcw.GXd = paramAnonymousInt2;
-              g.this.GWA.K(1, paramAnonymousInt2, paramAnonymousString);
+              g.this.NMN.NMi.NSI.NNr = paramAnonymousInt2;
+              g.this.NMN.J(1, paramAnonymousInt2, paramAnonymousString);
               AppMethodBeat.o(115236);
               return;
-              g.this.GWA.GVv = true;
-              g.this.GWA.GVx = false;
-              g.this.GWA.GVw = false;
-              g.this.GWA.GVV.Hbk = 0;
-              g.this.GWA.GVV.Hbj = 0;
-              g.this.GWA.setStatus(3);
-              g.this.GWA.GVV.roomId = localetx.LsZ;
-              g.this.GWA.GVV.ypH = localetx.Lta;
-              g.this.GWA.GVV.ypO = localetx.MKr;
-              paramAnonymousString = g.this.GWA.GVV;
-              paramAnonymousString.Hcx |= 0x1;
-              e.Logi("MicroMsg.NetSceneVoipInvite", "steve:[simucall]: use old svr-based simulcall! iSimulCallStatus: " + g.this.GWA.GVV.Hcx);
-              g.this.GWA.GVW.acR(paramAnonymousq.NqJ);
+              g.this.NMN.NLI = true;
+              g.this.NMN.NLK = false;
+              g.this.NMN.NLJ = false;
+              g.this.NMN.NMi.NRw = 0;
+              g.this.NMN.NMi.NRv = 0;
+              g.this.NMN.setStatus(3);
+              g.this.NMN.NMi.roomId = localfei.Svu;
+              g.this.NMN.NMi.DPJ = localfei.Svv;
+              g.this.NMN.NMi.DPQ = localfei.TWl;
+              paramAnonymousString = g.this.NMN.NMi;
+              paramAnonymousString.NSJ |= 0x1;
+              e.Logi("MicroMsg.NetSceneVoipInvite", "steve:[simucall]: use old svr-based simulcall! iSimulCallStatus: " + g.this.NMN.NMi.NSJ);
+              g.this.NMN.NMj.akC(paramAnonymousq.UDF);
               AppMethodBeat.o(115236);
               return;
-              g.this.GWA.GVV.Hcw.GXc = 13;
-              g.this.GWA.GVV.Hcw.GXo = 2;
-              h.CyF.a(11518, true, true, new Object[] { Integer.valueOf(c.fFg().fHU()), Long.valueOf(c.fFg().fHV()), Long.valueOf(c.fFg().fGu()), Integer.valueOf(2), Integer.valueOf(i) });
+              g.this.NMN.NMi.NSI.NNq = 13;
+              g.this.NMN.NMi.NSI.NNC = 2;
+              com.tencent.mm.plugin.report.service.h.IzE.a(11518, true, true, new Object[] { Integer.valueOf(c.gxs().gAn()), Long.valueOf(c.gxs().gAo()), Long.valueOf(c.gxs().gyI()), Integer.valueOf(2), Integer.valueOf(i) });
               continue;
-              g.this.GWA.GVV.Hcw.GXc = 13;
-              g.this.GWA.GVV.Hcw.GXo = 9;
-              h.CyF.a(11518, true, true, new Object[] { Integer.valueOf(c.fFg().fHU()), Long.valueOf(c.fFg().fHV()), Long.valueOf(c.fFg().fGu()), Integer.valueOf(2), Integer.valueOf(i) });
+              g.this.NMN.NMi.NSI.NNq = 13;
+              g.this.NMN.NMi.NSI.NNC = 9;
+              com.tencent.mm.plugin.report.service.h.IzE.a(11518, true, true, new Object[] { Integer.valueOf(c.gxs().gAn()), Long.valueOf(c.gxs().gAo()), Long.valueOf(c.gxs().gyI()), Integer.valueOf(2), Integer.valueOf(i) });
               continue;
-              g.this.GWA.GVV.Hcw.GXc = 12;
-              g.this.GWA.GVV.Hcw.GXo = 12;
-              h.CyF.a(11518, true, true, new Object[] { Integer.valueOf(c.fFg().fHU()), Long.valueOf(c.fFg().fHV()), Long.valueOf(c.fFg().fGu()), Integer.valueOf(8), Integer.valueOf(i) });
+              g.this.NMN.NMi.NSI.NNq = 12;
+              g.this.NMN.NMi.NSI.NNC = 12;
+              com.tencent.mm.plugin.report.service.h.IzE.a(11518, true, true, new Object[] { Integer.valueOf(c.gxs().gAn()), Long.valueOf(c.gxs().gAo()), Long.valueOf(c.gxs().gyI()), Integer.valueOf(8), Integer.valueOf(i) });
               continue;
-              g.this.GWA.GVV.Hcw.GXc = 12;
-              g.this.GWA.GVV.Hcw.GXo = 1;
-              h.CyF.a(11518, true, true, new Object[] { Integer.valueOf(c.fFg().fHU()), Long.valueOf(c.fFg().fHV()), Long.valueOf(c.fFg().fGu()), Integer.valueOf(3), Integer.valueOf(i) });
+              g.this.NMN.NMi.NSI.NNq = 12;
+              g.this.NMN.NMi.NSI.NNC = 1;
+              com.tencent.mm.plugin.report.service.h.IzE.a(11518, true, true, new Object[] { Integer.valueOf(c.gxs().gAn()), Long.valueOf(c.gxs().gAo()), Long.valueOf(c.gxs().gyI()), Integer.valueOf(3), Integer.valueOf(i) });
               continue;
-              g.this.GWA.GVV.Hcw.GXc = 12;
-              g.this.GWA.GVV.Hcw.GXo = 10;
-              h.CyF.a(11518, true, true, new Object[] { Integer.valueOf(c.fFg().fHU()), Long.valueOf(c.fFg().fHV()), Long.valueOf(c.fFg().fGu()), Integer.valueOf(7), Integer.valueOf(i) });
+              g.this.NMN.NMi.NSI.NNq = 12;
+              g.this.NMN.NMi.NSI.NNC = 10;
+              com.tencent.mm.plugin.report.service.h.IzE.a(11518, true, true, new Object[] { Integer.valueOf(c.gxs().gAn()), Long.valueOf(c.gxs().gAo()), Long.valueOf(c.gxs().gyI()), Integer.valueOf(7), Integer.valueOf(i) });
               continue;
-              g.this.GWA.GVV.Hcw.GXc = 13;
-              g.this.GWA.GVV.Hcw.GXo = 11;
-              h.CyF.a(11518, true, true, new Object[] { Integer.valueOf(c.fFg().fHU()), Long.valueOf(c.fFg().fHV()), Long.valueOf(c.fFg().fGu()), Integer.valueOf(4), Integer.valueOf(i) });
+              g.this.NMN.NMi.NSI.NNq = 13;
+              g.this.NMN.NMi.NSI.NNC = 11;
+              com.tencent.mm.plugin.report.service.h.IzE.a(11518, true, true, new Object[] { Integer.valueOf(c.gxs().gAn()), Long.valueOf(c.gxs().gAo()), Long.valueOf(c.gxs().gyI()), Integer.valueOf(4), Integer.valueOf(i) });
               continue;
-              Log.i("MicroMsg.NetSceneVoipInvite", "invite fail cuz server unavailable! reInvtieInterval is : " + localetx.Nra + " seconds!");
-              c.fFg().GZa = System.currentTimeMillis();
-              if (localetx.Nra != 0) {
-                c.fFg().GZb = (localetx.Nra * 1000);
+              Log.i("MicroMsg.NetSceneVoipInvite", "invite fail cuz server unavailable! reInvtieInterval is : " + localfei.UDW + " seconds!");
+              c.gxs().NPo = System.currentTimeMillis();
+              if (localfei.UDW != 0) {
+                c.gxs().NPp = (localfei.UDW * 1000);
               } else {
-                c.fFg().GZb = 30000L;
+                c.gxs().NPp = 30000L;
               }
             }
           }
-          g.this.GWA.GVV.Hcw.GXc = 12;
-          g.this.GWA.GVV.Hcw.GXd = paramAnonymousInt2;
-          g.this.GWA.GVV.Hcw.GXo = 99;
-          h.CyF.a(11518, true, true, new Object[] { Integer.valueOf(c.fFg().fHU()), Long.valueOf(c.fFg().fHV()), Long.valueOf(c.fFg().fGu()), Integer.valueOf(9), Integer.valueOf(i) });
-          g.this.GWA.K(1, -9004, "");
+          g.this.NMN.NMi.NSI.NNq = 12;
+          g.this.NMN.NMi.NSI.NNr = paramAnonymousInt2;
+          g.this.NMN.NMi.NSI.NNC = 99;
+          com.tencent.mm.plugin.report.service.h.IzE.a(11518, true, true, new Object[] { Integer.valueOf(c.gxs().gAn()), Long.valueOf(c.gxs().gAo()), Long.valueOf(c.gxs().gyI()), Integer.valueOf(9), Integer.valueOf(i) });
+          g.this.NMN.J(1, -9004, "");
           AppMethodBeat.o(115236);
           return;
         }
-        g.this.GWA.setStatus(4);
-        g.this.GWA.GVV.roomId = localetx.LsZ;
-        g.this.GWA.GVV.ypH = localetx.Lta;
-        g.this.GWA.GVV.ypO = localetx.MKr;
-        h.CyF.a(11518, true, true, new Object[] { Integer.valueOf(c.fFg().fHU()), Long.valueOf(c.fFg().fHV()), Long.valueOf(c.fFg().fGu()), Integer.valueOf(1), Integer.valueOf(i) });
-        if (localetx.NqY > 0)
+        g.this.NMN.setStatus(4);
+        g.this.NMN.NMi.roomId = localfei.Svu;
+        g.this.NMN.NMi.DPJ = localfei.Svv;
+        g.this.NMN.NMi.DPQ = localfei.TWl;
+        com.tencent.mm.plugin.report.service.h.IzE.a(11518, true, true, new Object[] { Integer.valueOf(c.gxs().gAn()), Long.valueOf(c.gxs().gAo()), Long.valueOf(c.gxs().gyI()), Integer.valueOf(1), Integer.valueOf(i) });
+        if (localfei.UDU > 0)
         {
-          paramAnonymousString = g.this.GWA;
-          long l = localetx.NqY * 1000;
-          paramAnonymousString.GWl.startTimer(l);
+          paramAnonymousString = g.this.NMN;
+          long l = localfei.UDU * 1000;
+          paramAnonymousString.NMy.startTimer(l);
         }
-        c.fFg().fIj();
-        g.this.GWA.fGE();
-        g.this.GWA.fGF();
-        e.Logi("MicroMsg.NetSceneVoipInvite", "invite ok, roomid =" + g.this.GWA.GVV.roomId + ",memberid = " + g.this.GWA.GVV.ypO + "VoipSyncInterval = " + localetx.NqY);
-        g.this.GWA.GVW.fFO();
-        e.c(c.fFg().fHU(), c.fFg().fHV(), 0, 1);
+        c.gxs().gAC();
+        g.this.NMN.gyS();
+        g.this.NMN.gyT();
+        e.Logi("MicroMsg.NetSceneVoipInvite", "invite ok, roomid =" + g.this.NMN.NMi.roomId + ",memberid = " + g.this.NMN.NMi.DPQ + "VoipSyncInterval = " + localfei.UDU);
+        g.this.NMN.NMj.gxZ();
+        e.c(c.gxs().gAn(), c.gxs().gAo(), 0, 1);
         AppMethodBeat.o(115236);
       }
     };
@@ -253,7 +252,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.a.g
  * JD-Core Version:    0.7.0.1
  */

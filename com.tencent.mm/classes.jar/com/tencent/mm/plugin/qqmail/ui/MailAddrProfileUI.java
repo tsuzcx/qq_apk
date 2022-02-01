@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.qqmail.e.i;
+import com.tencent.mm.plugin.qqmail.e.j;
 import com.tencent.mm.ui.base.preference.KeyValuePreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -14,26 +16,26 @@ import com.tencent.mm.ui.base.preference.f;
 public class MailAddrProfileUI
   extends MMPreference
 {
-  private boolean BvY;
+  private String Ejj;
+  private boolean Hqt;
   private String name;
   private f screen;
-  private String yFq;
   
   public int getResourceId()
   {
-    return 2132017233;
+    return e.j.mail_receiver_info;
   }
   
   public void initView()
   {
     AppMethodBeat.i(123061);
-    setMMTitle(2131761802);
+    setMMTitle(e.i.invite_friend_title);
     this.screen = getPreferenceScreen();
-    ((KeyValuePreference)this.screen.bmg("mail_receiver_info_name")).setSummary(this.name);
-    ((KeyValuePreference)this.screen.bmg("mail_receiver_info_addr")).setSummary(getIntent().getStringExtra("addr"));
-    Preference localPreference = this.screen.bmg("mail_compose_btn");
-    if (!this.BvY) {
-      this.screen.e(localPreference);
+    ((KeyValuePreference)this.screen.byG("mail_receiver_info_name")).aF(this.name);
+    ((KeyValuePreference)this.screen.byG("mail_receiver_info_addr")).aF(getIntent().getStringExtra("addr"));
+    Preference localPreference = this.screen.byG("mail_compose_btn");
+    if (!this.Hqt) {
+      this.screen.d(localPreference);
     }
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -54,8 +56,8 @@ public class MailAddrProfileUI
     AppMethodBeat.i(123060);
     super.onCreate(paramBundle);
     this.name = getIntent().getStringExtra("name");
-    this.yFq = getIntent().getStringExtra("addr");
-    this.BvY = getIntent().getBooleanExtra("can_compose", false);
+    this.Ejj = getIntent().getStringExtra("addr");
+    this.Hqt = getIntent().getBooleanExtra("can_compose", false);
     initView();
     AppMethodBeat.o(123060);
   }
@@ -67,11 +69,11 @@ public class MailAddrProfileUI
     {
       paramf = new Intent(this, ComposeUI.class);
       paramf.putExtra("composeType", 4);
-      paramf.putExtra("toList", new String[] { this.name + " " + this.yFq });
-      paramf = new com.tencent.mm.hellhoundlib.b.a().bl(paramf);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/plugin/qqmail/ui/MailAddrProfileUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramf.pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/MailAddrProfileUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramf.putExtra("toList", new String[] { this.name + " " + this.Ejj });
+      paramf = new com.tencent.mm.hellhoundlib.b.a().bm(paramf);
+      com.tencent.mm.hellhoundlib.a.a.b(this, paramf.aFh(), "com/tencent/mm/plugin/qqmail/ui/MailAddrProfileUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/qqmail/ui/MailAddrProfileUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       finish();
     }
     AppMethodBeat.o(123062);
@@ -86,7 +88,7 @@ public class MailAddrProfileUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.MailAddrProfileUI
  * JD-Core Version:    0.7.0.1
  */

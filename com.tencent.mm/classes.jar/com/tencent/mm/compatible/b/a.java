@@ -16,7 +16,7 @@ public final class a
   public static void a(AudioManager paramAudioManager, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(155545);
-    if (d.oD(24))
+    if (d.qV(24))
     {
       Log.i("MicroMsg.AudioAdaptNHelp", "adjustStreamVolume()");
       try
@@ -28,7 +28,7 @@ public final class a
       catch (Exception paramAudioManager)
       {
         Log.e("MicroMsg.AudioAdaptNHelp", "adjustStreamVolume() Exception: %s", new Object[] { paramAudioManager.getMessage() });
-        requestPermission();
+        atE();
         AppMethodBeat.o(155545);
         return;
       }
@@ -39,30 +39,30 @@ public final class a
   
   public static void a(AudioManager paramAudioManager, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(214357);
-    if (d.oD(24))
+    AppMethodBeat.i(209964);
+    if (d.qV(24))
     {
       Log.i("MicroMsg.AudioAdaptNHelp", "setStreamVolume()");
       try
       {
         paramAudioManager.setStreamVolume(paramInt1, paramInt2, 0);
-        AppMethodBeat.o(214357);
+        AppMethodBeat.o(209964);
         return;
       }
       catch (Exception paramAudioManager)
       {
         Log.e("MicroMsg.AudioAdaptNHelp", "setStreamVolume() Exception:%s", new Object[] { paramAudioManager.getMessage() });
-        requestPermission();
-        AppMethodBeat.o(214357);
+        atE();
+        AppMethodBeat.o(209964);
         return;
       }
     }
     paramAudioManager.setStreamVolume(paramInt1, paramInt2, 0);
-    AppMethodBeat.o(214357);
+    AppMethodBeat.o(209964);
   }
   
   @TargetApi(26)
-  private static void requestPermission()
+  private static void atE()
   {
     AppMethodBeat.i(155547);
     if (Build.VERSION.SDK_INT >= 23)
@@ -75,10 +75,10 @@ public final class a
           Object localObject = new Intent("android.settings.NOTIFICATION_POLICY_ACCESS_SETTINGS");
           ((Intent)localObject).putExtra("android.provider.extra.APP_PACKAGE", MMApplicationContext.getPackageName());
           Context localContext = MMApplicationContext.getContext();
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/compatible/audio/AudioAdaptNHelp", "requestPermission", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-          com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/mm/compatible/audio/AudioAdaptNHelp", "requestPermission", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/compatible/audio/AudioAdaptNHelp", "requestPermission", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(localContext, "com/tencent/mm/compatible/audio/AudioAdaptNHelp", "requestPermission", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(155547);
           return;
         }

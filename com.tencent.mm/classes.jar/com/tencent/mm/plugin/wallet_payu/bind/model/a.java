@@ -8,26 +8,26 @@ import org.json.JSONObject;
 public final class a
   extends com.tencent.mm.wallet_core.e.a.a
 {
-  public String Icz;
-  public String IsB;
-  public String IsC;
-  public String IsD;
-  public String Isr;
+  public String OUL;
+  public String Pla;
+  public String Plb;
+  public String Pll;
+  public String Plm;
+  public String Pln;
   public String description;
-  public String ega;
-  public String pin;
+  public String gaq;
   
   public a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
     AppMethodBeat.i(71973);
-    this.IsB = paramString1;
-    this.Icz = paramString2;
-    this.ega = paramString3;
-    this.IsC = paramString4;
-    this.IsD = paramString5;
+    this.Pll = paramString1;
+    this.OUL = paramString2;
+    this.gaq = paramString3;
+    this.Plm = paramString4;
+    this.Pln = paramString5;
     this.description = paramString6;
-    this.Isr = paramString7;
-    this.pin = paramString8;
+    this.Plb = paramString7;
+    this.Pla = paramString8;
     HashMap localHashMap = new HashMap();
     localHashMap.put("bank_type", paramString1);
     localHashMap.put("information", paramString2);
@@ -41,7 +41,7 @@ public final class a
     AppMethodBeat.o(71973);
   }
   
-  public final int fPU()
+  public final int gIA()
   {
     return 0;
   }
@@ -50,7 +50,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.bind.model.a
  * JD-Core Version:    0.7.0.1
  */

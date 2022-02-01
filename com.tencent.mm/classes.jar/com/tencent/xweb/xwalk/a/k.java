@@ -18,11 +18,11 @@ import org.xwalk.core.XWalkInitializer;
 public final class k
   implements w.a
 {
-  private String SHX = "";
-  private j SHY = null;
-  private l SHZ = null;
+  private String aajP = "";
+  private j aajQ = null;
+  private l aajR = null;
   
-  public static void OY(long paramLong)
+  public static void Xo(long paramLong)
   {
     AppMethodBeat.i(154509);
     Object localObject = XWalkEnvironment.getSharedPreferencesForPluginUpdateInfo();
@@ -38,7 +38,59 @@ public final class k
     AppMethodBeat.o(154509);
   }
   
-  public static boolean hvr()
+  private static long izk()
+  {
+    AppMethodBeat.i(205094);
+    SharedPreferences localSharedPreferences = XWalkEnvironment.getSharedPreferencesForPluginUpdateInfo();
+    if (localSharedPreferences == null)
+    {
+      XWalkEnvironment.addXWalkInitializeLog("XWalkPluginUp", "get time sp is null");
+      AppMethodBeat.o(205094);
+      return 0L;
+    }
+    long l = localSharedPreferences.getLong("nLastFetchPluginConfigTime", 0L);
+    AppMethodBeat.o(205094);
+    return l;
+  }
+  
+  public static boolean izl()
+  {
+    AppMethodBeat.i(205095);
+    if (izm())
+    {
+      XWalkEnvironment.addXWalkInitializeLog("has plugin need update, fetch pluginconfig first");
+      AppMethodBeat.o(205095);
+      return true;
+    }
+    long l1 = System.currentTimeMillis();
+    long l2 = izk();
+    if ((l1 - l2 >= XWalkEnvironment.getPluginUpdatePeriod()) || (l1 < l2))
+    {
+      AppMethodBeat.o(205095);
+      return true;
+    }
+    AppMethodBeat.o(205095);
+    return false;
+  }
+  
+  private static boolean izm()
+  {
+    AppMethodBeat.i(205096);
+    Iterator localIterator = h.izh().iterator();
+    while (localIterator.hasNext())
+    {
+      g localg = (g)localIterator.next();
+      if ((localg != null) && (a.bFR(localg.getPluginName()).IZ(false)))
+      {
+        AppMethodBeat.o(205096);
+        return true;
+      }
+    }
+    AppMethodBeat.o(205096);
+    return false;
+  }
+  
+  public static boolean izn()
   {
     AppMethodBeat.i(154510);
     Object localObject1 = XWalkEnvironment.getSharedPreferencesForPluginUpdateInfo();
@@ -90,13 +142,13 @@ public final class k
         Object localObject2 = null;
       }
       XWalkInitializer.addXWalkInitializeLog("XWalkPluginUp", "plugin update process pid invalid, clear");
-      hvs();
+      izo();
       AppMethodBeat.o(154510);
     }
     return false;
   }
   
-  public static void hvs()
+  public static void izo()
   {
     AppMethodBeat.i(154511);
     Object localObject = XWalkEnvironment.getSharedPreferencesForPluginUpdateInfo();
@@ -114,8 +166,8 @@ public final class k
   
   public final void a(String paramString, j paramj)
   {
-    this.SHX = paramString;
-    this.SHY = paramj;
+    this.aajP = paramString;
+    this.aajQ = paramj;
   }
   
   public final void b(Context paramContext, HashMap<String, String> paramHashMap)
@@ -123,11 +175,11 @@ public final class k
     AppMethodBeat.i(154508);
     try
     {
-      this.SHZ = new l();
-      this.SHZ.a(paramHashMap, this.SHX, this.SHY);
-      this.SHZ.execute(new String[0]);
-      this.SHX = "";
-      this.SHY = null;
+      this.aajR = new l();
+      this.aajR.a(paramHashMap, this.aajP, this.aajQ);
+      this.aajR.execute(new String[0]);
+      this.aajP = "";
+      this.aajQ = null;
       return;
     }
     finally
@@ -136,32 +188,44 @@ public final class k
     }
   }
   
-  public final void hsE()
-  {
-    AppMethodBeat.i(207341);
-    if (this.SHZ != null) {
-      this.SHZ.b(4, -1, null);
-    }
-    AppMethodBeat.o(207341);
-  }
-  
   public final boolean isBusy()
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.SHZ != null)
+    if (this.aajR != null)
     {
       bool1 = bool2;
-      if (!this.SHZ.SIi) {
+      if (!this.aajR.aaka) {
         bool1 = true;
       }
     }
     return bool1;
   }
+  
+  public final void iwn()
+  {
+    AppMethodBeat.i(205093);
+    if (this.aajR != null) {
+      this.aajR.b(4, -1, null);
+    }
+    AppMethodBeat.o(205093);
+  }
+  
+  public final boolean iwo()
+  {
+    AppMethodBeat.i(205092);
+    if (izl())
+    {
+      AppMethodBeat.o(205092);
+      return true;
+    }
+    AppMethodBeat.o(205092);
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.xwalk.a.k
  * JD-Core Version:    0.7.0.1
  */

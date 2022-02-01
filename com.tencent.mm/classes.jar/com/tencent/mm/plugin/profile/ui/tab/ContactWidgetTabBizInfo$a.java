@@ -1,46 +1,46 @@
 package com.tencent.mm.plugin.profile.ui.tab;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.g;
-import android.support.v4.app.j;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.e;
+import androidx.fragment.app.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.profile.ui.tab.list.BaseBizProfileFragment;
 import java.util.List;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/profile/ui/tab/ContactWidgetTabBizInfo$BizProfilePagerAdapter;", "Landroid/support/v4/app/FragmentStatePagerAdapter;", "fragments", "", "Lcom/tencent/mm/plugin/profile/ui/tab/list/BaseBizProfileFragment;", "fm", "Landroid/support/v4/app/FragmentManager;", "(Ljava/util/List;Landroid/support/v4/app/FragmentManager;)V", "getFragments", "()Ljava/util/List;", "getCount", "", "getItem", "Landroid/support/v4/app/Fragment;", "i", "app_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/profile/ui/tab/ContactWidgetTabBizInfo$BizProfilePagerAdapter;", "Landroidx/fragment/app/FragmentStatePagerAdapter;", "fragments", "", "Lcom/tencent/mm/plugin/profile/ui/tab/list/BaseBizProfileFragment;", "fm", "Landroidx/fragment/app/FragmentManager;", "(Ljava/util/List;Landroidx/fragment/app/FragmentManager;)V", "getFragments", "()Ljava/util/List;", "getCount", "", "getItem", "Landroidx/fragment/app/Fragment;", "i", "app_release"})
 public final class ContactWidgetTabBizInfo$a
-  extends j
+  extends h
 {
   private final List<BaseBizProfileFragment> fragments;
   
-  public ContactWidgetTabBizInfo$a(List<? extends BaseBizProfileFragment> paramList, g paramg)
+  public ContactWidgetTabBizInfo$a(List<? extends BaseBizProfileFragment> paramList, e parame)
   {
-    super(paramg);
-    AppMethodBeat.i(230668);
+    super(parame);
+    AppMethodBeat.i(285924);
     this.fragments = paramList;
-    AppMethodBeat.o(230668);
+    AppMethodBeat.o(285924);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(230666);
+    AppMethodBeat.i(285920);
     int i = this.fragments.size();
-    AppMethodBeat.o(230666);
+    AppMethodBeat.o(285920);
     return i;
   }
   
   public final Fragment getItem(int paramInt)
   {
-    AppMethodBeat.i(230667);
+    AppMethodBeat.i(285922);
     Fragment localFragment = (Fragment)this.fragments.get(paramInt);
-    AppMethodBeat.o(230667);
+    AppMethodBeat.o(285922);
     return localFragment;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.tab.ContactWidgetTabBizInfo.a
  * JD-Core Version:    0.7.0.1
  */

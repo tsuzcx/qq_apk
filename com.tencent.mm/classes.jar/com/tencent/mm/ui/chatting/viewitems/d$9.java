@@ -14,13 +14,13 @@ final class d$9
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(233563);
+    AppMethodBeat.i(277778);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/ui/chatting/viewitems/ChattingItemAppBrandNotifyMsg$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    this.gwC.bMo();
+    localb.bn(paramView);
+    a.c("com/tencent/mm/ui/chatting/viewitems/ChattingItemAppBrandNotifyMsg$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    this.jaP.bYF();
     a.a(this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemAppBrandNotifyMsg$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(233563);
+    AppMethodBeat.o(277778);
   }
 }
 

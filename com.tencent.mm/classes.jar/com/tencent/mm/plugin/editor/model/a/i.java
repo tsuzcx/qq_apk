@@ -5,9 +5,9 @@ public final class i
 {
   public i()
   {
-    this.dLl = "";
-    this.qPN = "";
-    this.dUs = "";
+    this.fEa = "";
+    this.urT = "";
+    this.fNU = "";
     this.type = -1;
   }
   
@@ -18,7 +18,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.a.i
  * JD-Core Version:    0.7.0.1
  */

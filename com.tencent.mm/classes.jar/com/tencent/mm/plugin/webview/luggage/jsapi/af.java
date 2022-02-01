@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Bundle;
+import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.lp;
+import com.tencent.mm.f.a.mg;
 import com.tencent.mm.opensdk.modelmsg.WXAppExtendObject;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
 import com.tencent.mm.plugin.webview.a.a;
+import com.tencent.mm.plugin.webview.luggage.c.c;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.model.app.al;
 import com.tencent.mm.pluginsdk.model.app.h;
@@ -29,7 +31,7 @@ public class af
   {
     AppMethodBeat.i(78573);
     Log.i("MicroMsg.JsApiLaunch3RdApp", "invokeInMM");
-    Object localObject1 = com.tencent.mm.plugin.webview.luggage.c.b.Zc(paramString);
+    Object localObject1 = c.agO(paramString);
     if (localObject1 == null)
     {
       parama.i("invalid_data", null);
@@ -50,7 +52,7 @@ public class af
         AppMethodBeat.o(78573);
         return;
       }
-      if (!a.jRu.s(MMApplicationContext.getContext(), paramString))
+      if (!a.mIH.u(MMApplicationContext.getContext(), paramString))
       {
         Log.e("MicroMsg.JsApiLaunch3RdApp", "app is not installed, appid:[%s]", new Object[] { paramString });
         parama.i("fail", null);
@@ -60,19 +62,19 @@ public class af
       localObject2 = new WXAppExtendObject();
       ((WXAppExtendObject)localObject2).extInfo = ((String)localObject1);
       localObject2 = new WXMediaMessage((WXMediaMessage.IMediaObject)localObject2);
-      ((WXMediaMessage)localObject2).sdkVer = 637928960;
+      ((WXMediaMessage)localObject2).sdkVer = 637992960;
       ((WXMediaMessage)localObject2).messageExt = ((String)localObject1);
-      localObject1 = new lp();
-      ((lp)localObject1).dQT.dCE = ((WXMediaMessage)localObject2);
-      ((lp)localObject1).dQT.appId = paramString;
-      ((lp)localObject1).dQT.context = paramContext;
-      ((lp)localObject1).dQT.dQV = new al()
+      localObject1 = new mg();
+      ((mg)localObject1).fKj.fvl = ((WXMediaMessage)localObject2);
+      ((mg)localObject1).fKj.appId = paramString;
+      ((mg)localObject1).fKj.context = paramContext;
+      ((mg)localObject1).fKj.fKl = new al()
       {
-        public final void v(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
+        public final void y(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
         {
-          AppMethodBeat.i(210945);
+          AppMethodBeat.i(220933);
           parama.i(null, null);
-          AppMethodBeat.o(210945);
+          AppMethodBeat.o(220933);
         }
       };
       EventCenter.instance.publish((IEvent)localObject1);
@@ -92,14 +94,14 @@ public class af
         AppMethodBeat.o(78573);
         return;
       }
-      if (!q.s(paramContext, (String)localObject2))
+      if (!q.u(paramContext, (String)localObject2))
       {
         Log.e("MicroMsg.JsApiLaunch3RdApp", "doLaunch3RdApp not_install");
         parama.i("not_install", null);
         AppMethodBeat.o(78573);
         return;
       }
-      Object localObject3 = q.cj(paramContext, (String)localObject2);
+      Object localObject3 = q.cv(paramContext, (String)localObject2);
       if ((localObject3 != null) && (localObject3[0] != null))
       {
         localObject3 = com.tencent.mm.b.g.getMessageDigest(localObject3[0].toByteArray());
@@ -113,7 +115,7 @@ public class af
             if (localObject2 != null)
             {
               localObject3 = new Bundle();
-              q.k((Bundle)localObject3, paramString);
+              q.l((Bundle)localObject3, paramString);
               ((Intent)localObject2).putExtras((Bundle)localObject3);
               ((Intent)localObject2).addFlags(268435456);
               paramString = new Bundle();
@@ -121,11 +123,11 @@ public class af
               paramString.putString("current_page_appid", (String)localObject1);
               h.a(paramContext, (Intent)localObject2, null, new al()
               {
-                public final void v(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
+                public final void y(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
                 {
-                  AppMethodBeat.i(210946);
+                  AppMethodBeat.i(255813);
                   parama.i(null, null);
-                  AppMethodBeat.o(210946);
+                  AppMethodBeat.o(255813);
                 }
               }, paramString);
               AppMethodBeat.o(78573);
@@ -150,9 +152,9 @@ public class af
     AppMethodBeat.o(78573);
   }
   
-  public final void b(com.tencent.luggage.d.b<com.tencent.mm.plugin.webview.luggage.g>.a paramb) {}
+  public final void b(b<com.tencent.mm.plugin.webview.luggage.g>.a paramb) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 2;
   }

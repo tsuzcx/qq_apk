@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.wallet.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.c.ad;
+import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class n
-  extends com.tencent.mm.wallet_core.tenpay.model.m
-  implements com.tencent.mm.network.m
+  extends m
 {
-  public JSONObject HIy;
+  public JSONObject OAq;
   
   public n(boolean paramBoolean, String paramString1, String paramString2)
   {
@@ -64,15 +64,15 @@ public final class n
     if ((paramInt == 0) && (paramJSONObject != null))
     {
       Log.v("MicroMsg.NetSceneTenpayQueryBasicSecurityInfo", "alvinluo json: %s", new Object[] { paramJSONObject.toString() });
-      this.HIy = paramJSONObject;
-      ad.hhv().ck(this.HIy);
+      this.OAq = paramJSONObject;
+      ad.iiX().cv(this.OAq);
     }
     AppMethodBeat.o(69565);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.a.n
  * JD-Core Version:    0.7.0.1
  */

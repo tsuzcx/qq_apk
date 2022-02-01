@@ -5,9 +5,9 @@ import java.util.Calendar;
 
 public final class a
 {
-  private Calendar calendar;
-  public int grV;
-  public long grW;
+  public int day;
+  private Calendar iVy;
+  public long iWh;
   public int month;
   public long msgId;
   public int year;
@@ -15,7 +15,7 @@ public final class a
   public a()
   {
     AppMethodBeat.i(12447);
-    setTime(System.currentTimeMillis());
+    ER(System.currentTimeMillis());
     AppMethodBeat.o(12447);
   }
   
@@ -24,29 +24,29 @@ public final class a
     AppMethodBeat.i(12448);
     this.year = paramInt1;
     this.month = paramInt2;
-    this.grV = paramInt3;
+    this.day = paramInt3;
     AppMethodBeat.o(12448);
   }
   
   public a(long paramLong)
   {
     AppMethodBeat.i(12449);
-    this.grW = paramLong;
-    setTime(paramLong);
+    this.iWh = paramLong;
+    ER(paramLong);
     AppMethodBeat.o(12449);
   }
   
-  private void setTime(long paramLong)
+  private void ER(long paramLong)
   {
     AppMethodBeat.i(12450);
-    this.grW = paramLong;
-    if (this.calendar == null) {
-      this.calendar = Calendar.getInstance();
+    this.iWh = paramLong;
+    if (this.iVy == null) {
+      this.iVy = Calendar.getInstance();
     }
-    this.calendar.setTimeInMillis(paramLong);
-    this.month = this.calendar.get(2);
-    this.year = this.calendar.get(1);
-    this.grV = this.calendar.get(5);
+    this.iVy.setTimeInMillis(paramLong);
+    this.month = this.iVy.get(2);
+    this.year = this.iVy.get(1);
+    this.day = this.iVy.get(5);
     AppMethodBeat.o(12450);
   }
   
@@ -58,7 +58,7 @@ public final class a
     {
       paramObject = (a)paramObject;
       bool1 = bool2;
-      if (paramObject.grV == this.grV)
+      if (paramObject.day == this.day)
       {
         bool1 = bool2;
         if (paramObject.month == this.month)
@@ -82,7 +82,7 @@ public final class a
     ((StringBuilder)localObject).append(", month: ");
     ((StringBuilder)localObject).append(this.month);
     ((StringBuilder)localObject).append(", day: ");
-    ((StringBuilder)localObject).append(this.grV);
+    ((StringBuilder)localObject).append(this.day);
     ((StringBuilder)localObject).append(" }");
     localObject = ((StringBuilder)localObject).toString();
     AppMethodBeat.o(12451);
@@ -91,7 +91,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.chatroom.d.a
  * JD-Core Version:    0.7.0.1
  */

@@ -11,17 +11,17 @@ public class BallReportInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<BallReportInfo> CREATOR;
-  public String dPJ;
-  public int hCZ;
-  public int hDa;
-  public String iNV;
-  public String oWA;
-  public String oWB;
-  public int oWC;
-  public int oWx;
-  public String oWy;
-  public int oWz;
+  public String fIZ;
+  public int kqY;
+  public int kqZ;
+  public String lEm;
   public int opType;
+  public String rYA;
+  public String rYB;
+  public int rYC;
+  public int rYx;
+  public String rYy;
+  public int rYz;
   
   static
   {
@@ -35,38 +35,38 @@ public class BallReportInfo
   protected BallReportInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(127550);
-    this.hCZ = paramParcel.readInt();
-    this.oWx = paramParcel.readInt();
-    this.hDa = paramParcel.readInt();
-    this.dPJ = paramParcel.readString();
-    this.oWy = paramParcel.readString();
-    this.iNV = paramParcel.readString();
+    this.kqY = paramParcel.readInt();
+    this.rYx = paramParcel.readInt();
+    this.kqZ = paramParcel.readInt();
+    this.fIZ = paramParcel.readString();
+    this.rYy = paramParcel.readString();
+    this.lEm = paramParcel.readString();
     this.opType = paramParcel.readInt();
-    this.oWA = paramParcel.readString();
-    this.oWB = paramParcel.readString();
-    this.oWC = paramParcel.readInt();
-    this.oWz = paramParcel.readInt();
+    this.rYA = paramParcel.readString();
+    this.rYB = paramParcel.readString();
+    this.rYC = paramParcel.readInt();
+    this.rYz = paramParcel.readInt();
     AppMethodBeat.o(127550);
   }
   
   BallReportInfo(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(127553);
-    this.oWA = paramJSONObject.optString("r_internal_sessionId", null);
-    this.oWB = paramJSONObject.optString("r_internal_aggregationSessionId", null);
-    this.oWC = paramJSONObject.optInt("r_internal_taskOrder", 1);
+    this.rYA = paramJSONObject.optString("r_internal_sessionId", null);
+    this.rYB = paramJSONObject.optString("r_internal_aggregationSessionId", null);
+    this.rYC = paramJSONObject.optInt("r_internal_taskOrder", 1);
     AppMethodBeat.o(127553);
   }
   
-  public final JSONObject cii()
+  public final JSONObject cvu()
   {
     AppMethodBeat.i(127552);
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("r_internal_sessionId", this.oWA);
-      localJSONObject.put("r_internal_aggregationSessionId", this.oWB);
-      localJSONObject.put("r_internal_taskOrder", this.oWC);
+      localJSONObject.put("r_internal_sessionId", this.rYA);
+      localJSONObject.put("r_internal_aggregationSessionId", this.rYB);
+      localJSONObject.put("r_internal_taskOrder", this.rYC);
       AppMethodBeat.o(127552);
       return localJSONObject;
     }
@@ -84,32 +84,32 @@ public class BallReportInfo
   
   public String toString()
   {
-    AppMethodBeat.i(188577);
-    String str = "BallReportInfo{generateType=" + this.hCZ + ", generateScene=" + this.oWx + ", bizScene=" + this.hDa + ", bizId='" + this.dPJ + '\'' + ", bizSubId='" + this.oWy + '\'' + ", bizName='" + this.iNV + '\'' + ", opType=" + this.opType + ", internal_sessionId='" + this.oWA + '\'' + ", internal_aggregationSessionId='" + this.oWB + '\'' + ", internal_taskOrder=" + this.oWC + '}';
-    AppMethodBeat.o(188577);
+    AppMethodBeat.i(191163);
+    String str = "BallReportInfo{generateType=" + this.kqY + ", generateScene=" + this.rYx + ", bizScene=" + this.kqZ + ", bizId='" + this.fIZ + '\'' + ", bizSubId='" + this.rYy + '\'' + ", bizName='" + this.lEm + '\'' + ", opType=" + this.opType + ", internal_sessionId='" + this.rYA + '\'' + ", internal_aggregationSessionId='" + this.rYB + '\'' + ", internal_taskOrder=" + this.rYC + '}';
+    AppMethodBeat.o(191163);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(127551);
-    paramParcel.writeInt(this.hCZ);
-    paramParcel.writeInt(this.oWx);
-    paramParcel.writeInt(this.hDa);
-    paramParcel.writeString(this.dPJ);
-    paramParcel.writeString(this.oWy);
-    paramParcel.writeString(this.iNV);
+    paramParcel.writeInt(this.kqY);
+    paramParcel.writeInt(this.rYx);
+    paramParcel.writeInt(this.kqZ);
+    paramParcel.writeString(this.fIZ);
+    paramParcel.writeString(this.rYy);
+    paramParcel.writeString(this.lEm);
     paramParcel.writeInt(this.opType);
-    paramParcel.writeString(this.oWA);
-    paramParcel.writeString(this.oWB);
-    paramParcel.writeInt(this.oWC);
-    paramParcel.writeInt(this.oWz);
+    paramParcel.writeString(this.rYA);
+    paramParcel.writeString(this.rYB);
+    paramParcel.writeInt(this.rYC);
+    paramParcel.writeInt(this.rYz);
     AppMethodBeat.o(127551);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.model.BallReportInfo
  * JD-Core Version:    0.7.0.1
  */

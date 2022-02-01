@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.g.a.aas;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.faq;
-import com.tencent.mm.protocal.protobuf.far;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.f.a.abz;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.protocal.protobuf.flj;
+import com.tencent.mm.protocal.protobuf.flk;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -23,46 +23,46 @@ import org.json.JSONObject;
 
 public final class ak
 {
-  private static HashMap<String, ar.a> IEM;
-  private static Map<String, JSONObject> IEN;
-  private static ab IEO;
-  private static HashMap<String, Long> IEP;
-  private static String IEQ;
-  private static i gNh;
+  private static HashMap<String, ar.a> Pze;
+  private static Map<String, JSONObject> Pzf;
+  private static ab Pzg;
+  private static HashMap<String, Long> Pzh;
+  private static String Pzi;
+  private static i jxB;
   
   static
   {
     AppMethodBeat.i(117722);
-    IEM = new HashMap();
-    IEN = new HashMap();
-    IEM.put("zh_CN", ar.a.Obp);
-    IEM.put("zh_HK", ar.a.Obr);
-    IEM.put("zh_TW", ar.a.Obq);
-    IEM.put("en", ar.a.Obs);
-    IEM.put("ar", ar.a.Obt);
-    IEM.put("de", ar.a.Obu);
-    IEM.put("de_DE", ar.a.Obv);
-    IEM.put("es", ar.a.Obw);
-    IEM.put("fr", ar.a.Obx);
-    IEM.put("he", ar.a.Oby);
-    IEM.put("hi", ar.a.Obz);
-    IEM.put("id", ar.a.ObA);
-    IEM.put("in", ar.a.ObB);
-    IEM.put("it", ar.a.ObC);
-    IEM.put("iw", ar.a.ObD);
-    IEM.put("ja", ar.a.ObE);
-    IEM.put("ko", ar.a.ObF);
-    IEM.put("lo", ar.a.ObG);
-    IEM.put("ms", ar.a.ObH);
-    IEM.put("my", ar.a.ObI);
-    IEM.put("pl", ar.a.ObJ);
-    IEM.put("pt", ar.a.ObK);
-    IEM.put("ru", ar.a.ObL);
-    IEM.put("th", ar.a.ObM);
-    IEM.put("tr", ar.a.ObN);
-    IEM.put("vi", ar.a.ObO);
-    IEQ = "";
-    gNh = new i()
+    Pze = new HashMap();
+    Pzf = new HashMap();
+    Pze.put("zh_CN", ar.a.Vps);
+    Pze.put("zh_HK", ar.a.Vpu);
+    Pze.put("zh_TW", ar.a.Vpt);
+    Pze.put("en", ar.a.Vpv);
+    Pze.put("ar", ar.a.Vpw);
+    Pze.put("de", ar.a.Vpx);
+    Pze.put("de_DE", ar.a.Vpy);
+    Pze.put("es", ar.a.Vpz);
+    Pze.put("fr", ar.a.VpA);
+    Pze.put("he", ar.a.VpB);
+    Pze.put("hi", ar.a.VpC);
+    Pze.put("id", ar.a.VpD);
+    Pze.put("in", ar.a.VpE);
+    Pze.put("it", ar.a.VpF);
+    Pze.put("iw", ar.a.VpG);
+    Pze.put("ja", ar.a.VpH);
+    Pze.put("ko", ar.a.VpI);
+    Pze.put("lo", ar.a.VpJ);
+    Pze.put("ms", ar.a.VpK);
+    Pze.put("my", ar.a.VpL);
+    Pze.put("pl", ar.a.VpM);
+    Pze.put("pt", ar.a.VpN);
+    Pze.put("ru", ar.a.VpO);
+    Pze.put("th", ar.a.VpP);
+    Pze.put("tr", ar.a.VpQ);
+    Pze.put("vi", ar.a.VpR);
+    Pzi = "";
+    jxB = new i()
     {
       public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
       {
@@ -70,19 +70,19 @@ public final class ak
         Log.i("MicroMsg.WebSearch.WebSearchConfigLogic", "errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
         if ((paramAnonymousq instanceof ab))
         {
-          g.azz().b(1948, ak.fmA());
-          paramAnonymousString = new aas();
+          h.aGY().b(1948, ak.gaU());
+          paramAnonymousString = new abz();
           if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
             break label162;
           }
           Object localObject = (ab)paramAnonymousq;
-          paramAnonymousq = ((ab)localObject).IEh;
-          localObject = ((ab)localObject).IEg;
-          Log.i("MicroMsg.WebSearch.WebSearchConfigLogic", "getWebSearchConfig onSceneEnd %s", new Object[] { paramAnonymousq.MaZ });
-          if (ak.lJ(((faq)localObject).rBI, paramAnonymousq.MaZ) != ak.a.IER) {
+          paramAnonymousq = ((ab)localObject).Pyx;
+          localObject = ((ab)localObject).Pyw;
+          Log.i("MicroMsg.WebSearch.WebSearchConfigLogic", "getWebSearchConfig onSceneEnd %s", new Object[] { paramAnonymousq.Tkw });
+          if (ak.mi(((flj)localObject).vhq, paramAnonymousq.Tkw) != ak.a.Pzj) {
             break label151;
           }
-          paramAnonymousString.ehH.result = 0;
+          paramAnonymousString.gbX.result = 0;
         }
         for (;;)
         {
@@ -90,29 +90,99 @@ public final class ak
           AppMethodBeat.o(117709);
           return;
           label151:
-          paramAnonymousString.ehH.result = -1;
+          paramAnonymousString.gbX.result = -1;
           continue;
           label162:
-          paramAnonymousString.ehH.result = -1;
+          paramAnonymousString.gbX.result = -1;
         }
       }
     };
     AppMethodBeat.o(117722);
   }
   
-  private static JSONObject aXc(String paramString)
+  public static boolean bB(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(211485);
+    if (Pzh == null) {
+      Pzh = new HashMap();
+    }
+    String str = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
+    if ((paramBoolean) || ((Pzi != null) && (!Pzi.equalsIgnoreCase(str)))) {
+      Log.i("MicroMsg.WebSearch.WebSearchConfigLogic", "force update cfg %s %s %s", new Object[] { Pzi, str, Boolean.valueOf(paramBoolean) });
+    }
+    for (;;)
+    {
+      Pzi = str;
+      if (Pzg != null)
+      {
+        h.aGY().a(Pzg);
+        Pzg = null;
+      }
+      Pzg = new ab(paramInt);
+      h.aGY().a(1948, jxB);
+      h.aGY().a(Pzg, 0);
+      AppMethodBeat.o(211485);
+      return true;
+      Long localLong = (Long)Pzh.get(str);
+      Object localObject = localLong;
+      if (localLong == null) {
+        localObject = Long.valueOf(0L);
+      }
+      if (System.currentTimeMillis() - ((Long)localObject).longValue() < 600000L)
+      {
+        AppMethodBeat.o(211485);
+        return false;
+      }
+      long l = System.currentTimeMillis();
+      Pzh.put(str, Long.valueOf(l));
+      Log.i("MicroMsg.WebSearch.WebSearchConfigLogic", "startToRequestConfig %s %d %d", new Object[] { str, Integer.valueOf(paramInt), Long.valueOf(0L) });
+      localObject = (String)h.aHG().aHp().get(biO(str), null);
+      try
+      {
+        if (!Util.isNullOrNil((String)localObject))
+        {
+          localObject = biN((String)localObject);
+          if (localObject != null) {
+            break label311;
+          }
+          localObject = a.Pzl;
+          if (localObject != a.Pzj) {
+            continue;
+          }
+          AppMethodBeat.o(211485);
+          return false;
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          a locala = null;
+          continue;
+          label311:
+          if (locala.optLong("updateTime") + locala.optLong("timevalSec") * 1000L < System.currentTimeMillis()) {
+            locala = a.Pzk;
+          } else {
+            locala = a.Pzj;
+          }
+        }
+      }
+    }
+  }
+  
+  private static JSONObject biN(String paramString)
   {
     AppMethodBeat.i(117714);
-    if ((IEN.containsKey(paramString)) && (IEN.get(paramString) != null))
+    if ((Pzf.containsKey(paramString)) && (Pzf.get(paramString) != null))
     {
-      paramString = (JSONObject)IEN.get(paramString);
+      paramString = (JSONObject)Pzf.get(paramString);
       AppMethodBeat.o(117714);
       return paramString;
     }
     try
     {
       JSONObject localJSONObject = new JSONObject(paramString);
-      IEN.put(paramString, localJSONObject);
+      Pzf.put(paramString, localJSONObject);
       AppMethodBeat.o(117714);
       return localJSONObject;
     }
@@ -124,30 +194,30 @@ public final class ak
     return null;
   }
   
-  private static ar.a aXd(String paramString)
+  private static ar.a biO(String paramString)
   {
     AppMethodBeat.i(117715);
-    ar.a locala = (ar.a)IEM.get(paramString);
+    ar.a locala = (ar.a)Pze.get(paramString);
     paramString = locala;
     if (locala == null) {
-      paramString = ar.a.Obs;
+      paramString = ar.a.Vpv;
     }
     AppMethodBeat.o(117715);
     return paramString;
   }
   
-  public static JSONObject aXe(String paramString)
+  public static JSONObject biP(String paramString)
   {
     localObject3 = null;
     AppMethodBeat.i(117717);
     String str = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
     try
     {
-      localObject1 = (String)g.aAh().azQ().get(aXd(str), null);
+      localObject1 = (String)h.aHG().aHp().get(biO(str), null);
       if (Util.isNullOrNil((String)localObject1)) {
-        break label146;
+        break label148;
       }
-      localObject1 = aXc((String)localObject1).optJSONObject("data").optJSONObject(paramString);
+      localObject1 = biN((String)localObject1).optJSONObject("data").optJSONObject(paramString);
       localObject4 = "Config Storage";
       localObject3 = localObject1;
       localObject1 = localObject4;
@@ -169,9 +239,9 @@ public final class ak
     {
       try
       {
-        localObject4 = fYf();
+        localObject4 = gQQ();
         if (localObject4 == null) {
-          break label165;
+          break label167;
         }
         localObject4 = new JSONObject((String)localObject4).optJSONObject("data").optJSONObject(paramString);
         localObject1 = localObject4;
@@ -196,18 +266,18 @@ public final class ak
     }
   }
   
-  public static String aXf(String paramString)
+  public static String biQ(String paramString)
   {
     Object localObject3 = null;
     AppMethodBeat.i(117718);
     String str = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
     try
     {
-      localObject1 = (String)g.aAh().azQ().get(aXd(str), null);
+      localObject1 = (String)h.aHG().aHp().get(biO(str), null);
       if (Util.isNullOrNil((String)localObject1)) {
         break label139;
       }
-      localObject1 = aXc((String)localObject1);
+      localObject1 = biN((String)localObject1);
       localObject4 = "Config Storage";
       localObject3 = localObject1;
       localObject1 = localObject4;
@@ -226,7 +296,7 @@ public final class ak
     {
       try
       {
-        localObject4 = fYf();
+        localObject4 = gQQ();
         if (localObject4 == null) {
           break label171;
         }
@@ -264,10 +334,10 @@ public final class ak
     }
   }
   
-  public static String aXg(String paramString)
+  public static String biR(String paramString)
   {
     AppMethodBeat.i(117720);
-    JSONObject localJSONObject = aXe("entranceWording");
+    JSONObject localJSONObject = biP("entranceWording");
     if (localJSONObject != null)
     {
       paramString = localJSONObject.optString(paramString);
@@ -278,91 +348,21 @@ public final class ak
     return null;
   }
   
-  public static boolean bq(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(187861);
-    if (IEP == null) {
-      IEP = new HashMap();
-    }
-    String str = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
-    if ((paramBoolean) || ((IEQ != null) && (!IEQ.equalsIgnoreCase(str)))) {
-      Log.i("MicroMsg.WebSearch.WebSearchConfigLogic", "force update cfg %s %s %s", new Object[] { IEQ, str, Boolean.valueOf(paramBoolean) });
-    }
-    for (;;)
-    {
-      IEQ = str;
-      if (IEO != null)
-      {
-        g.azz().a(IEO);
-        IEO = null;
-      }
-      IEO = new ab(paramInt);
-      g.azz().a(1948, gNh);
-      g.azz().a(IEO, 0);
-      AppMethodBeat.o(187861);
-      return true;
-      Long localLong = (Long)IEP.get(str);
-      Object localObject = localLong;
-      if (localLong == null) {
-        localObject = Long.valueOf(0L);
-      }
-      if (System.currentTimeMillis() - ((Long)localObject).longValue() < 600000L)
-      {
-        AppMethodBeat.o(187861);
-        return false;
-      }
-      long l = System.currentTimeMillis();
-      IEP.put(str, Long.valueOf(l));
-      Log.i("MicroMsg.WebSearch.WebSearchConfigLogic", "startToRequestConfig %s %d %d", new Object[] { str, Integer.valueOf(paramInt), Long.valueOf(0L) });
-      localObject = (String)g.aAh().azQ().get(aXd(str), null);
-      try
-      {
-        if (!Util.isNullOrNil((String)localObject))
-        {
-          localObject = aXc((String)localObject);
-          if (localObject != null) {
-            break label316;
-          }
-          localObject = a.IET;
-          if (localObject != a.IER) {
-            continue;
-          }
-          AppMethodBeat.o(187861);
-          return false;
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          a locala = null;
-          continue;
-          label316:
-          if (locala.optLong("updateTime") + locala.optLong("timevalSec") * 1000L < System.currentTimeMillis()) {
-            locala = a.IES;
-          } else {
-            locala = a.IER;
-          }
-        }
-      }
-    }
-  }
-  
   /* Error */
-  private static String fYf()
+  private static String gQQ()
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore_3
     //   2: ldc_w 389
     //   5: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: invokestatic 232	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   8: invokestatic 202	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
     //   11: invokevirtual 395	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   14: astore_0
     //   15: aload_0
     //   16: ldc_w 397
-    //   19: invokestatic 232	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
-    //   22: invokestatic 238	com/tencent/mm/sdk/platformtools/LocaleUtil:getCurrentLanguage	(Landroid/content/Context;)Ljava/lang/String;
+    //   19: invokestatic 202	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   22: invokestatic 208	com/tencent/mm/sdk/platformtools/LocaleUtil:getCurrentLanguage	(Landroid/content/Context;)Ljava/lang/String;
     //   25: invokestatic 400	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   28: invokevirtual 403	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   31: invokevirtual 409	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
@@ -385,13 +385,13 @@ public final class ak
     //   58: astore_1
     //   59: aload_1
     //   60: astore_0
-    //   61: ldc 212
+    //   61: ldc 216
     //   63: aload_2
     //   64: aload_2
     //   65: invokevirtual 420	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   68: iconst_0
     //   69: anewarray 4	java/lang/Object
-    //   72: invokestatic 218	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   72: invokestatic 348	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   75: aload_1
     //   76: invokestatic 417	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   79: aload_3
@@ -429,7 +429,7 @@ public final class ak
     //   37	42	103	java/lang/Exception
   }
   
-  private static a lI(String paramString1, String paramString2)
+  private static a mh(String paramString1, String paramString2)
   {
     AppMethodBeat.i(117716);
     try
@@ -437,12 +437,12 @@ public final class ak
       paramString2 = new JSONObject(paramString2);
       paramString2.put("updateTime", System.currentTimeMillis());
       paramString2 = paramString2.toString();
-      g.aAh().azQ().set(aXd(paramString1), paramString2);
+      h.aHG().aHp().set(biO(paramString1), paramString2);
       try
       {
         paramString1 = new JSONObject(paramString2);
-        IEN.put(paramString2, paramString1);
-        paramString1 = a.IER;
+        Pzf.put(paramString2, paramString1);
+        paramString1 = a.Pzj;
         AppMethodBeat.o(117716);
         return paramString1;
       }
@@ -457,7 +457,7 @@ public final class ak
     }
     catch (JSONException paramString1)
     {
-      paramString1 = a.IET;
+      paramString1 = a.Pzl;
       AppMethodBeat.o(117716);
     }
   }
@@ -467,10 +467,10 @@ public final class ak
     static
     {
       AppMethodBeat.i(117712);
-      IER = new a("Valid", 0);
-      IES = new a("Expired", 1);
-      IET = new a("Invalid", 2);
-      IEU = new a[] { IER, IES, IET };
+      Pzj = new a("Valid", 0);
+      Pzk = new a("Expired", 1);
+      Pzl = new a("Invalid", 2);
+      Pzm = new a[] { Pzj, Pzk, Pzl };
       AppMethodBeat.o(117712);
     }
     
@@ -479,7 +479,7 @@ public final class ak
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.ak
  * JD-Core Version:    0.7.0.1
  */

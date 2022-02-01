@@ -7,12 +7,12 @@
             <TextView android:textSize="15.0dip" android:textColor="@color/fr" android:id="@id/dtp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" />
         </LinearLayout>
     </LinearLayout>
-    <android.support.v4.widget.NestedScrollView android:orientation="vertical" android:id="@id/in4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/dnu">
+    <androidx.core.widget.NestedScrollView android:orientation="vertical" android:id="@id/in4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/dnu">
         <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
             <TextView android:textSize="14.0dip" android:textColor="@color/fr" android:id="@id/e5z" android:paddingLeft="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" />
             <com.tencent.mm.plugin.appbrand.keylogger.stepview.VerticalStepView android:id="@id/i5t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" />
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
     <ScrollView android:id="@id/bq1" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/dnu" android:layout_centerHorizontal="true">
         <HorizontalScrollView android:id="@id/dq1" android:layout_width="wrap_content" android:layout_height="wrap_content">
             <LinearLayout android:orientation="vertical" android:id="@id/bq0" android:layout_width="wrap_content" android:layout_height="wrap_content" />

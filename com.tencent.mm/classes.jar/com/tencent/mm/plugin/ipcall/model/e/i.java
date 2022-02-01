@@ -1,62 +1,62 @@
 package com.tencent.mm.plugin.ipcall.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.q;
 import com.tencent.mm.model.z;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.ipcall.a.c;
-import com.tencent.mm.protocal.protobuf.dfl;
-import com.tencent.mm.protocal.protobuf.dfm;
+import com.tencent.mm.protocal.protobuf.dpf;
+import com.tencent.mm.protocal.protobuf.dpg;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class i
   extends q
   implements m
 {
-  private com.tencent.mm.ak.i callback;
+  public dpf DRG;
+  public dpg DRH;
+  private com.tencent.mm.an.i callback;
   private d rr;
-  public dfl yrE;
-  public dfm yrF;
   
   public i(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(25475);
     this.rr = null;
-    this.yrE = null;
-    this.yrF = null;
+    this.DRG = null;
+    this.DRH = null;
     this.callback = null;
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new dfl();
-    ((d.a)localObject).iLO = new dfm();
+    ((d.a)localObject).lBU = new dpf();
+    ((d.a)localObject).lBV = new dpg();
     ((d.a)localObject).funcId = 991;
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/pstninvite";
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
+    this.rr = ((d.a)localObject).bgN();
     long l = System.currentTimeMillis();
-    int i = c.ebM();
-    localObject = (dfl)this.rr.iLK.iLR;
-    ((dfl)localObject).xNH = z.aTY();
-    ((dfl)localObject).MKh = paramString2;
-    ((dfl)localObject).xNG = paramString1;
-    ((dfl)localObject).MKg = paramInt1;
-    ((dfl)localObject).Llx = i;
-    ((dfl)localObject).MKp = 1;
-    ((dfl)localObject).MKf = l;
-    ((dfl)localObject).MKo = paramInt2;
-    ((dfl)localObject).MKq = paramInt3;
-    this.yrE = ((dfl)localObject);
+    int i = c.eKK();
+    localObject = (dpf)d.b.b(this.rr.lBR);
+    ((dpf)localObject).CRR = z.bcZ();
+    ((dpf)localObject).TWb = paramString2;
+    ((dpf)localObject).CRQ = paramString1;
+    ((dpf)localObject).TWa = paramInt1;
+    ((dpf)localObject).SmH = i;
+    ((dpf)localObject).TWj = 1;
+    ((dpf)localObject).TVZ = l;
+    ((dpf)localObject).TWi = paramInt2;
+    ((dpf)localObject).TWk = paramInt3;
+    this.DRG = ((dpf)localObject);
     Log.i("MicroMsg.NetSceneIPCallInvite", "toUsername: %s, phoneNumber: %s, invitedId: %s, netType: %d, dialScene: %d, countryType: %d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(i), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     AppMethodBeat.o(25475);
   }
   
-  public final int doScene(g paramg, com.tencent.mm.ak.i parami)
+  public final int doScene(g paramg, com.tencent.mm.an.i parami)
   {
     AppMethodBeat.i(25476);
     this.callback = parami;
@@ -74,7 +74,7 @@ public final class i
   {
     AppMethodBeat.i(25477);
     Log.i("MicroMsg.NetSceneIPCallInvite", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.yrF = ((dfm)((d)params).iLL.iLR);
+    this.DRH = ((dpg)d.c.b(((d)params).lBS));
     if ((paramInt2 != 0) && (paramInt3 != 0))
     {
       if (this.callback != null) {
@@ -91,7 +91,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.e.i
  * JD-Core Version:    0.7.0.1
  */

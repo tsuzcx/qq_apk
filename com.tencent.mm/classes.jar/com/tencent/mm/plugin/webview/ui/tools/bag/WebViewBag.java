@@ -15,10 +15,14 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a.c;
-import com.tencent.mm.av.a.a.c.a;
-import com.tencent.mm.av.q;
+import com.tencent.mm.ay.a.a.c;
+import com.tencent.mm.ay.a.a.c.a;
+import com.tencent.mm.ay.q;
 import com.tencent.mm.plugin.image.d;
+import com.tencent.mm.plugin.webview.c.c;
+import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.plugin.webview.c.g;
+import com.tencent.mm.plugin.webview.c.h;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -27,27 +31,27 @@ import com.tencent.mm.sdk.platformtools.MMHandler;
 public class WebViewBag
   extends FrameLayout
 {
-  private static final int JkI;
-  private Point HpF;
-  private Point HpG;
-  private Point HpH;
-  private Point HpI;
-  private a JkF;
-  private WebViewBagBgView JkG;
-  private boolean JkH;
-  private Runnable aco;
-  protected MMHandler czp;
-  private View kHq;
-  private ImageView lIM;
+  private static final int Qia;
+  private Point OgA;
+  private Point OgB;
+  private Point Ogy;
+  private Point Ogz;
+  private a QhX;
+  private WebViewBagBgView QhY;
+  private boolean QhZ;
+  protected MMHandler cyl;
+  private Runnable iW;
   private View.OnClickListener mOnClickListener;
   private long mStartTime;
   private WindowManager mWindowManager;
-  private PointF okA;
+  private View nBk;
+  private ImageView oFa;
+  private PointF rmS;
   
   static
   {
     AppMethodBeat.i(80426);
-    JkI = com.tencent.mm.cb.a.jo(MMApplicationContext.getContext()) - b.oYI - b.Jkx - b.Jky;
+    Qia = com.tencent.mm.ci.a.ks(MMApplicationContext.getContext()) - b.saJ - b.QhP - b.QhQ;
     AppMethodBeat.o(80426);
   }
   
@@ -55,11 +59,11 @@ public class WebViewBag
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(80418);
-    this.okA = new PointF();
-    this.HpF = new Point();
-    this.HpG = new Point();
-    this.HpH = new Point();
-    this.aco = new Runnable()
+    this.rmS = new PointF();
+    this.Ogy = new Point();
+    this.Ogz = new Point();
+    this.OgA = new Point();
+    this.iW = new Runnable()
     {
       public final void run()
       {
@@ -67,7 +71,7 @@ public class WebViewBag
         float f = (float)(System.currentTimeMillis() - WebViewBag.a(WebViewBag.this)) * 1.0F / 200.0F;
         if (f <= 1.0F)
         {
-          WebViewBag.this.czp.postDelayed(WebViewBag.b(WebViewBag.this), 5L);
+          WebViewBag.this.cyl.postDelayed(WebViewBag.b(WebViewBag.this), 5L);
           WebViewBag localWebViewBag = WebViewBag.this;
           int i = WebViewBag.c(WebViewBag.this).x;
           int j = (int)((WebViewBag.d(WebViewBag.this).x * 1.0F - WebViewBag.c(WebViewBag.this).x) * f);
@@ -82,18 +86,18 @@ public class WebViewBag
       }
     };
     this.mWindowManager = ((WindowManager)paramContext.getSystemService("window"));
-    this.czp = new MMHandler();
-    this.HpI = new Point(com.tencent.mm.cb.a.jn(MMApplicationContext.getContext()), com.tencent.mm.cb.a.jo(MMApplicationContext.getContext()));
-    LayoutInflater.from(paramContext).inflate(2131497065, this);
-    this.lIM = ((ImageView)findViewById(2131302468));
-    this.JkG = ((WebViewBagBgView)findViewById(2131297352));
-    this.kHq = findViewById(2131307157);
-    this.JkG.setStartColor(paramContext.getResources().getColor(2131101406));
-    this.JkG.setAngryColor(paramContext.getResources().getColor(2131101405));
+    this.cyl = new MMHandler();
+    this.OgB = new Point(com.tencent.mm.ci.a.kr(MMApplicationContext.getContext()), com.tencent.mm.ci.a.ks(MMApplicationContext.getContext()));
+    LayoutInflater.from(paramContext).inflate(c.g.webview_bag, this);
+    this.oFa = ((ImageView)findViewById(c.f.icon));
+    this.QhY = ((WebViewBagBgView)findViewById(c.f.bg));
+    this.nBk = findViewById(c.f.root);
+    this.QhY.setStartColor(paramContext.getResources().getColor(c.c.webview_bag_bg_color));
+    this.QhY.setAngryColor(paramContext.getResources().getColor(c.c.webview_bag_bg_angry_color));
     AppMethodBeat.o(80418);
   }
   
-  private void ko(int paramInt1, int paramInt2)
+  private void lG(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(80423);
     if (this.mWindowManager != null)
@@ -117,22 +121,22 @@ public class WebViewBag
   
   protected Point getLastTouchDownViewPos()
   {
-    return this.HpF;
+    return this.Ogy;
   }
   
   protected void onConfigurationChanged(Configuration paramConfiguration)
   {
     AppMethodBeat.i(80417);
     Log.i("MicroMsg.WebViewBag", "onConfigurationChanged orientation:%d", new Object[] { Integer.valueOf(paramConfiguration.orientation) });
-    this.HpI.x = com.tencent.mm.cb.a.jn(MMApplicationContext.getContext());
-    this.HpI.y = com.tencent.mm.cb.a.jo(MMApplicationContext.getContext());
+    this.OgB.x = com.tencent.mm.ci.a.kr(MMApplicationContext.getContext());
+    this.OgB.y = com.tencent.mm.ci.a.ks(MMApplicationContext.getContext());
     AppMethodBeat.o(80417);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(80422);
-    if (!this.JkH)
+    if (!this.QhZ)
     {
       boolean bool = super.onTouchEvent(paramMotionEvent);
       AppMethodBeat.o(80422);
@@ -143,20 +147,20 @@ public class WebViewBag
     }
     for (;;)
     {
-      if (this.JkF != null) {
-        this.JkF.onTouchEvent(paramMotionEvent);
+      if (this.QhX != null) {
+        this.QhX.B(paramMotionEvent);
       }
       AppMethodBeat.o(80422);
       return true;
-      this.okA.x = paramMotionEvent.getRawX();
-      this.okA.y = paramMotionEvent.getRawY();
+      this.rmS.x = paramMotionEvent.getRawX();
+      this.rmS.y = paramMotionEvent.getRawY();
       WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)getLayoutParams();
-      this.HpF.x = localLayoutParams.x;
-      this.HpF.y = localLayoutParams.y;
+      this.Ogy.x = localLayoutParams.x;
+      this.Ogy.y = localLayoutParams.y;
       continue;
-      ko((int)Math.max(Math.min(this.HpF.x + paramMotionEvent.getRawX() - this.okA.x, this.HpI.x), 0.0F), (int)Math.max(Math.min(this.HpF.y + paramMotionEvent.getRawY() - this.okA.y, this.HpI.y), 0.0F));
+      lG((int)Math.max(Math.min(this.Ogy.x + paramMotionEvent.getRawX() - this.rmS.x, this.OgB.x), 0.0F), (int)Math.max(Math.min(this.Ogy.y + paramMotionEvent.getRawY() - this.rmS.y, this.OgB.y), 0.0F));
       continue;
-      if ((Math.abs(paramMotionEvent.getRawX() - this.okA.x) >= BackwardSupportUtil.BitmapFactory.fromDPToPix(getContext(), 3.0F)) || (Math.abs(paramMotionEvent.getRawY() - this.okA.y) >= BackwardSupportUtil.BitmapFactory.fromDPToPix(getContext(), 3.0F))) {
+      if ((Math.abs(paramMotionEvent.getRawX() - this.rmS.x) >= BackwardSupportUtil.BitmapFactory.fromDPToPix(getContext(), 3.0F)) || (Math.abs(paramMotionEvent.getRawY() - this.rmS.y) >= BackwardSupportUtil.BitmapFactory.fromDPToPix(getContext(), 3.0F))) {
         break;
       }
       if (this.mOnClickListener != null) {
@@ -165,56 +169,33 @@ public class WebViewBag
     }
     float f1 = paramMotionEvent.getRawX();
     float f2 = paramMotionEvent.getRawY();
-    this.HpG.x = ((int)Math.max(Math.min(f1 + this.HpF.x - this.okA.x, this.HpI.x), 0.0F));
-    this.HpG.y = ((int)Math.max(Math.min(f2 + this.HpF.y - this.okA.y, this.HpI.y), 0.0F));
-    if (this.HpG.x + getWidth() / 2 <= this.HpI.x / 2)
+    this.Ogz.x = ((int)Math.max(Math.min(f1 + this.Ogy.x - this.rmS.x, this.OgB.x), 0.0F));
+    this.Ogz.y = ((int)Math.max(Math.min(f2 + this.Ogy.y - this.rmS.y, this.OgB.y), 0.0F));
+    if (this.Ogz.x + getWidth() / 2 <= this.OgB.x / 2)
     {
-      this.HpH.x = b.Jky;
-      label427:
-      this.HpH.y = this.HpG.y;
-      if (this.HpH.y != 0) {
-        break label542;
+      this.OgA.x = b.QhQ;
+      label432:
+      this.OgA.y = this.Ogz.y;
+      if (this.OgA.y != 0) {
+        break label547;
       }
-      this.HpH.y = b.Jky;
+      this.OgA.y = b.QhQ;
     }
     for (;;)
     {
       this.mStartTime = System.currentTimeMillis();
-      this.czp.postDelayed(this.aco, 5L);
-      if (this.JkF == null) {
+      this.cyl.postDelayed(this.iW, 5L);
+      if (this.QhX == null) {
         break;
       }
-      this.JkF.kp(this.HpH.x, this.HpH.y);
+      this.QhX.lH(this.OgA.x, this.OgA.y);
       break;
-      this.HpH.x = (this.HpI.x - getWidth() - b.Jky);
-      break label427;
-      label542:
-      if (this.HpH.y > JkI) {
-        this.HpH.y = JkI;
+      this.OgA.x = (this.OgB.x - getWidth() - b.QhQ);
+      break label432;
+      label547:
+      if (this.OgA.y > Qia) {
+        this.OgA.y = Qia;
       }
-    }
-  }
-  
-  public final void p(int paramInt1, int paramInt2, long paramLong)
-  {
-    AppMethodBeat.i(80420);
-    WebViewBagBgView localWebViewBagBgView = this.JkG;
-    localWebViewBagBgView.JkR = false;
-    long l = System.currentTimeMillis();
-    Log.i("MicroMsg.WebViewBagBgView", "setAngryInfo:%d now:%d", new Object[] { Long.valueOf(paramLong), Long.valueOf(l) });
-    localWebViewBagBgView.atU = paramInt1;
-    localWebViewBagBgView.FNL = paramInt2;
-    localWebViewBagBgView.mStartTime = paramLong;
-    localWebViewBagBgView.Mg(l);
-    if (paramLong > l) {
-      localWebViewBagBgView.postDelayed(new WebViewBagBgView.1(localWebViewBagBgView), paramLong - l);
-    }
-    for (;;)
-    {
-      localWebViewBagBgView.invalidate();
-      AppMethodBeat.o(80420);
-      return;
-      localWebViewBagBgView.JkR = true;
     }
   }
   
@@ -222,18 +203,18 @@ public class WebViewBag
   {
     AppMethodBeat.i(80419);
     Object localObject = new c.a();
-    ((c.a)localObject).iaT = true;
-    ((c.a)localObject).jbf = true;
-    ((c.a)localObject).prefixPath = d.aSY();
-    ((c.a)localObject).jbq = 2131691771;
-    localObject = ((c.a)localObject).bdv();
-    q.bcV().a(paramString, this.lIM, (c)localObject);
+    ((c.a)localObject).kPz = true;
+    ((c.a)localObject).lRD = true;
+    ((c.a)localObject).prefixPath = d.bbW();
+    ((c.a)localObject).lRP = c.h.webview_bag_default_icon;
+    localObject = ((c.a)localObject).bmL();
+    q.bml().a(paramString, this.oFa, (c)localObject);
     AppMethodBeat.o(80419);
   }
   
   public void setListener(a parama)
   {
-    this.JkF = parama;
+    this.QhX = parama;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
@@ -245,20 +226,43 @@ public class WebViewBag
   {
     AppMethodBeat.i(80421);
     Log.i("MicroMsg.WebViewBag", "setTouchEnable enable:%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.JkH = paramBoolean;
+    this.QhZ = paramBoolean;
     AppMethodBeat.o(80421);
+  }
+  
+  public final void v(int paramInt1, int paramInt2, long paramLong)
+  {
+    AppMethodBeat.i(80420);
+    WebViewBagBgView localWebViewBagBgView = this.QhY;
+    localWebViewBagBgView.Qij = false;
+    long l = System.currentTimeMillis();
+    Log.i("MicroMsg.WebViewBagBgView", "setAngryInfo:%d now:%d", new Object[] { Long.valueOf(paramLong), Long.valueOf(l) });
+    localWebViewBagBgView.alM = paramInt1;
+    localWebViewBagBgView.MhM = paramInt2;
+    localWebViewBagBgView.mStartTime = paramLong;
+    localWebViewBagBgView.TG(l);
+    if (paramLong > l) {
+      localWebViewBagBgView.postDelayed(new WebViewBagBgView.1(localWebViewBagBgView), paramLong - l);
+    }
+    for (;;)
+    {
+      localWebViewBagBgView.invalidate();
+      AppMethodBeat.o(80420);
+      return;
+      localWebViewBagBgView.Qij = true;
+    }
   }
   
   public static abstract interface a
   {
-    public abstract void kp(int paramInt1, int paramInt2);
+    public abstract void B(MotionEvent paramMotionEvent);
     
-    public abstract void onTouchEvent(MotionEvent paramMotionEvent);
+    public abstract void lH(int paramInt1, int paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.bag.WebViewBag
  * JD-Core Version:    0.7.0.1
  */

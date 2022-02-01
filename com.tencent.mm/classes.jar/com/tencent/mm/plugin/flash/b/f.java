@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.flash.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.cd.b;
 import com.tencent.mm.plugin.facedetect.FaceProNative;
 import com.tencent.mm.plugin.facedetect.model.p;
 import com.tencent.mm.plugin.facedetectlight.Utils.YTAGFaceReflectForWXJNIInterface;
-import com.tencent.mm.protocal.protobuf.mn;
+import com.tencent.mm.protocal.protobuf.md;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.u;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -16,14 +17,14 @@ public final class f
   private static JSONObject a(JSONObject paramJSONObject, int paramInt, String paramString)
   {
     int i = 0;
-    AppMethodBeat.i(186649);
+    AppMethodBeat.i(197860);
     JSONObject localJSONObject1 = new JSONObject();
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(186649);
+      AppMethodBeat.o(197860);
       return localJSONObject1;
       localJSONObject1.put("face_image", YTAGFaceReflectForWXJNIInterface.verifyDataToJpg(paramString, paramJSONObject.getJSONObject("live_image").getString("image")));
       paramJSONObject = paramJSONObject.getJSONObject("live_image").getJSONArray("five_points");
@@ -31,8 +32,8 @@ public final class f
       for (paramInt = i; paramInt < paramJSONObject.length(); paramInt = paramInt + 1 + 1)
       {
         JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("x", Float.parseFloat(String.valueOf(paramJSONObject.get(paramInt))));
-        localJSONObject2.put("y", Float.parseFloat(String.valueOf(paramJSONObject.get(paramInt + 1))));
+        localJSONObject2.put("x", Util.getFloat(String.valueOf(paramJSONObject.get(paramInt)), 0.0F));
+        localJSONObject2.put("y", Util.getFloat(String.valueOf(paramJSONObject.get(paramInt + 1)), 0.0F));
         paramString.put(localJSONObject2);
       }
       localJSONObject1.put("coordinate_list", paramString);
@@ -52,14 +53,14 @@ public final class f
   
   public static String f(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    AppMethodBeat.i(186654);
+    AppMethodBeat.i(197892);
     for (;;)
     {
       JSONObject localJSONObject1;
       try
       {
         localJSONObject1 = new JSONObject(paramString1);
-        mn localmn = new mn();
+        md localmd = new md();
         JSONObject localJSONObject2 = new JSONObject();
         localJSONObject2.put("app_id", paramString3);
         localJSONObject2.put("business_name", "");
@@ -75,20 +76,20 @@ public final class f
           paramString1 = new JSONArray();
           paramString1.put(a(localJSONObject1, paramInt, paramString2));
           localJSONObject2.put("face_frame_list", paramString1);
-          paramString1 = m(paramString2, localJSONObject2);
-          localmn.KQJ = b.cD(paramString1);
-          localmn.KQI = b.cD(p(paramString2, paramString1));
-          paramString1 = p.cTn();
-          p.e(localmn.toByteArray(), paramString1);
-          Log.i("MicroMsg.FaceFlashDataUtil", "save verify result to file:%s  fileSize:%s", new Object[] { paramString1, Long.valueOf(s.boW(paramString1)) });
-          AppMethodBeat.o(186654);
+          paramString1 = k(paramString2, localJSONObject2);
+          localmd.RRH = b.cU(paramString1);
+          localmd.RRG = b.cU(s(paramString2, paramString1));
+          paramString1 = p.dis();
+          p.e(localmd.toByteArray(), paramString1);
+          Log.i("MicroMsg.FaceFlashDataUtil", "save verify result to bioId:%s file:%s  fileSize:%s  fileMd5:%s", new Object[] { paramString2, paramString1, Long.valueOf(u.bBQ(paramString1)), u.bBY(paramString1) });
+          AppMethodBeat.o(197892);
           return paramString1;
         }
       }
       catch (Exception paramString1)
       {
         Log.printErrStackTrace("MicroMsg.FaceFlashManagerError", paramString1, "reflect get yt result data error", new Object[0]);
-        AppMethodBeat.o(186654);
+        AppMethodBeat.o(197892);
         return "";
       }
       paramString3 = new JSONObject();
@@ -100,6 +101,9 @@ public final class f
       paramString1.put("mouth_image", localJSONObject1.optJSONObject("mouth_image"));
       paramString1.put("action_video", localJSONObject1.getString("action_video"));
       paramString1.put("select_data", localJSONObject1.optJSONObject("select_data").toString());
+      paramString1.put("action_str", localJSONObject1.optString("action_str", ""));
+      paramString1.put("check_conf", localJSONObject1.optJSONObject("check_conf"));
+      paramString1.put("mode", localJSONObject1.optInt("mode"));
       paramString3.put("onetwinkle_data", paramString1);
       continue;
       paramString3 = localJSONObject1.getJSONObject("livedata");
@@ -120,17 +124,25 @@ public final class f
     }
   }
   
-  private static byte[] ho(String paramString1, String paramString2)
+  private static byte[] hB(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(186651);
+    AppMethodBeat.i(197862);
     paramString1 = YTAGFaceReflectForWXJNIInterface.encrypt(paramString1, paramString2, paramString2.getBytes().length);
-    AppMethodBeat.o(186651);
+    AppMethodBeat.o(197862);
     return paramString1;
   }
   
-  public static byte[] j(JSONObject paramJSONObject, String paramString)
+  private static byte[] k(String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(186653);
+    AppMethodBeat.i(197861);
+    paramString = hB(paramString, paramJSONObject.toString());
+    AppMethodBeat.o(197861);
+    return paramString;
+  }
+  
+  public static byte[] k(JSONObject paramJSONObject, String paramString)
+  {
+    AppMethodBeat.i(197874);
     paramJSONObject = paramJSONObject.getJSONObject("livedata");
     paramJSONObject.put("time_point_list", new JSONArray());
     Object localObject1 = paramJSONObject.getJSONArray("frames");
@@ -175,29 +187,21 @@ public final class f
     ((JSONObject)localObject4).put("coordinate_list", localJSONArray1.getJSONObject(0).get("coordinate_list"));
     ((JSONArray)localObject3).put(localObject4);
     paramJSONObject.put("face_frame_list", localObject3);
-    paramJSONObject = m(paramString, paramJSONObject);
-    AppMethodBeat.o(186653);
+    paramJSONObject = k(paramString, paramJSONObject);
+    AppMethodBeat.o(197874);
     return paramJSONObject;
   }
   
-  private static byte[] m(String paramString, JSONObject paramJSONObject)
+  public static byte[] s(String paramString, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(186650);
-    paramString = ho(paramString, paramJSONObject.toString());
-    AppMethodBeat.o(186650);
-    return paramString;
-  }
-  
-  public static byte[] p(String paramString, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(186652);
+    AppMethodBeat.i(197866);
     JSONObject localJSONObject = new JSONObject();
     paramArrayOfByte = YTAGFaceReflectForWXJNIInterface.faceMd5(paramArrayOfByte, paramArrayOfByte.length);
     localJSONObject.put("face_lib_version", 3);
     localJSONObject.put("md5", paramArrayOfByte);
     Log.i("MicroMsg.FaceFlashDataUtil", "getBioHeader md5:%s", new Object[] { paramArrayOfByte });
-    paramString = ho(paramString, localJSONObject.toString());
-    AppMethodBeat.o(186652);
+    paramString = hB(paramString, localJSONObject.toString());
+    AppMethodBeat.o(197866);
     return paramString;
   }
 }

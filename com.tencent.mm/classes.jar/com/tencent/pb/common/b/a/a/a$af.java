@@ -1,39 +1,39 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.e;
+import com.google.b.a.b;
+import com.google.b.a.e;
 
 public final class a$af
   extends e
 {
-  public int GXO = 0;
-  public long GXP = 0L;
-  public String RDo = "";
+  public int NOc = 0;
+  public long NOd = 0L;
+  public String ZeQ = "";
   public String groupId = "";
   
   public a$af()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public final int Ig()
+  public final int JG()
   {
-    int j = super.Ig();
+    int j = super.JG();
     int i = j;
     if (!this.groupId.equals("")) {
-      i = j + b.f(1, this.groupId);
+      i = j + b.g(1, this.groupId);
     }
     j = i;
-    if (this.GXO != 0) {
-      j = i + b.bu(2, this.GXO);
+    if (this.NOc != 0) {
+      j = i + b.bM(2, this.NOc);
     }
     i = j;
-    if (this.GXP != 0L) {
-      i = j + b.r(3, this.GXP);
+    if (this.NOd != 0L) {
+      i = j + b.p(3, this.NOd);
     }
     j = i;
-    if (!this.RDo.equals("")) {
-      j = i + b.f(4, this.RDo);
+    if (!this.ZeQ.equals("")) {
+      j = i + b.g(4, this.ZeQ);
     }
     return j;
   }
@@ -41,16 +41,16 @@ public final class a$af
   public final void a(b paramb)
   {
     if (!this.groupId.equals("")) {
-      paramb.e(1, this.groupId);
+      paramb.f(1, this.groupId);
     }
-    if (this.GXO != 0) {
-      paramb.bs(2, this.GXO);
+    if (this.NOc != 0) {
+      paramb.bJ(2, this.NOc);
     }
-    if (this.GXP != 0L) {
-      paramb.q(3, this.GXP);
+    if (this.NOd != 0L) {
+      paramb.r(3, this.NOd);
     }
-    if (!this.RDo.equals("")) {
-      paramb.e(4, this.RDo);
+    if (!this.ZeQ.equals("")) {
+      paramb.f(4, this.ZeQ);
     }
     super.a(paramb);
   }

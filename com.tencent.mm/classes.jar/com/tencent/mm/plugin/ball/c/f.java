@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.ball.c;
 import com.tencent.mm.plugin.ball.model.BallInfo;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/ball/api/OnFloatBallInfoEventListenerAdapter;", "Lcom/tencent/mm/plugin/ball/api/OnFloatBallInfoEventListener;", "()V", "onFloatBallInfoAdded", "", "ballInfo", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "onFloatBallInfoClicked", "onFloatBallInfoExposed", "onFloatBallInfoRemoved", "api-ball_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/ball/api/OnFloatBallInfoEventListenerAdapter;", "Lcom/tencent/mm/plugin/ball/api/OnFloatBallInfoEventListener;", "()V", "onFloatBallInfoAdded", "", "ballInfo", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "onFloatBallInfoClicked", "onFloatBallInfoExposed", "onFloatBallInfoRemoved", "api-ball_release"})
 public class f
   implements e
 {
@@ -17,7 +17,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.c.f
  * JD-Core Version:    0.7.0.1
  */

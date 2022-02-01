@@ -1,136 +1,165 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.app.Activity;
-import android.view.View;
+import android.annotation.SuppressLint;
+import android.os.Build.VERSION;
+import com.eclipsesource.mmv8.ScriptPartObject;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.platform.window.a;
-import com.tencent.mm.plugin.appbrand.platform.window.c;
-import com.tencent.mm.plugin.appbrand.platform.window.d.b;
-import com.tencent.mm.plugin.appbrand.platform.window.e;
-import com.tencent.mm.plugin.appbrand.platform.window.e.b;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.appcache.bl;
+import com.tencent.mm.plugin.appbrand.appcache.j.a;
+import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
+import com.tencent.mm.plugin.appbrand.config.l;
+import com.tencent.mm.plugin.appbrand.m.i;
+import com.tencent.mm.plugin.appbrand.utils.u;
+import com.tencent.mm.plugin.appbrand.utils.u.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.ArrayList;
+import java.util.Locale;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/WindowFullscreenHandlerViewImpl;", "Lcom/tencent/mm/plugin/appbrand/platform/window/AbsWindowFullscreenHandler;", "windowAndroid", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowAndroid;", "containerProvider", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowFullscreenHandler$FullScreenViewContainerProvider;", "activity", "Landroid/app/Activity;", "(Lcom/tencent/mm/plugin/appbrand/platform/window/WindowAndroid;Lcom/tencent/mm/plugin/appbrand/platform/window/WindowFullscreenHandler$FullScreenViewContainerProvider;Landroid/app/Activity;)V", "getActivity", "()Landroid/app/Activity;", "setActivity", "(Landroid/app/Activity;)V", "isInFullScreen", "", "()Z", "setInFullScreen", "(Z)V", "lastActivityOrientation", "", "lastWindowOrientation", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler$Orientation;", "getWindowAndroid", "()Lcom/tencent/mm/plugin/appbrand/platform/window/WindowAndroid;", "enterFullscreen", "", "view", "Landroid/view/View;", "direction", "exitFullscreen", "isFullScreen", "release", "setRequestedFullscreenDirection", "luggage-wxa-app_release"})
 public final class be
-  extends a
 {
-  private Activity activity;
-  private e.b kGe;
-  private int kGf;
-  public boolean kGg;
-  private final c kGh;
-  
-  public be(c paramc, d.b paramb, Activity paramActivity)
+  public static String a(AppBrandRuntime paramAppBrandRuntime, String paramString1, String paramString2)
   {
-    super(paramc, paramb);
-    AppMethodBeat.i(219652);
-    this.kGh = paramc;
-    this.activity = paramActivity;
-    this.kGe = e.b.nEl;
-    this.kGf = 1;
-    AppMethodBeat.o(219652);
-  }
-  
-  public final void N(View paramView, int paramInt)
-  {
-    AppMethodBeat.i(219649);
-    p.h(paramView, "view");
-    super.N(paramView, paramInt);
-    vH(paramInt);
-    bTL();
-    this.kGg = true;
-    AppMethodBeat.o(219649);
-  }
-  
-  public final boolean btC()
-  {
-    AppMethodBeat.i(219651);
-    boolean bool = this.nEi;
-    if (bool) {
-      this.kGg = false;
-    }
-    if (super.btC())
+    AppMethodBeat.i(146928);
+    Log.i("MicroMsg.SourceMapUtil", "hy: getting sourcemap %s, %s", new Object[] { paramString1, paramString2 });
+    if ((paramAppBrandRuntime == null) || (paramString1 == null) || (paramString1.length() == 0))
     {
-      if (e.b.c(this.kGe)) {
-        this.kGh.setSoftOrientation("landscape");
-      }
-      for (;;)
+      Log.w("MicroMsg.SourceMapUtil", "runtime or jsRuntime or filePath is null.");
+      AppMethodBeat.o(146928);
+      return "";
+    }
+    if (j.a.za(paramAppBrandRuntime.Sp().nYR.nHY))
+    {
+      Log.i("MicroMsg.SourceMapUtil", "current running type is ReleaseType do not need to inject sourceMap.");
+      AppMethodBeat.o(146928);
+      return "";
+    }
+    paramAppBrandRuntime = bl.d(paramAppBrandRuntime, paramString1 + ".map");
+    if ((paramAppBrandRuntime == null) || (paramAppBrandRuntime.length() == 0))
+    {
+      Log.i("MicroMsg.SourceMapUtil", "sourceMap of the script(%s) is null or nil.", new Object[] { paramString1 });
+      AppMethodBeat.o(146928);
+      return "";
+    }
+    paramAppBrandRuntime = String.format("typeof __wxSourceMap !== 'undefined' && (__wxSourceMap['%s'] = %s)", new Object[] { paramString2 + paramString1, paramAppBrandRuntime });
+    AppMethodBeat.o(146928);
+    return paramAppBrandRuntime;
+  }
+  
+  public static void a(g paramg, i parami)
+  {
+    AppMethodBeat.i(169480);
+    u.a(parami, b(paramg), new u.a()
+    {
+      public final void dL(String paramAnonymousString)
       {
-        if (this.activity != null)
-        {
-          Activity localActivity = this.activity;
-          if (localActivity == null) {
-            p.hyc();
-          }
-          localActivity.setRequestedOrientation(this.kGf);
-        }
-        bTM();
-        AppMethodBeat.o(219651);
-        return true;
-        this.kGh.setSoftOrientation("portrait");
+        AppMethodBeat.i(146926);
+        Log.e("MicroMsg.SourceMapUtil", "hy: Inject '%s' Script Failed: %s", new Object[] { "WASourceMap.js", paramAnonymousString });
+        AppMethodBeat.o(146926);
       }
-    }
-    if (bool)
-    {
-      this.nEi = false;
-      bTM();
-      AppMethodBeat.o(219651);
-      return true;
-    }
-    AppMethodBeat.o(219651);
-    return false;
-  }
-  
-  public final void release()
-  {
-    AppMethodBeat.i(219650);
-    super.release();
-    this.activity = null;
-    AppMethodBeat.o(219650);
-  }
-  
-  public final void vH(int paramInt)
-  {
-    AppMethodBeat.i(219648);
-    this.nEi = true;
-    if ((paramInt == 90) || (paramInt == -90)) {}
-    for (Object localObject1 = "landscape";; localObject1 = "portrait")
-    {
-      Object localObject2 = this.kGh.getOrientationHandler();
-      p.g(localObject2, "windowAndroid.orientationHandler");
-      localObject2 = ((e)localObject2).btm();
-      p.g(localObject2, "windowAndroid.orientatio…andler.currentOrientation");
-      this.kGe = ((e.b)localObject2);
-      this.kGh.setSoftOrientation((String)localObject1);
-      if ((this.activity != null) && (p.j(localObject1, "landscape")))
+      
+      public final void onSuccess(String paramAnonymousString)
       {
-        localObject1 = this.activity;
-        if (localObject1 == null) {
-          p.hyc();
-        }
-        if (!e.b.c(e.b.yZ(((Activity)localObject1).getRequestedOrientation())))
-        {
-          localObject1 = this.activity;
-          if (localObject1 == null) {
-            p.hyc();
-          }
-          this.kGf = ((Activity)localObject1).getRequestedOrientation();
-          localObject1 = this.activity;
-          if (localObject1 == null) {
-            p.hyc();
-          }
-          ((Activity)localObject1).setRequestedOrientation(6);
-        }
+        AppMethodBeat.i(146925);
+        Log.i("MicroMsg.SourceMapUtil", "hy: Inject '%s' Script Success: %s", new Object[] { "WASourceMap.js", paramAnonymousString });
+        AppMethodBeat.o(146925);
       }
-      AppMethodBeat.o(219648);
-      return;
+    });
+    parami.evaluateJavascript(getSysInfo(), null);
+    AppMethodBeat.o(169480);
+  }
+  
+  public static String b(g paramg)
+  {
+    AppMethodBeat.i(169481);
+    Log.i("MicroMsg.SourceMapUtil", "hy: injecting sourcemap.js");
+    if (paramg == null)
+    {
+      Log.w("MicroMsg.SourceMapUtil", "hy: not valid runtime");
+      AppMethodBeat.o(169481);
+      return "";
     }
+    if (paramg.getRuntime() == null)
+    {
+      Log.w("MicroMsg.SourceMapUtil", "hy: runtime not prepared. do not try to inject sourcemap.js. maybe preloading");
+      AppMethodBeat.o(169481);
+      return "";
+    }
+    if (j.a.za(paramg.getRuntime().ntz.cBI))
+    {
+      Log.i("MicroMsg.SourceMapUtil", "current running type is ReleaseType do not need to inject sourceMap.");
+      AppMethodBeat.o(169481);
+      return "";
+    }
+    paramg = (ICommLibReader)paramg.K(ICommLibReader.class);
+    if (paramg == null)
+    {
+      Log.e("MicroMsg.SourceMapUtil", "execSourceMapScript NULL reader");
+      AppMethodBeat.o(169481);
+      return "";
+    }
+    paramg = paramg.acw("WASourceMap.js");
+    AppMethodBeat.o(169481);
+    return paramg;
+  }
+  
+  public static boolean c(AppBrandRuntime paramAppBrandRuntime, String paramString)
+  {
+    AppMethodBeat.i(169483);
+    Log.i("MicroMsg.SourceMapUtil", "is sourcemap exist: %s", new Object[] { paramString });
+    if ((paramAppBrandRuntime == null) || (paramString == null) || (paramString.length() == 0))
+    {
+      Log.w("MicroMsg.SourceMapUtil", "runtime or jsRuntime or filePath is null.");
+      AppMethodBeat.o(169483);
+      return false;
+    }
+    if (j.a.za(paramAppBrandRuntime.Sp().nYR.nHY))
+    {
+      Log.i("MicroMsg.SourceMapUtil", "current running type is ReleaseType do not need to inject sourceMap.");
+      AppMethodBeat.o(169483);
+      return false;
+    }
+    boolean bool = bl.g(paramAppBrandRuntime, paramString + ".map");
+    AppMethodBeat.o(169483);
+    return bool;
+  }
+  
+  @SuppressLint({"DefaultLocal"})
+  public static String getSysInfo()
+  {
+    AppMethodBeat.i(146929);
+    String str = String.format("typeof __wxSourceMap !== 'undefined' && (__wxSourceMap.__system = 'Android %s')", new Object[] { Build.VERSION.RELEASE });
+    AppMethodBeat.o(146929);
+    return str;
+  }
+  
+  public static ArrayList<ScriptPartObject> i(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    AppMethodBeat.i(169482);
+    Log.i("MicroMsg.SourceMapUtil", "buildSourceMapAppendList wxapkgPath: %s, filePath: %s", new Object[] { paramString1, paramString2 });
+    ArrayList localArrayList = new ArrayList();
+    ScriptPartObject localScriptPartObject = new ScriptPartObject();
+    localScriptPartObject.type = 1;
+    localScriptPartObject.content = String.format(Locale.US, "typeof __wxSourceMap !== 'undefined' && (__wxSourceMap['%s'] = ", new Object[] { paramString4 });
+    localArrayList.add(localScriptPartObject);
+    paramString4 = new ScriptPartObject();
+    paramString4.type = 2;
+    paramString4.wxaPkgPath = paramString1;
+    paramString4.wxaFileName = paramString2;
+    paramString4.wxaPkgKeyFilePath = paramString3;
+    localArrayList.add(paramString4);
+    paramString1 = new ScriptPartObject();
+    paramString1.type = 1;
+    paramString1.content = ")";
+    localArrayList.add(paramString1);
+    AppMethodBeat.o(169482);
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.be
  * JD-Core Version:    0.7.0.1
  */

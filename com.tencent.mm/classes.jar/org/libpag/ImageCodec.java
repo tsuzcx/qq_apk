@@ -11,7 +11,7 @@ public class ImageCodec
 {
   private static int[] GetSizeFromBytes(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(236853);
+    AppMethodBeat.i(194858);
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inJustDecodeBounds = true;
     label57:
@@ -28,7 +28,7 @@ public class ImageCodec
         try
         {
           j = localOptions.outHeight;
-          AppMethodBeat.o(236853);
+          AppMethodBeat.o(194858);
           return new int[] { i, j };
         }
         catch (Exception paramArrayOfByte)
@@ -43,7 +43,7 @@ public class ImageCodec
   
   private static int[] GetSizeFromPath(String paramString)
   {
-    AppMethodBeat.i(236852);
+    AppMethodBeat.i(194856);
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inJustDecodeBounds = true;
     label54:
@@ -60,7 +60,7 @@ public class ImageCodec
         try
         {
           j = localOptions.outHeight;
-          AppMethodBeat.o(236852);
+          AppMethodBeat.o(194856);
           return new int[] { i, j };
         }
         catch (Exception paramString)
@@ -75,33 +75,33 @@ public class ImageCodec
   
   private static boolean ReadPixelsFromBytes(byte[] paramArrayOfByte, ByteBuffer paramByteBuffer)
   {
-    AppMethodBeat.i(236855);
+    AppMethodBeat.i(194860);
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
     paramArrayOfByte = BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length, localOptions);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.getConfig() != Bitmap.Config.ARGB_8888))
     {
-      AppMethodBeat.o(236855);
+      AppMethodBeat.o(194860);
       return false;
     }
     paramArrayOfByte.copyPixelsToBuffer(paramByteBuffer);
-    AppMethodBeat.o(236855);
+    AppMethodBeat.o(194860);
     return true;
   }
   
   private static boolean ReadPixelsFromPath(String paramString, ByteBuffer paramByteBuffer)
   {
-    AppMethodBeat.i(236854);
+    AppMethodBeat.i(194859);
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inPreferredConfig = Bitmap.Config.ARGB_8888;
     paramString = BitmapFactory.decodeFile(paramString, localOptions);
     if ((paramString == null) || (paramString.getConfig() != Bitmap.Config.ARGB_8888))
     {
-      AppMethodBeat.o(236854);
+      AppMethodBeat.o(194859);
       return false;
     }
     paramString.copyPixelsToBuffer(paramByteBuffer);
-    AppMethodBeat.o(236854);
+    AppMethodBeat.o(194859);
     return true;
   }
 }

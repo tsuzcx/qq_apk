@@ -9,30 +9,30 @@ import java.util.LinkedList;
 
 public class f
 {
-  private static f duq;
+  private static f fmY;
   public volatile HashMap<String, d> cache;
-  public volatile LinkedList<String> duo;
-  public volatile Object dup;
+  public volatile LinkedList<String> fmW;
+  public volatile Object fmX;
   
   private f()
   {
     AppMethodBeat.i(136740);
-    this.duo = new LinkedList();
+    this.fmW = new LinkedList();
     this.cache = new HashMap();
-    this.dup = new Object();
+    this.fmX = new Object();
     AppMethodBeat.o(136740);
   }
   
-  public static f YL()
+  public static f ads()
   {
     AppMethodBeat.i(136741);
-    if (duq == null) {}
+    if (fmY == null) {}
     try
     {
-      if (duq == null) {
-        duq = new f();
+      if (fmY == null) {
+        fmY = new f();
       }
-      f localf = duq;
+      f localf = fmY;
       AppMethodBeat.o(136741);
       return localf;
     }
@@ -42,20 +42,20 @@ public class f
     }
   }
   
-  public final long YM()
+  public final long adt()
   {
     AppMethodBeat.i(136747);
     long l = 0L;
     for (;;)
     {
-      synchronized (this.dup)
+      synchronized (this.fmX)
       {
-        Iterator localIterator = this.duo.iterator();
+        Iterator localIterator = this.fmW.iterator();
         if (localIterator.hasNext())
         {
           Object localObject3 = (String)localIterator.next();
           localObject3 = (d)this.cache.get(localObject3);
-          if ((localObject3 != null) && (((d)localObject3).aBQ) && (!((d)localObject3).dtV)) {
+          if ((localObject3 != null) && (((d)localObject3).awf) && (!((d)localObject3).fmD)) {
             l = ((d)localObject3).getBufferSize() + l;
           }
         }
@@ -68,13 +68,13 @@ public class f
     }
   }
   
-  public final ArrayList<String> YN()
+  public final ArrayList<String> adu()
   {
     AppMethodBeat.i(136748);
-    synchronized (this.dup)
+    synchronized (this.fmX)
     {
       ArrayList localArrayList = new ArrayList();
-      localArrayList.addAll(this.duo);
+      localArrayList.addAll(this.fmW);
       AppMethodBeat.o(136748);
       return localArrayList;
     }
@@ -83,9 +83,9 @@ public class f
   public final void clearCache()
   {
     AppMethodBeat.i(136745);
-    synchronized (this.dup)
+    synchronized (this.fmX)
     {
-      Iterator localIterator = this.duo.iterator();
+      Iterator localIterator = this.fmW.iterator();
       while (localIterator.hasNext())
       {
         Object localObject3 = (String)localIterator.next();
@@ -95,18 +95,18 @@ public class f
         }
       }
     }
-    this.duo.clear();
+    this.fmW.clear();
     this.cache.clear();
     AppMethodBeat.o(136745);
   }
   
-  public final d gE(String paramString)
+  public final d hq(String paramString)
   {
     AppMethodBeat.i(136742);
-    synchronized (this.dup)
+    synchronized (this.fmX)
     {
-      if (!this.duo.contains(paramString)) {
-        this.duo.add(paramString);
+      if (!this.fmW.contains(paramString)) {
+        this.fmW.add(paramString);
       }
       d locald2 = (d)this.cache.get(paramString);
       d locald1 = locald2;
@@ -120,12 +120,12 @@ public class f
     }
   }
   
-  public final int gF(String paramString)
+  public final int hr(String paramString)
   {
     AppMethodBeat.i(136743);
-    synchronized (this.dup)
+    synchronized (this.fmX)
     {
-      if (!this.duo.contains(paramString))
+      if (!this.fmW.contains(paramString))
       {
         AppMethodBeat.o(136743);
         return 0;
@@ -142,18 +142,18 @@ public class f
     }
   }
   
-  public final boolean gG(String paramString)
+  public final boolean hs(String paramString)
   {
     AppMethodBeat.i(136744);
-    synchronized (this.dup)
+    synchronized (this.fmX)
     {
-      if (!this.duo.contains(paramString))
+      if (!this.fmW.contains(paramString))
       {
         AppMethodBeat.o(136744);
         return false;
       }
       paramString = (d)this.cache.get(paramString);
-      if ((paramString != null) && (paramString.size() > 0) && (paramString.aBQ))
+      if ((paramString != null) && (paramString.size() > 0) && (paramString.awf))
       {
         AppMethodBeat.o(136744);
         return true;
@@ -163,18 +163,18 @@ public class f
     }
   }
   
-  public final long gH(String paramString)
+  public final long ht(String paramString)
   {
     AppMethodBeat.i(136746);
-    synchronized (this.dup)
+    synchronized (this.fmX)
     {
-      if (!this.duo.contains(paramString))
+      if (!this.fmW.contains(paramString))
       {
         AppMethodBeat.o(136746);
         return 0L;
       }
       paramString = (d)this.cache.get(paramString);
-      if ((paramString != null) && (paramString.aBQ))
+      if ((paramString != null) && (paramString.awf))
       {
         long l = paramString.getBufferSize();
         AppMethodBeat.o(136746);
@@ -187,7 +187,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.audio.mix.b.f
  * JD-Core Version:    0.7.0.1
  */

@@ -27,7 +27,7 @@ final class zzzh
     AppMethodBeat.i(40350);
     try
     {
-      Class localClass = Class.forName("com.google.a.p");
+      Class localClass = Class.forName("com.google.b.an");
       AppMethodBeat.o(40350);
       return localClass;
     }

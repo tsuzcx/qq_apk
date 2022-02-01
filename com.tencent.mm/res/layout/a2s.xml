@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" style="@style/o_"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ifp" android:background="@drawable/k7" android:padding="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/hc" android:textColor="@color/ag2" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/ifo" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/bwe" android:layout_weight="1.0" />
-    </LinearLayout>
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/ifp" android:background="@drawable/emoji_mine_sync_header_bg" android:layout_width="fill_parent" android:layout_height="@dimen/cr" android:layout_marginStart="@dimen/ct" android:layout_marginEnd="@dimen/ct">
+        <TextView android:textSize="@dimen/hc" android:textColor="@color/ag2" android:layout_gravity="center_vertical" android:id="@id/ifo" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/bwe" android:layout_weight="1.0" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cl" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toStartOf="@id/jvi" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+        <Button android:id="@id/jvj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bwa" android:layout_marginEnd="@dimen/c5" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintTop_toTopOf="g8m" style="@style/p6" />
+        <ProgressBar android:id="@id/jvk" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginEnd="@dimen/cb" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintTop_toTopOf="g8m" style="@style/a72" />
+        <androidx.constraintlayout.widget.Barrier android:id="@id/jvi" android:layout_width="wrap_content" android:layout_height="wrap_content" app:barrierDirection="ea3" app:constraint_referenced_ids="emoji_mine_sync_btn,emoji_mine_sync_progress" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <include layout="@layout/a2r" />
 </LinearLayout>

@@ -1,35 +1,18 @@
 package com.tencent.mm.plugin.card.sharecard.ui;
 
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.plugin.card.base.c;
-import java.util.List;
 
 public final class g
   extends BaseAdapter
 {
-  Context mContext;
-  c pXo;
-  List<b> pXz;
-  
-  public final b Ed(int paramInt)
-  {
-    AppMethodBeat.i(113093);
-    b localb = (b)this.pXz.get(paramInt);
-    AppMethodBeat.o(113093);
-    return localb;
-  }
-  
   public final int getCount()
   {
     AppMethodBeat.i(113092);
-    int i = this.pXz.size();
     AppMethodBeat.o(113092);
-    return i;
+    throw null;
   }
   
   public final long getItemId(int paramInt)
@@ -40,15 +23,13 @@ public final class g
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(113094);
-    paramViewGroup = Ed(paramInt);
-    paramView = this.pXo.a(paramInt, paramView, paramViewGroup);
     AppMethodBeat.o(113094);
-    return paramView;
+    throw null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.ui.g
  * JD-Core Version:    0.7.0.1
  */

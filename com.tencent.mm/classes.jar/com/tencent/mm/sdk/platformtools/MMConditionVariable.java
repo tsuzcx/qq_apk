@@ -118,7 +118,6 @@ public class MMConditionVariable
     //   42	50	73	finally
     //   50	54	73	finally
     //   57	65	73	finally
-    //   75	77	73	finally
     //   42	50	96	java/lang/InterruptedException
   }
   
@@ -129,7 +128,11 @@ public class MMConditionVariable
       this.mCondition = false;
       return;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public boolean isOpen()
@@ -165,7 +168,7 @@ public class MMConditionVariable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.MMConditionVariable
  * JD-Core Version:    0.7.0.1
  */

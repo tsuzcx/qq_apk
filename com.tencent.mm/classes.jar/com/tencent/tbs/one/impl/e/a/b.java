@@ -9,9 +9,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.os.Process;
 import android.provider.Settings.Secure;
-import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tbs.one.TBSOneCallback;
@@ -69,7 +67,7 @@ public final class b
     AppMethodBeat.i(174044);
     try
     {
-      JSONObject localJSONObject1 = com.tencent.tbs.one.impl.a.e.a(com.tencent.tbs.b.a.RSp);
+      JSONObject localJSONObject1 = com.tencent.tbs.one.impl.a.e.a(com.tencent.tbs.b.a.ZuT);
       AppMethodBeat.o(174044);
       return localJSONObject1;
     }
@@ -240,18 +238,12 @@ public final class b
             com.tencent.tbs.one.impl.a.e.a(localJSONObject, "META", Integer.toHexString(Integer.parseInt(String.valueOf(localObject1))));
             com.tencent.tbs.one.impl.a.e.a(localJSONObject, "BVR", Build.VERSION.RELEASE);
             com.tencent.tbs.one.impl.a.e.a(localJSONObject, "ABI", Build.CPU_ABI);
-            if ((TextUtils.isEmpty(com.tencent.tbs.one.impl.a.d.a)) && (localContext.checkPermission("android.permission.READ_PHONE_STATE", Process.myPid(), Process.myUid()) == 0))
-            {
-              localObject1 = (TelephonyManager)localContext.getSystemService("phone");
-              com.tencent.tbs.one.impl.a.d.a = ((TelephonyManager)localObject1).getDeviceId();
-              com.tencent.tbs.one.impl.a.d.b = ((TelephonyManager)localObject1).getSubscriberId();
-            }
-            com.tencent.tbs.one.impl.a.e.a(localJSONObject, "IMEI", com.tencent.tbs.one.impl.a.d.a);
+            com.tencent.tbs.one.impl.a.e.a(localJSONObject, "IMEI", com.tencent.tbs.one.impl.a.d.a(localContext));
             com.tencent.tbs.one.impl.a.e.a(localJSONObject, "GUID", "");
-            if (TextUtils.isEmpty(com.tencent.tbs.one.impl.a.d.c)) {
-              com.tencent.tbs.one.impl.a.d.c = Settings.Secure.getString(localContext.getContentResolver(), "android_id");
+            if (TextUtils.isEmpty(com.tencent.tbs.one.impl.a.d.a)) {
+              com.tencent.tbs.one.impl.a.d.a = Settings.Secure.getString(localContext.getContentResolver(), "android_id");
             }
-            com.tencent.tbs.one.impl.a.e.a(localJSONObject, "ADRID", com.tencent.tbs.one.impl.a.d.c);
+            com.tencent.tbs.one.impl.a.e.a(localJSONObject, "ADRID", com.tencent.tbs.one.impl.a.d.a);
             com.tencent.tbs.one.impl.a.e.a(localJSONObject, "UA", com.tencent.tbs.one.impl.a.d.a());
             com.tencent.tbs.one.impl.a.f.a("[%s] Requesting DEPS from %s, post data: %s", new Object[] { str1, str2, localJSONObject });
             this.i = new com.tencent.tbs.one.impl.d.a(localContext, str2, "POST", null, localJSONObject.toString().getBytes(com.tencent.tbs.one.impl.common.b.a));
@@ -416,7 +408,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.a.b
  * JD-Core Version:    0.7.0.1
  */

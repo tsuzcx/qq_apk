@@ -13,7 +13,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
 final class FinderFeedExposeLayout$m
   implements View.OnTouchListener
 {
@@ -22,7 +22,7 @@ final class FinderFeedExposeLayout$m
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(168338);
-    kotlin.g.b.p.g(paramMotionEvent, "event");
+    kotlin.g.b.p.j(paramMotionEvent, "event");
     int j = paramMotionEvent.getAction();
     if (paramView == null)
     {
@@ -31,13 +31,13 @@ final class FinderFeedExposeLayout$m
       throw paramView;
     }
     paramView = (TextView)paramView;
-    Spannable localSpannable = this.vJd;
+    Spannable localSpannable = this.Aqe;
     Object localObject1;
     int k;
     int i;
     if ((j == 1) || (j == 3))
     {
-      localObject1 = (ClickableSpan[])localSpannable.getSpans(0, this.vJd.length(), ClickableSpan.class);
+      localObject1 = (ClickableSpan[])localSpannable.getSpans(0, this.Aqe.length(), ClickableSpan.class);
       if (localObject1 != null)
       {
         k = localObject1.length;
@@ -48,7 +48,7 @@ final class FinderFeedExposeLayout$m
           if ((localObject2 instanceof com.tencent.mm.pluginsdk.ui.span.p))
           {
             ((com.tencent.mm.pluginsdk.ui.span.p)localObject2).setIsPressed(false);
-            this.wmB.pIN.invalidate();
+            this.AXE.xoK.invalidate();
           }
           i += 1;
         }
@@ -75,7 +75,7 @@ final class FinderFeedExposeLayout$m
     }
     for (boolean bool = true;; bool = false)
     {
-      Log.i(FinderFeedExposeLayout.b(this.wmu), "touch " + paramMotionEvent.getX() + ", " + paramMotionEvent.getY() + ", ret:" + bool);
+      Log.i(FinderFeedExposeLayout.b(this.AXx), "touch " + paramMotionEvent.getX() + ", " + paramMotionEvent.getY() + ", ret:" + bool);
       AppMethodBeat.o(168338);
       return bool;
       if (j != 0) {
@@ -84,7 +84,7 @@ final class FinderFeedExposeLayout$m
       if ((localObject1 instanceof com.tencent.mm.pluginsdk.ui.span.p))
       {
         ((com.tencent.mm.pluginsdk.ui.span.p)localObject1).setIsPressed(true);
-        this.wmB.pIN.invalidate();
+        this.AXE.xoK.invalidate();
       }
       Selection.setSelection(localSpannable, localSpannable.getSpanStart(localObject1), localSpannable.getSpanEnd(localObject1));
       break;
@@ -94,7 +94,7 @@ final class FinderFeedExposeLayout$m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.FinderFeedExposeLayout.m
  * JD-Core Version:    0.7.0.1
  */

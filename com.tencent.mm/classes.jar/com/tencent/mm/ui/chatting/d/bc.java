@@ -1,206 +1,332 @@
 package com.tencent.mm.ui.chatting.d;
 
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.TextView;
+import android.annotation.SuppressLint;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.R.l;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.b.o;
+import com.tencent.mm.f.a.rv;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.bv;
+import com.tencent.mm.model.bv.a;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
-import com.tencent.mm.pluginsdk.ui.chat.ChatFooter.c;
+import com.tencent.mm.modelsimple.j;
+import com.tencent.mm.network.g;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i.c;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMStack;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.as;
-import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.ui.chatting.d.b.aa;
+import com.tencent.mm.ui.chatting.d.b.ae;
+import com.tencent.mm.ui.chatting.d.b.ap;
 import com.tencent.mm.ui.chatting.d.b.d;
-import com.tencent.mm.ui.chatting.d.b.f;
-import com.tencent.mm.ui.chatting.d.b.u;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
+@com.tencent.mm.ui.chatting.d.a.a(hRc=ap.class)
 public class bc
   extends a
-  implements af
+  implements com.tencent.mm.an.i, i.a, ap
 {
-  private View Put;
-  private ViewGroup Puu;
-  private boolean Puv;
-  private boolean Puw;
-  private final long Pux;
-  private ChatFooter.c Puy;
+  private static boolean WOy = false;
+  private int WOx;
+  private long WOz;
+  @SuppressLint({"HandlerLeak"})
+  private MMHandler handler;
+  private int interval;
   
   public bc()
   {
-    AppMethodBeat.i(35644);
-    this.Pux = 259200000L;
-    this.Puy = new ChatFooter.c()
+    AppMethodBeat.i(35601);
+    this.interval = -1;
+    this.handler = new MMHandler()
     {
-      public final void a(Boolean paramAnonymousBoolean1, Boolean paramAnonymousBoolean2)
+      public final void handleMessage(Message paramAnonymousMessage)
       {
-        AppMethodBeat.i(35642);
-        if (paramAnonymousBoolean1.booleanValue())
+        AppMethodBeat.i(35597);
+        if ((bc.this.fgR == null) || (!bc.this.fgR.dgo))
         {
-          if (paramAnonymousBoolean2.booleanValue())
-          {
-            paramAnonymousBoolean1 = bc.this;
-            paramAnonymousBoolean2 = Boolean.TRUE;
-            bc.a(paramAnonymousBoolean1, paramAnonymousBoolean2, paramAnonymousBoolean2);
-            AppMethodBeat.o(35642);
-            return;
-          }
-          bc.a(bc.this, Boolean.FALSE, Boolean.TRUE);
+          AppMethodBeat.o(35597);
+          return;
         }
-        AppMethodBeat.o(35642);
-      }
-      
-      public final void b(Boolean paramAnonymousBoolean1, Boolean paramAnonymousBoolean2)
-      {
-        AppMethodBeat.i(35643);
-        if (paramAnonymousBoolean1.booleanValue())
+        if (!bc.this.fgR.WQB)
         {
-          if (paramAnonymousBoolean2.booleanValue())
-          {
-            bc.a(bc.this, Boolean.TRUE, Boolean.FALSE);
-            AppMethodBeat.o(35643);
-            return;
-          }
-          paramAnonymousBoolean1 = bc.this;
-          paramAnonymousBoolean2 = Boolean.FALSE;
-          bc.a(paramAnonymousBoolean1, paramAnonymousBoolean2, paramAnonymousBoolean2);
+          Log.e("MicroMsg.SignallingComponent", "current ChattingUI lose focus!");
+          bc.this.fgR.WQC = true;
+          AppMethodBeat.o(35597);
+          return;
         }
-        AppMethodBeat.o(35643);
+        bc.this.fgR.WQC = false;
+        if (bc.WOy)
+        {
+          bc.Yy();
+          ((aa)bc.this.fgR.bC(aa.class)).hOL();
+          bc.this.fgR.cAe();
+        }
+        AppMethodBeat.o(35597);
       }
     };
-    AppMethodBeat.o(35644);
+    AppMethodBeat.o(35601);
   }
   
-  private void c(Boolean paramBoolean1, Boolean paramBoolean2)
+  public final void a(com.tencent.mm.ui.chatting.e.a parama)
   {
-    AppMethodBeat.i(35646);
-    if (this.Put != null)
+    AppMethodBeat.i(35607);
+    super.a(parama);
+    Log.i("MicroMsg.SignallingComponent", "[onComponentInstall] hash:%s", new Object[] { this });
+    bh.aGY().a(new bv(new bv.a()
     {
-      this.Put.clearAnimation();
-      this.Put.setVisibility(8);
-      if (paramBoolean2.booleanValue())
+      public final void a(g paramAnonymousg)
       {
-        if (paramBoolean1.booleanValue())
+        AppMethodBeat.i(35598);
+        if (paramAnonymousg == null)
         {
-          bg.aVF();
-          c.azQ().set(340228, Boolean.TRUE);
-          h.CyF.idkeyStat(232L, 1L, 1L, false);
-          AppMethodBeat.o(35646);
+          AppMethodBeat.o(35598);
+          return;
         }
+        bc.a(bc.this, paramAnonymousg);
+        AppMethodBeat.o(35598);
       }
-      else if (paramBoolean1.booleanValue())
-      {
-        bg.aVF();
-        c.azQ().set(340229, Boolean.TRUE);
-        h.CyF.idkeyStat(232L, 2L, 1L, false);
-      }
-    }
-    AppMethodBeat.o(35646);
+    }), 0);
+    AppMethodBeat.o(35607);
   }
   
-  private void s(final Boolean paramBoolean)
+  public final void avG(int paramInt)
   {
-    AppMethodBeat.i(35645);
-    this.Puu = ((ViewGroup)this.dom.findViewById(2131298413));
-    this.Put = View.inflate(this.dom.Pwc.getContext(), 2131495851, null);
-    Object localObject = (TextView)this.Put.findViewById(2131305373);
-    if (paramBoolean.booleanValue())
+    AppMethodBeat.i(35604);
+    if (this.fgR == null)
     {
-      ((TextView)localObject).setText(this.dom.Pwc.getContext().getString(2131765225));
-      this.Put.setBackgroundResource(2131234325);
-    }
-    for (localObject = new FrameLayout.LayoutParams(-2, -2, 85);; localObject = new FrameLayout.LayoutParams(-2, -2, 83))
-    {
-      if ((this.Puu != null) && (this.Put != null))
-      {
-        this.Puu.addView(this.Put, (ViewGroup.LayoutParams)localObject);
-        localObject = AnimationUtils.loadAnimation(this.dom.Pwc.getContext(), 2130772156);
-        this.Put.startAnimation((Animation)localObject);
-        this.Put.setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
-          {
-            AppMethodBeat.i(35641);
-            Object localObject = new b();
-            ((b)localObject).bm(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/component/TipsBubbleComponent$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
-            if (paramBoolean.booleanValue())
-            {
-              paramAnonymousView = bc.this;
-              localObject = Boolean.TRUE;
-              bc.a(paramAnonymousView, (Boolean)localObject, (Boolean)localObject);
-              ((u)bc.this.dom.bh(u.class)).gPO().go(null);
-            }
-            for (;;)
-            {
-              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/component/TipsBubbleComponent$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-              AppMethodBeat.o(35641);
-              return;
-              bc.a(bc.this, Boolean.TRUE, Boolean.FALSE);
-              ((u)bc.this.dom.bh(u.class)).gPO().setMode(2);
-            }
-          }
-        });
-      }
-      AppMethodBeat.o(35645);
+      Log.e("MicroMsg.SignallingComponent", "[doDirectSend] mChattingContext is null!", new Object[] { Util.getStack().toString() });
+      AppMethodBeat.o(35604);
       return;
-      ((TextView)localObject).setText(this.dom.Pwc.getContext().getString(2131765229));
-      this.Put.setBackgroundResource(2131234324);
     }
+    Object localObject2 = this.fgR;
+    if ((((com.tencent.mm.ui.chatting.e.a)localObject2).hRh()) || (((d)((com.tencent.mm.ui.chatting.e.a)localObject2).bC(d.class)).hOf())) {}
+    int j;
+    for (int i = 1;; i = 0)
+    {
+      j = ((Integer)bh.beG().b(35, Integer.valueOf(10))).intValue();
+      localObject1 = new LinkedList();
+      ((List)localObject1).add(((com.tencent.mm.ui.chatting.e.a)localObject2).getTalkerUserName());
+      if (j != -2) {
+        break label212;
+      }
+      if ((i == 0) || ((paramInt != 1) && (paramInt != 2))) {
+        break;
+      }
+      Log.d("MicroMsg.SignallingComponent", "oreh old logic doDirectSend not support chatStatus:%d", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(35604);
+      return;
+    }
+    Log.d("MicroMsg.SignallingComponent", "oreh old logic doDirectSend done chatStatus:%d", new Object[] { Integer.valueOf(paramInt) });
+    Object localObject1 = new j((List)localObject1, o.jO(paramInt));
+    bh.aGY().a((q)localObject1, 0);
+    AppMethodBeat.o(35604);
+    return;
+    label212:
+    if ((i != 0) || (as.bvJ(((com.tencent.mm.ui.chatting.e.a)localObject2).getTalkerUserName())) || (as.bvH(((com.tencent.mm.ui.chatting.e.a)localObject2).getTalkerUserName())) || (((com.tencent.mm.ui.chatting.e.a)localObject2).NKq.hxX()))
+    {
+      Log.d("MicroMsg.SignallingComponent", "oreh doDirectSend not support");
+      AppMethodBeat.o(35604);
+      return;
+    }
+    if (this.WOz == 0L)
+    {
+      localObject2 = ((ae)this.fgR.bC(ae.class)).hQi();
+      if ((localObject2 != null) && (((List)localObject2).size() > 0)) {
+        this.WOz = ((ca)((List)localObject2).get(0)).field_createTime;
+      }
+    }
+    long l = Util.milliSecondsToNow(this.WOz);
+    if ((j == -1) || (l > j * 1000L))
+    {
+      Log.d("MicroMsg.SignallingComponent", "oreh doDirectSend interval too long: %d;  interval: %d", new Object[] { Long.valueOf(l / 1000L), Integer.valueOf(j) });
+      AppMethodBeat.o(35604);
+      return;
+    }
+    Log.d("MicroMsg.SignallingComponent", "oreh doDirectSend done chatStatus:%d, delt:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(l / 1000L) });
+    localObject1 = new j((List)localObject1, o.jO(paramInt));
+    bh.aGY().a((q)localObject1, 0);
+    AppMethodBeat.o(35604);
   }
   
-  public final void cFx()
+  public final void hGW()
   {
-    AppMethodBeat.i(35647);
-    if (z.aUQ().booleanValue())
-    {
-      if (!this.dom.GUe.gBM())
+    AppMethodBeat.i(35609);
+    bh.beI();
+    c.bbO().a(this, Looper.getMainLooper());
+    bh.aGY().a(10, this);
+    AppMethodBeat.o(35609);
+  }
+  
+  public final void hGZ()
+  {
+    AppMethodBeat.i(35610);
+    bh.beI();
+    c.bbO().a(this);
+    bh.aGY().b(10, this);
+    AppMethodBeat.o(35610);
+  }
+  
+  public final void hNZ()
+  {
+    AppMethodBeat.i(35608);
+    super.hNZ();
+    Log.i("MicroMsg.SignallingComponent", "[onComponentUnInstall] hash:%s", new Object[] { this });
+    this.handler.removeCallbacksAndMessages(null);
+    bh.beI();
+    c.bbO().a(this);
+    bh.aGY().b(10, this);
+    AppMethodBeat.o(35608);
+  }
+  
+  public final void keepSignalling()
+  {
+    AppMethodBeat.i(35602);
+    if (this.WOx == -2) {
+      bh.aGY().a(new bv(new bv.a()
       {
-        bg.aVF();
-        this.Puv = Util.nullAsFalse((Boolean)c.azQ().get(340228, null));
-        if ((!this.Puv) && (!((f)this.dom.bh(f.class)).gPi()) && (!((d)this.dom.bh(d.class)).gOV())) {
-          s(Boolean.TRUE);
+        public final void a(g paramAnonymousg)
+        {
+          AppMethodBeat.i(35599);
+          if (paramAnonymousg == null)
+          {
+            AppMethodBeat.o(35599);
+            return;
+          }
+          paramAnonymousg.keepSignalling();
+          AppMethodBeat.o(35599);
         }
-        bg.aVF();
-        this.Puw = Util.nullAsFalse((Boolean)c.azQ().get(340229, null));
-        long l1 = System.currentTimeMillis();
-        bg.aVF();
-        long l2 = Util.nullAs((Long)c.azQ().get(340240, null), 0L);
-        if ((this.Puv) && (!this.Puw) && (l1 - l2 >= 259200000L)) {
-          s(Boolean.FALSE);
-        }
-      }
-      if (((u)this.dom.bh(u.class)).gPO() != null) {
-        ((u)this.dom.bh(u.class)).gPO().setTipsShowCallback(this.Puy);
-      }
+      }), 0);
     }
-    AppMethodBeat.o(35647);
+    AppMethodBeat.o(35602);
   }
   
-  public final void cFy()
+  public void onNotifyChange(com.tencent.mm.plugin.messenger.foundation.a.a.i parami, i.c paramc)
   {
-    AppMethodBeat.i(35648);
-    if ((!this.dom.GUe.gBM()) && (z.aUQ().booleanValue()))
+    AppMethodBeat.i(35606);
+    Log.d("MicroMsg.SignallingComponent", "on msg notify change");
+    if (this.fgR == null)
     {
-      Boolean localBoolean = Boolean.FALSE;
-      c(localBoolean, localBoolean);
+      Log.w("MicroMsg.SignallingComponent", "[onNotifyChange] mChattingContext is null!");
+      AppMethodBeat.o(35606);
+      return;
     }
-    AppMethodBeat.o(35648);
+    if ((this.fgR.getTalkerUserName().equals(paramc.talker)) && ("insert".equals(paramc.EVM)) && (paramc.kvM.size() > 0) && (((ca)paramc.kvM.get(0)).field_isSend == 0))
+    {
+      Log.i("MicroMsg.SignallingComponent", "summerbadcr oreh onNotifyChange receive a new msg flag[%d], msgSeq[%d]", new Object[] { Integer.valueOf(((ca)paramc.kvM.get(0)).field_flag), Long.valueOf(((ca)paramc.kvM.get(0)).field_msgSeq) });
+      this.WOz = Util.nowMilliSecond();
+    }
+    AppMethodBeat.o(35606);
+  }
+  
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  {
+    AppMethodBeat.i(35605);
+    if (this.fgR == null)
+    {
+      AppMethodBeat.o(35605);
+      return;
+    }
+    this.fgR.dismissDialog();
+    if (10 != paramq.getType())
+    {
+      AppMethodBeat.o(35605);
+      return;
+    }
+    boolean bool1 = ((com.tencent.mm.ui.chatting.d.b.an)this.fgR.bC(com.tencent.mm.ui.chatting.d.b.an.class)).hQw();
+    boolean bool2 = ((com.tencent.mm.ui.chatting.d.b.an)this.fgR.bC(com.tencent.mm.ui.chatting.d.b.an.class)).hQx();
+    boolean bool3 = ((com.tencent.mm.ui.chatting.d.b.an)this.fgR.bC(com.tencent.mm.ui.chatting.d.b.an.class)).hQA();
+    if ((bool3) || (bool2) || (bool1))
+    {
+      Log.i("MicroMsg.SignallingComponent", "[onSceneEnd] [%s|%s|%s]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
+      AppMethodBeat.o(35605);
+      return;
+    }
+    if ((paramInt1 == 0) && (paramInt2 == 0))
+    {
+      paramString = (j)paramq;
+      if ((paramString.lZa != null) && (paramString.lZa.equals(this.fgR.getTalkerUserName())))
+      {
+        if ((paramString.fPk == null) || (paramString.fPk.length != 4))
+        {
+          Log.e("MicroMsg.SignallingComponent", "unknown directsend op");
+          AppMethodBeat.o(35605);
+          return;
+        }
+        paramInt1 = o.v(paramString.fPk, 0);
+        Log.d("MicroMsg.SignallingComponent", "directsend: status=".concat(String.valueOf(paramInt1)));
+        switch (paramInt1)
+        {
+        case 2: 
+        default: 
+          WOy = false;
+          ((aa)this.fgR.bC(aa.class)).hOL();
+          if (!this.fgR.WQB)
+          {
+            Log.e("MicroMsg.SignallingComponent", "onSceneEnd, current ChattingUI lose focus!");
+            this.fgR.WQC = true;
+            AppMethodBeat.o(35605);
+            return;
+          }
+          break;
+        case 1: 
+          WOy = true;
+          ((aa)this.fgR.bC(aa.class)).setMMTitle(R.l.exg);
+          paramString = new Message();
+          this.handler.sendMessageDelayed(paramString, 15000L);
+          paramString = new rv();
+          EventCenter.instance.publish(paramString);
+          AppMethodBeat.o(35605);
+          return;
+        case 3: 
+          WOy = true;
+          ((aa)this.fgR.bC(aa.class)).setMMTitle(R.l.exh);
+          paramString = new Message();
+          this.handler.sendMessageDelayed(paramString, 15000L);
+          AppMethodBeat.o(35605);
+          return;
+        }
+        this.fgR.WQC = false;
+        this.fgR.cAe();
+      }
+    }
+    AppMethodBeat.o(35605);
+  }
+  
+  public final void stopSignalling()
+  {
+    AppMethodBeat.i(35603);
+    bh.aGY().a(new bv(new bv.a()
+    {
+      public final void a(g paramAnonymousg)
+      {
+        AppMethodBeat.i(35600);
+        if (paramAnonymousg == null)
+        {
+          AppMethodBeat.o(35600);
+          return;
+        }
+        paramAnonymousg.stopSignalling();
+        AppMethodBeat.o(35600);
+      }
+    }), 0);
+    AppMethodBeat.o(35603);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.bc
  * JD-Core Version:    0.7.0.1
  */

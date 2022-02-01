@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 public final class bw
-  extends d<k>
+  extends c<j>
 {
-  public static final int CTRL_INDEX = 642;
-  public static final String NAME = "openWCCardHomePage";
+  public static final int CTRL_INDEX = 643;
+  public static final String NAME = "openWCCertHomePage";
 }
 
 

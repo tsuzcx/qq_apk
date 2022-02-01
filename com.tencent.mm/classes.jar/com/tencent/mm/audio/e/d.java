@@ -1,39 +1,35 @@
 package com.tencent.mm.audio.e;
 
-import com.tencent.f.i.e;
-import com.tencent.f.i.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.b.g.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
 
 public final class d
   implements a
 {
-  private com.tencent.qqpinyin.voicerecoapi.a dBB;
-  private a dBC;
-  BlockingQueue<g.a> dBm;
-  boolean dBn;
-  String dBo;
+  BlockingQueue<g.a> ftX;
+  boolean ftY;
+  String ftZ;
+  private com.tencent.qqpinyin.voicerecoapi.a fum;
+  private d.a fun;
   private OutputStream mFileOutputStream;
   
   public d()
   {
     AppMethodBeat.i(130024);
-    this.dBm = new ArrayBlockingQueue(1024);
-    this.dBn = false;
+    this.ftX = new ArrayBlockingQueue(1024);
+    this.ftY = false;
     AppMethodBeat.o(130024);
   }
   
-  public static boolean U(String paramString1, String paramString2)
+  public static boolean Z(String paramString1, String paramString2)
   {
     AppMethodBeat.i(130030);
     long l = System.currentTimeMillis();
@@ -43,33 +39,33 @@ public final class d
       AppMethodBeat.o(130030);
       return false;
     }
-    Object localObject = new o(paramString1);
-    if (!((o)localObject).exists())
+    Object localObject = new q(paramString1);
+    if (!((q)localObject).ifE())
     {
       Log.e("MicroMsg.SpeexWriter", "[voiceControl] decodePCMToSpeex filePath null");
       AppMethodBeat.o(130030);
       return false;
     }
-    Log.i("MicroMsg.SpeexWriter", "[voiceControl] decodePCMToSpeex pcmLen = " + ((o)localObject).length());
+    Log.i("MicroMsg.SpeexWriter", "[voiceControl] decodePCMToSpeex pcmLen = " + ((q)localObject).length());
     try
     {
       com.tencent.qqpinyin.voicerecoapi.a locala = new com.tencent.qqpinyin.voicerecoapi.a();
-      if (locala.hkr() != 0)
+      if (locala.inP() != 0)
       {
         Log.e("MicroMsg.SpeexWriter", "[voiceControl] speexInit fail");
-        locala.hks();
+        locala.inQ();
         AppMethodBeat.o(130030);
         return false;
       }
-      s.deleteFile(paramString2);
-      new o(paramString2).createNewFile();
+      u.deleteFile(paramString2);
+      new q(paramString2).ifM();
       byte[] arrayOfByte1 = null;
       localObject = arrayOfByte1;
       try
       {
         byte[] arrayOfByte2 = new byte[4096];
         localObject = arrayOfByte1;
-        paramString1 = s.openRead(paramString1);
+        paramString1 = u.Tf(paramString1);
         for (;;)
         {
           localObject = paramString1;
@@ -78,7 +74,7 @@ public final class d
             break;
           }
           localObject = paramString1;
-          arrayOfByte1 = locala.ah(arrayOfByte2, i);
+          arrayOfByte1 = locala.aj(arrayOfByte2, i);
           if (arrayOfByte1 == null)
           {
             localObject = paramString1;
@@ -87,7 +83,7 @@ public final class d
             return false;
           }
           localObject = paramString1;
-          int j = s.e(paramString2, arrayOfByte1, arrayOfByte1.length);
+          int j = u.F(paramString2, arrayOfByte1);
           localObject = paramString1;
           Log.i("MicroMsg.SpeexWriter", "[voiceControl] appendToFile " + j + ", readLen = " + i);
         }
@@ -98,13 +94,13 @@ public final class d
         if (localObject != null) {
           ((InputStream)localObject).close();
         }
-        locala.hks();
+        locala.inQ();
         AppMethodBeat.o(130030);
         return false;
       }
       paramString1.close();
       localObject = paramString1;
-      locala.hks();
+      locala.inQ();
       localObject = paramString1;
       Log.i("MicroMsg.SpeexWriter", "[voiceControl] decodePCMToSpeex = " + (System.currentTimeMillis() - l));
       AppMethodBeat.o(130030);
@@ -129,7 +125,7 @@ public final class d
   public final int a(g.a parama, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(130027);
-    if ((this.dBB == null) || (parama.buf == null) || (parama.dAc == 0))
+    if ((this.fum == null) || (parama.buf == null) || (parama.fsR == 0))
     {
       Log.e("MicroMsg.SpeexWriter", "try write invalid data to file");
       AppMethodBeat.o(130027);
@@ -137,7 +133,7 @@ public final class d
     }
     try
     {
-      parama = this.dBB.ah(parama.buf, parama.dAc);
+      parama = this.fum.aj(parama.buf, parama.fsR);
       if ((parama != null) && (parama.length > 0))
       {
         Log.d("MicroMsg.SpeexWriter", "write to file, len: %d", new Object[] { Integer.valueOf(parama.length) });
@@ -165,129 +161,115 @@ public final class d
   }
   
   /* Error */
-  public final void abP()
+  public final void agC()
   {
     // Byte code:
     //   0: ldc 214
-    //   2: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: ldc 64
+    //   2: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: ldc 62
     //   7: ldc 216
-    //   9: invokestatic 98	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   9: invokestatic 96	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   12: aload_0
     //   13: monitorenter
     //   14: aload_0
     //   15: iconst_1
-    //   16: putfield 41	com/tencent/mm/audio/e/d:dBn	Z
+    //   16: putfield 40	com/tencent/mm/audio/e/d:ftY	Z
     //   19: aload_0
     //   20: monitorexit
     //   21: aload_0
-    //   22: getfield 218	com/tencent/mm/audio/e/d:dBC	Lcom/tencent/mm/audio/e/d$a;
-    //   25: ifnull +30 -> 55
-    //   28: aload_0
-    //   29: getfield 218	com/tencent/mm/audio/e/d:dBC	Lcom/tencent/mm/audio/e/d$a;
-    //   32: astore_1
-    //   33: aload_1
-    //   34: getfield 222	com/tencent/mm/audio/e/d$a:dBz	Ljava/util/concurrent/Future;
-    //   37: ifnull +13 -> 50
-    //   40: aload_1
-    //   41: getfield 222	com/tencent/mm/audio/e/d$a:dBz	Ljava/util/concurrent/Future;
-    //   44: invokeinterface 228 1 0
-    //   49: pop
+    //   22: getfield 218	com/tencent/mm/audio/e/d:fun	Lcom/tencent/mm/audio/e/d$a;
+    //   25: ifnull +18 -> 43
+    //   28: ldc 214
+    //   30: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   33: aconst_null
+    //   34: athrow
+    //   35: astore_1
+    //   36: ldc 62
+    //   38: ldc 220
+    //   40: invokestatic 70	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   43: aload_0
+    //   44: getfield 163	com/tencent/mm/audio/e/d:fum	Lcom/tencent/qqpinyin/voicerecoapi/a;
+    //   47: ifnull +16 -> 63
     //   50: aload_0
-    //   51: aconst_null
-    //   52: putfield 218	com/tencent/mm/audio/e/d:dBC	Lcom/tencent/mm/audio/e/d$a;
-    //   55: aload_0
-    //   56: getfield 163	com/tencent/mm/audio/e/d:dBB	Lcom/tencent/qqpinyin/voicerecoapi/a;
-    //   59: ifnull +16 -> 75
-    //   62: aload_0
-    //   63: getfield 163	com/tencent/mm/audio/e/d:dBB	Lcom/tencent/qqpinyin/voicerecoapi/a;
-    //   66: invokevirtual 109	com/tencent/qqpinyin/voicerecoapi/a:hks	()I
-    //   69: pop
+    //   51: getfield 163	com/tencent/mm/audio/e/d:fum	Lcom/tencent/qqpinyin/voicerecoapi/a;
+    //   54: invokevirtual 107	com/tencent/qqpinyin/voicerecoapi/a:inQ	()I
+    //   57: pop
+    //   58: aload_0
+    //   59: aconst_null
+    //   60: putfield 163	com/tencent/mm/audio/e/d:fum	Lcom/tencent/qqpinyin/voicerecoapi/a;
+    //   63: aload_0
+    //   64: getfield 189	com/tencent/mm/audio/e/d:mFileOutputStream	Ljava/io/OutputStream;
+    //   67: ifnull +15 -> 82
     //   70: aload_0
-    //   71: aconst_null
-    //   72: putfield 163	com/tencent/mm/audio/e/d:dBB	Lcom/tencent/qqpinyin/voicerecoapi/a;
-    //   75: aload_0
-    //   76: getfield 189	com/tencent/mm/audio/e/d:mFileOutputStream	Ljava/io/OutputStream;
-    //   79: ifnull +15 -> 94
-    //   82: aload_0
-    //   83: getfield 189	com/tencent/mm/audio/e/d:mFileOutputStream	Ljava/io/OutputStream;
-    //   86: invokevirtual 229	java/io/OutputStream:close	()V
+    //   71: getfield 189	com/tencent/mm/audio/e/d:mFileOutputStream	Ljava/io/OutputStream;
+    //   74: invokevirtual 221	java/io/OutputStream:close	()V
+    //   77: aload_0
+    //   78: aconst_null
+    //   79: putfield 189	com/tencent/mm/audio/e/d:mFileOutputStream	Ljava/io/OutputStream;
+    //   82: ldc 214
+    //   84: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   87: return
+    //   88: astore_1
     //   89: aload_0
-    //   90: aconst_null
-    //   91: putfield 189	com/tencent/mm/audio/e/d:mFileOutputStream	Ljava/io/OutputStream;
-    //   94: ldc 214
-    //   96: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   99: return
-    //   100: astore_1
-    //   101: aload_0
-    //   102: monitorexit
-    //   103: ldc 214
-    //   105: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   108: aload_1
-    //   109: athrow
-    //   110: astore_1
-    //   111: ldc 64
-    //   113: ldc 231
-    //   115: invokestatic 72	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   118: goto -63 -> 55
-    //   121: astore_1
-    //   122: ldc 64
-    //   124: ldc 233
-    //   126: iconst_1
-    //   127: anewarray 4	java/lang/Object
-    //   130: dup
-    //   131: iconst_0
-    //   132: aload_1
-    //   133: invokevirtual 234	java/util/concurrent/ExecutionException:toString	()Ljava/lang/String;
-    //   136: aastore
-    //   137: invokestatic 208	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   140: goto -85 -> 55
-    //   143: astore_1
-    //   144: ldc 64
-    //   146: new 83	java/lang/StringBuilder
-    //   149: dup
-    //   150: ldc 236
-    //   152: invokespecial 86	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   155: aload_0
-    //   156: getfield 238	com/tencent/mm/audio/e/d:dBo	Ljava/lang/String;
-    //   159: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   162: ldc 240
-    //   164: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   167: aload_1
-    //   168: invokevirtual 155	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   171: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   174: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   177: invokestatic 72	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   180: goto -91 -> 89
+    //   90: monitorexit
+    //   91: ldc 214
+    //   93: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   96: aload_1
+    //   97: athrow
+    //   98: astore_1
+    //   99: ldc 62
+    //   101: ldc 223
+    //   103: iconst_1
+    //   104: anewarray 4	java/lang/Object
+    //   107: dup
+    //   108: iconst_0
+    //   109: aload_1
+    //   110: invokevirtual 224	java/util/concurrent/ExecutionException:toString	()Ljava/lang/String;
+    //   113: aastore
+    //   114: invokestatic 208	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   117: goto -74 -> 43
+    //   120: astore_1
+    //   121: ldc 62
+    //   123: new 81	java/lang/StringBuilder
+    //   126: dup
+    //   127: ldc 226
+    //   129: invokespecial 84	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   132: aload_0
+    //   133: getfield 228	com/tencent/mm/audio/e/d:ftZ	Ljava/lang/String;
+    //   136: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   139: ldc 230
+    //   141: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   144: aload_1
+    //   145: invokevirtual 154	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   148: invokevirtual 147	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   151: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   154: invokestatic 70	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   157: goto -80 -> 77
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	183	0	this	d
-    //   32	9	1	locala	a
-    //   100	9	1	localObject	Object
-    //   110	1	1	localInterruptedException	InterruptedException
-    //   121	12	1	localExecutionException	java.util.concurrent.ExecutionException
-    //   143	25	1	localException	Exception
+    //   0	160	0	this	d
+    //   35	1	1	localInterruptedException	java.lang.InterruptedException
+    //   88	9	1	localObject	Object
+    //   98	12	1	localExecutionException	java.util.concurrent.ExecutionException
+    //   120	25	1	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   14	21	100	finally
-    //   101	103	100	finally
-    //   28	50	110	java/lang/InterruptedException
-    //   50	55	110	java/lang/InterruptedException
-    //   28	50	121	java/util/concurrent/ExecutionException
-    //   50	55	121	java/util/concurrent/ExecutionException
-    //   82	89	143	java/lang/Exception
+    //   28	35	35	java/lang/InterruptedException
+    //   14	21	88	finally
+    //   28	35	98	java/util/concurrent/ExecutionException
+    //   70	77	120	java/lang/Exception
   }
   
-  public final boolean abQ()
+  public final boolean agD()
   {
     AppMethodBeat.i(130029);
-    if (this.dBB != null)
+    if (this.fum != null)
     {
-      this.dBB.hks();
-      this.dBB = null;
+      this.fum.inQ();
+      this.fum = null;
     }
-    this.dBB = new com.tencent.qqpinyin.voicerecoapi.a();
-    int i = this.dBB.hkr();
+    this.fum = new com.tencent.qqpinyin.voicerecoapi.a();
+    int i = this.fum.inP();
     if (i != 0)
     {
       Log.e("MicroMsg.SpeexWriter", "resetWriter speexInit failed: ".concat(String.valueOf(i)));
@@ -298,7 +280,7 @@ public final class d
     return true;
   }
   
-  public final boolean hz(String paramString)
+  public final boolean in(String paramString)
   {
     AppMethodBeat.i(130025);
     Log.i("MicroMsg.SpeexWriter", "initWriter, path: ".concat(String.valueOf(paramString)));
@@ -307,12 +289,12 @@ public final class d
       AppMethodBeat.o(130025);
       return false;
     }
-    this.dBo = paramString;
+    this.ftZ = paramString;
     try
     {
-      this.mFileOutputStream = s.dw(paramString, false);
-      this.dBB = new com.tencent.qqpinyin.voicerecoapi.a();
-      int i = this.dBB.hkr();
+      this.mFileOutputStream = u.Te(paramString);
+      this.fum = new com.tencent.qqpinyin.voicerecoapi.a();
+      int i = this.fum.inP();
       if (i != 0)
       {
         Log.e("MicroMsg.SpeexWriter", "speexInit failed: ".concat(String.valueOf(i)));
@@ -327,7 +309,7 @@ public final class d
     try
     {
       this.mFileOutputStream.close();
-      label105:
+      label103:
       Log.e("MicroMsg.SpeexWriter", "Error on init file: ", new Object[] { paramString });
       AppMethodBeat.o(130025);
       return false;
@@ -336,66 +318,13 @@ public final class d
     }
     catch (IOException localIOException)
     {
-      break label105;
-    }
-  }
-  
-  final class a
-    implements e, h
-  {
-    Future<?> dBz;
-    
-    public final void a(Future<?> paramFuture)
-    {
-      this.dBz = paramFuture;
-    }
-    
-    public final String getKey()
-    {
-      return "SpeexWriter_run";
-    }
-    
-    public final void run()
-    {
-      AppMethodBeat.i(130023);
-      for (;;)
-      {
-        synchronized (this.dBD)
-        {
-          boolean bool = this.dBD.dBn;
-          Log.d("MicroMsg.SpeexWriter", "ThreadSpeex in: " + bool + " queueLen: " + this.dBD.dBm.size());
-          if (bool) {
-            if (this.dBD.dBm.isEmpty()) {
-              break;
-            }
-          }
-        }
-        try
-        {
-          ??? = (g.a)this.dBD.dBm.poll(200L, TimeUnit.MILLISECONDS);
-          if (??? != null) {
-            break label159;
-          }
-          Log.e("MicroMsg.SpeexWriter", "poll byteBuf is null, " + this.dBD.dBo);
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          Log.i("MicroMsg.SpeexWriter", "ThreadSpeex poll null");
-        }
-        localObject2 = finally;
-        AppMethodBeat.o(130023);
-        throw localObject2;
-        continue;
-        label159:
-        this.dBD.a(localInterruptedException, 0, false);
-      }
-      AppMethodBeat.o(130023);
+      break label103;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.audio.e.d
  * JD-Core Version:    0.7.0.1
  */

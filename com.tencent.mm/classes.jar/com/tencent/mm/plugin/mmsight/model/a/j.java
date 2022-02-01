@@ -1,50 +1,80 @@
 package com.tencent.mm.plugin.mmsight.model.a;
 
-import android.annotation.TargetApi;
-import android.media.MediaFormat;
-import android.media.MediaMuxer;
+import android.app.ActivityManager;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.memory.a;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
-@Deprecated
-@TargetApi(18)
 public final class j
-  extends p
+  extends a<byte[]>
 {
-  public j(String paramString)
+  public static final j FbH;
+  private static int miK;
+  
+  static
   {
-    super(paramString);
+    AppMethodBeat.i(148835);
+    FbH = new j();
+    miK = 0;
+    AppMethodBeat.o(148835);
   }
   
-  public final void f(MediaFormat paramMediaFormat)
+  public final void as(byte[] paramArrayOfByte)
   {
     try
     {
-      AppMethodBeat.i(241183);
-      try
-      {
-        if ((this.mediaMuxer != null) && (this.zww == -1))
-        {
-          this.zww = this.mediaMuxer.addTrack(paramMediaFormat);
-          Log.i("MicroMsg.MMSightAACSystemMediaMuxer", "addAACTrack, aacTrackIndex: %s", new Object[] { Integer.valueOf(this.zww) });
-          if ((!this.isStart) && (this.zww != -1))
-          {
-            Log.i("MicroMsg.MMSightAACSystemMediaMuxer", "start!");
-            this.mediaMuxer.start();
-            this.isStart = true;
-          }
-        }
-        AppMethodBeat.o(241183);
-      }
-      catch (Exception paramMediaFormat)
-      {
-        for (;;)
-        {
-          Log.e("MicroMsg.MMSightAACSystemMediaMuxer", "addAACTrack error: %s", new Object[] { paramMediaFormat.getMessage() });
-          AppMethodBeat.o(241183);
-        }
-      }
+      AppMethodBeat.i(148826);
+      super.bU(paramArrayOfByte);
+      AppMethodBeat.o(148826);
       return;
+    }
+    finally
+    {
+      paramArrayOfByte = finally;
+      throw paramArrayOfByte;
+    }
+  }
+  
+  public final long baJ()
+  {
+    AppMethodBeat.i(148828);
+    if (miK <= 0) {
+      miK = ((ActivityManager)MMApplicationContext.getContext().getSystemService("activity")).getLargeMemoryClass();
+    }
+    if (miK >= 512)
+    {
+      AppMethodBeat.o(148828);
+      return 41943040L;
+    }
+    AppMethodBeat.o(148828);
+    return 20971520L;
+  }
+  
+  public final long baK()
+  {
+    return 10485760L;
+  }
+  
+  public final void baL()
+  {
+    AppMethodBeat.i(148829);
+    super.baL();
+    AppMethodBeat.o(148829);
+  }
+  
+  public final byte[] k(Integer paramInteger)
+  {
+    try
+    {
+      AppMethodBeat.i(148827);
+      byte[] arrayOfByte2 = (byte[])super.h(paramInteger);
+      byte[] arrayOfByte1 = arrayOfByte2;
+      if (arrayOfByte2 == null) {
+        arrayOfByte1 = new byte[paramInteger.intValue()];
+      }
+      AppMethodBeat.o(148827);
+      return arrayOfByte1;
     }
     finally {}
   }

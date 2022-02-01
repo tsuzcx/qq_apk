@@ -1,163 +1,177 @@
 package com.tencent.mm.ui;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.WeChatHosts;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.HashMap;
 
 public final class e
 {
-  public static final String OyP;
+  private static a VRJ;
+  private static HashMap<Integer, Long> VRK;
+  private static int VRL;
+  private static int VRM;
+  private static long VRN;
   
   static
   {
-    AppMethodBeat.i(205107);
-    OyP = "https://" + WeChatHosts.domainString(2131761749);
-    AppMethodBeat.o(205107);
+    AppMethodBeat.i(141281);
+    VRK = new HashMap();
+    VRL = 1100;
+    VRM = 2000;
+    VRN = 0L;
+    AppMethodBeat.o(141281);
   }
   
-  public static String avA(String paramString)
+  public static void a(a parama)
   {
-    AppMethodBeat.i(141283);
-    paramString = paramString + "_" + System.currentTimeMillis();
-    AppMethodBeat.o(141283);
-    return paramString;
+    VRJ = parama;
   }
   
-  public static final class b
+  public static boolean a(Context paramContext, boolean paramBoolean, Intent[] paramArrayOfIntent, Object... paramVarArgs)
   {
-    public static final String OyQ = e.p.Ozw;
-    public static final String OyR = e.p.Ozx;
-  }
-  
-  public static final class c
-  {
-    public static final class a
+    for (;;)
     {
-      public static final String OyS;
-      
-      static
+      long l;
+      Object localObject;
+      Long localLong2;
+      try
       {
-        AppMethodBeat.i(205100);
-        OyS = "https://" + MMApplicationContext.getContext().getString(2131761742) + "/cgi-bin/mmsupport-bin/newreadtemplate?t=weishihb20/index";
-        AppMethodBeat.o(205100);
+        AppMethodBeat.i(141278);
+        int j = paramArrayOfIntent.length;
+        int i = 0;
+        if (i < j)
+        {
+          if (bx(paramArrayOfIntent[i]))
+          {
+            paramBoolean = false;
+            AppMethodBeat.o(141278);
+            return paramBoolean;
+          }
+          i += 1;
+          continue;
+        }
+        l = System.currentTimeMillis();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramContext.toString()).append(",");
+        j = paramArrayOfIntent.length;
+        i = 0;
+        if (i < j)
+        {
+          ((StringBuilder)localObject).append(paramArrayOfIntent[i]);
+          ((StringBuilder)localObject).append(",");
+          i += 1;
+          continue;
+        }
+        j = paramVarArgs.length;
+        i = 0;
+        if (i < j)
+        {
+          ((StringBuilder)localObject).append(paramVarArgs[i]);
+          ((StringBuilder)localObject).append(",");
+          i += 1;
+          continue;
+        }
+        paramVarArgs = ((StringBuilder)localObject).toString();
+        localObject = Integer.valueOf(paramVarArgs.hashCode());
+        Long localLong1 = (Long)VRK.get(localObject);
+        localLong2 = Long.valueOf(System.currentTimeMillis());
+        if ((!paramBoolean) || (localLong1 == null)) {
+          break label370;
+        }
+        if (localLong2.longValue() - localLong1.longValue() <= VRM)
+        {
+          String str = byk(paramContext.getClass().toString());
+          if (paramArrayOfIntent[0].getComponent() != null)
+          {
+            paramContext = byk(paramArrayOfIntent[0].getComponent().getClassName());
+            VRJ.d(localLong2.longValue() - localLong1.longValue(), str, paramContext);
+          }
+        }
+        else
+        {
+          if (localLong2.longValue() - localLong1.longValue() > VRL) {
+            break label370;
+          }
+          VRK.put(localObject, localLong2);
+          Log.e("MicroMsg.CheckReduplicatedAcitiv", "starting the same activity in %sms, [k:%s, v:%s], curr: %s", new Object[] { Integer.valueOf(VRL), paramVarArgs, localLong1, localLong2 });
+          paramBoolean = true;
+          AppMethodBeat.o(141278);
+          continue;
+        }
+        paramContext = "None";
+      }
+      finally {}
+      continue;
+      label370:
+      if ((VRK.size() > 100) && (VRN != 0L) && (System.currentTimeMillis() - VRN > VRL)) {
+        VRK.clear();
+      }
+      VRK.put(localObject, localLong2);
+      VRN = System.currentTimeMillis();
+      Log.i("MicroMsg.CheckReduplicatedAcitiv", "check reduplicated cost %sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      paramBoolean = false;
+      AppMethodBeat.o(141278);
+    }
+  }
+  
+  private static boolean bx(Intent paramIntent)
+  {
+    AppMethodBeat.i(141280);
+    if (paramIntent != null) {}
+    try
+    {
+      if (paramIntent.getComponent() != null)
+      {
+        boolean bool = Util.isNullOrNil(paramIntent.getComponent().getClassName());
+        if (!bool) {}
+      }
+      else
+      {
+        AppMethodBeat.o(141280);
+        return false;
+      }
+      if (Class.forName(paramIntent.getComponent().getClassName()).getAnnotation(e.b.class) != null)
+      {
+        AppMethodBeat.o(141280);
+        return true;
       }
     }
-  }
-  
-  public static final class d
-  {
-    public static String OyT = "AntispamTicket";
-  }
-  
-  public static final class e
-  {
-    public static final String OyU;
-    public static final String OyV;
-    public static final String OyW;
-    
-    static
+    catch (Exception paramIntent)
     {
-      AppMethodBeat.i(205101);
-      OyU = "https://" + WeChatHosts.domainString(2131761748) + "/security/readtemplate?t=weixin_report/w_type&scene=%d#wechat_redirect";
-      OyV = "https://" + WeChatHosts.domainString(2131761726) + "/mp/infringement?url=%s#wechat_redirect";
-      OyW = "https://" + WeChatHosts.domainString(2131761748) + "/security/readtemplate?t=weixin_report/w_type&scene=60";
-      AppMethodBeat.o(205101);
+      Log.e("MicroMsg.CheckReduplicatedAcitiv", "skipReduplicateCheck exception %s", new Object[] { paramIntent });
+      AppMethodBeat.o(141280);
+      return false;
     }
+    AppMethodBeat.o(141280);
+    return false;
   }
   
-  public static abstract interface f {}
-  
-  public static final class g
+  private static String byk(String paramString)
   {
-    public static final String Ozb;
-    
-    static
+    AppMethodBeat.i(141279);
+    paramString = paramString.split("\\.");
+    if (paramString.length > 0)
     {
-      AppMethodBeat.i(141282);
-      Ozb = b.aKJ() + "switchAccountBg";
-      AppMethodBeat.o(141282);
+      paramString = paramString[(paramString.length - 1)];
+      AppMethodBeat.o(141279);
+      return paramString;
     }
+    AppMethodBeat.o(141279);
+    return "";
   }
   
-  public static final class j {}
-  
-  public static final class m
+  public static int hFA()
   {
-    public static String Ozm = "trust_friend_show_tips";
+    return VRL;
   }
   
-  public static abstract interface n
+  public static abstract interface a
   {
-    public static final String Ozn = ;
-    public static final String lnh = MMApplicationContext.getPackageName() + ":tools";
-  }
-  
-  public static final class o
-  {
-    public static final String Ozo;
-    
-    static
-    {
-      AppMethodBeat.i(205105);
-      Ozo = "https://" + MMApplicationContext.getContext().getString(2131761742) + "/cgi-bin/mmsupport-bin/readtemplate?t=page/common_page__upgrade&btn_text=btn_text_0&text=text008";
-      AppMethodBeat.o(205105);
-    }
-  }
-  
-  public static final class p
-  {
-    public static String OzA;
-    public static String OzB;
-    public static String OzC;
-    public static String OzD;
-    public static String OzE;
-    public static String OzF;
-    public static String OzG;
-    public static String OzH;
-    public static String OzI;
-    public static String OzJ;
-    public static String OzK;
-    public static final String Ozp;
-    public static String Ozq;
-    public static String Ozr;
-    public static String Ozs;
-    public static String Ozt;
-    public static String Ozu;
-    public static String Ozv;
-    public static String Ozw;
-    public static String Ozx;
-    public static String Ozy;
-    public static String Ozz;
-    
-    static
-    {
-      AppMethodBeat.i(205106);
-      Ozp = "https://" + MMApplicationContext.getContext().getString(2131761742) + "/update/";
-      Ozq = "k_tmpl_params";
-      Ozr = "k_tmpl_next_webview";
-      Ozs = "k_tmpl_start_load_page";
-      Ozt = "k_tmpl_page_info";
-      Ozu = "k_tmpl_data_key";
-      Ozv = "k_tmpl_session_id";
-      Ozw = "k_tmpl_scene";
-      Ozx = "k_tmpl_sub_scene";
-      Ozy = "k_tmpl_is_webview_prc_created";
-      Ozz = "k_tmpl_orig_prc_pid";
-      OzA = "k_tmpl_item_show_type";
-      OzB = "k_tmpl_open_type";
-      OzC = "k_tmpl_session";
-      OzD = "k_tmpl_force_url";
-      OzE = "k_tmpl_content_id";
-      OzF = "k_serach_log_id";
-      OzG = "k_serach_log_args";
-      OzH = "k_scan_from_biz_username";
-      OzI = "ad_ux_info_for_jsapi_pay";
-      OzJ = "no_support_dark_mode";
-      OzK = "key_allow_jump_inner_jump_without_perm";
-      AppMethodBeat.o(205106);
-    }
+    public abstract void d(long paramLong, String paramString1, String paramString2);
   }
 }
 

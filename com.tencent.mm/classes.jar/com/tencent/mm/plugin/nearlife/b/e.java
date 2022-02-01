@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.nearlife.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bd;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.be;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class e
-  implements bd
+  implements be
 {
-  private com.tencent.mm.pluginsdk.location.a AAX;
+  private com.tencent.mm.pluginsdk.location.a GtZ;
   
   public e()
   {
     AppMethodBeat.i(163198);
-    this.AAX = new a();
+    this.GtZ = new a();
     AppMethodBeat.o(163198);
   }
   
@@ -30,8 +30,8 @@ public final class e
   {
     AppMethodBeat.i(26559);
     Log.i("MicroMsg.SubCoreNearLife", "onAccountPostReset SubCoreNearLife");
-    g.b(com.tencent.mm.plugin.story.api.a.class, new com.tencent.mm.plugin.story.api.a() {});
-    g.b(com.tencent.mm.pluginsdk.location.a.class, this.AAX);
+    h.b(com.tencent.mm.plugin.story.api.a.class, new com.tencent.mm.plugin.story.api.a() {});
+    h.b(com.tencent.mm.pluginsdk.location.a.class, this.GtZ);
     AppMethodBeat.o(26559);
   }
   
@@ -41,7 +41,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.b.e
  * JD-Core Version:    0.7.0.1
  */

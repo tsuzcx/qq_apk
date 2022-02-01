@@ -7,10 +7,10 @@ public enum a
   static
   {
     AppMethodBeat.i(143524);
-    QPL = new a("AROUND", 0);
-    QPM = new a("UP_AND_DOWN", 1);
-    QPN = new a("LEFT_AND_RIGHT", 2);
-    QPO = new a[] { QPL, QPM, QPN };
+    Yow = new a("AROUND", 0);
+    Yox = new a("UP_AND_DOWN", 1);
+    Yoy = new a("LEFT_AND_RIGHT", 2);
+    Yoz = new a[] { Yow, Yox, Yoy };
     AppMethodBeat.o(143524);
   }
   

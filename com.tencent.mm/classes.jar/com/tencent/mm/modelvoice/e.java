@@ -1,24 +1,24 @@
 package com.tencent.mm.modelvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.q.a;
-import com.tencent.mm.ak.q.b;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.q.a;
+import com.tencent.mm.an.q.b;
 import com.tencent.mm.compatible.util.f;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bb;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.ahx;
-import com.tencent.mm.protocal.protobuf.ahy;
+import com.tencent.mm.protocal.protobuf.aii;
+import com.tencent.mm.protocal.protobuf.aij;
+import com.tencent.mm.protocal.protobuf.eae;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
@@ -33,23 +33,23 @@ public final class e
   extends q
   implements m
 {
-  private static ba juj;
-  private static List<c> juk;
+  private static bb mjN;
+  private static List<c> mjO;
   private i callback;
-  private String dWq;
+  private String fPV;
   public String fileName;
-  private MTimerHandler iKj;
-  private String jui;
-  private boolean jul;
-  private boolean jum;
+  private MTimerHandler lAo;
+  private String mjM;
+  private boolean mjP;
+  private boolean mjQ;
   public int retCode;
   private d rr;
   
   static
   {
     AppMethodBeat.i(148415);
-    juj = null;
-    juk = new ArrayList();
+    mjN = null;
+    mjO = new ArrayList();
     AppMethodBeat.o(148415);
   }
   
@@ -57,9 +57,9 @@ public final class e
   {
     AppMethodBeat.i(148408);
     this.retCode = 0;
-    this.jul = false;
-    this.jum = false;
-    this.iKj = new MTimerHandler(new MTimerHandler.CallBack()
+    this.mjP = false;
+    this.mjQ = false;
+    this.lAo = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -84,9 +84,9 @@ public final class e
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      this.jui = paramr.jui;
-      this.dWq = paramr.dWq;
-      Log.i("MicroMsg.NetSceneDownloadVoice", "NetSceneDownloadVoice[%s]:  file[%s] voiceFormat[%s] user[%s]", new Object[] { toString(), this.fileName, this.jui, this.dWq });
+      this.mjM = paramr.mjM;
+      this.fPV = paramr.fPV;
+      Log.i("MicroMsg.NetSceneDownloadVoice", "NetSceneDownloadVoice[%s]:  file[%s] voiceFormat[%s] user[%s]", new Object[] { toString(), this.fileName, this.mjM, this.fPV });
       AppMethodBeat.o(148408);
       return;
       bool = false;
@@ -94,18 +94,18 @@ public final class e
     }
   }
   
-  public static void a(ba paramba)
+  public static void a(bb parambb)
   {
-    if (juj == null) {
-      juj = paramba;
+    if (mjN == null) {
+      mjN = parambb;
     }
   }
   
   public static void a(c paramc)
   {
     AppMethodBeat.i(148405);
-    if (!juk.contains(paramc)) {
-      juk.add(paramc);
+    if (!mjO.contains(paramc)) {
+      mjO.add(paramc);
     }
     AppMethodBeat.o(148405);
   }
@@ -113,27 +113,27 @@ public final class e
   public static void b(c paramc)
   {
     AppMethodBeat.i(148406);
-    juk.remove(paramc);
+    mjO.remove(paramc);
     AppMethodBeat.o(148406);
   }
   
   private void doNotify()
   {
     AppMethodBeat.i(148407);
-    final ca localca = s.Rn(this.fileName);
+    final ca localca = s.YK(this.fileName);
     if (localca != null)
     {
-      if (juj != null) {
-        juj.a(localca);
+      if (mjN != null) {
+        mjN.a(localca);
       }
-      Iterator localIterator = juk.iterator();
+      Iterator localIterator = mjO.iterator();
       while (localIterator.hasNext()) {
         MMHandlerThread.postToMainThread(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(148403);
-            this.jun.ah(localca);
+            this.mjR.ap(localca);
             AppMethodBeat.o(148403);
           }
         });
@@ -153,61 +153,61 @@ public final class e
       AppMethodBeat.o(148409);
       return -1;
     }
-    parami = s.Ro(this.fileName);
-    if ((parami == null) || (!parami.bif()))
+    parami = s.YL(this.fileName);
+    if ((parami == null) || (!parami.brD()))
     {
       Log.e("MicroMsg.NetSceneDownloadVoice", "Get info Failed file:" + this.fileName);
       this.retCode = (f.getLine() + 10000);
       AppMethodBeat.o(148409);
       return -1;
     }
-    Log.i("MicroMsg.NetSceneDownloadVoice", "doScene file:" + this.fileName + " netTimes:" + parami.jsp);
-    if (!s.Re(this.fileName))
+    Log.i("MicroMsg.NetSceneDownloadVoice", "doScene file:" + this.fileName + " netTimes:" + parami.mhS);
+    if (!s.YB(this.fileName))
     {
       Log.e("MicroMsg.NetSceneDownloadVoice", "checkVoiceNetTimes Failed file:" + this.fileName);
-      s.QE(this.fileName);
+      s.Yb(this.fileName);
       this.retCode = (f.getLine() + 10000);
       AppMethodBeat.o(148409);
       return -1;
     }
-    int i = parami.jqP - parami.jsj;
+    int i = parami.mgq - parami.mhM;
     if (i <= 0)
     {
       if (parami.status == 5)
       {
-        this.jum = true;
-        Log.e("MicroMsg.NetSceneDownloadVoice", "doScene file:" + this.fileName + " Net:" + parami.jqP + " Local:" + parami.jsj);
+        this.mjQ = true;
+        Log.e("MicroMsg.NetSceneDownloadVoice", "doScene file:" + this.fileName + " Net:" + parami.mgq + " Local:" + parami.mhM);
         this.retCode = (f.getLine() + 10000);
         AppMethodBeat.o(148409);
         return -1;
       }
-      s.a(this.fileName, parami.jsj, null);
+      s.a(this.fileName, parami.mhM, null);
       this.retCode = (f.getLine() + 10000);
       AppMethodBeat.o(148409);
       return -1;
     }
-    if (parami.iKP == parami.jqP) {
-      this.jul = true;
+    if (parami.lAW == parami.mgq) {
+      this.mjP = true;
     }
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new ahx();
-    ((d.a)localObject).iLO = new ahy();
+    ((d.a)localObject).lBU = new aii();
+    ((d.a)localObject).lBV = new aij();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/downloadvoice";
     ((d.a)localObject).funcId = 128;
-    ((d.a)localObject).iLP = 20;
+    ((d.a)localObject).lBW = 20;
     ((d.a)localObject).respCmdId = 1000000020;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (ahx)this.rr.iLK.iLR;
-    ((ahx)localObject).KIz = parami.clientId;
-    ((ahx)localObject).Brn = parami.dTS;
-    ((ahx)localObject).KUy = i;
-    ((ahx)localObject).KZk = parami.jsj;
-    if (ab.Eq(this.dWq))
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (aii)d.b.b(this.rr.lBR);
+    ((aii)localObject).RJQ = parami.clientId;
+    ((aii)localObject).HlH = parami.fNu;
+    ((aii)localObject).RVD = i;
+    ((aii)localObject).Sat = parami.mhM;
+    if (ab.Lj(this.fPV))
     {
-      ((ahx)localObject).KGO = this.dWq;
-      ((ahx)localObject).LrE = parami.jvv;
+      ((aii)localObject).RIi = this.fPV;
+      ((aii)localObject).Stb = parami.mkY;
     }
-    Log.i("MicroMsg.NetSceneDownloadVoice", "[%s]doScene req.ClientMsgId:%s req.MsgId:%d req.NewMsgId:%d, req.Length:%d req.Offset:%d req.ChatRoomName:%s req.MasterBufId %d", new Object[] { toString(), ((ahx)localObject).KIz, Integer.valueOf(((ahx)localObject).Brl), Long.valueOf(((ahx)localObject).Brn), Integer.valueOf(((ahx)localObject).KUy), Integer.valueOf(((ahx)localObject).KZk), ((ahx)localObject).KGO, Long.valueOf(((ahx)localObject).LrE) });
+    Log.i("MicroMsg.NetSceneDownloadVoice", "[%s]doScene req.ClientMsgId:%s req.MsgId:%d req.NewMsgId:%d, req.Length:%d req.Offset:%d req.ChatRoomName:%s req.MasterBufId %d", new Object[] { toString(), ((aii)localObject).RJQ, Integer.valueOf(((aii)localObject).HlE), Long.valueOf(((aii)localObject).HlH), Integer.valueOf(((aii)localObject).RVD), Integer.valueOf(((aii)localObject).Sat), ((aii)localObject).RIi, Long.valueOf(((aii)localObject).Stb) });
     i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(148409);
     return i;
@@ -222,71 +222,71 @@ public final class e
   {
     AppMethodBeat.i(148413);
     Log.i("MicroMsg.NetSceneDownloadVoice", "onGYNetEnd[" + toString() + "] file:" + this.fileName + " + id:" + paramInt1 + " errtype:" + paramInt2 + " errCode:" + paramInt3);
-    paramArrayOfByte = (ahy)((d)params).iLL.iLR;
-    if (paramArrayOfByte.LrF == 1)
+    paramArrayOfByte = (aij)d.c.b(((d)params).lBS);
+    if (paramArrayOfByte.Stc == 1)
     {
       Log.v("MicroMsg.NetSceneDownloadVoice", this.fileName + " cancelFlag = 1");
-      s.Rj(this.fileName);
+      s.YG(this.fileName);
       AppMethodBeat.o(148413);
       return;
     }
     if (paramInt3 == -22)
     {
-      s.QE(this.fileName);
+      s.Yb(this.fileName);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(148413);
       return;
     }
     if ((paramInt2 == 4) && (paramInt3 != 0))
     {
-      h.CyF.idkeyStat(111L, 231L, 1L, false);
-      s.QE(this.fileName);
+      h.IzE.idkeyStat(111L, 231L, 1L, false);
+      s.Yb(this.fileName);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(148413);
       return;
     }
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      h.CyF.idkeyStat(111L, 230L, 1L, false);
+      h.IzE.idkeyStat(111L, 230L, 1L, false);
       Log.e("MicroMsg.NetSceneDownloadVoice", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + " resp:" + params.getRespObj().getRetCode());
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(148413);
       return;
     }
-    Log.d("MicroMsg.NetSceneDownloadVoice", "onGYNetEnd file:" + this.fileName + " Recv:" + paramArrayOfByte.BsI.getILen() + " fileOff:" + paramArrayOfByte.KZk);
-    if (paramArrayOfByte.BsI.getBuffer() == null)
+    Log.d("MicroMsg.NetSceneDownloadVoice", "onGYNetEnd file:" + this.fileName + " Recv:" + paramArrayOfByte.Hnc.Ufv + " fileOff:" + paramArrayOfByte.Sat);
+    if (paramArrayOfByte.Hnc.Tkb == null)
     {
       Log.e("MicroMsg.NetSceneDownloadVoice", "onGYNetEnd get recv Buffer null");
-      s.QE(this.fileName);
+      s.Yb(this.fileName);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(148413);
       return;
     }
-    params = paramArrayOfByte.BsI.getBuffer().toByteArray();
+    params = paramArrayOfByte.Hnc.Tkb.toByteArray();
     if (params.length == 0)
     {
       Log.e("MicroMsg.NetSceneDownloadVoice", "onGYNetEnd Recv Buf ZERO length ");
-      s.QE(this.fileName);
+      s.Yb(this.fileName);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(148413);
       return;
     }
-    paramInt1 = s.bE(this.jui, this.fileName).write(params, params.length, paramArrayOfByte.KZk);
+    paramInt1 = s.bH(this.mjM, this.fileName).A(params, params.length, paramArrayOfByte.Sat);
     if (paramInt1 < 0)
     {
       Log.e("MicroMsg.NetSceneDownloadVoice", "onGYNetEnd Write Failed File:" + this.fileName + " ret:" + paramInt1);
-      s.QE(this.fileName);
+      s.Yb(this.fileName);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(148413);
       return;
     }
     s.a(this.fileName, params, params.length);
-    Log.i("MicroMsg.NetSceneDownloadVoice", "OnRecvEnd : file:" + this.fileName + " filesize:" + paramInt1 + " voiceFormat:" + this.jui);
+    Log.i("MicroMsg.NetSceneDownloadVoice", "OnRecvEnd : file:" + this.fileName + " filesize:" + paramInt1 + " voiceFormat:" + this.mjM);
     paramInt1 = s.a(this.fileName, paramInt1, null);
     Log.i("MicroMsg.NetSceneDownloadVoice", "OnRecvEnd[" + toString() + "] : file:%s ret:%s", new Object[] { this.fileName, Integer.valueOf(paramInt1) });
     if (paramInt1 < 0)
     {
-      h.CyF.idkeyStat(111L, 229L, 1L, false);
+      h.IzE.idkeyStat(111L, 229L, 1L, false);
       Log.e("MicroMsg.NetSceneDownloadVoice", "onGYNetEnd file:" + this.fileName + "updateAfterRecv Ret:" + paramInt1);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(148413);
@@ -300,10 +300,10 @@ public final class e
       return;
     }
     long l = 1000L;
-    if (this.jul) {
+    if (this.mjP) {
       l = 0L;
     }
-    this.iKj.startTimer(l);
+    this.lAo.startTimer(l);
     AppMethodBeat.o(148413);
   }
   
@@ -317,7 +317,7 @@ public final class e
     AppMethodBeat.i(148412);
     boolean bool = super.securityLimitCountReach();
     if (bool) {
-      h.CyF.idkeyStat(111L, 232L, 1L, false);
+      h.IzE.idkeyStat(111L, 232L, 1L, false);
     }
     AppMethodBeat.o(148412);
     return bool;
@@ -326,15 +326,15 @@ public final class e
   public final q.b securityVerificationChecked(com.tencent.mm.network.s params)
   {
     AppMethodBeat.i(148410);
-    params = (ahx)((d)params).iLK.iLR;
-    if ((params.Brn == 0L) || (params.KIz == null) || (params.KIz.length() == 0) || (params.KUy <= 0) || (params.KZk < 0))
+    params = (aii)d.b.b(((d)params).lBR);
+    if ((params.HlH == 0L) || (params.RJQ == null) || (params.RJQ.length() == 0) || (params.RVD <= 0) || (params.Sat < 0))
     {
-      s.QE(this.fileName);
-      params = q.b.iMr;
+      s.Yb(this.fileName);
+      params = q.b.lCy;
       AppMethodBeat.o(148410);
       return params;
     }
-    params = q.b.iMq;
+    params = q.b.lCx;
     AppMethodBeat.o(148410);
     return params;
   }
@@ -342,14 +342,14 @@ public final class e
   public final void setSecurityCheckError(q.a parama)
   {
     AppMethodBeat.i(148411);
-    h.CyF.idkeyStat(111L, 233L, 1L, false);
-    s.QE(this.fileName);
+    h.IzE.idkeyStat(111L, 233L, 1L, false);
+    s.Yb(this.fileName);
     AppMethodBeat.o(148411);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelvoice.e
  * JD-Core Version:    0.7.0.1
  */

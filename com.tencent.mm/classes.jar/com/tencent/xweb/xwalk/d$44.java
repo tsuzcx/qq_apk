@@ -11,14 +11,14 @@ final class d$44
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(207268);
-    this.SGe.G(this.SGF, this.SGG, this.SGH);
-    AppMethodBeat.o(207268);
+    AppMethodBeat.i(207413);
+    this.aaht.J(this.aahU, this.aahV, this.aahW);
+    AppMethodBeat.o(207413);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.xwalk.d.44
  * JD-Core Version:    0.7.0.1
  */

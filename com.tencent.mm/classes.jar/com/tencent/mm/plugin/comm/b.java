@@ -11,35 +11,35 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.GradientDrawable.Orientation;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
-import com.tencent.mm.av.q;
+import com.tencent.mm.ae.d;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.blur.f;
 import java.util.Arrays;
-import kotlin.g.b.ae;
+import kotlin.g.b.af;
 import kotlin.g.b.p;
 import kotlin.l;
+import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/comm/MusicMvUIUtil;", "", "()V", "TAG", "", "addGradientDrawableToBitmap", "Landroid/graphics/Bitmap;", "isDarkMode", "", "bm", "calcAndUpdateBlurBm", "", "context", "Landroid/content/Context;", "container", "Landroid/view/View;", "bitmap", "md5Key", "targetWidth", "", "targetHeight", "updateBlurBmBackground", "plugin-comm_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/comm/MusicMvUIUtil;", "", "()V", "TAG", "", "addGradientDrawableToBitmap", "Landroid/graphics/Bitmap;", "isDarkMode", "", "bm", "calcAndUpdateBlurBm", "", "context", "Landroid/content/Context;", "container", "Landroid/view/View;", "bitmap", "md5Key", "targetWidth", "", "targetHeight", "updateBlurBmBackground", "plugin-comm_release"})
 public final class b
 {
-  public static final b qCp;
+  public static final b ubp;
   
   static
   {
-    AppMethodBeat.i(223471);
-    qCp = new b();
-    AppMethodBeat.o(223471);
+    AppMethodBeat.i(204042);
+    ubp = new b();
+    AppMethodBeat.o(204042);
   }
   
   @SuppressLint({"WrongConstant"})
   public static Bitmap a(boolean paramBoolean, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(223469);
-    p.h(paramBitmap, "bm");
+    AppMethodBeat.i(204034);
+    p.k(paramBitmap, "bm");
     Log.e("MicroMsg.Mv.MusicMvUIUtil", "addGradientDrawableToBitmap, start ");
     long l = System.currentTimeMillis();
     Object localObject = new int[2];
@@ -61,48 +61,48 @@ public final class b
     ((GradientDrawable)tmp51_49).setGradientType(0);
     ((GradientDrawable)tmp51_49).setBounds(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
     ((GradientDrawable)tmp51_49).draw(new Canvas(paramBitmap));
-    tmp51_49 = ae.SYK;
+    tmp51_49 = af.aaBG;
     tmp51_49 = String.format(" addGradientDrawableToBitmap end, cost:%d", Arrays.copyOf(new Object[] { Long.valueOf(System.currentTimeMillis() - l) }, 1));
-    p.g(tmp51_49, "java.lang.String.format(format, *args)");
+    p.j(tmp51_49, "java.lang.String.format(format, *args)");
     Log.e("MicroMsg.Mv.MusicMvUIUtil", (String)tmp51_49);
-    AppMethodBeat.o(223469);
+    AppMethodBeat.o(204034);
     return paramBitmap;
   }
   
-  public static void a(final Context paramContext, View paramView, final Bitmap paramBitmap, final String paramString)
+  public static void a(final Context paramContext, final View paramView, final Bitmap paramBitmap, final String paramString)
   {
-    AppMethodBeat.i(223470);
-    p.h(paramContext, "context");
-    p.h(paramView, "container");
-    p.h(paramBitmap, "bitmap");
-    p.h(paramString, "md5Key");
-    Bitmap localBitmap = q.bcV().OQ(paramString);
+    AppMethodBeat.i(204040);
+    p.k(paramContext, "context");
+    p.k(paramView, "container");
+    p.k(paramBitmap, "bitmap");
+    p.k(paramString, "md5Key");
+    final Bitmap localBitmap = com.tencent.mm.ay.q.bml().Wo(paramString);
     if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
-      d.h((kotlin.g.a.a)new b.a(paramContext, localBitmap, paramView));
-      AppMethodBeat.o(223470);
+      d.uiThread((kotlin.g.a.a)new a(paramContext, localBitmap, paramView));
+      AppMethodBeat.o(204040);
       return;
     }
     if ((paramView.getWidth() > 0) && (paramView.getHeight() > 0))
     {
       a(paramContext, paramView, paramBitmap, paramString, paramView.getWidth(), paramView.getHeight());
-      AppMethodBeat.o(223470);
+      AppMethodBeat.o(204040);
       return;
     }
     paramView.post((Runnable)new b(paramView, paramContext, paramBitmap, paramString));
-    AppMethodBeat.o(223470);
+    AppMethodBeat.o(204040);
   }
   
   private static void a(Context paramContext, View paramView, Bitmap paramBitmap, String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(258501);
+    AppMethodBeat.i(204038);
     try
     {
       long l = Util.currentTicks();
       if (paramBitmap == null) {}
       try
       {
-        p.hyc();
+        p.iCn();
         int j = paramBitmap.getHeight();
         int i = paramBitmap.getWidth();
         paramInt1 = (int)(j * 1.0F * (paramInt2 * 1.0F / paramInt1));
@@ -123,25 +123,36 @@ public final class b
       }
       finally
       {
-        AppMethodBeat.o(258501);
+        AppMethodBeat.o(204038);
       }
       if (paramBitmap != null)
       {
-        q.bcV().h(paramString, paramBitmap);
+        com.tencent.mm.ay.q.bml().h(paramString, paramBitmap);
         paramView.setBackground((Drawable)new BitmapDrawable(paramContext.getResources(), paramBitmap));
       }
       Log.i("MicroMsg.Mv.MusicMvUIUtil", "updateBlurBmBackground, after blur, cost:" + Util.ticksToNow(l));
-      AppMethodBeat.o(258501);
+      AppMethodBeat.o(204038);
       return;
     }
     catch (Exception paramContext)
     {
       Log.e("MicroMsg.Mv.MusicMvUIUtil", "updateBlurBmBackground, fail, reason:" + paramContext.getMessage());
-      AppMethodBeat.o(258501);
+      AppMethodBeat.o(204038);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  static final class a
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<x>
+  {
+    a(Context paramContext, Bitmap paramBitmap, View paramView)
+    {
+      super();
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -149,17 +160,17 @@ public final class b
     
     public final void run()
     {
-      AppMethodBeat.i(258500);
-      int i = this.qCr.getWidth();
-      int j = this.qCr.getHeight();
-      if ((this.qCr.getWidth() == 0) || (this.qCr.getHeight() == 0))
+      AppMethodBeat.i(199318);
+      int i = this.ubr.getWidth();
+      int j = this.ubr.getHeight();
+      if ((this.ubr.getWidth() == 0) || (this.ubr.getHeight() == 0))
       {
-        i = com.tencent.mm.cb.a.fromDPToPix(paramContext, 268);
-        j = com.tencent.mm.cb.a.fromDPToPix(paramContext, 80);
+        i = com.tencent.mm.ci.a.fromDPToPix(paramContext, 268);
+        j = com.tencent.mm.ci.a.fromDPToPix(paramContext, 80);
       }
-      b localb = b.qCp;
-      b.b(paramContext, this.qCr, paramBitmap, paramString, i, j);
-      AppMethodBeat.o(258500);
+      b localb = b.ubp;
+      b.b(paramContext, this.ubr, paramBitmap, paramString, i, j);
+      AppMethodBeat.o(199318);
     }
   }
 }

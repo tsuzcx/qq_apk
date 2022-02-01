@@ -10,51 +10,67 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.h;
 import com.tencent.mm.kiss.a.b;
 import com.tencent.mm.ui.MMFragment;
 
 public abstract class MMPreferenceFragment
   extends MMFragment
 {
-  private int OZf = 0;
-  private int OZg = 0;
-  protected boolean OZh;
-  protected h adapter;
+  private int Wso = 0;
+  private int Wsp = 0;
+  private boolean Wsq;
+  private h adapter;
   private boolean dirty = false;
   private boolean isRefreshing = false;
-  protected ListView list;
+  private ListView list;
   private SharedPreferences sp;
   
-  public final void gLO()
+  public int getLayoutId()
   {
-    if (this.OZh) {}
+    return a.h.mm_preference_fragment_list_content;
+  }
+  
+  public View getLayoutView()
+  {
+    b.aIK();
+    return b.d(getContext(), a.h.mm_preference_fragment_list_content);
+  }
+  
+  public final ListView getListView()
+  {
+    return this.list;
+  }
+  
+  public final f getPreferenceScreen()
+  {
+    return this.adapter;
+  }
+  
+  public abstract int getResourceId();
+  
+  public final void hKS()
+  {
+    if (this.Wsq) {}
     int i;
     do
     {
       return;
       i = getResourceId();
     } while (i == -1);
-    this.adapter.addPreferencesFromResource(i);
-    this.OZh = true;
+    this.adapter.auC(i);
+    this.Wsq = true;
   }
   
-  public int getLayoutId()
+  public final boolean hKT()
   {
-    return 2131495592;
+    return this.Wsq;
   }
-  
-  public View getLayoutView()
-  {
-    b.aBh();
-    return b.c(getContext(), 2131495592);
-  }
-  
-  public abstract int getResourceId();
   
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.OZh = false;
+    this.Wsq = false;
     this.sp = getSharedPreferences(getPackageName() + "_preferences", 0);
     this.list = ((ListView)findViewById(16908298));
     this.adapter = new h(getContext(), this.list, this.sp);
@@ -63,7 +79,7 @@ public abstract class MMPreferenceFragment
       public final boolean a(Preference paramAnonymousPreference, Object paramAnonymousObject)
       {
         AppMethodBeat.i(142614);
-        if ((!MMPreferenceFragment.a(MMPreferenceFragment.this)) && (paramAnonymousPreference.isEnabled()) && (paramAnonymousPreference.OZu))
+        if ((!MMPreferenceFragment.a(MMPreferenceFragment.this)) && (paramAnonymousPreference.isEnabled()) && (paramAnonymousPreference.WsD))
         {
           MMPreferenceFragment.a(MMPreferenceFragment.this, true);
           if (!(paramAnonymousPreference instanceof CheckBoxPreference)) {
@@ -71,7 +87,7 @@ public abstract class MMPreferenceFragment
           }
           paramAnonymousObject = (CheckBoxPreference)paramAnonymousPreference;
           paramAnonymousObject.setChecked(paramAnonymousObject.isChecked());
-          if (paramAnonymousObject.OZw) {
+          if (paramAnonymousObject.WsF) {
             MMPreferenceFragment.b(MMPreferenceFragment.this).edit().putBoolean(paramAnonymousPreference.mKey, paramAnonymousObject.isChecked()).commit();
           }
           MMPreferenceFragment.c(MMPreferenceFragment.this);
@@ -109,7 +125,7 @@ public abstract class MMPreferenceFragment
         }
         int i = MMPreferenceFragment.e(MMPreferenceFragment.this).getHeaderViewsCount();
         paramAnonymousAdapterView = (Preference)MMPreferenceFragment.d(MMPreferenceFragment.this).getItem(paramAnonymousInt - i);
-        if ((paramAnonymousAdapterView.isEnabled()) && (paramAnonymousAdapterView.OZu))
+        if ((paramAnonymousAdapterView.isEnabled()) && (paramAnonymousAdapterView.WsD))
         {
           if ((paramAnonymousAdapterView instanceof CheckBoxPreference))
           {
@@ -119,14 +135,14 @@ public abstract class MMPreferenceFragment
           if ((paramAnonymousAdapterView instanceof DialogPreference))
           {
             paramAnonymousView = (DialogPreference)paramAnonymousAdapterView;
-            paramAnonymousView.showDialog();
-            paramAnonymousView.OXB = new DialogPreference.a()
+            paramAnonymousView.elK();
+            paramAnonymousView.WqL = new DialogPreference.a()
             {
-              public final void gLD()
+              public final void hKF()
               {
                 AppMethodBeat.i(142615);
                 MMPreferenceFragment.c(MMPreferenceFragment.this);
-                if (paramAnonymousView.OZw) {
+                if (paramAnonymousView.WsF) {
                   MMPreferenceFragment.b(MMPreferenceFragment.this).edit().putString(paramAnonymousAdapterView.mKey, paramAnonymousView.getValue()).commit();
                 }
                 MMPreferenceFragment.d(MMPreferenceFragment.this).notifyDataSetChanged();
@@ -137,14 +153,14 @@ public abstract class MMPreferenceFragment
           if ((paramAnonymousAdapterView instanceof EditPreference))
           {
             paramAnonymousView = (EditPreference)paramAnonymousAdapterView;
-            paramAnonymousView.showDialog();
-            paramAnonymousView.OXD = new EditPreference.a()
+            paramAnonymousView.elK();
+            paramAnonymousView.WqN = new EditPreference.a()
             {
-              public final void gLD()
+              public final void hKF()
               {
                 AppMethodBeat.i(142616);
                 MMPreferenceFragment.c(MMPreferenceFragment.this);
-                if (paramAnonymousView.OZw) {
+                if (paramAnonymousView.WsF) {
                   MMPreferenceFragment.b(MMPreferenceFragment.this).edit().putString(paramAnonymousAdapterView.mKey, paramAnonymousView.value).commit();
                 }
                 MMPreferenceFragment.d(MMPreferenceFragment.this).notifyDataSetChanged();
@@ -176,8 +192,8 @@ public abstract class MMPreferenceFragment
         return bool;
       }
     });
-    if (this.OZg != 0) {
-      this.list.setSelectionFromTop(0, this.OZg);
+    if (this.Wsp != 0) {
+      this.list.setSelectionFromTop(0, this.Wsp);
     }
   }
   
@@ -203,7 +219,7 @@ public abstract class MMPreferenceFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.MMPreferenceFragment
  * JD-Core Version:    0.7.0.1
  */

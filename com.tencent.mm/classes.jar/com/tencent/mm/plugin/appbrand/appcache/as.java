@@ -1,119 +1,51 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
+import android.annotation.SuppressLint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.plugin.appbrand.task.e;
-import com.tencent.mm.plugin.appbrand.utils.k;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.vending.g.c;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
+import kotlin.g.a.a;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaCommLibCodeCacheHelper;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaCommLibPreloadSessionInMM$ICommLibSessionDelegate;", "()V", "LAST_DEV_LIB_VERSION_CODE_KEY", "", "LAST_DEV_LIB_VERSION_NAME_KEY", "SP", "Landroid/content/SharedPreferences;", "kotlin.jvm.PlatformType", "getSP", "()Landroid/content/SharedPreferences;", "TAG", "onUpdateUsingVersion", "", "reader", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "plugin-appbrand-integration_release"})
 public final class as
+  implements au.a
 {
-  private static final WxaCommLibRuntimeReader.a kMa;
+  public static final as nFR;
   
   static
   {
-    AppMethodBeat.i(44336);
-    kMa = new WxaCommLibRuntimeReader.a();
-    AppMethodBeat.o(44336);
+    AppMethodBeat.i(50179);
+    nFR = new as();
+    AppMethodBeat.o(50179);
   }
   
-  public static void bvQ()
+  @SuppressLint({"ApplySharedPref"})
+  public final void c(ICommLibReader paramICommLibReader)
   {
-    AppMethodBeat.i(44332);
-    doNotify();
-    AppMethodBeat.o(44332);
+    AppMethodBeat.i(50178);
+    p.k(paramICommLibReader, "reader");
+    d.h((a)new a(paramICommLibReader));
+    AppMethodBeat.o(50178);
   }
   
-  public static void bvR()
-  {
-    AppMethodBeat.i(44333);
-    doNotify();
-    AppMethodBeat.o(44333);
-  }
-  
-  public static void bvS()
-  {
-    AppMethodBeat.i(44334);
-    try
-    {
-      WxaCommLibRuntimeReader.a locala = kMa;
-      IPCVoid localIPCVoid = IPCVoid.hnE;
-      locala.bvZ();
-      AppMethodBeat.o(44334);
-      return;
-    }
-    catch (WxaCommLibRuntimeReader.AccountNotReadyError localAccountNotReadyError)
-    {
-      com.tencent.mm.model.b localb = new com.tencent.mm.model.b();
-      AppMethodBeat.o(44334);
-      throw localb;
-    }
-  }
-  
-  private static void doNotify()
-  {
-    AppMethodBeat.i(44335);
-    Object localObject1 = kMa;
-    Object localObject2 = IPCVoid.hnE;
-    localObject2 = ((WxaCommLibRuntimeReader.a)localObject1).bvZ();
-    if ((localObject2 instanceof WxaPkgWrappingInfo))
-    {
-      localObject1 = (WxaPkgWrappingInfo)localObject2;
-      Log.i("MicroMsg.AppBrand.WxaCommLibPreloadNotify", "doNotify check ok ret[%s]", new Object[] { localObject2 });
-      localObject2 = com.tencent.mm.kernel.g.hrf;
-      int j = localObject2.length;
-      int i = 0;
-      while (i < j)
-      {
-        String str = localObject2[i];
-        str = MMApplicationContext.getPackageName() + str;
-        if (MMApplicationContext.isProcessExist(str)) {
-          XIPCInvoker.a(str, localObject1, a.class, null);
-        }
-        i += 1;
-      }
-      AppMethodBeat.o(44335);
-      return;
-    }
-    Log.e("MicroMsg.AppBrand.WxaCommLibPreloadNotify", "doNotify check failed ret[%s]", new Object[] { localObject2 });
-    AppMethodBeat.o(44335);
-  }
-  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class a
-    implements com.tencent.mm.ipcinvoker.b<WxaPkgWrappingInfo, IPCVoid>
-  {}
-  
-  static final class b
-    implements com.tencent.mm.vending.c.a<Void, Void>
+    extends q
+    implements a<x>
   {
-    private WxaPkgWrappingInfo kMf;
-    
-    public b(WxaPkgWrappingInfo paramWxaPkgWrappingInfo)
+    a(ICommLibReader paramICommLibReader)
     {
-      this.kMf = paramWxaPkgWrappingInfo;
-    }
-    
-    public final Void buw()
-    {
-      AppMethodBeat.i(226362);
-      boolean bool = WxaCommLibRuntimeReader.b(this.kMf);
-      int i = com.tencent.mm.plugin.appbrand.a.bqV();
-      Log.i("MicroMsg.AppBrand.WxaCommLibPreloadNotify", "IPC_resetAppBrandCommLibReader#invoke() waitForPreloaded entered, process[%s], pkgInfo[%s], globalReaderUpdated[%b], runningRuntimeCount[%d]", new Object[] { MMApplicationContext.getProcessName(), this.kMf, Boolean.valueOf(bool), Integer.valueOf(i) });
-      if ((bool) && (i <= 0)) {
-        e.bVQ();
-      }
-      Void localVoid = QZL;
-      AppMethodBeat.o(226362);
-      return localVoid;
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.as
  * JD-Core Version:    0.7.0.1
  */

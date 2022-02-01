@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.nearlife;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bd;
+import com.tencent.mm.model.be;
 import com.tencent.mm.plugin.nearlife.a.a;
 import com.tencent.mm.plugin.nearlife.b.e;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
 import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
@@ -19,7 +19,7 @@ public class Plugin
     return locala;
   }
   
-  public bd createSubCore()
+  public be createSubCore()
   {
     AppMethodBeat.i(26546);
     e locale = new e();

@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi.openvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.s;
+import com.tencent.mm.plugin.appbrand.jsapi.r;
 import com.tencent.mm.plugin.appbrand.permission.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Map;
 
 public final class n
-  extends s
+  extends r
 {
   public static final int CTRL_INDEX = 519;
   public static final String NAME = "onVoIPChatSpeakersChanged";
@@ -15,16 +15,16 @@ public final class n
   public n()
   {
     AppMethodBeat.i(180261);
-    c.aem("onVoIPChatSpeakersChanged");
+    c.amg("onVoIPChatSpeakersChanged");
     AppMethodBeat.o(180261);
   }
   
-  final void R(Map<String, Object> paramMap)
+  final void K(Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(226944);
+    AppMethodBeat.i(279976);
     Log.i("MicroMsg.OpenVoice.onVoIPChatMembersChangedJsEvent", "hy: speaker changed.");
-    K(paramMap).bEo();
-    AppMethodBeat.o(226944);
+    D(paramMap).bPO();
+    AppMethodBeat.o(279976);
   }
 }
 

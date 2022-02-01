@@ -1,127 +1,122 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewPropertyAnimator;
-import android.widget.TextView;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Parcelable;
+import android.os.RemoteException;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.statusbar.b;
-import kotlin.g.a.a;
+import com.tencent.mm.by.c;
+import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.ipcinvoker.j;
+import com.tencent.mm.ipcinvoker.type.IPCBoolean;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.plugin.appbrand.au.i;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
 import kotlin.x;
 
-@SuppressLint({"ViewConstructor"})
-public class o
-  extends b
-  implements ab
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIAccountReleaseHandler;", "", "()V", "TAG", "", "processForegroundImportance", "", "", "[Ljava/lang/Integer;", "getSerializedUin", "handleAccountRelease", "", "activity", "Landroid/app/Activity;", "plugin-appbrand-integration_release"})
+public final class o
 {
-  private View arn;
-  private final Bitmap nWt;
-  private TextView nWu;
+  private static final Integer[] qYR;
+  public static final o qYS;
   
-  public o(Context paramContext, Bitmap paramBitmap)
+  static
   {
-    super(paramContext);
-    AppMethodBeat.i(48782);
-    this.nWt = paramBitmap;
-    CF(true);
-    setBackground(new BitmapDrawable(getResources(), paramBitmap));
-    paramContext = LayoutInflater.from(paramContext).inflate(2131493100, this, false);
-    this.arn = paramContext;
-    addView(paramContext);
-    paramBitmap = (TextView)paramContext.findViewById(2131309195);
-    this.nWu = paramBitmap;
-    paramBitmap.setText(2131755528);
-    paramContext.findViewById(2131302896).setVisibility(8);
-    AppMethodBeat.o(48782);
+    AppMethodBeat.i(51149);
+    qYS = new o();
+    qYR = new Integer[] { Integer.valueOf(100), Integer.valueOf(200) };
+    AppMethodBeat.o(51149);
   }
   
-  public final void eo(String paramString1, String paramString2) {}
-  
-  public View getView()
+  public static void H(Activity paramActivity)
   {
-    return this;
-  }
-  
-  protected void onDetachedFromWindow()
-  {
-    AppMethodBeat.i(48784);
-    super.onDetachedFromWindow();
-    this.nWt.recycle();
-    AppMethodBeat.o(48784);
-  }
-  
-  public void setProgress(int paramInt) {}
-  
-  public void setPromptText(String paramString)
-  {
-    AppMethodBeat.i(227667);
-    this.nWu.setText(paramString);
-    AppMethodBeat.o(227667);
-  }
-  
-  public void setPromptVisible(boolean paramBoolean)
-  {
-    AppMethodBeat.i(227666);
-    View localView = this.arn;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
+    AppMethodBeat.i(282874);
+    p.k(paramActivity, "activity");
+    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AppBrandUIAccountReleaseHandler", "handleAccountRelease activity:" + paramActivity.getComponentName() + ", stack:" + android.util.Log.getStackTraceString(new Throwable()));
+    try
     {
-      localView.setVisibility(i);
-      AppMethodBeat.o(227666);
-      return;
+      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = new ActivityManager.RunningAppProcessInfo();
+      ActivityManager.getMyMemoryState(localRunningAppProcessInfo);
+      locala = new a(paramActivity);
+      if ((localRunningAppProcessInfo == null) || (!org.apache.commons.b.a.contains(qYR, Integer.valueOf(localRunningAppProcessInfo.importance))) || (paramActivity.isFinishing()) || (paramActivity.isDestroyed()))
+      {
+        paramActivity = new StringBuilder("finish directly importance[");
+        if (localRunningAppProcessInfo != null)
+        {
+          i = localRunningAppProcessInfo.importance;
+          com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AppBrandUIAccountReleaseHandler", i + ']');
+          locala.invoke();
+          AppMethodBeat.o(282874);
+          return;
+        }
+      }
+    }
+    catch (RemoteException localRemoteException)
+    {
+      final a locala;
+      for (;;)
+      {
+        Object localObject = null;
+        continue;
+        int i = -1;
+      }
+      j.a(MMApplicationContext.getMainProcessName(), (Parcelable)IPCVoid.jZu, ag.class, (f)new b(paramActivity, locala));
+      AppMethodBeat.o(282874);
     }
   }
   
-  public final void yu(int paramInt) {}
-  
-  public void z(final a<x> parama)
+  public static final int ckj()
   {
-    AppMethodBeat.i(227668);
-    post(new Runnable()
+    AppMethodBeat.i(175219);
+    SharedPreferences localSharedPreferences = MMApplicationContext.getContext().getSharedPreferences("system_config_prefs", 0);
+    if (localSharedPreferences != null)
     {
-      public final void run()
-      {
-        AppMethodBeat.i(48781);
-        final o localo = o.this;
-        if ((localo.getParent() instanceof ViewGroup))
-        {
-          final ViewGroup localViewGroup = (ViewGroup)localo.getParent();
-          localo.animate().alpha(0.0F).withEndAction(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(48780);
-              localo.setVisibility(8);
-              localViewGroup.removeView(localo);
-              if (o.1.this.nTx != null) {
-                o.1.this.nTx.invoke();
-              }
-              AppMethodBeat.o(48780);
-            }
-          }).withStartAction(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(48779);
-              o.a(o.this);
-              AppMethodBeat.o(48779);
-            }
-          }).start();
-        }
-        AppMethodBeat.o(48781);
+      int i = localSharedPreferences.getInt("default_uin", 0);
+      AppMethodBeat.o(175219);
+      return i;
+    }
+    AppMethodBeat.o(175219);
+    return 0;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"doFinish", "", "invoke"})
+  static final class a
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    a(Activity paramActivity)
+    {
+      super();
+    }
+    
+    public final void invoke()
+    {
+      AppMethodBeat.i(51146);
+      if ((!this.otc.isFinishing()) && (!this.otc.isDestroyed())) {
+        this.otc.finish();
       }
-    });
-    AppMethodBeat.o(227668);
+      AppMethodBeat.o(51146);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "data", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "kotlin.jvm.PlatformType", "onCallback"})
+  static final class b<T>
+    implements f<IPCBoolean>
+  {
+    b(Activity paramActivity, o.a parama) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.o
  * JD-Core Version:    0.7.0.1
  */

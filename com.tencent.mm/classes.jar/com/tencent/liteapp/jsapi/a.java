@@ -7,11 +7,11 @@ public abstract class a
 {
   public abstract void a(b paramb);
   
-  public abstract void a(String paramString, JSONObject paramJSONObject);
+  public abstract void a(String paramString, JSONObject paramJSONObject, boolean paramBoolean);
   
   public void b(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public abstract void b(String paramString, JSONObject paramJSONObject);
+  public abstract void b(String paramString, JSONObject paramJSONObject, boolean paramBoolean);
 }
 
 

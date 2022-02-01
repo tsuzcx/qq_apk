@@ -8,23 +8,23 @@ import java.util.List;
 
 public final class b
 {
-  private final List<b<a>> hnN;
-  private final List<Object> hnO;
+  private final List<b<a>> jZE;
+  private final List<Object> jZF;
   
   private b()
   {
     AppMethodBeat.i(146427);
-    this.hnN = new LinkedList();
-    this.hnO = new LinkedList();
+    this.jZE = new LinkedList();
+    this.jZF = new LinkedList();
     AppMethodBeat.o(146427);
   }
   
-  private void ayp()
+  private void aFI()
   {
     try
     {
       AppMethodBeat.i(146432);
-      Iterator localIterator = this.hnO.iterator();
+      Iterator localIterator = this.jZF.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
@@ -33,12 +33,12 @@ public final class b
     finally {}
   }
   
-  private void ayq()
+  private void aFJ()
   {
     try
     {
       AppMethodBeat.i(146433);
-      Iterator localIterator = this.hnO.iterator();
+      Iterator localIterator = this.jZF.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
@@ -55,10 +55,10 @@ public final class b
       AppMethodBeat.o(146428);
       return false;
     }
-    synchronized (this.hnN)
+    synchronized (this.jZE)
     {
-      this.hnN.add(new b(parama));
-      ayp();
+      this.jZE.add(new b(parama));
+      aFI();
       AppMethodBeat.o(146428);
       return true;
     }
@@ -72,10 +72,10 @@ public final class b
       AppMethodBeat.o(146429);
       return false;
     }
-    synchronized (this.hnN)
+    synchronized (this.jZE)
     {
-      boolean bool = this.hnN.remove(new b(parama));
-      ayq();
+      boolean bool = this.jZE.remove(new b(parama));
+      aFJ();
       AppMethodBeat.o(146429);
       return bool;
     }
@@ -89,9 +89,9 @@ public final class b
       AppMethodBeat.o(146430);
       return false;
     }
-    synchronized (this.hnN)
+    synchronized (this.jZE)
     {
-      Iterator localIterator = this.hnN.iterator();
+      Iterator localIterator = this.jZE.iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (b)localIterator.next();
@@ -113,9 +113,9 @@ public final class b
   public final int size()
   {
     AppMethodBeat.i(146431);
-    synchronized (this.hnN)
+    synchronized (this.jZE)
     {
-      int i = this.hnN.size();
+      int i = this.jZE.size();
       AppMethodBeat.o(146431);
       return i;
     }
@@ -123,12 +123,12 @@ public final class b
   
   public static final class a
   {
-    private static b hnP;
+    private static b jZG;
     
     static
     {
       AppMethodBeat.i(146425);
-      hnP = new b((byte)0);
+      jZG = new b((byte)0);
       AppMethodBeat.o(146425);
     }
   }
@@ -168,7 +168,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.wx_extension.c.b
  * JD-Core Version:    0.7.0.1
  */

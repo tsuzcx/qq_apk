@@ -9,7 +9,7 @@ import java.util.Set;
 import kotlin.a.ak;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/profile/FinderProfileFeedFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/profile/FinderProfileFeedFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "plugin-finder_release"})
 public final class FinderProfileFeedFragment
   extends FinderHomeTabFragment
 {
@@ -17,23 +17,23 @@ public final class FinderProfileFeedFragment
   
   public FinderProfileFeedFragment()
   {
-    this.dLS = 104;
+    this.fEH = 104;
   }
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(249968);
+    AppMethodBeat.i(283972);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(249968);
+    AppMethodBeat.o(283972);
   }
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(249967);
+    AppMethodBeat.i(283971);
     Set localSet = ak.setOf(FinderProfileFeedUIC.class);
-    AppMethodBeat.o(249967);
+    AppMethodBeat.o(283971);
     return localSet;
   }
 }

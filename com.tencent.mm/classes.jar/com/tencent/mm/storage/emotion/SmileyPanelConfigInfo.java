@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gg;
+import com.tencent.mm.f.c.gn;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public class SmileyPanelConfigInfo
-  extends gg
+  extends gn
   implements Parcelable
 {
   public static final Parcelable.Creator<SmileyPanelConfigInfo> CREATOR;
@@ -85,7 +85,7 @@ public class SmileyPanelConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.SmileyPanelConfigInfo
  * JD-Core Version:    0.7.0.1
  */

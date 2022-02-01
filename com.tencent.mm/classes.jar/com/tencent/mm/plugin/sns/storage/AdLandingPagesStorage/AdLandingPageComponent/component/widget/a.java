@@ -2,33 +2,33 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 
 import android.content.Context;
 import android.view.ViewGroup;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aa;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.z;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.List;
 
 public abstract class a
   extends m
 {
-  public a(Context paramContext, z paramz, ViewGroup paramViewGroup)
+  public a(Context paramContext, aa paramaa, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramz, paramViewGroup);
+    super(paramContext, paramaa, paramViewGroup);
   }
   
-  public abstract List<m> eWU();
+  public abstract List<m> fKf();
   
-  public abstract void eXc();
+  public abstract void fKn();
   
-  public final boolean fdm()
+  public final boolean fRj()
   {
-    int i = fdl();
+    int i = fRi();
     Log.i("MicroMsg.AdLandingPageContainerComponent", "inScreenHeight %d", new Object[] { Integer.valueOf(i) });
     return i > 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.a
  * JD-Core Version:    0.7.0.1
  */

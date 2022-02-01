@@ -9,23 +9,26 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.d;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
 import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 
 public class CheckBoxPreference
   extends Preference
 {
-  private int HIJ;
-  private String HIK;
-  private int HIL;
-  private TextView HMo;
-  private boolean OXp;
-  private TextView OXq;
-  private a OXr;
-  private View.OnClickListener hEZ;
+  private int OAB;
+  private String OAC;
+  private int OAD;
+  private TextView OEk;
+  private TextView WqA;
+  private CheckBoxPreference.a WqB;
+  private boolean Wqz;
+  private boolean bBh;
+  private View.OnClickListener kte;
   private View mView;
-  private boolean oD;
-  private MMSwitchBtn sLW;
+  private MMSwitchBtn wrR;
   
   public CheckBoxPreference(Context paramContext)
   {
@@ -41,120 +44,136 @@ public class CheckBoxPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142512);
-    this.oD = false;
-    this.OXp = false;
-    this.HIJ = -1;
-    this.HIK = "";
-    this.HIL = 8;
-    setLayoutResource(2131495538);
+    this.bBh = false;
+    this.Wqz = false;
+    this.OAB = -1;
+    this.OAC = "";
+    this.OAD = 8;
+    setLayoutResource(a.h.mm_preference);
     AppMethodBeat.o(142512);
   }
   
-  private void gLA()
+  private void hKC()
   {
-    AppMethodBeat.i(205292);
-    if ((this.mView != null) && (this.hEZ != null)) {
-      this.mView.setOnClickListener(this.hEZ);
+    AppMethodBeat.i(195363);
+    if ((this.mView != null) && (this.kte != null)) {
+      this.mView.setOnClickListener(this.kte);
     }
-    AppMethodBeat.o(205292);
+    AppMethodBeat.o(195363);
   }
   
-  private void gLB()
+  private void hKD()
   {
-    AppMethodBeat.i(205293);
-    if ((isEnabled()) && (!this.OXp))
+    AppMethodBeat.i(195369);
+    if ((isEnabled()) && (!this.Wqz))
     {
-      AppMethodBeat.o(205293);
+      AppMethodBeat.o(195369);
       return;
     }
-    if ((this.sLW != null) && (this.mView != null))
+    if ((this.wrR != null) && (this.mView != null))
     {
-      this.sLW.setEnabled(false);
+      this.wrR.setEnabled(false);
       if (!isEnabled())
       {
-        ((TextView)this.mView.findViewById(16908310)).setTextColor(this.mView.getResources().getColor(2131100283));
-        ((TextView)this.mView.findViewById(16908304)).setTextColor(this.mView.getResources().getColor(2131100283));
+        ((TextView)this.mView.findViewById(16908310)).setTextColor(this.mView.getResources().getColor(a.d.disable_text_color));
+        ((TextView)this.mView.findViewById(16908304)).setTextColor(this.mView.getResources().getColor(a.d.disable_text_color));
       }
     }
-    AppMethodBeat.o(205293);
+    AppMethodBeat.o(195369);
   }
   
-  public final void a(a parama)
+  public void BT(boolean paramBoolean)
   {
-    this.OXr = parama;
+    AppMethodBeat.i(142515);
+    if (this.wrR != null)
+    {
+      this.bBh = paramBoolean;
+      this.wrR.setCheck(paramBoolean);
+    }
+    AppMethodBeat.o(142515);
   }
   
-  public void aez(int paramInt)
+  public final void a(CheckBoxPreference.a parama)
+  {
+    this.WqB = parama;
+  }
+  
+  public void amm(int paramInt)
   {
     AppMethodBeat.i(142517);
-    this.HIL = paramInt;
-    if (this.HMo != null) {
-      this.HMo.setVisibility(this.HIL);
+    this.OAD = paramInt;
+    if (this.OEk != null) {
+      this.OEk.setVisibility(this.OAD);
     }
     AppMethodBeat.o(142517);
   }
   
-  public void fZ(String paramString, int paramInt)
+  public void gI(String paramString, int paramInt)
   {
     AppMethodBeat.i(142516);
-    this.HIJ = paramInt;
-    this.HIK = paramString;
-    if (this.HMo != null)
+    this.OAB = paramInt;
+    this.OAC = paramString;
+    if (this.OEk != null)
     {
       if (paramInt > 0) {
-        this.HMo.setBackgroundResource(this.HIJ);
+        this.OEk.setBackgroundResource(this.OAB);
       }
-      if (!TextUtils.isEmpty(this.HIK)) {
-        this.HMo.setText(this.HIK);
+      if (!TextUtils.isEmpty(this.OAC)) {
+        this.OEk.setText(this.OAC);
       }
     }
     AppMethodBeat.o(142516);
   }
   
-  public final TextView gLy()
+  protected int getLayoutId()
   {
-    return this.OXq;
+    return a.h.mm_preference_summary_checkbox;
   }
   
-  public final void gLz()
+  public final TextView hKA()
   {
-    AppMethodBeat.i(205291);
-    this.OXp = true;
-    gLB();
-    AppMethodBeat.o(205291);
+    return this.WqA;
+  }
+  
+  public final void hKB()
+  {
+    AppMethodBeat.i(195359);
+    this.Wqz = true;
+    hKD();
+    AppMethodBeat.o(195359);
   }
   
   public boolean isChecked()
   {
-    if (this.sLW != null) {
-      return this.sLW.QDw;
+    if (this.wrR != null) {
+      return this.wrR.YbZ;
     }
-    return this.oD;
+    return this.bBh;
   }
   
   public void onBindView(View paramView)
   {
     AppMethodBeat.i(142514);
     super.onBindView(paramView);
-    alO(8);
-    this.OXq = ((TextView)paramView.findViewById(16908304));
-    this.sLW = ((MMSwitchBtn)paramView.findViewById(2131298639));
-    this.sLW.setSwitchListener(new MMSwitchBtn.a()
+    auO(8);
+    this.WqA = ((TextView)paramView.findViewById(16908304));
+    this.wrR = ((MMSwitchBtn)paramView.findViewById(a.g.checkbox));
+    this.wrR.setSwitchListener(new MMSwitchBtn.a()
     {
       public final void onStatusChange(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(142511);
-        CheckBoxPreference.this.callChangeListener(Boolean.valueOf(paramAnonymousBoolean));
+        CheckBoxPreference.this.ej(Boolean.valueOf(paramAnonymousBoolean));
         AppMethodBeat.o(142511);
       }
     });
-    this.sLW.setCheck(this.oD);
-    this.HMo = ((TextView)paramView.findViewById(2131309166));
-    fZ(this.HIK, this.HIJ);
-    aez(this.HIL);
-    gLB();
-    if (this.OXr != null) {
-      this.OXr.dCy();
+    this.wrR.setCheck(this.bBh);
+    this.OEk = ((TextView)paramView.findViewById(a.g.tipicon));
+    gI(this.OAC, this.OAB);
+    amm(this.OAD);
+    hKD();
+    if (this.WqB != null) {
+      this.WqB.edU();
     }
     AppMethodBeat.o(142514);
   }
@@ -163,11 +182,11 @@ public class CheckBoxPreference
   {
     AppMethodBeat.i(142513);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.g.content);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2131495627, localViewGroup);
+    View.inflate(this.mContext, getLayoutId(), localViewGroup);
     this.mView = paramViewGroup;
-    gLA();
+    hKC();
     paramViewGroup = this.mView;
     AppMethodBeat.o(142513);
     return paramViewGroup;
@@ -175,36 +194,20 @@ public class CheckBoxPreference
   
   public void setChecked(boolean paramBoolean)
   {
-    this.oD = paramBoolean;
+    this.bBh = paramBoolean;
   }
   
   public final void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(205290);
-    this.hEZ = paramOnClickListener;
-    gLA();
-    AppMethodBeat.o(205290);
-  }
-  
-  public void xZ(boolean paramBoolean)
-  {
-    AppMethodBeat.i(142515);
-    if (this.sLW != null)
-    {
-      this.oD = paramBoolean;
-      this.sLW.setCheck(paramBoolean);
-    }
-    AppMethodBeat.o(142515);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void dCy();
+    AppMethodBeat.i(195357);
+    this.kte = paramOnClickListener;
+    hKC();
+    AppMethodBeat.o(195357);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.CheckBoxPreference
  * JD-Core Version:    0.7.0.1
  */

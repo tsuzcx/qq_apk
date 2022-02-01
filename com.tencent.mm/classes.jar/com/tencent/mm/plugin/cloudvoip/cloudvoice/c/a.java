@@ -2,10 +2,12 @@ package com.tencent.mm.plugin.cloudvoip.cloudvoice.c;
 
 public final class a
 {
-  public int djh = 0;
+  public int faO = 0;
+  public int format = 0;
   public int height = 0;
-  public byte[] qrB = null;
-  public int qrC = -1;
+  public byte[] tQj = null;
+  public int tQk = -1;
+  public boolean tQl = false;
   public int width = 0;
 }
 

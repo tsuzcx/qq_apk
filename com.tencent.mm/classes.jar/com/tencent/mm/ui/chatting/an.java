@@ -9,22 +9,25 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.b;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.al.ag;
-import com.tencent.mm.av.i;
-import com.tencent.mm.g.c.eo;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.l;
+import com.tencent.mm.aj.k.b;
+import com.tencent.mm.an.t;
+import com.tencent.mm.ao.af;
+import com.tencent.mm.ay.i;
+import com.tencent.mm.f.c.et;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.cf;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.cg;
 import com.tencent.mm.model.z;
 import com.tencent.mm.modelmulti.o;
 import com.tencent.mm.modelmulti.o.b;
 import com.tencent.mm.modelmulti.o.d;
 import com.tencent.mm.modelmulti.o.e;
+import com.tencent.mm.modelvideo.y;
 import com.tencent.mm.modelvoice.r;
+import com.tencent.mm.modelvoice.s;
 import com.tencent.mm.pluginsdk.model.app.ao;
-import com.tencent.mm.pluginsdk.model.app.m;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem;
@@ -32,10 +35,10 @@ import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.ca;
 import com.tencent.mm.storage.ca.a;
-import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.base.q.g;
 import com.tencent.mm.ui.chatting.gallery.ImageGalleryUI;
-import com.tencent.mm.ui.tools.l;
 import com.tencent.mm.ui.transmit.MsgRetransmitUI.a;
+import com.tencent.mm.vfs.u;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -57,26 +60,26 @@ public final class an
       AppMethodBeat.o(34909);
       return;
     }
-    bg.aVF();
+    bh.beI();
     if (!com.tencent.mm.model.c.isSDCardAvailable())
     {
-      com.tencent.mm.ui.base.u.kf(paramContext);
+      com.tencent.mm.ui.base.w.ld(paramContext);
       Log.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptImgConnector: sd card is not available");
       AppMethodBeat.o(34909);
       return;
     }
-    a(jm(ag.bah().sN(4)), paramContext, new o.g()
+    a(ke(af.bjv().vK(4)), paramContext, new q.g()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
         paramAnonymousInt = 1;
         AppMethodBeat.i(34900);
         Object localObject1 = paramAnonymousMenuItem.getTitle();
-        if (this.iBF.field_msgId > 0L) {}
-        for (paramAnonymousMenuItem = com.tencent.mm.av.q.bcR().H(this.iBF.field_talker, this.iBF.field_msgId);; paramAnonymousMenuItem = null)
+        if (this.lrk.field_msgId > 0L) {}
+        for (paramAnonymousMenuItem = com.tencent.mm.ay.q.bmh().D(this.lrk.field_talker, this.lrk.field_msgId);; paramAnonymousMenuItem = null)
         {
-          if (((paramAnonymousMenuItem == null) || (paramAnonymousMenuItem.localId <= 0L)) && (this.iBF.field_msgSvrId > 0L)) {
-            paramAnonymousMenuItem = com.tencent.mm.av.q.bcR().G(this.iBF.field_talker, this.iBF.field_msgSvrId);
+          if (((paramAnonymousMenuItem == null) || (paramAnonymousMenuItem.localId <= 0L)) && (this.lrk.field_msgSvrId > 0L)) {
+            paramAnonymousMenuItem = com.tencent.mm.ay.q.bmh().C(this.lrk.field_talker, this.lrk.field_msgSvrId);
           }
           for (;;)
           {
@@ -86,44 +89,44 @@ public final class an
               AppMethodBeat.o(34900);
               return;
             }
-            if ((paramAnonymousMenuItem.offset >= paramAnonymousMenuItem.iKP) && (paramAnonymousMenuItem.iKP != 0))
+            if ((paramAnonymousMenuItem.offset >= paramAnonymousMenuItem.lAW) && (paramAnonymousMenuItem.lAW != 0))
             {
-              if (this.iBF.field_isSend == 1) {
-                if (paramAnonymousMenuItem.bcv()) {
+              if (this.lrk.field_isSend == 1) {
+                if (paramAnonymousMenuItem.blK()) {
                   paramAnonymousInt = 1;
                 }
               }
               for (;;)
               {
-                localObject2 = z.aTY();
-                paramAnonymousMenuItem = com.tencent.mm.av.q.bcR().o(com.tencent.mm.av.h.c(paramAnonymousMenuItem), "", "");
+                localObject2 = z.bcZ();
+                paramAnonymousMenuItem = com.tencent.mm.ay.q.bmh().r(com.tencent.mm.ay.h.c(paramAnonymousMenuItem), "", "");
                 if (!Util.isNullOrNil(paramAnonymousMenuItem))
                 {
                   Log.i("MicroMsg.LongClickBrandServiceHelper", "connector click[img]: to[%s] fileName[%s]", new Object[] { localObject1, paramAnonymousMenuItem });
-                  o.e locale = o.a(o.d.jdL).tc(4);
-                  locale.dRL = ((String)localObject2);
+                  o.e locale = o.a(o.d.lUk).wb(4);
+                  locale.fLi = ((String)localObject2);
                   locale.toUser = ((String)localObject1);
-                  locale.iZt = paramAnonymousMenuItem;
-                  locale.iXp = paramAnonymousInt;
-                  locale.jdS = null;
-                  locale.dQd = 0;
-                  locale.iXy = "";
+                  locale.lPO = paramAnonymousMenuItem;
+                  locale.lNK = paramAnonymousInt;
+                  locale.lUr = null;
+                  locale.fJu = 0;
+                  locale.lNS = "";
                   locale.thumbPath = "";
-                  locale.jdV = true;
-                  locale.jdU = 2131231628;
-                  locale.jdR = 11;
-                  locale.bdQ().execute();
-                  cf.aWl().f(cf.iFI, null);
+                  locale.lUu = true;
+                  locale.lUt = R.g.chat_img_template;
+                  locale.lUq = 11;
+                  locale.bnl().aEv();
+                  cg.bfp().e(cg.lvK, null);
                 }
-                com.tencent.mm.plugin.report.service.h.CyF.a(10424, new Object[] { Integer.valueOf(3), Integer.valueOf(4), localObject1 });
-                com.tencent.mm.ui.base.h.cD(paramContext, paramContext.getString(2131755971));
+                com.tencent.mm.plugin.report.service.h.IzE.a(10424, new Object[] { Integer.valueOf(3), Integer.valueOf(4), localObject1 });
+                com.tencent.mm.ui.base.h.cO(paramContext, paramContext.getString(R.l.app_saved));
                 AppMethodBeat.o(34900);
                 return;
                 paramAnonymousInt = 0;
                 continue;
-                if (!paramAnonymousMenuItem.bcv()) {
+                if (!paramAnonymousMenuItem.blK()) {
                   paramAnonymousInt = 0;
-                } else if (!com.tencent.mm.vfs.s.YS(com.tencent.mm.av.h.a(paramAnonymousMenuItem).iXm)) {
+                } else if (!u.agG(com.tencent.mm.ay.h.a(paramAnonymousMenuItem).lNH)) {
                   paramAnonymousInt = 0;
                 } else {
                   paramAnonymousInt = 1;
@@ -132,14 +135,14 @@ public final class an
             }
             Log.i("MicroMsg.LongClickBrandServiceHelper", "[ImageGalleryUI] enter");
             paramAnonymousMenuItem = new Intent(paramContext, ImageGalleryUI.class);
-            paramAnonymousMenuItem.putExtra("img_gallery_msg_id", this.iBF.field_msgId);
-            paramAnonymousMenuItem.putExtra("img_gallery_msg_svr_id", this.iBF.field_msgSvrId);
-            paramAnonymousMenuItem.putExtra("img_gallery_talker", this.iBF.field_talker);
-            paramAnonymousMenuItem.putExtra("img_gallery_chatroom_name", this.iBF.field_talker);
+            paramAnonymousMenuItem.putExtra("img_gallery_msg_id", this.lrk.field_msgId);
+            paramAnonymousMenuItem.putExtra("img_gallery_msg_svr_id", this.lrk.field_msgSvrId);
+            paramAnonymousMenuItem.putExtra("img_gallery_talker", this.lrk.field_talker);
+            paramAnonymousMenuItem.putExtra("img_gallery_chatroom_name", this.lrk.field_talker);
             paramAnonymousMenuItem.putExtra("img_gallery_is_restransmit_after_download", true);
             paramAnonymousMenuItem.putExtra("img_gallery_directly_send_name", (String)localObject1);
             paramAnonymousMenuItem.putExtra("start_chatting_ui", false);
-            localObject1 = this.iBF.field_talker;
+            localObject1 = this.lrk.field_talker;
             Object localObject2 = new Bundle();
             if (paramBoolean) {
               paramAnonymousInt = 2;
@@ -147,18 +150,18 @@ public final class an
             for (;;)
             {
               ((Bundle)localObject2).putInt("stat_scene", paramAnonymousInt);
-              ((Bundle)localObject2).putString("stat_msg_id", "msg_" + Long.toString(this.iBF.field_msgSvrId));
+              ((Bundle)localObject2).putString("stat_msg_id", "msg_" + Long.toString(this.lrk.field_msgSvrId));
               ((Bundle)localObject2).putString("stat_chat_talker_username", (String)localObject1);
               ((Bundle)localObject2).putString("stat_send_msg_user", paramString);
               paramAnonymousMenuItem.putExtra("_stat_obj", (Bundle)localObject2);
               localObject1 = paramContext;
-              paramAnonymousMenuItem = new com.tencent.mm.hellhoundlib.b.a().bl(paramAnonymousMenuItem);
-              com.tencent.mm.hellhoundlib.a.a.a(localObject1, paramAnonymousMenuItem.axQ(), "com/tencent/mm/ui/chatting/SendToBrandServiceHelper$3", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              ((Context)localObject1).startActivity((Intent)paramAnonymousMenuItem.pG(0));
-              com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/ui/chatting/SendToBrandServiceHelper$3", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              paramAnonymousMenuItem = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousMenuItem);
+              com.tencent.mm.hellhoundlib.a.a.b(localObject1, paramAnonymousMenuItem.aFh(), "com/tencent/mm/ui/chatting/SendToBrandServiceHelper$3", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              ((Context)localObject1).startActivity((Intent)paramAnonymousMenuItem.sf(0));
+              com.tencent.mm.hellhoundlib.a.a.c(localObject1, "com/tencent/mm/ui/chatting/SendToBrandServiceHelper$3", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
               AppMethodBeat.o(34900);
               return;
-              if (ab.IT((String)localObject1)) {
+              if (ab.Qm((String)localObject1)) {
                 paramAnonymousInt = 7;
               }
             }
@@ -197,14 +200,14 @@ public final class an
     }
     for (;;)
     {
-      a(localList, paramContext, new o.g()
+      a(localList, paramContext, new q.g()
       {
         public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
           AppMethodBeat.i(34905);
           String str2 = paramAnonymousMenuItem.getTitle();
-          Object localObject2 = this.iBF;
-          k.b localb = k.b.HD(Util.processXml(paramString));
+          Object localObject2 = this.lrk;
+          k.b localb = k.b.OQ(Util.processXml(paramString));
           if (localb == null)
           {
             Log.w("MicroMsg.LongClickBrandServiceHelper", "send: parse app msg content return null");
@@ -216,38 +219,38 @@ public final class an
           {
             for (;;)
             {
-              com.tencent.mm.ui.base.h.cD(paramContext, paramContext.getString(2131755971));
+              com.tencent.mm.ui.base.h.cO(paramContext, paramContext.getString(R.l.app_saved));
               AppMethodBeat.o(34905);
               return;
               paramAnonymousMenuItem = null;
               Object localObject1 = paramAnonymousMenuItem;
-              if (((eo)localObject2).field_imgPath != null)
+              if (((et)localObject2).field_imgPath != null)
               {
                 localObject1 = paramAnonymousMenuItem;
-                if (!((eo)localObject2).field_imgPath.equals("")) {
-                  localObject1 = com.tencent.mm.av.q.bcR().R(((eo)localObject2).field_imgPath, true);
+                if (!((et)localObject2).field_imgPath.equals("")) {
+                  localObject1 = com.tencent.mm.ay.q.bmh().T(((et)localObject2).field_imgPath, true);
                 }
               }
               try
               {
-                localObject1 = com.tencent.mm.vfs.s.aW((String)localObject1, 0, -1);
+                localObject1 = u.aY((String)localObject1, 0, -1);
                 localObject2 = new com.tencent.mm.pluginsdk.model.app.c();
                 paramAnonymousMenuItem = (MenuItem)localObject2;
-                if (!Util.isNullOrNil(localb.dCK))
+                if (!Util.isNullOrNil(localb.fvr))
                 {
-                  long l = Util.getLong(localb.dCK, -1L);
+                  long l = Util.getLong(localb.fvr, -1L);
                   if (l == -1L) {
-                    break label415;
+                    break label416;
                   }
-                  ao.cgO().get(l, (IAutoDBItem)localObject2);
+                  ao.ctZ().get(l, (IAutoDBItem)localObject2);
                   paramAnonymousMenuItem = (MenuItem)localObject2;
                   if (((com.tencent.mm.pluginsdk.model.app.c)localObject2).systemRowid != l)
                   {
-                    localObject2 = ao.cgO().bdx(localb.dCK);
+                    localObject2 = ao.ctZ().bpR(localb.fvr);
                     if (localObject2 != null)
                     {
                       paramAnonymousMenuItem = (MenuItem)localObject2;
-                      if (((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_mediaSvrId.equals(localb.dCK)) {}
+                      if (((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_mediaSvrId.equals(localb.fvr)) {}
                     }
                     else
                     {
@@ -265,15 +268,15 @@ public final class an
                     localObject2 = str1;
                     if (!paramAnonymousMenuItem.field_fileFullPath.equals(""))
                     {
-                      bg.aVF();
-                      localObject2 = m.aB(com.tencent.mm.model.c.aTg(), localb.title, localb.iwJ);
-                      com.tencent.mm.vfs.s.nw(paramAnonymousMenuItem.field_fileFullPath, (String)localObject2);
+                      bh.beI();
+                      localObject2 = com.tencent.mm.pluginsdk.model.app.m.aw(com.tencent.mm.model.c.bce(), localb.title, localb.llY);
+                      u.on(paramAnonymousMenuItem.field_fileFullPath, (String)localObject2);
                     }
                   }
                 }
                 paramAnonymousMenuItem = k.b.a(localb);
-                paramAnonymousMenuItem.iwL = 3;
-                m.a(paramAnonymousMenuItem, localb.appId, localb.appName, str2, (String)localObject2, (byte[])localObject1, null);
+                paramAnonymousMenuItem.lma = 3;
+                com.tencent.mm.pluginsdk.model.app.m.a(paramAnonymousMenuItem, localb.appId, localb.appName, str2, (String)localObject2, (byte[])localObject1, null);
               }
               catch (Exception localException)
               {
@@ -282,12 +285,12 @@ public final class an
                   Log.e("MicroMsg.LongClickBrandServiceHelper", "send appmsg to %s, error:%s", new Object[] { str2, localException.getLocalizedMessage() });
                   MenuItem localMenuItem = paramAnonymousMenuItem;
                   continue;
-                  label415:
-                  localObject2 = ao.cgO().bdx(localb.dCK);
+                  label416:
+                  localObject2 = ao.ctZ().bpR(localb.fvr);
                   if (localObject2 != null)
                   {
                     paramAnonymousMenuItem = (MenuItem)localObject2;
-                    if (((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_mediaSvrId.equals(localb.dCK)) {}
+                    if (((com.tencent.mm.pluginsdk.model.app.c)localObject2).field_mediaSvrId.equals(localb.fvr)) {}
                   }
                   else
                   {
@@ -296,25 +299,25 @@ public final class an
                 }
               }
             }
-            com.tencent.mm.plugin.report.service.h.CyF.a(10424, new Object[] { Integer.valueOf(49), Integer.valueOf(256), str2 });
+            com.tencent.mm.plugin.report.service.h.IzE.a(10424, new Object[] { Integer.valueOf(49), Integer.valueOf(256), str2 });
             continue;
-            com.tencent.mm.plugin.report.service.h.CyF.a(10424, new Object[] { Integer.valueOf(49), Integer.valueOf(128), str2 });
+            com.tencent.mm.plugin.report.service.h.IzE.a(10424, new Object[] { Integer.valueOf(49), Integer.valueOf(128), str2 });
             continue;
-            com.tencent.mm.plugin.report.service.h.CyF.a(10424, new Object[] { Integer.valueOf(49), Integer.valueOf(512), str2 });
+            com.tencent.mm.plugin.report.service.h.IzE.a(10424, new Object[] { Integer.valueOf(49), Integer.valueOf(512), str2 });
           }
         }
       });
       AppMethodBeat.o(34917);
       return;
-      localList = jm(com.tencent.mm.al.g.aZO());
+      localList = ke(com.tencent.mm.ao.g.bje());
       continue;
-      localList = jm(com.tencent.mm.al.g.aZM());
+      localList = ke(com.tencent.mm.ao.g.bjc());
       continue;
-      localList = jm(com.tencent.mm.al.g.aZQ());
+      localList = ke(com.tencent.mm.ao.g.bjg());
     }
   }
   
-  private static void a(List<String> paramList, Context paramContext, o.g paramg)
+  private static void a(List<String> paramList, Context paramContext, q.g paramg)
   {
     AppMethodBeat.i(34919);
     if ((paramList == null) || (paramList.isEmpty()))
@@ -323,12 +326,12 @@ public final class an
       AppMethodBeat.o(34919);
       return;
     }
-    l locall = new l(paramContext);
-    locall.HMa = new an.11();
-    locall.HMb = new an.2(paramContext);
-    locall.HLX = new an.3(paramList);
-    locall.HLY = paramg;
-    locall.gXI();
+    com.tencent.mm.ui.tools.m localm = new com.tencent.mm.ui.tools.m(paramContext);
+    localm.ODW = new an.11();
+    localm.ODX = new an.2(paramContext);
+    localm.ODT = new an.3(paramList);
+    localm.ODU = paramg;
+    localm.hYu();
     AppMethodBeat.o(34919);
   }
   
@@ -347,37 +350,37 @@ public final class an
       AppMethodBeat.o(34908);
       return;
     }
-    bg.aVF();
+    bh.beI();
     if (!com.tencent.mm.model.c.isSDCardAvailable())
     {
-      com.tencent.mm.ui.base.u.kf(paramContext);
+      com.tencent.mm.ui.base.w.ld(paramContext);
       Log.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptVoiceConnector: sd card not available");
       AppMethodBeat.o(34908);
       return;
     }
-    a(jm(ag.bah().sN(2)), paramContext, new o.g()
+    a(ke(af.bjv().vK(2)), paramContext, new q.g()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
         AppMethodBeat.i(34899);
         paramAnonymousMenuItem = paramAnonymousMenuItem.getTitle();
-        if (Util.isNullOrNil(this.iBF.field_imgPath))
+        if (Util.isNullOrNil(this.lrk.field_imgPath))
         {
           Log.e("MicroMsg.LongClickBrandServiceHelper", "Transfer fileName erro: fileName null");
           AppMethodBeat.o(34899);
           return;
         }
-        Object localObject = com.tencent.mm.modelvoice.s.Ro(this.iBF.field_imgPath);
-        String str = this.iBF.field_imgPath;
+        Object localObject = s.YL(this.lrk.field_imgPath);
+        String str = this.lrk.field_imgPath;
         if (localObject == null) {}
-        for (paramAnonymousInt = 0;; paramAnonymousInt = ((r)localObject).jvt)
+        for (paramAnonymousInt = 0;; paramAnonymousInt = ((r)localObject).mkW)
         {
-          localObject = com.tencent.mm.modelvoice.s.n(paramAnonymousMenuItem, str, paramAnonymousInt);
+          localObject = s.p(paramAnonymousMenuItem, str, paramAnonymousInt);
           Log.i("MicroMsg.LongClickBrandServiceHelper", "connector click[voice]: to[%s] filePath[%s]", new Object[] { paramAnonymousMenuItem, localObject });
           localObject = new com.tencent.mm.modelvoice.f((String)localObject, 1);
-          bg.azz().a((com.tencent.mm.ak.q)localObject, 0);
-          com.tencent.mm.plugin.report.service.h.CyF.a(10424, new Object[] { Integer.valueOf(34), Integer.valueOf(2), paramAnonymousMenuItem });
-          com.tencent.mm.ui.base.h.cD(paramContext, paramContext.getString(2131755971));
+          bh.aGY().a((com.tencent.mm.an.q)localObject, 0);
+          com.tencent.mm.plugin.report.service.h.IzE.a(10424, new Object[] { Integer.valueOf(34), Integer.valueOf(2), paramAnonymousMenuItem });
+          com.tencent.mm.ui.base.h.cO(paramContext, paramContext.getString(R.l.app_saved));
           AppMethodBeat.o(34899);
           return;
         }
@@ -408,41 +411,41 @@ public final class an
       AppMethodBeat.o(34910);
       return;
     }
-    bg.aVF();
+    bh.beI();
     if (!com.tencent.mm.model.c.isSDCardAvailable())
     {
-      com.tencent.mm.ui.base.u.kf(paramContext);
+      com.tencent.mm.ui.base.w.ld(paramContext);
       Log.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptVideoConnector: sd card is not available");
       AppMethodBeat.o(34910);
       return;
     }
-    a(jm(ag.bah().sN(8)), paramContext, new o.g()
+    a(ke(af.bjv().vK(8)), paramContext, new q.g()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
         AppMethodBeat.i(34901);
         paramAnonymousMenuItem = paramAnonymousMenuItem.getTitle();
-        com.tencent.mm.modelvideo.s locals = com.tencent.mm.modelvideo.u.QN(this.iBF.field_imgPath);
-        Log.i("MicroMsg.LongClickBrandServiceHelper", "connector click[video]: to[%s] imgPath[%s]", new Object[] { paramAnonymousMenuItem, this.iBF.field_imgPath });
+        com.tencent.mm.modelvideo.w localw = y.Yk(this.lrk.field_imgPath);
+        Log.i("MicroMsg.LongClickBrandServiceHelper", "connector click[video]: to[%s] imgPath[%s]", new Object[] { paramAnonymousMenuItem, this.lrk.field_imgPath });
         final MsgRetransmitUI.a locala = new MsgRetransmitUI.a();
         Object localObject = paramContext;
-        paramContext.getResources().getString(2131755998);
-        localObject = com.tencent.mm.ui.base.h.a((Context)localObject, paramContext.getResources().getString(2131755978), true, new DialogInterface.OnCancelListener()
+        paramContext.getResources().getString(R.l.app_tip);
+        localObject = com.tencent.mm.ui.base.h.a((Context)localObject, paramContext.getResources().getString(R.l.app_sending), true, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
           {
-            locala.QyQ = true;
+            locala.XWZ = true;
           }
         });
         locala.context = paramContext;
-        locala.fileName = this.iBF.field_imgPath;
+        locala.fileName = this.lrk.field_imgPath;
         locala.tipDialog = ((Dialog)localObject);
         locala.userName = paramAnonymousMenuItem;
-        locala.Qyk = locals.jsr;
-        locala.iFw = locals.iFw;
+        locala.XWq = localw.mhU;
+        locala.lvw = localw.lvw;
         locala.execute(new Object[0]);
-        cf.aWl().f(cf.iFJ, null);
-        com.tencent.mm.ui.base.h.cD(paramContext, paramContext.getString(2131755971));
+        cg.bfp().e(cg.lvL, null);
+        com.tencent.mm.ui.base.h.cO(paramContext, paramContext.getString(R.l.app_saved));
         AppMethodBeat.o(34901);
       }
     });
@@ -471,23 +474,23 @@ public final class an
       AppMethodBeat.o(34913);
       return;
     }
-    bg.aVF();
+    bh.beI();
     if (!com.tencent.mm.model.c.isSDCardAvailable())
     {
-      com.tencent.mm.ui.base.u.kf(paramContext);
+      com.tencent.mm.ui.base.w.ld(paramContext);
       Log.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptEmojiConnector: sd card is not available");
       AppMethodBeat.o(34913);
       return;
     }
-    a(jm(ag.bah().sN(64)), paramContext, new o.g()
+    a(ke(af.bjv().vK(64)), paramContext, new q.g()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
         AppMethodBeat.i(34904);
         String str = paramAnonymousMenuItem.getTitle();
-        paramAnonymousMenuItem = be.bkr(this.iBF.field_content).md5;
+        paramAnonymousMenuItem = be.bwQ(this.lrk.field_content).md5;
         if ((paramAnonymousMenuItem == null) || (paramAnonymousMenuItem.endsWith("-1"))) {
-          paramAnonymousMenuItem = this.iBF.field_imgPath;
+          paramAnonymousMenuItem = this.lrk.field_imgPath;
         }
         for (;;)
         {
@@ -498,13 +501,13 @@ public final class an
             return;
           }
           Log.i("MicroMsg.LongClickBrandServiceHelper", "connector click[emoji]: to[%s] filePath[%s]", new Object[] { str, paramAnonymousMenuItem });
-          if (((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().u(paramContext, str, paramAnonymousMenuItem))
+          if (((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().x(paramContext, str, paramAnonymousMenuItem))
           {
-            com.tencent.mm.plugin.report.service.h.CyF.a(10424, new Object[] { Integer.valueOf(47), Integer.valueOf(64), str });
-            com.tencent.mm.ui.base.h.cD(paramContext, "");
+            com.tencent.mm.plugin.report.service.h.IzE.a(10424, new Object[] { Integer.valueOf(47), Integer.valueOf(64), str });
+            com.tencent.mm.ui.base.h.cO(paramContext, "");
           }
-          com.tencent.mm.plugin.report.service.h.CyF.a(10424, new Object[] { Integer.valueOf(47), Integer.valueOf(64), str });
-          com.tencent.mm.ui.base.h.cD(paramContext, paramContext.getString(2131755971));
+          com.tencent.mm.plugin.report.service.h.IzE.a(10424, new Object[] { Integer.valueOf(47), Integer.valueOf(64), str });
+          com.tencent.mm.ui.base.h.cO(paramContext, paramContext.getString(R.l.app_saved));
           AppMethodBeat.o(34904);
           return;
         }
@@ -513,7 +516,7 @@ public final class an
     AppMethodBeat.o(34913);
   }
   
-  private static List<String> jm(List<String> paramList)
+  private static List<String> ke(List<String> paramList)
   {
     AppMethodBeat.i(34918);
     LinkedList localLinkedList = new LinkedList();
@@ -521,7 +524,7 @@ public final class an
     while (paramList.hasNext())
     {
       String str = (String)paramList.next();
-      if (!com.tencent.mm.al.g.Ne(str)) {
+      if (!com.tencent.mm.ao.g.UA(str)) {
         localLinkedList.add(str);
       }
     }
@@ -530,7 +533,7 @@ public final class an
     return localLinkedList;
   }
   
-  public static void m(String paramString, final Context paramContext)
+  public static void o(String paramString, final Context paramContext)
   {
     AppMethodBeat.i(34907);
     if (paramContext == null)
@@ -545,29 +548,29 @@ public final class an
       AppMethodBeat.o(34907);
       return;
     }
-    a(jm(ag.bah().sN(1)), paramContext, new o.g()
+    a(ke(af.bjv().vK(1)), paramContext, new q.g()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
         AppMethodBeat.i(34896);
         paramAnonymousMenuItem = paramAnonymousMenuItem.getTitle();
         Log.i("MicroMsg.LongClickBrandServiceHelper", "connector click[text]: to[%s] text[%s]", new Object[] { paramAnonymousMenuItem, this.val$content });
-        o.e locale = o.Pl(paramAnonymousMenuItem);
+        o.e locale = o.WI(paramAnonymousMenuItem);
         locale.toUser = paramAnonymousMenuItem;
         locale.content = this.val$content;
-        locale = locale.tD(ab.JG(paramAnonymousMenuItem));
-        locale.cSx = 0;
-        locale.jdR = 4;
-        locale.bdQ().execute();
-        com.tencent.mm.plugin.report.service.h.CyF.a(10424, new Object[] { Integer.valueOf(1), Integer.valueOf(1), paramAnonymousMenuItem });
-        com.tencent.mm.ui.base.h.cD(paramContext, paramContext.getString(2131755971));
+        locale = locale.wD(ab.QZ(paramAnonymousMenuItem));
+        locale.cUP = 0;
+        locale.lUq = 4;
+        locale.bnl().aEv();
+        com.tencent.mm.plugin.report.service.h.IzE.a(10424, new Object[] { Integer.valueOf(1), Integer.valueOf(1), paramAnonymousMenuItem });
+        com.tencent.mm.ui.base.h.cO(paramContext, paramContext.getString(R.l.app_saved));
         AppMethodBeat.o(34896);
       }
     });
     AppMethodBeat.o(34907);
   }
   
-  public static void n(String paramString, final Context paramContext)
+  public static void p(String paramString, final Context paramContext)
   {
     AppMethodBeat.i(34911);
     if (paramContext == null)
@@ -582,29 +585,29 @@ public final class an
       AppMethodBeat.o(34911);
       return;
     }
-    a(jm(ag.bah().sN(16)), paramContext, new o.g()
+    a(ke(af.bjv().vK(16)), paramContext, new q.g()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
         AppMethodBeat.i(34902);
         paramAnonymousMenuItem = paramAnonymousMenuItem.getTitle();
-        Log.i("MicroMsg.LongClickBrandServiceHelper", "connector click[location]: to[%s] content[%s]", new Object[] { paramAnonymousMenuItem, this.PkB });
-        o.e locale = o.Pl(paramAnonymousMenuItem);
+        Log.i("MicroMsg.LongClickBrandServiceHelper", "connector click[location]: to[%s] content[%s]", new Object[] { paramAnonymousMenuItem, this.WEk });
+        o.e locale = o.WI(paramAnonymousMenuItem);
         locale.toUser = paramAnonymousMenuItem;
-        locale.content = this.PkB;
-        locale = locale.tD(48);
-        locale.cSx = 0;
-        locale.jdR = 4;
-        locale.bdQ().execute();
-        com.tencent.mm.plugin.report.service.h.CyF.a(10424, new Object[] { Integer.valueOf(48), Integer.valueOf(16), paramAnonymousMenuItem });
-        com.tencent.mm.ui.base.h.cD(paramContext, paramContext.getString(2131755971));
+        locale.content = this.WEk;
+        locale = locale.wD(48);
+        locale.cUP = 0;
+        locale.lUq = 4;
+        locale.bnl().aEv();
+        com.tencent.mm.plugin.report.service.h.IzE.a(10424, new Object[] { Integer.valueOf(48), Integer.valueOf(16), paramAnonymousMenuItem });
+        com.tencent.mm.ui.base.h.cO(paramContext, paramContext.getString(R.l.app_saved));
         AppMethodBeat.o(34902);
       }
     });
     AppMethodBeat.o(34911);
   }
   
-  public static void o(String paramString, final Context paramContext)
+  public static void q(String paramString, final Context paramContext)
   {
     AppMethodBeat.i(34912);
     if (paramContext == null)
@@ -619,35 +622,35 @@ public final class an
       AppMethodBeat.o(34912);
       return;
     }
-    a(jm(ag.bah().sN(32)), paramContext, new o.g()
+    a(ke(af.bjv().vK(32)), paramContext, new q.g()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
         int i = 66;
         AppMethodBeat.i(34903);
         paramAnonymousMenuItem = paramAnonymousMenuItem.getTitle();
-        Log.i("MicroMsg.LongClickBrandServiceHelper", "connector click[location]: to[%s] content[%s]", new Object[] { paramAnonymousMenuItem, this.PkC });
-        ca.a locala = ca.a.bkA(this.PkC);
-        Object localObject = o.Pl(paramAnonymousMenuItem);
+        Log.i("MicroMsg.LongClickBrandServiceHelper", "connector click[location]: to[%s] content[%s]", new Object[] { paramAnonymousMenuItem, this.WEl });
+        ca.a locala = ca.a.bwZ(this.WEl);
+        Object localObject = o.WI(paramAnonymousMenuItem);
         ((o.e)localObject).toUser = paramAnonymousMenuItem;
-        ((o.e)localObject).content = this.PkC;
-        if (as.bjp(locala.dkU))
+        ((o.e)localObject).content = this.WEl;
+        if (as.bvK(locala.fcC))
         {
           paramAnonymousInt = 66;
-          localObject = ((o.e)localObject).tD(paramAnonymousInt);
-          ((o.e)localObject).cSx = 0;
-          ((o.e)localObject).jdR = 4;
-          ((o.e)localObject).bdQ().execute();
-          localObject = com.tencent.mm.plugin.report.service.h.CyF;
-          if (!as.bjp(locala.dkU)) {
-            break label201;
+          localObject = ((o.e)localObject).wD(paramAnonymousInt);
+          ((o.e)localObject).cUP = 0;
+          ((o.e)localObject).lUq = 4;
+          ((o.e)localObject).bnl().aEv();
+          localObject = com.tencent.mm.plugin.report.service.h.IzE;
+          if (!as.bvK(locala.fcC)) {
+            break label202;
           }
         }
-        label201:
+        label202:
         for (paramAnonymousInt = i;; paramAnonymousInt = 42)
         {
           ((com.tencent.mm.plugin.report.service.h)localObject).a(10424, new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(32), paramAnonymousMenuItem });
-          com.tencent.mm.ui.base.h.cD(paramContext, paramContext.getString(2131755971));
+          com.tencent.mm.ui.base.h.cO(paramContext, paramContext.getString(R.l.app_saved));
           AppMethodBeat.o(34903);
           return;
           paramAnonymousInt = 42;
@@ -660,7 +663,7 @@ public final class an
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.an
  * JD-Core Version:    0.7.0.1
  */

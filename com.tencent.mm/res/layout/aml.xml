@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/rj"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/lz">
-        <ImageView android:id="@id/d_2" android:src="@drawable/bdo" style="@style/k2" />
-        <TextView android:text="正在获取Wi-Fi信息..." style="@style/ko" />
-    </LinearLayout>
-</LinearLayout>
+    <ImageView android:id="@id/bh7" android:background="@color/wt" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <RelativeLayout android:id="@id/gbl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/gbk" android:layout_width="fill_parent" android:layout_height="34.0dip" android:layout_alignParentBottom="true" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i2" android:layout_marginBottom="5.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
+            <ImageView android:padding="1.0dip" android:layout_width="20.0dip" android:layout_height="16.0dip" android:src="@raw/biz_time_line_pic_icon" />
+        </LinearLayout>
+    </RelativeLayout>
+    <ImageView android:id="@id/gcf" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@raw/chatting_item_biz_music_play_icon" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+</RelativeLayout>

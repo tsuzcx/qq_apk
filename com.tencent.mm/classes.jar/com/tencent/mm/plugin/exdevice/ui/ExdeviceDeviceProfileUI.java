@@ -6,26 +6,31 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.al.ag;
-import com.tencent.mm.g.a.dr;
-import com.tencent.mm.g.a.dr.b;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.g.c.do;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.plugin.exdevice.model.ad;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.l;
+import com.tencent.mm.R.o;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.ao.af;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.f.a.dy;
+import com.tencent.mm.f.a.dy.b;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.f.c.ds;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.plugin.exdevice.model.ae;
 import com.tencent.mm.plugin.exdevice.model.l;
-import com.tencent.mm.plugin.exdevice.model.x;
 import com.tencent.mm.plugin.exdevice.model.y;
-import com.tencent.mm.protocal.protobuf.cat;
+import com.tencent.mm.plugin.exdevice.model.z;
+import com.tencent.mm.protocal.protobuf.ciu;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
@@ -38,6 +43,7 @@ import com.tencent.mm.ui.base.h.b;
 import com.tencent.mm.ui.base.preference.KeyValuePreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
+import com.tencent.mm.ui.base.s;
 import java.util.Iterator;
 import java.util.List;
 
@@ -45,58 +51,58 @@ public class ExdeviceDeviceProfileUI
   extends MMPreference
   implements i
 {
-  private String dfJ;
-  private com.tencent.mm.ui.base.q gxX;
+  private s jhZ;
   private String mDeviceType;
-  private long rAv;
-  private String rFI;
-  private String rFJ;
-  private String rFd;
-  private int rGG;
-  private com.tencent.mm.ui.base.q rGN = null;
-  private String rHJ;
-  private String rHK;
-  private boolean rHL;
-  private String rHM;
-  private boolean rHN;
-  private String rHO;
-  private h.b rHP;
-  private String rzn;
-  private String rzo;
+  private String shW;
+  private String veU;
+  private String veV;
+  private long vgc;
+  private String vkN;
+  private String vls;
+  private String vlt;
+  private int vmp;
+  private s vmw = null;
+  private String vnr;
+  private String vns;
+  private boolean vnt;
+  private String vnu;
+  private boolean vnv;
+  private String vnw;
+  private h.b vnx;
   
   private void a(DeviceProfileHeaderPreference paramDeviceProfileHeaderPreference)
   {
     AppMethodBeat.i(24023);
     String str;
-    if (Util.isNullOrNil(this.rFI))
+    if (Util.isNullOrNil(this.vls))
     {
-      str = this.rzn;
-      if (Util.isNullOrNil(this.rHK)) {
-        break label98;
+      str = this.veU;
+      if (Util.isNullOrNil(this.vns)) {
+        break label99;
       }
-      paramDeviceProfileHeaderPreference.setName(this.rHK);
-      paramDeviceProfileHeaderPreference.anM(getString(2131758830, new Object[] { str }));
+      paramDeviceProfileHeaderPreference.setName(this.vns);
+      paramDeviceProfileHeaderPreference.avL(getString(R.l.eDs, new Object[] { str }));
       paramDeviceProfileHeaderPreference.ai(3, true);
       paramDeviceProfileHeaderPreference.ai(4, true);
       paramDeviceProfileHeaderPreference.ai(1, false);
     }
     for (;;)
     {
-      paramDeviceProfileHeaderPreference.Cs(this.rFd);
+      paramDeviceProfileHeaderPreference.Jg(this.vkN);
       AppMethodBeat.o(24023);
       return;
-      str = this.rFI;
+      str = this.vls;
       break;
-      label98:
+      label99:
       paramDeviceProfileHeaderPreference.setName(str);
-      paramDeviceProfileHeaderPreference.anM("");
+      paramDeviceProfileHeaderPreference.avL("");
       paramDeviceProfileHeaderPreference.ai(3, false);
       paramDeviceProfileHeaderPreference.ai(4, false);
-      paramDeviceProfileHeaderPreference.ai(1, this.rHL);
+      paramDeviceProfileHeaderPreference.ai(1, this.vnt);
     }
   }
   
-  private void cLD()
+  private void daq()
   {
     AppMethodBeat.i(24028);
     runOnUiThread(new Runnable()
@@ -116,20 +122,20 @@ public class ExdeviceDeviceProfileUI
     AppMethodBeat.o(24028);
   }
   
-  private void cLJ()
+  private void daw()
   {
     AppMethodBeat.i(24022);
     com.tencent.mm.ui.base.preference.f localf = getPreferenceScreen();
-    Object localObject = (DeviceProfileHeaderPreference)localf.bmg("device_profile_header");
+    Object localObject = (DeviceProfileHeaderPreference)localf.byG("device_profile_header");
     ((DeviceProfileHeaderPreference)localObject).a(1, new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(24014);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceDeviceProfileUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        h.a(ExdeviceDeviceProfileUI.this, ExdeviceDeviceProfileUI.this.getString(2131758837), "", "", 50, ExdeviceDeviceProfileUI.e(ExdeviceDeviceProfileUI.this));
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceDeviceProfileUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        h.a(ExdeviceDeviceProfileUI.this, ExdeviceDeviceProfileUI.this.getString(R.l.eDx), "", "", 50, ExdeviceDeviceProfileUI.e(ExdeviceDeviceProfileUI.this));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceDeviceProfileUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(24014);
       }
@@ -140,47 +146,47 @@ public class ExdeviceDeviceProfileUI
       {
         AppMethodBeat.i(24015);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceDeviceProfileUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        h.a(ExdeviceDeviceProfileUI.this, ExdeviceDeviceProfileUI.this.getString(2131758837), ExdeviceDeviceProfileUI.d(ExdeviceDeviceProfileUI.this), "", 50, ExdeviceDeviceProfileUI.e(ExdeviceDeviceProfileUI.this));
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/exdevice/ui/ExdeviceDeviceProfileUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        h.a(ExdeviceDeviceProfileUI.this, ExdeviceDeviceProfileUI.this.getString(R.l.eDx), ExdeviceDeviceProfileUI.d(ExdeviceDeviceProfileUI.this), "", 50, ExdeviceDeviceProfileUI.e(ExdeviceDeviceProfileUI.this));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceDeviceProfileUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(24015);
       }
     });
     a((DeviceProfileHeaderPreference)localObject);
-    ((DeviceProfileHeaderPreference)localObject).setIconUrl(this.rHM);
-    localObject = (KeyValuePreference)localf.bmg("message_manage");
-    KeyValuePreference localKeyValuePreference1 = (KeyValuePreference)localf.bmg("connect_setting");
-    KeyValuePreference localKeyValuePreference2 = (KeyValuePreference)localf.bmg("user_list");
-    ((KeyValuePreference)localObject).BC(true);
-    localKeyValuePreference1.BC(true);
-    localKeyValuePreference2.BC(true);
-    localf.jdMethod_do("message_manage", true);
-    localf.jdMethod_do("connect_setting", true);
-    localf.jdMethod_do("user_list", true);
-    if (this.rHN)
+    ((DeviceProfileHeaderPreference)localObject).setIconUrl(this.vnu);
+    localObject = (KeyValuePreference)localf.byG("message_manage");
+    KeyValuePreference localKeyValuePreference1 = (KeyValuePreference)localf.byG("connect_setting");
+    KeyValuePreference localKeyValuePreference2 = (KeyValuePreference)localf.byG("user_list");
+    ((KeyValuePreference)localObject).FU(true);
+    localKeyValuePreference1.FU(true);
+    localKeyValuePreference2.FU(true);
+    localf.dz("message_manage", true);
+    localf.dz("connect_setting", true);
+    localf.dz("user_list", true);
+    if (this.vnv)
     {
-      localf.jdMethod_do("sub_device_desc", false);
-      localf.bmg("sub_device_desc").setTitle(getResources().getString(2131758917, new Object[] { this.rHO }));
-      localf.jdMethod_do("bind_device", true);
-      localf.jdMethod_do("unbind_device", true);
-      if (Util.isNullOrNil(this.rHJ)) {
-        localf.jdMethod_do("open_device_panel", true);
+      localf.dz("sub_device_desc", false);
+      localf.byG("sub_device_desc").setTitle(getResources().getString(R.l.eEh, new Object[] { this.vnw }));
+      localf.dz("bind_device", true);
+      localf.dz("unbind_device", true);
+      if (Util.isNullOrNil(this.vnr)) {
+        localf.dz("open_device_panel", true);
       }
       AppMethodBeat.o(24022);
       return;
     }
-    localf.jdMethod_do("sub_device_desc", true);
-    localf.jdMethod_do("bind_device", this.rHL);
-    if (!this.rHL) {}
+    localf.dz("sub_device_desc", true);
+    localf.dz("bind_device", this.vnt);
+    if (!this.vnt) {}
     for (boolean bool = true;; bool = false)
     {
-      localf.jdMethod_do("unbind_device", bool);
+      localf.dz("unbind_device", bool);
       break;
     }
   }
   
-  private void cLK()
+  private void dax()
   {
     AppMethodBeat.i(24029);
     runOnUiThread(new Runnable()
@@ -188,14 +194,14 @@ public class ExdeviceDeviceProfileUI
       public final void run()
       {
         AppMethodBeat.i(24005);
-        h.c(ExdeviceDeviceProfileUI.this, ExdeviceDeviceProfileUI.this.getString(2131758778), ExdeviceDeviceProfileUI.this.getString(2131755998), true);
+        h.c(ExdeviceDeviceProfileUI.this, ExdeviceDeviceProfileUI.this.getString(R.l.eCN), ExdeviceDeviceProfileUI.this.getString(R.l.app_tip), true);
         AppMethodBeat.o(24005);
       }
     });
     AppMethodBeat.o(24029);
   }
   
-  private void cLL()
+  private void day()
   {
     AppMethodBeat.i(24030);
     runOnUiThread(new Runnable()
@@ -204,7 +210,7 @@ public class ExdeviceDeviceProfileUI
       {
         AppMethodBeat.i(24008);
         ExdeviceDeviceProfileUI localExdeviceDeviceProfileUI = ExdeviceDeviceProfileUI.this;
-        ExdeviceDeviceProfileUI.this.getString(2131755998);
+        ExdeviceDeviceProfileUI.this.getString(R.l.app_tip);
         new MTimerHandler(new MTimerHandler.CallBack()
         {
           public final boolean onTimerExpired()
@@ -215,7 +221,7 @@ public class ExdeviceDeviceProfileUI
               public final void run()
               {
                 AppMethodBeat.i(24006);
-                ExdeviceDeviceProfileUI.4.1.this.rHR.dismiss();
+                ExdeviceDeviceProfileUI.4.1.this.vnz.dismiss();
                 AppMethodBeat.o(24006);
               }
             });
@@ -234,19 +240,19 @@ public class ExdeviceDeviceProfileUI
     AppMethodBeat.i(24027);
     if (paramb != null)
     {
-      this.rzo = paramb.field_deviceID;
+      this.veV = paramb.field_deviceID;
       this.mDeviceType = paramb.field_deviceType;
-      this.rHK = Util.nullAsNil(paramb.fMb);
-      this.rFI = Util.nullAsNil(paramb.fMc);
-      this.rzn = Util.nullAsNil(paramb.field_brandName);
-      this.rFd = Util.nullAsNil(paramb.fMd);
-      this.rHM = Util.nullAsNil(paramb.iconUrl);
-      this.rHJ = Util.nullAsNil(paramb.jumpUrl);
+      this.vns = Util.nullAsNil(paramb.idS);
+      this.vls = Util.nullAsNil(paramb.idT);
+      this.veU = Util.nullAsNil(paramb.field_brandName);
+      this.vkN = Util.nullAsNil(paramb.idU);
+      this.vnu = Util.nullAsNil(paramb.iconUrl);
+      this.vnr = Util.nullAsNil(paramb.jumpUrl);
     }
     AppMethodBeat.o(24027);
   }
   
-  private void h(final com.tencent.mm.ak.q paramq)
+  private void h(final q paramq)
   {
     AppMethodBeat.i(24031);
     runOnUiThread(new Runnable()
@@ -254,12 +260,12 @@ public class ExdeviceDeviceProfileUI
       public final void run()
       {
         AppMethodBeat.i(24010);
-        ExdeviceDeviceProfileUI.a(ExdeviceDeviceProfileUI.this, h.a(ExdeviceDeviceProfileUI.this.getContext(), ExdeviceDeviceProfileUI.this.getString(2131756029), true, new DialogInterface.OnCancelListener()
+        ExdeviceDeviceProfileUI.a(ExdeviceDeviceProfileUI.this, h.a(ExdeviceDeviceProfileUI.this.getContext(), ExdeviceDeviceProfileUI.this.getString(R.l.app_waiting), true, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
           {
             AppMethodBeat.i(24009);
-            bg.azz().a(ExdeviceDeviceProfileUI.5.this.dAK);
+            bh.aGY().a(ExdeviceDeviceProfileUI.5.this.ftz);
             AppMethodBeat.o(24009);
           }
         }));
@@ -271,7 +277,7 @@ public class ExdeviceDeviceProfileUI
   
   public int getResourceId()
   {
-    return 2132017208;
+    return R.o.eXB;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -289,9 +295,9 @@ public class ExdeviceDeviceProfileUI
         return false;
       }
     });
-    setMMTitle(2131758786);
-    setActionbarColor(getContext().getResources().getColor(2131101424));
-    this.rHP = new h.b()
+    setMMTitle(R.l.eCS);
+    setActionbarColor(getContext().getResources().getColor(R.e.white));
+    this.vnx = new h.b()
     {
       public final boolean onFinish(CharSequence paramAnonymousCharSequence)
       {
@@ -309,81 +315,81 @@ public class ExdeviceDeviceProfileUI
             public final void run()
             {
               AppMethodBeat.i(24012);
-              ExdeviceDeviceProfileUI.a(ExdeviceDeviceProfileUI.this, (DeviceProfileHeaderPreference)ExdeviceDeviceProfileUI.this.getPreferenceScreen().bmg("device_profile_header"));
+              ExdeviceDeviceProfileUI.a(ExdeviceDeviceProfileUI.this, (DeviceProfileHeaderPreference)ExdeviceDeviceProfileUI.this.getPreferenceScreen().byG("device_profile_header"));
               AppMethodBeat.o(24012);
             }
           });
-          paramAnonymousCharSequence = ad.cKL().gb(ExdeviceDeviceProfileUI.b(ExdeviceDeviceProfileUI.this), ExdeviceDeviceProfileUI.c(ExdeviceDeviceProfileUI.this));
+          paramAnonymousCharSequence = ae.cZx().gq(ExdeviceDeviceProfileUI.b(ExdeviceDeviceProfileUI.this), ExdeviceDeviceProfileUI.c(ExdeviceDeviceProfileUI.this));
           if (paramAnonymousCharSequence == null)
           {
             Log.i("MicroMsg.ExdeviceDeviceProfileUI", "hard device info is null.(deviceId:%s, deviceType:%s)", new Object[] { ExdeviceDeviceProfileUI.b(ExdeviceDeviceProfileUI.this), ExdeviceDeviceProfileUI.c(ExdeviceDeviceProfileUI.this) });
             AppMethodBeat.o(24013);
             return false;
           }
-          paramAnonymousCharSequence.BC(ExdeviceDeviceProfileUI.d(ExdeviceDeviceProfileUI.this));
-          ad.cKL().update(paramAnonymousCharSequence, new String[0]);
+          paramAnonymousCharSequence.Iq(ExdeviceDeviceProfileUI.d(ExdeviceDeviceProfileUI.this));
+          ae.cZx().update(paramAnonymousCharSequence, new String[0]);
         }
         for (;;)
         {
           AppMethodBeat.o(24013);
           return true;
-          paramAnonymousCharSequence = new y(ExdeviceDeviceProfileUI.b(ExdeviceDeviceProfileUI.this), ExdeviceDeviceProfileUI.c(ExdeviceDeviceProfileUI.this), str);
+          paramAnonymousCharSequence = new z(ExdeviceDeviceProfileUI.b(ExdeviceDeviceProfileUI.this), ExdeviceDeviceProfileUI.c(ExdeviceDeviceProfileUI.this), str);
           ExdeviceDeviceProfileUI.a(ExdeviceDeviceProfileUI.this, paramAnonymousCharSequence);
-          bg.azz().a(1263, ExdeviceDeviceProfileUI.this);
-          bg.azz().a(paramAnonymousCharSequence, 0);
+          bh.aGY().a(1263, ExdeviceDeviceProfileUI.this);
+          bh.aGY().a(paramAnonymousCharSequence, 0);
         }
       }
     };
     paramBundle = getIntent();
-    this.dfJ = paramBundle.getStringExtra("device_mac");
-    this.rAv = paramBundle.getLongExtra("device_ble_simple_proto", 0L);
-    this.rHJ = paramBundle.getStringExtra("device_jump_url");
-    this.rzn = paramBundle.getStringExtra("device_brand_name");
-    this.rzo = paramBundle.getStringExtra("device_id");
+    this.shW = paramBundle.getStringExtra("device_mac");
+    this.vgc = paramBundle.getLongExtra("device_ble_simple_proto", 0L);
+    this.vnr = paramBundle.getStringExtra("device_jump_url");
+    this.veU = paramBundle.getStringExtra("device_brand_name");
+    this.veV = paramBundle.getStringExtra("device_id");
     this.mDeviceType = paramBundle.getStringExtra("device_type");
-    this.rFJ = paramBundle.getStringExtra("bind_ticket");
-    this.rGG = paramBundle.getIntExtra("subscribe_flag", 0);
-    this.rHL = paramBundle.getBooleanExtra("device_has_bound", false);
-    this.rFI = paramBundle.getStringExtra("device_title");
-    this.rHK = paramBundle.getStringExtra("device_alias");
-    this.rFd = paramBundle.getStringExtra("device_desc");
-    this.rHM = paramBundle.getStringExtra("device_icon_url");
-    if ((Util.isNullOrNil(this.rzo)) || (Util.isNullOrNil(this.mDeviceType))) {
-      Log.e("MicroMsg.ExdeviceDeviceProfileUI", "deviceId or deviceType is null.", new Object[] { this.rzo, this.mDeviceType });
+    this.vlt = paramBundle.getStringExtra("bind_ticket");
+    this.vmp = paramBundle.getIntExtra("subscribe_flag", 0);
+    this.vnt = paramBundle.getBooleanExtra("device_has_bound", false);
+    this.vls = paramBundle.getStringExtra("device_title");
+    this.vns = paramBundle.getStringExtra("device_alias");
+    this.vkN = paramBundle.getStringExtra("device_desc");
+    this.vnu = paramBundle.getStringExtra("device_icon_url");
+    if ((Util.isNullOrNil(this.veV)) || (Util.isNullOrNil(this.mDeviceType))) {
+      Log.e("MicroMsg.ExdeviceDeviceProfileUI", "deviceId or deviceType is null.", new Object[] { this.veV, this.mDeviceType });
     }
     while (i == 0)
     {
-      Toast.makeText(getContext(), 2131758845, 1).show();
+      Toast.makeText(getContext(), R.l.eDz, 1).show();
       finish();
       AppMethodBeat.o(24021);
       return;
-      paramBundle = ad.cKL().gb(this.rzo, this.mDeviceType);
+      paramBundle = ae.cZx().gq(this.veV, this.mDeviceType);
       if (paramBundle != null)
       {
-        this.rHL = true;
-        if (Util.isNullOrNil(this.rHK)) {
-          this.rHK = Util.nullAsNil(paramBundle.fMb);
+        this.vnt = true;
+        if (Util.isNullOrNil(this.vns)) {
+          this.vns = Util.nullAsNil(paramBundle.idS);
         }
-        if (Util.isNullOrNil(this.rFI)) {
-          this.rFI = Util.nullAsNil(paramBundle.fMc);
+        if (Util.isNullOrNil(this.vls)) {
+          this.vls = Util.nullAsNil(paramBundle.idT);
         }
-        if (Util.isNullOrNil(this.rzn)) {
-          this.rzn = Util.nullAsNil(paramBundle.field_brandName);
+        if (Util.isNullOrNil(this.veU)) {
+          this.veU = Util.nullAsNil(paramBundle.field_brandName);
         }
-        if (Util.isNullOrNil(this.rFd)) {
-          this.rFd = Util.nullAsNil(paramBundle.fMd);
+        if (Util.isNullOrNil(this.vkN)) {
+          this.vkN = Util.nullAsNil(paramBundle.idU);
         }
-        if (Util.isNullOrNil(this.rHM)) {
-          this.rHM = Util.nullAsNil(paramBundle.iconUrl);
+        if (Util.isNullOrNil(this.vnu)) {
+          this.vnu = Util.nullAsNil(paramBundle.iconUrl);
         }
-        if (Util.isNullOrNil(this.rHJ)) {
-          this.rHJ = Util.nullAsNil(paramBundle.jumpUrl);
+        if (Util.isNullOrNil(this.vnr)) {
+          this.vnr = Util.nullAsNil(paramBundle.jumpUrl);
         }
-        if (paramBundle.fMf == 2)
+        if (paramBundle.idX == 2)
         {
-          this.rHN = true;
-          this.rHO = this.rFI;
-          paramBundle = ad.cKL().cLB().iterator();
+          this.vnv = true;
+          this.vnw = this.vls;
+          paramBundle = ae.cZx().dao().iterator();
           com.tencent.mm.plugin.exdevice.i.b localb;
           do
           {
@@ -394,22 +400,22 @@ public class ExdeviceDeviceProfileUI
               }
               localb = (com.tencent.mm.plugin.exdevice.i.b)paramBundle.next();
             } while (!localb.field_deviceType.equals(this.mDeviceType));
-            localObject = localb.fMk;
+            localObject = localb.iec;
           } while ((localObject == null) || (((String)localObject).length() <= 0));
           Object localObject = ((String)localObject).split(",");
           i = 0;
           label535:
           if (i < localObject.length) {
-            if (localObject[i].equals(this.rzo)) {
-              if (!Util.isNullOrNil(localb.fMb)) {
+            if (localObject[i].equals(this.veV)) {
+              if (!Util.isNullOrNil(localb.idS)) {
                 break label601;
               }
             }
           }
           label601:
-          for (this.rHO = localb.fMc;; this.rHO = localb.fMb)
+          for (this.vnw = localb.idT;; this.vnw = localb.idS)
           {
-            Log.i("MicroMsg.ExdeviceDeviceProfileUI", "mGateWayTitle %s", new Object[] { this.rHO });
+            Log.i("MicroMsg.ExdeviceDeviceProfileUI", "mGateWayTitle %s", new Object[] { this.vnw });
             i += 1;
             break label535;
             break;
@@ -418,20 +424,20 @@ public class ExdeviceDeviceProfileUI
       }
       else
       {
-        if (Util.isNullOrNil(this.rFJ)) {
+        if (Util.isNullOrNil(this.vlt)) {
           continue;
         }
       }
       i = 1;
     }
-    cLJ();
+    daw();
     AppMethodBeat.o(24021);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(24026);
-    bg.azz().b(537, this);
+    bh.aGY().b(537, this);
     super.onDestroy();
     AppMethodBeat.o(24026);
   }
@@ -441,13 +447,13 @@ public class ExdeviceDeviceProfileUI
     AppMethodBeat.i(24024);
     Log.d("MicroMsg.ExdeviceDeviceProfileUI", "onPreferenceTreeClcik.(key : %s)", new Object[] { paramPreference.mKey });
     if ("bind_device".equals(paramPreference.mKey)) {
-      if (Util.isNullOrNil(this.rFJ))
+      if (Util.isNullOrNil(this.vlt))
       {
         Log.i("MicroMsg.ExdeviceDeviceProfileUI", "Do unauth bind device.");
-        paramf = new com.tencent.mm.plugin.exdevice.model.m(com.tencent.mm.plugin.exdevice.k.b.anY(this.dfJ), this.rzn, "3", this.rAv);
+        paramf = new com.tencent.mm.plugin.exdevice.model.m(com.tencent.mm.plugin.exdevice.k.b.avW(this.shW), this.veU, "3", this.vgc);
         h(paramf);
-        bg.azz().a(1262, this);
-        bg.azz().a(paramf, 0);
+        bh.aGY().a(1262, this);
+        bh.aGY().a(paramf, 0);
       }
     }
     do
@@ -457,72 +463,72 @@ public class ExdeviceDeviceProfileUI
         AppMethodBeat.o(24024);
         return true;
         Log.i("MicroMsg.ExdeviceDeviceProfileUI", "Do normal bind device.");
-        paramf = this.rFJ;
-        int i = this.rGG;
-        bg.azz().a(536, this);
-        paramPreference = new dr();
-        paramPreference.dGF.dGH = paramf;
-        paramPreference.dGF.opType = 1;
-        paramPreference.dGF.dGI = i;
+        paramf = this.vlt;
+        int i = this.vmp;
+        bh.aGY().a(536, this);
+        paramPreference = new dy();
+        paramPreference.fzv.fzx = paramf;
+        paramPreference.fzv.opType = 1;
+        paramPreference.fzv.fzy = i;
         EventCenter.instance.publish(paramPreference);
-        paramf = paramPreference.dGG.dGJ;
-        getString(2131755998);
-        this.rGN = h.a(this, getString(2131758789), true, new ExdeviceDeviceProfileUI.10(this, paramf));
+        paramf = paramPreference.fzw.fzz;
+        getString(R.l.app_tip);
+        this.vmw = h.a(this, getString(R.l.eCU), true, new ExdeviceDeviceProfileUI.10(this, paramf));
         continue;
         if ("unbind_device".equals(paramPreference.mKey))
         {
-          paramf = new cat();
-          paramf.oTH = this.rzo;
-          paramf.KLO = this.mDeviceType;
-          paramPreference = ad.cKL().gb(this.rzo, this.mDeviceType);
+          paramf = new ciu();
+          paramf.rVF = this.veV;
+          paramf.RMK = this.mDeviceType;
+          paramPreference = ae.cZx().gq(this.veV, this.mDeviceType);
           if (paramPreference != null)
           {
-            paramPreference = paramPreference.fMk;
+            paramPreference = paramPreference.iec;
             if ((paramPreference != null) && (paramPreference.length() > 0))
             {
               paramPreference = paramPreference.split(",");
               i = 0;
               while (i < paramPreference.length)
               {
-                ad.cKL().gd(paramPreference[i], this.mDeviceType);
+                ae.cZx().gs(paramPreference[i], this.mDeviceType);
                 i += 1;
               }
             }
           }
-          paramf = new x(paramf, 2);
+          paramf = new y(paramf, 2);
           h(paramf);
-          bg.azz().a(537, this);
-          bg.azz().a(paramf, 0);
+          bh.aGY().a(537, this);
+          bh.aGY().a(paramf, 0);
         }
         else if ("open_device_panel".equals(paramPreference.mKey))
         {
-          com.tencent.mm.plugin.exdevice.model.f.ay(getContext(), this.rHJ);
+          com.tencent.mm.plugin.exdevice.model.f.ay(getContext(), this.vnr);
         }
         else
         {
           if (!"contact_info_biz_go_chatting".equals(paramPreference.mKey)) {
             break;
           }
-          bg.aVF();
-          paramf = com.tencent.mm.model.c.aSN().Kn(this.rzn);
+          bh.beI();
+          paramf = com.tencent.mm.model.c.bbL().RG(this.veU);
           paramPreference = new Intent();
-          paramPreference.putExtra("device_id", this.rzo);
+          paramPreference.putExtra("device_id", this.veV);
           paramPreference.putExtra("device_type", this.mDeviceType);
           paramPreference.putExtra("KIsHardDevice", true);
-          paramPreference.putExtra("KHardDeviceBindTicket", this.rFJ);
+          paramPreference.putExtra("KHardDeviceBindTicket", this.vlt);
           if (paramf != null) {
-            if ((com.tencent.mm.contact.c.oR(paramf.field_type)) && (paramf.gBM()))
+            if ((d.rk(paramf.field_type)) && (paramf.hxX()))
             {
-              ag.bah().MT(paramf.field_username);
-              paramPreference.putExtra("Chat_User", this.rzn);
+              af.bjv().Uo(paramf.field_username);
+              paramPreference.putExtra("Chat_User", this.veU);
               paramPreference.putExtra("finish_direct", true);
-              com.tencent.mm.plugin.exdevice.a.rxo.d(paramPreference, getContext());
+              com.tencent.mm.plugin.exdevice.a.cYL().d(paramPreference, getContext());
             }
             else
             {
-              paramPreference.putExtra("Contact_User", this.rzn);
+              paramPreference.putExtra("Contact_User", this.veU);
               paramPreference.putExtra("force_get_contact", true);
-              com.tencent.mm.br.c.b(getContext(), "profile", ".ui.ContactInfoUI", paramPreference);
+              com.tencent.mm.by.c.b(getContext(), "profile", ".ui.ContactInfoUI", paramPreference);
             }
           }
         }
@@ -532,7 +538,7 @@ public class ExdeviceDeviceProfileUI
     return false;
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(24025);
     Log.d("MicroMsg.ExdeviceDeviceProfileUI", "onSceneEnd errType = %d, errCode = %d ,errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
@@ -545,17 +551,17 @@ public class ExdeviceDeviceProfileUI
     Log.d("MicroMsg.ExdeviceDeviceProfileUI", "type = %s", new Object[] { Integer.valueOf(paramq.getType()) });
     if ((paramq instanceof l))
     {
-      cLD();
-      bg.azz().b(paramq.getType(), this);
+      daq();
+      bh.aGY().b(paramq.getType(), this);
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
         Log.e("MicroMsg.ExdeviceDeviceProfileUI", "onSceneEnd error(%d, %d, %s).(type : %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), paramString, Integer.valueOf(paramq.getType()) });
-        cLK();
+        dax();
         AppMethodBeat.o(24025);
         return;
       }
-      cLL();
-      f(ad.cKL().gb(this.rzo, this.mDeviceType));
+      day();
+      f(ae.cZx().gq(this.veV, this.mDeviceType));
       runOnUiThread(new Runnable()
       {
         public final void run()
@@ -572,13 +578,13 @@ public class ExdeviceDeviceProfileUI
     }
     if ((paramq instanceof com.tencent.mm.plugin.exdevice.model.m))
     {
-      cLD();
-      bg.azz().b(paramq.getType(), this);
-      com.tencent.mm.plugin.exdevice.i.b localb = ad.cKL().Di(com.tencent.mm.plugin.exdevice.k.b.anY(this.dfJ));
+      daq();
+      bh.aGY().b(paramq.getType(), this);
+      com.tencent.mm.plugin.exdevice.i.b localb = ae.cZx().Jw(com.tencent.mm.plugin.exdevice.k.b.avW(this.shW));
       if ((paramInt1 != 0) || (paramInt2 != 0) || (localb == null))
       {
         Log.e("MicroMsg.ExdeviceDeviceProfileUI", "onSceneEnd error(%d, %d, %s).(type : %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), paramString, Integer.valueOf(paramq.getType()) });
-        cLK();
+        dax();
         AppMethodBeat.o(24025);
         return;
       }
@@ -594,46 +600,46 @@ public class ExdeviceDeviceProfileUI
           AppMethodBeat.o(24018);
         }
       });
-      cLL();
+      day();
       AppMethodBeat.o(24025);
       return;
     }
-    if ((paramq instanceof y))
+    if ((paramq instanceof z))
     {
-      cLD();
-      bg.azz().b(1263, this);
+      daq();
+      bh.aGY().b(1263, this);
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
         Log.e("MicroMsg.ExdeviceDeviceProfileUI", "onSceneEnd error(%d, %d, %s).(type : %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), paramString, Integer.valueOf(paramq.getType()) });
-        Toast.makeText(getContext(), getString(2131758835), 1).show();
+        Toast.makeText(getContext(), getString(R.l.eDw), 1).show();
         AppMethodBeat.o(24025);
         return;
       }
-      this.rHK = ((y)paramq).fMb;
+      this.vns = ((z)paramq).idS;
       runOnUiThread(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(24019);
-          ExdeviceDeviceProfileUI.a(ExdeviceDeviceProfileUI.this, (DeviceProfileHeaderPreference)ExdeviceDeviceProfileUI.this.getPreferenceScreen().bmg("device_profile_header"));
+          ExdeviceDeviceProfileUI.a(ExdeviceDeviceProfileUI.this, (DeviceProfileHeaderPreference)ExdeviceDeviceProfileUI.this.getPreferenceScreen().byG("device_profile_header"));
           AppMethodBeat.o(24019);
         }
       });
-      paramString = ad.cKL().gb(this.rzo, this.mDeviceType);
+      paramString = ae.cZx().gq(this.veV, this.mDeviceType);
       if (paramString == null)
       {
-        Log.i("MicroMsg.ExdeviceDeviceProfileUI", "hard device info is null.(deviceId:%s, deviceType:%s)", new Object[] { this.rzo, this.mDeviceType });
+        Log.i("MicroMsg.ExdeviceDeviceProfileUI", "hard device info is null.(deviceId:%s, deviceType:%s)", new Object[] { this.veV, this.mDeviceType });
         AppMethodBeat.o(24025);
         return;
       }
-      paramString.BC(this.rHK);
-      ad.cKL().update(paramString, new String[0]);
+      paramString.Iq(this.vns);
+      ae.cZx().update(paramString, new String[0]);
       AppMethodBeat.o(24025);
       return;
     }
-    if ((paramq instanceof x))
+    if ((paramq instanceof y))
     {
-      cLD();
+      daq();
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
         Log.e("MicroMsg.ExdeviceDeviceProfileUI", "onSceneEnd, unbind failed (%d, %d, %s).(type : %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), paramString, Integer.valueOf(paramq.getType()) });
@@ -642,7 +648,7 @@ public class ExdeviceDeviceProfileUI
           public final void run()
           {
             AppMethodBeat.i(24011);
-            Toast.makeText(ExdeviceDeviceProfileUI.this.getContext(), 2131758922, 1).show();
+            Toast.makeText(ExdeviceDeviceProfileUI.this.getContext(), R.l.eEj, 1).show();
             AppMethodBeat.o(24011);
           }
         });
@@ -674,7 +680,7 @@ public class ExdeviceDeviceProfileUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceDeviceProfileUI
  * JD-Core Version:    0.7.0.1
  */

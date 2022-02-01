@@ -8,39 +8,39 @@ import com.tencent.mm.ui.widget.a.e;
 
 public final class c
 {
-  public final b DBG;
-  final SnsInfo DqO;
+  public final b JNr;
+  final SnsInfo Jws;
   public View mContentView;
   public final Context mContext;
-  public e oXS;
+  public e rZT;
   
   public c(Context paramContext, SnsInfo paramSnsInfo, b paramb)
   {
     this.mContext = paramContext;
-    this.DqO = paramSnsInfo;
-    this.DBG = paramb;
+    this.Jws = paramSnsInfo;
+    this.JNr = paramb;
   }
   
   public final void dismiss()
   {
-    AppMethodBeat.i(202492);
+    AppMethodBeat.i(251571);
     try
     {
-      if ((this.oXS != null) && (this.oXS.isShowing())) {
-        this.oXS.bMo();
+      if ((this.rZT != null) && (this.rZT.isShowing())) {
+        this.rZT.bYF();
       }
-      AppMethodBeat.o(202492);
+      AppMethodBeat.o(251571);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(202492);
+      AppMethodBeat.o(251571);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.widget.b.c
  * JD-Core Version:    0.7.0.1
  */

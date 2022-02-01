@@ -7,50 +7,55 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.R.l;
+import com.tencent.mm.R.o;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.plugin.exdevice.g.a.o;
+import com.tencent.mm.plugin.sport.a.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
+import com.tencent.mm.ui.base.s;
 
 public class ExdeviceSettingUI
   extends MMPreference
   implements i
 {
-  int cSx = -1;
-  private final String rKQ = "notify_rank";
-  private final String rKR = "notify_like";
-  private final String rKS = "join_rank";
-  boolean rKT;
-  private ProgressDialog rKU;
-  private CheckBoxPreference rKV;
-  private CheckBoxPreference rKW;
-  private CheckBoxPreference rKX;
-  private boolean rKY;
+  int cUP = -1;
+  private final String vqA = "notify_like";
+  private final String vqB = "join_rank";
+  boolean vqC;
+  private ProgressDialog vqD;
+  private CheckBoxPreference vqE;
+  private CheckBoxPreference vqF;
+  private CheckBoxPreference vqG;
+  private boolean vqH;
+  private final String vqz = "notify_rank";
   
-  private void cMd()
+  private void daQ()
   {
     boolean bool2 = true;
     AppMethodBeat.i(24293);
-    CheckBoxPreference localCheckBoxPreference = this.rKV;
-    if ((this.cSx & 0x1) == 1)
+    CheckBoxPreference localCheckBoxPreference = this.vqE;
+    if ((this.cUP & 0x1) == 1)
     {
       bool1 = true;
       localCheckBoxPreference.setChecked(bool1);
-      localCheckBoxPreference = this.rKW;
-      if ((this.cSx & 0x2) != 2) {
+      localCheckBoxPreference = this.vqF;
+      if ((this.cUP & 0x2) != 2) {
         break label97;
       }
       bool1 = true;
       label47:
       localCheckBoxPreference.setChecked(bool1);
-      localCheckBoxPreference = this.rKX;
-      if ((this.cSx & 0x8) != 8) {
+      localCheckBoxPreference = this.vqG;
+      if ((this.cUP & 0x8) != 8) {
         break label102;
       }
     }
@@ -71,34 +76,34 @@ public class ExdeviceSettingUI
   
   public int getResourceId()
   {
-    return 2132017209;
+    return R.o.eXC;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(24291);
     super.onCreate(paramBundle);
-    com.tencent.mm.plugin.sport.a.c.pl(38);
-    bg.azz().a(1044, this);
-    this.rKV = ((CheckBoxPreference)getPreferenceScreen().bmg("notify_rank"));
-    this.rKW = ((CheckBoxPreference)getPreferenceScreen().bmg("notify_like"));
-    this.rKX = ((CheckBoxPreference)getPreferenceScreen().bmg("join_rank"));
-    bg.aVF();
-    paramBundle = (Integer)com.tencent.mm.model.c.azQ().get(397310, Integer.valueOf(0));
+    d.rE(38);
+    bh.aGY().a(1044, this);
+    this.vqE = ((CheckBoxPreference)getPreferenceScreen().byG("notify_rank"));
+    this.vqF = ((CheckBoxPreference)getPreferenceScreen().byG("notify_like"));
+    this.vqG = ((CheckBoxPreference)getPreferenceScreen().byG("join_rank"));
+    bh.beI();
+    paramBundle = (Integer)com.tencent.mm.model.c.aHp().b(397310, Integer.valueOf(0));
     Log.d("MicroMsg.ExdeviceSettingUI", "hy: setting flag: %d", new Object[] { paramBundle });
     if ((paramBundle == null) || (paramBundle.intValue() == 0))
     {
-      this.rKT = false;
-      this.rKV.setChecked(true);
-      this.rKW.setChecked(true);
-      this.rKX.setChecked(true);
+      this.vqC = false;
+      this.vqE.setChecked(true);
+      this.vqF.setChecked(true);
+      this.vqG.setChecked(true);
       getPreferenceScreen().notifyDataSetChanged();
-      this.rKU = com.tencent.mm.ui.base.q.show(this, "", "", true, false);
+      this.vqD = s.show(this, "", "", true, false);
     }
     for (;;)
     {
-      bg.azz().a(new o(2, 0), 0);
-      setMMTitle(2131764382);
+      bh.aGY().a(new o(2, 0), 0);
+      setMMTitle(R.l.regbyfacebook_reg_setpwd_setnow);
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -111,9 +116,9 @@ public class ExdeviceSettingUI
       });
       AppMethodBeat.o(24291);
       return;
-      this.rKT = true;
-      this.cSx = paramBundle.intValue();
-      cMd();
+      this.vqC = true;
+      this.cUP = paramBundle.intValue();
+      daQ();
     }
   }
   
@@ -121,39 +126,39 @@ public class ExdeviceSettingUI
   {
     AppMethodBeat.i(24292);
     super.onDestroy();
-    bg.azz().b(1044, this);
-    if ((this.rKU != null) && (this.rKU.isShowing())) {
-      this.rKU.dismiss();
+    bh.aGY().b(1044, this);
+    if ((this.vqD != null) && (this.vqD.isShowing())) {
+      this.vqD.dismiss();
     }
-    if (this.rKT)
+    if (this.vqC)
     {
-      if (!this.rKV.isChecked()) {
+      if (!this.vqE.isChecked()) {
         break label179;
       }
-      this.cSx |= 0x1;
-      if (!this.rKW.isChecked()) {
+      this.cUP |= 0x1;
+      if (!this.vqF.isChecked()) {
         break label193;
       }
-      this.cSx |= 0x2;
+      this.cUP |= 0x2;
       label91:
-      if (!this.rKX.isChecked()) {
+      if (!this.vqG.isChecked()) {
         break label207;
       }
     }
     label179:
     label193:
     label207:
-    for (this.cSx |= 0x8;; this.cSx &= 0xFFFFFFF7)
+    for (this.cUP |= 0x8;; this.cUP &= 0xFFFFFFF7)
     {
-      bg.aVF();
-      com.tencent.mm.model.c.azQ().set(397310, Integer.valueOf(this.cSx));
-      Log.d("MicroMsg.ExdeviceSettingUI", "hy: doscene setting flag to %d", new Object[] { Integer.valueOf(this.cSx) });
-      bg.azz().a(new o(1, this.cSx), 0);
+      bh.beI();
+      com.tencent.mm.model.c.aHp().i(397310, Integer.valueOf(this.cUP));
+      Log.d("MicroMsg.ExdeviceSettingUI", "hy: doscene setting flag to %d", new Object[] { Integer.valueOf(this.cUP) });
+      bh.aGY().a(new o(1, this.cUP), 0);
       AppMethodBeat.o(24292);
       return;
-      this.cSx &= 0xFFFFFFFE;
+      this.cUP &= 0xFFFFFFFE;
       break;
-      this.cSx &= 0xFFFFFFFD;
+      this.cUP &= 0xFFFFFFFD;
       break label91;
     }
   }
@@ -163,17 +168,17 @@ public class ExdeviceSettingUI
     AppMethodBeat.i(24295);
     Log.d("MicroMsg.ExdeviceSettingUI", "onPreferenceTreeClick, key is %s.", new Object[] { paramPreference.mKey });
     if (paramPreference.mKey.equals("black_contact_list")) {
-      com.tencent.mm.br.c.V(this, "sport", ".ui.SportBlackListUI");
+      com.tencent.mm.by.c.ad(this, "sport", ".ui.SportBlackListUI");
     }
     for (;;)
     {
       AppMethodBeat.o(24295);
       return false;
-      this.rKY = true;
+      this.vqH = true;
     }
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(24294);
     if ((paramInt1 == 0) && (paramInt2 == 0))
@@ -186,7 +191,7 @@ public class ExdeviceSettingUI
         AppMethodBeat.o(24294);
         return;
       }
-      if ((this.rKU != null) && (this.rKU.isShowing())) {
+      if ((this.vqD != null) && (this.vqD.isShowing())) {
         runOnUiThread(new Runnable()
         {
           public final void run()
@@ -197,24 +202,24 @@ public class ExdeviceSettingUI
           }
         });
       }
-      this.rKT = true;
-      if (this.cSx == paramString.rCV)
+      this.vqC = true;
+      if (this.cUP == paramString.viF)
       {
-        Log.i("MicroMsg.ExdeviceSettingUI", "flag has not changed.(%s)", new Object[] { Integer.valueOf(this.cSx) });
+        Log.i("MicroMsg.ExdeviceSettingUI", "flag has not changed.(%s)", new Object[] { Integer.valueOf(this.cUP) });
         AppMethodBeat.o(24294);
         return;
       }
-      this.cSx = paramString.rCV;
-      Log.d("MicroMsg.ExdeviceSettingUI", "hy: onSceneEnd setting flag to %d", new Object[] { Integer.valueOf(this.cSx) });
-      bg.aVF();
-      com.tencent.mm.model.c.azQ().set(397310, Integer.valueOf(this.cSx));
-      if (!this.rKY) {
-        cMd();
+      this.cUP = paramString.viF;
+      Log.d("MicroMsg.ExdeviceSettingUI", "hy: onSceneEnd setting flag to %d", new Object[] { Integer.valueOf(this.cUP) });
+      bh.beI();
+      com.tencent.mm.model.c.aHp().i(397310, Integer.valueOf(this.cUP));
+      if (!this.vqH) {
+        daQ();
       }
       AppMethodBeat.o(24294);
       return;
     }
-    if ((this.rKU != null) && (this.rKU.isShowing())) {
+    if ((this.vqD != null) && (this.vqD.isShowing())) {
       runOnUiThread(new Runnable()
       {
         public final void run()
@@ -238,7 +243,7 @@ public class ExdeviceSettingUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceSettingUI
  * JD-Core Version:    0.7.0.1
  */

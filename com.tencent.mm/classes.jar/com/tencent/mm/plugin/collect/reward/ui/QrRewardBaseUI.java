@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wxpay.a.h;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 public abstract class QrRewardBaseUI
@@ -25,7 +26,7 @@ public abstract class QrRewardBaseUI
         AppMethodBeat.o(63922);
         return false;
       }
-    }, 2131689492);
+    }, a.h.actionbar_icon_dark_back);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

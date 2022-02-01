@@ -2,7 +2,7 @@
 <RelativeLayout android:background="@drawable/atz" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/b4g" android:paddingTop="@dimen/cc" android:layout_width="fill_parent" android:layout_height="@dimen/cr">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/xj" android:layout_height="@dimen/xi" android:src="@raw/collapse_arrow" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/xj" android:layout_height="@dimen/xi" android:src="@raw/collapse_arrow" android:contentDescription="@string/jpy" />
     </LinearLayout>
     <RelativeLayout android:orientation="horizontal" android:id="@id/hdx" android:background="@drawable/emoji_search_edittext_bg" android:layout_width="fill_parent" android:layout_height="@dimen/cj" android:layout_marginTop="@dimen/ct" android:layout_marginBottom="@dimen/ct" android:layout_below="@id/b4g" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb">
         <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/he6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/actionbar_icon_light_search" android:layout_centerVertical="true" android:layout_marginStart="@dimen/ct" app:iconColor="#ff8e8e93" />

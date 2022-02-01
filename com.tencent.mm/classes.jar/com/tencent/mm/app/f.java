@@ -6,25 +6,25 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ar;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.RandomAccessFile;
 
 public final class f
 {
-  private static final String dkw;
+  private static final String fcf;
   
   static
   {
     AppMethodBeat.i(19439);
-    dkw = ar.NSe + "channel_history.cfg";
+    fcf = ar.Vgb + "channel_history.cfg";
     AppMethodBeat.o(19439);
   }
   
-  public static void Wh()
+  public static void aaD()
   {
     AppMethodBeat.i(19437);
-    if (!Wi())
+    if (!aaE())
     {
       Log.w("MicroMsg.ChannelHistory", "channel history file does not exit!");
       AppMethodBeat.o(19437);
@@ -34,7 +34,7 @@ public final class f
     Object localObject1 = null;
     try
     {
-      RandomAccessFile localRandomAccessFile = s.dB(dkw, true);
+      RandomAccessFile localRandomAccessFile = u.dO(fcf, true);
       localObject1 = localRandomAccessFile;
       localObject4 = localRandomAccessFile;
       long l = localRandomAccessFile.length();
@@ -188,16 +188,16 @@ public final class f
     }
   }
   
-  private static boolean Wi()
+  private static boolean aaE()
   {
     AppMethodBeat.i(19438);
-    boolean bool = new o(dkw).exists();
+    boolean bool = new q(fcf).ifE();
     AppMethodBeat.o(19438);
     return bool;
   }
   
   /* Error */
-  public static void bF(android.content.Context paramContext)
+  public static void bE(android.content.Context paramContext)
   {
     // Byte code:
     //   0: sipush 19436
@@ -214,22 +214,22 @@ public final class f
     //   21: invokevirtual 192	android/content/pm/PackageManager:getPackageInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
     //   24: getfield 198	android/content/pm/PackageInfo:applicationInfo	Landroid/content/pm/ApplicationInfo;
     //   27: getfield 203	android/content/pm/ApplicationInfo:sourceDir	Ljava/lang/String;
-    //   30: invokestatic 209	com/tencent/mm/d/a:fO	(Ljava/lang/String;)Lcom/tencent/mm/d/a;
+    //   30: invokestatic 209	com/tencent/mm/d/a:gy	(Ljava/lang/String;)Lcom/tencent/mm/d/a;
     //   33: astore_1
     //   34: aload_1
     //   35: ifnull +44 -> 79
     //   38: aload_1
-    //   39: getfield 213	com/tencent/mm/d/a:djf	Lcom/tencent/mm/d/b;
+    //   39: getfield 213	com/tencent/mm/d/a:faM	Lcom/tencent/mm/d/b;
     //   42: ifnull +37 -> 79
     //   45: ldc 49
     //   47: ldc 215
     //   49: invokestatic 132	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   52: aload_1
-    //   53: getfield 213	com/tencent/mm/d/a:djf	Lcom/tencent/mm/d/b;
+    //   53: getfield 213	com/tencent/mm/d/a:faM	Lcom/tencent/mm/d/b;
     //   56: getfield 218	com/tencent/mm/d/b:channelId	I
     //   59: ifeq +20 -> 79
     //   62: aload_1
-    //   63: getfield 213	com/tencent/mm/d/a:djf	Lcom/tencent/mm/d/b;
+    //   63: getfield 213	com/tencent/mm/d/a:faM	Lcom/tencent/mm/d/b;
     //   66: getfield 218	com/tencent/mm/d/b:channelId	I
     //   69: putstatic 83	com/tencent/mm/sdk/platformtools/ChannelUtil:channelId	I
     //   72: ldc 49
@@ -249,15 +249,15 @@ public final class f
     //   98: invokestatic 225	com/tencent/mm/sdk/platformtools/MMApplicationContext:getProcessName	()Ljava/lang/String;
     //   101: aastore
     //   102: invokestatic 91	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   105: invokestatic 47	com/tencent/mm/app/f:Wi	()Z
+    //   105: invokestatic 47	com/tencent/mm/app/f:aaE	()Z
     //   108: ifne +52 -> 160
     //   111: aconst_null
     //   112: astore_2
     //   113: aconst_null
     //   114: astore_1
-    //   115: getstatic 36	com/tencent/mm/app/f:dkw	Ljava/lang/String;
+    //   115: getstatic 36	com/tencent/mm/app/f:fcf	Ljava/lang/String;
     //   118: iconst_1
-    //   119: invokestatic 63	com/tencent/mm/vfs/s:dB	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
+    //   119: invokestatic 63	com/tencent/mm/vfs/u:dO	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
     //   122: astore_3
     //   123: aload_3
     //   124: astore_1
@@ -280,16 +280,16 @@ public final class f
     //   156: aload_3
     //   157: invokevirtual 96	java/io/RandomAccessFile:close	()V
     //   160: aload_0
-    //   161: invokestatic 231	com/tencent/mm/booter/d:cg	(Landroid/content/Context;)Lcom/tencent/mm/booter/d;
+    //   161: invokestatic 231	com/tencent/mm/booter/d:cc	(Landroid/content/Context;)Lcom/tencent/mm/booter/d;
     //   164: astore_0
     //   165: aload_0
     //   166: ifnull +18 -> 184
     //   169: aload_0
-    //   170: getfield 234	com/tencent/mm/booter/d:glq	I
+    //   170: getfield 234	com/tencent/mm/booter/d:iPy	I
     //   173: iconst_m1
     //   174: if_icmpeq +10 -> 184
     //   177: aload_0
-    //   178: getfield 234	com/tencent/mm/booter/d:glq	I
+    //   178: getfield 234	com/tencent/mm/booter/d:iPy	I
     //   181: putstatic 83	com/tencent/mm/sdk/platformtools/ChannelUtil:channelId	I
     //   184: sipush 19436
     //   187: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -404,7 +404,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.app.f
  * JD-Core Version:    0.7.0.1
  */

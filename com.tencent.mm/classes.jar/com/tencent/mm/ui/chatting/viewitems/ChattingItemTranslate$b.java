@@ -6,11 +6,11 @@ public enum ChattingItemTranslate$b
 {
   static
   {
-    AppMethodBeat.i(233938);
-    PPj = new b("Text", 0);
-    PPk = new b("Voice", 1);
-    PPl = new b[] { PPj, PPk };
-    AppMethodBeat.o(233938);
+    AppMethodBeat.i(290891);
+    Xll = new b("Text", 0);
+    Xlm = new b("Voice", 1);
+    Xln = new b[] { Xll, Xlm };
+    AppMethodBeat.o(290891);
   }
   
   private ChattingItemTranslate$b() {}

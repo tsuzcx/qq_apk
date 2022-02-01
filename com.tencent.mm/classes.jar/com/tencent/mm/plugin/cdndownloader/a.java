@@ -10,7 +10,12 @@ import java.util.HashMap;
 public final class a
   implements com.tencent.mm.kernel.api.bucket.a, d, com.tencent.mm.plugin.cdndownloader.b.a
 {
-  private c qmm;
+  private c tLd;
+  
+  public final c cMo()
+  {
+    return this.tLd;
+  }
   
   public final HashMap<Integer, h.b> collectDatabaseFactory()
   {
@@ -27,23 +32,18 @@ public final class a
     return localHashMap;
   }
   
-  public final c cxT()
-  {
-    return this.qmm;
-  }
-  
   public final void onDataBaseClosed(h paramh1, h paramh2) {}
   
   public final void onDataBaseOpened(h paramh1, h paramh2)
   {
     AppMethodBeat.i(120692);
-    this.qmm = new c(paramh1);
+    this.tLd = new c(paramh1);
     AppMethodBeat.o(120692);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.cdndownloader.a
  * JD-Core Version:    0.7.0.1
  */

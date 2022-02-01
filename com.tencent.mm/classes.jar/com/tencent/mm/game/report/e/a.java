@@ -20,7 +20,16 @@ public final class a
 {
   private static String uuid = null;
   
-  public static int E(Context paramContext, String paramString)
+  public static String Fq(long paramLong)
+  {
+    AppMethodBeat.i(108278);
+    String str = new BigInteger("00FFFFFFFFFFFFFFFF", 16).and(BigInteger.valueOf(paramLong)).toString();
+    Log.d("MicroMsg.GameReportUtil", "reportReadMsg, unsignedlonglong = ".concat(String.valueOf(str)));
+    AppMethodBeat.o(108278);
+    return str;
+  }
+  
+  public static int G(Context paramContext, String paramString)
   {
     AppMethodBeat.i(108277);
     paramContext = b.getPackageInfo(paramContext, paramString);
@@ -34,7 +43,7 @@ public final class a
     return i;
   }
   
-  public static String Fh(String paramString)
+  public static String Md(String paramString)
   {
     AppMethodBeat.i(108275);
     if (Util.isNullOrNil(paramString))
@@ -58,12 +67,12 @@ public final class a
     }
   }
   
-  public static String axg()
+  public static String aED()
   {
     AppMethodBeat.i(108276);
     if (uuid == null)
     {
-      str = q.aoG();
+      str = q.auM();
       StringBuilder localStringBuilder = new StringBuilder();
       int i = 0;
       while (i < str.length() - 1)
@@ -115,7 +124,7 @@ public final class a
     return 3;
   }
   
-  public static String u(Map<String, String> paramMap)
+  public static String m(Map<String, String> paramMap)
   {
     AppMethodBeat.i(108279);
     if ((paramMap == null) || (paramMap.size() == 0))
@@ -151,15 +160,6 @@ public final class a
       AppMethodBeat.o(108279);
     }
     return "";
-  }
-  
-  public static String zn(long paramLong)
-  {
-    AppMethodBeat.i(108278);
-    String str = new BigInteger("00FFFFFFFFFFFFFFFF", 16).and(BigInteger.valueOf(paramLong)).toString();
-    Log.d("MicroMsg.GameReportUtil", "reportReadMsg, unsignedlonglong = ".concat(String.valueOf(str)));
-    AppMethodBeat.o(108278);
-    return str;
   }
 }
 

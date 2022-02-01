@@ -18,9 +18,9 @@ public final class d
   
   public final long getAdvRemainTime()
   {
-    AppMethodBeat.i(189210);
+    AppMethodBeat.i(220489);
     g.i(this.tag, " empty proxy player listener , notify , getAdvRemainTime");
-    AppMethodBeat.o(189210);
+    AppMethodBeat.o(220489);
     return 0L;
   }
   
@@ -31,17 +31,17 @@ public final class d
   
   public final int getCurrentPlayClipNo()
   {
-    AppMethodBeat.i(189209);
+    AppMethodBeat.i(220487);
     g.i(this.tag, " empty proxy player listener , notify , getCurrentPlayClipNo");
-    AppMethodBeat.o(189209);
+    AppMethodBeat.o(220487);
     return 0;
   }
   
   public final long getCurrentPosition()
   {
-    AppMethodBeat.i(189208);
+    AppMethodBeat.i(220486);
     g.i(this.tag, " empty proxy player listener , notify , getCurrentPosition");
-    AppMethodBeat.o(189208);
+    AppMethodBeat.o(220486);
     return 0L;
   }
   
@@ -57,25 +57,25 @@ public final class d
   
   public final Object getPlayInfo(long paramLong)
   {
-    AppMethodBeat.i(189211);
+    AppMethodBeat.i(220491);
     g.i(this.tag, " empty proxy player listener , notify , getPlayInfo with type : ".concat(String.valueOf(paramLong)));
-    AppMethodBeat.o(189211);
+    AppMethodBeat.o(220491);
     return null;
   }
   
   public final Object getPlayInfo(String paramString)
   {
-    AppMethodBeat.i(189212);
+    AppMethodBeat.i(220492);
     g.i(this.tag, " empty proxy player listener , notify , getPlayInfo with key : ".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(189212);
+    AppMethodBeat.o(220492);
     return null;
   }
   
   public final long getPlayerBufferLength()
   {
-    AppMethodBeat.i(189207);
+    AppMethodBeat.i(220482);
     g.i(this.tag, " empty proxy player listener , notify , getPlayerBufferLength");
-    AppMethodBeat.o(189207);
+    AppMethodBeat.o(220482);
     return 0L;
   }
   
@@ -91,9 +91,9 @@ public final class d
   
   public final void onDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString)
   {
-    AppMethodBeat.i(189205);
+    AppMethodBeat.i(220472);
     g.i(this.tag, " empty proxy player listener , notify , onPlayProgress, current : " + paramLong1 + ", total : " + paramLong2);
-    AppMethodBeat.o(189205);
+    AppMethodBeat.o(220472);
   }
   
   public final void onDownloadProtocolUpdate(String paramString1, String paramString2) {}
@@ -102,9 +102,9 @@ public final class d
   
   public final Object onPlayCallback(int paramInt, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
   {
-    AppMethodBeat.i(189206);
+    AppMethodBeat.i(220481);
     g.i(this.tag, " empty proxy player listener , notify , onPlayCallback, messageType : " + paramInt + ",ext1:" + paramObject1 + ",ext2:" + paramObject2 + ",ext3" + paramObject3 + ",ext4" + paramObject4);
-    AppMethodBeat.o(189206);
+    AppMethodBeat.o(220481);
     return null;
   }
   
@@ -112,16 +112,16 @@ public final class d
   
   public final void onPrepareError()
   {
-    AppMethodBeat.i(189214);
+    AppMethodBeat.i(220498);
     g.i(this.tag, " empty proxy player listener , notify , onPrepareError : ");
-    AppMethodBeat.o(189214);
+    AppMethodBeat.o(220498);
   }
   
   public final void onPrepareSuccess()
   {
-    AppMethodBeat.i(189213);
+    AppMethodBeat.i(220495);
     g.i(this.tag, " empty proxy player listener , notify , onPrepareSuccess : ");
-    AppMethodBeat.o(189213);
+    AppMethodBeat.o(220495);
   }
   
   public final int onReadData(int paramInt, String paramString, long paramLong1, long paramLong2)
@@ -141,7 +141,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.e.d
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,6 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <View android:id="@id/hh3" android:background="@drawable/al5" android:visibility="gone" android:layout_width="56.0dip" android:layout_height="56.0dip" />
     <ImageView android:layout_gravity="center" android:id="@id/bh7" android:layout_width="@dimen/cn" android:layout_height="@dimen/cn" android:scaleType="centerCrop" />
-    <View android:layout_gravity="center" android:id="@id/glk" android:background="@color/ac" android:layout_width="@dimen/cn" android:layout_height="@dimen/cn" />
+    <View android:layout_gravity="center" android:id="@id/glk" android:background="@color/UN_BW_0_Alpha_0_3" android:layout_width="@dimen/cn" android:layout_height="@dimen/cn" />
     <TextView android:textSize="@dimen/is" android:textColor="@color/am" android:layout_gravity="center" android:id="@id/in3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="16s" />
 </FrameLayout>

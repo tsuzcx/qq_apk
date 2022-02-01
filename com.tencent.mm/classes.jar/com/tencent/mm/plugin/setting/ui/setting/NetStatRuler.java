@@ -9,6 +9,7 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.setting.b.d;
 import com.tencent.mm.sdk.platformtools.Util;
 
 class NetStatRuler
@@ -37,7 +38,7 @@ class NetStatRuler
     TextPaint localTextPaint = new TextPaint();
     localTextPaint.setAntiAlias(true);
     localTextPaint.setDither(true);
-    localTextPaint.setTextSize(getContext().getResources().getDimensionPixelSize(2131165602));
+    localTextPaint.setTextSize(getContext().getResources().getDimensionPixelSize(b.d.TinierTextSize));
     Rect localRect = new Rect();
     getDrawingRect(localRect);
     float f1 = localRect.height();
@@ -56,7 +57,7 @@ class NetStatRuler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.NetStatRuler
  * JD-Core Version:    0.7.0.1
  */

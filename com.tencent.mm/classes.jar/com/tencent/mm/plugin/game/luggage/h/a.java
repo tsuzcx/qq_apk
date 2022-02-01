@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.game.luggage.h;
 
 import android.os.Bundle;
-import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.d;
 
+@com.tencent.mm.ipcinvoker.c.a
 public class a
-  implements b<Bundle, Bundle>
+  implements d<Bundle, Bundle>
 {}
 
 

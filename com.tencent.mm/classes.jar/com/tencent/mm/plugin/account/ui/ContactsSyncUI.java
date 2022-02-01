@@ -13,15 +13,13 @@ import android.os.Bundle;
 import android.widget.Toast;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.platformtools.t;
 import com.tencent.mm.platformtools.t.a;
 import com.tencent.mm.plugin.account.bind.ui.BindMContactIntroUI;
 import com.tencent.mm.plugin.account.friend.a.l;
 import com.tencent.mm.plugin.account.model.b.a;
 import com.tencent.mm.plugin.account.model.b.b;
-import com.tencent.mm.pluginsdk.permission.b;
 import com.tencent.mm.sdk.platformtools.IntentUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -30,33 +28,32 @@ import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMWizardActivity;
-import com.tencent.mm.ui.base.h;
 
 @JgClassChecked(author=20, fComment="checked", lastDate="20140422", reviewer=20, vComment={com.jg.EType.ACTIVITYCHECK})
 public final class ContactsSyncUI
   extends MMActivity
 {
-  private AccountAuthenticatorResponse kki = null;
-  Bundle kkj = null;
+  private AccountAuthenticatorResponse nbY = null;
+  Bundle nbZ = null;
   
   public final void finish()
   {
     AppMethodBeat.i(127904);
-    if (this.kki != null)
+    if (this.nbY != null)
     {
-      if (this.kkj == null) {
+      if (this.nbZ == null) {
         break label45;
       }
-      this.kki.onResult(this.kkj);
+      this.nbY.onResult(this.nbZ);
     }
     for (;;)
     {
-      this.kki = null;
+      this.nbY = null;
       super.finish();
       AppMethodBeat.o(127904);
       return;
       label45:
-      this.kki.onError(4, "canceled");
+      this.nbY.onError(4, "canceled");
     }
   }
   
@@ -69,8 +66,8 @@ public final class ContactsSyncUI
   {
     boolean bool = true;
     AppMethodBeat.i(127903);
-    g.aAf();
-    if ((!com.tencent.mm.kernel.a.azo()) || (com.tencent.mm.kernel.a.azj()))
+    com.tencent.mm.kernel.h.aHE();
+    if ((!com.tencent.mm.kernel.b.aGL()) || (com.tencent.mm.kernel.b.aGE()))
     {
       MMWizardActivity.b(this, new Intent(this, SimpleLoginUI.class), getIntent());
       finish();
@@ -125,7 +122,7 @@ public final class ContactsSyncUI
       localObject = null;
       label334:
       if (localObject != null) {
-        switch (((b.a)localObject).dC(this))
+        switch (((b.a)localObject).dA(this))
         {
         }
       }
@@ -149,12 +146,12 @@ public final class ContactsSyncUI
       localObject = new b.b(2, IntentUtil.getStringExtra(getIntent(), "k_phone_num"), (Uri)localObject);
       break label334;
       localObject = getIntent().getParcelableExtra("accountAuthenticatorResponse");
-      this.kki = null;
+      this.nbY = null;
       if ((localObject != null) && ((localObject instanceof AccountAuthenticatorResponse))) {
-        this.kki = ((AccountAuthenticatorResponse)localObject);
+        this.nbY = ((AccountAuthenticatorResponse)localObject);
       }
-      if (this.kki != null) {
-        this.kki.onRequestContinued();
+      if (this.nbY != null) {
+        this.nbY.onRequestContinued();
       }
       if (getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).getBoolean("upload_contacts_already_displayed", false)) {
         break;
@@ -166,12 +163,12 @@ public final class ContactsSyncUI
         break;
       }
       localObject = getIntent().getParcelableExtra("accountAuthenticatorResponse");
-      this.kki = null;
+      this.nbY = null;
       if ((localObject != null) && ((localObject instanceof AccountAuthenticatorResponse))) {
-        this.kki = ((AccountAuthenticatorResponse)localObject);
+        this.nbY = ((AccountAuthenticatorResponse)localObject);
       }
-      if (this.kki != null) {
-        this.kki.onRequestContinued();
+      if (this.nbY != null) {
+        this.nbY.onRequestContinued();
       }
       if (!IntentUtil.getBooleanExtra(getIntent(), "k_login_without_bind_mobile", false)) {}
       for (;;)
@@ -200,7 +197,7 @@ public final class ContactsSyncUI
       ((Intent)localObject).setClass(this, ContactsSyncUI.class);
       localIntent = new Intent();
       localIntent.setClass(this, SimpleLoginUI.class);
-      localIntent.putExtra("accountAuthenticatorResponse", this.kki);
+      localIntent.putExtra("accountAuthenticatorResponse", this.nbY);
       MMWizardActivity.b(this, localIntent, (Intent)localObject);
       finish();
       continue;
@@ -229,14 +226,14 @@ public final class ContactsSyncUI
       AppMethodBeat.o(127902);
       return;
     }
-    boolean bool = b.a(this, "android.permission.READ_CONTACTS", 48, null, null);
+    boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.READ_CONTACTS", 48, null, null);
     Log.i("MicroMsg.ContactsSyncUI", "summerper checkPermission checkContacts read[%b],stack[%s]", new Object[] { Boolean.valueOf(bool), Util.getStack() });
     if (!bool)
     {
       AppMethodBeat.o(127902);
       return;
     }
-    bool = b.a(this, "android.permission.WRITE_CONTACTS", 48, null, null);
+    bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.WRITE_CONTACTS", 48, null, null);
     Log.i("MicroMsg.ContactsSyncUI", "summerper checkPermission checkContacts write[%b],stack[%s]", new Object[] { Boolean.valueOf(bool), Util.getStack() });
     if (!bool)
     {
@@ -276,7 +273,7 @@ public final class ContactsSyncUI
             if (paramArrayOfString.equals("android.permission.READ_CONTACTS")) {}
             for (String str = "android.permission.WRITE_CONTACTS";; str = "android.permission.READ_CONTACTS")
             {
-              boolean bool = b.a(localContactsSyncUI, str, 48, null, null);
+              boolean bool = com.tencent.mm.pluginsdk.permission.b.a(localContactsSyncUI, str, 48, null, null);
               Log.i("MicroMsg.ContactsSyncUI", "summerper checkPermission checkContacts [%b], oldPermission[%s], stack[%s]", new Object[] { Boolean.valueOf(bool), paramArrayOfString, Util.getStack() });
               if (bool) {
                 ContactsSyncUI.this.initView();
@@ -297,7 +294,7 @@ public final class ContactsSyncUI
         AppMethodBeat.o(127905);
         return;
       }
-      h.a(this, getString(2131763866), getString(2131763890), getString(2131762043), getString(2131755761), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      com.tencent.mm.ui.base.h.a(this, getString(r.j.permission_contacts_request_again_msg), getString(r.j.permission_tips_title), getString(r.j.jump_to_settings), getString(r.j.app_cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -305,10 +302,10 @@ public final class ContactsSyncUI
           paramAnonymousDialogInterface.dismiss();
           paramAnonymousDialogInterface = ContactsSyncUI.this;
           Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/account/ui/ContactsSyncUI$2", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/account/ui/ContactsSyncUI$2", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/account/ui/ContactsSyncUI$2", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousDialogInterface, "com/tencent/mm/plugin/account/ui/ContactsSyncUI$2", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(127894);
         }
       }, new DialogInterface.OnClickListener()
@@ -333,28 +330,28 @@ public final class ContactsSyncUI
   final class a
     implements b.a
   {
-    private boolean kkm;
-    private t.a kkn;
+    private boolean ncc;
+    private t.a ncd;
     
     public a(boolean paramBoolean)
     {
       AppMethodBeat.i(127899);
-      this.kkn = new t.a()
+      this.ncd = new t.a()
       {
-        public final void D(Bundle paramAnonymousBundle)
+        public final void J(Bundle paramAnonymousBundle)
         {
           AppMethodBeat.i(127896);
           ContactsSyncUI localContactsSyncUI = ContactsSyncUI.this;
-          localContactsSyncUI.kkj = paramAnonymousBundle;
+          localContactsSyncUI.nbZ = paramAnonymousBundle;
           localContactsSyncUI.finish();
           AppMethodBeat.o(127896);
         }
       };
-      this.kkm = paramBoolean;
+      this.ncc = paramBoolean;
       AppMethodBeat.o(127899);
     }
     
-    final int W(Context paramContext, String paramString)
+    final int U(Context paramContext, String paramString)
     {
       AppMethodBeat.i(127901);
       if (paramContext == null)
@@ -362,16 +359,16 @@ public final class ContactsSyncUI
         AppMethodBeat.o(127901);
         return 1;
       }
-      int i = t.a(paramContext, paramString, this.kkn);
+      int i = t.a(paramContext, paramString, this.ncd);
       if (i == 2)
       {
-        Toast.makeText(paramContext, ContactsSyncUI.this.getString(2131758174), 1).show();
+        Toast.makeText(paramContext, ContactsSyncUI.this.getString(r.j.contact_sync_add_account_failed), 1).show();
         AppMethodBeat.o(127901);
         return 1;
       }
       if (i == 3)
       {
-        Toast.makeText(paramContext, ContactsSyncUI.this.getString(2131758173), 1).show();
+        Toast.makeText(paramContext, ContactsSyncUI.this.getString(r.j.contact_sync_add_account_already_exist), 1).show();
         AppMethodBeat.o(127901);
         return 1;
       }
@@ -379,39 +376,39 @@ public final class ContactsSyncUI
       return 0;
     }
     
-    public final int dC(final Context paramContext)
+    public final int dA(final Context paramContext)
     {
       AppMethodBeat.i(127900);
-      g.aAf();
-      if ((!com.tencent.mm.kernel.a.azo()) || (com.tencent.mm.kernel.a.azj()))
+      com.tencent.mm.kernel.h.aHE();
+      if ((!com.tencent.mm.kernel.b.aGL()) || (com.tencent.mm.kernel.b.aGE()))
       {
         AppMethodBeat.o(127900);
         return 4;
       }
-      if (!this.kkm)
+      if (!this.ncc)
       {
         Log.i("MicroMsg.ProcessorAddAccount", "no need to bind mobile");
-        t.a(ContactsSyncUI.this, this.kkn);
+        t.a(ContactsSyncUI.this, this.ncd);
         AppMethodBeat.o(127900);
         return 0;
       }
-      final String str = (String)g.aAh().azQ().get(6, "");
+      final String str = (String)com.tencent.mm.kernel.h.aHG().aHp().b(6, "");
       if (Util.isNullOrNil(str))
       {
         Log.e("MicroMsg.ProcessorAddAccount", "not bind mobile phone");
         AppMethodBeat.o(127900);
         return 2;
       }
-      if (l.bnY())
+      if (l.byh())
       {
-        h.a(paramContext, 2131758172, 2131755998, 2131755921, 2131755761, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+        com.tencent.mm.ui.base.h.a(paramContext, r.j.contact_sync_add_account_alert, r.j.app_tip, r.j.app_ok, r.j.app_cancel, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(127897);
-            l.gl(true);
+            l.gX(true);
             ContactsSyncUI.this.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).edit().putBoolean("upload_contacts_already_displayed", true).commit();
-            ContactsSyncUI.a.this.W(paramContext, str);
+            ContactsSyncUI.a.this.U(paramContext, str);
             if ((paramContext instanceof Activity)) {
               ((Activity)paramContext).finish();
             }
@@ -422,7 +419,7 @@ public final class ContactsSyncUI
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(127898);
-            l.gl(false);
+            l.gX(false);
             ContactsSyncUI.this.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).edit().putBoolean("upload_contacts_already_displayed", true).commit();
             if ((paramContext instanceof Activity)) {
               ((Activity)paramContext).finish();
@@ -433,7 +430,7 @@ public final class ContactsSyncUI
         AppMethodBeat.o(127900);
         return 5;
       }
-      int i = W(paramContext, str);
+      int i = U(paramContext, str);
       AppMethodBeat.o(127900);
       return i;
     }

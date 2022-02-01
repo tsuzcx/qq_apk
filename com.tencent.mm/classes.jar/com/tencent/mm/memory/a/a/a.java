@@ -14,30 +14,30 @@ import java.util.Date;
 public class a
   implements c<String>
 {
-  String itU;
-  WeakReference<f.b> itV;
-  WeakReference<f.c> itW;
-  public int itX;
-  long itY;
-  String itZ;
   public String key;
+  String ljd;
+  WeakReference<f.b> lje;
+  WeakReference<f.c> ljf;
+  public int ljg;
+  long ljh;
+  String lji;
   Object object;
   
   public a(String paramString1, String paramString2, Object paramObject, int paramInt, f.b paramb, f.c paramc)
   {
     AppMethodBeat.i(156490);
-    this.itX = 0;
-    this.itY = 0L;
+    this.ljg = 0;
+    this.ljh = 0L;
     this.key = paramString1;
-    this.itU = paramString2;
+    this.ljd = paramString2;
     this.object = paramObject;
-    this.itX = paramInt;
-    this.itV = new WeakReference(paramb);
-    this.itW = new WeakReference(paramc);
-    this.itY = System.currentTimeMillis();
-    this.itZ = new SimpleDateFormat("HH:mm:ss").format(new Date(this.itY));
-    if (com.tencent.mm.memory.a.a.a.a.iuj) {
-      Log.i("MicroMsg.BusinessBitmap", "BusinessBitmap build key %s sizes: %s cacheTime %s object %s stack [%s]", new Object[] { paramString1, Util.getSizeKB(paramInt), this.itZ, paramObject, Util.getStack().toString() });
+    this.ljg = paramInt;
+    this.lje = new WeakReference(paramb);
+    this.ljf = new WeakReference(paramc);
+    this.ljh = System.currentTimeMillis();
+    this.lji = new SimpleDateFormat("HH:mm:ss").format(new Date(this.ljh));
+    if (com.tencent.mm.memory.a.a.a.a.ljs) {
+      Log.i("MicroMsg.BusinessBitmap", "BusinessBitmap build key %s sizes: %s cacheTime %s object %s stack [%s]", new Object[] { paramString1, Util.getSizeKB(paramInt), this.lji, paramObject, Util.getStack().toString() });
     }
     AppMethodBeat.o(156490);
   }
@@ -73,7 +73,7 @@ public class a
   public String toString()
   {
     AppMethodBeat.i(156493);
-    String str = String.format("StructBitmap %s key:%s size %s realObj %s cacheTime %s now %s", new Object[] { Integer.valueOf(hashCode()), this.key, Util.getSizeKB(this.itX), this.object, this.itZ, new SimpleDateFormat("HH:mm:ss").format(new Date(System.currentTimeMillis())) });
+    String str = String.format("StructBitmap %s key:%s size %s realObj %s cacheTime %s now %s", new Object[] { Integer.valueOf(hashCode()), this.key, Util.getSizeKB(this.ljg), this.object, this.lji, new SimpleDateFormat("HH:mm:ss").format(new Date(System.currentTimeMillis())) });
     AppMethodBeat.o(156493);
     return str;
   }

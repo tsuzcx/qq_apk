@@ -16,24 +16,24 @@ public class APMidasQQWalletActivity
   
   private void handleIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(192798);
+    AppMethodBeat.i(253049);
     APLog.d("APMidasQQWalletActivity", "handleIntent get called!");
     try
     {
       APPluginInterfaceManager.initPluginInterface(this, APMidasPayHelper.MIDAS_PLUGIN_NAME, APMidasPayHelper.PKG_DISTRIBUTE, APMidasPayHelper.MED_DISTRIBUTE_HANDLE_QQ_WALLET_INTENT, new Object[] { this, paramIntent });
-      AppMethodBeat.o(192798);
+      AppMethodBeat.o(253049);
       return;
     }
     catch (Exception paramIntent)
     {
       APLog.e("APMidasQQWalletActivity", "handleIntent got exception = " + paramIntent.toString());
-      AppMethodBeat.o(192798);
+      AppMethodBeat.o(253049);
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(192797);
+    AppMethodBeat.i(253048);
     super.onCreate(paramBundle);
     try
     {
@@ -47,17 +47,17 @@ public class APMidasQQWalletActivity
         requestWindowFeature(1);
         handleIntent(getIntent());
         finish();
-        AppMethodBeat.o(192797);
+        AppMethodBeat.o(253048);
         return;
       }
       catch (Throwable paramBundle)
       {
         finish();
-        AppMethodBeat.o(192797);
+        AppMethodBeat.o(253048);
       }
       paramBundle = paramBundle;
       finish();
-      AppMethodBeat.o(192797);
+      AppMethodBeat.o(253048);
       return;
     }
   }
@@ -70,7 +70,7 @@ public class APMidasQQWalletActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.qq.APMidasQQWalletActivity
  * JD-Core Version:    0.7.0.1
  */

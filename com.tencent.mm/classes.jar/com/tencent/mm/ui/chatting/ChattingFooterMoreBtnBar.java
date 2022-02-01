@@ -8,21 +8,25 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.R.d;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.l;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.at;
+import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.widget.imageview.WeImageButton;
 import java.util.List;
 
 public class ChattingFooterMoreBtnBar
   extends LinearLayout
 {
-  private WeImageButton Phu;
-  private WeImageButton Phv;
-  private WeImageButton Phw;
-  private WeImageButton Phx;
-  private WeImageButton Phy;
-  private LinearLayout.LayoutParams xTw;
+  private LinearLayout.LayoutParams CXH;
+  private WeImageButton WAW;
+  private WeImageButton WAX;
+  private WeImageButton WAY;
+  private WeImageButton WAZ;
+  private WeImageButton WBa;
   
   public ChattingFooterMoreBtnBar(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,66 +34,66 @@ public class ChattingFooterMoreBtnBar
     AppMethodBeat.i(34552);
     setOrientation(0);
     setGravity(16);
-    setBackground(at.aN(getContext(), 2130969286));
-    this.xTw = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131165585), 1.0F);
-    this.xTw.topMargin = a.fromDPToPix(getContext(), 0);
-    this.Phu = new WeImageButton(getContext());
-    this.Phu.setImageResource(2131231639);
-    this.Phu.setScaleType(ImageView.ScaleType.CENTER);
-    this.Phu.setBackgroundResource(0);
-    this.Phu.setContentDescription(paramContext.getString(2131757465));
-    this.Phy = new WeImageButton(getContext());
-    this.Phy.setImageResource(2131231636);
-    this.Phy.setScaleType(ImageView.ScaleType.CENTER);
-    this.Phy.setBackgroundResource(0);
-    this.Phy.setContentDescription(paramContext.getString(2131757464));
-    this.Phx = new WeImageButton(getContext());
-    this.Phx.setImageResource(2131231634);
-    this.Phx.setScaleType(ImageView.ScaleType.CENTER);
-    this.Phx.setBackgroundResource(0);
-    this.Phx.setContentDescription(paramContext.getString(2131757462));
-    this.Phw = new WeImageButton(getContext());
-    this.Phw.setImageResource(2131231637);
-    this.Phw.setScaleType(ImageView.ScaleType.CENTER);
-    this.Phw.setBackgroundResource(0);
-    this.Phw.setContentDescription(paramContext.getString(2131757461));
-    this.Phv = new WeImageButton(getContext());
-    this.Phv.setImageResource(2131231635);
-    this.Phv.setScaleType(ImageView.ScaleType.CENTER);
-    this.Phv.setBackgroundResource(0);
-    this.Phv.setContentDescription(paramContext.getString(2131757463));
-    eer();
+    setBackground(aw.bf(getContext(), R.d.list_top_line_selector));
+    this.CXH = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(R.f.SmallListHeight), 1.0F);
+    this.CXH.topMargin = a.fromDPToPix(getContext(), 0);
+    this.WAW = new WeImageButton(getContext());
+    this.WAW.setImageResource(R.g.dmN);
+    this.WAW.setScaleType(ImageView.ScaleType.CENTER);
+    this.WAW.setBackgroundResource(0);
+    this.WAW.setContentDescription(paramContext.getString(R.l.chatting_more_share));
+    this.WBa = new WeImageButton(getContext());
+    this.WBa.setImageResource(R.g.dmL);
+    this.WBa.setScaleType(ImageView.ScaleType.CENTER);
+    this.WBa.setBackgroundResource(0);
+    this.WBa.setContentDescription(paramContext.getString(R.l.chatting_more_favorite));
+    this.WAZ = new WeImageButton(getContext());
+    this.WAZ.setImageResource(R.g.dmJ);
+    this.WAZ.setScaleType(ImageView.ScaleType.CENTER);
+    this.WAZ.setBackgroundResource(0);
+    this.WAZ.setContentDescription(paramContext.getString(R.l.chatting_more_delete));
+    this.WAY = new WeImageButton(getContext());
+    this.WAY.setImageResource(R.g.chat_more_more_btn);
+    this.WAY.setScaleType(ImageView.ScaleType.CENTER);
+    this.WAY.setBackgroundResource(0);
+    this.WAY.setContentDescription(paramContext.getString(R.l.chatting_more));
+    this.WAX = new WeImageButton(getContext());
+    this.WAX.setImageResource(R.g.dmK);
+    this.WAX.setScaleType(ImageView.ScaleType.CENTER);
+    this.WAX.setBackgroundResource(0);
+    this.WAX.setContentDescription(paramContext.getString(R.l.chatting_more_email));
+    eNL();
     AppMethodBeat.o(34552);
   }
   
-  public final void amj(int paramInt)
+  public final void avk(int paramInt)
   {
     AppMethodBeat.i(34554);
     boolean bool;
     if (paramInt > 0)
     {
       bool = true;
-      this.Phu.setClickable(bool);
-      this.Phu.setEnabled(bool);
-      if (k.gNu().size() <= 0) {
+      this.WAW.setClickable(bool);
+      this.WAW.setEnabled(bool);
+      if (k.hMD().size() <= 0) {
         break label97;
       }
-      this.Phw.setClickable(bool);
-      this.Phw.setEnabled(bool);
+      this.WAY.setClickable(bool);
+      this.WAY.setEnabled(bool);
     }
     for (;;)
     {
-      this.Phx.setClickable(bool);
-      this.Phx.setEnabled(bool);
-      this.Phy.setClickable(bool);
-      this.Phy.setEnabled(bool);
+      this.WAZ.setClickable(bool);
+      this.WAZ.setEnabled(bool);
+      this.WBa.setClickable(bool);
+      this.WBa.setEnabled(bool);
       AppMethodBeat.o(34554);
       return;
       bool = false;
       break;
       label97:
-      this.Phv.setClickable(bool);
-      this.Phv.setEnabled(bool);
+      this.WAX.setClickable(bool);
+      this.WAX.setEnabled(bool);
     }
   }
   
@@ -103,40 +107,40 @@ public class ChattingFooterMoreBtnBar
       AppMethodBeat.o(34555);
       return;
     case 2: 
-      this.Phw.setOnClickListener(paramOnClickListener);
+      this.WAY.setOnClickListener(paramOnClickListener);
       AppMethodBeat.o(34555);
       return;
     case 3: 
-      this.Phx.setOnClickListener(paramOnClickListener);
+      this.WAZ.setOnClickListener(paramOnClickListener);
       AppMethodBeat.o(34555);
       return;
     case 1: 
-      this.Phv.setOnClickListener(paramOnClickListener);
+      this.WAX.setOnClickListener(paramOnClickListener);
       AppMethodBeat.o(34555);
       return;
     case 0: 
-      this.Phu.setOnClickListener(paramOnClickListener);
+      this.WAW.setOnClickListener(paramOnClickListener);
       AppMethodBeat.o(34555);
       return;
     }
-    this.Phy.setOnClickListener(paramOnClickListener);
+    this.WBa.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(34555);
   }
   
-  public final void eer()
+  public final void eNL()
   {
     AppMethodBeat.i(34553);
     removeAllViews();
-    addView(this.Phu, this.xTw);
-    addView(this.Phy, this.xTw);
-    addView(this.Phx, this.xTw);
-    addView(this.Phv, this.xTw);
+    addView(this.WAW, this.CXH);
+    addView(this.WBa, this.CXH);
+    addView(this.WAZ, this.CXH);
+    addView(this.WAX, this.CXH);
     AppMethodBeat.o(34553);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ChattingFooterMoreBtnBar
  * JD-Core Version:    0.7.0.1
  */

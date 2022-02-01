@@ -12,8 +12,12 @@ import android.webkit.WebSettings.LayoutAlgorithm;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.plugin.qqmail.c.a;
+import com.tencent.mm.plugin.qqmail.e.c;
+import com.tencent.mm.plugin.qqmail.e.e;
+import com.tencent.mm.plugin.qqmail.e.f;
+import com.tencent.mm.pluginsdk.ui.tools.ab;
 import com.tencent.mm.remoteservice.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
@@ -21,24 +25,25 @@ import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.MMWebView.a;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.ac;
+import com.tencent.xweb.aa;
+import com.tencent.xweb.ad;
 import com.tencent.xweb.x;
 import java.util.Map;
 
 public class MailWebViewUI
   extends MMActivity
 {
-  private c.a BwD;
-  private String djt;
-  private d gVN;
+  private c.a HqY;
+  private String fba;
   private MMHandler handler;
-  private MMWebView pGj;
-  private long ulj;
+  private d jGJ;
+  private MMWebView pHS;
+  private long yjR;
   
   public MailWebViewUI()
   {
     AppMethodBeat.i(123129);
-    this.BwD = new c.a()
+    this.HqY = new c.a()
     {
       public final void onError(int paramAnonymousInt, final String paramAnonymousString)
       {
@@ -70,39 +75,39 @@ public class MailWebViewUI
         AppMethodBeat.o(123120);
       }
     };
-    this.gVN = new d(this);
+    this.jGJ = new d(this);
     AppMethodBeat.o(123129);
   }
   
   public int getLayoutId()
   {
-    return 2131496002;
+    return e.f.qqmail_webview;
   }
   
   public void initView()
   {
     AppMethodBeat.i(123135);
     boolean bool = getIntent().getBooleanExtra("singleColumn", false);
-    this.pGj = MMWebView.a.kL(getContext());
-    this.pGj.setBackgroundDrawable(a.l(this, 2131100888));
-    ((FrameLayout)findViewById(2131299174)).addView(this.pGj);
-    this.pGj.getSettings().setJavaScriptEnabled(true);
+    this.pHS = MMWebView.a.lH(getContext());
+    this.pHS.setBackgroundDrawable(a.m(this, e.c.navpage));
+    ((FrameLayout)findViewById(e.e.container)).addView(this.pHS);
+    this.pHS.getSettings().setJavaScriptEnabled(true);
     if (Boolean.valueOf(bool).booleanValue())
     {
-      MMWebView localMMWebView = this.pGj;
+      MMWebView localMMWebView = this.pHS;
       if (Build.VERSION.SDK_INT >= 8) {
-        localMMWebView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+        localMMWebView.getSettings().a(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
       }
     }
-    this.pGj.getSettings().hsO();
-    this.pGj.getSettings().setSupportZoom(true);
-    this.pGj.getSettings().setBuiltInZoomControls(true);
-    this.pGj.setWebViewClient(new ac()
+    this.pHS.getSettings().iwy();
+    this.pHS.getSettings().setSupportZoom(true);
+    this.pHS.getSettings().setBuiltInZoomControls(true);
+    this.pHS.setWebViewClient(new ad()
     {
       public final void a(WebView paramAnonymousWebView, float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
         AppMethodBeat.i(123123);
-        MailWebViewUI.c(MailWebViewUI.this).getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
+        MailWebViewUI.c(MailWebViewUI.this).getSettings().a(WebSettings.LayoutAlgorithm.NORMAL);
         AppMethodBeat.o(123123);
       }
       
@@ -125,11 +130,11 @@ public class MailWebViewUI
       {
         AppMethodBeat.i(123125);
         super.b(paramAnonymousWebView, paramAnonymousString);
-        com.tencent.mm.pluginsdk.ui.tools.z.a(paramAnonymousWebView, "weixin://private/getcontentwidth/", "document.getElementsByTagName('html')[0].scrollWidth;");
+        ab.b(paramAnonymousWebView, "weixin://private/getcontentwidth/", "document.getElementsByTagName('html')[0].scrollWidth;");
         AppMethodBeat.o(123125);
       }
     });
-    this.pGj.setWebChromeClient(new x()
+    this.pHS.setWebChromeClient(new x()
     {
       public final boolean onConsoleMessage(ConsoleMessage paramAnonymousConsoleMessage)
       {
@@ -137,7 +142,7 @@ public class MailWebViewUI
         if (paramAnonymousConsoleMessage != null) {}
         for (String str = paramAnonymousConsoleMessage.message();; str = null)
         {
-          str = com.tencent.mm.pluginsdk.ui.tools.z.bfJ(str);
+          str = ab.bsd(str);
           if (!str.startsWith("weixin://private/getcontentwidth/")) {
             break;
           }
@@ -151,7 +156,7 @@ public class MailWebViewUI
         return bool;
       }
     });
-    this.pGj.gYW();
+    this.pHS.hZN();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -175,7 +180,7 @@ public class MailWebViewUI
     if (paramBundle != null) {
       setMMTitle(paramBundle);
     }
-    this.gVN.connect(new Runnable()
+    this.jGJ.connect(new Runnable()
     {
       public final void run()
       {
@@ -190,10 +195,10 @@ public class MailWebViewUI
   public void onDestroy()
   {
     AppMethodBeat.i(123134);
-    this.pGj.setVisibility(8);
-    this.pGj.destroy();
-    this.pGj = null;
-    this.gVN.release();
+    this.pHS.setVisibility(8);
+    this.pHS.destroy();
+    this.pHS = null;
+    this.jGJ.release();
     super.onDestroy();
     AppMethodBeat.o(123134);
   }
@@ -217,7 +222,7 @@ public class MailWebViewUI
   public void onStop()
   {
     AppMethodBeat.i(123133);
-    this.pGj.stopLoading();
+    this.pHS.stopLoading();
     super.onStop();
     AppMethodBeat.o(123133);
   }
@@ -230,7 +235,7 @@ public class MailWebViewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.MailWebViewUI
  * JD-Core Version:    0.7.0.1
  */

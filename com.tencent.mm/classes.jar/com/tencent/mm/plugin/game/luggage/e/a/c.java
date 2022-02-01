@@ -9,81 +9,81 @@ import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.ui.tools.game.menu.b.b;
 import com.tencent.mm.plugin.webview.ui.tools.game.menu.b.c;
 import com.tencent.mm.plugin.webview.ui.tools.game.menu.d;
-import com.tencent.mm.protocal.protobuf.coq;
-import com.tencent.mm.ui.base.m;
+import com.tencent.mm.protocal.protobuf.cxc;
+import com.tencent.mm.ui.base.o;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 public final class c
 {
-  i xxA;
-  b xxB;
-  public d xxC;
+  i CBJ;
+  b CBK;
+  public d CBL;
   
   public c(i parami, b paramb)
   {
     AppMethodBeat.i(83101);
-    this.xxA = parami;
-    this.xxB = paramb;
-    this.xxC = new d(this.xxA.mContext);
-    this.xxC.Jsa = new b.b()
+    this.CBJ = parami;
+    this.CBK = paramb;
+    this.CBL = new d(this.CBJ.mContext);
+    this.CBL.Qpx = new b.b()
     {
-      public final void onCreateMMMenu(m paramAnonymousm)
+      public final void onCreateMMMenu(o paramAnonymouso)
       {
         AppMethodBeat.i(83099);
         Object localObject = c.this;
-        b localb = ((c)localObject).xxB;
-        localObject = ((c)localObject).xxA;
-        Iterator localIterator = localb.xxx.iterator();
+        b localb = ((c)localObject).CBK;
+        localObject = ((c)localObject).CBJ;
+        Iterator localIterator = localb.CBG.iterator();
         while (localIterator.hasNext())
         {
-          coq localcoq = (coq)localIterator.next();
-          if (localcoq == null)
+          cxc localcxc = (cxc)localIterator.next();
+          if (localcxc == null)
           {
-            paramAnonymousm.d(-1, "");
+            paramAnonymouso.d(-1, "");
           }
           else
           {
-            a locala = (a)localb.xxy.get(Integer.valueOf(localcoq.KWb));
+            a locala = (a)localb.CBH.get(Integer.valueOf(localcxc.RXp));
             if (locala != null) {
-              locala.a((g)localObject, paramAnonymousm, localcoq);
+              locala.a((g)localObject, paramAnonymouso, localcxc);
             }
           }
         }
         AppMethodBeat.o(83099);
       }
     };
-    this.xxC.a(new b.c()
+    this.CBL.a(new b.c()
     {
-      public final void c(MenuItem paramAnonymousMenuItem)
+      public final void d(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(83100);
         Object localObject2 = c.this;
-        Object localObject1 = ((c)localObject2).xxB;
-        Context localContext = ((c)localObject2).xxA.mContext;
-        localObject2 = ((c)localObject2).xxA;
-        a locala = (a)((b)localObject1).xxy.get(Integer.valueOf(paramAnonymousMenuItem.getItemId()));
-        Iterator localIterator = ((b)localObject1).xxx.iterator();
+        Object localObject1 = ((c)localObject2).CBK;
+        Context localContext = ((c)localObject2).CBJ.mContext;
+        localObject2 = ((c)localObject2).CBJ;
+        a locala = (a)((b)localObject1).CBH.get(Integer.valueOf(paramAnonymousMenuItem.getItemId()));
+        Iterator localIterator = ((b)localObject1).CBG.iterator();
         do
         {
           if (!localIterator.hasNext()) {
             break;
           }
-          localObject1 = (coq)localIterator.next();
-        } while ((localObject1 == null) || (((coq)localObject1).KWb != paramAnonymousMenuItem.getItemId()));
+          localObject1 = (cxc)localIterator.next();
+        } while ((localObject1 == null) || (((cxc)localObject1).RXp != paramAnonymousMenuItem.getItemId()));
         for (paramAnonymousMenuItem = (MenuItem)localObject1;; paramAnonymousMenuItem = null)
         {
           if ((locala != null) && (paramAnonymousMenuItem != null)) {
             locala.a(localContext, (g)localObject2, paramAnonymousMenuItem);
           }
-          c.this.xxC.bMo();
+          c.this.CBL.bYF();
           AppMethodBeat.o(83100);
           return;
         }
       }
     });
-    this.xxC.dGm();
+    this.CBL.eik();
     AppMethodBeat.o(83101);
   }
 }

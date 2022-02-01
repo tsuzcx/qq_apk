@@ -5,7 +5,7 @@ import java.io.InputStream;
 public abstract interface d
   extends b
 {
-  public abstract InputStream aKu();
+  public abstract InputStream aSw();
 }
 
 

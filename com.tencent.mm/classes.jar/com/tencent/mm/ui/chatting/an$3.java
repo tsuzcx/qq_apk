@@ -1,22 +1,22 @@
 package com.tencent.mm.ui.chatting;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.q.f;
 import java.util.Iterator;
 import java.util.List;
 
 final class an$3
-  implements o.f
+  implements q.f
 {
   an$3(List paramList) {}
   
-  public final void onCreateMMMenu(m paramm)
+  public final void onCreateMMMenu(o paramo)
   {
     AppMethodBeat.i(34898);
-    Iterator localIterator = this.Pkx.iterator();
+    Iterator localIterator = this.WEg.iterator();
     while (localIterator.hasNext()) {
-      paramm.add((String)localIterator.next());
+      paramo.add((String)localIterator.next());
     }
     AppMethodBeat.o(34898);
   }

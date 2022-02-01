@@ -29,9 +29,9 @@ public abstract interface d
       attachInterface(this, "com.tencent.mm.plugin.webview.stub.OnSceneEnd_AIDL");
     }
     
-    public static d gdV()
+    public static d gWX()
     {
-      return a.Jdb;
+      return a.Qab;
     }
     
     public IBinder asBinder()
@@ -89,7 +89,7 @@ public abstract interface d
     static final class a
       implements d
     {
-      public static d Jdb;
+      public static d Qab;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -123,9 +123,9 @@ public abstract interface d
         //   26: iconst_0
         //   27: invokeinterface 50 5 0
         //   32: ifne +33 -> 65
-        //   35: invokestatic 54	com/tencent/mm/plugin/webview/stub/d$a:gdV	()Lcom/tencent/mm/plugin/webview/stub/d;
+        //   35: invokestatic 54	com/tencent/mm/plugin/webview/stub/d$a:gWX	()Lcom/tencent/mm/plugin/webview/stub/d;
         //   38: ifnull +27 -> 65
-        //   41: invokestatic 54	com/tencent/mm/plugin/webview/stub/d$a:gdV	()Lcom/tencent/mm/plugin/webview/stub/d;
+        //   41: invokestatic 54	com/tencent/mm/plugin/webview/stub/d$a:gWX	()Lcom/tencent/mm/plugin/webview/stub/d;
         //   44: invokeinterface 56 1 0
         //   49: astore_1
         //   50: aload_3
@@ -187,9 +187,9 @@ public abstract interface d
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.webview.stub.OnSceneEnd_AIDL");
-          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (d.a.gdV() != null))
+          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (d.a.gWX() != null))
           {
-            i = d.a.gdV().getErrCode();
+            i = d.a.gWX().getErrCode();
             return i;
           }
           localParcel2.readException();
@@ -212,9 +212,9 @@ public abstract interface d
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.webview.stub.OnSceneEnd_AIDL");
-          if ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (d.a.gdV() != null))
+          if ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (d.a.gWX() != null))
           {
-            str = d.a.gdV().getErrMsg();
+            str = d.a.gWX().getErrMsg();
             return str;
           }
           localParcel2.readException();
@@ -237,9 +237,9 @@ public abstract interface d
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.webview.stub.OnSceneEnd_AIDL");
-          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (d.a.gdV() != null))
+          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (d.a.gWX() != null))
           {
-            i = d.a.gdV().getErrType();
+            i = d.a.gWX().getErrType();
             return i;
           }
           localParcel2.readException();
@@ -262,9 +262,9 @@ public abstract interface d
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.webview.stub.OnSceneEnd_AIDL");
-          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (d.a.gdV() != null))
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (d.a.gWX() != null))
           {
-            i = d.a.gdV().getType();
+            i = d.a.gWX().getType();
             return i;
           }
           localParcel2.readException();

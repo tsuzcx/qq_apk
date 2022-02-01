@@ -15,45 +15,45 @@ import java.util.Map;
 
 public final class c
 {
-  private static Map<Integer, Long> Gss;
-  private static Map<Integer, Long> Gst;
-  private static Map<Integer, Long> Gsu;
-  private static Map<Integer, Long> Gsv;
-  private static Map<Integer, Long> Gsw;
-  private static Map<Integer, Long> Gsx;
-  private static Map<Integer, Long> Gsy;
-  private static Map<Integer, Long> Gsz;
+  private static Map<Integer, Long> Nfd;
+  private static Map<Integer, Long> Nfe;
+  private static Map<Integer, Long> Nff;
+  private static Map<Integer, Long> Nfg;
+  private static Map<Integer, Long> Nfh;
+  private static Map<Integer, Long> Nfi;
+  private static Map<Integer, Long> Nfj;
+  private static Map<Integer, Long> Nfk;
   
   static
   {
     AppMethodBeat.i(123897);
-    Gss = new HashMap();
-    Gst = new HashMap();
-    Gsu = new HashMap();
-    Gsv = new HashMap();
-    Gsw = new HashMap();
-    Gsx = new HashMap();
-    Gsy = new HashMap();
-    Gsz = new HashMap();
+    Nfd = new HashMap();
+    Nfe = new HashMap();
+    Nff = new HashMap();
+    Nfg = new HashMap();
+    Nfh = new HashMap();
+    Nfi = new HashMap();
+    Nfj = new HashMap();
+    Nfk = new HashMap();
     AppMethodBeat.o(123897);
   }
   
-  public static long acj(int paramInt)
+  public static long ajP(int paramInt)
   {
     AppMethodBeat.i(123892);
-    if (Gsy == null)
+    if (Nfj == null)
     {
       AppMethodBeat.o(123892);
       return 0L;
     }
-    if (Gsy.get(Integer.valueOf(paramInt)) == null)
+    if (Nfj.get(Integer.valueOf(paramInt)) == null)
     {
       AppMethodBeat.o(123892);
       return 0L;
     }
-    if (((Long)Gsy.get(Integer.valueOf(paramInt))).longValue() > 0L)
+    if (((Long)Nfj.get(Integer.valueOf(paramInt))).longValue() > 0L)
     {
-      long l = ((Long)Gsy.get(Integer.valueOf(paramInt))).longValue();
+      long l = ((Long)Nfj.get(Integer.valueOf(paramInt))).longValue();
       AppMethodBeat.o(123892);
       return l;
     }
@@ -61,22 +61,22 @@ public final class c
     return 0L;
   }
   
-  public static long ack(int paramInt)
+  public static long ajQ(int paramInt)
   {
     AppMethodBeat.i(123893);
-    if (Gsz == null)
+    if (Nfk == null)
     {
       AppMethodBeat.o(123893);
       return 0L;
     }
-    if (Gsz.get(Integer.valueOf(paramInt)) == null)
+    if (Nfk.get(Integer.valueOf(paramInt)) == null)
     {
       AppMethodBeat.o(123893);
       return 0L;
     }
-    if (((Long)Gsz.get(Integer.valueOf(paramInt))).longValue() > 0L)
+    if (((Long)Nfk.get(Integer.valueOf(paramInt))).longValue() > 0L)
     {
-      long l = ((Long)Gsz.get(Integer.valueOf(paramInt))).longValue();
+      long l = ((Long)Nfk.get(Integer.valueOf(paramInt))).longValue();
       AppMethodBeat.o(123893);
       return l;
     }
@@ -84,22 +84,22 @@ public final class c
     return 0L;
   }
   
-  public static long acl(int paramInt)
+  public static long ajR(int paramInt)
   {
     AppMethodBeat.i(123894);
-    if (Gsw == null)
+    if (Nfh == null)
     {
       AppMethodBeat.o(123894);
       return 0L;
     }
-    if (Gsw.get(Integer.valueOf(paramInt)) == null)
+    if (Nfh.get(Integer.valueOf(paramInt)) == null)
     {
       AppMethodBeat.o(123894);
       return 0L;
     }
-    if (((Long)Gsw.get(Integer.valueOf(paramInt))).longValue() > 0L)
+    if (((Long)Nfh.get(Integer.valueOf(paramInt))).longValue() > 0L)
     {
-      long l = ((Long)Gsw.get(Integer.valueOf(paramInt))).longValue();
+      long l = ((Long)Nfh.get(Integer.valueOf(paramInt))).longValue();
       AppMethodBeat.o(123894);
       return l;
     }
@@ -107,22 +107,22 @@ public final class c
     return 0L;
   }
   
-  public static long acm(int paramInt)
+  public static long ajS(int paramInt)
   {
     AppMethodBeat.i(123895);
-    if (Gsx == null)
+    if (Nfi == null)
     {
       AppMethodBeat.o(123895);
       return 0L;
     }
-    if (Gsx.get(Integer.valueOf(paramInt)) == null)
+    if (Nfi.get(Integer.valueOf(paramInt)) == null)
     {
       AppMethodBeat.o(123895);
       return 0L;
     }
-    if (((Long)Gsx.get(Integer.valueOf(paramInt))).longValue() > 0L)
+    if (((Long)Nfi.get(Integer.valueOf(paramInt))).longValue() > 0L)
     {
-      long l = ((Long)Gsx.get(Integer.valueOf(paramInt))).longValue();
+      long l = ((Long)Nfi.get(Integer.valueOf(paramInt))).longValue();
       AppMethodBeat.o(123895);
       return l;
     }
@@ -130,28 +130,28 @@ public final class c
     return 0L;
   }
   
+  public static void fs(int paramInt)
+  {
+    AppMethodBeat.i(123891);
+    Nfe.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+    Nfd.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+    Nfg.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+    Nff.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+    AppMethodBeat.o(123891);
+  }
+  
   public static void init(int paramInt)
   {
     AppMethodBeat.i(123890);
-    Gss.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    Gst.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    Gsu.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    Gsv.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    Gsw.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    Gsx.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    Gsy.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    Gsz.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    Nfd.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    Nfe.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    Nff.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    Nfg.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    Nfh.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    Nfi.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    Nfj.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    Nfk.put(Integer.valueOf(paramInt), Long.valueOf(0L));
     AppMethodBeat.o(123890);
-  }
-  
-  public static void reset(int paramInt)
-  {
-    AppMethodBeat.i(123891);
-    Gst.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
-    Gss.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
-    Gsv.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
-    Gsu.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
-    AppMethodBeat.o(123891);
   }
   
   @TargetApi(23)
@@ -201,7 +201,7 @@ public final class c
       l4 = 0L + l4;
       l1 = l3;
       l2 = l4;
-      if (!b.n(MMApplicationContext.getContext(), "android.permission.READ_PHONE_STATE"))
+      if (!b.o(MMApplicationContext.getContext(), "android.permission.READ_PHONE_STATE"))
       {
         l1 = l3;
         l2 = l4;
@@ -246,14 +246,14 @@ public final class c
     {
       for (;;)
       {
-        Gsw.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-        Gsx.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-        Gsy.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-        Gsz.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-        Gss.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
-        Gst.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
-        Gsu.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
-        Gsv.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+        Nfh.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+        Nfi.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+        Nfj.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+        Nfk.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+        Nfd.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+        Nfe.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+        Nff.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+        Nfg.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
         Log.e("NsmTrafficStats", "query traffic stats failed, e = " + localException.getMessage());
         long l3 = 0L;
         long l4 = l7;
@@ -267,52 +267,52 @@ public final class c
         l5 = l1;
       }
     }
-    if (((Long)Gst.get(Integer.valueOf(paramInt))).longValue() < 0L) {
-      Gst.put(Integer.valueOf(paramInt), Long.valueOf(l3));
+    if (((Long)Nfe.get(Integer.valueOf(paramInt))).longValue() < 0L) {
+      Nfe.put(Integer.valueOf(paramInt), Long.valueOf(l3));
     }
-    if (((Long)Gss.get(Integer.valueOf(paramInt))).longValue() < 0L) {
-      Gss.put(Integer.valueOf(paramInt), Long.valueOf(l4));
+    if (((Long)Nfd.get(Integer.valueOf(paramInt))).longValue() < 0L) {
+      Nfd.put(Integer.valueOf(paramInt), Long.valueOf(l4));
     }
-    if (((Long)Gsv.get(Integer.valueOf(paramInt))).longValue() < 0L) {
-      Gsv.put(Integer.valueOf(paramInt), Long.valueOf(l1));
+    if (((Long)Nfg.get(Integer.valueOf(paramInt))).longValue() < 0L) {
+      Nfg.put(Integer.valueOf(paramInt), Long.valueOf(l1));
     }
-    if (((Long)Gsu.get(Integer.valueOf(paramInt))).longValue() < 0L) {
-      Gsu.put(Integer.valueOf(paramInt), Long.valueOf(l2));
+    if (((Long)Nff.get(Integer.valueOf(paramInt))).longValue() < 0L) {
+      Nff.put(Integer.valueOf(paramInt), Long.valueOf(l2));
     }
-    localObject1 = Gsw;
-    if (l4 >= ((Long)Gss.get(Integer.valueOf(paramInt))).longValue())
+    localObject1 = Nfh;
+    if (l4 >= ((Long)Nfd.get(Integer.valueOf(paramInt))).longValue())
     {
-      l5 = l4 - ((Long)Gss.get(Integer.valueOf(paramInt))).longValue();
+      l5 = l4 - ((Long)Nfd.get(Integer.valueOf(paramInt))).longValue();
       ((Map)localObject1).put(Integer.valueOf(paramInt), Long.valueOf(l5));
-      localObject1 = Gsx;
-      if (l3 < ((Long)Gst.get(Integer.valueOf(paramInt))).longValue()) {
+      localObject1 = Nfi;
+      if (l3 < ((Long)Nfe.get(Integer.valueOf(paramInt))).longValue()) {
         break label1022;
       }
-      l5 = l3 - ((Long)Gst.get(Integer.valueOf(paramInt))).longValue();
+      l5 = l3 - ((Long)Nfe.get(Integer.valueOf(paramInt))).longValue();
       ((Map)localObject1).put(Integer.valueOf(paramInt), Long.valueOf(l5));
-      localObject1 = Gsy;
-      if (l2 < ((Long)Gsu.get(Integer.valueOf(paramInt))).longValue()) {
+      localObject1 = Nfj;
+      if (l2 < ((Long)Nff.get(Integer.valueOf(paramInt))).longValue()) {
         break label1029;
       }
-      l5 = l2 - ((Long)Gsu.get(Integer.valueOf(paramInt))).longValue();
+      l5 = l2 - ((Long)Nff.get(Integer.valueOf(paramInt))).longValue();
       ((Map)localObject1).put(Integer.valueOf(paramInt), Long.valueOf(l5));
-      localObject1 = Gsz;
-      if (l1 < ((Long)Gsv.get(Integer.valueOf(paramInt))).longValue()) {
+      localObject1 = Nfk;
+      if (l1 < ((Long)Nfg.get(Integer.valueOf(paramInt))).longValue()) {
         break label1035;
       }
-      l5 = l1 - ((Long)Gsv.get(Integer.valueOf(paramInt))).longValue();
+      l5 = l1 - ((Long)Nfg.get(Integer.valueOf(paramInt))).longValue();
       ((Map)localObject1).put(Integer.valueOf(paramInt), Long.valueOf(l5));
-      Gss.put(Integer.valueOf(paramInt), Long.valueOf(l4));
-      Gst.put(Integer.valueOf(paramInt), Long.valueOf(l3));
-      Gsu.put(Integer.valueOf(paramInt), Long.valueOf(l2));
-      Gsv.put(Integer.valueOf(paramInt), Long.valueOf(l1));
+      Nfd.put(Integer.valueOf(paramInt), Long.valueOf(l4));
+      Nfe.put(Integer.valueOf(paramInt), Long.valueOf(l3));
+      Nff.put(Integer.valueOf(paramInt), Long.valueOf(l2));
+      Nfg.put(Integer.valueOf(paramInt), Long.valueOf(l1));
       AppMethodBeat.o(123896);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.trafficmonitor.c
  * JD-Core Version:    0.7.0.1
  */

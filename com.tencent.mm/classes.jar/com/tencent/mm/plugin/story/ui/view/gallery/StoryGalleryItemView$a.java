@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.story.ui.view.gallery;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "state", "", "index", "isSelf", "", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "state", "", "index", "isSelf", "", "invoke"})
 final class StoryGalleryItemView$a
   extends kotlin.g.b.q
   implements kotlin.g.a.q<Integer, Integer, Boolean, x>

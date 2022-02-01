@@ -1,35 +1,87 @@
 package com.tencent.mm.plugin.fav.ui.b;
 
-import android.content.Context;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fts.a.d.a;
-import com.tencent.mm.plugin.fts.a.d.e;
-import com.tencent.mm.plugin.fts.a.d.e.b;
+import com.tencent.mm.plugin.ball.a.e;
+import com.tencent.mm.plugin.ball.a.f.a;
+import com.tencent.mm.plugin.ball.a.f.b;
+import java.util.Objects;
 
 public final class b
-  extends a
+  extends e
 {
-  public final e a(Context paramContext, e.b paramb, int paramInt)
+  public b(Activity paramActivity)
   {
-    AppMethodBeat.i(107311);
-    paramContext = new c(paramContext, paramb, paramInt);
-    AppMethodBeat.o(107311);
-    return paramContext;
+    super(paramActivity);
   }
   
-  public final int getPriority()
+  public final void a(f.a parama)
   {
-    return 2147483647;
+    AppMethodBeat.i(107298);
+    super.a(parama);
+    AppMethodBeat.o(107298);
   }
   
-  public final int getType()
+  public final void a(f.b paramb)
   {
-    return 4192;
+    AppMethodBeat.i(107300);
+    super.a(paramb);
+    AppMethodBeat.o(107300);
+  }
+  
+  public final boolean aOg()
+  {
+    AppMethodBeat.i(107297);
+    boolean bool = super.aOg();
+    AppMethodBeat.o(107297);
+    return bool;
+  }
+  
+  public final ViewGroup cuR()
+  {
+    AppMethodBeat.i(107295);
+    ViewGroup localViewGroup = super.cuR();
+    AppMethodBeat.o(107295);
+    return localViewGroup;
+  }
+  
+  public final Activity getActivity()
+  {
+    AppMethodBeat.i(107293);
+    Activity localActivity = (Activity)Objects.requireNonNull(super.getActivity());
+    AppMethodBeat.o(107293);
+    return localActivity;
+  }
+  
+  public final View getContentView()
+  {
+    AppMethodBeat.i(107296);
+    View localView = super.getContentView();
+    AppMethodBeat.o(107296);
+    return localView;
+  }
+  
+  public final Intent getIntent()
+  {
+    AppMethodBeat.i(107294);
+    Intent localIntent = super.getIntent();
+    AppMethodBeat.o(107294);
+    return localIntent;
+  }
+  
+  public final void hS(boolean paramBoolean)
+  {
+    AppMethodBeat.i(107299);
+    super.hS(paramBoolean);
+    AppMethodBeat.o(107299);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.b.b
  * JD-Core Version:    0.7.0.1
  */

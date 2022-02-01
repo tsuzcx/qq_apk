@@ -12,16 +12,16 @@ import com.tencent.mm.msgsubscription.util.a.a;
 import com.tencent.mm.msgsubscription.util.a.b;
 import com.tencent.mm.msgsubscription.util.a.c;
 import com.tencent.mm.msgsubscription.util.a.c.a;
-import com.tencent.mm.protocal.protobuf.cgj;
-import com.tencent.mm.protocal.protobuf.ddg;
-import com.tencent.mm.protocal.protobuf.dop;
-import com.tencent.mm.protocal.protobuf.dpc;
-import com.tencent.mm.protocal.protobuf.efc;
-import com.tencent.mm.protocal.protobuf.efd;
-import com.tencent.mm.protocal.protobuf.efe;
-import com.tencent.mm.protocal.protobuf.eff;
-import com.tencent.mm.protocal.protobuf.efg;
-import com.tencent.mm.protocal.protobuf.efh;
+import com.tencent.mm.protocal.protobuf.cpf;
+import com.tencent.mm.protocal.protobuf.dmw;
+import com.tencent.mm.protocal.protobuf.dyl;
+import com.tencent.mm.protocal.protobuf.dyy;
+import com.tencent.mm.protocal.protobuf.epd;
+import com.tencent.mm.protocal.protobuf.epe;
+import com.tencent.mm.protocal.protobuf.epf;
+import com.tencent.mm.protocal.protobuf.epg;
+import com.tencent.mm.protocal.protobuf.eph;
+import com.tencent.mm.protocal.protobuf.epi;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -34,30 +34,30 @@ import kotlin.o;
 import kotlin.t;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg;", "Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase;", "Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IOnSceneEnd;", "username", "", "actionType", "", "(Ljava/lang/String;I)V", "isOpened", "", "(Ljava/lang/String;IZ)V", "appId", "(Ljava/lang/String;Ljava/lang/String;I)V", "getActionType", "()I", "getAppId", "()Ljava/lang/String;", "setAppId", "(Ljava/lang/String;)V", "byteArray", "", "getByteArray", "()[B", "setByteArray", "([B)V", "extInfo", "itemList", "", "Lcom/tencent/mm/protocal/protobuf/SubscribeMsgItem;", "mSubscribeEndCallback", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "popupScene", "rr", "Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IReqResp;", "sessionId", "subscribeUrl", "uIData", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData;", "getUsername", "setUsername", "doScene", "dispatcher", "Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IDispatcher;", "getCallback", "getReq", "Lcom/tencent/mm/protocal/protobuf/SubscribeMsgReq;", "getResp", "Lcom/tencent/mm/protocal/protobuf/SubscribeMsgResp;", "getType", "onSceneEnd", "", "errType", "errCode", "errMsg", "scene", "setCallback", "callback", "Builder", "Companion", "IOnNetSceneSubscribeEndCallback", "wxbiz-msgsubscription-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg;", "Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase;", "Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IOnSceneEnd;", "username", "", "actionType", "", "(Ljava/lang/String;I)V", "isOpened", "", "(Ljava/lang/String;IZ)V", "appId", "(Ljava/lang/String;Ljava/lang/String;I)V", "getActionType", "()I", "getAppId", "()Ljava/lang/String;", "setAppId", "(Ljava/lang/String;)V", "byteArray", "", "getByteArray", "()[B", "setByteArray", "([B)V", "extInfo", "itemList", "", "Lcom/tencent/mm/protocal/protobuf/SubscribeMsgItem;", "mSubscribeEndCallback", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "popupScene", "rr", "Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IReqResp;", "sessionId", "subscribeUrl", "uIData", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData;", "getUsername", "setUsername", "doScene", "dispatcher", "Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IDispatcher;", "getCallback", "getReq", "Lcom/tencent/mm/protocal/protobuf/SubscribeMsgReq;", "getResp", "Lcom/tencent/mm/protocal/protobuf/SubscribeMsgResp;", "getType", "onSceneEnd", "", "errType", "errCode", "errMsg", "scene", "setCallback", "callback", "Builder", "Companion", "IOnNetSceneSubscribeEndCallback", "wxbiz-msgsubscription-sdk_release"})
 public final class b
   extends a
   implements a.b
 {
-  public static final b.b jzt;
+  public static final b.b moZ;
   private final int actionType;
   private String appId;
   private String extInfo;
-  private boolean jyo;
-  private final List<efc> jzm;
-  private a.c jzn;
-  public c jzo;
-  private String jzp;
-  private SubscribeMsgRequestDialogUiData jzq;
-  private int jzr;
-  private byte[] jzs;
+  private boolean mnS;
+  private final List<epd> moS;
+  private a.c moT;
+  public c moU;
+  private String moV;
+  private SubscribeMsgRequestDialogUiData moW;
+  private int moX;
+  private byte[] moY;
   private String sessionId;
   public String username;
   
   static
   {
     AppMethodBeat.i(149573);
-    jzt = new b.b((byte)0);
+    moZ = new b.b((byte)0);
     AppMethodBeat.o(149573);
   }
   
@@ -72,111 +72,121 @@ public final class b
   {
     this(paramString, paramInt);
     AppMethodBeat.i(149572);
-    this.jyo = paramBoolean;
+    this.mnS = paramBoolean;
     AppMethodBeat.o(149572);
   }
   
   public b(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(194266);
+    AppMethodBeat.i(263638);
     this.username = paramString1;
     this.appId = paramString2;
     this.actionType = paramInt;
-    this.jzm = ((List)new ArrayList());
-    this.jzp = "";
+    this.moS = ((List)new ArrayList());
+    this.moV = "";
     this.sessionId = "";
     this.extInfo = "";
-    this.jzs = new byte[0];
-    AppMethodBeat.o(194266);
+    this.moY = new byte[0];
+    AppMethodBeat.o(263638);
   }
   
   public final int a(a.a parama)
   {
     int i = 1;
     AppMethodBeat.i(174564);
-    p.h(parama, "dispatcher");
-    Object localObject1 = a.c.jCZ;
-    this.jzn = a.c.a.a((dop)new efd(), (dpc)new efe(), "/cgi-bin/mmbiz-bin/bizattr/subscribemsg");
-    localObject1 = this.jzn;
+    p.k(parama, "dispatcher");
+    Object localObject1 = a.c.mtq;
+    this.moT = a.c.a.a((dyl)new epe(), (dyy)new epf(), "/cgi-bin/mmbiz-bin/bizattr/subscribemsg");
+    localObject1 = this.moT;
     if (localObject1 == null) {
-      p.hyc();
+      p.iCn();
     }
-    localObject1 = ((a.c)localObject1).bjh();
+    localObject1 = ((a.c)localObject1).bsI();
     if (localObject1 == null)
     {
       parama = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.SubscribeMsgReq");
       AppMethodBeat.o(174564);
       throw parama;
     }
-    localObject1 = (efd)localObject1;
-    ((efd)localObject1).Nfh = this.jzr;
-    ((efd)localObject1).SessionId = this.sessionId;
-    ((efd)localObject1).Nfi = this.extInfo;
+    localObject1 = (epe)localObject1;
+    ((epe)localObject1).UrK = this.moX;
+    ((epe)localObject1).SessionId = this.sessionId;
+    ((epe)localObject1).UrL = this.extInfo;
     switch (this.actionType)
     {
-    case 4: 
-    default: 
-      localObject1 = this.jzn;
-      if (localObject1 == null) {
-        p.hyc();
-      }
-      i = parama.a((a.c)localObject1, (a.b)this, (a)this);
-      AppMethodBeat.o(174564);
-      return i;
-    case 2: 
-    case 3: 
-    case 5: 
-      ((efd)localObject1).KSV = this.username;
-      ((efd)localObject1).jfi = this.appId;
-      ((efd)localObject1).KWb = this.actionType;
-      ((efd)localObject1).xKD.addAll((Collection)this.jzm);
-      if (((CharSequence)this.jzp).length() > 0) {}
-      while (i != 0)
+    }
+    label303:
+    do
+    {
+      do
       {
-        ((efd)localObject1).Nff = this.jzp;
-        break;
-        i = 0;
+        localObject1 = this.moT;
+        if (localObject1 == null) {
+          p.iCn();
+        }
+        i = parama.a((a.c)localObject1, (a.b)this, (a)this);
+        AppMethodBeat.o(174564);
+        return i;
+        ((epe)localObject1).RTS = this.username;
+        ((epe)localObject1).lVG = this.appId;
+        ((epe)localObject1).RXp = this.actionType;
+        ((epe)localObject1).COK.addAll((Collection)this.moS);
+        if (((CharSequence)this.moV).length() > 0) {}
+        while (i != 0)
+        {
+          ((epe)localObject1).UrI = this.moV;
+          break;
+          i = 0;
+        }
+        ((epe)localObject1).RTS = this.username;
+        ((epe)localObject1).lVG = this.appId;
+        ((epe)localObject1).RXp = this.actionType;
+        ((epe)localObject1).RUc = 1;
+        if (!this.mnS) {
+          break;
+        }
+        i = 1;
+        ((epe)localObject1).Urz = i;
+        ((epe)localObject1).COK.addAll((Collection)this.moS);
+      } while (this.actionType != 6);
+      ((epe)localObject1).Tkb = new com.tencent.mm.cd.b(this.moY);
+      ((epe)localObject1).UrJ = new dmw();
+      localObject2 = this.moW;
+    } while (localObject2 == null);
+    ((epe)localObject1).UrJ.TUd = ((SubscribeMsgRequestDialogUiData)localObject2).mnx;
+    ((epe)localObject1).UrJ.jUk = ((SubscribeMsgRequestDialogUiData)localObject2).opType;
+    Object localObject2 = ((SubscribeMsgRequestDialogUiData)localObject2).mny.iterator();
+    label403:
+    LinkedList localLinkedList;
+    eph localeph;
+    if (((Iterator)localObject2).hasNext())
+    {
+      SubscribeMsgRequestDialogUiData.ItemUiData localItemUiData = (SubscribeMsgRequestDialogUiData.ItemUiData)((Iterator)localObject2).next();
+      localLinkedList = ((epe)localObject1).UrJ.TUe;
+      localeph = new eph();
+      localeph.TBB = localItemUiData.lnb;
+      localeph.Urx = localItemUiData.mnG;
+      if (!localItemUiData.mnH) {
+        break label495;
       }
     }
-    ((efd)localObject1).KSV = this.username;
-    ((efd)localObject1).jfi = this.appId;
-    ((efd)localObject1).KWb = this.actionType;
-    ((efd)localObject1).KTf = 1;
-    if (this.jyo) {}
+    label495:
     for (i = 1;; i = 0)
     {
-      ((efd)localObject1).NeZ = i;
-      ((efd)localObject1).xKD.addAll((Collection)this.jzm);
-      if (this.actionType != 6) {
-        break;
-      }
-      ((efd)localObject1).Buffer = new com.tencent.mm.bw.b(this.jzs);
-      ((efd)localObject1).Nfg = new ddg();
-      Object localObject2 = this.jzq;
-      if (localObject2 == null) {
-        break;
-      }
-      ((efd)localObject1).Nfg.MIp = ((SubscribeMsgRequestDialogUiData)localObject2).jxU;
-      ((efd)localObject1).Nfg.him = ((SubscribeMsgRequestDialogUiData)localObject2).opType;
-      localObject2 = ((SubscribeMsgRequestDialogUiData)localObject2).jxV.iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        SubscribeMsgRequestDialogUiData.ItemUiData localItemUiData = (SubscribeMsgRequestDialogUiData.ItemUiData)((Iterator)localObject2).next();
-        LinkedList localLinkedList = ((efd)localObject1).Nfg.MIq;
-        efg localefg = new efg();
-        localefg.Mqy = localItemUiData.ixM;
-        localefg.NeX = localItemUiData.jyd;
-        localLinkedList.add(localefg);
-      }
+      localeph.UrF = i;
+      localLinkedList.add(localeph);
+      break label403;
       break;
+      i = 0;
+      break label303;
     }
   }
   
-  public final void au(byte[] paramArrayOfByte)
+  public final void aF(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(149567);
-    p.h(paramArrayOfByte, "<set-?>");
-    this.jzs = paramArrayOfByte;
+    p.k(paramArrayOfByte, "<set-?>");
+    this.moY = paramArrayOfByte;
     AppMethodBeat.o(149567);
   }
   
@@ -186,7 +196,7 @@ public final class b
     Object localObject2;
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      localObject2 = this.jzo;
+      localObject2 = this.moU;
       if (localObject2 != null)
       {
         localObject1 = paramString;
@@ -200,19 +210,19 @@ public final class b
       AppMethodBeat.o(174565);
       return;
     }
-    Object localObject1 = this.jzn;
+    Object localObject1 = this.moT;
     if (localObject1 == null) {
-      p.hyc();
+      p.iCn();
     }
-    localObject1 = ((a.c)localObject1).bji();
+    localObject1 = ((a.c)localObject1).bsJ();
     if (localObject1 == null)
     {
       paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.SubscribeMsgResp");
       AppMethodBeat.o(174565);
       throw paramString;
     }
-    efe localefe = (efe)localObject1;
-    c localc = this.jzo;
+    epf localepf = (epf)localObject1;
+    c localc = this.moU;
     ArrayList localArrayList;
     Object localObject3;
     Object localObject4;
@@ -224,31 +234,31 @@ public final class b
       if (paramString == null) {
         localObject1 = "";
       }
-      paramString = SubscribeMsgRequestResult.jyx;
-      p.h(localefe, "response");
+      paramString = SubscribeMsgRequestResult.mob;
+      p.k(localepf, "response");
       localArrayList = new ArrayList();
-      paramString = localefe.xJg;
-      p.g(paramString, "response.InfoList");
+      paramString = localepf.CNn;
+      p.j(paramString, "response.InfoList");
       paramString = ((Iterable)paramString).iterator();
       while (paramString.hasNext())
       {
-        localObject2 = (efc)paramString.next();
+        localObject2 = (epd)paramString.next();
         localObject3 = new ArrayList();
-        localObject4 = ((efc)localObject2).KZi;
-        p.g(localObject4, "it.KeyWordList");
+        localObject4 = ((epd)localObject2).Sar;
+        p.j(localObject4, "it.KeyWordList");
         localObject4 = ((Iterable)localObject4).iterator();
         while (((Iterator)localObject4).hasNext())
         {
-          localObject5 = (cgj)((Iterator)localObject4).next();
-          ((ArrayList)localObject3).add(new o(((cgj)localObject5).Name, ((cgj)localObject5).Cyk));
+          localObject5 = (cpf)((Iterator)localObject4).next();
+          ((ArrayList)localObject3).add(new o(((cpf)localObject5).CMP, ((cpf)localObject5).Izj));
         }
-        p.g(localObject2, "it");
-        localArrayList.add(new SubscribeMsgTmpItem((efc)localObject2, (ArrayList)localObject3));
+        p.j(localObject2, "it");
+        localArrayList.add(new SubscribeMsgTmpItem((epd)localObject2, (ArrayList)localObject3));
       }
-      if (localefe.Nfn == 1)
+      if (localepf.UrQ == 1)
       {
         bool1 = true;
-        paramString = localefe.Nfl;
+        paramString = localepf.UrO;
         if (paramString != null) {
           break label1127;
         }
@@ -267,13 +277,13 @@ public final class b
     label1127:
     for (;;)
     {
-      localObject2 = localefe.Nfk;
+      localObject2 = localepf.UrN;
       if (localObject2 == null) {
         localObject2 = "";
       }
       for (;;)
       {
-        int j = localefe.Nfo;
+        int j = localepf.UrR;
         boolean bool2;
         label374:
         boolean bool3;
@@ -285,17 +295,17 @@ public final class b
         boolean bool4;
         boolean bool5;
         int k;
-        if (localefe.Nfm == 1)
+        if (localepf.UrP == 1)
         {
           bool2 = true;
-          if (localefe.NfA != 1) {
+          if (localepf.Usd != 1) {
             break label1085;
           }
           bool3 = true;
-          localObject3 = localefe.Nfj;
+          localObject3 = localepf.UrM;
           if (localObject3 != null)
           {
-            localObject4 = ((efh)localObject3).jyH;
+            localObject4 = ((epi)localObject3).mon;
             localObject3 = localObject4;
             if (localObject4 != null) {}
           }
@@ -303,10 +313,10 @@ public final class b
           {
             localObject3 = "";
           }
-          localObject4 = localefe.Nfj;
+          localObject4 = localepf.UrM;
           if (localObject4 != null)
           {
-            localObject5 = ((efh)localObject4).jyI;
+            localObject5 = ((epi)localObject4).moo;
             localObject4 = localObject5;
             if (localObject5 != null) {}
           }
@@ -314,10 +324,10 @@ public final class b
           {
             localObject4 = "";
           }
-          localObject5 = localefe.Nfj;
+          localObject5 = localepf.UrM;
           if (localObject5 != null)
           {
-            localObject6 = ((efh)localObject5).jyJ;
+            localObject6 = ((epi)localObject5).mop;
             localObject5 = localObject6;
             if (localObject6 != null) {}
           }
@@ -325,10 +335,10 @@ public final class b
           {
             localObject5 = "";
           }
-          localObject6 = localefe.Nfj;
+          localObject6 = localepf.UrM;
           if (localObject6 != null)
           {
-            localObject7 = ((efh)localObject6).jyK;
+            localObject7 = ((epi)localObject6).moq;
             localObject6 = localObject7;
             if (localObject7 != null) {}
           }
@@ -336,10 +346,10 @@ public final class b
           {
             localObject6 = "";
           }
-          localObject7 = localefe.Nfj;
+          localObject7 = localepf.UrM;
           if (localObject7 != null)
           {
-            localObject8 = ((efh)localObject7).jyL;
+            localObject8 = ((epi)localObject7).mor;
             localObject7 = localObject8;
             if (localObject8 != null) {}
           }
@@ -347,10 +357,10 @@ public final class b
           {
             localObject7 = "";
           }
-          localObject8 = localefe.Nfj;
+          localObject8 = localepf.UrM;
           if (localObject8 != null)
           {
-            localObject9 = ((efh)localObject8).jyM;
+            localObject9 = ((epi)localObject8).mos;
             localObject8 = localObject9;
             if (localObject9 != null) {}
           }
@@ -358,10 +368,10 @@ public final class b
           {
             localObject8 = "";
           }
-          localObject9 = localefe.Nfj;
+          localObject9 = localepf.UrM;
           if (localObject9 != null)
           {
-            localObject10 = ((efh)localObject9).jyN;
+            localObject10 = ((epi)localObject9).mot;
             localObject9 = localObject10;
             if (localObject10 != null) {}
           }
@@ -369,10 +379,10 @@ public final class b
           {
             localObject9 = "";
           }
-          localObject10 = localefe.Nfj;
+          localObject10 = localepf.UrM;
           if (localObject10 != null)
           {
-            localObject11 = ((efh)localObject10).jyO;
+            localObject11 = ((epi)localObject10).mou;
             localObject10 = localObject11;
             if (localObject11 != null) {}
           }
@@ -380,10 +390,10 @@ public final class b
           {
             localObject10 = "";
           }
-          Object localObject11 = localefe.Nfj;
+          Object localObject11 = localepf.UrM;
           if (localObject11 != null)
           {
-            localObject12 = ((efh)localObject11).jyP;
+            localObject12 = ((epi)localObject11).mov;
             localObject11 = localObject12;
             if (localObject12 != null) {}
           }
@@ -391,10 +401,10 @@ public final class b
           {
             localObject11 = "";
           }
-          Object localObject12 = localefe.Nfj;
+          Object localObject12 = localepf.UrM;
           if (localObject12 != null)
           {
-            localObject13 = ((efh)localObject12).jyQ;
+            localObject13 = ((epi)localObject12).mow;
             localObject12 = localObject13;
             if (localObject13 != null) {}
           }
@@ -402,10 +412,10 @@ public final class b
           {
             localObject12 = "";
           }
-          Object localObject13 = localefe.Nfj;
+          Object localObject13 = localepf.UrM;
           if (localObject13 != null)
           {
-            String str = ((efh)localObject13).jyR;
+            String str = ((epi)localObject13).mox;
             localObject13 = str;
             if (str != null) {}
           }
@@ -414,31 +424,31 @@ public final class b
             localObject13 = "";
           }
           localObject9 = new WordingInfo((String)localObject3, (String)localObject4, (String)localObject5, (String)localObject6, (String)localObject7, (String)localObject8, (String)localObject9, (String)localObject10, (String)localObject11, (String)localObject12, (String)localObject13);
-          if (localefe.NeZ != 1) {
+          if (localepf.Urz != 1) {
             break label1091;
           }
           bool4 = true;
-          if (localefe.Nfs != 1) {
+          if (localepf.UrV != 1) {
             break label1097;
           }
           bool5 = true;
-          localObject3 = localefe.Buffer;
+          localObject3 = localepf.Tkb;
           if (localObject3 == null) {
             break label1103;
           }
-          localObject3 = ((com.tencent.mm.bw.b)localObject3).toByteArray();
-          k = localefe.Nfy;
-          localObject4 = localefe.Nfz;
+          localObject3 = ((com.tencent.mm.cd.b)localObject3).toByteArray();
+          k = localepf.Usb;
+          localObject4 = localepf.Usc;
           if (localObject4 == null) {
             break label1111;
           }
         }
-        for (int i = ((eff)localObject4).MmV;; i = -1)
+        for (int i = ((epg)localObject4).TxQ;; i = -1)
         {
-          localObject4 = localefe.Nfz;
+          localObject4 = localepf.Usc;
           if (localObject4 != null)
           {
-            localObject5 = ((eff)localObject4).Mdz;
+            localObject5 = ((epg)localObject4).Tna;
             localObject4 = localObject5;
             if (localObject5 != null) {}
           }
@@ -446,10 +456,10 @@ public final class b
           {
             localObject4 = "";
           }
-          localObject5 = localefe.Nfz;
+          localObject5 = localepf.Usc;
           if (localObject5 != null)
           {
-            localObject6 = ((eff)localObject5).NfB;
+            localObject6 = ((epg)localObject5).Use;
             localObject5 = localObject6;
             if (localObject6 != null) {}
           }
@@ -458,24 +468,24 @@ public final class b
             localObject5 = "";
           }
           localObject10 = new ShowInfo(i, (String)localObject4, (String)localObject5);
-          localObject5 = localefe.Nfw;
+          localObject5 = localepf.UrZ;
           localObject4 = localObject5;
           if (localObject5 == null) {
             localObject4 = "";
           }
-          localObject6 = localefe.Nfx;
+          localObject6 = localepf.Usa;
           localObject5 = localObject6;
           if (localObject6 == null) {
             localObject5 = "";
           }
-          i = localefe.Nft;
-          localObject7 = localefe.Nfu;
+          i = localepf.UrW;
+          localObject7 = localepf.UrX;
           localObject6 = localObject7;
           if (localObject7 == null) {
             localObject6 = "";
           }
-          boolean bool6 = localefe.Nfv;
-          localObject8 = localefe.Nfi;
+          boolean bool6 = localepf.UrY;
+          localObject8 = localepf.UrL;
           localObject7 = localObject8;
           if (localObject8 == null) {
             localObject7 = "";
@@ -504,39 +514,39 @@ public final class b
   
   public final void setAppId(String paramString)
   {
-    AppMethodBeat.i(194265);
-    p.h(paramString, "<set-?>");
+    AppMethodBeat.i(263637);
+    p.k(paramString, "<set-?>");
     this.appId = paramString;
-    AppMethodBeat.o(194265);
+    AppMethodBeat.o(263637);
   }
   
   public final void setUsername(String paramString)
   {
-    AppMethodBeat.i(194264);
-    p.h(paramString, "<set-?>");
+    AppMethodBeat.i(263636);
+    p.k(paramString, "<set-?>");
     this.username = paramString;
-    AppMethodBeat.o(194264);
+    AppMethodBeat.o(263636);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$Builder;", "", "()V", "Companion", "wxbiz-msgsubscription-sdk_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$Builder;", "", "()V", "Companion", "wxbiz-msgsubscription-sdk_release"})
   public static final class a
   {
-    public static final a jzu;
+    public static final a mpa;
     
     static
     {
       AppMethodBeat.i(149566);
-      jzu = new a((byte)0);
+      mpa = new a((byte)0);
       AppMethodBeat.o(149566);
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$Builder$Companion;", "", "()V", "buildGetAllSubscribeStatusReq", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg;", "username", "", "callback", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "buildGetSubscribeStatus", "appId", "subscribeUrl", "templateIds", "", "extInfo", "buildGetSubscribeStatusReq", "buildGetSubscribeUIStatusReq", "buildSubscribeReq", "templates", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "isOpened", "", "buildSubscribeReqForDialogRequest", "byteArray", "", "uIData", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData;", "innerBuildSubscribeRequest", "action", "", "processExtInfo", "", "req", "wxbiz-msgsubscription-sdk_release"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$Builder$Companion;", "", "()V", "buildGetAllSubscribeStatusReq", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg;", "username", "", "callback", "Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "buildGetSubscribeStatus", "appId", "subscribeUrl", "templateIds", "", "extInfo", "buildGetSubscribeStatusReq", "buildGetSubscribeUIStatusReq", "buildSubscribeReq", "templates", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "isOpened", "", "buildSubscribeReqForDialogRequest", "byteArray", "", "uIData", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData;", "innerBuildSubscribeRequest", "action", "", "processExtInfo", "", "req", "wxbiz-msgsubscription-sdk_release"})
     public static final class a
     {
       public static b a(String paramString, b.c paramc)
       {
         AppMethodBeat.i(149564);
-        p.h(paramString, "username");
+        p.k(paramString, "username");
         paramString = new b(paramString, 3);
         b.a(paramString, paramc);
         AppMethodBeat.o(149564);
@@ -545,12 +555,12 @@ public final class b
       
       public static b a(String paramString1, String paramString2, String paramString3, List<String> paramList, String paramString4, b.c paramc)
       {
-        AppMethodBeat.i(194260);
-        p.h(paramString1, "username");
-        p.h(paramString2, "appId");
-        p.h(paramString3, "subscribeUrl");
-        p.h(paramList, "templateIds");
-        p.h(paramString4, "extInfo");
+        AppMethodBeat.i(263584);
+        p.k(paramString1, "username");
+        p.k(paramString2, "appId");
+        p.k(paramString3, "subscribeUrl");
+        p.k(paramList, "templateIds");
+        p.k(paramString4, "extInfo");
         paramString1 = new b(paramString1, paramString2, 2);
         a(paramString4, paramString1);
         b.a(paramString1, paramc);
@@ -560,34 +570,34 @@ public final class b
         {
           paramString3 = (String)paramString2.next();
           paramList = b.a(paramString1);
-          paramString4 = new efc();
-          paramString4.Mqy = paramString3;
+          paramString4 = new epd();
+          paramString4.TBB = paramString3;
           paramList.add(paramString4);
         }
-        AppMethodBeat.o(194260);
+        AppMethodBeat.o(263584);
         return paramString1;
       }
       
       public static b a(String paramString1, String paramString2, List<SubscribeMsgTmpItem> paramList, String paramString3, b.c paramc, boolean paramBoolean, byte[] paramArrayOfByte, SubscribeMsgRequestDialogUiData paramSubscribeMsgRequestDialogUiData)
       {
-        AppMethodBeat.i(194259);
-        p.h(paramString1, "username");
-        p.h(paramString2, "appId");
-        p.h(paramList, "templates");
-        p.h(paramString3, "extInfo");
-        p.h(paramArrayOfByte, "byteArray");
+        AppMethodBeat.i(263582);
+        p.k(paramString1, "username");
+        p.k(paramString2, "appId");
+        p.k(paramList, "templates");
+        p.k(paramString3, "extInfo");
+        p.k(paramArrayOfByte, "byteArray");
         paramString1 = a(paramString1, paramString2, paramBoolean, paramc, paramList, 6, paramArrayOfByte, paramSubscribeMsgRequestDialogUiData, paramString3);
-        AppMethodBeat.o(194259);
+        AppMethodBeat.o(263582);
         return paramString1;
       }
       
       private static b a(String paramString1, String paramString2, boolean paramBoolean, b.c paramc, List<SubscribeMsgTmpItem> paramList, int paramInt, byte[] paramArrayOfByte, SubscribeMsgRequestDialogUiData paramSubscribeMsgRequestDialogUiData, String paramString3)
       {
-        AppMethodBeat.i(194261);
+        AppMethodBeat.i(263585);
         paramString1 = new b(paramString1, paramInt, paramBoolean);
         paramString1.setAppId(paramString2);
         b.a(paramString1, paramc);
-        paramString1.au(paramArrayOfByte);
+        paramString1.aF(paramArrayOfByte);
         b.a(paramString1, paramSubscribeMsgRequestDialogUiData);
         a(paramString3, paramString1);
         paramString2 = paramList.iterator();
@@ -595,25 +605,36 @@ public final class b
         {
           paramc = (SubscribeMsgTmpItem)paramString2.next();
           paramList = b.a(paramString1);
-          paramArrayOfByte = new efc();
-          paramArrayOfByte.Mqy = paramc.ixM;
-          paramArrayOfByte.NeU = paramc.jyz;
-          paramArrayOfByte.NeY = paramc.jyB;
-          if (paramc.VC) {}
+          paramArrayOfByte = new epd();
+          paramArrayOfByte.TBB = paramc.lnb;
+          paramArrayOfByte.Uru = paramc.mod;
+          paramArrayOfByte.Ury = paramc.mof;
+          if (paramc.mnH)
+          {
+            paramInt = 1;
+            label124:
+            paramArrayOfByte.UrF = paramInt;
+            if (!paramc.gZ) {
+              break label167;
+            }
+          }
+          label167:
           for (paramInt = 1;; paramInt = 0)
           {
-            paramArrayOfByte.NeZ = paramInt;
+            paramArrayOfByte.Urz = paramInt;
             paramList.add(paramArrayOfByte);
             break;
+            paramInt = 0;
+            break label124;
           }
         }
-        AppMethodBeat.o(194261);
+        AppMethodBeat.o(263585);
         return paramString1;
       }
       
       private static void a(String paramString, b paramb)
       {
-        AppMethodBeat.i(194263);
+        AppMethodBeat.i(263587);
         int i;
         if (((CharSequence)paramString).length() > 0) {
           i = 1;
@@ -628,10 +649,10 @@ public final class b
               Object localObject = new JSONObject(paramString);
               b.a(paramb, ((JSONObject)localObject).optInt("scene"));
               String str = ((JSONObject)localObject).optString("sessionid");
-              p.g(str, "ext.optString(\"sessionid\")");
+              p.j(str, "ext.optString(\"sessionid\")");
               b.c(paramb, str);
               localObject = ((JSONObject)localObject).optString("username");
-              p.g(localObject, "extUsername");
+              p.j(localObject, "extUsername");
               if (((CharSequence)localObject).length() > 0) {}
               for (i = 1;; i = 0)
               {
@@ -639,12 +660,12 @@ public final class b
                   paramb.setUsername((String)localObject);
                 }
                 Log.i("NetSceneSubscribeMsg", "alvinluo parseExtInfo scene: %s, sessionId: %s, username: %s, extInfo: %s", new Object[] { Integer.valueOf(b.b(paramb)), b.c(paramb), paramb.username, paramString });
-                AppMethodBeat.o(194263);
+                AppMethodBeat.o(263587);
                 return;
                 i = 0;
                 break;
               }
-              AppMethodBeat.o(194263);
+              AppMethodBeat.o(263587);
             }
             catch (Exception paramString)
             {
@@ -656,7 +677,7 @@ public final class b
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "wxbiz-msgsubscription-sdk_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/msgsubscription/cgi/NetSceneSubscribeMsg$IOnNetSceneSubscribeEndCallback;", "", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "wxbiz-msgsubscription-sdk_release"})
   public static abstract interface c
   {
     public abstract void a(int paramInt1, int paramInt2, String paramString, SubscribeMsgRequestResult paramSubscribeMsgRequestResult);

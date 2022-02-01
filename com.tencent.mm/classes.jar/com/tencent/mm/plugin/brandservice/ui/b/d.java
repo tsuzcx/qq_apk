@@ -11,25 +11,33 @@ import kotlin.g.a.a;
 import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/util/BizTimeLineViewUtil;", "", "()V", "bizTimeLineTitleBold", "", "getBizTimeLineTitleBold", "()Z", "bizTimeLineTitleBold$delegate", "Lkotlin/Lazy;", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "onlyShowStatData", "getOnlyShowStatData", "onlyShowStatData$delegate", "setTextViewBold", "", "textView", "Landroid/widget/TextView;", "width", "", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "plugin-brandservice_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/util/BizTimeLineViewUtil;", "", "()V", "bizTimeLineTitleBold", "", "getBizTimeLineTitleBold", "()Z", "bizTimeLineTitleBold$delegate", "Lkotlin/Lazy;", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "onlyShowStatData", "getOnlyShowStatData", "onlyShowStatData$delegate", "setTextViewBold", "", "textView", "Landroid/widget/TextView;", "width", "", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "plugin-brandservice_release"})
 public final class d
 {
-  private static final f iBW;
-  public static final f pMw;
-  private static final f pMx;
-  public static final d pMy;
+  private static final f lrB;
+  public static final f sTu;
+  private static final f sTv;
+  public static final d sTw;
   
   static
   {
     AppMethodBeat.i(7364);
-    pMy = new d();
-    iBW = g.ah((a)d.b.pMA);
-    pMw = g.ah((a)d.c.pMB);
-    pMx = g.ah((a)a.pMz);
+    sTw = new d();
+    lrB = g.ar((a)d.b.sTy);
+    sTu = g.ar((a)d.c.sTz);
+    sTv = g.ar((a)a.sTx);
     AppMethodBeat.o(7364);
   }
   
-  public static void c(MMNeat7extView paramMMNeat7extView)
+  public static boolean cEs()
+  {
+    AppMethodBeat.i(257334);
+    boolean bool = ((Boolean)sTv.getValue()).booleanValue();
+    AppMethodBeat.o(257334);
+    return bool;
+  }
+  
+  public static void e(MMNeat7extView paramMMNeat7extView)
   {
     AppMethodBeat.i(7362);
     if (paramMMNeat7extView != null)
@@ -52,15 +60,7 @@ public final class d
     AppMethodBeat.o(7362);
   }
   
-  public static boolean crj()
-  {
-    AppMethodBeat.i(195998);
-    boolean bool = ((Boolean)pMx.getValue()).booleanValue();
-    AppMethodBeat.o(195998);
-    return bool;
-  }
-  
-  public static void i(TextView paramTextView)
+  public static void l(TextView paramTextView)
   {
     AppMethodBeat.i(7363);
     if (paramTextView != null)
@@ -83,18 +83,18 @@ public final class d
     AppMethodBeat.o(7363);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class a
     extends q
     implements a<Boolean>
   {
-    public static final a pMz;
+    public static final a sTx;
     
     static
     {
-      AppMethodBeat.i(195993);
-      pMz = new a();
-      AppMethodBeat.o(195993);
+      AppMethodBeat.i(265209);
+      sTx = new a();
+      AppMethodBeat.o(265209);
     }
     
     a()
@@ -105,7 +105,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.b.d
  * JD-Core Version:    0.7.0.1
  */

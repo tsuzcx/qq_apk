@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.appbrand.appcache.predownload.e;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.cd.b;
 import com.tencent.mm.plugin.appbrand.ab.c;
-import com.tencent.mm.protocal.protobuf.che;
-import com.tencent.mm.protocal.protobuf.ys;
+import com.tencent.mm.protocal.protobuf.cqa;
+import com.tencent.mm.protocal.protobuf.yw;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem;
@@ -17,18 +17,18 @@ import java.util.List;
 public class e
   extends c<f>
 {
-  public static final String[] iBh;
+  public static final String[] lqL;
   
   static
   {
     AppMethodBeat.i(44442);
-    iBh = new String[] { MAutoStorage.getCreateSQLs(f.iBg, "PredownloadIssueLaunchWxaAppResponse") };
+    lqL = new String[] { MAutoStorage.getCreateSQLs(f.lqK, "PredownloadIssueLaunchWxaAppResponse") };
     AppMethodBeat.o(44442);
   }
   
   public e(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, f.iBg, "PredownloadIssueLaunchWxaAppResponse", f.INDEX_CREATE);
+    super(paramISQLiteDatabase, f.lqK, "PredownloadIssueLaunchWxaAppResponse", f.INDEX_CREATE);
   }
   
   public final boolean a(byte[] paramArrayOfByte, String paramString, List<Integer> paramList, long paramLong1, long paramLong2)
@@ -70,7 +70,7 @@ public class e
     return bool1;
   }
   
-  public final Pair<che, Long> bd(String paramString, int paramInt)
+  public final Pair<cqa, Long> bw(String paramString, int paramInt)
   {
     AppMethodBeat.i(44441);
     try
@@ -84,11 +84,11 @@ public class e
         Log.i("MicroMsg.AppBrand.Predownload.DuplicateLaunchWxaAppCacheStorage", "found info with appId(%s) scene(%d), [%d, %d]", new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(((f)localObject).field_startTime), Long.valueOf(((f)localObject).field_endTime) });
         if ((((f)localObject).field_startTime <= l) && (l <= ((f)localObject).field_endTime))
         {
-          che localche = new che();
-          localche.parseFrom(((f)localObject).field_launchProtoBlob);
-          if (localche.MmA.LjS.zy.length > 0)
+          cqa localcqa = new cqa();
+          localcqa.parseFrom(((f)localObject).field_launchProtoBlob);
+          if (localcqa.Txv.SkZ.UH.length > 0)
           {
-            localObject = Pair.create(localche, Long.valueOf(((f)localObject).field_reportId));
+            localObject = Pair.create(localcqa, Long.valueOf(((f)localObject).field_reportId));
             AppMethodBeat.o(44441);
             return localObject;
           }
@@ -110,7 +110,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.predownload.e.e
  * JD-Core Version:    0.7.0.1
  */

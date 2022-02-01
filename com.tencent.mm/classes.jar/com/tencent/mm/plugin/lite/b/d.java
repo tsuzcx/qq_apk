@@ -6,21 +6,21 @@ import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.liteapp.storage.WxaLiteAppInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.je;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.a.ju;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.lite.LiteAppTaskPreloadReceiver;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.base.u;
+import com.tencent.mm.ui.base.w;
 
 public final class d
-  extends IListener<je>
+  extends IListener<ju>
 {
   public d()
   {
-    AppMethodBeat.i(198858);
-    this.__eventId = je.class.getName().hashCode();
-    AppMethodBeat.o(198858);
+    AppMethodBeat.i(234323);
+    this.__eventId = ju.class.getName().hashCode();
+    AppMethodBeat.o(234323);
   }
 }
 

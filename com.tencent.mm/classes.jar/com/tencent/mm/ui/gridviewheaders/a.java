@@ -2,15 +2,16 @@ package com.tencent.mm.ui.gridviewheaders;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.k;
 import java.util.Calendar;
 import java.util.Date;
 
 public class a
 {
-  private static a Qkg;
-  private long Qkd;
-  private long Qke;
-  private long Qkf;
+  private static a XHC;
+  private long XHA;
+  private long XHB;
+  private long XHz;
   
   private a()
   {
@@ -21,19 +22,19 @@ public class a
     localCalendar.set(12, 0);
     localCalendar.set(13, 0);
     localCalendar.set(14, 0);
-    this.Qke = localCalendar.getTimeInMillis();
+    this.XHA = localCalendar.getTimeInMillis();
     localCalendar = Calendar.getInstance();
     localCalendar.set(5, 1);
     localCalendar.set(11, 0);
     localCalendar.set(12, 0);
     localCalendar.set(13, 0);
     localCalendar.set(14, 0);
-    this.Qkf = localCalendar.getTimeInMillis();
-    this.Qkd = Calendar.getInstance().getTimeInMillis();
+    this.XHB = localCalendar.getTimeInMillis();
+    this.XHz = Calendar.getInstance().getTimeInMillis();
     AppMethodBeat.o(142754);
   }
   
-  public static long NX(long paramLong)
+  public static long Wk(long paramLong)
   {
     AppMethodBeat.i(142756);
     Calendar localCalendar = Calendar.getInstance();
@@ -56,14 +57,14 @@ public class a
     return l;
   }
   
-  public static a gWr()
+  public static a hWZ()
   {
     AppMethodBeat.i(142753);
-    if (Qkg == null) {}
+    if (XHC == null) {}
     try
     {
-      Qkg = new a();
-      a locala = Qkg;
+      XHC = new a();
+      a locala = XHC;
       AppMethodBeat.o(142753);
       return locala;
     }
@@ -76,15 +77,15 @@ public class a
   public final String a(Date paramDate, Context paramContext)
   {
     AppMethodBeat.i(142758);
-    if (paramDate.getTime() >= this.Qke)
+    if (paramDate.getTime() >= this.XHA)
     {
-      paramDate = paramContext.getString(2131766755);
+      paramDate = paramContext.getString(a.k.this_week);
       AppMethodBeat.o(142758);
       return paramDate;
     }
-    if (paramDate.getTime() >= this.Qkf)
+    if (paramDate.getTime() >= this.XHB)
     {
-      paramDate = paramContext.getString(2131766754);
+      paramDate = paramContext.getString(a.k.this_month);
       AppMethodBeat.o(142758);
       return paramDate;
     }
@@ -96,12 +97,12 @@ public class a
   public final long b(Date paramDate)
   {
     AppMethodBeat.i(142755);
-    if (paramDate.getTime() >= this.Qke)
+    if (paramDate.getTime() >= this.XHA)
     {
       AppMethodBeat.o(142755);
       return 9223372036854775807L;
     }
-    if (paramDate.getTime() >= this.Qkf)
+    if (paramDate.getTime() >= this.XHB)
     {
       AppMethodBeat.o(142755);
       return 9223372036854775806L;
@@ -113,7 +114,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.gridviewheaders.a
  * JD-Core Version:    0.7.0.1
  */

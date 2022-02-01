@@ -2,87 +2,72 @@ package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import g.a.a.b;
-import java.util.LinkedList;
 
 public final class ajm
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public SKBuiltinBuffer_t KPW;
+  public String RUd;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152540);
+    AppMethodBeat.i(104761);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.KPW == null)
+      if (this.RUd == null)
       {
-        paramVarArgs = new b("Not all required fields were included: RandomEncryKey");
-        AppMethodBeat.o(152540);
+        paramVarArgs = new b("Not all required fields were included: Text");
+        AppMethodBeat.o(104761);
         throw paramVarArgs;
       }
-      if (this.KPW != null)
-      {
-        paramVarArgs.ni(1, this.KPW.computeSize());
-        this.KPW.writeFields(paramVarArgs);
+      if (this.RUd != null) {
+        paramVarArgs.f(1, this.RUd);
       }
-      AppMethodBeat.o(152540);
+      AppMethodBeat.o(104761);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.KPW == null) {
-        break label358;
+      if (this.RUd == null) {
+        break label261;
       }
     }
-    label358:
-    for (paramInt = g.a.a.a.nh(1, this.KPW.computeSize()) + 0;; paramInt = 0)
+    label261:
+    for (paramInt = g.a.a.b.b.a.g(1, this.RUd) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(152540);
+      AppMethodBeat.o(104761);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.KPW == null)
+        if (this.RUd == null)
         {
-          paramVarArgs = new b("Not all required fields were included: RandomEncryKey");
-          AppMethodBeat.o(152540);
+          paramVarArgs = new b("Not all required fields were included: Text");
+          AppMethodBeat.o(104761);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(152540);
+        AppMethodBeat.o(104761);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         ajm localajm = (ajm)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(152540);
+          AppMethodBeat.o(104761);
           return -1;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-        int i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new SKBuiltinBuffer_t();
-          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-          localajm.KPW = ((SKBuiltinBuffer_t)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(152540);
+        localajm.RUd = locala.abFh.readString();
+        AppMethodBeat.o(104761);
         return 0;
       }
-      AppMethodBeat.o(152540);
+      AppMethodBeat.o(104761);
       return -1;
     }
   }

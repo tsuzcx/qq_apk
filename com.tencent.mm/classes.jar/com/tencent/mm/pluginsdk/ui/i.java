@@ -4,13 +4,13 @@ import android.graphics.Bitmap;
 
 public abstract interface i
 {
+  public abstract boolean a(double paramDouble, boolean paramBoolean);
+  
   public abstract boolean aO(float paramFloat);
   
   public abstract void c(boolean paramBoolean, String paramString, int paramInt);
   
-  public abstract boolean c(double paramDouble, boolean paramBoolean);
-  
-  public abstract void dFl();
+  public abstract void egX();
   
   public abstract int getCacheTimeSec();
   
@@ -56,26 +56,14 @@ public abstract interface i
   
   public abstract void stop();
   
-  public static abstract interface a
-  {
-    public abstract void aO(String paramString, boolean paramBoolean);
-  }
-  
-  public static abstract interface c
-  {
-    public abstract void DX(String paramString);
-    
-    public abstract void yU(long paramLong);
-  }
-  
   public static abstract interface d
   {
-    public abstract void fdO();
+    public abstract void fKt();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.i
  * JD-Core Version:    0.7.0.1
  */

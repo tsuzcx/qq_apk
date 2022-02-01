@@ -1,42 +1,42 @@
 package com.tencent.mm.plugin.vlog.model.panel;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.b.b.ab;
+import com.tencent.mm.emoji.b.b.ad;
 import com.tencent.mm.emoji.b.b.n;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/model/panel/PagEmojiPanelDataProvider;", "Lcom/tencent/mm/emoji/model/panel/ExternalPanelDataProvider;", "()V", "createGroupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "createGroupModel", "Lcom/tencent/mm/emoji/model/panel/PanelGroupModel;", "getGroupId", "", "plugin-vlog_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/panel/PagEmojiPanelDataProvider;", "Lcom/tencent/mm/emoji/model/panel/ExternalPanelDataProvider;", "()V", "createGroupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "createGroupModel", "Lcom/tencent/mm/emoji/model/panel/PanelGroupModel;", "getGroupId", "", "plugin-vlog_release"})
 public final class a
   implements n
 {
-  public final ab<?> avA()
+  public final String aCt()
   {
-    AppMethodBeat.i(190784);
-    ab localab = (ab)new c();
-    AppMethodBeat.o(190784);
-    return localab;
-  }
-  
-  public final String avy()
-  {
-    AppMethodBeat.i(190782);
-    String str = b.fCd();
-    AppMethodBeat.o(190782);
+    AppMethodBeat.i(225737);
+    String str = b.gub();
+    AppMethodBeat.o(225737);
     return str;
   }
   
-  public final EmojiGroupInfo avz()
+  public final EmojiGroupInfo aCu()
   {
-    AppMethodBeat.i(190783);
-    EmojiGroupInfo localEmojiGroupInfo = b.fCe();
-    AppMethodBeat.o(190783);
+    AppMethodBeat.i(225738);
+    EmojiGroupInfo localEmojiGroupInfo = b.guc();
+    AppMethodBeat.o(225738);
     return localEmojiGroupInfo;
+  }
+  
+  public final ad<?> aCv()
+  {
+    AppMethodBeat.i(225739);
+    ad localad = (ad)new c();
+    AppMethodBeat.o(225739);
+    return localad;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.panel.a
  * JD-Core Version:    0.7.0.1
  */

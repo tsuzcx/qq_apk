@@ -1,193 +1,267 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
+import android.util.Pair;
+import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.webview.f.g;
+import com.tencent.mm.plugin.webview.model.az;
+import com.tencent.mm.pluginsdk.ui.tools.ab;
+import com.tencent.mm.protocal.JsapiPermissionWrapper;
+import com.tencent.mm.sdk.platformtools.FileProviderHelper;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.xweb.WebView;
-import com.tencent.xweb.aa;
-import com.tencent.xweb.d;
-import com.tencent.xweb.internal.IWebStorage;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.vfs.q;
 
 public final class c
 {
-  public static final String Jas;
-  private static ArrayList<String> Jat;
+  private String PWM = null;
+  private String PWN = null;
+  private ValueCallback<Uri> PWO = null;
+  private ValueCallback<Uri[]> PWP = null;
+  public Pair<Intent, Integer> PWQ = null;
   
-  static
+  private Uri b(Activity paramActivity, int paramInt, Intent paramIntent)
   {
-    AppMethodBeat.i(79119);
-    Jas = Integer.toString(100028);
-    AppMethodBeat.o(79119);
-  }
-  
-  private static void a(String paramString, List<String> paramList, com.tencent.xweb.c paramc)
-  {
-    AppMethodBeat.i(79115);
-    if (!Util.isNullOrNil(paramList))
+    AppMethodBeat.i(175745);
+    if (paramInt != -1)
     {
-      String str = Uri.parse(paramString).getHost();
-      Object localObject = str.split("\\.");
-      if (localObject.length <= 1) {}
-      for (localObject = "";; localObject = localObject[(localObject.length - 2)] + "." + localObject[(localObject.length - 1)])
-      {
-        com.tencent.mm.sdk.platformtools.Log.d("MicroMsg.WebView.CookiesCleanup", "host(%s)", new Object[] { str });
-        com.tencent.mm.sdk.platformtools.Log.d("MicroMsg.WebView.CookiesCleanup", "domain(%s)", new Object[] { localObject });
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          str = (String)paramList.next();
-          if (!Util.isNullOrNil(str))
-          {
-            paramc.setCookie(paramString, str + "=");
-            paramc.setCookie(paramString, str + "=;path=/");
-            if (!Util.isNullOrNil((String)localObject)) {
-              paramc.setCookie((String)localObject, str + "=;domain=." + (String)localObject + ";path=/");
-            }
-          }
-        }
-      }
-    }
-    AppMethodBeat.o(79115);
-  }
-  
-  private static String aZo(String paramString)
-  {
-    AppMethodBeat.i(79118);
-    String str;
-    try
-    {
-      paramString = new URI(paramString);
-      str = paramString.getScheme();
-      if (Util.isNullOrNil(str))
-      {
-        AppMethodBeat.o(79118);
-        return null;
-      }
-    }
-    catch (Exception paramString)
-    {
-      com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.WebView.CookiesCleanup", "getOrigin fail %s", new Object[] { paramString.getMessage() });
-      AppMethodBeat.o(79118);
+      AppMethodBeat.o(175745);
       return null;
     }
-    StringBuilder localStringBuilder = new StringBuilder(str);
-    localStringBuilder.append("://");
-    localStringBuilder.append(paramString.getHost());
-    int i = paramString.getPort();
-    if ((i == -1) || ((str.equalsIgnoreCase("http")) && (i == 80)) || ((str.equalsIgnoreCase("https")) && (i == 443))) {}
-    for (i = 1;; i = 0)
-    {
-      if (i == 0)
-      {
-        localStringBuilder.append(":");
-        localStringBuilder.append(paramString.getPort());
-      }
-      paramString = localStringBuilder.toString();
-      AppMethodBeat.o(79118);
-      return paramString;
-    }
-  }
-  
-  public static void cN(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(79117);
-    if (!paramBoolean)
-    {
-      AppMethodBeat.o(79117);
-      return;
-    }
-    if (Jat == null) {
-      Jat = new ArrayList();
-    }
-    if (Jat.contains(paramString))
-    {
-      AppMethodBeat.o(79117);
-      return;
-    }
-    Jat.add(paramString);
-    AppMethodBeat.o(79117);
-  }
-  
-  public static void gdm()
-  {
-    AppMethodBeat.i(79116);
-    if (Jat != null) {}
-    for (int i = Jat.size();; i = 0)
-    {
-      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.WebView.CookiesCleanup", "clearWebViewData url list size %d", new Object[] { Integer.valueOf(i) });
-      if (!Util.isNullOrNil(Jat)) {
-        break;
-      }
-      AppMethodBeat.o(79116);
-      return;
-    }
-    Object localObject3;
+    Object localObject1 = null;
     Object localObject2;
-    if (!Util.isNullOrNil(Jat))
+    if (paramIntent != null)
     {
-      localObject1 = Jat;
-      localObject3 = com.tencent.xweb.c.hsp();
-      Iterator localIterator = ((List)localObject1).iterator();
-      if (localIterator.hasNext())
+      localObject1 = null;
+      if (paramIntent.getData() == null)
       {
-        String str1 = (String)localIterator.next();
-        com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.WebView.CookiesCleanup", "cookies cleanup: url(%s)", new Object[] { str1 });
-        localObject1 = ((com.tencent.xweb.c)localObject3).getCookie(str1);
-        if (Util.isNullOrNil((String)localObject1)) {
-          localObject1 = null;
+        localObject2 = paramIntent.getExtras();
+        if (localObject2 != null)
+        {
+          if (((Bundle)localObject2).getParcelable("android.intent.extra.STREAM") == null) {
+            break label101;
+          }
+          localObject1 = (Uri)((Bundle)localObject2).getParcelable("android.intent.extra.STREAM");
         }
+      }
+      while ((((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vzu, 1) == 1) && (localObject1 != null))
+      {
+        AppMethodBeat.o(175745);
+        return localObject1;
+        label101:
+        localObject1 = null;
+        continue;
+        localObject1 = paramIntent.getData();
+      }
+      localObject1 = Util.getFilePath(paramActivity, (Uri)localObject1);
+      Log.i("MicroMsg.WebViewUI.FileChooser", "get file path:[%s]", new Object[] { localObject1 });
+    }
+    if (!Util.isNullOrNil((String)localObject1))
+    {
+      localObject2 = ab.getMimeTypeByFilePath((String)localObject1);
+      Log.d("MicroMsg.WebViewUI.FileChooser", "get file mime type [%s]", new Object[] { localObject2 });
+      if (Util.isNullOrNil(this.PWM)) {
+        paramInt = 1;
+      }
+      while (paramInt == 0)
+      {
+        AppMethodBeat.o(175745);
+        return null;
+        String[] arrayOfString1 = this.PWM.split(",");
+        int i = arrayOfString1.length;
+        paramInt = 0;
         for (;;)
         {
-          a(str1, (List)localObject1, (com.tencent.xweb.c)localObject3);
-          break;
-          localObject1 = ((String)localObject1).split(";");
-          int j = localObject1.length;
-          i = 0;
-          while (i < j)
-          {
-            localObject1[i] = localObject1[i].trim();
-            i += 1;
+          if (paramInt >= i) {
+            break label384;
           }
-          localObject2 = new LinkedList();
-          j = localObject1.length;
-          i = 0;
-          while (i < j)
+          Object localObject3 = arrayOfString1[paramInt].replace(" ", "");
+          boolean bool;
+          if (Util.isNullOrNil((String)localObject3)) {
+            bool = true;
+          }
+          for (;;)
           {
-            String str2 = localObject1[i];
-            if ((!Util.isNullOrNil(str2)) && (str2.contains("="))) {
-              ((List)localObject2).add(str2.split("=")[0]);
+            if (!bool) {
+              break label377;
             }
-            i += 1;
+            paramInt = 1;
+            break;
+            if (!Util.isNullOrNil((String)localObject2))
+            {
+              if ((!((String)localObject3).contains("/")) || (!((String)localObject2).contains("/")))
+              {
+                bool = ((String)localObject3).equals(localObject2);
+                continue;
+              }
+              localObject3 = ((String)localObject3).split("/");
+              String[] arrayOfString2 = ((String)localObject2).split("/");
+              if (Util.nullAsNil(localObject3[0]).equals(arrayOfString2[0]))
+              {
+                if ((Util.nullAsNil(localObject3[1]).equals("*")) || (Util.nullAsNil(localObject3[1]).equals(arrayOfString2[1])))
+                {
+                  bool = true;
+                  continue;
+                }
+                bool = false;
+                continue;
+              }
+            }
+            bool = false;
           }
-          localObject1 = localObject2;
-          if (((List)localObject2).isEmpty()) {
-            localObject1 = null;
-          }
+          label377:
+          paramInt += 1;
         }
+        label384:
+        paramInt = 0;
       }
-      d.lA(MMApplicationContext.getContext());
-      d.sync();
-      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.WebView.CookiesCleanup", "clearHostCookies end");
+      if (paramIntent.getData() == null)
+      {
+        paramActivity = FileProviderHelper.getUriForFile(paramActivity, new q((String)localObject1));
+        AppMethodBeat.o(175745);
+        return paramActivity;
+      }
+      paramActivity = paramIntent.getData();
+      AppMethodBeat.o(175745);
+      return paramActivity;
     }
-    Object localObject1 = Jat.iterator();
-    while (((Iterator)localObject1).hasNext())
+    paramIntent = new q(az.getFilePath(this.PWN));
+    if (paramIntent.ifE())
     {
-      localObject2 = aZo((String)((Iterator)localObject1).next());
-      localObject3 = aa.hsY();
-      if (((aa)localObject3).SAd == null) {
-        org.xwalk.core.Log.e("WebStorage", "deleteOrigin failed webStg is null, cur core kind is " + WebView.getCurWebType());
-      } else {
-        ((aa)localObject3).SAd.deleteOrigin((String)localObject2);
-      }
+      paramActivity = FileProviderHelper.getUriForFile(paramActivity, paramIntent);
+      AppMethodBeat.o(175745);
+      return paramActivity;
     }
-    Jat.clear();
-    AppMethodBeat.o(79116);
+    AppMethodBeat.o(175745);
+    return null;
+  }
+  
+  private static String baS(String paramString)
+  {
+    AppMethodBeat.i(79124);
+    if (("user".equalsIgnoreCase(paramString)) || ("environment".equalsIgnoreCase(paramString)))
+    {
+      AppMethodBeat.o(79124);
+      return "true";
+    }
+    AppMethodBeat.o(79124);
+    return paramString;
+  }
+  
+  private void m(Uri paramUri)
+  {
+    AppMethodBeat.i(79125);
+    if (this.PWO != null)
+    {
+      this.PWO.onReceiveValue(paramUri);
+      AppMethodBeat.o(79125);
+      return;
+    }
+    if (this.PWP != null)
+    {
+      if (paramUri == null)
+      {
+        this.PWP.onReceiveValue(null);
+        AppMethodBeat.o(79125);
+        return;
+      }
+      this.PWP.onReceiveValue(new Uri[] { paramUri });
+    }
+    AppMethodBeat.o(79125);
+  }
+  
+  public final void a(Activity paramActivity, g paramg, ValueCallback<Uri> paramValueCallback, ValueCallback<Uri[]> paramValueCallback1, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(223826);
+    Log.i("MicroMsg.WebViewUI.FileChooser", "openFileChooser with wvPerm(%s), callback(%s), callbackLL(%s), acceptType(%s), capture(%s)", new Object[] { paramg, paramValueCallback, paramValueCallback1, paramString1, paramString2 });
+    gWl();
+    if (paramg == null)
+    {
+      Log.e("MicroMsg.WebViewUI.FileChooser", "openFileChooser fail, wvPerm is null");
+      m(null);
+      AppMethodBeat.o(223826);
+      return;
+    }
+    if (!paramg.gWI().so(56))
+    {
+      Log.e("MicroMsg.WebViewUI.FileChooser", "open file chooser failed, permission fail");
+      m(null);
+      AppMethodBeat.o(223826);
+      return;
+    }
+    this.PWO = paramValueCallback;
+    this.PWP = paramValueCallback1;
+    this.PWN = System.currentTimeMillis();
+    this.PWM = paramString1;
+    paramg = az.ba(paramString1, baS(paramString2), this.PWN);
+    if (!com.tencent.mm.pluginsdk.permission.b.o(paramActivity, "android.permission.CAMERA"))
+    {
+      com.tencent.mm.pluginsdk.permission.b.b(paramActivity, "android.permission.CAMERA", 119);
+      this.PWQ = Pair.create(paramg, Integer.valueOf(1));
+      Log.e("MicroMsg.WebViewUI.FileChooser", "openFileChooser no Permission");
+      AppMethodBeat.o(223826);
+      return;
+    }
+    try
+    {
+      paramActivity.startActivityForResult(paramg, 1);
+      AppMethodBeat.o(223826);
+      return;
+    }
+    catch (Exception paramActivity)
+    {
+      Log.e("MicroMsg.WebViewUI.FileChooser", "openFileChooser e = %s", new Object[] { paramActivity });
+      AppMethodBeat.o(223826);
+    }
+  }
+  
+  public final void c(Activity paramActivity, int paramInt, Intent paramIntent)
+  {
+    AppMethodBeat.i(175747);
+    if ((this.PWO == null) && (this.PWP == null))
+    {
+      Log.w("MicroMsg.WebViewUI.FileChooser", "uploadFileCallback is null.");
+      AppMethodBeat.o(175747);
+      return;
+    }
+    paramActivity = b(paramActivity, paramInt, paramIntent);
+    Log.i("MicroMsg.WebViewUI.FileChooser", "result = ".concat(String.valueOf(paramActivity)));
+    m(paramActivity);
+    gWl();
+    AppMethodBeat.o(175747);
+  }
+  
+  public final boolean c(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(175744);
+    if (this.PWQ != null)
+    {
+      AppMethodBeat.o(175744);
+      return true;
+    }
+    if (paramInt1 == 1)
+    {
+      c(paramActivity, paramInt2, paramIntent);
+      AppMethodBeat.o(175744);
+      return true;
+    }
+    AppMethodBeat.o(175744);
+    return false;
+  }
+  
+  public final void gWl()
+  {
+    this.PWM = null;
+    this.PWO = null;
+    this.PWP = null;
+    this.PWN = null;
+    this.PWQ = null;
   }
 }
 

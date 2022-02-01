@@ -1,42 +1,42 @@
 package com.tencent.mm.plugin.music.model.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.buz;
-import com.tencent.mm.protocal.protobuf.bva;
+import com.tencent.mm.protocal.protobuf.ccr;
+import com.tencent.mm.protocal.protobuf.ccs;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
   extends q
   implements m
 {
-  private buz AkX;
-  public String AkY;
+  private ccr FSd;
+  public String FSe;
   private i callback;
-  private d iUB;
+  private d lKU;
   public String playUrl;
   
   public c(String paramString)
   {
     AppMethodBeat.i(63099);
-    this.AkY = "";
+    this.FSe = "";
     this.playUrl = "";
     d.a locala = new d.a();
     locala.funcId = 769;
     locala.uri = "/cgi-bin/micromsg-bin/getshakemusicurl";
-    locala.iLN = new buz();
-    locala.iLO = new bva();
-    this.iUB = locala.aXF();
-    this.AkX = ((buz)this.iUB.iLK.iLR);
-    this.AkX.Mbq = paramString;
+    locala.lBU = new ccr();
+    locala.lBV = new ccs();
+    this.lKU = locala.bgN();
+    this.FSd = ((ccr)d.b.b(this.lKU.lBR));
+    this.FSd.TkN = paramString;
     this.playUrl = paramString;
     Log.i("MicroMsg.Music.NetSceneGetShakeMusicUrl", "request music url:%s", new Object[] { paramString });
     AppMethodBeat.o(63099);
@@ -46,7 +46,7 @@ public final class c
   {
     AppMethodBeat.i(63100);
     this.callback = parami;
-    int i = dispatch(paramg, this.iUB, this);
+    int i = dispatch(paramg, this.lKU, this);
     AppMethodBeat.o(63100);
     return i;
   }
@@ -66,12 +66,12 @@ public final class c
       AppMethodBeat.o(63101);
       return;
     }
-    params = (bva)this.iUB.iLL.iLR;
+    params = (ccs)d.c.b(this.lKU.lBS);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     if (params != null)
     {
-      this.AkY = params.Mbq;
-      Log.i("MicroMsg.Music.NetSceneGetShakeMusicUrl", "tempPlayUrl:%s", new Object[] { this.AkY });
+      this.FSe = params.TkN;
+      Log.i("MicroMsg.Music.NetSceneGetShakeMusicUrl", "tempPlayUrl:%s", new Object[] { this.FSe });
       AppMethodBeat.o(63101);
       return;
     }

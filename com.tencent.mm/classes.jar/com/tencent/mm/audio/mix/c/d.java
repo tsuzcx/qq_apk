@@ -7,108 +7,125 @@ import java.lang.reflect.Array;
 public class d
   implements h
 {
-  protected static long duG;
-  protected static long duH;
-  protected static Object duI;
-  protected int duA;
-  protected int duB;
-  protected boolean duC;
-  protected boolean duD;
-  protected boolean duE;
-  protected String duF;
-  protected byte[][] duJ;
-  protected i duK;
-  protected String dus;
-  protected i duv;
-  protected int duw;
-  protected int dux;
-  protected int duy;
-  protected int duz;
+  protected static long fno;
+  protected static long fnp;
+  protected static Object fnq;
+  protected String fna;
+  protected i fnd;
+  protected int fne;
+  protected int fnf;
+  protected int fng;
+  protected int fnh;
+  protected int fni;
+  protected int fnj;
+  protected boolean fnk;
+  protected boolean fnl;
+  protected boolean fnm;
+  protected String fnn;
+  protected byte[][] fnr;
+  protected i fns;
   
   static
   {
     AppMethodBeat.i(136766);
-    duG = 0L;
-    duH = 0L;
-    duI = new Object();
+    fno = 0L;
+    fnp = 0L;
+    fnq = new Object();
     AppMethodBeat.o(136766);
   }
   
   public d()
   {
     AppMethodBeat.i(136761);
-    this.duw = 0;
-    this.dux = 0;
-    this.duy = 0;
-    this.duz = 44100;
-    this.duA = 2;
-    this.duB = 2;
-    this.duC = false;
-    this.duD = false;
-    this.duE = false;
-    this.duJ = new byte[2][];
+    this.fne = 0;
+    this.fnf = 0;
+    this.fng = 0;
+    this.fnh = 44100;
+    this.fni = 2;
+    this.fnj = 2;
+    this.fnk = false;
+    this.fnl = false;
+    this.fnm = false;
+    this.fnr = new byte[2][];
     AppMethodBeat.o(136761);
   }
   
-  public final void G(int paramInt1, int paramInt2, int paramInt3)
+  public final void J(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(136763);
-    int i = this.duw;
-    this.duw = paramInt1;
-    this.dux = paramInt2;
-    this.duy = paramInt3;
-    if (this.duz != this.duw) {
-      if (this.duv == null)
+    int i = this.fne;
+    this.fne = paramInt1;
+    this.fnf = paramInt2;
+    this.fng = paramInt3;
+    if (this.fnh != this.fne) {
+      if (this.fnd == null)
       {
-        this.duv = YQ();
-        this.duv.l(this.duF, this.duw, this.duz);
-        if ((this.dux == 2) && (this.duA == 2))
+        this.fnd = adx();
+        this.fnd.m(this.fnn, this.fne, this.fnh);
+        if ((this.fnf == 2) && (this.fni == 2))
         {
-          if (this.duK != null) {
+          if (this.fns != null) {
             break label247;
           }
-          this.duK = YQ();
-          this.duK.l(this.duF + "RResample", this.duw, this.duz);
+          this.fns = adx();
+          this.fns.m(this.fnn + "RResample", this.fne, this.fnh);
         }
         label145:
-        this.duE = true;
+        this.fnm = true;
       }
     }
     for (;;)
     {
-      if (this.duB != this.duy) {
-        this.duD = true;
+      if (this.fnj != this.fng) {
+        this.fnl = true;
       }
-      if (this.duA != this.dux) {
-        this.duC = true;
+      if (this.fni != this.fnf) {
+        this.fnk = true;
       }
       AppMethodBeat.o(136763);
       return;
-      if ((this.duv == null) || (i == this.duw)) {
+      if ((this.fnd == null) || (i == this.fne)) {
         break;
       }
-      this.duv.release();
-      this.duv = YQ();
-      this.duv.l(this.duF, this.duw, this.duz);
+      this.fnd.adB();
+      this.fnd = adx();
+      this.fnd.m(this.fnn, this.fne, this.fnh);
       break;
       label247:
-      if ((this.duK == null) || (i == this.duw)) {
+      if ((this.fns == null) || (i == this.fne)) {
         break label145;
       }
-      this.duK.release();
-      this.duK = YQ();
-      this.duK.l(this.duF + "RResample", this.duw, this.duz);
+      this.fns.adB();
+      this.fns = adx();
+      this.fns.m(this.fnn + "RResample", this.fne, this.fnh);
       break label145;
-      this.duE = false;
-      if (this.duv != null)
+      this.fnm = false;
+      if (this.fnd != null)
       {
-        this.duv.release();
-        this.duv = null;
+        this.fnd.adB();
+        this.fnd = null;
       }
     }
   }
   
-  public byte[] X(byte[] paramArrayOfByte)
+  public void adA() {}
+  
+  public i adx()
+  {
+    AppMethodBeat.i(136762);
+    j localj = new j();
+    AppMethodBeat.o(136762);
+    return localj;
+  }
+  
+  public void ady() {}
+  
+  public e adz()
+  {
+    return null;
+  }
+  
+  public byte[] ae(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(136764);
     if (paramArrayOfByte == null)
@@ -116,9 +133,9 @@ public class d
       AppMethodBeat.o(136764);
       return paramArrayOfByte;
     }
-    if (this.duD)
+    if (this.fnl)
     {
-      ??? = c.a(this.duy, this.duB, paramArrayOfByte);
+      ??? = c.a(this.fng, this.fnj, paramArrayOfByte);
       if (??? == null) {}
     }
     for (;;)
@@ -128,13 +145,13 @@ public class d
       }
       for (;;)
       {
-        if ((this.dux == 1) && (this.duA == 2) && (this.duE))
+        if ((this.fnf == 1) && (this.fni == 2) && (this.fnm))
         {
-          paramArrayOfByte = this.duv.X((byte[])???);
+          paramArrayOfByte = this.fnd.ae((byte[])???);
           if (paramArrayOfByte != null) {
             ??? = paramArrayOfByte;
           }
-          paramArrayOfByte = c.b(this.dux, this.duA, this.duB, (byte[])???);
+          paramArrayOfByte = c.b(this.fnf, this.fni, this.fnj, (byte[])???);
           if (paramArrayOfByte != null) {
             ??? = paramArrayOfByte;
           }
@@ -142,18 +159,18 @@ public class d
           return ???;
         }
         byte[] arrayOfByte;
-        if ((this.dux == 2) && (this.duA == 2) && (this.duE))
+        if ((this.fnf == 2) && (this.fni == 2) && (this.fnm))
         {
-          if ((this.duv instanceof j)) {
-            if (this.duA == 2)
+          if ((this.fnd instanceof j)) {
+            if (this.fni == 2)
             {
               int i = ???.length / 2;
-              if ((this.duJ == null) || (i != this.duJ.length)) {
-                this.duJ = ((byte[][])Array.newInstance(Byte.TYPE, new int[] { 2, i }));
+              if ((this.fnr == null) || (i != this.fnr.length)) {
+                this.fnr = ((byte[][])Array.newInstance(Byte.TYPE, new int[] { 2, i }));
               }
-              c.a(this.duB, (byte[])???, this.duJ);
-              paramArrayOfByte = this.duv.X(this.duJ[0]);
-              arrayOfByte = this.duK.X(this.duJ[1]);
+              c.a(this.fnj, (byte[])???, this.fnr);
+              paramArrayOfByte = this.fnd.ae(this.fnr[0]);
+              arrayOfByte = this.fns.ae(this.fnr[1]);
               if ((paramArrayOfByte == null) || (arrayOfByte == null)) {
                 paramArrayOfByte = (byte[])???;
               }
@@ -166,16 +183,16 @@ public class d
             }
             AppMethodBeat.o(136764);
             return ???;
-            paramArrayOfByte = c.a(this.duB, paramArrayOfByte, arrayOfByte);
+            paramArrayOfByte = c.a(this.fnj, paramArrayOfByte, arrayOfByte);
             continue;
-            paramArrayOfByte = this.duv.X((byte[])???);
+            paramArrayOfByte = this.fnd.ae((byte[])???);
             continue;
-            paramArrayOfByte = this.duv.X((byte[])???);
+            paramArrayOfByte = this.fnd.ae((byte[])???);
           }
         }
-        if (this.duC)
+        if (this.fnk)
         {
-          arrayOfByte = c.b(this.dux, this.duA, this.duB, (byte[])???);
+          arrayOfByte = c.b(this.fnf, this.fni, this.fnj, (byte[])???);
           if (arrayOfByte != null) {
             ??? = arrayOfByte;
           }
@@ -186,23 +203,20 @@ public class d
           for (;;)
           {
             ??? = paramArrayOfByte;
-            if (this.duE) {}
-            synchronized (duI)
+            if (this.fnm) {}
+            synchronized (fnq)
             {
-              duG += 1L;
+              fno += 1L;
               System.nanoTime();
-              ??? = this.duv.X(paramArrayOfByte);
+              ??? = this.fnd.ae(paramArrayOfByte);
               if (??? != null) {
                 paramArrayOfByte = (byte[])???;
               }
-              synchronized (duI)
-              {
-                ??? = paramArrayOfByte;
-              }
+              ??? = fnq;
+              ??? = paramArrayOfByte;
+              AppMethodBeat.o(136764);
+              return ???;
             }
-            paramArrayOfByte = finally;
-            AppMethodBeat.o(136764);
-            throw paramArrayOfByte;
             paramArrayOfByte = (byte[])???;
           }
         }
@@ -211,42 +225,25 @@ public class d
     }
   }
   
-  public i YQ()
-  {
-    AppMethodBeat.i(136762);
-    j localj = new j();
-    AppMethodBeat.o(136762);
-    return localj;
-  }
-  
-  public void YR() {}
-  
-  public e YS()
-  {
-    return null;
-  }
-  
-  public void flushCache() {}
-  
   public void release()
   {
     AppMethodBeat.i(136765);
-    if (this.duv != null)
+    if (this.fnd != null)
     {
-      this.duv.release();
-      this.duv = null;
+      this.fnd.adB();
+      this.fnd = null;
     }
-    if (this.duK != null)
+    if (this.fns != null)
     {
-      this.duK.release();
-      this.duK = null;
+      this.fns.adB();
+      this.fns = null;
     }
     AppMethodBeat.o(136765);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.audio.mix.c.d
  * JD-Core Version:    0.7.0.1
  */

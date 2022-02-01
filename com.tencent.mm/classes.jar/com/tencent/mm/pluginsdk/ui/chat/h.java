@@ -9,23 +9,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.util.ArrayList;
 
 public final class h
 {
-  private ContentResolver hwt;
+  private ContentResolver kiH;
   protected Context mContext;
   
   protected h(Context paramContext)
   {
     AppMethodBeat.i(31743);
     this.mContext = paramContext;
-    this.hwt = this.mContext.getContentResolver();
+    this.kiH = this.mContext.getContentResolver();
     AppMethodBeat.o(31743);
   }
   
-  private String bfa(String paramString)
+  private String brw(String paramString)
   {
     AppMethodBeat.i(31744);
     if (Util.isNullOrNil(paramString))
@@ -37,7 +37,7 @@ public final class h
     Object localObject = "image_id=\"" + paramString + "\"";
     try
     {
-      localObject = this.hwt.query(MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI, null, (String)localObject, null, null);
+      localObject = this.kiH.query(MediaStore.Images.Thumbnails.EXTERNAL_CONTENT_URI, null, (String)localObject, null, null);
       if (localObject == null)
       {
         Log.e("MicroMsg.RecentPhotoTips.ImageQuery", "get cursor null:".concat(String.valueOf(paramString)));
@@ -66,15 +66,16 @@ public final class h
     }
   }
   
-  public final ArrayList<g> grw()
+  public final ArrayList<g> hmv()
   {
     AppMethodBeat.i(31745);
     ArrayList localArrayList = new ArrayList();
     long l = Util.nowMilliSecond() / 1000L;
+    Cursor localCursor;
     try
     {
       Log.e("MicroMsg.RecentPhotoTips.ImageQuery", "query excludeImageWithFeatureDate");
-      Cursor localCursor = this.hwt.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new String[] { "_id", "_data", "date_added" }, "date_added <= ?", new String[] { String.valueOf(l) }, "date_added desc limit 1");
+      localCursor = this.kiH.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new String[] { "_id", "_data", "date_added" }, "date_added <= ?", new String[] { String.valueOf(l) }, "date_added desc limit 1");
       if (localCursor == null)
       {
         AppMethodBeat.o(31745);
@@ -90,37 +91,37 @@ public final class h
       AppMethodBeat.o(31745);
       return null;
     }
-    if (localException.moveToFirst()) {}
+    if (localCursor.moveToFirst()) {}
     for (;;)
     {
-      String str4 = localException.getString(localException.getColumnIndexOrThrow("_id"));
-      String str1 = localException.getString(localException.getColumnIndexOrThrow("_data"));
-      String str2 = localException.getString(localException.getColumnIndexOrThrow("date_added"));
-      String str3 = bfa(str4);
-      if ((Util.isNullOrNil(str1)) || (!s.YS(str1))) {
+      String str3 = localCursor.getString(localCursor.getColumnIndexOrThrow("_id"));
+      String str4 = localCursor.getString(localCursor.getColumnIndexOrThrow("_data"));
+      String str1 = localCursor.getString(localCursor.getColumnIndexOrThrow("date_added"));
+      String str2 = brw(str3);
+      if ((Util.isNullOrNil(str4)) || (!u.agG(str4))) {
         Log.e("MicroMsg.RecentPhotoTips.ImageQuery", "file not exist");
       }
-      while (!localException.moveToNext())
+      while (!localCursor.moveToNext())
       {
-        localException.close();
+        localCursor.close();
         AppMethodBeat.o(31745);
         return localArrayList;
-        if (str1.startsWith(b.aKV()))
+        if (str4.startsWith(b.aSX()))
         {
           Log.i("MicroMsg.RecentPhotoTips.ImageQuery", "exclude weixin path image");
         }
         else
         {
           g localg = new g();
-          localg.xjE = Util.getLong(str4, 0L);
-          localg.Knf = Util.getLong(str2, 0L);
-          if ((!Util.isNullOrNil(str3)) && (s.YS(str3))) {
-            localg.thumbPath = str3;
+          localg.BVT = Util.getLong(str3, 0L);
+          localg.RnR = Util.getLong(str1, 0L);
+          if ((!Util.isNullOrNil(str2)) && (u.agG(str2))) {
+            localg.thumbPath = str2;
           }
-          if ((!Util.isNullOrNil(str1)) && (s.YS(str1))) {
-            localg.Kne = str1;
+          if ((!Util.isNullOrNil(str4)) && (u.agG(str4))) {
+            localg.RnQ = str4;
           }
-          if ((Util.isNullOrNil(localg.Kne)) && (Util.isNullOrNil(localg.Kne))) {
+          if ((Util.isNullOrNil(localg.RnQ)) && (Util.isNullOrNil(localg.RnQ))) {
             Log.e("MicroMsg.RecentPhotoTips.ImageQuery", "thumb file and orignal file both not exist");
           } else {
             localArrayList.add(localg);
@@ -134,12 +135,12 @@ public final class h
   {
     public abstract int getYFromBottom();
     
-    public abstract boolean gqT();
+    public abstract boolean hlS();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.h
  * JD-Core Version:    0.7.0.1
  */

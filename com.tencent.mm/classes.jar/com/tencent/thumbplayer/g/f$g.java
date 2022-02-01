@@ -4,7 +4,7 @@ import com.tencent.thumbplayer.api.TPProgramInfo;
 
 final class f$g
 {
-  TPProgramInfo[] SbG;
+  TPProgramInfo[] ZEr;
 }
 
 

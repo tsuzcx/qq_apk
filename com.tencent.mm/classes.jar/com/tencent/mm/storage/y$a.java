@@ -3,25 +3,25 @@ package com.tencent.mm.storage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/storage/BizRecycleCardLogic$RecycleCardFlag;", "", "flag", "", "(Ljava/lang/String;II)V", "getFlag", "()I", "RECYCLE_CARD_FLAG_NORMAL", "RECYCLE_CARD_FLAG_DEL", "plugin-biz_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/storage/BizRecycleCardLogic$RecycleCardFlag;", "", "flag", "", "(Ljava/lang/String;II)V", "getFlag", "()I", "RECYCLE_CARD_FLAG_NORMAL", "RECYCLE_CARD_FLAG_DEL", "plugin-biz_release"})
 public enum y$a
 {
-  final int cSx;
+  final int cUP;
   
   static
   {
-    AppMethodBeat.i(212572);
+    AppMethodBeat.i(205860);
     a locala1 = new a("RECYCLE_CARD_FLAG_NORMAL", 0, 1);
-    NPQ = locala1;
+    VdI = locala1;
     a locala2 = new a("RECYCLE_CARD_FLAG_DEL", 1, 2);
-    NPR = locala2;
-    NPS = new a[] { locala1, locala2 };
-    AppMethodBeat.o(212572);
+    VdJ = locala2;
+    VdK = new a[] { locala1, locala2 };
+    AppMethodBeat.o(205860);
   }
   
   private y$a(int paramInt)
   {
-    this.cSx = paramInt;
+    this.cUP = paramInt;
   }
 }
 

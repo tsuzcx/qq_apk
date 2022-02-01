@@ -2,42 +2,40 @@ package com.tencent.mm.plugin.qqmail.c;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
 import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.qqmail.e.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class k
-  implements i, b<Bundle, Bundle>
+  implements i, d<Bundle, Bundle>
 {
-  private String BqZ;
-  private d<Bundle> hny;
+  private String Hls;
+  private com.tencent.mm.ipcinvoker.f<Bundle> jZn;
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
-    AppMethodBeat.i(198592);
+    AppMethodBeat.i(249760);
     Log.i("MicroMsg.UpdateMailStatusTask", "read mail, errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (!((f)paramq).BqZ.equals(this.BqZ))
+    if (!((com.tencent.mm.plugin.qqmail.e.f)paramq).Hls.equals(this.Hls))
     {
       Log.w("MicroMsg.UpdateMailStatusTask", "not my scene, ignore");
-      AppMethodBeat.o(198592);
+      AppMethodBeat.o(249760);
       return;
     }
-    g.azz().b(11480, this);
-    if (this.hny != null)
+    h.aGY().b(11480, this);
+    if (this.jZn != null)
     {
       paramq = new Bundle();
       paramq.putInt("err_type", paramInt1);
       paramq.putInt("err_code", paramInt2);
       paramq.putString("err_msg", paramString);
-      paramq.putString("mail_id", this.BqZ);
-      this.hny.bn(paramq);
+      paramq.putString("mail_id", this.Hls);
+      this.jZn.aH(paramq);
     }
-    AppMethodBeat.o(198592);
+    AppMethodBeat.o(249760);
   }
 }
 

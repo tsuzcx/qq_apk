@@ -13,25 +13,25 @@ public final class MMImageChecker
   
   static
   {
-    AppMethodBeat.i(215383);
+    AppMethodBeat.i(261489);
     sCheckers = new IImageChecker[] { new BmpBadAllocChecker(104857600) };
-    AppMethodBeat.o(215383);
+    AppMethodBeat.o(261489);
   }
   
   private MMImageChecker()
   {
-    AppMethodBeat.i(215382);
+    AppMethodBeat.i(261488);
     UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException();
-    AppMethodBeat.o(215382);
+    AppMethodBeat.o(261488);
     throw localUnsupportedOperationException;
   }
   
   public static boolean isLegalImage(FileDescriptor paramFileDescriptor)
   {
-    AppMethodBeat.i(215381);
+    AppMethodBeat.i(261486);
     if ((paramFileDescriptor == null) || (!paramFileDescriptor.valid()))
     {
-      AppMethodBeat.o(215381);
+      AppMethodBeat.o(261486);
       return false;
     }
     IImageChecker[] arrayOfIImageChecker = sCheckers;
@@ -41,21 +41,21 @@ public final class MMImageChecker
     {
       if (!arrayOfIImageChecker[i].isLegalImage(paramFileDescriptor))
       {
-        AppMethodBeat.o(215381);
+        AppMethodBeat.o(261486);
         return false;
       }
       i += 1;
     }
-    AppMethodBeat.o(215381);
+    AppMethodBeat.o(261486);
     return true;
   }
   
   public static boolean isLegalImage(InputStream paramInputStream)
   {
-    AppMethodBeat.i(215379);
+    AppMethodBeat.i(261481);
     if (paramInputStream == null)
     {
-      AppMethodBeat.o(215379);
+      AppMethodBeat.o(261481);
       return false;
     }
     IImageChecker[] arrayOfIImageChecker = sCheckers;
@@ -65,21 +65,21 @@ public final class MMImageChecker
     {
       if (!arrayOfIImageChecker[i].isLegalImage(paramInputStream))
       {
-        AppMethodBeat.o(215379);
+        AppMethodBeat.o(261481);
         return false;
       }
       i += 1;
     }
-    AppMethodBeat.o(215379);
+    AppMethodBeat.o(261481);
     return true;
   }
   
   public static boolean isLegalImage(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(215380);
+    AppMethodBeat.i(261484);
     if (paramArrayOfByte == null)
     {
-      AppMethodBeat.o(215380);
+      AppMethodBeat.o(261484);
       return false;
     }
     IImageChecker[] arrayOfIImageChecker = sCheckers;
@@ -89,12 +89,12 @@ public final class MMImageChecker
     {
       if (!arrayOfIImageChecker[i].isLegalImage(paramArrayOfByte))
       {
-        AppMethodBeat.o(215380);
+        AppMethodBeat.o(261484);
         return false;
       }
       i += 1;
     }
-    AppMethodBeat.o(215380);
+    AppMethodBeat.o(261484);
     return true;
   }
   
@@ -107,9 +107,9 @@ public final class MMImageChecker
     
     BmpBadAllocChecker(int paramInt)
     {
-      AppMethodBeat.i(215374);
+      AppMethodBeat.i(262773);
       this.mImageSizeLimit = paramInt;
-      AppMethodBeat.o(215374);
+      AppMethodBeat.o(262773);
     }
     
     /* Error */
@@ -364,7 +364,7 @@ public final class MMImageChecker
     
     public boolean isLegalImage(InputStream paramInputStream)
     {
-      AppMethodBeat.i(215375);
+      AppMethodBeat.i(262774);
       Object localObject = paramInputStream;
       if (!paramInputStream.markSupported()) {
         if (!(paramInputStream instanceof FileInputStream)) {
@@ -375,17 +375,17 @@ public final class MMImageChecker
       for (localObject = new FileSeekingInputStream((FileInputStream)paramInputStream);; localObject = new BufferedInputStream(paramInputStream))
       {
         boolean bool = isLegalImageInMarkableStream((InputStream)localObject);
-        AppMethodBeat.o(215375);
+        AppMethodBeat.o(262774);
         return bool;
       }
     }
     
     public boolean isLegalImage(byte[] paramArrayOfByte)
     {
-      AppMethodBeat.i(215376);
+      AppMethodBeat.i(262775);
       if (paramArrayOfByte.length < 14L)
       {
-        AppMethodBeat.o(215376);
+        AppMethodBeat.o(262775);
         return true;
       }
       paramArrayOfByte = new ByteArrayInputStream(paramArrayOfByte);
@@ -394,7 +394,7 @@ public final class MMImageChecker
       {
         paramArrayOfByte.close();
         label41:
-        AppMethodBeat.o(215376);
+        AppMethodBeat.o(262775);
         return bool;
       }
       catch (Throwable paramArrayOfByte)
@@ -415,7 +415,7 @@ public final class MMImageChecker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.MMImageChecker
  * JD-Core Version:    0.7.0.1
  */

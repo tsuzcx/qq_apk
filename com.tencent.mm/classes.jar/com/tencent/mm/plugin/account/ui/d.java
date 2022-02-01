@@ -17,27 +17,27 @@ public final class d
   extends BaseAdapter
   implements Filterable
 {
-  private List<String> kjY;
-  private ArrayList<String> kjZ;
-  private a kka;
-  private String kkb;
   private Context mContext;
   private final Object mLock;
+  private List<String> nbO;
+  private ArrayList<String> nbP;
+  private a nbQ;
+  private String nbR;
   
   public d(Context paramContext, String[] paramArrayOfString, String paramString)
   {
     AppMethodBeat.i(127871);
     this.mLock = new Object();
     this.mContext = paramContext;
-    this.kjY = Arrays.asList(paramArrayOfString);
-    this.kkb = paramString;
+    this.nbO = Arrays.asList(paramArrayOfString);
+    this.nbR = paramString;
     AppMethodBeat.o(127871);
   }
   
   private String getItem(int paramInt)
   {
     AppMethodBeat.i(127873);
-    String str = (String)this.kjY.get(paramInt);
+    String str = (String)this.nbO.get(paramInt);
     AppMethodBeat.o(127873);
     return str;
   }
@@ -45,7 +45,7 @@ public final class d
   public final int getCount()
   {
     AppMethodBeat.i(127872);
-    int i = this.kjY.size();
+    int i = this.nbO.size();
     AppMethodBeat.o(127872);
     return i;
   }
@@ -53,10 +53,10 @@ public final class d
   public final Filter getFilter()
   {
     AppMethodBeat.i(127875);
-    if (this.kka == null) {
-      this.kka = new a((byte)0);
+    if (this.nbQ == null) {
+      this.nbQ = new a((byte)0);
     }
-    a locala = this.kka;
+    a locala = this.nbQ;
     AppMethodBeat.o(127875);
     return locala;
   }
@@ -71,16 +71,16 @@ public final class d
     AppMethodBeat.i(127874);
     if (paramView == null)
     {
-      paramView = View.inflate(this.mContext, 2131493165, null);
+      paramView = View.inflate(this.mContext, r.g.auto_complete_dropdown_item, null);
       paramViewGroup = new b();
-      paramViewGroup.vr = ((TextView)paramView.findViewById(2131309025));
+      paramViewGroup.bFR = ((TextView)paramView.findViewById(r.f.textview1));
       paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
       String str = getItem(paramInt);
-      paramViewGroup.vr.setText(str);
-      paramView.setBackgroundResource(2131231898);
+      paramViewGroup.bFR.setText(str);
+      paramView.setBackgroundResource(r.e.comm_list_item_selector);
       AppMethodBeat.o(127874);
       return paramView;
       paramViewGroup = (b)paramView.getTag();
@@ -167,12 +167,12 @@ public final class d
   
   static final class b
   {
-    public TextView vr;
+    public TextView bFR;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.d
  * JD-Core Version:    0.7.0.1
  */

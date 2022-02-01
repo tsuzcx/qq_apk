@@ -7,12 +7,12 @@ import rx.j;
 public final class c
   implements j
 {
-  final AtomicReference<a> UoL;
+  final AtomicReference<a> abSa;
   
   public c()
   {
     AppMethodBeat.i(90449);
-    this.UoL = new AtomicReference(new a(false, d.hRm()));
+    this.abSa = new AtomicReference(new a(false, d.iWw()));
     AppMethodBeat.o(90449);
   }
   
@@ -25,14 +25,14 @@ public final class c
       AppMethodBeat.o(90452);
       throw paramj;
     }
-    AtomicReference localAtomicReference = this.UoL;
+    AtomicReference localAtomicReference = this.abSa;
     a locala;
     do
     {
       locala = (a)localAtomicReference.get();
-      if (locala.Umo)
+      if (locala.abPK)
       {
-        paramj.hQA();
+        paramj.iVJ();
         AppMethodBeat.o(90452);
         return;
       }
@@ -40,55 +40,55 @@ public final class c
     AppMethodBeat.o(90452);
   }
   
-  public final void hQA()
+  public final void iVJ()
   {
     AppMethodBeat.i(90451);
-    AtomicReference localAtomicReference = this.UoL;
+    AtomicReference localAtomicReference = this.abSa;
     a locala;
     do
     {
       locala = (a)localAtomicReference.get();
-      if (locala.Umo)
+      if (locala.abPK)
       {
         AppMethodBeat.o(90451);
         return;
       }
-    } while (!localAtomicReference.compareAndSet(locala, locala.hRl()));
-    locala.UmE.hQA();
+    } while (!localAtomicReference.compareAndSet(locala, locala.iWv()));
+    locala.abQa.iVJ();
     AppMethodBeat.o(90451);
   }
   
-  public final boolean hQB()
+  public final boolean iVK()
   {
     AppMethodBeat.i(90450);
-    boolean bool = ((a)this.UoL.get()).Umo;
+    boolean bool = ((a)this.abSa.get()).abPK;
     AppMethodBeat.o(90450);
     return bool;
   }
   
   static final class a
   {
-    final j UmE;
-    final boolean Umo;
+    final boolean abPK;
+    final j abQa;
     
     a(boolean paramBoolean, j paramj)
     {
-      this.Umo = paramBoolean;
-      this.UmE = paramj;
+      this.abPK = paramBoolean;
+      this.abQa = paramj;
     }
     
     final a g(j paramj)
     {
       AppMethodBeat.i(90448);
-      paramj = new a(this.Umo, paramj);
+      paramj = new a(this.abPK, paramj);
       AppMethodBeat.o(90448);
       return paramj;
     }
     
-    final a hRl()
+    final a iWv()
     {
       AppMethodBeat.i(90447);
-      a locala = new a(true, this.UmE);
+      a locala = new a(true, this.abQa);
       AppMethodBeat.o(90447);
       return locala;
     }
@@ -96,7 +96,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     rx.f.c
  * JD-Core Version:    0.7.0.1
  */

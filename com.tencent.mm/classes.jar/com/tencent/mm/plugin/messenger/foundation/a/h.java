@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
+import com.tencent.mm.storage.az;
 import com.tencent.mm.storage.ca;
 
 public abstract interface h
 {
-  public abstract String Z(ca paramca);
+  public abstract void a(ca paramca, az paramaz);
 }
 
 

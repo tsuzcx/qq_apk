@@ -10,126 +10,126 @@ import java.util.List;
 public class a
 {
   private static final String TAG;
-  private static m gPp;
-  private static com.tencent.mm.danmaku.b.c gPq;
-  private static k gPw;
-  private boolean cFH;
-  private c gPA;
-  private List<com.tencent.mm.danmaku.render.a> gPB;
-  private com.tencent.mm.danmaku.render.c gPC;
-  private int gPD;
-  public final com.tencent.mm.danmaku.d.d<Drawable> gPo;
-  private final SparseArray<i> gPr;
-  private boolean gPs;
-  private h gPt;
-  private f gPu;
-  private e gPv;
-  private j gPx;
-  public g gPy;
-  public d gPz;
+  private static m jzI;
+  private static com.tencent.mm.danmaku.b.c jzJ;
+  private static k jzP;
+  private boolean cGn;
+  public final com.tencent.mm.danmaku.d.d<Drawable> jzH;
+  private final SparseArray<i> jzK;
+  private boolean jzL;
+  private h jzM;
+  private f jzN;
+  private e jzO;
+  private j jzQ;
+  public g jzR;
+  public d jzS;
+  private c jzT;
+  private List<com.tencent.mm.danmaku.render.a> jzU;
+  private com.tencent.mm.danmaku.render.c jzV;
+  public int jzW;
   
   static
   {
-    AppMethodBeat.i(241692);
+    AppMethodBeat.i(283556);
     TAG = a.class.getSimpleName();
-    AppMethodBeat.o(241692);
+    AppMethodBeat.o(283556);
   }
   
   private a(a parama)
   {
-    AppMethodBeat.i(241684);
-    this.gPr = new SparseArray();
-    this.gPs = false;
-    this.gPC = new com.tencent.mm.danmaku.render.c();
-    this.gPs = parama.gPs;
-    this.gPt = parama.gPt;
-    this.gPu = parama.gPu;
-    this.gPv = parama.gPv;
-    gPw = parama.gPE;
-    this.gPx = parama.gPx;
-    this.gPy = parama.gPy;
-    this.gPz = parama.gPz;
-    this.gPA = parama.gPA;
-    this.gPD = parama.gPD;
-    this.cFH = parama.cFH;
-    this.gPo = new com.tencent.mm.danmaku.d.d();
-    this.gPB = new ArrayList();
-    this.gPB.addAll(parama.gPB);
-    if ((!this.gPs) && (this.gPt == null))
+    AppMethodBeat.i(283547);
+    this.jzK = new SparseArray();
+    this.jzL = false;
+    this.jzV = new com.tencent.mm.danmaku.render.c();
+    this.jzL = parama.jzL;
+    this.jzM = parama.jzM;
+    this.jzN = parama.jzN;
+    this.jzO = parama.jzO;
+    jzP = parama.jzX;
+    this.jzQ = parama.jzQ;
+    this.jzR = parama.jzR;
+    this.jzS = parama.jzS;
+    this.jzT = parama.jzT;
+    this.jzW = parama.jzW;
+    this.cGn = parama.cGn;
+    this.jzH = new com.tencent.mm.danmaku.d.d();
+    this.jzU = new ArrayList();
+    this.jzU.addAll(parama.jzU);
+    if ((!this.jzL) && (this.jzM == null))
     {
       parama = new IllegalArgumentException("Danmaku module need an IDanmakuPlayTimeSupplier or is live setter for computing timeline");
-      AppMethodBeat.o(241684);
+      AppMethodBeat.o(283547);
       throw parama;
     }
-    AppMethodBeat.o(241684);
+    AppMethodBeat.o(283547);
   }
   
-  public static m asO()
+  public static m azC()
   {
-    AppMethodBeat.i(241686);
-    if (gPp == null) {}
+    AppMethodBeat.i(283549);
+    if (jzI == null) {}
     try
     {
-      if ((gPp == null) && (gPw != null)) {
-        gPp = gPw.asW();
+      if ((jzI == null) && (jzP != null)) {
+        jzI = jzP.azK();
       }
-      if (gPp == null) {
-        gPp = new m();
+      if (jzI == null) {
+        jzI = new m();
       }
-      m localm = gPp;
-      AppMethodBeat.o(241686);
+      m localm = jzI;
+      AppMethodBeat.o(283549);
       return localm;
     }
     finally
     {
-      AppMethodBeat.o(241686);
+      AppMethodBeat.o(283549);
     }
   }
   
-  private static com.tencent.mm.danmaku.b.c asP()
+  private static com.tencent.mm.danmaku.b.c azD()
   {
-    AppMethodBeat.i(241688);
-    if (gPq == null) {}
+    AppMethodBeat.i(283551);
+    if (jzJ == null) {}
     try
     {
-      if (gPq == null) {
-        gPq = new com.tencent.mm.danmaku.b.c();
+      if (jzJ == null) {
+        jzJ = new com.tencent.mm.danmaku.b.c();
       }
-      com.tencent.mm.danmaku.b.c localc = gPq;
-      AppMethodBeat.o(241688);
+      com.tencent.mm.danmaku.b.c localc = jzJ;
+      AppMethodBeat.o(283551);
       return localc;
     }
     finally
     {
-      AppMethodBeat.o(241688);
+      AppMethodBeat.o(283551);
     }
   }
   
-  public static a asR()
+  public static a azF()
   {
-    AppMethodBeat.i(241691);
+    AppMethodBeat.i(283555);
     a locala = new a((byte)0);
-    AppMethodBeat.o(241691);
+    AppMethodBeat.o(283555);
     return locala;
   }
   
-  public final long asQ()
+  public final long azE()
   {
-    AppMethodBeat.i(241690);
-    if (this.gPt == null)
+    AppMethodBeat.i(283554);
+    if (this.jzM == null)
     {
-      AppMethodBeat.o(241690);
+      AppMethodBeat.o(283554);
       return -1L;
     }
-    long l = this.gPt.asQ();
-    AppMethodBeat.o(241690);
+    long l = this.jzM.azE();
+    AppMethodBeat.o(283554);
     return l;
   }
   
-  public final com.tencent.mm.danmaku.render.a e(com.tencent.mm.danmaku.b.a parama)
+  public final com.tencent.mm.danmaku.render.a d(com.tencent.mm.danmaku.b.a parama)
   {
-    AppMethodBeat.i(241685);
-    Iterator localIterator = this.gPB.iterator();
+    AppMethodBeat.i(283548);
+    Iterator localIterator = this.jzU.iterator();
     Object localObject;
     do
     {
@@ -137,110 +137,110 @@ public class a
         break;
       }
       localObject = (com.tencent.mm.danmaku.render.a)localIterator.next();
-    } while (!((com.tencent.mm.danmaku.render.a)localObject).f(parama));
+    } while (!((com.tencent.mm.danmaku.render.a)localObject).e(parama));
     for (parama = (com.tencent.mm.danmaku.b.a)localObject;; parama = null)
     {
       localObject = parama;
       if (parama == null) {
-        localObject = this.gPC;
+        localObject = this.jzV;
       }
-      AppMethodBeat.o(241685);
+      AppMethodBeat.o(283548);
       return localObject;
     }
   }
   
   public final boolean isLive()
   {
-    AppMethodBeat.i(241689);
-    if ((this.gPs) || (asQ() < 0L))
+    AppMethodBeat.i(283553);
+    if ((this.jzL) || (azE() < 0L))
     {
-      AppMethodBeat.o(241689);
+      AppMethodBeat.o(283553);
       return true;
     }
-    AppMethodBeat.o(241689);
+    AppMethodBeat.o(283553);
     return false;
   }
   
-  public final i oZ(int paramInt)
+  public final i ru(int paramInt)
   {
-    AppMethodBeat.i(241687);
-    Object localObject3 = (i)this.gPr.get(paramInt);
+    AppMethodBeat.i(283550);
+    Object localObject3 = (i)this.jzK.get(paramInt);
     Object localObject1 = localObject3;
     if (localObject3 == null) {}
     try
     {
-      localObject3 = (i)this.gPr.get(paramInt);
+      localObject3 = (i)this.jzK.get(paramInt);
       localObject1 = localObject3;
       if (localObject3 == null)
       {
         localObject1 = localObject3;
-        if (this.gPx != null)
+        if (this.jzQ != null)
         {
-          localObject1 = this.gPx.asV();
-          this.gPr.put(paramInt, localObject1);
+          localObject1 = this.jzQ.azJ();
+          this.jzK.put(paramInt, localObject1);
         }
       }
       localObject3 = localObject1;
       if (localObject1 == null) {
-        localObject3 = asP();
+        localObject3 = azD();
       }
-      AppMethodBeat.o(241687);
+      AppMethodBeat.o(283550);
       return localObject3;
     }
     finally
     {
-      AppMethodBeat.o(241687);
+      AppMethodBeat.o(283550);
     }
   }
   
   public static final class a
   {
-    boolean cFH;
-    c gPA;
-    List<com.tencent.mm.danmaku.render.a> gPB;
-    int gPD;
-    k gPE;
-    boolean gPs;
-    h gPt;
-    f gPu;
-    e gPv;
-    j gPx;
-    public g gPy;
-    public d gPz;
+    boolean cGn;
+    boolean jzL;
+    h jzM;
+    f jzN;
+    e jzO;
+    j jzQ;
+    public g jzR;
+    public d jzS;
+    c jzT;
+    List<com.tencent.mm.danmaku.render.a> jzU;
+    int jzW;
+    k jzX;
     
     private a()
     {
-      AppMethodBeat.i(241681);
-      this.gPB = new ArrayList();
-      this.cFH = false;
-      AppMethodBeat.o(241681);
+      AppMethodBeat.i(231327);
+      this.jzU = new ArrayList();
+      this.cGn = false;
+      AppMethodBeat.o(231327);
     }
     
     public final a a(d paramd)
     {
-      this.gPz = paramd;
+      this.jzS = paramd;
       return this;
     }
     
     public final a a(h paramh)
     {
-      this.gPt = paramh;
+      this.jzM = paramh;
       return this;
     }
     
     public final a a(com.tencent.mm.danmaku.render.a parama)
     {
-      AppMethodBeat.i(241682);
-      this.gPB.add(parama);
-      AppMethodBeat.o(241682);
+      AppMethodBeat.i(231335);
+      this.jzU.add(parama);
+      AppMethodBeat.o(231335);
       return this;
     }
     
-    public final a asS()
+    public final a azG()
     {
-      AppMethodBeat.i(241683);
+      AppMethodBeat.i(231340);
       a locala = new a(this, (byte)0);
-      AppMethodBeat.o(241683);
+      AppMethodBeat.o(231340);
       return locala;
     }
   }

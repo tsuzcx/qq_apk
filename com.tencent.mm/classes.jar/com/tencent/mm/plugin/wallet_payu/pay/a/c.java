@@ -12,23 +12,23 @@ public final class c
   public static Orders a(Orders paramOrders, String paramString1, String paramString2, int paramInt, String paramString3)
   {
     AppMethodBeat.i(72086);
-    if ((paramOrders == null) || (paramOrders.HZd == null) || (paramOrders.HZd.size() <= 0))
+    if ((paramOrders == null) || (paramOrders.ORd == null) || (paramOrders.ORd.size() <= 0))
     {
       Log.d("MicroMsg.OrdersWrapper", "hy: params error");
       AppMethodBeat.o(72086);
       return paramOrders;
     }
-    Iterator localIterator = paramOrders.HZd.iterator();
+    Iterator localIterator = paramOrders.ORd.iterator();
     if (localIterator.hasNext())
     {
       Orders.Commodity localCommodity = (Orders.Commodity)localIterator.next();
-      localCommodity.AOh = paramInt;
+      localCommodity.GHv = paramInt;
       if (paramString1.equals("1")) {}
       for (String str = "2";; str = "1")
       {
-        localCommodity.AOe = str;
-        localCommodity.AOf = paramString2;
-        localCommodity.AOj = paramString3;
+        localCommodity.GHs = str;
+        localCommodity.GHt = paramString2;
+        localCommodity.GHx = paramString3;
         break;
       }
     }

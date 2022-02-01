@@ -706,7 +706,7 @@ public class FlexBoxAttr
   {
     AppMethodBeat.i(19365);
     this.paddingBottom = paramFloat;
-    if (this.paddingBottom > 0.0F)
+    if (this.paddingBottom >= 0.0F)
     {
       paramFloat = MMKViewUtil.dpToPx(KindaContext.get(), paramFloat);
       node().setPadding(YogaEdge.BOTTOM, paramFloat);
@@ -735,7 +735,7 @@ public class FlexBoxAttr
   {
     AppMethodBeat.i(19362);
     this.paddingLeft = paramFloat;
-    if (this.paddingLeft > 0.0F)
+    if (this.paddingLeft >= 0.0F)
     {
       paramFloat = MMKViewUtil.dpToPx(KindaContext.get(), paramFloat);
       node().setPadding(YogaEdge.LEFT, paramFloat);
@@ -764,7 +764,7 @@ public class FlexBoxAttr
   {
     AppMethodBeat.i(19364);
     this.paddingRight = paramFloat;
-    if (this.paddingRight > 0.0F)
+    if (this.paddingRight >= 0.0F)
     {
       paramFloat = MMKViewUtil.dpToPx(KindaContext.get(), paramFloat);
       node().setPadding(YogaEdge.RIGHT, paramFloat);
@@ -793,7 +793,7 @@ public class FlexBoxAttr
   {
     AppMethodBeat.i(19363);
     this.paddingTop = paramFloat;
-    if (this.paddingTop > 0.0F)
+    if (this.paddingTop >= 0.0F)
     {
       paramFloat = MMKViewUtil.dpToPx(KindaContext.get(), paramFloat);
       node().setPadding(YogaEdge.TOP, paramFloat);
@@ -926,7 +926,7 @@ public class FlexBoxAttr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.tools.FlexBoxAttr
  * JD-Core Version:    0.7.0.1
  */

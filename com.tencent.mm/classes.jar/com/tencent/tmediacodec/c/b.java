@@ -12,177 +12,177 @@ import java.util.concurrent.CopyOnWriteArraySet;
 
 public final class b
 {
-  c Smv;
-  private final CopyOnWriteArraySet<f> Smw;
-  private final int bwA;
+  c ZPg;
+  private final CopyOnWriteArraySet<f> ZPh;
+  private final int bgc;
   private final String name;
   
   public b(int paramInt, String paramString)
   {
-    AppMethodBeat.i(190154);
-    this.Smw = new CopyOnWriteArraySet();
-    this.bwA = paramInt;
+    AppMethodBeat.i(224490);
+    this.ZPh = new CopyOnWriteArraySet();
+    this.bgc = paramInt;
     this.name = paramString;
-    AppMethodBeat.o(190154);
+    AppMethodBeat.o(224490);
   }
   
   private static f a(f paramf, Iterator paramIterator)
   {
-    AppMethodBeat.i(190158);
+    AppMethodBeat.i(224498);
     while (paramIterator.hasNext())
     {
       f localf = (f)paramIterator.next();
-      if (TextUtils.equals(paramf.hpz(), localf.hpz()))
+      if (TextUtils.equals(paramf.itf(), localf.itf()))
       {
-        AppMethodBeat.o(190158);
+        AppMethodBeat.o(224498);
         return localf;
       }
     }
-    AppMethodBeat.o(190158);
+    AppMethodBeat.o(224498);
     return null;
   }
   
   private final f e(e parame)
   {
-    AppMethodBeat.i(190164);
-    Iterator localIterator = this.Smw.iterator();
+    AppMethodBeat.i(224520);
+    Iterator localIterator = this.ZPh.iterator();
     while (localIterator.hasNext())
     {
       f localf = (f)localIterator.next();
-      if ((!localf.aHN) && (localf.a(parame) != a.b.SmB))
+      if ((!localf.QCj) && (localf.a(parame) != a.b.ZPm))
       {
-        AppMethodBeat.o(190164);
+        AppMethodBeat.o(224520);
         return localf;
       }
-      localf.hpx();
-      if (localf.hpy()) {
+      localf.itd();
+      if (localf.ite()) {
         l(localf);
       }
     }
-    AppMethodBeat.o(190164);
+    AppMethodBeat.o(224520);
     return null;
   }
   
-  private f hpD()
+  private boolean itj()
   {
-    AppMethodBeat.i(190159);
-    Object localObject = this.Smw.iterator();
+    AppMethodBeat.i(224492);
+    if (this.ZPh.size() == this.bgc)
+    {
+      AppMethodBeat.o(224492);
+      return true;
+    }
+    AppMethodBeat.o(224492);
+    return false;
+  }
+  
+  private f itk()
+  {
+    AppMethodBeat.i(224500);
+    Object localObject = this.ZPh.iterator();
     if (((Iterator)localObject).hasNext())
     {
       localObject = (f)((Iterator)localObject).next();
-      AppMethodBeat.o(190159);
+      AppMethodBeat.o(224500);
       return localObject;
     }
-    AppMethodBeat.o(190159);
+    AppMethodBeat.o(224500);
     return null;
-  }
-  
-  private boolean isFull()
-  {
-    AppMethodBeat.i(190155);
-    if (this.Smw.size() == this.bwA)
-    {
-      AppMethodBeat.o(190155);
-      return true;
-    }
-    AppMethodBeat.o(190155);
-    return false;
   }
   
   private f k(f paramf)
   {
-    AppMethodBeat.i(190157);
-    Iterator localIterator = this.Smw.iterator();
-    if (a.hpn().Slb.SmJ == b.a.SmM)
+    AppMethodBeat.i(224496);
+    Iterator localIterator = this.ZPh.iterator();
+    if (a.isT().ZNM.ZPu == b.a.ZPx)
     {
       paramf = a(paramf, localIterator);
       if (paramf != null)
       {
-        AppMethodBeat.o(190157);
+        AppMethodBeat.o(224496);
         return paramf;
       }
     }
-    paramf = hpD();
-    AppMethodBeat.o(190157);
+    paramf = itk();
+    AppMethodBeat.o(224496);
     return paramf;
   }
   
   public final void clear()
   {
-    AppMethodBeat.i(190162);
-    new StringBuilder("CodecWrapperPool clear:").append(this.Smw);
-    com.tencent.tmediacodec.g.b.bqR("CodecWrapperPool");
-    Iterator localIterator = this.Smw.iterator();
+    AppMethodBeat.i(224512);
+    new StringBuilder("CodecWrapperPool clear:").append(this.ZPh);
+    com.tencent.tmediacodec.g.b.bDQ("CodecWrapperPool");
+    Iterator localIterator = this.ZPh.iterator();
     while (localIterator.hasNext())
     {
       f localf = (f)localIterator.next();
-      if (this.Smv != null) {
-        this.Smv.i(localf);
+      if (this.ZPg != null) {
+        this.ZPg.i(localf);
       }
     }
-    this.Smw.clear();
-    AppMethodBeat.o(190162);
+    this.ZPh.clear();
+    AppMethodBeat.o(224512);
   }
   
   public final f d(e parame)
   {
-    AppMethodBeat.i(190161);
+    AppMethodBeat.i(224510);
     parame = e(parame);
     if (com.tencent.tmediacodec.g.b.isLogEnable())
     {
       "obtain codecWrapper:".concat(String.valueOf(parame));
-      com.tencent.tmediacodec.g.b.bqQ("CodecWrapperPool");
+      com.tencent.tmediacodec.g.b.bDP("CodecWrapperPool");
     }
     if (parame != null)
     {
-      this.Smw.remove(parame);
-      AppMethodBeat.o(190161);
+      this.ZPh.remove(parame);
+      AppMethodBeat.o(224510);
       return parame;
     }
-    AppMethodBeat.o(190161);
+    AppMethodBeat.o(224510);
     return null;
   }
   
   public final void j(f paramf)
   {
-    AppMethodBeat.i(190156);
-    if (isFull()) {
+    AppMethodBeat.i(224493);
+    if (itj()) {
       l(k(paramf));
     }
-    this.Smw.add(paramf);
-    AppMethodBeat.o(190156);
+    this.ZPh.add(paramf);
+    AppMethodBeat.o(224493);
   }
   
   public final void l(f paramf)
   {
-    AppMethodBeat.i(190160);
-    if (this.Smw.remove(paramf))
+    AppMethodBeat.i(224505);
+    if (this.ZPh.remove(paramf))
     {
-      if (this.Smv != null)
+      if (this.ZPg != null)
       {
-        this.Smv.i(paramf);
-        AppMethodBeat.o(190160);
+        this.ZPg.i(paramf);
+        AppMethodBeat.o(224505);
       }
     }
     else
     {
       new StringBuilder("pool:").append(this.name).append(" remove ").append(paramf).append(" not found");
-      com.tencent.tmediacodec.g.b.bqS("CodecWrapperPool");
+      com.tencent.tmediacodec.g.b.bDR("CodecWrapperPool");
     }
-    AppMethodBeat.o(190160);
+    AppMethodBeat.o(224505);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(190163);
-    String str = "size:" + this.Smw.size() + " elements:" + this.Smw;
-    AppMethodBeat.o(190163);
+    AppMethodBeat.i(224515);
+    String str = "size:" + this.ZPh.size() + " elements:" + this.ZPh;
+    AppMethodBeat.o(224515);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tmediacodec.c.b
  * JD-Core Version:    0.7.0.1
  */

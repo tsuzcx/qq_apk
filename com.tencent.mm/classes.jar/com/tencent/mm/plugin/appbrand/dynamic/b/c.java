@@ -5,7 +5,7 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.model.ad.b;
 import com.tencent.mm.modelappbrand.a.b;
 import com.tencent.mm.modelappbrand.a.b.k;
@@ -31,21 +31,21 @@ final class c
   public final Bitmap a(final d paramd, final String paramString, Rect paramRect, final e.a parama)
   {
     AppMethodBeat.i(121256);
-    final String str = paramd.hpn.getString("id", "");
+    final String str = paramd.kbe.getString("id", "");
     if (paramString.startsWith("wxfile://"))
     {
-      paramd = AppBrandLocalMediaObjectManager.cz(str, paramString);
-      if ((paramd == null) || (TextUtils.isEmpty(paramd.iGf)))
+      paramd = AppBrandLocalMediaObjectManager.cF(str, paramString);
+      if ((paramd == null) || (TextUtils.isEmpty(paramd.lwh)))
       {
         AppMethodBeat.o(121256);
         return null;
       }
-      paramString = paramd.iGf;
+      paramString = paramd.lwh;
       paramd = paramString;
       if (!paramString.startsWith("file://")) {
         paramd = "file://".concat(String.valueOf(paramString));
       }
-      paramd = b.aXY().a(paramd, null);
+      paramd = b.bhh().a(paramd, null);
     }
     for (;;)
     {
@@ -53,12 +53,12 @@ final class c
       return paramd;
       if ((paramString.startsWith("https://")) || (paramString.startsWith("http://")))
       {
-        paramRect = b.aXY().a(paramString, null);
+        paramRect = b.bhh().a(paramString, null);
         if (paramRect == null)
         {
-          b.aXY().a(new b.k()
+          b.bhh().a(new b.k()
           {
-            public final void I(Bitmap paramAnonymousBitmap)
+            public final void G(Bitmap paramAnonymousBitmap)
             {
               AppMethodBeat.i(121252);
               if ((parama == null) || (paramAnonymousBitmap == null) || (paramAnonymousBitmap.isRecycled()))
@@ -70,21 +70,21 @@ final class c
               AppMethodBeat.o(121252);
             }
             
-            public final String Lb()
-            {
-              return "WxaWidgetIcon";
-            }
+            public final void bhq() {}
             
-            public final void aYg() {}
-            
-            public final void oD()
+            public final void bhr()
             {
               AppMethodBeat.i(121253);
               Bundle localBundle = new Bundle();
               localBundle.putString("id", str);
               localBundle.putInt("widgetState", 2103);
-              h.a(i.bBL().Yn(str), localBundle, f.a.class, null);
+              j.a(i.bNh().agb(str), localBundle, f.a.class, null);
               AppMethodBeat.o(121253);
+            }
+            
+            public final String key()
+            {
+              return "WxaWidgetIcon";
             }
           }, paramString, null, null);
           paramd = paramRect;
@@ -92,7 +92,7 @@ final class c
       }
       else
       {
-        paramd = a.db(str, paramString);
+        paramd = a.dk(str, paramString);
         continue;
       }
       paramd = paramRect;
@@ -109,7 +109,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.b.c
  * JD-Core Version:    0.7.0.1
  */

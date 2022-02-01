@@ -1,149 +1,119 @@
 package com.tencent.mm.plugin.finder.report;
 
-import com.tencent.f.i;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.gallery.a.c;
-import com.tencent.mm.plugin.sight.base.a;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mm.plugin.finder.event.base.b;
+import com.tencent.mm.plugin.finder.event.base.c;
+import com.tencent.mm.plugin.finder.event.base.f;
+import com.tencent.mm.plugin.finder.utils.aj;
 import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/report/IDKey1371;", "", "()V", "CAPTURE_PHOTO", "", "CAPTURE_PHOTO_BACK", "CAPTURE_PHOTO_FRONT", "CAPTURE_PHOTO_WITH_BEAUTY", "ID", "SINGLE_VIDEO_BACK", "SINGLE_VIDEO_BEAUTY", "SINGLE_VIDEO_FRONT", "SINGLE_VIDEO_LENGTH_0_5", "SINGLE_VIDEO_LENGTH_10_15", "SINGLE_VIDEO_LENGTH_15_20", "SINGLE_VIDEO_LENGTH_20_30", "SINGLE_VIDEO_LENGTH_30_40", "SINGLE_VIDEO_LENGTH_40_50", "SINGLE_VIDEO_LENGTH_50_60", "SINGLE_VIDEO_LENGTH_5_10", "SINGLE_VIDEO_LENGTH_TOTAL", "SINGLE_VIDEO_NOT_ENOUGH", "SINGLE_VIDEO_SUCCESS", "SINGLE_VIDEO_TIME", "SUBVIDEO_AUTO_FINISH", "SUBVIDEO_CLICK_FINISH", "SUBVIDEO_NUM_0_3", "SUBVIDEO_NUM_10_15", "SUBVIDEO_NUM_15_20", "SUBVIDEO_NUM_3_6", "SUBVIDEO_NUM_6_10", "SUBVIDEO_PREPARE_DELETE", "SUBVIDEO_PRERARE_EXIT", "SUBVIDEO_SINGLE_LENGTH_0_5", "SUBVIDEO_SINGLE_LENGTH_10_15", "SUBVIDEO_SINGLE_LENGTH_15_20", "SUBVIDEO_SINGLE_LENGTH_20_30", "SUBVIDEO_SINGLE_LENGTH_30_40", "SUBVIDEO_SINGLE_LENGTH_40_50", "SUBVIDEO_SINGLE_LENGTH_50_60", "SUBVIDEO_SINGLE_LENGTH_5_10", "SUBVIDEO_SURE_DELETE", "SUBVIDEO_SURE_EXIT", "SUBVIDEO_TIME", "SUBVIDEO_TIME_NOT_ENOUGH", "SUBVIDEO_TIME_SUCCESS", "SUBVIDEO_TIME_TOTAL_DURATION", "SUBVIDEO_TOTAL_LENGTH_0_5", "SUBVIDEO_TOTAL_LENGTH_10_15", "SUBVIDEO_TOTAL_LENGTH_15_20", "SUBVIDEO_TOTAL_LENGTH_20_30", "SUBVIDEO_TOTAL_LENGTH_30_40", "SUBVIDEO_TOTAL_LENGTH_40_50", "SUBVIDEO_TOTAL_LENGTH_50_60", "SUBVIDEO_TOTAL_LENGTH_5_10", "SUBVIDEO_TOTAL_NUM", "capturePhoto", "", "capturePhotoBack", "capturePhotoCamera", "isBack", "", "capturePhotoFront", "capturePhotoWithBeauty", "captureSingleVideo", "captureSingleVideoBack", "captureSingleVideoBeauty", "captureSingleVideoCamera", "captureSingleVideoDuration", "durationMs", "captureSingleVideoFront", "captureSingleVideoNotEnough", "captureSingleVideoSuccess", "captureSingleVideoTotal", "report", "key", "value", "subVideoAutoFinish", "subVideoClickFinish", "subVideoDuration", "fileList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "subVideoNotEnough", "subVideoNum", "num", "subVideoPrepareDelete", "subVideoPrepareExit", "subVideoSingleTime", "subVideoSuccess", "subVideoSureDelete", "subVideoSureExit", "subVideoTime", "subVideoTotalTime", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/report/FinderTwoFeedFlowEventSubscriber;", "Lcom/tencent/mm/plugin/finder/event/base/FinderFeedFlowEventSubscriber;", "eventDispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "(Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;)V", "TAG", "", "createEvent", "Lcom/tencent/mm/plugin/finder/event/base/TwoFeedFlowScrollEvent;", "newState", "", "handleEvent", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-finder_release"})
 public final class y
+  extends f
 {
-  public static final y vih;
+  private final String TAG = "Finder.FinderTwoFeedFlowEventSubscriber";
   
-  static
+  public y(c paramc)
   {
-    AppMethodBeat.i(250824);
-    vih = new y();
-    AppMethodBeat.o(250824);
+    super(paramc);
   }
   
-  public static void Fo(long paramLong)
+  public final b f(RecyclerView paramRecyclerView, int paramInt)
   {
-    AppMethodBeat.i(250820);
-    Q(218L, paramLong);
-    if (paramLong < 5000L)
+    int j = 0;
+    AppMethodBeat.i(291200);
+    p.k(paramRecyclerView, "recyclerView");
+    Object localObject1 = super.f(paramRecyclerView, paramInt);
+    if (localObject1 == null)
     {
-      Q(220L, 1L);
-      AppMethodBeat.o(250820);
-      return;
+      paramRecyclerView = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.event.base.TwoFeedFlowScrollEvent");
+      AppMethodBeat.o(291200);
+      throw paramRecyclerView;
     }
-    if (paramLong < 10000L)
+    localObject1 = (com.tencent.mm.plugin.finder.event.base.l)localObject1;
+    Object localObject2 = paramRecyclerView.getLayoutManager();
+    if (localObject2 == null)
     {
-      Q(221L, 1L);
-      AppMethodBeat.o(250820);
-      return;
+      paramRecyclerView = new t("null cannot be cast to non-null type androidx.recyclerview.widget.StaggeredGridLayoutManager");
+      AppMethodBeat.o(291200);
+      throw paramRecyclerView;
     }
-    if (paramLong < 15000L)
+    Object localObject3 = (StaggeredGridLayoutManager)localObject2;
+    localObject2 = ((StaggeredGridLayoutManager)localObject3).k(null);
+    localObject3 = ((StaggeredGridLayoutManager)localObject3).l(null);
+    int i;
+    if (localObject2 != null)
     {
-      Q(222L, 1L);
-      AppMethodBeat.o(250820);
-      return;
-    }
-    if (paramLong < 20000L)
-    {
-      Q(223L, 1L);
-      AppMethodBeat.o(250820);
-      return;
-    }
-    if (paramLong < 30000L)
-    {
-      Q(224L, 1L);
-      AppMethodBeat.o(250820);
-      return;
-    }
-    if (paramLong < 40000L)
-    {
-      Q(225L, 1L);
-      AppMethodBeat.o(250820);
-      return;
-    }
-    if (paramLong < 50000L)
-    {
-      Q(226L, 1L);
-      AppMethodBeat.o(250820);
-      return;
-    }
-    Q(227L, 1L);
-    AppMethodBeat.o(250820);
-  }
-  
-  public static void Q(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(250822);
-    com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1371L, paramLong1, paramLong2, false);
-    AppMethodBeat.o(250822);
-  }
-  
-  public static void ah(ArrayList<String> paramArrayList)
-  {
-    AppMethodBeat.i(250821);
-    p.h(paramArrayList, "fileList");
-    com.tencent.f.h.RTc.aX((Runnable)new a(paramArrayList));
-    AppMethodBeat.o(250821);
-  }
-  
-  public static void os(boolean paramBoolean)
-  {
-    AppMethodBeat.i(250818);
-    if (paramBoolean)
-    {
-      Q(202L, 1L);
-      AppMethodBeat.o(250818);
-      return;
-    }
-    Q(201L, 1L);
-    AppMethodBeat.o(250818);
-  }
-  
-  public static void ot(boolean paramBoolean)
-  {
-    AppMethodBeat.i(250819);
-    if (paramBoolean)
-    {
-      Q(214L, 1L);
-      AppMethodBeat.o(250819);
-      return;
-    }
-    Q(213L, 1L);
-    AppMethodBeat.o(250819);
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-  static final class a
-    implements Runnable
-  {
-    a(ArrayList paramArrayList) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(250817);
-      long l1 = 0L;
-      Object localObject1 = ((Iterable)this.vii).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = (String)((Iterator)localObject1).next();
-        Object localObject3 = c.xsz;
-        localObject2 = c.awl((String)localObject2);
-        long l2 = ((a)localObject2).videoDuration;
-        localObject3 = y.vih;
-        y.Fq(((a)localObject2).videoDuration);
-        l1 = l2 + l1;
+      paramInt = localObject2[0];
+      if (localObject2 == null) {
+        break label295;
       }
-      localObject1 = y.vih;
-      y.Fr(l1);
-      localObject1 = y.vih;
-      y.Fs(this.vii.size());
-      AppMethodBeat.o(250817);
+      i = localObject2[1];
+      label122:
+      ((com.tencent.mm.plugin.finder.event.base.l)localObject1).xrh = Math.min(paramInt, i);
+      if (localObject3 == null) {
+        break label300;
+      }
+      paramInt = localObject3[0];
+      label142:
+      i = j;
+      if (localObject3 != null) {
+        i = localObject3[1];
+      }
+      ((com.tencent.mm.plugin.finder.event.base.l)localObject1).xrj = Math.max(paramInt, i);
+      localObject2 = aj.AGc;
+      ((com.tencent.mm.plugin.finder.event.base.l)localObject1).xrr = aj.a(((com.tencent.mm.plugin.finder.event.base.l)localObject1).xrh, ((com.tencent.mm.plugin.finder.event.base.l)localObject1).xrj, paramRecyclerView);
+      if ((this.sCr != ((com.tencent.mm.plugin.finder.event.base.l)localObject1).xrh) || (dqm() != ((com.tencent.mm.plugin.finder.event.base.l)localObject1).xrj))
+      {
+        if ((this.sCr != 2147483647) && (dqm() != 2147483647)) {
+          break label305;
+        }
+        i = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).xrh;
+        paramInt = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).xrj;
+      }
+    }
+    for (;;)
+    {
+      localObject2 = aj.AGc;
+      ((com.tencent.mm.plugin.finder.event.base.l)localObject1).xrq = aj.a(i, paramInt, paramRecyclerView);
+      this.sCr = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).xrh;
+      Mg(((com.tencent.mm.plugin.finder.event.base.l)localObject1).xrj);
+      paramRecyclerView = (b)localObject1;
+      AppMethodBeat.o(291200);
+      return paramRecyclerView;
+      paramInt = 0;
+      break;
+      label295:
+      i = 0;
+      break label122;
+      label300:
+      paramInt = 0;
+      break label142;
+      label305:
+      if (((com.tencent.mm.plugin.finder.event.base.l)localObject1).xrh < this.sCr) {}
+      for (paramInt = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).xrh;; paramInt = this.sCr)
+      {
+        if (((com.tencent.mm.plugin.finder.event.base.l)localObject1).xrj <= dqm()) {
+          break label358;
+        }
+        j = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).xrj;
+        i = paramInt;
+        paramInt = j;
+        break;
+      }
+      label358:
+      j = dqm();
+      i = paramInt;
+      paramInt = j;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.report.y
  * JD-Core Version:    0.7.0.1
  */

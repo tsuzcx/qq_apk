@@ -11,9 +11,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.an.t;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.platformtools.x;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -23,30 +23,30 @@ public class LoginSmsUI
   extends LoginHistoryUI
 {
   private static String TAG = "LoginSmsUI";
-  private x kmF;
+  private x nex;
   
   public LoginSmsUI()
   {
     AppMethodBeat.i(169135);
-    this.kmF = new x();
+    this.nex = new x();
     AppMethodBeat.o(169135);
   }
   
-  protected final void bpf()
+  protected final void bzr()
   {
     AppMethodBeat.i(128197);
-    super.bpf();
+    super.bzr();
     if ((isFinishing()) || (getWindow() == null))
     {
       Log.e(TAG, "LoginHistoryUI is finishing");
       AppMethodBeat.o(128197);
       return;
     }
-    if (!Util.isNullOrNil(this.klX))
+    if (!Util.isNullOrNil(this.ndO))
     {
-      this.klt.account = this.klX;
+      this.ndj.account = this.ndO;
       hideVKB();
-      this.kmF.b(this, new Runnable()
+      this.nex.b(this, new Runnable()
       {
         public final void run()
         {
@@ -63,42 +63,42 @@ public class LoginSmsUI
   {
     AppMethodBeat.i(128196);
     super.onCreate(paramBundle);
-    if (this.kmm)
+    if (this.ned)
     {
       AppMethodBeat.o(128196);
       return;
     }
     this.loginType = 3;
-    if ((!Util.isPhoneNumber(this.kmc).booleanValue()) && (Util.isPhoneNumber(this.klX).booleanValue())) {
-      this.klL.setText(Ts(this.klX));
+    if ((!Util.isPhoneNumber(this.ndT).booleanValue()) && (Util.isPhoneNumber(this.ndO).booleanValue())) {
+      this.ndC.setText(aaY(this.ndO));
     }
-    this.kmk.setVisibility(0);
-    this.kmk.setInputType(3);
-    this.kmk.setSendSmsBtnClickListener(new View.OnClickListener()
+    this.neb.setVisibility(0);
+    this.neb.setInputType(3);
+    this.neb.setSendSmsBtnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(128191);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/LoginSmsUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        LoginSmsUI.a(LoginSmsUI.this, LoginSmsUI.this.klX);
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/ui/LoginSmsUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        LoginSmsUI.a(LoginSmsUI.this, LoginSmsUI.this.ndO);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/LoginSmsUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(128191);
       }
     });
-    this.kmk.addTextChangedListener(new TextWatcher()
+    this.neb.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
         AppMethodBeat.i(128192);
-        if (LoginSmsUI.this.kmk.getText().toString().length() > 0)
+        if (LoginSmsUI.this.neb.getText().toString().length() > 0)
         {
-          LoginSmsUI.this.klN.setEnabled(true);
+          LoginSmsUI.this.ndE.setEnabled(true);
           AppMethodBeat.o(128192);
           return;
         }
-        LoginSmsUI.this.klN.setEnabled(false);
+        LoginSmsUI.this.ndE.setEnabled(false);
         AppMethodBeat.o(128192);
       }
       
@@ -106,28 +106,28 @@ public class LoginSmsUI
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    if (this.kmk.getText().toString().length() > 0) {
-      this.klN.setEnabled(true);
+    if (this.neb.getText().toString().length() > 0) {
+      this.ndE.setEnabled(true);
     }
     for (;;)
     {
-      this.klN.setVisibility(0);
-      this.klN.setOnClickListener(new View.OnClickListener()
+      this.ndE.setVisibility(0);
+      this.ndE.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(128193);
           b localb = new b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/LoginSmsUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          LoginSmsUI.this.bpf();
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/ui/LoginSmsUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          LoginSmsUI.this.bzr();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/LoginSmsUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(128193);
         }
       });
       AppMethodBeat.o(128196);
       return;
-      this.klN.setEnabled(false);
+      this.ndE.setEnabled(false);
     }
   }
   
@@ -135,7 +135,7 @@ public class LoginSmsUI
   {
     AppMethodBeat.i(128200);
     super.onDestroy();
-    this.kmk.reset();
+    this.neb.reset();
     AppMethodBeat.o(128200);
   }
   
@@ -143,7 +143,7 @@ public class LoginSmsUI
   {
     AppMethodBeat.i(128198);
     super.onResume();
-    g.azz().a(145, this);
+    h.aGY().a(145, this);
     AppMethodBeat.o(128198);
   }
   
@@ -151,7 +151,7 @@ public class LoginSmsUI
   {
     AppMethodBeat.i(128199);
     super.onStop();
-    g.azz().b(145, this);
+    h.aGY().b(145, this);
     AppMethodBeat.o(128199);
   }
   
@@ -163,7 +163,7 @@ public class LoginSmsUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LoginSmsUI
  * JD-Core Version:    0.7.0.1
  */

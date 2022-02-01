@@ -9,7 +9,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.Iterator;
@@ -18,9 +21,9 @@ import java.util.List;
 public class BizInfoPayInfoIconPreference
   extends Preference
 {
-  private LinearLayout Bdo;
-  private List<String> Bdp;
-  private int Bdq;
+  private LinearLayout GXn;
+  private List<String> GXo;
+  private int GXp;
   private LayoutInflater mInflater;
   
   public BizInfoPayInfoIconPreference(Context paramContext, AttributeSet paramAttributeSet)
@@ -32,51 +35,51 @@ public class BizInfoPayInfoIconPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(26936);
-    this.Bdq = -1;
+    this.GXp = -1;
     this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-    setLayoutResource(2131495538);
+    setLayoutResource(R.i.mm_preference);
     AppMethodBeat.o(26936);
   }
   
-  private void UB(int paramInt)
-  {
-    AppMethodBeat.i(26942);
-    ImageView localImageView = (ImageView)this.mInflater.inflate(2131493721, null);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(a.fromDPToPix(this.mContext, 20), a.fromDPToPix(this.mContext, 20));
-    localLayoutParams.rightMargin = a.fromDPToPix(this.mContext, 6);
-    localImageView.setImageResource(paramInt);
-    this.Bdo.addView(localImageView, localLayoutParams);
-    AppMethodBeat.o(26942);
-  }
-  
-  private void aKn(String paramString)
+  private void aUM(String paramString)
   {
     AppMethodBeat.i(26943);
     CdnImageView localCdnImageView = new CdnImageView(this.mContext);
     localCdnImageView.setUrl(paramString);
     paramString = new LinearLayout.LayoutParams(a.fromDPToPix(this.mContext, 20), a.fromDPToPix(this.mContext, 20));
     paramString.rightMargin = a.fromDPToPix(this.mContext, 6);
-    this.Bdo.addView(localCdnImageView, paramString);
+    this.GXn.addView(localCdnImageView, paramString);
     AppMethodBeat.o(26943);
+  }
+  
+  private void abn(int paramInt)
+  {
+    AppMethodBeat.i(26942);
+    ImageView localImageView = (ImageView)this.mInflater.inflate(R.i.eeS, null);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(a.fromDPToPix(this.mContext, 20), a.fromDPToPix(this.mContext, 20));
+    localLayoutParams.rightMargin = a.fromDPToPix(this.mContext, 6);
+    localImageView.setImageResource(paramInt);
+    this.GXn.addView(localImageView, localLayoutParams);
+    AppMethodBeat.o(26942);
   }
   
   private void updateView()
   {
     AppMethodBeat.i(26941);
-    if (this.Bdo == null)
+    if (this.GXn == null)
     {
       AppMethodBeat.o(26941);
       return;
     }
-    this.Bdo.removeAllViews();
-    if (this.Bdq >= 0)
+    this.GXn.removeAllViews();
+    if (this.GXp >= 0)
     {
-      int i = this.Bdq;
+      int i = this.GXp;
       int j = 0;
       if (j < 5)
       {
         if (i <= 0) {
-          UB(2131689776);
+          abn(R.k.biz_info_brand_unselect);
         }
         for (;;)
         {
@@ -84,12 +87,12 @@ public class BizInfoPayInfoIconPreference
           break;
           if (i <= 10)
           {
-            UB(2131689774);
+            abn(R.k.biz_info_brand_half_selected);
             i -= 20;
           }
           else
           {
-            UB(2131689775);
+            abn(R.k.biz_info_brand_selected);
             i -= 20;
           }
         }
@@ -97,33 +100,33 @@ public class BizInfoPayInfoIconPreference
       AppMethodBeat.o(26941);
       return;
     }
-    if (this.Bdp != null)
+    if (this.GXo != null)
     {
-      Iterator localIterator = this.Bdp.iterator();
+      Iterator localIterator = this.GXo.iterator();
       while (localIterator.hasNext()) {
-        aKn((String)localIterator.next());
+        aUM((String)localIterator.next());
       }
     }
     AppMethodBeat.o(26941);
   }
   
-  public final void UA(int paramInt)
+  public final void abm(int paramInt)
   {
     AppMethodBeat.i(26939);
-    if (paramInt == this.Bdq)
+    if (paramInt == this.GXp)
     {
       AppMethodBeat.o(26939);
       return;
     }
-    this.Bdq = paramInt;
+    this.GXp = paramInt;
     updateView();
     AppMethodBeat.o(26939);
   }
   
-  public final void fR(List<String> paramList)
+  public final void gv(List<String> paramList)
   {
     AppMethodBeat.i(26940);
-    this.Bdp = paramList;
+    this.GXo = paramList;
     updateView();
     AppMethodBeat.o(26940);
   }
@@ -132,7 +135,7 @@ public class BizInfoPayInfoIconPreference
   {
     AppMethodBeat.i(26938);
     super.onBindView(paramView);
-    this.Bdo = ((LinearLayout)paramView.findViewById(2131308767));
+    this.GXn = ((LinearLayout)paramView.findViewById(R.h.summary));
     updateView();
     AppMethodBeat.o(26938);
   }
@@ -141,9 +144,9 @@ public class BizInfoPayInfoIconPreference
   {
     AppMethodBeat.i(26937);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    this.mInflater.inflate(2131493771, localViewGroup);
+    this.mInflater.inflate(R.i.efq, localViewGroup);
     AppMethodBeat.o(26937);
     return paramViewGroup;
   }

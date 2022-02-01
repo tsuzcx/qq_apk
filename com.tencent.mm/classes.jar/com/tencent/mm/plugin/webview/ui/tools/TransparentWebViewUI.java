@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.c.f;
 import com.tencent.mm.plugin.webview.ui.tools.game.GameWebViewUI;
 import com.tencent.mm.plugin.webview.ui.tools.widget.MovingImageButton;
 import com.tencent.mm.ui.widget.MMWebView;
@@ -13,20 +14,20 @@ import com.tencent.mm.ui.widget.MMWebView;
 public class TransparentWebViewUI
   extends GameWebViewUI
 {
-  public final boolean cpz()
+  public final boolean cDX()
   {
     return false;
   }
   
-  protected final void geA()
+  protected final void gXB()
   {
     AppMethodBeat.i(79798);
     setBackGroundColorResource(0);
     getContentView().setBackgroundResource(0);
-    this.pGj.setBackgroundResource(17170445);
-    this.pGj.setBackgroundColor(0);
-    findViewById(2131310394).setBackgroundResource(17170445);
-    findViewById(2131307160).setBackgroundResource(17170445);
+    this.pHS.setBackgroundResource(17170445);
+    this.pHS.setBackgroundColor(0);
+    findViewById(c.f.webview_keyboard_ll).setBackgroundResource(17170445);
+    findViewById(c.f.root_container).setBackgroundResource(17170445);
     AppMethodBeat.o(79798);
   }
   
@@ -35,17 +36,17 @@ public class TransparentWebViewUI
     int i = 1;
     AppMethodBeat.i(79797);
     super.initView();
-    k localk = this.JjI;
-    k.geY();
-    localk.Jha = true;
-    this.JjI.lcy = false;
-    this.JjI.zh(true);
-    this.JjI.agK(0);
+    l locall = this.QgG;
+    l.gYh();
+    locall.Qeo = true;
+    this.QgG.nWH = false;
+    this.QgG.Dc(true);
+    this.QgG.aoA(0);
     if ((getIntent() != null) && (getIntent().hasExtra("show_full_screen")) && (getIntent().getBooleanExtra("show_full_screen", false))) {}
     for (;;)
     {
-      if ((i != 0) && (this.Jif != null)) {
-        this.Jif.setCanMove(false);
+      if ((i != 0) && (this.Qfd != null)) {
+        this.Qfd.setCanMove(false);
       }
       AppMethodBeat.o(79797);
       return;
@@ -57,20 +58,20 @@ public class TransparentWebViewUI
   {
     AppMethodBeat.i(79796);
     super.onCreate(paramBundle);
-    if (this.screenOrientation == 1001)
+    if (this.PJe == 1001)
     {
-      this.screenOrientation = 0;
-      if (this.Jii != null)
+      this.PJe = 0;
+      if (this.Qfg != null)
       {
-        this.Jii.enable();
+        this.Qfg.enable();
         AppMethodBeat.o(79796);
       }
     }
-    else if (this.screenOrientation == 1002)
+    else if (this.PJe == 1002)
     {
-      this.screenOrientation = 1;
-      if (this.Jii != null) {
-        this.Jii.enable();
+      this.PJe = 1;
+      if (this.Qfg != null) {
+        this.Qfg.enable();
       }
     }
     AppMethodBeat.o(79796);

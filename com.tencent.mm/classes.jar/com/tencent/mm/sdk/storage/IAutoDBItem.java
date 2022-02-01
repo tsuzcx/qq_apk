@@ -3,7 +3,6 @@ package com.tencent.mm.sdk.storage;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.MatrixCursor;
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.lang.reflect.Field;
@@ -261,9 +260,9 @@ public abstract class IAutoDBItem
     return initAutoDBInfo(paramClass).fields;
   }
   
-  public static MAutoDBInfo initAutoDBInfo(Class<?> paramClass)
+  public static IAutoDBItem.MAutoDBInfo initAutoDBInfo(Class<?> paramClass)
   {
-    MAutoDBInfo localMAutoDBInfo = new MAutoDBInfo();
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
     LinkedList localLinkedList = new LinkedList();
     Field[] arrayOfField = paramClass.getDeclaredFields();
     int j = arrayOfField.length;
@@ -318,27 +317,21 @@ public abstract class IAutoDBItem
   
   public abstract ContentValues convertTo();
   
-  protected abstract MAutoDBInfo getDBInfo();
+  public abstract IAutoDBItem.MAutoDBInfo getDBInfo();
   
-  public static class MAutoDBInfo
+  public String[] getIndexCreateSQL()
   {
-    public Map<String, String> colsMap;
-    public String[] columns;
-    public Field[] fields;
-    public String primaryKey;
-    public String sql;
-    
-    public MAutoDBInfo()
-    {
-      AppMethodBeat.i(158082);
-      this.colsMap = new HashMap();
-      AppMethodBeat.o(158082);
-    }
+    return new String[0];
+  }
+  
+  public String getTableName()
+  {
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.storage.IAutoDBItem
  * JD-Core Version:    0.7.0.1
  */

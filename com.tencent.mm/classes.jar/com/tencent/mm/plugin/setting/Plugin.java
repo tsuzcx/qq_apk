@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.setting;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bd;
+import com.tencent.mm.model.be;
 import com.tencent.mm.pluginsdk.n;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class Plugin
-  implements com.tencent.mm.pluginsdk.b.d
+  implements com.tencent.mm.pluginsdk.c.d
 {
   public Plugin()
   {
@@ -24,7 +24,7 @@ public final class Plugin
     return localc;
   }
   
-  public final bd createSubCore()
+  public final be createSubCore()
   {
     AppMethodBeat.i(73744);
     Log.i("MicroMsg.Plugin.setting", "setting createSubCore " + System.currentTimeMillis());
@@ -33,7 +33,7 @@ public final class Plugin
     return locald;
   }
   
-  public final com.tencent.mm.pluginsdk.b.c getContactWidgetFactory()
+  public final com.tencent.mm.pluginsdk.c.c getContactWidgetFactory()
   {
     AppMethodBeat.i(73743);
     Log.i("MicroMsg.Plugin.setting", "setting getContactWidgetFactory " + System.currentTimeMillis());

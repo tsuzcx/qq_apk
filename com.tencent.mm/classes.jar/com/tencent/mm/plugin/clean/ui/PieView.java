@@ -12,32 +12,32 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class PieView
   extends View
 {
-  private int dTz;
-  private Paint gxp;
-  private int lCq;
-  private Paint qpU;
-  private Paint qpV;
-  private Paint qpW;
-  private Paint qpX;
-  private Paint qpY;
-  private Paint qpZ;
-  private int qqa;
-  private int qqb;
-  private int qqc;
-  private int qqd;
-  private int qqe;
-  private int qqf;
-  private int qqg;
-  private int qqh;
+  private int fMU;
+  private Paint jbC;
+  private int oxQ;
+  private Paint tOC;
+  private Paint tOD;
+  private Paint tOE;
+  private Paint tOF;
+  private Paint tOG;
+  private Paint tOH;
+  private int tOI;
+  private int tOJ;
+  private int tOK;
+  private int tOL;
+  private int tOM;
+  private int tON;
+  private int tOO;
+  private int tOP;
   
   public PieView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(22844);
-    this.lCq = 6;
-    this.qqg = 0;
-    this.dTz = 0;
-    this.qqh = -90;
+    this.oxQ = 6;
+    this.tOO = 0;
+    this.fMU = 0;
+    this.tOP = -90;
     initView();
     AppMethodBeat.o(22844);
   }
@@ -46,15 +46,15 @@ public class PieView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(22843);
-    this.lCq = 6;
-    this.qqg = 0;
-    this.dTz = 0;
-    this.qqh = -90;
+    this.oxQ = 6;
+    this.tOO = 0;
+    this.fMU = 0;
+    this.tOP = -90;
     initView();
     AppMethodBeat.o(22843);
   }
   
-  private static Paint EN(int paramInt)
+  private static Paint Iu(int paramInt)
   {
     AppMethodBeat.i(22846);
     Paint localPaint = new Paint();
@@ -65,7 +65,7 @@ public class PieView
     return localPaint;
   }
   
-  private static int W(int paramInt1, int paramInt2, int paramInt3)
+  private static int X(int paramInt1, int paramInt2, int paramInt3)
   {
     int i;
     if (paramInt2 - paramInt1 >= paramInt3) {
@@ -82,13 +82,13 @@ public class PieView
   private void initView()
   {
     AppMethodBeat.i(22845);
-    this.gxp = EN(-1);
-    this.qpU = EN(-657931);
-    this.qpV = EN(-2565928);
-    this.qpW = EN(-15223279);
-    this.qpX = EN(-7876878);
-    this.qpY = EN(-7876878);
-    this.qpZ = EN(-1644567);
+    this.jbC = Iu(-1);
+    this.tOC = Iu(-657931);
+    this.tOD = Iu(-2565928);
+    this.tOE = Iu(-15223279);
+    this.tOF = Iu(-7876878);
+    this.tOG = Iu(-7876878);
+    this.tOH = Iu(-1644567);
     AppMethodBeat.o(22845);
   }
   
@@ -99,37 +99,37 @@ public class PieView
     float f2 = getMeasuredHeight() / 2 + getTop();
     float f3 = getMeasuredHeight() / 3 + 15;
     RectF localRectF1 = new RectF(f1 - f3, f2 - f3, f1 + f3, f2 + f3);
-    if (this.dTz == 0)
+    if (this.fMU == 0)
     {
-      paramCanvas.drawCircle(f1, f2, f3, this.qpU);
-      paramCanvas.drawArc(localRectF1, this.qqh, 45.0F, true, this.qpV);
-      paramCanvas.drawCircle(f1, f2, f3 - 15.0F, this.gxp);
-      this.qqh += 4;
-      this.qqh %= 360;
+      paramCanvas.drawCircle(f1, f2, f3, this.tOC);
+      paramCanvas.drawArc(localRectF1, this.tOP, 45.0F, true, this.tOD);
+      paramCanvas.drawCircle(f1, f2, f3 - 15.0F, this.jbC);
+      this.tOP += 4;
+      this.tOP %= 360;
     }
     RectF localRectF2;
     int i;
     int j;
-    if (this.dTz == 1)
+    if (this.fMU == 1)
     {
       f3 = 10.0F + f3;
       localRectF2 = new RectF(f1 - f3, f2 - f3, f1 + f3, f3 + f2);
-      this.qqa = W(this.qqa, this.qqe, this.lCq);
-      paramCanvas.drawArc(localRectF2, -90.0F, this.qqa, true, this.qpW);
-      if (this.qqg > 0) {
+      this.tOI = X(this.tOI, this.tOM, this.oxQ);
+      paramCanvas.drawArc(localRectF2, -90.0F, this.tOI, true, this.tOE);
+      if (this.tOO > 0) {
         break label363;
       }
-      if (this.qqa == this.qqe)
+      if (this.tOI == this.tOM)
       {
-        this.qqc = W(this.qqc, this.qqf, this.lCq);
-        paramCanvas.drawArc(localRectF1, this.qqe - 90, this.qqc, true, this.qpX);
+        this.tOK = X(this.tOK, this.tON, this.oxQ);
+        paramCanvas.drawArc(localRectF1, this.tOM - 90, this.tOK, true, this.tOF);
       }
-      if (this.qqc == this.qqf)
+      if (this.tOK == this.tON)
       {
-        i = this.qqe;
-        j = this.qqf;
-        this.qqb = W(this.qqb, 360 - i - j, this.lCq);
-        paramCanvas.drawArc(localRectF1, this.qqe - 90 + this.qqf, this.qqb, true, this.qpY);
+        i = this.tOM;
+        j = this.tON;
+        this.tOJ = X(this.tOJ, 360 - i - j, this.oxQ);
+        paramCanvas.drawArc(localRectF1, this.tOM - 90 + this.tON, this.tOJ, true, this.tOG);
       }
     }
     for (;;)
@@ -138,50 +138,50 @@ public class PieView
       AppMethodBeat.o(22847);
       return;
       label363:
-      if (this.qqa == this.qqe)
+      if (this.tOI == this.tOM)
       {
-        this.qqd = W(this.qqd, this.qqg, this.lCq);
-        paramCanvas.drawArc(localRectF2, this.qqe - 90, this.qqd, true, this.qpZ);
+        this.tOL = X(this.tOL, this.tOO, this.oxQ);
+        paramCanvas.drawArc(localRectF2, this.tOM - 90, this.tOL, true, this.tOH);
       }
-      if (this.qqd == this.qqg)
+      if (this.tOL == this.tOO)
       {
-        this.qqc = W(this.qqc, this.qqf, this.lCq);
-        paramCanvas.drawArc(localRectF1, this.qqg - 90 + this.qqe, this.qqc, true, this.qpX);
+        this.tOK = X(this.tOK, this.tON, this.oxQ);
+        paramCanvas.drawArc(localRectF1, this.tOO - 90 + this.tOM, this.tOK, true, this.tOF);
       }
-      if (this.qqc == this.qqf)
+      if (this.tOK == this.tON)
       {
-        i = this.qqe;
-        j = this.qqf;
-        int k = this.qqg;
-        this.qqb = W(this.qqb, 360 - i - j - k, this.lCq);
-        paramCanvas.drawArc(localRectF1, this.qqe - 90 + this.qqf + this.qqg, this.qqb, true, this.qpY);
+        i = this.tOM;
+        j = this.tON;
+        int k = this.tOO;
+        this.tOJ = X(this.tOJ, 360 - i - j - k, this.oxQ);
+        paramCanvas.drawArc(localRectF1, this.tOM - 90 + this.tON + this.tOO, this.tOJ, true, this.tOG);
       }
     }
   }
   
   public void setDeepGrayTargetAngle(int paramInt)
   {
-    this.qqf = paramInt;
+    this.tON = paramInt;
   }
   
   public void setGreenTargetAngle(int paramInt)
   {
-    this.qqe = paramInt;
+    this.tOM = paramInt;
   }
   
   public void setOtherAccTargetAngle(int paramInt)
   {
-    this.qqg = paramInt;
+    this.tOO = paramInt;
   }
   
   public void setStage(int paramInt)
   {
-    this.dTz = paramInt;
+    this.fMU = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.ui.PieView
  * JD-Core Version:    0.7.0.1
  */

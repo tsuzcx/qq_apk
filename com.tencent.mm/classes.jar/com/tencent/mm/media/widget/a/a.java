@@ -10,131 +10,186 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.util.Size;
 import android.view.SurfaceHolder;
-import com.tencent.mm.g.a.pl;
-import com.tencent.mm.g.a.pl.b;
+import com.tencent.mm.f.a.qj;
+import com.tencent.mm.f.a.qj.b;
 import com.tencent.mm.media.widget.camerarecordview.d.b.a;
 import com.tencent.mm.plugin.mmsight.model.h.c;
-import com.tencent.mm.plugin.mmsight.model.q;
+import com.tencent.mm.plugin.t.a.b;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.n.n;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/widget/camera/BaseCommonCamera;", "Lcom/tencent/mm/media/widget/camera/ICommonCamera;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "CROP_PREVIEW_THRESHOLD", "", "getCROP_PREVIEW_THRESHOLD", "()I", "DEFAULT_UPPER_BOUND", "getDEFAULT_UPPER_BOUND", "SMALL_ZOOM_STEP_VAL", "", "getSMALL_ZOOM_STEP_VAL", "()F", "setSMALL_ZOOM_STEP_VAL", "(F)V", "TAG", "", "TAG_SETTING", "getTAG_SETTING", "()Ljava/lang/String;", "cameraConfig", "Lcom/tencent/mm/media/widget/camera/CameraConfig;", "getCameraConfig", "()Lcom/tencent/mm/media/widget/camera/CameraConfig;", "setCameraConfig", "(Lcom/tencent/mm/media/widget/camera/CameraConfig;)V", "cameraDeviceConfig", "Lcom/tencent/mm/media/widget/camerarecordview/process/ICommonCameraContainer$CameraDeviceConfig;", "getCameraDeviceConfig", "()Lcom/tencent/mm/media/widget/camerarecordview/process/ICommonCameraContainer$CameraDeviceConfig;", "setCameraDeviceConfig", "(Lcom/tencent/mm/media/widget/camerarecordview/process/ICommonCameraContainer$CameraDeviceConfig;)V", "cameraStatus", "Lcom/tencent/mm/media/widget/camera/BaseCommonCamera$CameraStatus;", "getCameraStatus", "()Lcom/tencent/mm/media/widget/camera/BaseCommonCamera$CameraStatus;", "setCameraStatus", "(Lcom/tencent/mm/media/widget/camera/BaseCommonCamera$CameraStatus;)V", "getContext", "()Landroid/content/Context;", "setContext", "cropSize", "Landroid/graphics/Point;", "getCropSize", "()Landroid/graphics/Point;", "setCropSize", "(Landroid/graphics/Point;)V", "customDisplayScreenSize", "Landroid/util/Size;", "getCustomDisplayScreenSize", "()Landroid/util/Size;", "setCustomDisplayScreenSize", "(Landroid/util/Size;)V", "displayRatio", "getDisplayRatio", "setDisplayRatio", "hasShownErrorTip", "", "isCameraOpen", "()Z", "setCameraOpen", "(Z)V", "isReturnFrameCallbackAny", "setReturnFrameCallbackAny", "isZooming", "setZooming", "params", "Lcom/tencent/mm/plugin/mmsight/model/RecordParams;", "getParams", "()Lcom/tencent/mm/plugin/mmsight/model/RecordParams;", "setParams", "(Lcom/tencent/mm/plugin/mmsight/model/RecordParams;)V", "resolutionLimit", "getResolutionLimit", "setResolutionLimit", "(I)V", "scrollSmallZoomStep", "getScrollSmallZoomStep", "setScrollSmallZoomStep", "sightHandler", "Lcom/tencent/mm/media/widget/camera/common/CameraHandler;", "getSightHandler", "()Lcom/tencent/mm/media/widget/camera/common/CameraHandler;", "smallZoomStep", "getSmallZoomStep", "setSmallZoomStep", "surfaceHolder", "Landroid/view/SurfaceHolder;", "getSurfaceHolder", "()Landroid/view/SurfaceHolder;", "setSurfaceHolder", "(Landroid/view/SurfaceHolder;)V", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "getSurfaceTexture", "()Landroid/graphics/SurfaceTexture;", "setSurfaceTexture", "(Landroid/graphics/SurfaceTexture;)V", "useBackCamera", "getUseBackCamera", "setUseBackCamera", "useCpuCrop", "getUseCpuCrop", "setUseCpuCrop", "checkCameraOpenSucc", "scene", "focusOnFace", "faceLocation", "", "isClickScreen", "getCameraPreviewFps", "getCameraSensorRotate", "getDisplaySize", "getSupportPreviewSize", "", "()[Landroid/util/Size;", "initCamera", "useBack", "initCameraDeviceConfig", "", "deviceConfig", "isBackCamera", "isCameraPreviewing", "onDestroy", "release", "selectNoCropPreviewSize", "setCameraDisplayOrientation", "cameraId", "mScreenRotation", "setDisplayScreenSize", "screenSize", "setPreviewDisplayRatio", "ratio", "setPreviewSize", "width", "height", "setReturnFrameCallback", "value", "showCameraErrorTips", "startPreview", "surface", "switchCamera", "switchRecordStream", "takePhoto", "dataCallback", "Lkotlin/Function1;", "Landroid/graphics/Bitmap;", "Lkotlin/ParameterName;", "name", "bitmap", "CameraStatus", "plugin-mediaeditor_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/widget/camera/BaseCommonCamera;", "Lcom/tencent/mm/media/widget/camera/ICommonCamera;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "CROP_PREVIEW_THRESHOLD", "", "getCROP_PREVIEW_THRESHOLD", "()I", "DEFAULT_UPPER_BOUND", "getDEFAULT_UPPER_BOUND", "SMALL_ZOOM_STEP_VAL", "", "getSMALL_ZOOM_STEP_VAL", "()F", "setSMALL_ZOOM_STEP_VAL", "(F)V", "TAG", "", "TAG_SETTING", "getTAG_SETTING", "()Ljava/lang/String;", "cameraConfig", "Lcom/tencent/mm/media/widget/camera/CameraConfig;", "getCameraConfig", "()Lcom/tencent/mm/media/widget/camera/CameraConfig;", "setCameraConfig", "(Lcom/tencent/mm/media/widget/camera/CameraConfig;)V", "cameraDeviceConfig", "Lcom/tencent/mm/media/widget/camerarecordview/process/ICommonCameraContainer$CameraDeviceConfig;", "getCameraDeviceConfig", "()Lcom/tencent/mm/media/widget/camerarecordview/process/ICommonCameraContainer$CameraDeviceConfig;", "setCameraDeviceConfig", "(Lcom/tencent/mm/media/widget/camerarecordview/process/ICommonCameraContainer$CameraDeviceConfig;)V", "cameraStatus", "Lcom/tencent/mm/media/widget/camera/BaseCommonCamera$CameraStatus;", "getCameraStatus", "()Lcom/tencent/mm/media/widget/camera/BaseCommonCamera$CameraStatus;", "setCameraStatus", "(Lcom/tencent/mm/media/widget/camera/BaseCommonCamera$CameraStatus;)V", "getContext", "()Landroid/content/Context;", "setContext", "cropSize", "Landroid/graphics/Point;", "getCropSize", "()Landroid/graphics/Point;", "setCropSize", "(Landroid/graphics/Point;)V", "customDisplayScreenSize", "Landroid/util/Size;", "getCustomDisplayScreenSize", "()Landroid/util/Size;", "setCustomDisplayScreenSize", "(Landroid/util/Size;)V", "displayRatio", "getDisplayRatio", "setDisplayRatio", "hasShownErrorTip", "", "isCameraOpen", "()Z", "setCameraOpen", "(Z)V", "isReturnFrameCallbackAny", "setReturnFrameCallbackAny", "isZooming", "setZooming", "params", "Lcom/tencent/mm/plugin/mmsight/model/RecordParams;", "getParams", "()Lcom/tencent/mm/plugin/mmsight/model/RecordParams;", "setParams", "(Lcom/tencent/mm/plugin/mmsight/model/RecordParams;)V", "ratio", "getRatio", "()Ljava/lang/Float;", "setRatio", "(Ljava/lang/Float;)V", "Ljava/lang/Float;", "resolutionLimit", "getResolutionLimit", "setResolutionLimit", "(I)V", "scrollSmallZoomStep", "getScrollSmallZoomStep", "setScrollSmallZoomStep", "sightHandler", "Lcom/tencent/mm/media/widget/camera/common/CameraHandler;", "getSightHandler", "()Lcom/tencent/mm/media/widget/camera/common/CameraHandler;", "smallZoomStep", "getSmallZoomStep", "setSmallZoomStep", "surfaceHolder", "Landroid/view/SurfaceHolder;", "getSurfaceHolder", "()Landroid/view/SurfaceHolder;", "setSurfaceHolder", "(Landroid/view/SurfaceHolder;)V", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "getSurfaceTexture", "()Landroid/graphics/SurfaceTexture;", "setSurfaceTexture", "(Landroid/graphics/SurfaceTexture;)V", "useBackCamera", "getUseBackCamera", "setUseBackCamera", "useCpuCrop", "getUseCpuCrop", "setUseCpuCrop", "checkCameraOpenSucc", "scene", "focusOnFace", "faceLocation", "", "isClickScreen", "getCameraPreviewFps", "getCameraSensorRotate", "getDisplaySize", "getSupportPreviewSize", "", "()[Landroid/util/Size;", "initCamera", "useBack", "initCameraDeviceConfig", "", "deviceConfig", "isBackCamera", "isCameraPreviewing", "onDestroy", "release", "selectNoCropPreviewSize", "setCameraDisplayOrientation", "cameraId", "mScreenRotation", "setDisplayScreenSize", "screenSize", "setPreviewDisplayRatio", "setPreviewSize", "width", "height", "setReturnFrameCallback", "value", "showCameraErrorTips", "startPreview", "surface", "switchCamera", "switchRecordStream", "takePhoto", "dataCallback", "Lkotlin/Function1;", "Landroid/graphics/Bitmap;", "Lkotlin/ParameterName;", "name", "bitmap", "CameraStatus", "plugin-mediaeditor_release"})
 public abstract class a
-  implements d
+  implements e
 {
   private final String TAG;
-  protected boolean aYc;
-  private SurfaceHolder beb;
-  protected Context context;
-  protected b hAu;
-  protected final String ilH;
-  protected final int ilI;
-  private final int ilJ;
-  public final com.tencent.mm.media.widget.a.a.a ilK;
-  private boolean ilL;
-  protected boolean ilM;
-  private a.a ilN;
-  protected boolean ilO;
-  float ilP;
-  boolean ilQ;
-  protected q ilR;
-  protected b.a ilS;
-  private int ilT;
-  Size ilU;
-  protected Point ilV;
-  protected int ilW;
-  int ilX;
-  protected boolean ilY;
-  protected SurfaceTexture surfaceTexture;
+  private boolean aHx;
+  private SurfaceHolder aNC;
+  private Context context;
+  private b knv;
+  private final String laH;
+  private final int laI;
+  private final int laJ;
+  public final com.tencent.mm.media.widget.a.a.a laK;
+  private boolean laL;
+  protected boolean laM;
+  private a.a laN;
+  private boolean laO;
+  private float laP;
+  private boolean laQ;
+  protected com.tencent.mm.plugin.mmsight.model.p laR;
+  protected b.a laS;
+  private int laT;
+  public Size laU;
+  private Float laV;
+  protected Point laW;
+  private int laX;
+  private int laY;
+  private boolean laZ;
+  private SurfaceTexture surfaceTexture;
   
   public a(Context paramContext)
   {
     this.context = paramContext;
     this.TAG = "MicroMsg.BaseCommonCamera";
-    this.ilH = "MicroMsg.MMSightCameraSetting";
-    this.ilI = 2100;
-    this.ilJ = 8;
+    this.laH = "MicroMsg.MMSightCameraSetting";
+    this.laI = 2100;
+    this.laJ = 8;
     paramContext = Looper.getMainLooper();
-    p.g(paramContext, "Looper.getMainLooper()");
-    this.ilK = new com.tencent.mm.media.widget.a.a.a(paramContext, this.context, (d)this);
-    this.ilM = true;
-    this.ilN = a.a.ilZ;
-    this.ilO = true;
-    paramContext = q.ejT();
-    p.g(paramContext, "RecordParams.getBigSightDefault()");
-    this.ilR = paramContext;
-    this.hAu = b.imh;
-    this.ilT = 40000;
-    this.ilW = -1;
-    this.ilX = -1;
+    kotlin.g.b.p.j(paramContext, "Looper.getMainLooper()");
+    this.laK = new com.tencent.mm.media.widget.a.a.a(paramContext, this.context, (e)this);
+    this.laM = true;
+    this.laN = a.a.lba;
+    this.laO = true;
+    paramContext = com.tencent.mm.plugin.mmsight.model.p.eTA();
+    kotlin.g.b.p.j(paramContext, "RecordParams.getBigSightDefault()");
+    this.laR = paramContext;
+    this.knv = b.lbh;
+    this.laT = 40000;
+    this.laX = -1;
+    this.laY = -1;
   }
   
   public void a(SurfaceTexture paramSurfaceTexture, boolean paramBoolean, int paramInt)
   {
     this.surfaceTexture = paramSurfaceTexture;
-    this.ilO = paramBoolean;
-    this.ilT = paramInt;
+    this.laO = paramBoolean;
+    this.laT = paramInt;
   }
   
   public void a(SurfaceHolder paramSurfaceHolder, boolean paramBoolean, int paramInt)
   {
-    this.beb = paramSurfaceHolder;
-    this.ilO = paramBoolean;
-    this.ilT = paramInt;
+    this.aNC = paramSurfaceHolder;
+    this.laO = paramBoolean;
+    this.laT = paramInt;
   }
   
   protected final void a(a.a parama)
   {
-    p.h(parama, "<set-?>");
-    this.ilN = parama;
+    kotlin.g.b.p.k(parama, "<set-?>");
+    this.laN = parama;
   }
   
   public final void a(b.a parama)
   {
-    p.h(parama, "deviceConfig");
-    this.ilS = parama;
+    kotlin.g.b.p.k(parama, "deviceConfig");
+    this.laS = parama;
   }
   
-  protected final void aPa()
+  protected final void a(Float paramFloat)
   {
-    if ((this.ilL) || (this.context == null)) {}
+    this.laV = paramFloat;
+  }
+  
+  protected final String aXE()
+  {
+    return this.laH;
+  }
+  
+  protected final int aXF()
+  {
+    return this.laI;
+  }
+  
+  protected final boolean aXG()
+  {
+    return this.laO;
+  }
+  
+  protected final boolean aXH()
+  {
+    return this.laQ;
+  }
+  
+  protected final b aXI()
+  {
+    return this.knv;
+  }
+  
+  protected final Float aXJ()
+  {
+    return this.laV;
+  }
+  
+  protected final int aXK()
+  {
+    return this.laX;
+  }
+  
+  protected final boolean aXL()
+  {
+    return this.aHx;
+  }
+  
+  protected final int aXM()
+  {
+    return this.laY;
+  }
+  
+  protected final boolean aXN()
+  {
+    return this.laZ;
+  }
+  
+  protected final void aXO()
+  {
+    if ((this.laL) || (this.context == null)) {}
     Object localObject;
     do
     {
       do
       {
         return;
-      } while ((n.I(Build.MANUFACTURER, "meizu", true)) && (!com.tencent.mm.compatible.e.b.apj()));
-      localObject = new pl();
-      ((pl)localObject).dVC.type = 2;
+      } while ((n.L(Build.MANUFACTURER, "meizu", true)) && (!com.tencent.mm.compatible.e.b.avv()));
+      localObject = new qj();
+      ((qj)localObject).fPf.type = 2;
       EventCenter.instance.publish((IEvent)localObject);
-      if (((pl)localObject).dVD.dVB)
+      if (((qj)localObject).fPg.fPe)
       {
-        this.ilL = true;
+        this.laL = true;
         return;
       }
-      localObject = com.tencent.mm.ui.base.h.n(this.context, 2131765857, 2131755998);
+      localObject = com.tencent.mm.ui.base.h.p(this.context, a.b.short_video_no_record_video_permission, a.b.app_tip);
     } while (localObject == null);
     ((com.tencent.mm.ui.widget.a.d)localObject).setCancelable(false);
     ((com.tencent.mm.ui.widget.a.d)localObject).setCanceledOnTouchOutside(false);
     ((com.tencent.mm.ui.widget.a.d)localObject).show();
-    this.ilL = true;
+    this.laL = true;
   }
   
-  public final boolean aPb()
+  public final boolean aXP()
   {
     boolean bool = false;
-    if ((this.surfaceTexture == null) && (this.beb == null))
+    if ((this.surfaceTexture == null) && (this.aNC == null))
     {
       Log.e(this.TAG, " do you forget override func startPreview");
       return false;
     }
-    if (!aPc())
+    if (!aXQ())
     {
       Log.e(this.TAG, " now is cpature image and refuse to switchCamera");
       return false;
@@ -142,100 +197,125 @@ public abstract class a
     release();
     Object localObject = this.context;
     if (localObject == null) {
-      p.hyc();
+      kotlin.g.b.p.iCn();
     }
-    if (!this.ilM) {
+    if (!this.laM) {
       bool = true;
     }
-    v((Context)localObject, bool);
-    Log.i(this.TAG, "useCpuCrop : " + this.ilO + " , resolutionLimit: " + this.ilT);
+    y((Context)localObject, bool);
+    Log.i(this.TAG, "useCpuCrop : " + this.laO + " , resolutionLimit: " + this.laT);
     if (this.surfaceTexture == null)
     {
-      localObject = this.beb;
+      localObject = this.aNC;
       if (localObject == null) {
-        p.hyc();
+        kotlin.g.b.p.iCn();
       }
-      a((SurfaceHolder)localObject, this.ilO, this.ilT);
-      return this.ilM;
+      a((SurfaceHolder)localObject, this.laO, this.laT);
+      return this.laM;
     }
     localObject = this.surfaceTexture;
     if (localObject == null) {
-      p.hyc();
+      kotlin.g.b.p.iCn();
     }
-    a((SurfaceTexture)localObject, this.ilO, this.ilT);
-    return this.ilM;
+    a((SurfaceTexture)localObject, this.laO, this.laV, this.laT);
+    return this.laM;
   }
   
-  public final boolean aPc()
+  public final boolean aXQ()
   {
-    return this.ilN == a.a.ima;
+    return this.laN == a.a.lbb;
   }
   
-  public boolean aPd()
+  public boolean aXR()
   {
     return false;
   }
   
-  public final void aPe()
+  public final void aXS()
   {
-    this.ilQ = true;
+    this.laQ = true;
   }
   
-  public int aPf()
+  public int aXT()
   {
     return 0;
   }
   
-  public boolean aPg()
+  public boolean aXU()
   {
     return false;
   }
   
-  public abstract boolean aPh();
+  public abstract boolean aXV();
   
-  public abstract Size[] aPi();
+  public abstract Size[] aXW();
   
-  public final Point aPj()
+  public final Point aXX()
   {
-    if (this.ilU == null)
+    if (this.laU == null)
     {
-      localObject = com.tencent.mm.plugin.mmsight.d.gx(this.context);
-      p.g(localObject, "MMSightUtil.getDisplaySize(context)");
+      localObject = com.tencent.mm.plugin.mmsight.d.hv(this.context);
+      kotlin.g.b.p.j(localObject, "MMSightUtil.getDisplaySize(context)");
       return localObject;
     }
-    Object localObject = this.ilU;
+    Object localObject = this.laU;
     if (localObject == null) {
-      p.hyc();
+      kotlin.g.b.p.iCn();
     }
     int i = ((Size)localObject).getWidth();
-    localObject = this.ilU;
+    localObject = this.laU;
     if (localObject == null) {
-      p.hyc();
+      kotlin.g.b.p.iCn();
     }
     return new Point(i, ((Size)localObject).getHeight());
   }
   
-  public int df(int paramInt1, int paramInt2)
+  public int dB(int paramInt1, int paramInt2)
   {
     return 0;
   }
   
-  public abstract boolean dg(int paramInt1, int paramInt2);
+  public abstract boolean dC(int paramInt1, int paramInt2);
+  
+  protected final void fG(boolean paramBoolean)
+  {
+    this.aHx = paramBoolean;
+  }
+  
+  protected final void fH(boolean paramBoolean)
+  {
+    this.laZ = paramBoolean;
+  }
+  
+  public final Context getContext()
+  {
+    return this.context;
+  }
+  
+  public final float getDisplayRatio()
+  {
+    return this.laP;
+  }
+  
+  protected final SurfaceTexture getSurfaceTexture()
+  {
+    return this.surfaceTexture;
+  }
   
   public boolean n(kotlin.g.a.b<? super Bitmap, x> paramb)
   {
-    p.h(paramb, "dataCallback");
+    kotlin.g.b.p.k(paramb, "dataCallback");
     return false;
   }
   
   public final void onDestroy()
   {
-    Object localObject = this.ilK;
-    com.tencent.mm.media.widget.b.d locald = ((com.tencent.mm.media.widget.a.a.a)localObject).imN;
-    if (locald != null) {
-      locald.release();
+    Object localObject = this.laK;
+    com.tencent.mm.media.widget.b.e locale = ((com.tencent.mm.media.widget.a.a.a)localObject).lbO;
+    if (locale != null) {
+      locale.release();
     }
-    localObject = ((com.tencent.mm.media.widget.a.a.a)localObject).imL;
+    localObject = ((com.tencent.mm.media.widget.a.a.a)localObject).lbM;
     if (localObject != null) {
       ((HandlerThread)localObject).quitSafely();
     }
@@ -243,21 +323,31 @@ public abstract class a
   
   public void release()
   {
-    this.ilN = a.a.ilZ;
+    this.laN = a.a.lba;
   }
   
-  public boolean rp(int paramInt)
+  public final void setDisplayScreenSize(Size paramSize)
+  {
+    this.laU = paramSize;
+  }
+  
+  protected final void uh(int paramInt)
+  {
+    this.laX = paramInt;
+  }
+  
+  public boolean ui(int paramInt)
   {
     return false;
   }
   
-  public boolean rq(int paramInt)
+  public boolean uj(int paramInt)
   {
     try
     {
-      boolean bool = aPh();
-      Point localPoint = aPj();
-      Size[] arrayOfSize = aPi();
+      boolean bool = aXV();
+      Point localPoint = aXX();
+      Size[] arrayOfSize = aXW();
       if (arrayOfSize == null)
       {
         Log.e(this.TAG, "fuck, preview size null!!");
@@ -265,26 +355,26 @@ public abstract class a
       }
       Object localObject2 = com.tencent.mm.plugin.mmsight.model.h.b(arrayOfSize, localPoint, paramInt, bool);
       Object localObject1 = localObject2;
-      if (((h.c)localObject2).zum == null)
+      if (((h.c)localObject2).EZN == null)
       {
         Log.e(this.TAG, "fuck, preview size still null!!");
-        localObject1 = com.tencent.mm.plugin.mmsight.model.h.a(arrayOfSize, new Point(Math.min(localPoint.x, localPoint.y), Math.max(localPoint.x, localPoint.y)), this.ilI, bool);
+        localObject1 = com.tencent.mm.plugin.mmsight.model.h.a(arrayOfSize, new Point(Math.min(localPoint.x, localPoint.y), Math.max(localPoint.x, localPoint.y)), this.laI, bool);
       }
-      if (((h.c)localObject1).zum == null)
+      if (((h.c)localObject1).EZN == null)
       {
         Log.i(this.TAG, "checkMore start %s", new Object[] { ((h.c)localObject1).toString() });
-        ((h.c)localObject1).zum = ((h.c)localObject1).zup;
-        ((h.c)localObject1).zun = ((h.c)localObject1).zuq;
-        ((h.c)localObject1).zuo = ((h.c)localObject1).zur;
+        ((h.c)localObject1).EZN = ((h.c)localObject1).EZQ;
+        ((h.c)localObject1).EZO = ((h.c)localObject1).EZR;
+        ((h.c)localObject1).EZP = ((h.c)localObject1).EZS;
       }
-      localObject2 = new Size(((h.c)localObject1).zum.x, ((h.c)localObject1).zum.y);
-      this.ilR.sUz = ((Size)localObject2).getWidth();
-      this.ilR.sUA = ((Size)localObject2).getHeight();
-      if (((h.c)localObject1).zuo != null) {
-        this.ilV = ((h.c)localObject1).zuo;
+      localObject2 = new Size(((h.c)localObject1).EZN.x, ((h.c)localObject1).EZN.y);
+      this.laR.wAw = ((Size)localObject2).getWidth();
+      this.laR.wAx = ((Size)localObject2).getHeight();
+      if (((h.c)localObject1).EZP != null) {
+        this.laW = ((h.c)localObject1).EZP;
       }
-      dg(((Size)localObject2).getWidth(), ((Size)localObject2).getHeight());
-      Log.i(this.TAG, "final set camera preview size: " + localObject2 + ", cropSize: " + this.ilV);
+      dC(((Size)localObject2).getWidth(), ((Size)localObject2).getHeight());
+      Log.i(this.TAG, "final set camera preview size: " + localObject2 + ", cropSize: " + this.laW);
       return true;
     }
     catch (CameraAccessException localCameraAccessException)
@@ -299,21 +389,16 @@ public abstract class a
     return false;
   }
   
-  public final void setDisplayScreenSize(Size paramSize)
+  public boolean y(Context paramContext, boolean paramBoolean)
   {
-    this.ilU = paramSize;
-  }
-  
-  public boolean v(Context paramContext, boolean paramBoolean)
-  {
-    p.h(paramContext, "context");
-    this.ilM = paramBoolean;
+    kotlin.g.b.p.k(paramContext, "context");
+    this.laM = paramBoolean;
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.media.widget.a.a
  * JD-Core Version:    0.7.0.1
  */

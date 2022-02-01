@@ -3,6 +3,7 @@ package com.tencent.tencentmap.mapsdk.maps;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Rect;
+import android.location.Location;
 import android.view.View;
 import com.tencent.map.lib.MapLanguage;
 import com.tencent.map.sdk.comps.indoor.IIndoor;
@@ -311,6 +312,16 @@ public abstract interface TencentMap
     public abstract void onMarkerDragStart(Marker paramMarker);
   }
   
+  public static abstract interface OnMyLocationChangeListener
+  {
+    public abstract void onMyLocationChange(Location paramLocation);
+  }
+  
+  public static abstract interface OnMyLocationClickListener
+  {
+    public abstract boolean onMyLocationClicked(LatLng paramLatLng);
+  }
+  
   public static abstract interface OnPolylineClickListener
   {
     public abstract void onPolylineClick(Polyline paramPolyline, LatLng paramLatLng);
@@ -323,7 +334,7 @@ public abstract interface TencentMap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.TencentMap
  * JD-Core Version:    0.7.0.1
  */

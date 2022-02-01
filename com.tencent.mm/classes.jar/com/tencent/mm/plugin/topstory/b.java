@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.topstory;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.g.a.fp;
-import com.tencent.mm.g.a.ts;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cj;
-import com.tencent.mm.model.cl;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.f.a.uv;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.ck;
+import com.tencent.mm.model.cm;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.messenger.foundation.a.q;
-import com.tencent.mm.plugin.messenger.foundation.a.s;
+import com.tencent.mm.plugin.messenger.foundation.a.v;
+import com.tencent.mm.plugin.topstory.a.e;
 import com.tencent.mm.plugin.topstory.a.e.a;
 import com.tencent.mm.plugin.websearch.api.ai;
 import com.tencent.mm.plugin.websearch.api.ar;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.protocal.protobuf.eiq;
+import com.tencent.mm.protocal.protobuf.ess;
+import com.tencent.mm.protocal.protobuf.flf;
 import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
@@ -26,284 +26,93 @@ import com.tencent.mm.storage.ar.a;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class b
-  implements com.tencent.mm.plugin.topstory.a.e
+public class b
+  implements e
 {
-  eiq GiK;
-  eiq GiL;
-  LinkedList<eiq> GiM;
-  e.a GiN;
-  q GiO;
-  com.tencent.mm.plugin.topstory.a.c.b GiP;
-  final String GiQ;
-  String GiR;
-  IListener<fp> GiS;
-  private i gNh;
+  private final String MVA;
+  private final String MVB;
+  com.tencent.mm.plugin.messenger.foundation.a.t MVC;
+  private com.tencent.mm.plugin.topstory.a.c.b MVD;
+  private ess MVw;
+  private ess MVx;
+  private LinkedList<ess> MVy;
+  private e.a MVz;
+  private i jxB;
   
   public b()
   {
     AppMethodBeat.i(88420);
-    this.GiM = new LinkedList();
-    this.GiO = new q()
+    this.MVy = new LinkedList();
+    this.MVA = ".sysmsg.mmsearch_reddot_new.";
+    this.MVB = "sub_reddot";
+    this.MVC = new com.tencent.mm.plugin.messenger.foundation.a.t()
     {
       public final void onNewXmlReceived(String paramAnonymousString, Map<String, String> paramAnonymousMap, h.a paramAnonymousa)
       {
         AppMethodBeat.i(88417);
-        int i;
-        if ((paramAnonymousMap != null) && (paramAnonymousString != null) && (paramAnonymousString.equals("mmsearch_reddot_new")))
-        {
-          i = Util.safeParseInt((String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.entry"));
-          if (i == 2)
-          {
-            paramAnonymousa = new eiq();
-            b.a(paramAnonymousa);
-            Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "recv %s, %s", new Object[] { "mmsearch_reddot_new", paramAnonymousMap.toString() });
-            paramAnonymousa.NhP = Util.safeParseInt((String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.clear"));
-            paramAnonymousa.IFn = i;
-            paramAnonymousa.msgId = Util.safeFormatString((String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.msgid"), new Object[0]);
-            paramAnonymousa.IFp = Util.safeParseInt((String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.discovery"));
-            paramAnonymousa.IFo = Util.safeParseInt((String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.android_cli_version"));
-            paramAnonymousa.jmW = Util.safeParseLong((String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.expire_time"));
-            paramAnonymousa.IEj = Util.safeParseInt((String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.h5_version"));
-            paramAnonymousa.type = Util.safeParseInt((String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.reddot_type"));
-            paramAnonymousa.text = ((String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.reddot_text"));
-            paramAnonymousa.icon = ((String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.reddot_icon"));
-            paramAnonymousa.NhO = Util.safeParseLong((String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.timestamp"));
-            paramAnonymousa.NhQ = cl.aWA();
-            paramAnonymousa.jlm = Util.safeParseInt((String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.seq"));
-            paramAnonymousa.priority = Util.safeParseInt((String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.priority"));
-            paramAnonymousa.extInfo = Util.safeFormatString((String)paramAnonymousMap.get(".sysmsg.mmsearch_reddot_new.ext_info"), new Object[0]);
-            if (paramAnonymousa.NhP == 1)
-            {
-              paramAnonymousString = b.this;
-              switch (paramAnonymousa.type)
-              {
-              case 5: 
-              case 6: 
-              case 9: 
-              default: 
-                switch (paramAnonymousa.type)
-                {
-                default: 
-                  i = 1;
-                }
-                break;
-              }
-              for (;;)
-              {
-                ar.a(paramAnonymousa, 100, i, 0, 0L, "");
-                AppMethodBeat.o(88417);
-                return;
-                paramAnonymousString.fxq();
-                paramAnonymousString = new ts();
-                EventCenter.instance.publish(paramAnonymousString);
-                break;
-                paramAnonymousString.a(paramAnonymousa.NhO, true, paramAnonymousa.jlm, false);
-                paramAnonymousString = new ts();
-                EventCenter.instance.publish(paramAnonymousString);
-                break;
-                paramAnonymousString.N(paramAnonymousa.NhO, false);
-                paramAnonymousString = new ts();
-                EventCenter.instance.publish(paramAnonymousString);
-                break;
-                paramAnonymousString.p("", "", 0L);
-                break;
-                i = 2;
-                continue;
-                i = 3;
-                continue;
-                i = 4;
-              }
-            }
-          }
+        if ((paramAnonymousMap != null) && (paramAnonymousString != null) && (paramAnonymousString.equals("mmsearch_reddot_new"))) {
+          b.a(b.this, paramAnonymousMap, "");
         }
-        switch (paramAnonymousa.type)
-        {
-        case 5: 
-        case 6: 
-        default: 
-          ar.a(paramAnonymousa, 109, 0, 0, 0L, "r12|" + paramAnonymousa.type);
-        case 9: 
-          do
-          {
-            AppMethodBeat.o(88417);
-            return;
-          } while (b.this.GiN == null);
-          b.this.GiN.fP(paramAnonymousa.extInfo, paramAnonymousa.type);
-          ar.a(paramAnonymousa, 100, 4, 0, 0L, "");
-          AppMethodBeat.o(88417);
-          return;
-        case 8: 
-          ar.a(paramAnonymousa, 100, 3, 0, 0L, "");
-          paramAnonymousString = b.this;
-          Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "setHomeTabRedDot %s", new Object[] { paramAnonymousa.msgId });
-          paramAnonymousString.GiK = paramAnonymousa;
-          g.aAh().azQ().set(ar.a.Ohs, b.b(paramAnonymousa));
-          g.aAh().azQ().gBI();
-          ar.a(paramAnonymousa, 101, 3, 0, 0L, "");
-          AppMethodBeat.o(88417);
-          return;
-        case 7: 
-          ar.a(paramAnonymousa, 100, 2, b.this.GiM.size(), 0L, "");
-          paramAnonymousMap = b.this;
-          Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "start addCmtRedDot: %s", new Object[] { Integer.valueOf(paramAnonymousa.jlm) });
-          if (!paramAnonymousMap.fxI()) {
-            ar.a(paramAnonymousa, 108, 2, paramAnonymousMap.GiM.size(), 0L, "");
-          }
-          if (paramAnonymousa.jlm <= b.fxA())
-          {
-            Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "addCmtRedDot invalid1, %s, %s", new Object[] { Integer.valueOf(paramAnonymousa.jlm), Integer.valueOf(b.fxA()) });
-            ar.a(paramAnonymousa, 103, 2, paramAnonymousMap.fxv(), 0L, "");
-            ar.a(paramAnonymousa, 109, 2, paramAnonymousMap.fxv(), 0L, "r6|" + paramAnonymousa.jlm + "|" + b.fxA());
-            AppMethodBeat.o(88417);
-            return;
-          }
-          paramAnonymousString = paramAnonymousMap.GiM;
-          i = 0;
-        }
-        label1894:
-        for (;;)
-        {
-          try
-          {
-            if (!Util.isNullOrNil(paramAnonymousMap.GiM))
-            {
-              i = 0;
-              if (i >= paramAnonymousMap.GiM.size()) {
-                break label1894;
-              }
-              eiq localeiq = (eiq)paramAnonymousMap.GiM.get(i);
-              if (localeiq.msgId.equals(paramAnonymousa.msgId))
-              {
-                Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "addCmtRedDot invalid3");
-                ar.a(paramAnonymousa, 109, 2, paramAnonymousMap.fxv(), 0L, "r11");
-                return;
-              }
-              if (localeiq.jlm > paramAnonymousa.jlm) {
-                break label1894;
-              }
-              i += 1;
-              continue;
-            }
-            paramAnonymousMap.GiM.add(i, paramAnonymousa);
-            if (paramAnonymousMap.fxI()) {
-              ar.a(paramAnonymousMap.fxw(), 101, 2, paramAnonymousMap.GiM.size(), 0L, "");
-            }
-            Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "addCmtRedDot msgId:%s, showTime:%s", new Object[] { paramAnonymousa.msgId, Long.valueOf(paramAnonymousa.NhO) });
-            paramAnonymousMap.fxp();
-            if (paramAnonymousMap.GiN != null) {
-              paramAnonymousMap.GiN.a(paramAnonymousMap.GiM.size(), ((eiq)paramAnonymousMap.GiM.getFirst()).msgId, ((eiq)paramAnonymousMap.GiM.getLast()).msgId, ((eiq)paramAnonymousMap.GiM.getFirst()).jlm, ((eiq)paramAnonymousMap.GiM.getLast()).jlm, ((eiq)paramAnonymousMap.GiM.getLast()).extInfo);
-            }
-            paramAnonymousString = new ts();
-            EventCenter.instance.publish(paramAnonymousString);
-            AppMethodBeat.o(88417);
-            return;
-          }
-          finally
-          {
-            AppMethodBeat.o(88417);
-          }
-          b.c(paramAnonymousa);
-          ar.a(paramAnonymousa, 100, 1, 0, 0L, "");
-          paramAnonymousMap = b.this;
-          if (!paramAnonymousMap.fxI()) {
-            ar.a(paramAnonymousa, 108, 1, 0, 0L, "");
-          }
-          long l1 = System.currentTimeMillis() / 1000L;
-          long l2 = paramAnonymousa.NhO;
-          if (paramAnonymousMap.GiL == null) {}
-          for (paramAnonymousString = "null";; paramAnonymousString = paramAnonymousMap.GiL.NhO)
-          {
-            Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "setTopStoryRedDot showTime new:%s, cur:%s, curTime:%s", new Object[] { Long.valueOf(l2), paramAnonymousString, Long.valueOf(l1) });
-            if (paramAnonymousa.NhO > b.fxz()) {
-              break;
-            }
-            ar.a(paramAnonymousa, 103, 1, 0, 0L, "");
-            ar.a(paramAnonymousa, 109, 1, 0, 0L, "r6|" + paramAnonymousa.NhO + "|" + b.fxz());
-            AppMethodBeat.o(88417);
-            return;
-          }
-          if (paramAnonymousa.NhO > 3600L + l1)
-          {
-            ar.a(paramAnonymousa, 109, 1, 0, 0L, "r10|" + paramAnonymousa.NhO + "|" + l1);
-            AppMethodBeat.o(88417);
-            return;
-          }
-          if ((paramAnonymousMap.GiL != null) && (!Util.isNullOrNil(paramAnonymousMap.GiL.msgId)) && (paramAnonymousMap.GiL.NhO > paramAnonymousa.NhO))
-          {
-            ar.a(paramAnonymousa, 105, 1, 0, 0L, paramAnonymousMap.GiL.msgId);
-            ar.a(paramAnonymousa, 109, 1, 0, 0L, "r9|" + paramAnonymousa.NhO + "|" + b.fxz());
-            AppMethodBeat.o(88417);
-            return;
-          }
-          if (paramAnonymousMap.GiL.priority > paramAnonymousa.priority)
-          {
-            ar.a(paramAnonymousa, 109, 1, 0, 0L, "r11|" + paramAnonymousa.NhO + "|" + b.fxz());
-            AppMethodBeat.o(88417);
-            return;
-          }
-          if ((paramAnonymousMap.GiL != null) && (!Util.isNullOrNil(paramAnonymousMap.GiL.msgId))) {
-            ar.a(paramAnonymousa, 105, 1, 0, 0L, paramAnonymousa.msgId);
-          }
-          Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "setTopStoryRedDot valid");
-          paramAnonymousMap.GiL = paramAnonymousa;
-          g.aAh().azQ().set(ar.a.OfW, b.b(paramAnonymousMap.GiL));
-          g.aAh().azQ().gBI();
-          if (paramAnonymousMap.fxI()) {
-            ar.a(paramAnonymousMap.GiL, 101, 1, 0, 0L, "");
-          }
-          if (paramAnonymousMap.GiN != null) {
-            paramAnonymousMap.GiN.p(paramAnonymousMap.GiL.msgId, paramAnonymousMap.GiL.NhO, paramAnonymousMap.GiL.type);
-          }
-          paramAnonymousString = new ts();
-          EventCenter.instance.publish(paramAnonymousString);
-          AppMethodBeat.o(88417);
-          return;
-          ar.a(paramAnonymousa, 100, 5, 0, 0L, "");
-          b.this.p(paramAnonymousa.msgId, paramAnonymousa.extInfo, paramAnonymousa.NhO);
-          AppMethodBeat.o(88417);
-          return;
-          ar.a(paramAnonymousa, 100, 11, 0, 0L, "");
-          b.c(paramAnonymousa);
-          AppMethodBeat.o(88417);
-          return;
-        }
+        AppMethodBeat.o(88417);
       }
     };
-    this.gNh = new b.2(this);
-    this.GiQ = "{\"tabs\":[{\"wording\":\"好看\",\"wording_cn\":\"好看\",\"wording_en\":\"Wow\",\"wording_hk\":\"好看\",\"wording_tw\":\"好看\",\"category\":110,\"showWhenRedDot\":1,\"tabInfo\":\"{\\\"category\\\":110}\"},{\"wording\":\"精选\",\"wording_cn\":\"精选\",\"wording_en\":\"Recommended\",\"wording_hk\":\"精選\",\"wording_tw\":\"精選\",\"category\":100,\"showWhenRedDot\":0,\"tabInfo\":\"{\\\"category\\\":100}\"}]}";
-    this.GiR = "";
-    this.GiS = new IListener() {};
-    ((s)g.ah(s.class)).getSysCmdMsgExtension().a("mmsearch_reddot_new", this.GiO);
-    this.GiL = new eiq();
-    a(this.GiL);
-    eiq localeiq = this.GiL;
-    Object localObject = (String)g.aAh().azQ().get(ar.a.OfW, "");
+    this.jxB = new i()
+    {
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+      {
+        AppMethodBeat.i(88418);
+        if (paramAnonymousq.equals(b.a(b.this)))
+        {
+          h.aGY().b(b.a(b.this).getType(), this);
+          b.b(b.this);
+          paramAnonymousString = (com.tencent.mm.plugin.topstory.a.c.b)paramAnonymousq;
+          if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
+          {
+            Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "netscene topstory error");
+            AppMethodBeat.o(88418);
+          }
+        }
+        else
+        {
+          AppMethodBeat.o(88418);
+          return;
+        }
+        h.aHG().aHp().set(ar.a.Vvf, paramAnonymousString.gpU().Tkw);
+        h.aHG().aHp().hxT();
+        paramAnonymousString = new uv();
+        EventCenter.instance.publish(paramAnonymousString);
+        AppMethodBeat.o(88418);
+      }
+    };
+    ((v)h.ag(v.class)).getSysCmdMsgExtension().a("mmsearch_reddot_new", this.MVC);
+    this.MVx = new ess();
+    e(this.MVx);
+    ess localess = this.MVx;
+    Object localObject = (String)h.aHG().aHp().get(ar.a.Vum, "");
     if (!Util.isNullOrNil((String)localObject))
     {
       localObject = ((String)localObject).split(",");
       if (localObject == null) {
-        break label253;
+        break label230;
       }
     }
     try
     {
       if (localObject.length >= 13)
       {
-        a(localeiq, (String[])localObject);
-        this.GiK = new eiq();
-        a(this.GiK);
-        localeiq = this.GiK;
-        localObject = (String)g.aAh().azQ().get(ar.a.Ohs, "");
+        a(localess, (String[])localObject);
+        this.MVw = new ess();
+        e(this.MVw);
+        localess = this.MVw;
+        localObject = (String)h.aHG().aHp().get(ar.a.VvI, "");
         if (!Util.isNullOrNil((String)localObject))
         {
           localObject = ((String)localObject).split(",");
           if (localObject == null) {
-            break label306;
+            break label283;
           }
         }
       }
@@ -313,120 +122,441 @@ public final class b
       try
       {
         if (localObject.length >= 13) {
-          a(localeiq, (String[])localObject);
+          a(localess, (String[])localObject);
         }
         for (;;)
         {
-          fxs();
-          EventCenter.instance.add(this.GiS);
+          gpn();
           AppMethodBeat.o(88420);
           return;
-          label253:
-          g.aAh().azQ().set(ar.a.OfW, "");
-          g.aAh().azQ().gBI();
+          label230:
+          h.aHG().aHp().set(ar.a.Vum, "");
+          h.aHG().aHp().hxT();
           break;
           localException1 = localException1;
-          g.aAh().azQ().set(ar.a.OfW, "");
-          g.aAh().azQ().gBI();
+          h.aHG().aHp().set(ar.a.Vum, "");
+          h.aHG().aHp().hxT();
           break;
-          label306:
-          g.aAh().azQ().set(ar.a.Ohs, "");
-          g.aAh().azQ().gBI();
+          label283:
+          h.aHG().aHp().set(ar.a.VvI, "");
+          h.aHG().aHp().hxT();
         }
       }
       catch (Exception localException2)
       {
         for (;;)
         {
-          g.aAh().azQ().set(ar.a.Ohs, "");
-          g.aAh().azQ().gBI();
+          h.aHG().aHp().set(ar.a.VvI, "");
+          h.aHG().aHp().hxT();
         }
       }
     }
   }
   
-  static void a(eiq parameiq)
+  private void N(long paramLong, boolean paramBoolean)
   {
-    parameiq.icon = "";
-    parameiq.msgId = "";
-    parameiq.text = "";
+    AppMethodBeat.i(262025);
+    if ((this.MVx == null) || (Util.isNullOrNil(this.MVx.msgId)))
+    {
+      AppMethodBeat.o(262025);
+      return;
+    }
+    long l = cm.bfE() / 1000L;
+    Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "rec updateRedDotTimestamp %d, cur %d", new Object[] { Long.valueOf(paramLong), Long.valueOf(l) });
+    if ((paramLong < gpu()) || (paramLong <= 0L) || (l + 3600L < paramLong))
+    {
+      Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "updateRedDotTimestamp invalid, getRedDotTimestamp:%s", new Object[] { Long.valueOf(gpu()) });
+      AppMethodBeat.o(262025);
+      return;
+    }
+    if ((this.MVx != null) && (paramLong < this.MVx.Uuu))
+    {
+      Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "updateRedDotTimestamp invalid, showTime:%s", new Object[] { Long.valueOf(this.MVx.Uuu) });
+      AppMethodBeat.o(262025);
+      return;
+    }
+    if (paramBoolean) {
+      ar.a(this.MVx, 106, 1, 0, paramLong, "");
+    }
+    gpi();
+    h.aHG().aHp().set(ar.a.Vuj, Long.valueOf(paramLong));
+    h.aHG().aHp().hxT();
+    AppMethodBeat.o(262025);
   }
   
-  private static void a(eiq parameiq, String[] paramArrayOfString)
+  private static void Se(long paramLong)
+  {
+    AppMethodBeat.i(262028);
+    h.aHG().aHp().set(ar.a.Vuk, Long.valueOf(paramLong));
+    h.aHG().aHp().hxT();
+    AppMethodBeat.o(262028);
+  }
+  
+  private int a(ess paramess, int paramInt)
+  {
+    int j = 1;
+    AppMethodBeat.i(262045);
+    if (Util.isNullOrNil(paramess.msgId))
+    {
+      AppMethodBeat.o(262045);
+      return -5;
+    }
+    if (paramess.Uuv == 1)
+    {
+      AppMethodBeat.o(262045);
+      return -1;
+    }
+    if (paramess.PzG > d.RAD)
+    {
+      Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "msgid %s clientVersion %d invalid ,curVer is %d", new Object[] { paramess.msgId, Integer.valueOf(paramess.PzG), Integer.valueOf(d.RAD) });
+      AppMethodBeat.o(262045);
+      return -2;
+    }
+    if (paramess.mcX != 0L)
+    {
+      long l1 = paramess.Uuw;
+      long l2 = paramess.mcX;
+      if (System.currentTimeMillis() > l1 + l2 * 1000L)
+      {
+        Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "msgid %s expired", new Object[] { paramess.msgId });
+        AppMethodBeat.o(262045);
+        return -3;
+      }
+    }
+    boolean bool;
+    int i;
+    if (ai.anh(1) >= paramess.Pyz)
+    {
+      bool = true;
+      Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "h5 version valid ? %b, red.h5 %d, cur.h5 %s, red.timestamp %d, last rec.timestamp %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramess.Pyz), Integer.valueOf(ai.anh(1)), Long.valueOf(paramess.Uuu), Long.valueOf(gpu()) });
+      if (ai.anh(1) < paramess.Pyz) {
+        break label289;
+      }
+      i = 1;
+      label244:
+      if (110 != paramInt) {
+        break label306;
+      }
+      if ((i == 0) || (this.MVx.Uuu <= gpu())) {
+        break label294;
+      }
+      paramInt = j;
+    }
+    for (;;)
+    {
+      if (paramInt == 0)
+      {
+        AppMethodBeat.o(262045);
+        return -4;
+        bool = false;
+        break;
+        label289:
+        i = 0;
+        break label244;
+        label294:
+        paramInt = 0;
+        continue;
+      }
+      AppMethodBeat.o(262045);
+      return 0;
+      label306:
+      paramInt = i;
+    }
+  }
+  
+  private void a(long paramLong, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(88441);
+    if (this.MVy.size() == 0)
+    {
+      AppMethodBeat.o(88441);
+      return;
+    }
+    if (paramInt <= gpv())
+    {
+      Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "clickCmtRedDot invalid, seq:%s, curSeq:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(gpv()) });
+      AppMethodBeat.o(88441);
+      return;
+    }
+    int i = this.MVy.size();
+    Object localObject2 = this.MVy;
+    String str = "";
+    for (;;)
+    {
+      try
+      {
+        if ((this.MVy.size() > 0) && (((ess)this.MVy.getFirst()).mbp <= paramInt))
+        {
+          str = ((ess)this.MVy.getFirst()).msgId;
+          this.MVy.removeFirst();
+          continue;
+        }
+        if (i != this.MVy.size()) {
+          gpk();
+        }
+        if (this.MVz != null)
+        {
+          if (this.MVy.size() > 0) {
+            this.MVz.a(this.MVy.size(), ((ess)this.MVy.getFirst()).msgId, ((ess)this.MVy.getLast()).msgId, ((ess)this.MVy.getFirst()).mbp, ((ess)this.MVy.getLast()).mbp, ((ess)this.MVy.getLast()).extInfo, paramBoolean1);
+          }
+        }
+        else
+        {
+          if (paramBoolean2)
+          {
+            localObject2 = new ess();
+            ((ess)localObject2).msgId = str;
+            ((ess)localObject2).Uuu = paramLong;
+            ((ess)localObject2).mbp = paramInt;
+            ar.a((ess)localObject2, 106, 2, i, paramLong, "");
+          }
+          Se(paramLong);
+          ajs(paramInt);
+          AppMethodBeat.o(88441);
+          return;
+        }
+      }
+      finally
+      {
+        AppMethodBeat.o(88441);
+      }
+      this.MVz.a(0, "", "", 0, 0, "", paramBoolean1);
+    }
+  }
+  
+  private void a(ess paramess)
+  {
+    AppMethodBeat.i(262021);
+    switch (paramess.type)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(262021);
+      return;
+      N(paramess.Uuu, false);
+      paramess = new uv();
+      EventCenter.instance.publish(paramess);
+      AppMethodBeat.o(262021);
+      return;
+      r("", "", 0L);
+      AppMethodBeat.o(262021);
+      return;
+      a(paramess.Uuu, true, paramess.mbp, false);
+      paramess = new uv();
+      EventCenter.instance.publish(paramess);
+      AppMethodBeat.o(262021);
+      return;
+      gpl();
+      paramess = new uv();
+      EventCenter.instance.publish(paramess);
+    }
+  }
+  
+  private static void a(ess paramess, String[] paramArrayOfString)
   {
     AppMethodBeat.i(88435);
-    parameiq.msgId = paramArrayOfString[0];
-    parameiq.NhP = Integer.valueOf(paramArrayOfString[1]).intValue();
-    parameiq.IFo = Integer.valueOf(paramArrayOfString[2]).intValue();
-    parameiq.IFp = Integer.valueOf(paramArrayOfString[3]).intValue();
-    parameiq.IFn = Integer.valueOf(paramArrayOfString[4]).intValue();
-    parameiq.jmW = Long.valueOf(paramArrayOfString[5]).longValue();
-    parameiq.IEj = Integer.valueOf(paramArrayOfString[6]).intValue();
-    parameiq.NhQ = Long.valueOf(paramArrayOfString[7]).longValue();
-    parameiq.text = paramArrayOfString[8];
-    parameiq.type = Integer.valueOf(paramArrayOfString[9]).intValue();
-    parameiq.showFlag = Integer.valueOf(paramArrayOfString[10]).intValue();
-    parameiq.NhO = Long.valueOf(paramArrayOfString[11]).longValue();
-    parameiq.icon = paramArrayOfString[12];
+    paramess.msgId = paramArrayOfString[0];
+    paramess.Uuv = Integer.valueOf(paramArrayOfString[1]).intValue();
+    paramess.PzG = Integer.valueOf(paramArrayOfString[2]).intValue();
+    paramess.PzH = Integer.valueOf(paramArrayOfString[3]).intValue();
+    paramess.PzF = Integer.valueOf(paramArrayOfString[4]).intValue();
+    paramess.mcX = Long.valueOf(paramArrayOfString[5]).longValue();
+    paramess.Pyz = Integer.valueOf(paramArrayOfString[6]).intValue();
+    paramess.Uuw = Long.valueOf(paramArrayOfString[7]).longValue();
+    paramess.text = paramArrayOfString[8];
+    paramess.type = Integer.valueOf(paramArrayOfString[9]).intValue();
+    paramess.showFlag = Integer.valueOf(paramArrayOfString[10]).intValue();
+    paramess.Uuu = Long.valueOf(paramArrayOfString[11]).longValue();
+    paramess.icon = paramArrayOfString[12];
     if (paramArrayOfString.length > 13) {
-      parameiq.jlm = Integer.valueOf(paramArrayOfString[13]).intValue();
+      paramess.mbp = Integer.valueOf(paramArrayOfString[13]).intValue();
     }
     while (paramArrayOfString.length > 14)
     {
-      parameiq.extInfo = paramArrayOfString[14];
+      paramess.extInfo = paramArrayOfString[14];
       AppMethodBeat.o(88435);
       return;
-      parameiq.jlm = 0;
-      if (parameiq.type == 7) {
+      paramess.mbp = 0;
+      if (paramess.type == 7) {
         Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "no seq");
       }
     }
-    parameiq.extInfo = "";
+    paramess.extInfo = "";
     AppMethodBeat.o(88435);
   }
   
-  public static String b(eiq parameiq)
+  private static void ajs(int paramInt)
+  {
+    AppMethodBeat.i(262029);
+    Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "updateCmtRedDotSeq %s", new Object[] { Integer.valueOf(paramInt) });
+    h.aHG().aHp().set(ar.a.Vul, Integer.valueOf(paramInt));
+    h.aHG().aHp().hxT();
+    AppMethodBeat.o(262029);
+  }
+  
+  private static void b(ess paramess)
+  {
+    AppMethodBeat.i(262030);
+    if (!Util.isNullOrNil(paramess.extInfo))
+    {
+      Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "updateInitTab %s", new Object[] { paramess.extInfo });
+      try
+      {
+        if (new JSONObject(paramess.extInfo).optBoolean("has_wow_contents", true))
+        {
+          h.aHG().aHp().set(ar.a.VvL, Integer.valueOf(1));
+          AppMethodBeat.o(262030);
+          return;
+        }
+        h.aHG().aHp().set(ar.a.VvL, Integer.valueOf(0));
+        AppMethodBeat.o(262030);
+        return;
+      }
+      catch (Exception paramess) {}
+    }
+    AppMethodBeat.o(262030);
+  }
+  
+  private void c(ess paramess)
+  {
+    AppMethodBeat.i(88429);
+    Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "start addCmtRedDot: %s", new Object[] { Integer.valueOf(paramess.mbp) });
+    if (!gpE()) {
+      ar.a(paramess, 108, 2, this.MVy.size(), 0L, "");
+    }
+    if (paramess.mbp <= gpv())
+    {
+      Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "addCmtRedDot invalid1, %s, %s", new Object[] { Integer.valueOf(paramess.mbp), Integer.valueOf(gpv()) });
+      ar.a(paramess, 103, 2, gpq(), 0L, "");
+      ar.a(paramess, 109, 2, gpq(), 0L, "r6|" + paramess.mbp + "|" + gpv());
+      AppMethodBeat.o(88429);
+      return;
+    }
+    label465:
+    for (;;)
+    {
+      synchronized (this.MVy)
+      {
+        if (!Util.isNullOrNil(this.MVy))
+        {
+          i = 0;
+          if (i >= this.MVy.size()) {
+            break label465;
+          }
+          ess localess = (ess)this.MVy.get(i);
+          if (localess.msgId.equals(paramess.msgId))
+          {
+            Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "addCmtRedDot invalid3");
+            ar.a(paramess, 109, 2, gpq(), 0L, "r11");
+            AppMethodBeat.o(88429);
+            return;
+          }
+          if (localess.mbp > paramess.mbp) {
+            break label465;
+          }
+          i += 1;
+          continue;
+          this.MVy.add(i, paramess);
+          if (gpE()) {
+            ar.a(gpr(), 101, 2, this.MVy.size(), 0L, "");
+          }
+          Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "addCmtRedDot msgId:%s, showTime:%s", new Object[] { paramess.msgId, Long.valueOf(paramess.Uuu) });
+          gpk();
+          if (this.MVz != null) {
+            this.MVz.a(this.MVy.size(), ((ess)this.MVy.getFirst()).msgId, ((ess)this.MVy.getLast()).msgId, ((ess)this.MVy.getFirst()).mbp, ((ess)this.MVy.getLast()).mbp, ((ess)this.MVy.getLast()).extInfo);
+          }
+          paramess = new uv();
+          EventCenter.instance.publish(paramess);
+          AppMethodBeat.o(88429);
+          return;
+        }
+      }
+      int i = 0;
+    }
+  }
+  
+  private void d(ess paramess)
+  {
+    AppMethodBeat.i(262036);
+    Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "setHomeTabRedDot %s", new Object[] { paramess.msgId });
+    if (!gpE()) {
+      ar.a(paramess, 108, 1, 0, 0L, "");
+    }
+    this.MVw = paramess;
+    h.aHG().aHp().set(ar.a.VvI, f(this.MVw));
+    h.aHG().aHp().hxT();
+    ar.a(paramess, 101, 3, 0, 0L, "");
+    if (this.MVz != null) {
+      this.MVz.b(this.MVw, 100);
+    }
+    paramess = new uv();
+    EventCenter.instance.publish(paramess);
+    AppMethodBeat.o(262036);
+  }
+  
+  private static void e(ess paramess)
+  {
+    paramess.icon = "";
+    paramess.msgId = "";
+    paramess.text = "";
+  }
+  
+  private static String f(ess paramess)
   {
     AppMethodBeat.i(88434);
-    parameiq = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { parameiq.msgId, Integer.valueOf(parameiq.NhP), Integer.valueOf(parameiq.IFo), Integer.valueOf(parameiq.IFp), Integer.valueOf(parameiq.IFn), Long.valueOf(parameiq.jmW), Integer.valueOf(parameiq.IEj), Long.valueOf(parameiq.NhQ), parameiq.text, Integer.valueOf(parameiq.type), Integer.valueOf(parameiq.showFlag), Long.valueOf(parameiq.NhO), parameiq.icon, Integer.valueOf(parameiq.jlm), parameiq.extInfo });
+    paramess = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { paramess.msgId, Integer.valueOf(paramess.Uuv), Integer.valueOf(paramess.PzG), Integer.valueOf(paramess.PzH), Integer.valueOf(paramess.PzF), Long.valueOf(paramess.mcX), Integer.valueOf(paramess.Pyz), Long.valueOf(paramess.Uuw), paramess.text, Integer.valueOf(paramess.type), Integer.valueOf(paramess.showFlag), Long.valueOf(paramess.Uuu), paramess.icon, Integer.valueOf(paramess.mbp), paramess.extInfo });
     AppMethodBeat.o(88434);
-    return parameiq;
+    return paramess;
   }
   
-  public static int fxA()
+  private void gpi()
   {
-    AppMethodBeat.i(88446);
-    Object localObject = g.aAh().azQ().get(ar.a.OfV, null);
-    if (localObject == null)
+    AppMethodBeat.i(262018);
+    this.MVx = new ess();
+    e(this.MVx);
+    h.aHG().aHp().set(ar.a.Vum, "");
+    h.aHG().aHp().hxT();
+    if (this.MVz != null)
     {
-      AppMethodBeat.o(88446);
-      return -1;
+      e.a locala = this.MVz;
+      gpu();
+      locala.gpJ();
     }
-    int i = ((Integer)localObject).intValue();
-    AppMethodBeat.o(88446);
-    return i;
+    AppMethodBeat.o(262018);
   }
   
-  private void fxn()
+  private void gpk()
   {
-    AppMethodBeat.i(201210);
-    this.GiL = new eiq();
-    a(this.GiL);
-    g.aAh().azQ().set(ar.a.OfW, "");
-    g.aAh().azQ().gBI();
-    if (this.GiN != null)
+    AppMethodBeat.i(88430);
+    synchronized (this.MVy)
     {
-      e.a locala = this.GiN;
-      fxz();
-      locala.fxO();
+      StringBuilder localStringBuilder = new StringBuilder();
+      Iterator localIterator = this.MVy.iterator();
+      if (localIterator.hasNext()) {
+        localStringBuilder.append(f((ess)localIterator.next())).append(";");
+      }
     }
-    AppMethodBeat.o(201210);
+    h.aHG().aHp().set(ar.a.VvH, localObject.toString());
+    h.aHG().aHp().hxT();
+    AppMethodBeat.o(88430);
   }
   
-  private void fxs()
+  private void gpl()
+  {
+    AppMethodBeat.i(88432);
+    Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "clearHomeTabRedDot");
+    this.MVw = new ess();
+    e(this.MVw);
+    h.aHG().aHp().set(ar.a.VvI, "");
+    h.aHG().aHp().hxT();
+    AppMethodBeat.o(88432);
+  }
+  
+  private void gpn()
   {
     AppMethodBeat.i(88436);
-    Object localObject1 = (String)g.aAh().azQ().get(ar.a.Ohr, "");
+    Object localObject1 = (String)h.aHG().aHp().get(ar.a.VvH, "");
     if (!Util.isNullOrNil((String)localObject1))
     {
       localObject1 = ((String)localObject1).split(";");
@@ -440,9 +570,9 @@ public final class b
           if (!Util.isNullOrNil((String)localObject2))
           {
             localObject2 = ((String)localObject2).split(",");
-            eiq localeiq = new eiq();
-            a(localeiq, (String[])localObject2);
-            this.GiM.addLast(localeiq);
+            ess localess = new ess();
+            a(localess, (String[])localObject2);
+            this.MVy.addLast(localess);
           }
           i += 1;
         }
@@ -451,17 +581,26 @@ public final class b
       }
       catch (Exception localException)
       {
-        g.aAh().azQ().set(ar.a.Ohr, "");
-        g.aAh().azQ().gBI();
+        h.aHG().aHp().set(ar.a.VvH, "");
+        h.aHG().aHp().hxT();
       }
     }
     AppMethodBeat.o(88436);
   }
   
-  public static long fxz()
+  private int gpq()
+  {
+    AppMethodBeat.i(88438);
+    Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "getCmtRedDotCountForReport %s", new Object[] { Integer.valueOf(this.MVy.size()) });
+    int i = this.MVy.size();
+    AppMethodBeat.o(88438);
+    return i;
+  }
+  
+  private static long gpu()
   {
     AppMethodBeat.i(88445);
-    Object localObject = g.aAh().azQ().get(ar.a.OfT, null);
+    Object localObject = h.aHG().aHp().get(ar.a.Vuj, null);
     if (localObject == null)
     {
       AppMethodBeat.o(88445);
@@ -472,210 +611,118 @@ public final class b
     return l;
   }
   
-  public final void KH(long paramLong)
+  private static int gpv()
   {
-    AppMethodBeat.i(201212);
+    AppMethodBeat.i(88446);
+    Object localObject = h.aHG().aHp().get(ar.a.Vul, null);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(88446);
+      return -1;
+    }
+    int i = ((Integer)localObject).intValue();
+    AppMethodBeat.o(88446);
+    return i;
+  }
+  
+  private void r(String paramString1, String paramString2, long paramLong)
+  {
+    AppMethodBeat.i(88450);
+    Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "setUserIconRedDot %s, extInfo %s", new Object[] { paramString1, paramString2 });
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("msgId", paramString1);
+      localJSONObject.put("extInfo", paramString2);
+      localJSONObject.put("ts", paramLong);
+      h.aHG().aHp().set(ar.a.VvJ, localJSONObject.toString());
+      h.aHG().aHp().hxT();
+      if ((!Util.isNullOrNil(paramString1)) && (this.MVz != null)) {
+        this.MVz.by(paramString1, paramLong);
+      }
+      AppMethodBeat.o(88450);
+      return;
+    }
+    catch (JSONException paramString2)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.TopStory.TopStoryRedDotImpl", paramString2, "setUserIconRedDot error", new Object[0]);
+      }
+    }
+  }
+  
+  public final void Sd(long paramLong)
+  {
+    AppMethodBeat.i(262027);
+    Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "updateHaokanRedDotTimestamp %s", new Object[] { Long.valueOf(paramLong) });
     N(paramLong, true);
-    AppMethodBeat.o(201212);
-  }
-  
-  public final void N(long paramLong, boolean paramBoolean)
-  {
-    AppMethodBeat.i(201211);
-    if ((this.GiL == null) || (Util.isNullOrNil(this.GiL.msgId)))
-    {
-      AppMethodBeat.o(201211);
-      return;
-    }
-    long l = cl.aWA() / 1000L;
-    Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "rec updateRedDotTimestamp %d, cur %d", new Object[] { Long.valueOf(paramLong), Long.valueOf(l) });
-    if ((paramLong < fxz()) || (paramLong <= 0L) || (l + 3600L < paramLong))
-    {
-      Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "updateRedDotTimestamp invalid, getRedDotTimestamp:%s", new Object[] { Long.valueOf(fxz()) });
-      AppMethodBeat.o(201211);
-      return;
-    }
-    if ((this.GiL != null) && (paramLong < this.GiL.NhO))
-    {
-      Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "updateRedDotTimestamp invalid, showTime:%s", new Object[] { Long.valueOf(this.GiL.NhO) });
-      AppMethodBeat.o(201211);
-      return;
-    }
-    if (paramBoolean) {
-      ar.a(this.GiL, 106, 1, 0, paramLong, "");
-    }
-    fxn();
-    g.aAh().azQ().set(ar.a.OfT, Long.valueOf(paramLong));
-    g.aAh().azQ().gBI();
-    AppMethodBeat.o(201211);
-  }
-  
-  public final void a(long paramLong, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(88441);
-    if (this.GiM.size() == 0)
-    {
-      AppMethodBeat.o(88441);
-      return;
-    }
-    if (paramInt <= fxA())
-    {
-      Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "clickCmtRedDot invalid, seq:%s, curSeq:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(fxA()) });
-      AppMethodBeat.o(88441);
-      return;
-    }
-    int i = this.GiM.size();
-    Object localObject2 = this.GiM;
-    String str = "";
-    for (;;)
-    {
-      try
-      {
-        if ((this.GiM.size() > 0) && (((eiq)this.GiM.getFirst()).jlm <= paramInt))
-        {
-          str = ((eiq)this.GiM.getFirst()).msgId;
-          this.GiM.removeFirst();
-          continue;
-        }
-        if (i != this.GiM.size()) {
-          fxp();
-        }
-        if (this.GiN != null)
-        {
-          if (this.GiM.size() > 0) {
-            this.GiN.a(this.GiM.size(), ((eiq)this.GiM.getFirst()).msgId, ((eiq)this.GiM.getLast()).msgId, ((eiq)this.GiM.getFirst()).jlm, ((eiq)this.GiM.getLast()).jlm, ((eiq)this.GiM.getLast()).extInfo, paramBoolean1);
-          }
-        }
-        else
-        {
-          if (paramBoolean2)
-          {
-            localObject2 = new eiq();
-            ((eiq)localObject2).msgId = str;
-            ((eiq)localObject2).NhO = paramLong;
-            ((eiq)localObject2).jlm = paramInt;
-            ar.a((eiq)localObject2, 106, 2, i, paramLong, "");
-          }
-          g.aAh().azQ().set(ar.a.OfU, Long.valueOf(paramLong));
-          g.aAh().azQ().gBI();
-          Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "updateCmtRedDotSeq %s", new Object[] { Integer.valueOf(paramInt) });
-          g.aAh().azQ().set(ar.a.OfV, Integer.valueOf(paramInt));
-          g.aAh().azQ().gBI();
-          AppMethodBeat.o(88441);
-          return;
-        }
-      }
-      finally
-      {
-        AppMethodBeat.o(88441);
-      }
-      this.GiN.a(0, "", "", 0, 0, "", paramBoolean1);
-    }
+    AppMethodBeat.o(262027);
   }
   
   public final void a(e.a parama)
   {
-    this.GiN = parama;
+    this.MVz = parama;
   }
   
-  public final int abP(int paramInt)
+  public final int ajt(int paramInt)
   {
-    AppMethodBeat.i(201213);
-    if (fxu() > 0)
+    AppMethodBeat.i(262071);
+    if (gpp() > 0)
     {
-      AppMethodBeat.o(201213);
+      AppMethodBeat.o(262071);
       return 110;
     }
-    if ((fxl()) && (fxB()))
+    if ((gpg()) && (gpw()))
     {
-      if (this.GiK.priority > this.GiL.priority)
+      if (this.MVw.priority > this.MVx.priority)
       {
-        AppMethodBeat.o(201213);
+        AppMethodBeat.o(262071);
         return 100;
       }
-      if (this.GiK.priority < this.GiL.priority)
+      if (this.MVw.priority < this.MVx.priority)
       {
-        AppMethodBeat.o(201213);
+        AppMethodBeat.o(262071);
         return 110;
       }
-      if (this.GiK.NhQ > this.GiL.NhQ)
+      if (this.MVw.Uuw > this.MVx.Uuw)
       {
-        AppMethodBeat.o(201213);
+        AppMethodBeat.o(262071);
         return 100;
       }
-      if (this.GiK.NhQ < this.GiL.NhQ)
+      if (this.MVw.Uuw < this.MVx.Uuw)
       {
-        AppMethodBeat.o(201213);
+        AppMethodBeat.o(262071);
         return 110;
       }
-      AppMethodBeat.o(201213);
+      AppMethodBeat.o(262071);
       return paramInt;
     }
-    if (fxl())
+    if (gpg())
     {
-      AppMethodBeat.o(201213);
+      AppMethodBeat.o(262071);
       return 110;
     }
-    if (fxB())
+    if (gpw())
     {
-      AppMethodBeat.o(201213);
+      AppMethodBeat.o(262071);
       return 100;
     }
-    AppMethodBeat.o(201213);
+    AppMethodBeat.o(262071);
     return paramInt;
   }
   
   public final void b(e.a parama)
   {
-    if (this.GiN == parama) {
-      this.GiN = null;
+    if (this.MVz == parama) {
+      this.MVz = null;
     }
   }
   
-  public final boolean fxB()
-  {
-    AppMethodBeat.i(88447);
-    eiq localeiq = this.GiK;
-    if (!Util.isNullOrNil(localeiq.msgId))
-    {
-      long l1 = localeiq.NhQ;
-      long l2 = localeiq.jmW;
-      if (System.currentTimeMillis() > l1 + l2 * 1000L)
-      {
-        Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "msgid %s expired", new Object[] { localeiq.msgId });
-        fxq();
-        AppMethodBeat.o(88447);
-        return false;
-      }
-      AppMethodBeat.o(88447);
-      return true;
-    }
-    AppMethodBeat.o(88447);
-    return false;
-  }
-  
-  public final String fxC()
-  {
-    AppMethodBeat.i(88448);
-    String str = this.GiK.msgId;
-    AppMethodBeat.o(88448);
-    return str;
-  }
-  
-  public final void fxD()
-  {
-    AppMethodBeat.i(88449);
-    eiq localeiq = new eiq();
-    localeiq.msgId = this.GiK.msgId;
-    ar.a(localeiq, 106, 3, 0, 0L, "");
-    fxq();
-    AppMethodBeat.o(88449);
-  }
-  
-  public final String fxE()
+  public final String gpA()
   {
     AppMethodBeat.i(88451);
-    String str = (String)g.aAh().azQ().get(ar.a.Oht, "");
+    String str = (String)h.aHG().aHp().get(ar.a.VvJ, "");
     if (Util.isNullOrNil(str))
     {
       AppMethodBeat.o(88451);
@@ -694,10 +741,10 @@ public final class b
     return "";
   }
   
-  public final long fxF()
+  public final long gpB()
   {
     AppMethodBeat.i(88452);
-    String str = (String)g.aAh().azQ().get(ar.a.Oht, "");
+    String str = (String)h.aHG().aHp().get(ar.a.VvJ, "");
     if (Util.isNullOrNil(str))
     {
       AppMethodBeat.o(88452);
@@ -717,10 +764,10 @@ public final class b
     return 0L;
   }
   
-  public final String fxG()
+  public final String gpC()
   {
     AppMethodBeat.i(88453);
-    String str = (String)g.aAh().azQ().get(ar.a.Oht, "");
+    String str = (String)h.aHG().aHp().get(ar.a.VvJ, "");
     if (Util.isNullOrNil(str))
     {
       AppMethodBeat.o(88453);
@@ -739,22 +786,22 @@ public final class b
     return "";
   }
   
-  public final void fxH()
+  public final void gpD()
   {
     AppMethodBeat.i(88454);
-    p("", "", 0L);
+    r("", "", 0L);
     AppMethodBeat.o(88454);
   }
   
-  public final boolean fxI()
+  public final boolean gpE()
   {
     AppMethodBeat.i(88455);
-    long l = z.aUd();
+    long l = z.bde();
     if ((0x4000000 & l) == 0L) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      boolean bool2 = ((com.tencent.mm.plugin.teenmode.a.b)g.af(com.tencent.mm.plugin.teenmode.a.b.class)).Vt();
-      boolean bool3 = com.tencent.mm.aw.b.Pi((String)g.aAh().azQ().get(274436, null));
+      boolean bool2 = ((com.tencent.mm.plugin.teenmode.a.b)h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).ZM();
+      boolean bool3 = com.tencent.mm.az.b.WF((String)h.aHG().aHp().b(274436, null));
       Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "isShowRecEntry %s %s %s %s", new Object[] { Long.valueOf(l), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
       if ((!bool1) || (bool2) || (bool3)) {
         break;
@@ -766,209 +813,120 @@ public final class b
     return false;
   }
   
-  public final boolean fxJ()
+  public final boolean gpF()
   {
-    AppMethodBeat.i(88456);
-    if (((d.KyO >= 654311424) || (d.KyS)) && (Util.isNullOrNil(this.GiR))) {
-      this.GiR = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rRL, "{\"tabs\":[{\"wording\":\"好看\",\"wording_cn\":\"好看\",\"wording_en\":\"Wow\",\"wording_hk\":\"好看\",\"wording_tw\":\"好看\",\"category\":110,\"showWhenRedDot\":1,\"tabInfo\":\"{\\\"category\\\":110}\"},{\"wording\":\"精选\",\"wording_cn\":\"精选\",\"wording_en\":\"Recommended\",\"wording_hk\":\"精選\",\"wording_tw\":\"精選\",\"category\":100,\"showWhenRedDot\":0,\"tabInfo\":\"{\\\"category\\\":100}\"}]}");
-    }
-    try
-    {
-      JSONArray localJSONArray = new JSONObject(this.GiR).getJSONArray("tabs");
-      int i = 0;
-      while (i < localJSONArray.length())
-      {
-        int j = localJSONArray.getJSONObject(i).getInt("category");
-        if (j == 110)
-        {
-          AppMethodBeat.o(88456);
-          return true;
-        }
-        i += 1;
-      }
-      return false;
-    }
-    catch (Exception localException)
-    {
-      Log.w("MicroMsg.TopStory.TopStoryRedDotImpl", "parse tabconfig failed: %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(88456);
-    }
-  }
-  
-  public final boolean fxK()
-  {
-    AppMethodBeat.i(201214);
-    long l = g.aAh().azQ().a(ar.a.Ogf, 0L);
-    if (this.GiL.NhQ < l)
+    AppMethodBeat.i(262073);
+    long l = h.aHG().aHp().a(ar.a.Vuv, 0L);
+    if (this.MVx.Uuw < l)
     {
       Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "canShowHaokanFindMoreEntryRedDot already click find more entry");
-      AppMethodBeat.o(201214);
+      AppMethodBeat.o(262073);
       return false;
     }
-    AppMethodBeat.o(201214);
+    AppMethodBeat.o(262073);
     return true;
   }
   
-  public final boolean fxL()
+  public final boolean gpG()
   {
-    AppMethodBeat.i(201215);
-    long l = g.aAh().azQ().a(ar.a.Ogf, 0L);
-    if (this.GiK.NhQ < l)
+    AppMethodBeat.i(262074);
+    long l = h.aHG().aHp().a(ar.a.Vuv, 0L);
+    if (this.MVw.Uuw < l)
     {
       Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "canShowHomeFindMoreEntryRedDot already click find more entry");
-      AppMethodBeat.o(201215);
+      AppMethodBeat.o(262074);
       return false;
     }
-    AppMethodBeat.o(201215);
+    AppMethodBeat.o(262074);
     return true;
   }
   
-  public final void fxM()
+  public final void gpH()
   {
-    AppMethodBeat.i(201216);
-    g.aAh().azQ().set(ar.a.Ogf, Long.valueOf(cl.aWA()));
-    AppMethodBeat.o(201216);
+    AppMethodBeat.i(262075);
+    h.aHG().aHp().set(ar.a.Vuv, Long.valueOf(cm.bfE()));
+    AppMethodBeat.o(262075);
   }
   
-  public final void fxN()
+  public final void gpI()
   {
-    AppMethodBeat.i(201217);
-    if (fxu() > 0)
+    AppMethodBeat.i(262078);
+    if (gpp() > 0)
     {
-      eiq localeiq = fxw();
-      if (localeiq != null) {
-        ar.a(localeiq.msgId, localeiq.NhO, 2, fxu(), "", localeiq.jlm);
+      ess localess = gpr();
+      if (localess != null) {
+        ar.a(localess.msgId, localess.Uuu, 2, gpp(), "", localess.mbp);
       }
-      AppMethodBeat.o(201217);
+      AppMethodBeat.o(262078);
       return;
     }
-    if ((fxl()) && (fxB()))
+    if ((gpg()) && (gpw()))
     {
-      if (this.GiK.priority > this.GiL.priority)
+      if (this.MVw.priority > this.MVx.priority)
       {
-        ar.a(this.GiK.msgId, this.GiK.NhO, 1, 0, "", 0);
-        AppMethodBeat.o(201217);
+        ar.a(this.MVw.msgId, this.MVw.Uuu, 1, 0, "", 0);
+        AppMethodBeat.o(262078);
         return;
       }
-      if (this.GiK.priority < this.GiL.priority)
+      if (this.MVw.priority < this.MVx.priority)
       {
-        ar.a(this.GiL.msgId, this.GiL.NhO, 1, 0, "", 0);
-        AppMethodBeat.o(201217);
+        ar.a(this.MVx.msgId, this.MVx.Uuu, 1, 0, "", 0);
+        AppMethodBeat.o(262078);
         return;
       }
-      if (this.GiK.NhQ > this.GiL.NhQ)
+      if (this.MVw.Uuw > this.MVx.Uuw)
       {
-        ar.a(this.GiK.msgId, this.GiK.NhO, 1, 0, "", 0);
-        AppMethodBeat.o(201217);
+        ar.a(this.MVw.msgId, this.MVw.Uuu, 1, 0, "", 0);
+        AppMethodBeat.o(262078);
         return;
       }
-      if (this.GiK.NhQ < this.GiL.NhQ)
+      if (this.MVw.Uuw < this.MVx.Uuw)
       {
-        ar.a(this.GiL.msgId, this.GiL.NhO, 1, 0, "", 0);
-        AppMethodBeat.o(201217);
+        ar.a(this.MVx.msgId, this.MVx.Uuu, 1, 0, "", 0);
+        AppMethodBeat.o(262078);
         return;
       }
-      ar.a(this.GiL.msgId, this.GiL.NhO, 1, 0, "", 0);
-      AppMethodBeat.o(201217);
+      ar.a(this.MVx.msgId, this.MVx.Uuu, 1, 0, "", 0);
+      AppMethodBeat.o(262078);
       return;
     }
-    if (fxl())
+    if (gpg())
     {
-      ar.a(this.GiL.msgId, this.GiL.NhO, 1, 0, "", 0);
-      AppMethodBeat.o(201217);
+      ar.a(this.MVx.msgId, this.MVx.Uuu, 1, 0, "", 0);
+      AppMethodBeat.o(262078);
       return;
     }
-    if (fxB()) {
-      ar.a(this.GiK.msgId, this.GiK.NhO, 1, 0, "", 0);
+    if (gpw()) {
+      ar.a(this.MVw.msgId, this.MVw.Uuu, 1, 0, "", 0);
     }
-    AppMethodBeat.o(201217);
+    AppMethodBeat.o(262078);
   }
   
-  public final boolean fxl()
+  public final boolean gpg()
   {
-    AppMethodBeat.i(201209);
-    if (!fxJ())
+    AppMethodBeat.i(262013);
+    int i = a(this.MVx, 110);
+    if (i == 0)
     {
-      AppMethodBeat.o(201209);
-      return false;
+      if (gpE())
+      {
+        AppMethodBeat.o(262013);
+        return true;
+      }
     }
-    int i;
-    if (Util.isNullOrNil(this.GiL.msgId)) {
-      i = -5;
-    }
-    while (i == 0)
+    else if (i == -3)
     {
-      if (!fxI()) {
-        break label369;
-      }
-      AppMethodBeat.o(201209);
-      return true;
-      if (this.GiL.NhP == 1)
-      {
-        i = -1;
-      }
-      else if (this.GiL.IFo > d.KyO)
-      {
-        Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "msgid %s clientVersion %d invalid ,curVer is %d", new Object[] { this.GiL.msgId, Integer.valueOf(this.GiL.IFo), Integer.valueOf(d.KyO) });
-        i = -2;
-      }
-      else
-      {
-        if (this.GiL.jmW != 0L)
-        {
-          long l1 = this.GiL.NhQ;
-          long l2 = this.GiL.jmW;
-          if (System.currentTimeMillis() > l1 + l2 * 1000L)
-          {
-            Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "msgid %s expired", new Object[] { this.GiL.msgId });
-            i = -3;
-            continue;
-          }
-        }
-        boolean bool;
-        if (ai.aft(1) >= this.GiL.IEj)
-        {
-          bool = true;
-          label224:
-          Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "h5 version valid ? %b, red.h5 %d, cur.h5 %s, red.timestamp %d, last rec.timestamp %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.GiL.IEj), Integer.valueOf(ai.aft(1)), Long.valueOf(this.GiL.NhO), Long.valueOf(fxz()) });
-          if ((ai.aft(1) < this.GiL.IEj) || (this.GiL.NhO <= fxz())) {
-            break label335;
-          }
-        }
-        label335:
-        for (i = 1;; i = 0)
-        {
-          if (i != 0) {
-            break label340;
-          }
-          i = -4;
-          break;
-          bool = false;
-          break label224;
-        }
-        label340:
-        i = 0;
-      }
+      ar.a(this.MVx, 104, 1, 0, 0L, "");
+      gpi();
     }
-    if (i == -3)
-    {
-      ar.a(this.GiL, 104, 1, 0, 0L, "");
-      fxn();
-    }
-    label369:
-    AppMethodBeat.o(201209);
+    AppMethodBeat.o(262013);
     return false;
   }
   
-  public final boolean fxm()
+  public final boolean gph()
   {
     AppMethodBeat.i(88422);
-    if (!fxJ())
-    {
-      AppMethodBeat.o(88422);
-      return false;
-    }
-    if ((eiq)this.GiM.getLast() == null)
+    if ((ess)this.MVy.getLast() == null)
     {
       AppMethodBeat.o(88422);
       return false;
@@ -977,119 +935,71 @@ public final class b
     return true;
   }
   
-  public final eiq fxo()
+  public final ess gpj()
   {
-    return this.GiL;
+    return this.MVx;
   }
   
-  final void fxp()
+  public final ess gpm()
   {
-    AppMethodBeat.i(88430);
-    synchronized (this.GiM)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      Iterator localIterator = this.GiM.iterator();
-      if (localIterator.hasNext()) {
-        localStringBuilder.append(b((eiq)localIterator.next())).append(";");
-      }
-    }
-    g.aAh().azQ().set(ar.a.Ohr, localObject.toString());
-    g.aAh().azQ().gBI();
-    AppMethodBeat.o(88430);
+    return this.MVw;
   }
   
-  public final void fxq()
+  public final boolean gpo()
   {
-    AppMethodBeat.i(88432);
-    Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "clearHomeTabRedDot");
-    this.GiK = new eiq();
-    a(this.GiK);
-    g.aAh().azQ().set(ar.a.Ohs, "");
-    g.aAh().azQ().gBI();
-    AppMethodBeat.o(88432);
-  }
-  
-  public final eiq fxr()
-  {
-    return this.GiK;
-  }
-  
-  public final boolean fxt()
-  {
-    if (this.GiL != null) {
-      return this.GiL.IFp == 1;
+    if (this.MVx != null) {
+      return this.MVx.PzH == 1;
     }
     return false;
   }
   
-  public final int fxu()
+  public final int gpp()
   {
     AppMethodBeat.i(88437);
-    if (!fxJ())
-    {
-      Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "getCmtRedDotCount %s", new Object[] { Integer.valueOf(0) });
-      AppMethodBeat.o(88437);
-      return 0;
-    }
-    Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "getCmtRedDotCount %s", new Object[] { Integer.valueOf(this.GiM.size()) });
-    int i = this.GiM.size();
+    Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "getCmtRedDotCount %s", new Object[] { Integer.valueOf(this.MVy.size()) });
+    int i = this.MVy.size();
     AppMethodBeat.o(88437);
     return i;
   }
   
-  final int fxv()
-  {
-    AppMethodBeat.i(88438);
-    if (!fxJ())
-    {
-      Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "getCmtRedDotCountForReport %s", new Object[] { Integer.valueOf(0) });
-      AppMethodBeat.o(88438);
-      return 0;
-    }
-    Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "getCmtRedDotCountForReport %s", new Object[] { Integer.valueOf(this.GiM.size()) });
-    int i = this.GiM.size();
-    AppMethodBeat.o(88438);
-    return i;
-  }
-  
-  public final eiq fxw()
+  public final ess gpr()
   {
     AppMethodBeat.i(88439);
-    synchronized (this.GiM)
+    synchronized (this.MVy)
     {
-      if (Util.isNullOrNil(this.GiM))
+      if (Util.isNullOrNil(this.MVy))
       {
         AppMethodBeat.o(88439);
         return null;
       }
-      eiq localeiq = (eiq)this.GiM.getLast();
+      ess localess = (ess)this.MVy.getLast();
       AppMethodBeat.o(88439);
-      return localeiq;
+      return localess;
     }
   }
   
-  public final eiq fxx()
+  public final ess gps()
   {
     AppMethodBeat.i(88440);
-    synchronized (this.GiM)
+    synchronized (this.MVy)
     {
-      if (Util.isNullOrNil(this.GiM))
+      if (Util.isNullOrNil(this.MVy))
       {
         AppMethodBeat.o(88440);
         return null;
       }
-      eiq localeiq = (eiq)this.GiM.getFirst();
+      ess localess = (ess)this.MVy.getFirst();
       AppMethodBeat.o(88440);
-      return localeiq;
+      return localess;
     }
   }
   
-  public final boolean fxy()
+  public final boolean gpt()
   {
     AppMethodBeat.i(88443);
-    if (!Util.isNullOrNil(this.GiM))
+    if (!Util.isNullOrNil(this.MVy))
     {
-      if (((eiq)this.GiM.getLast()).IFp == 1)
+      if (((ess)this.MVy.getLast()).PzH == 1)
       {
         AppMethodBeat.o(88443);
         return true;
@@ -1101,43 +1011,68 @@ public final class b
     return false;
   }
   
+  public final boolean gpw()
+  {
+    AppMethodBeat.i(88447);
+    int i = a(this.MVw, 100);
+    if (i == 0)
+    {
+      if (gpE())
+      {
+        AppMethodBeat.o(88447);
+        return true;
+      }
+    }
+    else if (i == -3)
+    {
+      ar.a(this.MVw, 104, 1, 0, 0L, "");
+      gpl();
+    }
+    AppMethodBeat.o(88447);
+    return false;
+  }
+  
+  public final String gpx()
+  {
+    AppMethodBeat.i(88448);
+    String str = this.MVw.msgId;
+    AppMethodBeat.o(88448);
+    return str;
+  }
+  
+  public final void gpy()
+  {
+    AppMethodBeat.i(88449);
+    ess localess = new ess();
+    localess.msgId = this.MVw.msgId;
+    ar.a(localess, 106, 3, 0, 0L, "");
+    gpl();
+    AppMethodBeat.o(88449);
+  }
+  
+  public final void gpz()
+  {
+    AppMethodBeat.i(262059);
+    ess localess1 = new ess();
+    ess localess2 = this.MVx;
+    if (localess2 != null) {
+      localess1.msgId = localess2.msgId;
+    }
+    ar.a(localess1, 106, 1, 0, 0L, "");
+    gpi();
+    AppMethodBeat.o(262059);
+  }
+  
   public final void j(long paramLong, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(88442);
     a(paramLong, paramBoolean, paramInt, true);
     AppMethodBeat.o(88442);
   }
-  
-  public final void p(String paramString1, String paramString2, long paramLong)
-  {
-    AppMethodBeat.i(88450);
-    Log.i("MicroMsg.TopStory.TopStoryRedDotImpl", "setUserIconRedDot %s, extInfo %s", new Object[] { paramString1, paramString2 });
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("msgId", paramString1);
-      localJSONObject.put("extInfo", paramString2);
-      localJSONObject.put("ts", paramLong);
-      g.aAh().azQ().set(ar.a.Oht, localJSONObject.toString());
-      g.aAh().azQ().gBI();
-      if ((!Util.isNullOrNil(paramString1)) && (this.GiN != null)) {
-        this.GiN.bt(paramString1, paramLong);
-      }
-      AppMethodBeat.o(88450);
-      return;
-    }
-    catch (JSONException paramString2)
-    {
-      for (;;)
-      {
-        Log.printErrStackTrace("MicroMsg.TopStory.TopStoryRedDotImpl", paramString2, "setUserIconRedDot error", new Object[0]);
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.b
  * JD-Core Version:    0.7.0.1
  */

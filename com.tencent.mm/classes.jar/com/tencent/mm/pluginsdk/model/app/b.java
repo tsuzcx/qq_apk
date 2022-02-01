@@ -1,9 +1,9 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.bp;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.bq;
 import com.tencent.mm.n.f;
 import com.tencent.mm.n.h;
 import com.tencent.mm.sdk.platformtools.ChannelUtil;
@@ -18,10 +18,10 @@ import java.util.Map;
 
 public final class b
 {
-  public long JVK;
+  public long QVX;
   public String desc;
-  public int jjS;
-  public long jmW;
+  public int lZO;
+  public long mcX;
   public String md5;
   public int size;
   public String url;
@@ -31,27 +31,27 @@ public final class b
     AppMethodBeat.i(30998);
     Map localMap = XmlParser.parseXml(paramString, "msg", null);
     this.desc = ((String)localMap.get(".msg.appmsg.des"));
-    this.jjS = Util.getInt((String)localMap.get(".msg.alphainfo.clientVersion"), 0);
+    this.lZO = Util.getInt((String)localMap.get(".msg.alphainfo.clientVersion"), 0);
     this.url = ((String)localMap.get(".msg.alphainfo.url"));
     this.size = Util.getInt((String)localMap.get(".msg.alphainfo.size"), 0);
     this.md5 = ((String)localMap.get(".msg.alphainfo.md5"));
-    this.JVK = Util.getLong((String)localMap.get(".msg.alphainfo.maxAge"), 0L);
-    this.jmW = Util.getLong((String)localMap.get(".msg.alphainfo.expireTime"), 0L);
-    Log.i("MicroMsg.AlphaUpdateInfo", "updateInfo, content:%s, clientVersion:%d, url:%s, size:%d, md5:%s, desc:%s, maxAge:%d, expireTime:%d", new Object[] { paramString, Integer.valueOf(this.jjS), this.url, Integer.valueOf(this.size), this.md5, this.desc, Long.valueOf(this.JVK), Long.valueOf(this.jmW) });
+    this.QVX = Util.getLong((String)localMap.get(".msg.alphainfo.maxAge"), 0L);
+    this.mcX = Util.getLong((String)localMap.get(".msg.alphainfo.expireTime"), 0L);
+    Log.i("MicroMsg.AlphaUpdateInfo", "updateInfo, content:%s, clientVersion:%d, url:%s, size:%d, md5:%s, desc:%s, maxAge:%d, expireTime:%d", new Object[] { paramString, Integer.valueOf(this.lZO), this.url, Integer.valueOf(this.size), this.md5, this.desc, Long.valueOf(this.QVX), Long.valueOf(this.mcX) });
     AppMethodBeat.o(30998);
   }
   
-  public static b gmM()
+  public static b hhn()
   {
     AppMethodBeat.i(30997);
-    bg.aVF();
-    Object localObject = (String)com.tencent.mm.model.c.azQ().get(352273, "");
+    bh.beI();
+    Object localObject = (String)com.tencent.mm.model.c.aHp().b(352273, "");
     if (!Util.isNullOrNil((String)localObject))
     {
       localObject = new b((String)localObject);
       if ((!((b)localObject).isValid()) || (((b)localObject).isExpired()))
       {
-        gmN();
+        hho();
         AppMethodBeat.o(30997);
         return null;
       }
@@ -65,29 +65,29 @@ public final class b
     return localObject;
   }
   
-  public static void gmN()
+  public static void hho()
   {
     AppMethodBeat.i(31001);
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(352273, null);
-    bg.aVF();
-    com.tencent.mm.model.c.azQ().set(352274, null);
+    bh.beI();
+    com.tencent.mm.model.c.aHp().i(352273, null);
+    bh.beI();
+    com.tencent.mm.model.c.aHp().i(352274, null);
     AppMethodBeat.o(31001);
   }
   
-  private static boolean gmQ()
+  private static boolean hhr()
   {
     boolean bool1 = true;
     boolean bool2 = false;
     AppMethodBeat.i(31004);
-    if (Util.safeParseInt(h.aqJ().getValue("SilentDownloadApkAtWiFi")) != 0)
+    if (Util.safeParseInt(h.axc().getValue("SilentDownloadApkAtWiFi")) != 0)
     {
       AppMethodBeat.o(31004);
       return false;
     }
-    bg.aVF();
+    bh.beI();
     int i;
-    if ((((Integer)com.tencent.mm.model.c.azQ().get(7, Integer.valueOf(0))).intValue() & 0x1000000) == 0)
+    if ((((Integer)com.tencent.mm.model.c.aHp().b(7, Integer.valueOf(0))).intValue() & 0x1000000) == 0)
     {
       i = 1;
       if ((!NetStatusUtil.isWifi(MMApplicationContext.getContext())) || (i == 0)) {
@@ -117,9 +117,9 @@ public final class b
   private boolean isExpired()
   {
     AppMethodBeat.i(31000);
-    bg.aVF();
-    long l = ((Long)com.tencent.mm.model.c.azQ().get(352274, Long.valueOf(System.currentTimeMillis()))).longValue();
-    if ((System.currentTimeMillis() - l > this.JVK) || (System.currentTimeMillis() > this.jmW)) {}
+    bh.beI();
+    long l = ((Long)com.tencent.mm.model.c.aHp().b(352274, Long.valueOf(System.currentTimeMillis()))).longValue();
+    if ((System.currentTimeMillis() - l > this.QVX) || (System.currentTimeMillis() > this.mcX)) {}
     for (boolean bool = true;; bool = false)
     {
       Log.i("MicroMsg.AlphaUpdateInfo", "isExpired: %b", new Object[] { Boolean.valueOf(bool) });
@@ -131,7 +131,7 @@ public final class b
   private boolean isValid()
   {
     AppMethodBeat.i(30999);
-    if ((this.jjS > com.tencent.mm.protocal.d.KyO) && (!Util.isNullOrNil(this.url)) && (!Util.isNullOrNil(this.md5)) && (!Util.isNullOrNil(this.desc))) {}
+    if ((this.lZO > com.tencent.mm.protocal.d.RAD) && (!Util.isNullOrNil(this.url)) && (!Util.isNullOrNil(this.md5)) && (!Util.isNullOrNil(this.desc))) {}
     for (boolean bool = true;; bool = false)
     {
       Log.i("MicroMsg.AlphaUpdateInfo", "isValid %b", new Object[] { Boolean.valueOf(bool) });
@@ -140,24 +140,24 @@ public final class b
     }
   }
   
-  public final void gmO()
+  public final void hhp()
   {
     AppMethodBeat.i(31002);
     ca localca = new ca();
-    localca.setCreateTime(bp.C("weixin", Util.nowSecond()));
+    localca.setCreateTime(bq.z("weixin", Util.nowSecond()));
     localca.setType(1);
     localca.setContent(this.desc);
-    Log.d("MicroMsg.AlphaUpdateInfo", localca.field_content);
-    localca.nv(0);
-    localca.Cy("weixin");
+    Log.d("MicroMsg.AlphaUpdateInfo", Util.secPrint(localca.field_content));
+    localca.pJ(0);
+    localca.Jm("weixin");
     localca.setStatus(3);
-    bp.x(localca);
+    bq.z(localca);
     Log.i("MicroMsg.AlphaUpdateInfo", "insertUpdateTextMsg");
-    gmN();
+    hho();
     AppMethodBeat.o(31002);
   }
   
-  public final void gmP()
+  public final void hhq()
   {
     AppMethodBeat.i(31003);
     Log.i("MicroMsg.AlphaUpdateInfo", "downloadInSilence.");
@@ -166,14 +166,14 @@ public final class b
       AppMethodBeat.o(31003);
       return;
     }
-    if (!gmQ())
+    if (!hhr())
     {
-      gmO();
+      hhp();
       AppMethodBeat.o(31003);
       return;
     }
     Log.i("MicroMsg.AlphaUpdateInfo", "go to download, %s, %d, %s, %s", new Object[] { this.md5, Integer.valueOf(this.size), this.desc, this.url });
-    com.tencent.mm.plugin.p.d.elq().h(this.md5, this.size, this.desc.replaceFirst("(\n)*<a.*</a>(\n)*", "\n"), this.url);
+    com.tencent.mm.plugin.y.d.eUZ().k(this.md5, this.size, this.desc.replaceFirst("(\n)*<a.*</a>(\n)*", "\n"), this.url);
     AppMethodBeat.o(31003);
   }
 }

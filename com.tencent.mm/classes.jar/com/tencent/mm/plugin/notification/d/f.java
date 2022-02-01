@@ -2,18 +2,20 @@ package com.tencent.mm.plugin.notification.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.o.a;
-import com.tencent.mm.g.a.cy;
-import com.tencent.mm.g.a.gu;
-import com.tencent.mm.g.a.oh;
-import com.tencent.mm.g.a.oi;
-import com.tencent.mm.g.a.sj;
-import com.tencent.mm.g.a.sk;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.model.ax;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.f.a.dc;
+import com.tencent.mm.f.a.pe;
+import com.tencent.mm.f.a.pf;
+import com.tencent.mm.f.a.tk;
+import com.tencent.mm.f.a.tl;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.ay;
+import com.tencent.mm.model.be;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.n.g;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.notification.a.a;
 import com.tencent.mm.plugin.notification.ui.FailSendMsgNotification;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
@@ -27,116 +29,61 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 public final class f
-  implements bd
+  implements be
 {
-  private static f AHw;
+  private static f GAF;
   private static o.a appForegroundListener;
-  private IListener AHA;
-  private IListener AHB;
-  private IListener AHC;
-  private IListener AHD;
-  private IListener AHE;
-  private IListener AHF;
-  com.tencent.mm.plugin.notification.c.c AHx;
-  com.tencent.mm.plugin.notification.c.c AHy;
-  private com.tencent.mm.plugin.notification.a.a AHz;
-  private boolean ntv;
+  com.tencent.mm.plugin.notification.c.c GAG;
+  com.tencent.mm.plugin.notification.c.c GAH;
+  private a GAI;
+  private IListener GAJ;
+  private IListener GAK;
+  private IListener GAL;
+  private IListener GAM;
+  private IListener GAN;
+  private IListener GAO;
+  private boolean qvq;
   
   static
   {
     AppMethodBeat.i(26809);
-    AHw = null;
-    appForegroundListener = new o.a()
-    {
-      public final void onAppBackground(String paramAnonymousString)
-      {
-        AppMethodBeat.i(26801);
-        if ((com.tencent.mm.kernel.g.aAc()) && (com.tencent.mm.kernel.g.aAf().hpY))
-        {
-          com.tencent.mm.kernel.g.aAf();
-          if (!com.tencent.mm.kernel.a.azj())
-          {
-            paramAnonymousString = new gu();
-            paramAnonymousString.dKP.isActive = false;
-            EventCenter.instance.publish(paramAnonymousString);
-          }
-        }
-        AppMethodBeat.o(26801);
-      }
-      
-      public final void onAppForeground(String paramAnonymousString)
-      {
-        AppMethodBeat.i(26800);
-        if ((com.tencent.mm.kernel.g.aAc()) && (com.tencent.mm.kernel.g.aAf().hpY))
-        {
-          com.tencent.mm.kernel.g.aAf();
-          if (!com.tencent.mm.kernel.a.azj())
-          {
-            paramAnonymousString = new gu();
-            paramAnonymousString.dKP.isActive = true;
-            EventCenter.instance.publish(paramAnonymousString);
-          }
-        }
-        AppMethodBeat.o(26800);
-      }
-    };
+    GAF = null;
+    appForegroundListener = new f.7();
     AppMethodBeat.o(26809);
   }
   
   private f()
   {
     AppMethodBeat.i(26802);
-    this.AHx = null;
-    this.AHy = null;
-    this.AHz = null;
-    this.ntv = false;
-    this.AHA = new IListener() {};
-    this.AHB = new IListener() {};
-    this.AHC = new IListener() {};
-    this.AHD = new IListener() {};
-    this.AHE = new IListener() {};
-    this.AHF = new IListener() {};
+    this.GAG = null;
+    this.GAH = null;
+    this.GAI = null;
+    this.qvq = false;
+    this.GAJ = new IListener() {};
+    this.GAK = new IListener() {};
+    this.GAL = new IListener() {};
+    this.GAM = new IListener() {};
+    this.GAN = new IListener() {};
+    this.GAO = new f.6(this);
     b.init();
-    if (this.AHy == null) {
-      this.AHy = new e();
+    if (this.GAH == null) {
+      this.GAH = new e();
     }
-    if (this.AHx == null) {
-      this.AHx = new d();
+    if (this.GAG == null) {
+      this.GAG = new d();
     }
     AppMethodBeat.o(26802);
   }
   
-  public static boolean Pv()
+  public static boolean SV()
   {
     AppMethodBeat.i(26807);
-    boolean bool = eyV().ntv;
+    boolean bool = fkA().qvq;
     AppMethodBeat.o(26807);
     return bool;
   }
   
-  public static FailSendMsgNotification TU(int paramInt)
-  {
-    AppMethodBeat.i(26803);
-    FailSendMsgNotification localFailSendMsgNotification;
-    if ((paramInt == 2) && (eyV().AHy != null))
-    {
-      Log.d("MicroMsg.SubCoreNotification", "get sns notificaiton");
-      localFailSendMsgNotification = eyV().AHy.eyG();
-      AppMethodBeat.o(26803);
-      return localFailSendMsgNotification;
-    }
-    if ((paramInt == 1) && (eyV().AHx != null))
-    {
-      Log.d("MicroMsg.SubCoreNotification", "get msg notificaiton");
-      localFailSendMsgNotification = eyV().AHx.eyG();
-      AppMethodBeat.o(26803);
-      return localFailSendMsgNotification;
-    }
-    AppMethodBeat.o(26803);
-    return null;
-  }
-  
-  public static ArrayList<Long> aJ(ca paramca)
+  public static ArrayList<Long> aT(ca paramca)
   {
     AppMethodBeat.i(26808);
     if (paramca == null)
@@ -144,9 +91,9 @@ public final class f
       AppMethodBeat.o(26808);
       return null;
     }
-    bg.aVF();
-    com.tencent.mm.model.c.aSQ().a(paramca.field_msgId, paramca);
-    Object localObject = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().eiK();
+    bh.beI();
+    com.tencent.mm.model.c.bbO().a(paramca.field_msgId, paramca);
+    Object localObject = ((n)h.ae(n.class)).eSe().eSq();
     paramca = new ArrayList();
     localObject = ((ArrayList)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
@@ -156,13 +103,35 @@ public final class f
     return paramca;
   }
   
-  public static f eyV()
+  public static FailSendMsgNotification aaH(int paramInt)
+  {
+    AppMethodBeat.i(26803);
+    FailSendMsgNotification localFailSendMsgNotification;
+    if ((paramInt == 2) && (fkA().GAH != null))
+    {
+      Log.d("MicroMsg.SubCoreNotification", "get sns notificaiton");
+      localFailSendMsgNotification = fkA().GAH.fkl();
+      AppMethodBeat.o(26803);
+      return localFailSendMsgNotification;
+    }
+    if ((paramInt == 1) && (fkA().GAG != null))
+    {
+      Log.d("MicroMsg.SubCoreNotification", "get msg notificaiton");
+      localFailSendMsgNotification = fkA().GAG.fkl();
+      AppMethodBeat.o(26803);
+      return localFailSendMsgNotification;
+    }
+    AppMethodBeat.o(26803);
+    return null;
+  }
+  
+  public static f fkA()
   {
     AppMethodBeat.i(26804);
-    if (AHw == null) {
-      AHw = new f();
+    if (GAF == null) {
+      GAF = new f();
     }
-    f localf = AHw;
+    f localf = GAF;
     AppMethodBeat.o(26804);
     return localf;
   }
@@ -177,38 +146,38 @@ public final class f
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(26805);
-    this.AHx.eyP();
-    this.AHx.eyQ();
-    this.AHy.eyP();
-    this.AHy.eyQ();
-    if (this.AHz == null) {
-      this.AHz = new com.tencent.mm.plugin.notification.a.a();
+    this.GAG.fku();
+    this.GAG.fkv();
+    this.GAH.fku();
+    this.GAH.fkv();
+    if (this.GAI == null) {
+      this.GAI = new a();
     }
-    com.tencent.mm.plugin.notification.a.a locala = this.AHz;
-    if (!bg.aAc()) {
+    a locala = this.GAI;
+    if (!bh.aHB()) {
       Log.e("MicroMsg.NotificationObserver", "account not ready!");
     }
     for (;;)
     {
-      EventCenter.instance.addListener(this.AHA);
-      EventCenter.instance.addListener(this.AHB);
-      EventCenter.instance.addListener(this.AHC);
-      EventCenter.instance.addListener(this.AHD);
-      EventCenter.instance.addListener(this.AHE);
-      EventCenter.instance.addListener(this.AHF);
-      bg.getNotification().nR(com.tencent.mm.n.g.aqG());
-      bg.getNotification().dj(false);
+      EventCenter.instance.addListener(this.GAJ);
+      EventCenter.instance.addListener(this.GAK);
+      EventCenter.instance.addListener(this.GAL);
+      EventCenter.instance.addListener(this.GAM);
+      EventCenter.instance.addListener(this.GAN);
+      EventCenter.instance.addListener(this.GAO);
+      bh.getNotification().qg(g.awZ());
+      bh.getNotification().dJ(false);
       Log.d("MicroMsg.SubCoreNotification", "onAccountPostReset");
       AppMethodBeat.o(26805);
       return;
       Log.d("MicroMsg.NotificationObserver", "added");
       try
       {
-        bg.aVF();
-        com.tencent.mm.model.c.aST().remove(locala);
-        bg.aVF();
-        com.tencent.mm.model.c.aST().add(locala);
-        locala.AGx = true;
+        bh.beI();
+        com.tencent.mm.model.c.bbR().remove(locala);
+        bh.beI();
+        com.tencent.mm.model.c.bbR().add(locala);
+        locala.GzG = true;
       }
       catch (Exception localException)
       {
@@ -220,28 +189,28 @@ public final class f
   public final void onAccountRelease()
   {
     AppMethodBeat.i(26806);
-    this.AHx.eyR();
-    this.AHx.eyS();
-    this.AHy.eyR();
-    this.AHy.eyS();
-    com.tencent.mm.plugin.notification.a.a locala;
-    if (this.AHz != null)
+    this.GAG.fkw();
+    this.GAG.fkx();
+    this.GAH.fkw();
+    this.GAH.fkx();
+    a locala;
+    if (this.GAI != null)
     {
-      locala = this.AHz;
-      if (!bg.aAc()) {}
+      locala = this.GAI;
+      if (!bh.aHB()) {}
     }
     try
     {
-      bg.aVF();
-      com.tencent.mm.model.c.aST().remove(locala);
-      EventCenter.instance.removeListener(this.AHA);
-      EventCenter.instance.removeListener(this.AHB);
-      EventCenter.instance.removeListener(this.AHC);
-      EventCenter.instance.removeListener(this.AHD);
-      EventCenter.instance.removeListener(this.AHE);
-      EventCenter.instance.removeListener(this.AHF);
-      bg.getNotification().nR(0);
-      bg.getNotification().dj(true);
+      bh.beI();
+      com.tencent.mm.model.c.bbR().remove(locala);
+      EventCenter.instance.removeListener(this.GAJ);
+      EventCenter.instance.removeListener(this.GAK);
+      EventCenter.instance.removeListener(this.GAL);
+      EventCenter.instance.removeListener(this.GAM);
+      EventCenter.instance.removeListener(this.GAN);
+      EventCenter.instance.removeListener(this.GAO);
+      bh.getNotification().qg(0);
+      bh.getNotification().dJ(true);
       Log.d("MicroMsg.SubCoreNotification", "onAccountRelease");
       AppMethodBeat.o(26806);
       return;
@@ -259,7 +228,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.notification.d.f
  * JD-Core Version:    0.7.0.1
  */

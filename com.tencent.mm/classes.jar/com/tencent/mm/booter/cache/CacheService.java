@@ -10,7 +10,7 @@ public class CacheService
 {
   public IBinder onBind(Intent paramIntent)
   {
-    return a.gnv;
+    return a.iRE;
   }
   
   public void onCreate()
@@ -31,7 +31,7 @@ public class CacheService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.booter.cache.CacheService
  * JD-Core Version:    0.7.0.1
  */

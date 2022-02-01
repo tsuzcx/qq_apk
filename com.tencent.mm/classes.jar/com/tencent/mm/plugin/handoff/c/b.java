@@ -7,48 +7,48 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"bundle", "Landroid/os/Bundle;", "initFun", "Lkotlin/Function1;", "", "Lkotlin/ExtensionFunctionType;", "bundleOf", "pairs", "", "Lcom/tencent/mm/plugin/handoff/service/BundlePair;", "([Lcom/tencent/mm/plugin/handoff/service/BundlePair;)Landroid/os/Bundle;", "bundleTo", "", "value", "Landroid/os/Parcelable;", "n", "Ljava/lang/Void;", "(Ljava/lang/String;[Landroid/os/Parcelable;)Lcom/tencent/mm/plugin/handoff/service/BundlePair;", "", "(Ljava/lang/String;[Ljava/lang/CharSequence;)Lcom/tencent/mm/plugin/handoff/service/BundlePair;", "(Ljava/lang/String;[Ljava/lang/String;)Lcom/tencent/mm/plugin/handoff/service/BundlePair;", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "set", "key", "(Landroid/os/Bundle;Ljava/lang/String;[Landroid/os/Parcelable;)V", "(Landroid/os/Bundle;Ljava/lang/String;[Ljava/lang/CharSequence;)V", "(Landroid/os/Bundle;Ljava/lang/String;[Ljava/lang/String;)V", "", "plugin-handoff_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"bundle", "Landroid/os/Bundle;", "initFun", "Lkotlin/Function1;", "", "Lkotlin/ExtensionFunctionType;", "bundleOf", "pairs", "", "Lcom/tencent/mm/plugin/handoff/service/BundlePair;", "([Lcom/tencent/mm/plugin/handoff/service/BundlePair;)Landroid/os/Bundle;", "bundleTo", "", "value", "Landroid/os/Parcelable;", "n", "Ljava/lang/Void;", "(Ljava/lang/String;[Landroid/os/Parcelable;)Lcom/tencent/mm/plugin/handoff/service/BundlePair;", "", "(Ljava/lang/String;[Ljava/lang/CharSequence;)Lcom/tencent/mm/plugin/handoff/service/BundlePair;", "(Ljava/lang/String;[Ljava/lang/String;)Lcom/tencent/mm/plugin/handoff/service/BundlePair;", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "set", "key", "(Landroid/os/Bundle;Ljava/lang/String;[Landroid/os/Parcelable;)V", "(Landroid/os/Bundle;Ljava/lang/String;[Ljava/lang/CharSequence;)V", "(Landroid/os/Bundle;Ljava/lang/String;[Ljava/lang/String;)V", "", "plugin-handoff_release"})
 public final class b
 {
   public static final Bundle a(c... paramVarArgs)
   {
-    AppMethodBeat.i(199154);
-    p.h(paramVarArgs, "pairs");
+    AppMethodBeat.i(248521);
+    p.k(paramVarArgs, "pairs");
     Bundle localBundle = new Bundle();
     int j = paramVarArgs.length;
     int i = 0;
     while (i < j)
     {
       c localc = paramVarArgs[i];
-      p.h(localBundle, "bundle");
-      localc.yhT.invoke(localBundle);
+      p.k(localBundle, "bundle");
+      localc.DrV.invoke(localBundle);
       i += 1;
     }
-    AppMethodBeat.o(199154);
+    AppMethodBeat.o(248521);
     return localBundle;
   }
   
   public static final void a(Bundle paramBundle, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(199156);
-    p.h(paramBundle, "$this$set");
-    p.h(paramString1, "key");
-    p.h(paramString2, "value");
+    AppMethodBeat.i(248525);
+    p.k(paramBundle, "$this$set");
+    p.k(paramString1, "key");
+    p.k(paramString2, "value");
     paramBundle.putString(paramString1, paramString2);
-    AppMethodBeat.o(199156);
+    AppMethodBeat.o(248525);
   }
   
-  public static final c ig(String paramString1, final String paramString2)
+  public static final c ip(String paramString1, final String paramString2)
   {
-    AppMethodBeat.i(199155);
-    p.h(paramString1, "$this$bundleTo");
-    p.h(paramString2, "value");
+    AppMethodBeat.i(248523);
+    p.k(paramString1, "$this$bundleTo");
+    p.k(paramString2, "value");
     paramString1 = new c((kotlin.g.a.b)new c(paramString1, paramString2));
-    AppMethodBeat.o(199155);
+    AppMethodBeat.o(248523);
     return paramString1;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/os/Bundle;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/os/Bundle;", "invoke"})
   static final class c
     extends q
     implements kotlin.g.a.b<Bundle, x>

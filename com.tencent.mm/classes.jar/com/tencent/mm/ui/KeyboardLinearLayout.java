@@ -9,9 +9,9 @@ import com.tencent.mm.ui.base.OnLayoutChangedLinearLayout;
 public class KeyboardLinearLayout
   extends OnLayoutChangedLinearLayout
 {
-  private boolean ODJ;
-  private a ODK;
   public String TAG;
+  private boolean VXb;
+  private a VXc;
   private boolean mHasInit;
   private int mHeight;
   
@@ -23,7 +23,7 @@ public class KeyboardLinearLayout
     this.mHasInit = false;
     this.mHasInit = false;
     this.mHeight = 0;
-    this.ODJ = false;
+    this.VXb = false;
     this.TAG += getId();
     AppMethodBeat.o(141302);
   }
@@ -35,16 +35,16 @@ public class KeyboardLinearLayout
     this.mHasInit = false;
   }
   
-  protected void Ns(int paramInt)
+  protected void SG(int paramInt)
   {
     AppMethodBeat.i(141305);
-    if (this.ODK != null) {
-      this.ODK.Ns(paramInt);
+    if (this.VXc != null) {
+      this.VXc.SG(paramInt);
     }
     AppMethodBeat.o(141305);
   }
   
-  protected void agG(int paramInt)
+  protected void aow(int paramInt)
   {
     AppMethodBeat.i(141304);
     if (!this.mHasInit)
@@ -52,19 +52,19 @@ public class KeyboardLinearLayout
       this.mHasInit = true;
       this.mHeight = paramInt;
       Log.i(this.TAG, "init height:%d", new Object[] { Integer.valueOf(this.mHeight) });
-      if (this.ODK != null) {
-        this.ODK.Ns(-1);
+      if (this.VXc != null) {
+        this.VXc.SG(-1);
       }
-      if ((this.mHasInit) && (!this.ODJ) && (this.mHeight - paramInt > 100))
+      if ((this.mHasInit) && (!this.VXb) && (this.mHeight - paramInt > 100))
       {
-        this.ODJ = true;
-        Ns(-3);
+        this.VXb = true;
+        SG(-3);
         Log.w(this.TAG, "show keyboard!! mHeight: " + this.mHeight + " b: " + paramInt);
       }
-      if ((this.mHasInit) && (this.ODJ) && (this.mHeight - paramInt <= 100))
+      if ((this.mHasInit) && (this.VXb) && (this.mHeight - paramInt <= 100))
       {
-        this.ODJ = false;
-        Ns(-2);
+        this.VXb = false;
+        SG(-2);
         Log.w(this.TAG, "hide keyboard!! mHeight: " + this.mHeight + " b: " + paramInt);
       }
       AppMethodBeat.o(141304);
@@ -82,23 +82,23 @@ public class KeyboardLinearLayout
   {
     AppMethodBeat.i(141303);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    agG(paramInt4);
+    aow(paramInt4);
     AppMethodBeat.o(141303);
   }
   
   public void setOnkbdStateListener(a parama)
   {
-    this.ODK = parama;
+    this.VXc = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void Ns(int paramInt);
+    public abstract void SG(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.KeyboardLinearLayout
  * JD-Core Version:    0.7.0.1
  */

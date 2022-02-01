@@ -13,6 +13,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.account.bind.ui.BindMContactUI;
+import com.tencent.mm.plugin.account.security.a.a;
+import com.tencent.mm.plugin.account.security.a.b;
+import com.tencent.mm.plugin.account.security.a.c;
+import com.tencent.mm.plugin.account.security.a.d;
 import com.tencent.mm.ui.MMWizardActivity;
 
 public class BindSafeDeviceUI
@@ -20,13 +24,13 @@ public class BindSafeDeviceUI
 {
   public int getLayoutId()
   {
-    return 2131496192;
+    return a.b.security_account_normal;
   }
   
   public void initView()
   {
     AppMethodBeat.i(125543);
-    setMMTitle(2131764829);
+    setMMTitle(a.d.safe_device_account_protect);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -37,21 +41,21 @@ public class BindSafeDeviceUI
         return true;
       }
     });
-    ((ImageView)findViewById(2131307467)).setImageResource(2131689477);
-    ((TextView)findViewById(2131307468)).setText(2131764835);
-    ((TextView)findViewById(2131309161)).setText(2131764836);
-    findViewById(2131309161).setOnClickListener(new View.OnClickListener()
+    ((ImageView)findViewById(a.a.security_account_state_icon)).setImageResource(a.c.accounts_saftphone_icon);
+    ((TextView)findViewById(a.a.security_account_tips)).setText(a.d.safe_device_bind__hit);
+    ((TextView)findViewById(a.a.tip_title)).setText(a.d.safe_device_bind_mobile);
+    findViewById(a.a.tip_title).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(125541);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/account/security/ui/BindSafeDeviceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/account/security/ui/BindSafeDeviceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         paramAnonymousView = new Intent();
         paramAnonymousView.putExtra("bind_scene", 1);
         paramAnonymousView.setClass(BindSafeDeviceUI.this, BindMContactUI.class);
-        MMWizardActivity.ay(BindSafeDeviceUI.this, paramAnonymousView);
+        MMWizardActivity.aH(BindSafeDeviceUI.this, paramAnonymousView);
         a.a(this, "com/tencent/mm/plugin/account/security/ui/BindSafeDeviceUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(125541);
       }
@@ -75,7 +79,7 @@ public class BindSafeDeviceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.security.ui.BindSafeDeviceUI
  * JD-Core Version:    0.7.0.1
  */

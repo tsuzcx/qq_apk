@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bjx;
-import com.tencent.mm.protocal.protobuf.bjy;
+import com.tencent.mm.protocal.protobuf.brg;
+import com.tencent.mm.protocal.protobuf.brh;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class o
@@ -26,14 +26,14 @@ public final class o
     this.callback = null;
     this.rr = null;
     d.a locala = new d.a();
-    locala.iLN = new bjx();
-    locala.iLO = new bjy();
+    locala.lBU = new brg();
+    locala.lBV = new brh();
     locala.uri = "/cgi-bin/micromsg-bin/getboundharddevices";
     locala.funcId = 539;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    ((bjx)this.rr.iLK.iLR).Version = 1;
+    this.rr = locala.bgN();
+    ((brg)d.b.b(this.rr.lBR)).rWt = 1;
     AppMethodBeat.o(23391);
   }
   

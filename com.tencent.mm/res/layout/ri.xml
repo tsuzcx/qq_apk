@@ -15,7 +15,7 @@
             <View android:background="@color/iq" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginBottom="@dimen/bt" />
             <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/avx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bt">
                 <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/aw6" android:layout_width="13.0dip" android:layout_height="13.0dip" android:src="@raw/icons_outlined_finder_icon" app:iconColor="@color/Orange" />
-                <TextView android:textSize="@dimen/kc" android:textColor="@color/FG_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bt" android:text="@string/da9" style="@style/hv" />
+                <TextView android:textSize="@dimen/kc" android:textColor="@color/FG_1" android:id="@id/jts" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bt" android:text="@string/da9" style="@style/hv" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

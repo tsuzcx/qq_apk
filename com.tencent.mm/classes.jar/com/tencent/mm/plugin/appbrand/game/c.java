@@ -16,23 +16,23 @@ public class c
     AppMethodBeat.o(45083);
   }
   
-  public final MBRuntime bCX()
+  public final MBRuntime bOs()
   {
-    AppMethodBeat.i(226614);
-    Object localObject = this.cBj;
+    AppMethodBeat.i(271387);
+    Object localObject = this.cAr;
     if ((localObject instanceof a))
     {
-      localObject = ((a)localObject).cwa.getMagicBrush();
-      AppMethodBeat.o(226614);
+      localObject = ((a)localObject).cut.getMagicBrush();
+      AppMethodBeat.o(271387);
       return localObject;
     }
-    AppMethodBeat.o(226614);
+    AppMethodBeat.o(271387);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.c
  * JD-Core Version:    0.7.0.1
  */

@@ -62,15 +62,15 @@ public class SheetManager
   
   public Object callSheetStaMth(Class paramClass, String paramString, Class[] paramArrayOfClass, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(193596);
+    AppMethodBeat.i(237035);
     if (this.mPluginExists)
     {
       paramClass = this.mSheetProxy.callSheetStaMth(paramClass, paramString, paramArrayOfClass, paramArrayOfObject);
-      AppMethodBeat.o(193596);
+      AppMethodBeat.o(237035);
       return paramClass;
     }
     paramClass = Util.invokeStaticMethod(paramClass, paramString, paramArrayOfClass, paramArrayOfObject);
-    AppMethodBeat.o(193596);
+    AppMethodBeat.o(237035);
     return paramClass;
   }
   
@@ -132,7 +132,7 @@ public class SheetManager
   public void init(Context paramContext, Options paramOptions)
   {
     AppMethodBeat.i(180954);
-    switch (2.a[paramOptions.mAdapterType.ordinal()])
+    switch (SheetManager.2.a[paramOptions.mAdapterType.ordinal()])
     {
     default: 
       if (this.mSheetAdapter.a())
@@ -155,29 +155,10 @@ public class SheetManager
     }
   }
   
-  public void initAsync(final Context paramContext, final Options paramOptions, final Callback<Void> paramCallback)
+  public void initAsync(Context paramContext, Options paramOptions, Callback<Void> paramCallback)
   {
     AppMethodBeat.i(180953);
-    new Thread(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(180948);
-        SheetManager.this.init(paramContext, paramOptions);
-        this.c.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(180947);
-            if (SheetManager.1.this.d != null) {
-              SheetManager.1.this.d.callback(null);
-            }
-            AppMethodBeat.o(180947);
-          }
-        });
-        AppMethodBeat.o(180948);
-      }
-    }, "tencentmap-sheetinit").start();
+    new Thread(new SheetManager.1(this, paramContext, paramOptions, new Handler(Looper.getMainLooper()), paramCallback), "tencentmap-sheetinit").start();
     AppMethodBeat.o(180953);
   }
   
@@ -224,10 +205,11 @@ public class SheetManager
   
   public static class Options
   {
-    private AdapterType mAdapterType = AdapterType.LOC_SHEET;
+    private SheetManager.Options.AdapterType mAdapterType = SheetManager.Options.AdapterType.LOC_SHEET;
     private File mCoreLogDir;
     private String mCoreLogReportUrl;
     private String mCoreLogToken;
+    private boolean mIsCatchCrashEnable;
     private boolean mIsCoreLogOn;
     private boolean mIsSheetEnable;
     private String mPluginName;
@@ -240,7 +222,7 @@ public class SheetManager
     private String mSoLibName;
     private SheetManager.UncaughtListener mUncaughtListener;
     
-    public AdapterType getAdapterType()
+    public SheetManager.Options.AdapterType getAdapterType()
     {
       return this.mAdapterType;
     }
@@ -305,6 +287,11 @@ public class SheetManager
       return this.mUncaughtListener;
     }
     
+    public boolean isCatchCrashEnable()
+    {
+      return this.mIsCatchCrashEnable;
+    }
+    
     public boolean isCoreLogOn()
     {
       return this.mIsCoreLogOn;
@@ -315,7 +302,7 @@ public class SheetManager
       return this.mIsSheetEnable;
     }
     
-    public Options setAdapterType(AdapterType paramAdapterType)
+    public Options setAdapterType(SheetManager.Options.AdapterType paramAdapterType)
     {
       this.mAdapterType = paramAdapterType;
       return this;
@@ -324,6 +311,12 @@ public class SheetManager
     public Options setAppKey(String paramString)
     {
       this.mSdkMapKey = paramString;
+      return this;
+    }
+    
+    public Options setCatchCrashEnable(boolean paramBoolean)
+    {
+      this.mIsCatchCrashEnable = paramBoolean;
       return this;
     }
     
@@ -403,19 +396,6 @@ public class SheetManager
       this.mSdkVersionCode = paramString;
       return this;
     }
-    
-    public static enum AdapterType
-    {
-      static
-      {
-        AppMethodBeat.i(180952);
-        LOC_SHEET = new AdapterType("LOC_SHEET", 0);
-        $VALUES = new AdapterType[] { LOC_SHEET };
-        AppMethodBeat.o(180952);
-      }
-      
-      private AdapterType() {}
-    }
   }
   
   public static abstract class UncaughtListener
@@ -429,7 +409,7 @@ public class SheetManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.map.tools.sheet.SheetManager
  * JD-Core Version:    0.7.0.1
  */

@@ -5,31 +5,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class h
   implements d
 {
-  private boolean ljI;
+  private boolean oer;
   
   public h(boolean paramBoolean)
   {
-    this.ljI = paramBoolean;
+    this.oer = paramBoolean;
   }
   
-  private static String cW(String paramString1, String paramString2)
+  private static String df(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(222903);
+    AppMethodBeat.i(230745);
     paramString1 = "M-SEARCH * HTTP/1.1\r\nST:" + paramString1 + "\r\nHOST: " + paramString2 + ":1900\r\nMX: 3\r\nMAN: \"ssdp:discover\"\r\n\r\n";
-    AppMethodBeat.o(222903);
+    AppMethodBeat.o(230745);
     return paramString1;
   }
   
-  public final String bBh()
+  public final String bMC()
   {
     AppMethodBeat.i(158891);
-    if (this.ljI)
+    if (this.oer)
     {
-      str = cW("ssdp:all", "[FF0x::C]");
+      str = df("ssdp:all", "[FF0x::C]");
       AppMethodBeat.o(158891);
       return str;
     }
-    String str = cW("ssdp:all", "239.255.255.250");
+    String str = df("ssdp:all", "239.255.255.250");
     AppMethodBeat.o(158891);
     return str;
   }

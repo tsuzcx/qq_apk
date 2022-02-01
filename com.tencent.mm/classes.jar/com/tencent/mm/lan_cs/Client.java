@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class Client
 {
-  public static a hvu;
+  public static a khu;
   
   public static class C2Java
   {
     public static void onDisconnect(String paramString, int paramInt)
     {
       AppMethodBeat.i(133658);
-      if (Client.hvu != null) {
-        Client.hvu.aBy();
+      if (Client.khu != null) {
+        Client.khu.aJb();
       }
       AppMethodBeat.o(133658);
     }
@@ -20,8 +20,8 @@ public final class Client
     public static void onRecv(String paramString, int paramInt, byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(133657);
-      if (Client.hvu != null) {
-        Client.hvu.onRecv(paramString, paramInt, paramArrayOfByte);
+      if (Client.khu != null) {
+        Client.khu.onRecv(paramString, paramInt, paramArrayOfByte);
       }
       AppMethodBeat.o(133657);
     }
@@ -36,14 +36,14 @@ public final class Client
   
   public static abstract interface a
   {
-    public abstract void aBy();
+    public abstract void aJb();
     
     public abstract void onRecv(String paramString, int paramInt, byte[] paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.lan_cs.Client
  * JD-Core Version:    0.7.0.1
  */

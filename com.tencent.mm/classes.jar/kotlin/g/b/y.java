@@ -1,49 +1,31 @@
 package kotlin.g.b;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l.d;
-import kotlin.l.m.a;
+import kotlin.l.a;
+import kotlin.l.r;
+import kotlin.l.r.a;
 
-public final class y
-  extends x
+public abstract class y
+  extends w
+  implements r
 {
-  private final d SYA;
-  private final String name;
-  private final String signature;
-  
-  public y(d paramd, String paramString1, String paramString2)
+  protected final a iBX()
   {
-    this.SYA = paramd;
-    this.name = paramString1;
-    this.signature = paramString2;
+    return ab.a(this);
   }
   
-  public final d Rs()
+  public final r.a iCp()
   {
-    return this.SYA;
+    return ((r)iCr()).iCp();
   }
   
-  public final Object get(Object paramObject)
+  public Object invoke(Object paramObject)
   {
-    AppMethodBeat.i(128971);
-    paramObject = hye().ag(new Object[] { paramObject });
-    AppMethodBeat.o(128971);
-    return paramObject;
-  }
-  
-  public final String getName()
-  {
-    return this.name;
-  }
-  
-  public final String getSignature()
-  {
-    return this.signature;
+    return get(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.g.b.y
  * JD-Core Version:    0.7.0.1
  */

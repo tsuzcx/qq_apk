@@ -9,53 +9,50 @@ import com.tencent.mm.plugin.finder.megavideo.bullet.b.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import kotlin.f;
 
 public final class h
 {
-  com.tencent.mm.danmaku.c.a gNt;
-  HandlerThread gOs;
-  private Handler gOt;
-  Boolean gOu = Boolean.FALSE;
+  com.tencent.mm.danmaku.c.a jxO;
+  HandlerThread jyN;
+  private Handler jyO;
+  Boolean jyP = Boolean.FALSE;
   
   public h(com.tencent.mm.danmaku.c.a parama)
   {
-    this.gNt = parama;
+    this.jxO = parama;
   }
   
   public static void a(com.tencent.mm.danmaku.c.a parama, com.tencent.mm.danmaku.b.a parama1)
   {
-    AppMethodBeat.i(241659);
-    if (parama1.asx())
+    AppMethodBeat.i(281851);
+    if (parama1.azl())
     {
-      AppMethodBeat.o(241659);
+      AppMethodBeat.o(281851);
       return;
     }
-    parama = parama.e(parama1).g(parama1);
-    parama1.ak(parama.gPb + com.tencent.mm.danmaku.c.a.asO().gPJ * 2);
-    parama1.al(parama.gPc + com.tencent.mm.danmaku.c.a.asO().gPI * 2);
-    parama1.asy();
-    AppMethodBeat.o(241659);
+    parama = parama.d(parama1).f(parama1);
+    parama1.aj(parama.jzv + com.tencent.mm.danmaku.c.a.azC().jAc * 2);
+    parama1.ak(parama.jzw + com.tencent.mm.danmaku.c.a.azC().jAb * 2);
+    parama1.azm();
+    AppMethodBeat.o(281851);
   }
   
-  final Handler aso()
+  final Handler azc()
   {
-    AppMethodBeat.i(241660);
-    if ((this.gOs == null) || (!this.gOs.isAlive())) {}
+    AppMethodBeat.i(281853);
+    if ((this.jyN == null) || (!this.jyN.isAlive())) {}
     for (;;)
     {
       try
       {
-        localObject = com.tencent.mm.plugin.finder.megavideo.bullet.b.uJZ;
-        localObject = com.tencent.mm.plugin.finder.megavideo.bullet.b.dkf();
-        b.a locala = com.tencent.mm.plugin.finder.megavideo.bullet.b.uJZ;
-        localObject = ((com.tencent.mm.plugin.finder.megavideo.bullet.b)((f)localObject).getValue()).uJW;
+        localObject = com.tencent.mm.plugin.finder.megavideo.bullet.b.zvH;
+        localObject = b.a.dJA().zvE;
         if ((localObject == null) || (!((HandlerThread)localObject).isAlive())) {
           continue;
         }
-        this.gOs = ((HandlerThread)localObject);
-        this.gOu = Boolean.TRUE;
-        this.gOt = new Handler(this.gOs.getLooper());
+        this.jyN = ((HandlerThread)localObject);
+        this.jyP = Boolean.TRUE;
+        this.jyO = new Handler(this.jyN.getLooper());
       }
       catch (Throwable localThrowable)
       {
@@ -63,13 +60,13 @@ public final class h
         e.e("DanmakuMeasureManager", new Object[] { localThrowable });
         continue;
       }
-      localObject = this.gOt;
-      AppMethodBeat.o(241660);
+      localObject = this.jyO;
+      AppMethodBeat.o(281853);
       return localObject;
-      this.gOs = new HandlerThread("DanmakuMeasureThread");
-      this.gOs.start();
-      this.gOs.setUncaughtExceptionHandler(new com.tencent.mm.danmaku.e.b());
-      this.gOu = Boolean.FALSE;
+      this.jyN = new HandlerThread("DanmakuMeasureThread");
+      this.jyN.start();
+      this.jyN.setUncaughtExceptionHandler(new com.tencent.mm.danmaku.e.b());
+      this.jyP = Boolean.FALSE;
     }
   }
   

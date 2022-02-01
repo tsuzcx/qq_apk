@@ -10,8 +10,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build.VERSION;
-import android.support.design.widget.BottomSheetBehavior;
-import android.support.design.widget.BottomSheetBehavior.a;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,201 +24,208 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cr.a.c;
+import com.tencent.mm.cr.a.e;
+import com.tencent.mm.cr.a.f;
+import com.tencent.mm.cr.a.g;
+import com.tencent.mm.cr.a.j;
 import com.tencent.mm.hellhoundlib.b.b;
 
 public class g
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private int HMp;
-  private int HMq;
-  private LinearLayout HMr;
-  private Button HMs;
-  private Button HMt;
-  private Button HMu;
-  private LinearLayout HMv;
-  private LinearLayout HMw;
-  private LinearLayout HMx;
-  private TextView HMy;
-  private a QOR;
-  private a QOS;
-  public a QOT;
-  private ViewTreeObserver afI;
-  private int kca;
-  public View lJI;
+  private boolean AUA;
+  private boolean AUB;
+  private int OEl;
+  private int OEm;
+  private LinearLayout OEn;
+  private Button OEo;
+  private Button OEp;
+  public Button OEq;
+  private LinearLayout OEr;
+  private LinearLayout OEs;
+  protected LinearLayout OEt;
+  private TextView OEu;
+  private a YnD;
+  private a YnE;
+  public a YnF;
+  protected View YnG;
+  public b YnH;
+  private boolean bxO;
+  private View lJ;
+  private ViewTreeObserver lS;
   private Context mContext;
-  private Dialog mLH;
-  private BottomSheetBehavior mLK;
-  private boolean mLL;
-  private int mLM;
-  private boolean mLO;
-  private boolean ox;
-  private View qK;
-  private boolean wjM;
-  private boolean wjN;
+  private int mTz;
+  public View oFW;
+  private BottomSheetBehavior pMC;
+  private boolean pMD;
+  private int pME;
+  private boolean pMG;
+  public Dialog pMz;
   
   public g(Context paramContext)
   {
-    AppMethodBeat.i(198255);
-    this.mLL = false;
-    this.wjN = false;
-    this.mLO = false;
-    this.HMp = 0;
-    this.HMq = 0;
-    this.ox = true;
+    AppMethodBeat.i(250290);
+    this.pMD = false;
+    this.AUB = false;
+    this.pMG = false;
+    this.OEl = 0;
+    this.OEm = 0;
+    this.bxO = true;
     this.mContext = paramContext;
-    this.HMp = 0;
-    this.HMq = 0;
-    bh(this.mContext);
-    AppMethodBeat.o(198255);
+    this.OEl = 0;
+    this.OEm = 0;
+    bv(this.mContext);
+    AppMethodBeat.o(250290);
   }
   
   public g(Context paramContext, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(198256);
-    this.mLL = false;
-    this.wjN = false;
-    this.mLO = false;
-    this.HMp = 0;
-    this.HMq = 0;
-    this.ox = true;
+    AppMethodBeat.i(250291);
+    this.pMD = false;
+    this.AUB = false;
+    this.pMG = false;
+    this.OEl = 0;
+    this.OEm = 0;
+    this.bxO = true;
     this.mContext = paramContext;
-    this.HMp = paramInt1;
-    this.HMq = paramInt2;
-    bh(this.mContext);
-    AppMethodBeat.o(198256);
+    this.OEl = paramInt1;
+    this.OEm = paramInt2;
+    bv(this.mContext);
+    AppMethodBeat.o(250291);
   }
   
   public g(Context paramContext, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    AppMethodBeat.i(198257);
-    this.mLL = false;
-    this.wjN = false;
-    this.mLO = false;
-    this.HMp = 0;
-    this.HMq = 0;
-    this.ox = true;
+    AppMethodBeat.i(250293);
+    this.pMD = false;
+    this.AUB = false;
+    this.pMG = false;
+    this.OEl = 0;
+    this.OEm = 0;
+    this.bxO = true;
     this.mContext = paramContext;
-    this.HMp = paramInt1;
-    this.HMq = paramInt2;
-    this.ox = paramBoolean;
-    bh(this.mContext);
-    AppMethodBeat.o(198257);
+    this.OEl = paramInt1;
+    this.OEm = paramInt2;
+    this.bxO = paramBoolean;
+    bv(this.mContext);
+    AppMethodBeat.o(250293);
   }
   
-  private void bh(Context paramContext)
+  private void bv(Context paramContext)
   {
-    AppMethodBeat.i(198260);
+    AppMethodBeat.i(250301);
     if ((this.mContext instanceof Activity)) {
-      this.qK = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
+      this.lJ = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
     }
-    this.mLH = new android.support.design.widget.a(paramContext, 2131820791);
-    this.lJI = View.inflate(paramContext, 2131495530, null);
-    this.HMv = ((LinearLayout)this.lJI.findViewById(2131297701));
-    this.HMw = ((LinearLayout)this.lJI.findViewById(2131297696));
-    this.HMx = ((LinearLayout)this.lJI.findViewById(2131297695));
-    fPz();
+    this.pMz = new com.google.android.material.bottomsheet.a(paramContext, a.j.HalfBottomDialog);
+    this.oFW = View.inflate(paramContext, getLayoutId(), null);
+    this.OEr = ((LinearLayout)this.oFW.findViewById(a.f.bottom_sheet_title));
+    this.OEs = ((LinearLayout)this.oFW.findViewById(a.f.bottom_sheet_footer));
+    this.OEt = ((LinearLayout)this.oFW.findViewById(a.f.bottom_sheet_custom_layout));
+    this.YnG = this.oFW.findViewById(a.f.touch_outside_custom);
+    gIc();
     initHeaderView();
-    this.mLL = isLandscape();
-    this.mLH.setContentView(this.lJI);
-    this.mLH.setCancelable(this.ox);
-    this.mLK = BottomSheetBehavior.l((View)this.lJI.getParent());
-    this.mLK.setState(3);
-    this.mLK.ok = new BottomSheetBehavior.a()
-    {
-      public final void f(View paramAnonymousView, int paramAnonymousInt) {}
-      
-      public final void m(View paramAnonymousView) {}
-    };
-    this.mLH.setOnDismissListener(new DialogInterface.OnDismissListener()
+    this.pMD = isLandscape();
+    this.pMz.setContentView(this.oFW);
+    this.pMz.setCancelable(this.bxO);
+    this.pMC = BottomSheetBehavior.cg((View)this.oFW.getParent());
+    this.pMC.setState(3);
+    this.pMC.bxG = new g.1(this);
+    this.pMz.setOnDismissListener(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
-        AppMethodBeat.i(198250);
-        if (g.a(g.this) != null)
+        AppMethodBeat.i(249623);
+        if (g.a(g.this) != null) {
+          g.a(g.this).dismiss();
+        }
+        if (g.b(g.this) != null)
         {
-          if (!g.a(g.this).isAlive()) {
-            g.a(g.this, g.b(g.this).getViewTreeObserver());
+          if (!g.b(g.this).isAlive()) {
+            g.a(g.this, g.c(g.this).getViewTreeObserver());
           }
-          g.a(g.this).removeGlobalOnLayoutListener(g.this);
+          g.b(g.this).removeGlobalOnLayoutListener(g.this);
           g.a(g.this, null);
         }
-        if (!g.c(g.this)) {
-          g.d(g.this);
+        if (!g.d(g.this)) {
+          g.e(g.this);
         }
-        AppMethodBeat.o(198250);
+        AppMethodBeat.o(249623);
       }
     });
-    AppMethodBeat.o(198260);
+    AppMethodBeat.o(250301);
   }
   
-  private void fPz()
+  private void gIc()
   {
-    AppMethodBeat.i(198271);
-    this.HMr = ((LinearLayout)this.lJI.findViewById(2131297837));
-    this.HMs = ((Button)this.lJI.findViewById(2131297832));
-    this.HMt = ((Button)this.lJI.findViewById(2131297833));
-    this.HMu = ((Button)this.lJI.findViewById(2131297850));
-    switch (this.HMp)
+    AppMethodBeat.i(250334);
+    this.OEn = ((LinearLayout)this.oFW.findViewById(a.f.btn_ll));
+    this.OEo = ((Button)this.oFW.findViewById(a.f.btn_double_left));
+    this.OEp = ((Button)this.oFW.findViewById(a.f.btn_double_right));
+    this.OEq = ((Button)this.oFW.findViewById(a.f.btn_single));
+    switch (this.OEl)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(198271);
+      AppMethodBeat.o(250334);
       return;
-      this.HMr.setVisibility(8);
-      AppMethodBeat.o(198271);
+      this.OEn.setVisibility(8);
+      AppMethodBeat.o(250334);
       return;
-      this.HMr.setVisibility(0);
-      this.HMu.setVisibility(8);
-      this.HMs.setOnClickListener(new View.OnClickListener()
+      this.OEn.setVisibility(0);
+      this.OEq.setVisibility(8);
+      this.OEo.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(198251);
+          AppMethodBeat.i(251159);
           b localb = new b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          if (g.e(g.this) != null) {
-            g.e(g.this).onClick();
-          }
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(198251);
-        }
-      });
-      this.HMt.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(198252);
-          b localb = new b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           if (g.f(g.this) != null) {
             g.f(g.this).onClick();
           }
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(198252);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(251159);
         }
       });
-      AppMethodBeat.o(198271);
-      return;
-      this.HMr.setVisibility(0);
-      this.HMs.setVisibility(8);
-      this.HMt.setVisibility(8);
-      this.HMu.setOnClickListener(new View.OnClickListener()
+      this.OEp.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(198253);
+          AppMethodBeat.i(251085);
           b localb = new b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           if (g.g(g.this) != null) {
             g.g(g.this).onClick();
           }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(251085);
+        }
+      });
+      AppMethodBeat.o(250334);
+      return;
+      this.OEn.setVisibility(0);
+      this.OEo.setVisibility(8);
+      this.OEp.setVisibility(8);
+      this.OEq.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(249666);
+          b localb = new b();
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          if (g.h(g.this) != null) {
+            g.h(g.this).onClick();
+          }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/dialog/MMHalfBottomDialog$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(198253);
+          AppMethodBeat.o(249666);
         }
       });
     }
@@ -228,227 +233,265 @@ public class g
   
   private int getRotation()
   {
-    AppMethodBeat.i(198259);
+    AppMethodBeat.i(250297);
     int i = 0;
     if ((this.mContext instanceof Activity)) {
       i = ((Activity)this.mContext).getWindow().getWindowManager().getDefaultDisplay().getRotation();
     }
-    AppMethodBeat.o(198259);
+    AppMethodBeat.o(250297);
     return i;
   }
   
   @TargetApi(23)
-  private void ghk()
+  private void haF()
   {
-    AppMethodBeat.i(198273);
-    if ((Build.VERSION.SDK_INT >= 23) && (this.mLH != null))
+    AppMethodBeat.i(250338);
+    if ((Build.VERSION.SDK_INT >= 23) && (this.pMz != null))
     {
-      this.mLH.getWindow().getDecorView().setSystemUiVisibility(9216);
-      this.mLH.getWindow().setStatusBarColor(0);
+      this.pMz.getWindow().getDecorView().setSystemUiVisibility(9216);
+      this.pMz.getWindow().setStatusBarColor(0);
     }
-    AppMethodBeat.o(198273);
+    AppMethodBeat.o(250338);
   }
   
-  private void hbt()
+  private void icB()
   {
-    AppMethodBeat.i(198279);
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.lJI.getLayoutParams();
-    if ((this.mLL) && (this.qK != null))
+    AppMethodBeat.i(250347);
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.oFW.getLayoutParams();
+    if ((this.pMD) && (this.lJ != null))
     {
       Rect localRect = new Rect();
-      this.qK.getWindowVisibleDisplayFrame(localRect);
+      this.lJ.getWindowVisibleDisplayFrame(localRect);
       localLayoutParams.width = localRect.right;
     }
-    this.lJI.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(198279);
+    this.oFW.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(250347);
   }
   
   private void initHeaderView()
   {
-    AppMethodBeat.i(198272);
-    if (this.HMv != null)
+    AppMethodBeat.i(250337);
+    if (this.OEr != null)
     {
-      this.HMv.setVisibility(0);
-      switch (this.HMq)
+      this.OEr.setVisibility(0);
+      switch (this.OEm)
       {
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(198272);
+      AppMethodBeat.o(250337);
       return;
-      this.HMv.setVisibility(8);
-      AppMethodBeat.o(198272);
+      this.OEr.setVisibility(8);
+      AppMethodBeat.o(250337);
       return;
-      View localView = LayoutInflater.from(this.mContext).inflate(2131495003, null);
-      localView.findViewById(2131298781).setOnClickListener(new g.6(this));
-      this.HMv.removeAllViews();
-      this.HMv.setGravity(17);
-      this.HMv.addView(localView, -1, -2);
-      AppMethodBeat.o(198272);
+      View localView = LayoutInflater.from(this.mContext).inflate(a.g.half_dialog_header_down_arrow, null);
+      localView.findViewById(a.f.close_img).setOnClickListener(new g.6(this));
+      this.OEr.removeAllViews();
+      this.OEr.setGravity(17);
+      this.OEr.addView(localView, -1, -2);
+      AppMethodBeat.o(250337);
       return;
-      localView = LayoutInflater.from(this.mContext).inflate(2131495004, null);
-      this.HMy = ((TextView)localView.findViewById(2131309245));
-      this.HMv.removeAllViews();
-      this.HMv.setGravity(17);
-      this.HMv.addView(localView, -1, -2);
+      localView = LayoutInflater.from(this.mContext).inflate(a.g.half_dialog_header_title, null);
+      this.OEu = ((TextView)localView.findViewById(a.f.title_text));
+      this.OEr.removeAllViews();
+      this.OEr.setGravity(17);
+      this.OEr.addView(localView, -1, -2);
     }
   }
   
   private boolean isLandscape()
   {
-    AppMethodBeat.i(198280);
+    AppMethodBeat.i(250349);
     if (this.mContext.getResources().getConfiguration().orientation == 2)
     {
-      AppMethodBeat.o(198280);
+      AppMethodBeat.o(250349);
       return true;
     }
-    AppMethodBeat.o(198280);
+    AppMethodBeat.o(250349);
     return false;
   }
   
-  public final void T(CharSequence paramCharSequence)
+  public final void D(int paramInt)
   {
-    AppMethodBeat.i(198266);
-    if (this.HMu != null) {
-      this.HMu.setText(paramCharSequence);
+    AppMethodBeat.i(250306);
+    this.pMC.D(paramInt);
+    AppMethodBeat.o(250306);
+  }
+  
+  public final void HM(boolean paramBoolean)
+  {
+    AppMethodBeat.i(250309);
+    if (this.OEp != null) {
+      this.OEp.setEnabled(paramBoolean);
     }
-    AppMethodBeat.o(198266);
+    AppMethodBeat.o(250309);
   }
   
   public final void a(a parama)
   {
-    this.QOT = parama;
+    this.YnF = parama;
   }
   
   public final void a(a parama1, a parama2)
   {
-    this.QOR = parama1;
-    this.QOS = parama2;
+    this.YnD = parama1;
+    this.YnE = parama2;
   }
   
-  public final void aE(CharSequence paramCharSequence)
+  public final void aT(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(198268);
-    if (this.HMy != null) {
-      this.HMy.setText(paramCharSequence);
+    AppMethodBeat.i(250326);
+    if (this.OEu != null) {
+      this.OEu.setText(paramCharSequence);
     }
-    AppMethodBeat.o(198268);
+    AppMethodBeat.o(250326);
   }
   
-  public final void aeF(int paramInt)
+  public final void ah(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(198264);
-    if (this.HMu != null) {
-      this.HMu.setTextColor(paramInt);
+    AppMethodBeat.i(250320);
+    if (this.OEq != null) {
+      this.OEq.setText(paramCharSequence);
     }
-    AppMethodBeat.o(198264);
+    AppMethodBeat.o(250320);
   }
   
-  public final void apd(int paramInt)
+  public final void ays(int paramInt)
   {
-    AppMethodBeat.i(198263);
-    if (this.HMs != null) {
-      this.HMs.setTextColor(paramInt);
+    AppMethodBeat.i(250314);
+    if (this.OEo != null) {
+      this.OEo.setTextColor(paramInt);
     }
-    AppMethodBeat.o(198263);
+    AppMethodBeat.o(250314);
   }
   
-  public final void ape(int paramInt)
+  public final void ayt(int paramInt)
   {
-    AppMethodBeat.i(198267);
-    if (this.HMu != null)
-    {
-      this.HMu.setTextColor(this.mContext.getResources().getColor(2131100194));
+    AppMethodBeat.i(250318);
+    if (this.OEp != null) {
       switch (paramInt)
       {
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(198267);
+      AppMethodBeat.o(250318);
       return;
-      this.HMu.setBackgroundResource(2131231429);
-      AppMethodBeat.o(198267);
+      this.OEp.setBackgroundResource(a.e.btn_solid_green);
+      AppMethodBeat.o(250318);
       return;
-      this.HMu.setBackgroundResource(2131231431);
-      this.HMu.setTextColor(this.mContext.getResources().getColor(2131101425));
-      AppMethodBeat.o(198267);
+      this.OEp.setBackgroundResource(a.e.btn_solid_red);
+      AppMethodBeat.o(250318);
       return;
-      this.HMu.setBackgroundResource(2131231434);
-      AppMethodBeat.o(198267);
+      this.OEp.setBackgroundResource(a.e.btn_solid_yellow);
+      AppMethodBeat.o(250318);
       return;
-      this.HMu.setBackgroundResource(2131231439);
-      AppMethodBeat.o(198267);
+      this.OEp.setBackgroundResource(a.e.btn_solid_blue);
+      AppMethodBeat.o(250318);
       return;
-      this.HMu.setBackgroundResource(2131231425);
-      AppMethodBeat.o(198267);
-      return;
-      this.HMu.setBackgroundResource(2131231432);
+      this.OEp.setBackgroundResource(a.e.btn_solid_orange);
     }
   }
   
-  public final g apf(int paramInt)
+  public final void ayu(int paramInt)
   {
-    AppMethodBeat.i(198274);
-    if (this.HMx != null)
+    AppMethodBeat.i(250324);
+    if (this.OEq != null)
     {
-      this.HMx.setVisibility(0);
-      LayoutInflater.from(this.lJI.getContext()).inflate(paramInt, this.HMx, true);
+      this.OEq.setTextColor(this.mContext.getResources().getColor(a.c.color_btn_text_selector));
+      switch (paramInt)
+      {
+      }
     }
-    AppMethodBeat.o(198274);
+    for (;;)
+    {
+      AppMethodBeat.o(250324);
+      return;
+      this.OEq.setBackgroundResource(a.e.btn_solid_green);
+      AppMethodBeat.o(250324);
+      return;
+      this.OEq.setBackgroundResource(a.e.btn_solid_grey);
+      this.OEq.setTextColor(this.mContext.getResources().getColor(a.c.white_btn_text_selector));
+      AppMethodBeat.o(250324);
+      return;
+      this.OEq.setBackgroundResource(a.e.btn_solid_red);
+      AppMethodBeat.o(250324);
+      return;
+      this.OEq.setBackgroundResource(a.e.btn_solid_yellow);
+      AppMethodBeat.o(250324);
+      return;
+      this.OEq.setBackgroundResource(a.e.btn_solid_blue);
+      AppMethodBeat.o(250324);
+      return;
+      this.OEq.setBackgroundResource(a.e.btn_solid_orange);
+    }
+  }
+  
+  public final g ayv(int paramInt)
+  {
+    AppMethodBeat.i(250341);
+    if (this.OEt != null)
+    {
+      this.OEt.setVisibility(0);
+      LayoutInflater.from(this.oFW.getContext()).inflate(paramInt, this.OEt, true);
+    }
+    AppMethodBeat.o(250341);
     return this;
   }
   
-  public final void b(CharSequence paramCharSequence1, CharSequence paramCharSequence2)
+  public final void bYF()
   {
-    AppMethodBeat.i(198262);
-    if ((this.HMs != null) && (this.HMt != null))
-    {
-      this.HMs.setText(paramCharSequence1);
-      this.HMt.setText(paramCharSequence2);
+    AppMethodBeat.i(250345);
+    if (this.YnH != null) {
+      this.YnH.dismiss();
     }
-    AppMethodBeat.o(198262);
-  }
-  
-  public final void bMo()
-  {
-    AppMethodBeat.i(198277);
-    if (this.mLH != null)
+    if (this.pMz != null)
     {
       if ((!(this.mContext instanceof Activity)) || ((this.mContext != null) && (!((Activity)this.mContext).isFinishing()) && (!((Activity)this.mContext).isDestroyed()))) {
-        this.mLH.dismiss();
+        this.pMz.dismiss();
       }
-      if (this.mLK != null) {
-        this.mLK.ob = true;
+      if (this.pMC != null) {
+        this.pMC.bxz = true;
       }
     }
-    AppMethodBeat.o(198277);
+    AppMethodBeat.o(250345);
   }
   
-  public final void dGm()
+  public final void d(CharSequence paramCharSequence1, CharSequence paramCharSequence2)
   {
-    AppMethodBeat.i(198276);
-    this.mLL = isLandscape();
-    this.mLM = getRotation();
-    if (this.mLH != null)
+    AppMethodBeat.i(250312);
+    if ((this.OEo != null) && (this.OEp != null))
     {
-      ((ViewGroup)this.lJI.getParent()).setVisibility(0);
-      hbt();
+      this.OEo.setText(paramCharSequence1);
+      this.OEp.setText(paramCharSequence2);
+    }
+    AppMethodBeat.o(250312);
+  }
+  
+  public final void eik()
+  {
+    AppMethodBeat.i(250344);
+    this.pMD = isLandscape();
+    this.pME = getRotation();
+    if (this.pMz != null)
+    {
+      ((ViewGroup)this.oFW.getParent()).setVisibility(0);
+      icB();
       if (Build.VERSION.SDK_INT >= 21) {
-        this.mLH.getWindow().addFlags(-2147483648);
+        this.pMz.getWindow().addFlags(-2147483648);
       }
-      if (this.wjM) {
-        ghk();
+      if (this.AUA) {
+        haF();
       }
-      if (!this.mLO) {
+      if (!this.pMG) {
         break label219;
       }
-      this.mLH.getWindow().setFlags(8, 8);
-      this.mLH.getWindow().addFlags(131200);
-      this.mLH.getWindow().getDecorView().setSystemUiVisibility(6);
-      if (this.qK != null) {
-        if (this.afI != null) {
+      this.pMz.getWindow().setFlags(8, 8);
+      this.pMz.getWindow().addFlags(131200);
+      this.pMz.getWindow().getDecorView().setSystemUiVisibility(6);
+      if (this.lJ != null) {
+        if (this.lS != null) {
           break label274;
         }
       }
@@ -456,135 +499,143 @@ public class g
     label274:
     for (int i = 1;; i = 0)
     {
-      this.afI = this.qK.getViewTreeObserver();
+      this.lS = this.lJ.getViewTreeObserver();
       if (i != 0) {
-        this.afI.addOnGlobalLayoutListener(this);
+        this.lS.addOnGlobalLayoutListener(this);
       }
       if (((this.mContext instanceof Activity)) && (!((Activity)this.mContext).isFinishing())) {
-        this.mLH.show();
+        this.pMz.show();
       }
-      if (this.mLK != null) {
-        this.mLK.ob = false;
+      if (this.pMC != null) {
+        this.pMC.bxz = false;
       }
-      AppMethodBeat.o(198276);
+      AppMethodBeat.o(250344);
       return;
       label219:
-      this.mLH.getWindow().clearFlags(8);
-      this.mLH.getWindow().clearFlags(131072);
-      this.mLH.getWindow().clearFlags(128);
-      this.mLH.getWindow().getDecorView().setSystemUiVisibility(0);
+      this.pMz.getWindow().clearFlags(8);
+      this.pMz.getWindow().clearFlags(131072);
+      this.pMz.getWindow().clearFlags(128);
+      this.pMz.getWindow().getDecorView().setSystemUiVisibility(0);
       break;
     }
   }
   
-  public final void hbw()
+  protected int getLayoutId()
   {
-    AppMethodBeat.i(198265);
-    if (this.HMt != null) {
-      this.HMt.setBackgroundResource(2131231434);
-    }
-    AppMethodBeat.o(198265);
+    return a.g.mm_half_bottom_dialog;
   }
   
-  public final void hv(View paramView)
+  public final void iL(View paramView)
   {
-    AppMethodBeat.i(198270);
-    if (this.HMv != null)
+    AppMethodBeat.i(250331);
+    if (this.OEr != null)
     {
-      this.HMv.setVisibility(0);
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.HMv.getLayoutParams();
+      this.OEr.setVisibility(0);
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.OEr.getLayoutParams();
       localLayoutParams.width = -1;
       localLayoutParams.height = -2;
-      this.HMv.setLayoutParams(localLayoutParams);
-      this.HMv.removeAllViews();
-      this.HMv.setGravity(17);
-      this.HMv.addView(paramView, -1, -2);
+      this.OEr.setLayoutParams(localLayoutParams);
+      this.OEr.removeAllViews();
+      this.OEr.setGravity(17);
+      this.OEr.addView(paramView, -1, -2);
     }
-    AppMethodBeat.o(198270);
+    AppMethodBeat.o(250331);
+  }
+  
+  public final void icG()
+  {
+    AppMethodBeat.i(250303);
+    this.pMz.getWindow().getAttributes().softInputMode = 48;
+    AppMethodBeat.o(250303);
   }
   
   public final boolean isShowing()
   {
-    AppMethodBeat.i(198278);
-    if ((this.mLH != null) && (this.mLH.isShowing()))
+    AppMethodBeat.i(250346);
+    if ((this.pMz != null) && (this.pMz.isShowing()))
     {
-      AppMethodBeat.o(198278);
+      AppMethodBeat.o(250346);
       return true;
     }
-    AppMethodBeat.o(198278);
+    AppMethodBeat.o(250346);
     return false;
   }
   
   public void onGlobalLayout()
   {
-    AppMethodBeat.i(198258);
+    AppMethodBeat.i(250295);
     if (isShowing())
     {
-      View localView = this.qK;
+      View localView = this.lJ;
       if ((localView == null) || ((!localView.isShown()) && (localView.getVisibility() != 0)))
       {
-        bMo();
-        AppMethodBeat.o(198258);
+        bYF();
+        AppMethodBeat.o(250295);
         return;
       }
-      if ((isShowing()) && ((this.mLL != isLandscape()) || (this.mLM != getRotation()))) {
-        bMo();
+      if ((isShowing()) && ((this.pMD != isLandscape()) || (this.pME != getRotation()))) {
+        bYF();
       }
     }
-    AppMethodBeat.o(198258);
+    AppMethodBeat.o(250295);
   }
   
   public final void setCustomView(View paramView)
   {
-    AppMethodBeat.i(198275);
-    if (this.HMx != null)
+    AppMethodBeat.i(250343);
+    if (this.OEt != null)
     {
-      this.HMx.setVisibility(0);
-      this.HMx.removeAllViews();
-      this.HMx.setGravity(17);
-      this.HMx.addView(paramView, -1, -2);
+      this.OEt.setVisibility(0);
+      this.OEt.removeAllViews();
+      this.OEt.setGravity(17);
+      this.OEt.addView(paramView, -1, -2);
     }
-    AppMethodBeat.o(198275);
+    AppMethodBeat.o(250343);
   }
   
   public final void setHeaderView(View paramView)
   {
-    AppMethodBeat.i(198269);
-    if (this.HMv != null)
+    AppMethodBeat.i(250328);
+    if (this.OEr != null)
     {
-      this.HMv.setVisibility(0);
-      this.HMv.removeAllViews();
-      this.HMv.setGravity(17);
-      this.HMv.addView(paramView, -1, -2);
+      this.OEr.setVisibility(0);
+      this.OEr.removeAllViews();
+      this.OEr.setGravity(17);
+      this.OEr.addView(paramView, -1, -2);
     }
-    AppMethodBeat.o(198269);
+    AppMethodBeat.o(250328);
   }
   
   public final void setHeight(int paramInt)
   {
-    AppMethodBeat.i(198261);
+    AppMethodBeat.i(250305);
     if (paramInt != 0)
     {
-      this.kca = paramInt;
-      if (this.kca != 0) {
-        this.mLK.J(this.kca);
+      this.mTz = paramInt;
+      if (this.mTz != 0) {
+        this.pMC.D(this.mTz);
       }
-      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.lJI.getLayoutParams();
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.oFW.getLayoutParams();
       localLayoutParams.height = paramInt;
-      this.lJI.setLayoutParams(localLayoutParams);
-      this.lJI.invalidate();
+      this.oFW.setLayoutParams(localLayoutParams);
+      this.oFW.invalidate();
     }
-    AppMethodBeat.o(198261);
+    AppMethodBeat.o(250305);
   }
   
   public static abstract interface a
   {
     public abstract void onClick();
   }
+  
+  public static abstract interface b
+  {
+    public abstract void dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.widget.a.g
  * JD-Core Version:    0.7.0.1
  */

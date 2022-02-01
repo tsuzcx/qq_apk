@@ -13,7 +13,7 @@ public class WebViewJSSDKVoiceItem
   static
   {
     AppMethodBeat.i(79028);
-    CREATOR = new WebViewJSSDKVoiceItem.1();
+    CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(79028);
   }
   
@@ -32,23 +32,23 @@ public class WebViewJSSDKVoiceItem
     return 0;
   }
   
-  public final WebViewJSSDKFileItem gWS()
+  public final WebViewJSSDKFileItem gVL()
   {
     AppMethodBeat.i(79026);
-    this.laR = s.getFullPath(this.fileName);
-    this.dJX = ay.aYY(this.laR);
+    this.nVa = s.getFullPath(this.fileName);
+    this.fCM = az.bkS(this.nVa);
     AppMethodBeat.o(79026);
     return this;
+  }
+  
+  public final String gVM()
+  {
+    return "speex";
   }
   
   public final String getFileType()
   {
     return "voice";
-  }
-  
-  public final String hdY()
-  {
-    return "speex";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -60,7 +60,7 @@ public class WebViewJSSDKVoiceItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.WebViewJSSDKVoiceItem
  * JD-Core Version:    0.7.0.1
  */

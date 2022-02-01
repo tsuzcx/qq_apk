@@ -6,55 +6,55 @@ import java.util.HashMap;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxShareData;", "", "()V", "appMsgDataMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/scanner/box/ScanBoxShareData$ScanBoxShareInfo;", "Lkotlin/collections/HashMap;", "clear", "", "getAppMsgData", "key", "putAppMsgData", "shareInfo", "ScanBoxShareInfo", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxShareData;", "", "()V", "appMsgDataMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/scanner/box/ScanBoxShareData$ScanBoxShareInfo;", "Lkotlin/collections/HashMap;", "clear", "", "getAppMsgData", "key", "putAppMsgData", "shareInfo", "ScanBoxShareInfo", "plugin-scan_release"})
 public final class m
 {
-  final HashMap<String, a> CDe;
+  final HashMap<String, a> IHE;
   
   public m()
   {
-    AppMethodBeat.i(240291);
-    this.CDe = new HashMap();
-    AppMethodBeat.o(240291);
+    AppMethodBeat.i(218484);
+    this.IHE = new HashMap();
+    AppMethodBeat.o(218484);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxShareData$ScanBoxShareInfo;", "", "appMsg", "Lcom/tencent/mm/opensdk/modelmsg/WXMediaMessage;", "imageUrl", "", "(Lcom/tencent/mm/opensdk/modelmsg/WXMediaMessage;Ljava/lang/String;)V", "getAppMsg", "()Lcom/tencent/mm/opensdk/modelmsg/WXMediaMessage;", "getImageUrl", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-scan_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxShareData$ScanBoxShareInfo;", "", "appMsg", "Lcom/tencent/mm/opensdk/modelmsg/WXMediaMessage;", "imageUrl", "", "(Lcom/tencent/mm/opensdk/modelmsg/WXMediaMessage;Ljava/lang/String;)V", "getAppMsg", "()Lcom/tencent/mm/opensdk/modelmsg/WXMediaMessage;", "getImageUrl", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-scan_release"})
   public static final class a
   {
-    final WXMediaMessage CDf;
+    final WXMediaMessage IHF;
     final String imageUrl;
     
     public a(WXMediaMessage paramWXMediaMessage, String paramString)
     {
-      this.CDf = paramWXMediaMessage;
+      this.IHF = paramWXMediaMessage;
       this.imageUrl = paramString;
     }
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(240290);
+      AppMethodBeat.i(222637);
       if (this != paramObject)
       {
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if ((!p.j(this.CDf, paramObject.CDf)) || (!p.j(this.imageUrl, paramObject.imageUrl))) {}
+          if ((!p.h(this.IHF, paramObject.IHF)) || (!p.h(this.imageUrl, paramObject.imageUrl))) {}
         }
       }
       else
       {
-        AppMethodBeat.o(240290);
+        AppMethodBeat.o(222637);
         return true;
       }
-      AppMethodBeat.o(240290);
+      AppMethodBeat.o(222637);
       return false;
     }
     
     public final int hashCode()
     {
       int j = 0;
-      AppMethodBeat.i(240289);
-      Object localObject = this.CDf;
+      AppMethodBeat.i(222635);
+      Object localObject = this.IHF;
       if (localObject != null) {}
       for (int i = localObject.hashCode();; i = 0)
       {
@@ -62,16 +62,16 @@ public final class m
         if (localObject != null) {
           j = localObject.hashCode();
         }
-        AppMethodBeat.o(240289);
+        AppMethodBeat.o(222635);
         return i * 31 + j;
       }
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(240288);
-      String str = "ScanBoxShareInfo(appMsg=" + this.CDf + ", imageUrl=" + this.imageUrl + ")";
-      AppMethodBeat.o(240288);
+      AppMethodBeat.i(222632);
+      String str = "ScanBoxShareInfo(appMsg=" + this.IHF + ", imageUrl=" + this.imageUrl + ")";
+      AppMethodBeat.o(222632);
       return str;
     }
   }

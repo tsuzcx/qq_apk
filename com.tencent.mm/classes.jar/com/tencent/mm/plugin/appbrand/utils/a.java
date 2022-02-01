@@ -1,88 +1,64 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
+import android.system.ErrnoException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.sdk.platformtools.Log;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/utils/AndroidOrientationGetter;", "Lcom/tencent/mm/plugin/appbrand/utils/IOrientationGetter;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "curOrientation", "Lcom/tencent/mm/plugin/appbrand/utils/Orientation;", "getCurOrientation", "()Lcom/tencent/mm/plugin/appbrand/utils/Orientation;", "name", "", "getName", "()Ljava/lang/String;", "androidOrientation2Orientation", "androidOrientation", "", "Companion", "luggage-commons-jsapi-default-impl_release"})
 public final class a
-  implements q
+  implements com.tencent.mm.kernel.api.c, Runnable
 {
-  public static final a ogC;
-  private final Context context;
+  private final Runnable mRunnable;
+  private volatile boolean rio;
   
-  static
+  public a(Runnable paramRunnable)
   {
-    AppMethodBeat.i(193748);
-    ogC = new a((byte)0);
-    AppMethodBeat.o(193748);
+    AppMethodBeat.i(250569);
+    this.rio = false;
+    this.mRunnable = paramRunnable;
+    com.tencent.mm.kernel.a.c.aHV().add(this);
+    AppMethodBeat.o(250569);
   }
   
-  public a(Context paramContext)
+  public final void onAccountInitialized(f.c paramc) {}
+  
+  public final void onAccountRelease()
   {
-    AppMethodBeat.i(193747);
-    this.context = paramContext;
-    AppMethodBeat.o(193747);
+    this.rio = true;
   }
   
-  public final ac bTN()
+  public final void run()
   {
-    AppMethodBeat.i(193746);
-    Object localObject = this.context.getResources();
-    p.g(localObject, "context.resources");
-    switch (((Resources)localObject).getConfiguration().orientation)
+    AppMethodBeat.i(250574);
+    try
     {
-    default: 
-      localObject = ac.ohu;
-      AppMethodBeat.o(193746);
-      return localObject;
-    case 1: 
-      localObject = ac.ohv;
-      AppMethodBeat.o(193746);
-      return localObject;
+      this.mRunnable.run();
+      AppMethodBeat.o(250574);
+      return;
     }
-    localObject = ac.ohw;
-    AppMethodBeat.o(193746);
-    return localObject;
-  }
-  
-  public final String getName()
-  {
-    return "AndroidOrientationGetter";
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/utils/AndroidOrientationGetter$Companion;", "Lcom/tencent/mm/plugin/appbrand/utils/IOrientationGetter$IFactory;", "()V", "create", "Lcom/tencent/mm/plugin/appbrand/utils/AndroidOrientationGetter;", "componentView", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentView;", "luggage-commons-jsapi-default-impl_release"})
-  public static final class a
-    implements q.a
-  {
-    public static a b(h paramh)
+    catch (Throwable localThrowable)
     {
-      AppMethodBeat.i(193744);
-      if (paramh != null)
+      if ((localThrowable instanceof ErrnoException))
       {
-        Context localContext = paramh.getContext();
-        paramh = localContext;
-        if (localContext != null) {}
+        AppMethodBeat.o(250574);
+        return;
       }
-      else
+      Log.printErrStackTrace("MicroMsg.AccountScopedRunnable", localThrowable, "caught exception inside AccountScopedRunnable", new Object[0]);
+      if ((!h.aHE().kbT) || (this.rio))
       {
-        paramh = MMApplicationContext.getContext();
-        p.g(paramh, "MMApplicationContext.getContext()");
+        AppMethodBeat.o(250574);
+        return;
       }
-      paramh = new a(paramh);
-      AppMethodBeat.o(193744);
-      return paramh;
+      AppMethodBeat.o(250574);
+      throw localThrowable;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.a
  * JD-Core Version:    0.7.0.1
  */

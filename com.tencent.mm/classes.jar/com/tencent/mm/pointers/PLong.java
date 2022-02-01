@@ -2,7 +2,6 @@ package com.tencent.mm.pointers;
 
 public class PLong
 {
-  private byte _hellAccFlag_;
   public long value;
   
   public PLong() {}
@@ -14,7 +13,7 @@ public class PLong
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pointers.PLong
  * JD-Core Version:    0.7.0.1
  */

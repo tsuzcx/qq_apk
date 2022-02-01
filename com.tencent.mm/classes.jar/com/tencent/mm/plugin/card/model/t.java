@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.card.model;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.card.d.f;
 import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.protocal.protobuf.eck;
-import com.tencent.mm.protocal.protobuf.kg;
-import com.tencent.mm.protocal.protobuf.kh;
-import com.tencent.mm.protocal.protobuf.va;
+import com.tencent.mm.protocal.protobuf.eml;
+import com.tencent.mm.protocal.protobuf.jw;
+import com.tencent.mm.protocal.protobuf.jx;
+import com.tencent.mm.protocal.protobuf.vc;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
@@ -26,30 +26,30 @@ public final class t
 {
   private i callback;
   public String cardId;
-  public LinkedList<CardInfo> pUe;
   private final d rr;
+  public LinkedList<CardInfo> tqf;
   
-  public t(LinkedList<va> paramLinkedList, eck parameck, int paramInt)
+  public t(LinkedList<vc> paramLinkedList, eml parameml, int paramInt)
   {
-    this(paramLinkedList, parameck, paramInt, "");
+    this(paramLinkedList, parameml, paramInt, "");
   }
   
-  public t(LinkedList<va> paramLinkedList, eck parameck, int paramInt, String paramString)
+  public t(LinkedList<vc> paramLinkedList, eml parameml, int paramInt, String paramString)
   {
     AppMethodBeat.i(112815);
-    this.pUe = new LinkedList();
+    this.tqf = new LinkedList();
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new kg();
-    ((d.a)localObject).iLO = new kh();
+    ((d.a)localObject).lBU = new jw();
+    ((d.a)localObject).lBV = new jx();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/batchgetcarditembytpinfo";
     ((d.a)localObject).funcId = 1099;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (kg)this.rr.iLK.iLR;
-    ((kg)localObject).iAd = paramLinkedList;
-    ((kg)localObject).KDj = parameck;
-    ((kg)localObject).eaQ = paramInt;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (jw)d.b.b(this.rr.lBR);
+    ((jw)localObject).lpz = paramLinkedList;
+    ((jw)localObject).REA = parameml;
+    ((jw)localObject).fUN = paramInt;
     this.cardId = paramString;
     AppMethodBeat.o(112815);
   }
@@ -79,7 +79,7 @@ public final class t
       AppMethodBeat.o(112817);
       return;
     }
-    params = ((kh)this.rr.iLL.iLR).pTY;
+    params = ((jx)d.c.b(this.rr.lBS)).tpZ;
     if (TextUtils.isEmpty(params))
     {
       Log.e("MicroMsg.NetSceneBatchGetCardItem", "onGYNetEnd fail, resp json_ret is null");
@@ -87,11 +87,11 @@ public final class t
       AppMethodBeat.o(112817);
       return;
     }
-    params = f.ajX(params);
+    params = f.arK(params);
     if (params != null)
     {
-      l.cxE();
-      this.pUe.addAll(params);
+      l.cLg();
+      this.tqf.addAll(params);
     }
     this.callback.onSceneEnd(0, 0, paramString, this);
     AppMethodBeat.o(112817);

@@ -1,131 +1,270 @@
 package com.tencent.smtt.utils;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Build;
 import android.os.Build.VERSION;
-import android.os.Looper;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.smtt.sdk.QbSdk;
-import java.io.File;
-import java.io.FileFilter;
+import com.tencent.smtt.sdk.WebView;
 
 public class m
 {
-  public static boolean a(Context paramContext)
+  private static String a = null;
+  private static String b = "GA";
+  private static String c = "GE";
+  private static String d = "9422";
+  private static String e = "0";
+  private static String f = "";
+  private static boolean g = false;
+  private static boolean h = false;
+  private static boolean i = false;
+  
+  private static String a()
   {
-    AppMethodBeat.i(54013);
-    boolean bool = true;
-    if (Looper.getMainLooper() != Looper.myLooper()) {
-      bool = b(paramContext);
-    }
-    AppMethodBeat.o(54013);
-    return bool;
+    AppMethodBeat.i(201309);
+    String str = " " + Build.MODEL.replaceAll("[ |\\/|\\_|\\&|\\|]", "") + " ";
+    AppMethodBeat.o(201309);
+    return str;
   }
   
-  private static boolean a(File paramFile)
+  public static String a(Context paramContext)
   {
-    AppMethodBeat.i(54015);
-    try
+    AppMethodBeat.i(201273);
+    if (!TextUtils.isEmpty(a))
     {
-      boolean bool = e.b(paramFile);
-      if (!bool)
-      {
-        AppMethodBeat.o(54015);
-        return true;
-      }
+      paramContext = a;
+      AppMethodBeat.o(201273);
+      return paramContext;
     }
-    catch (Throwable paramFile)
-    {
-      new StringBuilder("isOatFileBroken exception: ").append(paramFile);
-      AppMethodBeat.o(54015);
-    }
-    return false;
+    paramContext = a(paramContext, String.valueOf(WebView.getTbsSDKVersion(paramContext)), "0", b, c, d, e, f, g);
+    a = paramContext;
+    AppMethodBeat.o(201273);
+    return paramContext;
   }
   
-  public static boolean b(Context paramContext)
+  private static String a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, boolean paramBoolean)
   {
-    AppMethodBeat.i(54014);
-    for (;;)
+    AppMethodBeat.i(201298);
+    String str2 = "";
+    StringBuilder localStringBuilder = new StringBuilder();
+    String str3 = b(paramContext) + "*" + c(paramContext);
+    for (String str1 = str2;; str1 = str2)
     {
-      int i;
       try
       {
-        if (Build.VERSION.SDK_INT >= 21)
-        {
-          i = Build.VERSION.SDK_INT;
-          if (i <= 25) {}
+        ApplicationInfo localApplicationInfo = paramContext.getApplicationContext().getApplicationInfo();
+        str1 = str2;
+        localPackageInfo = paramContext.getPackageManager().getPackageInfo(localApplicationInfo.packageName, 0);
+        str1 = str2;
+        str2 = localApplicationInfo.packageName;
+        str1 = str2;
+        boolean bool = TextUtils.isEmpty(paramString7);
+        if (bool) {
+          break label395;
         }
-        else
-        {
-          AppMethodBeat.o(54014);
-          return true;
-        }
-        paramContext = c(paramContext);
-        if (paramContext == null)
-        {
-          AppMethodBeat.o(54014);
-          return true;
-        }
-        paramContext = paramContext.listFiles(new FileFilter()
-        {
-          public final boolean accept(File paramAnonymousFile)
-          {
-            AppMethodBeat.i(53958);
-            paramAnonymousFile = paramAnonymousFile.getName();
-            if ((!TextUtils.isEmpty(paramAnonymousFile)) && (paramAnonymousFile.endsWith(".dex")))
-            {
-              AppMethodBeat.o(53958);
-              return true;
-            }
-            AppMethodBeat.o(53958);
-            return false;
-          }
-        });
-        int j = paramContext.length;
-        i = 0;
-        if (i < j)
-        {
-          File localFile = paramContext[i];
-          if ((!localFile.isFile()) || (!localFile.exists())) {
-            break label174;
-          }
-          if (a(localFile))
-          {
-            TbsLog.w("TbsCheckUtils", localFile + " is invalid --> check failed!");
-            localFile.delete();
-            AppMethodBeat.o(54014);
-            return false;
-          }
-          TbsLog.i("TbsCheckUtils", localFile + " #4 check success!");
-        }
+        str1 = str2;
       }
-      catch (Throwable paramContext)
+      catch (PackageManager.NameNotFoundException paramString7)
       {
-        TbsLog.i("TbsCheckUtils", "checkTbsValidity -->#5 check ok!");
-        AppMethodBeat.o(54014);
-        return true;
+        for (;;)
+        {
+          PackageInfo localPackageInfo;
+          label298:
+          label344:
+          paramString7 = "";
+          label395:
+          continue;
+          if (d(paramContext)) {
+            paramContext = "PAD";
+          } else {
+            paramContext = "PHONE";
+          }
+        }
       }
-      label174:
-      i += 1;
+      str2 = a(str1);
+      if (!"QB".equals(str2)) {
+        break;
+      }
+      if (!paramBoolean) {
+        break label443;
+      }
+      paramContext = "PAD";
+      localStringBuilder.append("QV=3");
+      a(localStringBuilder, "PL", "ADR");
+      a(localStringBuilder, "PR", str2);
+      a(localStringBuilder, "PP", str1);
+      a(localStringBuilder, "PPVN", paramString7);
+      if (!TextUtils.isEmpty(paramString1)) {
+        a(localStringBuilder, "TBSVC", paramString1);
+      }
+      a(localStringBuilder, "CO", "SYS");
+      if (!TextUtils.isEmpty(paramString2)) {
+        a(localStringBuilder, "COVC", paramString2);
+      }
+      a(localStringBuilder, "PB", paramString4);
+      a(localStringBuilder, "VE", paramString3);
+      a(localStringBuilder, "DE", paramContext);
+      paramContext = paramString6;
+      if (TextUtils.isEmpty(paramString6)) {
+        paramContext = "0";
+      }
+      a(localStringBuilder, "CHID", paramContext);
+      a(localStringBuilder, "LCID", paramString5);
+      paramContext = a();
+      try
+      {
+        paramString1 = new String(paramContext.getBytes("UTF-8"), "ISO8859-1");
+        paramContext = paramString1;
+      }
+      catch (Exception paramString1)
+      {
+        break label298;
+      }
+      if (!TextUtils.isEmpty(paramContext)) {
+        a(localStringBuilder, "MO", paramContext);
+      }
+      a(localStringBuilder, "RL", str3);
+      paramContext = Build.VERSION.RELEASE;
+      try
+      {
+        paramString1 = new String(paramContext.getBytes("UTF-8"), "ISO8859-1");
+        paramContext = paramString1;
+      }
+      catch (Exception paramString1)
+      {
+        break label344;
+      }
+      if (!TextUtils.isEmpty(paramContext)) {
+        a(localStringBuilder, "OS", paramContext);
+      }
+      a(localStringBuilder, "API", Build.VERSION.SDK_INT);
+      paramContext = localStringBuilder.toString();
+      AppMethodBeat.o(201298);
+      return paramContext;
+      str1 = str2;
+      paramString7 = localPackageInfo.versionName;
     }
   }
   
-  private static File c(Context paramContext)
+  private static String a(String paramString)
   {
-    AppMethodBeat.i(54012);
-    paramContext = new File(QbSdk.getTbsFolderDir(paramContext), "core_share");
-    if ((!paramContext.isDirectory()) || (!paramContext.exists()))
+    AppMethodBeat.i(201303);
+    if ("com.tencent.mm".equals(paramString))
     {
-      AppMethodBeat.o(54012);
-      return null;
+      AppMethodBeat.o(201303);
+      return "WX";
     }
-    AppMethodBeat.o(54012);
-    return paramContext;
+    if ("com.tencent.mobileqq".equals(paramString))
+    {
+      AppMethodBeat.o(201303);
+      return "QQ";
+    }
+    if ("com.qzone".equals(paramString))
+    {
+      AppMethodBeat.o(201303);
+      return "QZ";
+    }
+    if ("com.tencent.mtt".equals(paramString))
+    {
+      AppMethodBeat.o(201303);
+      return "QB";
+    }
+    AppMethodBeat.o(201303);
+    return "TRD";
+  }
+  
+  private static void a(StringBuilder paramStringBuilder, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(201302);
+    paramStringBuilder.append("&").append(paramString1).append("=").append(paramString2);
+    AppMethodBeat.o(201302);
+  }
+  
+  private static int b(Context paramContext)
+  {
+    AppMethodBeat.i(201304);
+    paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+    if (paramContext != null)
+    {
+      int j = paramContext.getWidth();
+      AppMethodBeat.o(201304);
+      return j;
+    }
+    AppMethodBeat.o(201304);
+    return -1;
+  }
+  
+  private static int c(Context paramContext)
+  {
+    AppMethodBeat.i(201307);
+    paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+    if (paramContext != null)
+    {
+      int j = paramContext.getHeight();
+      AppMethodBeat.o(201307);
+      return j;
+    }
+    AppMethodBeat.o(201307);
+    return -1;
+  }
+  
+  private static boolean d(Context paramContext)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(201310);
+    if (h)
+    {
+      bool = i;
+      AppMethodBeat.o(201310);
+      return bool;
+    }
+    try
+    {
+      if (Math.min(b(paramContext), c(paramContext)) * 160 / e(paramContext) >= 700) {}
+      for (;;)
+      {
+        i = bool;
+        h = true;
+        bool = i;
+        AppMethodBeat.o(201310);
+        return bool;
+        bool = false;
+      }
+      return false;
+    }
+    catch (Throwable paramContext)
+    {
+      AppMethodBeat.o(201310);
+    }
+  }
+  
+  private static int e(Context paramContext)
+  {
+    AppMethodBeat.i(201313);
+    Object localObject = (WindowManager)paramContext.getSystemService("window");
+    paramContext = new DisplayMetrics();
+    localObject = ((WindowManager)localObject).getDefaultDisplay();
+    if (localObject != null)
+    {
+      ((Display)localObject).getMetrics(paramContext);
+      int j = paramContext.densityDpi;
+      AppMethodBeat.o(201313);
+      return j;
+    }
+    AppMethodBeat.o(201313);
+    return 160;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.utils.m
  * JD-Core Version:    0.7.0.1
  */

@@ -3,23 +3,24 @@ package com.tencent.mm.plugin.sns.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.plugin.sns.i.j;
 import com.tencent.mm.pluginsdk.ui.MultiSelectContactView;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
-import com.tencent.mm.ui.contact.o;
 import com.tencent.mm.ui.contact.p;
 import com.tencent.mm.ui.contact.q;
-import com.tencent.mm.ui.t.b;
+import com.tencent.mm.ui.contact.r;
+import com.tencent.mm.ui.w.b;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -29,19 +30,19 @@ import java.util.List;
 public class SnsSelectChatRoomUI
   extends MMBaseSelectContactUI
 {
-  private HashSet<String> jVV;
+  private HashSet<String> mNi;
   
   public SnsSelectChatRoomUI()
   {
     AppMethodBeat.i(98988);
-    this.jVV = new HashSet();
+    this.mNi = new HashSet();
     AppMethodBeat.o(98988);
   }
   
-  private void ani()
+  private void atk()
   {
     AppMethodBeat.i(98989);
-    if (this.jVV.size() > 0)
+    if (this.mNi.size() > 0)
     {
       enableOptionMenu(1, true);
       AppMethodBeat.o(98989);
@@ -51,12 +52,12 @@ public class SnsSelectChatRoomUI
     AppMethodBeat.o(98989);
   }
   
-  private ArrayList<String> fiB()
+  private ArrayList<String> fWP()
   {
     AppMethodBeat.i(98990);
     ArrayList localArrayList = new ArrayList();
     HashSet localHashSet = new HashSet();
-    Iterator localIterator = this.jVV.iterator();
+    Iterator localIterator = this.mNi.iterator();
     while (localIterator.hasNext()) {
       localHashSet.add((String)localIterator.next());
     }
@@ -65,56 +66,56 @@ public class SnsSelectChatRoomUI
     return localArrayList;
   }
   
-  public final void M(View paramView, int paramInt)
+  public final void N(View paramView, int paramInt)
   {
-    AppMethodBeat.i(203628);
+    AppMethodBeat.i(258374);
     int i = paramInt - getContentLV().getHeaderViewsCount();
     if (i < 0)
     {
       Log.i("MicroMsg.SnsSelectChatRoomUI", "offsetPosition is Smaller than 0, offsetPosition=%d | position=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(203628);
+      AppMethodBeat.o(258374);
       return;
     }
-    paramView = gUP().anH(i);
+    paramView = hUP().awM(i);
     if (paramView == null)
     {
-      AppMethodBeat.o(203628);
+      AppMethodBeat.o(258374);
       return;
     }
     if (paramView.contact == null)
     {
-      AppMethodBeat.o(203628);
+      AppMethodBeat.o(258374);
       return;
     }
     if (paramView.contact.field_deleteFlag == 1)
     {
-      AppMethodBeat.o(203628);
+      AppMethodBeat.o(258374);
       return;
     }
     paramView = paramView.contact.field_username;
-    gUW();
-    this.zoy.bev(paramView);
-    if (this.jVV.contains(paramView)) {
-      this.jVV.remove(paramView);
+    hUZ();
+    this.ETP.bqR(paramView);
+    if (this.mNi.contains(paramView)) {
+      this.mNi.remove(paramView);
     }
     for (;;)
     {
-      gUQ().notifyDataSetChanged();
-      ani();
-      AppMethodBeat.o(203628);
+      hUQ().notifyDataSetChanged();
+      atk();
+      AppMethodBeat.o(258374);
       return;
-      this.jVV.add(paramView);
+      this.mNi.add(paramView);
     }
   }
   
-  public final void T(int paramInt, String paramString)
+  public final void V(int paramInt, String paramString)
   {
     AppMethodBeat.i(98997);
     if (paramInt == 1)
     {
-      this.jVV.remove(paramString);
-      gUP().notifyDataSetChanged();
-      ani();
+      this.mNi.remove(paramString);
+      hUP().notifyDataSetChanged();
+      atk();
     }
     AppMethodBeat.o(98997);
   }
@@ -129,9 +130,9 @@ public class SnsSelectChatRoomUI
   public final boolean a(com.tencent.mm.ui.contact.a.a parama)
   {
     AppMethodBeat.i(98999);
-    if ((parama.PWh) && (parama.contact != null))
+    if ((parama.XsX) && (parama.contact != null))
     {
-      boolean bool = this.jVV.contains(parama.contact.field_username);
+      boolean bool = this.mNi.contains(parama.contact.field_username);
       AppMethodBeat.o(98999);
       return bool;
     }
@@ -139,46 +140,51 @@ public class SnsSelectChatRoomUI
     return false;
   }
   
-  public final void amZ()
+  public final void ata()
   {
     AppMethodBeat.i(98992);
-    super.amZ();
+    super.ata();
     Object localObject = getIntent().getStringExtra("already_select_contact");
     if (!Util.isNullOrNil((String)localObject))
     {
       localObject = Util.stringToList((String)localObject, ",");
       if (!Util.isNullOrNil((List)localObject)) {
-        this.jVV.addAll((Collection)localObject);
+        this.mNi.addAll((Collection)localObject);
       }
     }
     AppMethodBeat.o(98992);
   }
   
-  public final boolean bmA()
+  public final boolean bwH()
   {
     return false;
   }
   
-  public final String bmB()
+  public final boolean bwI()
+  {
+    return false;
+  }
+  
+  public final String bwJ()
   {
     AppMethodBeat.i(98993);
-    String str = getContext().getString(2131766091);
+    String str = getContext().getString(i.j.sns_label_group_title);
     AppMethodBeat.o(98993);
     return str;
   }
   
-  public final q bmC()
+  public final r bwK()
   {
     AppMethodBeat.i(98994);
     com.tencent.mm.plugin.sns.ui.a.a locala = new com.tencent.mm.plugin.sns.ui.a.a(this);
-    locala.ESo = new View.OnClickListener()
+    locala.Lgr = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(98986);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsSelectChatRoomUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/ui/SnsSelectChatRoomUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if ((paramAnonymousView.getTag() != null) && ((paramAnonymousView.getTag() instanceof as)))
         {
           paramAnonymousView = (as)paramAnonymousView.getTag();
@@ -192,18 +198,18 @@ public class SnsSelectChatRoomUI
     return locala;
   }
   
-  public final o bmD()
+  public final p bwL()
   {
     AppMethodBeat.i(98995);
     com.tencent.mm.plugin.sns.ui.a.b localb = new com.tencent.mm.plugin.sns.ui.a.b(this);
-    localb.ESo = new View.OnClickListener()
+    localb.Lgr = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(98987);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsSelectChatRoomUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/ui/SnsSelectChatRoomUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if ((paramAnonymousView.getTag() != null) && ((paramAnonymousView.getTag() instanceof as)))
         {
           paramAnonymousView = (as)paramAnonymousView.getTag();
@@ -217,12 +223,7 @@ public class SnsSelectChatRoomUI
     return localb;
   }
   
-  public final boolean bmz()
-  {
-    return false;
-  }
-  
-  public final int[] egI()
+  public final int[] dvA()
   {
     return new int[] { 131075 };
   }
@@ -231,7 +232,7 @@ public class SnsSelectChatRoomUI
   {
     AppMethodBeat.i(98991);
     super.onCreate(paramBundle);
-    addTextOptionMenu(1, getString(2131755921), new MenuItem.OnMenuItemClickListener()
+    addTextOptionMenu(1, getString(i.j.app_ok), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
@@ -240,10 +241,10 @@ public class SnsSelectChatRoomUI
         AppMethodBeat.o(98985);
         return true;
       }
-    }, null, t.b.OGU);
-    ani();
-    paramBundle = new ArrayList(this.jVV);
-    this.zoy.it(paramBundle);
+    }, null, w.b.Wao);
+    atk();
+    paramBundle = new ArrayList(this.mNi);
+    this.ETP.jk(paramBundle);
     AppMethodBeat.o(98991);
   }
   
@@ -255,7 +256,7 @@ public class SnsSelectChatRoomUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsSelectChatRoomUI
  * JD-Core Version:    0.7.0.1
  */

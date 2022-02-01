@@ -1,88 +1,88 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.audio.mix.i.b;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.audio.mix.h.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.fau;
-import com.tencent.mm.protocal.protobuf.fav;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.protocal.protobuf.fln;
+import com.tencent.mm.protocal.protobuf.flo;
+import com.tencent.mm.ui.ar;
 
 public final class x
   extends q
   implements m
 {
-  private fav IDA;
-  private v IDt;
-  private fau IDz;
+  private v PxJ;
+  private fln PxP;
+  private flo PxQ;
   private i callback;
-  private d iUB;
+  private d lKU;
   
   public x(v paramv)
   {
-    AppMethodBeat.i(187835);
-    this.IDt = paramv;
+    AppMethodBeat.i(211257);
+    this.PxJ = paramv;
     paramv = new d.a();
     paramv.funcId = 4858;
     paramv.uri = "/cgi-bin/mmsearch-bin/mmtagsearch";
-    paramv.iLN = new fau();
-    paramv.iLO = new fav();
-    this.iUB = paramv.aXF();
-    this.IDz = ((fau)this.iUB.iLK.iLR);
-    this.IDz.LPT = this.IDt.dDv;
-    this.IDz.MRb = this.IDt.IDE;
-    this.IDz.KZg = this.IDt.businessType;
-    this.IDz.MlQ = ai.clJ();
-    this.IDz.KZk = this.IDt.offset;
-    this.IDz.NwV = ai.aft(6);
-    this.IDz.MUs = this.IDt.IDF;
-    this.IDz.Scene = this.IDt.scene;
-    this.IDz.KZj = this.IDt.rjq;
-    this.IDz.MRf = this.IDt.dVS;
-    this.IDz.NwW = this.IDt.IDG;
-    this.IDz.NwY = this.IDt.IDI;
-    this.IDz.NwX = this.IDt.IDH;
-    this.IDz.NwZ = this.IDt.IDJ;
-    this.IDz.Nva = this.IDt.IDO;
-    this.IDz.IDN = this.IDt.IDN;
-    this.IDz.Nxa = this.IDt.IDP;
-    this.IDz.rBI = this.IDt.language;
-    this.IDz.NwH = this.IDt.sessionId;
-    paramv = this.IDz;
-    if (ao.isDarkMode()) {}
+    paramv.lBU = new fln();
+    paramv.lBV = new flo();
+    this.lKU = paramv.bgN();
+    this.PxP = ((fln)d.b.b(this.lKU.lBR));
+    this.PxP.SYn = this.PxJ.fwe;
+    this.PxP.Udh = this.PxJ.PxU;
+    this.PxP.Sap = this.PxJ.businessType;
+    this.PxP.TwK = ai.czn();
+    this.PxP.Sat = this.PxJ.offset;
+    this.PxP.UKl = ai.anh(6);
+    this.PxP.UgB = this.PxJ.PxV;
+    this.PxP.CPw = this.PxJ.scene;
+    this.PxP.Sas = this.PxJ.uMC;
+    this.PxP.Udl = this.PxJ.fPw;
+    this.PxP.UKm = this.PxJ.PxW;
+    this.PxP.UKo = this.PxJ.PxY;
+    this.PxP.UKn = this.PxJ.PxX;
+    this.PxP.UKp = this.PxJ.PxZ;
+    this.PxP.UIj = this.PxJ.Pye;
+    this.PxP.Pyd = this.PxJ.Pyd;
+    this.PxP.UKq = this.PxJ.Pyf;
+    this.PxP.vhq = this.PxJ.language;
+    this.PxP.UJX = this.PxJ.sessionId;
+    paramv = this.PxP;
+    if (ar.isDarkMode()) {}
     for (int i = 1;; i = 0)
     {
-      paramv.MEt = i;
-      this.IDz.MlR = ai.fYd();
-      AppMethodBeat.o(187835);
+      paramv.TQc = i;
+      this.PxP.TwL = ai.gQO();
+      AppMethodBeat.o(211257);
       return;
     }
   }
   
   public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(187836);
+    AppMethodBeat.i(211258);
     this.callback = parami;
-    int i = dispatch(paramg, this.iUB, this);
-    AppMethodBeat.o(187836);
+    int i = dispatch(paramg, this.lKU, this);
+    AppMethodBeat.o(211258);
     return i;
   }
   
-  public final fav fXM()
+  public final flo gQx()
   {
-    return this.IDA;
+    return this.PxQ;
   }
   
-  public final v fXN()
+  public final v gQy()
   {
-    return this.IDt;
+    return this.PxJ;
   }
   
   public final int getType()
@@ -92,18 +92,18 @@ public final class x
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(187837);
+    AppMethodBeat.i(211260);
     b.i("MicroMsg.WebSearch.NetSceneTagSearch", "onGYNetEnd errType:%s errCode:%s errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.IDA = ((fav)this.iUB.iLL.iLR);
+    this.PxQ = ((flo)d.c.b(this.lKU.lBS));
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(187837);
+    AppMethodBeat.o(211260);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.x
  * JD-Core Version:    0.7.0.1
  */

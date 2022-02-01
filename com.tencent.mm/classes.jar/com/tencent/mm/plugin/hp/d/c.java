@@ -7,7 +7,7 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class c
 {
-  public static boolean aBK(String paramString)
+  public static boolean aLR(String paramString)
   {
     AppMethodBeat.i(117523);
     if ((!Util.isNullOrNil(paramString)) && (paramString.length() == 10)) {
@@ -31,7 +31,7 @@ public final class c
     return false;
   }
   
-  public static String aBL(String paramString)
+  public static String aLS(String paramString)
   {
     AppMethodBeat.i(117524);
     if (!Util.isNullOrNil(paramString))
@@ -46,23 +46,23 @@ public final class c
   
   /* Error */
   @java.lang.Deprecated
-  public static boolean dZz()
+  public static boolean eIw()
   {
     // Byte code:
-    //   0: ldc 69
-    //   2: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 71	android/os/StatFs
+    //   0: ldc 70
+    //   2: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 72	android/os/StatFs
     //   8: dup
-    //   9: invokestatic 77	android/os/Environment:getDataDirectory	()Ljava/io/File;
-    //   12: invokevirtual 83	java/io/File:getPath	()Ljava/lang/String;
-    //   15: invokespecial 86	android/os/StatFs:<init>	(Ljava/lang/String;)V
+    //   9: invokestatic 78	android/os/Environment:getDataDirectory	()Ljava/io/File;
+    //   12: invokevirtual 84	java/io/File:getPath	()Ljava/lang/String;
+    //   15: invokespecial 87	android/os/StatFs:<init>	(Ljava/lang/String;)V
     //   18: astore 5
     //   20: aload 5
-    //   22: invokevirtual 89	android/os/StatFs:getAvailableBlocks	()I
+    //   22: invokevirtual 90	android/os/StatFs:getAvailableBlocks	()I
     //   25: i2l
     //   26: lstore_1
     //   27: aload 5
-    //   29: invokevirtual 92	android/os/StatFs:getBlockSize	()I
+    //   29: invokevirtual 93	android/os/StatFs:getBlockSize	()I
     //   32: istore_0
     //   33: lload_1
     //   34: iload_0
@@ -70,11 +70,11 @@ public final class c
     //   36: lmul
     //   37: lstore_1
     //   38: aload 5
-    //   40: invokevirtual 95	android/os/StatFs:getBlockCount	()I
+    //   40: invokevirtual 96	android/os/StatFs:getBlockCount	()I
     //   43: i2l
     //   44: lstore_3
     //   45: aload 5
-    //   47: invokevirtual 92	android/os/StatFs:getBlockSize	()I
+    //   47: invokevirtual 93	android/os/StatFs:getBlockSize	()I
     //   50: istore_0
     //   51: iload_0
     //   52: i2l
@@ -86,11 +86,11 @@ public final class c
     //   58: lcmp
     //   59: ifeq +27 -> 86
     //   62: lload_1
-    //   63: ldc2_w 96
+    //   63: ldc2_w 97
     //   66: lcmp
     //   67: ifle +19 -> 86
-    //   70: ldc 69
-    //   72: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   70: ldc 70
+    //   72: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   75: iconst_1
     //   76: ireturn
     //   77: astore 5
@@ -99,8 +99,8 @@ public final class c
     //   81: lconst_0
     //   82: lstore_3
     //   83: goto -27 -> 56
-    //   86: ldc 69
-    //   88: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   86: ldc 70
+    //   88: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   91: iconst_0
     //   92: ireturn
     //   93: astore 5
@@ -123,63 +123,63 @@ public final class c
   public static java.util.Properties fastGetPatchPackageMeta(java.io.File paramFile)
   {
     // Byte code:
-    //   0: ldc 103
-    //   2: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 104
+    //   2: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: invokevirtual 106	java/io/File:isFile	()Z
+    //   6: invokevirtual 107	java/io/File:isFile	()Z
     //   9: ifeq +12 -> 21
     //   12: aload_0
-    //   13: invokevirtual 109	java/io/File:length	()J
+    //   13: invokevirtual 110	java/io/File:length	()J
     //   16: lconst_0
     //   17: lcmp
     //   18: ifne +10 -> 28
-    //   21: ldc 103
-    //   23: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   21: ldc 104
+    //   23: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   26: aconst_null
     //   27: areturn
-    //   28: new 111	java/util/zip/ZipFile
+    //   28: new 112	java/util/zip/ZipFile
     //   31: dup
     //   32: aload_0
-    //   33: invokespecial 114	java/util/zip/ZipFile:<init>	(Ljava/io/File;)V
+    //   33: invokespecial 115	java/util/zip/ZipFile:<init>	(Ljava/io/File;)V
     //   36: astore_1
     //   37: aload_1
-    //   38: ldc 116
-    //   40: invokevirtual 120	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   38: ldc 117
+    //   40: invokevirtual 121	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
     //   43: astore_0
     //   44: aload_0
     //   45: ifnonnull +14 -> 59
     //   48: aload_1
-    //   49: invokestatic 126	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
-    //   52: ldc 103
-    //   54: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   49: invokestatic 127	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   52: ldc 104
+    //   54: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   57: aconst_null
     //   58: areturn
     //   59: aload_1
     //   60: aload_0
-    //   61: invokevirtual 130	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   61: invokevirtual 131	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   64: astore_0
-    //   65: new 132	java/util/Properties
+    //   65: new 133	java/util/Properties
     //   68: dup
-    //   69: invokespecial 135	java/util/Properties:<init>	()V
+    //   69: invokespecial 136	java/util/Properties:<init>	()V
     //   72: astore_2
     //   73: aload_2
     //   74: aload_0
-    //   75: invokevirtual 139	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   75: invokevirtual 140	java/util/Properties:load	(Ljava/io/InputStream;)V
     //   78: aload_0
-    //   79: invokestatic 143	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeQuietly	(Ljava/lang/Object;)V
+    //   79: invokestatic 144	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeQuietly	(Ljava/lang/Object;)V
     //   82: aload_1
-    //   83: invokestatic 126	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
-    //   86: ldc 103
-    //   88: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   83: invokestatic 127	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   86: ldc 104
+    //   88: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   91: aload_2
     //   92: areturn
     //   93: astore_2
     //   94: aconst_null
     //   95: astore_0
     //   96: aload_0
-    //   97: invokestatic 143	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeQuietly	(Ljava/lang/Object;)V
-    //   100: ldc 103
-    //   102: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   97: invokestatic 144	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeQuietly	(Ljava/lang/Object;)V
+    //   100: ldc 104
+    //   102: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   105: aload_2
     //   106: athrow
     //   107: astore_2
@@ -187,27 +187,27 @@ public final class c
     //   109: astore_0
     //   110: aload_2
     //   111: astore_1
-    //   112: new 145	java/lang/StringBuilder
+    //   112: new 146	java/lang/StringBuilder
     //   115: dup
-    //   116: ldc 147
-    //   118: invokespecial 148	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   116: ldc 148
+    //   118: invokespecial 149	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   121: aload_1
-    //   122: invokevirtual 151	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   125: invokevirtual 155	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: invokevirtual 152	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   125: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   128: pop
     //   129: aload_0
-    //   130: invokestatic 126	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
-    //   133: ldc 103
-    //   135: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   130: invokestatic 127	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   133: ldc 104
+    //   135: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   138: aconst_null
     //   139: areturn
     //   140: astore_0
     //   141: aconst_null
     //   142: astore_1
     //   143: aload_1
-    //   144: invokestatic 126	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
-    //   147: ldc 103
-    //   149: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   144: invokestatic 127	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   147: ldc 104
+    //   149: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   152: aload_0
     //   153: athrow
     //   154: astore_0
@@ -252,10 +252,15 @@ public final class c
     //   28	37	168	java/io/IOException
     //   65	78	174	finally
   }
+  
+  public static abstract interface a
+  {
+    public abstract void a(boolean paramBoolean, b paramb);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.d.c
  * JD-Core Version:    0.7.0.1
  */

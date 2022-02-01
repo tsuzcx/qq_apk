@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class ResizeLayout
   extends LinearLayout
 {
-  private a ksa = null;
+  private a njJ = null;
   
   public ResizeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -18,8 +18,8 @@ public class ResizeLayout
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(128726);
-    if (this.ksa != null) {
-      this.ksa.bpj();
+    if (this.njJ != null) {
+      this.njJ.bzv();
     }
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     AppMethodBeat.o(128726);
@@ -27,17 +27,17 @@ public class ResizeLayout
   
   public void setOnSizeChanged(a parama)
   {
-    this.ksa = parama;
+    this.njJ = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void bpj();
+    public abstract void bzv();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.ResizeLayout
  * JD-Core Version:    0.7.0.1
  */

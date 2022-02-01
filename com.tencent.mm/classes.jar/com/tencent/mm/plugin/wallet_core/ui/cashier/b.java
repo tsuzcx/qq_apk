@@ -8,6 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.j;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.i;
 import org.xwalk.core.Log;
@@ -15,38 +18,38 @@ import org.xwalk.core.Log;
 public final class b
   extends i
 {
-  private ImageView Img;
-  ViewGroup Imh;
-  private View jBN;
-  TextView mPa;
+  private ImageView Pey;
+  ViewGroup Pez;
+  private View mrI;
+  TextView pPT;
   
   public b(Context paramContext)
   {
-    super(paramContext, 2131821772);
+    super(paramContext, a.j.mmalertdialog);
     AppMethodBeat.i(71417);
-    this.jBN = View.inflate(getContext(), 2131497037, null);
-    this.Img = ((ImageView)this.jBN.findViewById(2131310570));
-    this.Imh = ((ViewGroup)this.jBN.findViewById(2131310571));
-    this.mPa = ((TextView)this.jBN.findViewById(2131310343));
-    paramContext = this.Img;
-    int i = WcPayCashierDialog.Ill;
-    int j = WcPayCashierDialog.Ill;
+    this.mrI = View.inflate(getContext(), a.g.wc_pay_cashier_fetch_favor_dialog, null);
+    this.Pey = ((ImageView)this.mrI.findViewById(a.f.wpcf_back_iv));
+    this.Pez = ((ViewGroup)this.mrI.findViewById(a.f.wpcf_favor_layout));
+    this.pPT = ((TextView)this.mrI.findViewById(a.f.wccf_title_tv));
+    paramContext = this.Pey;
+    int i = WcPayCashierDialog.PdD;
+    int j = WcPayCashierDialog.PdD;
     Util.expandViewTouchArea(paramContext, i, i, j, j);
-    this.Img.setOnClickListener(new View.OnClickListener()
+    this.Pey.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(71416);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierFetchFavorDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierFetchFavorDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         Log.i("MicroMsg.WcPayCashierFetchFavorDialog", "click back");
         b.this.cancel();
         a.a(this, "com/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierFetchFavorDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(71416);
       }
     });
-    setContentView(this.jBN);
+    setContentView(this.mrI);
     setCanceledOnTouchOutside(false);
     AppMethodBeat.o(71417);
   }

@@ -8,8 +8,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.f;
+import com.tencent.mm.plugin.game.g.c;
 import com.tencent.mm.plugin.game.model.o;
-import com.tencent.mm.plugin.game.model.o.k;
+import com.tencent.mm.plugin.game.model.o.l;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 
@@ -24,7 +25,7 @@ public class GameMessageListContainerView
     this.mContext = paramContext;
   }
   
-  public final void a(o paramo, LinkedList<o.k> paramLinkedList, int paramInt1, int paramInt2, f<String, Bitmap> paramf)
+  public final void a(o paramo, LinkedList<o.l> paramLinkedList, int paramInt1, int paramInt2, f<String, Bitmap> paramf)
   {
     AppMethodBeat.i(42284);
     if ((paramo == null) || (Util.isNullOrNil(paramLinkedList)))
@@ -39,7 +40,7 @@ public class GameMessageListContainerView
     GameMessageListUserIconView localGameMessageListUserIconView;
     for (int i = 1;; i = 2)
     {
-      j = this.mContext.getResources().getDimensionPixelSize(2131165190);
+      j = this.mContext.getResources().getDimensionPixelSize(g.c.BasicPaddingSize);
       while (getChildCount() < i)
       {
         localGameMessageListUserIconView = new GameMessageListUserIconView(this.mContext);
@@ -85,7 +86,7 @@ public class GameMessageListContainerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameMessageListContainerView
  * JD-Core Version:    0.7.0.1
  */

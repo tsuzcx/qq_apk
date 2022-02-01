@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.wxcredit;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.model.be;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
 import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
@@ -14,7 +14,7 @@ public class Plugin
     return null;
   }
   
-  public bd createSubCore()
+  public be createSubCore()
   {
     AppMethodBeat.i(72240);
     a locala = new a();

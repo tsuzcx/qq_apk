@@ -7,15 +7,17 @@ import android.os.Bundle;
 import android.os.HandlerThread;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.i;
+import com.tencent.mm.ad.i;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.gallery.b.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.system.AndroidMediaUtil;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -25,56 +27,56 @@ import java.util.concurrent.ExecutorService;
 
 public final class e
 {
-  private static int ckU = 0;
-  public static boolean xik = false;
-  public static boolean xil = false;
-  public static boolean xim = false;
-  public static boolean xin = false;
-  private static volatile e xir = null;
-  private o wmZ;
-  private c xig;
-  private g xih;
-  private ArrayList<GalleryItem.MediaItem> xii;
-  private LinkedHashSet<GalleryItem.MediaItem> xij;
-  private HashSet<GalleryItem.MediaItem> xio;
-  private ArrayList<Bundle> xip;
-  private HashMap<Integer, Boolean> xiq;
-  private SparseArray<GalleryItem.a> xis;
+  public static boolean BUA = false;
+  private static volatile e BUE = null;
+  private static int BUF = 0;
+  public static boolean BUx = false;
+  public static boolean BUy = false;
+  public static boolean BUz = false;
+  private o AYc;
+  private HashSet<GalleryItem.MediaItem> BUB;
+  private ArrayList<Bundle> BUC;
+  private HashMap<Integer, Boolean> BUD;
+  private SparseArray<GalleryItem.a> BUG;
+  private c BUt;
+  private g BUu;
+  private ArrayList<GalleryItem.MediaItem> BUv;
+  private LinkedHashSet<GalleryItem.MediaItem> BUw;
   
   private e()
   {
     AppMethodBeat.i(111261);
-    this.xii = null;
-    this.xij = new LinkedHashSet();
-    this.xio = new HashSet();
-    this.xip = new ArrayList();
-    this.xiq = new HashMap();
-    this.xis = new SparseArray();
-    if (this.wmZ == null) {
-      this.wmZ = new o();
+    this.BUv = null;
+    this.BUw = new LinkedHashSet();
+    this.BUB = new HashSet();
+    this.BUC = new ArrayList();
+    this.BUD = new HashMap();
+    this.BUG = new SparseArray();
+    if (this.AYc == null) {
+      this.AYc = new o();
     }
-    if (this.xih == null) {
-      this.xih = new g();
+    if (this.BUu == null) {
+      this.BUu = new g();
     }
-    if (this.xig == null) {
-      this.xig = new c();
+    if (this.BUt == null) {
+      this.BUt = new c();
     }
-    Object localObject = ((b)com.tencent.mm.kernel.g.af(b.class)).a(b.a.skL, "");
+    Object localObject = ((b)h.ae(b.class)).a(b.a.vVn, "");
     Log.i("MicroMsg.GalleryCore", "localAlbumName: %s.", new Object[] { localObject });
     try
     {
-      localObject = new i((String)localObject).FI("localAlbumName");
+      localObject = new i((String)localObject).MI("localAlbumName");
       int i = 0;
-      while (i < ((com.tencent.mm.ab.f)localObject).length())
+      while (i < ((com.tencent.mm.ad.f)localObject).length())
       {
-        i locali = ((com.tencent.mm.ab.f)localObject).pZ(i);
+        i locali = ((com.tencent.mm.ad.f)localObject).sy(i);
         GalleryItem.a locala = new GalleryItem.a();
         locala.key = locali.optString("key");
         locala.path = locali.optString("path");
-        locala.xiU = locali.optString("default");
-        locala.xiV = com.tencent.mm.plugin.gallery.a.d.azj(locala.path);
+        locala.BVh = locali.optString("default");
+        locala.BVi = com.tencent.mm.plugin.gallery.a.e.aIJ(locala.path);
         Log.d("MicroMsg.GalleryCore", "albumName info: %s.", new Object[] { locala });
-        this.xis.put(locala.xiV, locala);
+        this.BUG.put(locala.BVi, locala);
         i += 1;
       }
       AppMethodBeat.o(111261);
@@ -86,17 +88,17 @@ public final class e
     }
   }
   
-  public static void NA(int paramInt)
+  public static void SO(int paramInt)
   {
     AppMethodBeat.i(111271);
-    dQI().xiq.put(Integer.valueOf(paramInt), Boolean.TRUE);
+    etj().BUD.put(Integer.valueOf(paramInt), Boolean.TRUE);
     AppMethodBeat.o(111271);
   }
   
   public static void a(String paramString, int[] paramArrayOfInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(111275);
-    int j = dQK().mcq;
+    int j = etl().pag;
     int i;
     switch (j)
     {
@@ -106,16 +108,16 @@ public final class e
     for (;;)
     {
       Log.i("MicroMsg.GalleryCore", "[handleSelectImagePreviewReport] source:%s", new Object[] { Integer.valueOf(j) });
-      com.tencent.mm.plugin.gallery.a.d.bw(14205, i + "," + i + "," + paramArrayOfInt[0] + "," + paramArrayOfInt[1] + "," + paramArrayOfInt[2] + "," + paramArrayOfInt[3] + "," + paramBoolean1 + "," + paramBoolean2 + "," + xik + "," + xil + "," + xim + "," + xin);
-      xik = false;
-      xil = false;
-      xim = false;
-      xin = false;
+      com.tencent.mm.plugin.gallery.a.e.bt(14205, i + "," + i + "," + paramArrayOfInt[0] + "," + paramArrayOfInt[1] + "," + paramArrayOfInt[2] + "," + paramArrayOfInt[3] + "," + paramBoolean1 + "," + paramBoolean2 + "," + BUx + "," + BUy + "," + BUz + "," + BUA);
+      BUx = false;
+      BUy = false;
+      BUz = false;
+      BUA = false;
       AppMethodBeat.o(111275);
       return;
       i = 1;
       continue;
-      if ((!Util.isNullOrNil(paramString)) && (paramString.equals(MMApplicationContext.getContext().getString(2131759168))))
+      if ((!Util.isNullOrNil(paramString)) && (paramString.equals(MMApplicationContext.getContext().getString(b.i.favorite))))
       {
         i = 6;
       }
@@ -128,23 +130,16 @@ public final class e
     }
   }
   
-  public static void ao(ArrayList<GalleryItem.MediaItem> paramArrayList)
-  {
-    AppMethodBeat.i(111270);
-    dQI().xii = paramArrayList;
-    AppMethodBeat.o(111270);
-  }
-  
-  public static GalleryItem.MediaItem ayS(String paramString)
+  public static GalleryItem.MediaItem aIs(String paramString)
   {
     AppMethodBeat.i(111260);
     paramString = GalleryItem.MediaItem.a(0, 0L, paramString, "", "");
-    if (dQI().xii != null)
+    if (etj().BUv != null)
     {
-      int i = dQI().xii.indexOf(paramString);
+      int i = etj().BUv.indexOf(paramString);
       if (i >= 0)
       {
-        paramString = (GalleryItem.MediaItem)dQI().xii.get(i);
+        paramString = (GalleryItem.MediaItem)etj().BUv.get(i);
         AppMethodBeat.o(111260);
         return paramString;
       }
@@ -153,125 +148,132 @@ public final class e
     return null;
   }
   
-  public static SparseArray<GalleryItem.a> dQH()
+  public static void au(ArrayList<GalleryItem.MediaItem> paramArrayList)
+  {
+    AppMethodBeat.i(111270);
+    etj().BUv = paramArrayList;
+    AppMethodBeat.o(111270);
+  }
+  
+  public static SparseArray<GalleryItem.a> eti()
   {
     AppMethodBeat.i(173729);
-    SparseArray localSparseArray = dQI().xis;
+    SparseArray localSparseArray = etj().BUG;
     AppMethodBeat.o(173729);
     return localSparseArray;
   }
   
-  private static e dQI()
+  private static e etj()
   {
     AppMethodBeat.i(111262);
-    if (xir == null) {
-      xir = new e();
+    if (BUE == null) {
+      BUE = new e();
     }
-    e locale = xir;
+    e locale = BUE;
     AppMethodBeat.o(111262);
     return locale;
   }
   
-  public static c dQJ()
+  public static c etk()
   {
     AppMethodBeat.i(111263);
-    if (dQI().xig == null) {
-      dQI().xig = new c();
+    if (etj().BUt == null) {
+      etj().BUt = new c();
     }
-    c localc = dQI().xig;
+    c localc = etj().BUt;
     AppMethodBeat.o(111263);
     return localc;
   }
   
-  public static o dQK()
+  public static o etl()
   {
     AppMethodBeat.i(111264);
-    if (dQI().wmZ == null) {
-      dQI().wmZ = new o();
+    if (etj().AYc == null) {
+      etj().AYc = new o();
     }
-    o localo = dQI().wmZ;
+    o localo = etj().AYc;
     AppMethodBeat.o(111264);
     return localo;
   }
   
-  public static g dQL()
+  public static g etm()
   {
     AppMethodBeat.i(111265);
-    if (dQI().xih == null) {
-      dQI().xih = new g();
+    if (etj().BUu == null) {
+      etj().BUu = new g();
     }
-    g localg = dQI().xih;
+    g localg = etj().BUu;
     AppMethodBeat.o(111265);
     return localg;
   }
   
-  public static ArrayList<GalleryItem.MediaItem> dQM()
+  public static ArrayList<GalleryItem.MediaItem> etn()
   {
-    AppMethodBeat.i(258738);
-    ArrayList localArrayList = dQI().xii;
-    AppMethodBeat.o(258738);
+    AppMethodBeat.i(292883);
+    ArrayList localArrayList = etj().BUv;
+    AppMethodBeat.o(292883);
     return localArrayList;
   }
   
-  public static HashSet<GalleryItem.MediaItem> dQN()
+  public static HashSet<GalleryItem.MediaItem> eto()
   {
     AppMethodBeat.i(111267);
-    HashSet localHashSet = dQI().xio;
+    HashSet localHashSet = etj().BUB;
     AppMethodBeat.o(111267);
     return localHashSet;
   }
   
-  public static ArrayList<Bundle> dQO()
+  public static ArrayList<Bundle> etp()
   {
     AppMethodBeat.i(111268);
-    ArrayList localArrayList = dQI().xip;
+    ArrayList localArrayList = etj().BUC;
     AppMethodBeat.o(111268);
     return localArrayList;
   }
   
-  public static LinkedHashSet<GalleryItem.MediaItem> dQP()
+  public static LinkedHashSet<GalleryItem.MediaItem> etq()
   {
     AppMethodBeat.i(111269);
-    LinkedHashSet localLinkedHashSet = dQI().xij;
+    LinkedHashSet localLinkedHashSet = etj().BUw;
     AppMethodBeat.o(111269);
     return localLinkedHashSet;
   }
   
-  public static void dQQ()
+  public static void etr()
   {
     AppMethodBeat.i(111272);
-    dQI().xiq.clear();
+    etj().BUD.clear();
     AppMethodBeat.o(111272);
   }
   
-  public static int dQR()
+  public static int ets()
   {
     AppMethodBeat.i(111273);
-    int i = dQI().xiq.size();
+    int i = etj().BUD.size();
     AppMethodBeat.o(111273);
     return i;
   }
   
-  public static void dQS()
+  public static void ett()
   {
     AppMethodBeat.i(111276);
-    ckU += 1;
-    Log.i("MicroMsg.GalleryCore", "pennqin, refGallery %d.", new Object[] { Integer.valueOf(ckU) });
+    BUF += 1;
+    Log.i("MicroMsg.GalleryCore", "pennqin, refGallery %d.", new Object[] { Integer.valueOf(BUF) });
     AppMethodBeat.o(111276);
   }
   
-  public static boolean dQT()
+  public static boolean etu()
   {
     AppMethodBeat.i(111277);
-    if (ckU > 0) {
-      ckU -= 1;
+    if (BUF > 0) {
+      BUF -= 1;
     }
-    Log.i("MicroMsg.GalleryCore", "pennqin, defGallery %d.", new Object[] { Integer.valueOf(ckU) });
-    if (ckU == 0)
+    Log.i("MicroMsg.GalleryCore", "pennqin, defGallery %d.", new Object[] { Integer.valueOf(BUF) });
+    if (BUF == 0)
     {
-      if ((xir != null) && (xir.xih != null) && (xir.xig != null))
+      if ((BUE != null) && (BUE.BUu != null) && (BUE.BUt != null))
       {
-        if (ckU != 0) {
+        if (BUF != 0) {
           Log.w("MicroMsg.GalleryCore", "oh, ref count not right!!! Maybe because quick enter/back.");
         }
       }
@@ -281,93 +283,93 @@ public final class e
         return true;
       }
       d locald;
-      if (dQI().xig != null)
+      if (etj().BUt != null)
       {
-        ??? = p.xjw;
-        ??? = p.dRt();
-        ((p)???).xjs.clear();
-        ((p)???).xjt.clear();
-        dQJ().dQE();
-        xir.xig.b(null);
-        locald = xir.xig.xhN;
-        if (locald.xib != null)
+        ??? = p.BVL;
+        ??? = p.etV();
+        ((p)???).BVH.clear();
+        ((p)???).BVI.clear();
+        etk().etf();
+        BUE.BUt.b(null);
+        locald = BUE.BUt.BUa;
+        if (locald.BUo != null)
         {
-          locald.xib.a(new d.4(locald));
-          locald.xib = null;
+          locald.BUo.a(new d.4(locald));
+          locald.BUo = null;
         }
       }
       for (;;)
       {
         synchronized (locald.lock)
         {
-          if (locald.xic != null)
+          if (locald.BUp != null)
           {
-            f localf = locald.xic;
-            localf.dQV();
-            localf.dQW();
-            MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).edit().putInt("com.tencent.mm.gallery.cache.suffix", localf.xix).apply();
-            locald.xic = null;
+            f localf = locald.BUp;
+            localf.etw();
+            localf.etx();
+            MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).edit().putInt("com.tencent.mm.gallery.cache.suffix", localf.BUL).apply();
+            locald.BUp = null;
           }
-          xir.xig = null;
-          xir.wmZ = null;
-          if (xir.xih != null)
+          BUE.BUt = null;
+          BUE.AYc = null;
+          if (BUE.BUu != null)
           {
-            ??? = xir.xih.dRc();
+            ??? = BUE.BUu.etD();
             if (??? != null)
             {
               ((MMHandler)???).removeCallbacksAndMessages(null);
-              xir.xih.dRd().removeCallbacksAndMessages(null);
-              ??? = xir.xih.dRe();
+              BUE.BUu.etE().removeCallbacksAndMessages(null);
+              ??? = BUE.BUu.etF();
               if (??? == null) {
                 break label533;
               }
               ((MMHandler)???).removeCallbacksAndMessages(null);
-              ??? = xir.xih.dRf();
+              ??? = BUE.BUu.etG();
               if (??? == null) {
                 break label545;
               }
               ((MMHandler)???).removeCallbacksAndMessages(null);
-              ??? = xir.xih;
-              if (((g)???).xiz != null)
+              ??? = BUE.BUu;
+              if (((g)???).BUN != null)
               {
-                ((g)???).xiz.quit();
-                ((g)???).xiz = null;
+                ((g)???).BUN.quit();
+                ((g)???).BUN = null;
               }
-              ((g)???).xiB = null;
-              ((g)???).hAk = null;
-              if (((g)???).xiC != null)
+              ((g)???).BUP = null;
+              ((g)???).knk = null;
+              if (((g)???).BUQ != null)
               {
-                ((g)???).xiC.shutdown();
-                ((g)???).xiC = null;
+                ((g)???).BUQ.shutdown();
+                ((g)???).BUQ = null;
               }
-              if (((g)???).xiD != null)
+              if (((g)???).BUR != null)
               {
-                ((g)???).xiD.shutdown();
-                ((g)???).xiD = null;
+                ((g)???).BUR.shutdown();
+                ((g)???).BUR = null;
               }
-              if (((g)???).xiE != null)
+              if (((g)???).BUS != null)
               {
-                ((g)???).xiE.shutdown();
-                ((g)???).xiE = null;
+                ((g)???).BUS.shutdown();
+                ((g)???).BUS = null;
               }
-              if (((g)???).xiF != null)
+              if (((g)???).BUT != null)
               {
-                ((g)???).xiF.quit();
-                ((g)???).xiF = null;
+                ((g)???).BUT.quit();
+                ((g)???).BUT = null;
               }
-              ((g)???).xiG = null;
-              if (((g)???).xiy != null)
+              ((g)???).BUU = null;
+              if (((g)???).BUM != null)
               {
-                ((g)???).xiy.quit();
-                ((g)???).xiy = null;
+                ((g)???).BUM.quit();
+                ((g)???).BUM = null;
               }
-              ((g)???).xiA = null;
-              xir.xih = null;
+              ((g)???).BUO = null;
+              BUE.BUu = null;
             }
           }
           else
           {
-            xir = null;
+            BUE = null;
             Log.i("MicroMsg.GalleryCore", "stopServices: finish.");
           }
         }
@@ -384,12 +386,12 @@ public final class e
     return false;
   }
   
-  public static void g(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public static void i(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(111274);
     Log.i("MicroMsg.GalleryCore", "[handlePhotoEditInfo] selectSize:%s isSendRaw:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean1) });
     int i;
-    if (dQK().mcq == 3) {
+    if (etl().pag == 3) {
       i = 1;
     }
     for (;;)
@@ -400,15 +402,15 @@ public final class e
       label180:
       label324:
       int k;
-      if (dQI().xio != null)
+      if (etj().BUB != null)
       {
-        j = dQI().xio.size();
+        j = etj().BUB.size();
         Log.i("MicroMsg.GalleryCore", "[reportPhotoEdit] fromScene:%s,selectSize:%s,editSize:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), Integer.valueOf(j) });
         if (j > 0) {
-          com.tencent.mm.plugin.gallery.a.d.bw(13858, i + "," + paramInt + "," + j + ",0");
+          com.tencent.mm.plugin.gallery.a.e.bt(13858, i + "," + paramInt + "," + j + ",0");
         }
-        Log.i("MicroMsg.GalleryCore", "[handlePhotoEditInfo] imageState:%s", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.gallery.a.d.dSx()) });
-        Iterator localIterator = dQI().xip.iterator();
+        Log.i("MicroMsg.GalleryCore", "[handlePhotoEditInfo] imageState:%s", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.gallery.a.e.euZ()) });
+        Iterator localIterator = etj().BUC.iterator();
         int n;
         int i1;
         int i2;
@@ -427,7 +429,7 @@ public final class e
           if (!paramBoolean2)
           {
             Log.i("MicroMsg.GalleryCore", "[handlePhotoEditInfo] delete file:%s", new Object[] { str });
-            s.deleteFile(str);
+            u.deleteFile(str);
             AndroidMediaUtil.refreshMediaScanner(str, MMApplicationContext.getContext());
           }
           n = ((Bundle)localObject).getInt("report_info_emotion_count");
@@ -463,9 +465,9 @@ public final class e
       label566:
       for (paramInt = 1;; paramInt = 0)
       {
-        com.tencent.mm.plugin.gallery.a.d.bw(13857, paramInt);
+        com.tencent.mm.plugin.gallery.a.e.bt(13857, paramInt);
         break label180;
-        if (dQK().mcq != 4) {
+        if (etl().pag != 4) {
           break label578;
         }
         i = 2;
@@ -489,7 +491,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.e
  * JD-Core Version:    0.7.0.1
  */

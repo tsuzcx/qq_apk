@@ -16,30 +16,30 @@ import java.util.Iterator;
 
 public final class k
 {
-  private b.a gmA;
-  private d iOv;
+  private b EjF;
+  HashSet<WeakReference<a>> EjG;
+  double EjH;
+  double EjI;
+  double EjJ;
+  double EjK;
+  double EjL;
+  boolean EjM;
+  private b.a iQJ;
+  private d lEL;
   private SensorManager mSensorManager;
-  private b yFM;
-  HashSet<WeakReference<a>> yFN;
-  double yFO;
-  double yFP;
-  double yFQ;
-  double yFR;
-  double yFS;
-  boolean yFT;
   
   public k()
   {
     AppMethodBeat.i(55702);
-    this.yFM = new b();
-    this.yFN = new HashSet();
-    this.yFO = 900.0D;
-    this.yFP = 900.0D;
-    this.yFQ = -1000.0D;
-    this.yFR = -1000.0D;
-    this.yFS = 0.0D;
-    this.yFT = false;
-    this.gmA = new b.a()
+    this.EjF = new b();
+    this.EjG = new HashSet();
+    this.EjH = 900.0D;
+    this.EjI = 900.0D;
+    this.EjJ = -1000.0D;
+    this.EjK = -1000.0D;
+    this.EjL = 0.0D;
+    this.EjM = false;
+    this.iQJ = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
@@ -49,26 +49,26 @@ public final class k
           AppMethodBeat.o(55700);
           return false;
         }
-        if ((k.this.yFQ != -1000.0D) && (k.this.yFR != -1000.0D)) {
-          k.this.yFT = f.a(k.this.yFR, k.this.yFQ, paramAnonymousFloat1, paramAnonymousFloat2, paramAnonymousInt, paramAnonymousDouble1);
+        if ((k.this.EjJ != -1000.0D) && (k.this.EjK != -1000.0D)) {
+          k.this.EjM = f.a(k.this.EjK, k.this.EjJ, paramAnonymousFloat1, paramAnonymousFloat2, paramAnonymousInt, paramAnonymousDouble1);
         }
-        k.this.yFQ = paramAnonymousFloat2;
-        k.this.yFR = paramAnonymousFloat1;
-        if ((k.this.yFP == 900.0D) || (k.this.yFO == 900.0D))
+        k.this.EjJ = paramAnonymousFloat2;
+        k.this.EjK = paramAnonymousFloat1;
+        if ((k.this.EjI == 900.0D) || (k.this.EjH == 900.0D))
         {
           k localk1 = k.this;
           k localk2 = k.this;
-          paramAnonymousDouble1 = f.h(paramAnonymousFloat2, paramAnonymousFloat1);
-          localk2.yFO = paramAnonymousDouble1;
-          localk1.yFP = paramAnonymousDouble1;
+          paramAnonymousDouble1 = f.g(paramAnonymousFloat2, paramAnonymousFloat1);
+          localk2.EjH = paramAnonymousDouble1;
+          localk1.EjI = paramAnonymousDouble1;
         }
         for (;;)
         {
-          Log.d("MicroMsg.OrientationSensorMgr", "onGetLocation, update headding, mCurrentHeading = %f, mPreviousHeading = %f mIsMove = %b", new Object[] { Double.valueOf(k.this.yFO), Double.valueOf(k.this.yFP), Boolean.valueOf(k.this.yFT) });
+          Log.d("MicroMsg.OrientationSensorMgr", "onGetLocation, update headding, mCurrentHeading = %f, mPreviousHeading = %f mIsMove = %b", new Object[] { Double.valueOf(k.this.EjH), Double.valueOf(k.this.EjI), Boolean.valueOf(k.this.EjM) });
           AppMethodBeat.o(55700);
           return true;
-          k.this.yFP = k.this.yFO;
-          k.this.yFO = f.h(paramAnonymousFloat2, paramAnonymousFloat1);
+          k.this.EjI = k.this.EjH;
+          k.this.EjH = f.g(paramAnonymousFloat2, paramAnonymousFloat1);
         }
       }
     };
@@ -76,23 +76,23 @@ public final class k
     AppMethodBeat.o(55702);
   }
   
-  private void cED()
+  private void cTj()
   {
     AppMethodBeat.i(55704);
     Log.i("MicroMsg.OrientationSensorMgr", "registerSensor ");
-    if (this.iOv == null) {
-      this.iOv = d.bca();
+    if (this.lEL == null) {
+      this.lEL = d.blq();
     }
-    this.iOv.b(this.gmA, true);
+    this.lEL.b(this.iQJ, true);
     Sensor localSensor = this.mSensorManager.getDefaultSensor(3);
-    this.mSensorManager.registerListener(this.yFM, localSensor, 1);
+    this.mSensorManager.registerListener(this.EjF, localSensor, 1);
     AppMethodBeat.o(55704);
   }
   
   public final void a(a parama)
   {
     AppMethodBeat.i(55706);
-    Iterator localIterator = this.yFN.iterator();
+    Iterator localIterator = this.EjG.iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -102,10 +102,10 @@ public final class k
         return;
       }
     }
-    this.yFN.add(new WeakReference(parama));
-    Log.i("MicroMsg.OrientationSensorMgr", "registerSensorListener %d", new Object[] { Integer.valueOf(this.yFN.size()) });
-    if (this.yFN.size() == 1) {
-      cED();
+    this.EjG.add(new WeakReference(parama));
+    Log.i("MicroMsg.OrientationSensorMgr", "registerSensorListener %d", new Object[] { Integer.valueOf(this.EjG.size()) });
+    if (this.EjG.size() == 1) {
+      cTj();
     }
     AppMethodBeat.o(55706);
   }
@@ -113,60 +113,60 @@ public final class k
   public final void b(a parama)
   {
     AppMethodBeat.i(55707);
-    if ((this.yFN == null) || (parama == null))
+    if ((this.EjG == null) || (parama == null))
     {
       AppMethodBeat.o(55707);
       return;
     }
-    Iterator localIterator = this.yFN.iterator();
+    Iterator localIterator = this.EjG.iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
       if ((localWeakReference != null) && (localWeakReference.get() != null) && (((a)localWeakReference.get()).equals(parama))) {
-        this.yFN.remove(localWeakReference);
+        this.EjG.remove(localWeakReference);
       }
     }
-    Log.i("MicroMsg.OrientationSensorMgr", "unregisterSensorListener %d", new Object[] { Integer.valueOf(this.yFN.size()) });
-    if (this.yFN.size() == 0) {
-      ecM();
+    Log.i("MicroMsg.OrientationSensorMgr", "unregisterSensorListener %d", new Object[] { Integer.valueOf(this.EjG.size()) });
+    if (this.EjG.size() == 0) {
+      eMe();
     }
     AppMethodBeat.o(55707);
   }
   
-  public final double ecL()
+  public final double eMd()
   {
     AppMethodBeat.i(55703);
-    if (this.yFT)
+    if (this.EjM)
     {
-      Log.d("MicroMsg.OrientationSensorMgr", "getHeading, mIsMove = true, result = %f", new Object[] { Double.valueOf(this.yFO) });
-      d = this.yFO;
+      Log.d("MicroMsg.OrientationSensorMgr", "getHeading, mIsMove = true, result = %f", new Object[] { Double.valueOf(this.EjH) });
+      d = this.EjH;
       AppMethodBeat.o(55703);
       return d;
     }
-    Log.d("MicroMsg.OrientationSensorMgr", "getHeading, mIsMove = false, result = %f", new Object[] { Double.valueOf(this.yFS) });
-    double d = this.yFS;
+    Log.d("MicroMsg.OrientationSensorMgr", "getHeading, mIsMove = false, result = %f", new Object[] { Double.valueOf(this.EjL) });
+    double d = this.EjL;
     AppMethodBeat.o(55703);
     return d;
   }
   
-  final void ecM()
+  final void eMe()
   {
     AppMethodBeat.i(55705);
     Log.i("MicroMsg.OrientationSensorMgr", "unregisterSensor ");
-    this.mSensorManager.unregisterListener(this.yFM);
-    d.bca().c(this.gmA);
+    this.mSensorManager.unregisterListener(this.EjF);
+    d.blq().b(this.iQJ);
     AppMethodBeat.o(55705);
   }
   
   public static abstract interface a
   {
-    public abstract void w(double paramDouble);
+    public abstract void x(double paramDouble);
   }
   
   protected final class b
     implements SensorEventListener
   {
-    private float mbC = 0.0F;
+    private float oZt = 0.0F;
     private long timestamp = 200L;
     
     protected b() {}
@@ -186,37 +186,37 @@ public final class k
         if (f1 > 0.0F)
         {
           f1 %= 360.0F;
-          if ((l1 - l2 <= 200L) || (Math.abs(f1 - this.mbC) <= 3.0F)) {
+          if ((l1 - l2 <= 200L) || (Math.abs(f1 - this.oZt) <= 3.0F)) {
             break label250;
           }
           paramSensorEvent = k.this;
-          f2 = this.mbC;
-          paramSensorEvent.yFS = f1;
-          if (paramSensorEvent.yFN != null) {
+          f2 = this.oZt;
+          paramSensorEvent.EjL = f1;
+          if (paramSensorEvent.EjG != null) {
             break label226;
           }
         }
         for (;;)
         {
           Log.d("MicroMsg.OrientationSensorMgr", "onOrientationChanged %f %f, mListenerList.size = %d", new Object[] { Float.valueOf(f2), Float.valueOf(f1), Integer.valueOf(i) });
-          if (paramSensorEvent.yFN == null) {
+          if (paramSensorEvent.EjG == null) {
             break label238;
           }
-          Iterator localIterator = paramSensorEvent.yFN.iterator();
+          Iterator localIterator = paramSensorEvent.EjG.iterator();
           while (localIterator.hasNext())
           {
             WeakReference localWeakReference = (WeakReference)localIterator.next();
             if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-              ((k.a)localWeakReference.get()).w(paramSensorEvent.ecL());
+              ((k.a)localWeakReference.get()).x(paramSensorEvent.eMd());
             }
           }
           f1 = (f1 + ((int)f1 * -1 / 360 + 1) * 360) % 360.0F;
           break;
           label226:
-          i = paramSensorEvent.yFN.size();
+          i = paramSensorEvent.EjG.size();
         }
         label238:
-        this.mbC = f1;
+        this.oZt = f1;
         this.timestamp = System.currentTimeMillis();
       }
       label250:
@@ -226,7 +226,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.location.model.k
  * JD-Core Version:    0.7.0.1
  */

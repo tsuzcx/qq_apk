@@ -1,41 +1,41 @@
 package com.tencent.mm.plugin.webview.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/jsapi/JsLoaderSetting;", "", "()V", "value", "", "isVConsoleOpen", "()Z", "setVConsoleOpen", "(Z)V", "webview-sdk_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/jsapi/JsLoaderSetting;", "", "()V", "value", "", "isVConsoleOpen", "()Z", "setVConsoleOpen", "(Z)V", "webview-sdk_release"})
 public final class l
 {
-  public static final l ISd;
+  public static final l POt;
   
   static
   {
-    AppMethodBeat.i(225109);
-    ISd = new l();
-    AppMethodBeat.o(225109);
+    AppMethodBeat.i(205304);
+    POt = new l();
+    AppMethodBeat.o(205304);
   }
   
-  public static final boolean gbo()
+  public static final void CV(boolean paramBoolean)
   {
-    AppMethodBeat.i(225107);
-    if (((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG) || (((b)g.af(b.class)).a(b.a.siO, 0) == 1)) && (m.gbp().getBoolean("vconsole", false)))
+    AppMethodBeat.i(205303);
+    m.gUj().putBoolean("vconsole", paramBoolean);
+    AppMethodBeat.o(205303);
+  }
+  
+  public static final boolean gUi()
+  {
+    AppMethodBeat.i(205302);
+    if (((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG) || (((b)h.ae(b.class)).a(b.a.vSN, 0) == 1)) && (m.gUj().getBoolean("vconsole", false)))
     {
-      AppMethodBeat.o(225107);
+      AppMethodBeat.o(205302);
       return true;
     }
-    AppMethodBeat.o(225107);
+    AppMethodBeat.o(205302);
     return false;
-  }
-  
-  public static final void za(boolean paramBoolean)
-  {
-    AppMethodBeat.i(225108);
-    m.gbp().putBoolean("vconsole", paramBoolean);
-    AppMethodBeat.o(225108);
   }
 }
 

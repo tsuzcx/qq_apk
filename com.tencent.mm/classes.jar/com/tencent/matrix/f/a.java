@@ -1,488 +1,222 @@
 package com.tencent.matrix.f;
 
 import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Process;
-import android.os.SystemClock;
-import android.util.LongSparseArray;
-import com.tencent.matrix.g.c;
-import com.tencent.matrix.g.d;
-import com.tencent.matrix.trace.core.AppMethodBeat.b;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import android.os.Looper;
+import android.os.Message;
+import android.util.SparseBooleanArray;
+import com.tencent.e.h;
+import com.tencent.e.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.f;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.lang.reflect.Field;
 
-public class a
-  extends com.tencent.matrix.e.b
+public final class a
 {
-  private static long[] dan = new long[0];
-  private static int dao = 0;
-  private a dal;
-  private List<List<d>> dam;
-  private long dap;
-  private long daq;
-  private long dar;
-  private int das;
-  private final b dat;
-  private Handler handler;
-  private long lastReportTime;
+  private static int djk = 0;
+  private static Runnable djl;
+  private static String djm = "";
+  private static volatile SparseBooleanArray djn = new SparseBooleanArray(5);
+  private static int djo = -1;
+  private static volatile boolean djp = true;
+  private static boolean isStarted = false;
   
-  public static List<d> To()
+  private static void I(int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject = a(new c()new b
-    {
-      public final void a(a.e paramAnonymouse)
-      {
-        a.e locale = (a.e)this.dav.get(paramAnonymouse.tid);
-        if (locale != null)
-        {
-          paramAnonymouse.name = (locale.name.replaceAll("-?[0-9]\\d*", "?") + "J");
-          paramAnonymouse.daz = locale.daz;
-          paramAnonymouse.day = locale.day;
-          paramAnonymouse.daA = locale.daA;
-          paramAnonymouse.daB = true;
-          return;
-        }
-        paramAnonymouse.name = paramAnonymouse.name.replaceAll("-?[0-9]\\d*", "?");
-      }
-    }, new b()
-    {
-      public final boolean b(a.e paramAnonymouse)
-      {
-        return false;
-      }
-    });
-    HashMap localHashMap = new HashMap();
-    Iterator localIterator = ((List)localObject).iterator();
-    while (localIterator.hasNext())
-    {
-      e locale = (e)localIterator.next();
-      d locald = (d)localHashMap.get(locale.name);
-      localObject = locald;
-      if (locald == null)
-      {
-        localObject = new d(locale.name);
-        localHashMap.put(locale.name, localObject);
-      }
-      ((d)localObject).list.add(locale);
-    }
-    localObject = new LinkedList(localHashMap.values());
-    Collections.sort((List)localObject, new Comparator() {});
-    return localObject;
-  }
-  
-  private static LongSparseArray<e> a(b paramb)
-  {
-    LongSparseArray localLongSparseArray = new LongSparseArray();
-    Iterator localIterator = Thread.getAllStackTraces().keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Thread localThread = (Thread)localIterator.next();
-      e locale = new e();
-      locale.name = localThread.getName();
-      if (((paramb == null) || (!paramb.b(locale))) && ((localThread instanceof HandlerThread)))
-      {
-        locale.tid = ((HandlerThread)localThread).getThreadId();
-        localLongSparseArray.put(locale.tid, locale);
-        locale.day = true;
-      }
-    }
-    return localLongSparseArray;
-  }
-  
-  private static List<e> a(c paramc, b paramb)
-  {
-    LinkedList localLinkedList = new LinkedList();
-    String str = String.format("/proc/%s/task/", new Object[] { Integer.valueOf(Process.myPid()) });
-    Object localObject1 = new File(str);
-    if (((File)localObject1).isDirectory())
-    {
-      localObject1 = ((File)localObject1).listFiles();
-      int j = localObject1.length;
-      int i = 0;
-      for (;;)
-      {
-        if (i >= j) {
-          break label253;
-        }
-        Object localObject2 = localObject1[i];
-        try
-        {
-          localObject2 = getStringFromFile(str + ((File)localObject2).getName() + "/stat");
-          if (localObject2 != null)
-          {
-            localObject2 = ((String)localObject2).replaceAll("\n", "").split(" ");
-            e locale = new e();
-            locale.tid = Long.parseLong(localObject2[0]);
-            locale.name = localObject2[1].replace("(", "").replace(")", "");
-            locale.state = localObject2[2].replace("'", "");
-            if ((paramb != null) && (!paramb.b(locale)))
-            {
-              localLinkedList.add(locale);
-              if (paramc != null) {
-                paramc.a(locale);
-              }
-            }
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            c.e("Matrix.ThreadMonitor", d.g(localException), new Object[0]);
-          }
-        }
-        i += 1;
-      }
-    }
-    label253:
-    return localLinkedList;
-  }
-  
-  private static String convertStreamToString(InputStream paramInputStream)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    try
-    {
-      localBufferedReader = new BufferedReader(new InputStreamReader(paramInputStream, "UTF-8"));
-      try
-      {
-        for (;;)
-        {
-          paramInputStream = localBufferedReader.readLine();
-          if (paramInputStream == null) {
-            break;
-          }
-          localStringBuilder.append(paramInputStream).append('\n');
-        }
-        if (localBufferedReader == null) {
-          break label59;
-        }
-      }
-      finally {}
-    }
-    finally
-    {
-      for (;;)
-      {
-        BufferedReader localBufferedReader = null;
-      }
-    }
-    localBufferedReader.close();
-    label59:
-    throw paramInputStream;
-    localBufferedReader.close();
-    return localStringBuilder.toString();
-  }
-  
-  public static int getProcessThreadCount()
-  {
-    Object localObject1 = String.format("/proc/%s/status", new Object[] { Integer.valueOf(Process.myPid()) });
-    for (;;)
-    {
-      int i;
-      try
-      {
-        localObject1 = getStringFromFile((String)localObject1).trim().split("\n");
-        int j = localObject1.length;
-        i = 0;
-        if (i < j)
-        {
-          Object localObject2 = localObject1[i];
-          if (((String)localObject2).startsWith("Threads"))
-          {
-            localObject2 = Pattern.compile("\\d+").matcher((CharSequence)localObject2);
-            if (((Matcher)localObject2).find()) {
-              return Integer.parseInt(((Matcher)localObject2).group());
-            }
-          }
-        }
-        else
-        {
-          c.w("Matrix.ThreadMonitor", "[getProcessThreadCount] Wrong!", new Object[] { localObject1[24] });
-          i = Integer.parseInt(localObject1[24].trim());
-          return i;
-        }
-      }
-      catch (Exception localException)
-      {
-        return 0;
-      }
-      i += 1;
-    }
-  }
-  
-  private static String getStringFromFile(String paramString)
-  {
-    paramString = new File(paramString);
-    FileInputStream localFileInputStream;
-    try
-    {
-      localFileInputStream = new FileInputStream(paramString);
-      if (localFileInputStream == null) {
-        break label40;
-      }
-    }
-    finally
-    {
-      try
-      {
-        paramString = convertStreamToString(localFileInputStream);
-        localFileInputStream.close();
-        return paramString;
-      }
-      finally {}
-      paramString = finally;
-      localFileInputStream = null;
-    }
-    localFileInputStream.close();
-    label40:
-    throw paramString;
-  }
-  
-  public void onForeground(boolean paramBoolean)
-  {
-    super.onForeground(paramBoolean);
-    this.handler.removeCallbacksAndMessages(null);
-    if (this.dal != null)
-    {
-      if (paramBoolean) {
-        this.handler.postDelayed(this.dal, this.dap);
-      }
-    }
-    else {
+    if (djn.get(paramInt1)) {
       return;
     }
-    this.handler.postDelayed(this.dal, this.daq);
+    djn.put(paramInt1, true);
+    f.Iyx.idkeyStat(1470L, paramInt2, 1L, true);
+    String str2 = AppMethodBeat.getVisibleScene();
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    Log.i("SyncBarrierWatchDogPlus", "sync barrier leak happens in scene : %s, type : %d", new Object[] { str1, Integer.valueOf(paramInt3) });
+    f.Iyx.a(20739, new Object[] { str1, Integer.valueOf(paramInt3) });
   }
   
-  public void start()
+  public static void Yv()
   {
-    super.start();
-    c.i("Matrix.ThreadMonitor", "start!", new Object[0]);
-    dan = new long[6666];
-    dao = 6666;
-    com.tencent.matrix.trace.core.AppMethodBeat.sMethodEnterListener = new AppMethodBeat.b()
+    Log.i("SyncBarrierWatchDogPlus", "startDetect sync barrier, isStarted =%b , oncCheckFinished = %b", new Object[] { Boolean.valueOf(isStarted), Boolean.valueOf(djp) });
+    if (!isStarted)
     {
-      public final void t(int paramAnonymousInt, long paramAnonymousLong)
+      isStarted = true;
+      djl = new Runnable()
       {
-        if ((paramAnonymousLong < a.Tp()) && (a.Tq()[((int)paramAnonymousLong)] == 0L))
+        /* Error */
+        public final void run()
         {
-          long l1 = Process.myTid();
-          long l2 = paramAnonymousInt;
-          a.Tq()[((int)paramAnonymousLong)] = (l1 << 32 | l2);
+          // Byte code:
+          //   0: invokestatic 22	com/tencent/matrix/f/a:access$000	()Z
+          //   3: ifne +4 -> 7
+          //   6: return
+          //   7: getstatic 28	com/tencent/matrix/a:cQs	Lcom/tencent/matrix/a;
+          //   10: getfield 32	com/tencent/matrix/a:cQt	Z
+          //   13: istore_3
+          //   14: iload_3
+          //   15: ifne +8 -> 23
+          //   18: invokestatic 35	com/tencent/matrix/f/a:Yy	()Z
+          //   21: pop
+          //   22: return
+          //   23: ldc 37
+          //   25: ldc 39
+          //   27: invokestatic 45	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+          //   30: invokestatic 51	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+          //   33: invokevirtual 55	android/os/Looper:getQueue	()Landroid/os/MessageQueue;
+          //   36: astore 4
+          //   38: aload 4
+          //   40: invokevirtual 59	java/lang/Object:getClass	()Ljava/lang/Class;
+          //   43: ldc 61
+          //   45: invokevirtual 67	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+          //   48: astore 5
+          //   50: aload 5
+          //   52: iconst_1
+          //   53: invokevirtual 73	java/lang/reflect/Field:setAccessible	(Z)V
+          //   56: aload 5
+          //   58: aload 4
+          //   60: invokevirtual 77	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+          //   63: checkcast 79	android/os/Message
+          //   66: astore 4
+          //   68: aload 4
+          //   70: ifnull +152 -> 222
+          //   73: aload 4
+          //   75: invokevirtual 83	android/os/Message:toString	()Ljava/lang/String;
+          //   78: invokestatic 87	com/tencent/matrix/f/a:fO	(Ljava/lang/String;)Ljava/lang/String;
+          //   81: pop
+          //   82: ldc 37
+          //   84: ldc 89
+          //   86: iconst_1
+          //   87: anewarray 4	java/lang/Object
+          //   90: dup
+          //   91: iconst_0
+          //   92: invokestatic 92	com/tencent/matrix/f/a:access$100	()Ljava/lang/String;
+          //   95: aastore
+          //   96: invokestatic 95	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   99: aload 4
+          //   101: invokevirtual 99	android/os/Message:getWhen	()J
+          //   104: invokestatic 104	android/os/SystemClock:uptimeMillis	()J
+          //   107: lsub
+          //   108: ldc2_w 105
+          //   111: lcmp
+          //   112: ifge +110 -> 222
+          //   115: aload 4
+          //   117: invokevirtual 110	android/os/Message:getTarget	()Landroid/os/Handler;
+          //   120: ifnonnull +107 -> 227
+          //   123: aload 4
+          //   125: getfield 114	android/os/Message:arg1	I
+          //   128: istore_1
+          //   129: invokestatic 118	com/tencent/matrix/f/a:Yx	()I
+          //   132: istore_2
+          //   133: iload_1
+          //   134: iload_2
+          //   135: if_icmpne +61 -> 196
+          //   138: invokestatic 35	com/tencent/matrix/f/a:Yy	()Z
+          //   141: pop
+          //   142: return
+          //   143: astore 5
+          //   145: ldc 120
+          //   147: invokestatic 87	com/tencent/matrix/f/a:fO	(Ljava/lang/String;)Ljava/lang/String;
+          //   150: pop
+          //   151: ldc 37
+          //   153: new 122	java/lang/StringBuilder
+          //   156: dup
+          //   157: ldc 124
+          //   159: invokespecial 127	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+          //   162: aload 5
+          //   164: invokevirtual 130	java/lang/Exception:getMessage	()Ljava/lang/String;
+          //   167: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   170: invokevirtual 135	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   173: invokestatic 138	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+          //   176: goto -77 -> 99
+          //   179: astore 4
+          //   181: ldc 140
+          //   183: aload 4
+          //   185: invokevirtual 130	java/lang/Exception:getMessage	()Ljava/lang/String;
+          //   188: invokestatic 138	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+          //   191: invokestatic 35	com/tencent/matrix/f/a:Yy	()Z
+          //   194: pop
+          //   195: return
+          //   196: invokestatic 92	com/tencent/matrix/f/a:access$100	()Ljava/lang/String;
+          //   199: ifnull +23 -> 222
+          //   202: invokestatic 92	com/tencent/matrix/f/a:access$100	()Ljava/lang/String;
+          //   205: ldc 142
+          //   207: invokevirtual 148	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+          //   210: ifeq +12 -> 222
+          //   213: iload_1
+          //   214: invokestatic 152	com/tencent/matrix/f/a:jK	(I)V
+          //   217: iload_1
+          //   218: invokestatic 156	com/tencent/matrix/f/a:jL	(I)I
+          //   221: pop
+          //   222: invokestatic 35	com/tencent/matrix/f/a:Yy	()Z
+          //   225: pop
+          //   226: return
+          //   227: ldc 37
+          //   229: ldc 158
+          //   231: invokestatic 45	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+          //   234: goto -12 -> 222
+          //   237: astore 4
+          //   239: invokestatic 35	com/tencent/matrix/f/a:Yy	()Z
+          //   242: pop
+          //   243: aload 4
+          //   245: athrow
+          // Local variable table:
+          //   start	length	slot	name	signature
+          //   0	246	0	this	1
+          //   128	90	1	i	int
+          //   132	4	2	j	int
+          //   13	2	3	bool	boolean
+          //   36	88	4	localObject1	Object
+          //   179	5	4	localException1	Exception
+          //   237	7	4	localObject2	Object
+          //   48	9	5	localField	Field
+          //   143	20	5	localException2	Exception
+          // Exception table:
+          //   from	to	target	type
+          //   73	99	143	java/lang/Exception
+          //   7	14	179	java/lang/Exception
+          //   23	68	179	java/lang/Exception
+          //   99	133	179	java/lang/Exception
+          //   145	176	179	java/lang/Exception
+          //   196	222	179	java/lang/Exception
+          //   227	234	179	java/lang/Exception
+          //   7	14	237	finally
+          //   23	68	237	finally
+          //   73	99	237	finally
+          //   99	133	237	finally
+          //   145	176	237	finally
+          //   181	191	237	finally
+          //   196	222	237	finally
+          //   227	234	237	finally
         }
-      }
-    };
-    com.tencent.matrix.g.b.TO().post(new Runnable()
-    {
-      public final void run()
-      {
-        a.b(a.this).post(a.a(a.this));
-      }
-    });
-  }
-  
-  public void stop()
-  {
-    super.stop();
-    c.i("Matrix.ThreadMonitor", "stop!", new Object[0]);
-    this.handler.removeCallbacks(this.dal);
-    com.tencent.matrix.trace.core.AppMethodBeat.sMethodEnterListener = null;
-    dan = new long[0];
-  }
-  
-  final class a
-    implements Runnable
-  {
-    private final long daw;
-    
-    public final void run()
-    {
-      int i = a.getProcessThreadCount();
-      c.i("Matrix.ThreadMonitor", "[DumpThreadJiffiesTask] run...[%s] limit:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(a.c(this.dau)) });
-      if (a.c(this.dau) >= i) {
-        return;
-      }
-      Object localObject1 = a.b(new a.c()new a.b
-      {
-        public final void a(a.e paramAnonymouse)
-        {
-          a.e locale = (a.e)this.dav.get(paramAnonymouse.tid);
-          if (locale != null)
-          {
-            if (paramAnonymouse.tid == a.a.a(a.a.this)) {}
-            for (paramAnonymouse.name = "main";; paramAnonymouse.name = (locale.name.replaceAll("-?[0-9]\\d*", "?") + "J"))
-            {
-              paramAnonymouse.daz = locale.daz;
-              paramAnonymouse.day = locale.day;
-              paramAnonymouse.daA = locale.daA;
-              paramAnonymouse.daB = true;
-              return;
-            }
-          }
-          paramAnonymouse.name = paramAnonymouse.name.replaceAll("-?[0-9]\\d*", "?");
-        }
-      }, new a.b()
-      {
-        public final boolean b(a.e paramAnonymouse)
-        {
-          return a.d(a.a.this.dau).b(paramAnonymouse);
-        }
-      });
-      HashMap localHashMap = new HashMap();
-      Iterator localIterator = ((List)localObject1).iterator();
-      Object localObject2;
-      while (localIterator.hasNext())
-      {
-        a.e locale = (a.e)localIterator.next();
-        localObject2 = (a.d)localHashMap.get(locale.name);
-        localObject1 = localObject2;
-        if (localObject2 == null)
-        {
-          localObject1 = new a.d(locale.name);
-          localHashMap.put(locale.name, localObject1);
-        }
-        ((a.d)localObject1).list.add(locale);
-      }
-      localObject1 = new LinkedList(localHashMap.values());
-      Collections.sort((List)localObject1, new Comparator() {});
-      long l = SystemClock.uptimeMillis();
-      if ((this.dau.isForeground()) && (l - a.e(this.dau) > a.f(this.dau)))
-      {
-        localObject1 = a.g(this.dau).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (List)((Iterator)localObject1).next();
-          a.a(this.dau, (List)localObject2);
-        }
-        a.a(this.dau, l);
-        a.g(this.dau).clear();
-        localObject1 = a.b(this.dau);
-        if (!com.tencent.matrix.a.cPA.cPB) {
-          break label399;
-        }
-      }
-      label399:
-      for (l = a.h(this.dau);; l = a.i(this.dau))
-      {
-        ((Handler)localObject1).postDelayed(this, l);
-        return;
-        if (a.g(this.dau).size() >= 10) {
-          a.g(this.dau).remove(0);
-        }
-        a.g(this.dau).add(localObject1);
-        break;
-      }
-    }
-  }
-  
-  public static abstract interface b
-  {
-    public abstract boolean b(a.e parame);
-  }
-  
-  static abstract interface c
-  {
-    public abstract void a(a.e parame);
-  }
-  
-  public static final class d
-  {
-    List<a.e> list = new LinkedList();
-    public String name;
-    
-    d(String paramString)
-    {
-      this.name = paramString;
-    }
-    
-    public final boolean Tr()
-    {
-      boolean bool = false;
-      if (this.list.size() > 0) {
-        bool = ((a.e)this.list.get(0)).daB;
-      }
-      return bool;
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      if ((paramObject instanceof a.e))
-      {
-        paramObject = (a.e)paramObject;
-        return this.name.equals(paramObject.name);
-      }
-      return false;
-    }
-    
-    public final int getSize()
-    {
-      return this.list.size();
-    }
-    
-    public final int hashCode()
-    {
-      return this.name.hashCode();
-    }
-    
-    public final String toString()
-    {
-      return this.name + "=" + getSize();
+      };
+      h.ZvG.b(djl, 4500L, 4500L);
     }
   }
   
-  public static final class e
+  private static int Yw()
   {
-    String daA;
-    boolean daB;
-    boolean day;
-    int daz;
-    String name;
-    String state;
-    long tid;
-    
-    public final boolean equals(Object paramObject)
+    try
     {
-      boolean bool2 = false;
-      boolean bool1 = bool2;
-      if ((paramObject instanceof e))
+      Object localObject = Looper.getMainLooper().getQueue();
+      Field localField = localObject.getClass().getDeclaredField("mMessages");
+      localField.setAccessible(true);
+      localObject = (Message)localField.get(localObject);
+      if ((localObject != null) && (((Message)localObject).getTarget() == null))
       {
-        paramObject = (e)paramObject;
-        bool1 = bool2;
-        if (this.tid == paramObject.tid) {
-          bool1 = true;
-        }
+        int i = ((Message)localObject).arg1;
+        return i;
       }
-      return bool1;
+      return -1;
     }
-    
-    public final int hashCode()
-    {
-      return (int)this.tid;
-    }
-    
-    public final String toString()
-    {
-      return String.format("name=%s tid=%s state=%s isHandlerThread=%s isJavaThread=%s", new Object[] { this.name, Long.valueOf(this.tid), this.state, Boolean.valueOf(this.day), Boolean.valueOf(this.daB) });
-    }
+    catch (Exception localException) {}
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.f.a
  * JD-Core Version:    0.7.0.1
  */

@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.downloader.c.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class r
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String ixw;
+  public String lmL;
   public String value;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -14,35 +14,35 @@ public final class r
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.ixw != null) {
-        paramVarArgs.e(1, this.ixw);
+      if (this.lmL != null) {
+        paramVarArgs.f(1, this.lmL);
       }
       if (this.value != null) {
-        paramVarArgs.e(2, this.value);
+        paramVarArgs.f(2, this.value);
       }
       AppMethodBeat.o(153079);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.ixw == null) {
+      if (this.lmL == null) {
         break label274;
       }
     }
     label274:
-    for (paramInt = g.a.a.b.b.a.f(1, this.ixw) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.g(1, this.lmL) + 0;; paramInt = 0)
     {
       int i = paramInt;
       if (this.value != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.value);
+        i = paramInt + g.a.a.b.b.a.g(2, this.value);
       }
       AppMethodBeat.o(153079);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
         AppMethodBeat.o(153079);
@@ -58,11 +58,11 @@ public final class r
           AppMethodBeat.o(153079);
           return -1;
         case 1: 
-          localr.ixw = locala.UbS.readString();
+          localr.lmL = locala.abFh.readString();
           AppMethodBeat.o(153079);
           return 0;
         }
-        localr.value = locala.UbS.readString();
+        localr.value = locala.abFh.readString();
         AppMethodBeat.o(153079);
         return 0;
       }

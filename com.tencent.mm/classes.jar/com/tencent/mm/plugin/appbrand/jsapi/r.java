@@ -1,53 +1,37 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.page.ac;
-import com.tencent.mm.plugin.appbrand.s;
 import java.util.Map;
-import org.json.JSONObject;
 
 public abstract class r
+  extends az
 {
-  protected s kGT;
-  private int lqe;
-  private p lqf;
-  protected ac lxR;
-  protected JSONObject lxS;
-  
-  public r(p paramp, s params, ac paramac, JSONObject paramJSONObject, int paramInt)
+  public r D(Map<String, Object> paramMap)
   {
-    if ((paramp == null) || (params == null) || (paramJSONObject == null)) {
-      throw new IllegalArgumentException("JsApiAsyncRequest");
-    }
-    this.lqf = paramp;
-    this.kGT = params;
-    this.lxR = paramac;
-    this.lqe = paramInt;
-    this.lxS = paramJSONObject;
+    super.E(paramMap);
+    return this;
   }
   
-  protected final void J(Map<String, ? extends Object> paramMap)
+  public final r a(e parame, int paramInt)
   {
-    this.kGT.i(this.lqe, this.lqf.n("ok", paramMap));
+    super.b(parame, paramInt);
+    return this;
   }
   
-  public final s NY()
+  public final r agT(String paramString)
   {
-    return this.kGT;
+    super.agU(paramString);
+    return this;
   }
   
-  public final JSONObject bEj()
+  public final r i(e parame)
   {
-    return this.lxS;
-  }
-  
-  protected final void o(String paramString, Map<String, ? extends Object> paramMap)
-  {
-    this.kGT.i(this.lqe, this.lqf.n(paramString, paramMap));
+    super.j(parame);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.r
  * JD-Core Version:    0.7.0.1
  */

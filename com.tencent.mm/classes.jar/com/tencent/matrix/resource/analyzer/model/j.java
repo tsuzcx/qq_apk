@@ -9,51 +9,51 @@ import java.util.Locale;
 public final class j
   implements Serializable
 {
-  final List<String> bZq;
-  final e cXX;
-  final String cYa;
-  final b cYc;
-  final a cYd;
+  final List<String> caT;
   final String className;
+  final e dbX;
+  final String dca;
+  final b dcc;
+  final a dcd;
   final String extra;
   
   public j(String paramString1, b paramb, a parama, String paramString2, String paramString3, e parame, List<String> paramList)
   {
-    this.cYa = paramString1;
-    this.cYc = paramb;
-    this.cYd = parama;
+    this.dca = paramString1;
+    this.dcc = paramb;
+    this.dcd = parama;
     this.className = paramString2;
     this.extra = paramString3;
-    this.cXX = parame;
-    this.bZq = Collections.unmodifiableList(new ArrayList(paramList));
+    this.dbX = parame;
+    this.caT = Collections.unmodifiableList(new ArrayList(paramList));
   }
   
   public final String toString()
   {
     Object localObject1 = "";
-    if (this.cYc == b.cYk) {
+    if (this.dcc == b.dck) {
       localObject1 = "" + "static ";
     }
-    if (this.cYd != a.cYh)
+    if (this.dcd != a.dch)
     {
       localObject2 = localObject1;
-      if (this.cYd != a.cYg) {}
+      if (this.dcd != a.dcg) {}
     }
     else
     {
-      localObject2 = (String)localObject1 + this.cYd.name().toLowerCase(Locale.US) + " ";
+      localObject2 = (String)localObject1 + this.dcd.name().toLowerCase(Locale.US) + " ";
     }
     localObject1 = (String)localObject2 + this.className;
-    if (this.cYa != null) {}
-    for (Object localObject2 = (String)localObject1 + " " + this.cYa;; localObject2 = (String)localObject1 + " instance")
+    if (this.dca != null) {}
+    for (Object localObject2 = (String)localObject1 + " " + this.dca;; localObject2 = (String)localObject1 + " instance")
     {
       localObject1 = localObject2;
       if (this.extra != null) {
         localObject1 = (String)localObject2 + " " + this.extra;
       }
       localObject2 = localObject1;
-      if (this.cXX != null) {
-        localObject2 = (String)localObject1 + " , matching exclusion " + this.cXX.cXU;
+      if (this.dbX != null) {
+        localObject2 = (String)localObject1 + " , matching exclusion " + this.dbX.dbV;
       }
       return localObject2;
     }
@@ -71,7 +71,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.matrix.resource.analyzer.model.j
  * JD-Core Version:    0.7.0.1
  */

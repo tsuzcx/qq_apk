@@ -4,28 +4,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/sync/StoryCommentReply;", "", "storyOwner", "", "createTime", "", "interactTime", "", "storyIds", "Ljava/util/HashMap;", "(Ljava/lang/String;IJLjava/util/HashMap;)V", "getCreateTime", "()I", "setCreateTime", "(I)V", "getInteractTime", "()J", "getStoryIds", "()Ljava/util/HashMap;", "getStoryOwner", "()Ljava/lang/String;", "toString", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/model/sync/StoryCommentReply;", "", "storyOwner", "", "createTime", "", "interactTime", "", "storyIds", "Ljava/util/HashMap;", "(Ljava/lang/String;IJLjava/util/HashMap;)V", "getCreateTime", "()I", "setCreateTime", "(I)V", "getInteractTime", "()J", "getStoryIds", "()Ljava/util/HashMap;", "getStoryOwner", "()Ljava/lang/String;", "toString", "plugin-story_release"})
 public final class c
 {
-  final String Foa;
-  private final long FpZ;
-  final HashMap<Long, Integer> Fqa;
-  int iXu;
+  final String LIb;
+  private final long LKc;
+  final HashMap<Long, Integer> LKd;
+  int createTime;
   
   private c(String paramString, int paramInt, long paramLong, HashMap<Long, Integer> paramHashMap)
   {
     AppMethodBeat.i(119044);
-    this.Foa = paramString;
-    this.iXu = paramInt;
-    this.FpZ = paramLong;
-    this.Fqa = paramHashMap;
+    this.LIb = paramString;
+    this.createTime = paramInt;
+    this.LKc = paramLong;
+    this.LKd = paramHashMap;
     AppMethodBeat.o(119044);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(119043);
-    String str = "StoryCommentReply[" + this.Foa + " : " + this.iXu + " : " + this.FpZ + " : " + this.Fqa + ']';
+    String str = "StoryCommentReply[" + this.LIb + " : " + this.createTime + " : " + this.LKc + " : " + this.LKd + ']';
     AppMethodBeat.o(119043);
     return str;
   }

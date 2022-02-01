@@ -1,64 +1,43 @@
 package com.tencent.mm.plugin.game.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
 
 public final class dl
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String xMX;
-  public String xMY;
+  public String CQB;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(182780);
+    AppMethodBeat.i(207134);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.xMX == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: Key");
-        AppMethodBeat.o(182780);
-        throw paramVarArgs;
+      if (this.CQB != null) {
+        paramVarArgs.f(1, this.CQB);
       }
-      if (this.xMX != null) {
-        paramVarArgs.e(1, this.xMX);
-      }
-      if (this.xMY != null) {
-        paramVarArgs.e(2, this.xMY);
-      }
-      AppMethodBeat.o(182780);
+      AppMethodBeat.o(207134);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.xMX == null) {
-        break label322;
+      if (this.CQB == null) {
+        break label213;
       }
     }
-    label322:
-    for (paramInt = g.a.a.b.b.a.f(1, this.xMX) + 0;; paramInt = 0)
+    label213:
+    for (paramInt = g.a.a.b.b.a.g(1, this.CQB) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.xMY != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.xMY);
-      }
-      AppMethodBeat.o(182780);
-      return i;
+      AppMethodBeat.o(207134);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.xMX == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: Key");
-          AppMethodBeat.o(182780);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(182780);
+        AppMethodBeat.o(207134);
         return 0;
       }
       if (paramInt == 3)
@@ -68,18 +47,14 @@ public final class dl
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(182780);
+          AppMethodBeat.o(207134);
           return -1;
-        case 1: 
-          localdl.xMX = locala.UbS.readString();
-          AppMethodBeat.o(182780);
-          return 0;
         }
-        localdl.xMY = locala.UbS.readString();
-        AppMethodBeat.o(182780);
+        localdl.CQB = locala.abFh.readString();
+        AppMethodBeat.o(207134);
         return 0;
       }
-      AppMethodBeat.o(182780);
+      AppMethodBeat.o(207134);
       return -1;
     }
   }

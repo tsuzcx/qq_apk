@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video.c;
 
-import com.tencent.mm.plugin.appbrand.jsapi.bc;
+import com.tencent.mm.plugin.appbrand.jsapi.az;
 
 public final class b$b
-  extends bc
+  extends az
 {
   private static final int CTRL_INDEX = 131;
   private static final String NAME = "onVideoClickDanmuBtn";

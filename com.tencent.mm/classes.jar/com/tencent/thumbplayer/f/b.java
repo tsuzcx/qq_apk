@@ -3,9 +3,9 @@ package com.tencent.thumbplayer.f;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class b
+public class b
 {
-  private String Sap;
+  private String ZCZ;
   private String model;
   private String prefix;
   public String tag;
@@ -13,14 +13,14 @@ public final class b
   
   public b(b paramb, String paramString)
   {
-    AppMethodBeat.i(189276);
+    AppMethodBeat.i(220758);
     this.prefix = "";
-    this.Sap = "";
+    this.ZCZ = "";
     this.taskId = "";
     this.model = "";
     this.tag = "TPLogger";
     a(paramb, paramString);
-    AppMethodBeat.o(189276);
+    AppMethodBeat.o(220758);
   }
   
   public b(String paramString)
@@ -30,45 +30,45 @@ public final class b
   
   public b(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(189275);
+    AppMethodBeat.i(220752);
     this.prefix = "";
-    this.Sap = "";
+    this.ZCZ = "";
     this.taskId = "";
     this.model = "";
     this.tag = "TPLogger";
     this.prefix = paramString1;
-    this.Sap = paramString2;
+    this.ZCZ = paramString2;
     this.taskId = paramString3;
     this.model = paramString4;
-    hnE();
-    AppMethodBeat.o(189275);
+    irf();
+    AppMethodBeat.o(220752);
   }
   
   public final void a(b paramb, String paramString)
   {
-    AppMethodBeat.i(189277);
+    AppMethodBeat.i(220762);
     if (paramb != null)
     {
       this.prefix = paramb.prefix;
-      this.Sap = paramb.Sap;
+      this.ZCZ = paramb.ZCZ;
     }
     for (this.taskId = paramb.taskId;; this.taskId = "")
     {
       this.model = paramString;
-      hnE();
-      AppMethodBeat.o(189277);
+      irf();
+      AppMethodBeat.o(220762);
       return;
       this.prefix = "";
-      this.Sap = "";
+      this.ZCZ = "";
     }
   }
   
-  public final void hnE()
+  public final void irf()
   {
-    AppMethodBeat.i(189278);
+    AppMethodBeat.i(220766);
     this.tag = this.prefix;
-    if (!TextUtils.isEmpty(this.Sap)) {
-      this.tag = (this.tag + "_C" + this.Sap);
+    if (!TextUtils.isEmpty(this.ZCZ)) {
+      this.tag = (this.tag + "_C" + this.ZCZ);
     }
     if (!TextUtils.isEmpty(this.taskId)) {
       this.tag = (this.tag + "_T" + this.taskId);
@@ -76,14 +76,14 @@ public final class b
     if (!TextUtils.isEmpty(this.model)) {
       this.tag = (this.tag + "_" + this.model);
     }
-    AppMethodBeat.o(189278);
+    AppMethodBeat.o(220766);
   }
   
-  public final String toString()
+  public String toString()
   {
-    AppMethodBeat.i(189279);
-    String str = "TPLoggerContext{prefix='" + this.prefix + '\'' + ", classId='" + this.Sap + '\'' + ", taskId='" + this.taskId + '\'' + ", model='" + this.model + '\'' + ", tag='" + this.tag + '\'' + '}';
-    AppMethodBeat.o(189279);
+    AppMethodBeat.i(220771);
+    String str = "TPLoggerContext{prefix='" + this.prefix + '\'' + ", classId='" + this.ZCZ + '\'' + ", taskId='" + this.taskId + '\'' + ", model='" + this.model + '\'' + ", tag='" + this.tag + '\'' + '}';
+    AppMethodBeat.o(220771);
     return str;
   }
 }

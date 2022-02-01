@@ -1,7 +1,7 @@
 package com.tencent.mm.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.yg;
+import com.tencent.mm.f.a.zn;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -9,25 +9,25 @@ import java.util.Set;
 
 final class b$a
 {
-  String gpj;
-  long gpk;
-  String gpl;
-  Map<Integer, yg> gpm;
+  String iTs;
+  long iTt;
+  String iTu;
+  Map<Integer, zn> iTv;
   
   b$a()
   {
     AppMethodBeat.i(20097);
-    this.gpj = null;
-    this.gpk = 0L;
-    this.gpl = null;
-    this.gpm = new HashMap();
+    this.iTs = null;
+    this.iTt = 0L;
+    this.iTu = null;
+    this.iTv = new HashMap();
     AppMethodBeat.o(20097);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(20098);
-    Object localObject = this.gpm.keySet().iterator();
+    Object localObject = this.iTv.keySet().iterator();
     Integer localInteger;
     for (String str = ""; ((Iterator)localObject).hasNext(); str = str + localInteger + ",") {
       localInteger = (Integer)((Iterator)localObject).next();
@@ -36,7 +36,7 @@ final class b$a
     if (str.length() > 0) {
       localObject = str.substring(0, str.length() - 1);
     }
-    str = String.format("NoticeInfo(%d){noticeID[%s], disasterTick[%d], content[%s], posistions[%s]}", new Object[] { Integer.valueOf(hashCode()), this.gpj, Long.valueOf(this.gpk), this.gpl, localObject });
+    str = String.format("NoticeInfo(%d){noticeID[%s], disasterTick[%d], content[%s], posistions[%s]}", new Object[] { Integer.valueOf(hashCode()), this.iTs, Long.valueOf(this.iTt), this.iTu, localObject });
     AppMethodBeat.o(20098);
     return str;
   }

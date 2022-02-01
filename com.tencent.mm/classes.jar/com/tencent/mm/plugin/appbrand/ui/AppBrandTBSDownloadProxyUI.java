@@ -10,17 +10,20 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.model.x.a;
-import com.tencent.mm.pluginsdk.ui.tools.r;
+import com.tencent.mm.plugin.appbrand.au.i;
+import com.tencent.mm.pluginsdk.model.ab.a;
+import com.tencent.mm.pluginsdk.ui.tools.t;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.ui.base.q;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.xwebutil.c;
+import com.tencent.xweb.x5.sdk.d;
 import com.tencent.xweb.x5.sdk.f;
 import com.tencent.xweb.x5.sdk.f.a;
 
@@ -28,17 +31,17 @@ import com.tencent.xweb.x5.sdk.f.a;
 public final class AppBrandTBSDownloadProxyUI
   extends MMActivity
 {
-  private static boolean nUg;
+  private static boolean qVE;
   private Handler mHandler;
-  private Runnable nUk;
-  private a nWJ = null;
-  q tipDialog;
+  private Runnable qVI;
+  private a qYl = null;
+  s tipDialog;
   
   static
   {
     AppMethodBeat.i(48807);
-    com.tencent.mm.cr.d.kT(MMApplicationContext.getContext());
-    nUg = false;
+    c.lQ(MMApplicationContext.getContext());
+    qVE = false;
     AppMethodBeat.o(48807);
   }
   
@@ -46,19 +49,19 @@ public final class AppBrandTBSDownloadProxyUI
   {
     AppMethodBeat.i(48802);
     this.mHandler = new Handler();
-    this.nUk = new Runnable()
+    this.qVI = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(48792);
-        AppBrandTBSDownloadProxyUI.bXt();
+        AppBrandTBSDownloadProxyUI.cjY();
         Intent localIntent = new Intent();
         AppBrandTBSDownloadProxyUI.this.setResult(0, localIntent);
         AppBrandTBSDownloadProxyUI.this.finish();
         AppMethodBeat.o(48792);
       }
     };
-    this.mHandler.postDelayed(this.nUk, 20000L);
+    this.mHandler.postDelayed(this.qVI, 20000L);
     AppMethodBeat.o(48802);
   }
   
@@ -85,11 +88,11 @@ public final class AppBrandTBSDownloadProxyUI
         AppMethodBeat.o(48793);
       }
     });
-    y.e(getWindow());
+    x.e(getWindow());
     Log.i("MicroMsg.AppBrandTBSDownloadProxyUI", "onCreate, kill tool");
-    com.tencent.mm.cr.d.bpG("com.tencent.mm.intent.ACTION_KILL_TOOLS_PROCESS");
+    c.bCD("com.tencent.mm.intent.ACTION_KILL_TOOLS_PROCESS");
     boolean bool1 = f.isDownloading();
-    boolean bool2 = com.tencent.xweb.x5.sdk.d.getTBSInstalling();
+    boolean bool2 = d.getTBSInstalling();
     boolean bool3 = f.isDownloadForeground();
     Log.i("MicroMsg.AppBrandTBSDownloadProxyUI", "now status, downloading = %b, installing = %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
     if ((bool1) || (bool2))
@@ -97,21 +100,21 @@ public final class AppBrandTBSDownloadProxyUI
       if (bool3)
       {
         Log.i("MicroMsg.AppBrandTBSDownloadProxyUI", "is foreground download");
-        if (nUg)
+        if (qVE)
         {
           setResult(0, new Intent());
           finish();
           AppMethodBeat.o(48801);
           return;
         }
-        if (this.nWJ == null) {
-          this.nWJ = new a((byte)0);
+        if (this.qYl == null) {
+          this.qYl = new a((byte)0);
         }
-        com.tencent.xweb.x5.sdk.d.a(this.nWJ);
+        d.a(this.qYl);
         Log.i("MicroMsg.AppBrandTBSDownloadProxyUI", "is foreground download TBS already downloading, ignore duplicated request");
         paramBundle = getContext();
-        getContext().getString(2131755998);
-        this.tipDialog = com.tencent.mm.ui.base.h.a(paramBundle, getContext().getString(2131755759), true, null);
+        getContext().getString(au.i.app_tip);
+        this.tipDialog = com.tencent.mm.ui.base.h.a(paramBundle, getContext().getString(au.i.app_brand_x5_installing_simple_tips), true, null);
         if (this.tipDialog.getWindow() != null)
         {
           paramBundle = this.tipDialog.getWindow().getAttributes();
@@ -174,8 +177,8 @@ public final class AppBrandTBSDownloadProxyUI
   {
     AppMethodBeat.i(48803);
     Log.i("MicroMsg.AppBrandTBSDownloadProxyUI", "onDestroy");
-    if ((this.mHandler != null) && (this.nUk != null)) {
-      this.mHandler.removeCallbacks(this.nUk);
+    if ((this.mHandler != null) && (this.qVI != null)) {
+      this.mHandler.removeCallbacks(this.qVI);
     }
     super.onDestroy();
     AppMethodBeat.o(48803);
@@ -196,17 +199,17 @@ public final class AppBrandTBSDownloadProxyUI
     {
       AppMethodBeat.i(48798);
       Log.i("MicroMsg.AppBrandTBSDownloadProxyUI", "onDownloadFinish, result = %d", new Object[] { Integer.valueOf(paramInt) });
-      r.gH(5, paramInt);
+      t.gU(5, paramInt);
       if ((paramInt == 100) || (paramInt == 120) || (paramInt == 122))
       {
-        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(366L, 4L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(366L, 4L, 1L, false);
         if (paramInt == 110) {
           break label225;
         }
         if ((paramInt != 100) && (paramInt != 120) && (paramInt != 122)) {
           break label166;
         }
-        com.tencent.mm.plugin.report.service.h.CyF.a(64, 64, 4, 3, 1, 1, false);
+        com.tencent.mm.plugin.report.service.h.IzE.a(64, 64, 4, 3, 1, 1, false);
       }
       for (;;)
       {
@@ -220,12 +223,12 @@ public final class AppBrandTBSDownloadProxyUI
         }
         AppMethodBeat.o(48798);
         return;
-        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(366L, 5L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(366L, 5L, 1L, false);
         break;
         label166:
         AppBrandTBSDownloadProxyUI.d(AppBrandTBSDownloadProxyUI.this);
-        com.tencent.xweb.x5.sdk.d.a(AppBrandTBSDownloadProxyUI.e(AppBrandTBSDownloadProxyUI.this));
-        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(64L, 3L, 1L, false);
+        d.a(AppBrandTBSDownloadProxyUI.e(AppBrandTBSDownloadProxyUI.this));
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(64L, 3L, 1L, false);
         localObject = new Intent();
         AppBrandTBSDownloadProxyUI.this.setResult(0, (Intent)localObject);
         AppBrandTBSDownloadProxyUI.this.finish();
@@ -240,7 +243,7 @@ public final class AppBrandTBSDownloadProxyUI
         ((SharedPreferences.Editor)localObject).apply();
       }
       AppBrandTBSDownloadProxyUI.d(AppBrandTBSDownloadProxyUI.this);
-      com.tencent.xweb.x5.sdk.d.a(AppBrandTBSDownloadProxyUI.e(AppBrandTBSDownloadProxyUI.this));
+      d.a(AppBrandTBSDownloadProxyUI.e(AppBrandTBSDownloadProxyUI.this));
       localObject = new Intent();
       AppBrandTBSDownloadProxyUI.this.setResult(0, (Intent)localObject);
       AppBrandTBSDownloadProxyUI.this.finish();
@@ -257,7 +260,7 @@ public final class AppBrandTBSDownloadProxyUI
           public final void run()
           {
             AppMethodBeat.i(48797);
-            AppBrandTBSDownloadProxyUI.this.tipDialog.setMessage(AppBrandTBSDownloadProxyUI.this.getContext().getString(2131755760, new Object[] { String.valueOf(paramInt) }));
+            AppBrandTBSDownloadProxyUI.this.tipDialog.setMessage(AppBrandTBSDownloadProxyUI.this.getContext().getString(au.i.app_brand_x5_installing_tips, new Object[] { String.valueOf(paramInt) }));
             AppMethodBeat.o(48797);
           }
         });
@@ -274,25 +277,25 @@ public final class AppBrandTBSDownloadProxyUI
         AppBrandTBSDownloadProxyUI.this.tipDialog.dismiss();
         AppBrandTBSDownloadProxyUI.this.tipDialog = null;
       }
-      r.gH(6, paramInt);
+      t.gU(6, paramInt);
       if ((paramInt == 200) || (paramInt == 220))
       {
-        com.tencent.mm.plugin.report.service.h.CyF.a(64, 64, 7, 6, 1, 1, false);
-        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(366L, 6L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.IzE.a(64, 64, 7, 6, 1, 1, false);
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(366L, 6L, 1L, false);
         Log.i("MicroMsg.AppBrandTBSDownloadProxyUI", "onInstallFinish, restart tool");
-        com.tencent.mm.cr.d.hiy();
+        c.ikh();
         AppBrandTBSDownloadProxyUI.d(AppBrandTBSDownloadProxyUI.this);
-        com.tencent.xweb.x5.sdk.d.a(AppBrandTBSDownloadProxyUI.e(AppBrandTBSDownloadProxyUI.this));
+        d.a(AppBrandTBSDownloadProxyUI.e(AppBrandTBSDownloadProxyUI.this));
         localIntent = new Intent();
         AppBrandTBSDownloadProxyUI.this.setResult(-1, localIntent);
         AppBrandTBSDownloadProxyUI.this.finish();
         AppMethodBeat.o(48799);
         return;
       }
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(64L, 6L, 1L, false);
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(366L, 7L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(64L, 6L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(366L, 7L, 1L, false);
       AppBrandTBSDownloadProxyUI.d(AppBrandTBSDownloadProxyUI.this);
-      com.tencent.xweb.x5.sdk.d.a(AppBrandTBSDownloadProxyUI.e(AppBrandTBSDownloadProxyUI.this));
+      d.a(AppBrandTBSDownloadProxyUI.e(AppBrandTBSDownloadProxyUI.this));
       Intent localIntent = new Intent();
       AppBrandTBSDownloadProxyUI.this.setResult(0, localIntent);
       AppBrandTBSDownloadProxyUI.this.finish();
@@ -302,7 +305,7 @@ public final class AppBrandTBSDownloadProxyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandTBSDownloadProxyUI
  * JD-Core Version:    0.7.0.1
  */

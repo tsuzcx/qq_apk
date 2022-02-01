@@ -4,11 +4,9 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.websearch.api.ai;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
-import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.c;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -25,43 +23,29 @@ public final class a
     localHashMap.put("type", String.valueOf(paramInt2));
     localHashMap.put("lang", LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext()));
     localHashMap.put("platform", "android");
-    localHashMap.put("version", String.valueOf(ai.aft(3)));
-    String str;
-    if (paramBoolean)
+    localHashMap.put("version", String.valueOf(ai.anh(3)));
+    if (paramBoolean) {}
+    for (String str = "1";; str = "0")
     {
-      str = "1";
       localHashMap.put("isHomePage", str);
-      if (ao.isDarkMode()) {
+      if (ar.isDarkMode()) {
         localHashMap.put("isDarkMode", "1");
       }
       if (!TextUtils.isEmpty(paramString)) {
         localHashMap.put("extParams", paramString);
       }
-      paramString = com.tencent.mm.model.c.d.aXu().Fu("100192");
-      if ((!paramString.isValid()) || (!"1".equals(paramString.gzz().get("openSearchSuggestion")))) {
-        break label253;
-      }
-    }
-    label253:
-    for (boolean bool = true;; bool = false)
-    {
-      Log.i("MicroMsg.WxaFTSExportLogic", "genFTSParams scene = %d, isHomePage = %b, type = %d, isSug = %b", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
-      if (bool) {
-        localHashMap.put("isSug", "1");
-      }
+      localHashMap.put("isSug", "1");
       AppMethodBeat.o(116765);
       return localHashMap;
-      str = "0";
-      break;
     }
   }
   
-  public static String bd(Map<String, String> paramMap)
+  public static String aX(Map<String, String> paramMap)
   {
     AppMethodBeat.i(116763);
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append("file://");
-    localStringBuffer.append(ai.afw(3));
+    localStringBuffer.append(ai.ank(3));
     localStringBuffer.append("/app.html?");
     Iterator localIterator = paramMap.entrySet().iterator();
     while (localIterator.hasNext())
@@ -77,14 +61,14 @@ public final class a
       localStringBuffer.append("&");
       localStringBuffer.append("sessionId");
       localStringBuffer.append("=");
-      localStringBuffer.append(ai.afq(Util.safeParseInt((String)paramMap.get("scene"))));
+      localStringBuffer.append(ai.ane(Util.safeParseInt((String)paramMap.get("scene"))));
     }
     paramMap = localStringBuffer.toString();
     AppMethodBeat.o(116763);
     return paramMap;
   }
   
-  public static Map<String, String> br(int paramInt, boolean paramBoolean)
+  public static Map<String, String> bC(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(116764);
     Map localMap = a(paramInt, paramBoolean, 64, "");

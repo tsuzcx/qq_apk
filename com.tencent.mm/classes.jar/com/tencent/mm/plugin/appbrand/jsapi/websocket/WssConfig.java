@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.appbrand.jsapi.websocket;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 
 public class WssConfig
 {
@@ -29,7 +29,7 @@ public class WssConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.websocket.WssConfig
  * JD-Core Version:    0.7.0.1
  */

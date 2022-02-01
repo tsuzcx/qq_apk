@@ -3,7 +3,7 @@ package com.tencent.mm.appbrand.v8;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import com.eclipsesource.v8.V8ScriptException;
+import com.eclipsesource.mmv8.V8ScriptException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.concurrent.BlockingDeque;
@@ -11,30 +11,35 @@ import java.util.concurrent.BlockingDeque;
 public final class g
   implements c
 {
-  private c.a dpu;
-  private final a dpv;
-  k dpw;
+  private c.a fib;
+  private final a fic;
+  k fid;
   private final Looper mLooper;
   
   g(Looper paramLooper)
   {
     AppMethodBeat.i(144002);
-    this.dpu = null;
-    this.dpw = new k();
+    this.fib = null;
+    this.fid = new k();
     this.mLooper = paramLooper;
-    this.dpv = new a(paramLooper);
+    this.fic = new a(paramLooper);
     AppMethodBeat.o(144002);
   }
   
-  public final String LP()
+  public final String OG()
   {
     AppMethodBeat.i(185101);
-    String str = (String)this.dpw.dpM.peek();
+    String str = (String)this.fid.fiu.peek();
     AppMethodBeat.o(185101);
     return str;
   }
   
-  public final boolean Xw()
+  public final void a(c.a parama)
+  {
+    this.fib = parama;
+  }
+  
+  public final boolean abY()
   {
     AppMethodBeat.i(144004);
     if (this.mLooper.getThread().getId() == Thread.currentThread().getId())
@@ -46,45 +51,40 @@ public final class g
     return false;
   }
   
-  public final void a(c.a parama)
+  public final void acb()
   {
-    this.dpu = parama;
+    AppMethodBeat.i(144003);
+    Looper.loop();
+    AppMethodBeat.o(144003);
   }
   
   public final void b(Runnable paramRunnable, long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(216876);
-    this.dpv.post(paramRunnable);
-    AppMethodBeat.o(216876);
+    AppMethodBeat.i(262447);
+    this.fic.post(paramRunnable);
+    AppMethodBeat.o(262447);
   }
   
   final void c(V8ScriptException paramV8ScriptException)
   {
     AppMethodBeat.i(144008);
-    if (this.dpu != null) {
-      this.dpu.b(paramV8ScriptException);
+    if (this.fib != null) {
+      this.fib.b(paramV8ScriptException);
     }
     AppMethodBeat.o(144008);
   }
   
-  public final void cS(boolean paramBoolean)
-  {
-    this.dpw.enable = paramBoolean;
-  }
-  
   public final boolean doInnerLoopTask()
   {
-    AppMethodBeat.i(216878);
+    AppMethodBeat.i(262449);
     Log.e("doInnerLoopTask", "should not to be here");
-    AppMethodBeat.o(216878);
+    AppMethodBeat.o(262449);
     return true;
   }
   
-  public final void loop()
+  public final void dp(boolean paramBoolean)
   {
-    AppMethodBeat.i(144003);
-    Looper.loop();
-    AppMethodBeat.o(144003);
+    this.fid.enable = paramBoolean;
   }
   
   public final void pause() {}
@@ -100,27 +100,27 @@ public final class g
   
   public final void resumeLoopTasks()
   {
-    AppMethodBeat.i(216877);
+    AppMethodBeat.i(262448);
     Log.e("resumeLoopTasks", "should not to be here");
-    AppMethodBeat.o(216877);
+    AppMethodBeat.o(262448);
   }
   
-  public final void u(Runnable paramRunnable)
+  public final void t(Runnable paramRunnable)
   {
-    AppMethodBeat.i(216875);
+    AppMethodBeat.i(262445);
     if (paramRunnable == null)
     {
-      AppMethodBeat.o(216875);
+      AppMethodBeat.o(262445);
       return;
     }
     if (Thread.currentThread().getId() == this.mLooper.getThread().getId()) {
       try
       {
         paramRunnable.run();
-        if (this.dpw.enable) {
-          this.dpw.dpM.remove(null);
+        if (this.fid.enable) {
+          this.fid.fiu.remove(null);
         }
-        AppMethodBeat.o(216875);
+        AppMethodBeat.o(262445);
         return;
       }
       catch (V8ScriptException paramRunnable)
@@ -131,8 +131,8 @@ public final class g
         }
       }
     }
-    this.dpv.post(paramRunnable);
-    AppMethodBeat.o(216875);
+    this.fic.post(paramRunnable);
+    AppMethodBeat.o(262445);
   }
   
   final class a
@@ -149,8 +149,8 @@ public final class g
       try
       {
         super.dispatchMessage(paramMessage);
-        if (g.this.dpw.enable) {
-          g.this.dpw.dpM.pollFirst();
+        if (g.this.fid.enable) {
+          g.this.fid.fiu.pollFirst();
         }
         AppMethodBeat.o(144001);
         return;
@@ -167,7 +167,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.g
  * JD-Core Version:    0.7.0.1
  */

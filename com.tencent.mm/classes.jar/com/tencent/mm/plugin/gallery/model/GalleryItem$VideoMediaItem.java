@@ -9,10 +9,10 @@ public class GalleryItem$VideoMediaItem
   extends GalleryItem.MediaItem
 {
   public static final Parcelable.Creator<GalleryItem.MediaItem> CREATOR;
-  public int ihS = -1;
-  public String jkQ;
-  public String jkR;
-  public int jkS = -1;
+  public int kWG = -1;
+  public String maR;
+  public String maS;
+  public int maT = -1;
   public int videoBitRate = -1;
   public int videoFrameRate = -1;
   public int videoHeight = -1;
@@ -38,16 +38,16 @@ public class GalleryItem$VideoMediaItem
     super(paramLong, paramString1, paramString2, paramString3);
   }
   
-  public final String aQn()
+  public final String aZe()
   {
     AppMethodBeat.i(111320);
-    if (!Util.isNullOrNil(this.sUB))
+    if (!Util.isNullOrNil(this.wAy))
     {
-      str = this.sUB;
+      str = this.wAy;
       AppMethodBeat.o(111320);
       return str;
     }
-    String str = this.xiW;
+    String str = this.AAz;
     AppMethodBeat.o(111320);
     return str;
   }
@@ -65,7 +65,7 @@ public class GalleryItem$VideoMediaItem
   public String toString()
   {
     AppMethodBeat.i(111322);
-    String str = "VideoMediaItem{base=" + super.toString() + ", videoTrackMime='" + this.jkQ + '\'' + ", audioTrackMime='" + this.jkR + '\'' + ", durationMs=" + this.jkS + ", videoHeight=" + this.videoHeight + ", videoWidth=" + this.videoWidth + ", videoBitRate=" + this.videoBitRate + ", videoIFrameInterval=" + this.videoIFrameInterval + ", videoFrameRate=" + this.videoFrameRate + '}';
+    String str = "VideoMediaItem{base=" + super.toString() + ", videoTrackMime='" + this.maR + '\'' + ", audioTrackMime='" + this.maS + '\'' + ", durationMs=" + this.maT + ", videoHeight=" + this.videoHeight + ", videoWidth=" + this.videoWidth + ", videoBitRate=" + this.videoBitRate + ", videoIFrameInterval=" + this.videoIFrameInterval + ", videoFrameRate=" + this.videoFrameRate + '}';
     AppMethodBeat.o(111322);
     return str;
   }
@@ -73,27 +73,28 @@ public class GalleryItem$VideoMediaItem
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(111321);
-    paramParcel.writeString(this.xiW);
-    paramParcel.writeString(this.sUB);
-    paramParcel.writeLong(this.xiZ);
+    paramParcel.writeString(this.AAz);
+    paramParcel.writeString(this.wAy);
+    paramParcel.writeLong(this.BVl);
     paramParcel.writeString(this.mMimeType);
     paramParcel.writeInt(this.videoWidth);
     paramParcel.writeInt(this.videoHeight);
-    paramParcel.writeInt(this.jkS);
-    paramParcel.writeString(this.jkQ);
-    paramParcel.writeString(this.jkR);
+    paramParcel.writeInt(this.maT);
+    paramParcel.writeString(this.maR);
+    paramParcel.writeString(this.maS);
     paramParcel.writeInt(this.videoIFrameInterval);
     paramParcel.writeInt(this.videoFrameRate);
     paramParcel.writeInt(this.videoBitRate);
-    paramParcel.writeInt(this.ihS);
-    paramParcel.writeLong(this.xja);
-    paramParcel.writeSerializable(this.xje);
+    paramParcel.writeInt(this.kWG);
+    paramParcel.writeLong(this.BVm);
+    paramParcel.writeString(this.BVn);
+    paramParcel.writeSerializable(this.BVt);
     AppMethodBeat.o(111321);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.GalleryItem.VideoMediaItem
  * JD-Core Version:    0.7.0.1
  */

@@ -6,44 +6,44 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
 {
-  public int Bqg;
-  public long Bqh;
-  public long Bqi;
-  private String Bqj;
-  private String Bqk;
-  private String Bql;
-  private String Bqm;
-  public int cSx;
+  public long HkA;
+  public long HkB;
+  private String HkC;
+  private String HkD;
+  private String HkE;
+  private String HkF;
+  public int Hkz;
+  public int cUP;
   String extInfo;
-  private int iFr;
-  private int iKT;
-  private int iKU;
-  private int iWj;
-  private long kfN;
+  private int lBa;
+  private int lBb;
+  private int lME;
+  private int lvr;
+  private long mXm;
   public String username;
   
   public d()
   {
     AppMethodBeat.i(27719);
-    this.cSx = -1;
+    this.cUP = -1;
     this.username = "";
-    this.kfN = 0L;
+    this.mXm = 0L;
     this.extInfo = "";
-    this.Bqg = 0;
-    this.Bqh = 0L;
-    this.Bqi = 0L;
-    this.iFr = 0;
-    this.iWj = 0;
-    this.iKT = 0;
-    this.iKU = 0;
-    this.Bqj = "";
-    this.Bqk = "";
-    this.Bql = "";
-    this.Bqm = "";
+    this.Hkz = 0;
+    this.HkA = 0L;
+    this.HkB = 0L;
+    this.lvr = 0;
+    this.lME = 0;
+    this.lBa = 0;
+    this.lBb = 0;
+    this.HkC = "";
+    this.HkD = "";
+    this.HkE = "";
+    this.HkF = "";
     AppMethodBeat.o(27719);
   }
   
-  public final String bjg()
+  public final String bsH()
   {
     if (this.extInfo == null) {
       return "";
@@ -55,19 +55,19 @@ public final class d
   {
     AppMethodBeat.i(27720);
     this.username = paramCursor.getString(0);
-    this.kfN = paramCursor.getLong(1);
+    this.mXm = paramCursor.getLong(1);
     this.extInfo = paramCursor.getString(2);
-    this.Bqg = paramCursor.getInt(3);
-    this.Bqh = paramCursor.getLong(4);
-    this.Bqi = paramCursor.getLong(5);
-    this.iFr = paramCursor.getInt(6);
-    this.iWj = paramCursor.getInt(7);
-    this.iKT = paramCursor.getInt(8);
-    this.iKU = paramCursor.getInt(9);
-    this.Bqj = paramCursor.getString(10);
-    this.Bqk = paramCursor.getString(11);
-    this.Bql = paramCursor.getString(12);
-    this.Bqm = paramCursor.getString(13);
+    this.Hkz = paramCursor.getInt(3);
+    this.HkA = paramCursor.getLong(4);
+    this.HkB = paramCursor.getLong(5);
+    this.lvr = paramCursor.getInt(6);
+    this.lME = paramCursor.getInt(7);
+    this.lBa = paramCursor.getInt(8);
+    this.lBb = paramCursor.getInt(9);
+    this.HkC = paramCursor.getString(10);
+    this.HkD = paramCursor.getString(11);
+    this.HkE = paramCursor.getString(12);
+    this.HkF = paramCursor.getString(13);
     AppMethodBeat.o(27720);
   }
   
@@ -75,39 +75,39 @@ public final class d
   {
     AppMethodBeat.i(27721);
     ContentValues localContentValues = new ContentValues();
-    if ((this.cSx & 0x1) != 0) {
+    if ((this.cUP & 0x1) != 0) {
       localContentValues.put("username", getUsername());
     }
-    if ((this.cSx & 0x2) != 0) {
-      localContentValues.put("qq", Long.valueOf(this.kfN));
+    if ((this.cUP & 0x2) != 0) {
+      localContentValues.put("qq", Long.valueOf(this.mXm));
     }
-    if ((this.cSx & 0x4) != 0) {
-      localContentValues.put("extinfo", bjg());
+    if ((this.cUP & 0x4) != 0) {
+      localContentValues.put("extinfo", bsH());
     }
-    if ((this.cSx & 0x8) != 0) {
-      localContentValues.put("needupdate", Integer.valueOf(this.Bqg));
+    if ((this.cUP & 0x8) != 0) {
+      localContentValues.put("needupdate", Integer.valueOf(this.Hkz));
     }
-    if ((this.cSx & 0x10) != 0) {
-      localContentValues.put("extupdateseq", Long.valueOf(this.Bqh));
+    if ((this.cUP & 0x10) != 0) {
+      localContentValues.put("extupdateseq", Long.valueOf(this.HkA));
     }
-    if ((this.cSx & 0x20) != 0) {
-      localContentValues.put("imgupdateseq", Long.valueOf(this.Bqi));
+    if ((this.cUP & 0x20) != 0) {
+      localContentValues.put("imgupdateseq", Long.valueOf(this.HkB));
     }
-    if ((this.cSx & 0x40) != 0) {
-      localContentValues.put("reserved1", Integer.valueOf(this.iFr));
+    if ((this.cUP & 0x40) != 0) {
+      localContentValues.put("reserved1", Integer.valueOf(this.lvr));
     }
-    if ((this.cSx & 0x80) != 0) {
-      localContentValues.put("reserved2", Integer.valueOf(this.iWj));
+    if ((this.cUP & 0x80) != 0) {
+      localContentValues.put("reserved2", Integer.valueOf(this.lME));
     }
-    if ((this.cSx & 0x100) != 0) {
-      localContentValues.put("reserved3", Integer.valueOf(this.iKT));
+    if ((this.cUP & 0x100) != 0) {
+      localContentValues.put("reserved3", Integer.valueOf(this.lBa));
     }
-    if ((this.cSx & 0x200) != 0) {
-      localContentValues.put("reserved4", Integer.valueOf(this.iKU));
+    if ((this.cUP & 0x200) != 0) {
+      localContentValues.put("reserved4", Integer.valueOf(this.lBb));
     }
-    if ((this.cSx & 0x400) != 0)
+    if ((this.cUP & 0x400) != 0)
     {
-      if (this.Bqj == null)
+      if (this.HkC == null)
       {
         str = "";
         localContentValues.put("reserved5", str);
@@ -115,26 +115,26 @@ public final class d
     }
     else
     {
-      if ((this.cSx & 0x800) != 0)
+      if ((this.cUP & 0x800) != 0)
       {
-        if (this.Bqk != null) {
+        if (this.HkD != null) {
           break label366;
         }
         str = "";
         label287:
         localContentValues.put("reserved6", str);
       }
-      if ((this.cSx & 0x1000) != 0)
+      if ((this.cUP & 0x1000) != 0)
       {
-        if (this.Bql != null) {
+        if (this.HkE != null) {
           break label374;
         }
         str = "";
         label315:
         localContentValues.put("reserved7", str);
       }
-      if ((this.cSx & 0x2000) != 0) {
-        if (this.Bqm != null) {
+      if ((this.cUP & 0x2000) != 0) {
+        if (this.HkF != null) {
           break label382;
         }
       }
@@ -142,16 +142,16 @@ public final class d
     label366:
     label374:
     label382:
-    for (String str = "";; str = this.Bqm)
+    for (String str = "";; str = this.HkF)
     {
       localContentValues.put("reserved8", str);
       AppMethodBeat.o(27721);
       return localContentValues;
-      str = this.Bqj;
+      str = this.HkC;
       break;
-      str = this.Bqk;
+      str = this.HkD;
       break label287;
-      str = this.Bql;
+      str = this.HkE;
       break label315;
     }
   }

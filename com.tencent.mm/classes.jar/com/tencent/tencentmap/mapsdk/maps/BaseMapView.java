@@ -86,7 +86,7 @@ public abstract class BaseMapView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.BaseMapView
  * JD-Core Version:    0.7.0.1
  */

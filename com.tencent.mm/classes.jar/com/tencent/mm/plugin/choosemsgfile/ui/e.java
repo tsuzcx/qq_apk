@@ -1,86 +1,28 @@
 package com.tencent.mm.plugin.choosemsgfile.ui;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.ball.a.f.a;
-import com.tencent.mm.plugin.ball.a.f.b;
-import java.util.Objects;
+import com.tencent.mm.plugin.choosemsgfile.b.d.a;
 
-public final class e
-  extends com.tencent.mm.plugin.ball.a.e
+public abstract interface e
 {
-  public e(Activity paramActivity)
-  {
-    super(paramActivity);
-  }
+  public abstract void H(boolean paramBoolean, int paramInt);
   
-  public final void a(f.a parama)
-  {
-    AppMethodBeat.i(123461);
-    super.a(parama);
-    AppMethodBeat.o(123461);
-  }
+  public abstract a cMN();
   
-  public final void a(f.b paramb)
-  {
-    AppMethodBeat.i(123463);
-    super.a(paramb);
-    AppMethodBeat.o(123463);
-  }
+  public abstract void cNe();
   
-  public final boolean aGg()
-  {
-    AppMethodBeat.i(123460);
-    boolean bool = super.aGg();
-    AppMethodBeat.o(123460);
-    return bool;
-  }
+  public abstract View getChildAt(int paramInt);
   
-  public final ViewGroup chG()
-  {
-    AppMethodBeat.i(123458);
-    ViewGroup localViewGroup = super.chG();
-    AppMethodBeat.o(123458);
-    return localViewGroup;
-  }
+  public abstract Context getContext();
   
-  public final Activity getActivity()
-  {
-    AppMethodBeat.i(123456);
-    Activity localActivity = (Activity)Objects.requireNonNull(super.getActivity());
-    AppMethodBeat.o(123456);
-    return localActivity;
-  }
+  public abstract String getUserName();
   
-  public final View getContentView()
-  {
-    AppMethodBeat.i(123459);
-    View localView = super.getContentView();
-    AppMethodBeat.o(123459);
-    return localView;
-  }
-  
-  public final Intent getIntent()
-  {
-    AppMethodBeat.i(123457);
-    Intent localIntent = super.getIntent();
-    AppMethodBeat.o(123457);
-    return localIntent;
-  }
-  
-  public final void hb(boolean paramBoolean)
-  {
-    AppMethodBeat.i(123462);
-    super.hb(paramBoolean);
-    AppMethodBeat.o(123462);
-  }
+  public abstract void lR(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.ui.e
  * JD-Core Version:    0.7.0.1
  */

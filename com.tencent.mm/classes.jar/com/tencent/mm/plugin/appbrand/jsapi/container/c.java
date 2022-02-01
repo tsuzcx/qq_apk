@@ -9,9 +9,7 @@ import android.graphics.PointF;
 import android.view.View;
 import android.view.animation.Interpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
 import com.tencent.mm.plugin.appbrand.jsapi.base.d;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,7 +20,7 @@ public final class c
   public static final int CTRL_INDEX = 510;
   public static final String NAME = "updatePositioningContainer";
   
-  public final int H(JSONObject paramJSONObject)
+  public final int K(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137515);
     int i = paramJSONObject.getInt("containerId");
@@ -30,7 +28,7 @@ public final class c
     return i;
   }
   
-  public final boolean c(final h paramh, int paramInt, View paramView, JSONObject paramJSONObject)
+  public final boolean c(final com.tencent.mm.plugin.appbrand.jsapi.g paramg, int paramInt, View paramView, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137514);
     if (!(paramView instanceof WrapperNativeContainerView))
@@ -38,17 +36,17 @@ public final class c
       AppMethodBeat.o(137514);
       return false;
     }
-    int i = g.a(paramJSONObject, "contentOffsetLeft", 0);
-    int j = g.a(paramJSONObject, "contentOffsetTop", 0);
+    int i = com.tencent.mm.plugin.appbrand.ac.g.a(paramJSONObject, "contentOffsetLeft", 0);
+    int j = com.tencent.mm.plugin.appbrand.ac.g.a(paramJSONObject, "contentOffsetTop", 0);
     int k = paramJSONObject.optInt("animate", 0);
-    paramh = (WrapperNativeContainerView)paramView;
+    paramg = (WrapperNativeContainerView)paramView;
     try
     {
       if (!paramJSONObject.getBoolean("visible")) {
         break label337;
       }
       paramInt = 0;
-      paramh.setVisibility(paramInt);
+      paramg.setVisibility(paramInt);
     }
     catch (JSONException paramView)
     {
@@ -57,19 +55,19 @@ public final class c
       AnimatorSet localAnimatorSet;
       break label71;
     }
-    paramh = (AppBrandNativeContainerView)paramh.aB(AppBrandNativeContainerView.class);
+    paramg = (AppBrandNativeContainerView)paramg.aA(AppBrandNativeContainerView.class);
     Log.i("MicroMsg.JsApiUpdatePositioningContainer", "scrollLeft:%d, scrollTop:%d, animation:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
     if (k == 1)
     {
-      paramView = ObjectAnimator.ofFloat(paramh, "x", new float[] { paramh.getX(), -i });
-      localObjectAnimator = ObjectAnimator.ofFloat(paramh, "y", new float[] { paramh.getY(), -j });
+      paramView = ObjectAnimator.ofFloat(paramg, "x", new float[] { paramg.getX(), -i });
+      localObjectAnimator = ObjectAnimator.ofFloat(paramg, "y", new float[] { paramg.getY(), -j });
       paramView.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
           AppMethodBeat.i(137509);
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-          paramh.setX(f);
+          paramg.setX(f);
           AppMethodBeat.o(137509);
         }
       });
@@ -79,47 +77,47 @@ public final class c
         {
           AppMethodBeat.i(137510);
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-          paramh.setY(f);
+          paramg.setY(f);
           AppMethodBeat.o(137510);
         }
       });
       localAnimatorSet = new AnimatorSet();
       localAnimatorSet.setDuration(1000L);
       localAnimatorSet.setInterpolator(new a());
-      localAnimatorSet.setTarget(paramh);
+      localAnimatorSet.setTarget(paramg);
       localAnimatorSet.playTogether(new Animator[] { paramView, localObjectAnimator });
       localAnimatorSet.start();
     }
     for (;;)
     {
-      paramInt = g.a(paramJSONObject, "innerHeight", paramh.getHeight());
-      i = g.a(paramJSONObject, "innerWidth", paramh.getWidth());
+      paramInt = com.tencent.mm.plugin.appbrand.ac.g.a(paramJSONObject, "innerHeight", paramg.getHeight());
+      i = com.tencent.mm.plugin.appbrand.ac.g.a(paramJSONObject, "innerWidth", paramg.getWidth());
       Log.i("MicroMsg.JsApiUpdatePositioningContainer", "innerHeight:%d, innerWidth:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
-      paramView = paramh.getLayoutParams();
+      paramView = paramg.getLayoutParams();
       paramView.height = paramInt;
       paramView.width = i;
-      paramh.setLayoutParams(paramView);
+      paramg.setLayoutParams(paramView);
       AppMethodBeat.o(137514);
       return true;
       label337:
       paramInt = 4;
       break;
-      paramh.setX(-i);
-      paramh.setY(-j);
+      paramg.setX(-i);
+      paramg.setY(-j);
     }
   }
   
   public final class a
     implements Interpolator
   {
-    private int lSG;
-    private final PointF lSH;
-    private final PointF lSI;
-    protected PointF lSJ;
-    protected PointF lSK;
-    protected PointF lSL;
-    protected PointF lSM;
-    protected PointF lSN;
+    private int oPp;
+    private final PointF oPq;
+    private final PointF oPr;
+    protected PointF oPs;
+    protected PointF oPt;
+    protected PointF oPu;
+    protected PointF oPv;
+    protected PointF oPw;
     
     public a()
     {
@@ -131,12 +129,12 @@ public final class c
     private a(PointF paramPointF1, PointF paramPointF2)
     {
       AppMethodBeat.i(137511);
-      this.lSG = 0;
-      this.lSH = new PointF();
-      this.lSI = new PointF();
-      this.lSL = new PointF();
-      this.lSM = new PointF();
-      this.lSN = new PointF();
+      this.oPp = 0;
+      this.oPq = new PointF();
+      this.oPr = new PointF();
+      this.oPu = new PointF();
+      this.oPv = new PointF();
+      this.oPw = new PointF();
       if ((paramPointF1.x < 0.0F) || (paramPointF1.x > 1.0F))
       {
         this$1 = new IllegalArgumentException("startX value must be in the range [0, 1]");
@@ -149,8 +147,8 @@ public final class c
         AppMethodBeat.o(137511);
         throw c.this;
       }
-      this.lSJ = paramPointF1;
-      this.lSK = paramPointF2;
+      this.oPs = paramPointF1;
+      this.oPt = paramPointF2;
       AppMethodBeat.o(137511);
     }
     
@@ -161,22 +159,22 @@ public final class c
       float f1 = paramFloat;
       while (i < 14)
       {
-        this.lSN.x = (this.lSJ.x * 3.0F);
-        this.lSM.x = ((this.lSK.x - this.lSJ.x) * 3.0F - this.lSN.x);
-        this.lSL.x = (1.0F - this.lSN.x - this.lSM.x);
-        f2 = (this.lSN.x + (this.lSM.x + this.lSL.x * f1) * f1) * f1 - paramFloat;
+        this.oPw.x = (this.oPs.x * 3.0F);
+        this.oPv.x = ((this.oPt.x - this.oPs.x) * 3.0F - this.oPw.x);
+        this.oPu.x = (1.0F - this.oPw.x - this.oPv.x);
+        f2 = (this.oPw.x + (this.oPv.x + this.oPu.x * f1) * f1) * f1 - paramFloat;
         if (Math.abs(f2) < 0.001D) {
           break;
         }
-        f1 -= f2 / (this.lSN.x + (2.0F * this.lSM.x + this.lSL.x * 3.0F * f1) * f1);
+        f1 -= f2 / (this.oPw.x + (2.0F * this.oPv.x + this.oPu.x * 3.0F * f1) * f1);
         i += 1;
       }
-      this.lSN.y = (this.lSJ.y * 3.0F);
-      this.lSM.y = ((this.lSK.y - this.lSJ.y) * 3.0F - this.lSN.y);
-      this.lSL.y = (1.0F - this.lSN.y - this.lSM.y);
-      paramFloat = this.lSN.y;
-      float f2 = this.lSM.y;
-      float f3 = this.lSL.y;
+      this.oPw.y = (this.oPs.y * 3.0F);
+      this.oPv.y = ((this.oPt.y - this.oPs.y) * 3.0F - this.oPw.y);
+      this.oPu.y = (1.0F - this.oPw.y - this.oPv.y);
+      paramFloat = this.oPw.y;
+      float f2 = this.oPv.y;
+      float f3 = this.oPu.y;
       AppMethodBeat.o(137513);
       return (paramFloat + (f2 + f3 * f1) * f1) * f1;
     }
@@ -184,7 +182,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.container.c
  * JD-Core Version:    0.7.0.1
  */

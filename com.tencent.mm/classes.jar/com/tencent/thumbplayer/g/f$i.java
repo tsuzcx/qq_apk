@@ -2,9 +2,9 @@ package com.tencent.thumbplayer.g;
 
 final class f$i
 {
-  long SbI;
-  Object SbJ;
-  long edr;
+  long ZEt;
+  Object ZEu;
+  long fXA;
 }
 
 

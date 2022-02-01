@@ -7,37 +7,37 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.al;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.am;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.MMWebView.a;
-import com.tencent.xweb.z;
+import com.tencent.xweb.aa;
 
 public final class w
   extends m
 {
-  FrameLayout EeM;
-  MMWebView iGY;
+  FrameLayout Kss;
+  MMWebView lxa;
   
-  public w(Context paramContext, al paramal, ViewGroup paramViewGroup)
+  public w(Context paramContext, am paramam, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramal, paramViewGroup);
+    super(paramContext, paramam, paramViewGroup);
   }
   
-  protected final void eWT()
+  protected final void fKe()
   {
     AppMethodBeat.i(96613);
-    this.iGY.setVerticalScrollBarEnabled(false);
-    this.iGY.setHorizontalScrollBarEnabled(false);
-    this.iGY.getSettings().setJavaScriptEnabled(true);
-    this.iGY.loadUrl(((al)this.EcX).h5Url);
-    this.iGY.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    this.iGY.setVisibility(0);
-    this.EeM.setPadding(this.EeM.getPaddingLeft(), (int)((al)this.EcX).paddingTop, this.EeM.getPaddingRight(), (int)((al)this.EcX).paddingBottom);
-    this.EeM.setLayoutParams(new LinearLayout.LayoutParams(this.mEX, this.mEY));
+    this.lxa.setVerticalScrollBarEnabled(false);
+    this.lxa.setHorizontalScrollBarEnabled(false);
+    this.lxa.getSettings().setJavaScriptEnabled(true);
+    this.lxa.loadUrl(((am)this.KqB).h5Url);
+    this.lxa.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    this.lxa.setVisibility(0);
+    this.Kss.setPadding(this.Kss.getPaddingLeft(), (int)((am)this.KqB).paddingTop, this.Kss.getPaddingRight(), (int)((am)this.KqB).paddingBottom);
+    this.Kss.setLayoutParams(new LinearLayout.LayoutParams(this.pEj, this.pEk));
     AppMethodBeat.o(96613);
   }
   
-  protected final View eWY()
+  protected final View fKj()
   {
     AppMethodBeat.i(96615);
     FrameLayout localFrameLayout = new FrameLayout(this.context);
@@ -45,12 +45,12 @@ public final class w
     return localFrameLayout;
   }
   
-  public final void eXe()
+  public final void fKp()
   {
     AppMethodBeat.i(96614);
-    this.EeM = ((FrameLayout)this.contentView);
-    this.iGY = MMWebView.a.kL(this.context);
-    this.EeM.addView(this.iGY);
+    this.Kss = ((FrameLayout)this.contentView);
+    this.lxa = MMWebView.a.lH(this.context);
+    this.Kss.addView(this.lxa);
     AppMethodBeat.o(96614);
   }
   

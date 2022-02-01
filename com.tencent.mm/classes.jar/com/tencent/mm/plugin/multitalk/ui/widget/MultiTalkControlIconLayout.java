@@ -15,121 +15,123 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.multitalk.a.a;
+import com.tencent.mm.plugin.multitalk.a.e;
+import com.tencent.mm.plugin.multitalk.a.f;
+import com.tencent.mm.plugin.multitalk.a.i;
 import com.tencent.mm.plugin.voip.ui.MMCheckBox;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.at;
+import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.aw;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/ui/widget/MultiTalkControlIconLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "checkBox", "Lcom/tencent/mm/plugin/voip/ui/MMCheckBox;", "forbiddenDrawable", "", "iconBg", "iconDrawable", "iconIv", "Landroid/widget/ImageView;", "iconSize", "", "iconText", "", "iconTv", "Landroid/widget/TextView;", "initStaus", "", "mIconMainView", "mRootView", "Landroid/view/View;", "textColor", "applyDeviceOrientataionChange", "", "orientation", "isChecked", "onClickCalled", "setChecked", "setIconEnabled", "enable", "setOnClickListener", "l", "Landroid/view/View$OnClickListener;", "plugin-multitalk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/MultiTalkControlIconLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "checkBox", "Lcom/tencent/mm/plugin/voip/ui/MMCheckBox;", "forbiddenDrawable", "", "iconBg", "iconDrawable", "iconIv", "Landroid/widget/ImageView;", "iconSize", "", "iconText", "", "iconTv", "Landroid/widget/TextView;", "initStaus", "", "mIconMainView", "mRootView", "Landroid/view/View;", "textColor", "applyDeviceOrientataionChange", "", "orientation", "isChecked", "onClickCalled", "setChecked", "setIconEnabled", "enable", "setOnClickListener", "l", "Landroid/view/View$OnClickListener;", "plugin-multitalk_release"})
 public final class MultiTalkControlIconLayout
   extends FrameLayout
 {
-  private ImageView gBZ;
-  private View jBN;
+  private TextView FxA;
+  private FrameLayout FxB;
+  private String FxC;
+  private boolean FxD;
+  private float FxE;
+  MMCheckBox Fxz;
+  private int forbiddenDrawable;
+  private int iconBg;
+  private int iconDrawable;
+  private ImageView jmf;
+  private View mrI;
   private int textColor;
-  MMCheckBox zRU;
-  private TextView zRV;
-  private FrameLayout zRW;
-  private String zRX;
-  private int zRY;
-  private int zRZ;
-  private boolean zSa;
-  private float zSb;
-  private int zSc;
   
   public MultiTalkControlIconLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(178976);
-    Object localObject = LayoutInflater.from(paramContext).inflate(2131495727, (ViewGroup)this);
-    p.g(localObject, "LayoutInflater.from(cont…italk_icons_layout, this)");
-    this.jBN = ((View)localObject);
-    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.MultitalkControlIconStyle);
-    localObject = localTypedArray.getString(4);
+    Object localObject = LayoutInflater.from(paramContext).inflate(a.f.multitalk_icons_layout, (ViewGroup)this);
+    p.j(localObject, "LayoutInflater.from(cont…italk_icons_layout, this)");
+    this.mrI = ((View)localObject);
+    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, a.i.MultitalkControlIconStyle);
+    localObject = localTypedArray.getString(a.i.MultitalkControlIconStyle_iconText);
     paramAttributeSet = (AttributeSet)localObject;
     if (localObject == null) {
       paramAttributeSet = "";
     }
-    this.zRX = paramAttributeSet;
-    this.zRY = localTypedArray.getResourceId(2, -1);
-    this.textColor = localTypedArray.getInteger(5, -1);
-    this.zSa = localTypedArray.getBoolean(6, false);
-    this.zRZ = localTypedArray.getResourceId(0, -1);
-    this.zSb = localTypedArray.getDimension(3, -1.0F);
-    this.zSc = localTypedArray.getResourceId(1, -1);
+    this.FxC = paramAttributeSet;
+    this.iconDrawable = localTypedArray.getResourceId(a.i.MultitalkControlIconStyle_iconDrawable, -1);
+    this.textColor = localTypedArray.getInteger(a.i.MultitalkControlIconStyle_iconTextColor, -1);
+    this.FxD = localTypedArray.getBoolean(a.i.MultitalkControlIconStyle_initStatus, false);
+    this.forbiddenDrawable = localTypedArray.getResourceId(a.i.MultitalkControlIconStyle_forbiddenDrawable, -1);
+    this.FxE = localTypedArray.getDimension(a.i.MultitalkControlIconStyle_iconSize, -1.0F);
+    this.iconBg = localTypedArray.getResourceId(a.i.MultitalkControlIconStyle_iconBg, -1);
     localTypedArray.recycle();
-    paramAttributeSet = findViewById(2131302485);
-    p.g(paramAttributeSet, "findViewById(R.id.icon_checkbox)");
-    this.zRU = ((MMCheckBox)paramAttributeSet);
-    paramAttributeSet = findViewById(2131302497);
-    p.g(paramAttributeSet, "findViewById(R.id.icon_iv)");
-    this.gBZ = ((ImageView)paramAttributeSet);
-    if (this.zRY != -1)
+    paramAttributeSet = findViewById(a.e.icon_checkbox);
+    p.j(paramAttributeSet, "findViewById(R.id.icon_checkbox)");
+    this.Fxz = ((MMCheckBox)paramAttributeSet);
+    paramAttributeSet = findViewById(a.e.icon_iv);
+    p.j(paramAttributeSet, "findViewById(R.id.icon_iv)");
+    this.jmf = ((ImageView)paramAttributeSet);
+    if (this.iconDrawable != -1)
     {
-      if (!this.zSa) {
-        break label370;
+      if (!this.FxD) {
+        break label388;
       }
-      this.gBZ.setImageDrawable(ar.m(paramContext, this.zRY, -16777216));
+      this.jmf.setImageDrawable(au.o(paramContext, this.iconDrawable, -16777216));
     }
     for (;;)
     {
-      paramAttributeSet = findViewById(2131302503);
-      p.g(paramAttributeSet, "findViewById(R.id.icon_name)");
-      this.zRV = ((TextView)paramAttributeSet);
-      this.zRV.setText((CharSequence)this.zRX);
-      this.zRV.setTextColor(this.textColor);
-      paramAttributeSet = findViewById(2131302501);
-      p.g(paramAttributeSet, "findViewById(R.id.icon_main)");
-      this.zRW = ((FrameLayout)paramAttributeSet);
-      if (this.zSb != -1.0F) {
-        this.zRW.setLayoutParams((ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(at.fromDPToPix(paramContext, (int)this.zSb), at.fromDPToPix(paramContext, (int)this.zSb)));
+      paramAttributeSet = findViewById(a.e.icon_name);
+      p.j(paramAttributeSet, "findViewById(R.id.icon_name)");
+      this.FxA = ((TextView)paramAttributeSet);
+      this.FxA.setText((CharSequence)this.FxC);
+      this.FxA.setTextColor(this.textColor);
+      paramAttributeSet = findViewById(a.e.icon_main);
+      p.j(paramAttributeSet, "findViewById(R.id.icon_main)");
+      this.FxB = ((FrameLayout)paramAttributeSet);
+      if (this.FxE != -1.0F) {
+        this.FxB.setLayoutParams((ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(aw.fromDPToPix(paramContext, (int)this.FxE), aw.fromDPToPix(paramContext, (int)this.FxE)));
       }
-      if (this.zSc != -1) {
-        this.zRW.setBackground(getResources().getDrawable(this.zSc));
+      if (this.iconBg != -1) {
+        this.FxB.setBackground(getResources().getDrawable(this.iconBg));
       }
       AppMethodBeat.o(178976);
       return;
-      label370:
-      this.gBZ.setImageDrawable(ar.m(paramContext, this.zRY, -1));
+      label388:
+      this.jmf.setImageDrawable(au.o(paramContext, this.iconDrawable, -1));
     }
   }
   
-  public final void Rr(int paramInt)
+  public final void XG(int paramInt)
   {
-    AppMethodBeat.i(239784);
-    this.gBZ.setRotation(360.0F - paramInt);
-    AppMethodBeat.o(239784);
+    AppMethodBeat.i(204178);
+    this.jmf.setRotation(360.0F - paramInt);
+    AppMethodBeat.o(204178);
   }
   
   public final void setChecked(boolean paramBoolean)
   {
     AppMethodBeat.i(178974);
-    this.zRU.setChecked(paramBoolean);
-    this.zRW.setSelected(paramBoolean);
+    this.Fxz.setChecked(paramBoolean);
+    this.FxB.setSelected(paramBoolean);
     Drawable localDrawable;
-    if (this.zRY != -1)
+    if (this.iconDrawable != -1)
     {
-      if (!this.zRU.isChecked()) {
-        break label74;
+      if (!this.Fxz.isChecked()) {
+        break label76;
       }
-      if (this.zSa) {
-        break label98;
+      if (this.FxD) {
+        break label100;
       }
-      localDrawable = ar.m(getContext(), this.zRY, -16777216);
+      localDrawable = au.o(getContext(), this.iconDrawable, -16777216);
     }
     for (;;)
     {
-      this.gBZ.setImageDrawable(localDrawable);
+      this.jmf.setImageDrawable(localDrawable);
       AppMethodBeat.o(178974);
       return;
-      label74:
-      if (this.zSa) {
-        localDrawable = ar.m(getContext(), this.zRY, -16777216);
+      label76:
+      if (this.FxD) {
+        localDrawable = au.o(getContext(), this.iconDrawable, -16777216);
       } else {
-        label98:
-        localDrawable = ar.m(getContext(), this.zRZ, -1);
+        label100:
+        localDrawable = au.o(getContext(), this.forbiddenDrawable, -1);
       }
     }
   }
@@ -139,24 +141,24 @@ public final class MultiTalkControlIconLayout
     AppMethodBeat.i(178975);
     if (paramBoolean)
     {
-      this.jBN.setAlpha(1.0F);
+      this.mrI.setAlpha(1.0F);
       AppMethodBeat.o(178975);
       return;
     }
-    this.jBN.setAlpha(0.3F);
+    this.mrI.setAlpha(0.3F);
     AppMethodBeat.o(178975);
   }
   
   public final void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(178973);
-    this.zRU.setOnClickListener(paramOnClickListener);
+    this.Fxz.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(178973);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.MultiTalkControlIconLayout
  * JD-Core Version:    0.7.0.1
  */

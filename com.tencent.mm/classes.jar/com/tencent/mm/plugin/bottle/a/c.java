@@ -3,11 +3,13 @@ package com.tencent.mm.plugin.bottle.a;
 import android.content.Context;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.eo;
+import com.tencent.mm.R.l;
+import com.tencent.mm.f.c.et;
 import com.tencent.mm.model.aa;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.z;
 import com.tencent.mm.modelvoice.p;
+import com.tencent.mm.modelvoice.s;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -16,22 +18,23 @@ import com.tencent.mm.storage.RegionCodeDecoder;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.ca;
 import com.tencent.mm.storagebase.h;
+import com.tencent.mm.vfs.u;
 
 public final class c
 {
-  private static int pkU = 1;
-  private static int pkV = 1;
+  private static int snd = 1;
+  private static int sne = 1;
   
   public static String a(Context paramContext, as paramas)
   {
     AppMethodBeat.i(22647);
     if (paramas == null)
     {
-      paramContext = paramContext.getString(2131756885);
+      paramContext = paramContext.getString(R.l.etv);
       AppMethodBeat.o(22647);
       return paramContext;
     }
-    if (RegionCodeDecoder.bkO(paramas.getCountryCode()))
+    if (RegionCodeDecoder.bxn(paramas.getCountryCode()))
     {
       paramContext = paramas.getCity();
       if (!Util.isNullOrNil(paramContext))
@@ -39,23 +42,23 @@ public final class c
         AppMethodBeat.o(22647);
         return paramContext;
       }
-      paramContext = aa.It(paramas.getProvince());
+      paramContext = aa.PL(paramas.getProvince());
       if (!Util.isNullOrNil(paramContext))
       {
         AppMethodBeat.o(22647);
         return paramContext;
       }
-      RegionCodeDecoder.gEm();
+      RegionCodeDecoder.hAC();
       paramContext = RegionCodeDecoder.getLocName(paramas.getCountryCode());
       AppMethodBeat.o(22647);
       return paramContext;
     }
-    paramContext = paramContext.getString(2131756885);
+    paramContext = paramContext.getString(R.l.etv);
     AppMethodBeat.o(22647);
     return paramContext;
   }
   
-  public static String ahl(String paramString)
+  public static String aoR(String paramString)
   {
     AppMethodBeat.i(22644);
     if (Util.isNullOrNil(paramString))
@@ -74,44 +77,44 @@ public final class c
     return paramString;
   }
   
-  public static void ahm(String paramString)
+  public static void aoS(String paramString)
   {
     a locala = null;
     AppMethodBeat.i(22645);
-    com.tencent.mm.plugin.bottle.a.jRu.WZ();
-    bg.aVF();
-    if (com.tencent.mm.model.c.aSQ().aEM(paramString) != 1)
+    com.tencent.mm.plugin.bottle.a.mIH.abC();
+    bh.beI();
+    if (com.tencent.mm.model.c.bbO().aOW(paramString) != 1)
     {
       AppMethodBeat.o(22645);
       return;
     }
-    bg.aVF();
-    ca localca = com.tencent.mm.model.c.aSQ().aEx(paramString);
+    bh.beI();
+    ca localca = com.tencent.mm.model.c.bbO().aOH(paramString);
     if ((localca == null) || (!localca.field_talker.equals(paramString)))
     {
       AppMethodBeat.o(22645);
       return;
     }
-    String str1 = ahl(paramString);
+    String str1 = aoR(paramString);
     if (Util.isNullOrNil(str1))
     {
       AppMethodBeat.o(22645);
       return;
     }
-    Object localObject = d.ckU();
+    Object localObject = d.cyq();
     String str2 = "select bottleinfo1.parentclientid,bottleinfo1.childcount,bottleinfo1.bottleid,bottleinfo1.bottletype,bottleinfo1.msgtype,bottleinfo1.voicelen,bottleinfo1.content,bottleinfo1.createtime,bottleinfo1.reserved1,bottleinfo1.reserved2,bottleinfo1.reserved3,bottleinfo1.reserved4 from bottleinfo1   where bottleinfo1.bottleid = \"" + Util.escapeSqlValue(String.valueOf(str1)) + "\"";
-    localObject = ((b)localObject).iFy.rawQuery(str2, null);
+    localObject = ((b)localObject).lvy.rawQuery(str2, null);
     if (localObject == null)
     {
       locala = null;
       if (locala != null) {
-        if (locala.pkR != null) {
+        if (locala.sna != null) {
           break label382;
         }
       }
     }
     label382:
-    for (localObject = "";; localObject = locala.pkR)
+    for (localObject = "";; localObject = locala.sna)
     {
       if (((String)localObject).equals(str1)) {
         break label392;
@@ -121,30 +124,30 @@ public final class c
       if (((Cursor)localObject).moveToFirst())
       {
         locala = new a();
-        locala.pkQ = ((Cursor)localObject).getString(0);
-        locala.bva = ((Cursor)localObject).getInt(1);
-        locala.pkR = ((Cursor)localObject).getString(2);
-        locala.pkS = ((Cursor)localObject).getInt(3);
+        locala.smZ = ((Cursor)localObject).getString(0);
+        locala.beC = ((Cursor)localObject).getInt(1);
+        locala.sna = ((Cursor)localObject).getString(2);
+        locala.snb = ((Cursor)localObject).getInt(3);
         locala.msgType = ((Cursor)localObject).getInt(4);
-        locala.pkT = ((Cursor)localObject).getInt(5);
+        locala.snc = ((Cursor)localObject).getInt(5);
         locala.content = ((Cursor)localObject).getString(6);
         locala.createtime = ((Cursor)localObject).getLong(7);
-        locala.iFr = ((Cursor)localObject).getInt(8);
-        locala.iWj = ((Cursor)localObject).getInt(9);
-        locala.iFt = ((Cursor)localObject).getString(10);
-        locala.iFu = ((Cursor)localObject).getString(11);
+        locala.lvr = ((Cursor)localObject).getInt(8);
+        locala.lME = ((Cursor)localObject).getInt(9);
+        locala.lvt = ((Cursor)localObject).getString(10);
+        locala.lvu = ((Cursor)localObject).getString(11);
       }
       ((Cursor)localObject).close();
       break;
     }
     label392:
-    if (locala.pkS != 1)
+    if (locala.snb != 1)
     {
       AppMethodBeat.o(22645);
       return;
     }
     localObject = new ca();
-    ((ca)localObject).Cy(paramString);
+    ((ca)localObject).Jm(paramString);
     long l;
     int i;
     if (localca.field_createTime <= locala.createtime)
@@ -161,13 +164,13 @@ public final class c
     {
       ((ca)localObject).setType(i);
       ((ca)localObject).setStatus(2);
-      ((ca)localObject).nv(1);
+      ((ca)localObject).pJ(1);
       if (((ca)localObject).getType() != 34) {
         break label674;
       }
-      ((ca)localObject).setContent(p.b(z.aTY(), locala.pkT, false));
+      ((ca)localObject).setContent(p.a(z.bcZ(), locala.snc, false));
       paramString = locala.getContent() + Util.nowMilliSecond();
-      if (com.tencent.mm.vfs.s.nw(com.tencent.mm.modelvoice.s.getFullPath(locala.getContent()), com.tencent.mm.modelvoice.s.getFullPath(paramString)) >= 0L) {
+      if (u.on(s.getFullPath(locala.getContent()), s.getFullPath(paramString)) >= 0L) {
         break label646;
       }
       Log.e("MicroMsg.BottleLogic", "Copy Bottle Voice File Failed :" + locala.getContent());
@@ -184,11 +187,11 @@ public final class c
       i = 43;
     }
     label646:
-    ((ca)localObject).Cz(paramString);
+    ((ca)localObject).Jn(paramString);
     for (;;)
     {
-      bg.aVF();
-      com.tencent.mm.model.c.aSQ().aC((ca)localObject);
+      bh.beI();
+      com.tencent.mm.model.c.bbO().aM((ca)localObject);
       AppMethodBeat.o(22645);
       return;
       label674:
@@ -196,13 +199,13 @@ public final class c
     }
   }
   
-  public static void ckS()
+  public static void cyo()
   {
     AppMethodBeat.i(22646);
-    b localb = d.ckU();
+    b localb = d.cyq();
     long l = Util.nowMilliSecond() - 7776000000L;
     Object localObject = "select distinct content , msgtype from bottleinfo1 where bottleinfo1.createtime < ".concat(String.valueOf(l));
-    Cursor localCursor = localb.iFy.rawQuery((String)localObject, null);
+    Cursor localCursor = localb.lvy.rawQuery((String)localObject, null);
     int j = localCursor.getCount();
     if (j > 0)
     {
@@ -229,7 +232,7 @@ public final class c
     }
     localCursor.close();
     if (j > 0) {
-      localb.iFy.delete("bottleinfo1", "createtime< ?", new String[] { String.valueOf(l) });
+      localb.lvy.delete("bottleinfo1", "createtime< ?", new String[] { String.valueOf(l) });
     }
     if (localObject == null)
     {
@@ -239,9 +242,9 @@ public final class c
     int i = 0;
     while (i < localObject.length)
     {
-      Log.d("MicroMsg.BottleLogic", "delete path:" + com.tencent.mm.modelvoice.s.getFullPath(localObject[i]));
-      if (!Util.isNullOrNil(com.tencent.mm.modelvoice.s.getFullPath(localObject[i]))) {
-        com.tencent.mm.vfs.s.deleteFile(com.tencent.mm.modelvoice.s.getFullPath(localObject[i]));
+      Log.d("MicroMsg.BottleLogic", "delete path:" + s.getFullPath(localObject[i]));
+      if (!Util.isNullOrNil(s.getFullPath(localObject[i]))) {
+        u.deleteFile(s.getFullPath(localObject[i]));
       }
       i += 1;
     }
@@ -250,7 +253,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.bottle.a.c
  * JD-Core Version:    0.7.0.1
  */

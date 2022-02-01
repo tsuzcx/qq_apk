@@ -2,16 +2,17 @@ package com.tencent.mm.plugin.appbrand.ac;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.b;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.aj.k.b;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.ap;
-import com.tencent.mm.model.bp;
+import com.tencent.mm.model.aq;
+import com.tencent.mm.model.bq;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.chatroom.a.b;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -25,19 +26,24 @@ import java.util.LinkedList;
 
 public final class c
 {
-  private static LinkedList<e> gCs;
-  private static boolean iGo;
-  private static HashSet<a> ogq;
-  private static boolean ogr;
+  private static LinkedList<e> jmy;
+  private static boolean lwq;
+  private static HashSet<a> ric;
+  private static boolean rid;
   
   static
   {
     AppMethodBeat.i(121091);
-    gCs = new LinkedList();
-    ogq = new HashSet();
-    iGo = false;
-    ogr = false;
+    jmy = new LinkedList();
+    ric = new HashSet();
+    lwq = false;
+    rid = false;
     AppMethodBeat.o(121091);
+  }
+  
+  public static boolean Df(int paramInt)
+  {
+    return (33 == paramInt) || (36 == paramInt);
   }
   
   protected static String a(ca paramca, boolean paramBoolean, String paramString)
@@ -45,13 +51,13 @@ public final class c
     AppMethodBeat.i(121089);
     if (paramca.field_isSend == 1)
     {
-      paramca = z.aTY();
+      paramca = z.bcZ();
       AppMethodBeat.o(121089);
       return paramca;
     }
     String str = null;
     if (paramBoolean) {
-      str = bp.Ks(paramca.field_content);
+      str = bq.RL(paramca.field_content);
     }
     if (Util.isNullOrNil(str)) {}
     for (;;)
@@ -69,39 +75,39 @@ public final class c
       try
       {
         AppMethodBeat.i(121087);
-        if (iGo)
+        if (lwq)
         {
-          ogq.add(parama);
+          ric.add(parama);
           AppMethodBeat.o(121087);
           return;
         }
-        if (ogr)
+        if (rid)
         {
-          parama.A(gCs);
+          parama.B(jmy);
           AppMethodBeat.o(121087);
           continue;
         }
-        iGo = true;
+        lwq = true;
       }
       finally {}
-      ogq.add(parama);
-      g.aAi();
-      g.aAk().postToWorker(new Runnable()
+      ric.add(parama);
+      h.aHH();
+      h.aHJ().postToWorker(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(121085);
-          c.TE().clear();
-          if (ab.Eq(this.gMw)) {}
+          c.Yi().clear();
+          if (ab.Lj(this.jwL)) {}
           label507:
           Object localObject2;
-          for (ah localah = ((com.tencent.mm.plugin.chatroom.a.c)g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().Kd(this.gMw);; localObject2 = null)
+          for (ah localah = ((b)h.ae(b.class)).bbV().Rw(this.jwL);; localObject2 = null)
           {
             int i = 100;
             int j = 0;
             while (i >= 100)
             {
-              Cursor localCursor = ((l)g.af(l.class)).eiy().eA(this.gMw, j);
+              Cursor localCursor = ((n)h.ae(n.class)).eSe().fb(this.jwL, j);
               if (localCursor != null) {}
               for (;;)
               {
@@ -114,28 +120,28 @@ public final class c
                   }
                   ca localca = new ca();
                   localca.setMsgId(localCursor.getLong(0));
-                  localca.yF(localCursor.getLong(1));
+                  localca.EG(localCursor.getLong(1));
                   localca.setCreateTime(localCursor.getLong(2));
                   localca.setContent(localCursor.getString(3));
-                  localca.nv(localCursor.getInt(4));
-                  localca.Cz(localCursor.getString(5));
+                  localca.pJ(localCursor.getInt(4));
+                  localca.Jn(localCursor.getString(5));
                   str = localca.field_content;
                   if (str == null) {
                     continue;
                   }
-                  k.b localb = k.b.HD(str);
-                  if ((localb == null) || (!c.zA(localb.type))) {
+                  k.b localb = k.b.OQ(str);
+                  if ((localb == null) || (!c.Df(localb.type))) {
                     continue;
                   }
-                  Object localObject4 = c.a(localca, ab.Eq(this.gMw), this.gMw);
-                  localObject3 = ((l)g.af(l.class)).aSN().Kn((String)localObject4);
+                  Object localObject4 = c.a(localca, ab.Lj(this.jwL), this.jwL);
+                  localObject3 = ((n)h.ae(n.class)).bbL().RG((String)localObject4);
                   str = "";
                   if (localah != null) {
-                    str = localah.getDisplayName((String)localObject4);
+                    str = localah.PJ((String)localObject4);
                   }
-                  localObject3 = new e(localca.field_createTime, localb.type, localb.title, localca.field_msgId, ((ax)localObject3).field_username, ((as)localObject3).arI(), ((ax)localObject3).field_conRemark, str, Util.nullAs(localb.izj, localb.appId), localb, localca.field_msgSvrId);
+                  localObject3 = new e(localca.field_createTime, localb.type, localb.title, localca.field_msgId, ((ax)localObject3).field_username, ((as)localObject3).ayr(), ((ax)localObject3).field_conRemark, str, Util.nullAs(localb.loB, localb.appId), localb, localca.field_msgSvrId);
                   ((e)localObject3).desc = localb.title;
-                  localObject4 = ((com.tencent.mm.plugin.appbrand.service.q)g.af(com.tencent.mm.plugin.appbrand.service.q.class)).Xk(((e)localObject3).dXm.izi);
+                  localObject4 = ((com.tencent.mm.plugin.appbrand.service.q)h.ae(com.tencent.mm.plugin.appbrand.service.q.class)).aeW(((e)localObject3).fQY.loA);
                   if (localObject4 == null) {
                     break label507;
                   }
@@ -146,14 +152,14 @@ public final class c
                   }
                   str = ((WxaAttributes)localObject4).field_brandIconURL;
                   ((e)localObject3).imagePath = str;
-                  if (localb.izk != 1)
+                  if (localb.loC != 1)
                   {
-                    str = com.tencent.mm.av.q.bcR().d(localca.field_imgPath, false, true);
+                    str = com.tencent.mm.ay.q.bmh().d(localca.field_imgPath, false, true);
                     if (!Util.isNullOrNil(str)) {
-                      ((e)localObject3).ogu = "file://".concat(String.valueOf(str));
+                      ((e)localObject3).rig = "file://".concat(String.valueOf(str));
                     }
                   }
-                  c.TE().add(localObject3);
+                  c.Yi().add(localObject3);
                   continue;
                   i = 0;
                 }
@@ -165,17 +171,17 @@ public final class c
                   AppMethodBeat.o(121085);
                 }
                 continue;
-                String str = ((e)localObject3).dXm.eah;
+                String str = ((e)localObject3).fQY.fUe;
                 continue;
                 label520:
-                str = ((e)localObject3).dXm.izB;
+                str = ((e)localObject3).fQY.loV;
               }
               if (localCursor != null) {
                 localCursor.close();
               }
               j += i;
             }
-            Log.i("MicroMsg.AppBrandHistoryListLogic", "[loadData] data:%s", new Object[] { Integer.valueOf(c.TE().size()) });
+            Log.i("MicroMsg.AppBrandHistoryListLogic", "[loadData] data:%s", new Object[] { Integer.valueOf(c.Yi().size()) });
             MMHandlerThread.postToMainThread(new Runnable()
             {
               public final void run()
@@ -200,17 +206,17 @@ public final class c
     {
       AppMethodBeat.i(121088);
       Log.i("MicroMsg.AppBrandHistoryListLogic", "done");
-      ogr = true;
-      iGo = false;
-      Iterator localIterator = ogq.iterator();
+      rid = true;
+      lwq = false;
+      Iterator localIterator = ric.iterator();
       while (localIterator.hasNext())
       {
         a locala = (a)localIterator.next();
         if (locala != null) {
-          locala.A(gCs);
+          locala.B(jmy);
         }
       }
-      ogq.clear();
+      ric.clear();
     }
     finally {}
     AppMethodBeat.o(121088);
@@ -221,10 +227,10 @@ public final class c
     try
     {
       AppMethodBeat.i(121086);
-      iGo = false;
-      ogr = false;
-      gCs.clear();
-      ogq.clear();
+      lwq = false;
+      rid = false;
+      jmy.clear();
+      ric.clear();
       AppMethodBeat.o(121086);
       return;
     }
@@ -235,19 +241,14 @@ public final class c
     }
   }
   
-  public static boolean zA(int paramInt)
-  {
-    return (33 == paramInt) || (36 == paramInt);
-  }
-  
   public static abstract interface a
   {
-    public abstract void A(LinkedList<e> paramLinkedList);
+    public abstract void B(LinkedList<e> paramLinkedList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ac.c
  * JD-Core Version:    0.7.0.1
  */

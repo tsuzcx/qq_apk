@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 public final class t
 {
-  public static l akn(String paramString)
+  public static l asa(String paramString)
   {
     int m = 1;
     AppMethodBeat.i(113875);
@@ -32,39 +32,39 @@ public final class t
         return null;
       }
       l locall = new l();
-      locall.pWb = paramString.optString("local_city");
-      locall.pVZ = ako(paramString.optString("local_city_list"));
-      locall.pWa = ako(paramString.optString("other_city_list"));
-      locall.pWc = paramString.optBoolean("local_end");
-      locall.pWd = paramString.optBoolean("other_end");
-      locall.eaY = paramString.optBoolean("show_red_dot");
-      locall.eaZ = paramString.optBoolean("show_new");
-      locall.pWf = paramString.optString("tips");
-      locall.pWe = akp(paramString.optString("icons"));
-      locall.pWg = paramString.optInt("newest_sharecard_time_second");
+      locall.tsb = paramString.optString("local_city");
+      locall.trZ = asb(paramString.optString("local_city_list"));
+      locall.tsa = asb(paramString.optString("other_city_list"));
+      locall.tsc = paramString.optBoolean("local_end");
+      locall.tsd = paramString.optBoolean("other_end");
+      locall.fUV = paramString.optBoolean("show_red_dot");
+      locall.fUW = paramString.optBoolean("show_new");
+      locall.tsf = paramString.optString("tips");
+      locall.tse = asc(paramString.optString("icons"));
+      locall.tsg = paramString.optInt("newest_sharecard_time_second");
       int i;
       int j;
       label209:
       int k;
-      if (locall.pWc)
+      if (locall.tsc)
       {
         i = 1;
-        if (!locall.pWd) {
+        if (!locall.tsd) {
           break label288;
         }
         j = 1;
-        if (!locall.eaY) {
+        if (!locall.fUV) {
           break label293;
         }
         k = 1;
         label219:
-        if (!locall.eaZ) {
+        if (!locall.fUW) {
           break label298;
         }
       }
       for (;;)
       {
-        Log.i("MicroMsg.ShareCardLayoutDataParser", "localEnd:%d, otherEnd:%d, showRedDot:%d, showNew:%d, tips:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), locall.pWf });
+        Log.i("MicroMsg.ShareCardLayoutDataParser", "localEnd:%d, otherEnd:%d, showRedDot:%d, showNew:%d, tips:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), locall.tsf });
         AppMethodBeat.o(113875);
         return locall;
         i = 0;
@@ -87,7 +87,7 @@ public final class t
     }
   }
   
-  private static LinkedList<m> ako(String paramString)
+  private static LinkedList<m> asb(String paramString)
   {
     AppMethodBeat.i(113876);
     if (TextUtils.isEmpty(paramString))
@@ -111,14 +111,14 @@ public final class t
       {
         JSONObject localJSONObject = paramString.optJSONObject(i);
         m localm = new m();
-        localm.eaO = localJSONObject.optString("card_id");
-        localm.pRX = localJSONObject.optString("card_tp_id");
-        localm.pWh = localJSONObject.optString("announcement");
-        localm.pWi = localJSONObject.optInt("end_time", 0);
-        localm.pWj = localJSONObject.optInt("update_time", 0);
-        localm.pWk = localJSONObject.optInt("item_type", 0);
+        localm.fUL = localJSONObject.optString("card_id");
+        localm.tnX = localJSONObject.optString("card_tp_id");
+        localm.announcement = localJSONObject.optString("announcement");
+        localm.tsh = localJSONObject.optInt("end_time", 0);
+        localm.tsi = localJSONObject.optInt("update_time", 0);
+        localm.item_type = localJSONObject.optInt("item_type", 0);
         localm.top = localJSONObject.optInt("top", 0);
-        Log.i("MicroMsg.ShareCardLayoutDataParser", "ljd: card_tp_id:" + localm.pRX + " top:" + localm.top);
+        Log.i("MicroMsg.ShareCardLayoutDataParser", "ljd: card_tp_id:" + localm.tnX + " top:" + localm.top);
         localLinkedList.add(localm);
         i += 1;
       }
@@ -133,7 +133,7 @@ public final class t
     return null;
   }
   
-  private static LinkedList<String> akp(String paramString)
+  private static LinkedList<String> asc(String paramString)
   {
     AppMethodBeat.i(113877);
     if (TextUtils.isEmpty(paramString))

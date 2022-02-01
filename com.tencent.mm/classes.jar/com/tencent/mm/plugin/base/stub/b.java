@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.base.stub;
 
-import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bb;
 
 public final class b
 {
-  private static ba juj = null;
+  private static bb mjN = null;
   
-  public static void a(ba paramba)
+  public static void a(bb parambb)
   {
-    juj = paramba;
+    mjN = parambb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.base.stub.b
  * JD-Core Version:    0.7.0.1
  */

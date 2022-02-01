@@ -6,19 +6,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public final com.tencent.mm.danmaku.a.b gNu;
-  public final Rect gPU;
-  public final Rect gPV;
-  public final Paint gPW;
+  public final Rect jAn;
+  public final Rect jAo;
+  public final Paint jAp;
+  public final com.tencent.mm.danmaku.a.b jxP;
   
   public b(com.tencent.mm.danmaku.a.b paramb)
   {
-    AppMethodBeat.i(241697);
-    this.gPU = new Rect();
-    this.gPV = new Rect();
-    this.gPW = new Paint();
-    this.gNu = paramb;
-    AppMethodBeat.o(241697);
+    AppMethodBeat.i(282510);
+    this.jAn = new Rect();
+    this.jAo = new Rect();
+    this.jAp = new Paint();
+    this.jxP = paramb;
+    AppMethodBeat.o(282510);
   }
 }
 

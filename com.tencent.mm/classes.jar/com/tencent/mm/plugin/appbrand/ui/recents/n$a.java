@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.appbrand.ui.recents;
 
-import android.support.v7.widget.RecyclerView.f.c;
-import android.support.v7.widget.RecyclerView.v;
+import androidx.recyclerview.widget.RecyclerView.f.c;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class n$a
   extends RecyclerView.f.c
 {
-  public final RecyclerView.f.c c(RecyclerView.v paramv, int paramInt)
+  public final RecyclerView.f.c e(RecyclerView.v paramv, int paramInt)
   {
-    AppMethodBeat.i(49246);
-    super.c(paramv, paramInt);
-    this.atr = paramInt;
-    AppMethodBeat.o(49246);
+    AppMethodBeat.i(277279);
+    super.e(paramv, paramInt);
+    this.alk = paramInt;
+    AppMethodBeat.o(277279);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.n.a
  * JD-Core Version:    0.7.0.1
  */

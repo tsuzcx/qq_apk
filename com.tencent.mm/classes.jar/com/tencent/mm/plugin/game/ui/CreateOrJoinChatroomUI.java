@@ -6,21 +6,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.aa;
-import com.tencent.mm.ak.aa.a;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.an.aa;
+import com.tencent.mm.an.aa.a;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.cd.b;
 import com.tencent.mm.opensdk.channel.MMessageActV2;
 import com.tencent.mm.opensdk.channel.MMessageActV2.Args;
 import com.tencent.mm.opensdk.modelbiz.CreateChatroom.Resp;
 import com.tencent.mm.opensdk.modelbiz.JoinChatroom.Resp;
-import com.tencent.mm.plugin.game.protobuf.ak;
+import com.tencent.mm.plugin.game.g.i;
 import com.tencent.mm.plugin.game.protobuf.al;
-import com.tencent.mm.plugin.game.protobuf.az;
+import com.tencent.mm.plugin.game.protobuf.am;
 import com.tencent.mm.plugin.game.protobuf.ba;
+import com.tencent.mm.plugin.game.protobuf.bb;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.q.a;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -33,31 +34,31 @@ import com.tencent.mm.ui.base.a;
 public class CreateOrJoinChatroomUI
   extends MMBaseActivity
 {
-  private String Nl;
-  private ProgressDialog iLh = null;
-  private String krY;
+  private String CSA;
+  private String CSB;
+  private String CSC;
+  private String CSD;
+  private int CSE = 1;
+  private String eb;
+  private ProgressDialog lBo = null;
   private String mAppId;
   private String mPackageName;
-  private String xOq;
-  private String xOr;
-  private String xOs;
-  private String xOt;
-  private int xOu = 1;
+  private String njH;
   
-  private void Or(int paramInt)
+  private void TL(int paramInt)
   {
     AppMethodBeat.i(41868);
     Object localObject1 = com.tencent.mm.pluginsdk.model.app.h.o(this.mAppId, true, false);
     Bundle localBundle = new Bundle();
     Object localObject2;
-    if (this.Nl.equals("action_create"))
+    if (this.eb.equals("action_create"))
     {
       localObject2 = new CreateChatroom.Resp();
       if (localObject1 != null) {
         ((CreateChatroom.Resp)localObject2).openId = ((g)localObject1).field_openId;
       }
-      ((CreateChatroom.Resp)localObject2).transaction = this.xOq;
-      ((CreateChatroom.Resp)localObject2).extMsg = this.xOt;
+      ((CreateChatroom.Resp)localObject2).transaction = this.CSA;
+      ((CreateChatroom.Resp)localObject2).extMsg = this.CSD;
       ((CreateChatroom.Resp)localObject2).errCode = paramInt;
       ((CreateChatroom.Resp)localObject2).toBundle(localBundle);
     }
@@ -66,30 +67,30 @@ public class CreateOrJoinChatroomUI
       localObject1 = new MMessageActV2.Args();
       ((MMessageActV2.Args)localObject1).targetPkgName = this.mPackageName;
       ((MMessageActV2.Args)localObject1).bundle = localBundle;
-      com.tencent.mm.pluginsdk.model.app.q.bo(localBundle);
-      com.tencent.mm.pluginsdk.model.app.q.bp(localBundle);
+      com.tencent.mm.pluginsdk.model.app.q.bm(localBundle);
+      com.tencent.mm.pluginsdk.model.app.q.bn(localBundle);
       MMessageActV2.send(MMApplicationContext.getContext(), (MMessageActV2.Args)localObject1);
       AppMethodBeat.o(41868);
       return;
-      if (this.Nl.equals("action_join"))
+      if (this.eb.equals("action_join"))
       {
         localObject2 = new JoinChatroom.Resp();
         if (localObject1 != null) {
           ((JoinChatroom.Resp)localObject2).openId = ((g)localObject1).field_openId;
         }
-        ((JoinChatroom.Resp)localObject2).transaction = this.xOq;
-        ((JoinChatroom.Resp)localObject2).extMsg = this.xOt;
+        ((JoinChatroom.Resp)localObject2).transaction = this.CSA;
+        ((JoinChatroom.Resp)localObject2).extMsg = this.CSD;
         ((JoinChatroom.Resp)localObject2).errCode = paramInt;
         ((JoinChatroom.Resp)localObject2).toBundle(localBundle);
       }
     }
   }
   
-  private void dWg()
+  private void ezo()
   {
     AppMethodBeat.i(41866);
-    if ((this.iLh != null) && (this.iLh.isShowing())) {
-      this.iLh.cancel();
+    if ((this.lBo != null) && (this.lBo.isShowing())) {
+      this.lBo.cancel();
     }
     AppMethodBeat.o(41866);
   }
@@ -102,7 +103,7 @@ public class CreateOrJoinChatroomUI
       if (paramInt2 != 4) {
         break label30;
       }
-      Or(0);
+      TL(0);
     }
     for (;;)
     {
@@ -115,11 +116,11 @@ public class CreateOrJoinChatroomUI
         if (paramIntent != null)
         {
           paramIntent = paramIntent.getStringExtra("rawUrl");
-          q.a.JSZ.b(this, paramIntent, true, null);
+          q.a.QSe.b(this, paramIntent, true, null);
         }
       }
       else if (paramInt2 == 0) {
-        Or(-2);
+        TL(-2);
       }
     }
   }
@@ -131,59 +132,59 @@ public class CreateOrJoinChatroomUI
     requestWindowFeature(1);
     Log.i("MicroMsg.CreateOrJoinChatroomUI", "onCreate");
     paramBundle = getIntent();
-    this.Nl = paramBundle.getStringExtra("action");
+    this.eb = paramBundle.getStringExtra("action");
     this.mPackageName = paramBundle.getStringExtra("package_name");
     this.mAppId = paramBundle.getStringExtra("key_app_id");
-    this.xOq = paramBundle.getStringExtra("key_transaction");
-    this.xOr = paramBundle.getStringExtra("group_id");
-    this.xOs = paramBundle.getStringExtra("chatroom_name");
-    this.krY = paramBundle.getStringExtra("chatroom_nickname");
-    this.xOt = paramBundle.getStringExtra("ext_msg");
-    if ((Util.isNullOrNil(this.Nl)) || (Util.isNullOrNil(this.mAppId)) || (Util.isNullOrNil(this.xOr)))
+    this.CSA = paramBundle.getStringExtra("key_transaction");
+    this.CSB = paramBundle.getStringExtra("group_id");
+    this.CSC = paramBundle.getStringExtra("chatroom_name");
+    this.njH = paramBundle.getStringExtra("chatroom_nickname");
+    this.CSD = paramBundle.getStringExtra("ext_msg");
+    if ((Util.isNullOrNil(this.eb)) || (Util.isNullOrNil(this.mAppId)) || (Util.isNullOrNil(this.CSB)))
     {
       Log.e("MicroMsg.CreateOrJoinChatroomUI", "Invalid args");
       finish();
       AppMethodBeat.o(41864);
       return;
     }
-    this.iLh = com.tencent.mm.ui.base.h.a(this, getBaseContext().getString(2131761360), true, null);
+    this.lBo = com.tencent.mm.ui.base.h.a(this, getBaseContext().getString(g.i.CpT), true, null);
     d locald;
     Object localObject;
-    if (this.Nl.equals("action_create"))
+    if (this.eb.equals("action_create"))
     {
-      Log.i("MicroMsg.CreateOrJoinChatroomUI", "createChatroom, appid = %s, groupId = %s, ChatRoomName = %s", new Object[] { this.mAppId, this.xOr, this.xOs });
+      Log.i("MicroMsg.CreateOrJoinChatroomUI", "createChatroom, appid = %s, groupId = %s, ChatRoomName = %s", new Object[] { this.mAppId, this.CSB, this.CSC });
       paramBundle = new d.a();
-      paramBundle.iLN = new ak();
-      paramBundle.iLO = new al();
+      paramBundle.lBU = new al();
+      paramBundle.lBV = new am();
       paramBundle.uri = "/cgi-bin/mmgame-bin/gamecreatechatroom";
       paramBundle.funcId = 1205;
-      locald = paramBundle.aXF();
-      localObject = (ak)locald.iLK.iLR;
-      ((ak)localObject).hik = this.mAppId;
-      ((ak)localObject).xKj = this.xOr;
-      if (this.xOs == null)
+      locald = paramBundle.bgN();
+      localObject = (al)d.b.b(locald.lBR);
+      ((al)localObject).jUi = this.mAppId;
+      ((al)localObject).COq = this.CSB;
+      if (this.CSC == null)
       {
         paramBundle = new byte[0];
-        ((ak)localObject).xKk = new b(paramBundle);
-        if (this.krY != null) {
+        ((al)localObject).COr = new b(paramBundle);
+        if (this.njH != null) {
           break label372;
         }
       }
       label372:
-      for (paramBundle = new byte[0];; paramBundle = this.krY.getBytes())
+      for (paramBundle = new byte[0];; paramBundle = this.njH.getBytes())
       {
-        ((ak)localObject).xKl = new b(paramBundle);
+        ((al)localObject).COs = new b(paramBundle);
         aa.a(locald, new aa.a()
         {
-          public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, d paramAnonymousd, com.tencent.mm.ak.q paramAnonymousq)
+          public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, d paramAnonymousd, com.tencent.mm.an.q paramAnonymousq)
           {
             AppMethodBeat.i(41862);
-            paramAnonymousd = (al)paramAnonymousd.iLL.iLR;
+            paramAnonymousd = (am)d.c.b(paramAnonymousd.lBS);
             if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
             {
               Log.e("MicroMsg.CreateOrJoinChatroomUI", "CGI return is not OK. (%d, %d)(%s)", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
               if (paramAnonymousInt1 == 4) {
-                CreateOrJoinChatroomUI.a(CreateOrJoinChatroomUI.this, paramAnonymousd.rBL);
+                CreateOrJoinChatroomUI.a(CreateOrJoinChatroomUI.this, paramAnonymousd.vht);
               }
               for (;;)
               {
@@ -194,7 +195,7 @@ public class CreateOrJoinChatroomUI
                 CreateOrJoinChatroomUI.a(CreateOrJoinChatroomUI.this, -1);
               }
             }
-            paramAnonymousString = paramAnonymousd.xKm;
+            paramAnonymousString = paramAnonymousd.COt;
             Log.i("MicroMsg.CreateOrJoinChatroomUI", "Create Url: %s", new Object[] { paramAnonymousString });
             CreateOrJoinChatroomUI.a(CreateOrJoinChatroomUI.this);
             CreateOrJoinChatroomUI.a(CreateOrJoinChatroomUI.this, paramAnonymousString);
@@ -204,40 +205,40 @@ public class CreateOrJoinChatroomUI
         });
         AppMethodBeat.o(41864);
         return;
-        paramBundle = this.xOs.getBytes();
+        paramBundle = this.CSC.getBytes();
         break;
       }
     }
-    if (this.Nl.equals("action_join"))
+    if (this.eb.equals("action_join"))
     {
       paramBundle = new d.a();
-      paramBundle.iLN = new az();
-      paramBundle.iLO = new ba();
+      paramBundle.lBU = new ba();
+      paramBundle.lBV = new bb();
       paramBundle.uri = "/cgi-bin/mmgame-bin/gamejoinchatroom";
       paramBundle.funcId = 1206;
-      locald = paramBundle.aXF();
-      localObject = (az)locald.iLK.iLR;
-      ((az)localObject).hik = this.mAppId;
-      ((az)localObject).xKj = this.xOr;
-      if (this.krY != null) {
+      locald = paramBundle.bgN();
+      localObject = (ba)d.b.b(locald.lBR);
+      ((ba)localObject).jUi = this.mAppId;
+      ((ba)localObject).COq = this.CSB;
+      if (this.njH != null) {
         break label513;
       }
     }
     label513:
-    for (paramBundle = new byte[0];; paramBundle = this.krY.getBytes())
+    for (paramBundle = new byte[0];; paramBundle = this.njH.getBytes())
     {
-      ((az)localObject).xKl = new b(paramBundle);
+      ((ba)localObject).COs = new b(paramBundle);
       aa.a(locald, new aa.a()
       {
-        public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, d paramAnonymousd, com.tencent.mm.ak.q paramAnonymousq)
+        public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, d paramAnonymousd, com.tencent.mm.an.q paramAnonymousq)
         {
           AppMethodBeat.i(41863);
-          paramAnonymousd = (ba)paramAnonymousd.iLL.iLR;
+          paramAnonymousd = (bb)d.c.b(paramAnonymousd.lBS);
           if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
           {
             Log.e("MicroMsg.CreateOrJoinChatroomUI", "CGI return is not OK. (%d, %d)(%s)", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
             if (paramAnonymousInt1 == 4) {
-              CreateOrJoinChatroomUI.a(CreateOrJoinChatroomUI.this, paramAnonymousd.rBL);
+              CreateOrJoinChatroomUI.a(CreateOrJoinChatroomUI.this, paramAnonymousd.vht);
             }
             for (;;)
             {
@@ -248,7 +249,7 @@ public class CreateOrJoinChatroomUI
               CreateOrJoinChatroomUI.a(CreateOrJoinChatroomUI.this, -1);
             }
           }
-          paramAnonymousString = paramAnonymousd.xKW;
+          paramAnonymousString = paramAnonymousd.CPd;
           Log.i("MicroMsg.CreateOrJoinChatroomUI", "Join Url: %s", new Object[] { paramAnonymousString });
           CreateOrJoinChatroomUI.a(CreateOrJoinChatroomUI.this);
           CreateOrJoinChatroomUI.a(CreateOrJoinChatroomUI.this, paramAnonymousString);
@@ -264,7 +265,7 @@ public class CreateOrJoinChatroomUI
   public void onDestroy()
   {
     AppMethodBeat.i(41865);
-    dWg();
+    ezo();
     super.onDestroy();
     AppMethodBeat.o(41865);
   }
@@ -277,7 +278,7 @@ public class CreateOrJoinChatroomUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.CreateOrJoinChatroomUI
  * JD-Core Version:    0.7.0.1
  */

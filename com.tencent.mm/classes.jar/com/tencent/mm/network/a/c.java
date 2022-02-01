@@ -8,18 +8,18 @@ import java.net.InetAddress;
 
 public final class c
 {
-  private InetAddress jGw;
+  private InetAddress mwZ;
   private int port;
   private int type;
   
   private c(InetAddress paramInetAddress, int paramInt1, int paramInt2)
   {
-    this.jGw = paramInetAddress;
+    this.mwZ = paramInetAddress;
     this.port = paramInt1;
     this.type = paramInt2;
   }
   
-  public static c RV(String paramString)
+  public static c Zx(String paramString)
   {
     AppMethodBeat.i(132966);
     if (paramString == null)
@@ -56,7 +56,7 @@ public final class c
     }
     for (;;)
     {
-      str = this.jGw.getHostAddress() + ":" + this.port + "(" + str + ")";
+      str = this.mwZ.getHostAddress() + ":" + this.port + "(" + str + ")";
       AppMethodBeat.o(132965);
       return str;
       if (this.type == 3) {
@@ -75,7 +75,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.network.a.c
  * JD-Core Version:    0.7.0.1
  */

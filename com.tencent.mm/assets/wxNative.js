@@ -11,6 +11,13 @@ if (typeof wx !== 'undefined') {
         _invokeMethod("openWCPayOverseaPaymentReceive", args);
       };
 
+      var _requestOfflineUserBindQuery = function (args) {
+        _invokeMethod("requestOfflineUserBindQuery", args);
+      };
+
+      var _private_onWebPageUrlExposed = function(args) {
+          _invokeMethod("private_onWebPageUrlExposed", args)
+      };
       var _handleWCPayOverseaWalletBuffer = function (args) {
         _invokeMethod("handleWCPayOverseaWalletBuffer", args);
       };
@@ -43,6 +50,17 @@ if (typeof wx !== 'undefined') {
         _invokeMethod("openWebViewUseFastLoad", args);
       };
 
+      var _sendRedCoverAppMsg = function (args) {
+        _invokeMethod("sendRedCoverAppMsg", args);
+      };
+
+      var _jumpRedPacketEnvelopeList = function (args) {
+        _invokeMethod("jumpRedPacketEnvelopeList", args);
+      };
+
+      var _jumpRedPacketEnvelopePreview = function (args) {
+        _invokeMethod("jumpRedPacketEnvelopePreview", args);
+      };
 
       function transWxmlToHtml(url) {
         if (typeof url !== 'string') {
@@ -102,10 +120,24 @@ if (typeof wx !== 'undefined') {
           _invokeMethod("openWCExDeviceList", args)
       }
 
+      var _checkStrangerContactListIsFriend = function(args) {
+          _invokeMethod("checkStrangerContactListIsFriend", args)
+      }
+
+      var _openChannelsPostPage = function(args) {
+          _invokeMethod("openChannelsPostPage", args)
+      }
+
+      var _openChannelsCreateContact = function(args) {
+          _invokeMethod("openChannelsCreateContact", args)
+      }
+
       /**** Add JsApi Here ****/
 
       var methodsList = {
         openWCPayOverseaPaymentReceive: _openWCPayOverseaPaymentReceive,
+        requestOfflineUserBindQuery: _requestOfflineUserBindQuery,
+        private_onWebPageUrlExposed: _private_onWebPageUrlExposed,
         handleWCPayOverseaWalletBuffer: _handleWCPayOverseaWalletBuffer,
         navigateToMiniProgram: _navigateToMiniProgram,
         shareFinderEndorsementToFriend : _shareFinderEndorsementToFriend,
@@ -120,8 +152,14 @@ if (typeof wx !== 'undefined') {
         openWebViewUseFastLoad : _openWebViewUseFastLoad,
         getRecentUsageList: _getRecentUsageList,
         operateRecentUsageList: _operateRecentUsageList,
-        openWCExDeviceList: _openWCExDeviceList
-
+        openWCExDeviceList: _openWCExDeviceList,
+        openChannelsPostPage: _openChannelsPostPage,
+        openChannelsCreateContact: _openChannelsCreateContact,
+        openWCExDeviceList: _openWCExDeviceList,
+        sendRedCoverAppMsg: _sendRedCoverAppMsg,
+        jumpRedPacketEnvelopeList: _jumpRedPacketEnvelopeList,
+        jumpRedPacketEnvelopePreview: _jumpRedPacketEnvelopePreview,
+        checkStrangerContactListIsFriend: _checkStrangerContactListIsFriend
       };
       /**** Add JsApiEvent Here ****/
 
@@ -150,4 +188,3 @@ if (typeof wx !== 'undefined') {
 }
 
 injectNativateRet
-

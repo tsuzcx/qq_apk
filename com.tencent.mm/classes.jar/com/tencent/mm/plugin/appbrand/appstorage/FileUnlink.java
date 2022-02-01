@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 
 public final class FileUnlink
 {
-  public static int Wg(String paramString)
+  public static int adU(String paramString)
   {
     AppMethodBeat.i(175574);
-    int i = unlink(s.k(paramString, true));
+    int i = unlink(u.n(paramString, true));
     AppMethodBeat.o(175574);
     return i;
   }

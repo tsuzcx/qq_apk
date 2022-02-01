@@ -8,26 +8,25 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.a.a;
 import com.tencent.mm.ui.widget.a.d;
 import com.tencent.mm.ui.widget.a.d.a;
-import junit.framework.Assert;
 
 public class AlertActivity
   extends AppCompatActivity
 {
-  private static d.a Kfg;
-  private DialogInterface.OnCancelListener CJj;
-  private boolean OwV = false;
-  private DialogInterface.OnDismissListener ebe;
+  private static d.a RfU;
+  private DialogInterface.OnCancelListener IOJ;
+  private boolean VPZ = false;
+  private DialogInterface.OnDismissListener fVb;
   
   public static void a(d.a parama)
   {
-    Kfg = parama;
+    RfU = parama;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -39,15 +38,14 @@ public class AlertActivity
     if (Build.VERSION.SDK_INT >= 21) {
       getWindow().setStatusBarColor(getResources().getColor(17170445));
     }
-    this.OwV = getIntent().getBooleanExtra("dialog_show_top", false);
-    Assert.assertNotNull(Kfg);
+    this.VPZ = getIntent().getBooleanExtra("dialog_show_top", false);
     Window localWindow;
-    if (Kfg != null)
+    if (RfU != null)
     {
-      Kfg.mContext = this;
-      this.ebe = Kfg.QNF.XZ;
-      this.CJj = Kfg.QNF.XY;
-      Kfg.a(new DialogInterface.OnDismissListener()
+      RfU.mContext = this;
+      this.fVb = RfU.Ymv.ft;
+      this.IOJ = RfU.Ymv.fs;
+      RfU.a(new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
@@ -59,7 +57,7 @@ public class AlertActivity
           AppMethodBeat.o(159081);
         }
       });
-      Kfg.f(new DialogInterface.OnCancelListener()
+      RfU.f(new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
@@ -71,14 +69,14 @@ public class AlertActivity
           AppMethodBeat.o(159082);
         }
       });
-      paramBundle = Kfg.hbn();
-      if (this.OwV)
+      paramBundle = RfU.icu();
+      if (this.VPZ)
       {
         localWindow = paramBundle.getWindow();
         if (localWindow != null)
         {
           if (Build.VERSION.SDK_INT < 26) {
-            break label223;
+            break label217;
           }
           localWindow.setType(2038);
         }
@@ -86,16 +84,16 @@ public class AlertActivity
     }
     for (;;)
     {
-      as.d("MicroMsg.AlertActivity", "show top window not null!!", new Object[0]);
+      av.d("MicroMsg.AlertActivity", "show top window not null!!", new Object[0]);
       paramBundle.show();
       if (!paramBundle.isShowing())
       {
-        as.e("MicroMsg.AlertActivity", "show dialog FAILED, finish AlertActivity!", new Object[0]);
+        av.e("MicroMsg.AlertActivity", "show dialog FAILED, finish AlertActivity!", new Object[0]);
         finish();
       }
       AppMethodBeat.o(159083);
       return;
-      label223:
+      label217:
       localWindow.setType(2002);
     }
   }
@@ -104,7 +102,7 @@ public class AlertActivity
   {
     AppMethodBeat.i(159085);
     super.onDestroy();
-    Kfg = null;
+    RfU = null;
     AppMethodBeat.o(159085);
   }
   
@@ -116,6 +114,18 @@ public class AlertActivity
     AppMethodBeat.o(159084);
   }
   
+  public void onResume()
+  {
+    AppMethodBeat.i(252005);
+    super.onResume();
+    if (RfU == null)
+    {
+      av.e("MicroMsg.AlertActivity", "AlertActivity onResume() with null mBuilder, exiting this transparent proxy activity...", new Object[0]);
+      finish();
+    }
+    AppMethodBeat.o(252005);
+  }
+  
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
@@ -124,7 +134,7 @@ public class AlertActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.AlertActivity
  * JD-Core Version:    0.7.0.1
  */

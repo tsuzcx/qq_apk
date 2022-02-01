@@ -3,57 +3,41 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class sg
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String icon;
-  public String title;
-  public String url;
+  public String content;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32152);
+    AppMethodBeat.i(247743);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.url != null) {
-        paramVarArgs.e(1, this.url);
+      if (this.content != null) {
+        paramVarArgs.f(1, this.content);
       }
-      if (this.title != null) {
-        paramVarArgs.e(2, this.title);
-      }
-      if (this.icon != null) {
-        paramVarArgs.e(3, this.icon);
-      }
-      AppMethodBeat.o(32152);
+      AppMethodBeat.o(247743);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.url == null) {
-        break label343;
+      if (this.content == null) {
+        break label213;
       }
     }
-    label343:
-    for (int i = g.a.a.b.b.a.f(1, this.url) + 0;; i = 0)
+    label213:
+    for (paramInt = g.a.a.b.b.a.g(1, this.content) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.title != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.title);
-      }
-      i = paramInt;
-      if (this.icon != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.icon);
-      }
-      AppMethodBeat.o(32152);
-      return i;
+      AppMethodBeat.o(247743);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(32152);
+        AppMethodBeat.o(247743);
         return 0;
       }
       if (paramInt == 3)
@@ -63,22 +47,14 @@ public final class sg
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(32152);
+          AppMethodBeat.o(247743);
           return -1;
-        case 1: 
-          localsg.url = locala.UbS.readString();
-          AppMethodBeat.o(32152);
-          return 0;
-        case 2: 
-          localsg.title = locala.UbS.readString();
-          AppMethodBeat.o(32152);
-          return 0;
         }
-        localsg.icon = locala.UbS.readString();
-        AppMethodBeat.o(32152);
+        localsg.content = locala.abFh.readString();
+        AppMethodBeat.o(247743);
         return 0;
       }
-      AppMethodBeat.o(32152);
+      AppMethodBeat.o(247743);
       return -1;
     }
   }

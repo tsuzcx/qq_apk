@@ -12,14 +12,14 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class ChattingImageBGView
   extends ImageView
 {
-  private int ovI;
-  private Bitmap xqp;
+  private int ryu;
+  private Bitmap tJN;
   
   public ChattingImageBGView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(34559);
-    this.ovI = 0;
+    this.ryu = 0;
     setScaleType(ImageView.ScaleType.CENTER_CROP);
     AppMethodBeat.o(34559);
   }
@@ -28,12 +28,12 @@ public class ChattingImageBGView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(34558);
-    this.ovI = 0;
+    this.ryu = 0;
     setScaleType(ImageView.ScaleType.CENTER_CROP);
     AppMethodBeat.o(34558);
   }
   
-  private void gNQ()
+  private void hMZ()
   {
     AppMethodBeat.i(34562);
     post(new Runnable()
@@ -75,11 +75,11 @@ public class ChattingImageBGView
   {
     AppMethodBeat.i(34560);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((paramBoolean) && (this.ovI != paramInt3 - paramInt1))
+    if ((paramBoolean) && (this.ryu != paramInt3 - paramInt1))
     {
-      this.ovI = (paramInt3 - paramInt1);
+      this.ryu = (paramInt3 - paramInt1);
       Log.d("MicroMsg.ChattingImageBGView", "on layout changed, %d, %d, %d, %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-      gNQ();
+      hMZ();
     }
     AppMethodBeat.o(34560);
   }
@@ -87,15 +87,15 @@ public class ChattingImageBGView
   public void setImageBitmap(Bitmap paramBitmap)
   {
     AppMethodBeat.i(34561);
-    this.xqp = paramBitmap;
+    this.tJN = paramBitmap;
     super.setImageBitmap(paramBitmap);
-    gNQ();
+    hMZ();
     AppMethodBeat.o(34561);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ChattingImageBGView
  * JD-Core Version:    0.7.0.1
  */

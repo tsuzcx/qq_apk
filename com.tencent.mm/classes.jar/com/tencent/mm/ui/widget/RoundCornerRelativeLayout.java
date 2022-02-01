@@ -9,150 +9,150 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.a.a;
+import com.tencent.mm.ah.a.m;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/widget/RoundCornerRelativeLayout;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "cornerRadius", "Lcom/tencent/mm/ui/widget/RoundCornerRelativeLayout$CornerRadius;", "path", "Landroid/graphics/Path;", "draw", "", "canvas", "Landroid/graphics/Canvas;", "init", "onLayout", "changed", "", "left", "top", "right", "bottom", "resetPath", "setRadius", "radius", "", "topLeft", "topRight", "bottomLeft", "bottomRight", "CornerRadius", "libmmui_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/widget/RoundCornerRelativeLayout;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "cornerRadius", "Lcom/tencent/mm/ui/widget/RoundCornerRelativeLayout$CornerRadius;", "path", "Landroid/graphics/Path;", "draw", "", "canvas", "Landroid/graphics/Canvas;", "init", "onLayout", "changed", "", "left", "top", "right", "bottom", "resetPath", "setRadius", "radius", "", "topLeft", "topRight", "bottomLeft", "bottomRight", "CornerRadius", "libmmui_release"})
 public final class RoundCornerRelativeLayout
   extends RelativeLayout
 {
-  private a QEU;
-  private Path lR;
+  private a Ydv;
+  private Path aBZ;
   
   public RoundCornerRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(204891);
-    this.lR = new Path();
-    c(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.o(204891);
+    AppMethodBeat.i(224652);
+    this.aBZ = new Path();
+    b(paramContext, paramAttributeSet, 0);
+    AppMethodBeat.o(224652);
   }
   
   public RoundCornerRelativeLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(204892);
-    this.lR = new Path();
-    c(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.o(204892);
+    AppMethodBeat.i(224656);
+    this.aBZ = new Path();
+    b(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.o(224656);
   }
   
-  private final void c(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  private final void b(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    AppMethodBeat.i(204885);
-    float f = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.RoundedCornerFrameLayout, paramInt, 0).getDimension(0, 0.0F);
-    this.QEU = new a(f, f, f, f);
+    AppMethodBeat.i(224625);
+    float f = paramContext.obtainStyledAttributes(paramAttributeSet, a.m.RoundedCornerFrameLayout, paramInt, 0).getDimension(a.m.RoundedCornerFrameLayout_cornerRadius, 0.0F);
+    this.Ydv = new a(f, f, f, f);
     setWillNotDraw(false);
-    AppMethodBeat.o(204885);
+    AppMethodBeat.o(224625);
   }
   
-  private final void gZg()
+  private final void hZW()
   {
-    AppMethodBeat.i(204890);
+    AppMethodBeat.i(224649);
     if ((getWidth() > 0) && (getHeight() > 0))
     {
-      Object localObject = this.QEU;
+      Object localObject = this.Ydv;
       if (localObject != null)
       {
-        this.lR.reset();
+        this.aBZ.reset();
         RectF localRectF = new RectF(0.0F, 0.0F, getWidth(), getHeight());
-        Path localPath = this.lR;
-        float f1 = ((a)localObject).QEV;
-        float f2 = ((a)localObject).QEV;
-        float f3 = ((a)localObject).QEW;
-        float f4 = ((a)localObject).QEW;
-        float f5 = ((a)localObject).QEY;
-        float f6 = ((a)localObject).QEY;
-        float f7 = ((a)localObject).QEX;
-        float f8 = ((a)localObject).QEX;
+        Path localPath = this.aBZ;
+        float f1 = ((a)localObject).xET;
+        float f2 = ((a)localObject).xET;
+        float f3 = ((a)localObject).xEU;
+        float f4 = ((a)localObject).xEU;
+        float f5 = ((a)localObject).xEW;
+        float f6 = ((a)localObject).xEW;
+        float f7 = ((a)localObject).xEV;
+        float f8 = ((a)localObject).xEV;
         localObject = Path.Direction.CCW;
         localPath.addRoundRect(localRectF, new float[] { f1, f2, f3, f4, f5, f6, f7, f8 }, (Path.Direction)localObject);
-        this.lR.close();
-        AppMethodBeat.o(204890);
+        this.aBZ.close();
+        AppMethodBeat.o(224649);
         return;
       }
     }
-    AppMethodBeat.o(204890);
+    AppMethodBeat.o(224649);
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(204889);
-    p.h(paramCanvas, "canvas");
-    if (this.lR.isEmpty()) {
-      gZg();
+    AppMethodBeat.i(224637);
+    p.k(paramCanvas, "canvas");
+    if (this.aBZ.isEmpty()) {
+      hZW();
     }
     int i = paramCanvas.save();
-    paramCanvas.clipPath(this.lR);
+    paramCanvas.clipPath(this.aBZ);
     super.draw(paramCanvas);
     paramCanvas.restoreToCount(i);
-    AppMethodBeat.o(204889);
+    AppMethodBeat.o(224637);
   }
   
   protected final void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(204888);
+    AppMethodBeat.i(224634);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    gZg();
-    AppMethodBeat.o(204888);
-  }
-  
-  public final void s(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    AppMethodBeat.i(204887);
-    a locala = this.QEU;
-    if (locala == null) {
-      p.hyc();
-    }
-    locala.QEV = paramFloat1;
-    locala = this.QEU;
-    if (locala == null) {
-      p.hyc();
-    }
-    locala.QEW = paramFloat2;
-    locala = this.QEU;
-    if (locala == null) {
-      p.hyc();
-    }
-    locala.QEX = paramFloat3;
-    locala = this.QEU;
-    if (locala == null) {
-      p.hyc();
-    }
-    locala.QEY = paramFloat4;
-    gZg();
-    postInvalidate();
-    AppMethodBeat.o(204887);
+    hZW();
+    AppMethodBeat.o(224634);
   }
   
   public final void setRadius(float paramFloat)
   {
-    AppMethodBeat.i(204886);
-    s(paramFloat, paramFloat, paramFloat, paramFloat);
-    AppMethodBeat.o(204886);
+    AppMethodBeat.i(224627);
+    v(paramFloat, paramFloat, paramFloat, paramFloat);
+    AppMethodBeat.o(224627);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/widget/RoundCornerRelativeLayout$CornerRadius;", "", "topLeft", "", "topRight", "bottomLeft", "bottomRight", "(FFFF)V", "getBottomLeft", "()F", "setBottomLeft", "(F)V", "getBottomRight", "setBottomRight", "getTopLeft", "setTopLeft", "getTopRight", "setTopRight", "libmmui_release"})
+  public final void v(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    AppMethodBeat.i(224633);
+    a locala = this.Ydv;
+    if (locala == null) {
+      p.iCn();
+    }
+    locala.xET = paramFloat1;
+    locala = this.Ydv;
+    if (locala == null) {
+      p.iCn();
+    }
+    locala.xEU = paramFloat2;
+    locala = this.Ydv;
+    if (locala == null) {
+      p.iCn();
+    }
+    locala.xEV = paramFloat3;
+    locala = this.Ydv;
+    if (locala == null) {
+      p.iCn();
+    }
+    locala.xEW = paramFloat4;
+    hZW();
+    postInvalidate();
+    AppMethodBeat.o(224633);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/widget/RoundCornerRelativeLayout$CornerRadius;", "", "topLeft", "", "topRight", "bottomLeft", "bottomRight", "(FFFF)V", "getBottomLeft", "()F", "setBottomLeft", "(F)V", "getBottomRight", "setBottomRight", "getTopLeft", "setTopLeft", "getTopRight", "setTopRight", "libmmui_release"})
   static final class a
   {
-    float QEV;
-    float QEW;
-    float QEX;
-    float QEY;
+    float xET;
+    float xEU;
+    float xEV;
+    float xEW;
     
     public a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
     {
-      this.QEV = paramFloat1;
-      this.QEW = paramFloat2;
-      this.QEX = paramFloat3;
-      this.QEY = paramFloat4;
+      this.xET = paramFloat1;
+      this.xEU = paramFloat2;
+      this.xEV = paramFloat3;
+      this.xEW = paramFloat4;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.RoundCornerRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

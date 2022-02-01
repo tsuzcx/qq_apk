@@ -1,6 +1,6 @@
 package com.tencent.mm.websocket.libwcwss;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +32,7 @@ public class WcwssNative
   
   private native long initBindingWcwss(long paramLong1, long paramLong2, long paramLong3);
   
-  private native int initCallBack(long paramLong, IWcWssWebSocketListener paramIWcWssWebSocketListener, WcwssNative.IWcWssReportListener paramIWcWssReportListener);
+  private native int initCallBack(long paramLong, IWcWssWebSocketListener paramIWcWssWebSocketListener, IWcWssReportListener paramIWcWssReportListener);
   
   private native void initConfigWcwss(String paramString, long paramLong, HashMap<String, String> paramHashMap);
   
@@ -45,11 +45,11 @@ public class WcwssNative
   @Keep
   public void destoryWcwss()
   {
-    AppMethodBeat.i(224180);
+    AppMethodBeat.i(210519);
     new StringBuilder("WcwssNative MMWcWss destoryWcwss mNativeInst:").append(this.mNativeInst);
     if (this.mNativeInst <= 0L)
     {
-      AppMethodBeat.o(224180);
+      AppMethodBeat.o(210519);
       return;
     }
     if (this.initCallBackFlag)
@@ -58,53 +58,53 @@ public class WcwssNative
       destoryBindingWcwss(this.mNativeInst);
       this.mNativeInst = -1L;
     }
-    AppMethodBeat.o(224180);
+    AppMethodBeat.o(210519);
   }
   
   @Keep
   public void doOnRunningState()
   {
-    AppMethodBeat.i(224185);
+    AppMethodBeat.i(210528);
     doOnRunningStateWcwss(this.mStrNativeInst, this.mNativeInst);
-    AppMethodBeat.o(224185);
+    AppMethodBeat.o(210528);
   }
   
   @Keep
   public void initConfig(HashMap<String, String> paramHashMap)
   {
-    AppMethodBeat.i(224182);
+    AppMethodBeat.i(210523);
     initConfigWcwss(this.mStrNativeInst, this.mNativeInst, paramHashMap);
-    AppMethodBeat.o(224182);
+    AppMethodBeat.o(210523);
   }
   
   @Keep
   public void initConfigWhiteBlack(ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2)
   {
-    AppMethodBeat.i(224183);
+    AppMethodBeat.i(210525);
     initConfigWhiteBlackList(this.mStrNativeInst, this.mNativeInst, paramArrayList1, paramArrayList2);
-    AppMethodBeat.o(224183);
+    AppMethodBeat.o(210525);
   }
   
   @Keep
   public String initWcwss(long paramLong1, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(224179);
+    AppMethodBeat.i(210518);
     this.mNativeInst = initBindingWcwss(paramLong1, paramLong2, paramLong3);
     this.mStrNativeInst = String.valueOf(this.mNativeInst);
     new StringBuilder("WcwssNative MMWcWss initWcwss str_contextId:").append(this.mStrNativeInst);
     String str = this.mStrNativeInst;
-    AppMethodBeat.o(224179);
+    AppMethodBeat.o(210518);
     return str;
   }
   
   @Keep
-  public int setCallback(IWcWssWebSocketListener paramIWcWssWebSocketListener, WcwssNative.IWcWssReportListener paramIWcWssReportListener)
+  public int setCallback(IWcWssWebSocketListener paramIWcWssWebSocketListener, IWcWssReportListener paramIWcWssReportListener)
   {
-    AppMethodBeat.i(224181);
+    AppMethodBeat.i(210521);
     if (this.mNativeInst <= 0L)
     {
       i = NEW_WCWSS_ERROR;
-      AppMethodBeat.o(224181);
+      AppMethodBeat.o(210521);
       return i;
     }
     if (!this.initCallBackFlag)
@@ -113,15 +113,15 @@ public class WcwssNative
       if (i == 0)
       {
         this.initCallBackFlag = true;
-        AppMethodBeat.o(224181);
+        AppMethodBeat.o(210521);
         return i;
       }
       i = INIT_ERROR;
-      AppMethodBeat.o(224181);
+      AppMethodBeat.o(210521);
       return i;
     }
     int i = REPEAT_INIT_ERROR;
-    AppMethodBeat.o(224181);
+    AppMethodBeat.o(210521);
     return i;
   }
   
@@ -135,9 +135,22 @@ public class WcwssNative
   @Keep
   public void updateInterface(long paramLong, int paramInt)
   {
-    AppMethodBeat.i(224184);
+    AppMethodBeat.i(210527);
     updateNativeInterface(this.mStrNativeInst, this.mNativeInst, paramLong, paramInt);
-    AppMethodBeat.o(224184);
+    AppMethodBeat.o(210527);
+  }
+  
+  @Keep
+  public static abstract interface IWcWssReportListener
+  {
+    @Keep
+    public abstract int getNetworkType();
+    
+    @Keep
+    public abstract void onIdKeyStat(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3);
+    
+    @Keep
+    public abstract void onKvStat(int paramInt, String paramString);
   }
   
   @Keep
@@ -152,7 +165,7 @@ public class WcwssNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.websocket.libwcwss.WcwssNative
  * JD-Core Version:    0.7.0.1
  */

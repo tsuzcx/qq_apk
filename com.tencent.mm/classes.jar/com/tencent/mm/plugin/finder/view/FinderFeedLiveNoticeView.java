@@ -1,9 +1,7 @@
 package com.tencent.mm.plugin.finder.view;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,115 +9,121 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
+import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.finder.cgi.ar;
-import com.tencent.mm.plugin.finder.cgi.ax;
-import com.tencent.mm.plugin.finder.feed.model.f;
-import com.tencent.mm.plugin.finder.report.live.m;
-import com.tencent.mm.plugin.finder.report.live.s.az;
-import com.tencent.mm.plugin.finder.utils.y;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderLiveNoticePreLoadUIC;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
-import com.tencent.mm.protocal.protobuf.awt;
-import com.tencent.mm.protocal.protobuf.bbn;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.finder.b.c;
+import com.tencent.mm.plugin.finder.b.e;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.cgi.au;
+import com.tencent.mm.plugin.finder.feed.model.k;
+import com.tencent.mm.plugin.finder.live.component.y;
+import com.tencent.mm.plugin.finder.live.report.m;
+import com.tencent.mm.plugin.finder.live.report.s.bn;
+import com.tencent.mm.protocal.protobuf.bbh;
+import com.tencent.mm.protocal.protobuf.bid;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.ui.aa;
+import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.component.g.a;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderFeedLiveNoticeView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "root", "Landroid/view/View;", "upDateFinderLiveNotice", "", "noticeInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;", "username", "isHardDarkMode", "", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderFeedLiveNoticeView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "root", "Landroid/view/View;", "upDateFinderLiveNotice", "", "noticeInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;", "username", "isHardDarkMode", "", "plugin-finder_release"})
 public final class FinderFeedLiveNoticeView
   extends LinearLayout
 {
   private final String TAG;
-  private View gvQ;
+  private View jac;
   
   public FinderFeedLiveNoticeView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(254819);
+    AppMethodBeat.i(222850);
     this.TAG = "Finder.FinderFeedLiveNoticeView";
     setOrientation(0);
-    paramContext = aa.jQ(getContext()).inflate(2131494293, (ViewGroup)this);
-    p.g(paramContext, "MMLayoutInflater.getInfl…live_notice_layout, this)");
-    this.gvQ = paramContext;
-    AppMethodBeat.o(254819);
+    paramContext = ad.kS(getContext()).inflate(b.g.finder_feed_live_notice_layout, (ViewGroup)this);
+    p.j(paramContext, "MMLayoutInflater.getInfl…live_notice_layout, this)");
+    this.jac = paramContext;
+    AppMethodBeat.o(222850);
   }
   
   public FinderFeedLiveNoticeView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(254820);
+    AppMethodBeat.i(222853);
     this.TAG = "Finder.FinderFeedLiveNoticeView";
     setOrientation(0);
-    paramContext = aa.jQ(getContext()).inflate(2131494293, (ViewGroup)this);
-    p.g(paramContext, "MMLayoutInflater.getInfl…live_notice_layout, this)");
-    this.gvQ = paramContext;
-    AppMethodBeat.o(254820);
+    paramContext = ad.kS(getContext()).inflate(b.g.finder_feed_live_notice_layout, (ViewGroup)this);
+    p.j(paramContext, "MMLayoutInflater.getInfl…live_notice_layout, this)");
+    this.jac = paramContext;
+    AppMethodBeat.o(222853);
   }
   
-  public final void a(final Context paramContext, final awt paramawt, final String paramString, final boolean paramBoolean)
+  public final void a(final Context paramContext, final bbh parambbh, final String paramString, final boolean paramBoolean)
   {
-    AppMethodBeat.i(254817);
-    p.h(paramContext, "context");
-    p.h(paramawt, "noticeInfo");
-    p.h(paramString, "username");
-    final TextView localTextView = (TextView)this.gvQ.findViewById(2131300840);
-    View localView = this.gvQ.findViewById(2131300837);
-    WeImageView localWeImageView = (WeImageView)this.gvQ.findViewById(2131300838);
-    p.g(localTextView, "noticeTips");
+    AppMethodBeat.i(222842);
+    p.k(paramContext, "context");
+    p.k(parambbh, "noticeInfo");
+    p.k(paramString, "username");
+    final TextView localTextView = (TextView)this.jac.findViewById(b.f.finder_feed_notice_time_tips);
+    View localView = this.jac.findViewById(b.f.finder_feed_notice_divider);
+    WeImageView localWeImageView = (WeImageView)this.jac.findViewById(b.f.finder_feed_notice_icon);
+    p.j(localTextView, "noticeTips");
     Resources localResources = paramContext.getResources();
-    y localy = y.vXH;
-    localTextView.setText((CharSequence)localResources.getString(2131759736, new Object[] { y.Gi(paramawt.dvv * 1000L) }));
+    int i = b.j.finder_feed_live_notice_tips;
+    com.tencent.mm.plugin.finder.utils.aj localaj = com.tencent.mm.plugin.finder.utils.aj.AGc;
+    localTextView.setText((CharSequence)localResources.getString(i, new Object[] { com.tencent.mm.plugin.finder.utils.aj.Nj(parambbh.fod * 1000L) }));
     if (paramBoolean)
     {
-      localTextView.setTextColor(paramContext.getResources().getColor(2131100620));
+      localTextView.setTextColor(paramContext.getResources().getColor(b.c.hot_tab_BW_100_Alpha_0_8));
       localTextView.setTypeface(null, 0);
-      localView.setBackgroundColor(paramContext.getResources().getColor(2131100623));
-      localWeImageView.setIconColor(paramContext.getResources().getColor(2131100620));
-      findViewById(2131300839).setBackgroundResource(2131232528);
-      localTextView = (TextView)this.gvQ.findViewById(2131300836);
-      if (paramawt.status != 1) {
-        break label358;
+      localView.setBackgroundColor(paramContext.getResources().getColor(b.c.hot_tab_O_1_alpha_white));
+      localWeImageView.setIconColor(paramContext.getResources().getColor(b.c.hot_tab_BW_100_Alpha_0_8));
+      findViewById(b.f.finder_feed_notice_layout).setBackgroundResource(b.e.finder_feed_full_item_shape_bg);
+      localTextView = (TextView)this.jac.findViewById(b.f.finder_feed_notice_btn);
+      if (parambbh.status != 1) {
+        break label380;
       }
       setVisibility(0);
-      p.g(localTextView, "finderLiveBookBtn");
-      localTextView.setText((CharSequence)paramContext.getResources().getString(2131759643));
+      p.j(localTextView, "finderLiveBookBtn");
+      localTextView.setText((CharSequence)paramContext.getResources().getString(b.j.finder_create_live_notice_btn_book));
       if (!paramBoolean) {
-        break label341;
+        break label362;
       }
-      localTextView.setTextColor(paramContext.getResources().getColor(2131100631));
+      localTextView.setTextColor(paramContext.getResources().getColor(b.c.hot_tab_stream_link_color));
     }
     for (;;)
     {
       if (getVisibility() != 0) {
-        break label444;
+        break label469;
       }
-      localTextView.setOnClickListener((View.OnClickListener)new a(this, paramawt, localTextView, paramContext, paramBoolean, paramString));
-      AppMethodBeat.o(254817);
+      localTextView.setOnClickListener((View.OnClickListener)new a(this, parambbh, localTextView, paramContext, paramBoolean, paramString));
+      AppMethodBeat.o(222842);
       return;
-      localWeImageView.setIconColor(paramContext.getResources().getColor(2131099665));
-      localTextView.setTextColor(paramContext.getResources().getColor(2131099746));
-      localView.setBackgroundColor(paramContext.getResources().getColor(2131099657));
-      findViewById(2131300839).setBackgroundResource(2131232530);
+      localWeImageView.setIconColor(paramContext.getResources().getColor(b.c.BW_0_Alpha_0_5));
+      localTextView.setTextColor(paramContext.getResources().getColor(b.c.FG_0));
+      localView.setBackgroundColor(paramContext.getResources().getColor(b.c.BW_0_Alpha_0_1));
+      findViewById(b.f.finder_feed_notice_layout).setBackgroundResource(b.e.finder_feed_item_live_notice_bg);
       break;
-      label341:
-      localTextView.setTextColor(paramContext.getResources().getColor(2131099787));
+      label362:
+      localTextView.setTextColor(paramContext.getResources().getColor(b.c.Link_80));
       continue;
-      label358:
-      if (paramawt.status == 0) {
+      label380:
+      if (parambbh.status == 0) {
         if (getVisibility() == 0)
         {
-          p.g(localTextView, "finderLiveBookBtn");
-          localTextView.setText((CharSequence)paramContext.getResources().getString(2131759644));
+          p.j(localTextView, "finderLiveBookBtn");
+          localTextView.setText((CharSequence)paramContext.getResources().getString(b.j.finder_create_live_notice_btn_book_cancel));
           if (paramBoolean) {
-            localTextView.setTextColor(paramContext.getResources().getColor(2131100617));
+            localTextView.setTextColor(paramContext.getResources().getColor(b.c.hot_tab_BW_100_Alpha_0_5));
           } else {
-            localTextView.setTextColor(paramContext.getResources().getColor(2131099748));
+            localTextView.setTextColor(paramContext.getResources().getColor(b.c.FG_1));
           }
         }
         else
@@ -128,94 +132,99 @@ public final class FinderFeedLiveNoticeView
         }
       }
     }
-    label444:
+    label469:
     localTextView.setOnClickListener(null);
-    AppMethodBeat.o(254817);
+    AppMethodBeat.o(222842);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class a
     implements View.OnClickListener
   {
-    a(FinderFeedLiveNoticeView paramFinderFeedLiveNoticeView, awt paramawt, TextView paramTextView, Context paramContext, boolean paramBoolean, String paramString) {}
+    a(FinderFeedLiveNoticeView paramFinderFeedLiveNoticeView, bbh parambbh, TextView paramTextView, Context paramContext, boolean paramBoolean, String paramString) {}
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(254816);
+      AppMethodBeat.i(274312);
       Object localObject1 = new b();
-      ((b)localObject1).bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderFeedLiveNoticeView$upDateFinderLiveNotice$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject1).axR());
+      ((b)localObject1).bn(paramView);
+      a.c("com/tencent/mm/plugin/finder/view/FinderFeedLiveNoticeView$upDateFinderLiveNotice$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject1).aFi());
       int i;
-      if (paramawt.status == 1)
+      if (parambbh.status == 1)
       {
-        paramawt.status = 0;
-        paramView = s.az.vsT;
+        parambbh.status = 0;
+        paramView = s.bn.yMZ;
         i = 1;
-        if (paramawt.status != 1) {
-          break label235;
+        if (parambbh.status != 1) {
+          break label238;
         }
-        this.wmC.setVisibility(0);
+        this.AXF.setVisibility(0);
         localObject1 = localTextView;
-        p.g(localObject1, "finderLiveBookBtn");
-        ((TextView)localObject1).setText((CharSequence)paramContext.getResources().getString(2131759643));
+        p.j(localObject1, "finderLiveBookBtn");
+        ((TextView)localObject1).setText((CharSequence)paramContext.getResources().getString(b.j.finder_create_live_notice_btn_book));
         if (!paramBoolean) {
-          break label213;
+          break label215;
         }
-        localTextView.setTextColor(paramContext.getResources().getColor(2131100631));
+        localTextView.setTextColor(paramContext.getResources().getColor(b.c.hot_tab_stream_link_color));
       }
-      Object localObject3;
       for (;;)
       {
         localObject1 = paramString;
-        localObject2 = paramawt.dDJ;
+        localObject2 = parambbh.fwt;
         if (localObject2 == null) {
-          p.hyc();
+          p.iCn();
         }
-        p.g(localObject2, "noticeInfo.noticeId!!");
-        localObject3 = com.tencent.mm.ui.component.a.PRN;
+        p.j(localObject2, "noticeInfo.noticeId!!");
+        localObject3 = com.tencent.mm.ui.component.g.Xox;
         localObject3 = paramContext;
         if (localObject3 != null) {
-          break label324;
+          break label330;
         }
         paramView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-        AppMethodBeat.o(254816);
+        AppMethodBeat.o(274312);
         throw paramView;
-        paramawt.status = 1;
-        paramView = s.az.vsU;
+        parambbh.status = 1;
+        paramView = s.bn.yNa;
         i = 2;
         break;
-        label213:
-        localTextView.setTextColor(paramContext.getResources().getColor(2131099787));
+        label215:
+        localTextView.setTextColor(paramContext.getResources().getColor(b.c.Link_80));
         continue;
-        label235:
-        this.wmC.setVisibility(0);
+        label238:
+        this.AXF.setVisibility(0);
         localObject1 = localTextView;
-        p.g(localObject1, "finderLiveBookBtn");
-        ((TextView)localObject1).setText((CharSequence)paramContext.getResources().getString(2131759644));
+        p.j(localObject1, "finderLiveBookBtn");
+        ((TextView)localObject1).setText((CharSequence)paramContext.getResources().getString(b.j.finder_create_live_notice_btn_book_cancel));
         if (paramBoolean) {
-          localTextView.setTextColor(paramContext.getResources().getColor(2131100617));
+          localTextView.setTextColor(paramContext.getResources().getColor(b.c.hot_tab_BW_100_Alpha_0_5));
         } else {
-          localTextView.setTextColor(paramContext.getResources().getColor(2131099748));
+          localTextView.setTextColor(paramContext.getResources().getColor(b.c.FG_1));
         }
       }
-      label324:
-      localObject1 = new ar((String)localObject1, (String)localObject2, i, ((FinderReporterUIC)com.tencent.mm.ui.component.a.b((AppCompatActivity)localObject3).get(FinderReporterUIC.class)).dIx());
-      g.azz().b((q)localObject1);
-      Object localObject2 = m.vli;
-      localObject2 = paramString;
-      localObject1 = ((ax)localObject1).ttO;
+      label330:
+      localObject1 = new au((String)localObject1, (String)localObject2, i, ((com.tencent.mm.plugin.finder.viewmodel.component.aj)com.tencent.mm.ui.component.g.b((AppCompatActivity)localObject3).i(com.tencent.mm.plugin.finder.viewmodel.component.aj.class)).ekY());
+      h.aGY().b((q)localObject1);
+      Object localObject2 = m.yCt;
+      Object localObject3 = paramString;
+      localObject1 = ((com.tencent.mm.plugin.findersdk.b.g)localObject1).xbu;
       if (localObject1 != null) {}
-      for (localObject1 = Integer.valueOf(((bbn)localObject1).tCE);; localObject1 = null)
+      for (localObject1 = Integer.valueOf(((bid)localObject1).xkX);; localObject1 = null)
       {
-        m.a(paramView, (String)localObject2, 0L, String.valueOf(localObject1));
-        paramView = com.tencent.mm.ui.component.a.PRN;
-        paramView = ((FinderLiveNoticePreLoadUIC)com.tencent.mm.ui.component.a.b((AppCompatActivity)paramContext).get(FinderLiveNoticePreLoadUIC.class)).wyi;
+        String str = String.valueOf(localObject1);
+        localObject2 = parambbh.SNb;
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = "";
+        }
+        m.a(paramView, (String)localObject3, 0L, str, null, null, null, null, (String)localObject1, 480);
+        paramView = com.tencent.mm.ui.component.g.Xox;
+        paramView = ((y)com.tencent.mm.ui.component.g.b((AppCompatActivity)paramContext).i(y.class)).yci;
         localObject1 = paramString;
-        p.h(localObject1, "userName");
-        paramView.bkj().removeMessages(paramView.tWk);
-        paramView.bkj().sendMessage(paramView.bkj().obtainMessage(paramView.tWk, localObject1));
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/FinderFeedLiveNoticeView$upDateFinderLiveNotice$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(254816);
+        p.k(localObject1, "userName");
+        paramView.btS().removeMessages(paramView.xFY);
+        paramView.btS().sendMessage(paramView.btS().obtainMessage(paramView.xFY, localObject1));
+        a.a(this, "com/tencent/mm/plugin/finder/view/FinderFeedLiveNoticeView$upDateFinderLiveNotice$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(274312);
         return;
       }
     }

@@ -1,113 +1,167 @@
 package com.tencent.mm.plugin.byp.a;
 
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.ck;
+import com.tencent.mm.modelmulti.q.c;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.aa;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.protocal.protobuf.cp;
-import com.tencent.mm.protocal.protobuf.de;
-import com.tencent.mm.protocal.protobuf.ss;
+import com.tencent.mm.plugin.messenger.foundation.a.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.ae;
+import com.tencent.mm.plugin.messenger.foundation.a.m;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.messenger.foundation.a.v;
+import com.tencent.mm.plugin.zero.c;
+import com.tencent.mm.protocal.protobuf.co;
+import com.tencent.mm.protocal.protobuf.db;
+import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.sl;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Queue;
 
 public abstract class a
   implements b
 {
-  public final void O(LinkedList<ss> paramLinkedList)
+  private c sWt = new c();
+  private q.c sWu = new q.c()
   {
-    Log.i("BaseBypSyncHandler", "[onReceive] size=%s", new Object[] { Integer.valueOf(paramLinkedList.size()) });
-    com.tencent.mm.plugin.messenger.foundation.a.l locall = (com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-    for (;;)
+    public final boolean c(Queue<q.c> paramAnonymousQueue)
     {
-      ss localss;
-      cp localcp;
-      try
-      {
-        locall.eiy().aEs("BaseBypSyncHandler");
-        Iterator localIterator = paramLinkedList.iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localss = (ss)localIterator.next();
-        if (localss.pWk != 1) {
-          continue;
-        }
-        localcp = new cp();
-        localcp.parseFrom(localss.pUz.zy);
-        if (Util.isNullOrNil(localcp.KGL))
-        {
-          Log.e("BaseBypSyncHandler", "msg_session_id is null! FromUserName=%s ToUserName=%s", new Object[] { z.a(localcp.KGK.KHl), z.a(localcp.KGK.KHm) });
-          continue;
-        }
-      }
-      catch (IOException paramLinkedList)
-      {
-        Log.printDebugStack("BaseBypSyncHandler", "", new Object[] { paramLinkedList });
-        return;
-        if (localcp.KGK.Brn == 0L)
-        {
-          Log.e("BaseBypSyncHandler", "NewMsgId is zero! FromUserName=%s ToUserName=%s", new Object[] { z.a(localcp.KGK.KHl), z.a(localcp.KGK.KHm) });
-          continue;
-        }
-      }
-      finally
-      {
-        locall.eiy().aEt("BaseBypSyncHandler");
-      }
-      if (!a(localcp))
-      {
-        Log.e("BaseBypSyncHandler", "[onReceive] ignore this msg %s", new Object[] { localcp.KGL });
-      }
-      else
-      {
-        if (localcp.KGN)
-        {
-          paramLinkedList = localcp.KGK.KHl;
-          label302:
-          paramLinkedList = z.a(paramLinkedList);
-          String str = (String)g.aAh().azQ().get(2, "");
-          if ((localcp.KGN) && (!paramLinkedList.equals(str))) {
-            locall.aSW().eJ(paramLinkedList, crR());
-          }
-          if (!localcp.KGN) {
-            break label461;
-          }
-          localcp.KGK.KHm = z.Su(localcp.KGL);
-        }
-        for (;;)
-        {
-          paramLinkedList = new h.a(localcp.KGK, false, false, false);
-          paramLinkedList.iMa = new cp().parseFrom(localss.pUz.zy);
-          paramLinkedList.what = crS();
-          ((k)g.af(k.class)).processAddMsg(paramLinkedList, crT());
-          break;
-          paramLinkedList = localcp.KGK.KHm;
-          break label302;
-          label461:
-          localcp.KGK.KHl = z.Su(localcp.KGL);
-        }
-      }
+      AppMethodBeat.i(247707);
+      Log.i("BaseBypSyncHandler", "RUN... %s", new Object[] { Integer.valueOf(paramAnonymousQueue.size()) });
+      AppMethodBeat.o(247707);
+      return false;
     }
-    locall.eiy().aEt("BaseBypSyncHandler");
+    
+    public final String toString()
+    {
+      return "BaseBypSyncHandler";
+    }
+  };
+  
+  private void cFc()
+  {
+    this.sWt.dF(this.sWu);
+    Log.i("BaseBypSyncHandler", "[finishReceive]");
   }
   
-  protected boolean a(cp paramcp)
+  protected boolean a(co paramco)
   {
     return true;
   }
   
-  protected abstract int crR();
+  public final void b(LinkedList<sl> paramLinkedList, boolean paramBoolean)
+  {
+    Log.i("BaseBypSyncHandler", "[onReceive] size=%s", new Object[] { Integer.valueOf(paramLinkedList.size()) });
+    n localn = (n)h.ae(n.class);
+    label459:
+    label619:
+    do
+    {
+      for (;;)
+      {
+        sl localsl;
+        co localco;
+        try
+        {
+          this.sWt.dC(this.sWu);
+          Iterator localIterator = paramLinkedList.iterator();
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localsl = (sl)localIterator.next();
+          if (localsl.item_type != 1) {
+            continue;
+          }
+          localco = new co();
+          localco.parseFrom(localsl.tqA.UH);
+          if ((Util.isNullOrNil(localco.RIf)) && ((localco.RIe.COi == 10002) || (localco.RIe.COi == 10001)))
+          {
+            Log.i("BaseBypSyncHandler", "dispatchToSysCmdMsgExtension, MsgType=%s isContinue=%s", new Object[] { Integer.valueOf(localco.RIe.COi), Boolean.valueOf(paramBoolean) });
+            if (localco.RIe.RIH == null)
+            {
+              localco.RIe.RIH = new eae();
+              Log.e("BaseBypSyncHandler", "[processToFunctionMsg] ImgBuf is null");
+            }
+            paramLinkedList = new h.a(localco.RIe, false, false, false);
+            ((v)h.ag(v.class)).getSysCmdMsgExtension().b(paramLinkedList);
+            continue;
+          }
+        }
+        catch (Exception paramLinkedList)
+        {
+          Log.printErrStackTrace("BaseBypSyncHandler", paramLinkedList, "", new Object[0]);
+          k(paramLinkedList);
+          return;
+          if (Util.isNullOrNil(localco.RIf))
+          {
+            Log.e("BaseBypSyncHandler", "msg_session_id is null! FromUserName=%s ToUserName=%s", new Object[] { z.a(localco.RIe.RID), z.a(localco.RIe.RIE) });
+            continue;
+          }
+        }
+        finally
+        {
+          this.sWt.dD(this.sWu);
+          if (!paramBoolean) {
+            cFc();
+          }
+        }
+        if (localco.RIe.HlH == 0L)
+        {
+          Log.e("BaseBypSyncHandler", "NewMsgId is zero! FromUserName=%s ToUserName=%s", new Object[] { z.a(localco.RIe.RID), z.a(localco.RIe.RIE) });
+        }
+        else if (!a(localco))
+        {
+          Log.e("BaseBypSyncHandler", "[onReceive] ignore this msg %s", new Object[] { localco.RIf });
+        }
+        else
+        {
+          if (localco.RIh)
+          {
+            paramLinkedList = localco.RIe.RID;
+            paramLinkedList = z.a(paramLinkedList);
+            String str = (String)h.aHG().aHp().b(2, "");
+            if ((localco.RIh) && (!paramLinkedList.equals(str))) {
+              localn.bbU().fk(paramLinkedList, cEZ());
+            }
+            if (!localco.RIh) {
+              break label619;
+            }
+            localco.RIe.RIE = z.ZW(localco.RIf);
+          }
+          for (;;)
+          {
+            paramLinkedList = new h.a(localco.RIe, false, false, false);
+            paramLinkedList.lCh = new co().parseFrom(localsl.tqA.UH);
+            paramLinkedList.what = cFa();
+            ((m)h.ae(m.class)).processAddMsg(paramLinkedList, cFb());
+            break;
+            paramLinkedList = localco.RIe.RIE;
+            break label459;
+            localco.RIe.RID = z.ZW(localco.RIf);
+          }
+        }
+      }
+      this.sWt.dD(this.sWu);
+    } while (paramBoolean);
+    cFc();
+  }
   
-  protected abstract int crS();
+  protected abstract int cEZ();
   
-  protected abstract aa crT();
+  protected abstract int cFa();
+  
+  protected abstract ae cFb();
+  
+  protected boolean k(Exception paramException)
+  {
+    return false;
+  }
 }
 
 

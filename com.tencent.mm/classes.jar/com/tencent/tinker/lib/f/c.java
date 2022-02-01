@@ -9,48 +9,48 @@ import java.io.IOException;
 
 public final class c
 {
-  private static c Sks;
-  public boolean Skt = true;
-  public File Sku = null;
-  public File Skv = null;
+  private static c ZNd;
+  public int DsT = 20;
+  public boolean ZNe = true;
+  public File ZNf = null;
+  public File ZNg = null;
   private Context context = null;
-  public int yiR = 20;
   
   private c(Context paramContext)
   {
     this.context = paramContext;
-    this.Sku = new File(SharePatchFileUtil.getPatchTempDirectory(paramContext), "patch.retry");
-    this.Skv = new File(SharePatchFileUtil.getPatchTempDirectory(paramContext), "temp.apk");
+    this.ZNf = new File(SharePatchFileUtil.getPatchTempDirectory(paramContext), "patch.retry");
+    this.ZNg = new File(SharePatchFileUtil.getPatchTempDirectory(paramContext), "temp.apk");
   }
   
-  public static c lp(Context paramContext)
+  public static c mn(Context paramContext)
   {
-    if (Sks == null) {
-      Sks = new c(paramContext);
+    if (ZNd == null) {
+      ZNd = new c(paramContext);
     }
-    return Sks;
+    return ZNd;
   }
   
-  public final void af(File paramFile)
+  public final void Z(File paramFile)
   {
-    if (paramFile.getAbsolutePath().equals(this.Skv.getAbsolutePath())) {
+    if (paramFile.getAbsolutePath().equals(this.ZNg.getAbsolutePath())) {
       return;
     }
-    ShareTinkerLog.w("Tinker.UpgradePatchRetry", "try copy file: %s to %s", new Object[] { paramFile.getAbsolutePath(), this.Skv.getAbsolutePath() });
+    ShareTinkerLog.w("Tinker.UpgradePatchRetry", "try copy file: %s to %s", new Object[] { paramFile.getAbsolutePath(), this.ZNg.getAbsolutePath() });
     try
     {
-      SharePatchFileUtil.copyFileUsingStream(paramFile, this.Skv);
+      SharePatchFileUtil.copyFileUsingStream(paramFile, this.ZNg);
       return;
     }
     catch (IOException localIOException)
     {
-      ShareTinkerLog.e("Tinker.UpgradePatchRetry", "fail to copy file: %s to %s", new Object[] { paramFile.getAbsolutePath(), this.Skv.getAbsolutePath() });
+      ShareTinkerLog.e("Tinker.UpgradePatchRetry", "fail to copy file: %s to %s", new Object[] { paramFile.getAbsolutePath(), this.ZNg.getAbsolutePath() });
     }
   }
   
-  public final boolean bqK(String paramString)
+  public final boolean bDH(String paramString)
   {
-    if (!this.Skt) {
+    if (!this.ZNe) {
       ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchListenerCheck retry disabled, just return", new Object[0]);
     }
     int i;
@@ -60,7 +60,7 @@ public final class c
       do
       {
         return true;
-        if (!this.Sku.exists())
+        if (!this.ZNf.exists())
         {
           ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchListenerCheck retry file is not exist, just return", new Object[0]);
           return true;
@@ -70,25 +70,25 @@ public final class c
           ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchListenerCheck md5 is null, just return", new Object[0]);
           return true;
         }
-        locala = a.ag(this.Sku);
+        locala = a.aa(this.ZNf);
       } while (!paramString.equals(locala.md5));
-      i = Integer.parseInt(locala.Skw);
-    } while (i < this.yiR);
+      i = Integer.parseInt(locala.ZNh);
+    } while (i < this.DsT);
     ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchListenerCheck, retry count %d must exceed than max retry count", new Object[] { Integer.valueOf(i) });
-    SharePatchFileUtil.safeDeleteFile(this.Skv);
+    SharePatchFileUtil.safeDeleteFile(this.ZNg);
     return false;
   }
   
-  public final boolean bqL(String paramString)
+  public final boolean bDI(String paramString)
   {
-    if (!this.Skt) {
+    if (!this.ZNe) {
       ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchResetMaxCheck retry disabled, just return", new Object[0]);
     }
     a locala;
     do
     {
       return true;
-      if (!this.Sku.exists())
+      if (!this.ZNf.exists())
       {
         ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchResetMaxCheck retry file is not exist, just return", new Object[0]);
         return true;
@@ -98,56 +98,56 @@ public final class c
         ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchResetMaxCheck md5 is null, just return", new Object[0]);
         return true;
       }
-      locala = a.ag(this.Sku);
+      locala = a.aa(this.ZNf);
     } while (!paramString.equals(locala.md5));
     ShareTinkerLog.i("Tinker.UpgradePatchRetry", "onPatchResetMaxCheck, reset max check to 1", new Object[0]);
-    locala.Skw = "1";
-    a.a(this.Sku, locala);
+    locala.ZNh = "1";
+    a.a(this.ZNf, locala);
     return true;
   }
   
-  public final boolean hpj()
+  public final boolean isK()
   {
-    if (!this.Skt)
+    if (!this.ZNe)
     {
       ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchRetryLoad retry disabled, just return", new Object[0]);
       return false;
     }
-    if (!a.lk(this.context).FgY)
+    if (!a.mi(this.context).LvD)
     {
       ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchRetryLoad retry is not main process, just return", new Object[0]);
       return false;
     }
-    if (!this.Sku.exists())
+    if (!this.ZNf.exists())
     {
       ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchRetryLoad retry info not exist, just return", new Object[0]);
       return false;
     }
-    if (b.lm(this.context))
+    if (b.mk(this.context))
     {
       ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchRetryLoad tinker service is running, just return", new Object[0]);
       return false;
     }
-    String str = this.Skv.getAbsolutePath();
+    String str = this.ZNg.getAbsolutePath();
     if ((str == null) || (!new File(str).exists()))
     {
       ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchRetryLoad patch file: %s is not exist, just return", new Object[] { str });
       return false;
     }
     ShareTinkerLog.w("Tinker.UpgradePatchRetry", "onPatchRetryLoad patch file: %s is exist, retry to patch", new Object[] { str });
-    com.tencent.tinker.lib.e.c.cY(this.context, str);
+    com.tencent.tinker.lib.e.c.dj(this.context, str);
     return true;
   }
   
   public static final class a
   {
-    public String Skw;
+    public String ZNh;
     public String md5;
     
     public a(String paramString1, String paramString2)
     {
       this.md5 = paramString1;
-      this.Skw = paramString2;
+      this.ZNh = paramString2;
     }
     
     /* Error */
@@ -179,7 +179,7 @@ public final class c
       //   41: aload_2
       //   42: ldc 46
       //   44: aload_1
-      //   45: getfield 19	com/tencent/tinker/lib/f/c$a:Skw	Ljava/lang/String;
+      //   45: getfield 19	com/tencent/tinker/lib/f/c$a:ZNh	Ljava/lang/String;
       //   48: invokevirtual 44	java/util/Properties:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
       //   51: pop
       //   52: new 48	java/io/FileOutputStream
@@ -239,7 +239,7 @@ public final class c
     }
     
     /* Error */
-    public static a ag(File paramFile)
+    public static a aa(File paramFile)
     {
       // Byte code:
       //   0: aconst_null
@@ -341,7 +341,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.lib.f.c
  * JD-Core Version:    0.7.0.1
  */

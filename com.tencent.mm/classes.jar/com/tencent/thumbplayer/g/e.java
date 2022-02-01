@@ -12,43 +12,43 @@ import com.tencent.thumbplayer.core.player.TPNativePlayerSurfaceRenderInfo;
 public final class e
   implements ITPSurface
 {
-  TPNativePlayerSurface Sbr;
-  private ITPSurfaceListener Sbs;
-  private ITPNativePlayerSurfaceCallback Sbt;
+  TPNativePlayerSurface ZEc;
+  private ITPSurfaceListener ZEd;
+  private ITPNativePlayerSurfaceCallback ZEe;
   
   public e(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(189516);
-    this.Sbr = null;
-    this.Sbs = null;
-    this.Sbt = new ITPNativePlayerSurfaceCallback()
+    AppMethodBeat.i(221541);
+    this.ZEc = null;
+    this.ZEd = null;
+    this.ZEe = new ITPNativePlayerSurfaceCallback()
     {
       public final void onRenderInfo(TPNativePlayerSurfaceRenderInfo paramAnonymousTPNativePlayerSurfaceRenderInfo)
       {
-        AppMethodBeat.i(189515);
+        AppMethodBeat.i(221536);
         ITPSurfaceListener localITPSurfaceListener = e.a(e.this);
         if (localITPSurfaceListener != null) {
           localITPSurfaceListener.onRenderInfo(c.a(paramAnonymousTPNativePlayerSurfaceRenderInfo));
         }
-        AppMethodBeat.o(189515);
+        AppMethodBeat.o(221536);
       }
     };
-    this.Sbr = new TPNativePlayerSurface(paramSurfaceTexture);
-    this.Sbr.setTPSurfaceCallback(this.Sbt);
-    AppMethodBeat.o(189516);
+    this.ZEc = new TPNativePlayerSurface(paramSurfaceTexture);
+    this.ZEc.setTPSurfaceCallback(this.ZEe);
+    AppMethodBeat.o(221541);
   }
   
   protected final void finalize()
   {
-    AppMethodBeat.i(189517);
-    this.Sbr.release();
+    AppMethodBeat.i(221542);
+    this.ZEc.release();
     super.finalize();
-    AppMethodBeat.o(189517);
+    AppMethodBeat.o(221542);
   }
   
   public final void setSurfaceListener(ITPSurfaceListener paramITPSurfaceListener)
   {
-    this.Sbs = paramITPSurfaceListener;
+    this.ZEd = paramITPSurfaceListener;
   }
 }
 

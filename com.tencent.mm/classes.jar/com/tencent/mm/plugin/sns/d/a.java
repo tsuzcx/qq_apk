@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.memory.l;
 import com.tencent.mm.memory.n;
 import com.tencent.mm.plugin.performance.watchdogs.c;
-import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.data.t;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 
@@ -18,10 +18,10 @@ public final class a
     long l = System.currentTimeMillis();
     try
     {
-      Bitmap localBitmap = l.aRY().a(paramString, paramOptions);
+      Bitmap localBitmap = l.baT().a(paramString, paramOptions);
       paramOptions = localBitmap;
       if (localBitmap != null) {
-        paramOptions = r.t(paramString, localBitmap);
+        paramOptions = t.t(paramString, localBitmap);
       }
       Log.d("MicroMsg.SnsBitmapUtil", "decodeWithRotateByExif used %dms bitmap: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), paramOptions });
       AppMethodBeat.o(95064);
@@ -29,7 +29,7 @@ public final class a
     }
     catch (OutOfMemoryError paramString)
     {
-      Log.e("MicroMsg.SnsBitmapUtil", "%s", new Object[] { c.eCH().S(true, 0) });
+      Log.e("MicroMsg.SnsBitmapUtil", "%s", new Object[] { c.fou().ad(true, 0) });
       Log.e("MicroMsg.SnsBitmapUtil", "OutOfMemoryError e " + paramString.getMessage());
       AppMethodBeat.o(95064);
       return null;
@@ -48,35 +48,35 @@ public final class a
     long l = System.currentTimeMillis();
     try
     {
-      Bitmap localBitmap = l.aRY().a(paramString, paramOptions);
+      Bitmap localBitmap = l.baT().a(paramString, paramOptions);
       paramOptions = localBitmap;
       if (localBitmap != null) {
-        paramOptions = r.t(paramString, localBitmap);
+        paramOptions = t.t(paramString, localBitmap);
       }
       Log.d("MicroMsg.SnsBitmapUtil", "decodeWithRotateByExif used %dms bitmap: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), paramOptions });
-      paramString = n.H(paramOptions);
+      paramString = n.F(paramOptions);
       AppMethodBeat.o(95063);
       return paramString;
     }
     catch (OutOfMemoryError paramString)
     {
-      Log.e("MicroMsg.SnsBitmapUtil", "%s", new Object[] { c.eCH().S(true, 0) });
+      Log.e("MicroMsg.SnsBitmapUtil", "%s", new Object[] { c.fou().ad(true, 0) });
       Log.e("MicroMsg.SnsBitmapUtil", "OutOfMemoryError e " + paramString.getMessage());
       AppMethodBeat.o(95063);
     }
     return null;
   }
   
-  public static Bitmap k(String paramString, float paramFloat)
+  public static Bitmap l(String paramString, float paramFloat)
   {
     Object localObject = null;
-    AppMethodBeat.i(202559);
+    AppMethodBeat.i(231999);
     long l = System.currentTimeMillis();
-    Bitmap localBitmap = l.aRY().a(paramString, null);
+    Bitmap localBitmap = l.baT().a(paramString, null);
     if (paramFloat == 0.0F)
     {
       Log.d("MicroMsg.SnsBitmapUtil", "decode used %dms %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), localBitmap });
-      AppMethodBeat.o(202559);
+      AppMethodBeat.o(231999);
       return localBitmap;
     }
     paramString = localObject;
@@ -85,13 +85,13 @@ public final class a
       paramString = BitmapUtil.getRoundedCornerBitmap(localBitmap, true, localBitmap.getWidth() * paramFloat);
       Log.d("MicroMsg.SnsBitmapUtil", "decode used %dms %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), localBitmap });
     }
-    AppMethodBeat.o(202559);
+    AppMethodBeat.o(231999);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.d.a
  * JD-Core Version:    0.7.0.1
  */

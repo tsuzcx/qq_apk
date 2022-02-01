@@ -10,12 +10,12 @@ import rx.j;
 public final class f
   extends g
 {
-  public static final f Umk;
+  public static final f abPG;
   
   static
   {
     AppMethodBeat.i(90384);
-    Umk = new f();
+    abPG = new f();
     AppMethodBeat.o(90384);
   }
   
@@ -29,14 +29,13 @@ public final class f
   
   final class a
     extends g.a
-    implements j
   {
-    final rx.f.a Uml;
+    final rx.f.a abPH;
     
     private a()
     {
       AppMethodBeat.i(90378);
-      this.Uml = new rx.f.a();
+      this.abPH = new rx.f.a();
       AppMethodBeat.o(90378);
     }
     
@@ -44,7 +43,7 @@ public final class f
     {
       AppMethodBeat.i(90380);
       parama.call();
-      parama = d.hRn();
+      parama = d.iWx();
       AppMethodBeat.o(90380);
       return parama;
     }
@@ -57,17 +56,17 @@ public final class f
       return parama;
     }
     
-    public final void hQA()
+    public final void iVJ()
     {
       AppMethodBeat.i(90381);
-      this.Uml.hQA();
+      this.abPH.iVJ();
       AppMethodBeat.o(90381);
     }
     
-    public final boolean hQB()
+    public final boolean iVK()
     {
       AppMethodBeat.i(90382);
-      boolean bool = this.Uml.hQB();
+      boolean bool = this.abPH.iVK();
       AppMethodBeat.o(90382);
       return bool;
     }
@@ -75,7 +74,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     rx.internal.c.f
  * JD-Core Version:    0.7.0.1
  */

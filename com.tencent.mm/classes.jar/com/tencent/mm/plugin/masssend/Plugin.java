@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.masssend;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bd;
+import com.tencent.mm.model.be;
 import com.tencent.mm.plugin.masssend.a.h;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
 import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
   implements d
 {
-  private c pkO;
+  private c smX;
   
   public Plugin()
   {
     AppMethodBeat.i(26340);
-    this.pkO = new c()
+    this.smX = new c()
     {
-      public final com.tencent.mm.pluginsdk.b.a ak(Context paramAnonymousContext, String paramAnonymousString)
+      public final com.tencent.mm.pluginsdk.c.a ak(Context paramAnonymousContext, String paramAnonymousString)
       {
         AppMethodBeat.i(26339);
         paramAnonymousContext = new com.tencent.mm.plugin.masssend.ui.a(paramAnonymousContext);
@@ -37,7 +37,7 @@ public class Plugin
     return locala;
   }
   
-  public bd createSubCore()
+  public be createSubCore()
   {
     AppMethodBeat.i(26342);
     h localh = new h();
@@ -47,7 +47,7 @@ public class Plugin
   
   public c getContactWidgetFactory()
   {
-    return this.pkO;
+    return this.smX;
   }
 }
 

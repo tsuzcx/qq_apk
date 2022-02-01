@@ -5,42 +5,44 @@ import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.tencent.luggage.a.e;
+import com.tencent.luggage.a.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
   extends LinearLayout
 {
-  private TextView jVn;
-  private ImageView lIM;
+  private TextView mMA;
+  private ImageView oFa;
   
   public d(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(221334);
-    LayoutInflater.from(paramContext).inflate(2131496820, this);
-    this.jVn = ((TextView)findViewById(2131299495));
-    this.lIM = ((ImageView)findViewById(2131302468));
-    AppMethodBeat.o(221334);
+    AppMethodBeat.i(208501);
+    LayoutInflater.from(paramContext).inflate(a.f.view_step, this);
+    this.mMA = ((TextView)findViewById(a.e.desc));
+    this.oFa = ((ImageView)findViewById(a.e.icon));
+    AppMethodBeat.o(208501);
   }
   
   public final void setStep(c paramc)
   {
-    AppMethodBeat.i(221335);
+    AppMethodBeat.i(208502);
     if (paramc == null)
     {
-      this.jVn.setText(null);
-      this.lIM.setImageDrawable(null);
-      AppMethodBeat.o(221335);
+      this.mMA.setText(null);
+      this.oFa.setImageDrawable(null);
+      AppMethodBeat.o(208502);
       return;
     }
-    this.jVn.setText(paramc.mPJ);
-    this.lIM.setImageResource(a.ye(paramc.mState));
-    AppMethodBeat.o(221335);
+    this.mMA.setText(paramc.pQC);
+    this.oFa.setImageResource(a.BE(paramc.mState));
+    AppMethodBeat.o(208502);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.stepview.d
  * JD-Core Version:    0.7.0.1
  */

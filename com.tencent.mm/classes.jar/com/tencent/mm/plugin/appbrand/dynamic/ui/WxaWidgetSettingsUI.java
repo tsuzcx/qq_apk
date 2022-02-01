@@ -9,6 +9,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.j.a;
 import com.tencent.mm.plugin.appbrand.dynamic.debugger.DebuggerInfo;
 import com.tencent.mm.plugin.appbrand.dynamic.debugger.b;
+import com.tencent.mm.plugin.appbrand.wxawidget.b.a;
+import com.tencent.mm.plugin.appbrand.wxawidget.b.b;
+import com.tencent.mm.plugin.appbrand.wxawidget.b.c;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
 import com.tencent.mm.ui.widget.MMSwitchBtn.a;
@@ -17,11 +20,11 @@ public class WxaWidgetSettingsUI
   extends MMActivity
 {
   String appId;
-  int dMe;
+  int fES;
   
   public int getLayoutId()
   {
-    return 2131497121;
+    return b.b.wxa_widget_settings_ui;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -39,12 +42,12 @@ public class WxaWidgetSettingsUI
         return false;
       }
     });
-    setMMTitle(2131768841);
+    setMMTitle(b.c.wxa_widget_settings);
     this.appId = getIntent().getStringExtra("app_id");
-    this.dMe = getIntent().getIntExtra("pkg_type", 0);
-    MMSwitchBtn localMMSwitchBtn = (MMSwitchBtn)findViewById(2131305614);
-    paramBundle = b.Yv(this.appId);
-    if ((paramBundle != null) && (paramBundle.lnd)) {}
+    this.fES = getIntent().getIntExtra("pkg_type", 0);
+    MMSwitchBtn localMMSwitchBtn = (MMSwitchBtn)findViewById(b.a.open_ban_btn);
+    paramBundle = b.agj(this.appId);
+    if ((paramBundle != null) && (paramBundle.ohP)) {}
     for (boolean bool1 = true;; bool1 = false)
     {
       localMMSwitchBtn.setCheck(bool1);
@@ -53,42 +56,42 @@ public class WxaWidgetSettingsUI
         public final void onStatusChange(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(121513);
-          DebuggerInfo localDebuggerInfo2 = b.Yv(WxaWidgetSettingsUI.this.appId);
+          DebuggerInfo localDebuggerInfo2 = b.agj(WxaWidgetSettingsUI.this.appId);
           DebuggerInfo localDebuggerInfo1 = localDebuggerInfo2;
           if (localDebuggerInfo2 == null)
           {
             localDebuggerInfo1 = new DebuggerInfo();
             b.a(WxaWidgetSettingsUI.this.appId, localDebuggerInfo1);
           }
-          localDebuggerInfo1.lnd = paramAnonymousBoolean;
+          localDebuggerInfo1.ohP = paramAnonymousBoolean;
           AppMethodBeat.o(121513);
         }
       });
-      localMMSwitchBtn = (MMSwitchBtn)findViewById(2131302663);
-      if ((paramBundle == null) || (!paramBundle.lnb))
+      localMMSwitchBtn = (MMSwitchBtn)findViewById(b.a.inject_debug_btn);
+      if ((paramBundle == null) || (!paramBundle.ohN))
       {
         bool1 = bool2;
-        if (!j.a.sE(this.dMe)) {}
+        if (!j.a.vB(this.fES)) {}
       }
       else
       {
         bool1 = true;
       }
       localMMSwitchBtn.setCheck(bool1);
-      localMMSwitchBtn.setEnabled(j.a.vP(this.dMe));
+      localMMSwitchBtn.setEnabled(j.a.za(this.fES));
       localMMSwitchBtn.setSwitchListener(new MMSwitchBtn.a()
       {
         public final void onStatusChange(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(121514);
-          DebuggerInfo localDebuggerInfo2 = b.Yv(WxaWidgetSettingsUI.this.appId);
+          DebuggerInfo localDebuggerInfo2 = b.agj(WxaWidgetSettingsUI.this.appId);
           DebuggerInfo localDebuggerInfo1 = localDebuggerInfo2;
           if (localDebuggerInfo2 == null)
           {
             localDebuggerInfo1 = new DebuggerInfo();
             b.a(WxaWidgetSettingsUI.this.appId, localDebuggerInfo1);
           }
-          localDebuggerInfo1.lnb = paramAnonymousBoolean;
+          localDebuggerInfo1.ohN = paramAnonymousBoolean;
           AppMethodBeat.o(121514);
         }
       });
@@ -105,7 +108,7 @@ public class WxaWidgetSettingsUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.ui.WxaWidgetSettingsUI
  * JD-Core Version:    0.7.0.1
  */

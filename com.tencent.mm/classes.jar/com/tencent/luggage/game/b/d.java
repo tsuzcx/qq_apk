@@ -1,96 +1,43 @@
 package com.tencent.luggage.game.b;
 
-import com.tencent.luggage.game.g.a;
-import com.tencent.luggage.game.g.a.a;
-import com.tencent.magicbrush.a.b;
-import com.tencent.magicbrush.a.c.b;
-import com.tencent.magicbrush.a.c.c;
+import com.tencent.luggage.game.c.c;
+import com.tencent.luggage.game.c.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
 
 public class d
 {
-  private static final a.a cuF;
+  private static volatile d csP;
+  public g csQ;
   
-  static
+  protected d()
   {
-    AppMethodBeat.i(130481);
-    cuF = new a.a();
-    AppMethodBeat.o(130481);
+    AppMethodBeat.i(130470);
+    this.csQ = new c();
+    AppMethodBeat.o(130470);
   }
   
-  public final void LW()
+  public static d ON()
   {
-    AppMethodBeat.i(130478);
-    a.a(cuF, new Runnable()
+    AppMethodBeat.i(130471);
+    if (csP == null) {}
+    try
     {
-      public final void run()
-      {
-        AppMethodBeat.i(130472);
-        d.this.LY();
-        AppMethodBeat.o(130472);
+      if (csP == null) {
+        csP = new d();
       }
-    });
-    AppMethodBeat.o(130478);
-  }
-  
-  protected void LX()
-  {
-    AppMethodBeat.i(130479);
-    long l = Util.currentTicks();
-    b.loadLibraries();
-    Log.i("MicroMsg.MBLogDelegateRegistry", "dl: load magicbrush [%d]ms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
-    AppMethodBeat.o(130479);
-  }
-  
-  protected final void LY()
-  {
-    AppMethodBeat.i(130480);
-    LX();
-    c.c.a(new c.b()
+      d locald = csP;
+      AppMethodBeat.o(130471);
+      return locald;
+    }
+    finally
     {
-      public final void d(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-      {
-        AppMethodBeat.i(130473);
-        Log.d(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
-        AppMethodBeat.o(130473);
-      }
-      
-      public final void e(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-      {
-        AppMethodBeat.i(130476);
-        Log.e(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
-        AppMethodBeat.o(130476);
-      }
-      
-      public final void i(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-      {
-        AppMethodBeat.i(130474);
-        Log.i(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
-        AppMethodBeat.o(130474);
-      }
-      
-      public final void printStackTrace(String paramAnonymousString1, Throwable paramAnonymousThrowable, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-      {
-        AppMethodBeat.i(130477);
-        Log.printErrStackTrace(paramAnonymousString1, paramAnonymousThrowable, paramAnonymousString2, paramAnonymousVarArgs);
-        AppMethodBeat.o(130477);
-      }
-      
-      public final void w(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-      {
-        AppMethodBeat.i(130475);
-        Log.w(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
-        AppMethodBeat.o(130475);
-      }
-    });
-    AppMethodBeat.o(130480);
+      AppMethodBeat.o(130471);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.game.b.d
  * JD-Core Version:    0.7.0.1
  */

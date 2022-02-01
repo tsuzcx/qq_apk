@@ -1,18 +1,20 @@
 package com.tencent.mm.recovery;
 
+import androidx.core.f.a;
+
 public final class c
-  implements android.support.v4.e.c<Integer>
+  implements a<Integer>
 {
-  private final int[] NBg;
+  private final int[] UOJ;
   
   public c(int[] paramArrayOfInt)
   {
-    this.NBg = paramArrayOfInt;
+    this.UOJ = paramArrayOfInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.recovery.c
  * JD-Core Version:    0.7.0.1
  */

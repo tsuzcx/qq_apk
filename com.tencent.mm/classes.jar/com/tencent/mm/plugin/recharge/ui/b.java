@@ -13,41 +13,46 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.wallet.a.q;
+import com.tencent.mm.plugin.wallet_core.utils.k;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.ui.aa;
+import com.tencent.mm.ui.ad;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class b
   extends BaseAdapter
 {
-  ArrayList<q> BDV;
-  a BDW;
-  private List<String> BDX;
+  a HAa;
+  private List<String> HAb;
+  ArrayList<q> HzZ;
   
   public b()
   {
     AppMethodBeat.i(67157);
-    this.BDV = null;
-    this.BDW = null;
-    this.BDX = new ArrayList(Util.stringToList((String)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.Ohp, ""), ","));
+    this.HzZ = null;
+    this.HAa = null;
+    this.HAb = new ArrayList(Util.stringToList((String)h.aHG().aHp().get(ar.a.VvF, ""), ","));
     AppMethodBeat.o(67157);
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(67158);
-    if (this.BDV == null)
+    if (this.HzZ == null)
     {
       AppMethodBeat.o(67158);
       return 0;
     }
-    int i = this.BDV.size();
+    int i = this.HzZ.size();
     AppMethodBeat.o(67158);
     return i;
   }
@@ -55,7 +60,7 @@ public final class b
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(67159);
-    Object localObject = this.BDV.get(paramInt);
+    Object localObject = this.HzZ.get(paramInt);
     AppMethodBeat.o(67159);
     return localObject;
   }
@@ -72,70 +77,72 @@ public final class b
     final b localb;
     if (paramView == null)
     {
-      paramView = aa.jQ(paramViewGroup.getContext()).inflate(2131496053, paramViewGroup, false);
+      paramView = ad.kS(paramViewGroup.getContext()).inflate(a.g.recharge_product_item, paramViewGroup, false);
       localb = new b((byte)0);
-      localb.hPW = ((TextView)paramView.findViewById(2131299495));
-      localb.gxs = ((TextView)paramView.findViewById(2131305208));
-      localb.BEb = ((TextView)paramView.findViewById(2131306151));
-      localb.BEc = ((ImageView)paramView.findViewById(2131306670));
+      localb.kEs = ((TextView)paramView.findViewById(a.f.desc));
+      localb.jbF = ((TextView)paramView.findViewById(a.f.name));
+      localb.HAf = ((TextView)paramView.findViewById(a.f.product_attr));
+      localb.HAg = ((ImageView)paramView.findViewById(a.f.recommend_iv));
       paramView.setTag(localb);
-      localb.gxs.setText(localq.name);
+      localb.jbF.setText(localq.name);
       if (Util.isNullOrNil(localq.desc)) {
-        break label649;
+        break label663;
       }
-      localb.hPW.setVisibility(0);
-      localb.hPW.setText(localq.desc);
-      label153:
-      if (Util.isNullOrNil(localq.HES)) {
-        break label662;
+      localb.kEs.setVisibility(0);
+      localb.kEs.setText(localq.desc);
+      label158:
+      if (Util.isNullOrNil(localq.OwL)) {
+        break label676;
       }
-      localb.BEb.setVisibility(0);
-      localb.BEb.setText(localq.HES);
-      label186:
+      localb.HAf.setVisibility(0);
+      localb.HAf.setText(localq.OwL);
+      label191:
       if (localq.status != 1) {
-        break label675;
+        break label689;
       }
       paramView.setEnabled(true);
-      localb.hPW.setEnabled(true);
-      localb.gxs.setEnabled(true);
-      label218:
-      if ((localq.HEW != 1) || (this.BDX.contains(localq.HEX))) {
-        break label701;
+      localb.kEs.setEnabled(true);
+      localb.jbF.setEnabled(true);
+      label223:
+      if ((localq.OwP != 1) || (this.HAb.contains(localq.OwQ))) {
+        break label715;
       }
-      Log.d("MicroMsg.PhoneRechargeAdapter", "show recommendid: %s", new Object[] { localq.HEX });
-      localb.BEc.setVisibility(0);
+      Log.d("MicroMsg.PhoneRechargeAdapter", "show recommendid: %s", new Object[] { localq.OwQ });
+      localb.HAg.setVisibility(0);
     }
     for (;;)
     {
-      if ((localq.type == 1) && (localq.HET.equals("1")) && (!localq.HEU.equals("0")))
+      if ((localq.type == 1) && (localq.OwM.equals("1")) && (!localq.OwN.equals("0")))
       {
         Object localObject1 = paramViewGroup.getContext();
-        paramInt = com.tencent.mm.plugin.wallet_core.utils.g.cI(localq.HEU, false);
+        paramInt = k.cW(localq.OwN, false);
         Object localObject2 = new GradientDrawable();
         ((GradientDrawable)localObject2).setShape(0);
-        ((GradientDrawable)localObject2).setCornerRadius(com.tencent.mm.cb.a.fromDPToPix((Context)localObject1, 2));
+        ((GradientDrawable)localObject2).setCornerRadius(com.tencent.mm.ci.a.fromDPToPix((Context)localObject1, 2));
         ((GradientDrawable)localObject2).setColor(paramInt);
-        GradientDrawable localGradientDrawable1 = new GradientDrawable();
-        localGradientDrawable1.setShape(0);
-        localGradientDrawable1.setCornerRadius(com.tencent.mm.cb.a.fromDPToPix((Context)localObject1, 2));
-        localGradientDrawable1.setStroke(2, com.tencent.mm.cb.a.n((Context)localObject1, 2131099660));
-        GradientDrawable localGradientDrawable2 = new GradientDrawable();
-        localGradientDrawable2.setShape(0);
-        localGradientDrawable2.setCornerRadius(com.tencent.mm.cb.a.fromDPToPix((Context)localObject1, 2));
-        localGradientDrawable2.setColor(com.tencent.mm.cb.a.n((Context)localObject1, 2131100984));
-        localGradientDrawable2.setStroke(2, paramInt);
+        Object localObject3 = new GradientDrawable();
+        ((GradientDrawable)localObject3).setShape(0);
+        ((GradientDrawable)localObject3).setCornerRadius(com.tencent.mm.ci.a.fromDPToPix((Context)localObject1, 2));
+        ((GradientDrawable)localObject3).setStroke(2, com.tencent.mm.ci.a.w((Context)localObject1, a.c.BW_0_Alpha_0_2));
+        Object localObject4 = new GradientDrawable();
+        ((GradientDrawable)localObject4).setShape(0);
+        ((GradientDrawable)localObject4).setCornerRadius(com.tencent.mm.ci.a.fromDPToPix((Context)localObject1, 2));
+        ((GradientDrawable)localObject4).setColor(com.tencent.mm.ci.a.w((Context)localObject1, a.c.recharge_product_item_bg));
+        ((GradientDrawable)localObject4).setStroke(2, paramInt);
         localObject1 = new StateListDrawable();
         ((StateListDrawable)localObject1).addState(new int[] { 16842919 }, (Drawable)localObject2);
-        ((StateListDrawable)localObject1).addState(new int[] { -16842910 }, localGradientDrawable1);
-        ((StateListDrawable)localObject1).addState(new int[0], localGradientDrawable2);
+        ((StateListDrawable)localObject1).addState(new int[] { -16842910 }, (Drawable)localObject3);
+        ((StateListDrawable)localObject1).addState(new int[0], (Drawable)localObject4);
         paramViewGroup = paramViewGroup.getContext();
-        paramInt = com.tencent.mm.plugin.wallet_core.utils.g.cI(localq.HEU, false);
-        localObject2 = new int[0];
-        int i = com.tencent.mm.cb.a.n(paramViewGroup, 2131101424);
-        int j = com.tencent.mm.cb.a.n(paramViewGroup, 2131100982);
-        paramViewGroup = new ColorStateList(new int[][] { { 16842919 }, { -16842910 }, localObject2 }, new int[] { i, j, paramInt });
-        localb.hPW.setTextColor(paramViewGroup);
-        localb.gxs.setTextColor(paramViewGroup);
+        paramInt = k.cW(localq.OwN, false);
+        localObject2 = new int[] { 16842919 };
+        localObject3 = new int[] { -16842910 };
+        localObject4 = new int[0];
+        int i = com.tencent.mm.ci.a.w(paramViewGroup, a.c.white);
+        int j = com.tencent.mm.ci.a.w(paramViewGroup, a.c.recharge_item_text_color_disabled);
+        paramViewGroup = new ColorStateList(new int[][] { localObject2, localObject3, localObject4 }, new int[] { i, j, paramInt });
+        localb.kEs.setTextColor(paramViewGroup);
+        localb.jbF.setTextColor(paramViewGroup);
         paramView.setBackground((Drawable)localObject1);
       }
       paramView.setOnClickListener(new View.OnClickListener()
@@ -144,18 +151,18 @@ public final class b
         {
           AppMethodBeat.i(67156);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recharge/ui/PhoneRechargeAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/recharge/ui/PhoneRechargeAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           if (b.a(b.this) != null)
           {
-            if (!b.b(b.this).contains(localq.HEX))
+            if (!b.b(b.this).contains(localq.OwQ))
             {
-              Log.i("MicroMsg.PhoneRechargeAdapter", "mark recommendid: %s", new Object[] { localq.HEX });
-              if (localq.HEX != null)
+              Log.i("MicroMsg.PhoneRechargeAdapter", "mark recommendid: %s", new Object[] { localq.OwQ });
+              if (localq.OwQ != null)
               {
-                b.b(b.this).add(localq.HEX);
-                com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.Ohp, Util.listToString(b.b(b.this), ","));
-                localb.BEc.setVisibility(8);
+                b.b(b.this).add(localq.OwQ);
+                h.aHG().aHp().set(ar.a.VvF, Util.listToString(b.b(b.this), ","));
+                localb.HAg.setVisibility(8);
               }
             }
             b.a(b.this).a(localq);
@@ -168,19 +175,19 @@ public final class b
       return paramView;
       localb = (b)paramView.getTag();
       break;
-      label649:
-      localb.hPW.setVisibility(8);
-      break label153;
-      label662:
-      localb.BEb.setVisibility(8);
-      break label186;
-      label675:
+      label663:
+      localb.kEs.setVisibility(8);
+      break label158;
+      label676:
+      localb.HAf.setVisibility(8);
+      break label191;
+      label689:
       paramView.setEnabled(false);
-      localb.hPW.setEnabled(false);
-      localb.gxs.setEnabled(false);
-      break label218;
-      label701:
-      localb.BEc.setVisibility(8);
+      localb.kEs.setEnabled(false);
+      localb.jbF.setEnabled(false);
+      break label223;
+      label715:
+      localb.HAg.setVisibility(8);
     }
   }
   
@@ -191,17 +198,17 @@ public final class b
   
   final class b
   {
-    TextView BEb;
-    ImageView BEc;
-    TextView gxs;
-    TextView hPW;
+    TextView HAf;
+    ImageView HAg;
+    TextView jbF;
+    TextView kEs;
     
     private b() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.ui.b
  * JD-Core Version:    0.7.0.1
  */

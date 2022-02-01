@@ -6,35 +6,38 @@ import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.card.a.b;
+import com.tencent.mm.plugin.card.a.c;
+import com.tencent.mm.plugin.card.a.g;
 import com.tencent.mm.plugin.card.sharecard.a.b;
 import com.tencent.mm.ui.MMActivity;
 
 public final class f
 {
-  View jBN;
-  private MMActivity pQZ;
-  b pXs;
-  ImageView pXw;
-  TextView pXx;
-  TextView pXy;
+  View mrI;
+  private MMActivity tmY;
+  b ttp;
+  ImageView ttt;
+  TextView ttu;
+  TextView ttv;
   
   public f(MMActivity paramMMActivity, View paramView)
   {
-    this.pQZ = paramMMActivity;
-    this.jBN = paramView;
+    this.tmY = paramMMActivity;
+    this.mrI = paramView;
   }
   
   public final void updateView()
   {
     AppMethodBeat.i(113091);
-    this.pXx.setVisibility(0);
-    this.pXw.setImageDrawable(this.pQZ.getResources().getDrawable(2131231522));
-    this.pXx.setText(2131757140);
-    this.pXy.setText(2131757139);
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.pXw.getLayoutParams();
-    localLayoutParams.topMargin = this.pQZ.getResources().getDimensionPixelOffset(2131166025);
-    this.pXw.setLayoutParams(localLayoutParams);
-    this.pXw.invalidate();
+    this.ttu.setVisibility(0);
+    this.ttt.setImageDrawable(this.tmY.getResources().getDrawable(a.c.taf));
+    this.ttu.setText(a.g.tlt);
+    this.ttv.setText(a.g.tls);
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.ttt.getLayoutParams();
+    localLayoutParams.topMargin = this.tmY.getResources().getDimensionPixelOffset(a.b.sZW);
+    this.ttt.setLayoutParams(localLayoutParams);
+    this.ttt.invalidate();
     AppMethodBeat.o(113091);
   }
 }

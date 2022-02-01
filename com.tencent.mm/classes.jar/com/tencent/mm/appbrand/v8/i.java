@@ -6,43 +6,43 @@ import com.tencent.mm.sdk.platformtools.Log;
 final class i
   extends z
 {
-  private static final ThreadLocal<i> dpE;
-  private final a dpC;
-  private boolean dpD;
+  private static final ThreadLocal<i> fil;
+  private final a fij;
+  private boolean fik;
   
   static
   {
     AppMethodBeat.i(144034);
-    dpE = new ThreadLocal();
+    fil = new ThreadLocal();
     AppMethodBeat.o(144034);
   }
   
   private i(a parama, boolean paramBoolean)
   {
     super(paramBoolean);
-    this.dpC = parama;
-    this.dpD = true;
+    this.fij = parama;
+    this.fik = true;
   }
   
   public static i a(a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(216888);
-    if (dpE.get() != null)
+    AppMethodBeat.i(262216);
+    if (fil.get() != null)
     {
       parama = new RuntimeException("Only one Looper may be created per thread");
-      AppMethodBeat.o(216888);
+      AppMethodBeat.o(262216);
       throw parama;
     }
     parama = new i(parama, paramBoolean);
-    dpE.set(parama);
-    AppMethodBeat.o(216888);
+    fil.set(parama);
+    AppMethodBeat.o(262216);
     return parama;
   }
   
-  protected final boolean XC()
+  protected final boolean acf()
   {
     AppMethodBeat.i(144028);
-    if ((!this.dpD) && (super.XC()))
+    if ((!this.fik) && (super.acf()))
     {
       AppMethodBeat.o(144028);
       return true;
@@ -51,48 +51,48 @@ final class i
     return false;
   }
   
-  protected final void XD()
+  protected final void acg()
   {
     AppMethodBeat.i(144029);
-    super.XD();
-    this.dpD = this.dpC.XB();
+    super.acg();
+    this.fik = this.fij.ace();
     AppMethodBeat.o(144029);
   }
   
-  protected final void XE()
+  protected final void ach()
   {
-    AppMethodBeat.i(216889);
-    super.XE();
-    this.dpD = this.dpC.XB();
-    AppMethodBeat.o(216889);
+    AppMethodBeat.i(262218);
+    super.ach();
+    this.fik = this.fij.ace();
+    AppMethodBeat.o(262218);
   }
   
-  protected final void XF()
+  protected final void aci()
   {
     AppMethodBeat.i(144030);
-    super.XF();
-    if (this.dpC != null) {
-      this.dpC.closeUVLoop();
+    super.aci();
+    if (this.fij != null) {
+      this.fij.closeUVLoop();
     }
     AppMethodBeat.o(144030);
   }
   
-  protected final void XG()
+  protected final void acj()
   {
     AppMethodBeat.i(144031);
-    if ((this.dpC != null) && (!isPaused())) {
-      this.dpC.wakeUpUVLoop();
+    if ((this.fij != null) && (!isPaused())) {
+      this.fij.wakeUpUVLoop();
     }
     AppMethodBeat.o(144031);
   }
   
-  protected final void XH()
+  protected final void ack()
   {
     AppMethodBeat.i(144033);
-    if (this.dpC != null)
+    if (this.fij != null)
     {
       Log.i("MicroMsg.NodeJSRuntimeLooper", "onQuit wakeUpUVLoop");
-      this.dpC.wakeUpUVLoop();
+      this.fij.wakeUpUVLoop();
     }
     AppMethodBeat.o(144033);
   }
@@ -100,15 +100,15 @@ final class i
   protected final void onResume()
   {
     AppMethodBeat.i(144032);
-    if (this.dpC != null) {
-      this.dpC.wakeUpUVLoop();
+    if (this.fij != null) {
+      this.fij.wakeUpUVLoop();
     }
     AppMethodBeat.o(144032);
   }
   
   static abstract interface a
   {
-    public abstract boolean XB();
+    public abstract boolean ace();
     
     public abstract void closeUVLoop();
     
@@ -117,7 +117,7 @@ final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.i
  * JD-Core Version:    0.7.0.1
  */

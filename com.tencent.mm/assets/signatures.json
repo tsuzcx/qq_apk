@@ -1,0 +1,24 @@
+{
+   "signatures" : [
+      {
+         "file" : "flutter-view.runtime.developer.js",
+         "signature" : "3045022100dc798ee32ed683cfebe5983cd5bc21c963c002773d2d61de0bbbc57bbee508af0220013505de99b21e7f83fce84514538139c186c2cc4bf2ecaf1a49fe82b5ac4203"
+      },
+      {
+         "file" : "flutter-view.runtime.js",
+         "signature" : "30460221008348ab0e133776f0932dab7a23366ae889e46933cf0e1e8833b8202c3823209d022100e1590d6885531020cf104eb3fe59f8bac0496e58417bc392146d9ee04128bd8a"
+      },
+      {
+         "file" : "meta.json",
+         "signature" : "3044022021471e4341ac4e6be1b70426bd642e5c67ba7c86abdbd04fc79a7a6bc3513b5602206a7978f92fe6f615d700763ca415bbfa063040afbcdb7f992e29725cb3153724"
+      },
+      {
+         "file" : "store.runtime.developer.js",
+         "signature" : "304502206226e667346c139c9e95ae0776506eb35098feffa13e2d437a6823d216e0ad8b022100f1d6284bcd111d7fa8bb218ff447b2275486e2ccc384e75f8f3e30ab794d546c"
+      },
+      {
+         "file" : "store.runtime.js",
+         "signature" : "304402203c5f0f2d929a3af61784e9136bd1051d19b759fc20d62b4d6dbb95d5c5a350bc022071932c8315118037c1f680e490dcb041443527da32dcfad62e047154da772a25"
+      }
+   ]
+}

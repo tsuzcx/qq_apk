@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:scrollbars="none" style="@style/om">
-        <LinearLayout android:gravity="center_horizontal" android:paddingLeft="@dimen/br" android:paddingTop="@dimen/hw" android:paddingRight="@dimen/br" android:paddingBottom="@dimen/hw" style="@style/lz">
-            <ImageView android:id="@id/hm0" android:paddingBottom="@dimen/hw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/mobile_unbind_icon" />
-            <TextView android:textSize="@dimen/c" android:textColor="@color/a2x" android:gravity="center" android:id="@id/hly" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/hs" android:maxLines="4" android:singleLine="false" android:lineSpacingExtra="4.0dip" style="@style/ob" />
-            <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:gravity="center" android:id="@id/hlx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/hw" android:maxLines="4" android:singleLine="false" android:lineSpacingExtra="4.0dip" style="@style/ob" />
-            <Button android:id="@id/hlw" android:layout_marginBottom="@dimen/hs" style="@style/ou" />
-            <Button android:id="@id/hlz" android:layout_marginBottom="@dimen/kc" style="@style/p2" />
-        </LinearLayout>
+    <ScrollView android:scrollbars="none" android:fillViewport="true" style="@style/om">
+        <RelativeLayout android:gravity="center_horizontal" android:paddingLeft="@dimen/br" android:paddingTop="@dimen/cn" android:paddingRight="@dimen/br" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/hm0" android:paddingBottom="@dimen/hw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/mobile_unbind_icon" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="@dimen/hb" android:textColor="@color/a2x" android:gravity="center" android:id="@id/hly" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/hs" android:maxLines="4" android:singleLine="false" android:layout_below="@id/hm0" android:lineSpacingExtra="4.0dip" style="@style/ob" />
+            <TextView android:textSize="@dimen/l" android:textColor="@color/uj" android:gravity="center" android:id="@id/hlx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/hw" android:maxLines="4" android:singleLine="false" android:layout_below="@id/hly" android:lineSpacingExtra="4.0dip" style="@style/ob" />
+            <LinearLayout android:gravity="bottom|center" android:layout_gravity="bottom" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/hlx" android:layout_alignParentBottom="true">
+                <Button android:id="@id/hlw" android:layout_marginBottom="@dimen/hs" style="@style/ov" />
+                <Button android:id="@id/hlz" android:layout_marginBottom="@dimen/hs" style="@style/p4" />
+                <TextView android:textSize="@dimen/k6" android:id="@id/kqc" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cm" android:layout_marginBottom="@dimen/ce" android:text="@string/dhp" style="@style/l5" />
+            </LinearLayout>
+        </RelativeLayout>
     </ScrollView>
 </LinearLayout>

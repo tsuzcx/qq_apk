@@ -12,21 +12,21 @@ import java.util.HashMap;
 public final class e
   implements c
 {
-  private String ISX = "";
+  private String PPp = "";
   
   public e() {}
   
   public e(String paramString)
   {
-    this.ISX = paramString;
+    this.PPp = paramString;
   }
   
-  public final String Pl()
+  public final String SK()
   {
     return "weixin://bridge.js";
   }
   
-  public final WebResourceResponse cX(String paramString)
+  public final WebResourceResponse dx(String paramString)
   {
     AppMethodBeat.i(78212);
     if (Build.VERSION.SDK_INT < 21)
@@ -34,8 +34,8 @@ public final class e
       AppMethodBeat.o(78212);
       return null;
     }
-    paramString = d.afA("LuggageBridge.js");
-    paramString = paramString + this.ISX;
+    paramString = d.anc("LuggageBridge.js");
+    paramString = paramString + this.PPp;
     try
     {
       paramString = new WebResourceResponse("application/javascript", "utf-8", new ByteArrayInputStream(paramString.getBytes("UTF-8")));

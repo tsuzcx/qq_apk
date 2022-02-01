@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.RandomAccessFile;
@@ -10,18 +10,18 @@ import java.util.Arrays;
 
 public final class c
 {
-  public static long D(byte[] paramArrayOfByte, int paramInt)
+  public static long C(byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(133855);
     byte[] arrayOfByte = new byte[8];
     Arrays.fill(arrayOfByte, (byte)0);
     System.arraycopy(paramArrayOfByte, paramInt, arrayOfByte, 4, 4);
-    long l = aE(arrayOfByte);
+    long l = aP(arrayOfByte);
     AppMethodBeat.o(133855);
     return l;
   }
   
-  public static boolean Sx(String paramString)
+  public static boolean ZZ(String paramString)
   {
     AppMethodBeat.i(133852);
     if (isNullOrNil(paramString))
@@ -33,7 +33,7 @@ public final class c
     String str = null;
     try
     {
-      paramString = s.openRead(paramString);
+      paramString = u.Tf(paramString);
       str = paramString;
       localObject = paramString;
       byte[] arrayOfByte = new byte[8];
@@ -65,7 +65,7 @@ public final class c
       int j = readInt(arrayOfByte, 4);
       str = paramString;
       localObject = paramString;
-      int k = a.bkJ;
+      int k = a.aUl;
       if ((j == k) && (i > 0))
       {
         if (paramString != null) {}
@@ -168,7 +168,7 @@ public final class c
       }
       AppMethodBeat.o(133856);
       return localObject1;
-      if ((k == a.blk) || (k == a.blo))
+      if ((k == a.aUM) || (k == a.aUQ))
       {
         i = paramRandomAccessFile.read(paramArrayOfByte);
       }
@@ -202,14 +202,14 @@ public final class c
     return true;
   }
   
-  public static long aE(byte[] paramArrayOfByte)
+  public static long aP(byte[] paramArrayOfByte)
   {
     return (paramArrayOfByte[0] & 0xFF) << 56 | (paramArrayOfByte[1] & 0xFF) << 48 | (paramArrayOfByte[2] & 0xFF) << 40 | (paramArrayOfByte[3] & 0xFF) << 32 | (paramArrayOfByte[4] & 0xFF) << 24 | (paramArrayOfByte[5] & 0xFF) << 16 | (paramArrayOfByte[6] & 0xFF) << 8 | paramArrayOfByte[7] & 0xFF;
   }
   
   public static a b(RandomAccessFile paramRandomAccessFile, byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(208733);
+    AppMethodBeat.i(204669);
     try
     {
       j = paramRandomAccessFile.read(paramArrayOfByte);
@@ -233,7 +233,7 @@ public final class c
     {
       if ((4194304L > 0L) && (4194304L <= i))
       {
-        AppMethodBeat.o(208733);
+        AppMethodBeat.o(204669);
         return null;
       }
       k = readInt(paramArrayOfByte, 0);
@@ -242,9 +242,9 @@ public final class c
     }
     for (paramRandomAccessFile = i.f(k, m, paramRandomAccessFile.getFilePointer() - j);; paramRandomAccessFile = null)
     {
-      AppMethodBeat.o(208733);
+      AppMethodBeat.o(204669);
       return paramRandomAccessFile;
-      if ((m == a.blk) || (m == a.blo))
+      if ((m == a.aUM) || (m == a.aUQ))
       {
         k = paramRandomAccessFile.read(paramArrayOfByte);
         j = i;
@@ -260,7 +260,7 @@ public final class c
     }
   }
   
-  public static int bJ(String paramString)
+  public static int bU(String paramString)
   {
     AppMethodBeat.i(133854);
     int k = paramString.length();
@@ -297,7 +297,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -13,19 +13,11 @@ public final class a
     this.mFile = paramFile;
   }
   
-  public final boolean delete()
+  public final boolean cFq()
   {
     AppMethodBeat.i(183503);
     boolean bool = this.mFile.delete();
     AppMethodBeat.o(183503);
-    return bool;
-  }
-  
-  public final boolean exists()
-  {
-    AppMethodBeat.i(183502);
-    boolean bool = this.mFile.exists();
-    AppMethodBeat.o(183502);
     return bool;
   }
   
@@ -37,7 +29,31 @@ public final class a
     return str;
   }
   
-  public final d[] htr()
+  public final boolean ifE()
+  {
+    AppMethodBeat.i(183502);
+    boolean bool = this.mFile.exists();
+    AppMethodBeat.o(183502);
+    return bool;
+  }
+  
+  public final String[] ifI()
+  {
+    AppMethodBeat.i(183504);
+    String[] arrayOfString = this.mFile.list();
+    AppMethodBeat.o(183504);
+    return arrayOfString;
+  }
+  
+  public final boolean isDirectory()
+  {
+    AppMethodBeat.i(183500);
+    boolean bool = this.mFile.isDirectory();
+    AppMethodBeat.o(183500);
+    return bool;
+  }
+  
+  public final d[] ixa()
   {
     int i = 0;
     AppMethodBeat.i(183501);
@@ -56,26 +72,10 @@ public final class a
     AppMethodBeat.o(183501);
     return arrayOfd;
   }
-  
-  public final boolean isDirectory()
-  {
-    AppMethodBeat.i(183500);
-    boolean bool = this.mFile.isDirectory();
-    AppMethodBeat.o(183500);
-    return bool;
-  }
-  
-  public final String[] list()
-  {
-    AppMethodBeat.i(183504);
-    String[] arrayOfString = this.mFile.list();
-    AppMethodBeat.o(183504);
-    return arrayOfString;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.view.recyclerview.e;
+import com.tencent.mm.view.recyclerview.f;
 
 final class LuckyMoneyDetailUI$32
-  implements View.OnClickListener
+  implements f
 {
   LuckyMoneyDetailUI$32(LuckyMoneyDetailUI paramLuckyMoneyDetailUI) {}
   
-  public final void onClick(View paramView)
+  public final e<?> yx(int paramInt)
   {
-    AppMethodBeat.i(65555);
-    b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyDetailUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    LuckyMoneyDetailUI.w(this.zee);
-    a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyDetailUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(65555);
+    AppMethodBeat.i(163734);
+    if (paramInt == 2)
+    {
+      LuckyMoneyDetailUI.b localb = new LuckyMoneyDetailUI.b(this.EIF);
+      AppMethodBeat.o(163734);
+      return localb;
+    }
+    AppMethodBeat.o(163734);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyDetailUI.32
  * JD-Core Version:    0.7.0.1
  */

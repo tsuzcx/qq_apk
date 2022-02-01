@@ -20,10 +20,10 @@ public class NoScaleView
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(214352);
+    AppMethodBeat.i(204139);
     super.onFinishInflate();
-    a.hL(this);
-    AppMethodBeat.o(214352);
+    a.jg(this);
+    AppMethodBeat.o(204139);
   }
 }
 

@@ -18,9 +18,9 @@ public class FavTipsUI
     AppMethodBeat.i(106939);
     super.onCreate(paramBundle);
     paramBundle = new d.a(this);
-    paramBundle.bon(getString(2131759240));
-    paramBundle.boo(getString(2131759238) + "\n\n" + getString(2131759239));
-    paramBundle.aoV(2131759237).c(new DialogInterface.OnClickListener()
+    paramBundle.bBc(getString(s.i.favorite_intro_title));
+    paramBundle.bBd(getString(s.i.favorite_intro_p_1) + "\n\n" + getString(s.i.favorite_intro_p_2));
+    paramBundle.ayj(s.i.favorite_intro_btn).c(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -38,7 +38,7 @@ public class FavTipsUI
         AppMethodBeat.o(106938);
       }
     });
-    paramBundle.hbn().show();
+    paramBundle.icu().show();
     AppMethodBeat.o(106939);
   }
   
@@ -50,7 +50,7 @@ public class FavTipsUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.FavTipsUI
  * JD-Core Version:    0.7.0.1
  */

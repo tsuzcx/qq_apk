@@ -38,6 +38,7 @@
 		<subtype val="18" ios="1" android="1" desc="跳转个人profile页" />
         <subtype val="19" ios="1" android="1" desc="商家券按钮" />
         <subtype val="20" ios="1" android="1" desc="视频号直播预约按钮" />
+		<subtype val="21" ios="1" android="1" desc="跳转视频号profile页" />
 	</componenttype>
 	<componenttype val="41" ios="1" android="1" desc="纯图类型">
 		<subtype val="0" ios="1" android="1" desc="纯图default类型" />
@@ -114,4 +115,15 @@
 	<componenttype val="140" ios="1" android="1" desc="分享组件，点击弹出分享菜单">
 		<subtype val="0" ios="1" android="1" desc="分享组件，点击弹出分享菜单" />
 	</componenttype>
+	<componenttype val="141" ios="1" android="1" desc="广告原生页底部的动画悬浮按钮">
+		<subtype val="0" ios="1" android="1" desc="广告原生页底部的动画悬浮按钮" />
+	</componenttype>
+	<componenttype val="142" ios="1" android="1" desc="新视频播放器通用组件">
+		<subtype val="0" ios="1" android="1" desc="新视频播放器通用组件" />
+	</componenttype>
+	<componenttype val="143" ios="1" android="1" desc="社交卡片">
+		<subtype val="0" ios="1" android="1" desc="社交卡片" />
+	</componenttype>
+
+
 </canvasvalidtype>

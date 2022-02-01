@@ -23,9 +23,9 @@ public abstract class a
     return paramArrayOfString;
   }
   
-  public static a hw(String paramString, int paramInt)
+  public static a ig(String paramString, int paramInt)
   {
-    if (com.tencent.soter.core.a.hlj())
+    if (com.tencent.soter.core.a.ioI())
     {
       if (Build.VERSION.SDK_INT >= 23) {
         return new b(paramString, paramInt);
@@ -40,9 +40,9 @@ public abstract class a
   
   public abstract a ad(String... paramVarArgs);
   
-  public abstract AlgorithmParameterSpec hlq();
+  public abstract AlgorithmParameterSpec ioQ();
   
-  public abstract a hlr();
+  public abstract a ioR();
   
   static final class a
     extends a
@@ -57,12 +57,12 @@ public abstract class a
       return null;
     }
     
-    public final AlgorithmParameterSpec hlq()
+    public final AlgorithmParameterSpec ioQ()
     {
       return null;
     }
     
-    public final a hlr()
+    public final a ioR()
     {
       return null;
     }
@@ -72,13 +72,13 @@ public abstract class a
   static final class b
     extends a
   {
-    private KeyGenParameterSpec.Builder RPp;
+    private KeyGenParameterSpec.Builder ZrU;
     
     public b(String paramString, int paramInt)
     {
       AppMethodBeat.i(88633);
-      this.RPp = null;
-      this.RPp = new KeyGenParameterSpec.Builder(paramString, paramInt);
+      this.ZrU = null;
+      this.ZrU = new KeyGenParameterSpec.Builder(paramString, paramInt);
       AppMethodBeat.o(88633);
     }
     
@@ -86,7 +86,7 @@ public abstract class a
     public final a ac(String... paramVarArgs)
     {
       AppMethodBeat.i(88635);
-      this.RPp.setDigests(paramVarArgs);
+      this.ZrU.setDigests(paramVarArgs);
       AppMethodBeat.o(88635);
       return this;
     }
@@ -95,23 +95,23 @@ public abstract class a
     public final a ad(String... paramVarArgs)
     {
       AppMethodBeat.i(88636);
-      this.RPp.setSignaturePaddings(paramVarArgs);
+      this.ZrU.setSignaturePaddings(paramVarArgs);
       AppMethodBeat.o(88636);
       return this;
     }
     
-    public final AlgorithmParameterSpec hlq()
+    public final AlgorithmParameterSpec ioQ()
     {
       AppMethodBeat.i(88634);
-      KeyGenParameterSpec localKeyGenParameterSpec = this.RPp.build();
+      KeyGenParameterSpec localKeyGenParameterSpec = this.ZrU.build();
       AppMethodBeat.o(88634);
       return localKeyGenParameterSpec;
     }
     
-    public final a hlr()
+    public final a ioR()
     {
       AppMethodBeat.i(88637);
-      this.RPp.setUserAuthenticationRequired(true);
+      this.ZrU.setUserAuthenticationRequired(true);
       AppMethodBeat.o(88637);
       return this;
     }
@@ -120,31 +120,31 @@ public abstract class a
   static final class c
     extends a
   {
-    private Date RPA;
-    private String[] RPB;
-    private String[] RPC;
-    private String[] RPD;
-    private String[] RPE;
-    private boolean RPF;
-    private boolean RPG;
-    private int RPH;
-    private final String RPq;
-    private int RPr;
-    private int RPs;
-    private AlgorithmParameterSpec RPt;
-    private X500Principal RPu;
-    private BigInteger RPv;
-    private Date RPw;
-    private Date RPx;
-    private Date RPy;
-    private Date RPz;
+    private final String ZrV;
+    private int ZrW;
+    private int ZrX;
+    private AlgorithmParameterSpec ZrY;
+    private X500Principal ZrZ;
+    private BigInteger Zsa;
+    private Date Zsb;
+    private Date Zsc;
+    private Date Zsd;
+    private Date Zse;
+    private Date Zsf;
+    private String[] Zsg;
+    private String[] Zsh;
+    private String[] Zsi;
+    private String[] Zsj;
+    private boolean Zsk;
+    private boolean Zsl;
+    private int Zsm;
     
     public c(String paramString, int paramInt)
     {
       AppMethodBeat.i(88638);
-      this.RPs = -1;
-      this.RPF = true;
-      this.RPH = -1;
+      this.ZrX = -1;
+      this.Zsk = true;
+      this.Zsm = -1;
       if (paramString == null)
       {
         paramString = new NullPointerException("keystoreAlias == null");
@@ -157,15 +157,15 @@ public abstract class a
         AppMethodBeat.o(88638);
         throw paramString;
       }
-      this.RPq = paramString;
-      this.RPr = paramInt;
+      this.ZrV = paramString;
+      this.ZrW = paramInt;
       AppMethodBeat.o(88638);
     }
     
     public final a ac(String... paramVarArgs)
     {
       AppMethodBeat.i(88639);
-      this.RPB = ae(paramVarArgs);
+      this.Zsg = ae(paramVarArgs);
       AppMethodBeat.o(88639);
       return this;
     }
@@ -173,29 +173,29 @@ public abstract class a
     public final a ad(String... paramVarArgs)
     {
       AppMethodBeat.i(88640);
-      this.RPD = ae(paramVarArgs);
+      this.Zsi = ae(paramVarArgs);
       AppMethodBeat.o(88640);
       return this;
     }
     
-    public final AlgorithmParameterSpec hlq()
+    public final AlgorithmParameterSpec ioQ()
     {
       AppMethodBeat.i(88641);
-      AlgorithmParameterSpec localAlgorithmParameterSpec = (AlgorithmParameterSpec)Class.forName("android.security.keystore.KeyGenParameterSpec").getConstructor(new Class[] { String.class, Integer.TYPE, AlgorithmParameterSpec.class, X500Principal.class, BigInteger.class, Date.class, Date.class, Date.class, Date.class, Date.class, Integer.TYPE, [Ljava.lang.String.class, [Ljava.lang.String.class, [Ljava.lang.String.class, [Ljava.lang.String.class, Boolean.TYPE, Boolean.TYPE, Integer.TYPE }).newInstance(new Object[] { this.RPq, Integer.valueOf(this.RPs), this.RPt, this.RPu, this.RPv, this.RPw, this.RPx, this.RPy, this.RPz, this.RPA, Integer.valueOf(this.RPr), this.RPB, this.RPC, this.RPD, this.RPE, Boolean.valueOf(this.RPF), Boolean.valueOf(this.RPG), Integer.valueOf(this.RPH) });
+      AlgorithmParameterSpec localAlgorithmParameterSpec = (AlgorithmParameterSpec)Class.forName("android.security.keystore.KeyGenParameterSpec").getConstructor(new Class[] { String.class, Integer.TYPE, AlgorithmParameterSpec.class, X500Principal.class, BigInteger.class, Date.class, Date.class, Date.class, Date.class, Date.class, Integer.TYPE, [Ljava.lang.String.class, [Ljava.lang.String.class, [Ljava.lang.String.class, [Ljava.lang.String.class, Boolean.TYPE, Boolean.TYPE, Integer.TYPE }).newInstance(new Object[] { this.ZrV, Integer.valueOf(this.ZrX), this.ZrY, this.ZrZ, this.Zsa, this.Zsb, this.Zsc, this.Zsd, this.Zse, this.Zsf, Integer.valueOf(this.ZrW), this.Zsg, this.Zsh, this.Zsi, this.Zsj, Boolean.valueOf(this.Zsk), Boolean.valueOf(this.Zsl), Integer.valueOf(this.Zsm) });
       AppMethodBeat.o(88641);
       return localAlgorithmParameterSpec;
     }
     
-    public final a hlr()
+    public final a ioR()
     {
-      this.RPG = true;
+      this.Zsl = true;
       return this;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.soter.core.b.a
  * JD-Core Version:    0.7.0.1
  */

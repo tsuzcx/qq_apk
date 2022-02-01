@@ -13,26 +13,26 @@ public final class i
   public i(com.tencent.mm.plugin.messenger.foundation.a.a.i parami)
   {
     super(parami);
-    AppMethodBeat.i(232416);
+    AppMethodBeat.i(240697);
     e(getDB(), "appbrandnotifymessage");
-    a(new i.b(32, "appbrandnotifymessage", i.b.a(3500001L, 4000000L, 105000001L, 108000000L)));
-    AppMethodBeat.o(232416);
+    a(new i.b(32, "appbrandnotifymessage", i.b.b(3500001L, 4000000L, 105000001L, 108000000L)));
+    AppMethodBeat.o(240697);
   }
   
-  public final String avu(String paramString)
+  public final String aEK(String paramString)
   {
-    AppMethodBeat.i(232417);
+    AppMethodBeat.i(240700);
     if ((paramString != null) && (paramString.length() > 0)) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      if (!ab.JC(paramString)) {
+      if (!ab.QV(paramString)) {
         break;
       }
-      AppMethodBeat.o(232417);
+      AppMethodBeat.o(240700);
       return "appbrandnotifymessage";
     }
-    AppMethodBeat.o(232417);
+    AppMethodBeat.o(240700);
     return null;
   }
 }

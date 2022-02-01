@@ -24,30 +24,30 @@ public class TPScreenRefreshRateCallBackToNative
   @TPMethodCalledByNative
   private void registerCallback()
   {
-    AppMethodBeat.i(189793);
+    AppMethodBeat.i(223022);
     TPScreenRefreshRateDetector.addListener(this);
-    AppMethodBeat.o(189793);
+    AppMethodBeat.o(223022);
   }
   
   @TPMethodCalledByNative
   private void unregisterCallback()
   {
-    AppMethodBeat.i(189794);
+    AppMethodBeat.i(223024);
     TPScreenRefreshRateDetector.removeListener(this);
-    AppMethodBeat.o(189794);
+    AppMethodBeat.o(223024);
   }
   
   public void onScreenRefreshRateChanged(float paramFloat)
   {
-    AppMethodBeat.i(189795);
+    AppMethodBeat.i(223028);
     TPNativeLog.printLog(2, "TPScreenRefreshRateCallBack", "onScreenRefreshRateChanged refreshRate:".concat(String.valueOf(paramFloat)));
     _onScreenRefreshRateChanged(paramFloat);
-    AppMethodBeat.o(189795);
+    AppMethodBeat.o(223028);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPScreenRefreshRateCallBackToNative
  * JD-Core Version:    0.7.0.1
  */

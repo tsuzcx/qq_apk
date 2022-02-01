@@ -3,17 +3,18 @@ package com.tencent.mm.ui;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import androidx.appcompat.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cr.a.i;
 
 public abstract class SearchBarUI
   extends BaseActivity
-  implements ai.a
+  implements al.a
 {
-  ai OKE;
+  al Wec;
   
   public void onClickBackBtn(View paramView)
   {
@@ -23,23 +24,22 @@ public abstract class SearchBarUI
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = BaseActivity.c.Oyp;
-    a("", new MenuItem.OnMenuItemClickListener()
+    a(BaseActivity.c.VRs, new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(159098);
         paramAnonymousMenuItem = SearchBarUI.this;
         paramAnonymousMenuItem.removeAllOptionMenu();
-        paramAnonymousMenuItem.OKE = new ai(paramAnonymousMenuItem);
-        paramAnonymousMenuItem.OKE.setSearchViewListener(paramAnonymousMenuItem);
-        paramAnonymousMenuItem.OKE.setHint(paramAnonymousMenuItem.getResources().getString(2131766890));
-        paramAnonymousMenuItem.getSupportActionBar().setCustomView(paramAnonymousMenuItem.OKE);
+        paramAnonymousMenuItem.Wec = new al(paramAnonymousMenuItem);
+        paramAnonymousMenuItem.Wec.setSearchViewListener(paramAnonymousMenuItem);
+        paramAnonymousMenuItem.Wec.setHint(paramAnonymousMenuItem.getResources().getString(a.i.ui_search));
+        paramAnonymousMenuItem.getSupportActionBar().setCustomView(paramAnonymousMenuItem.Wec);
         SearchBarUI.showVKB(paramAnonymousMenuItem);
         AppMethodBeat.o(159098);
         return false;
       }
-    }, paramBundle);
+    });
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -60,7 +60,7 @@ public abstract class SearchBarUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.SearchBarUI
  * JD-Core Version:    0.7.0.1
  */

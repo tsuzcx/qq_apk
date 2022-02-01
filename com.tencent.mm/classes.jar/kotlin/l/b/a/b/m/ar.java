@@ -4,13 +4,13 @@ public abstract interface ar
 {
   public abstract boolean ac(ab paramab);
   
-  public abstract ab hKC();
+  public abstract ab iOS();
   
-  public abstract ab hKD();
+  public abstract ab iOT();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.ar
  * JD-Core Version:    0.7.0.1
  */

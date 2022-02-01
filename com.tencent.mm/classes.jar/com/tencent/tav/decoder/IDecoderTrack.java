@@ -4,6 +4,7 @@ import android.view.Surface;
 import com.tencent.tav.coremedia.CMSampleBuffer;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
+import com.tencent.tav.report.AverageTimeReporter;
 import java.util.List;
 
 public abstract interface IDecoderTrack
@@ -13,6 +14,8 @@ public abstract interface IDecoderTrack
   public abstract void clipRangeAndClearRange(CMTimeRange paramCMTimeRange);
   
   public abstract CMTime getCurrentSampleTime();
+  
+  public abstract AverageTimeReporter getDecodePerformance();
   
   public abstract CMTime getDuration();
   
@@ -59,7 +62,7 @@ public abstract interface IDecoderTrack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.decoder.IDecoderTrack
  * JD-Core Version:    0.7.0.1
  */

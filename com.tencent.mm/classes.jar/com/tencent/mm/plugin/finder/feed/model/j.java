@@ -1,88 +1,158 @@
 package com.tencent.mm.plugin.finder.feed.model;
 
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.model.cl;
-import com.tencent.mm.protocal.protobuf.bbn;
-import java.util.HashMap;
+import com.tencent.mm.protocal.protobuf.bbh;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import kotlin.g.b.p;
 import kotlin.l;
+import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/LoaderStateStore;", "", "()V", "backCache", "Lcom/tencent/mm/plugin/finder/feed/model/LoaderCache;", "getBackCache", "()Lcom/tencent/mm/plugin/finder/feed/model/LoaderCache;", "setBackCache", "(Lcom/tencent/mm/plugin/finder/feed/model/LoaderCache;)V", "cacheMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "getCacheMap", "()Ljava/util/HashMap;", "cacheMap$1", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "getContextObj", "()Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "setContextObj", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "fromCache", "getFromCache", "setFromCache", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "toCache", "getToCache", "setToCache", "toKey", "", "getToKey", "()J", "setToKey", "(J)V", "addToCacheMap", "", "key", "value", "clearCacheMap", "eraseCacheMap", "getBack", "intent", "Landroid/content/Intent;", "getFrom", "next", "Lkotlin/Function1;", "getFromCacheMap", "passTo", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/FinderFeedLiveNoticeCache;", "", "()V", "CACHE_VAILD_DURATTION", "", "TAG", "", "userName2NoticeMap", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/finder/feed/model/FinderFeedLiveNoticeCache$noticeInfoCacheItem;", "add", "", "userName", "info", "Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;", "clear", "getNotice", "noticeInfoCacheItem", "plugin-finder_release"})
 public final class j
 {
-  private static final ConcurrentHashMap<Long, h> tVA;
-  public static final a tYb;
-  public b lastBuffer;
-  public h tXW;
-  public h tXX;
-  private h tXY;
-  private long tXZ;
-  final HashMap<String, h> tYa;
-  public bbn ttO;
+  private static final String TAG = "FinderFeedLiveNoticeCache";
+  private static final int xGF = 60000;
+  private static final ConcurrentHashMap<String, a> xGG;
+  public static final j xGH;
   
   static
   {
-    AppMethodBeat.i(244947);
-    tYb = new a((byte)0);
-    tVA = new ConcurrentHashMap();
-    AppMethodBeat.o(244947);
+    AppMethodBeat.i(243922);
+    xGH = new j();
+    TAG = "FinderFeedLiveNoticeCache";
+    xGF = 60000;
+    xGG = new ConcurrentHashMap();
+    AppMethodBeat.o(243922);
   }
   
-  public j()
+  public static void a(String paramString, bbh parambbh)
   {
-    AppMethodBeat.i(244946);
-    this.tYa = new HashMap();
-    AppMethodBeat.o(244946);
-  }
-  
-  public final void a(h paramh, Intent paramIntent)
-  {
-    AppMethodBeat.i(244945);
-    p.h(paramh, "toCache");
-    p.h(paramIntent, "intent");
-    this.tXY = paramh;
-    if (this.tXZ != 0L) {
-      a.EG(this.tXZ);
+    AppMethodBeat.i(243915);
+    p.k(paramString, "userName");
+    p.k(parambbh, "info");
+    synchronized (xGG)
+    {
+      Log.i(TAG, "[add] userName:".concat(String.valueOf(paramString)));
+      if (xGG.containsKey(paramString))
+      {
+        a locala = (a)xGG.get(paramString);
+        if ((locala == null) || (locala.dup())) {}
+      }
+      else
+      {
+        ((Map)xGG).put(paramString, new a(parambbh));
+      }
+      paramString = x.aazN;
+      AppMethodBeat.o(243915);
+      return;
     }
-    long l = cl.aWy();
-    ((Map)tVA).put(Long.valueOf(l), paramh);
-    paramIntent.putExtra("LoaderCacheStoreIntentKey", l);
-    this.tXZ = l;
-    AppMethodBeat.o(244945);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/LoaderStateStore$Companion;", "", "()V", "INTENT_KEY", "", "cacheMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/finder/feed/model/LoaderCache;", "getCacheFromIntent", "intent", "Landroid/content/Intent;", "removeCache", "key", "saveCache", "cache", "saveCacheToIntent", "plugin-finder_release"})
+  public static bbh aBF(String paramString)
+  {
+    AppMethodBeat.i(243918);
+    p.k(paramString, "userName");
+    synchronized (xGG)
+    {
+      a locala = (a)xGG.get(paramString);
+      if (locala != null)
+      {
+        if (!locala.dup()) {
+          xGG.remove(paramString);
+        }
+        for (paramString = null;; paramString = locala.xGI)
+        {
+          AppMethodBeat.o(243918);
+          return paramString;
+        }
+      }
+      paramString = null;
+    }
+  }
+  
+  public static void clear()
+  {
+    AppMethodBeat.i(243919);
+    synchronized (xGG)
+    {
+      xGG.clear();
+      x localx = x.aazN;
+      AppMethodBeat.o(243919);
+      return;
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/FinderFeedLiveNoticeCache$noticeInfoCacheItem;", "", "info", "Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;", "timeStamp", "", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;J)V", "getInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;", "setInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;)V", "getTimeStamp", "()J", "setTimeStamp", "(J)V", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "isVaild", "toString", "", "plugin-finder_release"})
   public static final class a
   {
-    static h EG(long paramLong)
+    private long timeStamp;
+    bbh xGI;
+    
+    private a(bbh parambbh, long paramLong)
     {
-      AppMethodBeat.i(244942);
-      if (j.ddz().containsKey(Long.valueOf(paramLong)))
-      {
-        h localh = (h)j.ddz().remove(Long.valueOf(paramLong));
-        AppMethodBeat.o(244942);
-        return localh;
-      }
-      AppMethodBeat.o(244942);
-      return null;
+      AppMethodBeat.i(281577);
+      this.xGI = parambbh;
+      this.timeStamp = paramLong;
+      AppMethodBeat.o(281577);
     }
     
-    public static h al(Intent paramIntent)
+    public final boolean dup()
     {
-      AppMethodBeat.i(244943);
-      long l = paramIntent.getLongExtra("LoaderCacheStoreIntentKey", 0L);
-      if (l == 0L)
+      AppMethodBeat.i(281575);
+      long l1 = System.currentTimeMillis();
+      long l2 = this.timeStamp;
+      j localj = j.xGH;
+      if (l1 - l2 < j.duo())
       {
-        AppMethodBeat.o(244943);
-        return null;
+        AppMethodBeat.o(281575);
+        return true;
       }
-      paramIntent = EG(l);
-      AppMethodBeat.o(244943);
-      return paramIntent;
+      AppMethodBeat.o(281575);
+      return false;
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(281581);
+      if (this != paramObject)
+      {
+        if ((paramObject instanceof a))
+        {
+          paramObject = (a)paramObject;
+          if ((!p.h(this.xGI, paramObject.xGI)) || (this.timeStamp != paramObject.timeStamp)) {}
+        }
+      }
+      else
+      {
+        AppMethodBeat.o(281581);
+        return true;
+      }
+      AppMethodBeat.o(281581);
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      AppMethodBeat.i(281580);
+      bbh localbbh = this.xGI;
+      if (localbbh != null) {}
+      for (int i = localbbh.hashCode();; i = 0)
+      {
+        long l = this.timeStamp;
+        int j = (int)(l ^ l >>> 32);
+        AppMethodBeat.o(281580);
+        return i * 31 + j;
+      }
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(281579);
+      String str = "noticeInfoCacheItem(info=" + this.xGI + ", timeStamp=" + this.timeStamp + ")";
+      AppMethodBeat.o(281579);
+      return str;
     }
   }
 }

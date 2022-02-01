@@ -3,20 +3,20 @@ package com.tencent.mm.plugin.webview.ui.tools.exdevice;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ej;
-import com.tencent.mm.g.a.ej.a;
-import com.tencent.mm.g.a.ek;
-import com.tencent.mm.g.a.ek.a;
-import com.tencent.mm.g.a.el;
-import com.tencent.mm.g.a.el.a;
-import com.tencent.mm.g.a.em;
-import com.tencent.mm.g.a.em.a;
-import com.tencent.mm.g.a.ep;
-import com.tencent.mm.g.a.ep.a;
-import com.tencent.mm.g.a.et;
-import com.tencent.mm.g.a.fk;
+import com.tencent.mm.f.a.eq;
+import com.tencent.mm.f.a.eq.a;
+import com.tencent.mm.f.a.er;
+import com.tencent.mm.f.a.er.a;
+import com.tencent.mm.f.a.es;
+import com.tencent.mm.f.a.es.a;
+import com.tencent.mm.f.a.et;
+import com.tencent.mm.f.a.et.a;
+import com.tencent.mm.f.a.ew;
+import com.tencent.mm.f.a.ew.a;
+import com.tencent.mm.f.a.fa;
+import com.tencent.mm.f.a.fr;
 import com.tencent.mm.plugin.webview.stub.f;
-import com.tencent.mm.pluginsdk.ui.tools.y.a;
+import com.tencent.mm.pluginsdk.ui.tools.aa.a;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.event.IListener;
@@ -24,87 +24,87 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
-  implements y.a
+  implements aa.a
 {
-  private static a JmC;
-  private static String ics = "lan";
-  public byte[] ISs = null;
-  public boolean ISu = false;
-  public a JmB;
-  private int JmD = -1;
-  public String brandName;
+  private static a QjT;
+  private static String kQZ = "lan";
+  public byte[] POL = null;
+  public boolean PON = false;
+  public a QjS;
+  private int QjU = -1;
+  public String fzM;
   public boolean hasInit = false;
   
-  public static a ggx()
+  public static a gZM()
   {
     AppMethodBeat.i(80486);
-    if (JmC == null) {
-      JmC = new a();
+    if (QjT == null) {
+      QjT = new a();
     }
-    a locala = JmC;
+    a locala = QjT;
     AppMethodBeat.o(80486);
     return locala;
   }
   
-  public final void gbt()
+  public final void gUn()
   {
     AppMethodBeat.i(80487);
-    Log.i("MicroMsg.webview.WebViewExDeviceLanMgr", "stopPlugin, isScaning = %s", new Object[] { Boolean.valueOf(this.ISu) });
-    if (this.ISu)
+    Log.i("MicroMsg.webview.WebViewExDeviceLanMgr", "stopPlugin, isScaning = %s", new Object[] { Boolean.valueOf(this.PON) });
+    if (this.PON)
     {
-      localObject = new fk();
-      ((fk)localObject).dIK.dGW = false;
+      localObject = new fr();
+      ((fr)localObject).fBB.fzN = false;
       EventCenter.instance.publish((IEvent)localObject);
-      this.ISu = false;
+      this.PON = false;
     }
     this.hasInit = false;
-    if (this.JmB != null)
+    if (this.QjS != null)
     {
-      EventCenter.instance.removeListener(this.JmB.ISz);
-      EventCenter.instance.removeListener(this.JmB.JmE);
-      EventCenter.instance.removeListener(this.JmB.JmG);
-      EventCenter.instance.removeListener(this.JmB.JmF);
-      EventCenter.instance.removeListener(this.JmB.JmH);
-      this.JmB = null;
+      EventCenter.instance.removeListener(this.QjS.POS);
+      EventCenter.instance.removeListener(this.QjS.QjV);
+      EventCenter.instance.removeListener(this.QjS.QjX);
+      EventCenter.instance.removeListener(this.QjS.QjW);
+      EventCenter.instance.removeListener(this.QjS.QjY);
+      this.QjS = null;
     }
-    this.ISs = null;
-    Object localObject = new et();
-    ((et)localObject).dIb.dGW = false;
+    this.POL = null;
+    Object localObject = new fa();
+    ((fa)localObject).fAS.fzN = false;
     EventCenter.instance.publish((IEvent)localObject);
     AppMethodBeat.o(80487);
   }
   
-  public final void gbu() {}
+  public final void gUo() {}
   
   public final String getName()
   {
     return "WebViewExDeviceLanMgr";
   }
   
-  public final void hU(Context paramContext) {}
+  public final void iZ(Context paramContext) {}
   
   public static final class a
   {
-    private f ISw;
-    public IListener ISz;
-    public IListener JmE;
-    public IListener JmF;
-    public IListener JmG;
-    public IListener JmH;
-    private String brandName;
+    private f POP;
+    public IListener POS;
+    public IListener QjV;
+    public IListener QjW;
+    public IListener QjX;
+    public IListener QjY;
+    private String fzM;
     
     public a(f paramf, String paramString)
     {
       AppMethodBeat.i(80484);
-      this.ISw = null;
-      this.brandName = "";
-      this.ISz = new IListener() {};
-      this.JmE = new IListener() {};
-      this.JmF = new IListener() {};
-      this.JmG = new IListener() {};
-      this.JmH = new IListener() {};
-      this.ISw = paramf;
-      this.brandName = paramString;
+      this.POP = null;
+      this.fzM = "";
+      this.POS = new IListener() {};
+      this.QjV = new IListener() {};
+      this.QjW = new IListener() {};
+      this.QjX = new IListener() {};
+      this.QjY = new IListener() {};
+      this.POP = paramf;
+      this.fzM = paramString;
       AppMethodBeat.o(80484);
     }
     
@@ -116,7 +116,7 @@ public final class a
         AppMethodBeat.o(80485);
         return false;
       }
-      if (this.ISw == null)
+      if (this.POP == null)
       {
         Log.e("MicroMsg.webview.WebViewExDeviceLanMgr", "callbacker is null");
         AppMethodBeat.o(80485);
@@ -127,80 +127,80 @@ public final class a
       {
         try
         {
-          if (!(paramIEvent instanceof ep)) {
+          if (!(paramIEvent instanceof ew)) {
             continue;
           }
           Log.d("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceOnDeviceBindStateChangeEvent");
-          paramIEvent = (ep)paramIEvent;
-          bool = Util.isNullOrNil(paramIEvent.dHX.dGL);
+          paramIEvent = (ew)paramIEvent;
+          bool = Util.isNullOrNil(paramIEvent.fAO.fzB);
           if (bool)
           {
             AppMethodBeat.o(80485);
             return true;
           }
           localObject = new Bundle();
-          ((Bundle)localObject).putString("exdevice_device_id", paramIEvent.dHX.dGL);
-          ((Bundle)localObject).putBoolean("exdevice_is_bound", paramIEvent.dHX.dGT);
-          this.ISw.f(17, (Bundle)localObject);
+          ((Bundle)localObject).putString("exdevice_device_id", paramIEvent.fAO.fzB);
+          ((Bundle)localObject).putBoolean("exdevice_is_bound", paramIEvent.fAO.fzJ);
+          this.POP.h(17, (Bundle)localObject);
         }
         catch (Exception paramIEvent)
         {
           boolean bool;
           Log.w("MicroMsg.webview.WebViewExDeviceLanMgr", "exception in WVExDeviceEventListener callback, %s", new Object[] { paramIEvent.getMessage() });
           continue;
-          if (!(paramIEvent instanceof ek)) {
+          if (!(paramIEvent instanceof er)) {
             continue;
           }
           Log.d("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceLanDeviceRecvDataEvent");
-          paramIEvent = (ek)paramIEvent;
-          if ((Util.isNullOrNil(paramIEvent.dHP.dGL)) || (Util.isNullOrNil(paramIEvent.dHP.brandName))) {
+          paramIEvent = (er)paramIEvent;
+          if ((Util.isNullOrNil(paramIEvent.fAG.fzB)) || (Util.isNullOrNil(paramIEvent.fAG.fzM))) {
             continue;
           }
-          localObject = paramIEvent.dHP.data;
+          localObject = paramIEvent.fAG.data;
           if (localObject != null) {
             continue;
           }
           AppMethodBeat.o(80485);
           return true;
           localObject = new Bundle();
-          ((Bundle)localObject).putString("exdevice_device_id", paramIEvent.dHP.dGL);
-          ((Bundle)localObject).putByteArray("exdevice_data", paramIEvent.dHP.data);
-          ((Bundle)localObject).putString("exdevice_brand_name", paramIEvent.dHP.brandName);
-          ((Bundle)localObject).putString("exdevice_device_type", a.ics);
-          this.ISw.f(16, (Bundle)localObject);
+          ((Bundle)localObject).putString("exdevice_device_id", paramIEvent.fAG.fzB);
+          ((Bundle)localObject).putByteArray("exdevice_data", paramIEvent.fAG.data);
+          ((Bundle)localObject).putString("exdevice_brand_name", paramIEvent.fAG.fzM);
+          ((Bundle)localObject).putString("exdevice_device_type", a.kQZ);
+          this.POP.h(16, (Bundle)localObject);
           continue;
-          if (!(paramIEvent instanceof el)) {
+          if (!(paramIEvent instanceof es)) {
             continue;
           }
           Log.i("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceLanDeviceScanResultEvent");
-          paramIEvent = (el)paramIEvent;
+          paramIEvent = (es)paramIEvent;
           localObject = new Bundle();
-          ((Bundle)localObject).putString("exdevice_device_id", paramIEvent.dHQ.dGL);
-          ((Bundle)localObject).putByteArray("exdevice_broadcast_data", paramIEvent.dHQ.dHR);
-          ((Bundle)localObject).putBoolean("exdevice_is_complete", paramIEvent.dHQ.brW);
+          ((Bundle)localObject).putString("exdevice_device_id", paramIEvent.fAH.fzB);
+          ((Bundle)localObject).putByteArray("exdevice_broadcast_data", paramIEvent.fAH.fAI);
+          ((Bundle)localObject).putBoolean("exdevice_is_complete", paramIEvent.fAH.bby);
           ((Bundle)localObject).putBoolean("exdevice_is_lan_device", true);
-          ((Bundle)localObject).putString("exdevice_device_type", a.ics);
-          this.ISw.f(15, (Bundle)localObject);
+          ((Bundle)localObject).putString("exdevice_device_type", a.kQZ);
+          this.POP.h(15, (Bundle)localObject);
           continue;
-          if (!(paramIEvent instanceof em)) {
+          if (!(paramIEvent instanceof et)) {
             continue;
           }
           Log.i("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceLanDeviceStateChangeEvent");
-          paramIEvent = (em)paramIEvent;
+          paramIEvent = (et)paramIEvent;
           localObject = new Bundle();
-          if (paramIEvent.dHS.dHT != true) {
+          if (paramIEvent.fAJ.fAK != true) {
             break;
           }
         }
         AppMethodBeat.o(80485);
         return true;
-        if ((paramIEvent instanceof ej))
+        if ((paramIEvent instanceof eq))
         {
           Log.d("MicroMsg.webview.WebViewExDeviceLanMgr", "ExDeviceLanDeviceConnectStateEvent");
-          paramIEvent = (ej)paramIEvent;
-          if (!Util.isNullOrNil(paramIEvent.dHN.dGL))
+          paramIEvent = (eq)paramIEvent;
+          if (!Util.isNullOrNil(paramIEvent.fAE.fzB))
           {
-            bool = this.brandName.equals(paramIEvent.dHN.brandName);
+            bool = this.fzM.equals(paramIEvent.fAE.fzM);
             if (bool) {}
           }
           else
@@ -209,10 +209,10 @@ public final class a
             return true;
           }
           localObject = new Bundle();
-          ((Bundle)localObject).putString("exdevice_device_id", paramIEvent.dHN.dGL);
-          ((Bundle)localObject).putInt("exdevice_on_state_change_state", paramIEvent.dHN.dHO);
-          ((Bundle)localObject).putString("exdevice_device_type", a.ics);
-          this.ISw.f(1004, (Bundle)localObject);
+          ((Bundle)localObject).putString("exdevice_device_id", paramIEvent.fAE.fzB);
+          ((Bundle)localObject).putInt("exdevice_on_state_change_state", paramIEvent.fAE.fAF);
+          ((Bundle)localObject).putString("exdevice_device_type", a.kQZ);
+          this.POP.h(1004, (Bundle)localObject);
         }
         else
         {
@@ -221,7 +221,7 @@ public final class a
       }
       for (;;)
       {
-        this.ISw.f(47, (Bundle)localObject);
+        this.POP.h(47, (Bundle)localObject);
         break;
         ((Bundle)localObject).putBoolean("exdevice_lan_state", false);
       }
@@ -230,7 +230,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.exdevice.a
  * JD-Core Version:    0.7.0.1
  */

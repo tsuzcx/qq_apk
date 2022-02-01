@@ -1,30 +1,29 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
 
 final class LuckyMoneyBusiReceiveUI$8
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  LuckyMoneyBusiReceiveUI$8(LuckyMoneyBusiReceiveUI paramLuckyMoneyBusiReceiveUI) {}
+  LuckyMoneyBusiReceiveUI$8(LuckyMoneyBusiReceiveUI paramLuckyMoneyBusiReceiveUI, View paramView) {}
   
-  public final void onClick(View paramView)
+  public final void onAnimationEnd(Animation paramAnimation)
   {
-    AppMethodBeat.i(65492);
-    b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyBusiReceiveUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    this.zcJ.finish();
-    a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyBusiReceiveUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(65492);
+    AppMethodBeat.i(205650);
+    this.EHk.setVisibility(8);
+    AppMethodBeat.o(205650);
   }
+  
+  public final void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public final void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyBusiReceiveUI.8
  * JD-Core Version:    0.7.0.1
  */

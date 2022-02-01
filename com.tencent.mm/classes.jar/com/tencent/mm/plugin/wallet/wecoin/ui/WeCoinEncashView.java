@@ -2,17 +2,11 @@ package com.tencent.mm.plugin.wallet.wecoin.ui;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
 import android.text.SpannableString;
 import android.text.TextWatcher;
@@ -30,230 +24,236 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.s;
+import androidx.lifecycle.y;
+import androidx.lifecycle.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wallet.wecoin.c.c;
-import com.tencent.mm.plugin.wallet.wecoin.model.WeCoinEncashViewModel;
 import com.tencent.mm.plugin.wallet.wecoin.model.WecoinEncashKVData;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.span.o;
-import com.tencent.mm.protocal.protobuf.ajj;
-import com.tencent.mm.protocal.protobuf.ddc;
-import com.tencent.mm.protocal.protobuf.dek;
-import com.tencent.mm.protocal.protobuf.fbz;
+import com.tencent.mm.protocal.protobuf.akk;
+import com.tencent.mm.protocal.protobuf.dms;
+import com.tencent.mm.protocal.protobuf.doa;
+import com.tencent.mm.protocal.protobuf.fmw;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import com.tencent.mm.wallet_core.c.ah;
 import com.tencent.mm.wallet_core.keyboard.WcPayKeyboard;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
-import com.tencent.mm.wallet_core.ui.e;
-import com.tencent.mm.wallet_core.ui.e.a;
 import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.f.a;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
+import com.tencent.mm.wallet_core.ui.g;
 import kotlin.g.b.p;
-import kotlin.l;
 import kotlin.n.n;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/wallet/wecoin/ui/WeCoinEncashView;", "Lcom/tencent/mm/wallet_core/ui/WalletBaseUI;", "()V", "autoShowWxKbRunnable", "Ljava/lang/Runnable;", "hintTextColor", "", "inputValid", "", "mEncashTitleTV", "Landroid/widget/TextView;", "mInputMoneyText", "Lcom/tencent/mm/wallet_core/ui/formview/WalletFormView;", "mTotalBalanceWithdrawTip", "mViewModel", "Lcom/tencent/mm/plugin/wallet/wecoin/model/WeCoinEncashViewModel;", "mWxKbInterceptState", "mainContent", "Landroid/view/ViewGroup;", "originHintWording", "", "rootView", "Landroid/widget/ScrollView;", "state", "bindData", "", "checkSetSaveFetchButtonEnable", "enable", "getLayoutId", "gotoWeCoinFetchResultUI", "info", "Lcom/tencent/mm/protocal/protobuf/EncashResultPageInfo;", "handleInterceptWinInfo", "Lcom/tencent/mm/protocal/protobuf/PrepareIncomeEncashResponse;", "initKVData", "initKeyBoardView", "initView", "isHandleAutoShowNormalStWcKb", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCheckPwdSucceeded", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onDialogDismiss", "dialog", "Landroid/app/Dialog;", "onKeyUp", "keyCode", "event", "Landroid/view/KeyEvent;", "onPause", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "prepareEncashRequest", "amount", "", "removeWxKbRunnables", "scrollTop", "setupViews", "showDialog", "show", "(Ljava/lang/Boolean;)V", "showErrorMsg", "Lcom/tencent/mm/plugin/wallet/wecoin/model/CgiRespInfo;", "startCheckPwdUI", "params", "Lcom/tencent/mm/protocal/protobuf/WxPayUserTokenParams;", "updateTipsText", "money", "updateView", "Companion", "plugin-wxpay_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/wallet/wecoin/ui/WeCoinEncashView;", "Lcom/tencent/mm/wallet_core/ui/WalletBaseUI;", "()V", "autoShowWxKbRunnable", "Ljava/lang/Runnable;", "hintTextColor", "", "inputValid", "", "mEncashTitleTV", "Landroid/widget/TextView;", "mInputMoneyText", "Lcom/tencent/mm/wallet_core/ui/formview/WalletFormView;", "mTotalBalanceWithdrawTip", "mViewModel", "Lcom/tencent/mm/plugin/wallet/wecoin/model/WeCoinEncashViewModel;", "mWxKbInterceptState", "mainContent", "Landroid/view/ViewGroup;", "originHintWording", "", "rootView", "Landroid/widget/ScrollView;", "state", "bindData", "", "checkSetSaveFetchButtonEnable", "enable", "getLayoutId", "gotoWeCoinFetchResultUI", "info", "Lcom/tencent/mm/protocal/protobuf/EncashResultPageInfo;", "handleInterceptWinInfo", "Lcom/tencent/mm/protocal/protobuf/PrepareIncomeEncashResponse;", "initKVData", "initKeyBoardView", "initView", "isHandleAutoShowNormalStWcKb", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCheckPwdSucceeded", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onDialogDismiss", "dialog", "Landroid/app/Dialog;", "onKeyUp", "keyCode", "event", "Landroid/view/KeyEvent;", "onPause", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "prepareEncashRequest", "amount", "", "removeWxKbRunnables", "scrollTop", "setupViews", "showDialog", "show", "(Ljava/lang/Boolean;)V", "showErrorMsg", "Lcom/tencent/mm/plugin/wallet/wecoin/model/CgiRespInfo;", "startCheckPwdUI", "params", "Lcom/tencent/mm/protocal/protobuf/WxPayUserTokenParams;", "updateTipsText", "money", "updateView", "Companion", "plugin-wxpay_release"})
 public class WeCoinEncashView
   extends WalletBaseUI
 {
-  public static final WeCoinEncashView.a HOP;
-  private ViewGroup HAO;
-  private ScrollView HBm;
-  private CharSequence HBr;
-  private boolean HBz;
-  private TextView HOL;
-  private WalletFormView HOM;
-  private TextView HON;
-  private WeCoinEncashViewModel HOO;
-  private boolean HvA;
-  private final Runnable jVx;
+  public static final WeCoinEncashView.a OGM;
+  private TextView OGI;
+  private WalletFormView OGJ;
+  private TextView OGK;
+  private com.tencent.mm.plugin.wallet.wecoin.model.h OGL;
+  private boolean Onn;
+  private ViewGroup OsE;
+  private ScrollView Otc;
+  private CharSequence Oth;
+  private boolean Otp;
+  private int hintTextColor;
+  private final Runnable mMK;
   private int state;
-  private int wfU;
   
   static
   {
-    AppMethodBeat.i(212826);
-    HOP = new WeCoinEncashView.a((byte)0);
-    AppMethodBeat.o(212826);
+    AppMethodBeat.i(249216);
+    OGM = new WeCoinEncashView.a((byte)0);
+    AppMethodBeat.o(249216);
   }
   
   public WeCoinEncashView()
   {
-    AppMethodBeat.i(212825);
+    AppMethodBeat.i(249215);
     Context localContext = MMApplicationContext.getContext();
-    p.g(localContext, "MMApplicationContext.getContext()");
-    this.wfU = localContext.getResources().getColor(2131099748);
-    this.jVx = ((Runnable)new b(this));
-    AppMethodBeat.o(212825);
+    p.j(localContext, "MMApplicationContext.getContext()");
+    this.hintTextColor = localContext.getResources().getColor(a.c.FG_1);
+    this.mMK = ((Runnable)new b(this));
+    AppMethodBeat.o(249215);
   }
   
-  private final void xP(boolean paramBoolean)
+  private final void BJ(boolean paramBoolean)
   {
-    AppMethodBeat.i(212823);
+    AppMethodBeat.i(249213);
     Log.i("MicroMsg.WeCoinEncashView", "check enable: %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    if ((!paramBoolean) || (!this.HBz))
+    if ((!paramBoolean) || (!this.Otp))
     {
-      this.mWcKeyboard.DH(false);
-      AppMethodBeat.o(212823);
+      this.mWcKeyboard.Ih(false);
+      AppMethodBeat.o(249213);
       return;
     }
-    this.mWcKeyboard.DH(true);
-    AppMethodBeat.o(212823);
+    this.mWcKeyboard.Ih(true);
+    AppMethodBeat.o(249213);
   }
   
   public int getLayoutId()
   {
-    return 2131492965;
+    return a.g.activity_we_coin_encash_ui;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(212821);
+    AppMethodBeat.i(249211);
     setBackBtn((MenuItem.OnMenuItemClickListener)new j(this));
-    setActionbarColor(getResources().getColor(2131100898));
+    setActionbarColor(getResources().getColor(a.c.normal_actionbar_color));
     hideActionbarLine();
-    Object localObject1 = findViewById(2131302681);
-    p.g(localObject1, "findViewById(R.id.input_money_wv)");
-    this.HOM = ((WalletFormView)localObject1);
-    localObject1 = findViewById(2131300119);
-    p.g(localObject1, "findViewById(R.id.encash_money_title_tv)");
-    this.HOL = ((TextView)localObject1);
-    localObject1 = findViewById(2131304321);
-    p.g(localObject1, "findViewById(R.id.main_content)");
-    this.HAO = ((ViewGroup)localObject1);
-    localObject1 = findViewById(2131309361);
-    p.g(localObject1, "findViewById(R.id.total_balance_hint)");
-    this.HON = ((TextView)localObject1);
-    localObject1 = findViewById(2131303992);
-    p.g(localObject1, "findViewById(R.id.lqt_root_view)");
-    this.HBm = ((ScrollView)localObject1);
-    localObject1 = this.HOM;
+    Object localObject1 = findViewById(a.f.input_money_wv);
+    p.j(localObject1, "findViewById(R.id.input_money_wv)");
+    this.OGJ = ((WalletFormView)localObject1);
+    localObject1 = findViewById(a.f.encash_money_title_tv);
+    p.j(localObject1, "findViewById(R.id.encash_money_title_tv)");
+    this.OGI = ((TextView)localObject1);
+    localObject1 = findViewById(a.f.main_content);
+    p.j(localObject1, "findViewById(R.id.main_content)");
+    this.OsE = ((ViewGroup)localObject1);
+    localObject1 = findViewById(a.f.total_balance_hint);
+    p.j(localObject1, "findViewById(R.id.total_balance_hint)");
+    this.OGK = ((TextView)localObject1);
+    localObject1 = findViewById(a.f.lqt_root_view);
+    p.j(localObject1, "findViewById(R.id.lqt_root_view)");
+    this.Otc = ((ScrollView)localObject1);
+    localObject1 = this.OGJ;
     if (localObject1 == null) {
-      p.btv("mInputMoneyText");
+      p.bGy("mInputMoneyText");
     }
     localObject1 = ((WalletFormView)localObject1).getTitleTv();
-    p.g(localObject1, "mInputMoneyText.titleTv");
-    ((TextView)localObject1).setText((CharSequence)ah.hhA());
-    localObject1 = this.HON;
+    p.j(localObject1, "mInputMoneyText.titleTv");
+    ((TextView)localObject1).setText((CharSequence)ah.ijc());
+    localObject1 = this.OGK;
     if (localObject1 == null) {
-      p.btv("mTotalBalanceWithdrawTip");
+      p.bGy("mTotalBalanceWithdrawTip");
     }
     ((TextView)localObject1).setText((CharSequence)"");
-    localObject1 = this.HON;
+    localObject1 = this.OGK;
     if (localObject1 == null) {
-      p.btv("mTotalBalanceWithdrawTip");
+      p.bGy("mTotalBalanceWithdrawTip");
     }
     ((TextView)localObject1).setClickable(true);
-    localObject1 = this.HON;
+    localObject1 = this.OGK;
     if (localObject1 == null) {
-      p.btv("mTotalBalanceWithdrawTip");
+      p.bGy("mTotalBalanceWithdrawTip");
     }
     ((TextView)localObject1).setOnTouchListener((View.OnTouchListener)new o((Context)this));
-    localObject1 = (TextView)findViewById(2131303907);
-    p.g(localObject1, "cftText");
-    ao.a((Paint)((TextView)localObject1).getPaint(), 0.8F);
-    setMMTitle(2131767447);
+    localObject1 = (TextView)findViewById(a.f.lqt_balance_bankcard);
+    p.j(localObject1, "cftText");
+    ar.a((Paint)((TextView)localObject1).getPaint(), 0.8F);
+    setMMTitle(a.i.wallet_balance_manager_fetch);
     this.state = 1;
-    this.mWcKeyboard = ((WcPayKeyboard)findViewById(2131310544));
+    this.mWcKeyboard = ((WcPayKeyboard)findViewById(a.f.wp_kb));
     localObject1 = this.mWcKeyboard;
-    p.g(localObject1, "mWcKeyboard");
+    p.j(localObject1, "mWcKeyboard");
     localObject1 = ((WcPayKeyboard)localObject1).getLayoutParams();
     if (localObject1 == null)
     {
       localObject1 = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-      AppMethodBeat.o(212821);
+      AppMethodBeat.o(249211);
       throw ((Throwable)localObject1);
     }
     localObject1 = (RelativeLayout.LayoutParams)localObject1;
     ((RelativeLayout.LayoutParams)localObject1).addRule(12);
     Object localObject2 = this.mWcKeyboard;
-    p.g(localObject2, "mWcKeyboard");
+    p.j(localObject2, "mWcKeyboard");
     ((WcPayKeyboard)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    localObject1 = this.HOM;
+    localObject1 = this.OGJ;
     if (localObject1 == null) {
-      p.btv("mInputMoneyText");
+      p.bGy("mInputMoneyText");
     }
     setWPKeyboard(((WalletFormView)localObject1).getContentEt(), false, false);
-    this.mWcKeyboard.setActionText(getString(2131767447));
-    if (d.oF(27))
+    this.mWcKeyboard.setActionText(getString(a.i.wallet_balance_manager_fetch));
+    if (d.qX(27))
     {
-      localObject1 = this.HOM;
+      localObject1 = this.OGJ;
       if (localObject1 == null) {
-        p.btv("mInputMoneyText");
+        p.bGy("mInputMoneyText");
       }
-      ((WalletFormView)localObject1).hic();
+      ((WalletFormView)localObject1).ijE();
     }
-    localObject1 = this.HAO;
+    localObject1 = this.OsE;
     if (localObject1 == null) {
-      p.btv("mainContent");
+      p.bGy("mainContent");
     }
     ((ViewGroup)localObject1).setOnTouchListener((View.OnTouchListener)new i(this));
-    xP(false);
-    localObject1 = this.HOM;
+    BJ(false);
+    localObject1 = this.OGJ;
     if (localObject1 == null) {
-      p.btv("mInputMoneyText");
+      p.bGy("mInputMoneyText");
     }
     ((WalletFormView)localObject1).a((TextWatcher)new l(this));
     setTenpayKBStateListener((com.tencent.mm.wallet_core.ui.a)new m(this));
     localObject1 = (View.OnClickListener)new o(this);
-    localObject2 = this.HOM;
+    localObject2 = this.OGJ;
     if (localObject2 == null) {
-      p.btv("mInputMoneyText");
+      p.bGy("mInputMoneyText");
     }
     ((WalletFormView)localObject2).getContentEt().setOnEditorActionListener((TextView.OnEditorActionListener)new WeCoinEncashView.n((View.OnClickListener)localObject1));
     final long l = getIntent().getLongExtra("wecoin_income_balance", 0L);
     if (l > 0L)
     {
-      localObject1 = getString(2131768690, new Object[] { Double.valueOf(c.lo(String.valueOf(l), "100")) });
-      p.g(localObject1, "getString(R.string.wecoi…igDecimal.ROUND_CEILING))");
+      localObject1 = getString(a.i.wecoin_income_total_fetch_balance, new Object[] { Double.valueOf(c.lL(String.valueOf(l), "100")) });
+      p.j(localObject1, "getString(R.string.wecoi…igDecimal.ROUND_CEILING))");
       int i = ((String)localObject1).length();
-      localObject1 = new SpannableString((CharSequence)((String)localObject1 + " " + getString(2131768691)));
-      ((SpannableString)localObject1).setSpan(new e((e.a)new p(this, l)), i, ((SpannableString)localObject1).length(), 18);
-      this.HBr = ((CharSequence)localObject1);
-      localObject2 = this.HON;
+      localObject1 = new SpannableString((CharSequence)((String)localObject1 + " " + getString(a.i.wecoin_income_total_fetch_wording)));
+      ((SpannableString)localObject1).setSpan(new f((f.a)new p(this, l)), i, ((SpannableString)localObject1).length(), 18);
+      this.Oth = ((CharSequence)localObject1);
+      localObject2 = this.OGK;
       if (localObject2 == null) {
-        p.btv("mTotalBalanceWithdrawTip");
+        p.bGy("mTotalBalanceWithdrawTip");
       }
       ((TextView)localObject2).setText((CharSequence)localObject1);
     }
-    AppMethodBeat.o(212821);
+    AppMethodBeat.o(249211);
   }
   
   public boolean isHandleAutoShowNormalStWcKb()
   {
-    AppMethodBeat.i(212824);
-    boolean bool = this.HvA;
+    AppMethodBeat.i(249214);
+    boolean bool = this.Onn;
     WcPayKeyboard localWcPayKeyboard = this.mWcKeyboard;
-    p.g(localWcPayKeyboard, "mWcKeyboard");
-    Log.d("MicroMsg.WeCoinEncashView", "isHandleAutoShowNormalStWcKb() mWxKbInterceptState:%s isAutoShowNormalStWcKb:%s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(localWcPayKeyboard.hgR()) });
-    if (!this.HvA)
+    p.j(localWcPayKeyboard, "mWcKeyboard");
+    Log.d("MicroMsg.WeCoinEncashView", "isHandleAutoShowNormalStWcKb() mWxKbInterceptState:%s isAutoShowNormalStWcKb:%s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(localWcPayKeyboard.iit()) });
+    if (!this.Onn)
     {
       localWcPayKeyboard = this.mWcKeyboard;
-      p.g(localWcPayKeyboard, "mWcKeyboard");
-      if (localWcPayKeyboard.hgR())
+      p.j(localWcPayKeyboard, "mWcKeyboard");
+      if (localWcPayKeyboard.iit())
       {
-        AppMethodBeat.o(212824);
+        AppMethodBeat.o(249214);
         return true;
       }
     }
-    AppMethodBeat.o(212824);
+    AppMethodBeat.o(249214);
     return false;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(212820);
+    AppMethodBeat.i(249208);
     Log.i("MicroMsg.WeCoinEncashView", "onActivityResult() requestCode:%s, resultCode:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if (paramInt1 != 3001)
     {
-      AppMethodBeat.o(212820);
+      AppMethodBeat.o(249208);
       return;
     }
     if (paramInt2 == -1)
@@ -273,135 +273,135 @@ public class WeCoinEncashView
         if (paramInt1 != 0) {
           break label151;
         }
-        h.CyF.dN(1581, 95);
-        localObject = this.HOO;
+        com.tencent.mm.plugin.report.service.h.IzE.el(1581, 95);
+        localObject = this.OGL;
         if (localObject == null) {
-          p.btv("mViewModel");
+          p.bGy("mViewModel");
         }
-        ((WeCoinEncashViewModel)localObject).a(paramIntent, (com.tencent.mm.vending.e.b)this);
-        AppMethodBeat.o(212820);
+        ((com.tencent.mm.plugin.wallet.wecoin.model.h)localObject).a(paramIntent, (com.tencent.mm.vending.e.b)this);
+        AppMethodBeat.o(249208);
         return;
         paramIntent = null;
         break;
       }
       label151:
-      paramIntent = this.HOO;
+      paramIntent = this.OGL;
       if (paramIntent == null) {
-        p.btv("mViewModel");
+        p.bGy("mViewModel");
       }
-      paramIntent.aeH(5);
-      h.CyF.dN(1581, 94);
-      AppMethodBeat.o(212820);
+      paramIntent.amu(5);
+      com.tencent.mm.plugin.report.service.h.IzE.el(1581, 94);
+      AppMethodBeat.o(249208);
       return;
     }
     if (paramInt2 == 0)
     {
-      paramIntent = this.HOO;
+      paramIntent = this.OGL;
       if (paramIntent == null) {
-        p.btv("mViewModel");
+        p.bGy("mViewModel");
       }
-      paramIntent.aeH(5);
-      h.CyF.dN(1581, 94);
+      paramIntent.amu(5);
+      com.tencent.mm.plugin.report.service.h.IzE.el(1581, 94);
     }
-    AppMethodBeat.o(212820);
+    AppMethodBeat.o(249208);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(212815);
+    AppMethodBeat.i(249201);
     super.onCreate(paramBundle);
     initView();
-    paramBundle = ViewModelProviders.of((FragmentActivity)this).get(WeCoinEncashViewModel.class);
-    p.g(paramBundle, "ViewModelProviders.of(th…ashViewModel::class.java)");
-    this.HOO = ((WeCoinEncashViewModel)paramBundle);
-    paramBundle = this.HOO;
+    paramBundle = z.a((FragmentActivity)this).i(com.tencent.mm.plugin.wallet.wecoin.model.h.class);
+    p.j(paramBundle, "ViewModelProviders.of(th…ashViewModel::class.java)");
+    this.OGL = ((com.tencent.mm.plugin.wallet.wecoin.model.h)paramBundle);
+    paramBundle = this.OGL;
     if (paramBundle == null) {
-      p.btv("mViewModel");
+      p.bGy("mViewModel");
     }
-    ((LiveData)paramBundle.HNi).observe((LifecycleOwner)this, (Observer)new c(this));
-    paramBundle = this.HOO;
+    ((LiveData)paramBundle.OFe).a((androidx.lifecycle.l)this, (s)new c(this));
+    paramBundle = this.OGL;
     if (paramBundle == null) {
-      p.btv("mViewModel");
+      p.bGy("mViewModel");
     }
-    ((LiveData)paramBundle.HMQ).observe((LifecycleOwner)this, (Observer)new d(this));
-    paramBundle = this.HOO;
+    ((LiveData)paramBundle.OEM).a((androidx.lifecycle.l)this, (s)new d(this));
+    paramBundle = this.OGL;
     if (paramBundle == null) {
-      p.btv("mViewModel");
+      p.bGy("mViewModel");
     }
-    ((LiveData)paramBundle.HNj).observe((LifecycleOwner)this, (Observer)new e(this));
-    paramBundle = this.HOO;
+    ((LiveData)paramBundle.OFf).a((androidx.lifecycle.l)this, (s)new e(this));
+    paramBundle = this.OGL;
     if (paramBundle == null) {
-      p.btv("mViewModel");
+      p.bGy("mViewModel");
     }
-    ((LiveData)paramBundle.HMS).observe((LifecycleOwner)this, (Observer)new f(this));
-    paramBundle = this.HOO;
+    ((LiveData)paramBundle.OEO).a((androidx.lifecycle.l)this, (s)new f(this));
+    paramBundle = this.OGL;
     if (paramBundle == null) {
-      p.btv("mViewModel");
+      p.bGy("mViewModel");
     }
-    ((LiveData)paramBundle.qiR).observe((LifecycleOwner)this, (Observer)new g(this));
-    paramBundle = this.HOO;
+    ((LiveData)paramBundle.tEN).a((androidx.lifecycle.l)this, (s)new g(this));
+    paramBundle = this.OGL;
     if (paramBundle == null) {
-      p.btv("mViewModel");
+      p.bGy("mViewModel");
     }
-    paramBundle.HNm = ((WecoinEncashKVData)getIntent().getParcelableExtra("wecoin_enter_encash_business_kv_data"));
-    AppMethodBeat.o(212815);
+    paramBundle.OFi = ((WecoinEncashKVData)getIntent().getParcelableExtra("wecoin_enter_encash_business_kv_data"));
+    AppMethodBeat.o(249201);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(212818);
+    AppMethodBeat.i(249204);
     super.onDestroy();
-    MMHandlerThread.removeRunnable(this.jVx);
-    AppMethodBeat.o(212818);
+    MMHandlerThread.removeRunnable(this.mMK);
+    AppMethodBeat.o(249204);
   }
   
   public void onDialogDismiss(Dialog paramDialog)
   {
-    AppMethodBeat.i(212822);
+    AppMethodBeat.i(249212);
     Log.i("MicroMsg.WeCoinEncashView", "onDialogDismiss()");
     if ((this.state == 2) && (isHandleAutoShowNormalStWcKb())) {
-      MMHandlerThread.postToMainThreadDelayed(this.jVx, 300L);
+      MMHandlerThread.postToMainThreadDelayed(this.mMK, 300L);
     }
-    AppMethodBeat.o(212822);
+    AppMethodBeat.o(249212);
   }
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(212819);
-    p.h(paramKeyEvent, "event");
+    AppMethodBeat.i(249206);
+    p.k(paramKeyEvent, "event");
     if ((this.mWcKeyboard != null) && (this.mWcKeyboard.onKeyUp(paramInt, paramKeyEvent)))
     {
-      AppMethodBeat.o(212819);
+      AppMethodBeat.o(249206);
       return true;
     }
     boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
-    AppMethodBeat.o(212819);
+    AppMethodBeat.o(249206);
     return bool;
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(212817);
+    AppMethodBeat.i(249203);
     super.onPause();
     Log.i("MicroMsg.WeCoinEncashView", "onPause()");
     WcPayKeyboard localWcPayKeyboard = this.mWcKeyboard;
-    p.g(localWcPayKeyboard, "mWcKeyboard");
-    if (!localWcPayKeyboard.hgQ()) {
+    p.j(localWcPayKeyboard, "mWcKeyboard");
+    if (!localWcPayKeyboard.iis()) {
       this.state = 3;
     }
-    AppMethodBeat.o(212817);
+    AppMethodBeat.o(249203);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(212816);
+    AppMethodBeat.i(249202);
     super.onResume();
     Log.i("MicroMsg.WeCoinEncashView", "onResume()");
     if ((this.state == 3) && (isHandleAutoShowNormalStWcKb())) {
-      MMHandlerThread.postToMainThreadDelayed(this.jVx, 300L);
+      MMHandlerThread.postToMainThreadDelayed(this.mMK, 300L);
     }
     this.state = 2;
-    AppMethodBeat.o(212816);
+    AppMethodBeat.o(249202);
   }
   
   public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
@@ -415,7 +415,7 @@ public class WeCoinEncashView
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -423,69 +423,69 @@ public class WeCoinEncashView
     
     public final void run()
     {
-      AppMethodBeat.i(212798);
-      this.HOQ.showNormalStWcKb();
-      AppMethodBeat.o(212798);
+      AppMethodBeat.i(276907);
+      this.OGN.showNormalStWcKb();
+      AppMethodBeat.o(276907);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/WxPayUserTokenParams;", "onChanged"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/WxPayUserTokenParams;", "kotlin.jvm.PlatformType", "onChanged"})
   static final class c<T>
-    implements Observer<fbz>
+    implements s<fmw>
   {
     c(WeCoinEncashView paramWeCoinEncashView) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/wallet/wecoin/model/CgiRespInfo;", "onChanged"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/wallet/wecoin/model/CgiRespInfo;", "kotlin.jvm.PlatformType", "onChanged"})
   static final class d<T>
-    implements Observer<com.tencent.mm.plugin.wallet.wecoin.model.a>
+    implements s<com.tencent.mm.plugin.wallet.wecoin.model.a>
   {
     d(WeCoinEncashView paramWeCoinEncashView) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/EncashResultPageInfo;", "onChanged"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/EncashResultPageInfo;", "kotlin.jvm.PlatformType", "onChanged"})
   static final class e<T>
-    implements Observer<ajj>
+    implements s<akk>
   {
     e(WeCoinEncashView paramWeCoinEncashView) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/PrepareIncomeEncashResponse;", "onChanged"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/PrepareIncomeEncashResponse;", "kotlin.jvm.PlatformType", "onChanged"})
   static final class f<T>
-    implements Observer<dek>
+    implements s<doa>
   {
     f(WeCoinEncashView paramWeCoinEncashView) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "onChanged", "(Ljava/lang/Boolean;)V"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onChanged", "(Ljava/lang/Boolean;)V"})
   static final class g<T>
-    implements Observer<Boolean>
+    implements s<Boolean>
   {
     g(WeCoinEncashView paramWeCoinEncashView) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinEncashView$handleInterceptWinInfo$1$clickListener$1", "Lcom/tencent/mm/plugin/wallet/wecoin/model/InterceptWinClickListener;", "onClick", "", "item", "Lcom/tencent/mm/protocal/protobuf/PopUpJumpInfo;", "plugin-wxpay_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinEncashView$handleInterceptWinInfo$1$clickListener$1", "Lcom/tencent/mm/plugin/wallet/wecoin/model/InterceptWinClickListener;", "onClick", "", "item", "Lcom/tencent/mm/protocal/protobuf/PopUpJumpInfo;", "plugin-wxpay_release"})
   public static final class h
     implements com.tencent.mm.plugin.wallet.wecoin.model.b
   {
-    h(fbz paramfbz, WeCoinEncashView paramWeCoinEncashView, dek paramdek) {}
+    h(fmw paramfmw, WeCoinEncashView paramWeCoinEncashView, doa paramdoa) {}
     
-    public final void a(ddc paramddc)
+    public final void a(dms paramdms)
     {
-      AppMethodBeat.i(212804);
-      if (paramddc != null)
+      AppMethodBeat.i(269704);
+      if (paramdms != null)
       {
-        if (paramddc.action == 3) {
-          WeCoinEncashView.a(this.HOQ, this.HOR);
+        if (paramdms.action == 3) {
+          WeCoinEncashView.a(this.OGN, this.OGO);
         }
-        AppMethodBeat.o(212804);
+        AppMethodBeat.o(269704);
         return;
       }
-      AppMethodBeat.o(212804);
+      AppMethodBeat.o(269704);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
   static final class i
     implements View.OnTouchListener
   {
@@ -493,26 +493,26 @@ public class WeCoinEncashView
     
     public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(212805);
-      paramView = WeCoinEncashView.d(this.HOQ);
-      p.g(paramView, "mWcKeyboard");
+      AppMethodBeat.i(268339);
+      paramView = WeCoinEncashView.d(this.OGN);
+      p.j(paramView, "mWcKeyboard");
       if (paramView.isShown())
       {
-        paramView = WeCoinEncashView.d(this.HOQ);
-        p.g(paramView, "mWcKeyboard");
-        if (paramView.hgP())
+        paramView = WeCoinEncashView.d(this.OGN);
+        p.j(paramView, "mWcKeyboard");
+        if (paramView.iir())
         {
-          WeCoinEncashView.d(this.HOQ).hgN();
-          AppMethodBeat.o(212805);
+          WeCoinEncashView.d(this.OGN).iip();
+          AppMethodBeat.o(268339);
           return true;
         }
       }
-      AppMethodBeat.o(212805);
+      AppMethodBeat.o(268339);
       return false;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class j
     implements MenuItem.OnMenuItemClickListener
   {
@@ -520,24 +520,24 @@ public class WeCoinEncashView
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(212806);
-      WeCoinEncashView.a(this.HOQ).aeH(20);
-      WeCoinEncashView.b(this.HOQ);
-      if (WeCoinEncashView.c(this.HOQ))
+      AppMethodBeat.i(203548);
+      WeCoinEncashView.a(this.OGN).amu(20);
+      WeCoinEncashView.b(this.OGN);
+      if (WeCoinEncashView.c(this.OGN))
       {
-        this.HOQ.hideVKB();
-        this.HOQ.showDialog(1000);
+        this.OGN.hideVKB();
+        this.OGN.showDialog(1000);
       }
       for (;;)
       {
-        AppMethodBeat.o(212806);
+        AppMethodBeat.o(203548);
         return true;
-        this.HOQ.finish();
+        this.OGN.finish();
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class k
     implements Runnable
   {
@@ -545,29 +545,29 @@ public class WeCoinEncashView
     
     public final void run()
     {
-      AppMethodBeat.i(212807);
+      AppMethodBeat.i(271935);
       int[] arrayOfInt1 = new int[2];
       int[] arrayOfInt2 = new int[2];
-      WeCoinEncashView.h(this.HOQ).getLocationInWindow(arrayOfInt1);
-      WeCoinEncashView.g(this.HOQ).getLocationInWindow(arrayOfInt2);
+      WeCoinEncashView.h(this.OGN).getLocationInWindow(arrayOfInt1);
+      WeCoinEncashView.g(this.OGN).getLocationInWindow(arrayOfInt2);
       Log.d("MicroMsg.WeCoinEncashView", "scroll y: %s", new Object[] { Integer.valueOf(arrayOfInt1[1] - arrayOfInt2[1]) });
-      WeCoinEncashView.g(this.HOQ).scrollBy(0, arrayOfInt1[1] - arrayOfInt2[1]);
-      AppMethodBeat.o(212807);
+      WeCoinEncashView.g(this.OGN).scrollBy(0, arrayOfInt1[1] - arrayOfInt2[1]);
+      AppMethodBeat.o(271935);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinEncashView$setupViews$1", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-wxpay_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinEncashView$setupViews$1", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-wxpay_release"})
   public static final class l
     implements TextWatcher
   {
     public final void afterTextChanged(Editable paramEditable)
     {
-      AppMethodBeat.i(212810);
-      p.h(paramEditable, "s");
+      AppMethodBeat.i(190948);
+      p.k(paramEditable, "s");
       String str = paramEditable.toString();
       int i;
       int j;
-      if (n.J(str, ".", false))
+      if (n.M(str, ".", false))
       {
         paramEditable.insert(0, (CharSequence)"0");
         str = paramEditable.toString();
@@ -576,44 +576,44 @@ public class WeCoinEncashView
         if ((i < 0) || (j - i <= 3)) {
           break label141;
         }
-        WalletFormView.a(WeCoinEncashView.e(this.HOQ).getContentEt(), str, i + 3, j);
+        WalletFormView.a(WeCoinEncashView.e(this.OGN).getContentEt(), str, i + 3, j);
       }
       for (;;)
       {
         paramEditable = paramEditable.toString();
-        WeCoinEncashView.a(this.HOQ, paramEditable);
-        AppMethodBeat.o(212810);
+        WeCoinEncashView.a(this.OGN, paramEditable);
+        AppMethodBeat.o(190948);
         return;
-        if (!WalletFormView.a(str, WeCoinEncashView.e(this.HOQ).getContentEt())) {
+        if (!WalletFormView.a(str, WeCoinEncashView.e(this.OGN).getContentEt())) {
           break;
         }
-        AppMethodBeat.o(212810);
+        AppMethodBeat.o(190948);
         return;
         label141:
         if (i > 12) {
-          WalletFormView.a(WeCoinEncashView.e(this.HOQ).getContentEt(), str, 12, i);
+          WalletFormView.a(WeCoinEncashView.e(this.OGN).getContentEt(), str, 12, i);
         } else if ((i == -1) && (j > 12)) {
-          WalletFormView.a(WeCoinEncashView.e(this.HOQ).getContentEt(), str, 12, j);
+          WalletFormView.a(WeCoinEncashView.e(this.OGN).getContentEt(), str, 12, j);
         }
       }
     }
     
     public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
     {
-      AppMethodBeat.i(212808);
-      p.h(paramCharSequence, "s");
-      AppMethodBeat.o(212808);
+      AppMethodBeat.i(190940);
+      p.k(paramCharSequence, "s");
+      AppMethodBeat.o(190940);
     }
     
     public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
     {
-      AppMethodBeat.i(212809);
-      p.h(paramCharSequence, "s");
-      AppMethodBeat.o(212809);
+      AppMethodBeat.i(190942);
+      p.k(paramCharSequence, "s");
+      AppMethodBeat.o(190942);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "visitable", "", "onVisibleStateChange"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "visitable", "", "onVisibleStateChange"})
   static final class m
     implements com.tencent.mm.wallet_core.ui.a
   {
@@ -621,19 +621,19 @@ public class WeCoinEncashView
     
     public final void onVisibleStateChange(boolean paramBoolean)
     {
-      AppMethodBeat.i(212811);
+      AppMethodBeat.i(206979);
       if (paramBoolean)
       {
-        WeCoinEncashView.f(this.HOQ);
-        AppMethodBeat.o(212811);
+        WeCoinEncashView.f(this.OGN);
+        AppMethodBeat.o(206979);
         return;
       }
-      WeCoinEncashView.g(this.HOQ).scrollTo(0, 0);
-      AppMethodBeat.o(212811);
+      WeCoinEncashView.g(this.OGN).scrollTo(0, 0);
+      AppMethodBeat.o(206979);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class o
     implements View.OnClickListener
   {
@@ -641,51 +641,51 @@ public class WeCoinEncashView
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(212813);
+      AppMethodBeat.i(226299);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinEncashView$setupViews$clickListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinEncashView$setupViews$clickListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
       if (c.isFastClick())
       {
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinEncashView$setupViews$clickListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(212813);
+        AppMethodBeat.o(226299);
         return;
       }
-      paramView = WeCoinEncashView.e(this.HOQ).getText();
-      p.g(paramView, "mInputMoneyText.text");
-      int i = c.lp(paramView, "100");
+      paramView = WeCoinEncashView.e(this.OGN).getText();
+      p.j(paramView, "mInputMoneyText.text");
+      int i = c.lM(paramView, "100");
       if (i > 0)
       {
-        WeCoinEncashView.a(this.HOQ).aeH(6);
-        this.HOQ.hideWcKb();
+        WeCoinEncashView.a(this.OGN).amu(6);
+        this.OGN.hideWcKb();
         Log.i("MicroMsg.WeCoinEncashView", "click encash to cft");
-        WeCoinEncashView.a(this.HOQ, i);
+        WeCoinEncashView.a(this.OGN, i);
       }
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinEncashView$setupViews$clickListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(212813);
+      AppMethodBeat.o(226299);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class p
-    implements e.a
+    implements f.a
   {
     p(WeCoinEncashView paramWeCoinEncashView, long paramLong) {}
     
-    public final void bmr()
+    public final void bwz()
     {
-      AppMethodBeat.i(212814);
-      WeCoinEncashView.a(this.HOQ).aeH(4);
-      WeCoinEncashView.e(this.HOQ).setText(f.formatMoney2f(c.lo(String.valueOf(l), "100")));
-      WeCoinEncashView.e(this.HOQ).getContentEt().requestFocus();
-      this.HOQ.showWcKb();
-      AppMethodBeat.o(212814);
+      AppMethodBeat.i(272193);
+      WeCoinEncashView.a(this.OGN).amu(4);
+      WeCoinEncashView.e(this.OGN).setText(g.formatMoney2f(c.lL(String.valueOf(l), "100")));
+      WeCoinEncashView.e(this.OGN).getContentEt().requestFocus();
+      this.OGN.showWcKb();
+      AppMethodBeat.o(272193);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.wecoin.ui.WeCoinEncashView
  * JD-Core Version:    0.7.0.1
  */

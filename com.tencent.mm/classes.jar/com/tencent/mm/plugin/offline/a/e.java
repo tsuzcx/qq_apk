@@ -2,69 +2,68 @@ package com.tencent.mm.plugin.offline.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.network.g;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.wallet_core.id_verify.util.RealnameGuideHelper;
 import com.tencent.mm.plugin.wallet_core.model.k;
-import com.tencent.mm.protocal.protobuf.cun;
-import com.tencent.mm.protocal.protobuf.cuo;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.protocal.protobuf.ddv;
+import com.tencent.mm.protocal.protobuf.ddw;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.wallet_core.c.w;
-import com.tencent.mm.wallet_core.ui.f;
 import org.json.JSONObject;
 
 public final class e
   extends w
 {
-  public String AJn;
-  public int AJo;
-  public String AJp;
-  public int AJq;
-  public RealnameGuideHelper AJr;
-  private String AJs;
-  private String AJt;
-  private String AJu;
-  private String AJv;
-  private String AJw;
+  private String GCA;
+  private String GCB;
+  private String GCC;
+  private String GCD;
+  public String GCu;
+  public int GCv;
+  public String GCw;
+  public int GCx;
+  public RealnameGuideHelper GCy;
+  private String GCz;
   private i callback;
-  public int dDN;
-  private String qwn;
+  public int fwx;
   private final d rr;
+  private String tVo;
   
   public e(int paramInt, String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(66289);
-    this.AJn = "";
-    this.dDN = -1;
-    this.qwn = "";
-    this.AJo = -1;
-    this.AJp = "";
-    this.AJq = 1;
+    this.GCu = "";
+    this.fwx = -1;
+    this.tVo = "";
+    this.GCv = -1;
+    this.GCw = "";
+    this.GCx = 1;
     d.a locala = new d.a();
-    locala.iLN = new cun();
-    locala.iLO = new cuo();
+    locala.lBU = new ddv();
+    locala.lBV = new ddw();
     locala.uri = "/cgi-bin/mmpay-bin/offlinepayconfirm";
     locala.funcId = 609;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    locala.routeInfo = f.bpA(paramString3);
-    this.rr = locala.aXF();
-    paramString3 = (cun)this.rr.iLK.iLR;
-    paramString3.MzP = paramInt;
+    locala.routeInfo = com.tencent.mm.wallet_core.ui.g.bCx(paramString3);
+    this.rr = locala.bgN();
+    paramString3 = (ddv)d.b.b(this.rr.lBR);
+    paramString3.TLv = paramInt;
     paramString3.Id = paramString1;
-    paramString3.kdF = paramString2;
-    paramString3.Lcc = k.fQy();
-    this.AJq = paramInt;
+    paramString3.mVf = paramString2;
+    paramString3.Sdp = k.gJe();
+    this.GCx = paramInt;
     AppMethodBeat.o(66289);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(66290);
     this.callback = parami;
@@ -84,7 +83,7 @@ public final class e
     if (paramInt2 != 0) {
       Log.e("MicroMsg.NetSceneOfflinePayConfirm", "Cmd : " + getType() + ", errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
     }
-    paramArrayOfByte = (cuo)((d)params).iLL.iLR;
+    paramArrayOfByte = (ddw)d.c.b(((d)params).lBS);
     paramInt1 = paramInt2;
     i = paramInt3;
     params = paramString;
@@ -102,14 +101,14 @@ public final class e
     }
     try
     {
-      if (paramArrayOfByte.LYE != null)
+      if (paramArrayOfByte.ThY != null)
       {
-        paramArrayOfByte = new JSONObject(paramArrayOfByte.LYE);
-        this.AJn = paramArrayOfByte.optString("transaction_id");
-        this.dDN = paramArrayOfByte.optInt("retcode");
-        this.qwn = paramArrayOfByte.optString("retmsg");
-        this.AJo = paramArrayOfByte.optInt("wx_error_type");
-        this.AJp = paramArrayOfByte.optString("wx_error_msg");
+        paramArrayOfByte = new JSONObject(paramArrayOfByte.ThY);
+        this.GCu = paramArrayOfByte.optString("transaction_id");
+        this.fwx = paramArrayOfByte.optInt("retcode");
+        this.tVo = paramArrayOfByte.optString("retmsg");
+        this.GCv = paramArrayOfByte.optInt("wx_error_type");
+        this.GCw = paramArrayOfByte.optString("wx_error_msg");
         Log.d("MicroMsg.NetSceneOfflinePayConfirm", "onGYNetEnd %s", new Object[] { paramArrayOfByte.toString() });
         paramInt1 = paramInt2;
         i = paramInt3;
@@ -117,22 +116,22 @@ public final class e
         if (paramArrayOfByte.has("real_name_info"))
         {
           params = paramArrayOfByte.optJSONObject("real_name_info");
-          this.AJs = params.optString("guide_flag");
-          this.AJt = params.optString("guide_wording");
-          this.AJu = params.optString("left_button_wording");
-          this.AJv = params.optString("right_button_wording");
-          this.AJw = params.optString("upload_credit_url");
-          if (!"1".equals(this.AJs))
+          this.GCz = params.optString("guide_flag");
+          this.GCA = params.optString("guide_wording");
+          this.GCB = params.optString("left_button_wording");
+          this.GCC = params.optString("right_button_wording");
+          this.GCD = params.optString("upload_credit_url");
+          if (!"1".equals(this.GCz))
           {
             paramInt1 = paramInt2;
             i = paramInt3;
             params = paramString;
-            if (!"2".equals(this.AJs)) {}
+            if (!"2".equals(this.GCz)) {}
           }
           else
           {
-            this.AJr = new RealnameGuideHelper();
-            this.AJr.b(this.AJs, this.AJt, this.AJu, this.AJv, this.AJw, 0);
+            this.GCy = new RealnameGuideHelper();
+            this.GCy.a(this.GCz, this.GCA, this.GCB, this.GCC, this.GCD, 0);
             params = paramString;
             i = paramInt3;
             paramInt1 = paramInt2;
@@ -147,7 +146,7 @@ public final class e
         Log.printErrStackTrace("MicroMsg.NetSceneOfflinePayConfirm", paramString, "", new Object[0]);
         paramInt1 = 1000;
         i = 2;
-        params = MMApplicationContext.getContext().getString(2131767667);
+        params = MMApplicationContext.getContext().getString(a.i.wallet_data_err);
       }
     }
     if (this.callback != null) {

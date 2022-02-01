@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.collect.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.br.c;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.q;
+import com.tencent.mm.by.c;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
@@ -27,8 +27,8 @@ public class CollectAdapterUI
     AppMethodBeat.i(64028);
     super.onCreate(paramBundle);
     setContentViewVisibility(8);
-    g.aAi();
-    int i = ((Integer)g.aAh().azQ().get(ar.a.NXG, Integer.valueOf(0))).intValue();
+    h.aHH();
+    int i = ((Integer)h.aHG().aHp().get(ar.a.VlG, Integer.valueOf(0))).intValue();
     Log.i("MicroMsg.CollectAdapterUI", "walletRegion: %s", new Object[] { Integer.valueOf(i) });
     if (i == 8) {
       c.b(this, "collect", ".ui.CollectHKMainUI", getIntent());

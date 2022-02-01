@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   implements AbsListView.OnScrollListener
 {
-  private AbsListView.OnScrollListener Kbl = null;
+  private AbsListView.OnScrollListener RbQ = null;
   
   public a()
   {
@@ -19,8 +19,8 @@ public final class a
   public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(141581);
-    if (this.Kbl != null) {
-      this.Kbl.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (this.RbQ != null) {
+      this.RbQ.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
     AppMethodBeat.o(141581);
   }
@@ -28,15 +28,15 @@ public final class a
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
     AppMethodBeat.i(141582);
-    if (this.Kbl != null) {
-      this.Kbl.onScrollStateChanged(paramAbsListView, paramInt);
+    if (this.RbQ != null) {
+      this.RbQ.onScrollStateChanged(paramAbsListView, paramInt);
     }
     AppMethodBeat.o(141582);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.applet.a
  * JD-Core Version:    0.7.0.1
  */

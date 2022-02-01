@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.remittance.bankcard.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dhr;
-import com.tencent.mm.protocal.protobuf.dhs;
+import com.tencent.mm.protocal.protobuf.drl;
+import com.tencent.mm.protocal.protobuf.drm;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class l
   extends b
 {
-  public dhs CiT;
+  public drm IfM;
   private final String TAG;
   private i callback;
   private d rr;
@@ -25,14 +25,14 @@ public final class l
     AppMethodBeat.i(67382);
     this.TAG = "MicroMsg.NetSceneBankRemitQueryDetail";
     d.a locala = new d.a();
-    locala.iLN = new dhr();
-    locala.iLO = new dhs();
+    locala.lBU = new drl();
+    locala.lBV = new drm();
     locala.funcId = 1579;
     locala.uri = "/cgi-bin/mmpay-bin/querydetail_tsbc";
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    ((dhr)this.rr.iLK.iLR).KZa = paramString;
+    this.rr = locala.bgN();
+    ((drl)d.b.b(this.rr.lBR)).Saj = paramString;
     Log.i("MicroMsg.NetSceneBankRemitQueryDetail", "bill id: %s", new Object[] { paramString });
     AppMethodBeat.o(67382);
   }
@@ -41,7 +41,7 @@ public final class l
   {
     AppMethodBeat.i(67384);
     Log.i("MicroMsg.NetSceneBankRemitQueryDetail", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.CiT = ((dhs)((d)params).iLL.iLR);
+    this.IfM = ((drm)d.c.b(((d)params).lBS));
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
@@ -57,11 +57,13 @@ public final class l
     return i;
   }
   
-  public final void e(s params)
+  public final void f(s params)
   {
-    params = (dhs)((d)params).iLL.iLR;
-    this.RtZ = params.dDN;
-    this.Rua = params.qwn;
+    AppMethodBeat.i(278044);
+    params = (drm)d.c.b(((d)params).lBS);
+    this.YVy = params.fwx;
+    this.YVz = params.tVo;
+    AppMethodBeat.o(278044);
   }
   
   public final int getType()

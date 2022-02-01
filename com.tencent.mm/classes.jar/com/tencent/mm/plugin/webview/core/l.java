@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.webview.core;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/core/WebViewProgressController;", "", "()V", "delay", "", "mills", "", "finish", "webview-sdk_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/WebViewProgressController;", "", "()V", "delay", "", "mills", "", "finish", "webview-sdk_release"})
 public class l
 {
-  public void Mc(long paramLong) {}
+  public void TA(long paramLong) {}
 }
 
 

@@ -5,7 +5,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class l
 {
-  public static int HL(int paramInt)
+  public static int Lv(int paramInt)
   {
     AppMethodBeat.i(103771);
     if ((paramInt < 90000) && (paramInt != 0))

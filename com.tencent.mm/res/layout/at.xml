@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.FitWindowsLinearLayout android:orientation="vertical" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<androidx.appcompat.widget.FitWindowsLinearLayout android:orientation="vertical" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView android:ellipsize="end" android:id="@id/ipm" android:paddingLeft="?j4" android:paddingTop="@dimen/mv" android:paddingRight="?j4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:textAlignment="viewStart" style="?android:windowTitleStyle" />
     <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/b1" />
-</android.support.v7.widget.FitWindowsLinearLayout>
+</androidx.appcompat.widget.FitWindowsLinearLayout>

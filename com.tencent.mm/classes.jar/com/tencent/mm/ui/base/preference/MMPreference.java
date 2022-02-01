@@ -20,6 +20,8 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.SmoothScrollFactory;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -46,7 +48,7 @@ public abstract class MMPreference
       public final boolean a(Preference paramAnonymousPreference, Object paramAnonymousObject)
       {
         AppMethodBeat.i(142585);
-        if ((!MMPreference.this.isRefreshing) && (paramAnonymousPreference.isEnabled()) && (paramAnonymousPreference.OZu))
+        if ((!MMPreference.this.isRefreshing) && (paramAnonymousPreference.isEnabled()) && (paramAnonymousPreference.WsD))
         {
           MMPreference.access$002(MMPreference.this, true);
           if (!(paramAnonymousPreference instanceof CheckBoxPreference)) {
@@ -54,7 +56,7 @@ public abstract class MMPreference
           }
           paramAnonymousObject = (CheckBoxPreference)paramAnonymousPreference;
           paramAnonymousObject.setChecked(paramAnonymousObject.isChecked());
-          if (paramAnonymousObject.OZw) {
+          if (paramAnonymousObject.WsF) {
             MMPreference.this.sp.edit().putBoolean(paramAnonymousPreference.mKey, paramAnonymousObject.isChecked()).commit();
           }
           MMPreference.access$202(MMPreference.this, true);
@@ -81,7 +83,7 @@ public abstract class MMPreference
     });
     int i = getResourceId();
     if (i != -1) {
-      this.adapter.addPreferencesFromResource(i);
+      this.adapter.auC(i);
     }
     this.list.setAdapter(this.adapter);
     this.list.setOnItemClickListener(new AdapterView.OnItemClickListener()
@@ -90,11 +92,11 @@ public abstract class MMPreference
       {
         AppMethodBeat.i(142588);
         b localb = new b();
-        localb.bm(paramAnonymousAdapterView);
-        localb.bm(paramAnonymousView);
-        localb.pH(paramAnonymousInt);
-        localb.zo(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/preference/MMPreference$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
+        localb.bn(paramAnonymousAdapterView);
+        localb.bn(paramAnonymousView);
+        localb.sg(paramAnonymousInt);
+        localb.Fs(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/base/preference/MMPreference$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
         paramAnonymousAdapterView = (Preference)paramAnonymousAdapterView.getAdapter().getItem(paramAnonymousInt);
         if (paramAnonymousAdapterView == null)
         {
@@ -102,7 +104,7 @@ public abstract class MMPreference
           AppMethodBeat.o(142588);
           return;
         }
-        if ((paramAnonymousAdapterView.isEnabled()) && (paramAnonymousAdapterView.OZu))
+        if ((paramAnonymousAdapterView.isEnabled()) && (paramAnonymousAdapterView.WsD))
         {
           if ((paramAnonymousAdapterView instanceof CheckBoxPreference))
           {
@@ -113,14 +115,14 @@ public abstract class MMPreference
           if ((paramAnonymousAdapterView instanceof DialogPreference))
           {
             paramAnonymousView = (DialogPreference)paramAnonymousAdapterView;
-            paramAnonymousView.showDialog();
-            paramAnonymousView.OXB = new DialogPreference.a()
+            paramAnonymousView.elK();
+            paramAnonymousView.WqL = new DialogPreference.a()
             {
-              public final void gLD()
+              public final void hKF()
               {
                 AppMethodBeat.i(142586);
                 MMPreference.access$202(MMPreference.this, true);
-                if (paramAnonymousView.OZw) {
+                if (paramAnonymousView.WsF) {
                   MMPreference.this.sp.edit().putString(paramAnonymousAdapterView.mKey, paramAnonymousView.getValue()).commit();
                 }
                 MMPreference.this.adapter.notifyDataSetChanged();
@@ -131,14 +133,14 @@ public abstract class MMPreference
           if ((paramAnonymousAdapterView instanceof EditPreference))
           {
             paramAnonymousView = (EditPreference)paramAnonymousAdapterView;
-            paramAnonymousView.showDialog();
-            paramAnonymousView.OXD = new EditPreference.a()
+            paramAnonymousView.elK();
+            paramAnonymousView.WqN = new EditPreference.a()
             {
-              public final void gLD()
+              public final void hKF()
               {
                 AppMethodBeat.i(142587);
                 MMPreference.access$202(MMPreference.this, true);
-                if (paramAnonymousView.OZw) {
+                if (paramAnonymousView.WsF) {
                   MMPreference.this.sp.edit().putString(paramAnonymousAdapterView.mKey, paramAnonymousView.value).commit();
                 }
                 MMPreference.this.adapter.notifyDataSetChanged();
@@ -250,7 +252,7 @@ public abstract class MMPreference
   
   public int getLayoutId()
   {
-    return 2131495609;
+    return a.h.mm_preference_list_content;
   }
   
   public ListView getListView()
@@ -276,9 +278,9 @@ public abstract class MMPreference
     this.sp = getSharedPreferences(getPackageName() + "_preferences", 0);
     this.list = ((ListView)findViewById(16908298));
     this.adapter = createAdapter(this.sp);
-    this.bannerView = ((RelativeLayout)findViewById(2131306095));
-    this.bannerTv = ((TextView)findViewById(2131306094));
-    this.bannerCloseBtn = ((ImageView)findViewById(2131306093));
+    this.bannerView = ((RelativeLayout)findViewById(a.g.preference_tips_banner_view));
+    this.bannerTv = ((TextView)findViewById(a.g.preference_tips_banner_tv));
+    this.bannerCloseBtn = ((ImageView)findViewById(a.g.preference_tips_banner_close));
     doPrepareData();
     int i = getHeaderResourceId();
     paramBundle = getHeaderView();
@@ -289,18 +291,18 @@ public abstract class MMPreference
       i = getFooterResourceId();
       paramBundle = getFooterView();
       if (i == -1) {
-        break label251;
+        break label255;
       }
       paramBundle = getLayoutInflater().inflate(i, null);
       this.list.addFooterView(paramBundle);
     }
-    label251:
+    label255:
     while (paramBundle == null)
     {
       paramBundle = getBottomView();
       if (paramBundle != null)
       {
-        FrameLayout localFrameLayout = (FrameLayout)findViewById(2131306091);
+        FrameLayout localFrameLayout = (FrameLayout)findViewById(a.g.preference_bottom);
         localFrameLayout.addView(paramBundle);
         localFrameLayout.setVisibility(0);
       }
@@ -348,11 +350,11 @@ public abstract class MMPreference
   public boolean onSetToTop()
   {
     Object localObject1 = this.list;
-    localObject1 = new com.tencent.mm.hellhoundlib.b.a().bl(localObject1);
+    localObject1 = new com.tencent.mm.hellhoundlib.b.a().bm(localObject1);
     Object localObject2 = new Object();
-    com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).axQ(), "com/tencent/mm/ui/base/preference/MMPreference", "onSetToTop", "()Z", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-    BackwardSupportUtil.SmoothScrollFactory.scrollToTop((ListView)((com.tencent.mm.hellhoundlib.b.a)localObject1).pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(localObject2, "com/tencent/mm/ui/base/preference/MMPreference", "onSetToTop", "()Z", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+    com.tencent.mm.hellhoundlib.a.a.b(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aFh(), "com/tencent/mm/ui/base/preference/MMPreference", "onSetToTop", "()Z", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+    BackwardSupportUtil.SmoothScrollFactory.scrollToTop((ListView)((com.tencent.mm.hellhoundlib.b.a)localObject1).sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject2, "com/tencent/mm/ui/base/preference/MMPreference", "onSetToTop", "()Z", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
     return true;
   }
   
@@ -380,7 +382,7 @@ public abstract class MMPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.MMPreference
  * JD-Core Version:    0.7.0.1
  */

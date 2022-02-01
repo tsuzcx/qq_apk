@@ -63,23 +63,23 @@ public final class InetUtil
   
   public static boolean isIPv6HexCompressedAddress(String paramString)
   {
-    AppMethodBeat.i(230306);
+    AppMethodBeat.i(194056);
     boolean bool = IPV6_HEX_COMPRESSED_PATTERN.matcher(paramString).matches();
-    AppMethodBeat.o(230306);
+    AppMethodBeat.o(194056);
     return bool;
   }
   
   public static boolean isIPv6StdAddress(String paramString)
   {
-    AppMethodBeat.i(230305);
+    AppMethodBeat.i(194054);
     boolean bool = IPV6_STD_PATTERN.matcher(paramString).matches();
-    AppMethodBeat.o(230305);
+    AppMethodBeat.o(194054);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.InetUtil
  * JD-Core Version:    0.7.0.1
  */

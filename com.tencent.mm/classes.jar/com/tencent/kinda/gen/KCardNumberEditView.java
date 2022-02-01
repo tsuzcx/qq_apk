@@ -31,7 +31,7 @@ public abstract interface KCardNumberEditView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.gen.KCardNumberEditView
  * JD-Core Version:    0.7.0.1
  */

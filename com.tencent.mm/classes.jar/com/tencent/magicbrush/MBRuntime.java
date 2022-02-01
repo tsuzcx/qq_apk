@@ -1,12 +1,11 @@
 package com.tencent.magicbrush;
 
-import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.Keep;
 import android.view.Surface;
+import androidx.annotation.Keep;
 import com.github.henryye.nativeiv.BaseImageDecodeService;
 import com.github.henryye.nativeiv.ImageDecodeConfig;
 import com.github.henryye.nativeiv.api.IImageDecodeService;
@@ -19,27 +18,27 @@ import com.tencent.magicbrush.handler.glfont.i;
 import com.tencent.magicbrush.internal.EventDispatcher;
 import com.tencent.magicbrush.ui.MBViewManager;
 import com.tencent.magicbrush.ui.MagicBrushView;
-import com.tencent.magicbrush.ui.a.b;
-import com.tencent.magicbrush.utils.e;
 import com.tencent.magicbrush.utils.f;
+import com.tencent.magicbrush.utils.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.concurrent.FutureTask;
 import kotlin.g.b.p;
 
 public abstract class MBRuntime
 {
-  protected MBParams cLb;
-  private a cLc = null;
-  protected IMBFileSystem cLd = null;
-  protected BaseImageDecodeService cLe = null;
-  protected IMBFontHandler cLf = null;
-  private com.tencent.magicbrush.handler.b cLg = null;
-  protected c cLh = null;
-  public volatile com.tencent.magicbrush.handler.c cLi;
-  protected com.tencent.magicbrush.ui.a cLj;
-  private int cLk = 0;
-  public d cxx = new d(this);
+  protected MBRuntime.MBParams cLM;
+  private MBRuntime.a cLN = null;
+  protected IMBFileSystem cLO = null;
+  protected IMBFontHandler cLP = null;
+  private com.tencent.magicbrush.handler.b cLQ = null;
+  protected c cLR = null;
+  public volatile com.tencent.magicbrush.handler.c cLS;
+  protected com.tencent.magicbrush.ui.a cLT;
+  private int cLU = 0;
+  protected BaseImageDecodeService csB = null;
+  public d cwf = new d(this);
   protected volatile long mNativeInst;
   
   static
@@ -48,12 +47,14 @@ public abstract class MBRuntime
     com.tencent.magicbrush.a.b.loadLibraries();
   }
   
-  public static void Ra()
+  private void UU()
   {
-    c.c.i("MicroMsg.MagicBrush.MBRuntime", "trigger load lib", new Object[0]);
+    if (this.cLM.device_pixel_ratio_ <= 0.0F) {
+      throw new IllegalStateException("device pixel ratio is null");
+    }
   }
   
-  private static void ij(int paramInt)
+  private static void jm(int paramInt)
   {
     if (paramInt < 0) {
       throw new IllegalArgumentException("windowId < 0");
@@ -67,20 +68,20 @@ public abstract class MBRuntime
     do
     {
       return false;
-      localc = this.cLi;
+      localc = this.cLS;
     } while (localc == null);
     localc.a(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(139950);
+        AppMethodBeat.i(139943);
         if (MBRuntime.this.mNativeInst == 0L)
         {
-          AppMethodBeat.o(139950);
+          AppMethodBeat.o(139943);
           return;
         }
         paramRunnable.run();
-        AppMethodBeat.o(139950);
+        AppMethodBeat.o(139943);
       }
     }, true);
     return true;
@@ -94,42 +95,41 @@ public abstract class MBRuntime
   
   private native void nativeMarkNeedCallbackBeforeSwapThisFrame(long paramLong);
   
+  private native void nativeNotifyScreenSizeChanged(long paramLong, int paramInt1, int paramInt2);
+  
+  private native void nativeRequestV8GarbageCollectionForTest(long paramLong);
+  
   private native void nativeRunOnJsThread(long paramLong, int paramInt);
   
   private native void nativeSetIsCpuProfiling(long paramLong, boolean paramBoolean);
   
   private boolean o(Runnable paramRunnable)
   {
-    paramRunnable = new e(paramRunnable);
+    paramRunnable = new f(paramRunnable);
     if (!n(paramRunnable)) {
       return false;
     }
-    paramRunnable.aZ(3000L);
-    return paramRunnable.cPv.isDone();
+    paramRunnable.bi(3000L);
+    return paramRunnable.cQn.isDone();
   }
   
-  public final a QP()
+  protected final void UH()
   {
-    return this.cxx.QP();
-  }
-  
-  protected final void Rb()
-  {
-    if (this.cLb.enable_request_animation_frame) {
-      this.cLj = com.tencent.magicbrush.ui.a.a(this, this.cLi, this.cLb.animationFrameHandlerStrategy);
+    if (this.cLM.enable_request_animation_frame) {
+      this.cLT = com.tencent.magicbrush.ui.a.a(this, this.cLS, this.cLM.animationFrameHandlerStrategy);
     }
-    if (this.cLf == null)
+    if (this.cLP == null)
     {
-      this.cLf = new i();
-      nativeSetFontHandler(this.mNativeInst, this.cLf);
+      this.cLP = new i();
+      nativeSetFontHandler(this.mNativeInst, this.cLP);
     }
-    if (this.cLi == null) {
+    if (this.cLS == null) {
       throw new IllegalStateException("[MBRuntime] JsThreadHandler not registered.");
     }
-    if (this.cLe == null) {
+    if (this.csB == null) {
       throw new IllegalStateException("[MBRuntime] ImageHandler not registered.");
     }
-    if (this.cLf == null) {
+    if (this.cLP == null) {
       throw new IllegalStateException("[MBRuntime] FontHandler not registered.");
     }
     if (this.mNativeInst == 0L)
@@ -148,48 +148,48 @@ public abstract class MBRuntime
     });
   }
   
-  public final void Rc()
+  public final void UI()
   {
     c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.resume ", new Object[0]);
-    d locald = this.cxx;
+    d locald = this.cwf;
     if (locald.handler == null)
     {
       locald.handler = new Handler(Looper.getMainLooper());
-      locald.handler.post(locald.cKN);
+      locald.handler.post(locald.cLw);
     }
     n(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(139946);
-        MBRuntime.this.nativeResume(MBRuntime.this.mNativeInst);
-        if (MBRuntime.this.cLb.enable_request_animation_frame) {
-          MBRuntime.this.cLj.resume();
-        }
-        AppMethodBeat.o(139946);
-      }
-    });
-  }
-  
-  public final void Rd()
-  {
-    c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.pause ", new Object[0]);
-    this.cxx.QO();
-    n(new Runnable()
-    {
-      public final void run()
-      {
         AppMethodBeat.i(139947);
-        if (MBRuntime.this.cLb.enable_request_animation_frame) {
-          MBRuntime.this.cLj.pause();
+        MBRuntime.this.nativeResume(MBRuntime.this.mNativeInst);
+        if (MBRuntime.this.cLM.enable_request_animation_frame) {
+          MBRuntime.this.cLT.resume();
         }
-        MBRuntime.this.nativePause(MBRuntime.this.mNativeInst);
         AppMethodBeat.o(139947);
       }
     });
   }
   
-  public final void Re()
+  public final void UJ()
+  {
+    c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.pause ", new Object[0]);
+    this.cwf.Uv();
+    n(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(139948);
+        if (MBRuntime.this.cLM.enable_request_animation_frame) {
+          MBRuntime.this.cLT.pause();
+        }
+        MBRuntime.this.nativePause(MBRuntime.this.mNativeInst);
+        AppMethodBeat.o(139948);
+      }
+    });
+  }
+  
+  public final void UK()
   {
     if (this.mNativeInst == 0L) {
       return;
@@ -197,7 +197,7 @@ public abstract class MBRuntime
     nativeNotifyAnimationFrameLooper(this.mNativeInst);
   }
   
-  public final void Rf()
+  public final void UL()
   {
     if (this.mNativeInst == 0L) {
       return;
@@ -205,56 +205,71 @@ public abstract class MBRuntime
     nativeStopAnimationFrameLooper(this.mNativeInst);
   }
   
-  public final BaseImageDecodeService Rg()
+  public final boolean UM()
   {
-    return this.cLe;
+    if (this.mNativeInst == 0L) {
+      return false;
+    }
+    return nativeGetIsMali(this.mNativeInst);
   }
   
-  public final IMBFontHandler Rh()
+  public final BaseImageDecodeService UN()
   {
-    return this.cLf;
+    return this.csB;
   }
   
-  abstract b Ri();
-  
-  abstract MBViewManager Rj();
-  
-  public final MBParams Rk()
+  public final IMBFontHandler UO()
   {
-    return this.cLb;
+    return this.cLP;
   }
   
-  public final com.tencent.magicbrush.handler.c Rl()
+  abstract b UP();
+  
+  abstract MBViewManager UQ();
+  
+  abstract e.e UR();
+  
+  public final MBRuntime.MBParams US()
   {
-    return this.cLi;
+    return this.cLM;
+  }
+  
+  public final com.tencent.magicbrush.handler.c UT()
+  {
+    return this.cLS;
+  }
+  
+  public final a Uw()
+  {
+    return this.cwf.Uw();
   }
   
   public final void a(int paramInt, final long paramLong, final JsTouchEventHandler.a parama)
   {
     if (this.mNativeInst == 0L)
     {
-      parama.aY(paramLong);
+      parama.bh(paramLong);
       return;
     }
-    com.tencent.magicbrush.handler.c localc = this.cLi;
+    com.tencent.magicbrush.handler.c localc = this.cLS;
     if (localc == null)
     {
-      parama.aY(paramLong);
+      parama.bh(paramLong);
       return;
     }
     localc.a(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(139943);
+        AppMethodBeat.i(139944);
         if (MBRuntime.this.mNativeInst == 0L)
         {
-          parama.aY(paramLong);
-          AppMethodBeat.o(139943);
+          parama.bh(paramLong);
+          AppMethodBeat.o(139944);
           return;
         }
-        MBRuntime.this.nativeNotifyTouchEvent(MBRuntime.this.mNativeInst, this.cLm, paramLong);
-        AppMethodBeat.o(139943);
+        MBRuntime.this.nativeNotifyTouchEvent(MBRuntime.this.mNativeInst, this.cLW, paramLong);
+        AppMethodBeat.o(139944);
       }
     }, false);
   }
@@ -265,58 +280,58 @@ public abstract class MBRuntime
     if (this.mNativeInst == 0L) {
       return;
     }
-    ij(paramInt);
-    Runnable local2 = new Runnable()
+    jm(paramInt);
+    Runnable local3 = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(139941);
+        AppMethodBeat.i(139942);
         if (MBRuntime.this.mNativeInst == 0L)
         {
-          AppMethodBeat.o(139941);
+          AppMethodBeat.o(139942);
           return;
         }
         MBRuntime.this.nativeNotifyWindowDestroyed(MBRuntime.this.mNativeInst, paramInt);
         if (paramSurfaceTexture == null)
         {
           c.c.printStackTrace("MicroMsg.MagicBrush.MBRuntime", new RuntimeException("Stub here!"), "hy: text is null, do not release. maybe released by other module", new Object[0]);
-          AppMethodBeat.o(139941);
+          AppMethodBeat.o(139942);
           return;
         }
         paramSurfaceTexture.release();
-        AppMethodBeat.o(139941);
+        AppMethodBeat.o(139942);
       }
     };
-    boolean bool = this.cLb.sync_surface_destroy;
+    boolean bool = this.cLM.sync_surface_destroy;
     c.c.i("MicroMsg.MagicBrush.MBRuntime", "[surface] destroy window(surfacetexture) param:true windowId:%d sync?%b %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool), paramSurfaceTexture });
     if (bool) {
-      o(local2);
+      o(local3);
     }
     for (;;)
     {
       c.c.i("MicroMsg.MagicBrush.MBRuntime", "[surface] destroy window(surfacetexture) done. windowId:%d", new Object[] { Integer.valueOf(paramInt) });
       return;
-      n(local2);
+      n(local3);
     }
   }
   
   public final void a(final int paramInt1, final SurfaceTexture paramSurfaceTexture, final int paramInt2, final int paramInt3)
   {
     c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.notifyWindowChanged ", new Object[0]);
-    ij(paramInt1);
+    jm(paramInt1);
     n(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(139952);
+        AppMethodBeat.i(139953);
         if (paramSurfaceTexture == null)
         {
           c.c.printStackTrace("MicroMsg.MagicBrush.MBRuntime", new RuntimeException("Stub here!"), "hy: text is null, do not notifyWindowChanged. maybe released by other module", new Object[0]);
-          AppMethodBeat.o(139952);
+          AppMethodBeat.o(139953);
           return;
         }
         MBRuntime.this.nativeNotifyWindowChanged(MBRuntime.this.mNativeInst, paramInt1, paramSurfaceTexture, paramInt2, paramInt3);
-        AppMethodBeat.o(139952);
+        AppMethodBeat.o(139953);
       }
     });
   }
@@ -331,22 +346,22 @@ public abstract class MBRuntime
     {
       public final void run()
       {
-        AppMethodBeat.i(139948);
+        AppMethodBeat.i(139949);
         if (paramSurfaceTexture == null)
         {
           c.c.printStackTrace("MicroMsg.MagicBrush.MBRuntime", new RuntimeException("Stub here!"), "hy: text is null, do not notifyWindowAvailable. maybe released by other module", new Object[0]);
-          AppMethodBeat.o(139948);
+          AppMethodBeat.o(139949);
           return;
         }
         MBRuntime.this.nativeNotifyWindowAvailable(MBRuntime.this.mNativeInst, paramInt1, paramSurfaceTexture, paramInt2, paramInt3, paramBoolean);
-        AppMethodBeat.o(139948);
+        AppMethodBeat.o(139949);
       }
     });
   }
   
   public final void a(final int paramInt1, final Surface paramSurface, final int paramInt2, final int paramInt3)
   {
-    c.c.i("MicroMsg.MagicBrush.MBRuntime", "hy: notifyWindowAvailable: %d, %d, %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    c.c.i("MicroMsg.MagicBrush.MBRuntime", "hy: notifyWindowAvailable: %d, %d, %d %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramSurface });
     if (paramSurface == null) {
       throw new RuntimeException("surface == null");
     }
@@ -354,85 +369,66 @@ public abstract class MBRuntime
     {
       public final void run()
       {
-        AppMethodBeat.i(139951);
+        AppMethodBeat.i(139952);
         MBRuntime.this.nativeNotifyWindowAvailableForSurface(MBRuntime.this.mNativeInst, paramInt1, paramSurface, paramInt2, paramInt3);
-        AppMethodBeat.o(139951);
+        AppMethodBeat.o(139952);
       }
     });
   }
   
   public final void a(BaseImageDecodeService paramBaseImageDecodeService)
   {
-    this.cLe = paramBaseImageDecodeService;
+    this.csB = paramBaseImageDecodeService;
     nativeSetImageHandler(this.mNativeInst, paramBaseImageDecodeService);
   }
   
-  final void a(a parama)
+  final void a(MBRuntime.a parama)
   {
-    this.cLc = parama;
+    this.cLN = parama;
     nativeMarkNeedCallbackBeforeSwapThisFrame(this.mNativeInst);
   }
   
   public final void a(com.tencent.magicbrush.handler.a parama)
   {
     c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.set_jsthread_handler ", new Object[0]);
-    if (this.cLi != null)
+    if (this.cLS != null)
     {
       c.c.e("MicroMsg.MagicBrush.MBRuntime", "Why you set_jsthread_handler twice, unexpected behaviour.", new Object[0]);
       return;
     }
     long l = this.mNativeInst;
-    this.cLi = new com.tencent.magicbrush.handler.c(parama);
+    this.cLS = new com.tencent.magicbrush.handler.c(parama);
   }
   
   public final void a(IMBFontHandler paramIMBFontHandler)
   {
-    this.cLf = paramIMBFontHandler;
+    this.cLP = paramIMBFontHandler;
     nativeSetFontHandler(this.mNativeInst, paramIMBFontHandler);
   }
   
   @Keep
-  protected void applyWindowAttributes(final int paramInt, final boolean paramBoolean)
+  protected void applyWindowAttributes(int paramInt, boolean paramBoolean)
   {
-    f.runOnUiThread(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(139945);
-        MagicBrushView localMagicBrushView = MBRuntime.this.Rj().findOrNull(paramInt);
-        if (localMagicBrushView != null) {
-          if (paramBoolean) {
-            break label44;
-          }
-        }
-        label44:
-        for (boolean bool = true;; bool = false)
-        {
-          localMagicBrushView.setOpaque(bool);
-          AppMethodBeat.o(139945);
-          return;
-        }
-      }
-    });
+    g.runOnUiThread(new MBRuntime.7(this, paramInt, paramBoolean));
   }
   
   public final void b(final int paramInt1, final Surface paramSurface, final int paramInt2, final int paramInt3)
   {
     c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.notifyWindowChanged Surface[%s] %d, %d", new Object[] { paramSurface, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    ij(paramInt1);
+    jm(paramInt1);
     n(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(139953);
+        AppMethodBeat.i(139946);
         if (paramSurface == null)
         {
           c.c.printStackTrace("MicroMsg.MagicBrush.MBRuntime", new RuntimeException("Stub here!"), "hy: text is null, do not notifyWindowChanged. maybe released by other module", new Object[0]);
-          AppMethodBeat.o(139953);
+          AppMethodBeat.o(139946);
           return;
         }
         MBRuntime.this.nativeNotifyWindowChangedForSurface(MBRuntime.this.mNativeInst, paramInt1, paramSurface, paramInt2, paramInt3);
-        AppMethodBeat.o(139953);
+        AppMethodBeat.o(139946);
       }
     });
   }
@@ -441,28 +437,28 @@ public abstract class MBRuntime
   {
     if (this.mNativeInst == 0L)
     {
-      paramc.ad(paramObject);
+      paramc.U(paramObject);
       return;
     }
-    com.tencent.magicbrush.handler.c localc = this.cLi;
+    com.tencent.magicbrush.handler.c localc = this.cLS;
     if (localc == null)
     {
-      paramc.ad(paramObject);
+      paramc.U(paramObject);
       return;
     }
     localc.a(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(139944);
+        AppMethodBeat.i(139945);
         if (MBRuntime.this.mNativeInst == 0L)
         {
-          paramc.ad(paramObject);
-          AppMethodBeat.o(139944);
+          paramc.U(paramObject);
+          AppMethodBeat.o(139945);
           return;
         }
         MBRuntime.this.nativeNotifyImageDecoded(MBRuntime.this.mNativeInst, paramString, paramObject, paramImageDecodeConfig);
-        AppMethodBeat.o(139944);
+        AppMethodBeat.o(139945);
       }
     }, false);
   }
@@ -471,31 +467,12 @@ public abstract class MBRuntime
   protected void beforeSwap(boolean paramBoolean)
   {
     c.c.i("MicroMsg.MagicBrush.MBRuntime", "hy: beforeSwap! %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (this.cLc != null) {
-      this.cLc.beforeSwap(paramBoolean);
+    if (this.cLN != null) {
+      this.cLN.beforeSwap(paramBoolean);
     }
   }
   
-  @Keep
-  protected Bitmap captureScreen(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap)
-  {
-    Object localObject = Ri();
-    if ((paramInt2 > 0) && (paramInt3 > 0)) {}
-    for (int i = 1; i == 0; i = 0)
-    {
-      paramBitmap = String.format("captureScreenCanvas of [%d] [%d, %d]", Arrays.copyOf(new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }, 3));
-      p.g(paramBitmap, "java.lang.String.format(this, *args)");
-      throw ((Throwable)new IllegalStateException(paramBitmap.toString()));
-    }
-    localObject = ((b)localObject).ih(paramInt1);
-    if (localObject == null) {
-      return null;
-    }
-    f localf = f.cPx;
-    return (Bitmap)f.f((kotlin.g.a.a)new b.d((MagicBrushView)localObject, paramInt2, paramInt3, paramBitmap));
-  }
-  
-  public final void cn(boolean paramBoolean)
+  public final void cA(boolean paramBoolean)
   {
     if (this.mNativeInst == 0L) {
       return;
@@ -503,20 +480,37 @@ public abstract class MBRuntime
     nativeSetIsCpuProfiling(this.mNativeInst, paramBoolean);
   }
   
+  @Keep
+  protected Bitmap captureScreen(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap)
+  {
+    Object localObject = UP();
+    if ((paramInt2 > 0) && (paramInt3 > 0)) {}
+    for (int i = 1; i == 0; i = 0)
+    {
+      paramBitmap = String.format("captureScreenCanvas of [%d] [%d, %d]", Arrays.copyOf(new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }, 3));
+      p.j(paramBitmap, "java.lang.String.format(this, *args)");
+      throw ((Throwable)new IllegalStateException(paramBitmap.toString()));
+    }
+    localObject = ((b)localObject).jk(paramInt1);
+    if (localObject == null) {
+      return null;
+    }
+    g localg = g.cQp;
+    return (Bitmap)g.f((kotlin.g.a.a)new b.d((MagicBrushView)localObject, paramInt2, paramInt3, paramBitmap));
+  }
+  
   public void destroy()
   {
     c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.destroy", new Object[0]);
-    this.cxx.QO();
+    this.cwf.Uv();
     if (this.mNativeInst == 0L)
     {
       c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.destroy skip outside", new Object[0]);
       return;
     }
     long l = System.currentTimeMillis();
-    if (this.cLh != null)
-    {
-      this.cLh.destroy();
-      this.cLh = null;
+    if (this.cLR != null) {
+      throw null;
     }
     try
     {
@@ -527,21 +521,21 @@ public abstract class MBRuntime
       }
     }
     finally {}
-    if (this.cLb.enable_request_animation_frame) {
-      this.cLj.destroy();
+    if (this.cLM.enable_request_animation_frame) {
+      this.cLT.destroy();
     }
     nativeDestroy(this.mNativeInst);
-    this.cLi = null;
-    this.cLe = null;
-    this.cLf = null;
+    this.cLS = null;
+    this.csB = null;
+    this.cLP = null;
     this.mNativeInst = 0L;
   }
   
   @Keep
   protected boolean doInnerLoopTask()
   {
-    if (this.cLi != null) {
-      return this.cLi.doInnerLoopTask();
+    if (this.cLS != null) {
+      return this.cLS.doInnerLoopTask();
     }
     return true;
   }
@@ -554,6 +548,39 @@ public abstract class MBRuntime
     nativeNotifyAnimationFrame(this.mNativeInst, paramDouble);
   }
   
+  @Keep
+  protected int insertElement(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt)
+  {
+    label154:
+    for (;;)
+    {
+      try
+      {
+        MagicBrushView localMagicBrushView = ((e.e)Objects.requireNonNull(UR())).UV();
+        UU();
+        float f = this.cLM.device_pixel_ratio_;
+        ((e.e)Objects.requireNonNull(UR())).a(localMagicBrushView, (int)(paramFloat1 * f), (int)(paramFloat2 * f), (int)(paramFloat3 * f), (int)(paramFloat4 * f), paramInt);
+        int i = localMagicBrushView.getVirtualElementId();
+        c.c.printStackTrace("MicroMsg.MagicBrush.MBRuntime", localException1, "dl: ScreenCanvas: insertElement failed", new Object[0]);
+      }
+      catch (Exception localException1)
+      {
+        try
+        {
+          c.c.i("MicroMsg.MagicBrush.MBRuntime", "dl: ScreenCanvas: insertElement a ScreenCanvas [%f, %f, %f, %f, %d]...done", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3), Float.valueOf(paramFloat4), Integer.valueOf(paramInt) });
+          c.c.i("MicroMsg.MagicBrush.MBRuntime", "dl: ScreenCanvas: insertElement a ScreenCanvas, result = [%d]", new Object[] { Integer.valueOf(i) });
+          return i;
+        }
+        catch (Exception localException2)
+        {
+          break label154;
+        }
+        localException1 = localException1;
+        i = -1;
+      }
+    }
+  }
+  
   /* Error */
   public final boolean isDestroyed()
   {
@@ -561,7 +588,7 @@ public abstract class MBRuntime
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 127	com/tencent/magicbrush/MBRuntime:mNativeInst	J
+    //   3: getfield 133	com/tencent/magicbrush/MBRuntime:mNativeInst	J
     //   6: lstore_1
     //   7: lload_1
     //   8: lconst_0
@@ -592,7 +619,33 @@ public abstract class MBRuntime
     //   2	7	24	finally
   }
   
-  final Bitmap l(int paramInt1, int paramInt2, boolean paramBoolean)
+  protected final boolean m(final Runnable paramRunnable)
+  {
+    if (this.mNativeInst == 0L) {}
+    com.tencent.magicbrush.handler.c localc;
+    do
+    {
+      return false;
+      localc = this.cLS;
+    } while (localc == null);
+    localc.a(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(139950);
+        if (MBRuntime.this.mNativeInst == 0L)
+        {
+          AppMethodBeat.o(139950);
+          return;
+        }
+        paramRunnable.run();
+        AppMethodBeat.o(139950);
+      }
+    }, false);
+    return true;
+  }
+  
+  final Bitmap n(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     if (this.mNativeInst == 0L) {
       return null;
@@ -603,39 +656,13 @@ public abstract class MBRuntime
     return nativeCaptureCanvas(this.mNativeInst, paramInt2);
   }
   
-  protected final boolean m(final Runnable paramRunnable)
-  {
-    if (this.mNativeInst == 0L) {}
-    com.tencent.magicbrush.handler.c localc;
-    do
-    {
-      return false;
-      localc = this.cLi;
-    } while (localc == null);
-    localc.a(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(139949);
-        if (MBRuntime.this.mNativeInst == 0L)
-        {
-          AppMethodBeat.o(139949);
-          return;
-        }
-        paramRunnable.run();
-        AppMethodBeat.o(139949);
-      }
-    }, false);
-    return true;
-  }
-  
   protected native void nativeBindTo(long paramLong1, long paramLong2, long paramLong3, long paramLong4);
   
   protected native Bitmap nativeCaptureCanvas(long paramLong, int paramInt);
   
   protected native Bitmap nativeCaptureScreen(long paramLong, int paramInt);
   
-  protected native long nativeCreate(MBParams paramMBParams);
+  protected native long nativeCreate(MBRuntime.MBParams paramMBParams);
   
   native int nativeCreateExternalTexture(long paramLong, int paramInt);
   
@@ -703,11 +730,34 @@ public abstract class MBRuntime
   
   protected native void nativeStopAnimationFrameLooper(long paramLong);
   
+  protected native void nativeUpdateParams(long paramLong, boolean paramBoolean);
+  
+  @Keep
+  protected void removeElement(int paramInt)
+  {
+    try
+    {
+      MagicBrushView localMagicBrushView = UQ().findOrNull(paramInt);
+      if (localMagicBrushView == null)
+      {
+        c.c.e("MicroMsg.MagicBrush.MBRuntime", "dl: ScreenCanvas: removeElement window_id = [%d] not found!", new Object[] { Integer.valueOf(paramInt) });
+        return;
+      }
+      ((e.e)Objects.requireNonNull(UR())).c(localMagicBrushView);
+      c.c.i("MicroMsg.MagicBrush.MBRuntime", "dl: ScreenCanvas: removeElement a ScreenCanvas window_id = [%d]...done", new Object[] { Integer.valueOf(paramInt) });
+      return;
+    }
+    catch (Exception localException)
+    {
+      c.c.printStackTrace("MicroMsg.MagicBrush.MBRuntime", localException, "dl: ScreenCanvas: removeElement failed", new Object[0]);
+    }
+  }
+  
   @Keep
   protected void resumeLoopTasks()
   {
-    if (this.cLi != null) {
-      this.cLi.resumeLoopTasks();
+    if (this.cLS != null) {
+      this.cLS.resumeLoopTasks();
     }
   }
   
@@ -715,17 +765,17 @@ public abstract class MBRuntime
   protected void switchToJsThread(final int paramInt)
   {
     c.c.i("MicroMsg.MagicBrush.MBRuntime", "switchToJsThread taskId: ".concat(String.valueOf(paramInt)), new Object[0]);
-    if (this.cLi != null) {
+    if (this.cLS != null) {
       try
       {
-        this.cLi.p(new Runnable()
+        this.cLS.p(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(175885);
+            AppMethodBeat.i(203560);
             c.c.i("MicroMsg.MagicBrush.MBRuntime", "switchToJsThread Runnable taskId: " + paramInt, new Object[0]);
             MBRuntime.a(MBRuntime.this, MBRuntime.this.mNativeInst, paramInt);
-            AppMethodBeat.o(175885);
+            AppMethodBeat.o(203560);
           }
         });
         return;
@@ -742,81 +792,63 @@ public abstract class MBRuntime
   @Keep
   protected void touchJava()
   {
-    this.cLk += 1;
+    this.cLU += 1;
   }
   
-  public final void w(final int paramInt, boolean paramBoolean)
+  @Keep
+  protected void updateElement(int paramInt1, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt2)
+  {
+    try
+    {
+      MagicBrushView localMagicBrushView = UQ().findOrNull(paramInt1);
+      if (localMagicBrushView == null)
+      {
+        c.c.e("MicroMsg.MagicBrush.MBRuntime", "dl: ScreenCanvas: updateElement window_id = [%d] not found!", new Object[] { Integer.valueOf(paramInt1) });
+        return;
+      }
+      UU();
+      float f = this.cLM.device_pixel_ratio_;
+      ((e.e)Objects.requireNonNull(UR())).b(localMagicBrushView, (int)(paramFloat1 * f), (int)(paramFloat2 * f), (int)(paramFloat3 * f), (int)(paramFloat4 * f), paramInt2);
+      return;
+    }
+    catch (Exception localException)
+    {
+      c.c.printStackTrace("MicroMsg.MagicBrush.MBRuntime", localException, "dl: ScreenCanvas: updateElement failed", new Object[0]);
+    }
+  }
+  
+  public final void y(final int paramInt, boolean paramBoolean)
   {
     c.c.i("MicroMsg.MagicBrush.MBRuntime", "hy: notifyWindowDestroyed: %d", new Object[] { Integer.valueOf(paramInt) });
-    ij(paramInt);
-    if ((this.cLb.sync_surface_destroy) || (paramBoolean)) {}
-    Runnable local3;
+    jm(paramInt);
+    if ((this.cLM.sync_surface_destroy) || (paramBoolean)) {}
+    Runnable local4;
     for (paramBoolean = true;; paramBoolean = false)
     {
-      local3 = new Runnable()
+      local4 = new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(139942);
+          AppMethodBeat.i(203541);
           MBRuntime.this.nativeNotifyWindowDestroyed(MBRuntime.this.mNativeInst, paramInt);
-          AppMethodBeat.o(139942);
+          AppMethodBeat.o(203541);
         }
       };
       c.c.i("MicroMsg.MagicBrush.MBRuntime", "[surface] destroy window(surface) windowId:%d sync?%b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
       if (!paramBoolean) {
         break;
       }
-      if (!o(local3)) {
-        c.c.e("MicroMsg.MagicBrush.MBRuntime", "notifyWindowDestroyed, but await fail. [deadlock]:    %s", new Object[] { this.cLi.LP() });
+      if (!o(local4)) {
+        c.c.e("MicroMsg.MagicBrush.MBRuntime", "notifyWindowDestroyed, but await fail. [deadlock]:    %s", new Object[] { this.cLS.OG() });
       }
       return;
     }
-    n(local3);
-  }
-  
-  @Keep
-  public static class MBParams
-  {
-    public boolean adjust_thread_priority = true;
-    public boolean allow_antialias_ = false;
-    public boolean allow_opengl3 = true;
-    public a.b animationFrameHandlerStrategy = a.b.cOy;
-    AssetManager asset_manager;
-    public int cmd_pool_type = 1;
-    public float device_pixel_ratio_ = -1.0F;
-    public boolean enable_2d = true;
-    public boolean enable_font_batch = false;
-    public boolean enable_gfx = true;
-    public boolean enable_request_animation_frame = true;
-    public boolean enable_window_attributes_alpha = false;
-    public boolean enable_wxbindcanvastexture = false;
-    public IMBFileSystem file_system_ = null;
-    public boolean force_run_v8_microtasks = false;
-    public float gc_factor = 0.0F;
-    public boolean is_game = false;
-    public boolean perf_crazy_mode = false;
-    public String render_thread_name;
-    public boolean render_thread_profiler = false;
-    public boolean revert_cpu_optimizer_test = false;
-    public int screen_height_ = -1;
-    public int screen_width_ = -1;
-    public String sdcard_path;
-    public boolean support_client_vertex_buffer = false;
-    public int support_gfximage_share_texture = 1;
-    public boolean support_hardware_decode = true;
-    public boolean support_hardware_encode = true;
-    public boolean sync_surface_destroy = true;
-    public boolean use_command_buffer = true;
-  }
-  
-  static abstract interface a
-  {
-    public abstract void beforeSwap(boolean paramBoolean);
+    n(local4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.magicbrush.MBRuntime
  * JD-Core Version:    0.7.0.1
  */

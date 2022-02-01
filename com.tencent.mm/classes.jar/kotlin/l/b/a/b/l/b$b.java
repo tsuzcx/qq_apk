@@ -18,7 +18,7 @@ class b$b<K, V>
   {
     AppMethodBeat.i(60505);
     if (parama == null) {
-      atM(2);
+      aDG(2);
     }
     paramK = invoke(new b.d(paramK, parama));
     AppMethodBeat.o(60505);
@@ -27,7 +27,7 @@ class b$b<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlin.l.b.a.b.l.b.b
  * JD-Core Version:    0.7.0.1
  */

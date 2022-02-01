@@ -10,7 +10,7 @@ public final class d
   public final int a(f paramf, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(91974);
-    paramInt = paramf.dO(paramInt);
+    paramInt = paramf.ec(paramInt);
     if (paramInt == -1)
     {
       if (paramBoolean)
@@ -31,7 +31,7 @@ public final class d
   public final void a(com.google.android.exoplayer2.i.m paramm, int paramInt)
   {
     AppMethodBeat.i(91975);
-    paramm.eZ(paramInt);
+    paramm.fu(paramInt);
     AppMethodBeat.o(91975);
   }
   
@@ -39,7 +39,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.c.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,34 @@
 package com.tencent.mm.game.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class a
   implements i
 {
-  private static a hhk;
+  private static a jTe;
   
   private a()
   {
     AppMethodBeat.i(175991);
-    g.azz().a(1223, this);
+    h.aGY().a(1223, this);
     AppMethodBeat.o(175991);
   }
   
-  public static a axd()
+  public static a aEx()
   {
     AppMethodBeat.i(175990);
-    if (hhk == null) {}
+    if (jTe == null) {}
     try
     {
-      if (hhk == null) {
-        hhk = new a();
+      if (jTe == null) {
+        jTe = new a();
       }
-      a locala = hhk;
+      a locala = jTe;
       AppMethodBeat.o(175990);
       return locala;
     }
@@ -42,8 +42,8 @@ public class a
   {
     AppMethodBeat.i(175993);
     Log.i("MicroMsg.GameMsgReportService", "appId = %s, opType = %d, opStatus = %d, extInfo = %s", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString3 });
-    paramString1 = new d(paramString1, paramInt1, paramInt2, paramString2, paramString3);
-    g.azz().a(paramString1, 0);
+    paramString1 = new e(paramString1, paramInt1, paramInt2, paramString2, paramString3);
+    h.aGY().a(paramString1, 0);
     AppMethodBeat.o(175993);
   }
   

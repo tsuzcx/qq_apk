@@ -9,7 +9,7 @@ import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
 
 public final class o
 {
-  public static void fh(String paramString1, String paramString2)
+  public static void fv(String paramString1, String paramString2)
   {
     AppMethodBeat.i(6185);
     if ((Log.getLogLevel() == 0) && (WeChatEnvironment.hasDebugger())) {
@@ -30,7 +30,7 @@ public final class o
   public static void showToast(String paramString)
   {
     AppMethodBeat.i(6184);
-    fh("MicroMsg.PreloadUtil", paramString);
+    fv("MicroMsg.PreloadUtil", paramString);
     AppMethodBeat.o(6184);
   }
 }

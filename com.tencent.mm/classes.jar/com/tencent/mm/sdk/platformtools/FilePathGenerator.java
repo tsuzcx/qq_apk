@@ -2,8 +2,8 @@ package com.tencent.mm.sdk.platformtools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 
 public class FilePathGenerator
 {
@@ -16,53 +16,53 @@ public class FilePathGenerator
   public static boolean checkMkdir(String paramString)
   {
     AppMethodBeat.i(157532);
-    boolean bool = s.boN(paramString);
+    u.bBD(paramString);
     AppMethodBeat.o(157532);
-    return bool;
+    return true;
   }
   
   public static String defGenPathWithOld(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt)
   {
-    AppMethodBeat.i(230293);
+    AppMethodBeat.i(188524);
     paramString1 = defGenPathWithOld(paramString1, paramString2, paramString3, paramString4, paramString5, paramInt, true);
-    AppMethodBeat.o(230293);
+    AppMethodBeat.o(188524);
     return paramString1;
   }
   
   public static String defGenPathWithOld(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(230292);
+    AppMethodBeat.i(188523);
     paramString1 = paramString1 + paramString3 + paramString4 + paramString5;
     paramString2 = genPath(paramString2, paramString3, paramString4, paramString5, paramInt, paramBoolean);
     if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
     {
-      AppMethodBeat.o(230292);
+      AppMethodBeat.o(188523);
       return null;
     }
-    paramString3 = new o(paramString2);
-    paramString4 = new o(paramString1);
-    if (paramString3.exists())
+    paramString3 = new q(paramString2);
+    paramString4 = new q(paramString1);
+    if (paramString3.ifE())
     {
-      AppMethodBeat.o(230292);
+      AppMethodBeat.o(188523);
       return paramString2;
     }
-    if (paramString4.exists()) {
+    if (paramString4.ifE()) {
       FilesCopy.copy(paramString1, paramString2, false);
     }
-    AppMethodBeat.o(230292);
+    AppMethodBeat.o(188523);
     return paramString2;
   }
   
   private static String genByAllMd5(String paramString)
   {
-    AppMethodBeat.i(230291);
+    AppMethodBeat.i(188516);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(230291);
+      AppMethodBeat.o(188516);
       return null;
     }
     paramString = genByHead2Byte(g.getMessageDigest(paramString.getBytes()));
-    AppMethodBeat.o(230291);
+    AppMethodBeat.o(188516);
     return paramString;
   }
   
@@ -127,10 +127,24 @@ public class FilePathGenerator
     AppMethodBeat.o(157533);
     return paramString1;
   }
+  
+  public static enum DIR_HASH_TYPE
+  {
+    static
+    {
+      AppMethodBeat.i(186739);
+      HEAD_2_BYTE = new DIR_HASH_TYPE("HEAD_2_BYTE", 0);
+      ALL_MD5 = new DIR_HASH_TYPE("ALL_MD5", 1);
+      $VALUES = new DIR_HASH_TYPE[] { HEAD_2_BYTE, ALL_MD5 };
+      AppMethodBeat.o(186739);
+    }
+    
+    private DIR_HASH_TYPE() {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.FilePathGenerator
  * JD-Core Version:    0.7.0.1
  */

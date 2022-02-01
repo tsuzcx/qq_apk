@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.appbrand.report.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.report.v;
-import com.tencent.mm.plugin.appbrand.report.v.a;
-import com.tencent.mm.plugin.appbrand.report.v.c;
-import com.tencent.mm.plugin.appbrand.report.v.d;
+import com.tencent.mm.plugin.appbrand.report.w;
+import com.tencent.mm.plugin.appbrand.report.w.a;
+import com.tencent.mm.plugin.appbrand.report.w.c;
+import com.tencent.mm.plugin.appbrand.report.w.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
@@ -13,42 +13,42 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class b
 {
-  public volatile AppBrandRuntime kEc;
   public volatile String mAppId;
-  protected final v nIq;
-  public volatile String nIr;
-  public volatile long nIs;
-  public volatile long nIt;
-  private final LinkedList<Runnable> nIu;
+  public volatile AppBrandRuntime nxs;
+  protected final w qKC;
+  public volatile String qKD;
+  public volatile long qKE;
+  public volatile long qKF;
+  private final LinkedList<Runnable> qKG;
   
   public b(int paramInt)
   {
     AppMethodBeat.i(139925);
-    this.nIs = 0L;
-    this.nIt = 0L;
-    this.nIu = new LinkedList();
-    this.nIq = new v("MicroMsg.AppBrandPageViewStatistics[" + paramInt + "]");
+    this.qKE = 0L;
+    this.qKF = 0L;
+    this.qKG = new LinkedList();
+    this.qKC = new w("MicroMsg.AppBrandPageViewStatistics[" + paramInt + "]");
     AppMethodBeat.o(139925);
   }
   
-  public final long bUD()
+  public final long chN()
   {
     AppMethodBeat.i(139926);
-    long l = Math.max(0L, this.nIt);
+    long l = Math.max(0L, this.qKF);
     AppMethodBeat.o(139926);
     return l;
   }
   
-  public final long bUE()
+  public final long chO()
   {
     AppMethodBeat.i(139927);
-    if (1 == this.nIq.nHO.get())
+    if (1 == this.qKC.qKa.get())
     {
       i = 1;
       if (i != 0) {
         break label69;
       }
-      i = this.nIq.nHO.get();
+      i = this.qKC.qKa.get();
       if ((-1 != i) && (2 != i)) {
         break label64;
       }
@@ -65,15 +65,15 @@ public class b
       break;
     }
     label69:
-    long l2 = this.nIq.nHT;
-    long l1 = this.nIs;
-    long l3 = this.nIt;
+    long l2 = this.qKC.qKf;
+    long l1 = this.qKE;
+    long l3 = this.qKF;
     if (l2 <= 0L)
     {
-      if ((this.kEc != null) && (this.kEc.SO)) {}
+      if ((this.nxs != null) && (this.nxs.aol)) {}
       for (boolean bool = true;; bool = false)
       {
-        Log.i("MicroMsg.AppBrandPageViewStatistics", "foregroundMs invalid(%d), loadStart %d, loadCost %d, [%s/%s], runtimeIsFinishing=%b", new Object[] { Long.valueOf(l2), Long.valueOf(l1), Long.valueOf(l3), this.mAppId, this.nIr, Boolean.valueOf(bool) });
+        Log.i("MicroMsg.AppBrandPageViewStatistics", "foregroundMs invalid(%d), loadStart %d, loadCost %d, [%s/%s], runtimeIsFinishing=%b", new Object[] { Long.valueOf(l2), Long.valueOf(l1), Long.valueOf(l3), this.mAppId, this.qKD, Boolean.valueOf(bool) });
         if ((l1 <= 0L) || (l3 <= 0L) || (l2 != 0L)) {
           break;
         }
@@ -89,61 +89,61 @@ public class b
   
   public final boolean isLoading()
   {
-    return (this.nIs > 0L) && (this.nIt <= 0L);
+    return (this.qKE > 0L) && (this.qKF <= 0L);
   }
   
   public final void onBackground()
   {
-    AppMethodBeat.i(230541);
-    if (this.nIq.bUz()) {
-      while (!this.nIu.isEmpty()) {
-        ((Runnable)this.nIu.pollFirst()).run();
+    AppMethodBeat.i(199407);
+    if (this.qKC.chJ()) {
+      while (!this.qKG.isEmpty()) {
+        ((Runnable)this.qKG.pollFirst()).run();
       }
     }
-    AppMethodBeat.o(230541);
+    AppMethodBeat.o(199407);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(230543);
-    this.nIq.bUz();
-    v localv = this.nIq;
-    localv.nHO.set(-1);
-    localv.nHP = new v.d(localv, (byte)0);
-    AppMethodBeat.o(230543);
+    AppMethodBeat.i(199414);
+    this.qKC.chJ();
+    w localw = this.qKC;
+    localw.qKa.set(-1);
+    localw.qKb = new w.d(localw, (byte)0);
+    AppMethodBeat.o(199414);
   }
   
   public final void onForeground()
   {
-    AppMethodBeat.i(230542);
-    if (this.nIs <= 0L)
+    AppMethodBeat.i(199412);
+    if (this.qKE <= 0L)
     {
-      AppMethodBeat.o(230542);
+      AppMethodBeat.o(199412);
       return;
     }
-    v localv = this.nIq;
-    if (localv.nHO.getAndSet(1) != 1) {}
+    w localw = this.qKC;
+    if (localw.qKa.getAndSet(1) != 1) {}
     for (boolean bool = true;; bool = false)
     {
-      Log.d("Luggage.StayingRecorder", "%s toForeground, changed:%b", new Object[] { localv.mName, Boolean.valueOf(bool) });
+      Log.d("Luggage.StayingRecorder", "%s toForeground, changed:%b", new Object[] { localw.mName, Boolean.valueOf(bool) });
       if (bool)
       {
-        localv.nHP.exit();
-        v.c localc = localv.nHQ;
-        localv.nHP = localc;
+        localw.qKb.exit();
+        w.c localc = localw.qKc;
+        localw.qKb = localc;
         localc.enter();
       }
       if (bool) {
-        this.nIu.clear();
+        this.qKG.clear();
       }
-      AppMethodBeat.o(230542);
+      AppMethodBeat.o(199412);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.model.b
  * JD-Core Version:    0.7.0.1
  */

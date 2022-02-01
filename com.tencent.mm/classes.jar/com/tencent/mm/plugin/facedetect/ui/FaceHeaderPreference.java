@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.facedetect.a.e;
+import com.tencent.mm.plugin.facedetect.a.g;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -15,22 +17,22 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class FaceHeaderPreference
   extends Preference
 {
-  private ImageView gBZ;
-  private MMActivity gte;
+  private MMActivity iXq;
+  private ImageView jmf;
   private String mTitle;
-  private int sUb;
-  private Button sUc;
-  private View sUd;
-  private View.OnClickListener sUe;
-  private String sUf;
-  private String sUg;
   private TextView titleTv;
+  private View.OnClickListener wAa;
+  private String wAb;
+  private String wAc;
+  private int wzX;
+  private Button wzY;
+  private View wzZ;
   
   public FaceHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
     AppMethodBeat.i(104019);
-    this.gte = ((MMActivity)paramContext);
+    this.iXq = ((MMActivity)paramContext);
     AppMethodBeat.o(104019);
   }
   
@@ -39,47 +41,47 @@ public final class FaceHeaderPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(104020);
     this.mTitle = "";
-    this.sUb = 255;
-    this.sUe = null;
-    this.sUf = "";
-    this.sUg = "";
-    this.gte = ((MMActivity)paramContext);
-    setLayoutResource(2131494086);
+    this.wzX = 255;
+    this.wAa = null;
+    this.wAb = "";
+    this.wAc = "";
+    this.iXq = ((MMActivity)paramContext);
+    setLayoutResource(a.g.face_print_pref_header);
     AppMethodBeat.o(104020);
   }
   
-  public final void b(View.OnClickListener paramOnClickListener)
+  public final void c(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(104022);
-    this.sUe = paramOnClickListener;
-    if ((this.sUc == null) || (this.sUd == null))
+    this.wAa = paramOnClickListener;
+    if ((this.wzY == null) || (this.wzZ == null))
     {
       AppMethodBeat.o(104022);
       return;
     }
-    if ((this.sUc != null) && (this.sUe != null))
+    if ((this.wzY != null) && (this.wAa != null))
     {
-      this.sUc.setOnClickListener(paramOnClickListener);
-      this.sUc.setVisibility(0);
-      this.sUd.setVisibility(0);
+      this.wzY.setOnClickListener(paramOnClickListener);
+      this.wzY.setVisibility(0);
+      this.wzZ.setVisibility(0);
       AppMethodBeat.o(104022);
       return;
     }
-    this.sUc.setVisibility(8);
-    this.sUd.setVisibility(8);
+    this.wzY.setVisibility(8);
+    this.wzZ.setVisibility(8);
     AppMethodBeat.o(104022);
   }
   
-  public final void gD(String paramString1, String paramString2)
+  public final void gR(String paramString1, String paramString2)
   {
     AppMethodBeat.i(104021);
-    this.sUf = paramString1;
-    this.sUg = paramString2;
+    this.wAb = paramString1;
+    this.wAc = paramString2;
     if (this.titleTv != null)
     {
-      if (!Util.isNullOrNil(this.sUf))
+      if (!Util.isNullOrNil(this.wAb))
       {
-        this.titleTv.setText(this.sUf);
+        this.titleTv.setText(this.wAb);
         this.titleTv.setVisibility(0);
         AppMethodBeat.o(104021);
         return;
@@ -93,28 +95,28 @@ public final class FaceHeaderPreference
   {
     AppMethodBeat.i(104023);
     super.onBindView(paramView);
-    this.gBZ = ((ImageView)paramView.findViewById(2131300365));
-    this.titleTv = ((TextView)paramView.findViewById(2131300366));
-    this.sUc = ((Button)paramView.findViewById(2131307087));
-    this.sUd = paramView.findViewById(2131297921);
-    if (!Util.isNullOrNil(this.sUf))
+    this.jmf = ((ImageView)paramView.findViewById(a.e.face_print_sucesss_icon));
+    this.titleTv = ((TextView)paramView.findViewById(a.e.face_print_title));
+    this.wzY = ((Button)paramView.findViewById(a.e.right_btn));
+    this.wzZ = paramView.findViewById(a.e.button_ll);
+    if (!Util.isNullOrNil(this.wAb))
     {
-      this.titleTv.setText(this.sUf);
+      this.titleTv.setText(this.wAb);
       this.titleTv.setVisibility(0);
     }
-    while ((this.sUc != null) && (this.sUe != null))
+    while ((this.wzY != null) && (this.wAa != null))
     {
-      this.sUc.setOnClickListener(this.sUe);
-      this.sUc.setVisibility(0);
-      this.sUd.setVisibility(0);
+      this.wzY.setOnClickListener(this.wAa);
+      this.wzY.setVisibility(0);
+      this.wzZ.setVisibility(0);
       AppMethodBeat.o(104023);
       return;
       this.titleTv.setVisibility(8);
     }
-    if (this.sUc != null) {
-      this.sUc.setVisibility(8);
+    if (this.wzY != null) {
+      this.wzY.setVisibility(8);
     }
-    this.sUd.setVisibility(8);
+    this.wzZ.setVisibility(8);
     AppMethodBeat.o(104023);
   }
 }

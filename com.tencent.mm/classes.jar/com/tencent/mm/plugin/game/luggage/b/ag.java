@@ -1,85 +1,81 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
+import android.os.Bundle;
+import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.game.luggage.g.i;
-import com.tencent.mm.plugin.gamelife.a.b.b;
 import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bs;
+import com.tencent.mm.plugin.webview.ui.tools.game.d;
+import com.tencent.mm.plugin.webview.ui.tools.game.d.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ag
   extends bs<i>
 {
-  public final void a(Context paramContext, String paramString, final br.a parama)
+  public final void a(Context paramContext, String paramString, br.a parama) {}
+  
+  public final void b(b.a parama)
   {
-    AppMethodBeat.i(186886);
-    Log.i("MicroMsg.GameLife.JsApiSetBlackList", "invokeInMM");
-    paramContext = com.tencent.mm.plugin.webview.luggage.c.b.Zc(paramString);
-    if (paramContext == null)
+    AppMethodBeat.i(83087);
+    Object localObject = parama.crh.cqn;
+    String str1 = ((JSONObject)localObject).optString("reportId");
+    boolean bool1;
+    if (((JSONObject)localObject).optInt("reportInstantly", 0) == 1)
     {
-      parama.i("invalid_params", null);
-      AppMethodBeat.o(186886);
+      bool1 = true;
+      if (((JSONObject)localObject).optInt("reportTimeBegin", 0) != 1) {
+        break label102;
+      }
+    }
+    String str2;
+    label102:
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      str2 = ((JSONObject)localObject).optString("reportFormatData");
+      localObject = ((JSONObject)localObject).optString("reportTabsFormatData");
+      if (!Util.isNullOrNil(str1)) {
+        break label107;
+      }
+      Log.e("MicroMsg.JsApiReportGamePageTime", "reportId is null or nil");
+      parama.a("invalid_reportId", null);
+      AppMethodBeat.o(83087);
+      return;
+      bool1 = false;
+      break;
+    }
+    label107:
+    if ((Util.isNullOrNil(str2)) && (Util.isNullOrNil((String)localObject)))
+    {
+      Log.e("MicroMsg.JsApiReportGamePageTime", "reportFormatData && reportTabsFormatData is null or nil");
+      parama.a("invalid_reportFormatData_reportTabsFormatData", null);
+      AppMethodBeat.o(83087);
       return;
     }
-    paramString = paramContext.optString("userName");
-    Log.i("MicroMsg.GameLife.JsApiSetBlackList", "userName:[%s]", new Object[] { paramString });
-    if (Util.isNullOrNil(paramString))
-    {
-      parama.i("null_data", null);
-      AppMethodBeat.o(186886);
-      return;
-    }
-    if (!paramContext.has("switch"))
-    {
-      parama.i("switch_null", null);
-      AppMethodBeat.o(186886);
-      return;
-    }
-    try
-    {
-      boolean bool1 = paramContext.getBoolean("switch");
-      boolean bool2 = paramContext.optBoolean("associateWxGameAccount", false);
-      Log.i("MicroMsg.GameLife.JsApiSetBlackList", "JsApiSetBlackList setBlack:%b,associateWxGameAccount:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-      ((com.tencent.mm.plugin.gamelife.a.b)g.af(com.tencent.mm.plugin.gamelife.a.b.class)).a(paramString, bool1, bool2, new b.b()
-      {
-        public final void mM(boolean paramAnonymousBoolean)
-        {
-          AppMethodBeat.i(186885);
-          if (paramAnonymousBoolean)
-          {
-            parama.i(null, null);
-            AppMethodBeat.o(186885);
-            return;
-          }
-          parama.i("setBlackList error", null);
-          AppMethodBeat.o(186885);
-        }
-      });
-      AppMethodBeat.o(186886);
-      return;
-    }
-    catch (JSONException paramContext)
-    {
-      parama.i("switch_error", null);
-      AppMethodBeat.o(186886);
-    }
+    Log.i("MicroMsg.JsApiReportGamePageTime", "reportGamePageTime, reportId:%s, reportInstantly:%b, reportTimeBegin:%b, reportFormatData:(%s), reportTabsFormatData(%s)", new Object[] { str1, Boolean.valueOf(bool1), Boolean.valueOf(bool2), str2, localObject });
+    Bundle localBundle = new Bundle();
+    localBundle.putString("game_page_report_id", str1);
+    localBundle.putBoolean("game_page_report_instantly", bool1);
+    localBundle.putBoolean("game_page_report_time_begin", bool2);
+    localBundle.putString("game_page_report_format_data", str2);
+    localBundle.putString("game_page_report_tabs_format_data", (String)localObject);
+    ((i)parama.crg).CCS.QnE.bk(localBundle);
+    parama.a("", null);
+    AppMethodBeat.o(83087);
   }
   
-  public final void b(com.tencent.luggage.d.b<i>.a paramb) {}
-  
-  public final int dTs()
+  public final int cDj()
   {
-    return 1;
+    return 0;
   }
   
   public final String name()
   {
-    return "setBlackList";
+    return "reportGamePageTime";
   }
 }
 

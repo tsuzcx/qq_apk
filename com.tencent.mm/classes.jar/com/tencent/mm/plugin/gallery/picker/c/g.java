@@ -8,16 +8,16 @@ import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gallery/picker/loader/UnusedImageDownloader;", "Lcom/tencent/mm/loader/common/IDataFetcher;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "()V", "loadDataImp", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "plugin-gallery_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gallery/picker/loader/UnusedImageDownloader;", "Lcom/tencent/mm/loader/common/IDataFetcher;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "()V", "loadDataImp", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "fileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "callback", "Lcom/tencent/mm/loader/common/IDataFetcher$IDataReady2;", "plugin-gallery_release"})
 public final class g
   extends b<GalleryItem.MediaItem>
 {
   public final void a(a<GalleryItem.MediaItem> parama, com.tencent.mm.loader.f.g paramg, b.b paramb)
   {
     AppMethodBeat.i(164912);
-    p.h(parama, "url");
-    p.h(paramg, "fileNameCreator");
-    p.h(paramb, "callback");
+    p.k(parama, "url");
+    p.k(paramg, "fileNameCreator");
+    p.k(paramb, "callback");
     AppMethodBeat.o(164912);
   }
 }

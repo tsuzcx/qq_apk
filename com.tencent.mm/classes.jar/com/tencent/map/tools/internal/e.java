@@ -17,6 +17,7 @@ public final class e
   private b b;
   private f c;
   private boolean d;
+  private boolean e;
   
   public e(final Context paramContext, SheetManager.Options paramOptions)
   {
@@ -30,17 +31,18 @@ public final class e
     a.g = paramOptions.getSoLibName();
     a.i = paramOptions.isCoreLogOn();
     this.d = paramOptions.isSheetEnable();
+    this.e = paramOptions.isCatchCrashEnable();
     if (!this.d)
     {
       paramContext = paramOptions.getUncaughtListener();
-      if ((paramContext != null) && (this.a == null))
+      if ((paramContext != null) && (this.a == null) && (this.e))
       {
         this.a = Thread.getDefaultUncaughtExceptionHandler();
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler()
         {
           public final void uncaughtException(Thread paramAnonymousThread, Throwable paramAnonymousThrowable)
           {
-            AppMethodBeat.i(193526);
+            AppMethodBeat.i(236288);
             CountDownLatch localCountDownLatch = new CountDownLatch(1);
             paramContext.onModuleSDKCrashed(paramAnonymousThrowable);
             try
@@ -50,7 +52,7 @@ public final class e
               if (e.this.a != null) {
                 e.this.a.uncaughtException(paramAnonymousThread, paramAnonymousThrowable);
               }
-              AppMethodBeat.o(193526);
+              AppMethodBeat.o(236288);
               return;
             }
             catch (InterruptedException localInterruptedException)
@@ -71,7 +73,7 @@ public final class e
         a.k = paramContext;
       }
       paramContext = paramOptions.getUncaughtListener();
-      if (paramContext != null)
+      if ((paramContext != null) && (this.e))
       {
         Object localObject = this.b.a;
         if (paramContext != null)
@@ -148,7 +150,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.map.tools.internal.e
  * JD-Core Version:    0.7.0.1
  */

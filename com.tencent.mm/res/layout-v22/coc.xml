@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/fce" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cn" android:layout_marginRight="@dimen/cn" android:layout_marginBottom="@dimen/ct" android:layout_marginHorizontal="@dimen/cn">
+        <TextView android:textSize="@dimen/h_" android:textColor="@color/v7" android:id="@id/kyv" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="238.0dip" />
+        <TextView android:textSize="@dimen/h_" android:textColor="@color/v7" android:ellipsize="end" android:layout_gravity="bottom" android:id="@id/kyw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" />
+    </FrameLayout>
+    <LinearLayout android:orientation="horizontal" android:paddingLeft="30.0dip" android:paddingRight="30.0dip" android:paddingBottom="@dimen/cc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingHorizontal="30.0dip">
+        <com.tencent.mm.plugin.finder.video.FinderLongVideoPlayerSeekBar android:id="@id/j6f" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c5" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/bd" android:textColor="@android:color/white" android:gravity="center" android:layout_gravity="center" android:id="@id/khg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="30.0dip" android:minHeight="30.0dip" android:text="@string/jtr" android:layout_marginEnd="@dimen/cb" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/d6e" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_filled_mini_window" android:layout_marginEnd="@dimen/cb" app:iconColor="@android:color/white" />
+    </LinearLayout>
+</LinearLayout>

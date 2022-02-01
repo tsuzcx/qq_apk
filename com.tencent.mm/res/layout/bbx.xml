@@ -19,8 +19,6 @@
         <ImageView android:layout_gravity="start|center" android:id="@id/gcr" android:background="#10eeeeee" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         <ImageView android:layout_gravity="start|center" android:id="@id/gcs" android:background="#ccffffff" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     </FrameLayout>
-    <com.tencent.mm.plugin.brandservice.ui.timeline.video.MPVideoErrorView android:id="@id/fls" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.plugin.brandservice.ui.timeline.video.MPVideoWifiTipsView android:id="@id/fm2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <FrameLayout android:id="@id/gcu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <FrameLayout android:id="@id/gco" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <LinearLayout android:orientation="horizontal" android:id="@id/dca" android:background="@drawable/aja" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/adi" android:layout_alignParentTop="true" android:paddingStart="@dimen/adj" android:paddingEnd="@dimen/adj">

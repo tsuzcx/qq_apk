@@ -9,9 +9,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface b
   extends IInterface
 {
-  public abstract void f(String paramString1, int paramInt1, int paramInt2, String paramString2);
+  public abstract void g(String paramString1, int paramInt1, int paramInt2, String paramString2);
   
-  public abstract void w(String paramString, long paramLong1, long paramLong2);
+  public abstract void v(String paramString, long paramLong1, long paramLong2);
   
   public static abstract class a
     extends Binder
@@ -22,12 +22,12 @@ public abstract interface b
       attachInterface(this, "com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadServiceCallback");
     }
     
-    public static b cxY()
+    public static b cMt()
     {
-      return a.qmp;
+      return a.tLg;
     }
     
-    public static b v(IBinder paramIBinder)
+    public static b y(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -55,12 +55,12 @@ public abstract interface b
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadServiceCallback");
-        f(paramParcel1.readString(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString());
+        g(paramParcel1.readString(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString());
         paramParcel2.writeNoException();
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadServiceCallback");
-      w(paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readLong());
+      v(paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readLong());
       paramParcel2.writeNoException();
       return true;
     }
@@ -68,7 +68,7 @@ public abstract interface b
     static final class a
       implements b
     {
-      public static b qmp;
+      public static b tLg;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -81,7 +81,7 @@ public abstract interface b
         return this.mRemote;
       }
       
-      public final void f(String paramString1, int paramInt1, int paramInt2, String paramString2)
+      public final void g(String paramString1, int paramInt1, int paramInt2, String paramString2)
       {
         AppMethodBeat.i(120704);
         Parcel localParcel1 = Parcel.obtain();
@@ -93,9 +93,9 @@ public abstract interface b
           localParcel1.writeInt(paramInt1);
           localParcel1.writeInt(paramInt2);
           localParcel1.writeString(paramString2);
-          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (b.a.cxY() != null))
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (b.a.cMt() != null))
           {
-            b.a.cxY().f(paramString1, paramInt1, paramInt2, paramString2);
+            b.a.cMt().g(paramString1, paramInt1, paramInt2, paramString2);
             return;
           }
           localParcel2.readException();
@@ -109,7 +109,7 @@ public abstract interface b
         }
       }
       
-      public final void w(String paramString, long paramLong1, long paramLong2)
+      public final void v(String paramString, long paramLong1, long paramLong2)
       {
         AppMethodBeat.i(120705);
         Parcel localParcel1 = Parcel.obtain();
@@ -120,9 +120,9 @@ public abstract interface b
           localParcel1.writeString(paramString);
           localParcel1.writeLong(paramLong1);
           localParcel1.writeLong(paramLong2);
-          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (b.a.cxY() != null))
+          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (b.a.cMt() != null))
           {
-            b.a.cxY().w(paramString, paramLong1, paramLong2);
+            b.a.cMt().v(paramString, paramLong1, paramLong2);
             return;
           }
           localParcel2.readException();
@@ -140,7 +140,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.cdndownloader.a.b
  * JD-Core Version:    0.7.0.1
  */

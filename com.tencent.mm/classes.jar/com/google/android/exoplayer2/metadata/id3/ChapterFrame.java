@@ -10,12 +10,12 @@ public final class ChapterFrame
   extends Id3Frame
 {
   public static final Parcelable.Creator<ChapterFrame> CREATOR;
-  public final String bun;
-  public final int buo;
-  public final int bup;
-  public final long buq;
-  public final long bur;
-  private final Id3Frame[] bus;
+  public final String bdP;
+  public final int bdQ;
+  public final int bdR;
+  public final long bdS;
+  public final long bdT;
+  private final Id3Frame[] bdU;
   
   static
   {
@@ -28,17 +28,17 @@ public final class ChapterFrame
   {
     super("CHAP");
     AppMethodBeat.i(92409);
-    this.bun = paramParcel.readString();
-    this.buo = paramParcel.readInt();
-    this.bup = paramParcel.readInt();
-    this.buq = paramParcel.readLong();
-    this.bur = paramParcel.readLong();
+    this.bdP = paramParcel.readString();
+    this.bdQ = paramParcel.readInt();
+    this.bdR = paramParcel.readInt();
+    this.bdS = paramParcel.readLong();
+    this.bdT = paramParcel.readLong();
     int j = paramParcel.readInt();
-    this.bus = new Id3Frame[j];
+    this.bdU = new Id3Frame[j];
     int i = 0;
     while (i < j)
     {
-      this.bus[i] = ((Id3Frame)paramParcel.readParcelable(Id3Frame.class.getClassLoader()));
+      this.bdU[i] = ((Id3Frame)paramParcel.readParcelable(Id3Frame.class.getClassLoader()));
       i += 1;
     }
     AppMethodBeat.o(92409);
@@ -47,12 +47,12 @@ public final class ChapterFrame
   public ChapterFrame(String paramString, int paramInt1, int paramInt2, long paramLong1, long paramLong2, Id3Frame[] paramArrayOfId3Frame)
   {
     super("CHAP");
-    this.bun = paramString;
-    this.buo = paramInt1;
-    this.bup = paramInt2;
-    this.buq = paramLong1;
-    this.bur = paramLong2;
-    this.bus = paramArrayOfId3Frame;
+    this.bdP = paramString;
+    this.bdQ = paramInt1;
+    this.bdR = paramInt2;
+    this.bdS = paramLong1;
+    this.bdT = paramLong2;
+    this.bdU = paramArrayOfId3Frame;
   }
   
   public final int describeContents()
@@ -74,7 +74,7 @@ public final class ChapterFrame
       return false;
     }
     paramObject = (ChapterFrame)paramObject;
-    if ((this.buo == paramObject.buo) && (this.bup == paramObject.bup) && (this.buq == paramObject.buq) && (this.bur == paramObject.bur) && (x.j(this.bun, paramObject.bun)) && (Arrays.equals(this.bus, paramObject.bus)))
+    if ((this.bdQ == paramObject.bdQ) && (this.bdR == paramObject.bdR) && (this.bdS == paramObject.bdS) && (this.bdT == paramObject.bdT) && (x.h(this.bdP, paramObject.bdP)) && (Arrays.equals(this.bdU, paramObject.bdU)))
     {
       AppMethodBeat.o(92410);
       return true;
@@ -86,12 +86,12 @@ public final class ChapterFrame
   public final int hashCode()
   {
     AppMethodBeat.i(92411);
-    int j = this.buo;
-    int k = this.bup;
-    int m = (int)this.buq;
-    int n = (int)this.bur;
-    if (this.bun != null) {}
-    for (int i = this.bun.hashCode();; i = 0)
+    int j = this.bdQ;
+    int k = this.bdR;
+    int m = (int)this.bdS;
+    int n = (int)this.bdT;
+    if (this.bdP != null) {}
+    for (int i = this.bdP.hashCode();; i = 0)
     {
       AppMethodBeat.o(92411);
       return i + ((((j + 527) * 31 + k) * 31 + m) * 31 + n) * 31;
@@ -101,13 +101,13 @@ public final class ChapterFrame
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(92412);
-    paramParcel.writeString(this.bun);
-    paramParcel.writeInt(this.buo);
-    paramParcel.writeInt(this.bup);
-    paramParcel.writeLong(this.buq);
-    paramParcel.writeLong(this.bur);
-    paramParcel.writeInt(this.bus.length);
-    Id3Frame[] arrayOfId3Frame = this.bus;
+    paramParcel.writeString(this.bdP);
+    paramParcel.writeInt(this.bdQ);
+    paramParcel.writeInt(this.bdR);
+    paramParcel.writeLong(this.bdS);
+    paramParcel.writeLong(this.bdT);
+    paramParcel.writeInt(this.bdU.length);
+    Id3Frame[] arrayOfId3Frame = this.bdU;
     int i = arrayOfId3Frame.length;
     paramInt = 0;
     while (paramInt < i)
@@ -120,7 +120,7 @@ public final class ChapterFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.id3.ChapterFrame
  * JD-Core Version:    0.7.0.1
  */

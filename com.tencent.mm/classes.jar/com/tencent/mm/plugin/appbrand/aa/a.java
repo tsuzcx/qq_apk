@@ -7,22 +7,22 @@ import java.util.Map;
 
 public final class a
 {
-  private final Map<String, List<Object>> mgp;
+  private final Map<String, List<Object>> pew;
   
   private a()
   {
     AppMethodBeat.i(140790);
-    this.mgp = new HashMap();
+    this.pew = new HashMap();
     AppMethodBeat.o(140790);
   }
   
-  private void aeY(String paramString)
+  private void amS(String paramString)
   {
-    AppMethodBeat.i(230004);
-    paramString = (List)this.mgp.get(paramString);
+    AppMethodBeat.i(242980);
+    paramString = (List)this.pew.get(paramString);
     if (paramString == null)
     {
-      AppMethodBeat.o(230004);
+      AppMethodBeat.o(242980);
       return;
     }
     int i = 0;
@@ -31,14 +31,14 @@ public final class a
       paramString.get(i);
       i += 1;
     }
-    AppMethodBeat.o(230004);
+    AppMethodBeat.o(242980);
   }
   
-  public final void M(String paramString1, final String paramString2, final String paramString3)
+  public final void L(String paramString1, final String paramString2, final String paramString3)
   {
     AppMethodBeat.i(140792);
     new Object() {};
-    aeY(paramString1);
+    amS(paramString1);
     AppMethodBeat.o(140792);
   }
   
@@ -46,25 +46,25 @@ public final class a
   {
     AppMethodBeat.i(140791);
     new Object() {};
-    aeY(paramString1);
+    amS(paramString1);
     AppMethodBeat.o(140791);
   }
   
   static final class a
   {
-    private static final a nOe;
+    private static final a qQB;
     
     static
     {
       AppMethodBeat.i(140789);
-      nOe = new a((byte)0);
+      qQB = new a((byte)0);
       AppMethodBeat.o(140789);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.aa.a
  * JD-Core Version:    0.7.0.1
  */

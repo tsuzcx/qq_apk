@@ -1,11 +1,11 @@
 package com.tencent.liteav.beauty.b.c;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.c.h;
+import com.tencent.liteav.basic.opengl.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class d
-  extends h
+  extends j
 {
   private final boolean r;
   private int s = -1;
@@ -21,7 +21,7 @@ class d
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(221448);
+    AppMethodBeat.i(232164);
     float f = Math.min(1.0F, 360.0F / Math.min(paramInt1, paramInt2));
     this.u = Math.round(paramInt1 * f);
     this.v = Math.round(f * paramInt2);
@@ -30,40 +30,40 @@ class d
     {
       a(this.s, 0.0F);
       a(this.t, 1.5F / this.v);
-      AppMethodBeat.o(221448);
+      AppMethodBeat.o(232164);
       return;
     }
     a(this.s, 1.5F / this.u);
     a(this.t, 0.0F);
-    AppMethodBeat.o(221448);
+    AppMethodBeat.o(232164);
   }
   
   public int b(int paramInt)
   {
-    AppMethodBeat.i(221449);
+    AppMethodBeat.i(232167);
     GLES20.glViewport(0, 0, this.u, this.v);
     paramInt = super.a(paramInt, this.m, this.n);
-    AppMethodBeat.o(221449);
+    AppMethodBeat.o(232167);
     return paramInt;
   }
   
   public boolean b()
   {
-    AppMethodBeat.i(221447);
+    AppMethodBeat.i(232163);
     if (!super.b())
     {
-      AppMethodBeat.o(221447);
+      AppMethodBeat.o(232163);
       return false;
     }
-    this.s = GLES20.glGetUniformLocation(p(), "texelWidthOffset");
-    this.t = GLES20.glGetUniformLocation(p(), "texelHeightOffset");
-    AppMethodBeat.o(221447);
+    this.s = GLES20.glGetUniformLocation(q(), "texelWidthOffset");
+    this.t = GLES20.glGetUniformLocation(q(), "texelHeightOffset");
+    AppMethodBeat.o(232163);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.c.d
  * JD-Core Version:    0.7.0.1
  */

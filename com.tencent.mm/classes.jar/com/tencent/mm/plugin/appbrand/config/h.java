@@ -4,31 +4,33 @@ import android.text.TextUtils;
 import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.luggage.sdk.config.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.l;
 import org.apache.commons.b.a;
 
 public final class h
   extends b
 {
-  private final String[] ldL;
+  private final String[] nXZ;
   
   private h()
   {
     AppMethodBeat.i(44827);
-    this.ldL = new String[] { "wx308bd2aeb83d3345" };
+    this.nXZ = new String[] { "wx308bd2aeb83d3345" };
     AppMethodBeat.o(44827);
   }
   
-  public static h bzT()
+  public static h bLi()
   {
     try
     {
-      h localh = (h)cyi;
+      h localh = (h)cwL;
       return localh;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public static void init()
@@ -36,7 +38,7 @@ public final class h
     AppMethodBeat.i(44828);
     try
     {
-      cyi = new h();
+      cwL = new h();
       return;
     }
     finally
@@ -45,53 +47,45 @@ public final class h
     }
   }
   
-  public final AppBrandInitConfigWC Xa(String paramString)
+  public final AppBrandInitConfigWC aeM(String paramString)
   {
     AppMethodBeat.i(44829);
-    paramString = (AppBrandInitConfigWC)super.dA(paramString);
+    paramString = (AppBrandInitConfigWC)super.dT(paramString);
     AppMethodBeat.o(44829);
     return paramString;
   }
   
-  public final AppBrandInitConfigWC c(WxaAttributes arg1)
+  public final AppBrandInitConfigWC c(WxaAttributes paramWxaAttributes)
   {
     AppMethodBeat.i(44830);
-    Object localObject2 = super.a(???);
+    AppBrandInitConfigLU localAppBrandInitConfigLU = super.a(paramWxaAttributes);
     AppBrandInitConfigWC localAppBrandInitConfigWC = null;
-    boolean bool;
-    if (localObject2 != null)
+    if (localAppBrandInitConfigLU != null)
     {
-      localAppBrandInitConfigWC = new AppBrandInitConfigWC(((AppBrandInitConfigLU)localObject2).bzR());
-      if ((!???.bAn().bAt()) || ((!i.brb()) && (a.contains(this.ldL, localAppBrandInitConfigWC.appId)))) {
-        break label151;
+      localAppBrandInitConfigWC = new AppBrandInitConfigWC(localAppBrandInitConfigLU.bLg());
+      if ((!paramWxaAttributes.bLF().bLL()) || ((!l.bBR()) && (a.contains(this.nXZ, localAppBrandInitConfigWC.appId)))) {
+        break label127;
       }
-      bool = true;
     }
-    for (;;)
+    label127:
+    for (boolean bool = true;; bool = false)
     {
-      localAppBrandInitConfigWC.ldN = bool;
+      localAppBrandInitConfigWC.nYb = bool;
       if (localAppBrandInitConfigWC != null) {
-        localAppBrandInitConfigWC.ldY = ???.bAo().lgD.lgJ;
+        localAppBrandInitConfigWC.nYm = paramWxaAttributes.bLG().obf.obo;
       }
-      if ((localAppBrandInitConfigWC != null) && (!TextUtils.isEmpty(localAppBrandInitConfigWC.appId)))
-      {
-        localObject2 = localAppBrandInitConfigWC.appId;
-        Log.i("Luggage.WXA.AppBrandInitConfigHelper", "clearByAppId %s", new Object[] { localObject2 });
+      if ((localAppBrandInitConfigWC != null) && (!TextUtils.isEmpty(localAppBrandInitConfigWC.appId))) {
+        super.dU(localAppBrandInitConfigWC.appId);
       }
-      synchronized (this.cyj)
-      {
-        this.cyj.remove(localObject2);
-        AppMethodBeat.o(44830);
-        return localAppBrandInitConfigWC;
-        label151:
-        bool = false;
-      }
+      localAppBrandInitConfigWC.nBE.zq(localAppBrandInitConfigWC.cwR);
+      AppMethodBeat.o(44830);
+      return localAppBrandInitConfigWC;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.h
  * JD-Core Version:    0.7.0.1
  */

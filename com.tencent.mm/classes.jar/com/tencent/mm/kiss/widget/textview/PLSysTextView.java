@@ -27,7 +27,7 @@ public class PLSysTextView
     AppMethodBeat.i(141021);
     super.onConfigurationChanged(paramConfiguration);
     if (getLayoutWrapper() != null) {
-      getLayoutWrapper().huF = false;
+      getLayoutWrapper().kgB = false;
     }
     AppMethodBeat.o(141021);
   }
@@ -66,10 +66,10 @@ public class PLSysTextView
     if (h.DEBUG) {
       l = System.currentTimeMillis();
     }
-    if ((getLayoutWrapper() != null) && (getLayoutWrapper().huF)) {
-      c.hue.a(getConfig(), getLayoutWrapper());
+    if ((getLayoutWrapper() != null) && (getLayoutWrapper().kgB)) {
+      c.kfZ.a(getConfig(), getLayoutWrapper());
     }
-    paramBufferType = c.hue.a(getConfig(), paramCharSequence);
+    paramBufferType = c.kfZ.a(getConfig(), paramCharSequence);
     if (paramBufferType != null) {
       setTextLayout(paramBufferType);
     }
@@ -80,13 +80,13 @@ public class PLSysTextView
       }
       AppMethodBeat.o(141018);
       return;
-      super.setText$609c24db(paramCharSequence);
+      super.J(paramCharSequence);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.PLSysTextView
  * JD-Core Version:    0.7.0.1
  */

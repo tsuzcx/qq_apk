@@ -13,12 +13,7 @@ public final class g<T, V>
     super(paramInt);
   }
   
-  protected final V A(T paramT, V paramV)
-  {
-    return paramV;
-  }
-  
-  protected final T aSg()
+  protected final T bbd()
   {
     return null;
   }
@@ -28,18 +23,23 @@ public final class g<T, V>
     return null;
   }
   
+  protected final V t(T paramT, V paramV)
+  {
+    return paramV;
+  }
+  
   static final class a<T>
   {
-    WeakReference<T> cMO;
+    WeakReference<T> cNB;
     T obj;
     
     public a(T paramT)
     {
       AppMethodBeat.i(156519);
       this.obj = null;
-      this.cMO = null;
+      this.cNB = null;
       this.obj = paramT;
-      this.cMO = new WeakReference(paramT);
+      this.cNB = new WeakReference(paramT);
       MMHandlerThread.postToMainThreadDelayed(new Runnable()
       {
         public final void run()

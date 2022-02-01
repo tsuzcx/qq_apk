@@ -4,34 +4,33 @@ import com.tencent.liteapp.storage.WxaLiteAppInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ar;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.util.Iterator;
 import java.util.List;
 
 public final class c
 {
-  private static final c yEA;
+  private static final c Egp;
   
   static
   {
-    AppMethodBeat.i(198855);
-    yEA = new c();
-    AppMethodBeat.o(198855);
+    AppMethodBeat.i(234275);
+    Egp = new c();
+    AppMethodBeat.o(234275);
   }
   
-  public static c ecA()
+  public static c eLF()
   {
-    return yEA;
+    return Egp;
   }
   
-  public static boolean ecB()
+  public static boolean eLG()
   {
-    AppMethodBeat.i(198854);
+    AppMethodBeat.i(234272);
     Log.d("MicroMsg.LiteApp.LiteAppCleaner", "doCleanLiteApp start");
-    f.ecC();
-    Object localObject1 = f.ecD();
+    f.eLH();
+    Object localObject1 = f.eLI();
     if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
     {
       localObject1 = ((List)localObject1).iterator();
@@ -39,10 +38,10 @@ public final class c
       {
         WxaLiteAppInfo localWxaLiteAppInfo = (WxaLiteAppInfo)((Iterator)localObject1).next();
         Object localObject2 = localWxaLiteAppInfo.appId;
-        localObject2 = new o(s.k(ar.NSg + "/pkg/" + (String)localObject2, true));
-        if (((o)localObject2).exists())
+        localObject2 = new q(u.n(ar.Vgd + "/pkg/" + (String)localObject2, true));
+        if (((q)localObject2).ifE())
         {
-          localObject2 = ((o)localObject2).het();
+          localObject2 = ((q)localObject2).ifJ();
           if (localObject2 != null)
           {
             int j = localObject2.length;
@@ -50,11 +49,11 @@ public final class c
             while (i < j)
             {
               Object localObject3 = localObject2[i];
-              Log.i("MicroMsg.LiteApp.LiteAppCleaner", "app path:%s local path:", new Object[] { localWxaLiteAppInfo.path, aa.z(localObject3.mUri) });
-              if (!aa.z(localObject3.mUri).equalsIgnoreCase(s.k(localWxaLiteAppInfo.path, true)))
+              Log.i("MicroMsg.LiteApp.LiteAppCleaner", "app path:%s local path:", new Object[] { localWxaLiteAppInfo.path, localObject3.getPath() });
+              if (!localObject3.getPath().equalsIgnoreCase(u.n(localWxaLiteAppInfo.path, true)))
               {
                 Log.w("MicroMsg.LiteApp.LiteAppCleaner", "delete old version folder.");
-                s.dy(aa.z(localObject3.mUri), true);
+                u.deleteDir(localObject3.getPath());
               }
               i += 1;
             }
@@ -71,7 +70,7 @@ public final class c
       }
     }
     Log.d("MicroMsg.LiteApp.LiteAppCleaner", "doCleanLiteApp end");
-    AppMethodBeat.o(198854);
+    AppMethodBeat.o(234272);
     return true;
   }
 }

@@ -1,13 +1,18 @@
 package kotlin.l.b.a.b.h;
 
-import java.util.List;
+import java.io.InputStream;
 
-public abstract interface t
-  extends List<String>
-{}
+public abstract interface t<MessageType>
+{
+  public abstract MessageType a(e parame, g paramg);
+  
+  public abstract MessageType i(InputStream paramInputStream, g paramg);
+  
+  public abstract MessageType j(InputStream paramInputStream, g paramg);
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     kotlin.l.b.a.b.h.t
  * JD-Core Version:    0.7.0.1
  */

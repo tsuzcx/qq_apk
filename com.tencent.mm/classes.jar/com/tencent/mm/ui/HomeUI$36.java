@@ -1,0 +1,30 @@
+package com.tencent.mm.ui;
+
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+final class HomeUI$36
+  implements DialogInterface.OnClickListener
+{
+  HomeUI$36(HomeUI paramHomeUI) {}
+  
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    AppMethodBeat.i(275883);
+    paramDialogInterface = HomeUI.c(this.VWJ);
+    Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/ui/HomeUI$41", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramDialogInterface, "com/tencent/mm/ui/HomeUI$41", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(275883);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+ * Qualified Name:     com.tencent.mm.ui.HomeUI.36
+ * JD-Core Version:    0.7.0.1
+ */

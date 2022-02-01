@@ -6,7 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class c
-  extends com.tencent.mm.aa.b.c
+  extends com.tencent.mm.ac.b.c
 {
   public String data;
   
@@ -39,7 +39,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.f.c
  * JD-Core Version:    0.7.0.1
  */

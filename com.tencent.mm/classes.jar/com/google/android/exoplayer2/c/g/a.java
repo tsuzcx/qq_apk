@@ -14,19 +14,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   implements e, l
 {
-  public static final h bil;
-  private g bir;
-  private com.google.android.exoplayer2.c.m bky;
-  private b bsP;
-  private int bsQ;
-  private int bsR;
+  public static final h aRP;
+  private g aRV;
+  private com.google.android.exoplayer2.c.m aUa;
+  private b bcr;
+  private int bcs;
+  private int bct;
   
   static
   {
     AppMethodBeat.i(92311);
-    bil = new h()
+    aRP = new h()
     {
-      public final e[] ux()
+      public final e[] ss()
       {
         AppMethodBeat.i(92306);
         a locala = new a();
@@ -37,12 +37,12 @@ public final class a
     AppMethodBeat.o(92311);
   }
   
-  public final long L(long paramLong)
+  public final long O(long paramLong)
   {
     AppMethodBeat.i(92310);
-    b localb = this.bsP;
-    paramLong = Math.min(localb.bsS * paramLong / 1000000L / localb.bsT * localb.bsT, localb.dataSize - localb.bsT);
-    long l = localb.bsV;
+    b localb = this.bcr;
+    paramLong = Math.min(localb.bcu * paramLong / 1000000L / localb.bcv * localb.bcv, localb.bcy - localb.bcv);
+    long l = localb.bcx;
     AppMethodBeat.o(92310);
     return l + paramLong;
   }
@@ -50,35 +50,35 @@ public final class a
   public final int a(f paramf, k paramk)
   {
     AppMethodBeat.i(92309);
-    if (this.bsP == null)
+    if (this.bcr == null)
     {
-      this.bsP = c.m(paramf);
-      if (this.bsP == null)
+      this.bcr = c.m(paramf);
+      if (this.bcr == null)
       {
         paramf = new o("Unsupported or unrecognized wav header.");
         AppMethodBeat.o(92309);
         throw paramf;
       }
-      paramk = this.bsP;
-      i = paramk.bgp;
-      j = paramk.bsU;
-      paramk = Format.a(null, "audio/raw", paramk.bgE * (i * j), 32768, this.bsP.bgE, this.bsP.bgp, this.bsP.encoding, null, null, 0, null);
-      this.bky.f(paramk);
-      this.bsQ = this.bsP.bsT;
+      paramk = this.bcr;
+      i = paramk.aPP;
+      j = paramk.bcw;
+      paramk = Format.a(null, "audio/raw", paramk.aQe * (i * j), 32768, this.bcr.aQe, this.bcr.aPP, this.bcr.encoding, null, null, 0, null);
+      this.aUa.f(paramk);
+      this.bcs = this.bcr.bcv;
     }
-    paramk = this.bsP;
+    paramk = this.bcr;
     b localb;
     com.google.android.exoplayer2.i.m localm;
     long l1;
-    if ((paramk.bsV != 0L) && (paramk.dataSize != 0L))
+    if ((paramk.bcx != 0L) && (paramk.bcy != 0L))
     {
       i = 1;
       if (i == 0)
       {
-        localb = this.bsP;
+        localb = this.bcr;
         com.google.android.exoplayer2.i.a.checkNotNull(paramf);
         com.google.android.exoplayer2.i.a.checkNotNull(localb);
-        paramf.uv();
+        paramf.sp();
         localm = new com.google.android.exoplayer2.i.m(8);
       }
     }
@@ -86,12 +86,12 @@ public final class a
     {
       for (paramk = c.a.a(paramf, localm);; paramk = c.a.a(paramf, localm))
       {
-        if (paramk.id == x.bJ("data")) {
+        if (paramk.id == x.bU("data")) {
           break label317;
         }
         new StringBuilder("Ignoring unknown WAV chunk: ").append(paramk.id);
         l1 = 8L + paramk.size;
-        if (paramk.id == x.bJ("RIFF")) {
+        if (paramk.id == x.bU("RIFF")) {
           l1 = 12L;
         }
         if (l1 > 2147483647L)
@@ -102,28 +102,28 @@ public final class a
           i = 0;
           break;
         }
-        paramf.dP((int)l1);
+        paramf.ed((int)l1);
       }
       label317:
-      paramf.dP(8);
+      paramf.ed(8);
       l1 = paramf.getPosition();
       long l2 = paramk.size;
-      localb.bsV = l1;
-      localb.dataSize = l2;
-      this.bir.a(this);
+      localb.bcx = l1;
+      localb.bcy = l2;
+      this.aRV.a(this);
     }
-    int i = this.bky.a(paramf, 32768 - this.bsR, true);
+    int i = this.aUa.a(paramf, 32768 - this.bct, true);
     if (i != -1) {
-      this.bsR += i;
+      this.bct += i;
     }
-    int j = this.bsR / this.bsQ;
+    int j = this.bct / this.bcs;
     if (j > 0)
     {
-      paramk = this.bsP;
-      l1 = (paramf.getPosition() - this.bsR) * 1000000L / paramk.bsS;
-      j *= this.bsQ;
-      this.bsR -= j;
-      this.bky.a(l1, 1, j, this.bsR, null);
+      paramk = this.bcr;
+      l1 = (paramf.getPosition() - this.bct) * 1000000L / paramk.bcu;
+      j *= this.bcs;
+      this.bct -= j;
+      this.aUa.a(l1, 1, j, this.bct, null);
     }
     if (i == -1)
     {
@@ -137,10 +137,10 @@ public final class a
   public final void a(g paramg)
   {
     AppMethodBeat.i(92308);
-    this.bir = paramg;
-    this.bky = paramg.dV(0);
-    this.bsP = null;
-    paramg.uy();
+    this.aRV = paramg;
+    this.aUa = paramg.ej(0);
+    this.bcr = null;
+    paramg.st();
     AppMethodBeat.o(92308);
   }
   
@@ -156,25 +156,25 @@ public final class a
     return false;
   }
   
-  public final void f(long paramLong1, long paramLong2)
+  public final void g(long paramLong1, long paramLong2)
   {
-    this.bsR = 0;
+    this.bct = 0;
   }
   
   public final long getDurationUs()
   {
-    b localb = this.bsP;
-    return localb.dataSize / localb.bsT * 1000000L / localb.bgp;
+    b localb = this.bcr;
+    return localb.bcy / localb.bcv * 1000000L / localb.aPP;
   }
   
-  public final boolean uu()
+  public final boolean so()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.c.g.a
  * JD-Core Version:    0.7.0.1
  */

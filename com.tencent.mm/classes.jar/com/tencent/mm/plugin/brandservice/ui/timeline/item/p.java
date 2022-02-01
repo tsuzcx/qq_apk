@@ -2,142 +2,137 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.item;
 
 import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.brandservice.d.e;
 import com.tencent.mm.plugin.brandservice.ui.timeline.b;
-import com.tencent.mm.protocal.protobuf.cdu;
-import com.tencent.mm.protocal.protobuf.dkr;
-import com.tencent.mm.protocal.protobuf.dlb;
+import com.tencent.mm.plugin.brandservice.ui.timeline.preload.d;
+import com.tencent.mm.pluginsdk.ui.applet.m.a;
+import com.tencent.mm.protocal.protobuf.cmo;
+import com.tencent.mm.protocal.protobuf.dle;
+import com.tencent.mm.protocal.protobuf.dug;
+import com.tencent.mm.protocal.protobuf.dur;
 import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.widget.MMNeat7extView;
-import com.tencent.neattextview.textview.layout.a;
 import java.util.LinkedList;
+import kotlin.l;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLFeedText;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLFeedCommBigItem;", "context", "Landroid/content/Context;", "adapter", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;)V", "MAX_LINE_NUM", "", "getMAX_LINE_NUM", "()I", "itemShowType", "getItemShowType", "setItemShowType", "(I)V", "viewId", "getViewId", "setViewId", "filling", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "position", "convertView", "Landroid/view/View;", "parent", "gone", "plugin-brandservice_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLFeedPic;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLFeedCommBigItem;", "context", "Landroid/content/Context;", "adapter", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;)V", "itemShowType", "", "getItemShowType", "()I", "setItemShowType", "(I)V", "picNumTv", "Landroid/widget/TextView;", "getPicNumTv", "()Landroid/widget/TextView;", "setPicNumTv", "(Landroid/widget/TextView;)V", "viewId", "getViewId", "setViewId", "filling", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "position", "convertView", "Landroid/view/View;", "parent", "gone", "onInflate", "plugin-brandservice_release"})
 public final class p
   extends n
 {
-  private int iwc;
-  private final int puE;
+  private int llp;
+  private TextView sDY;
   private int viewId;
   
   public p(Context paramContext, b paramb)
   {
     super(paramContext, paramb);
-    AppMethodBeat.i(195313);
-    this.iwc = 10;
-    this.viewId = 2131309897;
-    this.puE = 4;
-    AppMethodBeat.o(195313);
+    AppMethodBeat.i(265927);
+    this.llp = 8;
+    this.viewId = d.e.dZx;
+    AppMethodBeat.o(265927);
   }
   
   public final void a(z paramz, int paramInt, View paramView1, View paramView2)
   {
-    int i = 0;
-    AppMethodBeat.i(195311);
-    kotlin.g.b.p.h(paramz, "info");
-    kotlin.g.b.p.h(paramView1, "convertView");
-    kotlin.g.b.p.h(paramView2, "parent");
+    AppMethodBeat.i(265924);
+    kotlin.g.b.p.k(paramz, "info");
+    kotlin.g.b.p.k(paramView1, "convertView");
+    kotlin.g.b.p.k(paramView2, "parent");
     super.a(paramz, paramInt, paramView1, paramView2);
-    paramz = ((dlb)paramz.NQr.MOG.get(0)).MOY;
-    paramView1 = this.ptR;
+    paramView2 = ((dur)paramz.Ven.UaA.get(0)).UaX;
+    paramView1 = paramView2.Tuc;
     if (paramView1 != null)
     {
-      paramView2 = this.context;
-      CharSequence localCharSequence = (CharSequence)paramz.Title;
-      paramz = this.ptR;
-      if (paramz != null)
+      paramInt = paramView1.iUE;
+      if (paramInt <= 0) {
+        break label210;
+      }
+      paramView1 = this.sDY;
+      if (paramView1 != null) {
+        paramView1.setVisibility(0);
+      }
+      TextView localTextView = this.sDY;
+      if (localTextView != null)
       {
-        paramz = Float.valueOf(paramz.getTextSize());
-        if (paramz == null) {
-          kotlin.g.b.p.hyc();
+        paramView1 = paramView2.Tuc;
+        if (paramView1 == null) {
+          break label205;
         }
-        paramView1.aw((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.j(paramView2, localCharSequence, (int)paramz.floatValue()));
-      }
-    }
-    else
-    {
-      paramz = this.ptR;
-      if (paramz == null) {
-        break label231;
-      }
-      paramz = paramz.mq(this.width, 2147483647);
-      label141:
-      paramInt = i;
-      if (paramz != null) {
-        paramInt = paramz.hiG();
-      }
-      paramz = this.ptR;
-      if (paramz == null) {
-        break label236;
-      }
-      paramz = paramz.getLayoutParams();
-      label169:
-      paramView1 = paramz;
-      if (!(paramz instanceof LinearLayout.LayoutParams)) {
-        paramView1 = null;
-      }
-      paramz = (LinearLayout.LayoutParams)paramView1;
-      if (paramInt >= this.puE) {
-        break label241;
-      }
-      if (paramz != null) {
-        paramz.gravity = 17;
+        paramView1 = Integer.valueOf(paramView1.iUE);
+        label114:
+        localTextView.setText((CharSequence)String.valueOf(paramView1));
       }
     }
     for (;;)
     {
-      paramView1 = this.ptR;
-      if (paramView1 == null) {
-        break label254;
-      }
-      paramView1.setLayoutParams((ViewGroup.LayoutParams)paramz);
-      AppMethodBeat.o(195311);
+      paramInt = b.sAr;
+      X(this.sDp, paramInt);
+      d.apR(paramz.getId());
+      this.sCg.sAc.a(paramz.field_orderFlag, 0, cAy(), paramView2.RTm, getCoverIv(), getWidth(), paramInt, false, (m.a)new a(), false, paramz.sHe);
+      AppMethodBeat.o(265924);
       return;
-      paramz = null;
+      paramInt = 0;
       break;
-      label231:
-      paramz = null;
-      break label141;
-      label236:
-      paramz = null;
-      break label169;
-      label241:
-      if (paramz != null) {
-        paramz.gravity = 8388627;
+      label205:
+      paramView1 = null;
+      break label114;
+      label210:
+      paramView1 = this.sDY;
+      if (paramView1 != null) {
+        paramView1.setVisibility(8);
       }
     }
-    label254:
-    AppMethodBeat.o(195311);
   }
   
-  public final void cmO()
+  public final void cAv()
   {
-    AppMethodBeat.i(195312);
-    View localView = this.aus;
+    AppMethodBeat.i(265926);
+    View localView = getItemView();
     if (localView != null)
     {
       localView.setVisibility(8);
-      AppMethodBeat.o(195312);
+      AppMethodBeat.o(265926);
       return;
     }
-    AppMethodBeat.o(195312);
+    AppMethodBeat.o(265926);
+  }
+  
+  public final void cAz()
+  {
+    AppMethodBeat.i(265925);
+    Object localObject = getItemView();
+    if (localObject != null) {}
+    for (localObject = (TextView)((View)localObject).findViewById(d.e.ssq);; localObject = null)
+    {
+      this.sDY = ((TextView)localObject);
+      AppMethodBeat.o(265925);
+      return;
+    }
   }
   
   public final int getItemShowType()
   {
-    return this.iwc;
+    return this.llp;
   }
   
   public final int getViewId()
   {
     return this.viewId;
   }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLFeedPic$filling$1", "Lcom/tencent/mm/pluginsdk/ui/applet/ChattingBizImageDownloadListener$LoadTitleBitmapCallback;", "onFinish", "", "onStart", "plugin-brandservice_release"})
+  public static final class a
+    implements m.a
+  {
+    public final void onFinish() {}
+    
+    public final void onStart() {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.item.p
  * JD-Core Version:    0.7.0.1
  */

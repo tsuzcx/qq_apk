@@ -4,8 +4,8 @@
     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/db2" android:background="@drawable/c1u" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:layout_width="fill_parent" android:layout_height="75.0dip">
         <ImageView android:id="@id/db1" android:layout_width="46.0dip" android:layout_height="46.0dip" android:layout_marginTop="@dimen/hs" android:layout_marginRight="@dimen/k5" android:layout_marginBottom="@dimen/hs" android:src="@raw/actionbar_particular_icon" />
         <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/is" android:textColor="@color/ae" android:id="@id/db5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-            <TextView android:textSize="@dimen/hc" android:textColor="@color/ac" android:ellipsize="end" android:id="@id/db4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5" android:singleLine="true" />
+            <TextView android:textSize="@dimen/is" android:textColor="@color/UN_BW_0_Alpha_0_9" android:id="@id/db5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="@dimen/hc" android:textColor="@color/UN_BW_0_Alpha_0_3" android:ellipsize="end" android:id="@id/db4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5" android:singleLine="true" />
         </LinearLayout>
     </LinearLayout>
     <View android:id="@id/akq" android:background="@drawable/rc" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/ib" android:layout_marginRight="@dimen/ib" android:layout_marginBottom="0.0dip" android:layout_alignBottom="@id/db2" android:layerType="software" />

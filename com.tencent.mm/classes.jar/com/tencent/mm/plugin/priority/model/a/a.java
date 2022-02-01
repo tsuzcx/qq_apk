@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.priority.model.a;
 import android.database.Cursor;
 import android.util.Pair;
 import com.tencent.mm.plugin.priority.model.b;
-import com.tencent.mm.pluginsdk.i.f;
-import com.tencent.mm.protocal.protobuf.dou;
+import com.tencent.mm.pluginsdk.j.f;
+import com.tencent.mm.protocal.protobuf.dyq;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.wcdb.database.SQLiteStatement;
 import java.util.ArrayList;
@@ -17,64 +17,64 @@ import java.util.Map.Entry;
 
 public abstract class a
 {
-  private b AXQ;
-  public SQLiteStatement AYr;
-  public SQLiteStatement AYs;
-  public SQLiteStatement AYt;
-  private SQLiteStatement AYu;
+  private b GRO;
+  public SQLiteStatement GSp;
+  public SQLiteStatement GSq;
+  public SQLiteStatement GSr;
+  private SQLiteStatement GSs;
   
   public a(b paramb)
   {
-    this.AXQ = paramb;
-    if (this.AXQ.ag(eCV(), 0L) != 1L)
+    this.GRO = paramb;
+    if (this.GRO.ao(foO(), 0L) != 1L)
     {
-      if (this.AXQ.ayi(getTableName())) {
-        this.AXQ.aKd(getTableName());
+      if (this.GRO.aHB(getTableName())) {
+        this.GRO.aUA(getTableName());
       }
-      this.AXQ.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s (chat TEXT, talker TEXT, date INTEGER, dayreceivecount INTEGER, dayclickcount INTEGER, weekreceivecount INTEGER, weekclickcount INTEGER, monthreceivecount INTEGER, monthclickcount INTEGER, dayclickrate FLOAT, weekclickrate FLOAT, monthclickrate FLOAT, PRIMARY KEY(chat, talker, date));", new Object[] { getTableName() }));
-      this.AXQ.ah(eCV(), 1L);
+      this.GRO.execSQL(String.format("CREATE TABLE IF NOT EXISTS %s (chat TEXT, talker TEXT, date INTEGER, dayreceivecount INTEGER, dayclickcount INTEGER, weekreceivecount INTEGER, weekclickcount INTEGER, monthreceivecount INTEGER, monthclickcount INTEGER, dayclickrate FLOAT, weekclickrate FLOAT, monthclickrate FLOAT, PRIMARY KEY(chat, talker, date));", new Object[] { getTableName() }));
+      this.GRO.ap(foO(), 1L);
     }
     for (;;)
     {
-      this.AYr = this.AXQ.compileStatement(String.format("INSERT OR REPLACE INTO %s (chat, talker, date, dayreceivecount, dayclickcount, weekreceivecount, weekclickcount, monthreceivecount, monthclickcount, dayclickrate, weekclickrate, monthclickrate) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", new Object[] { getTableName() }));
-      this.AYs = this.AXQ.compileStatement(String.format("UPDATE %s SET dayreceivecount = ?, weekreceivecount = ?, monthreceivecount = ?, dayclickrate = ?, weekclickrate = ?, monthclickrate = ? WHERE chat = ? AND talker = ? AND date = ?", new Object[] { getTableName() }));
-      this.AYt = this.AXQ.compileStatement(String.format("UPDATE %s SET dayclickcount = ?, weekclickcount = ?, monthclickcount = ?, dayclickrate = ?, weekclickrate = ?, monthclickrate = ? WHERE chat = ? AND talker = ? AND date = ?", new Object[] { getTableName() }));
-      this.AYu = this.AXQ.compileStatement(String.format("DELETE FROM %s WHERE chat = ?;", new Object[] { getTableName() }));
+      this.GSp = this.GRO.compileStatement(String.format("INSERT OR REPLACE INTO %s (chat, talker, date, dayreceivecount, dayclickcount, weekreceivecount, weekclickcount, monthreceivecount, monthclickcount, dayclickrate, weekclickrate, monthclickrate) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", new Object[] { getTableName() }));
+      this.GSq = this.GRO.compileStatement(String.format("UPDATE %s SET dayreceivecount = ?, weekreceivecount = ?, monthreceivecount = ?, dayclickrate = ?, weekclickrate = ?, monthclickrate = ? WHERE chat = ? AND talker = ? AND date = ?", new Object[] { getTableName() }));
+      this.GSr = this.GRO.compileStatement(String.format("UPDATE %s SET dayclickcount = ?, weekclickcount = ?, monthclickcount = ?, dayclickrate = ?, weekclickrate = ?, monthclickrate = ? WHERE chat = ? AND talker = ? AND date = ?", new Object[] { getTableName() }));
+      this.GSs = this.GRO.compileStatement(String.format("DELETE FROM %s WHERE chat = ?;", new Object[] { getTableName() }));
       return;
-      int i = this.AXQ.aKc(getTableName());
+      int i = this.GRO.aUz(getTableName());
       Log.i("MicroMsg.Priority.C2CMsgBaseUsageStorage", "Exist Table %s %d", new Object[] { getTableName(), Integer.valueOf(i) });
     }
   }
   
-  private boolean a(String paramString1, String paramString2, long paramLong, boolean paramBoolean)
+  private boolean b(String paramString1, String paramString2, long paramLong, boolean paramBoolean)
   {
-    dou localdou = k(paramString1, paramString2, paramLong);
-    if (localdou != null)
+    dyq localdyq = m(paramString1, paramString2, paramLong);
+    if (localdyq != null)
     {
       label156:
       int i;
       String str;
       if (paramBoolean)
       {
-        localdou.MSc += 1;
-        localdou.MSe += 1;
-        localdou.MSg += 1;
-        localdou.MSh = hM(localdou.MSc, localdou.MSb);
-        localdou.MSi = hM(localdou.MSe, localdou.MSd);
-        localdou.MSj = hM(localdou.MSg, localdou.MSf);
+        localdyq.Uej += 1;
+        localdyq.Uel += 1;
+        localdyq.Uen += 1;
+        localdyq.Ueo = iR(localdyq.Uej, localdyq.Uei);
+        localdyq.Uep = iR(localdyq.Uel, localdyq.Uek);
+        localdyq.Ueq = iR(localdyq.Uen, localdyq.Uem);
         if (!paramBoolean) {
           break label442;
         }
-        localObject = this.AYt;
-        ((SQLiteStatement)localObject).bindLong(1, localdou.MSc);
-        ((SQLiteStatement)localObject).bindLong(2, localdou.MSe);
-        ((SQLiteStatement)localObject).bindLong(3, localdou.MSg);
-        ((SQLiteStatement)localObject).bindDouble(4, localdou.MSh);
-        ((SQLiteStatement)localObject).bindDouble(5, localdou.MSi);
-        ((SQLiteStatement)localObject).bindDouble(6, localdou.MSj);
-        ((SQLiteStatement)localObject).bindString(7, localdou.LiG);
-        ((SQLiteStatement)localObject).bindString(8, localdou.MRZ);
-        ((SQLiteStatement)localObject).bindLong(9, localdou.MSa);
+        localObject = this.GSr;
+        ((SQLiteStatement)localObject).bindLong(1, localdyq.Uej);
+        ((SQLiteStatement)localObject).bindLong(2, localdyq.Uel);
+        ((SQLiteStatement)localObject).bindLong(3, localdyq.Uen);
+        ((SQLiteStatement)localObject).bindDouble(4, localdyq.Ueo);
+        ((SQLiteStatement)localObject).bindDouble(5, localdyq.Uep);
+        ((SQLiteStatement)localObject).bindDouble(6, localdyq.Ueq);
+        ((SQLiteStatement)localObject).bindString(7, localdyq.SjX);
+        ((SQLiteStatement)localObject).bindString(8, localdyq.Ueg);
+        ((SQLiteStatement)localObject).bindLong(9, localdyq.Ueh);
         i = ((SQLiteStatement)localObject).executeUpdateDelete();
         str = getTableName();
         if (!paramBoolean) {
@@ -85,19 +85,19 @@ public abstract class a
       label487:
       for (Object localObject = "Open";; localObject = "Receive")
       {
-        Log.i("MicroMsg.Priority.C2CMsgBaseUsageStorage", "%s Update %s Res %s %s %d %d %d %d %d %d %d DayClickRate %.2f WeekClickRate %.2f MonthClickRate %.2f", new Object[] { str, localObject, paramString1, paramString2, Integer.valueOf(i), Integer.valueOf(localdou.MSc), Integer.valueOf(localdou.MSe), Integer.valueOf(localdou.MSg), Integer.valueOf(localdou.MSb), Integer.valueOf(localdou.MSd), Integer.valueOf(localdou.MSf), Float.valueOf(localdou.MSh), Float.valueOf(localdou.MSi), Float.valueOf(localdou.MSj) });
+        Log.i("MicroMsg.Priority.C2CMsgBaseUsageStorage", "%s Update %s Res %s %s %d %d %d %d %d %d %d DayClickRate %.2f WeekClickRate %.2f MonthClickRate %.2f", new Object[] { str, localObject, paramString1, paramString2, Integer.valueOf(i), Integer.valueOf(localdyq.Uej), Integer.valueOf(localdyq.Uel), Integer.valueOf(localdyq.Uen), Integer.valueOf(localdyq.Uei), Integer.valueOf(localdyq.Uek), Integer.valueOf(localdyq.Uem), Float.valueOf(localdyq.Ueo), Float.valueOf(localdyq.Uep), Float.valueOf(localdyq.Ueq) });
         if (i <= 0) {
           break label494;
         }
         return true;
-        localdou.MSb += 1;
-        localdou.MSd += 1;
-        localdou.MSf += 1;
+        localdyq.Uei += 1;
+        localdyq.Uek += 1;
+        localdyq.Uem += 1;
         break;
-        localObject = this.AYs;
-        ((SQLiteStatement)localObject).bindLong(1, localdou.MSb);
-        ((SQLiteStatement)localObject).bindLong(2, localdou.MSd);
-        ((SQLiteStatement)localObject).bindLong(3, localdou.MSf);
+        localObject = this.GSq;
+        ((SQLiteStatement)localObject).bindLong(1, localdyq.Uei);
+        ((SQLiteStatement)localObject).bindLong(2, localdyq.Uek);
+        ((SQLiteStatement)localObject).bindLong(3, localdyq.Uem);
         break label156;
       }
       label494:
@@ -106,60 +106,60 @@ public abstract class a
     return false;
   }
   
-  private void b(String paramString1, String paramString2, long paramLong, boolean paramBoolean)
+  private void c(String paramString1, String paramString2, long paramLong, boolean paramBoolean)
   {
-    dou localdou = new dou();
-    localdou.LiG = paramString1;
-    localdou.MRZ = paramString2;
-    localdou.MSa = paramLong;
+    dyq localdyq = new dyq();
+    localdyq.SjX = paramString1;
+    localdyq.Ueg = paramString2;
+    localdyq.Ueh = paramLong;
     Object localObject = String.format("SELECT sum(dayreceivecount), sum(dayclickcount) FROM %s WHERE chat = ? AND talker = ? AND date >= %d", new Object[] { getTableName(), Long.valueOf(paramLong - 2505600000L) });
-    localObject = this.AXQ.rawQuery((String)localObject, new String[] { paramString1, paramString2 });
+    localObject = this.GRO.rawQuery((String)localObject, new String[] { paramString1, paramString2 });
     if (((Cursor)localObject).moveToNext())
     {
-      localdou.MSf = ((Cursor)localObject).getInt(0);
-      localdou.MSg = ((Cursor)localObject).getInt(1);
+      localdyq.Uem = ((Cursor)localObject).getInt(0);
+      localdyq.Uen = ((Cursor)localObject).getInt(1);
     }
     ((Cursor)localObject).close();
     localObject = String.format("SELECT sum(dayreceivecount), sum(dayclickcount) FROM %s WHERE chat = ? AND talker = ? AND date >= %d", new Object[] { getTableName(), Long.valueOf(paramLong - 518400000L) });
-    localObject = this.AXQ.rawQuery((String)localObject, new String[] { paramString1, paramString2 });
+    localObject = this.GRO.rawQuery((String)localObject, new String[] { paramString1, paramString2 });
     if (((Cursor)localObject).moveToNext())
     {
-      localdou.MSd = ((Cursor)localObject).getInt(0);
-      localdou.MSe = ((Cursor)localObject).getInt(1);
+      localdyq.Uek = ((Cursor)localObject).getInt(0);
+      localdyq.Uel = ((Cursor)localObject).getInt(1);
     }
     ((Cursor)localObject).close();
     if (paramBoolean)
     {
-      localdou.MSc += 1;
-      localdou.MSg += 1;
-      localdou.MSe += 1;
+      localdyq.Uej += 1;
+      localdyq.Uen += 1;
+      localdyq.Uel += 1;
     }
     for (;;)
     {
-      localdou.MSh = hM(localdou.MSc, localdou.MSb);
-      localdou.MSi = hM(localdou.MSe, localdou.MSd);
-      localdou.MSj = hM(localdou.MSg, localdou.MSf);
-      this.AYr.bindString(1, localdou.LiG);
-      this.AYr.bindString(2, localdou.MRZ);
-      this.AYr.bindLong(3, localdou.MSa);
-      this.AYr.bindLong(4, localdou.MSb);
-      this.AYr.bindLong(5, localdou.MSc);
-      this.AYr.bindLong(6, localdou.MSd);
-      this.AYr.bindLong(7, localdou.MSe);
-      this.AYr.bindLong(8, localdou.MSf);
-      this.AYr.bindLong(9, localdou.MSg);
-      this.AYr.bindDouble(10, localdou.MSh);
-      this.AYr.bindDouble(11, localdou.MSi);
-      this.AYr.bindDouble(12, localdou.MSj);
-      Log.i("MicroMsg.Priority.C2CMsgBaseUsageStorage", "insert %d usage %s %s %s %d %d %d %d %.2f %.2f", new Object[] { Long.valueOf(this.AYr.executeInsert()), paramString1, paramString2, f.formatTime("yyyy-MM-dd", paramLong / 1000L), Integer.valueOf(localdou.MSd), Integer.valueOf(localdou.MSe), Integer.valueOf(localdou.MSf), Integer.valueOf(localdou.MSg), Float.valueOf(localdou.MSi), Float.valueOf(localdou.MSj) });
+      localdyq.Ueo = iR(localdyq.Uej, localdyq.Uei);
+      localdyq.Uep = iR(localdyq.Uel, localdyq.Uek);
+      localdyq.Ueq = iR(localdyq.Uen, localdyq.Uem);
+      this.GSp.bindString(1, localdyq.SjX);
+      this.GSp.bindString(2, localdyq.Ueg);
+      this.GSp.bindLong(3, localdyq.Ueh);
+      this.GSp.bindLong(4, localdyq.Uei);
+      this.GSp.bindLong(5, localdyq.Uej);
+      this.GSp.bindLong(6, localdyq.Uek);
+      this.GSp.bindLong(7, localdyq.Uel);
+      this.GSp.bindLong(8, localdyq.Uem);
+      this.GSp.bindLong(9, localdyq.Uen);
+      this.GSp.bindDouble(10, localdyq.Ueo);
+      this.GSp.bindDouble(11, localdyq.Uep);
+      this.GSp.bindDouble(12, localdyq.Ueq);
+      Log.i("MicroMsg.Priority.C2CMsgBaseUsageStorage", "insert %d usage %s %s %s %d %d %d %d %.2f %.2f", new Object[] { Long.valueOf(this.GSp.executeInsert()), paramString1, paramString2, f.formatTime("yyyy-MM-dd", paramLong / 1000L), Integer.valueOf(localdyq.Uek), Integer.valueOf(localdyq.Uel), Integer.valueOf(localdyq.Uem), Integer.valueOf(localdyq.Uen), Float.valueOf(localdyq.Uep), Float.valueOf(localdyq.Ueq) });
       return;
-      localdou.MSb += 1;
-      localdou.MSf += 1;
-      localdou.MSd += 1;
+      localdyq.Uei += 1;
+      localdyq.Uem += 1;
+      localdyq.Uek += 1;
     }
   }
   
-  private static float hM(int paramInt1, int paramInt2)
+  private static float iR(int paramInt1, int paramInt2)
   {
     if ((paramInt2 == 0) && (paramInt1 > 0)) {
       return 1.0F;
@@ -170,33 +170,15 @@ public abstract class a
     return Math.min(paramInt1 / paramInt2, 1.0F);
   }
   
-  private static dou k(Cursor paramCursor)
-  {
-    dou localdou = new dou();
-    localdou.LiG = paramCursor.getString(0);
-    localdou.MRZ = paramCursor.getString(1);
-    localdou.MSa = paramCursor.getLong(2);
-    localdou.MSb = paramCursor.getInt(3);
-    localdou.MSc = paramCursor.getInt(4);
-    localdou.MSd = paramCursor.getInt(5);
-    localdou.MSe = paramCursor.getInt(6);
-    localdou.MSf = paramCursor.getInt(7);
-    localdou.MSg = paramCursor.getInt(8);
-    localdou.MSh = paramCursor.getFloat(9);
-    localdou.MSi = paramCursor.getFloat(10);
-    localdou.MSj = paramCursor.getFloat(11);
-    return localdou;
-  }
-  
-  private dou k(String paramString1, String paramString2, long paramLong)
+  private dyq m(String paramString1, String paramString2, long paramLong)
   {
     String str = String.format("SELECT * FROM %s WHERE chat = ? AND talker = ? AND date = ?", new Object[] { getTableName() });
-    paramString1 = this.AXQ.rawQuery(str, new String[] { paramString1, paramString2, String.valueOf(paramLong) });
+    paramString1 = this.GRO.rawQuery(str, new String[] { paramString1, paramString2, String.valueOf(paramLong) });
     try
     {
       if (paramString1.moveToNext())
       {
-        paramString2 = k(paramString1);
+        paramString2 = n(paramString1);
         return paramString2;
       }
       return null;
@@ -207,16 +189,16 @@ public abstract class a
     }
   }
   
-  private float l(String paramString1, String paramString2, long paramLong)
+  private float n(String paramString1, String paramString2, long paramLong)
   {
     String str = String.format("SELECT sum(dayreceivecount), sum(dayclickcount) FROM %s WHERE chat = ? AND talker = ? AND date >= %d", new Object[] { getTableName(), Long.valueOf(paramLong - 518400000L) });
-    paramString1 = this.AXQ.rawQuery(str, new String[] { paramString1, paramString2 });
+    paramString1 = this.GRO.rawQuery(str, new String[] { paramString1, paramString2 });
     try
     {
       if (paramString1.moveToNext())
       {
         int i = paramString1.getInt(0);
-        float f = hM(paramString1.getInt(1), i);
+        float f = iR(paramString1.getInt(1), i);
         return f;
       }
       return 0.0F;
@@ -227,16 +209,34 @@ public abstract class a
     }
   }
   
-  private float m(String paramString1, String paramString2, long paramLong)
+  private static dyq n(Cursor paramCursor)
+  {
+    dyq localdyq = new dyq();
+    localdyq.SjX = paramCursor.getString(0);
+    localdyq.Ueg = paramCursor.getString(1);
+    localdyq.Ueh = paramCursor.getLong(2);
+    localdyq.Uei = paramCursor.getInt(3);
+    localdyq.Uej = paramCursor.getInt(4);
+    localdyq.Uek = paramCursor.getInt(5);
+    localdyq.Uel = paramCursor.getInt(6);
+    localdyq.Uem = paramCursor.getInt(7);
+    localdyq.Uen = paramCursor.getInt(8);
+    localdyq.Ueo = paramCursor.getFloat(9);
+    localdyq.Uep = paramCursor.getFloat(10);
+    localdyq.Ueq = paramCursor.getFloat(11);
+    return localdyq;
+  }
+  
+  private float o(String paramString1, String paramString2, long paramLong)
   {
     String str = String.format("SELECT sum(dayreceivecount), sum(dayclickcount) FROM %s WHERE chat = ? AND talker = ? AND date >= %d", new Object[] { getTableName(), Long.valueOf(paramLong - 2505600000L) });
-    paramString1 = this.AXQ.rawQuery(str, new String[] { paramString1, paramString2 });
+    paramString1 = this.GRO.rawQuery(str, new String[] { paramString1, paramString2 });
     try
     {
       if (paramString1.moveToNext())
       {
         int i = paramString1.getInt(0);
-        float f = hM(paramString1.getInt(1), i);
+        float f = iR(paramString1.getInt(1), i);
         return f;
       }
       return 0.0F;
@@ -247,25 +247,25 @@ public abstract class a
     }
   }
   
-  public final List<Pair<String, String>> HK(long paramLong)
+  public final List<Pair<String, String>> Pe(long paramLong)
   {
     HashMap localHashMap = new HashMap();
     Object localObject1 = String.format("SELECT chat, MMSumDivision(dayreceivecount, dayclickcount, 0) FROM %s WHERE date = ? AND ((chat like '%%@chatroom' AND talker = '@all') OR (chat = talker)) GROUP BY chat", new Object[] { getTableName() });
-    localObject1 = this.AXQ.rawQuery((String)localObject1, new String[] { String.valueOf(paramLong) });
+    localObject1 = this.GRO.rawQuery((String)localObject1, new String[] { String.valueOf(paramLong) });
     while (((Cursor)localObject1).moveToNext()) {
       localHashMap.put(((Cursor)localObject1).getString(0), Double.valueOf(((Cursor)localObject1).getDouble(1)));
     }
     ((Cursor)localObject1).close();
     localObject1 = new HashMap();
     Object localObject2 = String.format("SELECT chat, MMSumDivision(dayreceivecount, dayclickcount, 0) FROM %s WHERE date >= ? AND ((chat like '%%@chatroom' AND talker = '@all') OR (chat = talker)) GROUP BY chat", new Object[] { getTableName() });
-    localObject2 = this.AXQ.rawQuery((String)localObject2, new String[] { String.valueOf(paramLong - 518400000L) });
+    localObject2 = this.GRO.rawQuery((String)localObject2, new String[] { String.valueOf(paramLong - 518400000L) });
     while (((Cursor)localObject2).moveToNext()) {
       ((HashMap)localObject1).put(((Cursor)localObject2).getString(0), Double.valueOf(((Cursor)localObject2).getDouble(1)));
     }
     ((Cursor)localObject2).close();
     localObject2 = new HashMap();
     Object localObject3 = String.format("SELECT chat, MMSumDivision(dayreceivecount, dayclickcount, 0) FROM %s WHERE date >= ? AND ((chat like '%%@chatroom' AND talker = '@all') OR (chat = talker)) GROUP BY chat", new Object[] { getTableName() });
-    localObject3 = this.AXQ.rawQuery((String)localObject3, new String[] { String.valueOf(paramLong - 2505600000L) });
+    localObject3 = this.GRO.rawQuery((String)localObject3, new String[] { String.valueOf(paramLong - 2505600000L) });
     while (((Cursor)localObject3).moveToNext()) {
       ((HashMap)localObject2).put(((Cursor)localObject3).getString(0), Double.valueOf(((Cursor)localObject3).getDouble(1)));
     }
@@ -292,50 +292,50 @@ public abstract class a
     return localObject2;
   }
   
-  public final List<dou> aKe(String paramString)
+  public final List<dyq> aUB(String paramString)
   {
     Object localObject = String.format("SELECT *, max(monthreceivecount) FROM %s WHERE chat = ? AND talker <> '%s' GROUP BY chat, talker;", new Object[] { getTableName(), "@all" });
-    paramString = this.AXQ.rawQuery((String)localObject, new String[] { paramString });
+    paramString = this.GRO.rawQuery((String)localObject, new String[] { paramString });
     localObject = new ArrayList(10);
     while (paramString.moveToNext()) {
-      ((List)localObject).add(k(paramString));
+      ((List)localObject).add(n(paramString));
     }
     paramString.close();
     Collections.sort((List)localObject, new Comparator() {});
     return localObject;
   }
   
-  public final void aKf(String paramString)
+  public final void aUC(String paramString)
   {
-    this.AYu.bindString(1, paramString);
-    Log.i("MicroMsg.Priority.C2CMsgBaseUsageStorage", "delete %d img usage %s", new Object[] { Integer.valueOf(this.AYu.executeUpdateDelete()), paramString });
+    this.GSs.bindString(1, paramString);
+    Log.i("MicroMsg.Priority.C2CMsgBaseUsageStorage", "delete %d img usage %s", new Object[] { Integer.valueOf(this.GSs.executeUpdateDelete()), paramString });
   }
   
-  protected abstract long eCV();
+  protected abstract long foO();
   
   protected abstract String getTableName();
   
-  public final void jp(String paramString1, String paramString2)
+  public final void jB(String paramString1, String paramString2)
   {
-    long l = com.tencent.mm.plugin.priority.a.a.a.eCQ();
-    if (!a(paramString1, paramString2, l, false)) {
-      b(paramString1, paramString2, l, false);
+    long l = com.tencent.mm.plugin.priority.a.a.a.foJ();
+    if (!b(paramString1, paramString2, l, false)) {
+      c(paramString1, paramString2, l, false);
     }
   }
   
-  public final void jq(String paramString1, String paramString2)
+  public final void jC(String paramString1, String paramString2)
   {
-    long l = com.tencent.mm.plugin.priority.a.a.a.eCQ();
-    if (!a(paramString1, paramString2, l, true)) {
-      b(paramString1, paramString2, l, true);
+    long l = com.tencent.mm.plugin.priority.a.a.a.foJ();
+    if (!b(paramString1, paramString2, l, true)) {
+      c(paramString1, paramString2, l, true);
     }
   }
   
-  public final double[] jr(String paramString1, String paramString2)
+  public final double[] jD(String paramString1, String paramString2)
   {
-    long l = com.tencent.mm.plugin.priority.a.a.a.eCQ();
+    long l = com.tencent.mm.plugin.priority.a.a.a.foJ();
     Object localObject = String.format("SELECT dayclickrate, weekclickrate, monthclickrate FROM %s WHERE chat = ? AND talker = ? AND date = ?", new Object[] { getTableName() });
-    localObject = this.AXQ.rawQuery((String)localObject, new String[] { paramString1, paramString2, String.valueOf(l) });
+    localObject = this.GRO.rawQuery((String)localObject, new String[] { paramString1, paramString2, String.valueOf(l) });
     double[] arrayOfDouble = new double[3];
     if (((Cursor)localObject).moveToNext())
     {
@@ -347,17 +347,17 @@ public abstract class a
     }
     ((Cursor)localObject).close();
     arrayOfDouble[0] = 0.0D;
-    arrayOfDouble[1] = l(paramString1, paramString2, l);
-    arrayOfDouble[2] = m(paramString1, paramString2, l);
+    arrayOfDouble[1] = n(paramString1, paramString2, l);
+    arrayOfDouble[2] = o(paramString1, paramString2, l);
     return arrayOfDouble;
   }
   
-  public final int js(String paramString1, String paramString2)
+  public final int jE(String paramString1, String paramString2)
   {
     int i = 0;
-    long l = com.tencent.mm.plugin.priority.a.a.a.eCQ();
+    long l = com.tencent.mm.plugin.priority.a.a.a.foJ();
     String str = String.format("SELECT dayreceivecount FROM %s WHERE chat = ? AND talker = ? AND date = ?", new Object[] { getTableName() });
-    paramString1 = this.AXQ.rawQuery(str, new String[] { paramString1, paramString2, String.valueOf(l) });
+    paramString1 = this.GRO.rawQuery(str, new String[] { paramString1, paramString2, String.valueOf(l) });
     if (paramString1.moveToNext()) {
       i = paramString1.getInt(0);
     }
@@ -365,12 +365,12 @@ public abstract class a
     return i;
   }
   
-  public final int jt(String paramString1, String paramString2)
+  public final int jF(String paramString1, String paramString2)
   {
     int i = 0;
-    long l = com.tencent.mm.plugin.priority.a.a.a.eCQ();
+    long l = com.tencent.mm.plugin.priority.a.a.a.foJ();
     String str = String.format("SELECT sum(dayreceivecount) FROM %s WHERE chat = ? AND talker = ? AND date >= ?", new Object[] { getTableName() });
-    paramString1 = this.AXQ.rawQuery(str, new String[] { paramString1, paramString2, String.valueOf(l - 518400000L) });
+    paramString1 = this.GRO.rawQuery(str, new String[] { paramString1, paramString2, String.valueOf(l - 518400000L) });
     if (paramString1.moveToNext()) {
       i = paramString1.getInt(0);
     }

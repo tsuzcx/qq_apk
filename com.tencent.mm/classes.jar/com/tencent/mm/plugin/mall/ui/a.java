@@ -3,54 +3,55 @@ package com.tencent.mm.plugin.mall.ui;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.support.v7.app.ActionBar;
 import android.text.Layout.Alignment;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.view.View;
 import android.view.Window;
+import androidx.appcompat.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.mall.b;
-import com.tencent.mm.protocal.protobuf.bfv;
-import com.tencent.mm.protocal.protobuf.exc;
+import com.tencent.mm.plugin.wxpay.a.d;
+import com.tencent.mm.protocal.protobuf.bmw;
+import com.tencent.mm.protocal.protobuf.fhp;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class a
 {
-  public static final int zjP;
-  public static final int zjQ;
-  public static final int zjR;
-  private static int zjS;
-  private static int zjT;
-  private static int zjU;
-  private static int zjV;
-  private static int zjW;
-  private static int zjX;
-  private static int zjY;
-  private static int zjZ;
-  private static float zka;
+  private static int DGD;
+  public static final int EPg;
+  public static final int EPh;
+  public static final int EPi;
+  private static int EPj;
+  private static int EPk;
+  private static int EPl;
+  private static int EPm;
+  private static int EPn;
+  private static int EPo;
+  private static int EPp;
+  private static float EPq;
   
   static
   {
     AppMethodBeat.i(66032);
-    zjP = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 8);
-    zjQ = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 140);
-    zjR = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 85);
-    zjS = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 39);
-    zjT = 40;
-    zjU = 95;
-    zjV = 0;
-    zjW = 0;
-    zjX = 0;
-    zjY = 70;
-    zjZ = 38;
-    zka = 1.0F;
+    EPg = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 8);
+    EPh = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 140);
+    EPi = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 85);
+    EPj = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 39);
+    EPk = 40;
+    EPl = 95;
+    EPm = 0;
+    EPn = 0;
+    EPo = 0;
+    DGD = 70;
+    EPp = 38;
+    EPq = 1.0F;
     AppMethodBeat.o(66032);
   }
   
@@ -59,76 +60,76 @@ public final class a
     AppMethodBeat.i(66030);
     if (paramBoolean)
     {
-      k(paramMMActivity);
+      l(paramMMActivity);
       AppMethodBeat.o(66030);
       return;
     }
-    k(paramMMActivity);
-    Log.i("MicroMsg.FunctionGridSizeCalculator", "calcGridSize, GRID_HEIGHT_SIZE_PX: %s, TOP_FUNC_LINE_GRID_SIZE_PX: %s", new Object[] { Integer.valueOf(zjV), Integer.valueOf(zjX) });
+    l(paramMMActivity);
+    Log.i("MicroMsg.FunctionGridSizeCalculator", "calcGridSize, GRID_HEIGHT_SIZE_PX: %s, TOP_FUNC_LINE_GRID_SIZE_PX: %s", new Object[] { Integer.valueOf(EPm), Integer.valueOf(EPo) });
     AppMethodBeat.o(66030);
   }
   
-  public static int egM()
+  public static int eQs()
   {
-    return zjV;
+    return EPm;
   }
   
-  public static int egN()
+  public static int eQt()
   {
-    return zjX;
+    return EPo;
   }
   
-  public static int egO()
+  public static int eQu()
   {
-    return zjS;
+    return EPj;
   }
   
-  public static int egP()
+  public static int eQv()
   {
-    return zjW;
+    return EPn;
   }
   
-  public static float egQ()
+  public static float eQw()
   {
-    return zka;
+    return EPq;
   }
   
-  public static void j(MMActivity paramMMActivity)
+  public static void k(MMActivity paramMMActivity)
   {
-    AppMethodBeat.i(213543);
+    AppMethodBeat.i(272273);
     Object localObject = new Rect();
     paramMMActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
     int i = ((Rect)localObject).right - ((Rect)localObject).left;
-    int j = zjP;
+    int j = EPg;
     int k = j * 11;
     int m = (i - k * 4) / 5;
     Log.i("MicroMsg.FunctionGridSizeCalculator", "screenWidth，：%s , defaultGapWidth: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(k) });
     Log.i("MicroMsg.FunctionGridSizeCalculator", "baseA：%s , tempGridGapSize: %s", new Object[] { Integer.valueOf(j), Integer.valueOf(m) });
     if (m >= j)
     {
-      zjS = m;
-      zjW = k;
-      paramMMActivity = b.fSd().iterator();
+      EPj = m;
+      EPn = k;
+      paramMMActivity = b.gKI().iterator();
       i = 0;
       label135:
       while (paramMMActivity.hasNext())
       {
-        localObject = (bfv)paramMMActivity.next();
+        localObject = (bmw)paramMMActivity.next();
         if (localObject != null)
         {
           TextPaint localTextPaint = new TextPaint(1);
-          float f = com.tencent.mm.cb.a.ez(MMApplicationContext.getContext());
-          zka = f;
-          if ((ao.as(f, com.tencent.mm.cb.a.jc(MMApplicationContext.getContext()))) || (ao.as(zka, com.tencent.mm.cb.a.jd(MMApplicationContext.getContext())))) {
-            zka = com.tencent.mm.cb.a.jb(MMApplicationContext.getContext());
+          float f = com.tencent.mm.ci.a.ez(MMApplicationContext.getContext());
+          EPq = f;
+          if ((ar.ax(f, com.tencent.mm.ci.a.kg(MMApplicationContext.getContext()))) || (ar.ax(EPq, com.tencent.mm.ci.a.kh(MMApplicationContext.getContext())))) {
+            EPq = com.tencent.mm.ci.a.kf(MMApplicationContext.getContext());
           }
-          localTextPaint.setTextSize(com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 14) * zka);
-          j = new StaticLayout(((bfv)localObject).LPr.Name, localTextPaint, zjW, Layout.Alignment.ALIGN_NORMAL, 1.0F, com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 6), true).getHeight();
-          if (Util.isNullOrNil(((bfv)localObject).LPx)) {
+          localTextPaint.setTextSize(com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 14) * EPq);
+          j = new StaticLayout(((bmw)localObject).SXF.CMP, localTextPaint, EPn, Layout.Alignment.ALIGN_NORMAL, 1.0F, com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 6), true).getHeight();
+          if (Util.isNullOrNil(((bmw)localObject).SXL)) {
             break label514;
           }
-          localTextPaint.setTextSize(com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 10) * zka);
-          j = new StaticLayout(((bfv)localObject).LPx, localTextPaint, zjW, Layout.Alignment.ALIGN_NORMAL, 1.0F, com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 6), true).getHeight() + j + com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 1);
+          localTextPaint.setTextSize(com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 10) * EPq);
+          j = new StaticLayout(((bmw)localObject).SXL, localTextPaint, EPn, Layout.Alignment.ALIGN_NORMAL, 1.0F, com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 6), true).getHeight() + j + com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 1);
         }
       }
     }
@@ -140,34 +141,34 @@ public final class a
       {
         i = j;
         break label135;
-        zjS = j;
-        zjW = (i - zjS * 5) / 4;
+        EPj = j;
+        EPn = (i - EPj * 5) / 4;
         break;
         Log.i("MicroMsg.FunctionGridSizeCalculator", "maxTextHeight: %s", new Object[] { Integer.valueOf(i) });
-        j = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 12);
-        i = j + (com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 32) + j + com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 10) + i);
-        zjV = i;
-        if (i < zjW)
+        j = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 12);
+        i = j + (com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 32) + j + com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 10) + i);
+        EPm = i;
+        if (i < EPn)
         {
-          Log.i("MicroMsg.FunctionGridSizeCalculator", "GRID_HEIGHT_SIZE_PX < GRID_Width_SIZE_PX,use GRID_Width_SIZE_PX: %s", new Object[] { Integer.valueOf(zjW) });
-          zjV = zjW;
+          Log.i("MicroMsg.FunctionGridSizeCalculator", "GRID_HEIGHT_SIZE_PX < GRID_Width_SIZE_PX,use GRID_Width_SIZE_PX: %s", new Object[] { Integer.valueOf(EPn) });
+          EPm = EPn;
         }
-        Log.i("MicroMsg.FunctionGridSizeCalculator", "GRID_GAP_SIZE_PX: %s，GRID_Width_SIZE_PX:%s,MAX_GRID_HEIGHT ：%s", new Object[] { Integer.valueOf(zjS), Integer.valueOf(zjW), Integer.valueOf(zjV) });
-        AppMethodBeat.o(213543);
+        Log.i("MicroMsg.FunctionGridSizeCalculator", "GRID_GAP_SIZE_PX: %s，GRID_Width_SIZE_PX:%s,MAX_GRID_HEIGHT ：%s", new Object[] { Integer.valueOf(EPj), Integer.valueOf(EPn), Integer.valueOf(EPm) });
+        AppMethodBeat.o(272273);
         return;
         j = i;
       }
     }
   }
   
-  private static void k(MMActivity paramMMActivity)
+  private static void l(MMActivity paramMMActivity)
   {
     AppMethodBeat.i(66031);
-    Point localPoint = ao.az(paramMMActivity);
+    Point localPoint = ar.au(paramMMActivity);
     int n = localPoint.x;
     int k = localPoint.y;
-    if (ao.aA(paramMMActivity)) {}
-    for (int j = k - ao.aD(paramMMActivity);; j = k)
+    if (ar.av(paramMMActivity)) {}
+    for (int j = k - ar.aB(paramMMActivity);; j = k)
     {
       if (paramMMActivity.getSupportActionBar() != null)
       {
@@ -175,16 +176,16 @@ public final class a
         i = m;
         if (m > 0) {}
       }
-      for (int i = paramMMActivity.getResources().getDimensionPixelSize(2131165256);; i = 0)
+      for (int i = paramMMActivity.getResources().getDimensionPixelSize(a.d.DefaultActionbarHeightPort);; i = 0)
       {
-        i = j - i - ao.getStatusBarHeight(paramMMActivity);
+        i = j - i - ar.getStatusBarHeight(paramMMActivity);
         if (k / n * 1.0D > 2.0D) {}
-        for (i = (i - zjP * 3) / 20;; i = (i - zjP * 3) / 17)
+        for (i = (i - EPg * 3) / 20;; i = (i - EPg * 3) / 17)
         {
-          zjX = Math.max(i * 4, zjQ);
-          zjS = (int)(i * 1.5D);
-          zjV = Math.max(i * 3, zjR);
-          Log.i("MicroMsg.FunctionGridSizeCalculator", "baseA: %s, top height: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(zjX) });
+          EPo = Math.max(i * 4, EPh);
+          EPj = (int)(i * 1.5D);
+          EPm = Math.max(i * 3, EPi);
+          Log.i("MicroMsg.FunctionGridSizeCalculator", "baseA: %s, top height: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(EPo) });
           AppMethodBeat.o(66031);
           return;
         }

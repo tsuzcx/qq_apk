@@ -1,37 +1,38 @@
 package com.tencent.mm.plugin.story.ui.a;
 
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.story.a.d;
 import com.tencent.mm.plugin.story.f.d.h;
 import java.util.ArrayList;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/adapter/ControlAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/story/ui/adapter/ControlAdapter$ControlViewHolder;", "()V", "galleryItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "selectedPosition", "", "getItemCount", "onBindViewHolder", "", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "setSelected", "update", "items", "", "ControlViewHolder", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/adapter/ControlAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/story/ui/adapter/ControlAdapter$ControlViewHolder;", "()V", "galleryItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "selectedPosition", "", "getItemCount", "onBindViewHolder", "", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "setSelected", "update", "items", "", "ControlViewHolder", "plugin-story_release"})
 public final class a
   extends RecyclerView.a<a>
 {
-  public final ArrayList<h> Fsh;
-  public int va;
+  public final ArrayList<h> LMk;
+  public int bFx;
   
   public a()
   {
     AppMethodBeat.i(119718);
-    this.Fsh = new ArrayList();
+    this.LMk = new ArrayList();
     AppMethodBeat.o(119718);
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(119716);
-    int i = this.Fsh.size();
+    int i = this.LMk.size();
     AppMethodBeat.o(119716);
     return i;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/adapter/ControlAdapter$ControlViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/story/ui/adapter/ControlAdapter;Landroid/view/View;)V", "view", "getView", "()Landroid/view/View;", "plugin-story_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/adapter/ControlAdapter$ControlViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/story/ui/adapter/ControlAdapter;Landroid/view/View;)V", "view", "getView", "()Landroid/view/View;", "plugin-story_release"})
   public final class a
     extends RecyclerView.v
   {
@@ -41,8 +42,8 @@ public final class a
     {
       super();
       AppMethodBeat.i(119714);
-      this$1 = localObject.findViewById(2131308539);
-      p.g(a.this, "itemView.findViewById(R.…y_control_page_indicator)");
+      this$1 = localObject.findViewById(a.d.LBj);
+      p.j(a.this, "itemView.findViewById(R.…y_control_page_indicator)");
       this.view = a.this;
       AppMethodBeat.o(119714);
     }
@@ -50,7 +51,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.a.a
  * JD-Core Version:    0.7.0.1
  */

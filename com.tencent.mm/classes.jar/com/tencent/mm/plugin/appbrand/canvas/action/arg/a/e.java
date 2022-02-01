@@ -8,18 +8,18 @@ import com.tencent.mm.plugin.appbrand.canvas.a.a;
 public final class e
   extends b
 {
-  private static e lae;
+  private static e nUo;
   
   static
   {
     AppMethodBeat.i(145323);
-    lae = new e();
+    nUo = new e();
     AppMethodBeat.o(145323);
   }
   
-  public static e bzp()
+  public static e bKE()
   {
-    return lae;
+    return nUo;
   }
   
   public final void a(a parama)
@@ -29,25 +29,25 @@ public final class e
     parama.release();
     parama.setStyle(Paint.Style.FILL);
     parama.setAntiAlias(true);
-    parama.setStrokeWidth(g.zD(1));
+    parama.setStrokeWidth(g.Di(1));
     super.a(parama);
     AppMethodBeat.o(145321);
   }
   
-  public final a bzm()
+  public final a bKB()
   {
     AppMethodBeat.i(145322);
     a locala = new a();
     locala.setStyle(Paint.Style.FILL);
     locala.setAntiAlias(true);
-    locala.setStrokeWidth(g.zD(1));
+    locala.setStrokeWidth(g.Di(1));
     AppMethodBeat.o(145322);
     return locala;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.a.e
  * JD-Core Version:    0.7.0.1
  */

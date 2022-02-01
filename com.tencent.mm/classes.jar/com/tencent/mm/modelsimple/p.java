@@ -4,27 +4,29 @@ import android.content.Context;
 import android.os.Build.VERSION;
 import android.provider.Settings.System;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.ym;
-import com.tencent.mm.g.a.yu;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.bf;
-import com.tencent.mm.model.cr;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.f.a.aab;
+import com.tencent.mm.f.a.zt;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.cs;
 import com.tencent.mm.model.z;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.auth.PluginAuth;
-import com.tencent.mm.protocal.protobuf.btc;
-import com.tencent.mm.protocal.protobuf.btd;
-import com.tencent.mm.protocal.protobuf.cqm;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.protocal.protobuf.eos;
-import com.tencent.mm.protocal.protobuf.fff;
+import com.tencent.mm.protocal.protobuf.cau;
+import com.tencent.mm.protocal.protobuf.cav;
+import com.tencent.mm.protocal.protobuf.czd;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.eza;
+import com.tencent.mm.protocal.protobuf.fqg;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -46,18 +48,18 @@ public final class p
     AppMethodBeat.i(134157);
     this.account = paramString;
     d.a locala = new d.a();
-    locala.iLN = new btc();
-    locala.iLO = new btd();
+    locala.lBU = new cau();
+    locala.lBV = new cav();
     locala.uri = "/cgi-bin/micromsg-bin/getprofile";
     locala.funcId = 302;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    ((btc)this.rr.iLK.iLR).UserName = paramString;
+    this.rr = locala.bgN();
+    ((cau)d.b.b(this.rr.lBR)).UserName = paramString;
     AppMethodBeat.o(134157);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(134158);
     if (Util.isNullOrNil(this.account))
@@ -84,64 +86,64 @@ public final class p
     Log.d("MicroMsg.NetSceneGetProfile", "get profile ret: errType=" + paramInt2 + " errCode=" + paramInt3 + " errMsg=" + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = (btd)this.rr.iLL.iLR;
-      paramArrayOfByte = new ym();
-      paramArrayOfByte.eeL.eeM = params.LZO.NmE;
+      params = (cav)d.c.b(this.rr.lBS);
+      paramArrayOfByte = new zt();
+      paramArrayOfByte.fZa.fZb = params.Tjh.Uzq;
       EventCenter.instance.publish(paramArrayOfByte);
-      if ((z.aTY().equals(params.LZN.Lqk.toString())) && (!Util.isNullOrNil(params.LZO.Lis))) {
-        com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NTv, params.LZO.Lis);
+      if ((z.bcZ().equals(params.Tjg.SrH.toString())) && (!Util.isNullOrNil(params.Tjh.SjJ))) {
+        h.aHG().aHp().set(ar.a.Vhv, params.Tjh.SjJ);
       }
-      Log.d("MicroMsg.NetSceneGetProfile", "summersafecdn resp.UserInfo.PluginSwitch[%d], GrayscaleFlag[%d]", new Object[] { Integer.valueOf(params.LZN.Mwm), Integer.valueOf(params.LZO.Nmy) });
-      com.tencent.mm.kernel.g.aAh().azQ().set(64, Integer.valueOf(params.LZO.KEf));
-      com.tencent.mm.kernel.g.aAh().azQ().set(144385, Integer.valueOf(params.LZO.Nmy));
-      com.tencent.mm.kernel.g.aAh().azQ().set(40, Integer.valueOf(params.LZN.Mwm));
-      Log.i("MicroMsg.NetSceneGetProfile", "getprofile PluginSwitch: %d", new Object[] { Integer.valueOf(params.LZN.Mwm) });
-      PluginAuth.setUserInfoPluginSwitch(params.LZN.Mwm);
-      com.tencent.mm.kernel.g.aAh().azQ().set(339975, Integer.valueOf(params.LZO.NmG));
-      Log.i("MicroMsg.NetSceneGetProfile", "hy: getprofile pay wallet type: %d", new Object[] { Integer.valueOf(params.LZO.NmG) });
-      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NXG, Integer.valueOf(params.LZO.LRD));
-      cr.so(params.LZO.LRD);
-      Log.i("MicroMsg.NetSceneGetProfile", "hy: getprofile pay wallet type: %d %d", new Object[] { Integer.valueOf(params.LZO.NmG), Integer.valueOf(params.LZO.LRD) });
-      com.tencent.mm.kernel.g.aAh().azQ().set(208903, params.LZO.KPA);
-      com.tencent.mm.kernel.g.aAh().azQ().set(274433, params.LZO.Mvp);
-      com.tencent.mm.kernel.g.aAh().azQ().set(274434, params.LZO.Mvo);
-      com.tencent.mm.kernel.g.aAh().azQ().set(274436, params.LZO.Nmz);
-      MultiProcessMMKV.getMMKV("mmkv_crossprocess_infos").encode("mmkv_key_user_reg_ic", params.LZO.Nmz);
-      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NVK, Util.nullAs(params.LZO.fuW, ""));
-      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.Oah, params.LZO.NmI);
-      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OnT, Integer.valueOf(params.LZO.MKH));
-      Log.i("MicroMsg.NetSceneGetProfile", "userinfoExt.UserStatus:%s", new Object[] { Integer.valueOf(params.LZO.MKH) });
-      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OnU, params.LZO.NmM);
-      Log.i("MicroMsg.NetSceneGetProfile", "userinfoExt.BindXMail:%s", new Object[] { params.LZO.NmM });
-      Log.d("MicroMsg.NetSceneGetProfile", "weidianInfo:%s", new Object[] { params.LZO.fuW });
-      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.Oob, params.LZO.MvT);
-      Log.i("MicroMsg.NetSceneGetProfile", "userinfoExt.PatSuffix:%s", new Object[] { params.LZO.MvT });
-      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.Ooh, Integer.valueOf(params.LZO.MVK));
-      Log.i("MicroMsg.NetSceneGetProfile", "userinfoExt.PatSuffixVersion:%d", new Object[] { Integer.valueOf(params.LZO.MVK) });
-      if ((params.LZO.NmH & 0x0) == 0L) {
-        break label1045;
+      Log.d("MicroMsg.NetSceneGetProfile", "summersafecdn resp.UserInfo.PluginSwitch[%d], GrayscaleFlag[%d]", new Object[] { Integer.valueOf(params.Tjg.THk), Integer.valueOf(params.Tjh.Uzk) });
+      h.aHG().aHp().i(64, Integer.valueOf(params.Tjh.RFx));
+      h.aHG().aHp().i(144385, Integer.valueOf(params.Tjh.Uzk));
+      h.aHG().aHp().i(40, Integer.valueOf(params.Tjg.THk));
+      Log.i("MicroMsg.NetSceneGetProfile", "getprofile PluginSwitch: %d", new Object[] { Integer.valueOf(params.Tjg.THk) });
+      PluginAuth.setUserInfoPluginSwitch(params.Tjg.THk);
+      h.aHG().aHp().i(339975, Integer.valueOf(params.Tjh.Uzs));
+      Log.i("MicroMsg.NetSceneGetProfile", "hy: getprofile pay wallet type: %d", new Object[] { Integer.valueOf(params.Tjh.Uzs) });
+      h.aHG().aHp().set(ar.a.VlG, Integer.valueOf(params.Tjh.Tai));
+      cs.vl(params.Tjh.Tai);
+      Log.i("MicroMsg.NetSceneGetProfile", "hy: getprofile pay wallet type: %d %d", new Object[] { Integer.valueOf(params.Tjh.Uzs), Integer.valueOf(params.Tjh.Tai) });
+      h.aHG().aHp().i(208903, params.Tjh.RQy);
+      h.aHG().aHp().i(274433, params.Tjh.TGn);
+      h.aHG().aHp().i(274434, params.Tjh.TGm);
+      h.aHG().aHp().i(274436, params.Tjh.Uzl);
+      MultiProcessMMKV.getMMKV("mmkv_crossprocess_infos").encode("mmkv_key_user_reg_ic", params.Tjh.Uzl);
+      h.aHG().aHp().set(ar.a.VjK, Util.nullAs(params.Tjh.hDv, ""));
+      h.aHG().aHp().set(ar.a.Voj, params.Tjh.Uzu);
+      h.aHG().aHp().set(ar.a.VDj, Integer.valueOf(params.Tjh.TWB));
+      Log.i("MicroMsg.NetSceneGetProfile", "userinfoExt.UserStatus:%s", new Object[] { Integer.valueOf(params.Tjh.TWB) });
+      h.aHG().aHp().set(ar.a.VDk, params.Tjh.Uzy);
+      Log.i("MicroMsg.NetSceneGetProfile", "userinfoExt.BindXMail:%s", new Object[] { params.Tjh.Uzy });
+      Log.d("MicroMsg.NetSceneGetProfile", "weidianInfo:%s", new Object[] { params.Tjh.hDv });
+      h.aHG().aHp().set(ar.a.VDu, params.Tjh.TGR);
+      Log.i("MicroMsg.NetSceneGetProfile", "userinfoExt.PatSuffix:%s", new Object[] { params.Tjh.TGR });
+      h.aHG().aHp().set(ar.a.VDA, Integer.valueOf(params.Tjh.Uid));
+      Log.i("MicroMsg.NetSceneGetProfile", "userinfoExt.PatSuffixVersion:%d", new Object[] { Integer.valueOf(params.Tjh.Uid) });
+      if ((params.Tjh.Uzt & 0x0) == 0L) {
+        break label1046;
       }
     }
     for (;;)
     {
-      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OaV, Boolean.valueOf(bool));
-      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OaW, Integer.valueOf(params.LZO.NmN));
-      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OaX, Integer.valueOf(params.LZO.NmO));
-      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OaY, Integer.valueOf(params.LZO.NmP));
-      EventCenter.instance.publish(new yu());
-      bf.iDu.aO("last_login_use_voice", params.LZN.Mwm);
+      h.aHG().aHp().set(ar.a.VoX, Boolean.valueOf(bool));
+      h.aHG().aHp().set(ar.a.VoY, Integer.valueOf(params.Tjh.Uzz));
+      h.aHG().aHp().set(ar.a.VoZ, Integer.valueOf(params.Tjh.UzA));
+      h.aHG().aHp().set(ar.a.Vpa, Integer.valueOf(params.Tjh.UzB));
+      EventCenter.instance.publish(new aab());
+      bg.ltv.aS("last_login_use_voice", params.Tjg.THk);
       if (Build.VERSION.SDK_INT < 23) {
-        Settings.System.putString(MMApplicationContext.getContext().getContentResolver(), "89884a87498ef44f", params.LZO.NmF);
+        Settings.System.putString(MMApplicationContext.getContext().getContentResolver(), "89884a87498ef44f", params.Tjh.Uzr);
       }
       Log.i("MicroMsg.NetSceneGetProfile", "handling xagreement configs");
-      if ((params.LZO != null) && (params.LZO.NmQ != null)) {
-        cr.z(params.LZO.NmQ.NAz, params.LZO.NmQ.NAA);
+      if ((params.Tjh != null) && (params.Tjh.UzC != null)) {
+        cs.z(params.Tjh.UzC.UOb, params.Tjh.UzC.UOc);
       }
-      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.Oop, params.LZO.NmR);
+      h.aHG().aHp().set(ar.a.VDI, params.Tjh.UzD);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(134159);
       return;
-      label1045:
+      label1046:
       bool = false;
     }
   }

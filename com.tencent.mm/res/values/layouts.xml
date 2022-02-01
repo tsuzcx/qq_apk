@@ -13,12 +13,16 @@
     <item type="layout" name="ci">false</item>
     <item type="layout" name="ck">false</item>
     <item type="layout" name="cq">false</item>
+    <item type="layout" name="cr">false</item>
+    <item type="layout" name="cs">false</item>
     <item type="layout" name="cz">false</item>
     <item type="layout" name="d0">false</item>
     <item type="layout" name="d1">false</item>
     <item type="layout" name="d2">false</item>
     <item type="layout" name="d5">false</item>
     <item type="layout" name="dg">false</item>
+    <item type="layout" name="dj">false</item>
+    <item type="layout" name="dl">false</item>
     <item type="layout" name="dz">false</item>
     <item type="layout" name="e0">false</item>
     <item type="layout" name="e1">false</item>
@@ -39,11 +43,11 @@
     <item type="layout" name="fx">false</item>
     <item type="layout" name="g6">false</item>
     <item type="layout" name="g7">false</item>
+    <item type="layout" name="g8">false</item>
     <item type="layout" name="ge">false</item>
     <item type="layout" name="gj">false</item>
     <item type="layout" name="gm">false</item>
     <item type="layout" name="gw">false</item>
-    <item type="layout" name="h3">false</item>
     <item type="layout" name="ha">false</item>
     <item type="layout" name="hd">false</item>
     <item type="layout" name="hr">false</item>
@@ -63,6 +67,7 @@
     <item type="layout" name="jx">false</item>
     <item type="layout" name="k5">false</item>
     <item type="layout" name="l7">false</item>
+    <item type="layout" name="le">false</item>
     <item type="layout" name="lp">false</item>
     <item type="layout" name="lr">false</item>
     <item type="layout" name="lx">false</item>
@@ -171,6 +176,7 @@
     <item type="layout" name="a__">false</item>
     <item type="layout" name="a_p">false</item>
     <item type="layout" name="a_x">false</item>
+    <item type="layout" name="aa1">false</item>
     <item type="layout" name="aa9">false</item>
     <item type="layout" name="aa_">false</item>
     <item type="layout" name="aae">false</item>
@@ -184,6 +190,8 @@
     <item type="layout" name="aba">false</item>
     <item type="layout" name="abb">false</item>
     <item type="layout" name="abc">false</item>
+    <item type="layout" name="abk">false</item>
+    <item type="layout" name="abm">false</item>
     <item type="layout" name="abu">false</item>
     <item type="layout" name="abv">false</item>
     <item type="layout" name="abx">false</item>
@@ -194,9 +202,11 @@
     <item type="layout" name="acr">false</item>
     <item type="layout" name="acw">false</item>
     <item type="layout" name="ad6">false</item>
+    <item type="layout" name="ada">false</item>
     <item type="layout" name="add">false</item>
     <item type="layout" name="adq">false</item>
     <item type="layout" name="adw">false</item>
+    <item type="layout" name="cf0">false</item>
     <item type="layout" name="ae0">false</item>
     <item type="layout" name="ae1">false</item>
     <item type="layout" name="ae7">false</item>
@@ -206,19 +216,25 @@
     <item type="layout" name="aeb">false</item>
     <item type="layout" name="aeg">false</item>
     <item type="layout" name="aep">false</item>
+    <item type="layout" name="aer">false</item>
     <item type="layout" name="aet">false</item>
     <item type="layout" name="aeu">false</item>
     <item type="layout" name="aev">false</item>
     <item type="layout" name="aew">false</item>
     <item type="layout" name="aex">false</item>
     <item type="layout" name="af1">false</item>
+    <item type="layout" name="cfa">false</item>
+    <item type="layout" name="cfb">false</item>
     <item type="layout" name="afa">false</item>
     <item type="layout" name="afg">false</item>
     <item type="layout" name="afi">false</item>
+    <item type="layout" name="afn">false</item>
     <item type="layout" name="afs">false</item>
     <item type="layout" name="afu">false</item>
+    <item type="layout" name="cff">false</item>
     <item type="layout" name="agb">false</item>
     <item type="layout" name="agc">false</item>
+    <item type="layout" name="agr">false</item>
     <item type="layout" name="ahc">false</item>
     <item type="layout" name="ahg">false</item>
     <item type="layout" name="ahm">false</item>
@@ -235,8 +251,10 @@
     <item type="layout" name="aid">false</item>
     <item type="layout" name="aii">false</item>
     <item type="layout" name="aij">false</item>
+    <item type="layout" name="aip">false</item>
     <item type="layout" name="air">false</item>
     <item type="layout" name="ait">false</item>
+    <item type="layout" name="cfm">false</item>
     <item type="layout" name="aiz">false</item>
     <item type="layout" name="aj0">false</item>
     <item type="layout" name="aj2">false</item>
@@ -257,6 +275,7 @@
     <item type="layout" name="ali">false</item>
     <item type="layout" name="alo">false</item>
     <item type="layout" name="am6">false</item>
+    <item type="layout" name="ama">false</item>
     <item type="layout" name="ams">false</item>
     <item type="layout" name="amy">false</item>
     <item type="layout" name="anb">false</item>
@@ -355,6 +374,8 @@
     <item type="layout" name="awe">false</item>
     <item type="layout" name="aww">false</item>
     <item type="layout" name="ax6">false</item>
+    <item type="layout" name="ax7">false</item>
+    <item type="layout" name="ax8">false</item>
     <item type="layout" name="axu">false</item>
     <item type="layout" name="axx">false</item>
     <item type="layout" name="ayd">false</item>
@@ -381,6 +402,7 @@
     <item type="layout" name="b17">false</item>
     <item type="layout" name="b1d">false</item>
     <item type="layout" name="b1q">false</item>
+    <item type="layout" name="cfx">false</item>
     <item type="layout" name="b25">false</item>
     <item type="layout" name="b26">false</item>
     <item type="layout" name="b2n">false</item>
@@ -418,6 +440,7 @@
     <item type="layout" name="b7z">false</item>
     <item type="layout" name="b82">false</item>
     <item type="layout" name="b83">false</item>
+    <item type="layout" name="b87">false</item>
     <item type="layout" name="b88">false</item>
     <item type="layout" name="b8f">false</item>
     <item type="layout" name="b8g">false</item>
@@ -439,9 +462,12 @@
     <item type="layout" name="baj">false</item>
     <item type="layout" name="bak">false</item>
     <item type="layout" name="baz">false</item>
+    <item type="layout" name="bbj">false</item>
     <item type="layout" name="bbl">false</item>
-    <item type="layout" name="bbp">false</item>
+    <item type="layout" name="bbo">false</item>
     <item type="layout" name="bbs">false</item>
+    <item type="layout" name="bbt">false</item>
+    <item type="layout" name="bbu">false</item>
     <item type="layout" name="bc1">false</item>
     <item type="layout" name="bc2">false</item>
     <item type="layout" name="bc3">false</item>
@@ -451,6 +477,7 @@
     <item type="layout" name="bcu">false</item>
     <item type="layout" name="bcy">false</item>
     <item type="layout" name="bd3">false</item>
+    <item type="layout" name="bda">false</item>
     <item type="layout" name="bdg">false</item>
     <item type="layout" name="bdr">false</item>
     <item type="layout" name="bdw">false</item>
@@ -459,6 +486,9 @@
     <item type="layout" name="beh">false</item>
     <item type="layout" name="ber">false</item>
     <item type="layout" name="bes">false</item>
+    <item type="layout" name="bf_">false</item>
+    <item type="layout" name="bfa">false</item>
+    <item type="layout" name="bfg">false</item>
     <item type="layout" name="bfj">false</item>
     <item type="layout" name="bfz">false</item>
     <item type="layout" name="bgi">false</item>
@@ -479,6 +509,8 @@
     <item type="layout" name="bha">false</item>
     <item type="layout" name="bhj">false</item>
     <item type="layout" name="bhl">false</item>
+    <item type="layout" name="bi6">false</item>
+    <item type="layout" name="bi8">false</item>
     <item type="layout" name="bj4">false</item>
     <item type="layout" name="bjc">false</item>
     <item type="layout" name="bjf">false</item>
@@ -493,6 +525,7 @@
     <item type="layout" name="bkq">false</item>
     <item type="layout" name="bkr">false</item>
     <item type="layout" name="bks">false</item>
+    <item type="layout" name="bkz">false</item>
     <item type="layout" name="bl8">false</item>
     <item type="layout" name="blj">false</item>
     <item type="layout" name="blx">false</item>
@@ -575,12 +608,14 @@
     <item type="layout" name="c16">false</item>
     <item type="layout" name="c1c">false</item>
     <item type="layout" name="c1n">false</item>
+    <item type="layout" name="c1p">false</item>
+    <item type="layout" name="c1q">false</item>
+    <item type="layout" name="c1r">false</item>
     <item type="layout" name="c1s">false</item>
-    <item type="layout" name="c1t">false</item>
+    <item type="layout" name="c1x">false</item>
     <item type="layout" name="c23">false</item>
     <item type="layout" name="c25">false</item>
     <item type="layout" name="c27">false</item>
-    <item type="layout" name="c2a">false</item>
     <item type="layout" name="c2b">false</item>
     <item type="layout" name="c2h">false</item>
     <item type="layout" name="c2i">false</item>
@@ -623,6 +658,7 @@
     <item type="layout" name="c9f">false</item>
     <item type="layout" name="c9j">false</item>
     <item type="layout" name="c9l">false</item>
+    <item type="layout" name="c9q">false</item>
     <item type="layout" name="c9r">false</item>
     <item type="layout" name="c9v">false</item>
     <item type="layout" name="c9z">false</item>
@@ -633,6 +669,7 @@
     <item type="layout" name="cac">false</item>
     <item type="layout" name="cb7">false</item>
     <item type="layout" name="cba">false</item>
+    <item type="layout" name="cbd">false</item>
     <item type="layout" name="cbn">false</item>
     <item type="layout" name="cbs">false</item>
     <item type="layout" name="cbu">false</item>
@@ -641,5 +678,21 @@
     <item type="layout" name="ccb">false</item>
     <item type="layout" name="ccp">false</item>
     <item type="layout" name="ccq">false</item>
+    <item type="layout" name="ci_">false</item>
     <item type="layout" name="cd7">false</item>
+    <item type="layout" name="cdd">false</item>
+    <item type="layout" name="cde">false</item>
+    <item type="layout" name="ce4">false</item>
+    <item type="layout" name="cir">false</item>
+    <item type="layout" name="ckl">false</item>
+    <item type="layout" name="ckm">false</item>
+    <item type="layout" name="ckn">false</item>
+    <item type="layout" name="ckq">false</item>
+    <item type="layout" name="ckv">false</item>
+    <item type="layout" name="APKTOOL_DUMMY_b89" />
+    <item type="layout" name="APKTOOL_DUMMY_c42" />
+    <item type="layout" name="APKTOOL_DUMMY_c69" />
+    <item type="layout" name="APKTOOL_DUMMY_c6b" />
+    <item type="layout" name="APKTOOL_DUMMY_11e1" />
+    <item type="layout" name="APKTOOL_DUMMY_11f5" />
 </resources>

@@ -3,16 +3,15 @@ package com.tencent.mm.plugin.translate;
 import android.os.Looper;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.g.a.ya;
-import com.tencent.mm.g.a.ya.a;
-import com.tencent.mm.g.a.yc;
-import com.tencent.mm.g.a.yd;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.t;
+import com.tencent.mm.f.a.zh;
+import com.tencent.mm.f.a.zh.a;
+import com.tencent.mm.f.a.zj;
+import com.tencent.mm.f.a.zk;
+import com.tencent.mm.model.be;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.plugin.translate.a.c;
 import com.tencent.mm.plugin.translate.a.c.a;
 import com.tencent.mm.plugin.translate.a.c.b;
 import com.tencent.mm.plugin.translate.a.c.c;
@@ -25,7 +24,6 @@ import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.QueueWorkerThread;
 import com.tencent.mm.sdk.platformtools.QueueWorkerThread.ThreadObject;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ca;
 import com.tencent.mm.storagebase.h.b;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,21 +31,21 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public final class a
-  implements bd
+  implements be
 {
-  com.tencent.mm.plugin.translate.a.c Gta;
-  QueueWorkerThread Gtb;
-  private c.a Gtc;
-  private IListener Gtd;
-  private IListener Gte;
-  MMHandler handler;
+  private c NfM;
+  private QueueWorkerThread NfN;
+  private c.a NfO;
+  private IListener NfP;
+  private IListener NfQ;
+  private MMHandler handler;
   
   public a()
   {
     AppMethodBeat.i(29736);
-    this.Gta = c.b.Gto;
-    this.Gtb = new QueueWorkerThread(5, "ProcessTranslatedMessage", 1, Looper.getMainLooper());
-    this.Gtc = new c.a()
+    this.NfM = c.b.Nga;
+    this.NfN = new QueueWorkerThread(5, "ProcessTranslatedMessage", 1, Looper.getMainLooper());
+    this.NfO = new c.a()
     {
       public final void a(final int paramAnonymousInt, SparseArray<c.c> paramAnonymousSparseArray)
       {
@@ -57,7 +55,7 @@ public final class a
         {
           final c.c localc = (c.c)paramAnonymousSparseArray.valueAt(i);
           if (localc != null) {
-            a.this.Gtb.add(new QueueWorkerThread.ThreadObject()
+            a.a(a.this).add(new QueueWorkerThread.ThreadObject()
             {
               public final boolean doInBackground()
               {
@@ -75,41 +73,19 @@ public final class a
                   AppMethodBeat.o(29731);
                   return true;
                 }
-                if (Util.isNullOrNil(localc.eez))
+                if (Util.isNullOrNil(localc.fYO))
                 {
                   Log.e("MicroMsg.SubCoreTranslate", "translate return null");
                   AppMethodBeat.o(29731);
                   return true;
                 }
-                ca localca;
                 if ((localc.type == 0) || (localc.type == 1))
                 {
                   Log.d("MicroMsg.SubCoreTranslate", "we recieved one translated message");
-                  c.c localc = localc;
-                  bg.aVF();
-                  localca = com.tencent.mm.model.c.aSQ().Hb(Util.safeParseLong(localc.id));
-                  localca.CB(localc.eez);
-                  localca.field_transBrandWording = Util.escapeSqlValue(Util.nullAsNil(localc.ecu));
-                  localca.fqQ = true;
-                  localca.fRc = localc.fRc;
-                  localca.fqk = true;
-                  if (localc.eeA != 1) {
-                    break label270;
-                  }
-                  if (localca.gDz()) {
-                    localca.nc(localca.fqJ | 0x400);
-                  }
+                  a.a(localc);
                 }
-                for (;;)
-                {
-                  ((l)g.af(l.class)).eiy().a(localca.field_msgId, localca);
-                  AppMethodBeat.o(29731);
-                  return true;
-                  label270:
-                  if (localca.gDz()) {
-                    localca.nc(localca.fqJ & 0xFFFFFBFF);
-                  }
-                }
+                AppMethodBeat.o(29731);
+                return true;
               }
               
               public final boolean onPostExecute()
@@ -118,17 +94,17 @@ public final class a
                 if (paramAnonymousInt != 0) {}
                 for (int i = paramAnonymousInt;; i = localc.ret)
                 {
-                  yd localyd = new yd();
-                  localyd.eey.ret = i;
-                  localyd.eey.eeq = localc.eeq;
-                  localyd.eey.id = localc.id;
-                  localyd.eey.eez = localc.eez;
-                  localyd.eey.type = localc.type;
-                  localyd.eey.source = localc.source;
-                  localyd.eey.ecu = localc.ecu;
-                  localyd.eey.ees = localc.fRc;
-                  localyd.eey.eeA = localc.eeA;
-                  EventCenter.instance.publish(localyd);
+                  zk localzk = new zk();
+                  localzk.fYN.ret = i;
+                  localzk.fYN.fYF = localc.fYF;
+                  localzk.fYN.id = localc.id;
+                  localzk.fYN.fYO = localc.fYO;
+                  localzk.fYN.type = localc.type;
+                  localzk.fYN.source = localc.source;
+                  localzk.fYN.fWy = localc.fWy;
+                  localzk.fYN.fYH = localc.ils;
+                  localzk.fYN.fYP = localc.fYP;
+                  EventCenter.instance.publish(localzk);
                   AppMethodBeat.o(29730);
                   return false;
                 }
@@ -141,8 +117,8 @@ public final class a
       }
     };
     this.handler = new MMHandler(Looper.getMainLooper());
-    this.Gtd = new IListener() {};
-    this.Gte = new IListener() {};
+    this.NfP = new IListener() {};
+    this.NfQ = new IListener() {};
     AppMethodBeat.o(29736);
   }
   
@@ -156,13 +132,13 @@ public final class a
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(29737);
-    com.tencent.mm.plugin.translate.a.c localc = this.Gta;
-    c.a locala = this.Gtc;
+    c localc = this.NfM;
+    c.a locala = this.NfO;
     if ((locala == null) || (localc.listeners.contains(locala))) {}
     for (;;)
     {
-      EventCenter.instance.addListener(this.Gtd);
-      EventCenter.instance.addListener(this.Gte);
+      EventCenter.instance.addListener(this.NfP);
+      EventCenter.instance.addListener(this.NfQ);
       AppMethodBeat.o(29737);
       return;
       localc.listeners.add(locala);
@@ -172,42 +148,42 @@ public final class a
   public final void onAccountRelease()
   {
     AppMethodBeat.i(29738);
-    EventCenter.instance.removeListener(this.Gtd);
-    EventCenter.instance.removeListener(this.Gte);
-    com.tencent.mm.plugin.translate.a.c localc = this.Gta;
-    Object localObject = this.Gtc;
+    EventCenter.instance.removeListener(this.NfP);
+    EventCenter.instance.removeListener(this.NfQ);
+    c localc = this.NfM;
+    Object localObject = this.NfO;
     if ((localObject == null) || (!localc.listeners.contains(localObject))) {}
     for (;;)
     {
-      localc = this.Gta;
-      if (localc.Gtl == null) {
+      localc = this.NfM;
+      if (localc.NfX == null) {
         break;
       }
-      localObject = localc.Gtl;
+      localObject = localc.NfX;
       int j = localObject.length;
       int i = 0;
       while (i < j)
       {
-        com.tencent.mm.ak.i locali = localObject[i];
+        i locali = localObject[i];
         if (locali != null)
         {
-          bg.azz().b(631, locali);
-          if (locali.Gtu != null)
+          bh.aGY().b(631, locali);
+          if (locali.Ngg != null)
           {
-            locali.Gtw.stopTimer();
-            bg.azz().a(locali.Gtu);
+            locali.Ngi.stopTimer();
+            bh.aGY().a(locali.Ngg);
           }
-          locali.fAp();
-          locali.Gts = null;
+          locali.gsq();
+          locali.Nge = null;
         }
         i += 1;
       }
       localc.listeners.remove(localObject);
     }
-    localc.Gtn.clear();
-    localc.Gtm.clear();
+    localc.NfZ.clear();
+    localc.NfY.clear();
     localc.listeners.clear();
-    localc.gVP = 0;
+    localc.jGL = 0;
     AppMethodBeat.o(29738);
   }
   
@@ -215,7 +191,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.translate.a
  * JD-Core Version:    0.7.0.1
  */

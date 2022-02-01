@@ -1,48 +1,30 @@
 package com.tencent.mm.plugin.finder.storage;
 
 import android.content.Context;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.plugin.finder.storage.data.g;
-import com.tencent.mm.protocal.protobuf.FinderContact;
-import java.util.LinkedList;
-import java.util.List;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.h;
+import androidx.recyclerview.widget.RecyclerView.m;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.view.recyclerview.e;
+import com.tencent.mm.view.recyclerview.f;
+import kotlin.g.a.b;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig;", "", "canAddList", "", "getCache", "Lcom/tencent/mm/plugin/finder/storage/data/FinderContactPage;", "getEmptyTips", "", "getInitData", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderContact;", "getItemData", "netScene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "getLastBuff", "Lcom/tencent/mm/protobuf/ByteString;", "getNetScene", "lastBuff", "getSubTitleStrId", "getTitleStrId", "needLoadMore", "onAddUserList", "", "nameList", "", "", "onItemDelete", "contact", "callBack", "Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig$OnItemDelCallBack;", "onSearchBarClick", "context", "Landroid/content/Context;", "OnItemDelCallBack", "plugin-finder_release"})
-public abstract interface ak
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/IFinderLayoutConfig;", "", "()V", "getItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "extraMap", "Lkotlin/Function1;", "", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "getItemDecoration", "Landroidx/recyclerview/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroidx/recyclerview/widget/RecyclerView$LayoutManager;", "context", "Landroid/content/Context;", "getViewPool", "Landroidx/recyclerview/widget/RecyclerView$RecycledViewPool;", "Lcom/tencent/mm/ui/MMActivity;", "plugin-finder_release"})
+public abstract class ak
 {
-  public abstract void a(FinderContact paramFinderContact, a parama);
+  public abstract f O(b<? super Integer, ? extends e<?>> paramb);
   
-  public abstract q c(b paramb);
-  
-  public abstract int dql();
-  
-  public abstract int dqm();
-  
-  public abstract boolean dqn();
-  
-  public abstract g dqo();
-  
-  public abstract LinkedList<FinderContact> dqp();
-  
-  public abstract boolean dqq();
-  
-  public abstract int dqr();
-  
-  public abstract void es(List<String> paramList);
-  
-  public abstract void fq(Context paramContext);
-  
-  public abstract b i(q paramq);
-  
-  public abstract LinkedList<FinderContact> j(q paramq);
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/IFinderBlockListConfig$OnItemDelCallBack;", "", "onDel", "", "success", "", "plugin-finder_release"})
-  public static abstract interface a
+  public f dtg()
   {
-    public abstract void nN(boolean paramBoolean);
+    return O(null);
   }
+  
+  public abstract RecyclerView.LayoutManager eW(Context paramContext);
+  
+  public abstract RecyclerView.m g(MMActivity paramMMActivity);
+  
+  public abstract RecyclerView.h getItemDecoration();
 }
 
 

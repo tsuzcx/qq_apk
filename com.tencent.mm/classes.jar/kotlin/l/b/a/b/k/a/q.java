@@ -14,46 +14,46 @@ import kotlin.l.b.a.b.l.j;
 public abstract class q
   extends p
 {
-  private final kotlin.l.b.a.b.e.b.a TKB;
-  private final kotlin.l.b.a.b.k.a.b.f TLb;
-  private final d TLc;
-  final y TLd;
-  private a.l TLe;
-  private h TLf;
+  private final kotlin.l.b.a.b.k.a.b.f abnE;
+  private final d abnF;
+  final y abnG;
+  private a.l abnH;
+  private h abnI;
+  private final kotlin.l.b.a.b.e.b.a abne;
   
   public q(kotlin.l.b.a.b.f.b paramb, j paramj, kotlin.l.b.a.b.b.y paramy, a.l paraml, kotlin.l.b.a.b.e.b.a parama)
   {
     super(paramb, paramj, paramy);
-    this.TKB = parama;
-    this.TLb = null;
-    paramb = paraml.TyP;
-    kotlin.g.b.p.g(paramb, "proto.strings");
-    paramj = paraml.TyQ;
-    kotlin.g.b.p.g(paramj, "proto.qualifiedNames");
-    this.TLc = new d(paramb, paramj);
-    this.TLd = new y(paraml, (c)this.TLc, this.TKB, (kotlin.g.a.b)new a(this));
-    this.TLe = paraml;
+    this.abne = parama;
+    this.abnE = null;
+    paramb = paraml.abbG;
+    kotlin.g.b.p.j(paramb, "proto.strings");
+    paramj = paraml.abbH;
+    kotlin.g.b.p.j(paramj, "proto.qualifiedNames");
+    this.abnF = new d(paramb, paramj);
+    this.abnG = new y(paraml, (c)this.abnF, this.abne, (kotlin.g.a.b)new a(this));
+    this.abnH = paraml;
   }
   
   public final void b(l paraml)
   {
-    kotlin.g.b.p.h(paraml, "components");
-    Object localObject = this.TLe;
+    kotlin.g.b.p.k(paraml, "components");
+    Object localObject = this.abnH;
     if (localObject == null) {
       throw ((Throwable)new IllegalStateException("Repeated call to DeserializedPackageFragmentImpl::initialize".toString()));
     }
-    this.TLe = null;
+    this.abnH = null;
     ab localab = (ab)this;
-    localObject = ((a.l)localObject).TyR;
-    kotlin.g.b.p.g(localObject, "proto.`package`");
-    this.TLf = ((h)new i(localab, (a.k)localObject, (c)this.TLc, this.TKB, this.TLb, paraml, (kotlin.g.a.a)new b(this)));
+    localObject = ((a.l)localObject).abbI;
+    kotlin.g.b.p.j(localObject, "proto.`package`");
+    this.abnI = ((h)new i(localab, (a.k)localObject, (c)this.abnF, this.abne, this.abnE, paraml, (kotlin.g.a.a)new b(this)));
   }
   
-  public final h hAp()
+  public final h iEC()
   {
-    h localh = this.TLf;
+    h localh = this.abnI;
     if (localh == null) {
-      kotlin.g.b.p.btv("_memberScope");
+      kotlin.g.b.p.bGy("_memberScope");
     }
     return localh;
   }
@@ -80,7 +80,7 @@ public abstract class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.q
  * JD-Core Version:    0.7.0.1
  */

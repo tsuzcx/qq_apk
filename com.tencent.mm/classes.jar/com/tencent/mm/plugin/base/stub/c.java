@@ -13,16 +13,16 @@ import java.util.Map;
 public final class c
   extends MMPluginProvider.a
 {
-  private static final Map<String, Object> pdq;
+  private static final Map<String, Object> sfs;
   
   static
   {
     AppMethodBeat.i(22176);
     HashMap localHashMap = new HashMap();
-    pdq = localHashMap;
-    localHashMap.put("_build_info_sdk_int_", Integer.valueOf(d.KyO));
-    pdq.put("_build_info_sdk_name_", "android 6.6.6");
-    pdq.put("_wxapp_pay_entry_classname_", "com.tencent.mm.plugin.base.stub.WXPayEntryActivity");
+    sfs = localHashMap;
+    localHashMap.put("_build_info_sdk_int_", Integer.valueOf(d.RAD));
+    sfs.put("_build_info_sdk_name_", "android 6.7.0");
+    sfs.put("_wxapp_pay_entry_classname_", "com.tencent.mm.plugin.base.stub.WXPayEntryActivity");
     AppMethodBeat.o(22176);
   }
   
@@ -31,7 +31,7 @@ public final class c
     Object localObject1 = null;
     AppMethodBeat.i(22175);
     paramArrayOfString2 = paramArrayOfString2[0];
-    Object localObject2 = pdq.get(paramArrayOfString2);
+    Object localObject2 = sfs.get(paramArrayOfString2);
     if (localObject2 == null)
     {
       Log.w("MicroMsg.MMPluginProviderSharedPrefImpl", "not found value for key: ".concat(String.valueOf(paramArrayOfString2)));
@@ -49,10 +49,10 @@ public final class c
     }
   }
   
-  public final boolean eI(Context paramContext)
+  public final boolean eL(Context paramContext)
   {
     AppMethodBeat.i(22174);
-    super.eI(paramContext);
+    super.eL(paramContext);
     AppMethodBeat.o(22174);
     return true;
   }

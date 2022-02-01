@@ -27,36 +27,36 @@ import kotlin.l;
 import kotlin.t;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/widget/camerarecordview/preview/controller/AbsPreviewController;", "", "view", "Lcom/tencent/mm/media/widget/camerarecordview/preview/IRenderVIew;", "(Lcom/tencent/mm/media/widget/camerarecordview/preview/IRenderVIew;)V", "ROTATION_FIX", "", "drawHeight", "drawWidth", "eglContext", "Landroid/opengl/EGLContext;", "eglSurface", "Landroid/opengl/EGLSurface;", "eglSurfaceCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "", "frameDrawCallback", "Lcom/tencent/mm/media/globject/GLTextureObject;", "texture", "renderOutputBuffer", "Ljava/nio/IntBuffer;", "renderer", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "getRenderer", "()Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "setRenderer", "(Lcom/tencent/mm/media/render/AbsSurfaceRenderer;)V", "takePicture", "", "takePictureCallback", "Landroid/graphics/Bitmap;", "bitmap", "getView", "()Lcom/tencent/mm/media/widget/camerarecordview/preview/IRenderVIew;", "setView", "actualRenderRotation", "cameraConfig", "Lcom/tencent/mm/media/widget/camera/CameraConfig;", "clearFrame", "drawFrame", "data", "", "getEGLContext", "getEGLSurface", "callback", "getFrameDataCallback", "Lcom/tencent/mm/plugin/mmsight/model/MMSightCameraFrameDataCallback;", "getSurfaceTexture", "Landroid/graphics/SurfaceTexture;", "getTextureObject", "initRender", "createSurfaceTexture", "frameRotate", "afterInitRender", "Lkotlin/Function0;", "input", "onDrawFrame", "gl", "Ljavax/microedition/khronos/opengles/GL10;", "onSurfaceChanged", "width", "height", "onSurfaceCreated", "config", "Ljavax/microedition/khronos/egl/EGLConfig;", "release", "setOnDrawListener", "frameAvailableListener", "setRender", "updateCameraConfig", "updateImageTexture", "plugin-mediaeditor_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/widget/camerarecordview/preview/controller/AbsPreviewController;", "", "view", "Lcom/tencent/mm/media/widget/camerarecordview/preview/IRenderVIew;", "(Lcom/tencent/mm/media/widget/camerarecordview/preview/IRenderVIew;)V", "ROTATION_FIX", "", "drawHeight", "drawWidth", "eglContext", "Landroid/opengl/EGLContext;", "eglSurface", "Landroid/opengl/EGLSurface;", "eglSurfaceCallback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "", "frameDrawCallback", "Lcom/tencent/mm/media/globject/GLTextureObject;", "texture", "renderOutputBuffer", "Ljava/nio/IntBuffer;", "renderer", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "getRenderer", "()Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "setRenderer", "(Lcom/tencent/mm/media/render/AbsSurfaceRenderer;)V", "takePicture", "", "takePictureCallback", "Landroid/graphics/Bitmap;", "bitmap", "getView", "()Lcom/tencent/mm/media/widget/camerarecordview/preview/IRenderVIew;", "setView", "actualRenderRotation", "cameraConfig", "Lcom/tencent/mm/media/widget/camera/CameraConfig;", "clearFrame", "drawFrame", "data", "", "getEGLContext", "getEGLSurface", "callback", "getFrameDataCallback", "Lcom/tencent/mm/plugin/mmsight/model/MMSightCameraFrameDataCallback;", "getSurfaceTexture", "Landroid/graphics/SurfaceTexture;", "getTextureObject", "initRender", "createSurfaceTexture", "frameRotate", "afterInitRender", "Lkotlin/Function0;", "input", "onDrawFrame", "gl", "Ljavax/microedition/khronos/opengles/GL10;", "onSurfaceChanged", "width", "height", "onSurfaceCreated", "config", "Ljavax/microedition/khronos/egl/EGLConfig;", "release", "needPostRenderThread", "setOnDrawListener", "frameAvailableListener", "setRender", "updateCameraConfig", "updateImageTexture", "plugin-mediaeditor_release"})
 public abstract class a
 {
   private EGLSurface eglSurface;
-  private int hEp;
-  private int hEq;
-  com.tencent.mm.media.j.a ihs;
-  public EGLContext ilv;
-  private kotlin.g.a.b<? super EGLSurface, x> iqK;
-  public kotlin.g.a.b<? super d, x> iqL;
-  private IntBuffer iqM;
-  private boolean iqN;
-  private kotlin.g.a.b<? super Bitmap, x> iqO;
-  private final int iqP;
-  f iqQ;
+  com.tencent.mm.media.j.a kWg;
+  private int ksu;
+  private int ksv;
+  public EGLContext lau;
+  private kotlin.g.a.b<? super EGLSurface, x> lfP;
+  public kotlin.g.a.b<? super d, x> lfQ;
+  private IntBuffer lfR;
+  private boolean lfS;
+  private kotlin.g.a.b<? super Bitmap, x> lfT;
+  private final int lfU;
+  f lfV;
   
   public a(f paramf)
   {
-    this.iqQ = paramf;
-    this.iqP = 360;
+    this.lfV = paramf;
+    this.lfU = 360;
   }
   
-  private final int aQv()
+  private final int aZn()
   {
     Object localObject = MMApplicationContext.getContext().getSystemService("window");
     if (localObject == null) {
       throw new t("null cannot be cast to non-null type android.view.WindowManager");
     }
     localObject = ((WindowManager)localObject).getDefaultDisplay();
-    p.g(localObject, "(MMApplicationContext.ge…owManager).defaultDisplay");
+    p.j(localObject, "(MMApplicationContext.ge…owManager).defaultDisplay");
     int i;
     switch (((Display)localObject).getRotation())
     {
@@ -65,7 +65,7 @@ public abstract class a
     }
     for (;;)
     {
-      return (com.tencent.mm.media.widget.a.b.aPk() - i + this.iqP) % this.iqP;
+      return (com.tencent.mm.media.widget.a.b.aVp() - i + this.lfU) % this.lfU;
       i = 0;
       continue;
       i = 90;
@@ -78,52 +78,52 @@ public abstract class a
   
   public final void a(final int paramInt, final kotlin.g.a.a<x> parama)
   {
-    this.iqQ.j((kotlin.g.a.a)new a(this, parama, paramInt));
+    this.lfV.i((kotlin.g.a.a)new a(this, parama, paramInt));
   }
   
   public final void a(com.tencent.mm.media.widget.a.b paramb)
   {
-    p.h(paramb, "cameraConfig");
+    p.k(paramb, "cameraConfig");
     Log.printInfoStack("MicroMsg.CameraPreviewGLSurfaceView", "updateCameraConfig: ".concat(String.valueOf(paramb)), new Object[0]);
-    paramb = com.tencent.mm.media.widget.a.b.aPo();
-    com.tencent.mm.media.j.a locala = this.ihs;
+    paramb = com.tencent.mm.media.widget.a.b.aYa();
+    com.tencent.mm.media.j.a locala = this.kWg;
     if (locala != null) {
-      locala.cZ(paramb.x, paramb.y);
+      locala.dv(paramb.x, paramb.y);
     }
-    paramb = this.ihs;
+    paramb = this.kWg;
     if (paramb != null) {
-      paramb.qx(aQv());
+      paramb.tm(aZn());
     }
-    paramb = this.ihs;
+    paramb = this.kWg;
     if (paramb != null) {
-      paramb.eD(com.tencent.mm.media.widget.a.b.aPn());
+      paramb.fj(com.tencent.mm.media.widget.a.b.isFrontCamera());
     }
   }
   
-  public final void aEy()
+  public final void aMN()
   {
-    com.tencent.mm.media.j.a locala = this.ihs;
+    com.tencent.mm.media.j.a locala = this.kWg;
     if (locala != null) {
-      locala.ijr = true;
+      locala.kYe = true;
     }
   }
   
-  public final d aQu()
+  public final d aZm()
   {
-    com.tencent.mm.media.j.a locala = this.ihs;
+    com.tencent.mm.media.j.a locala = this.kWg;
     if (locala != null) {
-      return locala.ijq;
+      return locala.kYd;
     }
     return null;
   }
   
   public void b(final com.tencent.mm.media.j.a parama)
   {
-    p.h(parama, "renderer");
-    this.ihs = parama;
-    com.tencent.mm.media.j.a locala = this.ihs;
+    p.k(parama, "renderer");
+    this.kWg = parama;
+    com.tencent.mm.media.j.a locala = this.kWg;
     if (locala != null) {
-      locala.ijw = ((kotlin.g.a.a)new c(this, parama));
+      locala.kYk = ((kotlin.g.a.a)new c(this, parama));
     }
   }
   
@@ -134,7 +134,7 @@ public abstract class a
   
   public final SurfaceTexture getSurfaceTexture()
   {
-    com.tencent.mm.media.j.a locala = this.ihs;
+    com.tencent.mm.media.j.a locala = this.kWg;
     if (locala != null) {
       return locala.getTexture();
     }
@@ -143,31 +143,31 @@ public abstract class a
   
   public final void onDrawFrame(GL10 paramGL10)
   {
-    Object localObject = this.ihs;
+    Object localObject = this.kWg;
     if (localObject != null) {
       ((com.tencent.mm.media.j.a)localObject).onDrawFrame(paramGL10);
     }
-    if (this.iqN)
+    if (this.lfS)
     {
-      this.iqN = false;
-      this.iqM = IntBuffer.allocate(this.hEq * this.hEp);
-      paramGL10 = this.iqM;
+      this.lfS = false;
+      this.lfR = IntBuffer.allocate(this.ksv * this.ksu);
+      paramGL10 = this.lfR;
       if (paramGL10 == null) {
-        p.hyc();
+        p.iCn();
       }
       paramGL10.position(0);
-      GLES20.glReadPixels(0, 0, this.hEp, this.hEq, 6408, 5121, (Buffer)this.iqM);
-      paramGL10 = Bitmap.createBitmap(this.hEp, this.hEq, Bitmap.Config.ARGB_8888);
-      paramGL10.copyPixelsFromBuffer((Buffer)this.iqM);
+      GLES20.glReadPixels(0, 0, this.ksu, this.ksv, 6408, 5121, (Buffer)this.lfR);
+      paramGL10 = Bitmap.createBitmap(this.ksu, this.ksv, Bitmap.Config.ARGB_8888);
+      paramGL10.copyPixelsFromBuffer((Buffer)this.lfR);
       localObject = new Matrix();
       ((Matrix)localObject).preScale(-1.0F, 1.0F);
       ((Matrix)localObject).preRotate(180.0F);
-      localObject = Bitmap.createBitmap(paramGL10, 0, 0, this.hEp, this.hEq, (Matrix)localObject, false);
+      localObject = Bitmap.createBitmap(paramGL10, 0, 0, this.ksu, this.ksv, (Matrix)localObject, false);
       paramGL10.recycle();
-      paramGL10 = this.iqO;
+      paramGL10 = this.lfT;
       if (paramGL10 != null)
       {
-        p.g(localObject, "bmp");
+        p.j(localObject, "bmp");
         paramGL10.invoke(localObject);
       }
     }
@@ -175,9 +175,9 @@ public abstract class a
   
   public final void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    this.hEp = paramInt1;
-    this.hEq = paramInt2;
-    com.tencent.mm.media.j.a locala = this.ihs;
+    this.ksu = paramInt1;
+    this.ksv = paramInt2;
+    com.tencent.mm.media.j.a locala = this.kWg;
     if (locala != null) {
       locala.onSurfaceChanged(paramGL10, paramInt1, paramInt2);
     }
@@ -185,30 +185,36 @@ public abstract class a
   
   public final void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    this.ilv = EGL14.eglGetCurrentContext();
+    this.lau = EGL14.eglGetCurrentContext();
     this.eglSurface = EGL14.eglGetCurrentSurface(12377);
-    Object localObject = this.iqK;
+    Object localObject = this.lfP;
     if (localObject != null)
     {
       EGLSurface localEGLSurface = this.eglSurface;
       if (localEGLSurface == null) {
-        p.hyc();
+        p.iCn();
       }
       ((kotlin.g.a.b)localObject).invoke(localEGLSurface);
     }
-    this.iqK = null;
-    localObject = this.ihs;
+    this.lfP = null;
+    localObject = this.kWg;
     if (localObject != null) {
       ((com.tencent.mm.media.j.a)localObject).onSurfaceCreated(paramGL10, paramEGLConfig);
     }
   }
   
-  public final void release()
+  public final void release(boolean paramBoolean)
   {
-    this.iqQ.j((kotlin.g.a.a)new b(this));
+    kotlin.g.a.a locala = (kotlin.g.a.a)new b(this);
+    if (paramBoolean)
+    {
+      this.lfV.i(locala);
+      return;
+    }
+    locala.invoke();
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class a
     extends q
     implements kotlin.g.a.a<x>
@@ -219,7 +225,7 @@ public abstract class a
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class b
     extends q
     implements kotlin.g.a.a<x>
@@ -230,7 +236,7 @@ public abstract class a
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class c
     extends q
     implements kotlin.g.a.a<x>
@@ -243,7 +249,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.media.widget.camerarecordview.preview.a.a
  * JD-Core Version:    0.7.0.1
  */

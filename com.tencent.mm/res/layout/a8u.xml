@@ -5,7 +5,7 @@
         <ImageView android:id="@id/e2f" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
     </LinearLayout>
     <LinearLayout android:orientation="vertical" android:id="@id/e23" android:paddingLeft="@dimen/ir" android:paddingTop="@dimen/c5" android:paddingRight="@dimen/ib" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/e3p" android:layout_toRightOf="@id/e2g">
-        <TextView android:id="@id/e40" android:text="微信年会 " style="@style/mp" />
+        <TextView android:ellipsize="middle" android:id="@id/e40" android:text="微信年会 " style="@style/mp" />
         <TextView android:id="@id/e3t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="21.56M" android:layout_below="@id/e40" android:layout_alignParentLeft="true" style="@style/mo" />
         <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:layout_marginBottom="@dimen/cb">
             <TableLayout android:id="@id/ftc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:shrinkColumns="0">

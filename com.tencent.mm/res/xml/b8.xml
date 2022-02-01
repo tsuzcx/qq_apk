@@ -2,7 +2,6 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
   xmlns:android1="http://schemas.android.com/apk/res/android">
     <CheckBoxPreference android:defaultValue="true" android:key="checkbox_preference_one" android:summary="@string/d5y" android:title="@string/d5x" />
-    <CheckBoxPreference android:defaultValue="false" android:key="setting_no_see_at_tab_tips" android:summary="@string/d3o" android:title="@string/d3n" />
     <CheckBoxPreference android:defaultValue="false" android:key="settings_message_mute" android:title="@string/d17" />
     <PreferenceFooterCategory android:key="settings_message_mute_desc" android:title="@string/d16" />
     <CheckBoxPreference android:defaultValue="false" android:key="feed_reproduction" android:summary="@string/cnu" android:title="@string/cnq" />

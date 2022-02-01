@@ -5,26 +5,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.MMBitmapFactory;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 
 public final class b
   extends a
 {
-  private String QxF;
-  public int QxG = 0;
-  public int QxH = 0;
-  public int QxI = 0;
-  private a QxJ;
+  private String BrW;
+  public int XVL = 0;
+  public int XVM = 0;
+  public int XVN = 0;
+  private a XVO;
   private int mHeight = 2048;
   public int mSize = 104857600;
   private int mWidth = 2048;
   
   private b(String paramString)
   {
-    this.QxF = paramString;
+    this.BrW = paramString;
   }
   
-  public static b bnW(String paramString)
+  public static b bAJ(String paramString)
   {
     AppMethodBeat.i(143300);
     paramString = new b(paramString);
@@ -35,34 +35,34 @@ public final class b
   public final void a(a parama)
   {
     AppMethodBeat.i(143301);
-    this.QxJ = parama;
-    dSw();
+    this.XVO = parama;
+    euX();
     AppMethodBeat.o(143301);
   }
   
-  public final b aop(int paramInt)
+  public final b axw(int paramInt)
   {
     this.mWidth = paramInt;
     this.mHeight = paramInt;
     return this;
   }
   
-  protected final int bCj()
+  protected final int bNF()
   {
     AppMethodBeat.i(143302);
-    if (Util.isNullOrNil(this.QxF)) {
+    if (Util.isNullOrNil(this.BrW)) {
       Log.w("MicroMsg.ImageBoundaryCheck", "dz[check image but path is null or nil]");
     }
-    this.QxG = ((int)s.boW(this.QxF));
-    String str = this.QxF;
+    this.XVL = ((int)u.bBQ(this.BrW));
+    String str = this.BrW;
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inJustDecodeBounds = true;
     MMBitmapFactory.decodeFile(str, localOptions);
-    this.QxH = localOptions.outWidth;
-    this.QxI = localOptions.outHeight;
-    if (this.QxG <= this.mSize)
+    this.XVM = localOptions.outWidth;
+    this.XVN = localOptions.outHeight;
+    if (this.XVL <= this.mSize)
     {
-      if (this.QxG < 0)
+      if (this.XVL < 0)
       {
         i = 1;
         if (i == 0) {
@@ -71,14 +71,14 @@ public final class b
       }
     }
     else {
-      Log.d("MicroMsg.ImageBoundaryCheck", "dz[over size] size = %d", new Object[] { Integer.valueOf(this.QxG) });
+      Log.d("MicroMsg.ImageBoundaryCheck", "dz[over size] size = %d", new Object[] { Integer.valueOf(this.XVL) });
     }
     label206:
     for (int i = 0;; i = 1)
     {
-      if ((this.QxH > this.mWidth) || (this.QxI > this.mHeight))
+      if ((this.XVM > this.mWidth) || (this.XVN > this.mHeight))
       {
-        Log.d("MicroMsg.ImageBoundaryCheck", "dz[over width or height] width = %d, height = %d", new Object[] { Integer.valueOf(this.QxH), Integer.valueOf(this.QxI) });
+        Log.d("MicroMsg.ImageBoundaryCheck", "dz[over width or height] width = %d, height = %d", new Object[] { Integer.valueOf(this.XVM), Integer.valueOf(this.XVN) });
         i = 0;
       }
       if (i != 0)
@@ -94,26 +94,26 @@ public final class b
     }
   }
   
-  protected final void dSw()
+  protected final void euX()
   {
     AppMethodBeat.i(143303);
-    if (this.QxJ == null)
+    if (this.XVO == null)
     {
       Log.w("MicroMsg.ImageBoundaryCheck", "dz[callback is null]");
       AppMethodBeat.o(143303);
       return;
     }
-    switch (bCj())
+    switch (bNF())
     {
     }
     for (;;)
     {
       AppMethodBeat.o(143303);
       return;
-      this.QxJ.a(this);
+      this.XVO.a(this);
       AppMethodBeat.o(143303);
       return;
-      this.QxJ.cHf();
+      this.XVO.cVR();
     }
   }
   
@@ -121,12 +121,12 @@ public final class b
   {
     public abstract void a(b paramb);
     
-    public abstract void cHf();
+    public abstract void cVR();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.tools.b.b
  * JD-Core Version:    0.7.0.1
  */

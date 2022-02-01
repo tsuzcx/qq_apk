@@ -12,8 +12,8 @@ public class DrawArcActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<DrawArcActionArg> CREATOR;
-  public float mj;
-  public float mk;
+  public float bEl;
+  public float bEm;
   public float radius;
   public float x;
   public float y;
@@ -56,7 +56,7 @@ public class DrawArcActionArg
       return false;
     }
     paramObject = (DrawArcActionArg)paramObject;
-    if ((Float.compare(paramObject.x, this.x) == 0) && (Float.compare(paramObject.y, this.y) == 0) && (Float.compare(paramObject.radius, this.radius) == 0) && (Float.compare(paramObject.mj, this.mj) == 0) && (Float.compare(paramObject.mk, this.mk) == 0))
+    if ((Float.compare(paramObject.x, this.x) == 0) && (Float.compare(paramObject.y, this.y) == 0) && (Float.compare(paramObject.radius, this.radius) == 0) && (Float.compare(paramObject.bEl, this.bEl) == 0) && (Float.compare(paramObject.bEm, this.bEm) == 0))
     {
       AppMethodBeat.o(145012);
       return true;
@@ -68,7 +68,7 @@ public class DrawArcActionArg
   public int hashCode()
   {
     AppMethodBeat.i(145013);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.x), Float.valueOf(this.y), Float.valueOf(this.radius), Float.valueOf(this.mj), Float.valueOf(this.mk) });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.x), Float.valueOf(this.y), Float.valueOf(this.radius), Float.valueOf(this.bEl), Float.valueOf(this.bEm) });
     AppMethodBeat.o(145013);
     return i;
   }
@@ -80,8 +80,8 @@ public class DrawArcActionArg
     this.x = paramParcel.readFloat();
     this.y = paramParcel.readFloat();
     this.radius = paramParcel.readFloat();
-    this.mj = paramParcel.readFloat();
-    this.mk = paramParcel.readFloat();
+    this.bEl = paramParcel.readFloat();
+    this.bEm = paramParcel.readFloat();
     AppMethodBeat.o(145009);
   }
   
@@ -93,8 +93,8 @@ public class DrawArcActionArg
     this.x = g.f(paramJSONObject, 0);
     this.y = g.f(paramJSONObject, 1);
     this.radius = g.f(paramJSONObject, 2);
-    this.mj = ((float)paramJSONObject.optDouble(3));
-    this.mk = ((float)paramJSONObject.optDouble(4));
+    this.bEl = ((float)paramJSONObject.optDouble(3));
+    this.bEm = ((float)paramJSONObject.optDouble(4));
     AppMethodBeat.o(145010);
   }
   
@@ -105,14 +105,14 @@ public class DrawArcActionArg
     paramParcel.writeFloat(this.x);
     paramParcel.writeFloat(this.y);
     paramParcel.writeFloat(this.radius);
-    paramParcel.writeFloat(this.mj);
-    paramParcel.writeFloat(this.mk);
+    paramParcel.writeFloat(this.bEl);
+    paramParcel.writeFloat(this.bEm);
     AppMethodBeat.o(145011);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawArcActionArg
  * JD-Core Version:    0.7.0.1
  */

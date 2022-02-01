@@ -12,10 +12,10 @@ import junit.framework.Assert;
 public final class b
   implements b.h
 {
+  private int CD;
+  private int CE;
   private int mHeight;
   private int mWidth;
-  private int mX;
-  private int mY;
   
   public b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
@@ -32,8 +32,8 @@ public final class b
     for (boolean bool1 = bool2;; bool1 = false)
     {
       Assert.assertFalse(bool1);
-      this.mX = paramInt1;
-      this.mY = paramInt2;
+      this.CD = paramInt1;
+      this.CE = paramInt2;
       this.mWidth = paramInt3;
       this.mHeight = paramInt4;
       AppMethodBeat.o(134893);
@@ -43,7 +43,7 @@ public final class b
     }
   }
   
-  public final Bitmap J(Bitmap paramBitmap)
+  public final Bitmap H(Bitmap paramBitmap)
   {
     AppMethodBeat.i(134894);
     if ((paramBitmap == null) || (paramBitmap.isRecycled()))
@@ -53,20 +53,20 @@ public final class b
     }
     int n = paramBitmap.getWidth();
     int m = paramBitmap.getHeight();
-    int i = this.mX;
-    int j = this.mY;
+    int i = this.CD;
+    int j = this.CE;
     label63:
     int i1;
     int k;
-    if (this.mX < 0)
+    if (this.CD < 0)
     {
       i = 0;
-      if (this.mY >= 0) {
+      if (this.CE >= 0) {
         break label164;
       }
       j = 0;
-      int i2 = this.mWidth + this.mX - i;
-      i1 = this.mHeight + this.mY - j;
+      int i2 = this.mWidth + this.CD - i;
+      i1 = this.mHeight + this.CE - j;
       k = i2;
       if (i + i2 > n) {
         k = n - i;
@@ -83,13 +83,13 @@ public final class b
         paramBitmap = BitmapUtil.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
         AppMethodBeat.o(134894);
         return paramBitmap;
-        if (this.mX <= n) {
+        if (this.CD <= n) {
           break;
         }
         i = n;
         break;
         label164:
-        if (this.mY <= m) {
+        if (this.CE <= m) {
           break label63;
         }
         j = m;
@@ -104,10 +104,10 @@ public final class b
     }
   }
   
-  public final String Lb()
+  public final String key()
   {
     AppMethodBeat.i(134895);
-    String str = String.format("Transformation_x%s_y%s_w%s_h%s", new Object[] { Integer.valueOf(this.mX), Integer.valueOf(this.mY), Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight) });
+    String str = String.format("Transformation_x%s_y%s_w%s_h%s", new Object[] { Integer.valueOf(this.CD), Integer.valueOf(this.CE), Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight) });
     AppMethodBeat.o(134895);
     return str;
   }

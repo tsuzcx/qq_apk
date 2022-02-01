@@ -4,20 +4,21 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.util.Base64;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.model.bf;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.plugin.facedetect.FaceProNative.FaceResult;
-import com.tencent.mm.protocal.protobuf.mn;
+import com.tencent.mm.plugin.facedetect.a.d;
+import com.tencent.mm.protocal.protobuf.md;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MD5Util;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Array;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 
 public final class p
 {
-  public static boolean HM(int paramInt)
+  public static boolean Lw(int paramInt)
   {
     AppMethodBeat.i(103797);
     String str = "";
@@ -37,17 +38,17 @@ public final class p
       Log.w("MicroMsg.FaceUtils", "hy: no such path for type: %d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(103797);
       return false;
-      str = bf.iDu.aA("LAST_LOGIN_FACE_MODEL_SDCARD_PATH_DETECT", "");
+      str = bg.ltv.aD("LAST_LOGIN_FACE_MODEL_SDCARD_PATH_DETECT", "");
       continue;
-      str = bf.iDu.aA("LAST_LOGIN_FACE_MODEL_SDCARD_PATH_ALIGNMENT", "");
+      str = bg.ltv.aD("LAST_LOGIN_FACE_MODEL_SDCARD_PATH_ALIGNMENT", "");
     }
-    if (new o(str).exists())
+    if (new q(str).ifE())
     {
-      o localo = new o(HN(paramInt));
-      if (localo.exists()) {
-        localo.delete();
+      q localq = new q(Lx(paramInt));
+      if (localq.ifE()) {
+        localq.cFq();
       }
-      s.nw(str, HN(paramInt));
+      u.on(str, Lx(paramInt));
       AppMethodBeat.o(103797);
       return true;
     }
@@ -56,7 +57,7 @@ public final class p
     return false;
   }
   
-  private static String HN(int paramInt)
+  private static String Lx(int paramInt)
   {
     AppMethodBeat.i(103798);
     switch (paramInt)
@@ -65,11 +66,11 @@ public final class p
       AppMethodBeat.o(103798);
       return "";
     case 0: 
-      str = cTl();
+      str = diq();
       AppMethodBeat.o(103798);
       return str;
     }
-    String str = cTm();
+    String str = dir();
     AppMethodBeat.o(103798);
     return str;
   }
@@ -85,11 +86,11 @@ public final class p
     }
     try
     {
-      String str = cTn();
-      mn localmn = new mn();
-      localmn.KQI = com.tencent.mm.bw.b.cD(paramFaceResult.sidedata);
-      localmn.KQJ = com.tencent.mm.bw.b.cD(paramFaceResult.data);
-      e(localmn.toByteArray(), str);
+      String str = dis();
+      md localmd = new md();
+      localmd.RRG = com.tencent.mm.cd.b.cU(paramFaceResult.sidedata);
+      localmd.RRH = com.tencent.mm.cd.b.cU(paramFaceResult.data);
+      e(localmd.toByteArray(), str);
       AppMethodBeat.o(103785);
       return str;
     }
@@ -101,32 +102,32 @@ public final class p
     return null;
   }
   
-  public static boolean ai(Activity paramActivity)
+  public static boolean aj(Activity paramActivity)
   {
-    AppMethodBeat.i(186369);
+    AppMethodBeat.i(194019);
     boolean bool1 = com.tencent.mm.pluginsdk.permission.b.a(paramActivity, "android.permission.CAMERA", 16, "", "");
     Log.i("MicroMsg.FaceUtils", "summerper checkPermission checkCamera[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool1), Util.getStack(), paramActivity });
     if (!bool1)
     {
-      AppMethodBeat.o(186369);
+      AppMethodBeat.o(194019);
       return false;
     }
     boolean bool2 = com.tencent.mm.pluginsdk.permission.b.a(paramActivity, "android.permission.RECORD_AUDIO", 80, "", "");
     Log.i("MicroMsg.FaceUtils", "summerper checkPermission checkCamera[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool1), Util.getStack(), paramActivity });
     if (!bool2)
     {
-      AppMethodBeat.o(186369);
+      AppMethodBeat.o(194019);
       return false;
     }
-    AppMethodBeat.o(186369);
+    AppMethodBeat.o(194019);
     return true;
   }
   
-  public static boolean aj(Activity paramActivity)
+  public static boolean ak(Activity paramActivity)
   {
     AppMethodBeat.i(103789);
-    boolean bool1 = com.tencent.mm.pluginsdk.permission.b.n(paramActivity, "android.permission.CAMERA");
-    boolean bool2 = com.tencent.mm.pluginsdk.permission.b.n(paramActivity, "android.permission.RECORD_AUDIO");
+    boolean bool1 = com.tencent.mm.pluginsdk.permission.b.o(paramActivity, "android.permission.CAMERA");
+    boolean bool2 = com.tencent.mm.pluginsdk.permission.b.o(paramActivity, "android.permission.RECORD_AUDIO");
     Log.d("MicroMsg.FaceUtils", "summerper checkPermission checkCamera[%b], checkAudio[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Util.getStack(), paramActivity });
     ArrayList localArrayList = new ArrayList();
     if (!bool1) {
@@ -138,7 +139,7 @@ public final class p
     if ((!bool1) || (!bool2))
     {
       Log.i("MicroMsg.FaceUtils", "hy: above 23 and no permission. requesting...");
-      android.support.v4.app.a.a(paramActivity, (String[])localArrayList.toArray(new String[localArrayList.size()]), 23);
+      androidx.core.app.a.a(paramActivity, (String[])localArrayList.toArray(new String[localArrayList.size()]), 23);
       AppMethodBeat.o(103789);
       return false;
     }
@@ -146,7 +147,7 @@ public final class p
     return true;
   }
   
-  public static Bitmap arA(String paramString)
+  public static Bitmap azB(String paramString)
   {
     AppMethodBeat.i(103786);
     try
@@ -157,17 +158,17 @@ public final class p
         AppMethodBeat.o(103786);
         return null;
       }
-      Object localObject = a.a.sQz + MD5Util.getMD5String(paramString);
-      if (!new o((String)localObject).exists())
+      Object localObject = a.a.wwv + MD5Util.getMD5String(paramString);
+      if (!new q((String)localObject).ifE())
       {
         Log.w("MicroMsg.FaceUtils", "hy: no last file. return");
         AppMethodBeat.o(103786);
         return null;
       }
-      localObject = s.aW((String)localObject, 0, -1);
+      localObject = u.aY((String)localObject, 0, -1);
       if (localObject != null)
       {
-        paramString = p.a.f((byte[])localObject, arB(paramString));
+        paramString = p.a.f((byte[])localObject, azC(paramString));
         if (paramString.length <= 0)
         {
           Log.w("MicroMsg.FaceUtils", "hy: decrypt err. return null");
@@ -190,7 +191,7 @@ public final class p
     return null;
   }
   
-  private static String arB(String paramString)
+  private static String azC(String paramString)
   {
     AppMethodBeat.i(103788);
     paramString = Base64.encodeToString((paramString + paramString.hashCode()).getBytes(), 0);
@@ -198,7 +199,7 @@ public final class p
     return paramString;
   }
   
-  public static String arC(String paramString)
+  public static String azD(String paramString)
   {
     AppMethodBeat.i(103801);
     paramString = g.getMessageDigest((Util.currentTicks() + ", " + paramString).getBytes());
@@ -229,16 +230,16 @@ public final class p
       AppMethodBeat.o(103787);
       return false;
     }
-    localObject1 = new o(a.a.sQz);
-    if (!((o)localObject1).exists()) {
-      ((o)localObject1).mkdirs();
+    localObject1 = new q(a.a.wwv);
+    if (!((q)localObject1).ifE()) {
+      ((q)localObject1).ifL();
     }
-    localObject1 = a.a.sQz + MD5Util.getMD5String(paramString);
-    localObject2 = new o((String)localObject1);
-    if (!((o)localObject2).exists())
+    localObject1 = a.a.wwv + MD5Util.getMD5String(paramString);
+    localObject2 = new q((String)localObject1);
+    if (!((q)localObject2).ifE())
     {
       Log.i("MicroMsg.FaceUtils", "hy: last file already exists. del");
-      ((o)localObject2).createNewFile();
+      ((q)localObject2).ifM();
     }
     localObject2 = new ByteArrayOutputStream();
     paramBitmap.compress(Bitmap.CompressFormat.JPEG, 85, (OutputStream)localObject2);
@@ -246,14 +247,14 @@ public final class p
     ((ByteArrayOutputStream)localObject2).close();
     if (paramBitmap != null)
     {
-      paramBitmap = p.a.f(paramBitmap, arB(paramString));
+      paramBitmap = p.a.f(paramBitmap, azC(paramString));
       if (paramBitmap.length <= 0)
       {
         Log.w("MicroMsg.FaceUtils", "hy: enc err. return null");
         AppMethodBeat.o(103787);
         return false;
       }
-      s.f((String)localObject1, paramBitmap, paramBitmap.length);
+      u.H((String)localObject1, paramBitmap);
       AppMethodBeat.o(103787);
       return true;
     }
@@ -263,14 +264,14 @@ public final class p
     return false;
   }
   
-  public static boolean cTg()
+  public static boolean dil()
   {
     boolean bool3 = false;
     AppMethodBeat.i(103791);
-    Object localObject1 = cTh() + "/";
-    Object localObject4 = cTk();
-    Object localObject3 = cTj();
-    Object localObject2 = cTi();
+    Object localObject1 = dim() + "/";
+    Object localObject4 = dip();
+    Object localObject3 = dio();
+    Object localObject2 = din();
     int i = 0;
     String str1;
     if (i < 4)
@@ -278,7 +279,7 @@ public final class p
       String str2 = localObject4[i];
       str1 = (String)localObject1 + str2;
       str2 = "detector/".concat(String.valueOf(str2));
-      if ((s.YS(str1)) || (gC(str1, "face_detect/".concat(String.valueOf(str2))).booleanValue())) {}
+      if ((u.agG(str1)) || (gQ(str1, "face_detect/".concat(String.valueOf(str2))).booleanValue())) {}
     }
     for (boolean bool2 = false;; bool2 = true)
     {
@@ -290,7 +291,7 @@ public final class p
         str1 = localObject3[i];
         localObject4 = (String)localObject1 + str1;
         str1 = "ufa/".concat(String.valueOf(str1));
-        if ((!s.YS((String)localObject4)) && (!gC((String)localObject4, "face_detect/".concat(String.valueOf(str1))).booleanValue())) {
+        if ((!u.agG((String)localObject4)) && (!gQ((String)localObject4, "face_detect/".concat(String.valueOf(str1))).booleanValue())) {
           bool1 = false;
         }
       }
@@ -304,13 +305,13 @@ public final class p
           localObject4 = localObject2[i];
           localObject3 = "poseest/".concat(String.valueOf(localObject4));
           localObject4 = (String)localObject1 + (String)localObject4;
-          if ((s.YS((String)localObject4)) || (gC((String)localObject4, "face_detect/".concat(String.valueOf(localObject3))).booleanValue())) {
+          if ((u.agG((String)localObject4)) || (gQ((String)localObject4, "face_detect/".concat(String.valueOf(localObject3))).booleanValue())) {
             break label348;
           }
           bool2 = false;
         }
-        localObject2 = cTl();
-        localObject1 = cTm();
+        localObject2 = diq();
+        localObject1 = dir();
         if ((!Util.isNullOrNil((String)localObject2)) && (!Util.isNullOrNil((String)localObject1))) {
           break label355;
         }
@@ -329,19 +330,19 @@ public final class p
         i += 1;
         break label211;
         label355:
-        localObject2 = new o((String)localObject2);
-        localObject1 = new o((String)localObject1);
+        localObject2 = new q((String)localObject2);
+        localObject1 = new q((String)localObject1);
         bool1 = bool2;
-        if (!((o)localObject2).exists())
+        if (!((q)localObject2).ifE())
         {
           bool1 = bool2;
-          if (!HM(0))
+          if (!Lw(0))
           {
             Log.e("MicroMsg.FaceUtils", "hy: no detect model in storage and sdcard");
             bool1 = false;
           }
         }
-        if ((!((o)localObject1).exists()) && (!HM(1)))
+        if ((!((q)localObject1).ifE()) && (!Lw(1)))
         {
           Log.e("MicroMsg.FaceUtils", "hy: no alignment model in storage and sdcard");
           bool1 = bool3;
@@ -350,58 +351,58 @@ public final class p
     }
   }
   
-  public static String cTh()
+  public static String dim()
   {
     AppMethodBeat.i(103793);
-    if (a.sQx) {}
-    for (String str = com.tencent.mm.loader.j.b.aKJ() + "face_detect";; str = com.tencent.mm.loader.j.b.aKA() + "face_detect")
+    if (a.uBl) {}
+    for (String str = com.tencent.mm.loader.j.b.aSL() + "face_detect";; str = com.tencent.mm.loader.j.b.aSC() + "face_detect")
     {
-      o localo = new o(str);
-      if (!localo.exists())
+      q localq = new q(str);
+      if (!localq.ifE())
       {
         Log.i("MicroMsg.FaceUtils", "hy: face dir not exist. mk dir");
-        localo.mkdirs();
+        localq.ifL();
       }
       AppMethodBeat.o(103793);
       return str;
     }
   }
   
-  public static String[] cTi()
+  public static String[] din()
   {
     return new String[] { "rotBasis.bin" };
   }
   
-  public static String[] cTj()
+  public static String[] dio()
   {
     return new String[] { "align.rpdm", "align.stb", "align_bin.rpdc", "eye.rpdm", "eye_bin.rpdc" };
   }
   
-  public static String[] cTk()
+  public static String[] dip()
   {
     return new String[] { "net1_18.rpnmodel", "net1_18_bin.rpnproto", "net2_36.rpnmodel", "net2_36_bin.rpnproto" };
   }
   
-  public static String cTl()
+  public static String diq()
   {
     AppMethodBeat.i(103794);
-    String str = cTh() + "/ufdmtcc.bin";
+    String str = dim() + "/ufdmtcc.bin";
     AppMethodBeat.o(103794);
     return str;
   }
   
-  public static String cTm()
+  public static String dir()
   {
     AppMethodBeat.i(103795);
-    String str = cTh() + "/ufat.bin";
+    String str = dim() + "/ufat.bin";
     AppMethodBeat.o(103795);
     return str;
   }
   
-  public static String cTn()
+  public static String dis()
   {
     AppMethodBeat.i(103796);
-    String str = cTh() + "/release_out.fd";
+    String str = dim() + "/release_out.fd";
     AppMethodBeat.o(103796);
     return str;
   }
@@ -411,7 +412,7 @@ public final class p
     AppMethodBeat.i(103784);
     try
     {
-      s.f(paramString, paramArrayOfByte, paramArrayOfByte.length);
+      u.H(paramString, paramArrayOfByte);
       AppMethodBeat.o(103784);
       return;
     }
@@ -422,13 +423,13 @@ public final class p
     }
   }
   
-  private static Boolean gC(String paramString1, String paramString2)
+  private static Boolean gQ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(103792);
     Log.i("MicroMsg.FaceUtils", "SDPath: " + paramString1 + " assetPath: " + paramString2);
-    com.tencent.mm.plugin.expansions.a.cMq();
+    com.tencent.mm.plugin.expansions.a.dbe();
     j(MMApplicationContext.getContext(), paramString2, paramString1);
-    boolean bool = s.YS(paramString1);
+    boolean bool = u.agG(paramString1);
     AppMethodBeat.o(103792);
     return Boolean.valueOf(bool);
   }
@@ -461,13 +462,13 @@ public final class p
     //   40: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   43: return
     //   44: aload_2
-    //   45: invokestatic 471	com/tencent/mm/vfs/s:boZ	(Ljava/lang/String;)Ljava/lang/String;
-    //   48: invokestatic 474	com/tencent/mm/vfs/s:boN	(Ljava/lang/String;)Z
+    //   45: invokestatic 471	com/tencent/mm/vfs/u:bBT	(Ljava/lang/String;)Ljava/lang/String;
+    //   48: invokestatic 474	com/tencent/mm/vfs/u:bBD	(Ljava/lang/String;)Z
     //   51: pop
-    //   52: new 60	com/tencent/mm/vfs/o
+    //   52: new 60	com/tencent/mm/vfs/q
     //   55: dup
     //   56: aload_2
-    //   57: invokespecial 64	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   57: invokespecial 64	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
     //   60: astore 6
     //   62: aload_0
     //   63: invokevirtual 480	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
@@ -475,7 +476,7 @@ public final class p
     //   67: invokevirtual 486	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   70: astore_0
     //   71: aload 6
-    //   73: invokestatic 490	com/tencent/mm/vfs/s:ap	(Lcom/tencent/mm/vfs/o;)Ljava/io/OutputStream;
+    //   73: invokestatic 490	com/tencent/mm/vfs/u:an	(Lcom/tencent/mm/vfs/q;)Ljava/io/OutputStream;
     //   76: astore 5
     //   78: aload 5
     //   80: astore 4
@@ -552,7 +553,7 @@ public final class p
     //   206: dup
     //   207: iconst_1
     //   208: aload 6
-    //   210: invokevirtual 514	com/tencent/mm/vfs/o:length	()J
+    //   210: invokevirtual 514	com/tencent/mm/vfs/q:length	()J
     //   213: invokestatic 519	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   216: aastore
     //   217: invokestatic 171	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
@@ -622,7 +623,7 @@ public final class p
     //   76	158	5	localObject2	Object
     //   310	1	5	localException1	Exception
     //   319	1	5	localException2	Exception
-    //   60	149	6	localo	o
+    //   60	149	6	localq	q
     //   89	29	7	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
@@ -666,23 +667,23 @@ public final class p
       {
         Log.w("MicroMsg.FaceUtils", "hy: null on blur. use default");
         j = 0;
-        paramBitmap = arA(paramString);
+        paramBitmap = azB(paramString);
         localObject = paramBitmap;
         i = j;
         if (paramBitmap == null)
         {
-          localObject = BitmapUtil.getBitmapNative(2131232223);
+          localObject = BitmapUtil.getBitmapNative(a.d.face_black);
           i = j;
         }
       }
       if (i != 0) {
-        h.RTc.ba(new Runnable()
+        h.ZvG.bh(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(103782);
             long l = Util.currentTicks();
-            p.b(this.sRN, paramString);
+            p.b(this.wxJ, paramString);
             Log.i("MicroMsg.FaceUtils", "hy: saving blur bm using: %d ms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
             AppMethodBeat.o(103782);
           }
@@ -734,7 +735,7 @@ public final class p
         if (i6 >= i15) {
           break label981;
         }
-        if (b.DE(l2))
+        if (b.JS(l2))
         {
           paramBitmap = null;
           break;
@@ -776,7 +777,7 @@ public final class p
           }
         }
         int i13 = 30;
-        if (b.DE(l2))
+        if (b.JS(l2))
         {
           paramBitmap = null;
           break;
@@ -844,7 +845,7 @@ public final class p
           break label1563;
         }
         i7 = i14 * -30;
-        if (b.DE(l2))
+        if (b.JS(l2))
         {
           paramBitmap = null;
           break;
@@ -892,7 +893,7 @@ public final class p
           }
         }
         i7 = 30;
-        if (b.DE(l2))
+        if (b.JS(l2))
         {
           paramBitmap = null;
           break;

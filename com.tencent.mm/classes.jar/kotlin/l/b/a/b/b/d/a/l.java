@@ -9,19 +9,19 @@ import kotlin.l.b.a.b.b.d.b.b;
 
 final class l
 {
-  public static final l TmT;
+  public static final l aaPN;
   
   static
   {
     AppMethodBeat.i(57391);
-    TmT = new l();
+    aaPN = new l();
     AppMethodBeat.o(57391);
   }
   
   public static String a(Constructor<?> paramConstructor)
   {
     AppMethodBeat.i(57389);
-    p.h(paramConstructor, "constructor");
+    p.k(paramConstructor, "constructor");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("(");
     paramConstructor = paramConstructor.getParameterTypes();
@@ -30,13 +30,13 @@ final class l
     while (i < j)
     {
       Object localObject = paramConstructor[i];
-      p.g(localObject, "parameterType");
-      localStringBuilder.append(b.bC(localObject));
+      p.j(localObject, "parameterType");
+      localStringBuilder.append(b.cb(localObject));
       i += 1;
     }
     localStringBuilder.append(")V");
     paramConstructor = localStringBuilder.toString();
-    p.g(paramConstructor, "sb.toString()");
+    p.j(paramConstructor, "sb.toString()");
     AppMethodBeat.o(57389);
     return paramConstructor;
   }
@@ -44,7 +44,7 @@ final class l
   public static String d(Method paramMethod)
   {
     AppMethodBeat.i(57388);
-    p.h(paramMethod, "method");
+    p.k(paramMethod, "method");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("(");
     Class[] arrayOfClass = paramMethod.getParameterTypes();
@@ -53,34 +53,34 @@ final class l
     while (i < j)
     {
       Class localClass = arrayOfClass[i];
-      p.g(localClass, "parameterType");
-      localStringBuilder.append(b.bC(localClass));
+      p.j(localClass, "parameterType");
+      localStringBuilder.append(b.cb(localClass));
       i += 1;
     }
     localStringBuilder.append(")");
     paramMethod = paramMethod.getReturnType();
-    p.g(paramMethod, "method.returnType");
-    localStringBuilder.append(b.bC(paramMethod));
+    p.j(paramMethod, "method.returnType");
+    localStringBuilder.append(b.cb(paramMethod));
     paramMethod = localStringBuilder.toString();
-    p.g(paramMethod, "sb.toString()");
+    p.j(paramMethod, "sb.toString()");
     AppMethodBeat.o(57388);
     return paramMethod;
   }
   
-  public static String f(Field paramField)
+  public static String h(Field paramField)
   {
     AppMethodBeat.i(57390);
-    p.h(paramField, "field");
+    p.k(paramField, "field");
     paramField = paramField.getType();
-    p.g(paramField, "field.type");
-    paramField = b.bC(paramField);
+    p.j(paramField, "field.type");
+    paramField = b.cb(paramField);
     AppMethodBeat.o(57390);
     return paramField;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.d.a.l
  * JD-Core Version:    0.7.0.1
  */

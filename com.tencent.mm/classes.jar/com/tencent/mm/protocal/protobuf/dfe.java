@@ -1,59 +1,54 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
 
 public final class dfe
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int MKe;
-  public String MpA;
+  public String nickName;
+  public int status;
+  public String userName;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32371);
+    AppMethodBeat.i(152636);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.MpA == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: Ip");
-        AppMethodBeat.o(32371);
-        throw paramVarArgs;
+      if (this.userName != null) {
+        paramVarArgs.f(1, this.userName);
       }
-      if (this.MpA != null) {
-        paramVarArgs.e(1, this.MpA);
+      paramVarArgs.aY(2, this.status);
+      if (this.nickName != null) {
+        paramVarArgs.f(3, this.nickName);
       }
-      paramVarArgs.aM(2, this.MKe);
-      AppMethodBeat.o(32371);
+      AppMethodBeat.o(152636);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.MpA == null) {
+      if (this.userName == null) {
         break label318;
       }
     }
     label318:
-    for (paramInt = g.a.a.b.b.a.f(1, this.MpA) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.g(1, this.userName) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bu(2, this.MKe);
-      AppMethodBeat.o(32371);
-      return paramInt + i;
+      int i = paramInt + g.a.a.b.b.a.bM(2, this.status);
+      paramInt = i;
+      if (this.nickName != null) {
+        paramInt = i + g.a.a.b.b.a.g(3, this.nickName);
+      }
+      AppMethodBeat.o(152636);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.MpA == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: Ip");
-          AppMethodBeat.o(32371);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(32371);
+        AppMethodBeat.o(152636);
         return 0;
       }
       if (paramInt == 3)
@@ -63,18 +58,22 @@ public final class dfe
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(32371);
+          AppMethodBeat.o(152636);
           return -1;
         case 1: 
-          localdfe.MpA = locala.UbS.readString();
-          AppMethodBeat.o(32371);
+          localdfe.userName = locala.abFh.readString();
+          AppMethodBeat.o(152636);
+          return 0;
+        case 2: 
+          localdfe.status = locala.abFh.AK();
+          AppMethodBeat.o(152636);
           return 0;
         }
-        localdfe.MKe = locala.UbS.zi();
-        AppMethodBeat.o(32371);
+        localdfe.nickName = locala.abFh.readString();
+        AppMethodBeat.o(152636);
         return 0;
       }
-      AppMethodBeat.o(32371);
+      AppMethodBeat.o(152636);
       return -1;
     }
   }

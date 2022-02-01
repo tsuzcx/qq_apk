@@ -1,127 +1,59 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
 
 public final class rz
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String APy;
-  public String KZu;
-  public String KZv;
-  public String KZw;
-  public int KZx;
-  public String KZy;
+  public String icon;
+  public String title;
+  public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117847);
+    AppMethodBeat.i(32152);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.KZu == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: ProductId");
-        AppMethodBeat.o(117847);
-        throw paramVarArgs;
+      if (this.url != null) {
+        paramVarArgs.f(1, this.url);
       }
-      if (this.APy == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: ProductName");
-        AppMethodBeat.o(117847);
-        throw paramVarArgs;
+      if (this.title != null) {
+        paramVarArgs.f(2, this.title);
       }
-      if (this.KZv == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: SellerName");
-        AppMethodBeat.o(117847);
-        throw paramVarArgs;
+      if (this.icon != null) {
+        paramVarArgs.f(3, this.icon);
       }
-      if (this.KZw == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: SellerUserName");
-        AppMethodBeat.o(117847);
-        throw paramVarArgs;
-      }
-      if (this.KZu != null) {
-        paramVarArgs.e(1, this.KZu);
-      }
-      if (this.APy != null) {
-        paramVarArgs.e(2, this.APy);
-      }
-      if (this.KZv != null) {
-        paramVarArgs.e(3, this.KZv);
-      }
-      if (this.KZw != null) {
-        paramVarArgs.e(4, this.KZw);
-      }
-      paramVarArgs.aM(5, this.KZx);
-      if (this.KZy != null) {
-        paramVarArgs.e(6, this.KZy);
-      }
-      AppMethodBeat.o(117847);
+      AppMethodBeat.o(32152);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.KZu == null) {
-        break label694;
+      if (this.url == null) {
+        break label343;
       }
     }
-    label694:
-    for (int i = g.a.a.b.b.a.f(1, this.KZu) + 0;; i = 0)
+    label343:
+    for (int i = g.a.a.b.b.a.g(1, this.url) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.APy != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.APy);
+      if (this.title != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.title);
       }
       i = paramInt;
-      if (this.KZv != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.KZv);
+      if (this.icon != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.icon);
       }
-      paramInt = i;
-      if (this.KZw != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.KZw);
-      }
-      i = paramInt + g.a.a.b.b.a.bu(5, this.KZx);
-      paramInt = i;
-      if (this.KZy != null) {
-        paramInt = i + g.a.a.b.b.a.f(6, this.KZy);
-      }
-      AppMethodBeat.o(117847);
-      return paramInt;
+      AppMethodBeat.o(32152);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.KZu == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: ProductId");
-          AppMethodBeat.o(117847);
-          throw paramVarArgs;
-        }
-        if (this.APy == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: ProductName");
-          AppMethodBeat.o(117847);
-          throw paramVarArgs;
-        }
-        if (this.KZv == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: SellerName");
-          AppMethodBeat.o(117847);
-          throw paramVarArgs;
-        }
-        if (this.KZw == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: SellerUserName");
-          AppMethodBeat.o(117847);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(117847);
+        AppMethodBeat.o(32152);
         return 0;
       }
       if (paramInt == 3)
@@ -131,34 +63,22 @@ public final class rz
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(117847);
+          AppMethodBeat.o(32152);
           return -1;
         case 1: 
-          localrz.KZu = locala.UbS.readString();
-          AppMethodBeat.o(117847);
+          localrz.url = locala.abFh.readString();
+          AppMethodBeat.o(32152);
           return 0;
         case 2: 
-          localrz.APy = locala.UbS.readString();
-          AppMethodBeat.o(117847);
-          return 0;
-        case 3: 
-          localrz.KZv = locala.UbS.readString();
-          AppMethodBeat.o(117847);
-          return 0;
-        case 4: 
-          localrz.KZw = locala.UbS.readString();
-          AppMethodBeat.o(117847);
-          return 0;
-        case 5: 
-          localrz.KZx = locala.UbS.zi();
-          AppMethodBeat.o(117847);
+          localrz.title = locala.abFh.readString();
+          AppMethodBeat.o(32152);
           return 0;
         }
-        localrz.KZy = locala.UbS.readString();
-        AppMethodBeat.o(117847);
+        localrz.icon = locala.abFh.readString();
+        AppMethodBeat.o(32152);
         return 0;
       }
-      AppMethodBeat.o(117847);
+      AppMethodBeat.o(32152);
       return -1;
     }
   }

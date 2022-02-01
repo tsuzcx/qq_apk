@@ -23,5 +23,5 @@
         <include android:layout_width="fill_parent" android:layout_height="12.0dip" layout="@layout/b_1" />
     </LinearLayout>
     <TextView android:textSize="@dimen/l" android:textColor="@color/u_" android:id="@id/l5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hir" android:layout_centerInParent="true" />
-    <android.support.v7.widget.RecyclerView android:id="@id/l6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/l6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
 </RelativeLayout>

@@ -9,111 +9,109 @@ final class c
   implements d.a
 {
   private boolean done;
-  private d.a hgj;
-  private ArrayList<Object> hgk;
+  private d.a jSb;
+  private ArrayList<Object> jSc;
   
   c()
   {
-    AppMethodBeat.i(199130);
-    this.hgk = new ArrayList();
+    AppMethodBeat.i(207299);
+    this.jSc = new ArrayList();
     this.done = false;
-    AppMethodBeat.o(199130);
+    AppMethodBeat.o(207299);
   }
   
-  private void awV()
+  private void aEo()
   {
-    AppMethodBeat.i(199136);
-    if (this.hgj == null)
+    AppMethodBeat.i(207305);
+    if (this.jSb == null)
     {
-      AppMethodBeat.o(199136);
+      AppMethodBeat.o(207305);
       return;
     }
-    Iterator localIterator = this.hgk.iterator();
+    Iterator localIterator = this.jSc.iterator();
     while (localIterator.hasNext())
     {
       Object localObject = localIterator.next();
-      if ((localObject instanceof a))
+      if ((localObject instanceof c.a))
       {
-        this.hgj.awU();
+        this.jSb.aEn();
       }
       else if ((localObject instanceof b))
       {
         localObject = (b)localObject;
-        this.hgj.b(((b)localObject).code, ((b)localObject).message, ((b)localObject).hgl);
+        this.jSb.b(((b)localObject).code, ((b)localObject).message, ((b)localObject).jSd);
       }
       else
       {
-        this.hgj.ba(localObject);
+        this.jSb.bb(localObject);
       }
     }
-    this.hgk.clear();
-    AppMethodBeat.o(199136);
+    this.jSc.clear();
+    AppMethodBeat.o(207305);
   }
   
-  private void bb(Object paramObject)
+  private void bc(Object paramObject)
   {
-    AppMethodBeat.i(199135);
+    AppMethodBeat.i(207304);
     if (this.done)
     {
-      AppMethodBeat.o(199135);
+      AppMethodBeat.o(207304);
       return;
     }
-    this.hgk.add(paramObject);
-    AppMethodBeat.o(199135);
+    this.jSc.add(paramObject);
+    AppMethodBeat.o(207304);
   }
   
-  public final void a(d.a parama)
+  public final void aEn()
   {
-    AppMethodBeat.i(199131);
-    this.hgj = parama;
-    awV();
-    AppMethodBeat.o(199131);
-  }
-  
-  public final void awU()
-  {
-    AppMethodBeat.i(199132);
-    bb(new a((byte)0));
-    awV();
+    AppMethodBeat.i(207301);
+    bc(new c.a((byte)0));
+    aEo();
     this.done = true;
-    AppMethodBeat.o(199132);
+    AppMethodBeat.o(207301);
+  }
+  
+  public final void b(d.a parama)
+  {
+    AppMethodBeat.i(207300);
+    this.jSb = parama;
+    aEo();
+    AppMethodBeat.o(207300);
   }
   
   public final void b(String paramString1, String paramString2, Object paramObject)
   {
-    AppMethodBeat.i(199133);
-    bb(new b(paramString1, paramString2, paramObject));
-    awV();
-    AppMethodBeat.o(199133);
+    AppMethodBeat.i(207302);
+    bc(new b(paramString1, paramString2, paramObject));
+    aEo();
+    AppMethodBeat.o(207302);
   }
   
-  public final void ba(Object paramObject)
+  public final void bb(Object paramObject)
   {
-    AppMethodBeat.i(199134);
-    bb(paramObject);
-    awV();
-    AppMethodBeat.o(199134);
+    AppMethodBeat.i(207303);
+    bc(paramObject);
+    aEo();
+    AppMethodBeat.o(207303);
   }
-  
-  static final class a {}
   
   static final class b
   {
     String code;
-    Object hgl;
+    Object jSd;
     String message;
     
     b(String paramString1, String paramString2, Object paramObject)
     {
       this.code = paramString1;
       this.message = paramString2;
-      this.hgl = paramObject;
+      this.jSd = paramObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.flutter.plugins.a.c
  * JD-Core Version:    0.7.0.1
  */

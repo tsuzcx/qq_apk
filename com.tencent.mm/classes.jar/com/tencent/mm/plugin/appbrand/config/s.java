@@ -8,21 +8,21 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import kotlin.l;
 import kotlin.n.n;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/config/MiniProgramUserAgentUtils;", "", "()V", "make", "", "context", "Landroid/content/Context;", "originalUserAgent", "luggage-wechat-full-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/config/MiniProgramUserAgentUtils;", "", "()V", "make", "", "context", "Landroid/content/Context;", "originalUserAgent", "luggage-wechat-full-sdk_release"})
 public final class s
 {
-  public static final s lfH;
+  public static final s oag;
   
   static
   {
-    AppMethodBeat.i(230056);
-    lfH = new s();
-    AppMethodBeat.o(230056);
+    AppMethodBeat.i(244427);
+    oag = new s();
+    AppMethodBeat.o(244427);
   }
   
-  public static final String aa(Context paramContext, String paramString)
+  public static final String Y(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(230055);
+    AppMethodBeat.i(244426);
     Context localContext = paramContext;
     if (paramContext == null) {
       localContext = MMApplicationContext.getContext();
@@ -31,14 +31,14 @@ public final class s
     if (paramString == null) {
       paramContext = "";
     }
-    paramString = com.tencent.mm.plugin.appbrand.ac.p.a(localContext, paramContext, (p.a)e.M(p.a.class));
-    kotlin.g.b.p.g(paramString, "ua");
+    paramString = com.tencent.mm.plugin.appbrand.ac.p.a(localContext, paramContext, (p.a)e.K(p.a.class));
+    kotlin.g.b.p.j(paramString, "ua");
     paramContext = paramString;
     if (!n.a((CharSequence)paramString, (CharSequence)"MiniProgramEnv/android", false)) {
       paramContext = paramString + " MiniProgramEnv/android";
     }
-    kotlin.g.b.p.g(paramContext, "ua");
-    AppMethodBeat.o(230055);
+    kotlin.g.b.p.j(paramContext, "ua");
+    AppMethodBeat.o(244426);
     return paramContext;
   }
 }

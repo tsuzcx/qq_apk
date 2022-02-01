@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.scanner;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cs;
+import com.tencent.mm.f.a.cw;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.qbar.a.a;
 import com.tencent.qbar.e.b;
@@ -11,33 +11,33 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 final class PluginScanner$1
-  extends IListener<cs>
+  extends IListener<cw>
 {
   PluginScanner$1()
   {
-    AppMethodBeat.i(240707);
-    this.__eventId = cs.class.getName().hashCode();
-    AppMethodBeat.o(240707);
+    AppMethodBeat.i(217790);
+    this.__eventId = cw.class.getName().hashCode();
+    AppMethodBeat.o(217790);
   }
   
   /* Error */
-  private boolean a(cs paramcs)
+  private boolean a(cw paramcw)
   {
     // Byte code:
     //   0: ldc 47
     //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
-    //   6: getfield 51	com/tencent/mm/g/a/cs:dFQ	Lcom/tencent/mm/g/a/cs$a;
-    //   9: getfield 57	com/tencent/mm/g/a/cs$a:path	Ljava/lang/String;
+    //   6: getfield 51	com/tencent/mm/f/a/cw:fyy	Lcom/tencent/mm/f/a/cw$a;
+    //   9: getfield 57	com/tencent/mm/f/a/cw$a:path	Ljava/lang/String;
     //   12: invokestatic 63	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   15: ifeq +25 -> 40
     //   18: ldc 65
     //   20: ldc 67
     //   22: invokestatic 73	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   25: aload_1
-    //   26: getfield 77	com/tencent/mm/g/a/cs:dFR	Lcom/tencent/mm/g/a/cs$b;
+    //   26: getfield 77	com/tencent/mm/f/a/cw:fyz	Lcom/tencent/mm/f/a/cw$b;
     //   29: aconst_null
-    //   30: putfield 83	com/tencent/mm/g/a/cs$b:dFS	[Ljava/lang/String;
+    //   30: putfield 83	com/tencent/mm/f/a/cw$b:fyA	[Ljava/lang/String;
     //   33: ldc 47
     //   35: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   38: iconst_0
@@ -61,12 +61,12 @@ final class PluginScanner$1
     //   64: aload_3
     //   65: invokespecial 91	com/tencent/mm/plugin/scanner/PluginScanner$1$1:<init>	(Lcom/tencent/mm/plugin/scanner/PluginScanner$1;[[Ljava/lang/String;Ljava/util/concurrent/CountDownLatch;)V
     //   68: astore 4
-    //   70: invokestatic 97	com/tencent/qbar/e:hki	()Lcom/tencent/qbar/e;
+    //   70: invokestatic 97	com/tencent/qbar/e:inE	()Lcom/tencent/qbar/e;
     //   73: invokestatic 103	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
     //   76: invokestatic 109	java/lang/System:currentTimeMillis	()J
     //   79: aload_1
-    //   80: getfield 51	com/tencent/mm/g/a/cs:dFQ	Lcom/tencent/mm/g/a/cs$a;
-    //   83: getfield 57	com/tencent/mm/g/a/cs$a:path	Ljava/lang/String;
+    //   80: getfield 51	com/tencent/mm/f/a/cw:fyy	Lcom/tencent/mm/f/a/cw$a;
+    //   83: getfield 57	com/tencent/mm/f/a/cw$a:path	Ljava/lang/String;
     //   86: aload 4
     //   88: invokevirtual 112	com/tencent/qbar/e:a	(Landroid/content/Context;JLjava/lang/String;Lcom/tencent/qbar/e$b;)V
     //   91: aload_3
@@ -86,11 +86,11 @@ final class PluginScanner$1
     //   113: arraylength
     //   114: ifle +62 -> 176
     //   117: aload_1
-    //   118: getfield 77	com/tencent/mm/g/a/cs:dFR	Lcom/tencent/mm/g/a/cs$b;
+    //   118: getfield 77	com/tencent/mm/f/a/cw:fyz	Lcom/tencent/mm/f/a/cw$b;
     //   121: aload_2
     //   122: iconst_0
     //   123: aaload
-    //   124: putfield 83	com/tencent/mm/g/a/cs$b:dFS	[Ljava/lang/String;
+    //   124: putfield 83	com/tencent/mm/f/a/cw$b:fyA	[Ljava/lang/String;
     //   127: aload_2
     //   128: monitorexit
     //   129: ldc 47
@@ -105,23 +105,23 @@ final class PluginScanner$1
     //   143: anewarray 128	java/lang/Object
     //   146: invokestatic 132	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   149: aload_1
-    //   150: getfield 77	com/tencent/mm/g/a/cs:dFR	Lcom/tencent/mm/g/a/cs$b;
+    //   150: getfield 77	com/tencent/mm/f/a/cw:fyz	Lcom/tencent/mm/f/a/cw$b;
     //   153: iconst_1
     //   154: anewarray 30	java/lang/String
     //   157: dup
     //   158: iconst_0
     //   159: ldc 134
     //   161: aastore
-    //   162: putfield 83	com/tencent/mm/g/a/cs$b:dFS	[Ljava/lang/String;
+    //   162: putfield 83	com/tencent/mm/f/a/cw$b:fyA	[Ljava/lang/String;
     //   165: aload_1
-    //   166: getfield 77	com/tencent/mm/g/a/cs:dFR	Lcom/tencent/mm/g/a/cs$b;
+    //   166: getfield 77	com/tencent/mm/f/a/cw:fyz	Lcom/tencent/mm/f/a/cw$b;
     //   169: iconst_1
-    //   170: putfield 138	com/tencent/mm/g/a/cs$b:isTimeout	Z
+    //   170: putfield 138	com/tencent/mm/f/a/cw$b:isTimeout	Z
     //   173: goto -71 -> 102
     //   176: aload_1
-    //   177: getfield 77	com/tencent/mm/g/a/cs:dFR	Lcom/tencent/mm/g/a/cs$b;
+    //   177: getfield 77	com/tencent/mm/f/a/cw:fyz	Lcom/tencent/mm/f/a/cw$b;
     //   180: aconst_null
-    //   181: putfield 83	com/tencent/mm/g/a/cs$b:dFS	[Ljava/lang/String;
+    //   181: putfield 83	com/tencent/mm/f/a/cw$b:fyA	[Ljava/lang/String;
     //   184: goto -57 -> 127
     //   187: astore_1
     //   188: aload_2
@@ -133,7 +133,7 @@ final class PluginScanner$1
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	197	0	this	1
-    //   0	197	1	paramcs	cs
+    //   0	197	1	paramcw	cw
     //   53	136	2	arrayOfString;	String[][]
     //   48	44	3	localCountDownLatch	CountDownLatch
     //   136	4	3	localThrowable	java.lang.Throwable
@@ -144,12 +144,11 @@ final class PluginScanner$1
     //   110	127	187	finally
     //   127	129	187	finally
     //   176	184	187	finally
-    //   188	190	187	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.PluginScanner.1
  * JD-Core Version:    0.7.0.1
  */

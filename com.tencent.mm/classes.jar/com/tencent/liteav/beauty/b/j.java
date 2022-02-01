@@ -1,9 +1,9 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.b.b;
-import com.tencent.liteav.basic.c.i;
+import com.tencent.liteav.basic.c.b;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.opengl.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class j
@@ -14,7 +14,7 @@ public class j
   private boolean c;
   private w d;
   private boolean e;
-  private i f;
+  private k f;
   private e g;
   private p h;
   private boolean i;
@@ -83,15 +83,15 @@ public class j
   
   public void a(b paramb)
   {
-    AppMethodBeat.i(221437);
+    AppMethodBeat.i(232439);
     TXCLog.i(j, "set notify");
     this.k = paramb;
-    AppMethodBeat.o(221437);
+    AppMethodBeat.o(232439);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.j
  * JD-Core Version:    0.7.0.1
  */

@@ -14,26 +14,31 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.ClipboardHelper;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.as;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.o.f;
-import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.q.f;
+import com.tencent.mm.ui.base.q.g;
 
 public class ProfileMobilePhoneView
   extends ProfileItemView
 {
-  public String KcI;
-  public String KcJ;
-  public String[] KcK;
-  public LinearLayout KcT;
-  public boolean KcU = false;
+  private View.OnClickListener Fms;
+  public boolean RdA = false;
+  public String Rdn;
+  public String Rdo;
+  public String[] Rdp;
+  public LinearLayout Rdz;
   private Context mContext;
-  public TextView mPa;
-  private View.OnClickListener zHh;
+  public TextView pPT;
   
   public ProfileMobilePhoneView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -49,39 +54,39 @@ public class ProfileMobilePhoneView
   public ProfileMobilePhoneView(Context paramContext, View.OnClickListener paramOnClickListener)
   {
     super(paramContext, null);
-    this.zHh = paramOnClickListener;
+    this.Fms = paramOnClickListener;
     this.mContext = paramContext;
   }
   
-  public final boolean aj(as paramas)
+  public final boolean ap(as paramas)
   {
-    this.rjX = paramas;
+    this.uNk = paramas;
     return true;
   }
   
-  public final boolean eEV()
+  public final boolean fqK()
   {
     AppMethodBeat.i(31242);
     Object localObject;
-    if (this.mPa != null)
+    if (this.pPT != null)
     {
-      localObject = this.mPa.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).width = com.tencent.mm.cb.a.aG(getContext(), 2131165381);
-      this.mPa.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localObject = this.pPT.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject).width = com.tencent.mm.ci.a.aY(getContext(), R.f.FixedTitleWidth);
+      this.pPT.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    if (this.KcT == null)
+    if (this.Rdz == null)
     {
       AppMethodBeat.o(31242);
       return false;
     }
     int k;
-    if ((!Util.isNullOrNil(this.KcI)) && (Util.isPhoneNumber(this.KcI).booleanValue()))
+    if ((!Util.isNullOrNil(this.Rdn)) && (Util.isPhoneNumber(this.Rdn).booleanValue()))
     {
-      localObject = this.KcT.getChildAt(0);
+      localObject = this.Rdz.getChildAt(0);
       if (localObject != null)
       {
         ((View)localObject).setVisibility(0);
-        ((TextView)localObject).setText(this.KcI);
+        ((TextView)localObject).setText(this.Rdn);
       }
       k = 1;
     }
@@ -89,27 +94,27 @@ public class ProfileMobilePhoneView
     for (int i = 1;; i = 0)
     {
       j = i;
-      if (Util.isNullOrNil(this.KcJ)) {
+      if (Util.isNullOrNil(this.Rdo)) {
         break;
       }
-      this.KcK = com.tencent.mm.contact.a.a(this.rjX, this.KcJ);
+      this.Rdp = com.tencent.mm.contact.a.a(this.uNk, this.Rdo);
       j = i;
-      if (this.KcK == null) {
+      if (this.Rdp == null) {
         break;
       }
       setVisibility(0);
-      while (i < this.KcK.length + k)
+      while (i < this.Rdp.length + k)
       {
-        localObject = this.KcT.getChildAt(i);
+        localObject = this.Rdz.getChildAt(i);
         if (localObject != null)
         {
           ((View)localObject).setVisibility(0);
-          ((TextView)localObject).setText(this.KcK[(i - k)]);
+          ((TextView)localObject).setText(this.Rdp[(i - k)]);
         }
         i += 1;
       }
-      if ((this.KcI != null) && (!Util.isPhoneNumber(this.KcI).booleanValue())) {
-        Log.e("MicroMsg.ProfileMobilePhoneView", "mobile format is error----%s", new Object[] { this.KcI });
+      if ((this.Rdn != null) && (!Util.isPhoneNumber(this.Rdn).booleanValue())) {
+        Log.e("MicroMsg.ProfileMobilePhoneView", "mobile format is error----%s", new Object[] { this.Rdn });
       }
       k = 0;
     }
@@ -117,12 +122,12 @@ public class ProfileMobilePhoneView
     {
       if (j < 5)
       {
-        this.KcT.getChildAt(j).setVisibility(8);
+        this.Rdz.getChildAt(j).setVisibility(8);
         j += 1;
       }
       else
       {
-        if ((k != 1) && (Util.isNullOrNil(this.KcJ))) {
+        if ((k != 1) && (Util.isNullOrNil(this.Rdo))) {
           setVisibility(8);
         }
         AppMethodBeat.o(31242);
@@ -134,25 +139,25 @@ public class ProfileMobilePhoneView
   
   public int getLayout()
   {
-    return 2131495982;
+    return R.i.ekd;
   }
   
   public final void init()
   {
     AppMethodBeat.i(31240);
-    this.mPa = ((TextView)findViewById(2131305881));
-    this.KcT = ((LinearLayout)findViewById(2131305880));
+    this.pPT = ((TextView)findViewById(R.h.dQY));
+    this.Rdz = ((LinearLayout)findViewById(R.h.dQX));
     int i = 0;
     while (i < 5)
     {
-      this.KcT.getChildAt(i).setOnClickListener(new View.OnClickListener()
+      this.Rdz.getChildAt(i).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(31234);
           b localb = new b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/ProfileMobilePhoneView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/pluginsdk/ui/ProfileMobilePhoneView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           ProfileMobilePhoneView.a(ProfileMobilePhoneView.this, ((TextView)paramAnonymousView).getText().toString());
           ProfileMobilePhoneView.a(ProfileMobilePhoneView.this).onClick(paramAnonymousView);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/ProfileMobilePhoneView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -164,13 +169,13 @@ public class ProfileMobilePhoneView
     AppMethodBeat.o(31240);
   }
   
-  public final void my(String paramString1, String paramString2)
+  public final void no(String paramString1, String paramString2)
   {
     AppMethodBeat.i(31241);
     Log.i("MicroMsg.ProfileMobilePhoneView", "phoneNumberByMD5:%s phoneNumberList:%s", new Object[] { paramString1, paramString2 });
-    this.KcI = paramString1;
-    this.KcJ = paramString2;
-    eEV();
+    this.Rdn = paramString1;
+    this.Rdo = paramString2;
+    fqK();
     AppMethodBeat.o(31241);
   }
 }

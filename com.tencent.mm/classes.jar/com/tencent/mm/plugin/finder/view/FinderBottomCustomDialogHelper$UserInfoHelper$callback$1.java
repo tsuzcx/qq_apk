@@ -6,7 +6,7 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "", "invoke"})
 final class FinderBottomCustomDialogHelper$UserInfoHelper$callback$1
   extends q
   implements b<Boolean, x>
@@ -15,9 +15,9 @@ final class FinderBottomCustomDialogHelper$UserInfoHelper$callback$1
   
   static
   {
-    AppMethodBeat.i(254645);
+    AppMethodBeat.i(272895);
     INSTANCE = new 1();
-    AppMethodBeat.o(254645);
+    AppMethodBeat.o(272895);
   }
   
   FinderBottomCustomDialogHelper$UserInfoHelper$callback$1()

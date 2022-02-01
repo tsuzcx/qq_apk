@@ -1,19 +1,17 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.PointF;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout.LayoutParams;
@@ -22,309 +20,415 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.g.a.aw;
-import com.tencent.mm.g.a.ay;
-import com.tencent.mm.g.a.tp;
-import com.tencent.mm.g.a.tp.a;
-import com.tencent.mm.g.a.vw;
-import com.tencent.mm.g.a.wj;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.t;
+import com.tencent.mm.f.a.ay;
+import com.tencent.mm.f.a.ba;
+import com.tencent.mm.f.a.ur;
+import com.tencent.mm.f.a.ur.a;
+import com.tencent.mm.f.a.xb;
+import com.tencent.mm.f.a.xp;
 import com.tencent.mm.network.p;
 import com.tencent.mm.network.p.a;
+import com.tencent.mm.plugin.scanner.ImageQBarDataBean;
+import com.tencent.mm.plugin.scanner.MultiCodeMaskView;
+import com.tencent.mm.plugin.scanner.MultiCodeMaskView.b;
+import com.tencent.mm.plugin.scanner.j;
 import com.tencent.mm.plugin.scanner.ui.TranslationResultUI;
 import com.tencent.mm.plugin.scanner.word.ImageWordScanDetailEngine;
 import com.tencent.mm.plugin.scanner.word.a.a;
+import com.tencent.mm.plugin.sns.i.a;
+import com.tencent.mm.plugin.sns.i.c;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.mm.plugin.sns.i.j;
 import com.tencent.mm.plugin.sns.model.aj;
 import com.tencent.mm.plugin.sns.model.c.b;
+import com.tencent.mm.plugin.sns.model.g;
 import com.tencent.mm.plugin.sns.storage.SnsInfo;
-import com.tencent.mm.plugin.sns.storage.n;
-import com.tencent.mm.protocal.protobuf.cnb;
+import com.tencent.mm.protocal.protobuf.cvt;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.base.MMViewPager;
 import com.tencent.mm.ui.base.MMViewPager.a;
 import com.tencent.mm.ui.base.MMViewPager.l;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class SnsBaseGalleryUI
   extends MMActivity
-  implements a.a<String, com.tencent.mm.plugin.scanner.word.b>, c.b, SnsInfoFlip.b, w.a
+  implements a.a<String, com.tencent.mm.plugin.scanner.word.b>, c.b, SnsInfoFlip.b, y.a
 {
-  private boolean CSQ = true;
-  private LinearLayout EAc;
-  v EAd;
-  private LinearLayout EAe;
-  w EAf;
-  boolean EAg = true;
-  private TextView EAh = null;
-  protected SnsInfoFlip EAi;
-  protected Button EAj;
-  private int EAk = -1;
-  private long EAl = 0L;
-  private com.tencent.mm.plugin.scanner.api.a.a EAm = null;
-  private com.tencent.mm.plugin.scanner.api.a.b EAn = ((com.tencent.mm.plugin.scanner.api.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.scanner.api.b.class)).eOT();
-  private com.tencent.mm.plugin.scanner.api.a.c EAo = new com.tencent.mm.plugin.scanner.api.a.c()
+  private MMViewPager CcM;
+  private boolean IYi = true;
+  private FlipView.b KDM = new FlipView.b()
   {
-    public final void eOW()
+    public final void fTF()
     {
-      AppMethodBeat.i(203488);
-      SnsBaseGalleryUI.b(SnsBaseGalleryUI.this);
-      AppMethodBeat.o(203488);
+      AppMethodBeat.i(224820);
+      SnsBaseGalleryUI.a(SnsBaseGalleryUI.this).reset();
+      AppMethodBeat.o(224820);
     }
     
-    public final void eOX()
+    public final void hI(List<Integer> paramAnonymousList)
     {
-      AppMethodBeat.i(203491);
+      AppMethodBeat.i(224819);
+      if ((paramAnonymousList != null) && (paramAnonymousList.contains(Integer.valueOf(9)))) {
+        SnsBaseGalleryUI.a(SnsBaseGalleryUI.this).jc(2, SnsBaseGalleryUI.this.fVR());
+      }
+      AppMethodBeat.o(224819);
+    }
+  };
+  private LinearLayout KNQ;
+  x KNR;
+  private LinearLayout KNS;
+  y KNT;
+  boolean KNU = true;
+  private TextView KNV = null;
+  protected SnsInfoFlip KNW;
+  protected Button KNX;
+  private com.tencent.mm.plugin.scanner.word.b KNY = null;
+  protected MultiCodeMaskView KNZ;
+  private int KOa = -1;
+  private FlipView.c KOb = new FlipView.c()
+  {
+    public final boolean a(ArrayList<ImageQBarDataBean> paramAnonymousArrayList1, ArrayList<PointF> paramAnonymousArrayList, ArrayList<ImageQBarDataBean> paramAnonymousArrayList2, final SnsInfo paramAnonymousSnsInfo, final String paramAnonymousString)
+    {
+      AppMethodBeat.i(269289);
+      if (SnsBaseGalleryUI.this.KNZ != null)
+      {
+        if (SnsBaseGalleryUI.this.KNW != null) {
+          SnsBaseGalleryUI.this.KNZ.a(paramAnonymousArrayList1, paramAnonymousArrayList, paramAnonymousArrayList2, SnsBaseGalleryUI.this.KNW.getMeasuredHeight());
+        }
+        for (;;)
+        {
+          SnsBaseGalleryUI.this.KNZ.setMMultiCodeMaskViewListener(new MultiCodeMaskView.b()
+          {
+            public final void a(ArrayList<ImageQBarDataBean> paramAnonymous2ArrayList, ImageQBarDataBean paramAnonymous2ImageQBarDataBean, boolean paramAnonymous2Boolean)
+            {
+              AppMethodBeat.i(198372);
+              if (SnsBaseGalleryUI.this.KNW != null)
+              {
+                SnsBaseGalleryUI.this.KNW.KDJ = paramAnonymous2ImageQBarDataBean;
+                SnsBaseGalleryUI.this.KNW.a(paramAnonymous2ImageQBarDataBean, paramAnonymousSnsInfo, paramAnonymousString);
+              }
+              if (paramAnonymous2Boolean) {}
+              for (int i = 1;; i = 2)
+              {
+                j localj = j.IAG;
+                j.a(SnsBaseGalleryUI.this.KNW.BrO.longValue(), i, paramAnonymous2ArrayList, paramAnonymous2ImageQBarDataBean, SnsBaseGalleryUI.this.KNW.BrP.longValue(), 1);
+                AppMethodBeat.o(198372);
+                return;
+              }
+            }
+            
+            public final void as(ArrayList<ImageQBarDataBean> paramAnonymous2ArrayList)
+            {
+              AppMethodBeat.i(198365);
+              j localj = j.IAG;
+              j.a(SnsBaseGalleryUI.this.KNW.BrO.longValue(), 3, paramAnonymous2ArrayList, null, SnsBaseGalleryUI.this.KNW.BrP.longValue(), 1);
+              if (SnsBaseGalleryUI.this.KNW != null) {
+                SnsBaseGalleryUI.this.KNW.KDJ = null;
+              }
+              AppMethodBeat.o(198365);
+            }
+          });
+          AppMethodBeat.o(269289);
+          return true;
+          SnsBaseGalleryUI.this.KNZ.a(paramAnonymousArrayList1, paramAnonymousArrayList, paramAnonymousArrayList2, SnsBaseGalleryUI.this.KNZ.getRootView().getMeasuredHeight());
+        }
+      }
+      AppMethodBeat.o(269289);
+      return false;
+    }
+  };
+  private long KOc = 0L;
+  private com.tencent.mm.plugin.scanner.api.a.a KOd = null;
+  private com.tencent.mm.plugin.scanner.api.a.b KOe = ((com.tencent.mm.plugin.scanner.api.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.scanner.api.b.class)).fBV();
+  private com.tencent.mm.plugin.scanner.api.a.c KOf = new com.tencent.mm.plugin.scanner.api.a.c()
+  {
+    public final void fBY()
+    {
+      AppMethodBeat.i(238517);
+      SnsBaseGalleryUI.b(SnsBaseGalleryUI.this);
+      AppMethodBeat.o(238517);
+    }
+    
+    public final void fBZ()
+    {
+      AppMethodBeat.i(238526);
+      Log.i("MicroMsg.SnsBaseGalleryUI", "alvinluo dealWithImageOcr onDialogShow");
       SnsBaseGalleryUI.b(SnsBaseGalleryUI.this);
       SnsBaseGalleryUI localSnsBaseGalleryUI = SnsBaseGalleryUI.this;
-      localSnsBaseGalleryUI.EAg = false;
+      localSnsBaseGalleryUI.KNU = false;
       localSnsBaseGalleryUI.setTitleVisibility(8);
-      if (localSnsBaseGalleryUI.EAd != null) {
-        localSnsBaseGalleryUI.EAd.setVisibility(8);
+      if (localSnsBaseGalleryUI.KNR != null) {
+        localSnsBaseGalleryUI.KNR.setVisibility(8);
       }
-      SnsBaseGalleryUI.this.cWj();
-      AppMethodBeat.o(203491);
+      SnsBaseGalleryUI.this.dlq();
+      AppMethodBeat.o(238526);
     }
     
-    public final void eOY()
+    public final void fCa()
     {
-      AppMethodBeat.i(203490);
+      AppMethodBeat.i(238523);
       SnsBaseGalleryUI.c(SnsBaseGalleryUI.this);
-      AppMethodBeat.o(203490);
+      AppMethodBeat.o(238523);
     }
     
-    public final void eOZ()
+    public final void fCb()
     {
-      AppMethodBeat.i(203489);
+      AppMethodBeat.i(238520);
       SnsBaseGalleryUI.c(SnsBaseGalleryUI.this);
-      SnsBaseGalleryUI.this.cWj();
-      AppMethodBeat.o(203489);
+      SnsBaseGalleryUI.this.dlq();
+      AppMethodBeat.o(238520);
     }
   };
-  private IListener<wj> EAp = new IListener() {};
-  private IListener<vw> EAq = new IListener() {};
-  private FlipView.b Eqw = new FlipView.b()
+  private IListener<xp> KOg = new IListener() {};
+  private IListener<xb> KOh = new IListener() {};
+  private View.OnLongClickListener aHT = new View.OnLongClickListener()
   {
-    public final void ffI()
+    public final boolean onLongClick(View paramAnonymousView)
     {
-      AppMethodBeat.i(203482);
-      SnsBaseGalleryUI.a(SnsBaseGalleryUI.this).reset();
-      AppMethodBeat.o(203482);
-    }
-    
-    public final void ha(List<Integer> paramAnonymousList)
-    {
-      AppMethodBeat.i(203481);
-      if ((paramAnonymousList != null) && (paramAnonymousList.contains(Integer.valueOf(9)))) {
-        SnsBaseGalleryUI.a(SnsBaseGalleryUI.this).hY(2, SnsBaseGalleryUI.this.fhE());
+      AppMethodBeat.i(228159);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bn(paramAnonymousView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/ui/SnsBaseGalleryUI$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
+      if (SnsBaseGalleryUI.this.KNW == null)
+      {
+        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/sns/ui/SnsBaseGalleryUI$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+        AppMethodBeat.o(228159);
+        return false;
       }
-      AppMethodBeat.o(203481);
+      paramAnonymousView = SnsBaseGalleryUI.this.KNW.getCntMedia();
+      if ((paramAnonymousView != null) && (paramAnonymousView.rWu == 2) && (SnsBaseGalleryUI.this.fVP()) && (com.tencent.mm.plugin.scanner.n.fBO()))
+      {
+        paramAnonymousView = g.D(SnsBaseGalleryUI.this.KNW.getCntMedia());
+        SnsBaseGalleryUI.this.cE(paramAnonymousView, true);
+      }
+      com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/sns/ui/SnsBaseGalleryUI$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+      AppMethodBeat.o(228159);
+      return false;
     }
   };
-  private com.tencent.mm.plugin.scanner.word.a tgL;
-  int tgM = 0;
-  private int tgN = 0;
-  private ImageView tgP;
-  private ImageView tgQ;
-  private ImageView tgR;
-  private ValueAnimator tgS;
-  private IListener<tp> tgT = new IListener() {};
-  private p tgU = new p.a()
+  private com.tencent.mm.plugin.scanner.word.a wNb;
+  int wNc = 0;
+  private int wNd = 0;
+  private ImageView wNf;
+  private ImageView wNg;
+  private ImageView wNh;
+  private ValueAnimator wNi;
+  private IListener<ur> wNj = new IListener() {};
+  private p wNk = new p.a()
   {
     public final void onNetworkChange(int paramAnonymousInt)
     {
-      AppMethodBeat.i(203487);
+      AppMethodBeat.i(266246);
       MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(203486);
-          if ((com.tencent.mm.kernel.g.azz().aYS() != 6) && (com.tencent.mm.kernel.g.azz().aYS() != 4) && (SnsBaseGalleryUI.i(SnsBaseGalleryUI.this) == 1))
+          AppMethodBeat.i(98486);
+          if ((com.tencent.mm.kernel.h.aGY().bih() != 6) && (com.tencent.mm.kernel.h.aGY().bih() != 4) && (SnsBaseGalleryUI.i(SnsBaseGalleryUI.this) == 1))
           {
-            h.c(SnsBaseGalleryUI.this, SnsBaseGalleryUI.this.getString(2131755914), "", true);
-            SnsBaseGalleryUI.this.cWh();
+            com.tencent.mm.ui.base.h.c(SnsBaseGalleryUI.this, SnsBaseGalleryUI.this.getString(i.j.app_network_unavailable), "", true);
+            SnsBaseGalleryUI.this.dlo();
           }
-          AppMethodBeat.o(203486);
+          AppMethodBeat.o(98486);
         }
       });
-      AppMethodBeat.o(203487);
+      AppMethodBeat.o(266246);
     }
   };
-  private MMViewPager xqs;
   
-  private void cWi()
+  private void bca(String paramString)
   {
-    this.tgP.setVisibility(0);
-    this.tgQ.setVisibility(0);
-    this.tgR.setVisibility(0);
-    this.tgS.setRepeatMode(1);
-    this.tgS.setRepeatCount(-1);
-    this.tgS.start();
-  }
-  
-  private void fhA()
-  {
-    if (this.EAi != null)
-    {
-      this.EAi.setEnableSingleClickOver(true);
-      this.EAi.setShowLongClickMenu(true);
+    if (this.wNb == null) {
+      this.wNb = new ImageWordScanDetailEngine(this, (byte)0);
     }
-    if (this.xqs != null)
-    {
-      this.xqs.setEnableGalleryScale(true);
-      this.xqs.setSingleMode(false);
+    if (!Util.isNullOrNil(paramString)) {
+      this.wNb.a(paramString, this);
     }
   }
   
-  private boolean fhB()
+  private void dlp()
   {
-    fhA();
-    return (this.EAm != null) && (this.EAm.It(this.EAl));
+    this.wNf.setVisibility(0);
+    this.wNg.setVisibility(0);
+    this.wNh.setVisibility(0);
+    this.wNi.setRepeatMode(1);
+    this.wNi.setRepeatCount(-1);
+    this.wNi.start();
   }
   
-  private boolean fhF()
+  private void fVL()
   {
-    return fhD() == 3;
-  }
-  
-  private void fhG()
-  {
-    this.tgP.setVisibility(8);
-    this.tgQ.setVisibility(8);
-    this.tgR.setVisibility(8);
-  }
-  
-  @SuppressLint({"ResourceAsColor"})
-  public final void X(boolean paramBoolean, int paramInt)
-  {
-    this.EAd = new v(this, paramInt, paramBoolean);
-    this.EAd.setBackgroundColor(2131101287);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    this.EAd.getBackground().setAlpha(50);
-    this.EAe.addView(this.EAd, localLayoutParams);
-    paramInt = getIntent().getIntExtra("sns_source", 0);
-    this.EAd.setSnsSource(paramInt);
-  }
-  
-  public void a(cnb paramcnb, int paramInt, String paramString)
-  {
-    if ((paramcnb.oUv == 2) && (com.tencent.mm.plugin.scanner.i.eOP()) && (fhC()))
+    if (this.KNW != null)
     {
-      if (paramInt != this.EAk)
+      this.KNW.setEnableSingleClickOver(true);
+      this.KNW.setShowLongClickMenu(true);
+    }
+    if (this.CcM != null)
+    {
+      this.CcM.setEnableGalleryScale(true);
+      this.CcM.setSingleMode(false);
+    }
+  }
+  
+  private boolean fVM()
+  {
+    boolean bool = true;
+    if (this.wNd == 1)
+    {
+      ba localba = new ba();
+      localba.fwL.scene = 1;
+      localba.fwL.fwM = this.wNc;
+      EventCenter.instance.publish(localba);
+    }
+    if (this.wNi.isRunning()) {}
+    for (;;)
+    {
+      dlo();
+      this.wNc = 0;
+      return bool;
+      bool = false;
+    }
+  }
+  
+  private boolean fVS()
+  {
+    return fVQ() == 3;
+  }
+  
+  private void fVT()
+  {
+    this.wNf.setVisibility(8);
+    this.wNg.setVisibility(8);
+    this.wNh.setVisibility(8);
+  }
+  
+  private void setNeedTranslationImg(boolean paramBoolean)
+  {
+    if (com.tencent.mm.plugin.scanner.n.fBR())
+    {
+      this.KNW.setNeedTranslationImg(true);
+      return;
+    }
+    this.KNW.setNeedTranslationImg(paramBoolean);
+  }
+  
+  public void a(cvt paramcvt, int paramInt, String paramString)
+  {
+    this.KNY = null;
+    if ((paramcvt.rWu == 2) && (com.tencent.mm.plugin.scanner.n.fBO()) && (fVP()))
+    {
+      if (paramInt != this.KOa)
       {
-        this.EAi.setNeedTranslationImg(false);
-        this.EAi.setNeedOCRImg(false);
-        this.tgM = 0;
+        setNeedTranslationImg(false);
+        this.KNW.setNeedOCRImg(false);
+        this.wNc = 0;
       }
-      this.EAk = paramInt;
-      if (this.tgL == null) {
-        this.tgL = new ImageWordScanDetailEngine(this);
-      }
-      paramString = aj.faO().aQm(paramString);
-      if ((paramString != null) && (!paramString.isWaitPost()))
-      {
-        paramcnb = com.tencent.mm.plugin.sns.model.g.D(paramcnb);
-        if (!Util.isNullOrNil(paramcnb)) {
-          this.tgL.a(paramcnb, this);
-        }
+      this.KOa = paramInt;
+      paramString = aj.fOI().bbl(paramString);
+      if ((paramString != null) && (!paramString.isWaitPost())) {
+        cE(g.D(paramcvt), false);
       }
     }
     for (;;)
     {
-      if (this.EAf != null)
+      if (this.KNT != null)
       {
-        paramcnb = this.EAf;
-        paramcnb.Era = false;
-        paramcnb.Erb = false;
+        paramcvt = this.KNT;
+        paramcvt.KEs = false;
+        paramcvt.KEt = false;
       }
       return;
-      this.EAi.setNeedTranslationImg(false);
-      this.EAi.setNeedOCRImg(false);
+      setNeedTranslationImg(false);
+      this.KNW.setNeedOCRImg(false);
     }
   }
   
-  public final void aOG(String paramString) {}
+  protected void aB(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public final void aYK(String paramString) {}
   
   public void addView(View paramView)
   {
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
-    this.EAc.addView(paramView, localLayoutParams);
+    this.KNQ.addView(paramView, localLayoutParams);
   }
   
-  protected void ap(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public final void cWh()
+  @SuppressLint({"ResourceAsColor"})
+  public final void ak(boolean paramBoolean, int paramInt)
   {
-    this.EAi.setEnableSingleClickOver(true);
-    this.tgN = 0;
-    cWj();
+    this.KNR = new x(this, paramInt, paramBoolean);
+    this.KNR.setBackgroundColor(i.c.transparent);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    this.KNR.getBackground().setAlpha(50);
+    this.KNS.addView(this.KNR, localLayoutParams);
+    paramInt = getIntent().getIntExtra("sns_source", 0);
+    this.KNR.setSnsSource(paramInt);
   }
   
-  public final void cWj()
+  protected final void cE(String paramString, boolean paramBoolean)
   {
-    fhG();
-    this.tgS.setRepeatMode(1);
-    this.tgS.setRepeatCount(0);
-    this.tgS.end();
-  }
-  
-  public final void ci(String paramString, boolean paramBoolean)
-  {
-    if ((com.tencent.mm.plugin.scanner.i.eOP()) && (fhC()) && (paramBoolean) && (!Util.isNullOrNil(paramString)) && (paramString.equals(this.EAi.getSelectedMediaId())))
-    {
-      if (this.tgL == null) {
-        this.tgL = new ImageWordScanDetailEngine(this);
-      }
-      paramString = com.tencent.mm.plugin.sns.model.g.D(this.EAi.getCntMedia());
-      if (!Util.isNullOrNil(paramString)) {
-        this.tgL.a(paramString, this);
-      }
+    if (!com.tencent.mm.plugin.scanner.n.fBM()) {
+      bca(paramString);
     }
-  }
-  
-  public final void cj(String paramString, boolean paramBoolean) {}
-  
-  public final void eZJ() {}
-  
-  public void fH(String paramString, int paramInt) {}
-  
-  public void fI(String paramString, int paramInt)
-  {
-    if ((!this.CSQ) || (aj.isInValid())) {
+    while (!paramBoolean) {
       return;
     }
-    paramString = aj.faO().aQm(paramString);
-    if ((paramString == null) || (paramString.field_snsId == 0L))
-    {
-      enableOptionMenu(false);
-      return;
-    }
-    enableOptionMenu(true);
+    bca(paramString);
   }
   
-  public void ffK()
+  public final void cq(String paramString, boolean paramBoolean) {}
+  
+  public final void cr(String paramString, boolean paramBoolean)
+  {
+    if ((com.tencent.mm.plugin.scanner.n.fBO()) && (fVP()) && (paramBoolean) && (!Util.isNullOrNil(paramString)) && (paramString.equals(this.KNW.getSelectedMediaId()))) {
+      cE(g.D(this.KNW.getCntMedia()), false);
+    }
+  }
+  
+  public final void dlo()
+  {
+    this.KNW.setEnableSingleClickOver(true);
+    this.wNd = 0;
+    dlq();
+  }
+  
+  public final void dlq()
+  {
+    fVT();
+    this.wNi.setRepeatMode(1);
+    this.wNi.setRepeatCount(0);
+    this.wNi.end();
+  }
+  
+  public final void fLL() {}
+  
+  public void fTH()
   {
     int j = 8;
     boolean bool = false;
-    if (!this.CSQ) {
+    if (!this.IYi) {
       return;
     }
-    v localv;
-    if (this.EAg)
+    x localx;
+    if (this.KNU)
     {
       i = 8;
       setTitleVisibility(i);
-      if (this.EAd != null)
+      if (this.KNR != null)
       {
-        localv = this.EAd;
-        if (!this.EAg) {
+        localx = this.KNR;
+        if (!this.KNU) {
           break label76;
         }
       }
@@ -332,28 +436,39 @@ public abstract class SnsBaseGalleryUI
     label76:
     for (int i = j;; i = 0)
     {
-      localv.setVisibility(i);
-      if (!this.EAg) {
+      localx.setVisibility(i);
+      if (!this.KNU) {
         bool = true;
       }
-      this.EAg = bool;
+      this.KNU = bool;
       return;
       i = 0;
       break;
     }
   }
   
-  protected boolean fhC()
+  protected final boolean fVN()
+  {
+    return (fVO()) || (fVM());
+  }
+  
+  protected final boolean fVO()
+  {
+    fVL();
+    return (this.KOd != null) && (this.KOd.PN(this.KOc));
+  }
+  
+  protected boolean fVP()
   {
     return false;
   }
   
-  protected int fhD()
+  protected int fVQ()
   {
     return 3;
   }
   
-  protected int fhE()
+  protected int fVR()
   {
     return 3;
   }
@@ -365,12 +480,28 @@ public abstract class SnsBaseGalleryUI
   
   public int getLayoutId()
   {
-    return 2131496440;
+    return i.g.sns_gallery_img;
   }
   
-  public final void kQ(String paramString1, String paramString2)
+  public void gl(String paramString, int paramInt) {}
+  
+  public void gm(String paramString, int paramInt)
   {
-    if (!this.CSQ) {
+    if ((!this.IYi) || (aj.isInValid())) {
+      return;
+    }
+    paramString = aj.fOI().bbl(paramString);
+    if ((paramString == null) || (paramString.field_snsId == 0L))
+    {
+      enableOptionMenu(false);
+      return;
+    }
+    enableOptionMenu(true);
+  }
+  
+  public final void lm(String paramString1, String paramString2)
+  {
+    if (!this.IYi) {
       return;
     }
     setMMTitle(paramString1);
@@ -379,10 +510,13 @@ public abstract class SnsBaseGalleryUI
   
   public void onBackPressed()
   {
-    Log.i("MicroMsg.SnsBaseGalleryUI", "onBackPressed");
-    if (fhB())
+    if ((this.KNZ != null) && (this.KNZ.getVisibility() == 0))
     {
-      this.EAl = 0L;
+      long l = 0L;
+      if (this.KNW != null) {
+        l = this.KNW.BrO.longValue();
+      }
+      this.KNZ.F(l, false);
       return;
     }
     super.onBackPressed();
@@ -391,164 +525,114 @@ public abstract class SnsBaseGalleryUI
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    if (this.EAm != null) {
-      this.EAm.onConfigurationChanged(paramConfiguration);
+    if (this.KOd != null) {
+      this.KOd.onConfigurationChanged(paramConfiguration);
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    aj.faJ().aO(3, true);
-    this.EAc = ((LinearLayout)findViewById(2131303086));
-    this.EAe = ((LinearLayout)findViewById(2131299180));
-    this.EAf = new w(this, this, getFromScene());
-    paramBundle = this.EAf;
+    aj.fOD().aX(3, true);
+    this.KNQ = ((LinearLayout)findViewById(i.f.layout_content));
+    this.KNS = ((LinearLayout)findViewById(i.f.content));
+    this.KNT = new y(this, this, getFromScene());
+    paramBundle = this.KNT;
     Log.i("MicroMsg.GalleryTitleManager", "onAttach");
-    com.tencent.mm.kernel.g.aAi();
-    com.tencent.mm.kernel.g.aAg().hqi.a(218, paramBundle);
-    EventCenter.instance.addListener(paramBundle.teF);
-    EventCenter.instance.addListener(paramBundle.Eqy);
-    this.EAf.Eqw = new FlipView.b()
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.a(218, paramBundle);
+    EventCenter.instance.addListener(paramBundle.wKS);
+    EventCenter.instance.addListener(paramBundle.KDP);
+    this.KNT.KDM = new FlipView.b()
     {
-      public final void ffI()
+      public final void fTF()
       {
-        AppMethodBeat.i(203498);
+        AppMethodBeat.i(237299);
         SnsBaseGalleryUI.a(SnsBaseGalleryUI.this).reset();
-        AppMethodBeat.o(203498);
+        AppMethodBeat.o(237299);
       }
       
-      public final void ha(List<Integer> paramAnonymousList)
+      public final void hI(List<Integer> paramAnonymousList)
       {
-        AppMethodBeat.i(203497);
+        AppMethodBeat.i(237298);
         if ((paramAnonymousList != null) && (paramAnonymousList.contains(Integer.valueOf(11)))) {
-          SnsBaseGalleryUI.a(SnsBaseGalleryUI.this).hY(2, SnsBaseGalleryUI.this.fhE());
+          SnsBaseGalleryUI.a(SnsBaseGalleryUI.this).jc(2, SnsBaseGalleryUI.this.fVR());
         }
-        AppMethodBeat.o(203497);
+        AppMethodBeat.o(237298);
       }
     };
-    if (fhC())
+    this.KNZ = ((MultiCodeMaskView)findViewById(i.f.multi_code_mask_view));
+    if (fVP())
     {
-      this.tgP = ((ImageView)findViewById(2131307275));
-      this.tgQ = ((ImageView)findViewById(2131307274));
-      this.tgR = ((ImageView)findViewById(2131307272));
-      paramBundle = (FrameLayout.LayoutParams)this.tgR.getLayoutParams();
-      paramBundle.bottomMargin += ao.aD(this);
-      this.tgR.setLayoutParams(paramBundle);
-      this.tgR.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(203492);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsBaseGalleryUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          SnsBaseGalleryUI.d(SnsBaseGalleryUI.this);
-          paramAnonymousView = new ay();
-          paramAnonymousView.dEa.scene = 1;
-          paramAnonymousView.dEa.dEb = SnsBaseGalleryUI.e(SnsBaseGalleryUI.this);
-          EventCenter.instance.publish(paramAnonymousView);
-          SnsBaseGalleryUI.this.cWh();
-          SnsBaseGalleryUI.this.tgM = 0;
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/SnsBaseGalleryUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(203492);
-        }
-      });
-      this.tgP = ((ImageView)findViewById(2131307275));
-      this.tgS = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-      this.tgS.setDuration(5000L);
-      this.tgS.addListener(new AnimatorListenerAdapter()
-      {
-        public final void onAnimationEnd(Animator paramAnonymousAnimator)
-        {
-          AppMethodBeat.i(203495);
-          SnsBaseGalleryUI.g(SnsBaseGalleryUI.this).setAlpha(0.0F);
-          AppMethodBeat.o(203495);
-        }
-        
-        public final void onAnimationStart(Animator paramAnonymousAnimator)
-        {
-          AppMethodBeat.i(203494);
-          SnsBaseGalleryUI.g(SnsBaseGalleryUI.this).setAlpha(0.0F);
-          AppMethodBeat.o(203494);
-        }
-      });
-      final int i = getWindowManager().getDefaultDisplay().getHeight();
-      this.tgS.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
-      {
-        public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
-        {
-          AppMethodBeat.i(203496);
-          float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-          if (f <= 0.1F) {
-            SnsBaseGalleryUI.g(SnsBaseGalleryUI.this).setAlpha(f * 10.0F);
-          }
-          for (;;)
-          {
-            SnsBaseGalleryUI.g(SnsBaseGalleryUI.this).setTranslationY(f * (i - SnsBaseGalleryUI.g(SnsBaseGalleryUI.this).getHeight()));
-            AppMethodBeat.o(203496);
-            return;
-            if (f >= 0.9F) {
-              SnsBaseGalleryUI.g(SnsBaseGalleryUI.this).setAlpha((1.0F - f) * 10.0F);
-            }
-          }
-        }
-      });
+      this.wNf = ((ImageView)findViewById(i.f.scan_translate_line));
+      this.wNg = ((ImageView)findViewById(i.f.scan_translate_layer));
+      this.wNh = ((ImageView)findViewById(i.f.scan_translate_close_btn));
+      paramBundle = (FrameLayout.LayoutParams)this.wNh.getLayoutParams();
+      paramBundle.bottomMargin += ar.aB(this);
+      this.wNh.setLayoutParams(paramBundle);
+      this.wNh.setOnClickListener(new SnsBaseGalleryUI.9(this));
+      this.wNf = ((ImageView)findViewById(i.f.scan_translate_line));
+      this.wNi = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+      this.wNi.setDuration(5000L);
+      this.wNi.addListener(new SnsBaseGalleryUI.11(this));
+      int i = getWindowManager().getDefaultDisplay().getHeight();
+      this.wNi.addUpdateListener(new SnsBaseGalleryUI.12(this, i));
     }
-    aj.faJ().a(this);
+    aj.fOD().a(this);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
     Object localObject;
-    if (this.EAf != null)
+    if (this.KNT != null)
     {
-      localObject = this.EAf;
+      localObject = this.KNT;
       Log.i("MicroMsg.GalleryTitleManager", "onDetach");
-      com.tencent.mm.kernel.g.aAi();
-      com.tencent.mm.kernel.g.aAg().hqi.b(218, (com.tencent.mm.ak.i)localObject);
-      EventCenter.instance.removeListener(((w)localObject).teF);
-      EventCenter.instance.removeListener(((w)localObject).Eqy);
+      com.tencent.mm.kernel.h.aHH();
+      com.tencent.mm.kernel.h.aHF().kcd.b(218, (i)localObject);
+      EventCenter.instance.removeListener(((y)localObject).wKS);
+      EventCenter.instance.removeListener(((y)localObject).KDP);
     }
-    if (this.EAi != null)
+    if (this.KNW != null)
     {
-      this.EAi.xqs.OTV.removeMessages(1);
-      localObject = this.EAi;
+      this.KNW.CcM.Wni.removeMessages(1);
+      localObject = this.KNW;
       Log.i("MicroMsg.SnsInfoFlip", "sns info flip on detach.");
-      if (((SnsInfoFlip)localObject).EDX != null)
+      if (((SnsInfoFlip)localObject).KRM != null)
       {
-        ((SnsInfoFlip)localObject).EDX.fij();
-        ((SnsInfoFlip)localObject).EDX.clear();
+        ((SnsInfoFlip)localObject).KRM.fWv();
+        ((SnsInfoFlip)localObject).KRM.clear();
       }
-      aj.faJ().b((c.b)localObject);
-      this.EAi.onDestroy();
+      aj.fOD().b((c.b)localObject);
+      this.KNW.onDestroy();
     }
-    if (fhC()) {
-      cWh();
+    if (this.KNZ != null) {
+      this.KNZ.fBH();
     }
-    com.tencent.mm.kernel.g.aAg().b(this.tgU);
-    EventCenter.instance.removeListener(this.tgT);
-    aj.faJ().b(this);
+    if (fVP()) {
+      dlo();
+    }
+    com.tencent.mm.kernel.h.aHF().b(this.wNk);
+    EventCenter.instance.removeListener(this.wNj);
+    aj.fOD().b(this);
   }
   
   public void onPause()
   {
-    if (this.EAi != null) {
-      this.EAi.onPause();
+    if (this.KNW != null) {
+      this.KNW.onPause();
     }
-    if (this.EAf != null)
+    if (this.KNT != null)
     {
-      w localw = this.EAf;
-      if (localw.Eqn != null)
+      y localy = this.KNT;
+      if (localy.KDJ != null)
       {
-        aw localaw = new aw();
-        localaw.dDW.activity = ((Activity)localw.context);
-        localaw.dDW.dDX = localw.Eqn;
-        EventCenter.instance.publish(localaw);
-        localw.Eqn = null;
-        localw.dFM = 0;
-        localw.dFL = 0;
+        ay localay = new ay();
+        localay.fwH.activity = ((Activity)localy.context);
+        localay.fwH.fwI = localy.KDJ.IAH;
+        EventCenter.instance.publish(localay);
+        localy.KDJ = null;
       }
     }
     super.onPause();
@@ -557,26 +641,32 @@ public abstract class SnsBaseGalleryUI
   public void onResume()
   {
     super.onResume();
-    if (this.EAd != null) {
-      this.EAd.refresh();
+    if (this.KNR != null) {
+      this.KNR.bfU();
     }
-    if (fhC())
+    if (fVP())
     {
-      com.tencent.mm.kernel.g.aAg().a(this.tgU);
-      EventCenter.instance.addListener(this.EAp);
-      EventCenter.instance.addListener(this.tgT);
-      EventCenter.instance.addListener(this.EAq);
+      com.tencent.mm.kernel.h.aHF().a(this.wNk);
+      EventCenter.instance.addListener(this.KOg);
+      EventCenter.instance.addListener(this.wNj);
+      EventCenter.instance.addListener(this.KOh);
     }
-    if (this.EAi != null) {
-      this.EAi.setOnMenuShowListener(this.Eqw);
+    if (this.KNW != null)
+    {
+      this.KNW.setOnMenuShowListener(this.KDM);
+      this.KNW.setOnLongClickListener(this.aHT);
+      this.KNW.setOnMultiCodeListener(this.KOb);
+      if (com.tencent.mm.plugin.scanner.n.fBR()) {
+        setNeedTranslationImg(true);
+      }
     }
   }
   
   public void onStop()
   {
     super.onStop();
-    EventCenter.instance.removeListener(this.EAp);
-    EventCenter.instance.removeListener(this.EAq);
+    EventCenter.instance.removeListener(this.KOg);
+    EventCenter.instance.removeListener(this.KOh);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -587,7 +677,7 @@ public abstract class SnsBaseGalleryUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsBaseGalleryUI
  * JD-Core Version:    0.7.0.1
  */

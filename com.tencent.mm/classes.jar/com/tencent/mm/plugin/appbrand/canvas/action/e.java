@@ -15,7 +15,7 @@ public final class e
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
   {
     AppMethodBeat.i(144867);
-    paramCanvas.drawArc(new RectF(paramFloat1 - paramFloat3, paramFloat2 - paramFloat3, paramFloat1 + paramFloat3, paramFloat2 + paramFloat3), (float)(paramFloat4 / 3.141592653589793D * 180.0D), (float)(paramFloat5 / 3.141592653589793D * 180.0D), true, paramd.kZl);
+    paramCanvas.drawArc(new RectF(paramFloat1 - paramFloat3, paramFloat2 - paramFloat3, paramFloat1 + paramFloat3, paramFloat2 + paramFloat3), (float)(paramFloat4 / 3.141592653589793D * 180.0D), (float)(paramFloat5 / 3.141592653589793D * 180.0D), true, paramd.nTw);
     AppMethodBeat.o(144867);
     return true;
   }
@@ -29,7 +29,7 @@ public final class e
       AppMethodBeat.o(144868);
       return false;
     }
-    boolean bool = a(paramd, paramCanvas, paramDrawActionArg.x, paramDrawActionArg.y, paramDrawActionArg.radius, paramDrawActionArg.mj, paramDrawActionArg.mk);
+    boolean bool = a(paramd, paramCanvas, paramDrawActionArg.x, paramDrawActionArg.y, paramDrawActionArg.radius, paramDrawActionArg.bEl, paramDrawActionArg.bEm);
     AppMethodBeat.o(144868);
     return bool;
   }
@@ -47,7 +47,7 @@ public final class e
     return bool;
   }
   
-  public final BaseDrawActionArg bzj()
+  public final BaseDrawActionArg bKy()
   {
     AppMethodBeat.i(144865);
     DrawArcActionArg localDrawArcActionArg = new DrawArcActionArg();
@@ -62,7 +62,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.e
  * JD-Core Version:    0.7.0.1
  */

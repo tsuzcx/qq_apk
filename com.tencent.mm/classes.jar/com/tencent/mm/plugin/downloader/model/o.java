@@ -7,7 +7,8 @@ import android.content.DialogInterface.OnClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.downloader.c.a;
+import com.tencent.mm.plugin.downloader.c.d;
 import com.tencent.mm.plugin.downloader_app.api.a.a;
 import com.tencent.mm.plugin.downloader_app.api.a.b;
 import com.tencent.mm.plugin.downloader_app.api.c;
@@ -23,31 +24,31 @@ public final class o
 {
   private static void a(Context paramContext, final long paramLong, final boolean paramBoolean, final a parama)
   {
-    AppMethodBeat.i(192269);
-    final com.tencent.mm.plugin.downloader.g.a locala = d.Cw(paramLong);
+    AppMethodBeat.i(220233);
+    final com.tencent.mm.plugin.downloader.g.a locala = d.IF(paramLong);
     if (locala == null)
     {
       parama.i("fail", null);
-      AppMethodBeat.o(192269);
+      AppMethodBeat.o(220233);
       return;
     }
     PBool localPBool = new PBool();
     final JSONObject localJSONObject = new JSONObject();
-    ((com.tencent.mm.plugin.downloader_app.api.b)g.af(com.tencent.mm.plugin.downloader_app.api.b.class)).a(paramContext, locala.field_appId, new com.tencent.mm.plugin.downloader_app.api.b.a()new com.tencent.mm.plugin.downloader_app.api.b.a
+    ((com.tencent.mm.plugin.downloader_app.api.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.downloader_app.api.b.class)).a(paramContext, locala.field_appId, new com.tencent.mm.plugin.downloader_app.api.b.a()new com.tencent.mm.plugin.downloader_app.api.b.a
     {
       public final void onClick()
       {
-        AppMethodBeat.i(192264);
-        this.qJt.value = true;
+        AppMethodBeat.i(220436);
+        this.uiy.value = true;
         o.a(locala, false, paramBoolean, parama);
-        AppMethodBeat.o(192264);
+        AppMethodBeat.o(220436);
       }
     }, new com.tencent.mm.plugin.downloader_app.api.b.a()new com.tencent.mm.plugin.downloader_app.api.b.a
     {
       public final void onClick()
       {
-        AppMethodBeat.i(192265);
-        this.qJt.value = true;
+        AppMethodBeat.i(219769);
+        this.uiy.value = true;
         try
         {
           localJSONObject.put("reserve_for_wifi", 0);
@@ -58,10 +59,10 @@ public final class o
           locala.field_reserveInWifi = false;
           d.e(parama);
           if (parama.field_status == 0) {
-            ((c)g.af(c.class)).EN(parama.field_appId);
+            ((c)com.tencent.mm.kernel.h.ae(c.class)).LG(parama.field_appId);
           }
-          this.qJq.i(null, localJSONObject);
-          AppMethodBeat.o(192265);
+          this.uiv.i(null, localJSONObject);
+          AppMethodBeat.o(219769);
           return;
         }
         catch (JSONException localJSONException)
@@ -73,60 +74,60 @@ public final class o
     {
       public final void onClick()
       {
-        AppMethodBeat.i(192266);
-        if (this.qJt.value)
+        AppMethodBeat.i(219649);
+        if (this.uiy.value)
         {
-          AppMethodBeat.o(192266);
+          AppMethodBeat.o(219649);
           return;
         }
         parama.i("cancel", null);
-        AppMethodBeat.o(192266);
+        AppMethodBeat.o(219649);
       }
     });
-    AppMethodBeat.o(192269);
+    AppMethodBeat.o(220233);
   }
   
   public static void a(Context paramContext, long paramLong, boolean paramBoolean1, final boolean paramBoolean2, final a parama)
   {
-    AppMethodBeat.i(192267);
+    AppMethodBeat.i(220226);
     if (paramLong <= 0L)
     {
       Log.e("MicroMsg.JsApiGameDownloadManager", "fail, invalid downloadId = ".concat(String.valueOf(paramLong)));
       parama.i("invalid_downloadid", null);
-      AppMethodBeat.o(192267);
+      AppMethodBeat.o(220226);
       return;
     }
-    final com.tencent.mm.plugin.downloader.g.a locala = d.Cw(paramLong);
+    final com.tencent.mm.plugin.downloader.g.a locala = d.IF(paramLong);
     if (locala == null)
     {
       parama.i("fail", null);
-      AppMethodBeat.o(192267);
+      AppMethodBeat.o(220226);
       return;
     }
-    Object localObject = f.cBv().Co(locala.field_downloadId);
+    Object localObject = f.cPZ().Ix(locala.field_downloadId);
     if (localObject != null)
     {
       if (((FileDownloadTaskInfo)localObject).status == 1)
       {
         parama.i(null, null);
-        AppMethodBeat.o(192267);
+        AppMethodBeat.o(220226);
         return;
       }
       if (((FileDownloadTaskInfo)localObject).status == 3)
       {
         com.tencent.mm.plugin.downloader.i.a.a(((FileDownloadTaskInfo)localObject).id, false, null);
         parama.i(null, null);
-        AppMethodBeat.o(192267);
+        AppMethodBeat.o(220226);
         return;
       }
     }
-    if ((paramBoolean2) && (((com.tencent.mm.game.report.a.b)g.af(com.tencent.mm.game.report.a.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.rOq, false))) {}
+    if ((paramBoolean2) && (((com.tencent.mm.game.report.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.game.report.a.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vul, false))) {}
     for (int i = 1;; i = 0)
     {
       if (NetStatusUtil.isWifi(paramContext))
       {
         a(locala, false, paramBoolean2, parama);
-        AppMethodBeat.o(192267);
+        AppMethodBeat.o(220226);
         return;
       }
       if (paramBoolean1)
@@ -134,22 +135,22 @@ public final class o
         if (locala.field_reserveInWifi)
         {
           a(paramContext, locala.field_downloadId, paramBoolean2, parama);
-          AppMethodBeat.o(192267);
+          AppMethodBeat.o(220226);
           return;
         }
         if (i != 0)
         {
           a(locala, false, paramBoolean2, parama);
-          AppMethodBeat.o(192267);
+          AppMethodBeat.o(220226);
           return;
         }
         localObject = new PBool();
-        ((com.tencent.mm.plugin.downloader_app.api.b)g.af(com.tencent.mm.plugin.downloader_app.api.b.class)).a(paramContext, locala.field_appId, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+        ((com.tencent.mm.plugin.downloader_app.api.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.downloader_app.api.b.class)).a(paramContext, locala.field_appId, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(89047);
-            this.qJo.value = true;
+            this.uit.value = true;
             o.a(locala, false, paramBoolean2, parama);
             AppMethodBeat.o(89047);
           }
@@ -158,7 +159,7 @@ public final class o
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(89048);
-            this.qJo.value = true;
+            this.uit.value = true;
             o.a(locala, true, paramBoolean2, parama);
             AppMethodBeat.o(89048);
           }
@@ -167,7 +168,7 @@ public final class o
           public final void onCancel(DialogInterface paramAnonymousDialogInterface)
           {
             AppMethodBeat.i(89049);
-            if (this.qJo.value)
+            if (this.uit.value)
             {
               AppMethodBeat.o(89049);
               return;
@@ -176,7 +177,7 @@ public final class o
             AppMethodBeat.o(89049);
           }
         });
-        AppMethodBeat.o(192267);
+        AppMethodBeat.o(220226);
         return;
       }
       if (locala.field_reserveInWifi)
@@ -185,12 +186,12 @@ public final class o
         locala.field_reserveInWifi = false;
         d.e(locala);
       }
-      com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(2131768552), paramContext.getString(2131768553), paramContext.getString(2131768547), paramContext.getString(2131755761), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(c.d.webview_download_ui_download_not_in_wifi_tips), paramContext.getString(c.d.webview_download_ui_download_not_in_wifi_title), paramContext.getString(c.d.webview_download_ui_btn_state_to_download), paramContext.getString(c.d.app_cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(89050);
-          o.a(this.qIi, false, paramBoolean2, parama);
+          o.a(this.uhi, false, paramBoolean2, parama);
           paramAnonymousDialogInterface.dismiss();
           AppMethodBeat.o(89050);
         }
@@ -200,11 +201,11 @@ public final class o
         {
           AppMethodBeat.i(89051);
           paramAnonymousDialogInterface.dismiss();
-          this.qJq.i("fail_network_not_wifi", null);
+          this.uiv.i("fail_network_not_wifi", null);
           AppMethodBeat.o(89051);
         }
-      }, 2131101414);
-      AppMethodBeat.o(192267);
+      }, c.a.wechat_green);
+      AppMethodBeat.o(220226);
       return;
     }
   }
@@ -227,7 +228,7 @@ public final class o
         public final void run()
         {
           AppMethodBeat.i(89046);
-          Toast.makeText(this.val$context, this.val$context.getString(2131761199), 0).show();
+          Toast.makeText(this.val$context, this.val$context.getString(c.d.game_download_network_unavailable), 0).show();
           AppMethodBeat.o(89046);
         }
       });
@@ -235,7 +236,7 @@ public final class o
       AppMethodBeat.o(89064);
       return;
     }
-    if (!e.apn())
+    if (!e.avA())
     {
       parama1.i("sdcard_not_ready", null);
       MMHandlerThread.postToMainThread(new Runnable()
@@ -243,7 +244,7 @@ public final class o
         public final void run()
         {
           AppMethodBeat.i(89056);
-          Toast.makeText(this.val$context, this.val$context.getString(2131761203), 0).show();
+          Toast.makeText(this.val$context, this.val$context.getString(c.d.game_download_sdcard_unavailable), 0).show();
           AppMethodBeat.o(89056);
         }
       });
@@ -251,7 +252,7 @@ public final class o
       AppMethodBeat.o(89064);
       return;
     }
-    if ((parama.qKv > 0L) && (!h.CF(parama.qKv)) && (!h.CE(parama.qKv)))
+    if ((parama.ulH > 0L) && (!h.IO(parama.ulH)) && (!h.IN(parama.ulH)))
     {
       parama1.i("has_not_enough_space", null);
       MMHandlerThread.postToMainThread(new Runnable()
@@ -259,29 +260,29 @@ public final class o
         public final void run()
         {
           AppMethodBeat.i(89057);
-          Toast.makeText(this.val$context, this.val$context.getString(2131761200), 0).show();
+          Toast.makeText(this.val$context, this.val$context.getString(c.d.game_download_not_enough_space), 0).show();
           AppMethodBeat.o(89057);
         }
       });
-      Log.i("MicroMsg.JsApiGameDownloadManager", "fail, not enough space, require size = " + parama.qKv);
+      Log.i("MicroMsg.JsApiGameDownloadManager", "fail, not enough space, require size = " + parama.ulH);
       AppMethodBeat.o(89064);
       return;
     }
-    if ((parama.qKA) && (((com.tencent.mm.game.report.a.b)g.af(com.tencent.mm.game.report.a.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.rOq, false))) {}
+    if ((parama.ulM) && (((com.tencent.mm.game.report.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.game.report.a.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vul, false))) {}
     for (int i = 1;; i = 0)
     {
-      com.tencent.mm.plugin.downloader.g.a locala = d.ale(parama.downloadUrl);
+      com.tencent.mm.plugin.downloader.g.a locala = d.asX(parama.downloadUrl);
       Object localObject = new JSONObject();
       FileDownloadTaskInfo localFileDownloadTaskInfo;
       if (locala != null)
       {
-        localFileDownloadTaskInfo = f.cBv().Co(locala.field_downloadId);
+        localFileDownloadTaskInfo = f.cPZ().Ix(locala.field_downloadId);
         if ((localFileDownloadTaskInfo != null) && (localFileDownloadTaskInfo.status != 1)) {}
       }
       try
       {
         ((JSONObject)localObject).put("download_id", localFileDownloadTaskInfo.id);
-        label287:
+        label290:
         parama1.i(null, (JSONObject)localObject);
         AppMethodBeat.o(89064);
         return;
@@ -291,7 +292,7 @@ public final class o
         try
         {
           ((JSONObject)localObject).put("download_id", localFileDownloadTaskInfo.id);
-          label335:
+          label338:
           parama1.i(null, (JSONObject)localObject);
           AppMethodBeat.o(89064);
           return;
@@ -299,17 +300,17 @@ public final class o
             if (NetStatusUtil.isWifi(paramContext))
             {
               bool1 = true;
-              a(locala, bool1, parama.qKA, parama1);
-              label376:
+              a(locala, bool1, parama.ulM, parama1);
+              label379:
               if (i == 0) {
-                break label458;
+                break label461;
               }
               if (!NetStatusUtil.isWifi(paramContext)) {
-                break label452;
+                break label455;
               }
             }
           }
-          label452:
+          label455:
           for (boolean bool1 = bool2;; bool1 = false)
           {
             a(parama, parama1, bool1);
@@ -317,29 +318,29 @@ public final class o
             return;
             bool1 = false;
             break;
-            if ((!parama.qJg) || (!locala.field_reserveInWifi) || (NetStatusUtil.isWifi(paramContext))) {
-              break label376;
+            if ((!parama.uij) || (!locala.field_reserveInWifi) || (NetStatusUtil.isWifi(paramContext))) {
+              break label379;
             }
-            a(paramContext, locala.field_downloadId, parama.qKA, parama1);
+            a(paramContext, locala.field_downloadId, parama.ulM, parama1);
             AppMethodBeat.o(89064);
             return;
           }
-          label458:
+          label461:
           if (NetStatusUtil.isWifi(paramContext))
           {
             a(parama, parama1, false);
             AppMethodBeat.o(89064);
             return;
           }
-          if (parama.qJg)
+          if (parama.uij)
           {
             localObject = new PBool();
-            ((com.tencent.mm.plugin.downloader_app.api.b)g.af(com.tencent.mm.plugin.downloader_app.api.b.class)).a(paramContext, parama.appId, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+            ((com.tencent.mm.plugin.downloader_app.api.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.downloader_app.api.b.class)).a(paramContext, parama.appId, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
             {
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
                 AppMethodBeat.i(89058);
-                this.qJo.value = true;
+                this.uit.value = true;
                 o.a(parama, parama1, false);
                 AppMethodBeat.o(89058);
               }
@@ -348,7 +349,7 @@ public final class o
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
                 AppMethodBeat.i(89059);
-                this.qJo.value = true;
+                this.uit.value = true;
                 o.a(parama, parama1, true);
                 AppMethodBeat.o(89059);
               }
@@ -357,7 +358,7 @@ public final class o
               public final void onCancel(DialogInterface paramAnonymousDialogInterface)
               {
                 AppMethodBeat.i(89060);
-                if (this.qJo.value)
+                if (this.uit.value)
                 {
                   AppMethodBeat.o(89060);
                   return;
@@ -369,12 +370,12 @@ public final class o
             AppMethodBeat.o(89064);
             return;
           }
-          com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(2131768552), paramContext.getString(2131768553), paramContext.getString(2131768547), paramContext.getString(2131755761), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(c.d.webview_download_ui_download_not_in_wifi_tips), paramContext.getString(c.d.webview_download_ui_download_not_in_wifi_title), paramContext.getString(c.d.webview_download_ui_btn_state_to_download), paramContext.getString(c.d.app_cancel), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               AppMethodBeat.i(89061);
-              o.a(this.qJu, parama1, false);
+              o.a(this.uiz, parama1, false);
               paramAnonymousDialogInterface.dismiss();
               AppMethodBeat.o(89061);
             }
@@ -384,56 +385,56 @@ public final class o
             {
               AppMethodBeat.i(89062);
               paramAnonymousDialogInterface.dismiss();
-              this.qJq.i("network_not_wifi", null);
+              this.uiv.i("network_not_wifi", null);
               AppMethodBeat.o(89062);
             }
-          }, 2131101414);
+          }, c.a.wechat_green);
           AppMethodBeat.o(89064);
           return;
         }
         catch (JSONException paramContext)
         {
-          break label335;
+          break label338;
         }
       }
       catch (JSONException paramContext)
       {
-        break label287;
+        break label290;
       }
     }
   }
   
   static void a(com.tencent.mm.plugin.downloader.g.a parama, final boolean paramBoolean1, boolean paramBoolean2, final a parama1)
   {
-    AppMethodBeat.i(192268);
+    AppMethodBeat.i(220230);
     com.tencent.mm.modelstat.d.d(10, "LuggageGameWebViewUI_resumeGameDownloadTask", "JsApiGameDownloadManager".hashCode());
-    ((c)g.af(c.class)).a(parama.field_downloadId, paramBoolean1, new a.b()
+    ((c)com.tencent.mm.kernel.h.ae(c.class)).a(parama.field_downloadId, paramBoolean1, new a.b()
     {
       public final void a(a.a paramAnonymousa, long paramAnonymousLong)
       {
-        AppMethodBeat.i(192263);
-        if (paramAnonymousa == a.a.qKo) {
+        AppMethodBeat.i(220210);
+        if (paramAnonymousa == a.a.ulA) {
           paramAnonymousa = new JSONObject();
         }
         try
         {
           paramAnonymousa.put("download_id", paramAnonymousLong);
-          o.j(this.qJp, paramAnonymousa);
+          o.j(this.uiu, paramAnonymousa);
           if ((paramBoolean1) && (!NetStatusUtil.isWifi(MMApplicationContext.getContext()))) {
             paramAnonymousa.put("reserve_for_wifi", 1);
           }
           label60:
           parama1.i(null, paramAnonymousa);
-          AppMethodBeat.o(192263);
+          AppMethodBeat.o(220210);
           return;
-          if (paramAnonymousa == a.a.qKr)
+          if (paramAnonymousa == a.a.ulD)
           {
             parama1.i("cancel", null);
-            AppMethodBeat.o(192263);
+            AppMethodBeat.o(220210);
             return;
           }
           parama1.i("fail", null);
-          AppMethodBeat.o(192263);
+          AppMethodBeat.o(220210);
           return;
         }
         catch (JSONException localJSONException)
@@ -442,26 +443,26 @@ public final class o
         }
       }
     });
-    AppMethodBeat.o(192268);
+    AppMethodBeat.o(220230);
   }
   
   static void a(com.tencent.mm.plugin.downloader_app.a.a parama, final a parama1, boolean paramBoolean)
   {
     AppMethodBeat.i(89065);
-    parama.qJg = paramBoolean;
-    ((c)g.af(c.class)).a(parama, new a.b()
+    parama.uij = paramBoolean;
+    ((c)com.tencent.mm.kernel.h.ae(c.class)).a(parama, new a.b()
     {
       public final void a(a.a paramAnonymousa, long paramAnonymousLong)
       {
         AppMethodBeat.i(89063);
         JSONObject localJSONObject = new JSONObject();
-        if (paramAnonymousa == a.a.qKo)
+        if (paramAnonymousa == a.a.ulA)
         {
           com.tencent.mm.modelstat.d.d(10, "LuggageGameWebViewUI_addGameDownloadTask", "JsApiGameDownloadManager".hashCode());
           try
           {
             localJSONObject.put("download_id", paramAnonymousLong);
-            o.j(this.qJu.qKA, localJSONObject);
+            o.j(this.uiz.ulM, localJSONObject);
             parama1.i(null, localJSONObject);
             AppMethodBeat.o(89063);
             return;
@@ -473,7 +474,7 @@ public final class o
             return;
           }
         }
-        if (paramAnonymousa == a.a.qKq) {
+        if (paramAnonymousa == a.a.ulC) {
           try
           {
             localJSONObject.put("download_id", paramAnonymousLong);
@@ -489,13 +490,13 @@ public final class o
             return;
           }
         }
-        if (paramAnonymousa == a.a.qKr)
+        if (paramAnonymousa == a.a.ulD)
         {
           parama1.i("cancel", null);
           AppMethodBeat.o(89063);
           return;
         }
-        if (paramAnonymousa == a.a.qKp) {
+        if (paramAnonymousa == a.a.ulB) {
           parama1.i("fail", null);
         }
         AppMethodBeat.o(89063);

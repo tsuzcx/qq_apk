@@ -2,15 +2,17 @@ package com.tencent.mm.plugin.emoji.f;
 
 import android.content.ContentValues;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bmh;
-import com.tencent.mm.protocal.protobuf.bmi;
+import com.tencent.mm.protocal.protobuf.btq;
+import com.tencent.mm.protocal.protobuf.btr;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
@@ -23,38 +25,43 @@ public final class j
   extends q
   implements m
 {
-  private i heq;
-  private String rcS;
-  private final com.tencent.mm.ak.d rr;
+  private i jQg;
+  private final com.tencent.mm.an.d rr;
+  private String uFX;
   
   public j(String paramString)
   {
     AppMethodBeat.i(108689);
     d.a locala = new d.a();
-    locala.iLN = new bmh();
-    locala.iLO = new bmi();
+    locala.lBU = new btq();
+    locala.lBV = new btr();
     locala.uri = "/cgi-bin/micromsg-bin/mmgetdesignersimpleinfo";
     locala.funcId = 239;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    this.rcS = paramString;
+    this.rr = locala.bgN();
+    this.uFX = paramString;
     AppMethodBeat.o(108689);
   }
   
-  public final bmi cGt()
+  public final btr cVc()
   {
-    if (this.rr == null) {
+    AppMethodBeat.i(256483);
+    if (this.rr == null)
+    {
+      AppMethodBeat.o(256483);
       return null;
     }
-    return (bmi)this.rr.iLL.iLR;
+    btr localbtr = (btr)d.c.b(this.rr.lBS);
+    AppMethodBeat.o(256483);
+    return localbtr;
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(108691);
-    this.heq = parami;
-    ((bmh)this.rr.iLK.iLR).Lsl = this.rcS;
+    this.jQg = parami;
+    ((btq)d.b.b(this.rr.lBR)).DesignerID = this.uFX;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(108691);
     return i;
@@ -72,9 +79,9 @@ public final class j
     Object localObject;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiStorageMgr().OpT;
-      paramArrayOfByte = this.rcS;
-      localObject = cGt();
+      params = ((com.tencent.mm.plugin.emoji.b.d)h.ag(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiStorageMgr().VFN;
+      paramArrayOfByte = this.uFX;
+      localObject = cVc();
       if ((!Util.isNullOrNil(paramArrayOfByte)) && (localObject != null)) {
         break label113;
       }
@@ -82,17 +89,17 @@ public final class j
     }
     for (;;)
     {
-      this.heq.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      this.jQg.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(108690);
       return;
       try
       {
         label113:
         com.tencent.mm.storage.emotion.j localj = new com.tencent.mm.storage.emotion.j();
-        localj.field_designerIDAndType = (paramArrayOfByte + k.a.OsJ.value);
-        localj.field_content = ((bmi)localObject).toByteArray();
+        localj.field_designerIDAndType = (paramArrayOfByte + k.a.VII.value);
+        localj.field_content = ((btr)localObject).toByteArray();
         localObject = localj.convertTo();
-        new StringBuilder().append(paramArrayOfByte).append(k.a.OsJ.value).toString();
+        new StringBuilder().append(paramArrayOfByte).append(k.a.VII.value).toString();
         if (params.db.replace("EmotionDesignerInfo", "designerIDAndType", (ContentValues)localObject) <= 0L) {
           break label257;
         }
@@ -110,7 +117,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.f.j
  * JD-Core Version:    0.7.0.1
  */

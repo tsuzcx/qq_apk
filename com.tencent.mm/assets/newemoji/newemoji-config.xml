@@ -279,7 +279,7 @@
     <en-value><![CDATA[[Boring]]]></en-value>  
     <tw-value><![CDATA[[翻白眼]]]></tw-value>  
     <th-value><![CDATA[[Boring]]]></th-value>  
-    <fileName>Boring.png</fileName>
+    <fileName>Boring.png</fileName>  
     <eggIndex>2043</eggIndex> 
   </emoji>  
   <emoji> 
@@ -442,4 +442,14 @@
     <fileName>Worship.png</fileName>  
     <eggIndex>2059</eggIndex> 
   </emoji> 
+  <emoji> 
+    <key><![CDATA[[Firecracker]]]></key>  
+    <cn-value><![CDATA[[爆竹]]]></cn-value>  
+    <qq-value><![CDATA[[爆竹]]]></qq-value>  
+    <en-value><![CDATA[[Firecracker]]]></en-value>  
+    <tw-value><![CDATA[[爆竹]]]></tw-value>  
+    <th-value><![CDATA[[Firecracker]]]></th-value>  
+    <fileName>Firecracker.png</fileName>  
+    <eggIndex>2060</eggIndex> 
+  </emoji>
 </newemoji>

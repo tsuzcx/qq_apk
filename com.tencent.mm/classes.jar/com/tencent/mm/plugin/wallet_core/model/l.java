@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.wallet_core.model;
 
 public abstract interface l
 {
-  public abstract void j(int paramInt, Object[] paramArrayOfObject);
+  public abstract void i(int paramInt, Object[] paramArrayOfObject);
 }
 
 

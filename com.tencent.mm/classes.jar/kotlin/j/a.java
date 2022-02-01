@@ -3,35 +3,40 @@ package kotlin.j;
 import java.util.Random;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/random/AbstractPlatformRandom;", "Lkotlin/random/Random;", "()V", "impl", "Ljava/util/Random;", "getImpl", "()Ljava/util/Random;", "nextBits", "", "bitCount", "nextBoolean", "", "nextBytes", "", "array", "nextDouble", "", "nextFloat", "", "nextInt", "until", "nextLong", "", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/random/AbstractPlatformRandom;", "Lkotlin/random/Random;", "()V", "impl", "Ljava/util/Random;", "getImpl", "()Ljava/util/Random;", "nextBits", "", "bitCount", "nextBoolean", "", "nextBytes", "", "array", "nextDouble", "", "nextFloat", "", "nextInt", "until", "nextLong", "", "kotlin-stdlib"})
 public abstract class a
   extends c
 {
-  public final int atK(int paramInt)
+  public final int Nz(int paramInt)
   {
-    return d.mX(hyh().nextInt(), paramInt);
+    return iCs().nextInt(paramInt);
   }
   
-  public abstract Random hyh();
-  
-  public final double nextDouble()
+  public final int aDE(int paramInt)
   {
-    return hyh().nextDouble();
+    return d.ot(iCs().nextInt(), paramInt);
   }
   
-  public final int nextInt()
+  public abstract Random iCs();
+  
+  public final double zB()
   {
-    return hyh().nextInt();
+    return iCs().nextDouble();
   }
   
-  public final int nextInt(int paramInt)
+  public final long zC()
   {
-    return hyh().nextInt(paramInt);
+    return iCs().nextLong();
+  }
+  
+  public final int zD()
+  {
+    return iCs().nextInt();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlin.j.a
  * JD-Core Version:    0.7.0.1
  */

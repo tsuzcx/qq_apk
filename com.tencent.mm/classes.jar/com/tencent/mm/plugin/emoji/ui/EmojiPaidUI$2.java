@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.emoji.ui;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.h.d;
 
@@ -11,7 +11,7 @@ final class EmojiPaidUI$2
 {
   EmojiPaidUI$2(EmojiPaidUI paramEmojiPaidUI) {}
   
-  public final void oj(int paramInt)
+  public final void qy(int paramInt)
   {
     AppMethodBeat.i(108951);
     switch (paramInt)
@@ -23,9 +23,9 @@ final class EmojiPaidUI$2
       return;
       Intent localIntent = new Intent();
       localIntent.putExtra("key_action_type", 200002);
-      c.b(this.rgB, "wallet_index", ".ui.WalletIapUI", localIntent, 2001);
+      c.b(this.uJK, "wallet_index", ".ui.WalletIapUI", localIntent, 2001);
       Log.i("MicroMsg.emoji.EmojiPaidUI", "[showMenuDialog] startActivityForResult ui.WalletIapUI");
-      this.rgB.bnj();
+      this.uJK.bxs();
     }
   }
 }

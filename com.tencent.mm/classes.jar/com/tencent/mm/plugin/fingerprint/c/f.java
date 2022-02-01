@@ -5,14 +5,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.fingerprint.b.d;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class f
-  extends com.tencent.mm.wallet_core.tenpay.model.m
-  implements com.tencent.mm.network.m
+  extends m
 {
   public f(String paramString1, String paramString2, String paramString3, int paramInt)
   {
@@ -51,7 +51,7 @@ public final class f
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
       Log.i("MicroMsg.NetSceneTenpayOpenTouch", "open fingerprintpay success");
-      d.pl(true);
+      d.rF(true);
       AppMethodBeat.o(64475);
       return;
     }
@@ -63,7 +63,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.c.f
  * JD-Core Version:    0.7.0.1
  */

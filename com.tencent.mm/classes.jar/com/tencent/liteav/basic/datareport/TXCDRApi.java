@@ -14,7 +14,7 @@ import android.telephony.TelephonyManager;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.FileInputStream;
@@ -52,7 +52,7 @@ public class TXCDRApi
     g_simulate_idfa = "";
     DIGITS_LOWER = new char[] { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
     initRpt = false;
-    f.f();
+    h.f();
     nativeInitDataReport();
     AppMethodBeat.o(14636);
   }
@@ -240,7 +240,7 @@ public class TXCDRApi
     localObject3 = localObject4;
     try
     {
-      Object localObject6 = new File(localFile.getAbsolutePath() + "/txrtmp/spuid");
+      Object localObject6 = new File(localFile.getAbsolutePath() + "/liteav/spuid");
       localObject3 = localObject4;
       if (((File)localObject6).exists())
       {
@@ -288,11 +288,11 @@ public class TXCDRApi
           if ((localObject3 == null) || (!localObject3.equals(localObject4))) {}
           try
           {
-            paramContext = new File(localFile.getAbsolutePath() + "/txrtmp");
+            paramContext = new File(localFile.getAbsolutePath() + "/liteav");
             if (!paramContext.exists()) {
               paramContext.mkdir();
             }
-            paramContext = new File(localFile.getAbsolutePath() + "/txrtmp/spuid");
+            paramContext = new File(localFile.getAbsolutePath() + "/liteav/spuid");
             if (!paramContext.exists()) {
               paramContext.createNewFile();
             }
@@ -333,7 +333,7 @@ public class TXCDRApi
       localObject1 = "";
       l1 = System.currentTimeMillis();
       l2 = TXCTimeUtil.getTimeTick();
-      localObject4 = f.c(paramContext);
+      localObject4 = h.c(paramContext);
       i = 5;
       paramContext = (Context)localObject1;
       while (i >= 0)
@@ -543,7 +543,7 @@ public class TXCDRApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.basic.datareport.TXCDRApi
  * JD-Core Version:    0.7.0.1
  */

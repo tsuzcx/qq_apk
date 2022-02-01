@@ -6,14 +6,14 @@ import android.os.Build.VERSION;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.ToolsProfile.a;
-import com.tencent.mm.cc.b;
+import com.tencent.mm.cj.b;
 import com.tencent.mm.hellhoundlib.b.c;
-import com.tencent.mm.pluginsdk.model.w;
+import com.tencent.mm.pluginsdk.model.aa;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.xweb.ah;
+import com.tencent.xweb.aj;
 import java.util.Locale;
 
 public class e$c
@@ -44,9 +44,9 @@ public class e$c
       {
         paramContext = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
         paramIntent = new Object();
-        com.tencent.mm.hellhoundlib.a.a.a(paramIntent, paramContext.axQ(), "com/tencent/mm/booter/MMProcessReceivers$ToolsProcessReceiverImpl", "onReceive", "(Landroid/content/Context;Landroid/content/Intent;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-        Process.killProcess(((Integer)paramContext.pG(0)).intValue());
-        com.tencent.mm.hellhoundlib.a.a.a(paramIntent, "com/tencent/mm/booter/MMProcessReceivers$ToolsProcessReceiverImpl", "onReceive", "(Landroid/content/Context;Landroid/content/Intent;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+        com.tencent.mm.hellhoundlib.a.a.b(paramIntent, paramContext.aFh(), "com/tencent/mm/booter/MMProcessReceivers$ToolsProcessReceiverImpl", "onReceive", "(Landroid/content/Context;Landroid/content/Intent;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+        Process.killProcess(((Integer)paramContext.sf(0)).intValue());
+        com.tencent.mm.hellhoundlib.a.a.c(paramIntent, "com/tencent/mm/booter/MMProcessReceivers$ToolsProcessReceiverImpl", "onReceive", "(Landroid/content/Context;Landroid/content/Intent;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
       }
       AppMethodBeat.o(19878);
       return;
@@ -64,7 +64,7 @@ public class e$c
       if ("language_default".equalsIgnoreCase(str1))
       {
         if (Build.VERSION.SDK_INT < 24) {
-          break label292;
+          break label296;
         }
         paramIntent = LocaleUtil.sysDefaultLocale;
         Locale.setDefault(paramIntent);
@@ -73,16 +73,17 @@ public class e$c
       {
         LocaleUtil.updateApplicationResourceLocale(paramContext.getApplicationContext(), paramIntent);
         MMApplicationContext.setResources(b.a(paramContext.getApplicationContext().getResources(), paramContext.getApplicationContext(), str1));
+        aj.updateResourceLocale(paramIntent);
         AppMethodBeat.o(19878);
         return;
-        label292:
+        label296:
         paramIntent = Locale.getDefault();
       }
     }
     if (str1.equals("com.tencent.mm.intent.ACTION_TOOLS_REMOVE_COOKIE")) {
       try
       {
-        ah.clearAllWebViewCache(paramContext.getApplicationContext(), true);
+        aj.clearAllWebViewCache(paramContext.getApplicationContext(), true);
         AppMethodBeat.o(19878);
         return;
       }
@@ -99,7 +100,7 @@ public class e$c
       {
         bool = paramIntent.getBooleanExtra("tools_clean_webview_cache_ignore_cookie", true);
         Log.i("MicroMsg.ToolsProcessReceiver", "WebViewCacheClearTask, clearAllWebViewCache, includeCookie = %b", new Object[] { Boolean.valueOf(bool) });
-        ah.clearAllWebViewCache(paramContext.getApplicationContext(), bool);
+        aj.clearAllWebViewCache(paramContext.getApplicationContext(), bool);
         AppMethodBeat.o(19878);
         return;
       }
@@ -122,9 +123,9 @@ public class e$c
         String str2 = paramIntent.getStringExtra("file_name");
         byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_multi_task_common_info");
         int i = paramIntent.getIntExtra("sence", 0);
-        if ((System.currentTimeMillis() - w.JVG >= 1000L) && (!Util.isNullOrNil(paramContext)))
+        if ((System.currentTimeMillis() - aa.QVT >= 1000L) && (!Util.isNullOrNil(paramContext)))
         {
-          w.JVG = System.currentTimeMillis();
+          aa.QVT = System.currentTimeMillis();
           paramIntent = new Intent();
           paramIntent.setClassName(MMApplicationContext.getContext(), "com.tencent.mm.pluginsdk.ui.tools.MiniQBReaderUI");
           paramIntent.putExtra("file_path", paramContext);
@@ -134,10 +135,10 @@ public class e$c
           paramIntent.putExtra("key_multi_task_common_info", arrayOfByte);
           paramIntent.addFlags(268435456);
           paramContext = MMApplicationContext.getContext();
-          paramIntent = new com.tencent.mm.hellhoundlib.b.a().bl(paramIntent);
-          com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.axQ(), "com/tencent/mm/pluginsdk/model/TBSFileBrowseHelper", "loadByMiniQB", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I[B)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramContext.startActivity((Intent)paramIntent.pG(0));
-          com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/pluginsdk/model/TBSFileBrowseHelper", "loadByMiniQB", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I[B)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramIntent);
+          com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramIntent.aFh(), "com/tencent/mm/pluginsdk/model/TBSFileBrowseHelper", "loadByMiniQB", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I[B)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramContext.startActivity((Intent)paramIntent.sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/pluginsdk/model/TBSFileBrowseHelper", "loadByMiniQB", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I[B)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
       }
     }
@@ -146,7 +147,7 @@ public class e$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.booter.e.c
  * JD-Core Version:    0.7.0.1
  */

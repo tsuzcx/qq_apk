@@ -13,46 +13,46 @@ import com.tencent.mm.ui.MMActivity;
 public final class b
   implements d.a
 {
-  public MMActivity gte;
-  public com.tencent.mm.plugin.ipcall.model.a.a yqo;
-  public d yqr;
-  public j yqs;
-  public long yqt;
+  public com.tencent.mm.plugin.ipcall.model.a.a DQq;
+  public d DQt;
+  public j DQu;
+  public long DQv;
+  public MMActivity iXq;
   
   public b()
   {
     AppMethodBeat.i(25419);
-    this.yqt = 0L;
-    this.yqr = new d();
-    this.yqo = new com.tencent.mm.plugin.ipcall.model.a.a();
+    this.DQv = 0L;
+    this.DQt = new d();
+    this.DQq = new com.tencent.mm.plugin.ipcall.model.a.a();
     AppMethodBeat.o(25419);
   }
   
   public final void a(a.b paramb)
   {
-    this.yqo.ypz = paramb;
+    this.DQq.DPB = paramb;
   }
   
   public final void a(j paramj)
   {
     AppMethodBeat.i(25420);
-    this.yqs = paramj;
+    this.DQu = paramj;
     if (paramj != null) {
-      i.eax().qm(false);
+      i.eJv().to(false);
     }
     AppMethodBeat.o(25420);
   }
   
-  public final void eaK()
+  public final void eJI()
   {
     AppMethodBeat.i(25421);
-    this.yqr.yqC = this;
-    d locald = this.yqr;
-    if (!locald.qUq.hasRegistered())
+    this.DQt.DQE = this;
+    d locald = this.DQt;
+    if (!locald.uww.hasRegistered())
     {
-      locald.qUq.setSensorCallBack(locald);
+      locald.uww.setSensorCallBack(locald);
       d.1 local1 = new d.1(locald);
-      if (locald.qUp.startShake(local1))
+      if (locald.uwv.startShake(local1))
       {
         locald.lastShakeTime = 0L;
         AppMethodBeat.o(25421);
@@ -63,15 +63,15 @@ public final class b
     AppMethodBeat.o(25421);
   }
   
-  public final int eaL()
+  public final int eJJ()
   {
     AppMethodBeat.i(25426);
-    a locala = this.yqo.ypA;
+    a locala = this.DQq.DPC;
     if (locala != null)
     {
-      if ((locala.qrz != null) && (locala.isStart))
+      if ((locala.tQh != null) && (locala.isStart))
       {
-        int i = locala.qrz.bhV();
+        int i = locala.tQh.gxF();
         AppMethodBeat.o(25426);
         return i;
       }
@@ -82,22 +82,22 @@ public final class b
     return 0;
   }
   
-  public final void qw(boolean paramBoolean)
+  public final void ty(boolean paramBoolean)
   {
     AppMethodBeat.i(25422);
-    this.yqo.cV(paramBoolean);
+    this.DQq.ds(paramBoolean);
     AppMethodBeat.o(25422);
   }
   
-  public final void qx(boolean paramBoolean)
+  public final void tz(boolean paramBoolean)
   {
     boolean bool = true;
     AppMethodBeat.i(25423);
     Log.i("MicroMsg.IPCallDeviceManager", "onScreenDistanceChange, isClose: %b", new Object[] { Boolean.valueOf(paramBoolean) });
     MMActivity localMMActivity;
-    if (this.gte != null)
+    if (this.iXq != null)
     {
-      localMMActivity = this.gte;
+      localMMActivity = this.iXq;
       if (paramBoolean) {
         break label75;
       }
@@ -105,26 +105,26 @@ public final class b
     for (;;)
     {
       localMMActivity.setScreenEnable(bool);
-      if (!i.eaw().eam()) {
+      if (!i.eJu().eJk()) {
         break label87;
       }
       if (!paramBoolean) {
         break;
       }
-      this.yqo.cV(false);
+      this.DQq.ds(false);
       AppMethodBeat.o(25423);
       return;
       label75:
       bool = false;
     }
-    this.yqo.eaE();
+    this.DQq.eJC();
     label87:
     AppMethodBeat.o(25423);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.c.b
  * JD-Core Version:    0.7.0.1
  */

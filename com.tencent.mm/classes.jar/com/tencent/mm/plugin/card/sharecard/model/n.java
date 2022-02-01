@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.card.sharecard.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gd;
-import com.tencent.mm.protocal.protobuf.dxh;
+import com.tencent.mm.f.c.gk;
+import com.tencent.mm.protocal.protobuf.ehi;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class n
-  extends gd
+  extends gk
 {
   protected static IAutoDBItem.MAutoDBInfo info;
   
@@ -45,14 +45,14 @@ public final class n
     AppMethodBeat.o(113025);
   }
   
-  public static n c(dxh paramdxh)
+  public static n c(ehi paramehi)
   {
     AppMethodBeat.i(113024);
     n localn = new n();
-    localn.field_card_id = paramdxh.eaO;
-    localn.field_update_time = paramdxh.KWR;
-    localn.field_state_flag = paramdxh.pVR;
-    localn.field_seq = paramdxh.seq;
+    localn.field_card_id = paramehi.fUL;
+    localn.field_update_time = paramehi.update_time;
+    localn.field_state_flag = paramehi.trS;
+    localn.field_seq = paramehi.seq;
     localn.field_retryCount = 10;
     AppMethodBeat.o(113024);
     return localn;
@@ -89,7 +89,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.model.n
  * JD-Core Version:    0.7.0.1
  */

@@ -35,36 +35,36 @@ public final class c
     extends g.a
     implements Runnable
   {
-    final b UlY;
-    final AtomicInteger UlZ;
-    final ScheduledExecutorService Uma;
+    final ConcurrentLinkedQueue<i> ABz;
+    final b abPu;
+    final AtomicInteger abPv;
+    final ScheduledExecutorService abPw;
     final Executor executor;
-    final ConcurrentLinkedQueue<i> vTW;
     
     public a(Executor paramExecutor)
     {
       AppMethodBeat.i(90363);
       this.executor = paramExecutor;
-      this.vTW = new ConcurrentLinkedQueue();
-      this.UlZ = new AtomicInteger();
-      this.UlY = new b();
-      this.Uma = d.hQL();
+      this.ABz = new ConcurrentLinkedQueue();
+      this.abPv = new AtomicInteger();
+      this.abPu = new b();
+      this.abPw = d.iVU();
       AppMethodBeat.o(90363);
     }
     
     public final j a(a parama)
     {
       AppMethodBeat.i(90364);
-      if (this.UlY.UnB)
+      if (this.abPu.abQP)
       {
-        parama = rx.f.d.hRn();
+        parama = rx.f.d.iWx();
         AppMethodBeat.o(90364);
         return parama;
       }
-      parama = new i(parama, this.UlY);
-      this.UlY.b(parama);
-      this.vTW.offer(parama);
-      if (this.UlZ.getAndIncrement() == 0) {}
+      parama = new i(parama, this.abPu);
+      this.abPu.b(parama);
+      this.ABz.offer(parama);
+      if (this.abPv.getAndIncrement() == 0) {}
       try
       {
         this.executor.execute(this);
@@ -73,9 +73,9 @@ public final class c
       }
       catch (RejectedExecutionException localRejectedExecutionException)
       {
-        this.UlY.e(parama);
-        this.UlZ.decrementAndGet();
-        rx.d.c.onError(localRejectedExecutionException);
+        this.abPu.e(parama);
+        this.abPv.decrementAndGet();
+        rx.d.c.c(localRejectedExecutionException);
         AppMethodBeat.o(90364);
         throw localRejectedExecutionException;
       }
@@ -90,22 +90,22 @@ public final class c
         AppMethodBeat.o(90366);
         return parama;
       }
-      if (this.UlY.UnB)
+      if (this.abPu.abQP)
       {
-        parama = rx.f.d.hRn();
+        parama = rx.f.d.iWx();
         AppMethodBeat.o(90366);
         return parama;
       }
       rx.f.c localc1 = new rx.f.c();
       final rx.f.c localc2 = new rx.f.c();
       localc2.f(localc1);
-      this.UlY.b(localc2);
+      this.abPu.b(localc2);
       final j localj = rx.f.d.e(new a()
       {
         public final void call()
         {
           AppMethodBeat.i(90361);
-          c.a.this.UlY.e(localc2);
+          c.a.this.abPu.e(localc2);
           AppMethodBeat.o(90361);
         }
       });
@@ -114,7 +114,7 @@ public final class c
         public final void call()
         {
           AppMethodBeat.i(90362);
-          if (localc2.hQB())
+          if (localc2.iVK())
           {
             AppMethodBeat.o(90362);
             return;
@@ -125,7 +125,7 @@ public final class c
           {
             localObject = (i)localObject;
             j localj = localj;
-            ((i)localObject).Umv.b(localj);
+            ((i)localObject).abPR.b(localj);
           }
           AppMethodBeat.o(90362);
         }
@@ -133,29 +133,29 @@ public final class c
       localc1.f(parama);
       try
       {
-        parama.b(this.Uma.schedule(parama, paramLong, paramTimeUnit));
+        parama.b(this.abPw.schedule(parama, paramLong, paramTimeUnit));
         AppMethodBeat.o(90366);
         return localj;
       }
       catch (RejectedExecutionException parama)
       {
-        rx.d.c.onError(parama);
+        rx.d.c.c(parama);
         AppMethodBeat.o(90366);
         throw parama;
       }
     }
     
-    public final void hQA()
+    public final void iVJ()
     {
       AppMethodBeat.i(90367);
-      this.UlY.hQA();
-      this.vTW.clear();
+      this.abPu.iVJ();
+      this.ABz.clear();
       AppMethodBeat.o(90367);
     }
     
-    public final boolean hQB()
+    public final boolean iVK()
     {
-      return this.UlY.UnB;
+      return this.abPu.abQP;
     }
     
     public final void run()
@@ -163,36 +163,36 @@ public final class c
       AppMethodBeat.i(90365);
       do
       {
-        if (this.UlY.UnB)
+        if (this.abPu.abQP)
         {
-          this.vTW.clear();
+          this.ABz.clear();
           AppMethodBeat.o(90365);
           return;
         }
-        i locali = (i)this.vTW.poll();
+        i locali = (i)this.ABz.poll();
         if (locali == null)
         {
           AppMethodBeat.o(90365);
           return;
         }
-        if (!locali.Umv.UnB)
+        if (!locali.abPR.abQP)
         {
-          if (this.UlY.UnB) {
+          if (this.abPu.abQP) {
             break;
           }
           locali.run();
         }
-      } while (this.UlZ.decrementAndGet() != 0);
+      } while (this.abPv.decrementAndGet() != 0);
       AppMethodBeat.o(90365);
       return;
-      this.vTW.clear();
+      this.ABz.clear();
       AppMethodBeat.o(90365);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     rx.internal.c.c
  * JD-Core Version:    0.7.0.1
  */

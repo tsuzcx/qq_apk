@@ -1,135 +1,28 @@
 package com.tencent.mm.ui.tools;
 
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorInflater;
-import android.animation.TimeInterpolator;
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.ViewPropertyAnimator;
-import android.view.animation.AnimationUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.ui.applet.SecurityImage.b;
 
-public final class j
+final class j
+  extends SecurityImage.b
 {
-  @TargetApi(11)
-  public static final void D(View paramView, float paramFloat)
-  {
-    AppMethodBeat.i(143107);
-    if ((paramView == null) || (d.oE(11)))
-    {
-      AppMethodBeat.o(143107);
-      return;
-    }
-    Animator localAnimator = (Animator)paramView.getTag(2131306306);
-    if (localAnimator != null) {
-      localAnimator.cancel();
-    }
-    paramView.setScaleX(paramFloat);
-    paramView.setScaleY(paramFloat);
-    AppMethodBeat.o(143107);
-  }
+  protected byte[] mUR = null;
+  protected String mUS = "";
+  protected String mUT = "";
+  protected int neB = 0;
   
-  @TargetApi(14)
-  public static final void a(View paramView, long paramLong, float paramFloat, a parama)
+  public final void bxQ()
   {
-    AppMethodBeat.i(143109);
-    if ((paramView == null) || (d.oE(14)))
-    {
-      AppMethodBeat.o(143109);
-      return;
-    }
-    Object localObject = (Animator)paramView.getTag(2131306306);
-    if (localObject != null) {
-      ((Animator)localObject).cancel();
-    }
-    Log.i("Changelcai", "[animTran] duration:%s x:%s", new Object[] { Long.valueOf(paramLong), Float.valueOf(paramFloat) });
-    paramView.animate().cancel();
-    paramView.animate().setListener(null);
-    localObject = AnimationUtils.loadInterpolator(paramView.getContext(), 2130772093);
-    if (parama == null)
-    {
-      paramView.animate().setDuration(paramLong).translationX(paramFloat).translationY(0.0F).setInterpolator((TimeInterpolator)localObject);
-      AppMethodBeat.o(143109);
-      return;
-    }
-    paramView.animate().setDuration(paramLong).translationX(paramFloat).translationY(0.0F).setInterpolator((TimeInterpolator)localObject).setListener(new Animator.AnimatorListener()
-    {
-      public final void onAnimationCancel(Animator paramAnonymousAnimator)
-      {
-        AppMethodBeat.i(143106);
-        this.Qux.awJ();
-        AppMethodBeat.o(143106);
-      }
-      
-      public final void onAnimationEnd(Animator paramAnonymousAnimator)
-      {
-        AppMethodBeat.i(143105);
-        this.Qux.onAnimationEnd();
-        AppMethodBeat.o(143105);
-      }
-      
-      public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
-      
-      public final void onAnimationStart(Animator paramAnonymousAnimator) {}
-    });
-    AppMethodBeat.o(143109);
-  }
-  
-  @TargetApi(11)
-  public static void a(View paramView, Animator.AnimatorListener paramAnimatorListener)
-  {
-    AppMethodBeat.i(143110);
-    if ((paramView == null) || (d.oE(11)))
-    {
-      AppMethodBeat.o(143110);
-      return;
-    }
-    Animator localAnimator = (Animator)paramView.getTag(2131306306);
-    if (localAnimator != null) {
-      localAnimator.cancel();
-    }
-    localAnimator = AnimatorInflater.loadAnimator(paramView.getContext(), 2130837509);
-    localAnimator.setTarget(paramView);
-    if (paramAnimatorListener != null) {
-      localAnimator.addListener(paramAnimatorListener);
-    }
-    localAnimator.start();
-    paramView.setTag(2131306306, localAnimator);
-    AppMethodBeat.o(143110);
-  }
-  
-  @TargetApi(14)
-  public static final void q(View paramView, float paramFloat)
-  {
-    AppMethodBeat.i(143108);
-    if ((paramView == null) || (d.oE(14)))
-    {
-      AppMethodBeat.o(143108);
-      return;
-    }
-    Animator localAnimator = (Animator)paramView.getTag(2131306306);
-    if (localAnimator != null) {
-      localAnimator.cancel();
-    }
-    paramView.animate().cancel();
-    paramView.setTranslationX(paramFloat);
-    paramView.setTranslationY(0.0F);
-    AppMethodBeat.o(143108);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void awJ();
-    
-    public abstract void onAnimationEnd();
+    AppMethodBeat.i(39073);
+    com.tencent.mm.modelsimple.t localt = new com.tencent.mm.modelsimple.t(this.neB, "", this.mUS, this.mUT);
+    bh.aGY().a(localt, 0);
+    AppMethodBeat.o(39073);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.tools.j
  * JD-Core Version:    0.7.0.1
  */

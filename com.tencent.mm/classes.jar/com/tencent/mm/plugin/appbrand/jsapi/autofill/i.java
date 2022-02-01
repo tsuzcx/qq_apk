@@ -1,25 +1,15 @@
 package com.tencent.mm.plugin.appbrand.jsapi.autofill;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.phonenumber.u;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.protocal.protobuf.eam;
+import com.tencent.mm.vending.c.a;
 
 public final class i
+  extends c<ad>
 {
-  static boolean isInit = false;
-  
-  public static void init()
-  {
-    AppMethodBeat.i(46120);
-    if (isInit)
-    {
-      AppMethodBeat.o(46120);
-      return;
-    }
-    isInit = true;
-    u localu = u.nAe;
-    u.a(new i.1());
-    AppMethodBeat.o(46120);
-  }
+  public static final int CTRL_INDEX = 205;
+  public static final String NAME = "setUserAutoFillData";
 }
 
 

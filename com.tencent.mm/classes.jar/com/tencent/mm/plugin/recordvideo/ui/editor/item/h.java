@@ -1,16 +1,18 @@
 package com.tencent.mm.plugin.recordvideo.ui.editor.item;
 
-import com.tencent.mm.bw.a;
+import android.graphics.Matrix;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/IEditorData;", "", "isValid", "", "toProtoBuf", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/IEditable;", "", "createEditorData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "createEditorItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "matrix", "Landroid/graphics/Matrix;", "plugin-recordvideo_release"})
 public abstract interface h
 {
-  public abstract a eMk();
+  public abstract com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a c(Matrix paramMatrix);
+  
+  public abstract a cYy();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.h
  * JD-Core Version:    0.7.0.1
  */

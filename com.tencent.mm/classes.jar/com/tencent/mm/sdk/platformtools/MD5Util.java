@@ -2,7 +2,7 @@ package com.tencent.mm.sdk.platformtools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -49,15 +49,15 @@ public class MD5Util
   
   private static String bufferToHex(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(230333);
+    AppMethodBeat.i(187687);
     paramArrayOfByte = bufferToHex(paramArrayOfByte, 0, paramArrayOfByte.length);
-    AppMethodBeat.o(230333);
+    AppMethodBeat.o(187687);
     return paramArrayOfByte;
   }
   
   private static String bufferToHex(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(230334);
+    AppMethodBeat.i(187690);
     StringBuffer localStringBuffer = new StringBuffer(paramInt2 * 2);
     int i = paramInt1;
     while (i < paramInt1 + paramInt2)
@@ -66,25 +66,25 @@ public class MD5Util
       i += 1;
     }
     paramArrayOfByte = localStringBuffer.toString();
-    AppMethodBeat.o(230334);
+    AppMethodBeat.o(187690);
     return paramArrayOfByte;
   }
   
   public static boolean checkPassword(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(230335);
+    AppMethodBeat.i(187695);
     boolean bool = getMD5String(paramString1).equals(paramString2);
-    AppMethodBeat.o(230335);
+    AppMethodBeat.o(187695);
     return bool;
   }
   
   @Deprecated
-  public static String getFileMD5String(o paramo)
+  public static String getFileMD5String(q paramq)
   {
-    AppMethodBeat.i(230332);
-    paramo = g.a(paramo, 102400);
-    AppMethodBeat.o(230332);
-    return paramo;
+    AppMethodBeat.i(187682);
+    paramq = g.a(paramq, 102400);
+    AppMethodBeat.o(187682);
+    return paramq;
   }
   
   public static String getMD5String(String paramString)

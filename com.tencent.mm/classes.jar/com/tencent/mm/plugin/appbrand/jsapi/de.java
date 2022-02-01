@@ -1,68 +1,100 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.a.b;
-import com.tencent.mm.plugin.appbrand.a.c;
-import com.tencent.mm.plugin.appbrand.a.c.a;
-import com.tencent.mm.plugin.appbrand.jsapi.o.e;
-import com.tencent.mm.plugin.appbrand.s.k.a;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.q;
+import kotlin.g.b.p;
+import kotlin.l;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"TAG", "", "createThumbFile", "Lcom/tencent/mm/vfs/VFSFile;", "videoPath", "getThumbPathWorkaround", "thumbPath", "parseVideoDurationS", "", "plugin-appbrand-integration_release"})
 public final class de
 {
-  static final Map<String, c.a> lCO;
-  
-  static
+  public static final int agW(String paramString)
   {
-    AppMethodBeat.i(134878);
-    lCO = new HashMap();
-    AppMethodBeat.o(134878);
+    AppMethodBeat.i(278145);
+    p.k(paramString, "videoPath");
+    try
+    {
+      com.tencent.mm.compatible.i.d locald = new com.tencent.mm.compatible.i.d();
+      locald.setDataSource(paramString);
+      long l = Util.getLong(locald.extractMetadata(9), 0L);
+      locald.release();
+      i = Util.videoMsToSec(l);
+      Log.i("MicroMsg.AppBrand.SendVideoCommons", "parseVideoDurationS, duration: ".concat(String.valueOf(i)));
+      AppMethodBeat.o(278145);
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        int i = 0;
+      }
+    }
   }
   
-  public static void bEv()
+  private static final q agX(String paramString)
   {
-    AppMethodBeat.i(134877);
-    e.a(new k.a()
+    AppMethodBeat.i(278146);
+    q localq = new q(paramString + ".jpg");
+    try
     {
-      public final void a(final f paramAnonymousf, final String paramAnonymousString, final e paramAnonymouse)
+      Bitmap localBitmap = com.tencent.mm.plugin.mmsight.d.Xd(paramString);
+      paramString = localq;
+      if (localBitmap != null)
       {
-        AppMethodBeat.i(219309);
-        paramAnonymouse = new c.a()
-        {
-          public final void a(String paramAnonymous2String, b paramAnonymous2b)
-          {
-            AppMethodBeat.i(134874);
-            e.a(paramAnonymousf, paramAnonymous2String, paramAnonymous2b, paramAnonymousString, paramAnonymouse);
-            AppMethodBeat.o(134874);
-          }
-        };
-        de.lCO.put(paramAnonymousString, paramAnonymouse);
-        ((k)paramAnonymousf).getRuntime().kAH.a(paramAnonymouse);
-        AppMethodBeat.o(219309);
+        BitmapUtil.saveBitmapToImage(localBitmap, 100, Bitmap.CompressFormat.JPEG, localq.bOF(), true);
+        paramString = localq;
       }
-      
-      public final void d(f paramAnonymousf, String paramAnonymousString)
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
       {
-        AppMethodBeat.i(219310);
-        paramAnonymousString = (c.a)de.lCO.get(paramAnonymousString);
-        if (paramAnonymousString != null)
-        {
-          paramAnonymousf = ((k)paramAnonymousf).getRuntime();
-          if (paramAnonymousf != null) {
-            paramAnonymousf.kAH.b(paramAnonymousString);
-          }
-        }
-        AppMethodBeat.o(219310);
+        Log.w("MicroMsg.AppBrand.SendVideoCommons", "createThumbFile, fail since ".concat(String.valueOf(paramString)));
+        paramString = null;
       }
-    });
-    AppMethodBeat.o(134877);
+    }
+    AppMethodBeat.o(278146);
+    return paramString;
+  }
+  
+  public static final String dv(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(278143);
+    p.k(paramString1, "videoPath");
+    CharSequence localCharSequence = (CharSequence)paramString2;
+    int i;
+    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {
+      i = 1;
+    }
+    while (i != 0)
+    {
+      paramString1 = agX(paramString1);
+      if (paramString1 != null)
+      {
+        paramString1 = paramString1.bOF();
+        AppMethodBeat.o(278143);
+        return paramString1;
+        i = 0;
+      }
+      else
+      {
+        AppMethodBeat.o(278143);
+        return null;
+      }
+    }
+    AppMethodBeat.o(278143);
+    return paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.de
  * JD-Core Version:    0.7.0.1
  */

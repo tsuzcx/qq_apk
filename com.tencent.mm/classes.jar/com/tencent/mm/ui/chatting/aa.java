@@ -2,18 +2,23 @@ package com.tencent.mm.ui.chatting;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.SystemClock;
 import android.view.ViewStub;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.bb.e;
-import com.tencent.mm.bb.k;
-import com.tencent.mm.ce.f.a;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.cl;
+import com.tencent.mm.R.a;
+import com.tencent.mm.R.h;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.be.j;
+import com.tencent.mm.be.l;
+import com.tencent.mm.cl.g.b;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.plugin.eggspring.c.a;
+import com.tencent.mm.plugin.eggspring.f.b;
 import com.tencent.mm.plugin.eggspring.ui.SpringLuckyEggActivity;
+import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -21,113 +26,49 @@ import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ca;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.List<Lcom.tencent.mm.storage.ca;>;
 import java.util.Set;
 import java.util.TreeMap;
+import kotlin.g.a.m;
 import kotlin.g.b.p;
 import kotlin.x;
-import kotlinx.coroutines.bu;
+import kotlinx.coroutines.by;
 
 public final class aa
-  implements com.tencent.mm.ak.i
+  implements com.tencent.mm.an.i
 {
-  ChattingAnimFrame PjB;
-  private com.tencent.mm.plugin.eggspring.d PjC;
-  private long PjD;
-  private long PjE;
-  private boolean dZl;
+  private long AYh;
+  private ChattingAnimFrame WDd;
+  private com.tencent.mm.plugin.eggspring.f WDe;
+  private com.tencent.mm.plugin.eggspring.c WDf;
+  private long WDg;
+  private long WDh;
+  private boolean fTe;
   private String name;
-  private long qVk;
   
   public aa()
   {
     AppMethodBeat.i(34793);
-    this.PjB = null;
-    this.PjD = 0L;
-    this.qVk = 0L;
-    this.PjE = 0L;
+    this.WDd = null;
+    this.WDg = 0L;
+    this.AYh = 0L;
+    this.WDh = 0L;
     AppMethodBeat.o(34793);
   }
   
-  private void a(final e parame, String paramString)
-  {
-    boolean bool = true;
-    AppMethodBeat.i(34801);
-    if ((parame == null) || (Util.isNullOrNil(paramString)))
-    {
-      if (parame != null) {}
-      for (;;)
-      {
-        Log.e("MicroMsg.EggMgr", "egg info or keyWord err!!! info != null:[%s].", new Object[] { Boolean.valueOf(bool) });
-        AppMethodBeat.o(34801);
-        return;
-        bool = false;
-      }
-    }
-    if (b(parame))
-    {
-      c.a locala = com.tencent.mm.plugin.eggspring.c.qUO;
-      com.tencent.mm.plugin.eggspring.c.cEH().FE(2);
-      if (parame.type == 3)
-      {
-        if (this.PjC == null) {
-          this.PjC = new com.tencent.mm.plugin.eggspring.d();
-        }
-        this.PjC.qUT = new kotlin.g.a.b() {};
-        this.PjC.fM(parame.gXT.appId, paramString);
-        AppMethodBeat.o(34801);
-        return;
-      }
-      Log.i("MicroMsg.EggMgr", "initLuckyBagOrNot: game lucky egg %s", new Object[] { parame.gWY.appId });
-      if (this.PjB != null)
-      {
-        this.PjB.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(232905);
-            aa.this.PjB.gNr();
-            aa localaa = aa.this;
-            e locale = parame;
-            if ((localaa.PjB != null) && (locale.gWY != null)) {
-              localaa.PjB.a(null);
-            }
-            AppMethodBeat.o(232905);
-          }
-        });
-        com.tencent.mm.cr.d.bpI("com.tencent.mm.intent.ACTION_START_MPTOOLS_PROCESS");
-      }
-    }
-    AppMethodBeat.o(34801);
-  }
-  
-  public static boolean amp(int paramInt)
-  {
-    AppMethodBeat.i(232910);
-    if (paramInt == 3001)
-    {
-      c.a locala = com.tencent.mm.plugin.eggspring.c.qUO;
-      com.tencent.mm.plugin.eggspring.c.cEH().FF(16);
-      AppMethodBeat.o(232910);
-      return true;
-    }
-    AppMethodBeat.o(232910);
-    return false;
-  }
-  
-  static boolean b(e parame)
+  static boolean b(com.tencent.mm.be.e parame)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (parame != null) {
-      if ((parame.type != 1) && (parame.type != 2))
+      if ((parame.type != 1) && (parame.type != 2) && (parame.type != 3))
       {
         bool1 = bool2;
-        if (parame.type != 3) {}
+        if (parame.type != 4) {}
       }
       else
       {
@@ -137,7 +78,7 @@ public final class aa
     return bool1;
   }
   
-  private static void bG(int paramInt, boolean paramBoolean)
+  private static void bT(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(34800);
     for (;;)
@@ -146,50 +87,50 @@ public final class aa
       try
       {
         Object localObject1 = new StringBuilder();
-        bg.aVF();
-        localObject1 = s.aW(com.tencent.mm.model.c.azM() + "eggresult.rep", 0, -1);
-        com.tencent.mm.bb.h localh;
+        bh.beI();
+        localObject1 = u.aY(com.tencent.mm.model.c.aHl() + "eggresult.rep", 0, -1);
+        com.tencent.mm.be.i locali;
         if (localObject1 != null)
         {
           Log.d("MicroMsg.EggMgr", "data not null, parse it");
-          localObject1 = (com.tencent.mm.bb.i)new com.tencent.mm.bb.i().parseFrom((byte[])localObject1);
-          localObject2 = ((com.tencent.mm.bb.i)localObject1).jgW.iterator();
+          localObject1 = (j)new j().parseFrom((byte[])localObject1);
+          localObject2 = ((j)localObject1).lXy.iterator();
           if (!((Iterator)localObject2).hasNext()) {
-            break label308;
+            break label307;
           }
-          localh = (com.tencent.mm.bb.h)((Iterator)localObject2).next();
-          if (localh.dYn != paramInt) {
+          locali = (com.tencent.mm.be.i)((Iterator)localObject2).next();
+          if (locali.fSe != paramInt) {
             continue;
           }
           if (paramBoolean)
           {
-            localh.jgU += 1;
-            break label313;
+            locali.lXw += 1;
+            break label312;
             if (i == 0)
             {
-              localObject2 = new com.tencent.mm.bb.h();
-              ((com.tencent.mm.bb.h)localObject2).dYn = paramInt;
+              localObject2 = new com.tencent.mm.be.i();
+              ((com.tencent.mm.be.i)localObject2).fSe = paramInt;
               if (!paramBoolean) {
-                break label299;
+                break label298;
               }
-              ((com.tencent.mm.bb.h)localObject2).jgU = 1;
-              ((com.tencent.mm.bb.i)localObject1).jgW.add(localObject2);
+              ((com.tencent.mm.be.i)localObject2).lXw = 1;
+              ((j)localObject1).lXy.add(localObject2);
             }
-            localObject2 = ((com.tencent.mm.bb.i)localObject1).toByteArray();
+            localObject2 = ((j)localObject1).toByteArray();
             Log.d("MicroMsg.EggMgr", "report list is %s, then save it", new Object[] { localObject1.toString() });
             localObject1 = new StringBuilder();
-            bg.aVF();
-            s.f(com.tencent.mm.model.c.azM() + "eggresult.rep", (byte[])localObject2, localObject2.length);
+            bh.beI();
+            u.f(com.tencent.mm.model.c.aHl() + "eggresult.rep", (byte[])localObject2, localObject2.length);
             AppMethodBeat.o(34800);
           }
         }
         else
         {
           Log.d("MicroMsg.EggMgr", "data is null, new one");
-          localObject1 = new com.tencent.mm.bb.i();
+          localObject1 = new j();
           continue;
         }
-        localh.jgV += 1;
+        locali.lXx += 1;
       }
       catch (Exception localException)
       {
@@ -198,49 +139,18 @@ public final class aa
         AppMethodBeat.o(34800);
         return;
       }
-      label299:
-      ((com.tencent.mm.bb.h)localObject2).jgV = 1;
+      label298:
+      ((com.tencent.mm.be.i)localObject2).lXx = 1;
       continue;
-      label308:
+      label307:
       int i = 0;
       continue;
-      label313:
+      label312:
       i = 1;
     }
   }
   
-  private static boolean bmz(String paramString)
-  {
-    boolean bool2 = true;
-    AppMethodBeat.i(34797);
-    boolean bool1;
-    if (Util.isNullOrNil(paramString)) {
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(34797);
-      return bool1;
-      paramString = paramString.split(",");
-      int j = paramString.length;
-      int i = 0;
-      for (;;)
-      {
-        if (i >= j) {
-          break label67;
-        }
-        bool1 = bool2;
-        if (paramString[i].equals(LocaleUtil.getApplicationLanguage())) {
-          break;
-        }
-        i += 1;
-      }
-      label67:
-      bool1 = false;
-    }
-  }
-  
-  private static int bt(String paramString1, String paramString2, String paramString3)
+  private static int bo(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(34798);
     if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)) || (MMApplicationContext.getContext() == null))
@@ -276,13 +186,13 @@ public final class aa
             continue;
           }
           localObject = ((String)localObject).subSequence(j, ((String)localObject).length());
-          com.tencent.mm.ce.g.gxZ();
+          com.tencent.mm.cl.h.htZ();
           MMApplicationContext.getContext();
-          localObject = com.tencent.mm.ce.f.gxT().big((String)localObject);
+          localObject = com.tencent.mm.cl.g.htS().o((CharSequence)localObject, 0);
           if (localObject == null) {
             continue;
           }
-          localObject = ((f.a)localObject).text;
+          localObject = ((g.b)localObject).text;
           i = j;
           if (Util.isNullOrNil((String)localObject)) {
             continue;
@@ -345,32 +255,64 @@ public final class aa
     return -1;
   }
   
-  public final void P(boolean paramBoolean, String paramString)
+  private static boolean bza(String paramString)
   {
-    this.dZl = paramBoolean;
+    boolean bool2 = true;
+    AppMethodBeat.i(34797);
+    boolean bool1;
+    if (Util.isNullOrNil(paramString)) {
+      bool1 = bool2;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(34797);
+      return bool1;
+      paramString = paramString.split(",");
+      int j = paramString.length;
+      int i = 0;
+      for (;;)
+      {
+        if (i >= j) {
+          break label67;
+        }
+        bool1 = bool2;
+        if (paramString[i].equals(LocaleUtil.getApplicationLanguage())) {
+          break;
+        }
+        i += 1;
+      }
+      label67:
+      bool1 = false;
+    }
+  }
+  
+  public static void onDestroy()
+  {
+    AppMethodBeat.i(275164);
+    ((com.tencent.mm.plugin.eggspring.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.eggspring.a.a.class)).cleanPrefetch();
+    AppMethodBeat.o(275164);
+  }
+  
+  public final void V(boolean paramBoolean, String paramString)
+  {
+    this.fTe = paramBoolean;
     this.name = paramString;
   }
   
   public final long a(final Activity paramActivity, List<ca> paramList)
   {
-    AppMethodBeat.i(232906);
-    long l;
-    if ((this.PjB != null) && (!this.PjB.gNt()))
+    AppMethodBeat.i(275160);
+    long l1;
+    if ((this.WDd != null) && (!this.WDd.hMC()))
     {
       Log.i("MicroMsg.EggMgr", "LuckyBag, ad egg or lucky bag still exist, return.");
-      l = this.PjD;
-      AppMethodBeat.o(232906);
-      return l;
+      l1 = this.WDg;
+      AppMethodBeat.o(275160);
+      return l1;
     }
-    this.PjD = 0L;
-    if (paramList == null)
-    {
-      l = this.PjD;
-      AppMethodBeat.o(232906);
-      return l;
-    }
-    bg.aVF();
-    if (Util.secondsToNow(Util.nullAs((Long)com.tencent.mm.model.c.azQ().get(68108, null), 0L)) * 1000L > 21600000L) {
+    this.WDg = 0L;
+    bh.beI();
+    if (Util.secondsToNow(Util.nullAs((Long)com.tencent.mm.model.c.aHp().b(68108, null), 0L)) * 1000L > 21600000L) {
       new MMHandler().postDelayed(new aa.2(this), 10000L);
     }
     Iterator localIterator1 = paramList.iterator();
@@ -379,56 +321,58 @@ public final class aa
     while (localIterator1.hasNext())
     {
       localca = (ca)localIterator1.next();
-      str = com.tencent.mm.emoji.a.f.r(localca);
+      str = com.tencent.mm.emoji.a.f.s(localca);
       if (!Util.isNullOrNil(str)) {
         if (localca.field_isSend != 1) {
-          break label246;
+          break label237;
         }
       }
     }
+    final boolean bool2;
     int i;
-    label218:
-    label246:
+    label209:
+    label237:
     for (boolean bool1 = true;; bool1 = false)
     {
-      paramList = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().cFL();
+      bool2 = ab.Lj(localca.field_talker);
+      paramList = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().cUq();
       if (paramList != null) {
         break;
       }
       Log.d("MicroMsg.EggMgr", "eggList is null");
       i = 0;
       if (i == 0) {
-        break label1290;
+        break label1746;
       }
-      this.PjD = localca.field_msgId;
-      l = this.PjD;
-      AppMethodBeat.o(232906);
-      return l;
+      this.WDg = localca.field_msgId;
+      l1 = this.WDg;
+      AppMethodBeat.o(275160);
+      return l1;
     }
     int i1 = (int)Util.nowSecond();
-    Log.d("MicroMsg.EggMgr", "curSecond is %d, getEggList.size is %d", new Object[] { Integer.valueOf(i1), Integer.valueOf(paramList.jgS.size()) });
+    Log.d("MicroMsg.EggMgr", "curSecond is %d, getEggList.size is %d", new Object[] { Integer.valueOf(i1), Integer.valueOf(paramList.lXv.size()) });
     Object localObject1 = null;
     int j = -1;
     Object localObject2 = null;
     TreeMap localTreeMap = new TreeMap();
-    Iterator localIterator2 = paramList.jgS.iterator();
-    label318:
+    Iterator localIterator2 = paramList.lXv.iterator();
+    label309:
     Object localObject5;
     Object localObject4;
     int m;
     Object localObject3;
-    label377:
+    label368:
     int k;
-    label467:
+    label458:
     int n;
     while (localIterator2.hasNext())
     {
-      localObject5 = (e)localIterator2.next();
-      if (bmz(((e)localObject5).jgO))
+      localObject5 = (com.tencent.mm.be.e)localIterator2.next();
+      if (bza(((com.tencent.mm.be.e)localObject5).lXr))
       {
         i = -1;
         paramList = null;
-        Iterator localIterator3 = ((e)localObject5).jgK.iterator();
+        Iterator localIterator3 = ((com.tencent.mm.be.e)localObject5).lXn.iterator();
         localObject4 = localObject1;
         m = j;
         localObject3 = localObject2;
@@ -436,20 +380,20 @@ public final class aa
         {
           if (localIterator3.hasNext())
           {
-            localObject1 = (com.tencent.mm.bb.f)localIterator3.next();
-            localObject2 = ((com.tencent.mm.bb.f)localObject1).jgR;
+            localObject1 = (com.tencent.mm.be.f)localIterator3.next();
+            localObject2 = ((com.tencent.mm.be.f)localObject1).lXu;
             if (Util.isNullOrNil((String)localObject2))
             {
               Log.e("MicroMsg.EggMgr", "error egg keyWord");
             }
             else
             {
-              k = bt(str, (String)localObject2, ((com.tencent.mm.bb.f)localObject1).lang);
+              k = bo(str, (String)localObject2, ((com.tencent.mm.be.f)localObject1).lang);
               if (k == -1) {
-                break label1295;
+                break label1751;
               }
-              if (!b((e)localObject5)) {
-                break label1292;
+              if (!b((com.tencent.mm.be.e)localObject5)) {
+                break label1748;
               }
               if (-1 == i)
               {
@@ -458,18 +402,18 @@ public final class aa
                 n = 0;
                 if (m != -1)
                 {
-                  if (!b((e)localObject4)) {
-                    break label566;
+                  if (!b((com.tencent.mm.be.e)localObject4)) {
+                    break label557;
                   }
                   j = n;
-                  if (b((e)localObject5))
+                  if (b((com.tencent.mm.be.e)localObject5))
                   {
                     j = n;
                     if (m < k) {
                       j = 1;
                     }
                   }
-                  label510:
+                  label501:
                   localObject1 = paramList;
                   n = i;
                   if (j == 0) {
@@ -494,234 +438,339 @@ public final class aa
     {
       paramList = (List<ca>)localObject1;
       i = n;
-      break label377;
+      break label368;
       if (i < k)
       {
         paramList = ((String)localObject2).toLowerCase();
         i = k;
-        break label467;
-        label566:
-        if (b((e)localObject5))
+        break label458;
+        label557:
+        if (b((com.tencent.mm.be.e)localObject5))
         {
           j = 1;
-          break label510;
+          break label501;
         }
         j = n;
         if (m >= k) {
-          break label510;
+          break label501;
         }
         j = 1;
-        break label510;
+        break label501;
         localObject2 = localObject3;
         j = m;
         localObject1 = localObject4;
         if (i == -1) {
-          break label318;
+          break label309;
         }
         Log.d("MicroMsg.EggMgr", "rpt mp %s keyWord %s.", new Object[] { Integer.valueOf(i), paramList });
         localTreeMap.put(Integer.valueOf(i), paramList);
         localObject2 = localObject3;
         j = m;
         localObject1 = localObject4;
-        break label318;
-        paramList = localTreeMap.descendingKeySet();
-        localObject3 = new StringBuilder();
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
+        break label309;
+        localObject3 = localTreeMap.descendingKeySet();
+        paramList = new StringBuilder();
+        localObject3 = ((Set)localObject3).iterator();
+        while (((Iterator)localObject3).hasNext())
         {
-          localObject4 = (Integer)paramList.next();
+          localObject4 = (Integer)((Iterator)localObject3).next();
           localObject5 = (String)localTreeMap.get(localObject4);
           Log.d("MicroMsg.EggMgr", "key: [%s] value: [%s].", new Object[] { localObject4, localObject5 });
-          ((StringBuilder)localObject3).append((String)localObject5).append("#");
+          paramList.append((String)localObject5).append("#");
         }
-        if (!Util.isNullOrNil(((StringBuilder)localObject3).toString()))
+        if (!Util.isNullOrNil(paramList.toString()))
         {
-          paramList = com.tencent.mm.plugin.eggspring.c.qUO;
-          localObject4 = com.tencent.mm.plugin.eggspring.c.cEH();
-          boolean bool2 = this.dZl;
-          localObject5 = this.name;
-          p.h(localObject5, "name");
-          p.h(localObject2, "keyWord");
-          if (bool1)
-          {
-            paramList = Integer.valueOf(1);
-            label814:
-            ((com.tencent.mm.plugin.eggspring.c)localObject4).qUJ = paramList;
-            if (!bool2) {
-              break label1028;
-            }
-            ((com.tencent.mm.plugin.eggspring.c)localObject4).qUK = ((String)localObject5);
-            ((com.tencent.mm.plugin.eggspring.c)localObject4).userName = "";
-            ((com.tencent.mm.plugin.eggspring.c)localObject4).qUM = Integer.valueOf(2);
-            label849:
-            ((com.tencent.mm.plugin.eggspring.c)localObject4).jgR = ((String)localObject2);
-            ((com.tencent.mm.plugin.eggspring.c)localObject4).qUL = Long.valueOf(cl.aWy());
-            paramList = com.tencent.mm.plugin.eggspring.c.qUO;
-            com.tencent.mm.plugin.eggspring.c.cEH().aP(1, ((StringBuilder)localObject3).toString());
-          }
+          localObject3 = com.tencent.mm.plugin.eggspring.e.uxF;
+          com.tencent.mm.plugin.eggspring.e.b(bool1, this.fTe, this.name, (String)localObject2);
+          localObject3 = com.tencent.mm.plugin.eggspring.e.uxF;
+          com.tencent.mm.plugin.eggspring.e.aO(1, paramList.toString());
         }
-        else if (b((e)localObject1))
+        if (b((com.tencent.mm.be.e)localObject1))
         {
           if (!bool1) {
-            break label1055;
+            break label900;
           }
-          com.tencent.mm.plugin.report.service.h.CyF.dN(1263, 1);
+          com.tencent.mm.plugin.report.service.h.IzE.el(1263, 1);
         }
         for (;;)
         {
           if (localObject1 != null)
           {
-            if (((e)localObject1).gWY != null)
+            if (this.WDd == null)
             {
-              paramList = ((e)localObject1).gWY.jgI;
-              ((com.tencent.mm.plugin.eggspring.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.eggspring.a.a.class)).prefetch(paramList);
-            }
-            if (this.PjB == null)
-            {
-              paramList = (ViewStub)paramActivity.findViewById(2131309873);
+              paramList = (ViewStub)paramActivity.findViewById(R.h.dZj);
               if (paramList != null) {
                 paramList.inflate();
               }
-              this.PjB = ((ChattingAnimFrame)paramActivity.findViewById(2131298317));
-              this.PjB.setOnLuckyBagClick(new ChattingAnimFrame.d()
+              this.WDd = ((ChattingAnimFrame)paramActivity.findViewById(R.h.dvt));
+              this.WDd.setOnLuckyBagClick(new ChattingAnimFrame.d()
               {
-                public final void a(com.tencent.mm.plugin.eggspring.c.c paramAnonymousc, e paramAnonymouse)
+                public final void a(com.tencent.mm.plugin.eggspring.c.c paramAnonymousc, com.tencent.mm.be.e paramAnonymouse)
                 {
-                  AppMethodBeat.i(232902);
+                  AppMethodBeat.i(280984);
                   if (paramAnonymouse == null)
                   {
-                    AppMethodBeat.o(232902);
+                    AppMethodBeat.o(280984);
                     return;
                   }
                   if (paramAnonymouse.type == 3)
                   {
+                    if (paramAnonymousc == null)
+                    {
+                      AppMethodBeat.o(280984);
+                      return;
+                    }
                     Activity localActivity = paramActivity;
-                    paramAnonymousc = SpringLuckyEggActivity.a(paramActivity, paramAnonymouse, paramAnonymousc.dDv, paramAnonymousc.appId, paramAnonymousc.kZe);
-                    paramAnonymousc = new com.tencent.mm.hellhoundlib.b.a().bl(paramAnonymousc);
-                    com.tencent.mm.hellhoundlib.a.a.a(localActivity, paramAnonymousc.axQ(), "com/tencent/mm/ui/chatting/EggMgr$1", "onLuckyBagClick", "(Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo;Lcom/tencent/mm/modelpackage/EggInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                    localActivity.startActivity((Intent)paramAnonymousc.pG(0));
-                    com.tencent.mm.hellhoundlib.a.a.a(localActivity, "com/tencent/mm/ui/chatting/EggMgr$1", "onLuckyBagClick", "(Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo;Lcom/tencent/mm/modelpackage/EggInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                    AppMethodBeat.o(232902);
+                    paramAnonymousc = SpringLuckyEggActivity.a(paramActivity, paramAnonymouse, paramAnonymousc.fwe, paramAnonymousc.appId, paramAnonymousc.nTp, bool2);
+                    paramAnonymousc = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousc);
+                    com.tencent.mm.hellhoundlib.a.a.b(localActivity, paramAnonymousc.aFh(), "com/tencent/mm/ui/chatting/EggMgr$1", "onLuckyBagClick", "(Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo;Lcom/tencent/mm/modelpackage/EggInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                    localActivity.startActivity((Intent)paramAnonymousc.sf(0));
+                    com.tencent.mm.hellhoundlib.a.a.c(localActivity, "com/tencent/mm/ui/chatting/EggMgr$1", "onLuckyBagClick", "(Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo;Lcom/tencent/mm/modelpackage/EggInfo;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                    AppMethodBeat.o(280984);
                     return;
                   }
-                  if ((paramAnonymouse.gWY == null) || (Util.isNullOrNil(paramAnonymouse.gWY.jgI)))
+                  if (paramAnonymouse.type == 2)
                   {
-                    AppMethodBeat.o(232902);
+                    if ((paramAnonymouse.jHW == null) || (Util.isNullOrNil(paramAnonymouse.jHW.lXl)))
+                    {
+                      AppMethodBeat.o(280984);
+                      return;
+                    }
+                    paramAnonymousc = paramAnonymouse.jHW.lXl;
+                    paramAnonymouse = new Intent();
+                    paramAnonymouse.putExtra("rawUrl", paramAnonymousc);
+                    paramAnonymouse.putExtra("from_shortcut", true);
+                    paramAnonymouse.putExtra("disable_minimize", true);
+                    paramAnonymouse.putExtra("MMActivity.OverrideEnterAnimation", R.a.anim_not_change);
+                    paramAnonymouse.putExtra("MMActivity.OverrideExitAnimation", R.a.push_down_out);
+                    com.tencent.mm.by.c.b(paramActivity, "webview", ".ui.tools.WebViewUI", paramAnonymouse, 3001);
+                    paramActivity.overridePendingTransition(R.a.push_up_in, R.a.anim_not_change);
+                    AppMethodBeat.o(280984);
                     return;
                   }
-                  paramAnonymousc = paramAnonymouse.gWY.jgI;
-                  paramAnonymouse = new Intent();
-                  paramAnonymouse.putExtra("rawUrl", paramAnonymousc);
-                  paramAnonymouse.putExtra("from_shortcut", true);
-                  paramAnonymouse.putExtra("disable_minimize", true);
-                  paramAnonymouse.putExtra("MMActivity.OverrideEnterAnimation", 2130771986);
-                  paramAnonymouse.putExtra("MMActivity.OverrideExitAnimation", 2130772130);
-                  com.tencent.mm.br.c.b(paramActivity, "webview", ".ui.tools.WebViewUI", paramAnonymouse, 3001);
-                  paramActivity.overridePendingTransition(2130772132, 2130771986);
-                  AppMethodBeat.o(232902);
+                  if (paramAnonymouse.type == 4)
+                  {
+                    if ((paramAnonymousc == null) || (Util.isNullOrNil(paramAnonymousc.url)))
+                    {
+                      AppMethodBeat.o(280984);
+                      return;
+                    }
+                    paramAnonymousc = paramAnonymousc.url;
+                    paramAnonymouse = new Intent();
+                    paramAnonymouse.putExtra("rawUrl", paramAnonymousc);
+                    paramAnonymouse.putExtra("MMActivity.OverrideEnterAnimation", R.a.anim_not_change);
+                    paramAnonymouse.putExtra("MMActivity.OverrideExitAnimation", R.a.push_down_out);
+                    com.tencent.mm.by.c.b(paramActivity, "webview", ".ui.tools.WebViewUI", paramAnonymouse, 3001);
+                    paramActivity.overridePendingTransition(R.a.push_up_in, R.a.anim_not_change);
+                  }
+                  AppMethodBeat.o(280984);
                 }
               });
             }
-            if (this.PjB == null)
+            if (this.WDd == null)
             {
               Log.e("MicroMsg.EggMgr", "AnimFrameView should not be null");
               i = 0;
               break;
-              paramList = Integer.valueOf(2);
-              break label814;
-              label1028:
-              ((com.tencent.mm.plugin.eggspring.c)localObject4).userName = ((String)localObject5);
-              ((com.tencent.mm.plugin.eggspring.c)localObject4).qUK = "";
-              ((com.tencent.mm.plugin.eggspring.c)localObject4).qUM = Integer.valueOf(1);
-              break label849;
-              label1055:
-              com.tencent.mm.plugin.report.service.h.CyF.dN(1263, 2);
+              label900:
+              com.tencent.mm.plugin.report.service.h.IzE.el(1263, 2);
               continue;
             }
-            if ((((e)localObject1).jgM <= i1) && (i1 <= ((e)localObject1).jgN))
+            if (((((com.tencent.mm.be.e)localObject1).lXp <= i1) && (i1 <= ((com.tencent.mm.be.e)localObject1).lXq)) || ((((com.tencent.mm.be.e)localObject1).lXp == ((com.tencent.mm.be.e)localObject1).lXq) && (((com.tencent.mm.be.e)localObject1).lXp == 0)))
             {
-              if (this.PjB.a((e)localObject1)) {
-                a((e)localObject1, (String)localObject2);
+              if (((com.tencent.mm.be.e)localObject1).jHW != null)
+              {
+                paramList = ((com.tencent.mm.be.e)localObject1).jHW.lXl;
+                ((com.tencent.mm.plugin.eggspring.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.eggspring.a.a.class)).prefetch(paramList);
               }
-              bG(((e)localObject1).dYn, bool1);
-              Log.d("MicroMsg.EggMgr", "match keyWord[%s], time[%d - %d]", new Object[] { localObject2, Integer.valueOf(((e)localObject1).jgM), Integer.valueOf(((e)localObject1).jgN) });
-              i = 1;
-              break;
-            }
-            if ((((e)localObject1).jgM == ((e)localObject1).jgN) && (((e)localObject1).jgM == 0))
-            {
-              if (this.PjB.a((e)localObject1)) {
-                a((e)localObject1, (String)localObject2);
+              if (this.WDd.a((com.tencent.mm.be.e)localObject1))
+              {
+                if ((localObject1 != null) && (!Util.isNullOrNil((String)localObject2))) {
+                  break label1099;
+                }
+                if (localObject1 == null) {
+                  break label1093;
+                }
+                bool2 = true;
+                label1019:
+                Log.e("MicroMsg.EggMgr", "egg info or keyWord err!!! info != null:[%s].", new Object[] { Boolean.valueOf(bool2) });
               }
-              bG(((e)localObject1).dYn, bool1);
-              Log.d("MicroMsg.EggMgr", "match keyWord[%s], time[0 - 0]", new Object[] { localObject2 });
-              i = 1;
-              break;
+              for (;;)
+              {
+                bT(((com.tencent.mm.be.e)localObject1).fSe, bool1);
+                Log.d("MicroMsg.EggMgr", "match keyWord[%s], time[%d - %d]", new Object[] { localObject2, Integer.valueOf(((com.tencent.mm.be.e)localObject1).lXp), Integer.valueOf(((com.tencent.mm.be.e)localObject1).lXq) });
+                i = 1;
+                break;
+                label1093:
+                bool2 = false;
+                break label1019;
+                label1099:
+                if (b((com.tencent.mm.be.e)localObject1))
+                {
+                  paramList = com.tencent.mm.plugin.eggspring.e.uxF;
+                  com.tencent.mm.plugin.eggspring.e.aO(2, com.tencent.mm.plugin.eggspring.e.lXu);
+                  if (((com.tencent.mm.be.e)localObject1).type == 3)
+                  {
+                    if (this.WDe == null) {
+                      this.WDe = new com.tencent.mm.plugin.eggspring.f();
+                    }
+                    this.WDe.uxG = new kotlin.g.a.b() {};
+                    paramList = this.WDe;
+                    localObject3 = ((com.tencent.mm.be.e)localObject1).jIS.appId;
+                    p.k(localObject2, "keyword");
+                    Log.i("MicroMsg.SpringLuckyEggHelper", "start check egg: appId=" + (String)localObject3 + ", keyword=" + (String)localObject2);
+                    l1 = SystemClock.elapsedRealtime();
+                    if ((paramList.lastCheckTime > 0L) && (paramList.interval > 0))
+                    {
+                      long l2 = l1 - paramList.lastCheckTime;
+                      if (l2 < paramList.interval * 1000)
+                      {
+                        Log.w("MicroMsg.SpringLuckyEggHelper", "The check is too frequent, interval=" + paramList.interval + ", delta=" + l2);
+                        continue;
+                      }
+                    }
+                    paramList.lastCheckTime = l1;
+                    localObject4 = paramList.uwI;
+                    if (localObject4 != null) {
+                      ((by)localObject4).a(null);
+                    }
+                    paramList.uwI = kotlinx.coroutines.g.b(paramList.rcY, null, (m)new f.b(paramList, (String)localObject2, (String)localObject3, null), 3);
+                  }
+                  else if (((com.tencent.mm.be.e)localObject1).type == 2)
+                  {
+                    Log.i("MicroMsg.EggMgr", "initLuckyBagOrNot: game lucky egg %s", new Object[] { ((com.tencent.mm.be.e)localObject1).jHW.appId });
+                    if (this.WDd != null)
+                    {
+                      this.WDd.post(new Runnable()
+                      {
+                        public final void run()
+                        {
+                          AppMethodBeat.i(272719);
+                          aa.a(aa.this).hMA();
+                          aa.a(aa.this, this.WDl);
+                          AppMethodBeat.o(272719);
+                        }
+                      });
+                      com.tencent.mm.xwebutil.c.bCF("com.tencent.mm.intent.ACTION_START_MPTOOLS_PROCESS");
+                    }
+                  }
+                  else if (((com.tencent.mm.be.e)localObject1).type == 4)
+                  {
+                    if (this.WDf == null) {
+                      this.WDf = new com.tencent.mm.plugin.eggspring.c();
+                    }
+                    this.WDf.jHk = new m() {};
+                    paramList = this.WDf;
+                    Log.i(paramList.TAG, "checkShowEgg: ");
+                    l1 = Util.currentTicks();
+                    if (Util.ticksToNow(paramList.lastCheckTime) <= paramList.interval)
+                    {
+                      Log.w(paramList.TAG, "checkShowEgg: " + paramList.lastCheckTime + ", " + paramList.interval + ", " + l1);
+                    }
+                    else
+                    {
+                      i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vUM, 100);
+                      localObject3 = kotlin.j.c.aaBL;
+                      j = kotlin.j.c.iCt().Nz(100);
+                      Log.i(paramList.TAG, "checkShowEgg: percent " + i + ", " + j);
+                      if (j < i)
+                      {
+                        paramList.lastCheckTime = l1;
+                        localObject3 = paramList.uwI;
+                        if (localObject3 != null) {
+                          ((by)localObject3).a(null);
+                        }
+                        paramList.uwI = kotlinx.coroutines.g.b(paramList.rcY, null, (m)new c.a(paramList, null), 3);
+                      }
+                    }
+                  }
+                }
+              }
             }
-            Log.d("MicroMsg.EggMgr", "match keyWord[%s], but not match time[%d - %d]", new Object[] { localObject2, Integer.valueOf(((e)localObject1).jgM), Integer.valueOf(((e)localObject1).jgN) });
+            Log.d("MicroMsg.EggMgr", "match keyWord[%s], but not match time[%d - %d]", new Object[] { localObject2, Integer.valueOf(((com.tencent.mm.be.e)localObject1).lXp), Integer.valueOf(((com.tencent.mm.be.e)localObject1).lXq) });
             i = 0;
             break;
           }
         }
         Log.d("MicroMsg.EggMgr", "no match");
         i = 0;
-        break label218;
-        label1290:
+        break label209;
+        label1746:
         break;
       }
-      label1292:
-      break label467;
-      label1295:
+      label1748:
+      break label458;
+      label1751:
       localObject1 = paramList;
       n = i;
     }
   }
   
-  public final void gOi()
+  public final void hNs()
   {
-    AppMethodBeat.i(232907);
-    if (this.PjB != null) {
-      this.PjB.stop();
+    AppMethodBeat.i(275161);
+    if (this.WDd != null) {
+      this.WDd.stop();
     }
-    ((com.tencent.mm.plugin.eggspring.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.eggspring.a.a.class)).cleanPrefetch();
-    com.tencent.mm.plugin.eggspring.d locald;
+    Object localObject2;
+    Object localObject3;
     StringBuilder localStringBuilder;
-    if (this.PjC != null)
+    if (this.WDe != null)
     {
-      locald = this.PjC;
-      localStringBuilder = new StringBuilder("dispose: job is running: ");
-      localObject = locald.qUS;
-      if (localObject == null) {
-        break label137;
+      localObject2 = this.WDe;
+      localObject3 = new StringBuilder("dispose: job is running: ");
+      localObject1 = ((com.tencent.mm.plugin.eggspring.f)localObject2).uwI;
+      if (localObject1 != null)
+      {
+        localObject1 = Boolean.valueOf(((by)localObject1).isActive());
+        Log.i("MicroMsg.SpringLuckyEggHelper", localObject1);
+        localObject1 = ((com.tencent.mm.plugin.eggspring.f)localObject2).uwI;
+        if (localObject1 != null) {
+          ((by)localObject1).a(null);
+        }
+        ((com.tencent.mm.plugin.eggspring.f)localObject2).uwI = null;
       }
     }
-    label137:
-    for (Object localObject = Boolean.valueOf(((bu)localObject).isActive());; localObject = null)
+    else if (this.WDf != null)
     {
-      Log.i("MicroMsg.SpringLuckyEggHelper", localObject);
-      localObject = locald.qUS;
-      if (localObject != null) {
-        ((bu)localObject).a(null);
+      localObject2 = this.WDf;
+      localObject3 = ((com.tencent.mm.plugin.eggspring.c)localObject2).TAG;
+      localStringBuilder = new StringBuilder("dispose: ");
+      localObject1 = ((com.tencent.mm.plugin.eggspring.c)localObject2).uwI;
+      if (localObject1 == null) {
+        break label215;
       }
-      locald.qUS = null;
-      Log.i("MicroMsg.EggMgr", "egg has been stop, %s", new Object[] { this.PjB });
-      AppMethodBeat.o(232907);
+    }
+    label215:
+    for (Object localObject1 = Boolean.valueOf(((by)localObject1).isActive());; localObject1 = null)
+    {
+      Log.i((String)localObject3, localObject1);
+      localObject1 = ((com.tencent.mm.plugin.eggspring.c)localObject2).uwI;
+      if (localObject1 != null) {
+        ((by)localObject1).a(null);
+      }
+      ((com.tencent.mm.plugin.eggspring.c)localObject2).uwI = null;
+      ((com.tencent.mm.plugin.eggspring.c)localObject2).jHk = null;
+      Log.i("MicroMsg.EggMgr", "egg has been stop, %s", new Object[] { this.WDd });
+      AppMethodBeat.o(275161);
       return;
+      localObject1 = null;
+      break;
     }
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(232909);
-    com.tencent.mm.kernel.g.azz().b(2757, this);
-    AppMethodBeat.o(232909);
+    AppMethodBeat.i(275163);
+    com.tencent.mm.kernel.h.aGY().b(2757, this);
+    AppMethodBeat.o(275163);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(232908);
-    com.tencent.mm.kernel.g.azz().a(2757, this);
-    AppMethodBeat.o(232908);
+    AppMethodBeat.i(275162);
+    com.tencent.mm.kernel.h.aGY().a(2757, this);
+    AppMethodBeat.o(275162);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
@@ -730,29 +779,21 @@ public final class aa
     Log.i("MicroMsg.EggMgr", "onSceneEnd, errType: %s, errCode: %s, errMsg: %s.", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      com.tencent.mm.plugin.report.service.h.CyF.dN(1263, 4);
+      com.tencent.mm.plugin.report.service.h.IzE.el(1263, 4);
       AppMethodBeat.o(34803);
       return;
     }
     if (2757 == paramq.getType())
     {
-      paramString = (com.tencent.mm.plugin.eggspring.d.b)paramq;
-      if (paramString.qVk == this.qVk)
-      {
-        paramString = paramString.qVj;
-        if (paramString != null)
-        {
-          Log.i("MicroMsg.EggMgr", "luckyBagInfo, %s.", new Object[] { paramString.toString() });
-          this.PjE = (paramString.gTn * 1000);
-        }
-      }
+      AppMethodBeat.o(34803);
+      throw null;
     }
     AppMethodBeat.o(34803);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.aa
  * JD-Core Version:    0.7.0.1
  */

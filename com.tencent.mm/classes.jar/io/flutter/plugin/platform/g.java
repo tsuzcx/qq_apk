@@ -5,11 +5,13 @@ import io.flutter.view.a;
 
 public abstract interface g
 {
+  public abstract boolean A(Integer paramInteger);
+  
   public abstract void a(a parama);
   
-  public abstract void hxq();
+  public abstract void iBu();
   
-  public abstract View r(Integer paramInteger);
+  public abstract View z(Integer paramInteger);
 }
 
 

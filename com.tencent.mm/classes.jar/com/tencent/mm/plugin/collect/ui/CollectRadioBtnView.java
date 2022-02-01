@@ -8,13 +8,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.aa;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.ui.ad;
 
 public class CollectRadioBtnView
   extends LinearLayout
 {
-  private TextView mPa;
-  private ImageView qCg;
+  private TextView pPT;
+  private ImageView ubg;
   
   public CollectRadioBtnView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,29 +37,29 @@ public class CollectRadioBtnView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(64194);
-    paramContext = aa.jQ(paramContext).inflate(2131493670, this);
-    this.qCg = ((ImageView)paramContext.findViewById(2131306494));
-    this.mPa = ((TextView)paramContext.findViewById(2131309249));
+    paramContext = ad.kS(paramContext).inflate(a.g.collect_bill_radio_btn, this);
+    this.ubg = ((ImageView)paramContext.findViewById(a.f.radio_iv));
+    this.pPT = ((TextView)paramContext.findViewById(a.f.title_tv));
     AppMethodBeat.o(64194);
   }
   
   public void setRadioSrc(int paramInt)
   {
     AppMethodBeat.i(64196);
-    this.qCg.setImageResource(paramInt);
+    this.ubg.setImageResource(paramInt);
     AppMethodBeat.o(64196);
   }
   
   public void setTitleText(String paramString)
   {
     AppMethodBeat.i(64195);
-    this.mPa.setText(paramString);
+    this.pPT.setText(paramString);
     AppMethodBeat.o(64195);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.ui.CollectRadioBtnView
  * JD-Core Version:    0.7.0.1
  */

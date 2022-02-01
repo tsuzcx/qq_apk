@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 import java.io.File;
 import java.security.MessageDigest;
 
@@ -55,17 +55,17 @@ public class CertUtil
   private void checkDir(String paramString)
   {
     AppMethodBeat.i(73293);
-    paramString = new o(paramString);
-    if (!paramString.exists())
+    paramString = new q(paramString);
+    if (!paramString.ifE())
     {
-      paramString.mkdirs();
+      paramString.ifL();
       AppMethodBeat.o(73293);
       return;
     }
     if (!paramString.isDirectory())
     {
-      paramString.delete();
-      paramString.mkdirs();
+      paramString.cFq();
+      paramString.ifL();
     }
     AppMethodBeat.o(73293);
   }
@@ -77,11 +77,11 @@ public class CertUtil
     {
       try
       {
-        paramString = new o(paramString);
-        if (paramString.exists()) {
+        paramString = new q(paramString);
+        if (paramString.ifE()) {
           continue;
         }
-        boolean bool2 = paramString.mkdirs();
+        boolean bool2 = paramString.ifL();
         bool1 = bool2;
         if (bool2) {}
       }
@@ -99,39 +99,39 @@ public class CertUtil
   private boolean del_all_files(String paramString)
   {
     AppMethodBeat.i(73295);
-    o localo = new o(paramString);
-    if (!localo.exists())
+    q localq = new q(paramString);
+    if (!localq.ifE())
     {
       AppMethodBeat.o(73295);
       return false;
     }
-    if (!localo.isDirectory())
+    if (!localq.isDirectory())
     {
       AppMethodBeat.o(73295);
       return false;
     }
-    String[] arrayOfString = localo.list();
+    String[] arrayOfString = localq.ifI();
     int i = 0;
     boolean bool = false;
     if (i < arrayOfString.length) {
       if (paramString.endsWith("/"))
       {
-        localo = new o(paramString + arrayOfString[i]);
+        localq = new q(paramString + arrayOfString[i]);
         label102:
-        if (!localo.isFile()) {
+        if (!localq.ifH()) {
           break label161;
         }
-        localo.delete();
+        localq.cFq();
       }
     }
     for (;;)
     {
       i += 1;
       break;
-      localo = new o(paramString + "/" + arrayOfString[i]);
+      localq = new q(paramString + "/" + arrayOfString[i]);
       break label102;
       label161:
-      if (localo.isDirectory())
+      if (localq.isDirectory())
       {
         del_all_files(paramString + "/" + arrayOfString[i]);
         del_dir(paramString + "/" + arrayOfString[i], true);
@@ -150,7 +150,7 @@ public class CertUtil
     {
       del_all_files(paramString);
       if (paramBoolean) {
-        new o(paramString.toString()).delete();
+        new q(paramString.toString()).cFq();
       }
       AppMethodBeat.o(73296);
       return;
@@ -284,8 +284,8 @@ public class CertUtil
   {
     AppMethodBeat.i(73297);
     boolean bool = true;
-    paramString = new o(paramString);
-    if ((!paramString.exists()) || (!paramString.isDirectory()) || (paramString.het() == null)) {
+    paramString = new q(paramString);
+    if ((!paramString.ifE()) || (!paramString.isDirectory()) || (paramString.ifJ() == null)) {
       bool = false;
     }
     AppMethodBeat.o(73297);
@@ -308,8 +308,8 @@ public class CertUtil
   {
     AppMethodBeat.i(73298);
     boolean bool = true;
-    paramString = new o(paramString);
-    if ((!paramString.exists()) || (!paramString.isDirectory())) {
+    paramString = new q(paramString);
+    if ((!paramString.ifE()) || (!paramString.isDirectory())) {
       bool = false;
     }
     AppMethodBeat.o(73298);
@@ -999,7 +999,7 @@ public class CertUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tenpay.ndk.CertUtil
  * JD-Core Version:    0.7.0.1
  */

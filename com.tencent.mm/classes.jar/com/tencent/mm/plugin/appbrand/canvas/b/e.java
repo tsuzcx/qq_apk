@@ -13,12 +13,12 @@ import org.json.JSONObject;
 
 public final class e
 {
-  public Map<String, a> lav;
+  public Map<String, a> nUE;
   
   public e()
   {
     AppMethodBeat.i(145360);
-    this.lav = new HashMap();
+    this.nUE = new HashMap();
     a(new h());
     a(new f());
     a(new g());
@@ -33,7 +33,7 @@ public final class e
   private void a(a parama)
   {
     AppMethodBeat.i(145365);
-    this.lav.put(parama.getMethod(), parama);
+    this.nUE.put(parama.getMethod(), parama);
     AppMethodBeat.o(145365);
   }
   
@@ -42,7 +42,7 @@ public final class e
     AppMethodBeat.i(145364);
     Object localObject = paramJSONObject.optString("method");
     paramJSONObject = paramJSONObject.optJSONArray("data");
-    localObject = (a)this.lav.get(localObject);
+    localObject = (a)this.nUE.get(localObject);
     if (localObject == null)
     {
       AppMethodBeat.o(145364);
@@ -57,7 +57,7 @@ public final class e
   {
     AppMethodBeat.i(145362);
     Object localObject = paramBasePathActionArg.method;
-    localObject = (a)this.lav.get(localObject);
+    localObject = (a)this.nUE.get(localObject);
     if (localObject == null)
     {
       AppMethodBeat.o(145362);
@@ -72,7 +72,7 @@ public final class e
   {
     AppMethodBeat.i(145361);
     Path localPath = new Path();
-    paramPathActionArgWrapper = paramPathActionArgWrapper.kZW;
+    paramPathActionArgWrapper = paramPathActionArgWrapper.nUh;
     if ((paramPathActionArgWrapper == null) || (paramPathActionArgWrapper.size() == 0))
     {
       AppMethodBeat.o(145361);
@@ -114,19 +114,19 @@ public final class e
   
   public static final class a
   {
-    public static e law;
+    public static e nUF;
     
     static
     {
       AppMethodBeat.i(145359);
-      law = new e();
+      nUF = new e();
       AppMethodBeat.o(145359);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.b.e
  * JD-Core Version:    0.7.0.1
  */

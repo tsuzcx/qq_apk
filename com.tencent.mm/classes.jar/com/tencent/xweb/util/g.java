@@ -28,7 +28,7 @@ public final class g
     return null;
   }
   
-  public static Object bsF(String paramString)
+  public static Object bFE(String paramString)
   {
     AppMethodBeat.i(157011);
     if (TextUtils.isEmpty(paramString))
@@ -94,7 +94,7 @@ public final class g
     }
   }
   
-  public static Object f(Object paramObject, String paramString)
+  public static Object i(Object paramObject, String paramString)
   {
     AppMethodBeat.i(157012);
     paramObject = c(paramObject, paramString, null, new Object[0]);
@@ -102,7 +102,7 @@ public final class g
     return paramObject;
   }
   
-  public static Object oj(String paramString1, String paramString2)
+  public static Object pf(String paramString1, String paramString2)
   {
     AppMethodBeat.i(157009);
     try
@@ -120,7 +120,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.util.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.appbrand.jsapi.storage;
 
-import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
 
 public final class j
   extends k
@@ -8,14 +8,14 @@ public final class j
   public static final int CTRL_INDEX = 499;
   public static final String NAME = "removeGlobalStorage";
   
-  protected final String C(f paramf)
+  protected final String F(e parame)
   {
     return "wxGlobal";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.j
  * JD-Core Version:    0.7.0.1
  */

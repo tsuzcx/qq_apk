@@ -4,17 +4,17 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitask/animation/swipeahead/FloatMultiTaskIndicatorViewAnimationHandler;", "Lcom/tencent/mm/plugin/multitask/animation/swipeahead/BaseViewAnimationHandler;", "targetView", "Landroid/view/View;", "(Landroid/view/View;)V", "createHideAnimationSet", "Landroid/animation/Animator;", "animatorListenerAdapter", "Landroid/animation/AnimatorListenerAdapter;", "createShowAnimationSet", "Companion", "plugin-multitask_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/animation/swipeahead/FloatMultiTaskIndicatorViewAnimationHandler;", "Lcom/tencent/mm/plugin/multitask/animation/swipeahead/BaseViewAnimationHandler;", "targetView", "Landroid/view/View;", "(Landroid/view/View;)V", "createHideAnimationSet", "Landroid/animation/Animator;", "animatorListenerAdapter", "Landroid/animation/AnimatorListenerAdapter;", "createShowAnimationSet", "Companion", "plugin-multitask_release"})
 public final class c
   extends a
 {
-  public static final a Aar;
+  public static final a FGi;
   
   static
   {
-    AppMethodBeat.i(200454);
-    Aar = new a((byte)0);
-    AppMethodBeat.o(200454);
+    AppMethodBeat.i(249045);
+    FGi = new a((byte)0);
+    AppMethodBeat.o(249045);
   }
   
   public c(View paramView)
@@ -22,7 +22,7 @@ public final class c
     super(paramView);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitask/animation/swipeahead/FloatMultiTaskIndicatorViewAnimationHandler$Companion;", "", "()V", "HIDE_INDICATOR_VIEW_ANIMATION_DURATION", "", "SHOW_INDICATOR_VIEW_ANIMATION_DURATION", "TAG", "", "plugin-multitask_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/animation/swipeahead/FloatMultiTaskIndicatorViewAnimationHandler$Companion;", "", "()V", "HIDE_INDICATOR_VIEW_ANIMATION_DURATION", "", "SHOW_INDICATOR_VIEW_ANIMATION_DURATION", "TAG", "", "plugin-multitask_release"})
   public static final class a {}
 }
 

@@ -2,15 +2,15 @@ package kotlin.l.b.a.b.l;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
-import kotlin.l.k;
+import kotlin.l.n;
 
 public final class i
 {
-  public static final <T> T a(f<? extends T> paramf, k<?> paramk)
+  public static final <T> T a(f<? extends T> paramf, n<?> paramn)
   {
     AppMethodBeat.i(60556);
-    p.h(paramf, "$this$getValue");
-    p.h(paramk, "p");
+    p.k(paramf, "$this$getValue");
+    p.k(paramn, "p");
     paramf = paramf.invoke();
     AppMethodBeat.o(60556);
     return paramf;
@@ -18,7 +18,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.l.i
  * JD-Core Version:    0.7.0.1
  */

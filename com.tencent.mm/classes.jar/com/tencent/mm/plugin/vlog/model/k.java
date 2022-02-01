@@ -5,42 +5,42 @@ import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/model/ExportConfig;", "", "()V", "FALLBACK_SIZE_CONFIG", "", "FALLBACK_SIZE_NONE", "KEY_FALLBACK_SIZE", "", "kvName", "getKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "isFallbackSize", "setFallbackSize", "", "fallback", "plugin-vlog_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/ExportConfig;", "", "()V", "FALLBACK_SIZE_CONFIG", "", "FALLBACK_SIZE_NONE", "KEY_FALLBACK_SIZE", "", "kvName", "getKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "isFallbackSize", "setFallbackSize", "", "fallback", "plugin-vlog_release"})
 public final class k
 {
-  private static final String GxN = "video_composition_export_config";
-  static final String GxO = "fallback_size";
-  public static final k GxP;
+  private static final String Nlp = "video_composition_export_config";
+  static final String Nlq = "fallback_size";
+  public static final k Nlr;
   
   static
   {
-    AppMethodBeat.i(190565);
-    GxP = new k();
-    GxN = "video_composition_export_config";
-    GxO = "fallback_size";
-    AppMethodBeat.o(190565);
-  }
-  
-  public static int fAT()
-  {
-    AppMethodBeat.i(190564);
-    int i = getKV().getInt(GxO, 0);
-    AppMethodBeat.o(190564);
-    return i;
+    AppMethodBeat.i(224432);
+    Nlr = new k();
+    Nlp = "video_composition_export_config";
+    Nlq = "fallback_size";
+    AppMethodBeat.o(224432);
   }
   
   public static MultiProcessMMKV getKV()
   {
-    AppMethodBeat.i(190563);
-    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV(GxN);
-    p.g(localMultiProcessMMKV, "MultiProcessMMKV.getMMKV(kvName)");
-    AppMethodBeat.o(190563);
+    AppMethodBeat.i(224430);
+    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV(Nlp);
+    p.j(localMultiProcessMMKV, "MultiProcessMMKV.getMMKV(kvName)");
+    AppMethodBeat.o(224430);
     return localMultiProcessMMKV;
+  }
+  
+  public static int gsT()
+  {
+    AppMethodBeat.i(224431);
+    int i = getKV().getInt(Nlq, 0);
+    AppMethodBeat.o(224431);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.k
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@
     <RelativeLayout android:id="@id/dma" android:background="@drawable/nl" android:layout_width="@dimen/cn" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/cb" android:layout_centerHorizontal="true">
         <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dm_" android:layout_width="@dimen/c5" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_arrow" android:layout_centerInParent="true" android:rotation="90.0" app:iconColor="@color/FG_0" />
     </RelativeLayout>
-    <android.support.v4.widget.NestedScrollView android:id="@id/h9a" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="344.0dip" android:layout_marginTop="@dimen/ce" android:fillViewport="true" android:layout_below="@id/dma" android:fadeScrollbars="false">
+    <androidx.core.widget.NestedScrollView android:id="@id/h9a" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="344.0dip" android:layout_marginTop="@dimen/ce" android:fillViewport="true" android:layout_below="@id/dma" android:fadeScrollbars="false">
         <LinearLayout android:orientation="vertical" android:focusable="true" android:focusableInTouchMode="true" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/dmb" android:paddingTop="@dimen/cr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginRight="@dimen/ci">
                 <TextView android:textSize="@dimen/kc" android:textColor="@color/uj" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:text="@string/dwq" android:lineSpacingMultiplier="1.4" />
@@ -17,7 +17,7 @@
                         <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/ct" android:layout_height="@dimen/cb" android:layout_marginLeft="@dimen/bt" android:src="@raw/icons_outlined_arrow" android:layout_centerVertical="true" app:iconColor="@color/FG_1" />
                     </LinearLayout>
                 </RelativeLayout>
-                <android.support.v7.widget.RecyclerView android:id="@id/dmi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cl" android:layout_marginRight="@dimen/cl" android:overScrollMode="never" />
+                <androidx.recyclerview.widget.RecyclerView android:id="@id/dmi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cl" android:layout_marginRight="@dimen/cl" android:overScrollMode="never" />
             </LinearLayout>
             <LinearLayout android:orientation="vertical" android:id="@id/dmd" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ce">
                 <RelativeLayout android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cn" android:layout_marginRight="@dimen/cn">
@@ -27,10 +27,10 @@
                         <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/ct" android:layout_height="@dimen/cb" android:layout_marginLeft="@dimen/bt" android:src="@raw/icons_outlined_arrow" android:layout_centerVertical="true" app:iconColor="@color/FG_1" />
                     </LinearLayout>
                 </RelativeLayout>
-                <android.support.v7.widget.RecyclerView android:id="@id/dmf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cl" android:layout_marginRight="@dimen/cl" android:overScrollMode="never" />
+                <androidx.recyclerview.widget.RecyclerView android:id="@id/dmf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cl" android:layout_marginRight="@dimen/cl" android:overScrollMode="never" />
             </LinearLayout>
             <View android:id="@id/dm9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/ce" />
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
     <ImageView android:id="@id/dmc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/cl" android:layout_marginLeft="@dimen/cl" android:layout_marginRight="@dimen/cl" android:src="@drawable/c3v" android:layout_below="@id/dma" />
 </RelativeLayout>

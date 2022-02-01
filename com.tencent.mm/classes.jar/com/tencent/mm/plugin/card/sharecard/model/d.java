@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.card.sharecard.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bvb;
-import com.tencent.mm.protocal.protobuf.bvc;
+import com.tencent.mm.protocal.protobuf.cct;
+import com.tencent.mm.protocal.protobuf.ccu;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
@@ -18,27 +18,27 @@ public final class d
   implements m
 {
   private i callback;
-  public String pTY;
-  public int pTZ;
-  public String pUa;
-  private final com.tencent.mm.ak.d rr;
+  private final com.tencent.mm.an.d rr;
+  public String tpZ;
+  public int tqa;
+  public String tqb;
   
   public d(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(112963);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new bvb();
-    ((d.a)localObject).iLO = new bvc();
+    ((d.a)localObject).lBU = new cct();
+    ((d.a)localObject).lBV = new ccu();
     ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/card/getsharecardconsumedinfo";
     ((d.a)localObject).funcId = 910;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (bvb)this.rr.iLK.iLR;
-    ((bvb)localObject).eaO = paramString1;
-    ((bvb)localObject).scene = 20;
-    ((bvb)localObject).pRX = paramString2;
-    ((bvb)localObject).code = paramString3;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (cct)d.b.b(this.rr.lBR);
+    ((cct)localObject).fUL = paramString1;
+    ((cct)localObject).scene = 20;
+    ((cct)localObject).tnX = paramString2;
+    ((cct)localObject).code = paramString3;
     AppMethodBeat.o(112963);
   }
   
@@ -62,10 +62,10 @@ public final class d
     Log.i("MicroMsg.NetSceneGetShareCardConsumedInfo", "onGYNetEnd, cmdType = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = (bvc)this.rr.iLL.iLR;
-      Log.v("MicroMsg.NetSceneGetShareCardConsumedInfo", "json:" + params.pTY);
-      this.pTY = params.pTY;
-      this.pUa = params.pUa;
+      params = (ccu)d.c.b(this.rr.lBS);
+      Log.v("MicroMsg.NetSceneGetShareCardConsumedInfo", "json:" + params.tpZ);
+      this.tpZ = params.tpZ;
+      this.tqb = params.tqb;
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(112964);

@@ -2,103 +2,140 @@ package io.flutter.embedding.android;
 
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
-import android.view.inputmethod.InputConnection;
-import android.view.inputmethod.InputMethodManager;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import io.flutter.embedding.engine.c.b.a;
-import io.flutter.plugin.b.c;
+import io.flutter.embedding.engine.b.c;
+import io.flutter.embedding.engine.b.c.b;
+import io.flutter.plugin.editing.d;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class a
 {
-  private final io.flutter.embedding.engine.c.b SMo;
-  private final c SMp;
-  private int SMq;
+  private final c aaon;
+  private final d aaoo;
+  private int aaop;
+  private a.a aaoq;
   
-  public a(io.flutter.embedding.engine.c.b paramb, c paramc)
+  public a(View paramView, c paramc, d paramd)
   {
-    this.SMo = paramb;
-    this.SMp = paramc;
+    AppMethodBeat.i(255576);
+    this.aaon = paramc;
+    this.aaoo = paramd;
+    paramd.aauW = this;
+    this.aaoq = new a.a(paramView, paramd);
+    this.aaon.aass = this.aaoq;
+    AppMethodBeat.o(255576);
   }
   
-  private Character atm(int paramInt)
+  public final void destroy()
   {
-    AppMethodBeat.i(10057);
-    if (paramInt == 0)
+    this.aaon.aass = null;
+  }
+  
+  public final boolean j(KeyEvent paramKeyEvent)
+  {
+    AppMethodBeat.i(255580);
+    int j = paramKeyEvent.getAction();
+    if ((j != 0) && (j != 1))
     {
-      AppMethodBeat.o(10057);
-      return null;
+      AppMethodBeat.o(255580);
+      return false;
     }
-    Character localCharacter1 = Character.valueOf((char)paramInt);
-    int i;
-    Character localCharacter2;
-    if ((0x80000000 & paramInt) != 0)
+    if (k(paramKeyEvent))
     {
-      i = 1;
-      if (i == 0) {
-        break label89;
+      this.aaoq.l(paramKeyEvent);
+      AppMethodBeat.o(255580);
+      return false;
+    }
+    int k = paramKeyEvent.getUnicodeChar();
+    Object localObject1;
+    Object localObject2;
+    if (k == 0)
+    {
+      localObject1 = null;
+      localObject1 = new c.b(paramKeyEvent, (Character)localObject1);
+      localObject2 = this.aaoq;
+      ((a.a)localObject2).aaor.addLast(paramKeyEvent);
+      if (((a.a)localObject2).aaor.size() > 1000L)
+      {
+        new StringBuilder("There are ").append(((a.a)localObject2).aaor.size()).append(" keyboard events that have not yet received a response. Are responses being sent?");
+        io.flutter.b.iAh();
       }
-      paramInt = 0x7FFFFFFF & paramInt;
-      if (this.SMq == 0) {
-        break label78;
+      if (j != 0) {
+        break label333;
       }
-      this.SMq = KeyCharacterMap.getDeadChar(this.SMq, paramInt);
-      localCharacter2 = localCharacter1;
+      paramKeyEvent = this.aaon;
+      localObject2 = new HashMap();
+      ((Map)localObject2).put("type", "keydown");
+      ((Map)localObject2).put("keymap", "android");
+      c.a((c.b)localObject1, (Map)localObject2);
+      paramKeyEvent.aasl.b(localObject2, paramKeyEvent.p(((c.b)localObject1).aasv));
     }
     for (;;)
     {
-      AppMethodBeat.o(10057);
-      return localCharacter2;
-      i = 0;
-      break;
-      label78:
-      this.SMq = paramInt;
-      localCharacter2 = localCharacter1;
-      continue;
-      label89:
-      localCharacter2 = localCharacter1;
-      if (this.SMq != 0)
+      AppMethodBeat.o(255580);
+      return true;
+      char c1 = (char)k;
+      int i;
+      label234:
+      char c2;
+      if ((0x80000000 & k) != 0)
       {
-        paramInt = KeyCharacterMap.getDeadChar(this.SMq, paramInt);
-        if (paramInt > 0) {
-          localCharacter1 = Character.valueOf((char)paramInt);
+        i = 1;
+        if (i == 0) {
+          break label294;
         }
-        this.SMq = 0;
-        localCharacter2 = localCharacter1;
+        i = 0x7FFFFFFF & k;
+        if (this.aaop == 0) {
+          break label283;
+        }
+        this.aaop = KeyCharacterMap.getDeadChar(this.aaop, i);
+        c2 = c1;
       }
+      for (;;)
+      {
+        localObject1 = Character.valueOf(c2);
+        break;
+        i = 0;
+        break label234;
+        label283:
+        this.aaop = i;
+        c2 = c1;
+        continue;
+        label294:
+        c2 = c1;
+        if (this.aaop != 0)
+        {
+          i = KeyCharacterMap.getDeadChar(this.aaop, k);
+          if (i > 0) {
+            c1 = (char)i;
+          }
+          this.aaop = 0;
+          c2 = c1;
+        }
+      }
+      label333:
+      paramKeyEvent = this.aaon;
+      localObject2 = new HashMap();
+      ((Map)localObject2).put("type", "keyup");
+      ((Map)localObject2).put("keymap", "android");
+      c.a((c.b)localObject1, (Map)localObject2);
+      paramKeyEvent.aasl.b(localObject2, paramKeyEvent.p(((c.b)localObject1).aasv));
     }
   }
   
-  public final void j(KeyEvent paramKeyEvent)
+  public final boolean k(KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(10055);
-    Object localObject = atm(paramKeyEvent.getUnicodeChar());
-    io.flutter.embedding.engine.c.b localb = this.SMo;
-    paramKeyEvent = new b.a(paramKeyEvent, (Character)localObject);
-    localObject = new HashMap();
-    ((Map)localObject).put("type", "keyup");
-    ((Map)localObject).put("keymap", "android");
-    io.flutter.embedding.engine.c.b.a(paramKeyEvent, (Map)localObject);
-    localb.SPQ.eN(localObject);
-    AppMethodBeat.o(10055);
-  }
-  
-  public final void k(KeyEvent paramKeyEvent)
-  {
-    AppMethodBeat.i(10056);
-    if ((this.SMp.SSL != null) && (this.SMp.SSy.isAcceptingText())) {
-      this.SMp.SSL.sendKeyEvent(paramKeyEvent);
+    AppMethodBeat.i(255581);
+    if (this.aaoq.m(paramKeyEvent) != null)
+    {
+      AppMethodBeat.o(255581);
+      return true;
     }
-    Object localObject = atm(paramKeyEvent.getUnicodeChar());
-    io.flutter.embedding.engine.c.b localb = this.SMo;
-    paramKeyEvent = new b.a(paramKeyEvent, (Character)localObject);
-    localObject = new HashMap();
-    ((Map)localObject).put("type", "keydown");
-    ((Map)localObject).put("keymap", "android");
-    io.flutter.embedding.engine.c.b.a(paramKeyEvent, (Map)localObject);
-    localb.SPQ.eN(localObject);
-    AppMethodBeat.o(10056);
+    AppMethodBeat.o(255581);
+    return false;
   }
 }
 

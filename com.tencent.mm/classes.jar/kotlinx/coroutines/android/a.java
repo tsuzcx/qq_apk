@@ -6,21 +6,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.d.f;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
-import kotlin.k.j;
+import kotlin.k.i;
 import kotlin.l;
 import kotlin.x;
-import kotlinx.coroutines.at;
-import kotlinx.coroutines.bc;
-import kotlinx.coroutines.k;
+import kotlinx.coroutines.be;
+import kotlinx.coroutines.m;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/android/HandlerContext;", "Lkotlinx/coroutines/android/HandlerDispatcher;", "Lkotlinx/coroutines/Delay;", "handler", "Landroid/os/Handler;", "name", "", "(Landroid/os/Handler;Ljava/lang/String;)V", "invokeImmediately", "", "(Landroid/os/Handler;Ljava/lang/String;Z)V", "_immediate", "immediate", "getImmediate", "()Lkotlinx/coroutines/android/HandlerContext;", "dispatch", "", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "equals", "other", "", "hashCode", "", "invokeOnTimeout", "Lkotlinx/coroutines/DisposableHandle;", "timeMillis", "", "isDispatchNeeded", "scheduleResumeAfterDelay", "continuation", "Lkotlinx/coroutines/CancellableContinuation;", "toString", "kotlinx-coroutines-android"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/android/HandlerContext;", "Lkotlinx/coroutines/android/HandlerDispatcher;", "Lkotlinx/coroutines/Delay;", "handler", "Landroid/os/Handler;", "name", "", "(Landroid/os/Handler;Ljava/lang/String;)V", "invokeImmediately", "", "(Landroid/os/Handler;Ljava/lang/String;Z)V", "_immediate", "immediate", "getImmediate", "()Lkotlinx/coroutines/android/HandlerContext;", "dispatch", "", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "equals", "other", "", "hashCode", "", "invokeOnTimeout", "Lkotlinx/coroutines/DisposableHandle;", "timeMillis", "", "isDispatchNeeded", "scheduleResumeAfterDelay", "continuation", "Lkotlinx/coroutines/CancellableContinuation;", "toString", "kotlinx-coroutines-android"})
 public final class a
   extends b
-  implements at
 {
-  private final a TVq;
-  private final boolean TVr;
   private volatile a _immediate;
+  private final a abxU;
+  private final boolean abxV;
   private final Handler handler;
   private final String name;
   
@@ -37,8 +35,8 @@ public final class a
     AppMethodBeat.i(107776);
     this.handler = paramHandler;
     this.name = paramString;
-    this.TVr = paramBoolean;
-    if (this.TVr) {}
+    this.abxV = paramBoolean;
+    if (this.abxV) {}
     for (paramHandler = this;; paramHandler = null)
     {
       this._immediate = paramHandler;
@@ -49,18 +47,18 @@ public final class a
         paramHandler = new a(this.handler, this.name, true);
         this._immediate = paramHandler;
       }
-      this.TVq = paramHandler;
+      this.abxU = paramHandler;
       AppMethodBeat.o(107776);
       return;
     }
   }
   
-  public final void a(long paramLong, final k<? super x> paramk)
+  public final void a(long paramLong, final m<? super x> paramm)
   {
     AppMethodBeat.i(107773);
-    final Runnable localRunnable = (Runnable)new b(this, paramk);
-    this.handler.postDelayed(localRunnable, j.aN(paramLong, 4611686018427387903L));
-    paramk.W((kotlin.g.a.b)new c(this, localRunnable));
+    final Runnable localRunnable = (Runnable)new b(this, paramm);
+    this.handler.postDelayed(localRunnable, i.bf(paramLong, 4611686018427387903L));
+    paramm.am((kotlin.g.a.b)new c(this, localRunnable));
     AppMethodBeat.o(107773);
   }
   
@@ -71,30 +69,18 @@ public final class a
     AppMethodBeat.o(107772);
   }
   
-  public final bc d(long paramLong, final Runnable paramRunnable)
+  public final be d(long paramLong, final Runnable paramRunnable)
   {
-    AppMethodBeat.i(187958);
-    this.handler.postDelayed(paramRunnable, j.aN(paramLong, 4611686018427387903L));
-    paramRunnable = (bc)new a(this, paramRunnable);
-    AppMethodBeat.o(187958);
+    AppMethodBeat.i(243905);
+    this.handler.postDelayed(paramRunnable, i.bf(paramLong, 4611686018427387903L));
+    paramRunnable = (be)new a(this, paramRunnable);
+    AppMethodBeat.o(243905);
     return paramRunnable;
   }
   
   public final boolean equals(Object paramObject)
   {
     return ((paramObject instanceof a)) && (((a)paramObject).handler == this.handler);
-  }
-  
-  public final boolean hMH()
-  {
-    AppMethodBeat.i(187957);
-    if ((!this.TVr) || ((p.j(Looper.myLooper(), this.handler.getLooper()) ^ true)))
-    {
-      AppMethodBeat.o(187957);
-      return true;
-    }
-    AppMethodBeat.o(187957);
-    return false;
   }
   
   public final int hashCode()
@@ -105,12 +91,24 @@ public final class a
     return i;
   }
   
+  public final boolean iRd()
+  {
+    AppMethodBeat.i(243904);
+    if ((!this.abxV) || ((p.h(Looper.myLooper(), this.handler.getLooper()) ^ true)))
+    {
+      AppMethodBeat.o(243904);
+      return true;
+    }
+    AppMethodBeat.o(243904);
+    return false;
+  }
+  
   public final String toString()
   {
     AppMethodBeat.i(107774);
     if (this.name != null)
     {
-      if (this.TVr)
+      if (this.abxV)
       {
         str = this.name + " [immediate]";
         AppMethodBeat.o(107774);
@@ -125,35 +123,35 @@ public final class a
     return str;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"kotlinx/coroutines/android/HandlerContext$invokeOnTimeout$1", "Lkotlinx/coroutines/DisposableHandle;", "dispose", "", "kotlinx-coroutines-android"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"kotlinx/coroutines/android/HandlerContext$invokeOnTimeout$1", "Lkotlinx/coroutines/DisposableHandle;", "dispose", "", "kotlinx-coroutines-android"})
   public static final class a
-    implements bc
+    implements be
   {
     a(Runnable paramRunnable) {}
     
     public final void dispose()
     {
-      AppMethodBeat.i(187959);
-      a.a(this.TVs).removeCallbacks(paramRunnable);
-      AppMethodBeat.o(187959);
+      AppMethodBeat.i(243892);
+      a.a(this.abxW).removeCallbacks(paramRunnable);
+      AppMethodBeat.o(243892);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run", "kotlinx/coroutines/RunnableKt$Runnable$1"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "kotlinx/coroutines/RunnableKt$Runnable$1"})
   public static final class b
     implements Runnable
   {
-    public b(a parama, k paramk) {}
+    public b(a parama, m paramm) {}
     
     public final void run()
     {
       AppMethodBeat.i(107778);
-      paramk.a(this.TVs, x.SXb);
+      paramm.a(this.abxW, x.aazN);
       AppMethodBeat.o(107778);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke"})
   static final class c
     extends q
     implements kotlin.g.a.b<Throwable, x>
@@ -166,7 +164,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlinx.coroutines.android.a
  * JD-Core Version:    0.7.0.1
  */

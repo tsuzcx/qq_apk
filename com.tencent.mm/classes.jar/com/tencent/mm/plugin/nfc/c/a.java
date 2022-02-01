@@ -4,12 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static final char[] lOU = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
-  
-  public static byte[] b(short paramShort)
-  {
-    return new byte[] { (byte)(paramShort >>> 8 & 0xFF), (byte)(paramShort & 0xFF) };
-  }
+  private static final char[] oLo = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
   
   public static String byteArrayToHexString(byte[] paramArrayOfByte)
   {
@@ -24,13 +19,18 @@ public final class a
     while (i < paramArrayOfByte.length)
     {
       int j = paramArrayOfByte[i] & 0xFF;
-      arrayOfChar[(i * 2)] = lOU[(j >>> 4)];
-      arrayOfChar[(i * 2 + 1)] = lOU[(j & 0xF)];
+      arrayOfChar[(i * 2)] = oLo[(j >>> 4)];
+      arrayOfChar[(i * 2 + 1)] = oLo[(j & 0xF)];
       i += 1;
     }
     paramArrayOfByte = new String(arrayOfChar);
     AppMethodBeat.o(26677);
     return paramArrayOfByte;
+  }
+  
+  public static byte[] c(short paramShort)
+  {
+    return new byte[] { (byte)(paramShort >>> 8 & 0xFF), (byte)(paramShort & 0xFF) };
   }
   
   public static byte[] hexStringToByteArray(String paramString)

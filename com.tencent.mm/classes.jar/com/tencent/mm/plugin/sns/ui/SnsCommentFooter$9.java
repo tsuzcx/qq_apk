@@ -5,14 +5,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.z;
-import com.tencent.mm.n.f;
-import com.tencent.mm.n.h;
+import com.tencent.mm.plugin.sns.i.j;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.ui.MMActivity;
@@ -26,18 +23,18 @@ final class SnsCommentFooter$9
   {
     AppMethodBeat.i(98643);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/sns/ui/SnsCommentFooter$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    if (h.aqJ().getInt("SnsAdAtFriendRedDot", 0) == 1) {
-      g.aAh().azQ().set(ar.a.Oiq, Boolean.FALSE);
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/sns/ui/SnsCommentFooter$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    if (com.tencent.mm.n.h.axc().getInt("SnsAdAtFriendRedDot", 0) == 1) {
+      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VwG, Boolean.FALSE);
     }
-    SnsCommentFooter.g(this.EDc).setVisibility(8);
+    SnsCommentFooter.g(this.KQR).setVisibility(8);
     paramView = new Intent();
     paramView.putExtra("list_attr", 16391);
-    paramView.putExtra("block_contact", z.aTY());
+    paramView.putExtra("block_contact", z.bcZ());
     paramView.putExtra("max_limit_num", 1);
-    paramView.putExtra("titile", SnsCommentFooter.h(this.EDc).getString(2131765940));
-    c.c(SnsCommentFooter.h(this.EDc), ".ui.contact.SelectContactUI", paramView, 2333);
+    paramView.putExtra("titile", SnsCommentFooter.h(this.KQR).getString(i.j.sns_ad_comment_at_title));
+    c.d(SnsCommentFooter.h(this.KQR), ".ui.contact.SelectContactUI", paramView, 2333);
     a.a(this, "com/tencent/mm/plugin/sns/ui/SnsCommentFooter$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(98643);
   }

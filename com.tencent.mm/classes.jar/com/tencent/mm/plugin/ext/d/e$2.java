@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.ext.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.ext.d.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.SyncTask;
@@ -18,19 +18,19 @@ public final class e$2
     super(5000L, paramBoolean, true);
   }
   
-  private Boolean bRZ()
+  private Boolean ceW()
   {
     AppMethodBeat.i(24498);
-    g.aAg().hqi.a(782, new i()
+    h.aHF().kcd.a(782, new i()
     {
       public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
       {
         AppMethodBeat.i(24497);
-        if (((a)paramAnonymousq).sOj == 0) {}
+        if (((a)paramAnonymousq).wue == 0) {}
         for (boolean bool = true;; bool = false)
         {
           Log.i("MicroMsg.ExtQrCodeHandler", "hy: check url done. errType: %d, errCode: %d, errMsg %s, scene: %b", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Boolean.valueOf(bool) });
-          g.aAg().hqi.b(782, this);
+          h.aHF().kcd.b(782, this);
           if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
             break;
           }
@@ -42,7 +42,7 @@ public final class e$2
         AppMethodBeat.o(24497);
       }
     });
-    g.aAg().hqi.a(new a(this.val$url, this.lQH, this.lQI), 0);
+    h.aHF().kcd.a(new a(this.val$url, this.oNc, this.oNd), 0);
     Boolean localBoolean = Boolean.TRUE;
     AppMethodBeat.o(24498);
     return localBoolean;

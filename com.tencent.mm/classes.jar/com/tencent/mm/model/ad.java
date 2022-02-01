@@ -11,26 +11,26 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class ad
 {
-  private static volatile ad iCQ;
-  private Map<String, c> iCR;
+  private static volatile ad lsQ;
+  private Map<String, c> lsR;
   
   private ad()
   {
     AppMethodBeat.i(125111);
-    this.iCR = new a((byte)0);
+    this.lsR = new a((byte)0);
     AppMethodBeat.o(125111);
   }
   
-  private c JU(String paramString)
+  private c Rm(String paramString)
   {
     AppMethodBeat.i(125112);
     c localc = new c();
-    this.iCR.put(paramString, localc);
+    this.lsR.put(paramString, localc);
     AppMethodBeat.o(125112);
     return localc;
   }
   
-  public static String JX(String paramString)
+  public static String Rp(String paramString)
   {
     AppMethodBeat.i(125116);
     paramString = "SessionId@" + paramString + "#" + System.nanoTime();
@@ -38,16 +38,16 @@ public class ad
     return paramString;
   }
   
-  public static ad aVe()
+  public static ad beh()
   {
     AppMethodBeat.i(125110);
-    if (iCQ == null) {}
+    if (lsQ == null) {}
     try
     {
-      if (iCQ == null) {
-        iCQ = new ad();
+      if (lsQ == null) {
+        lsQ = new ad();
       }
-      ad localad = iCQ;
+      ad localad = lsQ;
       AppMethodBeat.o(125110);
       return localad;
     }
@@ -57,10 +57,10 @@ public class ad
     }
   }
   
-  public final b G(String paramString, boolean paramBoolean)
+  public final b I(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(125114);
-    c localc2 = (c)this.iCR.get(paramString);
+    c localc2 = (c)this.lsR.get(paramString);
     c localc1 = localc2;
     if (localc2 == null)
     {
@@ -69,20 +69,20 @@ public class ad
         AppMethodBeat.o(125114);
         return null;
       }
-      localc1 = JU(paramString);
+      localc1 = Rm(paramString);
     }
-    paramString = localc1.iCT;
+    paramString = localc1.lsT;
     AppMethodBeat.o(125114);
     return paramString;
   }
   
-  public final b JV(String paramString)
+  public final b Rn(String paramString)
   {
     AppMethodBeat.i(125113);
-    paramString = (c)this.iCR.get(paramString);
+    paramString = (c)this.lsR.get(paramString);
     if (paramString != null)
     {
-      paramString = paramString.iCT;
+      paramString = paramString.lsT;
       AppMethodBeat.o(125113);
       return paramString;
     }
@@ -90,13 +90,13 @@ public class ad
     return null;
   }
   
-  public final b JW(String paramString)
+  public final b Ro(String paramString)
   {
     AppMethodBeat.i(125115);
-    paramString = (c)this.iCR.remove(paramString);
+    paramString = (c)this.lsR.remove(paramString);
     if (paramString != null)
     {
-      paramString = paramString.iCT;
+      paramString = paramString.lsT;
       AppMethodBeat.o(125115);
       return paramString;
     }
@@ -109,8 +109,8 @@ public class ad
     AppMethodBeat.i(125117);
     long l = System.currentTimeMillis();
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("DataCenter \nDataStore size : ").append(this.iCR.size());
-    LinkedHashSet localLinkedHashSet = new LinkedHashSet(this.iCR.entrySet());
+    ((StringBuilder)localObject).append("DataCenter \nDataStore size : ").append(this.lsR.size());
+    LinkedHashSet localLinkedHashSet = new LinkedHashSet(this.lsR.entrySet());
     Iterator localIterator = localLinkedHashSet.iterator();
     while (localIterator.hasNext())
     {
@@ -121,8 +121,8 @@ public class ad
         if (localc != null)
         {
           ((StringBuilder)localObject).append("\nDataStore id : ").append((String)localEntry.getKey());
-          ((StringBuilder)localObject).append(", CT : ").append(localc.iCU).append("ms");
-          ((StringBuilder)localObject).append(", TTL : ").append((l - localc.iCU) / 1000L).append("s");
+          ((StringBuilder)localObject).append(", CT : ").append(localc.lsU).append("ms");
+          ((StringBuilder)localObject).append(", TTL : ").append((l - localc.lsU) / 1000L).append("s");
         }
       }
     }
@@ -194,23 +194,33 @@ public class ad
     }
   }
   
-  public static final class b
+  public static class b
   {
-    private Map<String, Object> iCS;
+    private Map<String, Object> lsS;
     
     public b()
     {
       AppMethodBeat.i(125094);
-      this.iCS = new ad.a((byte)0);
+      this.lsS = new ad.a((byte)0);
       AppMethodBeat.o(125094);
     }
     
-    public final long Fk(String paramString)
+    public final b J(String paramString, boolean paramBoolean)
+    {
+      AppMethodBeat.i(125099);
+      if (!TextUtils.isEmpty(paramString)) {
+        this.lsS.put(paramString, Boolean.valueOf(paramBoolean));
+      }
+      AppMethodBeat.o(125099);
+      return this;
+    }
+    
+    public final long Mh(String paramString)
     {
       AppMethodBeat.i(125103);
       if (!TextUtils.isEmpty(paramString))
       {
-        paramString = this.iCS.get(paramString);
+        paramString = this.lsS.get(paramString);
         if (!(paramString instanceof Long)) {}
       }
       for (long l = ((Long)paramString).longValue();; l = 0L)
@@ -220,22 +230,12 @@ public class ad
       }
     }
     
-    public final b H(String paramString, boolean paramBoolean)
-    {
-      AppMethodBeat.i(125099);
-      if (!TextUtils.isEmpty(paramString)) {
-        this.iCS.put(paramString, Boolean.valueOf(paramBoolean));
-      }
-      AppMethodBeat.o(125099);
-      return this;
-    }
-    
-    public final boolean JY(String paramString)
+    public final boolean Rq(String paramString)
     {
       AppMethodBeat.i(125101);
       if (!TextUtils.isEmpty(paramString))
       {
-        paramString = this.iCS.get(paramString);
+        paramString = this.lsS.get(paramString);
         if (!(paramString instanceof Boolean)) {}
       }
       for (boolean bool = ((Boolean)paramString).booleanValue();; bool = false)
@@ -245,11 +245,11 @@ public class ad
       }
     }
     
-    public final b aK(String paramString1, String paramString2)
+    public final b aO(String paramString1, String paramString2)
     {
       AppMethodBeat.i(125100);
       if (!TextUtils.isEmpty(paramString1)) {
-        this.iCS.put(paramString1, paramString2);
+        this.lsS.put(paramString1, paramString2);
       }
       AppMethodBeat.o(125100);
       return this;
@@ -258,7 +258,7 @@ public class ad
     public final boolean containsKey(String paramString)
     {
       AppMethodBeat.i(125096);
-      boolean bool = this.iCS.containsKey(paramString);
+      boolean bool = this.lsS.containsKey(paramString);
       AppMethodBeat.o(125096);
       return bool;
     }
@@ -266,7 +266,7 @@ public class ad
     public final Object get(String paramString)
     {
       AppMethodBeat.i(125102);
-      paramString = this.iCS.get(paramString);
+      paramString = this.lsS.get(paramString);
       AppMethodBeat.o(125102);
       return paramString;
     }
@@ -290,7 +290,7 @@ public class ad
       boolean bool = paramBoolean;
       if (!TextUtils.isEmpty(paramString))
       {
-        paramString = this.iCS.get(paramString);
+        paramString = this.lsS.get(paramString);
         bool = paramBoolean;
         if ((paramString instanceof Boolean)) {
           bool = ((Boolean)paramString).booleanValue();
@@ -306,7 +306,7 @@ public class ad
       int i = paramInt;
       if (!TextUtils.isEmpty(paramString))
       {
-        paramString = this.iCS.get(paramString);
+        paramString = this.lsS.get(paramString);
         i = paramInt;
         if ((paramString instanceof Integer)) {
           i = ((Integer)paramString).intValue();
@@ -319,7 +319,7 @@ public class ad
     public final Set<String> getKeySet()
     {
       AppMethodBeat.i(125095);
-      Set localSet = this.iCS.keySet();
+      Set localSet = this.lsS.keySet();
       AppMethodBeat.o(125095);
       return localSet;
     }
@@ -330,7 +330,7 @@ public class ad
       String str = paramString2;
       if (!TextUtils.isEmpty(paramString1))
       {
-        paramString1 = this.iCS.get(paramString1);
+        paramString1 = this.lsS.get(paramString1);
         str = paramString2;
         if ((paramString1 instanceof String)) {
           str = (String)paramString1;
@@ -340,11 +340,11 @@ public class ad
       return str;
     }
     
-    public final b l(String paramString, Object paramObject)
+    public final b k(String paramString, Object paramObject)
     {
       AppMethodBeat.i(125097);
       if (!TextUtils.isEmpty(paramString)) {
-        this.iCS.put(paramString, paramObject);
+        this.lsS.put(paramString, paramObject);
       }
       AppMethodBeat.o(125097);
       return this;
@@ -353,15 +353,15 @@ public class ad
     public final void recycle()
     {
       AppMethodBeat.i(125108);
-      this.iCS.clear();
+      this.lsS.clear();
       AppMethodBeat.o(125108);
     }
     
-    public final b y(String paramString, long paramLong)
+    public final b v(String paramString, long paramLong)
     {
       AppMethodBeat.i(125098);
       if (!TextUtils.isEmpty(paramString)) {
-        this.iCS.put(paramString, Long.valueOf(paramLong));
+        this.lsS.put(paramString, Long.valueOf(paramLong));
       }
       AppMethodBeat.o(125098);
       return this;
@@ -370,21 +370,21 @@ public class ad
   
   static final class c
   {
-    ad.b iCT;
-    long iCU;
+    ad.b lsT;
+    long lsU;
     
     c()
     {
       AppMethodBeat.i(125109);
-      this.iCT = new ad.b();
-      this.iCU = System.currentTimeMillis();
+      this.lsT = new ad.b();
+      this.lsU = System.currentTimeMillis();
       AppMethodBeat.o(125109);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.ad
  * JD-Core Version:    0.7.0.1
  */

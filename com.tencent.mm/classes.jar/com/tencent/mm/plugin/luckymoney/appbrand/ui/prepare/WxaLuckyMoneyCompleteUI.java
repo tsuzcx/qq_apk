@@ -8,40 +8,42 @@ import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.plugin.luckymoney.appbrand.ui.WxaLuckyMoneyBaseUI;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.ui.MMActivity;
 
 public class WxaLuckyMoneyCompleteUI
   extends WxaLuckyMoneyBaseUI
   implements b
 {
-  private Button nAa;
+  private Button qCl;
   
-  public final MMActivity eeF()
+  public final MMActivity eOa()
   {
     return this;
   }
   
-  public final void eeG() {}
+  public final void eOb() {}
   
   public final void error(String paramString) {}
   
   public int getLayoutId()
   {
-    return 2131497111;
+    return a.g.wxa_lucky_money_complete_ui;
   }
   
   public void initView()
   {
     AppMethodBeat.i(64942);
-    this.nAa = ((Button)findViewById(2131310638));
-    this.nAa.setOnClickListener(new View.OnClickListener()
+    this.qCl = ((Button)findViewById(a.f.wxa_lucky_money_complete_finish_btn));
+    this.qCl.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(64940);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyCompleteUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyCompleteUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         WxaLuckyMoneyCompleteUI.this.setResult(0, null);
         WxaLuckyMoneyCompleteUI.this.finish();
         a.a(this, "com/tencent/mm/plugin/luckymoney/appbrand/ui/prepare/WxaLuckyMoneyCompleteUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -75,7 +77,7 @@ public class WxaLuckyMoneyCompleteUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.appbrand.ui.prepare.WxaLuckyMoneyCompleteUI
  * JD-Core Version:    0.7.0.1
  */

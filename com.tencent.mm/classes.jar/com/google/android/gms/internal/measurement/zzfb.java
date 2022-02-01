@@ -44,7 +44,7 @@ public final class zzfb
     }
     try
     {
-      FirebaseInstanceId.yc().yd();
+      FirebaseInstanceId.yw().yx();
       String str = FirebaseInstanceId.zzf();
       AppMethodBeat.o(1301);
       return str;

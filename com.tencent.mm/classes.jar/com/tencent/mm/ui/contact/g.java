@@ -1,18 +1,17 @@
 package com.tencent.mm.ui.contact;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.fts.a.a.m;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ah;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
 import com.tencent.mm.storage.bw;
-import com.tencent.mm.storagebase.h;
 import com.tencent.wcdb.database.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,23 +26,23 @@ import java.util.Map.Entry;
 
 public final class g
 {
-  private List<String> PTJ;
-  private List<ah> PTK;
-  List<ah> PUu;
-  private List<ah> PUv;
-  Map<String, Integer> PUw;
+  private List<String> Xqu;
+  private List<ah> Xqv;
+  List<ah> Xre;
+  private List<ah> Xrf;
+  Map<String, Integer> Xrg;
   
   public g()
   {
     AppMethodBeat.i(102824);
-    this.PTJ = null;
-    this.PTK = null;
-    this.PUu = new LinkedList();
-    this.PUv = new LinkedList();
+    this.Xqu = null;
+    this.Xqv = null;
+    this.Xre = new LinkedList();
+    this.Xrf = new LinkedList();
     AppMethodBeat.o(102824);
   }
   
-  private static List<ah> C(List<ah> paramList, List<String> paramList1)
+  private static List<ah> I(List<ah> paramList, List<String> paramList1)
   {
     AppMethodBeat.i(102836);
     LinkedList localLinkedList = new LinkedList();
@@ -55,7 +54,7 @@ public final class g
       if (paramList.hasNext())
       {
         localah = (ah)paramList.next();
-        Object localObject = localah.bax();
+        Object localObject = localah.bjL();
         if (((List)localObject).size() == paramList1.size() + 1)
         {
           localObject = ((List)localObject).iterator();
@@ -66,7 +65,7 @@ public final class g
               break;
             }
             str = (String)((Iterator)localObject).next();
-          } while ((paramList1.contains(str)) || (z.Im(str)));
+          } while ((paramList1.contains(str)) || (z.PD(str)));
         }
       }
       else
@@ -89,15 +88,15 @@ public final class g
   {
     AppMethodBeat.i(102831);
     HashMap localHashMap = new HashMap();
-    String str1 = z.aTY();
+    String str1 = z.bcZ();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       Object localObject = (ah)paramList.next();
-      if (this.PUw.get(((ah)localObject).field_chatroomname) != null)
+      if (this.Xrg.get(((ah)localObject).field_chatroomname) != null)
       {
-        boolean bool = ((ah)localObject).JO(str1);
-        localObject = ((ah)localObject).bax().iterator();
+        boolean bool = ((ah)localObject).Rh(str1);
+        localObject = ((ah)localObject).bjL().iterator();
         String str2;
         while (((Iterator)localObject).hasNext())
         {
@@ -141,52 +140,24 @@ public final class g
     }
   }
   
-  private void gUz()
+  private void hUs()
   {
     AppMethodBeat.i(102833);
-    if (this.PUv.size() == 0)
+    if (this.Xrf.size() == 0)
     {
-      com.tencent.wcdb.Cursor localCursor = com.tencent.mm.kernel.g.aAh().hqK.gFH().rawQuery("select chatroomname,memberlist from chatroom where chatroomname like '%@chatroom'", null);
+      com.tencent.wcdb.Cursor localCursor = com.tencent.mm.kernel.h.aHG().kcF.hBZ().rawQuery("select chatroomname,memberlist from chatroom where chatroomname like '%@chatroom'", null);
       while (localCursor.moveToNext())
       {
         ah localah = new ah();
         localah.convertFrom(localCursor);
-        this.PUv.add(localah);
+        this.Xrf.add(localah);
       }
       localCursor.close();
     }
     AppMethodBeat.o(102833);
   }
   
-  private static List<ah> jD(List<String> paramList)
-  {
-    AppMethodBeat.i(102832);
-    LinkedList localLinkedList = new LinkedList();
-    if (paramList.size() == 0)
-    {
-      AppMethodBeat.o(102832);
-      return localLinkedList;
-    }
-    long l = Util.nowMilliSecond();
-    Object localObject = paramList.iterator();
-    String str;
-    for (paramList = "select chatroomname,memberlist from chatroom where memberCount < 50 "; ((Iterator)localObject).hasNext(); paramList = paramList + " and memberlist like \"%" + Util.escapeSqlValue(str) + "%\" ") {
-      str = (String)((Iterator)localObject).next();
-    }
-    paramList = com.tencent.mm.kernel.g.aAh().hqK.gFH().rawQuery(paramList, null);
-    while (paramList.moveToNext())
-    {
-      localObject = new ah();
-      ((ah)localObject).convertFrom(paramList);
-      localLinkedList.add(localObject);
-    }
-    paramList.close();
-    Log.i("MicroMsg.ContactRecommendHelper", "getChatroomByMembername cnt:%d time:%d", new Object[] { Integer.valueOf(localLinkedList.size()), Long.valueOf(Util.milliSecondsToNow(l)) });
-    AppMethodBeat.o(102832);
-    return localLinkedList;
-  }
-  
-  private List<String> jF(List<ah> paramList)
+  private List<String> kA(List<ah> paramList)
   {
     AppMethodBeat.i(102835);
     if ((paramList == null) || (paramList.size() == 0))
@@ -202,8 +173,8 @@ public final class g
     while (paramList.hasNext()) {
       ((List)localObject).add(((ah)paramList.next()).field_chatroomname);
     }
-    com.tencent.mm.kernel.g.aAi();
-    paramList = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().x((List)localObject, false);
+    com.tencent.mm.kernel.h.aHH();
+    paramList = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().z((List)localObject, false);
     localObject = new LinkedList();
     while (paramList.moveToNext())
     {
@@ -256,10 +227,38 @@ public final class g
     return paramList;
   }
   
-  public final boolean bnt(String paramString)
+  private static List<ah> ky(List<String> paramList)
+  {
+    AppMethodBeat.i(102832);
+    LinkedList localLinkedList = new LinkedList();
+    if (paramList.size() == 0)
+    {
+      AppMethodBeat.o(102832);
+      return localLinkedList;
+    }
+    long l = Util.nowMilliSecond();
+    Object localObject = paramList.iterator();
+    String str;
+    for (paramList = "select chatroomname,memberlist from chatroom where memberCount < 50 "; ((Iterator)localObject).hasNext(); paramList = paramList + " and memberlist like \"%" + Util.escapeSqlValue(str) + "%\" ") {
+      str = (String)((Iterator)localObject).next();
+    }
+    paramList = com.tencent.mm.kernel.h.aHG().kcF.hBZ().rawQuery(paramList, null);
+    while (paramList.moveToNext())
+    {
+      localObject = new ah();
+      ((ah)localObject).convertFrom(paramList);
+      localLinkedList.add(localObject);
+    }
+    paramList.close();
+    Log.i("MicroMsg.ContactRecommendHelper", "getChatroomByMembername cnt:%d time:%d", new Object[] { Integer.valueOf(localLinkedList.size()), Long.valueOf(Util.milliSecondsToNow(l)) });
+    AppMethodBeat.o(102832);
+    return localLinkedList;
+  }
+  
+  public final boolean bzT(String paramString)
   {
     AppMethodBeat.i(102826);
-    if ((this.PTJ != null) && (this.PTJ.contains(paramString)))
+    if ((this.Xqu != null) && (this.Xqu.contains(paramString)))
     {
       AppMethodBeat.o(102826);
       return true;
@@ -273,8 +272,8 @@ public final class g
     AppMethodBeat.i(102830);
     long l = System.currentTimeMillis();
     HashMap localHashMap = new HashMap();
-    if (paramList.contains(z.aTY())) {
-      paramList.remove(z.aTY());
+    if (paramList.contains(z.bcZ())) {
+      paramList.remove(z.bcZ());
     }
     Object localObject = paramList.iterator();
     while (((Iterator)localObject).hasNext()) {
@@ -285,23 +284,23 @@ public final class g
     {
       localIterator1 = ((List)((Iterator)localObject).next()).iterator();
       while (localIterator1.hasNext()) {
-        localHashMap.put(((m)localIterator1.next()).wVX, Boolean.TRUE);
+        localHashMap.put(((m)localIterator1.next()).BHS, Boolean.TRUE);
       }
     }
-    localHashMap.put(z.aTY(), Boolean.TRUE);
+    localHashMap.put(z.bcZ(), Boolean.TRUE);
     localObject = new LinkedList();
-    gUz();
-    Iterator localIterator1 = this.PUv.iterator();
-    label352:
+    hUs();
+    Iterator localIterator1 = this.Xrf.iterator();
+    label353:
     for (;;)
     {
       ah localah;
       if (localIterator1.hasNext())
       {
         localah = (ah)localIterator1.next();
-        if (localah.bax().size() == paramMap.size() + paramList.size() + 1)
+        if (localah.bjL().size() == paramMap.size() + paramList.size() + 1)
         {
-          Iterator localIterator2 = localah.bax().iterator();
+          Iterator localIterator2 = localah.bjL().iterator();
           do
           {
             if (!localIterator2.hasNext()) {
@@ -315,12 +314,12 @@ public final class g
         for (int i = 0;; i = 1)
         {
           if (i == 0) {
-            break label352;
+            break label353;
           }
           ((List)localObject).add(localah);
           break;
           Log.i("MicroMsg.ContactRecommendHelper", "getSearchRecommendChatroom, time %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-          paramList = jF((List)localObject);
+          paramList = kA((List)localObject);
           AppMethodBeat.o(102830);
           return paramList;
         }
@@ -328,109 +327,109 @@ public final class g
     }
   }
   
-  public final android.database.Cursor gUx()
+  public final android.database.Cursor hUq()
   {
     AppMethodBeat.i(102828);
-    com.tencent.mm.kernel.g.aAi();
-    android.database.Cursor localCursor2 = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().gCo();
+    com.tencent.mm.kernel.h.aHH();
+    android.database.Cursor localCursor2 = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().hyA();
     android.database.Cursor localCursor1 = localCursor2;
-    if (this.PTJ != null)
+    if (this.Xqu != null)
     {
       localCursor1 = localCursor2;
-      if (this.PTJ.size() > 0)
+      if (this.Xqu.size() > 0)
       {
-        com.tencent.mm.kernel.g.aAi();
-        localCursor1 = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().iP(this.PTJ);
+        com.tencent.mm.kernel.h.aHH();
+        localCursor1 = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().jH(this.Xqu);
       }
     }
     AppMethodBeat.o(102828);
     return localCursor1;
   }
   
-  public final android.database.Cursor gUy()
+  public final android.database.Cursor hUr()
   {
     AppMethodBeat.i(102829);
-    com.tencent.mm.kernel.g.aAi();
-    android.database.Cursor localCursor = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().gCo();
-    if (this.PUu.size() > 0)
+    com.tencent.mm.kernel.h.aHH();
+    android.database.Cursor localCursor = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().hyA();
+    if (this.Xre.size() > 0)
     {
-      com.tencent.mm.kernel.g.aAi();
-      localCursor = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().iM(jF(this.PUu));
+      com.tencent.mm.kernel.h.aHH();
+      localCursor = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().jE(kA(this.Xre));
     }
     AppMethodBeat.o(102829);
     return localCursor;
   }
   
-  public final void jC(List<String> paramList)
+  public final void kx(List<String> paramList)
   {
     int i = 6;
     AppMethodBeat.i(102827);
-    if (this.PTJ == null)
+    if (this.Xqu == null)
     {
-      if (paramList.contains(z.aTY())) {
-        paramList.remove(z.aTY());
+      if (paramList.contains(z.bcZ())) {
+        paramList.remove(z.bcZ());
       }
-      w.jN(paramList);
-      w.jL(paramList);
-      List localList = jD(paramList);
-      this.PTK = localList;
+      y.kI(paramList);
+      y.kG(paramList);
+      List localList = ky(paramList);
+      this.Xqv = localList;
       if (localList.size() > 0)
       {
-        this.PTJ = a(localList, paramList, 10);
-        this.PUu = C(this.PTK, paramList);
+        this.Xqu = a(localList, paramList, 10);
+        this.Xre = I(this.Xqv, paramList);
       }
-      if ((this.PTJ != null) && (this.PTJ.size() < 10) && (paramList.size() > 1))
+      if ((this.Xqu != null) && (this.Xqu.size() < 10) && (paramList.size() > 1))
       {
-        localList = jD(paramList.subList(paramList.size() - 1, paramList.size()));
+        localList = ky(paramList.subList(paramList.size() - 1, paramList.size()));
         if (localList.size() > 0)
         {
           LinkedList localLinkedList = new LinkedList();
-          localLinkedList.addAll(this.PTJ);
+          localLinkedList.addAll(this.Xqu);
           localLinkedList.addAll(paramList);
-          this.PTJ = a(localList, localLinkedList, 10 - this.PTJ.size());
+          this.Xqu = a(localList, localLinkedList, 10 - this.Xqu.size());
         }
       }
-      if (this.PTJ != null)
+      if (this.Xqu != null)
       {
-        paramList = this.PTJ;
-        if (this.PTJ.size() <= 6) {
+        paramList = this.Xqu;
+        if (this.Xqu.size() <= 6) {
           break label246;
         }
       }
       for (;;)
       {
-        w.jM(paramList.subList(0, i));
+        y.kH(paramList.subList(0, i));
         AppMethodBeat.o(102827);
         return;
         label246:
-        i = this.PTJ.size();
+        i = this.Xqu.size();
       }
     }
-    if (this.PTK != null)
+    if (this.Xqv != null)
     {
-      if (paramList.contains(z.aTY())) {
-        paramList.remove(z.aTY());
+      if (paramList.contains(z.bcZ())) {
+        paramList.remove(z.bcZ());
       }
-      this.PUu = C(this.PTK, paramList);
+      this.Xre = I(this.Xqv, paramList);
     }
     AppMethodBeat.o(102827);
   }
   
-  public final void jE(List<String> paramList)
+  public final void kz(List<String> paramList)
   {
     AppMethodBeat.i(102834);
-    if (this.PUw != null)
+    if (this.Xrg != null)
     {
       AppMethodBeat.o(102834);
       return;
     }
-    this.PUw = new HashMap();
-    paramList = ((l)com.tencent.mm.kernel.g.af(l.class)).aST().f(paramList, 0, 200);
+    this.Xrg = new HashMap();
+    paramList = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbR().h(paramList, 0, 200);
     int i = 1;
     int j = paramList.getColumnIndex("username");
     while (paramList.moveToNext())
     {
-      this.PUw.put(paramList.getString(j), Integer.valueOf(i));
+      this.Xrg.put(paramList.getString(j), Integer.valueOf(i));
       i += 1;
     }
     paramList.close();
@@ -440,9 +439,9 @@ public final class g
   public final void reset()
   {
     AppMethodBeat.i(102825);
-    this.PTJ = null;
-    this.PTK = null;
-    this.PUu.clear();
+    this.Xqu = null;
+    this.Xqv = null;
+    this.Xre.clear();
     AppMethodBeat.o(102825);
   }
 }

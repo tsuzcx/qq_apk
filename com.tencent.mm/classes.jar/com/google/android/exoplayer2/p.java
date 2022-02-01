@@ -4,24 +4,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class p
 {
-  public static final p bdM;
-  public final float bdN;
-  public final int bdO;
+  public static final p aNn;
+  public final float aNo;
+  public final int aNp;
   public final float pitch;
   
   static
   {
     AppMethodBeat.i(92512);
-    bdM = new p(1.0F, 1.0F);
+    aNn = new p(1.0F, 1.0F);
     AppMethodBeat.o(92512);
   }
   
   public p(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(92509);
-    this.bdN = paramFloat1;
+    this.aNo = paramFloat1;
     this.pitch = paramFloat2;
-    this.bdO = Math.round(1000.0F * paramFloat1);
+    this.aNp = Math.round(1000.0F * paramFloat1);
     AppMethodBeat.o(92509);
   }
   
@@ -39,7 +39,7 @@ public final class p
       return false;
     }
     paramObject = (p)paramObject;
-    if ((this.bdN == paramObject.bdN) && (this.pitch == paramObject.pitch))
+    if ((this.aNo == paramObject.aNo) && (this.pitch == paramObject.pitch))
     {
       AppMethodBeat.o(92510);
       return true;
@@ -51,7 +51,7 @@ public final class p
   public final int hashCode()
   {
     AppMethodBeat.i(92511);
-    int i = Float.floatToRawIntBits(this.bdN);
+    int i = Float.floatToRawIntBits(this.aNo);
     int j = Float.floatToRawIntBits(this.pitch);
     AppMethodBeat.o(92511);
     return (i + 527) * 31 + j;
@@ -59,7 +59,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.p
  * JD-Core Version:    0.7.0.1
  */

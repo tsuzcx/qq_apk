@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.wenote;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.model.be;
+import com.tencent.mm.pluginsdk.c.d;
 import com.tencent.mm.pluginsdk.n;
 
 public final class Plugin
@@ -16,7 +16,7 @@ public final class Plugin
     return locala;
   }
   
-  public final bd createSubCore()
+  public final be createSubCore()
   {
     AppMethodBeat.i(30257);
     com.tencent.mm.plugin.wenote.model.c localc = new com.tencent.mm.plugin.wenote.model.c();
@@ -24,14 +24,14 @@ public final class Plugin
     return localc;
   }
   
-  public final com.tencent.mm.pluginsdk.b.c getContactWidgetFactory()
+  public final com.tencent.mm.pluginsdk.c.c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.Plugin
  * JD-Core Version:    0.7.0.1
  */

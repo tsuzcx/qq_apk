@@ -14,17 +14,17 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class f
 {
-  public static String htT()
+  public static String ixC()
   {
-    AppMethodBeat.i(219086);
+    AppMethodBeat.i(196805);
     Object localObject1;
     if (Build.VERSION.SDK_INT >= 28)
     {
-      localObject1 = g.oj("android.app.Application", "getProcessName");
+      localObject1 = g.pf("android.app.Application", "getProcessName");
       if (localObject1 != null)
       {
         localObject1 = localObject1.toString();
-        AppMethodBeat.o(219086);
+        AppMethodBeat.o(196805);
         return localObject1;
       }
     }
@@ -38,7 +38,7 @@ public final class f
         if ((localObject1 instanceof String))
         {
           localObject1 = (String)localObject1;
-          AppMethodBeat.o(219086);
+          AppMethodBeat.o(196805);
           return localObject1;
         }
       }
@@ -62,13 +62,13 @@ public final class f
                   continue;
                 }
                 localObject2 = localRunningAppProcessInfo.processName;
-                AppMethodBeat.o(219086);
+                AppMethodBeat.o(196805);
                 return localObject2;
               }
             }
           }
         }
-        AppMethodBeat.o(219086);
+        AppMethodBeat.o(196805);
         return null;
       }
       Object localObject2 = null;

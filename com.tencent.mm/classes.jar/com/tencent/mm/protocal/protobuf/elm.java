@@ -1,117 +1,72 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class elm
-  extends dop
+  extends com.tencent.mm.cd.a
 {
-  public int NkC;
-  public String qvD;
-  public String yQE;
-  public String yXL;
+  public String UserName;
+  public String rWI;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(200230);
+    AppMethodBeat.i(125838);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      if (this.UserName != null) {
+        paramVarArgs.f(1, this.UserName);
       }
-      if (this.yQE != null) {
-        paramVarArgs.e(2, this.yQE);
+      if (this.rWI != null) {
+        paramVarArgs.f(2, this.rWI);
       }
-      if (this.qvD != null) {
-        paramVarArgs.e(3, this.qvD);
-      }
-      if (this.yXL != null) {
-        paramVarArgs.e(4, this.yXL);
-      }
-      paramVarArgs.aM(5, this.NkC);
-      AppMethodBeat.o(200230);
+      AppMethodBeat.o(125838);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label534;
+      if (this.UserName == null) {
+        break label274;
       }
     }
-    label534:
-    for (int i = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label274:
+    for (paramInt = g.a.a.b.b.a.g(1, this.UserName) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.yQE != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.yQE);
+      int i = paramInt;
+      if (this.rWI != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.rWI);
       }
-      i = paramInt;
-      if (this.qvD != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.qvD);
-      }
-      paramInt = i;
-      if (this.yXL != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.yXL);
-      }
-      i = g.a.a.b.b.a.bu(5, this.NkC);
-      AppMethodBeat.o(200230);
-      return paramInt + i;
+      AppMethodBeat.o(125838);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(200230);
+        AppMethodBeat.o(125838);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         elm localelm = (elm)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(200230);
+          AppMethodBeat.o(125838);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localelm.BaseRequest = ((jr)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(200230);
-          return 0;
-        case 2: 
-          localelm.yQE = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(200230);
-          return 0;
-        case 3: 
-          localelm.qvD = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(200230);
-          return 0;
-        case 4: 
-          localelm.yXL = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(200230);
+          localelm.UserName = locala.abFh.readString();
+          AppMethodBeat.o(125838);
           return 0;
         }
-        localelm.NkC = ((g.a.a.a.a)localObject1).UbS.zi();
-        AppMethodBeat.o(200230);
+        localelm.rWI = locala.abFh.readString();
+        AppMethodBeat.o(125838);
         return 0;
       }
-      AppMethodBeat.o(200230);
+      AppMethodBeat.o(125838);
       return -1;
     }
   }

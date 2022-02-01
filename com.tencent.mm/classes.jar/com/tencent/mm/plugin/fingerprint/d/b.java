@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.fingerprint.d;
 
 public abstract interface b
 {
-  public abstract void bg(int paramInt, String paramString);
+  public abstract void bh(int paramInt, String paramString);
 }
 
 

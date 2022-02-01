@@ -17,14 +17,14 @@ import java.util.Iterator;
 public final class c
   extends a
 {
-  AnimatorSet CPA;
-  a.a EUx;
+  AnimatorSet IVc;
+  a.a LiB;
   
   public c(MMActivity paramMMActivity, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
     AppMethodBeat.i(99954);
     this.activity = paramMMActivity;
-    this.EUx = ((a.a)paramBaseViewHolder);
+    this.LiB = ((a.a)paramBaseViewHolder);
     paramMMActivity = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     paramMMActivity.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
@@ -34,9 +34,9 @@ public final class c
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
         if (f != 0.0F)
         {
-          c.this.EUx.qVR.setScaleX(f);
-          c.this.EUx.qVR.setScaleY(f);
-          c.this.EUx.qVR.setAlpha(f);
+          c.this.LiB.uyC.setScaleX(f);
+          c.this.LiB.uyC.setScaleY(f);
+          c.this.LiB.uyC.setAlpha(f);
         }
         AppMethodBeat.o(99949);
       }
@@ -47,17 +47,17 @@ public final class c
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(99950);
-        if (c.this.EUx.hho)
+        if (c.this.LiB.jTm)
         {
           Log.i("MicroMsg.CardAdBackAnimation", "holder is busy");
-          paramAnonymousAnimator = c.this.CPA.getChildAnimations().iterator();
+          paramAnonymousAnimator = c.this.IVc.getChildAnimations().iterator();
           while (paramAnonymousAnimator.hasNext()) {
             ((Animator)paramAnonymousAnimator.next()).cancel();
           }
           AppMethodBeat.o(99950);
           return;
         }
-        c.this.EUx.hho = true;
+        c.this.LiB.jTm = true;
         AppMethodBeat.o(99950);
       }
     });
@@ -68,28 +68,28 @@ public final class c
       {
         AppMethodBeat.i(99951);
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        c.this.EUx.EXY.setAlpha(f);
+        c.this.LiB.Lmm.setAlpha(f);
         AppMethodBeat.o(99951);
       }
     });
     paramBaseViewHolder.setDuration(100L);
     paramBaseViewHolder.setStartDelay(300L);
-    this.CPA = new AnimatorSet();
-    this.CPA.playTogether(new Animator[] { paramMMActivity, paramBaseViewHolder });
-    this.CPA.addListener(new AnimatorListenerAdapter()
+    this.IVc = new AnimatorSet();
+    this.IVc.playTogether(new Animator[] { paramMMActivity, paramBaseViewHolder });
+    this.IVc.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(99953);
         Log.i("MicroMsg.CardAdBackAnimation", "onAnimation end");
-        c.this.EUx.qVR.setScaleX(1.0F);
-        c.this.EUx.qVR.setScaleY(1.0F);
-        c.this.EUx.qVR.setAlpha(1.0F);
-        c.this.EUx.EXY.setAlpha(1.0F);
-        if (c.this.ETY != null) {
-          c.this.ETY.onAnimationEnd();
+        c.this.LiB.uyC.setScaleX(1.0F);
+        c.this.LiB.uyC.setScaleY(1.0F);
+        c.this.LiB.uyC.setAlpha(1.0F);
+        c.this.LiB.Lmm.setAlpha(1.0F);
+        if (c.this.Lia != null) {
+          c.this.Lia.onAnimationEnd();
         }
-        c.this.EUx.hho = false;
+        c.this.LiB.jTm = false;
         AppMethodBeat.o(99953);
       }
       
@@ -97,27 +97,27 @@ public final class c
       {
         AppMethodBeat.i(99952);
         Log.i("MicroMsg.CardAdBackAnimation", "onAnimation start");
-        c.this.EUx.EXY.setAlpha(0.0F);
+        c.this.LiB.Lmm.setAlpha(0.0F);
         AppMethodBeat.o(99952);
       }
     });
     AppMethodBeat.o(99954);
   }
   
-  public final void JW(long paramLong)
+  public final void Rq(long paramLong)
   {
     AppMethodBeat.i(99955);
-    if (!this.CPA.isStarted())
+    if (!this.IVc.isStarted())
     {
-      this.CPA.setStartDelay(paramLong);
-      this.CPA.start();
+      this.IVc.setStartDelay(paramLong);
+      this.IVc.start();
     }
     AppMethodBeat.o(99955);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.b.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -134,7 +134,6 @@ public final class ConcatenatedDataBuffer<T>
     //   90	105	126	finally
     //   105	107	126	finally
     //   114	123	126	finally
-    //   127	129	126	finally
   }
   
   public final void clearFilters()
@@ -242,7 +241,11 @@ public final class ConcatenatedDataBuffer<T>
       int i = this.zznh;
       return i;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public final Bundle getMetadata()
@@ -252,7 +255,11 @@ public final class ConcatenatedDataBuffer<T>
       Bundle localBundle = this.mBundle;
       return localBundle;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   @Deprecated
@@ -363,7 +370,7 @@ public final class ConcatenatedDataBuffer<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.gms.common.data.ConcatenatedDataBuffer
  * JD-Core Version:    0.7.0.1
  */

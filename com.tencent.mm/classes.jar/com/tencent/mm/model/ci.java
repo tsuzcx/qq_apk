@@ -1,443 +1,293 @@
 package com.tencent.mm.model;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import junit.framework.Assert;
+import com.tencent.mm.vfs.u;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import org.json.JSONObject;
 
 public final class ci
 {
-  private a iFQ;
-  private long iFR;
-  private long iFS;
-  private String iFT;
-  private int iFU;
+  public static ci lvQ;
+  private SharedPreferences lvC;
+  private SharedPreferences lvR;
   
-  public ci(a parama)
+  static
   {
-    AppMethodBeat.i(132274);
-    this.iFQ = null;
-    this.iFR = 0L;
-    this.iFS = 0L;
-    this.iFT = "";
-    this.iFU = 1;
-    Assert.assertTrue(true);
-    this.iFQ = parama;
-    aWq();
-    AppMethodBeat.o(132274);
+    AppMethodBeat.i(132273);
+    lvQ = new ci();
+    AppMethodBeat.o(132273);
   }
   
-  private void aWq()
+  private ci()
   {
-    this.iFU = 1;
-    this.iFR = 0L;
-    this.iFS = 0L;
-    this.iFT = "";
+    AppMethodBeat.i(132262);
+    this.lvC = MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath() + "_account_history", 0);
+    this.lvR = MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath() + "_account_switch", 0);
+    AppMethodBeat.o(132262);
   }
   
-  private void aWu()
+  private void Sd(String paramString)
   {
+    AppMethodBeat.i(132270);
+    if (this.lvC.contains(paramString)) {}
     try
     {
-      AppMethodBeat.i(132278);
-      if ((this.iFU != 1) && (this.iFR + this.iFS < Util.nowMilliSecond())) {
-        aWs();
-      }
-      AppMethodBeat.o(132278);
+      u.deleteFile(getString(paramString, "last_avatar_path"));
+      this.lvC.edit().remove(paramString).commit();
+      AppMethodBeat.o(132270);
       return;
     }
-    finally {}
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.w("MicroMsg.SwitchAccountInfo", "remove avatar file error %s", new Object[] { localException.getMessage() });
+      }
+    }
   }
   
-  /* Error */
-  public final boolean aWr()
+  public final void Sa(String paramString)
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_1
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: ldc 67
-    //   6: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: invokestatic 61	com/tencent/mm/sdk/platformtools/Util:nowMilliSecond	()J
-    //   12: lstore 4
-    //   14: aload_0
-    //   15: invokestatic 71	com/tencent/mm/sdk/platformtools/Util:getStack	()Lcom/tencent/mm/sdk/platformtools/MMStack;
-    //   18: invokevirtual 77	com/tencent/mm/sdk/platformtools/MMStack:toString	()Ljava/lang/String;
-    //   21: putfield 38	com/tencent/mm/model/ci:iFT	Ljava/lang/String;
-    //   24: aload_0
-    //   25: getfield 40	com/tencent/mm/model/ci:iFU	I
-    //   28: iconst_1
-    //   29: if_icmpne +73 -> 102
-    //   32: aload_0
-    //   33: lload 4
-    //   35: putfield 34	com/tencent/mm/model/ci:iFS	J
-    //   38: aload_0
-    //   39: ldc2_w 78
-    //   42: putfield 32	com/tencent/mm/model/ci:iFR	J
-    //   45: ldc 81
-    //   47: ldc 83
-    //   49: iconst_2
-    //   50: anewarray 4	java/lang/Object
-    //   53: dup
-    //   54: iconst_0
-    //   55: ldc2_w 78
-    //   58: invokestatic 89	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   61: aastore
-    //   62: dup
-    //   63: iconst_1
-    //   64: aload_0
-    //   65: getfield 38	com/tencent/mm/model/ci:iFT	Ljava/lang/String;
-    //   68: aastore
-    //   69: invokestatic 94	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   72: aload_0
-    //   73: iconst_2
-    //   74: putfield 40	com/tencent/mm/model/ci:iFU	I
-    //   77: aload_0
-    //   78: getfield 30	com/tencent/mm/model/ci:iFQ	Lcom/tencent/mm/model/ci$a;
-    //   81: invokeinterface 97 1 0
-    //   86: ifeq +7 -> 93
-    //   89: aload_0
-    //   90: invokevirtual 100	com/tencent/mm/model/ci:aWt	()V
-    //   93: ldc 67
-    //   95: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   98: aload_0
-    //   99: monitorexit
-    //   100: iload_1
-    //   101: ireturn
-    //   102: aload_0
-    //   103: getfield 34	com/tencent/mm/model/ci:iFS	J
-    //   106: aload_0
-    //   107: getfield 32	com/tencent/mm/model/ci:iFR	J
-    //   110: ladd
-    //   111: lstore_2
-    //   112: lload 4
-    //   114: ldc2_w 78
-    //   117: ladd
-    //   118: lstore 4
-    //   120: lload 4
-    //   122: lload_2
-    //   123: lcmp
-    //   124: ifle +16 -> 140
-    //   127: aload_0
-    //   128: aload_0
-    //   129: getfield 32	com/tencent/mm/model/ci:iFR	J
-    //   132: lload 4
-    //   134: lload_2
-    //   135: lsub
-    //   136: ladd
-    //   137: putfield 32	com/tencent/mm/model/ci:iFR	J
-    //   140: ldc 81
-    //   142: ldc 102
-    //   144: iconst_5
-    //   145: anewarray 4	java/lang/Object
-    //   148: dup
-    //   149: iconst_0
-    //   150: aload_0
-    //   151: getfield 40	com/tencent/mm/model/ci:iFU	I
-    //   154: invokestatic 107	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   157: aastore
-    //   158: dup
-    //   159: iconst_1
-    //   160: ldc2_w 78
-    //   163: invokestatic 89	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   166: aastore
-    //   167: dup
-    //   168: iconst_2
-    //   169: lload 4
-    //   171: lload_2
-    //   172: lsub
-    //   173: invokestatic 89	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   176: aastore
-    //   177: dup
-    //   178: iconst_3
-    //   179: aload_0
-    //   180: getfield 32	com/tencent/mm/model/ci:iFR	J
-    //   183: invokestatic 89	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   186: aastore
-    //   187: dup
-    //   188: iconst_4
-    //   189: aload_0
-    //   190: getfield 38	com/tencent/mm/model/ci:iFT	Ljava/lang/String;
-    //   193: aastore
-    //   194: invokestatic 94	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   197: ldc 67
-    //   199: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   202: iconst_0
-    //   203: istore_1
-    //   204: goto -106 -> 98
-    //   207: astore 6
-    //   209: aload_0
-    //   210: monitorexit
-    //   211: aload 6
-    //   213: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	214	0	this	ci
-    //   1	203	1	bool	boolean
-    //   111	61	2	l1	long
-    //   12	158	4	l2	long
-    //   207	5	6	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   4	93	207	finally
-    //   93	98	207	finally
-    //   102	112	207	finally
-    //   127	140	207	finally
-    //   140	202	207	finally
+    AppMethodBeat.i(132266);
+    if (Sb(paramString))
+    {
+      Set localSet = this.lvR.getStringSet("first_switch_group", null);
+      if (localSet != null)
+      {
+        localSet.remove(paramString);
+        SharedPreferences.Editor localEditor = this.lvR.edit();
+        localEditor.remove("first_switch_group").apply();
+        localEditor.putStringSet("first_switch_group", localSet).commit();
+      }
+    }
+    if (Sc(paramString)) {
+      Sd(paramString);
+    }
+    AppMethodBeat.o(132266);
   }
   
-  /* Error */
-  public final void aWs()
+  public final boolean Sb(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc 108
-    //   4: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: ldc 81
-    //   9: ldc 110
-    //   11: iconst_2
-    //   12: anewarray 4	java/lang/Object
-    //   15: dup
-    //   16: iconst_0
-    //   17: aload_0
-    //   18: getfield 40	com/tencent/mm/model/ci:iFU	I
-    //   21: invokestatic 107	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   24: aastore
-    //   25: dup
-    //   26: iconst_1
-    //   27: invokestatic 71	com/tencent/mm/sdk/platformtools/Util:getStack	()Lcom/tencent/mm/sdk/platformtools/MMStack;
-    //   30: aastore
-    //   31: invokestatic 113	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   34: aload_0
-    //   35: getfield 40	com/tencent/mm/model/ci:iFU	I
-    //   38: iconst_1
-    //   39: if_icmpne +28 -> 67
-    //   42: ldc 81
-    //   44: ldc 115
-    //   46: iconst_1
-    //   47: anewarray 4	java/lang/Object
-    //   50: dup
-    //   51: iconst_0
-    //   52: invokestatic 71	com/tencent/mm/sdk/platformtools/Util:getStack	()Lcom/tencent/mm/sdk/platformtools/MMStack;
-    //   55: aastore
-    //   56: invokestatic 113	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   59: ldc 108
-    //   61: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   64: aload_0
-    //   65: monitorexit
-    //   66: return
-    //   67: aload_0
-    //   68: invokespecial 49	com/tencent/mm/model/ci:aWq	()V
-    //   71: new 117	com/tencent/mm/g/a/xl
-    //   74: dup
-    //   75: invokespecial 118	com/tencent/mm/g/a/xl:<init>	()V
-    //   78: astore_1
-    //   79: aload_1
-    //   80: getfield 122	com/tencent/mm/g/a/xl:edI	Lcom/tencent/mm/g/a/xl$a;
-    //   83: iconst_1
-    //   84: putfield 127	com/tencent/mm/g/a/xl$a:status	I
-    //   87: getstatic 133	com/tencent/mm/sdk/event/EventCenter:instance	Lcom/tencent/mm/sdk/event/EventCenter;
-    //   90: aload_1
-    //   91: invokevirtual 137	com/tencent/mm/sdk/event/EventCenter:publish	(Lcom/tencent/mm/sdk/event/IEvent;)Z
-    //   94: pop
-    //   95: ldc 108
-    //   97: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   100: goto -36 -> 64
-    //   103: astore_1
-    //   104: aload_0
-    //   105: monitorexit
-    //   106: aload_1
-    //   107: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	108	0	this	ci
-    //   78	13	1	localxl	com.tencent.mm.g.a.xl
-    //   103	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	64	103	finally
-    //   67	100	103	finally
+    AppMethodBeat.i(132268);
+    Set localSet = this.lvR.getStringSet("first_switch_group", null);
+    if (localSet == null)
+    {
+      AppMethodBeat.o(132268);
+      return false;
+    }
+    boolean bool = localSet.contains(paramString);
+    AppMethodBeat.o(132268);
+    return bool;
   }
   
-  /* Error */
-  public final void aWt()
+  public final boolean Sc(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc 138
-    //   4: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: getfield 40	com/tencent/mm/model/ci:iFU	I
-    //   11: iconst_2
-    //   12: if_icmpeq +38 -> 50
-    //   15: ldc 81
-    //   17: ldc 140
-    //   19: iconst_2
-    //   20: anewarray 4	java/lang/Object
-    //   23: dup
-    //   24: iconst_0
-    //   25: aload_0
-    //   26: getfield 40	com/tencent/mm/model/ci:iFU	I
-    //   29: invokestatic 107	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   32: aastore
-    //   33: dup
-    //   34: iconst_1
-    //   35: invokestatic 71	com/tencent/mm/sdk/platformtools/Util:getStack	()Lcom/tencent/mm/sdk/platformtools/MMStack;
-    //   38: aastore
-    //   39: invokestatic 143	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   42: ldc 138
-    //   44: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   47: aload_0
-    //   48: monitorexit
-    //   49: return
-    //   50: ldc 81
-    //   52: ldc 145
-    //   54: iconst_2
-    //   55: anewarray 4	java/lang/Object
-    //   58: dup
-    //   59: iconst_0
-    //   60: aload_0
-    //   61: getfield 34	com/tencent/mm/model/ci:iFS	J
-    //   64: invokestatic 149	com/tencent/mm/sdk/platformtools/Util:milliSecondsToNow	(J)J
-    //   67: invokestatic 89	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   70: aastore
-    //   71: dup
-    //   72: iconst_1
-    //   73: invokestatic 71	com/tencent/mm/sdk/platformtools/Util:getStack	()Lcom/tencent/mm/sdk/platformtools/MMStack;
-    //   76: aastore
-    //   77: invokestatic 113	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   80: aload_0
-    //   81: iconst_3
-    //   82: putfield 40	com/tencent/mm/model/ci:iFU	I
-    //   85: new 117	com/tencent/mm/g/a/xl
-    //   88: dup
-    //   89: invokespecial 118	com/tencent/mm/g/a/xl:<init>	()V
-    //   92: astore_1
-    //   93: aload_1
-    //   94: getfield 122	com/tencent/mm/g/a/xl:edI	Lcom/tencent/mm/g/a/xl$a;
-    //   97: iconst_3
-    //   98: putfield 127	com/tencent/mm/g/a/xl$a:status	I
-    //   101: getstatic 133	com/tencent/mm/sdk/event/EventCenter:instance	Lcom/tencent/mm/sdk/event/EventCenter;
-    //   104: aload_1
-    //   105: invokevirtual 137	com/tencent/mm/sdk/event/EventCenter:publish	(Lcom/tencent/mm/sdk/event/IEvent;)Z
-    //   108: pop
-    //   109: ldc 138
-    //   111: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   114: goto -67 -> 47
-    //   117: astore_1
-    //   118: aload_0
-    //   119: monitorexit
-    //   120: aload_1
-    //   121: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	122	0	this	ci
-    //   92	13	1	localxl	com.tencent.mm.g.a.xl
-    //   117	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	47	117	finally
-    //   50	114	117	finally
+    AppMethodBeat.i(132269);
+    boolean bool = this.lvC.contains(paramString);
+    AppMethodBeat.o(132269);
+    return bool;
   }
   
-  /* Error */
-  public final boolean aWv()
+  public final void aV(String paramString1, String paramString2)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc 151
-    //   4: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: invokespecial 153	com/tencent/mm/model/ci:aWu	()V
-    //   11: aload_0
-    //   12: getfield 40	com/tencent/mm/model/ci:iFU	I
-    //   15: iconst_2
-    //   16: if_icmpne +14 -> 30
-    //   19: iconst_1
-    //   20: istore_1
-    //   21: ldc 151
-    //   23: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   26: aload_0
-    //   27: monitorexit
-    //   28: iload_1
-    //   29: ireturn
-    //   30: iconst_0
-    //   31: istore_1
-    //   32: ldc 151
-    //   34: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   37: goto -11 -> 26
-    //   40: astore_2
-    //   41: aload_0
-    //   42: monitorexit
-    //   43: aload_2
-    //   44: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	45	0	this	ci
-    //   20	12	1	bool	boolean
-    //   40	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	19	40	finally
-    //   21	26	40	finally
-    //   32	37	40	finally
+    AppMethodBeat.i(132267);
+    if ((Util.isNullOrNil(new String[] { paramString1, paramString2 })) || (paramString1.equals(paramString2)))
+    {
+      AppMethodBeat.o(132267);
+      return;
+    }
+    Object localObject = this.lvR.getStringSet("first_switch_group", null);
+    if (localObject == null) {
+      localObject = new HashSet();
+    }
+    for (;;)
+    {
+      if ((((Set)localObject).contains(paramString1)) && (((Set)localObject).size() < 2)) {
+        ((Set)localObject).add(paramString2);
+      }
+      for (;;)
+      {
+        paramString1 = this.lvR.edit();
+        paramString1.remove("first_switch_group").apply();
+        paramString1.putStringSet("first_switch_group", (Set)localObject).commit();
+        AppMethodBeat.o(132267);
+        return;
+        Iterator localIterator = ((Set)localObject).iterator();
+        while (localIterator.hasNext()) {
+          Sd((String)localIterator.next());
+        }
+        ((Set)localObject).clear();
+        ((Set)localObject).add(paramString1);
+        ((Set)localObject).add(paramString2);
+      }
+    }
   }
   
-  /* Error */
-  public final boolean aWw()
+  public final Set<String> bfs()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc 155
-    //   4: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: invokespecial 153	com/tencent/mm/model/ci:aWu	()V
-    //   11: aload_0
-    //   12: getfield 40	com/tencent/mm/model/ci:iFU	I
-    //   15: iconst_3
-    //   16: if_icmpne +14 -> 30
-    //   19: iconst_1
-    //   20: istore_1
-    //   21: ldc 155
-    //   23: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   26: aload_0
-    //   27: monitorexit
-    //   28: iload_1
-    //   29: ireturn
-    //   30: iconst_0
-    //   31: istore_1
-    //   32: ldc 155
-    //   34: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   37: goto -11 -> 26
-    //   40: astore_2
-    //   41: aload_0
-    //   42: monitorexit
-    //   43: aload_2
-    //   44: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	45	0	this	ci
-    //   20	12	1	bool	boolean
-    //   40	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	19	40	finally
-    //   21	26	40	finally
-    //   32	37	40	finally
+    AppMethodBeat.i(132271);
+    HashSet localHashSet = new HashSet();
+    Set localSet = this.lvR.getStringSet("first_switch_group", null);
+    if ((localSet != null) && (!localSet.isEmpty())) {
+      localHashSet.addAll(localSet);
+    }
+    AppMethodBeat.o(132271);
+    return localHashSet;
   }
   
-  public static abstract interface a
+  public final String bft()
   {
-    public abstract boolean aWx();
+    AppMethodBeat.i(132272);
+    Object localObject2 = bfs();
+    Object localObject1 = new StringBuilder();
+    localObject2 = ((Set)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      ((StringBuilder)localObject1).append((String)((Iterator)localObject2).next());
+      ((StringBuilder)localObject1).append(';');
+    }
+    if (((StringBuilder)localObject1).length() > 0) {
+      ((StringBuilder)localObject1).deleteCharAt(((StringBuilder)localObject1).length() - 1);
+    }
+    Log.i("MicroMsg.SwitchAccountInfo", "switch users %s", new Object[] { ((StringBuilder)localObject1).toString() });
+    localObject1 = ((StringBuilder)localObject1).toString();
+    AppMethodBeat.o(132272);
+    return localObject1;
+  }
+  
+  public final void g(String paramString, Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(132264);
+    if (paramMap != null) {}
+    Object localObject;
+    for (;;)
+    {
+      try
+      {
+        if (paramMap.isEmpty())
+        {
+          Log.i("MicroMsg.SwitchAccountInfo", "kv map is null or empty!");
+          AppMethodBeat.o(132264);
+          return;
+        }
+        if (!this.lvC.contains(paramString)) {
+          break label177;
+        }
+        localObject = this.lvC.getString(paramString, "");
+        if (!Util.isNullOrNil((String)localObject))
+        {
+          localObject = new JSONObject(new String(Base64.decode((String)localObject, 0)));
+          Iterator localIterator = paramMap.keySet().iterator();
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          String str = (String)localIterator.next();
+          ((JSONObject)localObject).put(str, paramMap.get(str));
+          continue;
+        }
+        localObject = new JSONObject();
+      }
+      catch (Exception paramMap)
+      {
+        Log.e("MicroMsg.SwitchAccountInfo", "save account info about %s failed, error: %s", new Object[] { paramString, paramMap.getMessage() });
+        AppMethodBeat.o(132264);
+        return;
+      }
+      continue;
+      label177:
+      localObject = new JSONObject();
+    }
+    Log.i("MicroMsg.SwitchAccountInfo", "put json str %s", new Object[] { ((JSONObject)localObject).toString() });
+    this.lvC.edit().putString(paramString, Base64.encodeToString(((JSONObject)localObject).toString().getBytes(), 0)).commit();
+    AppMethodBeat.o(132264);
+  }
+  
+  public final String getString(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(132265);
+    try
+    {
+      Log.i("MicroMsg.SwitchAccountInfo", "get %s, %s", new Object[] { paramString1, paramString2 });
+      if (this.lvC.contains(paramString1))
+      {
+        Object localObject = new String(Base64.decode(this.lvC.getString(paramString1, ""), 0));
+        if (!Util.isNullOrNil((String)localObject))
+        {
+          Log.i("MicroMsg.SwitchAccountInfo", "get json str %s", new Object[] { localObject });
+          localObject = new JSONObject((String)localObject);
+          if (((JSONObject)localObject).has(paramString2))
+          {
+            localObject = ((JSONObject)localObject).getString(paramString2);
+            AppMethodBeat.o(132265);
+            return localObject;
+          }
+        }
+      }
+      else
+      {
+        Log.w("MicroMsg.SwitchAccountInfo", "account info about %s is not found!", new Object[] { paramString1 });
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.SwitchAccountInfo", "get account info %s about %s failed, error: %s", new Object[] { paramString2, paramString1, localException.getMessage() });
+      }
+    }
+    AppMethodBeat.o(132265);
+    return "";
+  }
+  
+  public final void o(String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(132263);
+    for (;;)
+    {
+      try
+      {
+        if (this.lvC.contains(paramString1))
+        {
+          localObject = this.lvC.getString(paramString1, "");
+          if (!Util.isNullOrNil((String)localObject))
+          {
+            localObject = new JSONObject(new String(Base64.decode((String)localObject, 0)));
+            if (!Util.isNullOrNil(new String[] { paramString2, paramString3 }))
+            {
+              ((JSONObject)localObject).put(paramString2, paramString3);
+              Log.i("MicroMsg.SwitchAccountInfo", "put key %s, jsonStr %s", new Object[] { paramString2, ((JSONObject)localObject).toString() });
+              this.lvC.edit().putString(paramString1, Base64.encodeToString(((JSONObject)localObject).toString().getBytes(), 0)).commit();
+            }
+            AppMethodBeat.o(132263);
+            return;
+          }
+          localObject = new JSONObject();
+          continue;
+        }
+        Object localObject = new JSONObject();
+      }
+      catch (Exception paramString3)
+      {
+        Log.e("MicroMsg.SwitchAccountInfo", "save account info %s about %s failed, error: %s", new Object[] { paramString2, paramString1, paramString3.getMessage() });
+        AppMethodBeat.o(132263);
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.model.ci
  * JD-Core Version:    0.7.0.1
  */

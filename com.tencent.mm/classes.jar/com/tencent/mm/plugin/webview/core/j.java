@@ -1,101 +1,102 @@
 package com.tencent.mm.plugin.webview.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bhj;
+import com.tencent.mm.plugin.webview.k.n;
+import com.tencent.mm.protocal.protobuf.bot;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/core/WebViewControllerListener;", "", "()V", "controller", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;", "getController", "()Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;", "setController", "(Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;)V", "onAuthEnd", "", "reason", "", "reqUrl", "", "onAuthError", "errType", "errCode", "errMsg", "onAuthStart", "onAuthSucc", "onBinded", "onFinish", "onFontSizeChanged", "fontSize", "onForceQuit", "onGoBack", "onJsReady", "onPerformanceCollect", "performanceHelper", "Lcom/tencent/mm/plugin/webview/util/WebViewPerformanceHelper;", "onPerformanceFetch", "onPermissionUpdate", "response", "Lcom/tencent/mm/protocal/protobuf/GetA8KeyResp;", "onProcessResult", "onProgressBarEnd", "onProgressBarStart", "onShowContent", "html", "onStartLoaded", "data", "", "onUrlRedirect", "webview-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/WebViewControllerListener;", "", "()V", "controller", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;", "getController", "()Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;", "setController", "(Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;)V", "onAuthEnd", "", "reason", "", "reqUrl", "", "onAuthError", "errType", "errCode", "errMsg", "onAuthStart", "onAuthSucc", "onBinded", "onFinish", "onFontSizeChanged", "fontSize", "onForceQuit", "onGoBack", "onJsReady", "onPerformanceCollect", "performanceHelper", "Lcom/tencent/mm/plugin/webview/util/WebViewPerformanceHelper;", "onPerformanceFetch", "onPermissionUpdate", "response", "Lcom/tencent/mm/protocal/protobuf/GetA8KeyResp;", "onProcessResult", "onProgressBarEnd", "onProgressBarStart", "onShowContent", "html", "onStartLoaded", "data", "", "onUrlRedirect", "webview-sdk_release"})
 public class j
 {
   public BaseWebViewController controller;
   
-  public void a(com.tencent.mm.plugin.webview.k.j paramj)
+  public void CN(boolean paramBoolean) {}
+  
+  public void a(n paramn)
   {
-    AppMethodBeat.i(225058);
-    p.h(paramj, "performanceHelper");
-    AppMethodBeat.o(225058);
+    AppMethodBeat.i(206415);
+    p.k(paramn, "performanceHelper");
+    AppMethodBeat.o(206415);
   }
   
-  public void a(String paramString, bhj parambhj)
+  public void a(String paramString, bot parambot)
   {
-    AppMethodBeat.i(225054);
-    p.h(paramString, "reqUrl");
-    p.h(parambhj, "response");
-    AppMethodBeat.o(225054);
+    AppMethodBeat.i(206413);
+    p.k(paramString, "reqUrl");
+    p.k(parambot, "response");
+    AppMethodBeat.o(206413);
   }
   
-  public void aXN(String paramString)
+  public void anz(int paramInt) {}
+  
+  public void b(n paramn)
   {
-    AppMethodBeat.i(225053);
-    p.h(paramString, "reqUrl");
-    AppMethodBeat.o(225053);
+    AppMethodBeat.i(206416);
+    p.k(paramn, "performanceHelper");
+    AppMethodBeat.o(206416);
   }
   
-  public void aXO(String paramString)
+  public void b(String paramString, bot parambot)
   {
-    AppMethodBeat.i(225060);
-    p.h(paramString, "html");
-    AppMethodBeat.o(225060);
+    AppMethodBeat.i(206411);
+    p.k(paramString, "reqUrl");
+    p.k(parambot, "response");
+    AppMethodBeat.o(206411);
   }
   
-  public void afL(int paramInt) {}
+  public void bXI() {}
   
-  public void b(com.tencent.mm.plugin.webview.k.j paramj)
+  public void bXK() {}
+  
+  public void bXL() {}
+  
+  public void bXM() {}
+  
+  public void bjH(String paramString)
   {
-    AppMethodBeat.i(225059);
-    p.h(paramj, "performanceHelper");
-    AppMethodBeat.o(225059);
+    AppMethodBeat.i(206409);
+    p.k(paramString, "reqUrl");
+    AppMethodBeat.o(206409);
   }
   
-  public void b(String paramString, bhj parambhj)
+  public void bjI(String paramString)
   {
-    AppMethodBeat.i(225055);
-    p.h(paramString, "reqUrl");
-    p.h(parambhj, "response");
-    AppMethodBeat.o(225055);
+    AppMethodBeat.i(206418);
+    p.k(paramString, "html");
+    AppMethodBeat.o(206418);
   }
   
-  public void by(int paramInt, String paramString)
+  public void bv(int paramInt, String paramString)
   {
-    AppMethodBeat.i(225052);
-    p.h(paramString, "reqUrl");
-    AppMethodBeat.o(225052);
+    AppMethodBeat.i(206407);
+    p.k(paramString, "reqUrl");
+    AppMethodBeat.o(206407);
   }
   
-  public void c(String paramString, bhj parambhj)
+  public void c(String paramString, bot parambot)
   {
-    AppMethodBeat.i(225056);
-    p.h(paramString, "reqUrl");
-    p.h(parambhj, "response");
-    AppMethodBeat.o(225056);
+    AppMethodBeat.i(206412);
+    p.k(paramString, "reqUrl");
+    p.k(parambot, "response");
+    AppMethodBeat.o(206412);
   }
-  
-  public void cpR() {}
   
   public void d(int paramInt1, String paramString1, int paramInt2, String paramString2)
   {
-    AppMethodBeat.i(225057);
-    p.h(paramString1, "reqUrl");
-    p.h(paramString2, "errMsg");
-    AppMethodBeat.o(225057);
+    AppMethodBeat.i(206414);
+    p.k(paramString1, "reqUrl");
+    p.k(paramString2, "errMsg");
+    AppMethodBeat.o(206414);
   }
   
-  public void ePr() {}
+  public void gSW() {}
   
-  public void gab() {}
+  public void gSX() {}
   
-  public void gac() {}
-  
-  public void gad() {}
-  
-  public void gae() {}
-  
-  public void gaf() {}
+  public void gSY() {}
   
   public void onFinish() {}
-  
-  public void yS(boolean paramBoolean) {}
 }
 
 

@@ -8,10 +8,10 @@ import java.io.Serializable;
 public final class e
   implements ITPMediaTrackClip, Serializable
 {
-  private int RYH;
-  private int RYI;
-  public String RYW;
-  private long RYX;
+  public String ZBG;
+  private long ZBH;
+  private int ZBr;
+  private int ZBs;
   private long mEndTime;
   private long mStartPosition;
   private long mStartTime;
@@ -25,15 +25,15 @@ public final class e
   
   public e(String paramString, int paramInt, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(189130);
+    AppMethodBeat.i(220179);
     if (TextUtils.isEmpty(paramString))
     {
       paramString = new IllegalArgumentException("TPMediaCompositionTrackClip : clipPath empty");
-      AppMethodBeat.o(189130);
+      AppMethodBeat.o(220179);
       throw paramString;
     }
-    this.RYH = paramInt;
-    this.RYW = paramString;
+    this.ZBr = paramInt;
+    this.ZBG = paramString;
     this.mStartTime = paramLong1;
     this.mEndTime = paramLong2;
     if (this.mStartTime < 0L) {
@@ -42,53 +42,53 @@ public final class e
     if (this.mEndTime <= 0L) {
       this.mEndTime = getOriginalDurationMs();
     }
-    this.RYI = c.arm(this.RYH);
-    AppMethodBeat.o(189130);
+    this.ZBs = c.aAZ(this.ZBr);
+    AppMethodBeat.o(220179);
   }
   
   public final ITPMediaTrackClip clone(int paramInt)
   {
-    AppMethodBeat.i(189133);
+    AppMethodBeat.i(220201);
     if ((paramInt != 3) && (paramInt != 2) && (paramInt != 1))
     {
-      AppMethodBeat.o(189133);
+      AppMethodBeat.o(220201);
       return null;
     }
     e locale = new e();
-    locale.RYH = paramInt;
-    locale.RYI = c.arm(this.RYH);
+    locale.ZBr = paramInt;
+    locale.ZBs = c.aAZ(this.ZBr);
     locale.mStartTime = this.mStartTime;
     locale.mEndTime = this.mEndTime;
-    locale.RYW = this.RYW;
-    AppMethodBeat.o(189133);
+    locale.ZBG = this.ZBG;
+    AppMethodBeat.o(220201);
     return locale;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(189132);
+    AppMethodBeat.i(220199);
     if (paramObject == null)
     {
-      AppMethodBeat.o(189132);
+      AppMethodBeat.o(220199);
       return false;
     }
     if (!(paramObject instanceof e))
     {
-      AppMethodBeat.o(189132);
+      AppMethodBeat.o(220199);
       return false;
     }
-    if ((this.RYI == ((e)paramObject).getClipId()) && (this.RYH == ((e)paramObject).getMediaType()))
+    if ((this.ZBs == ((e)paramObject).getClipId()) && (this.ZBr == ((e)paramObject).getMediaType()))
     {
-      AppMethodBeat.o(189132);
+      AppMethodBeat.o(220199);
       return true;
     }
-    AppMethodBeat.o(189132);
+    AppMethodBeat.o(220199);
     return false;
   }
   
   public final int getClipId()
   {
-    return this.RYI;
+    return this.ZBs;
   }
   
   public final long getEndTimeMs()
@@ -98,17 +98,17 @@ public final class e
   
   public final String getFilePath()
   {
-    return this.RYW;
+    return this.ZBG;
   }
   
   public final int getMediaType()
   {
-    return this.RYH;
+    return this.ZBr;
   }
   
   public final long getOriginalDurationMs()
   {
-    return this.RYX;
+    return this.ZBH;
   }
   
   public final long getStartPositionMs()
@@ -123,23 +123,23 @@ public final class e
   
   public final String getUrl()
   {
-    return this.RYW;
+    return this.ZBG;
   }
   
   public final void setCutTimeRange(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(189131);
+    AppMethodBeat.i(220185);
     IllegalArgumentException localIllegalArgumentException;
     if (paramLong1 >= getOriginalDurationMs())
     {
       localIllegalArgumentException = new IllegalArgumentException("setCutTimeRange: Start time is greater than duration");
-      AppMethodBeat.o(189131);
+      AppMethodBeat.o(220185);
       throw localIllegalArgumentException;
     }
     if (paramLong2 > getOriginalDurationMs())
     {
       localIllegalArgumentException = new IllegalArgumentException("setCutTimeRange: Start time is greater than duration");
-      AppMethodBeat.o(189131);
+      AppMethodBeat.o(220185);
       throw localIllegalArgumentException;
     }
     long l = paramLong1;
@@ -153,17 +153,17 @@ public final class e
     if (l >= paramLong1)
     {
       localIllegalArgumentException = new IllegalArgumentException("setCutTimeRange: Start time is greater than end time");
-      AppMethodBeat.o(189131);
+      AppMethodBeat.o(220185);
       throw localIllegalArgumentException;
     }
     this.mStartTime = l;
     this.mEndTime = paramLong1;
-    AppMethodBeat.o(189131);
+    AppMethodBeat.o(220185);
   }
   
   public final void setOriginalDurationMs(long paramLong)
   {
-    this.RYX = paramLong;
+    this.ZBH = paramLong;
   }
   
   public final void setStartPositionMs(long paramLong)
@@ -173,7 +173,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.c.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,496 +1,607 @@
 package com.tencent.mm.app;
 
-import android.app.Application;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.pm.ApplicationInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Process;
+import android.os.SystemClock;
+import android.provider.Settings.Secure;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.a;
+import com.tencent.mm.R.l;
+import com.tencent.mm.am.p;
+import com.tencent.mm.booter.z;
+import com.tencent.mm.booter.z.a;
+import com.tencent.mm.f.a.e;
+import com.tencent.mm.f.a.l;
+import com.tencent.mm.f.a.yq;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.cg;
+import com.tencent.mm.modelmulti.o;
+import com.tencent.mm.modelmulti.o.b;
+import com.tencent.mm.modelmulti.o.d;
+import com.tencent.mm.modelmulti.o.e;
+import com.tencent.mm.modelsimple.f;
+import com.tencent.mm.modelstat.n;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j;
+import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMUncaughtExceptionHandler;
-import com.tencent.mm.sdk.platformtools.MMUncaughtExceptionHandler.IOnUncaughtExceptionListener;
-import com.tencent.tinker.entry.ApplicationLike;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.ui.widget.a.f.a;
+import com.tencent.mm.ui.widget.a.f.c;
+import java.util.Iterator;
+import java.util.List;
 
+@Deprecated
 public final class ag
+  extends o.a
 {
-  private MMUncaughtExceptionHandler.IOnUncaughtExceptionListener dmA;
-  volatile boolean dmy;
-  boolean dmz;
-  ApplicationLike mAppLike;
-  private volatile boolean mInstalled;
+  private static int feg = -1;
+  private static boolean fei = false;
+  private final int feA;
+  private final int feB;
+  private final int feC;
+  private final int feD;
+  private final int feE;
+  private final int feF;
+  private final int feG;
+  private final int feH;
+  public boolean fef;
+  private boolean feh;
+  private final MTimerHandler fej;
+  private final long fek;
+  private final long fel;
+  private final long fem;
+  private final long fen;
+  private final long feo;
+  private final long fep;
+  private final long feq;
+  private final long fer;
+  private final long fes;
+  private int fet;
+  private long feu;
+  private int fev;
+  private final int few;
+  private final int fex;
+  private final int fey;
+  private final int fez;
+  private Handler handler;
   
   public ag()
   {
-    AppMethodBeat.i(125030);
-    this.mAppLike = null;
-    this.mInstalled = false;
-    this.dmy = false;
-    this.dmz = false;
-    this.dmA = new MMUncaughtExceptionHandler.IOnUncaughtExceptionListener()
+    AppMethodBeat.i(19482);
+    this.fef = true;
+    this.feh = false;
+    this.handler = new Handler(Looper.getMainLooper());
+    this.fej = new MTimerHandler(new MTimerHandler.CallBack()
     {
-      /* Error */
-      public final void uncaughtException(MMUncaughtExceptionHandler arg1, String paramAnonymousString, Throwable paramAnonymousThrowable)
+      public final boolean onTimerExpired()
       {
-        // Byte code:
-        //   0: ldc 23
-        //   2: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-        //   5: aload_0
-        //   6: getfield 14	com/tencent/mm/app/ag$1:dmB	Lcom/tencent/mm/app/ag;
-        //   9: getfield 33	com/tencent/mm/app/ag:mAppLike	Lcom/tencent/tinker/entry/ApplicationLike;
-        //   12: invokestatic 39	com/tencent/tinker/lib/e/b:c	(Lcom/tencent/tinker/entry/ApplicationLike;)Z
-        //   15: ifne +9 -> 24
-        //   18: ldc 23
-        //   20: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   23: return
-        //   24: aload_3
-        //   25: instanceof 44
-        //   28: ifne +30 -> 58
-        //   31: aload_3
-        //   32: instanceof 46
-        //   35: ifne +23 -> 58
-        //   38: aload_3
-        //   39: instanceof 48
-        //   42: ifne +16 -> 58
-        //   45: aload_3
-        //   46: instanceof 50
-        //   49: ifne +9 -> 58
-        //   52: ldc 23
-        //   54: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   57: return
-        //   58: aload_0
-        //   59: getfield 14	com/tencent/mm/app/ag$1:dmB	Lcom/tencent/mm/app/ag;
-        //   62: getfield 54	com/tencent/mm/app/ag:dmz	Z
-        //   65: ifne +9 -> 74
-        //   68: ldc 23
-        //   70: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   73: return
-        //   74: aload_0
-        //   75: getfield 14	com/tencent/mm/app/ag$1:dmB	Lcom/tencent/mm/app/ag;
-        //   78: getfield 33	com/tencent/mm/app/ag:mAppLike	Lcom/tencent/tinker/entry/ApplicationLike;
-        //   81: invokevirtual 60	com/tencent/tinker/entry/ApplicationLike:getApplication	()Landroid/app/Application;
-        //   84: ldc 62
-        //   86: iconst_4
-        //   87: invokevirtual 68	android/app/Application:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-        //   90: astore_2
-        //   91: aload_0
-        //   92: getfield 14	com/tencent/mm/app/ag$1:dmB	Lcom/tencent/mm/app/ag;
-        //   95: astore_1
-        //   96: aload_1
-        //   97: monitorenter
-        //   98: aload_0
-        //   99: getfield 14	com/tencent/mm/app/ag$1:dmB	Lcom/tencent/mm/app/ag;
-        //   102: getfield 71	com/tencent/mm/app/ag:dmy	Z
-        //   105: ifne +102 -> 207
-        //   108: aload_2
-        //   109: ldc 73
-        //   111: iconst_0
-        //   112: invokeinterface 79 3 0
-        //   117: istore 4
-        //   119: iload 4
-        //   121: iconst_3
-        //   122: if_icmple +115 -> 237
-        //   125: new 81	java/lang/StringBuilder
-        //   128: dup
-        //   129: invokespecial 82	java/lang/StringBuilder:<init>	()V
-        //   132: getstatic 88	com/tencent/mm/loader/j/a:CLIENT_VERSION	Ljava/lang/String;
-        //   135: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   138: ldc 94
-        //   140: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   143: invokevirtual 98	java/lang/StringBuilder:toString	()Ljava/lang/String;
-        //   146: astore_3
-        //   147: aload_2
-        //   148: aload_3
-        //   149: iconst_0
-        //   150: invokeinterface 79 3 0
-        //   155: istore 4
-        //   157: aload_2
-        //   158: invokeinterface 102 1 0
-        //   163: aload_3
-        //   164: iload 4
-        //   166: iconst_1
-        //   167: iadd
-        //   168: invokeinterface 108 3 0
-        //   173: ldc 73
-        //   175: iconst_0
-        //   176: invokeinterface 108 3 0
-        //   181: invokeinterface 112 1 0
-        //   186: pop
-        //   187: aload_0
-        //   188: getfield 14	com/tencent/mm/app/ag$1:dmB	Lcom/tencent/mm/app/ag;
-        //   191: getfield 33	com/tencent/mm/app/ag:mAppLike	Lcom/tencent/tinker/entry/ApplicationLike;
-        //   194: invokestatic 116	com/tencent/tinker/lib/e/b:e	(Lcom/tencent/tinker/entry/ApplicationLike;)V
-        //   197: ldc 118
-        //   199: ldc 120
-        //   201: invokestatic 126	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-        //   204: invokestatic 129	com/tencent/mm/sdk/platformtools/Log:appenderFlushSync	()V
-        //   207: aload_1
-        //   208: monitorexit
-        //   209: ldc 23
-        //   211: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   214: return
-        //   215: astore_1
-        //   216: ldc 118
-        //   218: aload_1
-        //   219: ldc 131
-        //   221: iconst_0
-        //   222: anewarray 4	java/lang/Object
-        //   225: invokestatic 135	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-        //   228: invokestatic 129	com/tencent/mm/sdk/platformtools/Log:appenderFlushSync	()V
-        //   231: ldc 23
-        //   233: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   236: return
-        //   237: aload_2
-        //   238: invokeinterface 102 1 0
-        //   243: ldc 73
-        //   245: iload 4
-        //   247: iconst_1
-        //   248: iadd
-        //   249: invokeinterface 108 3 0
-        //   254: invokeinterface 112 1 0
-        //   259: pop
-        //   260: goto -53 -> 207
-        //   263: astore_2
-        //   264: aload_1
-        //   265: monitorexit
-        //   266: ldc 23
-        //   268: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   271: aload_2
-        //   272: athrow
-        // Local variable table:
-        //   start	length	slot	name	signature
-        //   0	273	0	this	1
-        //   0	273	2	paramAnonymousString	String
-        //   0	273	3	paramAnonymousThrowable	Throwable
-        //   117	132	4	i	int
-        // Exception table:
-        //   from	to	target	type
-        //   74	98	215	java/lang/Throwable
-        //   209	214	215	java/lang/Throwable
-        //   266	273	215	java/lang/Throwable
-        //   98	119	263	finally
-        //   125	207	263	finally
-        //   207	209	263	finally
-        //   237	260	263	finally
-        //   264	266	263	finally
-      }
-    };
-    AppMethodBeat.o(125030);
-  }
-  
-  public static ag WK()
-  {
-    return a.dmC;
-  }
-  
-  private boolean WO()
-  {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(125033);
-        if (!this.mInstalled)
+        AppMethodBeat.i(19480);
+        Log.i("MicroMsg.TempAppForegroundNotifyDeprecated", "onTimerExpired");
+        Object localObject = Util.getTopActivityName(MMApplicationContext.getContext());
+        if ((localObject != null) && (((String)localObject).toLowerCase().startsWith(MMApplicationContext.getSourcePackageName())))
         {
-          Log.w("MicroMsg.TinkerEnsuranceOnFault", "[!] Uninitialized or install failed, isCleanPatchTriggered will return false.");
-          AppMethodBeat.o(125033);
-          return bool1;
+          Log.i("MicroMsg.TempAppForegroundNotifyDeprecated", "onTimerExpired, top activity belongs to mm, skip kill tools");
+          AppMethodBeat.o(19480);
+          return false;
         }
-        int i = this.mAppLike.getApplication().getSharedPreferences("tinker_ensurance_info", 4).getInt(a.CLIENT_VERSION + "_clean_patch_count", 0);
-        bool1 = bool2;
-        if (i > 0) {
-          bool1 = true;
-        }
-        if (bool1)
+        long l = System.currentTimeMillis();
+        localObject = ((com.tencent.mm.plugin.multitask.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.multitask.d.class)).getTaskInfoByType(2);
+        if (localObject != null)
         {
-          Log.w("MicroMsg.TinkerEnsuranceOnFault", "[tomys] ensurance logic says: we have cleaned patch by %s times !!", new Object[] { Integer.valueOf(i) });
-          AppMethodBeat.o(125033);
+          localObject = ((List)localObject).iterator();
+          do
+          {
+            if (!((Iterator)localObject).hasNext()) {
+              break;
+            }
+          } while (((MultiTaskInfo)((Iterator)localObject).next()).field_createTime - l > 1800000L);
         }
-        else
+        for (int i = 1;; i = 0)
         {
-          Log.i("MicroMsg.TinkerEnsuranceOnFault", "[tomys] ensurance logic says: clean patch logic is not being triggered.");
-        }
-      }
-      finally {}
-    }
-  }
-  
-  private boolean WP()
-  {
-    boolean bool = false;
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(125034);
-        if (!this.mInstalled)
-        {
-          Log.w("MicroMsg.TinkerEnsuranceOnFault", "[!] Uninitialized or install failed, isCleanPatchReported will return false.");
-          AppMethodBeat.o(125034);
-          return bool;
-        }
-        if (this.mAppLike.getApplication().getSharedPreferences("tinker_ensurance_info", 4).getInt(a.CLIENT_VERSION + "_clean_patch_reported", 0) != 0)
-        {
-          bool = true;
-          AppMethodBeat.o(125034);
-        }
-        else
-        {
-          AppMethodBeat.o(125034);
-        }
-      }
-      finally {}
-    }
-  }
-  
-  private boolean WQ()
-  {
-    boolean bool = false;
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(125035);
-        if (!this.mInstalled)
-        {
-          Log.w("MicroMsg.TinkerEnsuranceOnFault", "[!] Uninitialized or install failed, isBlockApplyPatchReported will return false.");
-          AppMethodBeat.o(125035);
-          return bool;
-        }
-        if (this.mAppLike.getApplication().getSharedPreferences("tinker_ensurance_info", 4).getInt(a.CLIENT_VERSION + "_block_apply_patch_reported", 0) != 0)
-        {
-          bool = true;
-          AppMethodBeat.o(125035);
-        }
-        else
-        {
-          AppMethodBeat.o(125035);
-        }
-      }
-      finally {}
-    }
-  }
-  
-  public final void WL()
-  {
-    try
-    {
-      this.dmy = false;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final void WM()
-  {
-    try
-    {
-      this.dmy = true;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final boolean WN()
-  {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(125032);
-        if (!this.mInstalled)
-        {
-          Log.w("MicroMsg.TinkerEnsuranceOnFault", "[!] Uninitialized or install failed, canApplyPatch will return true.");
-          AppMethodBeat.o(125032);
-          return bool1;
-        }
-        if (this.mAppLike.getApplication().getSharedPreferences("tinker_ensurance_info", 4).getInt(a.CLIENT_VERSION + "_clean_patch_count", 0) <= 3)
-        {
-          bool1 = bool2;
-          if (!bool1) {
-            break label109;
+          Log.i("MicroMsg.TempAppForegroundNotifyDeprecated", "ToolsProfile.ToolsProcessLocker.isLockedUsedByOtherProcess():" + ToolsProfile.a.abu());
+          boolean bool = ToolsProfile.a.abu();
+          if ((!bool) && (i == 0))
+          {
+            Log.i("MicroMsg.TempAppForegroundNotifyDeprecated", "onTimerExpired, kill tools process");
+            com.tencent.mm.xwebutil.c.bCD("com.tencent.mm.intent.ACTION_KILL_TOOLS_PROCESS");
+            ag.a(ag.this);
+            ag.b(ag.this);
+            Log.i("MicroMsg.TempAppForegroundNotifyDeprecated", "sameLevelReleaseCnt:%d    lastReleaseTime:%d    level:%d", new Object[] { Integer.valueOf(ag.c(ag.this)), Long.valueOf(ag.d(ag.this)), Integer.valueOf(ag.e(ag.this)) });
+            if ((l - ag.d(ag.this) <= 2L * ag.f(ag.this)) && (ag.c(ag.this) >= 2))
+            {
+              ag.g(ag.this);
+              ag.h(ag.this);
+              Log.i("MicroMsg.TempAppForegroundNotifyDeprecated", "level up, now:%d", new Object[] { Integer.valueOf(ag.e(ag.this)) });
+            }
+            ag.a(ag.this, l);
           }
-          Log.i("MicroMsg.TinkerEnsuranceOnFault", "[tomys] ensurance logic says: we can apply patch.");
-          AppMethodBeat.o(125032);
-          continue;
+          for (;;)
+          {
+            AppMethodBeat.o(19480);
+            return false;
+            if (bool) {
+              com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1686L, 13L, 1L, false);
+            }
+            if (i != 0) {
+              com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1686L, 12L, 1L, false);
+            }
+          }
         }
-        bool1 = false;
       }
-      finally {}
-      continue;
-      label109:
-      Log.w("MicroMsg.TinkerEnsuranceOnFault", "[tomys] ensurance logic says: we CANNOT apply patch !!");
+    }, true);
+    this.fek = 30000L;
+    this.fel = 60000L;
+    this.fem = 180000L;
+    this.fen = 300000L;
+    this.feo = 600000L;
+    this.fep = 900000L;
+    this.feq = 1200000L;
+    this.fer = 1800000L;
+    this.fes = 1800000L;
+    this.fet = 0;
+    this.feu = 0L;
+    this.fev = 0;
+    this.few = 1686;
+    this.fex = 1;
+    this.fey = 2;
+    this.fez = 3;
+    this.feA = 4;
+    this.feB = 5;
+    this.feC = 6;
+    this.feD = 7;
+    this.feE = 8;
+    this.feF = 11;
+    this.feG = 12;
+    this.feH = 13;
+    AppMethodBeat.o(19482);
+  }
+  
+  private long abh()
+  {
+    AppMethodBeat.i(282302);
+    ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vtA, 0);
+    if ((1 == ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vtB, 0)) || (com.tencent.mm.protocal.d.RAG)) {}
+    switch (this.fet)
+    {
+    default: 
+      AppMethodBeat.o(282302);
+      return 1800000L;
+    case 0: 
+      AppMethodBeat.o(282302);
+      return 30000L;
+    case 1: 
+      AppMethodBeat.o(282302);
+      return 60000L;
+    case 2: 
+      AppMethodBeat.o(282302);
+      return 180000L;
+    case 3: 
+      AppMethodBeat.o(282302);
+      return 300000L;
+    case 4: 
+      AppMethodBeat.o(282302);
+      return 600000L;
+    case 5: 
+      AppMethodBeat.o(282302);
+      return 900000L;
     }
+    AppMethodBeat.o(282302);
+    return 1200000L;
   }
   
-  /* Error */
-  public final void WR()
+  final Handler getHandler()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc 142
-    //   4: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: getfield 32	com/tencent/mm/app/ag:mInstalled	Z
-    //   11: ifne +18 -> 29
-    //   14: ldc 56
-    //   16: ldc 144
-    //   18: invokestatic 64	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   21: ldc 142
-    //   23: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   26: aload_0
-    //   27: monitorexit
-    //   28: return
-    //   29: aload_0
-    //   30: getfield 30	com/tencent/mm/app/ag:mAppLike	Lcom/tencent/tinker/entry/ApplicationLike;
-    //   33: invokevirtual 70	com/tencent/tinker/entry/ApplicationLike:getApplication	()Landroid/app/Application;
-    //   36: ldc 72
-    //   38: iconst_4
-    //   39: invokevirtual 78	android/app/Application:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   42: astore_1
-    //   43: aload_0
-    //   44: invokespecial 146	com/tencent/mm/app/ag:WP	()Z
-    //   47: ifne +62 -> 109
-    //   50: aload_0
-    //   51: invokespecial 148	com/tencent/mm/app/ag:WO	()Z
-    //   54: ifeq +55 -> 109
-    //   57: getstatic 154	com/tencent/mm/plugin/report/e:Cxv	Lcom/tencent/mm/plugin/report/e;
-    //   60: ldc2_w 155
-    //   63: ldc2_w 157
-    //   66: lconst_1
-    //   67: iconst_0
-    //   68: invokevirtual 162	com/tencent/mm/plugin/report/e:idkeyStat	(JJJZ)V
-    //   71: aload_1
-    //   72: invokeinterface 166 1 0
-    //   77: new 80	java/lang/StringBuilder
-    //   80: dup
-    //   81: invokespecial 81	java/lang/StringBuilder:<init>	()V
-    //   84: getstatic 87	com/tencent/mm/loader/j/a:CLIENT_VERSION	Ljava/lang/String;
-    //   87: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   90: ldc 124
-    //   92: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   95: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   98: iconst_1
-    //   99: invokeinterface 172 3 0
-    //   104: invokeinterface 175 1 0
-    //   109: aload_0
-    //   110: invokespecial 177	com/tencent/mm/app/ag:WQ	()Z
-    //   113: ifne +62 -> 175
-    //   116: aload_0
-    //   117: invokevirtual 179	com/tencent/mm/app/ag:WN	()Z
-    //   120: ifne +55 -> 175
-    //   123: getstatic 154	com/tencent/mm/plugin/report/e:Cxv	Lcom/tencent/mm/plugin/report/e;
-    //   126: ldc2_w 155
-    //   129: ldc2_w 180
-    //   132: lconst_1
-    //   133: iconst_0
-    //   134: invokevirtual 162	com/tencent/mm/plugin/report/e:idkeyStat	(JJJZ)V
-    //   137: aload_1
-    //   138: invokeinterface 166 1 0
-    //   143: new 80	java/lang/StringBuilder
-    //   146: dup
-    //   147: invokespecial 81	java/lang/StringBuilder:<init>	()V
-    //   150: getstatic 87	com/tencent/mm/loader/j/a:CLIENT_VERSION	Ljava/lang/String;
-    //   153: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   156: ldc 130
-    //   158: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   161: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   164: iconst_1
-    //   165: invokeinterface 172 3 0
-    //   170: invokeinterface 175 1 0
-    //   175: ldc 142
-    //   177: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   180: goto -154 -> 26
-    //   183: astore_1
-    //   184: aload_0
-    //   185: monitorexit
-    //   186: aload_1
-    //   187: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	188	0	this	ag
-    //   42	96	1	localSharedPreferences	SharedPreferences
-    //   183	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	26	183	finally
-    //   29	109	183	finally
-    //   109	175	183	finally
-    //   175	180	183	finally
+    return this.handler;
   }
   
-  public final void b(ApplicationLike paramApplicationLike)
+  public final void onAppBackground(String paramString)
   {
+    AppMethodBeat.i(19484);
     boolean bool;
-    label21:
-    try
+    if ((bh.aHB()) && (com.tencent.mm.kernel.h.aHE().kbT) && (!bh.aGE()))
     {
-      AppMethodBeat.i(125031);
-    }
-    finally {}
-    try
-    {
-      bool = this.mInstalled;
-      if (!bool) {
-        break label24;
+      f.gv(false);
+      com.tencent.mm.as.a.gp(false);
+      n.gy(false);
+      com.tencent.mm.bz.a.bsq(com.tencent.mm.bz.a.hol());
+      if (!this.fej.stopped()) {
+        this.fej.stopTimer();
       }
-      AppMethodBeat.o(125031);
-    }
-    catch (Throwable paramApplicationLike)
-    {
-      Log.printErrStackTrace("MicroMsg.TinkerEnsuranceOnFault", paramApplicationLike, "[-] Exception occurred.", new Object[0]);
-      this.mInstalled = false;
-      AppMethodBeat.o(125031);
-      break label21;
-    }
-    return;
-    label24:
-    this.mAppLike = paramApplicationLike;
-    this.dmz = this.mAppLike.getApplication().getPackageName().equals(this.mAppLike.getApplication().getApplicationInfo().processName);
-    paramApplicationLike = this.mAppLike.getApplication().getSharedPreferences("tinker_ensurance_info", 4);
-    String str = paramApplicationLike.getString("tinker_last_clientversion", null);
-    if (str == null) {
-      paramApplicationLike.edit().putString("tinker_last_clientversion", a.CLIENT_VERSION).commit();
+      if ((!Util.isProcessRunning(MMApplicationContext.getContext(), MMApplicationContext.getPackageName() + ":tools")) && (!Util.isProcessRunning(MMApplicationContext.getContext(), MMApplicationContext.getPackageName() + ":toolsmp"))) {
+        break label721;
+      }
+      bool = true;
     }
     for (;;)
     {
-      MMUncaughtExceptionHandler.addOnUncaughtExceptionListener(this.dmA);
-      this.mInstalled = true;
-      AppMethodBeat.o(125031);
-      break;
-      if (!a.CLIENT_VERSION.equals(str)) {
-        paramApplicationLike.edit().remove(str + "_clean_patch_count").putString("tinker_last_clientversion", a.CLIENT_VERSION).commit();
+      Log.i("MicroMsg.TempAppForegroundNotifyDeprecated", "before kill tools, tools is running : %b", new Object[] { Boolean.valueOf(bool) });
+      if (bool) {
+        this.fej.startTimer(abh());
+      }
+      Log.d("MicroMsg.TempAppForegroundNotifyDeprecated", "[oneliang][statInputMethod]");
+      bool = false;
+      bh.beI();
+      Object localObject1 = com.tencent.mm.model.c.aHp().b(327808, null);
+      if (localObject1 == null)
+      {
+        bool = true;
+        label195:
+        Log.d("MicroMsg.TempAppForegroundNotifyDeprecated", "[oneliang][statInputMethod] needToStat:%s", new Object[] { String.valueOf(bool) });
+        if (!bool) {}
+      }
+      try
+      {
+        localObject1 = Settings.Secure.getString(MMApplicationContext.getContext().getContentResolver(), "default_input_method");
+        com.tencent.mm.plugin.report.service.h.IzE.kvStat(11375, Util.nullAsNil((String)localObject1));
+        bh.beI();
+        com.tencent.mm.model.c.aHp().i(327808, Long.valueOf(System.currentTimeMillis()));
+        localObject1 = new l();
+        ((l)localObject1).fuL.isActive = false;
+        EventCenter.instance.publish((IEvent)localObject1);
+        localObject1 = new com.tencent.mm.f.a.d();
+        ((com.tencent.mm.f.a.d)localObject1).fur.fus = false;
+        EventCenter.instance.publish((IEvent)localObject1);
+        localObject1 = z.iQZ;
+        if (((z)localObject1).iRk != -1L)
+        {
+          l = Util.nowSecond();
+          Object localObject2 = (String)((z)localObject1).iRa.b(2, "");
+          localObject2 = (String)localObject2 + ((z)localObject1).iRk + "|" + l + "#";
+          ((z)localObject1).iRa.i(2, localObject2);
+          int i = ((z)localObject1).iRa.asB(3) + 1;
+          ((z)localObject1).iRa.setInt(3, i);
+          Log.i("MicroMsg.StayTimeReport", "onAppPause,appReportCnt:%d app(%d-%d)", new Object[] { Integer.valueOf(i), Long.valueOf(((z)localObject1).iRk), Long.valueOf(l) });
+          ((z)localObject1).iRk = -1L;
+          if ((Util.secondsToNow(((z)localObject1).iRa.ahV(1)) > 3600L * ((z)localObject1).iRm) || (i > ((z)localObject1).iRl))
+          {
+            com.tencent.mm.plugin.report.service.h.IzE.kvStat(13110, (String)localObject2);
+            Log.i("MicroMsg.StayTimeReport", "report appStayTime:%s", new Object[] { localObject2 });
+            ((z)localObject1).iRa.i(2, "");
+            ((z)localObject1).iRa.setInt(3, 0);
+          }
+          if (((z)localObject1).iRd != null)
+          {
+            localObject2 = ((z)localObject1).iRd;
+            ((z.a)localObject2).time += Util.ticksToNow(((z)localObject1).iRh) / 1000L;
+            if ((paramString != null) && (paramString.contains("WebViewUI")))
+            {
+              localObject2 = ((z)localObject1).iRd;
+              ((z.a)localObject2).iRt = ((int)(((z.a)localObject2).iRt + Util.ticksToNow(((z)localObject1).iRi) / 1000L));
+            }
+            Log.i("MicroMsg.StayTimeReport", "onAppPause, chatting:totalTime:%d", new Object[] { Long.valueOf(((z)localObject1).iRd.time) });
+          }
+        }
+        localObject1 = new e();
+        ((e)localObject1).fut.active = false;
+        ((e)localObject1).fut.className = paramString;
+        EventCenter.instance.publish((IEvent)localObject1);
+        AppMethodBeat.o(19484);
+        return;
+        label721:
+        bool = false;
+        continue;
+        if (Util.isNullOrNil(localObject1.toString()))
+        {
+          bool = true;
+          break label195;
+        }
+        long l = Util.safeParseLong(localObject1.toString());
+        if (System.currentTimeMillis() - l < 604800000L) {
+          break label195;
+        }
+        bool = true;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          Log.e("MicroMsg.TempAppForegroundNotifyDeprecated", "[oneliang][inputMethodStat]exception:" + localException.getMessage());
+        }
       }
     }
   }
   
-  public static final class a
+  public final void onAppForeground(final String paramString)
   {
-    public static final ag dmC;
-    
-    static
-    {
-      AppMethodBeat.i(125029);
-      dmC = new ag();
-      AppMethodBeat.o(125029);
+    AppMethodBeat.i(19483);
+    final long l = SystemClock.uptimeMillis();
+    if (!this.fej.stopped()) {
+      this.fej.stopTimer();
     }
+    if (System.currentTimeMillis() - this.feu > 3600000L)
+    {
+      this.fev = 0;
+      this.fet = 0;
+      Log.i("MicroMsg.TempAppForegroundNotifyDeprecated", "level clear");
+    }
+    if ((bh.aHB()) && (com.tencent.mm.kernel.h.aHE().kbT) && (!bh.aGE())) {
+      com.tencent.e.h.ZvG.d(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(225320);
+          com.tencent.mm.xwebutil.c.ikh();
+          f.gv(true);
+          com.tencent.mm.as.a.gp(true);
+          o.a(o.d.lUj).bnl().aEv();
+          bh.beI();
+          com.tencent.mm.model.c.bbK().d(null);
+          n.gy(true);
+          Object localObject1 = new yq();
+          ((yq)localObject1).fXN.fXO = true;
+          ((yq)localObject1).fXN.scene = 1;
+          EventCenter.instance.publish((IEvent)localObject1);
+          p.bhL();
+          cg.bfp().e(19, new Object[] { Integer.valueOf(1) });
+          localObject1 = new l();
+          ((l)localObject1).fuL.isActive = true;
+          EventCenter.instance.publish((IEvent)localObject1);
+          localObject1 = new com.tencent.mm.f.a.d();
+          ((com.tencent.mm.f.a.d)localObject1).fur.fus = true;
+          EventCenter.instance.publish((IEvent)localObject1);
+          z localz = z.iQZ;
+          String str = paramString;
+          if (localz.iRk == -1L)
+          {
+            if (localz.iRa.asB(3) == 0) {
+              localz.iRa.setLong(1, Util.nowSecond());
+            }
+            localz.iRk = Util.nowSecond();
+            if (localz.iRd != null) {
+              break label372;
+            }
+            localObject1 = "null";
+            Log.i("MicroMsg.StayTimeReport", "onAppResume chatUser:%s, class:%s", new Object[] { localObject1, str });
+            if (localz.iRd != null)
+            {
+              localz.iRh = Util.currentTicks();
+              if ((str != null) && (str.contains("WebViewUI"))) {
+                localz.iRi = Util.currentTicks();
+              }
+            }
+          }
+          localObject1 = new e();
+          ((e)localObject1).fut.active = true;
+          ((e)localObject1).fut.className = paramString;
+          EventCenter.instance.publish((IEvent)localObject1);
+          boolean bool;
+          label372:
+          int i;
+          int j;
+          for (;;)
+          {
+            int m;
+            long l1;
+            int k;
+            long l3;
+            try
+            {
+              bool = ag.abi();
+              if (bool)
+              {
+                return;
+                localObject1 = localz.iRd.iRq;
+                break;
+              }
+              ag.dl(true);
+              if (!ag.this.fef) {
+                break label1534;
+              }
+              if (com.tencent.mm.compatible.util.d.qV(23))
+              {
+                localObject1 = MMApplicationContext.getContext();
+                i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vFc, 0);
+                m = MultiProcessMMKV.getMMKV("sdcard_usable_report").getInt("ignore_battery_dialog_time", 0);
+                Log.i("MicroMsg.BatteryUtil", "getIgnoreBatteryOptimizationsDialogTime() time=%s", new Object[] { Integer.valueOf(m) });
+                if ((Util.isEqual(i, 1)) && (m < 3) && (!com.tencent.mm.booter.c.cb((Context)localObject1)))
+                {
+                  Log.i("MicroMsg.BatteryUtil", "checkIgnoreBatteryOptimizations()");
+                  localObject1 = MultiProcessMMKV.getMMKV("sdcard_usable_report").edit();
+                  l1 = System.currentTimeMillis();
+                  j = 0;
+                  k = 0;
+                  i = 0;
+                  if (m != 0) {
+                    continue;
+                  }
+                }
+              }
+            }
+            catch (Throwable localThrowable)
+            {
+              Log.e("MicroMsg.TempAppForegroundNotifyDeprecated", "check sdcard failed, message = %s", new Object[] { localThrowable.getMessage() });
+              return;
+              long l2 = MultiProcessMMKV.getMMKV("sdcard_usable_report").getLong("last_ignore_battery_dialog_time", l1);
+              l3 = l1 - l2;
+              Log.i("MicroMsg.BatteryUtil", "checkIgnoreBatteryOptimizations() last:%s diff:%s", new Object[] { Long.valueOf(l2), Long.valueOf(l3) });
+              if (m != 1) {
+                break label939;
+              }
+              if (l3 < 86400000L) {
+                continue;
+              }
+              try
+              {
+                com.tencent.mm.booter.c.aqu();
+                i = j;
+              }
+              catch (Exception localException2)
+              {
+                i = 1;
+                Log.i("MicroMsg.BatteryUtil", "checkIgnoreBatteryOptimizations() Exception:%s %s", new Object[] { localException2.getClass().toString(), localException2.getMessage() });
+                continue;
+              }
+              if (i != 0) {
+                continue;
+              }
+              localThrowable.putLong("last_ignore_battery_dialog_time", l1);
+              localThrowable.putInt("ignore_battery_dialog_time", 2);
+              continue;
+            }
+            finally
+            {
+              ag.dl(false);
+              Log.i("MicroMsg.TempAppForegroundNotifyDeprecated", "[onAppForeground] cost:%s", new Object[] { Long.valueOf(SystemClock.uptimeMillis() - l) });
+              AppMethodBeat.o(225320);
+            }
+            try
+            {
+              com.tencent.mm.booter.c.aqu();
+              if (i == 0)
+              {
+                ((SharedPreferences.Editor)localObject1).putLong("last_ignore_battery_dialog_time", l1);
+                ((SharedPreferences.Editor)localObject1).putInt("ignore_battery_dialog_time", 1);
+              }
+              ((SharedPreferences.Editor)localObject1).commit();
+              if ((com.tencent.mm.pluginsdk.m.c.hiT()) || (ag.i(ag.this))) {
+                break label1231;
+              }
+              ag.abj();
+              Log.i("MicroMsg.TempAppForegroundNotifyDeprecated", "tipCountAboutSdcardDisable:%d", new Object[] { Integer.valueOf(ag.abk()) });
+              i = ag.abk();
+              if (i > 0) {
+                break label1030;
+              }
+              ag.dl(false);
+              Log.i("MicroMsg.TempAppForegroundNotifyDeprecated", "[onAppForeground] cost:%s", new Object[] { Long.valueOf(SystemClock.uptimeMillis() - l) });
+              AppMethodBeat.o(225320);
+              return;
+            }
+            catch (Exception localException1)
+            {
+              i = 1;
+              Log.i("MicroMsg.BatteryUtil", "checkIgnoreBatteryOptimizations() Exception:%s %s", new Object[] { localException1.getClass().toString(), localException1.getMessage() });
+              continue;
+            }
+            label939:
+            if ((m == 2) && (l3 >= 604800000L)) {}
+            try
+            {
+              com.tencent.mm.booter.c.aqu();
+              i = k;
+            }
+            catch (Exception localException3)
+            {
+              for (;;)
+              {
+                i = 1;
+                Log.i("MicroMsg.BatteryUtil", "checkIgnoreBatteryOptimizations() Exception:%s %s", new Object[] { localException3.getClass().toString(), localException3.getMessage() });
+              }
+            }
+            if (i == 0)
+            {
+              localObject2.putLong("last_ignore_battery_dialog_time", l1);
+              localObject2.putInt("ignore_battery_dialog_time", 3);
+            }
+          }
+          label1030:
+          ag.a(ag.this, true);
+          switch (ag.abk())
+          {
+          }
+          for (;;)
+          {
+            ag.this.getHandler().post(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(284986);
+                new f.a(MMApplicationContext.getContext()).bBl(MMApplicationContext.getContext().getString(R.l.eRM)).aR(MMApplicationContext.getContext().getString(R.l.app_tip)).HL(false).b(new f.c()
+                {
+                  public final void g(boolean paramAnonymous3Boolean, String paramAnonymous3String)
+                  {
+                    AppMethodBeat.i(275679);
+                    ag.this.fef = false;
+                    ag.a(ag.this, false);
+                    AppMethodBeat.o(275679);
+                  }
+                }).show();
+                AppMethodBeat.o(284986);
+              }
+            });
+            ag.dl(false);
+            Log.i("MicroMsg.TempAppForegroundNotifyDeprecated", "[onAppForeground] cost:%s", new Object[] { Long.valueOf(SystemClock.uptimeMillis() - l) });
+            AppMethodBeat.o(225320);
+            return;
+            com.tencent.mm.plugin.report.service.h.IzE.el(951, 0);
+            Object localObject3 = MMApplicationContext.getContext().getSharedPreferences("sdcard_usable_report", 4).edit();
+            ((SharedPreferences.Editor)localObject3).putInt("mm_process_pid", Process.myPid());
+            ((SharedPreferences.Editor)localObject3).apply();
+            continue;
+            com.tencent.mm.plugin.report.service.h.IzE.el(951, 1);
+            continue;
+            com.tencent.mm.plugin.report.service.h.IzE.el(951, 2);
+            continue;
+            com.tencent.mm.plugin.report.service.h.IzE.el(951, 3);
+            continue;
+            label1231:
+            Log.i("MicroMsg.TempAppForegroundNotifyDeprecated", "SdcardUsableDetectionEvent pass tipCountAboutSdcardDisable=%s ifSdcardDialogShow=%s", new Object[] { Integer.valueOf(ag.abk()), Boolean.valueOf(ag.i(ag.this)) });
+            ag.abl();
+            bool = ag.i(ag.this);
+            if (bool)
+            {
+              ag.dl(false);
+              Log.i("MicroMsg.TempAppForegroundNotifyDeprecated", "[onAppForeground] cost:%s", new Object[] { Long.valueOf(SystemClock.uptimeMillis() - l) });
+              AppMethodBeat.o(225320);
+              return;
+            }
+            localObject3 = MMApplicationContext.getContext().getSharedPreferences("sdcard_usable_report", 4);
+            i = ((SharedPreferences)localObject3).getInt("mm_process_pid", -1);
+            j = Process.myPid();
+            Log.i("MicroMsg.TempAppForegroundNotifyDeprecated", "SdcardUsableDetectionEvent pass mmPid=%s mmCurPid=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+            bool = Util.isEqual(i, -1);
+            if (bool)
+            {
+              ag.dl(false);
+              Log.i("MicroMsg.TempAppForegroundNotifyDeprecated", "[onAppForeground] cost:%s", new Object[] { Long.valueOf(SystemClock.uptimeMillis() - l) });
+              AppMethodBeat.o(225320);
+              return;
+            }
+            if (Util.isEqual(i, j)) {
+              com.tencent.mm.plugin.report.service.h.IzE.el(951, 22);
+            }
+            for (;;)
+            {
+              localObject3 = ((SharedPreferences)localObject3).edit();
+              ((SharedPreferences.Editor)localObject3).putInt("mm_process_pid", -1);
+              ((SharedPreferences.Editor)localObject3).apply();
+              ag.dl(false);
+              Log.i("MicroMsg.TempAppForegroundNotifyDeprecated", "[onAppForeground] cost:%s", new Object[] { Long.valueOf(SystemClock.uptimeMillis() - l) });
+              AppMethodBeat.o(225320);
+              return;
+              if (!Util.isEqual(i, j)) {
+                com.tencent.mm.plugin.report.service.h.IzE.el(951, 21);
+              }
+            }
+            label1534:
+            ag.this.fef = true;
+            ag.dl(false);
+            Log.i("MicroMsg.TempAppForegroundNotifyDeprecated", "[onAppForeground] cost:%s", new Object[] { Long.valueOf(SystemClock.uptimeMillis() - l) });
+            AppMethodBeat.o(225320);
+            return;
+          }
+        }
+      }, "onAppForegroundThread");
+    }
+    AppMethodBeat.o(19483);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.app.ag
  * JD-Core Version:    0.7.0.1
  */

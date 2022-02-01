@@ -402,7 +402,6 @@ public class MultiProcessSharedPreferences
     //   from	to	target	type
     //   8	20	39	finally
     //   24	26	39	finally
-    //   40	42	39	finally
   }
   
   public String getType(Uri paramUri)
@@ -599,30 +598,26 @@ public class MultiProcessSharedPreferences
               AppMethodBeat.i(156305);
               Object localObject = ???.getStringExtra("name");
               paramAnonymousContext = (List)???.getSerializableExtra("value");
-              if ((MultiProcessSharedPreferences.this.mName.equals(localObject)) && (paramAnonymousContext != null)) {
-                for (;;)
+              if ((MultiProcessSharedPreferences.this.mName.equals(localObject)) && (paramAnonymousContext != null))
+              {
+                int i;
+                synchronized (MultiProcessSharedPreferences.this)
                 {
-                  int i;
-                  synchronized (MultiProcessSharedPreferences.this)
+                  localObject = MultiProcessSharedPreferences.this.mListeners;
+                  ??? = new ArrayList((Collection)localObject);
+                  i = paramAnonymousContext.size() - 1;
+                  if (i >= 0)
                   {
-                    localObject = MultiProcessSharedPreferences.this.mListeners;
-                    ??? = new ArrayList((Collection)localObject);
-                    i = paramAnonymousContext.size() - 1;
-                    if (i < 0) {
-                      break;
-                    }
                     localObject = (String)paramAnonymousContext.get(i);
                     Iterator localIterator = ???.iterator();
-                    if (localIterator.hasNext())
+                    while (localIterator.hasNext())
                     {
                       SharedPreferences.OnSharedPreferenceChangeListener localOnSharedPreferenceChangeListener = (SharedPreferences.OnSharedPreferenceChangeListener)((SoftReference)localIterator.next()).get();
-                      if (localOnSharedPreferenceChangeListener == null) {
-                        continue;
+                      if (localOnSharedPreferenceChangeListener != null) {
+                        localOnSharedPreferenceChangeListener.onSharedPreferenceChanged(MultiProcessSharedPreferences.this, (String)localObject);
                       }
-                      localOnSharedPreferenceChangeListener.onSharedPreferenceChanged(MultiProcessSharedPreferences.this, (String)localObject);
                     }
                   }
-                  i -= 1;
                 }
               }
               AppMethodBeat.o(156305);
@@ -873,7 +868,11 @@ public class MultiProcessSharedPreferences
         this.mClear = true;
         return this;
       }
-      finally {}
+      finally
+      {
+        localObject = finally;
+        throw localObject;
+      }
     }
     
     public final boolean commit()
@@ -1004,7 +1003,6 @@ public class MultiProcessSharedPreferences
       //   7	12	48	finally
       //   18	29	48	finally
       //   36	45	48	finally
-      //   49	51	48	finally
     }
     
     public final SharedPreferences.Editor remove(String paramString)
@@ -1069,35 +1067,35 @@ public class MultiProcessSharedPreferences
     
     public static void editorApply(SharedPreferences.Editor paramEditor)
     {
-      AppMethodBeat.i(215430);
+      AppMethodBeat.i(263203);
       try
       {
         paramEditor.getClass().getDeclaredMethod("apply", new Class[0]).invoke(paramEditor, new Object[0]);
-        AppMethodBeat.o(215430);
+        AppMethodBeat.o(263203);
         return;
       }
       catch (IllegalArgumentException paramEditor)
       {
         paramEditor = new RuntimeException(paramEditor);
-        AppMethodBeat.o(215430);
+        AppMethodBeat.o(263203);
         throw paramEditor;
       }
       catch (IllegalAccessException paramEditor)
       {
         paramEditor = new RuntimeException(paramEditor);
-        AppMethodBeat.o(215430);
+        AppMethodBeat.o(263203);
         throw paramEditor;
       }
       catch (InvocationTargetException paramEditor)
       {
         paramEditor = new RuntimeException(paramEditor);
-        AppMethodBeat.o(215430);
+        AppMethodBeat.o(263203);
         throw paramEditor;
       }
       catch (NoSuchMethodException paramEditor)
       {
         paramEditor = new RuntimeException(paramEditor);
-        AppMethodBeat.o(215430);
+        AppMethodBeat.o(263203);
         throw paramEditor;
       }
     }
@@ -1140,7 +1138,7 @@ public class MultiProcessSharedPreferences
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.MultiProcessSharedPreferences
  * JD-Core Version:    0.7.0.1
  */

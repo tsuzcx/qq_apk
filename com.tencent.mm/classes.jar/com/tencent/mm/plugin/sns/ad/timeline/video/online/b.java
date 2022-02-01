@@ -7,25 +7,25 @@ import com.tencent.mm.protocal.protobuf.TimeLineObject;
 
 public final class b
 {
-  public TimeLineObject DqS;
-  public boolean DzT;
+  public boolean JLj;
+  public TimeLineObject Jww;
   public ViewGroup mContainer;
   public String mTag;
   
   public b(String paramString)
   {
-    AppMethodBeat.i(202321);
+    AppMethodBeat.i(251923);
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
       str = "OnlineVideoChecker";
     }
     this.mTag = str;
-    AppMethodBeat.o(202321);
+    AppMethodBeat.o(251923);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.timeline.video.online.b
  * JD-Core Version:    0.7.0.1
  */

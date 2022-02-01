@@ -18,22 +18,22 @@ public final class d
   static final av a(av paramav, as paramas)
   {
     AppMethodBeat.i(60037);
-    if ((paramas == null) || (paramav.hLI() == bh.TOQ))
+    if ((paramas == null) || (paramav.iQa() == bh.abrp))
     {
       AppMethodBeat.o(60037);
       return paramav;
     }
-    if (paramas.hAJ() == paramav.hLI())
+    if (paramas.iEW() == paramav.iQa())
     {
-      if (paramav.hLH())
+      if (paramav.iPZ())
       {
-        paramas = kotlin.l.b.a.b.l.b.TMN;
-        p.g(paramas, "LockBasedStorageManager.NO_LOCKS");
+        paramas = kotlin.l.b.a.b.l.b.abpp;
+        p.j(paramas, "LockBasedStorageManager.NO_LOCKS");
         paramav = (av)new ax((ab)new ae(paramas, (kotlin.g.a.a)new a(paramav)));
         AppMethodBeat.o(60037);
         return paramav;
       }
-      paramav = (av)new ax(paramav.hBy());
+      paramav = (av)new ax(paramav.iFN());
       AppMethodBeat.o(60037);
       return paramav;
     }
@@ -45,8 +45,8 @@ public final class d
   public static final boolean ad(ab paramab)
   {
     AppMethodBeat.i(60035);
-    p.h(paramab, "$this$isCaptured");
-    boolean bool = paramab.hKE() instanceof b;
+    p.k(paramab, "$this$isCaptured");
+    boolean bool = paramab.iOU() instanceof b;
     AppMethodBeat.o(60035);
     return bool;
   }
@@ -54,7 +54,7 @@ public final class d
   private static ab b(av paramav)
   {
     AppMethodBeat.i(60034);
-    p.h(paramav, "typeProjection");
+    p.k(paramav, "typeProjection");
     paramav = (ab)new a(paramav);
     AppMethodBeat.o(60034);
     return paramav;
@@ -82,11 +82,11 @@ public final class d
     {
       Object localObject = null;
       AppMethodBeat.i(60033);
-      p.h(paramab, "key");
+      p.k(paramab, "key");
       av localav = super.N(paramab);
       if (localav != null)
       {
-        paramab = paramab.hKE().hzS();
+        paramab = paramab.iOU().iEf();
         if ((paramab instanceof as)) {
           break label65;
         }
@@ -103,15 +103,15 @@ public final class d
       }
     }
     
-    public final boolean hKG()
+    public final boolean iOW()
     {
-      return this.TIr;
+      return this.abkV;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.j.a.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.br.c;
+import com.tencent.mm.an.q;
+import com.tencent.mm.by.c;
 import com.tencent.mm.plugin.wallet_core.c.d;
 import com.tencent.mm.pluginsdk.wallet.e;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -18,8 +18,8 @@ import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 public class WalletJsApiAdapterUI
   extends WalletBaseUI
 {
-  protected boolean CqH = false;
-  protected String HMF = "";
+  protected boolean Iog = false;
+  protected String OEB = "";
   protected String packageName = "";
   
   public int getLayoutId()
@@ -42,7 +42,7 @@ public class WalletJsApiAdapterUI
   public void onBackPressed()
   {
     AppMethodBeat.i(69855);
-    if (!this.CqH)
+    if (!this.Iog)
     {
       Log.d("MicroMsg.WalletJsApiAdapterUI", "back press not lock");
       finish();
@@ -59,7 +59,7 @@ public class WalletJsApiAdapterUI
     super.onCreate(paramBundle);
     setContentViewVisibility(8);
     this.packageName = getIntent().getStringExtra("intent_jump_package");
-    this.HMF = getIntent().getStringExtra("intent_jump_ui");
+    this.OEB = getIntent().getStringExtra("intent_jump_ui");
     addSceneEndListener(580);
     if (getIntent() == null)
     {
@@ -138,12 +138,12 @@ public class WalletJsApiAdapterUI
     {
       if ((paramq instanceof d))
       {
-        e.bfP(((d)paramq).fPP());
-        if ((!Util.isNullOrNil(this.packageName)) && (!Util.isNullOrNil(this.HMF)))
+        e.bsi(((d)paramq).gIv());
+        if ((!Util.isNullOrNil(this.packageName)) && (!Util.isNullOrNil(this.OEB)))
         {
           paramString = new Intent();
           paramString.putExtra("intent_finish_self", true);
-          c.b(this, this.packageName, this.HMF, paramString, 1);
+          c.b(this, this.packageName, this.OEB, paramString, 1);
         }
         for (;;)
         {
@@ -157,7 +157,7 @@ public class WalletJsApiAdapterUI
     else
     {
       setResult(-1000);
-      h.cD(this, paramString);
+      h.cO(this, paramString);
       finish();
       AppMethodBeat.o(69857);
       return true;

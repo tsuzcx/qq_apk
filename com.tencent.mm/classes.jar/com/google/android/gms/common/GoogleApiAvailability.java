@@ -19,12 +19,14 @@ import android.content.res.Resources;
 import android.content.res.Resources.Theme;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.s.b;
-import android.support.v4.app.s.c;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ProgressBar;
+import androidx.core.app.e.b;
+import androidx.core.app.e.d;
+import androidx.fragment.app.FragmentActivity;
+import com.google.android.gms.base.R.drawable;
+import com.google.android.gms.base.R.string;
 import com.google.android.gms.common.api.GoogleApi;
 import com.google.android.gms.common.api.GoogleApiActivity;
 import com.google.android.gms.common.api.internal.GoogleApiManager;
@@ -180,7 +182,7 @@ public class GoogleApiAvailability
       localObject1 = new Notification.Builder(paramContext).setSmallIcon(paramContext.getApplicationInfo().icon).setPriority(2).setAutoCancel(true).setContentTitle(str).setStyle(new Notification.BigTextStyle().bigText((CharSequence)localObject1));
       if (DeviceProperties.isWearableWithoutPlayStore(paramContext))
       {
-        ((Notification.Builder)localObject1).addAction(2131231903, ((Resources)localObject2).getString(2131757771), paramPendingIntent);
+        ((Notification.Builder)localObject1).addAction(R.drawable.common_full_open_on_phone, ((Resources)localObject2).getString(R.string.common_open_on_phone), paramPendingIntent);
         if ((PlatformVersion.isAtLeastO()) && (PlatformVersion.isAtLeastO())) {
           ((Notification.Builder)localObject1).setChannelId(zza(paramContext, localNotificationManager));
         }
@@ -203,15 +205,15 @@ public class GoogleApiAvailability
       return;
       ((Notification.Builder)localObject1).setContentIntent(paramPendingIntent);
       break;
-      localObject2 = new s.c(paramContext).as(17301642).i(((Resources)localObject2).getString(2131757763)).i(System.currentTimeMillis()).E(true);
-      ((s.c)localObject2).Hv = paramPendingIntent;
-      paramPendingIntent = ((s.c)localObject2).f(str).g((CharSequence)localObject1);
-      paramPendingIntent.HM = true;
-      paramPendingIntent = paramPendingIntent.a(new s.b().e((CharSequence)localObject1));
+      localObject2 = new e.d(paramContext).bn(17301642).n(((Resources)localObject2).getString(R.string.common_google_play_services_notification_ticker)).e(System.currentTimeMillis()).W(true);
+      ((e.d)localObject2).Ip = paramPendingIntent;
+      paramPendingIntent = ((e.d)localObject2).k(str).l((CharSequence)localObject1);
+      paramPendingIntent.IH = true;
+      paramPendingIntent = paramPendingIntent.a(new e.b().j((CharSequence)localObject1));
       if ((PlatformVersion.isAtLeastO()) && (PlatformVersion.isAtLeastO())) {
         paramPendingIntent.mChannelId = zza(paramContext, localNotificationManager);
       }
-      paramContext = paramPendingIntent.build();
+      paramContext = paramPendingIntent.gr();
       break label185;
       paramInt = 10436;
       GooglePlayServicesUtilLight.zzbt.set(false);
@@ -562,7 +564,7 @@ public class GoogleApiAvailability
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.common.GoogleApiAvailability
  * JD-Core Version:    0.7.0.1
  */

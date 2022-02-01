@@ -47,7 +47,7 @@ public final class a
     AppMethodBeat.o(146252);
   }
   
-  public final List<com.tencent.mm.plugin.welab.d.a.a> gjn()
+  public final List<com.tencent.mm.plugin.welab.d.a.a> hda()
   {
     AppMethodBeat.i(146250);
     Cursor localCursor = getAll();
@@ -63,7 +63,7 @@ public final class a
     return localArrayList;
   }
   
-  public final void ip(List<com.tencent.mm.plugin.welab.d.a.a> paramList)
+  public final void jg(List<com.tencent.mm.plugin.welab.d.a.a> paramList)
   {
     AppMethodBeat.i(146251);
     h localh = null;
@@ -86,7 +86,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.d.a
  * JD-Core Version:    0.7.0.1
  */

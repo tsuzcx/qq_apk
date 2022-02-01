@@ -2,9 +2,6 @@ package com.tencent.mm.plugin.appbrand.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.v;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +9,14 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.appbrand.au.f;
+import com.tencent.mm.plugin.appbrand.au.g;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView;
 import com.tencent.mm.ui.MMActivity;
 
@@ -22,38 +24,38 @@ public class AppBrandSharedMessageUI
   extends MMActivity
 {
   private ListView mListView;
-  private MRecyclerView nWH;
+  private MRecyclerView qYj;
   
   public int getLayoutId()
   {
-    return 2131493097;
+    return au.g.app_brand_shared_message_ui;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(48788);
     super.onCreate(paramBundle);
-    this.mListView = ((ListView)findViewById(2131303237));
-    this.nWH = ((MRecyclerView)findViewById(2131299410));
+    this.mListView = ((ListView)findViewById(au.f.list_view));
+    this.qYj = ((MRecyclerView)findViewById(au.f.data_rv));
     this.mListView.setAdapter(new b(getLayoutInflater()));
     this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
-        AppMethodBeat.i(227669);
+        AppMethodBeat.i(273516);
         b localb = new b();
-        localb.bm(paramAnonymousAdapterView);
-        localb.bm(paramAnonymousView);
-        localb.pH(paramAnonymousInt);
-        localb.zo(paramAnonymousLong);
-        a.b("com/tencent/mm/plugin/appbrand/ui/AppBrandSharedMessageUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
+        localb.bn(paramAnonymousAdapterView);
+        localb.bn(paramAnonymousView);
+        localb.sg(paramAnonymousInt);
+        localb.Fs(paramAnonymousLong);
+        a.c("com/tencent/mm/plugin/appbrand/ui/AppBrandSharedMessageUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
         a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandSharedMessageUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-        AppMethodBeat.o(227669);
+        AppMethodBeat.o(273516);
       }
     });
-    this.nWH.setLayoutManager(new LinearLayoutManager(1, false));
-    this.nWH.setAdapter(new a());
-    this.nWH.addHeaderView(getLayoutInflater().inflate(2131493096, null));
+    this.qYj.setLayoutManager(new LinearLayoutManager(1, false));
+    this.qYj.setAdapter(new a());
+    this.qYj.dI(getLayoutInflater().inflate(au.g.app_brand_shared_message_list_header, null));
     AppMethodBeat.o(48788);
   }
   
@@ -66,12 +68,12 @@ public class AppBrandSharedMessageUI
   public static final class a
     extends RecyclerView.a
   {
-    public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
+    public final RecyclerView.v b(ViewGroup paramViewGroup, int paramInt)
     {
       return null;
     }
     
-    public final void a(RecyclerView.v paramv, int paramInt) {}
+    public final void d(RecyclerView.v paramv, int paramInt) {}
     
     public final int getItemCount()
     {

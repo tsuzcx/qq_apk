@@ -10,15 +10,15 @@ import org.json.JSONObject;
 public final class b
   extends m
 {
-  public boolean JPF;
-  public String hXp;
+  public boolean QNX;
+  public String kLV;
   public String name;
   public String token;
   
   public b(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(72299);
-    this.JPF = true;
+    this.QNX = true;
     HashMap localHashMap = new HashMap();
     localHashMap.put("passwd", paramString1);
     localHashMap.put("bank_type", paramString2);
@@ -47,19 +47,19 @@ public final class b
     this.token = paramJSONObject.optString("session_key");
     if ("1".equals(paramJSONObject.optString("all_info")))
     {
-      this.JPF = false;
+      this.QNX = false;
       AppMethodBeat.o(72300);
       return;
     }
-    this.JPF = true;
+    this.QNX = true;
     this.name = paramJSONObject.optString("name");
-    this.hXp = paramJSONObject.optString("cre_id");
+    this.kLV = paramJSONObject.optString("cre_id");
     AppMethodBeat.o(72300);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.a.b
  * JD-Core Version:    0.7.0.1
  */

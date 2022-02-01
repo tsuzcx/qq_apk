@@ -3,10 +3,11 @@ package com.tencent.mm.plugin.appbrand.widget.picker;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.SystemClock;
-import android.support.annotation.Keep;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
+import androidx.annotation.Keep;
+import com.tencent.luggage.b.a.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.picker.base.view.WheelView;
 import java.util.ArrayList;
@@ -14,12 +15,12 @@ import java.util.List;
 
 public final class AppBrandMultiOptionsPickerV2
   extends LinearLayout
-  implements com.tencent.mm.plugin.appbrand.jsapi.r.c<int[]>
+  implements com.tencent.mm.plugin.appbrand.jsapi.s.c<int[]>
 {
-  private boolean asn;
-  private boolean ozs;
-  private c ozt;
-  public List<AppBrandOptionsPickerV3> ozx;
+  private boolean aki;
+  private boolean rBZ;
+  private c rCa;
+  public List<AppBrandOptionsPickerV3> rCe;
   
   @Keep
   public AppBrandMultiOptionsPickerV2(Context paramContext)
@@ -27,11 +28,11 @@ public final class AppBrandMultiOptionsPickerV2
     super(paramContext);
     AppMethodBeat.i(138007);
     setOrientation(0);
-    this.ozx = new ArrayList();
+    this.rCe = new ArrayList();
     AppMethodBeat.o(138007);
   }
   
-  public final void Au(int paramInt)
+  public final void Eb(int paramInt)
   {
     AppMethodBeat.i(138015);
     if (paramInt <= 0)
@@ -46,11 +47,11 @@ public final class AppBrandMultiOptionsPickerV2
       i -= 1;
       paramInt -= 1;
     }
-    ccr();
+    cpI();
     AppMethodBeat.o(138015);
   }
   
-  public final AppBrandOptionsPickerV3 Av(int paramInt)
+  public final AppBrandOptionsPickerV3 Ec(int paramInt)
   {
     AppMethodBeat.i(138012);
     if (paramInt < 0)
@@ -58,32 +59,32 @@ public final class AppBrandMultiOptionsPickerV2
       AppMethodBeat.o(138012);
       return null;
     }
-    AppBrandOptionsPickerV3 localAppBrandOptionsPickerV3 = (AppBrandOptionsPickerV3)this.ozx.get(paramInt);
+    AppBrandOptionsPickerV3 localAppBrandOptionsPickerV3 = (AppBrandOptionsPickerV3)this.rCe.get(paramInt);
     AppMethodBeat.o(138012);
     return localAppBrandOptionsPickerV3;
   }
   
-  public final void ccr()
+  public final void cpI()
   {
     AppMethodBeat.i(138014);
-    if (this.ozx.size() == 1)
+    if (this.rCe.size() == 1)
     {
-      ((AppBrandOptionsPickerV3)this.ozx.get(0)).ozD.blh().setPadding(0, getContext().getResources().getDimensionPixelSize(2131165296), 0, getContext().getResources().getDimensionPixelSize(2131165296));
+      ((AppBrandOptionsPickerV3)this.rCe.get(0)).rCk.buW().setPadding(0, getContext().getResources().getDimensionPixelSize(a.c.Edge_2A), 0, getContext().getResources().getDimensionPixelSize(a.c.Edge_2A));
       AppMethodBeat.o(138014);
       return;
     }
-    if (this.ozx.size() == 2)
+    if (this.rCe.size() == 2)
     {
-      ((AppBrandOptionsPickerV3)this.ozx.get(0)).ozD.blh().setPadding(0, getContext().getResources().getDimensionPixelSize(2131165296), getContext().getResources().getDimensionPixelSize(2131165296), getContext().getResources().getDimensionPixelSize(2131165296));
-      ((AppBrandOptionsPickerV3)this.ozx.get(1)).ozD.blh().setPadding(getContext().getResources().getDimensionPixelSize(2131165296), getContext().getResources().getDimensionPixelSize(2131165296), 0, getContext().getResources().getDimensionPixelSize(2131165296));
+      ((AppBrandOptionsPickerV3)this.rCe.get(0)).rCk.buW().setPadding(0, getContext().getResources().getDimensionPixelSize(a.c.Edge_2A), getContext().getResources().getDimensionPixelSize(a.c.Edge_2A), getContext().getResources().getDimensionPixelSize(a.c.Edge_2A));
+      ((AppBrandOptionsPickerV3)this.rCe.get(1)).rCk.buW().setPadding(getContext().getResources().getDimensionPixelSize(a.c.Edge_2A), getContext().getResources().getDimensionPixelSize(a.c.Edge_2A), 0, getContext().getResources().getDimensionPixelSize(a.c.Edge_2A));
       AppMethodBeat.o(138014);
       return;
     }
-    if (this.ozx.size() == 3)
+    if (this.rCe.size() == 3)
     {
-      ((AppBrandOptionsPickerV3)this.ozx.get(0)).ozD.blh().setPadding(0, getContext().getResources().getDimensionPixelSize(2131165296), getContext().getResources().getDimensionPixelSize(2131165277), getContext().getResources().getDimensionPixelSize(2131165296));
-      ((AppBrandOptionsPickerV3)this.ozx.get(1)).ozD.blh().setPadding(getContext().getResources().getDimensionPixelSize(2131165277), getContext().getResources().getDimensionPixelSize(2131165296), getContext().getResources().getDimensionPixelSize(2131165277), getContext().getResources().getDimensionPixelSize(2131165296));
-      ((AppBrandOptionsPickerV3)this.ozx.get(2)).ozD.blh().setPadding(getContext().getResources().getDimensionPixelSize(2131165277), getContext().getResources().getDimensionPixelSize(2131165296), 0, getContext().getResources().getDimensionPixelSize(2131165296));
+      ((AppBrandOptionsPickerV3)this.rCe.get(0)).rCk.buW().setPadding(0, getContext().getResources().getDimensionPixelSize(a.c.Edge_2A), getContext().getResources().getDimensionPixelSize(a.c.Edge_0_5_A), getContext().getResources().getDimensionPixelSize(a.c.Edge_2A));
+      ((AppBrandOptionsPickerV3)this.rCe.get(1)).rCk.buW().setPadding(getContext().getResources().getDimensionPixelSize(a.c.Edge_0_5_A), getContext().getResources().getDimensionPixelSize(a.c.Edge_2A), getContext().getResources().getDimensionPixelSize(a.c.Edge_0_5_A), getContext().getResources().getDimensionPixelSize(a.c.Edge_2A));
+      ((AppBrandOptionsPickerV3)this.rCe.get(2)).rCk.buW().setPadding(getContext().getResources().getDimensionPixelSize(a.c.Edge_0_5_A), getContext().getResources().getDimensionPixelSize(a.c.Edge_2A), 0, getContext().getResources().getDimensionPixelSize(a.c.Edge_2A));
     }
     AppMethodBeat.o(138014);
   }
@@ -103,12 +104,12 @@ public final class AppBrandMultiOptionsPickerV2
   
   public final void onAttach(c paramc)
   {
-    this.ozt = paramc;
+    this.rCa = paramc;
   }
   
   public final void onDetach(c paramc)
   {
-    this.ozt = null;
+    this.rCa = null;
   }
   
   public final void onHide(c paramc) {}
@@ -116,7 +117,7 @@ public final class AppBrandMultiOptionsPickerV2
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(138010);
-    if (this.asn)
+    if (this.aki)
     {
       AppMethodBeat.o(138010);
       return false;
@@ -128,13 +129,13 @@ public final class AppBrandMultiOptionsPickerV2
   
   public final void onShow(c paramc)
   {
-    this.ozt = paramc;
+    this.rCa = paramc;
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(138011);
-    if (this.asn)
+    if (this.aki)
     {
       AppMethodBeat.o(138011);
       return false;
@@ -147,9 +148,9 @@ public final class AppBrandMultiOptionsPickerV2
   public final void requestLayout()
   {
     AppMethodBeat.i(138009);
-    if (this.asn)
+    if (this.aki)
     {
-      this.ozs = true;
+      this.rBZ = true;
       AppMethodBeat.o(138009);
       return;
     }
@@ -160,9 +161,9 @@ public final class AppBrandMultiOptionsPickerV2
   public final void setLayoutFrozen(boolean paramBoolean)
   {
     AppMethodBeat.i(138008);
-    if (this.asn != paramBoolean)
+    if (this.aki != paramBoolean)
     {
-      this.asn = paramBoolean;
+      this.aki = paramBoolean;
       if (paramBoolean)
       {
         long l = SystemClock.uptimeMillis();
@@ -170,7 +171,7 @@ public final class AppBrandMultiOptionsPickerV2
         AppMethodBeat.o(138008);
         return;
       }
-      if (this.ozs) {
+      if (this.rBZ) {
         requestLayout();
       }
     }
@@ -179,13 +180,13 @@ public final class AppBrandMultiOptionsPickerV2
   
   public static final class a
   {
-    public final String[] ozw;
+    public final String[] rCd;
     public final int selected;
     
     public a(String[] paramArrayOfString, int paramInt)
     {
       AppMethodBeat.i(138006);
-      this.ozw = paramArrayOfString;
+      this.rCd = paramArrayOfString;
       this.selected = Math.max(0, Math.min(paramInt, paramArrayOfString.length - 1));
       AppMethodBeat.o(138006);
     }
@@ -193,7 +194,7 @@ public final class AppBrandMultiOptionsPickerV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.AppBrandMultiOptionsPickerV2
  * JD-Core Version:    0.7.0.1
  */

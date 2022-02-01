@@ -6,11 +6,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.app.n;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bp;
+import com.tencent.mm.R.l;
+import com.tencent.mm.R.o;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.bq;
 import com.tencent.mm.plugin.backup.backupmoveui.BackupUI;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMWizardActivity;
@@ -25,7 +25,7 @@ public class BackupChooseBackupModeUI
   
   public int getResourceId()
   {
-    return 2132017165;
+    return R.o.eXf;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -33,7 +33,7 @@ public class BackupChooseBackupModeUI
     AppMethodBeat.i(21780);
     super.onCreate(paramBundle);
     this.screen = getPreferenceScreen();
-    setMMTitle(2131756405);
+    setMMTitle(R.l.erZ);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -44,7 +44,7 @@ public class BackupChooseBackupModeUI
         return true;
       }
     });
-    ((n)g.af(n.class)).Wr();
+    ((com.tencent.mm.app.n)h.ae(com.tencent.mm.app.n.class)).aaM();
     AppMethodBeat.o(21780);
   }
   
@@ -52,7 +52,7 @@ public class BackupChooseBackupModeUI
   {
     AppMethodBeat.i(21782);
     super.onDestroy();
-    ((n)g.af(n.class)).Wq();
+    ((com.tencent.mm.app.n)h.ae(com.tencent.mm.app.n.class)).aaL();
     AppMethodBeat.o(21782);
   }
   
@@ -62,10 +62,10 @@ public class BackupChooseBackupModeUI
     if (paramPreference.mKey.equals("backup_move_to_device")) {
       try
       {
-        if (((l)g.af(l.class)).aTq().eiC()) {
-          bp.aVQ();
+        if (((com.tencent.mm.plugin.messenger.foundation.a.n)h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bco().eSi()) {
+          bq.beT();
         }
-        MMWizardActivity.ay(this, new Intent(getContext(), BackupUI.class));
+        MMWizardActivity.aH(this, new Intent(getContext(), BackupUI.class));
         AppMethodBeat.o(21781);
         return true;
       }
@@ -80,11 +80,11 @@ public class BackupChooseBackupModeUI
     if (paramPreference.mKey.equals("backup_to_pc"))
     {
       paramf = new Intent();
-      paramf.putExtra("title", getString(2131756324));
-      paramf.putExtra("rawUrl", getString(2131756382, new Object[] { LocaleUtil.getApplicationLanguage() }));
+      paramf.putExtra("title", getString(R.l.eqS));
+      paramf.putExtra("rawUrl", getString(R.l.backup_pc_tip_doc, new Object[] { LocaleUtil.getApplicationLanguage() }));
       paramf.putExtra("showShare", false);
       paramf.putExtra("neverGetA8Key", true);
-      com.tencent.mm.br.c.b(this, "webview", ".ui.tools.WebViewUI", paramf);
+      com.tencent.mm.by.c.b(this, "webview", ".ui.tools.WebViewUI", paramf);
       AppMethodBeat.o(21781);
       return true;
     }
@@ -100,7 +100,7 @@ public class BackupChooseBackupModeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.backupui.BackupChooseBackupModeUI
  * JD-Core Version:    0.7.0.1
  */

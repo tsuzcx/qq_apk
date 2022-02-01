@@ -1,398 +1,364 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import android.content.Context;
-import android.util.Pair;
-import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
+import android.os.Build.VERSION;
+import com.tencent.luggage.sdk.h.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.km;
-import com.tencent.mm.g.b.a.ms;
-import com.tencent.mm.g.b.a.ms.a;
-import com.tencent.mm.g.b.a.ms.b;
-import com.tencent.mm.g.b.a.ms.c;
-import com.tencent.mm.plugin.appbrand.api.WeAppOpenDeclarePromptBundle;
-import com.tencent.mm.plugin.appbrand.app.n;
-import com.tencent.mm.plugin.appbrand.appcache.j.a;
-import com.tencent.mm.plugin.appbrand.appusage.k;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchFromNotifyReferrer;
-import com.tencent.mm.plugin.appbrand.config.HalfScreenConfig;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes.c;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes.c.a;
-import com.tencent.mm.plugin.appbrand.config.aa.f;
-import com.tencent.mm.plugin.appbrand.config.ac;
-import com.tencent.mm.plugin.appbrand.keylogger.c;
-import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
-import com.tencent.mm.plugin.appbrand.launching.report.AppBrandRuntimeReloadReportBundle;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.report.i;
-import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
-import com.tencent.mm.plugin.appbrand.step.KSProcessWeAppLaunch;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.plugin.appbrand.appcache.WxaCommLibRuntimeReader;
+import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
+import com.tencent.mm.plugin.appbrand.t;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.ao;
-import java.util.concurrent.TimeoutException;
-import org.json.JSONObject;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vending.g.d.a;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock;
+import java.util.function.Function;
+import kotlin.g.a.a;
+import kotlin.g.a.b;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib;", "", "()V", "TAG", "", "runningTasks", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$ITaskMap;", "obtainTask", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$Task;", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "waitFor", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$IWaitForCommLibTask;", "function", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "", "Lcom/tencent/mm/plugin/appbrand/launching/NotifyInvoke;", "ITaskMap", "IWaitForCommLibTask", "Task", "TaskMapApi24", "TaskMapApiBase", "plugin-appbrand-integration_release"})
 public final class f
-  extends e
-  implements aa
 {
-  private final String kEY;
-  private final String kHG;
-  private final AppBrandLaunchFromNotifyReferrer kHI;
-  private final HalfScreenConfig kHL;
-  private final boolean kHM;
-  private final int launchMode;
-  private final boolean mQD;
-  private ak mQE;
-  private final LaunchParcel mQF;
-  private a mQG;
-  private volatile com.tencent.luggage.sdk.launching.b mQH;
+  private static final a pSq;
+  public static final f pSr;
   
-  public f(LaunchParcel paramLaunchParcel, String paramString, e.a<AppBrandInitConfigWC> parama, a parama1)
+  static
   {
-    this(paramLaunchParcel, paramString, false, parama, parama1);
-  }
-  
-  f(LaunchParcel paramLaunchParcel, String paramString, boolean paramBoolean, e.a<AppBrandInitConfigWC> parama)
-  {
-    this(paramLaunchParcel, paramString, paramBoolean, parama, null);
-  }
-  
-  private f(LaunchParcel paramLaunchParcel, String paramString, boolean paramBoolean, e.a<AppBrandInitConfigWC> parama, a parama1)
-  {
-    super(paramLaunchParcel, parama);
-    AppMethodBeat.i(227056);
-    this.mQE = null;
-    this.mQG = null;
-    this.mQH = com.tencent.luggage.sdk.launching.b.cBB;
-    this.mQF = paramLaunchParcel;
-    this.kEY = paramString;
-    this.kHG = paramLaunchParcel.kHG;
-    this.launchMode = paramLaunchParcel.launchMode;
-    this.mQG = parama1;
-    this.kHI = paramLaunchParcel.kHI;
-    this.mQD = paramBoolean;
-    this.kHL = paramLaunchParcel.kHL;
-    this.kHM = paramLaunchParcel.kHM;
-    Log.i("MicroMsg.AppBrandPreLaunchProcessWC", "<init> username[%s] appId[%s] instanceId[%s] forceUseBackupWxaAttrs[%b]", new Object[] { paramLaunchParcel.username, paramLaunchParcel.appId, paramString, Boolean.valueOf(this.mQD) });
-    AppMethodBeat.o(227056);
-  }
-  
-  private static void yg(int paramInt)
-  {
-    AppMethodBeat.i(227057);
-    try
+    AppMethodBeat.i(50746);
+    pSr = new f();
+    if (Build.VERSION.SDK_INT >= 24) {}
+    for (a locala = (a)new d();; locala = (a)new e())
     {
-      com.tencent.mm.plugin.report.service.h.CyF.dN(369, paramInt);
-      AppMethodBeat.o(227057);
+      pSq = locala;
+      AppMethodBeat.o(50746);
       return;
     }
-    catch (Throwable localThrowable)
+  }
+  
+  public static final f.b a(t paramt, b<? super ICommLibReader, x> paramb)
+  {
+    AppMethodBeat.i(283725);
+    p.k(paramt, "runtime");
+    p.k(paramb, "function");
+    if (paramt.bBP() != null)
     {
-      Log.e("MicroMsg.AppBrandPreLaunchProcessWC", "reportFallbackIDKey key(%d) get exception %s", new Object[] { Integer.valueOf(paramInt), localThrowable });
-      AppMethodBeat.o(227057);
+      paramt = paramt.bBP();
+      p.j(paramt, "runtime.libReader");
+      paramb.invoke(paramt);
+      AppMethodBeat.o(283725);
+      return null;
     }
+    pSq.a(paramt, (a)new f(paramt));
+    paramt = pSq.C(paramt);
+    paramt.w(paramb);
+    paramt = (f.b)paramt;
+    AppMethodBeat.o(283725);
+    return paramt;
   }
   
-  public final void a(com.tencent.luggage.sdk.launching.b paramb)
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$ITaskMap;", "", "get", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$Task;", "key", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "putIfAbsent", "", "function", "Lkotlin/Function0;", "remove", "plugin-appbrand-integration_release"})
+  static abstract interface a
   {
-    this.mQH = paramb;
+    public abstract f.c C(t paramt);
+    
+    public abstract f.c D(t paramt);
+    
+    public abstract void a(t paramt, a<f.c> parama);
   }
   
-  protected final Pair<WxaAttributes, Boolean> bNg()
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$Task;", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$IWaitForCommLibTask;", "()V", "callbackContendGuard", "Ljava/util/concurrent/locks/ReentrantReadWriteLock;", "callbacks", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "", "Lcom/tencent/mm/plugin/appbrand/launching/NotifyInvoke;", "interrupted", "Ljava/util/concurrent/atomic/AtomicBoolean;", "loadedLibReader", "taskStarted", "interrupt", "startTask", "waitFor", "function", "plugin-appbrand-integration_release"})
+  static final class c
+    implements f.b
   {
-    AppMethodBeat.i(47081);
-    localObject1 = new Pair(null, Boolean.FALSE);
-    for (;;)
+    volatile ICommLibReader pSs;
+    final AtomicBoolean pSt;
+    private final AtomicBoolean pSu;
+    final ConcurrentLinkedDeque<b<ICommLibReader, x>> pSv;
+    final ReentrantReadWriteLock pSw;
+    
+    public c()
     {
-      try
+      AppMethodBeat.i(50731);
+      this.pSt = new AtomicBoolean(false);
+      this.pSu = new AtomicBoolean(false);
+      this.pSv = new ConcurrentLinkedDeque();
+      this.pSw = new ReentrantReadWriteLock();
+      AppMethodBeat.o(50731);
+    }
+    
+    private final void blp()
+    {
+      AppMethodBeat.i(50729);
+      Log.i("MicroMsg.AppBrandRuntimeLaunchConditionForCommLib", "startTask instance(" + hashCode() + ") callbacks.size=" + this.pSv.size());
+      final b localb = (b)new b(this);
+      ICommLibReader localICommLibReader = WxaCommLibRuntimeReader.bHd();
+      if (localICommLibReader != null)
       {
-        if (j.a.vP(this.iOo))
-        {
-          if (this.mQD)
-          {
-            Log.i("MicroMsg.AppBrandPreLaunchProcessWC", "prepareStepCheckWxaAttributes() username[%s] appId[%s] forceUseBackupWxaAttrs[TRUE]", new Object[] { this.username, this.appId });
-            yg(31);
-            an.b.bV(this.kEY, 0);
-            localObject3 = new aj(this.username, this.appId);
-            this.mQE = ((ak)localObject3);
-            localObject3 = ((ak)localObject3).bNI();
-            AppMethodBeat.o(47081);
-            return localObject3;
-          }
-          if (an.ei(this.username, this.appId))
-          {
-            Log.i("MicroMsg.AppBrandPreLaunchProcessWC", "prepareStepCheckWxaAttributes() username[%s] appId[%s] checkIfUseBackupWxaAttrsForLaunchDirectly[TRUE]", new Object[] { this.username, this.appId });
-            yg(32);
-            an.b.bV(this.kEY, 0);
-            localObject3 = new aj(this.username, this.appId);
-            this.mQE = ((ak)localObject3);
-            localObject3 = ((ak)localObject3).bNI();
-            AppMethodBeat.o(47081);
-            return localObject3;
-          }
-        }
-        if (this.kEH != null) {
-          continue;
-        }
-        i = 0;
-        Object localObject3 = null;
-        if (1173 == i) {
-          localObject3 = com.tencent.mm.plugin.appbrand.openmaterial.model.a.ado(this.mQF.ldR);
-        }
-        localObject3 = new bc(this.username, this.appId, this.iOo, this.pkgVersion, i, this.kHw, this.kEH, this.cys, this.kEY, this.kHI, (String)localObject3, new aa.f()
-        {
-          public final void bAm()
-          {
-            AppMethodBeat.i(174931);
-            if (f.a(f.this) != null) {
-              f.a(f.this).bto();
-            }
-            AppMethodBeat.o(174931);
-          }
-        }, this.mQH);
-        this.mQE = ((ak)localObject3);
-        localObject3 = ((ak)localObject3).bNI();
-        localObject1 = localObject3;
+        Log.i("MicroMsg.AppBrandRuntimeLaunchConditionForCommLib", "task(" + hashCode() + ") getLoadedReader != NULL");
+        localb.invoke(localICommLibReader);
+        AppMethodBeat.o(50729);
+        return;
       }
-      catch (TimeoutException localTimeoutException)
+      d.h((a)new a(this, localb, Util.currentTicks()));
+      AppMethodBeat.o(50729);
+    }
+    
+    public final void interrupt()
+    {
+      AppMethodBeat.i(279291);
+      this.pSt.set(true);
+      while (!this.pSv.isEmpty())
       {
-        Log.e("MicroMsg.AppBrandPreLaunchProcessWC", "prepareStepCheckWxaAttributes timeout with username[%s] appId[%s] step[%s]", new Object[] { this.username, this.appId, this.mQE.name() });
-        long l2 = this.mQE.bNH();
-        if ((!j.a.vP(this.iOo)) || (!an.bNJ())) {
-          continue;
+        Object localObject2 = this.pSv.poll();
+        Object localObject1 = localObject2;
+        if (!(localObject2 instanceof d.a)) {
+          localObject1 = null;
         }
-        Log.i("MicroMsg.AppBrandPreLaunchProcessWC", "prepareStepCheckWxaAttributes() username[%s] appId[%s] checkIfUseBackupWxaAttrsForLaunchDirectly[TRUE]", new Object[] { this.username, this.appId });
-        try
+        localObject1 = (d.a)localObject1;
+        if (localObject1 != null) {
+          ((d.a)localObject1).cm(null);
+        }
+      }
+      AppMethodBeat.o(279291);
+    }
+    
+    public final void w(b<? super ICommLibReader, x> paramb)
+    {
+      AppMethodBeat.i(50730);
+      p.k(paramb, "function");
+      if (this.pSt.get())
+      {
+        if (!(paramb instanceof d.a)) {
+          paramb = null;
+        }
+      }
+      else {
+        for (;;)
         {
-          an.b.bV(this.kEY, 0);
-          localObject4 = new aj(this.username, this.appId);
-          this.mQE = ((ak)localObject4);
-          localObject4 = ((ak)localObject4).bNI();
+          paramb = (d.a)paramb;
+          if (paramb != null)
+          {
+            paramb.cm(null);
+            AppMethodBeat.o(50730);
+            return;
+          }
+          AppMethodBeat.o(50730);
+          return;
+          if (!this.pSu.getAndSet(true))
+          {
+            this.pSv.addLast(paramb);
+            blp();
+            AppMethodBeat.o(50730);
+            return;
+          }
+          ReentrantReadWriteLock.ReadLock localReadLock = this.pSw.readLock();
+          localReadLock.lock();
           try
           {
-            yg(33);
-            localObject1 = (WxaAttributes)((Pair)localObject4).first;
-            if (localObject1 != null)
+            if (this.pSs != null)
             {
-              km localkm = new km();
-              localkm.xO(((WxaAttributes)localObject1).field_appId);
-              localkm.xP(((WxaAttributes)localObject1).field_username);
-              if (this.kEH != null) {
-                continue;
+              ICommLibReader localICommLibReader = this.pSs;
+              if (localICommLibReader == null) {
+                p.iCn();
               }
-              l1 = 0L;
-              localkm.eWc = l1;
-              localkm.eWd = 0L;
-              localkm.eWe = ((WxaAttributes)localObject1).bAp().appVersion;
-              localkm.eWj = 0L;
-              localkm.eWk = l2;
-              localkm.xQ(i.getNetworkType(MMApplicationContext.getContext()));
-              localkm.eWi = 0L;
-              localkm.xR(this.kEY);
-              localkm.bfK();
+              paramb.invoke(localICommLibReader);
+            }
+            for (;;)
+            {
+              paramb = x.aazN;
+              return;
+              this.pSv.addLast(paramb);
             }
           }
-          catch (Throwable localThrowable)
+          finally
           {
-            long l1;
-            Log.e("MicroMsg.AppBrandPreLaunchProcessWC", "prepareStepCheckWxaAttributes() report fallback get exception %s", new Object[] { localThrowable });
-            continue;
+            localReadLock.unlock();
+            AppMethodBeat.o(50730);
           }
-          catch (Exception localException3)
-          {
-            localObject2 = localObject4;
-            localObject4 = localException3;
-          }
-          AppMethodBeat.o(47081);
-          return localObject4;
         }
-        catch (Exception localException2)
-        {
-          Object localObject4;
-          Object localObject2;
-          continue;
+      }
+    }
+    
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+    static final class a
+      extends q
+      implements a<x>
+    {
+      a(f.c paramc, b paramb, long paramLong)
+      {
+        super();
+      }
+    }
+    
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "reader", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "invoke"})
+    static final class b
+      extends q
+      implements b<ICommLibReader, x>
+    {
+      b(f.c paramc)
+      {
+        super();
+      }
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$TaskMapApi24;", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$ITaskMap;", "()V", "map", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$Task;", "get", "key", "putIfAbsent", "", "function", "Lkotlin/Function0;", "remove", "plugin-appbrand-integration_release"})
+  static final class d
+    implements f.a
+  {
+    private final ConcurrentHashMap<t, f.c> cDe;
+    
+    public d()
+    {
+      AppMethodBeat.i(50736);
+      this.cDe = new ConcurrentHashMap();
+      AppMethodBeat.o(50736);
+    }
+    
+    public final f.c C(t paramt)
+    {
+      AppMethodBeat.i(50734);
+      p.k(paramt, "key");
+      paramt = this.cDe.get(paramt);
+      if (paramt == null) {
+        p.iCn();
+      }
+      p.j(paramt, "map[key]!!");
+      paramt = (f.c)paramt;
+      AppMethodBeat.o(50734);
+      return paramt;
+    }
+    
+    public final f.c D(t paramt)
+    {
+      AppMethodBeat.i(50735);
+      p.k(paramt, "key");
+      paramt = (f.c)this.cDe.remove(paramt);
+      AppMethodBeat.o(50735);
+      return paramt;
+    }
+    
+    public final void a(t paramt, a<f.c> parama)
+    {
+      AppMethodBeat.i(50733);
+      p.k(paramt, "key");
+      p.k(parama, "function");
+      this.cDe.computeIfAbsent(paramt, (Function)new a(parama));
+      AppMethodBeat.o(50733);
+    }
+    
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$Task;", "it", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "apply"})
+    static final class a<T, R>
+      implements Function<t, f.c>
+    {
+      a(a parama) {}
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$TaskMapApiBase;", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$ITaskMap;", "()V", "map", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$Task;", "Lkotlin/collections/HashMap;", "get", "key", "putIfAbsent", "", "function", "Lkotlin/Function0;", "remove", "plugin-appbrand-integration_release"})
+  static final class e
+    implements f.a
+  {
+    private final HashMap<t, f.c> map;
+    
+    public e()
+    {
+      AppMethodBeat.i(50740);
+      this.map = new HashMap();
+      AppMethodBeat.o(50740);
+    }
+    
+    public final f.c C(t paramt)
+    {
+      AppMethodBeat.i(50738);
+      p.k(paramt, "key");
+      synchronized (this.map)
+      {
+        paramt = this.map.get(paramt);
+        if (paramt == null) {
+          p.iCn();
         }
-        int i = this.kEH.scene;
-        l1 = i;
-        continue;
-        Log.e("MicroMsg.AppBrandPreLaunchProcessWC", "prepareStepCheckWxaAttributes fallback with username[%s] appId[%s], get exception[%s]", new Object[] { this.username, this.appId, localObject4 });
-        ax.a(MMApplicationContext.getContext().getString(2131755621, new Object[] { "" }), this);
-        AppMethodBeat.o(47081);
-        return localObject2;
-        continue;
+        paramt = (f.c)paramt;
+        p.j(paramt, "synchronized(map) { map[key]!! }");
+        AppMethodBeat.o(50738);
+        return paramt;
       }
-      catch (Exception localException1)
+    }
+    
+    public final f.c D(t paramt)
+    {
+      AppMethodBeat.i(50739);
+      p.k(paramt, "key");
+      synchronized (this.map)
       {
-        Log.printErrStackTrace("MicroMsg.AppBrandPreLaunchProcessWC", localException1, "get attr ", new Object[0]);
-        continue;
+        paramt = (f.c)this.map.remove(paramt);
+        AppMethodBeat.o(50739);
+        return paramt;
       }
-      AppMethodBeat.o(47081);
-      return localObject1;
-      i = this.kEH.scene;
     }
-  }
-  
-  public final boolean bNh()
-  {
-    return this.mQF.cyz != com.tencent.luggage.sdk.launching.b.cBC;
-  }
-  
-  protected final boolean g(WxaAttributes paramWxaAttributes)
-  {
-    AppMethodBeat.i(47082);
-    String str = paramWxaAttributes.field_appId;
-    if (new au(str).bNK())
+    
+    public final void a(t paramt, a<f.c> parama)
     {
-      AppMethodBeat.o(47082);
-      return true;
-    }
-    if (2 == this.iOo)
-    {
-      if (this.mQG != null) {
-        this.mQG.bto();
-      }
-      if (!bd.a(str, com.tencent.mm.plugin.appbrand.task.h.bWb().afi(str), this))
+      AppMethodBeat.i(50737);
+      p.k(paramt, "key");
+      p.k(parama, "function");
+      synchronized (this.map)
       {
-        AppMethodBeat.o(47082);
-        return true;
-      }
-    }
-    if ((this.iOo == 0) && (!bd.a(paramWxaAttributes, this.mQC)))
-    {
-      AppMethodBeat.o(47082);
-      return true;
-    }
-    AppMethodBeat.o(47082);
-    return false;
-  }
-  
-  public final void run()
-  {
-    AppMethodBeat.i(47080);
-    Object localObject3 = bNg();
-    Object localObject2 = (WxaAttributes)((Pair)localObject3).first;
-    if (localObject2 == null)
-    {
-      Log.i("MicroMsg.AppBrandPreLaunchProcessWC", "onGetWxaAttr null return");
-      localObject1 = new ms().zW(this.kEY).zX(this.appId);
-      ((ms)localObject1).eXc = this.pkgVersion;
-      ((ms)localObject1).fec = ms.a.mD(this.iOo + 1);
-      ((ms)localObject1).eYW = 0L;
-      ((ms)localObject1).erW = this.kEH.scene;
-      ((ms)localObject1).fed = ms.c.fen;
-      ((ms)localObject1).fee = ms.b.fej;
-      ((ms)localObject1).eJb = com.tencent.mm.plugin.appbrand.report.quality.g.getNetworkType();
-      ((ms)localObject1).eoK = ((ms)localObject1).x("UserName", this.username, true);
-      ((ms)localObject1).wL(this.mQE.bNF()).wM(this.mQE.bNG()).wJ(this.mQE.bNH()).bfK();
-      onError();
-      AppMethodBeat.o(47080);
-      return;
-    }
-    if (g((WxaAttributes)localObject2))
-    {
-      c.c(((WxaAttributes)localObject2).field_appId, KSProcessWeAppLaunch.stepCheckBan);
-      onError();
-      AppMethodBeat.o(47080);
-      return;
-    }
-    c.b(((WxaAttributes)localObject2).field_appId, KSProcessWeAppLaunch.stepCheckBan);
-    Object localObject1 = com.tencent.mm.plugin.appbrand.config.h.bzT().c((WxaAttributes)localObject2);
-    ((AppBrandInitConfigWC)localObject1).eix = this.iOo;
-    ((AppBrandInitConfigWC)localObject1).kHG = this.kHG;
-    ((AppBrandInitConfigWC)localObject1).launchMode = this.launchMode;
-    ((AppBrandInitConfigWC)localObject1).leb = ((WxaAttributes)localObject2).bAo().lgD.leb;
-    ((AppBrandInitConfigWC)localObject1).lec = ((WxaAttributes)localObject2).bAo().lgD.lec;
-    ((AppBrandInitConfigWC)localObject1).kHI = this.kHI;
-    ((AppBrandInitConfigWC)localObject1).kHL = this.kHL;
-    ((AppBrandInitConfigWC)localObject1).kHM = this.kHM;
-    ((AppBrandInitConfigWC)localObject1).ldR = this.mQF.ldR;
-    ((AppBrandInitConfigWC)localObject1).ldQ = this.mQF.ldQ;
-    ((AppBrandInitConfigWC)localObject1).kHQ = this.mQF.kHQ;
-    this.appId = ((AppBrandInitConfigWC)localObject1).appId;
-    Object localObject4 = (com.tencent.mm.plugin.appbrand.ui.c.a.b)n.W(com.tencent.mm.plugin.appbrand.ui.c.a.b.class);
-    kotlin.g.b.p.h(localObject1, "initConfigWC");
-    if (((AppBrandInitConfigWC)localObject1).ldN) {
-      ((AppBrandInitConfigWC)localObject1).lea = ((com.tencent.mm.plugin.appbrand.ui.c.a.b)localObject4).a(((AppBrandInitConfigWC)localObject1).appId, ((AppBrandInitConfig)localObject1).eix, ((AppBrandInitConfigWC)localObject1).appVersion, ao.isDarkMode());
-    }
-    ((AppBrandInitConfigWC)localObject1).ldZ = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getInt("ClientBenchmarkLevel", -1);
-    ((AppBrandInitConfigWC)localObject1).ldW = new QualitySession(this.kEY, (AppBrandInitConfigWC)localObject1, this.kEH);
-    localObject4 = ((AppBrandInitConfigWC)localObject1).ldW;
-    boolean bool;
-    if (!((k)n.W(k.class)).Wt(this.username))
-    {
-      bool = true;
-      ((QualitySession)localObject4).nLm = bool;
-      ((AppBrandInitConfigWC)localObject1).dC(this.kEY);
-      if (!((Boolean)((Pair)localObject3).second).booleanValue()) {
-        break label702;
-      }
-      ((AppBrandInitConfigLU)localObject1).cyy = true;
-      localObject3 = com.tencent.mm.plugin.appbrand.report.quality.g.d(((AppBrandInitConfigWC)localObject1).ldW);
-      ((ms)localObject3).fed = ms.c.fem;
-      localObject3 = ((ms)localObject3).wL(this.mQE.bNF()).wM(this.mQE.bNG()).wJ(this.mQE.bNH());
-      ((ms)localObject3).fee = ms.b.fej;
-      ((ms)localObject3).eJb = com.tencent.mm.plugin.appbrand.report.quality.g.getNetworkType();
-      ((ms)localObject3).bfK();
-      label582:
-      if (this.iOo != 0) {
-        break label710;
-      }
-      ((AppBrandInitConfigWC)localObject1).cBG = ((WxaAttributes)localObject2).bAp().lgT;
-    }
-    for (;;)
-    {
-      if (this.kEH == null) {
-        this.kEH = new AppBrandStatObject();
-      }
-      if ((this.mQE instanceof aj)) {
-        ((AppBrandInitConfigWC)localObject1).led = true;
-      }
-      if (this.mQF.mYQ != null) {
-        ((AppBrandInitConfigWC)localObject1).lee = ((WeAppOpenDeclarePromptBundle)this.mQF.mYQ);
-      }
-      if (this.mQF.mYR != null) {
-        ((AppBrandInitConfigWC)localObject1).lef = ((AppBrandRuntimeReloadReportBundle)this.mQF.mYR);
-      }
-      a((AppBrandInitConfigLU)localObject1, this.kEH);
-      AppMethodBeat.o(47080);
-      return;
-      bool = false;
-      break;
-      label702:
-      ((AppBrandInitConfigLU)localObject1).cyy = false;
-      break label582;
-      label710:
-      ((AppBrandInitConfigWC)localObject1).extInfo = ((t)n.W(t.class)).bU(this.appId, this.iOo);
-      try
-      {
-        localObject2 = com.tencent.mm.ab.h.FE(((AppBrandInitConfigWC)localObject1).extInfo);
-        ((AppBrandInitConfigWC)localObject1).cBG = ((JSONObject)localObject2).optString("device_orientation");
-        ((AppBrandInitConfigWC)localObject1).cyp = ((JSONObject)localObject2).optBoolean("open_remote", false);
-        ((AppBrandInitConfigWC)localObject1).ldS = ((JSONObject)localObject2).optString("debug_launch_info", null);
-        ((AppBrandInitConfigWC)localObject1).cyv = ac.XM(((AppBrandInitConfigWC)localObject1).extInfo);
-        ((JSONObject)localObject2).remove("debug_launch_info");
-        ((t)n.W(t.class)).A(this.appId, this.iOo, ((JSONObject)localObject2).toString());
-      }
-      catch (Exception localException)
-      {
-        Log.printErrStackTrace("MicroMsg.AppBrandPreLaunchProcessWC", localException, "run() process extInfo with appId[%s] versionType[%d]", new Object[] { this.appId, Integer.valueOf(this.iOo) });
+        if ((f.c)this.map.get(paramt) == null) {
+          ((Map)this.map).put(paramt, parama.invoke());
+        }
+        paramt = x.aazN;
+        AppMethodBeat.o(50737);
+        return;
       }
     }
   }
   
-  public static abstract interface a
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$Task;", "invoke"})
+  static final class f
+    extends q
+    implements a<f.c>
   {
-    public abstract void bto();
+    f(t paramt)
+    {
+      super();
+    }
+    
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "invoke", "com/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$obtainTask$1$1$1"})
+    static final class a
+      extends q
+      implements b<ICommLibReader, x>
+    {
+      a(f.f paramf)
+      {
+        super();
+      }
+    }
+    
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lcom/tencent/luggage/sdk/wxa_ktx/RuntimeLifecycleListenerBuilder;", "invoke", "com/tencent/mm/plugin/appbrand/launching/AppBrandRuntimeLaunchConditionForCommLib$obtainTask$1$1$2"})
+    static final class b
+      extends q
+      implements b<e, x>
+    {
+      b(f.c paramc, f.f paramf)
+      {
+        super();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.f
  * JD-Core Version:    0.7.0.1
  */

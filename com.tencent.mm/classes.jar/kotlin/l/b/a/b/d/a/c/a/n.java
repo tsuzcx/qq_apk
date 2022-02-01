@@ -23,37 +23,37 @@ import kotlin.l.b.a.b.m.bh;
 public final class n
   extends kotlin.l.b.a.b.b.c.b
 {
-  private final h Trn;
-  private final e TsZ;
-  private final w Tta;
+  private final h aaUh;
+  private final e aaVT;
+  private final w aaVU;
   
   public n(h paramh, w paramw, int paramInt, kotlin.l.b.a.b.b.l paraml)
   {
-    super(paramh.Trv.TcN, paraml, paramw.hAH(), bh.TOQ, false, paramInt, an.ThK, paramh.Trv.Tkm);
+    super(paramh.aaUp.aaFH, paraml, paramw.iEU(), bh.abrp, false, paramInt, an.aaKE, paramh.aaUp.aaNg);
     AppMethodBeat.i(57947);
-    this.Trn = paramh;
-    this.Tta = paramw;
-    this.TsZ = new e(this.Trn, (kotlin.l.b.a.b.d.a.e.d)this.Tta);
+    this.aaUh = paramh;
+    this.aaVU = paramw;
+    this.aaVT = new e(this.aaUh, (kotlin.l.b.a.b.d.a.e.d)this.aaVU);
     AppMethodBeat.o(57947);
   }
   
   public final void H(ab paramab)
   {
     AppMethodBeat.i(57946);
-    p.h(paramab, "type");
+    p.k(paramab, "type");
     AppMethodBeat.o(57946);
   }
   
-  public final List<ab> hBW()
+  public final List<ab> iGl()
   {
     AppMethodBeat.i(57945);
-    Object localObject1 = this.Tta.hDi();
+    Object localObject1 = this.aaVU.iHC();
     if (((Collection)localObject1).isEmpty())
     {
-      localObject1 = this.Trn.Trv.Tfp.hBh().hzi();
-      p.g(localObject1, "c.module.builtIns.anyType");
-      localObject2 = this.Trn.Trv.Tfp.hBh().hzj();
-      p.g(localObject2, "c.module.builtIns.nullableAnyType");
+      localObject1 = this.aaUh.aaUp.aaIj.iFv().iDu();
+      p.j(localObject1, "c.module.builtIns.anyType");
+      localObject2 = this.aaUh.aaUp.aaIj.iFv().iDv();
+      p.j(localObject2, "c.module.builtIns.nullableAnyType");
       localObject1 = kotlin.a.j.listOf(ac.a((aj)localObject1, (aj)localObject2));
       AppMethodBeat.o(57945);
       return localObject1;
@@ -64,7 +64,7 @@ public final class n
     while (((Iterator)localObject2).hasNext())
     {
       kotlin.l.b.a.b.d.a.e.j localj = (kotlin.l.b.a.b.d.a.e.j)((Iterator)localObject2).next();
-      ((Collection)localObject1).add(this.Trn.Tru.a((v)localj, kotlin.l.b.a.b.d.a.c.b.d.a(kotlin.l.b.a.b.d.a.a.l.Tqv, false, (as)this, 1)));
+      ((Collection)localObject1).add(this.aaUh.aaUo.a((v)localj, kotlin.l.b.a.b.d.a.c.b.d.a(kotlin.l.b.a.b.d.a.a.l.aaTp, false, (as)this, 1)));
     }
     localObject1 = (List)localObject1;
     AppMethodBeat.o(57945);
@@ -73,7 +73,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.c.a.n
  * JD-Core Version:    0.7.0.1
  */

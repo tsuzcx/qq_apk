@@ -2,163 +2,166 @@ package com.tencent.mm.plugin.webview.k;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.plugin.appbrand.ac.b;
+import com.tencent.mm.plugin.appbrand.ac.p.a;
+import com.tencent.mm.plugin.appbrand.luggage.b.e;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.xweb.z;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo.WhichApp;
+import java.util.Arrays;
+import kotlin.f;
+import kotlin.g;
+import kotlin.g.a.a;
+import kotlin.g.b.af;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.n.n;
-import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/util/WebViewKernelUtil;", "", "()V", "CHROME_KERNEL_NO_COMMIT_VERSION", "", "CHROME_PACKAGE_NAME", "", "SPLITER", "TAG", "systemKernelVersion", "currentKernelSupportPageCommitVisible", "", "webView", "Lcom/tencent/mm/ui/widget/MMWebView;", "systemWebViewKernelVersion", "webview-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/util/WebPrefetchUserAgentInfo;", "Lcom/tencent/mm/plugin/appbrand/util/UserAgentUtil$Info;", "mContext", "Landroid/content/Context;", "(Landroid/content/Context;)V", "version", "", "identity", "Companion", "webview-sdk_release"})
 public final class h
+  implements p.a
 {
-  private static int JBA;
-  public static final h JBB;
+  public static final a QAa;
+  private static final f lrB;
+  private final Context mContext;
+  private String version;
   
   static
   {
-    AppMethodBeat.i(225174);
-    JBB = new h();
-    AppMethodBeat.o(225174);
+    AppMethodBeat.i(206794);
+    QAa = new a((byte)0);
+    lrB = g.ar((a)b.QAb);
+    AppMethodBeat.o(206794);
   }
   
-  public static int g(MMWebView paramMMWebView)
+  public h(Context paramContext)
   {
-    int k = 0;
-    AppMethodBeat.i(225173);
-    int i;
-    if (JBA > 0)
+    AppMethodBeat.i(206793);
+    this.mContext = paramContext;
+    this.version = "";
+    AppMethodBeat.o(206793);
+  }
+  
+  public final String Qq()
+  {
+    return " MicroMessenger/";
+  }
+  
+  public final String version()
+  {
+    AppMethodBeat.i(206792);
+    Object localObject1;
+    if (!TextUtils.isEmpty((CharSequence)this.version))
     {
-      i = JBA;
-      AppMethodBeat.o(225173);
-      return i;
+      localObject1 = this.version;
+      AppMethodBeat.o(206792);
+      return localObject1;
     }
-    Object localObject1 = MMApplicationContext.getContext();
-    p.g(localObject1, "MMApplicationContext.getContext()");
-    localObject1 = ((Context)localObject1).getPackageManager().getPackageInfo("com.google.android.webview", 0);
-    if (localObject1 != null) {
-      try
-      {
-        localObject1 = ((PackageInfo)localObject1).versionName;
-        if (localObject1 != null) {
-          if (localObject1 == null)
-          {
-            localObject1 = new t("null cannot be cast to non-null type java.lang.String");
-            AppMethodBeat.o(225173);
-            throw ((Throwable)localObject1);
-          }
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        Log.i("MicroMsg.WebViewKernelUtil", "Get KernelVersion From PKG Error:" + localThrowable.getMessage());
-        i = 0;
-      }
-    }
-    while (i > 0)
+    try
     {
-      JBA = i;
-      AppMethodBeat.o(225173);
-      return i;
-      Object localObject2 = localThrowable.toLowerCase();
-      p.g(localObject2, "(this as java.lang.String).toLowerCase()");
-      if (localObject2 != null)
+      localObject1 = b.getPackageInfo(this.mContext, MMApplicationContext.getPackageName());
+      if (localObject1 != null)
       {
-        localObject2 = n.a((CharSequence)localObject2, new String[] { "." });
-        if (localObject2 != null)
+        Object localObject2 = this.version;
+        this.version = ((String)localObject2 + ChannelUtil.formatVersion(null, d.RAD));
+        localObject2 = this.version;
+        this.version = ((String)localObject2 + "." + ((PackageInfo)localObject1).versionCode);
+        localObject1 = this.version;
+        localObject1 = new StringBuilder().append((String)localObject1).append("(");
+        localObject2 = af.aaBG;
+        localObject2 = String.format("0x%08X", Arrays.copyOf(new Object[] { Integer.valueOf(d.RAD) }, 1));
+        p.j(localObject2, "java.lang.String.format(format, *args)");
+        this.version = ((String)localObject2 + "; MicroMessenger/Prefetcher 2.0)");
+        localObject1 = this.version;
+        this.version = ((String)localObject1 + " Process/mm");
+        localObject1 = this.version;
+        localObject2 = new StringBuilder().append((String)localObject1).append(" WeChat/");
+        if (!com.tencent.mm.compatible.deviceinfo.q.is64BitRuntime()) {
+          break label374;
+        }
+        localObject1 = "arm64";
+        this.version = ((String)localObject1);
+        localObject1 = this.version;
+        localObject1 = new StringBuilder().append((String)localObject1).append(" ");
+        localObject2 = WeChatBrands.AppInfo.current();
+        p.j(localObject2, "WeChatBrands.AppInfo.current()");
+        this.version = ((WeChatBrands.AppInfo.WhichApp)localObject2).getUserAgent();
+        if (ChannelUtil.isGPVersion())
         {
-          localObject2 = (String)((List)localObject2).get(0);
-          if (localObject2 != null)
-          {
-            localObject2 = n.buA((String)localObject2);
-            if (localObject2 == null) {}
-          }
+          localObject1 = this.version;
+          this.version = ((String)localObject1 + " GPVersion/1");
         }
       }
-      for (i = ((Integer)localObject2).intValue();; i = 0) {
-        break;
-      }
-      i = 0;
+      localObject1 = e.akk(this.version);
+      p.j(localObject1, "WeChatXWebUAInfo.appendTabletTag(version)");
+      this.version = ((String)localObject1);
+      localObject1 = this.version;
+      AppMethodBeat.o(206792);
+      return localObject1;
     }
-    int j = k;
-    if (paramMMWebView != null) {
-      try
-      {
-        paramMMWebView = paramMMWebView.getSettings();
-        j = k;
-        if (paramMMWebView != null)
-        {
-          paramMMWebView = paramMMWebView.getUserAgentString();
-          j = k;
-          if (paramMMWebView != null)
-          {
-            if (paramMMWebView != null) {
-              break label313;
-            }
-            paramMMWebView = new t("null cannot be cast to non-null type java.lang.String");
-            AppMethodBeat.o(225173);
-            throw paramMMWebView;
-          }
-        }
-      }
-      catch (Throwable paramMMWebView)
-      {
-        Log.i("MicroMsg.WebViewKernelUtil", "Get KernelVersion From UA Error:" + paramMMWebView.getMessage());
-        j = i;
-      }
-    }
-    for (;;)
+    catch (Exception localException)
     {
-      JBA = j;
-      AppMethodBeat.o(225173);
-      return j;
-      label313:
-      paramMMWebView = paramMMWebView.toLowerCase();
-      p.g(paramMMWebView, "(this as java.lang.String).toLowerCase()");
-      j = k;
-      if (paramMMWebView != null)
+      for (;;)
       {
-        paramMMWebView = n.b((CharSequence)paramMMWebView, new String[] { "chrome/" });
-        j = k;
-        if (paramMMWebView != null)
-        {
-          paramMMWebView = (String)paramMMWebView.get(1);
-          j = k;
-          if (paramMMWebView != null)
-          {
-            paramMMWebView = n.b((CharSequence)paramMMWebView, new String[] { " " });
-            j = k;
-            if (paramMMWebView != null)
-            {
-              paramMMWebView = (String)paramMMWebView.get(0);
-              j = k;
-              if (paramMMWebView != null)
-              {
-                paramMMWebView = n.b((CharSequence)paramMMWebView, new String[] { "." });
-                j = k;
-                if (paramMMWebView != null)
-                {
-                  paramMMWebView = (String)paramMMWebView.get(0);
-                  j = k;
-                  if (paramMMWebView != null)
-                  {
-                    paramMMWebView = n.buA(paramMMWebView);
-                    j = k;
-                    if (paramMMWebView != null) {
-                      j = paramMMWebView.intValue();
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+        String str = null;
+        continue;
+        label374:
+        str = "arm32";
       }
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/util/WebPrefetchUserAgentInfo$Companion;", "", "()V", "APPEND_USER_AGENT", "", "DEFAULT_UA_PREFIX", "WEB_PRE_FETCHER_VERSION", "WEB_PRE_KEY_USER_AGENT", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "Lkotlin/Lazy;", "updateUserAgentPrefix", "", "prefix", "webPrefetchUserAgentPrefix", "webview-sdk_release"})
+  public static final class a
+  {
+    public static MultiProcessMMKV bcJ()
+    {
+      AppMethodBeat.i(208951);
+      Object localObject = h.bcB();
+      a locala = h.QAa;
+      localObject = (MultiProcessMMKV)((f)localObject).getValue();
+      AppMethodBeat.o(208951);
+      return localObject;
+    }
+    
+    public static String hcr()
+    {
+      AppMethodBeat.i(208954);
+      String str = bcJ().getString("key_web_prefetch_ua", "Mozilla/5.0 (Linux; Android 9;) AppleWebKit/unknown (KHTML, like Gecko) Version/unknown Chrome/unknown Mobile Safari/unknown ");
+      CharSequence localCharSequence = (CharSequence)str;
+      if ((localCharSequence == null) || (n.ba(localCharSequence))) {}
+      for (int i = 1; i == 0; i = 0)
+      {
+        AppMethodBeat.o(208954);
+        return str;
+      }
+      AppMethodBeat.o(208954);
+      return "Mozilla/5.0 (Linux; Android 9;) AppleWebKit/unknown (KHTML, like Gecko) Version/unknown Chrome/unknown Mobile Safari/unknown ";
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
+  static final class b
+    extends kotlin.g.b.q
+    implements a<MultiProcessMMKV>
+  {
+    public static final b QAb;
+    
+    static
+    {
+      AppMethodBeat.i(213900);
+      QAb = new b();
+      AppMethodBeat.o(213900);
+    }
+    
+    b()
+    {
+      super();
     }
   }
 }

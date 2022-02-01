@@ -2,11 +2,12 @@ package com.tencent.mm.plugin.box.webview;
 
 import android.annotation.TargetApi;
 import android.webkit.JavascriptInterface;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.wq;
+import com.tencent.mm.f.a.xw;
 import com.tencent.mm.plugin.box.c.b;
+import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -15,11 +16,11 @@ import org.json.JSONObject;
 
 public class d
 {
-  b plU;
+  b som;
   
   public d(b paramb)
   {
-    this.plU = paramb;
+    this.som = paramb;
   }
   
   @JavascriptInterface
@@ -27,11 +28,11 @@ public class d
   {
     AppMethodBeat.i(76362);
     Log.i("MicroMsg.Box.BoxWebViewJSApi", "closePage");
-    this.plU.dismiss();
+    this.som.dismiss();
     AppMethodBeat.o(76362);
   }
   
-  public final void f(String paramString1, int paramInt, final String paramString2, String paramString3)
+  public final void g(String paramString1, int paramInt, final String paramString2, String paramString3)
   {
     AppMethodBeat.i(76363);
     Log.i("MicroMsg.Box.BoxWebViewJSApi", "onDataReady %s %s %s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
@@ -48,7 +49,7 @@ public class d
         {
           AppMethodBeat.i(76356);
           Object localObject = paramString2.toString();
-          b localb = d.this.plU;
+          b localb = d.this.som;
           try
           {
             boolean bool = Util.isNullOrNil("requestCompleted");
@@ -63,7 +64,7 @@ public class d
             {
               Log.i("MicroMsg.Box.BoxJsEventNotifier", "notifyJsEvent %s %s", new Object[] { "requestCompleted", localObject });
               localObject = String.format("javascript:boxJSApi['%s'] && boxJSApi.%s(%s)", new Object[] { "requestCompleted", "requestCompleted", str });
-              localb.ckY().evaluateJavascript((String)localObject, null);
+              localb.cyu().evaluateJavascript((String)localObject, null);
               AppMethodBeat.o(76356);
               return;
             }
@@ -112,11 +113,11 @@ public class d
       paramString = new JSONObject(paramString);
       String str1 = paramString.optString("userName", "");
       String str2 = paramString.optString("relativeURL", "");
-      wq localwq = new wq();
-      localwq.ecI.userName = str1;
-      localwq.ecI.ecK = str2;
-      localwq.ecI.scene = paramString.optInt("scene", 1000);
-      EventCenter.instance.publish(localwq);
+      xw localxw = new xw();
+      localxw.fWN.userName = str1;
+      localxw.fWN.fWP = str2;
+      localxw.fWN.scene = paramString.optInt("scene", 1000);
+      EventCenter.instance.publish(localxw);
       AppMethodBeat.o(76359);
       return;
     }
@@ -136,7 +137,7 @@ public class d
       paramString = new JSONObject(paramString);
       int i = paramString.optInt("logid", 0);
       paramString = paramString.optString("msg", "");
-      com.tencent.mm.plugin.report.e.Cxv.kvStat(i, paramString);
+      f.Iyx.kvStat(i, paramString);
       AppMethodBeat.o(76360);
       return;
     }
@@ -156,7 +157,7 @@ public class d
       Object localObject = new JSONObject(paramString);
       paramString = ((JSONObject)localObject).optString("requestId", "");
       localObject = ((JSONObject)localObject).optString("data", "");
-      this.plU.ckZ().fc(paramString, (String)localObject);
+      this.som.cyv().fq(paramString, (String)localObject);
       AppMethodBeat.o(76357);
       return;
     }
@@ -171,7 +172,7 @@ public class d
   {
     AppMethodBeat.i(76358);
     Log.i("MicroMsg.Box.BoxWebViewJSApi", "webviewUIReady");
-    h.RTc.aV(new Runnable()
+    h.ZvG.bc(new Runnable()
     {
       public final void run()
       {

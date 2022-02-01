@@ -1,51 +1,59 @@
 package com.tencent.mm.plugin.scanner;
 
 import android.annotation.SuppressLint;
-import android.arch.lifecycle.LifecycleObserver;
-import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
 import android.content.res.Resources;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import androidx.lifecycle.r;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.ay.a.a.c.a;
+import com.tencent.mm.plugin.comm.c.b;
+import com.tencent.mm.plugin.comm.c.d;
+import com.tencent.mm.plugin.comm.c.g;
+import com.tencent.mm.plugin.comm.c.h;
 import com.tencent.mm.pluginsdk.e.d;
-import com.tencent.mm.protocal.protobuf.bws;
+import com.tencent.mm.protocal.protobuf.cei;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.base.o.b;
+import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ui.base.q.b;
 import com.tencent.mm.ui.widget.bottomsheet.ViewTitleWithAnimation;
 import com.tencent.mm.vending.g.d.b;
-import com.tencent.mm.vending.g.e;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 
 public class ScanCodeSheetItemLogic
-  implements LifecycleObserver
+  implements androidx.lifecycle.k
 {
-  public bws CAh;
-  public final bws CAi;
-  private a CAj;
-  private b CAk;
-  public d CAl;
-  private HashMap<String, bws> CAm;
-  private MutableLiveData<bws> CAn;
-  private int CAo;
-  private boolean CAp;
+  private r<cei> EiN;
+  private cei IFM;
+  private final cei IFN;
+  private a IFO;
+  private b IFP;
+  private e IFQ;
+  private HashMap<String, cei> IFR;
+  private int IFS;
+  private boolean IFT;
   public Context mContext;
   
   public ScanCodeSheetItemLogic(Context paramContext)
   {
     AppMethodBeat.i(151569);
-    this.CAi = new bws();
-    this.CAm = new HashMap();
-    this.CAn = new MutableLiveData();
-    this.CAp = false;
+    this.IFM = null;
+    this.IFN = new cei();
+    this.IFR = new HashMap();
+    this.EiN = new r();
+    this.IFT = false;
     this.mContext = paramContext;
     AppMethodBeat.o(151569);
   }
@@ -53,24 +61,26 @@ public class ScanCodeSheetItemLogic
   public ScanCodeSheetItemLogic(Context paramContext, a parama)
   {
     AppMethodBeat.i(151570);
-    this.CAi = new bws();
-    this.CAm = new HashMap();
-    this.CAn = new MutableLiveData();
-    this.CAp = false;
+    this.IFM = null;
+    this.IFN = new cei();
+    this.IFR = new HashMap();
+    this.EiN = new r();
+    this.IFT = false;
     this.mContext = paramContext;
-    this.CAj = parama;
+    this.IFO = parama;
     AppMethodBeat.o(151570);
   }
   
   public ScanCodeSheetItemLogic(Context paramContext, b paramb)
   {
     AppMethodBeat.i(151571);
-    this.CAi = new bws();
-    this.CAm = new HashMap();
-    this.CAn = new MutableLiveData();
-    this.CAp = false;
+    this.IFM = null;
+    this.IFN = new cei();
+    this.IFR = new HashMap();
+    this.EiN = new r();
+    this.IFT = false;
     this.mContext = paramContext;
-    this.CAk = paramb;
+    this.IFP = paramb;
     AppMethodBeat.o(151571);
   }
   
@@ -81,56 +91,62 @@ public class ScanCodeSheetItemLogic
     Object localObject = new ViewTitleWithAnimation(this.mContext);
     ((ViewTitleWithAnimation)localObject).startLoading();
     ((ViewTitleWithAnimation)localObject).setOnClickListener(paramOnClickListener);
-    if (g.ca(paramInt, paramString))
+    if (k.bY(paramInt, paramString))
     {
-      ((ViewTitleWithAnimation)localObject).getIconImageView().setImageResource(2131689518);
-      ((ViewTitleWithAnimation)localObject).setSubTitle(this.mContext.getString(2131764913));
+      ((ViewTitleWithAnimation)localObject).getIconImageView().setImageResource(c.g.actionsheet_default_appbrand_icon);
+      ((ViewTitleWithAnimation)localObject).setSubTitle(this.mContext.getString(c.h.scan_go_app_brand_in_pic));
     }
     for (;;)
     {
       AppMethodBeat.o(151577);
       return localObject;
-      if (g.cb(paramInt, paramString))
+      if (k.bZ(paramInt, paramString))
       {
-        ((ViewTitleWithAnimation)localObject).setSubTitle(this.mContext.getString(2131764914));
+        ((ViewTitleWithAnimation)localObject).setSubTitle(this.mContext.getString(c.h.scan_go_brand_brand_in_pic));
         ((ViewTitleWithAnimation)localObject).getIconImageView().setImageDrawable(null);
-        ((ViewTitleWithAnimation)localObject).getIconImageView().setImageResource(2131234714);
+        ((ViewTitleWithAnimation)localObject).getIconImageView().setImageResource(c.d.scan_default_avatar_icon);
       }
-      else if (g.cc(paramInt, paramString))
+      else if (k.ca(paramInt, paramString))
       {
-        ((ViewTitleWithAnimation)localObject).setSubTitle(this.mContext.getString(2131764917));
+        ((ViewTitleWithAnimation)localObject).setSubTitle(this.mContext.getString(c.h.scan_go_personal_brand_in_pic));
         ((ViewTitleWithAnimation)localObject).getIconImageView().setImageDrawable(null);
-        ((ViewTitleWithAnimation)localObject).getIconImageView().setImageResource(2131099697);
+        ((ViewTitleWithAnimation)localObject).getIconImageView().setImageResource(c.b.BW_BG_95);
       }
-      else if (g.cd(paramInt, paramString))
+      else if (k.cb(paramInt, paramString))
       {
-        ((ViewTitleWithAnimation)localObject).setSubTitle(this.mContext.getString(2131764915));
+        ((ViewTitleWithAnimation)localObject).setSubTitle(this.mContext.getString(c.h.scan_go_group_chat_brand_in_pic));
         ((ViewTitleWithAnimation)localObject).getIconImageView().setImageDrawable(null);
-        ((ViewTitleWithAnimation)localObject).getIconImageView().setImageResource(2131690046);
+        ((ViewTitleWithAnimation)localObject).getIconImageView().setImageResource(c.g.default_chatroom);
       }
-      else if (g.ce(paramInt, paramString))
+      else if (k.cc(paramInt, paramString))
       {
-        ((ViewTitleWithAnimation)localObject).setSubTitle(this.mContext.getString(2131764919));
+        ((ViewTitleWithAnimation)localObject).setSubTitle(this.mContext.getString(c.h.scan_go_wechat_work_in_pic));
         ((ViewTitleWithAnimation)localObject).getIconImageView().setImageDrawable(null);
-        ((ViewTitleWithAnimation)localObject).getIconImageView().setImageResource(2131099697);
+        ((ViewTitleWithAnimation)localObject).getIconImageView().setImageResource(c.b.BW_BG_95);
       }
-      else if (g.ch(paramInt, paramString))
+      else if (k.cf(paramInt, paramString))
       {
-        ((ViewTitleWithAnimation)localObject).setSubTitle(this.mContext.getString(2131764916));
-        ((ViewTitleWithAnimation)localObject).getIconImageView().setImageDrawable(ar.m(this.mContext, 2131690935, this.mContext.getResources().getColor(2131099711)));
+        ((ViewTitleWithAnimation)localObject).setSubTitle(this.mContext.getString(c.h.scan_go_payment_in_pic));
+        ((ViewTitleWithAnimation)localObject).getIconImageView().setImageDrawable(au.o(this.mContext, c.g.icons_outlined_wallet, this.mContext.getResources().getColor(c.b.Brand_100)));
+      }
+      else if (k.ce(paramInt, paramString))
+      {
+        ((ViewTitleWithAnimation)localObject).setSubTitle(this.mContext.getString(c.h.scan_go_reward_in_pic));
+        ((ViewTitleWithAnimation)localObject).getIconImageView().setImageDrawable(au.o(this.mContext, c.g.icon_scan_code_reward, this.mContext.getResources().getColor(c.b.Yellow)));
       }
       else
       {
-        if (!g.cg(paramInt, paramString)) {
+        if (!k.ch(paramInt, paramString)) {
           break;
         }
-        ((ViewTitleWithAnimation)localObject).setSubTitle(this.mContext.getString(2131764918));
-        ((ViewTitleWithAnimation)localObject).getIconImageView().setImageDrawable(ar.m(this.mContext, 2131690461, this.mContext.getResources().getColor(2131099845)));
+        ((ViewTitleWithAnimation)localObject).setSubTitle(this.mContext.getString(c.h.scan_go_finder_finder_in_pic));
+        ((ViewTitleWithAnimation)localObject).getIconImageView().setImageDrawable(null);
+        ((ViewTitleWithAnimation)localObject).getIconImageView().setImageResource(c.d.scan_default_avatar_icon);
       }
     }
-    paramString = this.mContext.getString(2131764967);
-    if (!e.d.ahw(paramInt)) {
-      paramString = this.mContext.getString(2131764966);
+    paramString = this.mContext.getString(c.h.scan_pic_qr_code);
+    if (!e.d.apt(paramInt)) {
+      paramString = this.mContext.getString(c.h.scan_pic_bar_code);
     }
     localObject = new com.tencent.mm.ui.widget.bottomsheet.a(this.mContext);
     ((com.tencent.mm.ui.widget.bottomsheet.a)localObject).setOnClickListener(paramOnClickListener);
@@ -139,212 +155,535 @@ public class ScanCodeSheetItemLogic
     return localObject;
   }
   
+  private View a(View.OnClickListener paramOnClickListener, List<ImageQBarDataBean> paramList, ImageQBarDataBean paramImageQBarDataBean)
+  {
+    AppMethodBeat.i(232042);
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      Log.e("MicroMsg.ScanCodeSheetItemLogic", "createQRCodeMenuItemDefault return null,  list is null or empty");
+      AppMethodBeat.o(232042);
+      return null;
+    }
+    if (paramImageQBarDataBean != null)
+    {
+      paramOnClickListener = a(paramOnClickListener, paramImageQBarDataBean.fys, paramImageQBarDataBean.IAH);
+      AppMethodBeat.o(232042);
+      return paramOnClickListener;
+    }
+    if (paramList.size() == 1)
+    {
+      paramList = (ImageQBarDataBean)paramList.get(0);
+      paramOnClickListener = a(paramOnClickListener, paramList.fys, paramList.IAH);
+      AppMethodBeat.o(232042);
+      return paramOnClickListener;
+    }
+    paramList = hb(paramList);
+    paramImageQBarDataBean = new com.tencent.mm.ui.widget.bottomsheet.a(this.mContext);
+    paramImageQBarDataBean.setOnClickListener(paramOnClickListener);
+    paramImageQBarDataBean.setTitle(paramList);
+    AppMethodBeat.o(232042);
+    return paramImageQBarDataBean;
+  }
+  
   @SuppressLint({"ResourceType"})
-  private View d(View.OnClickListener paramOnClickListener)
+  private View e(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(151576);
     ViewTitleWithAnimation localViewTitleWithAnimation = new ViewTitleWithAnimation(this.mContext);
     localViewTitleWithAnimation.hideLoading();
-    if ((this.CAh.Ret != 0) || (Util.isNullOrNil(this.CAh.UserName)))
+    if ((this.IFM.CqV != 0) || (Util.isNullOrNil(this.IFM.UserName)))
     {
-      localViewTitleWithAnimation.gZm();
+      localViewTitleWithAnimation.iad();
       localViewTitleWithAnimation.setOnClickListener(paramOnClickListener);
       AppMethodBeat.o(151576);
       return localViewTitleWithAnimation;
     }
-    localViewTitleWithAnimation.setTitle(this.CAh.UserName);
+    localViewTitleWithAnimation.setTitle(this.IFM.UserName);
     localViewTitleWithAnimation.setOnClickListener(paramOnClickListener);
     paramOnClickListener = new c.a();
-    paramOnClickListener.jbe = true;
+    paramOnClickListener.lRC = true;
     localViewTitleWithAnimation.getIconImageView().setBackground(null);
     localViewTitleWithAnimation.getIconImageView().setImageDrawable(null);
-    if (this.CAh.Mcw == 4)
+    if (this.IFM.TlV == 4)
     {
-      localViewTitleWithAnimation.setSubTitle(this.mContext.getString(2131764913));
-      paramOnClickListener.jbq = 2131689518;
-      paramOnClickListener.iaT = true;
-      com.tencent.mm.av.a.a.bdb().a(this.CAh.Mcx, localViewTitleWithAnimation.getIconImageView(), paramOnClickListener.bdv());
+      localViewTitleWithAnimation.setSubTitle(this.mContext.getString(c.h.scan_go_app_brand_in_pic));
+      paramOnClickListener.lRP = c.g.actionsheet_default_appbrand_icon;
+      paramOnClickListener.kPz = true;
+      com.tencent.mm.ay.a.a.bms().a(this.IFM.TlW, localViewTitleWithAnimation.getIconImageView(), paramOnClickListener.bmL());
     }
     for (;;)
     {
       AppMethodBeat.o(151576);
       return localViewTitleWithAnimation;
-      if (this.CAh.Mcw == 3)
+      if (this.IFM.TlV == 3)
       {
-        localViewTitleWithAnimation.setSubTitle(this.mContext.getString(2131764914));
-        paramOnClickListener.jbq = 2131234714;
-        paramOnClickListener.iaT = true;
-        com.tencent.mm.av.a.a.bdb().a(this.CAh.Mcx, localViewTitleWithAnimation.getIconImageView(), paramOnClickListener.bdv());
+        localViewTitleWithAnimation.setSubTitle(this.mContext.getString(c.h.scan_go_brand_brand_in_pic));
+        paramOnClickListener.lRP = c.d.scan_default_avatar_icon;
+        paramOnClickListener.kPz = true;
+        com.tencent.mm.ay.a.a.bms().a(this.IFM.TlW, localViewTitleWithAnimation.getIconImageView(), paramOnClickListener.bmL());
       }
-      else if (this.CAh.Mcw == 1)
+      else if (this.IFM.TlV == 1)
       {
-        localViewTitleWithAnimation.setSubTitle(this.mContext.getString(2131764917));
-        paramOnClickListener.jbq = 2131099697;
-        com.tencent.mm.av.a.a.bdb().a(this.CAh.Mcx, localViewTitleWithAnimation.getIconImageView(), paramOnClickListener.bdv());
+        localViewTitleWithAnimation.setSubTitle(this.mContext.getString(c.h.scan_go_personal_brand_in_pic));
+        paramOnClickListener.lRP = c.b.BW_BG_95;
+        com.tencent.mm.ay.a.a.bms().a(this.IFM.TlW, localViewTitleWithAnimation.getIconImageView(), paramOnClickListener.bmL());
       }
-      else if (this.CAh.Mcw == 2)
+      else if (this.IFM.TlV == 2)
       {
-        localViewTitleWithAnimation.setSubTitle(this.mContext.getString(2131764915));
-        localViewTitleWithAnimation.getIconImageView().setImageResource(2131690046);
+        localViewTitleWithAnimation.setSubTitle(this.mContext.getString(c.h.scan_go_group_chat_brand_in_pic));
+        localViewTitleWithAnimation.getIconImageView().setImageResource(c.g.default_chatroom);
       }
-      else if (this.CAh.Mcw == 7)
+      else if (this.IFM.TlV == 7)
       {
-        localViewTitleWithAnimation.setSubTitle(this.mContext.getString(2131764919));
+        localViewTitleWithAnimation.setSubTitle(this.mContext.getString(c.h.scan_go_wechat_work_in_pic));
         localViewTitleWithAnimation.getIconImageView().setImageDrawable(null);
-        if (!Util.isNullOrNil(this.CAh.Mcy)) {
-          localViewTitleWithAnimation.setCompanyText(Util.safeFormatString("@%s", new Object[] { this.CAh.Mcy }));
+        if (!Util.isNullOrNil(this.IFM.TlX)) {
+          localViewTitleWithAnimation.setCompanyText(Util.safeFormatString("@%s", new Object[] { this.IFM.TlX }));
         }
-        paramOnClickListener.jbq = 2131099697;
-        com.tencent.mm.av.a.a.bdb().a(this.CAh.Mcx, localViewTitleWithAnimation.getIconImageView(), paramOnClickListener.bdv());
+        paramOnClickListener.lRP = c.b.BW_BG_95;
+        com.tencent.mm.ay.a.a.bms().a(this.IFM.TlW, localViewTitleWithAnimation.getIconImageView(), paramOnClickListener.bmL());
       }
-      else if (this.CAh.Mcw == 6)
+      else if (this.IFM.TlV == 6)
       {
-        localViewTitleWithAnimation.setTitle(Util.safeFormatString(this.mContext.getString(2131764964), new Object[] { this.CAh.UserName }));
-        localViewTitleWithAnimation.setSubTitle(this.mContext.getString(2131764916));
-        localViewTitleWithAnimation.getIconImageView().setImageDrawable(ar.m(this.mContext, 2131690935, this.mContext.getResources().getColor(2131099710)));
+        localViewTitleWithAnimation.setTitle(Util.safeFormatString(this.mContext.getString(c.h.scan_pay_to_someone), new Object[] { this.IFM.UserName }));
+        localViewTitleWithAnimation.setSubTitle(this.mContext.getString(c.h.scan_go_payment_in_pic));
+        localViewTitleWithAnimation.getIconImageView().setImageDrawable(au.o(this.mContext, c.g.icons_outlined_wallet, this.mContext.getResources().getColor(c.b.Brand)));
       }
-      else if (this.CAh.Mcw == 5)
+      else if (this.IFM.TlV == 5)
       {
-        localViewTitleWithAnimation.setTitle(Util.safeFormatString(this.mContext.getString(2131764986), new Object[] { this.CAh.UserName }));
-        localViewTitleWithAnimation.setSubTitle(this.mContext.getString(2131764918));
-        localViewTitleWithAnimation.getIconImageView().setImageDrawable(ar.m(this.mContext, 2131690461, this.mContext.getResources().getColor(2131099845)));
+        localViewTitleWithAnimation.setTitle(Util.safeFormatString(this.mContext.getString(c.h.scan_reward_to_someone), new Object[] { this.IFM.UserName }));
+        localViewTitleWithAnimation.setSubTitle(this.mContext.getString(c.h.scan_go_reward_in_pic));
+        localViewTitleWithAnimation.getIconImageView().setImageDrawable(au.o(this.mContext, c.g.icon_scan_code_reward, this.mContext.getResources().getColor(c.b.Yellow)));
+      }
+      else if (this.IFM.TlV == 9)
+      {
+        localViewTitleWithAnimation.setSubTitle(this.mContext.getString(c.h.scan_go_finder_finder_in_pic));
+        paramOnClickListener.lRP = c.d.scan_default_avatar_icon;
+        paramOnClickListener.kPz = true;
+        com.tencent.mm.ay.a.a.bms().a(this.IFM.TlW, localViewTitleWithAnimation.getIconImageView(), paramOnClickListener.bmL());
       }
       else
       {
-        localViewTitleWithAnimation.gZm();
+        localViewTitleWithAnimation.iad();
       }
     }
   }
   
-  public final String Wp(int paramInt)
+  public static String hb(List<ImageQBarDataBean> paramList)
   {
-    AppMethodBeat.i(223709);
-    String str = this.mContext.getString(2131764926);
-    if (!e.d.ahw(paramInt)) {
-      str = this.mContext.getString(2131764924);
+    int n = 1;
+    AppMethodBeat.i(232030);
+    int m = 0;
+    int j = 0;
+    int k = 0;
+    int i = 0;
+    if (m < paramList.size())
+    {
+      String str = ((ImageQBarDataBean)paramList.get(m)).IAH;
+      int i1 = ((ImageQBarDataBean)paramList.get(m)).fys;
+      if (k.bY(i1, str)) {
+        j = 1;
+      }
+      for (;;)
+      {
+        m += 1;
+        break;
+        if (!e.d.apt(i1)) {
+          k = 1;
+        } else {
+          i = 1;
+        }
+      }
     }
-    AppMethodBeat.o(223709);
-    return str;
+    paramList = new StringBuilder("识别图中");
+    if (i != 0) {
+      paramList.append("二维码");
+    }
+    for (i = 1;; i = 0)
+    {
+      if (k != 0)
+      {
+        if (i != 0) {
+          paramList.append(" / ");
+        }
+        paramList.append("条码");
+        i = n;
+      }
+      for (;;)
+      {
+        if (j != 0)
+        {
+          if (i != 0) {
+            paramList.append(" / ");
+          }
+          paramList.append("小程序码");
+        }
+        paramList = paramList.toString();
+        AppMethodBeat.o(232030);
+        return paramList;
+      }
+    }
   }
   
   @SuppressLint({"ResourceType"})
   public final View a(View.OnClickListener paramOnClickListener, int paramInt1, String paramString, int paramInt2)
   {
     AppMethodBeat.i(151575);
-    this.CAo = paramInt2;
+    this.IFS = paramInt2;
     paramOnClickListener = new ScanCodeSheetItemLogic.6(this, paramInt2, paramOnClickListener);
-    if (this.CAh == null)
+    if (this.IFM == null)
     {
       paramOnClickListener = a(paramOnClickListener, paramInt1, paramString);
       AppMethodBeat.o(151575);
       return paramOnClickListener;
     }
-    paramOnClickListener = d(paramOnClickListener);
+    paramOnClickListener = e(paramOnClickListener);
     AppMethodBeat.o(151575);
     return paramOnClickListener;
   }
   
-  public final void cl(int paramInt, final String paramString)
+  @SuppressLint({"ResourceType"})
+  public final View a(View.OnClickListener paramOnClickListener, List<ImageQBarDataBean> paramList, ImageQBarDataBean paramImageQBarDataBean, int paramInt)
   {
-    AppMethodBeat.i(223710);
-    this.CAp = true;
-    this.CAh = null;
-    h.RTc.bqo("MicroMsg.ScanCodeSheetItemLogic");
+    AppMethodBeat.i(232041);
+    this.IFS = paramInt;
+    paramOnClickListener = new ScanCodeSheetItemLogic.7(this, paramInt, paramOnClickListener);
+    if (this.IFM != null)
+    {
+      paramOnClickListener = e(paramOnClickListener);
+      AppMethodBeat.o(232041);
+      return paramOnClickListener;
+    }
+    paramOnClickListener = a(paramOnClickListener, paramList, paramImageQBarDataBean);
+    AppMethodBeat.o(232041);
+    return paramOnClickListener;
+  }
+  
+  public final void a(int paramInt, final String paramString, final a parama)
+  {
+    AppMethodBeat.i(232031);
+    this.IFM = null;
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(223710);
+      AppMethodBeat.o(232031);
       return;
     }
-    if (this.CAl == null) {
-      this.CAl = new d();
+    if (this.IFQ == null) {
+      this.IFQ = new e();
     }
-    if (g.ci(paramInt, paramString))
+    if (k.ci(paramInt, paramString)) {
+      this.IFQ.bX(paramInt, paramString).a(new d.b() {});
+    }
+    AppMethodBeat.o(232031);
+  }
+  
+  public final void a(int paramInt, String paramString, com.tencent.mm.ui.widget.a.e parame, o paramo)
+  {
+    AppMethodBeat.i(232039);
+    if ((this.IFM == null) || ((!Util.isEqual(this.IFM.SZL, paramString)) && (this.IFM != this.IFN)))
+    {
+      if (k.ci(paramInt, paramString))
+      {
+        paramString = new p(paramo.mContext, 3, 0);
+        paramString.HhK = true;
+        paramo.WkP.add(paramString);
+        AppMethodBeat.o(232039);
+        return;
+      }
+      paramo.b(3, adg(paramInt), c.g.icons_outlined_qr_code);
+      AppMethodBeat.o(232039);
+      return;
+    }
+    if ((this.IFM.CqV != 0) || (Util.isNullOrNil(this.IFM.UserName)))
+    {
+      if ((k.bZ(paramInt, paramString)) || (k.cb(paramInt, paramString)) || (k.ca(paramInt, paramString)) || (k.cc(paramInt, paramString)))
+      {
+        paramo.a(3, this.mContext.getString(c.h.scan_identify_qr_code), c.g.icons_outlined_qr_code, this.mContext.getResources().getColor(c.b.FG_0));
+        AppMethodBeat.o(232039);
+        return;
+      }
+      if (k.bY(paramInt, paramString))
+      {
+        paramo.a(3, this.mContext.getString(c.h.scan_identify_we_app_code), c.g.icons_outlined_qr_code, this.mContext.getResources().getColor(c.b.FG_0));
+        AppMethodBeat.o(232039);
+        return;
+      }
+      if (k.cf(paramInt, paramString))
+      {
+        paramo.a(3, this.mContext.getString(c.h.scan_identify_pay_code), c.g.icons_outlined_wechatpay, this.mContext.getResources().getColor(c.b.FG_0));
+        AppMethodBeat.o(232039);
+        return;
+      }
+      if (k.ce(paramInt, paramString))
+      {
+        paramo.a(3, this.mContext.getString(c.h.scan_identify_reward_code), c.g.icons_outlined_pay_reward_code, this.mContext.getResources().getColor(c.b.FG_0));
+        AppMethodBeat.o(232039);
+        return;
+      }
+      paramString = this.mContext.getString(c.h.scan_identify_qr_code);
+      if (!e.d.apt(paramInt)) {
+        paramString = this.mContext.getString(c.h.scan_identify_dimens_code);
+      }
+      paramo.a(3, paramString, c.g.icons_outlined_qr_code, this.mContext.getResources().getColor(c.b.FG_0));
+      AppMethodBeat.o(232039);
+      return;
+    }
+    paramString = this.IFM.UserName;
+    Object localObject = new q.b()
+    {
+      @SuppressLint({"ResourceType"})
+      public final void a(ImageView paramAnonymousImageView, MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(198675);
+        if (paramAnonymousMenuItem.getItemId() == 7)
+        {
+          paramAnonymousImageView.setImageDrawable(au.o(ScanCodeSheetItemLogic.g(ScanCodeSheetItemLogic.this), c.g.icons_outlined_translate, ScanCodeSheetItemLogic.g(ScanCodeSheetItemLogic.this).getResources().getColor(c.b.FG_0)));
+          AppMethodBeat.o(198675);
+          return;
+        }
+        if (paramAnonymousMenuItem.getItemId() != this.IFY)
+        {
+          AppMethodBeat.o(198675);
+          return;
+        }
+        if (ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this) == null)
+        {
+          AppMethodBeat.o(198675);
+          return;
+        }
+        paramAnonymousMenuItem = new c.a();
+        paramAnonymousMenuItem.lRC = true;
+        paramAnonymousImageView.setBackground(null);
+        paramAnonymousImageView.setImageDrawable(null);
+        if (ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlV == 4)
+        {
+          paramAnonymousMenuItem.lRP = c.g.actionsheet_default_appbrand_icon;
+          paramAnonymousMenuItem.kPz = true;
+          com.tencent.mm.ay.a.a.bms().a(ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlW, paramAnonymousImageView, paramAnonymousMenuItem.bmL());
+          AppMethodBeat.o(198675);
+          return;
+        }
+        if (ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlV == 3)
+        {
+          paramAnonymousMenuItem.lRP = c.g.default_avatar_round;
+          paramAnonymousMenuItem.kPz = true;
+          com.tencent.mm.ay.a.a.bms().a(ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlW, paramAnonymousImageView, paramAnonymousMenuItem.bmL());
+          AppMethodBeat.o(198675);
+          return;
+        }
+        if (ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlV == 1)
+        {
+          paramAnonymousMenuItem.kPz = true;
+          paramAnonymousMenuItem.lRW = com.tencent.mm.ci.a.fromDPToPix(ScanCodeSheetItemLogic.g(ScanCodeSheetItemLogic.this), 4);
+          paramAnonymousMenuItem.lRP = c.g.default_avatar;
+          com.tencent.mm.ay.a.a.bms().a(ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlW, paramAnonymousImageView, paramAnonymousMenuItem.bmL());
+          AppMethodBeat.o(198675);
+          return;
+        }
+        if (ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlV == 2)
+        {
+          paramAnonymousImageView.setImageDrawable(au.o(ScanCodeSheetItemLogic.g(ScanCodeSheetItemLogic.this), c.g.icons_outlined_group_detail, ScanCodeSheetItemLogic.g(ScanCodeSheetItemLogic.this).getResources().getColor(c.b.FG_0)));
+          AppMethodBeat.o(198675);
+          return;
+        }
+        if (ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlV == 7)
+        {
+          paramAnonymousMenuItem.kPz = true;
+          paramAnonymousMenuItem.lRW = com.tencent.mm.ci.a.fromDPToPix(ScanCodeSheetItemLogic.g(ScanCodeSheetItemLogic.this), 4);
+          paramAnonymousMenuItem.lRP = c.g.default_avatar;
+          com.tencent.mm.ay.a.a.bms().a(ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlW, paramAnonymousImageView, paramAnonymousMenuItem.bmL());
+          AppMethodBeat.o(198675);
+          return;
+        }
+        if (ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlV == 6)
+        {
+          paramAnonymousImageView.setImageDrawable(au.o(ScanCodeSheetItemLogic.g(ScanCodeSheetItemLogic.this), c.g.icons_outlined_wechatpay, ScanCodeSheetItemLogic.g(ScanCodeSheetItemLogic.this).getResources().getColor(c.b.FG_0)));
+          AppMethodBeat.o(198675);
+          return;
+        }
+        if (ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlV == 5)
+        {
+          paramAnonymousImageView.setImageDrawable(au.o(ScanCodeSheetItemLogic.g(ScanCodeSheetItemLogic.this), c.g.icons_outlined_pay_reward_code, ScanCodeSheetItemLogic.g(ScanCodeSheetItemLogic.this).getResources().getColor(c.b.FG_0)));
+          AppMethodBeat.o(198675);
+          return;
+        }
+        if (ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlV == 9)
+        {
+          paramAnonymousMenuItem.lRP = c.g.default_avatar_round;
+          paramAnonymousMenuItem.kPz = true;
+          com.tencent.mm.ay.a.a.bms().a(ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this).TlW, paramAnonymousImageView, paramAnonymousMenuItem.bmL());
+        }
+        AppMethodBeat.o(198675);
+      }
+    };
+    parame.YmG = ((q.b)localObject);
+    parame.YmF = ((q.b)localObject);
+    if (this.IFM.TlV == 4)
+    {
+      paramo.b(3, paramString, this.mContext.getString(c.h.scan_app_brand_code), 0);
+      AppMethodBeat.o(232039);
+      return;
+    }
+    if (this.IFM.TlV == 3)
+    {
+      paramo.b(3, paramString, this.mContext.getString(c.h.scan_biz_brand_code), 0);
+      AppMethodBeat.o(232039);
+      return;
+    }
+    if (this.IFM.TlV == 1)
+    {
+      paramo.b(3, paramString, this.mContext.getString(c.h.scan_personal_code), 0);
+      AppMethodBeat.o(232039);
+      return;
+    }
+    if (this.IFM.TlV == 2)
+    {
+      paramo.b(3, paramString, this.mContext.getString(c.h.scan_group_code), this.mContext.getResources().getColor(c.b.FG_0));
+      AppMethodBeat.o(232039);
+      return;
+    }
+    if (this.IFM.TlV == 7)
+    {
+      parame = new SpannableStringBuilder();
+      paramString = paramString + " ";
+      parame.append(paramString);
+      localObject = "@" + this.IFM.TlX;
+      parame.append((CharSequence)localObject);
+      parame.setSpan(new ForegroundColorSpan(this.mContext.getResources().getColor(c.b.Orange)), paramString.length(), paramString.length() + ((String)localObject).length(), 33);
+      paramo.b(3, parame, this.mContext.getString(c.h.scan_wework_code), 0);
+      AppMethodBeat.o(232039);
+      return;
+    }
+    if (this.IFM.TlV == 6)
+    {
+      paramo.b(3, Util.safeFormatString(this.mContext.getString(c.h.scan_pay_to_someone), new Object[] { this.IFM.UserName }), this.mContext.getString(c.h.scan_pay_code), this.mContext.getResources().getColor(c.b.FG_0));
+      AppMethodBeat.o(232039);
+      return;
+    }
+    if (this.IFM.TlV == 5)
+    {
+      paramo.b(3, Util.safeFormatString(this.mContext.getString(c.h.scan_reward_to_someone), new Object[] { this.IFM.UserName }), this.mContext.getString(c.h.scan_reward_code), this.mContext.getResources().getColor(c.b.FG_0));
+      AppMethodBeat.o(232039);
+      return;
+    }
+    if (this.IFM.TlV == 9) {
+      paramo.b(3, paramString, this.mContext.getString(c.h.scan_finder_code), 0);
+    }
+    AppMethodBeat.o(232039);
+  }
+  
+  public final String adg(int paramInt)
+  {
+    AppMethodBeat.i(232029);
+    String str = this.mContext.getString(c.h.scan_identify_qr_code);
+    if (!e.d.apt(paramInt)) {
+      str = this.mContext.getString(c.h.scan_identify_dimens_code);
+    }
+    AppMethodBeat.o(232029);
+    return str;
+  }
+  
+  public final void ck(int paramInt, final String paramString)
+  {
+    AppMethodBeat.i(232032);
+    this.IFT = true;
+    this.IFM = null;
+    h.ZvG.bDh("MicroMsg.ScanCodeSheetItemLogic");
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(232032);
+      return;
+    }
+    if (this.IFQ == null) {
+      this.IFQ = new e();
+    }
+    if (k.ci(paramInt, paramString))
     {
       if (1000L > 0L)
       {
-        h.RTc.bqo("MicroMsg.ScanCodeSheetItemLogic");
-        h.RTc.a(new Runnable()
+        h.ZvG.bDh("MicroMsg.ScanCodeSheetItemLogic");
+        h.ZvG.a(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(223706);
-            h.RTc.aV(new Runnable()
+            AppMethodBeat.i(204110);
+            h.ZvG.bc(new Runnable()
             {
               public final void run()
               {
-                AppMethodBeat.i(223705);
+                AppMethodBeat.i(219884);
                 if ((ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this) != null) && (ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this) != ScanCodeSheetItemLogic.c(ScanCodeSheetItemLogic.this)))
                 {
-                  AppMethodBeat.o(223705);
+                  AppMethodBeat.o(219884);
                   return;
                 }
                 ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this, ScanCodeSheetItemLogic.c(ScanCodeSheetItemLogic.this));
                 ScanCodeSheetItemLogic.b(ScanCodeSheetItemLogic.this, ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this));
                 if (ScanCodeSheetItemLogic.e(ScanCodeSheetItemLogic.this) != null) {
-                  ScanCodeSheetItemLogic.e(ScanCodeSheetItemLogic.this).bLz();
+                  ScanCodeSheetItemLogic.e(ScanCodeSheetItemLogic.this).bPS();
                 }
                 if (ScanCodeSheetItemLogic.f(ScanCodeSheetItemLogic.this) != null)
                 {
                   ScanCodeSheetItemLogic.b localb = ScanCodeSheetItemLogic.f(ScanCodeSheetItemLogic.this);
-                  String str = ScanCodeSheetItemLogic.4.this.CAq;
+                  String str = ScanCodeSheetItemLogic.4.this.IFU;
                   ScanCodeSheetItemLogic.a(ScanCodeSheetItemLogic.this);
-                  localb.asu(str);
+                  localb.aAx(str);
                 }
-                AppMethodBeat.o(223705);
+                AppMethodBeat.o(219884);
               }
             });
-            AppMethodBeat.o(223706);
+            AppMethodBeat.o(204110);
           }
         }, 1000L, "MicroMsg.ScanCodeSheetItemLogic");
       }
-      this.CAl.bZ(paramInt, paramString).a(new d.b() {});
+      this.IFQ.bX(paramInt, paramString).a(new d.b() {});
     }
-    AppMethodBeat.o(223710);
+    AppMethodBeat.o(232032);
   }
   
-  public final void cm(int paramInt, final String paramString)
+  public final void cl(int paramInt, final String paramString)
   {
     AppMethodBeat.i(151573);
-    this.CAh = null;
+    this.IFM = null;
     if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(151573);
       return;
     }
-    if (this.CAl == null) {
-      this.CAl = new d();
+    if (this.IFQ == null) {
+      this.IFQ = new e();
     }
-    if (g.ci(paramInt, paramString)) {
-      this.CAl.bZ(paramInt, paramString).a(new d.b() {});
+    if (k.ci(paramInt, paramString)) {
+      this.IFQ.bX(paramInt, paramString).a(new d.b() {});
     }
     AppMethodBeat.o(151573);
   }
   
   public final void onDismiss()
   {
-    AppMethodBeat.i(223711);
-    h.RTc.bqo("MicroMsg.ScanCodeSheetItemLogic");
-    this.CAh = null;
-    this.CAp = false;
-    AppMethodBeat.o(223711);
+    AppMethodBeat.i(232043);
+    h.ZvG.bDh("MicroMsg.ScanCodeSheetItemLogic");
+    this.IFM = null;
+    this.IFT = false;
+    AppMethodBeat.o(232043);
   }
   
-  public final void q(int paramInt, byte[] paramArrayOfByte)
+  public final void r(int paramInt, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151574);
-    bws localbws = new bws();
+    cei localcei = new cei();
     if ((paramInt == 0) && (!Util.isNullOrNil(paramArrayOfByte))) {}
     for (;;)
     {
       try
       {
-        localbws.parseFrom(paramArrayOfByte);
-        if ((Util.isNullOrNil(localbws.Mcx)) && (Util.isNullOrNil(localbws.UserName))) {
-          localbws.Ret = -1;
+        localcei.parseFrom(paramArrayOfByte);
+        if ((Util.isNullOrNil(localcei.TlW)) && (Util.isNullOrNil(localcei.UserName))) {
+          localcei.CqV = -1;
         }
-        this.CAh = localbws;
-        if (this.CAj != null) {
-          this.CAj.bLz();
+        this.IFM = localcei;
+        if (this.IFO != null) {
+          this.IFO.bPS();
         }
         AppMethodBeat.o(151574);
         return;
@@ -353,23 +692,23 @@ public class ScanCodeSheetItemLogic
       {
         Log.e("MicroMsg.ScanCodeSheetItemLogic", "parse exception: s%", new Object[] { paramArrayOfByte.getMessage() });
       }
-      localbws.Ret = -1;
+      localcei.CqV = -1;
     }
   }
   
   public static abstract interface a
   {
-    public abstract void bLz();
+    public abstract void bPS();
   }
   
   public static abstract interface b
   {
-    public abstract void asu(String paramString);
+    public abstract void aAx(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ScanCodeSheetItemLogic
  * JD-Core Version:    0.7.0.1
  */

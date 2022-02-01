@@ -1,13 +1,13 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dh;
+import com.tencent.mm.f.c.dl;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class bt
-  extends dh
+  extends dl
 {
   protected static IAutoDBItem.MAutoDBInfo info;
   

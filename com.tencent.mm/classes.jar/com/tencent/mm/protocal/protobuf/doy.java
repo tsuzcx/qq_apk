@@ -1,188 +1,87 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import g.a.a.b;
 
 public final class doy
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int FileSize;
-  public String MD5;
-  public int MSu;
-  public int MSv;
-  public LinkedList<dyk> MSw;
-  public com.tencent.mm.bw.b MSx;
-  public String MSy;
-  public String Url;
-  
-  public doy()
-  {
-    AppMethodBeat.i(152670);
-    this.MSw = new LinkedList();
-    AppMethodBeat.o(152670);
-  }
+  public String TVX;
+  public int TVY;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152671);
+    AppMethodBeat.i(32371);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.MD5 == null)
+      if (this.TVX == null)
       {
-        paramVarArgs = new g.a.a.b("Not all required fields were included: MD5");
-        AppMethodBeat.o(152671);
+        paramVarArgs = new b("Not all required fields were included: Ip");
+        AppMethodBeat.o(32371);
         throw paramVarArgs;
       }
-      if (this.Url == null)
-      {
-        paramVarArgs = new g.a.a.b("Not all required fields were included: Url");
-        AppMethodBeat.o(152671);
-        throw paramVarArgs;
+      if (this.TVX != null) {
+        paramVarArgs.f(1, this.TVX);
       }
-      if (this.MSy == null)
-      {
-        paramVarArgs = new g.a.a.b("Not all required fields were included: OriginalMD5");
-        AppMethodBeat.o(152671);
-        throw paramVarArgs;
-      }
-      if (this.MD5 != null) {
-        paramVarArgs.e(1, this.MD5);
-      }
-      paramVarArgs.aM(2, this.MSu);
-      if (this.Url != null) {
-        paramVarArgs.e(3, this.Url);
-      }
-      paramVarArgs.aM(4, this.MSv);
-      paramVarArgs.e(5, 8, this.MSw);
-      if (this.MSx != null) {
-        paramVarArgs.c(6, this.MSx);
-      }
-      if (this.MSy != null) {
-        paramVarArgs.e(7, this.MSy);
-      }
-      paramVarArgs.aM(8, this.FileSize);
-      AppMethodBeat.o(152671);
+      paramVarArgs.aY(2, this.TVY);
+      AppMethodBeat.o(32371);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.MD5 == null) {
-        break label818;
+      if (this.TVX == null) {
+        break label318;
       }
     }
-    label818:
-    for (paramInt = g.a.a.b.b.a.f(1, this.MD5) + 0;; paramInt = 0)
+    label318:
+    for (paramInt = g.a.a.b.b.a.g(1, this.TVX) + 0;; paramInt = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.bu(2, this.MSu);
-      paramInt = i;
-      if (this.Url != null) {
-        paramInt = i + g.a.a.b.b.a.f(3, this.Url);
-      }
-      i = paramInt + g.a.a.b.b.a.bu(4, this.MSv) + g.a.a.a.c(5, 8, this.MSw);
-      paramInt = i;
-      if (this.MSx != null) {
-        paramInt = i + g.a.a.b.b.a.b(6, this.MSx);
-      }
-      i = paramInt;
-      if (this.MSy != null) {
-        i = paramInt + g.a.a.b.b.a.f(7, this.MSy);
-      }
-      paramInt = g.a.a.b.b.a.bu(8, this.FileSize);
-      AppMethodBeat.o(152671);
-      return i + paramInt;
+      int i = g.a.a.b.b.a.bM(2, this.TVY);
+      AppMethodBeat.o(32371);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.MSw.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.MD5 == null)
+        if (this.TVX == null)
         {
-          paramVarArgs = new g.a.a.b("Not all required fields were included: MD5");
-          AppMethodBeat.o(152671);
+          paramVarArgs = new b("Not all required fields were included: Ip");
+          AppMethodBeat.o(32371);
           throw paramVarArgs;
         }
-        if (this.Url == null)
-        {
-          paramVarArgs = new g.a.a.b("Not all required fields were included: Url");
-          AppMethodBeat.o(152671);
-          throw paramVarArgs;
-        }
-        if (this.MSy == null)
-        {
-          paramVarArgs = new g.a.a.b("Not all required fields were included: OriginalMD5");
-          AppMethodBeat.o(152671);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(152671);
+        AppMethodBeat.o(32371);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         doy localdoy = (doy)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(152671);
+          AppMethodBeat.o(32371);
           return -1;
         case 1: 
-          localdoy.MD5 = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(152671);
-          return 0;
-        case 2: 
-          localdoy.MSu = ((g.a.a.a.a)localObject1).UbS.zi();
-          AppMethodBeat.o(152671);
-          return 0;
-        case 3: 
-          localdoy.Url = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(152671);
-          return 0;
-        case 4: 
-          localdoy.MSv = ((g.a.a.a.a)localObject1).UbS.zi();
-          AppMethodBeat.o(152671);
-          return 0;
-        case 5: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new dyk();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((dyk)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localdoy.MSw.add(localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(152671);
-          return 0;
-        case 6: 
-          localdoy.MSx = ((g.a.a.a.a)localObject1).UbS.hPo();
-          AppMethodBeat.o(152671);
-          return 0;
-        case 7: 
-          localdoy.MSy = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(152671);
+          localdoy.TVX = locala.abFh.readString();
+          AppMethodBeat.o(32371);
           return 0;
         }
-        localdoy.FileSize = ((g.a.a.a.a)localObject1).UbS.zi();
-        AppMethodBeat.o(152671);
+        localdoy.TVY = locala.abFh.AK();
+        AppMethodBeat.o(32371);
         return 0;
       }
-      AppMethodBeat.o(152671);
+      AppMethodBeat.o(32371);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.doy
  * JD-Core Version:    0.7.0.1
  */

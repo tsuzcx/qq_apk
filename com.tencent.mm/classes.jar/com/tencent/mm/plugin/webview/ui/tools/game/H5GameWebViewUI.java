@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.plugin.webview.core.i;
 import com.tencent.mm.plugin.webview.f.g;
 import com.tencent.mm.plugin.webview.f.g.b;
@@ -18,22 +19,22 @@ import com.tencent.mm.ui.widget.MMWebView;
 public class H5GameWebViewUI
   extends GameWebViewUI
 {
-  private static final String JrI;
+  private static final String Qpe;
   private int lastOrientation;
   
   static
   {
-    AppMethodBeat.i(211342);
-    JrI = "http://" + WeChatHosts.domainString(2131761707) + "/cgi-bin/h5/static/gameloading/index.html";
-    AppMethodBeat.o(211342);
+    AppMethodBeat.i(219477);
+    Qpe = "http://" + WeChatHosts.domainString(c.i.host_game_weixin_qq_com) + "/cgi-bin/h5/static/gameloading/index.html";
+    AppMethodBeat.o(219477);
   }
   
-  public final boolean cpz()
+  public final boolean cDX()
   {
     return false;
   }
   
-  public final boolean gfq()
+  public final boolean gYA()
   {
     return false;
   }
@@ -43,8 +44,8 @@ public class H5GameWebViewUI
     AppMethodBeat.i(80952);
     super.onCreate(paramBundle);
     Log.i("MicroMsg.H5GameWebViewUI", "onCreate");
-    this.Jio = false;
-    this.lastOrientation = this.screenOrientation;
+    this.Qfn = false;
+    this.lastOrientation = this.PJe;
     AppMethodBeat.o(80952);
   }
   
@@ -57,47 +58,47 @@ public class H5GameWebViewUI
     setIntent(paramIntent);
     String str = paramIntent.getStringExtra("rawUrl");
     Log.d("MicroMsg.H5GameWebViewUI", "url = ".concat(String.valueOf(str)));
-    if (!this.Jin.equals(str))
+    if (!this.Qfm.equals(str))
     {
-      if (str.startsWith(JrI)) {
-        this.Jin = str;
+      if (str.startsWith(Qpe)) {
+        this.Qfm = str;
       }
-      if (!coX().equals(str))
+      if (!cDu().equals(str))
       {
-        this.screenOrientation = getIntent().getIntExtra("screen_orientation", -1);
-        if (this.mHi == null) {
-          this.mHi = new g(new g.b()
+        this.PJe = getIntent().getIntExtra("screen_orientation", -1);
+        if (this.pGD == null) {
+          this.pGD = new g(new g.b()
           {
-            public final String fZK()
+            public final String gSD()
             {
-              AppMethodBeat.i(211340);
+              AppMethodBeat.i(226564);
               String str = H5GameWebViewUI.a(H5GameWebViewUI.this).getUrl();
-              AppMethodBeat.o(211340);
+              AppMethodBeat.o(226564);
               return str;
             }
             
-            public final String fZL()
+            public final String gSE()
             {
-              AppMethodBeat.i(211341);
+              AppMethodBeat.i(226565);
               String str = H5GameWebViewUI.b(H5GameWebViewUI.this).getUrl();
-              AppMethodBeat.o(211341);
+              AppMethodBeat.o(226565);
               return str;
             }
           });
         }
         for (;;)
         {
-          this.mHi.a((JsapiPermissionWrapper)getIntent().getParcelableExtra("hardcode_jspermission"), (GeneralControlWrapper)getIntent().getParcelableExtra("hardcode_general_ctrl"));
-          this.pGj.loadUrl("about:blank");
-          this.IMH.aB(paramIntent);
+          this.pGD.a((JsapiPermissionWrapper)getIntent().getParcelableExtra("hardcode_jspermission"), (GeneralControlWrapper)getIntent().getParcelableExtra("hardcode_general_ctrl"));
+          this.pHS.loadUrl("about:blank");
+          this.PIQ.bj(paramIntent);
           AppMethodBeat.o(80953);
           return;
-          this.mHi.a(str, null, null);
+          this.pGD.a(str, null, null);
         }
       }
-      this.screenOrientation = this.lastOrientation;
+      this.PJe = this.lastOrientation;
       getIntent().putExtra("show_full_screen", bool);
-      gfA();
+      gYL();
     }
     AppMethodBeat.o(80953);
   }

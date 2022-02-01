@@ -74,7 +74,7 @@ public class XWebCoreInfo
       if (!"armeabi-v7a".equalsIgnoreCase(paramString2)) {
         break label136;
       }
-      h.s(577L, 238L, 1L);
+      h.u(577L, 238L, 1L);
     }
     for (;;)
     {
@@ -83,7 +83,7 @@ public class XWebCoreInfo
       return bool;
       label136:
       if ("arm64-v8a".equalsIgnoreCase(paramString2)) {
-        h.s(577L, 239L, 1L);
+        h.u(577L, 239L, 1L);
       }
     }
   }
@@ -109,7 +109,7 @@ public class XWebCoreInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.XWebCoreInfo
  * JD-Core Version:    0.7.0.1
  */

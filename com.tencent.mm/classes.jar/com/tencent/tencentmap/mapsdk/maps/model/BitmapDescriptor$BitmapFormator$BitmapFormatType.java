@@ -9,6 +9,7 @@ public @interface BitmapDescriptor$BitmapFormator$BitmapFormatType
 {
   public static final int FORMAT_ASSET = 2;
   public static final int FORMAT_BITMAP = 7;
+  public static final int FORMAT_BITMAPS = 10;
   public static final int FORMAT_DEFAULT = 5;
   public static final int FORMAT_DEFAULT_F = 6;
   public static final int FORMAT_FILE = 3;
@@ -20,7 +21,7 @@ public @interface BitmapDescriptor$BitmapFormator$BitmapFormatType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.BitmapDescriptor.BitmapFormator.BitmapFormatType
  * JD-Core Version:    0.7.0.1
  */

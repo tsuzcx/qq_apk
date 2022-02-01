@@ -2,10 +2,11 @@ package com.tencent.mm.plugin.talkroom.model;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
+import com.tencent.mm.R.l;
+import com.tencent.mm.f.c.ax;
 import com.tencent.mm.model.aa;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.as;
@@ -13,9 +14,9 @@ import com.tencent.mm.storage.bv;
 
 public final class h
 {
-  private static final int FPn = a.FPn;
+  private static final int Mjo = a.Mjo;
   
-  public static String bC(Context paramContext, String paramString)
+  public static String bQ(Context paramContext, String paramString)
   {
     AppMethodBeat.i(29528);
     if (Util.isNullOrNil(paramString))
@@ -23,33 +24,33 @@ public final class h
       AppMethodBeat.o(29528);
       return null;
     }
-    bg.aVF();
-    as localas = c.aSN().Kn(paramString);
+    bh.beI();
+    as localas = c.bbL().RG(paramString);
     if (localas == null)
     {
       AppMethodBeat.o(29528);
       return null;
     }
-    if (ab.Eq(paramString))
+    if (ab.Lj(paramString))
     {
       if (Util.isNullOrNil(localas.field_nickname))
       {
-        paramContext = paramContext.getString(2131766629);
+        paramContext = paramContext.getString(R.l.eUg);
         AppMethodBeat.o(29528);
         return paramContext;
       }
-      paramContext = localas.arI();
+      paramContext = localas.ayr();
       AppMethodBeat.o(29528);
       return paramContext;
     }
-    paramContext = aa.getDisplayName(paramString);
+    paramContext = aa.PJ(paramString);
     AppMethodBeat.o(29528);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.model.h
  * JD-Core Version:    0.7.0.1
  */

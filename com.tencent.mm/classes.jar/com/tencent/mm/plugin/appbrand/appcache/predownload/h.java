@@ -24,116 +24,122 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/WxaAttributesBatchPreLoader;", "", "()V", "BATCH_PRELOAD_SCENES", "", "Lcom/tencent/mm/plugin/appbrand/config/CgiBatchWxaAttrSync$BatchSyncScene;", "[Lcom/tencent/mm/plugin/appbrand/config/CgiBatchWxaAttrSync$BatchSyncScene;", "NULL", "Lkotlin/Function0;", "", "PRELOADING_USERNAME_LIST", "Lcom/tencent/mm/plugin/appbrand/util/LightThreadSafeOneToManyHolder;", "", "QBAR_STRING_PRELOADED_TIMESTAMP", "Ljava/util/concurrent/ConcurrentHashMap;", "", "QBAR_STRING_PRELOAD_INTERVAL_MIN", "TAG", "batchPreloadAttrs", "usernameList", "", "scene", "onSuccess", "checkIfWaitWxaAttrsPreloadDone", "", "username", "block", "notifyPreloadDone", "preloadByQBarRawString", "qbarString", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appcache/predownload/WxaAttributesBatchPreLoader;", "", "()V", "BATCH_PRELOAD_SCENES", "", "Lcom/tencent/mm/plugin/appbrand/config/CgiBatchWxaAttrSync$BatchSyncScene;", "[Lcom/tencent/mm/plugin/appbrand/config/CgiBatchWxaAttrSync$BatchSyncScene;", "NULL", "Lkotlin/Function0;", "", "PRELOADING_USERNAME_LIST", "Lcom/tencent/mm/plugin/appbrand/util/LightThreadSafeOneToManyHolder;", "", "QBAR_STRING_PRELOADED_TIMESTAMP", "Ljava/util/concurrent/ConcurrentHashMap;", "", "QBAR_STRING_PRELOAD_INTERVAL_MIN", "TAG", "batchPreloadAttrs", "usernameList", "", "scene", "onSuccess", "checkIfWaitWxaAttrsPreloadDone", "", "username", "block", "notifyPreloadDone", "preloadByQBarRawString", "qbarString", "plugin-appbrand-integration_release"})
 public final class h
 {
-  public static final o.a[] kPj;
-  private static final a<x> kPk;
-  private static final com.tencent.mm.plugin.appbrand.ac.h<String, a<x>> kPl;
-  private static final ConcurrentHashMap<String, Long> kPm;
-  private static final long kPn;
-  public static final h kPo;
+  public static final o.a[] nJp;
+  private static final a<x> nJq;
+  private static final com.tencent.mm.plugin.appbrand.ac.h<String, a<x>> nJr;
+  private static final ConcurrentHashMap<String, Long> nJs;
+  private static final long nJt;
+  public static final h nJu;
   
   static
   {
-    AppMethodBeat.i(228030);
-    kPo = new h();
-    kPj = new o.a[] { o.a.lfd, o.a.lfe, o.a.lff, o.a.lfg };
-    kPk = (a)h.a.kPp;
-    kPl = new com.tencent.mm.plugin.appbrand.ac.h();
-    kPm = new ConcurrentHashMap();
-    kPn = TimeUnit.MINUTES.toMillis(5L);
-    AppMethodBeat.o(228030);
-  }
-  
-  public static void VE(final String paramString)
-  {
-    AppMethodBeat.i(228027);
-    p.h(paramString, "qbarString");
-    Long localLong2 = (Long)kPm.get(paramString);
-    Long localLong1 = localLong2;
-    if (localLong2 == null) {
-      localLong1 = Long.valueOf(0L);
-    }
-    p.g(localLong1, "QBAR_STRING_PRELOADED_TIMESTAMP[qbarString] ?: 0L");
-    long l = localLong1.longValue();
-    if (Util.milliSecondsToNow(l) < kPn)
-    {
-      Log.i("MicroMsg.WxaAttributesBatchPreLoader", "preloadByQBarRawString with qbarString:" + paramString + ", hit interval control, lastPreloadTimestamp:" + l);
-      AppMethodBeat.o(228027);
-      return;
-    }
-    ((Map)kPm).put(paramString, Long.valueOf(Util.nowMilliSecond()));
-    new e(Util.currentTicks(), paramString, paramString).aYI();
-    AppMethodBeat.o(228027);
+    AppMethodBeat.i(279549);
+    nJu = new h();
+    nJp = new o.a[] { o.a.nZq, o.a.nZr, o.a.nZs, o.a.nZt };
+    nJq = (a)h.a.nJv;
+    nJr = new com.tencent.mm.plugin.appbrand.ac.h();
+    nJs = new ConcurrentHashMap();
+    nJt = TimeUnit.MINUTES.toMillis(5L);
+    AppMethodBeat.o(279549);
   }
   
   public static void a(List<String> paramList, o.a parama, final a<x> parama1)
   {
-    AppMethodBeat.i(228028);
-    p.h(paramList, "usernameList");
-    p.h(parama, "scene");
-    p.h(parama1, "onSuccess");
-    aa.a(paramList, parama, (aa.d)new c(paramList, parama1)).a((d.b)d.kPt);
-    AppMethodBeat.o(228028);
+    AppMethodBeat.i(279547);
+    p.k(paramList, "usernameList");
+    p.k(parama, "scene");
+    p.k(parama1, "onSuccess");
+    aa.a(paramList, parama, (aa.d)new c(paramList, parama1)).a((d.b)h.d.nJz);
+    AppMethodBeat.o(279547);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/appcache/predownload/WxaAttributesBatchPreLoader$batchPreloadAttrs$2", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttrSyncHelper$WxaAttrBatchSyncListenerEx;", "usernameList", "", "", "done", "", "onRequested", "requestedUsernameList", "plugin-appbrand-integration_release"})
+  public static void adn(final String paramString)
+  {
+    AppMethodBeat.i(279545);
+    p.k(paramString, "qbarString");
+    Long localLong2 = (Long)nJs.get(paramString);
+    Long localLong1 = localLong2;
+    if (localLong2 == null) {
+      localLong1 = Long.valueOf(0L);
+    }
+    p.j(localLong1, "QBAR_STRING_PRELOADED_TIMESTAMP[qbarString] ?: 0L");
+    long l = localLong1.longValue();
+    if (Util.milliSecondsToNow(l) < nJt)
+    {
+      Log.i("MicroMsg.WxaAttributesBatchPreLoader", "preloadByQBarRawString with qbarString:" + paramString + ", hit interval control, lastPreloadTimestamp:" + l);
+      AppMethodBeat.o(279545);
+      return;
+    }
+    ((Map)nJs).put(paramString, Long.valueOf(Util.nowMilliSecond()));
+    new e(Util.currentTicks(), paramString, paramString).bhW();
+    AppMethodBeat.o(279545);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  static final class b
+    extends q
+    implements a<x>
+  {
+    public static final b nJw;
+    
+    static
+    {
+      AppMethodBeat.i(247716);
+      nJw = new b();
+      AppMethodBeat.o(247716);
+    }
+    
+    b()
+    {
+      super();
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/appcache/predownload/WxaAttributesBatchPreLoader$batchPreloadAttrs$2", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttrSyncHelper$WxaAttrBatchSyncListenerEx;", "usernameList", "", "", "done", "", "onRequested", "requestedUsernameList", "plugin-appbrand-integration_release"})
   public static final class c
     implements aa.e
   {
-    private List<String> gMT;
+    private List<String> jxh;
     
     c(List paramList, a parama) {}
     
-    public final void bj(List<String> paramList)
+    public final void bh(List<String> paramList)
     {
-      AppMethodBeat.i(228021);
+      AppMethodBeat.i(266126);
       if (paramList == null) {
-        paramList = (List)v.SXr;
+        paramList = (List)v.aaAd;
       }
       for (;;)
       {
-        this.gMT = ((List)new LinkedList((Collection)paramList));
-        paramList = ((Iterable)this.kPr).iterator();
+        this.jxh = ((List)new LinkedList((Collection)paramList));
+        paramList = ((Iterable)this.nJx).iterator();
         while (paramList.hasNext())
         {
           String str = (String)paramList.next();
-          Object localObject = h.kPo;
-          localObject = h.bwO();
-          h localh = h.kPo;
-          ((com.tencent.mm.plugin.appbrand.ac.h)localObject).r(str, h.bwP());
+          Object localObject = h.nJu;
+          localObject = h.bHV();
+          h localh = h.nJu;
+          ((com.tencent.mm.plugin.appbrand.ac.h)localObject).k(str, h.bHW());
         }
-        AppMethodBeat.o(228021);
+        AppMethodBeat.o(266126);
         return;
       }
     }
     
     public final void done()
     {
-      AppMethodBeat.i(228022);
-      h localh = h.kPo;
-      h.bi(this.kPr);
+      AppMethodBeat.i(266129);
+      h localh = h.nJu;
+      h.bg(this.nJx);
       parama1.invoke();
-      AppMethodBeat.o(228022);
+      AppMethodBeat.o(266129);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "updatedList", "", "", "kotlin.jvm.PlatformType", "", "onTerminate"})
-  static final class d<T>
-    implements d.b<List<String>>
-  {
-    public static final d kPt;
-    
-    static
-    {
-      AppMethodBeat.i(228025);
-      kPt = new d();
-      AppMethodBeat.o(228025);
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/appcache/predownload/WxaAttributesBatchPreLoader$preloadByQBarRawString$1", "Lcom/tencent/mm/plugin/appbrand/config/CgiBatchWxaAttrSync;", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/BatchWxaAttrSyncResponse;", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/appbrand/appcache/predownload/WxaAttributesBatchPreLoader$preloadByQBarRawString$1", "Lcom/tencent/mm/plugin/appbrand/config/CgiBatchWxaAttrSync;", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/BatchWxaAttrSyncResponse;", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-appbrand-integration_release"})
   public static final class e
     extends o
   {
@@ -145,7 +151,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.predownload.h
  * JD-Core Version:    0.7.0.1
  */

@@ -13,57 +13,71 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   implements d
 {
-  private static int mAe;
-  private static int mAf;
-  private int QD;
-  private int ahm;
-  private int ahu;
-  private StaticLayout huH;
-  private SpannableString mAg;
-  private int mAh;
-  private int mAi;
-  private int mAj;
-  private int mAk;
-  private int mAl;
-  private float mAm;
+  private static int pyA;
+  private static int pyz;
+  private int avJ;
+  private StaticLayout kgD;
   private Context mContext;
+  private int nH;
+  private int nz;
+  private SpannableString pyB;
+  private int pyC;
+  private int pyD;
+  private int pyE;
+  private int pyF;
+  private int pyG;
+  private float pyH;
   
   public a(Context paramContext, SpannableString paramSpannableString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(137851);
-    this.mAj = -1;
-    this.QD = -1;
+    this.pyE = -1;
+    this.avJ = -1;
     this.mContext = paramContext;
-    this.mAg = paramSpannableString;
-    this.mAk = b.N(this.mContext, b.mAn);
-    this.QD = paramInt1;
-    this.mAm = 3.0F;
-    this.mAl = paramInt2;
+    this.pyB = paramSpannableString;
+    this.pyF = b.R(this.mContext, b.pyI);
+    this.avJ = paramInt1;
+    this.pyH = 3.0F;
+    this.pyG = paramInt2;
     paramContext = new TextPaint();
     paramContext.setAntiAlias(true);
-    paramContext.setColor(this.QD);
-    paramContext.setTextSize(this.mAk);
+    paramContext.setColor(this.avJ);
+    paramContext.setTextSize(this.pyF);
     paramSpannableString = paramContext.getFontMetrics();
-    this.ahu = ((int)Math.ceil(paramSpannableString.descent - paramSpannableString.top) + 2);
-    this.huH = new StaticLayout(this.mAg, paramContext, (int)Layout.getDesiredWidth(this.mAg, 0, this.mAg.length(), paramContext) + 1, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false);
-    this.ahm = this.huH.getWidth();
+    this.nH = ((int)Math.ceil(paramSpannableString.descent - paramSpannableString.top) + 2);
+    this.kgD = new StaticLayout(this.pyB, paramContext, (int)Layout.getDesiredWidth(this.pyB, 0, this.pyB.length(), paramContext) + 1, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false);
+    this.nz = this.kgD.getWidth();
     AppMethodBeat.o(137851);
+  }
+  
+  public final boolean AZ(int paramInt)
+  {
+    if (paramInt < this.pyG) {}
+    while (paramInt - this.pyG > b.pyJ) {
+      return false;
+    }
+    return true;
+  }
+  
+  public final boolean Ba(int paramInt)
+  {
+    return paramInt - this.pyG > b.pyJ;
   }
   
   public final boolean a(d paramd)
   {
     AppMethodBeat.i(137854);
-    if (paramd.getWidth() + paramd.getCurrX() > mAe)
+    if (paramd.getWidth() + paramd.bVU() > pyz)
     {
       AppMethodBeat.o(137854);
       return true;
     }
-    if (this.mAj < 0) {
-      this.mAj = b.N(this.mContext, 20);
+    if (this.pyE < 0) {
+      this.pyE = b.R(this.mContext, 20);
     }
-    if (paramd.bKi() >= this.mAm)
+    if (paramd.bVS() >= this.pyH)
     {
-      if ((paramd.bKi() == this.mAm) && (mAe - (paramd.getCurrX() + paramd.getWidth()) < this.mAj))
+      if ((paramd.bVS() == this.pyH) && (pyz - (paramd.bVU() + paramd.getWidth()) < this.pyE))
       {
         AppMethodBeat.o(137854);
         return true;
@@ -71,7 +85,7 @@ public final class a
       AppMethodBeat.o(137854);
       return false;
     }
-    if ((paramd.getCurrX() + paramd.getWidth()) / (paramd.bKi() * b.bKl()) * this.mAm * b.bKl() > mAe - this.mAj * 1.5D)
+    if ((paramd.bVU() + paramd.getWidth()) / (paramd.bVS() * b.bVW()) * this.pyH * b.bVW() > pyz - this.pyE * 1.5D)
     {
       AppMethodBeat.o(137854);
       return true;
@@ -85,30 +99,30 @@ public final class a
     AppMethodBeat.i(137852);
     int i = paramCanvas.getWidth();
     int j = paramCanvas.getHeight();
-    if ((i != mAe) || (j != mAf))
+    if ((i != pyz) || (j != pyA))
     {
-      mAe = i;
-      mAf = j;
+      pyz = i;
+      pyA = j;
     }
     paramCanvas.save();
-    paramCanvas.translate(this.mAh, this.mAi);
-    this.huH.draw(paramCanvas);
+    paramCanvas.translate(this.pyC, this.pyD);
+    this.kgD.draw(paramCanvas);
     paramCanvas.restore();
     if (!paramBoolean) {
-      this.mAh = ((int)(this.mAh - b.bKl() * this.mAm));
+      this.pyC = ((int)(this.pyC - b.bVW() * this.pyH));
     }
     AppMethodBeat.o(137852);
   }
   
-  public final float bKi()
+  public final float bVS()
   {
-    return this.mAm;
+    return this.pyH;
   }
   
-  public final boolean bKj()
+  public final boolean bVT()
   {
     AppMethodBeat.i(137853);
-    if ((this.mAh < 0) && (Math.abs(this.mAh) > this.ahm))
+    if ((this.pyC < 0) && (Math.abs(this.pyC) > this.nz))
     {
       AppMethodBeat.o(137853);
       return true;
@@ -117,44 +131,30 @@ public final class a
     return false;
   }
   
-  public final int bKk()
+  public final int bVU()
   {
-    return this.mAl;
+    return this.pyC;
   }
   
-  public final void eh(int paramInt1, int paramInt2)
+  public final int bVV()
   {
-    this.mAh = paramInt1;
-    this.mAi = paramInt2;
+    return this.pyG;
   }
   
-  public final int getCurrX()
+  public final void eF(int paramInt1, int paramInt2)
   {
-    return this.mAh;
+    this.pyC = paramInt1;
+    this.pyD = paramInt2;
   }
   
   public final int getWidth()
   {
-    return this.ahm;
-  }
-  
-  public final boolean xC(int paramInt)
-  {
-    if (paramInt < this.mAl) {}
-    while (paramInt - this.mAl > b.mAo) {
-      return false;
-    }
-    return true;
-  }
-  
-  public final boolean xD(int paramInt)
-  {
-    return paramInt - this.mAl > b.mAo;
+    return this.nz;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.danmu.a
  * JD-Core Version:    0.7.0.1
  */

@@ -5,5 +5,6 @@
         <include layout="@layout/bsv" />
         <ImageView android:id="@id/imc" android:background="@color/fm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         <FrameLayout android:id="@id/i1s" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/kiy" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="4.0dip" android:layout_marginTop="4.0dip" />
     </FrameLayout>
 </LinearLayout>

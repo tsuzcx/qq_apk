@@ -19,12 +19,12 @@ import java.util.Map;
 public class LagDetective
   extends a
 {
-  private static volatile LagDetective NAQ;
-  private static Handler NAR;
-  private static Runnable NAS;
-  private static Runnable NAT;
-  private static a.b NAU;
-  private static a.a NAV;
+  private static volatile LagDetective UOt;
+  private static Handler UOu;
+  private static Runnable UOv;
+  private static Runnable UOw;
+  private static a.b UOx;
+  private static a.a UOy;
   private static long b;
   private static HandlerThread c;
   private static HandlerThread d;
@@ -35,28 +35,28 @@ public class LagDetective
   
   static
   {
-    AppMethodBeat.i(186301);
-    NAQ = new LagDetective();
+    AppMethodBeat.i(231773);
+    UOt = new LagDetective();
     b = 5000L;
     c = new HandlerThread("LooperLagThread");
     d = new HandlerThread("IdleHandlerLagThread");
     e = null;
-    NAR = null;
-    NAS = new b();
-    NAT = new a();
+    UOu = null;
+    UOv = new b();
+    UOw = new a();
     i = false;
     l = 0L;
-    AppMethodBeat.o(186301);
+    AppMethodBeat.o(231773);
   }
   
   public static LagDetective b(a.b paramb, a.a parama)
   {
     try
     {
-      NAU = paramb;
-      NAV = parama;
-      b = parama.h;
-      paramb = NAQ;
+      UOx = paramb;
+      UOy = parama;
+      b = parama.j;
+      paramb = UOt;
       return paramb;
     }
     finally
@@ -73,16 +73,16 @@ public class LagDetective
   @Keep
   private static void onTouchDumped(int paramInt)
   {
-    AppMethodBeat.i(186299);
-    if (System.currentTimeMillis() - l > NAV.i * 2L)
+    AppMethodBeat.i(231762);
+    if (System.currentTimeMillis() - l > UOy.k * 2L)
     {
-      String str1 = b.gut();
-      boolean bool = com.tencent.mm.rabbiteye.a.a.gus();
-      String str2 = com.tencent.mm.rabbiteye.a.a.RF();
-      NAU.a("Touch", paramInt, str1, bool, str2);
+      String str1 = b.hpR();
+      boolean bool = com.tencent.mm.rabbiteye.a.a.hpQ();
+      String str2 = com.tencent.mm.rabbiteye.a.a.Vs();
+      UOx.a("Touch", paramInt, str1, bool, str2);
     }
     l = System.currentTimeMillis();
-    AppMethodBeat.o(186299);
+    AppMethodBeat.o(231762);
   }
   
   public final void start()
@@ -93,17 +93,17 @@ public class LagDetective
       Object localObject3;
       try
       {
-        AppMethodBeat.i(186302);
+        AppMethodBeat.i(231776);
         if (m)
         {
-          AppMethodBeat.o(186302);
+          AppMethodBeat.o(231776);
           return;
         }
         m = true;
-        if (NAV.f) {
-          nativeInitTouchDetective((int)NAV.i);
+        if (UOy.h) {
+          nativeInitTouchDetective((int)UOy.k);
         }
-        boolean bool = NAV.g;
+        boolean bool = UOy.i;
         if (!bool) {}
       }
       finally {}
@@ -114,13 +114,13 @@ public class LagDetective
         ((Field)localObject3).setAccessible(true);
         ((Field)localObject3).set(localObject1, new d());
         d.start();
-        NAR = new Handler(d.getLooper());
+        UOu = new Handler(d.getLooper());
       }
       catch (Throwable localThrowable)
       {
         continue;
       }
-      if (NAV.e)
+      if (UOy.g)
       {
         c.start();
         e = new Handler(c.getLooper());
@@ -133,7 +133,7 @@ public class LagDetective
             localObject3 = ((Class)localObject3).getDeclaredField("mLogging");
             ((Field)localObject3).setAccessible(true);
             ((Looper)localObject1).setMessageLogging(new c((Printer)((Field)localObject3).get(localObject1)));
-            AppMethodBeat.o(186302);
+            AppMethodBeat.o(231776);
           }
         }
         catch (Exception localException)
@@ -143,7 +143,7 @@ public class LagDetective
       }
       else
       {
-        AppMethodBeat.o(186302);
+        AppMethodBeat.o(231776);
       }
     }
   }
@@ -153,12 +153,12 @@ public class LagDetective
   {
     public final void run()
     {
-      AppMethodBeat.i(186291);
-      String str1 = b.gut();
-      boolean bool = com.tencent.mm.rabbiteye.a.a.gus();
-      String str2 = com.tencent.mm.rabbiteye.a.a.RF();
-      LagDetective.guo().a("IdleHandler", 0L, str1, bool, str2);
-      AppMethodBeat.o(186291);
+      AppMethodBeat.i(231742);
+      String str1 = b.hpR();
+      boolean bool = com.tencent.mm.rabbiteye.a.a.hpQ();
+      String str2 = com.tencent.mm.rabbiteye.a.a.Vs();
+      LagDetective.hpM().a("IdleHandler", 0L, str1, bool, str2);
+      AppMethodBeat.o(231742);
     }
   }
   
@@ -167,35 +167,35 @@ public class LagDetective
   {
     public final void run()
     {
-      AppMethodBeat.i(186292);
-      boolean bool = com.tencent.mm.rabbiteye.a.a.gus();
-      String str = com.tencent.mm.rabbiteye.a.a.RF();
-      LagDetective.guo().a("Looper", 0L, "", bool, str);
-      AppMethodBeat.o(186292);
+      AppMethodBeat.i(231743);
+      boolean bool = com.tencent.mm.rabbiteye.a.a.hpQ();
+      String str = com.tencent.mm.rabbiteye.a.a.Vs();
+      LagDetective.hpM().a("Looper", 0L, "", bool, str);
+      AppMethodBeat.o(231743);
     }
   }
   
   static final class c
     implements Printer
   {
-    public Printer NAW;
+    public Printer UOz;
     boolean b;
     boolean c;
     
     c(Printer paramPrinter)
     {
-      AppMethodBeat.i(186293);
+      AppMethodBeat.i(231745);
       this.b = false;
       this.c = false;
-      this.NAW = paramPrinter;
-      AppMethodBeat.o(186293);
+      this.UOz = paramPrinter;
+      AppMethodBeat.o(231745);
     }
     
     public final void println(String paramString)
     {
       boolean bool2 = true;
-      AppMethodBeat.i(186294);
-      Printer localPrinter = this.NAW;
+      AppMethodBeat.i(231746);
+      Printer localPrinter = this.UOz;
       if (localPrinter != null) {
         localPrinter.println(paramString);
       }
@@ -217,7 +217,7 @@ public class LagDetective
       for (boolean bool1 = bool2;; bool1 = false)
       {
         LagDetective.a(bool1);
-        AppMethodBeat.o(186294);
+        AppMethodBeat.o(231746);
         return;
         bool1 = true;
         break;
@@ -232,48 +232,48 @@ public class LagDetective
     
     d()
     {
-      AppMethodBeat.i(186295);
+      AppMethodBeat.i(231747);
       this.a = new HashMap();
-      AppMethodBeat.o(186295);
+      AppMethodBeat.o(231747);
     }
     
     public final boolean add(Object paramObject)
     {
-      AppMethodBeat.i(186296);
+      AppMethodBeat.i(231748);
       if ((paramObject instanceof MessageQueue.IdleHandler))
       {
         MessageQueue.IdleHandler localIdleHandler = (MessageQueue.IdleHandler)paramObject;
         paramObject = new LagDetective.e(localIdleHandler);
         this.a.put(localIdleHandler, paramObject);
         bool = super.add(paramObject);
-        AppMethodBeat.o(186296);
+        AppMethodBeat.o(231748);
         return bool;
       }
       boolean bool = super.add(paramObject);
-      AppMethodBeat.o(186296);
+      AppMethodBeat.o(231748);
       return bool;
     }
     
     public final boolean remove(Object paramObject)
     {
-      AppMethodBeat.i(186297);
+      AppMethodBeat.i(231750);
       if ((paramObject instanceof LagDetective.e))
       {
         localObject = LagDetective.e.a((LagDetective.e)paramObject);
         this.a.remove(localObject);
         bool = super.remove(paramObject);
-        AppMethodBeat.o(186297);
+        AppMethodBeat.o(231750);
         return bool;
       }
       Object localObject = (LagDetective.e)this.a.remove(paramObject);
       if (localObject != null)
       {
         bool = super.remove(localObject);
-        AppMethodBeat.o(186297);
+        AppMethodBeat.o(231750);
         return bool;
       }
       boolean bool = super.remove(paramObject);
-      AppMethodBeat.o(186297);
+      AppMethodBeat.o(231750);
       return bool;
     }
   }
@@ -281,27 +281,27 @@ public class LagDetective
   static final class e
     implements MessageQueue.IdleHandler
   {
-    private MessageQueue.IdleHandler NAX;
+    private MessageQueue.IdleHandler UOA;
     
     e(MessageQueue.IdleHandler paramIdleHandler)
     {
-      this.NAX = paramIdleHandler;
+      this.UOA = paramIdleHandler;
     }
     
     public final boolean queueIdle()
     {
-      AppMethodBeat.i(186298);
-      LagDetective.gur().postDelayed(LagDetective.gup(), LagDetective.guq().j);
-      boolean bool = this.NAX.queueIdle();
-      LagDetective.gur().removeCallbacks(LagDetective.gup());
-      AppMethodBeat.o(186298);
+      AppMethodBeat.i(231753);
+      LagDetective.hpP().postDelayed(LagDetective.hpN(), LagDetective.hpO().l);
+      boolean bool = this.UOA.queueIdle();
+      LagDetective.hpP().removeCallbacks(LagDetective.hpN());
+      AppMethodBeat.o(231753);
       return bool;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.rabbiteye.detective.LagDetective
  * JD-Core Version:    0.7.0.1
  */

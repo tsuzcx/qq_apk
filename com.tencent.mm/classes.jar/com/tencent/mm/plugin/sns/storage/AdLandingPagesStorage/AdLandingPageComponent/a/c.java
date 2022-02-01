@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bya;
-import com.tencent.mm.protocal.protobuf.byb;
+import com.tencent.mm.protocal.protobuf.cfu;
+import com.tencent.mm.protocal.protobuf.cfv;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
@@ -22,44 +22,44 @@ public final class c
   
   public c(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(203132);
+    AppMethodBeat.i(196264);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new bya();
-    ((d.a)localObject).iLO = new byb();
+    ((d.a)localObject).lBU = new cfu();
+    ((d.a)localObject).lBV = new cfv();
     ((d.a)localObject).uri = "/cgi-bin/mmoc-bin/adplayinfo/get_wx_user_name";
     ((d.a)localObject).funcId = 4353;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (bya)this.rr.iLK.iLR;
-    ((bya)localObject).gTk = paramString1;
-    ((bya)localObject).MdB = paramString2;
-    AppMethodBeat.o(203132);
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (cfu)d.b.b(this.rr.lBR);
+    ((cfu)localObject).jDL = paramString1;
+    ((cfu)localObject).Tnc = paramString2;
+    AppMethodBeat.o(196264);
   }
   
   public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(203135);
+    AppMethodBeat.i(196269);
     this.callback = parami;
     int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(203135);
+    AppMethodBeat.o(196269);
     return i;
   }
   
   public final int getType()
   {
-    AppMethodBeat.i(203134);
+    AppMethodBeat.i(196268);
     int i = this.rr.getType();
-    AppMethodBeat.o(203134);
+    AppMethodBeat.o(196268);
     return i;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(203133);
+    AppMethodBeat.i(196266);
     Log.i("NetSceneAdGetBtnPersonalUserName", "errType=" + paramInt2 + ", errCode=" + paramInt3 + ", errMsg=" + paramString);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(203133);
+    AppMethodBeat.o(196266);
   }
 }
 

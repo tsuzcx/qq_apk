@@ -20,14 +20,14 @@ public class bd
   {
     AppMethodBeat.i(78623);
     Log.i("MicroMsg.JsApiSetCloseWindowConfirmDialogInfo", "invoke");
-    boolean bool = paramb.ctb.csi.optBoolean("switch");
-    String str1 = paramb.ctb.csi.optString("title_cn");
-    String str2 = paramb.ctb.csi.optString("title_eng");
-    String str3 = paramb.ctb.csi.optString("ok_cn");
-    String str4 = paramb.ctb.csi.optString("ok_eng");
-    String str5 = paramb.ctb.csi.optString("cancel_cn");
-    String str6 = paramb.ctb.csi.optString("cancel_eng");
-    m localm = ((g)paramb.cta).gbC();
+    boolean bool = paramb.crh.cqn.optBoolean("switch");
+    String str1 = paramb.crh.cqn.optString("title_cn");
+    String str2 = paramb.crh.cqn.optString("title_eng");
+    String str3 = paramb.crh.cqn.optString("ok_cn");
+    String str4 = paramb.crh.cqn.optString("ok_eng");
+    String str5 = paramb.crh.cqn.optString("cancel_cn");
+    String str6 = paramb.crh.cqn.optString("cancel_eng");
+    m localm = ((g)paramb.crg).gUx();
     if (localm == null)
     {
       AppMethodBeat.o(78623);
@@ -42,11 +42,11 @@ public class bd
     localBundle.putString("close_window_confirm_dialog_cancel_cn", str5);
     localBundle.putString("close_window_confirm_dialog_cancel_eng", str6);
     localm.setCloseWindowConfirmInfo(localBundle);
-    paramb.c("", null);
+    paramb.a("", null);
     AppMethodBeat.o(78623);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

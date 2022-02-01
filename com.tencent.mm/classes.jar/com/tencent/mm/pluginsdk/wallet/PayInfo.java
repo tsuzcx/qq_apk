@@ -10,43 +10,43 @@ public class PayInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<PayInfo> CREATOR;
-  public int CpF;
-  public String Cpg;
-  public boolean HZb;
-  public int Ijy;
-  public int Ijz;
-  public String IqM;
-  public double KxA;
-  public String KxB;
-  public int Kxr;
-  public boolean Kxs;
-  public String Kxt;
-  public int Kxu;
-  public long Kxv;
-  public int Kxw;
-  public String Kxx;
-  public String Kxy;
-  public int Kxz;
+  public String ByB;
+  public int ImU;
+  public String Imv;
+  public boolean ORb;
+  public int PbP;
+  public int PbQ;
+  public String Pjv;
+  public int Rzf;
+  public boolean Rzg;
+  public String Rzh;
+  public int Rzi;
+  public long Rzj;
+  public int Rzk;
+  public String Rzl;
+  public String Rzm;
+  public int Rzn;
+  public double Rzo;
+  public String Rzp;
+  public boolean aNY;
   public String appId;
-  public boolean bex;
   public int channel;
-  public boolean crp;
-  public String dDL;
-  public int dNP;
-  public String dNR;
-  public String dNS;
-  public String dQk;
-  public String dUV;
-  public int dVv;
-  public int dVw;
+  public boolean cpf;
   public String errMsg;
-  public Bundle iqp;
-  public String pSm;
+  public int fHa;
+  public String fHc;
+  public String fHd;
+  public String fJB;
+  public int fOY;
+  public int fOZ;
+  public String fOx;
+  public String fwv;
+  public Bundle lfu;
   public String partnerId;
   public String productId;
   public String remark;
+  public String tol;
   public String uuid;
-  public String wFE;
   
   static
   {
@@ -57,87 +57,87 @@ public class PayInfo
   
   public PayInfo()
   {
-    this.dVw = -1;
-    this.dVv = 0;
-    this.Kxr = 0;
-    this.crp = false;
-    this.Kxs = true;
-    this.Ijy = 0;
-    this.Ijz = 0;
-    this.Kxv = 0L;
-    this.dUV = "";
-    this.Kxw = -1;
-    this.Kxz = 1;
-    this.CpF = 0;
-    this.KxA = 0.0D;
-    this.KxB = "";
+    this.fOZ = -1;
+    this.fOY = 0;
+    this.Rzf = 0;
+    this.cpf = false;
+    this.Rzg = true;
+    this.PbP = 0;
+    this.PbQ = 0;
+    this.Rzj = 0L;
+    this.fOx = "";
+    this.Rzk = -1;
+    this.Rzn = 1;
+    this.ImU = 0;
+    this.Rzo = 0.0D;
+    this.Rzp = "";
   }
   
   public PayInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(116319);
-    this.dVw = -1;
-    this.dVv = 0;
-    this.Kxr = 0;
-    this.crp = false;
-    this.Kxs = true;
-    this.Ijy = 0;
-    this.Ijz = 0;
-    this.Kxv = 0L;
-    this.dUV = "";
-    this.Kxw = -1;
-    this.Kxz = 1;
-    this.CpF = 0;
-    this.KxA = 0.0D;
-    this.KxB = "";
-    this.dVv = paramParcel.readInt();
-    this.Kxr = paramParcel.readInt();
-    this.dDL = paramParcel.readString();
+    this.fOZ = -1;
+    this.fOY = 0;
+    this.Rzf = 0;
+    this.cpf = false;
+    this.Rzg = true;
+    this.PbP = 0;
+    this.PbQ = 0;
+    this.Rzj = 0L;
+    this.fOx = "";
+    this.Rzk = -1;
+    this.Rzn = 1;
+    this.ImU = 0;
+    this.Rzo = 0.0D;
+    this.Rzp = "";
+    this.fOY = paramParcel.readInt();
+    this.Rzf = paramParcel.readInt();
+    this.fwv = paramParcel.readString();
     this.uuid = paramParcel.readString();
     this.appId = paramParcel.readString();
-    this.IqM = paramParcel.readString();
+    this.Pjv = paramParcel.readString();
     this.partnerId = paramParcel.readString();
-    this.dQk = paramParcel.readString();
+    this.fJB = paramParcel.readString();
     this.productId = paramParcel.readString();
     this.errMsg = paramParcel.readString();
     this.channel = paramParcel.readInt();
-    this.dVw = paramParcel.readInt();
+    this.fOZ = paramParcel.readInt();
     if (paramParcel.readInt() == 1)
     {
       bool1 = true;
-      this.crp = bool1;
+      this.cpf = bool1;
       if (paramParcel.readInt() != 1) {
         break label399;
       }
       bool1 = true;
       label204:
-      this.Kxs = bool1;
-      this.iqp = paramParcel.readBundle();
-      this.Ijy = paramParcel.readInt();
-      this.dNR = paramParcel.readString();
-      this.dNS = paramParcel.readString();
-      this.dNP = paramParcel.readInt();
-      this.Kxv = paramParcel.readLong();
-      this.dUV = paramParcel.readString();
-      this.Kxx = paramParcel.readString();
-      this.Kxy = paramParcel.readString();
-      this.Kxz = paramParcel.readInt();
-      this.pSm = paramParcel.readString();
+      this.Rzg = bool1;
+      this.lfu = paramParcel.readBundle();
+      this.PbP = paramParcel.readInt();
+      this.fHc = paramParcel.readString();
+      this.fHd = paramParcel.readString();
+      this.fHa = paramParcel.readInt();
+      this.Rzj = paramParcel.readLong();
+      this.fOx = paramParcel.readString();
+      this.Rzl = paramParcel.readString();
+      this.Rzm = paramParcel.readString();
+      this.Rzn = paramParcel.readInt();
+      this.tol = paramParcel.readString();
       this.remark = paramParcel.readString();
-      this.CpF = paramParcel.readInt();
-      this.KxA = paramParcel.readDouble();
-      this.KxB = paramParcel.readString();
-      if (this.KxB == null) {
-        this.KxB = "";
+      this.ImU = paramParcel.readInt();
+      this.Rzo = paramParcel.readDouble();
+      this.Rzp = paramParcel.readString();
+      if (this.Rzp == null) {
+        this.Rzp = "";
       }
       if (paramParcel.readInt() != 1) {
         break label404;
       }
       bool1 = true;
       label352:
-      this.bex = bool1;
-      this.Cpg = paramParcel.readString();
-      this.wFE = paramParcel.readString();
+      this.aNY = bool1;
+      this.Imv = paramParcel.readString();
+      this.ByB = paramParcel.readString();
       if (paramParcel.readInt() != 1) {
         break label409;
       }
@@ -147,7 +147,7 @@ public class PayInfo
     label409:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.HZb = bool1;
+      this.ORb = bool1;
       AppMethodBeat.o(116319);
       return;
       bool1 = false;
@@ -167,7 +167,7 @@ public class PayInfo
   public String toString()
   {
     AppMethodBeat.i(116321);
-    String str = String.format("sense : %d, reqKey : %s, uuid : %s, appId : %s, appSource : %s, partnerId : %s, paySign : %s, productId : %s, soterAuth: %s", new Object[] { Integer.valueOf(this.dVv), this.dDL, this.uuid, this.appId, this.IqM, this.partnerId, this.dQk, this.productId, this.dUV });
+    String str = String.format("sense : %d, reqKey : %s, uuid : %s, appId : %s, appSource : %s, partnerId : %s, paySign : %s, productId : %s, soterAuth: %s", new Object[] { Integer.valueOf(this.fOY), this.fwv, this.uuid, this.appId, this.Pjv, this.partnerId, this.fJB, this.productId, this.fOx });
     AppMethodBeat.o(116321);
     return str;
   }
@@ -176,52 +176,52 @@ public class PayInfo
   {
     int i = 1;
     AppMethodBeat.i(116320);
-    paramParcel.writeInt(this.dVv);
-    paramParcel.writeInt(this.Kxr);
-    paramParcel.writeString(this.dDL);
+    paramParcel.writeInt(this.fOY);
+    paramParcel.writeInt(this.Rzf);
+    paramParcel.writeString(this.fwv);
     paramParcel.writeString(this.uuid);
     paramParcel.writeString(this.appId);
-    paramParcel.writeString(this.IqM);
+    paramParcel.writeString(this.Pjv);
     paramParcel.writeString(this.partnerId);
-    paramParcel.writeString(this.dQk);
+    paramParcel.writeString(this.fJB);
     paramParcel.writeString(this.productId);
     paramParcel.writeString(this.errMsg);
     paramParcel.writeInt(this.channel);
-    paramParcel.writeInt(this.dVw);
-    if (this.crp)
+    paramParcel.writeInt(this.fOZ);
+    if (this.cpf)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.Kxs) {
+      if (!this.Rzg) {
         break label306;
       }
       paramInt = 1;
       label126:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeBundle(this.iqp);
-      paramParcel.writeInt(this.Ijy);
-      paramParcel.writeString(this.dNR);
-      paramParcel.writeString(this.dNS);
-      paramParcel.writeInt(this.dNP);
-      paramParcel.writeLong(this.Kxv);
-      paramParcel.writeString(this.dUV);
-      paramParcel.writeString(this.Kxx);
-      paramParcel.writeString(this.Kxy);
-      paramParcel.writeInt(this.Kxz);
-      paramParcel.writeString(this.pSm);
+      paramParcel.writeBundle(this.lfu);
+      paramParcel.writeInt(this.PbP);
+      paramParcel.writeString(this.fHc);
+      paramParcel.writeString(this.fHd);
+      paramParcel.writeInt(this.fHa);
+      paramParcel.writeLong(this.Rzj);
+      paramParcel.writeString(this.fOx);
+      paramParcel.writeString(this.Rzl);
+      paramParcel.writeString(this.Rzm);
+      paramParcel.writeInt(this.Rzn);
+      paramParcel.writeString(this.tol);
       paramParcel.writeString(this.remark);
-      paramParcel.writeInt(this.CpF);
-      paramParcel.writeDouble(this.KxA);
-      paramParcel.writeString(this.KxB);
-      if (!this.bex) {
+      paramParcel.writeInt(this.ImU);
+      paramParcel.writeDouble(this.Rzo);
+      paramParcel.writeString(this.Rzp);
+      if (!this.aNY) {
         break label311;
       }
       paramInt = 1;
       label260:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.Cpg);
-      paramParcel.writeString(this.wFE);
-      if (!this.HZb) {
+      paramParcel.writeString(this.Imv);
+      paramParcel.writeString(this.ByB);
+      if (!this.ORb) {
         break label316;
       }
     }

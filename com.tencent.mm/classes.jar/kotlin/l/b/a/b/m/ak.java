@@ -11,23 +11,23 @@ import kotlin.l.b.a.b.j.f.h;
 final class ak
   extends aj
 {
-  private final boolean TIm;
-  private final at TNJ;
-  private final b<kotlin.l.b.a.b.m.a.i, aj> TOs;
-  private final List<av> ThC;
-  private final h Tly;
+  private final List<av> aaKw;
+  private final h aaOs;
+  private final boolean abkQ;
+  private final b<kotlin.l.b.a.b.m.a.i, aj> abqS;
+  private final at abql;
   
   public ak(at paramat, List<? extends av> paramList, boolean paramBoolean, h paramh, b<? super kotlin.l.b.a.b.m.a.i, ? extends aj> paramb)
   {
     AppMethodBeat.i(60791);
-    this.TNJ = paramat;
-    this.ThC = paramList;
-    this.TIm = paramBoolean;
-    this.Tly = paramh;
-    this.TOs = paramb;
-    if ((this.Tly instanceof u.b))
+    this.abql = paramat;
+    this.aaKw = paramList;
+    this.abkQ = paramBoolean;
+    this.aaOs = paramh;
+    this.abqS = paramb;
+    if ((this.aaOs instanceof u.b))
     {
-      paramat = (Throwable)new IllegalStateException("SimpleTypeImpl should not be created for error type: " + this.Tly + '\n' + this.TNJ);
+      paramat = (Throwable)new IllegalStateException("SimpleTypeImpl should not be created for error type: " + this.aaOs + '\n' + this.abql);
       AppMethodBeat.o(60791);
       throw paramat;
     }
@@ -37,8 +37,8 @@ final class ak
   private aj i(kotlin.l.b.a.b.m.a.i parami)
   {
     AppMethodBeat.i(60788);
-    p.h(parami, "kotlinTypeRefiner");
-    parami = (aj)this.TOs.invoke(parami);
+    p.k(parami, "kotlinTypeRefiner");
+    parami = (aj)this.abqS.invoke(parami);
     if (parami == null) {
       parami = (aj)this;
     }
@@ -49,10 +49,10 @@ final class ak
     }
   }
   
-  public final aj EG(boolean paramBoolean)
+  public final aj Jn(boolean paramBoolean)
   {
     AppMethodBeat.i(60786);
-    if (paramBoolean == this.TIm)
+    if (paramBoolean == this.abkQ)
     {
       localaj = (aj)this;
       AppMethodBeat.o(60786);
@@ -72,7 +72,7 @@ final class ak
   public final aj d(g paramg)
   {
     AppMethodBeat.i(60784);
-    p.h(paramg, "newAnnotations");
+    p.k(paramg, "newAnnotations");
     if (paramg.isEmpty())
     {
       paramg = (aj)this;
@@ -84,38 +84,38 @@ final class ak
     return paramg;
   }
   
-  public final h hAp()
-  {
-    return this.Tly;
-  }
-  
-  public final boolean hEa()
-  {
-    return this.TIm;
-  }
-  
-  public final List<av> hKB()
-  {
-    return this.ThC;
-  }
-  
-  public final at hKE()
-  {
-    return this.TNJ;
-  }
-  
-  public final g hzL()
+  public final g iDY()
   {
     AppMethodBeat.i(60783);
-    Object localObject = g.TiC;
-    localObject = g.a.hBP();
+    Object localObject = g.aaLw;
+    localObject = g.a.iGe();
     AppMethodBeat.o(60783);
     return localObject;
+  }
+  
+  public final h iEC()
+  {
+    return this.aaOs;
+  }
+  
+  public final boolean iIu()
+  {
+    return this.abkQ;
+  }
+  
+  public final List<av> iOR()
+  {
+    return this.aaKw;
+  }
+  
+  public final at iOU()
+  {
+    return this.abql;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.ak
  * JD-Core Version:    0.7.0.1
  */

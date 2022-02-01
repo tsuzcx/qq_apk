@@ -12,9 +12,9 @@ import com.tencent.thumbplayer.core.downloadproxy.api.ITPPlayListener;
 public abstract interface a
   extends ITPPlayerProxy
 {
-  public abstract void DV(boolean paramBoolean);
+  public abstract void Iw(boolean paramBoolean);
   
-  public abstract void OE(long paramLong);
+  public abstract void WU(long paramLong);
   
   public abstract e a(long paramLong, String paramString, TPVideoInfo paramTPVideoInfo);
   
@@ -24,23 +24,23 @@ public abstract interface a
   
   public abstract void a(ITPPlayListener paramITPPlayListener);
   
-  public abstract void aro(int paramInt);
+  public abstract void aBb(int paramInt);
   
   public abstract ITPMediaAsset b(ITPMediaAsset paramITPMediaAsset);
   
-  public abstract e bqC(String paramString);
+  public abstract e bDw(String paramString);
   
-  public abstract void hnt();
+  public abstract void iqU();
   
-  public abstract boolean hnu();
+  public abstract boolean iqV();
   
-  public abstract String hnv();
+  public abstract String iqW();
   
-  public abstract ITPPlayerProxyListener hnw();
+  public abstract ITPPlayerProxyListener iqX();
   
   public abstract boolean isEnable();
   
-  public abstract void nM(String paramString1, String paramString2);
+  public abstract void oI(String paramString1, String paramString2);
   
   public abstract void pauseDownload();
   

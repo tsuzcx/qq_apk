@@ -16,28 +16,28 @@ public class e
   
   public void a()
   {
-    AppMethodBeat.i(188492);
+    AppMethodBeat.i(197260);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "closeFileReader", new Class[0], new Object[0]);
-    AppMethodBeat.o(188492);
+    AppMethodBeat.o(197260);
   }
   
   public boolean a(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(188491);
+    AppMethodBeat.i(197257);
     paramContext = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "canOpenFile", new Class[] { Context.class, String.class }, new Object[] { paramContext, paramString });
     if ((paramContext instanceof Boolean))
     {
       boolean bool = ((Boolean)paramContext).booleanValue();
-      AppMethodBeat.o(188491);
+      AppMethodBeat.o(197257);
       return bool;
     }
-    AppMethodBeat.o(188491);
+    AppMethodBeat.o(197257);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.sdk.b.e
  * JD-Core Version:    0.7.0.1
  */

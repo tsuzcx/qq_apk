@@ -3,57 +3,59 @@ package com.tencent.mm.plugin.webview.ui.tools.media;
 import android.content.Context;
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.y;
+import com.tencent.mm.aj.y;
+import com.tencent.mm.plugin.webview.c.h;
+import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.pluginsdk.ui.tools.z;
-import com.tencent.mm.protocal.protobuf.jo;
+import com.tencent.mm.pluginsdk.ui.tools.ab;
+import com.tencent.mm.protocal.protobuf.jd;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.o.f;
-import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.q.f;
+import com.tencent.mm.ui.base.q.g;
 import com.tencent.mm.ui.widget.a.e;
 import com.tencent.mm.ui.widget.a.e.a;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoMenuHelper;", "", "()V", "MENU_ID_FAV", "", "MENU_ID_SEND_TO_FRIEND", "MENU_ID_SEND_TO_SNS", "TAG", "", "showMenu", "", "ui", "Landroid/content/Context;", "mpShareVideoInfo", "Lcom/tencent/mm/message/MPShareVideoInfo;", "from", "plugin-webview_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoMenuHelper;", "", "()V", "MENU_ID_FAV", "", "MENU_ID_SEND_TO_FRIEND", "MENU_ID_SEND_TO_SNS", "TAG", "", "showMenu", "", "ui", "Landroid/content/Context;", "mpShareVideoInfo", "Lcom/tencent/mm/message/MPShareVideoInfo;", "from", "plugin-webview_release"})
 public final class g
 {
-  private static final int JwE = 2;
-  public static final g JwF;
+  private static final int Quo = 0;
+  private static final int Qup = 1;
+  private static final int Quq = 2;
+  public static final g Qur;
   private static final String TAG = "MicroMsg.JsApiHandleMPPageAction";
-  private static final int pLT = 1;
-  private static final int pLV = 0;
   
   static
   {
     AppMethodBeat.i(82675);
-    JwF = new g();
+    Qur = new g();
     TAG = "MicroMsg.JsApiHandleMPPageAction";
-    pLT = 1;
-    JwE = 2;
+    Qup = 1;
+    Quq = 2;
     AppMethodBeat.o(82675);
   }
   
   public static void a(Context paramContext, final y paramy, final int paramInt)
   {
     AppMethodBeat.i(82674);
-    p.h(paramContext, "ui");
-    p.h(paramy, "mpShareVideoInfo");
-    Object localObject = a.JvG;
-    a.kr(paramInt, 3);
+    p.k(paramContext, "ui");
+    p.k(paramy, "mpShareVideoInfo");
+    Object localObject = a.Qtn;
+    a.lL(paramInt, 3);
     if ((paramContext instanceof WebViewUI))
     {
       localObject = new e(paramContext, 1, false);
-      ((e)localObject).a((o.f)new a(paramContext, paramInt));
-      ((e)localObject).a((o.g)new b(paramContext, paramy, paramInt));
+      ((e)localObject).a((q.f)new a(paramContext, paramInt));
+      ((e)localObject).a((q.g)new b(paramContext, paramy, paramInt));
       ((e)localObject).a((e.a)new c(paramInt));
-      ((e)localObject).o((CharSequence)" ", 1);
-      ((e)localObject).Do(true);
-      ((e)localObject).dGm();
+      ((e)localObject).q((CharSequence)" ", 1);
+      ((e)localObject).HJ(true);
+      ((e)localObject).eik();
       AppMethodBeat.o(82674);
       return;
     }
@@ -61,85 +63,85 @@ public final class g
     AppMethodBeat.o(82674);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
   static final class a
-    implements o.f
+    implements q.f
   {
     a(Context paramContext, int paramInt) {}
     
-    public final void onCreateMMMenu(m paramm)
+    public final void onCreateMMMenu(o paramo)
     {
       AppMethodBeat.i(82671);
-      g localg = g.JwF;
-      paramm.a(g.ghS(), (CharSequence)this.JwG.getString(2131764184), 2131689844, false);
-      if (z.gsM())
+      g localg = g.Qur;
+      paramo.a(g.hbq(), (CharSequence)this.Qus.getString(c.i.readerapp_alert_retransmit), c.h.bottomsheet_icon_transmit, false);
+      if (ab.hnU())
       {
-        localg = g.JwF;
-        paramm.a(g.ghT(), (CharSequence)this.JwG.getString(2131764185), 2131689830, false);
+        localg = g.Qur;
+        paramo.a(g.hbr(), (CharSequence)this.Qus.getString(c.i.readerapp_alert_share_to_timeline), c.h.bottomsheet_icon_moment, false);
       }
       if ((2 != paramInt) && (5 != paramInt))
       {
-        localg = g.JwF;
-        paramm.a(g.ghU(), (CharSequence)this.JwG.getString(2131763947), 2131689821, false);
+        localg = g.Qur;
+        paramo.a(g.hbs(), (CharSequence)this.Qus.getString(c.i.plugin_favorite_opt), c.h.bottomsheet_icon_fav, false);
       }
       AppMethodBeat.o(82671);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
   static final class b
-    implements o.g
+    implements q.g
   {
     b(Context paramContext, y paramy, int paramInt) {}
     
     public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
     {
       AppMethodBeat.i(82672);
-      p.g(paramMenuItem, "menuItem");
+      p.j(paramMenuItem, "menuItem");
       paramInt = paramMenuItem.getItemId();
-      paramMenuItem = g.JwF;
-      if (paramInt == g.ghS())
+      paramMenuItem = g.Qur;
+      if (paramInt == g.hbq())
       {
-        ((WebViewUI)this.JwG).JjJ.iwi = paramy;
-        paramMenuItem = d.Jwx;
-        d.a(this.JwG, paramy.iAo, "", paramy.title, paramy.KOe, 2);
-        paramMenuItem = a.JvG;
-        a.aN(1, paramInt, 3);
+        ((WebViewUI)this.Qus).QgI.llv = paramy;
+        paramMenuItem = d.Qug;
+        d.a(this.Qus, paramy.lpK, "", paramy.title, paramy.ROZ, 2);
+        paramMenuItem = a.Qtn;
+        a.aR(1, paramInt, 3);
         AppMethodBeat.o(82672);
         return;
       }
-      paramMenuItem = g.JwF;
-      if (paramInt == g.ghU())
+      paramMenuItem = g.Qur;
+      if (paramInt == g.hbs())
       {
-        paramMenuItem = f.JwB;
+        paramMenuItem = f.Quk;
         f.b(paramy);
-        h.cA(this.JwG, this.JwG.getString(2131759260));
-        paramMenuItem = a.JvG;
-        a.aN(2, paramInt, 3);
+        h.cL(this.Qus, this.Qus.getString(c.i.favorite_ok));
+        paramMenuItem = a.Qtn;
+        a.aR(2, paramInt, 3);
         AppMethodBeat.o(82672);
         return;
       }
-      paramMenuItem = g.JwF;
-      if (paramInt == g.ghT())
+      paramMenuItem = g.Qur;
+      if (paramInt == g.hbr())
       {
-        paramMenuItem = c.Jwu;
-        paramMenuItem = (jo)paramy;
-        Context localContext = this.JwG;
+        paramMenuItem = c.Qud;
+        paramMenuItem = (jd)paramy;
+        Context localContext = this.Qus;
         if (localContext == null)
         {
           paramMenuItem = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
           AppMethodBeat.o(82672);
           throw paramMenuItem;
         }
-        c.b(paramMenuItem, (MMActivity)localContext, paramy.iAP);
-        paramMenuItem = a.JvG;
-        a.aN(4, paramInt, 3);
+        c.b(paramMenuItem, (MMActivity)localContext, paramy.lqn);
+        paramMenuItem = a.Qtn;
+        a.aR(4, paramInt, 3);
       }
       AppMethodBeat.o(82672);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onClick"})
   static final class c
     implements e.a
   {
@@ -148,8 +150,8 @@ public final class g
     public final void onClick()
     {
       AppMethodBeat.i(82673);
-      a locala = a.JvG;
-      a.aN(3, this.JwH, 3);
+      a locala = a.Qtn;
+      a.aR(3, this.xvH, 3);
       AppMethodBeat.o(82673);
     }
   }

@@ -2,6 +2,7 @@
 <LinearLayout android:orientation="vertical" android:background="@color/a74" android:paddingTop="@dimen/hv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@drawable/a75" android:showDividers="middle"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:profile="http://schemas.android.com/apk/res-auto">
     <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/b9r" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" profile:title="@string/ba7" />
+    <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/kyq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" profile:title="@string/bak" />
     <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/hs3" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/bfk" />
     <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/dav" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/bgz" />
     <com.tencent.mm.plugin.profile.ui.ProfileNormalItemView android:id="@id/brq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" profile:title="@string/bag" />

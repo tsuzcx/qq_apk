@@ -2,98 +2,93 @@ package com.tencent.mm.plugin.appbrand.jsapi.share;
 
 import android.app.Activity;
 import android.content.Context;
-import com.tencent.luggage.sdk.g.a;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.r;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.opensdk.modelmsg.WXFileObject;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
-import com.tencent.mm.plugin.messenger.a.d;
-import com.tencent.mm.plugin.messenger.a.g;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.n.c;
+import com.tencent.mm.plugin.appbrand.au.i;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
+import com.tencent.mm.plugin.appbrand.jsapi.dc;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.widget.snackbar.a.c;
-import com.tencent.mm.ui.widget.snackbar.b;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.h;
+import kotlin.g.a.b;
+import kotlin.g.a.m;
 import kotlin.g.b.p;
 import kotlin.l;
+import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareFileToConversationLogic;", "", "()V", "SHARE_FILE_REQUEST_CODE", "", "buildMediaMsg", "Lcom/tencent/mm/opensdk/modelmsg/WXMediaMessage;", "filePath", "", "fileName", "buildSelectConversationIntent", "Landroid/content/Intent;", "doShare", "", "activity", "Landroid/app/Activity;", "shareCallBack", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareResult;", "Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareCallBack;", "doShareFileAfterSelectConversation", "selectedUsers", "", "customSendText", "onVideoSent", "Ljava/lang/Runnable;", "isFileLegal2Share", "isFileLegalCallback", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/share/IsFileLegalCallback;", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareFileToConversationTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask;", "()V", "handleRequest", "", "request", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "plugin-appbrand-integration_release"})
 final class w
+  extends AppBrandProxyUIProcessTask
 {
-  private static final int msy;
-  public static final w msz;
-  
-  static
+  public final void a(AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
   {
-    AppMethodBeat.i(228534);
-    w localw = new w();
-    msz = localw;
-    msy = a.aK(localw);
-    AppMethodBeat.o(228534);
-  }
-  
-  public static void a(Activity paramActivity, String paramString1, String paramString2, List<String> paramList, String paramString3, Runnable paramRunnable)
-  {
-    int j = 0;
-    AppMethodBeat.i(228533);
-    p.h(paramActivity, "activity");
-    p.h(paramString1, "filePath");
-    p.h(paramString2, "fileName");
-    p.h(paramList, "selectedUsers");
-    p.h(paramRunnable, "onVideoSent");
-    WXMediaMessage localWXMediaMessage = new WXMediaMessage();
-    Object localObject = new WXFileObject();
-    ((WXFileObject)localObject).setFilePath(paramString1);
-    localWXMediaMessage.mediaObject = ((WXMediaMessage.IMediaObject)localObject);
-    localWXMediaMessage.title = paramString2;
-    localWXMediaMessage.description = paramString2;
-    paramString1 = (CharSequence)paramString3;
-    if ((paramString1 == null) || (paramString1.length() == 0)) {}
-    for (int i = 1;; i = 0)
+    AppMethodBeat.i(272523);
+    if (!(paramProcessRequest instanceof ShareFileToConversationRequest))
     {
-      if (i == 0) {
-        j = 1;
-      }
-      paramString1 = paramList.iterator();
-      while (paramString1.hasNext())
-      {
-        paramString2 = (String)paramString1.next();
-        paramList = EventCenter.instance;
-        localObject = new r();
-        ((r)localObject).dCD.dCE = localWXMediaMessage;
-        ((r)localObject).dCD.toUser = paramString2;
-        paramList.publish((IEvent)localObject);
-        if (j != 0) {
-          g.eir().ad(paramString2, paramString3, ab.JG(paramString2));
-        }
-      }
+      Log.w("MicroMsg.AppBrand.JsApiShareFileMessage", "handleRequest, request is not ShareFileToConversationRequest");
+      AppMethodBeat.o(272523);
+      return;
     }
-    b.a((Context)paramActivity, null, paramActivity.getString(2131760708), (a.c)new b(paramRunnable));
-    AppMethodBeat.o(228533);
+    if (((CharSequence)((ShareFileToConversationRequest)paramProcessRequest).filePath).length() == 0) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      Log.w("MicroMsg.AppBrand.JsApiShareFileMessage", "handleRequest, fail since filePath is empty");
+      b((AppBrandProxyUIProcessTask.ProcessResult)new ShareToConversationResult(ac.pre.prg));
+      AppMethodBeat.o(272523);
+      return;
+    }
+    Object localObject2 = dc.E(((ShareFileToConversationRequest)paramProcessRequest).filePath, ((ShareFileToConversationRequest)paramProcessRequest).jmx, ((ShareFileToConversationRequest)paramProcessRequest).fileName);
+    Object localObject1 = v.pqH;
+    localObject1 = bPf();
+    p.j(localObject1, "activityContext");
+    localObject1 = (Activity)localObject1;
+    paramProcessRequest = ((ShareFileToConversationRequest)paramProcessRequest).filePath;
+    b localb = (b)new a(this);
+    p.k(localObject1, "activity");
+    p.k(paramProcessRequest, "filePath");
+    p.k(localObject2, "fileName");
+    p.k(localb, "shareCallBack");
+    localObject2 = (m)new v.a(localb, (Activity)localObject1, paramProcessRequest, (String)localObject2);
+    paramProcessRequest = new com.tencent.mm.vfs.q(paramProcessRequest);
+    if (paramProcessRequest.ifE()) {}
+    for (paramProcessRequest = Long.valueOf(paramProcessRequest.length());; paramProcessRequest = null)
+    {
+      Log.d("MicroMsg.AppBrand.JsApiShareFileMessage", "isFileLegal2Share, fileSize: ".concat(String.valueOf(paramProcessRequest)));
+      if ((paramProcessRequest != null) && (0L < paramProcessRequest.longValue())) {
+        break;
+      }
+      h.a((Context)localObject1, ((Activity)localObject1).getString(au.i.favorite_share_file_not_exists), "", ((Activity)localObject1).getString(au.i.i_know_it), (DialogInterface.OnClickListener)new v.b((m)localObject2));
+      AppMethodBeat.o(272523);
+      return;
+    }
+    long l = c.awK();
+    if (l < paramProcessRequest.longValue())
+    {
+      h.a((Context)localObject1, ((Activity)localObject1).getString(au.i.appbrand_file_too_big_to_send, new Object[] { Util.getSizeKB(l) }), "", ((Activity)localObject1).getString(au.i.i_know_it), (DialogInterface.OnClickListener)new v.c((m)localObject2));
+      AppMethodBeat.o(272523);
+      return;
+    }
+    ((m)localObject2).invoke(Boolean.TRUE, null);
+    AppMethodBeat.o(272523);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/jsapi/share/ShareFileToConversationLogic$doShareFileAfterSelectConversation$2", "Lcom/tencent/mm/plugin/appbrand/jsapi/share/OnSnackBarVisibilityChangeListenerAdapter;", "onHide", "", "plugin-appbrand-integration_release"})
-  public static final class b
-    extends v
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "shareResult", "Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareResult;", "invoke"})
+  static final class a
+    extends kotlin.g.b.q
+    implements b<ac, x>
   {
-    b(Runnable paramRunnable) {}
-    
-    public final void onHide()
+    a(w paramw)
     {
-      AppMethodBeat.i(228530);
-      Log.i("MicroMsg.AppBrand.JsApiShareFileMessage", "doShareFileAfterSelectConversation, snackBar hide");
-      this.msG.run();
-      AppMethodBeat.o(228530);
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.share.w
  * JD-Core Version:    0.7.0.1
  */

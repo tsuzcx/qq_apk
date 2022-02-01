@@ -1,233 +1,152 @@
 package com.tencent.mm.plugin.scanner.f;
 
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.g.a.qa;
-import com.tencent.mm.g.a.qa.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.ag;
-import com.tencent.mm.plugin.scanner.util.a;
-import com.tencent.mm.pluginsdk.e.d;
-import com.tencent.mm.pluginsdk.ui.tools.m;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.scanner.api.f;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.h;
-import com.tencent.scanlib.ui.ScanView;
+import kotlin.g.b.p;
+import kotlin.l;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ocr/ImageOCRListenerImpl;", "Lcom/tencent/mm/plugin/scanner/ocr/ImageOCRListener;", "()V", "isCancel", "", "sessionId", "", "onCancel", "", "session", "onDialogCancel", "dialog", "Landroid/content/DialogInterface;", "onDialogDismiss", "exitType", "", "onDialogShow", "onError", "errType", "errCode", "onGetOCRResult", "result", "Lcom/tencent/mm/plugin/scanner/api/ScanOpImageResult;", "onStart", "onZoomIn", "zoomOrigin", "onZoomOut", "Companion", "plugin-scan_release"})
 public final class d
-  extends e
-  implements i, e.a
+  implements c
 {
-  private int CIR;
-  private boolean CIS;
-  private com.tencent.mm.plugin.scanner.util.c CIT;
-  private a CIU;
-  private com.tencent.mm.plugin.scanner.view.c CIV;
+  public static final a INx;
+  private boolean kUn;
+  private long sessionId;
   
-  public d(int paramInt1, int paramInt2, ScanView paramScanView, a parama, com.tencent.mm.plugin.scanner.view.c paramc)
+  static
   {
-    AppMethodBeat.i(51660);
-    this.mode = paramInt1;
-    this.CIR = paramInt2;
-    this.CIW = paramScanView;
-    this.CIU = parama;
-    this.context = paramScanView.getContext();
-    this.CIV = paramc;
-    this.CIS = true;
-    g.azz().a(971, this);
-    AppMethodBeat.o(51660);
+    AppMethodBeat.i(223149);
+    INx = new a((byte)0);
+    AppMethodBeat.o(223149);
   }
   
-  public final void c(long paramLong, Bundle paramBundle)
+  public final void PU(long paramLong)
   {
-    AppMethodBeat.i(51661);
-    if (paramBundle == null)
-    {
-      AppMethodBeat.o(51661);
-      return;
-    }
-    String str1 = paramBundle.getString("result_content", "");
-    String str2 = paramBundle.getString("result_code_name", "");
-    int i = e.d.bcV(str2);
-    int j = paramBundle.getInt("result_code_version", 0);
-    int k = paramBundle.getInt("qbar_string_scan_source", 0);
-    Log.i("MicroMsg.QRCodeHandler", "alvinluo handleResult content %s, codeType %d, codeName %s, codeVersion %d", new Object[] { str1, Integer.valueOf(i), str2, Integer.valueOf(j) });
-    Activity localActivity;
-    com.tencent.mm.plugin.scanner.view.c localc;
-    if (!Util.isNullOrNil(str1))
-    {
-      paramBundle = new qa();
-      paramBundle.dWj.dWl = str2;
-      paramBundle.dWj.scanResult = str1;
-      paramBundle.dWj.cSx = 1;
-      EventCenter.instance.publish(paramBundle);
-      if (paramBundle.dWk.ret == 1)
-      {
-        if (this.CIU != null)
-        {
-          this.CIU.cvn();
-          AppMethodBeat.o(51661);
-        }
-      }
-      else
-      {
-        if (this.CIT != null) {
-          this.CIT.eRR();
-        }
-        if (e.d.ahw(i))
-        {
-          this.CIT = new com.tencent.mm.plugin.scanner.util.c();
-          this.CIT.a((Activity)this.CIW.getContext(), str1, k, str2, i, j, this, this.CIV, null, this.CIR, false, -1, this.CIS);
-          AppMethodBeat.o(51661);
-          return;
-        }
-        if (k != 1) {
-          break label342;
-        }
-        i = 1;
-        paramBundle = new a();
-        localActivity = (Activity)this.CIW.getContext();
-        localc = this.CIV;
-        if (k != 1) {
-          break label348;
-        }
-      }
-    }
-    label342:
-    label348:
-    for (boolean bool = true;; bool = false)
-    {
-      paramBundle.a(localActivity, this, localc, str1, bool, j, str2, null, this.CIR, false, -1, this.CIS, i);
-      AppMethodBeat.o(51661);
-      return;
-      i = 0;
-      break;
-    }
+    AppMethodBeat.i(223130);
+    this.sessionId = paramLong;
+    this.kUn = false;
+    Log.d("MicroMsg.ImageOCRListenerImpl", "alvinluo onStart session: %s", new Object[] { Long.valueOf(paramLong) });
+    AppMethodBeat.o(223130);
   }
   
-  public final void destroy()
+  public final void PV(long paramLong)
   {
-    AppMethodBeat.i(51664);
-    g.azz().b(971, this);
-    if (this.CIT != null) {
-      this.CIT.eRR();
+    AppMethodBeat.i(223133);
+    Log.d("MicroMsg.ImageOCRListenerImpl", "alvinluo onCancel session: %s, isCancel: %s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(this.kUn) });
+    if ((this.sessionId == paramLong) && (!this.kUn))
+    {
+      this.kUn = true;
+      e.a locala = e.INz;
+      e.a.ab(paramLong, 1);
     }
-    AppMethodBeat.o(51664);
+    AppMethodBeat.o(223133);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void a(f paramf)
   {
-    AppMethodBeat.i(51662);
-    Log.i("MicroMsg.QRCodeHandler", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    int i;
-    switch (paramInt1)
-    {
-    default: 
-      i = 0;
-    }
-    while (i != 0)
-    {
-      r(0, null);
-      AppMethodBeat.o(51662);
-      return;
-      if (g.azz().aYT())
-      {
-        g.azz().getNetworkServerIp();
-        new StringBuilder().append(paramInt2);
-      }
-      for (;;)
-      {
-        i = 1;
-        break;
-        if (ag.dm(this.context)) {
-          m.iC(this.context);
-        } else {
-          Toast.makeText(this.context, this.context.getString(2131760825, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt2) }), 1).show();
-        }
-      }
-      Toast.makeText(this.context, this.context.getString(2131760826), 1).show();
-      i = 1;
-    }
-    if ((paramInt1 == 4) && (paramInt2 == -2004))
-    {
-      h.n(this.context, 2131764139, 2131755998);
-      AppMethodBeat.o(51662);
-      return;
-    }
-    if ((paramInt1 != 0) || (paramInt2 != 0))
-    {
-      Toast.makeText(this.context, this.context.getString(2131760877, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
-      AppMethodBeat.o(51662);
-      return;
-    }
-    if (paramq.getType() == 971) {
-      r(3, null);
-    }
-    AppMethodBeat.o(51662);
+    AppMethodBeat.i(223134);
+    p.k(paramf, "result");
+    Log.d("MicroMsg.ImageOCRListenerImpl", "alvinluo onGetOCRResult session: %s, success: %s", new Object[] { Long.valueOf(paramf.fwK), Boolean.valueOf(paramf.success) });
+    AppMethodBeat.o(223134);
   }
   
-  public final void r(int paramInt, Bundle paramBundle)
+  public final void adI(int paramInt)
   {
-    AppMethodBeat.i(51663);
-    Log.i("MicroMsg.QRCodeHandler", "notify Event: %d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(223143);
+    if (this.kUn)
+    {
+      AppMethodBeat.o(223143);
+      return;
+    }
     switch (paramInt)
     {
+    case 3: 
+    default: 
+      paramInt = -1;
     }
     for (;;)
     {
-      AppMethodBeat.o(51663);
-      return;
-      AppMethodBeat.o(51663);
-      return;
-      this.CIW.onResume();
-      AppMethodBeat.o(51663);
-      return;
-      this.CIW.onResume();
-      AppMethodBeat.o(51663);
-      return;
-      if (this.CIU != null)
+      if (paramInt != -1)
       {
-        this.CIU.cvn();
-        AppMethodBeat.o(51663);
-        return;
-        this.CIW.onPause();
-        AppMethodBeat.o(51663);
-        return;
-        if (this.CIU != null)
-        {
-          this.CIU.s(1, paramBundle);
-          AppMethodBeat.o(51663);
-          return;
-          if (this.CIU != null)
-          {
-            this.CIU.s(2, paramBundle);
-            AppMethodBeat.o(51663);
-            return;
-            if (this.CIU != null) {
-              this.CIU.s(3, paramBundle);
-            }
-          }
-        }
+        e.a locala = e.INz;
+        e.a.ab(this.sessionId, paramInt);
       }
+      AppMethodBeat.o(223143);
+      return;
+      paramInt = 3;
+      continue;
+      paramInt = 4;
+      continue;
+      paramInt = 5;
     }
   }
   
-  public static abstract interface a
-    extends e.b
+  public final void adJ(int paramInt)
   {
-    public abstract void s(int paramInt, Bundle paramBundle);
+    AppMethodBeat.i(223146);
+    if ((paramInt == 2) && (this.sessionId != 0L))
+    {
+      e.a locala = e.INz;
+      e.a.ac(this.sessionId, 1);
+    }
+    AppMethodBeat.o(223146);
   }
+  
+  public final void adK(int paramInt)
+  {
+    AppMethodBeat.i(223148);
+    if ((paramInt == 2) && (this.sessionId != 0L))
+    {
+      e.a locala = e.INz;
+      e.a.ac(this.sessionId, 2);
+    }
+    AppMethodBeat.o(223148);
+  }
+  
+  public final void fBZ()
+  {
+    AppMethodBeat.i(223141);
+    e.a locala = e.INz;
+    e.a.ab(this.sessionId, 2);
+    AppMethodBeat.o(223141);
+  }
+  
+  public final void onError(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(223138);
+    if (paramInt2 == 202)
+    {
+      locala = e.INz;
+      e.a.ab(this.sessionId, 7);
+      AppMethodBeat.o(223138);
+      return;
+    }
+    if (paramInt1 == 4)
+    {
+      locala = e.INz;
+      e.a.ab(this.sessionId, 6);
+      AppMethodBeat.o(223138);
+      return;
+    }
+    if ((paramInt2 == 301) || (paramInt2 == 201))
+    {
+      locala = e.INz;
+      e.a.ab(this.sessionId, 6);
+      AppMethodBeat.o(223138);
+      return;
+    }
+    e.a locala = e.INz;
+    e.a.ab(this.sessionId, 99);
+    AppMethodBeat.o(223138);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ocr/ImageOCRListenerImpl$Companion;", "", "()V", "TAG", "", "plugin-scan_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.f.d
  * JD-Core Version:    0.7.0.1
  */

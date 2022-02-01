@@ -9,7 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.ui.banner.f;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -17,10 +17,10 @@ import com.tencent.mm.sdk.platformtools.Util;
 public final class AppBrandGuideUI$a
   implements Application.ActivityLifecycleCallbacks, f
 {
-  public boolean nTE = false;
-  String nTF;
+  public boolean qVd = false;
+  String qVe;
   
-  public static Application bWY()
+  public static Application cjC()
   {
     AppMethodBeat.i(48614);
     Application localApplication = (Application)MMApplicationContext.getContext().getApplicationContext();
@@ -28,21 +28,21 @@ public final class AppBrandGuideUI$a
     return localApplication;
   }
   
-  public final void afr(String paramString)
+  public final void amT(String paramString)
   {
-    this.nTE = true;
-    this.nTF = paramString;
+    this.qVd = true;
+    this.qVe = paramString;
   }
   
-  public final void bJ(String paramString, int paramInt)
+  public final void ce(String paramString, int paramInt)
   {
-    this.nTE = false;
+    this.qVd = false;
   }
   
   public final void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
     if ((paramActivity instanceof AppBrandGuideUI)) {
-      this.nTE = false;
+      this.qVd = false;
     }
   }
   
@@ -54,11 +54,11 @@ public final class AppBrandGuideUI$a
   {
     AppMethodBeat.i(48615);
     if (((paramActivity instanceof AppBrandGuideUI)) || ((paramActivity instanceof AppBrandLauncherUI))) {
-      this.nTE = false;
+      this.qVd = false;
     }
     Object localObject;
     int i;
-    if ((g.aAc()) && (this.nTE))
+    if ((h.aHB()) && (this.qVd))
     {
       localObject = Util.getCurrentTaskInfo(paramActivity, paramActivity.getTaskId());
       if ((localObject != null) && (((ActivityManager.RunningTaskInfo)localObject).baseActivity != null)) {
@@ -70,12 +70,12 @@ public final class AppBrandGuideUI$a
     {
       if (i != 0)
       {
-        this.nTE = false;
+        this.qVd = false;
         localObject = new Intent(paramActivity, AppBrandGuideUI.class);
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/appbrand/ui/AppBrandGuideUI$AppBrandGuideController", "onActivityResumed", "(Landroid/app/Activity;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/appbrand/ui/AppBrandGuideUI$AppBrandGuideController", "onActivityResumed", "(Landroid/app/Activity;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(paramActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/appbrand/ui/AppBrandGuideUI$AppBrandGuideController", "onActivityResumed", "(Landroid/app/Activity;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramActivity, "com/tencent/mm/plugin/appbrand/ui/AppBrandGuideUI$AppBrandGuideController", "onActivityResumed", "(Landroid/app/Activity;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
       AppMethodBeat.o(48615);
       return;
@@ -96,7 +96,7 @@ public final class AppBrandGuideUI$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandGuideUI.a
  * JD-Core Version:    0.7.0.1
  */

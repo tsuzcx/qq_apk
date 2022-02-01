@@ -10,45 +10,51 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.luggage.l.a.b;
+import com.tencent.luggage.l.a.d;
+import com.tencent.luggage.l.a.e;
+import com.tencent.luggage.l.a.g;
 import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
-import com.tencent.luggage.sdk.d.d;
+import com.tencent.luggage.sdk.e.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.modelappbrand.a.g;
 import com.tencent.mm.plugin.appbrand.config.b.b;
+import com.tencent.mm.plugin.appbrand.widget.j;
 
 @SuppressLint({"ViewConstructor"})
 public final class i
   extends LinearLayout
 {
-  private ImageView nnL;
-  private TextView nnM;
-  private Button nnN;
+  private ImageView qps;
+  private TextView qpt;
+  private Button qpu;
   
   public i(Context paramContext, d paramd)
   {
     super(paramContext);
     AppMethodBeat.i(147440);
-    inflate(getContext(), 2131493028, this);
-    this.nnL = ((ImageView)findViewById(2131296796));
-    this.nnM = ((TextView)findViewById(2131296798));
-    this.nnN = ((Button)findViewById(2131296795));
-    this.nnM.setText(getResources().getString(2131762769, new Object[] { paramd.OM().brandName }));
-    paramContext = (LinearLayout.LayoutParams)this.nnL.getLayoutParams();
-    if ((paramd.getAppConfig() != null) && (paramd.getAppConfig().bzF() != null) && (paramd.getAppConfig().bzF().bzL())) {}
+    inflate(getContext(), a.e.app_brand_error_page_layout, this);
+    this.qps = ((ImageView)findViewById(a.d.app_brand_error_page_iv));
+    this.qpt = ((TextView)findViewById(a.d.app_brand_error_page_tips));
+    this.qpu = ((Button)findViewById(a.d.app_brand_error_page_index));
+    this.qpt.setText(getResources().getString(a.g.luggage_app_brand_error_guide, new Object[] { paramd.Sj().fzM }));
+    paramContext = (LinearLayout.LayoutParams)this.qps.getLayoutParams();
+    if ((paramd.getAppConfig() != null) && (paramd.getAppConfig().bKU() != null) && (paramd.getAppConfig().bKU().bLa())) {}
     for (;;)
     {
       if (i != 0)
       {
-        paramContext.topMargin = a.aH(getContext(), 2131165788);
-        this.nnL.setLayoutParams(paramContext);
+        paramContext.topMargin = a.aZ(getContext(), a.b.app_brand_error_page_top_margin);
+        this.qps.setLayoutParams(paramContext);
         requestLayout();
       }
       paramContext = new ColorMatrix();
       paramContext.setSaturation(0.0F);
       paramContext = new ColorMatrixColorFilter(paramContext);
-      this.nnL.setColorFilter(paramContext);
-      com.tencent.mm.modelappbrand.a.b.aXY().a(this.nnL, paramd.OM().jyi, ((com.tencent.mm.plugin.appbrand.widget.g)paramd.af(com.tencent.mm.plugin.appbrand.widget.g.class)).cab(), com.tencent.mm.modelappbrand.a.g.iJB);
-      this.nnN.setVisibility(8);
+      this.qps.setColorFilter(paramContext);
+      com.tencent.mm.modelappbrand.a.b.bhh().a(this.qps, paramd.Sj().mnM, ((j)paramd.ae(j.class)).cmY(), g.lzF);
+      this.qpu.setVisibility(8);
       setBackgroundColor(-1);
       AppMethodBeat.o(147440);
       return;
@@ -58,7 +64,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.i
  * JD-Core Version:    0.7.0.1
  */

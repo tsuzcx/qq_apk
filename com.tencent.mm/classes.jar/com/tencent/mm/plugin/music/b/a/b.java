@@ -8,22 +8,7 @@ import java.util.Iterator;
 
 public final class b
 {
-  static void M(ArrayList<IDKey> paramArrayList)
-  {
-    AppMethodBeat.i(62941);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("idkeyGroupStat:  id:688");
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      IDKey localIDKey = (IDKey)paramArrayList.next();
-      localStringBuilder.append(", key:" + localIDKey.GetKey() + " value:" + localIDKey.GetValue());
-    }
-    com.tencent.mm.audio.mix.i.b.d("MicroMsg.Audio.AudioPlayIdKeyReport", localStringBuilder.toString());
-    AppMethodBeat.o(62941);
-  }
-  
-  public static int Sv(int paramInt)
+  public static int YR(int paramInt)
   {
     AppMethodBeat.i(62940);
     Log.i("MicroMsg.Audio.AudioPlayIdKeyReport", "getQQAudioPlayerErrIdKey, errCode:".concat(String.valueOf(paramInt)));
@@ -78,10 +63,25 @@ public final class b
     AppMethodBeat.o(62940);
     return 110;
   }
+  
+  static void e(ArrayList<IDKey> paramArrayList)
+  {
+    AppMethodBeat.i(62941);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("idkeyGroupStat:  id:688");
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      IDKey localIDKey = (IDKey)paramArrayList.next();
+      localStringBuilder.append(", key:" + localIDKey.GetKey() + " value:" + localIDKey.GetValue());
+    }
+    com.tencent.mm.audio.mix.h.b.d("MicroMsg.Audio.AudioPlayIdKeyReport", localStringBuilder.toString());
+    AppMethodBeat.o(62941);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.music.b.a.b
  * JD-Core Version:    0.7.0.1
  */

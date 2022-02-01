@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.net.Uri;
@@ -12,22 +13,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.aa;
-import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.g.a.vc;
-import com.tencent.mm.g.a.vc.a;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.a.wg;
+import com.tencent.mm.f.a.wg.a;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.sns.ad.landingpage.helper.a.a;
-import com.tencent.mm.plugin.sns.ad.landingpage.helper.a.a.a;
-import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.data.t;
+import com.tencent.mm.plugin.sns.i.c;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.mm.plugin.sns.i.i;
+import com.tencent.mm.plugin.sns.i.j;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.an;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i;
-import com.tencent.mm.plugin.webview.ui.tools.widget.c.a;
-import com.tencent.mm.plugin.webview.ui.tools.widget.d;
 import com.tencent.mm.plugin.webview.ui.tools.widget.f;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
@@ -36,12 +36,10 @@ import com.tencent.mm.sdk.platformtools.MD5Util;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.ui.widget.a.g;
+import com.tencent.mm.vfs.u;
 import com.tencent.xweb.WebView;
 import java.io.OutputStream;
-import java.lang.ref.Reference;
-import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -50,73 +48,44 @@ import org.json.JSONObject;
 public final class j
   extends m
 {
-  IListener<vc> EcF;
-  private final String[] EcG;
-  private Runnable EcH;
-  com.tencent.mm.plugin.sns.data.h EcI;
-  MMWebView iGY;
-  private com.tencent.mm.plugin.webview.d.h mHt;
+  IListener<wg> Kqh;
+  private final String[] Kqi;
+  private Runnable Kqj;
+  com.tencent.mm.plugin.sns.data.j Kqk;
+  MMWebView lxa;
   private volatile boolean mIsDestroyed;
+  private com.tencent.mm.plugin.webview.d.h pGO;
   
-  public j(Context paramContext, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.z paramz, ViewGroup paramViewGroup)
+  public j(Context paramContext, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aa paramaa, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramz, paramViewGroup);
-    AppMethodBeat.i(202887);
+    super(paramContext, paramaa, paramViewGroup);
+    AppMethodBeat.i(203533);
     this.mIsDestroyed = false;
-    this.EcG = new String[] { "weixin.qq.com", "wxs.qq.com" };
-    this.EcH = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(176275);
-        try
-        {
-          Object localObject = j.this.iGY;
-          if ((localObject != null) && (((MMWebView)localObject).isAttachedToWindow()))
-          {
-            localObject = (ViewGroup)((MMWebView)localObject).getChildAt(0);
-            if ((localObject != null) && (((ViewGroup)localObject).getChildCount() > 0))
-            {
-              ((ViewGroup)localObject).setPadding(0, 0, 0, 0);
-              localObject = ((ViewGroup)localObject).getChildAt(0);
-              if (localObject != null) {
-                ((View)localObject).requestLayout();
-              }
-            }
-          }
-          AppMethodBeat.o(176275);
-          return;
-        }
-        catch (Throwable localThrowable)
-        {
-          Log.w("AdLandingNewH5Comp", "there is something in wevView fix!");
-          AppMethodBeat.o(176275);
-        }
-      }
-    };
-    this.EcI = null;
-    AppMethodBeat.o(202887);
+    this.Kqi = new String[] { "weixin.qq.com", "wxs.qq.com" };
+    this.Kqj = new j.2(this);
+    this.Kqk = null;
+    AppMethodBeat.o(203533);
   }
   
-  private boolean aPW(String paramString)
+  private boolean baU(String paramString)
   {
-    AppMethodBeat.i(202891);
-    int i = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rPj, 1);
+    AppMethodBeat.i(203550);
+    int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vvr, 1);
     Log.d("AdLandingNewH5Comp", "checkDeviceInfoUrlPermission::expt value is ".concat(String.valueOf(i)));
     if (i == 0)
     {
-      AppMethodBeat.o(202891);
+      AppMethodBeat.o(203550);
       return false;
     }
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(202891);
+      AppMethodBeat.o(203550);
       return false;
     }
     paramString = Uri.parse(paramString).getHost();
-    if ((paramString != null) && (com.tencent.mm.plugin.sns.ad.i.c.x(this.EcG)))
+    if ((paramString != null) && (com.tencent.mm.plugin.sns.ad.i.d.x(this.Kqi)))
     {
-      String[] arrayOfString = this.EcG;
+      String[] arrayOfString = this.Kqi;
       int j = arrayOfString.length;
       i = 0;
       while (i < j)
@@ -124,37 +93,37 @@ public final class j
         String str = arrayOfString[i];
         if ((str != null) && (paramString.contains(str)))
         {
-          AppMethodBeat.o(202891);
+          AppMethodBeat.o(203550);
           return true;
         }
         i += 1;
       }
     }
     Log.d("AdLandingNewH5Comp", "checkDeviceInfoUrlPermission::the domain is ".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(202891);
+    AppMethodBeat.o(203550);
     return false;
   }
   
-  private static Method aW(Class<?> paramClass)
+  private static Method br(Class<?> paramClass)
   {
-    AppMethodBeat.i(202892);
+    AppMethodBeat.i(203552);
     try
     {
       paramClass = paramClass.getMethod("getJsapi", new Class[0]);
-      AppMethodBeat.o(202892);
+      AppMethodBeat.o(203552);
       return paramClass;
     }
     catch (Throwable paramClass)
     {
       Log.e("AdLandingNewH5Comp", "there is no method named getJsapi");
-      AppMethodBeat.o(202892);
+      AppMethodBeat.o(203552);
     }
     return null;
   }
   
-  private static Method aX(Class<?> paramClass)
+  private static Method bs(Class<?> paramClass)
   {
-    AppMethodBeat.i(202893);
+    AppMethodBeat.i(203554);
     Object localObject3 = null;
     Object localObject2 = null;
     Object localObject1 = localObject3;
@@ -178,7 +147,7 @@ public final class j
             continue;
           }
           localObject1 = localObject3;
-          if (!com.tencent.mm.plugin.sns.ad.i.c.w(arrayOfClass)) {
+          if (!com.tencent.mm.plugin.sns.ad.i.d.w(arrayOfClass)) {
             continue;
           }
         }
@@ -196,111 +165,111 @@ public final class j
         Log.e("AdLandingNewH5Comp", "finding the js method occurs something exception");
         continue;
       }
-      AppMethodBeat.o(202893);
+      AppMethodBeat.o(203554);
       return localObject1;
       i += 1;
     }
   }
   
-  private void fdd()
+  private void fQZ()
   {
-    AppMethodBeat.i(202894);
-    if ((this.mHt == null) && (!this.mIsDestroyed)) {}
+    AppMethodBeat.i(203559);
+    if ((this.pGO == null) && (!this.mIsDestroyed)) {}
     for (;;)
     {
       try
       {
-        localObject1 = (aa)g.af(aa.class);
+        localObject1 = (com.tencent.mm.api.aa)com.tencent.mm.kernel.h.ae(com.tencent.mm.api.aa.class);
         if (localObject1 == null) {
           break label235;
         }
-        localObject1 = ((aa)localObject1).b(this.iGY);
+        localObject1 = ((com.tencent.mm.api.aa)localObject1).b(this.lxa);
         if (localObject1 == null) {
           continue;
         }
         Log.d("AdLandingNewH5Comp", "the jsApiHandler is set from service");
-        this.mHt = ((com.tencent.mm.plugin.webview.d.h)localObject1);
+        this.pGO = ((com.tencent.mm.plugin.webview.d.h)localObject1);
       }
       catch (Throwable localThrowable1)
       {
         try
         {
           long l = SystemClock.currentThreadTimeMillis();
-          Class localClass = this.iGY.getClass();
-          Method localMethod = aW(localClass);
+          Class localClass = this.lxa.getClass();
+          Method localMethod = br(localClass);
           Object localObject1 = localMethod;
           if (localMethod != null) {
             continue;
           }
           Log.i("AdLandingNewH5Comp", "the js method is not found in getJsapiMethod, try to findJsapiMethod");
-          localObject1 = aX(localClass);
+          localObject1 = bs(localClass);
           if (localObject1 != null) {
             continue;
           }
           Log.w("AdLandingNewH5Comp", "the js method is not found!");
-          AppMethodBeat.o(202894);
+          AppMethodBeat.o(203559);
           return;
           Log.w("AdLandingNewH5Comp", "the jsApiHandler is null from service!");
           continue;
           localThrowable1 = localThrowable1;
           Log.e("AdLandingNewH5Comp", "ensureJsApiHandlerFromService has something wrong!!");
           continue;
-          Object localObject2 = localThrowable1.invoke(this.iGY, new Object[0]);
+          Object localObject2 = localThrowable1.invoke(this.lxa, new Object[0]);
           if (!(localObject2 instanceof com.tencent.mm.plugin.webview.d.h)) {
             continue;
           }
           Log.i("AdLandingNewH5Comp", "the method return type is js api in ensureJsApiHandlerFromWebView");
-          this.mHt = ((com.tencent.mm.plugin.webview.d.h)localObject2);
+          this.pGO = ((com.tencent.mm.plugin.webview.d.h)localObject2);
           Log.i("AdLandingNewH5Comp", "get the js api handler takes : " + (SystemClock.currentThreadTimeMillis() - l));
-          AppMethodBeat.o(202894);
+          AppMethodBeat.o(203559);
           return;
           Log.w("AdLandingNewH5Comp", "the method return value is null ??");
           continue;
-          AppMethodBeat.o(202894);
+          AppMethodBeat.o(203559);
         }
         catch (Throwable localThrowable2)
         {
           Log.e("AdLandingNewH5Comp", "there is no getJsApiHandler method, the jsApiHandler object may be null!!");
         }
       }
-      if (this.mHt == null) {}
+      if (this.pGO == null) {}
       return;
       label235:
       Object localObject3 = null;
     }
   }
   
-  private void l(String paramString1, int paramInt, String paramString2, String paramString3)
+  private void n(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(202890);
+    AppMethodBeat.i(203546);
     HashMap localHashMap = new HashMap();
     localHashMap.put("ret", Integer.valueOf(paramInt));
     localHashMap.put("device_id", Util.nullAsNil(paramString3));
     g(paramString1, paramString2, localHashMap);
-    AppMethodBeat.o(202890);
+    AppMethodBeat.o(203546);
   }
   
-  protected final void eWT()
+  protected final void fKe()
   {
     AppMethodBeat.i(96462);
     WebView localWebView;
     Object localObject;
     String str1;
-    if ((an)fdr() != null)
+    if ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ao)fRo() != null)
     {
       localWebView = (WebView)getView();
-      localObject = (an)fdr();
-      if (TextUtils.isEmpty(((an)localObject).url)) {
+      localObject = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ao)fRo();
+      if (TextUtils.isEmpty(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ao)localObject).url)) {
         break label222;
       }
-      str1 = "uxinfo=" + fds().uxInfo;
+      str1 = "uxinfo=" + fRp().uxInfo;
       String str2 = AdLandingPagesProxy.getInstance().getUin();
       String str3 = "uin=".concat(String.valueOf(str2));
-      str1 = ap.n(((an)localObject).url, new String[] { str1, str3 });
-      if (((an)localObject).subType != 1) {
+      str1 = ao.m(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ao)localObject).url, new String[] { str1, str3 });
+      if (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ao)localObject).subType != 1) {
         break label238;
       }
-      localObject = AdLandingPagesProxy.getInstance().getAdVoteInfo(((an)localObject).url, fds().uxInfo, str2);
+      localObject = AdLandingPagesProxy.getInstance().getAdVoteInfo(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ao)localObject).url, fRp().uxInfo, str2);
       if (Util.isNullOrNil((String)localObject)) {
         break label238;
       }
@@ -316,40 +285,40 @@ public final class j
         localWebView.loadUrl(str1);
         try
         {
-          if (this.EcF == null)
+          if (this.Kqh == null)
           {
-            this.EcF = new IListener()
+            this.Kqh = new IListener()
             {
-              private boolean a(vc paramAnonymousvc)
+              private boolean a(wg paramAnonymouswg)
               {
-                AppMethodBeat.i(202883);
+                AppMethodBeat.i(201813);
                 try
                 {
                   j localj = j.this;
-                  int i = paramAnonymousvc.ebu.ebv;
-                  if (localj.EcF != null)
+                  int i = paramAnonymouswg.fVt.fVu;
+                  if (localj.Kqh != null)
                   {
-                    localj.EcF.dead();
-                    localj.EcF = null;
+                    localj.Kqh.dead();
+                    localj.Kqh = null;
                   }
                   if (5 == i)
                   {
-                    paramAnonymousvc = localj.iGY;
-                    if (paramAnonymousvc != null) {
-                      paramAnonymousvc.setCleanOnDetached(true);
+                    paramAnonymouswg = localj.lxa;
+                    if (paramAnonymouswg != null) {
+                      paramAnonymouswg.setCleanOnDetached(true);
                     }
                   }
                 }
-                catch (Throwable paramAnonymousvc)
+                catch (Throwable paramAnonymouswg)
                 {
                   label56:
                   break label56;
                 }
-                AppMethodBeat.o(202883);
+                AppMethodBeat.o(201813);
                 return false;
               }
             };
-            this.EcF.alive();
+            this.Kqh.alive();
           }
           AppMethodBeat.o(96462);
           return;
@@ -359,34 +328,34 @@ public final class j
           AppMethodBeat.o(96462);
           return;
         }
-        str1 = ((an)localObject).url;
+        str1 = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ao)localObject).url;
       }
     }
   }
   
-  protected final void eWX()
+  protected final void fKi()
   {
     AppMethodBeat.i(96463);
     ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
     if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.EcX.paddingLeft, (int)this.EcX.paddingTop, (int)this.EcX.paddingRight, (int)this.EcX.paddingBottom);
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.KqB.paddingLeft, (int)this.KqB.paddingTop, (int)this.KqB.paddingRight, (int)this.KqB.paddingBottom);
     }
     this.contentView.setLayoutParams(localLayoutParams);
     AppMethodBeat.o(96463);
   }
   
-  protected final View eWY()
+  protected final View fKj()
   {
     AppMethodBeat.i(96464);
     this.mIsDestroyed = false;
-    this.iGY = com.tencent.mm.plugin.webview.ui.tools.widget.f.a.Jys.eK(this.context);
-    this.iGY.setCleanOnDetached(false);
-    this.iGY.getSettings().hsR();
-    this.iGY.getSettings().hsV();
-    this.iGY.getSettings().hsU();
-    this.iGY.setWebViewClient(c.a.Jyr.a(this.iGY, false, new d()
+    this.lxa = com.tencent.mm.plugin.webview.ui.tools.widget.f.a.QwC.eN(this.context);
+    this.lxa.setCleanOnDetached(false);
+    this.lxa.getSettings().iwz();
+    this.lxa.getSettings().iwD();
+    this.lxa.getSettings().iwC();
+    this.lxa.setWebViewClient(com.tencent.mm.plugin.webview.ui.tools.widget.c.a.QwB.a(this.lxa, false, new com.tencent.mm.plugin.webview.ui.tools.widget.d()
     {
-      public final boolean f(int paramAnonymousInt, Bundle paramAnonymousBundle)
+      public final boolean h(int paramAnonymousInt, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(96461);
         Log.i("AdLandingNewH5Comp", "callback, actionCode=".concat(String.valueOf(paramAnonymousInt)));
@@ -398,10 +367,10 @@ public final class j
           {
             AppMethodBeat.o(96461);
             return false;
-            localObject = (an)j.this.fdr();
+            localObject = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ao)j.this.fRo();
             paramAnonymousInt = paramAnonymousBundle.getInt("sns_landing_pages_ad_vote_index");
             paramAnonymousBundle = paramAnonymousBundle.getString("sns_landing_pages_ad_vote_result");
-            AdLandingPagesProxy.getInstance().saveAdVoteInfo(((an)localObject).url, j.this.fds().uxInfo, j.this.fds().uin, paramAnonymousInt, 0, paramAnonymousBundle);
+            AdLandingPagesProxy.getInstance().saveAdVoteInfo(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ao)localObject).url, j.this.fRp().uxInfo, j.this.fRp().uin, paramAnonymousInt, 0, paramAnonymousBundle);
           }
         case 151: 
           for (;;)
@@ -409,20 +378,20 @@ public final class j
             try
             {
               localObject = new Intent();
-              String str = ap.n(paramAnonymousBundle.getString("sns_landing_pages_ad_jumpurl"), new String[] { "traceid=" + j.this.fds().kZe, "aid=" + j.this.fds().aid });
-              paramAnonymousBundle = j.this.fds().DZW;
+              String str = ao.m(paramAnonymousBundle.getString("sns_landing_pages_ad_jumpurl"), new String[] { "traceid=" + j.this.fRp().nTp, "aid=" + j.this.fRp().aid });
+              paramAnonymousBundle = j.this.fRp().fQE();
               if (!TextUtils.isEmpty(paramAnonymousBundle)) {
                 break label356;
               }
-              paramAnonymousBundle = j.this.fds().uxInfo;
+              paramAnonymousBundle = j.this.fRp().uxInfo;
               Log.i("AdLandingNewH5Comp", "opJumpView, use orig_UxInfo:".concat(String.valueOf(paramAnonymousBundle)));
-              str = r.kb(str, paramAnonymousBundle);
-              r.h((Intent)localObject, paramAnonymousBundle);
+              str = t.kw(str, paramAnonymousBundle);
+              t.g((Intent)localObject, paramAnonymousBundle);
               ((Intent)localObject).putExtra("rawUrl", str);
               ((Intent)localObject).putExtra("useJs", true);
               ((Intent)localObject).putExtra("type", -255);
               ((Intent)localObject).putExtra("geta8key_scene", 2);
-              com.tencent.mm.br.c.b(j.this.context, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+              com.tencent.mm.by.c.b(j.this.context, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
               Log.i("AdLandingNewH5Comp", "jumpUrl, finalUrl=".concat(String.valueOf(str)));
             }
             catch (Exception paramAnonymousBundle)
@@ -436,39 +405,39 @@ public final class j
         }
         Object localObject = paramAnonymousBundle.getString("sns_landing_pages_h5_params");
         paramAnonymousBundle = paramAnonymousBundle.getString("callbackId");
-        boolean bool = j.this.ks((String)localObject, paramAnonymousBundle);
+        boolean bool = j.this.kN((String)localObject, paramAnonymousBundle);
         AppMethodBeat.o(96461);
         return bool;
       }
     }));
-    MMWebView localMMWebView = this.iGY;
+    MMWebView localMMWebView = this.lxa;
     AppMethodBeat.o(96464);
     return localMMWebView;
   }
   
-  public final void eWZ()
+  public final void fKk()
   {
-    AppMethodBeat.i(202888);
-    super.eWZ();
+    AppMethodBeat.i(203537);
+    super.fKk();
     try
     {
-      MMWebView localMMWebView = this.iGY;
+      MMWebView localMMWebView = this.lxa;
       if (localMMWebView != null) {
-        localMMWebView.postOnAnimation(this.EcH);
+        localMMWebView.postOnAnimation(this.Kqj);
       }
-      AppMethodBeat.o(202888);
+      AppMethodBeat.o(203537);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(202888);
+      AppMethodBeat.o(203537);
     }
   }
   
-  public final void eXd()
+  public final void fKo()
   {
     AppMethodBeat.i(96465);
-    super.eXd();
+    super.fKo();
     WebView localWebView = (WebView)getView();
     if ((localWebView != null) && (localWebView.getParent() != null))
     {
@@ -477,53 +446,55 @@ public final class j
       localWebView.destroy();
     }
     this.mIsDestroyed = true;
-    this.mHt = null;
+    this.pGO = null;
     this.contentView = null;
     AppMethodBeat.o(96465);
   }
   
   final void g(String paramString1, String paramString2, Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(202895);
-    fdd();
-    com.tencent.mm.plugin.webview.d.h localh = this.mHt;
+    AppMethodBeat.i(203562);
+    fQZ();
+    com.tencent.mm.plugin.webview.d.h localh = this.pGO;
     if (localh != null)
     {
       Log.d("AdLandingNewH5Comp", "the js api handler is called!!");
       localh.a(paramString1, paramString2, paramMap, true);
-      AppMethodBeat.o(202895);
+      AppMethodBeat.o(203562);
       return;
     }
     Log.w("AdLandingNewH5Comp", "the js api handler is null!!");
-    AppMethodBeat.o(202895);
+    AppMethodBeat.o(203562);
   }
   
-  final boolean ks(String paramString1, final String paramString2)
+  final boolean kN(String paramString1, final String paramString2)
   {
-    AppMethodBeat.i(202889);
+    AppMethodBeat.i(203544);
+    Object localObject2;
+    Object localObject1;
     try
     {
       Log.i("AdLandingNewH5Comp", "handleJSAPI, params=".concat(String.valueOf(paramString1)));
-      paramString1 = new JSONObject(paramString1);
-      localObject = paramString1.optString("funcName");
-      if ("opUpdateContentHeight".equals(localObject)) {
+      localObject2 = new JSONObject(paramString1);
+      paramString1 = ((JSONObject)localObject2).optString("funcName");
+      if ("opUpdateContentHeight".equals(paramString1)) {
         MMHandlerThread.postToMainThread(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(202879);
-            if ((j.this.contentView != null) && (this.EcK >= 0)) {
+            AppMethodBeat.i(266089);
+            if ((j.this.contentView != null) && (this.Kqm >= 0)) {
               try
               {
                 ViewGroup.LayoutParams localLayoutParams = j.this.contentView.getLayoutParams();
-                int i = (int)i.a(this.EcK, 1, 750, 1);
-                Log.i("AdLandingNewH5Comp", "adJuestHeight, curH=" + localLayoutParams.height + ", newH=" + this.EcK + ", newPx=" + i);
+                int i = (int)i.a(this.Kqm, 1, 750, 1);
+                Log.i("AdLandingNewH5Comp", "adJuestHeight, curH=" + localLayoutParams.height + ", newH=" + this.Kqm + ", newPx=" + i);
                 if (localLayoutParams.height != i)
                 {
-                  ((an)j.this.fdr()).DZl = i;
-                  j.this.fdp();
+                  ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ao)j.this.fRo()).KmE = i;
+                  j.this.fRm();
                 }
-                AppMethodBeat.o(202879);
+                AppMethodBeat.o(266089);
                 return;
               }
               catch (Exception localException)
@@ -531,56 +502,55 @@ public final class j
                 Log.e("AdLandingNewH5Comp", "adJuestHeight exp=" + localException.toString());
               }
             }
-            AppMethodBeat.o(202879);
+            AppMethodBeat.o(266089);
           }
         });
       }
       for (;;)
       {
-        AppMethodBeat.o(202889);
+        AppMethodBeat.o(203544);
         return false;
-        if (!"opStartQRScan".equals(localObject)) {
+        if (!"opStartQRScan".equals(paramString1)) {
           break;
         }
-        paramString1.getString("scanUrl");
+        ((JSONObject)localObject2).getString("scanUrl");
       }
     }
     catch (Exception paramString1)
     {
-      Object localObject;
-      label289:
-      label296:
+      label290:
+      label297:
       do
       {
         for (;;)
         {
           Log.e("AdLandingNewH5Comp", "handleJSAPI, exp=" + paramString1.toString());
           continue;
-          if (!"opEndQRScan".equals(localObject)) {
+          if (!"opEndQRScan".equals(paramString1)) {
             break;
           }
-          paramString2 = paramString1.getString("scanUrl");
+          paramString2 = ((JSONObject)localObject2).getString("scanUrl");
           for (;;)
           {
             try
             {
-              if (this.EcI == null)
+              if (this.Kqk == null)
               {
-                localObject = new Bundle();
-                paramString1 = (an)fdr();
+                localObject1 = new Bundle();
+                paramString1 = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ao)fRo();
                 if (paramString1 == null) {
-                  break label289;
+                  break label290;
                 }
-                paramString1 = paramString1.DYM;
-                ((Bundle)localObject).putString("qrExtInfo", paramString1);
-                this.EcI = new com.tencent.mm.plugin.sns.data.h(this.context, fds(), 2, (Bundle)localObject);
+                paramString1 = paramString1.Kmh;
+                ((Bundle)localObject1).putString("qrExtInfo", paramString1);
+                this.Kqk = new com.tencent.mm.plugin.sns.data.j(this.context, fRp(), 2, (Bundle)localObject1);
               }
-              paramString1 = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.kz("adId", paramString2);
-              if ((TextUtils.isEmpty(paramString1)) || (!s.YS(paramString1))) {
-                break label296;
+              paramString1 = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.kU("adId", paramString2);
+              if ((TextUtils.isEmpty(paramString1)) || (!u.agG(paramString1))) {
+                break label297;
               }
               Log.i("AdLandingNewH5Comp", "local file exists, imageUrl=".concat(String.valueOf(paramString2)));
-              this.EcI.jX(paramString1, paramString2);
+              this.Kqk.kr(paramString1, paramString2);
             }
             catch (Throwable paramString1)
             {
@@ -593,112 +563,140 @@ public final class j
           if (paramString1 != null)
           {
             Log.i("AdLandingNewH5Comp", "shoot webView succ");
-            localObject = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.kz("adId", paramString2 + "_shoot");
-            OutputStream localOutputStream = s.ap(new o((String)localObject));
-            boolean bool = paramString1.compress(Bitmap.CompressFormat.JPEG, 100, localOutputStream);
-            localOutputStream.flush();
-            localOutputStream.close();
+            localObject1 = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.kU("adId", paramString2 + "_shoot");
+            localObject2 = u.an(new com.tencent.mm.vfs.q((String)localObject1));
+            boolean bool = paramString1.compress(Bitmap.CompressFormat.JPEG, 100, (OutputStream)localObject2);
+            ((OutputStream)localObject2).flush();
+            ((OutputStream)localObject2).close();
             if (bool)
             {
               Log.i("AdLandingNewH5Comp", "shoot save succ");
-              this.EcI.jX((String)localObject, paramString2);
+              this.Kqk.kr((String)localObject1, paramString2);
             }
           }
-          com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(paramString2, ((an)fdr()).DZj, new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a()
+          fRo();
+          com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a("adId", paramString2, new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a()
           {
-            public final void aNH(String paramAnonymousString)
+            public final void aYs(String paramAnonymousString)
             {
-              AppMethodBeat.i(202881);
+              AppMethodBeat.i(204282);
               Log.i("AdLandingNewH5Comp", "onDownloaded, imageUrl=" + paramString2);
-              AppMethodBeat.o(202881);
+              AppMethodBeat.o(204282);
             }
             
-            public final void eWN() {}
+            public final void fJU() {}
             
-            public final void eWO()
+            public final void fJV()
             {
-              AppMethodBeat.i(202880);
+              AppMethodBeat.i(204281);
               Log.e("AdLandingNewH5Comp", "onDownloadError, imageUrl=" + paramString2);
-              AppMethodBeat.o(202880);
+              AppMethodBeat.o(204281);
             }
           });
         }
-        if ("opGetLocation".equals(localObject))
+        if ("opGetLocation".equals(paramString1))
         {
-          paramString1 = paramString1.optString("type");
-          paramString2 = a.a(this.context, new a(paramString2, this));
+          paramString1 = ((JSONObject)localObject2).optString("type");
+          paramString2 = com.tencent.mm.plugin.sns.ad.landingpage.helper.b.a.a(this.context, new j.a(paramString2, this));
           if (paramString2 != null) {
             paramString2.request(paramString1);
           }
-          AppMethodBeat.o(202889);
+          AppMethodBeat.o(203544);
           return true;
         }
-      } while (!"opGetDeviceInfo".equals(localObject));
-      if (aPW(this.iGY.getUrl())) {
-        break label530;
-      }
+        if ("opGetDeviceInfo".equals(paramString1))
+        {
+          if (!baU(this.lxa.getUrl())) {
+            n(paramString2, -2, "url permission denied", "");
+          }
+          for (;;)
+          {
+            AppMethodBeat.o(203544);
+            return true;
+            if (!com.tencent.mm.pluginsdk.permission.b.f(this.context, new String[] { "android.permission.READ_PHONE_STATE" }))
+            {
+              n(paramString2, -3, "system permission denied", "");
+            }
+            else
+            {
+              paramString1 = com.tencent.mm.compatible.deviceinfo.q.dR(false);
+              if (TextUtils.isEmpty(paramString1)) {
+                n(paramString2, -1, "id is empty", "");
+              } else {
+                n(paramString2, 0, "ok", MD5Util.getMD5String(paramString1));
+              }
+            }
+          }
+        }
+      } while (!"requestBindPhoneNumber".equals(paramString1));
+      paramString1 = AdLandingPagesProxy.getInstance().getPhoneNumber();
+      localObject1 = ((JSONObject)localObject2).optString("requestName");
+      localObject2 = ((JSONObject)localObject2).optString("requestIconUrl");
+      localObject3 = new StringBuilder("handleBindPhoneNumber, phone.len=");
+      if (paramString1 != null) {}
     }
-    l(paramString2, -2, "url permission denied", "");
+    for (int i = 0;; i = paramString1.length())
+    {
+      Log.i("AdLandingNewH5Comp", i + ", name=" + (String)localObject1 + ", iconUrl=" + (String)localObject2);
+      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2))) {
+        break;
+      }
+      paramString1 = new HashMap();
+      paramString1.put("ret", "-3");
+      paramString1.put("err_msg", "params error");
+      g(paramString2, "params error", paramString1);
+      Log.i("AdLandingNewH5Comp", "handleBindPhoneNumber, params error");
+      AppMethodBeat.o(203544);
+      return true;
+    }
+    Object localObject3 = new g(this.context, 0, 0, false);
+    ((g)localObject3).oFW.setBackgroundColor(this.context.getResources().getColor(i.c.white));
+    View localView1 = View.inflate(this.context, i.g.sns_ad_get_bind_phone, null);
+    ImageView localImageView = (ImageView)localView1.findViewById(i.f.request_icon);
+    TextView localTextView1 = (TextView)localView1.findViewById(i.f.request_name);
+    TextView localTextView2 = (TextView)localView1.findViewById(i.f.phone_number_manager_dialog_item_phone);
+    View localView5 = localView1.findViewById(i.f.phone_number_manager_dialog_item_remark);
+    View localView6 = localView1.findViewById(i.f.button_group);
+    View localView2 = localView1.findViewById(i.f.button_i_known);
+    View localView3 = localView1.findViewById(i.f.request_cancel);
+    View localView4 = localView1.findViewById(i.f.request_ok);
+    if (TextUtils.isEmpty(paramString1))
+    {
+      localTextView2.setVisibility(0);
+      localView5.setVisibility(8);
+      localView6.setVisibility(8);
+      localView2.setVisibility(0);
+      localTextView2.setTextColor(this.context.getResources().getColor(i.c.hint_text_color));
+      localTextView2.setText(this.context.getText(i.j.sns_ad_not_bind_phone_number));
+    }
     for (;;)
     {
-      AppMethodBeat.o(202889);
-      return true;
-      label530:
-      if (!com.tencent.mm.pluginsdk.permission.b.e(this.context, new String[] { "android.permission.READ_PHONE_STATE" }))
+      localTextView1.setText(Util.nullAsNil((String)localObject1));
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
-        l(paramString2, -3, "system permission denied", "");
+        localObject1 = new com.tencent.mm.ay.a.a.c.a();
+        ((com.tencent.mm.ay.a.a.c.a)localObject1).lRC = true;
+        ((com.tencent.mm.ay.a.a.c.a)localObject1).lRP = i.i.default_avatar_round;
+        ((com.tencent.mm.ay.a.a.c.a)localObject1).kPz = true;
+        com.tencent.mm.ay.a.a.bms().a((String)localObject2, localImageView, ((com.tencent.mm.ay.a.a.c.a)localObject1).bmL());
       }
-      else
-      {
-        paramString1 = q.dr(false);
-        if (TextUtils.isEmpty(paramString1)) {
-          l(paramString2, -1, "id is empty", "");
-        } else {
-          l(paramString2, 0, "ok", MD5Util.getMD5String(paramString1));
-        }
-      }
-    }
-  }
-  
-  static final class a
-    implements a.a
-  {
-    private String EcL;
-    private Reference<j> EcM;
-    
-    a(String paramString, j paramj)
-    {
-      AppMethodBeat.i(202885);
-      this.EcL = paramString;
-      this.EcM = new WeakReference(paramj);
-      AppMethodBeat.o(202885);
-    }
-    
-    public final void aH(Map<String, Object> paramMap)
-    {
-      AppMethodBeat.i(202886);
-      try
-      {
-        Log.i("AdLandingNewH5Comp", "onGeoCallback is called!");
-        String str = this.EcL;
-        j localj = (j)this.EcM.get();
-        if ((str != null) && (localj != null)) {
-          localj.g(str, "GEO", paramMap);
-        }
-        AppMethodBeat.o(202886);
-        return;
-      }
-      catch (Throwable paramMap)
-      {
-        Log.e("AdLandingNewH5Comp", "there is a exception in onGeoCallback");
-        AppMethodBeat.o(202886);
-      }
+      localView3.setOnClickListener(new j.6(this, (g)localObject3, paramString2));
+      localView4.setOnClickListener(new j.7(this, (g)localObject3, paramString1, paramString2));
+      localView2.setOnClickListener(new j.8(this, (g)localObject3, paramString2));
+      ((g)localObject3).setCustomView(localView1);
+      ((g)localObject3).eik();
+      break;
+      localTextView2.setVisibility(0);
+      localView5.setVisibility(0);
+      localView6.setVisibility(0);
+      localView2.setVisibility(8);
+      localTextView2.setText(paramString1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.j
  * JD-Core Version:    0.7.0.1
  */

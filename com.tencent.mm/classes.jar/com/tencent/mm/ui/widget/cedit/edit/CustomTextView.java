@@ -127,10 +127,13 @@ import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.a.a;
+import com.tencent.mm.ah.a.d;
+import com.tencent.mm.ah.a.f;
+import com.tencent.mm.ah.a.l;
+import com.tencent.mm.ah.a.m;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.at;
+import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.widget.cedit.util.ParcelableParcel;
 import com.tencent.mm.ui.widget.edittext.a.e;
 import java.io.IOException;
@@ -147,163 +150,202 @@ public class CustomTextView
   extends View
   implements ViewTreeObserver.OnPreDrawListener
 {
-  public static final BoringLayout.Metrics OVU;
-  private static final float[] QGi;
-  private static final InputFilter[] QGj;
-  private static final Spanned QGk;
-  private static final int[] QGl;
-  static long QGm;
-  private static final SparseIntArray QHw;
-  private static final RectF alw;
-  private ColorStateList BpJ;
+  public static final BoringLayout.Metrics Wpg;
+  private static final float[] YeY;
+  private static final InputFilter[] YeZ;
+  private static final Spanned Yfa;
+  private static final int[] Yfb;
+  static long Yfc;
+  private static final SparseIntArray Ygm;
+  private static final RectF rH;
+  private ColorStateList Hkc;
+  private TextDirectionHeuristic Mg;
+  private int Mh;
+  private int Mi;
+  private long Qh;
+  boolean Wmc;
+  private Spannable.Factory WoA;
+  private TextUtils.TruncateAt WoB;
+  private CharSequence WoC;
+  public Layout WoF;
+  private float WoG;
+  private float WoH;
+  private int WoI;
+  private int WoJ;
+  private int WoK;
+  private int WoL;
+  private int WoO;
+  private boolean WoP;
+  private BoringLayout WoQ;
   @ViewDebug.ExportedProperty(category="text")
-  private int Ku;
-  boolean OSP;
-  private int OVC;
-  private boolean OVD;
-  private BoringLayout OVE;
-  @ViewDebug.ExportedProperty(category="text")
-  private int OVm;
-  private Editable.Factory OVn;
-  private Spannable.Factory OVo;
-  private TextUtils.TruncateAt OVp;
-  private CharSequence OVq;
-  public Layout OVt;
-  private float OVu;
-  private float OVv;
-  private int OVw;
-  private int OVx;
-  private int OVy;
-  private int OVz;
-  private TextDirectionHeuristic Om;
-  private int On;
-  private int Oo;
-  b QGA;
-  private int QGB;
-  public Spannable QGC;
-  private TextView.BufferType QGD;
-  private CharSequence QGE;
-  private Layout QGF;
-  private com.tencent.mm.ui.widget.cedit.b.d QGG;
-  TransformationMethod QGH;
-  private boolean QGI;
-  private a QGJ;
-  private boolean QGK;
-  private boolean QGL;
-  private int QGM;
-  private boolean QGN;
-  private boolean QGO;
-  boolean QGP;
-  private boolean QGQ;
-  private int QGR;
-  private boolean QGS;
-  private int QGT;
-  private int QGU;
-  private int QGV;
-  private int QGW;
-  private int QGX;
-  private int QGY;
-  private BoringLayout.Metrics QGZ;
-  private ColorStateList QGn;
-  private ColorStateList QGo;
-  private int QGp;
-  private boolean QGq;
-  private float QGr;
-  private float QGs;
-  private float QGt;
-  private boolean QGu;
-  private boolean QGv;
-  private TextClassifier QGw;
-  private TextClassifier QGx;
-  private TextClassificationContext QGy;
-  private boolean QGz;
-  private Set<String> QHA;
-  private Set<String> QHB;
-  private BoringLayout.Metrics QHa;
-  private BoringLayout QHb;
-  private InputFilter[] QHc;
-  private UserHandle QHd;
-  private volatile Locale QHe;
-  private Path QHf;
-  private Paint QHg;
-  private boolean QHh;
-  int QHi;
-  private Drawable QHj;
-  int QHk;
-  private Drawable QHl;
-  int QHm;
-  private Drawable QHn;
-  int QHo;
-  private Drawable QHp;
-  private int QHq;
-  private boolean QHr;
-  b QHs;
-  private int QHt;
-  private TextView QHu;
-  private TextWatcher QHv;
-  int QHx;
-  boolean QHy;
-  private a.e QHz;
-  private long UC;
-  private int aly;
-  private TextPaint ayn;
+  private int Woy;
+  private Editable.Factory Woz;
+  private boolean YfA;
+  private boolean YfB;
+  private int YfC;
+  private boolean YfD;
+  private boolean YfE;
+  boolean YfF;
+  private boolean YfG;
+  private int YfH;
+  private boolean YfI;
+  private int YfJ;
+  private int YfK;
+  private int YfL;
+  private int YfM;
+  private int YfN;
+  private int YfO;
+  private BoringLayout.Metrics YfP;
+  private BoringLayout.Metrics YfQ;
+  private BoringLayout YfR;
+  private InputFilter[] YfS;
+  private UserHandle YfT;
+  private volatile Locale YfU;
+  private Path YfV;
+  private Paint YfW;
+  private boolean YfX;
+  int YfY;
+  private Drawable YfZ;
+  private ColorStateList Yfd;
+  private ColorStateList Yfe;
+  private int Yff;
+  private boolean Yfg;
+  private float Yfh;
+  private float Yfi;
+  private float Yfj;
+  private boolean Yfk;
+  private boolean Yfl;
+  private TextClassifier Yfm;
+  private TextClassifier Yfn;
+  private TextClassificationContext Yfo;
+  private boolean Yfp;
+  b Yfq;
+  private int Yfr;
+  public Spannable Yfs;
+  private TextView.BufferType Yft;
+  private CharSequence Yfu;
+  private Layout Yfv;
+  private com.tencent.mm.ui.widget.cedit.b.d Yfw;
+  TransformationMethod Yfx;
+  private boolean Yfy;
+  private a Yfz;
+  int Yga;
+  private Drawable Ygb;
+  int Ygc;
+  private Drawable Ygd;
+  int Yge;
+  private Drawable Ygf;
+  private int Ygg;
+  private boolean Ygh;
+  b Ygi;
+  private int Ygj;
+  private TextView Ygk;
+  private TextWatcher Ygl;
+  int Ygn;
+  boolean Ygo;
+  private a.e Ygp;
+  private Set<String> Ygq;
+  private Set<String> Ygr;
+  private int lj;
   private ArrayList<TextWatcher> mListeners;
-  private int mMaxWidth;
-  private int mMinWidth;
   private Scroller mScroller;
   private Rect mTempRect;
   @ViewDebug.ExportedProperty(category="text")
   public CharSequence mText;
-  private int nYW;
-  int oEF;
+  int rGp;
+  private int rJ;
+  private int raH;
+  @ViewDebug.ExportedProperty(category="text")
+  private int sK;
+  private int uJ;
+  private TextPaint wi;
   
   static
   {
-    AppMethodBeat.i(205863);
-    QGi = new float[2];
-    alw = new RectF();
-    QGj = new InputFilter[0];
-    QGk = new SpannedString("");
-    QGl = new int[] { 16843597 };
-    com.tencent.mm.ui.widget.cedit.util.d.haY();
-    CustomTextView.2 local2 = new CustomTextView.2();
-    QHw = local2;
-    local2.put(5, 5);
-    QHw.put(4, 4);
-    QHw.put(6, 6);
-    QHw.put(7, 7);
-    QHw.put(1, 1);
+    AppMethodBeat.i(202575);
+    YeY = new float[2];
+    rH = new RectF();
+    YeZ = new InputFilter[0];
+    Yfa = new SpannedString("");
+    Yfb = new int[] { 16843597 };
+    com.tencent.mm.ui.widget.cedit.util.d.ibY();
+    Object localObject = new CustomTextView.2();
+    Ygm = (SparseIntArray)localObject;
+    int i = a.m.MMNewTextView_android_textColorHighlight;
+    ((SparseIntArray)localObject).put(i, i);
+    localObject = Ygm;
+    i = a.m.MMNewTextView_android_textColor;
+    ((SparseIntArray)localObject).put(i, i);
+    localObject = Ygm;
+    i = a.m.MMNewTextView_android_textColorHint;
+    ((SparseIntArray)localObject).put(i, i);
+    localObject = Ygm;
+    i = a.m.MMNewTextView_android_textColorLink;
+    ((SparseIntArray)localObject).put(i, i);
+    localObject = Ygm;
+    i = a.m.MMNewTextView_android_textSize;
+    ((SparseIntArray)localObject).put(i, i);
     try
     {
-      QHw.put(89, 89);
-      label119:
-      QHw.put(2, 2);
-      QHw.put(68, 68);
-      QHw.put(3, 3);
-      QHw.put(88, 88);
-      QHw.put(65, 65);
-      QHw.put(34, 34);
-      QHw.put(35, 35);
-      QHw.put(36, 36);
-      QHw.put(37, 37);
-      QHw.put(69, 69);
-      QHw.put(84, 84);
-      QHw.put(70, 70);
-      QHw.put(71, 71);
-      QHw.put(83, 83);
-      OVU = new BoringLayout.Metrics();
-      AppMethodBeat.o(205863);
+      localObject = Ygm;
+      i = a.m.MMNewTextView_android_textLocale;
+      ((SparseIntArray)localObject).put(i, i);
+      label147:
+      localObject = Ygm;
+      i = a.m.MMNewTextView_android_typeface;
+      ((SparseIntArray)localObject).put(i, i);
+      localObject = Ygm;
+      i = a.m.MMNewTextView_android_fontFamily;
+      ((SparseIntArray)localObject).put(i, i);
+      localObject = Ygm;
+      i = a.m.MMNewTextView_android_textStyle;
+      ((SparseIntArray)localObject).put(i, i);
+      localObject = Ygm;
+      i = a.m.MMNewTextView_android_textFontWeight;
+      ((SparseIntArray)localObject).put(i, i);
+      localObject = Ygm;
+      i = a.m.MMNewTextView_android_textAllCaps;
+      ((SparseIntArray)localObject).put(i, i);
+      localObject = Ygm;
+      i = a.m.MMNewTextView_android_shadowColor;
+      ((SparseIntArray)localObject).put(i, i);
+      localObject = Ygm;
+      i = a.m.MMNewTextView_android_shadowDx;
+      ((SparseIntArray)localObject).put(i, i);
+      localObject = Ygm;
+      i = a.m.MMNewTextView_android_shadowDy;
+      ((SparseIntArray)localObject).put(i, i);
+      localObject = Ygm;
+      i = a.m.MMNewTextView_android_shadowRadius;
+      ((SparseIntArray)localObject).put(i, i);
+      localObject = Ygm;
+      i = a.m.MMNewTextView_android_elegantTextHeight;
+      ((SparseIntArray)localObject).put(i, i);
+      localObject = Ygm;
+      i = a.m.MMNewTextView_android_fallbackLineSpacing;
+      ((SparseIntArray)localObject).put(i, i);
+      localObject = Ygm;
+      i = a.m.MMNewTextView_android_letterSpacing;
+      ((SparseIntArray)localObject).put(i, i);
+      localObject = Ygm;
+      i = a.m.MMNewTextView_android_fontFeatureSettings;
+      ((SparseIntArray)localObject).put(i, i);
+      localObject = Ygm;
+      i = a.m.MMNewTextView_android_fontVariationSettings;
+      ((SparseIntArray)localObject).put(i, i);
+      Wpg = new BoringLayout.Metrics();
+      AppMethodBeat.o(202575);
       return;
     }
     catch (Throwable localThrowable)
     {
-      break label119;
+      break label147;
     }
   }
   
   public CustomTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131821096);
+    this(paramContext, paramAttributeSet, a.l.MMNewTextViewStyle);
   }
   
   public CustomTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -314,130 +356,142 @@ public class CustomTextView
   public CustomTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
   {
     super(paramContext, paramAttributeSet, paramInt1, paramInt2);
-    AppMethodBeat.i(205572);
-    this.OVn = Editable.Factory.getInstance();
-    this.OVo = Spannable.Factory.getInstance();
-    this.QGB = -1;
-    this.QGD = TextView.BufferType.NORMAL;
-    this.QGL = false;
-    this.QGM = -1;
-    this.QGN = false;
-    this.Ku = 8388659;
-    this.QGS = true;
-    this.OVu = 1.0F;
-    this.OVv = 0.0F;
-    this.On = 0;
-    this.Oo = 0;
-    this.OVw = 2147483647;
-    this.OVx = 1;
-    this.OVy = 0;
-    this.OVz = 1;
-    this.QGU = this.OVw;
-    this.QGV = this.OVx;
-    this.mMaxWidth = 2147483647;
-    this.QGW = 2;
-    this.mMinWidth = 0;
-    this.QGX = 2;
-    this.OVC = -1;
-    this.OVD = true;
-    this.QGY = -1;
-    this.QHc = QGj;
-    this.oEF = 1714664933;
-    this.QHh = true;
-    this.QHi = 16843618;
-    this.QHk = 16843461;
-    this.QHm = 16843462;
-    this.QHo = 16843463;
-    this.QHq = -1;
-    this.QHt = 0;
-    this.aly = 0;
-    this.QHv = new TextWatcher()
+    AppMethodBeat.i(201296);
+    this.Woz = Editable.Factory.getInstance();
+    this.WoA = Spannable.Factory.getInstance();
+    this.Yfr = -1;
+    this.Yft = TextView.BufferType.NORMAL;
+    this.YfB = false;
+    this.YfC = -1;
+    this.YfD = false;
+    this.sK = 8388659;
+    this.YfI = true;
+    this.WoG = 1.0F;
+    this.WoH = 0.0F;
+    this.Mh = 0;
+    this.Mi = 0;
+    this.WoI = 2147483647;
+    this.WoJ = 1;
+    this.WoK = 0;
+    this.WoL = 1;
+    this.YfK = this.WoI;
+    this.YfL = this.WoJ;
+    this.uJ = 2147483647;
+    this.YfM = 2;
+    this.lj = 0;
+    this.YfN = 2;
+    this.WoO = -1;
+    this.WoP = true;
+    this.YfO = -1;
+    this.YfS = YeZ;
+    this.rGp = 1714664933;
+    this.YfX = true;
+    this.YfY = 16843618;
+    this.Yga = 16843461;
+    this.Ygc = 16843462;
+    this.Yge = 16843463;
+    this.Ygg = -1;
+    this.Ygj = 0;
+    this.rJ = 0;
+    this.Ygl = new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
-        AppMethodBeat.i(205553);
+        AppMethodBeat.i(217235);
         ((Editable)CustomTextView.this.getText()).insert(CustomTextView.this.getSelectionStart(), paramAnonymousEditable.toString());
-        AppMethodBeat.o(205553);
+        AppMethodBeat.o(217235);
       }
       
       public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     };
-    this.QHx = getContext().getResources().getColor(2131100228);
-    this.QHy = false;
-    this.QHA = new HashSet();
-    this.QHB = new HashSet();
-    b(paramContext, paramAttributeSet, paramInt1, paramInt2);
-    AppMethodBeat.o(205572);
+    this.Ygn = getContext().getResources().getColor(a.d.cursor_handle_color);
+    this.Ygo = false;
+    this.Ygq = new HashSet();
+    this.Ygr = new HashSet();
+    a(paramContext, paramAttributeSet, paramInt1, paramInt2);
+    AppMethodBeat.o(201296);
   }
   
-  private Locale CX(boolean paramBoolean)
+  private void C(Rect paramRect)
   {
-    AppMethodBeat.i(205809);
+    AppMethodBeat.i(202165);
+    int i = ias();
+    paramRect.left += i;
+    paramRect.right = (i + paramRect.right);
+    i = iat();
+    paramRect.top += i;
+    paramRect.bottom = (i + paramRect.bottom);
+    AppMethodBeat.o(202165);
+  }
+  
+  private Locale Ht(boolean paramBoolean)
+  {
+    AppMethodBeat.i(202327);
     AsyncTask.execute(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(205556);
+        AppMethodBeat.i(193691);
         CustomTextView.a(CustomTextView.this);
-        AppMethodBeat.o(205556);
+        AppMethodBeat.o(193691);
       }
     });
-    if ((this.QHe == null) && (!paramBoolean))
+    if ((this.YfU == null) && (!paramBoolean))
     {
       localLocale = Locale.getDefault();
-      AppMethodBeat.o(205809);
+      AppMethodBeat.o(202327);
       return localLocale;
     }
-    Locale localLocale = this.QHe;
-    AppMethodBeat.o(205809);
+    Locale localLocale = this.YfU;
+    AppMethodBeat.o(202327);
     return localLocale;
   }
   
-  private void IR()
+  private void Ku()
   {
-    AppMethodBeat.i(205758);
-    if (((getLayoutParams().width != -2) || ((this.QGW == this.QGX) && (this.mMaxWidth == this.mMinWidth))) && ((this.QGE == null) || (this.QGF != null)) && (getRight() - getLeft() - getCompoundPaddingLeft() - getCompoundPaddingRight() > 0))
+    AppMethodBeat.i(202124);
+    if (((getLayoutParams().width != -2) || ((this.YfM == this.YfN) && (this.uJ == this.lj))) && ((this.Yfu == null) || (this.Yfv != null)) && (getRight() - getLeft() - getCompoundPaddingLeft() - getCompoundPaddingRight() > 0))
     {
-      int j = this.OVt.getHeight();
-      int k = this.OVt.getWidth();
-      if (this.QGF == null) {}
-      for (int i = 0;; i = this.QGF.getWidth())
+      int j = this.WoF.getHeight();
+      int k = this.WoF.getWidth();
+      if (this.Yfv == null) {}
+      for (int i = 0;; i = this.Yfv.getWidth())
       {
-        BoringLayout.Metrics localMetrics = OVU;
+        BoringLayout.Metrics localMetrics = Wpg;
         a(k, i, localMetrics, localMetrics, getRight() - getLeft() - getCompoundPaddingLeft() - getCompoundPaddingRight(), false);
-        if (this.OVp == TextUtils.TruncateAt.MARQUEE) {
+        if (this.WoB == TextUtils.TruncateAt.MARQUEE) {
           break label231;
         }
         if ((getLayoutParams().height == -2) || (getLayoutParams().height == -1)) {
           break;
         }
         invalidate();
-        AppMethodBeat.o(205758);
+        AppMethodBeat.o(202124);
         return;
       }
-      if ((this.OVt.getHeight() == j) && ((this.QGF == null) || (this.QGF.getHeight() == j)))
+      if ((this.WoF.getHeight() == j) && ((this.Yfv == null) || (this.Yfv.getHeight() == j)))
       {
         invalidate();
-        AppMethodBeat.o(205758);
+        AppMethodBeat.o(202124);
         return;
       }
       label231:
       requestLayout();
       invalidate();
-      AppMethodBeat.o(205758);
+      AppMethodBeat.o(202124);
       return;
     }
-    gLr();
+    hKs();
     requestLayout();
     invalidate();
-    AppMethodBeat.o(205758);
+    AppMethodBeat.o(202124);
   }
   
-  private void M(int paramInt1, int paramInt2, boolean paramBoolean)
+  private void T(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    AppMethodBeat.i(205842);
+    AppMethodBeat.i(202469);
     ClipData localClipData = getClipboardManagerForUser().getPrimaryClip();
     if (localClipData != null)
     {
@@ -456,7 +510,7 @@ public class CustomTextView
             if (j != 0) {
               break label150;
             }
-            Selection.setSelection(this.QGC, paramInt2);
+            Selection.setSelection(this.Yfs, paramInt2);
             ((Editable)this.mText).replace(paramInt1, paramInt2, (CharSequence)localObject);
           }
         }
@@ -477,9 +531,9 @@ public class CustomTextView
           ((Editable)this.mText).insert(getSelectionEnd(), (CharSequence)localObject);
         }
       }
-      QGm = 0L;
+      Yfc = 0L;
     }
-    AppMethodBeat.o(205842);
+    AppMethodBeat.o(202469);
   }
   
   /* Error */
@@ -488,286 +542,286 @@ public class CustomTextView
     // Byte code:
     //   0: iconst_1
     //   1: istore 5
-    //   3: ldc_w 534
-    //   6: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: ldc_w 625
+    //   6: invokestatic 193	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
-    //   10: invokevirtual 537	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:isEnabled	()Z
+    //   10: invokevirtual 628	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:isEnabled	()Z
     //   13: ifne +11 -> 24
-    //   16: ldc_w 534
-    //   19: invokestatic 245	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   16: ldc_w 625
+    //   19: invokestatic 305	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   22: iconst_0
     //   23: ireturn
     //   24: aload_2
-    //   25: invokevirtual 542	android/view/KeyEvent:getRepeatCount	()I
+    //   25: invokevirtual 633	android/view/KeyEvent:getRepeatCount	()I
     //   28: ifne +15 -> 43
     //   31: iload_1
-    //   32: invokestatic 546	android/view/KeyEvent:isModifierKey	(I)Z
+    //   32: invokestatic 637	android/view/KeyEvent:isModifierKey	(I)Z
     //   35: ifne +8 -> 43
     //   38: aload_0
     //   39: iconst_0
-    //   40: putfield 548	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:QGz	Z
+    //   40: putfield 639	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:Yfp	Z
     //   43: iload_1
     //   44: lookupswitch	default:+92->136, 4:+318->362, 23:+273->317, 61:+295->339, 66:+157->201, 112:+443->487, 124:+476->520, 160:+157->201, 277:+347->391, 278:+379->423, 279:+411->455
-    //   137: getfield 550	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:QHs	Lcom/tencent/mm/ui/widget/cedit/edit/b;
+    //   137: getfield 641	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:Ygi	Lcom/tencent/mm/ui/widget/cedit/edit/b;
     //   140: ifnull +530 -> 670
     //   143: aload_0
-    //   144: getfield 550	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:QHs	Lcom/tencent/mm/ui/widget/cedit/edit/b;
-    //   147: getfield 556	com/tencent/mm/ui/widget/cedit/edit/b:QIH	Landroid/text/method/KeyListener;
+    //   144: getfield 641	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:Ygi	Lcom/tencent/mm/ui/widget/cedit/edit/b;
+    //   147: getfield 647	com/tencent/mm/ui/widget/cedit/edit/b:Yhx	Landroid/text/method/KeyListener;
     //   150: ifnull +520 -> 670
     //   153: aload_3
     //   154: ifnull +716 -> 870
     //   157: aload_0
-    //   158: invokevirtual 559	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:beginBatchEdit	()V
+    //   158: invokevirtual 650	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:ian	()V
     //   161: aload_0
-    //   162: getfield 550	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:QHs	Lcom/tencent/mm/ui/widget/cedit/edit/b;
-    //   165: getfield 556	com/tencent/mm/ui/widget/cedit/edit/b:QIH	Landroid/text/method/KeyListener;
+    //   162: getfield 641	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:Ygi	Lcom/tencent/mm/ui/widget/cedit/edit/b;
+    //   165: getfield 647	com/tencent/mm/ui/widget/cedit/edit/b:Yhx	Landroid/text/method/KeyListener;
     //   168: aload_0
     //   169: aload_0
-    //   170: getfield 502	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:mText	Ljava/lang/CharSequence;
-    //   173: checkcast 504	android/text/Editable
+    //   170: getfield 593	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:mText	Ljava/lang/CharSequence;
+    //   173: checkcast 595	android/text/Editable
     //   176: aload_3
-    //   177: invokeinterface 565 4 0
+    //   177: invokeinterface 656 4 0
     //   182: istore 6
     //   184: iload 6
     //   186: ifeq +402 -> 588
     //   189: aload_0
-    //   190: invokevirtual 568	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:endBatchEdit	()V
-    //   193: ldc_w 534
-    //   196: invokestatic 245	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   190: invokevirtual 659	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:iao	()V
+    //   193: ldc_w 625
+    //   196: invokestatic 305	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   199: iconst_m1
     //   200: ireturn
     //   201: aload_2
-    //   202: invokevirtual 571	android/view/KeyEvent:hasNoModifiers	()Z
+    //   202: invokevirtual 662	android/view/KeyEvent:hasNoModifiers	()Z
     //   205: ifeq -69 -> 136
     //   208: aload_0
-    //   209: getfield 550	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:QHs	Lcom/tencent/mm/ui/widget/cedit/edit/b;
+    //   209: getfield 641	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:Ygi	Lcom/tencent/mm/ui/widget/cedit/edit/b;
     //   212: ifnull +65 -> 277
     //   215: aload_0
-    //   216: getfield 550	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:QHs	Lcom/tencent/mm/ui/widget/cedit/edit/b;
-    //   219: getfield 575	com/tencent/mm/ui/widget/cedit/edit/b:QIC	Lcom/tencent/mm/ui/widget/cedit/edit/b$g;
+    //   216: getfield 641	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:Ygi	Lcom/tencent/mm/ui/widget/cedit/edit/b;
+    //   219: getfield 666	com/tencent/mm/ui/widget/cedit/edit/b:Yhs	Lcom/tencent/mm/ui/widget/cedit/edit/b$g;
     //   222: ifnull +55 -> 277
     //   225: aload_0
-    //   226: getfield 550	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:QHs	Lcom/tencent/mm/ui/widget/cedit/edit/b;
-    //   229: getfield 575	com/tencent/mm/ui/widget/cedit/edit/b:QIC	Lcom/tencent/mm/ui/widget/cedit/edit/b$g;
-    //   232: getfield 581	com/tencent/mm/ui/widget/cedit/edit/b$g:QKi	Lcom/tencent/mm/ui/widget/cedit/edit/CustomTextView$c;
+    //   226: getfield 641	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:Ygi	Lcom/tencent/mm/ui/widget/cedit/edit/b;
+    //   229: getfield 666	com/tencent/mm/ui/widget/cedit/edit/b:Yhs	Lcom/tencent/mm/ui/widget/cedit/edit/b$g;
+    //   232: getfield 672	com/tencent/mm/ui/widget/cedit/edit/b$g:Yja	Lcom/tencent/mm/ui/widget/cedit/edit/CustomTextView$c;
     //   235: ifnull +42 -> 277
     //   238: aload_0
-    //   239: getfield 550	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:QHs	Lcom/tencent/mm/ui/widget/cedit/edit/b;
-    //   242: getfield 575	com/tencent/mm/ui/widget/cedit/edit/b:QIC	Lcom/tencent/mm/ui/widget/cedit/edit/b$g;
-    //   245: getfield 581	com/tencent/mm/ui/widget/cedit/edit/b$g:QKi	Lcom/tencent/mm/ui/widget/cedit/edit/CustomTextView$c;
+    //   239: getfield 641	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:Ygi	Lcom/tencent/mm/ui/widget/cedit/edit/b;
+    //   242: getfield 666	com/tencent/mm/ui/widget/cedit/edit/b:Yhs	Lcom/tencent/mm/ui/widget/cedit/edit/b$g;
+    //   245: getfield 672	com/tencent/mm/ui/widget/cedit/edit/b$g:Yja	Lcom/tencent/mm/ui/widget/cedit/edit/CustomTextView$c;
     //   248: aload_0
     //   249: iconst_0
-    //   250: invokeinterface 584 3 0
+    //   250: invokeinterface 675 3 0
     //   255: ifeq +22 -> 277
     //   258: aload_0
-    //   259: getfield 550	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:QHs	Lcom/tencent/mm/ui/widget/cedit/edit/b;
-    //   262: getfield 575	com/tencent/mm/ui/widget/cedit/edit/b:QIC	Lcom/tencent/mm/ui/widget/cedit/edit/b$g;
+    //   259: getfield 641	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:Ygi	Lcom/tencent/mm/ui/widget/cedit/edit/b;
+    //   262: getfield 666	com/tencent/mm/ui/widget/cedit/edit/b:Yhs	Lcom/tencent/mm/ui/widget/cedit/edit/b$g;
     //   265: iconst_1
-    //   266: putfield 587	com/tencent/mm/ui/widget/cedit/edit/b$g:QKj	Z
-    //   269: ldc_w 534
-    //   272: invokestatic 245	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   266: putfield 678	com/tencent/mm/ui/widget/cedit/edit/b$g:Yjb	Z
+    //   269: ldc_w 625
+    //   272: invokestatic 305	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   275: iconst_m1
     //   276: ireturn
     //   277: aload_2
-    //   278: invokevirtual 590	android/view/KeyEvent:getFlags	()I
+    //   278: invokevirtual 681	android/view/KeyEvent:getFlags	()I
     //   281: bipush 16
     //   283: iand
     //   284: ifne +10 -> 294
     //   287: aload_0
-    //   288: invokespecial 593	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:gZu	()Z
+    //   288: invokespecial 684	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:iam	()Z
     //   291: ifeq -155 -> 136
     //   294: aload_0
-    //   295: invokevirtual 596	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:hasOnClickListeners	()Z
+    //   295: invokevirtual 687	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:hasOnClickListeners	()Z
     //   298: ifeq +11 -> 309
-    //   301: ldc_w 534
-    //   304: invokestatic 245	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   301: ldc_w 625
+    //   304: invokestatic 305	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   307: iconst_0
     //   308: ireturn
-    //   309: ldc_w 534
-    //   312: invokestatic 245	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   309: ldc_w 625
+    //   312: invokestatic 305	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   315: iconst_m1
     //   316: ireturn
     //   317: aload_2
-    //   318: invokevirtual 571	android/view/KeyEvent:hasNoModifiers	()Z
+    //   318: invokevirtual 662	android/view/KeyEvent:hasNoModifiers	()Z
     //   321: ifeq -185 -> 136
     //   324: aload_0
-    //   325: invokespecial 593	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:gZu	()Z
+    //   325: invokespecial 684	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:iam	()Z
     //   328: ifeq -192 -> 136
-    //   331: ldc_w 534
-    //   334: invokestatic 245	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   331: ldc_w 625
+    //   334: invokestatic 305	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   337: iconst_0
     //   338: ireturn
     //   339: aload_2
-    //   340: invokevirtual 571	android/view/KeyEvent:hasNoModifiers	()Z
+    //   340: invokevirtual 662	android/view/KeyEvent:hasNoModifiers	()Z
     //   343: ifne +11 -> 354
     //   346: aload_2
     //   347: iconst_1
-    //   348: invokevirtual 599	android/view/KeyEvent:hasModifiers	(I)Z
+    //   348: invokevirtual 690	android/view/KeyEvent:hasModifiers	(I)Z
     //   351: ifeq -215 -> 136
-    //   354: ldc_w 534
-    //   357: invokestatic 245	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   354: ldc_w 625
+    //   357: invokestatic 305	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   360: iconst_0
     //   361: ireturn
     //   362: aload_0
-    //   363: getfield 550	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:QHs	Lcom/tencent/mm/ui/widget/cedit/edit/b;
+    //   363: getfield 641	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:Ygi	Lcom/tencent/mm/ui/widget/cedit/edit/b;
     //   366: ifnull -230 -> 136
     //   369: aload_0
-    //   370: getfield 550	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:QHs	Lcom/tencent/mm/ui/widget/cedit/edit/b;
-    //   373: invokevirtual 602	com/tencent/mm/ui/widget/cedit/edit/b:ham	()Z
+    //   370: getfield 641	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:Ygi	Lcom/tencent/mm/ui/widget/cedit/edit/b;
+    //   373: invokevirtual 693	com/tencent/mm/ui/widget/cedit/edit/b:ibk	()Z
     //   376: ifne -240 -> 136
     //   379: aload_0
-    //   380: invokevirtual 605	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:gZE	()V
-    //   383: ldc_w 534
-    //   386: invokestatic 245	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   380: invokevirtual 696	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:iaB	()V
+    //   383: ldc_w 625
+    //   386: invokestatic 305	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   389: iconst_m1
     //   390: ireturn
     //   391: aload_2
-    //   392: invokevirtual 571	android/view/KeyEvent:hasNoModifiers	()Z
+    //   392: invokevirtual 662	android/view/KeyEvent:hasNoModifiers	()Z
     //   395: ifeq -259 -> 136
     //   398: aload_0
-    //   399: invokevirtual 608	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:gZF	()Z
+    //   399: invokevirtual 699	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:iaC	()Z
     //   402: ifeq -266 -> 136
     //   405: aload_0
-    //   406: ldc_w 609
-    //   409: invokevirtual 612	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:onTextContextMenuItem	(I)Z
+    //   406: ldc_w 700
+    //   409: invokevirtual 703	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:onTextContextMenuItem	(I)Z
     //   412: ifeq -276 -> 136
-    //   415: ldc_w 534
-    //   418: invokestatic 245	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   415: ldc_w 625
+    //   418: invokestatic 305	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   421: iconst_m1
     //   422: ireturn
     //   423: aload_2
-    //   424: invokevirtual 571	android/view/KeyEvent:hasNoModifiers	()Z
+    //   424: invokevirtual 662	android/view/KeyEvent:hasNoModifiers	()Z
     //   427: ifeq -291 -> 136
     //   430: aload_0
-    //   431: invokevirtual 615	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:gZG	()Z
+    //   431: invokevirtual 706	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:iaD	()Z
     //   434: ifeq -298 -> 136
     //   437: aload_0
-    //   438: ldc_w 616
-    //   441: invokevirtual 612	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:onTextContextMenuItem	(I)Z
+    //   438: ldc_w 707
+    //   441: invokevirtual 703	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:onTextContextMenuItem	(I)Z
     //   444: ifeq -308 -> 136
-    //   447: ldc_w 534
-    //   450: invokestatic 245	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   447: ldc_w 625
+    //   450: invokestatic 305	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   453: iconst_m1
     //   454: ireturn
     //   455: aload_2
-    //   456: invokevirtual 571	android/view/KeyEvent:hasNoModifiers	()Z
+    //   456: invokevirtual 662	android/view/KeyEvent:hasNoModifiers	()Z
     //   459: ifeq -323 -> 136
     //   462: aload_0
-    //   463: invokevirtual 619	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:gZH	()Z
+    //   463: invokevirtual 710	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:iaE	()Z
     //   466: ifeq -330 -> 136
     //   469: aload_0
-    //   470: ldc_w 620
-    //   473: invokevirtual 612	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:onTextContextMenuItem	(I)Z
+    //   470: ldc_w 711
+    //   473: invokevirtual 703	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:onTextContextMenuItem	(I)Z
     //   476: ifeq -340 -> 136
-    //   479: ldc_w 534
-    //   482: invokestatic 245	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   479: ldc_w 625
+    //   482: invokestatic 305	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   485: iconst_m1
     //   486: ireturn
     //   487: aload_2
     //   488: iconst_1
-    //   489: invokevirtual 599	android/view/KeyEvent:hasModifiers	(I)Z
+    //   489: invokevirtual 690	android/view/KeyEvent:hasModifiers	(I)Z
     //   492: ifeq -356 -> 136
     //   495: aload_0
-    //   496: invokevirtual 608	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:gZF	()Z
+    //   496: invokevirtual 699	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:iaC	()Z
     //   499: ifeq -363 -> 136
     //   502: aload_0
-    //   503: ldc_w 609
-    //   506: invokevirtual 612	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:onTextContextMenuItem	(I)Z
+    //   503: ldc_w 700
+    //   506: invokevirtual 703	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:onTextContextMenuItem	(I)Z
     //   509: ifeq -373 -> 136
-    //   512: ldc_w 534
-    //   515: invokestatic 245	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   512: ldc_w 625
+    //   515: invokestatic 305	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   518: iconst_m1
     //   519: ireturn
     //   520: aload_2
     //   521: sipush 4096
-    //   524: invokevirtual 599	android/view/KeyEvent:hasModifiers	(I)Z
+    //   524: invokevirtual 690	android/view/KeyEvent:hasModifiers	(I)Z
     //   527: ifeq +28 -> 555
     //   530: aload_0
-    //   531: invokevirtual 615	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:gZG	()Z
+    //   531: invokevirtual 706	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:iaD	()Z
     //   534: ifeq +21 -> 555
     //   537: aload_0
-    //   538: ldc_w 616
-    //   541: invokevirtual 612	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:onTextContextMenuItem	(I)Z
+    //   538: ldc_w 707
+    //   541: invokevirtual 703	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:onTextContextMenuItem	(I)Z
     //   544: ifeq -408 -> 136
-    //   547: ldc_w 534
-    //   550: invokestatic 245	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   547: ldc_w 625
+    //   550: invokestatic 305	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   553: iconst_m1
     //   554: ireturn
     //   555: aload_2
     //   556: iconst_1
-    //   557: invokevirtual 599	android/view/KeyEvent:hasModifiers	(I)Z
+    //   557: invokevirtual 690	android/view/KeyEvent:hasModifiers	(I)Z
     //   560: ifeq -424 -> 136
     //   563: aload_0
-    //   564: invokevirtual 619	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:gZH	()Z
+    //   564: invokevirtual 710	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:iaE	()Z
     //   567: ifeq -431 -> 136
     //   570: aload_0
-    //   571: ldc_w 620
-    //   574: invokevirtual 612	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:onTextContextMenuItem	(I)Z
+    //   571: ldc_w 711
+    //   574: invokevirtual 703	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:onTextContextMenuItem	(I)Z
     //   577: ifeq -441 -> 136
-    //   580: ldc_w 534
-    //   583: invokestatic 245	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   580: ldc_w 625
+    //   583: invokestatic 305	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   586: iconst_m1
     //   587: ireturn
     //   588: aload_0
-    //   589: invokevirtual 568	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:endBatchEdit	()V
+    //   589: invokevirtual 659	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:iao	()V
     //   592: iconst_0
     //   593: istore 4
     //   595: iload 4
     //   597: ifeq +73 -> 670
     //   600: aload_0
-    //   601: invokevirtual 559	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:beginBatchEdit	()V
+    //   601: invokevirtual 650	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:ian	()V
     //   604: aload_0
-    //   605: getfield 550	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:QHs	Lcom/tencent/mm/ui/widget/cedit/edit/b;
-    //   608: getfield 556	com/tencent/mm/ui/widget/cedit/edit/b:QIH	Landroid/text/method/KeyListener;
+    //   605: getfield 641	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:Ygi	Lcom/tencent/mm/ui/widget/cedit/edit/b;
+    //   608: getfield 647	com/tencent/mm/ui/widget/cedit/edit/b:Yhx	Landroid/text/method/KeyListener;
     //   611: aload_0
     //   612: aload_0
-    //   613: getfield 502	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:mText	Ljava/lang/CharSequence;
-    //   616: checkcast 504	android/text/Editable
+    //   613: getfield 593	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:mText	Ljava/lang/CharSequence;
+    //   616: checkcast 595	android/text/Editable
     //   619: iload_1
     //   620: aload_2
-    //   621: invokeinterface 624 5 0
+    //   621: invokeinterface 715 5 0
     //   626: istore 6
     //   628: aload_0
-    //   629: invokevirtual 568	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:endBatchEdit	()V
+    //   629: invokevirtual 659	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:iao	()V
     //   632: iload 6
     //   634: ifeq +36 -> 670
-    //   637: ldc_w 534
-    //   640: invokestatic 245	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   637: ldc_w 625
+    //   640: invokestatic 305	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   643: iconst_1
     //   644: ireturn
     //   645: astore 7
     //   647: aload_0
-    //   648: invokevirtual 568	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:endBatchEdit	()V
+    //   648: invokevirtual 659	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:iao	()V
     //   651: iconst_1
     //   652: istore 4
     //   654: goto -59 -> 595
     //   657: astore_2
     //   658: aload_0
-    //   659: invokevirtual 568	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:endBatchEdit	()V
-    //   662: ldc_w 534
-    //   665: invokestatic 245	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   659: invokevirtual 659	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:iao	()V
+    //   662: ldc_w 625
+    //   665: invokestatic 305	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   668: aload_2
     //   669: athrow
     //   670: aload_0
-    //   671: getfield 626	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:QGG	Lcom/tencent/mm/ui/widget/cedit/b/d;
+    //   671: getfield 717	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:Yfw	Lcom/tencent/mm/ui/widget/cedit/b/d;
     //   674: ifnull +166 -> 840
     //   677: aload_0
-    //   678: getfield 434	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:OVt	Landroid/text/Layout;
+    //   678: getfield 525	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:WoF	Landroid/text/Layout;
     //   681: ifnull +159 -> 840
     //   684: aload_3
     //   685: ifnull +88 -> 773
     //   688: aload_0
-    //   689: getfield 626	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:QGG	Lcom/tencent/mm/ui/widget/cedit/b/d;
+    //   689: getfield 717	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:Yfw	Lcom/tencent/mm/ui/widget/cedit/b/d;
     //   692: aload_0
     //   693: aload_0
-    //   694: getfield 494	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:QGC	Landroid/text/Spannable;
+    //   694: getfield 585	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:Yfs	Landroid/text/Spannable;
     //   697: aload_3
-    //   698: invokeinterface 631 4 0
+    //   698: invokeinterface 722 4 0
     //   703: istore 6
     //   705: iload 6
     //   707: ifeq +11 -> 718
-    //   710: ldc_w 534
-    //   713: invokestatic 245	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   710: ldc_w 625
+    //   713: invokestatic 305	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   716: iconst_m1
     //   717: ireturn
     //   718: iconst_0
@@ -775,25 +829,25 @@ public class CustomTextView
     //   721: iload 4
     //   723: ifeq +56 -> 779
     //   726: aload_0
-    //   727: getfield 626	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:QGG	Lcom/tencent/mm/ui/widget/cedit/b/d;
+    //   727: getfield 717	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:Yfw	Lcom/tencent/mm/ui/widget/cedit/b/d;
     //   730: aload_0
     //   731: aload_0
-    //   732: getfield 494	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:QGC	Landroid/text/Spannable;
+    //   732: getfield 585	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:Yfs	Landroid/text/Spannable;
     //   735: iload_1
     //   736: aload_2
-    //   737: invokeinterface 634 5 0
+    //   737: invokeinterface 725 5 0
     //   742: ifeq +37 -> 779
     //   745: aload_2
-    //   746: invokevirtual 542	android/view/KeyEvent:getRepeatCount	()I
+    //   746: invokevirtual 633	android/view/KeyEvent:getRepeatCount	()I
     //   749: ifne +15 -> 764
     //   752: iload_1
-    //   753: invokestatic 546	android/view/KeyEvent:isModifierKey	(I)Z
+    //   753: invokestatic 637	android/view/KeyEvent:isModifierKey	(I)Z
     //   756: ifne +8 -> 764
     //   759: aload_0
     //   760: iconst_1
-    //   761: putfield 548	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:QGz	Z
-    //   764: ldc_w 534
-    //   767: invokestatic 245	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   761: putfield 639	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:Yfp	Z
+    //   764: ldc_w 625
+    //   767: invokestatic 305	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   770: iconst_2
     //   771: ireturn
     //   772: astore_3
@@ -801,7 +855,7 @@ public class CustomTextView
     //   774: istore 4
     //   776: goto -55 -> 721
     //   779: aload_2
-    //   780: invokevirtual 637	android/view/KeyEvent:getSource	()I
+    //   780: invokevirtual 728	android/view/KeyEvent:getSource	()I
     //   783: sipush 257
     //   786: if_icmpne +54 -> 840
     //   789: iload 5
@@ -811,22 +865,22 @@ public class CustomTextView
     //   825: istore 4
     //   827: iload 4
     //   829: ifeq +11 -> 840
-    //   832: ldc_w 534
-    //   835: invokestatic 245	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   832: ldc_w 625
+    //   835: invokestatic 305	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   838: iconst_m1
     //   839: ireturn
     //   840: aload_0
-    //   841: getfield 548	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:QGz	Z
+    //   841: getfield 639	com/tencent/mm/ui/widget/cedit/edit/CustomTextView:Yfp	Z
     //   844: ifeq +18 -> 862
     //   847: iload_1
-    //   848: invokestatic 546	android/view/KeyEvent:isModifierKey	(I)Z
+    //   848: invokestatic 637	android/view/KeyEvent:isModifierKey	(I)Z
     //   851: ifne +11 -> 862
-    //   854: ldc_w 534
-    //   857: invokestatic 245	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   854: ldc_w 625
+    //   857: invokestatic 305	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   860: iconst_m1
     //   861: ireturn
-    //   862: ldc_w 534
-    //   865: invokestatic 245	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   862: ldc_w 625
+    //   865: invokestatic 305	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   868: iconst_0
     //   869: ireturn
     //   870: iconst_1
@@ -851,63 +905,63 @@ public class CustomTextView
   
   private int a(Layout paramLayout)
   {
-    AppMethodBeat.i(205705);
-    if (paramLayout == this.QGF) {}
+    AppMethodBeat.i(201780);
+    if (paramLayout == this.Yfv) {}
     for (int i = getCompoundPaddingTop() + getCompoundPaddingBottom();; i = getExtendedPaddingTop() + getExtendedPaddingBottom())
     {
       int j = getMeasuredHeight();
-      AppMethodBeat.o(205705);
+      AppMethodBeat.o(201780);
       return j - i;
     }
   }
   
   private int a(Layout paramLayout, boolean paramBoolean)
   {
-    AppMethodBeat.i(205756);
+    AppMethodBeat.i(202107);
     if (paramLayout == null)
     {
-      AppMethodBeat.o(205756);
+      AppMethodBeat.o(202107);
       return 0;
     }
     int i = paramLayout.getHeight();
-    b localb = this.QGA;
+    b localb = this.Yfq;
     int j = i;
     if (localb != null) {
-      j = Math.max(Math.max(i, localb.OWk), localb.OWl);
+      j = Math.max(Math.max(i, localb.Wpw), localb.Wpx);
     }
     i = paramLayout.getLineCount();
     int k = getCompoundPaddingTop();
     int m = getCompoundPaddingBottom() + k;
     k = j + m;
-    if (this.OVx != 1)
+    if (this.WoJ != 1)
     {
-      k = Math.min(k, this.OVw);
+      k = Math.min(k, this.WoI);
       j = i;
       i = k;
     }
     for (;;)
     {
-      if (this.OVz == 1)
+      if (this.WoL == 1)
       {
         k = i;
-        if (j < this.OVy) {
+        if (j < this.WoK) {
           k = getLineHeight();
         }
       }
-      for (k = i + (this.OVy - j) * k;; k = Math.max(i, this.OVy))
+      for (k = i + (this.WoK - j) * k;; k = Math.max(i, this.WoK))
       {
         i = Math.max(k, getSuggestedMinimumHeight());
-        AppMethodBeat.o(205756);
+        AppMethodBeat.o(202107);
         return i;
-        if ((!paramBoolean) || (i <= this.OVw) || ((!(paramLayout instanceof DynamicLayout)) && (!(paramLayout instanceof BoringLayout)))) {
+        if ((!paramBoolean) || (i <= this.WoI) || ((!(paramLayout instanceof DynamicLayout)) && (!(paramLayout instanceof BoringLayout)))) {
           break label256;
         }
-        j = paramLayout.getLineTop(this.OVw);
+        j = paramLayout.getLineTop(this.WoI);
         i = j;
         if (localb != null) {
-          i = Math.max(Math.max(j, localb.OWk), localb.OWl);
+          i = Math.max(Math.max(j, localb.Wpw), localb.Wpx);
         }
-        j = this.OVw;
+        j = this.WoI;
         i += m;
         break;
       }
@@ -919,16 +973,16 @@ public class CustomTextView
   
   private Layout a(int paramInt1, BoringLayout.Metrics paramMetrics, int paramInt2, Layout.Alignment paramAlignment, boolean paramBoolean1, TextUtils.TruncateAt paramTruncateAt, boolean paramBoolean2)
   {
-    AppMethodBeat.i(205751);
+    AppMethodBeat.i(202076);
     CharSequence localCharSequence = null;
-    if (gZv())
+    if (iap())
     {
       localObject = this.mText;
-      localCharSequence = this.OVq;
-      TextPaint localTextPaint = this.ayn;
-      float f1 = this.OVu;
-      float f2 = this.OVv;
-      paramBoolean2 = this.OVD;
+      localCharSequence = this.WoC;
+      TextPaint localTextPaint = this.wi;
+      float f1 = this.WoG;
+      float f2 = this.WoH;
+      paramBoolean2 = this.WoP;
       if (getKeyListener() == null) {}
       for (paramMetrics = paramTruncateAt;; paramMetrics = null)
       {
@@ -936,12 +990,12 @@ public class CustomTextView
         localObject = paramMetrics;
         if (paramMetrics == null)
         {
-          paramMetrics = this.OVq;
-          int i = this.OVq.length();
-          localObject = this.ayn;
-          f1 = this.OVu;
-          f2 = this.OVv;
-          paramBoolean2 = this.OVD;
+          paramMetrics = this.WoC;
+          int i = this.WoC.length();
+          localObject = this.wi;
+          f1 = this.WoG;
+          f2 = this.WoH;
+          paramBoolean2 = this.WoP;
           if (!paramBoolean1) {
             break;
           }
@@ -952,16 +1006,16 @@ public class CustomTextView
           label144:
           localObject = new StaticLayout(paramMetrics, 0, i, (TextPaint)localObject, paramInt1, paramAlignment, f1, f2, paramBoolean2, paramTruncateAt, paramInt2);
         }
-        AppMethodBeat.o(205751);
+        AppMethodBeat.o(202076);
         return localObject;
       }
     }
-    if (paramMetrics == OVU)
+    if (paramMetrics == Wpg)
     {
-      paramMetrics = BoringLayout.isBoring(this.OVq, this.ayn, this.QGZ);
+      paramMetrics = BoringLayout.isBoring(this.WoC, this.wi, this.YfP);
       localObject = paramMetrics;
       if (paramMetrics != null) {
-        this.QGZ = paramMetrics;
+        this.YfP = paramMetrics;
       }
     }
     for (Object localObject = paramMetrics;; localObject = paramMetrics)
@@ -971,17 +1025,17 @@ public class CustomTextView
         break;
       }
       if ((((BoringLayout.Metrics)localObject).width <= paramInt1) && ((paramTruncateAt == null) || (((BoringLayout.Metrics)localObject).width <= paramInt2))) {
-        if ((paramBoolean2) && (this.OVE != null)) {
-          paramMetrics = this.OVE.replaceOrMake(this.OVq, this.ayn, paramInt1, paramAlignment, this.OVu, this.OVv, (BoringLayout.Metrics)localObject, this.OVD);
+        if ((paramBoolean2) && (this.WoQ != null)) {
+          paramMetrics = this.WoQ.replaceOrMake(this.WoC, this.wi, paramInt1, paramAlignment, this.WoG, this.WoH, (BoringLayout.Metrics)localObject, this.WoP);
         }
       }
       for (;;)
       {
         if (paramBoolean2)
         {
-          this.OVE = ((BoringLayout)paramMetrics);
+          this.WoQ = ((BoringLayout)paramMetrics);
           break;
-          paramMetrics = BoringLayout.make(this.OVq, this.ayn, paramInt1, paramAlignment, this.OVu, this.OVv, (BoringLayout.Metrics)localObject, this.OVD);
+          paramMetrics = BoringLayout.make(this.WoC, this.wi, paramInt1, paramAlignment, this.WoG, this.WoH, (BoringLayout.Metrics)localObject, this.WoP);
           continue;
           paramMetrics = localCharSequence;
           if (!paramBoolean1) {
@@ -991,12 +1045,12 @@ public class CustomTextView
           if (((BoringLayout.Metrics)localObject).width > paramInt1) {
             break;
           }
-          if ((paramBoolean2) && (this.OVE != null))
+          if ((paramBoolean2) && (this.WoQ != null))
           {
-            paramMetrics = this.OVE.replaceOrMake(this.OVq, this.ayn, paramInt1, paramAlignment, this.OVu, this.OVv, (BoringLayout.Metrics)localObject, this.OVD, paramTruncateAt, paramInt2);
+            paramMetrics = this.WoQ.replaceOrMake(this.WoC, this.wi, paramInt1, paramAlignment, this.WoG, this.WoH, (BoringLayout.Metrics)localObject, this.WoP, paramTruncateAt, paramInt2);
             break;
           }
-          paramMetrics = BoringLayout.make(this.OVq, this.ayn, paramInt1, paramAlignment, this.OVu, this.OVv, (BoringLayout.Metrics)localObject, this.OVD, paramTruncateAt, paramInt2);
+          paramMetrics = BoringLayout.make(this.WoC, this.wi, paramInt1, paramAlignment, this.WoG, this.WoH, (BoringLayout.Metrics)localObject, this.WoP, paramTruncateAt, paramInt2);
           break;
           paramTruncateAt = null;
           break label139;
@@ -1011,10 +1065,10 @@ public class CustomTextView
   
   private void a(int paramInt1, int paramInt2, BoringLayout.Metrics paramMetrics1, BoringLayout.Metrics paramMetrics2, int paramInt3, boolean paramBoolean)
   {
-    AppMethodBeat.i(205749);
-    this.QGU = this.OVw;
-    this.QGV = this.OVx;
-    this.QHh = true;
+    AppMethodBeat.i(202062);
+    this.YfK = this.WoI;
+    this.YfL = this.WoJ;
+    this.YfX = true;
     if (paramInt1 < 0) {
       paramInt1 = 0;
     }
@@ -1032,7 +1086,7 @@ public class CustomTextView
         i = 0;
       }
       Layout.Alignment localAlignment = getLayoutAlignment();
-      if ((this.OSP) && (this.OVt != null) && ((localAlignment == Layout.Alignment.ALIGN_NORMAL) || (localAlignment == Layout.Alignment.ALIGN_OPPOSITE)))
+      if ((this.Wmc) && (this.WoF != null) && ((localAlignment == Layout.Alignment.ALIGN_NORMAL) || (localAlignment == Layout.Alignment.ALIGN_OPPOSITE)))
       {
         paramInt2 = 1;
         if (paramInt2 == 0) {
@@ -1043,30 +1097,30 @@ public class CustomTextView
       label369:
       label629:
       label635:
-      for (int j = this.OVt.getParagraphDirection(0);; j = 0)
+      for (int j = this.WoF.getParagraphDirection(0);; j = 0)
       {
         boolean bool1;
         TextUtils.TruncateAt localTruncateAt;
         boolean bool2;
         int k;
-        if ((this.OVp != null) && (getKeyListener() == null))
+        if ((this.WoB != null) && (getKeyListener() == null))
         {
           bool1 = true;
-          localTruncateAt = this.OVp;
-          if (this.Om == null) {
-            this.Om = getTextDirectionHeuristic();
+          localTruncateAt = this.WoB;
+          if (this.Mg == null) {
+            this.Mg = getTextDirectionHeuristic();
           }
-          if (localTruncateAt != this.OVp) {
+          if (localTruncateAt != this.WoB) {
             break label462;
           }
           bool2 = true;
-          this.OVt = a(paramInt1, paramMetrics1, paramInt3, localAlignment, bool1, localTruncateAt, bool2);
-          if (this.OVp == null) {
+          this.WoF = a(paramInt1, paramMetrics1, paramInt3, localAlignment, bool1, localTruncateAt, bool2);
+          if (this.WoB == null) {
             break label468;
           }
           k = 1;
-          this.QGF = null;
-          if (this.QGE != null) {
+          this.Yfv = null;
+          if (this.Yfu != null) {
             if (k == 0) {
               break label629;
             }
@@ -1074,12 +1128,12 @@ public class CustomTextView
         }
         for (;;)
         {
-          if (paramMetrics2 == OVU)
+          if (paramMetrics2 == Wpg)
           {
-            paramMetrics2 = BoringLayout.isBoring(this.QGE, this.ayn, this.QHa);
+            paramMetrics2 = BoringLayout.isBoring(this.Yfu, this.wi, this.YfQ);
             paramMetrics1 = paramMetrics2;
             if (paramMetrics2 != null) {
-              this.QHa = paramMetrics2;
+              this.YfQ = paramMetrics2;
             }
           }
           for (paramMetrics1 = paramMetrics2;; paramMetrics1 = paramMetrics2)
@@ -1092,20 +1146,20 @@ public class CustomTextView
               if ((paramMetrics1.width > paramInt1) || ((k != 0) && (paramMetrics1.width > paramInt3))) {
                 break label508;
               }
-              if (this.QHb != null)
+              if (this.YfR != null)
               {
-                this.QGF = this.QHb.replaceOrMake(this.QGE, this.ayn, paramInt1, localAlignment, this.OVu, this.OVv, paramMetrics1, this.OVD);
-                this.QHb = ((BoringLayout)this.QGF);
+                this.Yfv = this.YfR.replaceOrMake(this.Yfu, this.wi, paramInt1, localAlignment, this.WoG, this.WoH, paramMetrics1, this.WoP);
+                this.YfR = ((BoringLayout)this.Yfv);
               }
             }
-            else if (this.QGF == null)
+            else if (this.Yfv == null)
             {
-              paramMetrics2 = this.QGE;
-              i = this.QGE.length();
-              localTextPaint = this.ayn;
-              f1 = this.OVu;
-              f2 = this.OVv;
-              bool1 = this.OVD;
+              paramMetrics2 = this.Yfu;
+              i = this.Yfu.length();
+              localTextPaint = this.wi;
+              f1 = this.WoG;
+              f2 = this.WoH;
+              bool1 = this.WoP;
               if (k == 0) {
                 break label612;
               }
@@ -1116,14 +1170,14 @@ public class CustomTextView
             }
             for (;;)
             {
-              this.QGF = new StaticLayout(paramMetrics2, 0, i, localTextPaint, paramInt1, localAlignment, f1, f2, bool1, paramMetrics1, paramInt3);
-              if ((paramBoolean) || ((paramInt2 != 0) && (j != this.OVt.getParagraphDirection(0)))) {
-                gZt();
+              this.Yfv = new StaticLayout(paramMetrics2, 0, i, localTextPaint, paramInt1, localAlignment, f1, f2, bool1, paramMetrics1, paramInt3);
+              if ((paramBoolean) || ((paramInt2 != 0) && (j != this.WoF.getParagraphDirection(0)))) {
+                iak();
               }
-              if (this.QHs != null) {
-                this.QHs.gZP();
+              if (this.Ygi != null) {
+                this.Ygi.iaN();
               }
-              AppMethodBeat.o(205749);
+              AppMethodBeat.o(202062);
               return;
               paramInt2 = 0;
               break;
@@ -1133,18 +1187,18 @@ public class CustomTextView
               break label145;
               k = 0;
               break label175;
-              this.QGF = BoringLayout.make(this.QGE, this.ayn, paramInt1, localAlignment, this.OVu, this.OVv, paramMetrics1, this.OVD);
+              this.Yfv = BoringLayout.make(this.Yfu, this.wi, paramInt1, localAlignment, this.WoG, this.WoH, paramMetrics1, this.WoP);
               break label302;
               label508:
               if ((k == 0) || (paramMetrics1.width > paramInt1)) {
                 break label313;
               }
-              if (this.QHb != null)
+              if (this.YfR != null)
               {
-                this.QGF = this.QHb.replaceOrMake(this.QGE, this.ayn, paramInt1, localAlignment, this.OVu, this.OVv, paramMetrics1, this.OVD, this.OVp, paramInt3);
+                this.Yfv = this.YfR.replaceOrMake(this.Yfu, this.wi, paramInt1, localAlignment, this.WoG, this.WoH, paramMetrics1, this.WoP, this.WoB, paramInt3);
                 break label313;
               }
-              this.QGF = BoringLayout.make(this.QGE, this.ayn, paramInt1, localAlignment, this.OVu, this.OVv, paramMetrics1, this.OVD, this.OVp, paramInt3);
+              this.Yfv = BoringLayout.make(this.Yfu, this.wi, paramInt1, localAlignment, this.WoG, this.WoH, paramMetrics1, this.WoP, this.WoB, paramInt3);
               break label313;
               paramMetrics1 = null;
               break label369;
@@ -1159,10 +1213,10 @@ public class CustomTextView
   
   private <T> void a(int paramInt1, int paramInt2, Class<T> paramClass)
   {
-    AppMethodBeat.i(205780);
+    AppMethodBeat.i(202216);
     if (!(this.mText instanceof Editable))
     {
-      AppMethodBeat.o(205780);
+      AppMethodBeat.o(202216);
       return;
     }
     Editable localEditable = (Editable)this.mText;
@@ -1178,15 +1232,15 @@ public class CustomTextView
       localEditable.removeSpan(paramClass[i]);
       i += 1;
     }
-    AppMethodBeat.o(205780);
+    AppMethodBeat.o(202216);
   }
   
   private static void a(Context paramContext, TypedArray paramTypedArray, d paramd)
   {
-    AppMethodBeat.i(205624);
+    AppMethodBeat.i(201518);
     if (paramTypedArray == null)
     {
-      AppMethodBeat.o(205624);
+      AppMethodBeat.o(201518);
       return;
     }
     int j = paramTypedArray.getIndexCount();
@@ -1196,45 +1250,45 @@ public class CustomTextView
     if (i < j)
     {
       k = paramTypedArray.getIndex(i);
-      m = QHw.get(k, -1);
+      m = Ygm.get(k, -1);
       if (m != -1)
       {
-        if (m != 5) {
-          break label82;
+        if (m != a.m.MMNewTextView_android_textColorHighlight) {
+          break label84;
         }
-        paramd.QHX = paramTypedArray.getColor(k, paramd.QHX);
+        paramd.YgN = paramTypedArray.getColor(k, paramd.YgN);
       }
     }
     for (;;)
     {
       i += 1;
       break;
-      label82:
-      if (m == 4)
+      label84:
+      if (m == a.m.MMNewTextView_android_textColor)
       {
-        paramd.BpJ = paramTypedArray.getColorStateList(k);
+        paramd.Hkc = paramTypedArray.getColorStateList(k);
         continue;
       }
-      if (m == 6)
+      if (m == a.m.MMNewTextView_android_textColorHint)
       {
-        paramd.QHY = paramTypedArray.getColorStateList(k);
+        paramd.YgO = paramTypedArray.getColorStateList(k);
         continue;
       }
-      if (m == 7)
+      if (m == a.m.MMNewTextView_android_textColorLink)
       {
-        paramd.QHZ = paramTypedArray.getColorStateList(k);
+        paramd.YgP = paramTypedArray.getColorStateList(k);
         continue;
       }
-      if (m == 1)
+      if (m == a.m.MMNewTextView_android_textSize)
       {
-        paramd.mAk = paramTypedArray.getDimensionPixelSize(k, paramd.mAk);
+        paramd.pyF = paramTypedArray.getDimensionPixelSize(k, paramd.pyF);
         if (Build.VERSION.SDK_INT < 22) {
           continue;
         }
-        paramd.QGM = paramTypedArray.peekValue(k).getComplexUnit();
+        paramd.YfC = paramTypedArray.peekValue(k).getComplexUnit();
         continue;
       }
-      if (m == 89)
+      if (m == a.m.MMNewTextView_android_textLocale)
       {
         Object localObject = paramTypedArray.getString(k);
         if ((localObject == null) || (Build.VERSION.SDK_INT < 24)) {
@@ -1244,103 +1298,103 @@ public class CustomTextView
         if (((LocaleList)localObject).isEmpty()) {
           continue;
         }
-        paramd.QIa = ((LocaleList)localObject);
+        paramd.YgQ = ((LocaleList)localObject);
         continue;
       }
-      if (m == 2)
+      if (m == a.m.MMNewTextView_android_typeface)
       {
-        paramd.QIc = paramTypedArray.getInt(k, paramd.QIc);
-        if ((paramd.QIc == -1) || (paramd.QIb)) {
+        paramd.YgS = paramTypedArray.getInt(k, paramd.YgS);
+        if ((paramd.YgS == -1) || (paramd.YgR)) {
           continue;
         }
-        paramd.lal = null;
+        paramd.nUv = null;
         continue;
       }
-      if ((m != 68) || (!paramContext.isRestricted())) {}
+      if ((m != a.m.MMNewTextView_android_fontFamily) || (!paramContext.isRestricted())) {}
       try
       {
         if (Build.VERSION.SDK_INT >= 26) {
-          paramd.alr = paramTypedArray.getFont(k);
+          paramd.rC = paramTypedArray.getFont(k);
         }
-        label312:
-        if (paramd.alr == null) {
-          paramd.lal = paramTypedArray.getString(k);
+        label324:
+        if (paramd.rC == null) {
+          paramd.nUv = paramTypedArray.getString(k);
         }
-        paramd.QIb = true;
+        paramd.YgR = true;
         continue;
-        if (m == 3)
+        if (m == a.m.MMNewTextView_android_textStyle)
         {
-          paramd.QId = paramTypedArray.getInt(k, paramd.QId);
+          paramd.YgT = paramTypedArray.getInt(k, paramd.YgT);
           continue;
         }
-        if (m == 88)
+        if (m == a.m.MMNewTextView_android_textFontWeight)
         {
-          paramd.QIe = paramTypedArray.getInt(k, paramd.QIe);
+          paramd.YgU = paramTypedArray.getInt(k, paramd.YgU);
           continue;
         }
-        if (m == 65)
+        if (m == a.m.MMNewTextView_android_textAllCaps)
         {
-          paramd.QIf = paramTypedArray.getBoolean(k, paramd.QIf);
+          paramd.YgV = paramTypedArray.getBoolean(k, paramd.YgV);
           continue;
         }
-        if (m == 34)
+        if (m == a.m.MMNewTextView_android_shadowColor)
         {
-          paramd.nYW = paramTypedArray.getInt(k, paramd.nYW);
+          paramd.raH = paramTypedArray.getInt(k, paramd.raH);
           continue;
         }
-        if (m == 35)
+        if (m == a.m.MMNewTextView_android_shadowDx)
         {
-          paramd.QGs = paramTypedArray.getFloat(k, paramd.QGs);
+          paramd.Yfi = paramTypedArray.getFloat(k, paramd.Yfi);
           continue;
         }
-        if (m == 36)
+        if (m == a.m.MMNewTextView_android_shadowDy)
         {
-          paramd.QGt = paramTypedArray.getFloat(k, paramd.QGt);
+          paramd.Yfj = paramTypedArray.getFloat(k, paramd.Yfj);
           continue;
         }
-        if (m == 37)
+        if (m == a.m.MMNewTextView_android_shadowRadius)
         {
-          paramd.QGr = paramTypedArray.getFloat(k, paramd.QGr);
+          paramd.Yfh = paramTypedArray.getFloat(k, paramd.Yfh);
           continue;
         }
-        if (m == 69)
+        if (m == a.m.MMNewTextView_android_elegantTextHeight)
         {
-          paramd.QIg = true;
-          paramd.QIh = paramTypedArray.getBoolean(k, paramd.QIh);
+          paramd.YgW = true;
+          paramd.YgX = paramTypedArray.getBoolean(k, paramd.YgX);
           continue;
         }
-        if (m == 84)
+        if (m == a.m.MMNewTextView_android_fallbackLineSpacing)
         {
-          paramd.QIi = true;
-          paramd.QIj = paramTypedArray.getBoolean(k, paramd.QIj);
+          paramd.YgY = true;
+          paramd.YgZ = paramTypedArray.getBoolean(k, paramd.YgZ);
           continue;
         }
-        if (m == 70)
+        if (m == a.m.MMNewTextView_android_letterSpacing)
         {
-          paramd.QIk = true;
-          paramd.QIl = paramTypedArray.getFloat(k, paramd.QIl);
+          paramd.Yha = true;
+          paramd.Yhb = paramTypedArray.getFloat(k, paramd.Yhb);
           continue;
         }
-        if (m == 71)
+        if (m == a.m.MMNewTextView_android_fontFeatureSettings)
         {
-          paramd.QIm = paramTypedArray.getString(k);
+          paramd.Yhc = paramTypedArray.getString(k);
           continue;
         }
-        if (m != 83) {
+        if (m != a.m.MMNewTextView_android_fontVariationSettings) {
           continue;
         }
-        paramd.QIn = paramTypedArray.getString(k);
+        paramd.Yhd = paramTypedArray.getString(k);
         continue;
-        AppMethodBeat.o(205624);
+        AppMethodBeat.o(201518);
         return;
       }
       catch (UnsupportedOperationException localUnsupportedOperationException)
       {
-        break label312;
+        break label324;
       }
       catch (Resources.NotFoundException localNotFoundException)
       {
-        break label312;
+        break label324;
       }
     }
   }
@@ -1348,55 +1402,55 @@ public class CustomTextView
   @SuppressLint({"Range"})
   private void a(Typeface paramTypeface, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(205575);
+    AppMethodBeat.i(201374);
     if (paramInt2 >= 0) {
       Math.min(1000, paramInt2);
     }
     setTypeface(paramTypeface, paramInt1);
-    AppMethodBeat.o(205575);
+    AppMethodBeat.o(201374);
   }
   
   private void a(Typeface paramTypeface, String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(205574);
+    AppMethodBeat.i(201372);
     if ((paramTypeface == null) && (paramString != null))
     {
       a(Typeface.create(paramString, 0), paramInt2, paramInt3);
-      AppMethodBeat.o(205574);
+      AppMethodBeat.o(201372);
       return;
     }
     if (paramTypeface != null)
     {
       a(paramTypeface, paramInt2, paramInt3);
-      AppMethodBeat.o(205574);
+      AppMethodBeat.o(201372);
       return;
     }
     switch (paramInt1)
     {
     default: 
       a(null, paramInt2, paramInt3);
-      AppMethodBeat.o(205574);
+      AppMethodBeat.o(201372);
       return;
     case 1: 
       a(Typeface.SANS_SERIF, paramInt2, paramInt3);
-      AppMethodBeat.o(205574);
+      AppMethodBeat.o(201372);
       return;
     case 2: 
       a(Typeface.SERIF, paramInt2, paramInt3);
-      AppMethodBeat.o(205574);
+      AppMethodBeat.o(201372);
       return;
     }
     a(Typeface.MONOSPACE, paramInt2, paramInt3);
-    AppMethodBeat.o(205574);
+    AppMethodBeat.o(201372);
   }
   
   private void a(Editable paramEditable, InputFilter[] paramArrayOfInputFilter)
   {
-    AppMethodBeat.i(205704);
+    AppMethodBeat.i(201778);
     boolean bool;
-    if (this.QHs != null)
+    if (this.Ygi != null)
     {
-      bool = this.QHs.QIH instanceof InputFilter;
+      bool = this.Ygi.Yhx instanceof InputFilter;
       if (!bool) {
         break label106;
       }
@@ -1409,27 +1463,27 @@ public class CustomTextView
         InputFilter[] arrayOfInputFilter = new InputFilter[paramArrayOfInputFilter.length + 1];
         System.arraycopy(paramArrayOfInputFilter, 0, arrayOfInputFilter, 0, paramArrayOfInputFilter.length);
         if (bool) {
-          arrayOfInputFilter[(paramArrayOfInputFilter.length + 0)] = ((InputFilter)this.QHs.QIH);
+          arrayOfInputFilter[(paramArrayOfInputFilter.length + 0)] = ((InputFilter)this.Ygi.Yhx);
         }
         paramEditable.setFilters(arrayOfInputFilter);
-        AppMethodBeat.o(205704);
+        AppMethodBeat.o(201778);
         return;
       }
       paramEditable.setFilters(paramArrayOfInputFilter);
-      AppMethodBeat.o(205704);
+      AppMethodBeat.o(201778);
       return;
     }
   }
   
   private void a(CursorAnchorInfo.Builder paramBuilder, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(205823);
-    int k = this.OVt.getLineForOffset(paramInt1);
-    int i2 = this.OVt.getLineForOffset(paramInt2 - 1);
+    AppMethodBeat.i(202360);
+    int k = this.WoF.getLineForOffset(paramInt1);
+    int i2 = this.WoF.getLineForOffset(paramInt2 - 1);
     while (k <= i2)
     {
-      int j = this.OVt.getLineStart(k);
-      int i = this.OVt.getLineEnd(k);
+      int j = this.WoF.getLineStart(k);
+      int i = this.WoF.getLineEnd(k);
       int i1 = Math.max(j, paramInt1);
       int i3 = Math.min(i, paramInt2);
       int m;
@@ -1441,21 +1495,21 @@ public class CustomTextView
       boolean bool1;
       float f1;
       float f2;
-      if (this.OVt.getParagraphDirection(k) == 1)
+      if (this.WoF.getParagraphDirection(k) == 1)
       {
         m = 1;
         float[] arrayOfFloat = new float[i3 - i1];
-        this.OVt.getPaint().getTextWidths(this.OVq, i1, i3, arrayOfFloat);
-        f4 = this.OVt.getLineTop(k);
-        f5 = this.OVt.getLineBottom(k);
+        this.WoF.getPaint().getTextWidths(this.WoC, i1, i3, arrayOfFloat);
+        f4 = this.WoF.getLineTop(k);
+        f5 = this.WoF.getLineBottom(k);
         n = i1;
         if (n >= i3) {
           break label404;
         }
         f3 = arrayOfFloat[(n - i1)];
-        bool1 = this.OVt.isRtlCharAt(n);
-        f1 = this.OVt.getPrimaryHorizontal(n);
-        f2 = this.OVt.getSecondaryHorizontal(n);
+        bool1 = this.WoF.isRtlCharAt(n);
+        f1 = this.WoF.getPrimaryHorizontal(n);
+        f2 = this.WoF.getSecondaryHorizontal(n);
         if (m == 0) {
           break label367;
         }
@@ -1470,8 +1524,8 @@ public class CustomTextView
         f2 += paramFloat1;
         f3 = f4 + paramFloat2;
         float f6 = f5 + paramFloat2;
-        boolean bool2 = ay(f1, f3);
-        boolean bool3 = ay(f2, f6);
+        boolean bool2 = aF(f1, f3);
+        boolean bool3 = aF(f2, f6);
         j = 0;
         if ((bool2) || (bool3)) {
           j = 1;
@@ -1516,21 +1570,21 @@ public class CustomTextView
       label404:
       k += 1;
     }
-    AppMethodBeat.o(205823);
+    AppMethodBeat.o(202360);
   }
   
   private void a(InputMethodManager paramInputMethodManager)
   {
-    AppMethodBeat.i(205851);
+    AppMethodBeat.i(202514);
     if (paramInputMethodManager != null) {
       paramInputMethodManager.viewClicked(this);
     }
-    AppMethodBeat.o(205851);
+    AppMethodBeat.o(202514);
   }
   
   private void a(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(205779);
+    AppMethodBeat.i(202212);
     Object localObject;
     if (this.mListeners != null)
     {
@@ -1558,87 +1612,62 @@ public class CustomTextView
       a(paramInt1, paramInt1 + paramInt2, paramCharSequence);
     }
     a(paramInt1, paramInt1 + paramInt2, SuggestionSpan.class);
-    AppMethodBeat.o(205779);
+    AppMethodBeat.o(202212);
   }
   
   private boolean a(ClipData paramClipData)
   {
-    AppMethodBeat.i(205843);
+    AppMethodBeat.i(202471);
     ClipboardManager localClipboardManager = getClipboardManagerForUser();
     try
     {
       localClipboardManager.setPrimaryClip(paramClipData);
-      QGm = SystemClock.uptimeMillis();
-      AppMethodBeat.o(205843);
+      Yfc = SystemClock.uptimeMillis();
+      AppMethodBeat.o(202471);
       return true;
     }
     catch (Throwable paramClipData)
     {
-      AppMethodBeat.o(205843);
+      AppMethodBeat.o(202471);
     }
     return false;
   }
   
-  private void aV(int paramInt1, int paramInt2, int paramInt3)
+  private float aE(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(205709);
-    if ((paramInt1 >= 0) || (paramInt2 >= 0) || (paramInt3 >= 0)) {
-      lz(Math.min(Math.min(paramInt1, paramInt2), paramInt3), Math.max(Math.max(paramInt1, paramInt2), paramInt3));
-    }
-    AppMethodBeat.o(205709);
-  }
-  
-  private static boolean aox(int paramInt)
-  {
-    return (0x2000F & paramInt) == 131073;
-  }
-  
-  private static boolean aoy(int paramInt)
-  {
-    paramInt &= 0xFFF;
-    return (paramInt == 129) || (paramInt == 225) || (paramInt == 18);
-  }
-  
-  private static boolean aoz(int paramInt)
-  {
-    return (paramInt & 0xFFF) == 145;
-  }
-  
-  private float ax(float paramFloat1, float paramFloat2)
-  {
-    AppMethodBeat.i(205801);
+    AppMethodBeat.i(202312);
     int i = getHorizontalFadingEdgeLength();
     if (i == 0)
     {
-      AppMethodBeat.o(205801);
+      AppMethodBeat.o(202312);
       return 0.0F;
     }
     paramFloat1 = Math.abs(paramFloat1 - paramFloat2);
     if (paramFloat1 > i)
     {
-      AppMethodBeat.o(205801);
+      AppMethodBeat.o(202312);
       return 1.0F;
     }
     paramFloat1 /= i;
-    AppMethodBeat.o(205801);
+    AppMethodBeat.o(202312);
     return paramFloat1;
   }
   
-  private CharSequence ax(CharSequence paramCharSequence)
+  private CharSequence aM(CharSequence paramCharSequence)
   {
     int i = 0;
-    AppMethodBeat.i(205691);
+    AppMethodBeat.i(201727);
     if ((paramCharSequence instanceof Spanned))
     {
       if ((paramCharSequence instanceof Spannable)) {}
       SuggestionSpan[] arrayOfSuggestionSpan;
-      for (Spannable localSpannable = (Spannable)paramCharSequence;; localSpannable = this.OVo.newSpannable(paramCharSequence))
+      for (Spannable localSpannable = (Spannable)paramCharSequence;; localSpannable = this.WoA.newSpannable(paramCharSequence))
       {
         arrayOfSuggestionSpan = (SuggestionSpan[])localSpannable.getSpans(0, paramCharSequence.length(), SuggestionSpan.class);
         if (arrayOfSuggestionSpan.length != 0) {
           break;
         }
-        AppMethodBeat.o(205691);
+        AppMethodBeat.o(201727);
         return paramCharSequence;
       }
       for (;;)
@@ -1651,217 +1680,48 @@ public class CustomTextView
         i += 1;
       }
     }
-    AppMethodBeat.o(205691);
+    AppMethodBeat.o(201727);
     return paramCharSequence;
   }
   
-  private static int b(Layout paramLayout)
+  private void aZ(int paramInt1, int paramInt2, int paramInt3)
   {
-    int k = 0;
-    AppMethodBeat.i(205752);
-    int m = paramLayout.getLineCount();
-    CharSequence localCharSequence = paramLayout.getText();
-    float f2 = 0.0F;
-    int i = 0;
-    int j;
-    float f1;
-    for (;;)
-    {
-      j = k;
-      f1 = f2;
-      if (i >= m - 1) {
-        break;
-      }
-      if (localCharSequence.charAt(paramLayout.getLineEnd(i) - 1) != '\n')
-      {
-        AppMethodBeat.o(205752);
-        return -1;
-      }
-      i += 1;
+    AppMethodBeat.i(201790);
+    if ((paramInt1 >= 0) || (paramInt2 >= 0) || (paramInt3 >= 0)) {
+      mR(Math.min(Math.min(paramInt1, paramInt2), paramInt3), Math.max(Math.max(paramInt1, paramInt2), paramInt3));
     }
-    while (j < m)
-    {
-      f1 = Math.max(f1, paramLayout.getLineWidth(j));
-      j += 1;
-    }
-    i = (int)Math.ceil(f1);
-    AppMethodBeat.o(205752);
-    return i;
+    AppMethodBeat.o(201790);
   }
   
-  private void b(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  private static boolean axH(int paramInt)
   {
-    AppMethodBeat.i(205781);
-    if (this.mListeners != null)
-    {
-      ArrayList localArrayList = this.mListeners;
-      int j = localArrayList.size();
-      int i = 0;
-      while (i < j)
-      {
-        ((TextWatcher)localArrayList.get(i)).onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
-        i += 1;
-      }
-    }
-    if (this.QHs != null) {
-      this.QHs.hab();
-    }
-    AppMethodBeat.o(205781);
+    return (0x2000F & paramInt) == 131073;
   }
   
-  private void bO(int paramInt, boolean paramBoolean)
+  private static boolean axI(int paramInt)
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(205695);
-    int i = paramInt & 0xF;
-    Object localObject1 = null;
-    boolean bool1;
-    if (i == 1)
-    {
-      if ((0x8000 & paramInt) != 0)
-      {
-        bool1 = true;
-        if ((paramInt & 0x1000) == 0) {
-          break label95;
-        }
-        localObject1 = TextKeyListener.Capitalize.CHARACTERS;
-      }
-      for (;;)
-      {
-        localObject1 = TextKeyListener.getInstance(bool1, (TextKeyListener.Capitalize)localObject1);
-        setRawInputType(paramInt);
-        this.QGN = false;
-        if (!paramBoolean) {
-          break label386;
-        }
-        gZL();
-        this.QHs.QIH = ((KeyListener)localObject1);
-        AppMethodBeat.o(205695);
-        return;
-        bool1 = false;
-        break;
-        label95:
-        if ((paramInt & 0x2000) != 0) {
-          localObject1 = TextKeyListener.Capitalize.WORDS;
-        } else if ((paramInt & 0x4000) != 0) {
-          localObject1 = TextKeyListener.Capitalize.SENTENCES;
-        } else {
-          localObject1 = TextKeyListener.Capitalize.NONE;
-        }
-      }
-    }
-    Object localObject2;
-    if (i == 2)
-    {
-      localObject2 = getCustomLocaleForKeyListenerOrNull();
-      if (Build.VERSION.SDK_INT >= 26)
-      {
-        if ((paramInt & 0x1000) == 0) {
-          break label233;
-        }
-        bool1 = true;
-        label165:
-        if ((paramInt & 0x2000) == 0) {
-          break label239;
-        }
-      }
-      for (;;)
-      {
-        localObject1 = DigitsKeyListener.getInstance((Locale)localObject2, bool1, bool2);
-        i = paramInt;
-        if (localObject2 != null)
-        {
-          int j = ((KeyListener)localObject1).getInputType();
-          i = paramInt;
-          if ((j & 0xF) != 2)
-          {
-            i = j;
-            if ((paramInt & 0x10) != 0) {
-              i = j | 0x80;
-            }
-          }
-        }
-        paramInt = i;
-        break;
-        label233:
-        bool1 = false;
-        break label165;
-        label239:
-        bool2 = false;
-      }
-    }
-    if (i == 4)
-    {
-      localObject1 = getCustomLocaleForKeyListenerOrNull();
-      switch (paramInt & 0xFF0)
-      {
-      default: 
-        if (Build.VERSION.SDK_INT >= 26) {
-          localObject2 = DateTimeKeyListener.getInstance((Locale)localObject1);
-        }
-        break;
-      }
-    }
-    for (;;)
-    {
-      localObject1 = localObject2;
-      if (!this.QGO) {
-        break;
-      }
-      paramInt = ((KeyListener)localObject2).getInputType();
-      localObject1 = localObject2;
-      break;
-      if (Build.VERSION.SDK_INT >= 26)
-      {
-        localObject2 = DateKeyListener.getInstance((Locale)localObject1);
-        continue;
-        if (Build.VERSION.SDK_INT >= 26)
-        {
-          localObject2 = TimeKeyListener.getInstance((Locale)localObject1);
-          continue;
-          if (i == 3)
-          {
-            localObject1 = DialerKeyListener.getInstance();
-            break;
-          }
-          localObject1 = TextKeyListener.getInstance();
-          break;
-          label386:
-          setKeyListenerOnly((KeyListener)localObject1);
-          AppMethodBeat.o(205695);
-          return;
-        }
-      }
-      localObject2 = null;
-    }
+    paramInt &= 0xFFF;
+    return (paramInt == 129) || (paramInt == 225) || (paramInt == 18);
   }
   
-  private <T> T bj(Class<T> paramClass)
+  private static boolean axJ(int paramInt)
   {
-    AppMethodBeat.i(205814);
-    if ((this.QHd == null) && (Build.VERSION.SDK_INT >= 23))
-    {
-      paramClass = getContext().getSystemService(paramClass);
-      AppMethodBeat.o(205814);
-      return paramClass;
-    }
-    AppMethodBeat.o(205814);
-    return null;
+    return (paramInt & 0xFFF) == 145;
   }
   
-  private boolean bringPointIntoView(int paramInt)
+  private boolean axK(int paramInt)
   {
-    AppMethodBeat.i(205761);
+    AppMethodBeat.i(202156);
     if (isLayoutRequested())
     {
-      this.QGY = paramInt;
-      AppMethodBeat.o(205761);
+      this.YfO = paramInt;
+      AppMethodBeat.o(202156);
       return false;
     }
-    if (gZx()) {}
-    for (Layout localLayout = this.QGF; localLayout == null; localLayout = this.OVt)
+    if (iar()) {}
+    for (Layout localLayout = this.Yfv; localLayout == null; localLayout = this.WoF)
     {
-      AppMethodBeat.o(205761);
+      AppMethodBeat.o(202156);
       return false;
     }
     int i3 = localLayout.getLineForOffset(paramInt);
@@ -1874,7 +1734,7 @@ public class CustomTextView
     int i7;
     int i9;
     int m;
-    switch (5.bDD[localLayout.getParagraphAlignment(i3).ordinal()])
+    switch (CustomTextView.5.bne[localLayout.getParagraphAlignment(i3).ordinal()])
     {
     default: 
       j = 0;
@@ -1887,7 +1747,7 @@ public class CustomTextView
       i7 = getRight() - getLeft() - getCompoundPaddingLeft() - getCompoundPaddingRight();
       i9 = getBottom() - getTop() - getExtendedPaddingTop() - getExtendedPaddingBottom();
       m = paramInt;
-      if (!this.QGQ)
+      if (!this.YfG)
       {
         m = paramInt;
         if (paramInt - i > i7)
@@ -1970,7 +1830,7 @@ public class CustomTextView
                       bool2 = true;
                     }
                   }
-                  AppMethodBeat.o(205761);
+                  AppMethodBeat.o(202156);
                   return bool2;
                   j = localLayout.getParagraphDirection(i3);
                   break;
@@ -2027,7 +1887,7 @@ public class CustomTextView
                   paramInt = i4 - (i7 - i1);
                   break;
                   long l1 = AnimationUtils.currentAnimationTimeMillis();
-                  long l2 = this.UC;
+                  long l2 = this.Qh;
                   paramInt -= getScrollX();
                   i = n - getScrollY();
                   if (l1 - l2 > 250L)
@@ -2038,7 +1898,7 @@ public class CustomTextView
                   }
                   for (;;)
                   {
-                    this.UC = AnimationUtils.currentAnimationTimeMillis();
+                    this.Qh = AnimationUtils.currentAnimationTimeMillis();
                     break;
                     if (!this.mScroller.isFinished()) {
                       this.mScroller.abortAnimation();
@@ -2060,286 +1920,264 @@ public class CustomTextView
     }
   }
   
-  private void c(Rect paramRect, int paramInt)
+  private static int b(Layout paramLayout)
   {
-    AppMethodBeat.i(205763);
-    s(paramRect);
-    if (paramInt == 0) {
-      paramRect.top -= getExtendedPaddingTop();
-    }
-    if (paramInt == this.OVt.getLineCount() - 1) {
-      paramRect.bottom += getExtendedPaddingBottom();
-    }
-    AppMethodBeat.o(205763);
-  }
-  
-  private void gLr()
-  {
-    AppMethodBeat.i(205746);
-    if (((this.OVt instanceof BoringLayout)) && (this.OVE == null)) {
-      this.OVE = ((BoringLayout)this.OVt);
-    }
-    if (((this.QGF instanceof BoringLayout)) && (this.QHb == null)) {
-      this.QHb = ((BoringLayout)this.QGF);
-    }
-    this.QHa = null;
-    this.QGZ = null;
-    if (this.QHs != null) {
-      this.QHs.gZP();
-    }
-    AppMethodBeat.o(205746);
-  }
-  
-  private void gLs()
-  {
-    AppMethodBeat.i(205747);
-    int j = getRight() - getLeft() - getCompoundPaddingLeft() - getCompoundPaddingRight();
-    int i = j;
-    if (j <= 0) {
-      i = 0;
-    }
-    if (this.QGQ) {}
-    for (j = 1048576;; j = i)
+    int k = 0;
+    AppMethodBeat.i(202081);
+    int m = paramLayout.getLineCount();
+    CharSequence localCharSequence = paramLayout.getText();
+    float f2 = 0.0F;
+    int i = 0;
+    int j;
+    float f1;
+    for (;;)
     {
-      BoringLayout.Metrics localMetrics = OVU;
-      a(j, i, localMetrics, localMetrics, i, false);
-      AppMethodBeat.o(205747);
-      return;
-    }
-  }
-  
-  private void gZL()
-  {
-    AppMethodBeat.i(205853);
-    if (this.QHs == null) {
-      this.QHs = new b(this);
-    }
-    AppMethodBeat.o(205853);
-  }
-  
-  private void gZM()
-  {
-    AppMethodBeat.i(205854);
-    if (!(this.mText instanceof Spannable)) {
-      setText(this.mText, TextView.BufferType.SPANNABLE);
-    }
-    AppMethodBeat.o(205854);
-  }
-  
-  private void gZo()
-  {
-    AppMethodBeat.i(205581);
-    try
-    {
-      this.QHs.Clf = this.QHs.QIH.getInputType();
-      setInputTypeSingleLine(this.OSP);
-      AppMethodBeat.o(205581);
-      return;
-    }
-    catch (IncompatibleClassChangeError localIncompatibleClassChangeError)
-    {
-      for (;;)
-      {
-        this.QHs.Clf = 1;
+      j = k;
+      f1 = f2;
+      if (i >= m - 1) {
+        break;
       }
+      if (localCharSequence.charAt(paramLayout.getLineEnd(i) - 1) != '\n')
+      {
+        AppMethodBeat.o(202081);
+        return -1;
+      }
+      i += 1;
     }
+    while (j < m)
+    {
+      f1 = Math.max(f1, paramLayout.getLineWidth(j));
+      j += 1;
+    }
+    i = (int)Math.ceil(f1);
+    AppMethodBeat.o(202081);
+    return i;
   }
   
-  private void gZp()
+  private void b(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(205584);
-    if ((this.QGG != null) || ((this.QHs != null) && (this.QHs.QIH != null)))
+    AppMethodBeat.i(202220);
+    if (this.mListeners != null)
     {
-      setFocusable(true);
-      setClickable(true);
-      setLongClickable(true);
-      AppMethodBeat.o(205584);
-      return;
-    }
-    setClickable(false);
-    setLongClickable(false);
-    AppMethodBeat.o(205584);
-  }
-  
-  private void gZq()
-  {
-    AppMethodBeat.i(205605);
-    if (this.QGA == null)
-    {
-      AppMethodBeat.o(205605);
-      return;
-    }
-    if ((this.QGA.QHG) || (this.QGA.acU))
-    {
-      ColorStateList localColorStateList = this.QGA.Kr;
-      boolean bool = this.QGA.QHG;
-      int[] arrayOfInt = getDrawableState();
-      Drawable[] arrayOfDrawable = this.QGA.QHE;
-      int j = arrayOfDrawable.length;
+      ArrayList localArrayList = this.mListeners;
+      int j = localArrayList.size();
       int i = 0;
       while (i < j)
       {
-        Drawable localDrawable = arrayOfDrawable[i];
-        if ((localDrawable != null) && (localDrawable != this.QGA.QHJ))
-        {
-          localDrawable.mutate();
-          if (bool) {
-            localDrawable.setTintList(localColorStateList);
-          }
-          if (localDrawable.isStateful()) {
-            localDrawable.setState(arrayOfInt);
-          }
-        }
+        ((TextWatcher)localArrayList.get(i)).onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
         i += 1;
       }
     }
-    AppMethodBeat.o(205605);
+    if (this.Ygi != null) {
+      this.Ygi.iaZ();
+    }
+    AppMethodBeat.o(202220);
   }
   
-  private void gZt()
+  private <T> T bF(Class<T> paramClass)
   {
-    AppMethodBeat.i(205711);
-    if (!this.QGu)
+    AppMethodBeat.i(202340);
+    if ((this.YfT == null) && (Build.VERSION.SDK_INT >= 23))
     {
-      getViewTreeObserver().addOnPreDrawListener(this);
-      this.QGu = true;
+      paramClass = getContext().getSystemService(paramClass);
+      AppMethodBeat.o(202340);
+      return paramClass;
     }
-    AppMethodBeat.o(205711);
+    AppMethodBeat.o(202340);
+    return null;
   }
   
-  private boolean gZu()
+  private void c(Rect paramRect, int paramInt)
   {
-    AppMethodBeat.i(205736);
-    if (getKeyListener() == null)
-    {
-      AppMethodBeat.o(205736);
-      return false;
+    AppMethodBeat.i(202162);
+    C(paramRect);
+    if (paramInt == 0) {
+      paramRect.top -= getExtendedPaddingTop();
     }
-    if (this.OSP)
-    {
-      AppMethodBeat.o(205736);
-      return true;
+    if (paramInt == this.WoF.getLineCount() - 1) {
+      paramRect.bottom += getExtendedPaddingBottom();
     }
-    if ((this.QHs != null) && ((this.QHs.Clf & 0xF) == 1))
+    AppMethodBeat.o(202162);
+  }
+  
+  private void cR(float paramFloat)
+  {
+    AppMethodBeat.i(201547);
+    if (paramFloat != this.wi.getTextSize())
     {
-      int i = this.QHs.Clf & 0xFF0;
-      if ((i == 32) || (i == 48))
+      this.wi.setTextSize(paramFloat);
+      if (this.WoF != null)
       {
-        AppMethodBeat.o(205736);
-        return true;
-      }
-    }
-    AppMethodBeat.o(205736);
-    return false;
-  }
-  
-  private boolean gZv()
-  {
-    AppMethodBeat.i(205750);
-    if ((isTextSelectable()) || (this.QGC != null))
-    {
-      AppMethodBeat.o(205750);
-      return true;
-    }
-    AppMethodBeat.o(205750);
-    return false;
-  }
-  
-  private void gZw()
-  {
-    int k = 1;
-    AppMethodBeat.i(205757);
-    int i = 0;
-    int j = 0;
-    if (this.OVt != null)
-    {
-      if (getLayoutParams().width == -2)
-      {
-        invalidate();
-        j = 1;
-      }
-      if (getLayoutParams().height != -2) {
-        break label77;
-      }
-      if (getDesiredHeight() == getHeight()) {
-        break label117;
-      }
-      i = k;
-    }
-    for (;;)
-    {
-      if (i != 0) {
+        hKs();
         requestLayout();
+        invalidate();
       }
-      AppMethodBeat.o(205757);
-      return;
-      label77:
-      i = j;
-      if (getLayoutParams().height == -1)
+    }
+    AppMethodBeat.o(201547);
+  }
+  
+  private void cb(int paramInt, boolean paramBoolean)
+  {
+    boolean bool2 = true;
+    AppMethodBeat.i(201751);
+    int i = paramInt & 0xF;
+    Object localObject1 = null;
+    boolean bool1;
+    if (i == 1)
+    {
+      if ((0x8000 & paramInt) != 0)
       {
-        i = j;
-        if (this.OVC >= 0)
-        {
-          i = j;
-          if (getDesiredHeight() != this.OVC)
-          {
-            i = 1;
-            continue;
-            label117:
-            i = j;
-          }
+        bool1 = true;
+        if ((paramInt & 0x1000) == 0) {
+          break label95;
+        }
+        localObject1 = TextKeyListener.Capitalize.CHARACTERS;
+      }
+      for (;;)
+      {
+        localObject1 = TextKeyListener.getInstance(bool1, (TextKeyListener.Capitalize)localObject1);
+        setRawInputType(paramInt);
+        this.YfD = false;
+        if (!paramBoolean) {
+          break label386;
+        }
+        iaI();
+        this.Ygi.Yhx = ((KeyListener)localObject1);
+        AppMethodBeat.o(201751);
+        return;
+        bool1 = false;
+        break;
+        label95:
+        if ((paramInt & 0x2000) != 0) {
+          localObject1 = TextKeyListener.Capitalize.WORDS;
+        } else if ((paramInt & 0x4000) != 0) {
+          localObject1 = TextKeyListener.Capitalize.SENTENCES;
+        } else {
+          localObject1 = TextKeyListener.Capitalize.NONE;
         }
       }
     }
-  }
-  
-  private boolean gZx()
-  {
-    AppMethodBeat.i(205760);
-    if ((TextUtils.isEmpty(this.mText)) && (!TextUtils.isEmpty(this.QGE)))
+    Object localObject2;
+    if (i == 2)
     {
-      AppMethodBeat.o(205760);
-      return true;
+      localObject2 = getCustomLocaleForKeyListenerOrNull();
+      if (Build.VERSION.SDK_INT >= 26)
+      {
+        if ((paramInt & 0x1000) == 0) {
+          break label233;
+        }
+        bool1 = true;
+        label165:
+        if ((paramInt & 0x2000) == 0) {
+          break label239;
+        }
+      }
+      for (;;)
+      {
+        localObject1 = DigitsKeyListener.getInstance((Locale)localObject2, bool1, bool2);
+        i = paramInt;
+        if (localObject2 != null)
+        {
+          int j = ((KeyListener)localObject1).getInputType();
+          i = paramInt;
+          if ((j & 0xF) != 2)
+          {
+            i = j;
+            if ((paramInt & 0x10) != 0) {
+              i = j | 0x80;
+            }
+          }
+        }
+        paramInt = i;
+        break;
+        label233:
+        bool1 = false;
+        break label165;
+        label239:
+        bool2 = false;
+      }
     }
-    AppMethodBeat.o(205760);
-    return false;
+    if (i == 4)
+    {
+      localObject1 = getCustomLocaleForKeyListenerOrNull();
+      switch (paramInt & 0xFF0)
+      {
+      default: 
+        if (Build.VERSION.SDK_INT >= 26) {
+          localObject2 = DateTimeKeyListener.getInstance((Locale)localObject1);
+        }
+        break;
+      }
+    }
+    for (;;)
+    {
+      localObject1 = localObject2;
+      if (!this.YfE) {
+        break;
+      }
+      paramInt = ((KeyListener)localObject2).getInputType();
+      localObject1 = localObject2;
+      break;
+      if (Build.VERSION.SDK_INT >= 26)
+      {
+        localObject2 = DateKeyListener.getInstance((Locale)localObject1);
+        continue;
+        if (Build.VERSION.SDK_INT >= 26)
+        {
+          localObject2 = TimeKeyListener.getInstance((Locale)localObject1);
+          continue;
+          if (i == 3)
+          {
+            localObject1 = DialerKeyListener.getInstance();
+            break;
+          }
+          localObject1 = TextKeyListener.getInstance();
+          break;
+          label386:
+          setKeyListenerOnly((KeyListener)localObject1);
+          AppMethodBeat.o(201751);
+          return;
+        }
+      }
+      localObject2 = null;
+    }
   }
   
   private Locale getCustomLocaleForKeyListenerOrNull()
   {
-    AppMethodBeat.i(205694);
-    if (!this.QGO)
+    AppMethodBeat.i(201742);
+    if (!this.YfE)
     {
-      AppMethodBeat.o(205694);
+      AppMethodBeat.o(201742);
       return null;
     }
     Object localObject = getImeHintLocales();
     if (localObject == null)
     {
-      AppMethodBeat.o(205694);
+      AppMethodBeat.o(201742);
       return null;
     }
     if (Build.VERSION.SDK_INT >= 24)
     {
       localObject = ((LocaleList)localObject).get(0);
-      AppMethodBeat.o(205694);
+      AppMethodBeat.o(201742);
       return localObject;
     }
-    AppMethodBeat.o(205694);
+    AppMethodBeat.o(201742);
     return null;
   }
   
   private int getDesiredHeight()
   {
     boolean bool = true;
-    AppMethodBeat.i(205755);
-    int i = a(this.OVt, true);
-    Layout localLayout = this.QGF;
-    if (this.OVp != null) {}
+    AppMethodBeat.i(202101);
+    int i = a(this.WoF, true);
+    Layout localLayout = this.Yfv;
+    if (this.WoB != null) {}
     for (;;)
     {
       i = Math.max(i, a(localLayout, bool));
-      AppMethodBeat.o(205755);
+      AppMethodBeat.o(202101);
       return i;
       bool = false;
     }
@@ -2347,7 +2185,7 @@ public class CustomTextView
   
   private Layout.Alignment getLayoutAlignment()
   {
-    AppMethodBeat.i(205748);
+    AppMethodBeat.i(202044);
     Layout.Alignment localAlignment = null;
     switch (getTextAlignment())
     {
@@ -2356,9 +2194,9 @@ public class CustomTextView
     }
     for (;;)
     {
-      AppMethodBeat.o(205748);
+      AppMethodBeat.o(202044);
       return localAlignment;
-      switch (this.Ku & 0x800007)
+      switch (this.sK & 0x800007)
       {
       default: 
         localAlignment = Layout.Alignment.ALIGN_NORMAL;
@@ -2394,13 +2232,13 @@ public class CustomTextView
   private Path getUpdatedHighlightPath()
   {
     int i = 1;
-    AppMethodBeat.i(205726);
+    AppMethodBeat.i(201874);
     Object localObject2 = null;
-    Paint localPaint = this.QHg;
+    Paint localPaint = this.YfW;
     int j = getSelectionStart();
     int k = getSelectionEnd();
     Object localObject1 = localObject2;
-    if (this.QGG != null) {
+    if (this.Yfw != null) {
       if (!isFocused())
       {
         localObject1 = localObject2;
@@ -2415,57 +2253,57 @@ public class CustomTextView
             break label227;
           }
           localObject1 = localObject2;
-          if (this.QHs != null)
+          if (this.Ygi != null)
           {
-            localObject1 = this.QHs;
-            if (!((b)localObject1).isCursorVisible()) {
+            localObject1 = this.Ygi;
+            if (!((b)localObject1).iaM()) {
               break label222;
             }
-            if (!((b)localObject1).QIK) {
+            if (!((b)localObject1).YhA) {
               break label202;
             }
             localObject1 = localObject2;
             if (i != 0)
             {
-              if (this.QHh)
+              if (this.YfX)
               {
-                if (this.QHf == null) {
-                  this.QHf = new Path();
+                if (this.YfV == null) {
+                  this.YfV = new Path();
                 }
-                this.QHf.reset();
-                this.OVt.getCursorPath(j, this.QHf, this.mText);
-                this.QHs.hah();
-                this.QHh = false;
+                this.YfV.reset();
+                this.WoF.getCursorPath(j, this.YfV, this.mText);
+                this.Ygi.ibf();
+                this.YfX = false;
               }
-              localPaint.setColor(this.OVm);
+              localPaint.setColor(this.Woy);
               localPaint.setStyle(Paint.Style.STROKE);
             }
           }
         }
       }
     }
-    for (localObject1 = this.QHf;; localObject1 = this.QHf)
+    for (localObject1 = this.YfV;; localObject1 = this.YfV)
     {
-      AppMethodBeat.o(205726);
+      AppMethodBeat.o(201874);
       return localObject1;
       label202:
-      if ((SystemClock.uptimeMillis() - ((b)localObject1).QIJ) % 1000L < 500L) {
+      if ((SystemClock.uptimeMillis() - ((b)localObject1).Yhz) % 1000L < 500L) {
         break;
       }
       label222:
       i = 0;
       break;
       label227:
-      if (this.QHh)
+      if (this.YfX)
       {
-        if (this.QHf == null) {
-          this.QHf = new Path();
+        if (this.YfV == null) {
+          this.YfV = new Path();
         }
-        this.QHf.reset();
-        this.OVt.getSelectionPath(j, k, this.QHf);
-        this.QHh = false;
+        this.YfV.reset();
+        this.WoF.getSelectionPath(j, k, this.YfV);
+        this.YfX = false;
       }
-      localPaint.setColor(this.oEF);
+      localPaint.setColor(this.rGp);
       localPaint.setStyle(Paint.Style.FILL);
     }
   }
@@ -2473,7 +2311,7 @@ public class CustomTextView
   private static void h(Spannable paramSpannable)
   {
     int i = 0;
-    AppMethodBeat.i(205679);
+    AppMethodBeat.i(201693);
     SuggestionSpan[] arrayOfSuggestionSpan = (SuggestionSpan[])paramSpannable.getSpans(0, paramSpannable.length(), SuggestionSpan.class);
     while (i < arrayOfSuggestionSpan.length)
     {
@@ -2483,70 +2321,302 @@ public class CustomTextView
       }
       i += 1;
     }
-    AppMethodBeat.o(205679);
+    AppMethodBeat.o(201693);
   }
   
-  private boolean isSuggestionsEnabled()
+  private void hKs()
   {
-    if (this.QHs == null) {}
+    AppMethodBeat.i(202030);
+    if (((this.WoF instanceof BoringLayout)) && (this.WoQ == null)) {
+      this.WoQ = ((BoringLayout)this.WoF);
+    }
+    if (((this.Yfv instanceof BoringLayout)) && (this.YfR == null)) {
+      this.YfR = ((BoringLayout)this.Yfv);
+    }
+    this.YfQ = null;
+    this.YfP = null;
+    if (this.Ygi != null) {
+      this.Ygi.iaN();
+    }
+    AppMethodBeat.o(202030);
+  }
+  
+  private void hKt()
+  {
+    AppMethodBeat.i(202034);
+    int j = getRight() - getLeft() - getCompoundPaddingLeft() - getCompoundPaddingRight();
+    int i = j;
+    if (j <= 0) {
+      i = 0;
+    }
+    if (this.YfG) {}
+    for (j = 1048576;; j = i)
+    {
+      BoringLayout.Metrics localMetrics = Wpg;
+      a(j, i, localMetrics, localMetrics, i, false);
+      AppMethodBeat.o(202034);
+      return;
+    }
+  }
+  
+  private boolean iaA()
+  {
+    if (this.Ygi == null) {}
     int i;
     do
     {
       do
       {
         return false;
-      } while (((this.QHs.Clf & 0xF) != 1) || ((this.QHs.Clf & 0x80000) > 0));
-      i = this.QHs.Clf & 0xFF0;
+      } while (((this.Ygi.IhY & 0xF) != 1) || ((this.Ygi.IhY & 0x80000) > 0));
+      i = this.Ygi.IhY & 0xFF0;
     } while ((i != 0) && (i != 48) && (i != 80) && (i != 64) && (i != 160));
     return true;
   }
   
-  private void lz(int paramInt1, int paramInt2)
+  private void iaI()
   {
-    AppMethodBeat.i(205710);
-    if (this.OVt == null)
+    AppMethodBeat.i(202521);
+    if (this.Ygi == null) {
+      this.Ygi = new b(this);
+    }
+    AppMethodBeat.o(202521);
+  }
+  
+  private void iaJ()
+  {
+    AppMethodBeat.i(202525);
+    if (!(this.mText instanceof Spannable)) {
+      setText(this.mText, TextView.BufferType.SPANNABLE);
+    }
+    AppMethodBeat.o(202525);
+  }
+  
+  private void iaf()
+  {
+    AppMethodBeat.i(201395);
+    try
     {
-      invalidate();
-      AppMethodBeat.o(205710);
+      this.Ygi.IhY = this.Ygi.Yhx.getInputType();
+      setInputTypeSingleLine(this.Wmc);
+      AppMethodBeat.o(201395);
       return;
     }
-    int j = this.OVt.getLineForOffset(paramInt1);
-    int k = this.OVt.getLineTop(j);
+    catch (IncompatibleClassChangeError localIncompatibleClassChangeError)
+    {
+      for (;;)
+      {
+        this.Ygi.IhY = 1;
+      }
+    }
+  }
+  
+  private void iag()
+  {
+    AppMethodBeat.i(201406);
+    if ((this.Yfw != null) || ((this.Ygi != null) && (this.Ygi.Yhx != null)))
+    {
+      setFocusable(true);
+      setClickable(true);
+      setLongClickable(true);
+      AppMethodBeat.o(201406);
+      return;
+    }
+    setClickable(false);
+    setLongClickable(false);
+    AppMethodBeat.o(201406);
+  }
+  
+  private void iah()
+  {
+    AppMethodBeat.i(201472);
+    if (this.Yfq == null)
+    {
+      AppMethodBeat.o(201472);
+      return;
+    }
+    if ((this.Yfq.Ygw) || (this.Yfq.jH))
+    {
+      ColorStateList localColorStateList = this.Yfq.jE;
+      boolean bool = this.Yfq.Ygw;
+      int[] arrayOfInt = getDrawableState();
+      Drawable[] arrayOfDrawable = this.Yfq.Ygu;
+      int j = arrayOfDrawable.length;
+      int i = 0;
+      while (i < j)
+      {
+        Drawable localDrawable = arrayOfDrawable[i];
+        if ((localDrawable != null) && (localDrawable != this.Yfq.Ygz))
+        {
+          localDrawable.mutate();
+          if (bool) {
+            localDrawable.setTintList(localColorStateList);
+          }
+          if (localDrawable.isStateful()) {
+            localDrawable.setState(arrayOfInt);
+          }
+        }
+        i += 1;
+      }
+    }
+    AppMethodBeat.o(201472);
+  }
+  
+  private void iak()
+  {
+    AppMethodBeat.i(201798);
+    if (!this.Yfk)
+    {
+      getViewTreeObserver().addOnPreDrawListener(this);
+      this.Yfk = true;
+    }
+    AppMethodBeat.o(201798);
+  }
+  
+  private boolean iam()
+  {
+    AppMethodBeat.i(201954);
+    if (getKeyListener() == null)
+    {
+      AppMethodBeat.o(201954);
+      return false;
+    }
+    if (this.Wmc)
+    {
+      AppMethodBeat.o(201954);
+      return true;
+    }
+    if ((this.Ygi != null) && ((this.Ygi.IhY & 0xF) == 1))
+    {
+      int i = this.Ygi.IhY & 0xFF0;
+      if ((i == 32) || (i == 48))
+      {
+        AppMethodBeat.o(201954);
+        return true;
+      }
+    }
+    AppMethodBeat.o(201954);
+    return false;
+  }
+  
+  private boolean iap()
+  {
+    AppMethodBeat.i(202064);
+    if ((ial()) || (this.Yfs != null))
+    {
+      AppMethodBeat.o(202064);
+      return true;
+    }
+    AppMethodBeat.o(202064);
+    return false;
+  }
+  
+  private void iaq()
+  {
+    int k = 1;
+    AppMethodBeat.i(202110);
+    int i = 0;
+    int j = 0;
+    if (this.WoF != null)
+    {
+      if (getLayoutParams().width == -2)
+      {
+        invalidate();
+        j = 1;
+      }
+      if (getLayoutParams().height != -2) {
+        break label77;
+      }
+      if (getDesiredHeight() == getHeight()) {
+        break label117;
+      }
+      i = k;
+    }
+    for (;;)
+    {
+      if (i != 0) {
+        requestLayout();
+      }
+      AppMethodBeat.o(202110);
+      return;
+      label77:
+      i = j;
+      if (getLayoutParams().height == -1)
+      {
+        i = j;
+        if (this.WoO >= 0)
+        {
+          i = j;
+          if (getDesiredHeight() != this.WoO)
+          {
+            i = 1;
+            continue;
+            label117:
+            i = j;
+          }
+        }
+      }
+    }
+  }
+  
+  private boolean iar()
+  {
+    AppMethodBeat.i(202130);
+    if ((TextUtils.isEmpty(this.mText)) && (!TextUtils.isEmpty(this.Yfu)))
+    {
+      AppMethodBeat.o(202130);
+      return true;
+    }
+    AppMethodBeat.o(202130);
+    return false;
+  }
+  
+  private void mR(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(201795);
+    if (this.WoF == null)
+    {
+      invalidate();
+      AppMethodBeat.o(201795);
+      return;
+    }
+    int j = this.WoF.getLineForOffset(paramInt1);
+    int k = this.WoF.getLineTop(j);
     int i = k;
     if (j > 0) {
-      i = k - this.OVt.getLineDescent(j - 1);
+      i = k - this.WoF.getLineDescent(j - 1);
     }
     if (paramInt1 == paramInt2)
     {
       paramInt1 = j;
-      paramInt2 = this.OVt.getLineBottom(paramInt1);
-      if ((this.QHs == null) || (this.QHs.QIY == null)) {
+      paramInt2 = this.WoF.getLineBottom(paramInt1);
+      if ((this.Ygi == null) || (this.Ygi.YhO == null)) {
         break label210;
       }
-      Rect localRect = this.QHs.QIY.getBounds();
+      Rect localRect = this.Ygi.YhO.getBounds();
       paramInt1 = Math.min(i, localRect.top);
       paramInt2 = Math.max(paramInt2, localRect.bottom);
     }
     for (;;)
     {
       i = getCompoundPaddingLeft();
-      j = getExtendedPaddingTop() + CW(true);
+      j = getExtendedPaddingTop() + Hs(true);
       k = getWidth();
       int m = getCompoundPaddingRight();
       invalidate(i + getScrollX(), paramInt1 + j, k - m + getScrollY(), paramInt2 + j);
-      AppMethodBeat.o(205710);
+      AppMethodBeat.o(201795);
       return;
-      paramInt1 = this.OVt.getLineForOffset(paramInt2);
+      paramInt1 = this.WoF.getLineForOffset(paramInt2);
       break;
       label210:
       paramInt1 = i;
     }
   }
   
-  private void r(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  private void p(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    AppMethodBeat.i(205773);
-    this.OSP = paramBoolean1;
+    AppMethodBeat.i(202191);
+    this.Wmc = paramBoolean1;
     if (paramBoolean1)
     {
       setLines(1);
@@ -2554,7 +2624,7 @@ public class CustomTextView
       if (paramBoolean2)
       {
         setTransformationMethod(SingleLineTransformationMethod.getInstance());
-        AppMethodBeat.o(205773);
+        AppMethodBeat.o(202191);
       }
     }
     else
@@ -2567,40 +2637,28 @@ public class CustomTextView
         setTransformationMethod(null);
       }
     }
-    AppMethodBeat.o(205773);
-  }
-  
-  private void s(Rect paramRect)
-  {
-    AppMethodBeat.i(205764);
-    int i = gZy();
-    paramRect.left += i;
-    paramRect.right = (i + paramRect.right);
-    i = gZz();
-    paramRect.top += i;
-    paramRect.bottom = (i + paramRect.bottom);
-    AppMethodBeat.o(205764);
+    AppMethodBeat.o(202191);
   }
   
   private void setCompoundDrawables(Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3, Drawable paramDrawable4)
   {
     int j = 1;
-    AppMethodBeat.i(205600);
-    Object localObject2 = this.QGA;
+    AppMethodBeat.i(201454);
+    Object localObject2 = this.Yfq;
     if (localObject2 != null)
     {
-      if (((b)localObject2).QHH != null) {
-        ((b)localObject2).QHH.setCallback(null);
+      if (((b)localObject2).Ygx != null) {
+        ((b)localObject2).Ygx.setCallback(null);
       }
-      ((b)localObject2).QHH = null;
-      if (((b)localObject2).QHI != null) {
-        ((b)localObject2).QHI.setCallback(null);
+      ((b)localObject2).Ygx = null;
+      if (((b)localObject2).Ygy != null) {
+        ((b)localObject2).Ygy.setCallback(null);
       }
-      ((b)localObject2).QHI = null;
-      ((b)localObject2).QHQ = 0;
-      ((b)localObject2).QHO = 0;
-      ((b)localObject2).QHR = 0;
-      ((b)localObject2).QHP = 0;
+      ((b)localObject2).Ygy = null;
+      ((b)localObject2).YgG = 0;
+      ((b)localObject2).YgE = 0;
+      ((b)localObject2).YgH = 0;
+      ((b)localObject2).YgF = 0;
     }
     int i;
     if ((paramDrawable1 != null) || (paramDrawable2 != null) || (paramDrawable3 != null) || (paramDrawable4 != null))
@@ -2613,12 +2671,12 @@ public class CustomTextView
       if (localObject2 != null)
       {
         i = j;
-        if (((b)localObject2).OWm == 0)
+        if (((b)localObject2).Wpy == 0)
         {
           i = j;
-          if (!((b)localObject2).acU)
+          if (!((b)localObject2).jH)
           {
-            if (!((b)localObject2).QHG) {
+            if (!((b)localObject2).Ygw) {
               break label221;
             }
             i = j;
@@ -2628,21 +2686,21 @@ public class CustomTextView
         if (i != 0) {
           break label227;
         }
-        this.QGA = null;
+        this.Yfq = null;
       }
     }
     for (Object localObject1 = localObject2;; localObject1 = localObject2)
     {
       if (localObject1 != null)
       {
-        ((b)localObject1).QHK = paramDrawable1;
-        ((b)localObject1).QHL = paramDrawable3;
+        ((b)localObject1).YgA = paramDrawable1;
+        ((b)localObject1).YgB = paramDrawable3;
       }
-      this.QGB = -1;
-      gZq();
+      this.Yfr = -1;
+      iah();
       invalidate();
       requestLayout();
-      AppMethodBeat.o(205600);
+      AppMethodBeat.o(201454);
       return;
       i = 0;
       break;
@@ -2650,58 +2708,58 @@ public class CustomTextView
       i = 0;
       break label160;
       label227:
-      i = ((b)localObject2).QHE.length - 1;
+      i = ((b)localObject2).Ygu.length - 1;
       while (i >= 0)
       {
-        if (localObject2.QHE[i] != null) {
-          localObject2.QHE[i].setCallback(null);
+        if (localObject2.Ygu[i] != null) {
+          localObject2.Ygu[i].setCallback(null);
         }
-        ((b)localObject2).QHE[i] = null;
+        ((b)localObject2).Ygu[i] = null;
         i -= 1;
       }
-      ((b)localObject2).OWk = 0;
-      ((b)localObject2).OWg = 0;
-      ((b)localObject2).OWl = 0;
-      ((b)localObject2).OWh = 0;
-      ((b)localObject2).OWi = 0;
-      ((b)localObject2).OWe = 0;
+      ((b)localObject2).Wpw = 0;
+      ((b)localObject2).Wps = 0;
+      ((b)localObject2).Wpx = 0;
+      ((b)localObject2).Wpt = 0;
+      ((b)localObject2).Wpu = 0;
+      ((b)localObject2).Wpq = 0;
       label319:
-      ((b)localObject2).OWj = 0;
-      ((b)localObject2).OWf = 0;
+      ((b)localObject2).Wpv = 0;
+      ((b)localObject2).Wpr = 0;
     }
     label338:
     localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = new b(getContext());
-      this.QGA = ((b)localObject1);
+      this.Yfq = ((b)localObject1);
     }
-    this.QGA.QHN = false;
-    if ((localObject1.QHE[0] != paramDrawable1) && (localObject1.QHE[0] != null)) {
-      localObject1.QHE[0].setCallback(null);
+    this.Yfq.YgD = false;
+    if ((localObject1.Ygu[0] != paramDrawable1) && (localObject1.Ygu[0] != null)) {
+      localObject1.Ygu[0].setCallback(null);
     }
-    ((b)localObject1).QHE[0] = paramDrawable1;
-    if ((localObject1.QHE[1] != paramDrawable2) && (localObject1.QHE[1] != null)) {
-      localObject1.QHE[1].setCallback(null);
+    ((b)localObject1).Ygu[0] = paramDrawable1;
+    if ((localObject1.Ygu[1] != paramDrawable2) && (localObject1.Ygu[1] != null)) {
+      localObject1.Ygu[1].setCallback(null);
     }
-    ((b)localObject1).QHE[1] = paramDrawable2;
-    if ((localObject1.QHE[2] != paramDrawable3) && (localObject1.QHE[2] != null)) {
-      localObject1.QHE[2].setCallback(null);
+    ((b)localObject1).Ygu[1] = paramDrawable2;
+    if ((localObject1.Ygu[2] != paramDrawable3) && (localObject1.Ygu[2] != null)) {
+      localObject1.Ygu[2].setCallback(null);
     }
-    ((b)localObject1).QHE[2] = paramDrawable3;
-    if ((localObject1.QHE[3] != paramDrawable4) && (localObject1.QHE[3] != null)) {
-      localObject1.QHE[3].setCallback(null);
+    ((b)localObject1).Ygu[2] = paramDrawable3;
+    if ((localObject1.Ygu[3] != paramDrawable4) && (localObject1.Ygu[3] != null)) {
+      localObject1.Ygu[3].setCallback(null);
     }
-    ((b)localObject1).QHE[3] = paramDrawable4;
-    Rect localRect = ((b)localObject1).OVZ;
+    ((b)localObject1).Ygu[3] = paramDrawable4;
+    Rect localRect = ((b)localObject1).Wpl;
     int[] arrayOfInt = getDrawableState();
     if (paramDrawable1 != null)
     {
       paramDrawable1.setState(arrayOfInt);
       paramDrawable1.copyBounds(localRect);
       paramDrawable1.setCallback(this);
-      ((b)localObject1).OWg = localRect.width();
-      ((b)localObject1).OWk = localRect.height();
+      ((b)localObject1).Wps = localRect.width();
+      ((b)localObject1).Wpw = localRect.height();
       label591:
       if (paramDrawable3 == null) {
         break label743;
@@ -2709,8 +2767,8 @@ public class CustomTextView
       paramDrawable3.setState(arrayOfInt);
       paramDrawable3.copyBounds(localRect);
       paramDrawable3.setCallback(this);
-      ((b)localObject1).OWh = localRect.width();
-      ((b)localObject1).OWl = localRect.height();
+      ((b)localObject1).Wpt = localRect.width();
+      ((b)localObject1).Wpx = localRect.height();
       label633:
       if (paramDrawable2 == null) {
         break label758;
@@ -2718,8 +2776,8 @@ public class CustomTextView
       paramDrawable2.setState(arrayOfInt);
       paramDrawable2.copyBounds(localRect);
       paramDrawable2.setCallback(this);
-      ((b)localObject1).OWe = localRect.height();
-      ((b)localObject1).OWi = localRect.width();
+      ((b)localObject1).Wpq = localRect.height();
+      ((b)localObject1).Wpu = localRect.width();
     }
     for (;;)
     {
@@ -2730,89 +2788,73 @@ public class CustomTextView
       paramDrawable4.setState(arrayOfInt);
       paramDrawable4.copyBounds(localRect);
       paramDrawable4.setCallback(this);
-      ((b)localObject1).OWf = localRect.height();
-      ((b)localObject1).OWj = localRect.width();
+      ((b)localObject1).Wpr = localRect.height();
+      ((b)localObject1).Wpv = localRect.width();
       break;
-      ((b)localObject1).OWk = 0;
-      ((b)localObject1).OWg = 0;
+      ((b)localObject1).Wpw = 0;
+      ((b)localObject1).Wps = 0;
       break label591;
       label743:
-      ((b)localObject1).OWl = 0;
-      ((b)localObject1).OWh = 0;
+      ((b)localObject1).Wpx = 0;
+      ((b)localObject1).Wpt = 0;
       break label633;
       label758:
-      ((b)localObject1).OWi = 0;
-      ((b)localObject1).OWe = 0;
+      ((b)localObject1).Wpu = 0;
+      ((b)localObject1).Wpq = 0;
     }
   }
   
   private void setHintInternal(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(205689);
-    this.QGE = TextUtils.stringOrSpannedString(paramCharSequence);
-    if (this.OVt != null) {
-      IR();
+    AppMethodBeat.i(201720);
+    this.Yfu = TextUtils.stringOrSpannedString(paramCharSequence);
+    if (this.WoF != null) {
+      Ku();
     }
     if (this.mText.length() == 0) {
       invalidate();
     }
-    if (this.QHs != null) {
+    if (this.Ygi != null) {
       this.mText.length();
     }
-    AppMethodBeat.o(205689);
+    AppMethodBeat.o(201720);
   }
   
   private void setInputTypeSingleLine(boolean paramBoolean)
   {
-    if ((this.QHs != null) && ((this.QHs.Clf & 0xF) == 1))
+    if ((this.Ygi != null) && ((this.Ygi.IhY & 0xF) == 1))
     {
       if (paramBoolean)
       {
-        localb = this.QHs;
-        localb.Clf &= 0xFFFDFFFF;
+        localb = this.Ygi;
+        localb.IhY &= 0xFFFDFFFF;
       }
     }
     else {
       return;
     }
-    b localb = this.QHs;
-    localb.Clf |= 0x20000;
+    b localb = this.Ygi;
+    localb.IhY |= 0x20000;
   }
   
   private void setKeyListenerOnly(KeyListener paramKeyListener)
   {
-    AppMethodBeat.i(205582);
-    if ((this.QHs == null) && (paramKeyListener == null))
+    AppMethodBeat.i(201397);
+    if ((this.Ygi == null) && (paramKeyListener == null))
     {
-      AppMethodBeat.o(205582);
+      AppMethodBeat.o(201397);
       return;
     }
-    gZL();
-    if (this.QHs.QIH != paramKeyListener)
+    iaI();
+    if (this.Ygi.Yhx != paramKeyListener)
     {
-      this.QHs.QIH = paramKeyListener;
+      this.Ygi.Yhx = paramKeyListener;
       if ((paramKeyListener != null) && (!(this.mText instanceof Editable))) {
         setText(this.mText);
       }
-      a((Editable)this.mText, this.QHc);
+      a((Editable)this.mText, this.YfS);
     }
-    AppMethodBeat.o(205582);
-  }
-  
-  private void setRawTextSize$254d549(float paramFloat)
-  {
-    AppMethodBeat.i(205635);
-    if (paramFloat != this.ayn.getTextSize())
-    {
-      this.ayn.setTextSize(paramFloat);
-      if (this.OVt != null)
-      {
-        gLr();
-        requestLayout();
-        invalidate();
-      }
-    }
-    AppMethodBeat.o(205635);
+    AppMethodBeat.o(201397);
   }
   
   private void setTextInternal(CharSequence paramCharSequence)
@@ -2821,7 +2863,7 @@ public class CustomTextView
     if ((paramCharSequence instanceof Spannable)) {}
     for (paramCharSequence = (Spannable)paramCharSequence;; paramCharSequence = null)
     {
-      this.QGC = paramCharSequence;
+      this.Yfs = paramCharSequence;
       return;
     }
   }
@@ -2829,7 +2871,7 @@ public class CustomTextView
   private void setTypeface(Typeface paramTypeface, int paramInt)
   {
     boolean bool = false;
-    AppMethodBeat.i(205577);
+    AppMethodBeat.i(201381);
     if (paramInt > 0)
     {
       int i;
@@ -2843,12 +2885,12 @@ public class CustomTextView
         i = paramTypeface.getStyle();
         label37:
         paramInt = (i ^ 0xFFFFFFFF) & paramInt;
-        paramTypeface = this.ayn;
+        paramTypeface = this.wi;
         if ((paramInt & 0x1) != 0) {
           bool = true;
         }
         paramTypeface.setFakeBoldText(bool);
-        paramTypeface = this.ayn;
+        paramTypeface = this.wi;
         if ((paramInt & 0x2) == 0) {
           break label106;
         }
@@ -2858,7 +2900,7 @@ public class CustomTextView
       for (float f = -0.25F;; f = 0.0F)
       {
         paramTypeface.setTextSkewX(f);
-        AppMethodBeat.o(205577);
+        AppMethodBeat.o(201381);
         return;
         paramTypeface = Typeface.create(paramTypeface, paramInt);
         break;
@@ -2866,42 +2908,42 @@ public class CustomTextView
         break label37;
       }
     }
-    this.ayn.setFakeBoldText(false);
-    this.ayn.setTextSkewX(0.0F);
+    this.wi.setFakeBoldText(false);
+    this.wi.setTextSkewX(0.0F);
     setTypeface(paramTypeface);
-    AppMethodBeat.o(205577);
+    AppMethodBeat.o(201381);
   }
   
   private void updateTextColors()
   {
-    AppMethodBeat.i(205675);
+    AppMethodBeat.i(201675);
     int[] arrayOfInt = getDrawableState();
-    int i = this.BpJ.getColorForState(arrayOfInt, 0);
-    if (i != this.OVm) {
-      this.OVm = i;
+    int i = this.Hkc.getColorForState(arrayOfInt, 0);
+    if (i != this.Woy) {
+      this.Woy = i;
     }
     for (int j = 1;; j = 0)
     {
       i = j;
       int k;
-      if (this.QGo != null)
+      if (this.Yfe != null)
       {
-        k = this.QGo.getColorForState(arrayOfInt, 0);
+        k = this.Yfe.getColorForState(arrayOfInt, 0);
         i = j;
-        if (k != this.ayn.linkColor)
+        if (k != this.wi.linkColor)
         {
-          this.ayn.linkColor = k;
+          this.wi.linkColor = k;
           i = 1;
         }
       }
       j = i;
-      if (this.QGn != null)
+      if (this.Yfd != null)
       {
-        k = this.QGn.getColorForState(arrayOfInt, 0);
+        k = this.Yfd.getColorForState(arrayOfInt, 0);
         j = i;
-        if (k != this.QGp)
+        if (k != this.Yff)
         {
-          this.QGp = k;
+          this.Yff = k;
           j = i;
           if (this.mText.length() == 0) {
             j = 1;
@@ -2911,26 +2953,26 @@ public class CustomTextView
       if (j != 0) {
         invalidate();
       }
-      AppMethodBeat.o(205675);
+      AppMethodBeat.o(201675);
       return;
     }
   }
   
   final int B(int paramInt, float paramFloat)
   {
-    AppMethodBeat.i(205847);
-    paramFloat = cy(paramFloat);
+    AppMethodBeat.i(202482);
+    paramFloat = cS(paramFloat);
     paramInt = getLayout().getOffsetForHorizontal(paramInt, paramFloat);
-    AppMethodBeat.o(205847);
+    AppMethodBeat.o(202482);
     return paramInt;
   }
   
-  final int CW(boolean paramBoolean)
+  final int Hs(boolean paramBoolean)
   {
-    AppMethodBeat.i(205706);
+    AppMethodBeat.i(201782);
     int j = 0;
-    int k = this.Ku & 0x70;
-    Layout localLayout2 = this.OVt;
+    int k = this.sK & 0x70;
+    Layout localLayout2 = this.WoF;
     Layout localLayout1 = localLayout2;
     if (!paramBoolean)
     {
@@ -2938,8 +2980,8 @@ public class CustomTextView
       if (this.mText.length() == 0)
       {
         localLayout1 = localLayout2;
-        if (this.QGF != null) {
-          localLayout1 = this.QGF;
+        if (this.Yfv != null) {
+          localLayout1 = this.Yfv;
         }
       }
     }
@@ -2960,18 +3002,1056 @@ public class CustomTextView
     label118:
     for (i = m - n;; i = m - n >> 1)
     {
-      AppMethodBeat.o(205706);
+      AppMethodBeat.o(201782);
       return i;
+    }
+  }
+  
+  protected void a(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(201366);
+    Log.i("cmEdit.CMTextView", "init");
+    setTextInternal("");
+    Object localObject1 = getResources();
+    this.wi = new TextPaint(1);
+    this.wi.density = ((Resources)localObject1).getDisplayMetrics().density;
+    this.YfW = new Paint(1);
+    this.Yfw = getDefaultMovementMethod();
+    this.Yfx = null;
+    d locald = new d((byte)0);
+    locald.Hkc = ColorStateList.valueOf(-16777216);
+    locald.pyF = aw.fromDPToPix(getContext(), 18);
+    this.Mh = 0;
+    this.Mi = 0;
+    this.YfJ = 0;
+    boolean bool4 = getDefaultEditable();
+    Object localObject4 = null;
+    int i2 = 0;
+    CharSequence localCharSequence = null;
+    boolean bool5 = false;
+    boolean bool6 = false;
+    int i1 = -1;
+    boolean bool2 = false;
+    Object localObject6 = null;
+    Drawable localDrawable3 = null;
+    Drawable localDrawable4 = null;
+    Drawable localDrawable5 = null;
+    Drawable localDrawable1 = null;
+    Drawable localDrawable2 = null;
+    ColorStateList localColorStateList = null;
+    int n = 0;
+    int i = -1;
+    boolean bool1 = false;
+    int m = -1;
+    Object localObject2 = "";
+    localObject1 = null;
+    boolean bool3 = false;
+    int i5 = 0;
+    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, a.m.MMNewTextView, paramInt1, paramInt2);
+    int j = -1;
+    int k = -1;
+    paramInt1 = -1;
+    a(paramContext, localTypedArray, locald);
+    int i3;
+    int i4;
+    if (localTypedArray != null)
+    {
+      i3 = localTypedArray.getIndexCount();
+      i4 = 0;
+      paramAttributeSet = (AttributeSet)localObject2;
+      paramInt2 = i5;
+      label253:
+      if (i4 >= i3) {
+        break label2496;
+      }
+      i5 = localTypedArray.getIndex(i4);
+      if (i5 != a.m.MMNewTextView_android_editable) {
+        break label323;
+      }
+      bool4 = localTypedArray.getBoolean(i5, bool4);
+      localObject2 = localObject1;
+      localObject1 = paramAttributeSet;
+      paramAttributeSet = (AttributeSet)localObject2;
+    }
+    label2496:
+    for (;;)
+    {
+      i4 += 1;
+      localObject2 = localObject1;
+      localObject1 = paramAttributeSet;
+      paramAttributeSet = (AttributeSet)localObject2;
+      break label253;
+      i3 = 0;
+      break;
+      label323:
+      if (i5 == a.m.MMNewTextView_android_inputMethod)
+      {
+        localObject4 = localTypedArray.getText(i5);
+        localObject2 = paramAttributeSet;
+        paramAttributeSet = (AttributeSet)localObject1;
+        localObject1 = localObject2;
+      }
+      else if (i5 == a.m.MMNewTextView_android_numeric)
+      {
+        i2 = localTypedArray.getInt(i5, i2);
+        localObject2 = paramAttributeSet;
+        paramAttributeSet = (AttributeSet)localObject1;
+        localObject1 = localObject2;
+      }
+      else if (i5 == a.m.MMNewTextView_android_digits)
+      {
+        localCharSequence = localTypedArray.getText(i5);
+        localObject2 = paramAttributeSet;
+        paramAttributeSet = (AttributeSet)localObject1;
+        localObject1 = localObject2;
+      }
+      else if (i5 == a.m.MMNewTextView_android_phoneNumber)
+      {
+        bool5 = localTypedArray.getBoolean(i5, bool5);
+        localObject2 = paramAttributeSet;
+        paramAttributeSet = (AttributeSet)localObject1;
+        localObject1 = localObject2;
+      }
+      else if (i5 == a.m.MMNewTextView_android_autoText)
+      {
+        bool6 = localTypedArray.getBoolean(i5, bool6);
+        localObject2 = paramAttributeSet;
+        paramAttributeSet = (AttributeSet)localObject1;
+        localObject1 = localObject2;
+      }
+      else if (i5 == a.m.MMNewTextView_android_capitalize)
+      {
+        i1 = localTypedArray.getInt(i5, i1);
+        localObject2 = paramAttributeSet;
+        paramAttributeSet = (AttributeSet)localObject1;
+        localObject1 = localObject2;
+      }
+      else if (i5 == a.m.MMNewTextView_android_selectAllOnFocus)
+      {
+        bool2 = localTypedArray.getBoolean(i5, bool2);
+        localObject2 = paramAttributeSet;
+        paramAttributeSet = (AttributeSet)localObject1;
+        localObject1 = localObject2;
+      }
+      else if (i5 == a.m.MMNewTextView_android_autoLink)
+      {
+        this.YfH = localTypedArray.getInt(i5, 0);
+        localObject2 = paramAttributeSet;
+        paramAttributeSet = (AttributeSet)localObject1;
+        localObject1 = localObject2;
+      }
+      else if (i5 == a.m.MMNewTextView_android_linksClickable)
+      {
+        this.YfI = localTypedArray.getBoolean(i5, true);
+        localObject2 = paramAttributeSet;
+        paramAttributeSet = (AttributeSet)localObject1;
+        localObject1 = localObject2;
+      }
+      else if (i5 == a.m.MMNewTextView_android_drawableLeft)
+      {
+        localObject6 = localTypedArray.getDrawable(i5);
+        localObject2 = paramAttributeSet;
+        paramAttributeSet = (AttributeSet)localObject1;
+        localObject1 = localObject2;
+      }
+      else if (i5 == a.m.MMNewTextView_android_drawableTop)
+      {
+        localDrawable3 = localTypedArray.getDrawable(i5);
+        localObject2 = paramAttributeSet;
+        paramAttributeSet = (AttributeSet)localObject1;
+        localObject1 = localObject2;
+      }
+      else if (i5 == a.m.MMNewTextView_android_drawableRight)
+      {
+        localDrawable4 = localTypedArray.getDrawable(i5);
+        localObject2 = paramAttributeSet;
+        paramAttributeSet = (AttributeSet)localObject1;
+        localObject1 = localObject2;
+      }
+      else if (i5 == a.m.MMNewTextView_android_drawableBottom)
+      {
+        localDrawable5 = localTypedArray.getDrawable(i5);
+        localObject2 = paramAttributeSet;
+        paramAttributeSet = (AttributeSet)localObject1;
+        localObject1 = localObject2;
+      }
+      else if (i5 == a.m.MMNewTextView_android_drawableStart)
+      {
+        localDrawable1 = localTypedArray.getDrawable(i5);
+        localObject2 = paramAttributeSet;
+        paramAttributeSet = (AttributeSet)localObject1;
+        localObject1 = localObject2;
+      }
+      else if (i5 == a.m.MMNewTextView_android_drawableEnd)
+      {
+        localDrawable2 = localTypedArray.getDrawable(i5);
+        localObject2 = paramAttributeSet;
+        paramAttributeSet = (AttributeSet)localObject1;
+        localObject1 = localObject2;
+      }
+      else if (i5 == a.m.MMNewTextView_android_drawableTint)
+      {
+        localColorStateList = localTypedArray.getColorStateList(i5);
+        localObject2 = paramAttributeSet;
+        paramAttributeSet = (AttributeSet)localObject1;
+        localObject1 = localObject2;
+      }
+      else
+      {
+        if (i5 != a.m.MMNewTextView_android_drawableTintMode)
+        {
+          if (i5 == a.m.MMNewTextView_android_drawablePadding)
+          {
+            n = localTypedArray.getDimensionPixelSize(i5, n);
+            localObject2 = paramAttributeSet;
+            paramAttributeSet = (AttributeSet)localObject1;
+            localObject1 = localObject2;
+            continue;
+          }
+          if (i5 == a.m.MMNewTextView_android_maxLines)
+          {
+            setMaxLines(localTypedArray.getInt(i5, -1));
+            localObject2 = paramAttributeSet;
+            paramAttributeSet = (AttributeSet)localObject1;
+            localObject1 = localObject2;
+            continue;
+          }
+          if (i5 == a.m.MMNewTextView_android_maxHeight)
+          {
+            setMaxHeight(localTypedArray.getDimensionPixelSize(i5, -1));
+            localObject2 = paramAttributeSet;
+            paramAttributeSet = (AttributeSet)localObject1;
+            localObject1 = localObject2;
+            continue;
+          }
+          if (i5 == a.m.MMNewTextView_android_lines)
+          {
+            setLines(localTypedArray.getInt(i5, -1));
+            localObject2 = paramAttributeSet;
+            paramAttributeSet = (AttributeSet)localObject1;
+            localObject1 = localObject2;
+            continue;
+          }
+          if (i5 == a.m.MMNewTextView_android_height)
+          {
+            setHeight(localTypedArray.getDimensionPixelSize(i5, -1));
+            localObject2 = paramAttributeSet;
+            paramAttributeSet = (AttributeSet)localObject1;
+            localObject1 = localObject2;
+            continue;
+          }
+          if (i5 == a.m.MMNewTextView_android_minLines)
+          {
+            setMinLines(localTypedArray.getInt(i5, -1));
+            localObject2 = paramAttributeSet;
+            paramAttributeSet = (AttributeSet)localObject1;
+            localObject1 = localObject2;
+            continue;
+          }
+          if (i5 == a.m.MMNewTextView_android_minHeight)
+          {
+            setMinHeight(localTypedArray.getDimensionPixelSize(i5, -1));
+            localObject2 = paramAttributeSet;
+            paramAttributeSet = (AttributeSet)localObject1;
+            localObject1 = localObject2;
+            continue;
+          }
+          if (i5 == a.m.MMNewTextView_android_maxEms)
+          {
+            setMaxEms(localTypedArray.getInt(i5, -1));
+            localObject2 = paramAttributeSet;
+            paramAttributeSet = (AttributeSet)localObject1;
+            localObject1 = localObject2;
+            continue;
+          }
+          if (i5 == a.m.MMNewTextView_android_maxWidth)
+          {
+            setMaxWidth(localTypedArray.getDimensionPixelSize(i5, -1));
+            localObject2 = paramAttributeSet;
+            paramAttributeSet = (AttributeSet)localObject1;
+            localObject1 = localObject2;
+            continue;
+          }
+          if (i5 == a.m.MMNewTextView_android_ems)
+          {
+            setEms(localTypedArray.getInt(i5, -1));
+            localObject2 = paramAttributeSet;
+            paramAttributeSet = (AttributeSet)localObject1;
+            localObject1 = localObject2;
+            continue;
+          }
+          if (i5 == a.m.MMNewTextView_android_width)
+          {
+            setWidth(localTypedArray.getDimensionPixelSize(i5, -1));
+            localObject2 = paramAttributeSet;
+            paramAttributeSet = (AttributeSet)localObject1;
+            localObject1 = localObject2;
+            continue;
+          }
+          if (i5 == a.m.MMNewTextView_android_minEms)
+          {
+            setMinEms(localTypedArray.getInt(i5, -1));
+            localObject2 = paramAttributeSet;
+            paramAttributeSet = (AttributeSet)localObject1;
+            localObject1 = localObject2;
+            continue;
+          }
+          if (i5 == a.m.MMNewTextView_android_minWidth)
+          {
+            setMinWidth(localTypedArray.getDimensionPixelSize(i5, -1));
+            localObject2 = paramAttributeSet;
+            paramAttributeSet = (AttributeSet)localObject1;
+            localObject1 = localObject2;
+            continue;
+          }
+          if (i5 == a.m.MMNewTextView_android_gravity)
+          {
+            setGravity(localTypedArray.getInt(i5, -1));
+            localObject2 = paramAttributeSet;
+            paramAttributeSet = (AttributeSet)localObject1;
+            localObject1 = localObject2;
+            continue;
+          }
+          if (i5 == a.m.MMNewTextView_android_hint)
+          {
+            localObject2 = localTypedArray.getText(i5);
+            localObject1 = paramAttributeSet;
+            paramAttributeSet = (AttributeSet)localObject2;
+            continue;
+          }
+          if (i5 == a.m.MMNewTextView_android_text)
+          {
+            localObject2 = localTypedArray.getText(i5);
+            paramAttributeSet = (AttributeSet)localObject1;
+            localObject1 = localObject2;
+            continue;
+          }
+          if (i5 == a.m.MMNewTextView_android_scrollHorizontally)
+          {
+            if (localTypedArray.getBoolean(i5, false))
+            {
+              setHorizontallyScrolling(true);
+              localObject2 = paramAttributeSet;
+              paramAttributeSet = (AttributeSet)localObject1;
+              localObject1 = localObject2;
+            }
+          }
+          else
+          {
+            if (i5 == a.m.MMNewTextView_android_singleLine)
+            {
+              bool1 = localTypedArray.getBoolean(i5, bool1);
+              localObject2 = paramAttributeSet;
+              paramAttributeSet = (AttributeSet)localObject1;
+              localObject1 = localObject2;
+              continue;
+            }
+            if (i5 == a.m.MMNewTextView_android_ellipsize)
+            {
+              i = localTypedArray.getInt(i5, i);
+              localObject2 = paramAttributeSet;
+              paramAttributeSet = (AttributeSet)localObject1;
+              localObject1 = localObject2;
+              continue;
+            }
+            if (i5 != a.m.MMNewTextView_android_marqueeRepeatLimit) {
+              if (i5 == a.m.MMNewTextView_android_includeFontPadding)
+              {
+                if (!localTypedArray.getBoolean(i5, true))
+                {
+                  setIncludeFontPadding(false);
+                  localObject2 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject2;
+                }
+              }
+              else if (i5 == a.m.MMNewTextView_android_cursorVisible)
+              {
+                if (!localTypedArray.getBoolean(i5, true))
+                {
+                  setCursorVisible(false);
+                  localObject2 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject2;
+                }
+              }
+              else
+              {
+                if (i5 == a.m.MMNewTextView_android_maxLength)
+                {
+                  m = localTypedArray.getInt(i5, -1);
+                  localObject2 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject2;
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_textScaleX)
+                {
+                  setTextScaleX(localTypedArray.getFloat(i5, 1.0F));
+                  localObject2 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject2;
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_freezesText)
+                {
+                  this.Yfg = localTypedArray.getBoolean(i5, false);
+                  localObject2 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject2;
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_enabled)
+                {
+                  setEnabled(localTypedArray.getBoolean(i5, isEnabled()));
+                  localObject2 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject2;
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_password)
+                {
+                  bool3 = localTypedArray.getBoolean(i5, bool3);
+                  localObject2 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject2;
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_lineSpacingExtra)
+                {
+                  this.WoH = localTypedArray.getDimensionPixelSize(i5, (int)this.WoH);
+                  localObject2 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject2;
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_lineSpacingMultiplier)
+                {
+                  this.WoG = localTypedArray.getFloat(i5, this.WoG);
+                  localObject2 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject2;
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_inputType)
+                {
+                  paramInt2 = localTypedArray.getInt(i5, 0);
+                  localObject2 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject2;
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_allowUndo)
+                {
+                  iaI();
+                  this.Ygi.Yhh = localTypedArray.getBoolean(i5, true);
+                  localObject2 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject2;
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_imeOptions)
+                {
+                  iaI();
+                  this.Ygi.iaL();
+                  this.Ygi.Yhs.nlD = localTypedArray.getInt(i5, this.Ygi.Yhs.nlD);
+                  localObject2 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject2;
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_imeActionLabel)
+                {
+                  iaI();
+                  this.Ygi.iaL();
+                  this.Ygi.Yhs.YiY = localTypedArray.getText(i5);
+                  localObject2 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject2;
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_imeActionId)
+                {
+                  iaI();
+                  this.Ygi.iaL();
+                  this.Ygi.Yhs.YiZ = localTypedArray.getInt(i5, this.Ygi.Yhs.YiZ);
+                  localObject2 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject2;
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_privateImeOptions)
+                {
+                  setPrivateImeOptions(localTypedArray.getString(i5));
+                  localObject2 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject2;
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_editorExtras)
+                {
+                  try
+                  {
+                    setInputExtras(localTypedArray.getResourceId(i5, 0));
+                    localObject2 = paramAttributeSet;
+                    paramAttributeSet = (AttributeSet)localObject1;
+                    localObject1 = localObject2;
+                  }
+                  catch (XmlPullParserException localXmlPullParserException)
+                  {
+                    Log.w("cmEdit.CMTextView", "Failure reading input extras", new Object[] { localXmlPullParserException });
+                    AttributeSet localAttributeSet = paramAttributeSet;
+                    paramAttributeSet = (AttributeSet)localObject1;
+                    localObject1 = localAttributeSet;
+                  }
+                  catch (IOException localIOException)
+                  {
+                    Log.w("cmEdit.CMTextView", "Failure reading input extras", new Object[] { localIOException });
+                    localObject3 = paramAttributeSet;
+                    paramAttributeSet = (AttributeSet)localObject1;
+                    localObject1 = localObject3;
+                  }
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_textCursorDrawable)
+                {
+                  this.YfY = localTypedArray.getResourceId(i5, 16843618);
+                  localObject3 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject3;
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_textSelectHandleLeft)
+                {
+                  this.Yga = localTypedArray.getResourceId(i5, 16843461);
+                  localObject3 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject3;
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_textSelectHandleRight)
+                {
+                  this.Ygc = localTypedArray.getResourceId(i5, 16843462);
+                  localObject3 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject3;
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_textSelectHandle)
+                {
+                  this.Yge = localTypedArray.getResourceId(i5, 16843463);
+                  localObject3 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject3;
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_textIsSelectable)
+                {
+                  setTextIsSelectable(localTypedArray.getBoolean(i5, false));
+                  localObject3 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject3;
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_breakStrategy)
+                {
+                  this.Mh = localTypedArray.getInt(i5, 0);
+                  localObject3 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject3;
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_hyphenationFrequency)
+                {
+                  this.Mi = localTypedArray.getInt(i5, 0);
+                  localObject3 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject3;
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_justificationMode)
+                {
+                  this.YfJ = localTypedArray.getInt(i5, 0);
+                  localObject3 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject3;
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_firstBaselineToTopHeight)
+                {
+                  j = localTypedArray.getDimensionPixelSize(i5, -1);
+                  localObject3 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject3;
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_lastBaselineToBottomHeight)
+                {
+                  k = localTypedArray.getDimensionPixelSize(i5, -1);
+                  localObject3 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject3;
+                  continue;
+                }
+                if (i5 == a.m.MMNewTextView_android_lineHeight)
+                {
+                  paramInt1 = localTypedArray.getDimensionPixelSize(i5, -1);
+                  localObject3 = paramAttributeSet;
+                  paramAttributeSet = (AttributeSet)localObject1;
+                  localObject1 = localObject3;
+                  continue;
+                  if (localTypedArray != null) {
+                    localTypedArray.recycle();
+                  }
+                  localObject3 = TextView.BufferType.EDITABLE;
+                  i5 = paramInt2 & 0xFFF;
+                  label2541:
+                  label2551:
+                  boolean bool7;
+                  if (i5 == 129)
+                  {
+                    i3 = 1;
+                    if (i5 != 225) {
+                      break label3795;
+                    }
+                    i4 = 1;
+                    if (i5 != 18) {
+                      break label3801;
+                    }
+                    i5 = 1;
+                    int i6 = paramContext.getApplicationInfo().targetSdkVersion;
+                    if (i6 < 26) {
+                      break label3807;
+                    }
+                    bool7 = true;
+                    this.YfE = bool7;
+                    if (i6 < 28) {
+                      break label3813;
+                    }
+                    bool7 = true;
+                    this.YfF = bool7;
+                    if (localObject4 == null) {
+                      break label3903;
+                    }
+                  }
+                  try
+                  {
+                    localObject4 = Class.forName(((CharSequence)localObject4).toString());
+                  }
+                  catch (ClassNotFoundException paramContext)
+                  {
+                    label2639:
+                    label2646:
+                    label2911:
+                    label3192:
+                    paramContext = new RuntimeException(paramContext);
+                    label3034:
+                    label3807:
+                    label3813:
+                    AppMethodBeat.o(201366);
+                    label3795:
+                    label3801:
+                    throw paramContext;
+                  }
+                  try
+                  {
+                    iaI();
+                    this.Ygi.Yhx = ((KeyListener)((Class)localObject4).newInstance());
+                  }
+                  catch (InstantiationException paramContext)
+                  {
+                    paramContext = new RuntimeException(paramContext);
+                    AppMethodBeat.o(201366);
+                    throw paramContext;
+                  }
+                  catch (IllegalAccessException paramContext)
+                  {
+                    paramContext = new RuntimeException(paramContext);
+                    AppMethodBeat.o(201366);
+                    throw paramContext;
+                  }
+                  try
+                  {
+                    localObject4 = this.Ygi;
+                    if (paramInt2 == 0) {
+                      break label3873;
+                    }
+                    ((b)localObject4).IhY = paramInt2;
+                  }
+                  catch (IncompatibleClassChangeError localIncompatibleClassChangeError)
+                  {
+                    this.Ygi.IhY = 1;
+                    break label2646;
+                  }
+                  if (this.Ygi != null)
+                  {
+                    localObject4 = this.Ygi;
+                    if ((((b)localObject4).IhY & 0xF) != 1) {
+                      break label4276;
+                    }
+                    if ((bool3) || (i3 != 0)) {
+                      ((b)localObject4).IhY = (((b)localObject4).IhY & 0xFFFFF00F | 0x80);
+                    }
+                    if (i4 != 0) {
+                      ((b)localObject4).IhY = (((b)localObject4).IhY & 0xFFFFF00F | 0xE0);
+                    }
+                  }
+                  if (bool2)
+                  {
+                    iaI();
+                    this.Ygi.YhD = true;
+                    if (localObject3 == TextView.BufferType.NORMAL) {
+                      localObject3 = TextView.BufferType.SPANNABLE;
+                    }
+                  }
+                  for (;;)
+                  {
+                    if (localColorStateList != null)
+                    {
+                      if (this.Yfq == null) {
+                        this.Yfq = new b(paramContext);
+                      }
+                      if (localColorStateList != null)
+                      {
+                        this.Yfq.jE = localColorStateList;
+                        this.Yfq.Ygw = true;
+                      }
+                    }
+                    if (localObject6 != null) {
+                      ((Drawable)localObject6).setBounds(0, 0, ((Drawable)localObject6).getIntrinsicWidth(), ((Drawable)localObject6).getIntrinsicHeight());
+                    }
+                    if (localDrawable4 != null) {
+                      localDrawable4.setBounds(0, 0, localDrawable4.getIntrinsicWidth(), localDrawable4.getIntrinsicHeight());
+                    }
+                    if (localDrawable3 != null) {
+                      localDrawable3.setBounds(0, 0, localDrawable3.getIntrinsicWidth(), localDrawable3.getIntrinsicHeight());
+                    }
+                    if (localDrawable5 != null) {
+                      localDrawable5.setBounds(0, 0, localDrawable5.getIntrinsicWidth(), localDrawable5.getIntrinsicHeight());
+                    }
+                    setCompoundDrawables((Drawable)localObject6, localDrawable3, localDrawable4, localDrawable5);
+                    if ((localDrawable1 != null) || (localDrawable2 != null))
+                    {
+                      paramInt2 = 1;
+                      if (paramInt2 != 0)
+                      {
+                        localObject4 = this.Yfq;
+                        paramContext = (Context)localObject4;
+                        if (localObject4 == null)
+                        {
+                          paramContext = new b(getContext());
+                          this.Yfq = paramContext;
+                        }
+                        this.Yfq.YgD = true;
+                        localObject4 = paramContext.Wpl;
+                        localObject6 = getDrawableState();
+                        if (localDrawable1 == null) {
+                          break label4319;
+                        }
+                        localDrawable1.setBounds(0, 0, localDrawable1.getIntrinsicWidth(), localDrawable1.getIntrinsicHeight());
+                        localDrawable1.setState((int[])localObject6);
+                        localDrawable1.copyBounds((Rect)localObject4);
+                        localDrawable1.setCallback(this);
+                        paramContext.Ygx = localDrawable1;
+                        paramContext.YgE = ((Rect)localObject4).width();
+                        paramContext.YgG = ((Rect)localObject4).height();
+                        if (localDrawable2 == null) {
+                          break label4332;
+                        }
+                        localDrawable2.setBounds(0, 0, localDrawable2.getIntrinsicWidth(), localDrawable2.getIntrinsicHeight());
+                        localDrawable2.setState((int[])localObject6);
+                        localDrawable2.copyBounds((Rect)localObject4);
+                        localDrawable2.setCallback(this);
+                        paramContext.Ygy = localDrawable2;
+                        paramContext.YgF = ((Rect)localObject4).width();
+                        paramContext.YgH = ((Rect)localObject4).height();
+                        this.Yfr = -1;
+                        iah();
+                      }
+                      setCompoundDrawablePadding(n);
+                      setInputTypeSingleLine(bool1);
+                      p(bool1, bool1, bool1);
+                      paramInt2 = i;
+                      if (bool1)
+                      {
+                        paramInt2 = i;
+                        if (getKeyListener() == null)
+                        {
+                          paramInt2 = i;
+                          if (i == -1) {
+                            paramInt2 = 3;
+                          }
+                        }
+                      }
+                      switch (paramInt2)
+                      {
+                      default: 
+                        if ((bool3) || (i3 != 0) || (i4 != 0) || (i5 != 0))
+                        {
+                          paramInt2 = 1;
+                          if ((paramInt2 == 0) && ((this.Ygi == null) || ((this.Ygi.IhY & 0xFFF) != 129))) {
+                            break label4381;
+                          }
+                          i = 1;
+                          if (i != 0) {
+                            locald.YgS = 3;
+                          }
+                          if (locald.Hkc != null) {
+                            setTextColor(locald.Hkc);
+                          }
+                          if (locald.YgO != null) {
+                            setHintTextColor(locald.YgO);
+                          }
+                          if (locald.YgP != null) {
+                            setLinkTextColor(locald.YgP);
+                          }
+                          if (locald.YgN != 0) {
+                            setHighlightColor(locald.YgN);
+                          }
+                          if (locald.pyF != -1)
+                          {
+                            this.YfC = locald.YfC;
+                            cR(locald.pyF);
+                          }
+                          if (locald.YgQ != null) {
+                            setTextLocales(locald.YgQ);
+                          }
+                          if ((locald.YgS != -1) && (!locald.YgR)) {
+                            locald.nUv = null;
+                          }
+                          a(locald.rC, locald.nUv, locald.YgS, locald.YgT, locald.YgU);
+                          if (locald.raH != 0)
+                          {
+                            float f1 = locald.Yfh;
+                            float f2 = locald.Yfi;
+                            float f3 = locald.Yfj;
+                            i = locald.raH;
+                            this.wi.setShadowLayer(f1, f2, f3, i);
+                            this.Yfh = f1;
+                            this.Yfi = f2;
+                            this.Yfj = f3;
+                            this.raH = i;
+                            if (this.Ygi != null) {
+                              this.Ygi.ibe();
+                            }
+                            invalidate();
+                          }
+                          if (locald.YgW) {
+                            setElegantTextHeight(locald.YgX);
+                          }
+                          if (locald.YgY) {
+                            setFallbackLineSpacing(locald.YgZ);
+                          }
+                          if (locald.Yha) {
+                            setLetterSpacing(locald.Yhb);
+                          }
+                          if (locald.Yhc != null) {
+                            setFontFeatureSettings(locald.Yhc);
+                          }
+                          if (locald.Yhd != null)
+                          {
+                            paramContext = locald.Yhd;
+                            if (Build.VERSION.SDK_INT >= 26)
+                            {
+                              localObject4 = this.wi.getFontVariationSettings();
+                              if ((paramContext != localObject4) && ((paramContext == null) || (!paramContext.equals(localObject4)))) {
+                                break label4387;
+                              }
+                            }
+                          }
+                          if (paramInt2 != 0) {
+                            setTransformationMethod(PasswordTransformationMethod.getInstance());
+                          }
+                          if (m < 0) {
+                            break label4420;
+                          }
+                          setFilters(new InputFilter[] { new InputFilter.LengthFilter(m) });
+                        }
+                        break;
+                      }
+                    }
+                    for (;;)
+                    {
+                      setText(paramAttributeSet, (TextView.BufferType)localObject3);
+                      if (this.mText == null) {
+                        this.mText = "";
+                      }
+                      if (this.WoC == null) {
+                        this.WoC = "";
+                      }
+                      if (localObject1 != null) {
+                        setHint((CharSequence)localObject1);
+                      }
+                      setClickable(true);
+                      setLongClickable(true);
+                      if (this.Ygi != null) {
+                        this.Ygi.iaN();
+                      }
+                      if (getImportantForAccessibility() == 0) {
+                        setImportantForAccessibility(1);
+                      }
+                      if (j >= 0) {
+                        setFirstBaselineToTopHeight(j);
+                      }
+                      if (k >= 0) {
+                        setLastBaselineToBottomHeight(k);
+                      }
+                      if (paramInt1 >= 0) {
+                        setLineHeight(paramInt1);
+                      }
+                      AppMethodBeat.o(201366);
+                      return;
+                      i3 = 0;
+                      break;
+                      i4 = 0;
+                      break label2541;
+                      i5 = 0;
+                      break label2551;
+                      bool7 = false;
+                      break label2570;
+                      bool7 = false;
+                      break label2586;
+                      paramInt2 = this.Ygi.Yhx.getInputType();
+                      break label2639;
+                      Object localObject5;
+                      if (localCharSequence != null)
+                      {
+                        iaI();
+                        this.Ygi.Yhx = DigitsKeyListener.getInstance(localCharSequence.toString());
+                        localObject5 = this.Ygi;
+                        if (paramInt2 != 0) {}
+                        for (;;)
+                        {
+                          ((b)localObject5).IhY = paramInt2;
+                          break;
+                          paramInt2 = 1;
+                        }
+                      }
+                      if (paramInt2 != 0)
+                      {
+                        cb(paramInt2, true);
+                        if (!axH(paramInt2)) {}
+                        for (bool1 = true;; bool1 = false) {
+                          break;
+                        }
+                      }
+                      if (bool5)
+                      {
+                        iaI();
+                        this.Ygi.Yhx = DialerKeyListener.getInstance();
+                        this.Ygi.IhY = 3;
+                        break label2646;
+                      }
+                      if (i2 != 0)
+                      {
+                        iaI();
+                        this.Ygi.Yhx = DigitsKeyListener.getInstance();
+                        paramInt2 = this.Ygi.Yhx.getInputType();
+                        this.Ygi.IhY = paramInt2;
+                        break label2646;
+                      }
+                      if ((bool6) || (i1 != -1))
+                      {
+                        paramInt2 = 1;
+                        switch (i1)
+                        {
+                        default: 
+                          localObject5 = TextKeyListener.Capitalize.NONE;
+                        }
+                        for (;;)
+                        {
+                          iaI();
+                          this.Ygi.Yhx = TextKeyListener.getInstance(bool6, (TextKeyListener.Capitalize)localObject5);
+                          this.Ygi.IhY = paramInt2;
+                          break;
+                          localObject5 = TextKeyListener.Capitalize.SENTENCES;
+                          paramInt2 = 16385;
+                          continue;
+                          localObject5 = TextKeyListener.Capitalize.WORDS;
+                          paramInt2 = 8193;
+                          continue;
+                          localObject5 = TextKeyListener.Capitalize.CHARACTERS;
+                          paramInt2 = 4097;
+                        }
+                      }
+                      if (bool4)
+                      {
+                        iaI();
+                        this.Ygi.Yhx = TextKeyListener.getInstance();
+                        this.Ygi.IhY = 1;
+                        break label2646;
+                      }
+                      if (ial())
+                      {
+                        if (this.Ygi != null)
+                        {
+                          this.Ygi.Yhx = null;
+                          this.Ygi.IhY = 0;
+                        }
+                        localObject3 = TextView.BufferType.SPANNABLE;
+                        setMovementMethod(com.tencent.mm.ui.widget.cedit.b.a.ibX());
+                        break label2646;
+                      }
+                      if (this.Ygi != null) {
+                        this.Ygi.Yhx = null;
+                      }
+                      localObject3 = TextView.BufferType.NORMAL;
+                      break label2646;
+                      if (((((b)localObject5).IhY & 0xF) != 2) || (i5 == 0)) {
+                        break label2722;
+                      }
+                      ((b)localObject5).IhY = (((b)localObject5).IhY & 0xFFFFF00F | 0x10);
+                      break label2722;
+                      paramInt2 = 0;
+                      break label2911;
+                      label4319:
+                      paramContext.YgG = 0;
+                      paramContext.YgE = 0;
+                      break label3034;
+                      label4332:
+                      paramContext.YgH = 0;
+                      paramContext.YgF = 0;
+                      break label3101;
+                      setEllipsize(TextUtils.TruncateAt.START);
+                      break label3192;
+                      setEllipsize(TextUtils.TruncateAt.MIDDLE);
+                      break label3192;
+                      setEllipsize(TextUtils.TruncateAt.END);
+                      break label3192;
+                      paramInt2 = 0;
+                      break label3215;
+                      i = 0;
+                      break label3247;
+                      if ((!this.wi.setFontVariationSettings(paramContext)) || (this.WoF == null)) {
+                        break label3634;
+                      }
+                      hKs();
+                      requestLayout();
+                      invalidate();
+                      break label3634;
+                      label4420:
+                      setFilters(YeZ);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        Object localObject3 = paramAttributeSet;
+        paramAttributeSet = (AttributeSet)localObject1;
+        localObject1 = localObject3;
+      }
     }
   }
   
   final void a(Spanned paramSpanned, Object paramObject, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int k = -1;
-    AppMethodBeat.i(205785);
+    AppMethodBeat.i(202254);
     b.h localh;
     int j;
-    if (this.QHs == null)
+    if (this.Ygi == null)
     {
       localh = null;
       if (paramObject != Selection.SELECTION_END) {
@@ -2979,11 +4059,11 @@ public class CustomTextView
       }
       if ((paramInt1 >= 0) || (paramInt2 >= 0))
       {
-        aV(Selection.getSelectionStart(paramSpanned), paramInt1, paramInt2);
-        gZw();
-        gZt();
-        if (this.QHs != null) {
-          this.QHs.haz();
+        aZ(Selection.getSelectionStart(paramSpanned), paramInt1, paramInt2);
+        iaq();
+        iak();
+        if (this.Ygi != null) {
+          this.Ygi.ibx();
         }
       }
       j = paramInt2;
@@ -2994,7 +4074,7 @@ public class CustomTextView
       if (paramObject == Selection.SELECTION_START)
       {
         if ((paramInt1 >= 0) || (paramInt2 >= 0)) {
-          aV(Selection.getSelectionEnd(paramSpanned), paramInt1, paramInt2);
+          aZ(Selection.getSelectionEnd(paramSpanned), paramInt1, paramInt2);
         }
         i = paramInt2;
         m = 1;
@@ -3002,9 +4082,9 @@ public class CustomTextView
       }
       if (m != 0)
       {
-        this.QHh = true;
-        if ((this.QHs != null) && (!isFocused())) {
-          this.QHs.QIF = true;
+        this.YfX = true;
+        if ((this.Ygi != null) && (!isFocused())) {
+          this.Ygi.Yhv = true;
         }
         if ((paramSpanned.getSpanFlags(paramObject) & 0x200) == 0)
         {
@@ -3014,10 +4094,10 @@ public class CustomTextView
           if (j < 0) {
             Selection.getSelectionEnd(paramSpanned);
           }
-          if (this.QHs != null)
+          if (this.Ygi != null)
           {
-            this.QHs.hai();
-            if ((!hasSelection()) && (this.QHs.ham()) && (hasTransientState())) {
+            this.Ygi.ibg();
+            if ((!iau()) && (this.Ygi.ibk()) && (hasTransientState())) {
               setHasTransientState(false);
             }
           }
@@ -3026,72 +4106,72 @@ public class CustomTextView
       }
       if (((paramObject instanceof UpdateAppearance)) || ((paramObject instanceof ParagraphStyle)) || ((paramObject instanceof CharacterStyle)))
       {
-        if ((localh != null) && (localh.QIp != 0)) {
+        if ((localh != null) && (localh.Yhf != 0)) {
           break label472;
         }
         invalidate();
-        this.QHh = true;
-        gZw();
+        this.YfX = true;
+        iaq();
         label280:
-        if (this.QHs != null) {
-          this.QHs.hag();
+        if (this.Ygi != null) {
+          this.Ygi.ibe();
         }
       }
       if (MetaKeyKeyListener.isMetaTracker(paramSpanned, paramObject))
       {
-        this.QHh = true;
+        this.YfX = true;
         if ((localh != null) && (MetaKeyKeyListener.isSelectingMetaTracker(paramSpanned, paramObject))) {
-          localh.QKo = true;
+          localh.Yjg = true;
         }
         if (Selection.getSelectionStart(paramSpanned) >= 0)
         {
-          if ((localh != null) && (localh.QIp != 0)) {
+          if ((localh != null) && (localh.Yhf != 0)) {
             break label481;
           }
-          gZs();
+          iaj();
         }
       }
       for (;;)
       {
-        if (((paramObject instanceof ParcelableSpan)) && (localh != null) && (localh.QKl != null))
+        if (((paramObject instanceof ParcelableSpan)) && (localh != null) && (localh.Yjd != null))
         {
-          if (localh.QIp != 0)
+          if (localh.Yhf != 0)
           {
             if (paramInt1 >= 0)
             {
-              if (localh.QKp > paramInt1) {
-                localh.QKp = paramInt1;
+              if (localh.Yjh > paramInt1) {
+                localh.Yjh = paramInt1;
               }
-              if (localh.QKp > paramInt3) {
-                localh.QKp = paramInt3;
+              if (localh.Yjh > paramInt3) {
+                localh.Yjh = paramInt3;
               }
             }
             if (paramInt2 < 0) {
               break label496;
             }
-            if (localh.QKp > paramInt2) {
-              localh.QKp = paramInt2;
+            if (localh.Yjh > paramInt2) {
+              localh.Yjh = paramInt2;
             }
-            if (localh.QKp <= paramInt4) {
+            if (localh.Yjh <= paramInt4) {
               break label496;
             }
-            localh.QKp = paramInt4;
-            AppMethodBeat.o(205785);
+            localh.Yjh = paramInt4;
+            AppMethodBeat.o(202254);
             return;
-            localh = this.QHs.QID;
+            localh = this.Ygi.Yht;
             break;
             label472:
             localh.mContentChanged = true;
             break label280;
             label481:
-            localh.QKn = true;
+            localh.Yjf = true;
             continue;
           }
           localh.mContentChanged = true;
         }
       }
       label496:
-      AppMethodBeat.o(205785);
+      AppMethodBeat.o(202254);
       return;
       label503:
       j = -1;
@@ -3100,24 +4180,24 @@ public class CustomTextView
   
   protected void a(CharSequence paramCharSequence, TextView.BufferType paramBufferType, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(205686);
+    AppMethodBeat.i(201714);
     Object localObject = paramCharSequence;
     if (paramCharSequence == null) {
       localObject = "";
     }
     paramCharSequence = (CharSequence)localObject;
-    if (!isSuggestionsEnabled()) {
-      paramCharSequence = ax((CharSequence)localObject);
+    if (!iaA()) {
+      paramCharSequence = aM((CharSequence)localObject);
     }
-    if (!this.QGK) {
-      this.ayn.setTextScaleX(1.0F);
+    if (!this.YfA) {
+      this.wi.setTextScaleX(1.0F);
     }
-    int j = this.QHc.length;
+    int j = this.YfS.length;
     int i = 0;
     localObject = paramCharSequence;
     while (i < j)
     {
-      paramCharSequence = this.QHc[i].filter((CharSequence)localObject, 0, ((CharSequence)localObject).length(), QGk, 0, 0);
+      paramCharSequence = this.YfS[i].filter((CharSequence)localObject, 0, ((CharSequence)localObject).length(), Yfa, 0, 0);
       if (paramCharSequence != null) {
         localObject = paramCharSequence;
       }
@@ -3146,9 +4226,9 @@ public class CustomTextView
       j = Build.VERSION.SDK_INT;
       if ((paramBufferType == TextView.BufferType.EDITABLE) || (getKeyListener() != null) || (paramInt != 0))
       {
-        gZL();
-        localObject = this.OVn.newEditable((CharSequence)localObject);
-        a((Editable)localObject, this.QHc);
+        iaI();
+        localObject = this.Woz.newEditable((CharSequence)localObject);
+        a((Editable)localObject, this.YfS);
         InputMethodManager localInputMethodManager = getInputMethodManager();
         paramCharSequence = (CharSequence)localObject;
         if (localInputMethodManager != null)
@@ -3157,14 +4237,14 @@ public class CustomTextView
           paramCharSequence = (CharSequence)localObject;
         }
         label249:
-        if (this.QGR == 0) {
+        if (this.YfH == 0) {
           break label731;
         }
         if ((paramBufferType != TextView.BufferType.EDITABLE) && (!(paramCharSequence instanceof Spannable))) {
           break label500;
         }
         localObject = (Spannable)paramCharSequence;
-        if (!Linkify.addLinks((Spannable)localObject, this.QGR)) {
+        if (!Linkify.addLinks((Spannable)localObject, this.YfH)) {
           break label731;
         }
         if (paramBufferType != TextView.BufferType.EDITABLE) {
@@ -3172,25 +4252,25 @@ public class CustomTextView
         }
         paramCharSequence = TextView.BufferType.EDITABLE;
         setTextInternal((CharSequence)localObject);
-        if ((this.QGS) && (!gZD())) {
-          setMovementMethod(com.tencent.mm.ui.widget.cedit.b.c.haX());
+        if ((this.YfI) && (!iaz())) {
+          setMovementMethod(com.tencent.mm.ui.widget.cedit.b.c.ibX());
         }
         paramBufferType = paramCharSequence;
         paramCharSequence = (CharSequence)localObject;
       }
       for (;;)
       {
-        this.QGD = paramBufferType;
+        this.Yft = paramBufferType;
         setTextInternal(paramCharSequence);
-        if (this.QGH == null) {}
+        if (this.Yfx == null) {}
         int k;
-        for (this.OVq = paramCharSequence;; this.OVq = this.QGH.getTransformation(paramCharSequence, this))
+        for (this.WoC = paramCharSequence;; this.WoC = this.Yfx.getTransformation(paramCharSequence, this))
         {
-          if (this.OVq == null) {
-            this.OVq = "";
+          if (this.WoC == null) {
+            this.WoC = "";
           }
           k = paramCharSequence.length();
-          if ((!(paramCharSequence instanceof Spannable)) || (this.QGI)) {
+          if ((!(paramCharSequence instanceof Spannable)) || (this.Yfy)) {
             break label676;
           }
           paramBufferType = (Spannable)paramCharSequence;
@@ -3208,154 +4288,73 @@ public class CustomTextView
           if (paramBufferType != TextView.BufferType.SPANNABLE)
           {
             paramCharSequence = (CharSequence)localObject;
-            if (this.QGG == null) {
+            if (this.Yfw == null) {
               break label249;
             }
           }
-          paramCharSequence = this.OVo.newSpannable((CharSequence)localObject);
+          paramCharSequence = this.WoA.newSpannable((CharSequence)localObject);
           break label249;
           label500:
-          localObject = this.OVo.newSpannable(paramCharSequence);
+          localObject = this.WoA.newSpannable(paramCharSequence);
           break label276;
           paramCharSequence = TextView.BufferType.SPANNABLE;
           break label299;
         }
-        if (this.QGJ == null) {
-          this.QGJ = new a((byte)0);
+        if (this.Yfz == null) {
+          this.Yfz = new a((byte)0);
         }
-        paramBufferType.setSpan(this.QGJ, 0, k, 6553618);
-        if (this.QHs != null)
+        paramBufferType.setSpan(this.Yfz, 0, k, 6553618);
+        if (this.Ygi != null)
         {
-          localObject = this.QHs;
+          localObject = this.Ygi;
           j = paramBufferType.length();
-          if (((b)localObject).QIH != null) {
-            paramBufferType.setSpan(((b)localObject).QIH, 0, j, 18);
+          if (((b)localObject).Yhx != null) {
+            paramBufferType.setSpan(((b)localObject).Yhx, 0, j, 18);
           }
         }
-        if (this.QGH != null) {
-          paramBufferType.setSpan(this.QGH, 0, k, 18);
+        if (this.Yfx != null) {
+          paramBufferType.setSpan(this.Yfx, 0, k, 18);
         }
-        if (this.QGG != null)
+        if (this.Yfw != null)
         {
-          this.QGG.j((Spannable)paramCharSequence);
-          if (this.QHs != null) {
-            this.QHs.QIF = false;
+          this.Yfw.j((Spannable)paramCharSequence);
+          if (this.Ygi != null) {
+            this.Ygi.Yhv = false;
           }
         }
-        if (this.OVt != null) {
-          IR();
+        if (this.WoF != null) {
+          Ku();
         }
         b(paramCharSequence, 0, i, k);
         if (paramInt != 0) {
           e((Editable)paramCharSequence);
         }
-        if (this.QHs != null) {
-          this.QHs.gZP();
+        if (this.Ygi != null) {
+          this.Ygi.iaN();
         }
-        AppMethodBeat.o(205686);
+        AppMethodBeat.o(201714);
         return;
       }
     }
   }
   
-  public void addExtraDataToAccessibilityNodeInfo(AccessibilityNodeInfo paramAccessibilityNodeInfo, String paramString, Bundle paramBundle)
+  public final boolean a(ExtractedTextRequest paramExtractedTextRequest, ExtractedText paramExtractedText)
   {
-    AppMethodBeat.i(205822);
-    if ((paramBundle != null) && (paramString.equals("android.view.accessibility.extra.DATA_TEXT_CHARACTER_LOCATION_KEY")))
-    {
-      int j = paramBundle.getInt("android.view.accessibility.extra.DATA_TEXT_CHARACTER_LOCATION_ARG_START_INDEX", -1);
-      int k = paramBundle.getInt("android.view.accessibility.extra.DATA_TEXT_CHARACTER_LOCATION_ARG_LENGTH", -1);
-      if ((k <= 0) || (j < 0) || (j >= this.mText.length()))
-      {
-        Log.e("cmEdit.CMTextView", "Invalid arguments for accessibility character locations");
-        AppMethodBeat.o(205822);
-        return;
-      }
-      paramBundle = new RectF[k];
-      Object localObject = new CursorAnchorInfo.Builder();
-      a((CursorAnchorInfo.Builder)localObject, j, j + k, gZy(), gZz());
-      localObject = ((CursorAnchorInfo.Builder)localObject).setMatrix(null).build();
-      int i = 0;
-      while (i < k)
-      {
-        if ((((CursorAnchorInfo)localObject).getCharacterBoundsFlags(j + i) & 0x1) == 1)
-        {
-          RectF localRectF = ((CursorAnchorInfo)localObject).getCharacterBounds(j + i);
-          if (localRectF != null) {
-            paramBundle[i] = localRectF;
-          }
-        }
-        i += 1;
-      }
-      paramAccessibilityNodeInfo.getExtras().putParcelableArray(paramString, paramBundle);
-      AppMethodBeat.o(205822);
-      return;
-    }
-    AppMethodBeat.o(205822);
+    AppMethodBeat.i(202001);
+    iaI();
+    boolean bool = this.Ygi.a(paramExtractedTextRequest, -1, -1, -1, paramExtractedText);
+    AppMethodBeat.o(202001);
+    return bool;
   }
   
-  public void addTextChangedListener(TextWatcher paramTextWatcher)
+  public final boolean aF(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(205777);
-    if (this.mListeners == null) {
-      this.mListeners = new ArrayList();
-    }
-    this.mListeners.add(paramTextWatcher);
-    AppMethodBeat.o(205777);
-  }
-  
-  public final void aoA(int paramInt)
-  {
-    AppMethodBeat.i(205836);
-    if (this.QHs != null) {
-      this.QHs.aoA(paramInt);
-    }
-    AppMethodBeat.o(205836);
-  }
-  
-  public final void append(CharSequence paramCharSequence)
-  {
-    AppMethodBeat.i(205674);
-    int i = paramCharSequence.length();
-    if (!(this.mText instanceof Editable)) {
-      setText(this.mText, TextView.BufferType.EDITABLE);
-    }
-    ((Editable)this.mText).append(paramCharSequence, 0, i);
-    if ((this.QGR != 0) && (Linkify.addLinks(this.QGC, this.QGR)) && (this.QGS) && (!gZD())) {
-      setMovementMethod(com.tencent.mm.ui.widget.cedit.b.c.haX());
-    }
-    AppMethodBeat.o(205674);
-  }
-  
-  public void autofill(AutofillValue paramAutofillValue)
-  {
-    AppMethodBeat.i(205819);
-    if ((Build.VERSION.SDK_INT >= 26) && ((!paramAutofillValue.isText()) || (!gZB())))
-    {
-      Log.w("cmEdit.CMTextView", paramAutofillValue + " could not be autofilled into " + this);
-      AppMethodBeat.o(205819);
-      return;
-    }
-    CharSequence localCharSequence = null;
-    if (Build.VERSION.SDK_INT >= 26) {
-      localCharSequence = paramAutofillValue.getTextValue();
-    }
-    a(localCharSequence, this.QGD, true, 0);
-    paramAutofillValue = getText();
-    if ((paramAutofillValue instanceof Spannable)) {
-      Selection.setSelection((Spannable)paramAutofillValue, paramAutofillValue.length());
-    }
-    AppMethodBeat.o(205819);
-  }
-  
-  public final boolean ay(float paramFloat1, float paramFloat2)
-  {
-    AppMethodBeat.i(205824);
+    AppMethodBeat.i(202374);
     for (;;)
     {
-      synchronized (QGi)
+      synchronized (YeY)
       {
-        float[] arrayOfFloat2 = QGi;
+        float[] arrayOfFloat2 = YeY;
         arrayOfFloat2[0] = paramFloat1;
         arrayOfFloat2[1] = paramFloat2;
         Object localObject1 = this;
@@ -3368,7 +4367,7 @@ public class CustomTextView
           }
           if ((arrayOfFloat2[0] < 0.0F) || (arrayOfFloat2[1] < 0.0F) || (arrayOfFloat2[0] > ((View)localObject1).getWidth()) || (arrayOfFloat2[1] > ((View)localObject1).getHeight()))
           {
-            AppMethodBeat.o(205824);
+            AppMethodBeat.o(202374);
             return false;
           }
           if (!((View)localObject1).getMatrix().isIdentity()) {
@@ -3383,7 +4382,7 @@ public class CustomTextView
         }
         else
         {
-          AppMethodBeat.o(205824);
+          AppMethodBeat.o(202374);
           return true;
         }
       }
@@ -3391,1109 +4390,131 @@ public class CustomTextView
     }
   }
   
-  protected void b(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
+  public final int aG(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(205573);
-    Log.i("cmEdit.CMTextView", "init");
-    setTextInternal("");
-    Object localObject1 = getResources();
-    this.ayn = new TextPaint(1);
-    this.ayn.density = ((Resources)localObject1).getDisplayMetrics().density;
-    this.QHg = new Paint(1);
-    this.QGG = getDefaultMovementMethod();
-    this.QGH = null;
-    d locald = new d((byte)0);
-    locald.BpJ = ColorStateList.valueOf(-16777216);
-    locald.mAk = at.fromDPToPix(getContext(), 18);
-    this.On = 0;
-    this.Oo = 0;
-    this.QGT = 0;
-    boolean bool4 = getDefaultEditable();
-    Object localObject4 = null;
-    int i2 = 0;
-    CharSequence localCharSequence = null;
-    boolean bool5 = false;
-    boolean bool6 = false;
-    int i1 = -1;
-    boolean bool2 = false;
-    Object localObject6 = null;
-    Drawable localDrawable3 = null;
-    Drawable localDrawable4 = null;
-    Drawable localDrawable5 = null;
-    Drawable localDrawable1 = null;
-    Drawable localDrawable2 = null;
-    ColorStateList localColorStateList = null;
-    int n = 0;
-    int i = -1;
-    boolean bool1 = false;
-    int m = -1;
-    Object localObject2 = "";
-    localObject1 = null;
-    boolean bool3 = false;
-    int i5 = 0;
-    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.MMNewTextView, paramInt1, paramInt2);
-    int j = -1;
-    int k = -1;
-    paramInt1 = -1;
-    a(paramContext, localTypedArray, locald);
-    int i3;
-    int i4;
-    if (localTypedArray != null)
+    AppMethodBeat.i(202474);
+    if (getLayout() == null)
     {
-      i3 = localTypedArray.getIndexCount();
-      i4 = 0;
-      paramAttributeSet = (AttributeSet)localObject2;
-      paramInt2 = i5;
-      label253:
-      if (i4 >= i3) {
-        break label2429;
-      }
-      i5 = localTypedArray.getIndex(i4);
-      if (i5 != 44) {
-        break label322;
-      }
-      bool4 = localTypedArray.getBoolean(i5, bool4);
-      localObject2 = localObject1;
-      localObject1 = paramAttributeSet;
-      paramAttributeSet = (AttributeSet)localObject2;
+      AppMethodBeat.o(202474);
+      return -1;
     }
-    label2474:
-    label2484:
-    label3128:
-    for (;;)
+    int i = B(cT(paramFloat2), paramFloat1);
+    AppMethodBeat.o(202474);
+    return i;
+  }
+  
+  public void addExtraDataToAccessibilityNodeInfo(AccessibilityNodeInfo paramAccessibilityNodeInfo, String paramString, Bundle paramBundle)
+  {
+    AppMethodBeat.i(202356);
+    if ((paramBundle != null) && (paramString.equals("android.view.accessibility.extra.DATA_TEXT_CHARACTER_LOCATION_KEY")))
     {
-      i4 += 1;
-      localObject2 = localObject1;
-      localObject1 = paramAttributeSet;
-      paramAttributeSet = (AttributeSet)localObject2;
-      break label253;
-      i3 = 0;
-      break;
-      label322:
-      if (i5 == 41)
+      int j = paramBundle.getInt("android.view.accessibility.extra.DATA_TEXT_CHARACTER_LOCATION_ARG_START_INDEX", -1);
+      int k = paramBundle.getInt("android.view.accessibility.extra.DATA_TEXT_CHARACTER_LOCATION_ARG_LENGTH", -1);
+      if ((k <= 0) || (j < 0) || (j >= this.mText.length()))
       {
-        localObject4 = localTypedArray.getText(i5);
-        localObject2 = paramAttributeSet;
-        paramAttributeSet = (AttributeSet)localObject1;
-        localObject1 = localObject2;
+        Log.e("cmEdit.CMTextView", "Invalid arguments for accessibility character locations");
+        AppMethodBeat.o(202356);
+        return;
       }
-      else if (i5 == 38)
+      paramBundle = new RectF[k];
+      Object localObject = new CursorAnchorInfo.Builder();
+      a((CursorAnchorInfo.Builder)localObject, j, j + k, ias(), iat());
+      localObject = ((CursorAnchorInfo.Builder)localObject).setMatrix(null).build();
+      int i = 0;
+      while (i < k)
       {
-        i2 = localTypedArray.getInt(i5, i2);
-        localObject2 = paramAttributeSet;
-        paramAttributeSet = (AttributeSet)localObject1;
-        localObject1 = localObject2;
-      }
-      else if (i5 == 39)
-      {
-        localCharSequence = localTypedArray.getText(i5);
-        localObject2 = paramAttributeSet;
-        paramAttributeSet = (AttributeSet)localObject1;
-        localObject1 = localObject2;
-      }
-      else if (i5 == 40)
-      {
-        bool5 = localTypedArray.getBoolean(i5, bool5);
-        localObject2 = paramAttributeSet;
-        paramAttributeSet = (AttributeSet)localObject1;
-        localObject1 = localObject2;
-      }
-      else if (i5 == 43)
-      {
-        bool6 = localTypedArray.getBoolean(i5, bool6);
-        localObject2 = paramAttributeSet;
-        paramAttributeSet = (AttributeSet)localObject1;
-        localObject1 = localObject2;
-      }
-      else if (i5 == 42)
-      {
-        i1 = localTypedArray.getInt(i5, i1);
-        localObject2 = paramAttributeSet;
-        paramAttributeSet = (AttributeSet)localObject1;
-        localObject1 = localObject2;
-      }
-      else if (i5 == 31)
-      {
-        bool2 = localTypedArray.getBoolean(i5, bool2);
-        localObject2 = paramAttributeSet;
-        paramAttributeSet = (AttributeSet)localObject1;
-        localObject1 = localObject2;
-      }
-      else if (i5 == 10)
-      {
-        this.QGR = localTypedArray.getInt(i5, 0);
-        localObject2 = paramAttributeSet;
-        paramAttributeSet = (AttributeSet)localObject1;
-        localObject1 = localObject2;
-      }
-      else if (i5 == 11)
-      {
-        this.QGS = localTypedArray.getBoolean(i5, true);
-        localObject2 = paramAttributeSet;
-        paramAttributeSet = (AttributeSet)localObject1;
-        localObject1 = localObject2;
-      }
-      else if (i5 == 48)
-      {
-        localObject6 = localTypedArray.getDrawable(i5);
-        localObject2 = paramAttributeSet;
-        paramAttributeSet = (AttributeSet)localObject1;
-        localObject1 = localObject2;
-      }
-      else if (i5 == 46)
-      {
-        localDrawable3 = localTypedArray.getDrawable(i5);
-        localObject2 = paramAttributeSet;
-        paramAttributeSet = (AttributeSet)localObject1;
-        localObject1 = localObject2;
-      }
-      else if (i5 == 49)
-      {
-        localDrawable4 = localTypedArray.getDrawable(i5);
-        localObject2 = paramAttributeSet;
-        paramAttributeSet = (AttributeSet)localObject1;
-        localObject1 = localObject2;
-      }
-      else if (i5 == 47)
-      {
-        localDrawable5 = localTypedArray.getDrawable(i5);
-        localObject2 = paramAttributeSet;
-        paramAttributeSet = (AttributeSet)localObject1;
-        localObject1 = localObject2;
-      }
-      else if (i5 == 66)
-      {
-        localDrawable1 = localTypedArray.getDrawable(i5);
-        localObject2 = paramAttributeSet;
-        paramAttributeSet = (AttributeSet)localObject1;
-        localObject1 = localObject2;
-      }
-      else if (i5 == 67)
-      {
-        localDrawable2 = localTypedArray.getDrawable(i5);
-        localObject2 = paramAttributeSet;
-        paramAttributeSet = (AttributeSet)localObject1;
-        localObject1 = localObject2;
-      }
-      else if (i5 == 72)
-      {
-        localColorStateList = localTypedArray.getColorStateList(i5);
-        localObject2 = paramAttributeSet;
-        paramAttributeSet = (AttributeSet)localObject1;
-        localObject1 = localObject2;
-      }
-      else
-      {
-        if (i5 != 73)
+        if ((((CursorAnchorInfo)localObject).getCharacterBoundsFlags(j + i) & 0x1) == 1)
         {
-          if (i5 == 50)
-          {
-            n = localTypedArray.getDimensionPixelSize(i5, n);
-            localObject2 = paramAttributeSet;
-            paramAttributeSet = (AttributeSet)localObject1;
-            localObject1 = localObject2;
-            continue;
-          }
-          if (i5 == 20)
-          {
-            setMaxLines(localTypedArray.getInt(i5, -1));
-            localObject2 = paramAttributeSet;
-            paramAttributeSet = (AttributeSet)localObject1;
-            localObject1 = localObject2;
-            continue;
-          }
-          if (i5 == 13)
-          {
-            setMaxHeight(localTypedArray.getDimensionPixelSize(i5, -1));
-            localObject2 = paramAttributeSet;
-            paramAttributeSet = (AttributeSet)localObject1;
-            localObject1 = localObject2;
-            continue;
-          }
-          if (i5 == 21)
-          {
-            setLines(localTypedArray.getInt(i5, -1));
-            localObject2 = paramAttributeSet;
-            paramAttributeSet = (AttributeSet)localObject1;
-            localObject1 = localObject2;
-            continue;
-          }
-          if (i5 == 22)
-          {
-            setHeight(localTypedArray.getDimensionPixelSize(i5, -1));
-            localObject2 = paramAttributeSet;
-            paramAttributeSet = (AttributeSet)localObject1;
-            localObject1 = localObject2;
-            continue;
-          }
-          if (i5 == 23)
-          {
-            setMinLines(localTypedArray.getInt(i5, -1));
-            localObject2 = paramAttributeSet;
-            paramAttributeSet = (AttributeSet)localObject1;
-            localObject1 = localObject2;
-            continue;
-          }
-          if (i5 == 15)
-          {
-            setMinHeight(localTypedArray.getDimensionPixelSize(i5, -1));
-            localObject2 = paramAttributeSet;
-            paramAttributeSet = (AttributeSet)localObject1;
-            localObject1 = localObject2;
-            continue;
-          }
-          if (i5 == 24)
-          {
-            setMaxEms(localTypedArray.getInt(i5, -1));
-            localObject2 = paramAttributeSet;
-            paramAttributeSet = (AttributeSet)localObject1;
-            localObject1 = localObject2;
-            continue;
-          }
-          if (i5 == 12)
-          {
-            setMaxWidth(localTypedArray.getDimensionPixelSize(i5, -1));
-            localObject2 = paramAttributeSet;
-            paramAttributeSet = (AttributeSet)localObject1;
-            localObject1 = localObject2;
-            continue;
-          }
-          if (i5 == 25)
-          {
-            setEms(localTypedArray.getInt(i5, -1));
-            localObject2 = paramAttributeSet;
-            paramAttributeSet = (AttributeSet)localObject1;
-            localObject1 = localObject2;
-            continue;
-          }
-          if (i5 == 26)
-          {
-            setWidth(localTypedArray.getDimensionPixelSize(i5, -1));
-            localObject2 = paramAttributeSet;
-            paramAttributeSet = (AttributeSet)localObject1;
-            localObject1 = localObject2;
-            continue;
-          }
-          if (i5 == 27)
-          {
-            setMinEms(localTypedArray.getInt(i5, -1));
-            localObject2 = paramAttributeSet;
-            paramAttributeSet = (AttributeSet)localObject1;
-            localObject1 = localObject2;
-            continue;
-          }
-          if (i5 == 14)
-          {
-            setMinWidth(localTypedArray.getDimensionPixelSize(i5, -1));
-            localObject2 = paramAttributeSet;
-            paramAttributeSet = (AttributeSet)localObject1;
-            localObject1 = localObject2;
-            continue;
-          }
-          if (i5 == 9)
-          {
-            setGravity(localTypedArray.getInt(i5, -1));
-            localObject2 = paramAttributeSet;
-            paramAttributeSet = (AttributeSet)localObject1;
-            localObject1 = localObject2;
-            continue;
-          }
-          if (i5 == 17)
-          {
-            localObject2 = localTypedArray.getText(i5);
-            localObject1 = paramAttributeSet;
-            paramAttributeSet = (AttributeSet)localObject2;
-            continue;
-          }
-          if (i5 == 16)
-          {
-            localObject2 = localTypedArray.getText(i5);
-            paramAttributeSet = (AttributeSet)localObject1;
-            localObject1 = localObject2;
-            continue;
-          }
-          if (i5 == 28)
-          {
-            if (localTypedArray.getBoolean(i5, false))
-            {
-              setHorizontallyScrolling(true);
-              localObject2 = paramAttributeSet;
-              paramAttributeSet = (AttributeSet)localObject1;
-              localObject1 = localObject2;
-            }
-          }
-          else
-          {
-            if (i5 == 30)
-            {
-              bool1 = localTypedArray.getBoolean(i5, bool1);
-              localObject2 = paramAttributeSet;
-              paramAttributeSet = (AttributeSet)localObject1;
-              localObject1 = localObject2;
-              continue;
-            }
-            if (i5 == 8)
-            {
-              i = localTypedArray.getInt(i5, i);
-              localObject2 = paramAttributeSet;
-              paramAttributeSet = (AttributeSet)localObject1;
-              localObject1 = localObject2;
-              continue;
-            }
-            if (i5 != 53) {
-              if (i5 == 32)
-              {
-                if (!localTypedArray.getBoolean(i5, true))
-                {
-                  setIncludeFontPadding(false);
-                  localObject2 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject2;
-                }
-              }
-              else if (i5 == 19)
-              {
-                if (!localTypedArray.getBoolean(i5, true))
-                {
-                  setCursorVisible(false);
-                  localObject2 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject2;
-                }
-              }
-              else
-              {
-                if (i5 == 33)
-                {
-                  m = localTypedArray.getInt(i5, -1);
-                  localObject2 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject2;
-                  continue;
-                }
-                if (i5 == 18)
-                {
-                  setTextScaleX(localTypedArray.getFloat(i5, 1.0F));
-                  localObject2 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject2;
-                  continue;
-                }
-                if (i5 == 45)
-                {
-                  this.QGq = localTypedArray.getBoolean(i5, false);
-                  localObject2 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject2;
-                  continue;
-                }
-                if (i5 == 0)
-                {
-                  setEnabled(localTypedArray.getBoolean(i5, isEnabled()));
-                  localObject2 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject2;
-                  continue;
-                }
-                if (i5 == 29)
-                {
-                  bool3 = localTypedArray.getBoolean(i5, bool3);
-                  localObject2 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject2;
-                  continue;
-                }
-                if (i5 == 51)
-                {
-                  this.OVv = localTypedArray.getDimensionPixelSize(i5, (int)this.OVv);
-                  localObject2 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject2;
-                  continue;
-                }
-                if (i5 == 52)
-                {
-                  this.OVu = localTypedArray.getFloat(i5, this.OVu);
-                  localObject2 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject2;
-                  continue;
-                }
-                if (i5 == 54)
-                {
-                  paramInt2 = localTypedArray.getInt(i5, 0);
-                  localObject2 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject2;
-                  continue;
-                }
-                if (i5 == 76)
-                {
-                  gZL();
-                  this.QHs.QIr = localTypedArray.getBoolean(i5, true);
-                  localObject2 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject2;
-                  continue;
-                }
-                if (i5 == 57)
-                {
-                  gZL();
-                  this.QHs.gZO();
-                  this.QHs.QIC.imeOptions = localTypedArray.getInt(i5, this.QHs.QIC.imeOptions);
-                  localObject2 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject2;
-                  continue;
-                }
-                if (i5 == 58)
-                {
-                  gZL();
-                  this.QHs.gZO();
-                  this.QHs.QIC.QKh = localTypedArray.getText(i5);
-                  localObject2 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject2;
-                  continue;
-                }
-                if (i5 == 59)
-                {
-                  gZL();
-                  this.QHs.gZO();
-                  this.QHs.QIC.imeActionId = localTypedArray.getInt(i5, this.QHs.QIC.imeActionId);
-                  localObject2 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject2;
-                  continue;
-                }
-                if (i5 == 55)
-                {
-                  setPrivateImeOptions(localTypedArray.getString(i5));
-                  localObject2 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject2;
-                  continue;
-                }
-                if (i5 == 56)
-                {
-                  try
-                  {
-                    setInputExtras(localTypedArray.getResourceId(i5, 0));
-                    localObject2 = paramAttributeSet;
-                    paramAttributeSet = (AttributeSet)localObject1;
-                    localObject1 = localObject2;
-                  }
-                  catch (XmlPullParserException localXmlPullParserException)
-                  {
-                    Log.w("cmEdit.CMTextView", "Failure reading input extras", new Object[] { localXmlPullParserException });
-                    AttributeSet localAttributeSet = paramAttributeSet;
-                    paramAttributeSet = (AttributeSet)localObject1;
-                    localObject1 = localAttributeSet;
-                  }
-                  catch (IOException localIOException)
-                  {
-                    Log.w("cmEdit.CMTextView", "Failure reading input extras", new Object[] { localIOException });
-                    localObject3 = paramAttributeSet;
-                    paramAttributeSet = (AttributeSet)localObject1;
-                    localObject1 = localObject3;
-                  }
-                  continue;
-                }
-                if (i5 == 64)
-                {
-                  this.QHi = localTypedArray.getResourceId(i5, 16843618);
-                  localObject3 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject3;
-                  continue;
-                }
-                if (i5 == 60)
-                {
-                  this.QHk = localTypedArray.getResourceId(i5, 16843461);
-                  localObject3 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject3;
-                  continue;
-                }
-                if (i5 == 61)
-                {
-                  this.QHm = localTypedArray.getResourceId(i5, 16843462);
-                  localObject3 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject3;
-                  continue;
-                }
-                if (i5 == 62)
-                {
-                  this.QHo = localTypedArray.getResourceId(i5, 16843463);
-                  localObject3 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject3;
-                  continue;
-                }
-                if (i5 == 63)
-                {
-                  setTextIsSelectable(localTypedArray.getBoolean(i5, false));
-                  localObject3 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject3;
-                  continue;
-                }
-                if (i5 == 74)
-                {
-                  this.On = localTypedArray.getInt(i5, 0);
-                  localObject3 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject3;
-                  continue;
-                }
-                if (i5 == 75)
-                {
-                  this.Oo = localTypedArray.getInt(i5, 0);
-                  localObject3 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject3;
-                  continue;
-                }
-                if (i5 == 82)
-                {
-                  this.QGT = localTypedArray.getInt(i5, 0);
-                  localObject3 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject3;
-                  continue;
-                }
-                if (i5 == 85)
-                {
-                  j = localTypedArray.getDimensionPixelSize(i5, -1);
-                  localObject3 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject3;
-                  continue;
-                }
-                if (i5 == 86)
-                {
-                  k = localTypedArray.getDimensionPixelSize(i5, -1);
-                  localObject3 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject3;
-                  continue;
-                }
-                if (i5 == 87)
-                {
-                  paramInt1 = localTypedArray.getDimensionPixelSize(i5, -1);
-                  localObject3 = paramAttributeSet;
-                  paramAttributeSet = (AttributeSet)localObject1;
-                  localObject1 = localObject3;
-                  continue;
-                  label2429:
-                  if (localTypedArray != null) {
-                    localTypedArray.recycle();
-                  }
-                  localObject3 = TextView.BufferType.EDITABLE;
-                  i5 = paramInt2 & 0xFFF;
-                  boolean bool7;
-                  if (i5 == 129)
-                  {
-                    i3 = 1;
-                    if (i5 != 225) {
-                      break label3731;
-                    }
-                    i4 = 1;
-                    if (i5 != 18) {
-                      break label3737;
-                    }
-                    i5 = 1;
-                    int i6 = paramContext.getApplicationInfo().targetSdkVersion;
-                    if (i6 < 26) {
-                      break label3743;
-                    }
-                    bool7 = true;
-                    label2503:
-                    this.QGO = bool7;
-                    if (i6 < 28) {
-                      break label3749;
-                    }
-                    bool7 = true;
-                    label2519:
-                    this.QGP = bool7;
-                    if (localObject4 == null) {
-                      break label3839;
-                    }
-                  }
-                  try
-                  {
-                    localObject4 = Class.forName(((CharSequence)localObject4).toString());
-                  }
-                  catch (ClassNotFoundException paramContext)
-                  {
-                    label2655:
-                    label3183:
-                    label3570:
-                    paramContext = new RuntimeException(paramContext);
-                    label3034:
-                    AppMethodBeat.o(205573);
-                    label3151:
-                    throw paramContext;
-                  }
-                  try
-                  {
-                    gZL();
-                    this.QHs.QIH = ((KeyListener)((Class)localObject4).newInstance());
-                  }
-                  catch (InstantiationException paramContext)
-                  {
-                    paramContext = new RuntimeException(paramContext);
-                    AppMethodBeat.o(205573);
-                    throw paramContext;
-                  }
-                  catch (IllegalAccessException paramContext)
-                  {
-                    paramContext = new RuntimeException(paramContext);
-                    AppMethodBeat.o(205573);
-                    throw paramContext;
-                  }
-                  try
-                  {
-                    localObject4 = this.QHs;
-                    if (paramInt2 == 0) {
-                      break label3809;
-                    }
-                    ((b)localObject4).Clf = paramInt2;
-                  }
-                  catch (IncompatibleClassChangeError localIncompatibleClassChangeError)
-                  {
-                    this.QHs.Clf = 1;
-                    break label2579;
-                  }
-                  if (this.QHs != null)
-                  {
-                    localObject4 = this.QHs;
-                    if ((((b)localObject4).Clf & 0xF) != 1) {
-                      break label4212;
-                    }
-                    if ((bool3) || (i3 != 0)) {
-                      ((b)localObject4).Clf = (((b)localObject4).Clf & 0xFFFFF00F | 0x80);
-                    }
-                    if (i4 != 0) {
-                      ((b)localObject4).Clf = (((b)localObject4).Clf & 0xFFFFF00F | 0xE0);
-                    }
-                  }
-                  if (bool2)
-                  {
-                    gZL();
-                    this.QHs.QIN = true;
-                    if (localObject3 == TextView.BufferType.NORMAL) {
-                      localObject3 = TextView.BufferType.SPANNABLE;
-                    }
-                  }
-                  for (;;)
-                  {
-                    if (localColorStateList != null)
-                    {
-                      if (this.QGA == null) {
-                        this.QGA = new b(paramContext);
-                      }
-                      if (localColorStateList != null)
-                      {
-                        this.QGA.Kr = localColorStateList;
-                        this.QGA.QHG = true;
-                      }
-                    }
-                    if (localObject6 != null) {
-                      ((Drawable)localObject6).setBounds(0, 0, ((Drawable)localObject6).getIntrinsicWidth(), ((Drawable)localObject6).getIntrinsicHeight());
-                    }
-                    if (localDrawable4 != null) {
-                      localDrawable4.setBounds(0, 0, localDrawable4.getIntrinsicWidth(), localDrawable4.getIntrinsicHeight());
-                    }
-                    if (localDrawable3 != null) {
-                      localDrawable3.setBounds(0, 0, localDrawable3.getIntrinsicWidth(), localDrawable3.getIntrinsicHeight());
-                    }
-                    if (localDrawable5 != null) {
-                      localDrawable5.setBounds(0, 0, localDrawable5.getIntrinsicWidth(), localDrawable5.getIntrinsicHeight());
-                    }
-                    setCompoundDrawables((Drawable)localObject6, localDrawable3, localDrawable4, localDrawable5);
-                    if ((localDrawable1 != null) || (localDrawable2 != null))
-                    {
-                      paramInt2 = 1;
-                      if (paramInt2 != 0)
-                      {
-                        localObject4 = this.QGA;
-                        paramContext = (Context)localObject4;
-                        if (localObject4 == null)
-                        {
-                          paramContext = new b(getContext());
-                          this.QGA = paramContext;
-                        }
-                        this.QGA.QHN = true;
-                        localObject4 = paramContext.OVZ;
-                        localObject6 = getDrawableState();
-                        if (localDrawable1 == null) {
-                          break label4255;
-                        }
-                        localDrawable1.setBounds(0, 0, localDrawable1.getIntrinsicWidth(), localDrawable1.getIntrinsicHeight());
-                        localDrawable1.setState((int[])localObject6);
-                        localDrawable1.copyBounds((Rect)localObject4);
-                        localDrawable1.setCallback(this);
-                        paramContext.QHH = localDrawable1;
-                        paramContext.QHO = ((Rect)localObject4).width();
-                        paramContext.QHQ = ((Rect)localObject4).height();
-                        if (localDrawable2 == null) {
-                          break label4268;
-                        }
-                        localDrawable2.setBounds(0, 0, localDrawable2.getIntrinsicWidth(), localDrawable2.getIntrinsicHeight());
-                        localDrawable2.setState((int[])localObject6);
-                        localDrawable2.copyBounds((Rect)localObject4);
-                        localDrawable2.setCallback(this);
-                        paramContext.QHI = localDrawable2;
-                        paramContext.QHP = ((Rect)localObject4).width();
-                        paramContext.QHR = ((Rect)localObject4).height();
-                        this.QGB = -1;
-                        gZq();
-                      }
-                      setCompoundDrawablePadding(n);
-                      setInputTypeSingleLine(bool1);
-                      r(bool1, bool1, bool1);
-                      paramInt2 = i;
-                      if (bool1)
-                      {
-                        paramInt2 = i;
-                        if (getKeyListener() == null)
-                        {
-                          paramInt2 = i;
-                          if (i == -1) {
-                            paramInt2 = 3;
-                          }
-                        }
-                      }
-                      switch (paramInt2)
-                      {
-                      default: 
-                        if ((bool3) || (i3 != 0) || (i4 != 0) || (i5 != 0))
-                        {
-                          paramInt2 = 1;
-                          if ((paramInt2 == 0) && ((this.QHs == null) || ((this.QHs.Clf & 0xFFF) != 129))) {
-                            break label4317;
-                          }
-                          i = 1;
-                          if (i != 0) {
-                            locald.QIc = 3;
-                          }
-                          if (locald.BpJ != null) {
-                            setTextColor(locald.BpJ);
-                          }
-                          if (locald.QHY != null) {
-                            setHintTextColor(locald.QHY);
-                          }
-                          if (locald.QHZ != null) {
-                            setLinkTextColor(locald.QHZ);
-                          }
-                          if (locald.QHX != 0) {
-                            setHighlightColor(locald.QHX);
-                          }
-                          if (locald.mAk != -1)
-                          {
-                            this.QGM = locald.QGM;
-                            setRawTextSize$254d549(locald.mAk);
-                          }
-                          if (locald.QIa != null) {
-                            setTextLocales(locald.QIa);
-                          }
-                          if ((locald.QIc != -1) && (!locald.QIb)) {
-                            locald.lal = null;
-                          }
-                          a(locald.alr, locald.lal, locald.QIc, locald.QId, locald.QIe);
-                          if (locald.nYW != 0)
-                          {
-                            float f1 = locald.QGr;
-                            float f2 = locald.QGs;
-                            float f3 = locald.QGt;
-                            i = locald.nYW;
-                            this.ayn.setShadowLayer(f1, f2, f3, i);
-                            this.QGr = f1;
-                            this.QGs = f2;
-                            this.QGt = f3;
-                            this.nYW = i;
-                            if (this.QHs != null) {
-                              this.QHs.hag();
-                            }
-                            invalidate();
-                          }
-                          if (locald.QIg) {
-                            setElegantTextHeight(locald.QIh);
-                          }
-                          if (locald.QIi) {
-                            setFallbackLineSpacing(locald.QIj);
-                          }
-                          if (locald.QIk) {
-                            setLetterSpacing(locald.QIl);
-                          }
-                          if (locald.QIm != null) {
-                            setFontFeatureSettings(locald.QIm);
-                          }
-                          if (locald.QIn != null)
-                          {
-                            paramContext = locald.QIn;
-                            if (Build.VERSION.SDK_INT >= 26)
-                            {
-                              localObject4 = this.ayn.getFontVariationSettings();
-                              if ((paramContext != localObject4) && ((paramContext == null) || (!paramContext.equals(localObject4)))) {
-                                break label4323;
-                              }
-                            }
-                          }
-                          if (paramInt2 != 0) {
-                            setTransformationMethod(PasswordTransformationMethod.getInstance());
-                          }
-                          if (m < 0) {
-                            break label4356;
-                          }
-                          setFilters(new InputFilter[] { new InputFilter.LengthFilter(m) });
-                        }
-                        break;
-                      }
-                    }
-                    for (;;)
-                    {
-                      setText(paramAttributeSet, (TextView.BufferType)localObject3);
-                      if (this.mText == null) {
-                        this.mText = "";
-                      }
-                      if (this.OVq == null) {
-                        this.OVq = "";
-                      }
-                      if (localObject1 != null) {
-                        setHint((CharSequence)localObject1);
-                      }
-                      setClickable(true);
-                      setLongClickable(true);
-                      if (this.QHs != null) {
-                        this.QHs.gZP();
-                      }
-                      if (getImportantForAccessibility() == 0) {
-                        setImportantForAccessibility(1);
-                      }
-                      if (j >= 0) {
-                        setFirstBaselineToTopHeight(j);
-                      }
-                      if (k >= 0) {
-                        setLastBaselineToBottomHeight(k);
-                      }
-                      if (paramInt1 >= 0) {
-                        setLineHeight(paramInt1);
-                      }
-                      AppMethodBeat.o(205573);
-                      return;
-                      i3 = 0;
-                      break;
-                      i4 = 0;
-                      break label2474;
-                      i5 = 0;
-                      break label2484;
-                      bool7 = false;
-                      break label2503;
-                      bool7 = false;
-                      break label2519;
-                      label3809:
-                      paramInt2 = this.QHs.QIH.getInputType();
-                      break label2572;
-                      label3839:
-                      Object localObject5;
-                      if (localCharSequence != null)
-                      {
-                        gZL();
-                        this.QHs.QIH = DigitsKeyListener.getInstance(localCharSequence.toString());
-                        localObject5 = this.QHs;
-                        if (paramInt2 != 0) {}
-                        for (;;)
-                        {
-                          ((b)localObject5).Clf = paramInt2;
-                          break;
-                          paramInt2 = 1;
-                        }
-                      }
-                      if (paramInt2 != 0)
-                      {
-                        bO(paramInt2, true);
-                        if (!aox(paramInt2)) {}
-                        for (bool1 = true;; bool1 = false) {
-                          break;
-                        }
-                      }
-                      if (bool5)
-                      {
-                        gZL();
-                        this.QHs.QIH = DialerKeyListener.getInstance();
-                        this.QHs.Clf = 3;
-                        break label2579;
-                      }
-                      if (i2 != 0)
-                      {
-                        gZL();
-                        this.QHs.QIH = DigitsKeyListener.getInstance();
-                        paramInt2 = this.QHs.QIH.getInputType();
-                        this.QHs.Clf = paramInt2;
-                        break label2579;
-                      }
-                      if ((bool6) || (i1 != -1))
-                      {
-                        paramInt2 = 1;
-                        switch (i1)
-                        {
-                        default: 
-                          localObject5 = TextKeyListener.Capitalize.NONE;
-                        }
-                        for (;;)
-                        {
-                          gZL();
-                          this.QHs.QIH = TextKeyListener.getInstance(bool6, (TextKeyListener.Capitalize)localObject5);
-                          this.QHs.Clf = paramInt2;
-                          break;
-                          localObject5 = TextKeyListener.Capitalize.SENTENCES;
-                          paramInt2 = 16385;
-                          continue;
-                          localObject5 = TextKeyListener.Capitalize.WORDS;
-                          paramInt2 = 8193;
-                          continue;
-                          localObject5 = TextKeyListener.Capitalize.CHARACTERS;
-                          paramInt2 = 4097;
-                        }
-                      }
-                      if (bool4)
-                      {
-                        gZL();
-                        this.QHs.QIH = TextKeyListener.getInstance();
-                        this.QHs.Clf = 1;
-                        break label2579;
-                      }
-                      if (isTextSelectable())
-                      {
-                        if (this.QHs != null)
-                        {
-                          this.QHs.QIH = null;
-                          this.QHs.Clf = 0;
-                        }
-                        localObject3 = TextView.BufferType.SPANNABLE;
-                        setMovementMethod(com.tencent.mm.ui.widget.cedit.b.a.haX());
-                        break label2579;
-                      }
-                      if (this.QHs != null) {
-                        this.QHs.QIH = null;
-                      }
-                      localObject3 = TextView.BufferType.NORMAL;
-                      break label2579;
-                      label4212:
-                      if (((((b)localObject5).Clf & 0xF) != 2) || (i5 == 0)) {
-                        break label2655;
-                      }
-                      ((b)localObject5).Clf = (((b)localObject5).Clf & 0xFFFFF00F | 0x10);
-                      break label2655;
-                      paramInt2 = 0;
-                      break label2844;
-                      paramContext.QHQ = 0;
-                      paramContext.QHO = 0;
-                      break label2967;
-                      paramContext.QHR = 0;
-                      paramContext.QHP = 0;
-                      break label3034;
-                      setEllipsize(TextUtils.TruncateAt.START);
-                      break label3128;
-                      setEllipsize(TextUtils.TruncateAt.MIDDLE);
-                      break label3128;
-                      setEllipsize(TextUtils.TruncateAt.END);
-                      break label3128;
-                      paramInt2 = 0;
-                      break label3151;
-                      label4317:
-                      i = 0;
-                      break label3183;
-                      label4323:
-                      if ((!this.ayn.setFontVariationSettings(paramContext)) || (this.OVt == null)) {
-                        break label3570;
-                      }
-                      gLr();
-                      requestLayout();
-                      invalidate();
-                      break label3570;
-                      setFilters(QGj);
-                    }
-                  }
-                }
-              }
-            }
+          RectF localRectF = ((CursorAnchorInfo)localObject).getCharacterBounds(j + i);
+          if (localRectF != null) {
+            paramBundle[i] = localRectF;
           }
         }
-        Object localObject3 = paramAttributeSet;
-        paramAttributeSet = (AttributeSet)localObject1;
-        localObject1 = localObject3;
+        i += 1;
       }
-    }
-  }
-  
-  public final void beginBatchEdit()
-  {
-    AppMethodBeat.i(205744);
-    if (this.QHs != null) {
-      this.QHs.beginBatchEdit();
-    }
-    AppMethodBeat.o(205744);
-  }
-  
-  final void c(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(205784);
-    QGm = 0L;
-    b.h localh;
-    if (this.QHs == null)
-    {
-      localh = null;
-      if ((localh == null) || (localh.QIp == 0)) {
-        gZA();
-      }
-      if (localh != null)
-      {
-        localh.mContentChanged = true;
-        if (localh.QKp >= 0) {
-          break label113;
-        }
-        localh.QKp = paramInt1;
-      }
-    }
-    for (localh.QKq = (paramInt1 + paramInt2);; localh.QKq = Math.max(localh.QKq, paramInt1 + paramInt2 - localh.QKr))
-    {
-      localh.QKr += paramInt3 - paramInt2;
-      b(paramCharSequence, paramInt1, paramInt2, paramInt3);
-      AppMethodBeat.o(205784);
+      paramAccessibilityNodeInfo.getExtras().putParcelableArray(paramString, paramBundle);
+      AppMethodBeat.o(202356);
       return;
-      localh = this.QHs.QID;
-      break;
-      label113:
-      localh.QKp = Math.min(localh.QKp, paramInt1);
     }
+    AppMethodBeat.o(202356);
   }
   
-  final boolean c(MotionEvent paramMotionEvent, boolean paramBoolean)
+  public void addTextChangedListener(TextWatcher paramTextWatcher)
+  {
+    AppMethodBeat.i(202205);
+    if (this.mListeners == null) {
+      this.mListeners = new ArrayList();
+    }
+    this.mListeners.add(paramTextWatcher);
+    AppMethodBeat.o(202205);
+  }
+  
+  public final void append(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(201671);
+    int i = paramCharSequence.length();
+    if (!(this.mText instanceof Editable)) {
+      setText(this.mText, TextView.BufferType.EDITABLE);
+    }
+    ((Editable)this.mText).append(paramCharSequence, 0, i);
+    if ((this.YfH != 0) && (Linkify.addLinks(this.Yfs, this.YfH)) && (this.YfI) && (!iaz())) {
+      setMovementMethod(com.tencent.mm.ui.widget.cedit.b.c.ibX());
+    }
+    AppMethodBeat.o(201671);
+  }
+  
+  public void autofill(AutofillValue paramAutofillValue)
+  {
+    AppMethodBeat.i(202348);
+    if ((Build.VERSION.SDK_INT >= 26) && ((!paramAutofillValue.isText()) || (!iaw())))
+    {
+      Log.w("cmEdit.CMTextView", paramAutofillValue + " could not be autofilled into " + this);
+      AppMethodBeat.o(202348);
+      return;
+    }
+    CharSequence localCharSequence = null;
+    if (Build.VERSION.SDK_INT >= 26) {
+      localCharSequence = paramAutofillValue.getTextValue();
+    }
+    a(localCharSequence, this.Yft, true, 0);
+    paramAutofillValue = getText();
+    if ((paramAutofillValue instanceof Spannable)) {
+      Selection.setSelection((Spannable)paramAutofillValue, paramAutofillValue.length());
+    }
+    AppMethodBeat.o(202348);
+  }
+  
+  public final void axL(int paramInt)
+  {
+    AppMethodBeat.i(202438);
+    if (this.Ygi != null) {
+      this.Ygi.axL(paramInt);
+    }
+    AppMethodBeat.o(202438);
+  }
+  
+  final boolean b(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(205791);
+    AppMethodBeat.i(202284);
     boolean bool1;
-    if (this.QHq == -1)
+    if (this.Ygg == -1)
     {
-      this.QHq = paramMotionEvent.getPointerId(0);
-      this.QHr = paramBoolean;
+      this.Ygg = paramMotionEvent.getPointerId(0);
+      this.Ygh = paramBoolean;
       bool1 = true;
     }
     for (;;)
     {
       if ((paramMotionEvent.getActionMasked() == 1) || (paramMotionEvent.getActionMasked() == 3)) {
-        this.QHq = -1;
+        this.Ygg = -1;
       }
-      AppMethodBeat.o(205791);
+      AppMethodBeat.o(202284);
       return bool1;
-      if (this.QHq != paramMotionEvent.getPointerId(0))
+      if (this.Ygg != paramMotionEvent.getPointerId(0))
       {
         bool1 = bool2;
-        if (this.QHr)
+        if (this.Ygh)
         {
           bool1 = bool2;
           if (paramBoolean) {
@@ -4508,111 +4529,144 @@ public class CustomTextView
     }
   }
   
+  final void c(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(202233);
+    Yfc = 0L;
+    b.h localh;
+    if (this.Ygi == null)
+    {
+      localh = null;
+      if ((localh == null) || (localh.Yhf == 0)) {
+        iav();
+      }
+      if (localh != null)
+      {
+        localh.mContentChanged = true;
+        if (localh.Yjh >= 0) {
+          break label113;
+        }
+        localh.Yjh = paramInt1;
+      }
+    }
+    for (localh.Yji = (paramInt1 + paramInt2);; localh.Yji = Math.max(localh.Yji, paramInt1 + paramInt2 - localh.Yjj))
+    {
+      localh.Yjj += paramInt3 - paramInt2;
+      b(paramCharSequence, paramInt1, paramInt2, paramInt3);
+      AppMethodBeat.o(202233);
+      return;
+      localh = this.Ygi.Yht;
+      break;
+      label113:
+      localh.Yjh = Math.min(localh.Yjh, paramInt1);
+    }
+  }
+  
+  final float cS(float paramFloat)
+  {
+    AppMethodBeat.i(202478);
+    paramFloat = Math.max(0.0F, paramFloat - getTotalPaddingLeft());
+    paramFloat = Math.min(getWidth() - getTotalPaddingRight() - 1, paramFloat);
+    float f = getScrollX();
+    AppMethodBeat.o(202478);
+    return paramFloat + f;
+  }
+  
+  final int cT(float paramFloat)
+  {
+    AppMethodBeat.i(202481);
+    paramFloat = Math.max(0.0F, paramFloat - getTotalPaddingTop());
+    paramFloat = Math.min(getHeight() - getTotalPaddingBottom() - 1, paramFloat);
+    float f = getScrollY();
+    int i = getLayout().getLineForVertical((int)(paramFloat + f));
+    AppMethodBeat.o(202481);
+    return i;
+  }
+  
   public void cancelLongPress()
   {
-    AppMethodBeat.i(205797);
+    AppMethodBeat.i(202306);
     super.cancelLongPress();
-    if (this.QHs != null) {
-      this.QHs.PPd = true;
+    if (this.Ygi != null) {
+      this.Ygi.Xlf = true;
     }
-    AppMethodBeat.o(205797);
+    AppMethodBeat.o(202306);
   }
   
   public void clearComposingText()
   {
-    AppMethodBeat.i(205789);
+    AppMethodBeat.i(202278);
     if ((this.mText instanceof Spannable)) {
-      BaseInputConnection.removeComposingSpans(this.QGC);
+      BaseInputConnection.removeComposingSpans(this.Yfs);
     }
-    AppMethodBeat.o(205789);
+    AppMethodBeat.o(202278);
   }
   
   protected int computeHorizontalScrollRange()
   {
-    AppMethodBeat.i(205802);
-    if (this.OVt != null)
+    AppMethodBeat.i(202313);
+    if (this.WoF != null)
     {
-      if ((this.OSP) && ((this.Ku & 0x7) == 3))
+      if ((this.Wmc) && ((this.sK & 0x7) == 3))
       {
-        i = (int)this.OVt.getLineWidth(0);
-        AppMethodBeat.o(205802);
+        i = (int)this.WoF.getLineWidth(0);
+        AppMethodBeat.o(202313);
         return i;
       }
-      i = this.OVt.getWidth();
-      AppMethodBeat.o(205802);
+      i = this.WoF.getWidth();
+      AppMethodBeat.o(202313);
       return i;
     }
     int i = super.computeHorizontalScrollRange();
-    AppMethodBeat.o(205802);
+    AppMethodBeat.o(202313);
     return i;
   }
   
   public void computeScroll()
   {
-    AppMethodBeat.i(205762);
+    AppMethodBeat.i(202158);
     if ((this.mScroller != null) && (this.mScroller.computeScrollOffset())) {
       postInvalidate();
     }
-    AppMethodBeat.o(205762);
+    AppMethodBeat.o(202158);
   }
   
   protected int computeVerticalScrollExtent()
   {
-    AppMethodBeat.i(205804);
+    AppMethodBeat.i(202316);
     int i = getHeight();
     int j = getCompoundPaddingTop();
     int k = getCompoundPaddingBottom();
-    AppMethodBeat.o(205804);
+    AppMethodBeat.o(202316);
     return i - j - k;
   }
   
   protected int computeVerticalScrollRange()
   {
-    AppMethodBeat.i(205803);
-    if (this.OVt != null)
+    AppMethodBeat.i(202314);
+    if (this.WoF != null)
     {
-      i = this.OVt.getHeight();
-      AppMethodBeat.o(205803);
+      i = this.WoF.getHeight();
+      AppMethodBeat.o(202314);
       return i;
     }
     int i = super.computeVerticalScrollRange();
-    AppMethodBeat.o(205803);
+    AppMethodBeat.o(202314);
     return i;
   }
   
-  final float cy(float paramFloat)
+  protected boolean dC()
   {
-    AppMethodBeat.i(205845);
-    paramFloat = Math.max(0.0F, paramFloat - getTotalPaddingLeft());
-    paramFloat = Math.min(getWidth() - getTotalPaddingRight() - 1, paramFloat);
-    float f = getScrollX();
-    AppMethodBeat.o(205845);
-    return paramFloat + f;
-  }
-  
-  final int cz(float paramFloat)
-  {
-    AppMethodBeat.i(205846);
-    paramFloat = Math.max(0.0F, paramFloat - getTotalPaddingTop());
-    paramFloat = Math.min(getHeight() - getTotalPaddingBottom() - 1, paramFloat);
-    float f = getScrollY();
-    int i = getLayout().getLineForVertical((int)(paramFloat + f));
-    AppMethodBeat.o(205846);
-    return i;
-  }
-  
-  public final boolean didTouchFocusSelect()
-  {
-    return (this.QHs != null) && (this.QHs.QIG);
+    return true;
   }
   
   public void drawableHotspotChanged(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(205677);
+    AppMethodBeat.i(201683);
     super.drawableHotspotChanged(paramFloat1, paramFloat2);
-    if (this.QGA != null)
+    if (this.Yfq != null)
     {
-      Drawable[] arrayOfDrawable = this.QGA.QHE;
+      Drawable[] arrayOfDrawable = this.Yfq.Ygu;
       int j = arrayOfDrawable.length;
       int i = 0;
       while (i < j)
@@ -4624,20 +4678,20 @@ public class CustomTextView
         i += 1;
       }
     }
-    AppMethodBeat.o(205677);
+    AppMethodBeat.o(201683);
   }
   
   protected void drawableStateChanged()
   {
-    AppMethodBeat.i(205676);
+    AppMethodBeat.i(201679);
     super.drawableStateChanged();
-    if (((this.BpJ != null) && (this.BpJ.isStateful())) || ((this.QGn != null) && (this.QGn.isStateful())) || ((this.QGo != null) && (this.QGo.isStateful()))) {
+    if (((this.Hkc != null) && (this.Hkc.isStateful())) || ((this.Yfd != null) && (this.Yfd.isStateful())) || ((this.Yfe != null) && (this.Yfe.isStateful()))) {
       updateTextColors();
     }
-    if (this.QGA != null)
+    if (this.Yfq != null)
     {
       int[] arrayOfInt = getDrawableState();
-      Drawable[] arrayOfDrawable = this.QGA.QHE;
+      Drawable[] arrayOfDrawable = this.Yfq.Ygu;
       int j = arrayOfDrawable.length;
       int i = 0;
       while (i < j)
@@ -4649,12 +4703,12 @@ public class CustomTextView
         i += 1;
       }
     }
-    AppMethodBeat.o(205676);
+    AppMethodBeat.o(201679);
   }
   
   final void e(Editable paramEditable)
   {
-    AppMethodBeat.i(205782);
+    AppMethodBeat.i(202224);
     if (this.mListeners != null)
     {
       ArrayList localArrayList = this.mListeners;
@@ -4666,30 +4720,12 @@ public class CustomTextView
         i += 1;
       }
     }
-    AppMethodBeat.o(205782);
-  }
-  
-  public final void endBatchEdit()
-  {
-    AppMethodBeat.i(205745);
-    if (this.QHs != null) {
-      this.QHs.endBatchEdit();
-    }
-    AppMethodBeat.o(205745);
-  }
-  
-  public final boolean extractText(ExtractedTextRequest paramExtractedTextRequest, ExtractedText paramExtractedText)
-  {
-    AppMethodBeat.i(205741);
-    gZL();
-    boolean bool = this.QHs.a(paramExtractedTextRequest, -1, -1, -1, paramExtractedText);
-    AppMethodBeat.o(205741);
-    return bool;
+    AppMethodBeat.o(202224);
   }
   
   public void findViewsWithText(ArrayList<View> paramArrayList, CharSequence paramCharSequence, int paramInt)
   {
-    AppMethodBeat.i(205805);
+    AppMethodBeat.i(202318);
     super.findViewsWithText(paramArrayList, paramCharSequence, paramInt);
     if ((!paramArrayList.contains(this)) && ((paramInt & 0x1) != 0) && (!TextUtils.isEmpty(paramCharSequence)) && (!TextUtils.isEmpty(this.mText)))
     {
@@ -4698,395 +4734,155 @@ public class CustomTextView
         paramArrayList.add(this);
       }
     }
-    AppMethodBeat.o(205805);
+    AppMethodBeat.o(202318);
   }
   
   public View focusSearch(int paramInt)
   {
-    AppMethodBeat.i(205739);
+    AppMethodBeat.i(201987);
     try
     {
       View localView = super.focusSearch(paramInt);
-      AppMethodBeat.o(205739);
+      AppMethodBeat.o(201987);
       return localView;
     }
     catch (Throwable localThrowable)
     {
       Log.e("cmEdit.CMTextView", "focusSearch err", new Object[] { localThrowable });
-      AppMethodBeat.o(205739);
+      AppMethodBeat.o(201987);
     }
     return null;
   }
   
-  final void gZA()
-  {
-    AppMethodBeat.i(205783);
-    invalidate();
-    int i = getSelectionStart();
-    if ((i >= 0) || ((this.Ku & 0x70) == 80)) {
-      gZt();
-    }
-    gZw();
-    if (i >= 0)
-    {
-      this.QHh = true;
-      if (this.QHs != null) {
-        this.QHs.haz();
-      }
-      bringPointIntoView(i);
-    }
-    AppMethodBeat.o(205783);
-  }
-  
-  final boolean gZB()
-  {
-    AppMethodBeat.i(205796);
-    if (((this.mText instanceof Editable)) && (onCheckIsTextEditor()) && (isEnabled()))
-    {
-      AppMethodBeat.o(205796);
-      return true;
-    }
-    AppMethodBeat.o(205796);
-    return false;
-  }
-  
-  final boolean gZC()
-  {
-    AppMethodBeat.i(205807);
-    if ((this.mText.length() != 0) && (this.QHs != null) && (this.QHs.QIw))
-    {
-      AppMethodBeat.o(205807);
-      return true;
-    }
-    AppMethodBeat.o(205807);
-    return false;
-  }
-  
-  final boolean gZD()
-  {
-    AppMethodBeat.i(205808);
-    if ((this.QGG == null) || (!this.QGG.canSelectArbitrarily()))
-    {
-      AppMethodBeat.o(205808);
-      return false;
-    }
-    if ((gZB()) || ((isTextSelectable()) && ((this.mText instanceof Spannable)) && (isEnabled())))
-    {
-      AppMethodBeat.o(205808);
-      return true;
-    }
-    AppMethodBeat.o(205808);
-    return false;
-  }
-  
-  public final void gZE()
-  {
-    AppMethodBeat.i(205835);
-    if (this.QHs != null) {
-      this.QHs.gZE();
-    }
-    AppMethodBeat.o(205835);
-  }
-  
-  final boolean gZF()
-  {
-    AppMethodBeat.i(205837);
-    if ((this.QGH instanceof PasswordTransformationMethod))
-    {
-      AppMethodBeat.o(205837);
-      return false;
-    }
-    if ((this.mText.length() > 0) && (hasSelection()) && ((this.mText instanceof Editable)) && (this.QHs != null) && (this.QHs.QIH != null))
-    {
-      AppMethodBeat.o(205837);
-      return true;
-    }
-    AppMethodBeat.o(205837);
-    return false;
-  }
-  
-  final boolean gZG()
-  {
-    AppMethodBeat.i(205838);
-    if ((this.QGH instanceof PasswordTransformationMethod))
-    {
-      AppMethodBeat.o(205838);
-      return false;
-    }
-    if ((this.mText.length() > 0) && (hasSelection()) && (this.QHs != null))
-    {
-      AppMethodBeat.o(205838);
-      return true;
-    }
-    AppMethodBeat.o(205838);
-    return false;
-  }
-  
-  final boolean gZH()
-  {
-    AppMethodBeat.i(205839);
-    if (((this.mText instanceof Editable)) && (this.QHs != null) && (this.QHs.QIH != null) && (getSelectionStart() >= 0) && (getSelectionEnd() >= 0) && (getClipboardManagerForUser().hasPrimaryClip()))
-    {
-      AppMethodBeat.o(205839);
-      return true;
-    }
-    AppMethodBeat.o(205839);
-    return false;
-  }
-  
-  final boolean gZI()
-  {
-    AppMethodBeat.i(205840);
-    if ((gZC()) && (!(this.QGH instanceof PasswordTransformationMethod)) && ((getSelectionStart() != 0) || (getSelectionEnd() != this.mText.length())))
-    {
-      AppMethodBeat.o(205840);
-      return true;
-    }
-    AppMethodBeat.o(205840);
-    return false;
-  }
-  
-  public final boolean gZJ()
-  {
-    AppMethodBeat.i(205841);
-    if (this.QHs != null) {
-      aoA(500);
-    }
-    int i = this.mText.length();
-    Selection.setSelection(this.QGC, 0, i);
-    if (i > 0)
-    {
-      AppMethodBeat.o(205841);
-      return true;
-    }
-    AppMethodBeat.o(205841);
-    return false;
-  }
-  
-  final boolean gZK()
-  {
-    if (this.QHs == null) {}
-    b.h localh;
-    do
-    {
-      return false;
-      localh = this.QHs.QID;
-      if (localh == null) {
-        break;
-      }
-    } while (localh.QIp <= 0);
-    return true;
-    return this.QHs.QIP;
-  }
-  
-  public final boolean gZN()
-  {
-    AppMethodBeat.i(205858);
-    if ((getReuseItems().size() > 0) && (Build.BRAND != null) && (getReuseBrands().contains(Build.BRAND.toLowerCase())) && (Build.VERSION.SDK_INT >= 23))
-    {
-      AppMethodBeat.o(205858);
-      return true;
-    }
-    AppMethodBeat.o(205858);
-    return false;
-  }
-  
-  final void gZr()
-  {
-    float f1 = 1.0F;
-    AppMethodBeat.i(205707);
-    if (this.QHh)
-    {
-      gZs();
-      AppMethodBeat.o(205707);
-      return;
-    }
-    int i = getCompoundPaddingLeft();
-    int j = getExtendedPaddingTop();
-    j = CW(true) + j;
-    if (this.QHs.QIY == null) {}
-    for (;;)
-    {
-      float f2;
-      synchronized (alw)
-      {
-        f2 = (float)Math.ceil(this.ayn.getStrokeWidth());
-        if (f2 >= 1.0F) {
-          break label246;
-        }
-        f1 /= 2.0F;
-        this.QHf.computeBounds(alw, false);
-        invalidate((int)Math.floor(i + alw.left - f1), (int)Math.floor(j + alw.top - f1), (int)Math.ceil(i + alw.right + f1), (int)Math.ceil(f1 + (j + alw.bottom)));
-        AppMethodBeat.o(205707);
-        return;
-      }
-      ??? = this.QHs.QIY.getBounds();
-      invalidate(((Rect)???).left + i, ((Rect)???).top + j, i + ((Rect)???).right, ((Rect)???).bottom + j);
-      AppMethodBeat.o(205707);
-      return;
-      label246:
-      f1 = f2;
-    }
-  }
-  
-  final void gZs()
-  {
-    AppMethodBeat.i(205708);
-    int i = getSelectionEnd();
-    aV(i, i, i);
-    AppMethodBeat.o(205708);
-  }
-  
-  final int gZy()
-  {
-    AppMethodBeat.i(205765);
-    int i = getCompoundPaddingLeft();
-    int j = getScrollX();
-    AppMethodBeat.o(205765);
-    return i - j;
-  }
-  
-  final int gZz()
-  {
-    AppMethodBeat.i(205766);
-    int j = getExtendedPaddingTop() - getScrollY();
-    int i = j;
-    if ((this.Ku & 0x70) != 48) {
-      i = j + CW(false);
-    }
-    AppMethodBeat.o(205766);
-    return i;
-  }
-  
   public CharSequence getAccessibilityClassName()
   {
-    AppMethodBeat.i(205818);
+    AppMethodBeat.i(202345);
     String str = CustomTextView.class.getName();
-    AppMethodBeat.o(205818);
+    AppMethodBeat.o(202345);
     return str;
   }
   
   public int getAccessibilitySelectionEnd()
   {
-    AppMethodBeat.i(205856);
+    AppMethodBeat.i(202532);
     int i = getSelectionEnd();
-    AppMethodBeat.o(205856);
+    AppMethodBeat.o(202532);
     return i;
   }
   
   public int getAccessibilitySelectionStart()
   {
-    AppMethodBeat.i(205855);
+    AppMethodBeat.i(202530);
     int i = getSelectionStart();
-    AppMethodBeat.o(205855);
+    AppMethodBeat.o(202530);
     return i;
   }
   
   public TextView getAdaptText()
   {
-    return this.QHu;
+    return this.Ygk;
   }
   
   public int getAutofillType()
   {
-    AppMethodBeat.i(205820);
-    if (gZB())
+    AppMethodBeat.i(202350);
+    if (iaw())
     {
-      AppMethodBeat.o(205820);
+      AppMethodBeat.o(202350);
       return 1;
     }
-    AppMethodBeat.o(205820);
+    AppMethodBeat.o(202350);
     return 0;
   }
   
   public AutofillValue getAutofillValue()
   {
-    AppMethodBeat.i(205821);
-    if (gZB())
+    AppMethodBeat.i(202352);
+    if (iaw())
     {
-      Object localObject = com.tencent.mm.ui.widget.cedit.util.c.n(getText(), 100000);
+      Object localObject = com.tencent.mm.ui.widget.cedit.util.c.p(getText(), 100000);
       if (Build.VERSION.SDK_INT >= 26)
       {
         localObject = AutofillValue.forText((CharSequence)localObject);
-        AppMethodBeat.o(205821);
+        AppMethodBeat.o(202352);
         return localObject;
       }
     }
-    AppMethodBeat.o(205821);
+    AppMethodBeat.o(202352);
     return null;
   }
   
   public int getBaseline()
   {
-    AppMethodBeat.i(205730);
-    if (this.OVt == null)
+    AppMethodBeat.i(201918);
+    if (this.WoF == null)
     {
       i = super.getBaseline();
-      AppMethodBeat.o(205730);
+      AppMethodBeat.o(201918);
       return i;
     }
     int i = getBaselineOffset();
-    int j = this.OVt.getLineBaseline(0);
-    AppMethodBeat.o(205730);
+    int j = this.WoF.getLineBaseline(0);
+    AppMethodBeat.o(201918);
     return i + j;
   }
   
   int getBaselineOffset()
   {
-    AppMethodBeat.i(205731);
+    AppMethodBeat.i(201920);
     int i = 0;
-    if ((this.Ku & 0x70) != 48) {
-      i = CW(true);
+    if ((this.sK & 0x70) != 48) {
+      i = Hs(true);
     }
     int j = getExtendedPaddingTop();
-    AppMethodBeat.o(205731);
+    AppMethodBeat.o(201920);
     return i + j;
   }
   
   protected int getBottomPaddingOffset()
   {
-    AppMethodBeat.i(205718);
-    int i = (int)Math.max(0.0F, this.QGt + this.QGr);
-    AppMethodBeat.o(205718);
+    AppMethodBeat.i(201827);
+    int i = (int)Math.max(0.0F, this.Yfj + this.Yfh);
+    AppMethodBeat.o(201827);
     return i;
   }
   
   final ClipboardManager getClipboardManagerForUser()
   {
-    AppMethodBeat.i(205812);
+    AppMethodBeat.i(202335);
     if (Build.VERSION.SDK_INT >= 23)
     {
       getContext().getPackageName();
-      localClipboardManager = (ClipboardManager)bj(ClipboardManager.class);
-      AppMethodBeat.o(205812);
+      localClipboardManager = (ClipboardManager)bF(ClipboardManager.class);
+      AppMethodBeat.o(202335);
       return localClipboardManager;
     }
     ClipboardManager localClipboardManager = (ClipboardManager)getContext().getSystemService("clipboard");
-    AppMethodBeat.o(205812);
+    AppMethodBeat.o(202335);
     return localClipboardManager;
   }
   
   public int getCompoundDrawablePadding()
   {
-    b localb = this.QGA;
+    b localb = this.Yfq;
     if (localb != null) {
-      return localb.OWm;
+      return localb.Wpy;
     }
     return 0;
   }
   
   public BlendMode getCompoundDrawableTintBlendMode()
   {
-    if (this.QGA != null) {
-      return this.QGA.QHF;
+    if (this.Yfq != null) {
+      return this.Yfq.Ygv;
     }
     return null;
   }
   
   public ColorStateList getCompoundDrawableTintList()
   {
-    if (this.QGA != null) {
-      return this.QGA.Kr;
+    if (this.Yfq != null) {
+      return this.Yfq.jE;
     }
     return null;
   }
@@ -5098,152 +4894,152 @@ public class CustomTextView
   
   public Drawable[] getCompoundDrawables()
   {
-    AppMethodBeat.i(205601);
-    Object localObject = this.QGA;
+    AppMethodBeat.i(201456);
+    Object localObject = this.Yfq;
     if (localObject != null)
     {
-      localObject = (Drawable[])((b)localObject).QHE.clone();
-      AppMethodBeat.o(205601);
+      localObject = (Drawable[])((b)localObject).Ygu.clone();
+      AppMethodBeat.o(201456);
       return localObject;
     }
-    AppMethodBeat.o(205601);
+    AppMethodBeat.o(201456);
     return new Drawable[] { null, null, null, null };
   }
   
   public Drawable[] getCompoundDrawablesRelative()
   {
-    b localb = this.QGA;
+    b localb = this.Yfq;
     if (localb != null) {
-      return new Drawable[] { localb.QHH, localb.QHE[1], localb.QHI, localb.QHE[3] };
+      return new Drawable[] { localb.Ygx, localb.Ygu[1], localb.Ygy, localb.Ygu[3] };
     }
     return new Drawable[] { null, null, null, null };
   }
   
   public int getCompoundPaddingBottom()
   {
-    AppMethodBeat.i(205587);
-    b localb = this.QGA;
-    if ((localb == null) || (localb.QHE[3] == null))
+    AppMethodBeat.i(201412);
+    b localb = this.Yfq;
+    if ((localb == null) || (localb.Ygu[3] == null))
     {
       i = getPaddingBottom();
-      AppMethodBeat.o(205587);
+      AppMethodBeat.o(201412);
       return i;
     }
     int i = getPaddingBottom();
-    int j = localb.OWm;
-    int k = localb.OWf;
-    AppMethodBeat.o(205587);
+    int j = localb.Wpy;
+    int k = localb.Wpr;
+    AppMethodBeat.o(201412);
     return k + (i + j);
   }
   
   public int getCompoundPaddingEnd()
   {
-    AppMethodBeat.i(205591);
+    AppMethodBeat.i(201418);
     switch (getLayoutDirection())
     {
     default: 
       i = getCompoundPaddingRight();
-      AppMethodBeat.o(205591);
+      AppMethodBeat.o(201418);
       return i;
     }
     int i = getCompoundPaddingLeft();
-    AppMethodBeat.o(205591);
+    AppMethodBeat.o(201418);
     return i;
   }
   
   public int getCompoundPaddingLeft()
   {
-    AppMethodBeat.i(205588);
-    b localb = this.QGA;
-    if ((localb == null) || (localb.QHE[0] == null))
+    AppMethodBeat.i(201413);
+    b localb = this.Yfq;
+    if ((localb == null) || (localb.Ygu[0] == null))
     {
       i = getPaddingLeft();
-      AppMethodBeat.o(205588);
+      AppMethodBeat.o(201413);
       return i;
     }
     int i = getPaddingLeft();
-    int j = localb.OWm;
-    int k = localb.OWg;
-    AppMethodBeat.o(205588);
+    int j = localb.Wpy;
+    int k = localb.Wps;
+    AppMethodBeat.o(201413);
     return k + (i + j);
   }
   
   public int getCompoundPaddingRight()
   {
-    AppMethodBeat.i(205589);
-    b localb = this.QGA;
-    if ((localb == null) || (localb.QHE[2] == null))
+    AppMethodBeat.i(201414);
+    b localb = this.Yfq;
+    if ((localb == null) || (localb.Ygu[2] == null))
     {
       i = getPaddingRight();
-      AppMethodBeat.o(205589);
+      AppMethodBeat.o(201414);
       return i;
     }
     int i = getPaddingRight();
-    int j = localb.OWm;
-    int k = localb.OWh;
-    AppMethodBeat.o(205589);
+    int j = localb.Wpy;
+    int k = localb.Wpt;
+    AppMethodBeat.o(201414);
     return k + (i + j);
   }
   
   public int getCompoundPaddingStart()
   {
-    AppMethodBeat.i(205590);
+    AppMethodBeat.i(201416);
     switch (getLayoutDirection())
     {
     default: 
       i = getCompoundPaddingLeft();
-      AppMethodBeat.o(205590);
+      AppMethodBeat.o(201416);
       return i;
     }
     int i = getCompoundPaddingRight();
-    AppMethodBeat.o(205590);
+    AppMethodBeat.o(201416);
     return i;
   }
   
   public int getCompoundPaddingTop()
   {
-    AppMethodBeat.i(205586);
-    b localb = this.QGA;
-    if ((localb == null) || (localb.QHE[1] == null))
+    AppMethodBeat.i(201411);
+    b localb = this.Yfq;
+    if ((localb == null) || (localb.Ygu[1] == null))
     {
       i = getPaddingTop();
-      AppMethodBeat.o(205586);
+      AppMethodBeat.o(201411);
       return i;
     }
     int i = getPaddingTop();
-    int j = localb.OWm;
-    int k = localb.OWe;
-    AppMethodBeat.o(205586);
+    int j = localb.Wpy;
+    int k = localb.Wpq;
+    AppMethodBeat.o(201411);
     return k + (i + j);
   }
   
   public final int getCurrentHintTextColor()
   {
-    if (this.QGn != null) {
-      return this.QGp;
+    if (this.Yfd != null) {
+      return this.Yff;
     }
-    return this.OVm;
+    return this.Woy;
   }
   
   public final int getCurrentTextColor()
   {
-    return this.OVm;
+    return this.Woy;
   }
   
   public ActionMode.Callback getCustomInsertionActionModeCallback()
   {
-    if (this.QHs == null) {
+    if (this.Ygi == null) {
       return null;
     }
-    return this.QHs.QJg;
+    return this.Ygi.YhW;
   }
   
   public ActionMode.Callback getCustomSelectionActionModeCallback()
   {
-    if (this.QHs == null) {
+    if (this.Ygi == null) {
       return null;
     }
-    return this.QHs.QJf;
+    return this.Ygi.YhV;
   }
   
   protected boolean getDefaultEditable()
@@ -5266,138 +5062,138 @@ public class CustomTextView
   
   public b getEditor()
   {
-    return this.QHs;
+    return this.Ygi;
   }
   
   @ViewDebug.ExportedProperty
   public TextUtils.TruncateAt getEllipsize()
   {
-    return this.OVp;
+    return this.WoB;
   }
   
   public int getExtendedPaddingBottom()
   {
-    AppMethodBeat.i(205593);
-    if (this.OVx != 1)
+    AppMethodBeat.i(201430);
+    if (this.WoJ != 1)
     {
       i = getCompoundPaddingBottom();
-      AppMethodBeat.o(205593);
+      AppMethodBeat.o(201430);
       return i;
     }
-    if (this.OVt == null) {
-      gLs();
+    if (this.WoF == null) {
+      hKt();
     }
-    if (this.OVt.getLineCount() <= this.OVw)
+    if (this.WoF.getLineCount() <= this.WoI)
     {
       i = getCompoundPaddingBottom();
-      AppMethodBeat.o(205593);
+      AppMethodBeat.o(201430);
       return i;
     }
     int j = getCompoundPaddingTop();
     int i = getCompoundPaddingBottom();
     j = getHeight() - j - i;
-    int k = this.OVt.getLineTop(this.OVw);
+    int k = this.WoF.getLineTop(this.WoI);
     if (k >= j)
     {
-      AppMethodBeat.o(205593);
+      AppMethodBeat.o(201430);
       return i;
     }
-    int m = this.Ku & 0x70;
+    int m = this.sK & 0x70;
     if (m == 48)
     {
-      AppMethodBeat.o(205593);
+      AppMethodBeat.o(201430);
       return i + j - k;
     }
     if (m == 80)
     {
-      AppMethodBeat.o(205593);
+      AppMethodBeat.o(201430);
       return i;
     }
     j = (j - k) / 2;
-    AppMethodBeat.o(205593);
+    AppMethodBeat.o(201430);
     return i + j;
   }
   
   public int getExtendedPaddingTop()
   {
-    AppMethodBeat.i(205592);
-    if (this.OVx != 1)
+    AppMethodBeat.i(201423);
+    if (this.WoJ != 1)
     {
       i = getCompoundPaddingTop();
-      AppMethodBeat.o(205592);
+      AppMethodBeat.o(201423);
       return i;
     }
-    if (this.OVt == null) {
-      gLs();
+    if (this.WoF == null) {
+      hKt();
     }
-    if (this.OVt.getLineCount() <= this.OVw)
+    if (this.WoF.getLineCount() <= this.WoI)
     {
       i = getCompoundPaddingTop();
-      AppMethodBeat.o(205592);
+      AppMethodBeat.o(201423);
       return i;
     }
     int i = getCompoundPaddingTop();
     int j = getCompoundPaddingBottom();
     j = getHeight() - i - j;
-    int k = this.OVt.getLineTop(this.OVw);
+    int k = this.WoF.getLineTop(this.WoI);
     if (k >= j)
     {
-      AppMethodBeat.o(205592);
+      AppMethodBeat.o(201423);
       return i;
     }
-    int m = this.Ku & 0x70;
+    int m = this.sK & 0x70;
     if (m == 48)
     {
-      AppMethodBeat.o(205592);
+      AppMethodBeat.o(201423);
       return i;
     }
     if (m == 80)
     {
-      AppMethodBeat.o(205592);
+      AppMethodBeat.o(201423);
       return i + j - k;
     }
     j = (j - k) / 2;
-    AppMethodBeat.o(205592);
+    AppMethodBeat.o(201423);
     return i + j;
   }
   
   public InputFilter[] getFilters()
   {
-    return this.QHc;
+    return this.YfS;
   }
   
   public int getFirstBaselineToTopHeight()
   {
-    AppMethodBeat.i(205610);
+    AppMethodBeat.i(201485);
     int i = getPaddingTop();
     int j = getPaint().getFontMetricsInt().top;
-    AppMethodBeat.o(205610);
+    AppMethodBeat.o(201485);
     return i - j;
   }
   
   public void getFocusedRect(Rect paramRect)
   {
-    AppMethodBeat.i(205728);
-    if (this.OVt == null)
+    AppMethodBeat.i(201913);
+    if (this.WoF == null)
     {
       super.getFocusedRect(paramRect);
-      AppMethodBeat.o(205728);
+      AppMethodBeat.o(201913);
       return;
     }
     int i = getSelectionEnd();
     if (i < 0)
     {
       super.getFocusedRect(paramRect);
-      AppMethodBeat.o(205728);
+      AppMethodBeat.o(201913);
       return;
     }
     int j = getSelectionStart();
     if ((j < 0) || (j >= i))
     {
-      j = this.OVt.getLineForOffset(i);
-      paramRect.top = this.OVt.getLineTop(j);
-      paramRect.bottom = this.OVt.getLineBottom(j);
-      paramRect.left = ((int)this.OVt.getPrimaryHorizontal(i) - 2);
+      j = this.WoF.getLineForOffset(i);
+      paramRect.top = this.WoF.getLineTop(j);
+      paramRect.bottom = this.WoF.getLineBottom(j);
+      paramRect.left = ((int)this.WoF.getPrimaryHorizontal(i) - 2);
       paramRect.right = (paramRect.left + 4);
     }
     for (;;)
@@ -5405,86 +5201,86 @@ public class CustomTextView
       int k = getCompoundPaddingLeft();
       j = getExtendedPaddingTop();
       i = j;
-      if ((this.Ku & 0x70) != 48) {
-        i = j + CW(false);
+      if ((this.sK & 0x70) != 48) {
+        i = j + Hs(false);
       }
       paramRect.offset(k, i);
       paramRect.bottom = (getExtendedPaddingBottom() + paramRect.bottom);
-      AppMethodBeat.o(205728);
+      AppMethodBeat.o(201913);
       return;
-      k = this.OVt.getLineForOffset(j);
-      int m = this.OVt.getLineForOffset(i);
-      paramRect.top = this.OVt.getLineTop(k);
-      paramRect.bottom = this.OVt.getLineBottom(m);
+      k = this.WoF.getLineForOffset(j);
+      int m = this.WoF.getLineForOffset(i);
+      paramRect.top = this.WoF.getLineTop(k);
+      paramRect.bottom = this.WoF.getLineBottom(m);
       if (k == m)
       {
-        paramRect.left = ((int)this.OVt.getPrimaryHorizontal(j));
-        paramRect.right = ((int)this.OVt.getPrimaryHorizontal(i));
+        paramRect.left = ((int)this.WoF.getPrimaryHorizontal(j));
+        paramRect.right = ((int)this.WoF.getPrimaryHorizontal(i));
         continue;
       }
-      if (this.QHh)
+      if (this.YfX)
       {
-        if (this.QHf == null) {
-          this.QHf = new Path();
+        if (this.YfV == null) {
+          this.YfV = new Path();
         }
-        this.QHf.reset();
-        this.OVt.getSelectionPath(j, i, this.QHf);
-        this.QHh = false;
+        this.YfV.reset();
+        this.WoF.getSelectionPath(j, i, this.YfV);
+        this.YfX = false;
       }
-      synchronized (alw)
+      synchronized (rH)
       {
-        this.QHf.computeBounds(alw, true);
-        paramRect.left = ((int)alw.left - 1);
-        paramRect.right = ((int)alw.right + 1);
+        this.YfV.computeBounds(rH, true);
+        paramRect.left = ((int)rH.left - 1);
+        paramRect.right = ((int)rH.right + 1);
       }
     }
   }
   
   public String getFontFeatureSettings()
   {
-    AppMethodBeat.i(205644);
-    String str = this.ayn.getFontFeatureSettings();
-    AppMethodBeat.o(205644);
+    AppMethodBeat.i(201567);
+    String str = this.wi.getFontFeatureSettings();
+    AppMethodBeat.o(201567);
     return str;
   }
   
   public String getFontVariationSettings()
   {
-    AppMethodBeat.i(205645);
+    AppMethodBeat.i(201568);
     if (Build.VERSION.SDK_INT >= 26)
     {
-      String str = this.ayn.getFontVariationSettings();
-      AppMethodBeat.o(205645);
+      String str = this.wi.getFontVariationSettings();
+      AppMethodBeat.o(201568);
       return str;
     }
-    AppMethodBeat.o(205645);
+    AppMethodBeat.o(201568);
     return "";
   }
   
   public boolean getFreezesText()
   {
-    return this.QGq;
+    return this.Yfg;
   }
   
   public int getGravity()
   {
-    return this.Ku;
+    return this.sK;
   }
   
   public int getHighlightColor()
   {
-    return this.oEF;
+    return this.rGp;
   }
   
   @ViewDebug.CapturedViewProperty
   public CharSequence getHint()
   {
-    return this.QGE;
+    return this.Yfu;
   }
   
   public final ColorStateList getHintTextColors()
   {
-    return this.QGn;
+    return this.Yfd;
   }
   
   public int getHorizontalOffsetForDrawables()
@@ -5494,99 +5290,99 @@ public class CustomTextView
   
   public boolean getHorizontallyScrolling()
   {
-    return this.QGQ;
+    return this.YfG;
   }
   
   public int getImeActionId()
   {
-    if ((this.QHs != null) && (this.QHs.QIC != null)) {
-      return this.QHs.QIC.imeActionId;
+    if ((this.Ygi != null) && (this.Ygi.Yhs != null)) {
+      return this.Ygi.Yhs.YiZ;
     }
     return 0;
   }
   
   public CharSequence getImeActionLabel()
   {
-    if ((this.QHs != null) && (this.QHs.QIC != null)) {
-      return this.QHs.QIC.QKh;
+    if ((this.Ygi != null) && (this.Ygi.Yhs != null)) {
+      return this.Ygi.Yhs.YiY;
     }
     return null;
   }
   
   public LocaleList getImeHintLocales()
   {
-    if (this.QHs == null) {}
-    while (this.QHs.QIC == null) {
+    if (this.Ygi == null) {}
+    while (this.Ygi.Yhs == null) {
       return null;
     }
-    return this.QHs.QIC.QKk;
+    return this.Ygi.Yhs.Yjc;
   }
   
   public int getImeOptions()
   {
-    if ((this.QHs != null) && (this.QHs.QIC != null)) {
-      return this.QHs.QIC.imeOptions;
+    if ((this.Ygi != null) && (this.Ygi.Yhs != null)) {
+      return this.Ygi.Yhs.nlD;
     }
     return 0;
   }
   
   public boolean getIncludeFontPadding()
   {
-    return this.OVD;
+    return this.WoP;
   }
   
   public Bundle getInputExtras(boolean paramBoolean)
   {
-    AppMethodBeat.i(205700);
-    if ((this.QHs == null) && (!paramBoolean))
+    AppMethodBeat.i(201766);
+    if ((this.Ygi == null) && (!paramBoolean))
     {
-      AppMethodBeat.o(205700);
+      AppMethodBeat.o(201766);
       return null;
     }
-    gZL();
-    if (this.QHs.QIC == null)
+    iaI();
+    if (this.Ygi.Yhs == null)
     {
       if (!paramBoolean)
       {
-        AppMethodBeat.o(205700);
+        AppMethodBeat.o(201766);
         return null;
       }
-      this.QHs.gZO();
+      this.Ygi.iaL();
     }
-    if (this.QHs.QIC.extras == null)
+    if (this.Ygi.Yhs.extras == null)
     {
       if (!paramBoolean)
       {
-        AppMethodBeat.o(205700);
+        AppMethodBeat.o(201766);
         return null;
       }
-      this.QHs.QIC.extras = new Bundle();
+      this.Ygi.Yhs.extras = new Bundle();
     }
-    Bundle localBundle = this.QHs.QIC.extras;
-    AppMethodBeat.o(205700);
+    Bundle localBundle = this.Ygi.Yhs.extras;
+    AppMethodBeat.o(201766);
     return localBundle;
   }
   
   InputMethodManager getInputMethodManager()
   {
-    AppMethodBeat.i(205826);
+    AppMethodBeat.i(202378);
     if (Build.VERSION.SDK_INT >= 23)
     {
       localInputMethodManager = (InputMethodManager)getContext().getSystemService(InputMethodManager.class);
-      AppMethodBeat.o(205826);
+      AppMethodBeat.o(202378);
       return localInputMethodManager;
     }
     InputMethodManager localInputMethodManager = (InputMethodManager)getContext().getSystemService("input_method");
-    AppMethodBeat.o(205826);
+    AppMethodBeat.o(202378);
     return localInputMethodManager;
   }
   
   public int getInputType()
   {
-    if (this.QHs == null) {
+    if (this.Ygi == null) {
       return 0;
     }
-    return this.QHs.Clf;
+    return this.Ygi.IhY;
   }
   
   public CharSequence getIterableTextForAccessibility()
@@ -5596,268 +5392,255 @@ public class CustomTextView
   
   public final KeyListener getKeyListener()
   {
-    if (this.QHs == null) {
+    if (this.Ygi == null) {
       return null;
     }
-    return this.QHs.QIH;
+    return this.Ygi.Yhx;
   }
   
   public int getLastBaselineToBottomHeight()
   {
-    AppMethodBeat.i(205611);
+    AppMethodBeat.i(201486);
     int i = getPaddingBottom();
     int j = getPaint().getFontMetricsInt().bottom;
-    AppMethodBeat.o(205611);
+    AppMethodBeat.o(201486);
     return i + j;
   }
   
   public final Layout getLayout()
   {
-    return this.OVt;
+    return this.WoF;
   }
   
   protected float getLeftFadingEdgeStrength()
   {
-    AppMethodBeat.i(205799);
+    AppMethodBeat.i(202309);
     if (getLineCount() == 1)
     {
       f = getLayout().getLineLeft(0);
       if (f > getScrollX())
       {
-        AppMethodBeat.o(205799);
+        AppMethodBeat.o(202309);
         return 0.0F;
       }
-      f = ax(getScrollX(), f);
-      AppMethodBeat.o(205799);
+      f = aE(getScrollX(), f);
+      AppMethodBeat.o(202309);
       return f;
     }
     float f = super.getLeftFadingEdgeStrength();
-    AppMethodBeat.o(205799);
+    AppMethodBeat.o(202309);
     return f;
   }
   
   protected int getLeftPaddingOffset()
   {
-    AppMethodBeat.i(205716);
+    AppMethodBeat.i(201822);
     int i = getCompoundPaddingLeft();
     int j = getPaddingLeft();
-    int k = (int)Math.min(0.0F, this.QGs - this.QGr);
-    AppMethodBeat.o(205716);
+    int k = (int)Math.min(0.0F, this.Yfi - this.Yfh);
+    AppMethodBeat.o(201822);
     return i - j + k;
   }
   
   public float getLetterSpacing()
   {
-    AppMethodBeat.i(205642);
-    float f = this.ayn.getLetterSpacing();
-    AppMethodBeat.o(205642);
+    AppMethodBeat.i(201561);
+    float f = this.wi.getLetterSpacing();
+    AppMethodBeat.o(201561);
     return f;
   }
   
   public int getLineCount()
   {
-    AppMethodBeat.i(205729);
-    if (this.OVt != null)
+    AppMethodBeat.i(201916);
+    if (this.WoF != null)
     {
-      int i = this.OVt.getLineCount();
-      AppMethodBeat.o(205729);
+      int i = this.WoF.getLineCount();
+      AppMethodBeat.o(201916);
       return i;
     }
-    AppMethodBeat.o(205729);
+    AppMethodBeat.o(201916);
     return 0;
   }
   
   public int getLineHeight()
   {
-    AppMethodBeat.i(205579);
-    int i = (int)(((this.ayn.getFontMetricsInt(null) * this.OVu + this.OVv) * 16777216.0F) + 8388608L >> 24);
-    AppMethodBeat.o(205579);
+    AppMethodBeat.i(201388);
+    int i = (int)(((this.wi.getFontMetricsInt(null) * this.WoG + this.WoH) * 16777216.0F) + 8388608L >> 24);
+    AppMethodBeat.o(201388);
     return i;
   }
   
   public float getLineSpacingExtra()
   {
-    return this.OVv;
+    return this.WoH;
   }
   
   public float getLineSpacingMultiplier()
   {
-    return this.OVu;
+    return this.WoG;
   }
   
   public final ColorStateList getLinkTextColors()
   {
-    return this.QGo;
+    return this.Yfe;
   }
   
   public final boolean getLinksClickable()
   {
-    return this.QGS;
+    return this.YfI;
   }
   
   public int getMaxEms()
   {
-    if (this.QGW == 1) {
-      return this.mMaxWidth;
+    if (this.YfM == 1) {
+      return this.uJ;
     }
     return -1;
   }
   
   public int getMaxHeight()
   {
-    if (this.OVx == 2) {
-      return this.OVw;
+    if (this.WoJ == 2) {
+      return this.WoI;
     }
     return -1;
   }
   
   public int getMaxLines()
   {
-    if (this.OVx == 1) {
-      return this.OVw;
+    if (this.WoJ == 1) {
+      return this.WoI;
     }
     return -1;
   }
   
   public int getMaxWidth()
   {
-    if (this.QGW == 2) {
-      return this.mMaxWidth;
+    if (this.YfM == 2) {
+      return this.uJ;
     }
     return -1;
   }
   
   public a.e getMenuCallback()
   {
-    return this.QHz;
+    return this.Ygp;
   }
   
   public int getMinEms()
   {
-    if (this.QGX == 1) {
-      return this.mMinWidth;
+    if (this.YfN == 1) {
+      return this.lj;
     }
     return -1;
   }
   
   public int getMinHeight()
   {
-    if (this.OVz == 2) {
-      return this.OVy;
+    if (this.WoL == 2) {
+      return this.WoK;
     }
     return -1;
   }
   
   public int getMinLines()
   {
-    if (this.OVz == 1) {
-      return this.OVy;
+    if (this.WoL == 1) {
+      return this.WoK;
     }
     return -1;
   }
   
   public int getMinWidth()
   {
-    if (this.QGX == 2) {
-      return this.mMinWidth;
+    if (this.YfN == 2) {
+      return this.lj;
     }
     return -1;
   }
   
   public final com.tencent.mm.ui.widget.cedit.b.d getMovementMethod()
   {
-    return this.QGG;
-  }
-  
-  public final int getOffsetForPosition(float paramFloat1, float paramFloat2)
-  {
-    AppMethodBeat.i(205844);
-    if (getLayout() == null)
-    {
-      AppMethodBeat.o(205844);
-      return -1;
-    }
-    int i = B(cz(paramFloat2), paramFloat1);
-    AppMethodBeat.o(205844);
-    return i;
+    return this.Yfw;
   }
   
   public TextPaint getPaint()
   {
-    return this.ayn;
+    return this.wi;
   }
   
   public int getPaintFlags()
   {
-    AppMethodBeat.i(205658);
-    int i = this.ayn.getFlags();
-    AppMethodBeat.o(205658);
+    AppMethodBeat.i(201617);
+    int i = this.wi.getFlags();
+    AppMethodBeat.o(201617);
     return i;
   }
   
   public String getPrivateImeOptions()
   {
-    if ((this.QHs != null) && (this.QHs.QIC != null)) {
-      return this.QHs.QIC.privateImeOptions;
+    if ((this.Ygi != null) && (this.Ygi.Yhs != null)) {
+      return this.Ygi.Yhs.YiX;
     }
     return null;
   }
   
   public Set<String> getReuseBrands()
   {
-    return this.QHB;
+    return this.Ygr;
   }
   
   public Set<String> getReuseItems()
   {
-    return this.QHA;
+    return this.Ygq;
   }
   
   protected float getRightFadingEdgeStrength()
   {
-    AppMethodBeat.i(205800);
+    AppMethodBeat.i(202311);
     if (getLineCount() == 1)
     {
       f1 = getScrollX() + (getWidth() - getCompoundPaddingLeft() - getCompoundPaddingRight());
       float f2 = getLayout().getLineRight(0);
       if (f2 < f1)
       {
-        AppMethodBeat.o(205800);
+        AppMethodBeat.o(202311);
         return 0.0F;
       }
-      f1 = ax(f1, f2);
-      AppMethodBeat.o(205800);
+      f1 = aE(f1, f2);
+      AppMethodBeat.o(202311);
       return f1;
     }
     float f1 = super.getRightFadingEdgeStrength();
-    AppMethodBeat.o(205800);
+    AppMethodBeat.o(202311);
     return f1;
   }
   
   protected int getRightPaddingOffset()
   {
-    AppMethodBeat.i(205719);
+    AppMethodBeat.i(201828);
     int i = -(getCompoundPaddingRight() - getPaddingRight());
-    int j = (int)Math.max(0.0F, this.QGs + this.QGr);
-    AppMethodBeat.o(205719);
+    int j = (int)Math.max(0.0F, this.Yfi + this.Yfh);
+    AppMethodBeat.o(201828);
     return i + j;
   }
   
   @ViewDebug.ExportedProperty(category="text")
   public float getScaledTextSize()
   {
-    AppMethodBeat.i(205631);
-    float f = this.ayn.getTextSize() / this.ayn.density;
-    AppMethodBeat.o(205631);
+    AppMethodBeat.i(201537);
+    float f = this.wi.getTextSize() / this.wi.density;
+    AppMethodBeat.o(201537);
     return f;
   }
   
   String getSelectedText()
   {
-    AppMethodBeat.i(205770);
-    if (!hasSelection())
+    AppMethodBeat.i(202182);
+    if (!iau())
     {
-      AppMethodBeat.o(205770);
+      AppMethodBeat.o(202182);
       return null;
     }
     int i = getSelectionStart();
@@ -5866,7 +5649,7 @@ public class CustomTextView
     for (Object localObject = this.mText.subSequence(j, i);; localObject = this.mText.subSequence(i, j))
     {
       localObject = String.valueOf(localObject);
-      AppMethodBeat.o(205770);
+      AppMethodBeat.o(202182);
       return localObject;
     }
   }
@@ -5874,51 +5657,51 @@ public class CustomTextView
   @ViewDebug.ExportedProperty(category="text")
   public int getSelectionEnd()
   {
-    AppMethodBeat.i(205768);
+    AppMethodBeat.i(202173);
     int i = Selection.getSelectionEnd(getText());
-    AppMethodBeat.o(205768);
+    AppMethodBeat.o(202173);
     return i;
   }
   
   @ViewDebug.ExportedProperty(category="text")
   public int getSelectionStart()
   {
-    AppMethodBeat.i(205767);
+    AppMethodBeat.i(202171);
     int i = Selection.getSelectionStart(getText());
-    AppMethodBeat.o(205767);
+    AppMethodBeat.o(202171);
     return i;
   }
   
   public int getShadowColor()
   {
-    return this.nYW;
+    return this.raH;
   }
   
   public float getShadowDx()
   {
-    return this.QGs;
+    return this.Yfi;
   }
   
   public float getShadowDy()
   {
-    return this.QGt;
+    return this.Yfj;
   }
   
   public float getShadowRadius()
   {
-    return this.QGr;
+    return this.Yfh;
   }
   
   public final boolean getShowSoftInputOnFocus()
   {
-    return (this.QHs == null) || (this.QHs.QIQ);
+    return (this.Ygi == null) || (this.Ygi.YhG);
   }
   
   public Locale getSpellCheckerLocale()
   {
-    AppMethodBeat.i(205816);
-    Locale localLocale = CX(true);
-    AppMethodBeat.o(205816);
+    AppMethodBeat.i(202342);
+    Locale localLocale = Ht(true);
+    AppMethodBeat.o(202342);
     return localLocale;
   }
   
@@ -5930,49 +5713,49 @@ public class CustomTextView
   
   TextClassificationContext getTextClassificationContext()
   {
-    return this.QGy;
+    return this.Yfo;
   }
   
   final TextClassificationManager getTextClassificationManagerForUser()
   {
-    AppMethodBeat.i(205813);
+    AppMethodBeat.i(202337);
     if (Build.VERSION.SDK_INT >= 26)
     {
       getContext().getPackageName();
-      TextClassificationManager localTextClassificationManager = (TextClassificationManager)bj(TextClassificationManager.class);
-      AppMethodBeat.o(205813);
+      TextClassificationManager localTextClassificationManager = (TextClassificationManager)bF(TextClassificationManager.class);
+      AppMethodBeat.o(202337);
       return localTextClassificationManager;
     }
-    AppMethodBeat.o(205813);
+    AppMethodBeat.o(202337);
     return null;
   }
   
   TextClassifier getTextClassificationSession()
   {
-    AppMethodBeat.i(205834);
+    AppMethodBeat.i(202433);
     TextClassificationManager localTextClassificationManager;
     Object localObject;
-    if ((Build.VERSION.SDK_INT >= 28) && ((this.QGx == null) || (this.QGx.isDestroyed())))
+    if ((Build.VERSION.SDK_INT >= 28) && ((this.Yfn == null) || (this.Yfn.isDestroyed())))
     {
       localTextClassificationManager = getTextClassificationManagerForUser();
       if (localTextClassificationManager == null) {
         break label128;
       }
-      if (!gZB()) {
+      if (!iaw()) {
         break label107;
       }
       localObject = "edittext";
-      this.QGy = new TextClassificationContext.Builder(getContext().getPackageName(), (String)localObject).build();
-      if (this.QGw != null) {}
+      this.Yfo = new TextClassificationContext.Builder(getContext().getPackageName(), (String)localObject).build();
+      if (this.Yfm != null) {}
     }
     label128:
-    for (this.QGx = localTextClassificationManager.createTextClassificationSession(this.QGy);; this.QGx = TextClassifier.NO_OP)
+    for (this.Yfn = localTextClassificationManager.createTextClassificationSession(this.Yfo);; this.Yfn = TextClassifier.NO_OP)
     {
-      localObject = this.QGx;
-      AppMethodBeat.o(205834);
+      localObject = this.Yfn;
+      AppMethodBeat.o(202433);
       return localObject;
       label107:
-      if (isTextSelectable())
+      if (ial())
       {
         localObject = "textview";
         break;
@@ -5984,55 +5767,55 @@ public class CustomTextView
   
   public TextClassifier getTextClassifier()
   {
-    AppMethodBeat.i(205833);
-    if (this.QGw == null)
+    AppMethodBeat.i(202430);
+    if (this.Yfm == null)
     {
       localObject = getTextClassificationManagerForUser();
       if ((localObject != null) && (Build.VERSION.SDK_INT >= 26))
       {
         localObject = ((TextClassificationManager)localObject).getTextClassifier();
-        AppMethodBeat.o(205833);
+        AppMethodBeat.o(202430);
         return localObject;
       }
       if (Build.VERSION.SDK_INT >= 26)
       {
         localObject = TextClassifier.NO_OP;
-        AppMethodBeat.o(205833);
+        AppMethodBeat.o(202430);
         return localObject;
       }
     }
-    Object localObject = this.QGw;
-    AppMethodBeat.o(205833);
+    Object localObject = this.Yfm;
+    AppMethodBeat.o(202430);
     return localObject;
   }
   
   public final ColorStateList getTextColors()
   {
-    return this.BpJ;
+    return this.Hkc;
   }
   
   public Drawable getTextCursorDrawable()
   {
-    AppMethodBeat.i(205623);
-    if ((this.QHj == null) && (this.QHi != 0)) {
-      this.QHj = getContext().getDrawable(this.QHi);
+    AppMethodBeat.i(201510);
+    if ((this.YfZ == null) && (this.YfY != 0)) {
+      this.YfZ = getContext().getDrawable(this.YfY);
     }
-    Drawable localDrawable = this.QHj;
-    AppMethodBeat.o(205623);
+    Drawable localDrawable = this.YfZ;
+    AppMethodBeat.o(201510);
     return localDrawable;
   }
   
   public TextDirectionHeuristic getTextDirectionHeuristic()
   {
     String str = null;
-    AppMethodBeat.i(205850);
-    if ((this.QGH instanceof PasswordTransformationMethod))
+    AppMethodBeat.i(202511);
+    if ((this.Yfx instanceof PasswordTransformationMethod))
     {
       localObject = TextDirectionHeuristics.LTR;
-      AppMethodBeat.o(205850);
+      AppMethodBeat.o(202511);
       return localObject;
     }
-    if ((this.QHs != null) && ((this.QHs.Clf & 0xF) == 3)) {
+    if ((this.Ygi != null) && ((this.Ygi.IhY & 0xF) == 3)) {
       if (Build.VERSION.SDK_INT < 24) {
         break label281;
       }
@@ -6047,11 +5830,11 @@ public class CustomTextView
       if ((i == 1) || (i == 2))
       {
         localObject = TextDirectionHeuristics.RTL;
-        AppMethodBeat.o(205850);
+        AppMethodBeat.o(202511);
         return localObject;
       }
       localObject = TextDirectionHeuristics.LTR;
-      AppMethodBeat.o(205850);
+      AppMethodBeat.o(202511);
       return localObject;
       if (getLayoutDirection() == 1) {}
       for (i = 1;; i = 0) {
@@ -6062,148 +5845,148 @@ public class CustomTextView
             break label197;
           }
           localObject = TextDirectionHeuristics.FIRSTSTRONG_RTL;
-          AppMethodBeat.o(205850);
+          AppMethodBeat.o(202511);
           return localObject;
         }
       }
       label197:
       localObject = TextDirectionHeuristics.FIRSTSTRONG_LTR;
-      AppMethodBeat.o(205850);
+      AppMethodBeat.o(202511);
       return localObject;
       localObject = TextDirectionHeuristics.ANYRTL_LTR;
-      AppMethodBeat.o(205850);
+      AppMethodBeat.o(202511);
       return localObject;
       localObject = TextDirectionHeuristics.LTR;
-      AppMethodBeat.o(205850);
+      AppMethodBeat.o(202511);
       return localObject;
       localObject = TextDirectionHeuristics.RTL;
-      AppMethodBeat.o(205850);
+      AppMethodBeat.o(202511);
       return localObject;
       localObject = TextDirectionHeuristics.LOCALE;
-      AppMethodBeat.o(205850);
+      AppMethodBeat.o(202511);
       return localObject;
       localObject = TextDirectionHeuristics.FIRSTSTRONG_LTR;
-      AppMethodBeat.o(205850);
+      AppMethodBeat.o(202511);
       return localObject;
       localObject = TextDirectionHeuristics.FIRSTSTRONG_RTL;
-      AppMethodBeat.o(205850);
+      AppMethodBeat.o(202511);
       return localObject;
     }
   }
   
   public Locale getTextLocale()
   {
-    AppMethodBeat.i(205625);
-    Locale localLocale = this.ayn.getTextLocale();
-    AppMethodBeat.o(205625);
+    AppMethodBeat.i(201519);
+    Locale localLocale = this.wi.getTextLocale();
+    AppMethodBeat.o(201519);
     return localLocale;
   }
   
   public LocaleList getTextLocales()
   {
-    AppMethodBeat.i(205626);
+    AppMethodBeat.i(201520);
     if (Build.VERSION.SDK_INT >= 24)
     {
-      LocaleList localLocaleList = this.ayn.getTextLocales();
-      AppMethodBeat.o(205626);
+      LocaleList localLocaleList = this.wi.getTextLocales();
+      AppMethodBeat.o(201520);
       return localLocaleList;
     }
-    AppMethodBeat.o(205626);
+    AppMethodBeat.o(201520);
     return null;
   }
   
   public float getTextScaleX()
   {
-    AppMethodBeat.i(205636);
-    float f = this.ayn.getTextScaleX();
-    AppMethodBeat.o(205636);
+    AppMethodBeat.i(201550);
+    float f = this.wi.getTextScaleX();
+    AppMethodBeat.o(201550);
     return f;
   }
   
   public Drawable getTextSelectHandle()
   {
-    AppMethodBeat.i(205614);
-    if ((this.QHp == null) && (this.QHo != 0)) {
-      this.QHp = getContext().getDrawable(2131235259);
+    AppMethodBeat.i(201494);
+    if ((this.Ygf == null) && (this.Yge != 0)) {
+      this.Ygf = getContext().getDrawable(a.f.text_select_handle_middle_mtrl_alpha);
     }
-    Drawable localDrawable = this.QHp;
-    AppMethodBeat.o(205614);
+    Drawable localDrawable = this.Ygf;
+    AppMethodBeat.o(201494);
     return localDrawable;
   }
   
   public Drawable getTextSelectHandleLeft()
   {
-    AppMethodBeat.i(205617);
-    if ((this.QHl == null) && (this.QHk != 0)) {
-      this.QHl = getContext().getDrawable(2131235258);
+    AppMethodBeat.i(201500);
+    if ((this.Ygb == null) && (this.Yga != 0)) {
+      this.Ygb = getContext().getDrawable(a.f.text_select_handle_left_mtrl_alpha);
     }
-    Drawable localDrawable = this.QHl;
-    AppMethodBeat.o(205617);
+    Drawable localDrawable = this.Ygb;
+    AppMethodBeat.o(201500);
     return localDrawable;
   }
   
   public Drawable getTextSelectHandleRight()
   {
-    AppMethodBeat.i(205620);
-    if ((this.QHn == null) && (this.QHm != 0)) {
-      this.QHn = getContext().getDrawable(2131235260);
+    AppMethodBeat.i(201504);
+    if ((this.Ygd == null) && (this.Ygc != 0)) {
+      this.Ygd = getContext().getDrawable(a.f.text_select_handle_right_mtrl_alpha);
     }
-    Drawable localDrawable = this.QHn;
-    AppMethodBeat.o(205620);
+    Drawable localDrawable = this.Ygd;
+    AppMethodBeat.o(201504);
     return localDrawable;
   }
   
   public Locale getTextServicesLocale()
   {
-    AppMethodBeat.i(205815);
-    Locale localLocale = CX(false);
-    AppMethodBeat.o(205815);
+    AppMethodBeat.i(202341);
+    Locale localLocale = Ht(false);
+    AppMethodBeat.o(202341);
     return localLocale;
   }
   
   final TextServicesManager getTextServicesManagerForUser()
   {
-    AppMethodBeat.i(205811);
+    AppMethodBeat.i(202330);
     if (Build.VERSION.SDK_INT >= 23)
     {
-      localTextServicesManager = (TextServicesManager)bj(TextServicesManager.class);
-      AppMethodBeat.o(205811);
+      localTextServicesManager = (TextServicesManager)bF(TextServicesManager.class);
+      AppMethodBeat.o(202330);
       return localTextServicesManager;
     }
     TextServicesManager localTextServicesManager = (TextServicesManager)getContext().getSystemService("textservices");
-    AppMethodBeat.o(205811);
+    AppMethodBeat.o(202330);
     return localTextServicesManager;
   }
   
   @ViewDebug.ExportedProperty(category="text")
   public float getTextSize()
   {
-    AppMethodBeat.i(205630);
-    float f = this.ayn.getTextSize();
-    AppMethodBeat.o(205630);
+    AppMethodBeat.i(201534);
+    float f = this.wi.getTextSize();
+    AppMethodBeat.o(201534);
     return f;
   }
   
   public int getTextSizeUnit()
   {
-    return this.QGM;
+    return this.YfC;
   }
   
   protected int getTopPaddingOffset()
   {
-    AppMethodBeat.i(205717);
-    int i = (int)Math.min(0.0F, this.QGt - this.QGr);
-    AppMethodBeat.o(205717);
+    AppMethodBeat.i(201826);
+    int i = (int)Math.min(0.0F, this.Yfj - this.Yfh);
+    AppMethodBeat.o(201826);
     return i;
   }
   
   public int getTotalPaddingBottom()
   {
-    AppMethodBeat.i(205599);
+    AppMethodBeat.i(201439);
     int k = getExtendedPaddingBottom();
     int j = 0;
-    int m = this.Ku & 0x70;
-    Layout localLayout = this.OVt;
+    int m = this.sK & 0x70;
+    Layout localLayout = this.WoF;
     int i = j;
     int n;
     int i1;
@@ -6221,134 +6004,405 @@ public class CustomTextView
     label84:
     for (i = n - i1;; i = n - i1 >> 1)
     {
-      AppMethodBeat.o(205599);
+      AppMethodBeat.o(201439);
       return i + k;
     }
   }
   
   public int getTotalPaddingEnd()
   {
-    AppMethodBeat.i(205597);
+    AppMethodBeat.i(201435);
     int i = getCompoundPaddingEnd();
-    AppMethodBeat.o(205597);
+    AppMethodBeat.o(201435);
     return i;
   }
   
   public int getTotalPaddingLeft()
   {
-    AppMethodBeat.i(205594);
+    AppMethodBeat.i(201431);
     int i = getCompoundPaddingLeft();
-    AppMethodBeat.o(205594);
+    AppMethodBeat.o(201431);
     return i;
   }
   
   public int getTotalPaddingRight()
   {
-    AppMethodBeat.i(205595);
+    AppMethodBeat.i(201433);
     int i = getCompoundPaddingRight();
-    AppMethodBeat.o(205595);
+    AppMethodBeat.o(201433);
     return i;
   }
   
   public int getTotalPaddingStart()
   {
-    AppMethodBeat.i(205596);
+    AppMethodBeat.i(201434);
     int i = getCompoundPaddingStart();
-    AppMethodBeat.o(205596);
+    AppMethodBeat.o(201434);
     return i;
   }
   
   public int getTotalPaddingTop()
   {
-    AppMethodBeat.i(205598);
+    AppMethodBeat.i(201437);
     int i = getExtendedPaddingTop();
-    int j = CW(true);
-    AppMethodBeat.o(205598);
+    int j = Hs(true);
+    AppMethodBeat.o(201437);
     return i + j;
   }
   
   public final TransformationMethod getTransformationMethod()
   {
-    return this.QGH;
+    return this.Yfx;
   }
   
   public CharSequence getTransformed()
   {
-    return this.OVq;
+    return this.WoC;
   }
   
   public Typeface getTypeface()
   {
-    AppMethodBeat.i(205639);
-    Typeface localTypeface = this.ayn.getTypeface();
-    AppMethodBeat.o(205639);
+    AppMethodBeat.i(201555);
+    Typeface localTypeface = this.wi.getTypeface();
+    AppMethodBeat.o(201555);
     return localTypeface;
   }
   
   @ViewDebug.ExportedProperty(category="text", mapping={@android.view.ViewDebug.IntToString(from=0, to="NORMAL"), @android.view.ViewDebug.IntToString(from=1, to="BOLD"), @android.view.ViewDebug.IntToString(from=2, to="ITALIC"), @android.view.ViewDebug.IntToString(from=3, to="BOLD_ITALIC")})
   public int getTypefaceStyle()
   {
-    AppMethodBeat.i(205632);
-    Typeface localTypeface = this.ayn.getTypeface();
+    AppMethodBeat.i(201538);
+    Typeface localTypeface = this.wi.getTypeface();
     if (localTypeface != null)
     {
       int i = localTypeface.getStyle();
-      AppMethodBeat.o(205632);
+      AppMethodBeat.o(201538);
       return i;
     }
-    AppMethodBeat.o(205632);
+    AppMethodBeat.o(201538);
     return 0;
   }
   
   public URLSpan[] getUrls()
   {
-    AppMethodBeat.i(205652);
+    AppMethodBeat.i(201596);
     if ((this.mText instanceof Spanned))
     {
       URLSpan[] arrayOfURLSpan = (URLSpan[])((Spanned)this.mText).getSpans(0, this.mText.length(), URLSpan.class);
-      AppMethodBeat.o(205652);
+      AppMethodBeat.o(201596);
       return arrayOfURLSpan;
     }
-    AppMethodBeat.o(205652);
+    AppMethodBeat.o(201596);
     return new URLSpan[0];
   }
   
   public com.tencent.mm.ui.widget.cedit.c.b getWordIterator()
   {
-    AppMethodBeat.i(205817);
-    if (this.QHs != null)
+    AppMethodBeat.i(202344);
+    if (this.Ygi != null)
     {
-      com.tencent.mm.ui.widget.cedit.c.b localb = this.QHs.getWordIterator();
-      AppMethodBeat.o(205817);
+      com.tencent.mm.ui.widget.cedit.c.b localb = this.Ygi.getWordIterator();
+      AppMethodBeat.o(202344);
       return localb;
     }
-    AppMethodBeat.o(205817);
+    AppMethodBeat.o(202344);
     return null;
   }
   
   public boolean hasOverlappingRendering()
   {
-    AppMethodBeat.i(205723);
-    if (((getBackground() != null) && (getBackground().getCurrent() != null)) || (this.QGC != null) || (hasSelection()) || (isHorizontalFadingEdgeEnabled()) || (this.nYW != 0))
+    AppMethodBeat.i(201848);
+    if (((getBackground() != null) && (getBackground().getCurrent() != null)) || (this.Yfs != null) || (iau()) || (isHorizontalFadingEdgeEnabled()) || (this.raH != 0))
     {
-      AppMethodBeat.o(205723);
+      AppMethodBeat.o(201848);
       return true;
     }
-    AppMethodBeat.o(205723);
+    AppMethodBeat.o(201848);
     return false;
   }
   
-  public final boolean hasSelection()
+  public final void iaB()
   {
-    AppMethodBeat.i(205769);
+    AppMethodBeat.i(202436);
+    if (this.Ygi != null) {
+      this.Ygi.iaB();
+    }
+    AppMethodBeat.o(202436);
+  }
+  
+  final boolean iaC()
+  {
+    AppMethodBeat.i(202441);
+    if ((this.Yfx instanceof PasswordTransformationMethod))
+    {
+      AppMethodBeat.o(202441);
+      return false;
+    }
+    if ((this.mText.length() > 0) && (iau()) && ((this.mText instanceof Editable)) && (this.Ygi != null) && (this.Ygi.Yhx != null))
+    {
+      AppMethodBeat.o(202441);
+      return true;
+    }
+    AppMethodBeat.o(202441);
+    return false;
+  }
+  
+  final boolean iaD()
+  {
+    AppMethodBeat.i(202445);
+    if ((this.Yfx instanceof PasswordTransformationMethod))
+    {
+      AppMethodBeat.o(202445);
+      return false;
+    }
+    if ((this.mText.length() > 0) && (iau()) && (this.Ygi != null))
+    {
+      AppMethodBeat.o(202445);
+      return true;
+    }
+    AppMethodBeat.o(202445);
+    return false;
+  }
+  
+  final boolean iaE()
+  {
+    AppMethodBeat.i(202450);
+    if (((this.mText instanceof Editable)) && (this.Ygi != null) && (this.Ygi.Yhx != null) && (getSelectionStart() >= 0) && (getSelectionEnd() >= 0) && (getClipboardManagerForUser().hasPrimaryClip()))
+    {
+      AppMethodBeat.o(202450);
+      return true;
+    }
+    AppMethodBeat.o(202450);
+    return false;
+  }
+  
+  final boolean iaF()
+  {
+    AppMethodBeat.i(202455);
+    if ((iay()) && (!(this.Yfx instanceof PasswordTransformationMethod)) && ((getSelectionStart() != 0) || (getSelectionEnd() != this.mText.length())))
+    {
+      AppMethodBeat.o(202455);
+      return true;
+    }
+    AppMethodBeat.o(202455);
+    return false;
+  }
+  
+  public final boolean iaG()
+  {
+    AppMethodBeat.i(202459);
+    if (this.Ygi != null) {
+      axL(500);
+    }
+    int i = this.mText.length();
+    Selection.setSelection(this.Yfs, 0, i);
+    if (i > 0)
+    {
+      AppMethodBeat.o(202459);
+      return true;
+    }
+    AppMethodBeat.o(202459);
+    return false;
+  }
+  
+  final boolean iaH()
+  {
+    if (this.Ygi == null) {}
+    b.h localh;
+    do
+    {
+      return false;
+      localh = this.Ygi.Yht;
+      if (localh == null) {
+        break;
+      }
+    } while (localh.Yhf <= 0);
+    return true;
+    return this.Ygi.YhF;
+  }
+  
+  public final boolean iaK()
+  {
+    AppMethodBeat.i(202536);
+    if ((getReuseItems().size() > 0) && (Build.BRAND != null) && (getReuseBrands().contains(Build.BRAND.toLowerCase())) && (Build.VERSION.SDK_INT >= 23))
+    {
+      AppMethodBeat.o(202536);
+      return true;
+    }
+    AppMethodBeat.o(202536);
+    return false;
+  }
+  
+  final void iai()
+  {
+    float f1 = 1.0F;
+    AppMethodBeat.i(201787);
+    if (this.YfX)
+    {
+      iaj();
+      AppMethodBeat.o(201787);
+      return;
+    }
+    int i = getCompoundPaddingLeft();
+    int j = getExtendedPaddingTop();
+    j = Hs(true) + j;
+    if (this.Ygi.YhO == null) {}
+    for (;;)
+    {
+      float f2;
+      synchronized (rH)
+      {
+        f2 = (float)Math.ceil(this.wi.getStrokeWidth());
+        if (f2 >= 1.0F) {
+          break label246;
+        }
+        f1 /= 2.0F;
+        this.YfV.computeBounds(rH, false);
+        invalidate((int)Math.floor(i + rH.left - f1), (int)Math.floor(j + rH.top - f1), (int)Math.ceil(i + rH.right + f1), (int)Math.ceil(f1 + (j + rH.bottom)));
+        AppMethodBeat.o(201787);
+        return;
+      }
+      ??? = this.Ygi.YhO.getBounds();
+      invalidate(((Rect)???).left + i, ((Rect)???).top + j, i + ((Rect)???).right, ((Rect)???).bottom + j);
+      AppMethodBeat.o(201787);
+      return;
+      label246:
+      f1 = f2;
+    }
+  }
+  
+  final void iaj()
+  {
+    AppMethodBeat.i(201789);
+    int i = getSelectionEnd();
+    aZ(i, i, i);
+    AppMethodBeat.o(201789);
+  }
+  
+  public final boolean ial()
+  {
+    if (this.Ygi == null) {
+      return false;
+    }
+    return this.Ygi.YhE;
+  }
+  
+  public final void ian()
+  {
+    AppMethodBeat.i(202022);
+    if (this.Ygi != null) {
+      this.Ygi.ian();
+    }
+    AppMethodBeat.o(202022);
+  }
+  
+  public final void iao()
+  {
+    AppMethodBeat.i(202023);
+    if (this.Ygi != null) {
+      this.Ygi.iao();
+    }
+    AppMethodBeat.o(202023);
+  }
+  
+  final int ias()
+  {
+    AppMethodBeat.i(202166);
+    int i = getCompoundPaddingLeft();
+    int j = getScrollX();
+    AppMethodBeat.o(202166);
+    return i - j;
+  }
+  
+  final int iat()
+  {
+    AppMethodBeat.i(202170);
+    int j = getExtendedPaddingTop() - getScrollY();
+    int i = j;
+    if ((this.sK & 0x70) != 48) {
+      i = j + Hs(false);
+    }
+    AppMethodBeat.o(202170);
+    return i;
+  }
+  
+  public final boolean iau()
+  {
+    AppMethodBeat.i(202177);
     int i = getSelectionStart();
     int j = getSelectionEnd();
     if ((i >= 0) && (j > 0) && (i != j))
     {
-      AppMethodBeat.o(205769);
+      AppMethodBeat.o(202177);
       return true;
     }
-    AppMethodBeat.o(205769);
+    AppMethodBeat.o(202177);
+    return false;
+  }
+  
+  final void iav()
+  {
+    AppMethodBeat.i(202227);
+    invalidate();
+    int i = getSelectionStart();
+    if ((i >= 0) || ((this.sK & 0x70) == 80)) {
+      iak();
+    }
+    iaq();
+    if (i >= 0)
+    {
+      this.YfX = true;
+      if (this.Ygi != null) {
+        this.Ygi.ibx();
+      }
+      axK(i);
+    }
+    AppMethodBeat.o(202227);
+  }
+  
+  final boolean iaw()
+  {
+    AppMethodBeat.i(202304);
+    if (((this.mText instanceof Editable)) && (onCheckIsTextEditor()) && (isEnabled()))
+    {
+      AppMethodBeat.o(202304);
+      return true;
+    }
+    AppMethodBeat.o(202304);
+    return false;
+  }
+  
+  public final boolean iax()
+  {
+    return (this.Ygi != null) && (this.Ygi.Yhw);
+  }
+  
+  final boolean iay()
+  {
+    AppMethodBeat.i(202325);
+    if ((this.mText.length() != 0) && (this.Ygi != null) && (this.Ygi.Yhm))
+    {
+      AppMethodBeat.o(202325);
+      return true;
+    }
+    AppMethodBeat.o(202325);
+    return false;
+  }
+  
+  final boolean iaz()
+  {
+    AppMethodBeat.i(202326);
+    if ((this.Yfw == null) || (!this.Yfw.ibW()))
+    {
+      AppMethodBeat.o(202326);
+      return false;
+    }
+    if ((iaw()) || ((ial()) && ((this.mText instanceof Spannable)) && (isEnabled())))
+    {
+      AppMethodBeat.o(202326);
+      return true;
+    }
+    AppMethodBeat.o(202326);
     return false;
   }
   
@@ -6356,7 +6410,7 @@ public class CustomTextView
   {
     int m = 0;
     int i1 = 0;
-    AppMethodBeat.i(205722);
+    AppMethodBeat.i(201846);
     Rect localRect;
     int n;
     b localb;
@@ -6369,13 +6423,13 @@ public class CustomTextView
       localRect = paramDrawable.getBounds();
       n = getScrollX();
       m = getScrollY();
-      localb = this.QGA;
+      localb = this.Yfq;
       i = i1;
       j = m;
       k = n;
       if (localb != null)
       {
-        if (paramDrawable != localb.QHE[0]) {
+        if (paramDrawable != localb.Ygu[0]) {
           break label187;
         }
         i = getCompoundPaddingTop();
@@ -6383,7 +6437,7 @@ public class CustomTextView
         i1 = getBottom();
         i2 = getTop();
         k = n + getPaddingLeft();
-        j = m + (i + (i1 - i2 - j - i - localb.OWk) / 2);
+        j = m + (i + (i1 - i2 - j - i - localb.Wpw) / 2);
         i = 1;
       }
     }
@@ -6398,24 +6452,24 @@ public class CustomTextView
       if (m == 0) {
         super.invalidateDrawable(paramDrawable);
       }
-      AppMethodBeat.o(205722);
+      AppMethodBeat.o(201846);
       return;
       label187:
-      if (paramDrawable == localb.QHE[2])
+      if (paramDrawable == localb.Ygu[2])
       {
         i = getCompoundPaddingTop();
         j = getCompoundPaddingBottom();
         i1 = getBottom();
         i2 = getTop();
-        k = n + (getRight() - getLeft() - getPaddingRight() - localb.OWh);
-        j = m + (i + (i1 - i2 - j - i - localb.OWl) / 2);
+        k = n + (getRight() - getLeft() - getPaddingRight() - localb.Wpt);
+        j = m + (i + (i1 - i2 - j - i - localb.Wpx) / 2);
         i = 1;
       }
-      else if (paramDrawable == localb.QHE[1])
+      else if (paramDrawable == localb.Ygu[1])
       {
         i = getCompoundPaddingLeft();
         j = getCompoundPaddingRight();
-        k = n + (i + (getRight() - getLeft() - j - i - localb.OWi) / 2);
+        k = n + (i + (getRight() - getLeft() - j - i - localb.Wpu) / 2);
         j = m + getPaddingTop();
         i = 1;
       }
@@ -6424,12 +6478,12 @@ public class CustomTextView
         i = i1;
         j = m;
         k = n;
-        if (paramDrawable == localb.QHE[3])
+        if (paramDrawable == localb.Ygu[3])
         {
           i = getCompoundPaddingLeft();
           j = getCompoundPaddingRight();
-          k = n + (i + (getRight() - getLeft() - j - i - localb.OWj) / 2);
-          j = m + (getBottom() - getTop() - getPaddingBottom() - localb.OWf);
+          k = n + (i + (getRight() - getLeft() - j - i - localb.Wpv) / 2);
+          j = m + (getBottom() - getTop() - getPaddingBottom() - localb.Wpr);
           i = 1;
         }
       }
@@ -6438,24 +6492,16 @@ public class CustomTextView
   
   protected boolean isPaddingOffsetRequired()
   {
-    return (this.QGr != 0.0F) || (this.QGA != null);
-  }
-  
-  public final boolean isTextSelectable()
-  {
-    if (this.QHs == null) {
-      return false;
-    }
-    return this.QHs.QIO;
+    return (this.Yfh != 0.0F) || (this.Yfq != null);
   }
   
   public void jumpDrawablesToCurrentState()
   {
-    AppMethodBeat.i(205721);
+    AppMethodBeat.i(201833);
     super.jumpDrawablesToCurrentState();
-    if (this.QGA != null)
+    if (this.Yfq != null)
     {
-      Drawable[] arrayOfDrawable = this.QGA.QHE;
+      Drawable[] arrayOfDrawable = this.Yfq.Ygu;
       int j = arrayOfDrawable.length;
       int i = 0;
       while (i < j)
@@ -6467,74 +6513,69 @@ public class CustomTextView
         i += 1;
       }
     }
-    AppMethodBeat.o(205721);
-  }
-  
-  protected boolean jw()
-  {
-    return true;
-  }
-  
-  final CharSequence lA(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(205828);
-    CharSequence localCharSequence = ax(this.OVq.subSequence(paramInt1, paramInt2));
-    AppMethodBeat.o(205828);
-    return localCharSequence;
-  }
-  
-  protected final void lB(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(205852);
-    ((Editable)this.mText).delete(paramInt1, paramInt2);
-    AppMethodBeat.o(205852);
+    AppMethodBeat.o(201833);
   }
   
   public int length()
   {
-    AppMethodBeat.i(205578);
+    AppMethodBeat.i(201384);
     int i = this.mText.length();
-    AppMethodBeat.o(205578);
+    AppMethodBeat.o(201384);
     return i;
+  }
+  
+  final CharSequence mS(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(202400);
+    CharSequence localCharSequence = aM(this.WoC.subSequence(paramInt1, paramInt2));
+    AppMethodBeat.o(202400);
+    return localCharSequence;
+  }
+  
+  protected final void mT(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(202519);
+    ((Editable)this.mText).delete(paramInt1, paramInt2);
+    AppMethodBeat.o(202519);
   }
   
   protected void onAttachedToWindow()
   {
-    AppMethodBeat.i(205713);
+    AppMethodBeat.i(201815);
     super.onAttachedToWindow();
-    if (this.QHs != null)
+    if (this.Ygi != null)
     {
-      b localb = this.QHs;
-      ViewTreeObserver localViewTreeObserver = localb.QIo.getViewTreeObserver();
+      b localb = this.Ygi;
+      ViewTreeObserver localViewTreeObserver = localb.Yhe.getViewTreeObserver();
       if (localViewTreeObserver.isAlive())
       {
-        if (localb.QIs != null) {
-          localViewTreeObserver.addOnTouchModeChangeListener(localb.QIs);
+        if (localb.Yhi != null) {
+          localViewTreeObserver.addOnTouchModeChangeListener(localb.Yhi);
         }
-        if (localb.QIt != null)
+        if (localb.Yhj != null)
         {
-          localb.QIt.haN();
-          localViewTreeObserver.addOnTouchModeChangeListener(localb.QIt);
+          localb.Yhj.ibM();
+          localViewTreeObserver.addOnTouchModeChangeListener(localb.Yhj);
         }
-        localViewTreeObserver.addOnDrawListener(localb.QIA);
+        localViewTreeObserver.addOnDrawListener(localb.Yhq);
       }
-      if (localb.QIo.hasSelection()) {
-        localb.hai();
+      if (localb.Yhe.iau()) {
+        localb.ibg();
       }
-      localb.gZS();
+      localb.iaQ();
     }
-    if (this.QGv)
+    if (this.Yfl)
     {
       getViewTreeObserver().addOnPreDrawListener(this);
-      this.QGv = false;
+      this.Yfl = false;
     }
     post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(205555);
+        AppMethodBeat.i(212770);
         CustomTextView localCustomTextView = CustomTextView.this;
-        boolean bool = localCustomTextView.gZN();
+        boolean bool = localCustomTextView.iaK();
         Log.i("cmEdit.CMTextView", "checkInitAdaptEdt isNeedReuseMenuItems:".concat(String.valueOf(bool)));
         if (bool)
         {
@@ -6542,10 +6583,10 @@ public class CustomTextView
           Log.i("cmEdit.CMTextView", "checkInitAdaptEdt isWindowAttached:".concat(String.valueOf(bool)));
           if (bool)
           {
-            Log.i("cmEdit.CMTextView", "checkInitAdaptEdt mIsInitAdapt:" + localCustomTextView.QHy);
-            if (!localCustomTextView.QHy)
+            Log.i("cmEdit.CMTextView", "checkInitAdaptEdt mIsInitAdapt:" + localCustomTextView.Ygo);
+            if (!localCustomTextView.Ygo)
             {
-              localCustomTextView.QHy = true;
+              localCustomTextView.Ygo = true;
               try
               {
                 AdaptEditText localAdaptEditText = new AdaptEditText(localCustomTextView.getContext());
@@ -6555,63 +6596,63 @@ public class CustomTextView
                   localAdaptEditText.setVisibility(8);
                   localCustomTextView.setAdaptText(localAdaptEditText);
                 }
-                AppMethodBeat.o(205555);
+                AppMethodBeat.o(212770);
                 return;
               }
               catch (Throwable localThrowable)
               {
                 Log.e("cmEdit.CMTextView", "initAdapt err:%s", new Object[] { Util.stackTraceToString(localThrowable) });
-                com.tencent.mm.ui.widget.cedit.api.b.aow(7);
+                com.tencent.mm.ui.widget.cedit.api.b.axG(7);
               }
             }
           }
         }
-        AppMethodBeat.o(205555);
+        AppMethodBeat.o(212770);
       }
     });
-    AppMethodBeat.o(205713);
+    AppMethodBeat.o(201815);
   }
   
   public boolean onCheckIsTextEditor()
   {
-    return (this.QHs != null) && (this.QHs.Clf != 0);
+    return (this.Ygi != null) && (this.Ygi.IhY != 0);
   }
   
   protected void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(205629);
+    AppMethodBeat.i(201532);
     super.onConfigurationChanged(paramConfiguration);
-    if (!this.QGL)
+    if (!this.YfB)
     {
       if (Build.VERSION.SDK_INT < 24) {
         break label62;
       }
-      this.ayn.setTextLocales(LocaleList.getDefault());
+      this.wi.setTextLocales(LocaleList.getDefault());
     }
     for (;;)
     {
-      if (this.OVt != null)
+      if (this.WoF != null)
       {
-        gLr();
+        hKs();
         requestLayout();
         invalidate();
       }
-      AppMethodBeat.o(205629);
+      AppMethodBeat.o(201532);
       return;
       label62:
-      this.ayn.setTextLocale(Locale.getDefault());
+      this.wi.setTextLocale(Locale.getDefault());
     }
   }
   
   protected int[] onCreateDrawableState(int paramInt)
   {
-    AppMethodBeat.i(205725);
+    AppMethodBeat.i(201861);
     int[] arrayOfInt1;
     int i;
-    if (this.OSP)
+    if (this.Wmc)
     {
       arrayOfInt1 = super.onCreateDrawableState(paramInt);
-      if (isTextSelectable())
+      if (ial())
       {
         i = arrayOfInt1.length;
         paramInt = 0;
@@ -6629,39 +6670,39 @@ public class CustomTextView
           int[] arrayOfInt2 = new int[i - 1];
           System.arraycopy(arrayOfInt1, 0, arrayOfInt2, 0, paramInt);
           System.arraycopy(arrayOfInt1, paramInt + 1, arrayOfInt2, paramInt, i - paramInt - 1);
-          AppMethodBeat.o(205725);
+          AppMethodBeat.o(201861);
           return arrayOfInt2;
           arrayOfInt1 = super.onCreateDrawableState(paramInt + 1);
-          mergeDrawableStates(arrayOfInt1, QGl);
+          mergeDrawableStates(arrayOfInt1, Yfb);
           break;
         }
         paramInt += 1;
       }
     }
     label111:
-    AppMethodBeat.o(205725);
+    AppMethodBeat.o(201861);
     return arrayOfInt1;
   }
   
   public InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
   {
-    AppMethodBeat.i(205740);
+    AppMethodBeat.i(201998);
     if ((onCheckIsTextEditor()) && (isEnabled()))
     {
-      Object localObject = this.QHs;
-      if (((b)localObject).QID == null) {
-        ((b)localObject).QID = new b.h();
+      Object localObject = this.Ygi;
+      if (((b)localObject).Yht == null) {
+        ((b)localObject).Yht = new b.h();
       }
       paramEditorInfo.inputType = getInputType();
-      if (this.QHs.QIC != null)
+      if (this.Ygi.Yhs != null)
       {
-        paramEditorInfo.imeOptions = this.QHs.QIC.imeOptions;
-        paramEditorInfo.privateImeOptions = this.QHs.QIC.privateImeOptions;
-        paramEditorInfo.actionLabel = this.QHs.QIC.QKh;
-        paramEditorInfo.actionId = this.QHs.QIC.imeActionId;
-        paramEditorInfo.extras = this.QHs.QIC.extras;
+        paramEditorInfo.imeOptions = this.Ygi.Yhs.nlD;
+        paramEditorInfo.privateImeOptions = this.Ygi.Yhs.YiX;
+        paramEditorInfo.actionLabel = this.Ygi.Yhs.YiY;
+        paramEditorInfo.actionId = this.Ygi.Yhs.YiZ;
+        paramEditorInfo.extras = this.Ygi.Yhs.extras;
         if (Build.VERSION.SDK_INT >= 24) {
-          paramEditorInfo.hintLocales = this.QHs.QIC.QKk;
+          paramEditorInfo.hintLocales = this.Ygi.Yhs.Yjc;
         }
         if ((paramEditorInfo.imeOptions & 0xFF) == 0) {
           if ((paramEditorInfo.imeOptions & 0x8000000) == 0) {
@@ -6672,13 +6713,13 @@ public class CustomTextView
       label312:
       for (paramEditorInfo.imeOptions |= 0x5;; paramEditorInfo.imeOptions |= 0x6)
       {
-        if (!gZu()) {
+        if (!iam()) {
           paramEditorInfo.imeOptions |= 0x40000000;
         }
-        if (aox(paramEditorInfo.inputType)) {
+        if (axH(paramEditorInfo.inputType)) {
           paramEditorInfo.imeOptions |= 0x40000000;
         }
-        paramEditorInfo.hintText = this.QGE;
+        paramEditorInfo.hintText = this.Yfu;
         if (!(this.mText instanceof Editable)) {
           break label326;
         }
@@ -6686,7 +6727,7 @@ public class CustomTextView
         paramEditorInfo.initialSelStart = getSelectionStart();
         paramEditorInfo.initialSelEnd = getSelectionEnd();
         paramEditorInfo.initialCapsMode = ((InputConnection)localObject).getCursorCapsMode(getInputType());
-        AppMethodBeat.o(205740);
+        AppMethodBeat.o(201998);
         return localObject;
         paramEditorInfo.imeOptions = 0;
         if (Build.VERSION.SDK_INT < 24) {
@@ -6697,87 +6738,87 @@ public class CustomTextView
       }
     }
     label326:
-    AppMethodBeat.o(205740);
+    AppMethodBeat.o(201998);
     return null;
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(205714);
+    AppMethodBeat.i(201818);
     super.onDetachedFromWindow();
-    if (this.QGu)
+    if (this.Yfk)
     {
       getViewTreeObserver().removeOnPreDrawListener(this);
-      this.QGv = true;
+      this.Yfl = true;
     }
-    this.QGB = -1;
-    if (this.QHs != null)
+    this.Yfr = -1;
+    if (this.Ygi != null)
     {
-      b localb = this.QHs;
-      localb.gZR();
-      if (localb.QIs != null) {
-        localb.QIs.onDetached();
+      b localb = this.Ygi;
+      localb.iaP();
+      if (localb.Yhi != null) {
+        localb.Yhi.cfy();
       }
-      if (localb.QIt != null) {
-        localb.QIt.onDetached();
+      if (localb.Yhj != null) {
+        localb.Yhj.cfy();
       }
-      if (localb.QIX != null) {
-        localb.QIo.removeCallbacks(localb.QIX);
+      if (localb.YhN != null) {
+        localb.Yhe.removeCallbacks(localb.YhN);
       }
-      if (localb.QJk != null) {
-        localb.QIo.removeCallbacks(localb.QJk);
+      if (localb.Yia != null) {
+        localb.Yhe.removeCallbacks(localb.Yia);
       }
-      localb.QIo.removeCallbacks(localb.QJp);
-      ViewTreeObserver localViewTreeObserver = localb.QIo.getViewTreeObserver();
+      localb.Yhe.removeCallbacks(localb.Yif);
+      ViewTreeObserver localViewTreeObserver = localb.Yhe.getViewTreeObserver();
       if (localViewTreeObserver.isAlive()) {
-        localViewTreeObserver.removeOnDrawListener(localb.QIA);
+        localViewTreeObserver.removeOnDrawListener(localb.Yhq);
       }
-      localb.gZQ();
-      localb.hav();
+      localb.iaO();
+      localb.ibt();
     }
-    AppMethodBeat.o(205714);
+    AppMethodBeat.o(201818);
   }
   
   public boolean onDragEvent(DragEvent paramDragEvent)
   {
-    AppMethodBeat.i(205848);
+    AppMethodBeat.i(202486);
     switch (paramDragEvent.getAction())
     {
     case 4: 
     default: 
-      AppMethodBeat.o(205848);
+      AppMethodBeat.o(202486);
       return true;
     case 1: 
-      if ((this.QHs != null) && (this.QHs.QIv))
+      if ((this.Ygi != null) && (this.Ygi.Yhl))
       {
-        AppMethodBeat.o(205848);
+        AppMethodBeat.o(202486);
         return true;
       }
-      AppMethodBeat.o(205848);
+      AppMethodBeat.o(202486);
       return false;
     case 5: 
       requestFocus();
-      AppMethodBeat.o(205848);
+      AppMethodBeat.o(202486);
       return true;
     case 2: 
       if ((this.mText instanceof Spannable))
       {
-        int i = getOffsetForPosition(paramDragEvent.getX(), paramDragEvent.getY());
-        Selection.setSelection(this.QGC, i);
+        int i = aG(paramDragEvent.getX(), paramDragEvent.getY());
+        Selection.setSelection(this.Yfs, i);
       }
-      AppMethodBeat.o(205848);
+      AppMethodBeat.o(202486);
       return true;
     }
-    if (this.QHs != null) {
-      this.QHs.a(paramDragEvent);
+    if (this.Ygi != null) {
+      this.Ygi.a(paramDragEvent);
     }
-    AppMethodBeat.o(205848);
+    AppMethodBeat.o(202486);
     return true;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(205727);
+    AppMethodBeat.i(201893);
     super.onDraw(paramCanvas);
     int k = getCompoundPaddingLeft();
     int i2 = getCompoundPaddingTop();
@@ -6790,68 +6831,68 @@ public class CustomTextView
     int n = getBottom();
     int i1 = getTop();
     int i = getHorizontalOffsetForDrawables();
-    Object localObject1 = this.QGA;
+    Object localObject1 = this.Yfq;
     if (localObject1 != null)
     {
       j = n - i1 - i3 - i2;
       i7 = i5 - i6 - i7 - k;
-      if (localObject1.QHE[0] != null)
+      if (localObject1.Ygu[0] != null)
       {
         paramCanvas.save();
-        paramCanvas.translate(i + (getPaddingLeft() + i4), m + i2 + (j - ((b)localObject1).OWk) / 2);
-        localObject1.QHE[0].draw(paramCanvas);
+        paramCanvas.translate(i + (getPaddingLeft() + i4), m + i2 + (j - ((b)localObject1).Wpw) / 2);
+        localObject1.Ygu[0].draw(paramCanvas);
         paramCanvas.restore();
       }
-      if (localObject1.QHE[2] != null)
+      if (localObject1.Ygu[2] != null)
       {
         paramCanvas.save();
-        paramCanvas.translate(i4 + i5 - i6 - getPaddingRight() - ((b)localObject1).OWh + 0, (j - ((b)localObject1).OWl) / 2 + (m + i2));
-        localObject1.QHE[2].draw(paramCanvas);
+        paramCanvas.translate(i4 + i5 - i6 - getPaddingRight() - ((b)localObject1).Wpt + 0, (j - ((b)localObject1).Wpx) / 2 + (m + i2));
+        localObject1.Ygu[2].draw(paramCanvas);
         paramCanvas.restore();
       }
-      if (localObject1.QHE[1] != null)
+      if (localObject1.Ygu[1] != null)
       {
         paramCanvas.save();
-        paramCanvas.translate(i4 + k + (i7 - ((b)localObject1).OWi) / 2, getPaddingTop() + m);
-        localObject1.QHE[1].draw(paramCanvas);
+        paramCanvas.translate(i4 + k + (i7 - ((b)localObject1).Wpu) / 2, getPaddingTop() + m);
+        localObject1.Ygu[1].draw(paramCanvas);
         paramCanvas.restore();
       }
-      if (localObject1.QHE[3] != null)
+      if (localObject1.Ygu[3] != null)
       {
         paramCanvas.save();
-        paramCanvas.translate((i7 - ((b)localObject1).OWj) / 2 + (i4 + k), m + n - i1 - getPaddingBottom() - ((b)localObject1).OWf);
-        localObject1.QHE[3].draw(paramCanvas);
+        paramCanvas.translate((i7 - ((b)localObject1).Wpv) / 2 + (i4 + k), m + n - i1 - getPaddingBottom() - ((b)localObject1).Wpr);
+        localObject1.Ygu[3].draw(paramCanvas);
         paramCanvas.restore();
       }
     }
-    i = this.OVm;
-    if (this.OVt == null) {
-      gLs();
+    i = this.Woy;
+    if (this.WoF == null) {
+      hKt();
     }
-    Object localObject2 = this.OVt;
+    Object localObject2 = this.WoF;
     int j = i;
     localObject1 = localObject2;
-    if (this.QGE != null)
+    if (this.Yfu != null)
     {
       j = i;
       localObject1 = localObject2;
       if (this.mText.length() == 0)
       {
-        if (this.QGn != null) {
-          i = this.QGp;
+        if (this.Yfd != null) {
+          i = this.Yff;
         }
-        localObject1 = this.QGF;
+        localObject1 = this.Yfv;
         j = i;
       }
     }
-    this.ayn.setColor(j);
-    this.ayn.drawableState = getDrawableState();
+    this.wi.setColor(j);
+    this.wi.drawableState = getDrawableState();
     paramCanvas.save();
     i7 = getExtendedPaddingTop();
     i = getExtendedPaddingBottom();
     j = getBottom();
     int i8 = getTop();
-    int i9 = this.OVt.getHeight();
+    int i9 = this.WoF.getHeight();
     float f3 = k + i4;
     float f1;
     float f2;
@@ -6864,13 +6905,13 @@ public class CustomTextView
         i = 0;
       }
       f4 = n - i1 + m - i;
-      if (this.QGr == 0.0F) {
+      if (this.Yfh == 0.0F) {
         break label1252;
       }
-      f3 += Math.min(0.0F, this.QGs - this.QGr);
-      f2 = Math.max(0.0F, this.QGs + this.QGr) + f2;
-      f1 += Math.min(0.0F, this.QGt - this.QGr);
-      f4 = Math.max(0.0F, this.QGt + this.QGr) + f4;
+      f3 += Math.min(0.0F, this.Yfi - this.Yfh);
+      f2 = Math.max(0.0F, this.Yfi + this.Yfh) + f2;
+      f1 += Math.min(0.0F, this.Yfj - this.Yfh);
+      f4 = Math.max(0.0F, this.Yfj + this.Yfh) + f4;
     }
     label900:
     label952:
@@ -6881,10 +6922,10 @@ public class CustomTextView
       paramCanvas.clipRect(f3, f1, f2, f4);
       j = 0;
       i = 0;
-      if ((this.Ku & 0x70) != 48)
+      if ((this.sK & 0x70) != 48)
       {
-        j = CW(false);
-        i = CW(true);
+        j = Hs(false);
+        i = Hs(true);
       }
       paramCanvas.translate(k, i7 + j);
       j = i - j;
@@ -6892,31 +6933,31 @@ public class CustomTextView
       Object localObject3;
       label872:
       long l;
-      if (this.QHs != null)
+      if (this.Ygi != null)
       {
-        b localb = this.QHs;
-        Paint localPaint = this.QHg;
-        k = localb.QIo.getSelectionStart();
-        m = localb.QIo.getSelectionEnd();
-        localObject2 = localb.QID;
-        if ((localObject2 != null) && (((b.h)localObject2).QIp == 0))
+        b localb = this.Ygi;
+        Paint localPaint = this.YfW;
+        k = localb.Yhe.getSelectionStart();
+        m = localb.Yhe.getSelectionEnd();
+        localObject2 = localb.Yht;
+        if ((localObject2 != null) && (((b.h)localObject2).Yhf == 0))
         {
           localObject3 = localb.getInputMethodManager();
-          if ((localObject3 != null) && (((InputMethodManager)localObject3).isActive(localb.QIo)) && ((((b.h)localObject2).mContentChanged) || (((b.h)localObject2).QKo))) {
-            localb.hae();
+          if ((localObject3 != null) && (((InputMethodManager)localObject3).isActive(localb.Yhe)) && ((((b.h)localObject2).mContentChanged) || (((b.h)localObject2).Yjg))) {
+            localb.ibc();
           }
         }
-        if (localb.QIB != null)
+        if (localb.Yhr != null)
         {
-          localObject2 = localb.QIB;
-          localObject3 = ((b.b)localObject2).QJz.QIo.getLayout();
+          localObject2 = localb.Yhr;
+          localObject3 = b.c(((b.b)localObject2).Yip).getLayout();
           if (localObject3 == null)
           {
             i = 0;
             if (i == 0) {
               break label1215;
             }
-            l = SystemClock.uptimeMillis() - ((b.b)localObject2).QJA;
+            l = SystemClock.uptimeMillis() - ((b.b)localObject2).Yiq;
             if (l <= 400L) {
               break label1142;
             }
@@ -6927,11 +6968,11 @@ public class CustomTextView
             if (j != 0) {
               paramCanvas.translate(0.0F, j);
             }
-            paramCanvas.drawPath(((b.b)localObject2).xT, ((b.b)localObject2).mPaint);
+            paramCanvas.drawPath(((b.b)localObject2).auD, ((b.b)localObject2).mPaint);
             if (j != 0) {
               paramCanvas.translate(0.0F, -j);
             }
-            ((b.b)localObject2).Da(true);
+            ((b.b)localObject2).Hw(true);
           }
         }
         else
@@ -6943,7 +6984,7 @@ public class CustomTextView
             if (k == m)
             {
               localObject2 = localPath;
-              if (localb.QIY != null)
+              if (localb.YhO != null)
               {
                 if (j == 0) {
                   break label1229;
@@ -6952,8 +6993,8 @@ public class CustomTextView
                 if (i != 0) {
                   paramCanvas.translate(0.0F, j);
                 }
-                if (localb.QIY != null) {
-                  localb.QIY.draw(paramCanvas);
+                if (localb.YhO != null) {
+                  localb.YhO.draw(paramCanvas);
                 }
                 if (i != 0) {
                   paramCanvas.translate(0.0F, -j);
@@ -6968,119 +7009,119 @@ public class CustomTextView
       for (;;)
       {
         paramCanvas.restore();
-        AppMethodBeat.o(205727);
+        AppMethodBeat.o(201893);
         return;
         f1 = i7 + m;
         break;
-        n = ((b.b)localObject2).QJz.QIo.getText().length();
-        i = Math.min(n, ((b.b)localObject2).avh);
-        n = Math.min(n, ((b.b)localObject2).Pc);
-        ((b.b)localObject2).xT.reset();
-        ((Layout)localObject3).getSelectionPath(i, n, ((b.b)localObject2).xT);
+        n = b.c(((b.b)localObject2).Yip).getText().length();
+        i = Math.min(n, ((b.b)localObject2).tH);
+        n = Math.min(n, ((b.b)localObject2).tI);
+        ((b.b)localObject2).auD.reset();
+        ((Layout)localObject3).getSelectionPath(i, n, ((b.b)localObject2).auD);
         i = 1;
         break label872;
         label1142:
         f1 = (float)l / 400.0F;
-        n = Color.alpha(((b.b)localObject2).QJz.QIo.oEF);
-        i = ((b.b)localObject2).QJz.QIo.oEF;
+        n = Color.alpha(b.c(((b.b)localObject2).Yip).rGp);
+        i = b.c(((b.b)localObject2).Yip).rGp;
         n = (int)((1.0F - f1) * n);
         ((b.b)localObject2).mPaint.setColor((n << 24) + (i & 0xFFFFFF));
         i = 1;
         break label900;
         ((b.b)localObject2).stopAnimation();
-        ((b.b)localObject2).Da(false);
+        ((b.b)localObject2).Hw(false);
         break label952;
         i = 0;
         break label992;
-        ((Layout)localObject1).draw(paramCanvas, localPath, this.QHg, j);
+        ((Layout)localObject1).draw(paramCanvas, localPath, this.YfW, j);
       }
     }
   }
   
   protected void onFocusChanged(boolean paramBoolean, int paramInt, Rect paramRect)
   {
-    AppMethodBeat.i(205786);
+    AppMethodBeat.i(202262);
     if ((Build.VERSION.SDK_INT >= 24) && (isTemporarilyDetached()))
     {
       super.onFocusChanged(paramBoolean, paramInt, paramRect);
-      AppMethodBeat.o(205786);
+      AppMethodBeat.o(202262);
       return;
     }
-    if (this.QHs != null) {
-      this.QHs.af(paramBoolean, paramInt);
+    if (this.Ygi != null) {
+      this.Ygi.at(paramBoolean, paramInt);
     }
-    if ((paramBoolean) && (this.QGC != null)) {
-      MetaKeyKeyListener.resetMetaState(this.QGC);
+    if ((paramBoolean) && (this.Yfs != null)) {
+      MetaKeyKeyListener.resetMetaState(this.Yfs);
     }
-    if (this.QGH != null) {
-      this.QGH.onFocusChanged(this, this.mText, paramBoolean, paramInt, paramRect);
+    if (this.Yfx != null) {
+      this.Yfx.onFocusChanged(this, this.mText, paramBoolean, paramInt, paramRect);
     }
     super.onFocusChanged(paramBoolean, paramInt, paramRect);
-    AppMethodBeat.o(205786);
+    AppMethodBeat.o(202262);
   }
   
   public boolean onGenericMotionEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(205793);
-    if ((this.QGG != null) && ((this.mText instanceof Spannable)) && (this.OVt != null)) {
+    AppMethodBeat.i(202299);
+    if ((this.Yfw != null) && ((this.mText instanceof Spannable)) && (this.WoF != null)) {
       try
       {
-        bool = this.QGG.a(this, paramMotionEvent);
+        bool = this.Yfw.a(this, paramMotionEvent);
         if (bool)
         {
-          AppMethodBeat.o(205793);
+          AppMethodBeat.o(202299);
           return true;
         }
       }
       catch (AbstractMethodError localAbstractMethodError) {}
     }
     boolean bool = super.onGenericMotionEvent(paramMotionEvent);
-    AppMethodBeat.o(205793);
+    AppMethodBeat.o(202299);
     return bool;
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(205734);
+    AppMethodBeat.i(201940);
     if (a(paramInt, paramKeyEvent, null) == 0)
     {
       boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-      AppMethodBeat.o(205734);
+      AppMethodBeat.o(201940);
       return bool;
     }
-    AppMethodBeat.o(205734);
+    AppMethodBeat.o(201940);
     return true;
   }
   
   public boolean onKeyMultiple(int paramInt1, int paramInt2, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(205735);
+    AppMethodBeat.i(201945);
     KeyEvent localKeyEvent = KeyEvent.changeAction(paramKeyEvent, 0);
     int i = a(paramInt1, localKeyEvent, paramKeyEvent);
     if (i == 0)
     {
       boolean bool = super.onKeyMultiple(paramInt1, paramInt2, paramKeyEvent);
-      AppMethodBeat.o(205735);
+      AppMethodBeat.o(201945);
       return bool;
     }
     if (i == -1)
     {
-      AppMethodBeat.o(205735);
+      AppMethodBeat.o(201945);
       return true;
     }
     paramInt2 -= 1;
     paramKeyEvent = KeyEvent.changeAction(paramKeyEvent, 1);
     if (i == 1)
     {
-      this.QHs.QIH.onKeyUp(this, (Editable)this.mText, paramInt1, paramKeyEvent);
+      this.Ygi.Yhx.onKeyUp(this, (Editable)this.mText, paramInt1, paramKeyEvent);
       for (;;)
       {
         paramInt2 -= 1;
         if (paramInt2 <= 0) {
           break;
         }
-        this.QHs.QIH.onKeyDown(this, (Editable)this.mText, paramInt1, localKeyEvent);
-        this.QHs.QIH.onKeyUp(this, (Editable)this.mText, paramInt1, paramKeyEvent);
+        this.Ygi.Yhx.onKeyDown(this, (Editable)this.mText, paramInt1, localKeyEvent);
+        this.Ygi.Yhx.onKeyUp(this, (Editable)this.mText, paramInt1, paramKeyEvent);
       }
     }
     if (i == 2) {
@@ -7090,30 +7131,30 @@ public class CustomTextView
         if (paramInt2 <= 0) {
           break;
         }
-        this.QGG.a(this, this.QGC, paramInt1, localKeyEvent);
+        this.Yfw.a(this, this.Yfs, paramInt1, localKeyEvent);
       }
     }
-    AppMethodBeat.o(205735);
+    AppMethodBeat.o(201945);
     return true;
   }
   
   public boolean onKeyPreIme(int paramInt, KeyEvent paramKeyEvent)
   {
     int j = 0;
-    AppMethodBeat.i(205733);
+    AppMethodBeat.i(201938);
     if (paramInt == 4)
     {
       int i = j;
-      if (this.QHs != null)
+      if (this.Ygi != null)
       {
-        if (!this.QHs.ham()) {
+        if (!this.Ygi.ibk()) {
           break label49;
         }
         i = j;
       }
       while (i != 0)
       {
-        AppMethodBeat.o(205733);
+        AppMethodBeat.o(201938);
         return true;
         label49:
         KeyEvent.DispatcherState localDispatcherState;
@@ -7140,7 +7181,7 @@ public class CustomTextView
               i = j;
               if (!paramKeyEvent.isCanceled())
               {
-                gZE();
+                iaB();
                 i = 1;
               }
             }
@@ -7149,13 +7190,13 @@ public class CustomTextView
       }
     }
     boolean bool = super.onKeyPreIme(paramInt, paramKeyEvent);
-    AppMethodBeat.o(205733);
+    AppMethodBeat.o(201938);
     return bool;
   }
   
   public boolean onKeyShortcut(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(205806);
+    AppMethodBeat.i(202322);
     if (paramKeyEvent.hasModifiers(4096)) {
       switch (paramInt)
       {
@@ -7166,27 +7207,27 @@ public class CustomTextView
       for (;;)
       {
         bool = super.onKeyShortcut(paramInt, paramKeyEvent);
-        AppMethodBeat.o(205806);
+        AppMethodBeat.o(202322);
         return bool;
-        if (gZC())
+        if (iay())
         {
           bool = onTextContextMenuItem(16908319);
-          AppMethodBeat.o(205806);
+          AppMethodBeat.o(202322);
           return bool;
-          if (gZF())
+          if (iaC())
           {
             bool = onTextContextMenuItem(16908320);
-            AppMethodBeat.o(205806);
+            AppMethodBeat.o(202322);
             return bool;
-            if (gZG())
+            if (iaD())
             {
               bool = onTextContextMenuItem(16908321);
-              AppMethodBeat.o(205806);
+              AppMethodBeat.o(202322);
               return bool;
-              if (gZH())
+              if (iaE())
               {
                 bool = onTextContextMenuItem(16908322);
-                AppMethodBeat.o(205806);
+                AppMethodBeat.o(202322);
                 return bool;
                 if (paramKeyEvent.hasModifiers(4097)) {
                   switch (paramInt)
@@ -7198,33 +7239,33 @@ public class CustomTextView
           }
         }
       }
-    } while (!gZH());
+    } while (!iaE());
     boolean bool = onTextContextMenuItem(16908337);
-    AppMethodBeat.o(205806);
+    AppMethodBeat.o(202322);
     return bool;
   }
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(205738);
+    AppMethodBeat.i(201982);
     if (!isEnabled())
     {
       bool = super.onKeyUp(paramInt, paramKeyEvent);
-      AppMethodBeat.o(205738);
+      AppMethodBeat.o(201982);
       return bool;
     }
     if (!KeyEvent.isModifierKey(paramInt)) {
-      this.QGz = false;
+      this.Yfp = false;
     }
     switch (paramInt)
     {
     }
-    while ((this.QHs != null) && (this.QHs.QIH != null) && (this.QHs.QIH.onKeyUp(this, (Editable)this.mText, paramInt, paramKeyEvent)))
+    while ((this.Ygi != null) && (this.Ygi.Yhx != null) && (this.Ygi.Yhx.onKeyUp(this, (Editable)this.mText, paramInt, paramKeyEvent)))
     {
-      AppMethodBeat.o(205738);
+      AppMethodBeat.o(201982);
       return true;
       Object localObject;
-      if ((paramKeyEvent.hasNoModifiers()) && (!hasOnClickListeners()) && (this.QGG != null) && ((this.mText instanceof Editable)) && (this.OVt != null) && (onCheckIsTextEditor()))
+      if ((paramKeyEvent.hasNoModifiers()) && (!hasOnClickListeners()) && (this.Yfw != null) && ((this.mText instanceof Editable)) && (this.WoF != null) && (onCheckIsTextEditor()))
       {
         localObject = getInputMethodManager();
         a((InputMethodManager)localObject);
@@ -7233,20 +7274,20 @@ public class CustomTextView
         }
       }
       bool = super.onKeyUp(paramInt, paramKeyEvent);
-      AppMethodBeat.o(205738);
+      AppMethodBeat.o(201982);
       return bool;
       if (paramKeyEvent.hasNoModifiers())
       {
-        if ((this.QHs != null) && (this.QHs.QIC != null) && (this.QHs.QIC.QKi != null) && (this.QHs.QIC.QKj))
+        if ((this.Ygi != null) && (this.Ygi.Yhs != null) && (this.Ygi.Yhs.Yja != null) && (this.Ygi.Yhs.Yjb))
         {
-          this.QHs.QIC.QKj = false;
-          if (this.QHs.QIC.QKi.a(this, 0))
+          this.Ygi.Yhs.Yjb = false;
+          if (this.Ygi.Yhs.Yja.a(this, 0))
           {
-            AppMethodBeat.o(205738);
+            AppMethodBeat.o(201982);
             return true;
           }
         }
-        if ((((paramKeyEvent.getFlags() & 0x10) != 0) || (gZu())) && (!hasOnClickListeners()))
+        if ((((paramKeyEvent.getFlags() & 0x10) != 0) || (iam())) && (!hasOnClickListeners()))
         {
           localObject = focusSearch(130);
           if (localObject != null)
@@ -7254,11 +7295,11 @@ public class CustomTextView
             if (!((View)localObject).requestFocus(130))
             {
               paramKeyEvent = new IllegalStateException("focus search returned a view that wasn't able to take focus!");
-              AppMethodBeat.o(205738);
+              AppMethodBeat.o(201982);
               throw paramKeyEvent;
             }
             super.onKeyUp(paramInt, paramKeyEvent);
-            AppMethodBeat.o(205738);
+            AppMethodBeat.o(201982);
             return true;
           }
           if ((paramKeyEvent.getFlags() & 0x10) != 0)
@@ -7270,39 +7311,39 @@ public class CustomTextView
           }
         }
         bool = super.onKeyUp(paramInt, paramKeyEvent);
-        AppMethodBeat.o(205738);
+        AppMethodBeat.o(201982);
         return bool;
       }
     }
     boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
-    AppMethodBeat.o(205738);
+    AppMethodBeat.o(201982);
     return bool;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(205759);
+    AppMethodBeat.i(202128);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.QGY >= 0)
+    if (this.YfO >= 0)
     {
-      paramInt1 = this.QGY;
-      this.QGY = -1;
-      bringPointIntoView(Math.min(paramInt1, this.mText.length()));
+      paramInt1 = this.YfO;
+      this.YfO = -1;
+      axK(Math.min(paramInt1, this.mText.length()));
     }
-    AppMethodBeat.o(205759);
+    AppMethodBeat.o(202128);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(205754);
+    AppMethodBeat.i(202100);
     int i2 = View.MeasureSpec.getMode(paramInt1);
     int i1 = View.MeasureSpec.getMode(paramInt2);
     int n = View.MeasureSpec.getSize(paramInt1);
     int m = View.MeasureSpec.getSize(paramInt2);
-    BoringLayout.Metrics localMetrics1 = OVU;
-    BoringLayout.Metrics localMetrics2 = OVU;
-    if (this.Om == null) {
-      this.Om = getTextDirectionHeuristic();
+    BoringLayout.Metrics localMetrics1 = Wpg;
+    BoringLayout.Metrics localMetrics2 = Wpg;
+    if (this.Mg == null) {
+      this.Mg = getTextDirectionHeuristic();
     }
     int i = -1;
     int j;
@@ -7315,28 +7356,28 @@ public class CustomTextView
       j = 0;
       localObject = localMetrics2;
       n = paramInt1 - getCompoundPaddingLeft() - getCompoundPaddingRight();
-      if (!this.QGQ) {
+      if (!this.YfG) {
         break label878;
       }
       paramInt2 = 1048576;
-      if (this.QGF == null)
+      if (this.Yfv == null)
       {
         k = paramInt2;
         label109:
-        if (this.OVt == null) {
+        if (this.WoF == null) {
           break label814;
         }
-        if ((this.OVt.getWidth() == paramInt2) && (k == paramInt2) && (this.OVt.getEllipsizedWidth() == paramInt1 - getCompoundPaddingLeft() - getCompoundPaddingRight())) {
+        if ((this.WoF.getWidth() == paramInt2) && (k == paramInt2) && (this.WoF.getEllipsizedWidth() == paramInt1 - getCompoundPaddingLeft() - getCompoundPaddingRight())) {
           break label797;
         }
         k = 1;
         label157:
-        if ((this.QGE != null) || (this.OVp != null) || (paramInt2 <= this.OVt.getWidth()) || ((!(this.OVt instanceof BoringLayout)) && ((j == 0) || (i < 0) || (i > paramInt2)))) {
+        if ((this.Yfu != null) || (this.WoB != null) || (paramInt2 <= this.WoF.getWidth()) || ((!(this.WoF instanceof BoringLayout)) && ((j == 0) || (i < 0) || (i > paramInt2)))) {
           break label803;
         }
         i = 1;
         label208:
-        if ((this.OVx == this.QGV) && (this.OVw == this.QGU)) {
+        if ((this.WoJ == this.YfL) && (this.WoI == this.YfK)) {
           break label808;
         }
         j = 1;
@@ -7346,90 +7387,90 @@ public class CustomTextView
           if ((j != 0) || (i == 0)) {
             break label814;
           }
-          this.OVt.increaseWidthTo(paramInt2);
+          this.WoF.increaseWidthTo(paramInt2);
         }
         label260:
         if (i1 != 1073741824) {
           break label839;
         }
-        this.OVC = -1;
+        this.WoO = -1;
         paramInt2 = m;
         label276:
         j = paramInt2 - getCompoundPaddingTop() - getCompoundPaddingBottom();
         i = j;
-        if (this.OVx == 1)
+        if (this.WoJ == 1)
         {
           i = j;
-          if (this.OVt.getLineCount() > this.OVw) {
-            i = Math.min(j, this.OVt.getLineTop(this.OVw));
+          if (this.WoF.getLineCount() > this.WoI) {
+            i = Math.min(j, this.WoF.getLineTop(this.WoI));
           }
         }
-        if ((this.QGG == null) && (this.OVt.getWidth() <= n) && (this.OVt.getHeight() <= i)) {
+        if ((this.Yfw == null) && (this.WoF.getWidth() <= n) && (this.WoF.getHeight() <= i)) {
           break label869;
         }
-        gZt();
+        iak();
         label368:
         setMeasuredDimension(paramInt1, paramInt2);
-        AppMethodBeat.o(205754);
+        AppMethodBeat.o(202100);
       }
     }
     else
     {
-      if ((this.OVt == null) || (this.OVp != null)) {
+      if ((this.WoF == null) || (this.WoB != null)) {
         break label913;
       }
     }
     label773:
     label908:
     label913:
-    for (paramInt2 = b(this.OVt);; paramInt2 = -1)
+    for (paramInt2 = b(this.WoF);; paramInt2 = -1)
     {
       if (paramInt2 < 0)
       {
-        localMetrics1 = BoringLayout.isBoring(this.OVq, this.ayn, this.QGZ);
+        localMetrics1 = BoringLayout.isBoring(this.WoC, this.wi, this.YfP);
         if (localMetrics1 == null) {
           break label908;
         }
-        this.QGZ = localMetrics1;
+        this.YfP = localMetrics1;
         paramInt1 = 0;
       }
       for (;;)
       {
         label437:
-        if ((localMetrics1 == null) || (localMetrics1 == OVU))
+        if ((localMetrics1 == null) || (localMetrics1 == Wpg))
         {
           i = paramInt2;
           if (paramInt2 < 0) {
-            i = (int)Math.ceil(Layout.getDesiredWidth(this.OVq, 0, this.OVq.length(), this.ayn));
+            i = (int)Math.ceil(Layout.getDesiredWidth(this.WoC, 0, this.WoC.length(), this.wi));
           }
           j = i;
           paramInt2 = i;
           label488:
-          localObject = this.QGA;
+          localObject = this.Yfq;
           i = j;
           if (localObject != null) {
-            i = Math.max(Math.max(j, ((b)localObject).OWi), ((b)localObject).OWj);
+            i = Math.max(Math.max(j, ((b)localObject).Wpu), ((b)localObject).Wpv);
           }
           j = i;
           localObject = localMetrics2;
-          if (this.QGE != null)
+          if (this.Yfu != null)
           {
             k = -1;
             j = k;
-            if (this.QGF != null)
+            if (this.Yfv != null)
             {
               j = k;
-              if (this.OVp == null) {
-                j = b(this.QGF);
+              if (this.WoB == null) {
+                j = b(this.Yfv);
               }
             }
             if (j >= 0) {
               break label901;
             }
-            localMetrics2 = BoringLayout.isBoring(this.QGE, this.ayn, this.QHa);
+            localMetrics2 = BoringLayout.isBoring(this.Yfu, this.wi, this.YfQ);
             localObject = localMetrics2;
             if (localMetrics2 != null) {
-              this.QHa = localMetrics2;
+              this.YfQ = localMetrics2;
             }
           }
         }
@@ -7440,7 +7481,7 @@ public class CustomTextView
           k = j;
           if (localObject != null)
           {
-            if (localObject == OVU) {
+            if (localObject == Wpg) {
               k = j;
             }
           }
@@ -7461,14 +7502,14 @@ public class CustomTextView
           for (j = k;; j = i)
           {
             i = getCompoundPaddingLeft() + getCompoundPaddingRight() + j;
-            if (this.QGW == 1)
+            if (this.YfM == 1)
             {
-              i = Math.min(i, this.mMaxWidth * getLineHeight());
-              if (this.QGX != 1) {
+              i = Math.min(i, this.uJ * getLineHeight());
+              if (this.YfN != 1) {
                 break label773;
               }
             }
-            for (i = Math.max(i, this.mMinWidth * getLineHeight());; i = Math.max(i, this.mMinWidth))
+            for (i = Math.max(i, this.lj * getLineHeight());; i = Math.max(i, this.lj))
             {
               k = Math.max(i, getSuggestedMinimumWidth());
               if (i2 != -2147483648) {
@@ -7485,10 +7526,10 @@ public class CustomTextView
               break label488;
               k = ((BoringLayout.Metrics)localObject).width;
               break label631;
-              i = Math.min(i, this.mMaxWidth);
+              i = Math.min(i, this.uJ);
               break label676;
             }
-            k = this.QGF.getWidth();
+            k = this.Yfv.getWidth();
             break label109;
             k = 0;
             break label157;
@@ -7499,7 +7540,7 @@ public class CustomTextView
             a(paramInt2, paramInt2, localMetrics1, (BoringLayout.Metrics)localObject, paramInt1 - getCompoundPaddingLeft() - getCompoundPaddingRight(), false);
             break label260;
             i = getDesiredHeight();
-            this.OVC = i;
+            this.WoO = i;
             paramInt2 = i;
             if (i1 != -2147483648) {
               break label276;
@@ -7523,22 +7564,22 @@ public class CustomTextView
   
   public boolean onPreDraw()
   {
-    AppMethodBeat.i(205712);
-    if (this.OVt == null) {
-      gLs();
+    AppMethodBeat.i(201808);
+    if (this.WoF == null) {
+      hKt();
     }
     int j;
-    if (this.QGG != null)
+    if (this.Yfw != null)
     {
       j = getSelectionEnd();
       i = j;
-      if (this.QHs != null)
+      if (this.Ygi != null)
       {
         i = j;
-        if (this.QHs.QIt != null)
+        if (this.Ygi.Yhj != null)
         {
           i = j;
-          if (this.QHs.QIt.haP()) {
+          if (this.Ygi.Yhj.ibO()) {
             i = getSelectionStart();
           }
         }
@@ -7547,30 +7588,30 @@ public class CustomTextView
       if (i < 0)
       {
         j = i;
-        if ((this.Ku & 0x70) == 80) {
+        if ((this.sK & 0x70) == 80) {
           j = this.mText.length();
         }
       }
       if (j >= 0) {
-        bringPointIntoView(j);
+        axK(j);
       }
-      if ((this.QHs != null) && (this.QHs.QJh))
+      if ((this.Ygi != null) && (this.Ygi.YhX))
       {
-        this.QHs.hai();
-        this.QHs.QJh = false;
+        this.Ygi.ibg();
+        this.Ygi.YhX = false;
       }
       getViewTreeObserver().removeOnPreDrawListener(this);
-      this.QGu = false;
-      this.QGv = false;
-      AppMethodBeat.o(205712);
+      this.Yfk = false;
+      this.Yfl = false;
+      AppMethodBeat.o(201808);
       return true;
     }
     Layout localLayout;
-    if (gZx())
+    if (iar())
     {
-      localLayout = this.QGF;
+      localLayout = this.Yfv;
       label181:
-      if ((this.Ku & 0x70) != 80) {
+      if ((this.sK & 0x70) != 80) {
         break label424;
       }
     }
@@ -7595,7 +7636,7 @@ public class CustomTextView
         {
           i = (i + j) / 2 - i1 / 2;
           label329:
-          if ((m < k) || ((this.Ku & 0x70) != 80)) {
+          if ((m < k) || ((this.sK & 0x70) != 80)) {
             break label419;
           }
         }
@@ -7607,7 +7648,7 @@ public class CustomTextView
         }
         scrollTo(i, j);
         break;
-        localLayout = this.OVt;
+        localLayout = this.WoF;
         break label181;
         if (n < 0)
         {
@@ -7625,91 +7666,91 @@ public class CustomTextView
   
   public PointerIcon onResolvePointerIcon(MotionEvent paramMotionEvent, int paramInt)
   {
-    AppMethodBeat.i(205732);
-    if ((this.QGC != null) && (this.QGS))
+    AppMethodBeat.i(201930);
+    if ((this.Yfs != null) && (this.YfI))
     {
-      int i = getOffsetForPosition(paramMotionEvent.getX(paramInt), paramMotionEvent.getY(paramInt));
-      if ((((ClickableSpan[])this.QGC.getSpans(i, i, ClickableSpan.class)).length > 0) && (Build.VERSION.SDK_INT >= 24))
+      int i = aG(paramMotionEvent.getX(paramInt), paramMotionEvent.getY(paramInt));
+      if ((((ClickableSpan[])this.Yfs.getSpans(i, i, ClickableSpan.class)).length > 0) && (Build.VERSION.SDK_INT >= 24))
       {
         paramMotionEvent = PointerIcon.getSystemIcon(getContext(), 1002);
-        AppMethodBeat.o(205732);
+        AppMethodBeat.o(201930);
         return paramMotionEvent;
       }
     }
-    if (((isTextSelectable()) || (gZB())) && (Build.VERSION.SDK_INT >= 24))
+    if (((ial()) || (iaw())) && (Build.VERSION.SDK_INT >= 24))
     {
       paramMotionEvent = PointerIcon.getSystemIcon(getContext(), 1008);
-      AppMethodBeat.o(205732);
+      AppMethodBeat.o(201930);
       return paramMotionEvent;
     }
     paramMotionEvent = super.onResolvePointerIcon(paramMotionEvent, paramInt);
-    AppMethodBeat.o(205732);
+    AppMethodBeat.o(201930);
     return paramMotionEvent;
   }
   
   public void onRestoreInstanceState(Parcelable paramParcelable)
   {
-    AppMethodBeat.i(205680);
+    AppMethodBeat.i(201696);
     if (!(paramParcelable instanceof SavedState))
     {
       super.onRestoreInstanceState(paramParcelable);
-      AppMethodBeat.o(205680);
+      AppMethodBeat.o(201696);
       return;
     }
     SavedState localSavedState = (SavedState)paramParcelable;
     super.onRestoreInstanceState(localSavedState.getSuperState());
-    if (localSavedState.text != null) {
-      setText(localSavedState.text);
+    if (localSavedState.LV != null) {
+      setText(localSavedState.LV);
     }
-    if ((localSavedState.QHT >= 0) && (localSavedState.QHU >= 0) && (this.QGC != null))
+    if ((localSavedState.YgJ >= 0) && (localSavedState.YgK >= 0) && (this.Yfs != null))
     {
       int i = this.mText.length();
-      if ((localSavedState.QHT <= i) && (localSavedState.QHU <= i)) {
-        break label205;
+      if ((localSavedState.YgJ <= i) && (localSavedState.YgK <= i)) {
+        break label201;
       }
       paramParcelable = "";
-      if (localSavedState.text != null) {
+      if (localSavedState.LV != null) {
         paramParcelable = "(restored) ";
       }
-      Log.e("cmEdit.CMTextView", "Saved cursor position " + localSavedState.QHT + "/" + localSavedState.QHU + " out of range for " + paramParcelable + "text " + this.mText);
+      Log.e("cmEdit.CMTextView", "Saved cursor position " + localSavedState.YgJ + "/" + localSavedState.YgK + " out of range for " + paramParcelable + "text " + this.mText);
     }
     for (;;)
     {
-      if (localSavedState.QHW != null)
+      if (localSavedState.YgM != null)
       {
-        gZL();
-        localSavedState.QHW.aBu.setDataPosition(0);
+        iaI();
+        b.a(localSavedState.YgM);
       }
-      AppMethodBeat.o(205680);
+      AppMethodBeat.o(201696);
       return;
-      label205:
-      Selection.setSelection(this.QGC, localSavedState.QHT, localSavedState.QHU);
-      if (localSavedState.QHV)
+      label201:
+      Selection.setSelection(this.Yfs, localSavedState.YgJ, localSavedState.YgK);
+      if (localSavedState.YgL)
       {
-        gZL();
-        this.QHs.QIE = true;
+        iaI();
+        this.Ygi.Yhu = true;
       }
     }
   }
   
   public void onRtlPropertiesChanged(int paramInt)
   {
-    AppMethodBeat.i(205849);
+    AppMethodBeat.i(202494);
     super.onRtlPropertiesChanged(paramInt);
     TextDirectionHeuristic localTextDirectionHeuristic = getTextDirectionHeuristic();
-    if (this.Om != localTextDirectionHeuristic)
+    if (this.Mg != localTextDirectionHeuristic)
     {
-      this.Om = localTextDirectionHeuristic;
-      if (this.OVt != null) {
-        IR();
+      this.Mg = localTextDirectionHeuristic;
+      if (this.WoF != null) {
+        Ku();
       }
     }
-    AppMethodBeat.o(205849);
+    AppMethodBeat.o(202494);
   }
   
   public Parcelable onSaveInstanceState()
   {
-    AppMethodBeat.i(205678);
+    AppMethodBeat.i(201689);
     Object localObject = super.onSaveInstanceState();
     boolean bool = getFreezesText();
     int k = 0;
@@ -7735,26 +7776,26 @@ public class CustomTextView
             break label160;
           }
           localSpannableStringBuilder = new SpannableStringBuilder(this.mText);
-          if (this.QHs != null) {
+          if (this.Ygi != null) {
             h(localSpannableStringBuilder);
           }
         }
         label160:
-        for (((SavedState)localObject).text = localSpannableStringBuilder;; ((SavedState)localObject).text = this.mText.toString())
+        for (((SavedState)localObject).LV = localSpannableStringBuilder;; ((SavedState)localObject).LV = this.mText.toString())
         {
           if (k != 0)
           {
-            ((SavedState)localObject).QHT = j;
-            ((SavedState)localObject).QHU = i;
+            ((SavedState)localObject).YgJ = j;
+            ((SavedState)localObject).YgK = i;
           }
           if ((isFocused()) && (j >= 0) && (i >= 0)) {
-            ((SavedState)localObject).QHV = true;
+            ((SavedState)localObject).YgL = true;
           }
-          AppMethodBeat.o(205678);
+          AppMethodBeat.o(201689);
           return localObject;
         }
       }
-      AppMethodBeat.o(205678);
+      AppMethodBeat.o(201689);
       return localObject;
       continue;
       i = -1;
@@ -7764,47 +7805,47 @@ public class CustomTextView
   
   public void onScreenStateChanged(int paramInt)
   {
-    AppMethodBeat.i(205715);
+    AppMethodBeat.i(201820);
     super.onScreenStateChanged(paramInt);
     b localb;
-    if (this.QHs != null)
+    if (this.Ygi != null)
     {
-      localb = this.QHs;
+      localb = this.Ygi;
       switch (paramInt)
       {
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(205715);
+      AppMethodBeat.o(201820);
       return;
-      localb.gZS();
-      AppMethodBeat.o(205715);
+      localb.iaQ();
+      AppMethodBeat.o(201820);
       return;
-      localb.gZR();
+      localb.iaP();
     }
   }
   
   protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(205830);
+    AppMethodBeat.i(202415);
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.QHs != null)
+    if (this.Ygi != null)
     {
-      b localb = this.QHs;
-      if (localb.QJc != null) {
-        localb.QJc.QKQ = true;
+      b localb = this.Ygi;
+      if (localb.YhS != null) {
+        localb.YhS.YjI = true;
       }
-      if ((localb.QIu != null) && (Build.VERSION.SDK_INT >= 23)) {
-        localb.QIu.invalidateContentRect();
+      if ((localb.Yhk != null) && (Build.VERSION.SDK_INT >= 23)) {
+        localb.Yhk.invalidateContentRect();
       }
     }
-    AppMethodBeat.o(205830);
+    AppMethodBeat.o(202415);
   }
   
   public boolean onTextContextMenuItem(int paramInt)
   {
-    AppMethodBeat.i(205827);
+    AppMethodBeat.i(202398);
     int i = this.mText.length();
     int j;
     if (isFocused())
@@ -7820,61 +7861,61 @@ public class CustomTextView
       switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(205827);
+        AppMethodBeat.o(202398);
         return false;
       case 16908319: 
-        boolean bool = hasSelection();
-        gZJ();
-        if ((this.QHs != null) && (bool)) {
-          this.QHs.hao().haV();
+        boolean bool = iau();
+        iaG();
+        if ((this.Ygi != null) && (bool)) {
+          this.Ygi.ibm().ibU();
         }
-        AppMethodBeat.o(205827);
+        AppMethodBeat.o(202398);
         return true;
       case 16908338: 
-        AppMethodBeat.o(205827);
+        AppMethodBeat.o(202398);
         return true;
       case 16908339: 
-        AppMethodBeat.o(205827);
+        AppMethodBeat.o(202398);
         return true;
       case 16908322: 
-        M(j, i, true);
-        AppMethodBeat.o(205827);
+        T(j, i, true);
+        AppMethodBeat.o(202398);
         return true;
       case 16908337: 
-        M(j, i, false);
-        AppMethodBeat.o(205827);
+        T(j, i, false);
+        AppMethodBeat.o(202398);
         return true;
       case 16908320: 
-        if (a(ClipData.newPlainText(null, lA(j, i)))) {
-          lB(j, i);
+        if (a(ClipData.newPlainText(null, mS(j, i)))) {
+          mT(j, i);
         }
         for (;;)
         {
-          AppMethodBeat.o(205827);
+          AppMethodBeat.o(202398);
           return true;
           Toast.makeText(getContext(), "剪贴失败", 0).show();
         }
       case 16908321: 
         paramInt = getSelectionStart();
         i = getSelectionEnd();
-        if (a(ClipData.newPlainText(null, lA(Math.max(0, Math.min(paramInt, i)), Math.max(0, Math.max(paramInt, i)))))) {
-          gZE();
+        if (a(ClipData.newPlainText(null, mS(Math.max(0, Math.min(paramInt, i)), Math.max(0, Math.max(paramInt, i)))))) {
+          iaB();
         }
         for (;;)
         {
-          AppMethodBeat.o(205827);
+          AppMethodBeat.o(202398);
           return true;
           Toast.makeText(getContext(), "剪贴失败", 0).show();
         }
       case 16908340: 
-        if (this.QHs != null)
+        if (this.Ygi != null)
         {
-          localObject1 = this.QHs;
-          ((b)localObject1).gZQ();
-          paramInt = (((b)localObject1).QIo.getSelectionStart() + ((b)localObject1).QIo.getSelectionEnd()) / 2;
-          Selection.setSelection((Spannable)((b)localObject1).QIo.getText(), paramInt);
+          localObject1 = this.Ygi;
+          ((b)localObject1).iaO();
+          paramInt = (((b)localObject1).Yhe.getSelectionStart() + ((b)localObject1).Yhe.getSelectionEnd()) / 2;
+          Selection.setSelection((Spannable)((b)localObject1).Yhe.getText(), paramInt);
         }
-        AppMethodBeat.o(205827);
+        AppMethodBeat.o(202398);
         return true;
       case 16908341: 
         localObject1 = getSelectedText();
@@ -7883,16 +7924,16 @@ public class CustomTextView
           Object localObject2 = new Intent("android.intent.action.SEND");
           ((Intent)localObject2).setType("text/plain");
           ((Intent)localObject2).removeExtra("android.intent.extra.TEXT");
-          ((Intent)localObject2).putExtra("android.intent.extra.TEXT", (String)com.tencent.mm.ui.widget.cedit.util.c.n((CharSequence)localObject1, 100000));
+          ((Intent)localObject2).putExtra("android.intent.extra.TEXT", (String)com.tencent.mm.ui.widget.cedit.util.c.p((CharSequence)localObject1, 100000));
           localObject1 = getContext();
           localObject2 = Intent.createChooser((Intent)localObject2, null);
-          localObject2 = new com.tencent.mm.hellhoundlib.b.a().bl(localObject2);
-          com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).axQ(), "com/tencent/mm/ui/widget/cedit/edit/CustomTextView", "shareSelectedText", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).pG(0));
-          com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/ui/widget/cedit/edit/CustomTextView", "shareSelectedText", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          Selection.setSelection(this.QGC, getSelectionEnd());
+          localObject2 = new com.tencent.mm.hellhoundlib.b.a().bm(localObject2);
+          com.tencent.mm.hellhoundlib.a.a.b(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aFh(), "com/tencent/mm/ui/widget/cedit/edit/CustomTextView", "shareSelectedText", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          ((Context)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(localObject1, "com/tencent/mm/ui/widget/cedit/edit/CustomTextView", "shareSelectedText", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          Selection.setSelection(this.Yfs, getSelectionEnd());
         }
-        AppMethodBeat.o(205827);
+        AppMethodBeat.o(202398);
         return true;
       }
       if (Build.VERSION.SDK_INT >= 26)
@@ -7902,8 +7943,8 @@ public class CustomTextView
           ((AutofillManager)localObject1).requestAutofill(this);
         }
       }
-      gZE();
-      AppMethodBeat.o(205827);
+      iaB();
+      AppMethodBeat.o(202398);
       return true;
       j = 0;
     }
@@ -7911,20 +7952,20 @@ public class CustomTextView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(205792);
-    if (!c(paramMotionEvent, false))
+    AppMethodBeat.i(202297);
+    if (!b(paramMotionEvent, false))
     {
-      AppMethodBeat.o(205792);
+      AppMethodBeat.o(202297);
       return true;
     }
     int k = paramMotionEvent.getActionMasked();
     Object localObject1;
     int m;
-    if (this.QHs != null)
+    if (this.Ygi != null)
     {
-      localObject1 = this.QHs;
+      localObject1 = this.Ygi;
       if (paramMotionEvent.isFromSource(8194)) {
-        if (((((b)localObject1).QJi ^ paramMotionEvent.getButtonState()) & 0x1) != 0)
+        if (((((b)localObject1).YhY ^ paramMotionEvent.getButtonState()) & 0x1) != 0)
         {
           i = 1;
           m = paramMotionEvent.getActionMasked();
@@ -7936,17 +7977,17 @@ public class CustomTextView
       }
       for (;;)
       {
-        ((b)localObject1).QJi = paramMotionEvent.getButtonState();
+        ((b)localObject1).YhY = paramMotionEvent.getButtonState();
         if (i == 0) {
           break label186;
         }
         if (paramMotionEvent.getActionMasked() == 1) {
-          ((b)localObject1).QII = true;
+          ((b)localObject1).Yhy = true;
         }
-        if ((this.QHs.QIs == null) || (!this.QHs.QIs.haB())) {
+        if ((this.Ygi.Yhi == null) || (!this.Ygi.Yhi.ibz())) {
           break label806;
         }
-        AppMethodBeat.o(205792);
+        AppMethodBeat.o(202297);
         return true;
         i = 0;
         break;
@@ -7958,34 +7999,34 @@ public class CustomTextView
         }
       }
       label186:
-      Object localObject2 = ViewConfiguration.get(((b)localObject1).QIo.getContext());
-      c localc = ((b)localObject1).QJj;
+      Object localObject2 = ViewConfiguration.get(((b)localObject1).Yhe.getContext());
+      c localc = ((b)localObject1).YhZ;
       int i = paramMotionEvent.getActionMasked();
       if (i == 0)
       {
         bool1 = paramMotionEvent.isFromSource(8194);
         long l1 = paramMotionEvent.getEventTime();
-        long l2 = localc.QLr;
-        long l3 = localc.QLr;
-        long l4 = localc.QLo;
-        if ((l1 - l2 <= ViewConfiguration.getDoubleTapTimeout()) && (l3 - l4 <= ViewConfiguration.getDoubleTapTimeout()) && ((localc.QLt == 1) || ((localc.QLt == 2) && (bool1)))) {
-          if (localc.QLt == 1)
+        long l2 = localc.Ykj;
+        long l3 = localc.Ykj;
+        long l4 = localc.Ykg;
+        if ((l1 - l2 <= ViewConfiguration.getDoubleTapTimeout()) && (l3 - l4 <= ViewConfiguration.getDoubleTapTimeout()) && ((localc.Ykl == 1) || ((localc.Ykl == 2) && (bool1)))) {
+          if (localc.Ykl == 1)
           {
-            localc.QLt = 2;
+            localc.Ykl = 2;
             label317:
-            localc.QLu = c.a(localc.ovM, localc.ovN, paramMotionEvent.getX(), paramMotionEvent.getY(), ((ViewConfiguration)localObject2).getScaledDoubleTapSlop());
+            localc.Ykm = c.a(localc.ryy, localc.ryz, paramMotionEvent.getX(), paramMotionEvent.getY(), ((ViewConfiguration)localObject2).getScaledDoubleTapSlop());
             label348:
-            localc.ovM = paramMotionEvent.getX();
-            localc.ovN = paramMotionEvent.getY();
-            localc.QLo = paramMotionEvent.getEventTime();
-            localc.QLv = false;
-            localc.QLw = false;
+            localc.ryy = paramMotionEvent.getX();
+            localc.ryz = paramMotionEvent.getY();
+            localc.Ykg = paramMotionEvent.getEventTime();
+            localc.Ykn = false;
+            localc.Yko = false;
             label387:
-            ((b)localObject1).ap(paramMotionEvent);
-            if (((b)localObject1).QIv)
+            ((b)localObject1).ax(paramMotionEvent);
+            if (((b)localObject1).Yhl)
             {
-              localObject2 = ((b)localObject1).haw();
-              if ((!((b.j)localObject2).QJz.QIw) || (!((b.j)localObject2).QJz.hax().haB())) {
+              localObject2 = ((b)localObject1).ibu();
+              if ((!((b.j)localObject2).Yip.Yhm) || (!((b.j)localObject2).Yip.ibv().ibz())) {
                 switch (paramMotionEvent.getActionMasked())
                 {
                 }
@@ -7996,48 +8037,48 @@ public class CustomTextView
       }
       for (;;)
       {
-        if (((b)localObject1).QIw) {
-          ((b)localObject1).hax().onTouchEvent(paramMotionEvent);
+        if (((b)localObject1).Yhm) {
+          ((b)localObject1).ibv().B(paramMotionEvent);
         }
-        if (((b)localObject1).QIX != null)
+        if (((b)localObject1).YhN != null)
         {
-          ((b)localObject1).QIo.removeCallbacks(((b)localObject1).QIX);
-          ((b)localObject1).QIX = null;
+          ((b)localObject1).Yhe.removeCallbacks(((b)localObject1).YhN);
+          ((b)localObject1).YhN = null;
         }
         if (paramMotionEvent.getActionMasked() != 0) {
           break;
         }
-        ((b)localObject1).QIG = false;
-        ((b)localObject1).PPd = false;
+        ((b)localObject1).Yhw = false;
+        ((b)localObject1).Xlf = false;
         break;
-        localc.QLt = 3;
+        localc.Ykl = 3;
         break label317;
-        localc.QLt = 1;
-        localc.QLu = false;
+        localc.Ykl = 1;
+        localc.Ykm = false;
         break label348;
         if (i == 1)
         {
-          localc.QLp = paramMotionEvent.getX();
-          localc.QLq = paramMotionEvent.getY();
-          localc.QLr = paramMotionEvent.getEventTime();
-          localc.QLv = false;
-          localc.QLw = false;
+          localc.Ykh = paramMotionEvent.getX();
+          localc.Yki = paramMotionEvent.getY();
+          localc.Ykj = paramMotionEvent.getEventTime();
+          localc.Ykn = false;
+          localc.Yko = false;
           break label387;
         }
         if (i == 2)
         {
-          if (localc.QLv) {
+          if (localc.Ykn) {
             break label387;
           }
-          float f1 = paramMotionEvent.getX() - localc.ovM;
-          float f2 = paramMotionEvent.getY() - localc.ovN;
+          float f1 = paramMotionEvent.getX() - localc.ryy;
+          float f2 = paramMotionEvent.getY() - localc.ryz;
           i = ((ViewConfiguration)localObject2).getScaledTouchSlop();
           if (f1 * f1 + f2 * f2 > i * i)
           {
             bool1 = true;
             label666:
-            localc.QLv = bool1;
-            if (!localc.QLv) {
+            localc.Ykn = bool1;
+            if (!localc.Ykn) {
               break label387;
             }
             if (Math.abs(f1) > Math.abs(f2)) {
@@ -8047,7 +8088,7 @@ public class CustomTextView
           label712:
           for (bool1 = true;; bool1 = false)
           {
-            localc.QLw = bool1;
+            localc.Yko = bool1;
             break;
             bool1 = false;
             break label666;
@@ -8056,59 +8097,59 @@ public class CustomTextView
         if (i != 3) {
           break label387;
         }
-        localc.QLo = 0L;
-        localc.QLr = 0L;
-        localc.QLt = 0;
-        localc.QLu = false;
-        localc.QLv = false;
-        localc.QLw = false;
+        localc.Ykg = 0L;
+        localc.Ykj = 0L;
+        localc.Ykl = 0;
+        localc.Ykm = false;
+        localc.Ykn = false;
+        localc.Yko = false;
         break label387;
-        if ((!paramMotionEvent.isFromSource(8194)) && (((b.j)localObject2).QKA))
+        if ((!paramMotionEvent.isFromSource(8194)) && (((b.j)localObject2).Yjs))
         {
-          ((b.j)localObject2).as(paramMotionEvent);
+          ((b.j)localObject2).aA(paramMotionEvent);
           continue;
-          if (((b.j)localObject2).QKA) {
-            ((b.j)localObject2).haI();
+          if (((b.j)localObject2).Yjs) {
+            ((b.j)localObject2).ibH();
           }
         }
       }
       label806:
-      if ((this.QHs.QIt != null) && (this.QHs.QIt.haQ()))
+      if ((this.Ygi.Yhj != null) && (this.Ygi.Yhj.ibP()))
       {
-        AppMethodBeat.o(205792);
+        AppMethodBeat.o(202297);
         return true;
       }
     }
     boolean bool1 = super.onTouchEvent(paramMotionEvent);
-    if ((this.QHs != null) && (this.QHs.QII) && (k == 1))
+    if ((this.Ygi != null) && (this.Ygi.Yhy) && (k == 1))
     {
-      this.QHs.QII = false;
-      if (this.QHs.QJq)
+      this.Ygi.Yhy = false;
+      if (this.Ygi.Yig)
       {
-        this.QHs.haj();
-        this.QHs.QJq = false;
+        this.Ygi.ibh();
+        this.Ygi.Yig = false;
       }
-      AppMethodBeat.o(205792);
+      AppMethodBeat.o(202297);
       return bool1;
     }
-    if ((k == 1) && ((this.QHs == null) || (!this.QHs.PPd)) && (isFocused()))
+    if ((k == 1) && ((this.Ygi == null) || (!this.Ygi.Xlf)) && (isFocused()))
     {
       k = 1;
-      if (((this.QGG == null) && (!onCheckIsTextEditor())) || (!isEnabled()) || (!(this.mText instanceof Spannable)) || (this.OVt == null)) {
+      if (((this.Yfw == null) && (!onCheckIsTextEditor())) || (!isEnabled()) || (!(this.mText instanceof Spannable)) || (this.WoF == null)) {
         break label1175;
       }
-      if (this.QGG == null) {
+      if (this.Yfw == null) {
         break label1187;
       }
     }
     label1175:
     label1187:
-    for (int j = this.QGG.a(this, this.QGC, paramMotionEvent) | false;; j = 0)
+    for (int j = this.Yfw.a(this, this.Yfs, paramMotionEvent) | false;; j = 0)
     {
-      boolean bool2 = isTextSelectable();
-      if ((k != 0) && (this.QGS) && (this.QGR != 0) && (bool2))
+      boolean bool2 = ial();
+      if ((k != 0) && (this.YfI) && (this.YfH != 0) && (bool2))
       {
-        localObject1 = (ClickableSpan[])this.QGC.getSpans(getSelectionStart(), getSelectionEnd(), ClickableSpan.class);
+        localObject1 = (ClickableSpan[])this.Yfs.getSpans(getSelectionStart(), getSelectionEnd(), ClickableSpan.class);
         if (localObject1.length > 0)
         {
           localObject1[0].onClick(this);
@@ -8119,7 +8160,7 @@ public class CustomTextView
       {
         m = j;
         if (k != 0) {
-          if (!gZB())
+          if (!iaw())
           {
             m = j;
             if (!bool2) {}
@@ -8128,21 +8169,21 @@ public class CustomTextView
           {
             localObject1 = getInputMethodManager();
             a((InputMethodManager)localObject1);
-            if ((gZB()) && (this.QHs.QIQ) && (localObject1 != null)) {
+            if ((iaw()) && (this.Ygi.YhG) && (localObject1 != null)) {
               ((InputMethodManager)localObject1).showSoftInput(this, 0);
             }
-            this.QHs.aq(paramMotionEvent);
+            this.Ygi.ay(paramMotionEvent);
             m = 1;
           }
         }
         if (m != 0)
         {
-          AppMethodBeat.o(205792);
+          AppMethodBeat.o(202297);
           return true;
           k = 0;
           break;
         }
-        AppMethodBeat.o(205792);
+        AppMethodBeat.o(202297);
         return bool1;
       }
     }
@@ -8150,75 +8191,75 @@ public class CustomTextView
   
   public boolean onTrackballEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(205798);
+    AppMethodBeat.i(202307);
     boolean bool = super.onTrackballEvent(paramMotionEvent);
-    AppMethodBeat.o(205798);
+    AppMethodBeat.o(202307);
     return bool;
   }
   
   protected void onVisibilityChanged(View paramView, int paramInt)
   {
-    AppMethodBeat.i(205788);
+    AppMethodBeat.i(202272);
     super.onVisibilityChanged(paramView, paramInt);
-    if ((this.QHs != null) && (paramInt != 0))
+    if ((this.Ygi != null) && (paramInt != 0))
     {
-      this.QHs.gZQ();
-      gZE();
+      this.Ygi.iaO();
+      iaB();
     }
-    AppMethodBeat.o(205788);
+    AppMethodBeat.o(202272);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
-    AppMethodBeat.i(205787);
+    AppMethodBeat.i(202265);
     super.onWindowFocusChanged(paramBoolean);
-    if (this.QHs != null)
+    if (this.Ygi != null)
     {
-      b localb = this.QHs;
+      b localb = this.Ygi;
       if (paramBoolean)
       {
-        if (localb.QIL != null)
+        if (localb.YhB != null)
         {
-          localb.QIL.mCancelled = false;
-          localb.haz();
+          localb.YhB.mCancelled = false;
+          localb.ibx();
         }
-        if ((localb.QIo.hasSelection()) && (!localb.has()))
+        if ((localb.Yhe.iau()) && (!localb.ibq()))
         {
-          localb.hai();
-          AppMethodBeat.o(205787);
+          localb.ibg();
+          AppMethodBeat.o(202265);
         }
       }
       else
       {
-        if (localb.QIL != null) {
-          localb.QIL.cancel();
+        if (localb.YhB != null) {
+          localb.YhB.cancel();
         }
-        if (localb.QIC != null) {
-          localb.QIC.QKj = false;
+        if (localb.Yhs != null) {
+          localb.Yhs.Yjb = false;
         }
-        localb.gZQ();
-        localb.hav();
-        localb.had();
-        localb.haa();
+        localb.iaO();
+        localb.ibt();
+        localb.ibb();
+        localb.iaY();
       }
     }
-    AppMethodBeat.o(205787);
+    AppMethodBeat.o(202265);
   }
   
   public boolean performAccessibilityAction(int paramInt, Bundle paramBundle)
   {
     int i = 1;
-    AppMethodBeat.i(205860);
+    AppMethodBeat.i(202557);
     switch (paramInt)
     {
     default: 
       bool1 = super.performAccessibilityAction(paramInt, paramBundle);
-      AppMethodBeat.o(205860);
+      AppMethodBeat.o(202557);
       return bool1;
     case 2097152: 
-      if ((!isEnabled()) || (this.QGD != TextView.BufferType.EDITABLE))
+      if ((!isEnabled()) || (this.Yft != TextView.BufferType.EDITABLE))
       {
-        AppMethodBeat.o(205860);
+        AppMethodBeat.o(202557);
         return false;
       }
       if (paramBundle != null) {}
@@ -8229,16 +8270,16 @@ public class CustomTextView
         {
           paramInt = this.mText.length();
           if (paramInt > 0) {
-            Selection.setSelection(this.QGC, paramInt);
+            Selection.setSelection(this.Yfs, paramInt);
           }
         }
-        AppMethodBeat.o(205860);
+        AppMethodBeat.o(202557);
         return true;
       }
     case 16: 
       if (!isEnabled())
       {
-        AppMethodBeat.o(205860);
+        AppMethodBeat.o(202557);
         return false;
       }
       if ((isClickable()) || (isLongClickable()))
@@ -8253,7 +8294,7 @@ public class CustomTextView
     for (boolean bool1 = true;; bool1 = false)
     {
       boolean bool2;
-      if (this.QGG == null)
+      if (this.Yfw == null)
       {
         bool2 = bool1;
         if (!onCheckIsTextEditor()) {}
@@ -8271,11 +8312,11 @@ public class CustomTextView
         if (paramInt != 0)
         {
           bool2 = bool1;
-          if (this.OVt != null) {
-            if (!gZB())
+          if (this.WoF != null) {
+            if (!iaw())
             {
               bool2 = bool1;
-              if (!isTextSelectable()) {}
+              if (!ial()) {}
             }
             else
             {
@@ -8285,10 +8326,10 @@ public class CustomTextView
                 paramBundle = getInputMethodManager();
                 a(paramBundle);
                 bool2 = bool1;
-                if (!isTextSelectable())
+                if (!ial())
                 {
                   bool2 = bool1;
-                  if (this.QHs.QIQ)
+                  if (this.Ygi.YhG)
                   {
                     bool2 = bool1;
                     if (paramBundle != null) {
@@ -8300,33 +8341,33 @@ public class CustomTextView
             }
           }
         }
-        AppMethodBeat.o(205860);
+        AppMethodBeat.o(202557);
         return bool2;
       }
-      if ((isFocused()) && (gZG()) && (onTextContextMenuItem(16908321)))
+      if ((isFocused()) && (iaD()) && (onTextContextMenuItem(16908321)))
       {
-        AppMethodBeat.o(205860);
+        AppMethodBeat.o(202557);
         return true;
       }
-      if ((isFocused()) && (gZH()) && (onTextContextMenuItem(16908322)))
+      if ((isFocused()) && (iaE()) && (onTextContextMenuItem(16908322)))
       {
-        AppMethodBeat.o(205860);
+        AppMethodBeat.o(202557);
         return true;
       }
-      AppMethodBeat.o(205860);
+      AppMethodBeat.o(202557);
       return false;
-      if ((isFocused()) && (gZF()) && (onTextContextMenuItem(16908320)))
+      if ((isFocused()) && (iaC()) && (onTextContextMenuItem(16908320)))
       {
-        AppMethodBeat.o(205860);
+        AppMethodBeat.o(202557);
         return true;
       }
-      AppMethodBeat.o(205860);
+      AppMethodBeat.o(202557);
       return false;
-      gZM();
+      iaJ();
       CharSequence localCharSequence = getIterableTextForAccessibility();
       if (localCharSequence == null)
       {
-        AppMethodBeat.o(205860);
+        AppMethodBeat.o(202557);
         return false;
       }
       if (paramBundle != null)
@@ -8344,7 +8385,7 @@ public class CustomTextView
           if ((paramInt == i) && (i == -1))
           {
             Selection.removeSelection((Spannable)localCharSequence);
-            AppMethodBeat.o(205860);
+            AppMethodBeat.o(202557);
             return true;
             paramInt = -1;
             break;
@@ -8355,25 +8396,25 @@ public class CustomTextView
           if ((paramInt >= 0) && (paramInt <= i) && (i <= localCharSequence.length()))
           {
             Selection.setSelection((Spannable)localCharSequence, paramInt, i);
-            if (this.QHs != null) {
-              this.QHs.hao().haU();
+            if (this.Ygi != null) {
+              this.Ygi.ibm().ibT();
             }
-            AppMethodBeat.o(205860);
+            AppMethodBeat.o(202557);
             return true;
           }
         }
       }
-      AppMethodBeat.o(205860);
+      AppMethodBeat.o(202557);
       return false;
-      gZM();
+      iaJ();
       bool1 = super.performAccessibilityAction(paramInt, paramBundle);
-      AppMethodBeat.o(205860);
+      AppMethodBeat.o(202557);
       return bool1;
       if (!isLongClickable()) {
         break;
       }
-      if ((isEnabled()) && (this.QGD == TextView.BufferType.EDITABLE)) {
-        this.QHs.QIW = true;
+      if ((isEnabled()) && (this.Yft == TextView.BufferType.EDITABLE)) {
+        this.Ygi.YhM = true;
       }
       for (;;)
       {
@@ -8384,8 +8425,8 @@ public class CustomTextView
         }
         finally
         {
-          this.QHs.QIW = false;
-          AppMethodBeat.o(205860);
+          this.Ygi.YhM = false;
+          AppMethodBeat.o(202557);
         }
         bool1 = performLongClick();
       }
@@ -8394,9 +8435,9 @@ public class CustomTextView
   
   public boolean performLongClick()
   {
-    AppMethodBeat.i(205829);
-    if (this.QHs != null) {
-      this.QHs.QIV = true;
+    AppMethodBeat.i(202408);
+    if (this.Ygi != null) {
+      this.Ygi.YhL = true;
     }
     int i;
     if (super.performLongClick()) {
@@ -8405,23 +8446,23 @@ public class CustomTextView
     for (boolean bool1 = true;; bool1 = false)
     {
       boolean bool2 = bool1;
-      if (this.QHs != null)
+      if (this.Ygi != null)
       {
-        boolean bool3 = this.QHs.CY(bool1);
+        boolean bool3 = this.Ygi.Hu(bool1);
         bool2 = bool1 | bool3;
         Log.i("cmEdit.CMTextView", "editor performLongClick handled =".concat(String.valueOf(bool3)));
-        this.QHs.QIV = false;
+        this.Ygi.YhL = false;
       }
       if (bool2)
       {
         if (i == 0) {
           performHapticFeedback(0);
         }
-        if (this.QHs != null) {
-          this.QHs.QII = true;
+        if (this.Ygi != null) {
+          this.Ygi.Yhy = true;
         }
       }
-      AppMethodBeat.o(205829);
+      AppMethodBeat.o(202408);
       return bool2;
       i = 0;
     }
@@ -8429,7 +8470,7 @@ public class CustomTextView
   
   public void removeTextChangedListener(TextWatcher paramTextWatcher)
   {
-    AppMethodBeat.i(205778);
+    AppMethodBeat.i(202209);
     if (this.mListeners != null)
     {
       int i = this.mListeners.indexOf(paramTextWatcher);
@@ -8437,60 +8478,60 @@ public class CustomTextView
         this.mListeners.remove(i);
       }
     }
-    AppMethodBeat.o(205778);
+    AppMethodBeat.o(202209);
   }
   
   public void sendAccessibilityEventUnchecked(AccessibilityEvent paramAccessibilityEvent)
   {
-    AppMethodBeat.i(205825);
+    AppMethodBeat.i(202376);
     if (paramAccessibilityEvent.getEventType() == 4096)
     {
-      AppMethodBeat.o(205825);
+      AppMethodBeat.o(202376);
       return;
     }
     super.sendAccessibilityEventUnchecked(paramAccessibilityEvent);
-    AppMethodBeat.o(205825);
+    AppMethodBeat.o(202376);
   }
   
   public void setAdaptText(TextView paramTextView)
   {
-    AppMethodBeat.i(205571);
-    this.QHu = paramTextView;
-    this.QHu.addTextChangedListener(this.QHv);
-    AppMethodBeat.o(205571);
+    AppMethodBeat.i(201286);
+    this.Ygk = paramTextView;
+    this.Ygk.addTextChangedListener(this.Ygl);
+    AppMethodBeat.o(201286);
   }
   
   public void setAllCaps(boolean paramBoolean)
   {
-    AppMethodBeat.i(205771);
+    AppMethodBeat.i(202184);
     if (!paramBoolean) {
       setTransformationMethod(null);
     }
-    AppMethodBeat.o(205771);
+    AppMethodBeat.o(202184);
   }
   
   public final void setAutoLinkMask(int paramInt)
   {
-    this.QGR = paramInt;
+    this.YfH = paramInt;
   }
   
   public void setBreakStrategy(int paramInt)
   {
-    AppMethodBeat.i(205646);
-    this.On = paramInt;
-    if (this.OVt != null)
+    AppMethodBeat.i(201569);
+    this.Mh = paramInt;
+    if (this.WoF != null)
     {
-      gLr();
+      hKs();
       requestLayout();
       invalidate();
     }
-    AppMethodBeat.o(205646);
+    AppMethodBeat.o(201569);
   }
   
   public void setCompoundDrawablePadding(int paramInt)
   {
-    AppMethodBeat.i(205602);
-    b localb2 = this.QGA;
+    AppMethodBeat.i(201459);
+    b localb2 = this.Yfq;
     b localb1;
     if (paramInt == 0) {
       if (localb2 != null) {
@@ -8499,139 +8540,139 @@ public class CustomTextView
     }
     for (;;)
     {
-      localb1.OWm = paramInt;
+      localb1.Wpy = paramInt;
       invalidate();
       requestLayout();
-      AppMethodBeat.o(205602);
+      AppMethodBeat.o(201459);
       return;
       localb1 = localb2;
       if (localb2 == null)
       {
         localb1 = new b(getContext());
-        this.QGA = localb1;
+        this.Yfq = localb1;
       }
     }
   }
   
   public void setCompoundDrawableTintBlendMode(BlendMode paramBlendMode)
   {
-    AppMethodBeat.i(205604);
-    if (this.QGA == null) {
-      this.QGA = new b(getContext());
+    AppMethodBeat.i(201464);
+    if (this.Yfq == null) {
+      this.Yfq = new b(getContext());
     }
-    this.QGA.QHF = paramBlendMode;
-    this.QGA.acU = true;
-    gZq();
-    AppMethodBeat.o(205604);
+    this.Yfq.Ygv = paramBlendMode;
+    this.Yfq.jH = true;
+    iah();
+    AppMethodBeat.o(201464);
   }
   
   public void setCompoundDrawableTintList(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(205603);
-    if (this.QGA == null) {
-      this.QGA = new b(getContext());
+    AppMethodBeat.i(201461);
+    if (this.Yfq == null) {
+      this.Yfq = new b(getContext());
     }
-    this.QGA.Kr = paramColorStateList;
-    this.QGA.QHG = true;
-    gZq();
-    AppMethodBeat.o(205603);
+    this.Yfq.jE = paramColorStateList;
+    this.Yfq.Ygw = true;
+    iah();
+    AppMethodBeat.o(201461);
   }
   
   public void setCompoundDrawableTintMode(PorterDuff.Mode paramMode) {}
   
   public void setCursorVisible(boolean paramBoolean)
   {
-    AppMethodBeat.i(205776);
-    if ((paramBoolean) && (this.QHs == null))
+    AppMethodBeat.i(202203);
+    if ((paramBoolean) && (this.Ygi == null))
     {
-      AppMethodBeat.o(205776);
+      AppMethodBeat.o(202203);
       return;
     }
-    gZL();
-    if (this.QHs.QIM != paramBoolean)
+    iaI();
+    if (this.Ygi.YhC != paramBoolean)
     {
-      this.QHs.QIM = paramBoolean;
+      this.Ygi.YhC = paramBoolean;
       invalidate();
-      this.QHs.haz();
-      this.QHs.gZP();
+      this.Ygi.ibx();
+      this.Ygi.iaN();
     }
-    AppMethodBeat.o(205776);
+    AppMethodBeat.o(202203);
   }
   
   public void setCustomInsertionActionModeCallback(ActionMode.Callback paramCallback)
   {
-    AppMethodBeat.i(205832);
-    gZL();
-    this.QHs.QJg = paramCallback;
-    AppMethodBeat.o(205832);
+    AppMethodBeat.i(202423);
+    iaI();
+    this.Ygi.YhW = paramCallback;
+    AppMethodBeat.o(202423);
   }
   
   public void setCustomSelectionActionModeCallback(ActionMode.Callback paramCallback)
   {
-    AppMethodBeat.i(205831);
-    gZL();
-    this.QHs.QJf = paramCallback;
-    AppMethodBeat.o(205831);
+    AppMethodBeat.i(202420);
+    iaI();
+    this.Ygi.YhV = paramCallback;
+    AppMethodBeat.o(202420);
   }
   
   public final void setEditableFactory(Editable.Factory paramFactory)
   {
-    AppMethodBeat.i(205681);
-    this.OVn = paramFactory;
+    AppMethodBeat.i(201701);
+    this.Woz = paramFactory;
     setText(this.mText);
-    AppMethodBeat.o(205681);
+    AppMethodBeat.o(201701);
   }
   
   public void setElegantTextHeight(boolean paramBoolean)
   {
-    AppMethodBeat.i(205640);
-    if (paramBoolean != this.ayn.isElegantTextHeight())
+    AppMethodBeat.i(201557);
+    if (paramBoolean != this.wi.isElegantTextHeight())
     {
-      this.ayn.setElegantTextHeight(paramBoolean);
-      if (this.OVt != null)
+      this.wi.setElegantTextHeight(paramBoolean);
+      if (this.WoF != null)
       {
-        gLr();
+        hKs();
         requestLayout();
         invalidate();
       }
     }
-    AppMethodBeat.o(205640);
+    AppMethodBeat.o(201557);
   }
   
   public void setEllipsize(TextUtils.TruncateAt paramTruncateAt)
   {
-    AppMethodBeat.i(205774);
-    if (this.OVp != paramTruncateAt)
+    AppMethodBeat.i(202195);
+    if (this.WoB != paramTruncateAt)
     {
-      this.OVp = paramTruncateAt;
-      if (this.OVt != null)
+      this.WoB = paramTruncateAt;
+      if (this.WoF != null)
       {
-        gLr();
+        hKs();
         requestLayout();
         invalidate();
       }
     }
-    AppMethodBeat.o(205774);
+    AppMethodBeat.o(202195);
   }
   
   public void setEms(int paramInt)
   {
-    AppMethodBeat.i(205671);
-    this.mMinWidth = paramInt;
-    this.mMaxWidth = paramInt;
-    this.QGX = 1;
-    this.QGW = 1;
+    AppMethodBeat.i(201659);
+    this.lj = paramInt;
+    this.uJ = paramInt;
+    this.YfN = 1;
+    this.YfM = 1;
     requestLayout();
     invalidate();
-    AppMethodBeat.o(205671);
+    AppMethodBeat.o(201659);
   }
   
   public void setEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(205576);
+    AppMethodBeat.i(201377);
     if (paramBoolean == isEnabled())
     {
-      AppMethodBeat.o(205576);
+      AppMethodBeat.o(201377);
       return;
     }
     InputMethodManager localInputMethodManager;
@@ -8650,25 +8691,25 @@ public class CustomTextView
         localInputMethodManager.restartInput(this);
       }
     }
-    if (this.QHs != null)
+    if (this.Ygi != null)
     {
-      this.QHs.gZP();
-      this.QHs.haz();
+      this.Ygi.iaN();
+      this.Ygi.ibx();
     }
-    AppMethodBeat.o(205576);
+    AppMethodBeat.o(201377);
   }
   
   public void setError(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(205702);
-    gZL();
-    AppMethodBeat.o(205702);
+    AppMethodBeat.i(201773);
+    iaI();
+    AppMethodBeat.o(201773);
   }
   
   public void setExtractedText(ExtractedText paramExtractedText)
   {
     int m = 0;
-    AppMethodBeat.i(205742);
+    AppMethodBeat.i(202017);
     Object localObject = getEditableText();
     int j;
     int k;
@@ -8703,7 +8744,7 @@ public class CustomTextView
       if (Build.VERSION.SDK_INT >= 28) {
         setHintInternal(paramExtractedText.hint);
       }
-      AppMethodBeat.o(205742);
+      AppMethodBeat.o(202017);
       return;
     }
     int i = ((Editable)localObject).length();
@@ -8768,54 +8809,54 @@ public class CustomTextView
   
   public void setExtracting(ExtractedTextRequest paramExtractedTextRequest)
   {
-    AppMethodBeat.i(205743);
-    if (this.QHs.QID != null) {
-      this.QHs.QID.QKl = paramExtractedTextRequest;
+    AppMethodBeat.i(202021);
+    if (this.Ygi.Yht != null) {
+      this.Ygi.Yht.Yjd = paramExtractedTextRequest;
     }
-    this.QHs.gZQ();
-    gZE();
-    if (this.QHs.QIt != null) {
-      this.QHs.QIt.haN();
+    this.Ygi.iaO();
+    iaB();
+    if (this.Ygi.Yhj != null) {
+      this.Ygi.Yhj.ibM();
     }
-    AppMethodBeat.o(205743);
+    AppMethodBeat.o(202021);
   }
   
   public void setFallbackLineSpacing(boolean paramBoolean)
   {
-    AppMethodBeat.i(205641);
-    if (this.QGP != paramBoolean)
+    AppMethodBeat.i(201558);
+    if (this.YfF != paramBoolean)
     {
-      this.QGP = paramBoolean;
-      if (this.OVt != null)
+      this.YfF = paramBoolean;
+      if (this.WoF != null)
       {
-        gLr();
+        hKs();
         requestLayout();
         invalidate();
       }
     }
-    AppMethodBeat.o(205641);
+    AppMethodBeat.o(201558);
   }
   
   public void setFilters(InputFilter[] paramArrayOfInputFilter)
   {
-    AppMethodBeat.i(205703);
+    AppMethodBeat.i(201774);
     if (paramArrayOfInputFilter == null)
     {
       paramArrayOfInputFilter = new IllegalArgumentException();
-      AppMethodBeat.o(205703);
+      AppMethodBeat.o(201774);
       throw paramArrayOfInputFilter;
     }
-    this.QHc = paramArrayOfInputFilter;
+    this.YfS = paramArrayOfInputFilter;
     if ((this.mText instanceof Editable)) {
       a((Editable)this.mText, paramArrayOfInputFilter);
     }
-    AppMethodBeat.o(205703);
+    AppMethodBeat.o(201774);
   }
   
   public void setFirstBaselineToTopHeight(int paramInt)
   {
-    AppMethodBeat.i(205608);
-    com.tencent.mm.ui.widget.cedit.util.b.aL(paramInt);
+    AppMethodBeat.i(201483);
+    com.tencent.mm.ui.widget.cedit.util.b.bv(paramInt);
     Paint.FontMetricsInt localFontMetricsInt = getPaint().getFontMetricsInt();
     if (getIncludeFontPadding()) {}
     for (int i = localFontMetricsInt.top;; i = localFontMetricsInt.ascent)
@@ -8825,36 +8866,36 @@ public class CustomTextView
         i = -i;
         setPadding(getPaddingLeft(), paramInt - i, getPaddingRight(), getPaddingBottom());
       }
-      AppMethodBeat.o(205608);
+      AppMethodBeat.o(201483);
       return;
     }
   }
   
   public void setFontFeatureSettings(String paramString)
   {
-    AppMethodBeat.i(205647);
-    if (paramString != this.ayn.getFontFeatureSettings())
+    AppMethodBeat.i(201572);
+    if (paramString != this.wi.getFontFeatureSettings())
     {
-      this.ayn.setFontFeatureSettings(paramString);
-      if (this.OVt != null)
+      this.wi.setFontFeatureSettings(paramString);
+      if (this.WoF != null)
       {
-        gLr();
+        hKs();
         requestLayout();
         invalidate();
       }
     }
-    AppMethodBeat.o(205647);
+    AppMethodBeat.o(201572);
   }
   
   public void setFreezesText(boolean paramBoolean)
   {
-    this.QGq = paramBoolean;
+    this.Yfg = paramBoolean;
   }
   
   public void setGravity(int paramInt)
   {
     int j = 0;
-    AppMethodBeat.i(205657);
+    AppMethodBeat.i(201614);
     if ((paramInt & 0x800007) == 0) {
       paramInt = 0x800003 | paramInt;
     }
@@ -8864,26 +8905,26 @@ public class CustomTextView
       if ((paramInt & 0x70) == 0) {
         i = paramInt | 0x30;
       }
-      if ((i & 0x800007) != (this.Ku & 0x800007)) {}
+      if ((i & 0x800007) != (this.sK & 0x800007)) {}
       for (paramInt = 1;; paramInt = 0)
       {
-        if (i != this.Ku) {
+        if (i != this.sK) {
           invalidate();
         }
-        this.Ku = i;
-        if ((this.OVt != null) && (paramInt != 0))
+        this.sK = i;
+        if ((this.WoF != null) && (paramInt != 0))
         {
-          i = this.OVt.getWidth();
-          if (this.QGF != null) {
+          i = this.WoF.getWidth();
+          if (this.Yfv != null) {
             break label141;
           }
         }
         label141:
-        for (paramInt = j;; paramInt = this.QGF.getWidth())
+        for (paramInt = j;; paramInt = this.Yfv.getWidth())
         {
-          BoringLayout.Metrics localMetrics = OVU;
+          BoringLayout.Metrics localMetrics = Wpg;
           a(i, paramInt, localMetrics, localMetrics, getRight() - getLeft() - getCompoundPaddingLeft() - getCompoundPaddingRight(), true);
-          AppMethodBeat.o(205657);
+          AppMethodBeat.o(201614);
           return;
         }
       }
@@ -8892,44 +8933,44 @@ public class CustomTextView
   
   public void setHandleColorRes(int paramInt)
   {
-    this.QHx = paramInt;
+    this.Ygn = paramInt;
   }
   
   public void setHeight(int paramInt)
   {
-    AppMethodBeat.i(205666);
-    this.OVy = paramInt;
-    this.OVw = paramInt;
-    this.OVz = 2;
-    this.OVx = 2;
+    AppMethodBeat.i(201642);
+    this.WoK = paramInt;
+    this.WoI = paramInt;
+    this.WoL = 2;
+    this.WoJ = 2;
     requestLayout();
     invalidate();
-    AppMethodBeat.o(205666);
+    AppMethodBeat.o(201642);
   }
   
   public void setHighlightColor(int paramInt)
   {
-    AppMethodBeat.i(205650);
-    if (this.oEF != paramInt)
+    AppMethodBeat.i(201579);
+    if (this.rGp != paramInt)
     {
-      this.oEF = paramInt;
+      this.rGp = paramInt;
       invalidate();
     }
-    AppMethodBeat.o(205650);
+    AppMethodBeat.o(201579);
   }
   
   public final void setHint(int paramInt)
   {
-    AppMethodBeat.i(205690);
+    AppMethodBeat.i(201721);
     setHint(getContext().getResources().getText(paramInt));
-    AppMethodBeat.o(205690);
+    AppMethodBeat.o(201721);
   }
   
   public final void setHint(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(205688);
+    AppMethodBeat.i(201718);
     setHintInternal(paramCharSequence);
-    if (this.QHs != null)
+    if (this.Ygi != null)
     {
       paramCharSequence = getInputMethodManager();
       if ((paramCharSequence == null) || (!paramCharSequence.isActive(this))) {
@@ -8940,60 +8981,60 @@ public class CustomTextView
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        this.QHs.hae();
+        this.Ygi.ibc();
       }
-      AppMethodBeat.o(205688);
+      AppMethodBeat.o(201718);
       return;
     }
   }
   
   public final void setHintTextColor(int paramInt)
   {
-    AppMethodBeat.i(205653);
-    this.QGn = ColorStateList.valueOf(paramInt);
+    AppMethodBeat.i(201598);
+    this.Yfd = ColorStateList.valueOf(paramInt);
     updateTextColors();
-    AppMethodBeat.o(205653);
+    AppMethodBeat.o(201598);
   }
   
   public final void setHintTextColor(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(205654);
-    this.QGn = paramColorStateList;
+    AppMethodBeat.i(201600);
+    this.Yfd = paramColorStateList;
     updateTextColors();
-    AppMethodBeat.o(205654);
+    AppMethodBeat.o(201600);
   }
   
   public void setHorizontallyScrolling(boolean paramBoolean)
   {
-    AppMethodBeat.i(205660);
-    if (this.QGQ != paramBoolean)
+    AppMethodBeat.i(201621);
+    if (this.YfG != paramBoolean)
     {
-      this.QGQ = paramBoolean;
-      if (this.OVt != null)
+      this.YfG = paramBoolean;
+      if (this.WoF != null)
       {
-        gLr();
+        hKs();
         requestLayout();
         invalidate();
       }
     }
-    AppMethodBeat.o(205660);
+    AppMethodBeat.o(201621);
   }
   
   public void setImeHintLocales(LocaleList paramLocaleList)
   {
-    AppMethodBeat.i(205701);
-    gZL();
-    this.QHs.gZO();
-    this.QHs.QIC.QKk = paramLocaleList;
+    AppMethodBeat.i(201770);
+    iaI();
+    this.Ygi.iaL();
+    this.Ygi.Yhs.Yjc = paramLocaleList;
     KeyListener localKeyListener;
-    if ((this.QGO) && (Build.VERSION.SDK_INT >= 24)) {
+    if ((this.YfE) && (Build.VERSION.SDK_INT >= 24)) {
       if (paramLocaleList == null)
       {
         paramLocaleList = null;
-        if ((this.QGN) || (this.QHs == null)) {
+        if ((this.YfD) || (this.Ygi == null)) {
           break label250;
         }
-        localKeyListener = this.QHs.QIH;
+        localKeyListener = this.Ygi.Yhx;
         if ((localKeyListener instanceof DigitsKeyListener)) {
           break label257;
         }
@@ -9008,17 +9049,17 @@ public class CustomTextView
     }
     for (;;)
     {
-      boolean bool = aoy(this.QHs.Clf);
+      boolean bool = axI(this.Ygi.IhY);
       setKeyListenerOnly(paramLocaleList);
-      gZo();
+      iaf();
       if (bool)
       {
-        int i = this.QHs.Clf & 0xF;
+        int i = this.Ygi.IhY & 0xF;
         if (i == 1)
         {
-          paramLocaleList = this.QHs;
-          paramLocaleList.Clf |= 0x80;
-          AppMethodBeat.o(205701);
+          paramLocaleList = this.Ygi;
+          paramLocaleList.IhY |= 0x80;
+          AppMethodBeat.o(201770);
           return;
           paramLocaleList = paramLocaleList.get(0);
           break;
@@ -9039,17 +9080,17 @@ public class CustomTextView
             paramLocaleList = DateTimeKeyListener.getInstance(paramLocaleList);
             continue;
           }
-          AppMethodBeat.o(205701);
+          AppMethodBeat.o(201770);
           return;
         }
         if (i == 2)
         {
-          paramLocaleList = this.QHs;
-          paramLocaleList.Clf |= 0x10;
+          paramLocaleList = this.Ygi;
+          paramLocaleList.IhY |= 0x10;
         }
       }
       label250:
-      AppMethodBeat.o(205701);
+      AppMethodBeat.o(201770);
       return;
       label257:
       paramLocaleList = localKeyListener;
@@ -9058,78 +9099,78 @@ public class CustomTextView
   
   public void setImeOptions(int paramInt)
   {
-    AppMethodBeat.i(205696);
-    gZL();
-    this.QHs.gZO();
-    this.QHs.QIC.imeOptions = paramInt;
-    AppMethodBeat.o(205696);
+    AppMethodBeat.i(201753);
+    iaI();
+    this.Ygi.iaL();
+    this.Ygi.Yhs.nlD = paramInt;
+    AppMethodBeat.o(201753);
   }
   
   public void setIncludeFontPadding(boolean paramBoolean)
   {
-    AppMethodBeat.i(205753);
-    if (this.OVD != paramBoolean)
+    AppMethodBeat.i(202083);
+    if (this.WoP != paramBoolean)
     {
-      this.OVD = paramBoolean;
-      if (this.OVt != null)
+      this.WoP = paramBoolean;
+      if (this.WoF != null)
       {
-        gLr();
+        hKs();
         requestLayout();
         invalidate();
       }
     }
-    AppMethodBeat.o(205753);
+    AppMethodBeat.o(202083);
   }
   
   public void setInputExtras(int paramInt)
   {
-    AppMethodBeat.i(205699);
-    gZL();
+    AppMethodBeat.i(201763);
+    iaI();
     XmlResourceParser localXmlResourceParser = getResources().getXml(paramInt);
-    this.QHs.gZO();
-    this.QHs.QIC.extras = new Bundle();
-    getResources().parseBundleExtras(localXmlResourceParser, this.QHs.QIC.extras);
-    AppMethodBeat.o(205699);
+    this.Ygi.iaL();
+    this.Ygi.Yhs.extras = new Bundle();
+    getResources().parseBundleExtras(localXmlResourceParser, this.Ygi.Yhs.extras);
+    AppMethodBeat.o(201763);
   }
   
   public void setInputType(int paramInt)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(205692);
-    boolean bool1 = aoy(getInputType());
-    boolean bool4 = aoz(getInputType());
-    bO(paramInt, false);
-    boolean bool3 = aoy(paramInt);
-    boolean bool5 = aoz(paramInt);
+    AppMethodBeat.i(201736);
+    boolean bool1 = axI(getInputType());
+    boolean bool4 = axJ(getInputType());
+    cb(paramInt, false);
+    boolean bool3 = axI(paramInt);
+    boolean bool5 = axJ(paramInt);
     if (bool3)
     {
       setTransformationMethod(PasswordTransformationMethod.getInstance());
       a(null, null, 3, 0, -1);
       i = 0;
-      if (!aox(paramInt))
+      if (!axH(paramInt))
       {
         bool1 = true;
         label76:
-        if ((this.OSP != bool1) || (i != 0))
+        if ((this.Wmc != bool1) || (i != 0))
         {
           if (!bool3) {
             bool2 = true;
           }
-          r(bool1, bool2, true);
+          p(bool1, bool2, true);
         }
-        if (!isSuggestionsEnabled()) {
-          setTextInternal(ax(this.mText));
+        if (!iaA()) {
+          setTextInternal(aM(this.mText));
         }
         InputMethodManager localInputMethodManager = getInputMethodManager();
         if (localInputMethodManager != null) {
           localInputMethodManager.restartInput(this);
         }
-        AppMethodBeat.o(205692);
+        AppMethodBeat.o(201736);
       }
     }
     else if (bool5)
     {
-      if (this.QGH != PasswordTransformationMethod.getInstance()) {
+      if (this.Yfx != PasswordTransformationMethod.getInstance()) {
         break label219;
       }
     }
@@ -9141,7 +9182,7 @@ public class CustomTextView
       if ((bool1) || (bool4))
       {
         a(null, null, -1, 0, -1);
-        if (this.QGH == PasswordTransformationMethod.getInstance())
+        if (this.Yfx == PasswordTransformationMethod.getInstance())
         {
           i = 1;
           break;
@@ -9156,14 +9197,14 @@ public class CustomTextView
   
   public void setKeyListener(KeyListener paramKeyListener)
   {
-    AppMethodBeat.i(205580);
-    this.QGN = true;
+    AppMethodBeat.i(201393);
+    this.YfD = true;
     setKeyListenerOnly(paramKeyListener);
-    gZp();
+    iag();
     if (paramKeyListener != null)
     {
-      gZL();
-      gZo();
+      iaI();
+      iaf();
     }
     for (;;)
     {
@@ -9171,18 +9212,18 @@ public class CustomTextView
       if (paramKeyListener != null) {
         paramKeyListener.restartInput(this);
       }
-      AppMethodBeat.o(205580);
+      AppMethodBeat.o(201393);
       return;
-      if (this.QHs != null) {
-        this.QHs.Clf = 0;
+      if (this.Ygi != null) {
+        this.Ygi.IhY = 0;
       }
     }
   }
   
   public void setLastBaselineToBottomHeight(int paramInt)
   {
-    AppMethodBeat.i(205609);
-    com.tencent.mm.ui.widget.cedit.util.b.aL(paramInt);
+    AppMethodBeat.i(201484);
+    com.tencent.mm.ui.widget.cedit.util.b.bv(paramInt);
     Paint.FontMetricsInt localFontMetricsInt = getPaint().getFontMetricsInt();
     if (getIncludeFontPadding()) {}
     for (int i = localFontMetricsInt.bottom;; i = localFontMetricsInt.descent)
@@ -9190,275 +9231,275 @@ public class CustomTextView
       if (paramInt > Math.abs(i)) {
         setPadding(getPaddingLeft(), getPaddingTop(), getPaddingRight(), paramInt - i);
       }
-      AppMethodBeat.o(205609);
+      AppMethodBeat.o(201484);
       return;
     }
   }
   
   public void setLetterSpacing(float paramFloat)
   {
-    AppMethodBeat.i(205643);
-    if (paramFloat != this.ayn.getLetterSpacing())
+    AppMethodBeat.i(201564);
+    if (paramFloat != this.wi.getLetterSpacing())
     {
-      this.ayn.setLetterSpacing(paramFloat);
-      if (this.OVt != null)
+      this.wi.setLetterSpacing(paramFloat);
+      if (this.WoF != null)
       {
-        gLr();
+        hKs();
         requestLayout();
         invalidate();
       }
     }
-    AppMethodBeat.o(205643);
+    AppMethodBeat.o(201564);
   }
   
   @SuppressLint({"RestrictedApi"})
   public void setLineHeight(int paramInt)
   {
-    AppMethodBeat.i(205673);
-    com.tencent.mm.ui.widget.cedit.util.b.aL(paramInt);
+    AppMethodBeat.i(201665);
+    com.tencent.mm.ui.widget.cedit.util.b.bv(paramInt);
     int i = getPaint().getFontMetricsInt(null);
     if (paramInt != i)
     {
       float f = paramInt - i;
-      if ((this.OVv != f) || (this.OVu != 1.0F))
+      if ((this.WoH != f) || (this.WoG != 1.0F))
       {
-        this.OVv = f;
-        this.OVu = 1.0F;
-        if (this.OVt != null)
+        this.WoH = f;
+        this.WoG = 1.0F;
+        if (this.WoF != null)
         {
-          gLr();
+          hKs();
           requestLayout();
           invalidate();
         }
       }
     }
-    AppMethodBeat.o(205673);
+    AppMethodBeat.o(201665);
   }
   
   public void setLines(int paramInt)
   {
-    AppMethodBeat.i(205665);
-    this.OVy = paramInt;
-    this.OVw = paramInt;
-    this.OVz = 1;
-    this.OVx = 1;
+    AppMethodBeat.i(201640);
+    this.WoK = paramInt;
+    this.WoI = paramInt;
+    this.WoL = 1;
+    this.WoJ = 1;
     requestLayout();
     invalidate();
-    AppMethodBeat.o(205665);
+    AppMethodBeat.o(201640);
   }
   
   public final void setLinkTextColor(int paramInt)
   {
-    AppMethodBeat.i(205655);
-    this.QGo = ColorStateList.valueOf(paramInt);
+    AppMethodBeat.i(201605);
+    this.Yfe = ColorStateList.valueOf(paramInt);
     updateTextColors();
-    AppMethodBeat.o(205655);
+    AppMethodBeat.o(201605);
   }
   
   public final void setLinkTextColor(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(205656);
-    this.QGo = paramColorStateList;
+    AppMethodBeat.i(201606);
+    this.Yfe = paramColorStateList;
     updateTextColors();
-    AppMethodBeat.o(205656);
+    AppMethodBeat.o(201606);
   }
   
   public final void setLinksClickable(boolean paramBoolean)
   {
-    this.QGS = paramBoolean;
+    this.YfI = paramBoolean;
   }
   
   public void setMaxEms(int paramInt)
   {
-    AppMethodBeat.i(205669);
-    this.mMaxWidth = paramInt;
-    this.QGW = 1;
+    AppMethodBeat.i(201651);
+    this.uJ = paramInt;
+    this.YfM = 1;
     requestLayout();
     invalidate();
-    AppMethodBeat.o(205669);
+    AppMethodBeat.o(201651);
   }
   
   public void setMaxHeight(int paramInt)
   {
-    AppMethodBeat.i(205664);
-    this.OVw = paramInt;
-    this.OVx = 2;
+    AppMethodBeat.i(201636);
+    this.WoI = paramInt;
+    this.WoJ = 2;
     requestLayout();
     invalidate();
-    AppMethodBeat.o(205664);
+    AppMethodBeat.o(201636);
   }
   
   public void setMaxLines(int paramInt)
   {
-    AppMethodBeat.i(205663);
-    this.OVw = paramInt;
-    this.OVx = 1;
+    AppMethodBeat.i(201632);
+    this.WoI = paramInt;
+    this.WoJ = 1;
     requestLayout();
     invalidate();
-    AppMethodBeat.o(205663);
+    AppMethodBeat.o(201632);
   }
   
   public void setMaxWidth(int paramInt)
   {
-    AppMethodBeat.i(205670);
-    this.mMaxWidth = paramInt;
-    this.QGW = 2;
+    AppMethodBeat.i(201655);
+    this.uJ = paramInt;
+    this.YfM = 2;
     requestLayout();
     invalidate();
-    AppMethodBeat.o(205670);
+    AppMethodBeat.o(201655);
   }
   
   public void setMenuCallback(a.e parame)
   {
-    this.QHz = parame;
+    this.Ygp = parame;
   }
   
   public void setMinEms(int paramInt)
   {
-    AppMethodBeat.i(205667);
-    this.mMinWidth = paramInt;
-    this.QGX = 1;
+    AppMethodBeat.i(201644);
+    this.lj = paramInt;
+    this.YfN = 1;
     requestLayout();
     invalidate();
-    AppMethodBeat.o(205667);
+    AppMethodBeat.o(201644);
   }
   
   public void setMinHeight(int paramInt)
   {
-    AppMethodBeat.i(205662);
-    this.OVy = paramInt;
-    this.OVz = 2;
+    AppMethodBeat.i(201627);
+    this.WoK = paramInt;
+    this.WoL = 2;
     requestLayout();
     invalidate();
-    AppMethodBeat.o(205662);
+    AppMethodBeat.o(201627);
   }
   
   public void setMinLines(int paramInt)
   {
-    AppMethodBeat.i(205661);
-    this.OVy = paramInt;
-    this.OVz = 1;
+    AppMethodBeat.i(201624);
+    this.WoK = paramInt;
+    this.WoL = 1;
     requestLayout();
     invalidate();
-    AppMethodBeat.o(205661);
+    AppMethodBeat.o(201624);
   }
   
   public void setMinWidth(int paramInt)
   {
-    AppMethodBeat.i(205668);
-    this.mMinWidth = paramInt;
-    this.QGX = 2;
+    AppMethodBeat.i(201649);
+    this.lj = paramInt;
+    this.YfN = 2;
     requestLayout();
     invalidate();
-    AppMethodBeat.o(205668);
+    AppMethodBeat.o(201649);
   }
   
   public final void setMovementMethod(com.tencent.mm.ui.widget.cedit.b.d paramd)
   {
-    AppMethodBeat.i(205583);
-    if (this.QGG != paramd)
+    AppMethodBeat.i(201402);
+    if (this.Yfw != paramd)
     {
-      this.QGG = paramd;
-      if ((paramd != null) && (this.QGC == null)) {
+      this.Yfw = paramd;
+      if ((paramd != null) && (this.Yfs == null)) {
         setText(this.mText);
       }
-      gZp();
-      if (this.QHs != null) {
-        this.QHs.gZP();
+      iag();
+      if (this.Ygi != null) {
+        this.Ygi.iaN();
       }
     }
-    AppMethodBeat.o(205583);
+    AppMethodBeat.o(201402);
   }
   
   public void setOnEditorActionListener(c paramc)
   {
-    AppMethodBeat.i(205697);
-    gZL();
-    this.QHs.gZO();
-    this.QHs.QIC.QKi = paramc;
-    AppMethodBeat.o(205697);
+    AppMethodBeat.i(201757);
+    iaI();
+    this.Ygi.iaL();
+    this.Ygi.Yhs.Yja = paramc;
+    AppMethodBeat.o(201757);
   }
   
   public void setPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(205606);
+    AppMethodBeat.i(201476);
     if ((paramInt1 != getPaddingLeft()) || (paramInt3 != getPaddingRight()) || (paramInt2 != getPaddingTop()) || (paramInt4 != getPaddingBottom())) {
-      gLr();
+      hKs();
     }
     super.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
     invalidate();
-    AppMethodBeat.o(205606);
+    AppMethodBeat.o(201476);
   }
   
   public void setPaddingRelative(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(205607);
+    AppMethodBeat.i(201478);
     if ((paramInt1 != getPaddingStart()) || (paramInt3 != getPaddingEnd()) || (paramInt2 != getPaddingTop()) || (paramInt4 != getPaddingBottom())) {
-      gLr();
+      hKs();
     }
     super.setPaddingRelative(paramInt1, paramInt2, paramInt3, paramInt4);
     invalidate();
-    AppMethodBeat.o(205607);
+    AppMethodBeat.o(201478);
   }
   
   public void setPaintFlags(int paramInt)
   {
-    AppMethodBeat.i(205659);
-    if (this.ayn.getFlags() != paramInt)
+    AppMethodBeat.i(201619);
+    if (this.wi.getFlags() != paramInt)
     {
-      this.ayn.setFlags(paramInt);
-      if (this.OVt != null)
+      this.wi.setFlags(paramInt);
+      if (this.WoF != null)
       {
-        gLr();
+        hKs();
         requestLayout();
         invalidate();
       }
     }
-    AppMethodBeat.o(205659);
+    AppMethodBeat.o(201619);
   }
   
   public void setPrivateImeOptions(String paramString)
   {
-    AppMethodBeat.i(205698);
-    gZL();
-    this.QHs.gZO();
-    this.QHs.QIC.privateImeOptions = paramString;
-    AppMethodBeat.o(205698);
+    AppMethodBeat.i(201758);
+    iaI();
+    this.Ygi.iaL();
+    this.Ygi.Yhs.YiX = paramString;
+    AppMethodBeat.o(201758);
   }
   
   public void setRawInputType(int paramInt)
   {
-    AppMethodBeat.i(205693);
-    if ((paramInt == 0) && (this.QHs == null))
+    AppMethodBeat.i(201739);
+    if ((paramInt == 0) && (this.Ygi == null))
     {
-      AppMethodBeat.o(205693);
+      AppMethodBeat.o(201739);
       return;
     }
-    gZL();
-    this.QHs.Clf = paramInt;
-    AppMethodBeat.o(205693);
+    iaI();
+    this.Ygi.IhY = paramInt;
+    AppMethodBeat.o(201739);
   }
   
   public void setReuseBrands(List<String> paramList)
   {
-    AppMethodBeat.i(205859);
+    AppMethodBeat.i(202538);
     if (paramList != null)
     {
-      this.QHB.clear();
-      this.QHB.addAll(paramList);
+      this.Ygr.clear();
+      this.Ygr.addAll(paramList);
     }
-    AppMethodBeat.o(205859);
+    AppMethodBeat.o(202538);
   }
   
   public void setReuseItems(List<String> paramList)
   {
-    AppMethodBeat.i(205857);
+    AppMethodBeat.i(202534);
     if (paramList != null)
     {
-      this.QHA.clear();
-      this.QHA.addAll(paramList);
+      this.Ygq.clear();
+      this.Ygq.addAll(paramList);
     }
-    AppMethodBeat.o(205857);
+    AppMethodBeat.o(202534);
   }
   
   public void setScroller(Scroller paramScroller)
@@ -9468,133 +9509,133 @@ public class CustomTextView
   
   public void setSelectAllOnFocus(boolean paramBoolean)
   {
-    AppMethodBeat.i(205775);
-    gZL();
-    this.QHs.QIN = paramBoolean;
+    AppMethodBeat.i(202198);
+    iaI();
+    this.Ygi.YhD = paramBoolean;
     if ((paramBoolean) && (!(this.mText instanceof Spannable))) {
       setText(this.mText, TextView.BufferType.SPANNABLE);
     }
-    AppMethodBeat.o(205775);
+    AppMethodBeat.o(202198);
   }
   
   public void setSelected(boolean paramBoolean)
   {
-    AppMethodBeat.i(205790);
+    AppMethodBeat.i(202280);
     isSelected();
     super.setSelected(paramBoolean);
-    AppMethodBeat.o(205790);
+    AppMethodBeat.o(202280);
   }
   
   public final void setShowSoftInputOnFocus(boolean paramBoolean)
   {
-    AppMethodBeat.i(205651);
-    gZL();
-    this.QHs.QIQ = paramBoolean;
-    AppMethodBeat.o(205651);
+    AppMethodBeat.i(201585);
+    iaI();
+    this.Ygi.YhG = paramBoolean;
+    AppMethodBeat.o(201585);
   }
   
   public void setSingleLine(boolean paramBoolean)
   {
-    AppMethodBeat.i(205772);
+    AppMethodBeat.i(202187);
     setInputTypeSingleLine(paramBoolean);
-    r(paramBoolean, true, true);
-    AppMethodBeat.o(205772);
+    p(paramBoolean, true, true);
+    AppMethodBeat.o(202187);
   }
   
   public final void setSpannableFactory(Spannable.Factory paramFactory)
   {
-    AppMethodBeat.i(205682);
-    this.OVo = paramFactory;
+    AppMethodBeat.i(201703);
+    this.WoA = paramFactory;
     setText(this.mText);
-    AppMethodBeat.o(205682);
+    AppMethodBeat.o(201703);
   }
   
   public final void setText(int paramInt)
   {
-    AppMethodBeat.i(205687);
+    AppMethodBeat.i(201715);
     setText(getContext().getResources().getText(paramInt));
-    AppMethodBeat.o(205687);
+    AppMethodBeat.o(201715);
   }
   
   public final void setText(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(205683);
-    setText(paramCharSequence, this.QGD);
-    AppMethodBeat.o(205683);
+    AppMethodBeat.i(201707);
+    setText(paramCharSequence, this.Yft);
+    AppMethodBeat.o(201707);
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    AppMethodBeat.i(205685);
+    AppMethodBeat.i(201710);
     a(paramCharSequence, paramBufferType, true, 0);
-    AppMethodBeat.o(205685);
+    AppMethodBeat.o(201710);
   }
   
   public void setTextClassifier(TextClassifier paramTextClassifier)
   {
-    this.QGw = paramTextClassifier;
+    this.Yfm = paramTextClassifier;
   }
   
   public void setTextColor(int paramInt)
   {
-    AppMethodBeat.i(205648);
-    this.BpJ = ColorStateList.valueOf(paramInt);
+    AppMethodBeat.i(201574);
+    this.Hkc = ColorStateList.valueOf(paramInt);
     updateTextColors();
-    AppMethodBeat.o(205648);
+    AppMethodBeat.o(201574);
   }
   
   public void setTextColor(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(205649);
+    AppMethodBeat.i(201576);
     if (paramColorStateList == null)
     {
       paramColorStateList = new NullPointerException();
-      AppMethodBeat.o(205649);
+      AppMethodBeat.o(201576);
       throw paramColorStateList;
     }
-    this.BpJ = paramColorStateList;
+    this.Hkc = paramColorStateList;
     updateTextColors();
-    AppMethodBeat.o(205649);
+    AppMethodBeat.o(201576);
   }
   
   public void setTextCursorDrawable(int paramInt)
   {
-    AppMethodBeat.i(205622);
+    AppMethodBeat.i(201509);
     if (paramInt != 0) {}
     for (Drawable localDrawable = getContext().getDrawable(paramInt);; localDrawable = null)
     {
       setTextCursorDrawable(localDrawable);
-      AppMethodBeat.o(205622);
+      AppMethodBeat.o(201509);
       return;
     }
   }
   
   public void setTextCursorDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(205621);
-    this.QHj = paramDrawable;
-    this.QHi = 0;
-    if (this.QHs != null) {
-      this.QHs.haA();
+    AppMethodBeat.i(201506);
+    this.YfZ = paramDrawable;
+    this.YfY = 0;
+    if (this.Ygi != null) {
+      this.Ygi.iby();
     }
-    AppMethodBeat.o(205621);
+    AppMethodBeat.o(201506);
   }
   
   public void setTextIsSelectable(boolean paramBoolean)
   {
-    AppMethodBeat.i(205724);
-    if ((!paramBoolean) && (this.QHs == null))
+    AppMethodBeat.i(201855);
+    if ((!paramBoolean) && (this.Ygi == null))
     {
-      AppMethodBeat.o(205724);
+      AppMethodBeat.o(201855);
       return;
     }
-    gZL();
-    if (this.QHs.QIO == paramBoolean)
+    iaI();
+    if (this.Ygi.YhE == paramBoolean)
     {
-      AppMethodBeat.o(205724);
+      AppMethodBeat.o(201855);
       return;
     }
-    this.QHs.QIO = paramBoolean;
+    this.Ygi.YhE = paramBoolean;
     setFocusableInTouchMode(paramBoolean);
     label91:
     CharSequence localCharSequence;
@@ -9606,7 +9647,7 @@ public class CustomTextView
       if (!paramBoolean) {
         break label137;
       }
-      localObject = com.tencent.mm.ui.widget.cedit.b.a.haX();
+      localObject = com.tencent.mm.ui.widget.cedit.b.a.ibX();
       setMovementMethod((com.tencent.mm.ui.widget.cedit.b.d)localObject);
       localCharSequence = this.mText;
       if (!paramBoolean) {
@@ -9618,8 +9659,8 @@ public class CustomTextView
     for (Object localObject = TextView.BufferType.SPANNABLE;; localObject = TextView.BufferType.NORMAL)
     {
       setText(localCharSequence, (TextView.BufferType)localObject);
-      this.QHs.gZP();
-      AppMethodBeat.o(205724);
+      this.Ygi.iaN();
+      AppMethodBeat.o(201855);
       return;
       setFocusable(paramBoolean);
       break;
@@ -9630,175 +9671,175 @@ public class CustomTextView
   
   public final void setTextKeepState(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(205684);
-    TextView.BufferType localBufferType = this.QGD;
+    AppMethodBeat.i(201709);
+    TextView.BufferType localBufferType = this.Yft;
     int i = getSelectionStart();
     int j = getSelectionEnd();
     int k = paramCharSequence.length();
     setText(paramCharSequence, localBufferType);
-    if (((i >= 0) || (j >= 0)) && (this.QGC != null)) {
-      Selection.setSelection(this.QGC, Math.max(0, Math.min(i, k)), Math.max(0, Math.min(j, k)));
+    if (((i >= 0) || (j >= 0)) && (this.Yfs != null)) {
+      Selection.setSelection(this.Yfs, Math.max(0, Math.min(i, k)), Math.max(0, Math.min(j, k)));
     }
-    AppMethodBeat.o(205684);
+    AppMethodBeat.o(201709);
   }
   
   public void setTextLocale(Locale paramLocale)
   {
-    AppMethodBeat.i(205627);
-    this.QGL = true;
-    this.ayn.setTextLocale(paramLocale);
-    if (this.OVt != null)
+    AppMethodBeat.i(201523);
+    this.YfB = true;
+    this.wi.setTextLocale(paramLocale);
+    if (this.WoF != null)
     {
-      gLr();
+      hKs();
       requestLayout();
       invalidate();
     }
-    AppMethodBeat.o(205627);
+    AppMethodBeat.o(201523);
   }
   
   public void setTextLocales(LocaleList paramLocaleList)
   {
-    AppMethodBeat.i(205628);
-    this.QGL = true;
+    AppMethodBeat.i(201524);
+    this.YfB = true;
     if (Build.VERSION.SDK_INT >= 24) {
-      this.ayn.setTextLocales(paramLocaleList);
+      this.wi.setTextLocales(paramLocaleList);
     }
     for (;;)
     {
-      if (this.OVt != null)
+      if (this.WoF != null)
       {
-        gLr();
+        hKs();
         requestLayout();
         invalidate();
       }
-      AppMethodBeat.o(205628);
+      AppMethodBeat.o(201524);
       return;
       if ((paramLocaleList != null) && (paramLocaleList.size() > 0)) {
-        this.ayn.setTextLocale(paramLocaleList.get(0));
+        this.wi.setTextLocale(paramLocaleList.get(0));
       }
     }
   }
   
   public final void setTextOperationUser(UserHandle paramUserHandle)
   {
-    AppMethodBeat.i(205810);
-    if (Objects.equals(this.QHd, paramUserHandle))
+    AppMethodBeat.i(202328);
+    if (Objects.equals(this.YfT, paramUserHandle))
     {
-      AppMethodBeat.o(205810);
+      AppMethodBeat.o(202328);
       return;
     }
     if (paramUserHandle != null) {
       Process.myUserHandle().equals(paramUserHandle);
     }
-    this.QHd = paramUserHandle;
-    this.QHe = null;
-    AppMethodBeat.o(205810);
+    this.YfT = paramUserHandle;
+    this.YfU = null;
+    AppMethodBeat.o(202328);
   }
   
   public void setTextScaleX(float paramFloat)
   {
-    AppMethodBeat.i(205637);
-    if (paramFloat != this.ayn.getTextScaleX())
+    AppMethodBeat.i(201551);
+    if (paramFloat != this.wi.getTextScaleX())
     {
-      this.QGK = true;
-      this.ayn.setTextScaleX(paramFloat);
-      if (this.OVt != null)
+      this.YfA = true;
+      this.wi.setTextScaleX(paramFloat);
+      if (this.WoF != null)
       {
-        gLr();
+        hKs();
         requestLayout();
         invalidate();
       }
     }
-    AppMethodBeat.o(205637);
+    AppMethodBeat.o(201551);
   }
   
   public void setTextSelectHandle(int paramInt)
   {
-    AppMethodBeat.i(205613);
+    AppMethodBeat.i(201492);
     if (paramInt != 0) {}
     for (boolean bool = true;; bool = false)
     {
       com.tencent.mm.ui.widget.cedit.util.b.checkArgument(bool, "The text select handle should be a valid drawable resource id.");
       setTextSelectHandle(getContext().getDrawable(paramInt));
-      AppMethodBeat.o(205613);
+      AppMethodBeat.o(201492);
       return;
     }
   }
   
   public void setTextSelectHandle(Drawable paramDrawable)
   {
-    AppMethodBeat.i(205612);
+    AppMethodBeat.i(201490);
     com.tencent.mm.ui.widget.cedit.util.b.checkNotNull(paramDrawable, "The text select handle should not be null.");
-    this.QHp = paramDrawable;
-    this.QHo = 0;
-    if (this.QHs != null) {
-      this.QHs.CZ(true);
+    this.Ygf = paramDrawable;
+    this.Yge = 0;
+    if (this.Ygi != null) {
+      this.Ygi.Hv(true);
     }
-    AppMethodBeat.o(205612);
+    AppMethodBeat.o(201490);
   }
   
   public void setTextSelectHandleLeft(int paramInt)
   {
-    AppMethodBeat.i(205616);
+    AppMethodBeat.i(201498);
     if (paramInt != 0) {}
     for (boolean bool = true;; bool = false)
     {
       com.tencent.mm.ui.widget.cedit.util.b.checkArgument(bool, "The text select left handle should be a valid drawable resource id.");
       setTextSelectHandleLeft(getContext().getDrawable(paramInt));
-      AppMethodBeat.o(205616);
+      AppMethodBeat.o(201498);
       return;
     }
   }
   
   public void setTextSelectHandleLeft(Drawable paramDrawable)
   {
-    AppMethodBeat.i(205615);
+    AppMethodBeat.i(201496);
     com.tencent.mm.ui.widget.cedit.util.b.checkNotNull(paramDrawable, "The left text select handle should not be null.");
-    this.QHl = paramDrawable;
-    this.QHk = 0;
-    if (this.QHs != null) {
-      this.QHs.CZ(true);
+    this.Ygb = paramDrawable;
+    this.Yga = 0;
+    if (this.Ygi != null) {
+      this.Ygi.Hv(true);
     }
-    AppMethodBeat.o(205615);
+    AppMethodBeat.o(201496);
   }
   
   public void setTextSelectHandleRight(int paramInt)
   {
-    AppMethodBeat.i(205619);
+    AppMethodBeat.i(201503);
     if (paramInt != 0) {}
     for (boolean bool = true;; bool = false)
     {
       com.tencent.mm.ui.widget.cedit.util.b.checkArgument(bool, "The text select right handle should be a valid drawable resource id.");
       setTextSelectHandleRight(getContext().getDrawable(paramInt));
-      AppMethodBeat.o(205619);
+      AppMethodBeat.o(201503);
       return;
     }
   }
   
   public void setTextSelectHandleRight(Drawable paramDrawable)
   {
-    AppMethodBeat.i(205618);
+    AppMethodBeat.i(201502);
     com.tencent.mm.ui.widget.cedit.util.b.checkNotNull(paramDrawable, "The right text select handle should not be null.");
-    this.QHn = paramDrawable;
-    this.QHm = 0;
-    if (this.QHs != null) {
-      this.QHs.CZ(true);
+    this.Ygd = paramDrawable;
+    this.Ygc = 0;
+    if (this.Ygi != null) {
+      this.Ygi.Hv(true);
     }
-    AppMethodBeat.o(205618);
+    AppMethodBeat.o(201502);
   }
   
   public void setTextSize(float paramFloat)
   {
-    AppMethodBeat.i(205633);
+    AppMethodBeat.i(201539);
     setTextSize(2, paramFloat);
-    AppMethodBeat.o(205633);
+    AppMethodBeat.o(201539);
   }
   
   public void setTextSize(int paramInt, float paramFloat)
   {
-    AppMethodBeat.i(205634);
+    AppMethodBeat.i(201542);
     int i;
-    if ((jw()) && (this.aly != 0))
+    if ((dC()) && (this.rJ != 0))
     {
       i = 1;
       if (i == 0)
@@ -9812,9 +9853,9 @@ public class CustomTextView
     label73:
     for (Object localObject = Resources.getSystem();; localObject = ((Context)localObject).getResources())
     {
-      this.QGM = paramInt;
-      setRawTextSize$254d549(TypedValue.applyDimension(paramInt, paramFloat, ((Resources)localObject).getDisplayMetrics()));
-      AppMethodBeat.o(205634);
+      this.YfC = paramInt;
+      cR(TypedValue.applyDimension(paramInt, paramFloat, ((Resources)localObject).getDisplayMetrics()));
+      AppMethodBeat.o(201542);
       return;
       i = 0;
       break;
@@ -9823,92 +9864,92 @@ public class CustomTextView
   
   public final void setTransformationMethod(TransformationMethod paramTransformationMethod)
   {
-    AppMethodBeat.i(205585);
-    if (paramTransformationMethod == this.QGH)
+    AppMethodBeat.i(201408);
+    if (paramTransformationMethod == this.Yfx)
     {
-      AppMethodBeat.o(205585);
+      AppMethodBeat.o(201408);
       return;
     }
-    if ((this.QGH != null) && (this.QGC != null)) {
-      this.QGC.removeSpan(this.QGH);
+    if ((this.Yfx != null) && (this.Yfs != null)) {
+      this.Yfs.removeSpan(this.Yfx);
     }
-    this.QGH = paramTransformationMethod;
-    this.QGI = false;
+    this.Yfx = paramTransformationMethod;
+    this.Yfy = false;
     setText(this.mText);
-    this.Om = getTextDirectionHeuristic();
-    AppMethodBeat.o(205585);
+    this.Mg = getTextDirectionHeuristic();
+    AppMethodBeat.o(201408);
   }
   
   public void setTypeface(Typeface paramTypeface)
   {
-    AppMethodBeat.i(205638);
-    if (this.ayn.getTypeface() != paramTypeface)
+    AppMethodBeat.i(201553);
+    if (this.wi.getTypeface() != paramTypeface)
     {
-      this.ayn.setTypeface(paramTypeface);
-      if (this.OVt != null)
+      this.wi.setTypeface(paramTypeface);
+      if (this.WoF != null)
       {
-        gLr();
+        hKs();
         requestLayout();
         invalidate();
       }
     }
-    AppMethodBeat.o(205638);
+    AppMethodBeat.o(201553);
   }
   
   public void setWidth(int paramInt)
   {
-    AppMethodBeat.i(205672);
-    this.mMinWidth = paramInt;
-    this.mMaxWidth = paramInt;
-    this.QGX = 2;
-    this.QGW = 2;
+    AppMethodBeat.i(201660);
+    this.lj = paramInt;
+    this.uJ = paramInt;
+    this.YfN = 2;
+    this.YfM = 2;
     requestLayout();
     invalidate();
-    AppMethodBeat.o(205672);
+    AppMethodBeat.o(201660);
   }
   
   public boolean showContextMenu()
   {
-    AppMethodBeat.i(205794);
-    if (this.QHs != null) {
-      this.QHs.aA((0.0F / 0.0F), (0.0F / 0.0F));
+    AppMethodBeat.i(202301);
+    if (this.Ygi != null) {
+      this.Ygi.aI((0.0F / 0.0F), (0.0F / 0.0F));
     }
     boolean bool = super.showContextMenu();
-    AppMethodBeat.o(205794);
+    AppMethodBeat.o(202301);
     return bool;
   }
   
   public boolean showContextMenu(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(205795);
-    if (this.QHs != null) {
-      this.QHs.aA(paramFloat1, paramFloat2);
+    AppMethodBeat.i(202302);
+    if (this.Ygi != null) {
+      this.Ygi.aI(paramFloat1, paramFloat2);
     }
     boolean bool = super.showContextMenu(paramFloat1, paramFloat2);
-    AppMethodBeat.o(205795);
+    AppMethodBeat.o(202302);
     return bool;
   }
   
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(205720);
+    AppMethodBeat.i(201830);
     boolean bool = super.verifyDrawable(paramDrawable);
-    if ((!bool) && (this.QGA != null))
+    if ((!bool) && (this.Yfq != null))
     {
-      Drawable[] arrayOfDrawable = this.QGA.QHE;
+      Drawable[] arrayOfDrawable = this.Yfq.Ygu;
       int j = arrayOfDrawable.length;
       int i = 0;
       while (i < j)
       {
         if (paramDrawable == arrayOfDrawable[i])
         {
-          AppMethodBeat.o(205720);
+          AppMethodBeat.o(201830);
           return true;
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(205720);
+    AppMethodBeat.o(201830);
     return bool;
   }
   
@@ -9916,40 +9957,40 @@ public class CustomTextView
     extends View.BaseSavedState
   {
     public static final Parcelable.Creator<SavedState> CREATOR;
-    int QHT;
-    int QHU;
-    boolean QHV;
-    ParcelableParcel QHW;
-    CharSequence text;
-    CharSequence wz;
+    CharSequence LV;
+    int YgJ;
+    int YgK;
+    boolean YgL;
+    ParcelableParcel YgM;
+    CharSequence bHq;
     
     static
     {
-      AppMethodBeat.i(205569);
+      AppMethodBeat.i(190984);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(205569);
+      AppMethodBeat.o(190984);
     }
     
     private SavedState(Parcel paramParcel)
     {
       super();
-      AppMethodBeat.i(205568);
-      this.QHT = -1;
-      this.QHU = -1;
-      this.QHT = paramParcel.readInt();
-      this.QHU = paramParcel.readInt();
+      AppMethodBeat.i(190981);
+      this.YgJ = -1;
+      this.YgK = -1;
+      this.YgJ = paramParcel.readInt();
+      this.YgK = paramParcel.readInt();
       if (paramParcel.readInt() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.QHV = bool;
-        this.text = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
+        this.YgL = bool;
+        this.LV = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
         if (paramParcel.readInt() != 0) {
-          this.wz = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
+          this.bHq = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
         }
         if (paramParcel.readInt() != 0) {
-          this.QHW = ((ParcelableParcel)ParcelableParcel.CREATOR.createFromParcel(paramParcel));
+          this.YgM = ((ParcelableParcel)ParcelableParcel.CREATOR.createFromParcel(paramParcel));
         }
-        AppMethodBeat.o(205568);
+        AppMethodBeat.o(190981);
         return;
       }
     }
@@ -9957,170 +9998,170 @@ public class CustomTextView
     SavedState(Parcelable paramParcelable)
     {
       super();
-      this.QHT = -1;
-      this.QHU = -1;
+      this.YgJ = -1;
+      this.YgK = -1;
     }
     
     public String toString()
     {
-      AppMethodBeat.i(205567);
-      String str2 = "TextView.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " start=" + this.QHT + " end=" + this.QHU;
+      AppMethodBeat.i(190979);
+      String str2 = "TextView.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " start=" + this.YgJ + " end=" + this.YgK;
       String str1 = str2;
-      if (this.text != null) {
-        str1 = str2 + " text=" + this.text;
+      if (this.LV != null) {
+        str1 = str2 + " text=" + this.LV;
       }
       str1 = str1 + "}";
-      AppMethodBeat.o(205567);
+      AppMethodBeat.o(190979);
       return str1;
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(205566);
+      AppMethodBeat.i(190976);
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeInt(this.QHT);
-      paramParcel.writeInt(this.QHU);
+      paramParcel.writeInt(this.YgJ);
+      paramParcel.writeInt(this.YgK);
       int i;
-      if (this.QHV)
+      if (this.YgL)
       {
         i = 1;
         paramParcel.writeInt(i);
-        TextUtils.writeToParcel(this.text, paramParcel, paramInt);
-        if (this.wz != null) {
+        TextUtils.writeToParcel(this.LV, paramParcel, paramInt);
+        if (this.bHq != null) {
           break label85;
         }
         paramParcel.writeInt(0);
       }
       for (;;)
       {
-        if (this.QHW != null) {
+        if (this.YgM != null) {
           break label102;
         }
         paramParcel.writeInt(0);
-        AppMethodBeat.o(205566);
+        AppMethodBeat.o(190976);
         return;
         i = 0;
         break;
         label85:
         paramParcel.writeInt(1);
-        TextUtils.writeToParcel(this.wz, paramParcel, paramInt);
+        TextUtils.writeToParcel(this.bHq, paramParcel, paramInt);
       }
       label102:
       paramParcel.writeInt(1);
-      this.QHW.writeToParcel(paramParcel, paramInt);
-      AppMethodBeat.o(205566);
+      this.YgM.writeToParcel(paramParcel, paramInt);
+      AppMethodBeat.o(190976);
     }
   }
   
   class a
     implements SpanWatcher, TextWatcher
   {
-    private CharSequence QHD;
+    private CharSequence Ygt;
     
     private a() {}
     
     public void afterTextChanged(Editable paramEditable)
     {
-      AppMethodBeat.i(205560);
+      AppMethodBeat.i(189282);
       CustomTextView.this.e(paramEditable);
       if (MetaKeyKeyListener.getMetaState(paramEditable, 2048) != 0) {
         com.tencent.mm.ui.widget.cedit.util.d.b(CustomTextView.this, paramEditable);
       }
-      AppMethodBeat.o(205560);
+      AppMethodBeat.o(189282);
     }
     
     public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
     {
-      AppMethodBeat.i(205558);
-      if ((com.tencent.mm.ui.widget.cedit.util.d.haZ()) && (CustomTextView.b(CustomTextView.this) != null)) {
-        this.QHD = CustomTextView.b(CustomTextView.this).toString();
+      AppMethodBeat.i(189276);
+      if ((com.tencent.mm.ui.widget.cedit.util.d.ibZ()) && (CustomTextView.b(CustomTextView.this) != null)) {
+        this.Ygt = CustomTextView.b(CustomTextView.this).toString();
       }
       CustomTextView.a(CustomTextView.this, paramCharSequence, paramInt1, paramInt2, paramInt3);
-      AppMethodBeat.o(205558);
+      AppMethodBeat.o(189276);
     }
     
     public void onSpanAdded(Spannable paramSpannable, Object paramObject, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(205562);
+      AppMethodBeat.i(189286);
       CustomTextView.this.a(paramSpannable, paramObject, -1, paramInt1, -1, paramInt2);
-      AppMethodBeat.o(205562);
+      AppMethodBeat.o(189286);
     }
     
     public void onSpanChanged(Spannable paramSpannable, Object paramObject, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
     {
-      AppMethodBeat.i(205561);
+      AppMethodBeat.i(189284);
       CustomTextView.this.a(paramSpannable, paramObject, paramInt1, paramInt3, paramInt2, paramInt4);
-      AppMethodBeat.o(205561);
+      AppMethodBeat.o(189284);
     }
     
     public void onSpanRemoved(Spannable paramSpannable, Object paramObject, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(205563);
+      AppMethodBeat.i(189288);
       CustomTextView.this.a(paramSpannable, paramObject, paramInt1, -1, paramInt2, -1);
-      AppMethodBeat.o(205563);
+      AppMethodBeat.o(189288);
     }
     
     public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
     {
-      AppMethodBeat.i(205559);
+      AppMethodBeat.i(189278);
       CustomTextView.this.c(paramCharSequence, paramInt1, paramInt2, paramInt3);
-      if ((com.tencent.mm.ui.widget.cedit.util.d.haZ()) && ((CustomTextView.this.isFocused()) || ((CustomTextView.this.isSelected()) && (CustomTextView.this.isShown()))))
+      if ((com.tencent.mm.ui.widget.cedit.util.d.ibZ()) && ((CustomTextView.this.isFocused()) || ((CustomTextView.this.isSelected()) && (CustomTextView.this.isShown()))))
       {
-        paramCharSequence = this.QHD;
+        paramCharSequence = this.Ygt;
         AccessibilityEvent localAccessibilityEvent = AccessibilityEvent.obtain(16);
         localAccessibilityEvent.setFromIndex(paramInt1);
         localAccessibilityEvent.setRemovedCount(paramInt2);
         localAccessibilityEvent.setAddedCount(paramInt3);
         localAccessibilityEvent.setBeforeText(paramCharSequence);
         CustomTextView.this.sendAccessibilityEventUnchecked(localAccessibilityEvent);
-        this.QHD = null;
+        this.Ygt = null;
       }
-      AppMethodBeat.o(205559);
+      AppMethodBeat.o(189278);
     }
   }
   
   static final class b
   {
-    ColorStateList Kr;
-    final Rect OVZ;
-    int OWe;
-    int OWf;
-    int OWg;
-    int OWh;
-    int OWi;
-    int OWj;
-    int OWk;
-    int OWl;
-    int OWm;
-    final Drawable[] QHE;
-    BlendMode QHF;
-    boolean QHG;
-    Drawable QHH;
-    Drawable QHI;
-    Drawable QHJ;
-    Drawable QHK;
-    Drawable QHL;
-    boolean QHM;
-    boolean QHN;
-    int QHO;
-    int QHP;
-    int QHQ;
-    int QHR;
-    int QHS;
-    boolean acU;
+    final Rect Wpl;
+    int Wpq;
+    int Wpr;
+    int Wps;
+    int Wpt;
+    int Wpu;
+    int Wpv;
+    int Wpw;
+    int Wpx;
+    int Wpy;
+    Drawable YgA;
+    Drawable YgB;
+    boolean YgC;
+    boolean YgD;
+    int YgE;
+    int YgF;
+    int YgG;
+    int YgH;
+    int YgI;
+    final Drawable[] Ygu;
+    BlendMode Ygv;
+    boolean Ygw;
+    Drawable Ygx;
+    Drawable Ygy;
+    Drawable Ygz;
+    ColorStateList jE;
+    boolean jH;
     
     public b(Context paramContext)
     {
-      AppMethodBeat.i(205564);
-      this.OVZ = new Rect();
-      this.QHE = new Drawable[4];
-      this.QHS = -1;
+      AppMethodBeat.i(188945);
+      this.Wpl = new Rect();
+      this.Ygu = new Drawable[4];
+      this.YgI = -1;
       if (paramContext.getApplicationInfo().targetSdkVersion < 17) {}
       for (boolean bool = true;; bool = false)
       {
-        this.QHM = bool;
-        this.QHN = false;
-        AppMethodBeat.o(205564);
+        this.YgC = bool;
+        this.YgD = false;
+        AppMethodBeat.o(188945);
         return;
       }
     }
@@ -10133,45 +10174,45 @@ public class CustomTextView
   
   static final class d
   {
-    ColorStateList BpJ = null;
-    int QGM = -1;
-    float QGr = 0.0F;
-    float QGs = 0.0F;
-    float QGt = 0.0F;
-    int QHX = 1711528645;
-    ColorStateList QHY = null;
-    ColorStateList QHZ = null;
-    LocaleList QIa = null;
-    boolean QIb = false;
-    int QIc = -1;
-    int QId = 0;
-    int QIe = -1;
-    boolean QIf = false;
-    boolean QIg = false;
-    boolean QIh = false;
-    boolean QIi = false;
-    boolean QIj = false;
-    boolean QIk = false;
-    float QIl = 0.0F;
-    String QIm = null;
-    String QIn = null;
-    Typeface alr = null;
-    String lal = null;
-    int mAk = -1;
-    int nYW = 0;
+    ColorStateList Hkc = null;
+    int YfC = -1;
+    float Yfh = 0.0F;
+    float Yfi = 0.0F;
+    float Yfj = 0.0F;
+    int YgN = 1711528645;
+    ColorStateList YgO = null;
+    ColorStateList YgP = null;
+    LocaleList YgQ = null;
+    boolean YgR = false;
+    int YgS = -1;
+    int YgT = 0;
+    int YgU = -1;
+    boolean YgV = false;
+    boolean YgW = false;
+    boolean YgX = false;
+    boolean YgY = false;
+    boolean YgZ = false;
+    boolean Yha = false;
+    float Yhb = 0.0F;
+    String Yhc = null;
+    String Yhd = null;
+    String nUv = null;
+    int pyF = -1;
+    Typeface rC = null;
+    int raH = 0;
     
     public final String toString()
     {
-      AppMethodBeat.i(205570);
-      String str = "TextAppearanceAttributes {\n    mTextColorHighlight:" + this.QHX + "\n    mTextColor:" + this.BpJ + "\n    mTextColorHint:" + this.QHY + "\n    mTextColorLink:" + this.QHZ + "\n    mTextSize:" + this.mAk + "\n    mTextSizeUnit:" + this.QGM + "\n    mTextLocales:" + this.QIa + "\n    mFontFamily:" + this.lal + "\n    mFontTypeface:" + this.alr + "\n    mFontFamilyExplicit:" + this.QIb + "\n    mTypefaceIndex:" + this.QIc + "\n    mTextStyle:" + this.QId + "\n    mFontWeight:" + this.QIe + "\n    mAllCaps:" + this.QIf + "\n    mShadowColor:" + this.nYW + "\n    mShadowDx:" + this.QGs + "\n    mShadowDy:" + this.QGt + "\n    mShadowRadius:" + this.QGr + "\n    mHasElegant:" + this.QIg + "\n    mElegant:" + this.QIh + "\n    mHasFallbackLineSpacing:" + this.QIi + "\n    mFallbackLineSpacing:" + this.QIj + "\n    mHasLetterSpacing:" + this.QIk + "\n    mLetterSpacing:" + this.QIl + "\n    mFontFeatureSettings:" + this.QIm + "\n    mFontVariationSettings:" + this.QIn + "\n}";
-      AppMethodBeat.o(205570);
+      AppMethodBeat.i(188213);
+      String str = "TextAppearanceAttributes {\n    mTextColorHighlight:" + this.YgN + "\n    mTextColor:" + this.Hkc + "\n    mTextColorHint:" + this.YgO + "\n    mTextColorLink:" + this.YgP + "\n    mTextSize:" + this.pyF + "\n    mTextSizeUnit:" + this.YfC + "\n    mTextLocales:" + this.YgQ + "\n    mFontFamily:" + this.nUv + "\n    mFontTypeface:" + this.rC + "\n    mFontFamilyExplicit:" + this.YgR + "\n    mTypefaceIndex:" + this.YgS + "\n    mTextStyle:" + this.YgT + "\n    mFontWeight:" + this.YgU + "\n    mAllCaps:" + this.YgV + "\n    mShadowColor:" + this.raH + "\n    mShadowDx:" + this.Yfi + "\n    mShadowDy:" + this.Yfj + "\n    mShadowRadius:" + this.Yfh + "\n    mHasElegant:" + this.YgW + "\n    mElegant:" + this.YgX + "\n    mHasFallbackLineSpacing:" + this.YgY + "\n    mFallbackLineSpacing:" + this.YgZ + "\n    mHasLetterSpacing:" + this.Yha + "\n    mLetterSpacing:" + this.Yhb + "\n    mFontFeatureSettings:" + this.Yhc + "\n    mFontVariationSettings:" + this.Yhd + "\n}";
+      AppMethodBeat.o(188213);
       return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cedit.edit.CustomTextView
  * JD-Core Version:    0.7.0.1
  */

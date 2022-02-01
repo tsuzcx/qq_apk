@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.downloader.c.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String qFU;
-  public String qFV;
+  public String ueW;
+  public String ueX;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -14,35 +14,35 @@ public final class g
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.qFU != null) {
-        paramVarArgs.e(1, this.qFU);
+      if (this.ueW != null) {
+        paramVarArgs.f(1, this.ueW);
       }
-      if (this.qFV != null) {
-        paramVarArgs.e(2, this.qFV);
+      if (this.ueX != null) {
+        paramVarArgs.f(2, this.ueX);
       }
       AppMethodBeat.o(153048);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.qFU == null) {
+      if (this.ueW == null) {
         break label274;
       }
     }
     label274:
-    for (paramInt = g.a.a.b.b.a.f(1, this.qFU) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.g(1, this.ueW) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.qFV != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.qFV);
+      if (this.ueX != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.ueX);
       }
       AppMethodBeat.o(153048);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
         AppMethodBeat.o(153048);
@@ -58,11 +58,11 @@ public final class g
           AppMethodBeat.o(153048);
           return -1;
         case 1: 
-          localg.qFU = locala.UbS.readString();
+          localg.ueW = locala.abFh.readString();
           AppMethodBeat.o(153048);
           return 0;
         }
-        localg.qFV = locala.UbS.readString();
+        localg.ueX = locala.abFh.readString();
         AppMethodBeat.o(153048);
         return 0;
       }

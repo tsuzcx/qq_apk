@@ -1,73 +1,75 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
 
 public final class agf
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int Lqt;
-  public int Lqu;
-  public String info;
+  public String myd;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125721);
+    AppMethodBeat.i(152535);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.Lqt);
-      paramVarArgs.aM(2, this.Lqu);
-      if (this.info != null) {
-        paramVarArgs.e(3, this.info);
-      }
-      AppMethodBeat.o(125721);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.bu(1, this.Lqt) + 0 + g.a.a.b.b.a.bu(2, this.Lqu);
-      paramInt = i;
-      if (this.info != null) {
-        paramInt = i + g.a.a.b.b.a.f(3, this.info);
-      }
-      AppMethodBeat.o(125721);
-      return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
-        }
-      }
-      AppMethodBeat.o(125721);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      agf localagf = (agf)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (this.myd == null)
       {
-      default: 
-        AppMethodBeat.o(125721);
-        return -1;
-      case 1: 
-        localagf.Lqt = locala.UbS.zi();
-        AppMethodBeat.o(125721);
-        return 0;
-      case 2: 
-        localagf.Lqu = locala.UbS.zi();
-        AppMethodBeat.o(125721);
-        return 0;
+        paramVarArgs = new b("Not all required fields were included: tp_username");
+        AppMethodBeat.o(152535);
+        throw paramVarArgs;
       }
-      localagf.info = locala.UbS.readString();
-      AppMethodBeat.o(125721);
+      if (this.myd != null) {
+        paramVarArgs.f(1, this.myd);
+      }
+      AppMethodBeat.o(152535);
       return 0;
     }
-    AppMethodBeat.o(125721);
-    return -1;
+    if (paramInt == 1) {
+      if (this.myd == null) {
+        break label261;
+      }
+    }
+    label261:
+    for (paramInt = g.a.a.b.b.a.g(1, this.myd) + 0;; paramInt = 0)
+    {
+      AppMethodBeat.o(152535);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
+        }
+        if (this.myd == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: tp_username");
+          AppMethodBeat.o(152535);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(152535);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        agf localagf = (agf)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(152535);
+          return -1;
+        }
+        localagf.myd = locala.abFh.readString();
+        AppMethodBeat.o(152535);
+        return 0;
+      }
+      AppMethodBeat.o(152535);
+      return -1;
+    }
   }
 }
 

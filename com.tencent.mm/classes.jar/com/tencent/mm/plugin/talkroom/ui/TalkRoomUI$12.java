@@ -6,14 +6,17 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.m;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
-import com.tencent.mm.ui.aa;
+import com.tencent.mm.ui.ad;
 import com.tencent.mm.ui.base.i;
 
 final class TalkRoomUI$12
@@ -25,23 +28,23 @@ final class TalkRoomUI$12
   {
     AppMethodBeat.i(29600);
     Object localObject = new b();
-    ((b)localObject).bm(paramView);
-    a.b("com/tencent/mm/plugin/talkroom/ui/TalkRoomUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
-    paramView = this.FRv;
-    bg.aVF();
-    if (Util.nullAs((Integer)c.azQ().get(144641, null), 0) > 0) {}
+    ((b)localObject).bn(paramView);
+    a.c("com/tencent/mm/plugin/talkroom/ui/TalkRoomUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+    paramView = this.Mlw;
+    bh.beI();
+    if (Util.nullAs((Integer)c.aHp().b(144641, null), 0) > 0) {}
     for (int i = 0;; i = 1)
     {
       if (i == 0) {
-        this.FRv.onBackPressed();
+        this.Mlw.onBackPressed();
       }
       a.a(this, "com/tencent/mm/plugin/talkroom/ui/TalkRoomUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(29600);
       return;
-      localObject = new i(paramView, 2131821775);
-      LinearLayout localLinearLayout = (LinearLayout)aa.jQ(MMApplicationContext.getContext()).inflate(2131496651, null);
+      localObject = new i(paramView, R.m.mmdialog);
+      LinearLayout localLinearLayout = (LinearLayout)ad.kS(MMApplicationContext.getContext()).inflate(R.i.elx, null);
       localLinearLayout.setMinimumWidth(10000);
-      Button localButton = (Button)localLinearLayout.findViewById(2131302465);
+      Button localButton = (Button)localLinearLayout.findViewById(R.h.i_know_btn);
       ((i)localObject).setCanceledOnTouchOutside(true);
       ((i)localObject).setOnDismissListener(new TalkRoomUI.17(paramView));
       ((i)localObject).setCancelable(false);
@@ -53,7 +56,7 @@ final class TalkRoomUI$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.ui.TalkRoomUI.12
  * JD-Core Version:    0.7.0.1
  */

@@ -3,47 +3,50 @@ package com.tencent.mm.plugin.notifymessage;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.api.c;
-import com.tencent.mm.kernel.b.f;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.kernel.f.c;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.c;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ca;
 import com.tencent.mm.storage.cf;
 import com.tencent.mm.storagebase.h.b;
-import com.tencent.mm.vending.b.b;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
 public class PluginNotifyMessage
-  extends f
+  extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.kernel.api.a, c, a
 {
-  private cf AHY;
-  private final i.a AHZ;
-  private b kJs;
+  private cf GBi;
+  private final i.a GBj;
   private MMHandler mHandler;
+  private com.tencent.mm.vending.b.b nDk;
   
   public PluginNotifyMessage()
   {
-    AppMethodBeat.i(231772);
-    this.kJs = null;
+    AppMethodBeat.i(274603);
+    this.nDk = null;
     this.mHandler = null;
-    this.AHZ = new i.a()
+    this.GBj = new i.a()
     {
-      public final void a(i paramAnonymousi, i.c paramAnonymousc)
+      public final void onNotifyChange(i paramAnonymousi, i.c paramAnonymousc)
       {
-        AppMethodBeat.i(231770);
-        if ((paramAnonymousi != null) && (paramAnonymousc.hIs != null))
+        AppMethodBeat.i(276377);
+        if (CrashReportFactory.isBackupMerge())
         {
-          paramAnonymousi = paramAnonymousc.hIs.iterator();
+          AppMethodBeat.o(276377);
+          return;
+        }
+        if ((paramAnonymousi != null) && (paramAnonymousc.kvM != null))
+        {
+          paramAnonymousi = paramAnonymousc.kvM.iterator();
           while (paramAnonymousi.hasNext())
           {
             ca localca = (ca)paramAnonymousi.next();
@@ -53,19 +56,21 @@ public class PluginNotifyMessage
               if (localcf == null)
               {
                 Log.e("MicroMsg.PluginNotifyMessage", "get message notify storage return null");
-                AppMethodBeat.o(231770);
+                AppMethodBeat.o(276377);
                 return;
               }
-              String str2 = cf.bc(localca);
-              if (Util.isNullOrNil(str2)) {
-                Log.i("MicroMsg.PluginNotifyMessage", "username is null or nil");
-              }
-              String str1 = cf.bd(localca);
-              localca.Cy(str2);
-              str2 = paramAnonymousc.zqn;
-              int i = -1;
-              switch (str2.hashCode())
+              String str2 = cf.bv(localca);
+              String str1 = cf.bw(localca);
+              label129:
+              int i;
+              if (Util.isNullOrNil(str2))
               {
+                Log.i("MicroMsg.PluginNotifyMessage", "username is null or nil");
+                str2 = paramAnonymousc.EVM;
+                i = -1;
+                switch (str2.hashCode())
+                {
+                }
               }
               for (;;)
               {
@@ -74,8 +79,10 @@ public class PluginNotifyMessage
                 default: 
                   break;
                 case 0: 
-                  localcf.e(localca, str1);
+                  localcf.g(localca, str1);
                   break;
+                  localca.Jm(str2);
+                  break label129;
                   if (str2.equals("insert"))
                   {
                     i = 0;
@@ -92,30 +99,30 @@ public class PluginNotifyMessage
                   break;
                 }
               }
-              localcf.bb(localca);
+              localcf.bu(localca);
               continue;
-              localcf.f(localca, str1);
+              localcf.h(localca, str1);
             }
           }
         }
-        AppMethodBeat.o(231770);
+        AppMethodBeat.o(276377);
       }
     };
-    AppMethodBeat.o(231772);
+    AppMethodBeat.o(274603);
   }
   
   private void checkNotifyRecord()
   {
-    AppMethodBeat.i(231777);
+    AppMethodBeat.i(274614);
     Log.i("MicroMsg.PluginNotifyMessage", "check record");
     final cf localcf = getNotifyMessageRecordStorage();
     if (localcf == null)
     {
       Log.e("MicroMsg.PluginNotifyMessage", "get message notify storage return null");
-      AppMethodBeat.o(231777);
+      AppMethodBeat.o(274614);
       return;
     }
-    if (localcf.gEh() != localcf.gEi()) {}
+    if (localcf.hAx() != localcf.hAy()) {}
     for (boolean bool = true;; bool = false)
     {
       Log.i("MicroMsg.NotifyMessageRecordStorage", "need sync record: %b", new Object[] { Boolean.valueOf(bool) });
@@ -129,12 +136,12 @@ public class PluginNotifyMessage
         {
           public final void run()
           {
-            AppMethodBeat.i(231771);
+            AppMethodBeat.i(290094);
             Log.i("MicroMsg.PluginNotifyMessage", "before sync");
             long l1 = Util.currentTicks();
             cf localcf = localcf;
             boolean bool;
-            if (cf.Orv)
+            if (cf.VHr)
             {
               Log.e("MicroMsg.NotifyMessageRecordStorage", "sync is running");
               bool = false;
@@ -144,35 +151,35 @@ public class PluginNotifyMessage
               l1 = Util.ticksToNow(l1);
               Log.i("MicroMsg.PluginNotifyMessage", "syncNotifyRecord finish, ret: %b, cost: %d", new Object[] { Boolean.valueOf(bool), Long.valueOf(l1) });
               PluginNotifyMessage.access$000(PluginNotifyMessage.this, l1);
-              AppMethodBeat.o(231771);
+              AppMethodBeat.o(290094);
               return;
               Log.i("MicroMsg.NotifyMessageRecordStorage", "syncRecord");
               long l2 = Util.currentTicks();
-              cf.Orv = true;
-              bool = localcf.gEj();
+              cf.VHr = true;
+              bool = localcf.hAz();
               Log.i("MicroMsg.NotifyMessageRecordStorage", "handle msg info done, cost: %d", new Object[] { Long.valueOf(Util.ticksToNow(l2)) });
-              cf.Orv = false;
+              cf.VHr = false;
             }
           }
         });
       }
-      AppMethodBeat.o(231777);
+      AppMethodBeat.o(274614);
       return;
     }
   }
   
   private void reportTimeCost(long paramLong)
   {
-    AppMethodBeat.i(231778);
-    h.CyF.n(1584L, 0L, paramLong);
-    h.CyF.n(1584L, 1L, 1L);
+    AppMethodBeat.i(274615);
+    com.tencent.mm.plugin.report.service.h.IzE.p(1584L, 0L, paramLong);
+    com.tencent.mm.plugin.report.service.h.IzE.p(1584L, 1L, 1L);
     paramLong /= 1000L;
     int i;
     if (paramLong >= 600L)
     {
       i = 32;
-      h.CyF.n(1584L, i, 1L);
-      AppMethodBeat.o(231778);
+      com.tencent.mm.plugin.report.service.h.IzE.p(1584L, i, 1L);
+      AppMethodBeat.o(274615);
       return;
     }
     int k = 21;
@@ -194,7 +201,7 @@ public class PluginNotifyMessage
   
   public HashMap<Integer, h.b> collectDatabaseFactory()
   {
-    AppMethodBeat.i(231773);
+    AppMethodBeat.i(274606);
     HashMap localHashMap = new HashMap();
     localHashMap.put(Integer.valueOf("NotifyMessageRecord".hashCode()), new h.b()
     {
@@ -203,53 +210,53 @@ public class PluginNotifyMessage
         return cf.SQL_CREATE;
       }
     });
-    AppMethodBeat.o(231773);
+    AppMethodBeat.o(274606);
     return localHashMap;
   }
   
-  public void execute(com.tencent.mm.kernel.b.g paramg) {}
+  public void execute(g paramg) {}
   
   public cf getNotifyMessageRecordStorage()
   {
-    AppMethodBeat.i(231776);
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (this.AHY == null)
+    AppMethodBeat.i(274611);
+    com.tencent.mm.kernel.h.aHE().aGH();
+    if (this.GBi == null)
     {
-      com.tencent.mm.kernel.g.aAi();
-      this.AHY = new cf(com.tencent.mm.kernel.g.aAh().hqK);
+      com.tencent.mm.kernel.h.aHH();
+      this.GBi = new cf(com.tencent.mm.kernel.h.aHG().kcF);
     }
-    cf localcf = this.AHY;
-    AppMethodBeat.o(231776);
+    cf localcf = this.GBi;
+    AppMethodBeat.o(274611);
     return localcf;
   }
   
-  public void onAccountInitialized(e.c paramc)
+  public void onAccountInitialized(f.c paramc)
   {
-    AppMethodBeat.i(231774);
+    AppMethodBeat.i(274607);
     Log.d("MicroMsg.PluginNotifyMessage", "onAccountInitialized");
-    Log.i("MicroMsg.PluginNotifyMessage", "onAccountPostReset updated %b", new Object[] { Boolean.valueOf(paramc.hrc) });
+    Log.i("MicroMsg.PluginNotifyMessage", "onAccountPostReset updated %b", new Object[] { Boolean.valueOf(paramc.kcX) });
     getNotifyMessageRecordStorage();
-    ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().a(this.AHZ, Looper.getMainLooper());
+    ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().a(this.GBj, Looper.getMainLooper());
     checkNotifyRecord();
-    AppMethodBeat.o(231774);
+    AppMethodBeat.o(274607);
   }
   
   public void onAccountRelease()
   {
-    AppMethodBeat.i(231775);
+    AppMethodBeat.i(274609);
     Log.d("MicroMsg.PluginNotifyMessage", "onAccountRelease");
-    if (this.kJs != null)
+    if (this.nDk != null)
     {
-      this.kJs.dead();
-      this.kJs = null;
+      this.nDk.dead();
+      this.nDk = null;
     }
-    ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().a(this.AHZ);
-    AppMethodBeat.o(231775);
+    ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().a(this.GBj);
+    AppMethodBeat.o(274609);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.notifymessage.PluginNotifyMessage
  * JD-Core Version:    0.7.0.1
  */

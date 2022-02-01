@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.wallet_payu.security_question.model;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
@@ -10,18 +10,18 @@ import com.tencent.mm.wallet_core.d.i;
 public final class a
   extends g
 {
-  private Bundle dQL;
+  private Bundle fKb;
   
   public a(MMActivity paramMMActivity, i parami, Bundle paramBundle)
   {
     super(paramMMActivity, parami);
-    this.dQL = paramBundle;
+    this.fKb = paramBundle;
   }
   
   public final boolean A(Object... paramVarArgs)
   {
     AppMethodBeat.i(72206);
-    this.Ruz.b(new c(this.dQL.getString("payu_reference")), true);
+    this.YVX.b(new c(this.fKb.getString("payu_reference")), true);
     AppMethodBeat.o(72206);
     return true;
   }
@@ -32,7 +32,7 @@ public final class a
     if (((paramq instanceof c)) && (paramInt1 == 0) && (paramInt2 == 0))
     {
       paramString = (c)paramq;
-      this.dQL.putParcelable("key_security_question", new PayUSecurityQuestion(paramString.id, paramString.IuI));
+      this.fKb.putParcelable("key_security_question", new PayUSecurityQuestion(paramString.id, paramString.Pnr));
       AppMethodBeat.o(72207);
       return false;
     }
@@ -41,10 +41,10 @@ public final class a
       paramString = (b)paramq;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        if (paramString.sPX)
+        if (paramString.wvU)
         {
-          this.dQL.putString("payu_reference", paramString.IuH);
-          com.tencent.mm.wallet_core.a.l(this.activity, this.dQL);
+          this.fKb.putString("payu_reference", paramString.Pnq);
+          com.tencent.mm.wallet_core.a.l(this.activity, this.fKb);
           AppMethodBeat.o(72207);
           return true;
         }
@@ -59,17 +59,17 @@ public final class a
   public final boolean r(Object... paramVarArgs)
   {
     AppMethodBeat.i(72208);
-    paramVarArgs = (PayUSecurityQuestion)this.dQL.getParcelable("key_security_question");
-    String str1 = this.dQL.getString("key_question_answer");
-    String str2 = this.dQL.getString("payu_reference");
-    this.Ruz.b(new b(str2, paramVarArgs.id, str1), true);
+    paramVarArgs = (PayUSecurityQuestion)this.fKb.getParcelable("key_security_question");
+    String str1 = this.fKb.getString("key_question_answer");
+    String str2 = this.fKb.getString("payu_reference");
+    this.YVX.b(new b(str2, paramVarArgs.id, str1), true);
     AppMethodBeat.o(72208);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.security_question.model.a
  * JD-Core Version:    0.7.0.1
  */

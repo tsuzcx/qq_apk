@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.fav.ui;
 
 import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.protocal.protobuf.aml;
+import com.tencent.mm.protocal.protobuf.anm;
 
 public final class i
 {
-  public final aml dKT;
-  public final g tew;
+  public final anm fDI;
+  public final g wKI;
   
-  public i(g paramg, aml paramaml)
+  public i(g paramg, anm paramanm)
   {
-    this.dKT = paramaml;
-    this.tew = paramg;
+    this.fDI = paramanm;
+    this.wKI = paramg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.i
  * JD-Core Version:    0.7.0.1
  */

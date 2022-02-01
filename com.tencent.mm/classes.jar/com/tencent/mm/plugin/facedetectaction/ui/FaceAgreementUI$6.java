@@ -19,14 +19,14 @@ final class FaceAgreementUI$6
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(186403);
+    AppMethodBeat.i(197449);
     int j = paramMotionEvent.getAction();
     paramView = (TextView)paramView;
     int k;
     int i;
     if ((j == 1) || (j == 3))
     {
-      ClickableSpan[] arrayOfClickableSpan = (ClickableSpan[])this.sYS.getSpans(0, this.sYS.length(), ClickableSpan.class);
+      ClickableSpan[] arrayOfClickableSpan = (ClickableSpan[])this.wEU.getSpans(0, this.wEU.length(), ClickableSpan.class);
       if ((arrayOfClickableSpan != null) && (arrayOfClickableSpan.length > 0))
       {
         k = arrayOfClickableSpan.length;
@@ -37,7 +37,7 @@ final class FaceAgreementUI$6
           if ((localClickableSpan instanceof p))
           {
             ((p)localClickableSpan).setIsPressed(false);
-            this.sYT.invalidate();
+            this.wEV.invalidate();
           }
           i += 1;
         }
@@ -53,7 +53,7 @@ final class FaceAgreementUI$6
       int i2 = paramView.getScrollY();
       paramMotionEvent = paramView.getLayout();
       i = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), i - m + i1);
-      paramMotionEvent = (ClickableSpan[])this.sYS.getSpans(i, i, ClickableSpan.class);
+      paramMotionEvent = (ClickableSpan[])this.wEU.getSpans(i, i, ClickableSpan.class);
       if (paramMotionEvent.length != 0)
       {
         paramMotionEvent = paramMotionEvent[0];
@@ -65,22 +65,22 @@ final class FaceAgreementUI$6
     for (boolean bool = true;; bool = false)
     {
       Log.i("MicroMsg.FaceAgreementUI", "touch ${event.x}, ${event.y}, ret:${ret}");
-      AppMethodBeat.o(186403);
+      AppMethodBeat.o(197449);
       return bool;
       if ((paramMotionEvent instanceof p))
       {
         ((p)paramMotionEvent).setIsPressed(true);
-        this.sYT.invalidate();
+        this.wEV.invalidate();
       }
-      Selection.setSelection(this.sYS, this.sYS.getSpanStart(paramMotionEvent), this.sYS.getSpanEnd(paramMotionEvent));
+      Selection.setSelection(this.wEU, this.wEU.getSpanStart(paramMotionEvent), this.wEU.getSpanEnd(paramMotionEvent));
       break;
-      Selection.removeSelection(this.sYS);
+      Selection.removeSelection(this.wEU);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectaction.ui.FaceAgreementUI.6
  * JD-Core Version:    0.7.0.1
  */

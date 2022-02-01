@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  public static String aL(byte[] paramArrayOfByte)
+  public static String aX(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(136183);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))

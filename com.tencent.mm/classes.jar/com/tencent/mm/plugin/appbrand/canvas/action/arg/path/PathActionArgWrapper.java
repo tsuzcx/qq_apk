@@ -15,7 +15,7 @@ public class PathActionArgWrapper
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<PathActionArgWrapper> CREATOR;
-  public List<BasePathActionArg> kZW;
+  public List<BasePathActionArg> nUh;
   
   static
   {
@@ -27,7 +27,7 @@ public class PathActionArgWrapper
   public PathActionArgWrapper()
   {
     AppMethodBeat.i(145273);
-    this.kZW = new ArrayList();
+    this.nUh = new ArrayList();
     AppMethodBeat.o(145273);
   }
   
@@ -40,8 +40,8 @@ public class PathActionArgWrapper
   {
     super(paramParcel);
     AppMethodBeat.i(145272);
-    this.kZW = new ArrayList();
-    this.kZW = paramParcel.readArrayList(PathActionArgWrapper.class.getClassLoader());
+    this.nUh = new ArrayList();
+    this.nUh = paramParcel.readArrayList(PathActionArgWrapper.class.getClassLoader());
     AppMethodBeat.o(145272);
   }
   
@@ -61,7 +61,7 @@ public class PathActionArgWrapper
     if ((paramObject instanceof PathActionArgWrapper))
     {
       paramObject = (PathActionArgWrapper)paramObject;
-      boolean bool = this.kZW.equals(paramObject.kZW);
+      boolean bool = this.nUh.equals(paramObject.nUh);
       AppMethodBeat.o(145277);
       return bool;
     }
@@ -91,9 +91,9 @@ public class PathActionArgWrapper
     {
       JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
       Object localObject = localJSONObject.optString("method");
-      localObject = (BasePathActionArg)f.bzq().WC((String)localObject);
+      localObject = (BasePathActionArg)f.bKF().aen((String)localObject);
       ((BasePathActionArg)localObject).parse(localJSONObject);
-      this.kZW.add(localObject);
+      this.nUh.add(localObject);
       i += 1;
     }
     AppMethodBeat.o(145276);
@@ -103,13 +103,13 @@ public class PathActionArgWrapper
   {
     AppMethodBeat.i(145274);
     super.reset();
-    Iterator localIterator = this.kZW.iterator();
+    Iterator localIterator = this.nUh.iterator();
     while (localIterator.hasNext())
     {
       BasePathActionArg localBasePathActionArg = (BasePathActionArg)localIterator.next();
-      f.bzq().a(localBasePathActionArg);
+      f.bKF().a(localBasePathActionArg);
     }
-    this.kZW.clear();
+    this.nUh.clear();
     AppMethodBeat.o(145274);
   }
   
@@ -117,13 +117,13 @@ public class PathActionArgWrapper
   {
     AppMethodBeat.i(145278);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeList(this.kZW);
+    paramParcel.writeList(this.nUh);
     AppMethodBeat.o(145278);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.path.PathActionArgWrapper
  * JD-Core Version:    0.7.0.1
  */

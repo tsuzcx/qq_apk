@@ -7,49 +7,49 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgStorageManager$ParcelUtil;", "", "()V", "marshall", "", "parcelable", "Landroid/os/Parcelable;", "unmarshall", "Landroid/os/Parcel;", "data", "T", "creator", "Landroid/os/Parcelable$Creator;", "(Ljava/lang/String;Landroid/os/Parcelable$Creator;)Ljava/lang/Object;", "plugin-comm_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/msgsubscription/storage/SubscribeMsgStorageManager$ParcelUtil;", "", "()V", "marshall", "", "parcelable", "Landroid/os/Parcelable;", "unmarshall", "Landroid/os/Parcel;", "data", "T", "creator", "Landroid/os/Parcelable$Creator;", "(Ljava/lang/String;Landroid/os/Parcelable$Creator;)Ljava/lang/Object;", "plugin-comm_release"})
 public final class c$a
 {
-  public static final a jAG;
+  public static final a mqo;
   
   static
   {
-    AppMethodBeat.i(223344);
-    jAG = new a();
-    AppMethodBeat.o(223344);
+    AppMethodBeat.i(216469);
+    mqo = new a();
+    AppMethodBeat.o(216469);
   }
   
-  public static Parcel RB(String paramString)
+  public static Parcel Za(String paramString)
   {
-    AppMethodBeat.i(223343);
-    p.h(paramString, "data");
+    AppMethodBeat.i(216466);
+    p.k(paramString, "data");
     paramString = Base64.decode(paramString, 0);
     Parcel localParcel = Parcel.obtain();
-    p.g(localParcel, "Parcel.obtain()");
+    p.j(localParcel, "Parcel.obtain()");
     localParcel.unmarshall(paramString, 0, paramString.length);
     localParcel.setDataPosition(0);
-    AppMethodBeat.o(223343);
+    AppMethodBeat.o(216466);
     return localParcel;
   }
   
-  public static String e(Parcelable paramParcelable)
+  public static String d(Parcelable paramParcelable)
   {
-    AppMethodBeat.i(223342);
-    p.h(paramParcelable, "parcelable");
+    AppMethodBeat.i(216464);
+    p.k(paramParcelable, "parcelable");
     Parcel localParcel = Parcel.obtain();
-    p.g(localParcel, "Parcel.obtain()");
+    p.j(localParcel, "Parcel.obtain()");
     paramParcelable.writeToParcel(localParcel, 0);
     paramParcelable = localParcel.marshall();
     localParcel.recycle();
     paramParcelable = Base64.encodeToString(paramParcelable, 0);
-    p.g(paramParcelable, "Base64.encodeToString(bytes, Base64.DEFAULT)");
-    AppMethodBeat.o(223342);
+    p.j(paramParcelable, "Base64.encodeToString(bytes, Base64.DEFAULT)");
+    AppMethodBeat.o(216464);
     return paramParcelable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.msgsubscription.d.c.a
  * JD-Core Version:    0.7.0.1
  */

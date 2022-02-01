@@ -3,7 +3,6 @@ package com.tencent.mm.plugin.mmsight.segment;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
-import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Rect;
@@ -14,41 +13,44 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.w.a.b;
+import com.tencent.mm.plugin.w.a.c;
+import com.tencent.mm.plugin.w.a.g;
 
 public class SliderSeekBar
   extends View
 {
-  private View.OnTouchListener aZa;
+  private boolean FcL;
+  boolean FcM;
+  private int FcN;
+  private int FcO;
+  private boolean FcP;
+  private boolean FcQ;
+  protected Drawable FcR;
+  protected Drawable FcS;
+  protected int FcT;
+  protected float FcU;
+  private int FcV;
+  private float FcW;
+  private int FcX;
+  private Paint FcY;
+  private float FcZ;
+  private Paint Fda;
+  private Paint Fdb;
+  private int Fdc;
+  private float Fdd;
+  private float Fde;
+  private float Fdf;
+  protected int Fdg;
+  private Rect Fdh;
+  private Rect Fdi;
+  protected boolean Fdj;
+  private a Feu;
+  private View.OnTouchListener aIw;
   private Paint borderPaint;
+  private int borderWidth;
   private int padding;
-  private int rc;
-  protected float zxA;
-  private int zxB;
-  private float zxC;
-  private int zxD;
-  private Paint zxE;
-  private float zxF;
-  private Paint zxG;
-  private Paint zxH;
-  private int zxI;
-  private float zxJ;
-  private float zxK;
-  private float zxL;
-  protected int zxM;
-  private Rect zxN;
-  private Rect zxO;
-  protected boolean zxP;
-  private boolean zxr;
-  boolean zxs;
-  private int zxt;
-  private int zxu;
-  private boolean zxv;
-  private boolean zxw;
-  protected Drawable zxx;
-  protected Drawable zxy;
-  protected int zxz;
-  private a zzA;
   
   public SliderSeekBar(Context paramContext)
   {
@@ -65,24 +67,24 @@ public class SliderSeekBar
   public SliderSeekBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(187064);
-    this.zxr = false;
-    this.zxs = false;
-    this.zxv = false;
-    this.zxw = false;
-    this.zxC = -1.0F;
-    this.zxK = -1.0F;
-    this.zxL = -1.0F;
+    AppMethodBeat.i(249732);
+    this.FcL = false;
+    this.FcM = false;
+    this.FcP = false;
+    this.FcQ = false;
+    this.FcW = -1.0F;
+    this.Fde = -1.0F;
+    this.Fdf = -1.0F;
     this.padding = 0;
-    this.zxP = true;
-    this.aZa = new View.OnTouchListener()
+    this.Fdj = true;
+    this.aIw = new View.OnTouchListener()
     {
-      float deo;
-      float dep;
-      int zxQ = -1;
-      int zxR = -1;
-      int zxS;
-      int zxT;
+      int Fdk = -1;
+      int Fdl = -1;
+      int Fdm;
+      int Fdn;
+      float dit;
+      float diu;
       
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -110,19 +112,19 @@ public class SliderSeekBar
             AppMethodBeat.o(94445);
             return true;
           }
-          this.zxT = 0;
+          this.Fdn = 0;
           bool = false;
-          if (this.zxT < paramAnonymousMotionEvent.getPointerCount())
+          if (this.Fdn < paramAnonymousMotionEvent.getPointerCount())
           {
-            this.zxS = paramAnonymousMotionEvent.getPointerId(this.zxT);
-            if ((this.zxS == this.zxQ) || (this.zxS == this.zxR))
+            this.Fdm = paramAnonymousMotionEvent.getPointerId(this.Fdn);
+            if ((this.Fdm == this.Fdk) || (this.Fdm == this.Fdl))
             {
               paramAnonymousView = SliderSeekBar.this;
-              if (this.zxS != this.zxQ) {
+              if (this.Fdm != this.Fdk) {
                 break label301;
               }
               bool = true;
-              bool = paramAnonymousView.b(bool, paramAnonymousMotionEvent.getX(this.zxT));
+              bool = paramAnonymousView.b(bool, paramAnonymousMotionEvent.getX(this.Fdn));
               if ((SliderSeekBar.g(SliderSeekBar.this)) && (bool) && (!SliderSeekBar.h(SliderSeekBar.this))) {
                 SliderSeekBar.this.performHapticFeedback(0, 2);
               }
@@ -130,16 +132,16 @@ public class SliderSeekBar
               if (SliderSeekBar.i(SliderSeekBar.this) != null)
               {
                 paramAnonymousView = SliderSeekBar.i(SliderSeekBar.this);
-                if (this.zxS != this.zxQ) {
+                if (this.Fdm != this.Fdk) {
                   break label306;
                 }
               }
             }
             for (bool = true;; bool = false)
             {
-              paramAnonymousView.rj(bool);
+              paramAnonymousView.un(bool);
               bool = true;
-              this.zxT += 1;
+              this.Fdn += 1;
               break;
               bool = false;
               break label191;
@@ -151,26 +153,26 @@ public class SliderSeekBar
         case 3: 
         case 6: 
           label191:
-          this.zxS = paramAnonymousMotionEvent.getPointerId(paramAnonymousMotionEvent.getActionIndex());
+          this.Fdm = paramAnonymousMotionEvent.getPointerId(paramAnonymousMotionEvent.getActionIndex());
           label301:
           label306:
-          if ((this.zxS != this.zxQ) && (this.zxS != this.zxR))
+          if ((this.Fdm != this.Fdk) && (this.Fdm != this.Fdl))
           {
             AppMethodBeat.o(94445);
             return false;
           }
           if (SliderSeekBar.i(SliderSeekBar.this) != null) {
-            SliderSeekBar.i(SliderSeekBar.this).ekz();
+            SliderSeekBar.i(SliderSeekBar.this).eUh();
           }
           paramAnonymousView = SliderSeekBar.this;
-          if (this.zxS == this.zxQ)
+          if (this.Fdm == this.Fdk)
           {
             bool = true;
             SliderSeekBar.a(paramAnonymousView, bool, false);
-            if (this.zxS != this.zxQ) {
+            if (this.Fdm != this.Fdk) {
               break label442;
             }
-            this.zxQ = -1;
+            this.Fdk = -1;
           }
           for (;;)
           {
@@ -180,14 +182,14 @@ public class SliderSeekBar
             bool = false;
             break;
             label442:
-            this.zxR = -1;
+            this.Fdl = -1;
           }
         }
-        this.zxT = paramAnonymousMotionEvent.getActionIndex();
-        this.zxS = paramAnonymousMotionEvent.getPointerId(this.zxT);
-        this.deo = paramAnonymousMotionEvent.getX(this.zxT);
-        this.dep = paramAnonymousMotionEvent.getY(this.zxT);
-        if (SliderSeekBar.a(SliderSeekBar.this, SliderSeekBar.this.zxx, this.deo, this.dep))
+        this.Fdn = paramAnonymousMotionEvent.getActionIndex();
+        this.Fdm = paramAnonymousMotionEvent.getPointerId(this.Fdn);
+        this.dit = paramAnonymousMotionEvent.getX(this.Fdn);
+        this.diu = paramAnonymousMotionEvent.getY(this.Fdn);
+        if (SliderSeekBar.a(SliderSeekBar.this, SliderSeekBar.this.FcR, this.dit, this.diu))
         {
           if (SliderSeekBar.a(SliderSeekBar.this, true))
           {
@@ -195,15 +197,15 @@ public class SliderSeekBar
             return false;
           }
           if (SliderSeekBar.i(SliderSeekBar.this) != null) {
-            SliderSeekBar.i(SliderSeekBar.this).eky();
+            SliderSeekBar.i(SliderSeekBar.this).eUg();
           }
-          this.zxQ = this.zxS;
-          SliderSeekBar.a(SliderSeekBar.this, SliderSeekBar.this.zxx.getBounds().left);
+          this.Fdk = this.Fdm;
+          SliderSeekBar.a(SliderSeekBar.this, SliderSeekBar.this.FcR.getBounds().left);
           SliderSeekBar.a(SliderSeekBar.this, true, true);
           AppMethodBeat.o(94445);
           return true;
         }
-        if (SliderSeekBar.a(SliderSeekBar.this, SliderSeekBar.this.zxy, this.deo, this.dep))
+        if (SliderSeekBar.a(SliderSeekBar.this, SliderSeekBar.this.FcS, this.dit, this.diu))
         {
           if (SliderSeekBar.a(SliderSeekBar.this, false))
           {
@@ -211,10 +213,10 @@ public class SliderSeekBar
             return false;
           }
           if (SliderSeekBar.i(SliderSeekBar.this) != null) {
-            SliderSeekBar.i(SliderSeekBar.this).eky();
+            SliderSeekBar.i(SliderSeekBar.this).eUg();
           }
-          this.zxR = this.zxS;
-          SliderSeekBar.b(SliderSeekBar.this, SliderSeekBar.this.zxy.getBounds().right);
+          this.Fdl = this.Fdm;
+          SliderSeekBar.b(SliderSeekBar.this, SliderSeekBar.this.FcS.getBounds().right);
           SliderSeekBar.a(SliderSeekBar.this, false, true);
           AppMethodBeat.o(94445);
           return true;
@@ -224,10 +226,10 @@ public class SliderSeekBar
       }
     };
     init();
-    AppMethodBeat.o(187064);
+    AppMethodBeat.o(249732);
   }
   
-  private static int gz(Context paramContext)
+  private static int hx(Context paramContext)
   {
     AppMethodBeat.i(94450);
     int i = Math.round(TypedValue.applyDimension(1, 1.5F, paramContext.getResources().getDisplayMetrics()));
@@ -235,29 +237,29 @@ public class SliderSeekBar
     return i;
   }
   
-  private boolean re(boolean paramBoolean)
+  private boolean ui(boolean paramBoolean)
   {
     AppMethodBeat.i(94453);
     if (paramBoolean)
     {
-      paramBoolean = b.a((b)this.zxx);
+      paramBoolean = SliderSeekBar.b.a((SliderSeekBar.b)this.FcR);
       AppMethodBeat.o(94453);
       return paramBoolean;
     }
-    paramBoolean = b.a((b)this.zxy);
+    paramBoolean = SliderSeekBar.b.a((SliderSeekBar.b)this.FcS);
     AppMethodBeat.o(94453);
     return paramBoolean;
   }
   
-  public final void ao(final int paramInt1, final int paramInt2, final int paramInt3)
+  public final void at(final int paramInt1, final int paramInt2, final int paramInt3)
   {
-    AppMethodBeat.i(187066);
+    AppMethodBeat.i(249736);
     post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(94444);
-        if (paramInt1 <= SliderSeekBar.this.zxz * 2)
+        if (paramInt1 <= SliderSeekBar.this.FcT * 2)
         {
           IllegalStateException localIllegalStateException = new IllegalStateException("MaxExtent can not less than sliderWidth * 2");
           AppMethodBeat.o(94444);
@@ -270,22 +272,22 @@ public class SliderSeekBar
         SliderSeekBar.b(SliderSeekBar.this);
         if ((SliderSeekBar.c(SliderSeekBar.this) == null) && (SliderSeekBar.d(SliderSeekBar.this) == null))
         {
-          SliderSeekBar.a(SliderSeekBar.this, new Rect(SliderSeekBar.this.zxx.getBounds().left, SliderSeekBar.this.zxx.getBounds().top, SliderSeekBar.this.zxx.getBounds().right, SliderSeekBar.this.zxx.getBounds().bottom));
-          SliderSeekBar.b(SliderSeekBar.this, new Rect(SliderSeekBar.this.zxy.getBounds().left, SliderSeekBar.this.zxy.getBounds().top, SliderSeekBar.this.zxy.getBounds().right, SliderSeekBar.this.zxy.getBounds().bottom));
+          SliderSeekBar.a(SliderSeekBar.this, new Rect(SliderSeekBar.this.FcR.getBounds().left, SliderSeekBar.this.FcR.getBounds().top, SliderSeekBar.this.FcR.getBounds().right, SliderSeekBar.this.FcR.getBounds().bottom));
+          SliderSeekBar.b(SliderSeekBar.this, new Rect(SliderSeekBar.this.FcS.getBounds().left, SliderSeekBar.this.FcS.getBounds().top, SliderSeekBar.this.FcS.getBounds().right, SliderSeekBar.this.FcS.getBounds().bottom));
         }
         SliderSeekBar.this.invalidate();
         AppMethodBeat.o(94444);
       }
     });
-    AppMethodBeat.o(187066);
+    AppMethodBeat.o(249736);
   }
   
   public final boolean b(boolean paramBoolean, float paramFloat)
   {
-    AppMethodBeat.i(187069);
-    if ((!this.zxr) || (this.zxx == null) || (this.zxy == null) || (this.zxx.getBounds().width() <= 0) || (this.zxy.getBounds().width() <= 0))
+    AppMethodBeat.i(249742);
+    if ((!this.FcL) || (this.FcR == null) || (this.FcS == null) || (this.FcR.getBounds().width() <= 0) || (this.FcS.getBounds().width() <= 0))
     {
-      AppMethodBeat.o(187069);
+      AppMethodBeat.o(249742);
       return false;
     }
     float f2;
@@ -295,8 +297,8 @@ public class SliderSeekBar
     Rect localRect;
     if (paramBoolean)
     {
-      f2 = this.zxy.getBounds().left - this.zxu;
-      f1 = Math.max(this.padding, this.zxy.getBounds().left - this.zxt);
+      f2 = this.FcS.getBounds().left - this.FcO;
+      f1 = Math.max(this.padding, this.FcS.getBounds().left - this.FcN);
       paramFloat = Math.max(f1, Math.min(paramFloat, f2));
       if ((paramFloat != f1) && (paramFloat != f2)) {
         break label234;
@@ -305,52 +307,52 @@ public class SliderSeekBar
       if (!paramBoolean) {
         break label240;
       }
-      localRect = this.zxx.getBounds();
-      localRect.offsetTo((int)Math.ceil(paramFloat - this.zxz), 0);
-      this.zxx.setBounds(localRect);
+      localRect = this.FcR.getBounds();
+      localRect.offsetTo((int)Math.ceil(paramFloat - this.FcT), 0);
+      this.FcR.setBounds(localRect);
     }
     for (;;)
     {
       postInvalidate();
-      AppMethodBeat.o(187069);
+      AppMethodBeat.o(249742);
       return bool;
-      f1 = this.zxx.getBounds().right + this.zxu;
-      f2 = Math.min(getWidth() - this.padding, this.zxx.getBounds().right + this.zxt);
+      f1 = this.FcR.getBounds().right + this.FcO;
+      f2 = Math.min(getWidth() - this.padding, this.FcR.getBounds().right + this.FcN);
       break;
       label234:
       bool = false;
       break label132;
       label240:
-      localRect = this.zxy.getBounds();
+      localRect = this.FcS.getBounds();
       localRect.offsetTo((int)Math.floor(paramFloat), 0);
-      this.zxy.setBounds(localRect);
+      this.FcS.setBounds(localRect);
     }
   }
   
-  public final void ekA()
+  public final void eUi()
   {
-    this.zxs = true;
+    this.FcM = true;
   }
   
-  public final void ekB()
+  public final void eUj()
   {
-    this.zxs = false;
+    this.FcM = false;
   }
   
-  public void ekC()
+  public void eUk()
   {
-    AppMethodBeat.i(187070);
-    this.zxx = new b(a.l(getContext(), 2131691693), a.l(getContext(), 2131691692));
-    this.zxy = new b(a.l(getContext(), 2131691693), a.l(getContext(), 2131691692));
-    this.zxP = true;
+    AppMethodBeat.i(249744);
+    this.FcR = new SliderSeekBar.b(this, a.m(getContext(), a.g.video_clip_slider_selected), a.m(getContext(), a.g.video_clip_slider_normal));
+    this.FcS = new SliderSeekBar.b(this, a.m(getContext(), a.g.video_clip_slider_selected), a.m(getContext(), a.g.video_clip_slider_normal));
+    this.Fdj = true;
     postInvalidate();
-    AppMethodBeat.o(187070);
+    AppMethodBeat.o(249744);
   }
   
   public int getLeftSliderBound()
   {
     AppMethodBeat.i(94454);
-    int i = this.zxx.getBounds().right;
+    int i = this.FcR.getBounds().right;
     AppMethodBeat.o(94454);
     return i;
   }
@@ -358,88 +360,88 @@ public class SliderSeekBar
   public int getRightSliderBound()
   {
     AppMethodBeat.i(94455);
-    int i = this.zxy.getBounds().left;
+    int i = this.FcS.getBounds().left;
     AppMethodBeat.o(94455);
     return i;
   }
   
   protected void init()
   {
-    AppMethodBeat.i(187065);
-    this.zxz = a.fromDPToPix(getContext(), 8);
-    this.zxA = (this.zxz * 0.5F);
-    this.zxM = a.fromDPToPix(getContext(), 8);
-    ekC();
-    this.zxB = a.fromDPToPix(getContext(), 1);
-    this.zxD = a.aG(getContext(), 2131167091);
-    this.zxC = -1.0F;
-    this.zxE = new Paint();
-    this.zxE.setColor(a.n(getContext(), 2131099694));
-    this.zxE.setAlpha(102);
-    this.zxG = new Paint();
-    this.zxG.setColor(a.n(getContext(), 2131099654));
-    this.zxG.setAlpha(102);
+    AppMethodBeat.i(249733);
+    this.FcT = a.fromDPToPix(getContext(), 8);
+    this.FcU = (this.FcT * 0.5F);
+    this.Fdg = a.fromDPToPix(getContext(), 8);
+    eUk();
+    this.FcV = a.fromDPToPix(getContext(), 1);
+    this.FcX = a.aY(getContext(), a.c.video_segment_seekbar_recycler_view_height);
+    this.FcW = -1.0F;
+    this.FcY = new Paint();
+    this.FcY.setColor(a.w(getContext(), a.b.BW_BG_100));
+    this.FcY.setAlpha(102);
+    this.Fda = new Paint();
+    this.Fda.setColor(a.w(getContext(), a.b.BW_0));
+    this.Fda.setAlpha(102);
     this.borderPaint = new Paint();
-    this.borderPaint.setColor(a.n(getContext(), 2131099694));
+    this.borderPaint.setColor(a.w(getContext(), a.b.BW_BG_100));
     this.borderPaint.setStyle(Paint.Style.STROKE);
-    this.rc = gz(getContext());
-    this.borderPaint.setStrokeWidth(this.rc);
-    this.zxF = (this.rc * 0.5F);
-    this.zxH = new Paint();
-    this.zxH.setColor(a.n(getContext(), 2131099694));
-    this.zxH.setStyle(Paint.Style.STROKE);
-    this.zxI = gz(getContext());
-    this.zxJ = (this.zxI * 0.5F);
-    this.zxH.setStrokeWidth(this.zxI);
-    this.zxH.setAlpha(178);
-    setOnTouchListener(this.aZa);
-    AppMethodBeat.o(187065);
+    this.borderWidth = hx(getContext());
+    this.borderPaint.setStrokeWidth(this.borderWidth);
+    this.FcZ = (this.borderWidth * 0.5F);
+    this.Fdb = new Paint();
+    this.Fdb.setColor(a.w(getContext(), a.b.BW_BG_100));
+    this.Fdb.setStyle(Paint.Style.STROKE);
+    this.Fdc = hx(getContext());
+    this.Fdd = (this.Fdc * 0.5F);
+    this.Fdb.setStrokeWidth(this.Fdc);
+    this.Fdb.setAlpha(178);
+    setOnTouchListener(this.aIw);
+    AppMethodBeat.o(249733);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(94451);
-    if (this.zxC > 0.0F)
+    if (this.FcW > 0.0F)
     {
-      float f = getWidth() * this.zxC;
-      paramCanvas.drawRect(f - this.zxB * 0.5F, 0.0F, this.zxB * 0.5F + f, getHeight(), this.zxE);
+      float f = getWidth() * this.FcW;
+      paramCanvas.drawRect(f - this.FcV * 0.5F, 0.0F, this.FcV * 0.5F + f, getHeight(), this.FcY);
     }
-    if (!this.zxr)
+    if (!this.FcL)
     {
       AppMethodBeat.o(94451);
       return;
     }
-    int i = this.zxx.getBounds().centerX();
-    int j = this.zxy.getBounds().centerX();
-    if (((re(true)) || (re(false))) && (this.zxP)) {
-      paramCanvas.drawRect(this.padding + this.zxJ, this.zxJ, getWidth() - this.padding - this.zxJ, getBottom() - this.zxJ, this.zxH);
+    int i = this.FcR.getBounds().centerX();
+    int j = this.FcS.getBounds().centerX();
+    if (((ui(true)) || (ui(false))) && (this.Fdj)) {
+      paramCanvas.drawRect(this.padding + this.Fdd, this.Fdd, getWidth() - this.padding - this.Fdd, getBottom() - this.Fdd, this.Fdb);
     }
-    if (this.zxx.getBounds().left > 0) {
-      paramCanvas.drawRect(0.0F, 0.0F, i, getHeight(), this.zxG);
+    if (this.FcR.getBounds().left > 0) {
+      paramCanvas.drawRect(0.0F, 0.0F, i, getHeight(), this.Fda);
     }
-    if (this.zxy.getBounds().right < getWidth()) {
-      paramCanvas.drawRect(j, 0.0F, getWidth(), getHeight(), this.zxG);
+    if (this.FcS.getBounds().right < getWidth()) {
+      paramCanvas.drawRect(j, 0.0F, getWidth(), getHeight(), this.Fda);
     }
-    if (this.zxP)
+    if (this.Fdj)
     {
-      paramCanvas.drawLine(i, this.zxF, j, this.zxF, this.borderPaint);
-      paramCanvas.drawLine(i, getHeight() - this.zxF, j, getHeight() - this.zxF, this.borderPaint);
+      paramCanvas.drawLine(i, this.FcZ, j, this.FcZ, this.borderPaint);
+      paramCanvas.drawLine(i, getHeight() - this.FcZ, j, getHeight() - this.FcZ, this.borderPaint);
     }
-    this.zxx.draw(paramCanvas);
-    this.zxy.draw(paramCanvas);
+    this.FcR.draw(paramCanvas);
+    this.FcS.draw(paramCanvas);
     AppMethodBeat.o(94451);
   }
   
   public final void reset()
   {
     AppMethodBeat.i(94456);
-    if ((this.zxN != null) && (this.zxO != null))
+    if ((this.Fdh != null) && (this.Fdi != null))
     {
-      Rect localRect1 = new Rect(this.zxN.left, this.zxN.top, this.zxN.right, this.zxN.bottom);
-      Rect localRect2 = new Rect(this.zxO.left, this.zxO.top, this.zxO.right, this.zxO.bottom);
-      this.zxx.setBounds(localRect1);
-      this.zxy.setBounds(localRect2);
-      this.zxC = 0.0F;
+      Rect localRect1 = new Rect(this.Fdh.left, this.Fdh.top, this.Fdh.right, this.Fdh.bottom);
+      Rect localRect2 = new Rect(this.Fdi.left, this.Fdi.top, this.Fdi.right, this.Fdi.bottom);
+      this.FcR.setBounds(localRect1);
+      this.FcS.setBounds(localRect2);
+      this.FcW = 0.0F;
       postInvalidate();
     }
     AppMethodBeat.o(94456);
@@ -447,109 +449,58 @@ public class SliderSeekBar
   
   public void setCursorColor(int paramInt)
   {
-    AppMethodBeat.i(187068);
-    this.zxE.setColor(paramInt);
-    AppMethodBeat.o(187068);
+    AppMethodBeat.i(249740);
+    this.FcY.setColor(paramInt);
+    AppMethodBeat.o(249740);
   }
   
   public void setCursorPos(float paramFloat)
   {
     AppMethodBeat.i(94452);
-    if (!this.zxr)
+    if (!this.FcL)
     {
       AppMethodBeat.o(94452);
       return;
     }
-    this.zxC = paramFloat;
+    this.FcW = paramFloat;
     invalidate();
     AppMethodBeat.o(94452);
   }
   
   public void setCursorWidth(int paramInt)
   {
-    this.zxB = paramInt;
+    this.FcV = paramInt;
   }
   
   public void setEnableHapticAtEdge(boolean paramBoolean)
   {
-    this.zxw = paramBoolean;
+    this.FcQ = paramBoolean;
   }
   
   public void setMaskColor(int paramInt)
   {
-    AppMethodBeat.i(187067);
-    this.zxG.setColor(paramInt);
-    AppMethodBeat.o(187067);
+    AppMethodBeat.i(249738);
+    this.Fda.setColor(paramInt);
+    AppMethodBeat.o(249738);
   }
   
   public void setOnSliderTouchListener(a parama)
   {
-    this.zzA = parama;
+    this.Feu = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void eky();
+    public abstract void eUg();
     
-    public abstract void ekz();
+    public abstract void eUh();
     
-    public abstract void rj(boolean paramBoolean);
-  }
-  
-  public final class b
-    extends Drawable
-  {
-    boolean isPressed = false;
-    private Drawable zxV;
-    private Drawable zxW;
-    
-    public b(Drawable paramDrawable1, Drawable paramDrawable2)
-    {
-      this.zxV = paramDrawable1;
-      this.zxW = paramDrawable2;
-      this.isPressed = false;
-    }
-    
-    public final void draw(Canvas paramCanvas)
-    {
-      AppMethodBeat.i(94446);
-      if (this.isPressed) {}
-      for (Drawable localDrawable = this.zxV;; localDrawable = this.zxW)
-      {
-        if (!getBounds().equals(localDrawable.getBounds())) {
-          localDrawable.setBounds(getBounds());
-        }
-        localDrawable.draw(paramCanvas);
-        AppMethodBeat.o(94446);
-        return;
-      }
-    }
-    
-    public final int getOpacity()
-    {
-      return -3;
-    }
-    
-    public final void setAlpha(int paramInt)
-    {
-      AppMethodBeat.i(94447);
-      this.zxV.setAlpha(paramInt);
-      this.zxW.setAlpha(paramInt);
-      AppMethodBeat.o(94447);
-    }
-    
-    public final void setColorFilter(ColorFilter paramColorFilter)
-    {
-      AppMethodBeat.i(94448);
-      this.zxV.setColorFilter(paramColorFilter);
-      this.zxW.setColorFilter(paramColorFilter);
-      AppMethodBeat.o(94448);
-    }
+    public abstract void un(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.SliderSeekBar
  * JD-Core Version:    0.7.0.1
  */

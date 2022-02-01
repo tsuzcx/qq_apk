@@ -15,13 +15,13 @@ final class c$2
   {
     AppMethodBeat.i(94955);
     Object localObject = new b();
-    ((b)localObject).bm(paramView);
-    a.b("com/tencent/mm/plugin/sns/abtest/SellerABTestManager$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+    ((b)localObject).bn(paramView);
+    a.c("com/tencent/mm/plugin/sns/abtest/SellerABTestManager$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
     if ((paramView.getTag() instanceof SnsInfo))
     {
       localObject = (SnsInfo)paramView.getTag();
       if ((localObject != null) && (!Util.isNullOrNil(((SnsInfo)localObject).getSnsId()))) {
-        c.Z(paramView.getContext(), ((SnsInfo)localObject).getSnsId());
+        c.X(paramView.getContext(), ((SnsInfo)localObject).getSnsId());
       }
     }
     a.a(this, "com/tencent/mm/plugin/sns/abtest/SellerABTestManager$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -30,7 +30,7 @@ final class c$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.abtest.c.2
  * JD-Core Version:    0.7.0.1
  */

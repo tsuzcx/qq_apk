@@ -8,24 +8,24 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 15}, hxE={""}, hxF={"currentTicks", "", "stackTraceToString", "", "throwable", "", "ticksToNow", "before", "uiThread", "", "block", "Lkotlin/Function0;", "wxRemoveIf", "", "T", "Ljava/util/LinkedList;", "func", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "t", "video_composition_release"})
+@l(iBK={1, 1, 15}, iBL={""}, iBM={"currentTicks", "", "stackTraceToString", "", "throwable", "", "ticksToNow", "before", "uiThread", "", "block", "Lkotlin/Function0;", "wxRemoveIf", "", "T", "Ljava/util/LinkedList;", "func", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "t", "video_composition_release"})
 public final class c
 {
-  public static final void h(a<x> parama)
+  public static final void uiThread(a<x> parama)
   {
-    AppMethodBeat.i(216871);
-    p.h(parama, "block");
+    AppMethodBeat.i(248598);
+    p.k(parama, "block");
     Thread localThread = Thread.currentThread();
     Looper localLooper = Looper.getMainLooper();
-    p.g(localLooper, "Looper.getMainLooper()");
-    if (p.j(localThread, localLooper.getThread()))
+    p.j(localLooper, "Looper.getMainLooper()");
+    if (p.h(localThread, localLooper.getThread()))
     {
       parama.invoke();
-      AppMethodBeat.o(216871);
+      AppMethodBeat.o(248598);
       return;
     }
     new Handler(Looper.getMainLooper()).post((Runnable)new d(parama));
-    AppMethodBeat.o(216871);
+    AppMethodBeat.o(248598);
   }
 }
 

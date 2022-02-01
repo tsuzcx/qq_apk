@@ -13,14 +13,14 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class s
 {
-  static boolean SzG;
-  static List<a> SzH;
+  static boolean aaax;
+  static List<a> aaay;
   
   static
   {
     AppMethodBeat.i(185174);
-    SzG = false;
-    SzH = new ArrayList();
+    aaax = false;
+    aaay = new ArrayList();
     AppMethodBeat.o(185174);
   }
   
@@ -37,40 +37,40 @@ public final class s
           AppMethodBeat.o(185168);
           return;
         }
-        if (SzH.contains(parama))
+        if (aaay.contains(parama))
         {
           AppMethodBeat.o(185168);
           continue;
         }
-        SzH.add(parama);
+        aaay.add(parama);
       }
       finally {}
       AppMethodBeat.o(185168);
     }
   }
   
-  static void asS(int paramInt)
+  static void aCJ(int paramInt)
   {
     try
     {
-      AppMethodBeat.i(219042);
-      Iterator localIterator = SzH.iterator();
+      AppMethodBeat.i(197445);
+      Iterator localIterator = aaay.iterator();
       while (localIterator.hasNext()) {
-        ((a)localIterator.next()).AO(paramInt);
+        ((a)localIterator.next()).Eu(paramInt);
       }
-      AppMethodBeat.o(219042);
+      AppMethodBeat.o(197445);
     }
     finally {}
   }
   
-  static void asT(int paramInt)
+  static void aCK(int paramInt)
   {
     try
     {
       AppMethodBeat.i(185171);
-      Iterator localIterator = SzH.iterator();
+      Iterator localIterator = aaay.iterator();
       while (localIterator.hasNext()) {
-        ((a)localIterator.next()).AN(paramInt);
+        ((a)localIterator.next()).Et(paramInt);
       }
       AppMethodBeat.o(185171);
     }
@@ -83,65 +83,23 @@ public final class s
     {
       try
       {
-        AppMethodBeat.i(219041);
+        AppMethodBeat.i(197443);
         init();
         if (parama == null)
         {
-          AppMethodBeat.o(219041);
+          AppMethodBeat.o(197443);
           return;
         }
-        if (!SzH.contains(parama))
+        if (!aaay.contains(parama))
         {
-          AppMethodBeat.o(219041);
+          AppMethodBeat.o(197443);
           continue;
         }
-        SzH.remove(parama);
+        aaay.remove(parama);
       }
       finally {}
-      AppMethodBeat.o(219041);
+      AppMethodBeat.o(197443);
     }
-  }
-  
-  static void hsw()
-  {
-    try
-    {
-      AppMethodBeat.i(185169);
-      Iterator localIterator = SzH.iterator();
-      while (localIterator.hasNext()) {
-        ((a)localIterator.next()).cdG();
-      }
-      AppMethodBeat.o(185169);
-    }
-    finally {}
-  }
-  
-  static void hsx()
-  {
-    try
-    {
-      AppMethodBeat.i(185172);
-      Iterator localIterator = SzH.iterator();
-      while (localIterator.hasNext()) {
-        ((a)localIterator.next()).cdH();
-      }
-      AppMethodBeat.o(185172);
-    }
-    finally {}
-  }
-  
-  static void hsy()
-  {
-    try
-    {
-      AppMethodBeat.i(185173);
-      Iterator localIterator = SzH.iterator();
-      while (localIterator.hasNext()) {
-        ((a)localIterator.next()).cdI();
-      }
-      AppMethodBeat.o(185173);
-    }
-    finally {}
   }
   
   public static void init()
@@ -151,7 +109,7 @@ public final class s
       try
       {
         AppMethodBeat.i(185167);
-        if (SzG)
+        if (aaax)
         {
           AppMethodBeat.o(185167);
           return;
@@ -162,7 +120,7 @@ public final class s
           try
           {
             XWalkEnvironment.getApplicationContext().registerReceiver(new b((byte)0), new IntentFilter("com.tencent.xweb.update"));
-            SzG = true;
+            aaax = true;
             AppMethodBeat.o(185167);
           }
           catch (Exception localException)
@@ -176,17 +134,59 @@ public final class s
     }
   }
   
+  static void iwe()
+  {
+    try
+    {
+      AppMethodBeat.i(185169);
+      Iterator localIterator = aaay.iterator();
+      while (localIterator.hasNext()) {
+        ((a)localIterator.next()).cqT();
+      }
+      AppMethodBeat.o(185169);
+    }
+    finally {}
+  }
+  
+  static void iwf()
+  {
+    try
+    {
+      AppMethodBeat.i(185172);
+      Iterator localIterator = aaay.iterator();
+      while (localIterator.hasNext()) {
+        ((a)localIterator.next()).cqU();
+      }
+      AppMethodBeat.o(185172);
+    }
+    finally {}
+  }
+  
+  static void iwg()
+  {
+    try
+    {
+      AppMethodBeat.i(185173);
+      Iterator localIterator = aaay.iterator();
+      while (localIterator.hasNext()) {
+        ((a)localIterator.next()).cqV();
+      }
+      AppMethodBeat.o(185173);
+    }
+    finally {}
+  }
+  
   public static abstract interface a
   {
-    public abstract void AN(int paramInt);
+    public abstract void Et(int paramInt);
     
-    public abstract void AO(int paramInt);
+    public abstract void Eu(int paramInt);
     
-    public abstract void cdG();
+    public abstract void cqT();
     
-    public abstract void cdH();
+    public abstract void cqU();
     
-    public abstract void cdI();
+    public abstract void cqV();
   }
   
   static final class b
@@ -204,7 +204,7 @@ public final class s
       if ("start".equals(paramContext))
       {
         Log.i("updateReicever", "start update");
-        s.hsw();
+        s.iwe();
         AppMethodBeat.o(185166);
         return;
       }
@@ -213,7 +213,7 @@ public final class s
       {
         i = paramIntent.getIntExtra("extra_data", 0);
         Log.i("updateReicever", "update progress = ".concat(String.valueOf(i)));
-        s.asS(i);
+        s.aCJ(i);
         AppMethodBeat.o(185166);
         return;
       }
@@ -221,21 +221,21 @@ public final class s
       {
         i = paramIntent.getIntExtra("extra_data", 0);
         Log.i("updateReicever", "update finished code = ".concat(String.valueOf(i)));
-        s.asT(i);
+        s.aCK(i);
         AppMethodBeat.o(185166);
         return;
       }
       if ("cfg_update".equals(paramContext))
       {
         Log.i("updateReicever", "cfg_update");
-        s.hsx();
+        s.iwf();
         AppMethodBeat.o(185166);
         return;
       }
       if ("plugin_update".equals(paramContext))
       {
         Log.i("updateReicever", "plugin_update");
-        s.hsy();
+        s.iwg();
       }
       AppMethodBeat.o(185166);
     }
@@ -243,7 +243,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.s
  * JD-Core Version:    0.7.0.1
  */

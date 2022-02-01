@@ -6,9 +6,9 @@ import android.widget.TextView;
 
 final class d$b
 {
-  TextView BaI;
-  CheckBox BaJ;
-  RadioButton BaK;
+  CheckBox GUH;
+  RadioButton GUI;
+  TextView zlv;
 }
 
 

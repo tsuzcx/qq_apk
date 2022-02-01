@@ -25,14 +25,14 @@ public class YtLivenessNetProtoHelper
   
   static
   {
-    AppMethodBeat.i(187306);
+    AppMethodBeat.i(247537);
     TAG = YtLivenessNetProtoHelper.class.getSimpleName();
-    AppMethodBeat.o(187306);
+    AppMethodBeat.o(247537);
   }
   
   public static String makeActionLiveReq(ActionLiveReqData paramActionLiveReqData)
   {
-    AppMethodBeat.i(187302);
+    AppMethodBeat.i(247532);
     ActionLiveReq localActionLiveReq = new ActionLiveReq();
     localActionLiveReq.app_id = paramActionLiveReqData.baseInfo.appId;
     localActionLiveReq.session_id = paramActionLiveReqData.baseInfo.sessionId;
@@ -58,13 +58,13 @@ public class YtLivenessNetProtoHelper
       localActionLiveReq.compare_image_type = YtFSM.getInstance().getContext().imageToComapreType;
     }
     paramActionLiveReqData = new WeJson().toJson(localActionLiveReq);
-    AppMethodBeat.o(187302);
+    AppMethodBeat.o(247532);
     return paramActionLiveReqData;
   }
   
   public static String makeActionReflectLiveReq(ActionReflectLiveReqData paramActionReflectLiveReqData)
   {
-    AppMethodBeat.i(187305);
+    AppMethodBeat.i(247536);
     ActionReflectLiveReq localActionReflectLiveReq = new ActionReflectLiveReq();
     localActionReflectLiveReq.app_id = paramActionReflectLiveReqData.baseInfo.appId;
     localActionReflectLiveReq.session_id = paramActionReflectLiveReqData.baseInfo.sessionId;
@@ -74,7 +74,7 @@ public class YtLivenessNetProtoHelper
     ((Version)localObject).sdk_version = YtSDKKitFramework.getInstance().version();
     ((Version)localObject).ftrack_sdk_version = YTFaceTrack.Version;
     ((Version)localObject).faction_sdk_version = YTPoseDetectJNIInterface.getVersion();
-    ((Version)localObject).freflect_sdk_version = "3.6.4.3";
+    ((Version)localObject).freflect_sdk_version = "3.6.4.4";
     localObject = ((Version)localObject).makeVersion();
     localActionReflectLiveReq.select_data = new YtLivenessNetProtoHelper.LiveStyleRequester.SeleceData(paramActionReflectLiveReqData.baseInfo.lux, paramActionReflectLiveReqData.colorNum, paramActionReflectLiveReqData.reflectConfig, (String)localObject, paramActionReflectLiveReqData.controlConfig);
     localActionReflectLiveReq.action_video = paramActionReflectLiveReqData.actionVideo;
@@ -94,13 +94,13 @@ public class YtLivenessNetProtoHelper
     localActionReflectLiveReq.mode = paramActionReflectLiveReqData.mode;
     localActionReflectLiveReq.reflect_data = paramActionReflectLiveReqData.reflectData;
     paramActionReflectLiveReqData = new WeJson().toJson(localActionReflectLiveReq);
-    AppMethodBeat.o(187305);
+    AppMethodBeat.o(247536);
     return paramActionReflectLiveReqData;
   }
   
   public static String makeFourLiveReq(FourLiveReqData paramFourLiveReqData)
   {
-    AppMethodBeat.i(187298);
+    AppMethodBeat.i(247527);
     FourLiveReq localFourLiveReq = new FourLiveReq();
     localFourLiveReq.app_id = paramFourLiveReqData.baseInfoData.appId;
     localFourLiveReq.validate_data = paramFourLiveReqData.validateData;
@@ -113,23 +113,23 @@ public class YtLivenessNetProtoHelper
       localFourLiveReq.compare_image = new String(Base64.encode(localByteArrayOutputStream.toByteArray(), 2));
     }
     paramFourLiveReqData = new WeJson().toJson(localFourLiveReq);
-    AppMethodBeat.o(187298);
+    AppMethodBeat.o(247527);
     return paramFourLiveReqData;
   }
   
   public static String makeGetFourLiveReq(GetFourLiveTypeReqData paramGetFourLiveTypeReqData)
   {
-    AppMethodBeat.i(187297);
+    AppMethodBeat.i(247525);
     GetFourLiveTypeReq localGetFourLiveTypeReq = new GetFourLiveTypeReq();
     localGetFourLiveTypeReq.app_id = paramGetFourLiveTypeReqData.baseInfo.appId;
     paramGetFourLiveTypeReqData = new WeJson().toJson(localGetFourLiveTypeReq);
-    AppMethodBeat.o(187297);
+    AppMethodBeat.o(247525);
     return paramGetFourLiveTypeReqData;
   }
   
   public static String makeGetLiveTypeReq(GetLiveTypeReqData paramGetLiveTypeReqData)
   {
-    AppMethodBeat.i(187299);
+    AppMethodBeat.i(247528);
     GetLiveTypeReq localGetLiveTypeReq = new GetLiveTypeReq();
     localGetLiveTypeReq.app_id = paramGetLiveTypeReqData.baseInfo.appId;
     localGetLiveTypeReq.business_name = paramGetLiveTypeReqData.baseInfo.businessId;
@@ -142,18 +142,18 @@ public class YtLivenessNetProtoHelper
     if (YtFSM.getInstance().getWorkMode() == YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTREFLECT_TYPE) {
       ((Version)localObject).faction_sdk_version = YTPoseDetectJNIInterface.getVersion();
     }
-    ((Version)localObject).freflect_sdk_version = "3.6.4.3";
+    ((Version)localObject).freflect_sdk_version = "3.6.4.4";
     localObject = ((Version)localObject).makeVersion();
     localGetLiveTypeReq.select_data = new YtLivenessNetProtoHelper.LiveStyleRequester.SeleceData(paramGetLiveTypeReqData.baseInfo.lux, paramGetLiveTypeReqData.colorNum, paramGetLiveTypeReqData.reflectConfig, (String)localObject, paramGetLiveTypeReqData.controlConfig);
     paramGetLiveTypeReqData = new WeJson().toJson(localGetLiveTypeReq);
-    AppMethodBeat.o(187299);
+    AppMethodBeat.o(247528);
     return paramGetLiveTypeReqData;
   }
   
   public static String makeLipReadReq(LipReadReqData paramLipReadReqData)
   {
     int j = 0;
-    AppMethodBeat.i(187301);
+    AppMethodBeat.i(247531);
     PersonLiveReq localPersonLiveReq = new PersonLiveReq();
     localPersonLiveReq.app_id = paramLipReadReqData.baseInfo.appId;
     localPersonLiveReq.business_name = paramLipReadReqData.baseInfo.businessId;
@@ -162,7 +162,7 @@ public class YtLivenessNetProtoHelper
     Object localObject = new Version();
     ((Version)localObject).sdk_version = YtSDKKitFramework.getInstance().version();
     ((Version)localObject).ftrack_sdk_version = YTFaceTrack.Version;
-    ((Version)localObject).freflect_sdk_version = "3.6.4.3";
+    ((Version)localObject).freflect_sdk_version = "3.6.4.4";
     localObject = ((Version)localObject).makeVersion();
     localPersonLiveReq.livedata.select_data = new YtLivenessNetProtoHelper.LiveStyleRequester.SeleceData(paramLipReadReqData.baseInfo.lux, 0, "", (String)localObject, "");
     localPersonLiveReq.livedata.frames = new ArrayList();
@@ -224,13 +224,13 @@ public class YtLivenessNetProtoHelper
     localPersonLiveReq.live_type = paramLipReadReqData.baseInfo.liveType;
     localPersonLiveReq.req_type = paramLipReadReqData.baseInfo.reqType;
     paramLipReadReqData = new WeJson().toJson(localPersonLiveReq);
-    AppMethodBeat.o(187301);
+    AppMethodBeat.o(247531);
     return paramLipReadReqData;
   }
   
   public static String makePersonLiveReq(ReflectLiveReqData paramReflectLiveReqData)
   {
-    AppMethodBeat.i(187304);
+    AppMethodBeat.i(247535);
     PersonLiveReq localPersonLiveReq = new PersonLiveReq();
     localPersonLiveReq.app_id = paramReflectLiveReqData.baseInfo.appId;
     localPersonLiveReq.business_name = paramReflectLiveReqData.baseInfo.businessId;
@@ -243,7 +243,7 @@ public class YtLivenessNetProtoHelper
     Object localObject = new Version();
     ((Version)localObject).sdk_version = YtSDKKitFramework.getInstance().version();
     ((Version)localObject).ftrack_sdk_version = YTFaceTrack.Version;
-    ((Version)localObject).freflect_sdk_version = "3.6.4.3";
+    ((Version)localObject).freflect_sdk_version = "3.6.4.4";
     localObject = ((Version)localObject).makeVersion();
     localPersonLiveReq.livedata.select_data = new YtLivenessNetProtoHelper.LiveStyleRequester.SeleceData(paramReflectLiveReqData.baseInfo.lux, paramReflectLiveReqData.colorNum, paramReflectLiveReqData.config, (String)localObject, "");
     localPersonLiveReq.livedata.reflect_data = paramReflectLiveReqData.reflectData;
@@ -260,13 +260,13 @@ public class YtLivenessNetProtoHelper
     ((FaceFrame)localObject).image = paramReflectLiveReqData.openMouthImage.image;
     localPersonLiveReq.livedata.frames.add(localObject);
     paramReflectLiveReqData = new WeJson().toJson(localPersonLiveReq);
-    AppMethodBeat.o(187304);
+    AppMethodBeat.o(247535);
     return paramReflectLiveReqData;
   }
   
   public static String makePictureLiveReq(PictureLiveReqData paramPictureLiveReqData)
   {
-    AppMethodBeat.i(187300);
+    AppMethodBeat.i(247529);
     PictureLiveDetectReq localPictureLiveDetectReq = new PictureLiveDetectReq();
     localPictureLiveDetectReq.app_id = paramPictureLiveReqData.baseInfo.appId;
     localPictureLiveDetectReq.session_id = paramPictureLiveReqData.baseInfo.sessionId;
@@ -275,17 +275,17 @@ public class YtLivenessNetProtoHelper
     Object localObject = new Version();
     ((Version)localObject).sdk_version = YtSDKKitFramework.getInstance().version();
     ((Version)localObject).ftrack_sdk_version = YTFaceTrack.Version;
-    ((Version)localObject).freflect_sdk_version = "3.6.4.3";
+    ((Version)localObject).freflect_sdk_version = "3.6.4.4";
     localObject = ((Version)localObject).makeVersion();
     localPictureLiveDetectReq.select_data = new YtLivenessNetProtoHelper.LiveStyleRequester.SeleceData(paramPictureLiveReqData.baseInfo.lux, 0, "", (String)localObject, "");
     paramPictureLiveReqData = new WeJson().toJson(localPictureLiveDetectReq);
-    AppMethodBeat.o(187300);
+    AppMethodBeat.o(247529);
     return paramPictureLiveReqData;
   }
   
   public static String makeReflectLiveReq(ReflectLiveReqData paramReflectLiveReqData)
   {
-    AppMethodBeat.i(187303);
+    AppMethodBeat.i(247534);
     ReflectLiveReq localReflectLiveReq = new ReflectLiveReq();
     localReflectLiveReq.app_id = paramReflectLiveReqData.baseInfo.appId;
     localReflectLiveReq.session_id = paramReflectLiveReqData.baseInfo.sessionId;
@@ -297,7 +297,7 @@ public class YtLivenessNetProtoHelper
     Object localObject = new Version();
     ((Version)localObject).sdk_version = YtSDKKitFramework.getInstance().version();
     ((Version)localObject).ftrack_sdk_version = YTFaceTrack.Version;
-    ((Version)localObject).freflect_sdk_version = "3.6.4.3";
+    ((Version)localObject).freflect_sdk_version = "3.6.4.4";
     localObject = ((Version)localObject).makeVersion();
     localReflectLiveReq.select_data = new YtLivenessNetProtoHelper.LiveStyleRequester.SeleceData(paramReflectLiveReqData.baseInfo.lux, paramReflectLiveReqData.colorNum, paramReflectLiveReqData.config, (String)localObject, "");
     paramReflectLiveReqData = YtFSM.getInstance().getContext().imageToCompare;
@@ -309,7 +309,7 @@ public class YtLivenessNetProtoHelper
       localReflectLiveReq.compare_image_type = YtFSM.getInstance().getContext().imageToComapreType;
     }
     paramReflectLiveReqData = new WeJson().toJson(localReflectLiveReq);
-    AppMethodBeat.o(187303);
+    AppMethodBeat.o(247534);
     return paramReflectLiveReqData;
   }
   
@@ -539,7 +539,7 @@ public class YtLivenessNetProtoHelper
     
     public String makeVersion()
     {
-      AppMethodBeat.i(187296);
+      AppMethodBeat.i(247523);
       Object localObject = new StringBuffer();
       ((StringBuffer)localObject).append("sdk_version:").append(this.sdk_version);
       ((StringBuffer)localObject).append(";ftrack_sdk_version:").append(this.ftrack_sdk_version);
@@ -550,7 +550,7 @@ public class YtLivenessNetProtoHelper
         ((StringBuffer)localObject).append(";faction_sdk_version:").append(this.faction_sdk_version);
       }
       localObject = ((StringBuffer)localObject).toString();
-      AppMethodBeat.o(187296);
+      AppMethodBeat.o(247523);
       return localObject;
     }
   }

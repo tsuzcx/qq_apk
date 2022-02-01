@@ -7,11 +7,11 @@ public abstract interface d
 {
   public abstract d a(ba paramba);
   
-  public abstract d hAL();
+  public abstract d iEY();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread.IWaitWorkThread;
 import org.xml.sax.XMLReader;
@@ -19,15 +19,15 @@ import org.xml.sax.XMLReader;
 public class HtmlTextView
   extends TextView
 {
-  Html.ImageGetter Bai;
-  Html.TagHandler Baj;
+  Html.ImageGetter GUg;
+  Html.TagHandler GUh;
   
   public HtmlTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(66922);
-    this.Bai = new HtmlTextView.2(this);
-    this.Baj = new Html.TagHandler()
+    this.GUg = new HtmlTextView.2(this);
+    this.GUh = new Html.TagHandler()
     {
       private static Object a(Editable paramAnonymousEditable, Class paramAnonymousClass)
       {
@@ -82,8 +82,8 @@ public class HtmlTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(66921);
-    this.Bai = new HtmlTextView.2(this);
-    this.Baj = new Html.TagHandler()
+    this.GUg = new HtmlTextView.2(this);
+    this.GUh = new Html.TagHandler()
     {
       private static Object a(Editable paramAnonymousEditable, Class paramAnonymousClass)
       {
@@ -137,14 +137,14 @@ public class HtmlTextView
   public void setText(final String paramString)
   {
     AppMethodBeat.i(66923);
-    g.aAk().postAtFrontOfWorker(new MMHandlerThread.IWaitWorkThread()
+    h.aHJ().postAtFrontOfWorker(new MMHandlerThread.IWaitWorkThread()
     {
-      private volatile Spanned Bak;
+      private volatile Spanned GUi;
       
       public final boolean doInBackground()
       {
         AppMethodBeat.i(66915);
-        this.Bak = HtmlTextView.a(HtmlTextView.this, paramString);
+        this.GUi = HtmlTextView.a(HtmlTextView.this, paramString);
         AppMethodBeat.o(66915);
         return true;
       }
@@ -152,7 +152,7 @@ public class HtmlTextView
       public final boolean onPostExecute()
       {
         AppMethodBeat.i(66916);
-        HtmlTextView.a(HtmlTextView.this, this.Bak, TextView.BufferType.SPANNABLE);
+        HtmlTextView.a(HtmlTextView.this, this.GUi, TextView.BufferType.SPANNABLE);
         HtmlTextView.this.setMovementMethod(LinkMovementMethod.getInstance());
         AppMethodBeat.o(66916);
         return true;
@@ -171,7 +171,7 @@ public class HtmlTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.HtmlTextView
  * JD-Core Version:    0.7.0.1
  */

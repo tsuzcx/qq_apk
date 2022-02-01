@@ -21,6 +21,10 @@ public abstract interface KPwdInputView
   
   public abstract void setFocus(boolean paramBoolean);
   
+  public abstract void setFocusModalListener(IUIModal paramIUIModal);
+  
+  public abstract void setFocusUIPageListener(IUIPage paramIUIPage);
+  
   public abstract void setHashData(String paramString);
   
   public abstract void setOnEndEnterPasswordCallback(KPwdInputViewOnEndEnterPasswordCallback paramKPwdInputViewOnEndEnterPasswordCallback);
@@ -33,7 +37,7 @@ public abstract interface KPwdInputView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.gen.KPwdInputView
  * JD-Core Version:    0.7.0.1
  */

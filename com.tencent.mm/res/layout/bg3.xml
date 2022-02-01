@@ -7,7 +7,7 @@
             <TextView android:textSize="15.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/fye" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" android:text="@string/fch" />
             <View android:background="@drawable/a75" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_below="@id/fye" />
         </RelativeLayout>
-        <android.support.v7.widget.RecyclerView android:id="@id/fya" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/ce" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/fya" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/ce" />
         <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="44.0dip" android:layout_marginBottom="66.0dip">
             <Button android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/fy8" android:background="@drawable/amw" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/sz" />
             <Button android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/fyb" android:background="@drawable/amy" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/vl" android:layout_marginStart="@dimen/cb" android:layout_toEndOf="@id/fy8" />

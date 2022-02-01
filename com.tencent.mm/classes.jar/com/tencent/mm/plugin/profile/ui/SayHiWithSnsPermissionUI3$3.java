@@ -1,23 +1,30 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import android.graphics.drawable.GradientDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class SayHiWithSnsPermissionUI3$3
-  implements Runnable
+  implements View.OnClickListener
 {
-  SayHiWithSnsPermissionUI3$3(SayHiWithSnsPermissionUI3 paramSayHiWithSnsPermissionUI3, GradientDrawable paramGradientDrawable, int paramInt1, int paramInt2) {}
+  SayHiWithSnsPermissionUI3$3(SayHiWithSnsPermissionUI3 paramSayHiWithSnsPermissionUI3) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(258238);
-    SayHiWithSnsPermissionUI3.a(this.BiJ, this.Uru, this.Urv, this.Urw, 150, new SayHiWithSnsPermissionUI3.3.1(this));
-    AppMethodBeat.o(258238);
+    AppMethodBeat.i(273990);
+    b localb = new b();
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI3$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    SayHiWithSnsPermissionUI3.w(this.Hdf);
+    a.a(this, "com/tencent/mm/plugin/profile/ui/SayHiWithSnsPermissionUI3$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(273990);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.SayHiWithSnsPermissionUI3.3
  * JD-Core Version:    0.7.0.1
  */

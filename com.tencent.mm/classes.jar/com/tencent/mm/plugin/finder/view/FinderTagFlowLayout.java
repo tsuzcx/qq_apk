@@ -15,11 +15,11 @@ import java.util.List;
 public class FinderTagFlowLayout
   extends ViewGroup
 {
-  private int Ku;
-  public List<List<View>> woZ;
-  protected List<Integer> wpa;
-  protected List<Integer> wpb;
-  private List<View> wpc;
+  public List<List<View>> Bai;
+  protected List<Integer> Baj;
+  protected List<Integer> Bak;
+  private List<View> Bal;
+  private int sK;
   
   public FinderTagFlowLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,11 +30,11 @@ public class FinderTagFlowLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(168643);
-    this.woZ = new ArrayList();
-    this.wpa = new ArrayList();
-    this.wpb = new ArrayList();
-    this.wpc = new ArrayList();
-    this.Ku = -1;
+    this.Bai = new ArrayList();
+    this.Baj = new ArrayList();
+    this.Bak = new ArrayList();
+    this.Bal = new ArrayList();
+    this.sK = -1;
     AppMethodBeat.o(168643);
   }
   
@@ -65,10 +65,10 @@ public class FinderTagFlowLayout
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(168645);
-    this.woZ.clear();
-    this.wpa.clear();
-    this.wpb.clear();
-    this.wpc.clear();
+    this.Bai.clear();
+    this.Baj.clear();
+    this.Bak.clear();
+    this.Bal.clear();
     int j = getWidth();
     paramInt1 = 0;
     paramInt2 = 0;
@@ -92,44 +92,44 @@ public class FinderTagFlowLayout
         i = paramInt1;
         if (n + paramInt1 + localMarginLayoutParams.leftMargin + localMarginLayoutParams.rightMargin > j - getPaddingLeft() - getPaddingRight())
         {
-          this.wpa.add(Integer.valueOf(paramInt2));
-          this.woZ.add(this.wpc);
-          this.wpb.add(Integer.valueOf(paramInt1));
+          this.Baj.add(Integer.valueOf(paramInt2));
+          this.Bai.add(this.Bal);
+          this.Bak.add(Integer.valueOf(paramInt1));
           i = 0;
           paramInt4 = localMarginLayoutParams.topMargin + m + localMarginLayoutParams.bottomMargin;
-          this.wpc = new ArrayList();
+          this.Bal = new ArrayList();
         }
         paramInt1 = i + (n + localMarginLayoutParams.leftMargin + localMarginLayoutParams.rightMargin);
         paramInt2 = localMarginLayoutParams.topMargin;
         i = Math.max(paramInt4, localMarginLayoutParams.bottomMargin + (paramInt2 + m));
-        this.wpc.add(localView);
+        this.Bal.add(localView);
         paramInt4 = paramInt1;
       }
       paramInt3 += 1;
       paramInt2 = i;
       paramInt1 = paramInt4;
     }
-    this.wpa.add(Integer.valueOf(paramInt2));
-    this.wpb.add(Integer.valueOf(paramInt1));
-    this.woZ.add(this.wpc);
+    this.Baj.add(Integer.valueOf(paramInt2));
+    this.Bak.add(Integer.valueOf(paramInt1));
+    this.Bai.add(this.Bal);
     paramInt1 = getPaddingLeft();
     paramInt2 = getPaddingTop();
-    int i = this.woZ.size();
+    int i = this.Bai.size();
     paramInt3 = 0;
     if (paramInt3 < i)
     {
-      this.wpc = ((List)this.woZ.get(paramInt3));
-      k = ((Integer)this.wpa.get(paramInt3)).intValue();
-      paramInt4 = ((Integer)this.wpb.get(paramInt3)).intValue();
-      switch (this.Ku)
+      this.Bal = ((List)this.Bai.get(paramInt3));
+      k = ((Integer)this.Baj.get(paramInt3)).intValue();
+      paramInt4 = ((Integer)this.Bak.get(paramInt3)).intValue();
+      switch (this.sK)
       {
       default: 
         label456:
         paramInt4 = 0;
         label459:
-        if (paramInt4 < this.wpc.size())
+        if (paramInt4 < this.Bal.size())
         {
-          localView = (View)this.wpc.get(paramInt4);
+          localView = (View)this.Bal.get(paramInt4);
           if (localView.getVisibility() == 8) {
             break label651;
           }
@@ -152,7 +152,7 @@ public class FinderTagFlowLayout
       paramInt1 = (j - paramInt4) / 2 + getPaddingLeft();
       break label456;
       paramInt1 = j - (paramInt4 + getPaddingLeft()) - getPaddingRight();
-      Collections.reverse(this.wpc);
+      Collections.reverse(this.Bal);
       break label456;
       paramInt3 += 1;
       paramInt2 += k;
@@ -245,10 +245,15 @@ public class FinderTagFlowLayout
       m = i1;
     }
   }
+  
+  public void setGravity(int paramInt)
+  {
+    this.sK = paramInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.FinderTagFlowLayout
  * JD-Core Version:    0.7.0.1
  */

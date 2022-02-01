@@ -5,11 +5,11 @@ import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
 public final class b
   extends WXWebpageObject
 {
+  public String CBX;
   public String desc;
   public String iconUrl;
   public String jumpUrl;
   public String nickName;
-  public String xxN;
   
   public final int type()
   {

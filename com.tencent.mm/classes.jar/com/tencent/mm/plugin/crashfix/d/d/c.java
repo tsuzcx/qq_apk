@@ -7,9 +7,9 @@ import java.lang.reflect.Proxy;
 
 public final class c
 {
-  protected static Object qCW;
+  protected static Object ubX;
   
-  public static Object dc(Object paramObject)
+  public static Object cZ(Object paramObject)
   {
     AppMethodBeat.i(145633);
     if (paramObject == null)
@@ -17,15 +17,15 @@ public final class c
       AppMethodBeat.o(145633);
       return null;
     }
-    if (qCW == null) {}
+    if (ubX == null) {}
     try
     {
       ClassLoader localClassLoader = paramObject.getClass().getClassLoader();
       Class[] arrayOfClass = paramObject.getClass().getInterfaces();
       if (Build.VERSION.SDK_INT == 25) {}
-      for (qCW = Proxy.newProxyInstance(localClassLoader, arrayOfClass, new b(paramObject));; qCW = Proxy.newProxyInstance(localClassLoader, arrayOfClass, new a(paramObject)))
+      for (ubX = Proxy.newProxyInstance(localClassLoader, arrayOfClass, new b(paramObject));; ubX = Proxy.newProxyInstance(localClassLoader, arrayOfClass, new a(paramObject)))
       {
-        paramObject = qCW;
+        paramObject = ubX;
         AppMethodBeat.o(145633);
         return paramObject;
       }
@@ -41,7 +41,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.crashfix.d.d.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,25 @@
 package com.tencent.mm.live.core.mini;
 
-import android.graphics.Outline;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewOutlineProvider;
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/mini/LiveMiniViewOutlineProvider;", "Landroid/view/ViewOutlineProvider;", "radius", "", "(F)V", "getRadius", "()F", "setRadius", "getOutline", "", "view", "Landroid/view/View;", "outline", "Landroid/graphics/Outline;", "plugin-core_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/mini/ReportDataInfo;", "", "isReported", "", "liveId", "", "isAnchor", "generateType", "", "bizScene", "opType", "(ZJZIII)V", "getBizScene", "()I", "getGenerateType", "()Z", "getLiveId", "()J", "getOpType", "plugin-core_release"})
 public final class e
-  extends ViewOutlineProvider
 {
-  private float radius;
+  final boolean fFE;
+  public final boolean iUF;
+  final int kqY;
+  final int kqZ;
+  final long liveId;
+  final int opType;
   
-  public e(float paramFloat)
+  public e(boolean paramBoolean1, long paramLong, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.radius = paramFloat;
-  }
-  
-  public final void getOutline(View paramView, Outline paramOutline)
-  {
-    AppMethodBeat.i(196596);
-    Rect localRect = new Rect();
-    if (paramView != null) {
-      paramView.getDrawingRect(localRect);
-    }
-    paramView = new Rect(0, 0, localRect.right - localRect.left + 0, localRect.bottom - localRect.top + 0);
-    if (paramOutline != null)
-    {
-      paramOutline.setRoundRect(paramView, this.radius);
-      AppMethodBeat.o(196596);
-      return;
-    }
-    AppMethodBeat.o(196596);
+    this.iUF = paramBoolean1;
+    this.liveId = paramLong;
+    this.fFE = paramBoolean2;
+    this.kqY = paramInt1;
+    this.kqZ = paramInt2;
+    this.opType = paramInt3;
   }
 }
 

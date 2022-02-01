@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/cu8" android:layout_width="@dimen/cs" android:layout_height="@dimen/bu"
+<RelativeLayout android:id="@id/cu8" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/mx" android:layout_width="@dimen/cs" android:layout_height="@dimen/cs" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/qa" android:gravity="center" android:id="@id/bgd" android:background="@drawable/a17" android:visibility="visible" android:layout_width="@dimen/cn" android:layout_height="20.0dip" android:text="" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <FrameLayout android:id="@id/mx" android:layout_width="@dimen/by" android:layout_height="@dimen/by" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/qa" android:gravity="center" android:id="@id/bgd" android:background="@drawable/a17" android:visibility="visible" android:layout_width="@dimen/cp" android:layout_height="@dimen/ce" android:text="" android:layout_alignBottom="@id/mx" android:layout_centerHorizontal="true" />
 </RelativeLayout>

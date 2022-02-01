@@ -9,7 +9,7 @@ public class ErrMsg
   implements Parcelable, Cloneable
 {
   public static final Parcelable.Creator<ErrMsg> CREATOR;
-  public String UdY;
+  public String abHn;
   public String message;
   public String title;
   private int type;
@@ -26,7 +26,7 @@ public class ErrMsg
     this.type = 0;
     this.title = "";
     this.message = "";
-    this.UdY = "";
+    this.abHn = "";
   }
   
   private ErrMsg(Parcel paramParcel)
@@ -35,7 +35,7 @@ public class ErrMsg
     this.type = paramParcel.readInt();
     this.title = paramParcel.readString();
     this.message = paramParcel.readString();
-    this.UdY = paramParcel.readString();
+    this.abHn = paramParcel.readString();
     AppMethodBeat.o(88194);
   }
   
@@ -52,12 +52,12 @@ public class ErrMsg
     return 0;
   }
   
-  public final void hPF()
+  public final void iUN()
   {
     this.type = 0;
     this.title = "";
     this.message = "";
-    this.UdY = "";
+    this.abHn = "";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -66,13 +66,13 @@ public class ErrMsg
     paramParcel.writeInt(this.type);
     paramParcel.writeString(this.title);
     paramParcel.writeString(this.message);
-    paramParcel.writeString(this.UdY);
+    paramParcel.writeString(this.abHn);
     AppMethodBeat.o(88195);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     oicq.wlogin_sdk.tools.ErrMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -4,63 +4,65 @@ import android.content.Context;
 import android.database.Cursor;
 import android.text.SpannableString;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
-import com.tencent.mm.ac.g;
-import com.tencent.mm.g.c.ch;
-import com.tencent.mm.model.cl;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.ae.g;
+import com.tencent.mm.f.c.ci;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.cm;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.search.i;
-import com.tencent.mm.plugin.finder.storage.data.o;
-import com.tencent.mm.plugin.finder.storage.logic.c;
-import com.tencent.mm.plugin.finder.storage.logic.c.a;
-import com.tencent.mm.plugin.finder.utils.w.a;
-import com.tencent.mm.plugin.finder.utils.w.c;
-import com.tencent.mm.plugin.finder.utils.y;
+import com.tencent.mm.plugin.finder.storage.data.i;
+import com.tencent.mm.plugin.finder.storage.data.n;
+import com.tencent.mm.plugin.finder.utils.ak;
+import com.tencent.mm.plugin.finder.utils.ax;
+import com.tencent.mm.plugin.finder.utils.c;
+import com.tencent.mm.plugin.finder.utils.h.a;
 import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
 import com.tencent.mm.protocal.protobuf.FinderContact;
 import com.tencent.mm.protocal.protobuf.FinderMedia;
 import com.tencent.mm.protocal.protobuf.FinderObject;
 import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
-import com.tencent.mm.protocal.protobuf.anv;
-import com.tencent.mm.protocal.protobuf.aop;
-import com.tencent.mm.protocal.protobuf.aoq;
-import com.tencent.mm.protocal.protobuf.aqg;
-import com.tencent.mm.protocal.protobuf.aqp;
-import com.tencent.mm.protocal.protobuf.ard;
-import com.tencent.mm.protocal.protobuf.aud;
-import com.tencent.mm.protocal.protobuf.awe;
-import com.tencent.mm.protocal.protobuf.axt;
-import com.tencent.mm.protocal.protobuf.bdq;
-import com.tencent.mm.protocal.protobuf.bei;
-import com.tencent.mm.protocal.protobuf.cjh;
-import com.tencent.mm.protocal.protobuf.cjl;
-import com.tencent.mm.protocal.protobuf.cjm;
-import com.tencent.mm.protocal.protobuf.cjt;
-import com.tencent.mm.protocal.protobuf.cng;
-import com.tencent.mm.protocal.protobuf.cnl;
+import com.tencent.mm.protocal.protobuf.aow;
+import com.tencent.mm.protocal.protobuf.apw;
+import com.tencent.mm.protocal.protobuf.apx;
+import com.tencent.mm.protocal.protobuf.arw;
+import com.tencent.mm.protocal.protobuf.asl;
+import com.tencent.mm.protocal.protobuf.asz;
+import com.tencent.mm.protocal.protobuf.ati;
+import com.tencent.mm.protocal.protobuf.awh;
+import com.tencent.mm.protocal.protobuf.bac;
+import com.tencent.mm.protocal.protobuf.bcp;
+import com.tencent.mm.protocal.protobuf.bdm;
+import com.tencent.mm.protocal.protobuf.bkp;
+import com.tencent.mm.protocal.protobuf.blj;
+import com.tencent.mm.protocal.protobuf.csc;
+import com.tencent.mm.protocal.protobuf.csg;
+import com.tencent.mm.protocal.protobuf.csh;
+import com.tencent.mm.protocal.protobuf.cso;
+import com.tencent.mm.protocal.protobuf.cvy;
+import com.tencent.mm.protocal.protobuf.cwc;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MD5Util;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.a.j;
 import kotlin.a.v;
-import kotlin.g.a.b;
 import kotlin.g.a.m;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
+import kotlin.t;
 import kotlin.x;
-import org.json.JSONObject;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "Lcom/tencent/mm/autogen/table/BaseFinderFeedItem;", "()V", "_clipListExt", "Ljava/util/LinkedList;", "value", "clipListExt", "getClipListExt", "()Ljava/util/LinkedList;", "setClipListExt", "(Ljava/util/LinkedList;)V", "", "commentCount", "getCommentCount", "()I", "setCommentCount", "(I)V", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "commentList", "getCommentList", "setCommentList", "comment_close", "getComment_close", "setComment_close", "copyObjectDescMedia", "Lcom/tencent/mm/protocal/protobuf/FinderMedia;", "getCopyObjectDescMedia", "createTime", "getCreateTime", "setCreateTime", "Lcom/tencent/mm/protocal/protobuf/FinderCustomFeedData;", "customData", "getCustomData", "()Lcom/tencent/mm/protocal/protobuf/FinderCustomFeedData;", "setCustomData", "(Lcom/tencent/mm/protocal/protobuf/FinderCustomFeedData;)V", "debugDescription", "", "getDebugDescription", "()Ljava/lang/String;", "description", "getDescription", "setDescription", "(Ljava/lang/String;)V", "descriptionFullSpan", "Landroid/text/SpannableString;", "getDescriptionFullSpan", "()Landroid/text/SpannableString;", "setDescriptionFullSpan", "(Landroid/text/SpannableString;)V", "descriptionSpan", "getDescriptionSpan", "setDescriptionSpan", "Lcom/tencent/mm/protocal/protobuf/FinderExtendedReading;", "extReading", "getExtReading", "()Lcom/tencent/mm/protocal/protobuf/FinderExtendedReading;", "setExtReading", "(Lcom/tencent/mm/protocal/protobuf/FinderExtendedReading;)V", "favCount", "getFavCount", "setFavCount", "favFlag", "getFavFlag", "setFavFlag", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "feedObject", "getFeedObject", "()Lcom/tencent/mm/protocal/protobuf/FinderObject;", "setFeedObject", "(Lcom/tencent/mm/protocal/protobuf/FinderObject;)V", "foldedFeedList", "", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getFoldedFeedList", "()Ljava/util/List;", "foldedFeeds", "", "foldedLayout", "Lcom/tencent/mm/protocal/protobuf/FinderFoldedLayout;", "getFoldedLayout", "()Lcom/tencent/mm/protocal/protobuf/FinderFoldedLayout;", "setFoldedLayout", "(Lcom/tencent/mm/protocal/protobuf/FinderFoldedLayout;)V", "forwardCount", "getForwardCount", "setForwardCount", "friendLikeCount", "getFriendLikeCount", "setFriendLikeCount", "fromType", "getFromType", "setFromType", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "halfVideoMediaExtList", "getHalfVideoMediaExtList", "setHalfVideoMediaExtList", "isLongVideo", "", "()Z", "isPreview", "setPreview", "(Z)V", "isRelatedItem", "setRelatedItem", "isReplaceLongVideoToNormal", "setReplaceLongVideoToNormal", "likeCount", "getLikeCount", "setLikeCount", "likeFlag", "getLikeFlag", "setLikeFlag", "likeList", "getLikeList", "setLikeList", "liveFinderMedia", "getLiveFinderMedia", "()Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "setLiveFinderMedia", "(Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;)V", "Lcom/tencent/mm/protocal/protobuf/FinderLiveInfo;", "liveInfo", "getLiveInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveInfo;", "setLiveInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveInfo;)V", "liveMediaList", "getLiveMediaList", "", "localId", "getLocalId", "()J", "setLocalId", "(J)V", "Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "location", "getLocation", "()Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "setLocation", "(Lcom/tencent/mm/protocal/protobuf/FinderLocation;)V", "longVideoMediaExtList", "getLongVideoMediaExtList", "setLongVideoMediaExtList", "longVideoMediaList", "getLongVideoMediaList", "setLongVideoMediaList", "mediaExtList", "getMediaExtList", "setMediaExtList", "mediaList", "getMediaList", "setMediaList", "mediaType", "getMediaType", "setMediaType", "Lcom/tencent/mm/protocal/protobuf/MegaVideo;", "megaVideo", "getMegaVideo", "()Lcom/tencent/mm/protocal/protobuf/MegaVideo;", "setMegaVideo", "(Lcom/tencent/mm/protocal/protobuf/MegaVideo;)V", "nickName", "getNickName", "setNickName", "nickNameSpan", "getNickNameSpan", "setNickNameSpan", "objectNonceId", "getObjectNonceId", "setObjectNonceId", "posTriggerConfig", "Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;", "getPosTriggerConfig", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;", "setPosTriggerConfig", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;)V", "private_flag", "getPrivate_flag", "setPrivate_flag", "readCount", "getReadCount", "setReadCount", "Lcom/tencent/mm/protocal/protobuf/FinderContact;", "refObjectContact", "getRefObjectContact", "()Lcom/tencent/mm/protocal/protobuf/FinderContact;", "setRefObjectContact", "(Lcom/tencent/mm/protocal/protobuf/FinderContact;)V", "refObjectFlag", "getRefObjectFlag", "setRefObjectFlag", "refObjectId", "getRefObjectId", "setRefObjectId", "relatedFeedId", "getRelatedFeedId", "setRelatedFeedId", "stickyTime", "getStickyTime", "setStickyTime", "timestamps", "getTimestamps", "topicClickExtra", "Lcom/tencent/mm/plugin/finder/utils/FinderTopicUtil$ClickExtra;", "getTopicClickExtra", "()Lcom/tencent/mm/plugin/finder/utils/FinderTopicUtil$ClickExtra;", "setTopicClickExtra", "(Lcom/tencent/mm/plugin/finder/utils/FinderTopicUtil$ClickExtra;)V", "topicList", "Lcom/tencent/mm/plugin/finder/utils/FinderTopicUtil$TopicStringInfo;", "getTopicList", "userName", "getUserName", "setUserName", "convertFrom", "", "cu", "Landroid/database/Cursor;", "createDescriptionFullSpan", "fixMediaType", "obj", "getCropInfo", "index", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getExpectId", "getFinderObject", "getId", "getNotShareMsg", "getPostInfo", "Lcom/tencent/mm/protocal/protobuf/LocalFinderPostInfo;", "getUnsignedId", "info", "isCommentClose", "isEventClosed", "isLive", "isLiveFeed", "isMvFeed", "isNeedCrop", "isNeedVideoCompositionPlay", "isNotShare", "isOldVersion", "isOnlySelfSee", "isPostFailed", "isPostFailedCanRetry", "isPostFinish", "isPostNoAuth", "isPrivate", "mediaExt", "mediaId", "parseJsonOfPosTriggerConfig", "setEventClosed", "setPostFailed", "setPostFailedAndNoAuth", "setPostFailedAndNotRetry", "errCode", "setPostFinish", "setPostInfo", "field_postinfo", "setPostWaiting", "trackPost", "stage", "updateFinderObject", "svrFeed", "Companion", "PosTriggerConfig", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "Lcom/tencent/mm/autogen/table/BaseFinderFeedItem;", "()V", "_clipListExt", "Ljava/util/LinkedList;", "value", "clipListExt", "getClipListExt", "()Ljava/util/LinkedList;", "setClipListExt", "(Ljava/util/LinkedList;)V", "", "commentCount", "getCommentCount", "()I", "setCommentCount", "(I)V", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "commentList", "getCommentList", "setCommentList", "comment_close", "getComment_close", "setComment_close", "copyObjectDescMedia", "Lcom/tencent/mm/protocal/protobuf/FinderMedia;", "getCopyObjectDescMedia", "createTime", "getCreateTime", "setCreateTime", "Lcom/tencent/mm/protocal/protobuf/FinderCustomFeedData;", "customData", "getCustomData", "()Lcom/tencent/mm/protocal/protobuf/FinderCustomFeedData;", "setCustomData", "(Lcom/tencent/mm/protocal/protobuf/FinderCustomFeedData;)V", "debugDescription", "", "getDebugDescription", "()Ljava/lang/String;", "description", "getDescription", "setDescription", "(Ljava/lang/String;)V", "descriptionFullSpan", "Landroid/text/SpannableString;", "getDescriptionFullSpan", "()Landroid/text/SpannableString;", "setDescriptionFullSpan", "(Landroid/text/SpannableString;)V", "descriptionSpan", "getDescriptionSpan", "setDescriptionSpan", "Lcom/tencent/mm/protocal/protobuf/FinderExtendedReading;", "extReading", "getExtReading", "()Lcom/tencent/mm/protocal/protobuf/FinderExtendedReading;", "setExtReading", "(Lcom/tencent/mm/protocal/protobuf/FinderExtendedReading;)V", "favCount", "getFavCount", "setFavCount", "favFlag", "getFavFlag", "setFavFlag", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "feedObject", "getFeedObject", "()Lcom/tencent/mm/protocal/protobuf/FinderObject;", "setFeedObject", "(Lcom/tencent/mm/protocal/protobuf/FinderObject;)V", "foldedFeedList", "", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getFoldedFeedList", "()Ljava/util/List;", "foldedFeeds", "", "foldedLayout", "Lcom/tencent/mm/protocal/protobuf/FinderFoldedLayout;", "getFoldedLayout", "()Lcom/tencent/mm/protocal/protobuf/FinderFoldedLayout;", "setFoldedLayout", "(Lcom/tencent/mm/protocal/protobuf/FinderFoldedLayout;)V", "forwardCount", "getForwardCount", "setForwardCount", "friendLikeCount", "getFriendLikeCount", "setFriendLikeCount", "fromType", "getFromType", "setFromType", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "halfVideoMediaExtList", "getHalfVideoMediaExtList", "setHalfVideoMediaExtList", "isLongVideo", "", "()Z", "isPreview", "setPreview", "(Z)V", "isRelatedItem", "setRelatedItem", "isReplaceLongVideoToNormal", "setReplaceLongVideoToNormal", "likeCount", "getLikeCount", "setLikeCount", "likeFlag", "getLikeFlag", "setLikeFlag", "likeList", "getLikeList", "setLikeList", "liveFinderMedia", "getLiveFinderMedia", "()Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "setLiveFinderMedia", "(Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;)V", "Lcom/tencent/mm/protocal/protobuf/FinderLiveInfo;", "liveInfo", "getLiveInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveInfo;", "setLiveInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveInfo;)V", "liveMediaList", "getLiveMediaList", "", "localId", "getLocalId", "()J", "setLocalId", "(J)V", "Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "location", "getLocation", "()Lcom/tencent/mm/protocal/protobuf/FinderLocation;", "setLocation", "(Lcom/tencent/mm/protocal/protobuf/FinderLocation;)V", "longVideoMediaExtList", "getLongVideoMediaExtList", "setLongVideoMediaExtList", "longVideoMediaList", "getLongVideoMediaList", "setLongVideoMediaList", "mediaExtList", "getMediaExtList", "setMediaExtList", "mediaList", "getMediaList", "setMediaList", "mediaType", "getMediaType", "setMediaType", "Lcom/tencent/mm/protocal/protobuf/MegaVideo;", "megaVideo", "getMegaVideo", "()Lcom/tencent/mm/protocal/protobuf/MegaVideo;", "setMegaVideo", "(Lcom/tencent/mm/protocal/protobuf/MegaVideo;)V", "mentionListSelected", "getMentionListSelected", "setMentionListSelected", "nickName", "getNickName", "setNickName", "nickNameSpan", "getNickNameSpan", "setNickNameSpan", "objectNonceId", "getObjectNonceId", "setObjectNonceId", "posTriggerConfig", "Lcom/tencent/mm/plugin/finder/utils/FinderEnhanceUtils$PosTriggerConfig;", "getPosTriggerConfig", "()Lcom/tencent/mm/plugin/finder/utils/FinderEnhanceUtils$PosTriggerConfig;", "setPosTriggerConfig", "(Lcom/tencent/mm/plugin/finder/utils/FinderEnhanceUtils$PosTriggerConfig;)V", "private_flag", "getPrivate_flag", "setPrivate_flag", "readCount", "getReadCount", "setReadCount", "Lcom/tencent/mm/protocal/protobuf/FinderContact;", "refObjectContact", "getRefObjectContact", "()Lcom/tencent/mm/protocal/protobuf/FinderContact;", "setRefObjectContact", "(Lcom/tencent/mm/protocal/protobuf/FinderContact;)V", "refObjectFlag", "getRefObjectFlag", "setRefObjectFlag", "refObjectId", "getRefObjectId", "setRefObjectId", "relatedFeedId", "getRelatedFeedId", "setRelatedFeedId", "showExtendLink", "getShowExtendLink", "setShowExtendLink", "stickyTime", "getStickyTime", "setStickyTime", "timestamps", "getTimestamps", "topicClickExtra", "Lcom/tencent/mm/plugin/finder/utils/ClickExtra;", "getTopicClickExtra", "()Lcom/tencent/mm/plugin/finder/utils/ClickExtra;", "setTopicClickExtra", "(Lcom/tencent/mm/plugin/finder/utils/ClickExtra;)V", "topicList", "Lcom/tencent/mm/plugin/finder/utils/TopicStringInfo;", "getTopicList", "userName", "getUserName", "setUserName", "convertFrom", "", "cu", "Landroid/database/Cursor;", "createDescriptionFullSpan", "fixMediaType", "obj", "getCropInfo", "index", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getExpectId", "getFinderLive", "Lcom/tencent/mm/protocal/protobuf/FinderLiveShareObject;", "getFinderObject", "getFromAppExtInfo", "getFromAppId", "getId", "getNotShareMsg", "getPostInfo", "Lcom/tencent/mm/protocal/protobuf/LocalFinderPostInfo;", "getUnsignedId", "info", "isCommentClose", "isEventClosed", "isEventExpired", "isLive", "isLiveFeed", "isMvFeed", "isNeedCrop", "isNeedVideoCompositionPlay", "isNotShare", "isOldVersion", "isOnlySelfSee", "isPostFailed", "isPostFailedCanRetry", "isPostFinish", "isPostNoAuth", "isPrivate", "mediaExt", "mediaId", "setEventClosed", "setEventExpired", "setPostFailed", "setPostFailedAndNoAuth", "setPostFailedAndNotRetry", "errCode", "setPostFinish", "setPostInfo", "field_postinfo", "setPostWaiting", "trackPost", "stage", "updateFinderObject", "svrFeed", "Companion", "plugin-finder-base_release"})
 public class FinderItem
-  extends ch
+  extends ci
 {
   public static final a Companion;
   private static final String TAG = "Finder.FinderItem";
@@ -72,26 +74,27 @@ public class FinderItem
   private SpannableString descriptionSpan;
   private FinderObject feedObject;
   private List<BaseFinderFeed> foldedFeeds;
-  private ard foldedLayout;
+  private asz foldedLayout;
   private int fromType;
   private boolean isPreview;
   private boolean isRelatedItem;
   private boolean isReplaceLongVideoToNormal;
-  private cjl liveFinderMedia;
+  private csg liveFinderMedia;
   private int mediaType;
   private SpannableString nickNameSpan;
-  private b posTriggerConfig;
+  private h.a posTriggerConfig;
   private long relatedFeedId;
+  private boolean showExtendLink;
   private final long timestamps;
-  private w.a topicClickExtra;
-  private final List<w.c> topicList;
+  private c topicClickExtra;
+  private final List<ax> topicList;
   
   static
   {
     AppMethodBeat.i(167015);
     Companion = new a((byte)0);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = ch.initAutoDBInfo(FinderItem.class);
-    p.g(localMAutoDBInfo, "initAutoDBInfo(FinderItem::class.java)");
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = ci.initAutoDBInfo(FinderItem.class);
+    p.j(localMAutoDBInfo, "initAutoDBInfo(FinderItem::class.java)");
     info = localMAutoDBInfo;
     TAG = "Finder.FinderItem";
     AppMethodBeat.o(167015);
@@ -104,11 +107,12 @@ public class FinderItem
     localFinderObject.objectDesc = new FinderObjectDesc();
     FinderObjectDesc localFinderObjectDesc = localFinderObject.objectDesc;
     if (localFinderObjectDesc != null) {
-      localFinderObjectDesc.location = new axt();
+      localFinderObjectDesc.location = new bdm();
     }
     this.feedObject = localFinderObject;
-    this.topicClickExtra = new w.a(0L);
-    this.timestamps = cl.aWA();
+    this.topicClickExtra = new c(0L);
+    this.posTriggerConfig = new h.a(this.feedObject.posTriggerConfig);
+    this.timestamps = cm.bfE();
     this.topicList = ((List)new ArrayList());
     this.copyObjectDescMedia = new LinkedList();
     this._clipListExt = new LinkedList();
@@ -119,8 +123,8 @@ public class FinderItem
   private final void fixMediaType(FinderObject paramFinderObject)
   {
     AppMethodBeat.i(166979);
-    Object localObject = y.vXH;
-    int i = y.t(paramFinderObject);
+    Object localObject = ak.AGL;
+    int i = ak.F(paramFinderObject);
     paramFinderObject = paramFinderObject.objectDesc;
     if (paramFinderObject != null)
     {
@@ -145,7 +149,7 @@ public class FinderItem
   public void convertFrom(Cursor paramCursor)
   {
     AppMethodBeat.i(166984);
-    p.h(paramCursor, "cu");
+    p.k(paramCursor, "cu");
     super.convertFrom(paramCursor);
     FinderObject localFinderObject = this.field_finderObject;
     paramCursor = localFinderObject;
@@ -153,24 +157,24 @@ public class FinderItem
       paramCursor = new FinderObject();
     }
     setFeedObject(paramCursor);
-    this.feedObject.username = z.aUg();
-    paramCursor = y.vXH;
-    this.mediaType = y.t(this.feedObject);
+    this.feedObject.username = z.bdh();
+    paramCursor = ak.AGL;
+    this.mediaType = ak.F(this.feedObject);
     AppMethodBeat.o(166984);
   }
   
   public final SpannableString createDescriptionFullSpan()
   {
-    AppMethodBeat.i(251747);
+    AppMethodBeat.i(263919);
     Object localObject5 = this.feedObject;
-    Object localObject1 = com.tencent.mm.plugin.finder.utils.t.vWZ;
-    localObject1 = ((FinderObject)localObject5).objectDesc;
+    com.tencent.mm.plugin.b localb = (com.tencent.mm.plugin.b)h.ae(com.tencent.mm.plugin.b.class);
+    Object localObject1 = ((FinderObject)localObject5).objectDesc;
     if (localObject1 != null)
     {
       localObject1 = ((FinderObjectDesc)localObject1).topic;
       if (localObject1 == null) {}
     }
-    for (localObject1 = ((bdq)localObject1).LNs;; localObject1 = null)
+    for (localObject1 = ((bkp)localObject1).SVC;; localObject1 = null)
     {
       Object localObject3 = this.descriptionSpan;
       Object localObject2 = localObject3;
@@ -195,32 +199,32 @@ public class FinderItem
       {
         localObject4 = new LinkedList();
       }
-      localObject1 = com.tencent.mm.plugin.finder.utils.t.a((String)localObject1, (SpannableString)localObject2, l, localList, (LinkedList)localObject3, (LinkedList)localObject4, (m)new c(this), (b)new d(this));
-      AppMethodBeat.o(251747);
+      localObject1 = localb.a((String)localObject1, (SpannableString)localObject2, l, localList, (LinkedList)localObject3, (LinkedList)localObject4, (m)new b(this), (kotlin.g.a.b)new c(this));
+      AppMethodBeat.o(263919);
       return localObject1;
     }
   }
   
   public final LinkedList<FinderItem> getClipListExt()
   {
-    AppMethodBeat.i(251758);
+    AppMethodBeat.i(263931);
     if ((this._clipListExt.isEmpty()) && (this.field_clipList != null))
     {
-      localObject = this.field_clipList.MoH;
+      localObject = this.field_clipList.TzN;
       if (localObject != null)
       {
         localObject = ((Iterable)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
-          aud localaud = (aud)((Iterator)localObject).next();
+          awh localawh = (awh)((Iterator)localObject).next();
           LinkedList localLinkedList = this._clipListExt;
-          p.g(localaud, "it");
-          localLinkedList.add(a.a(localaud, 0L));
+          p.j(localawh, "it");
+          localLinkedList.add(a.a(localawh, 0L));
         }
       }
     }
     Object localObject = this._clipListExt;
-    AppMethodBeat.o(251758);
+    AppMethodBeat.o(263931);
     return localObject;
   }
   
@@ -233,7 +237,7 @@ public class FinderItem
   {
     AppMethodBeat.i(166996);
     LinkedList localLinkedList = this.feedObject.commentList;
-    p.g(localLinkedList, "feedObject.commentList");
+    p.j(localLinkedList, "feedObject.commentList");
     AppMethodBeat.o(166996);
     return localLinkedList;
   }
@@ -258,13 +262,13 @@ public class FinderItem
     return this.field_createTime;
   }
   
-  public final cjl getCropInfo(int paramInt)
+  public final csg getCropInfo(int paramInt)
   {
     AppMethodBeat.i(167007);
     Object localObject = getMediaList();
     if (localObject != null)
     {
-      localObject = (cjl)kotlin.a.j.L((List)localObject, paramInt);
+      localObject = (csg)j.M((List)localObject, paramInt);
       AppMethodBeat.o(167007);
       return localObject;
     }
@@ -272,7 +276,7 @@ public class FinderItem
     return null;
   }
   
-  public final aqg getCustomData()
+  public final arw getCustomData()
   {
     return this.field_customData;
   }
@@ -284,18 +288,18 @@ public class FinderItem
   
   public final String getDebugDescription()
   {
-    AppMethodBeat.i(251750);
+    AppMethodBeat.i(263922);
     Object localObject = getDescription();
     int i = Math.min(((String)localObject).length(), 3);
     if (localObject == null)
     {
-      localObject = new kotlin.t("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(251750);
+      localObject = new t("null cannot be cast to non-null type java.lang.String");
+      AppMethodBeat.o(263922);
       throw ((Throwable)localObject);
     }
     localObject = ((String)localObject).substring(0, i);
-    p.g(localObject, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-    AppMethodBeat.o(251750);
+    p.j(localObject, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+    AppMethodBeat.o(263922);
     return localObject;
   }
   
@@ -327,33 +331,33 @@ public class FinderItem
   
   public final long getExpectId()
   {
-    AppMethodBeat.i(251746);
+    AppMethodBeat.i(263917);
     if (this.field_id == 0L)
     {
       l = getLocalId();
-      AppMethodBeat.o(251746);
+      AppMethodBeat.o(263917);
       return l;
     }
     long l = this.field_id;
-    AppMethodBeat.o(251746);
+    AppMethodBeat.o(263917);
     return l;
   }
   
-  public final aqp getExtReading()
+  public final asl getExtReading()
   {
     AppMethodBeat.i(167000);
     Object localObject = this.feedObject.objectDesc;
     if (localObject != null)
     {
-      aqp localaqp = ((FinderObjectDesc)localObject).extReading;
-      localObject = localaqp;
-      if (localaqp != null) {}
+      asl localasl = ((FinderObjectDesc)localObject).extReading;
+      localObject = localasl;
+      if (localasl != null) {}
     }
     else
     {
-      localObject = new aqp();
-      ((aqp)localObject).link = "";
-      ((aqp)localObject).title = "";
+      localObject = new asl();
+      ((asl)localObject).link = "";
+      ((asl)localObject).title = "";
     }
     AppMethodBeat.o(167000);
     return localObject;
@@ -374,6 +378,105 @@ public class FinderItem
     return this.feedObject;
   }
   
+  public final bcp getFinderLive()
+  {
+    float f2 = 0.0F;
+    AppMethodBeat.i(263950);
+    bcp localbcp = new bcp();
+    localbcp.feedId = d.Fw(getId());
+    Object localObject1 = getLiveInfo();
+    long l;
+    Object localObject2;
+    int i;
+    if (localObject1 != null)
+    {
+      l = ((bac)localObject1).liveId;
+      localbcp.kwM = d.Fw(l);
+      localbcp.username = this.field_username;
+      localbcp.nickName = getNickName();
+      localbcp.desc = ((com.tencent.mm.plugin.b)h.ae(com.tencent.mm.plugin.b.class)).aac(getDescription());
+      localObject2 = (csg)j.lp((List)getLiveMediaList());
+      if (localObject2 != null)
+      {
+        localObject1 = (CharSequence)((csg)localObject2).coverUrl;
+        if ((localObject1 != null) && (((CharSequence)localObject1).length() != 0)) {
+          break label335;
+        }
+        i = 1;
+        label145:
+        if (i == 0) {
+          break label340;
+        }
+        localObject1 = p.I(((csg)localObject2).thumbUrl, Util.nullAsNil(((csg)localObject2).thumb_url_token));
+        label167:
+        if (localObject1 != null) {
+          break label365;
+        }
+      }
+      localObject1 = "";
+    }
+    label195:
+    label335:
+    label340:
+    label355:
+    label360:
+    label365:
+    for (;;)
+    {
+      localbcp.coverUrl = ((String)localObject1);
+      float f1;
+      if (localObject2 != null)
+      {
+        f1 = ((csg)localObject2).width;
+        localbcp.width = f1;
+        f1 = f2;
+        if (localObject2 != null) {
+          f1 = ((csg)localObject2).height;
+        }
+        localbcp.height = f1;
+        localObject1 = this.feedObject.contact;
+        if (localObject1 != null)
+        {
+          localObject2 = ((FinderContact)localObject1).headUrl;
+          localObject1 = localObject2;
+          if (localObject2 != null) {}
+        }
+        else
+        {
+          localObject1 = "";
+        }
+        localbcp.headUrl = ((String)localObject1);
+        localbcp.objectNonceId = this.feedObject.objectNonceId;
+        localObject1 = getLiveInfo();
+        if (localObject1 == null) {
+          break label355;
+        }
+        i = ((bac)localObject1).liveStatus;
+        localbcp.liveStatus = i;
+        localObject1 = getLiveInfo();
+        if (localObject1 == null) {
+          break label360;
+        }
+      }
+      for (i = ((bac)localObject1).SEl;; i = -1)
+      {
+        localbcp.sourceType = i;
+        AppMethodBeat.o(263950);
+        return localbcp;
+        l = 0L;
+        break;
+        i = 0;
+        break label145;
+        localObject1 = ((csg)localObject2).coverUrl;
+        break label167;
+        f1 = 0.0F;
+        break label195;
+        i = 1;
+        break label291;
+      }
+    }
+  }
+  
   public final FinderObject getFinderObject()
   {
     return this.feedObject;
@@ -381,24 +484,22 @@ public class FinderItem
   
   public final List<BaseFinderFeed> getFoldedFeedList()
   {
-    AppMethodBeat.i(251761);
+    AppMethodBeat.i(263936);
     Object localObject2;
     if (Util.isNullOrNil(this.foldedFeeds))
     {
       localObject1 = getFoldedLayout();
       Object localObject3;
-      label82:
-      Object localObject4;
       if (localObject1 != null)
       {
-        localObject1 = ((ard)localObject1).LCW;
+        localObject1 = ((asz)localObject1).SGi;
         if (Util.isNullOrNil((List)localObject1)) {
-          break label279;
+          break label285;
         }
         localObject1 = getFoldedLayout();
         if (localObject1 != null)
         {
-          localObject1 = ((ard)localObject1).LCW;
+          localObject1 = ((asz)localObject1).SGi;
           if (localObject1 != null)
           {
             localObject1 = (Iterable)localObject1;
@@ -413,10 +514,11 @@ public class FinderItem
         label151:
         for (;;)
         {
+          label82:
           if (!((Iterator)localObject3).hasNext()) {
             break label153;
           }
-          localObject4 = ((Iterator)localObject3).next();
+          Object localObject4 = ((Iterator)localObject3).next();
           localObject1 = (FinderObject)localObject4;
           if (localObject1 != null)
           {
@@ -445,17 +547,16 @@ public class FinderItem
       while (localObject1 != null)
       {
         localObject2 = (Iterable)localObject1;
-        localObject1 = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject2, 10));
+        localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
         localObject2 = ((Iterable)localObject2).iterator();
         for (;;)
         {
           if (((Iterator)localObject2).hasNext())
           {
             localObject3 = (FinderObject)((Iterator)localObject2).next();
-            p.g(localObject3, "feed");
-            localObject3 = a.a((FinderObject)localObject3, 1);
-            localObject4 = c.vGN;
-            ((Collection)localObject1).add(c.a.s((FinderItem)localObject3));
+            p.j(localObject3, "feed");
+            localObject3 = a.b((FinderObject)localObject3, 1);
+            ((Collection)localObject1).add(((com.tencent.mm.plugin.b)h.ae(com.tencent.mm.plugin.b.class)).a((FinderItem)localObject3));
             continue;
             localObject1 = null;
             break;
@@ -464,24 +565,24 @@ public class FinderItem
         localObject1 = (List)localObject1;
         localObject2 = this.foldedFeeds;
         if (localObject1 == null) {
-          break label297;
+          break label303;
         }
       }
     }
-    label279:
-    label297:
-    for (Object localObject1 = (Collection)localObject1;; localObject1 = (Collection)v.SXr)
+    label285:
+    label303:
+    for (Object localObject1 = (Collection)localObject1;; localObject1 = (Collection)v.aaAd)
     {
       ((List)localObject2).addAll((Collection)localObject1);
       localObject1 = this.foldedFeeds;
-      AppMethodBeat.o(251761);
+      AppMethodBeat.o(263936);
       return localObject1;
       localObject1 = null;
       break;
     }
   }
   
-  public final ard getFoldedLayout()
+  public final asz getFoldedLayout()
   {
     return this.feedObject.foldedLayout;
   }
@@ -496,18 +597,64 @@ public class FinderItem
     return this.feedObject.friendLikeCount;
   }
   
+  public final String getFromAppExtInfo()
+  {
+    AppMethodBeat.i(263952);
+    Object localObject = this.feedObject.objectDesc;
+    if (localObject != null)
+    {
+      localObject = ((FinderObjectDesc)localObject).fromApp;
+      if (localObject != null)
+      {
+        String str = ((ati)localObject).MFj;
+        localObject = str;
+        if (str != null) {
+          break label42;
+        }
+      }
+    }
+    localObject = "";
+    label42:
+    p.j(localObject, "feedObject.objectDesc?.fromApp?.ext_info ?: \"\"");
+    AppMethodBeat.o(263952);
+    return localObject;
+  }
+  
+  public final String getFromAppId()
+  {
+    AppMethodBeat.i(263951);
+    Object localObject = this.feedObject.objectDesc;
+    if (localObject != null)
+    {
+      localObject = ((FinderObjectDesc)localObject).fromApp;
+      if (localObject != null)
+      {
+        String str = ((ati)localObject).appid;
+        localObject = str;
+        if (str != null) {
+          break label42;
+        }
+      }
+    }
+    localObject = "";
+    label42:
+    p.j(localObject, "feedObject.objectDesc?.fromApp?.appid ?: \"\"");
+    AppMethodBeat.o(263951);
+    return localObject;
+  }
+  
   public final int getFromType()
   {
     return this.fromType;
   }
   
-  public final LinkedList<cjl> getHalfVideoMediaExtList()
+  public final LinkedList<csg> getHalfVideoMediaExtList()
   {
-    AppMethodBeat.i(251756);
+    AppMethodBeat.i(263929);
     Object localObject = this.field_halfMediaExtList;
     if (localObject != null)
     {
-      LinkedList localLinkedList = ((cjt)localObject).Mpk;
+      LinkedList localLinkedList = ((cso)localObject).TAp;
       localObject = localLinkedList;
       if (localLinkedList != null) {}
     }
@@ -515,7 +662,7 @@ public class FinderItem
     {
       localObject = new LinkedList();
     }
-    AppMethodBeat.o(251756);
+    AppMethodBeat.o(263929);
     return localObject;
   }
   
@@ -538,37 +685,37 @@ public class FinderItem
   {
     AppMethodBeat.i(166994);
     LinkedList localLinkedList = this.feedObject.likeList;
-    p.g(localLinkedList, "feedObject.likeList");
+    p.j(localLinkedList, "feedObject.likeList");
     AppMethodBeat.o(166994);
     return localLinkedList;
   }
   
-  public final cjl getLiveFinderMedia()
+  public final csg getLiveFinderMedia()
   {
     return this.liveFinderMedia;
   }
   
-  public final awe getLiveInfo()
+  public final bac getLiveInfo()
   {
     return this.feedObject.liveInfo;
   }
   
-  public final LinkedList<cjl> getLiveMediaList()
+  public final LinkedList<csg> getLiveMediaList()
   {
-    AppMethodBeat.i(251751);
+    AppMethodBeat.i(263923);
     Object localObject = this.feedObject.objectDesc;
     if (localObject != null)
     {
       localObject = ((FinderObjectDesc)localObject).media;
       if (localObject != null)
       {
-        localObject = com.tencent.mm.plugin.finder.storage.data.j.aA((LinkedList)localObject);
-        AppMethodBeat.o(251751);
+        localObject = i.aR((LinkedList)localObject);
+        AppMethodBeat.o(263923);
         return localObject;
       }
     }
     localObject = new LinkedList();
-    AppMethodBeat.o(251751);
+    AppMethodBeat.o(263923);
     return localObject;
   }
   
@@ -577,33 +724,33 @@ public class FinderItem
     return this.field_localId;
   }
   
-  public final axt getLocation()
+  public final bdm getLocation()
   {
     AppMethodBeat.i(166998);
     Object localObject = this.feedObject.objectDesc;
     if (localObject != null)
     {
-      axt localaxt = ((FinderObjectDesc)localObject).location;
-      localObject = localaxt;
-      if (localaxt != null) {}
+      bdm localbdm = ((FinderObjectDesc)localObject).location;
+      localObject = localbdm;
+      if (localbdm != null) {}
     }
     else
     {
-      localObject = new axt();
-      ((axt)localObject).fuK = "";
-      ((axt)localObject).kHV = "";
+      localObject = new bdm();
+      ((bdm)localObject).city = "";
+      ((bdm)localObject).poiName = "";
     }
     AppMethodBeat.o(166998);
     return localObject;
   }
   
-  public final LinkedList<cjl> getLongVideoMediaExtList()
+  public final LinkedList<csg> getLongVideoMediaExtList()
   {
-    AppMethodBeat.i(251754);
+    AppMethodBeat.i(263927);
     Object localObject = this.field_longVideoMediaExtList;
     if (localObject != null)
     {
-      LinkedList localLinkedList = ((cjt)localObject).Mpk;
+      LinkedList localLinkedList = ((cso)localObject).TAp;
       localObject = localLinkedList;
       if (localLinkedList != null) {}
     }
@@ -611,42 +758,42 @@ public class FinderItem
     {
       localObject = new LinkedList();
     }
-    AppMethodBeat.o(251754);
+    AppMethodBeat.o(263927);
     return localObject;
   }
   
-  public final LinkedList<cjl> getLongVideoMediaList()
+  public final LinkedList<csg> getLongVideoMediaList()
   {
-    AppMethodBeat.i(251752);
+    AppMethodBeat.i(263925);
     if (getLongVideoMediaExtList().size() > 0)
     {
       localObject = getLongVideoMediaExtList();
-      AppMethodBeat.o(251752);
+      AppMethodBeat.o(263925);
       return localObject;
     }
     Object localObject = this.feedObject.attachmentList;
     if (localObject != null)
     {
-      localObject = ((aoq)localObject).LAM;
+      localObject = ((apx)localObject).SDm;
       if (localObject != null)
       {
-        localObject = (aop)kotlin.a.j.kt((List)localObject);
+        localObject = (apw)j.lp((List)localObject);
         if (localObject != null)
         {
-          localObject = ((aop)localObject).LAL;
+          localObject = ((apw)localObject).SDl;
           if (localObject != null)
           {
-            localObject = ((bei)localObject).LIA;
+            localObject = ((blj)localObject).SPm;
             if (localObject != null)
             {
-              localObject = ((cng)localObject).MtG;
+              localObject = ((cvy)localObject).TEM;
               if (localObject != null)
               {
-                localObject = ((cnl)localObject).media;
+                localObject = ((cwc)localObject).media;
                 if (localObject != null)
                 {
-                  localObject = com.tencent.mm.plugin.finder.storage.data.j.aB((LinkedList)localObject);
-                  AppMethodBeat.o(251752);
+                  localObject = i.aS((LinkedList)localObject);
+                  AppMethodBeat.o(263925);
                   return localObject;
                 }
               }
@@ -656,17 +803,17 @@ public class FinderItem
       }
     }
     localObject = new LinkedList();
-    AppMethodBeat.o(251752);
+    AppMethodBeat.o(263925);
     return localObject;
   }
   
-  public final LinkedList<cjl> getMediaExtList()
+  public final LinkedList<csg> getMediaExtList()
   {
     AppMethodBeat.i(166991);
     Object localObject = this.field_mediaExtList;
     if (localObject != null)
     {
-      LinkedList localLinkedList = ((cjt)localObject).Mpk;
+      LinkedList localLinkedList = ((cso)localObject).TAp;
       localObject = localLinkedList;
       if (localLinkedList != null) {}
     }
@@ -678,21 +825,21 @@ public class FinderItem
     return localObject;
   }
   
-  public final LinkedList<cjl> getMediaList()
+  public final LinkedList<csg> getMediaList()
   {
     AppMethodBeat.i(166989);
     if (this.mediaType == 9)
     {
       if (this.liveFinderMedia == null)
       {
-        cjl localcjl = new cjl();
+        csg localcsg = new csg();
         localObject1 = this.feedObject;
         if (localObject1 != null)
         {
           localObject1 = ((FinderObject)localObject1).liveInfo;
           if (localObject1 != null)
           {
-            localObject2 = ((awe)localObject1).EzJ;
+            localObject2 = ((bac)localObject1).kih;
             localObject1 = localObject2;
             if (localObject2 != null) {
               break label63;
@@ -701,17 +848,17 @@ public class FinderItem
         }
         localObject1 = "";
         label63:
-        localcjl.url = ((String)localObject1);
-        localcjl.mediaType = 9;
-        localcjl.thumbUrl = p.I(((cjl)kotlin.a.j.ks((List)getLiveMediaList())).thumbUrl, Util.nullAsNil(((cjl)kotlin.a.j.ks((List)getLiveMediaList())).thumb_url_token));
-        localcjl.videoDuration = 0;
-        localcjl.mediaId = MD5Util.getMD5String(localcjl.url);
-        localcjl.width = 1000.0F;
-        localcjl.height = 1167.0F;
-        localcjl.md5sum = "";
-        localcjl.fileSize = 0;
-        localcjl.bitrate = 0;
-        this.liveFinderMedia = localcjl;
+        localcsg.url = ((String)localObject1);
+        localcsg.mediaType = 9;
+        localcsg.thumbUrl = p.I(((csg)j.lo((List)getLiveMediaList())).thumbUrl, Util.nullAsNil(((csg)j.lo((List)getLiveMediaList())).thumb_url_token));
+        localcsg.videoDuration = 0;
+        localcsg.mediaId = MD5Util.getMD5String(localcsg.url);
+        localcsg.width = 1000.0F;
+        localcsg.height = 1167.0F;
+        localcsg.md5sum = "";
+        localcsg.fileSize = 0;
+        localcsg.bitrate = 0;
+        this.liveFinderMedia = localcsg;
       }
       localObject1 = new LinkedList();
       Object localObject2 = this.liveFinderMedia;
@@ -733,7 +880,7 @@ public class FinderItem
       localObject1 = ((FinderObjectDesc)localObject1).media;
       if (localObject1 != null)
       {
-        localObject1 = com.tencent.mm.plugin.finder.storage.data.j.aA((LinkedList)localObject1);
+        localObject1 = i.aR((LinkedList)localObject1);
         AppMethodBeat.o(166989);
         return localObject1;
       }
@@ -748,30 +895,35 @@ public class FinderItem
     return this.mediaType;
   }
   
-  public final cng getMegaVideo()
+  public final cvy getMegaVideo()
   {
-    AppMethodBeat.i(251748);
+    AppMethodBeat.i(263920);
     Object localObject = this.feedObject.attachmentList;
     if (localObject != null)
     {
-      localObject = ((aoq)localObject).LAM;
+      localObject = ((apx)localObject).SDm;
       if (localObject != null)
       {
-        localObject = (aop)kotlin.a.j.kt((List)localObject);
+        localObject = (apw)j.lp((List)localObject);
         if (localObject != null)
         {
-          localObject = ((aop)localObject).LAL;
+          localObject = ((apw)localObject).SDl;
           if (localObject != null)
           {
-            localObject = ((bei)localObject).LIA;
-            AppMethodBeat.o(251748);
+            localObject = ((blj)localObject).SPm;
+            AppMethodBeat.o(263920);
             return localObject;
           }
         }
       }
     }
-    AppMethodBeat.o(251748);
+    AppMethodBeat.o(263920);
     return null;
+  }
+  
+  public final int getMentionListSelected()
+  {
+    return this.feedObject.mentionedListSelected;
   }
   
   public final String getNickName()
@@ -809,21 +961,21 @@ public class FinderItem
     return str1;
   }
   
-  public final b getPosTriggerConfig()
+  public final h.a getPosTriggerConfig()
   {
     return this.posTriggerConfig;
   }
   
-  public final cjm getPostInfo()
+  public final csh getPostInfo()
   {
     AppMethodBeat.i(167004);
-    cjm localcjm2 = this.field_postinfo;
-    cjm localcjm1 = localcjm2;
-    if (localcjm2 == null) {
-      localcjm1 = new cjm();
+    csh localcsh2 = this.field_postinfo;
+    csh localcsh1 = localcsh2;
+    if (localcsh2 == null) {
+      localcsh1 = new csh();
     }
     AppMethodBeat.o(167004);
-    return localcjm1;
+    return localcsh1;
   }
   
   public final int getPrivate_flag()
@@ -863,6 +1015,11 @@ public class FinderItem
     return this.relatedFeedId;
   }
   
+  public final boolean getShowExtendLink()
+  {
+    return this.showExtendLink;
+  }
+  
   public final int getStickyTime()
   {
     return this.feedObject.stickyTime;
@@ -873,21 +1030,21 @@ public class FinderItem
     return this.timestamps;
   }
   
-  public final w.a getTopicClickExtra()
+  public final c getTopicClickExtra()
   {
     return this.topicClickExtra;
   }
   
-  public final List<w.c> getTopicList()
+  public final List<ax> getTopicList()
   {
     return this.topicList;
   }
   
   public final String getUnsignedId()
   {
-    AppMethodBeat.i(251745);
-    String str = d.zs(getId());
-    AppMethodBeat.o(251745);
+    AppMethodBeat.i(263916);
+    String str = d.Fw(getId());
+    AppMethodBeat.o(263916);
     return str;
   }
   
@@ -911,12 +1068,12 @@ public class FinderItem
       int i = Math.min(((String)localObject).length(), 3);
       if (localObject == null)
       {
-        localObject = new kotlin.t("null cannot be cast to non-null type java.lang.String");
+        localObject = new t("null cannot be cast to non-null type java.lang.String");
         AppMethodBeat.o(167012);
         throw ((Throwable)localObject);
       }
       localObject = ((String)localObject).substring(0, i);
-      p.g(localObject, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+      p.j(localObject, "(this as java.lang.Strin…ing(startIndex, endIndex)");
     }
     for (;;)
     {
@@ -937,6 +1094,11 @@ public class FinderItem
     return (this.field_localFlag & 0x10) != 0;
   }
   
+  public final boolean isEventExpired()
+  {
+    return (this.field_localFlag & 0x20) != 0;
+  }
+  
   public final boolean isLive()
   {
     return this.mediaType == 9;
@@ -949,13 +1111,13 @@ public class FinderItem
   
   public final boolean isLongVideo()
   {
-    AppMethodBeat.i(251760);
+    AppMethodBeat.i(263934);
     if (!((Collection)getLongVideoMediaList()).isEmpty())
     {
-      AppMethodBeat.o(251760);
+      AppMethodBeat.o(263934);
       return true;
     }
-    AppMethodBeat.o(251760);
+    AppMethodBeat.o(263934);
     return false;
   }
   
@@ -967,13 +1129,13 @@ public class FinderItem
   public final boolean isNeedCrop(int paramInt)
   {
     AppMethodBeat.i(167008);
-    cjl localcjl = getCropInfo(paramInt);
-    if (localcjl == null)
+    csg localcsg = getCropInfo(paramInt);
+    if (localcsg == null)
     {
       AppMethodBeat.o(167008);
       return false;
     }
-    if (localcjl.MoO)
+    if (localcsg.TzU)
     {
       AppMethodBeat.o(167008);
       return true;
@@ -984,21 +1146,21 @@ public class FinderItem
   
   public final boolean isNeedVideoCompositionPlay(int paramInt)
   {
-    AppMethodBeat.i(251762);
-    cjl localcjl = getCropInfo(paramInt);
-    y localy = y.vXH;
-    if (!y.h(localcjl))
+    AppMethodBeat.i(263937);
+    csg localcsg = getCropInfo(paramInt);
+    ak localak = ak.AGL;
+    if (!ak.g(localcsg))
     {
-      AppMethodBeat.o(251762);
+      AppMethodBeat.o(263937);
       return true;
     }
-    AppMethodBeat.o(251762);
+    AppMethodBeat.o(263937);
     return false;
   }
   
   public final boolean isNotShare()
   {
-    return this.feedObject.objectStatus == 2;
+    return ((this.feedObject.objectStatus & 0x1) != 0) || ((this.feedObject.objectStatus & 0x2) != 0);
   }
   
   public final boolean isOldVersion()
@@ -1009,7 +1171,7 @@ public class FinderItem
   public final boolean isOnlySelfSee()
   {
     if (debugOnlySelfSee) {}
-    while (this.feedObject.objectStatus == 1) {
+    while ((this.feedObject.objectStatus & 0x1) != 0) {
       return true;
     }
     return false;
@@ -1055,14 +1217,14 @@ public class FinderItem
     return this.isReplaceLongVideoToNormal;
   }
   
-  public final cjl mediaExt(String paramString)
+  public final csg mediaExt(String paramString)
   {
     AppMethodBeat.i(166993);
-    p.h(paramString, "mediaId");
+    p.k(paramString, "mediaId");
     Object localObject = this.field_mediaExtList;
     if (localObject != null)
     {
-      localObject = ((cjt)localObject).Mpk;
+      localObject = ((cso)localObject).TAp;
       if (localObject != null)
       {
         Iterator localIterator = ((Iterable)localObject).iterator();
@@ -1072,10 +1234,10 @@ public class FinderItem
             break;
           }
           localObject = localIterator.next();
-        } while (!p.j(((cjl)localObject).mediaId, paramString));
+        } while (!p.h(((csg)localObject).mediaId, paramString));
         for (paramString = (String)localObject;; paramString = null)
         {
-          paramString = (cjl)paramString;
+          paramString = (csg)paramString;
           AppMethodBeat.o(166993);
           return paramString;
         }
@@ -1085,140 +1247,19 @@ public class FinderItem
     return null;
   }
   
-  public final b parseJsonOfPosTriggerConfig()
-  {
-    AppMethodBeat.i(251744);
-    Object localObject1 = new b(5, 0, 4, 0, "0");
-    Object localObject2 = new b(10, 80, 8, 64, "||");
-    int i;
-    if (this.mediaType == 2)
-    {
-      localObject2 = this.feedObject.posTriggerConfig;
-      if (localObject2 == null) {
-        break label513;
-      }
-      p.g(localObject2, "it");
-      if (((CharSequence)localObject2).length() <= 0) {
-        break label455;
-      }
-      i = 1;
-      label87:
-      label91:
-      if ((i != 0) && (localObject2 == null)) {
-        break label513;
-      }
-    }
-    label513:
-    label522:
-    label529:
-    label536:
-    for (;;)
-    {
-      boolean bool1;
-      try
-      {
-        JSONObject localJSONObject1 = new JSONObject((String)localObject2);
-        i = ((b)localObject1).tXx;
-        if (localJSONObject1.has("maxUnreadCount")) {
-          i = localJSONObject1.getInt("maxUnreadCount");
-        }
-        JSONObject localJSONObject2 = localJSONObject1.getJSONObject("config");
-        int j = ((b)localObject1).vDO;
-        if (localJSONObject2.has("showTime")) {
-          j = localJSONObject2.getInt("showTime");
-        }
-        int k = ((b)localObject1).vDP;
-        if (localJSONObject2.has("showPercentage")) {
-          k = localJSONObject2.getInt("showPercentage");
-        }
-        int m = ((b)localObject1).vDQ;
-        if (localJSONObject2.has("preLoadTime")) {
-          m = localJSONObject2.getInt("preLoadTime");
-        }
-        int n = ((b)localObject1).vDR;
-        if (localJSONObject2.has("preLoadPercentage")) {
-          n = localJSONObject2.getInt("preLoadPercentage");
-        }
-        String str = ((b)localObject1).vDS;
-        if (localJSONObject2.has("logic"))
-        {
-          str = localJSONObject2.getString("logic");
-          p.g(str, "config.getString(\"logic\")");
-        }
-        bool2 = ((b)localObject1).vDT;
-        if (localJSONObject1.has("favRelateListEnable"))
-        {
-          if (localJSONObject1.optInt("favRelateListEnable") == 1)
-          {
-            bool1 = true;
-            break label522;
-          }
-        }
-        else
-        {
-          bool3 = ((b)localObject1).vDU;
-          if (localJSONObject1.has("favRelateListEnableOnClick"))
-          {
-            if (localJSONObject1.optInt("favRelateListEnableOnClick") != 1) {
-              continue;
-            }
-            bool1 = true;
-            break label529;
-          }
-          bool1 = ((b)localObject1).vDV;
-          if (localJSONObject1.has("likeRelateListEnable"))
-          {
-            if (localJSONObject1.optInt("likeRelateListEnable") != 1) {
-              continue;
-            }
-            bool1 = true;
-            break label536;
-          }
-          localObject2 = new b(i, j, k, m, n, str, bool2, bool3, bool1, false, (String)localObject2);
-          Log.i(TAG, "[parseJsonOfPosTriggerConfig] config=".concat(String.valueOf(localObject2)));
-          AppMethodBeat.o(251744);
-          return localObject2;
-          localObject1 = localObject2;
-          break;
-          label455:
-          i = 0;
-          break label87;
-          localObject2 = null;
-          break label91;
-        }
-        bool1 = false;
-        break label522;
-        bool1 = false;
-        break label529;
-        bool1 = false;
-      }
-      catch (Exception localException)
-      {
-        Log.printErrStackTrace(TAG, (Throwable)localException, "", new Object[0]);
-        AppMethodBeat.o(251744);
-        return localObject1;
-      }
-      AppMethodBeat.o(251744);
-      return localObject1;
-      boolean bool2 = bool1;
-      continue;
-      boolean bool3 = bool1;
-    }
-  }
-  
   public final void setClipListExt(LinkedList<FinderItem> paramLinkedList)
   {
-    AppMethodBeat.i(251759);
-    p.h(paramLinkedList, "value");
+    AppMethodBeat.i(263932);
+    p.k(paramLinkedList, "value");
     this._clipListExt.clear();
     this._clipListExt.addAll((Collection)paramLinkedList);
     if (this.field_clipList == null) {
-      this.field_clipList = new cjh();
+      this.field_clipList = new csc();
     }
     Object localObject1 = this.field_clipList;
     if (localObject1 != null)
     {
-      localObject1 = ((cjh)localObject1).MoH;
+      localObject1 = ((csc)localObject1).TzN;
       if (localObject1 != null) {
         ((LinkedList)localObject1).clear();
       }
@@ -1230,13 +1271,13 @@ public class FinderItem
       Object localObject2 = this.field_clipList;
       if (localObject2 != null)
       {
-        localObject2 = ((cjh)localObject2).MoH;
+        localObject2 = ((csc)localObject2).TzN;
         if (localObject2 != null) {
-          ((LinkedList)localObject2).add(a.l((FinderItem)localObject1));
+          ((LinkedList)localObject2).add(a.m((FinderItem)localObject1));
         }
       }
     }
-    AppMethodBeat.o(251759);
+    AppMethodBeat.o(263932);
   }
   
   public final void setCommentCount(int paramInt)
@@ -1250,7 +1291,7 @@ public class FinderItem
   public final void setCommentList(LinkedList<FinderCommentInfo> paramLinkedList)
   {
     AppMethodBeat.i(166997);
-    p.h(paramLinkedList, "value");
+    p.k(paramLinkedList, "value");
     this.feedObject.commentList = paramLinkedList;
     AppMethodBeat.o(166997);
   }
@@ -1265,15 +1306,15 @@ public class FinderItem
     this.feedObject.createtime = paramInt;
   }
   
-  public final void setCustomData(aqg paramaqg)
+  public final void setCustomData(arw paramarw)
   {
-    this.field_customData = paramaqg;
+    this.field_customData = paramarw;
   }
   
   public final void setDescription(String paramString)
   {
     AppMethodBeat.i(166988);
-    p.h(paramString, "value");
+    p.k(paramString, "value");
     FinderObjectDesc localFinderObjectDesc = this.feedObject.objectDesc;
     if (localFinderObjectDesc != null) {
       localFinderObjectDesc.description = paramString;
@@ -1299,14 +1340,19 @@ public class FinderItem
     this.field_localFlag |= 0x10;
   }
   
-  public final void setExtReading(aqp paramaqp)
+  public final void setEventExpired()
+  {
+    this.field_localFlag |= 0x20;
+  }
+  
+  public final void setExtReading(asl paramasl)
   {
     AppMethodBeat.i(167001);
-    p.h(paramaqp, "value");
+    p.k(paramasl, "value");
     FinderObjectDesc localFinderObjectDesc = this.feedObject.objectDesc;
     if (localFinderObjectDesc != null)
     {
-      localFinderObjectDesc.extReading = paramaqp;
+      localFinderObjectDesc.extReading = paramasl;
       AppMethodBeat.o(167001);
       return;
     }
@@ -1326,9 +1372,9 @@ public class FinderItem
   public final void setFeedObject(FinderObject paramFinderObject)
   {
     AppMethodBeat.i(166980);
-    p.h(paramFinderObject, "value");
-    Object localObject1 = y.vXH;
-    this.mediaType = y.t(paramFinderObject);
+    p.k(paramFinderObject, "value");
+    Object localObject1 = ak.AGL;
+    this.mediaType = ak.F(paramFinderObject);
     this.field_createTime = paramFinderObject.createtime;
     this.field_id = paramFinderObject.id;
     Object localObject2 = paramFinderObject.username;
@@ -1341,18 +1387,20 @@ public class FinderItem
     this.feedObject = paramFinderObject;
     this.field_finderObject = paramFinderObject;
     Object localObject3;
+    Object localObject4;
+    com.tencent.mm.plugin.b localb;
     if (this.fromType == 16)
     {
       localObject3 = MMApplicationContext.getContext();
-      localObject1 = i.vvu;
+      localObject4 = (com.tencent.mm.plugin.b)h.ae(com.tencent.mm.plugin.b.class);
       localObject2 = paramFinderObject.nickname;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
-      this.nickNameSpan = com.tencent.mm.pluginsdk.ui.span.l.d((Context)localObject3, (CharSequence)i.auZ((String)localObject1), 0.0F);
+      this.nickNameSpan = com.tencent.mm.pluginsdk.ui.span.l.d((Context)localObject3, (CharSequence)((com.tencent.mm.plugin.b)localObject4).bZ((String)localObject1, ""), 0.0F);
       localObject3 = MMApplicationContext.getContext();
-      localObject1 = i.vvu;
+      localObject4 = (com.tencent.mm.plugin.b)h.ae(com.tencent.mm.plugin.b.class);
       localObject1 = paramFinderObject.objectDesc;
       if (localObject1 != null)
       {
@@ -1364,19 +1412,20 @@ public class FinderItem
       {
         localObject1 = "";
       }
-      this.descriptionSpan = com.tencent.mm.pluginsdk.ui.span.l.b((Context)localObject3, (CharSequence)i.auY((String)localObject1), 0.0F);
-      localObject1 = com.tencent.mm.plugin.finder.utils.t.vWZ;
+      this.descriptionSpan = com.tencent.mm.pluginsdk.ui.span.l.b((Context)localObject3, (CharSequence)((com.tencent.mm.plugin.b)localObject4).aac((String)localObject1), 0.0F);
+      localb = (com.tencent.mm.plugin.b)h.ae(com.tencent.mm.plugin.b.class);
       localObject1 = paramFinderObject.objectDesc;
       if (localObject1 == null) {
-        break label513;
+        break label546;
       }
       localObject1 = ((FinderObjectDesc)localObject1).topic;
       if (localObject1 == null) {
-        break label513;
+        break label546;
       }
     }
-    label513:
-    for (localObject1 = ((bdq)localObject1).LNs;; localObject1 = null)
+    label535:
+    label546:
+    for (localObject1 = ((bkp)localObject1).SVC;; localObject1 = null)
     {
       localObject3 = this.descriptionSpan;
       localObject2 = localObject3;
@@ -1385,23 +1434,23 @@ public class FinderItem
       }
       long l = this.field_id;
       List localList = this.topicList;
-      LinkedList localLinkedList = paramFinderObject.mentionedUserContact;
-      localObject3 = localLinkedList;
-      if (localLinkedList == null) {
+      localObject4 = paramFinderObject.mentionedUserContact;
+      localObject3 = localObject4;
+      if (localObject4 == null) {
         localObject3 = new LinkedList();
       }
       paramFinderObject = paramFinderObject.objectDesc;
       if (paramFinderObject != null)
       {
-        localLinkedList = paramFinderObject.mentionedUser;
-        paramFinderObject = localLinkedList;
-        if (localLinkedList != null) {}
+        localObject4 = paramFinderObject.mentionedUser;
+        paramFinderObject = (FinderObject)localObject4;
+        if (localObject4 != null) {}
       }
       else
       {
         paramFinderObject = new LinkedList();
       }
-      this.descriptionFullSpan = com.tencent.mm.plugin.finder.utils.t.a((String)localObject1, (SpannableString)localObject2, l, localList, (LinkedList)localObject3, paramFinderObject, (m)new e(this), (b)new f(this));
+      this.descriptionFullSpan = localb.a((String)localObject1, (SpannableString)localObject2, l, localList, (LinkedList)localObject3, paramFinderObject, (m)new d(this), (kotlin.g.a.b)new e(this));
       if (this.fromType != 16) {
         this.descriptionSpan = com.tencent.mm.pluginsdk.ui.span.l.d(MMApplicationContext.getContext(), (CharSequence)String.valueOf(this.descriptionFullSpan), 0.0F);
       }
@@ -1412,32 +1461,31 @@ public class FinderItem
       if (localObject1 != null)
       {
         localObject1 = (CharSequence)localObject1;
-        label431:
+        label464:
         this.nickNameSpan = com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject2, (CharSequence)localObject1);
         localObject2 = MMApplicationContext.getContext();
         localObject1 = paramFinderObject.objectDesc;
         if (localObject1 == null) {
-          break label502;
+          break label535;
         }
         localObject1 = ((FinderObjectDesc)localObject1).description;
         if (localObject1 == null) {
-          break label502;
+          break label535;
         }
       }
-      label502:
       for (localObject1 = (CharSequence)localObject1;; localObject1 = (CharSequence)"")
       {
         this.descriptionSpan = com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject2, (CharSequence)localObject1);
         break;
         localObject1 = (CharSequence)"";
-        break label431;
+        break label464;
       }
     }
   }
   
-  public final void setFoldedLayout(ard paramard)
+  public final void setFoldedLayout(asz paramasz)
   {
-    this.foldedLayout = paramard;
+    this.foldedLayout = paramasz;
   }
   
   public final void setForwardCount(int paramInt)
@@ -1455,15 +1503,15 @@ public class FinderItem
     this.fromType = paramInt;
   }
   
-  public final void setHalfVideoMediaExtList(LinkedList<cjl> paramLinkedList)
+  public final void setHalfVideoMediaExtList(LinkedList<csg> paramLinkedList)
   {
-    AppMethodBeat.i(251757);
-    p.h(paramLinkedList, "value");
+    AppMethodBeat.i(263930);
+    p.k(paramLinkedList, "value");
     if (this.field_halfMediaExtList == null) {
-      this.field_halfMediaExtList = new cjt();
+      this.field_halfMediaExtList = new cso();
     }
-    this.field_halfMediaExtList.Mpk = paramLinkedList;
-    AppMethodBeat.o(251757);
+    this.field_halfMediaExtList.TAp = paramLinkedList;
+    AppMethodBeat.o(263930);
   }
   
   public final void setLikeCount(int paramInt)
@@ -1479,19 +1527,19 @@ public class FinderItem
   public final void setLikeList(LinkedList<FinderCommentInfo> paramLinkedList)
   {
     AppMethodBeat.i(166995);
-    p.h(paramLinkedList, "value");
+    p.k(paramLinkedList, "value");
     this.feedObject.likeList = paramLinkedList;
     AppMethodBeat.o(166995);
   }
   
-  public final void setLiveFinderMedia(cjl paramcjl)
+  public final void setLiveFinderMedia(csg paramcsg)
   {
-    this.liveFinderMedia = paramcjl;
+    this.liveFinderMedia = paramcsg;
   }
   
-  public final void setLiveInfo(awe paramawe)
+  public final void setLiveInfo(bac parambac)
   {
-    this.feedObject.liveInfo = paramawe;
+    this.feedObject.liveInfo = parambac;
   }
   
   public final void setLocalId(long paramLong)
@@ -1499,55 +1547,55 @@ public class FinderItem
     this.field_localId = paramLong;
   }
   
-  public final void setLocation(axt paramaxt)
+  public final void setLocation(bdm parambdm)
   {
     AppMethodBeat.i(166999);
-    p.h(paramaxt, "value");
+    p.k(parambdm, "value");
     FinderObjectDesc localFinderObjectDesc = this.feedObject.objectDesc;
     if (localFinderObjectDesc != null)
     {
-      localFinderObjectDesc.location = paramaxt;
+      localFinderObjectDesc.location = parambdm;
       AppMethodBeat.o(166999);
       return;
     }
     AppMethodBeat.o(166999);
   }
   
-  public final void setLongVideoMediaExtList(LinkedList<cjl> paramLinkedList)
+  public final void setLongVideoMediaExtList(LinkedList<csg> paramLinkedList)
   {
-    AppMethodBeat.i(251755);
-    p.h(paramLinkedList, "value");
+    AppMethodBeat.i(263928);
+    p.k(paramLinkedList, "value");
     if (this.field_longVideoMediaExtList == null) {
-      this.field_longVideoMediaExtList = new cjt();
+      this.field_longVideoMediaExtList = new cso();
     }
-    this.field_longVideoMediaExtList.Mpk = paramLinkedList;
-    AppMethodBeat.o(251755);
+    this.field_longVideoMediaExtList.TAp = paramLinkedList;
+    AppMethodBeat.o(263928);
   }
   
-  public final void setLongVideoMediaList(LinkedList<cjl> paramLinkedList)
+  public final void setLongVideoMediaList(LinkedList<csg> paramLinkedList)
   {
-    AppMethodBeat.i(251753);
-    p.h(paramLinkedList, "value");
+    AppMethodBeat.i(263926);
+    p.k(paramLinkedList, "value");
     Object localObject = this.feedObject.attachmentList;
     if (localObject != null)
     {
-      localObject = ((aoq)localObject).LAM;
+      localObject = ((apx)localObject).SDm;
       if (localObject != null)
       {
-        localObject = (aop)kotlin.a.j.kt((List)localObject);
+        localObject = (apw)j.lp((List)localObject);
         if (localObject != null)
         {
-          localObject = ((aop)localObject).LAL;
+          localObject = ((apw)localObject).SDl;
           if (localObject != null)
           {
-            localObject = ((bei)localObject).LIA;
+            localObject = ((blj)localObject).SPm;
             if (localObject != null)
             {
-              localObject = ((cng)localObject).MtG;
+              localObject = ((cvy)localObject).TEM;
               if (localObject != null)
               {
-                ((cnl)localObject).media = o.aC(paramLinkedList);
-                AppMethodBeat.o(251753);
+                ((cwc)localObject).media = n.aT(paramLinkedList);
+                AppMethodBeat.o(263926);
                 return;
               }
             }
@@ -1555,63 +1603,63 @@ public class FinderItem
         }
       }
     }
-    AppMethodBeat.o(251753);
+    AppMethodBeat.o(263926);
   }
   
-  public final void setMediaExtList(LinkedList<cjl> paramLinkedList)
+  public final void setMediaExtList(LinkedList<csg> paramLinkedList)
   {
     AppMethodBeat.i(166992);
-    p.h(paramLinkedList, "value");
+    p.k(paramLinkedList, "value");
     if (this.field_mediaExtList == null) {
-      this.field_mediaExtList = new cjt();
+      this.field_mediaExtList = new cso();
     }
-    this.field_mediaExtList.Mpk = paramLinkedList;
+    this.field_mediaExtList.TAp = paramLinkedList;
     AppMethodBeat.o(166992);
   }
   
-  public final void setMediaList(LinkedList<cjl> paramLinkedList)
+  public final void setMediaList(LinkedList<csg> paramLinkedList)
   {
     AppMethodBeat.i(166990);
-    p.h(paramLinkedList, "value");
+    p.k(paramLinkedList, "value");
     FinderObjectDesc localFinderObjectDesc = this.feedObject.objectDesc;
     if (localFinderObjectDesc != null)
     {
-      p.h(paramLinkedList, "$this$toServer");
+      p.k(paramLinkedList, "$this$toServer");
       LinkedList localLinkedList1 = new LinkedList();
       Iterator localIterator = ((Iterable)paramLinkedList).iterator();
       while (localIterator.hasNext())
       {
-        cjl localcjl = (cjl)localIterator.next();
-        p.h(localcjl, "$this$toServer");
+        csg localcsg = (csg)localIterator.next();
+        p.k(localcsg, "$this$toServer");
         FinderMedia localFinderMedia = new FinderMedia();
-        localFinderMedia.url = localcjl.url;
-        localFinderMedia.thumbUrl = localcjl.thumbUrl;
-        localFinderMedia.mediaType = localcjl.mediaType;
-        localFinderMedia.videoDuration = localcjl.videoDuration;
-        localFinderMedia.width = localcjl.width;
-        localFinderMedia.height = localcjl.height;
-        localFinderMedia.md5sum = localcjl.md5sum;
-        localFinderMedia.fileSize = localcjl.fileSize;
-        localFinderMedia.bitrate = localcjl.bitrate;
+        localFinderMedia.url = localcsg.url;
+        localFinderMedia.thumbUrl = localcsg.thumbUrl;
+        localFinderMedia.mediaType = localcsg.mediaType;
+        localFinderMedia.videoDuration = localcsg.videoDuration;
+        localFinderMedia.width = localcsg.width;
+        localFinderMedia.height = localcsg.height;
+        localFinderMedia.md5sum = localcsg.md5sum;
+        localFinderMedia.fileSize = localcsg.fileSize;
+        localFinderMedia.bitrate = localcsg.bitrate;
         LinkedList localLinkedList2 = localFinderMedia.spec;
         localLinkedList2.clear();
-        localLinkedList2.addAll((Collection)localcjl.spec);
-        localFinderMedia.coverUrl = localcjl.coverUrl;
-        localFinderMedia.decodeKey = localcjl.decodeKey;
-        localFinderMedia.url_token = localcjl.url_token;
-        localFinderMedia.thumb_url_token = localcjl.thumb_url_token;
-        localFinderMedia.cover_url_token = localcjl.cover_url_token;
-        localFinderMedia.codec_info = localcjl.codec_info;
-        localFinderMedia.hot_flag = localcjl.hot_flag;
-        localFinderMedia.half_rect = localcjl.MoU;
-        localFinderMedia.full_thumb_url = localcjl.MoR;
-        localFinderMedia.full_thumb_url_token = localcjl.MoS;
-        localFinderMedia.full_url = localcjl.full_url;
-        localFinderMedia.full_width = localcjl.full_width;
-        localFinderMedia.full_height = localcjl.full_height;
-        localFinderMedia.full_md5sum = localcjl.full_md5sum;
-        localFinderMedia.full_file_size = localcjl.full_file_size;
-        localFinderMedia.full_bitrate = localcjl.full_bitrate;
+        localLinkedList2.addAll((Collection)localcsg.spec);
+        localFinderMedia.coverUrl = localcsg.coverUrl;
+        localFinderMedia.decodeKey = localcsg.decodeKey;
+        localFinderMedia.url_token = localcsg.url_token;
+        localFinderMedia.thumb_url_token = localcsg.thumb_url_token;
+        localFinderMedia.cover_url_token = localcsg.cover_url_token;
+        localFinderMedia.codec_info = localcsg.codec_info;
+        localFinderMedia.hot_flag = localcsg.hot_flag;
+        localFinderMedia.half_rect = localcsg.TAa;
+        localFinderMedia.full_thumb_url = localcsg.TzX;
+        localFinderMedia.full_thumb_url_token = localcsg.TzY;
+        localFinderMedia.full_url = localcsg.full_url;
+        localFinderMedia.full_width = localcsg.full_width;
+        localFinderMedia.full_height = localcsg.full_height;
+        localFinderMedia.full_md5sum = localcsg.full_md5sum;
+        localFinderMedia.full_file_size = localcsg.full_file_size;
+        localFinderMedia.full_bitrate = localcsg.full_bitrate;
         localLinkedList1.add(localFinderMedia);
       }
       localFinderObjectDesc.media = localLinkedList1;
@@ -1627,35 +1675,40 @@ public class FinderItem
     this.mediaType = paramInt;
   }
   
-  public final void setMegaVideo(cng paramcng)
+  public final void setMegaVideo(cvy paramcvy)
   {
-    AppMethodBeat.i(251749);
+    AppMethodBeat.i(263921);
     Object localObject = this.feedObject.attachmentList;
     if (localObject != null)
     {
-      localObject = ((aoq)localObject).LAM;
+      localObject = ((apx)localObject).SDm;
       if (localObject != null)
       {
-        localObject = (aop)kotlin.a.j.kt((List)localObject);
+        localObject = (apw)j.lp((List)localObject);
         if (localObject != null)
         {
-          localObject = ((aop)localObject).LAL;
+          localObject = ((apw)localObject).SDl;
           if (localObject != null)
           {
-            ((bei)localObject).LIA = paramcng;
-            AppMethodBeat.o(251749);
+            ((blj)localObject).SPm = paramcvy;
+            AppMethodBeat.o(263921);
             return;
           }
         }
       }
     }
-    AppMethodBeat.o(251749);
+    AppMethodBeat.o(263921);
+  }
+  
+  public final void setMentionListSelected(int paramInt)
+  {
+    this.feedObject.mentionedListSelected = paramInt;
   }
   
   public final void setNickName(String paramString)
   {
     AppMethodBeat.i(166985);
-    p.h(paramString, "value");
+    p.k(paramString, "value");
     this.feedObject.nickname = paramString;
     this.nickNameSpan = com.tencent.mm.pluginsdk.ui.span.l.c(MMApplicationContext.getContext(), (CharSequence)paramString);
     AppMethodBeat.o(166985);
@@ -1669,14 +1722,17 @@ public class FinderItem
   public final void setObjectNonceId(String paramString)
   {
     AppMethodBeat.i(166983);
-    p.h(paramString, "value");
+    p.k(paramString, "value");
     this.feedObject.objectNonceId = paramString;
     AppMethodBeat.o(166983);
   }
   
-  public final void setPosTriggerConfig(b paramb)
+  public final void setPosTriggerConfig(h.a parama)
   {
-    this.posTriggerConfig = paramb;
+    AppMethodBeat.i(263915);
+    p.k(parama, "<set-?>");
+    this.posTriggerConfig = parama;
+    AppMethodBeat.o(263915);
   }
   
   public final void setPostFailed()
@@ -1695,13 +1751,19 @@ public class FinderItem
   
   public final void setPostFailedAndNotRetry(int paramInt)
   {
-    AppMethodBeat.i(251763);
+    AppMethodBeat.i(263939);
     setPostFailed();
     this.field_localFlag |= 0x4;
-    if (paramInt == -4059) {
+    if (paramInt == -4059)
+    {
       setEventClosed();
+      AppMethodBeat.o(263939);
+      return;
     }
-    AppMethodBeat.o(251763);
+    if (paramInt == -4065) {
+      setEventExpired();
+    }
+    AppMethodBeat.o(263939);
   }
   
   public final void setPostFinish()
@@ -1710,11 +1772,11 @@ public class FinderItem
     this.field_localFlag &= 0xFFFFFFFD;
   }
   
-  public final void setPostInfo(cjm paramcjm)
+  public final void setPostInfo(csh paramcsh)
   {
     AppMethodBeat.i(167005);
-    p.h(paramcjm, "field_postinfo");
-    this.field_postinfo = paramcjm;
+    p.k(paramcsh, "field_postinfo");
+    this.field_postinfo = paramcsh;
     AppMethodBeat.o(167005);
   }
   
@@ -1741,7 +1803,7 @@ public class FinderItem
   public final void setRefObjectContact(FinderContact paramFinderContact)
   {
     AppMethodBeat.i(167003);
-    p.h(paramFinderContact, "value");
+    p.k(paramFinderContact, "value");
     this.feedObject.refObjectContact = paramFinderContact;
     AppMethodBeat.o(167003);
   }
@@ -1771,23 +1833,28 @@ public class FinderItem
     this.isReplaceLongVideoToNormal = paramBoolean;
   }
   
+  public final void setShowExtendLink(boolean paramBoolean)
+  {
+    this.showExtendLink = paramBoolean;
+  }
+  
   public final void setStickyTime(int paramInt)
   {
     this.feedObject.stickyTime = paramInt;
   }
   
-  public final void setTopicClickExtra(w.a parama)
+  public final void setTopicClickExtra(c paramc)
   {
-    AppMethodBeat.i(166981);
-    p.h(parama, "<set-?>");
-    this.topicClickExtra = parama;
-    AppMethodBeat.o(166981);
+    AppMethodBeat.i(263914);
+    p.k(paramc, "<set-?>");
+    this.topicClickExtra = paramc;
+    AppMethodBeat.o(263914);
   }
   
   public final void setUserName(String paramString)
   {
     AppMethodBeat.i(166986);
-    p.h(paramString, "value");
+    p.k(paramString, "value");
     this.feedObject.username = paramString;
     AppMethodBeat.o(166986);
   }
@@ -1795,13 +1862,13 @@ public class FinderItem
   public final void trackPost(String paramString)
   {
     AppMethodBeat.i(167013);
-    p.h(paramString, "stage");
+    p.k(paramString, "stage");
     try
     {
       Object localObject1 = this.field_postinfo;
       if (localObject1 != null)
       {
-        String str = "localId:" + getLocalId() + ", localFlag:" + this.field_localFlag + ", uploadState:" + ((cjm)localObject1).Mpa + ", tryCount:" + ((cjm)localObject1).ibG + ", utilNow:" + (cl.aWy() - ((cjm)localObject1).Mpd) + "ms, mediaProcessCost:" + ((cjm)localObject1).Mpe + "ms, uploadCost:" + ((cjm)localObject1).hdA + "ms, doSceneCost:" + ((cjm)localObject1).Mpf + "ms, totalCost:" + ((cjm)localObject1).zZb + "ms";
+        String str = "localId:" + getLocalId() + ", localFlag:" + this.field_localFlag + ", uploadState:" + ((csh)localObject1).TAg + ", tryCount:" + ((csh)localObject1).kQn + ", utilNow:" + (cm.bfC() - ((csh)localObject1).TAj) + "ms, mediaProcessCost:" + ((csh)localObject1).TAk + "ms, uploadCost:" + ((csh)localObject1).jPg + "ms, doSceneCost:" + ((csh)localObject1).TAl + "ms, totalCost:" + ((csh)localObject1).FEO + "ms";
         localObject1 = "localId:" + getLocalId() + ", mediaList: ";
         Object localObject2 = (Iterable)getMediaExtList();
         int i = 0;
@@ -1810,10 +1877,10 @@ public class FinderItem
         {
           Object localObject3 = ((Iterator)localObject2).next();
           if (i < 0) {
-            kotlin.a.j.hxH();
+            j.iBO();
           }
-          localObject3 = (cjl)localObject3;
-          localObject1 = (String)localObject1 + "Index" + i + ", fileSize:" + (float)s.boW(((cjl)localObject3).url) / 1024.0F / 1024.0F + "MB, mediaType:" + ((cjl)localObject3).mediaType + "; ";
+          localObject3 = (csg)localObject3;
+          localObject1 = (String)localObject1 + "Index" + i + ", fileSize:" + (float)u.bBQ(((csg)localObject3).url) / 1024.0F / 1024.0F + "MB, mediaType:" + ((csg)localObject3).mediaType + "; ";
           i += 1;
         }
         Log.i("Finder.PostLog", "stage:" + paramString + ' ' + str);
@@ -1835,7 +1902,7 @@ public class FinderItem
   public final void updateFinderObject(FinderObject paramFinderObject)
   {
     AppMethodBeat.i(167006);
-    p.h(paramFinderObject, "svrFeed");
+    p.k(paramFinderObject, "svrFeed");
     this.field_username = paramFinderObject.username;
     this.field_finderObject = paramFinderObject;
     setFeedObject(paramFinderObject);
@@ -1844,13 +1911,49 @@ public class FinderItem
     AppMethodBeat.o(167006);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderItem$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "debugOnlySelfSee", "", "getDebugOnlySelfSee", "()Z", "setDebugOnlySelfSee", "(Z)V", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "create", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "feedObject", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "type", "", "genFinderItem", "finderObject", "feedPostingInfo", "Lcom/tencent/mm/protocal/protobuf/FeedPostingInfo;", "localId", "", "toFinderItem", "Lcom/tencent/mm/protocal/protobuf/FinderItemPb;", "toFinderItemPb", "toPostingInfo", "plugin-finder_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderItem$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "debugOnlySelfSee", "", "getDebugOnlySelfSee", "()Z", "setDebugOnlySelfSee", "(Z)V", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "create", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "feedObject", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "type", "", "genFinderItem", "finderObject", "feedPostingInfo", "Lcom/tencent/mm/protocal/protobuf/FeedPostingInfo;", "localId", "", "toFinderItem", "Lcom/tencent/mm/protocal/protobuf/FinderItemPb;", "toFinderItemPb", "toPostingInfo", "plugin-finder-base_release"})
   public static final class a
   {
-    public static FinderItem a(FinderObject paramFinderObject, int paramInt)
+    public static FinderItem a(awh paramawh, long paramLong)
+    {
+      AppMethodBeat.i(260933);
+      p.k(paramawh, "$this$toFinderItem");
+      if (paramawh.xcx != null)
+      {
+        Object localObject2 = paramawh.xcx;
+        Object localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = new FinderObject();
+        }
+        paramawh = paramawh.SIK;
+        p.k(localObject1, "finderObject");
+        localObject2 = new FinderItem();
+        ((FinderItem)localObject2).setLocalId(paramLong);
+        ((FinderItem)localObject2).setFeedObject((FinderObject)localObject1);
+        if (paramawh != null)
+        {
+          ((FinderItem)localObject2).field_localFlag = paramawh.mVu;
+          ((FinderItem)localObject2).field_postinfo = paramawh.AAM;
+          ((FinderItem)localObject2).field_mediaExtList = paramawh.SBW;
+          ((FinderItem)localObject2).field_reportObject = paramawh.SBX;
+          ((FinderItem)localObject2).field_postExtraData = paramawh.SBY;
+          ((FinderItem)localObject2).field_customData = paramawh.SBZ;
+          ((FinderItem)localObject2).field_longVideoMediaExtList = paramawh.SCa;
+          ((FinderItem)localObject2).field_halfMediaExtList = paramawh.SCb;
+          ((FinderItem)localObject2).field_clipList = paramawh.SCc;
+        }
+        AppMethodBeat.o(260933);
+        return localObject2;
+      }
+      paramawh = new FinderItem();
+      AppMethodBeat.o(260933);
+      return paramawh;
+    }
+    
+    public static FinderItem b(FinderObject paramFinderObject, int paramInt)
     {
       AppMethodBeat.i(166977);
-      p.h(paramFinderObject, "feedObject");
+      p.k(paramFinderObject, "feedObject");
       FinderItem localFinderItem = new FinderItem();
       localFinderItem.setFromType(paramInt);
       localFinderItem.setFeedObject(paramFinderObject);
@@ -1885,149 +1988,66 @@ public class FinderItem
       }
     }
     
-    private static FinderItem a(FinderObject paramFinderObject, anv paramanv, long paramLong)
+    public static IAutoDBItem.MAutoDBInfo dYE()
     {
-      AppMethodBeat.i(251735);
-      p.h(paramFinderObject, "finderObject");
-      FinderItem localFinderItem = new FinderItem();
-      localFinderItem.setLocalId(paramLong);
-      localFinderItem.setFeedObject(paramFinderObject);
-      if (paramanv != null)
-      {
-        localFinderItem.field_localFlag = paramanv.kdU;
-        localFinderItem.field_postinfo = paramanv.vTj;
-        localFinderItem.field_mediaExtList = paramanv.Lzv;
-        localFinderItem.field_reportObject = paramanv.Lzw;
-        localFinderItem.field_postExtraData = paramanv.Lzx;
-        localFinderItem.field_customData = paramanv.Lzy;
-        localFinderItem.field_longVideoMediaExtList = paramanv.Lzz;
-        localFinderItem.field_halfMediaExtList = paramanv.LzA;
-        localFinderItem.field_clipList = paramanv.LzB;
-      }
-      AppMethodBeat.o(251735);
-      return localFinderItem;
+      AppMethodBeat.i(260931);
+      IAutoDBItem.MAutoDBInfo localMAutoDBInfo = FinderItem.access$getInfo$cp();
+      AppMethodBeat.o(260931);
+      return localMAutoDBInfo;
     }
     
-    public static FinderItem a(aud paramaud, long paramLong)
+    public static void dYF()
     {
-      AppMethodBeat.i(251733);
-      p.h(paramaud, "$this$toFinderItem");
-      if (paramaud.tuO != null)
-      {
-        FinderObject localFinderObject2 = paramaud.tuO;
-        FinderObject localFinderObject1 = localFinderObject2;
-        if (localFinderObject2 == null) {
-          localFinderObject1 = new FinderObject();
-        }
-        paramaud = a(localFinderObject1, paramaud.LEP, paramLong);
-        AppMethodBeat.o(251733);
-        return paramaud;
-      }
-      paramaud = new FinderItem();
-      AppMethodBeat.o(251733);
-      return paramaud;
+      AppMethodBeat.i(260939);
+      FinderItem.access$setDebugOnlySelfSee$cp(true);
+      AppMethodBeat.o(260939);
     }
     
-    public static aud l(FinderItem paramFinderItem)
+    public static awh m(FinderItem paramFinderItem)
     {
-      AppMethodBeat.i(251734);
-      p.h(paramFinderItem, "$this$toFinderItemPb");
-      aud localaud = new aud();
-      localaud.tuO = paramFinderItem.getFeedObject();
-      localaud.LEP = m(paramFinderItem);
-      AppMethodBeat.o(251734);
-      return localaud;
+      AppMethodBeat.i(260935);
+      p.k(paramFinderItem, "$this$toFinderItemPb");
+      awh localawh = new awh();
+      localawh.xcx = paramFinderItem.getFeedObject();
+      localawh.SIK = n(paramFinderItem);
+      AppMethodBeat.o(260935);
+      return localawh;
     }
     
-    private static anv m(FinderItem paramFinderItem)
+    public static aow n(FinderItem paramFinderItem)
     {
-      AppMethodBeat.i(251736);
-      p.h(paramFinderItem, "$this$toPostingInfo");
-      anv localanv = new anv();
-      localanv.kdU = paramFinderItem.field_localFlag;
-      localanv.vTj = paramFinderItem.field_postinfo;
-      localanv.Lzv = paramFinderItem.field_mediaExtList;
-      localanv.Lzw = paramFinderItem.field_reportObject;
-      localanv.Lzx = paramFinderItem.field_postExtraData;
-      localanv.Lzy = paramFinderItem.field_customData;
-      localanv.Lzz = paramFinderItem.field_longVideoMediaExtList;
-      localanv.LzA = paramFinderItem.field_halfMediaExtList;
-      localanv.LzB = paramFinderItem.field_clipList;
-      AppMethodBeat.o(251736);
-      return localanv;
+      AppMethodBeat.i(260937);
+      p.k(paramFinderItem, "$this$toPostingInfo");
+      aow localaow = new aow();
+      localaow.mVu = paramFinderItem.field_localFlag;
+      localaow.AAM = paramFinderItem.field_postinfo;
+      localaow.SBW = paramFinderItem.field_mediaExtList;
+      localaow.SBX = paramFinderItem.field_reportObject;
+      localaow.SBY = paramFinderItem.field_postExtraData;
+      localaow.SBZ = paramFinderItem.field_customData;
+      localaow.SCa = paramFinderItem.field_longVideoMediaExtList;
+      localaow.SCb = paramFinderItem.field_halfMediaExtList;
+      localaow.SCc = paramFinderItem.field_clipList;
+      AppMethodBeat.o(260937);
+      return localaow;
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;", "", "maxUnreadCount", "", "showTime", "showPercentage", "preLoadTime", "preLoadPercentage", "logic", "", "favRelateListEnable", "", "favRelateListEnableOnClick", "likeRelateListEnable", "isLocalDefault", "jsonStr", "(IIIIILjava/lang/String;ZZZZLjava/lang/String;)V", "getFavRelateListEnable", "()Z", "getFavRelateListEnableOnClick", "setLocalDefault", "(Z)V", "getJsonStr", "()Ljava/lang/String;", "setJsonStr", "(Ljava/lang/String;)V", "getLikeRelateListEnable", "getLogic", "getMaxUnreadCount", "()I", "getPreLoadPercentage", "getPreLoadTime", "getShowPercentage", "getShowTime", "component1", "component10", "component11", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "plugin-finder_release"})
-  public static final class b
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "topic", "", "clickExtra", "Lcom/tencent/mm/plugin/finder/utils/ClickExtra;", "invoke"})
+  static final class b
+    extends q
+    implements m<String, c, x>
   {
-    public String lEd;
-    public final int tXx;
-    private boolean uUJ;
-    public final int vDO;
-    public final int vDP;
-    public final int vDQ;
-    public final int vDR;
-    public final String vDS;
-    public final boolean vDT;
-    public final boolean vDU;
-    public final boolean vDV;
-    
-    public b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, String paramString2)
+    b(FinderItem paramFinderItem)
     {
-      AppMethodBeat.i(251738);
-      this.tXx = paramInt1;
-      this.vDO = paramInt2;
-      this.vDP = paramInt3;
-      this.vDQ = paramInt4;
-      this.vDR = paramInt5;
-      this.vDS = paramString1;
-      this.vDT = paramBoolean1;
-      this.vDU = paramBoolean2;
-      this.vDV = paramBoolean3;
-      this.uUJ = paramBoolean4;
-      this.lEd = paramString2;
-      AppMethodBeat.o(251738);
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      AppMethodBeat.i(251740);
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof b))
-        {
-          paramObject = (b)paramObject;
-          if ((this.tXx != paramObject.tXx) || (this.vDO != paramObject.vDO) || (this.vDP != paramObject.vDP) || (this.vDQ != paramObject.vDQ) || (this.vDR != paramObject.vDR) || (!p.j(this.vDS, paramObject.vDS)) || (this.vDT != paramObject.vDT) || (this.vDU != paramObject.vDU) || (this.vDV != paramObject.vDV) || (this.uUJ != paramObject.uUJ) || (!p.j(this.lEd, paramObject.lEd))) {}
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(251740);
-        return true;
-      }
-      AppMethodBeat.o(251740);
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(251737);
-      String str = "maxUnreadCount=" + this.tXx + ",showTime=" + this.vDO + ",showPercentage=" + this.vDP + ",preLoadTime=" + this.vDQ + ',' + "preLoadPercentage=" + this.vDR + ",logic=" + this.vDS + ",favRelateListEnable=" + this.vDT + ",favRelateListEnableOnClick=" + this.vDU + ",likeRelateListEnable=" + this.vDV + ",isLocalDefault=" + this.uUJ;
-      AppMethodBeat.o(251737);
-      return str;
+      super();
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "topic", "", "clickExtra", "Lcom/tencent/mm/plugin/finder/utils/FinderTopicUtil$ClickExtra;", "invoke"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "username", "", "invoke"})
   static final class c
     extends q
-    implements m<String, w.a, x>
+    implements kotlin.g.a.b<String, x>
   {
     c(FinderItem paramFinderItem)
     {
@@ -2035,10 +2055,10 @@ public class FinderItem
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "username", "", "invoke"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "topic", "", "clickExtra", "Lcom/tencent/mm/plugin/finder/utils/ClickExtra;", "invoke"})
   static final class d
     extends q
-    implements b<String, x>
+    implements m<String, c, x>
   {
     d(FinderItem paramFinderItem)
     {
@@ -2046,23 +2066,12 @@ public class FinderItem
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "topic", "", "clickExtra", "Lcom/tencent/mm/plugin/finder/utils/FinderTopicUtil$ClickExtra;", "invoke"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "username", "", "invoke"})
   static final class e
     extends q
-    implements m<String, w.a, x>
+    implements kotlin.g.a.b<String, x>
   {
     e(FinderItem paramFinderItem)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "username", "", "invoke"})
-  static final class f
-    extends q
-    implements b<String, x>
-  {
-    f(FinderItem paramFinderItem)
     {
       super();
     }

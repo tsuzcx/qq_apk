@@ -10,22 +10,22 @@ import org.tensorflow.lite.b;
 public class FlexDelegate
   implements Closeable, b
 {
-  private long Ujw;
+  private long abMR;
   
   static
   {
-    AppMethodBeat.i(238991);
-    if (!a.Ujx.value) {
+    AppMethodBeat.i(240160);
+    if (!a.abMS.value) {
       Log.e("MicroMsg.FlexDelegate", "load library error");
     }
-    AppMethodBeat.o(238991);
+    AppMethodBeat.o(240160);
   }
   
   public FlexDelegate()
   {
-    AppMethodBeat.i(238989);
-    this.Ujw = nativeCreateDelegate();
-    AppMethodBeat.o(238989);
+    AppMethodBeat.i(240146);
+    this.abMR = nativeCreateDelegate();
+    AppMethodBeat.o(240146);
   }
   
   private static native long nativeCreateDelegate();
@@ -36,23 +36,23 @@ public class FlexDelegate
   
   public void close()
   {
-    AppMethodBeat.i(238990);
-    if (this.Ujw != 0L)
+    AppMethodBeat.i(240153);
+    if (this.abMR != 0L)
     {
-      nativeDeleteDelegate(this.Ujw);
-      this.Ujw = 0L;
+      nativeDeleteDelegate(this.abMR);
+      this.abMR = 0L;
     }
-    AppMethodBeat.o(238990);
+    AppMethodBeat.o(240153);
   }
   
   public final long getNativeHandle()
   {
-    return this.Ujw;
+    return this.abMR;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     org.tensorflow.lite.flex.FlexDelegate
  * JD-Core Version:    0.7.0.1
  */

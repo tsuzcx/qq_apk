@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.taskbar.ui.b;
 
 public abstract interface b
 {
-  public abstract void axD();
+  public abstract void aEV();
   
-  public abstract void axE();
+  public abstract void aEW();
 }
 
 

@@ -2,12 +2,12 @@ package com.tencent.mm.view.recyclerview;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/view/recyclerview/ConvertData;", "", "getItemId", "", "getItemType", "", "libmmui_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/recyclerview/ConvertData;", "", "getItemId", "", "getItemType", "", "libmmui_release"})
 public abstract interface a
 {
-  public abstract int cxn();
+  public abstract int bAQ();
   
-  public abstract long lT();
+  public abstract long mf();
 }
 
 

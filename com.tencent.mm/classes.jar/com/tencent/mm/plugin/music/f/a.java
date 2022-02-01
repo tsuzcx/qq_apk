@@ -1,11 +1,10 @@
 package com.tencent.mm.plugin.music.f;
 
 import android.os.Looper;
-import android.support.v4.content.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.f;
-import com.tencent.mm.g.a.mx;
-import com.tencent.mm.g.a.mx.a;
+import com.tencent.mm.bb.f;
+import com.tencent.mm.f.a.np;
+import com.tencent.mm.f.a.np.a;
 import com.tencent.mm.plugin.music.f.a.d.a;
 import com.tencent.mm.plugin.music.f.a.e;
 import com.tencent.mm.sdk.event.EventCenter;
@@ -19,153 +18,153 @@ import java.util.LinkedList;
 public abstract class a
   implements com.tencent.mm.plugin.music.f.a.d
 {
-  protected boolean AhH;
-  protected d.a AhI;
-  private PhoneStatusWatcher Ahk;
-  protected String AlI = "";
-  protected com.tencent.mm.plugin.music.e.d AlJ;
-  protected com.tencent.mm.plugin.music.e.a AlK;
-  protected long AlL = 0L;
-  protected LinkedList<d.a> AlM = new LinkedList();
-  protected long bmy = 0L;
-  public boolean dSH;
+  protected boolean FOD;
+  protected d.a FOE;
+  private PhoneStatusWatcher FOe;
+  protected String FSP = "";
+  protected com.tencent.mm.plugin.music.e.d FSQ;
+  protected com.tencent.mm.plugin.music.e.a FSR;
+  protected long FSS = 0L;
+  protected LinkedList<d.a> FST = new LinkedList();
+  protected long aWa = 0L;
   protected long duration = 0L;
-  protected long iJF = 0L;
+  public boolean fMf;
+  protected long lzJ = 0L;
   
   public final void G(f paramf)
   {
-    Log.i("MicroMsg.Music.BaseMusicPlayer", "onPreparingEvent %b", new Object[] { Boolean.valueOf(bec()) });
-    this.AlI = "waiting";
-    mx localmx = new mx();
-    localmx.dSE.action = 11;
-    localmx.dSE.dSy = paramf;
-    localmx.dSE.state = "waiting";
-    localmx.dSE.duration = getDuration();
-    localmx.dSE.dSG = esV();
-    EventCenter.instance.asyncPublish(localmx, Looper.getMainLooper());
+    Log.i("MicroMsg.Music.BaseMusicPlayer", "onPreparingEvent %b", new Object[] { Boolean.valueOf(bnx()) });
+    this.FSP = "waiting";
+    np localnp = new np();
+    localnp.fMc.action = 11;
+    localnp.fMc.fLV = paramf;
+    localnp.fMc.state = "waiting";
+    localnp.fMc.duration = getDuration();
+    localnp.fMc.fMe = fdf();
+    EventCenter.instance.asyncPublish(localnp, Looper.getMainLooper());
   }
   
   public final void H(f paramf)
   {
-    Log.i("MicroMsg.Music.BaseMusicPlayer", "onPrepareEvent %b", new Object[] { Boolean.valueOf(bec()) });
-    this.AlI = "canplay";
-    mx localmx = new mx();
-    localmx.dSE.action = 9;
-    localmx.dSE.dSy = paramf;
-    localmx.dSE.state = "canplay";
-    localmx.dSE.duration = getDuration();
-    localmx.dSE.dSG = esV();
-    EventCenter.instance.asyncPublish(localmx, Looper.getMainLooper());
+    Log.i("MicroMsg.Music.BaseMusicPlayer", "onPrepareEvent %b", new Object[] { Boolean.valueOf(bnx()) });
+    this.FSP = "canplay";
+    np localnp = new np();
+    localnp.fMc.action = 9;
+    localnp.fMc.fLV = paramf;
+    localnp.fMc.state = "canplay";
+    localnp.fMc.duration = getDuration();
+    localnp.fMc.fMe = fdf();
+    EventCenter.instance.asyncPublish(localnp, Looper.getMainLooper());
   }
   
   public final void I(f paramf)
   {
-    Log.i("MicroMsg.Music.BaseMusicPlayer", "onStartEvent %b", new Object[] { Boolean.valueOf(bec()) });
-    this.AlI = "play";
-    mx localmx = new mx();
-    localmx.dSE.action = 0;
-    localmx.dSE.dSy = paramf;
-    localmx.dSE.state = "play";
-    localmx.dSE.duration = getDuration();
-    localmx.dSE.dSG = esV();
-    EventCenter.instance.asyncPublish(localmx, Looper.getMainLooper());
-    if (this.AlK != null) {
-      this.AlK.n(paramf);
+    Log.i("MicroMsg.Music.BaseMusicPlayer", "onStartEvent %b", new Object[] { Boolean.valueOf(bnx()) });
+    this.FSP = "play";
+    np localnp = new np();
+    localnp.fMc.action = 0;
+    localnp.fMc.fLV = paramf;
+    localnp.fMc.state = "play";
+    localnp.fMc.duration = getDuration();
+    localnp.fMc.fMe = fdf();
+    EventCenter.instance.asyncPublish(localnp, Looper.getMainLooper());
+    if (this.FSR != null) {
+      this.FSR.n(paramf);
     }
   }
   
   public final void J(f paramf)
   {
     Log.i("MicroMsg.Music.BaseMusicPlayer", "onResumeEvent");
-    this.AlI = "play";
-    mx localmx = new mx();
-    localmx.dSE.action = 1;
-    localmx.dSE.dSy = paramf;
-    localmx.dSE.state = "play";
-    localmx.dSE.duration = getDuration();
-    localmx.dSE.dSG = esV();
-    EventCenter.instance.asyncPublish(localmx, Looper.getMainLooper());
-    if (this.AlK != null) {
-      this.AlK.o(paramf);
+    this.FSP = "play";
+    np localnp = new np();
+    localnp.fMc.action = 1;
+    localnp.fMc.fLV = paramf;
+    localnp.fMc.state = "play";
+    localnp.fMc.duration = getDuration();
+    localnp.fMc.fMe = fdf();
+    EventCenter.instance.asyncPublish(localnp, Looper.getMainLooper());
+    if (this.FSR != null) {
+      this.FSR.o(paramf);
     }
   }
   
   public final void K(f paramf)
   {
     Log.i("MicroMsg.Music.BaseMusicPlayer", "onPauseEvent");
-    this.AlI = "pause";
-    mx localmx = new mx();
-    localmx.dSE.action = 3;
-    localmx.dSE.dSy = paramf;
-    localmx.dSE.state = "pause";
-    localmx.dSE.duration = getDuration();
-    localmx.dSE.dSG = esV();
-    EventCenter.instance.asyncPublish(localmx, Looper.getMainLooper());
-    if (this.AlK != null) {
-      this.AlK.p(paramf);
+    this.FSP = "pause";
+    np localnp = new np();
+    localnp.fMc.action = 3;
+    localnp.fMc.fLV = paramf;
+    localnp.fMc.state = "pause";
+    localnp.fMc.duration = getDuration();
+    localnp.fMc.fMe = fdf();
+    EventCenter.instance.asyncPublish(localnp, Looper.getMainLooper());
+    if (this.FSR != null) {
+      this.FSR.p(paramf);
     }
   }
   
   public final void L(f paramf)
   {
     Log.i("MicroMsg.Music.BaseMusicPlayer", "onStopEvent");
-    this.AlI = "stop";
-    mx localmx = new mx();
-    localmx.dSE.action = 2;
-    localmx.dSE.dSy = paramf;
-    localmx.dSE.state = "stop";
-    localmx.dSE.duration = getDuration();
-    localmx.dSE.dSG = esV();
-    mx.a locala = localmx.dSE;
-    boolean bool = this.dSH;
-    this.dSH = false;
-    locala.dSH = bool;
-    EventCenter.instance.asyncPublish(localmx, Looper.getMainLooper());
-    if (this.AlK != null) {
-      this.AlK.q(paramf);
+    this.FSP = "stop";
+    np localnp = new np();
+    localnp.fMc.action = 2;
+    localnp.fMc.fLV = paramf;
+    localnp.fMc.state = "stop";
+    localnp.fMc.duration = getDuration();
+    localnp.fMc.fMe = fdf();
+    np.a locala = localnp.fMc;
+    boolean bool = this.fMf;
+    this.fMf = false;
+    locala.fMf = bool;
+    EventCenter.instance.asyncPublish(localnp, Looper.getMainLooper());
+    if (this.FSR != null) {
+      this.FSR.q(paramf);
     }
   }
   
   public final void M(f paramf)
   {
     Log.i("MicroMsg.Music.BaseMusicPlayer", "onSeekToEvent");
-    this.AlI = "seeked";
-    mx localmx = new mx();
-    localmx.dSE.action = 8;
-    localmx.dSE.dSy = paramf;
-    localmx.dSE.state = "seeked";
-    localmx.dSE.duration = getDuration();
-    localmx.dSE.dSG = esV();
-    EventCenter.instance.asyncPublish(localmx, Looper.getMainLooper());
+    this.FSP = "seeked";
+    np localnp = new np();
+    localnp.fMc.action = 8;
+    localnp.fMc.fLV = paramf;
+    localnp.fMc.state = "seeked";
+    localnp.fMc.duration = getDuration();
+    localnp.fMc.fMe = fdf();
+    EventCenter.instance.asyncPublish(localnp, Looper.getMainLooper());
   }
   
   public final void N(f paramf)
   {
     Log.i("MicroMsg.Music.BaseMusicPlayer", "onSeekingEvent");
-    this.AlI = "seeking";
-    mx localmx = new mx();
-    localmx.dSE.action = 12;
-    localmx.dSE.dSy = paramf;
-    localmx.dSE.state = "seeking";
-    localmx.dSE.duration = getDuration();
-    localmx.dSE.dSG = esV();
-    EventCenter.instance.asyncPublish(localmx, Looper.getMainLooper());
+    this.FSP = "seeking";
+    np localnp = new np();
+    localnp.fMc.action = 12;
+    localnp.fMc.fLV = paramf;
+    localnp.fMc.state = "seeking";
+    localnp.fMc.duration = getDuration();
+    localnp.fMc.fMe = fdf();
+    EventCenter.instance.asyncPublish(localnp, Looper.getMainLooper());
   }
   
   public final void O(f paramf)
   {
     Log.i("MicroMsg.Music.BaseMusicPlayer", "onStopEvent");
-    this.AlI = "ended";
-    mx localmx = new mx();
-    localmx.dSE.action = 7;
-    localmx.dSE.dSy = paramf;
-    localmx.dSE.state = "ended";
-    localmx.dSE.duration = getDuration();
-    localmx.dSE.dSF = paramf.jeV;
-    localmx.dSE.dSG = esV();
-    EventCenter.instance.asyncPublish(localmx, Looper.getMainLooper());
-    if (this.AlK != null) {
-      this.AlK.r(paramf);
+    this.FSP = "ended";
+    np localnp = new np();
+    localnp.fMc.action = 7;
+    localnp.fMc.fLV = paramf;
+    localnp.fMc.state = "ended";
+    localnp.fMc.duration = getDuration();
+    localnp.fMc.fMd = paramf.lVt;
+    localnp.fMc.fMe = fdf();
+    EventCenter.instance.asyncPublish(localnp, Looper.getMainLooper());
+    if (this.FSR != null) {
+      this.FSR.r(paramf);
     }
   }
   
@@ -183,70 +182,76 @@ public abstract class a
   
   public final void a(d.a parama)
   {
-    this.AhI = parama;
+    if (parama == null) {}
+    while (this.FST.contains(parama)) {
+      return;
+    }
+    this.FST.add(parama);
   }
   
   public final void b(d.a parama)
   {
     if (parama == null) {}
-    while (this.AlM.contains(parama)) {
+    while (!this.FST.contains(parama)) {
       return;
     }
-    this.AlM.add(parama);
-  }
-  
-  public final void c(d.a parama)
-  {
-    if (parama == null) {}
-    while (!this.AlM.contains(parama)) {
-      return;
-    }
-    this.AlM.remove(parama);
+    this.FST.remove(parama);
   }
   
   public final void d(f paramf, int paramInt)
   {
     Log.i("MicroMsg.Music.BaseMusicPlayer", "onErrorEvent with errCode:%d", new Object[] { Integer.valueOf(paramInt) });
-    this.AlI = "error";
-    mx localmx = new mx();
-    localmx.dSE.action = 4;
-    localmx.dSE.dSy = paramf;
-    localmx.dSE.state = "error";
-    localmx.dSE.duration = getDuration();
-    localmx.dSE.dSG = esV();
-    localmx.dSE.errCode = e.Tc(paramInt);
-    localmx.dSE.errMsg = e.yw(paramInt);
-    EventCenter.instance.asyncPublish(localmx, Looper.getMainLooper());
-    if (this.AlK != null) {
-      this.AlK.a(paramf, paramInt);
+    this.FSP = "error";
+    np localnp = new np();
+    localnp.fMc.action = 4;
+    localnp.fMc.fLV = paramf;
+    localnp.fMc.state = "error";
+    localnp.fMc.duration = getDuration();
+    localnp.fMc.fMe = fdf();
+    localnp.fMc.errCode = e.Zx(paramInt);
+    localnp.fMc.errMsg = e.BW(paramInt);
+    EventCenter.instance.asyncPublish(localnp, Looper.getMainLooper());
+    if (this.FSR != null) {
+      this.FSR.a(paramf, paramInt);
     }
   }
   
-  protected final void esT()
+  protected final void fK(int paramInt1, int paramInt2)
   {
-    if (this.Ahk != null)
+    if (this.FOE != null) {
+      this.FOE.fK(paramInt1, paramInt2);
+    }
+    Iterator localIterator = this.FST.iterator();
+    while (localIterator.hasNext()) {
+      ((d.a)localIterator.next()).fK(paramInt1, paramInt2);
+    }
+  }
+  
+  protected abstract void fdW();
+  
+  protected final void fdd()
+  {
+    if (this.FOe != null)
     {
-      this.Ahk.end();
-      this.Ahk.clearPhoneCallListener();
-      this.Ahk = null;
+      this.FOe.end();
+      this.FOe.clearPhoneCallListener();
+      this.FOe = null;
     }
   }
   
-  protected abstract void etM();
-  
-  protected final void euP()
+  protected final void ffj()
   {
-    if (this.Ahk != null) {
+    if (this.FOe != null) {
       return;
     }
-    if (b.checkSelfPermission(MMApplicationContext.getContext(), "android.permission.READ_PHONE_STATE") != 0)
+    if (androidx.core.content.a.checkSelfPermission(MMApplicationContext.getContext(), "android.permission.READ_PHONE_STATE") != 0)
     {
       Log.e("MicroMsg.Music.BaseMusicPlayer", "addPhoneStatusWatcher() not have read_phone_state perm");
       return;
     }
-    this.Ahk = new PhoneStatusWatcher();
-    this.Ahk.begin(MMApplicationContext.getContext());
-    this.Ahk.addPhoneCallListener(new PhoneStatusWatcher.PhoneCallListener()
+    this.FOe = new PhoneStatusWatcher();
+    this.FOe.begin(MMApplicationContext.getContext());
+    this.FOe.addPhoneCallListener(new PhoneStatusWatcher.PhoneCallListener()
     {
       public final void onPhoneCall(int paramAnonymousInt)
       {
@@ -258,15 +263,15 @@ public abstract class a
         {
           AppMethodBeat.o(137297);
           return;
-          if (a.this.AhH)
+          if (a.this.FOD)
           {
-            a.this.AhH = false;
+            a.this.FOD = false;
             a.this.resume();
             AppMethodBeat.o(137297);
             return;
-            if (a.this.bec())
+            if (a.this.bnx())
             {
-              a.this.AhH = true;
+              a.this.FOD = true;
               a.this.pause();
             }
           }
@@ -275,32 +280,21 @@ public abstract class a
     });
   }
   
-  protected final String euQ()
+  protected final String ffk()
   {
-    return this.AlI;
-  }
-  
-  protected final void fn(int paramInt1, int paramInt2)
-  {
-    if (this.AhI != null) {
-      this.AhI.fn(paramInt1, paramInt2);
-    }
-    Iterator localIterator = this.AlM.iterator();
-    while (localIterator.hasNext()) {
-      ((d.a)localIterator.next()).fn(paramInt1, paramInt2);
-    }
+    return this.FSP;
   }
   
   public void h(f paramf)
   {
-    etM();
+    fdW();
   }
   
   public void m(f paramf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.music.f.a
  * JD-Core Version:    0.7.0.1
  */

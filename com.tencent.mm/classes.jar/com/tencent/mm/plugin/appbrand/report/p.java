@@ -1,39 +1,79 @@
 package com.tencent.mm.plugin.appbrand.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.l;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.xweb.WebView;
+import java.util.Locale;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/report/HalfScreenReporter;", "", "()V", "hadReportFirstUserLaunchAfterPreRender", "", "isCreatedByPreRenderLaunch", "lastVisibleHalfScreenStatus", "onPostInit", "", "initConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "report", "key", "", "reportOnLaunch", "reportOnUpdateConfig", "newConfig", "forceRestartByLaunchModeChanged", "Companion", "plugin-appbrand-integration_release"})
-public final class p
+public enum p
 {
-  public static final a nHL;
-  public boolean nHI;
-  public boolean nHJ;
-  public boolean nHK;
-  
   static
   {
-    AppMethodBeat.i(229303);
-    nHL = new a((byte)0);
-    AppMethodBeat.o(229303);
+    AppMethodBeat.i(48071);
+    qJP = new p("X5", 0);
+    qJQ = new p("Sys", 1);
+    qJR = new p("XWalk", 2);
+    qJS = new p("Invalid", 3);
+    qJT = new p[] { qJP, qJQ, qJR, qJS };
+    AppMethodBeat.o(48071);
   }
   
-  public static void pl(int paramInt)
+  private p() {}
+  
+  public static p chH()
   {
-    AppMethodBeat.i(229302);
-    h.CyF.dN(1520, paramInt);
-    Log.i("HalfScreenReporter", "[report] key=".concat(String.valueOf(paramInt)));
-    AppMethodBeat.o(229302);
+    AppMethodBeat.i(48070);
+    boolean bool1 = WebView.isSys();
+    boolean bool2 = WebView.isXWalk();
+    boolean bool3 = WebView.isX5();
+    int i = 0;
+    int k;
+    for (int j = 0; i < 3; j = k)
+    {
+      k = j;
+      if (new boolean[] { bool1, bool2, bool3 }[i] != 0) {
+        k = j + 1;
+      }
+      i += 1;
+    }
+    if (j == 1) {
+      i = 1;
+    }
+    while (i == 0) {
+      if (BuildInfo.DEBUG)
+      {
+        localObject = new IllegalStateException(String.format(Locale.US, "WebViewType invalid sys[%B] xw[%B] x5[%B]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) }));
+        AppMethodBeat.o(48070);
+        throw ((Throwable)localObject);
+        i = 0;
+      }
+      else
+      {
+        localObject = qJS;
+        AppMethodBeat.o(48070);
+        return localObject;
+      }
+    }
+    if (bool3)
+    {
+      localObject = qJP;
+      AppMethodBeat.o(48070);
+      return localObject;
+    }
+    if (bool2)
+    {
+      localObject = qJR;
+      AppMethodBeat.o(48070);
+      return localObject;
+    }
+    Object localObject = qJQ;
+    AppMethodBeat.o(48070);
+    return localObject;
   }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/report/HalfScreenReporter$Companion;", "", "()V", "FULL_SCREEN_TO_HALF_SCREEN", "", "HALF_SCREEN_TO_FULL_SCREEN", "RESTART_FOR_LAUNCH_MODE_CHANGE", "STARTUP_COLD", "STARTUP_COLD_USER_ACTION", "STARTUP_HOT", "STARTUP_HOT_USER_ACTION", "STARTUP_HOT_USER_ACTION_RUNTIME_CREATED_BY_PRE_RENDER", "STARTUP_HOT_USER_ACTION_UNIQUE_FOR_PER_INSTANCE", "STARTUP_HOT_USER_ACTION_UNIQUE_FOR_PER_INSTANCE_RUNTIME_CREATED_BY_PRE_RENDER", "KEY", "plugin-appbrand-integration_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.p
  * JD-Core Version:    0.7.0.1
  */

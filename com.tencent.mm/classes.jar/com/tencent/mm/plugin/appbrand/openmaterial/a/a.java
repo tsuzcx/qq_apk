@@ -1,8 +1,10 @@
 package com.tencent.mm.plugin.appbrand.openmaterial.a;
 
 import android.os.Looper;
-import com.tencent.f.h;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.openmaterial.k;
 import com.tencent.mm.plugin.appbrand.openmaterial.model.AppBrandOpenMaterialCollection;
 import com.tencent.mm.plugin.appbrand.openmaterial.model.AppBrandOpenMaterialDetailModel;
 import com.tencent.mm.plugin.appbrand.openmaterial.model.AppBrandOpenMaterialModel;
@@ -12,31 +14,31 @@ import kotlin.a.j;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/openmaterial/data/FakeOpenMaterialDataSource;", "Lcom/tencent/mm/plugin/appbrand/openmaterial/data/IOpenMaterialDataSource;", "()V", "fakeFetchOpenMaterialsByCGI", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialCollection;", "materialModel", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/MaterialModel;", "fetchOpenMaterials", "", "fetchOpenMaterialsCallback", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IFetchOpenMaterialsCallback;", "fetchOpenMaterialsInner", "fetchOpenMaterialsQuickly", "prefetchOpenMaterialsOnLaunchAppBrand", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/openmaterial/data/FakeOpenMaterialDataSource;", "Lcom/tencent/mm/plugin/appbrand/openmaterial/data/IOpenMaterialDataSource;", "()V", "fakeFetchOpenMaterialsByCGI", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialCollection;", "materialModel", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/MaterialModel;", "fetchOpenMaterials", "", "fetchOpenMaterialsCallback", "Lcom/tencent/mm/plugin/appbrand/openmaterial/IFetchOpenMaterialsCallback;", "fetchOpenMaterialsInner", "fetchOpenMaterialsQuickly", "prefetchOpenMaterialsOnLaunchAppBrand", "plugin-appbrand-integration_release"})
 public final class a
   implements b
 {
-  public static final a nln;
+  public static final a qmX;
   
   static
   {
-    AppMethodBeat.i(229140);
-    nln = new a();
-    AppMethodBeat.o(229140);
+    AppMethodBeat.i(271317);
+    qmX = new a();
+    AppMethodBeat.o(271317);
   }
   
   private static AppBrandOpenMaterialCollection d(MaterialModel paramMaterialModel)
   {
-    AppMethodBeat.i(229138);
+    AppMethodBeat.i(271315);
     Log.d("MicroMsg.AppBrand.FakeOpenMaterialDataSource", "fetchOpenMaterialsInner");
     paramMaterialModel = e(paramMaterialModel);
-    AppMethodBeat.o(229138);
+    AppMethodBeat.o(271315);
     return paramMaterialModel;
   }
   
   private static AppBrandOpenMaterialCollection e(MaterialModel paramMaterialModel)
   {
-    AppMethodBeat.i(229139);
+    AppMethodBeat.i(271316);
     Log.d("MicroMsg.AppBrand.FakeOpenMaterialDataSource", "fakeFetchOpenMaterialsByCGI");
     AppBrandOpenMaterialDetailModel localAppBrandOpenMaterialDetailModel1 = new AppBrandOpenMaterialDetailModel("wxda97763422d9a0ca", 1, "/pages/index/index.html", "http://mmbiz.qpic.cn/mmbiz_png/4XQzbXAGErjY4jReHjaVey8nFTn79HfdFDpiaUK6CywZ5HMaCUcqDufIJ2LkaQTvdPcoMHCSOy5oEeWCOg4CKzg/640?wx_fmt=png&wxfrom=200", "用有BUG啦打开", j.listOf("测试"), 0.0F, "无敌的小程序");
     localAppBrandOpenMaterialDetailModel1.appName = "有BUG啦";
@@ -55,60 +57,60 @@ public final class a
     AppBrandOpenMaterialModel localAppBrandOpenMaterialModel3 = new AppBrandOpenMaterialModel("wxb315b84b1622f225", 0, "", "http://wx.qlogo.cn/mmhead/Q3auHgzwzM6fqS4upaNjFwXDYHDhRRZibsn13dINnbVUrYg9rAS4l9w/96", "用文件打印打开");
     localAppBrandOpenMaterialModel3.appName = "文件打印";
     paramMaterialModel = new AppBrandOpenMaterialCollection(paramMaterialModel, j.listOf(new AppBrandOpenMaterialModel[] { (AppBrandOpenMaterialModel)localAppBrandOpenMaterialDetailModel1, localAppBrandOpenMaterialModel1, localAppBrandOpenMaterialModel2, localAppBrandOpenMaterialModel3 }), j.listOf(new AppBrandOpenMaterialDetailModel[] { localAppBrandOpenMaterialDetailModel1, localAppBrandOpenMaterialDetailModel2, localAppBrandOpenMaterialDetailModel3, localAppBrandOpenMaterialDetailModel4, localAppBrandOpenMaterialDetailModel5 }));
-    AppMethodBeat.o(229139);
+    AppMethodBeat.o(271316);
     return paramMaterialModel;
   }
   
   public final AppBrandOpenMaterialCollection a(MaterialModel paramMaterialModel)
   {
-    AppMethodBeat.i(229137);
-    p.h(paramMaterialModel, "materialModel");
+    AppMethodBeat.i(271314);
+    p.k(paramMaterialModel, "materialModel");
     paramMaterialModel = d(paramMaterialModel);
-    AppMethodBeat.o(229137);
+    AppMethodBeat.o(271314);
     return paramMaterialModel;
   }
   
-  public final void a(final MaterialModel paramMaterialModel, com.tencent.mm.plugin.appbrand.openmaterial.i parami)
+  public final void a(final MaterialModel paramMaterialModel, k paramk)
   {
-    AppMethodBeat.i(229136);
-    p.h(paramMaterialModel, "materialModel");
-    p.h(parami, "fetchOpenMaterialsCallback");
-    if (p.j(Looper.getMainLooper(), Looper.myLooper()))
+    AppMethodBeat.i(271313);
+    p.k(paramMaterialModel, "materialModel");
+    p.k(paramk, "fetchOpenMaterialsCallback");
+    if (p.h(Looper.getMainLooper(), Looper.myLooper()))
     {
-      parami.a(true, d(paramMaterialModel));
-      AppMethodBeat.o(229136);
+      paramk.a(true, d(paramMaterialModel));
+      AppMethodBeat.o(271313);
       return;
     }
-    h.RTc.aV((Runnable)new a(parami, paramMaterialModel));
-    AppMethodBeat.o(229136);
+    h.ZvG.bc((Runnable)new a(paramk, paramMaterialModel));
+    AppMethodBeat.o(271313);
   }
   
   public final void c(MaterialModel paramMaterialModel)
   {
-    AppMethodBeat.i(229135);
-    p.h(paramMaterialModel, "materialModel");
-    AppMethodBeat.o(229135);
+    AppMethodBeat.i(271312);
+    p.k(paramMaterialModel, "materialModel");
+    AppMethodBeat.o(271312);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
-    a(com.tencent.mm.plugin.appbrand.openmaterial.i parami, MaterialModel paramMaterialModel) {}
+    a(k paramk, MaterialModel paramMaterialModel) {}
     
     public final void run()
     {
-      AppMethodBeat.i(229134);
-      com.tencent.mm.plugin.appbrand.openmaterial.i locali = this.nlo;
-      a locala = a.nln;
-      locali.a(true, a.f(paramMaterialModel));
-      AppMethodBeat.o(229134);
+      AppMethodBeat.i(268979);
+      k localk = this.qmY;
+      a locala = a.qmX;
+      localk.a(true, a.f(paramMaterialModel));
+      AppMethodBeat.o(268979);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.openmaterial.a.a
  * JD-Core Version:    0.7.0.1
  */

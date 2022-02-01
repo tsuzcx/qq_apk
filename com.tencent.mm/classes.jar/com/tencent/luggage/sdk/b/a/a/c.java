@@ -2,134 +2,134 @@ package com.tencent.luggage.sdk.b.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ac.l;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
 import com.tencent.mm.plugin.appbrand.m.i;
 import com.tencent.mm.plugin.appbrand.m.m;
 import com.tencent.mm.plugin.appbrand.m.m.a;
 import com.tencent.mm.plugin.appbrand.m.q;
 import com.tencent.mm.plugin.appbrand.m.v;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.udp.libmmudp.UdpNative;
-import com.tencent.mm.udp.libmmudp.UdpNative.NativeCallBackInterface;
-import com.tencent.mm.udp.libmmudp.a;
+import com.tencent.mm.tcp.libmmtcp.TcpNative;
+import com.tencent.mm.tcp.libmmtcp.TcpNative.NativeCallBackInterface;
+import com.tencent.mm.tcp.libmmtcp.a;
 import java.lang.ref.WeakReference;
 
 public final class c
 {
-  boolean czD;
-  protected UdpNative czO;
-  private final a czP;
+  protected TcpNative cyK;
+  private final a cyL;
+  boolean cyz;
   
   public c()
   {
-    AppMethodBeat.i(146762);
-    this.czD = true;
-    this.czP = new a(new Runnable()
+    AppMethodBeat.i(237934);
+    this.cyz = true;
+    this.cyL = new a(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(146760);
+        AppMethodBeat.i(244697);
         synchronized (c.this)
         {
-          if (c.this.czO != null)
+          if (c.this.cyK != null)
           {
-            Log.i("Luggage.UdpNativeInstallHelper", "DestroyTask destoryUdp");
-            c.this.czO.destoryUdp();
-            c.this.czO = null;
-            AppMethodBeat.o(146760);
+            Log.i("Luggage.TcpNativeInstallHelper", "DestroyTask destoryTcp");
+            c.this.cyK.destoryTcp();
+            c.this.cyK = null;
+            AppMethodBeat.o(244697);
             return;
           }
-          Log.i("Luggage.UdpNativeInstallHelper", "DestroyTask udpNative is null");
+          Log.i("Luggage.TcpNativeInstallHelper", "DestroyTask tcpNative is null");
         }
       }
     });
-    AppMethodBeat.o(146762);
+    AppMethodBeat.o(237934);
   }
   
   public final void a(i parami)
   {
-    AppMethodBeat.i(146764);
-    Log.i("Luggage.UdpNativeInstallHelper", "destroyUdpBinding");
+    AppMethodBeat.i(237937);
+    Log.i("Luggage.TcpNativeInstallHelper", "destroyTcpBinding");
     if (parami == null)
     {
-      Log.e("Luggage.UdpNativeInstallHelper", "destroyUdpBinding jsruntime is null");
-      AppMethodBeat.o(146764);
+      Log.e("Luggage.TcpNativeInstallHelper", "destroyTcpBinding jsruntime is null");
+      AppMethodBeat.o(237937);
       return;
     }
-    ((m)parami.R(m.class)).a(this.czP);
-    AppMethodBeat.o(146764);
+    ((m)parami.Q(m.class)).a(this.cyL);
+    AppMethodBeat.o(237937);
   }
   
-  public final void a(final i parami, f paramf)
+  public final void a(final i parami, e parame)
   {
-    AppMethodBeat.i(229839);
-    Log.i("Luggage.UdpNativeInstallHelper", "createUdpBinding");
+    AppMethodBeat.i(237935);
+    Log.i("Luggage.TcpNativeInstallHelper", "createTcpBinding");
     if (parami == null)
     {
-      Log.e("Luggage.UdpNativeInstallHelper", "createUdpBinding jsruntime is null");
-      AppMethodBeat.o(229839);
+      Log.e("Luggage.TcpNativeInstallHelper", "createTcpBinding jsruntime is null");
+      AppMethodBeat.o(237935);
       return;
     }
     a.loadLibraries();
-    q localq = (q)parami.R(q.class);
+    q localq = (q)parami.Q(q.class);
     if (localq == null)
     {
-      Log.e("Luggage.UdpNativeInstallHelper", "createUdpBinding jsThreadHandler is null");
-      AppMethodBeat.o(229839);
+      Log.e("Luggage.TcpNativeInstallHelper", "createTcpBinding jsThreadHandler is null");
+      AppMethodBeat.o(237935);
       return;
     }
-    paramf = (b)paramf.M(b.class);
-    if (paramf != null)
+    parame = (b)parame.K(b.class);
+    if (parame != null)
     {
-      this.czD = paramf.Oa();
-      Log.i("Luggage.UdpNativeInstallHelper", "createUdpBinding xLibUVSwitch:%b ", new Object[] { Boolean.valueOf(this.czD) });
+      this.cyz = parame.QY();
+      Log.i("Luggage.TcpNativeInstallHelper", "createTcpBinding xLibUVSwitch:%b ", new Object[] { Boolean.valueOf(this.cyz) });
     }
     localq.post(new Runnable()
     {
       public final void onCallBack(final long paramAnonymousLong, final String paramAnonymousString)
       {
-        AppMethodBeat.i(146758);
-        ((q)this.czF.get()).post(new Runnable()
+        AppMethodBeat.i(233933);
+        ((q)this.cyB.get()).post(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(146757);
-            Log.d("Luggage.UdpNativeInstallHelper", "mmudp jsThreadHandler run onCallBack apiName:%s,engineId:%d", new Object[] { paramAnonymousString, Long.valueOf(paramAnonymousLong) });
-            c.this.czO.update(paramAnonymousLong);
-            AppMethodBeat.o(146757);
+            AppMethodBeat.i(243193);
+            Log.d("Luggage.TcpNativeInstallHelper", "mmtcp jsThreadHandler run onCallBack apiName:%s,engineId:%d", new Object[] { paramAnonymousString, Long.valueOf(paramAnonymousLong) });
+            c.this.cyK.update(paramAnonymousLong);
+            AppMethodBeat.o(243193);
           }
         });
-        AppMethodBeat.o(146758);
+        AppMethodBeat.o(233933);
       }
     }
     {
       public final void run()
       {
-        AppMethodBeat.i(146759);
-        Log.i("Luggage.UdpNativeInstallHelper", "createUdpBinding InitCallBack ");
-        if (c.this.czO != null)
+        AppMethodBeat.i(247732);
+        Log.i("Luggage.TcpNativeInstallHelper", "createTcpBinding InitCallBack ");
+        if (c.this.cyK != null)
         {
-          Log.i("Luggage.UdpNativeInstallHelper", "createUdpBinding udpNative != null");
-          AppMethodBeat.o(146759);
+          Log.i("Luggage.TcpNativeInstallHelper", "createTcpBinding tcpNative != null");
+          AppMethodBeat.o(247732);
           return;
         }
-        v localv = (v)parami.R(v.class);
+        v localv = (v)parami.Q(v.class);
         if (localv == null)
         {
-          Log.e("Luggage.UdpNativeInstallHelper", "createUdpBinding v8Addon is null");
-          AppMethodBeat.o(146759);
+          Log.e("Luggage.TcpNativeInstallHelper", "createTcpBinding v8Addon is null");
+          AppMethodBeat.o(247732);
           return;
         }
-        if (c.this.czD) {}
-        for (c.this.czO = new UdpNative(localv.getIsolatePtr(), localv.XK(), localv.getUVLoopPtr());; c.this.czO = new UdpNative(localv.getIsolatePtr(), localv.XK(), 0L))
+        if (c.this.cyz) {}
+        for (c.this.cyK = new TcpNative(localv.getIsolatePtr(), localv.acn(), localv.getUVLoopPtr());; c.this.cyK = new TcpNative(localv.getIsolatePtr(), localv.acn(), 0L))
         {
-          Log.i("Luggage.UdpNativeInstallHelper", "createUdpBinding InitCallBack ret:%d", new Object[] { Integer.valueOf(c.this.czO.InitCallBack(this.czT)) });
-          AppMethodBeat.o(146759);
+          Log.i("Luggage.TcpNativeInstallHelper", "createTcpBinding InitCallBack ret:%d", new Object[] { Integer.valueOf(c.this.cyK.InitCallBack(this.cyP)) });
+          AppMethodBeat.o(247732);
           return;
         }
       }
     });
-    AppMethodBeat.o(229839);
+    AppMethodBeat.o(237935);
   }
   
   final class a
@@ -143,15 +143,15 @@ public final class c
     
     public final void onDestroy()
     {
-      AppMethodBeat.i(146761);
+      AppMethodBeat.i(246719);
       run();
-      AppMethodBeat.o(146761);
+      AppMethodBeat.o(246719);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.a.c
  * JD-Core Version:    0.7.0.1
  */

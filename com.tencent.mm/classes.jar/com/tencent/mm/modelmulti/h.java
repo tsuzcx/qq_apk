@@ -1,66 +1,66 @@
 package com.tencent.mm.modelmulti;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ddm;
-import com.tencent.mm.protocal.protobuf.ddn;
-import com.tencent.mm.protocal.protobuf.ekv;
+import com.tencent.mm.protocal.protobuf.dnc;
+import com.tencent.mm.protocal.protobuf.dnd;
+import com.tencent.mm.protocal.protobuf.evb;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.o.a;
+import com.tencent.mm.ui.q.a;
 
 public final class h
   extends q
   implements m
 {
-  private com.tencent.mm.ak.i callback;
-  private int jcv;
+  private com.tencent.mm.an.i callback;
+  private int lSU;
   private d rr;
   
   public h(int paramInt, String paramString)
   {
     AppMethodBeat.i(20546);
-    this.jcv = 0;
+    this.lSU = 0;
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new ddm();
-    ((d.a)localObject).iLO = new ddn();
+    ((d.a)localObject).lBU = new dnc();
+    ((d.a)localObject).lBV = new dnd();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/postinvitefriendsmsg";
     ((d.a)localObject).funcId = 1804;
-    this.rr = ((d.a)localObject).aXF();
-    ddm localddm = (ddm)this.rr.iLK.iLR;
-    localddm.LWR = paramInt;
-    localddm.LWT = paramString;
+    this.rr = ((d.a)localObject).bgN();
+    dnc localdnc = (dnc)d.b.b(this.rr.lBR);
+    localdnc.Tgp = paramInt;
+    localdnc.Tgr = paramString;
     if ((paramInt & 0x10) > 0)
     {
       a locala = new a();
-      localObject = new ekv();
-      if (locala.QAH == null) {
+      localObject = new evb();
+      if (locala.XZg == null) {
         break label185;
       }
       paramString = (String)localObject;
-      if (!Util.isNullOrNil(locala.QAH.token))
+      if (!Util.isNullOrNil(locala.XZg.token))
       {
-        ((ekv)localObject).Nke = locala.QAH.token;
-        ((ekv)localObject).Nkf = locala.QAH.Mte;
+        ((evb)localObject).UwO = locala.XZg.token;
+        ((evb)localObject).UwP = locala.XZg.TEk;
       }
     }
     label185:
     for (paramString = (String)localObject;; paramString = null)
     {
-      localddm.MID = paramString;
-      this.jcv = paramInt;
+      localdnc.TUs = paramString;
+      this.lSU = paramInt;
       AppMethodBeat.o(20546);
       return;
     }
   }
   
-  public final int doScene(g paramg, com.tencent.mm.ak.i parami)
+  public final int doScene(g paramg, com.tencent.mm.an.i parami)
   {
     AppMethodBeat.i(20548);
     Log.d("MicroMsg.NetScenePostInviteFriendsMsg", "doScene");
@@ -91,7 +91,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelmulti.h
  * JD-Core Version:    0.7.0.1
  */

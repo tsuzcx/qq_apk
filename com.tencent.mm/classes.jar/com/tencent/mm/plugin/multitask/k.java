@@ -2,27 +2,27 @@ package com.tencent.mm.plugin.multitask;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitask/UpdateTaskInfoByTitleTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "()V", "TAG", "", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-multitask_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/ReportTaskInfoTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "()V", "TAG", "", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-multitask_release"})
 public final class k
-  implements b<Bundle, Bundle>
+  implements d<Bundle, Bundle>
 {
   private final String TAG;
   
   public k()
   {
-    AppMethodBeat.i(200347);
-    this.TAG = "MicroMsg.MultiTask.UpdateTaskInfoByTitleTask";
-    Log.i(this.TAG, "create update task info by title");
-    AppMethodBeat.o(200347);
+    AppMethodBeat.i(248229);
+    this.TAG = "MicroMsg.MultiTask.ReportTaskInfoTask";
+    Log.i(this.TAG, "create report task info");
+    AppMethodBeat.o(248229);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.k
  * JD-Core Version:    0.7.0.1
  */

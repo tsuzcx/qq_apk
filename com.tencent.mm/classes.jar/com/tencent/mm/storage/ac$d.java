@@ -6,18 +6,18 @@ import kotlin.g.a.a;
 import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
 final class ac$d
   extends q
   implements a<MultiProcessMMKV>
 {
-  public static final d NRg;
+  public static final d VeX;
   
   static
   {
-    AppMethodBeat.i(212610);
-    NRg = new d();
-    AppMethodBeat.o(212610);
+    AppMethodBeat.i(205919);
+    VeX = new d();
+    AppMethodBeat.o(205919);
   }
   
   ac$d()

@@ -10,61 +10,61 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public class a
 {
-  protected Context ETH;
-  protected b ETI;
-  protected int ETJ;
-  protected int ETK;
-  protected int ETL;
-  protected int ETM;
-  protected int ETN;
-  protected int ETO;
-  protected boolean Exy;
+  protected ValueAnimator Exi;
+  protected boolean KLr;
+  protected Context LhJ;
+  protected b LhK;
+  protected int LhL;
+  protected int LhM;
+  protected int LhN;
+  protected int LhO;
+  protected int LhP;
+  protected int LhQ;
   protected int targetHeight;
   protected int targetWidth;
   protected View view;
-  protected ValueAnimator yTl;
   
   public a(Activity paramActivity, View paramView, boolean paramBoolean)
   {
-    this.ETH = paramActivity;
+    this.LhJ = paramActivity;
     this.view = paramView;
-    this.Exy = paramBoolean;
+    this.KLr = paramBoolean;
   }
   
   public final void a(b paramb)
   {
-    this.ETI = paramb;
+    this.LhK = paramb;
   }
   
-  public final void aG(Bundle paramBundle)
+  public final void aC(Bundle paramBundle)
   {
     AppMethodBeat.i(176405);
-    this.ETJ = paramBundle.getInt("param_thumb_left");
-    this.ETK = paramBundle.getInt("param_thumb_top");
-    this.ETL = paramBundle.getInt("param_thumb_width");
-    this.ETM = paramBundle.getInt("param_thumb_height");
+    this.LhL = paramBundle.getInt("param_thumb_left");
+    this.LhM = paramBundle.getInt("param_thumb_top");
+    this.LhN = paramBundle.getInt("param_thumb_width");
+    this.LhO = paramBundle.getInt("param_thumb_height");
     this.targetWidth = paramBundle.getInt("param_target_width");
     this.targetHeight = paramBundle.getInt("param_target_height");
-    this.ETN = (this.targetHeight - this.ETM);
-    this.ETO = (this.targetWidth - this.ETL);
-    Log.i("MicroMsg.SnsAdAnimation", "left=%s, top=%s, width=%s, height=%s, targetW=%s, targetH=%s", new Object[] { Integer.valueOf(this.ETJ), Integer.valueOf(this.ETK), Integer.valueOf(this.ETL), Integer.valueOf(this.ETM), Integer.valueOf(this.targetWidth), Integer.valueOf(this.targetHeight) });
+    this.LhP = (this.targetHeight - this.LhO);
+    this.LhQ = (this.targetWidth - this.LhN);
+    Log.i("MicroMsg.SnsAdAnimation", "left=%s, top=%s, width=%s, height=%s, targetW=%s, targetH=%s", new Object[] { Integer.valueOf(this.LhL), Integer.valueOf(this.LhM), Integer.valueOf(this.LhN), Integer.valueOf(this.LhO), Integer.valueOf(this.targetWidth), Integer.valueOf(this.targetHeight) });
     AppMethodBeat.o(176405);
   }
   
-  public void fkj()
+  public void fYs()
   {
     AppMethodBeat.i(176406);
-    if ((this.yTl != null) && (!this.yTl.isStarted()))
+    if ((this.Exi != null) && (!this.Exi.isStarted()))
     {
-      this.yTl.setStartDelay(0L);
-      this.yTl.start();
+      this.Exi.setStartDelay(0L);
+      this.Exi.start();
     }
     AppMethodBeat.o(176406);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.b.a
  * JD-Core Version:    0.7.0.1
  */

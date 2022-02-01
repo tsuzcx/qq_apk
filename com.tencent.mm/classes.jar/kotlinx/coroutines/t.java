@@ -1,328 +1,49 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
-import kotlin.d.f;
-import kotlin.k.j;
 import kotlin.l;
-import kotlin.n.n;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/CommonPool;", "Lkotlinx/coroutines/ExecutorCoroutineDispatcher;", "()V", "DEFAULT_PARALLELISM_PROPERTY_NAME", "", "executor", "Ljava/util/concurrent/Executor;", "getExecutor", "()Ljava/util/concurrent/Executor;", "parallelism", "", "getParallelism", "()I", "pool", "requestedParallelism", "usePrivatePool", "", "Try", "T", "block", "Lkotlin/Function0;", "(Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "close", "", "createPlainPool", "Ljava/util/concurrent/ExecutorService;", "createPool", "dispatch", "context", "Lkotlin/coroutines/CoroutineContext;", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "getOrCreatePoolSync", "isGoodCommonPool", "fjpClass", "Ljava/lang/Class;", "isGoodCommonPool$kotlinx_coroutines_core", "restore", "restore$kotlinx_coroutines_core", "shutdown", "timeout", "", "shutdown$kotlinx_coroutines_core", "toString", "usePrivatePool$kotlinx_coroutines_core", "kotlinx-coroutines-core"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/ChildHandleNode;", "Lkotlinx/coroutines/JobCancellingNode;", "Lkotlinx/coroutines/JobSupport;", "Lkotlinx/coroutines/ChildHandle;", "parent", "childJob", "Lkotlinx/coroutines/ChildJob;", "(Lkotlinx/coroutines/JobSupport;Lkotlinx/coroutines/ChildJob;)V", "childCancelled", "", "cause", "", "invoke", "", "toString", "", "kotlinx-coroutines-core"})
 public final class t
-  extends bk
+  extends ca<ce>
+  implements s
 {
-  private static final int TTI;
-  private static boolean TTJ;
-  public static final t TTK = new t();
-  private static volatile Executor pool;
+  public final u abwm;
   
-  static
+  public t(ce paramce, u paramu)
   {
-    AppMethodBeat.i(118258);
-    try
-    {
-      String str = System.getProperty("kotlinx.coroutines.default.parallelism");
-      if (str == null)
-      {
-        i = -1;
-        TTI = i;
-        AppMethodBeat.o(118258);
-        return;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        Object localObject = null;
-        continue;
-        Integer localInteger = n.buA((String)localObject);
-        if ((localInteger == null) || (localInteger.intValue() <= 0))
-        {
-          localObject = (Throwable)new IllegalStateException("Expected positive number in kotlinx.coroutines.default.parallelism, but has ".concat(String.valueOf(localObject)).toString());
-          AppMethodBeat.o(118258);
-          throw ((Throwable)localObject);
-        }
-        int i = localInteger.intValue();
-      }
-    }
+    super((by)paramce);
+    AppMethodBeat.i(118196);
+    this.abwm = paramu;
+    AppMethodBeat.o(118196);
   }
   
-  private static boolean a(Class<?> paramClass, ExecutorService paramExecutorService)
+  public final boolean B(Throwable paramThrowable)
   {
-    AppMethodBeat.i(118253);
-    paramExecutorService.submit((Runnable)t.b.TTM);
-    try
-    {
-      paramExecutorService = paramClass.getMethod("getPoolSize", new Class[0]).invoke(paramExecutorService, new Object[0]);
-      paramClass = paramExecutorService;
-      if (!(paramExecutorService instanceof Integer)) {
-        paramClass = null;
-      }
-      paramClass = (Integer)paramClass;
-    }
-    catch (Throwable paramClass)
-    {
-      for (;;)
-      {
-        paramClass = null;
-      }
-      AppMethodBeat.o(118253);
-      return false;
-    }
-    if (paramClass != null)
-    {
-      if (paramClass.intValue() <= 0) {
-        break label84;
-      }
-      AppMethodBeat.o(118253);
-      return true;
-    }
-    label84:
-    AppMethodBeat.o(118253);
-    return false;
-  }
-  
-  private static int getParallelism()
-  {
-    AppMethodBeat.i(118251);
-    Integer localInteger = Integer.valueOf(TTI);
-    if (((Number)localInteger).intValue() > 0)
-    {
-      i = 1;
-      if (i == 0) {
-        break label49;
-      }
-    }
-    for (;;)
-    {
-      if (localInteger == null) {
-        break label54;
-      }
-      i = localInteger.intValue();
-      AppMethodBeat.o(118251);
-      return i;
-      i = 0;
-      break;
-      label49:
-      localInteger = null;
-    }
-    label54:
-    int i = j.mZ(Runtime.getRuntime().availableProcessors() - 1, 1);
-    AppMethodBeat.o(118251);
-    return i;
-  }
-  
-  private static ExecutorService hMB()
-  {
-    AppMethodBeat.i(118252);
-    ExecutorService localExecutorService1;
-    if (System.getSecurityManager() != null)
-    {
-      localExecutorService1 = hMC();
-      AppMethodBeat.o(118252);
-      return localExecutorService1;
-    }
-    try
-    {
-      localObject3 = Class.forName("java.util.concurrent.ForkJoinPool");
-      if (localObject3 == null)
-      {
-        localExecutorService1 = hMC();
-        AppMethodBeat.o(118252);
-        return localExecutorService1;
-      }
-    }
-    catch (Throwable localThrowable1)
-    {
-      Object localObject3;
-      for (;;)
-      {
-        localObject3 = null;
-      }
-      if ((!TTJ) && (TTI < 0)) {
-        for (;;)
-        {
-          try
-          {
-            localObject1 = ((Class)localObject3).getMethod("commonPool", new Class[0]);
-            if (localObject1 == null) {
-              continue;
-            }
-            localObject1 = ((Method)localObject1).invoke(null, new Object[0]);
-            Object localObject4 = localObject1;
-            if (!(localObject1 instanceof ExecutorService)) {
-              localObject4 = null;
-            }
-            localObject1 = (ExecutorService)localObject4;
-          }
-          catch (Throwable localThrowable2)
-          {
-            Object localObject1;
-            localObject2 = null;
-            continue;
-            localObject2 = null;
-            continue;
-          }
-          if (localObject1 == null) {
-            break label141;
-          }
-          if (!a((Class)localObject3, (ExecutorService)localObject1)) {
-            continue;
-          }
-          if (localObject1 == null) {
-            break label141;
-          }
-          AppMethodBeat.o(118252);
-          return localObject1;
-          localObject1 = null;
-        }
-      }
-      try
-      {
-        label141:
-        localObject3 = ((Class)localObject3).getConstructor(new Class[] { Integer.TYPE }).newInstance(new Object[] { Integer.valueOf(getParallelism()) });
-        localObject2 = localObject3;
-        if (!(localObject3 instanceof ExecutorService)) {
-          localObject2 = null;
-        }
-        localObject2 = (ExecutorService)localObject2;
-      }
-      catch (Throwable localThrowable3)
-      {
-        for (;;)
-        {
-          Object localObject2;
-          localExecutorService2 = null;
-        }
-        ExecutorService localExecutorService2 = hMC();
-        AppMethodBeat.o(118252);
-        return localExecutorService2;
-      }
-      if (localObject2 != null)
-      {
-        AppMethodBeat.o(118252);
-        return localObject2;
-      }
-    }
-  }
-  
-  private static ExecutorService hMC()
-  {
-    AppMethodBeat.i(118254);
-    Object localObject = new AtomicInteger();
-    localObject = Executors.newFixedThreadPool(getParallelism(), (ThreadFactory)new a((AtomicInteger)localObject));
-    AppMethodBeat.o(118254);
-    return localObject;
-  }
-  
-  private final Executor hMD()
-  {
-    try
-    {
-      AppMethodBeat.i(118255);
-      Executor localExecutor = pool;
-      Object localObject1 = localExecutor;
-      if (localExecutor == null)
-      {
-        localObject1 = hMB();
-        pool = (Executor)localObject1;
-        localObject1 = (Executor)localObject1;
-      }
-      AppMethodBeat.o(118255);
-      return localObject1;
-    }
-    finally {}
-  }
-  
-  public final void a(f paramf, Runnable paramRunnable)
-  {
-    AppMethodBeat.i(118256);
-    for (;;)
-    {
-      try
-      {
-        paramf = pool;
-        if (paramf == null)
-        {
-          paramf = hMD();
-          localObject = cr.TVl;
-          if (localObject == null) {
-            break label75;
-          }
-          Runnable localRunnable = ((cq)localObject).hNB();
-          localObject = localRunnable;
-          if (localRunnable == null) {
-            break label75;
-          }
-          paramf.execute((Runnable)localObject);
-          AppMethodBeat.o(118256);
-          return;
-        }
-      }
-      catch (RejectedExecutionException paramf)
-      {
-        ap.TUg.bd(paramRunnable);
-        AppMethodBeat.o(118256);
-        return;
-      }
-      continue;
-      label75:
-      Object localObject = paramRunnable;
-    }
-  }
-  
-  public final void close()
-  {
-    AppMethodBeat.i(118257);
-    Throwable localThrowable = (Throwable)new IllegalStateException("Close cannot be invoked on CommonPool".toString());
-    AppMethodBeat.o(118257);
-    throw localThrowable;
-  }
-  
-  public final Executor getExecutor()
-  {
-    AppMethodBeat.i(192395);
-    Executor localExecutor2 = pool;
-    Executor localExecutor1 = localExecutor2;
-    if (localExecutor2 == null) {
-      localExecutor1 = hMD();
-    }
-    AppMethodBeat.o(192395);
-    return localExecutor1;
+    AppMethodBeat.i(118194);
+    boolean bool = ((ce)this.Gib).B(paramThrowable);
+    AppMethodBeat.o(118194);
+    return bool;
   }
   
   public final String toString()
   {
-    return "CommonPool";
+    AppMethodBeat.i(118195);
+    String str = "ChildHandle[" + this.abwm + ']';
+    AppMethodBeat.o(118195);
+    return str;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Ljava/lang/Thread;", "it", "Ljava/lang/Runnable;", "kotlin.jvm.PlatformType", "newThread"})
-  static final class a
-    implements ThreadFactory
+  public final void y(Throwable paramThrowable)
   {
-    a(AtomicInteger paramAtomicInteger) {}
-    
-    public final Thread newThread(Runnable paramRunnable)
-    {
-      AppMethodBeat.i(118209);
-      paramRunnable = new Thread(paramRunnable, "CommonPool-worker-" + this.TTL.incrementAndGet());
-      paramRunnable.setDaemon(true);
-      AppMethodBeat.o(118209);
-      return paramRunnable;
-    }
+    AppMethodBeat.i(118192);
+    this.abwm.a((cm)this.Gib);
+    AppMethodBeat.o(118192);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlinx.coroutines.t
  * JD-Core Version:    0.7.0.1
  */

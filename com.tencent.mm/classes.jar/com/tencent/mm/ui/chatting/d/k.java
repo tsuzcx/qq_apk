@@ -1,176 +1,296 @@
 package com.tencent.mm.ui.chatting.d;
 
+import android.net.Uri;
+import android.net.Uri.Builder;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.compatible.util.q;
+import com.tencent.mm.plugin.game.protobuf.ab;
+import com.tencent.mm.plugin.game.protobuf.cv;
+import com.tencent.mm.plugin.gamelife.a.b;
+import com.tencent.mm.plugin.gamelife.a.f;
+import com.tencent.mm.plugin.websearch.PluginWebSearch;
+import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
+import com.tencent.mm.pluginsdk.ui.chat.a.a;
+import com.tencent.mm.pluginsdk.ui.chat.a.b;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.chatting.d.b.j;
-import com.tencent.mm.ui.m;
-import java.util.HashSet;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.ui.MMFragment;
+import com.tencent.mm.ui.chatting.d.b.u;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 
-public final class k
-  implements j, m
+@com.tencent.mm.ui.chatting.d.a.a(hRc=com.tencent.mm.ui.chatting.d.b.i.class)
+class k
+  extends a
+  implements com.tencent.mm.ui.chatting.d.b.i
 {
-  private HashSet<m> PnY;
-  
-  public k()
+  public final void hGW()
   {
-    AppMethodBeat.i(35179);
-    this.PnY = new HashSet();
-    AppMethodBeat.o(35179);
-  }
-  
-  public final void a(m paramm)
-  {
-    AppMethodBeat.i(35180);
-    if (!this.PnY.contains(paramm)) {
-      this.PnY.add(paramm);
-    }
-    AppMethodBeat.o(35180);
-  }
-  
-  public final void b(m paramm)
-  {
-    AppMethodBeat.i(35181);
-    this.PnY.remove(paramm);
-    AppMethodBeat.o(35181);
-  }
-  
-  public final void cFx()
-  {
-    AppMethodBeat.i(35185);
-    long l1 = System.currentTimeMillis();
-    Iterator localIterator = new HashSet(this.PnY).iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(284819);
+    super.hGW();
+    if (!hOP())
     {
-      m localm = (m)localIterator.next();
-      long l2 = System.currentTimeMillis();
-      localm.cFx();
-      long l3 = System.currentTimeMillis();
-      if (Log.getLogLevel() == 0) {
-        Log.v("MicroMsg.ChattingLifecycleObserver", "[onChattingResume] listener:%s cost:%sms", new Object[] { localm.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
+      AppMethodBeat.o(284819);
+      return;
+    }
+    Object localObject1 = ((b)com.tencent.mm.kernel.h.ae(b.class)).aKE(this.fgR.getSelfUserName());
+    ChatFooter localChatFooter;
+    if (localObject1 == null)
+    {
+      Log.e("GameLife.ChattingComponent", "self contact get failed!");
+      localChatFooter = ((u)this.fgR.bC(u.class)).hPj();
+      if (localChatFooter != null)
+      {
+        localObject1 = com.tencent.mm.plugin.game.commlib.a.ewh();
+        if (localObject1 != null) {
+          break label232;
+        }
+        localObject1 = null;
       }
     }
-    Log.i("MicroMsg.ChattingLifecycleObserver", "[onChattingResume]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
-    AppMethodBeat.o(35185);
-  }
-  
-  public final void cFy()
-  {
-    AppMethodBeat.i(35186);
-    long l1 = System.currentTimeMillis();
-    Iterator localIterator = new HashSet(this.PnY).iterator();
-    while (localIterator.hasNext())
+    for (;;)
     {
-      m localm = (m)localIterator.next();
-      long l2 = System.currentTimeMillis();
-      localm.cFy();
-      long l3 = System.currentTimeMillis();
-      if (Log.getLogLevel() == 0) {
-        Log.v("MicroMsg.ChattingLifecycleObserver", "[onChattingPause] listener:%s cost:%sms", new Object[] { localm.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
+      localChatFooter.setAppPanelUnCertainEnterArrayList((ArrayList)localObject1);
+      localChatFooter.hlV();
+      ((com.tencent.mm.plugin.gamelife.a.c)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.c.class)).aEy(this.fgR.getTalkerUserName());
+      if (!Util.isNullOrNil(this.fgR.getTalkerUserName())) {
+        com.tencent.e.h.ZvG.bf(new k.3(this));
+      }
+      AppMethodBeat.o(284819);
+      return;
+      Object localObject2 = ((u)this.fgR.bC(u.class)).hPj();
+      if (localObject2 == null) {
+        break;
+      }
+      Object localObject3 = (com.tencent.mm.ui.widget.cedit.api.c)this.fgR.findViewById(R.h.dxd);
+      ((com.tencent.mm.ui.widget.cedit.api.c)localObject3).refresh(((PluginWebSearch)com.tencent.mm.kernel.h.ag(PluginWebSearch.class)).isUseSysEditText());
+      ((com.tencent.mm.ui.widget.cedit.api.c)localObject3).addOnLayoutChangeListener(new k.1(this, (com.tencent.mm.ui.widget.cedit.api.c)localObject3, (com.tencent.mm.plugin.gamelife.a.a)localObject1, (ChatFooter)localObject2));
+      break;
+      label232:
+      String str = ((f)com.tencent.mm.kernel.h.ae(f.class)).aED(this.fgR.getTalkerUserName());
+      if (TextUtils.isEmpty(str))
+      {
+        localObject1 = null;
+      }
+      else
+      {
+        localObject2 = new ArrayList(((com.tencent.mm.plugin.game.protobuf.k)localObject1).CNp.size());
+        Iterator localIterator = ((com.tencent.mm.plugin.game.protobuf.k)localObject1).CNp.iterator();
+        while (localIterator.hasNext())
+        {
+          com.tencent.mm.plugin.game.protobuf.h localh = (com.tencent.mm.plugin.game.protobuf.h)localIterator.next();
+          if (localh.CNg != 0)
+          {
+            a.a locala = new a.a();
+            locala.RiB = localh.sSV;
+            int i;
+            label350:
+            label367:
+            Object localObject4;
+            if (localh.CNf)
+            {
+              i = 1;
+              locala.red_dot = i;
+              if (localh.CNg != 1) {
+                break label634;
+              }
+              i = 1;
+              locala.jump_type = i;
+              if ((localh.CNg != 1) || (localh.CNh == null)) {
+                break label779;
+              }
+              locala.RiD = localh.CNh.lVG;
+              localObject3 = localh.CNh.CqK;
+              localObject4 = this.fgR.getSelfUserName();
+              localObject1 = localObject3;
+              if (localObject4 != null)
+              {
+                if (str != null) {
+                  break label639;
+                }
+                localObject1 = localObject3;
+              }
+              label438:
+              locala.RiF = ((String)localObject1);
+              locala.RiG = String.valueOf(localh.CNh.CQL);
+              label460:
+              localObject1 = localh.CNi.iterator();
+            }
+            for (;;)
+            {
+              if (!((Iterator)localObject1).hasNext()) {
+                break label1015;
+              }
+              localObject4 = (ab)((Iterator)localObject1).next();
+              if (((ab)localObject4).vhq != null)
+              {
+                localObject3 = new a.b();
+                ((a.b)localObject3).title = ((ab)localObject4).fwr;
+                ((a.b)localObject3).desc = ((ab)localObject4).CMB;
+                localObject4 = ((ab)localObject4).vhq;
+                i = -1;
+                switch (((String)localObject4).hashCode())
+                {
+                }
+                for (;;)
+                {
+                  switch (i)
+                  {
+                  default: 
+                    break;
+                  case 0: 
+                    locala.RiH = ((a.b)localObject3);
+                    break;
+                    i = 0;
+                    break label350;
+                    label634:
+                    i = 2;
+                    break label367;
+                    label639:
+                    localObject1 = String.format("from_username=%s&to_username=%s", new Object[] { q.aT((String)localObject4), q.aT(str) });
+                    if (TextUtils.isEmpty((CharSequence)localObject3))
+                    {
+                      localObject1 = "?".concat(String.valueOf(localObject1));
+                      break label438;
+                    }
+                    if (((String)localObject3).contains("?"))
+                    {
+                      if (((String)localObject3).endsWith("?"))
+                      {
+                        localObject1 = (String)localObject3 + (String)localObject1;
+                        break label438;
+                      }
+                      localObject1 = String.format("%s&%s", new Object[] { localObject3, localObject1 });
+                      break label438;
+                    }
+                    localObject1 = String.format("%s?%s", new Object[] { localObject3, localObject1 });
+                    break label438;
+                    label779:
+                    if (localh.CNg != 2) {
+                      break label460;
+                    }
+                    localObject3 = localh.CMD;
+                    localObject4 = this.fgR.getSelfUserName();
+                    localObject1 = localObject3;
+                    if (!Util.isNullOrNil((String)localObject3))
+                    {
+                      localObject1 = localObject3;
+                      if (localObject4 != null) {
+                        if (str != null) {
+                          break label881;
+                        }
+                      }
+                    }
+                    for (localObject1 = localObject3;; localObject1 = ((Uri.Builder)localObject1).build().toString())
+                    {
+                      locala.qpi = ((String)localObject1);
+                      locala.RiP = localh.CNm;
+                      if ((Util.isNullOrNil(locala.qpi)) || (locala.RiP == 0)) {
+                        break;
+                      }
+                      com.tencent.mm.plugin.game.luggage.h.a(com.tencent.mm.plugin.game.luggage.i.class, locala.qpi, null);
+                      break;
+                      label881:
+                      localObject1 = Uri.parse((String)localObject3).buildUpon();
+                      ((Uri.Builder)localObject1).appendQueryParameter("from_username", (String)localObject4);
+                      ((Uri.Builder)localObject1).appendQueryParameter("to_username", str);
+                    }
+                    if (((String)localObject4).equals("zh_CN"))
+                    {
+                      i = 0;
+                      continue;
+                      if (((String)localObject4).equals("zh_TW"))
+                      {
+                        i = 1;
+                        continue;
+                        if (((String)localObject4).equals("zh_HK"))
+                        {
+                          i = 2;
+                          continue;
+                          if (((String)localObject4).equals("en")) {
+                            i = 3;
+                          }
+                        }
+                      }
+                    }
+                    break;
+                  }
+                }
+                locala.RiJ = ((a.b)localObject3);
+                continue;
+                locala.RiI = ((a.b)localObject3);
+                continue;
+                locala.RiK = ((a.b)localObject3);
+              }
+            }
+            label1015:
+            locala.iconUrl = localh.CNj;
+            locala.RiL = localh.CNk;
+            locala.RiN = 56;
+            locala.RiM = 56;
+            locala.RiQ = new k.2(this, localh);
+            Log.i("GameLife.ChattingComponent", "add AppPanel: enter_id[%s] red_dot[%d] appid[%s] url[%s] title[%s] type[%d]", new Object[] { locala.RiB, Integer.valueOf(locala.red_dot), locala.RiD, locala.qpi, locala.RiH.title, Integer.valueOf(localh.CNe) });
+            ((ArrayList)localObject2).add(locala);
+          }
+        }
+        localObject1 = localObject2;
       }
     }
-    Log.i("MicroMsg.ChattingLifecycleObserver", "[onChattingPause]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
-    AppMethodBeat.o(35186);
   }
   
-  public final void gIk()
+  public final void hGZ()
   {
-    AppMethodBeat.i(35182);
-    long l1 = System.currentTimeMillis();
-    Iterator localIterator = new HashSet(this.PnY).iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(284821);
+    super.hGZ();
+    if (!hOP())
     {
-      m localm = (m)localIterator.next();
-      long l2 = System.currentTimeMillis();
-      localm.gIk();
-      long l3 = System.currentTimeMillis();
-      if (Log.getLogLevel() == 0) {
-        Log.v("MicroMsg.ChattingLifecycleObserver", "[onChattingInit] listener:%s cost:%sms", new Object[] { localm.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
-      }
+      AppMethodBeat.o(284821);
+      return;
     }
-    Log.i("MicroMsg.ChattingLifecycleObserver", "[onChattingInit]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
-    AppMethodBeat.o(35182);
+    ((com.tencent.mm.plugin.gamelife.a.c)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.c.class)).aEy(this.fgR.getTalkerUserName());
+    com.tencent.mm.plugin.game.luggage.h.destroy();
+    AppMethodBeat.o(284821);
   }
   
-  public final void gIl()
+  public final void hOL()
   {
-    AppMethodBeat.i(35183);
-    long l1 = System.currentTimeMillis();
-    Iterator localIterator = new HashSet(this.PnY).iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(284815);
+    this.fgR.WQv.setMMTitle(this.fgR.NKq.ays());
+    Object localObject = ((f)com.tencent.mm.kernel.h.ae(f.class)).aED(this.fgR.getTalkerUserName());
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      m localm = (m)localIterator.next();
-      long l2 = System.currentTimeMillis();
-      localm.gIl();
-      long l3 = System.currentTimeMillis();
-      if (Log.getLogLevel() == 0) {
-        Log.v("MicroMsg.ChattingLifecycleObserver", "[onChattingEnterAnimStart] listener:%s cost:%sms", new Object[] { localm.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
-      }
+      Log.e("GameLife.ChattingComponent", "talker username get failed!");
+      AppMethodBeat.o(284815);
+      return;
     }
-    Log.i("MicroMsg.ChattingLifecycleObserver", "[onChattingEnterAnimStart]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
-    AppMethodBeat.o(35183);
+    localObject = ((b)com.tencent.mm.kernel.h.ae(b.class)).aKE((String)localObject);
+    if (localObject == null)
+    {
+      Log.e("GameLife.ChattingComponent", "talker contact get failed!");
+      AppMethodBeat.o(284815);
+      return;
+    }
+    if ((!TextUtils.isEmpty(((com.tencent.mm.plugin.gamelife.a.a)localObject).getTag())) && (((com.tencent.mm.plugin.gamelife.a.a)localObject).eAh() == 1)) {
+      this.fgR.WQv.setMMSubTitle(((com.tencent.mm.plugin.gamelife.a.a)localObject).getTag());
+    }
+    AppMethodBeat.o(284815);
   }
   
-  public final void gIm()
+  public final boolean hOP()
   {
-    AppMethodBeat.i(35184);
-    long l1 = System.currentTimeMillis();
-    Iterator localIterator = new HashSet(this.PnY).iterator();
-    while (localIterator.hasNext())
-    {
-      m localm = (m)localIterator.next();
-      long l2 = System.currentTimeMillis();
-      localm.gIm();
-      long l3 = System.currentTimeMillis();
-      if (Log.getLogLevel() == 0) {
-        Log.v("MicroMsg.ChattingLifecycleObserver", "[onChattingEnterAnimEnd] listener:%s cost:%sms", new Object[] { localm.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
-      }
-    }
-    Log.i("MicroMsg.ChattingLifecycleObserver", "[onChattingEnterAnimEnd]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
-    AppMethodBeat.o(35184);
-  }
-  
-  public final void gIn()
-  {
-    AppMethodBeat.i(35187);
-    long l1 = System.currentTimeMillis();
-    Iterator localIterator = new HashSet(this.PnY).iterator();
-    while (localIterator.hasNext())
-    {
-      m localm = (m)localIterator.next();
-      long l2 = System.currentTimeMillis();
-      localm.gIn();
-      long l3 = System.currentTimeMillis();
-      if (Log.getLogLevel() == 0) {
-        Log.v("MicroMsg.ChattingLifecycleObserver", "[onChattingExitAnimStart] listener:%s cost:%sms", new Object[] { localm.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
-      }
-    }
-    Log.i("MicroMsg.ChattingLifecycleObserver", "[onChattingExitAnimStart]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
-    AppMethodBeat.o(35187);
-  }
-  
-  public final void gIo()
-  {
-    AppMethodBeat.i(35188);
-    long l1 = System.currentTimeMillis();
-    Iterator localIterator = new HashSet(this.PnY).iterator();
-    while (localIterator.hasNext())
-    {
-      m localm = (m)localIterator.next();
-      long l2 = System.currentTimeMillis();
-      localm.gIo();
-      long l3 = System.currentTimeMillis();
-      if (Log.getLogLevel() == 0) {
-        Log.v("MicroMsg.ChattingLifecycleObserver", "[onChattingExitAnimEnd] listener:%s cost:%sms", new Object[] { localm.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
-      }
-    }
-    Log.i("MicroMsg.ChattingLifecycleObserver", "[onChattingExitAnimEnd]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
-    AppMethodBeat.o(35188);
+    AppMethodBeat.i(284814);
+    boolean bool = as.bvQ(this.fgR.getTalkerUserName());
+    AppMethodBeat.o(284814);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.k
  * JD-Core Version:    0.7.0.1
  */

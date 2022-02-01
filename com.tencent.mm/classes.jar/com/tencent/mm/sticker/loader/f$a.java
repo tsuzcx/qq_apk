@@ -3,34 +3,36 @@ package com.tencent.mm.sticker.loader;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.f;
+import kotlin.g.a.b;
 import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/sticker/loader/StickerProcessTask$IPCStickerTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Companion", "plugin-sticker_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/sticker/loader/StickerProcessTask$IPCStickerTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Bundle;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Companion", "plugin-sticker_release"})
 public final class f$a
-  implements com.tencent.mm.ipcinvoker.b<Bundle, Bundle>
+  implements d<Bundle, Bundle>
 {
-  public static final a NNQ;
   private static final String TAG = "MicroMsg.IPCStickerTask";
+  public static final a VbA;
   
   static
   {
-    AppMethodBeat.i(194229);
-    NNQ = new a((byte)0);
+    AppMethodBeat.i(233147);
+    VbA = new a((byte)0);
     TAG = "MicroMsg.IPCStickerTask";
-    AppMethodBeat.o(194229);
+    AppMethodBeat.o(233147);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/sticker/loader/StickerProcessTask$IPCStickerTask$Companion;", "", "()V", "KEY_STICKER_LOAD_INFO", "", "KEY_TASK_RESULT", "TAG", "plugin-sticker_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/sticker/loader/StickerProcessTask$IPCStickerTask$Companion;", "", "()V", "KEY_STICKER_LOAD_INFO", "", "KEY_TASK_RESULT", "TAG", "plugin-sticker_release"})
   public static final class a {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke"})
   static final class b
     extends q
-    implements kotlin.g.a.b<Boolean, x>
+    implements b<Boolean, x>
   {
-    b(Bundle paramBundle, d paramd)
+    b(Bundle paramBundle, f paramf)
     {
       super();
     }

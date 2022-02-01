@@ -5,20 +5,22 @@ import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.page.ag;
-import com.tencent.mm.plugin.appbrand.page.bx;
-import com.tencent.mm.plugin.appbrand.page.t;
-import com.tencent.mm.plugin.appbrand.page.x;
+import com.tencent.mm.plugin.appbrand.page.ah;
+import com.tencent.mm.plugin.appbrand.page.ca;
+import com.tencent.mm.plugin.appbrand.page.u;
+import com.tencent.mm.plugin.appbrand.page.y;
 import com.tencent.mm.plugin.appbrand.report.model.c;
 import com.tencent.mm.plugin.appbrand.report.model.d;
 import com.tencent.mm.plugin.appbrand.report.model.f;
 import com.tencent.mm.plugin.appbrand.report.model.h;
 import com.tencent.mm.plugin.appbrand.report.model.p;
+import com.tencent.mm.plugin.appbrand.report.model.q;
+import com.tencent.mm.plugin.appbrand.t;
 import com.tencent.mm.sdk.system.AndroidContextUtil;
 
 @SuppressLint({"ViewConstructor"})
 public final class j
-  extends x
+  extends y
 {
   public j(l paraml)
   {
@@ -27,72 +29,72 @@ public final class j
     AppMethodBeat.o(47512);
   }
   
-  public final f bOw()
+  public final f caN()
   {
     AppMethodBeat.i(47514);
     f local1 = new f()
     {
-      private final h nay;
+      private final h qaN;
       
-      public final void I(Intent paramAnonymousIntent) {}
+      public final void J(Intent paramAnonymousIntent) {}
       
-      public final void a(long paramAnonymousLong, bx paramAnonymousbx) {}
+      public final void a(long paramAnonymousLong, ca paramAnonymousca) {}
       
-      public final void a(ag paramAnonymousag1, ag paramAnonymousag2, bx paramAnonymousbx)
+      public final void a(ah paramAnonymousah1, ah paramAnonymousah2, ca paramAnonymousca)
       {
         AppMethodBeat.i(47509);
-        this.nay.a(paramAnonymousag1, paramAnonymousag2, paramAnonymousbx);
+        this.qaN.a(paramAnonymousah1, paramAnonymousah2, paramAnonymousca);
         AppMethodBeat.o(47509);
       }
       
-      public final Intent bOA()
+      public final void caP() {}
+      
+      public final h caQ()
+      {
+        return this.qaN;
+      }
+      
+      public final Intent caR()
       {
         return null;
       }
       
-      public final p bOB()
+      public final p caS()
       {
         AppMethodBeat.i(47508);
-        p localp = p.bUW();
+        p localp = p.cih();
         AppMethodBeat.o(47508);
         return localp;
       }
       
-      public final com.tencent.mm.plugin.appbrand.report.model.q bOC()
+      public final q caT()
       {
         AppMethodBeat.i(180319);
-        com.tencent.mm.plugin.appbrand.report.model.q localq = com.tencent.mm.plugin.appbrand.report.model.q.bUX();
+        q localq = q.cii();
         AppMethodBeat.o(180319);
         return localq;
       }
       
-      public final void bOD() {}
+      public final void caU() {}
       
-      public final void bOy() {}
-      
-      public final h bOz()
-      {
-        return this.nay;
-      }
-      
-      public final void c(ag paramAnonymousag)
+      public final void d(ah paramAnonymousah)
       {
         AppMethodBeat.i(47507);
-        d(paramAnonymousag);
+        e(paramAnonymousah);
         AppMethodBeat.o(47507);
       }
       
-      public final void d(ag paramAnonymousag)
+      public final void e(ah paramAnonymousah)
       {
         AppMethodBeat.i(47510);
-        this.nay.d(paramAnonymousag);
+        this.qaN.e(paramAnonymousah);
         AppMethodBeat.o(47510);
       }
       
-      public final void e(ag paramAnonymousag)
+      public final void f(ah paramAnonymousah)
       {
         AppMethodBeat.i(47511);
-        this.nay.e(paramAnonymousag);
+        this.qaN.f(paramAnonymousah);
         AppMethodBeat.o(47511);
       }
       
@@ -102,7 +104,7 @@ public final class j
     return local1;
   }
   
-  public final ag bOx()
+  public final ah caO()
   {
     AppMethodBeat.i(175007);
     k localk = new k();
@@ -110,7 +112,7 @@ public final class j
     return localk;
   }
   
-  public final boolean e(t paramt)
+  public final boolean e(u paramu)
   {
     return false;
   }
@@ -124,7 +126,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.j
  * JD-Core Version:    0.7.0.1
  */

@@ -8,18 +8,18 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"runOnWorkThread", "", "action", "Lkotlin/Function0;", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"runOnWorkThread", "", "action", "Lkotlin/Function0;", "plugin-appbrand-integration_release"})
 public final class e
 {
-  public static final void v(a<x> parama)
+  public static final void u(a<x> parama)
   {
     AppMethodBeat.i(50331);
-    p.h(parama, "action");
-    m.bZn().postToWorker((Runnable)new a(parama));
+    p.k(parama, "action");
+    m.clV().postToWorker((Runnable)new a(parama));
     AppMethodBeat.o(50331);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
@@ -28,14 +28,14 @@ public final class e
     public final void run()
     {
       AppMethodBeat.i(50330);
-      this.kXn.invoke();
+      this.nRz.invoke();
       AppMethodBeat.o(50330);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.a.e
  * JD-Core Version:    0.7.0.1
  */

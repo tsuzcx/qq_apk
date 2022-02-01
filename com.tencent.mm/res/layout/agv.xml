@@ -2,4 +2,8 @@
 <LinearLayout android:orientation="vertical" android:id="@id/ab6" android:background="@drawable/xf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:gravity="bottom" android:orientation="vertical" android:id="@id/ab3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/ab1" android:background="@null" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:id="@id/aih" android:background="@color/b" android:layout_width="fill_parent" android:layout_height="@dimen/ct" />
+        <TextView android:textSize="@dimen/u4" android:textColor="@color/FG_0" android:gravity="center" android:id="@id/aii" android:background="@drawable/b6c" android:layout_width="fill_parent" android:layout_height="@dimen/cp" android:text="@string/amc" />
+    </LinearLayout>
 </LinearLayout>

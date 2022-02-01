@@ -4,7 +4,9 @@ import io.flutter.embedding.engine.a;
 
 public abstract interface f
 {
-  public abstract a KP();
+  public abstract void a(a parama);
+  
+  public abstract void b(a parama);
 }
 
 

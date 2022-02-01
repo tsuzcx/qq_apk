@@ -7,7 +7,7 @@ import org.json.JSONObject;
 
 public abstract class b<CONTEXT extends c>
 {
-  CONTEXT csZ;
+  CONTEXT crf;
   
   public abstract void a(b<CONTEXT>.a paramb);
   
@@ -15,37 +15,63 @@ public abstract class b<CONTEXT extends c>
   
   public final class a
   {
-    public CONTEXT cta;
-    public k ctb;
+    public CONTEXT crg;
+    public k crh;
     
     public a() {}
     
-    public final void c(String paramString, JSONObject paramJSONObject)
+    public final JSONObject NN()
+    {
+      return this.crh.cqn;
+    }
+    
+    public final void NT()
+    {
+      AppMethodBeat.i(207490);
+      a("", null);
+      AppMethodBeat.o(207490);
+    }
+    
+    public final void a(String paramString, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(140370);
-      this.ctb.c(paramString, paramJSONObject);
+      this.crh.a(paramString, paramJSONObject);
       AppMethodBeat.o(140370);
     }
     
-    public final void e(String paramString, Map<String, Object> paramMap)
+    public final void d(String paramString, Map<String, Object> paramMap)
     {
       AppMethodBeat.i(140369);
-      k localk = this.ctb;
+      k localk = this.crh;
       String str = paramString;
       if (paramString == null) {
         str = "";
       }
-      localk.csB = str;
+      localk.cqG = str;
       if (paramMap != null) {}
       for (paramString = new JSONObject(paramMap);; paramString = null)
       {
-        localk.csC = paramString;
-        if (localk.csv != 0) {
+        localk.cqH = paramString;
+        if (localk.cqA != 0) {
           localk.callback();
         }
         AppMethodBeat.o(140369);
         return;
       }
+    }
+    
+    public final void dr(String paramString)
+    {
+      AppMethodBeat.i(293003);
+      a(paramString, null);
+      AppMethodBeat.o(293003);
+    }
+    
+    public final void e(JSONObject paramJSONObject)
+    {
+      AppMethodBeat.i(207495);
+      a("", paramJSONObject);
+      AppMethodBeat.o(207495);
     }
   }
 }

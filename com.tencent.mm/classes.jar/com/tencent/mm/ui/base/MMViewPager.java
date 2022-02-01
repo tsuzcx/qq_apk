@@ -7,8 +7,6 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Looper;
 import android.os.Message;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.support.v4.view.q;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.GestureDetector;
@@ -21,6 +19,7 @@ import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.OverScroller;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -31,99 +30,114 @@ import java.lang.ref.WeakReference;
 public class MMViewPager
   extends WxViewPager
 {
-  private float CBe;
-  private float CBf;
-  private VelocityTracker CBg;
-  private boolean EHq;
-  private boolean EHr;
-  private boolean EHs;
-  private View.OnTouchListener HeV;
-  private g OTU;
-  public l OTV;
-  private boolean OTW;
-  private boolean OTX;
-  private boolean OTY;
-  private boolean OTZ;
-  private boolean OUa;
-  private int OUb;
-  private b OUc;
-  private f OUd;
-  private MMViewPager.d OUe;
-  private MMViewPager.a OUf;
-  private boolean OUg;
-  private ViewPager.OnPageChangeListener OUh;
-  private float OUi;
-  private boolean OUj;
-  private MotionEvent OUk;
-  private long OUl;
-  private boolean OUm;
-  private c OUn;
-  private GestureDetector.SimpleOnGestureListener OUo;
-  private View.OnLongClickListener OUp;
-  private final int OUq;
-  private final int OUr;
-  private float aZg;
-  private float aZh;
-  private int afB;
-  private int apZ;
-  private int auo;
-  private int aup;
-  private float dhm;
+  private float BpT;
+  private float BpU;
+  private VelocityTracker BpV;
+  private WxImageView Ccj;
+  private boolean Cfm;
+  private OverScroller Cfn;
+  private RectF Cfp;
+  private float Cfr;
+  private boolean Cfs;
+  private boolean Cft;
+  private boolean Cfu;
+  private boolean Cfv;
+  private boolean KVq;
+  private boolean KVr;
+  private boolean KVs;
+  private c WnA;
+  private GestureDetector.SimpleOnGestureListener WnB;
+  private View.OnLongClickListener WnC;
+  private final int WnD;
+  private final int WnE;
+  private g Wnh;
+  public l Wni;
+  private boolean Wnj;
+  private boolean Wnk;
+  private boolean Wnl;
+  private boolean Wnm;
+  private boolean Wnn;
+  private int Wno;
+  private b Wnp;
+  private f Wnq;
+  private d Wnr;
+  private MMViewPager.a Wns;
+  private boolean Wnt;
+  private ViewPager.OnPageChangeListener Wnu;
+  private float Wnv;
+  private boolean Wnw;
+  private MotionEvent Wnx;
+  private long Wny;
+  private boolean Wnz;
+  private float aIC;
+  private float aID;
+  private int aiM;
+  private int amg;
+  private int amh;
+  private float eYT;
   private MMHandler handler;
-  private GestureDetector mDJ;
-  private int mEX;
-  private int mEY;
+  private int lL;
   private VelocityTracker mVelocityTracker;
-  private WxImageView xpO;
-  private boolean xsN;
-  private OverScroller xsO;
-  private RectF xsQ;
-  private float xsS;
-  private boolean xsT;
-  private boolean xsU;
-  private boolean xsV;
-  private boolean xsW;
+  private View.OnTouchListener nan;
+  private GestureDetector pCU;
+  private int pEj;
+  private int pEk;
   
   public MMViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142287);
-    this.apZ = -1;
-    this.afB = -1;
-    this.xsN = false;
-    this.OTW = false;
-    this.OTX = false;
-    this.OTY = false;
-    this.OTZ = false;
-    this.OUa = false;
-    this.xsT = false;
-    this.xsU = false;
-    this.xsV = false;
-    this.xsW = false;
-    this.xsQ = new RectF();
-    this.OUb = 0;
+    this.aiM = -1;
+    this.lL = -1;
+    this.Cfm = false;
+    this.Wnj = false;
+    this.Wnk = false;
+    this.Wnl = false;
+    this.Wnm = false;
+    this.Wnn = false;
+    this.Cfs = false;
+    this.Cft = false;
+    this.Cfu = false;
+    this.Cfv = false;
+    this.Cfp = new RectF();
+    this.Wno = 0;
     this.handler = new MMHandler(Looper.getMainLooper());
-    this.OUg = false;
-    this.OUh = null;
-    this.OUi = 0.0F;
-    this.CBg = null;
-    this.OUj = false;
-    this.OUl = 0L;
-    this.aZg = 0.0F;
-    this.aZh = 0.0F;
-    this.EHq = false;
-    this.EHr = false;
-    this.EHs = false;
-    this.OUm = true;
-    this.OUo = new e((byte)0);
-    this.OUp = new MMViewPager.3(this);
-    this.OUq = 60;
-    this.OUr = 500;
+    this.Wnt = false;
+    this.Wnu = null;
+    this.Wnv = 0.0F;
+    this.BpV = null;
+    this.Wnw = false;
+    this.Wny = 0L;
+    this.aIC = 0.0F;
+    this.aID = 0.0F;
+    this.KVq = false;
+    this.KVr = false;
+    this.KVs = false;
+    this.Wnz = true;
+    this.WnB = new e((byte)0);
+    this.WnC = new View.OnLongClickListener()
+    {
+      public final boolean onLongClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(142262);
+        b localb = new b();
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/base/MMViewPager$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
+        if (MMViewPager.p(MMViewPager.this) != null) {
+          MMViewPager.p(MMViewPager.this).bwC();
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/base/MMViewPager$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+        AppMethodBeat.o(142262);
+        return true;
+      }
+    };
+    this.WnD = 60;
+    this.WnE = 500;
     setStaticTransformationsEnabled(true);
-    this.OTV = new l(new WeakReference(this));
-    this.mDJ = new GestureDetector(paramContext, new e((byte)0));
-    this.xsO = new OverScroller(paramContext, new DecelerateInterpolator(2.0F));
-    this.OUb = ((int)(getResources().getDisplayMetrics().density * 3000.0F));
+    this.Wni = new l(new WeakReference(this));
+    this.pCU = new GestureDetector(paramContext, new e((byte)0));
+    this.Cfn = new OverScroller(paramContext, new DecelerateInterpolator(2.0F));
+    this.Wno = ((int)(getResources().getDisplayMetrics().density * 3000.0F));
     super.setOnPageChangeListener(new ViewPager.OnPageChangeListener()
     {
       public final void onPageScrollStateChanged(int paramAnonymousInt)
@@ -184,9 +198,9 @@ public class MMViewPager
             MMViewPager.a(MMViewPager.this, paramAnonymousMotionEvent);
             MMViewPager.b(MMViewPager.this, null);
             paramAnonymousView = MMViewPager.l(MMViewPager.this);
-            paramAnonymousMotionEvent = new com.tencent.mm.hellhoundlib.b.a().bl(paramAnonymousMotionEvent);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousMotionEvent.axQ(), "com/tencent/mm/ui/base/MMViewPager$2", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousView.onTouchEvent((MotionEvent)paramAnonymousMotionEvent.pG(0)), "com/tencent/mm/ui/base/MMViewPager$2", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+            paramAnonymousMotionEvent = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousMotionEvent);
+            com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, paramAnonymousMotionEvent.aFh(), "com/tencent/mm/ui/base/MMViewPager$2", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousView.onTouchEvent((MotionEvent)paramAnonymousMotionEvent.sf(0)), "com/tencent/mm/ui/base/MMViewPager$2", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
             if ((MMViewPager.m(MMViewPager.this)) || (MMViewPager.n(MMViewPager.this)))
             {
               AppMethodBeat.o(142261);
@@ -202,9 +216,9 @@ public class MMViewPager
           }
           MMViewPager.b(MMViewPager.this, MotionEvent.obtainNoHistory(paramAnonymousMotionEvent));
           paramAnonymousView = MMViewPager.l(MMViewPager.this);
-          paramAnonymousMotionEvent = new com.tencent.mm.hellhoundlib.b.a().bl(paramAnonymousMotionEvent);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousMotionEvent.axQ(), "com/tencent/mm/ui/base/MMViewPager$2", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousView.onTouchEvent((MotionEvent)paramAnonymousMotionEvent.pG(0)), "com/tencent/mm/ui/base/MMViewPager$2", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+          paramAnonymousMotionEvent = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousMotionEvent);
+          com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, paramAnonymousMotionEvent.aFh(), "com/tencent/mm/ui/base/MMViewPager$2", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousView.onTouchEvent((MotionEvent)paramAnonymousMotionEvent.sf(0)), "com/tencent/mm/ui/base/MMViewPager$2", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
           MMViewPager.this.computeScroll();
           if ((bool2) || (bool1))
           {
@@ -223,37 +237,52 @@ public class MMViewPager
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142284);
-    this.apZ = -1;
-    this.afB = -1;
-    this.xsN = false;
-    this.OTW = false;
-    this.OTX = false;
-    this.OTY = false;
-    this.OTZ = false;
-    this.OUa = false;
-    this.xsT = false;
-    this.xsU = false;
-    this.xsV = false;
-    this.xsW = false;
-    this.xsQ = new RectF();
-    this.OUb = 0;
+    this.aiM = -1;
+    this.lL = -1;
+    this.Cfm = false;
+    this.Wnj = false;
+    this.Wnk = false;
+    this.Wnl = false;
+    this.Wnm = false;
+    this.Wnn = false;
+    this.Cfs = false;
+    this.Cft = false;
+    this.Cfu = false;
+    this.Cfv = false;
+    this.Cfp = new RectF();
+    this.Wno = 0;
     this.handler = new MMHandler(Looper.getMainLooper());
-    this.OUg = false;
-    this.OUh = null;
-    this.OUi = 0.0F;
-    this.CBg = null;
-    this.OUj = false;
-    this.OUl = 0L;
-    this.aZg = 0.0F;
-    this.aZh = 0.0F;
-    this.EHq = false;
-    this.EHr = false;
-    this.EHs = false;
-    this.OUm = true;
-    this.OUo = new e((byte)0);
-    this.OUp = new MMViewPager.3(this);
-    this.OUq = 60;
-    this.OUr = 500;
+    this.Wnt = false;
+    this.Wnu = null;
+    this.Wnv = 0.0F;
+    this.BpV = null;
+    this.Wnw = false;
+    this.Wny = 0L;
+    this.aIC = 0.0F;
+    this.aID = 0.0F;
+    this.KVq = false;
+    this.KVr = false;
+    this.KVs = false;
+    this.Wnz = true;
+    this.WnB = new e((byte)0);
+    this.WnC = new View.OnLongClickListener()
+    {
+      public final boolean onLongClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(142262);
+        b localb = new b();
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/base/MMViewPager$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
+        if (MMViewPager.p(MMViewPager.this) != null) {
+          MMViewPager.p(MMViewPager.this).bwC();
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/base/MMViewPager$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+        AppMethodBeat.o(142262);
+        return true;
+      }
+    };
+    this.WnD = 60;
+    this.WnE = 500;
     setStaticTransformationsEnabled(true);
     AppMethodBeat.o(142284);
   }
@@ -278,80 +307,80 @@ public class MMViewPager
   private boolean a(float paramFloat1, View paramView, float paramFloat2)
   {
     AppMethodBeat.i(142294);
-    if ((getAdapter().getItemPosition(paramView) == firstItemPosForDetermine()) || (this.OUg))
+    if ((getAdapter().getItemPosition(paramView) == firstItemPosForDetermine()) || (this.Wnt))
     {
-      if ((this.OTU instanceof WxImageView))
+      if ((this.Wnh instanceof WxImageView))
       {
-        paramFloat1 = ((WxImageView)this.OTU).getTranslationX();
+        paramFloat1 = ((WxImageView)this.Wnh).getTranslationX();
         paramFloat2 *= 0.3F;
         Log.d("MicroMsg.MMViewPager", "alvinluo scrollFirst current is WxImageView, distanceX: %f, translateLeft: %f", new Object[] { Float.valueOf(paramFloat2), Float.valueOf(paramFloat1) });
         if ((paramFloat2 < 0.0F) && (paramFloat1 - paramFloat2 > 0.0F)) {
-          this.OTZ = true;
+          this.Wnm = true;
         }
-        if (this.OTZ)
+        if (this.Wnm)
         {
-          ((WxImageView)this.OTU).translate(-paramFloat2, 0.0F);
+          ((WxImageView)this.Wnh).aC(-paramFloat2, 0.0F);
           AppMethodBeat.o(142294);
           return true;
         }
         AppMethodBeat.o(142294);
         return false;
       }
-      if (this.OTZ)
+      if (this.Wnm)
       {
         if (paramFloat2 < 0.0F)
         {
-          if (paramFloat1 > this.xsQ.left) {
+          if (paramFloat1 > this.Cfp.left) {
             break label182;
           }
-          this.OTU.au(-paramFloat2, 0.0F);
+          this.Wnh.az(-paramFloat2, 0.0F);
         }
         label182:
         do
         {
           AppMethodBeat.o(142294);
           return false;
-          if ((paramFloat1 > this.xsQ.left) && (paramFloat1 < this.mEX * 0.3F))
+          if ((paramFloat1 > this.Cfp.left) && (paramFloat1 < this.pEj * 0.3F))
           {
-            this.OTU.au(-(paramFloat2 * 0.3F), 0.0F);
+            this.Wnh.az(-(paramFloat2 * 0.3F), 0.0F);
             AppMethodBeat.o(142294);
             return true;
           }
-        } while ((!this.OUg) || (paramFloat1 <= this.xsQ.left));
-        this.OTU.au(-(paramFloat2 * 0.3F), 0.0F);
+        } while ((!this.Wnt) || (paramFloat1 <= this.Cfp.left));
+        this.Wnh.az(-(paramFloat2 * 0.3F), 0.0F);
         AppMethodBeat.o(142294);
         return true;
       }
       if (paramFloat2 < 0.0F)
       {
         if (paramFloat1 > 0.0F) {
-          this.OTZ = true;
+          this.Wnm = true;
         }
-        if (paramFloat1 > this.xsQ.left) {
+        if (paramFloat1 > this.Cfp.left) {
           break label338;
         }
-        this.OTU.au(-paramFloat2, 0.0F);
+        this.Wnh.az(-paramFloat2, 0.0F);
       }
     }
-    while ((this.OTY) || (this.OTX))
+    while ((this.Wnl) || (this.Wnk))
     {
       AppMethodBeat.o(142294);
       return false;
       label338:
-      if ((paramFloat1 > this.xsQ.left) && (paramFloat1 < this.mEX * 0.3F))
+      if ((paramFloat1 > this.Cfp.left) && (paramFloat1 < this.pEj * 0.3F))
       {
-        this.OTU.au(-(paramFloat2 * 0.3F), 0.0F);
+        this.Wnh.az(-(paramFloat2 * 0.3F), 0.0F);
         AppMethodBeat.o(142294);
         return true;
       }
-      if ((this.OUg) && (paramFloat1 > this.xsQ.left))
+      if ((this.Wnt) && (paramFloat1 > this.Cfp.left))
       {
-        this.OTU.au(-(paramFloat2 * 0.3F), 0.0F);
+        this.Wnh.az(-(paramFloat2 * 0.3F), 0.0F);
         AppMethodBeat.o(142294);
         return true;
       }
     }
-    this.OTZ = false;
+    this.Wnm = false;
     AppMethodBeat.o(142294);
     return false;
   }
@@ -359,76 +388,76 @@ public class MMViewPager
   private boolean b(float paramFloat1, View paramView, float paramFloat2)
   {
     AppMethodBeat.i(142295);
-    if ((getAdapter().getItemPosition(paramView) == lastItemPosForDetermine()) || (this.OUg))
+    if ((getAdapter().getItemPosition(paramView) == lastItemPosForDetermine()) || (this.Wnt))
     {
-      if ((this.OTU instanceof WxImageView))
+      if ((this.Wnh instanceof WxImageView))
       {
-        paramFloat1 = ((WxImageView)this.OTU).getTranslationX();
+        paramFloat1 = ((WxImageView)this.Wnh).getTranslationX();
         paramFloat2 *= 0.3F;
         if ((paramFloat2 > 0.0F) && (paramFloat1 - paramFloat2 < 0.0F)) {
-          this.OUa = true;
+          this.Wnn = true;
         }
-        if (this.OUa)
+        if (this.Wnn)
         {
-          ((WxImageView)this.OTU).translate(-paramFloat2, 0.0F);
+          ((WxImageView)this.Wnh).aC(-paramFloat2, 0.0F);
           AppMethodBeat.o(142295);
           return true;
         }
         AppMethodBeat.o(142295);
         return false;
       }
-      if (this.OUa)
+      if (this.Wnn)
       {
         if (paramFloat2 > 0.0F)
         {
-          if (paramFloat1 < this.mEX) {
+          if (paramFloat1 < this.pEj) {
             break label153;
           }
-          this.OTU.au(-paramFloat2, 0.0F);
+          this.Wnh.az(-paramFloat2, 0.0F);
         }
         for (;;)
         {
           AppMethodBeat.o(142295);
           return false;
           label153:
-          if ((paramFloat1 > this.mEX * 0.7F) && (paramFloat1 < this.mEX))
+          if ((paramFloat1 > this.pEj * 0.7F) && (paramFloat1 < this.pEj))
           {
-            this.OTU.au(-(paramFloat2 * 0.3F), 0.0F);
+            this.Wnh.az(-(paramFloat2 * 0.3F), 0.0F);
             AppMethodBeat.o(142295);
             return true;
           }
-          if ((this.OUg) && (paramFloat1 < this.mEX)) {
-            this.OTU.au(-(paramFloat2 * 0.3F), 0.0F);
+          if ((this.Wnt) && (paramFloat1 < this.pEj)) {
+            this.Wnh.az(-(paramFloat2 * 0.3F), 0.0F);
           }
         }
       }
       if (paramFloat2 > 0.0F)
       {
-        if (paramFloat1 < this.mEX) {
-          this.OUa = true;
+        if (paramFloat1 < this.pEj) {
+          this.Wnn = true;
         }
-        if (paramFloat1 < this.mEX) {
+        if (paramFloat1 < this.pEj) {
           break label302;
         }
-        this.OTU.au(-paramFloat2, 0.0F);
+        this.Wnh.az(-paramFloat2, 0.0F);
       }
     }
-    while ((this.OTY) || (this.OTX))
+    while ((this.Wnl) || (this.Wnk))
     {
       AppMethodBeat.o(142295);
       return false;
       label302:
-      if ((paramFloat1 > this.mEX * 0.7F) && (paramFloat1 < this.mEX))
+      if ((paramFloat1 > this.pEj * 0.7F) && (paramFloat1 < this.pEj))
       {
-        this.OTU.au(-(paramFloat2 * 0.3F), 0.0F);
+        this.Wnh.az(-(paramFloat2 * 0.3F), 0.0F);
         AppMethodBeat.o(142295);
         return true;
       }
-      if ((this.OUg) && (paramFloat1 < this.mEX)) {
-        this.OTU.au(-(paramFloat2 * 0.3F), 0.0F);
+      if ((this.Wnt) && (paramFloat1 < this.pEj)) {
+        this.Wnh.az(-(paramFloat2 * 0.3F), 0.0F);
       }
     }
-    this.OUa = false;
+    this.Wnn = false;
     AppMethodBeat.o(142295);
     return false;
   }
@@ -450,37 +479,77 @@ public class MMViewPager
     return false;
   }
   
-  private void dSC()
+  private void eve()
   {
     AppMethodBeat.i(142285);
-    this.OTV.removeMessages(1);
+    this.Wni.removeMessages(1);
     AppMethodBeat.o(142285);
   }
   
-  private void dSD()
+  private void evf()
   {
     AppMethodBeat.i(142286);
-    dSC();
-    l locall = this.OTV;
-    locall.xtj = 15L;
+    eve();
+    l locall = this.Wni;
+    locall.CfI = 15L;
     locall.sendEmptyMessageDelayed(1, 15L);
     AppMethodBeat.o(142286);
   }
   
-  private void gLk()
+  private int getCurrentX()
+  {
+    AppMethodBeat.i(142302);
+    if (getAdapter() == null)
+    {
+      AppMethodBeat.o(142302);
+      return -1;
+    }
+    int i = getScrollX();
+    int j = this.pEj;
+    int k = getAdapter().getCount();
+    int m = getCurrentItem();
+    AppMethodBeat.o(142302);
+    return i - j * (k - m - 1);
+  }
+  
+  private MultiTouchImageView getSelectedMultiTouchImageView()
+  {
+    AppMethodBeat.i(142299);
+    int i = getCurrentItem();
+    MultiTouchImageView localMultiTouchImageView = ((x)getAdapter()).Tf(i);
+    AppMethodBeat.o(142299);
+    return localMultiTouchImageView;
+  }
+  
+  private WxImageView getSelectedWxImageView()
+  {
+    AppMethodBeat.i(142300);
+    int i = getCurrentItem();
+    WxImageView localWxImageView = ((x)getAdapter()).Tg(i);
+    if (localWxImageView != null)
+    {
+      localWxImageView = (WxImageView)localWxImageView;
+      AppMethodBeat.o(142300);
+      return localWxImageView;
+    }
+    AppMethodBeat.o(142300);
+    return null;
+  }
+  
+  private void hKi()
   {
     AppMethodBeat.i(142288);
-    this.xpO = getSelectedWxImageView();
-    if (this.xpO != null)
+    this.Ccj = getSelectedWxImageView();
+    if (this.Ccj != null)
     {
       Log.d("MicroMsg.MMViewPager", "alvinluo ViewPager initWxImageView");
-      this.xpO.setGestureDetectorListener(this.OUo);
-      this.xpO.setOnLongClickListener(this.OUp);
+      this.Ccj.setGestureDetectorListener(this.WnB);
+      this.Ccj.setOnLongClickListener(this.WnC);
     }
     AppMethodBeat.o(142288);
   }
   
-  private boolean gLl()
+  private boolean hKj()
   {
     AppMethodBeat.i(142289);
     g localg = getSelectedImageView();
@@ -493,58 +562,18 @@ public class MMViewPager
     return false;
   }
   
-  private boolean gLm()
+  private boolean hKk()
   {
     AppMethodBeat.i(142293);
     Log.d("MicroMsg.MMViewPager", "dancy scroll left right !!");
-    if (this.OTX)
+    if (this.Wnk)
     {
       AppMethodBeat.o(142293);
       return true;
     }
-    this.OTY = true;
+    this.Wnl = true;
     AppMethodBeat.o(142293);
     return false;
-  }
-  
-  private int getCurrentX()
-  {
-    AppMethodBeat.i(142302);
-    if (getAdapter() == null)
-    {
-      AppMethodBeat.o(142302);
-      return -1;
-    }
-    int i = getScrollX();
-    int j = this.mEX;
-    int k = getAdapter().getCount();
-    int m = getCurrentItem();
-    AppMethodBeat.o(142302);
-    return i - j * (k - m - 1);
-  }
-  
-  private MultiTouchImageView getSelectedMultiTouchImageView()
-  {
-    AppMethodBeat.i(142299);
-    int i = getCurrentItem();
-    MultiTouchImageView localMultiTouchImageView = ((v)getAdapter()).NQ(i);
-    AppMethodBeat.o(142299);
-    return localMultiTouchImageView;
-  }
-  
-  private WxImageView getSelectedWxImageView()
-  {
-    AppMethodBeat.i(142300);
-    int i = getCurrentItem();
-    WxImageView localWxImageView = ((v)getAdapter()).NR(i);
-    if (localWxImageView != null)
-    {
-      localWxImageView = (WxImageView)localWxImageView;
-      AppMethodBeat.o(142300);
-      return localWxImageView;
-    }
-    AppMethodBeat.o(142300);
-    return null;
   }
   
   public void computeScroll()
@@ -552,25 +581,25 @@ public class MMViewPager
     int m = 0;
     AppMethodBeat.i(142304);
     super.computeScroll();
-    if (this.OTU == null)
+    if (this.Wnh == null)
     {
       AppMethodBeat.o(142304);
       return;
     }
-    float f3 = this.OTU.getScale();
-    float f4 = this.OTU.getImageWidth();
-    float f1 = this.OTU.getScale() * this.OTU.getImageHeight();
+    float f3 = this.Wnh.getScale();
+    float f4 = this.Wnh.getImageWidth();
+    float f1 = this.Wnh.getScale() * this.Wnh.getImageHeight();
     float f5;
     int j;
     int k;
-    if (this.xsO.computeScrollOffset())
+    if (this.Cfn.computeScrollOffset())
     {
-      i = this.xsO.getCurrX() - this.auo;
-      int n = this.xsO.getCurrY() - this.aup;
-      this.auo = this.xsO.getCurrX();
-      this.aup = this.xsO.getCurrY();
+      i = this.Cfn.getCurrX() - this.amg;
+      int n = this.Cfn.getCurrY() - this.amh;
+      this.amg = this.Cfn.getCurrX();
+      this.amh = this.Cfn.getCurrY();
       float[] arrayOfFloat = new float[9];
-      this.OTU.getImageMatrix().getValues(arrayOfFloat);
+      this.Wnh.getImageMatrix().getValues(arrayOfFloat);
       float f2 = arrayOfFloat[2];
       f3 = f3 * f4 + f2;
       f4 = arrayOfFloat[5];
@@ -579,39 +608,39 @@ public class MMViewPager
       if (i < 0)
       {
         j = i;
-        if (i < this.xsQ.right - Math.round(f3)) {
-          j = (int)(this.xsQ.right - Math.round(f3));
+        if (i < this.Cfp.right - Math.round(f3)) {
+          j = (int)(this.Cfp.right - Math.round(f3));
         }
       }
       i = j;
       if (j > 0)
       {
         i = j;
-        if (j > this.xsQ.left - Math.round(f2)) {
-          i = (int)(this.xsQ.left - Math.round(f2));
+        if (j > this.Cfp.left - Math.round(f2)) {
+          i = (int)(this.Cfp.left - Math.round(f2));
         }
       }
       k = n;
       if (n < 0)
       {
         k = n;
-        if (n < this.xsQ.bottom - Math.round(f5)) {
-          k = (int)(this.xsQ.bottom - Math.round(f5));
+        if (n < this.Cfp.bottom - Math.round(f5)) {
+          k = (int)(this.Cfp.bottom - Math.round(f5));
         }
       }
       j = k;
       if (k > 0)
       {
         j = k;
-        if (k > this.xsQ.top - Math.round(f4)) {
-          j = (int)(this.xsQ.top - Math.round(f4));
+        if (k > this.Cfp.top - Math.round(f4)) {
+          j = (int)(this.Cfp.top - Math.round(f4));
         }
       }
-      if ((Math.round(f2) < this.xsQ.left) && (Math.round(f3) > this.xsQ.right)) {
+      if ((Math.round(f2) < this.Cfp.left) && (Math.round(f3) > this.Cfp.right)) {
         break label449;
       }
       k = 0;
-      if (f1 >= this.mEY) {
+      if (f1 >= this.pEk) {
         break label497;
       }
     }
@@ -619,14 +648,14 @@ public class MMViewPager
     label497:
     for (int i = m;; i = j)
     {
-      this.OTU.au(k, i);
+      this.Wnh.az(k, i);
       postInvalidate();
       AppMethodBeat.o(142304);
       return;
-      if (Math.round(f4) < this.xsQ.top)
+      if (Math.round(f4) < this.Cfp.top)
       {
         k = i;
-        if (Math.round(f5) > this.xsQ.bottom) {
+        if (Math.round(f5) > this.Cfp.bottom) {
           break;
         }
       }
@@ -642,8 +671,8 @@ public class MMViewPager
     try
     {
       Log.d("MicroMsg.MMViewPager", "alvinluo dispatchTouchEvent action: %s", new Object[] { Integer.valueOf(paramMotionEvent.getAction()) });
-      if (this.xpO == null) {
-        gLk();
+      if (this.Ccj == null) {
+        hKi();
       }
       boolean bool = super.dispatchTouchEvent(paramMotionEvent);
       AppMethodBeat.o(142290);
@@ -660,7 +689,7 @@ public class MMViewPager
   public int firstItemPosForDetermine()
   {
     AppMethodBeat.i(142307);
-    int i = ((v)getAdapter()).firstItemPosForDetermine();
+    int i = ((x)getAdapter()).firstItemPosForDetermine();
     if (i >= 0)
     {
       AppMethodBeat.o(142307);
@@ -673,7 +702,7 @@ public class MMViewPager
   
   public int getScreenWidth()
   {
-    return this.mEX;
+    return this.pEj;
   }
   
   public g getSelectedImageView()
@@ -694,19 +723,19 @@ public class MMViewPager
   {
     AppMethodBeat.i(142297);
     int i = getCurrentItem();
-    View localView = ((v)getAdapter()).abm(i);
+    View localView = ((x)getAdapter()).aiI(i);
     AppMethodBeat.o(142297);
     return localView;
   }
   
   public int getXDown()
   {
-    return (int)this.aZg;
+    return (int)this.aIC;
   }
   
   public int getYDown()
   {
-    return (int)this.aZh;
+    return (int)this.aID;
   }
   
   public boolean isFocused()
@@ -717,7 +746,7 @@ public class MMViewPager
   public int lastItemPosForDetermine()
   {
     AppMethodBeat.i(142308);
-    int i = ((v)getAdapter()).lastItemPosForDetermine();
+    int i = ((x)getAdapter()).lastItemPosForDetermine();
     if (i >= 0)
     {
       AppMethodBeat.o(142308);
@@ -741,8 +770,8 @@ public class MMViewPager
   {
     AppMethodBeat.i(142291);
     boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-    this.OUj = false;
-    if (!gLl())
+    this.Wnw = false;
+    if (!hKj())
     {
       AppMethodBeat.o(142291);
       return bool;
@@ -752,11 +781,11 @@ public class MMViewPager
       AppMethodBeat.o(142291);
       return bool;
     }
-    if (this.CBg == null) {
-      this.CBg = VelocityTracker.obtain();
+    if (this.BpV == null) {
+      this.BpV = VelocityTracker.obtain();
     }
-    this.CBg.addMovement(paramMotionEvent);
-    VelocityTracker localVelocityTracker = this.CBg;
+    this.BpV.addMovement(paramMotionEvent);
+    VelocityTracker localVelocityTracker = this.BpV;
     localVelocityTracker.computeCurrentVelocity(1000);
     int i = (int)localVelocityTracker.getXVelocity();
     int j = (int)localVelocityTracker.getYVelocity();
@@ -769,25 +798,25 @@ public class MMViewPager
     {
       if (bool)
       {
-        this.aZg = paramMotionEvent.getRawX();
-        this.aZh = paramMotionEvent.getRawY();
-        this.xsS = this.xpO.getScale();
+        this.aIC = paramMotionEvent.getRawX();
+        this.aID = paramMotionEvent.getRawY();
+        this.Cfr = this.Ccj.getScale();
       }
-      this.OUj = bool;
+      this.Wnw = bool;
       AppMethodBeat.o(142291);
       return bool;
-      this.CBe = paramMotionEvent.getRawX();
-      this.CBf = paramMotionEvent.getRawY();
+      this.BpT = paramMotionEvent.getRawX();
+      this.BpU = paramMotionEvent.getRawY();
       bool = false;
       continue;
-      if (this.OUg)
+      if (this.Wnt)
       {
         bool = true;
       }
       else
       {
-        float f = paramMotionEvent.getRawX() - this.CBe;
-        Log.d("MicroMsg.MMViewPager", "alvinluo ViewPager onInterceptTouchEvent action_move tx: %f, ty: %f, velocityX: %d, velocityY: %d", new Object[] { Float.valueOf(f), Float.valueOf(paramMotionEvent.getRawY() - this.CBf), Integer.valueOf(i), Integer.valueOf(j) });
+        float f = paramMotionEvent.getRawX() - this.BpT;
+        Log.d("MicroMsg.MMViewPager", "alvinluo ViewPager onInterceptTouchEvent action_move tx: %f, ty: %f, velocityX: %d, velocityY: %d", new Object[] { Float.valueOf(f), Float.valueOf(paramMotionEvent.getRawY() - this.BpU), Integer.valueOf(i), Integer.valueOf(j) });
         if ((Math.abs(f) <= 250.0F) && (Math.abs(j) > Math.abs(i)) && (Math.abs(j) > 0))
         {
           Log.i("MicroMsg.MMViewPager", "alvinluo ViewPager onInterceptTouchEvent action: %d", new Object[] { Integer.valueOf(paramMotionEvent.getAction()) });
@@ -807,9 +836,9 @@ public class MMViewPager
   {
     AppMethodBeat.i(142292);
     super.onMeasure(paramInt1, paramInt2);
-    this.mEX = View.MeasureSpec.getSize(paramInt1);
-    this.mEY = View.MeasureSpec.getSize(paramInt2);
-    this.xsQ.set(0.0F, 0.0F, this.mEX, this.mEY);
+    this.pEj = View.MeasureSpec.getSize(paramInt1);
+    this.pEk = View.MeasureSpec.getSize(paramInt2);
+    this.Cfp.set(0.0F, 0.0F, this.pEj, this.pEk);
     AppMethodBeat.o(142292);
   }
   
@@ -822,69 +851,72 @@ public class MMViewPager
     AppMethodBeat.o(142306);
   }
   
-  public void setAdapter(q paramq)
+  public void setAdapter(androidx.viewpager.widget.a parama)
   {
-    AppMethodBeat.i(142301);
-    if ((paramq instanceof v))
+    AppMethodBeat.i(194621);
+    if ((parama instanceof x))
     {
-      super.setAdapter(paramq);
-      AppMethodBeat.o(142301);
+      super.setAdapter(parama);
+      AppMethodBeat.o(194621);
       return;
     }
-    paramq = new IllegalArgumentException("must be MMViewPagerAdapter");
-    AppMethodBeat.o(142301);
-    throw paramq;
+    parama = new IllegalArgumentException("must be MMViewPagerAdapter");
+    AppMethodBeat.o(194621);
+    throw parama;
   }
   
   public void setDoubleClickListener(MMViewPager.a parama)
   {
-    this.OUf = parama;
+    this.Wns = parama;
   }
   
   public void setEnableGalleryScale(boolean paramBoolean)
   {
-    this.OUm = paramBoolean;
+    this.Wnz = paramBoolean;
   }
   
   public void setGalleryScaleListener(c paramc)
   {
-    this.OUn = paramc;
+    this.WnA = paramc;
   }
   
-  public void setLongClickOverListener(MMViewPager.d paramd)
+  public void setLongClickOverListener(d paramd)
   {
-    this.OUe = paramd;
+    this.Wnr = paramd;
   }
   
   public void setOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
   {
-    this.OUh = paramOnPageChangeListener;
+    this.Wnu = paramOnPageChangeListener;
   }
   
   public void setOnTouchListener(View.OnTouchListener paramOnTouchListener)
   {
-    this.HeV = paramOnTouchListener;
+    this.nan = paramOnTouchListener;
   }
   
   public void setSingleClickOverListener(f paramf)
   {
-    this.OUd = paramf;
+    this.Wnq = paramf;
   }
   
   public void setSingleMode(boolean paramBoolean)
   {
-    this.OUg = paramBoolean;
+    this.Wnt = paramBoolean;
+    if (!paramBoolean) {
+      this.Cfm = false;
+    }
   }
   
   abstract class b
   {
-    protected boolean dgZ = false;
+    protected boolean eYG = false;
     
     public b() {}
     
-    public final boolean deQ()
+    public final boolean evg()
     {
-      return this.dgZ;
+      return this.eYG;
     }
     
     public abstract void play();
@@ -892,9 +924,14 @@ public class MMViewPager
   
   public static abstract interface c
   {
-    public abstract void S(float paramFloat1, float paramFloat2);
+    public abstract void U(float paramFloat1, float paramFloat2);
     
-    public abstract void ao(float paramFloat1, float paramFloat2);
+    public abstract void aq(float paramFloat1, float paramFloat2);
+  }
+  
+  public static abstract interface d
+  {
+    public abstract void bwC();
   }
   
   final class e
@@ -904,13 +941,13 @@ public class MMViewPager
     
     public final boolean onContextClick(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(205254);
+      AppMethodBeat.i(199045);
       b localb = new b();
-      localb.bm(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMViewPager$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+      localb.bn(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/base/MMViewPager$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
       boolean bool = super.onContextClick(paramMotionEvent);
       com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/base/MMViewPager$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-      AppMethodBeat.o(205254);
+      AppMethodBeat.o(199045);
       return bool;
     }
     
@@ -918,29 +955,29 @@ public class MMViewPager
     {
       AppMethodBeat.i(142266);
       b localb = new b();
-      localb.bm(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMViewPager$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+      localb.bn(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/base/MMViewPager$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
       if (MMViewPager.a(MMViewPager.this) == null)
       {
         com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/base/MMViewPager$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(142266);
         return false;
       }
-      if ((MMViewPager.t(MMViewPager.this) != null) && (MMViewPager.t(MMViewPager.this).ab(paramMotionEvent)))
+      if ((MMViewPager.t(MMViewPager.this) != null) && (MMViewPager.t(MMViewPager.this).ak(paramMotionEvent)))
       {
         com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/base/MMViewPager$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(142266);
         return true;
       }
       if (MMViewPager.a(MMViewPager.this).getScale() <= MMViewPager.a(MMViewPager.this).getScaleRate()) {
-        MMViewPager.a(MMViewPager.this).y(f.j(paramMotionEvent, 0), f.k(paramMotionEvent, 0));
+        MMViewPager.a(MMViewPager.this).A(f.j(paramMotionEvent, 0), f.k(paramMotionEvent, 0));
       }
       for (;;)
       {
         com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/base/MMViewPager$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(142266);
         return true;
-        MMViewPager.a(MMViewPager.this).at(f.j(paramMotionEvent, 0), f.k(paramMotionEvent, 0));
+        MMViewPager.a(MMViewPager.this).ay(f.j(paramMotionEvent, 0), f.k(paramMotionEvent, 0));
       }
     }
     
@@ -974,7 +1011,7 @@ public class MMViewPager
           localObject1 = (MultiTouchImageView)localObject2;
           f2 = ((g)localObject1).getScale() * ((g)localObject1).getImageWidth();
           f3 = ((g)localObject1).getScale() * ((g)localObject1).getImageHeight();
-          if ((!((g)localObject1).gKw()) && (!((g)localObject1).gKx()) && ((int)f2 <= MMViewPager.b(MMViewPager.this)) && ((int)f3 <= MMViewPager.d(MMViewPager.this))) {
+          if ((!((g)localObject1).hJv()) && (!((g)localObject1).hJw()) && ((int)f2 <= MMViewPager.b(MMViewPager.this)) && ((int)f3 <= MMViewPager.d(MMViewPager.this))) {
             break label485;
           }
           localObject2 = new float[9];
@@ -1026,11 +1063,11 @@ public class MMViewPager
     {
       AppMethodBeat.i(142265);
       b localb = new b();
-      localb.bm(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMViewPager$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.axR());
+      localb.bn(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/base/MMViewPager$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
       MMViewPager.s(MMViewPager.this);
       if (MMViewPager.p(MMViewPager.this) != null) {
-        MMViewPager.p(MMViewPager.this).bmu();
+        MMViewPager.p(MMViewPager.this).bwC();
       }
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/base/MMViewPager$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
       AppMethodBeat.o(142265);
@@ -1040,7 +1077,7 @@ public class MMViewPager
     {
       AppMethodBeat.i(142263);
       if (MMViewPager.q(MMViewPager.this) != null) {
-        MMViewPager.q(MMViewPager.this).bmt();
+        MMViewPager.q(MMViewPager.this).bwB();
       }
       AppMethodBeat.o(142263);
       return true;
@@ -1048,34 +1085,34 @@ public class MMViewPager
     
     public final boolean onSingleTapUp(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(205253);
+      AppMethodBeat.i(199043);
       b localb = new b();
-      localb.bm(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMViewPager$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+      localb.bn(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/base/MMViewPager$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
       boolean bool = super.onSingleTapUp(paramMotionEvent);
       com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/base/MMViewPager$MySimpleGesture", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-      AppMethodBeat.o(205253);
+      AppMethodBeat.o(199043);
       return bool;
     }
   }
   
   public static abstract interface f
   {
-    public abstract void bmt();
+    public abstract void bwB();
     
-    public abstract void dSr();
+    public abstract void euS();
   }
   
   final class g
     extends MMViewPager.b
   {
-    float[] xtd;
+    float[] CfC;
     
     public g()
     {
       super();
       AppMethodBeat.i(142269);
-      this.xtd = new float[9];
+      this.CfC = new float[9];
       AppMethodBeat.o(142269);
     }
     
@@ -1087,10 +1124,10 @@ public class MMViewPager
         public final void run()
         {
           AppMethodBeat.i(142268);
-          MMViewPager.a(MMViewPager.this).getImageMatrix().getValues(MMViewPager.g.this.xtd);
+          MMViewPager.a(MMViewPager.this).getImageMatrix().getValues(MMViewPager.g.this.CfC);
           float f1 = MMViewPager.a(MMViewPager.this).getScale();
           float f2 = MMViewPager.a(MMViewPager.this).getImageHeight() * f1;
-          float f3 = MMViewPager.g.this.xtd[5];
+          float f3 = MMViewPager.g.this.CfC[5];
           f1 = MMViewPager.d(MMViewPager.this);
           if (f2 < MMViewPager.d(MMViewPager.this)) {
             f1 = MMViewPager.d(MMViewPager.this) / 2.0F + f2 / 2.0F;
@@ -1100,18 +1137,18 @@ public class MMViewPager
             f1 = -((WxImageView)MMViewPager.a(MMViewPager.this)).getTranslationY();
           }
           if (f1 <= 0.0F) {
-            MMViewPager.g.this.dgZ = true;
+            MMViewPager.g.this.eYG = true;
           }
           for (;;)
           {
-            MMViewPager.a(MMViewPager.this).au(0.0F, f1);
+            MMViewPager.a(MMViewPager.this).az(0.0F, f1);
             if ((MMViewPager.a(MMViewPager.this) instanceof WxImageView)) {
-              ((WxImageView)MMViewPager.a(MMViewPager.this)).translate(0.0F, f1);
+              ((WxImageView)MMViewPager.a(MMViewPager.this)).aC(0.0F, f1);
             }
             AppMethodBeat.o(142268);
             return;
             if (Math.abs(f1) <= 5.0F) {
-              MMViewPager.g.this.dgZ = true;
+              MMViewPager.g.this.eYG = true;
             } else {
               f1 = (float)(Math.abs(f1) - Math.pow(Math.sqrt(Math.abs(f1)) - 1.0D, 2.0D)) * 2.0F;
             }
@@ -1125,13 +1162,13 @@ public class MMViewPager
   final class h
     extends MMViewPager.b
   {
-    float[] xtd;
+    float[] CfC;
     
     public h()
     {
       super();
       AppMethodBeat.i(142272);
-      this.xtd = new float[9];
+      this.CfC = new float[9];
       AppMethodBeat.o(142272);
     }
     
@@ -1143,14 +1180,14 @@ public class MMViewPager
         public final void run()
         {
           AppMethodBeat.i(142271);
-          MMViewPager.a(MMViewPager.this).getImageMatrix().getValues(MMViewPager.h.this.xtd);
+          MMViewPager.a(MMViewPager.this).getImageMatrix().getValues(MMViewPager.h.this.CfC);
           float f5 = MMViewPager.a(MMViewPager.this).getScale() * MMViewPager.a(MMViewPager.this).getImageWidth();
           float f1 = MMViewPager.a(MMViewPager.this).getScale();
           float f8 = MMViewPager.a(MMViewPager.this).getImageHeight() * f1;
-          float f7 = MMViewPager.h.this.xtd[2];
-          float f10 = MMViewPager.h.this.xtd[5];
-          float f6 = MMViewPager.h.this.xtd[2];
-          float f9 = MMViewPager.h.this.xtd[5];
+          float f7 = MMViewPager.h.this.CfC[2];
+          float f10 = MMViewPager.h.this.CfC[5];
+          float f6 = MMViewPager.h.this.CfC[2];
+          float f9 = MMViewPager.h.this.CfC[5];
           float f2 = 0.0F;
           f1 = MMViewPager.d(MMViewPager.this);
           float f3 = 0.0F;
@@ -1192,13 +1229,13 @@ public class MMViewPager
                     f1 = ((WxImageView)MMViewPager.a(MMViewPager.this)).getTranslationY();
                   }
                   if ((Math.abs(f2) <= 5.0F) && (Math.abs(f1) <= 5.0F)) {
-                    MMViewPager.h.this.dgZ = true;
+                    MMViewPager.h.this.eYG = true;
                   }
                   for (;;)
                   {
-                    MMViewPager.a(MMViewPager.this).au(f2, f1);
+                    MMViewPager.a(MMViewPager.this).az(f2, f1);
                     if ((MMViewPager.a(MMViewPager.this) instanceof WxImageView)) {
-                      ((WxImageView)MMViewPager.a(MMViewPager.this)).translate(-f2, -f1);
+                      ((WxImageView)MMViewPager.a(MMViewPager.this)).aC(-f2, -f1);
                     }
                     AppMethodBeat.o(142271);
                     return;
@@ -1240,13 +1277,13 @@ public class MMViewPager
   final class i
     extends MMViewPager.b
   {
-    float[] xtd;
+    float[] CfC;
     
     public i()
     {
       super();
       AppMethodBeat.i(142275);
-      this.xtd = new float[9];
+      this.CfC = new float[9];
       AppMethodBeat.o(142275);
     }
     
@@ -1258,8 +1295,8 @@ public class MMViewPager
         public final void run()
         {
           AppMethodBeat.i(142274);
-          MMViewPager.a(MMViewPager.this).getImageMatrix().getValues(MMViewPager.i.this.xtd);
-          float f2 = MMViewPager.i.this.xtd[2];
+          MMViewPager.a(MMViewPager.this).getImageMatrix().getValues(MMViewPager.i.this.CfC);
+          float f2 = MMViewPager.i.this.CfC[2];
           float f1 = MMViewPager.a(MMViewPager.this).getScale() * MMViewPager.a(MMViewPager.this).getImageWidth();
           if (f1 < MMViewPager.b(MMViewPager.this)) {}
           for (f1 = MMViewPager.b(MMViewPager.this) / 2.0F - f1 / 2.0F;; f1 = 0.0F)
@@ -1269,18 +1306,18 @@ public class MMViewPager
               f1 = -((WxImageView)MMViewPager.a(MMViewPager.this)).getTranslationX();
             }
             if (f1 >= 0.0F) {
-              MMViewPager.i.this.dgZ = true;
+              MMViewPager.i.this.eYG = true;
             }
             for (;;)
             {
-              MMViewPager.a(MMViewPager.this).au(f1, 0.0F);
+              MMViewPager.a(MMViewPager.this).az(f1, 0.0F);
               if ((MMViewPager.a(MMViewPager.this) instanceof WxImageView)) {
-                ((WxImageView)MMViewPager.a(MMViewPager.this)).translate(f1, 0.0F);
+                ((WxImageView)MMViewPager.a(MMViewPager.this)).aC(f1, 0.0F);
               }
               AppMethodBeat.o(142274);
               return;
               if (Math.abs(f1) <= 5.0F) {
-                MMViewPager.i.this.dgZ = true;
+                MMViewPager.i.this.eYG = true;
               } else {
                 f1 = -(float)(Math.abs(f1) - Math.pow(Math.sqrt(Math.abs(f1)) - 1.0D, 2.0D)) * 2.0F;
               }
@@ -1295,13 +1332,13 @@ public class MMViewPager
   final class j
     extends MMViewPager.b
   {
-    float[] xtd;
+    float[] CfC;
     
     public j()
     {
       super();
       AppMethodBeat.i(142278);
-      this.xtd = new float[9];
+      this.CfC = new float[9];
       AppMethodBeat.o(142278);
     }
     
@@ -1313,10 +1350,10 @@ public class MMViewPager
         public final void run()
         {
           AppMethodBeat.i(142277);
-          MMViewPager.a(MMViewPager.this).getImageMatrix().getValues(MMViewPager.j.this.xtd);
+          MMViewPager.a(MMViewPager.this).getImageMatrix().getValues(MMViewPager.j.this.CfC);
           float f1 = MMViewPager.a(MMViewPager.this).getScale();
           float f2 = MMViewPager.a(MMViewPager.this).getImageWidth() * f1;
-          float f3 = MMViewPager.j.this.xtd[2];
+          float f3 = MMViewPager.j.this.CfC[2];
           f1 = MMViewPager.b(MMViewPager.this);
           if (f2 < MMViewPager.b(MMViewPager.this)) {
             f1 = MMViewPager.b(MMViewPager.this) / 2.0F + f2 / 2.0F;
@@ -1326,18 +1363,18 @@ public class MMViewPager
             f1 = -((WxImageView)MMViewPager.a(MMViewPager.this)).getTranslationX();
           }
           if (f1 <= 0.0F) {
-            MMViewPager.j.this.dgZ = true;
+            MMViewPager.j.this.eYG = true;
           }
           for (;;)
           {
-            MMViewPager.a(MMViewPager.this).au(f1, 0.0F);
+            MMViewPager.a(MMViewPager.this).az(f1, 0.0F);
             if ((MMViewPager.a(MMViewPager.this) instanceof WxImageView)) {
-              ((WxImageView)MMViewPager.a(MMViewPager.this)).translate(f1, 0.0F);
+              ((WxImageView)MMViewPager.a(MMViewPager.this)).aC(f1, 0.0F);
             }
             AppMethodBeat.o(142277);
             return;
             if (Math.abs(f1) <= 5.0F) {
-              MMViewPager.j.this.dgZ = true;
+              MMViewPager.j.this.eYG = true;
             } else {
               f1 = (float)(Math.abs(f1) - Math.pow(Math.sqrt(Math.abs(f1)) - 1.0D, 2.0D)) * 2.0F;
             }
@@ -1351,13 +1388,13 @@ public class MMViewPager
   final class k
     extends MMViewPager.b
   {
-    float[] xtd;
+    float[] CfC;
     
     public k()
     {
       super();
       AppMethodBeat.i(142281);
-      this.xtd = new float[9];
+      this.CfC = new float[9];
       AppMethodBeat.o(142281);
     }
     
@@ -1369,8 +1406,8 @@ public class MMViewPager
         public final void run()
         {
           AppMethodBeat.i(142280);
-          MMViewPager.a(MMViewPager.this).getImageMatrix().getValues(MMViewPager.k.this.xtd);
-          float f2 = MMViewPager.k.this.xtd[5];
+          MMViewPager.a(MMViewPager.this).getImageMatrix().getValues(MMViewPager.k.this.CfC);
+          float f2 = MMViewPager.k.this.CfC[5];
           float f1 = MMViewPager.a(MMViewPager.this).getScale() * MMViewPager.a(MMViewPager.this).getImageHeight();
           if (f1 < MMViewPager.d(MMViewPager.this)) {}
           for (f1 = MMViewPager.d(MMViewPager.this) / 2.0F - f1 / 2.0F;; f1 = 0.0F)
@@ -1380,18 +1417,18 @@ public class MMViewPager
               f1 = -((WxImageView)MMViewPager.a(MMViewPager.this)).getTranslationY();
             }
             if (f1 >= 0.0F) {
-              MMViewPager.k.this.dgZ = true;
+              MMViewPager.k.this.eYG = true;
             }
             for (;;)
             {
-              MMViewPager.a(MMViewPager.this).au(0.0F, f1);
+              MMViewPager.a(MMViewPager.this).az(0.0F, f1);
               if ((MMViewPager.a(MMViewPager.this) instanceof WxImageView)) {
-                ((WxImageView)MMViewPager.a(MMViewPager.this)).translate(0.0F, f1);
+                ((WxImageView)MMViewPager.a(MMViewPager.this)).aC(0.0F, f1);
               }
               AppMethodBeat.o(142280);
               return;
               if (Math.abs(f1) <= 5.0F) {
-                MMViewPager.k.this.dgZ = true;
+                MMViewPager.k.this.eYG = true;
               } else {
                 f1 = -(float)(Math.abs(f1) - Math.pow(Math.sqrt(Math.abs(f1)) - 1.0D, 2.0D)) * 2.0F;
               }
@@ -1406,12 +1443,12 @@ public class MMViewPager
   public static final class l
     extends MMHandler
   {
-    WeakReference<MMViewPager> xoV;
-    long xtj;
+    WeakReference<MMViewPager> Cbq;
+    long CfI;
     
     public l(WeakReference<MMViewPager> paramWeakReference)
     {
-      this.xoV = paramWeakReference;
+      this.Cbq = paramWeakReference;
     }
     
     public final void handleMessage(Message paramMessage)
@@ -1419,15 +1456,15 @@ public class MMViewPager
       AppMethodBeat.i(142283);
       super.handleMessage(paramMessage);
       removeMessages(paramMessage.what);
-      if (this.xoV != null)
+      if (this.Cbq != null)
       {
-        MMViewPager localMMViewPager = (MMViewPager)this.xoV.get();
+        MMViewPager localMMViewPager = (MMViewPager)this.Cbq.get();
         if ((localMMViewPager != null) && (paramMessage.what == 1))
         {
-          if ((MMViewPager.v(localMMViewPager) != null) && (!MMViewPager.v(localMMViewPager).deQ()))
+          if ((MMViewPager.v(localMMViewPager) != null) && (!MMViewPager.v(localMMViewPager).evg()))
           {
             MMViewPager.v(localMMViewPager).play();
-            sendEmptyMessageDelayed(paramMessage.what, this.xtj);
+            sendEmptyMessageDelayed(paramMessage.what, this.CfI);
             AppMethodBeat.o(142283);
             return;
           }
@@ -1440,7 +1477,7 @@ public class MMViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMViewPager
  * JD-Core Version:    0.7.0.1
  */

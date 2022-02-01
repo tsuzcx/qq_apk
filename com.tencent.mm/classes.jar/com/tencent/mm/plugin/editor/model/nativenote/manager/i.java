@@ -9,83 +9,83 @@ import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public final class i
+public class i
   implements Serializable
 {
-  private static final Pattern qRH;
-  int qRI;
-  public final ArrayList<l> qRJ;
+  private static final Pattern utN;
+  int utO;
+  public final ArrayList<l> utP;
   
   static
   {
     AppMethodBeat.i(181829);
-    qRH = Pattern.compile("\\r\\n|\\r|\\n");
+    utN = Pattern.compile("\\r\\n|\\r|\\n");
     AppMethodBeat.o(181829);
   }
   
   public i(Spanned paramSpanned)
   {
     AppMethodBeat.i(181826);
-    this.qRI = 0;
-    this.qRJ = new ArrayList();
+    this.utO = 0;
+    this.utP = new ArrayList();
     if (paramSpanned != null)
     {
       paramSpanned = paramSpanned.toString();
-      this.qRI = 1;
-      Matcher localMatcher = qRH.matcher(paramSpanned);
+      this.utO = 1;
+      Matcher localMatcher = utN.matcher(paramSpanned);
       int i = 0;
       int j;
       boolean bool1;
       if (localMatcher.find())
       {
         j = localMatcher.end();
-        if (this.qRI == 1) {}
+        if (this.utO == 1) {}
         for (bool1 = true;; bool1 = false)
         {
           l locall = new l(i, j, bool1, false);
-          this.qRJ.add(locall);
+          this.utP.add(locall);
           i = localMatcher.end();
-          this.qRI += 1;
+          this.utO += 1;
           break;
         }
       }
-      if (this.qRJ.size() < this.qRI)
+      if (this.utP.size() < this.utO)
       {
         j = paramSpanned.length();
         bool1 = bool2;
-        if (this.qRI == 1) {
+        if (this.utO == 1) {
           bool1 = true;
         }
         paramSpanned = new l(i, j, bool1, true);
-        this.qRJ.add(paramSpanned);
+        this.utP.add(paramSpanned);
       }
     }
     AppMethodBeat.o(181826);
   }
   
-  public final int getLineForOffset(int paramInt)
+  public final int Ji(int paramInt)
   {
     AppMethodBeat.i(181827);
     int i = 0;
-    while ((i < this.qRI) && (paramInt >= ((l)this.qRJ.get(i)).Pc)) {
+    while ((i < this.utO) && (paramInt >= ((l)this.utP.get(i)).tI)) {
       i += 1;
     }
-    paramInt = Math.min(Math.max(0, i), this.qRJ.size() - 1);
+    paramInt = Math.min(Math.max(0, i), this.utP.size() - 1);
     AppMethodBeat.o(181827);
     return paramInt;
   }
   
-  public final String toString()
+  public String toString()
   {
     AppMethodBeat.i(181828);
     StringBuilder localStringBuilder1 = new StringBuilder();
-    Iterator localIterator = this.qRJ.iterator();
+    Iterator localIterator = this.utP.iterator();
     int i = 1;
     if (localIterator.hasNext())
     {
       localObject = (l)localIterator.next();
-      StringBuilder localStringBuilder2 = localStringBuilder1.append(i).append(": ").append(((g)localObject).avh).append("-").append(((g)localObject).Pc);
-      if (((l)localObject).qTk) {}
+      StringBuilder localStringBuilder2 = localStringBuilder1.append(i).append(": ").append(((g)localObject).tH).append("-").append(((g)localObject).tI);
+      if (((l)localObject).uvq) {}
       for (localObject = "";; localObject = ", ")
       {
         localStringBuilder2.append((String)localObject);
@@ -100,7 +100,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.manager.i
  * JD-Core Version:    0.7.0.1
  */

@@ -6,31 +6,31 @@ import oicq.wlogin_sdk.tools.util;
 public final class z
   extends a
 {
-  public int UdF = 0;
-  public int UdG = 0;
+  public int abGU = 0;
+  public int abGV = 0;
   
   public z()
   {
-    this.Ucx = 293;
+    this.abFM = 293;
   }
   
-  public final Boolean hPC()
+  public final Boolean iUK()
   {
     AppMethodBeat.i(88115);
-    if (this.Udh < 2)
+    if (this.abGw < 2)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88115);
       return localBoolean;
     }
-    this.UdF = util.an(this.Ucr, this.Udg);
-    if (this.Udh < this.UdF + 2 + 2)
+    this.abGU = util.ap(this.abFG, this.abGv);
+    if (this.abGw < this.abGU + 2 + 2)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88115);
       return localBoolean;
     }
-    this.UdG = util.an(this.Ucr, this.Udg + 2 + this.UdF);
+    this.abGV = util.ap(this.abFG, this.abGv + 2 + this.abGU);
     Boolean localBoolean = Boolean.TRUE;
     AppMethodBeat.o(88115);
     return localBoolean;
@@ -38,7 +38,7 @@ public final class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     oicq.wlogin_sdk.a.z
  * JD-Core Version:    0.7.0.1
  */

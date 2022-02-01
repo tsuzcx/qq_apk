@@ -1,139 +1,137 @@
 package com.tencent.mm.plugin.taskbar.ui.section.e;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ay.q;
 import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
-import com.tencent.mm.plugin.taskbar.ui.section.b.a;
-import com.tencent.mm.plugin.taskbar.ui.section.e.b;
-import com.tencent.mm.plugin.taskbar.ui.section.g;
-import com.tencent.mm.protocal.protobuf.cru;
-import com.tencent.mm.protocal.protobuf.fah;
+import com.tencent.mm.plugin.taskbar.d.c;
+import com.tencent.mm.plugin.taskbar.d.g;
+import com.tencent.mm.plugin.taskbar.e;
+import com.tencent.mm.plugin.taskbar.ui.section.d;
+import com.tencent.mm.plugin.taskbar.ui.section.other.a.b;
+import com.tencent.mm.plugin.taskbar.ui.section.other.b;
+import com.tencent.mm.plugin.taskbar.ui.section.other.b.a;
+import com.tencent.mm.protocal.protobuf.dar;
+import com.tencent.mm.protocal.protobuf.fky;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.widget.imageview.WeImageView;
-import java.util.HashMap;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.List;
 import kotlin.g.b.p;
 import kotlin.l;
+import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/taskbar/ui/section/webview/TaskBarSectionWebViewView;", "Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionListView;", "context", "Landroid/content/Context;", "callback", "Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView$Callback;", "sectionType", "", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "(Landroid/content/Context;Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionBaseView$Callback;ILandroid/util/AttributeSet;I)V", "onBindViewHolder", "", "viewHolder", "Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionListView$BaseViewHolder;", "pos", "titleName", "", "Companion", "plugin-taskbar_release"})
-@SuppressLint({"ViewConstructor"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/taskbar/ui/section/webview/TaskBarSectionOtherViewWebViewHelper;", "Lcom/tencent/mm/plugin/taskbar/ui/section/other/TaskBarSectionOtherViewBaseHelper;", "callback", "Lcom/tencent/mm/plugin/taskbar/ui/section/other/TaskBarSectionOtherViewBaseHelper$Callback;", "(Lcom/tencent/mm/plugin/taskbar/ui/section/other/TaskBarSectionOtherViewBaseHelper$Callback;)V", "multiTaskInfo", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "getDefaultImageRes", "", "data", "getSubtitle", "", "loadFallbackImage", "", "viewHolder", "Lcom/tencent/mm/plugin/taskbar/ui/section/other/TaskBarSectionOtherView$BaseViewHolder;", "onBindViewHolder", "pos", "viewModel", "Lcom/tencent/mm/plugin/taskbar/ui/section/TaskBarSectionViewModel;", "plugin-taskbar_release"})
 public final class a
-  extends com.tencent.mm.plugin.taskbar.ui.section.e
+  extends b
 {
-  public static final a.a FWg;
-  private HashMap _$_findViewCache;
+  private MultiTaskInfo FNi;
   
-  static
+  public a(b.a parama)
   {
-    AppMethodBeat.i(238569);
-    FWg = new a.a((byte)0);
-    AppMethodBeat.o(238569);
+    super(parama);
+    AppMethodBeat.i(215026);
+    AppMethodBeat.o(215026);
   }
   
-  private a(Context paramContext, b.a parama, int paramInt)
+  public final void a(int paramInt, a.b paramb, d paramd)
   {
-    super(paramContext, parama, paramInt, null, 0);
-    AppMethodBeat.i(238568);
-    AppMethodBeat.o(238568);
+    AppMethodBeat.i(215016);
+    p.k(paramb, "viewHolder");
+    p.k(paramd, "viewModel");
+    super.a(paramInt, paramb, paramd);
+    Object localObject = paramd.MqV.get(paramInt);
+    if (localObject == null)
+    {
+      paramb = new t("null cannot be cast to non-null type com.tencent.mm.plugin.multitask.model.MultiTaskInfo");
+      AppMethodBeat.o(215016);
+      throw paramb;
+    }
+    this.FNi = ((MultiTaskInfo)localObject);
+    paramb = paramb.jMg;
+    p.j(paramb, "viewHolder.title");
+    paramb.setText((CharSequence)((MultiTaskInfo)paramd.MqV.get(paramInt)).fbc().title);
+    AppMethodBeat.o(215016);
   }
   
-  public a(Context paramContext, b.a parama, int paramInt, char paramChar)
+  public final void a(a.b paramb)
   {
-    this(paramContext, parama, paramInt, (byte)0);
-  }
-  
-  public final void a(e.b paramb, int paramInt)
-  {
-    AppMethodBeat.i(238567);
-    p.h(paramb, "viewHolder");
-    Object localObject1 = new fah();
+    Object localObject2 = null;
+    AppMethodBeat.i(215020);
+    p.k(paramb, "viewHolder");
+    if (this.FNi == null)
+    {
+      AppMethodBeat.o(215020);
+      return;
+    }
+    Object localObject3 = new fky();
     try
     {
-      ((fah)localObject1).parseFrom(((MultiTaskInfo)getViewModel().FVI.get(paramInt)).field_data);
-      Object localObject2 = ((fah)localObject1).coverUrl;
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = ((MultiTaskInfo)getViewModel().FVI.get(paramInt)).erh().MwR;
+      localObject1 = this.FNi;
+      if (localObject1 == null) {
+        break label123;
       }
-      localObject2 = paramb.FVD;
-      p.g(localObject2, "viewHolder.defaultImage");
-      ((WeImageView)localObject2).setVisibility(0);
-      paramb.image.setImageDrawable(null);
-      if (localObject1 != null)
-      {
-        localObject2 = com.tencent.mm.loader.e.hXU;
-        localObject2 = com.tencent.mm.loader.e.aJs();
-        ImageView localImageView = paramb.image;
-        p.g(localImageView, "viewHolder.image");
-        ((com.tencent.mm.loader.a)localObject2).a((String)localObject1, localImageView, getThumbLoaderOption());
-      }
-      localObject1 = paramb.hbb;
-      p.g(localObject1, "viewHolder.title");
-      ((TextView)localObject1).setText((CharSequence)((MultiTaskInfo)getViewModel().FVI.get(paramInt)).erh().title);
-      localObject1 = paramb.orb;
-      p.g(localObject1, "viewHolder.subTitle");
-      ((TextView)localObject1).setText((CharSequence)"");
-      localObject1 = ((MultiTaskInfo)getViewModel().FVI.get(paramInt)).erh().nickname;
-      if (localObject1 != null) {
-        if (((CharSequence)localObject1).length() > 0)
-        {
-          i = 1;
-          if (i == 1)
-          {
-            paramb = paramb.orb;
-            p.g(paramb, "viewHolder.subTitle");
-            paramb.setText((CharSequence)((MultiTaskInfo)getViewModel().FVI.get(paramInt)).erh().nickname);
-          }
-          AppMethodBeat.o(238567);
-          return;
-        }
-      }
+      localObject1 = ((MultiTaskInfo)localObject1).field_data;
+      ((fky)localObject3).parseFrom((byte[])localObject1);
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
+        Object localObject1;
         Log.e("AppBrandDesktopSectionWebViewView", "WebMultiTaskData parse failed");
-        continue;
-        int i = 0;
       }
-      AppMethodBeat.o(238567);
+      AppMethodBeat.o(215020);
+      return;
     }
-  }
-  
-  public final View ewN()
-  {
-    AppMethodBeat.i(238570);
-    if (this._$_findViewCache == null) {
-      this._$_findViewCache = new HashMap();
-    }
-    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(2131299174));
-    View localView1 = localView2;
-    if (localView2 == null)
+    localObject1 = ((fky)localObject3).coverUrl;
+    if (localObject1 == null)
     {
-      localView1 = findViewById(2131299174);
-      this._$_findViewCache.put(Integer.valueOf(2131299174), localView1);
+      localObject3 = this.FNi;
+      localObject1 = localObject2;
+      if (localObject3 != null)
+      {
+        localObject3 = ((MultiTaskInfo)localObject3).fbc();
+        localObject1 = localObject2;
+        if (localObject3 != null) {
+          localObject1 = ((dar)localObject3).TIg;
+        }
+      }
     }
-    AppMethodBeat.o(238570);
-    return localView1;
+    for (;;)
+    {
+      if (localObject1 != null)
+      {
+        q.bml().a((String)localObject1, paramb.image, e.Mnc);
+        AppMethodBeat.o(215020);
+        return;
+        label123:
+        localObject1 = null;
+        break;
+      }
+    }
   }
   
-  public final String fvi()
+  public final String p(MultiTaskInfo paramMultiTaskInfo)
   {
-    AppMethodBeat.i(238566);
-    String str = getContext().getString(2131755735);
-    p.g(str, "context.getString(R.stri…_taskbar_section_webview)");
-    AppMethodBeat.o(238566);
-    return str;
+    AppMethodBeat.i(215018);
+    paramMultiTaskInfo = com.tencent.mm.ci.a.ba(MMApplicationContext.getContext(), d.g.Mna);
+    p.j(paramMultiTaskInfo, "ResourceHelper.getString…section_subtitle_webview)");
+    AppMethodBeat.o(215018);
+    return paramMultiTaskInfo;
+  }
+  
+  public final int q(MultiTaskInfo paramMultiTaskInfo)
+  {
+    AppMethodBeat.i(215022);
+    p.k(paramMultiTaskInfo, "data");
+    int i = d.c.Mmo;
+    AppMethodBeat.o(215022);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.taskbar.ui.section.e.a
  * JD-Core Version:    0.7.0.1
  */

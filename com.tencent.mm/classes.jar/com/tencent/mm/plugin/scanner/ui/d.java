@@ -10,6 +10,8 @@ import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.scanner.l.f;
+import com.tencent.mm.plugin.scanner.l.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -17,15 +19,15 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class d
   extends Preference
 {
-  private TextView BfZ;
-  private final int CKr;
-  private TextView CKs;
-  public boolean CKt;
-  public boolean CKu;
-  private Boolean CKv;
-  private ViewTreeObserver.OnGlobalLayoutListener CKw;
-  a CKx;
-  private View.OnTouchListener aZa;
+  public boolean Bbh;
+  private TextView GZI;
+  private final int IPT;
+  private TextView IPU;
+  public boolean IPV;
+  private Boolean IPW;
+  private ViewTreeObserver.OnGlobalLayoutListener IPX;
+  a IPY;
+  private View.OnTouchListener aIw;
   private Context context;
   String mTitle;
   private View mView;
@@ -35,15 +37,15 @@ public final class d
   {
     super(paramActivity);
     AppMethodBeat.i(51791);
-    this.CKr = 5;
-    this.CKt = false;
-    this.CKu = false;
-    setLayoutResource(2131495587);
+    this.IPT = 5;
+    this.IPV = false;
+    this.Bbh = false;
+    setLayoutResource(l.g.IEf);
     this.context = paramActivity;
     AppMethodBeat.o(51791);
   }
   
-  public final View getView(View paramView, ViewGroup paramViewGroup)
+  public final View c(View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(51792);
     if (this.mView == null) {
@@ -62,15 +64,15 @@ public final class d
     if (this.titleTv == null) {
       this.titleTv = ((TextView)paramView.findViewById(16908310));
     }
-    if (this.BfZ == null) {
-      this.BfZ = ((TextView)paramView.findViewById(16908304));
+    if (this.GZI == null) {
+      this.GZI = ((TextView)paramView.findViewById(16908304));
     }
-    if (this.CKs == null) {
-      this.CKs = ((TextView)paramView.findViewById(2131304855));
+    if (this.IPU == null) {
+      this.IPU = ((TextView)paramView.findViewById(l.f.srX));
     }
-    if (this.aZa == null)
+    if (this.aIw == null)
     {
-      this.aZa = new View.OnTouchListener()
+      this.aIw = new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
@@ -80,35 +82,35 @@ public final class d
             Log.d("MicroMsg.scanner.PlainTextPreference", "moreTv onTouch");
             d.a(d.this).setVisibility(4);
             d.b(d.this).setMaxLines(2000);
-            d.this.CKt = true;
+            d.this.IPV = true;
             if (d.c(d.this) != null)
             {
-              d.c(d.this).b(d.this.mKey, Boolean.TRUE);
-              d.c(d.this).eQI();
+              d.c(d.this).c(d.this.mKey, Boolean.TRUE);
+              d.c(d.this).fDJ();
             }
           }
           AppMethodBeat.o(51789);
           return false;
         }
       };
-      this.CKs.setOnTouchListener(this.aZa);
+      this.IPU.setOnTouchListener(this.aIw);
     }
-    if (this.CKx != null)
+    if (this.IPY != null)
     {
-      this.CKv = this.CKx.aMH(this.mKey);
-      if (this.CKv != null) {
-        if (this.CKv.booleanValue())
+      this.IPW = this.IPY.aXo(this.mKey);
+      if (this.IPW != null) {
+        if (this.IPW.booleanValue())
         {
-          this.CKs.setVisibility(8);
-          this.BfZ.setMaxLines(2000);
+          this.IPU.setVisibility(8);
+          this.GZI.setMaxLines(2000);
         }
       }
     }
     for (;;)
     {
-      if (this.CKw == null)
+      if (this.IPX == null)
       {
-        this.CKw = new ViewTreeObserver.OnGlobalLayoutListener()
+        this.IPX = new ViewTreeObserver.OnGlobalLayoutListener()
         {
           public final void onGlobalLayout()
           {
@@ -116,15 +118,15 @@ public final class d
             Log.d("MicroMsg.scanner.PlainTextPreference", "summaryTv.getHeight() = " + d.b(d.this).getHeight() + ", summaryTv.getLineHeight() = " + d.b(d.this).getLineHeight());
             if ((d.b(d.this).getText() != null) && (d.b(d.this).getHeight() > 0) && (d.b(d.this).getLineHeight() > 0) && (d.d(d.this) == null))
             {
-              if ((d.b(d.this).getHeight() / d.b(d.this).getLineHeight() > 5) && (!d.this.CKu) && (!d.this.CKt))
+              if ((d.b(d.this).getHeight() / d.b(d.this).getLineHeight() > 5) && (!d.this.Bbh) && (!d.this.IPV))
               {
                 d.a(d.this).setVisibility(0);
                 d.b(d.this).setMaxLines(5);
-                d.this.CKu = true;
-                if ((d.c(d.this) != null) && (d.c(d.this).aMH(d.this.mKey) == null))
+                d.this.Bbh = true;
+                if ((d.c(d.this) != null) && (d.c(d.this).aXo(d.this.mKey) == null))
                 {
-                  d.c(d.this).b(d.this.mKey, Boolean.FALSE);
-                  d.c(d.this).eQI();
+                  d.c(d.this).c(d.this.mKey, Boolean.FALSE);
+                  d.c(d.this).fDJ();
                 }
               }
               Log.d("MicroMsg.scanner.PlainTextPreference", "summaryTv.getHeight() / summaryTv.getLineHeight() = " + d.b(d.this).getHeight() / d.b(d.this).getLineHeight());
@@ -133,7 +135,7 @@ public final class d
             AppMethodBeat.o(51790);
           }
         };
-        this.BfZ.getViewTreeObserver().addOnGlobalLayoutListener(this.CKw);
+        this.GZI.getViewTreeObserver().addOnGlobalLayoutListener(this.IPX);
       }
       if (!Util.isNullOrNil(this.mTitle)) {
         break;
@@ -141,14 +143,14 @@ public final class d
       this.titleTv.setVisibility(8);
       AppMethodBeat.o(51793);
       return;
-      this.CKs.setVisibility(0);
-      this.BfZ.setMaxLines(5);
+      this.IPU.setVisibility(0);
+      this.GZI.setMaxLines(5);
       continue;
-      this.CKs.setVisibility(8);
-      this.BfZ.setMaxLines(6);
+      this.IPU.setVisibility(8);
+      this.GZI.setMaxLines(6);
       continue;
-      this.CKs.setVisibility(8);
-      this.BfZ.setMaxLines(6);
+      this.IPU.setVisibility(8);
+      this.GZI.setMaxLines(6);
     }
     this.titleTv.setText(this.mTitle);
     this.titleTv.setVisibility(0);
@@ -157,11 +159,11 @@ public final class d
   
   public static abstract interface a
   {
-    public abstract Boolean aMH(String paramString);
+    public abstract Boolean aXo(String paramString);
     
-    public abstract void b(String paramString, Boolean paramBoolean);
+    public abstract void c(String paramString, Boolean paramBoolean);
     
-    public abstract void eQI();
+    public abstract void fDJ();
   }
 }
 

@@ -1,33 +1,34 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
 import android.view.View;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.MMPullDownView.c;
+import com.tencent.mm.ui.base.MMPullDownView.d;
 
 final class ExdeviceProfileUI$6
-  implements MMPullDownView.c
+  implements MMPullDownView.d
 {
   ExdeviceProfileUI$6(ExdeviceProfileUI paramExdeviceProfileUI) {}
   
-  public final boolean cAl()
+  public final boolean cOK()
   {
-    AppMethodBeat.i(179605);
-    View localView = ExdeviceProfileUI.u(this.rJu).getChildAt(ExdeviceProfileUI.u(this.rJu).getChildCount() - 1);
-    int i = ExdeviceProfileUI.u(this.rJu).getAdapter().getCount();
-    if ((i > 0) && (localView != null) && (localView.getBottom() <= ExdeviceProfileUI.u(this.rJu).getHeight()) && (ExdeviceProfileUI.u(this.rJu).getLastVisiblePosition() >= i - 1))
+    AppMethodBeat.i(24100);
+    if (ExdeviceProfileUI.u(this.vpc).getFirstVisiblePosition() == 0)
     {
-      AppMethodBeat.o(179605);
-      return true;
+      View localView = ExdeviceProfileUI.u(this.vpc).getChildAt(ExdeviceProfileUI.u(this.vpc).getFirstVisiblePosition());
+      if ((localView != null) && (localView.getTop() >= 0))
+      {
+        AppMethodBeat.o(24100);
+        return true;
+      }
     }
-    AppMethodBeat.o(179605);
+    AppMethodBeat.o(24100);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceProfileUI.6
  * JD-Core Version:    0.7.0.1
  */

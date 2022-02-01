@@ -3,125 +3,177 @@ package com.tencent.mm.plugin.emoji.magicemoji.b;
 import android.content.ComponentCallbacks2;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.os.Looper;
+import com.tencent.matrix.c.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ad.g;
 import com.tencent.mm.api.v;
-import com.tencent.mm.g.a.fp;
+import com.tencent.mm.f.a.fw;
 import com.tencent.mm.n.f;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.crash.CrashReportFactory;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class c
-  implements com.tencent.mm.plugin.emoji.magicemoji.a.a, Runnable
+  implements com.tencent.mm.plugin.emoji.magicemoji.a.a
 {
-  private final ComponentCallbacks2 cVL;
-  private boolean qYK;
-  private boolean qYL;
-  private String qYM;
-  private boolean qYN;
-  private final b qYO;
-  private int qYP;
-  private volatile boolean qYQ;
-  private boolean qYR;
-  private boolean qYS;
-  private int qYT;
-  private boolean qYU;
-  private int qYV;
-  private int qYW;
-  private int qYX;
-  private long qYY;
-  private int qYZ;
-  private boolean qZa;
-  private int qZb;
-  private boolean qZc;
-  private IListener<fp> qZd;
+  private MMHandler pLh;
+  private boolean uBG;
+  private boolean uBH;
+  private String uBI;
+  private final ComponentCallbacks2 uBJ;
+  private boolean uBK;
+  private final b uBL;
+  private int uBM;
+  private volatile boolean uBN;
+  private int uBO;
+  private volatile boolean uBP;
+  private boolean uBQ;
+  private boolean uBR;
+  private int uBS;
+  private boolean uBT;
+  private int uBU;
+  private int uBV;
+  private int uBW;
+  private long uBX;
+  private int uBY;
+  private boolean uBZ;
+  private int uCa;
+  private boolean uCb;
+  private IListener<fw> uCc;
+  private final Runnable uCd;
+  private final Runnable uCe;
   
   public c()
   {
-    AppMethodBeat.i(199720);
-    this.qYK = true;
-    this.qYL = false;
-    this.qYM = "";
-    this.qYN = false;
-    this.qYO = new b();
-    this.qYQ = false;
-    this.qYV = 0;
-    this.qYY = 0L;
-    this.qZa = true;
-    this.qZc = false;
-    this.qZd = new IListener() {};
-    this.qZb = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getInt("ClientBenchmarkLevel", -1);
-    String str1 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rWL, "");
+    AppMethodBeat.i(245167);
+    this.uBG = true;
+    this.uBH = false;
+    this.uBI = "";
+    this.uBK = false;
+    this.uBL = new b();
+    this.uBN = false;
+    this.uBO = 10000;
+    this.uBP = false;
+    this.uBU = 0;
+    this.uBX = 0L;
+    this.uBZ = true;
+    this.pLh = new MMHandler(Looper.getMainLooper());
+    this.uCb = false;
+    this.uCc = new IListener() {};
+    this.uCd = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(245105);
+        c.h(c.this);
+        Log.i("MicroMsg.MagicEmojiWatchDog", "magic emoji service exit when timeout");
+        c.cUi();
+        c.JC(2);
+        AppMethodBeat.o(245105);
+      }
+    };
+    this.uCe = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(245415);
+        c.i(c.this);
+        Log.i("MicroMsg.MagicEmojiWatchDog", "magic emoji service paused");
+        ((v)com.tencent.mm.kernel.h.ae(v.class)).ZR();
+        AppMethodBeat.o(245415);
+      }
+    };
+    this.uCa = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.zero.b.a.class)).axc().getInt("ClientBenchmarkLevel", -1);
+    String str1 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vDv, "");
     if (!Util.isNullOrNil(str1)) {}
     try
     {
-      com.tencent.mm.ab.i locali1 = new com.tencent.mm.ab.i(str1);
-      str2 = a(locali1);
-      if (locali1.FJ("preload").getInt(str2) == 0) {
-        this.qZa = false;
+      Object localObject = new com.tencent.mm.ad.i(str1);
+      str2 = a((com.tencent.mm.ad.i)localObject);
+      if (((com.tencent.mm.ad.i)localObject).MJ("preload").getInt(str2) == 0) {
+        this.uBZ = false;
       }
-      int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rWK, 5);
-      Log.i("MicroMsg.MagicEmojiWatchDog", "check crash times: %d >= %d", new Object[] { Integer.valueOf(this.qYO.qYH), Integer.valueOf(i) });
-      if (this.qYO.qYH >= i) {
-        this.qYL = true;
+      int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vDu, 5);
+      Log.i("MicroMsg.MagicEmojiWatchDog", "check crash times: %d >= %d", new Object[] { Integer.valueOf(this.uBL.uBD), Integer.valueOf(i) });
+      if (this.uBL.uBD >= i) {
+        this.uBH = true;
       }
-      cFC();
-      Log.i("MicroMsg.MagicEmojiWatchDog", "can start service %b, can preload %b", new Object[] { Boolean.valueOf(this.qYK), Boolean.valueOf(this.qZa) });
-      str1 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rWJ, "");
-      if (Util.isNullOrNil(str1))
+      cUf();
+      i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vDw, -1);
+      if (i >= 0) {
+        this.uBO = i;
+      }
+      Log.i("MicroMsg.MagicEmojiWatchDog", "can start service %b, can preload %b, pause check time %d", new Object[] { Boolean.valueOf(this.uBG), Boolean.valueOf(this.uBZ), Integer.valueOf(this.uBO) });
+      localObject = b.a.vDs;
+      if (!BuildInfo.IS_ARM64)
       {
-        this.qYU = false;
-        Log.i("MicroMsg.MagicEmojiWatchDog", "perf config perfMonitorEnabled[%b], maxMemoryWarningTimes[%d],exitWhenLeaveChattingUI[%b], mBenchmarkLevel[%d], maxReloadTimes[%d], maxReloadPeriod[%d]", new Object[] { Boolean.valueOf(this.qYU), Integer.valueOf(this.qYP), Boolean.valueOf(this.qYS), Integer.valueOf(this.qZb), Integer.valueOf(this.qYW), Integer.valueOf(this.qYX) });
-        str1 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rWI, "");
-        if (!Util.isNullOrNil(str1)) {
-          break label587;
-        }
-        this.qYR = false;
-        Log.i("MicroMsg.MagicEmojiWatchDog", "hasConfigSettings[%b], destroyServiceTimeoutMS[%d]", new Object[] { Boolean.valueOf(this.qYR), Integer.valueOf(this.qYT) });
-        this.cVL = new ComponentCallbacks2()
+        localObject = b.a.vDt;
+        str1 = "{\"ram\":5,\"exit\":1,\"reload\":{\"low\":1,\"mid\":1,\"high\":1},\"reloadtime\":{\"low\":5,\"mid\":5,\"high\":5},\"benchmark\":{\"low\":11,\"high\":21}}";
+        str1 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a((b.a)localObject, str1);
+        if (Util.isNullOrNil(str1))
         {
-          public final void onConfigurationChanged(Configuration paramAnonymousConfiguration) {}
-          
-          public final void onLowMemory()
-          {
-            AppMethodBeat.i(199715);
-            c.a(c.this);
-            if (c.b(c.this) >= c.c(c.this))
-            {
-              Log.i("MicroMsg.MagicEmojiWatchDog", "magic emoji service exit when low memory");
-              c.erN();
-              c.FU(0);
-              c.a(c.this, Util.currentTicks());
-              c.e(c.this);
-              c.f(c.this);
-            }
-            AppMethodBeat.o(199715);
+          this.uBT = false;
+          Log.i("MicroMsg.MagicEmojiWatchDog", "perf config perfMonitorEnabled[%b], maxMemoryWarningTimes[%d],exitWhenLeaveChattingUI[%b], mBenchmarkLevel[%d], maxReloadTimes[%d], maxReloadPeriod[%d]", new Object[] { Boolean.valueOf(this.uBT), Integer.valueOf(this.uBM), Boolean.valueOf(this.uBR), Integer.valueOf(this.uCa), Integer.valueOf(this.uBV), Integer.valueOf(this.uBW) });
+          localObject = b.a.vDq;
+          if (BuildInfo.IS_ARM64) {
+            break label781;
           }
-          
-          public final void onTrimMemory(int paramAnonymousInt)
-          {
-            AppMethodBeat.i(199716);
-            c.a(c.this);
-            if (c.b(c.this) >= c.c(c.this))
-            {
-              Log.i("MicroMsg.MagicEmojiWatchDog", "magic emoji service exit onTrimMemory");
-              c.erN();
-              c.FU(0);
-              c.a(c.this, Util.currentTicks());
-              c.e(c.this);
-              c.f(c.this);
-            }
-            AppMethodBeat.o(199716);
+          localObject = b.a.vDr;
+          str1 = "{\"queue\":{\"low\":10,\"mid\":20,\"high\":30},\"delay\":5000,\"destroy\":{\"low\":60000,\"mid\":120000,\"high\":300000},\"benchmark\":{\"low\":11,\"high\":21}}";
+          str1 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a((b.a)localObject, str1);
+          if (!Util.isNullOrNil(str1)) {
+            break label715;
           }
-        };
-        AppMethodBeat.o(199720);
+          this.uBQ = false;
+          Log.i("MicroMsg.MagicEmojiWatchDog", "hasConfigSettings[%b], destroyServiceTimeoutMS[%d]", new Object[] { Boolean.valueOf(this.uBQ), Integer.valueOf(this.uBS) });
+          this.uBJ = new ComponentCallbacks2()
+          {
+            public final void onConfigurationChanged(Configuration paramAnonymousConfiguration) {}
+            
+            public final void onLowMemory()
+            {
+              AppMethodBeat.i(245353);
+              c.a(c.this);
+              if (c.b(c.this) >= c.c(c.this))
+              {
+                Log.i("MicroMsg.MagicEmojiWatchDog", "magic emoji service exit when low memory");
+                c.cUi();
+                c.JC(0);
+                c.a(c.this, Util.currentTicks());
+                c.d(c.this);
+                c.e(c.this);
+              }
+              AppMethodBeat.o(245353);
+            }
+            
+            public final void onTrimMemory(int paramAnonymousInt)
+            {
+              AppMethodBeat.i(245355);
+              c.a(c.this);
+              if (c.b(c.this) >= c.c(c.this))
+              {
+                Log.i("MicroMsg.MagicEmojiWatchDog", "magic emoji service exit onTrimMemory");
+                c.cUi();
+                c.JC(0);
+                c.a(c.this, Util.currentTicks());
+                c.d(c.this);
+                c.e(c.this);
+              }
+              AppMethodBeat.o(245355);
+            }
+          };
+          AppMethodBeat.o(245167);
+        }
       }
     }
-    catch (com.tencent.mm.ab.g localg1)
+    catch (g localg1)
     {
       for (;;)
       {
@@ -132,263 +184,294 @@ public final class c
         {
           try
           {
-            com.tencent.mm.ab.i locali2 = new com.tencent.mm.ab.i(str1);
-            this.qYP = locali2.getInt("ram");
-            if (locali2.getInt("exit") != 1) {
-              break label582;
+            com.tencent.mm.ad.i locali1 = new com.tencent.mm.ad.i(str1);
+            this.uBM = locali1.getInt("ram");
+            if (locali1.getInt("exit") != 1) {
+              break label710;
             }
             bool = true;
-            this.qYS = bool;
-            str2 = a(locali2);
-            this.qYW = locali2.FJ("reload").getInt(str2);
-            this.qYX = (locali2.FJ("reloadtime").getInt(str2) * 60000);
-            this.qYU = true;
+            this.uBR = bool;
+            str2 = a(locali1);
+            this.uBV = locali1.MJ("reload").getInt(str2);
+            this.uBW = (locali1.MJ("reloadtime").getInt(str2) * 60000);
+            this.uBT = true;
           }
-          catch (com.tencent.mm.ab.g localg2)
+          catch (g localg2)
           {
             Log.printErrStackTrace("MicroMsg.MagicEmojiWatchDog", localg2, "invalid json %s", new Object[] { str1 });
           }
           break;
-          label582:
+          label710:
           boolean bool = false;
         }
         try
         {
-          label587:
-          com.tencent.mm.ab.i locali3 = new com.tencent.mm.ab.i(str1);
-          str2 = a(locali3);
-          this.qYT = locali3.FJ("destroy").getInt(str2);
-          this.qYR = true;
+          label715:
+          com.tencent.mm.ad.i locali2 = new com.tencent.mm.ad.i(str1);
+          str2 = a(locali2);
+          this.uBS = locali2.MJ("destroy").getInt(str2);
+          this.uBQ = true;
         }
-        catch (com.tencent.mm.ab.g localg3)
+        catch (g localg3)
         {
           Log.printErrStackTrace("MicroMsg.MagicEmojiWatchDog", localg3, "invalid json %s", new Object[] { str1 });
         }
+        continue;
+        label781:
+        str1 = "";
+        continue;
+        str1 = "";
       }
     }
   }
   
-  private String a(com.tencent.mm.ab.i parami)
+  private static void ZQ()
   {
-    AppMethodBeat.i(199723);
-    parami = parami.FJ("benchmark");
+    AppMethodBeat.i(245171);
+    ((v)com.tencent.mm.kernel.h.ae(v.class)).ZQ();
+    AppMethodBeat.o(245171);
+  }
+  
+  private String a(com.tencent.mm.ad.i parami)
+  {
+    AppMethodBeat.i(245173);
+    parami = parami.MJ("benchmark");
     int i = parami.getInt("low");
     int j = parami.getInt("high");
     String str = "high";
     parami = str;
-    if (this.qZb >= 0)
+    if (this.uCa >= 0)
     {
-      if (this.qZb > i) {
-        break label58;
+      if (this.uCa > i) {
+        break label65;
       }
       parami = "low";
     }
     for (;;)
     {
-      AppMethodBeat.o(199723);
+      AppMethodBeat.o(245173);
       return parami;
-      label58:
+      label65:
       parami = str;
-      if (this.qZb <= j) {
+      if (this.uCa <= j) {
         parami = "mid";
       }
     }
   }
   
-  private static void cFB()
+  private void cUf()
   {
-    AppMethodBeat.i(199722);
-    ((v)com.tencent.mm.kernel.g.af(v.class)).cFB();
-    AppMethodBeat.o(199722);
-  }
-  
-  private void cFC()
-  {
-    AppMethodBeat.i(199724);
-    String str1 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rWG, "");
-    if ((!Util.isNullOrNil(str1)) && (!this.qYM.equals(str1))) {
+    AppMethodBeat.i(245175);
+    String str1 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vDo, "");
+    if ((!Util.isNullOrNil(str1)) && (!this.uBI.equals(str1))) {
       try
       {
-        com.tencent.mm.ab.i locali = new com.tencent.mm.ab.i(str1);
+        com.tencent.mm.ad.i locali = new com.tencent.mm.ad.i(str1);
         String str2 = a(locali);
-        if (locali.FJ("close").getInt(str2) == 1) {
+        if (locali.MJ("close").getInt(str2) == 1) {
           Log.i("MicroMsg.MagicEmojiWatchDog", "magic emoji service disabled by server");
         }
-        for (this.qYK = false;; this.qYK = true)
+        for (this.uBG = false;; this.uBG = true)
         {
-          this.qYM = str1;
-          AppMethodBeat.o(199724);
+          this.uBI = str1;
+          AppMethodBeat.o(245175);
           return;
           Log.i("MicroMsg.MagicEmojiWatchDog", "magic emoji service enable by server");
         }
-        AppMethodBeat.o(199724);
+        AppMethodBeat.o(245175);
       }
-      catch (com.tencent.mm.ab.g localg)
+      catch (g localg)
       {
         Log.printErrStackTrace("MicroMsg.MagicEmojiWatchDog", localg, "invalid json %s", new Object[] { str1 });
       }
     }
   }
   
-  private static void oA(int paramInt)
+  private void cUg()
   {
-    AppMethodBeat.i(199721);
-    com.tencent.mm.plugin.report.service.h.CyF.dN(1622, paramInt);
-    AppMethodBeat.o(199721);
+    AppMethodBeat.i(245187);
+    if ((this.uBO > 0) && (this.uBP))
+    {
+      this.pLh.removeCallbacks(this.uCe);
+      this.uBP = false;
+    }
+    AppMethodBeat.o(245187);
   }
   
-  public final boolean cFs()
+  private void cUh()
   {
-    return this.qZa;
+    AppMethodBeat.i(245188);
+    if (this.uBO > 0)
+    {
+      cUg();
+      this.pLh.postDelayed(this.uCe, this.uBO);
+      this.uBP = true;
+    }
+    AppMethodBeat.o(245188);
   }
   
-  public final a.a cFt()
+  private static void qS(int paramInt)
   {
-    AppMethodBeat.i(199725);
-    cFC();
-    if (!this.qYK)
+    AppMethodBeat.i(245169);
+    com.tencent.mm.plugin.report.service.h.IzE.el(1622, paramInt);
+    AppMethodBeat.o(245169);
+  }
+  
+  public final boolean cTU()
+  {
+    return this.uBZ;
+  }
+  
+  public final a.b cTV()
+  {
+    AppMethodBeat.i(245179);
+    cUf();
+    if (!this.uBG)
     {
-      locala = a.a.qYA;
-      AppMethodBeat.o(199725);
-      return locala;
+      localb = a.b.uBv;
+      AppMethodBeat.o(245179);
+      return localb;
     }
-    if (this.qYL)
+    if (this.uBH)
     {
-      locala = a.a.qYz;
-      AppMethodBeat.o(199725);
-      return locala;
+      localb = a.b.uBu;
+      AppMethodBeat.o(245179);
+      return localb;
     }
-    if ((this.qYU) && (this.qYY > 0L) && (this.qYZ >= this.qYW))
+    if ((this.uBT) && (this.uBX > 0L) && (this.uBY >= this.uBV))
     {
-      if (Util.ticksToNow(this.qYY) < this.qYX)
+      if (Util.ticksToNow(this.uBX) < this.uBW)
       {
-        locala = a.a.qYB;
-        AppMethodBeat.o(199725);
-        return locala;
+        localb = a.b.uBw;
+        AppMethodBeat.o(245179);
+        return localb;
       }
-      this.qYZ = 0;
+      this.uBY = 0;
     }
-    a.a locala = a.a.qYw;
-    AppMethodBeat.o(199725);
-    return locala;
+    a.b localb = a.b.uBr;
+    AppMethodBeat.o(245179);
+    return localb;
   }
   
-  public final void cFu()
+  public final void cTW()
   {
-    AppMethodBeat.i(199727);
-    b localb = this.qYO;
-    if (!localb.qYG)
+    AppMethodBeat.i(245180);
+    b localb = this.uBL;
+    if (!localb.uBC)
     {
-      CrashReportFactory.addCrashReportListener(localb.qYI);
-      localb.qYG = true;
+      CrashReportFactory.addCrashReportListener(localb.uBE);
+      localb.uBC = true;
     }
-    AppMethodBeat.o(199727);
+    AppMethodBeat.o(245180);
   }
   
-  public final void cFv()
+  public final void cTX()
   {
-    AppMethodBeat.i(199729);
-    b localb = this.qYO;
-    if (localb.qYG)
+    AppMethodBeat.i(245182);
+    if (!this.uCb)
     {
-      CrashReportFactory.removeCrashReportListener(localb.qYI);
-      localb.qYG = false;
+      EventCenter.instance.addListener(this.uCc);
+      this.uCb = true;
     }
-    if (this.qZc)
-    {
-      EventCenter.instance.removeListener(this.qZd);
-      this.qZc = false;
-    }
-    AppMethodBeat.o(199729);
+    e.fo("ME");
+    AppMethodBeat.o(245182);
   }
   
-  public final void cFw()
+  public final void cTY()
   {
-    AppMethodBeat.i(199730);
-    if ((this.qYR) && (this.qYT > 0))
+    AppMethodBeat.i(245184);
+    b localb = this.uBL;
+    if (localb.uBC)
     {
-      if (this.qYQ) {
-        com.tencent.f.h.RTc.bqo("ME.WatchDog");
-      }
-      this.qYQ = true;
-      com.tencent.f.h.RTc.a(this, this.qYT, "ME.WatchDog");
+      CrashReportFactory.removeCrashReportListener(localb.uBE);
+      localb.uBC = false;
     }
-    if (this.qYO.qYH > 0) {
-      com.tencent.f.h.RTc.o(new Runnable()
+    if (this.uCb)
+    {
+      EventCenter.instance.removeListener(this.uCc);
+      this.uCb = false;
+    }
+    e.fp("ME");
+    AppMethodBeat.o(245184);
+  }
+  
+  public final void cTZ()
+  {
+    AppMethodBeat.i(245194);
+    Log.i("MicroMsg.MagicEmojiWatchDog", "on service resume");
+    cUh();
+    if ((this.uBT) && (!this.uBK))
+    {
+      this.uBK = true;
+      MMApplicationContext.getContext().registerComponentCallbacks(this.uBJ);
+    }
+    AppMethodBeat.o(245194);
+  }
+  
+  public final void cUa()
+  {
+    AppMethodBeat.i(245196);
+    Log.i("MicroMsg.MagicEmojiWatchDog", "on service pause");
+    cUg();
+    if (this.uBT)
+    {
+      if (this.uBK)
       {
-        public final void run()
+        this.uBK = false;
+        MMApplicationContext.getContext().unregisterComponentCallbacks(this.uBJ);
+      }
+      if (this.uBR)
+      {
+        Log.i("MicroMsg.MagicEmojiWatchDog", "magic emoji service exit when service pause");
+        ZQ();
+        qS(3);
+      }
+    }
+    AppMethodBeat.o(245196);
+  }
+  
+  public final void cUb()
+  {
+    AppMethodBeat.i(245192);
+    if ((this.uBQ) && (this.uBS > 0))
+    {
+      if (!this.uBN) {
+        break label96;
+      }
+      this.pLh.removeCallbacks(this.uCd);
+    }
+    for (;;)
+    {
+      this.pLh.postDelayed(this.uCd, this.uBS);
+      cUh();
+      if (this.uBL.uBD > 0) {
+        com.tencent.e.h.ZvG.o(new Runnable()
         {
-          AppMethodBeat.i(199719);
-          c.i(c.this).cFA();
-          AppMethodBeat.o(199719);
-        }
-      }, 10000L);
-    }
-    AppMethodBeat.o(199730);
-  }
-  
-  public final void cFx()
-  {
-    AppMethodBeat.i(199731);
-    if ((this.qYU) && (!this.qYN))
-    {
-      this.qYN = true;
-      MMApplicationContext.getContext().registerComponentCallbacks(this.cVL);
-    }
-    AppMethodBeat.o(199731);
-  }
-  
-  public final void cFy()
-  {
-    AppMethodBeat.i(199732);
-    if (this.qYU)
-    {
-      if (this.qYN)
-      {
-        this.qYN = false;
-        MMApplicationContext.getContext().unregisterComponentCallbacks(this.cVL);
+          public final void run()
+          {
+            AppMethodBeat.i(245378);
+            c.j(c.this).cUe();
+            AppMethodBeat.o(245378);
+          }
+        }, 10000L);
       }
-      if (this.qYS)
-      {
-        Log.i("MicroMsg.MagicEmojiWatchDog", "magic emoji service exit when leave ChattingUI");
-        cFB();
-        oA(3);
-      }
+      AppMethodBeat.o(245192);
+      return;
+      label96:
+      this.uBN = true;
     }
-    AppMethodBeat.o(199732);
   }
   
-  public final void cFz()
+  public final void cUc()
   {
-    AppMethodBeat.i(199733);
-    this.qYO.cFA();
-    AppMethodBeat.o(199733);
-  }
-  
-  public final void dRk()
-  {
-    AppMethodBeat.i(258021);
-    if (!this.qZc)
-    {
-      EventCenter.instance.addListener(this.qZd);
-      this.qZc = true;
-    }
-    AppMethodBeat.o(258021);
-  }
-  
-  public final void run()
-  {
-    AppMethodBeat.i(199726);
-    this.qYQ = false;
-    Log.i("MicroMsg.MagicEmojiWatchDog", "magic emoji service exit when timeout");
-    cFB();
-    oA(2);
-    AppMethodBeat.o(199726);
+    AppMethodBeat.i(245197);
+    this.uBL.cUe();
+    AppMethodBeat.o(245197);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.magicemoji.b.c
  * JD-Core Version:    0.7.0.1
  */

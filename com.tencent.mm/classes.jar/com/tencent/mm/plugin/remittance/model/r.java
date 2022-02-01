@@ -1,74 +1,76 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.vu;
+import com.tencent.mm.protocal.protobuf.vv;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.wallet_core.b.a.a;
-import com.tencent.mm.wallet_core.c.j;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
 
 public final class r
-  extends a
-  implements j
+  extends q
+  implements m
 {
-  public String CoO;
+  private vu IlO;
+  public vv IlP;
+  private i callback;
+  private d kwO;
   
-  public r(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2)
+  public r(String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, int paramInt3, String paramString5, String paramString6)
   {
-    AppMethodBeat.i(67873);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("amount", String.valueOf(paramLong));
-    localHashMap.put("recv_username", paramString1);
-    localHashMap.put("recv_nickname", paramString2);
-    localHashMap.put("qrcodeid", paramString5);
-    try
-    {
-      if (!Util.isNullOrNil(paramString3)) {
-        localHashMap.put("desc", URLEncoder.encode(paramString3, "UTF-8"));
-      }
-      if (!Util.isNullOrNil(paramString4)) {
-        localHashMap.put("message", URLEncoder.encode(paramString4, "UTF-8"));
-      }
-    }
-    catch (UnsupportedEncodingException paramString5)
-    {
-      for (;;)
-      {
-        Log.printErrStackTrace("MicroMsg.NetSceneH5F2fTransferPay", paramString5, "", new Object[0]);
-      }
-    }
-    localHashMap.put("currency", String.valueOf(paramInt1));
-    localHashMap.put("set_amount", String.valueOf(paramInt2));
-    setRequestData(localHashMap);
-    Log.i("MicroMsg.NetSceneH5F2fTransferPay", "username: %s, nickname: %s, amount: %s, desc: %s, msg: %s, currency: %s", new Object[] { paramString1, paramString2, Long.valueOf(paramLong), paramString3, paramString4, Integer.valueOf(paramInt1) });
-    AppMethodBeat.o(67873);
+    AppMethodBeat.i(67868);
+    d.a locala = new d.a();
+    locala.lBU = new vu();
+    locala.lBV = new vv();
+    locala.funcId = 2773;
+    locala.uri = "/cgi-bin/mmpay-bin/f2fsucpage";
+    locala.lBW = 0;
+    locala.respCmdId = 0;
+    this.kwO = locala.bgN();
+    this.IlO = ((vu)d.b.b(this.kwO.lBR));
+    this.IlO.RJf = paramString1;
+    this.IlO.InV = paramString2;
+    this.IlO.amount = paramInt1;
+    this.IlO.ImS = paramString3;
+    this.IlO.ImR = paramString4;
+    this.IlO.channel = paramInt2;
+    this.IlO.Ilb = paramInt3;
+    this.IlO.ShY = paramString5;
+    this.IlO.ShZ = paramString6;
+    AppMethodBeat.o(67868);
   }
   
-  public final String czD()
+  public final int doScene(g paramg, i parami)
   {
-    return "/cgi-bin/mmpay-bin/h5f2ftransferpay";
-  }
-  
-  public final int czE()
-  {
-    return 1529;
+    AppMethodBeat.i(67869);
+    this.callback = parami;
+    int i = dispatch(paramg, this.kwO, this);
+    AppMethodBeat.o(67869);
+    return i;
   }
   
   public final int getType()
   {
-    return 1529;
+    return 2773;
   }
   
-  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(67874);
-    this.CoO = paramJSONObject.optString("payurl", "");
-    Log.i("MicroMsg.NetSceneH5F2fTransferPay", "payurl: %s", new Object[] { this.CoO });
-    AppMethodBeat.o(67874);
+    AppMethodBeat.i(67870);
+    Log.i("MicroMsg.NetSceneF2fSuccPage", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.IlP = ((vv)d.c.b(((d)params).lBS));
+    Log.i("MicroMsg.NetSceneF2fSuccPage", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.IlP.fwx), this.IlP.tVo });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(67870);
   }
 }
 

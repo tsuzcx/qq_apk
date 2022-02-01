@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.finder.convert;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.plugin.finder.cgi.bh;
+import com.tencent.mm.an.q;
+import com.tencent.mm.plugin.finder.cgi.bk;
 import com.tencent.mm.plugin.finder.feed.model.FinderFeedRelTimelineLoader;
 import com.tencent.mm.plugin.finder.feed.model.FinderFeedRelTimelineLoader.c;
-import com.tencent.mm.plugin.finder.feed.model.internal.g;
-import com.tencent.mm.plugin.finder.model.bo;
-import com.tencent.mm.protocal.protobuf.ato;
-import com.tencent.mm.protocal.protobuf.bbn;
-import com.tencent.mm.protocal.protobuf.ecq;
+import com.tencent.mm.plugin.finder.feed.model.internal.i;
+import com.tencent.mm.plugin.finder.model.bu;
+import com.tencent.mm.protocal.protobuf.avr;
+import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.protocal.protobuf.emr;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/convert/FinderStreamCardAlbumConvert$fetchContent$loader$1", "Lcom/tencent/mm/plugin/finder/feed/model/FinderFeedRelTimelineLoader;", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "isObservePostEvent", "", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/convert/FinderStreamCardAlbumConvert$fetchContent$loader$1", "Lcom/tencent/mm/plugin/finder/feed/model/FinderFeedRelTimelineLoader;", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "isObservePostEvent", "", "plugin-finder_release"})
 public final class FinderStreamCardAlbumConvert$fetchContent$loader$1
   extends FinderFeedRelTimelineLoader
 {
-  FinderStreamCardAlbumConvert$fetchContent$loader$1(ecq paramecq, int paramInt)
+  FinderStreamCardAlbumConvert$fetchContent$loader$1(emr paramemr, bid parambid)
   {
-    super(0L, null, 0, null, 10, false, null, null, null, 0, localbbn, 4079);
+    super(0L, null, 0, null, 10, false, null, null, null, 0, localbid, 0.0F, 0.0F, 28655);
   }
   
-  public final g<bo> createDataFetch()
+  public final i<bu> createDataFetch()
   {
-    AppMethodBeat.i(243289);
-    g localg = (g)new a(this);
-    AppMethodBeat.o(243289);
-    return localg;
+    AppMethodBeat.i(290536);
+    i locali = (i)new a(this);
+    AppMethodBeat.o(290536);
+    return locali;
   }
   
   public final boolean isObservePostEvent()
@@ -34,7 +34,7 @@ public final class FinderStreamCardAlbumConvert$fetchContent$loader$1
     return false;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/convert/FinderStreamCardAlbumConvert$fetchContent$loader$1$createDataFetch$1", "Lcom/tencent/mm/plugin/finder/feed/model/FinderFeedRelTimelineLoader$FinderStreamCardDataFetcher;", "Lcom/tencent/mm/plugin/finder/feed/model/FinderFeedRelTimelineLoader;", "genRefreshNetScene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/convert/FinderStreamCardAlbumConvert$fetchContent$loader$1$createDataFetch$1", "Lcom/tencent/mm/plugin/finder/feed/model/FinderFeedRelTimelineLoader$FinderStreamCardDataFetcher;", "Lcom/tencent/mm/plugin/finder/feed/model/FinderFeedRelTimelineLoader;", "genRefreshNetScene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
   public static final class a
     extends FinderFeedRelTimelineLoader.c
   {
@@ -45,18 +45,18 @@ public final class FinderStreamCardAlbumConvert$fetchContent$loader$1
     
     public final q genRefreshNetScene()
     {
-      AppMethodBeat.i(243288);
-      ecq localecq = this.tGC.tGy;
-      bbn localbbn = this.tGC.getContextObj();
-      ato localato = this.tGC.tta;
-      Object localObject = localato;
-      if (localato == null) {
-        localObject = new ato();
+      AppMethodBeat.i(282428);
+      emr localemr = this.xpo.xpl;
+      bid localbid = this.xpo.getContextObj();
+      avr localavr = this.xpo.xGR;
+      Object localObject = localavr;
+      if (localavr == null) {
+        localObject = new avr();
       }
-      localObject = new bh(localecq, localbbn, (ato)localObject);
-      ((bh)localObject).pullType = 0;
+      localObject = new bk(localemr, localbid, (avr)localObject);
+      ((bk)localObject).pullType = 0;
       localObject = (q)localObject;
-      AppMethodBeat.o(243288);
+      AppMethodBeat.o(282428);
       return localObject;
     }
   }

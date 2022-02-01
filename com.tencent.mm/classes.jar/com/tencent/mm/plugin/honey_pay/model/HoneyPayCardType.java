@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cak;
+import com.tencent.mm.protocal.protobuf.cil;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 
@@ -12,7 +12,7 @@ public class HoneyPayCardType
   implements Parcelable
 {
   public static final Parcelable.Creator<HoneyPayCardType> CREATOR;
-  public byte[] zy;
+  public byte[] UH;
   
   static
   {
@@ -24,23 +24,23 @@ public class HoneyPayCardType
   protected HoneyPayCardType(Parcel paramParcel)
   {
     AppMethodBeat.i(64642);
-    this.zy = new byte[paramParcel.readInt()];
-    paramParcel.readByteArray(this.zy);
+    this.UH = new byte[paramParcel.readInt()];
+    paramParcel.readByteArray(this.UH);
     AppMethodBeat.o(64642);
   }
   
-  public HoneyPayCardType(cak paramcak)
+  public HoneyPayCardType(cil paramcil)
   {
     AppMethodBeat.i(64641);
     try
     {
-      this.zy = paramcak.toByteArray();
+      this.UH = paramcil.toByteArray();
       AppMethodBeat.o(64641);
       return;
     }
-    catch (IOException paramcak)
+    catch (IOException paramcil)
     {
-      Log.printErrStackTrace("MicroMsg.HoneyPayCardType", paramcak, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.HoneyPayCardType", paramcil, "", new Object[0]);
       AppMethodBeat.o(64641);
     }
   }
@@ -53,8 +53,8 @@ public class HoneyPayCardType
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(64643);
-    paramParcel.writeInt(this.zy.length);
-    paramParcel.writeByteArray(this.zy);
+    paramParcel.writeInt(this.UH.length);
+    paramParcel.writeByteArray(this.UH);
     AppMethodBeat.o(64643);
   }
 }

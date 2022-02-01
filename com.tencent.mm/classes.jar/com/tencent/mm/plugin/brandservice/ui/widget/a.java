@@ -1,132 +1,44 @@
 package com.tencent.mm.plugin.brandservice.ui.widget;
 
-import android.app.Activity;
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.d;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import kotlin.l;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr;", "", "()V", "value", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;", "curSpeed", "getCurSpeed", "()Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;", "setCurSpeed", "(Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;)V", "lastSpeed", "getLastSpeed", "setLastSpeed", "resetCurSpeed", "", "MPVideoSpeed", "plugin-brandservice_release"})
 public final class a
 {
-  private Context mContext;
-  private int mOrientation;
-  private View nEb;
-  private final Set<b> nEg;
-  private int pNM;
+  private static a.a sUK;
+  private static a.a sUL;
+  public static final a sUM;
   
-  public a(Context paramContext)
+  static
   {
-    AppMethodBeat.i(6269);
-    this.pNM = 0;
-    this.nEg = Collections.newSetFromMap(new ConcurrentHashMap());
-    this.mContext = paramContext;
-    AppMethodBeat.o(6269);
+    AppMethodBeat.i(179028);
+    sUM = new a();
+    AppMethodBeat.o(179028);
   }
   
-  private void bTL()
+  public static void a(a.a parama)
   {
-    AppMethodBeat.i(6274);
-    Iterator localIterator = this.nEg.iterator();
-    while (localIterator.hasNext()) {
-      localIterator.next();
-    }
-    AppMethodBeat.o(6274);
-  }
-  
-  private void bTM()
-  {
-    AppMethodBeat.i(6275);
-    Iterator localIterator = this.nEg.iterator();
-    while (localIterator.hasNext()) {
-      ((b)localIterator.next()).Na();
-    }
-    AppMethodBeat.o(6275);
-  }
-  
-  public final void N(View paramView, int paramInt)
-  {
-    AppMethodBeat.i(6270);
-    btC();
-    this.nEb = paramView;
-    Activity localActivity = (Activity)this.mContext;
-    ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
-    ViewGroup localViewGroup = (ViewGroup)localActivity.getWindow().getDecorView();
-    this.pNM = localViewGroup.getSystemUiVisibility();
-    localViewGroup.addView(paramView, localLayoutParams);
-    paramView.setX(0.0F);
-    paramView.setY(0.0F);
-    if (d.oE(19))
+    if (sUL == null) {}
+    for (a.a locala = a.a.sUP;; locala = sUL)
     {
-      localViewGroup.setSystemUiVisibility(2);
-      localActivity.getWindow().addFlags(1024);
-      this.mOrientation = localActivity.getRequestedOrientation();
-      switch (paramInt)
-      {
-      default: 
-        localActivity.setRequestedOrientation(9);
-      }
-    }
-    for (;;)
-    {
-      bTL();
-      AppMethodBeat.o(6270);
+      sUK = locala;
+      sUL = parama;
       return;
-      localViewGroup.setSystemUiVisibility(4102);
-      break;
-      localActivity.setRequestedOrientation(0);
-      continue;
-      localActivity.setRequestedOrientation(8);
-      continue;
-      localActivity.setRequestedOrientation(1);
     }
   }
   
-  public final void a(b paramb)
+  public static a.a cEG()
   {
-    AppMethodBeat.i(6272);
-    if (!this.nEg.contains(paramb)) {
-      this.nEg.add(paramb);
+    if (sUL == null) {
+      return a.a.sUP;
     }
-    AppMethodBeat.o(6272);
-  }
-  
-  public final void b(b paramb)
-  {
-    AppMethodBeat.i(6273);
-    this.nEg.remove(paramb);
-    AppMethodBeat.o(6273);
-  }
-  
-  public final boolean btC()
-  {
-    AppMethodBeat.i(6271);
-    if (this.nEb == null)
-    {
-      AppMethodBeat.o(6271);
-      return false;
-    }
-    Activity localActivity = (Activity)this.mContext;
-    ViewGroup localViewGroup = (ViewGroup)localActivity.getWindow().getDecorView();
-    localViewGroup.setSystemUiVisibility(this.pNM);
-    localViewGroup.removeView(this.nEb);
-    localActivity.getWindow().clearFlags(1024);
-    localActivity.setRequestedOrientation(this.mOrientation);
-    this.nEb = null;
-    bTM();
-    AppMethodBeat.o(6271);
-    return true;
+    return sUL;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.widget.a
  * JD-Core Version:    0.7.0.1
  */

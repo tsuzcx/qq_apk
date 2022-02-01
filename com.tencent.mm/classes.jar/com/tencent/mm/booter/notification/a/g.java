@@ -5,35 +5,35 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
 {
-  public b goI;
-  public c goJ;
-  public d goK;
-  public h goL;
-  private f goM;
-  public a goN;
-  public int goO;
-  public int goP;
-  public int goQ;
-  public int goR;
-  public boolean goS;
-  private int goT;
-  private int goU;
-  public boolean goV;
-  public boolean goW;
+  public b iSR;
+  public c iSS;
+  public d iST;
+  public h iSU;
+  private f iSV;
+  public a iSW;
+  public int iSX;
+  public int iSY;
+  public int iSZ;
+  public int iTa;
+  public boolean iTb;
+  private int iTc;
+  private int iTd;
+  public boolean iTe;
+  public boolean iTf;
   public Context mContext;
   
   public g(Context paramContext)
   {
     AppMethodBeat.i(20067);
-    this.goT = -1;
-    this.goU = -1;
+    this.iTc = -1;
+    this.iTd = -1;
     this.mContext = paramContext;
-    this.goI = new b();
-    this.goJ = new c();
-    this.goK = new d();
-    this.goL = new h();
-    this.goN = new a();
-    this.goM = f.a.alu();
+    this.iSR = new b();
+    this.iSS = new c();
+    this.iST = new d();
+    this.iSU = new h();
+    this.iSW = new a();
+    this.iSV = f.a.ars();
     AppMethodBeat.o(20067);
   }
   
@@ -64,38 +64,38 @@ public final class g
     return paramArrayOfLong;
   }
   
-  public final void Df(String paramString)
+  public final void JW(String paramString)
   {
     AppMethodBeat.i(20068);
-    this.goM.De(paramString);
+    this.iSV.JV(paramString);
     AppMethodBeat.o(20068);
   }
   
-  public final int alv()
+  public final int art()
   {
-    AppMethodBeat.i(231503);
-    if (this.goP == -1) {
-      this.goP = com.tencent.mm.n.g.aqF();
+    AppMethodBeat.i(287280);
+    if (this.iSY == -1) {
+      this.iSY = com.tencent.mm.n.g.awY();
     }
-    int i = this.goP;
-    AppMethodBeat.o(231503);
+    int i = this.iSY;
+    AppMethodBeat.o(287280);
     return i;
   }
   
-  public final int alw()
+  public final int aru()
   {
-    AppMethodBeat.i(231504);
-    if (this.goQ == -1) {
-      this.goQ = com.tencent.mm.n.g.aqG();
+    AppMethodBeat.i(287281);
+    if (this.iSZ == -1) {
+      this.iSZ = com.tencent.mm.n.g.awZ();
     }
-    int i = this.goQ;
-    AppMethodBeat.o(231504);
+    int i = this.iSZ;
+    AppMethodBeat.o(287281);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.booter.notification.a.g
  * JD-Core Version:    0.7.0.1
  */

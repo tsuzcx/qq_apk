@@ -5,16 +5,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.g.a.dg;
-import com.tencent.mm.g.a.dg.a;
-import com.tencent.mm.g.a.ou;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.f.a.dl;
+import com.tencent.mm.f.a.dl.a;
+import com.tencent.mm.f.a.pr;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.model.be;
 import com.tencent.mm.plugin.wallet_core.c.d;
+import com.tencent.mm.plugin.wallet_ecard.a.b;
 import com.tencent.mm.pluginsdk.wallet.e;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -25,21 +25,21 @@ import java.lang.ref.WeakReference;
 import java.util.HashMap;
 
 public class a
-  implements bd
+  implements be
 {
-  private d.a Ipd;
-  private IListener<dg> Ipe;
-  private IListener<ou> Ipf;
+  private d.a PhL;
+  private IListener<dl> PhM;
+  private IListener<pr> PhN;
   
   public a()
   {
     AppMethodBeat.i(71678);
-    this.Ipe = new IListener()
+    this.PhM = new IListener()
     {
-      private boolean a(final dg paramAnonymousdg)
+      private boolean a(final dl paramAnonymousdl)
       {
         AppMethodBeat.i(71674);
-        final dg.a locala = paramAnonymousdg.dGm;
+        final dl.a locala = paramAnonymousdl.fyX;
         Object localObject1 = new HashMap();
         if (!Util.isNullOrNil(locala.packageExt))
         {
@@ -62,45 +62,45 @@ public class a
         }
         Object localObject2 = (String)((HashMap)localObject1).get("extradata");
         Log.i("MicroMsg.SubCoreECard", "start openECard, extraData: %s, packageExt: %s", new Object[] { localObject2, localObject1 });
-        localObject1 = new d(locala.appId, locala.dmc, locala.nonceStr, locala.packageExt, locala.signType, locala.signature, locala.dGo, 15, "openECard", locala.payChannel);
-        g.aAi();
-        g.aAg().hqi.a(580, new i()
+        localObject1 = new d(locala.appId, locala.fdH, locala.nonceStr, locala.packageExt, locala.signType, locala.signature, locala.fyZ, 15, "openECard", locala.payChannel);
+        com.tencent.mm.kernel.h.aHH();
+        com.tencent.mm.kernel.h.aHF().kcd.a(580, new i()
         {
           public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, q paramAnonymous2q)
           {
             AppMethodBeat.i(71673);
-            g.aAi();
-            g.aAg().hqi.b(580, this);
+            com.tencent.mm.kernel.h.aHH();
+            com.tencent.mm.kernel.h.aHF().kcd.b(580, this);
             if ((paramAnonymous2Int1 == 0) && (paramAnonymous2Int2 == 0))
             {
               Log.i("MicroMsg.SubCoreECard", "jsapi check success");
-              e.bfP(((d)paramAnonymous2q).fPP());
-              paramAnonymous2String = (Context)locala.aWF.get();
+              e.bsi(((d)paramAnonymous2q).gIv());
+              paramAnonymous2String = (Context)locala.aFX.get();
               if ((paramAnonymous2String != null) && ((paramAnonymous2String instanceof Activity)))
               {
-                a.a(a.this, new a.a(a.this, paramAnonymousdg));
-                com.tencent.mm.plugin.wallet_ecard.a.b.a(Util.getInt(paramAnonymousdg.dGm.dGq, 0), paramAnonymousdg.dGm.token, paramAnonymousdg.dGm.dGp, this.Ipj, paramAnonymous2String, a.a(a.this));
+                a.a(a.this, new a.a(a.this, paramAnonymousdl));
+                b.a(Util.getInt(paramAnonymousdl.fyX.fzb, 0), paramAnonymousdl.fyX.token, paramAnonymousdl.fyX.fza, this.PhR, paramAnonymous2String, a.a(a.this));
                 AppMethodBeat.o(71673);
                 return;
               }
-              paramAnonymousdg.dGn.retCode = -1;
-              paramAnonymousdg.dGm.callback.run();
+              paramAnonymousdl.fyY.retCode = -1;
+              paramAnonymousdl.fyX.callback.run();
               AppMethodBeat.o(71673);
               return;
             }
             Log.e("MicroMsg.SubCoreECard", "jsapi check fail");
-            paramAnonymousdg.dGn.retCode = -1;
-            paramAnonymousdg.dGm.callback.run();
+            paramAnonymousdl.fyY.retCode = -1;
+            paramAnonymousdl.fyX.callback.run();
             AppMethodBeat.o(71673);
           }
         });
-        g.aAi();
-        g.aAg().hqi.a((q)localObject1, 0);
+        com.tencent.mm.kernel.h.aHH();
+        com.tencent.mm.kernel.h.aHF().kcd.a((q)localObject1, 0);
         AppMethodBeat.o(71674);
         return false;
       }
     };
-    this.Ipf = new IListener() {};
+    this.PhN = new IListener() {};
     AppMethodBeat.o(71678);
   }
   
@@ -114,16 +114,16 @@ public class a
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(71679);
-    this.Ipe.alive();
-    this.Ipf.alive();
+    this.PhM.alive();
+    this.PhN.alive();
     AppMethodBeat.o(71679);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(71680);
-    this.Ipe.dead();
-    this.Ipf.dead();
+    this.PhM.dead();
+    this.PhN.dead();
     AppMethodBeat.o(71680);
   }
   
@@ -132,36 +132,36 @@ public class a
   final class a
     implements d.a
   {
-    private dg Ipl;
+    private dl PhT;
     
-    public a(dg paramdg)
+    public a(dl paramdl)
     {
-      this.Ipl = paramdg;
+      this.PhT = paramdl;
     }
     
-    public final Intent q(int paramInt, Bundle paramBundle)
+    public final Intent s(int paramInt, Bundle paramBundle)
     {
       AppMethodBeat.i(71677);
       Log.i("MicroMsg.SubCoreECard", "open process end: %s", new Object[] { Integer.valueOf(paramInt) });
       if (paramInt == -1)
       {
-        this.Ipl.dGn.retCode = 0;
-        h.CyF.a(14954, new Object[] { e.gsR(), "openEcard:ok" });
+        this.PhT.fyY.retCode = 0;
+        com.tencent.mm.plugin.report.service.h.IzE.a(14954, new Object[] { e.hoe(), "openEcard:ok" });
       }
       for (;;)
       {
-        this.Ipl.dGm.callback.run();
-        if (!e.gsQ()) {
-          e.gsS();
+        this.PhT.fyX.callback.run();
+        if (!e.hod()) {
+          e.hof();
         }
         a.a(a.this, null);
         Intent localIntent = new Intent();
         localIntent.putExtras(paramBundle);
         AppMethodBeat.o(71677);
         return localIntent;
-        this.Ipl.dGn.retCode = -1;
-        if (!e.gsQ()) {
-          h.CyF.a(14954, new Object[] { e.gsR(), "openEcard:fail" });
+        this.PhT.fyY.retCode = -1;
+        if (!e.hod()) {
+          com.tencent.mm.plugin.report.service.h.IzE.a(14954, new Object[] { e.hoe(), "openEcard:fail" });
         }
       }
     }

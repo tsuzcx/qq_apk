@@ -1,53 +1,55 @@
 package com.tencent.mm.plugin.finder.ui;
 
 import android.app.Activity;
-import android.arch.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import com.tencent.e.f.h;
+import androidx.fragment.app.FragmentActivity;
+import com.tencent.d.f.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.viewmodel.FinderGlobalLocationVM;
+import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.b.m;
+import com.tencent.mm.plugin.finder.viewmodel.a;
 import com.tencent.mm.plugin.finder.widget.pref.FinderLocationPreference;
-import com.tencent.mm.protocal.protobuf.bme;
+import com.tencent.mm.protocal.protobuf.btn;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
-import com.tencent.mm.ui.component.a;
-import com.tencent.mm.ui.t.b;
+import com.tencent.mm.ui.component.g;
+import com.tencent.mm.ui.component.g.a;
+import com.tencent.mm.ui.w.b;
 import java.util.HashMap;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderSelectDistrictUI;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "()V", "TAG", "", "currentDistrictPref", "Lcom/tencent/mm/plugin/finder/widget/pref/FinderLocationPreference;", "currentLocationPref", "selectCityCode", "selectCountryCode", "selectProvinceCode", "complete", "", "getResourceId", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onPreferenceTreeClick", "", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderSelectDistrictUI;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "()V", "TAG", "", "currentDistrictPref", "Lcom/tencent/mm/plugin/finder/widget/pref/FinderLocationPreference;", "currentLocationPref", "selectCityCode", "selectCountryCode", "selectProvinceCode", "complete", "", "getResourceId", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onPreferenceTreeClick", "", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "plugin-finder_release"})
 public class FinderSelectDistrictUI
   extends MMPreference
 {
+  private String AuC = "";
+  private String AuD = "";
+  private String AuE = "";
+  private FinderLocationPreference AuF;
+  private FinderLocationPreference AuG;
   private final String TAG = "Finder.FinderSelectDistrictUI";
   private HashMap _$_findViewCache;
-  private String vNK = "";
-  private String vNL = "";
-  private String vNM = "";
-  private FinderLocationPreference vNN;
-  private FinderLocationPreference vNO;
   
   public void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(252651);
+    AppMethodBeat.i(288847);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(252651);
+    AppMethodBeat.o(288847);
   }
   
   public View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(252650);
+    AppMethodBeat.i(288846);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -58,123 +60,123 @@ public class FinderSelectDistrictUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(252650);
+    AppMethodBeat.o(288846);
     return localView1;
   }
   
   public int getResourceId()
   {
-    return 2132017218;
+    return b.m.finder_location_pref;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(178436);
     super.onCreate(paramBundle);
-    setMMTitle(2131760530);
+    setMMTitle(b.j.finder_select_district_title);
     paramBundle = getIntent().getStringExtra("SelectedCountryCode");
-    p.g(paramBundle, "intent.getStringExtra(Co…tUI.KSelectedCountryCode)");
-    this.vNK = paramBundle;
+    p.j(paramBundle, "intent.getStringExtra(Co…tUI.KSelectedCountryCode)");
+    this.AuC = paramBundle;
     paramBundle = getIntent().getStringExtra("SelectedProvinceCode");
-    p.g(paramBundle, "intent.getStringExtra(Co…UI.KSelectedProvinceCode)");
-    this.vNL = paramBundle;
+    p.j(paramBundle, "intent.getStringExtra(Co…UI.KSelectedProvinceCode)");
+    this.AuD = paramBundle;
     paramBundle = getIntent().getStringExtra("SelectedCityCode");
-    p.g(paramBundle, "intent.getStringExtra(Co…rictUI.KSelectedCityCode)");
-    this.vNM = paramBundle;
-    paramBundle = getPreferenceScreen().bmg("select_current_district");
+    p.j(paramBundle, "intent.getStringExtra(Co…rictUI.KSelectedCityCode)");
+    this.AuE = paramBundle;
+    paramBundle = getPreferenceScreen().byG("select_current_district");
     if (paramBundle == null)
     {
       paramBundle = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.widget.pref.FinderLocationPreference");
       AppMethodBeat.o(178436);
       throw paramBundle;
     }
-    this.vNN = ((FinderLocationPreference)paramBundle);
-    paramBundle = this.vNN;
+    this.AuF = ((FinderLocationPreference)paramBundle);
+    paramBundle = this.AuF;
     if (paramBundle == null) {
-      p.btv("currentDistrictPref");
+      p.bGy("currentDistrictPref");
     }
-    paramBundle.wDH = false;
-    paramBundle = this.vNN;
+    paramBundle.Bup = false;
+    paramBundle = this.AuF;
     if (paramBundle == null) {
-      p.btv("currentDistrictPref");
+      p.bGy("currentDistrictPref");
     }
-    paramBundle.uOQ = true;
-    paramBundle = this.vNN;
+    paramBundle.xUg = true;
+    paramBundle = this.AuF;
     if (paramBundle == null) {
-      p.btv("currentDistrictPref");
+      p.bGy("currentDistrictPref");
     }
-    paramBundle.setCountryCode(this.vNK);
-    paramBundle = this.vNN;
+    paramBundle.setCountryCode(this.AuC);
+    paramBundle = this.AuF;
     if (paramBundle == null) {
-      p.btv("currentDistrictPref");
+      p.bGy("currentDistrictPref");
     }
-    paramBundle.awY(this.vNL);
-    paramBundle = this.vNN;
+    paramBundle.aGJ(this.AuD);
+    paramBundle = this.AuF;
     if (paramBundle == null) {
-      p.btv("currentDistrictPref");
+      p.bGy("currentDistrictPref");
     }
-    paramBundle.awZ(this.vNM);
-    paramBundle = this.vNN;
+    paramBundle.aGK(this.AuE);
+    paramBundle = this.AuF;
     if (paramBundle == null) {
-      p.btv("currentDistrictPref");
+      p.bGy("currentDistrictPref");
     }
     paramBundle.updateTitle();
-    paramBundle = getPreferenceScreen().bmg("select_current_location");
+    paramBundle = getPreferenceScreen().byG("select_current_location");
     if (paramBundle == null)
     {
       paramBundle = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.widget.pref.FinderLocationPreference");
       AppMethodBeat.o(178436);
       throw paramBundle;
     }
-    this.vNO = ((FinderLocationPreference)paramBundle);
-    paramBundle = a.PRN;
-    paramBundle = ((FinderGlobalLocationVM)a.bi(PluginFinder.class).get(FinderGlobalLocationVM.class)).wtO;
+    this.AuG = ((FinderLocationPreference)paramBundle);
+    paramBundle = g.Xox;
+    paramBundle = ((a)g.bD(PluginFinder.class).i(a.class)).Bgf;
     if (paramBundle != null)
     {
-      FinderLocationPreference localFinderLocationPreference = this.vNO;
+      FinderLocationPreference localFinderLocationPreference = this.AuG;
       if (localFinderLocationPreference == null) {
-        p.btv("currentLocationPref");
+        p.bGy("currentLocationPref");
       }
-      localFinderLocationPreference.wDH = true;
-      localFinderLocationPreference = this.vNO;
+      localFinderLocationPreference.Bup = true;
+      localFinderLocationPreference = this.AuG;
       if (localFinderLocationPreference == null) {
-        p.btv("currentLocationPref");
+        p.bGy("currentLocationPref");
       }
-      String str = paramBundle.keh;
-      p.g(str, "it.Country");
+      String str = paramBundle.mVH;
+      p.j(str, "it.Country");
       localFinderLocationPreference.setCountryCode(str);
-      localFinderLocationPreference = this.vNO;
+      localFinderLocationPreference = this.AuG;
       if (localFinderLocationPreference == null) {
-        p.btv("currentLocationPref");
+        p.bGy("currentLocationPref");
       }
-      str = paramBundle.kdZ;
-      p.g(str, "it.Province");
-      localFinderLocationPreference.awY(str);
-      localFinderLocationPreference = this.vNO;
+      str = paramBundle.mVz;
+      p.j(str, "it.Province");
+      localFinderLocationPreference.aGJ(str);
+      localFinderLocationPreference = this.AuG;
       if (localFinderLocationPreference == null) {
-        p.btv("currentLocationPref");
+        p.bGy("currentLocationPref");
       }
-      paramBundle = paramBundle.kea;
-      p.g(paramBundle, "it.City");
-      localFinderLocationPreference.awZ(paramBundle);
-      paramBundle = this.vNO;
+      paramBundle = paramBundle.mVA;
+      p.j(paramBundle, "it.City");
+      localFinderLocationPreference.aGK(paramBundle);
+      paramBundle = this.AuG;
       if (paramBundle == null) {
-        p.btv("currentLocationPref");
+        p.bGy("currentLocationPref");
       }
       paramBundle.updateTitle();
     }
     for (;;)
     {
       getPreferenceScreen().notifyDataSetChanged();
-      addTextOptionMenu(0, getString(2131755858), (MenuItem.OnMenuItemClickListener)new a(this), null, t.b.OGU);
+      addTextOptionMenu(0, getString(b.j.app_finish), (MenuItem.OnMenuItemClickListener)new a(this), null, w.b.Wao);
       setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
-      new StringBuilder("init location ").append(this.vNK).append(' ').append(this.vNL).append(' ').append(this.vNM);
-      h.hkS();
+      new StringBuilder("init location ").append(this.AuC).append(' ').append(this.AuD).append(' ').append(this.AuE);
+      h.ioq();
       AppMethodBeat.o(178436);
       return;
       paramBundle = (FinderSelectDistrictUI)this;
-      paramBundle.getPreferenceScreen().jdMethod_do("select_current_location_title", true);
-      paramBundle.getPreferenceScreen().jdMethod_do("select_current_location", true);
+      paramBundle.getPreferenceScreen().dz("select_current_location_title", true);
+      paramBundle.getPreferenceScreen().dz("select_current_location", true);
     }
   }
   
@@ -203,61 +205,61 @@ public class FinderSelectDistrictUI
       case -2021587849: 
         if (paramPreference.equals("select_current_district"))
         {
-          paramPreference = this.vNN;
+          paramPreference = this.AuF;
           if (paramPreference == null) {
-            p.btv("currentDistrictPref");
+            p.bGy("currentDistrictPref");
           }
-          paramPreference.uOQ = true;
-          paramPreference = this.vNO;
+          paramPreference.xUg = true;
+          paramPreference = this.AuG;
           if (paramPreference == null) {
-            p.btv("currentLocationPref");
+            p.bGy("currentLocationPref");
           }
-          paramPreference.uOQ = false;
-          paramPreference = this.vNN;
+          paramPreference.xUg = false;
+          paramPreference = this.AuF;
           if (paramPreference == null) {
-            p.btv("currentDistrictPref");
+            p.bGy("currentDistrictPref");
           }
-          this.vNK = paramPreference.countryCode;
-          paramPreference = this.vNN;
+          this.AuC = paramPreference.countryCode;
+          paramPreference = this.AuF;
           if (paramPreference == null) {
-            p.btv("currentDistrictPref");
+            p.bGy("currentDistrictPref");
           }
-          this.vNL = paramPreference.provinceCode;
-          paramPreference = this.vNN;
+          this.AuD = paramPreference.provinceCode;
+          paramPreference = this.AuF;
           if (paramPreference == null) {
-            p.btv("currentDistrictPref");
+            p.bGy("currentDistrictPref");
           }
-          this.vNM = paramPreference.cityCode;
+          this.AuE = paramPreference.cityCode;
         }
         break;
       case -409505634: 
         if (paramPreference.equals("select_current_location"))
         {
-          paramPreference = this.vNN;
+          paramPreference = this.AuF;
           if (paramPreference == null) {
-            p.btv("currentDistrictPref");
+            p.bGy("currentDistrictPref");
           }
-          paramPreference.uOQ = false;
-          paramPreference = this.vNO;
+          paramPreference.xUg = false;
+          paramPreference = this.AuG;
           if (paramPreference == null) {
-            p.btv("currentLocationPref");
+            p.bGy("currentLocationPref");
           }
-          paramPreference.uOQ = true;
-          paramPreference = this.vNO;
+          paramPreference.xUg = true;
+          paramPreference = this.AuG;
           if (paramPreference == null) {
-            p.btv("currentLocationPref");
+            p.bGy("currentLocationPref");
           }
-          this.vNK = paramPreference.countryCode;
-          paramPreference = this.vNO;
+          this.AuC = paramPreference.countryCode;
+          paramPreference = this.AuG;
           if (paramPreference == null) {
-            p.btv("currentLocationPref");
+            p.bGy("currentLocationPref");
           }
-          this.vNL = paramPreference.provinceCode;
-          paramPreference = this.vNO;
+          this.AuD = paramPreference.provinceCode;
+          paramPreference = this.AuG;
           if (paramPreference == null) {
-            p.btv("currentLocationPref");
+            p.bGy("currentLocationPref");
           }
-          this.vNM = paramPreference.cityCode;
+          this.AuE = paramPreference.cityCode;
         }
         break;
       }
@@ -270,7 +272,7 @@ public class FinderSelectDistrictUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class a
     implements MenuItem.OnMenuItemClickListener
   {
@@ -279,13 +281,13 @@ public class FinderSelectDistrictUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(178434);
-      FinderSelectDistrictUI.a(this.vNP);
+      FinderSelectDistrictUI.a(this.AuH);
       AppMethodBeat.o(178434);
       return true;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class b
     implements MenuItem.OnMenuItemClickListener
   {
@@ -294,7 +296,7 @@ public class FinderSelectDistrictUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(178435);
-      this.vNP.finish();
+      this.AuH.finish();
       AppMethodBeat.o(178435);
       return true;
     }
@@ -302,7 +304,7 @@ public class FinderSelectDistrictUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderSelectDistrictUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,28 @@
 package com.tencent.mm.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cv;
-import com.tencent.mm.protocal.protobuf.de;
-import com.tencent.mm.protocal.protobuf.rx;
+import com.tencent.mm.f.c.cy;
+import com.tencent.mm.protocal.protobuf.db;
+import com.tencent.mm.protocal.protobuf.dd;
+import com.tencent.mm.protocal.protobuf.rq;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
+import java.util.LinkedList;
 import java.util.Map;
 
 public final class i
-  extends cv
+  extends cy
 {
   public static IAutoDBItem.MAutoDBInfo info;
+  private LinkedList<db> fav = null;
   
   static
   {
     AppMethodBeat.i(114786);
     IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[21];
-    localMAutoDBInfo.columns = new String[22];
+    localMAutoDBInfo.fields = new Field[22];
+    localMAutoDBInfo.columns = new String[23];
     StringBuilder localStringBuilder = new StringBuilder();
     localMAutoDBInfo.columns[0] = "cgi";
     localMAutoDBInfo.colsMap.put("cgi", "TEXT");
@@ -105,95 +108,113 @@ public final class i
     localMAutoDBInfo.columns[20] = "opCode";
     localMAutoDBInfo.colsMap.put("opCode", "INTEGER default '-1' ");
     localStringBuilder.append(" opCode INTEGER default '-1' ");
-    localMAutoDBInfo.columns[21] = "rowid";
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[21] = "addMsgs";
+    localMAutoDBInfo.colsMap.put("addMsgs", "BLOB");
+    localStringBuilder.append(" addMsgs BLOB");
+    localMAutoDBInfo.columns[22] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
     info = localMAutoDBInfo;
     AppMethodBeat.o(114786);
   }
   
-  public final int Vj()
+  public final int ZB()
   {
     return this.field_opCode;
   }
   
-  public final String Vk()
+  public final LinkedList<db> ZC()
+  {
+    AppMethodBeat.i(225684);
+    if (this.field_addMsgs == null)
+    {
+      localLinkedList = new LinkedList();
+      AppMethodBeat.o(225684);
+      return localLinkedList;
+    }
+    LinkedList localLinkedList = this.field_addMsgs.RIP;
+    AppMethodBeat.o(225684);
+    return localLinkedList;
+  }
+  
+  public final String ZD()
   {
     return this.field_functionmsgid;
   }
   
-  public final long Vl()
+  public final long ZE()
   {
     return this.field_preVersion;
   }
   
-  public final String Vm()
+  public final String ZF()
   {
     return this.field_custombuff;
   }
   
-  public final de Vn()
+  public final db ZG()
   {
     return this.field_addMsg;
   }
   
-  public final rx Vo()
+  public final rq ZH()
   {
     return this.field_businessInfo;
   }
   
-  public final long Vp()
+  public final long ZI()
   {
     return this.field_delayTime;
   }
   
-  public final long Vq()
+  public final long ZJ()
   {
     return this.field_actionTime;
   }
   
-  public final void Vr()
+  public final void ZK()
   {
     this.field_status = -1;
   }
   
-  public final void Vs()
+  public final void ZL()
   {
     this.field_retryCount = 0;
   }
   
-  public final void a(de paramde)
+  public final void a(db paramdb)
   {
-    if (paramde != null) {
-      this.field_addMsg = paramde;
+    if (paramdb != null) {
+      this.field_addMsg = paramdb;
     }
   }
   
-  public final void a(rx paramrx)
+  public final void a(rq paramrq)
   {
-    this.field_businessInfo = paramrx;
+    this.field_businessInfo = paramrq;
   }
   
-  public final void bo(long paramLong)
+  public final void bB(long paramLong)
   {
     this.field_version = paramLong;
   }
   
-  public final void bp(long paramLong)
+  public final void bC(long paramLong)
   {
     this.field_preVersion = paramLong;
   }
   
-  public final void bq(long paramLong)
+  public final void bD(long paramLong)
   {
     this.field_delayTime = paramLong;
   }
   
-  public final void br(long paramLong)
+  public final void bE(long paramLong)
   {
     this.field_actionTime = paramLong;
   }
   
-  public final void cI(boolean paramBoolean)
+  public final void de(boolean paramBoolean)
   {
     this.field_needShow = paramBoolean;
   }
@@ -216,40 +237,6 @@ public final class i
     return false;
   }
   
-  public final void fA(String paramString)
-  {
-    if (paramString != null) {
-      this.field_defaultContent = paramString;
-    }
-  }
-  
-  public final void fx(String paramString)
-  {
-    AppMethodBeat.i(114780);
-    if (!Util.isNullOrNil(paramString)) {
-      this.field_cgi = paramString;
-    }
-    AppMethodBeat.o(114780);
-  }
-  
-  public final void fy(String paramString)
-  {
-    AppMethodBeat.i(114781);
-    if (!Util.isNullOrNil(paramString)) {
-      this.field_functionmsgid = paramString;
-    }
-    AppMethodBeat.o(114781);
-  }
-  
-  public final void fz(String paramString)
-  {
-    AppMethodBeat.i(114782);
-    if (!Util.isNullOrNil(paramString)) {
-      this.field_custombuff = paramString;
-    }
-    AppMethodBeat.o(114782);
-  }
-  
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
@@ -265,6 +252,40 @@ public final class i
     return this.field_version;
   }
   
+  public final void gi(String paramString)
+  {
+    AppMethodBeat.i(114780);
+    if (!Util.isNullOrNil(paramString)) {
+      this.field_cgi = paramString;
+    }
+    AppMethodBeat.o(114780);
+  }
+  
+  public final void gj(String paramString)
+  {
+    AppMethodBeat.i(114781);
+    if (!Util.isNullOrNil(paramString)) {
+      this.field_functionmsgid = paramString;
+    }
+    AppMethodBeat.o(114781);
+  }
+  
+  public final void gk(String paramString)
+  {
+    AppMethodBeat.i(114782);
+    if (!Util.isNullOrNil(paramString)) {
+      this.field_custombuff = paramString;
+    }
+    AppMethodBeat.o(114782);
+  }
+  
+  public final void gl(String paramString)
+  {
+    if (paramString != null) {
+      this.field_defaultContent = paramString;
+    }
+  }
+  
   public final int hashCode()
   {
     AppMethodBeat.i(114783);
@@ -273,32 +294,32 @@ public final class i
     return i;
   }
   
-  public final void iG(int paramInt)
+  public final void jS(int paramInt)
   {
     this.field_opCode = paramInt;
   }
   
-  public final void iH(int paramInt)
+  public final void jT(int paramInt)
   {
     this.field_reportid = paramInt;
   }
   
-  public final void iI(int paramInt)
+  public final void jU(int paramInt)
   {
     this.field_successkey = paramInt;
   }
   
-  public final void iJ(int paramInt)
+  public final void jV(int paramInt)
   {
     this.field_failkey = paramInt;
   }
   
-  public final void iK(int paramInt)
+  public final void jW(int paramInt)
   {
     this.field_finalfailkey = paramInt;
   }
   
-  public final void iL(int paramInt)
+  public final void jX(int paramInt)
   {
     this.field_retryCountLimit = paramInt;
   }
@@ -333,7 +354,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.api.i
  * JD-Core Version:    0.7.0.1
  */

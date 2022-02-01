@@ -17,21 +17,21 @@ final class a$4
   {
     AppMethodBeat.i(66795);
     Object localObject = new b();
-    ((b)localObject).bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/order/ui/preference/DefaultOrderPrefFactory$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
-    if (this.AQs.AQq != null)
+    ((b)localObject).bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/order/ui/preference/DefaultOrderPrefFactory$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+    if (this.GJD.GJB != null)
     {
-      localObject = this.AQs;
+      localObject = this.GJD;
       Bitmap localBitmap = this.val$bmp;
-      String str = this.ANT.AOi;
-      if (((a)localObject).AQq != null)
+      String str = this.GHh.GHw;
+      if (((a)localObject).GJB != null)
       {
-        ((a)localObject).AQq.nC(str, str);
-        ((a)localObject).AQq.AKT = localBitmap;
-        ((a)localObject).AQq.AKU = localBitmap;
-        ((a)localObject).AQq.hhQ();
+        ((a)localObject).GJB.ox(str, str);
+        ((a)localObject).GJB.GEe = localBitmap;
+        ((a)localObject).GJB.GEf = localBitmap;
+        ((a)localObject).GJB.ijr();
       }
-      this.AQs.AQq.aa(paramView, true);
+      this.GJD.GJB.ae(paramView, true);
     }
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/order/ui/preference/DefaultOrderPrefFactory$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(66795);
@@ -39,7 +39,7 @@ final class a$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.a.a.4
  * JD-Core Version:    0.7.0.1
  */

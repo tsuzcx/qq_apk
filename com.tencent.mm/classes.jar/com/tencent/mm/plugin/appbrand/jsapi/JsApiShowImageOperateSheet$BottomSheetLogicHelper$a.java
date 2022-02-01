@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.type.IPCInteger;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 
 final class JsApiShowImageOperateSheet$BottomSheetLogicHelper$a
-  implements b<IPCString, IPCInteger>
+  implements d<IPCString, IPCInteger>
 {}
 
 

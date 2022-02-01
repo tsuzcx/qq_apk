@@ -4,24 +4,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/params/SessionPagePathMatch;", "", "()V", "Companion", "plugin-expt_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/params/SessionPagePathMatch;", "", "()V", "Companion", "plugin-expt_release"})
 public final class e
 {
-  public static final a sIP;
+  public static final a woM;
   
   static
   {
-    AppMethodBeat.i(221137);
-    sIP = new a((byte)0);
-    AppMethodBeat.o(221137);
+    AppMethodBeat.i(252584);
+    woM = new a((byte)0);
+    AppMethodBeat.o(252584);
   }
   
-  public static final String aqU(String paramString)
+  public static final String ayV(String paramString)
   {
-    AppMethodBeat.i(221138);
+    AppMethodBeat.i(252586);
     if (paramString == null)
     {
-      AppMethodBeat.o(221138);
+      AppMethodBeat.o(252586);
       return null;
     }
     String str1 = "";
@@ -37,16 +37,16 @@ public final class e
       else if (paramString.charAt(i + 1) != '^')
       {
         String str2 = paramString.substring(i + 1, i + 3);
-        p.g(str2, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-        int k = a.dq(str2, 2);
+        p.j(str2, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+        int k = a.dL(str2, 2);
         c = paramString.charAt(i + 3);
-        int j = a.dq(String.valueOf(c) + "", 1) + 5;
+        int j = a.dL(String.valueOf(c) + "", 1) + 5;
         if (str1 == null) {
-          p.hyc();
+          p.iCn();
         }
         k = str1.length() - k - j;
         str2 = str1.substring(k, j + k);
-        p.g(str2, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+        p.j(str2, "(this as java.lang.Strin…ing(startIndex, endIndex)");
         str1 = str1 + str2;
         i += 4;
       }
@@ -56,16 +56,16 @@ public final class e
         i += 2;
       }
     }
-    AppMethodBeat.o(221138);
+    AppMethodBeat.o(252586);
     return str1;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/params/SessionPagePathMatch$Companion;", "", "()V", "LZ77_DECODE_CHAR", "", "LZ77_DECODE_INT_BASE", "", "LZ77_DECODE_INT_CEIL_CODE", "LZ77_DECODE_INT_FLOOR_CODE", "LZ77_DECODE_MIN_STRING_LEN", "PARAM_TYPE_PAGE", "PARAM_TYPE_VIEW", "decodeJson", "", "json", "decodeReferenceInt", "data", "width", "decodeReferenceLength", "decompressJson", "getPagesInPathConfig", "", "Lcom/tencent/mm/protocal/protobuf/SessionPage;", "curPageName", "pathConfig", "Lcom/tencent/mm/protocal/protobuf/SessionPagePath;", "plugin-expt_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/params/SessionPagePathMatch$Companion;", "", "()V", "LZ77_DECODE_CHAR", "", "LZ77_DECODE_INT_BASE", "", "LZ77_DECODE_INT_CEIL_CODE", "LZ77_DECODE_INT_FLOOR_CODE", "LZ77_DECODE_MIN_STRING_LEN", "PARAM_TYPE_PAGE", "PARAM_TYPE_VIEW", "decodeJson", "", "json", "decodeReferenceInt", "data", "width", "decodeReferenceLength", "decompressJson", "getPagesInPathConfig", "", "Lcom/tencent/mm/protocal/protobuf/SessionPage;", "curPageName", "pathConfig", "Lcom/tencent/mm/protocal/protobuf/SessionPagePath;", "plugin-expt_release"})
   public static final class a
   {
-    static int dq(String paramString, int paramInt)
+    static int dL(String paramString, int paramInt)
     {
-      AppMethodBeat.i(221136);
+      AppMethodBeat.i(258153);
       int j = 0;
       int i = 0;
       for (;;)
@@ -84,7 +84,7 @@ public final class e
         label47:
         do
         {
-          AppMethodBeat.o(221136);
+          AppMethodBeat.o(258153);
           return k;
           k = i;
         } while (95 < m);

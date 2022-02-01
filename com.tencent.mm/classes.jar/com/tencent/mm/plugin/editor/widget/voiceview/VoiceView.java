@@ -14,14 +14,18 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.k;
+import com.tencent.mm.an.k;
 import com.tencent.mm.compatible.util.e;
+import com.tencent.mm.plugin.editor.d.e;
+import com.tencent.mm.plugin.editor.d.f;
+import com.tencent.mm.plugin.editor.d.g;
+import com.tencent.mm.plugin.editor.d.h;
 import com.tencent.mm.plugin.fav.ui.m;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMEntryLock;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.u;
+import com.tencent.mm.ui.base.w;
 import java.util.Iterator;
 import java.util.List;
 
@@ -29,17 +33,17 @@ public class VoiceView
   extends FrameLayout
   implements a.a
 {
-  public int dLt;
   public int duration;
+  public int fEi;
   public View maskView;
   public String path;
-  private TextView qPt;
-  private ViewGroup qUs;
-  TextView qUt;
-  private ImageButton qUu;
-  private TextView qUv;
-  public a qUw;
-  public a qUx;
+  private TextView urz;
+  private ImageButton uwA;
+  private TextView uwB;
+  public a uwC;
+  public a uwD;
+  private ViewGroup uwy;
+  TextView uwz;
   
   public VoiceView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -59,34 +63,34 @@ public class VoiceView
     AppMethodBeat.o(182023);
   }
   
-  private void cEG()
+  private void cTm()
   {
     AppMethodBeat.i(182029);
-    this.qUx.stop();
-    this.qUt.setKeepScreenOn(false);
+    this.uwD.stop();
+    this.uwz.setKeepScreenOn(false);
     AppMethodBeat.o(182029);
   }
   
   private void init(Context paramContext)
   {
     AppMethodBeat.i(182024);
-    LayoutInflater.from(paramContext).inflate(2131493899, this, true);
+    LayoutInflater.from(paramContext).inflate(d.f.upU, this, true);
     AppMethodBeat.o(182024);
   }
   
-  public final void alV(String paramString)
+  public final void atP(String paramString)
   {
     AppMethodBeat.i(182025);
     if (!this.path.equals(paramString)) {
-      cEG();
+      cTm();
     }
     AppMethodBeat.o(182025);
   }
   
-  public final void cEB()
+  public final void cTh()
   {
     AppMethodBeat.i(182026);
-    cEG();
+    cTm();
     AppMethodBeat.o(182026);
   }
   
@@ -94,14 +98,14 @@ public class VoiceView
   {
     AppMethodBeat.i(182027);
     super.onConfigurationChanged(paramConfiguration);
-    Log.i("MicroMsg.NoteVoiceView", "on configuration changed, is paused ? %B", new Object[] { Boolean.valueOf(this.qUx.isPaused) });
-    if (this.qUx.isPaused) {
-      this.qUx.postDelayed(new Runnable()
+    Log.i("MicroMsg.NoteVoiceView", "on configuration changed, is paused ? %B", new Object[] { Boolean.valueOf(this.uwD.isPaused) });
+    if (this.uwD.isPaused) {
+      this.uwD.postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(182015);
-          VoiceView.g(VoiceView.this).aED();
+          VoiceView.g(VoiceView.this).aMU();
           AppMethodBeat.o(182015);
         }
       }, 128L);
@@ -113,30 +117,30 @@ public class VoiceView
   {
     AppMethodBeat.i(182028);
     super.onFinishInflate();
-    this.qUs = ((ViewGroup)findViewById(2131309967));
-    this.qPt = ((TextView)findViewById(2131309965));
-    this.qUv = ((TextView)findViewById(2131309968));
-    this.qUt = ((TextView)findViewById(2131309966));
-    this.qUu = ((ImageButton)findViewById(2131309964));
-    this.maskView = findViewById(2131310007);
-    this.qUx = new a((byte)0);
-    this.qUu.setOnClickListener(new View.OnClickListener()
+    this.uwy = ((ViewGroup)findViewById(d.e.voice_player_progress_bg));
+    this.urz = ((TextView)findViewById(d.e.voice_player_length));
+    this.uwB = ((TextView)findViewById(d.e.voice_player_total_length));
+    this.uwz = ((TextView)findViewById(d.e.voice_player_progress));
+    this.uwA = ((ImageButton)findViewById(d.e.voice_player_btn));
+    this.maskView = findViewById(d.e.eas);
+    this.uwD = new a((byte)0);
+    this.uwA.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(182016);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/editor/widget/voiceview/VoiceView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-        if ((com.tencent.mm.q.a.cC(paramAnonymousView.getContext())) || (com.tencent.mm.q.a.cA(paramAnonymousView.getContext())) || (com.tencent.mm.q.a.cE(paramAnonymousView.getContext())))
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/editor/widget/voiceview/VoiceView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+        if ((com.tencent.mm.q.a.cy(paramAnonymousView.getContext())) || (com.tencent.mm.q.a.cw(paramAnonymousView.getContext())) || (com.tencent.mm.q.a.cB(paramAnonymousView.getContext())))
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/editor/widget/voiceview/VoiceView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(182016);
           return;
         }
-        if ((!e.apn()) && (!Util.isNullOrNil(VoiceView.h(VoiceView.this))))
+        if ((!e.avA()) && (!Util.isNullOrNil(VoiceView.h(VoiceView.this))))
         {
-          u.g(paramAnonymousView.getContext(), null);
+          w.g(paramAnonymousView.getContext(), null);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/editor/widget/voiceview/VoiceView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(182016);
           return;
@@ -148,26 +152,26 @@ public class VoiceView
           AppMethodBeat.o(182016);
           return;
         }
-        if (VoiceView.i(VoiceView.this).cEF())
+        if (VoiceView.i(VoiceView.this).cTl())
         {
           paramAnonymousView = VoiceView.this;
           Log.i("MicroMsg.NoteVoiceView", "pause play");
-          localObject = paramAnonymousView.qUw;
+          localObject = paramAnonymousView.uwC;
           Log.i("MicroMsg.RecordVoiceHelper", "pause play");
           MMEntryLock.unlock("keep_app_silent");
-          if (((a)localObject).qUl == null) {
+          if (((a)localObject).uwr == null) {
             Log.w("MicroMsg.RecordVoiceHelper", "pause play error, player is null");
           }
           for (;;)
           {
-            localObject = paramAnonymousView.qUx;
+            localObject = paramAnonymousView.uwD;
             ((VoiceView.a)localObject).isPaused = true;
             ((VoiceView.a)localObject).removeMessages(4096);
-            VoiceView.c(((VoiceView.a)localObject).qUy).setImageResource(2131691719);
-            VoiceView.c(((VoiceView.a)localObject).qUy).setContentDescription(((VoiceView.a)localObject).qUy.getContext().getResources().getString(2131755942));
-            paramAnonymousView.qUt.setKeepScreenOn(false);
+            VoiceView.c(((VoiceView.a)localObject).uwE).setImageResource(d.g.voicepost_beginicon);
+            VoiceView.c(((VoiceView.a)localObject).uwE).setContentDescription(((VoiceView.a)localObject).uwE.getContext().getResources().getString(d.h.app_play));
+            paramAnonymousView.uwz.setKeepScreenOn(false);
             break;
-            if (((a)localObject).qUl.pause())
+            if (((a)localObject).uwr.pause())
             {
               localObject = ((a)localObject).callbacks.iterator();
               while (((Iterator)localObject).hasNext()) {
@@ -178,11 +182,11 @@ public class VoiceView
         }
         paramAnonymousView = VoiceView.this;
         Log.i("MicroMsg.NoteVoiceView", "resume play");
-        localObject = paramAnonymousView.qUw;
+        localObject = paramAnonymousView.uwC;
         Log.i("MicroMsg.RecordVoiceHelper", "resume play");
         MMEntryLock.lock("keep_app_silent");
         int i;
-        if (((a)localObject).qUl == null)
+        if (((a)localObject).uwr == null)
         {
           Log.w("MicroMsg.RecordVoiceHelper", "resum play error, player is null");
           i = 0;
@@ -190,18 +194,18 @@ public class VoiceView
         boolean bool;
         do
         {
-          localObject = paramAnonymousView.qUx;
+          localObject = paramAnonymousView.uwD;
           ((VoiceView.a)localObject).isPaused = false;
           ((VoiceView.a)localObject).sendEmptyMessage(4096);
-          VoiceView.c(((VoiceView.a)localObject).qUy).setImageResource(2131691720);
-          VoiceView.c(((VoiceView.a)localObject).qUy).setContentDescription(((VoiceView.a)localObject).qUy.getContext().getResources().getString(2131755924));
-          paramAnonymousView.qUt.setKeepScreenOn(true);
+          VoiceView.c(((VoiceView.a)localObject).uwE).setImageResource(d.g.voicepost_pauseicon);
+          VoiceView.c(((VoiceView.a)localObject).uwE).setContentDescription(((VoiceView.a)localObject).uwE.getContext().getResources().getString(d.h.app_pause));
+          paramAnonymousView.uwz.setKeepScreenOn(true);
           if (i != 0) {
             break;
           }
           VoiceView.j(VoiceView.this);
           break;
-          bool = ((a)localObject).qUl.resume();
+          bool = ((a)localObject).uwr.resume();
           i = bool;
         } while (!bool);
         localObject = ((a)localObject).callbacks.iterator();
@@ -221,8 +225,8 @@ public class VoiceView
   public void setVoiceHelper(a parama)
   {
     AppMethodBeat.i(182030);
-    this.qUw = parama;
-    parama = this.qUw;
+    this.uwC = parama;
+    parama = this.uwC;
     Iterator localIterator = parama.callbacks.iterator();
     do
     {
@@ -241,46 +245,46 @@ public class VoiceView
   public final class a
     extends MMHandler
   {
-    int hiI;
     boolean isPaused;
-    float qUA;
-    int qUB;
-    float qUz;
+    int jUG;
+    float uwF;
+    float uwG;
+    int uwH;
     
     private a() {}
     
     @SuppressLint({"ResourceType"})
-    public final void FD(int paramInt)
+    public final void Jl(int paramInt)
     {
       AppMethodBeat.i(182017);
       this.isPaused = false;
-      this.qUz = com.tencent.mm.plugin.fav.a.b.DO(paramInt);
-      this.qUA = this.qUz;
-      this.qUB = com.tencent.mm.cb.a.fromDPToPix(VoiceView.this.getContext(), 0);
-      VoiceView.a(VoiceView.this).setText(m.J(VoiceView.this.getContext(), (int)(this.qUz - this.qUA)));
-      VoiceView.b(VoiceView.this).setText(m.J(VoiceView.this.getContext(), (int)this.qUz));
-      VoiceView.c(VoiceView.this).setImageResource(2131691719);
-      VoiceView.c(VoiceView.this).setContentDescription(VoiceView.this.getContext().getResources().getString(2131755942));
-      VoiceView.d(VoiceView.this).setWidth(this.qUB);
+      this.uwF = com.tencent.mm.plugin.fav.a.b.Kc(paramInt);
+      this.uwG = this.uwF;
+      this.uwH = com.tencent.mm.ci.a.fromDPToPix(VoiceView.this.getContext(), 0);
+      VoiceView.a(VoiceView.this).setText(m.N(VoiceView.this.getContext(), (int)(this.uwF - this.uwG)));
+      VoiceView.b(VoiceView.this).setText(m.N(VoiceView.this.getContext(), (int)this.uwF));
+      VoiceView.c(VoiceView.this).setImageResource(d.g.voicepost_beginicon);
+      VoiceView.c(VoiceView.this).setContentDescription(VoiceView.this.getContext().getResources().getString(d.h.app_play));
+      VoiceView.d(VoiceView.this).setWidth(this.uwH);
       AppMethodBeat.o(182017);
     }
     
-    public final void aED()
+    public final void aMU()
     {
       AppMethodBeat.i(182019);
-      this.hiI = ((int)((1.0F - this.qUA / this.qUz) * (VoiceView.f(VoiceView.this).getWidth() - this.qUB)) + this.qUB);
-      VoiceView.a(VoiceView.this).setText(m.J(VoiceView.this.getContext(), (int)(this.qUz - this.qUA)));
-      VoiceView.b(VoiceView.this).setText(m.J(VoiceView.this.getContext(), (int)this.qUz));
-      VoiceView.d(VoiceView.this).setWidth(this.hiI);
+      this.jUG = ((int)((1.0F - this.uwG / this.uwF) * (VoiceView.f(VoiceView.this).getWidth() - this.uwH)) + this.uwH);
+      VoiceView.a(VoiceView.this).setText(m.N(VoiceView.this.getContext(), (int)(this.uwF - this.uwG)));
+      VoiceView.b(VoiceView.this).setText(m.N(VoiceView.this.getContext(), (int)this.uwF));
+      VoiceView.d(VoiceView.this).setWidth(this.jUG);
       AppMethodBeat.o(182019);
     }
     
     public final void handleMessage(Message paramMessage)
     {
       AppMethodBeat.i(182021);
-      this.qUA = Math.max(0.0F, this.qUA - 0.256F);
-      aED();
-      if (this.qUA <= 0.1F)
+      this.uwG = Math.max(0.0F, this.uwG - 0.256F);
+      aMU();
+      if (this.uwG <= 0.1F)
       {
         AppMethodBeat.o(182021);
         return;
@@ -290,17 +294,17 @@ public class VoiceView
     }
     
     @SuppressLint({"ResourceType"})
-    public final void lp(boolean paramBoolean)
+    public final void mB(boolean paramBoolean)
     {
       AppMethodBeat.i(182020);
-      this.qUB = com.tencent.mm.cb.a.fromDPToPix(VoiceView.this.getContext(), 0);
-      VoiceView.c(VoiceView.this).setImageResource(2131691719);
-      VoiceView.c(VoiceView.this).setContentDescription(VoiceView.this.getContext().getResources().getString(2131755942));
-      aED();
+      this.uwH = com.tencent.mm.ci.a.fromDPToPix(VoiceView.this.getContext(), 0);
+      VoiceView.c(VoiceView.this).setImageResource(d.g.voicepost_beginicon);
+      VoiceView.c(VoiceView.this).setContentDescription(VoiceView.this.getContext().getResources().getString(d.h.app_play));
+      aMU();
       if (paramBoolean)
       {
-        VoiceView.c(VoiceView.this).setImageResource(2131691720);
-        VoiceView.c(VoiceView.this).setContentDescription(VoiceView.this.getContext().getResources().getString(2131755924));
+        VoiceView.c(VoiceView.this).setImageResource(d.g.voicepost_pauseicon);
+        VoiceView.c(VoiceView.this).setContentDescription(VoiceView.this.getContext().getResources().getString(d.h.app_pause));
         sendEmptyMessage(4096);
       }
       AppMethodBeat.o(182020);
@@ -311,14 +315,14 @@ public class VoiceView
       AppMethodBeat.i(182018);
       this.isPaused = false;
       removeMessages(4096);
-      FD(VoiceView.e(VoiceView.this));
+      Jl(VoiceView.e(VoiceView.this));
       AppMethodBeat.o(182018);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.widget.voiceview.VoiceView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,38 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import com.tencent.mm.plugin.finder.model.au;
+import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.feed.ac;
+import com.tencent.mm.view.recyclerview.e;
+import com.tencent.mm.view.recyclerview.i;
+import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/convert/FinderMsgCommentConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderMsgConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderMsgComment;", "scene", "", "(I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getScene", "()I", "convertMsg", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderMoreLikeDividerConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/feed/FinderMoreLikeDivider;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-finder_release"})
 public final class bf
-  extends bh<au>
+  extends e<ac>
 {
-  private final String TAG;
-  private final int scene;
-  
-  public bf(int paramInt)
+  public final void a(RecyclerView paramRecyclerView, i parami, int paramInt)
   {
-    super(2131494522, paramInt);
-    this.scene = paramInt;
-    this.TAG = "Finder.FinderMsgCommentConvert";
+    AppMethodBeat.i(238452);
+    p.k(paramRecyclerView, "recyclerView");
+    p.k(parami, "holder");
+    paramRecyclerView = (TextView)parami.RD(b.f.header_tip_tv);
+    if (paramRecyclerView != null)
+    {
+      paramRecyclerView.setText((CharSequence)"");
+      AppMethodBeat.o(238452);
+      return;
+    }
+    AppMethodBeat.o(238452);
+  }
+  
+  public final int getLayoutId()
+  {
+    return b.g.finder_feed_divider_layout;
   }
 }
 

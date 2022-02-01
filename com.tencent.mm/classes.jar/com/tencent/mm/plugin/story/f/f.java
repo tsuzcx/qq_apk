@@ -5,19 +5,19 @@ import com.tencent.mm.plugin.story.api.o;
 import com.tencent.mm.plugin.story.i.g;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/StoryAvatarLogic;", "", "()V", "Companion", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/model/StoryAvatarLogic;", "", "()V", "Companion", "plugin-story_release"})
 public final class f
 {
-  public static final a FlW;
+  public static final a LFY;
   
   static
   {
     AppMethodBeat.i(118653);
-    FlW = new a((byte)0);
+    LFY = new a((byte)0);
     AppMethodBeat.o(118653);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/StoryAvatarLogic$Companion;", "", "()V", "AVATAR_FLAG_DEFAULT", "", "AVATAR_FLAG_READ", "AVATAR_FLAG_UNREAD", "isStoryUnread", "", "userName", "", "plugin-story_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/model/StoryAvatarLogic$Companion;", "", "()V", "AVATAR_FLAG_DEFAULT", "", "AVATAR_FLAG_READ", "AVATAR_FLAG_UNREAD", "isStoryUnread", "", "userName", "", "plugin-story_release"})
   public static final class a
   {
     public static boolean isStoryUnread(String paramString)
@@ -33,9 +33,9 @@ public final class f
         AppMethodBeat.o(118652);
         return false;
       }
-      j.b localb = j.Fmy;
-      paramString = j.b.fod().aRS(paramString);
-      if ((paramString.isValid()) && (paramString.frA()))
+      j.b localb = j.LGA;
+      paramString = j.b.gcx().bcW(paramString);
+      if ((paramString.isValid()) && (paramString.gfW()))
       {
         AppMethodBeat.o(118652);
         return true;

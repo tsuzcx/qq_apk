@@ -1,10 +1,10 @@
 package com.tencent.mm.modelvoiceaddr;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.protocal.protobuf.esk;
+import com.tencent.mm.cd.b;
+import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.fcv;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Collection;
 import java.util.Iterator;
@@ -18,39 +18,39 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public final class h
 {
-  String jwL;
-  LinkedHashMap<String, a> jwM;
-  final ReadWriteLock jwN;
-  private StringBuilder jwO;
+  String mmo;
+  LinkedHashMap<String, a> mmp;
+  final ReadWriteLock mmq;
+  private StringBuilder mmr;
   
   public h(String paramString)
   {
     AppMethodBeat.i(148591);
-    this.jwN = new ReentrantReadWriteLock();
-    this.jwO = new StringBuilder();
-    this.jwM = new LinkedHashMap();
-    this.jwL = paramString;
+    this.mmq = new ReentrantReadWriteLock();
+    this.mmr = new StringBuilder();
+    this.mmp = new LinkedHashMap();
+    this.mmo = paramString;
     AppMethodBeat.o(148591);
   }
   
   public final boolean a(h paramh)
   {
     AppMethodBeat.i(148599);
-    this.jwN.readLock().lock();
-    Iterator localIterator = this.jwM.values().iterator();
+    this.mmq.readLock().lock();
+    Iterator localIterator = this.mmp.values().iterator();
     while (localIterator.hasNext())
     {
       a locala1 = (a)localIterator.next();
-      a locala2 = new a(paramh.jwL);
-      locala2.jwS = locala1.jwS;
-      paramh.jwM.put(locala2.jwP, locala2);
+      a locala2 = new a(paramh.mmo);
+      locala2.mmv = locala1.mmv;
+      paramh.mmp.put(locala2.mms, locala2);
     }
-    this.jwN.readLock().unlock();
+    this.mmq.readLock().unlock();
     AppMethodBeat.o(148599);
     return true;
   }
   
-  public final void aI(List<esk> paramList)
+  public final void aG(List<fcv> paramList)
   {
     AppMethodBeat.i(148595);
     int i;
@@ -58,11 +58,11 @@ public final class h
     if (paramList == null)
     {
       i = 0;
-      this.jwN.readLock().lock();
-      if (this.jwM.size() != 0) {
+      this.mmq.readLock().lock();
+      if (this.mmp.size() != 0) {
         break label112;
       }
-      this.jwN.readLock().unlock();
+      this.mmq.readLock().unlock();
       localObject = "[]";
     }
     for (;;)
@@ -79,47 +79,47 @@ public final class h
       label112:
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[");
-      localIterator = this.jwM.values().iterator();
+      localIterator = this.mmp.values().iterator();
       while (localIterator.hasNext()) {
-        ((StringBuilder)localObject).append(((a)localIterator.next()).jwP).append(", ");
+        ((StringBuilder)localObject).append(((a)localIterator.next()).mms).append(", ");
       }
       if (((StringBuilder)localObject).length() <= 3)
       {
-        this.jwN.readLock().unlock();
+        this.mmq.readLock().unlock();
         localObject = "]";
       }
       else
       {
         ((StringBuilder)localObject).setLength(((StringBuilder)localObject).length() - 2);
-        this.jwN.readLock().unlock();
+        this.mmq.readLock().unlock();
         localObject = "]";
       }
     }
     label259:
-    this.jwN.readLock().lock();
+    this.mmq.readLock().lock();
     Iterator localIterator = paramList.iterator();
     while (localIterator.hasNext())
     {
-      esk localesk = (esk)localIterator.next();
-      if (localesk == null)
+      fcv localfcv = (fcv)localIterator.next();
+      if (localfcv == null)
       {
         Log.i("MicroMsg.ShortSentenceContainer", "setFetchedVoiceInfoResult voiceTransCell is null.");
       }
       else
       {
-        a locala = (a)this.jwM.get(localesk.KXr);
+        a locala = (a)this.mmp.get(localfcv.RYD);
         if (locala == null)
         {
-          Log.i("MicroMsg.ShortSentenceContainer", "voiceInfoContainer not found the voiceId %s", new Object[] { localesk.KXr });
+          Log.i("MicroMsg.ShortSentenceContainer", "voiceInfoContainer not found the voiceId %s", new Object[] { localfcv.RYD });
         }
-        else if (localesk == null)
+        else if (localfcv == null)
         {
           Log.d("MicroMsg.ShortSentenceContainer", "update VoiceInfo cell is null");
         }
         else
         {
-          String str1 = localesk.KXr;
-          i = localesk.NpA;
+          String str1 = localfcv.RYD;
+          i = localfcv.UCw;
           label411:
           boolean bool1;
           label422:
@@ -129,19 +129,19 @@ public final class h
           boolean bool3;
           int k;
           int m;
-          if ((localesk.Nlq == null) || (localesk.Nlq.getBuffer() == null))
+          if ((localfcv.Uyb == null) || (localfcv.Uyb.Tkb == null))
           {
             paramList = null;
-            if (localesk.jeU == 0) {
+            if (localfcv.lVs == 0) {
               break label622;
             }
             bool1 = true;
-            j = localesk.jeU;
-            str2 = locala.jwP;
-            bool2 = locala.jwQ;
-            bool3 = locala.jwR;
-            k = locala.jwS;
-            m = locala.jwU;
+            j = localfcv.lVs;
+            str2 = locala.mms;
+            bool2 = locala.mmt;
+            bool3 = locala.mmu;
+            k = locala.mmv;
+            m = locala.mmx;
             if (locala.data != null) {
               break label628;
             }
@@ -150,33 +150,33 @@ public final class h
           label628:
           for (localObject = null;; localObject = Integer.valueOf(locala.data.length()))
           {
-            Log.d("MicroMsg.ShortSentenceContainer", "update VoiceInfo get {cell} %s, seq %s, text %s, endFlag %s, endFlag %s {currentInfo} %s, isRequestStart %s, isRequestEnd %s, voiceFileMark %s, seq %s, data %s, isResponseEnd %s", new Object[] { str1, Integer.valueOf(i), paramList, Boolean.valueOf(bool1), Integer.valueOf(j), str2, Boolean.valueOf(bool2), Boolean.valueOf(bool3), Integer.valueOf(k), Integer.valueOf(m), localObject, Boolean.valueOf(locala.jwV) });
-            if ((localesk.NpA >= locala.jwU) && (!locala.jwV)) {
+            Log.d("MicroMsg.ShortSentenceContainer", "update VoiceInfo get {cell} %s, seq %s, text %s, endFlag %s, endFlag %s {currentInfo} %s, isRequestStart %s, isRequestEnd %s, voiceFileMark %s, seq %s, data %s, isResponseEnd %s", new Object[] { str1, Integer.valueOf(i), paramList, Boolean.valueOf(bool1), Integer.valueOf(j), str2, Boolean.valueOf(bool2), Boolean.valueOf(bool3), Integer.valueOf(k), Integer.valueOf(m), localObject, Boolean.valueOf(locala.mmy) });
+            if ((localfcv.UCw >= locala.mmx) && (!locala.mmy)) {
               break label644;
             }
             Log.d("MicroMsg.ShortSentenceContainer", "update seq not fit.");
             break;
-            paramList = Integer.valueOf(localesk.Nlq.getILen());
+            paramList = Integer.valueOf(localfcv.Uyb.Ufv);
             break label411;
             bool1 = false;
             break label422;
           }
           label644:
-          locala.jwU = localesk.NpA;
-          if ((localesk.Nlq == null) || (localesk.Nlq.getBuffer() == null))
+          locala.mmx = localfcv.UCw;
+          if ((localfcv.Uyb == null) || (localfcv.Uyb.Tkb == null))
           {
             paramList = null;
             label675:
             locala.data = paramList;
-            if (localesk.jeU == 0) {
+            if (localfcv.lVs == 0) {
               break label811;
             }
             bool1 = true;
             label692:
-            locala.jwV = bool1;
-            paramList = localesk.KXr;
-            j = locala.jwU;
-            bool1 = locala.jwV;
+            locala.mmy = bool1;
+            paramList = localfcv.RYD;
+            j = locala.mmx;
+            bool1 = locala.mmy;
             if (locala.data != null) {
               break label817;
             }
@@ -186,12 +186,12 @@ public final class h
           for (i = -1;; i = locala.data.length())
           {
             Log.i("MicroMsg.ShortSentenceContainer", "update VoiceId = %s,respSeq = %s,isResponseEnd = %s,data.length = %s", new Object[] { paramList, Integer.valueOf(j), Boolean.valueOf(bool1), Integer.valueOf(i) });
-            if (localesk.jeU != 2) {
+            if (localfcv.lVs != 2) {
               break;
             }
-            Log.e("MicroMsg.ShortSentenceContainer", "update cell.EndFlag = 2 VoiceId = %s", new Object[] { localesk.KXr });
+            Log.e("MicroMsg.ShortSentenceContainer", "update cell.EndFlag = 2 VoiceId = %s", new Object[] { localfcv.RYD });
             break;
-            paramList = localesk.Nlq.getBuffer().yO();
+            paramList = localfcv.Uyb.Tkb.Ap();
             break label675;
             bool1 = false;
             break label692;
@@ -199,40 +199,40 @@ public final class h
         }
       }
     }
-    this.jwN.readLock().unlock();
+    this.mmq.readLock().unlock();
     AppMethodBeat.o(148595);
   }
   
-  public final LinkedList<dqi> biA()
+  public final LinkedList<eaf> brY()
   {
     AppMethodBeat.i(148592);
     LinkedList localLinkedList = new LinkedList();
-    this.jwN.readLock().lock();
-    Iterator localIterator = this.jwM.values().iterator();
+    this.mmq.readLock().lock();
+    Iterator localIterator = this.mmp.values().iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
-      if (locala.jwQ) {
-        localLinkedList.add(new dqi().bhy(locala.jwP));
+      if (locala.mmt) {
+        localLinkedList.add(new eaf().btQ(locala.mms));
       }
     }
-    this.jwN.readLock().unlock();
+    this.mmq.readLock().unlock();
     AppMethodBeat.o(148592);
     return localLinkedList;
   }
   
-  public final boolean biB()
+  public final boolean brZ()
   {
     AppMethodBeat.i(148594);
-    this.jwN.readLock().lock();
-    if (this.jwM.size() == 0)
+    this.mmq.readLock().lock();
+    if (this.mmp.size() == 0)
     {
       Log.i("MicroMsg.ShortSentenceContainer", "isAllRespEnd innerContainer.size() == 0");
-      this.jwN.readLock().unlock();
+      this.mmq.readLock().unlock();
       AppMethodBeat.o(148594);
       return true;
     }
-    Iterator localIterator = this.jwM.values().iterator();
+    Iterator localIterator = this.mmp.values().iterator();
     a locala;
     do
     {
@@ -240,42 +240,42 @@ public final class h
         break;
       }
       locala = (a)localIterator.next();
-      Log.d("MicroMsg.ShortSentenceContainer", "isAllRespEnd voiceId:%s isRequestEnd:%s isResponseEnd:%s", new Object[] { locala.jwP, Boolean.valueOf(locala.jwR), Boolean.valueOf(locala.jwV) });
-    } while (locala.jwV);
+      Log.d("MicroMsg.ShortSentenceContainer", "isAllRespEnd voiceId:%s isRequestEnd:%s isResponseEnd:%s", new Object[] { locala.mms, Boolean.valueOf(locala.mmu), Boolean.valueOf(locala.mmy) });
+    } while (locala.mmy);
     for (boolean bool = false;; bool = true)
     {
-      this.jwN.readLock().unlock();
+      this.mmq.readLock().unlock();
       AppMethodBeat.o(148594);
       return bool;
     }
   }
   
-  public final void biC()
+  public final void bsa()
   {
     AppMethodBeat.i(148597);
     Log.i("MicroMsg.ShortSentenceContainer", "createNewShortSentence");
-    this.jwN.writeLock().lock();
+    this.mmq.writeLock().lock();
     a locala = new a();
-    this.jwM.put(locala.jwP, locala);
-    this.jwN.writeLock().unlock();
+    this.mmp.put(locala.mms, locala);
+    this.mmq.writeLock().unlock();
     AppMethodBeat.o(148597);
   }
   
   public final String getResult()
   {
     AppMethodBeat.i(148593);
-    this.jwO.setLength(0);
-    this.jwN.readLock().lock();
-    Object localObject = this.jwM.values().iterator();
+    this.mmr.setLength(0);
+    this.mmq.readLock().lock();
+    Object localObject = this.mmp.values().iterator();
     while (((Iterator)localObject).hasNext())
     {
       a locala = (a)((Iterator)localObject).next();
       if (locala.data != null) {
-        this.jwO.append(locala.data);
+        this.mmr.append(locala.data);
       }
     }
-    this.jwN.readLock().unlock();
-    localObject = this.jwO.toString();
+    this.mmq.readLock().unlock();
+    localObject = this.mmr.toString();
     AppMethodBeat.o(148593);
     return localObject;
   }
@@ -283,7 +283,7 @@ public final class h
   public final boolean isValid()
   {
     AppMethodBeat.i(185490);
-    if ((this.jwM == null) || (this.jwM.isEmpty()))
+    if ((this.mmp == null) || (this.mmp.isEmpty()))
     {
       AppMethodBeat.o(185490);
       return false;
@@ -292,7 +292,7 @@ public final class h
     return true;
   }
   
-  public final void ul(int paramInt)
+  public final void xl(int paramInt)
   {
     AppMethodBeat.i(148596);
     Log.i("MicroMsg.ShortSentenceContainer", "cutShortSentence markEnd:%s", new Object[] { Integer.valueOf(paramInt) });
@@ -302,15 +302,15 @@ public final class h
       AppMethodBeat.o(148596);
       throw ((Throwable)localObject);
     }
-    this.jwN.readLock().lock();
-    if (this.jwM.size() == 0)
+    this.mmq.readLock().lock();
+    if (this.mmp.size() == 0)
     {
       Log.e("MicroMsg.ShortSentenceContainer", "splitShortSentence there is no last one");
-      this.jwN.readLock().unlock();
+      this.mmq.readLock().unlock();
       AppMethodBeat.o(148596);
       return;
     }
-    Iterator localIterator = this.jwM.values().iterator();
+    Iterator localIterator = this.mmp.values().iterator();
     for (Object localObject = null; localIterator.hasNext(); localObject = (a)localIterator.next()) {}
     if (localObject == null)
     {
@@ -318,23 +318,23 @@ public final class h
       AppMethodBeat.o(148596);
       throw ((Throwable)localObject);
     }
-    Log.d("MicroMsg.ShortSentenceContainer", "cutShortSentence voiceFileMarkEnd:%s voiceId:%s markEnd:%s", new Object[] { Integer.valueOf(((a)localObject).jwS), ((a)localObject).jwP, Integer.valueOf(paramInt) });
-    ((a)localObject).jwS = paramInt;
-    this.jwN.readLock().unlock();
+    Log.d("MicroMsg.ShortSentenceContainer", "cutShortSentence voiceFileMarkEnd:%s voiceId:%s markEnd:%s", new Object[] { Integer.valueOf(((a)localObject).mmv), ((a)localObject).mms, Integer.valueOf(paramInt) });
+    ((a)localObject).mmv = paramInt;
+    this.mmq.readLock().unlock();
     AppMethodBeat.o(148596);
   }
   
-  public final a um(int paramInt)
+  public final a xm(int paramInt)
   {
     AppMethodBeat.i(148598);
-    this.jwN.readLock().lock();
-    if (this.jwM.size() == 0)
+    this.mmq.readLock().lock();
+    if (this.mmp.size() == 0)
     {
-      this.jwN.readLock().unlock();
+      this.mmq.readLock().unlock();
       AppMethodBeat.o(148598);
       return null;
     }
-    Iterator localIterator = this.jwM.values().iterator();
+    Iterator localIterator = this.mmp.values().iterator();
     a locala;
     do
     {
@@ -342,11 +342,11 @@ public final class h
         break;
       }
       locala = (a)localIterator.next();
-      Log.d("MicroMsg.ShortSentenceContainer", "locateCurrentShortSentence oldOffset = %s voiceFileMarkEnd = %s info.isRequestEnd = %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(locala.jwS), Boolean.valueOf(locala.jwR) });
-    } while ((locala.jwR) || (paramInt > locala.jwS));
+      Log.d("MicroMsg.ShortSentenceContainer", "locateCurrentShortSentence oldOffset = %s voiceFileMarkEnd = %s info.isRequestEnd = %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(locala.mmv), Boolean.valueOf(locala.mmu) });
+    } while ((locala.mmu) || (paramInt > locala.mmv));
     for (;;)
     {
-      this.jwN.readLock().unlock();
+      this.mmq.readLock().unlock();
       AppMethodBeat.o(148598);
       return locala;
       locala = null;
@@ -356,43 +356,43 @@ public final class h
   public final class a
   {
     public String data;
-    public String jwP;
-    public boolean jwQ;
-    public boolean jwR;
-    public int jwS;
-    public int jwT;
-    public int jwU;
-    public boolean jwV;
+    public String mms;
+    public boolean mmt;
+    public boolean mmu;
+    public int mmv;
+    public int mmw;
+    public int mmx;
+    public boolean mmy;
     
     public a()
     {
       AppMethodBeat.i(148588);
-      this.jwQ = false;
-      this.jwR = false;
-      this.jwS = 2147483647;
-      this.jwT = 0;
-      this.jwU = -1;
+      this.mmt = false;
+      this.mmu = false;
+      this.mmv = 2147483647;
+      this.mmw = 0;
+      this.mmx = -1;
       this.data = null;
-      this.jwV = false;
-      this.jwP = Rs(h.this.jwL);
+      this.mmy = false;
+      this.mms = YP(h.this.mmo);
       AppMethodBeat.o(148588);
     }
     
     public a(String paramString)
     {
       AppMethodBeat.i(148589);
-      this.jwQ = false;
-      this.jwR = false;
-      this.jwS = 2147483647;
-      this.jwT = 0;
-      this.jwU = -1;
+      this.mmt = false;
+      this.mmu = false;
+      this.mmv = 2147483647;
+      this.mmw = 0;
+      this.mmx = -1;
       this.data = null;
-      this.jwV = false;
-      this.jwP = Rs(paramString);
+      this.mmy = false;
+      this.mms = YP(paramString);
       AppMethodBeat.o(148589);
     }
     
-    private static String Rs(String paramString)
+    private static String YP(String paramString)
     {
       AppMethodBeat.i(148590);
       long l3 = 0xFFFFFFFF & System.currentTimeMillis();
@@ -411,7 +411,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelvoiceaddr.h
  * JD-Core Version:    0.7.0.1
  */

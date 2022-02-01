@@ -1,84 +1,62 @@
 package com.tencent.mm.storage;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.f.c.hj;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.storagebase.g;
-import com.tencent.mm.storagebase.g.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class cv
-  extends MAutoStorage<cu>
-  implements g.a
+  extends hj
 {
-  public static final String[] SQL_CREATE;
-  public ISQLiteDatabase db;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(148677);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(cu.info, "VoiceTransText") };
-    AppMethodBeat.o(148677);
+    AppMethodBeat.i(148673);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[3];
+    localMAutoDBInfo.columns = new String[4];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localMAutoDBInfo.columns[0] = "msgId";
+    localMAutoDBInfo.colsMap.put("msgId", "LONG PRIMARY KEY ");
+    localStringBuilder.append(" msgId LONG PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.primaryKey = "msgId";
+    localMAutoDBInfo.columns[1] = "cmsgId";
+    localMAutoDBInfo.colsMap.put("cmsgId", "TEXT");
+    localStringBuilder.append(" cmsgId TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[2] = "content";
+    localMAutoDBInfo.colsMap.put("content", "TEXT default '' ");
+    localStringBuilder.append(" content TEXT default '' ");
+    localMAutoDBInfo.columns[3] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
+    AppMethodBeat.o(148673);
   }
   
-  public cv(ISQLiteDatabase paramISQLiteDatabase)
+  public final void bxy(String paramString)
   {
-    this(paramISQLiteDatabase, cu.info, "VoiceTransText");
-  }
-  
-  private cv(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString)
-  {
-    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, null);
-    this.db = paramISQLiteDatabase;
-  }
-  
-  public final int a(g paramg)
-  {
-    this.db = paramg;
-    return 0;
-  }
-  
-  public final boolean a(cu paramcu)
-  {
-    AppMethodBeat.i(148674);
-    if (paramcu == null)
-    {
-      AppMethodBeat.o(148674);
-      return false;
-    }
-    paramcu = paramcu.convertTo();
-    if (this.db.replace("VoiceTransText", "msgId", paramcu) >= 0L)
-    {
-      AppMethodBeat.o(148674);
-      return true;
-    }
-    AppMethodBeat.o(148674);
-    return false;
-  }
-  
-  public final cu bkZ(String paramString)
-  {
-    AppMethodBeat.i(148675);
+    AppMethodBeat.i(148672);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(148675);
-      return null;
+      AppMethodBeat.o(148672);
+      return;
     }
-    cu localcu = new cu();
-    paramString = this.db.query("VoiceTransText", null, "cmsgId=?", new String[] { String.valueOf(paramString) }, null, null, null, 2);
-    if (paramString.moveToFirst()) {
-      localcu.convertFrom(paramString);
-    }
-    paramString.close();
-    AppMethodBeat.o(148675);
-    return localcu;
+    this.field_cmsgId = paramString;
+    AppMethodBeat.o(148672);
+  }
+  
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.cv
  * JD-Core Version:    0.7.0.1
  */

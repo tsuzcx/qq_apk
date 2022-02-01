@@ -2,43 +2,42 @@ package com.tencent.mm.plugin.profile.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaEntryInfo;
-import com.tencent.mm.protocal.protobuf.feg;
-import com.tencent.mm.protocal.protobuf.feh;
+import com.tencent.mm.protocal.protobuf.fph;
+import com.tencent.mm.protocal.protobuf.fpi;
 import java.util.ArrayList;
 import java.util.List;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/profile/model/WxaRegisterInfo;", "Landroid/os/Parcelable;", "wxaRelateWeAppList", "Lcom/tencent/mm/protocal/protobuf/WxaRelateWeAppList;", "(Lcom/tencent/mm/protocal/protobuf/WxaRelateWeAppList;)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "registerName", "", "entryInfos", "", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaEntryInfo;", "(Ljava/lang/String;Ljava/util/List;)V", "getEntryInfos", "()Ljava/util/List;", "getRegisterName", "()Ljava/lang/String;", "describeContents", "", "isValid", "", "writeToParcel", "", "flags", "CREATOR", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/profile/model/WxaRegisterInfo;", "Landroid/os/Parcelable;", "wxaRelateWeAppList", "Lcom/tencent/mm/protocal/protobuf/WxaRelateWeAppList;", "(Lcom/tencent/mm/protocal/protobuf/WxaRelateWeAppList;)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "registerName", "", "entryInfos", "", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes$WxaEntryInfo;", "(Ljava/lang/String;Ljava/util/List;)V", "getEntryInfos", "()Ljava/util/List;", "getRegisterName", "()Ljava/lang/String;", "describeContents", "", "isValid", "", "writeToParcel", "", "flags", "CREATOR", "plugin-appbrand-integration_release"})
 public final class WxaRegisterInfo
   implements Parcelable
 {
-  public static final a CREATOR;
-  public final String BcS;
-  public final List<WxaAttributes.WxaEntryInfo> BcT;
+  public static final WxaRegisterInfo.a CREATOR;
+  public final String GWR;
+  public final List<WxaAttributes.WxaEntryInfo> GWS;
   
   static
   {
-    AppMethodBeat.i(229785);
-    CREATOR = new a((byte)0);
-    AppMethodBeat.o(229785);
+    AppMethodBeat.i(274469);
+    CREATOR = new WxaRegisterInfo.a((byte)0);
+    AppMethodBeat.o(274469);
   }
   
   public WxaRegisterInfo(Parcel paramParcel) {}
   
-  public WxaRegisterInfo(feh paramfeh)
+  public WxaRegisterInfo(fpi paramfpi)
   {
-    this(str, (List)paramfeh);
-    AppMethodBeat.o(229783);
+    this(str, (List)paramfpi);
+    AppMethodBeat.o(274465);
   }
   
   private WxaRegisterInfo(String paramString, List<WxaAttributes.WxaEntryInfo> paramList)
   {
-    this.BcS = paramString;
-    this.BcT = paramList;
+    this.GWR = paramString;
+    this.GWS = paramList;
   }
   
   public final int describeContents()
@@ -48,21 +47,16 @@ public final class WxaRegisterInfo
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(229782);
-    p.h(paramParcel, "parcel");
-    paramParcel.writeString(this.BcS);
-    paramParcel.writeTypedList(this.BcT);
-    AppMethodBeat.o(229782);
+    AppMethodBeat.i(274463);
+    p.k(paramParcel, "parcel");
+    paramParcel.writeString(this.GWR);
+    paramParcel.writeTypedList(this.GWS);
+    AppMethodBeat.o(274463);
   }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/profile/model/WxaRegisterInfo$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/profile/model/WxaRegisterInfo;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/profile/model/WxaRegisterInfo;", "plugin-appbrand-integration_release"})
-  public static final class a
-    implements Parcelable.Creator<WxaRegisterInfo>
-  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.model.WxaRegisterInfo
  * JD-Core Version:    0.7.0.1
  */

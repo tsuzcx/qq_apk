@@ -17,10 +17,10 @@ public class PluginMMSight
     if (paramg != null) {
       Log.i("MicroMsg.PluginMMSight", "execute, process: %s", new Object[] { paramg.mProcessName });
     }
-    com.tencent.mm.plugin.mmsight.api.b.zsZ = new b.a();
-    com.tencent.mm.plugin.mmsight.api.MMSightRecordView.zsY = new com.tencent.mm.plugin.api.recordView.e();
-    com.tencent.mm.plugin.mmsight.api.a.zsW = new com.tencent.mm.plugin.api.a();
-    if ((paramg != null) && (paramg.aBb())) {
+    com.tencent.mm.plugin.mmsight.api.b.EYA = new b.a();
+    com.tencent.mm.plugin.mmsight.api.MMSightRecordView.EYz = new com.tencent.mm.plugin.api.recordView.e();
+    com.tencent.mm.plugin.mmsight.api.a.EYx = new com.tencent.mm.plugin.api.a();
+    if ((paramg != null) && (paramg.aIE())) {
       pin(new y(e.class));
     }
     AppMethodBeat.o(89314);

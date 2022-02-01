@@ -10,25 +10,25 @@ import kotlin.o;
 
 public abstract interface k
 {
-  public static final a TKI = a.TKK;
+  public static final a abnl = a.abnn;
   
   public abstract o<a.a<?>, Object> a(a.h paramh, t paramt, h paramh1, ad paramad);
   
   public static final class a
   {
-    private static final k TKJ;
+    private static final k abnm;
     
     static
     {
       AppMethodBeat.i(60302);
-      TKK = new a();
-      TKJ = (k)new a();
+      abnn = new a();
+      abnm = (k)new a();
       AppMethodBeat.o(60302);
     }
     
-    public static k hLd()
+    public static k iPv()
     {
-      return TKJ;
+      return abnm;
     }
     
     public static final class a
@@ -37,10 +37,10 @@ public abstract interface k
       public final o a(a.h paramh, t paramt, h paramh1, ad paramad)
       {
         AppMethodBeat.i(60301);
-        p.h(paramh, "proto");
-        p.h(paramt, "ownerFunction");
-        p.h(paramh1, "typeTable");
-        p.h(paramad, "typeDeserializer");
+        p.k(paramh, "proto");
+        p.k(paramt, "ownerFunction");
+        p.k(paramh1, "typeTable");
+        p.k(paramad, "typeDeserializer");
         AppMethodBeat.o(60301);
         return null;
       }
@@ -49,7 +49,7 @@ public abstract interface k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.k
  * JD-Core Version:    0.7.0.1
  */

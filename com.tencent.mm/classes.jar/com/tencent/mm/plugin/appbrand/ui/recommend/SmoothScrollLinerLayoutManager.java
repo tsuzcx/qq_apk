@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.appbrand.ui.recommend;
 
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.r;
-import android.support.v7.widget.RecyclerView.s;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.r;
+import androidx.recyclerview.widget.RecyclerView.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ui.recents.o;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/SmoothScrollLinerLayoutManager;", "Landroid/support/v7/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "smoothScrollToPosition", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "position", "", "supportsPredictiveItemAnimations", "", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/SmoothScrollLinerLayoutManager;", "Landroidx/recyclerview/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "smoothScrollToPosition", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "position", "", "supportsPredictiveItemAnimations", "", "plugin-appbrand-integration_release"})
 public final class SmoothScrollLinerLayoutManager
   extends LinearLayoutManager
 {
@@ -25,12 +25,12 @@ public final class SmoothScrollLinerLayoutManager
   
   public final void smoothScrollToPosition(RecyclerView paramRecyclerView, RecyclerView.s params, int paramInt)
   {
-    AppMethodBeat.i(51391);
-    p.h(paramRecyclerView, "recyclerView");
+    AppMethodBeat.i(267523);
+    p.k(paramRecyclerView, "recyclerView");
     paramRecyclerView = new o(this.context, (LinearLayoutManager)this);
-    paramRecyclerView.ct(paramInt);
+    paramRecyclerView.cV(paramInt);
     startSmoothScroll((RecyclerView.r)paramRecyclerView);
-    AppMethodBeat.o(51391);
+    AppMethodBeat.o(267523);
   }
   
   public final boolean supportsPredictiveItemAnimations()

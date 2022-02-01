@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.remittance.mobile.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cfl;
-import com.tencent.mm.protocal.protobuf.ekd;
-import com.tencent.mm.protocal.protobuf.eke;
+import com.tencent.mm.protocal.protobuf.coi;
+import com.tencent.mm.protocal.protobuf.euh;
+import com.tencent.mm.protocal.protobuf.eui;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.c.l;
 import java.util.Iterator;
@@ -19,46 +19,46 @@ import org.json.JSONObject;
 public final class d
   extends a
 {
-  public eke ClS;
+  public eui IiL;
   
   public d()
   {
     AppMethodBeat.i(67630);
     d.a locala = new d.a();
-    locala.iLN = new ekd();
-    locala.iLO = new eke();
+    locala.lBU = new euh();
+    locala.lBV = new eui();
     locala.funcId = 2952;
     locala.uri = "/cgi-bin/mmpay-bin/transferphonehomepage";
-    this.rr = locala.aXF();
+    this.rr = locala.bgN();
     Log.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetHomePage", "do scene NetSceneMobileRemitGetHomePage");
     AppMethodBeat.o(67630);
   }
   
-  public static String a(eke parameke)
+  public static String a(eui parameui)
   {
     AppMethodBeat.i(67632);
-    if (parameke == null)
+    if (parameui == null)
     {
       AppMethodBeat.o(67632);
       return "TransferPhoneHomePageResp{null}";
     }
-    parameke = "TransferPhoneHomePageResp{ret_code=" + parameke.pTZ + ", ret_msg='" + parameke.pUa + '\'' + ", title='" + parameke.title + '\'' + ", subtitle='" + parameke.subtitle + '\'' + ", has_his_rcvr=" + parameke.Njq + ", menu=" + l.bO(parameke.Njr) + ", announcement=" + l.b(parameke.Njs) + ", homepage_ext='" + parameke.Njj + '\'' + '}';
+    parameui = "TransferPhoneHomePageResp{ret_code=" + parameui.tqa + ", ret_msg='" + parameui.tqb + '\'' + ", title='" + parameui.title + '\'' + ", subtitle='" + parameui.subtitle + '\'' + ", has_his_rcvr=" + parameui.UvY + ", menu=" + l.cn(parameui.UvZ) + ", announcement=" + l.b(parameui.Uwa) + ", homepage_ext='" + parameui.UvR + '\'' + '}';
     AppMethodBeat.o(67632);
-    return parameke;
+    return parameui;
   }
   
-  public static eke aLZ(String paramString)
+  public static eui aWD(String paramString)
   {
     AppMethodBeat.i(67634);
-    eke localeke = new eke();
+    eui localeui = new eui();
     try
     {
       paramString = new JSONObject(paramString);
-      localeke.pTZ = paramString.optInt("ret_code");
-      localeke.pUa = paramString.optString("ret_msg");
-      localeke.title = paramString.optString("title");
-      localeke.subtitle = paramString.optString("subtitle");
-      localeke.Njq = paramString.optInt("has_his_rcvr");
+      localeui.tqa = paramString.optInt("ret_code");
+      localeui.tqb = paramString.optString("ret_msg");
+      localeui.title = paramString.optString("title");
+      localeui.subtitle = paramString.optString("subtitle");
+      localeui.UvY = paramString.optInt("has_his_rcvr");
       JSONArray localJSONArray = paramString.optJSONArray("menu");
       if (localJSONArray != null)
       {
@@ -66,14 +66,14 @@ public final class d
         int i = 0;
         while (i < j)
         {
-          localeke.Njr.add(l.ci(localJSONArray.getJSONObject(i)));
+          localeui.UvZ.add(l.ct(localJSONArray.getJSONObject(i)));
           i += 1;
         }
       }
-      localeke.Njs = l.bpm(paramString.optString("announcement"));
-      localeke.Njj = paramString.optString("homepage_ext");
+      localeui.Uwa = l.bCj(paramString.optString("announcement"));
+      localeui.UvR = paramString.optString("homepage_ext");
       AppMethodBeat.o(67634);
-      return localeke;
+      return localeui;
     }
     catch (JSONException paramString)
     {
@@ -83,57 +83,59 @@ public final class d
     return null;
   }
   
-  public static String b(eke parameke)
+  public static String b(eui parameui)
   {
     AppMethodBeat.i(67633);
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("ret_code", parameke.pTZ);
-      localJSONObject.put("ret_msg", parameke.pUa);
-      localJSONObject.put("title", parameke.title);
-      localJSONObject.put("subtitle", parameke.subtitle);
-      localJSONObject.put("has_his_rcvr", parameke.Njq);
-      if (parameke.Njr != null)
+      localJSONObject.put("ret_code", parameui.tqa);
+      localJSONObject.put("ret_msg", parameui.tqb);
+      localJSONObject.put("title", parameui.title);
+      localJSONObject.put("subtitle", parameui.subtitle);
+      localJSONObject.put("has_his_rcvr", parameui.UvY);
+      if (parameui.UvZ != null)
       {
         JSONArray localJSONArray = new JSONArray();
-        Iterator localIterator = parameke.Njr.iterator();
+        Iterator localIterator = parameui.UvZ.iterator();
         while (localIterator.hasNext()) {
-          localJSONArray.put(l.c((cfl)localIterator.next()));
+          localJSONArray.put(l.c((coi)localIterator.next()));
         }
         localJSONObject.put("menu", localJSONArray);
       }
     }
-    catch (JSONException parameke)
+    catch (JSONException parameui)
     {
-      Log.e("MicroMsg.mobileRemit.NetSceneMobileRemitGetHomePage", "getJsonStrFromHomePageInfo() Exception: %s", new Object[] { parameke.getMessage() });
+      Log.e("MicroMsg.mobileRemit.NetSceneMobileRemitGetHomePage", "getJsonStrFromHomePageInfo() Exception: %s", new Object[] { parameui.getMessage() });
       AppMethodBeat.o(67633);
       return "";
     }
-    localJSONObject.put("announcement", parameke.Njs);
-    localJSONObject.put("homepage_ext", parameke.Njj);
-    parameke = localJSONObject.toString();
+    localJSONObject.put("announcement", parameui.Uwa);
+    localJSONObject.put("homepage_ext", parameui.UvR);
+    parameui = localJSONObject.toString();
     AppMethodBeat.o(67633);
-    return parameke;
+    return parameui;
   }
   
   public final void b(int paramInt1, int paramInt2, String paramString, s params)
   {
     AppMethodBeat.i(67631);
     Log.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetHomePage", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.ClS = ((eke)((com.tencent.mm.ak.d)params).iLL.iLR);
-    Log.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetHomePage", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.ClS.pTZ), this.ClS.pUa });
+    this.IiL = ((eui)d.c.b(((com.tencent.mm.an.d)params).lBS));
+    Log.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetHomePage", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.IiL.tqa), this.IiL.tqb });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
     AppMethodBeat.o(67631);
   }
   
-  public final void e(s params)
+  public final void f(s params)
   {
-    params = (eke)((com.tencent.mm.ak.d)params).iLL.iLR;
-    this.RtZ = params.pTZ;
-    this.Rua = params.pUa;
+    AppMethodBeat.i(268279);
+    params = (eui)d.c.b(((com.tencent.mm.an.d)params).lBS);
+    this.YVy = params.tqa;
+    this.YVz = params.tqb;
+    AppMethodBeat.o(268279);
   }
   
   public final int getType()
@@ -143,7 +145,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.mobile.cgi.d
  * JD-Core Version:    0.7.0.1
  */

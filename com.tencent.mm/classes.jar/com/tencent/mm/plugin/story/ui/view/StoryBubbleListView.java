@@ -1,20 +1,22 @@
 package com.tencent.mm.plugin.story.ui.view;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.story.a.d;
+import com.tencent.mm.plugin.story.a.e;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/view/StoryBubbleListView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bubbleRecyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/view/StoryBubbleListView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bubbleRecyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-story_release"})
 public final class StoryBubbleListView
   extends RelativeLayout
 {
-  private final RecyclerView FBC;
+  private final RecyclerView LVG;
   
   public StoryBubbleListView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,10 +29,10 @@ public final class StoryBubbleListView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(120087);
-    View.inflate(paramContext, 2131496614, (ViewGroup)this);
-    paramContext = findViewById(2131308683);
-    p.g(paramContext, "findViewById(R.id.story_msg_recycler_view)");
-    this.FBC = ((RecyclerView)paramContext);
+    View.inflate(paramContext, a.e.LDg, (ViewGroup)this);
+    paramContext = findViewById(a.d.LCh);
+    p.j(paramContext, "findViewById(R.id.story_msg_recycler_view)");
+    this.LVG = ((RecyclerView)paramContext);
     AppMethodBeat.o(120087);
   }
 }

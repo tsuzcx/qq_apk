@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.card.c;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.model.c;
@@ -15,44 +15,44 @@ import com.tencent.mm.storage.ar.a;
 public final class a
   implements b
 {
-  public final boolean Eg(int paramInt)
+  public final boolean HH(int paramInt)
   {
     AppMethodBeat.i(112908);
-    boolean bool = l.Eg(paramInt);
+    boolean bool = l.HH(paramInt);
     AppMethodBeat.o(112908);
     return bool;
   }
   
-  public final boolean cuq()
+  public final boolean cHS()
   {
     AppMethodBeat.i(112904);
-    boolean bool = l.cxF();
+    boolean bool = l.cLh();
     AppMethodBeat.o(112904);
     return bool;
   }
   
-  public final boolean cur()
+  public final boolean cHT()
   {
     AppMethodBeat.i(112905);
-    boolean bool = l.cxH();
+    boolean bool = l.cLj();
     AppMethodBeat.o(112905);
     return bool;
   }
   
-  public final String cus()
+  public final String cHU()
   {
     AppMethodBeat.i(112906);
-    String str = (String)g.aAh().azQ().get(ar.a.NTT, null);
+    String str = (String)h.aHG().aHp().get(ar.a.VhT, null);
     AppMethodBeat.o(112906);
     return str;
   }
   
-  public final int cut()
+  public final int cHV()
   {
     int j = 0;
     int i = 0;
     AppMethodBeat.i(112907);
-    Object localObject1 = am.ctQ();
+    Object localObject1 = am.cHs();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(" where (status=0 OR status=5) and (block_mask").append("= '1' OR block_mask= '0' )");
     localObject2 = "select count(*) from UserCardInfo" + ((StringBuilder)localObject2).toString();
@@ -73,7 +73,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.c.a
  * JD-Core Version:    0.7.0.1
  */

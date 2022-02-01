@@ -3,8 +3,10 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <CheckBox android:layout_gravity="center_vertical" android:id="@id/hhc" android:background="@drawable/ahw" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="false" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" android:layout_marginRight="@dimen/hv" />
     <ImageView android:layout_gravity="center_vertical" android:id="@id/dla" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" />
-    <LinearLayout android:background="@drawable/b9w" android:layout_width="fill_parent" android:layout_height="@dimen/az" android:layout_marginLeft="@dimen/cb">
-        <TextView android:gravity="center|left" android:id="@id/dlc" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxWidth="180.0dip" android:singleLine="true" style="@style/mp" />
-        <TextView android:textColor="@color/uj" android:gravity="center|left" android:id="@id/dlb" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" style="@style/mn" />
+    <LinearLayout android:background="@drawable/b9w" android:layout_width="fill_parent" android:layout_height="@dimen/az" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/cb">
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <TextView android:ellipsize="end" android:gravity="center|left" android:id="@id/dlc" android:layout_width="0.0dip" android:layout_height="fill_parent" android:singleLine="true" android:layout_weight="1.0" style="@style/mp" />
+            <TextView android:textColor="@color/uj" android:gravity="center|left" android:id="@id/dlb" android:layout_width="wrap_content" android:layout_height="fill_parent" style="@style/mn" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

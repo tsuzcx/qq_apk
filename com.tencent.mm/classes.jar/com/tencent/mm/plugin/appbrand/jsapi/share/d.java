@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.appbrand.jsapi.share;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.ad.b;
-import com.tencent.mm.plugin.appbrand.menu.t;
-import com.tencent.mm.plugin.appbrand.menu.u;
-import com.tencent.mm.plugin.appbrand.page.ag;
-import com.tencent.mm.plugin.appbrand.report.i;
+import com.tencent.mm.plugin.appbrand.menu.v;
+import com.tencent.mm.plugin.appbrand.menu.w;
+import com.tencent.mm.plugin.appbrand.page.ah;
+import com.tencent.mm.plugin.appbrand.report.j;
 import com.tencent.mm.plugin.appbrand.service.c;
 import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
@@ -19,7 +19,7 @@ public final class d
   private static void a(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(174889);
-    i.a(paramString1, paramString2, paramInt1, paramString3, Util.nowSecond(), paramInt2, paramInt3);
+    j.a(paramString1, paramString2, paramInt1, paramString3, Util.nowSecond(), paramInt2, paramInt3);
     AppMethodBeat.o(174889);
   }
   
@@ -27,16 +27,16 @@ public final class d
   {
     AppMethodBeat.i(174884);
     paramc = super.a(paramc, paramJSONObject);
-    paramJSONObject = paramc.mri.yK(u.neY.ordinal()).lEi;
-    ad.b localb = paramc.mri.yK(u.nfy.ordinal()).lEi;
-    if ((!paramJSONObject.JY("user_clicked_share_btn")) && (!localb.JY("user_clicked_share_btn")))
+    paramJSONObject = paramc.ppq.Cp(w.qfG.ordinal()).ozJ;
+    ad.b localb = paramc.ppq.Cp(w.qgg.ordinal()).ozJ;
+    if ((!paramJSONObject.Rq("user_clicked_share_btn")) && (!localb.Rq("user_clicked_share_btn")))
     {
       paramc = new JsApiShareAppMessageBase.c("not allow to share");
       AppMethodBeat.o(174884);
       throw paramc;
     }
-    paramJSONObject.H("user_clicked_share_btn", false);
-    localb.H("user_clicked_share_btn", false);
+    paramJSONObject.J("user_clicked_share_btn", false);
+    localb.J("user_clicked_share_btn", false);
     AppMethodBeat.o(174884);
     return paramc;
   }
@@ -48,7 +48,7 @@ public final class d
     if (paramd.withShareTicket) {}
     for (int i = 16;; i = 2)
     {
-      a(paramd.appId, paramd.dCx, i, "", 2, -1);
+      a(paramd.appId, paramd.fve, i, "", 2, -1);
       AppMethodBeat.o(174886);
       return;
     }
@@ -59,7 +59,7 @@ public final class d
     AppMethodBeat.i(174885);
     super.a(paramd, paramInt);
     String str1 = paramd.appId;
-    String str2 = paramd.dCx;
+    String str2 = paramd.fve;
     if (paramd.withShareTicket) {}
     for (int i = 16;; i = 2)
     {
@@ -81,22 +81,22 @@ public final class d
       if (paramString.toLowerCase().endsWith("@chatroom")) {
         i = 15;
       }
-      a(paramd.appId, paramd.dCx, i, str, 1, -1);
+      a(paramd.appId, paramd.fve, i, str, 1, -1);
     }
     for (;;)
     {
-      paramd.mrm.b(paramd);
+      paramd.ppu.b(paramd);
       AppMethodBeat.o(174887);
       return;
       i = 2;
       if (paramString.toLowerCase().endsWith("@chatroom")) {
         i = 9;
       }
-      a(paramd.appId, paramd.dCx, i, "", 1, -1);
+      a(paramd.appId, paramd.fve, i, "", 1, -1);
     }
   }
   
-  protected final JsApiShareAppMessageBase.d bIJ()
+  protected final JsApiShareAppMessageBase.d bUr()
   {
     AppMethodBeat.i(174888);
     JsApiShareAppMessageBase.d locald = new JsApiShareAppMessageBase.d();
@@ -106,7 +106,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.share.d
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.MMBottomSheetBehavior;
 import android.support.design.widget.MMBottomSheetBehavior.a;
-import android.support.v7.app.e;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,11 +14,14 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import androidx.appcompat.app.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.modelvoiceaddr.g;
 import com.tencent.mm.n.f;
 import com.tencent.mm.n.h;
+import com.tencent.mm.plugin.transvoice.a.f;
+import com.tencent.mm.plugin.transvoice.a.g;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -28,91 +30,91 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog;", "Landroid/support/v7/app/AppCompatDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "bottomSheetBehavior", "Landroid/support/design/widget/MMBottomSheetBehavior;", "Landroid/view/View;", "canClosePanel", "", "closePanel", "Landroid/widget/ImageView;", "containerView", "Landroid/widget/LinearLayout;", "langStringArr", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getLangStringArr", "()Ljava/util/ArrayList;", "setLangStringArr", "(Ljava/util/ArrayList;)V", "langType", "", "getLangType", "()I", "setLangType", "(I)V", "langTypeArr", "getLangTypeArr", "setLangTypeArr", "onLanguageItemClick", "Lcom/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog$OnLanguageItemClick;", "targetView", "init", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "setOnLanguageItemClick", "show", "updateSelectedType", "Companion", "OnLanguageItemClick", "plugin-transvoice_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog;", "Landroidx/appcompat/app/AppCompatDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "bottomSheetBehavior", "Landroid/support/design/widget/MMBottomSheetBehavior;", "Landroid/view/View;", "canClosePanel", "", "closePanel", "Landroid/widget/ImageView;", "containerView", "Landroid/widget/LinearLayout;", "langStringArr", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getLangStringArr", "()Ljava/util/ArrayList;", "setLangStringArr", "(Ljava/util/ArrayList;)V", "langType", "", "getLangType", "()I", "setLangType", "(I)V", "langTypeArr", "getLangTypeArr", "setLangTypeArr", "onLanguageItemClick", "Lcom/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog$OnLanguageItemClick;", "targetView", "init", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "setOnLanguageItemClick", "show", "updateSelectedType", "Companion", "OnLanguageItemClick", "plugin-transvoice_release"})
 public final class a
   extends e
 {
-  public static final a Gul;
-  private ImageView Guf;
-  ArrayList<Integer> Gug;
-  private ArrayList<String> Guh;
-  private MMBottomSheetBehavior<View> Gui;
-  private boolean Guj;
-  b Guk;
+  public static final a NhE;
+  private ArrayList<String> NhA;
+  private MMBottomSheetBehavior<View> NhB;
+  private boolean NhC;
+  b NhD;
+  private ImageView Nhy;
+  ArrayList<Integer> Nhz;
   private LinearLayout containerView;
-  int jvS;
-  private View targetView;
+  private View kJL;
+  int mlv;
   
   static
   {
     AppMethodBeat.i(102557);
-    Gul = new a((byte)0);
+    NhE = new a((byte)0);
     AppMethodBeat.o(102557);
   }
   
   public a(Context paramContext)
   {
-    super(paramContext, 2131821534);
+    super(paramContext, a.g.TransDialog);
     AppMethodBeat.i(102556);
-    this.jvS = g.jwq;
-    this.Gug = new ArrayList();
-    this.Guh = new ArrayList();
-    gR();
-    int i = h.aqJ().getInt("VoiceInputLanguageSupportType", g.jwq);
+    this.mlv = g.mlT;
+    this.Nhz = new ArrayList();
+    this.NhA = new ArrayList();
+    bb();
+    int i = h.axc().getInt("VoiceInputLanguageSupportType", g.mlT);
     if (LocaleUtil.isChineseAppLang())
     {
-      this.Guh.add(getContext().getString(2131762137));
-      this.Gug.add(Integer.valueOf(g.jwq));
-      if ((g.jwr & i) != 0)
+      this.NhA.add(getContext().getString(a.f.NgO));
+      this.Nhz.add(Integer.valueOf(g.mlT));
+      if ((g.mlU & i) != 0)
       {
-        this.Guh.add(getContext().getString(2131762135));
-        this.Gug.add(Integer.valueOf(g.jwr));
+        this.NhA.add(getContext().getString(a.f.NgM));
+        this.Nhz.add(Integer.valueOf(g.mlU));
       }
-      if ((g.jws & i) != 0)
+      if ((g.mlV & i) != 0)
       {
-        this.Guh.add(getContext().getString(2131762136));
-        this.Gug.add(Integer.valueOf(g.jws));
+        this.NhA.add(getContext().getString(a.f.NgN));
+        this.Nhz.add(Integer.valueOf(g.mlV));
       }
-      if ((i & g.jwt) != 0)
+      if ((i & g.mlW) != 0)
       {
-        this.Guh.add(getContext().getString(2131762138));
-        this.Gug.add(Integer.valueOf(g.jwt));
+        this.NhA.add(getContext().getString(a.f.NgP));
+        this.Nhz.add(Integer.valueOf(g.mlW));
         AppMethodBeat.o(102556);
       }
     }
     else if (LocaleUtil.getApplicationLanguage().equals("en"))
     {
-      this.Guh.add(getContext().getString(2131762136));
-      this.Gug.add(Integer.valueOf(g.jws));
-      this.Guh.add(getContext().getString(2131762137));
-      this.Gug.add(Integer.valueOf(g.jwq));
-      if ((i & g.jwr) != 0)
+      this.NhA.add(getContext().getString(a.f.NgN));
+      this.Nhz.add(Integer.valueOf(g.mlV));
+      this.NhA.add(getContext().getString(a.f.NgO));
+      this.Nhz.add(Integer.valueOf(g.mlT));
+      if ((i & g.mlU) != 0)
       {
-        this.Guh.add(getContext().getString(2131762135));
-        this.Gug.add(Integer.valueOf(g.jwr));
+        this.NhA.add(getContext().getString(a.f.NgM));
+        this.Nhz.add(Integer.valueOf(g.mlU));
       }
     }
     AppMethodBeat.o(102556);
   }
   
-  public final void fAw()
+  public final void gsx()
   {
     AppMethodBeat.i(102554);
     Object localObject1 = this.containerView;
     if (localObject1 != null) {
       ((LinearLayout)localObject1).removeAllViews();
     }
-    localObject1 = ((Iterable)this.Gug).iterator();
+    localObject1 = ((Iterable)this.Nhz).iterator();
     int i = 0;
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = ((Iterator)localObject1).next();
       int j = i + 1;
       if (i < 0) {
-        j.hxH();
+        j.iBO();
       }
       int k = ((Number)localObject2).intValue();
-      localObject2 = getLayoutInflater().inflate(2131495152, null);
+      localObject2 = getLayoutInflater().inflate(com.tencent.mm.plugin.transvoice.a.e.NgI, null);
       if (localObject2 == null)
       {
         localObject1 = new t("null cannot be cast to non-null type android.widget.FrameLayout");
@@ -120,10 +122,10 @@ public final class a
         throw ((Throwable)localObject1);
       }
       localObject2 = (FrameLayout)localObject2;
-      ((TextView)((FrameLayout)localObject2).findViewById(2131303004)).setText((CharSequence)this.Guh.get(i));
-      Object localObject3 = ((FrameLayout)localObject2).findViewById(2131303003);
-      p.g(localObject3, "item.findViewById<View>(…language_choice_selected)");
-      if (k == this.jvS) {}
+      ((TextView)((FrameLayout)localObject2).findViewById(com.tencent.mm.plugin.transvoice.a.d.Ngt)).setText((CharSequence)this.NhA.get(i));
+      Object localObject3 = ((FrameLayout)localObject2).findViewById(com.tencent.mm.plugin.transvoice.a.d.Ngs);
+      p.j(localObject3, "item.findViewById<View>(…language_choice_selected)");
+      if (k == this.mlv) {}
       for (i = 0;; i = 4)
       {
         ((View)localObject3).setVisibility(i);
@@ -131,13 +133,13 @@ public final class a
         localObject3 = new FrameLayout.LayoutParams(-1, -2);
         LinearLayout localLinearLayout = this.containerView;
         if (localLinearLayout == null) {
-          break label243;
+          break label245;
         }
         localLinearLayout.addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
         i = j;
         break;
       }
-      label243:
+      label245:
       i = j;
     }
     AppMethodBeat.o(102554);
@@ -146,11 +148,11 @@ public final class a
   public final void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(102553);
-    this.targetView = LayoutInflater.from(getContext()).inflate(2131495151, null, false);
+    this.kJL = LayoutInflater.from(getContext()).inflate(com.tencent.mm.plugin.transvoice.a.e.NgH, null, false);
     ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
-    View localView = this.targetView;
+    View localView = this.kJL;
     if (localView == null) {
-      p.hyc();
+      p.iCn();
     }
     setContentView(localView, localLayoutParams);
     super.onCreate(paramBundle);
@@ -161,28 +163,28 @@ public final class a
       paramBundle.setLayout(-1, -1);
       paramBundle.setSoftInputMode(34);
       paramBundle.setDimAmount(0.5F);
-      paramBundle.setWindowAnimations(2131820793);
+      paramBundle.setWindowAnimations(a.g.BottomToTopSlowAnimation);
     }
-    paramBundle = this.targetView;
+    paramBundle = this.kJL;
     if (paramBundle != null)
     {
-      this.Guf = ((ImageView)paramBundle.findViewById(2131298784));
-      this.containerView = ((LinearLayout)paramBundle.findViewById(2131303001));
+      this.Nhy = ((ImageView)paramBundle.findViewById(com.tencent.mm.plugin.transvoice.a.d.Ngo));
+      this.containerView = ((LinearLayout)paramBundle.findViewById(com.tencent.mm.plugin.transvoice.a.d.Ngr));
     }
-    paramBundle = this.Guf;
+    paramBundle = this.Nhy;
     if (paramBundle != null) {
       paramBundle.setOnClickListener((View.OnClickListener)new c(this));
     }
-    paramBundle = this.targetView;
+    paramBundle = this.kJL;
     if (paramBundle != null) {}
-    for (paramBundle = paramBundle.findViewById(2131306536);; paramBundle = null)
+    for (paramBundle = paramBundle.findViewById(com.tencent.mm.plugin.transvoice.a.d.NgC);; paramBundle = null)
     {
-      this.Gui = MMBottomSheetBehavior.x(paramBundle);
-      paramBundle = this.Gui;
+      this.NhB = MMBottomSheetBehavior.c(paramBundle);
+      paramBundle = this.NhB;
       if (paramBundle != null) {
         paramBundle.a((MMBottomSheetBehavior.a)new d(this));
       }
-      fAw();
+      gsx();
       AppMethodBeat.o(102553);
       return;
     }
@@ -192,26 +194,26 @@ public final class a
   {
     AppMethodBeat.i(102555);
     super.show();
-    MMBottomSheetBehavior localMMBottomSheetBehavior = this.Gui;
+    MMBottomSheetBehavior localMMBottomSheetBehavior = this.NhB;
     if (localMMBottomSheetBehavior != null)
     {
-      localMMBottomSheetBehavior.cU();
+      localMMBottomSheetBehavior.T();
       AppMethodBeat.o(102555);
       return;
     }
     AppMethodBeat.o(102555);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog$Companion;", "", "()V", "MODE_ONLY_PANEL_CLOSE_PANEL_OFFSET", "", "TAG", "", "plugin-transvoice_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog$Companion;", "", "()V", "MODE_ONLY_PANEL_CLOSE_PANEL_OFFSET", "", "TAG", "", "plugin-transvoice_release"})
   public static final class a {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog$OnLanguageItemClick;", "", "onLanguageItemClick", "", "langType", "", "plugin-transvoice_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog$OnLanguageItemClick;", "", "onLanguageItemClick", "", "langType", "", "plugin-transvoice_release"})
   public static abstract interface b
   {
-    public abstract void acp(int paramInt);
+    public abstract void ajW(int paramInt);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
@@ -221,23 +223,23 @@ public final class a
     {
       AppMethodBeat.i(102549);
       b localb = new b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog$init$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      this.Gum.dismiss();
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog$init$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      this.NhF.dismiss();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog$init$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(102549);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog$init$3", "Landroid/support/design/widget/MMBottomSheetBehavior$BottomSheetCallback;", "onSlide", "", "bottomSheet", "Landroid/view/View;", "slideOffset", "", "onStateChanged", "newState", "", "plugin-transvoice_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog$init$3", "Landroid/support/design/widget/MMBottomSheetBehavior$BottomSheetCallback;", "onSlide", "", "bottomSheet", "Landroid/view/View;", "slideOffset", "", "onStateChanged", "newState", "", "plugin-transvoice_release"})
   public static final class d
     extends MMBottomSheetBehavior.a
   {
     public final void b(View paramView, float paramFloat)
     {
       AppMethodBeat.i(102550);
-      p.h(paramView, "bottomSheet");
-      paramView = this.Gum;
+      p.k(paramView, "bottomSheet");
+      paramView = this.NhF;
       if (0.7F >= paramFloat) {}
       for (boolean bool = true;; bool = false)
       {
@@ -247,22 +249,22 @@ public final class a
       }
     }
     
-    public final void f(View paramView, int paramInt)
+    public final void e(View paramView, int paramInt)
     {
       AppMethodBeat.i(102551);
-      p.h(paramView, "bottomSheet");
+      p.k(paramView, "bottomSheet");
       if (2 == paramInt)
       {
-        if (a.a(this.Gum))
+        if (a.a(this.NhF))
         {
-          this.Gum.dismiss();
+          this.NhF.dismiss();
           AppMethodBeat.o(102551);
           return;
         }
-        paramView = a.b(this.Gum);
+        paramView = a.b(this.NhF);
         if (paramView != null)
         {
-          paramView.cU();
+          paramView.T();
           AppMethodBeat.o(102551);
           return;
         }
@@ -271,7 +273,7 @@ public final class a
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog$updateSelectedType$1$1"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog$updateSelectedType$1$1"})
   static final class e
     implements View.OnClickListener
   {
@@ -281,13 +283,13 @@ public final class a
     {
       AppMethodBeat.i(102552);
       b localb = new b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog$updateSelectedType$$inlined$forEachIndexed$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      jdField_this.jvS = this.$type;
-      jdField_this.fAw();
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog$updateSelectedType$$inlined$forEachIndexed$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      jdField_this.mlv = this.cPi;
+      jdField_this.gsx();
       paramView = a.c(jdField_this);
       if (paramView != null) {
-        paramView.acp(jdField_this.jvS);
+        paramView.ajW(jdField_this.mlv);
       }
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog$updateSelectedType$$inlined$forEachIndexed$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(102552);
@@ -296,7 +298,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.transvoice.ui.a
  * JD-Core Version:    0.7.0.1
  */

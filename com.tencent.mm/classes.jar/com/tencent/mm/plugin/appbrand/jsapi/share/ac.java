@@ -1,64 +1,69 @@
 package com.tencent.mm.plugin.appbrand.jsapi.share;
 
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.luggage.sdk.g.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.a.d.a;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.widget.snackbar.a.c;
-import com.tencent.mm.ui.widget.snackbar.b;
-import kotlin.g.b.z.d;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareVideoToConversationLogic;", "", "()V", "SHARE_VIDEO_REQUEST_CODE", "", "buildSelectConversationIntent", "Landroid/content/Intent;", "videoPath", "", "doShare", "", "activity", "Landroid/app/Activity;", "thumbPath", "shareCallBack", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareResult;", "Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareCallBack;", "doShareVideoAfterSelectConversation", "durationS", "selectedUsers", "", "customSendText", "onVideoSent", "Ljava/lang/Runnable;", "isVideoLegal2Share", "isVideoLegalCallback", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/share/IsFileLegalCallback;", "plugin-appbrand-integration_release"})
-final class ac
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareResult;", "", "flattenVal", "", "(Ljava/lang/String;II)V", "getFlattenVal", "()I", "SUCCESS", "CANCEL", "FAIL", "Companion", "plugin-appbrand-integration_release"})
+public enum ac
 {
-  private static final int msZ;
-  public static final ac mta;
+  public static final a prh;
+  final int prg;
   
   static
   {
-    AppMethodBeat.i(228564);
-    ac localac = new ac();
-    mta = localac;
-    msZ = a.aK(localac);
-    AppMethodBeat.o(228564);
+    AppMethodBeat.i(280393);
+    ac localac1 = new ac("SUCCESS", 0, 0);
+    prc = localac1;
+    ac localac2 = new ac("CANCEL", 1, 1);
+    prd = localac2;
+    ac localac3 = new ac("FAIL", 2, 2);
+    pre = localac3;
+    prf = new ac[] { localac1, localac2, localac3 };
+    prh = new a((byte)0);
+    AppMethodBeat.o(280393);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onSent"})
-  static final class b
-    implements d.a
+  private ac(int paramInt)
   {
-    b(String paramString, z.d paramd, Activity paramActivity, Runnable paramRunnable) {}
-    
-    public final void bIM()
+    this.prg = paramInt;
+  }
+  
+  public static final ac AK(int paramInt)
+  {
+    AppMethodBeat.i(280397);
+    ac localac = a.AK(paramInt);
+    AppMethodBeat.o(280397);
+    return localac;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareResult$Companion;", "", "()V", "from", "Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareResult;", "flattenVal", "", "plugin-appbrand-integration_release"})
+  public static final class a
+  {
+    public static ac AK(int paramInt)
     {
-      AppMethodBeat.i(228561);
-      Log.d("MicroMsg.AppBrand.JsApiShareVideoMessage", "doShareVideoAfterSelectConversation, send video to " + this.mtf + " done");
-      z.d locald = this.mtg;
-      locald.SYE -= 1;
-      if (this.mtg.SYE <= 0)
+      AppMethodBeat.i(282143);
+      ac[] arrayOfac = ac.values();
+      int k = arrayOfac.length;
+      int i = 0;
+      while (i < k)
       {
-        Log.i("MicroMsg.AppBrand.JsApiShareVideoMessage", "doShareVideoAfterSelectConversation, send video done");
-        b.a((Context)this.msB, null, this.msB.getString(2131760708), (a.c)new v()
+        ac localac = arrayOfac[i];
+        if (paramInt == localac.prg) {}
+        for (int j = 1; j != 0; j = 0)
         {
-          public final void onHide()
-          {
-            AppMethodBeat.i(228560);
-            Log.i("MicroMsg.AppBrand.JsApiShareVideoMessage", "doShareVideoAfterSelectConversation, snackBar hide");
-            this.mth.msG.run();
-            AppMethodBeat.o(228560);
-          }
-        });
+          AppMethodBeat.o(282143);
+          return localac;
+        }
+        i += 1;
       }
-      AppMethodBeat.o(228561);
+      AppMethodBeat.o(282143);
+      return null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.share.ac
  * JD-Core Version:    0.7.0.1
  */

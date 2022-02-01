@@ -5,14 +5,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class f
   implements o
 {
-  private final o[] bvD;
+  private final o[] bff;
   
   public f(o[] paramArrayOfo)
   {
-    this.bvD = paramArrayOfo;
+    this.bff = paramArrayOfo;
   }
   
-  public final boolean X(long paramLong)
+  public final boolean aa(long paramLong)
   {
     AppMethodBeat.i(92642);
     boolean bool3 = false;
@@ -20,12 +20,12 @@ public final class f
     boolean bool1;
     do
     {
-      long l = vr();
+      long l = tp();
       bool4 = bool3;
       if (l == -9223372036854775808L) {
         break;
       }
-      o[] arrayOfo = this.bvD;
+      o[] arrayOfo = this.bff;
       int j = arrayOfo.length;
       int i = 0;
       boolean bool2;
@@ -33,8 +33,8 @@ public final class f
       {
         o localo = arrayOfo[i];
         bool2 = bool1;
-        if (localo.vr() == l) {
-          bool2 = bool1 | localo.X(paramLong);
+        if (localo.tp() == l) {
+          bool2 = bool1 | localo.aa(paramLong);
         }
         i += 1;
       }
@@ -45,16 +45,16 @@ public final class f
     return bool4;
   }
   
-  public final long vq()
+  public final long to()
   {
     AppMethodBeat.i(92640);
-    o[] arrayOfo = this.bvD;
+    o[] arrayOfo = this.bff;
     int j = arrayOfo.length;
     int i = 0;
     long l2;
     for (long l1 = 9223372036854775807L; i < j; l1 = l2)
     {
-      long l3 = arrayOfo[i].vq();
+      long l3 = arrayOfo[i].to();
       l2 = l1;
       if (l3 != -9223372036854775808L) {
         l2 = Math.min(l1, l3);
@@ -70,16 +70,16 @@ public final class f
     return l1;
   }
   
-  public final long vr()
+  public final long tp()
   {
     AppMethodBeat.i(92641);
-    o[] arrayOfo = this.bvD;
+    o[] arrayOfo = this.bff;
     int j = arrayOfo.length;
     int i = 0;
     long l2;
     for (long l1 = 9223372036854775807L; i < j; l1 = l2)
     {
-      long l3 = arrayOfo[i].vr();
+      long l3 = arrayOfo[i].tp();
       l2 = l1;
       if (l3 != -9223372036854775808L) {
         l2 = Math.min(l1, l3);
@@ -97,7 +97,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.source.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mm.obb.loader;
 
 import android.content.pm.ApplicationInfo;
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.mm.app.Application;
 import com.tencent.tinker.loader.shareutil.ShareReflectUtil;
 import dalvik.system.BaseDexClassLoader;
@@ -196,7 +196,7 @@ public class ObbClassLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.obb.loader.ObbClassLoader
  * JD-Core Version:    0.7.0.1
  */

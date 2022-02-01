@@ -1,134 +1,91 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class eah
-  extends dop
+  extends com.tencent.mm.cd.a
 {
-  public SKBuiltinBuffer_t KLQ;
-  public int MZB;
-  public LinkedList<eae> MZC;
-  
-  public eah()
-  {
-    AppMethodBeat.i(125798);
-    this.MZC = new LinkedList();
-    AppMethodBeat.o(125798);
-  }
+  public String CMP;
+  public int CreateTime;
+  public String RMK;
+  public String Sll;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125799);
+    AppMethodBeat.i(134254);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      if (this.CMP != null) {
+        paramVarArgs.f(1, this.CMP);
       }
-      paramVarArgs.aM(2, this.MZB);
-      paramVarArgs.e(3, 8, this.MZC);
-      if (this.KLQ != null)
-      {
-        paramVarArgs.ni(4, this.KLQ.computeSize());
-        this.KLQ.writeFields(paramVarArgs);
+      if (this.Sll != null) {
+        paramVarArgs.f(2, this.Sll);
       }
-      AppMethodBeat.o(125799);
+      if (this.RMK != null) {
+        paramVarArgs.f(3, this.RMK);
+      }
+      paramVarArgs.aY(4, this.CreateTime);
+      AppMethodBeat.o(134254);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label646;
+      if (this.CMP == null) {
+        break label378;
       }
     }
-    label646:
-    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label378:
+    for (int i = g.a.a.b.b.a.g(1, this.CMP) + 0;; i = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.bu(2, this.MZB) + g.a.a.a.c(3, 8, this.MZC);
       paramInt = i;
-      if (this.KLQ != null) {
-        paramInt = i + g.a.a.a.nh(4, this.KLQ.computeSize());
+      if (this.Sll != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.Sll);
       }
-      AppMethodBeat.o(125799);
-      return paramInt;
+      i = paramInt;
+      if (this.RMK != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.RMK);
+      }
+      paramInt = g.a.a.b.b.a.bM(4, this.CreateTime);
+      AppMethodBeat.o(134254);
+      return i + paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.MZC.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(125799);
+        AppMethodBeat.o(134254);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         eah localeah = (eah)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(125799);
+          AppMethodBeat.o(134254);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localeah.BaseRequest = ((jr)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(125799);
+          localeah.CMP = locala.abFh.readString();
+          AppMethodBeat.o(134254);
           return 0;
         case 2: 
-          localeah.MZB = ((g.a.a.a.a)localObject1).UbS.zi();
-          AppMethodBeat.o(125799);
+          localeah.Sll = locala.abFh.readString();
+          AppMethodBeat.o(134254);
           return 0;
         case 3: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new eae();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((eae)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localeah.MZC.add(localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(125799);
+          localeah.RMK = locala.abFh.readString();
+          AppMethodBeat.o(134254);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new SKBuiltinBuffer_t();
-          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-          localeah.KLQ = ((SKBuiltinBuffer_t)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(125799);
+        localeah.CreateTime = locala.abFh.AK();
+        AppMethodBeat.o(134254);
         return 0;
       }
-      AppMethodBeat.o(125799);
+      AppMethodBeat.o(134254);
       return -1;
     }
   }

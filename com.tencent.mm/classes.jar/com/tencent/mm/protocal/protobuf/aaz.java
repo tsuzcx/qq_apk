@@ -1,100 +1,74 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class aaz
-  extends dop
+  extends com.tencent.mm.cd.a
 {
-  public String KDQ;
-  public boolean Lml;
-  public long hyH;
+  public String Snp;
+  public double latitude;
+  public double longitude;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(207463);
+    AppMethodBeat.i(50084);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      if (this.Snp != null) {
+        paramVarArgs.f(1, this.Snp);
       }
-      paramVarArgs.bb(2, this.hyH);
-      if (this.KDQ != null) {
-        paramVarArgs.e(3, this.KDQ);
-      }
-      paramVarArgs.cc(4, this.Lml);
-      AppMethodBeat.o(207463);
+      paramVarArgs.e(2, this.longitude);
+      paramVarArgs.e(3, this.latitude);
+      AppMethodBeat.o(50084);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label458;
+      if (this.Snp == null) {
+        break label308;
       }
     }
-    label458:
-    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label308:
+    for (paramInt = g.a.a.b.b.a.g(1, this.Snp) + 0;; paramInt = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.r(2, this.hyH);
-      paramInt = i;
-      if (this.KDQ != null) {
-        paramInt = i + g.a.a.b.b.a.f(3, this.KDQ);
-      }
-      i = g.a.a.b.b.a.fS(4);
-      AppMethodBeat.o(207463);
-      return paramInt + (i + 1);
+      int i = g.a.a.b.b.a.gL(2);
+      int j = g.a.a.b.b.a.gL(3);
+      AppMethodBeat.o(50084);
+      return paramInt + (i + 8) + (j + 8);
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(207463);
+        AppMethodBeat.o(50084);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         aaz localaaz = (aaz)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(207463);
+          AppMethodBeat.o(50084);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localaaz.BaseRequest = ((jr)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(207463);
+          localaaz.Snp = locala.abFh.readString();
+          AppMethodBeat.o(50084);
           return 0;
         case 2: 
-          localaaz.hyH = ((g.a.a.a.a)localObject1).UbS.zl();
-          AppMethodBeat.o(207463);
-          return 0;
-        case 3: 
-          localaaz.KDQ = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(207463);
+          localaaz.longitude = Double.longBitsToDouble(locala.abFh.AP());
+          AppMethodBeat.o(50084);
           return 0;
         }
-        localaaz.Lml = ((g.a.a.a.a)localObject1).UbS.yZ();
-        AppMethodBeat.o(207463);
+        localaaz.latitude = Double.longBitsToDouble(locala.abFh.AP());
+        AppMethodBeat.o(50084);
         return 0;
       }
-      AppMethodBeat.o(207463);
+      AppMethodBeat.o(50084);
       return -1;
     }
   }

@@ -11,33 +11,33 @@ import org.json.JSONObject;
 public class f
   extends b
 {
-  public final void a(String paramString, JSONObject paramJSONObject)
+  public final void a(String paramString, JSONObject paramJSONObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(186908);
+    AppMethodBeat.i(231715);
     long l = paramJSONObject.optLong("download_id");
     if (l <= 0L)
     {
       Log.i("LiteAppJsApiInstallDownloadTask", "data is null");
-      this.yEn.aCS("fail_invalid_data");
-      AppMethodBeat.o(186908);
+      this.Ega.aNa("fail_invalid_data");
+      AppMethodBeat.o(231715);
       return;
     }
-    paramString = com.tencent.mm.plugin.downloader.model.f.cBv().Co(l);
+    paramString = com.tencent.mm.plugin.downloader.model.f.cPZ().Ix(l);
     if (paramString.status == -1)
     {
       Log.e("LiteAppJsApiInstallDownloadTask", "installDownloadTask fail, apilevel not supported");
-      this.yEn.aCS("fail");
-      AppMethodBeat.o(186908);
+      this.Ega.aNa("fail");
+      AppMethodBeat.o(231715);
       return;
     }
     if (paramString.status != 3)
     {
       Log.e("LiteAppJsApiInstallDownloadTask", "installDownloadTask fail, invalid status = " + paramString.status);
-      this.yEn.aCS("fail");
-      AppMethodBeat.o(186908);
+      this.Ega.aNa("fail");
+      AppMethodBeat.o(231715);
       return;
     }
-    com.tencent.mm.plugin.downloader.g.a locala = d.Cw(l);
+    com.tencent.mm.plugin.downloader.g.a locala = d.IF(l);
     if (locala != null)
     {
       int i = paramJSONObject.optInt("scene");
@@ -52,23 +52,23 @@ public class f
     }
     com.tencent.mm.plugin.downloader.i.a.a(paramString.id, false, new com.tencent.mm.pluginsdk.permission.a()
     {
-      public final void hk(boolean paramAnonymousBoolean)
+      public final void ia(boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(186907);
+        AppMethodBeat.i(231963);
         if (paramAnonymousBoolean)
         {
-          f.a(f.this).ecz();
-          AppMethodBeat.o(186907);
+          f.a(f.this).eLC();
+          AppMethodBeat.o(231963);
           return;
         }
-        f.b(f.this).aCS("fail");
-        AppMethodBeat.o(186907);
+        f.b(f.this).aNa("fail");
+        AppMethodBeat.o(231963);
       }
     });
-    AppMethodBeat.o(186908);
+    AppMethodBeat.o(231715);
   }
   
-  public final int dTw()
+  public final int ewF()
   {
     return 1;
   }

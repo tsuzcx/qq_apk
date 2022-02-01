@@ -13,16 +13,16 @@ public final class a
   
   public static PrivateKey a(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(222045);
+    AppMethodBeat.i(235788);
     paramArrayOfByte = new PKCS8EncodedKeySpec(paramArrayOfByte);
     paramArrayOfByte = KeyFactory.getInstance(a).generatePrivate(paramArrayOfByte);
-    AppMethodBeat.o(222045);
+    AppMethodBeat.o(235788);
     return paramArrayOfByte;
   }
   
   public static byte[] a(byte[] paramArrayOfByte, PrivateKey paramPrivateKey)
   {
-    AppMethodBeat.i(222044);
+    AppMethodBeat.i(235787);
     Cipher localCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
     localCipher.init(2, paramPrivateKey);
     int j = paramArrayOfByte.length;
@@ -40,13 +40,13 @@ public final class a
     }
     paramArrayOfByte = localByteArrayOutputStream.toByteArray();
     localByteArrayOutputStream.close();
-    AppMethodBeat.o(222044);
+    AppMethodBeat.o(235787);
     return paramArrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.basic.d.a
  * JD-Core Version:    0.7.0.1
  */

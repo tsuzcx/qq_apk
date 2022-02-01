@@ -3,51 +3,45 @@ package com.tencent.mm.plugin.eggspring;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.b.f;
-import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.kernel.f.c;
 import com.tencent.mm.plugin.eggspring.a.a;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.game.luggage.h;
 import com.tencent.mm.plugin.game.luggage.h.a;
 import com.tencent.mm.plugin.game.luggage.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.thread.ThreadPool;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-import kotlin.g.b.p;
-import kotlin.n.n;
 
 public class PluginEggSpring
   extends f
   implements c, a
 {
-  private static final String qUE;
-  public static final String qUF;
-  public static final String qUG;
-  private final Set<String> qUH;
+  private static final String uwK;
+  public static final String uwL;
+  public static final String uwM;
+  private final Set<String> uwN;
   
   static
   {
     AppMethodBeat.i(108141);
-    qUE = com.tencent.mm.loader.j.b.aLB();
+    uwK = com.tencent.mm.loader.j.b.aTG();
     StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = com.tencent.mm.plugin.eggspring.c.b.qVd;
-    localObject = new StringBuilder();
-    String str = com.tencent.mm.loader.j.b.aKC();
-    p.g(str, "CConstants.DATAROOT_PUBLIC_PATH()");
-    qUF = ((StringBuilder)localObject).append(n.j(str, "/data/user/0", "/data/data", false)).append("/emoji/").toString() + "egg_spring/";
-    qUG = qUF + "innerLuckyBag.wxam";
+    com.tencent.mm.plugin.eggspring.c.b.a locala = com.tencent.mm.plugin.eggspring.c.b.uxQ;
+    uwL = new StringBuilder().append(com.tencent.mm.loader.j.b.aSE()).append("/emoji/").toString() + "egg_spring/";
+    uwM = uwL + "innerLuckyBag.wxam";
     AppMethodBeat.o(108141);
   }
   
   public PluginEggSpring()
   {
-    AppMethodBeat.i(194690);
-    this.qUH = new HashSet();
-    AppMethodBeat.o(194690);
+    AppMethodBeat.i(249629);
+    this.uwN = new HashSet();
+    AppMethodBeat.o(249629);
   }
   
   /* Error */
@@ -58,96 +52,96 @@ public class PluginEggSpring
     //   1: astore 6
     //   3: iconst_1
     //   4: istore_3
-    //   5: ldc 110
+    //   5: ldc 92
     //   7: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   10: invokestatic 116	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
-    //   13: invokevirtual 122	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   10: invokestatic 98	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   13: invokevirtual 104	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   16: astore 5
     //   18: aload 5
     //   20: aload_1
-    //   21: invokevirtual 128	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   21: invokevirtual 110	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   24: astore 7
-    //   26: new 130	com/tencent/mm/vfs/o
+    //   26: new 112	com/tencent/mm/vfs/q
     //   29: dup
     //   30: aload_2
-    //   31: invokespecial 133	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   31: invokespecial 115	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
     //   34: astore_1
     //   35: aload_1
-    //   36: invokevirtual 137	com/tencent/mm/vfs/o:exists	()Z
+    //   36: invokevirtual 119	com/tencent/mm/vfs/q:ifE	()Z
     //   39: istore 4
     //   41: iload 4
     //   43: ifeq +19 -> 62
     //   46: aload 7
     //   48: ifnull +8 -> 56
     //   51: aload 7
-    //   53: invokevirtual 142	java/io/InputStream:close	()V
-    //   56: ldc 110
-    //   58: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   53: invokevirtual 124	java/io/InputStream:close	()V
+    //   56: ldc 92
+    //   58: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   61: return
     //   62: aload_1
-    //   63: invokevirtual 146	com/tencent/mm/vfs/o:heq	()Lcom/tencent/mm/vfs/o;
-    //   66: invokevirtual 149	com/tencent/mm/vfs/o:mkdirs	()Z
+    //   63: invokevirtual 128	com/tencent/mm/vfs/q:ifB	()Lcom/tencent/mm/vfs/q;
+    //   66: invokevirtual 131	com/tencent/mm/vfs/q:ifL	()Z
     //   69: pop
     //   70: aload_1
-    //   71: invokestatic 155	com/tencent/mm/vfs/s:ap	(Lcom/tencent/mm/vfs/o;)Ljava/io/OutputStream;
+    //   71: invokestatic 137	com/tencent/mm/vfs/u:an	(Lcom/tencent/mm/vfs/q;)Ljava/io/OutputStream;
     //   74: astore 8
     //   76: aload_0
     //   77: aload 7
     //   79: aload 8
-    //   81: invokespecial 159	com/tencent/mm/plugin/eggspring/PluginEggSpring:copyFile	(Ljava/io/InputStream;Ljava/io/OutputStream;)V
+    //   81: invokespecial 141	com/tencent/mm/plugin/eggspring/PluginEggSpring:copyFile	(Ljava/io/InputStream;Ljava/io/OutputStream;)V
     //   84: iload_3
     //   85: istore 4
     //   87: aload 8
     //   89: ifnull +11 -> 100
     //   92: aload 8
-    //   94: invokevirtual 162	java/io/OutputStream:close	()V
+    //   94: invokevirtual 144	java/io/OutputStream:close	()V
     //   97: iload_3
     //   98: istore 4
     //   100: iload 4
     //   102: ifne +8 -> 110
     //   105: aload_2
-    //   106: invokestatic 166	com/tencent/mm/vfs/s:deleteFile	(Ljava/lang/String;)Z
+    //   106: invokestatic 148	com/tencent/mm/vfs/u:deleteFile	(Ljava/lang/String;)Z
     //   109: pop
-    //   110: ldc 168
-    //   112: ldc 170
+    //   110: ldc 150
+    //   112: ldc 152
     //   114: iconst_1
-    //   115: anewarray 172	java/lang/Object
+    //   115: anewarray 154	java/lang/Object
     //   118: dup
     //   119: iconst_0
     //   120: iload 4
-    //   122: invokestatic 178	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   122: invokestatic 160	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   125: aastore
-    //   126: invokestatic 183	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   126: invokestatic 165	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   129: aload 7
     //   131: ifnull +179 -> 310
     //   134: aload 7
-    //   136: invokevirtual 142	java/io/InputStream:close	()V
-    //   139: ldc 110
-    //   141: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   136: invokevirtual 124	java/io/InputStream:close	()V
+    //   139: ldc 92
+    //   141: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   144: return
     //   145: astore_1
-    //   146: ldc 168
+    //   146: ldc 150
     //   148: aload_1
-    //   149: ldc 185
+    //   149: ldc 167
     //   151: iconst_0
-    //   152: anewarray 172	java/lang/Object
-    //   155: invokestatic 189	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   158: ldc 110
-    //   160: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   152: anewarray 154	java/lang/Object
+    //   155: invokestatic 171	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   158: ldc 92
+    //   160: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   163: return
     //   164: astore_1
-    //   165: ldc 168
+    //   165: ldc 150
     //   167: aload_1
-    //   168: ldc 191
+    //   168: ldc 173
     //   170: iconst_0
-    //   171: anewarray 172	java/lang/Object
-    //   174: invokestatic 189	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   171: anewarray 154	java/lang/Object
+    //   174: invokestatic 171	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   177: iconst_0
     //   178: istore_3
     //   179: goto -95 -> 84
     //   182: astore 5
-    //   184: ldc 110
-    //   186: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   184: ldc 92
+    //   186: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   189: aload 5
     //   191: athrow
     //   192: astore_1
@@ -156,29 +150,29 @@ public class PluginEggSpring
     //   198: aload 5
     //   200: ifnull +76 -> 276
     //   203: aload 8
-    //   205: invokevirtual 162	java/io/OutputStream:close	()V
-    //   208: ldc 110
-    //   210: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   205: invokevirtual 144	java/io/OutputStream:close	()V
+    //   208: ldc 92
+    //   210: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   213: aload_1
     //   214: athrow
     //   215: astore_1
-    //   216: ldc 168
+    //   216: ldc 150
     //   218: aload_1
-    //   219: ldc 193
+    //   219: ldc 175
     //   221: iconst_0
-    //   222: anewarray 172	java/lang/Object
-    //   225: invokestatic 189	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   222: anewarray 154	java/lang/Object
+    //   225: invokestatic 171	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   228: iconst_0
     //   229: istore 4
     //   231: goto -131 -> 100
     //   234: astore 8
     //   236: aload 5
     //   238: aload 8
-    //   240: invokevirtual 197	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   240: invokevirtual 179	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   243: goto -35 -> 208
     //   246: astore_2
-    //   247: ldc 110
-    //   249: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   247: ldc 92
+    //   249: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   252: aload_2
     //   253: athrow
     //   254: astore_1
@@ -187,13 +181,13 @@ public class PluginEggSpring
     //   260: aload_2
     //   261: ifnull +41 -> 302
     //   264: aload 7
-    //   266: invokevirtual 142	java/io/InputStream:close	()V
-    //   269: ldc 110
-    //   271: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   266: invokevirtual 124	java/io/InputStream:close	()V
+    //   269: ldc 92
+    //   271: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   274: aload_1
     //   275: athrow
     //   276: aload 8
-    //   278: invokevirtual 162	java/io/OutputStream:close	()V
+    //   278: invokevirtual 144	java/io/OutputStream:close	()V
     //   281: goto -73 -> 208
     //   284: astore_1
     //   285: aload 6
@@ -202,13 +196,13 @@ public class PluginEggSpring
     //   291: astore 5
     //   293: aload_2
     //   294: aload 5
-    //   296: invokevirtual 197	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   296: invokevirtual 179	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   299: goto -30 -> 269
     //   302: aload 7
-    //   304: invokevirtual 142	java/io/InputStream:close	()V
+    //   304: invokevirtual 124	java/io/InputStream:close	()V
     //   307: goto -38 -> 269
-    //   310: ldc 110
-    //   312: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   310: ldc 92
+    //   312: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   315: return
     //   316: astore_1
     //   317: aconst_null
@@ -294,30 +288,30 @@ public class PluginEggSpring
   private void initDir()
   {
     AppMethodBeat.i(108137);
-    copyAsset("innerLuckyBag.wxam", qUG);
+    copyAsset("innerLuckyBag.wxam", uwM);
     AppMethodBeat.o(108137);
   }
   
   public void cleanPrefetch()
   {
-    AppMethodBeat.i(194692);
+    AppMethodBeat.i(249633);
     Log.i("MicroMsg.PluginEggSpring", "cleanPrefetch: ");
-    Iterator localIterator = this.qUH.iterator();
+    Iterator localIterator = this.uwN.iterator();
     while (localIterator.hasNext()) {
-      h.remove((String)localIterator.next());
+      com.tencent.mm.plugin.game.luggage.h.remove((String)localIterator.next());
     }
-    this.qUH.clear();
-    AppMethodBeat.o(194692);
+    this.uwN.clear();
+    AppMethodBeat.o(249633);
   }
   
-  public void execute(com.tencent.mm.kernel.b.g paramg)
+  public void execute(g paramg)
   {
     AppMethodBeat.i(108139);
     Log.i("MicroMsg.PluginEggSpring", "execute");
     AppMethodBeat.o(108139);
   }
   
-  public void onAccountInitialized(e.c paramc)
+  public void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(108135);
     Log.i("MicroMsg.PluginEggSpring", "onAccountInitialized");
@@ -326,11 +320,11 @@ public class PluginEggSpring
       public final void run()
       {
         AppMethodBeat.i(108134);
-        if (1 == ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.sko, 0))
+        if (1 == ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vUI, 0))
         {
           Log.i("MicroMsg.PluginEggSpring", "clear useless media.");
-          s.dy(PluginEggSpring.qUE, true);
-          s.dy(PluginEggSpring.qUF, true);
+          u.deleteDir(PluginEggSpring.uwK);
+          u.deleteDir(PluginEggSpring.uwL);
           AppMethodBeat.o(108134);
           return;
         }
@@ -350,28 +344,28 @@ public class PluginEggSpring
   
   public void prefetch(String paramString)
   {
-    AppMethodBeat.i(194691);
-    this.qUH.add(paramString);
-    if (h.azD(paramString) != null)
+    AppMethodBeat.i(249632);
+    this.uwN.add(paramString);
+    if (com.tencent.mm.plugin.game.luggage.h.aJn(paramString) != null)
     {
       Log.i("MicroMsg.PluginEggSpring", "has prefetch %s", new Object[] { paramString });
-      AppMethodBeat.o(194691);
+      AppMethodBeat.o(249632);
       return;
     }
-    int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.skr, 0);
+    int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vUL, 0);
     Log.i("MicroMsg.PluginEggSpring", "prefetch %s: config %s", new Object[] { paramString, Integer.valueOf(i) });
     if (i == 1) {
-      h.a(i.class, paramString, new h.a()
+      com.tencent.mm.plugin.game.luggage.h.a(i.class, paramString, new h.a()
       {
         public final void callback()
         {
-          AppMethodBeat.i(194689);
+          AppMethodBeat.i(249309);
           Log.i("MicroMsg.PluginEggSpring", "prefetch callback");
-          AppMethodBeat.o(194689);
+          AppMethodBeat.o(249309);
         }
       });
     }
-    AppMethodBeat.o(194691);
+    AppMethodBeat.o(249632);
   }
 }
 

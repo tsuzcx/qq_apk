@@ -3,44 +3,45 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class aip
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int centerX;
-  public int centerY;
-  public float mat;
-  public float scale;
+  public boolean Sti;
+  public boolean Stj;
+  public String Stk;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(201294);
+    AppMethodBeat.i(113998);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.centerX);
-      paramVarArgs.aM(2, this.centerY);
-      paramVarArgs.E(3, this.scale);
-      paramVarArgs.E(4, this.mat);
-      AppMethodBeat.o(201294);
+      paramVarArgs.co(1, this.Sti);
+      paramVarArgs.co(2, this.Stj);
+      if (this.Stk != null) {
+        paramVarArgs.f(3, this.Stk);
+      }
+      AppMethodBeat.o(113998);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.bu(1, this.centerX);
-      int i = g.a.a.b.b.a.bu(2, this.centerY);
-      int j = g.a.a.b.b.a.fS(3);
-      int k = g.a.a.b.b.a.fS(4);
-      AppMethodBeat.o(201294);
-      return paramInt + 0 + i + (j + 4) + (k + 4);
+      int i = g.a.a.b.b.a.gL(1) + 1 + 0 + (g.a.a.b.b.a.gL(2) + 1);
+      paramInt = i;
+      if (this.Stk != null) {
+        paramInt = i + g.a.a.b.b.a.g(3, this.Stk);
+      }
+      AppMethodBeat.o(113998);
+      return paramInt;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      AppMethodBeat.o(201294);
+      AppMethodBeat.o(113998);
       return 0;
     }
     if (paramInt == 3)
@@ -50,26 +51,22 @@ public final class aip
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(201294);
+        AppMethodBeat.o(113998);
         return -1;
       case 1: 
-        localaip.centerX = locala.UbS.zi();
-        AppMethodBeat.o(201294);
+        localaip.Sti = locala.abFh.AB();
+        AppMethodBeat.o(113998);
         return 0;
       case 2: 
-        localaip.centerY = locala.UbS.zi();
-        AppMethodBeat.o(201294);
-        return 0;
-      case 3: 
-        localaip.scale = Float.intBitsToFloat(locala.UbS.zm());
-        AppMethodBeat.o(201294);
+        localaip.Stj = locala.abFh.AB();
+        AppMethodBeat.o(113998);
         return 0;
       }
-      localaip.mat = Float.intBitsToFloat(locala.UbS.zm());
-      AppMethodBeat.o(201294);
+      localaip.Stk = locala.abFh.readString();
+      AppMethodBeat.o(113998);
       return 0;
     }
-    AppMethodBeat.o(201294);
+    AppMethodBeat.o(113998);
     return -1;
   }
 }

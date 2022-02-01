@@ -1,24 +1,26 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.card.b.b;
 import com.tencent.mm.plugin.card.b.l;
-import com.tencent.mm.protocal.protobuf.abn;
-import com.tencent.mm.protocal.protobuf.abo;
-import com.tencent.mm.protocal.protobuf.chh;
-import com.tencent.mm.protocal.protobuf.ux;
-import com.tencent.mm.protocal.protobuf.uy;
-import com.tencent.mm.protocal.protobuf.vb;
+import com.tencent.mm.protocal.protobuf.abu;
+import com.tencent.mm.protocal.protobuf.abv;
+import com.tencent.mm.protocal.protobuf.cqd;
+import com.tencent.mm.protocal.protobuf.uz;
+import com.tencent.mm.protocal.protobuf.va;
+import com.tencent.mm.protocal.protobuf.vd;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
@@ -31,97 +33,97 @@ public final class w
   implements m
 {
   private i callback;
-  private byte[] jcK;
-  private int pUh;
+  private byte[] lTj;
   private final d rr;
+  private int tqi;
   
   public w(int paramInt)
   {
     AppMethodBeat.i(112824);
-    this.pUh = 0;
+    this.tqi = 0;
     Log.d("MicroMsg.NetSceneCardSync", "<init>, selector = %d", new Object[] { Integer.valueOf(1) });
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new ux();
-    ((d.a)localObject).iLO = new uy();
+    ((d.a)localObject).lBU = new uz();
+    ((d.a)localObject).lBV = new va();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/cardsync";
     ((d.a)localObject).funcId = 1047;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = new chh();
-    ((chh)localObject).pVT = ((String)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.NTS, null));
-    ((chh)localObject).latitude = am.ctW().gmu;
-    ((chh)localObject).longitude = am.ctW().gmv;
-    ux localux = (ux)this.rr.iLK.iLR;
-    localux.Leu = 1;
-    localux.Lew = ((chh)localObject);
-    localux.Lex = paramInt;
-    this.pUh = paramInt;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = new cqd();
+    ((cqd)localObject).trU = ((String)h.aHG().aHp().get(ar.a.VhS, null));
+    ((cqd)localObject).latitude = am.cHy().iQD;
+    ((cqd)localObject).longitude = am.cHy().iQE;
+    uz localuz = (uz)d.b.b(this.rr.lBR);
+    localuz.SfH = 1;
+    localuz.SfJ = ((cqd)localObject);
+    localuz.SfK = paramInt;
+    this.tqi = paramInt;
     AppMethodBeat.o(112824);
   }
   
-  private static boolean a(abn paramabn)
+  private static boolean a(abu paramabu)
   {
     AppMethodBeat.i(112827);
-    if (paramabn == null)
+    if (paramabu == null)
     {
       Log.e("MicroMsg.NetSceneCardSync", "processCmdItem fail, null cmd");
       AppMethodBeat.o(112827);
       return false;
     }
-    byte[] arrayOfByte = z.a(paramabn.Lmt);
+    byte[] arrayOfByte = z.a(paramabu.SnH);
     if ((arrayOfByte == null) || (arrayOfByte.length == 0))
     {
       Log.e("MicroMsg.NetSceneCardSync", "processCmdItem fail, null buf");
       AppMethodBeat.o(112827);
       return false;
     }
-    Log.d("MicroMsg.NetSceneCardSync", "processCmdItem, buf length = %d, cmdId = %d", new Object[] { Integer.valueOf(arrayOfByte.length), Integer.valueOf(paramabn.Lms) });
+    Log.d("MicroMsg.NetSceneCardSync", "processCmdItem, buf length = %d, cmdId = %d", new Object[] { Integer.valueOf(arrayOfByte.length), Integer.valueOf(paramabu.SnG) });
     try
     {
-      switch (paramabn.Lms)
+      switch (paramabu.SnG)
       {
       case 1: 
-        Log.w("MicroMsg.NetSceneCardSync", "processCmdItem, unknown cmdId = %d", new Object[] { Integer.valueOf(paramabn.Lms) });
+        Log.w("MicroMsg.NetSceneCardSync", "processCmdItem, unknown cmdId = %d", new Object[] { Integer.valueOf(paramabu.SnG) });
         AppMethodBeat.o(112827);
         return false;
       }
     }
-    catch (Exception paramabn)
+    catch (Exception paramabu)
     {
-      Log.e("MicroMsg.NetSceneCardSync", "processCmdItem fail, ex = %s", new Object[] { paramabn.getMessage() });
+      Log.e("MicroMsg.NetSceneCardSync", "processCmdItem fail, ex = %s", new Object[] { paramabu.getMessage() });
       AppMethodBeat.o(112827);
       return false;
     }
-    paramabn = (vb)new vb().parseFrom(arrayOfByte);
-    Log.i("MicroMsg.NetSceneCardSync", "processCmdIem, card user item, Status = %d", new Object[] { Integer.valueOf(paramabn.oTW) });
-    switch (paramabn.oTW)
+    paramabu = (vd)new vd().parseFrom(arrayOfByte);
+    Log.i("MicroMsg.NetSceneCardSync", "processCmdIem, card user item, Status = %d", new Object[] { Integer.valueOf(paramabu.rVU) });
+    switch (paramabu.rVU)
     {
     }
     for (;;)
     {
-      Log.e("MicroMsg.NetSceneCardSync", "processCmdIem, card user item, unknown StateFlag = %d", new Object[] { Integer.valueOf(paramabn.Lfo) });
+      Log.e("MicroMsg.NetSceneCardSync", "processCmdIem, card user item, unknown StateFlag = %d", new Object[] { Integer.valueOf(paramabu.SgC) });
       AppMethodBeat.o(112827);
       return false;
-      am.ctP().a(paramabn);
+      am.cHr().a(paramabu);
       AppMethodBeat.o(112827);
       return true;
       break;
     }
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(112825);
     this.callback = parami;
-    parami = (ux)this.rr.iLK.iLR;
-    this.jcK = Util.decodeHexString(Util.nullAsNil((String)com.tencent.mm.kernel.g.aAh().azQ().get(282880, null)));
-    if ((this.jcK == null) || (this.jcK.length == 0)) {
+    parami = (uz)d.b.b(this.rr.lBR);
+    this.lTj = Util.decodeHexString(Util.nullAsNil((String)h.aHG().aHp().b(282880, null)));
+    if ((this.lTj == null) || (this.lTj.length == 0)) {
       Log.e("MicroMsg.NetSceneCardSync", "doScene, keyBuf is null, init card sync~~~");
     }
-    parami.Lev = z.aC(this.jcK);
-    if (this.jcK == null) {}
-    for (int i = 0;; i = this.jcK.length)
+    parami.SfI = z.aN(this.lTj);
+    if (this.lTj == null) {}
+    for (int i = 0;; i = this.lTj.length)
     {
       Log.i("MicroMsg.NetSceneCardSync", "doScene, keyBuf.length = %d", new Object[] { Integer.valueOf(i) });
       i = dispatch(paramg, this.rr, this);
@@ -146,12 +148,12 @@ public final class w
       AppMethodBeat.o(112826);
       return;
     }
-    paramArrayOfByte = (uy)this.rr.iLL.iLR;
-    if (paramArrayOfByte.Lez == 1) {
+    paramArrayOfByte = (va)d.c.b(this.rr.lBS);
+    if (paramArrayOfByte.SfM == 1) {
       Log.i("MicroMsg.NetSceneCardSync", "need do getCardsLayoutScene");
     }
-    this.jcK = z.a(paramArrayOfByte.Lev, new byte[0]);
-    if (paramArrayOfByte.Ley == null)
+    this.lTj = z.a(paramArrayOfByte.SfI, new byte[0]);
+    if (paramArrayOfByte.SfL == null)
     {
       ??? = null;
       if (??? != null) {
@@ -159,12 +161,12 @@ public final class w
       }
       paramInt1 = 0;
       label152:
-      if (this.jcK != null) {
+      if (this.lTj != null) {
         break label281;
       }
       paramInt2 = 0;
       label161:
-      Log.i("MicroMsg.NetSceneCardSync", "onGYNetEnd, cmd list size = %d, synckey length = %d, continueFlag = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramArrayOfByte.KZh) });
+      Log.i("MicroMsg.NetSceneCardSync", "onGYNetEnd, cmd list size = %d, synckey length = %d, continueFlag = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramArrayOfByte.Saq) });
       if ((??? == null) || (???.size() <= 0)) {
         break label421;
       }
@@ -174,7 +176,7 @@ public final class w
       if (!???.hasNext()) {
         break label290;
       }
-      if (a((abn)???.next())) {
+      if (a((abu)???.next())) {
         break label535;
       }
       paramInt1 += 1;
@@ -184,22 +186,24 @@ public final class w
     for (;;)
     {
       break label224;
-      ??? = paramArrayOfByte.Ley.oTA;
+      ??? = paramArrayOfByte.SfL.rVy;
       break;
       paramInt1 = ???.size();
       break label152;
       label281:
-      paramInt2 = this.jcK.length;
+      paramInt2 = this.lTj.length;
       break label161;
       label290:
       Log.i("MicroMsg.NetSceneCardSync", "onGYNetEnd, %d fail cmds", new Object[] { Integer.valueOf(paramInt1) });
-      am.ctP().ctd();
+      am.cHr().cGF();
       for (;;)
       {
-        com.tencent.mm.kernel.g.aAh().azQ().set(282880, Util.encodeHexString(this.jcK));
-        if (paramArrayOfByte.KZh > 0)
+        h.aHG().aHp().i(282880, Util.encodeHexString(this.lTj));
+        label421:
+        b localb;
+        if (paramArrayOfByte.Saq > 0)
         {
-          Log.d("MicroMsg.NetSceneCardSync", "onGYNetEnd, should continue, continueFlag = %d", new Object[] { Integer.valueOf(paramArrayOfByte.KZh) });
+          Log.d("MicroMsg.NetSceneCardSync", "onGYNetEnd, should continue, continueFlag = %d", new Object[] { Integer.valueOf(paramArrayOfByte.Saq) });
           paramInt1 = doScene(dispatcher(), this.callback);
           if (paramInt1 <= 0)
           {
@@ -208,27 +212,24 @@ public final class w
           }
           AppMethodBeat.o(112826);
           return;
-          label421:
           Log.i("MicroMsg.NetSceneCardSync", "cmdList == null or size is 0");
-          b localb = am.ctP();
+          localb = am.cHr();
           Log.i("MicroMsg.BatchGetCardMgr", "retryAll, getNow = %b", new Object[] { Boolean.TRUE });
-          synchronized (localb.lock)
-          {
-            localb.pendingList.addAll(localb.pQE);
-            localb.pQE.clear();
-            localb.ctd();
-          }
+        }
+        synchronized (localb.lock)
+        {
+          localb.pendingList.addAll(localb.tmE);
+          localb.tmE.clear();
+          localb.cGF();
         }
       }
-      this.callback.onSceneEnd(0, 0, paramString, this);
-      AppMethodBeat.o(112826);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.w
  * JD-Core Version:    0.7.0.1
  */

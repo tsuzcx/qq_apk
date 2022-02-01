@@ -7,11 +7,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet.pwd.ui.WalletResetPwdAdapterUI;
-import com.tencent.mm.plugin.wallet_core.c.w;
-import com.tencent.mm.plugin.wallet_core.model.v;
+import com.tencent.mm.plugin.wallet_core.c.x;
+import com.tencent.mm.plugin.wallet_core.model.w;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletPwdConfirmUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletSetPasswordUI;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
@@ -25,7 +26,7 @@ public class c
 {
   public final int a(MMActivity paramMMActivity, int paramInt)
   {
-    return 2131768320;
+    return a.i.wallet_set_password_finish_confirm;
   }
   
   public final g a(MMActivity paramMMActivity, i parami)
@@ -45,16 +46,16 @@ public class c
             AppMethodBeat.o(69511);
             return localObject;
           case 0: 
-            localObject = this.activity.getString(2131767643);
+            localObject = this.activity.getString(a.i.wallet_check_pwd_modify_pwd_tip);
             AppMethodBeat.o(69511);
             return localObject;
           }
-          Object localObject = this.activity.getString(2131768096);
+          Object localObject = this.activity.getString(a.i.wallet_password_setting_ui_modify);
           AppMethodBeat.o(69511);
           return localObject;
         }
         
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.q paramAnonymousq)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.an.q paramAnonymousq)
         {
           return false;
         }
@@ -64,7 +65,7 @@ public class c
           AppMethodBeat.i(69510);
           String str = (String)paramAnonymousVarArgs[0];
           paramAnonymousVarArgs = (String)paramAnonymousVarArgs[1];
-          this.Ruz.a(new w(str, 3, paramAnonymousVarArgs), true, 1);
+          this.YVX.a(new x(str, 3, paramAnonymousVarArgs), true, 1);
           AppMethodBeat.o(69510);
           return true;
         }
@@ -76,7 +77,7 @@ public class c
     {
       paramMMActivity = new g(paramMMActivity, parami)
       {
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.q paramAnonymousq)
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.an.q paramAnonymousq)
         {
           AppMethodBeat.i(69513);
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
@@ -85,7 +86,7 @@ public class c
             {
               c.a(c.this).putInt("RESET_PWD_USER_ACTION", 1);
               c.this.a(this.activity, 0, c.b(c.this));
-              h.cD(this.activity, this.activity.getString(2131768078));
+              h.cO(this.activity, this.activity.getString(a.i.wallet_password_setting_success_tip));
             }
             AppMethodBeat.o(69513);
             return true;
@@ -98,7 +99,7 @@ public class c
               {
                 AppMethodBeat.i(69512);
                 c.c(c.this).putInt("RESET_PWD_USER_ACTION", 2);
-                c.this.a(c.2.this.activity, 0, c.d(c.this));
+                c.this.a(c.2.a(c.2.this), 0, c.d(c.this));
                 AppMethodBeat.o(69512);
               }
             });
@@ -112,9 +113,9 @@ public class c
         public final boolean r(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(69514);
-          paramAnonymousVarArgs = (v)paramAnonymousVarArgs[0];
+          paramAnonymousVarArgs = (w)paramAnonymousVarArgs[0];
           c.e(c.this).getString("key_pwd1");
-          this.Ruz.a(new com.tencent.mm.plugin.wallet.pwd.a.q(paramAnonymousVarArgs.kdF, paramAnonymousVarArgs.token), true, 1);
+          this.YVX.a(new com.tencent.mm.plugin.wallet.pwd.a.q(paramAnonymousVarArgs.mVf, paramAnonymousVarArgs.token), true, 1);
           AppMethodBeat.o(69514);
           return true;
         }
@@ -160,7 +161,7 @@ public class c
       AppMethodBeat.o(69521);
       return false;
     }
-    h.a(paramWalletBaseUI, paramString, null, paramWalletBaseUI.getString(2131768320), false, new DialogInterface.OnClickListener()
+    h.a(paramWalletBaseUI, paramString, null, paramWalletBaseUI.getString(a.i.wallet_set_password_finish_confirm), false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -191,12 +192,12 @@ public class c
     return false;
   }
   
-  public final String dKC()
+  public final String epb()
   {
     return "ResetPwdProcessByToken";
   }
   
-  public final void g(Activity paramActivity, int paramInt)
+  public final void h(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(69518);
     if ((paramActivity instanceof WalletPwdConfirmUI)) {

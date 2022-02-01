@@ -4,13 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sns.b.a;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 
@@ -21,7 +20,7 @@ public final class AdReportCgiHelper
     AppMethodBeat.i(48080);
     if (MMApplicationContext.isMMProcess())
     {
-      au(paramInt, paramString);
+      aw(paramInt, paramString);
       if (parama != null)
       {
         parama.onDone();
@@ -33,16 +32,16 @@ public final class AdReportCgiHelper
       AdReportCgiParams localAdReportCgiParams = new AdReportCgiParams();
       AdReportCgiParams.a(localAdReportCgiParams, paramInt);
       AdReportCgiParams.a(localAdReportCgiParams, paramString);
-      XIPCInvoker.a(MainProcessIPCService.dkO, localAdReportCgiParams, b.class, new d() {});
+      XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, localAdReportCgiParams, b.class, new f() {});
     }
     AppMethodBeat.o(48080);
   }
   
-  static void au(int paramInt, String paramString)
+  static void aw(int paramInt, String paramString)
   {
     AppMethodBeat.i(48081);
-    if (g.af(a.class) != null) {
-      ((a)g.af(a.class)).r(paramInt, paramString, (int)Util.nowSecond());
+    if (h.ae(com.tencent.mm.plugin.sns.b.a.class) != null) {
+      ((com.tencent.mm.plugin.sns.b.a)h.ae(com.tencent.mm.plugin.sns.b.a.class)).t(paramInt, paramString, (int)Util.nowSecond());
     }
     AppMethodBeat.o(48081);
   }
@@ -51,8 +50,8 @@ public final class AdReportCgiHelper
     implements Parcelable
   {
     public static final Parcelable.Creator<AdReportCgiParams> CREATOR;
-    private int hhs;
-    private String nIh;
+    private int jTq;
+    private String qKt;
     
     static
     {
@@ -66,8 +65,8 @@ public final class AdReportCgiHelper
     protected AdReportCgiParams(Parcel paramParcel)
     {
       AppMethodBeat.i(48076);
-      this.hhs = paramParcel.readInt();
-      this.nIh = paramParcel.readString();
+      this.jTq = paramParcel.readInt();
+      this.qKt = paramParcel.readString();
       AppMethodBeat.o(48076);
     }
     
@@ -79,8 +78,8 @@ public final class AdReportCgiHelper
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(48077);
-      paramParcel.writeInt(this.hhs);
-      paramParcel.writeString(this.nIh);
+      paramParcel.writeInt(this.jTq);
+      paramParcel.writeString(this.qKt);
       AppMethodBeat.o(48077);
     }
   }
@@ -90,13 +89,14 @@ public final class AdReportCgiHelper
     public abstract void onDone();
   }
   
+  @com.tencent.mm.ipcinvoker.c.a
   static final class b
-    implements b<AdReportCgiHelper.AdReportCgiParams, IPCVoid>
+    implements d<AdReportCgiHelper.AdReportCgiParams, IPCVoid>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.model.AdReportCgiHelper
  * JD-Core Version:    0.7.0.1
  */

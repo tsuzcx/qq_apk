@@ -14,88 +14,89 @@ import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.plugin.scanner.l.c;
 
 public class ScanMaskView
   extends View
 {
-  private Bitmap CLS;
-  private Bitmap CLT;
-  private Bitmap CLU;
-  private Bitmap CLV;
-  int CLW;
-  int CLX;
-  private boolean CLY;
-  private Rect CLZ;
-  private Rect CMa;
-  private Rect CMb;
-  private Rect CMc;
-  private Rect CMd;
-  private Rect CMe;
-  private Rect CMf;
-  private Rect CMg;
-  private Rect CMh;
-  private Rect CMi;
-  private int CMj;
-  private long CMk;
-  private boolean CMl;
-  private int CMm;
-  private float CMn;
-  private float CMo;
-  private float CMp;
-  private float CMq;
-  private Paint CMr;
-  private ValueAnimator CMs;
-  private a CMt;
+  private Rect IRA;
+  private Rect IRB;
+  private Rect IRC;
+  private Rect IRD;
+  private Rect IRE;
+  private Rect IRF;
+  private Rect IRG;
+  private Rect IRH;
+  private Rect IRI;
+  private int IRJ;
+  private long IRK;
+  private boolean IRL;
+  private int IRM;
+  private float IRN;
+  private float IRO;
+  private float IRP;
+  private float IRQ;
+  private Paint IRR;
+  private ValueAnimator IRS;
+  private a IRT;
+  private Bitmap IRs;
+  private Bitmap IRt;
+  private Bitmap IRu;
+  private Bitmap IRv;
+  int IRw;
+  int IRx;
+  private boolean IRy;
+  private Rect IRz;
   private Paint mPaint;
-  private Path rqV;
+  private Path uWB;
   
   public ScanMaskView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(51913);
-    this.CLS = null;
-    this.CLT = null;
-    this.CLU = null;
-    this.CLV = null;
-    this.CLW = 0;
-    this.CLX = 0;
-    this.CLY = false;
-    this.CLZ = new Rect();
-    this.CMa = new Rect();
-    this.CMb = new Rect();
-    this.CMc = new Rect();
-    this.CMd = new Rect();
-    this.CMe = new Rect();
-    this.CMf = new Rect();
-    this.CMg = new Rect();
-    this.CMh = new Rect();
-    this.rqV = new Path();
-    this.CMj = 2131101017;
-    this.CMk = 0L;
-    this.CMl = false;
-    this.CMm = 300;
-    this.CMn = 0.0F;
-    this.CMo = 0.0F;
-    this.CMp = 0.0F;
-    this.CMq = 0.0F;
-    this.CMs = null;
+    this.IRs = null;
+    this.IRt = null;
+    this.IRu = null;
+    this.IRv = null;
+    this.IRw = 0;
+    this.IRx = 0;
+    this.IRy = false;
+    this.IRz = new Rect();
+    this.IRA = new Rect();
+    this.IRB = new Rect();
+    this.IRC = new Rect();
+    this.IRD = new Rect();
+    this.IRE = new Rect();
+    this.IRF = new Rect();
+    this.IRG = new Rect();
+    this.IRH = new Rect();
+    this.uWB = new Path();
+    this.IRJ = l.c.scan_mask_bg_color;
+    this.IRK = 0L;
+    this.IRL = false;
+    this.IRM = 300;
+    this.IRN = 0.0F;
+    this.IRO = 0.0F;
+    this.IRP = 0.0F;
+    this.IRQ = 0.0F;
+    this.IRS = null;
     AppMethodBeat.o(51913);
   }
   
   public int getMaskAnimDuration()
   {
-    return this.CMm;
+    return this.IRM;
   }
   
   public Rect getMaskRect()
   {
-    return this.CMi;
+    return this.IRI;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(51914);
-    if ((this.CMi == null) || (this.CLY))
+    if ((this.IRI == null) || (this.IRy))
     {
       AppMethodBeat.o(51914);
       return;
@@ -104,71 +105,71 @@ public class ScanMaskView
     System.currentTimeMillis();
     int i = paramCanvas.save();
     this.mPaint.reset();
-    if (d.oE(18))
+    if (d.qW(18))
     {
-      this.CMe.left = 0;
-      this.CMe.top = this.CMi.top;
-      this.CMe.right = this.CMi.left;
-      this.CMe.bottom = this.CMi.bottom;
-      this.CMf.left = this.CMi.left;
-      this.CMf.top = 0;
-      this.CMf.right = this.CMi.right;
-      this.CMf.bottom = this.CMi.top;
-      this.CMg.left = this.CMi.right;
-      this.CMg.top = this.CMi.top;
-      this.CMg.right = getWidth();
-      this.CMg.bottom = this.CMi.bottom;
-      this.CMh.left = this.CMi.left;
-      this.CMh.top = this.CMi.bottom;
-      this.CMh.right = this.CMi.right;
-      this.CMh.bottom = getHeight();
-      this.CMa.left = 0;
-      this.CMa.top = 0;
-      this.CMa.right = this.CMi.left;
-      this.CMa.bottom = this.CMi.top;
-      this.CMb.left = this.CMi.right;
-      this.CMb.top = 0;
-      this.CMb.right = getWidth();
-      this.CMb.bottom = this.CMi.top;
-      this.CMc.left = 0;
-      this.CMc.top = this.CMi.bottom;
-      this.CMc.right = this.CMi.left;
-      this.CMc.bottom = getHeight();
-      this.CMd.left = this.CMi.right;
-      this.CMd.top = this.CMi.bottom;
-      this.CMd.right = getWidth();
-      this.CMd.bottom = getHeight();
+      this.IRE.left = 0;
+      this.IRE.top = this.IRI.top;
+      this.IRE.right = this.IRI.left;
+      this.IRE.bottom = this.IRI.bottom;
+      this.IRF.left = this.IRI.left;
+      this.IRF.top = 0;
+      this.IRF.right = this.IRI.right;
+      this.IRF.bottom = this.IRI.top;
+      this.IRG.left = this.IRI.right;
+      this.IRG.top = this.IRI.top;
+      this.IRG.right = getWidth();
+      this.IRG.bottom = this.IRI.bottom;
+      this.IRH.left = this.IRI.left;
+      this.IRH.top = this.IRI.bottom;
+      this.IRH.right = this.IRI.right;
+      this.IRH.bottom = getHeight();
+      this.IRA.left = 0;
+      this.IRA.top = 0;
+      this.IRA.right = this.IRI.left;
+      this.IRA.bottom = this.IRI.top;
+      this.IRB.left = this.IRI.right;
+      this.IRB.top = 0;
+      this.IRB.right = getWidth();
+      this.IRB.bottom = this.IRI.top;
+      this.IRC.left = 0;
+      this.IRC.top = this.IRI.bottom;
+      this.IRC.right = this.IRI.left;
+      this.IRC.bottom = getHeight();
+      this.IRD.left = this.IRI.right;
+      this.IRD.top = this.IRI.bottom;
+      this.IRD.right = getWidth();
+      this.IRD.bottom = getHeight();
       paramCanvas.save();
-      paramCanvas.clipRect(this.CMe, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.CMj));
+      paramCanvas.clipRect(this.IRE, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.IRJ));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.CMf, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.CMj));
+      paramCanvas.clipRect(this.IRF, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.IRJ));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.CMg, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.CMj));
+      paramCanvas.clipRect(this.IRG, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.IRJ));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.CMh, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.CMj));
+      paramCanvas.clipRect(this.IRH, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.IRJ));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.CMa, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.CMj));
+      paramCanvas.clipRect(this.IRA, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.IRJ));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.CMb, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.CMj));
+      paramCanvas.clipRect(this.IRB, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.IRJ));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.CMc, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.CMj));
+      paramCanvas.clipRect(this.IRC, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.IRJ));
       paramCanvas.restore();
       paramCanvas.save();
-      paramCanvas.clipRect(this.CMd, Region.Op.REPLACE);
-      paramCanvas.drawColor(getResources().getColor(this.CMj));
+      paramCanvas.clipRect(this.IRD, Region.Op.REPLACE);
+      paramCanvas.drawColor(getResources().getColor(this.IRJ));
       paramCanvas.restore();
     }
     for (;;)
@@ -181,43 +182,43 @@ public class ScanMaskView
       this.mPaint.setStrokeWidth(1.0F);
       this.mPaint.setColor(-3355444);
       this.mPaint.setAntiAlias(true);
-      paramCanvas.drawRect(this.CMi, this.mPaint);
+      paramCanvas.drawRect(this.IRI, this.mPaint);
       System.currentTimeMillis();
       System.currentTimeMillis();
-      paramCanvas.drawBitmap(this.CLS, this.CMi.left, this.CMi.top, this.CMr);
-      paramCanvas.drawBitmap(this.CLT, this.CMi.right - this.CLW, this.CMi.top, this.CMr);
-      paramCanvas.drawBitmap(this.CLU, this.CMi.left, this.CMi.bottom - this.CLX, this.CMr);
-      paramCanvas.drawBitmap(this.CLV, this.CMi.right - this.CLW, this.CMi.bottom - this.CLX, this.CMr);
+      paramCanvas.drawBitmap(this.IRs, this.IRI.left, this.IRI.top, this.IRR);
+      paramCanvas.drawBitmap(this.IRt, this.IRI.right - this.IRw, this.IRI.top, this.IRR);
+      paramCanvas.drawBitmap(this.IRu, this.IRI.left, this.IRI.bottom - this.IRx, this.IRR);
+      paramCanvas.drawBitmap(this.IRv, this.IRI.right - this.IRw, this.IRI.bottom - this.IRx, this.IRR);
       System.currentTimeMillis();
       super.onDraw(paramCanvas);
       System.currentTimeMillis();
       AppMethodBeat.o(51914);
       return;
-      paramCanvas.clipRect(this.CMi, Region.Op.DIFFERENCE);
-      paramCanvas.drawColor(getResources().getColor(this.CMj));
+      paramCanvas.clipRect(this.IRI, Region.Op.DIFFERENCE);
+      paramCanvas.drawColor(getResources().getColor(this.IRJ));
     }
   }
   
   public void setMaskAnimaListener(a parama)
   {
-    this.CMt = parama;
+    this.IRT = parama;
   }
   
   public void setMaskColorRsid(int paramInt)
   {
-    this.CMj = paramInt;
+    this.IRJ = paramInt;
   }
   
   public void setMastAnimaDuration(int paramInt)
   {
-    this.CMm = paramInt;
+    this.IRM = paramInt;
   }
   
   static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.ScanMaskView
  * JD-Core Version:    0.7.0.1
  */

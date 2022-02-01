@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.priority.model.a.a;
 import com.tencent.mm.plugin.priority.model.b;
 import com.tencent.mm.sdk.platformtools.Log;
 
-public final class d
+public class d
   extends a
 {
   public d(b paramb)
@@ -16,7 +16,7 @@ public final class d
     AppMethodBeat.o(87842);
   }
   
-  public final long eCV()
+  public final long foO()
   {
     return 33L;
   }

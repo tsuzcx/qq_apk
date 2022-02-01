@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.scanner.util;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/util/ScanRetryManager$Companion;", "", "()V", "DEFAULT_MAX_TIMEOUT_IN_MS", "", "DEFAULT_MIN_TIMEOUT_IN_MS", "DEFAULT_TEXTURE_SCALED_FACTOR", "", "DEFAULT_TIMEOUT_FACTOR", "MMKV_FILE_KEY_POSTFIX", "", "MMKV_KEY_SCAN_CODE_RETRY_TIMEOUT", "RETRY_REOPEN_CAMERA", "RETRY_USING_TEXTURE", "TAG", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/util/ScanRetryManager$Companion;", "", "()V", "DEFAULT_MAX_TIMEOUT_IN_MS", "", "DEFAULT_MIN_TIMEOUT_IN_MS", "DEFAULT_TEXTURE_SCALED_FACTOR", "", "DEFAULT_TIMEOUT_FACTOR", "MMKV_FILE_KEY_POSTFIX", "", "MMKV_KEY_SCAN_CODE_RETRY_TIMEOUT", "RETRY_REOPEN_CAMERA", "RETRY_USING_TEXTURE", "TAG", "plugin-scan_release"})
 public final class h$a {}
 
 

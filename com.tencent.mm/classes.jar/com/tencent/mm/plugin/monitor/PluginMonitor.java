@@ -16,7 +16,7 @@ public class PluginMonitor
   public void execute(g paramg)
   {
     AppMethodBeat.i(51498);
-    if (paramg.aBb())
+    if (paramg.aIE())
     {
       Log.i("MicroMsg.PluginMonitor", "PluginMonitor execute PluginMonitor new SubCoreBaseMonitor");
       pin(new y(b.class));

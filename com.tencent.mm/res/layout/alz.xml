@@ -7,12 +7,11 @@
             <ImageView android:id="@id/be9" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
         </com.tencent.mm.ui.base.MaskLayout>
         <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/d71" android:background="@drawable/b9w" android:paddingRight="@dimen/e" android:layout_width="fill_parent" android:layout_height="@dimen/az" android:layout_marginLeft="@dimen/ir">
-            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
                 <TextView android:id="@id/d76" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{nick}" android:singleLine="true" style="@style/mp" />
                 <TextView android:id="@id/d75" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k_" android:text="{lastmsg}" android:singleLine="true" style="@style/mo" />
             </LinearLayout>
-            <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
-            <TextView android:id="@id/d6z" android:visibility="visible" android:layout_marginRight="@dimen/k5" style="@style/zr" />
+            <TextView android:id="@id/d6z" android:visibility="visible" style="@style/zr" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

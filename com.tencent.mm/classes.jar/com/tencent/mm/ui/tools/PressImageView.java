@@ -14,8 +14,8 @@ import junit.framework.Assert;
 public class PressImageView
   extends ImageView
 {
-  private MMHandler Eok;
-  private Runnable Eol;
+  private MMHandler KBt;
+  private Runnable KBu;
   private int a;
   private int b;
   private int g;
@@ -29,8 +29,8 @@ public class PressImageView
     this.r = 0;
     this.g = 0;
     this.b = 0;
-    this.Eok = new MMHandler();
-    this.Eol = new Runnable()
+    this.KBt = new MMHandler();
+    this.KBu = new Runnable()
     {
       public final void run()
       {
@@ -85,7 +85,7 @@ public class PressImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.tools.PressImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -6,40 +6,49 @@ import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.b.m;
+import com.tencent.mm.live.b.e;
+import com.tencent.mm.live.b.g;
+import com.tencent.mm.live.b.h;
+import com.tencent.mm.live.b.j;
+import com.tencent.mm.live.b.u;
+import com.tencent.mm.live.core.core.a.b.b;
+import com.tencent.mm.live.core.core.c.c;
+import com.tencent.mm.live.core.core.c.c.a;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.gif.MMAnimateView;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
 import kotlin.g.a.r;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
+import kotlin.x;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/plugin/LiveMicHeaderPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "micHeadIcon", "Lcom/tencent/mm/plugin/gif/MMAnimateView;", "kotlin.jvm.PlatformType", "micHeadTip", "Landroid/widget/TextView;", "loadSelfMicView", "", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/plugin/LiveMicHeaderPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "micHeadIcon", "Lcom/tencent/mm/plugin/gif/MMAnimateView;", "kotlin.jvm.PlatformType", "micHeadTip", "Landroid/widget/TextView;", "loadSelfMicView", "", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
 public final class ak
   extends a
 {
-  final b hOp;
-  final TextView hRZ;
-  private final MMAnimateView hSa;
+  private final b kCL;
+  private final TextView kGw;
+  private final MMAnimateView kGx;
   
   public ak(final ViewGroup paramViewGroup, b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(208128);
-    this.hOp = paramb;
-    this.hRZ = ((TextView)paramViewGroup.findViewById(2131303494));
-    this.hSa = ((MMAnimateView)paramViewGroup.findViewById(2131303492));
+    AppMethodBeat.i(196033);
+    this.kCL = paramb;
+    this.kGw = ((TextView)paramViewGroup.findViewById(b.e.live_mic_visitor_header_tip));
+    this.kGx = ((MMAnimateView)paramViewGroup.findViewById(b.e.live_mic_visitor_header_icon));
     paramViewGroup.setVisibility(4);
-    paramb = com.tencent.mm.live.b.x.hJf;
-    paramb = com.tencent.mm.live.b.x.aHa();
+    paramb = u.kwz;
+    paramb = u.aPa();
     paramViewGroup = (r)new q(paramViewGroup)
     {
-      @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke", "com/tencent/mm/live/plugin/LiveMicHeaderPlugin$1$1$1"})
+      @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke", "com/tencent/mm/live/plugin/LiveMicHeaderPlugin$1$1$1"})
       static final class a
         extends q
-        implements kotlin.g.a.a<kotlin.x>
+        implements kotlin.g.a.a<x>
       {
         a(ak.1 param1, as paramas, String paramString)
         {
@@ -47,111 +56,110 @@ public final class ak
         }
       }
     };
-    p.h(paramViewGroup, "observer");
-    paramb.hKQ = paramViewGroup;
-    this.hRZ.requestLayout();
-    this.hSa.setImageResource(2131691012);
-    AppMethodBeat.o(208128);
+    p.k(paramViewGroup, "observer");
+    paramb.kyk = paramViewGroup;
+    this.kGw.requestLayout();
+    this.kGx.setImageResource(b.g.live_micing_icon);
+    AppMethodBeat.o(196033);
   }
   
   public final void statusChange(b.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(208127);
-    p.h(paramc, "status");
+    AppMethodBeat.i(196029);
+    p.k(paramc, "status");
     super.statusChange(paramc, paramBundle);
     switch (al.$EnumSwitchMapping$0[paramc.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(208127);
+      AppMethodBeat.o(196029);
       return;
       if (paramBundle != null)
       {
         paramc = paramBundle.getString("PARAM_LIVE_WXID", "");
         if (!TextUtils.isEmpty((CharSequence)paramc))
         {
-          paramBundle = com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-          p.g(paramBundle, "MMKernel.service<IMessen…engerStorage::class.java)");
-          paramc = ((com.tencent.mm.plugin.messenger.foundation.a.l)paramBundle).aSN().Kn(paramc);
+          paramBundle = com.tencent.mm.kernel.h.ae(n.class);
+          p.j(paramBundle, "MMKernel.service<IMessen…engerStorage::class.java)");
+          paramc = ((n)paramBundle).bbL().RG(paramc);
           if (paramc != null)
           {
-            paramBundle = this.hRZ;
-            p.g(paramBundle, "micHeadTip");
-            paramBundle.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(this.hwr.getContext(), (CharSequence)this.hwr.getContext().getString(2131762396, new Object[] { paramc.getNickname() })));
-            AppMethodBeat.o(208127);
+            paramBundle = this.kGw;
+            p.j(paramBundle, "micHeadTip");
+            paramBundle.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(this.kiF.getContext(), (CharSequence)this.kiF.getContext().getString(b.h.live_room_mic_talking, new Object[] { paramc.getNickname() })));
+            AppMethodBeat.o(196029);
             return;
           }
         }
-        AppMethodBeat.o(208127);
+        AppMethodBeat.o(196029);
         return;
       }
-      AppMethodBeat.o(208127);
+      AppMethodBeat.o(196029);
       return;
-      rg(0);
-      AppMethodBeat.o(208127);
+      tU(0);
+      AppMethodBeat.o(196029);
       return;
-      rg(0);
-      AppMethodBeat.o(208127);
+      tU(0);
+      AppMethodBeat.o(196029);
       return;
-      rg(8);
-      paramc = m.hGg;
-      paramc = com.tencent.mm.live.b.x.hJf;
-      m.h(false, com.tencent.mm.live.b.x.aGz());
-      paramc = com.tencent.mm.live.b.x.hJf;
-      com.tencent.mm.live.b.x.GT("");
-      paramc = com.tencent.mm.live.b.x.hJf;
-      com.tencent.mm.live.b.x.GU("");
-      AppMethodBeat.o(208127);
+      tU(8);
+      paramc = j.kue;
+      paramc = u.kwz;
+      j.k(false, u.aOz());
+      paramc = u.kwz;
+      u.Oe("");
+      paramc = u.kwz;
+      u.Of("");
+      AppMethodBeat.o(196029);
       return;
-      rg(8);
-      AppMethodBeat.o(208127);
+      tU(8);
+      AppMethodBeat.o(196029);
       return;
-      if (this.hOp.getLiveRole() == 1)
-      {
-        paramc = com.tencent.mm.live.core.core.a.b.hyv;
-        this.hwr.getContext();
+      if (this.kCL.getLiveRole() == 1) {
+        paramc = com.tencent.mm.live.core.core.a.b.klq;
       }
-      for (paramc = (com.tencent.mm.live.core.core.trtc.a)com.tencent.mm.live.core.core.a.b.a.aDo(); (paramc.hAz.aDt()) || (paramc.hAz.aDu()); paramc = (com.tencent.mm.live.core.core.trtc.a)com.tencent.mm.live.core.core.d.b.a.aEf())
+      for (paramc = (com.tencent.mm.live.core.core.trtc.a)b.b.aLh(); (paramc.knA.aLo()) || (paramc.knA.aLp()); paramc = (com.tencent.mm.live.core.core.trtc.a)c.a.aMm())
       {
-        rg(0);
-        if (this.hOp.getLiveRole() != 1) {
-          break label440;
+        tU(0);
+        if (this.kCL.getLiveRole() != 1) {
+          break label430;
         }
-        paramc = this.hRZ;
-        p.g(paramc, "micHeadTip");
-        paramBundle = this.hwr.getContext();
-        localContext = this.hwr.getContext();
-        localx = com.tencent.mm.live.b.x.hJf;
-        paramc.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(paramBundle, (CharSequence)localContext.getString(2131762396, new Object[] { com.tencent.mm.live.b.x.aGz() })));
-        AppMethodBeat.o(208127);
+        paramc = this.kGw;
+        p.j(paramc, "micHeadTip");
+        paramBundle = this.kiF.getContext();
+        localContext = this.kiF.getContext();
+        i = b.h.live_room_mic_talking;
+        localu = u.kwz;
+        paramc.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(paramBundle, (CharSequence)localContext.getString(i, new Object[] { u.aOz() })));
+        AppMethodBeat.o(196029);
         return;
-        paramc = com.tencent.mm.live.core.core.d.b.hCo;
-        this.hwr.getContext();
+        paramc = c.kqq;
       }
       continue;
-      label440:
-      paramc = com.tencent.mm.live.b.x.hJf;
-      if (Util.isEqual(com.tencent.mm.live.b.x.aGA(), z.aTY()))
+      label430:
+      paramc = u.kwz;
+      if (Util.isEqual(u.aOA(), z.bcZ()))
       {
-        paramc = this.hRZ;
-        p.g(paramc, "micHeadTip");
-        paramc.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(this.hwr.getContext(), (CharSequence)this.hwr.getContext().getString(2131762398)));
-        AppMethodBeat.o(208127);
+        paramc = this.kGw;
+        p.j(paramc, "micHeadTip");
+        paramc.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(this.kiF.getContext(), (CharSequence)this.kiF.getContext().getString(b.h.live_room_mic_talking_anchor)));
+        AppMethodBeat.o(196029);
         return;
       }
-      paramc = this.hRZ;
-      p.g(paramc, "micHeadTip");
-      paramBundle = this.hwr.getContext();
-      Context localContext = this.hwr.getContext();
-      com.tencent.mm.live.b.x localx = com.tencent.mm.live.b.x.hJf;
-      paramc.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(paramBundle, (CharSequence)localContext.getString(2131762397, new Object[] { com.tencent.mm.live.b.x.aGz() })));
+      paramc = this.kGw;
+      p.j(paramc, "micHeadTip");
+      paramBundle = this.kiF.getContext();
+      Context localContext = this.kiF.getContext();
+      int i = b.h.live_room_mic_talking_3rd;
+      u localu = u.kwz;
+      paramc.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(paramBundle, (CharSequence)localContext.getString(i, new Object[] { u.aOz() })));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.c.ak
  * JD-Core Version:    0.7.0.1
  */

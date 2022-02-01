@@ -1,224 +1,234 @@
 package com.tencent.mm.ui.widget.picker;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnDismissListener;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
-import android.widget.FrameLayout.LayoutParams;
+import android.view.View.OnClickListener;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cr.a.f;
+import com.tencent.mm.cr.a.g;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.ui.aw;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class a
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  protected com.tencent.mm.ui.widget.picker.c.a QSH;
-  private Context context;
-  boolean ddZ;
-  boolean jLA;
-  private Animation jLB;
-  private Animation jLC;
-  protected int jLD;
-  private boolean jLE;
-  private View.OnKeyListener jLF;
-  private final View.OnTouchListener jLG;
-  protected ViewGroup jLx;
-  ViewGroup jLy;
-  private ViewGroup jLz;
-  private Dialog mDialog;
+  private com.google.android.material.bottomsheet.a DpN;
+  private LinearLayout XpQ;
+  private Button YrC;
+  private LinearLayout YrD;
+  private CustomDatePickerNew YrE;
+  public a YrF;
+  private Button kEt;
+  private Button kGN;
+  private Context mContext;
+  private View oFW;
+  private int pMB;
+  private BottomSheetBehavior pMC;
   
   public a(Context paramContext)
   {
-    AppMethodBeat.i(198377);
-    this.jLD = 80;
-    this.jLE = true;
-    this.jLF = new View.OnKeyListener()
+    AppMethodBeat.i(159526);
+    this.mContext = paramContext;
+    this.DpN = new com.google.android.material.bottomsheet.a(this.mContext);
+    this.oFW = View.inflate(this.mContext, a.g.date_picker_panel, null);
+    this.YrD = ((LinearLayout)this.oFW.findViewById(a.f.date_picker));
+    this.XpQ = ((LinearLayout)this.oFW.findViewById(a.f.date_picker_header));
+    this.YrE = new CustomDatePickerNew(this.mContext);
+    this.YrD.removeAllViews();
+    this.YrD.setGravity(17);
+    this.YrD.addView(this.YrE.getView(), new LinearLayout.LayoutParams(-1, -1));
+    this.kEt = ((Button)this.oFW.findViewById(a.f.ok_btn));
+    this.kEt.setOnClickListener(new View.OnClickListener()
     {
-      public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
+      public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(198375);
+        AppMethodBeat.i(159522);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        localb.pH(paramAnonymousInt);
-        localb.bm(paramAnonymousKeyEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/picker/BasePickerView$3", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.axR());
-        if ((paramAnonymousInt == 4) && (paramAnonymousKeyEvent.getAction() == 0))
-        {
-          paramAnonymousView = a.this;
-          if ((!paramAnonymousView.blf()) && ((paramAnonymousView.jLy.getParent() != null) || (paramAnonymousView.ddZ))) {}
-          for (paramAnonymousInt = 1; paramAnonymousInt != 0; paramAnonymousInt = 0)
-          {
-            a.this.dismiss();
-            com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/widget/picker/BasePickerView$3", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
-            AppMethodBeat.o(198375);
-            return true;
-          }
-        }
-        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/widget/picker/BasePickerView$3", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
-        AppMethodBeat.o(198375);
-        return false;
-      }
-    };
-    this.jLG = new View.OnTouchListener()
-    {
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(198376);
-        if (paramAnonymousMotionEvent.getAction() == 0) {
-          a.this.dismiss();
-        }
-        AppMethodBeat.o(198376);
-        return false;
-      }
-    };
-    this.context = paramContext;
-    AppMethodBeat.o(198377);
-  }
-  
-  protected final a Ds(boolean paramBoolean)
-  {
-    AppMethodBeat.i(198382);
-    View localView;
-    if (this.jLy != null)
-    {
-      localView = this.jLy.findViewById(2131305747);
-      if (!paramBoolean) {
-        break label41;
-      }
-      localView.setOnTouchListener(this.jLG);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(198382);
-      return this;
-      label41:
-      localView.setOnTouchListener(null);
-    }
-  }
-  
-  protected final void blb()
-  {
-    AppMethodBeat.i(198378);
-    Object localObject = new FrameLayout.LayoutParams(-1, -2, 80);
-    this.jLy = ((ViewGroup)LayoutInflater.from(this.context).inflate(2131495165, this.QSH.Zv, false));
-    this.jLy.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    if (this.QSH.jLt != -1) {
-      this.jLy.setBackgroundColor(this.QSH.jLt);
-    }
-    this.jLx = ((ViewGroup)this.jLy.findViewById(2131299195));
-    this.jLx.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    if (blf()) {}
-    for (localObject = this.jLz;; localObject = this.jLy)
-    {
-      ((ViewGroup)localObject).setFocusable(true);
-      ((ViewGroup)localObject).setFocusableInTouchMode(true);
-      ((ViewGroup)localObject).setOnKeyListener(this.jLF);
-      AppMethodBeat.o(198378);
-      return;
-    }
-  }
-  
-  protected final void blc()
-  {
-    AppMethodBeat.i(198379);
-    int i = com.tencent.mm.ui.widget.picker.f.a.I(this.jLD, true);
-    this.jLC = AnimationUtils.loadAnimation(this.context, i);
-    i = com.tencent.mm.ui.widget.picker.f.a.I(this.jLD, false);
-    this.jLB = AnimationUtils.loadAnimation(this.context, i);
-    AppMethodBeat.o(198379);
-  }
-  
-  public final void bld()
-  {
-    AppMethodBeat.i(198381);
-    this.QSH.Zv.post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(198374);
-        a.this.QSH.Zv.removeView(a.this.jLy);
-        a.this.ddZ = false;
-        a.this.jLA = false;
-        AppMethodBeat.o(198374);
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/picker/MMDatePicker$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        a.a(a.this, true, a.a(a.this).getYear(), a.a(a.this).getMonth(), a.a(a.this).getDayOfMonth());
+        a.this.hide();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/picker/MMDatePicker$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(159522);
       }
     });
-    AppMethodBeat.o(198381);
-  }
-  
-  public final void ble()
-  {
-    AppMethodBeat.i(198383);
-    if (this.mDialog != null) {
-      this.mDialog.setCancelable(this.QSH.ox);
-    }
-    AppMethodBeat.o(198383);
-  }
-  
-  public boolean blf()
-  {
-    return false;
-  }
-  
-  public final void dismiss()
-  {
-    AppMethodBeat.i(198380);
-    if (blf())
+    this.kGN = ((Button)this.oFW.findViewById(a.f.cancel_btn));
+    this.kGN.setOnClickListener(new View.OnClickListener()
     {
-      if (this.mDialog != null) {
-        this.mDialog.dismiss();
-      }
-      AppMethodBeat.o(198380);
-      return;
-    }
-    if (this.jLA)
-    {
-      AppMethodBeat.o(198380);
-      return;
-    }
-    if (this.jLE)
-    {
-      this.jLB.setAnimationListener(new Animation.AnimationListener()
+      public final void onClick(View paramAnonymousView)
       {
-        public final void onAnimationEnd(Animation paramAnonymousAnimation)
-        {
-          AppMethodBeat.i(198373);
-          a.this.bld();
-          AppMethodBeat.o(198373);
-        }
-        
-        public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
-        
-        public final void onAnimationStart(Animation paramAnonymousAnimation) {}
-      });
-      this.jLx.startAnimation(this.jLB);
-    }
-    for (;;)
+        AppMethodBeat.i(159523);
+        b localb = new b();
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/picker/MMDatePicker$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        a.a(a.this, false, 0, 0, 0);
+        a.this.hide();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/picker/MMDatePicker$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(159523);
+      }
+    });
+    this.YrC = ((Button)this.oFW.findViewById(a.f.btn_single));
+    this.YrC.setOnClickListener(new View.OnClickListener()
     {
-      this.jLA = true;
-      AppMethodBeat.o(198380);
-      return;
-      bld();
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(249958);
+        b localb = new b();
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/widget/picker/MMDatePicker$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        a.a(a.this, true, a.a(a.this).getYear(), a.a(a.this).getMonth(), a.a(a.this).getDayOfMonth());
+        a.this.hide();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/picker/MMDatePicker$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(249958);
+      }
+    });
+    this.DpN.setContentView(this.oFW);
+    this.DpN.setOnCancelListener(new DialogInterface.OnCancelListener()
+    {
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(250019);
+        a.a(a.this, false, 0, 0, 0);
+        a.this.hide();
+        AppMethodBeat.o(250019);
+      }
+    });
+    this.pMB = aw.fromDPToPix(this.mContext, 420);
+    this.pMC = BottomSheetBehavior.cg((View)this.oFW.getParent());
+    if (this.pMC != null)
+    {
+      this.pMC.D(this.pMB);
+      this.pMC.bxz = false;
     }
+    this.DpN.setOnDismissListener(new DialogInterface.OnDismissListener()
+    {
+      public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(250064);
+        a.b(a.this);
+        AppMethodBeat.o(250064);
+      }
+    });
+    AppMethodBeat.o(159526);
   }
   
-  public final View findViewById(int paramInt)
+  public final void bb(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(198384);
-    View localView = this.jLx.findViewById(paramInt);
-    AppMethodBeat.o(198384);
-    return localView;
+    AppMethodBeat.i(159527);
+    if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt3 < 0))
+    {
+      AppMethodBeat.o(159527);
+      return;
+    }
+    if (this.YrE != null) {
+      this.YrE.ba(paramInt1, paramInt2, paramInt3);
+    }
+    AppMethodBeat.o(159527);
+  }
+  
+  public final void bc(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(159529);
+    if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt3 < 0))
+    {
+      AppMethodBeat.o(159529);
+      return;
+    }
+    Calendar localCalendar = Calendar.getInstance(Locale.US);
+    localCalendar.set(paramInt1, paramInt2 - 1, paramInt3);
+    if (this.YrE != null) {
+      this.YrE.setMinDate(Long.valueOf(localCalendar.getTimeInMillis()));
+    }
+    AppMethodBeat.o(159529);
+  }
+  
+  public final void bd(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(159530);
+    if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt3 < 0))
+    {
+      AppMethodBeat.o(159530);
+      return;
+    }
+    Calendar localCalendar = Calendar.getInstance(Locale.US);
+    localCalendar.set(paramInt1, paramInt2 - 1, paramInt3);
+    if (this.YrE != null) {
+      this.YrE.setMaxDate(Long.valueOf(localCalendar.getTimeInMillis()));
+    }
+    AppMethodBeat.o(159530);
+  }
+  
+  public final void bq(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(159528);
+    if (this.YrE != null) {
+      this.YrE.bq(paramBoolean1, paramBoolean2);
+    }
+    AppMethodBeat.o(159528);
+  }
+  
+  public final void hide()
+  {
+    AppMethodBeat.i(159532);
+    if (this.DpN != null) {
+      this.DpN.dismiss();
+    }
+    AppMethodBeat.o(159532);
+  }
+  
+  public final String idn()
+  {
+    AppMethodBeat.i(159533);
+    String str = null;
+    if (this.YrE != null) {
+      str = this.YrE.currentValue();
+    }
+    AppMethodBeat.o(159533);
+    return str;
+  }
+  
+  public void onGlobalLayout() {}
+  
+  public final void setLongTermYear(boolean paramBoolean)
+  {
+    AppMethodBeat.i(252111);
+    if (this.YrE != null) {
+      this.YrE.setLongTermYear(paramBoolean);
+    }
+    AppMethodBeat.o(252111);
+  }
+  
+  public final void show()
+  {
+    AppMethodBeat.i(159531);
+    if (this.DpN != null)
+    {
+      if (this.YrE != null) {
+        this.YrE.onShow();
+      }
+      this.DpN.show();
+    }
+    AppMethodBeat.o(159531);
+  }
+  
+  public static abstract interface a<T>
+  {
+    public abstract void onResult(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.a
  * JD-Core Version:    0.7.0.1
  */

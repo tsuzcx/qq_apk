@@ -21,7 +21,7 @@ public class VideoComposition
   private Class<? extends VideoCompositing> customVideoCompositorClass;
   private CMTime frameDuration;
   private List<? extends VideoCompositionInstruction> instructions;
-  private RenderLayoutMode renderLayoutMode;
+  private VideoComposition.RenderLayoutMode renderLayoutMode;
   private float renderScale;
   private CGSize renderSize;
   private int sourceTrackIDForFrameTiming;
@@ -30,16 +30,16 @@ public class VideoComposition
   
   public VideoComposition(Asset paramAsset)
   {
-    AppMethodBeat.i(218044);
+    AppMethodBeat.i(189721);
     this.asset = paramAsset;
     this.instructions = new ArrayList();
     fillSourceProperty();
-    AppMethodBeat.o(218044);
+    AppMethodBeat.o(189721);
   }
   
   private void fillSourceProperty()
   {
-    AppMethodBeat.i(218045);
+    AppMethodBeat.i(189734);
     Object localObject2 = this.asset.tracksWithMediaType(1);
     this.frameDuration = null;
     this.renderSize = null;
@@ -110,16 +110,16 @@ public class VideoComposition
       }
     }
     this.renderScale = 1.0F;
-    AppMethodBeat.o(218045);
+    AppMethodBeat.o(189734);
   }
   
   public static VideoCompositionInstruction findInstruction(VideoComposition paramVideoComposition, CMTime paramCMTime)
   {
     Object localObject = null;
-    AppMethodBeat.i(218047);
+    AppMethodBeat.i(189759);
     if (paramVideoComposition.getInstructions() == null)
     {
-      AppMethodBeat.o(218047);
+      AppMethodBeat.o(189759);
       return null;
     }
     Iterator localIterator = paramVideoComposition.getInstructions().iterator();
@@ -149,24 +149,24 @@ public class VideoComposition
           paramVideoComposition = (VideoComposition)localObject;
           if (localCMTimeRange.getEndUs() > paramCMTime.getTimeUs())
           {
-            AppMethodBeat.o(218047);
+            AppMethodBeat.o(189759);
             return localVideoCompositionInstruction;
           }
         }
       }
     }
-    AppMethodBeat.o(218047);
+    AppMethodBeat.o(189759);
     return paramVideoComposition;
   }
   
   public VideoCompositing getCustomVideoCompositor()
   {
-    AppMethodBeat.i(218046);
+    AppMethodBeat.i(189742);
     if (this.customVideoCompositorClass != null) {
       try
       {
         VideoCompositing localVideoCompositing = (VideoCompositing)this.customVideoCompositorClass.newInstance();
-        AppMethodBeat.o(218046);
+        AppMethodBeat.o(189742);
         return localVideoCompositing;
       }
       catch (InstantiationException localInstantiationException)
@@ -185,7 +185,7 @@ public class VideoComposition
       }
     }
     VideoCompositor localVideoCompositor2 = new VideoCompositor();
-    AppMethodBeat.o(218046);
+    AppMethodBeat.o(189742);
     return localVideoCompositor2;
   }
   
@@ -204,7 +204,7 @@ public class VideoComposition
     return this.instructions;
   }
   
-  public RenderLayoutMode getRenderLayoutMode()
+  public VideoComposition.RenderLayoutMode getRenderLayoutMode()
   {
     return this.renderLayoutMode;
   }
@@ -226,29 +226,15 @@ public class VideoComposition
   
   public String toString()
   {
-    AppMethodBeat.i(218048);
+    AppMethodBeat.i(189764);
     String str = "MutableVideoComposition{, frameDuration=" + this.frameDuration + ", renderSize=" + this.renderSize + ", renderLayoutMode=" + this.renderLayoutMode + ", instructions=" + this.instructions + '}';
-    AppMethodBeat.o(218048);
+    AppMethodBeat.o(189764);
     return str;
-  }
-  
-  public static enum RenderLayoutMode
-  {
-    static
-    {
-      AppMethodBeat.i(218043);
-      aspectFit = new RenderLayoutMode("aspectFit", 0);
-      aspectFill = new RenderLayoutMode("aspectFill", 1);
-      $VALUES = new RenderLayoutMode[] { aspectFit, aspectFill };
-      AppMethodBeat.o(218043);
-    }
-    
-    private RenderLayoutMode() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.core.composition.VideoComposition
  * JD-Core Version:    0.7.0.1
  */

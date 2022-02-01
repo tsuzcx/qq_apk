@@ -1,77 +1,189 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
-import com.tencent.mm.plugin.exdevice.i.c;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.cba;
-import com.tencent.mm.protocal.protobuf.cbb;
+import com.tencent.mm.plugin.exdevice.service.f;
+import com.tencent.mm.plugin.exdevice.service.u;
+import com.tencent.mm.protocal.protobuf.ciu;
+import com.tencent.mm.protocal.protobuf.ciw;
+import com.tencent.mm.protocal.protobuf.cix;
+import com.tencent.mm.protocal.protobuf.eae;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class s
   extends q
-  implements m
+  implements com.tencent.mm.network.m
 {
-  private i heq;
-  private d rAy;
-  private String rzn;
+  private i callback;
+  private String fzM;
+  private d rr;
+  String vge;
   
-  public s(String paramString1, String paramString2, String paramString3, int paramInt)
+  public s(String paramString1, String paramString2, String paramString3, int paramInt, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(23404);
-    this.heq = null;
-    this.rAy = null;
-    this.rzn = null;
+    AppMethodBeat.i(23398);
+    this.callback = null;
+    this.rr = null;
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new cba();
-    ((d.a)localObject).iLO = new cbb();
-    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/device/subscribestatus";
-    ((d.a)localObject).funcId = 1090;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBU = new ciw();
+    ((d.a)localObject).lBV = new cix();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/harddeviceauth";
+    ((d.a)localObject).funcId = 541;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rAy = ((d.a)localObject).aXF();
-    localObject = (cba)this.rAy.iLK.iLR;
-    ((cba)localObject).KOk = b.bfZ(paramString2);
-    ((cba)localObject).KOi = b.bfZ(paramString3);
-    ((cba)localObject).him = paramInt;
-    this.rzn = paramString1;
-    AppMethodBeat.o(23404);
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (ciw)d.b.b(this.rr.lBR);
+    ciu localciu = new ciu();
+    localciu.RMK = paramString2;
+    localciu.rVF = paramString3;
+    ((ciw)localObject).RQB = localciu;
+    ((ciw)localObject).TpV = paramInt;
+    ((ciw)localObject).TpW = new eae().dc(paramArrayOfByte);
+    this.vge = paramString3;
+    this.fzM = paramString1;
+    AppMethodBeat.o(23398);
+  }
+  
+  private byte[] cZs()
+  {
+    AppMethodBeat.i(23403);
+    Object localObject = (cix)d.c.b(this.rr.lBS);
+    try
+    {
+      localObject = ((cix)localObject).TpX.Tkb.UH;
+      AppMethodBeat.o(23403);
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      Log.printErrStackTrace("MicroMsg.exdevice.NetSceneHardDeviceAuth", localException, "", new Object[0]);
+      AppMethodBeat.o(23403);
+    }
+    return null;
+  }
+  
+  private byte[] getSessionKey()
+  {
+    AppMethodBeat.i(23401);
+    Object localObject = (cix)d.c.b(this.rr.lBS);
+    try
+    {
+      localObject = ((cix)localObject).RLU.Tkb.UH;
+      AppMethodBeat.o(23401);
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      Log.printErrStackTrace("MicroMsg.exdevice.NetSceneHardDeviceAuth", localException, "", new Object[0]);
+      AppMethodBeat.o(23401);
+    }
+    return null;
+  }
+  
+  public final byte[] cZr()
+  {
+    AppMethodBeat.i(23402);
+    Object localObject = (cix)d.c.b(this.rr.lBS);
+    try
+    {
+      localObject = ((cix)localObject).TpY.Tkb.UH;
+      AppMethodBeat.o(23402);
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      Log.printErrStackTrace("MicroMsg.exdevice.NetSceneHardDeviceAuth", localException, "", new Object[0]);
+      AppMethodBeat.o(23402);
+    }
+    return null;
   }
   
   public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(23406);
-    this.heq = parami;
-    int i = dispatch(paramg, this.rAy, this);
-    AppMethodBeat.o(23406);
+    AppMethodBeat.i(23400);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(23400);
     return i;
   }
   
   public final int getType()
   {
-    return 1090;
+    return 541;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(23405);
-    Log.i("MicroMsg.exdevice.NetSceneHardDeviceStatusSubscribe", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
-    ad.cKL().anJ(this.rzn);
+    AppMethodBeat.i(23399);
+    Log.i("MicroMsg.exdevice.NetSceneHardDeviceAuth", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
+    params = ae.cZx().avI(this.vge);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramInt1 = ((cbb)this.rAy.iLL.iLR).getBaseResponse().Ret;
-      Log.i("MicroMsg.exdevice.NetSceneHardDeviceStatusSubscribe", "HardDeviceStatusSubResponse: ret=" + paramInt1 + ",msg=" + paramString);
+      Object localObject = (cix)d.c.b(this.rr.lBS);
+      if (params != null)
+      {
+        paramArrayOfByte = cZr();
+        if (paramArrayOfByte != null) {
+          params.field_authBuf = paramArrayOfByte;
+        }
+        params.idP = ((cix)localObject).Tqa;
+        params.hwY = true;
+        params.idO = ((cix)localObject).TpZ;
+        params.hwY = true;
+        localObject = getSessionKey();
+        if (localObject != null)
+        {
+          u.dak().b(params.field_mac, (byte[])localObject, 2);
+          if (u.dal().vdz != null) {
+            u.dal().vdz.setChannelSessionKey(params.field_mac, (byte[])localObject);
+          }
+          params.field_sessionKey = ((byte[])localObject);
+        }
+        localObject = cZs();
+        if (localObject != null)
+        {
+          u.dak().b(params.field_mac, (byte[])localObject, 3);
+          params.field_sessionBuf = ((byte[])localObject);
+        }
+        localObject = cZr();
+        if (paramArrayOfByte != null)
+        {
+          u.dak().b(params.field_mac, (byte[])localObject, 1);
+          params.field_authBuf = paramArrayOfByte;
+        }
+        params.idQ = (System.currentTimeMillis() / 1000L);
+        params.hwY = true;
+        if (2 == u.dak().Jl(params.field_mac))
+        {
+          ae.cZJ();
+          e.d(this.fzM, params.field_url, 2, params.field_deviceID);
+        }
+        u.dak().Jo(params.field_mac);
+        Log.i("MicroMsg.exdevice.NetSceneHardDeviceAuth", "update local device auth infos = %b", new Object[] { Boolean.valueOf(ae.cZx().update(params, new String[0])) });
+      }
     }
-    this.heq.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(23405);
+    for (;;)
+    {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(23399);
+      return;
+      Log.e("MicroMsg.exdevice.NetSceneHardDeviceAuth", "SubCoreExDevice.getHardDeviceInfoStorage().getByDeviceIdServer == null");
+      continue;
+      if (params != null)
+      {
+        u.dak().Jp(params.field_mac);
+        ae.cZJ();
+        e.d(this.fzM, params.field_url, 4, params.field_deviceID);
+      }
+      ae.cZJ();
+      e.dC(this.fzM, 3);
+    }
   }
 }
 

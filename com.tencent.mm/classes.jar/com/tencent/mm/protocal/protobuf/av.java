@@ -1,79 +1,82 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class av
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String pTd;
-  public String pTe;
+  public LinkedList<ax> RFl;
+  
+  public av()
+  {
+    AppMethodBeat.i(204363);
+    this.RFl = new LinkedList();
+    AppMethodBeat.o(204363);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(113930);
+    AppMethodBeat.i(204364);
     if (paramInt == 0)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.pTd != null) {
-        paramVarArgs.e(1, this.pTd);
-      }
-      if (this.pTe != null) {
-        paramVarArgs.e(2, this.pTe);
-      }
-      AppMethodBeat.o(113930);
+      ((g.a.a.c.a)paramVarArgs[0]).e(1, 8, this.RFl);
+      AppMethodBeat.o(204364);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.pTd == null) {
-        break label274;
-      }
-    }
-    label274:
-    for (paramInt = g.a.a.b.b.a.f(1, this.pTd) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.pTe != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.pTe);
-      }
-      AppMethodBeat.o(113930);
-      return i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
-          }
-        }
-        AppMethodBeat.o(113930);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-        av localav = (av)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(113930);
-          return -1;
-        case 1: 
-          localav.pTd = locala.UbS.readString();
-          AppMethodBeat.o(113930);
-          return 0;
-        }
-        localav.pTe = locala.UbS.readString();
-        AppMethodBeat.o(113930);
-        return 0;
-      }
-      AppMethodBeat.o(113930);
-      return -1;
+      paramInt = g.a.a.a.c(1, 8, this.RFl);
+      AppMethodBeat.o(204364);
+      return paramInt + 0;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.RFl.clear();
+      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.iUs();
+        }
+      }
+      AppMethodBeat.o(204364);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject = (g.a.a.a.a)paramVarArgs[0];
+      av localav = (av)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(204364);
+        return -1;
+      }
+      paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+      int i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        localObject = (byte[])paramVarArgs.get(paramInt);
+        ax localax = new ax();
+        if ((localObject != null) && (localObject.length > 0)) {
+          localax.parseFrom((byte[])localObject);
+        }
+        localav.RFl.add(localax);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(204364);
+      return 0;
+    }
+    AppMethodBeat.o(204364);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.av
  * JD-Core Version:    0.7.0.1
  */

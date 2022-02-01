@@ -8,7 +8,7 @@ import java.util.Map;
 
 public abstract interface g
 {
-  public abstract void f(Object paramObject1, Object paramObject2);
+  public abstract void e(Object paramObject1, Object paramObject2);
   
   public abstract Object get(Object paramObject);
   
@@ -16,36 +16,21 @@ public abstract interface g
   
   public static final class a
   {
-    private static Map<String, g> gpF;
+    private static Map<String, g> iTN;
     
     static
     {
       AppMethodBeat.i(131947);
-      gpF = new HashMap();
+      iTN = new HashMap();
       AppMethodBeat.o(131947);
     }
     
-    private static g Dr(String paramString)
+    private static g Ki(String paramString)
     {
       AppMethodBeat.i(131941);
-      paramString = (g)gpF.get(paramString);
+      paramString = (g)iTN.get(paramString);
       AppMethodBeat.o(131941);
       return paramString;
-    }
-    
-    public static <T> T X(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(131942);
-      paramString1 = a(Dr(paramString1), paramString2);
-      AppMethodBeat.o(131942);
-      return paramString1;
-    }
-    
-    public static <T> void Y(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(131944);
-      b(Dr(paramString1), paramString2);
-      AppMethodBeat.o(131944);
     }
     
     private static <T> T a(g paramg, String paramString)
@@ -75,22 +60,37 @@ public abstract interface g
     public static void a(String paramString, g paramg)
     {
       AppMethodBeat.i(131940);
-      gpF.put(paramString, paramg);
+      iTN.put(paramString, paramg);
       AppMethodBeat.o(131940);
     }
     
     public static <T> void a(String paramString1, String paramString2, T paramT)
     {
       AppMethodBeat.i(131943);
-      paramString1 = Dr(paramString1);
+      paramString1 = Ki(paramString1);
       if (paramString1 == null)
       {
         Log.e("MicroMsg.ICacheService.Factory", "null service");
         AppMethodBeat.o(131943);
         return;
       }
-      paramString1.f(paramString2, paramT);
+      paramString1.e(paramString2, paramT);
       AppMethodBeat.o(131943);
+    }
+    
+    public static <T> T ab(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(131942);
+      paramString1 = a(Ki(paramString1), paramString2);
+      AppMethodBeat.o(131942);
+      return paramString1;
+    }
+    
+    public static <T> void ac(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(131944);
+      b(Ki(paramString1), paramString2);
+      AppMethodBeat.o(131944);
     }
     
     private static <T> T b(g paramg, String paramString)

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.finder.feed;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/FinderFriendFoldedTimelineContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelatedTimelineContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"})
 public final class n {}
 
 

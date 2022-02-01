@@ -2,19 +2,19 @@ package com.tencent.mm.plugin.appbrand.keylogger.base;
 
 public abstract interface a
 {
-  public abstract boolean FI();
+  public abstract boolean Ho();
   
-  public abstract String bMU();
+  public abstract String bZl();
   
-  public abstract boolean bMV();
+  public abstract boolean bZm();
   
-  public abstract String bMW();
+  public abstract String bZn();
   
   public abstract String name();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.base.a
  * JD-Core Version:    0.7.0.1
  */

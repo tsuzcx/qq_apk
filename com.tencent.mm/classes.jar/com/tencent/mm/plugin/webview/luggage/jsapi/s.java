@@ -15,7 +15,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
-import com.tencent.mm.ui.e.p;
+import com.tencent.mm.ui.f.r;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONException;
@@ -30,17 +30,17 @@ public class s
   {
     AppMethodBeat.i(78553);
     Log.i("MicroMsg.JsApiGetBrandWCPayRequest", "invokeInOwn");
-    MMActivity localMMActivity = (MMActivity)((g)paramb.cta).mContext;
+    MMActivity localMMActivity = (MMActivity)((g)paramb.crg).mContext;
     Object localObject = new JSONObject();
     try
     {
-      ((JSONObject)localObject).put("url", ((g)paramb.cta).getUrl());
+      ((JSONObject)localObject).put("url", ((g)paramb.crg).getUrl());
       ((JSONObject)localObject).put("pay_scene", 3);
       label59:
-      localObject = new WalletJsapiData(paramb.ctb.csi);
-      ((WalletJsapiData)localObject).KxH = 1;
-      ((WalletJsapiData)localObject).KxO = ((g)paramb.cta).mParams.getString(e.p.OzI);
-      Log.i("MicroMsg.JsApiGetBrandWCPayRequest", "pay channel: %s, scene: %s, adUxInfo: %s", new Object[] { Integer.valueOf(((WalletJsapiData)localObject).payChannel), Integer.valueOf(((WalletJsapiData)localObject).dVv), ((WalletJsapiData)localObject).KxO });
+      localObject = new WalletJsapiData(paramb.crh.cqn);
+      ((WalletJsapiData)localObject).Rzv = 1;
+      ((WalletJsapiData)localObject).RzC = ((g)paramb.crg).mParams.getString(f.r.VSW);
+      Log.i("MicroMsg.JsApiGetBrandWCPayRequest", "pay channel: %s, scene: %s, adUxInfo: %s", new Object[] { Integer.valueOf(((WalletJsapiData)localObject).payChannel), Integer.valueOf(((WalletJsapiData)localObject).fOY), ((WalletJsapiData)localObject).RzC });
       MMActivity.a local1 = new MMActivity.a()
       {
         public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
@@ -53,7 +53,7 @@ public class s
           }
           if (paramAnonymousInt2 == -1)
           {
-            paramb.c("", null);
+            paramb.a("", null);
             AppMethodBeat.o(78552);
             return;
           }
@@ -65,16 +65,16 @@ public class s
             localHashMap.put("err_code", Integer.valueOf(paramAnonymousInt1));
             localHashMap.put("err_desc", paramAnonymousIntent);
             Log.e("MicroMsg.JsApiGetBrandWCPayRequest", "errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousInt1), paramAnonymousIntent });
-            paramb.e("fail", localHashMap);
+            paramb.d("fail", localHashMap);
             AppMethodBeat.o(78552);
             return;
           }
-          paramb.c("cancel", null);
+          paramb.a("cancel", null);
           AppMethodBeat.o(78552);
         }
       };
       if (!f.a(localMMActivity, (WalletJsapiData)localObject, hashCode() & 0xFFFF, local1)) {
-        paramb.c("fail", null);
+        paramb.a("fail", null);
       }
       AppMethodBeat.o(78553);
       return;
@@ -85,7 +85,7 @@ public class s
     }
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

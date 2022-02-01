@@ -1,142 +1,263 @@
 package com.tencent.mm.live.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.live.b.a.o;
-import com.tencent.mm.live.core.core.b.e;
-import com.tencent.mm.live.core.core.b.f;
-import com.tencent.mm.live.core.core.e.a;
-import com.tencent.mm.protocal.protobuf.cfd;
-import com.tencent.mm.protocal.protobuf.civ;
-import com.tencent.mm.protocal.protobuf.cjb;
+import com.tencent.mm.ad.i;
+import com.tencent.mm.cd.b;
+import com.tencent.mm.live.core.core.model.f;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.protobuf.crq;
+import com.tencent.mm.protocal.protobuf.crv;
+import com.tencent.mm.protocal.protobuf.crw;
+import com.tencent.mm.protocal.protobuf.crx;
+import com.tencent.mm.protocal.protobuf.cry;
+import com.tencent.mm.protocal.protobuf.vj;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.trtc.TRTCCloudDef.TRTCParams;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Map;
 import kotlin.g.b.p;
-import kotlin.k.j;
 import kotlin.l;
+import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/model/JoinLiveRoom;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "liveId", "", "wechatRoomId", "", "liveName", "isAnchor", "", "(JLjava/lang/String;Ljava/lang/String;Z)V", "callback", "Lkotlin/Function4;", "", "Lkotlin/ParameterName;", "name", "ret", "errMsg", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "liveRoomInfo", "Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "trtcParams", "", "join", "onSceneEnd", "errType", "errCode", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-logic_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/model/LiveCgiUtil;", "", "()V", "checkCookiesDeprecated", "", "errType", "", "errCode", "parseAnchorStatusJson", "Lcom/tencent/mm/json/JSONObject;", "status", "Lcom/tencent/mm/protobuf/ByteString;", "processLiveCgiSDKResponse", "", "name", "", "liveSdkInfo", "Lcom/tencent/mm/protocal/protobuf/LiveSdkInfo;", "liveInfo", "Lcom/tencent/mm/protocal/protobuf/LiveInfo;", "trtcParams", "Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "liveRoomInfo", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "processLiveSdkParams", "liveSdkParam", "Lcom/tencent/mm/protocal/protobuf/LiveSdkParams;", "setupAnchorStatusJson", "plugin-logic_release"})
 public final class k
-  implements i
 {
-  public static final a hFX;
-  private final boolean dMz;
-  private kotlin.g.a.r<? super Integer, ? super String, ? super e, ? super TRTCCloudDef.TRTCParams, kotlin.x> hFV;
-  private final String hFW;
-  private final String hwb;
-  private final long liveId;
+  public static final k kuf;
   
   static
   {
-    AppMethodBeat.i(207576);
-    hFX = new a((byte)0);
-    AppMethodBeat.o(207576);
+    AppMethodBeat.i(195791);
+    kuf = new k();
+    AppMethodBeat.o(195791);
   }
   
-  private k(long paramLong, String paramString1, String paramString2)
+  public static void a(crx paramcrx, TRTCCloudDef.TRTCParams paramTRTCParams, f paramf)
   {
-    AppMethodBeat.i(207575);
-    this.liveId = paramLong;
-    this.hFW = paramString1;
-    this.hwb = paramString2;
-    this.dMz = false;
-    AppMethodBeat.o(207575);
-  }
-  
-  public final void a(kotlin.g.a.r<? super Integer, ? super String, ? super e, ? super TRTCCloudDef.TRTCParams, kotlin.x> paramr)
-  {
-    AppMethodBeat.i(207573);
-    Object localObject1 = g.aAg();
-    p.g(localObject1, "MMKernel.network()");
-    ((b)localObject1).azz().a(3797, (i)this);
-    long l = this.liveId;
-    localObject1 = this.hFW;
-    Object localObject2 = x.hJf;
-    localObject1 = new o(l, (String)localObject1, x.aGq());
-    localObject2 = g.aAg();
-    p.g(localObject2, "MMKernel.network()");
-    ((b)localObject2).azz().b((q)localObject1);
-    this.hFV = paramr;
-    AppMethodBeat.o(207573);
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
-  {
-    AppMethodBeat.i(207574);
-    Object localObject1;
+    AppMethodBeat.i(195790);
+    p.k(paramcrx, "liveSdkParam");
+    p.k(paramf, "liveRoomInfo");
+    Object localObject1 = paramcrx.Tzt;
+    paramcrx = paramcrx.Tzv;
     Object localObject2;
-    if ((paramq instanceof o))
+    label556:
+    Object localObject3;
+    if (localObject1 != null)
     {
-      Log.i("MicroMsg.JoinLiveRoom", "JoinLiveRoom on SceneEnd");
-      if ((paramInt1 != 0) || (paramInt2 != 0))
+      if (((cry)localObject1).Tzw > 0)
       {
-        Log.i("MicroMsg.JoinLiveRoom", "join live room failed " + paramInt1 + ' ' + paramInt2);
-        localObject1 = this.hFV;
-        if (localObject1 != null)
-        {
-          paramq = paramString;
-          if (paramString == null) {
-            paramq = "";
-          }
-          paramString = f.hzy;
-          paramString = f.aDr();
-          localObject2 = f.hzy;
-          ((kotlin.g.a.r)localObject1).invoke(Integer.valueOf(paramInt2), paramq, paramString, f.aDq());
-        }
-        paramString = g.aAg();
-        p.g(paramString, "MMKernel.network()");
-        paramString.azz().b(3797, (i)this);
+        localObject2 = com.tencent.mm.live.core.core.trtc.sdkadapter.a.aLI();
+        p.j(localObject2, "ConfigHelper.getInstance()");
+        localObject2 = ((com.tencent.mm.live.core.core.trtc.sdkadapter.a)localObject2).aLJ();
+        p.j(localObject2, "ConfigHelper.getInstance().videoConfig");
+        ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.e)localObject2).setVideoResolution(((cry)localObject1).Tzw);
       }
+      if (((cry)localObject1).Tzy > 0)
+      {
+        localObject2 = com.tencent.mm.live.core.core.trtc.sdkadapter.a.aLI();
+        p.j(localObject2, "ConfigHelper.getInstance()");
+        localObject2 = ((com.tencent.mm.live.core.core.trtc.sdkadapter.a)localObject2).aLJ();
+        p.j(localObject2, "ConfigHelper.getInstance().videoConfig");
+        ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.e)localObject2).ta(((cry)localObject1).Tzy);
+      }
+      if (((cry)localObject1).Tzz > 0)
+      {
+        localObject2 = com.tencent.mm.live.core.core.trtc.sdkadapter.a.aLI();
+        p.j(localObject2, "ConfigHelper.getInstance()");
+        localObject2 = ((com.tencent.mm.live.core.core.trtc.sdkadapter.a)localObject2).aLJ();
+        p.j(localObject2, "ConfigHelper.getInstance().videoConfig");
+        ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.e)localObject2).setVideoBitrate(((cry)localObject1).Tzz);
+      }
+      if (((cry)localObject1).TzG > 0)
+      {
+        localObject2 = com.tencent.mm.live.core.core.trtc.sdkadapter.a.aLI();
+        p.j(localObject2, "ConfigHelper.getInstance()");
+        localObject2 = ((com.tencent.mm.live.core.core.trtc.sdkadapter.a)localObject2).aLJ();
+        p.j(localObject2, "ConfigHelper.getInstance().videoConfig");
+        ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.e)localObject2).setMinVideoBitrate(((cry)localObject1).TzG);
+      }
+      if (((cry)localObject1).TzI > 0)
+      {
+        localObject2 = com.tencent.mm.live.core.core.trtc.sdkadapter.a.aLI();
+        p.j(localObject2, "ConfigHelper.getInstance()");
+        localObject2 = ((com.tencent.mm.live.core.core.trtc.sdkadapter.a)localObject2).aLJ();
+        p.j(localObject2, "ConfigHelper.getInstance().videoConfig");
+        ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.e)localObject2).tb(((cry)localObject1).TzI);
+      }
+      if (((cry)localObject1).TzJ > 0)
+      {
+        localObject2 = com.tencent.mm.live.core.core.trtc.sdkadapter.a.aLI();
+        p.j(localObject2, "ConfigHelper.getInstance()");
+        localObject2 = ((com.tencent.mm.live.core.core.trtc.sdkadapter.a)localObject2).aLJ();
+        p.j(localObject2, "ConfigHelper.getInstance().videoConfig");
+        ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.e)localObject2).tc(((cry)localObject1).TzJ);
+      }
+      if (((cry)localObject1).TzK > 0)
+      {
+        localObject2 = com.tencent.mm.live.core.core.trtc.sdkadapter.a.aLI();
+        p.j(localObject2, "ConfigHelper.getInstance()");
+        localObject2 = ((com.tencent.mm.live.core.core.trtc.sdkadapter.a)localObject2).aLJ();
+        p.j(localObject2, "ConfigHelper.getInstance().videoConfig");
+        ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.e)localObject2).td(((cry)localObject1).TzK);
+      }
+      if (((cry)localObject1).TzL > 0)
+      {
+        localObject2 = com.tencent.mm.live.core.core.trtc.sdkadapter.a.aLI();
+        p.j(localObject2, "ConfigHelper.getInstance()");
+        localObject2 = ((com.tencent.mm.live.core.core.trtc.sdkadapter.a)localObject2).aLJ();
+        p.j(localObject2, "ConfigHelper.getInstance().videoConfig");
+        ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.e)localObject2).te(((cry)localObject1).TzL);
+      }
+      if (((cry)localObject1).TzB > 0)
+      {
+        localObject2 = com.tencent.mm.live.core.core.trtc.sdkadapter.a.aLI();
+        p.j(localObject2, "ConfigHelper.getInstance()");
+        localObject2 = ((com.tencent.mm.live.core.core.trtc.sdkadapter.a)localObject2).aLJ();
+        p.j(localObject2, "ConfigHelper.getInstance().videoConfig");
+        ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.e)localObject2).tf(((cry)localObject1).TzB);
+      }
+      i = ((cry)localObject1).TzC;
+      if (i >= 0) {}
     }
     else
     {
-      AppMethodBeat.o(207574);
-      return;
-    }
-    paramString = ((o)paramq).hKo;
-    paramq = x.hJf;
-    if (paramString != null) {}
-    for (paramString = paramString.LFH;; paramString = null)
-    {
-      x.a(paramString);
-      paramString = x.hJf;
-      cjb localcjb = x.aGs();
-      if (localcjb == null) {
-        break;
+      if ((paramcrx == null) || (paramTRTCParams == null)) {
+        break label848;
       }
-      localObject1 = new TRTCCloudDef.TRTCParams();
-      localObject2 = new e(null, 0L, 0, null, 0L, 0L, 0, null, null, 0L, 4095);
-      paramString = n.hGh;
-      paramString = x.hJf;
-      paramq = x.aGr().LpF;
-      paramString = paramq;
-      if (paramq == null) {
-        paramString = "";
-      }
-      paramq = x.hJf;
-      n.a(paramString, localcjb, x.aGr(), (TRTCCloudDef.TRTCParams)localObject1, (e)localObject2);
-      if (this.dMz)
+      Log.i("MicroMsg.LiveCoreSdk", "userDefineRecordId:" + paramcrx.TyO + ',' + paramcrx.TyP);
+      localObject1 = paramcrx.TyP;
+      localObject2 = paramcrx.TyO;
+      int j = paramcrx.TyY;
+      i = j;
+      if (!com.tencent.mm.modelcontrol.e.vW(5))
       {
-        paramString = e.a.hxc;
-        ((e)localObject2).hzl = e.a.aCe();
+        i = j;
+        if (j == com.tencent.mm.live.core.core.a.kiQ.value) {
+          i = paramcrx.TyZ;
+        }
       }
-      long l = j.aM((localcjb.Mor - 60L) * 1000L, 60000L);
-      r.hIg.zz(l);
-      paramString = this.hFV;
-      if (paramString == null) {
+      paramf.kjr = paramcrx.TyZ;
+      if (i >= 100) {
+        break label718;
+      }
+      paramf.a(com.tencent.mm.live.core.core.model.a.klz);
+      paramf.kjq = i;
+      localObject3 = (Collection)paramcrx.TyU;
+      if ((localObject3 != null) && (!((Collection)localObject3).isEmpty())) {
+        break label758;
+      }
+    }
+    label718:
+    label758:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        break label763;
+      }
+      paramcrx = paramcrx.TyU;
+      p.j(paramcrx, "channelParams.cdn_trans_info");
+      paramcrx = ((Iterable)paramcrx).iterator();
+      while (paramcrx.hasNext())
+      {
+        Object localObject4 = (vj)paramcrx.next();
+        localObject3 = (Map)paramf.kmm;
+        i = ((vj)localObject4).SgP;
+        localObject4 = ((vj)localObject4).url;
+        p.j(localObject4, "it.url");
+        ((Map)localObject3).put(Integer.valueOf(i), localObject4);
+      }
+      if (1 < i) {
         break;
       }
-      paramString.invoke(Integer.valueOf(0), "", localObject2, localObject1);
+      localObject2 = com.tencent.mm.live.core.core.trtc.sdkadapter.a.aLI();
+      p.j(localObject2, "ConfigHelper.getInstance()");
+      localObject2 = ((com.tencent.mm.live.core.core.trtc.sdkadapter.a)localObject2).aLJ();
+      p.j(localObject2, "ConfigHelper.getInstance().videoConfig");
+      ((com.tencent.mm.live.core.core.trtc.sdkadapter.feature.e)localObject2).sZ(((cry)localObject1).TzC);
       break;
+      if (i == com.tencent.mm.live.core.core.a.kiR.value)
+      {
+        paramf.a(com.tencent.mm.live.core.core.model.a.klA);
+        break label556;
+      }
+      if (i != com.tencent.mm.live.core.core.a.kiS.value) {
+        break label556;
+      }
+      paramf.a(com.tencent.mm.live.core.core.model.a.klB);
+      break label556;
     }
+    label763:
+    if ((!Util.isNullOrNil((String)localObject1)) || (!Util.isNullOrNil((String)localObject2)))
+    {
+      paramcrx = new i();
+      if (!Util.isNullOrNil((String)localObject1)) {
+        paramcrx.g("userdefine_streamid_main", localObject1);
+      }
+      if (!Util.isNullOrNil((String)localObject2)) {
+        paramcrx.g("userdefine_record_id", localObject2);
+      }
+      paramf = new i();
+      paramf.g("Str_uc_params", paramcrx);
+      paramTRTCParams.businessInfo = paramf.toString();
+    }
+    label848:
+    AppMethodBeat.o(195790);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/model/JoinLiveRoom$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
-  public static final class a {}
+  public static void a(String paramString, crw paramcrw, crq paramcrq, TRTCCloudDef.TRTCParams paramTRTCParams, f paramf)
+  {
+    AppMethodBeat.i(195781);
+    p.k(paramString, "name");
+    p.k(paramcrw, "liveSdkInfo");
+    p.k(paramcrq, "liveInfo");
+    p.k(paramTRTCParams, "trtcParams");
+    p.k(paramf, "liveRoomInfo");
+    paramTRTCParams.roomId = paramcrw.Tzk;
+    paramTRTCParams.sdkAppId = paramcrw.Tzj;
+    paramTRTCParams.privateMapKey = z.a(paramcrw.Tzn);
+    paramTRTCParams.userId = paramcrw.TyF;
+    paramTRTCParams.userSig = z.a(paramcrw.Tzm);
+    int i = paramcrw.Tzl;
+    l.i locali = l.i.kuO;
+    if (i != l.i.aNR())
+    {
+      locali = l.i.kuO;
+      if (i != l.i.aNS()) {}
+    }
+    for (i = 21;; i = 20)
+    {
+      paramTRTCParams.role = i;
+      paramf.Nu(paramString);
+      paramf.liveId = paramcrq.klE;
+      paramString = (Map)paramf.kmm;
+      paramcrq = paramcrw.Tzs;
+      p.j(paramcrq, "liveSdkInfo.live_cdn_url");
+      paramString.put(Integer.valueOf(0), paramcrq);
+      paramf.kmj = paramcrw.Tzp;
+      paramString = new crx();
+      paramcrw = paramcrw.Tzo;
+      p.j(paramcrw, "liveSdkInfo.sdk_params");
+      paramString = paramString.parseFrom(paramcrw.UH);
+      if (paramString != null) {
+        break;
+      }
+      paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.LiveSdkParams");
+      AppMethodBeat.o(195781);
+      throw paramString;
+    }
+    paramString = (crx)paramString;
+    paramf.kmi = paramString.Tzv.TyQ;
+    paramf.appId = paramString.Tzv.TyS;
+    paramf.kmk = paramString.Tzv.TyT;
+    a(paramString, paramTRTCParams, paramf);
+    AppMethodBeat.o(195781);
+  }
+  
+  public static boolean dw(int paramInt1, int paramInt2)
+  {
+    return (paramInt1 == 4) && (paramInt2 == -100020);
+  }
 }
 
 

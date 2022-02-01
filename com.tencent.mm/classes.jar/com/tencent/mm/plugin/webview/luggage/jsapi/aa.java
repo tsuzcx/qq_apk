@@ -17,20 +17,20 @@ public class aa
   {
     AppMethodBeat.i(78562);
     Log.i("MicroMsg.JsApiHideOptionMenu", "invoke");
-    m localm = ((g)paramb.cta).gbC();
+    m localm = ((g)paramb.crg).gUx();
     if (localm == null)
     {
       Log.e("MicroMsg.JsApiHideOptionMenu", "actionBar is null");
-      paramb.c("fail", null);
+      paramb.a("fail", null);
       AppMethodBeat.o(78562);
       return;
     }
-    localm.gbX();
-    paramb.c("", null);
+    localm.gUT();
+    paramb.a("", null);
     AppMethodBeat.o(78562);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

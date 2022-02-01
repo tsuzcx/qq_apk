@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.t.b;
+import com.tencent.mm.ui.w.b;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -20,21 +20,21 @@ import java.util.List;
 public class SelectDelRoomManagerUI
   extends SelectMemberUI
 {
-  private boolean gAj;
-  private List<String> gAu;
+  private boolean jkm;
+  private List<String> jkx;
   
   public SelectDelRoomManagerUI()
   {
     AppMethodBeat.i(12939);
-    this.gAj = false;
-    this.gAu = new ArrayList();
+    this.jkm = false;
+    this.jkx = new ArrayList();
     AppMethodBeat.o(12939);
   }
   
-  private void ani()
+  private void atk()
   {
     AppMethodBeat.i(12946);
-    if (this.gAB.size() > 0)
+    if (this.jkF.size() > 0)
     {
       enableOptionMenu(1, true);
       AppMethodBeat.o(12946);
@@ -44,18 +44,26 @@ public class SelectDelRoomManagerUI
     AppMethodBeat.o(12946);
   }
   
+  protected final void B(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(12945);
+    super.B(paramInt, paramBoolean);
+    atk();
+    AppMethodBeat.o(12945);
+  }
+  
   protected final void a(View paramView, int paramInt, long paramLong)
   {
     AppMethodBeat.i(12943);
     super.a(paramView, paramInt, paramLong);
-    ((SelectMemberUI.c)paramView.getTag()).gAQ.performClick();
+    ((SelectMemberUI.c)paramView.getTag()).jkW.performClick();
     AppMethodBeat.o(12943);
   }
   
-  protected final void anf()
+  protected final void atg()
   {
     AppMethodBeat.i(12940);
-    super.anf();
+    super.atg();
     Object localObject1 = getIntent().getStringExtra("RoomManagers");
     if (localObject1 != null)
     {
@@ -65,35 +73,40 @@ public class SelectDelRoomManagerUI
       while (i < j)
       {
         Object localObject2 = localObject1[i];
-        this.gAu.add(localObject2);
+        this.jkx.add(localObject2);
         i += 1;
       }
     }
-    this.gAj = true;
+    this.jkm = true;
     AppMethodBeat.o(12940);
   }
   
-  public final boolean ang()
+  public final boolean ath()
   {
     return true;
   }
   
-  protected final boolean ank()
+  protected final boolean ati()
   {
     return false;
   }
   
-  protected final BaseAdapter anl()
+  protected final boolean atm()
+  {
+    return false;
+  }
+  
+  protected final BaseAdapter atn()
   {
     AppMethodBeat.i(12944);
-    BaseAdapter localBaseAdapter = super.anl();
+    BaseAdapter localBaseAdapter = super.atn();
     AppMethodBeat.o(12944);
     return localBaseAdapter;
   }
   
-  protected final List<String> anm()
+  protected final List<String> ato()
   {
-    return this.gAu;
+    return this.jkx;
   }
   
   public void finish()
@@ -109,16 +122,16 @@ public class SelectDelRoomManagerUI
     AppMethodBeat.i(12941);
     super.initView();
     String str;
-    label43:
+    label45:
     MenuItem.OnMenuItemClickListener local1;
-    if (this.gAj)
+    if (this.jkm)
     {
-      str = getString(2131764782);
+      str = getString(a.i.jgD);
       setMMTitle(str);
-      if (!this.gAj) {
-        break label93;
+      if (!this.jkm) {
+        break label96;
       }
-      str = getString(2131758291);
+      str = getString(a.i.delete_room_member);
       local1 = new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -126,7 +139,7 @@ public class SelectDelRoomManagerUI
           AppMethodBeat.i(12938);
           if (SelectDelRoomManagerUI.a(SelectDelRoomManagerUI.this))
           {
-            h.a(SelectDelRoomManagerUI.this, SelectDelRoomManagerUI.this.getString(2131764678), "", new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+            h.a(SelectDelRoomManagerUI.this, SelectDelRoomManagerUI.this.getString(a.i.jfW), "", new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
             {
               public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
               {
@@ -152,22 +165,22 @@ public class SelectDelRoomManagerUI
           return true;
         }
       };
-      if (!this.gAj) {
-        break label103;
+      if (!this.jkm) {
+        break label107;
       }
     }
-    label93:
-    label103:
-    for (t.b localb = t.b.OGV;; localb = t.b.OGU)
+    label96:
+    label107:
+    for (w.b localb = w.b.Wap;; localb = w.b.Wao)
     {
       addTextOptionMenu(1, str, local1, null, localb);
-      ani();
+      atk();
       AppMethodBeat.o(12941);
       return;
-      str = getString(2131764781);
+      str = getString(a.i.jgC);
       break;
-      str = getString(2131755858);
-      break label43;
+      str = getString(a.i.app_finish);
+      break label45;
     }
   }
   
@@ -176,18 +189,10 @@ public class SelectDelRoomManagerUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  protected final void z(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(12945);
-    super.z(paramInt, paramBoolean);
-    ani();
-    AppMethodBeat.o(12945);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.SelectDelRoomManagerUI
  * JD-Core Version:    0.7.0.1
  */

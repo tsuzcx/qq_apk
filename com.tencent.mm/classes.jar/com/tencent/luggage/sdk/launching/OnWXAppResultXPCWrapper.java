@@ -15,8 +15,8 @@ public final class OnWXAppResultXPCWrapper<R extends Parcelable>
   implements Parcelable
 {
   public static final Parcelable.Creator<OnWXAppResultXPCWrapper> CREATOR;
-  private final ResultReceiver MU;
-  private final a<R> cBx;
+  private final a<R> cBa;
+  private final ResultReceiver dK;
   
   static
   {
@@ -28,8 +28,8 @@ public final class OnWXAppResultXPCWrapper<R extends Parcelable>
   private OnWXAppResultXPCWrapper(Parcel paramParcel)
   {
     AppMethodBeat.i(146882);
-    this.MU = ((ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel));
-    this.cBx = new a()
+    this.dK = ((ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel));
+    this.cBa = new a()
     {
       public final void b(R paramAnonymousR)
       {
@@ -46,8 +46,8 @@ public final class OnWXAppResultXPCWrapper<R extends Parcelable>
   private OnWXAppResultXPCWrapper(final a<R> parama)
   {
     AppMethodBeat.i(146880);
-    this.cBx = parama;
-    this.MU = new ResultReceiver(new Handler(Looper.getMainLooper()))
+    this.cBa = parama;
+    this.dK = new ResultReceiver(new Handler(Looper.getMainLooper()))
     {
       protected void onReceiveResult(int paramAnonymousInt, Bundle paramAnonymousBundle)
       {
@@ -87,7 +87,7 @@ public final class OnWXAppResultXPCWrapper<R extends Parcelable>
     AppMethodBeat.i(146879);
     paramParcel = (OnWXAppResultXPCWrapper)paramParcel.readParcelable(OnWXAppResultXPCWrapper.class.getClassLoader());
     if (paramParcel != null) {}
-    for (paramParcel = paramParcel.cBx;; paramParcel = null)
+    for (paramParcel = paramParcel.cBa;; paramParcel = null)
     {
       AppMethodBeat.o(146879);
       return paramParcel;
@@ -115,7 +115,7 @@ public final class OnWXAppResultXPCWrapper<R extends Parcelable>
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(146881);
-    this.MU.writeToParcel(paramParcel, paramInt);
+    this.dK.writeToParcel(paramParcel, paramInt);
     AppMethodBeat.o(146881);
   }
   
@@ -123,7 +123,7 @@ public final class OnWXAppResultXPCWrapper<R extends Parcelable>
     implements Parcelable
   {
     public static final Parcelable.Creator<SafeParcelableWrapper> CREATOR;
-    private Parcelable cBA;
+    private Parcelable cBd;
     
     static
     {
@@ -138,13 +138,13 @@ public final class OnWXAppResultXPCWrapper<R extends Parcelable>
       String str = paramParcel.readString();
       if (TextUtils.isEmpty(str))
       {
-        this.cBA = null;
+        this.cBd = null;
         AppMethodBeat.o(146876);
         return;
       }
       try
       {
-        this.cBA = paramParcel.readParcelable(Class.forName(str).getClassLoader());
+        this.cBd = paramParcel.readParcelable(Class.forName(str).getClassLoader());
         AppMethodBeat.o(146876);
         return;
       }
@@ -157,7 +157,7 @@ public final class OnWXAppResultXPCWrapper<R extends Parcelable>
     
     SafeParcelableWrapper(Parcelable paramParcelable)
     {
-      this.cBA = paramParcelable;
+      this.cBd = paramParcelable;
     }
     
     public final int describeContents()
@@ -168,21 +168,21 @@ public final class OnWXAppResultXPCWrapper<R extends Parcelable>
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(146875);
-      if (this.cBA == null)
+      if (this.cBd == null)
       {
         paramParcel.writeString(null);
         AppMethodBeat.o(146875);
         return;
       }
-      paramParcel.writeString(this.cBA.getClass().getName());
-      paramParcel.writeParcelable(this.cBA, paramInt);
+      paramParcel.writeString(this.cBd.getClass().getName());
+      paramParcel.writeParcelable(this.cBd, paramInt);
       AppMethodBeat.o(146875);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.sdk.launching.OnWXAppResultXPCWrapper
  * JD-Core Version:    0.7.0.1
  */

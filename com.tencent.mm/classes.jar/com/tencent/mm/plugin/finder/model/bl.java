@@ -1,46 +1,43 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.model.internal.i;
-import com.tencent.mm.protocal.protobuf.bds;
+import com.tencent.mm.plugin.finder.feed.model.internal.k;
+import com.tencent.mm.protocal.protobuf.bjr;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/model/FinderTopicInfoFeed;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "topicInfo", "Lcom/tencent/mm/protocal/protobuf/FinderTopicInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderTopicInfo;)V", "selected", "", "getSelected", "()Z", "setSelected", "(Z)V", "getTopicInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderTopicInfo;", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderPlacedDivider;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "divider", "Lcom/tencent/mm/protocal/protobuf/FinderStreamDivider;", "(Lcom/tencent/mm/protocal/protobuf/FinderStreamDivider;)V", "getDivider", "()Lcom/tencent/mm/protocal/protobuf/FinderStreamDivider;", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "plugin-finder_release"})
 public final class bl
-  implements bo
+  implements bu
 {
-  public final bds dMU;
-  public boolean uOQ;
+  public final bjr xzB;
   
-  public bl(bds parambds)
+  public bl(bjr parambjr)
   {
-    AppMethodBeat.i(248852);
-    this.dMU = parambds;
-    AppMethodBeat.o(248852);
+    AppMethodBeat.i(244393);
+    this.xzB = parambjr;
+    AppMethodBeat.o(244393);
   }
   
-  public final int a(i parami)
+  public final int a(k paramk)
   {
-    AppMethodBeat.i(248851);
-    p.h(parami, "obj");
-    if (((parami instanceof bl)) && (((bl)parami).dMU.twp == this.dMU.twp))
-    {
-      AppMethodBeat.o(248851);
-      return 0;
-    }
-    AppMethodBeat.o(248851);
+    AppMethodBeat.i(244392);
+    p.k(paramk, "obj");
+    AppMethodBeat.o(244392);
     return -1;
   }
   
-  public final int cxn()
+  public final int bAQ()
   {
-    return 1;
+    return this.xzB.STx;
   }
   
-  public final long lT()
+  public final long mf()
   {
-    return this.dMU.twp;
+    AppMethodBeat.i(244391);
+    long l = this.xzB.hashCode();
+    AppMethodBeat.o(244391);
+    return l;
   }
 }
 

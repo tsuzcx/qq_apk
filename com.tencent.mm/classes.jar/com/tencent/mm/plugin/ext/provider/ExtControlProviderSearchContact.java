@@ -7,18 +7,20 @@ import android.graphics.Bitmap.CompressFormat;
 import android.net.Uri;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.d;
-import com.tencent.mm.aj.p;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.g.c.eo;
+import com.tencent.mm.am.q;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.f.c.et;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.c;
+import com.tencent.mm.model.cb;
 import com.tencent.mm.plugin.ext.key.AESUtil;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.as;
-import com.tencent.mm.storagebase.e;
+import com.tencent.mm.storage.ca;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -28,33 +30,33 @@ import java.util.List;
 public class ExtControlProviderSearchContact
   extends ExtContentProviderBase
 {
-  private static List<String> gzY;
-  private static final String[] sNF;
-  private Cursor sNJ = null;
+  private static List<String> jkb;
+  private static final String[] wtA;
+  private Cursor wtE = null;
   
   static
   {
     int i = 0;
     AppMethodBeat.i(24467);
-    sNF = new String[] { "userId", "nickname", "avatar", "content", "msgId", "msgType" };
-    gzY = new ArrayList();
-    String[] arrayOfString = ab.iCO;
+    wtA = new String[] { "userId", "nickname", "avatar", "content", "msgId", "msgType" };
+    jkb = new ArrayList();
+    String[] arrayOfString = ab.lsO;
     int j = arrayOfString.length;
     while (i < j)
     {
       String str = arrayOfString[i];
-      gzY.add(str);
+      jkb.add(str);
       i += 1;
     }
-    gzY.add("officialaccounts");
-    gzY.add("helper_entry");
+    jkb.add("officialaccounts");
+    jkb.add("helper_entry");
     AppMethodBeat.o(24467);
   }
   
-  public static Cursor e(Cursor paramCursor)
+  public static Cursor g(Cursor paramCursor)
   {
     AppMethodBeat.i(24466);
-    e locale = new e(sNF, (byte)0);
+    com.tencent.mm.storagebase.e locale = new com.tencent.mm.storagebase.e(wtA, (byte)0);
     for (;;)
     {
       try
@@ -65,20 +67,20 @@ public class ExtControlProviderSearchContact
           i += 1;
           localObject2 = new as();
           ((as)localObject2).convertFrom(paramCursor);
-          if (!ab.Eq(((ax)localObject2).field_username))
+          if (!ab.Lj(((ax)localObject2).field_username))
           {
-            localObject3 = p.aYD().K(((ax)localObject2).field_username, true);
+            localObject3 = q.bhR().M(((ax)localObject2).field_username, true);
             if (localObject3 != null)
             {
               localObject1 = new ByteArrayOutputStream();
               ((Bitmap)localObject3).compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject1);
-              bg.aVF();
-              localObject3 = com.tencent.mm.model.c.aSQ().eH(((ax)localObject2).field_username, 1);
+              bh.beI();
+              localObject3 = c.bbO().fi(((ax)localObject2).field_username, 1);
               if ((localObject3 == null) || (localObject3.length != 1)) {
                 continue;
               }
-              String str1 = AESUtil.DC((int)((com.tencent.mm.contact.c)localObject2).gMZ);
-              String str2 = ((as)localObject2).arJ();
+              String str1 = AESUtil.JQ((int)((d)localObject2).jxt);
+              String str2 = ((as)localObject2).ays();
               if (localObject1 != null) {
                 continue;
               }
@@ -87,7 +89,7 @@ public class ExtControlProviderSearchContact
                 break label400;
               }
               localObject2 = localObject3[0].field_content;
-              locale.addRow(new Object[] { str1, str2, localObject1, localObject2, AESUtil.DC(localObject3[0].field_msgId), Integer.valueOf(com.tencent.mm.plugin.ext.b.b.av(localObject3[0])) });
+              locale.addRow(new Object[] { str1, str2, localObject1, localObject2, AESUtil.JQ(localObject3[0].field_msgId), Integer.valueOf(com.tencent.mm.plugin.ext.b.b.aD(localObject3[0])) });
             }
           }
           else
@@ -109,8 +111,8 @@ public class ExtControlProviderSearchContact
         localObject1 = ((ByteArrayOutputStream)localObject1).toByteArray();
         continue;
         Log.w("MicroMsg.ExtControlProviderSearchContact", "get msginfo failed");
-        Object localObject3 = AESUtil.DC((int)((com.tencent.mm.contact.c)localObject2).gMZ);
-        localObject2 = ((as)localObject2).arJ();
+        Object localObject3 = AESUtil.JQ((int)((d)localObject2).jxt);
+        localObject2 = ((as)localObject2).ays();
         if (localObject1 == null)
         {
           localObject1 = null;
@@ -165,34 +167,34 @@ public class ExtControlProviderSearchContact
     a(paramUri, getContext(), 16);
     if (paramUri == null)
     {
-      HF(3);
+      Lp(3);
       AppMethodBeat.o(24465);
       return null;
     }
-    if ((Util.isNullOrNil(this.sMZ)) || (Util.isNullOrNil(cSt())))
+    if ((Util.isNullOrNil(this.wsU)) || (Util.isNullOrNil(dht())))
     {
-      HF(3);
+      Lp(3);
       AppMethodBeat.o(24465);
       return null;
     }
-    if (!ckf())
+    if (!cxw())
     {
-      HF(1);
-      paramUri = this.pem;
+      Lp(1);
+      paramUri = this.sgp;
       AppMethodBeat.o(24465);
       return paramUri;
     }
-    if (!fe(getContext()))
+    if (!fj(getContext()))
     {
       Log.w("MicroMsg.ExtControlProviderSearchContact", "invalid appid ! return null");
-      HF(2);
+      Lp(2);
       AppMethodBeat.o(24465);
       return null;
     }
     if ((paramArrayOfString2 == null) || (paramArrayOfString2.length == 0))
     {
       Log.e("MicroMsg.ExtControlProviderSearchContact", "invaild selections");
-      HF(3);
+      Lp(3);
       AppMethodBeat.o(24465);
       return null;
     }
@@ -200,38 +202,38 @@ public class ExtControlProviderSearchContact
     if (Util.isNullOrNil(paramUri))
     {
       Log.e("MicroMsg.ExtControlProviderSearchContact", "filter should not be null or nil");
-      HF(3);
+      Lp(3);
       AppMethodBeat.o(24465);
       return null;
     }
-    paramUri = bg.aVF().iBp.a(paramUri, "@micromsg.no.verify.biz.qq.com", gzY, false, 1, null);
+    paramUri = bh.beI().lqT.a(paramUri, "@micromsg.no.verify.biz.qq.com", jkb, false, 1, null);
     if (paramUri == null)
     {
       Log.e("MicroMsg.ExtControlProviderSearchContact", "cursor is null");
-      HF(3);
+      Lp(3);
       AppMethodBeat.o(24465);
       return null;
     }
-    paramArrayOfString1 = new com.tencent.mm.pluginsdk.d.a.b();
+    paramArrayOfString1 = new com.tencent.mm.pluginsdk.e.a.b();
     paramArrayOfString1.c(4000L, new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(24464);
-        ExtControlProviderSearchContact.a(ExtControlProviderSearchContact.this, ExtControlProviderSearchContact.e(paramUri));
-        paramArrayOfString1.countDown();
+        ExtControlProviderSearchContact.a(ExtControlProviderSearchContact.this, ExtControlProviderSearchContact.g(paramUri));
+        paramArrayOfString1.Sz();
         AppMethodBeat.o(24464);
       }
     });
-    if (this.sNJ != null) {
-      HF(0);
+    if (this.wtE != null) {
+      Lp(0);
     }
     for (;;)
     {
-      paramUri = this.sNJ;
+      paramUri = this.wtE;
       AppMethodBeat.o(24465);
       return paramUri;
-      HF(4);
+      Lp(4);
     }
   }
   
@@ -242,7 +244,7 @@ public class ExtControlProviderSearchContact
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.provider.ExtControlProviderSearchContact
  * JD-Core Version:    0.7.0.1
  */

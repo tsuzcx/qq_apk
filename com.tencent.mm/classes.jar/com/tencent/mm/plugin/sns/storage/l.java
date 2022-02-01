@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.sns.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gj;
-import com.tencent.mm.protocal.protobuf.ami;
-import com.tencent.mm.protocal.protobuf.bft;
-import com.tencent.mm.protocal.protobuf.ebi;
-import com.tencent.mm.protocal.protobuf.ebj;
+import com.tencent.mm.f.c.gq;
+import com.tencent.mm.protocal.protobuf.anj;
+import com.tencent.mm.protocal.protobuf.bmt;
+import com.tencent.mm.protocal.protobuf.eli;
+import com.tencent.mm.protocal.protobuf.elj;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
@@ -13,7 +13,7 @@ import java.util.LinkedList;
 import java.util.Map;
 
 public final class l
-  extends gj
+  extends gq
 {
   protected static IAutoDBItem.MAutoDBInfo info;
   
@@ -102,62 +102,62 @@ public final class l
     AppMethodBeat.o(97471);
   }
   
-  public final void a(ebi paramebi)
+  public final void a(eli parameli)
   {
     AppMethodBeat.i(97467);
-    if (paramebi == null)
+    if (parameli == null)
     {
       AppMethodBeat.o(97467);
       return;
     }
     try
     {
-      this.field_snsYearMonthInfo = paramebi.toByteArray();
+      this.field_snsYearMonthInfo = parameli.toByteArray();
       AppMethodBeat.o(97467);
       return;
     }
-    catch (Exception paramebi)
+    catch (Exception parameli)
     {
       AppMethodBeat.o(97467);
     }
   }
   
-  public final void a(ebj paramebj)
+  public final void a(elj paramelj)
   {
     AppMethodBeat.i(97468);
-    if (paramebj == null)
+    if (paramelj == null)
     {
       AppMethodBeat.o(97468);
       return;
     }
     try
     {
-      this.field_snsuser = paramebj.toByteArray();
+      this.field_snsuser = paramelj.toByteArray();
       AppMethodBeat.o(97468);
       return;
     }
-    catch (Exception paramebj)
+    catch (Exception paramelj)
     {
       AppMethodBeat.o(97468);
     }
   }
   
-  public final void feI()
+  public final void fSC()
   {
     this.field_local_flag &= 0xFFFFFFFD;
   }
   
-  public final ebi feJ()
+  public final eli fSD()
   {
     AppMethodBeat.i(97466);
-    ebi localebi = new ebi();
+    eli localeli = new eli();
     if (!Util.isNullOrNil(this.field_snsYearMonthInfo)) {}
     try
     {
-      localebi.parseFrom(this.field_snsYearMonthInfo);
+      localeli.parseFrom(this.field_snsYearMonthInfo);
       label32:
       AppMethodBeat.o(97466);
-      return localebi;
+      return localeli;
     }
     catch (Exception localException)
     {
@@ -165,19 +165,19 @@ public final class l
     }
   }
   
-  public final boolean feK()
+  public final boolean fSE()
   {
     return (this.field_local_flag & 0x2) > 0;
   }
   
-  public final ebj feL()
+  public final elj fSF()
   {
     AppMethodBeat.i(97469);
     try
     {
-      ebj localebj = (ebj)new ebj().parseFrom(this.field_snsuser);
+      elj localelj = (elj)new elj().parseFrom(this.field_snsuser);
       AppMethodBeat.o(97469);
-      return localebj;
+      return localelj;
     }
     catch (Exception localException)
     {
@@ -186,20 +186,20 @@ public final class l
     return null;
   }
   
-  public final ami feM()
+  public final anj fSG()
   {
     AppMethodBeat.i(97470);
-    new bft();
-    localObject1 = new ami();
+    new bmt();
+    localObject1 = new anj();
     Object localObject2 = localObject1;
     if (!Util.isNullOrNil(this.field_faultS)) {}
     try
     {
-      localObject2 = (bft)new bft().parseFrom(this.field_faultS);
-      if (((bft)localObject2).LPq.size() <= 0) {
+      localObject2 = (bmt)new bmt().parseFrom(this.field_faultS);
+      if (((bmt)localObject2).SXE.size() <= 0) {
         break label89;
       }
-      localObject2 = (ami)((bft)localObject2).LPq.getFirst();
+      localObject2 = (anj)((bmt)localObject2).SXE.getFirst();
       localObject1 = localObject2;
     }
     catch (Exception localException)
@@ -221,7 +221,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.l
  * JD-Core Version:    0.7.0.1
  */

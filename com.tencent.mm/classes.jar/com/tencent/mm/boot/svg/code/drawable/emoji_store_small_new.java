@@ -189,7 +189,7 @@ public class emoji_store_small_new
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.emoji_store_small_new
  * JD-Core Version:    0.7.0.1
  */

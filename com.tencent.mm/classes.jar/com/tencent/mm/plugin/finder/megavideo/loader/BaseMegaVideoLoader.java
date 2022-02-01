@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.finder.megavideo.loader;
 
-import com.tencent.mm.g.a.hg;
-import com.tencent.mm.g.a.hn;
+import com.tencent.mm.f.a.hn;
+import com.tencent.mm.f.a.hu;
 import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.internal.DataBuffer;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
 import com.tencent.mm.plugin.finder.feed.model.internal.d;
-import com.tencent.mm.plugin.finder.model.bm;
-import com.tencent.mm.plugin.finder.model.bo;
+import com.tencent.mm.plugin.finder.feed.model.internal.f;
+import com.tencent.mm.plugin.finder.model.bs;
+import com.tencent.mm.plugin.finder.model.bu;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.plugin.finder.storage.data.e;
 import com.tencent.mm.plugin.finder.storage.data.e.a;
@@ -15,7 +16,7 @@ import com.tencent.mm.plugin.finder.storage.logic.c;
 import com.tencent.mm.plugin.finder.storage.logic.c.a;
 import com.tencent.mm.plugin.finder.upload.g;
 import com.tencent.mm.plugin.finder.upload.g.a;
-import com.tencent.mm.protocal.protobuf.bbn;
+import com.tencent.mm.protocal.protobuf.bid;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.Serializable;
@@ -29,35 +30,35 @@ import kotlin.o;
 import kotlin.t;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lcom/tencent/mm/plugin/finder/upload/IFinderPostListener;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "feedChangeListener", "com/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader$feedChangeListener$1", "Lcom/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader$feedChangeListener$1;", "feedDeleteListener", "com/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader$feedDeleteListener$1", "Lcom/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader$feedDeleteListener$1;", "fetchEndCallback", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "", "getFetchEndCallback", "()Lkotlin/jvm/functions/Function1;", "setFetchEndCallback", "(Lkotlin/jvm/functions/Function1;)V", "hasMore", "", "getHasMore", "()Z", "setHasMore", "(Z)V", "isObservePostEvent", "onAlive", "onDead", "onPostEnd", "localId", "", "isOk", "onPostNotify", "onPostOk", "svrID", "onPostStart", "remove", "finderFeedId", "notify", "removeLocal", "", "requestLoadMore", "updateByLocalId", "newFeed", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "isPostUpdate", "updateItem", "svrId", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lcom/tencent/mm/plugin/finder/upload/IFinderPostListener;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "feedChangeListener", "com/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader$feedChangeListener$1", "Lcom/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader$feedChangeListener$1;", "feedDeleteListener", "com/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader$feedDeleteListener$1", "Lcom/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader$feedDeleteListener$1;", "fetchEndCallback", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "", "getFetchEndCallback", "()Lkotlin/jvm/functions/Function1;", "setFetchEndCallback", "(Lkotlin/jvm/functions/Function1;)V", "hasMore", "", "getHasMore", "()Z", "setHasMore", "(Z)V", "isObservePostEvent", "onAlive", "onDead", "onPostEnd", "localId", "", "isOk", "onPostNotify", "onPostOk", "svrID", "onPostStart", "remove", "finderFeedId", "notify", "removeLocal", "", "requestLoadMore", "updateByLocalId", "newFeed", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "isPostUpdate", "updateItem", "svrId", "plugin-finder_release"})
 public abstract class BaseMegaVideoLoader
-  extends BaseFeedLoader<bo>
+  extends BaseFeedLoader<bu>
   implements com.tencent.mm.plugin.finder.upload.q
 {
-  public kotlin.g.a.b<? super IResponse<bo>, x> fetchEndCallback;
+  public kotlin.g.a.b<? super IResponse<bu>, x> fetchEndCallback;
   public boolean hasMore = true;
-  private final b uKF = new b(this);
-  private final a uKG = new a(this);
+  private final b zww = new b(this);
+  private final a zwx = new a(this);
   
-  public BaseMegaVideoLoader(bbn parambbn)
+  public BaseMegaVideoLoader(bid parambid)
   {
-    super(parambbn);
+    super(parambid);
   }
   
-  private void ES(long paramLong)
+  private void LZ(long paramLong)
   {
-    Object localObject = c.vGN;
-    localObject = c.a.FS(paramLong);
+    Object localObject = c.AnK;
+    localObject = c.a.MS(paramLong);
     if (localObject != null)
     {
       Log.i(getTAG(), "updateItem localId:" + paramLong + " itemLoadId:" + ((FinderItem)localObject).getLocalId() + " itemId:" + ((FinderItem)localObject).getId());
-      c((FinderItem)localObject);
+      d((FinderItem)localObject);
     }
   }
   
-  private void c(FinderItem paramFinderItem)
+  private void d(FinderItem paramFinderItem)
   {
-    p.h(paramFinderItem, "newFeed");
+    p.k(paramFinderItem, "newFeed");
     if (paramFinderItem.getLocalId() <= 0L) {}
     for (;;)
     {
@@ -69,18 +70,18 @@ public abstract class BaseMegaVideoLoader
         Object localObject = localIterator.next();
         int j = i + 1;
         if (i < 0) {
-          j.hxH();
+          j.iBO();
         }
-        localObject = (bo)localObject;
-        if ((localObject instanceof bm))
+        localObject = (bu)localObject;
+        if ((localObject instanceof bs))
         {
-          FinderItem localFinderItem = ((bm)localObject).uOW;
+          FinderItem localFinderItem = ((bs)localObject).zBs;
           if (localFinderItem != null)
           {
             if (localFinderItem.getLocalId() == paramFinderItem.getLocalId())
             {
-              ((bm)localObject).uOW = paramFinderItem;
-              ((bm)localObject).g(paramFinderItem.getFeedObject());
+              ((bs)localObject).zBs = paramFinderItem;
+              ((bs)localObject).k(paramFinderItem.getFeedObject());
               Log.i(getTAG(), "updateByLocalId " + paramFinderItem.getLocalId());
               dispatcher().onItemRangeChanged(i, 1, (Serializable)new o(Integer.valueOf(4), Integer.valueOf(1)));
             }
@@ -96,15 +97,15 @@ public abstract class BaseMegaVideoLoader
     }
   }
   
-  public final long ER(long paramLong)
+  public final long LY(long paramLong)
   {
     Object localObject = ((List)getDataList()).iterator();
     int i = 0;
     int j;
     if (((Iterator)localObject).hasNext())
     {
-      bo localbo = (bo)((Iterator)localObject).next();
-      if (((localbo instanceof bm)) && (((bm)localbo).dkW() == paramLong))
+      bu localbu = (bu)((Iterator)localObject).next();
+      if (((localbu instanceof bs)) && (((bs)localbu).dKW() == paramLong))
       {
         j = 1;
         label62:
@@ -132,11 +133,11 @@ public abstract class BaseMegaVideoLoader
       i = -1;
     }
     label118:
-    localObject = (bm)localObject;
+    localObject = (bs)localObject;
     dispatcher().onItemRangeRemoved(i, 1);
     label134:
     if (localObject != null) {
-      return ((bm)localObject).lT();
+      return ((bs)localObject).mf();
     }
     return 0L;
   }
@@ -149,64 +150,64 @@ public abstract class BaseMegaVideoLoader
   public void onAlive()
   {
     super.onAlive();
-    this.uKG.alive();
-    this.uKF.alive();
+    this.zwx.alive();
+    this.zww.alive();
     if (isObservePostEvent())
     {
-      g.a locala = g.vSJ;
-      g.dBa().a((com.tencent.mm.plugin.finder.upload.q)this);
+      g.a locala = g.AAk;
+      g.ecj().a((com.tencent.mm.plugin.finder.upload.q)this);
     }
   }
   
   public void onDead()
   {
     super.onDead();
-    this.uKG.dead();
-    this.uKF.dead();
+    this.zwx.dead();
+    this.zww.dead();
     if (isObservePostEvent())
     {
-      g.a locala = g.vSJ;
-      g.dBa().b((com.tencent.mm.plugin.finder.upload.q)this);
+      g.a locala = g.AAk;
+      g.ecj().b((com.tencent.mm.plugin.finder.upload.q)this);
     }
   }
   
   public void onFetchDone(IResponse paramIResponse)
   {
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bm(paramIResponse);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader", "com/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader", "onFetchDone", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;)V", this, localb.axR());
+    localb.bn(paramIResponse);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader", "com/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader", "onFetchDone", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;)V", this, localb.aFi());
     super.onFetchDone(paramIResponse);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader", "com/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader", "onFetchDone", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;)V");
   }
   
   public void onPostEnd(long paramLong, boolean paramBoolean)
   {
-    ES(paramLong);
+    LZ(paramLong);
   }
   
   public void onPostNotify(long paramLong, boolean paramBoolean)
   {
-    ES(paramLong);
+    LZ(paramLong);
   }
   
   public void onPostOk(long paramLong1, long paramLong2)
   {
-    Object localObject = e.vFX;
-    localObject = e.a.Fy(paramLong2);
+    Object localObject = e.AmW;
+    localObject = e.a.MH(paramLong2);
     if (localObject != null) {
       ((FinderItem)localObject).setLocalId(paramLong1);
     }
     if (localObject != null)
     {
       Log.i(getTAG(), "updateItem localId:" + paramLong1 + " itemLoadId:" + ((FinderItem)localObject).getLocalId() + " itemId:" + ((FinderItem)localObject).getId());
-      c((FinderItem)localObject);
+      d((FinderItem)localObject);
     }
   }
   
   public void onPostStart(long paramLong)
   {
-    Object localObject = c.vGN;
-    FinderItem localFinderItem = c.a.FS(paramLong);
+    Object localObject = c.AnK;
+    FinderItem localFinderItem = c.a.MS(paramLong);
     if (localFinderItem != null)
     {
       localObject = localFinderItem.getMegaVideo();
@@ -223,10 +224,10 @@ public abstract class BaseMegaVideoLoader
     }
     localObject = new ArrayList();
     Log.i(getTAG(), "onPostStart localId ".concat(String.valueOf(paramLong)));
-    bm localbm = new bm(localFinderItem.getFeedObject());
-    localbm.uOW = localFinderItem;
-    ((ArrayList)localObject).add(localbm);
-    com.tencent.mm.plugin.finder.feed.model.internal.b.mergeDataAndNotify$default(getMerger(), 2, (List)localObject, true, null, 8, null);
+    bs localbs = new bs(localFinderItem.getFeedObject());
+    localbs.zBs = localFinderItem;
+    ((ArrayList)localObject).add(localbs);
+    d.mergeDataAndNotify$default(getMerger(), 2, (List)localObject, true, null, 8, null);
   }
   
   public void requestLoadMore()
@@ -237,32 +238,32 @@ public abstract class BaseMegaVideoLoader
     super.requestLoadMore();
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader$feedChangeListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/FeedUpdateEvent;", "callback", "", "event", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader$feedChangeListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/FeedUpdateEvent;", "callback", "", "event", "plugin-finder_release"})
   public static final class a
-    extends IListener<hn>
+    extends IListener<hu>
   {
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
     static final class a
       extends kotlin.g.b.q
       implements kotlin.g.a.a<x>
     {
-      a(BaseMegaVideoLoader.a parama, hn paramhn)
+      a(BaseMegaVideoLoader.a parama, hu paramhu)
       {
         super();
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader$feedDeleteListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/FeedDeleteEvent;", "callback", "", "event", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader$feedDeleteListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/FeedDeleteEvent;", "callback", "", "event", "plugin-finder_release"})
   public static final class b
-    extends IListener<hg>
+    extends IListener<hn>
   {
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader$feedDeleteListener$1$callback$1$1"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader$feedDeleteListener$1$callback$1$1"})
     static final class a
       extends kotlin.g.b.q
       implements kotlin.g.a.a<x>
     {
-      a(hg paramhg1, BaseMegaVideoLoader.b paramb, hg paramhg2)
+      a(hn paramhn1, BaseMegaVideoLoader.b paramb, hn paramhn2)
       {
         super();
       }

@@ -6,14 +6,14 @@ import kotlin.l.b.a.b.f.a;
 
 public final class f
 {
-  public final int TIt;
-  public final a Tfj;
+  public final a aaId;
+  public final int abkX;
   
   public f(a parama, int paramInt)
   {
     AppMethodBeat.i(60051);
-    this.Tfj = parama;
-    this.TIt = paramInt;
+    this.aaId = parama;
+    this.abkX = paramInt;
     AppMethodBeat.o(60051);
   }
   
@@ -25,7 +25,7 @@ public final class f
       if ((paramObject instanceof f))
       {
         paramObject = (f)paramObject;
-        if ((!p.j(this.Tfj, paramObject.Tfj)) || (this.TIt != paramObject.TIt)) {}
+        if ((!p.h(this.aaId, paramObject.aaId)) || (this.abkX != paramObject.abkX)) {}
       }
     }
     else
@@ -40,11 +40,11 @@ public final class f
   public final int hashCode()
   {
     AppMethodBeat.i(60052);
-    a locala = this.Tfj;
+    a locala = this.aaId;
     if (locala != null) {}
     for (int i = locala.hashCode();; i = 0)
     {
-      int j = this.TIt;
+      int j = this.abkX;
       AppMethodBeat.o(60052);
       return i * 31 + j;
     }
@@ -55,15 +55,15 @@ public final class f
     int j = 0;
     AppMethodBeat.i(60050);
     Object localObject = new StringBuilder();
-    int k = this.TIt;
+    int k = this.abkX;
     int i = 0;
     while (i < k)
     {
       ((StringBuilder)localObject).append("kotlin/Array<");
       i += 1;
     }
-    ((StringBuilder)localObject).append(this.Tfj);
-    k = this.TIt;
+    ((StringBuilder)localObject).append(this.aaId);
+    k = this.abkX;
     i = j;
     while (i < k)
     {
@@ -71,14 +71,14 @@ public final class f
       i += 1;
     }
     localObject = ((StringBuilder)localObject).toString();
-    p.g(localObject, "StringBuilder().apply(builderAction).toString()");
+    p.j(localObject, "StringBuilder().apply(builderAction).toString()");
     AppMethodBeat.o(60050);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     kotlin.l.b.a.b.j.b.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi.finder;
 
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.v;
 
 public final class e
-  extends d<s>
+  extends c<v>
 {
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "modifyFinderAccountAvatar";

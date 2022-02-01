@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.qqmail;
 
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.net.URLEncoder;
@@ -11,15 +10,10 @@ import java.util.Set;
 
 public abstract class c
 {
-  protected static String BqJ = "";
-  public static String USER_AGENT;
+  public static String Hlb = "weixin/android";
+  protected static String Hlc = "";
   protected static String host = "";
   protected static int timeout = 0;
-  
-  static
-  {
-    USER_AGENT = "weixin/android";
-  }
   
   public static String d(String paramString1, String paramString2, Map<String, String> paramMap)
   {
@@ -94,65 +88,35 @@ public abstract class c
   
   public abstract void cancel();
   
-  public static abstract class a
-  {
-    public void onComplete() {}
-    
-    public abstract void onError(int paramInt, String paramString);
-    
-    public boolean onReady()
-    {
-      return true;
-    }
-    
-    public abstract void onSuccess(String paramString, Map<String, String> paramMap);
-  }
-  
-  public static final class b
-  {
-    public boolean BqK = false;
-    public boolean BqL = true;
-    public boolean BqM = true;
-    
-    public final void fromBundle(Bundle paramBundle)
-    {
-      AppMethodBeat.i(198565);
-      this.BqK = paramBundle.getBoolean("qqmail_httpoptions_expired");
-      this.BqL = paramBundle.getBoolean("qqmail_httpoptions_needcache");
-      this.BqM = paramBundle.getBoolean("qqmail_httpoptions_needparse");
-      AppMethodBeat.o(198565);
-    }
-  }
-  
   public static final class c
   {
-    public c.b BqN;
-    public c.e BqO;
-    public c.f BqP;
-    public Map<String, String> BqQ;
-    public c.a BqR;
+    public c.b Hlg;
+    public c.e Hlh;
+    public c.f Hli;
+    public Map<String, String> Hlj;
+    public c.a Hlk;
     public long id;
     public String uri;
     
     public c(String paramString, c.e parame, c.a parama)
     {
-      AppMethodBeat.i(198566);
+      AppMethodBeat.i(251235);
       this.id = System.currentTimeMillis();
       this.uri = paramString;
-      this.BqO = parame;
-      this.BqR = parama;
-      AppMethodBeat.o(198566);
+      this.Hlh = parame;
+      this.Hlk = parama;
+      AppMethodBeat.o(251235);
     }
   }
   
   public static abstract interface d
   {
-    public abstract void eGj();
+    public abstract void fsk();
   }
   
   public static final class e
   {
-    public c.g BqS;
+    public c.g Hll;
     public Map<String, String> cookie;
     public int method;
     public Map<String, String> params;
@@ -162,12 +126,12 @@ public abstract class c
       this.method = paramInt;
       this.params = paramMap1;
       this.cookie = paramMap2;
-      this.BqS = null;
+      this.Hll = null;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(198567);
+      AppMethodBeat.i(250239);
       StringBuilder localStringBuilder = new StringBuilder("Request method:").append(this.method).append(", params:");
       if (this.params != null)
       {
@@ -181,7 +145,7 @@ public abstract class c
       for (Object localObject = this.cookie;; localObject = "")
       {
         localObject = localObject;
-        AppMethodBeat.o(198567);
+        AppMethodBeat.o(250239);
         return localObject;
         localObject = "";
         break;
@@ -204,7 +168,7 @@ public abstract class c
     
     public final String toString()
     {
-      AppMethodBeat.i(198568);
+      AppMethodBeat.i(249712);
       StringBuilder localStringBuilder = new StringBuilder("Response status:").append(this.status).append(", cookie:");
       Object localObject;
       if (this.cookie != null)
@@ -219,7 +183,7 @@ public abstract class c
       for (int i = this.content.length();; i = 0)
       {
         localObject = i;
-        AppMethodBeat.o(198568);
+        AppMethodBeat.o(249712);
         return localObject;
         localObject = "";
         break;
@@ -227,15 +191,11 @@ public abstract class c
     }
   }
   
-  public static final class g
-  {
-    public String filePath;
-    public String param;
-  }
+  public static final class g {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.c
  * JD-Core Version:    0.7.0.1
  */

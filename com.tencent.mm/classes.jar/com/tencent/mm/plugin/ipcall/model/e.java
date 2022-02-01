@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.ipcall.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.bp;
+import com.tencent.mm.f.a.bu;
 import com.tencent.mm.plugin.ipcall.model.h.f;
 import com.tencent.mm.sdk.event.IListener;
 import java.util.ArrayList;
 
 public final class e
 {
-  private static e yoD = null;
-  IListener kiA;
-  public ArrayList<f> yoE;
+  private static e DOF = null;
+  public ArrayList<f> DOG;
+  IListener mZZ;
   
   private e()
   {
     AppMethodBeat.i(25356);
-    this.yoE = null;
-    this.kiA = new IListener() {};
+    this.DOG = null;
+    this.mZZ = new IListener() {};
     AppMethodBeat.o(25356);
   }
   
-  public static e eak()
+  public static e eJi()
   {
     AppMethodBeat.i(25357);
-    if (yoD == null) {
-      yoD = new e();
+    if (DOF == null) {
+      DOF = new e();
     }
-    e locale = yoD;
+    e locale = DOF;
     AppMethodBeat.o(25357);
     return locale;
   }
   
   /* Error */
-  public final boolean bG(byte[] paramArrayOfByte)
+  public final boolean bV(byte[] paramArrayOfByte)
   {
     // Byte code:
     //   0: sipush 25358
@@ -90,12 +90,12 @@ public final class e
     //   114: astore 6
     //   116: aload 6
     //   118: aload 7
-    //   120: putfield 93	com/tencent/mm/plugin/ipcall/model/h/f:ysG	Ljava/lang/String;
+    //   120: putfield 93	com/tencent/mm/plugin/ipcall/model/h/f:DSK	Ljava/lang/String;
     //   123: aload 6
     //   125: new 59	java/util/ArrayList
     //   128: dup
     //   129: invokespecial 60	java/util/ArrayList:<init>	()V
-    //   132: putfield 96	com/tencent/mm/plugin/ipcall/model/h/f:ysH	Ljava/util/ArrayList;
+    //   132: putfield 96	com/tencent/mm/plugin/ipcall/model/h/f:DSL	Ljava/util/ArrayList;
     //   135: new 62	java/lang/StringBuilder
     //   138: dup
     //   139: invokespecial 63	java/lang/StringBuilder:<init>	()V
@@ -156,9 +156,9 @@ public final class e
     //   261: putfield 106	com/tencent/mm/plugin/ipcall/model/h/e:Id	Ljava/lang/String;
     //   264: aload 8
     //   266: aload_1
-    //   267: putfield 109	com/tencent/mm/plugin/ipcall/model/h/e:xJH	Ljava/lang/String;
+    //   267: putfield 109	com/tencent/mm/plugin/ipcall/model/h/e:CNP	Ljava/lang/String;
     //   270: aload 6
-    //   272: getfield 96	com/tencent/mm/plugin/ipcall/model/h/f:ysH	Ljava/util/ArrayList;
+    //   272: getfield 96	com/tencent/mm/plugin/ipcall/model/h/f:DSL	Ljava/util/ArrayList;
     //   275: aload 8
     //   277: invokevirtual 113	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   280: pop
@@ -220,12 +220,12 @@ public final class e
     //   386: dup
     //   387: iconst_0
     //   388: aload 6
-    //   390: getfield 93	com/tencent/mm/plugin/ipcall/model/h/f:ysG	Ljava/lang/String;
+    //   390: getfield 93	com/tencent/mm/plugin/ipcall/model/h/f:DSK	Ljava/lang/String;
     //   393: aastore
     //   394: dup
     //   395: iconst_1
     //   396: aload 6
-    //   398: getfield 96	com/tencent/mm/plugin/ipcall/model/h/f:ysH	Ljava/util/ArrayList;
+    //   398: getfield 96	com/tencent/mm/plugin/ipcall/model/h/f:DSL	Ljava/util/ArrayList;
     //   401: invokevirtual 144	java/util/ArrayList:size	()I
     //   404: invokestatic 138	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   407: aastore
@@ -252,7 +252,7 @@ public final class e
     //   445: invokestatic 151	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   448: aload_0
     //   449: aload 5
-    //   451: putfield 29	com/tencent/mm/plugin/ipcall/model/e:yoE	Ljava/util/ArrayList;
+    //   451: putfield 29	com/tencent/mm/plugin/ipcall/model/e:DOG	Ljava/util/ArrayList;
     //   454: sipush 25358
     //   457: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   460: iconst_1
@@ -297,7 +297,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.e
  * JD-Core Version:    0.7.0.1
  */

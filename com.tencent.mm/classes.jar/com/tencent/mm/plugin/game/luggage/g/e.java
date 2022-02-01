@@ -9,62 +9,62 @@ import com.tencent.mm.plugin.webview.luggage.v;
 public final class e
   extends v
 {
-  public boolean xxO;
-  public a xxP;
+  public boolean CBY;
+  public a CBZ;
   
   public e(Activity paramActivity)
   {
     super(paramActivity);
     AppMethodBeat.i(83126);
-    this.xxO = false;
-    this.ctk = h.class;
-    this.ctn.E(a.dTr());
+    this.CBY = false;
+    O(h.class);
+    this.crt.B(a.ewB());
     AppMethodBeat.o(83126);
   }
   
-  public final void Lu()
+  public final void Ok()
   {
-    AppMethodBeat.i(186933);
-    super.Lu();
-    this.xxO = true;
-    if (this.xxP != null) {
-      this.xxP.dTp();
+    AppMethodBeat.i(231122);
+    super.Ok();
+    this.CBY = true;
+    if (this.CBZ != null) {
+      this.CBZ.ewz();
     }
-    AppMethodBeat.o(186933);
+    AppMethodBeat.o(231122);
   }
   
-  public final void Lv()
+  public final void Ol()
   {
-    AppMethodBeat.i(186934);
-    super.Lv();
-    this.xxO = false;
-    if (this.xxP != null) {
-      this.xxP.dTq();
+    AppMethodBeat.i(231124);
+    super.Ol();
+    this.CBY = false;
+    if (this.CBZ != null) {
+      this.CBZ.ewA();
     }
-    AppMethodBeat.o(186934);
+    AppMethodBeat.o(231124);
   }
   
-  public final boolean Lw()
+  public final boolean Om()
   {
-    AppMethodBeat.i(186935);
-    if (this.xxP != null)
+    AppMethodBeat.i(231125);
+    if (this.CBZ != null)
     {
-      bool = this.xxP.Lw();
-      AppMethodBeat.o(186935);
+      bool = this.CBZ.Om();
+      AppMethodBeat.o(231125);
       return bool;
     }
-    boolean bool = super.Lw();
-    AppMethodBeat.o(186935);
+    boolean bool = super.Om();
+    AppMethodBeat.o(231125);
     return bool;
   }
   
   public static abstract interface a
   {
-    public abstract boolean Lw();
+    public abstract boolean Om();
     
-    public abstract void dTp();
+    public abstract void ewA();
     
-    public abstract void dTq();
+    public abstract void ewz();
   }
 }
 

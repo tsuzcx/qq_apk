@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.g;
-import android.support.v4.app.k;
-import android.support.v4.e.a;
+import androidx.b.a;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.e;
+import androidx.fragment.app.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -46,14 +46,14 @@ public final class zzcc
   
   public static zzcc zza(FragmentActivity paramFragmentActivity)
   {
-    AppMethodBeat.i(4523);
+    AppMethodBeat.i(257066);
     Object localObject = (WeakReference)zzla.get(paramFragmentActivity);
     if (localObject != null)
     {
       localObject = (zzcc)((WeakReference)localObject).get();
       if (localObject != null)
       {
-        AppMethodBeat.o(4523);
+        AppMethodBeat.o(257066);
         return localObject;
       }
     }
@@ -68,16 +68,16 @@ public final class zzcc
       else
       {
         localObject = new zzcc();
-        paramFragmentActivity.getSupportFragmentManager().beginTransaction().a((Fragment)localObject, "SupportLifecycleFragmentImpl").commitAllowingStateLoss();
+        paramFragmentActivity.getSupportFragmentManager().beginTransaction().a((Fragment)localObject, "SupportLifecycleFragmentImpl").ip();
       }
       zzla.put(paramFragmentActivity, new WeakReference(localObject));
-      AppMethodBeat.o(4523);
+      AppMethodBeat.o(257066);
       return localObject;
     }
     catch (ClassCastException paramFragmentActivity)
     {
       paramFragmentActivity = new IllegalStateException("Fragment with tag SupportLifecycleFragmentImpl is not a SupportLifecycleFragmentImpl", paramFragmentActivity);
-      AppMethodBeat.o(4523);
+      AppMethodBeat.o(257066);
       throw paramFragmentActivity;
     }
   }
@@ -230,7 +230,7 @@ public final class zzcc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zzcc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,70 @@
 package com.tencent.mm.plugin.collect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.wallet_core.tenpay.model.m;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.egk;
+import com.tencent.mm.protocal.protobuf.egl;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class q
-  extends m
+  extends com.tencent.mm.an.q
+  implements m
 {
-  public int dKt;
-  public String qvC;
-  public long qwd;
-  public int qwe;
-  public int type;
+  private i callback;
+  private d kwO;
+  private egk tVC;
   
-  public q(String paramString, int paramInt, long paramLong)
+  public q(String paramString)
   {
-    AppMethodBeat.i(63841);
-    this.qvC = paramString;
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("bill_id", paramString);
-    localHashMap.put("type", String.valueOf(paramInt));
-    localHashMap.put("from_timestamp", String.valueOf(paramLong));
-    setRequestData(localHashMap);
-    AppMethodBeat.o(63841);
+    AppMethodBeat.i(63838);
+    d.a locala = new d.a();
+    locala.lBU = new egk();
+    locala.lBV = new egl();
+    locala.funcId = 304;
+    locala.uri = "/cgi-bin/micromsg-bin/setpushsound";
+    locala.lBW = 0;
+    locala.respCmdId = 0;
+    this.kwO = locala.bgN();
+    this.tVC = ((egk)d.b.b(this.kwO.lBR));
+    this.tVC.rWu = 3;
+    this.tVC.Ujf = paramString;
+    Log.i("MicroMsg.NetSceneSetPushSound", "type: %d, sound: %s", new Object[] { Integer.valueOf(3), paramString });
+    AppMethodBeat.o(63838);
   }
   
-  public final int getFuncId()
+  public final int doScene(g paramg, i parami)
   {
-    return 1964;
+    AppMethodBeat.i(63839);
+    this.callback = parami;
+    int i = dispatch(paramg, this.kwO, this);
+    AppMethodBeat.o(63839);
+    return i;
   }
   
-  public final int getTenpayCgicmd()
+  public final int getType()
   {
-    return 0;
+    return 304;
   }
   
-  public final String getUri()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    return "/cgi-bin/mmpay-bin/f2frmrcvdrcd";
-  }
-  
-  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(63842);
-    this.qwe = paramJSONObject.optInt("total_num", 0);
-    this.dKt = paramJSONObject.optInt("total_amt", 0);
-    this.type = paramJSONObject.optInt("type", 0);
-    this.qwd = paramJSONObject.optLong("from_timestamp", 0L);
-    AppMethodBeat.o(63842);
+    AppMethodBeat.i(63840);
+    Log.i("MicroMsg.NetSceneSetPushSound", "errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(63840);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.q
  * JD-Core Version:    0.7.0.1
  */

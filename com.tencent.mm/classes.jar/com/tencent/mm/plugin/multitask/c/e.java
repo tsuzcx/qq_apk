@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.multitask.c;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitask/listener/OnSwipeAheadToMultiTaskListener;", "", "setFloatBallAlpha", "", "alpha", "", "swipePageToMultiTask", "", "lastPosXWhenSwipeReleased", "tryCapture", "", "plugin-multitask_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/listener/OnSwipeAheadToMultiTaskListener;", "", "setFloatBallAlpha", "", "alpha", "", "swipePageToMultiTask", "", "lastPosXWhenSwipeReleased", "tryCapture", "", "plugin-multitask_release"})
 public abstract interface e
 {
-  public abstract int bz(float paramFloat);
+  public abstract int bC(float paramFloat);
   
-  public abstract boolean erf();
+  public abstract boolean fba();
 }
 
 

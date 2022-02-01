@@ -13,7 +13,7 @@ import java.nio.ByteBuffer;
 
 public final class d
 {
-  public static byte[] H(InputStream paramInputStream)
+  public static byte[] F(InputStream paramInputStream)
   {
     AppMethodBeat.i(140805);
     paramInputStream = a(paramInputStream, 0L, -1L);
@@ -130,7 +130,7 @@ public final class d
     }
   }
   
-  public static String afA(String paramString)
+  public static String anc(String paramString)
   {
     AppMethodBeat.i(140802);
     Object localObject2 = MMApplicationContext.getContext().getAssets();
@@ -158,7 +158,7 @@ public final class d
     return paramString;
   }
   
-  public static byte[] afB(String paramString)
+  public static byte[] and(String paramString)
   {
     AppMethodBeat.i(140803);
     Object localObject2 = MMApplicationContext.getContext().getAssets();
@@ -175,7 +175,7 @@ public final class d
         Log.e("MicroMsg.AppBrandIOUtil", "openRead file( %s ) failed, exp = %s", new Object[] { paramString, Util.stackTraceToString(localException) });
         paramString = localObject1;
       }
-      paramString = H(paramString);
+      paramString = F(paramString);
       AppMethodBeat.o(140803);
     }
     if (paramString == null)
@@ -186,7 +186,7 @@ public final class d
     return paramString;
   }
   
-  public static boolean afC(String paramString)
+  public static boolean ane(String paramString)
   {
     AppMethodBeat.i(140806);
     if ((!Util.isNullOrNil(paramString)) && ((URLUtil.isHttpsUrl(paramString)) || (URLUtil.isHttpUrl(paramString))))
@@ -286,7 +286,7 @@ public final class d
     //   52	70	107	finally
   }
   
-  public static byte[] p(ByteBuffer paramByteBuffer)
+  public static byte[] m(ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(140807);
     if (paramByteBuffer == null)
@@ -311,7 +311,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ac.d
  * JD-Core Version:    0.7.0.1
  */

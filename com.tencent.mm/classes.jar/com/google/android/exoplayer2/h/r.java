@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class r
   implements g.a
 {
-  private final w<? super q> bEI = null;
+  private final w<? super q> bol = null;
   
   public r()
   {
@@ -14,17 +14,17 @@ public final class r
   
   private r(byte paramByte) {}
   
-  public final g wG()
+  public final g uH()
   {
     AppMethodBeat.i(93082);
-    q localq = new q(this.bEI);
+    q localq = new q(this.bol);
     AppMethodBeat.o(93082);
     return localq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.h.r
  * JD-Core Version:    0.7.0.1
  */

@@ -9,27 +9,27 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/flutter/lite/WxaLiteAppCrashReportHandler;", "", "()V", "TAG", "", "handleCrash", "", "crashInfoMap", "", "killSelf", "", "plugin-flutter_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/flutter/lite/WxaLiteAppCrashReportHandler;", "", "()V", "TAG", "", "handleCrash", "", "crashInfoMap", "", "killSelf", "", "plugin-flutter_release"})
 public final class a
 {
+  public static final a BCF;
   private static final String TAG = "MicroMsg.WxaLiteAppCrashReportHandler";
-  public static final a wJq;
   
   static
   {
-    AppMethodBeat.i(240993);
-    wJq = new a();
+    AppMethodBeat.i(220927);
+    BCF = new a();
     TAG = "MicroMsg.WxaLiteAppCrashReportHandler";
-    AppMethodBeat.o(240993);
+    AppMethodBeat.o(220927);
   }
   
   public static void b(Map<String, ? extends Object> paramMap, boolean paramBoolean)
   {
-    AppMethodBeat.i(240992);
-    p.h(paramMap, "crashInfoMap");
+    AppMethodBeat.i(220925);
+    p.k(paramMap, "crashInfoMap");
     Object localObject = (Map)paramMap.get("customParameters");
     if (localObject == null) {
-      p.hyc();
+      p.iCn();
     }
     String str;
     label271:
@@ -62,7 +62,7 @@ public final class a
             break label271;
           }
           paramMap = new t("null cannot be cast to non-null type kotlin.String");
-          AppMethodBeat.o(240992);
+          AppMethodBeat.o(220925);
           throw paramMap;
           ((MultiProcessMMKV)localObject).putInt("count_".concat(String.valueOf(str)), i + 1);
           break;
@@ -75,8 +75,8 @@ public final class a
         if (!paramBoolean) {
           break label385;
         }
-        h.CyF.n(1293L, 103L, 1L);
-        localh = h.CyF;
+        h.IzE.p(1293L, 103L, 1L);
+        localh = h.IzE;
         if (!paramBoolean) {
           break label401;
         }
@@ -87,19 +87,19 @@ public final class a
     for (localObject = "crash";; localObject = "bad state only")
     {
       localh.a(20315, new Object[] { str, localObject, paramMap });
-      AppMethodBeat.o(240992);
+      AppMethodBeat.o(220925);
       return;
       label347:
       if (paramMap == null)
       {
         paramMap = new t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(240992);
+        AppMethodBeat.o(220925);
         throw paramMap;
       }
       paramMap = paramMap.substring(0, 10);
-      p.g(paramMap, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+      p.j(paramMap, "(this as java.lang.Strin…ing(startIndex, endIndex)");
       break;
-      h.CyF.n(1293L, 104L, 1L);
+      h.IzE.p(1293L, 104L, 1L);
       break label302;
     }
   }

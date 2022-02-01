@@ -5,10 +5,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.plugin.wallet_core.d.d;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wallet_core.model.t;
+import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
@@ -21,9 +21,9 @@ import java.util.Map;
 public class WalletUnbindBankCardProxyUI
   extends WalletBaseUI
 {
-  private String HDU;
-  private Bankcard HDV;
-  private Map<String, String> HDW;
+  private String OvN;
+  private Bankcard OvO;
+  private Map<String, String> OvP;
   
   public int getLayoutId()
   {
@@ -39,10 +39,10 @@ public class WalletUnbindBankCardProxyUI
     setResult(0);
     if (localIntent != null)
     {
-      this.HDU = localIntent.getStringExtra("packageExt");
-      if (!Util.isNullOrNil(this.HDU))
+      this.OvN = localIntent.getStringExtra("packageExt");
+      if (!Util.isNullOrNil(this.OvN))
       {
-        paramBundle = this.HDU;
+        paramBundle = this.OvN;
         Object localObject2;
         if (!Util.isNullOrNil(paramBundle))
         {
@@ -73,11 +73,11 @@ public class WalletUnbindBankCardProxyUI
           }
         }
         paramBundle = null;
-        this.HDW = paramBundle;
-        if ((this.HDW.containsKey("bank_type")) && (this.HDW.containsKey("bind_serial")))
+        this.OvP = paramBundle;
+        if ((this.OvP.containsKey("bank_type")) && (this.OvP.containsKey("bind_serial")))
         {
-          paramBundle = t.fQF();
-          localObject2 = (String)this.HDW.get("bind_serial");
+          paramBundle = u.gJl();
+          localObject2 = (String)this.OvP.get("bind_serial");
           localObject2 = "select * from WalletBankcard where bindSerial = '" + (String)localObject2 + "'";
           localObject2 = paramBundle.db.rawQuery((String)localObject2, null, 2);
           paramBundle = localObject1;
@@ -87,8 +87,8 @@ public class WalletUnbindBankCardProxyUI
             paramBundle.convertFrom((Cursor)localObject2);
           }
           ((Cursor)localObject2).close();
-          this.HDV = paramBundle;
-          if (this.HDV == null)
+          this.OvO = paramBundle;
+          if (this.OvO == null)
           {
             Log.e("MicorMsg.WalletUnbindBankCardProxyUI", "can not found bankcard");
             setResult(0);
@@ -97,11 +97,11 @@ public class WalletUnbindBankCardProxyUI
             return;
           }
           localIntent.putExtra("key_is_show_detail", false);
-          localIntent.putExtra("key_bankcard", this.HDV);
+          localIntent.putExtra("key_bankcard", this.OvO);
           localIntent.putExtra("scene", 1);
           com.tencent.mm.wallet_core.a.a(this, com.tencent.mm.plugin.wallet.bind.a.class, localIntent.getExtras(), new d.a()
           {
-            public final Intent q(int paramAnonymousInt, Bundle paramAnonymousBundle)
+            public final Intent s(int paramAnonymousInt, Bundle paramAnonymousBundle)
             {
               AppMethodBeat.i(69174);
               switch (paramAnonymousInt)
@@ -122,7 +122,7 @@ public class WalletUnbindBankCardProxyUI
           AppMethodBeat.o(69175);
           return;
         }
-        Log.e("MicorMsg.WalletUnbindBankCardProxyUI", "jsapi param:package error.package==" + this.HDU);
+        Log.e("MicorMsg.WalletUnbindBankCardProxyUI", "jsapi param:package error.package==" + this.OvN);
         setResult(1);
         finish();
         AppMethodBeat.o(69175);

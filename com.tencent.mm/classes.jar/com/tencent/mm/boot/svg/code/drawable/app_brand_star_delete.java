@@ -73,7 +73,7 @@ public class app_brand_star_delete
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.app_brand_star_delete
  * JD-Core Version:    0.7.0.1
  */

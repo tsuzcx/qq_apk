@@ -6,7 +6,7 @@ import java.net.URL;
 public abstract interface i
   extends o
 {
-  public abstract <T extends j> T R(Class<T> paramClass);
+  public abstract <T extends j> T Q(Class<T> paramClass);
   
   public abstract void a(URL paramURL, String paramString, ValueCallback<String> paramValueCallback);
   
@@ -20,7 +20,7 @@ public abstract interface i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.m.i
  * JD-Core Version:    0.7.0.1
  */

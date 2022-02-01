@@ -1,50 +1,82 @@
 package com.tencent.mm.plugin.fav.ui.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.ball.f.b;
+import com.tencent.mm.plugin.multitask.b.c;
+import com.tencent.mm.protocal.protobuf.apf;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.u;
+import java.io.IOException;
 
 public final class a
+  extends c
 {
-  public int actionType = 1;
-  public int ehn;
-  public String hes;
-  public int pHw;
-  private int position = 0;
-  public String query;
-  public int scene;
-  private long tal = 0L;
-  public int tlX;
-  public int tlY;
-  private String tlZ = "0";
-  public String tma;
-  private int tmb = 0;
-  public int tmc;
-  private String tmd = "0";
-  public long tme;
-  public long tmf;
-  public boolean tmg = false;
+  private String mFilePath;
+  private apf qhY;
+  private String qia;
+  private int tOb;
   
-  public static String getSearchId()
+  public a(com.tencent.mm.plugin.multitask.a.a parama)
   {
-    AppMethodBeat.i(235389);
-    String str = String.format("%s_%s", new Object[] { z.aTY(), Long.valueOf(System.currentTimeMillis()) });
-    AppMethodBeat.o(235389);
-    return str;
+    super(parama);
+    AppMethodBeat.i(233587);
+    this.mFilePath = "";
+    this.qia = "";
+    this.tOb = 0;
+    this.qhY = new apf();
+    AppMethodBeat.o(233587);
   }
   
-  public final void report()
+  public final boolean cbG()
   {
-    AppMethodBeat.i(235388);
-    Log.d("MicroMsg.ReportSearchCTR", String.format("zst, 15488 on report, actionType %s, scene %s, subScene %s, actionTime %s, query %s, tabId %s, searchId:%s, searchCost:%s, localPosition %s, localResultCount %s", new Object[] { Integer.valueOf(this.actionType), Integer.valueOf(this.pHw), Integer.valueOf(this.scene), Integer.valueOf(this.tlX), this.query, Integer.valueOf(this.ehn), this.hes, Integer.valueOf(this.tlY), this.tma, Integer.valueOf(this.tmc) }));
-    h.CyF.a(15488, new Object[] { Integer.valueOf(this.actionType), Integer.valueOf(this.pHw), Integer.valueOf(this.scene), Integer.valueOf(this.position), Integer.valueOf(this.tlX), this.query, Long.valueOf(this.tal), Integer.valueOf(this.ehn), this.hes, Integer.valueOf(this.tlY), this.tlZ, this.tma, Integer.valueOf(this.tmb), Integer.valueOf(this.tmc), this.tmd });
-    AppMethodBeat.o(235388);
+    AppMethodBeat.i(233589);
+    if ((!Util.isNullOrNil(this.mFilePath)) && (!u.agG(this.mFilePath)))
+    {
+      AppMethodBeat.o(233589);
+      return false;
+    }
+    AppMethodBeat.o(233589);
+    return true;
+  }
+  
+  public final boolean cbH()
+  {
+    return true;
+  }
+  
+  public final void gV(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(233593);
+    Log.i("MicroMsg.FilesFloatBall.FavoriteFilePMultiTaskHelper", "onCreate, filePath:%s fileExt:%s sence:%s", new Object[] { paramString1, paramString2, Integer.valueOf(2) });
+    this.mFilePath = paramString1;
+    this.qia = paramString2;
+    this.tOb = 2;
+    super.I(4, b.aoC(paramString1));
+    this.qhY.filePath = paramString1;
+    this.qhY.Rwe = u.bBQ(paramString1);
+    this.qhY.jmx = paramString2;
+    this.qhY.tNG = 2;
+    this.qhY.SCl = false;
+    try
+    {
+      this.FHd.field_data = this.qhY.toByteArray();
+      faR();
+      AppMethodBeat.o(233593);
+      return;
+    }
+    catch (IOException paramString1)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.FilesFloatBall.FavoriteFilePMultiTaskHelper", "handleMultiTaskInfoClicked", new Object[] { paramString1 });
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.f.a
  * JD-Core Version:    0.7.0.1
  */

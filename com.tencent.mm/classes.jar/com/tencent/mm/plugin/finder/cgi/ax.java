@@ -1,230 +1,130 @@
 package com.tencent.mm.plugin.finder.cgi;
 
-import android.content.Context;
-import com.tencent.f.h;
-import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.finder.cgi.report.e;
-import com.tencent.mm.plugin.finder.report.k;
-import com.tencent.mm.plugin.finder.utils.b.a;
-import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.ard;
-import com.tencent.mm.protocal.protobuf.bbn;
+import com.tencent.mm.protocal.protobuf.aqe;
+import com.tencent.mm.protocal.protobuf.aro;
+import com.tencent.mm.protocal.protobuf.arp;
+import com.tencent.mm.protocal.protobuf.bbh;
+import com.tencent.mm.protocal.protobuf.bid;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Iterator;
-import kotlin.f;
 import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.x;
-import org.json.JSONObject;
+import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderBase;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "Lcom/tencent/mm/plugin/finder/cgi/report/ICgiTrack;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "TAG", "", "getContextObj", "()Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "loadingComponent", "Lcom/tencent/mm/plugin/finder/utils/DelayLoadingComponent;", "report", "Lcom/tencent/mm/plugin/finder/cgi/report/FinderCgiReport;", "getReport", "()Lcom/tencent/mm/plugin/finder/cgi/report/FinderCgiReport;", "report$delegate", "Lkotlin/Lazy;", "timeout", "", "timeoutCallback", "Lkotlin/Function0;", "", "timeoutTask", "Lcom/tencent/threadpool/runnable/FutureEx;", "actionExt", "Lorg/json/JSONObject;", "cancel", "delayLoading", "context", "Landroid/content/Context;", "wording", "delay", "", "customLoadingComponent", "dispatch", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "rr", "Lcom/tencent/mm/network/IReqResp;", "callback", "isEnableReport", "Lcom/tencent/mm/plugin/finder/cgi/report/EnableValue;", "isFetchFeedCgi", "", "onCgiEnd", "netId", "errType", "errCode", "errMsg", "cookie", "", "onGYNetEnd", "resultExt", "setTimeOut", "timeoutLogic", "updateFeedSessionBuffer", "finderObject", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "plugin-finder_release"})
-public abstract class ax
-  extends com.tencent.mm.ak.q
-  implements m, e
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneCreateLiveNotice;", "Lcom/tencent/mm/plugin/findersdk/cgi/NetSceneFinderBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "userName", "", "noticeInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;", "opType", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;ILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResponse", "Lcom/tencent/mm/protocal/protobuf/FinderCreateLiveNoticeResponse;", "getType", "onCgiEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-finder_release"})
+public final class ax
+  extends com.tencent.mm.plugin.findersdk.b.g
 {
-  final String TAG;
-  private int timeout;
-  public final bbn ttO;
-  com.tencent.f.i.d<?> tuR;
-  kotlin.g.a.a<x> tuS;
-  private com.tencent.mm.plugin.finder.utils.b tux;
-  private final f tuz;
+  public static final a xcw;
+  private i callback;
+  private d rr;
   
-  public ax(bbn parambbn)
+  static
   {
-    this.ttO = parambbn;
-    this.TAG = "Finder.NetSceneFinderBase";
-    this.tuz = kotlin.g.ah((kotlin.g.a.a)new a(this));
-    if (cXQ())
-    {
-      parambbn = k.vfA;
-      parambbn = this.ttO;
-      if (parambbn == null) {
-        break label121;
-      }
-    }
-    label121:
-    for (int i = parambbn.tCE;; i = 0)
-    {
-      k.Ku(i);
-      parambbn = this.ttO;
-      if (parambbn != null)
-      {
-        Log.i(this.TAG, "Create commentScene:" + parambbn.tCE + " fromCommentScene:" + parambbn.tyh);
-        cYa().tyh = parambbn.tyh;
-      }
-      return;
-    }
+    AppMethodBeat.i(271717);
+    xcw = new a((byte)0);
+    AppMethodBeat.o(271717);
   }
   
-  private final com.tencent.mm.plugin.finder.cgi.report.d cYa()
+  public ax(String paramString, bbh parambbh, int paramInt, bid parambid)
   {
-    return (com.tencent.mm.plugin.finder.cgi.report.d)this.tuz.getValue();
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, String paramString, s params) {}
-  
-  public boolean cXQ()
-  {
-    return false;
-  }
-  
-  public com.tencent.mm.plugin.finder.cgi.report.b cXS()
-  {
-    return com.tencent.mm.plugin.finder.cgi.report.b.tyd;
-  }
-  
-  public JSONObject cXV()
-  {
-    return null;
-  }
-  
-  public JSONObject cXW()
-  {
-    return null;
-  }
-  
-  public void cancel()
-  {
-    com.tencent.mm.plugin.finder.utils.b localb = this.tux;
-    if (localb != null) {
-      localb.end();
-    }
-    super.cancel();
-  }
-  
-  public final ax d(Context paramContext, String paramString, long paramLong)
-  {
-    p.h(paramContext, "context");
-    b.a locala = com.tencent.mm.plugin.finder.utils.b.vVa;
-    this.tux = b.a.e(paramContext, paramString, paramLong);
-    return this;
-  }
-  
-  public final void d(FinderObject paramFinderObject)
-  {
-    p.h(paramFinderObject, "finderObject");
-    Object localObject = this.ttO;
-    k localk;
-    if (localObject != null)
-    {
-      localk = k.vfA;
-      k.e(paramFinderObject.id, ((bbn)localObject).tCE, paramFinderObject.sessionBuffer);
-    }
-    paramFinderObject = paramFinderObject.foldedLayout;
-    if (paramFinderObject != null)
-    {
-      paramFinderObject = paramFinderObject.LCW;
-      if (paramFinderObject != null)
-      {
-        paramFinderObject = ((Iterable)paramFinderObject).iterator();
-        while (paramFinderObject.hasNext())
-        {
-          localObject = (FinderObject)paramFinderObject.next();
-          localk = k.vfA;
-          k.e(((FinderObject)localObject).id, 14, ((FinderObject)localObject).sessionBuffer);
-        }
-      }
-    }
-  }
-  
-  public int dispatch(com.tencent.mm.network.g paramg, s params, m paramm)
-  {
-    Object localObject = this.tux;
+    super(parambid);
+    AppMethodBeat.i(271716);
+    d.a locala = new d.a();
+    locala.TW("/cgi-bin/micromsg-bin/findercreatelivenotice");
+    locala.vD(getType());
+    aro localaro = new aro();
+    localaro.finderUsername = paramString;
+    localaro.liveNoticeInfo = parambbh;
+    localaro.fSo = paramInt;
+    Object localObject = ao.xcj;
+    localaro.SDi = ao.a(parambid);
+    localObject = localaro.SDi;
     if (localObject != null) {
-      ((com.tencent.mm.plugin.finder.utils.b)localObject).begin();
-    }
-    com.tencent.mm.plugin.finder.cgi.report.d locald = cYa();
-    if (locald != null) {
-      if ((params instanceof com.tencent.mm.ak.d)) {
-        break label137;
+      if (parambid == null) {
+        break label223;
       }
     }
-    label137:
-    for (localObject = null;; localObject = params)
+    label223:
+    for (int i = parambid.fGo;; i = 0)
     {
-      locald.g((com.tencent.mm.ak.d)localObject);
-      localObject = this.tuR;
-      if (localObject != null) {
-        ((com.tencent.f.i.d)localObject).cancel(false);
-      }
-      if (this.timeout > 0)
-      {
-        Log.i(this.TAG, "time out:" + this.timeout);
-        this.tuR = h.RTc.o((Runnable)new b(this), this.timeout);
-      }
-      return super.dispatch(paramg, params, paramm);
-    }
-  }
-  
-  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
-  {
-    cYa().cZt();
-    paramArrayOfByte = this.tux;
-    if (paramArrayOfByte != null) {
-      paramArrayOfByte.end();
-    }
-    paramArrayOfByte = this.tuR;
-    if (paramArrayOfByte != null) {
-      paramArrayOfByte.cancel(false);
-    }
-    paramArrayOfByte = com.tencent.mm.plugin.finder.spam.a.vwk;
-    com.tencent.mm.plugin.finder.spam.a.t(paramInt2, paramInt3, paramString);
-    paramArrayOfByte = com.tencent.mm.plugin.finder.spam.a.vwk;
-    com.tencent.mm.plugin.finder.spam.a.u(paramInt2, paramInt3, paramString);
-    a(paramInt1, paramInt2, paramInt3, paramString, params);
-    cYa().cZu();
-    paramArrayOfByte = cYa();
-    if (!(params instanceof com.tencent.mm.ak.d)) {
-      params = null;
-    }
-    for (;;)
-    {
-      paramArrayOfByte.b(paramInt2, paramInt3, paramString, (com.tencent.mm.ak.d)params);
+      ((aqe)localObject).scene = i;
+      parambid = new arp();
+      locala.c((a)localaro);
+      locala.d((a)parambid);
+      parambid = locala.bgN();
+      p.j(parambid, "builder.buildInstance()");
+      this.rr = parambid;
+      Log.i("Finder.NetSceneCreateLiveNotice", "NetSceneCreateLiveNotice init userName:" + paramString + ", startTime:" + parambbh.fod + " ,opType:" + paramInt + ' ');
+      AppMethodBeat.o(271716);
       return;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/plugin/finder/cgi/report/FinderCgiReport;", "invoke"})
-  static final class a
-    extends kotlin.g.b.q
-    implements kotlin.g.a.a<com.tencent.mm.plugin.finder.cgi.report.d>
+  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, s params)
   {
-    a(ax paramax)
+    AppMethodBeat.i(271714);
+    Log.i("Finder.NetSceneCreateLiveNotice", "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
+    params = this.callback;
+    if (params != null)
     {
-      super();
+      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
+      AppMethodBeat.o(271714);
+      return;
     }
+    AppMethodBeat.o(271714);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
+  public final arp dnW()
   {
-    b(ax paramax) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(242359);
-      this.tuT.cancel();
-      this.tuT.tuR = null;
-      Log.i(this.tuT.TAG, "time out!");
-      kotlin.g.a.a locala = this.tuT.tuS;
-      if (locala != null)
-      {
-        locala.invoke();
-        AppMethodBeat.o(242359);
-        return;
-      }
-      AppMethodBeat.o(242359);
+    AppMethodBeat.i(271715);
+    Object localObject = this.rr;
+    if (localObject == null) {
+      p.bGy("rr");
     }
+    localObject = ((d)localObject).bhY();
+    if (localObject == null)
+    {
+      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderCreateLiveNoticeResponse");
+      AppMethodBeat.o(271715);
+      throw ((Throwable)localObject);
+    }
+    localObject = (arp)localObject;
+    AppMethodBeat.o(271715);
+    return localObject;
   }
+  
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  {
+    AppMethodBeat.i(271713);
+    this.callback = parami;
+    parami = this.rr;
+    if (parami == null) {
+      p.bGy("rr");
+    }
+    int i = dispatch(paramg, (s)parami, (m)this);
+    AppMethodBeat.o(271713);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 6653;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/NetSceneCreateLiveNotice$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.ax
  * JD-Core Version:    0.7.0.1
  */

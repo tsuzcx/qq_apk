@@ -1,20 +1,18 @@
 package com.tencent.mm.lib.riskscanner.a;
 
-import android.content.ContentResolver;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.lib.riskscanner.RiskScannerReqBufferProvider;
+import com.tencent.mm.lib.riskscanner.RiskScannerReqBufferService;
 
 public final class a
 {
-  public static Bundle cM(Context paramContext)
+  public static Bundle cJ(Context paramContext)
   {
     AppMethodBeat.i(138304);
-    paramContext = paramContext.getContentResolver();
     try
     {
-      paramContext = paramContext.call(RiskScannerReqBufferProvider.CONTENT_URI, "prepareReqBuffer", null, null);
+      paramContext = RiskScannerReqBufferService.cI(paramContext);
       AppMethodBeat.o(138304);
       return paramContext;
     }
@@ -27,7 +25,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.lib.riskscanner.a.a
  * JD-Core Version:    0.7.0.1
  */

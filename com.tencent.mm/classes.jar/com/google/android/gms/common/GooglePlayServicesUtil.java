@@ -6,7 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.res.Resources;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import com.google.android.gms.common.internal.DialogRedirect;
 import com.google.android.gms.common.util.VisibleForTesting;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -116,7 +116,7 @@ public final class GooglePlayServicesUtil
   
   public static boolean showErrorDialogFragment(int paramInt1, Activity paramActivity, Fragment paramFragment, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppMethodBeat.i(10946);
+    AppMethodBeat.i(255743);
     int i = paramInt1;
     if (GooglePlayServicesUtilLight.isPlayServicesPossiblyUpdating(paramActivity, paramInt1)) {
       i = 18;
@@ -125,17 +125,17 @@ public final class GooglePlayServicesUtil
     if (paramFragment == null)
     {
       boolean bool = localGoogleApiAvailability.showErrorDialogFragment(paramActivity, i, paramInt2, paramOnCancelListener);
-      AppMethodBeat.o(10946);
+      AppMethodBeat.o(255743);
       return bool;
     }
     paramFragment = GoogleApiAvailability.zza(paramActivity, i, DialogRedirect.getInstance(paramFragment, GoogleApiAvailability.getInstance().getErrorResolutionIntent(paramActivity, i, "d"), paramInt2), paramOnCancelListener);
     if (paramFragment == null)
     {
-      AppMethodBeat.o(10946);
+      AppMethodBeat.o(255743);
       return false;
     }
     GoogleApiAvailability.zza(paramActivity, paramFragment, "GooglePlayServicesErrorDialog", paramOnCancelListener);
-    AppMethodBeat.o(10946);
+    AppMethodBeat.o(255743);
     return true;
   }
   
@@ -156,7 +156,7 @@ public final class GooglePlayServicesUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.common.GooglePlayServicesUtil
  * JD-Core Version:    0.7.0.1
  */

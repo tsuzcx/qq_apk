@@ -12,23 +12,26 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.protocal.protobuf.cxp;
-import com.tencent.mm.protocal.protobuf.ffc;
+import com.tencent.mm.plugin.appbrand.au.c;
+import com.tencent.mm.plugin.appbrand.au.f;
+import com.tencent.mm.plugin.appbrand.au.g;
+import com.tencent.mm.protocal.protobuf.dgz;
+import com.tencent.mm.protocal.protobuf.fqd;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.util.LinkedList;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandGameEvaluateOptionView;", "Landroid/widget/FrameLayout;", "Landroid/view/View$OnClickListener;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "optionChooseCallback", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandGameEvaluateOptionView$OptionChooseCallback;", "optionConfig", "Lcom/tencent/mm/protocal/protobuf/OptionItem;", "view", "onClick", "", "v", "Landroid/view/View;", "setData", "index", "config", "Lcom/tencent/mm/protocal/protobuf/WxagGameOriginalReviewConfig;", "callback", "OptionChooseCallback", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandGameEvaluateOptionView;", "Landroid/widget/FrameLayout;", "Landroid/view/View$OnClickListener;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "optionChooseCallback", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandGameEvaluateOptionView$OptionChooseCallback;", "optionConfig", "Lcom/tencent/mm/protocal/protobuf/OptionItem;", "view", "onClick", "", "v", "Landroid/view/View;", "setData", "index", "config", "Lcom/tencent/mm/protocal/protobuf/WxagGameOriginalReviewConfig;", "callback", "OptionChooseCallback", "plugin-appbrand-integration_release"})
 public final class AppBrandGameEvaluateOptionView
   extends FrameLayout
   implements View.OnClickListener
 {
   private final MMHandler handler;
-  private cxp oqK;
-  private a oqL;
-  private final FrameLayout oqM;
+  private dgz rsh;
+  private a rsi;
+  private final FrameLayout rsj;
   
   public AppBrandGameEvaluateOptionView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,42 +43,42 @@ public final class AppBrandGameEvaluateOptionView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(51444);
     this.handler = new MMHandler(Looper.getMainLooper());
-    paramContext = LayoutInflater.from(paramContext).inflate(2131493035, (ViewGroup)this, false);
+    paramContext = LayoutInflater.from(paramContext).inflate(au.g.app_brand_game_evaluate_option, (ViewGroup)this, false);
     if (paramContext == null)
     {
       paramContext = new t("null cannot be cast to non-null type android.widget.FrameLayout");
       AppMethodBeat.o(51444);
       throw paramContext;
     }
-    this.oqM = ((FrameLayout)paramContext);
-    addView((View)this.oqM);
-    this.oqM.setOnClickListener((View.OnClickListener)this);
+    this.rsj = ((FrameLayout)paramContext);
+    addView((View)this.rsj);
+    this.rsj.setOnClickListener((View.OnClickListener)this);
     AppMethodBeat.o(51444);
   }
   
-  public final void a(int paramInt, ffc paramffc, a parama)
+  public final void a(int paramInt, fqd paramfqd, a parama)
   {
     AppMethodBeat.i(51442);
-    p.h(paramffc, "config");
-    p.h(parama, "callback");
-    this.oqL = parama;
-    paramffc = paramffc.NAv.get(paramInt);
-    p.g(paramffc, "config.OptionList[index]");
-    this.oqK = ((cxp)paramffc);
-    paramffc = this.oqM.findViewById(2131308977);
-    p.g(paramffc, "view.findViewById<TextView>(R.id.text)");
-    paramffc = (TextView)paramffc;
-    parama = this.oqK;
+    p.k(paramfqd, "config");
+    p.k(parama, "callback");
+    this.rsi = parama;
+    paramfqd = paramfqd.UNX.get(paramInt);
+    p.j(paramfqd, "config.OptionList[index]");
+    this.rsh = ((dgz)paramfqd);
+    paramfqd = this.rsj.findViewById(au.f.text);
+    p.j(paramfqd, "view.findViewById<TextView>(R.id.text)");
+    paramfqd = (TextView)paramfqd;
+    parama = this.rsh;
     if (parama == null) {
-      p.btv("optionConfig");
+      p.bGy("optionConfig");
     }
-    paramffc.setText((CharSequence)parama.MCb);
-    paramffc = com.tencent.mm.av.a.a.bdb();
-    parama = this.oqK;
+    paramfqd.setText((CharSequence)parama.TNH);
+    paramfqd = com.tencent.mm.ay.a.a.bms();
+    parama = this.rsh;
     if (parama == null) {
-      p.btv("optionConfig");
+      p.bGy("optionConfig");
     }
-    paramffc.loadImage(parama.IconUrl, (ImageView)this.oqM.findViewById(2131302526));
+    paramfqd.loadImage(parama.CNj, (ImageView)this.rsj.findViewById(au.f.image));
     AppMethodBeat.o(51442);
   }
   
@@ -83,22 +86,22 @@ public final class AppBrandGameEvaluateOptionView
   {
     AppMethodBeat.i(51443);
     b localb = new b();
-    localb.bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/dialog/AppBrandGameEvaluateOptionView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    this.oqM.setBackgroundResource(2131099716);
-    ((TextView)this.oqM.findViewById(2131308977)).setTextColor(com.tencent.mm.cb.a.n(getContext(), 2131099710));
+    localb.bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/widget/dialog/AppBrandGameEvaluateOptionView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    this.rsj.setBackgroundResource(au.c.Brand_Alpha_0_1);
+    ((TextView)this.rsj.findViewById(au.f.text)).setTextColor(com.tencent.mm.ci.a.w(getContext(), au.c.Brand));
     this.handler.postDelayed((Runnable)new b(this), 100L);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/dialog/AppBrandGameEvaluateOptionView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(51443);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandGameEvaluateOptionView$OptionChooseCallback;", "", "onOptionChoose", "", "optionInfo", "Lcom/tencent/mm/protocal/protobuf/OptionItem;", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandGameEvaluateOptionView$OptionChooseCallback;", "", "onOptionChoose", "", "optionInfo", "Lcom/tencent/mm/protocal/protobuf/OptionItem;", "plugin-appbrand-integration_release"})
   public static abstract interface a
   {
-    public abstract void a(cxp paramcxp);
+    public abstract void a(dgz paramdgz);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -107,14 +110,14 @@ public final class AppBrandGameEvaluateOptionView
     public final void run()
     {
       AppMethodBeat.i(51441);
-      AppBrandGameEvaluateOptionView.a(this.oqN).a(AppBrandGameEvaluateOptionView.b(this.oqN));
+      AppBrandGameEvaluateOptionView.a(this.rsk).a(AppBrandGameEvaluateOptionView.b(this.rsk));
       AppMethodBeat.o(51441);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.AppBrandGameEvaluateOptionView
  * JD-Core Version:    0.7.0.1
  */

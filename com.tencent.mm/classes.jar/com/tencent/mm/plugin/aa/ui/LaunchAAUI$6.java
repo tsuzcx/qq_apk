@@ -2,22 +2,22 @@ package com.tencent.mm.plugin.aa.ui;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.q.f;
 import com.tencent.mm.ui.widget.a.e;
 
 final class LaunchAAUI$6
-  implements o.f
+  implements q.f
 {
   LaunchAAUI$6(LaunchAAUI paramLaunchAAUI, e parame, View paramView) {}
   
-  public final void onCreateMMMenu(m paramm)
+  public final void onCreateMMMenu(o paramo)
   {
-    AppMethodBeat.i(213026);
-    paramm.clear();
-    this.gwC.setFooterView(null);
-    this.gwC.setFooterView(this.jXU);
-    AppMethodBeat.o(213026);
+    AppMethodBeat.i(211942);
+    paramo.clear();
+    this.jaP.setFooterView(null);
+    this.jaP.setFooterView(this.mPk);
+    AppMethodBeat.o(211942);
   }
 }
 

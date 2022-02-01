@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.kidswatch.ui.reg;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegMobileVerifyUI$Companion;", "", "()V", "INTERVAL_UPDATE_TIME", "", "MAX_WAIT_TIME", "TAG", "", "plugin-kidswatch_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/kidswatch/ui/reg/KidsWatchRegMobileVerifyUI$Companion;", "", "()V", "INTERVAL_UPDATE_TIME", "", "MAX_WAIT_TIME", "TAG", "", "plugin-kidswatch_release"})
 public final class KidsWatchRegMobileVerifyUI$a {}
 
 

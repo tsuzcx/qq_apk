@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.wallet.wecoin.model;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/wallet/wecoin/model/RechargeProductsDialogParam$Companion;", "", "()V", "build", "Lcom/tencent/mm/plugin/wallet/wecoin/model/RechargeProductsDialogParam;", "block", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/wallet/wecoin/model/RechargeProductsDialogParam$Builder;", "", "Lkotlin/ExtensionFunctionType;", "plugin-wxpay_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/wallet/wecoin/model/RechargeProductsDialogParam$Companion;", "", "()V", "build", "Lcom/tencent/mm/plugin/wallet/wecoin/model/RechargeProductsDialogParam;", "block", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/wallet/wecoin/model/RechargeProductsDialogParam$Builder;", "", "Lkotlin/ExtensionFunctionType;", "plugin-wxpay_release"})
 public final class e$b {}
 
 

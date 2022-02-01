@@ -5,60 +5,61 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.card.a.d;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.protocal.protobuf.abz;
-import com.tencent.mm.protocal.protobuf.uz;
+import com.tencent.mm.protocal.protobuf.acg;
+import com.tencent.mm.protocal.protobuf.vb;
 import java.util.LinkedList;
 
 public final class c
   extends a
 {
-  protected TextView qlB;
-  protected TextView qlC;
+  protected TextView tHw;
+  protected TextView tHx;
   
   public c(Context paramContext)
   {
     super(paramContext);
   }
   
-  public final void H(boolean paramBoolean1, boolean paramBoolean2) {}
+  public final void L(boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected final void cxM()
+  protected final void cLo()
   {
     AppMethodBeat.i(113902);
-    this.qlC = ((TextView)cxL().findViewById(2131298037));
-    this.qlB = ((TextView)cxL().findViewById(2131298220));
+    this.tHx = ((TextView)cLn().findViewById(a.d.tbh));
+    this.tHw = ((TextView)cLn().findViewById(a.d.dve));
     AppMethodBeat.o(113902);
   }
   
-  protected final void cxN()
+  protected final void cLp()
   {
     AppMethodBeat.i(113903);
-    if ((this.pQV.csQ().LeC != null) && (this.pQV.csQ().LeC.size() > 0))
+    if ((this.tmU.cGs().SfP != null) && (this.tmU.cGs().SfP.size() > 0))
     {
-      abz localabz = (abz)this.pQV.csQ().LeC.get(0);
-      if (this.oeJ != null) {
-        this.oeJ.setText(localabz.title);
+      acg localacg = (acg)this.tmU.cGs().SfP.get(0);
+      if (this.rgv != null) {
+        this.rgv.setText(localacg.title);
       }
-      if (this.qlB != null)
+      if (this.tHw != null)
       {
-        if (TextUtils.isEmpty(localabz.pRY)) {
+        if (TextUtils.isEmpty(localacg.tnY)) {
           break label138;
         }
-        this.qlB.setText(localabz.pRY);
+        this.tHw.setText(localacg.tnY);
       }
-      while (this.qlC != null) {
-        if (!TextUtils.isEmpty(localabz.pRZ))
+      while (this.tHx != null) {
+        if (!TextUtils.isEmpty(localacg.tnZ))
         {
-          this.qlC.setText(localabz.pRZ);
+          this.tHx.setText(localacg.tnZ);
           AppMethodBeat.o(113903);
           return;
           label138:
-          this.qlB.setVisibility(8);
+          this.tHw.setVisibility(8);
         }
         else
         {
-          this.qlC.setVisibility(8);
+          this.tHx.setVisibility(8);
         }
       }
     }

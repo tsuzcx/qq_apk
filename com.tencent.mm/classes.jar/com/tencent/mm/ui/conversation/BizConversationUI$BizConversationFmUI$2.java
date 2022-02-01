@@ -20,14 +20,14 @@ final class BizConversationUI$BizConversationFmUI$2
     {
       AppMethodBeat.o(38236);
       return false;
-      BizConversationUI.BizConversationFmUI.b(this.Qbw, (int)paramMotionEvent.getRawX());
-      BizConversationUI.BizConversationFmUI.c(this.Qbw, (int)paramMotionEvent.getRawY());
+      BizConversationUI.BizConversationFmUI.b(this.XzJ, (int)paramMotionEvent.getRawX());
+      BizConversationUI.BizConversationFmUI.c(this.XzJ, (int)paramMotionEvent.getRawY());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.BizConversationUI.BizConversationFmUI.2
  * JD-Core Version:    0.7.0.1
  */

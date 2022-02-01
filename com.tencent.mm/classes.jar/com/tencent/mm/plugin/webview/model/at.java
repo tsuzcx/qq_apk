@@ -1,81 +1,61 @@
 package com.tencent.mm.plugin.webview.model;
 
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.c.h;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.by.c;
+import com.tencent.mm.plugin.am.a;
+import com.tencent.mm.sdk.platformtools.IntentUtil;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import java.net.URLDecoder;
 
 public final class at
+  extends a
 {
-  public static Intent a(Bitmap paramBitmap, String paramString1, String paramString2, boolean paramBoolean)
+  private static String bm(Intent paramIntent)
   {
-    AppMethodBeat.i(79043);
-    Log.i("MicroMsg.WebViewShortcutManager", "buildIntent, install = %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if ((paramBitmap == null) && (paramBoolean))
+    AppMethodBeat.i(79039);
+    try
     {
-      Log.e("MicroMsg.WebViewShortcutManager", "no bmp");
-      AppMethodBeat.o(79043);
-      return null;
+      paramIntent = URLDecoder.decode(IntentUtil.getStringExtra(paramIntent, "ext_info"), "utf-8");
+      AppMethodBeat.o(79039);
+      return paramIntent;
     }
-    Object localObject;
-    if (paramBoolean) {
-      localObject = "com.android.launcher.action.INSTALL_SHORTCUT";
-    }
-    for (;;)
+    catch (UnsupportedEncodingException paramIntent)
     {
-      localObject = new Intent((String)localObject);
-      ((Intent)localObject).putExtra("android.intent.extra.shortcut.NAME", paramString2);
-      ((Intent)localObject).putExtra("duplicate", false);
-      paramString2 = new Intent("com.tencent.mm.action.WX_SHORTCUT");
-      paramString2.putExtra("type", 4);
-      try
-      {
-        paramString2.putExtra("ext_info", URLEncoder.encode(paramString1, "utf-8"));
-        label113:
-        paramString2.setPackage(MMApplicationContext.getPackageName());
-        paramString2.addFlags(67108864);
-        ((Intent)localObject).putExtra("android.intent.extra.shortcut.INTENT", paramString2);
-        if (paramBitmap != null)
-        {
-          ((Intent)localObject).putExtra("android.intent.extra.shortcut.ICON", paramBitmap);
-          ((Intent)localObject).putExtra("shortcut_is_adaptive_icon", true);
-        }
-        AppMethodBeat.o(79043);
-        return localObject;
-        localObject = "com.android.launcher.action.UNINSTALL_SHORTCUT";
-      }
-      catch (UnsupportedEncodingException paramString1)
-      {
-        break label113;
-      }
+      AppMethodBeat.o(79039);
     }
+    return "";
   }
   
-  public static void a(a parama, boolean paramBoolean)
+  public final int getType()
   {
-    AppMethodBeat.i(79042);
-    if (parama != null) {
-      parama.zf(paramBoolean);
-    }
-    AppMethodBeat.o(79042);
+    return 4;
   }
   
-  public static abstract interface a
+  public final void k(Context paramContext, Intent paramIntent)
   {
-    public abstract void zf(boolean paramBoolean);
+    AppMethodBeat.i(79038);
+    paramIntent.putExtra("type", 4);
+    paramIntent.putExtra("id", "");
+    paramIntent = bm(paramIntent);
+    if (Util.isNullOrNil(paramIntent))
+    {
+      AppMethodBeat.o(79038);
+      return;
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("rawUrl", paramIntent);
+    localIntent.putExtra("from_shortcut", true);
+    localIntent.addFlags(268435456);
+    c.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
+    AppMethodBeat.o(79038);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.at
  * JD-Core Version:    0.7.0.1
  */

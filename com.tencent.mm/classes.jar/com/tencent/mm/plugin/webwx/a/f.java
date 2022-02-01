@@ -3,20 +3,19 @@ package com.tencent.mm.plugin.webwx.a;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.b;
-import com.tencent.mm.ak.h.c;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.al.ag;
-import com.tencent.mm.av.e.a;
-import com.tencent.mm.g.a.wy;
-import com.tencent.mm.g.a.wy.a;
-import com.tencent.mm.g.c.bb;
-import com.tencent.mm.g.c.eo;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.h.b;
+import com.tencent.mm.an.h.c;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.ao.af;
+import com.tencent.mm.ay.e.a;
+import com.tencent.mm.f.a.yf;
+import com.tencent.mm.f.a.yf.a;
+import com.tencent.mm.f.c.bb;
+import com.tencent.mm.f.c.et;
 import com.tencent.mm.model.ac;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.modelsimple.o;
 import com.tencent.mm.platformtools.z;
@@ -26,8 +25,8 @@ import com.tencent.mm.plugin.webwx.ui.WebWXPopupUnlockUI;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.model.app.ak;
-import com.tencent.mm.protocal.protobuf.de;
-import com.tencent.mm.protocal.protobuf.ecu;
+import com.tencent.mm.protocal.protobuf.db;
+import com.tencent.mm.protocal.protobuf.emv;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -48,7 +47,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class f
-  implements h, e.a
+  implements com.tencent.mm.an.h, e.a
 {
   public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject) {}
   
@@ -65,17 +64,17 @@ public final class f
   {
     int i = 0;
     AppMethodBeat.i(30181);
-    parama = parama.heO;
+    parama = parama.jQG;
     Object localObject1;
     Object localObject3;
     int j;
-    if ((parama != null) && (parama.xKb == 51))
+    if ((parama != null) && (parama.COi == 51))
     {
-      Log.d("MicroMsg.StatusNotifyMsgExtension", "msgType %d %d", new Object[] { Integer.valueOf(parama.xKb), Integer.valueOf(51) });
-      localObject1 = z.a(parama.KHm);
+      Log.d("MicroMsg.StatusNotifyMsgExtension", "msgType %d %d", new Object[] { Integer.valueOf(parama.COi), Integer.valueOf(51) });
+      localObject1 = z.a(parama.RIE);
       if (!Util.isNullOrNil((String)localObject1))
       {
-        localObject3 = z.a(parama.KHn).trim();
+        localObject3 = z.a(parama.RIF).trim();
         parama = XmlParser.parseXml((String)localObject3, "msg", null);
         if (parama != null)
         {
@@ -85,15 +84,15 @@ public final class f
             break label357;
           }
           Log.i("MicroMsg.StatusNotifyMsgExtension", "summerbadcr mark conversation readed. userName = ".concat(String.valueOf(localObject1)));
-          bg.aVF();
-          c.aSQ().aEu((String)localObject1);
-          com.tencent.mm.plugin.webwx.a.jRt.cancelNotification((String)localObject1);
-          if (!com.tencent.mm.model.ab.IX((String)localObject1)) {
+          bh.beI();
+          c.bbO().aOE((String)localObject1);
+          com.tencent.mm.plugin.webwx.a.mIG.hg((String)localObject1);
+          if (!com.tencent.mm.model.ab.Qq((String)localObject1)) {
             break label224;
           }
-          bg.aVF();
-          c.azQ().set(143618, Integer.valueOf(0));
-          com.tencent.mm.bj.d.bgN().gCQ();
+          bh.beI();
+          c.aHp().i(143618, Integer.valueOf(0));
+          com.tencent.mm.bl.d.bqc().hzd();
         }
       }
     }
@@ -103,27 +102,27 @@ public final class f
       return null;
       label224:
       Log.i("MicroMsg.StatusNotifyMsgExtension", "summerbadcr STATUSNOTIFY clearChatRoomMsgSeq");
-      bg.aVF();
-      c.aST().bka((String)localObject1);
-      if (com.tencent.mm.model.ab.Eq((String)localObject1))
+      bh.beI();
+      c.bbR().bwz((String)localObject1);
+      if (com.tencent.mm.model.ab.Lj((String)localObject1))
       {
-        bg.aVF();
-        parama = c.aST().bjY((String)localObject1);
+        bh.beI();
+        parama = c.bbR().bwx((String)localObject1);
         if ((parama != null) && (parama.field_unReadCount > 0) && (parama.field_UnDeliverCount > 0))
         {
           Log.i("MicroMsg.StatusNotifyMsgExtension", "summerbadcr STATUSNOTIFY clearChatRoomMsgSeq chatroom[%s], UnDeliver[%d], Unread[%d]", new Object[] { localObject1, Integer.valueOf(parama.field_UnDeliverCount), Integer.valueOf(parama.field_unReadCount) });
-          com.tencent.mm.plugin.webwx.a.jRu.gr((String)localObject1);
-          parama.nt(0);
-          bg.aVF();
-          c.aST().a(parama, (String)localObject1);
+          com.tencent.mm.plugin.webwx.a.mIH.hb((String)localObject1);
+          parama.pH(0);
+          bh.beI();
+          c.bbR().a(parama, (String)localObject1);
           continue;
           label357:
           if (j != 13) {
             break;
           }
           Log.i("MicroMsg.StatusNotifyMsgExtension", "summerbadcr mark conversation readed. userName = ".concat(String.valueOf(localObject1)));
-          bg.aVF();
-          c.aST().bkc((String)localObject1);
+          bh.beI();
+          c.bbR().bwB((String)localObject1);
         }
       }
     }
@@ -134,8 +133,8 @@ public final class f
     {
       Log.i("MicroMsg.StatusNotifyMsgExtension", "summerstatus op[%s]", new Object[] { Integer.valueOf(j) });
       l = System.currentTimeMillis();
-      bg.aVF();
-      localObject2 = c.aST().gCw();
+      bh.beI();
+      localObject2 = c.bbR().hyJ();
       localObject1 = new StringBuilder();
       i = 0;
       if (i < ((List)localObject2).size())
@@ -150,7 +149,7 @@ public final class f
         }
       }
       Log.i("MicroMsg.StatusNotifyMsgExtension", "summerstatus userNames[%s] take[%d]ms", new Object[] { Integer.valueOf(((List)localObject2).size()), Long.valueOf(System.currentTimeMillis() - l) });
-      localObject2 = ac.JQ(com.tencent.mm.model.ab.iCF);
+      localObject2 = ac.uN(1);
       Log.i("MicroMsg.StatusNotifyMsgExtension", "summerstatus unreadUsernames[%s] take[%d]ms", new Object[] { ((Map)localObject2).keySet(), Long.valueOf(System.currentTimeMillis() - l) });
       i = ((Map)localObject2).size();
       if (i <= 0) {
@@ -164,10 +163,10 @@ public final class f
         az localaz = (az)((Map)localObject2).get(localObject4);
         if (localaz != null)
         {
-          ecu localecu = new ecu();
-          localecu.UserName = ((String)localObject4);
-          localecu.Ndg = ((int)localaz.field_conversationTime);
-          parama.add(localecu);
+          emv localemv = new emv();
+          localemv.UserName = ((String)localObject4);
+          localemv.UpD = ((int)localaz.field_conversationTime);
+          parama.add(localemv);
         }
       }
     }
@@ -180,7 +179,7 @@ public final class f
           for (;;)
           {
             parama = new com.tencent.mm.modelsimple.ab(((StringBuilder)localObject1).toString(), 4, i, parama);
-            bg.azz().a(parama, 0);
+            bh.aGY().a(parama, 0);
             break;
             if (j == 6)
             {
@@ -190,42 +189,42 @@ public final class f
             if (j == 7)
             {
               Log.v("MicroMsg.StatusNotifyMsgExtension", "lyh statusNotify, %d, %s", new Object[] { Integer.valueOf(j), localObject3 });
-              bg.aVF();
-              Log.d("MicroMsg.StatusNotifyMsgExtension", "onlineversion: %d,%d", new Object[] { Integer.valueOf(c.aSK()), Integer.valueOf(o.bff()) });
+              bh.beI();
+              Log.d("MicroMsg.StatusNotifyMsgExtension", "onlineversion: %d,%d", new Object[] { Integer.valueOf(c.bbI()), Integer.valueOf(o.bou()) });
               localObject1 = Util.nullAsNil((String)parama.get(".msg.op.name")).trim();
               parama = Util.nullAsNil((String)parama.get(".msg.op.arg")).trim();
               if ("WeixinStatus".equals(localObject1))
               {
-                bg.aVF();
-                if ((c.aSK() != o.bff()) || (o.jjJ == null) || (o.jjJ.trim().length() <= 0)) {
+                bh.beI();
+                if ((c.bbI() != o.bou()) || (o.lZF == null) || (o.lZF.trim().length() <= 0)) {
                   break;
                 }
                 localObject1 = new Intent(MMApplicationContext.getContext(), WebWXLogoutUI.class);
                 ((Intent)localObject1).setFlags(603979776);
                 ((Intent)localObject1).addFlags(268435456);
-                ((Intent)localObject1).putExtra("intent.key.online_version", o.bff());
+                ((Intent)localObject1).putExtra("intent.key.online_version", o.bou());
                 parama = MMApplicationContext.getContext();
-                localObject1 = new com.tencent.mm.hellhoundlib.b.a().bl(localObject1);
-                com.tencent.mm.hellhoundlib.a.a.a(parama, ((com.tencent.mm.hellhoundlib.b.a)localObject1).axQ(), "com/tencent/mm/plugin/webwx/model/StatusNotifyMsgExtension", "handleStatusNotifyMsg", "(Lcom/tencent/mm/protocal/protobuf/AddMsg;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                parama.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).pG(0));
-                com.tencent.mm.hellhoundlib.a.a.a(parama, "com/tencent/mm/plugin/webwx/model/StatusNotifyMsgExtension", "handleStatusNotifyMsg", "(Lcom/tencent/mm/protocal/protobuf/AddMsg;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                localObject1 = new com.tencent.mm.hellhoundlib.b.a().bm(localObject1);
+                com.tencent.mm.hellhoundlib.a.a.b(parama, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aFh(), "com/tencent/mm/plugin/webwx/model/StatusNotifyMsgExtension", "handleStatusNotifyMsg", "(Lcom/tencent/mm/protocal/protobuf/AddMsg;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                parama.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).sf(0));
+                com.tencent.mm.hellhoundlib.a.a.c(parama, "com/tencent/mm/plugin/webwx/model/StatusNotifyMsgExtension", "handleStatusNotifyMsg", "(Lcom/tencent/mm/protocal/protobuf/AddMsg;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                 break;
               }
               if ("MomentsUnreadMsgStatus".equals(localObject1))
               {
-                localObject2 = new wy();
-                ((wy)localObject2).edp.dJY = 7;
-                ((wy)localObject2).edp.edq = ((String)localObject1);
-                ((wy)localObject2).edp.edr = Util.getInt(parama, 0);
-                Log.i("MicroMsg.StatusNotifyMsgExtension", "sns enter function, %d, %s, %d", new Object[] { Integer.valueOf(((wy)localObject2).edp.dJY), ((wy)localObject2).edp.edq, Long.valueOf(((wy)localObject2).edp.edr) });
+                localObject2 = new yf();
+                ((yf)localObject2).fXy.fCN = 7;
+                ((yf)localObject2).fXy.fXz = ((String)localObject1);
+                ((yf)localObject2).fXy.fXA = Util.getInt(parama, 0);
+                Log.i("MicroMsg.StatusNotifyMsgExtension", "sns enter function, %d, %s, %d", new Object[] { Integer.valueOf(((yf)localObject2).fXy.fCN), ((yf)localObject2).fXy.fXz, Long.valueOf(((yf)localObject2).fXy.fXA) });
                 EventCenter.instance.publish((IEvent)localObject2);
                 break;
               }
               if (!"EnterpriseChatStatus".equals(localObject1)) {
                 break;
               }
-              ag.bav();
-              com.tencent.mm.al.a.i.h(j, (String)localObject1, parama);
+              af.bjJ();
+              com.tencent.mm.ao.a.i.h(j, (String)localObject1, parama);
               break;
             }
             if (j == 8)
@@ -235,12 +234,12 @@ public final class f
               parama = Util.nullAsNil((String)parama.get(".msg.op.arg")).trim();
               if ("EnterpriseChatStatus".equals(localObject1))
               {
-                ag.bav();
-                com.tencent.mm.al.a.i.h(j, (String)localObject1, parama);
+                af.bjJ();
+                com.tencent.mm.ao.a.i.h(j, (String)localObject1, parama);
                 break;
               }
-              parama = new wy();
-              parama.edp.dJY = 8;
+              parama = new yf();
+              parama.fXy.fCN = 8;
               EventCenter.instance.publish(parama);
               break;
             }
@@ -255,19 +254,19 @@ public final class f
                 if (parama.length != 2) {
                   break;
                 }
-                localObject2 = new wy();
-                ((wy)localObject2).edp.dJY = 9;
-                ((wy)localObject2).edp.edq = ((String)localObject1);
-                ((wy)localObject2).edp.edr = Util.getInt(parama[1], 0);
-                ((wy)localObject2).edp.eds = parama[0];
+                localObject2 = new yf();
+                ((yf)localObject2).fXy.fCN = 9;
+                ((yf)localObject2).fXy.fXz = ((String)localObject1);
+                ((yf)localObject2).fXy.fXA = Util.getInt(parama[1], 0);
+                ((yf)localObject2).fXy.fXB = parama[0];
                 EventCenter.instance.publish((IEvent)localObject2);
                 break;
               }
               if (!"EnterpriseChatStatus".equals(localObject1)) {
                 break;
               }
-              ag.bav();
-              com.tencent.mm.al.a.i.h(j, (String)localObject1, parama);
+              af.bjJ();
+              com.tencent.mm.ao.a.i.h(j, (String)localObject1, parama);
               break;
             }
             if (j != 11) {
@@ -302,10 +301,10 @@ public final class f
                     if (l == -1L) {
                       break;
                     }
-                    bg.aVF();
-                    parama = c.aSQ().aJ(parama, l);
+                    bh.beI();
+                    parama = c.bbO().aL(parama, l);
                     if (parama.field_msgSvrId != 0L) {
-                      break label1784;
+                      break label1782;
                     }
                     Log.i("MicroMsg.StatusNotifyMsgExtension", "[MicroMsg.MultiTerminalSyncMgr] msg not exit, svrID:%d", new Object[] { Long.valueOf(l) });
                     continue;
@@ -317,8 +316,8 @@ public final class f
                 }
                 parama = Integer.valueOf(i);
                 continue;
-                label1784:
-                g.gjb().gjd().Mh(parama.field_msgId);
+                label1782:
+                g.hcM().hcO().TH(parama.field_msgId);
               }
             }
             if (!"HandOff".equals(localObject1)) {
@@ -334,11 +333,11 @@ public final class f
                 break;
               }
               parama = parama.group(1);
-              ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.handoff.a.a.class)).processRequest(parama);
+              ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.handoff.a.a.class)).processRequest(parama);
               break;
             case 6: 
               Log.i("MicroMsg.StatusNotifyMsgExtension", "receive handoff GET_ALL_LIST request, call alllist");
-              ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.handoff.a.a.class)).dYk();
+              ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.handoff.a.a.class)).eBI();
               break;
             case 5: 
               try
@@ -346,13 +345,13 @@ public final class f
                 localObject1 = ((String)parama.get(".msg.op.arg.handofflist.handoff.$from")).trim();
                 l = Util.getLong(((String)parama.get(".msg.op.arg.handofflist.handoff.id")).trim(), 0L);
                 localObject3 = ((String)parama.get(".msg.op.arg.handofflist.handoff.$id")).trim();
-                bg.aVF();
-                parama = c.aSQ().aJ((String)localObject1, l);
-                localObject1 = com.tencent.mm.pluginsdk.model.app.ao.cgO().Mp(parama.field_msgId);
+                bh.beI();
+                parama = c.bbO().aL((String)localObject1, l);
+                localObject1 = com.tencent.mm.pluginsdk.model.app.ao.ctZ().TR(parama.field_msgId);
                 parama = (h.a)localObject1;
                 if (localObject1 == null)
                 {
-                  localObject4 = ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.handoff.a.a.class)).aBy((String)localObject3);
+                  localObject4 = ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.handoff.a.a.class)).aLm((String)localObject3);
                   parama = (h.a)localObject1;
                   if ((localObject4 instanceof HandOffFile)) {
                     parama = ak.a((HandOffFile)localObject4);
@@ -361,10 +360,10 @@ public final class f
                 if (parama == null) {
                   break label2139;
                 }
-                if (!((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.handoff.a.a.class)).a((String)localObject3, parama)) {
+                if (!((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.handoff.a.a.class)).a((String)localObject3, parama)) {
                   break;
                 }
-                bg.azz().a(new ak((String)localObject3, parama), 0);
+                bh.aGY().a(new ak((String)localObject3, parama), 0);
               }
               catch (Throwable parama)
               {
@@ -374,12 +373,12 @@ public final class f
           }
           break;
           label2139:
-          ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.handoff.a.a.class)).jdMethod_if((String)localObject3, (String)localObject2);
+          ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.handoff.a.a.class)).io((String)localObject3, (String)localObject2);
           break;
           try
           {
             parama = ((String)parama.get(".msg.op.arg.handofflist.handoff.md5")).trim();
-            ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.handoff.a.a.class)).aBA(parama);
+            ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.handoff.a.a.class)).aLo(parama);
           }
           catch (Exception parama)
           {
@@ -401,17 +400,17 @@ public final class f
             break label2480;
           }
           localObject1 = new JSONObject((String)parama.get(".msg.op.arg")).get("deviceName").toString();
-          if (!o.bfe()) {
+          if (!o.bot()) {
             break;
           }
           parama = new Intent(MMApplicationContext.getContext(), WebWXPopupUnlockUI.class);
           parama.setFlags(872415232);
           parama.putExtra("deviceName", (String)localObject1);
           localObject1 = MMApplicationContext.getContext();
-          parama = new com.tencent.mm.hellhoundlib.b.a().bl(parama);
-          com.tencent.mm.hellhoundlib.a.a.a(localObject1, parama.axQ(), "com/tencent/mm/plugin/webwx/model/StatusNotifyMsgExtension", "handleStatusNotifyMsg", "(Lcom/tencent/mm/protocal/protobuf/AddMsg;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          ((Context)localObject1).startActivity((Intent)parama.pG(0));
-          com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/webwx/model/StatusNotifyMsgExtension", "handleStatusNotifyMsg", "(Lcom/tencent/mm/protocal/protobuf/AddMsg;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          parama = new com.tencent.mm.hellhoundlib.b.a().bm(parama);
+          com.tencent.mm.hellhoundlib.a.a.b(localObject1, parama.aFh(), "com/tencent/mm/plugin/webwx/model/StatusNotifyMsgExtension", "handleStatusNotifyMsg", "(Lcom/tencent/mm/protocal/protobuf/AddMsg;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          ((Context)localObject1).startActivity((Intent)parama.sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(localObject1, "com/tencent/mm/plugin/webwx/model/StatusNotifyMsgExtension", "handleStatusNotifyMsg", "(Lcom/tencent/mm/protocal/protobuf/AddMsg;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
         catch (JSONException parama)
         {

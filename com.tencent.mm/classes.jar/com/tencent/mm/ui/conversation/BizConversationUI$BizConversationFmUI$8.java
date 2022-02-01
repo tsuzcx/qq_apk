@@ -2,35 +2,35 @@ package com.tencent.mm.ui.conversation;
 
 import android.app.ProgressDialog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.q;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bp.a;
+import com.tencent.mm.ao.q;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.bq.a;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.u;
 
 final class BizConversationUI$BizConversationFmUI$8
-  implements bp.a
+  implements bq.a
 {
   BizConversationUI$BizConversationFmUI$8(BizConversationUI.BizConversationFmUI paramBizConversationFmUI, ProgressDialog paramProgressDialog, String paramString) {}
   
-  public final boolean amG()
+  public final boolean asH()
   {
     AppMethodBeat.i(38242);
-    boolean bool = BizConversationUI.BizConversationFmUI.l(this.Qbw);
+    boolean bool = BizConversationUI.BizConversationFmUI.l(this.XzJ);
     AppMethodBeat.o(38242);
     return bool;
   }
   
-  public final void amH()
+  public final void asI()
   {
     AppMethodBeat.i(38243);
-    if (this.guD != null) {
-      this.guD.dismiss();
+    if (this.iYO != null) {
+      this.iYO.dismiss();
     }
-    if (Util.nullAsNil(BizConversationUI.BizConversationFmUI.m(this.Qbw)).equals("officialaccounts"))
+    if (Util.nullAsNil(BizConversationUI.BizConversationFmUI.m(this.XzJ)).equals("officialaccounts"))
     {
-      g.af(q.class);
-      u.biP(this.gMw);
+      ((q)h.ae(q.class)).bbQ();
+      u.bvj(this.jwL);
     }
     AppMethodBeat.o(38243);
   }

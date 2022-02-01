@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.MMBitmapFactory;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,9 +24,9 @@ public class LongBitmapHandler
   
   public static Bitmap createLongPictureBitmap(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(215370);
+    AppMethodBeat.i(262992);
     paramString = createLongPictureBitmap(paramString, paramInt1, 56, 144, 2.5D, paramInt2);
-    AppMethodBeat.o(215370);
+    AppMethodBeat.o(262992);
     return paramString;
   }
   
@@ -65,10 +65,10 @@ public class LongBitmapHandler
     //   42: invokestatic 61	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   45: aastore
     //   46: invokestatic 66	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   49: getstatic 72	com/tencent/mm/compatible/d/a:gDv	Lcom/tencent/mm/compatible/d/a;
+    //   49: getstatic 72	com/tencent/mm/compatible/d/a:jnF	Lcom/tencent/mm/compatible/d/a;
     //   52: astore 16
     //   54: lconst_0
-    //   55: invokestatic 76	com/tencent/mm/compatible/d/a:yT	(J)V
+    //   55: invokestatic 76	com/tencent/mm/compatible/d/a:EV	(J)V
     //   58: aload_0
     //   59: invokestatic 82	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   62: ifne +26 -> 88
@@ -88,10 +88,10 @@ public class LongBitmapHandler
     //   88: ldc 16
     //   90: ldc 84
     //   92: invokestatic 88	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   95: getstatic 72	com/tencent/mm/compatible/d/a:gDv	Lcom/tencent/mm/compatible/d/a;
+    //   95: getstatic 72	com/tencent/mm/compatible/d/a:jnF	Lcom/tencent/mm/compatible/d/a;
     //   98: astore_0
     //   99: lconst_1
-    //   100: invokestatic 76	com/tencent/mm/compatible/d/a:yT	(J)V
+    //   100: invokestatic 76	com/tencent/mm/compatible/d/a:EV	(J)V
     //   103: ldc 53
     //   105: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   108: aconst_null
@@ -114,10 +114,10 @@ public class LongBitmapHandler
     //   133: invokestatic 95	java/lang/Double:valueOf	(D)Ljava/lang/Double;
     //   136: aastore
     //   137: invokestatic 97	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   140: getstatic 72	com/tencent/mm/compatible/d/a:gDv	Lcom/tencent/mm/compatible/d/a;
+    //   140: getstatic 72	com/tencent/mm/compatible/d/a:jnF	Lcom/tencent/mm/compatible/d/a;
     //   143: astore_0
     //   144: ldc2_w 98
-    //   147: invokestatic 76	com/tencent/mm/compatible/d/a:yT	(J)V
+    //   147: invokestatic 76	com/tencent/mm/compatible/d/a:EV	(J)V
     //   150: ldc 53
     //   152: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   155: aconst_null
@@ -136,10 +136,10 @@ public class LongBitmapHandler
     //   184: ldc 16
     //   186: ldc 115
     //   188: invokestatic 88	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   191: getstatic 72	com/tencent/mm/compatible/d/a:gDv	Lcom/tencent/mm/compatible/d/a;
+    //   191: getstatic 72	com/tencent/mm/compatible/d/a:jnF	Lcom/tencent/mm/compatible/d/a;
     //   194: astore_0
     //   195: ldc2_w 116
-    //   198: invokestatic 76	com/tencent/mm/compatible/d/a:yT	(J)V
+    //   198: invokestatic 76	com/tencent/mm/compatible/d/a:EV	(J)V
     //   201: ldc 53
     //   203: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   206: aconst_null
@@ -273,7 +273,7 @@ public class LongBitmapHandler
     //   425: iload 15
     //   427: ifeq +334 -> 761
     //   430: aload_0
-    //   431: invokestatic 150	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   431: invokestatic 150	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
     //   434: astore_0
     //   435: aload_0
     //   436: new 152	android/graphics/Rect
@@ -303,10 +303,10 @@ public class LongBitmapHandler
     //   484: ldc 16
     //   486: ldc 168
     //   488: invokestatic 171	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   491: getstatic 72	com/tencent/mm/compatible/d/a:gDv	Lcom/tencent/mm/compatible/d/a;
+    //   491: getstatic 72	com/tencent/mm/compatible/d/a:jnF	Lcom/tencent/mm/compatible/d/a;
     //   494: astore_0
     //   495: ldc2_w 172
-    //   498: invokestatic 76	com/tencent/mm/compatible/d/a:yT	(J)V
+    //   498: invokestatic 76	com/tencent/mm/compatible/d/a:EV	(J)V
     //   501: ldc 53
     //   503: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   506: aconst_null
@@ -426,10 +426,10 @@ public class LongBitmapHandler
     //   708: iconst_0
     //   709: anewarray 4	java/lang/Object
     //   712: invokestatic 181	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   715: getstatic 72	com/tencent/mm/compatible/d/a:gDv	Lcom/tencent/mm/compatible/d/a;
+    //   715: getstatic 72	com/tencent/mm/compatible/d/a:jnF	Lcom/tencent/mm/compatible/d/a;
     //   718: astore 16
     //   720: ldc2_w 182
-    //   723: invokestatic 76	com/tencent/mm/compatible/d/a:yT	(J)V
+    //   723: invokestatic 76	com/tencent/mm/compatible/d/a:EV	(J)V
     //   726: aload_0
     //   727: ifnull +7 -> 734
     //   730: aload_0
@@ -454,10 +454,10 @@ public class LongBitmapHandler
     //   764: invokestatic 189	com/tencent/mm/graphics/MMBitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   767: astore 16
     //   769: goto -290 -> 479
-    //   772: getstatic 72	com/tencent/mm/compatible/d/a:gDv	Lcom/tencent/mm/compatible/d/a;
+    //   772: getstatic 72	com/tencent/mm/compatible/d/a:jnF	Lcom/tencent/mm/compatible/d/a;
     //   775: astore_0
     //   776: ldc2_w 190
-    //   779: invokestatic 76	com/tencent/mm/compatible/d/a:yT	(J)V
+    //   779: invokestatic 76	com/tencent/mm/compatible/d/a:EV	(J)V
     //   782: fload 7
     //   784: fconst_1
     //   785: fcmpl
@@ -588,28 +588,28 @@ public class LongBitmapHandler
   
   public static boolean createLongPictureThumbNail(String paramString1, Bitmap.CompressFormat paramCompressFormat, int paramInt1, String paramString2, int paramInt2)
   {
-    AppMethodBeat.i(215373);
+    AppMethodBeat.i(262998);
     boolean bool = createLongPictureThumbNail(paramString1, paramCompressFormat, paramInt1, paramString2, paramInt2, 0, new PInt(), new PInt());
-    AppMethodBeat.o(215373);
+    AppMethodBeat.o(262998);
     return bool;
   }
   
   public static boolean createLongPictureThumbNail(String paramString1, Bitmap.CompressFormat paramCompressFormat, int paramInt1, String paramString2, int paramInt2, int paramInt3, PInt paramPInt1, PInt paramPInt2)
   {
-    AppMethodBeat.i(215372);
+    AppMethodBeat.i(262997);
     paramString1 = createLongPictureBitmap(paramString1, paramInt2, paramInt3);
     try
     {
       paramPInt1.value = paramString1.getWidth();
       paramPInt2.value = paramString1.getHeight();
       BitmapUtil.saveBitmapToImage(paramString1, paramInt1, paramCompressFormat, paramString2, true);
-      AppMethodBeat.o(215372);
+      AppMethodBeat.o(262997);
       return true;
     }
     catch (IOException paramString1)
     {
       Log.e("MicroMsg.LongBitmapHandler", "create thumbnail from orig failed: ".concat(String.valueOf(paramString2)));
-      AppMethodBeat.o(215372);
+      AppMethodBeat.o(262997);
     }
     return false;
   }
@@ -621,20 +621,20 @@ public class LongBitmapHandler
   
   public static int isLongPicture(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(215369);
+    AppMethodBeat.i(262989);
     float f1 = paramBitmap.getWidth() / paramBitmap.getHeight();
     float f2 = paramBitmap.getHeight() / paramBitmap.getWidth();
     if (f1 >= 2.0F)
     {
-      AppMethodBeat.o(215369);
+      AppMethodBeat.o(262989);
       return 1;
     }
     if (f2 >= 2.0F)
     {
-      AppMethodBeat.o(215369);
+      AppMethodBeat.o(262989);
       return 2;
     }
-    AppMethodBeat.o(215369);
+    AppMethodBeat.o(262989);
     return -1;
   }
   
@@ -649,7 +649,7 @@ public class LongBitmapHandler
     localObject2 = localObject4;
     try
     {
-      InputStream localInputStream = s.openRead(paramString);
+      InputStream localInputStream = u.Tf(paramString);
       localObject1 = localObject3;
       localObject2 = localObject4;
       paramString = MMBitmapFactory.decodeStream(localInputStream, null, localOptions);
@@ -701,7 +701,7 @@ public class LongBitmapHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.LongBitmapHandler
  * JD-Core Version:    0.7.0.1
  */

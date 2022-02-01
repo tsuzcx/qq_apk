@@ -7,9 +7,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a.c;
-import com.tencent.mm.av.q;
+import com.tencent.mm.ay.a.a.c;
+import com.tencent.mm.ay.q;
 import com.tencent.mm.plugin.fts.ui.n;
+import com.tencent.mm.plugin.selectcontact.a.c;
+import com.tencent.mm.plugin.selectcontact.a.e;
+import com.tencent.mm.plugin.selectcontact.a.f;
 import com.tencent.mm.pluginsdk.ui.span.l;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,18 +20,18 @@ import java.util.Map;
 public final class a
   extends com.tencent.mm.ui.contact.a.a
 {
-  private static Map<String, c> Pam;
-  private b Pan;
-  a Pao;
-  public String hXq;
-  public CharSequence jVL;
-  public long ppv;
+  private static Map<String, c> Wtz;
+  private b WtA;
+  a WtB;
+  public String kLW;
+  public CharSequence mMY;
+  public long syu;
   public String username;
   
   static
   {
     AppMethodBeat.i(102808);
-    Pam = new HashMap();
+    Wtz = new HashMap();
     AppMethodBeat.o(102808);
   }
   
@@ -36,30 +39,35 @@ public final class a
   {
     super(4, paramInt);
     AppMethodBeat.i(102805);
-    this.ppv = -1L;
-    this.Pan = new b();
-    this.Pao = new a();
+    this.syu = -1L;
+    this.WtA = new b();
+    this.WtB = new a();
     AppMethodBeat.o(102805);
   }
   
   public final void a(Context paramContext, com.tencent.mm.ui.contact.a.a.a parama)
   {
     AppMethodBeat.i(102806);
-    this.jVL = l.e(paramContext, this.jVL, com.tencent.mm.cb.a.aG(paramContext, 2131165535));
+    this.mMY = l.d(paramContext, this.mMY, com.tencent.mm.ci.a.aY(paramContext, a.c.NormalTextSize));
     AppMethodBeat.o(102806);
   }
   
-  public final com.tencent.mm.ui.contact.a.a.b bmx()
+  public final com.tencent.mm.ui.contact.a.a.b bwF()
   {
-    return this.Pan;
+    return this.WtA;
+  }
+  
+  public final com.tencent.mm.ui.contact.a.a.a bwG()
+  {
+    return this.WtB;
   }
   
   public final class a
     extends com.tencent.mm.ui.contact.a.a.a
   {
-    public ImageView gvv;
-    public TextView gvw;
-    public TextView jBR;
+    public ImageView iZG;
+    public TextView iZH;
+    public TextView mrM;
     
     public a()
     {
@@ -78,14 +86,14 @@ public final class a
     public final View a(Context paramContext, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(102803);
-      if (com.tencent.mm.cb.a.jk(paramContext)) {}
-      for (paramContext = LayoutInflater.from(paramContext).inflate(2131496221, paramViewGroup, false);; paramContext = LayoutInflater.from(paramContext).inflate(2131496220, paramViewGroup, false))
+      if (com.tencent.mm.ci.a.ko(paramContext)) {}
+      for (paramContext = LayoutInflater.from(paramContext).inflate(a.f.select_ui_listcontactitem_large, paramViewGroup, false);; paramContext = LayoutInflater.from(paramContext).inflate(a.f.select_ui_listcontactitem, paramViewGroup, false))
       {
-        paramViewGroup = (a.a)a.this.Pao;
-        paramViewGroup.gvv = ((ImageView)paramContext.findViewById(2131297134));
-        paramViewGroup.gvw = ((TextView)paramContext.findViewById(2131309249));
-        paramViewGroup.jBR = ((TextView)paramContext.findViewById(2131299510));
-        paramViewGroup.jBR.setVisibility(8);
+        paramViewGroup = (a.a)a.this.WtB;
+        paramViewGroup.iZG = ((ImageView)paramContext.findViewById(a.e.avatar_iv));
+        paramViewGroup.iZH = ((TextView)paramContext.findViewById(a.e.title_tv));
+        paramViewGroup.mrM = ((TextView)paramContext.findViewById(a.e.desc_tv));
+        paramViewGroup.mrM.setVisibility(8);
         paramContext.setTag(paramViewGroup);
         AppMethodBeat.o(102803);
         return paramContext;
@@ -97,12 +105,12 @@ public final class a
       AppMethodBeat.i(102804);
       paramContext = (a)parama1;
       parama = (a.a)parama;
-      n.a(paramContext.jVL, parama.gvw);
-      q.bcV().a(paramContext.hXq, parama.gvv, a.bmo(paramContext.username));
+      n.a(paramContext.mMY, parama.iZH);
+      q.bml().a(paramContext.kLW, parama.iZG, a.byN(paramContext.username));
       AppMethodBeat.o(102804);
     }
     
-    public final boolean bmy()
+    public final boolean a(Context paramContext, View paramView, com.tencent.mm.ui.contact.a.a parama)
     {
       return false;
     }
@@ -110,7 +118,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.bizchat.a
  * JD-Core Version:    0.7.0.1
  */

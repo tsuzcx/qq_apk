@@ -5,39 +5,39 @@ import java.util.List;
 
 public abstract interface a
 {
-  public abstract int getEllipsisCount(int paramInt);
+  public abstract int E(int paramInt, float paramFloat);
   
-  public abstract int getEllipsisStart(int paramInt);
+  public abstract int Ji(int paramInt);
   
-  public abstract int getLineBaseline(int paramInt);
+  public abstract int aAa(int paramInt);
   
-  public abstract int getLineBottom(int paramInt);
+  public abstract int azR(int paramInt);
   
-  public abstract int getLineForOffset(int paramInt);
+  public abstract int azS(int paramInt);
   
-  public abstract int getLineForVertical(int paramInt);
+  public abstract int azT(int paramInt);
   
-  public abstract float getLineRight(int paramInt);
+  public abstract float azU(int paramInt);
   
-  public abstract int getLineStart(int paramInt);
+  public abstract float azV(int paramInt);
   
-  public abstract int getLineTop(int paramInt);
+  public abstract int azW(int paramInt);
   
-  public abstract float getLineWidth(int paramInt);
+  public abstract int azX(int paramInt);
   
-  public abstract int getOffsetForHorizontal(int paramInt, float paramFloat);
+  public abstract float azY(int paramInt);
   
-  public abstract float getPrimaryHorizontal(int paramInt);
+  public abstract int azZ(int paramInt);
   
-  public abstract int hiG();
+  public abstract int ikp();
   
-  public abstract List<c> hiH();
+  public abstract List<c> ikq();
   
-  public abstract int mn(int paramInt1, int paramInt2);
+  public abstract int nE(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.neattextview.textview.layout.a
  * JD-Core Version:    0.7.0.1
  */

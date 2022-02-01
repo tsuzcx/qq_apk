@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.Canvas;
 import android.os.SystemClock;
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.github.henryye.nativeiv.a.b;
 import com.github.henryye.nativeiv.bitmap.BitmapType;
 import com.github.henryye.nativeiv.bitmap.IBitmap;
@@ -17,12 +17,12 @@ import java.io.InputStream;
 public class LegacyBitmap
   implements IBitmap<Bitmap>
 {
-  private Bitmap baI = null;
+  private Bitmap aKg = null;
   private long lastDecodeUsing = -1L;
   
   protected Bitmap a(InputStream paramInputStream, ImageDecodeConfig paramImageDecodeConfig, c paramc)
   {
-    AppMethodBeat.i(219804);
+    AppMethodBeat.i(219740);
     paramc = new BitmapFactory.Options();
     paramc.inPreferredConfig = paramImageDecodeConfig.mConfig;
     paramc.inPremultiplied = paramImageDecodeConfig.mPremultiplyAlpha;
@@ -37,7 +37,7 @@ public class LegacyBitmap
     }
     for (;;)
     {
-      AppMethodBeat.o(219804);
+      AppMethodBeat.o(219740);
       return paramInputStream;
     }
   }
@@ -46,7 +46,7 @@ public class LegacyBitmap
   {
     AppMethodBeat.i(127349);
     long l = SystemClock.elapsedRealtime();
-    this.baI = a(paramInputStream, paramImageDecodeConfig, paramc);
+    this.aKg = a(paramInputStream, paramImageDecodeConfig, paramc);
     this.lastDecodeUsing = (SystemClock.elapsedRealtime() - l);
     AppMethodBeat.o(127349);
   }
@@ -65,22 +65,22 @@ public class LegacyBitmap
   @Keep
   public Bitmap provide()
   {
-    return this.baI;
+    return this.aKg;
   }
   
   @Keep
   public void recycle()
   {
     AppMethodBeat.i(127350);
-    if (this.baI != null) {
-      this.baI.recycle();
+    if (this.aKg != null) {
+      this.aKg.recycle();
     }
     AppMethodBeat.o(127350);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.github.henryye.nativeiv.LegacyBitmap
  * JD-Core Version:    0.7.0.1
  */

@@ -3,17 +3,19 @@ package com.tencent.mm.plugin.sns.storage;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.g.c.gk;
-import com.tencent.mm.modelsns.n;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.b.g;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.f.c.gr;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.modelsns.o;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.sns.data.t;
 import com.tencent.mm.plugin.sns.model.aj;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.adp;
-import com.tencent.mm.protocal.protobuf.cnc;
+import com.tencent.mm.protocal.protobuf.adw;
+import com.tencent.mm.protocal.protobuf.cvu;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
@@ -26,7 +28,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Keep
 public class SnsInfo
-  extends gk
+  extends gr
 {
   public static final String COL_ID = "rowid";
   public static final long SECONDS_OF_DAY = 86400L;
@@ -41,7 +43,7 @@ public class SnsInfo
   public static final String TABLEINDEXTIME = "serverSnsTimeIndex";
   public static final String TABLEINDEXUSERNAME = "serverSnsNameIndex";
   private static final String TAG = "MicroMsg.SnsInfo";
-  protected static Map<String, cnc> cacheMediaPost;
+  protected static Map<String, cvu> cacheMediaPost;
   protected static Map<String, TimeLineObject> cacheTimeLine;
   protected static IAutoDBItem.MAutoDBInfo info;
   @Keep
@@ -49,13 +51,13 @@ public class SnsInfo
   public String contentByteMd5;
   private boolean isAd;
   public int localid;
-  private cnc postInfo;
+  private cvu postInfo;
   public String postinfoMd5;
   
   static
   {
     AppMethodBeat.i(97532);
-    info = gk.initAutoDBInfo(SnsInfo.class);
+    info = gr.initAutoDBInfo(SnsInfo.class);
     cacheTimeLine = new ConcurrentHashMap();
     cacheMediaPost = new ConcurrentHashMap();
     AppMethodBeat.o(97532);
@@ -71,13 +73,13 @@ public class SnsInfo
   
   public SnsInfo(long paramLong)
   {
-    AppMethodBeat.i(203190);
+    AppMethodBeat.i(265110);
     this.contentByteMd5 = null;
     this.postinfoMd5 = null;
     this.isAd = false;
     this.postInfo = null;
     setSnsId(paramLong);
-    AppMethodBeat.o(203190);
+    AppMethodBeat.o(265110);
   }
   
   public static int formatUnixTime(long paramLong)
@@ -166,7 +168,7 @@ public class SnsInfo
   
   public ContentValues convertFrom(ContentValues paramContentValues)
   {
-    AppMethodBeat.i(203201);
+    AppMethodBeat.i(265131);
     this.field_snsId = paramContentValues.getAsLong("snsId").longValue();
     this.field_userName = paramContentValues.getAsString("userName");
     this.field_localFlag = paramContentValues.getAsInteger("localFlag").intValue();
@@ -185,7 +187,7 @@ public class SnsInfo
     if (paramContentValues.containsKey("rowid")) {
       this.systemRowid = paramContentValues.getAsLong("rowid").longValue();
     }
-    AppMethodBeat.o(203201);
+    AppMethodBeat.o(265131);
     return paramContentValues;
   }
   
@@ -199,7 +201,7 @@ public class SnsInfo
   
   public String dumpAd()
   {
-    AppMethodBeat.i(203196);
+    AppMethodBeat.i(265121);
     Object localObject = getAdSnsInfo();
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append(this.field_stringSeq);
@@ -209,7 +211,7 @@ public class SnsInfo
     localStringBuffer.append(" <adcreatetime " + ((AdSnsInfo)localObject).field_createAdTime + "> ");
     localStringBuffer.append(((AdSnsInfo)localObject).getTimeLine().ContentDesc);
     localObject = localStringBuffer.toString();
-    AppMethodBeat.o(203196);
+    AppMethodBeat.o(265121);
     return localObject;
   }
   
@@ -218,7 +220,7 @@ public class SnsInfo
   {
     AppMethodBeat.i(97514);
     if (this.adsnsinfo == null) {
-      this.adsnsinfo = aj.faR().JE(this.field_snsId);
+      this.adsnsinfo = aj.fOL().QX(this.field_snsId);
     }
     if (this.adsnsinfo == null)
     {
@@ -292,7 +294,7 @@ public class SnsInfo
   {
     AppMethodBeat.i(97522);
     if (this.adsnsinfo == null) {
-      this.adsnsinfo = aj.faR().JE(this.field_snsId);
+      this.adsnsinfo = aj.fOL().QX(this.field_snsId);
     }
     if (this.adsnsinfo != null)
     {
@@ -308,15 +310,15 @@ public class SnsInfo
   
   public String getAdTitle()
   {
-    AppMethodBeat.i(203194);
+    AppMethodBeat.i(265119);
     Object localObject = getAdXml();
     if (localObject != null)
     {
       localObject = ((ADXml)localObject).adActionTitle;
-      AppMethodBeat.o(203194);
+      AppMethodBeat.o(265119);
       return localObject;
     }
-    AppMethodBeat.o(203194);
+    AppMethodBeat.o(265119);
     return "";
   }
   
@@ -333,14 +335,14 @@ public class SnsInfo
         AppMethodBeat.o(97526);
         return 3;
       }
-      if ((localTimeLineObject != null) && (localTimeLineObject.ContentObj.LoU == 27))
+      if ((localTimeLineObject != null) && (localTimeLineObject.ContentObj.Sqq == 27))
       {
         AppMethodBeat.o(97526);
         return 6;
       }
       if ((localADXml.isCardAd()) || (localADXml.isFullCardAd()))
       {
-        if ((localTimeLineObject != null) && (localTimeLineObject.ContentObj.LoU == 15) && (localTimeLineObject.sightFolded != 1))
+        if ((localTimeLineObject != null) && (localTimeLineObject.ContentObj.Sqq == 15) && (localTimeLineObject.sightFolded != 1))
         {
           AppMethodBeat.o(97526);
           return 5;
@@ -352,6 +354,11 @@ public class SnsInfo
       {
         AppMethodBeat.o(97526);
         return 9;
+      }
+      if (localADXml.isSlideFullCard())
+      {
+        AppMethodBeat.o(97526);
+        return 10;
       }
       if (this.field_type == 1)
       {
@@ -372,16 +379,16 @@ public class SnsInfo
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 432
+    //   2: ldc_w 435
     //   5: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: getfield 347	com/tencent/mm/plugin/sns/storage/SnsInfo:adsnsinfo	Lcom/tencent/mm/plugin/sns/storage/AdSnsInfo;
     //   12: ifnonnull +17 -> 29
     //   15: aload_0
-    //   16: invokestatic 353	com/tencent/mm/plugin/sns/model/aj:faR	()Lcom/tencent/mm/plugin/sns/storage/c;
+    //   16: invokestatic 353	com/tencent/mm/plugin/sns/model/aj:fOL	()Lcom/tencent/mm/plugin/sns/storage/c;
     //   19: aload_0
     //   20: getfield 163	com/tencent/mm/plugin/sns/storage/SnsInfo:field_snsId	J
-    //   23: invokevirtual 359	com/tencent/mm/plugin/sns/storage/c:JE	(J)Lcom/tencent/mm/plugin/sns/storage/AdSnsInfo;
+    //   23: invokevirtual 359	com/tencent/mm/plugin/sns/storage/c:QX	(J)Lcom/tencent/mm/plugin/sns/storage/AdSnsInfo;
     //   26: putfield 347	com/tencent/mm/plugin/sns/storage/SnsInfo:adsnsinfo	Lcom/tencent/mm/plugin/sns/storage/AdSnsInfo;
     //   29: aload_0
     //   30: getfield 347	com/tencent/mm/plugin/sns/storage/SnsInfo:adsnsinfo	Lcom/tencent/mm/plugin/sns/storage/AdSnsInfo;
@@ -389,9 +396,9 @@ public class SnsInfo
     //   36: new 386	com/tencent/mm/plugin/sns/storage/ADXml
     //   39: dup
     //   40: aconst_null
-    //   41: invokespecial 433	com/tencent/mm/plugin/sns/storage/ADXml:<init>	(Ljava/lang/String;)V
+    //   41: invokespecial 436	com/tencent/mm/plugin/sns/storage/ADXml:<init>	(Ljava/lang/String;)V
     //   44: astore_1
-    //   45: ldc_w 432
+    //   45: ldc_w 435
     //   48: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   51: aload_0
     //   52: monitorexit
@@ -399,9 +406,9 @@ public class SnsInfo
     //   54: areturn
     //   55: aload_0
     //   56: getfield 347	com/tencent/mm/plugin/sns/storage/SnsInfo:adsnsinfo	Lcom/tencent/mm/plugin/sns/storage/AdSnsInfo;
-    //   59: invokevirtual 434	com/tencent/mm/plugin/sns/storage/AdSnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
+    //   59: invokevirtual 437	com/tencent/mm/plugin/sns/storage/AdSnsInfo:getAdXml	()Lcom/tencent/mm/plugin/sns/storage/ADXml;
     //   62: astore_1
-    //   63: ldc_w 432
+    //   63: ldc_w 435
     //   66: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   69: goto -18 -> 51
     //   72: astore_1
@@ -440,7 +447,7 @@ public class SnsInfo
   {
     AppMethodBeat.i(97515);
     if (this.adsnsinfo == null) {
-      this.adsnsinfo = aj.faR().JE(this.field_snsId);
+      this.adsnsinfo = aj.fOL().QX(this.field_snsId);
     }
     if (this.adsnsinfo == null)
     {
@@ -488,13 +495,27 @@ public class SnsInfo
     AppMethodBeat.i(97504);
     if (isAd())
     {
-      str = y.bp("ad_table_", this.localid);
+      str = y.bs("ad_table_", this.localid);
       AppMethodBeat.o(97504);
       return str;
     }
-    String str = y.bp("sns_table_", this.localid);
+    String str = y.bs("sns_table_", this.localid);
     AppMethodBeat.o(97504);
     return str;
+  }
+  
+  public String getPid()
+  {
+    AppMethodBeat.i(265117);
+    Object localObject = getAdInfo();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(265117);
+      return "";
+    }
+    localObject = ((ADInfo)localObject).pId;
+    AppMethodBeat.o(265117);
+    return localObject;
   }
   
   public byte[] getPostBuf()
@@ -502,43 +523,43 @@ public class SnsInfo
     return this.field_postBuf;
   }
   
-  public cnc getPostInfo()
+  public cvu getPostInfo()
   {
     AppMethodBeat.i(97497);
-    cnc localcnc1;
+    cvu localcvu1;
     if (this.field_postBuf == null)
     {
-      localcnc1 = new cnc();
+      localcvu1 = new cvu();
       AppMethodBeat.o(97497);
-      return localcnc1;
+      return localcvu1;
     }
     if (this.postinfoMd5 == null) {
-      this.postinfoMd5 = com.tencent.mm.b.g.getMessageDigest(this.field_postBuf);
+      this.postinfoMd5 = g.getMessageDigest(this.field_postBuf);
     }
     if (cacheMediaPost.containsKey(this.postinfoMd5))
     {
-      this.postInfo = ((cnc)cacheMediaPost.get(this.postinfoMd5));
+      this.postInfo = ((cvu)cacheMediaPost.get(this.postinfoMd5));
       if (this.postInfo != null)
       {
-        localcnc1 = this.postInfo;
+        localcvu1 = this.postInfo;
         AppMethodBeat.o(97497);
-        return localcnc1;
+        return localcvu1;
       }
     }
     try
     {
-      this.postInfo = ((cnc)new cnc().parseFrom(this.field_postBuf));
+      this.postInfo = ((cvu)new cvu().parseFrom(this.field_postBuf));
       cacheMediaPost.put(this.postinfoMd5, this.postInfo);
-      localcnc1 = this.postInfo;
+      localcvu1 = this.postInfo;
       AppMethodBeat.o(97497);
-      return localcnc1;
+      return localcvu1;
     }
     catch (Exception localException)
     {
       Log.e("MicroMsg.SnsInfo", "error get snsinfo timeline!");
-      cnc localcnc2 = new cnc();
+      cvu localcvu2 = new cvu();
       AppMethodBeat.o(97497);
-      return localcnc2;
+      return localcvu2;
     }
   }
   
@@ -552,20 +573,20 @@ public class SnsInfo
     AppMethodBeat.i(97501);
     if (isAd())
     {
-      str = y.bp("ad_table_", this.field_snsId);
+      str = y.bs("ad_table_", this.field_snsId);
       AppMethodBeat.o(97501);
       return str;
     }
-    String str = y.bp("sns_table_", this.field_snsId);
+    String str = y.bs("sns_table_", this.field_snsId);
     AppMethodBeat.o(97501);
     return str;
   }
   
   public String getSnsInfo()
   {
-    AppMethodBeat.i(203191);
+    AppMethodBeat.i(265111);
     String str = "snsId: " + this.field_stringSeq + " \n  localFlag: " + this.field_localFlag + " #　 \n  type: " + this.field_type + " lp: " + this.field_localPrivate + " \n  isPr: " + this.field_pravited + " head: " + this.field_head + " \n  time: " + this.field_createTime + " \n ";
-    AppMethodBeat.o(203191);
+    AppMethodBeat.o(265111);
     return str;
   }
   
@@ -586,12 +607,12 @@ public class SnsInfo
     TimeLineObject localTimeLineObject1;
     if (this.field_content == null)
     {
-      localTimeLineObject1 = n.bfM();
+      localTimeLineObject1 = o.bpc();
       AppMethodBeat.o(97509);
       return localTimeLineObject1;
     }
     if (this.contentByteMd5 == null) {
-      this.contentByteMd5 = (com.tencent.mm.b.g.getMessageDigest(this.field_content) + com.tencent.mm.b.g.getMessageDigest(this.field_attrBuf));
+      this.contentByteMd5 = (g.getMessageDigest(this.field_content) + g.getMessageDigest(this.field_attrBuf));
     }
     if (cacheTimeLine.containsKey(this.contentByteMd5))
     {
@@ -612,7 +633,7 @@ public class SnsInfo
     catch (Exception localException)
     {
       Log.e("MicroMsg.SnsInfo", "error get snsinfo timeline!");
-      TimeLineObject localTimeLineObject2 = n.bfM();
+      TimeLineObject localTimeLineObject2 = o.bpc();
       AppMethodBeat.o(97509);
       return localTimeLineObject2;
     }
@@ -698,27 +719,32 @@ public class SnsInfo
   
   public boolean isFinderAd()
   {
-    AppMethodBeat.i(203198);
+    AppMethodBeat.i(265126);
+    if (!isAd())
+    {
+      AppMethodBeat.o(265126);
+      return false;
+    }
     ADXml localADXml = getAdXml();
     ADInfo localADInfo = getAdInfo();
-    if ((isAd()) && (localADXml != null) && (localADXml.adFinderInfo != null) && (localADInfo != null) && (localADInfo.adActionType == 9))
+    if ((localADXml != null) && (localADXml.adFinderInfo != null) && (localADInfo != null) && (localADInfo.adActionType == 9))
     {
-      AppMethodBeat.o(203198);
+      AppMethodBeat.o(265126);
       return true;
     }
-    AppMethodBeat.o(203198);
+    AppMethodBeat.o(265126);
     return false;
   }
   
   public boolean isFinderTopicCardAd()
   {
-    AppMethodBeat.i(203197);
+    AppMethodBeat.i(265123);
     if ((getAdXml() != null) && (getAdXml().isFinderTopicCard()))
     {
-      AppMethodBeat.o(203197);
+      AppMethodBeat.o(265123);
       return true;
     }
-    AppMethodBeat.o(203197);
+    AppMethodBeat.o(265123);
     return false;
   }
   
@@ -734,6 +760,19 @@ public class SnsInfo
     return false;
   }
   
+  public boolean isGestureAd()
+  {
+    AppMethodBeat.i(265130);
+    ADXml localADXml = getAdXml();
+    if ((localADXml != null) && (localADXml.isGestureAd()))
+    {
+      AppMethodBeat.o(265130);
+      return true;
+    }
+    AppMethodBeat.o(265130);
+    return false;
+  }
+  
   public boolean isInValid()
   {
     return this.field_snsId == 0L;
@@ -746,13 +785,14 @@ public class SnsInfo
   
   public boolean isLongPressGestureAd()
   {
-    AppMethodBeat.i(203200);
-    if ((getAdXml() != null) && (getAdXml().isLongPressGestureAd()))
+    AppMethodBeat.i(265129);
+    ADXml localADXml = getAdXml();
+    if ((localADXml != null) && (localADXml.isLongPressGestureAd()))
     {
-      AppMethodBeat.o(203200);
+      AppMethodBeat.o(265129);
       return true;
     }
-    AppMethodBeat.o(203200);
+    AppMethodBeat.o(265129);
     return false;
   }
   
@@ -775,6 +815,31 @@ public class SnsInfo
     return false;
   }
   
+  public boolean isShakeAd()
+  {
+    AppMethodBeat.i(265128);
+    ADXml localADXml = getAdXml();
+    if ((localADXml != null) && (localADXml.isShakeAd()))
+    {
+      AppMethodBeat.o(265128);
+      return true;
+    }
+    AppMethodBeat.o(265128);
+    return false;
+  }
+  
+  public boolean isSlideFullCardAd()
+  {
+    AppMethodBeat.i(265125);
+    if ((getAdXml() != null) && (getAdXml().isSlideFullCard()))
+    {
+      AppMethodBeat.o(265125);
+      return true;
+    }
+    AppMethodBeat.o(265125);
+    return false;
+  }
+  
   public boolean isSourceExist(int paramInt)
   {
     return (this.field_sourceType & paramInt) > 0;
@@ -794,20 +859,20 @@ public class SnsInfo
   
   public boolean isTimeLimit(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(203193);
+    AppMethodBeat.i(265116);
     if (Util.secondsToNow(paramLong / 1000L) > 1200L)
     {
-      AppMethodBeat.o(203193);
+      AppMethodBeat.o(265116);
       return true;
     }
-    AppMethodBeat.o(203193);
+    AppMethodBeat.o(265116);
     return false;
   }
   
   public boolean isTurnCardAd()
   {
     AppMethodBeat.i(97527);
-    if ((getTimeLine() != null) && (getTimeLine().ContentObj.LoU == 27))
+    if ((getTimeLine() != null) && (getTimeLine().ContentObj.Sqq == 27))
     {
       AppMethodBeat.o(97527);
       return true;
@@ -818,14 +883,14 @@ public class SnsInfo
   
   public boolean isTwistAd()
   {
-    AppMethodBeat.i(203199);
+    AppMethodBeat.i(265127);
     ADXml localADXml = getAdXml();
-    if ((isAd()) && (localADXml != null) && (localADXml.adTwistInfo != null))
+    if ((localADXml != null) && (localADXml.isTwistAd()))
     {
-      AppMethodBeat.o(203199);
+      AppMethodBeat.o(265127);
       return true;
     }
-    AppMethodBeat.o(203199);
+    AppMethodBeat.o(265127);
     return false;
   }
   
@@ -851,16 +916,16 @@ public class SnsInfo
   
   public boolean isWxWork()
   {
-    AppMethodBeat.i(203195);
-    com.tencent.mm.kernel.g.aAi();
-    Object localObject = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().bjK(this.field_userName);
+    AppMethodBeat.i(265120);
+    h.aHH();
+    Object localObject = ((n)h.ae(n.class)).bbL().bwh(this.field_userName);
     if (localObject == null) {}
-    for (localObject = null; (as.bjp(this.field_userName)) && ("3552365301".equals(localObject)); localObject = ((ax)localObject).field_openImAppid)
+    for (localObject = null; (as.bvK(this.field_userName)) && ("3552365301".equals(localObject)); localObject = ((ax)localObject).field_openImAppid)
     {
-      AppMethodBeat.o(203195);
+      AppMethodBeat.o(265120);
       return true;
     }
-    AppMethodBeat.o(203195);
+    AppMethodBeat.o(265120);
     return false;
   }
   
@@ -868,10 +933,10 @@ public class SnsInfo
   
   public void readFromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(203202);
+    AppMethodBeat.i(265132);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(203202);
+      AppMethodBeat.o(265132);
       return;
     }
     convertFrom((ContentValues)paramBundle.getParcelable("values"));
@@ -883,7 +948,7 @@ public class SnsInfo
       localAdSnsInfo.readFromBundle(paramBundle);
       this.adsnsinfo = localAdSnsInfo;
     }
-    AppMethodBeat.o(203202);
+    AppMethodBeat.o(265132);
   }
   
   public void removeSourceFlag(int paramInt)
@@ -900,18 +965,18 @@ public class SnsInfo
   {
     AppMethodBeat.i(97505);
     this.field_attrBuf = paramArrayOfByte;
-    this.contentByteMd5 = (com.tencent.mm.b.g.getMessageDigest(this.field_content) + com.tencent.mm.b.g.getMessageDigest(this.field_attrBuf));
+    this.contentByteMd5 = (g.getMessageDigest(this.field_content) + g.getMessageDigest(this.field_attrBuf));
     AppMethodBeat.o(97505);
   }
   
   public boolean setContent(String paramString)
   {
     AppMethodBeat.i(97511);
-    paramString = n.PM(paramString);
+    paramString = o.Xk(paramString);
     try
     {
       this.field_content = paramString.toByteArray();
-      this.contentByteMd5 = (com.tencent.mm.b.g.getMessageDigest(this.field_content) + com.tencent.mm.b.g.getMessageDigest(this.field_attrBuf));
+      this.contentByteMd5 = (g.getMessageDigest(this.field_content) + g.getMessageDigest(this.field_attrBuf));
       AppMethodBeat.o(97511);
       return true;
     }
@@ -1011,18 +1076,18 @@ public class SnsInfo
   
   public void setPostInfo()
   {
-    AppMethodBeat.i(203189);
+    AppMethodBeat.i(265109);
     try
     {
       setPostBuf(this.postInfo.toByteArray());
-      AppMethodBeat.o(203189);
+      AppMethodBeat.o(265109);
       return;
     }
     catch (Exception localException)
     {
       Log.printErrStackTrace("MicroMsg.SnsInfo", localException, "", new Object[0]);
       Log.e("MicroMsg.SnsInfo", "toByteArray error");
-      AppMethodBeat.o(203189);
+      AppMethodBeat.o(265109);
     }
   }
   
@@ -1049,8 +1114,8 @@ public class SnsInfo
   public void setStringSeq(long paramLong)
   {
     AppMethodBeat.i(97506);
-    this.field_stringSeq = r.Jb(paramLong);
-    this.field_stringSeq = r.aOr(this.field_stringSeq);
+    this.field_stringSeq = t.Qu(paramLong);
+    this.field_stringSeq = t.aZn(this.field_stringSeq);
     Log.d("MicroMsg.SnsInfo", paramLong + " stringSeq " + this.field_stringSeq);
     AppMethodBeat.o(97506);
   }
@@ -1071,7 +1136,7 @@ public class SnsInfo
     try
     {
       this.field_content = paramTimeLineObject.toByteArray();
-      this.contentByteMd5 = (com.tencent.mm.b.g.getMessageDigest(this.field_content) + com.tencent.mm.b.g.getMessageDigest(this.field_attrBuf));
+      this.contentByteMd5 = (g.getMessageDigest(this.field_content) + g.getMessageDigest(this.field_attrBuf));
       AppMethodBeat.o(97510);
       return;
     }
@@ -1121,11 +1186,11 @@ public class SnsInfo
   
   public void unsetOmittedFailResend()
   {
-    AppMethodBeat.i(203192);
+    AppMethodBeat.i(265114);
     if (isOmittedFailResend()) {
       this.field_localFlag &= 0xFFFFFFBF;
     }
-    AppMethodBeat.o(203192);
+    AppMethodBeat.o(265114);
   }
   
   public Bundle writeToBundle()
@@ -1143,7 +1208,7 @@ public class SnsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.SnsInfo
  * JD-Core Version:    0.7.0.1
  */

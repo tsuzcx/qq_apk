@@ -24,5 +24,5 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-    <View android:background="@color/aa" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="76.0dip" />
+    <View android:background="@color/UN_BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="76.0dip" />
 </LinearLayout>

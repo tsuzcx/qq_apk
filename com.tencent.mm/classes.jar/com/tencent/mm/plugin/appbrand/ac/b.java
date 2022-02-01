@@ -12,19 +12,19 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class b
 {
-  public static String eM(String paramString1, String paramString2)
+  public static String fa(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(221346);
+    AppMethodBeat.i(208989);
     try
     {
       paramString1 = MMApplicationContext.getContext().getPackageManager().getApplicationInfo(MMApplicationContext.getContext().getPackageName(), 128).metaData.getString(paramString1, paramString2);
-      AppMethodBeat.o(221346);
+      AppMethodBeat.o(208989);
       return paramString1;
     }
     catch (PackageManager.NameNotFoundException paramString1)
     {
       Log.printDebugStack("Luggage.AndroidPackageUtil", "", new Object[] { paramString1 });
-      AppMethodBeat.o(221346);
+      AppMethodBeat.o(208989);
     }
     return paramString2;
   }
@@ -54,7 +54,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ac.b
  * JD-Core Version:    0.7.0.1
  */

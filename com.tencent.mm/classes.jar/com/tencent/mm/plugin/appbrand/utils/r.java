@@ -1,41 +1,12 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vending.e.a;
+import com.tencent.mm.vending.e.b;
 
-public final class r
+public abstract interface r<T extends a>
+  extends b<T>
 {
-  private static String[][] ogW;
-  
-  static
-  {
-    String[] arrayOfString1 = { "\t", "\\t" };
-    String[] arrayOfString2 = { "\b", "\\b" };
-    String[] arrayOfString3 = { "\r", "\\r" };
-    String[] arrayOfString4 = { " ", "\\u2028" };
-    ogW = new String[][] { { "\\", "\\\\" }, { "'", "\\'" }, { "\"", "\\\"" }, { "\n", "\\n" }, arrayOfString1, arrayOfString2, { "\f", "\\f" }, arrayOfString3, arrayOfString4, { " ", "\\u2029" } };
-  }
-  
-  public static String afJ(String paramString)
-  {
-    AppMethodBeat.i(135365);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(135365);
-      return paramString;
-    }
-    String[][] arrayOfString = ogW;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String[] arrayOfString1 = arrayOfString[i];
-      paramString = paramString.replace(arrayOfString1[0], arrayOfString1[1]);
-      i += 1;
-    }
-    AppMethodBeat.o(135365);
-    return paramString;
-  }
+  public abstract void a(T paramT);
 }
 
 

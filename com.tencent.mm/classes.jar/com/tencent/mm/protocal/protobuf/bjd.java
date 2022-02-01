@@ -1,122 +1,122 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class bjd
-  extends dop
+  extends com.tencent.mm.cd.a
 {
-  public LinkedList<ccm> LSR;
-  public String dNI;
-  
-  public bjd()
-  {
-    AppMethodBeat.i(82402);
-    this.LSR = new LinkedList();
-    AppMethodBeat.o(82402);
-  }
+  public String Bvd;
+  public int Bve;
+  public String authIconUrl;
+  public String avatar;
+  public String nickname;
+  public String username;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(82403);
+    AppMethodBeat.i(204621);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      if (this.username != null) {
+        paramVarArgs.f(1, this.username);
       }
-      paramVarArgs.e(2, 8, this.LSR);
-      if (this.dNI != null) {
-        paramVarArgs.e(3, this.dNI);
+      if (this.nickname != null) {
+        paramVarArgs.f(2, this.nickname);
       }
-      AppMethodBeat.o(82403);
+      if (this.avatar != null) {
+        paramVarArgs.f(3, this.avatar);
+      }
+      if (this.Bvd != null) {
+        paramVarArgs.f(4, this.Bvd);
+      }
+      paramVarArgs.aY(5, this.Bve);
+      if (this.authIconUrl != null) {
+        paramVarArgs.f(6, this.authIconUrl);
+      }
+      AppMethodBeat.o(204621);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label510;
+      if (this.username == null) {
+        break label502;
       }
     }
-    label510:
-    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label502:
+    for (int i = g.a.a.b.b.a.g(1, this.username) + 0;; i = 0)
     {
-      int i = paramInt + g.a.a.a.c(2, 8, this.LSR);
       paramInt = i;
-      if (this.dNI != null) {
-        paramInt = i + g.a.a.b.b.a.f(3, this.dNI);
+      if (this.nickname != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.nickname);
       }
-      AppMethodBeat.o(82403);
+      i = paramInt;
+      if (this.avatar != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.avatar);
+      }
+      paramInt = i;
+      if (this.Bvd != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.Bvd);
+      }
+      i = paramInt + g.a.a.b.b.a.bM(5, this.Bve);
+      paramInt = i;
+      if (this.authIconUrl != null) {
+        paramInt = i + g.a.a.b.b.a.g(6, this.authIconUrl);
+      }
+      AppMethodBeat.o(204621);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.LSR.clear();
-        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(82403);
+        AppMethodBeat.o(204621);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         bjd localbjd = (bjd)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(82403);
+          AppMethodBeat.o(204621);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localbjd.BaseRequest = ((jr)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(82403);
+          localbjd.username = locala.abFh.readString();
+          AppMethodBeat.o(204621);
           return 0;
         case 2: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new ccm();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((ccm)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localbjd.LSR.add(localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(82403);
+          localbjd.nickname = locala.abFh.readString();
+          AppMethodBeat.o(204621);
+          return 0;
+        case 3: 
+          localbjd.avatar = locala.abFh.readString();
+          AppMethodBeat.o(204621);
+          return 0;
+        case 4: 
+          localbjd.Bvd = locala.abFh.readString();
+          AppMethodBeat.o(204621);
+          return 0;
+        case 5: 
+          localbjd.Bve = locala.abFh.AK();
+          AppMethodBeat.o(204621);
           return 0;
         }
-        localbjd.dNI = ((g.a.a.a.a)localObject1).UbS.readString();
-        AppMethodBeat.o(82403);
+        localbjd.authIconUrl = locala.abFh.readString();
+        AppMethodBeat.o(204621);
         return 0;
       }
-      AppMethodBeat.o(82403);
+      AppMethodBeat.o(204621);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bjd
  * JD-Core Version:    0.7.0.1
  */

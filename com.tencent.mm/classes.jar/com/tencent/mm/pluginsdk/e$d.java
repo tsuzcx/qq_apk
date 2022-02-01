@@ -5,12 +5,12 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class e$d
 {
-  public static boolean ahw(int paramInt)
+  public static boolean apt(int paramInt)
   {
     return (paramInt == 19) || (paramInt == 22);
   }
   
-  public static int bcV(String paramString)
+  public static int boV(String paramString)
   {
     AppMethodBeat.i(133668);
     if (paramString == null)
@@ -132,7 +132,7 @@ public final class e$d
     return 0;
   }
   
-  public static boolean bcW(String paramString)
+  public static boolean boW(String paramString)
   {
     AppMethodBeat.i(133669);
     if (((!Util.isNullOrNil(paramString)) && (paramString.equals("QR_CODE"))) || (paramString.equals("WX_CODE")))
@@ -146,7 +146,7 @@ public final class e$d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.e.d
  * JD-Core Version:    0.7.0.1
  */

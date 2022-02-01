@@ -1,67 +1,67 @@
 package com.tencent.mm.wallet_core.ui;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.view.View;
+import android.text.InputFilter;
+import android.text.Spanned;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.span.p;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
-  extends p
+  implements InputFilter
 {
-  private a Rvx;
+  private static String TAG = "MicroMsg.TextByteLengthInputFilter";
+  private int YWV = 75;
   
-  public e(a parama)
+  public final CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    super(7, null);
-    this.Rvx = parama;
-  }
-  
-  public final void onClick(View paramView)
-  {
-    AppMethodBeat.i(214337);
-    if (this.Rvx != null) {
-      this.Rvx.bmr();
-    }
-    AppMethodBeat.o(214337);
-  }
-  
-  public final void setColorConfig(int paramInt)
-  {
-    AppMethodBeat.i(214339);
-    Context localContext = MMApplicationContext.getContext();
-    super.setColorConfig(paramInt);
-    if (paramInt == 7)
+    AppMethodBeat.i(201023);
+    Log.d(TAG, "byte filter: %s, %s, %s, %s, %s, %s", new Object[] { paramCharSequence, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramSpanned, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    if ((paramCharSequence == null) || (paramCharSequence.length() == 0))
     {
-      setColor(localContext.getResources().getColor(2131099783), localContext.getResources().getColor(2131099750));
-      AppMethodBeat.o(214339);
-      return;
+      Log.i(TAG, "skip delete case");
+      AppMethodBeat.o(201023);
+      return null;
     }
-    if (paramInt == 6) {
-      setColor(localContext.getResources().getColor(2131099841), localContext.getResources().getColor(2131099832));
+    int i = paramInt4 - paramInt3;
+    if ((paramSpanned != null) && (paramSpanned.toString().getBytes().length >= this.YWV) && (i == 0))
+    {
+      Log.i(TAG, "ignore exceed case: %s", new Object[] { Integer.valueOf(paramSpanned.toString().getBytes().length) });
+      AppMethodBeat.o(201023);
+      return "";
     }
-    AppMethodBeat.o(214339);
-  }
-  
-  public final void updateDrawState(TextPaint paramTextPaint)
-  {
-    AppMethodBeat.i(214338);
-    super.updateDrawState(paramTextPaint);
-    ao.a(paramTextPaint, 0.8F);
-    AppMethodBeat.o(214338);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void bmr();
+    paramInt2 = paramCharSequence.toString().getBytes().length;
+    if (paramSpanned != null)
+    {
+      paramInt1 = paramSpanned.toString().getBytes().length;
+      Log.i(TAG, "source length: %s, dest length: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
+      if (i != 0) {
+        break label283;
+      }
+      paramInt1 += paramInt2;
+    }
+    for (;;)
+    {
+      Log.d(TAG, "final byte length: %s", new Object[] { Integer.valueOf(paramInt1) });
+      if (paramInt1 <= this.YWV) {
+        break label335;
+      }
+      Log.i(TAG, "exceed max byte length: %s %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(this.YWV) });
+      AppMethodBeat.o(201023);
+      return "";
+      paramInt1 = 0;
+      break;
+      label283:
+      paramInt3 = paramSpanned.subSequence(paramInt3, paramInt4).toString().getBytes().length;
+      paramInt1 = paramInt1 + paramInt2 - paramInt3;
+      Log.i(TAG, "replace byte length: %s", new Object[] { Integer.valueOf(paramInt3) });
+    }
+    label335:
+    AppMethodBeat.o(201023);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.e
  * JD-Core Version:    0.7.0.1
  */

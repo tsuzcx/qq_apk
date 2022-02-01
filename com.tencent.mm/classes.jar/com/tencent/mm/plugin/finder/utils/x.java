@@ -1,184 +1,142 @@
 package com.tencent.mm.plugin.finder.utils;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import androidx.lifecycle.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.d;
-import com.tencent.mm.plugin.finder.loader.k;
-import com.tencent.mm.plugin.finder.loader.m;
-import com.tencent.mm.plugin.finder.loader.m.a;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.FinderItem.a;
-import com.tencent.mm.plugin.i.a.ae;
-import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.cjl;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.extension.reddot.h.a;
+import com.tencent.mm.plugin.finder.feed.ui.OccupyFinderUI8;
+import com.tencent.mm.plugin.finder.viewmodel.component.aj;
+import com.tencent.mm.plugin.finder.viewmodel.component.aj.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.preference.CheckBoxPreference;
-import com.tencent.mm.ui.base.preference.CheckBoxPreference.a;
-import com.tencent.mm.ui.base.preference.f;
-import java.util.List;
-import kotlin.a.j;
-import kotlin.g.a.b;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import kotlin.g.b.p;
+import kotlin.t;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/utils/FinderUIUtil;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderUIApi;", "()V", "TAG", "", "initWxProfileSettingPref", "", "context", "Landroid/content/Context;", "preferenceScreen", "", "profileSettingTag", "fromFinderSetting", "loadFeedToImageView", "", "feed", "imageView", "Landroid/widget/ImageView;", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/utils/FinderPosterCenterUtil;", "", "()V", "TAG", "", "clearOldVersionRedDot", "", "manager", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "initEntrance", "entranceView", "Landroid/view/ViewGroup;", "owner", "Landroidx/lifecycle/LifecycleOwner;", "jumpCenterUI", "context", "Landroid/content/Context;", "plugin-finder_release"})
 public final class x
-  implements ae
 {
-  private static final String TAG = "Finder.FinderUIUtil";
-  public static final x vXq;
+  public static final x AEe;
+  private static final String TAG = "Finder.FinderPosterCenterUtil";
   
   static
   {
-    AppMethodBeat.i(253559);
-    vXq = new x();
-    TAG = "Finder.FinderUIUtil";
-    AppMethodBeat.o(253559);
+    AppMethodBeat.i(276893);
+    AEe = new x();
+    TAG = "Finder.FinderPosterCenterUtil";
+    AppMethodBeat.o(276893);
   }
   
-  public static boolean a(Context paramContext, Object paramObject, final String paramString)
+  public static void a(ViewGroup paramViewGroup, androidx.lifecycle.l paraml)
   {
-    AppMethodBeat.i(253557);
-    kotlin.g.b.p.h(paramContext, "context");
-    kotlin.g.b.p.h(paramObject, "preferenceScreen");
-    kotlin.g.b.p.h(paramString, "profileSettingTag");
-    if (!(paramObject instanceof f))
-    {
-      AppMethodBeat.o(253557);
-      return false;
-    }
-    Object localObject = v.vXn;
-    if (v.dCt())
-    {
-      Log.i(TAG, "initWxProfileSettingPref");
-      ((f)paramObject).jdMethod_do(paramString, false);
-      paramString = ((f)paramObject).bmg(paramString);
-      paramObject = paramString;
-      if (!(paramString instanceof CheckBoxPreference)) {
-        paramObject = null;
-      }
-      paramObject = (CheckBoxPreference)paramObject;
-      if (paramObject != null)
-      {
-        paramObject.gLR();
-        paramString = y.vXH;
-        paramObject.setChecked(y.dCG());
-        paramString = new SpannableStringBuilder();
-        paramString.append((CharSequence)paramContext.getString(2131760582));
-        localObject = com.tencent.mm.pluginsdk.ui.span.l.c(paramContext, (CharSequence)paramContext.getString(2131760583));
-        String str = ((SpannableString)localObject).toString();
-        kotlin.g.b.p.g(str, "forwardStr.toString()");
-        ((SpannableString)localObject).setSpan(new com.tencent.mm.plugin.finder.view.l(str, paramContext.getResources().getColor(2131099783), paramContext.getResources().getColor(2131099790), (b)new a(paramContext)), 0, ((SpannableString)localObject).length(), 17);
-        paramString.append((CharSequence)localObject);
-        paramObject.setSummary((CharSequence)paramString);
-        paramObject.a((CheckBoxPreference.a)new b(paramObject, paramString));
-        AppMethodBeat.o(253557);
-        return true;
-      }
-    }
-    else
-    {
-      ((f)paramObject).jdMethod_do(paramString, true);
-    }
-    AppMethodBeat.o(253557);
-    return false;
+    AppMethodBeat.i(276890);
+    p.k(paramViewGroup, "entranceView");
+    p.k(paraml, "owner");
+    paramViewGroup.setOnClickListener((View.OnClickListener)a.AEf);
+    paramViewGroup = paramViewGroup.findViewById(b.f.creator_entrance_reddot_layout);
+    p.j(paramViewGroup, "dotView");
+    paramViewGroup.setVisibility(8);
+    com.tencent.mm.plugin.finder.extension.reddot.h localh = com.tencent.mm.plugin.finder.extension.reddot.h.xup;
+    localh = com.tencent.mm.plugin.finder.extension.reddot.h.xup;
+    com.tencent.mm.plugin.finder.extension.reddot.h.a(com.tencent.mm.plugin.finder.extension.reddot.h.drn(), paraml, (s)new b(paramViewGroup));
+    AppMethodBeat.o(276890);
   }
   
-  public final void a(Object paramObject, ImageView paramImageView)
+  public static void d(com.tencent.mm.plugin.finder.extension.reddot.f paramf)
   {
-    AppMethodBeat.i(253558);
-    if ((paramObject == null) || (paramImageView == null) || (!(paramObject instanceof FinderObject)))
+    AppMethodBeat.i(276892);
+    p.k(paramf, "manager");
+    Object localObject = com.tencent.mm.kernel.h.aHG();
+    p.j(localObject, "MMKernel.storage()");
+    localObject = ((com.tencent.mm.kernel.f)localObject).aHp().get(ar.a.VCh, Boolean.FALSE);
+    if (localObject == null)
     {
-      AppMethodBeat.o(253558);
+      paramf = new t("null cannot be cast to non-null type kotlin.Boolean");
+      AppMethodBeat.o(276892);
+      throw paramf;
+    }
+    if (!((Boolean)localObject).booleanValue())
+    {
+      paramf.Mp(1000);
+      localObject = kotlin.x.aazN;
+      paramf.Mp(1019);
+      paramf = kotlin.x.aazN;
+      Log.i(TAG, "clearOldVersionRedDot " + localObject + ", " + paramf);
+      paramf = com.tencent.mm.kernel.h.aHG();
+      p.j(paramf, "MMKernel.storage()");
+      paramf.aHp().set(ar.a.VCh, Boolean.TRUE);
+    }
+    AppMethodBeat.o(276892);
+  }
+  
+  public static void fT(Context paramContext)
+  {
+    AppMethodBeat.i(276891);
+    p.k(paramContext, "context");
+    Intent localIntent = new Intent();
+    Object localObject = aj.Bnu;
+    aj.a.a(paramContext, localIntent, 0L, 0, false);
+    if (!(paramContext instanceof Activity)) {}
+    for (localObject = localIntent;; localObject = null)
+    {
+      if (localObject != null) {
+        ((Intent)localObject).addFlags(268435456);
+      }
+      localIntent.setClass(paramContext, OccupyFinderUI8.class);
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/finder/utils/FinderPosterCenterUtil", "jumpCenterUI", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/finder/utils/FinderPosterCenterUtil", "jumpCenterUI", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(276891);
       return;
     }
-    Object localObject1 = FinderItem.Companion;
-    paramObject = FinderItem.a.a((FinderObject)paramObject, 1);
-    if (paramObject.isLiveFeed()) {
-      localObject1 = (cjl)j.ks((List)paramObject.getLiveMediaList());
-    }
-    while (((cjl)localObject1).mediaType == 4) {
-      if (Util.isNullOrNil(((cjl)localObject1).coverUrl))
-      {
-        paramObject = new k((cjl)localObject1, com.tencent.mm.plugin.finder.storage.x.vEo, null, null, 12);
-        localObject1 = m.uJa;
-        localObject1 = m.djY();
-        localObject2 = m.uJa;
-        ((d)localObject1).a(paramObject, paramImageView, m.a(m.a.uJb));
-        AppMethodBeat.o(253558);
-        return;
-        localObject1 = (cjl)j.ks((List)paramObject.getMediaList());
-      }
-      else
-      {
-        paramObject = new com.tencent.mm.plugin.finder.loader.q((cjl)localObject1, com.tencent.mm.plugin.finder.storage.x.vEo);
-        localObject1 = m.uJa;
-        localObject1 = m.djY();
-        localObject2 = m.uJa;
-        ((d)localObject1).a(paramObject, paramImageView, m.a(m.a.uJb));
-        AppMethodBeat.o(253558);
-        return;
-      }
-    }
-    if (((cjl)localObject1).mediaType == 9)
-    {
-      localObject2 = ((cjl)localObject1).coverUrl;
-      paramObject = localObject2;
-      if (localObject2 == null) {
-        paramObject = "";
-      }
-      kotlin.g.b.p.g(paramObject, "mediaObj.coverUrl ?: \"\"");
-      localObject2 = paramObject;
-      if (Util.isNullOrNil(paramObject)) {
-        localObject2 = kotlin.g.b.p.I(((cjl)localObject1).thumbUrl, Util.nullAsNil(((cjl)localObject1).thumb_url_token));
-      }
-      paramObject = m.uJa;
-      paramObject = m.djY();
-      localObject1 = new com.tencent.mm.plugin.finder.loader.p((String)localObject2, com.tencent.mm.plugin.finder.storage.x.vEn);
-      localObject2 = m.uJa;
-      paramObject.a(localObject1, paramImageView, m.a(m.a.uJb));
-      AppMethodBeat.o(253558);
-      return;
-    }
-    paramObject = m.uJa;
-    paramObject = m.djY();
-    localObject1 = new k((cjl)localObject1, com.tencent.mm.plugin.finder.storage.x.vEo, null, null, 12);
-    Object localObject2 = m.uJa;
-    paramObject.a(localObject1, paramImageView, m.a(m.a.uJb));
-    AppMethodBeat.o(253558);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "invoke"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class a
-    extends kotlin.g.b.q
-    implements b<String, kotlin.x>
+    implements View.OnClickListener
   {
-    a(Context paramContext)
+    public static final a AEf;
+    
+    static
     {
-      super();
+      AppMethodBeat.i(292060);
+      AEf = new a();
+      AppMethodBeat.o(292060);
+    }
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(292058);
+      Object localObject = new b();
+      ((b)localObject).bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/utils/FinderPosterCenterUtil$initEntrance$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+      localObject = x.AEe;
+      p.j(paramView, "it");
+      paramView = paramView.getContext();
+      p.j(paramView, "it.context");
+      x.fT(paramView);
+      paramView = com.tencent.mm.kernel.h.ag(PluginFinder.class);
+      p.j(paramView, "MMKernel.plugin(PluginFinder::class.java)");
+      ((PluginFinder)paramView).getRedDotManager().aBd("FinderPosterEntrance");
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/utils/FinderPosterCenterUtil$initEntrance$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(292058);
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "afterOnBind"})
-  static final class b
-    implements CheckBoxPreference.a
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotNotifier$Result;", "kotlin.jvm.PlatformType", "onChanged"})
+  static final class b<T>
+    implements s<h.a>
   {
-    b(CheckBoxPreference paramCheckBoxPreference, SpannableStringBuilder paramSpannableStringBuilder) {}
-    
-    public final void dCy()
-    {
-      AppMethodBeat.i(253556);
-      Object localObject = y.vXH;
-      localObject = this.vXs.gLy();
-      kotlin.g.b.p.g(localObject, "pref.summaryTextView");
-      y.a((TextView)localObject, (Spannable)paramString);
-      AppMethodBeat.o(253556);
-    }
+    b(View paramView) {}
   }
 }
 

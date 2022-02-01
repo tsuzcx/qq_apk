@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.multitask.ui.panel;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitask/ui/panel/MultiTaskCoordinatorLayout$Companion;", "", "()V", "MODE_DEFAULT", "", "getMODE_DEFAULT", "()I", "MODE_ONE", "getMODE_ONE", "MODE_TWO", "getMODE_TWO", "mMode", "getMMode", "setMMode", "(I)V", "ui-multitask_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/ui/panel/MultiTaskCoordinatorLayout$Companion;", "", "()V", "MODE_DEFAULT", "", "getMODE_DEFAULT", "()I", "MODE_ONE", "getMODE_ONE", "MODE_TWO", "getMODE_TWO", "mMode", "getMMode", "setMMode", "(I)V", "ui-multitask_release"})
 public final class MultiTaskCoordinatorLayout$a {}
 
 

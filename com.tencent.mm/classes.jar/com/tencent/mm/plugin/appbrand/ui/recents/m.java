@@ -15,30 +15,30 @@ final class m
     super(paramArrayList1, paramArrayList2);
   }
   
-  public final Object h(int paramInt1, int paramInt2)
+  public final Object Y(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(49227);
-    if (paramInt1 >= this.oew.size())
+    if (paramInt1 >= this.rgi.size())
     {
       AppMethodBeat.o(49227);
       return null;
     }
     Bundle localBundle = new Bundle();
-    if ((this.oew.get(paramInt1) instanceof AppBrandRecentTaskInfo))
+    if ((this.rgi.get(paramInt1) instanceof AppBrandRecentTaskInfo))
     {
-      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo1 = (AppBrandRecentTaskInfo)this.oew.get(paramInt1);
-      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo2 = (AppBrandRecentTaskInfo)this.oex.get(paramInt2);
-      if (localAppBrandRecentTaskInfo1.kVp != localAppBrandRecentTaskInfo2.kVp) {
-        localBundle.putBoolean("star", localAppBrandRecentTaskInfo2.kVp);
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo1 = (AppBrandRecentTaskInfo)this.rgi.get(paramInt1);
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo2 = (AppBrandRecentTaskInfo)this.rgj.get(paramInt2);
+      if (localAppBrandRecentTaskInfo1.nPC != localAppBrandRecentTaskInfo2.nPC) {
+        localBundle.putBoolean("star", localAppBrandRecentTaskInfo2.nPC);
       }
-      if (!Util.nullAsNil(localAppBrandRecentTaskInfo1.kVo).equals(Util.nullAsNil(localAppBrandRecentTaskInfo2.kVo))) {
-        localBundle.putString("icon", localAppBrandRecentTaskInfo2.kVo);
+      if (!Util.nullAsNil(localAppBrandRecentTaskInfo1.nPB).equals(Util.nullAsNil(localAppBrandRecentTaskInfo2.nPB))) {
+        localBundle.putString("icon", localAppBrandRecentTaskInfo2.nPB);
       }
       if (!Util.nullAsNil(localAppBrandRecentTaskInfo1.appName).equals(Util.nullAsNil(localAppBrandRecentTaskInfo2.appName))) {
         localBundle.putString("nick_name", localAppBrandRecentTaskInfo2.appName);
       }
-      if (!Util.nullAsNil(localAppBrandRecentTaskInfo1.kWd).equals(Util.nullAsNil(localAppBrandRecentTaskInfo2.kWd))) {
-        localBundle.putString("third_party_app_using_desc", localAppBrandRecentTaskInfo2.kWd);
+      if (!Util.nullAsNil(localAppBrandRecentTaskInfo1.nQq).equals(Util.nullAsNil(localAppBrandRecentTaskInfo2.nQq))) {
+        localBundle.putString("third_party_app_using_desc", localAppBrandRecentTaskInfo2.nQq);
       }
     }
     if (localBundle.size() <= 0)
@@ -50,19 +50,19 @@ final class m
     return localBundle;
   }
   
-  public final boolean i(int paramInt1, int paramInt2)
+  public final boolean Z(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(49225);
-    if (!this.oew.get(paramInt1).getClass().equals(this.oex.get(paramInt2).getClass()))
+    if (!this.rgi.get(paramInt1).getClass().equals(this.rgj.get(paramInt2).getClass()))
     {
       AppMethodBeat.o(49225);
       return false;
     }
-    if ((this.oew.get(paramInt1) instanceof AppBrandRecentTaskInfo))
+    if ((this.rgi.get(paramInt1) instanceof AppBrandRecentTaskInfo))
     {
-      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo1 = (AppBrandRecentTaskInfo)this.oew.get(paramInt1);
-      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo2 = (AppBrandRecentTaskInfo)this.oex.get(paramInt2);
-      if ((localAppBrandRecentTaskInfo1.eix == localAppBrandRecentTaskInfo2.eix) && (localAppBrandRecentTaskInfo1.dCl.equals(localAppBrandRecentTaskInfo2.dCl)))
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo1 = (AppBrandRecentTaskInfo)this.rgi.get(paramInt1);
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo2 = (AppBrandRecentTaskInfo)this.rgj.get(paramInt2);
+      if ((localAppBrandRecentTaskInfo1.cBI == localAppBrandRecentTaskInfo2.cBI) && (localAppBrandRecentTaskInfo1.fuO.equals(localAppBrandRecentTaskInfo2.fuO)))
       {
         AppMethodBeat.o(49225);
         return true;
@@ -74,14 +74,14 @@ final class m
     return false;
   }
   
-  public final boolean j(int paramInt1, int paramInt2)
+  public final boolean ab(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(49226);
-    if ((this.oew.get(paramInt1) instanceof AppBrandRecentTaskInfo))
+    if ((this.rgi.get(paramInt1) instanceof AppBrandRecentTaskInfo))
     {
-      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo1 = (AppBrandRecentTaskInfo)this.oew.get(paramInt1);
-      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo2 = (AppBrandRecentTaskInfo)this.oex.get(paramInt2);
-      if ((localAppBrandRecentTaskInfo1.kVp == localAppBrandRecentTaskInfo2.kVp) && (Util.nullAsNil(localAppBrandRecentTaskInfo1.kVo).equals(localAppBrandRecentTaskInfo2.kVo)) && (Util.nullAsNil(localAppBrandRecentTaskInfo1.appName).equals(localAppBrandRecentTaskInfo2.appName)))
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo1 = (AppBrandRecentTaskInfo)this.rgi.get(paramInt1);
+      AppBrandRecentTaskInfo localAppBrandRecentTaskInfo2 = (AppBrandRecentTaskInfo)this.rgj.get(paramInt2);
+      if ((localAppBrandRecentTaskInfo1.nPC == localAppBrandRecentTaskInfo2.nPC) && (Util.nullAsNil(localAppBrandRecentTaskInfo1.nPB).equals(localAppBrandRecentTaskInfo2.nPB)) && (Util.nullAsNil(localAppBrandRecentTaskInfo1.appName).equals(localAppBrandRecentTaskInfo2.appName)))
       {
         AppMethodBeat.o(49226);
         return true;
@@ -95,7 +95,7 @@ final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.m
  * JD-Core Version:    0.7.0.1
  */

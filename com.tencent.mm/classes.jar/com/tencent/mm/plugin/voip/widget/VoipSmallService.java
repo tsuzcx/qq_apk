@@ -16,7 +16,7 @@ public class VoipSmallService
     AppMethodBeat.i(115792);
     Log.i("MicroMsg.VoipSmallService", "VoipSmallService onBind");
     paramIntent = (Notification)paramIntent.getParcelableExtra("notification");
-    if ((d.oD(26)) && (paramIntent != null)) {
+    if ((d.qV(26)) && (paramIntent != null)) {
       startForeground(40, paramIntent);
     }
     AppMethodBeat.o(115792);

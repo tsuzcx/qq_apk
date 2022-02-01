@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.crashfix.jni;
 
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.support.annotation.Keep;
 import android.text.TextUtils;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -27,28 +27,28 @@ public class BinderProxyTransactNativeHook
   @Keep
   public static Object execTransactBegin(Class paramClass, int paramInt)
   {
-    AppMethodBeat.i(225317);
+    AppMethodBeat.i(256617);
     paramClass = new a(paramClass, paramInt);
     mH.postDelayed(paramClass, BAD_BINDER_TIME_OUT);
-    AppMethodBeat.o(225317);
+    AppMethodBeat.o(256617);
     return paramClass;
   }
   
   @Keep
   public static void execTransactEnd(Object paramObject)
   {
-    AppMethodBeat.i(225318);
+    AppMethodBeat.i(256620);
     paramObject = (a)paramObject;
     mH.removeCallbacks(paramObject);
     long l = System.currentTimeMillis() - paramObject.startTime;
     if (l > BAD_BINDER_TIME_OUT)
     {
-      h.CyF.n(1435L, 2L, 1L);
-      String str = paramObject.aWC.getName() + "#" + paramObject.aWC.getGenericSuperclass() + "#" + paramObject.code;
+      h.IzE.p(1435L, 2L, 1L);
+      String str = paramObject.aFS.getName() + "#" + paramObject.aFS.getGenericSuperclass() + "#" + paramObject.code;
       Log.e("MicroMsg.BadBinder", paramObject.hashCode() + "#exec_cost#" + l + "#" + str);
-      h.CyF.a(20494, new Object[] { str, Long.valueOf(l) });
+      h.IzE.a(20494, new Object[] { str, Long.valueOf(l) });
     }
-    AppMethodBeat.o(225318);
+    AppMethodBeat.o(256620);
   }
   
   @Keep
@@ -56,35 +56,35 @@ public class BinderProxyTransactNativeHook
   
   public static void init()
   {
-    AppMethodBeat.i(225314);
+    AppMethodBeat.i(256611);
     System.loadLibrary("systemcrashprotect");
     HandlerThread localHandlerThread = new HandlerThread("BadBinder");
     mBadBinderCheckHandlerThread = localHandlerThread;
     localHandlerThread.start();
     mH = new Handler(mBadBinderCheckHandlerThread.getLooper());
-    AppMethodBeat.o(225314);
+    AppMethodBeat.o(256611);
   }
   
   @Keep
   public static Object onTransactNativeBegin()
   {
-    AppMethodBeat.i(225315);
+    AppMethodBeat.i(256615);
     BinderProxyTransactNativeHook.b localb = new BinderProxyTransactNativeHook.b();
     mH.postDelayed(localb, BAD_BINDER_TIME_OUT);
-    AppMethodBeat.o(225315);
+    AppMethodBeat.o(256615);
     return localb;
   }
   
   @Keep
   public static void onTransactNativeEnd(Object paramObject)
   {
-    AppMethodBeat.i(225316);
+    AppMethodBeat.i(256616);
     BinderProxyTransactNativeHook.b localb = (BinderProxyTransactNativeHook.b)paramObject;
     mH.removeCallbacks(localb);
     long l = System.currentTimeMillis() - localb.startTime;
     if (l > BAD_BINDER_TIME_OUT)
     {
-      h.CyF.n(1435L, 1L, 1L);
+      h.IzE.p(1435L, 1L, 1L);
       paramObject = "";
       StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
       Object localObject = paramObject;
@@ -104,38 +104,38 @@ public class BinderProxyTransactNativeHook
       }
       Log.e("MicroMsg.BadBinder", localb.hashCode() + "#send_cost#" + l + "#" + localObject);
     }
-    AppMethodBeat.o(225316);
+    AppMethodBeat.o(256616);
   }
   
   static final class a
     implements Runnable
   {
-    Class aWC;
+    Class aFS;
     int code;
     long startTime;
     
     a(Class paramClass, int paramInt)
     {
-      AppMethodBeat.i(225310);
+      AppMethodBeat.i(256682);
       this.startTime = 0L;
       this.code = 0;
-      this.aWC = paramClass;
+      this.aFS = paramClass;
       this.code = paramInt;
       this.startTime = System.currentTimeMillis();
-      AppMethodBeat.o(225310);
+      AppMethodBeat.o(256682);
     }
     
     public final void run()
     {
-      AppMethodBeat.i(225311);
-      Log.e("MicroMsg.BadBinder", hashCode() + "#exec_bad#" + this.aWC.getName() + "#" + this.aWC.getGenericSuperclass() + "#" + this.code);
-      AppMethodBeat.o(225311);
+      AppMethodBeat.i(256684);
+      Log.e("MicroMsg.BadBinder", hashCode() + "#exec_bad#" + this.aFS.getName() + "#" + this.aFS.getGenericSuperclass() + "#" + this.code);
+      AppMethodBeat.o(256684);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.crashfix.jni.BinderProxyTransactNativeHook
  * JD-Core Version:    0.7.0.1
  */

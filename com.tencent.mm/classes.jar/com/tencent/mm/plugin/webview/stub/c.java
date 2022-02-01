@@ -9,9 +9,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface c
   extends IInterface
 {
-  public abstract boolean gdT();
+  public abstract boolean gWU();
   
-  public abstract boolean getResult();
+  public abstract boolean gWV();
   
   public abstract int getRet();
   
@@ -26,7 +26,7 @@ public abstract interface c
       attachInterface(this, "com.tencent.mm.plugin.webview.stub.FavUrl_Result_AIDL");
     }
     
-    public static c G(IBinder paramIBinder)
+    public static c K(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -38,9 +38,9 @@ public abstract interface c
       return new a(paramIBinder);
     }
     
-    public static c gdU()
+    public static c gWW()
     {
-      return a.Jda;
+      return a.Qaa;
     }
     
     public IBinder asBinder()
@@ -62,7 +62,7 @@ public abstract interface c
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.FavUrl_Result_AIDL");
-        bool = gdT();
+        bool = gWU();
         paramParcel2.writeNoException();
         paramInt1 = i;
         if (bool) {
@@ -72,7 +72,7 @@ public abstract interface c
         return true;
       case 2: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.FavUrl_Result_AIDL");
-        bool = getResult();
+        bool = gWV();
         paramParcel2.writeNoException();
         paramInt1 = j;
         if (bool) {
@@ -97,7 +97,7 @@ public abstract interface c
     static final class a
       implements c
     {
-      public static c Jda;
+      public static c Qaa;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -111,7 +111,7 @@ public abstract interface c
       }
       
       /* Error */
-      public final boolean gdT()
+      public final boolean gWU()
       {
         // Byte code:
         //   0: iconst_1
@@ -133,9 +133,9 @@ public abstract interface c
         //   30: iconst_0
         //   31: invokeinterface 50 5 0
         //   36: ifne +34 -> 70
-        //   39: invokestatic 54	com/tencent/mm/plugin/webview/stub/c$a:gdU	()Lcom/tencent/mm/plugin/webview/stub/c;
+        //   39: invokestatic 54	com/tencent/mm/plugin/webview/stub/c$a:gWW	()Lcom/tencent/mm/plugin/webview/stub/c;
         //   42: ifnull +28 -> 70
-        //   45: invokestatic 54	com/tencent/mm/plugin/webview/stub/c$a:gdU	()Lcom/tencent/mm/plugin/webview/stub/c;
+        //   45: invokestatic 54	com/tencent/mm/plugin/webview/stub/c$a:gWW	()Lcom/tencent/mm/plugin/webview/stub/c;
         //   48: invokeinterface 56 1 0
         //   53: istore_2
         //   54: aload 4
@@ -187,7 +187,7 @@ public abstract interface c
         //   70	81	106	finally
       }
       
-      public final boolean getResult()
+      public final boolean gWV()
       {
         boolean bool = false;
         AppMethodBeat.i(79249);
@@ -196,9 +196,9 @@ public abstract interface c
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.webview.stub.FavUrl_Result_AIDL");
-          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (c.a.gdU() != null))
+          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (c.a.gWW() != null))
           {
-            bool = c.a.gdU().getResult();
+            bool = c.a.gWW().gWV();
             return bool;
           }
           localParcel2.readException();
@@ -224,9 +224,9 @@ public abstract interface c
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.webview.stub.FavUrl_Result_AIDL");
-          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (c.a.gdU() != null))
+          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (c.a.gWW() != null))
           {
-            i = c.a.gdU().getRet();
+            i = c.a.gWW().getRet();
             return i;
           }
           localParcel2.readException();
@@ -249,9 +249,9 @@ public abstract interface c
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.webview.stub.FavUrl_Result_AIDL");
-          if ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (c.a.gdU() != null))
+          if ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (c.a.gWW() != null))
           {
-            i = c.a.gdU().getType();
+            i = c.a.gWW().getType();
             return i;
           }
           localParcel2.readException();

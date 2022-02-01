@@ -24,7 +24,7 @@ public enum NativeLibs
     formatDetector = new NativeLibs("formatDetector", 3, "FormatDetector", 1L);
     codecFactory = new NativeLibs("codecFactory", 4, "codec_factory", 3L);
     decoderJni = new NativeLibs("decoderJni", 5, "qqmusic_decoder_jni", 3L);
-    FFmpeg = new NativeLibs("FFmpeg", 6, "FFmpeg_audio", 3L);
+    FFmpeg = new NativeLibs("FFmpeg", 6, "FFmpeg", 3L);
     cppShared = new NativeLibs("cppShared", 7, "c++_shared", 3L);
     stlportShared = new NativeLibs("stlportShared", 8, "stlport_shared", 3L);
     xlog = new NativeLibs("xlog", 9, "wechatxlog", 3L);
@@ -123,7 +123,7 @@ public enum NativeLibs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.NativeLibs
  * JD-Core Version:    0.7.0.1
  */

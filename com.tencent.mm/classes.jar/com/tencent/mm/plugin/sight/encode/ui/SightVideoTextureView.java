@@ -14,8 +14,9 @@ import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
 import com.tencent.mm.compatible.b.k;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -25,13 +26,13 @@ import com.tencent.mm.ui.base.MMTextureView;
 public class SightVideoTextureView
   extends SightCameraView
 {
-  private SurfaceTexture DqE;
-  private Surface DqF;
-  private boolean DqG;
-  private TextureView cIM;
-  private String cJp;
-  private MediaPlayer mBq;
+  private SurfaceTexture Jwi;
+  private Surface Jwj;
+  private boolean Jwk;
+  private String cJT;
+  private TextureView cJq;
   private boolean mMute;
+  private MediaPlayer pzX;
   
   public SightVideoTextureView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -42,22 +43,22 @@ public class SightVideoTextureView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(28799);
-    this.cIM = null;
-    this.DqE = null;
-    this.DqF = null;
-    this.cIM = ((TextureView)findViewById(2131308779));
-    this.cIM.setSurfaceTextureListener(new TextureView.SurfaceTextureListener()
+    this.cJq = null;
+    this.Jwi = null;
+    this.Jwj = null;
+    this.cJq = ((TextureView)findViewById(R.h.dVU));
+    this.cJq.setSurfaceTextureListener(new TextureView.SurfaceTextureListener()
     {
       public final void onSurfaceTextureAvailable(SurfaceTexture paramAnonymousSurfaceTexture, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(28790);
         Log.i("MicroMsg.SightVideoTextureView", "onSurfaceTextureAvailable, [%d, %d]", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-        SightVideoTextureView.this.Dqq = SightCameraView.b.DqA;
+        SightVideoTextureView.this.JvU = SightCameraView.b.Jwe;
         SightVideoTextureView.a(SightVideoTextureView.this, paramAnonymousSurfaceTexture);
-        ((MMTextureView)SightVideoTextureView.a(SightVideoTextureView.this)).gLi();
+        ((MMTextureView)SightVideoTextureView.a(SightVideoTextureView.this)).hKg();
         Log.i("MicroMsg.SightVideoTextureView", "available texture %s, wantPlay %B", new Object[] { paramAnonymousSurfaceTexture, Boolean.valueOf(SightVideoTextureView.b(SightVideoTextureView.this)) });
         if (SightVideoTextureView.b(SightVideoTextureView.this)) {
-          SightVideoTextureView.this.ce(SightVideoTextureView.c(SightVideoTextureView.this), SightVideoTextureView.d(SightVideoTextureView.this));
+          SightVideoTextureView.this.cn(SightVideoTextureView.c(SightVideoTextureView.this), SightVideoTextureView.d(SightVideoTextureView.this));
         }
         AppMethodBeat.o(28790);
       }
@@ -66,9 +67,9 @@ public class SightVideoTextureView
       {
         AppMethodBeat.i(28792);
         Log.i("MicroMsg.SightVideoTextureView", "onSurfaceTextureDestroyed");
-        SightVideoTextureView.this.Dqq = SightCameraView.b.DqC;
+        SightVideoTextureView.this.JvU = SightCameraView.b.Jwg;
         SightVideoTextureView.a(SightVideoTextureView.this, null);
-        SightVideoTextureView.this.Dqs = false;
+        SightVideoTextureView.this.JvW = false;
         Log.i("MicroMsg.SightVideoTextureView", "destroyed texture %s", new Object[] { paramAnonymousSurfaceTexture });
         AppMethodBeat.o(28792);
         return true;
@@ -78,7 +79,7 @@ public class SightVideoTextureView
       {
         AppMethodBeat.i(28791);
         Log.i("MicroMsg.SightVideoTextureView", "onSurfaceTextureSizeChanged, [%d, %d]", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-        SightVideoTextureView.this.Dqq = SightCameraView.b.DqB;
+        SightVideoTextureView.this.JvU = SightCameraView.b.Jwf;
         Log.i("MicroMsg.SightVideoTextureView", "changed texture %s", new Object[] { paramAnonymousSurfaceTexture });
         AppMethodBeat.o(28791);
       }
@@ -88,21 +89,21 @@ public class SightVideoTextureView
     AppMethodBeat.o(28799);
   }
   
-  public final void ce(final String paramString, final boolean paramBoolean)
+  public final void cn(final String paramString, final boolean paramBoolean)
   {
     AppMethodBeat.i(28801);
-    Log.i("MicroMsg.SightVideoTextureView", "start play video, path %s, mute %B, wantPlay %B", new Object[] { paramString, Boolean.valueOf(paramBoolean), Boolean.valueOf(this.DqG) });
-    this.cJp = paramString;
+    Log.i("MicroMsg.SightVideoTextureView", "start play video, path %s, mute %B, wantPlay %B", new Object[] { paramString, Boolean.valueOf(paramBoolean), Boolean.valueOf(this.Jwk) });
+    this.cJT = paramString;
     this.mMute = paramBoolean;
-    if (this.DqE == null)
+    if (this.Jwi == null)
     {
       Log.w("MicroMsg.SightVideoTextureView", "play video fail, texture is null");
-      this.DqG = true;
+      this.Jwk = true;
       AppMethodBeat.o(28801);
       return;
     }
-    this.DqG = false;
-    bg.aAk().postToWorker(new Runnable()
+    this.Jwk = false;
+    bh.aHJ().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -123,8 +124,8 @@ public class SightVideoTextureView
               public final void onCompletion(MediaPlayer paramAnonymous2MediaPlayer)
               {
                 AppMethodBeat.i(28793);
-                Log.i("MicroMsg.SightVideoTextureView", "complete playing %s ", new Object[] { SightVideoTextureView.2.this.DqI });
-                SightVideoTextureView.this.eWs();
+                Log.i("MicroMsg.SightVideoTextureView", "complete playing %s ", new Object[] { SightVideoTextureView.2.this.Jwm });
+                SightVideoTextureView.this.fJv();
                 AppMethodBeat.o(28793);
               }
             });
@@ -133,7 +134,7 @@ public class SightVideoTextureView
               public final boolean onError(MediaPlayer paramAnonymous2MediaPlayer, int paramAnonymous2Int1, int paramAnonymous2Int2)
               {
                 AppMethodBeat.i(28794);
-                Log.i("MicroMsg.SightVideoTextureView", "play %s error", new Object[] { SightVideoTextureView.2.this.DqI });
+                Log.i("MicroMsg.SightVideoTextureView", "play %s error", new Object[] { SightVideoTextureView.2.this.Jwm });
                 AppMethodBeat.o(28794);
                 return false;
               }
@@ -180,24 +181,24 @@ public class SightVideoTextureView
     AppMethodBeat.o(28801);
   }
   
-  public final void eWq()
+  public final void fJt()
   {
     AppMethodBeat.i(28803);
-    Log.i("MicroMsg.SightVideoTextureView", "stop play video, wantPlay %B", new Object[] { Boolean.valueOf(this.DqG) });
-    if ((this.mBq == null) && (!this.DqG))
+    Log.i("MicroMsg.SightVideoTextureView", "stop play video, wantPlay %B", new Object[] { Boolean.valueOf(this.Jwk) });
+    if ((this.pzX == null) && (!this.Jwk))
     {
       Log.w("MicroMsg.SightVideoTextureView", "mediaplayer is null, do nothing when stop play video");
       AppMethodBeat.o(28803);
       return;
     }
-    bg.aAk().postToWorker(new Runnable()
+    bh.aHJ().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(28797);
         try
         {
-          SightVideoTextureView.this.eWs();
+          SightVideoTextureView.this.fJv();
           SightVideoTextureView.e(SightVideoTextureView.this).stop();
           SightVideoTextureView.e(SightVideoTextureView.this).release();
           if ((SightVideoTextureView.f(SightVideoTextureView.this) != null) && (SightVideoTextureView.f(SightVideoTextureView.this).isValid()))
@@ -232,9 +233,9 @@ public class SightVideoTextureView
   protected Surface getPreviewSurface()
   {
     AppMethodBeat.i(28806);
-    if (this.DqE != null)
+    if (this.Jwi != null)
     {
-      Surface localSurface = new Surface(this.DqE);
+      Surface localSurface = new Surface(this.Jwi);
       AppMethodBeat.o(28806);
       return localSurface;
     }
@@ -245,9 +246,9 @@ public class SightVideoTextureView
   protected int getSurfaceHeight()
   {
     AppMethodBeat.i(28805);
-    if (this.cIM != null)
+    if (this.cJq != null)
     {
-      int i = this.cIM.getHeight();
+      int i = this.cJq.getHeight();
       AppMethodBeat.o(28805);
       return i;
     }
@@ -258,9 +259,9 @@ public class SightVideoTextureView
   protected int getSurfaceWidth()
   {
     AppMethodBeat.i(28804);
-    if (this.cIM != null)
+    if (this.cJq != null)
     {
-      int i = this.cIM.getWidth();
+      int i = this.cJq.getWidth();
       AppMethodBeat.o(28804);
       return i;
     }
@@ -273,12 +274,12 @@ public class SightVideoTextureView
     AppMethodBeat.i(28802);
     try
     {
-      if (this.mBq == null)
+      if (this.pzX == null)
       {
         AppMethodBeat.o(28802);
         return false;
       }
-      boolean bool = this.mBq.isPlaying();
+      boolean bool = this.pzX.isPlaying();
       AppMethodBeat.o(28802);
       return bool;
     }
@@ -293,13 +294,13 @@ public class SightVideoTextureView
   public void setFixPreviewRate(float paramFloat)
   {
     AppMethodBeat.i(28807);
-    ViewGroup.LayoutParams localLayoutParams = this.cIM.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams = this.cJq.getLayoutParams();
     DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
     Log.i("MicroMsg.SightVideoTextureView", "setFixPreviewRate [%f], dm[%d, %d]", new Object[] { Float.valueOf(paramFloat), Integer.valueOf(localDisplayMetrics.widthPixels), Integer.valueOf(localDisplayMetrics.heightPixels) });
     localLayoutParams.width = localDisplayMetrics.widthPixels;
     localLayoutParams.height = ((int)(localDisplayMetrics.widthPixels / paramFloat));
     Log.i("MicroMsg.SightVideoTextureView", "setFixPreviewRate width:%d, height:%d", new Object[] { Integer.valueOf(localLayoutParams.width), Integer.valueOf(localLayoutParams.height) });
-    this.cIM.setLayoutParams(localLayoutParams);
+    this.cJq.setLayoutParams(localLayoutParams);
     super.setPreviewRate(paramFloat);
     AppMethodBeat.o(28807);
   }
@@ -307,14 +308,14 @@ public class SightVideoTextureView
   protected void setIsMute(boolean paramBoolean)
   {
     AppMethodBeat.i(28800);
-    if (this.mBq == null)
+    if (this.pzX == null)
     {
       AppMethodBeat.o(28800);
       return;
     }
     try
     {
-      boolean bool = this.mBq.isPlaying();
+      boolean bool = this.pzX.isPlaying();
       if (!bool)
       {
         AppMethodBeat.o(28800);
@@ -330,7 +331,7 @@ public class SightVideoTextureView
     if (paramBoolean) {
       try
       {
-        this.mBq.setVolume(0.0F, 0.0F);
+        this.pzX.setVolume(0.0F, 0.0F);
         AppMethodBeat.o(28800);
         return;
       }
@@ -344,7 +345,7 @@ public class SightVideoTextureView
     requestAudioFocus();
     try
     {
-      this.mBq.setVolume(1.0F, 1.0F);
+      this.pzX.setVolume(1.0F, 1.0F);
       AppMethodBeat.o(28800);
       return;
     }
@@ -357,7 +358,7 @@ public class SightVideoTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.encode.ui.SightVideoTextureView
  * JD-Core Version:    0.7.0.1
  */

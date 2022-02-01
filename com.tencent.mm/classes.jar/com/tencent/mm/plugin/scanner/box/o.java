@@ -7,39 +7,39 @@ import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxTemplateManager;", "", "()V", "TAG", "", "getImageOcrTemplateHtmlFile", "getScanGoodsTemplateHtmlFile", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxTemplateManager;", "", "()V", "TAG", "", "getImageOcrTemplateHtmlFile", "getScanGoodsTemplateHtmlFile", "plugin-scan_release"})
 public final class o
 {
-  public static final o CDl;
+  public static final o IHL;
   
   static
   {
     AppMethodBeat.i(52135);
-    CDl = new o();
+    IHL = new o();
     AppMethodBeat.o(52135);
   }
   
-  public static String ePx()
+  public static String fCk()
   {
-    AppMethodBeat.i(240300);
-    Object localObject = ai.afr(4);
-    p.g(localObject, "WebSearchApiLogic.getSea…TEMPLATE_TYPE_SCAN_GOODS)");
-    localObject = ((at)localObject).fYv();
+    AppMethodBeat.i(221166);
+    Object localObject = ai.anf(4);
+    p.j(localObject, "WebSearchApiLogic.getSea…TEMPLATE_TYPE_SCAN_GOODS)");
+    localObject = ((at)localObject).gRg();
     Log.v("MicroMsg.ScanBoxTemplateManager", "alvinluo getScanGoodsTemplateHtmlFile: %s", new Object[] { localObject });
-    p.g(localObject, "htmlPath");
-    AppMethodBeat.o(240300);
+    p.j(localObject, "htmlPath");
+    AppMethodBeat.o(221166);
     return localObject;
   }
   
-  public static String ePy()
+  public static String fCl()
   {
-    AppMethodBeat.i(240301);
-    Object localObject = ai.afr(8);
-    p.g(localObject, "WebSearchApiLogic.getSea….TEMPLATE_TYPE_IMAGE_OCR)");
-    localObject = ((at)localObject).fYv();
+    AppMethodBeat.i(221168);
+    Object localObject = ai.anf(8);
+    p.j(localObject, "WebSearchApiLogic.getSea….TEMPLATE_TYPE_IMAGE_OCR)");
+    localObject = ((at)localObject).gRg();
     Log.v("MicroMsg.ScanBoxTemplateManager", "alvinluo getImageOcrTemplateHtmlFile templateHtmlPath: %s", new Object[] { localObject });
-    p.g(localObject, "htmlPath");
-    AppMethodBeat.o(240301);
+    p.j(localObject, "htmlPath");
+    AppMethodBeat.o(221168);
     return localObject;
   }
 }

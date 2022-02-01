@@ -20,12 +20,7 @@ public abstract interface k
       attachInterface(this, "com.tencent.mm.plugin.exdevice.service.IBTOnStateChange_AIDL");
     }
     
-    public static k cLh()
-    {
-      return a.rDK;
-    }
-    
-    public static k z(IBinder paramIBinder)
+    public static k C(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -35,6 +30,11 @@ public abstract interface k
         return (k)localIInterface;
       }
       return new a(paramIBinder);
+    }
+    
+    public static k cZU()
+    {
+      return a.vju;
     }
     
     public IBinder asBinder()
@@ -61,7 +61,7 @@ public abstract interface k
     static final class a
       implements k
     {
-      public static k rDK;
+      public static k vju;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -82,9 +82,9 @@ public abstract interface k
           localParcel1.writeInt(paramInt2);
           localParcel1.writeInt(paramInt3);
           localParcel1.writeLong(paramLong2);
-          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (k.a.cLh() != null))
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (k.a.cZU() != null))
           {
-            k.a.cLh().a(paramLong1, paramInt1, paramInt2, paramInt3, paramLong2);
+            k.a.cZU().a(paramLong1, paramInt1, paramInt2, paramInt3, paramLong2);
             return;
           }
           localParcel2.readException();
@@ -107,7 +107,7 @@ public abstract interface k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.k
  * JD-Core Version:    0.7.0.1
  */

@@ -19,11 +19,11 @@ public class o
   {
     AppMethodBeat.i(78547);
     Log.i("MicroMsg.JsApiDisableBounceScroll", "invoke");
-    JSONArray localJSONArray = paramb.ctb.csi.optJSONArray("place");
+    JSONArray localJSONArray = paramb.crh.cqn.optJSONArray("place");
     if (localJSONArray == null)
     {
       Log.i("MicroMsg.JsApiDisableBounceScroll", "placeArray is null");
-      paramb.c("fail", null);
+      paramb.a("fail", null);
       AppMethodBeat.o(78547);
       return;
     }
@@ -43,18 +43,18 @@ public class o
       break;
       if (i == 0)
       {
-        paramb.c("", null);
+        paramb.a("", null);
         AppMethodBeat.o(78547);
         return;
       }
-      ((g)paramb.cta).gbD();
-      paramb.c("", null);
+      ((g)paramb.crg).gUy();
+      paramb.a("", null);
       AppMethodBeat.o(78547);
       return;
     }
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

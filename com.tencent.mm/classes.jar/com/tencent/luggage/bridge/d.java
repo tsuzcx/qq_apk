@@ -5,12 +5,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import org.json.JSONObject;
 
-public final class d
+final class d
   extends e
 {
-  public d(String paramString, JSONObject paramJSONObject)
+  d(String paramString, JSONObject paramJSONObject)
   {
-    super(b.csn);
+    super(b.cqs);
     AppMethodBeat.i(140316);
     if (TextUtils.isEmpty(paramString))
     {
@@ -25,7 +25,7 @@ public final class d
     paramJSONObject = new HashMap();
     paramJSONObject.put("event", paramString);
     paramJSONObject.put("data", localJSONObject);
-    b(new JSONObject(paramJSONObject));
+    d(new JSONObject(paramJSONObject));
     AppMethodBeat.o(140316);
   }
 }

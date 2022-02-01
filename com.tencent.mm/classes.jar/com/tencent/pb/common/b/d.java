@@ -6,56 +6,74 @@ import android.os.Looper;
 public abstract class d
   implements c
 {
-  public boolean RCE = false;
-  b RCF = null;
-  protected byte[] RCG = null;
-  public Object RCH = null;
-  protected int RCI;
-  protected int RCJ = 0;
   protected final String TAG2 = getClass().getSimpleName();
-  private final long iMN = 60000L;
-  private Runnable iMR = new Runnable()
+  public boolean Zeg = false;
+  b Zeh = null;
+  private byte[] Zei = null;
+  public Object Zej = null;
+  int Zek;
+  private int Zel = 0;
+  private final long lCV = 60000L;
+  private Runnable lCZ = new Runnable()
   {
     public final void run()
     {
-      d.this.pjO = true;
-      com.tencent.pb.common.c.b.d("MicroMsg.Voip", new Object[] { "NETTASK_RECV TimeOut cmd= ", d.this.hiV() });
-      com.tencent.pb.common.c.e.U(20006, 3, "-1104");
-      if (d.this.RCF != null) {
-        d.this.RCF.a(2, -1, "time exceed, force to callback", d.this);
+      d.this.slX = true;
+      com.tencent.pb.common.c.b.d("MicroMsg.Voip", new Object[] { "NETTASK_RECV TimeOut cmd= ", d.this.ikF() });
+      com.tencent.pb.common.c.e.S(20006, 3, "-1104");
+      if (d.this.Zeh != null) {
+        d.this.Zeh.a(2, -1, "time exceed, force to callback", d.this);
       }
     }
   };
   private int mErrorCode = -999;
   private Handler mHandler = new Handler(Looper.getMainLooper());
-  protected int mNetType = 2;
-  boolean pjO = false;
+  private int mNetType = 2;
+  boolean slX = false;
   
   public final int a(b paramb)
   {
-    if (this.RCG == null)
+    if (this.Zei == null)
     {
-      com.tencent.pb.common.c.b.w("MicroMsg.Voip", new Object[] { this.TAG2, "dosene reqData is null cmd=" + this.RCI });
+      com.tencent.pb.common.c.b.w("MicroMsg.Voip", new Object[] { this.TAG2, "dosene reqData is null cmd=" + this.Zek });
       return -1;
     }
-    this.RCF = paramb;
+    this.Zeh = paramb;
     paramb = new i(this);
-    int i = f.hiZ().a(null, paramb, this.RCI, hiV(), this.RCG, this.RCJ);
+    int i = f.ikJ().a(null, paramb, this.Zek, ikF(), this.Zei, this.Zel);
     if (i >= 0) {
-      this.mHandler.postDelayed(this.iMR, 60000L);
+      this.mHandler.postDelayed(this.lCZ, 60000L);
     }
-    com.tencent.pb.common.c.b.d("MicroMsg.Voip", new Object[] { "NETTASK_SEND dosene:cmd ", hiV(), Integer.valueOf(i) });
+    com.tencent.pb.common.c.b.d("MicroMsg.Voip", new Object[] { "NETTASK_SEND dosene:cmd ", ikF(), Integer.valueOf(i) });
     return i;
   }
   
-  public final void c(int paramInt, com.google.a.a.e parame)
+  protected final void a(d paramd)
   {
-    this.RCI = paramInt;
+    this.Zei = paramd.Zei;
+    this.Zek = paramd.Zek;
+    this.Zel = paramd.Zel;
+    this.mNetType = 1;
+  }
+  
+  public final void aAc(int paramInt)
+  {
+    this.mNetType = paramInt;
+  }
+  
+  public final void aAd(int paramInt)
+  {
+    this.Zel = paramInt;
+  }
+  
+  public final void c(int paramInt, com.google.b.a.e parame)
+  {
+    this.Zek = paramInt;
     Object localObject = null;
     try
     {
-      parame = com.google.a.a.e.b(parame);
-      this.RCG = parame;
+      parame = com.google.b.a.e.b(parame);
+      this.Zei = parame;
       return;
     }
     catch (Exception parame)
@@ -67,18 +85,18 @@ public abstract class d
     }
   }
   
-  protected abstract Object cO(byte[] paramArrayOfByte);
+  protected abstract Object dn(byte[] paramArrayOfByte);
   
   public abstract int getType();
   
-  protected abstract String hiV();
+  protected abstract String ikF();
   
   public final void onResp(final int paramInt, byte[] paramArrayOfByte)
   {
     final int i = 2;
     com.tencent.pb.common.c.b.d("MicroMsg.Voip", new Object[] { this.TAG2, "onResp errcode", Integer.valueOf(paramInt) });
-    this.mHandler.removeCallbacks(this.iMR);
-    com.tencent.pb.common.c.b.d("MicroMsg.Voip", new Object[] { "NETTASK_RECV onResp:cmd= ", hiV(), Integer.valueOf(paramInt), Boolean.valueOf(this.pjO) });
+    this.mHandler.removeCallbacks(this.lCZ);
+    com.tencent.pb.common.c.b.d("MicroMsg.Voip", new Object[] { "NETTASK_RECV onResp:cmd= ", ikF(), Integer.valueOf(paramInt), Boolean.valueOf(this.slX) });
     if (paramInt != 0)
     {
       com.tencent.pb.common.c.b.w("MicroMsg.Voip", new Object[] { this.TAG2, "getNetworkErrType errcode:".concat(String.valueOf(paramInt)) });
@@ -90,9 +108,9 @@ public abstract class d
     }
     for (;;)
     {
-      if (this.pjO)
+      if (this.slX)
       {
-        com.tencent.pb.common.c.b.d("MicroMsg.Voip", new Object[] { "onResp netscene already canceled, cmd:" + this.RCI });
+        com.tencent.pb.common.c.b.d("MicroMsg.Voip", new Object[] { "onResp netscene already canceled, cmd:" + this.Zek });
         return;
         if (paramInt == 6801) {
           i = 10;
@@ -103,18 +121,18 @@ public abstract class d
       else
       {
         this.mErrorCode = paramInt;
-        this.RCH = cO(paramArrayOfByte);
+        this.Zej = dn(paramArrayOfByte);
         this.mHandler.post(new Runnable()
         {
           public final void run()
           {
-            if (d.this.pjO) {
-              com.tencent.pb.common.c.b.d("MicroMsg.Voip", new Object[] { d.this.TAG2, "onResp netscene already canceled, cmd:" + d.this.RCI });
+            if (d.this.slX) {
+              com.tencent.pb.common.c.b.d("MicroMsg.Voip", new Object[] { d.this.TAG2, "onResp netscene already canceled, cmd:" + d.this.Zek });
             }
-            while (d.this.RCF == null) {
+            while (d.this.Zeh == null) {
               return;
             }
-            d.this.RCF.a(i, paramInt, "", d.this);
+            d.this.Zeh.a(i, paramInt, "", d.this);
           }
         });
         return;

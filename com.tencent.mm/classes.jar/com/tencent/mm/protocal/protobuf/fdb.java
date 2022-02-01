@@ -3,41 +3,45 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class fdb
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int KHb;
-  public int MqF;
-  public int NyM;
+  public int TVY;
+  public int Utf;
+  public String Utg;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123703);
+    AppMethodBeat.i(115860);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.MqF);
-      paramVarArgs.aM(2, this.KHb);
-      paramVarArgs.aM(3, this.NyM);
-      AppMethodBeat.o(123703);
+      paramVarArgs.aY(1, this.Utf);
+      paramVarArgs.aY(2, this.TVY);
+      if (this.Utg != null) {
+        paramVarArgs.f(3, this.Utg);
+      }
+      AppMethodBeat.o(115860);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.bu(1, this.MqF);
-      int i = g.a.a.b.b.a.bu(2, this.KHb);
-      int j = g.a.a.b.b.a.bu(3, this.NyM);
-      AppMethodBeat.o(123703);
-      return paramInt + 0 + i + j;
+      int i = g.a.a.b.b.a.bM(1, this.Utf) + 0 + g.a.a.b.b.a.bM(2, this.TVY);
+      paramInt = i;
+      if (this.Utg != null) {
+        paramInt = i + g.a.a.b.b.a.g(3, this.Utg);
+      }
+      AppMethodBeat.o(115860);
+      return paramInt;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      AppMethodBeat.o(123703);
+      AppMethodBeat.o(115860);
       return 0;
     }
     if (paramInt == 3)
@@ -47,28 +51,28 @@ public final class fdb
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(123703);
+        AppMethodBeat.o(115860);
         return -1;
       case 1: 
-        localfdb.MqF = locala.UbS.zi();
-        AppMethodBeat.o(123703);
+        localfdb.Utf = locala.abFh.AK();
+        AppMethodBeat.o(115860);
         return 0;
       case 2: 
-        localfdb.KHb = locala.UbS.zi();
-        AppMethodBeat.o(123703);
+        localfdb.TVY = locala.abFh.AK();
+        AppMethodBeat.o(115860);
         return 0;
       }
-      localfdb.NyM = locala.UbS.zi();
-      AppMethodBeat.o(123703);
+      localfdb.Utg = locala.abFh.readString();
+      AppMethodBeat.o(115860);
       return 0;
     }
-    AppMethodBeat.o(123703);
+    AppMethodBeat.o(115860);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.fdb
  * JD-Core Version:    0.7.0.1
  */

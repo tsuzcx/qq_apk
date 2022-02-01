@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.vlog.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/model/ImageAnimType;", "", "(Ljava/lang/String;I)V", "NO_ANIM", "SLOW_SCALE", "plugin-vlog_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/ImageAnimType;", "", "(Ljava/lang/String;I)V", "NO_ANIM", "SLOW_SCALE", "plugin-vlog_release"})
 public enum p
 {
   static
   {
     AppMethodBeat.i(110923);
     p localp1 = new p("NO_ANIM", 0);
-    Gym = localp1;
+    NlO = localp1;
     p localp2 = new p("SLOW_SCALE", 1);
-    Gyn = localp2;
-    Gyo = new p[] { localp1, localp2 };
+    NlP = localp2;
+    NlQ = new p[] { localp1, localp2 };
     AppMethodBeat.o(110923);
   }
   

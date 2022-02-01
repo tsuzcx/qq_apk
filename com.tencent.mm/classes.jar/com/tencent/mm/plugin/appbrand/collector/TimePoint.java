@@ -12,9 +12,9 @@ public class TimePoint
   implements Parcelable
 {
   public static final Parcelable.Creator<TimePoint> CREATOR;
-  final AtomicInteger lbo;
-  final AtomicLong lbp;
-  final AtomicReference<TimePoint> lbq;
+  final AtomicInteger nVx;
+  final AtomicLong nVy;
+  final AtomicReference<TimePoint> nVz;
   String name;
   
   static
@@ -27,9 +27,9 @@ public class TimePoint
   TimePoint()
   {
     AppMethodBeat.i(146126);
-    this.lbo = new AtomicInteger();
-    this.lbp = new AtomicLong();
-    this.lbq = new AtomicReference();
+    this.nVx = new AtomicInteger();
+    this.nVy = new AtomicLong();
+    this.nVz = new AtomicReference();
     this.name = "";
     AppMethodBeat.o(146126);
   }
@@ -37,11 +37,11 @@ public class TimePoint
   public TimePoint(String paramString, long paramLong)
   {
     AppMethodBeat.i(146127);
-    this.lbo = new AtomicInteger();
-    this.lbp = new AtomicLong();
-    this.lbq = new AtomicReference();
+    this.nVx = new AtomicInteger();
+    this.nVy = new AtomicLong();
+    this.nVz = new AtomicReference();
     this.name = paramString;
-    this.lbp.set(paramLong);
+    this.nVy.set(paramLong);
     AppMethodBeat.o(146127);
   }
   
@@ -54,15 +54,15 @@ public class TimePoint
   {
     AppMethodBeat.i(146128);
     paramParcel.writeString(this.name);
-    paramParcel.writeLong(this.lbp.get());
-    paramParcel.writeInt(this.lbo.get());
-    paramParcel.writeParcelable((Parcelable)this.lbq.get(), paramInt);
+    paramParcel.writeLong(this.nVy.get());
+    paramParcel.writeInt(this.nVx.get());
+    paramParcel.writeParcelable((Parcelable)this.nVz.get(), paramInt);
     AppMethodBeat.o(146128);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.collector.TimePoint
  * JD-Core Version:    0.7.0.1
  */

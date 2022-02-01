@@ -6,11 +6,11 @@ import java.util.List;
 public abstract interface c
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract String Iq(long paramLong);
+  public abstract String PK(long paramLong);
   
-  public abstract void Ir(long paramLong);
+  public abstract void PL(long paramLong);
   
-  public abstract void Is(long paramLong);
+  public abstract void PM(long paramLong);
   
   public abstract long a(e parame, g paramg);
   
@@ -18,17 +18,17 @@ public abstract interface c
   
   public abstract void a(Context paramContext, ScanGoodsRequest paramScanGoodsRequest, int paramInt);
   
+  public abstract com.tencent.mm.plugin.scanner.api.a.a aD(Context paramContext, int paramInt);
+  
   public abstract long b(e parame, g paramg);
   
   public abstract long c(e parame, g paramg);
   
-  public abstract com.tencent.mm.plugin.scanner.api.a.a gT(Context paramContext);
-  
-  public abstract boolean gy(List<Float> paramList);
+  public abstract boolean he(List<Float> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.api.c
  * JD-Core Version:    0.7.0.1
  */

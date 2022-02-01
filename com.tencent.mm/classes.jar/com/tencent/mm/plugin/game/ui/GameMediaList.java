@@ -9,11 +9,12 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a.c.a;
-import com.tencent.mm.av.q;
-import com.tencent.mm.game.report.f;
+import com.tencent.mm.ay.a.a.c.a;
+import com.tencent.mm.ay.q;
+import com.tencent.mm.game.report.g;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.game.e.c;
+import com.tencent.mm.plugin.game.d.c;
+import com.tencent.mm.plugin.game.g.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
@@ -22,12 +23,12 @@ public class GameMediaList
   extends LinearLayout
   implements View.OnClickListener
 {
+  int CXa = 0;
+  private int CYB;
+  private LinkedList<String> CYC;
   String appId = "";
   Context mContext;
-  int sQn = -1;
-  int xSP = 0;
-  private int xUq;
-  private LinkedList<String> xUr;
+  int wwk = -1;
   
   public GameMediaList(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,8 +39,8 @@ public class GameMediaList
   {
     AppMethodBeat.i(42256);
     Object localObject = new b();
-    ((b)localObject).bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameMediaList", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+    ((b)localObject).bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/game/ui/GameMediaList", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
     if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof a)))
     {
       Log.i("MicroMsg.GameMediaList", "Invalid tag");
@@ -56,34 +57,34 @@ public class GameMediaList
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameMediaList", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(42256);
       return;
-      c.aQ(getContext(), paramView.url);
-      f.a(this.mContext, this.sQn, 1202, 1, 13, this.appId, this.xSP, null);
+      c.aY(getContext(), paramView.url);
+      g.a(this.mContext, this.wwk, 1202, 1, 13, this.appId, this.CXa, null);
       continue;
       paramView = paramView.url;
-      int j = this.xUr.indexOf(paramView);
+      int j = this.CYC.indexOf(paramView);
       int i = j;
       if (j < 0) {
         i = 0;
       }
       paramView = new Intent(getContext(), GameGalleryUI.class);
-      localObject = new String[this.xUr.size()];
-      this.xUr.toArray((Object[])localObject);
+      localObject = new String[this.CYC.size()];
+      this.CYC.toArray((Object[])localObject);
       paramView.putExtra("URLS", (String[])localObject);
       paramView.putExtra("CURRENT", i);
       paramView.putExtra("REPORT_APPID", this.appId);
-      paramView.putExtra("REPORT_SCENE", this.sQn);
-      paramView.putExtra("SOURCE_SCENE", this.xSP);
+      paramView.putExtra("REPORT_SCENE", this.wwk);
+      paramView.putExtra("SOURCE_SCENE", this.CXa);
       localObject = getContext();
-      paramView = new com.tencent.mm.hellhoundlib.b.a().bl(paramView);
-      com.tencent.mm.hellhoundlib.a.a.a(localObject, paramView.axQ(), "com/tencent/mm/plugin/game/ui/GameMediaList", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      ((Context)localObject).startActivity((Intent)paramView.pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/game/ui/GameMediaList", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramView = new com.tencent.mm.hellhoundlib.b.a().bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b(localObject, paramView.aFh(), "com/tencent/mm/plugin/game/ui/GameMediaList", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      ((Context)localObject).startActivity((Intent)paramView.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/game/ui/GameMediaList", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
   }
   
   public void setItemLayout(int paramInt)
   {
-    this.xUq = paramInt;
+    this.CYB = paramInt;
   }
   
   public void setMediaList(LinkedList<a> paramLinkedList)
@@ -95,13 +96,13 @@ public class GameMediaList
       AppMethodBeat.o(42255);
       return;
     }
-    this.xUr = new LinkedList();
+    this.CYC = new LinkedList();
     int i = 0;
     while (i < paramLinkedList.size())
     {
       localObject = (a)paramLinkedList.get(i);
       if ((!Util.isNullOrNil(((a)localObject).url)) && (((a)localObject).type == 0)) {
-        this.xUr.add(((a)localObject).url);
+        this.CYC.add(((a)localObject).url);
       }
       i += 1;
     }
@@ -111,17 +112,17 @@ public class GameMediaList
     while (i < paramLinkedList.size())
     {
       a locala = (a)paramLinkedList.get(i);
-      if (!Util.isNullOrNil(locala.dkZ))
+      if (!Util.isNullOrNil(locala.fcF))
       {
-        View localView = ((LayoutInflater)localObject).inflate(this.xUq, this, false);
-        ImageView localImageView = (ImageView)localView.findViewById(2131304573);
-        com.tencent.mm.av.a.a locala1 = q.bcV();
-        String str = locala.dkZ;
+        View localView = ((LayoutInflater)localObject).inflate(this.CYB, this, false);
+        ImageView localImageView = (ImageView)localView.findViewById(g.e.media_thumb);
+        com.tencent.mm.ay.a.a locala1 = q.bml();
+        String str = locala.fcF;
         c.a locala2 = new c.a();
-        locala2.jbe = true;
-        locala1.a(str, localImageView, locala2.bdv());
+        locala2.lRC = true;
+        locala1.a(str, localImageView, locala2.bmL());
         if (locala.type == 1) {
-          localView.findViewById(2131304566).setVisibility(0);
+          localView.findViewById(g.e.CkJ).setVisibility(0);
         }
         addView(localView);
         localImageView.setTag(locala);
@@ -135,14 +136,14 @@ public class GameMediaList
   
   public static final class a
   {
-    public String dkZ;
+    public String fcF;
     public int type;
     public String url;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameMediaList
  * JD-Core Version:    0.7.0.1
  */

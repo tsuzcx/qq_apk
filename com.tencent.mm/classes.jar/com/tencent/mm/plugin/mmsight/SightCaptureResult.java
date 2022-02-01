@@ -4,23 +4,23 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cly;
+import com.tencent.mm.protocal.protobuf.cuv;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class SightCaptureResult
   implements Parcelable
 {
   public static final Parcelable.Creator<SightCaptureResult> CREATOR;
-  public boolean tkD;
-  public String zsA;
-  public String zsB;
-  public String zsC;
-  public String zsD;
-  public int zsE;
-  public cly zsF;
-  public String zsG;
-  public boolean zsy;
-  public boolean zsz;
+  public boolean EXZ;
+  public boolean EYa;
+  public String EYb;
+  public String EYc;
+  public String EYd;
+  public String EYe;
+  public int EYf;
+  public cuv EYg;
+  public String EYh;
+  public boolean wRb;
   
   static
   {
@@ -32,26 +32,26 @@ public class SightCaptureResult
   protected SightCaptureResult(Parcel paramParcel)
   {
     AppMethodBeat.i(148780);
-    this.tkD = false;
-    this.zsy = false;
-    this.zsz = true;
-    this.zsA = "";
-    this.zsB = "";
-    this.zsC = "";
-    this.zsD = "";
-    this.zsE = 0;
-    this.zsF = new cly();
-    this.zsG = "";
+    this.wRb = false;
+    this.EXZ = false;
+    this.EYa = true;
+    this.EYb = "";
+    this.EYc = "";
+    this.EYd = "";
+    this.EYe = "";
+    this.EYf = 0;
+    this.EYg = new cuv();
+    this.EYh = "";
     if (paramParcel.readByte() != 0)
     {
       bool = true;
-      this.tkD = bool;
+      this.wRb = bool;
       if (paramParcel.readByte() == 0) {
         break label203;
       }
       bool = true;
       label93:
-      this.zsy = bool;
+      this.EXZ = bool;
       if (paramParcel.readByte() == 0) {
         break label208;
       }
@@ -60,19 +60,19 @@ public class SightCaptureResult
     label208:
     for (boolean bool = true;; bool = false)
     {
-      this.zsz = bool;
-      this.zsA = paramParcel.readString();
-      this.zsB = paramParcel.readString();
-      this.zsC = paramParcel.readString();
-      this.zsD = paramParcel.readString();
-      this.zsE = paramParcel.readInt();
-      this.zsG = paramParcel.readString();
+      this.EYa = bool;
+      this.EYb = paramParcel.readString();
+      this.EYc = paramParcel.readString();
+      this.EYd = paramParcel.readString();
+      this.EYe = paramParcel.readString();
+      this.EYf = paramParcel.readInt();
+      this.EYh = paramParcel.readString();
       try
       {
         byte[] arrayOfByte = new byte[paramParcel.readInt()];
         paramParcel.readByteArray(arrayOfByte);
-        this.zsF = new cly();
-        this.zsF.parseFrom(arrayOfByte);
+        this.EYg = new cuv();
+        this.EYg.parseFrom(arrayOfByte);
         AppMethodBeat.o(148780);
         return;
       }
@@ -91,45 +91,45 @@ public class SightCaptureResult
   public SightCaptureResult(boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(148779);
-    this.tkD = false;
-    this.zsy = false;
-    this.zsz = true;
-    this.zsA = "";
-    this.zsB = "";
-    this.zsC = "";
-    this.zsD = "";
-    this.zsE = 0;
-    this.zsF = new cly();
-    this.zsG = "";
-    this.zsz = paramBoolean;
-    this.zsG = paramString;
-    this.tkD = false;
-    this.zsy = true;
+    this.wRb = false;
+    this.EXZ = false;
+    this.EYa = true;
+    this.EYb = "";
+    this.EYc = "";
+    this.EYd = "";
+    this.EYe = "";
+    this.EYf = 0;
+    this.EYg = new cuv();
+    this.EYh = "";
+    this.EYa = paramBoolean;
+    this.EYh = paramString;
+    this.wRb = false;
+    this.EXZ = true;
     AppMethodBeat.o(148779);
   }
   
-  public SightCaptureResult(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, cly paramcly)
+  public SightCaptureResult(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, cuv paramcuv)
   {
     AppMethodBeat.i(148778);
-    this.tkD = false;
-    this.zsy = false;
-    this.zsz = true;
-    this.zsA = "";
-    this.zsB = "";
-    this.zsC = "";
-    this.zsD = "";
-    this.zsE = 0;
-    this.zsF = new cly();
-    this.zsG = "";
-    this.zsz = paramBoolean;
-    this.zsA = paramString1;
-    this.zsB = paramString2;
-    this.zsC = paramString3;
-    this.zsE = paramInt;
-    this.zsF = paramcly;
-    this.zsD = paramString4;
-    this.tkD = true;
-    this.zsy = false;
+    this.wRb = false;
+    this.EXZ = false;
+    this.EYa = true;
+    this.EYb = "";
+    this.EYc = "";
+    this.EYd = "";
+    this.EYe = "";
+    this.EYf = 0;
+    this.EYg = new cuv();
+    this.EYh = "";
+    this.EYa = paramBoolean;
+    this.EYb = paramString1;
+    this.EYc = paramString2;
+    this.EYd = paramString3;
+    this.EYf = paramInt;
+    this.EYg = paramcuv;
+    this.EYe = paramString4;
+    this.wRb = true;
+    this.EXZ = false;
     AppMethodBeat.o(148778);
   }
   
@@ -142,17 +142,17 @@ public class SightCaptureResult
   {
     int i = 1;
     AppMethodBeat.i(148781);
-    if (this.tkD)
+    if (this.wRb)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      if (!this.zsy) {
+      if (!this.EXZ) {
         break label133;
       }
       paramInt = 1;
       label31:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.zsz) {
+      if (!this.EYa) {
         break label138;
       }
     }
@@ -161,15 +161,15 @@ public class SightCaptureResult
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.zsA);
-      paramParcel.writeString(this.zsB);
-      paramParcel.writeString(this.zsC);
-      paramParcel.writeString(this.zsD);
-      paramParcel.writeInt(this.zsE);
-      paramParcel.writeString(this.zsG);
+      paramParcel.writeString(this.EYb);
+      paramParcel.writeString(this.EYc);
+      paramParcel.writeString(this.EYd);
+      paramParcel.writeString(this.EYe);
+      paramParcel.writeInt(this.EYf);
+      paramParcel.writeString(this.EYh);
       try
       {
-        byte[] arrayOfByte = this.zsF.toByteArray();
+        byte[] arrayOfByte = this.EYg.toByteArray();
         paramParcel.writeInt(arrayOfByte.length);
         paramParcel.writeByteArray(arrayOfByte);
         AppMethodBeat.o(148781);
@@ -189,7 +189,7 @@ public class SightCaptureResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.SightCaptureResult
  * JD-Core Version:    0.7.0.1
  */

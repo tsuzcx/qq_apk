@@ -6,16 +6,18 @@ import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.NumberPicker;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.at;
+import com.tencent.mm.cr.a.c;
+import com.tencent.mm.cr.a.e;
+import com.tencent.mm.ui.aw;
 
 public class OptionPicker
   extends NumberPicker
 {
+  private int lj;
   private Context mContext;
-  private int mMaxWidth;
-  private int mMinWidth;
-  private String[] ozA;
-  private int ozB;
+  private String[] rCh;
+  private int rCi;
+  private int uJ;
   
   public OptionPicker(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,11 +40,11 @@ public class OptionPicker
   private void init()
   {
     AppMethodBeat.i(159583);
-    this.mMinWidth = at.fromDPToPix(this.mContext, 120);
-    this.ozB = at.fromDPToPix(this.mContext, 20);
-    f.a(this, getResources().getDrawable(2131234426));
+    this.lj = aw.fromDPToPix(this.mContext, 120);
+    this.rCi = aw.fromDPToPix(this.mContext, 20);
+    e.a(this, getResources().getDrawable(a.e.picker_divider));
     setDescendantFocusability(393216);
-    f.b(this, this.mContext.getResources().getColor(2131100904));
+    e.b(this, this.mContext.getResources().getColor(a.c.normal_text_color));
     AppMethodBeat.o(159583);
   }
   
@@ -57,24 +59,24 @@ public class OptionPicker
   {
     AppMethodBeat.i(159588);
     if ((View.MeasureSpec.getMode(paramInt1) == -2147483648) || (View.MeasureSpec.getMode(paramInt1) == 1073741824)) {
-      this.mMaxWidth = View.MeasureSpec.getSize(paramInt1);
+      this.uJ = View.MeasureSpec.getSize(paramInt1);
     }
     super.onMeasure(View.MeasureSpec.makeMeasureSpec(0, 0), paramInt2);
-    if ((getMeasuredWidth() <= this.mMinWidth) && ((this.mMaxWidth <= 0) || (this.mMinWidth <= this.mMaxWidth)))
+    if ((getMeasuredWidth() <= this.lj) && ((this.uJ <= 0) || (this.lj <= this.uJ)))
     {
-      setMeasuredDimension(this.mMinWidth, getMeasuredHeight());
+      setMeasuredDimension(this.lj, getMeasuredHeight());
       AppMethodBeat.o(159588);
       return;
     }
-    paramInt2 = getMeasuredWidth() + this.ozB * 2;
+    paramInt2 = getMeasuredWidth() + this.rCi * 2;
     paramInt1 = paramInt2;
-    if (this.mMaxWidth > 0) {
-      if (this.mMaxWidth <= paramInt2) {
+    if (this.uJ > 0) {
+      if (this.uJ <= paramInt2) {
         break label134;
       }
     }
     label134:
-    for (paramInt1 = paramInt2;; paramInt1 = this.mMaxWidth)
+    for (paramInt1 = paramInt2;; paramInt1 = this.uJ)
     {
       setMeasuredDimension(paramInt1, getMeasuredHeight());
       AppMethodBeat.o(159588);
@@ -93,18 +95,18 @@ public class OptionPicker
   public final void setExtraPadding(int paramInt)
   {
     AppMethodBeat.i(159586);
-    this.ozB = Math.max(paramInt, 0);
+    this.rCi = Math.max(paramInt, 0);
     AppMethodBeat.o(159586);
   }
   
   public final void setMaxWidth(int paramInt)
   {
-    this.mMaxWidth = paramInt;
+    this.uJ = paramInt;
   }
   
   public final void setMinWidth(int paramInt)
   {
-    this.mMinWidth = paramInt;
+    this.lj = paramInt;
   }
   
   public void setOptionsArray(String[] paramArrayOfString)
@@ -115,7 +117,7 @@ public class OptionPicker
       AppMethodBeat.o(159584);
       return;
     }
-    this.ozA = paramArrayOfString;
+    this.rCh = paramArrayOfString;
     setDisplayedValues(null);
     setMinValue(0);
     setMaxValue(Math.max(paramArrayOfString.length - 1, 0));
@@ -130,7 +132,7 @@ public class OptionPicker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.OptionPicker
  * JD-Core Version:    0.7.0.1
  */

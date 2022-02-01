@@ -5,17 +5,17 @@ import java.util.Iterator;
 import kotlin.g.b.a.a;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/sequences/DropSequence;", "T", "Lkotlin/sequences/Sequence;", "Lkotlin/sequences/DropTakeSequence;", "sequence", "count", "", "(Lkotlin/sequences/Sequence;I)V", "drop", "n", "iterator", "", "take", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/sequences/DropSequence;", "T", "Lkotlin/sequences/Sequence;", "Lkotlin/sequences/DropTakeSequence;", "sequence", "count", "", "(Lkotlin/sequences/Sequence;I)V", "drop", "n", "iterator", "", "take", "kotlin-stdlib"})
 public final class b<T>
-  implements c<T>, h<T>
+  implements c<T>
 {
-  final h<T> TSt;
+  final h<T> abuS;
   final int count;
   
   public b(h<? extends T> paramh, int paramInt)
   {
     AppMethodBeat.i(129529);
-    this.TSt = paramh;
+    this.abuS = paramh;
     this.count = paramInt;
     if (this.count >= 0) {}
     for (paramInt = 1; paramInt == 0; paramInt = 0)
@@ -27,7 +27,7 @@ public final class b<T>
     AppMethodBeat.o(129529);
   }
   
-  public final h<T> hMd()
+  public final h<T> iQu()
   {
     AppMethodBeat.i(129527);
     int i = this.count + 1;
@@ -37,7 +37,7 @@ public final class b<T>
       AppMethodBeat.o(129527);
       return localh;
     }
-    h localh = (h)new b(this.TSt, i);
+    h localh = (h)new b(this.abuS, i);
     AppMethodBeat.o(129527);
     return localh;
   }
@@ -50,27 +50,27 @@ public final class b<T>
     return localIterator;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"kotlin/sequences/DropSequence$iterator$1", "", "iterator", "getIterator", "()Ljava/util/Iterator;", "left", "", "getLeft", "()I", "setLeft", "(I)V", "drop", "", "hasNext", "", "next", "()Ljava/lang/Object;", "kotlin-stdlib"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"kotlin/sequences/DropSequence$iterator$1", "", "iterator", "getIterator", "()Ljava/util/Iterator;", "left", "", "getLeft", "()I", "setLeft", "(I)V", "drop", "", "hasNext", "", "next", "()Ljava/lang/Object;", "kotlin-stdlib"})
   public static final class a
     implements Iterator<T>, a
   {
-    private final Iterator<T> bXG;
+    private final Iterator<T> bZx;
     private int left;
     
     a()
     {
       AppMethodBeat.i(129480);
-      this.bXG = localObject.TSt.iterator();
+      this.bZx = localObject.abuS.iterator();
       this.left = localObject.count;
       AppMethodBeat.o(129480);
     }
     
-    private final void drop()
+    private final void iQv()
     {
       AppMethodBeat.i(129477);
-      while ((this.left > 0) && (this.bXG.hasNext()))
+      while ((this.left > 0) && (this.bZx.hasNext()))
       {
-        this.bXG.next();
+        this.bZx.next();
         this.left -= 1;
       }
       AppMethodBeat.o(129477);
@@ -79,8 +79,8 @@ public final class b<T>
     public final boolean hasNext()
     {
       AppMethodBeat.i(129479);
-      drop();
-      boolean bool = this.bXG.hasNext();
+      iQv();
+      boolean bool = this.bZx.hasNext();
       AppMethodBeat.o(129479);
       return bool;
     }
@@ -88,8 +88,8 @@ public final class b<T>
     public final T next()
     {
       AppMethodBeat.i(129478);
-      drop();
-      Object localObject = this.bXG.next();
+      iQv();
+      Object localObject = this.bZx.next();
       AppMethodBeat.o(129478);
       return localObject;
     }
@@ -105,7 +105,7 @@ public final class b<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.m.b
  * JD-Core Version:    0.7.0.1
  */

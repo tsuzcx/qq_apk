@@ -8,7 +8,7 @@ import com.tencent.mm.opensdk.utils.b;
 public class WXVideoFileObject
   implements WXMediaMessage.IMediaObject
 {
-  public static final int FILE_SIZE_LIMIT = 104857600;
+  public static final int FILE_SIZE_LIMIT = 1073741824;
   private static final String TAG = "MicroMsg.SDK.WXVideoFileObject";
   public static final int WXVideoFileShareSceneCommon = 0;
   public static final int WXVideoFileShareSceneFromWX = 1;
@@ -18,18 +18,18 @@ public class WXVideoFileObject
   
   public WXVideoFileObject()
   {
-    AppMethodBeat.i(190383);
+    AppMethodBeat.i(254668);
     this.shareScene = 0;
     this.filePath = null;
-    AppMethodBeat.o(190383);
+    AppMethodBeat.o(254668);
   }
   
   public WXVideoFileObject(String paramString)
   {
-    AppMethodBeat.i(190384);
+    AppMethodBeat.i(254669);
     this.shareScene = 0;
     this.filePath = paramString;
-    AppMethodBeat.o(190384);
+    AppMethodBeat.o(254669);
   }
   
   private int getFileSize(String paramString)
@@ -46,7 +46,7 @@ public class WXVideoFileObject
     String str = this.filePath;
     if ((str != null) && (str.length() != 0))
     {
-      if (getFileSize(this.filePath) > 104857600)
+      if (getFileSize(this.filePath) > 1073741824)
       {
         Log.e("MicroMsg.SDK.WXVideoFileObject", "checkArgs fail, video file size is too large");
         AppMethodBeat.o(3960);
@@ -85,7 +85,7 @@ public class WXVideoFileObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXVideoFileObject
  * JD-Core Version:    0.7.0.1
  */

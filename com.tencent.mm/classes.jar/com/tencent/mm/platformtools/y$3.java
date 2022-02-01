@@ -5,7 +5,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.account.a.a;
+import com.tencent.mm.plugin.account.sdk.a;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
@@ -19,14 +19,14 @@ final class y$3
   {
     AppMethodBeat.i(127742);
     paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("rawUrl", this.jNG);
+    paramDialogInterface.putExtra("rawUrl", this.mEO);
     paramDialogInterface.putExtra("showShare", false);
     paramDialogInterface.putExtra("show_bottom", false);
     paramDialogInterface.putExtra("needRedirect", false);
     paramDialogInterface.putExtra("neverGetA8Key", true);
-    paramDialogInterface.putExtra("hardcode_jspermission", JsapiPermissionWrapper.Kzm);
-    paramDialogInterface.putExtra("hardcode_general_ctrl", GeneralControlWrapper.Kzg);
-    a.jRt.i(paramDialogInterface, this.val$context);
+    paramDialogInterface.putExtra("hardcode_jspermission", JsapiPermissionWrapper.RBc);
+    paramDialogInterface.putExtra("hardcode_general_ctrl", GeneralControlWrapper.RAX);
+    a.mIG.h(paramDialogInterface, this.val$context);
     AppMethodBeat.o(127742);
   }
 }

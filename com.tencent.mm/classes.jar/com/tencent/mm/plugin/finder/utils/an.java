@@ -1,63 +1,116 @@
 package com.tencent.mm.plugin.finder.utils;
 
-import android.content.Context;
-import android.support.v4.view.ViewPager;
-import android.widget.Scroller;
+import android.media.ExifInterface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.lang.reflect.Field;
+import java.util.Collection;
 import kotlin.g.b.p;
 import kotlin.l;
+import kotlin.n.k;
+import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/utils/ViewPageUtils;", "", "()V", "TAG", "", "initSwitchTime", "", "context", "Landroid/content/Context;", "viewPager", "Landroid/support/v4/view/ViewPager;", "time", "", "ViewPagerScroller", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/utils/GeoDegree;", "", "exif", "Landroid/media/ExifInterface;", "(Landroid/media/ExifInterface;)V", "Latitude", "", "getLatitude", "()Ljava/lang/Float;", "setLatitude", "(Ljava/lang/Float;)V", "Ljava/lang/Float;", "Longitude", "getLongitude", "setLongitude", "TAG", "", "isValid", "", "()Z", "setValid", "(Z)V", "convertToDegree", "stringDMS", "(Ljava/lang/String;)Ljava/lang/Float;", "toString", "plugin-finder_release"})
 public final class an
 {
-  public static final an waE;
+  Float AGS;
+  Float AGT;
+  private final String TAG;
+  private boolean cSY;
   
-  static
+  public an(ExifInterface paramExifInterface)
   {
-    AppMethodBeat.i(253824);
-    waE = new an();
-    AppMethodBeat.o(253824);
+    AppMethodBeat.i(167973);
+    this.TAG = "Finder.GeoDegree";
+    Object localObject = paramExifInterface.getAttribute("GPSLatitude");
+    String str2 = paramExifInterface.getAttribute("GPSLatitudeRef");
+    String str1 = paramExifInterface.getAttribute("GPSLongitude");
+    paramExifInterface = paramExifInterface.getAttribute("GPSLongitudeRef");
+    if ((localObject != null) && (str2 != null) && (str1 != null) && (paramExifInterface != null))
+    {
+      this.cSY = true;
+      if (p.h(str2, "N")) {}
+      for (this.AGS = aFZ((String)localObject); p.h(paramExifInterface, "E"); this.AGS = Float.valueOf(0.0F - ((Float)localObject).floatValue()))
+      {
+        this.AGT = aFZ(str1);
+        AppMethodBeat.o(167973);
+        return;
+        localObject = aFZ((String)localObject);
+        if (localObject == null) {
+          p.iCn();
+        }
+      }
+      paramExifInterface = aFZ(str1);
+      if (paramExifInterface == null) {
+        p.iCn();
+      }
+      this.AGT = Float.valueOf(0.0F - paramExifInterface.floatValue());
+    }
+    AppMethodBeat.o(167973);
   }
   
-  public static void a(Context paramContext, ViewPager paramViewPager, int paramInt)
+  private final Float aFZ(String paramString)
   {
-    AppMethodBeat.i(253823);
+    AppMethodBeat.i(167971);
     try
     {
-      Field localField = ViewPager.class.getDeclaredField("mScroller");
-      p.g(localField, "ViewPager::class.java.ge…eclaredField(\"mScroller\")");
-      localField.setAccessible(true);
-      localField.set(paramViewPager, new a(paramContext, paramInt));
-      AppMethodBeat.o(253823);
-      return;
+      paramString = (CharSequence)paramString;
+      paramString = ((Collection)new k(",").u(paramString, 3)).toArray(new String[0]);
+      if (paramString == null)
+      {
+        paramString = new t("null cannot be cast to non-null type kotlin.Array<T>");
+        AppMethodBeat.o(167971);
+        throw paramString;
+      }
     }
-    catch (Exception paramContext)
+    catch (Throwable paramString)
     {
-      Log.printErrStackTrace("ViewPageUtils", (Throwable)paramContext, "", new Object[0]);
-      AppMethodBeat.o(253823);
+      Log.printErrStackTrace(this.TAG, paramString, "convertToDegree", new Object[0]);
+      AppMethodBeat.o(167971);
+      return null;
     }
+    paramString = (String[])paramString;
+    Object localObject = (CharSequence)paramString[0];
+    localObject = ((Collection)new k("/").u((CharSequence)localObject, 2)).toArray(new String[0]);
+    if (localObject == null)
+    {
+      paramString = new t("null cannot be cast to non-null type kotlin.Array<T>");
+      AppMethodBeat.o(167971);
+      throw paramString;
+    }
+    localObject = (String[])localObject;
+    double d1 = Double.parseDouble(localObject[0]) / Double.parseDouble(localObject[1]);
+    localObject = (CharSequence)paramString[1];
+    localObject = ((Collection)new k("/").u((CharSequence)localObject, 2)).toArray(new String[0]);
+    if (localObject == null)
+    {
+      paramString = new t("null cannot be cast to non-null type kotlin.Array<T>");
+      AppMethodBeat.o(167971);
+      throw paramString;
+    }
+    localObject = (String[])localObject;
+    double d3 = Double.parseDouble(localObject[0]) / Double.parseDouble(localObject[1]);
+    paramString = (CharSequence)paramString[2];
+    paramString = ((Collection)new k("/").u(paramString, 2)).toArray(new String[0]);
+    if (paramString == null)
+    {
+      paramString = new t("null cannot be cast to non-null type kotlin.Array<T>");
+      AppMethodBeat.o(167971);
+      throw paramString;
+    }
+    paramString = (String[])paramString;
+    double d2 = Double.parseDouble(paramString[0]) / Double.parseDouble(paramString[1]);
+    d3 /= 60.0D;
+    float f = (float)(d2 / 3600.0D + (d1 + d3));
+    AppMethodBeat.o(167971);
+    return Float.valueOf(f);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/utils/ViewPageUtils$ViewPagerScroller;", "Landroid/widget/Scroller;", "context", "Landroid/content/Context;", "time", "", "(Landroid/content/Context;I)V", "getTime", "()I", "setTime", "(I)V", "startScroll", "", "startX", "startY", "dx", "dy", "duration", "plugin-finder_release"})
-  public static final class a
-    extends Scroller
+  public final String toString()
   {
-    private int hXs;
-    
-    public a(Context paramContext, int paramInt)
-    {
-      super();
-      this.hXs = paramInt;
-    }
-    
-    public final void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-    {
-      AppMethodBeat.i(253822);
-      super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.hXs);
-      AppMethodBeat.o(253822);
-    }
+    AppMethodBeat.i(167972);
+    String str = String.valueOf(this.AGS) + ", " + String.valueOf(this.AGT);
+    AppMethodBeat.o(167972);
+    return str;
   }
 }
 

@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class l
 {
-  private int bpH;
-  public int bpI;
-  public int bpJ;
+  private int aZj;
+  public int aZk;
+  public int aZl;
   public byte[] data;
   
   public l() {}
@@ -21,24 +21,24 @@ public final class l
   public l(byte[] paramArrayOfByte, int paramInt)
   {
     this.data = paramArrayOfByte;
-    this.bpH = paramInt;
+    this.aZj = paramInt;
   }
   
-  private void xb()
+  private void ve()
   {
     AppMethodBeat.i(93158);
-    int i = this.bpJ + 1;
-    this.bpJ = i;
+    int i = this.aZl + 1;
+    this.aZl = i;
     if (i == 8)
     {
-      this.bpJ = 0;
-      this.bpI += 1;
+      this.aZl = 0;
+      this.aZk += 1;
     }
-    uJ();
+    sE();
     AppMethodBeat.o(93158);
   }
   
-  public final int em(int paramInt)
+  public final int eA(int paramInt)
   {
     AppMethodBeat.i(93161);
     if (paramInt == 0)
@@ -46,91 +46,82 @@ public final class l
       AppMethodBeat.o(93161);
       return 0;
     }
-    this.bpJ += paramInt;
+    this.aZl += paramInt;
     int i = 0;
-    while (this.bpJ > 8)
+    while (this.aZl > 8)
     {
-      this.bpJ -= 8;
+      this.aZl -= 8;
       byte[] arrayOfByte = this.data;
-      j = this.bpI;
-      this.bpI = (j + 1);
-      i |= (arrayOfByte[j] & 0xFF) << this.bpJ;
+      j = this.aZk;
+      this.aZk = (j + 1);
+      i |= (arrayOfByte[j] & 0xFF) << this.aZl;
     }
-    int j = this.data[this.bpI];
-    int k = this.bpJ;
-    if (this.bpJ == 8)
+    int j = this.data[this.aZk];
+    int k = this.aZl;
+    if (this.aZl == 8)
     {
-      this.bpJ = 0;
-      this.bpI += 1;
+      this.aZl = 0;
+      this.aZk += 1;
     }
-    uJ();
+    sE();
     AppMethodBeat.o(93161);
     return (i | (j & 0xFF) >> 8 - k) & -1 >>> 32 - paramInt;
   }
   
-  public final void en(int paramInt)
+  public final void eB(int paramInt)
   {
     AppMethodBeat.i(93159);
     int i = paramInt / 8;
-    this.bpI += i;
-    this.bpJ = (paramInt - i * 8 + this.bpJ);
-    if (this.bpJ > 7)
+    this.aZk += i;
+    this.aZl = (paramInt - i * 8 + this.aZl);
+    if (this.aZl > 7)
     {
-      this.bpI += 1;
-      this.bpJ -= 8;
+      this.aZk += 1;
+      this.aZl -= 8;
     }
-    uJ();
+    sE();
     AppMethodBeat.o(93159);
   }
   
   public final void n(byte[] paramArrayOfByte, int paramInt)
   {
     this.data = paramArrayOfByte;
-    this.bpI = 0;
-    this.bpJ = 0;
-    this.bpH = paramInt;
+    this.aZk = 0;
+    this.aZl = 0;
+    this.aZj = paramInt;
   }
   
   public final void p(byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(93163);
-    if (this.bpJ == 0) {}
+    if (this.aZl == 0) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      System.arraycopy(this.data, this.bpI, paramArrayOfByte, 0, paramInt);
-      this.bpI += paramInt;
-      uJ();
+      System.arraycopy(this.data, this.aZk, paramArrayOfByte, 0, paramInt);
+      this.aZk += paramInt;
+      sE();
       AppMethodBeat.o(93163);
       return;
     }
   }
   
-  public final void setPosition(int paramInt)
-  {
-    AppMethodBeat.i(93157);
-    this.bpI = (paramInt / 8);
-    this.bpJ = (paramInt - this.bpI * 8);
-    uJ();
-    AppMethodBeat.o(93157);
-  }
-  
-  public final boolean uI()
+  public final boolean sD()
   {
     AppMethodBeat.i(93160);
-    if ((this.data[this.bpI] & 128 >> this.bpJ) != 0) {}
+    if ((this.data[this.aZk] & 128 >> this.aZl) != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      xb();
+      ve();
       AppMethodBeat.o(93160);
       return bool;
     }
   }
   
-  public final void uJ()
+  public final void sE()
   {
     AppMethodBeat.i(93164);
-    if ((this.bpI >= 0) && ((this.bpI < this.bpH) || ((this.bpI == this.bpH) && (this.bpJ == 0)))) {}
+    if ((this.aZk >= 0) && ((this.aZk < this.aZj) || ((this.aZk == this.aZj) && (this.aZl == 0)))) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
@@ -139,41 +130,50 @@ public final class l
     }
   }
   
-  public final int wZ()
+  public final void setPosition(int paramInt)
   {
-    return (this.bpH - this.bpI) * 8 - this.bpJ;
+    AppMethodBeat.i(93157);
+    this.aZk = (paramInt / 8);
+    this.aZl = (paramInt - this.aZk * 8);
+    sE();
+    AppMethodBeat.o(93157);
   }
   
-  public final int xa()
+  public final int vc()
+  {
+    return (this.aZj - this.aZk) * 8 - this.aZl;
+  }
+  
+  public final int vd()
   {
     AppMethodBeat.i(93156);
-    if (this.bpJ == 0) {}
+    if (this.aZl == 0) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      int i = this.bpI;
+      int i = this.aZk;
       AppMethodBeat.o(93156);
       return i;
     }
   }
   
-  public final void xc()
+  public final void vf()
   {
     AppMethodBeat.i(93162);
-    if (this.bpJ == 0)
+    if (this.aZl == 0)
     {
       AppMethodBeat.o(93162);
       return;
     }
-    this.bpJ = 0;
-    this.bpI += 1;
-    uJ();
+    this.aZl = 0;
+    this.aZk += 1;
+    sE();
     AppMethodBeat.o(93162);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.i.l
  * JD-Core Version:    0.7.0.1
  */

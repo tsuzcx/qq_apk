@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.gamelife.ui;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationUI$Companion;", "", "()V", "GAME_CENTER_ITEM_AREA_HEIGHT", "", "TAG", "", "plugin-gamelife_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/ui/GameLifeConversationUI$Companion;", "", "()V", "GAME_CENTER_ITEM_AREA_HEIGHT", "", "TAG", "", "plugin-gamelife_release"})
 public final class GameLifeConversationUI$a {}
 
 

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.wallet.wecoin.model;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/wallet/wecoin/model/WecoinEncashKVData$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/wallet/wecoin/model/WecoinEncashKVData;", "plugin-wxpay_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/wallet/wecoin/model/WecoinEncashKVData$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/wallet/wecoin/model/WecoinEncashKVData;", "plugin-wxpay_release"})
 public final class WecoinEncashKVData$a {}
 
 

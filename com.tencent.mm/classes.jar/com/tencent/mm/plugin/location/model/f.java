@@ -5,12 +5,12 @@ import com.tencent.mm.pluginsdk.s;
 
 public final class f
 {
-  private static double mbq = -85.0D;
-  private static double mbr = -1000.0D;
-  private static double mbs = -85.0D;
-  private static double mbt = -1000.0D;
+  private static double oZh = -85.0D;
+  private static double oZi = -1000.0D;
+  private static double oZj = -85.0D;
+  private static double oZk = -1000.0D;
   
-  public static double E(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public static double J(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(55690);
     double d = Math.sqrt((paramInt1 - paramInt3) * (paramInt1 - paramInt3) + (paramInt2 - paramInt4) * (paramInt2 - paramInt4));
@@ -62,29 +62,29 @@ public final class f
     }
   }
   
-  public static double h(double paramDouble1, double paramDouble2)
+  public static double g(double paramDouble1, double paramDouble2)
   {
     AppMethodBeat.i(55688);
-    mbs = paramDouble1;
-    mbt = paramDouble2;
-    if ((mbq == -85.0D) || (mbr == -1000.0D)) {}
-    for (paramDouble1 = 0.0D;; paramDouble1 = Math.atan2(mbt - mbr, mbs - mbq) * 180.0D / 3.141592D)
+    oZj = paramDouble1;
+    oZk = paramDouble2;
+    if ((oZh == -85.0D) || (oZi == -1000.0D)) {}
+    for (paramDouble1 = 0.0D;; paramDouble1 = Math.atan2(oZk - oZi, oZj - oZh) * 180.0D / 3.141592D)
     {
-      mbq = mbs;
-      mbr = mbt;
+      oZh = oZj;
+      oZi = oZk;
       AppMethodBeat.o(55688);
       return paramDouble1;
     }
   }
   
-  public static boolean v(double paramDouble)
+  public static boolean w(double paramDouble)
   {
     return paramDouble >= 4.0D;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.location.model.f
  * JD-Core Version:    0.7.0.1
  */

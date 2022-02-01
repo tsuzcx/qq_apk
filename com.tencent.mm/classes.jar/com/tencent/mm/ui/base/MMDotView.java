@@ -8,23 +8,25 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.a.a;
+import com.tencent.mm.ah.a.f;
+import com.tencent.mm.ah.a.h;
+import com.tencent.mm.ah.a.m;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class MMDotView
   extends LinearLayout
 {
-  private int OPQ;
-  private int OPR;
-  private int maxCount;
+  private int WiX;
+  private int WiY;
+  private int iWH;
   
   public MMDotView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(141880);
-    this.maxCount = 9;
-    this.OPQ = 2131234350;
-    this.OPR = 2131234345;
+    this.iWH = 9;
+    this.WiX = a.f.page_normal;
+    this.WiY = a.f.page_active;
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(141880);
   }
@@ -34,9 +36,9 @@ public class MMDotView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(141879);
-    this.maxCount = 9;
-    this.OPQ = 2131234350;
-    this.OPR = 2131234345;
+    this.iWH = 9;
+    this.WiX = a.f.page_normal;
+    this.WiY = a.f.page_active;
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(141879);
   }
@@ -44,8 +46,8 @@ public class MMDotView
   private void init(Context paramContext, AttributeSet paramAttributeSet)
   {
     AppMethodBeat.i(141881);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.MMDotView);
-    int i = paramContext.getResourceId(0, 0);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.m.MMDotView);
+    int i = paramContext.getResourceId(a.m.MMDotView_dot_count, 0);
     paramContext.recycle();
     setDotCount(i);
     AppMethodBeat.o(141881);
@@ -55,12 +57,12 @@ public class MMDotView
   {
     if (paramBoolean)
     {
-      this.OPQ = 2131234351;
-      this.OPR = 2131234346;
+      this.WiX = a.f.page_normal_dark;
+      this.WiY = a.f.page_active_dark;
       return;
     }
-    this.OPQ = 2131234350;
-    this.OPR = 2131234345;
+    this.WiX = a.f.page_normal;
+    this.WiY = a.f.page_active;
   }
   
   public void setDotCount(int paramInt)
@@ -73,22 +75,22 @@ public class MMDotView
       return;
     }
     int i = paramInt;
-    if (paramInt > this.maxCount)
+    if (paramInt > this.iWH)
     {
       Log.i("MicroMsg.MMDotView", "large than max count");
-      i = this.maxCount;
+      i = this.iWH;
     }
     removeAllViews();
     while (i != 0)
     {
-      localImageView = (ImageView)View.inflate(getContext(), 2131495656, null);
-      localImageView.setImageResource(this.OPQ);
+      localImageView = (ImageView)View.inflate(getContext(), a.h.mmpage_control_image, null);
+      localImageView.setImageResource(this.WiX);
       addView(localImageView);
       i -= 1;
     }
     ImageView localImageView = (ImageView)getChildAt(0);
     if (localImageView != null) {
-      localImageView.setImageResource(this.OPR);
+      localImageView.setImageResource(this.WiY);
     }
     AppMethodBeat.o(141883);
   }
@@ -97,19 +99,19 @@ public class MMDotView
   {
     if (paramBoolean)
     {
-      this.OPQ = 2131234345;
-      this.OPR = 2131234350;
+      this.WiX = a.f.page_active;
+      this.WiY = a.f.page_normal;
       return;
     }
-    this.OPQ = 2131234350;
-    this.OPR = 2131234345;
+    this.WiX = a.f.page_normal;
+    this.WiY = a.f.page_active;
   }
   
   public void setMaxCount(int paramInt)
   {
     AppMethodBeat.i(141882);
     Log.d("MicroMsg.MMDotView", "setMaxCount:%d", new Object[] { Integer.valueOf(paramInt) });
-    this.maxCount = paramInt;
+    this.iWH = paramInt;
     AppMethodBeat.o(141882);
   }
   
@@ -127,7 +129,7 @@ public class MMDotView
       paramInt = 0;
       while (paramInt < getChildCount())
       {
-        ((ImageView)getChildAt(paramInt)).setImageResource(this.OPQ);
+        ((ImageView)getChildAt(paramInt)).setImageResource(this.WiX);
         paramInt += 1;
       }
       i = paramInt;
@@ -137,14 +139,14 @@ public class MMDotView
     }
     ImageView localImageView = (ImageView)getChildAt(i);
     if (localImageView != null) {
-      localImageView.setImageResource(this.OPR);
+      localImageView.setImageResource(this.WiY);
     }
     AppMethodBeat.o(141884);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMDotView
  * JD-Core Version:    0.7.0.1
  */

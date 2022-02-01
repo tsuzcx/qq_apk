@@ -4,7 +4,7 @@ import com.tencent.thumbplayer.api.proxy.TPDownloadParamData;
 
 final class f$a
 {
-  TPDownloadParamData Sbv;
+  TPDownloadParamData ZEg;
   String name;
   String url;
 }

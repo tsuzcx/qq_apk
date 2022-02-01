@@ -10,81 +10,81 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/subapp/audio/VoiceRemindRecordAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseRecorderAudioManager;", "onStartRecord", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isImmediatelyRespone", "", "(Lkotlin/jvm/functions/Function1;)V", "hasbeginRec", "getOnStartRecord", "()Lkotlin/jvm/functions/Function1;", "setOnStartRecord", "onAudioDeviceStateChanged", "status", "", "releaseAudioRecordDevice", "requestAudioRecordDevice", "Companion", "app_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/subapp/audio/VoiceRemindRecordAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseRecorderAudioManager;", "onStartRecord", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isImmediatelyRespone", "", "(Lkotlin/jvm/functions/Function1;)V", "hasbeginRec", "getOnStartRecord", "()Lkotlin/jvm/functions/Function1;", "setOnStartRecord", "onAudioDeviceStateChanged", "status", "", "releaseAudioRecordDevice", "requestAudioRecordDevice", "Companion", "app_release"})
 public final class a
   extends d
 {
-  public static final a.a FJf;
-  private boolean FJe;
-  private b<? super Boolean, x> dtM;
+  public static final a.a Mdd;
+  private boolean Mdc;
+  private b<? super Boolean, x> fmu;
   
   static
   {
-    AppMethodBeat.i(230897);
-    FJf = new a.a((byte)0);
-    AppMethodBeat.o(230897);
+    AppMethodBeat.i(276505);
+    Mdd = new a.a((byte)0);
+    AppMethodBeat.o(276505);
   }
   
   public a(b<? super Boolean, x> paramb)
   {
-    AppMethodBeat.i(230896);
-    this.dtM = paramb;
-    AppMethodBeat.o(230896);
+    AppMethodBeat.i(276504);
+    this.fmu = paramb;
+    AppMethodBeat.o(276504);
   }
   
-  public final void Yo()
+  public final void acU()
   {
-    AppMethodBeat.i(230894);
+    AppMethodBeat.i(276501);
     int i = b("record", Integer.valueOf(4));
-    this.FJe = false;
+    this.Mdc = false;
     if (i != 0)
     {
-      iY(100);
-      AppMethodBeat.o(230894);
+      ko(100);
+      AppMethodBeat.o(276501);
       return;
     }
     new b(this).sendEmptyMessageDelayed(0, 50L);
-    AppMethodBeat.o(230894);
+    AppMethodBeat.o(276501);
   }
   
-  public final void iY(int paramInt)
+  public final void ko(int paramInt)
   {
-    AppMethodBeat.i(230895);
-    super.iY(paramInt);
+    AppMethodBeat.i(276503);
+    super.ko(paramInt);
     Log.d("MicroMsg.VoiceRemindRecordAudioManager", " Recorder onAudioDeviceStateChange :".concat(String.valueOf(paramInt)));
-    if (this.FJe)
+    if (this.Mdc)
     {
-      AppMethodBeat.o(230895);
+      AppMethodBeat.o(276503);
       return;
     }
-    this.FJe = true;
-    this.dtM.invoke(Boolean.TRUE);
-    AppMethodBeat.o(230895);
+    this.Mdc = true;
+    this.fmu.invoke(Boolean.TRUE);
+    AppMethodBeat.o(276503);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/subapp/audio/VoiceRemindRecordAudioManager$requestAudioRecordDevice$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "app_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/subapp/audio/VoiceRemindRecordAudioManager$requestAudioRecordDevice$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "app_release"})
   public static final class b
     extends MMHandler
   {
     public final void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(230893);
-      p.h(paramMessage, "msg");
+      AppMethodBeat.i(288407);
+      p.k(paramMessage, "msg");
       Log.d("MicroMsg.VoiceRemindRecordAudioManager", " Recorder handleMessage");
-      if (a.a(this.FJg))
+      if (a.a(this.Mde))
       {
-        AppMethodBeat.o(230893);
+        AppMethodBeat.o(288407);
         return;
       }
-      this.FJg.iY(200);
-      this.FJg.agq("record");
-      AppMethodBeat.o(230893);
+      this.Mde.ko(200);
+      this.Mde.anT("record");
+      AppMethodBeat.o(288407);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.a.a
  * JD-Core Version:    0.7.0.1
  */

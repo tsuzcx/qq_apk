@@ -1,12 +1,12 @@
 package com.tencent.mm.ui.base.a;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.b;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
@@ -15,23 +15,23 @@ import java.util.List;
 public abstract class a<T, V extends View>
   extends RecyclerView.a<b>
 {
-  public a OXb = null;
-  public List<T> cvc = new ArrayList();
-  private RecyclerView hak;
+  public a Wqm = null;
+  public List<T> ctq = new ArrayList();
+  private RecyclerView jLl;
   
   public void a(final b paramb, final int paramInt)
   {
-    paramb.aus.setOnClickListener(new View.OnClickListener()
+    paramb.amk.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(164160);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        if (a.this.OXb != null)
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        if (a.this.Wqm != null)
         {
-          int i = ((b)((RecyclerView)paramb.aus.getParent()).bu(paramb.aus)).lR();
+          int i = ((b)((RecyclerView)paramb.amk.getParent()).bf(paramb.amk)).md();
           if (i < 0)
           {
             Log.e("MicroMsg.RecyclerViewAdapterBase", "[onBindViewHolder#setOnClickListener] pos=%s", new Object[] { Integer.valueOf(i) });
@@ -39,23 +39,23 @@ public abstract class a<T, V extends View>
             AppMethodBeat.o(164160);
             return;
           }
-          a.this.OXb.a(i, paramAnonymousView, a.this.getItemAtPosition(i));
+          a.this.Wqm.a(i, paramAnonymousView, a.this.auB(i));
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(164160);
       }
     });
-    paramb.aus.setOnLongClickListener(new View.OnLongClickListener()
+    paramb.amk.setOnLongClickListener(new View.OnLongClickListener()
     {
       public final boolean onLongClick(View paramAnonymousView)
       {
         AppMethodBeat.i(164161);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
-        if (a.this.OXb != null)
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
+        if (a.this.Wqm != null)
         {
-          boolean bool = a.this.OXb.a(paramAnonymousView, a.this.getItemAtPosition(paramInt));
+          boolean bool = a.this.Wqm.a(paramAnonymousView, a.this.auB(paramInt));
           com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
           AppMethodBeat.o(164161);
           return bool;
@@ -70,66 +70,57 @@ public abstract class a<T, V extends View>
   public void a(b paramb, int paramInt, List<Object> paramList)
   {
     super.a(paramb, paramInt, paramList);
-    paramb.hak = this.hak;
+    paramb.jLl = this.jLl;
   }
   
-  public final void alC(int paramInt)
+  public final void auA(int paramInt)
   {
-    Object localObject = this.cvc.get(0);
-    this.cvc.add(paramInt, localObject);
-    cj(paramInt);
+    Object localObject = this.ctq.get(0);
+    this.ctq.add(paramInt, localObject);
+    cM(paramInt);
   }
   
-  public final void b(RecyclerView paramRecyclerView)
+  public final T auB(int paramInt)
   {
-    super.b(paramRecyclerView);
-    this.hak = paramRecyclerView;
+    return this.ctq.get(paramInt);
   }
   
   public final void clearItems()
   {
-    int i = this.cvc.size();
-    this.cvc.clear();
-    at(0, i);
+    int i = this.ctq.size();
+    this.ctq.clear();
+    aH(0, i);
   }
   
-  public final T getItemAtPosition(int paramInt)
+  public final void d(RecyclerView paramRecyclerView)
   {
-    return this.cvc.get(paramInt);
+    super.d(paramRecyclerView);
+    this.jLl = paramRecyclerView;
   }
   
   public final int getItemCount()
   {
-    return this.cvc.size();
+    return this.ctq.size();
   }
   
-  public final void je(List<T> paramList)
+  public final void jW(List<T> paramList)
   {
     if (paramList != null)
     {
-      int i = this.cvc.size();
-      this.cvc.addAll(paramList);
-      as(i, paramList.size());
+      int i = this.ctq.size();
+      this.ctq.addAll(paramList);
+      aG(i, paramList.size());
     }
   }
   
-  protected abstract V l(ViewGroup paramViewGroup, int paramInt);
-  
-  public final void p(T paramT, int paramInt)
-  {
-    if (paramT != null)
-    {
-      this.cvc.add(paramInt, paramT);
-      cj(paramInt);
-    }
-  }
+  protected abstract V m(ViewGroup paramViewGroup, int paramInt);
   
   public final void removeItem(int paramInt)
   {
-    if ((paramInt > 0) || (paramInt < this.cvc.size()))
+    if ((paramInt > 0) || (paramInt < this.ctq.size()))
     {
-      this.cvc.remove(paramInt);
-      ck(paramInt);
+      this.ctq.remove(paramInt);
+      cN(paramInt);
     }
   }
   
@@ -137,8 +128,17 @@ public abstract class a<T, V extends View>
   {
     if (paramList != null)
     {
-      this.cvc = paramList;
-      this.atj.notifyChanged();
+      this.ctq = paramList;
+      this.alc.notifyChanged();
+    }
+  }
+  
+  public final void v(T paramT, int paramInt)
+  {
+    if (paramT != null)
+    {
+      this.ctq.add(paramInt, paramT);
+      cM(paramInt);
     }
   }
   
@@ -151,7 +151,7 @@ public abstract class a<T, V extends View>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.a.a
  * JD-Core Version:    0.7.0.1
  */

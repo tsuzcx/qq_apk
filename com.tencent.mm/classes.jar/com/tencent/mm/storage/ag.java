@@ -1,12 +1,11 @@
 package com.tencent.mm.storage;
 
-import android.content.Context;
 import android.text.SpannableStringBuilder;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.ab;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
@@ -14,27 +13,29 @@ import java.util.Map;
 import kotlin.g.a.a;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
-import kotlin.x;
+import kotlin.l;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"cacheFollowMsgId", "", "cacheFollowValues", "", "", "cacheMsgId", "cacheValues", "checkNewDyeingTemplate", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "checkShowDigesNum", "getArticleUrl", "getDisplayName", "getDyeingDigest", "getDyeingTemplateWord", "Landroid/text/SpannableStringBuilder;", "index", "", "getFollowDisplayName", "getFollowDyeingTemplateWord", "getFollowValue", "getIconUrl", "getItemShowType", "getMsgType", "getUnreadCount", "getUserName", "getValue", "hasOfficialAccountRedDot", "isDyeingTemplateToTimeline", "msg", "Lcom/tencent/mm/storage/MsgInfo;", "msgCluster", "onDyeingTemplateClick", "", "context", "Landroid/content/Context;", "reportMsgNotify", "username", "actionType", "notifyType", "notifyMsgId", "notifyRow", "sessionId", "scene", "enterId", "setFollowMaxLine", "view", "Landroid/widget/TextView;", "setMaxLine", "plugin-biz_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"cacheAvatarUrl", "", "cacheFollowMsgId", "", "cacheFollowValues", "", "cacheMsgId", "cacheUrlMsgId", "cacheValues", "checkNewDyeingTemplate", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "checkShowDigesNum", "getArticleUrl", "getAvatarUrl", "getDisplayName", "getDyeingDigest", "getDyeingTemplateWord", "Landroid/text/SpannableStringBuilder;", "index", "", "getFollowDisplayName", "getFollowDyeingTemplateWord", "getFollowValue", "getIconUrl", "getItemShowType", "getMsgType", "getUnreadCount", "getUserName", "getValue", "hasOfficialAccountRedDot", "isDyeingTemplateToTimeline", "msg", "Lcom/tencent/mm/storage/MsgInfo;", "msgCluster", "onDyeingTemplateClick", "", "context", "Landroid/content/Context;", "reportMsgNotify", "username", "actionType", "notifyType", "notifyMsgId", "notifyRow", "sessionId", "scene", "enterId", "setFollowMaxLine", "view", "Landroid/widget/TextView;", "setMaxLine", "plugin-biz_release"})
 public final class ag
 {
-  private static long NRA;
-  private static Map<String, String> NRB;
-  private static long NRy;
-  private static Map<String, String> NRz;
+  private static long Vft;
+  private static String Vfu;
+  private static long Vfv;
+  private static Map<String, String> Vfw;
+  private static long Vfx;
+  private static Map<String, String> Vfy;
   
-  public static final String H(z paramz)
+  public static final String M(z paramz)
   {
-    AppMethodBeat.i(212668);
-    p.h(paramz, "info");
+    AppMethodBeat.i(206136);
+    p.k(paramz, "info");
     a locala = (a)new a(paramz);
     Object localObject1 = "";
     Object localObject2;
     String str;
-    if ((paramz.isText()) || (paramz.gAz()))
+    if ((paramz.hwH()) || (paramz.hwG()))
     {
-      localObject2 = M(paramz);
+      localObject2 = S(paramz);
       str = ".msgsource.notify_msg.";
     }
     for (;;)
@@ -51,15 +52,15 @@ public final class ag
       if (Util.isNullOrNil((String)localObject1))
       {
         localObject2 = localObject1;
-        if (paramz.gAx()) {
+        if (paramz.hwE()) {
           localObject2 = (String)locala.invoke();
         }
       }
-      AppMethodBeat.o(212668);
+      AppMethodBeat.o(206136);
       return localObject2;
-      if (paramz.gAx())
+      if (paramz.hwE())
       {
-        localObject2 = K(paramz);
+        localObject2 = Q(paramz);
         str = ".msg.appmsg.mmreader.notify_msg.";
       }
       else
@@ -70,15 +71,15 @@ public final class ag
     }
   }
   
-  public static final String I(z paramz)
+  public static final String N(z paramz)
   {
-    AppMethodBeat.i(212669);
-    p.h(paramz, "info");
+    AppMethodBeat.i(206138);
+    p.k(paramz, "info");
     String str = "";
-    Map localMap = K(paramz);
+    Map localMap = Q(paramz);
     if (localMap == null)
     {
-      AppMethodBeat.o(212669);
+      AppMethodBeat.o(206138);
       return "";
     }
     paramz = str;
@@ -90,60 +91,94 @@ public final class ag
         paramz = "";
       }
     }
-    AppMethodBeat.o(212669);
+    AppMethodBeat.o(206138);
     return paramz;
   }
   
-  public static final boolean J(z paramz)
+  public static final String O(z paramz)
   {
-    AppMethodBeat.i(212672);
-    p.h(paramz, "info");
-    if (!paramz.gAx())
+    AppMethodBeat.i(206140);
+    p.k(paramz, "info");
+    if ((paramz.field_msgId == Vft) && (Vfu != null))
     {
-      AppMethodBeat.o(212672);
+      paramz = Vfu;
+      if (paramz == null) {
+        p.iCn();
+      }
+      AppMethodBeat.o(206140);
+      return paramz;
+    }
+    Object localObject1 = "";
+    Object localObject2 = XmlParser.parseXml(paramz.field_content, "avatar_url", null);
+    if (localObject2 == null)
+    {
+      AppMethodBeat.o(206140);
+      return "";
+    }
+    if (localObject2 != null)
+    {
+      localObject2 = (String)((Map)localObject2).get(".avatar_url");
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      Vfu = (String)localObject1;
+      Vft = paramz.field_msgId;
+    }
+    AppMethodBeat.o(206140);
+    return localObject1;
+  }
+  
+  public static final boolean P(z paramz)
+  {
+    AppMethodBeat.i(206147);
+    p.k(paramz, "info");
+    if (!paramz.hwE())
+    {
+      AppMethodBeat.o(206147);
       return false;
     }
-    paramz = K(paramz);
+    paramz = Q(paramz);
     if (paramz == null)
     {
-      AppMethodBeat.o(212672);
+      AppMethodBeat.o(206147);
       return false;
     }
     if ((paramz != null) && (!Util.isNullOrNil((String)paramz.get(".msg.appmsg.mmreader.notify_msg.act"))))
     {
-      AppMethodBeat.o(212672);
+      AppMethodBeat.o(206147);
       return true;
     }
     Log.i("MicroMsg.BizTimeLineStorageLogicExKt", "checkNewDyeingTemplate false");
-    AppMethodBeat.o(212672);
+    AppMethodBeat.o(206147);
     return false;
   }
   
-  public static final Map<String, String> K(z paramz)
+  public static final Map<String, String> Q(z paramz)
   {
-    AppMethodBeat.i(212673);
-    if ((paramz.field_msgId == NRy) && (NRz != null))
+    AppMethodBeat.i(206148);
+    if ((paramz.field_msgId == Vfv) && (Vfw != null))
     {
-      paramz = NRz;
-      AppMethodBeat.o(212673);
+      paramz = Vfw;
+      AppMethodBeat.o(206148);
       return paramz;
     }
-    NRy = paramz.field_msgId;
+    Vfv = paramz.field_msgId;
     paramz = XmlParser.parseXml(paramz.field_content, "msg", null);
-    NRz = paramz;
-    AppMethodBeat.o(212673);
+    Vfw = paramz;
+    AppMethodBeat.o(206148);
     return paramz;
   }
   
-  public static final String L(z paramz)
+  public static final String R(z paramz)
   {
-    AppMethodBeat.i(212677);
-    p.h(paramz, "info");
+    AppMethodBeat.i(206155);
+    p.k(paramz, "info");
     String str = "";
-    Map localMap = M(paramz);
+    Map localMap = S(paramz);
     if (localMap == null)
     {
-      AppMethodBeat.o(212677);
+      AppMethodBeat.o(206155);
       return "";
     }
     paramz = str;
@@ -163,32 +198,32 @@ public final class ag
       }
       paramz = paramz;
     }
-    AppMethodBeat.o(212677);
+    AppMethodBeat.o(206155);
     return paramz;
   }
   
-  private static final Map<String, String> M(z paramz)
+  private static final Map<String, String> S(z paramz)
   {
-    AppMethodBeat.i(212678);
-    if ((paramz.field_msgId == NRA) && (NRB != null))
+    AppMethodBeat.i(206158);
+    if ((paramz.field_msgId == Vfx) && (Vfy != null))
     {
-      paramz = NRB;
-      AppMethodBeat.o(212678);
+      paramz = Vfy;
+      AppMethodBeat.o(206158);
       return paramz;
     }
-    NRA = paramz.field_msgId;
-    paramz = XmlParser.parseXml(paramz.ajw(), "msgsource", null);
-    NRB = paramz;
-    AppMethodBeat.o(212678);
+    Vfx = paramz.field_msgId;
+    paramz = XmlParser.parseXml(paramz.apc(), "msgsource", null);
+    Vfy = paramz;
+    AppMethodBeat.o(206158);
     return paramz;
   }
   
   public static final void a(z paramz, int paramInt, TextView paramTextView)
   {
-    AppMethodBeat.i(212666);
-    p.h(paramz, "info");
-    p.h(paramTextView, "view");
-    Map localMap = K(paramz);
+    AppMethodBeat.i(206131);
+    p.k(paramz, "info");
+    p.k(paramTextView, "view");
+    Map localMap = Q(paramz);
     if (localMap != null)
     {
       StringBuilder localStringBuilder = new StringBuilder(".msg.appmsg.mmreader.notify_msg.msg.item");
@@ -210,7 +245,7 @@ public final class ag
         i = 2147483647;
       }
       paramTextView.setMaxLines(i);
-      AppMethodBeat.o(212666);
+      AppMethodBeat.o(206131);
       return;
       paramz = Integer.valueOf(paramInt);
       break;
@@ -219,18 +254,18 @@ public final class ag
   
   public static final void a(String paramString, int paramInt1, int paramInt2, long paramLong, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    AppMethodBeat.i(212674);
+    AppMethodBeat.i(206151);
     int i = (int)(System.currentTimeMillis() / 1000L);
-    h.CyF.a(17750, new Object[] { paramString, Integer.valueOf(i), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6) });
-    AppMethodBeat.o(212674);
+    com.tencent.mm.plugin.report.service.h.IzE.a(17750, new Object[] { paramString, Integer.valueOf(i), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6) });
+    AppMethodBeat.o(206151);
   }
   
   public static final void b(z paramz, int paramInt, TextView paramTextView)
   {
-    AppMethodBeat.i(212676);
-    p.h(paramz, "info");
-    p.h(paramTextView, "view");
-    Map localMap = M(paramz);
+    AppMethodBeat.i(206154);
+    p.k(paramz, "info");
+    p.k(paramTextView, "view");
+    Map localMap = S(paramz);
     if (localMap != null)
     {
       StringBuilder localStringBuilder = new StringBuilder(".msgsource.notify_msg.msg.item");
@@ -252,45 +287,57 @@ public final class ag
         i = 2147483647;
       }
       paramTextView.setMaxLines(i);
-      AppMethodBeat.o(212676);
+      AppMethodBeat.o(206154);
       return;
       paramz = Integer.valueOf(paramInt);
       break;
     }
   }
   
-  public static final boolean d(ca paramca, String paramString)
+  public static final int f(z paramz)
   {
-    AppMethodBeat.i(212665);
+    AppMethodBeat.i(206142);
+    p.k(paramz, "info");
+    paramz = Q(paramz);
+    if (paramz == null)
+    {
+      AppMethodBeat.o(206142);
+      return 0;
+    }
+    if (paramz != null) {}
+    for (int i = Util.getInt((String)paramz.get(".msg.appmsg.mmreader.notify_msg.scene"), 0);; i = 0)
+    {
+      AppMethodBeat.o(206142);
+      return i;
+    }
+  }
+  
+  public static final boolean f(ca paramca, String paramString)
+  {
+    AppMethodBeat.i(206129);
     if (paramca == null)
     {
-      AppMethodBeat.o(212665);
+      AppMethodBeat.o(206129);
       return false;
     }
-    if (paramca.gDj() != true)
+    if (paramca.hzw() != true)
     {
       Log.i("MicroMsg.BizTimeLineStorageLogicExKt", "isDyeingTemplateToTimeline isTemplateMsg false");
-      AppMethodBeat.o(212665);
+      AppMethodBeat.o(206129);
       return false;
     }
-    if (!com.tencent.mm.model.ab.Jy(paramString))
+    if (!ab.QR(paramString))
     {
       Log.i("MicroMsg.BizTimeLineStorageLogicExKt", "isDyeingTemplateToTimeline isMsgClusterNotifyMessage = false");
-      AppMethodBeat.o(212665);
+      AppMethodBeat.o(206129);
       return false;
     }
-    if (!ab.clc())
-    {
-      Log.i("MicroMsg.BizTimeLineStorageLogicExKt", "isDyeingTemplateToTimeline isBizTimeLineOpen = false");
-      AppMethodBeat.o(212665);
-      return false;
-    }
-    paramString = (com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class);
-    if ((paramString != null) && (paramString.a(b.a.rUe, 1) == 1)) {}
+    paramString = (com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class);
+    if ((paramString != null) && (paramString.a(b.a.vAJ, 1) == 1)) {}
     for (int i = 1; i == 0; i = 0)
     {
       Log.i("MicroMsg.BizTimeLineStorageLogicExKt", "isDyeingTemplateToTimeline open = false");
-      AppMethodBeat.o(212665);
+      AppMethodBeat.o(206129);
       return false;
     }
     paramca = XmlParser.parseXml(paramca.getContent(), "msg", null);
@@ -304,84 +351,66 @@ public final class ag
         if (Util.isNullOrNil(paramca)) {
           break;
         }
-        AppMethodBeat.o(212665);
+        AppMethodBeat.o(206129);
         return true;
       }
-      AppMethodBeat.o(212665);
+      AppMethodBeat.o(206129);
       return false;
     }
     Log.i("MicroMsg.BizTimeLineStorageLogicExKt", "isDyeingTemplateToTimeline false");
-    AppMethodBeat.o(212665);
+    AppMethodBeat.o(206129);
     return false;
   }
   
-  public static final int f(z paramz)
+  public static final int hxB()
   {
-    AppMethodBeat.i(212670);
-    p.h(paramz, "info");
-    paramz = K(paramz);
-    if (paramz == null)
-    {
-      AppMethodBeat.o(212670);
-      return 0;
-    }
-    if (paramz != null) {}
-    for (int i = Util.getInt((String)paramz.get(".msg.appmsg.mmreader.notify_msg.scene"), 0);; i = 0)
-    {
-      AppMethodBeat.o(212670);
-      return i;
-    }
-  }
-  
-  public static final int gBq()
-  {
-    AppMethodBeat.i(212671);
-    Object localObject = g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-    p.g(localObject, "service(IMessengerStorage::class.java)");
-    localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).aST();
+    AppMethodBeat.i(206144);
+    Object localObject = com.tencent.mm.kernel.h.ae(n.class);
+    p.j(localObject, "service(IMessengerStorage::class.java)");
+    localObject = ((n)localObject).bbR();
     if (localObject != null)
     {
-      localObject = ((bw)localObject).bjY("officialaccounts");
+      localObject = ((bw)localObject).bwx("officialaccounts");
       if (localObject != null) {}
     }
     else
     {
-      AppMethodBeat.o(212671);
+      AppMethodBeat.o(206144);
       return 0;
     }
-    if (((az)localObject).ajG() <= 0)
+    if (((az)localObject).apz() <= 0)
     {
-      if (((((az)localObject).oV(8388608)) || (((az)localObject).oV(2097152))) && (((az)localObject).ajH() > 0))
+      if (((((az)localObject).rp(8388608)) || (((az)localObject).rp(2097152))) && (((az)localObject).apC() > 0))
       {
-        AppMethodBeat.o(212671);
+        AppMethodBeat.o(206144);
         return 1;
       }
-      AppMethodBeat.o(212671);
+      AppMethodBeat.o(206144);
       return 0;
     }
-    if ((ab.clc()) && (!((az)localObject).oV(16)) && (!((az)localObject).oV(64)))
+    if ((!((az)localObject).rp(16)) && (!((az)localObject).rp(64)))
     {
-      AppMethodBeat.o(212671);
+      AppMethodBeat.o(206144);
       return 0;
     }
-    AppMethodBeat.o(212671);
+    AppMethodBeat.o(206144);
     return 1;
   }
   
-  public static final SpannableStringBuilder h(z paramz, int paramInt)
+  public static final SpannableStringBuilder j(z paramz, int paramInt)
   {
-    AppMethodBeat.i(212667);
-    p.h(paramz, "info");
+    AppMethodBeat.i(206133);
+    p.k(paramz, "info");
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    Map localMap = K(paramz);
+    Map localMap = Q(paramz);
     if (localMap == null)
     {
-      AppMethodBeat.o(212667);
+      AppMethodBeat.o(206133);
       return localSpannableStringBuilder;
     }
     if ((localMap != null) && (Util.isNullOrNil((String)localMap.get(".msg.appmsg.mmreader.notify_msg.act"))))
     {
-      AppMethodBeat.o(212667);
+      AppMethodBeat.o(206133);
       return localSpannableStringBuilder;
     }
     kotlin.g.a.b localb = (kotlin.g.a.b)new ag.b(localMap);
@@ -393,25 +422,25 @@ public final class ag
       if (!Util.isNullOrNil((String)localMap.get(paramz + ".content"))) {
         localSpannableStringBuilder.append((CharSequence)localb.invoke(paramz));
       }
-      AppMethodBeat.o(212667);
+      AppMethodBeat.o(206133);
       return localSpannableStringBuilder;
     }
   }
   
-  public static final SpannableStringBuilder i(z paramz, int paramInt)
+  public static final SpannableStringBuilder k(z paramz, int paramInt)
   {
-    AppMethodBeat.i(212675);
-    p.h(paramz, "info");
+    AppMethodBeat.i(206152);
+    p.k(paramz, "info");
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    Map localMap = M(paramz);
+    Map localMap = S(paramz);
     if (localMap == null)
     {
-      AppMethodBeat.o(212675);
+      AppMethodBeat.o(206152);
       return localSpannableStringBuilder;
     }
     if ((localMap != null) && (Util.isNullOrNil((String)localMap.get(".msgsource.notify_msg.act"))))
     {
-      AppMethodBeat.o(212675);
+      AppMethodBeat.o(206152);
       return localSpannableStringBuilder;
     }
     kotlin.g.a.b localb = (kotlin.g.a.b)new ag.c(localMap);
@@ -423,12 +452,12 @@ public final class ag
       if (!Util.isNullOrNil((String)localMap.get(paramz + ".content"))) {
         localSpannableStringBuilder.append((CharSequence)localb.invoke(paramz));
       }
-      AppMethodBeat.o(212675);
+      AppMethodBeat.o(206152);
       return localSpannableStringBuilder;
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<no name provided>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<no name provided>", "", "invoke"})
   static final class a
     extends q
     implements a<String>
@@ -438,43 +467,10 @@ public final class ag
       super();
     }
   }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<no name provided>", "", "invoke"})
-  public static final class d
-    extends q
-    implements a<x>
-  {
-    public d(z paramz, Map paramMap, Context paramContext)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<no name provided>", "", "invoke"})
-  public static final class e
-    extends q
-    implements a<x>
-  {
-    public e(Map paramMap, z paramz, Context paramContext)
-    {
-      super();
-    }
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<no name provided>", "", "invoke"})
-  public static final class f
-    extends q
-    implements a<x>
-  {
-    public f(Map paramMap, z paramz, Context paramContext)
-    {
-      super();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.storage.ag
  * JD-Core Version:    0.7.0.1
  */

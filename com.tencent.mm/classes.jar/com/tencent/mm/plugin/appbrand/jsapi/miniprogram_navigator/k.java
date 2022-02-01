@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.h;
-import com.tencent.mm.plugin.appbrand.h.c;
-import com.tencent.mm.plugin.appbrand.h.d;
+import com.tencent.mm.plugin.appbrand.k.c;
+import com.tencent.mm.plugin.appbrand.k.d;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.report.model.AdReportCgiHelper;
+import com.tencent.mm.sdk.platformtools.ConnectivityCompat;
+import com.tencent.mm.sdk.platformtools.ConnectivityCompat.Companion;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
@@ -17,9 +18,9 @@ public final class k
   {
     AppMethodBeat.i(46635);
     long l = Util.nowMilliSecond();
-    String str1 = NetStatusUtil.getConnectedWifiSsid(MMApplicationContext.getContext());
-    String str2 = NetStatusUtil.getConnectedWifiBssid(MMApplicationContext.getContext());
-    paramString1 = paramString3 + "," + paramString2 + "," + paramString1 + "," + l + "," + paramLong + "," + paramInt + "," + bHy() + "," + str1 + "," + str2 + ",,";
+    String str1 = ConnectivityCompat.Companion.getFormattedWiFiSsid();
+    String str2 = ConnectivityCompat.Companion.getFormattedWiFiBssid();
+    paramString1 = paramString3 + "," + paramString2 + "," + paramString1 + "," + l + "," + paramLong + "," + paramInt + "," + bTg() + "," + str1 + "," + str2 + ",,";
     Log.v("MicroMsg.MiniProgramNavigatorAdReportHelper", "closeType:%d stayTime:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
     AdReportCgiHelper.a(16004, paramString1, null);
     AppMethodBeat.o(46635);
@@ -33,24 +34,24 @@ public final class k
       AppMethodBeat.o(46633);
       return;
     }
-    final String str = paramAppBrandStatObject.meP;
+    final String str = paramAppBrandStatObject.pcH;
     if (Util.isNullOrNil(str))
     {
       AppMethodBeat.o(46633);
       return;
     }
-    h.a(paramString1, new h.c()
+    com.tencent.mm.plugin.appbrand.k.a(paramString1, new k.c()
     {
-      private void a(h.d paramAnonymousd, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3)
+      private void a(k.d paramAnonymousd, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3)
       {
         AppMethodBeat.i(46631);
         k.a(paramAnonymousd, paramAnonymousString1, paramAnonymousString2, paramAnonymousString3, Util.nowMilliSecond() - this.val$startTime);
-        this.mfj.meP = null;
-        h.b(paramAnonymousString1, this);
+        this.pdi.pcH = null;
+        com.tencent.mm.plugin.appbrand.k.b(paramAnonymousString1, this);
         AppMethodBeat.o(46631);
       }
       
-      public final void a(h.d paramAnonymousd)
+      public final void a(k.d paramAnonymousd)
       {
         AppMethodBeat.i(46629);
         a(paramAnonymousd, this.val$appId, paramString2, str);
@@ -60,7 +61,7 @@ public final class k
       public final void onDestroy()
       {
         AppMethodBeat.i(46630);
-        a(h.Uc(this.val$appId), this.val$appId, paramString2, str);
+        a(com.tencent.mm.plugin.appbrand.k.abM(this.val$appId), this.val$appId, paramString2, str);
         AppMethodBeat.o(46630);
       }
     });
@@ -75,16 +76,16 @@ public final class k
       AppMethodBeat.o(46634);
       return;
     }
-    if (Util.isNullOrNil(paramAppBrandStatObject.meP))
+    if (Util.isNullOrNil(paramAppBrandStatObject.pcH))
     {
       AppMethodBeat.o(46634);
       return;
     }
-    a(4, paramString1, paramString2, paramAppBrandStatObject.meP, 0L);
+    a(4, paramString1, paramString2, paramAppBrandStatObject.pcH, 0L);
     AppMethodBeat.o(46634);
   }
   
-  private static int bHy()
+  private static int bTg()
   {
     AppMethodBeat.i(46636);
     switch (NetStatusUtil.getNetType(MMApplicationContext.getContext()))
@@ -120,7 +121,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.k
  * JD-Core Version:    0.7.0.1
  */

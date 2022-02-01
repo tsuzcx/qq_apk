@@ -15,24 +15,24 @@ import javax.crypto.spec.SecretKeySpec;
 
 public final class d
 {
-  com.tencent.mm.plugin.wear.model.a.b IxF;
-  com.tencent.mm.plugin.wear.model.e.b IxG;
-  public i IxH;
-  j IxI;
-  p IxJ;
+  com.tencent.mm.plugin.wear.model.a.b PrK;
+  com.tencent.mm.plugin.wear.model.e.b PrL;
+  public i PrM;
+  j PrN;
+  p PrO;
   
   public d()
   {
     AppMethodBeat.i(29980);
-    this.IxF = new com.tencent.mm.plugin.wear.model.a.a();
-    this.IxG = new com.tencent.mm.plugin.wear.model.e.b();
-    this.IxH = new i();
-    this.IxI = new j();
-    this.IxJ = new p();
+    this.PrK = new com.tencent.mm.plugin.wear.model.a.a();
+    this.PrL = new com.tencent.mm.plugin.wear.model.e.b();
+    this.PrM = new i();
+    this.PrN = new j();
+    this.PrO = new p();
     AppMethodBeat.o(29980);
   }
   
-  public final boolean cv(byte[] paramArrayOfByte)
+  public final boolean cM(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(29983);
     if (paramArrayOfByte == null)
@@ -40,21 +40,21 @@ public final class d
       AppMethodBeat.o(29983);
       return false;
     }
-    if (!fVW())
+    if (!gOG())
     {
       AppMethodBeat.o(29983);
       return false;
     }
     MMApplicationContext.getContext();
     String str = String.format("/wechat/%s/%d", new Object[] { "phone", Long.valueOf(System.currentTimeMillis()) });
-    com.tencent.mm.plugin.wear.model.a.b localb = fVX();
+    com.tencent.mm.plugin.wear.model.a.b localb = gOH();
     if (localb == null)
     {
       AppMethodBeat.o(29983);
       return false;
     }
     if (paramArrayOfByte.length > 92160) {}
-    for (paramArrayOfByte = localb.x(str, paramArrayOfByte); paramArrayOfByte.code == 0; paramArrayOfByte = localb.w(str, paramArrayOfByte))
+    for (paramArrayOfByte = localb.C(str, paramArrayOfByte); paramArrayOfByte.code == 0; paramArrayOfByte = localb.B(str, paramArrayOfByte))
     {
       AppMethodBeat.o(29983);
       return true;
@@ -63,10 +63,10 @@ public final class d
     return false;
   }
   
-  public final byte[] cw(byte[] paramArrayOfByte)
+  public final byte[] cN(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(29984);
-    Object localObject = this.IxG.getSessionKey();
+    Object localObject = this.PrL.getSessionKey();
     if ((paramArrayOfByte != null) && (localObject != null)) {
       try
       {
@@ -89,15 +89,15 @@ public final class d
     return null;
   }
   
-  public final byte[] cx(byte[] paramArrayOfByte)
+  public final byte[] cO(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(29985);
-    byte[] arrayOfByte = this.IxG.getSessionKey();
+    byte[] arrayOfByte = this.PrL.getSessionKey();
     if ((paramArrayOfByte != null) && (arrayOfByte != null)) {
       try
       {
         Log.d("MicroMsg.Wear.WearConnectLogic", "sessionKey is not null %s", new Object[] { g.getMessageDigest(arrayOfByte) });
-        paramArrayOfByte = com.tencent.mm.plugin.wear.a.a.j(paramArrayOfByte, arrayOfByte);
+        paramArrayOfByte = com.tencent.mm.plugin.wear.a.a.l(paramArrayOfByte, arrayOfByte);
         AppMethodBeat.o(29985);
         return paramArrayOfByte;
       }
@@ -112,10 +112,10 @@ public final class d
     return null;
   }
   
-  public final boolean fVW()
+  public final boolean gOG()
   {
     AppMethodBeat.i(29981);
-    if ((fVX() != null) && (fVX().fWb().size() > 0))
+    if ((gOH() != null) && (gOH().gOK().size() > 0))
     {
       AppMethodBeat.o(29981);
       return true;
@@ -124,12 +124,12 @@ public final class d
     return false;
   }
   
-  public final com.tencent.mm.plugin.wear.model.a.b fVX()
+  public final com.tencent.mm.plugin.wear.model.a.b gOH()
   {
     AppMethodBeat.i(29982);
-    if ((this.IxF.isAvailable()) && (this.IxF.fWc()))
+    if ((this.PrK.isAvailable()) && (this.PrK.gOL()))
     {
-      com.tencent.mm.plugin.wear.model.a.b localb = this.IxF;
+      com.tencent.mm.plugin.wear.model.a.b localb = this.PrK;
       AppMethodBeat.o(29982);
       return localb;
     }
@@ -139,7 +139,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.d
  * JD-Core Version:    0.7.0.1
  */

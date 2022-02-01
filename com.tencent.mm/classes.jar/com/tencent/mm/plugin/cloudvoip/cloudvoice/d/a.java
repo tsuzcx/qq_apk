@@ -11,9 +11,9 @@ public final class a
   public byte cRsvd1;
   public byte cSkipFlag;
   public short iKbps;
-  public byte qrE;
-  public byte qrF;
   public byte[] s2p;
+  public byte tQn;
+  public byte tQo;
   
   public a()
   {
@@ -24,7 +24,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.cloudvoip.cloudvoice.d.a
  * JD-Core Version:    0.7.0.1
  */

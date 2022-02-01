@@ -7,7 +7,7 @@ final class URISpanHandlerSet$TransferUriSpanHandler$3
 {
   URISpanHandlerSet$TransferUriSpanHandler$3(URISpanHandlerSet.TransferUriSpanHandler paramTransferUriSpanHandler) {}
   
-  public final void e(boolean paramBoolean, String paramString) {}
+  public final void g(boolean paramBoolean, String paramString) {}
 }
 
 

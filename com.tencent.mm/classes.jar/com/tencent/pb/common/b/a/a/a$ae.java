@@ -1,34 +1,34 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.e;
+import com.google.b.a.b;
+import com.google.b.a.e;
 
 public final class a$ae
   extends e
 {
-  public a.az RDq = null;
-  public int REZ = 0;
+  public a.ay ZeS = null;
+  public int ZgD = 0;
   public String groupId = "";
   
   public a$ae()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public final int Ig()
+  public final int JG()
   {
-    int j = super.Ig();
+    int j = super.JG();
     int i = j;
     if (!this.groupId.equals("")) {
-      i = j + b.f(1, this.groupId);
+      i = j + b.g(1, this.groupId);
     }
     j = i;
-    if (this.RDq != null) {
-      j = i + b.b(2, this.RDq);
+    if (this.ZeS != null) {
+      j = i + b.b(2, this.ZeS);
     }
     i = j;
-    if (this.REZ != 0) {
-      i = j + b.bu(3, this.REZ);
+    if (this.ZgD != 0) {
+      i = j + b.bM(3, this.ZgD);
     }
     return i;
   }
@@ -36,13 +36,13 @@ public final class a$ae
   public final void a(b paramb)
   {
     if (!this.groupId.equals("")) {
-      paramb.e(1, this.groupId);
+      paramb.f(1, this.groupId);
     }
-    if (this.RDq != null) {
-      paramb.a(2, this.RDq);
+    if (this.ZeS != null) {
+      paramb.a(2, this.ZeS);
     }
-    if (this.REZ != 0) {
-      paramb.bs(3, this.REZ);
+    if (this.ZgD != 0) {
+      paramb.bJ(3, this.ZgD);
     }
     super.a(paramb);
   }

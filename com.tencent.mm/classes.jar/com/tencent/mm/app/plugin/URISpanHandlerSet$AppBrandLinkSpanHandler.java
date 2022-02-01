@@ -3,7 +3,7 @@ package com.tencent.mm.app.plugin;
 import android.os.Bundle;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.l;
+import com.tencent.mm.ao.l;
 import com.tencent.mm.pluginsdk.ui.span.i;
 import com.tencent.mm.sdk.platformtools.Log;
 
@@ -16,29 +16,24 @@ class URISpanHandlerSet$AppBrandLinkSpanHandler
     super(paramURISpanHandlerSet);
   }
   
-  final int[] Xp()
-  {
-    return new int[] { 45 };
-  }
-  
   final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
   {
-    AppMethodBeat.i(231418);
+    AppMethodBeat.i(274476);
     if (paramu.type == 45)
     {
-      if ((paramu.fromScene == 1) && (paramu.dTX != null)) {
-        l.S(paramu.dTX);
+      if ((paramu.fromScene == 1) && (paramu.fNz != null)) {
+        l.Y(paramu.fNz);
       }
       if (parami != null)
       {
         Log.i("MicroMsg.URISpanHandlerSet", "AppBrandLinkSpanHandler click appbrandlink");
         parami.b(paramu);
-        AppMethodBeat.o(231418);
+        AppMethodBeat.o(274476);
         return true;
       }
       Log.e("MicroMsg.URISpanHandlerSet", "clickCallback is null, return");
     }
-    AppMethodBeat.o(231418);
+    AppMethodBeat.o(274476);
     return false;
   }
   
@@ -47,7 +42,12 @@ class URISpanHandlerSet$AppBrandLinkSpanHandler
     return false;
   }
   
-  final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
+  final int[] abR()
+  {
+    return new int[] { 45 };
+  }
+  
+  final com.tencent.mm.pluginsdk.ui.applet.u hi(String paramString)
   {
     return null;
   }

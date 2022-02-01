@@ -4,8 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.i.c;
-import com.tencent.mm.pluginsdk.i.c.a;
+import com.tencent.mm.pluginsdk.j.c;
+import com.tencent.mm.pluginsdk.j.c.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
@@ -14,10 +14,10 @@ public class SuicideListener
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(194715);
+    AppMethodBeat.i(196054);
     Log.i("Tinker.TinkerResponseProcessor", "do suicide");
-    c.JYn.bV(MMApplicationContext.getContext());
-    AppMethodBeat.o(194715);
+    c.QYP.bT(MMApplicationContext.getContext());
+    AppMethodBeat.o(196054);
   }
 }
 

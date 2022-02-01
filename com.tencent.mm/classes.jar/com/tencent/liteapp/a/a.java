@@ -9,32 +9,34 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/liteapp/channel/WxaLiteAppConsumer;", "Lcom/tencent/wxa/MethodCallConsumer;", "()V", "consume", "Lcom/tencent/wxa/MethodCallConsumer$Result;", "call", "Lio/flutter/plugin/common/MethodCall;", "enterFullScreen", "args", "", "exitFullScreen", "getCutOutHeight", "hasCutOut", "hideKeyboard", "inputLocationChange", "navigateBack", "Companion", "wxa_lite_app_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/liteapp/channel/WxaLiteAppConsumer;", "Lcom/tencent/wxa/MethodCallConsumer;", "()V", "consume", "Lcom/tencent/wxa/MethodCallConsumer$Result;", "call", "Lio/flutter/plugin/common/MethodCall;", "enterFullScreen", "args", "", "exitFullScreen", "getCutOutHeight", "hasCutOut", "hideKeyboard", "inputLocationChange", "navigateBack", "openWebView", "Companion", "wxa_lite_app_release"})
 public final class a
-  extends com.tencent.wxa.a
+  extends com.tencent.wxa.b
 {
   private static final String TAG = "WxaLiteApp.WxaLiteAppConsumer";
-  public static final a.a cqS;
+  public static final a coG;
   
   static
   {
-    AppMethodBeat.i(197924);
-    cqS = new a.a((byte)0);
+    AppMethodBeat.i(259176);
+    coG = new a((byte)0);
     TAG = "WxaLiteApp.WxaLiteAppConsumer";
-    AppMethodBeat.o(197924);
+    AppMethodBeat.o(259176);
   }
   
-  public final com.tencent.wxa.a.a a(j paramj)
+  public final com.tencent.wxa.b.a a(j paramj)
   {
-    AppMethodBeat.i(197923);
+    AppMethodBeat.i(259173);
     if (paramj == null) {
-      p.hyc();
+      p.iCn();
     }
     Object localObject = paramj.method;
-    paramj = paramj.SxX;
+    paramj = paramj.ZZe;
     com.tencent.liteapp.b.b.d(TAG, "consume method: ".concat(String.valueOf(localObject)), new Object[0]);
     if (localObject == null) {}
-    label238:
+    label307:
+    label436:
+    label767:
     do
     {
       do
@@ -47,192 +49,227 @@ public final class a
             {
               do
               {
-                for (;;)
+                do
                 {
-                  paramj = hrG();
-                  p.g(paramj, "consumeSkip()");
-                  AppMethodBeat.o(197923);
-                  return paramj;
-                  switch (((String)localObject).hashCode())
+                  do
                   {
-                  }
-                }
-              } while (!((String)localObject).equals("inputLocationChange"));
-              p.g(paramj, "args");
-              localObject = com.tencent.wxa.c.hrH();
-              p.g(localObject, "WxaRouter.getInstance()");
-              localObject = ((com.tencent.wxa.c)localObject).hrJ();
-              p.g(localObject, "WxaRouter.getInstance().currentActivity");
-              localObject = ((com.tencent.wxa.b.b)localObject).getActivity();
-              if (localObject != null) {
-                break;
-              }
-              paramj = eI(Boolean.TRUE);
-              p.g(paramj, "consumed(true)");
-              AppMethodBeat.o(197923);
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          do
+                          {
+                            do
+                            {
+                              do
+                              {
+                                do
+                                {
+                                  for (;;)
+                                  {
+                                    paramj = ivs();
+                                    p.j(paramj, "consumeSkip()");
+                                    AppMethodBeat.o(259173);
+                                    return paramj;
+                                    switch (((String)localObject).hashCode())
+                                    {
+                                    }
+                                  }
+                                } while (!((String)localObject).equals("inputLocationChange"));
+                                p.j(paramj, "args");
+                                localObject = com.tencent.wxa.c.ivt();
+                                p.j(localObject, "WxaRouter.getInstance()");
+                                localObject = ((com.tencent.wxa.c)localObject).ivv();
+                                p.j(localObject, "WxaRouter.getInstance().currentActivity");
+                                localObject = ((com.tencent.wxa.b.b)localObject).getActivity();
+                                if (localObject != null) {
+                                  break;
+                                }
+                                paramj = eO(Boolean.TRUE);
+                                p.j(paramj, "consumed(true)");
+                                AppMethodBeat.o(259173);
+                                return paramj;
+                              } while (!((String)localObject).equals("hideKeyboard"));
+                              paramj = com.tencent.wxa.c.ivt();
+                              p.j(paramj, "WxaRouter.getInstance()");
+                              paramj = paramj.ivv();
+                              p.j(paramj, "WxaRouter.getInstance().currentActivity");
+                              paramj = paramj.getActivity();
+                              if (paramj != null) {
+                                break label980;
+                              }
+                              paramj = eO(Boolean.TRUE);
+                              p.j(paramj, "consumed(true)");
+                              AppMethodBeat.o(259173);
+                              return paramj;
+                            } while (!((String)localObject).equals("hasCutOut"));
+                            paramj = com.tencent.wxa.c.ivt();
+                            p.j(paramj, "WxaRouter.getInstance()");
+                            paramj = paramj.ivv();
+                            p.j(paramj, "WxaRouter.getInstance().currentActivity");
+                            paramj = eO(Boolean.valueOf(e.cE((Context)paramj.getActivity())));
+                            p.j(paramj, "consumed(result)");
+                            AppMethodBeat.o(259173);
+                            return paramj;
+                          } while (!((String)localObject).equals("enterFullScreen"));
+                          p.j(paramj, "args");
+                          paramj = com.tencent.wxa.c.ivt();
+                          p.j(paramj, "WxaRouter.getInstance()");
+                          paramj = paramj.ivv();
+                          p.j(paramj, "WxaRouter.getInstance().currentActivity");
+                          paramj = paramj.getActivity();
+                          if (paramj != null) {
+                            break label1018;
+                          }
+                          paramj = eO(Boolean.TRUE);
+                          p.j(paramj, "consumed(true)");
+                          AppMethodBeat.o(259173);
+                          return paramj;
+                        } while (!((String)localObject).equals("getCutOutHeight"));
+                        paramj = com.tencent.liteapp.b.cox;
+                        paramj = com.tencent.liteapp.b.a.getAppContext();
+                        localObject = com.tencent.liteapp.b.cox;
+                        paramj = eO(Double.valueOf(com.tencent.mm.ext.ui.c.H(paramj, e.aM(com.tencent.liteapp.b.a.getAppContext()))));
+                        p.j(paramj, "consumed(result)");
+                        AppMethodBeat.o(259173);
+                        return paramj;
+                      } while (!((String)localObject).equals("navigateBack"));
+                      p.j(paramj, "args");
+                      localObject = com.tencent.wxa.c.ivt();
+                      p.j(localObject, "WxaRouter.getInstance()");
+                      localObject = ((com.tencent.wxa.c)localObject).ivv();
+                      p.j(localObject, "WxaRouter.getInstance().currentActivity");
+                      localObject = ((com.tencent.wxa.b.b)localObject).getActivity();
+                      if (localObject != null) {
+                        break label1037;
+                      }
+                      paramj = eO(Boolean.TRUE);
+                      p.j(paramj, "consumed(true)");
+                      AppMethodBeat.o(259173);
+                      return paramj;
+                    } while (!((String)localObject).equals("showPicker"));
+                    paramj = eO(Boolean.TRUE);
+                    p.j(paramj, "consumed(true)");
+                    AppMethodBeat.o(259173);
+                    return paramj;
+                  } while (!((String)localObject).equals("inputOnKeyboardValueChange"));
+                  paramj = eO(Boolean.TRUE);
+                  p.j(paramj, "consumed(true)");
+                  AppMethodBeat.o(259173);
+                  return paramj;
+                } while (!((String)localObject).equals("onRenderCallback"));
+                paramj = eO(Boolean.TRUE);
+                p.j(paramj, "consumed(true)");
+                AppMethodBeat.o(259173);
+                return paramj;
+              } while (!((String)localObject).equals("generateInputEventData"));
+              paramj = eO(Boolean.TRUE);
+              p.j(paramj, "consumed(true)");
+              AppMethodBeat.o(259173);
               return paramj;
-            } while (!((String)localObject).equals("hideKeyboard"));
-            paramj = com.tencent.wxa.c.hrH();
-            p.g(paramj, "WxaRouter.getInstance()");
-            paramj = paramj.hrJ();
-            p.g(paramj, "WxaRouter.getInstance().currentActivity");
-            paramj = paramj.getActivity();
-            if (paramj != null) {
-              break label899;
-            }
-            paramj = eI(Boolean.TRUE);
-            p.g(paramj, "consumed(true)");
-            AppMethodBeat.o(197923);
+            } while (!((String)localObject).equals("publishEvent"));
+            paramj = eO(Boolean.TRUE);
+            p.j(paramj, "consumed(true)");
+            AppMethodBeat.o(259173);
             return paramj;
-          } while (!((String)localObject).equals("hasCutOut"));
-          paramj = com.tencent.wxa.c.hrH();
-          p.g(paramj, "WxaRouter.getInstance()");
-          paramj = paramj.hrJ();
-          p.g(paramj, "WxaRouter.getInstance().currentActivity");
-          paramj = eI(Boolean.valueOf(e.cI((Context)paramj.getActivity())));
-          p.g(paramj, "consumed(result)");
-          AppMethodBeat.o(197923);
+          } while (!((String)localObject).equals("exitFullScreen"));
+          p.j(paramj, "args");
+          paramj = com.tencent.wxa.c.ivt();
+          p.j(paramj, "WxaRouter.getInstance()");
+          paramj = paramj.ivv();
+          p.j(paramj, "WxaRouter.getInstance().currentActivity");
+          paramj = paramj.getActivity();
+          if (paramj != null) {
+            break label999;
+          }
+          paramj = eO(Boolean.TRUE);
+          p.j(paramj, "consumed(true)");
+          AppMethodBeat.o(259173);
           return paramj;
-        } while (!((String)localObject).equals("enterFullScreen"));
-        p.g(paramj, "args");
-        paramj = com.tencent.wxa.c.hrH();
-        p.g(paramj, "WxaRouter.getInstance()");
-        paramj = paramj.hrJ();
-        p.g(paramj, "WxaRouter.getInstance().currentActivity");
-        paramj = paramj.getActivity();
-        if (paramj != null) {
-          break label937;
-        }
-        paramj = eI(Boolean.TRUE);
-        p.g(paramj, "consumed(true)");
-        AppMethodBeat.o(197923);
+        } while (!((String)localObject).equals("getLocalFileData"));
+        paramj = eO(Boolean.TRUE);
+        p.j(paramj, "consumed(true)");
+        AppMethodBeat.o(259173);
         return paramj;
-      } while (!((String)localObject).equals("getCutOutHeight"));
-      paramj = com.tencent.liteapp.a.cqJ;
-      paramj = com.tencent.liteapp.a.a.getAppContext();
-      localObject = com.tencent.liteapp.a.cqJ;
-      paramj = eI(Double.valueOf(com.tencent.mm.ext.ui.c.E(paramj, e.aP(com.tencent.liteapp.a.a.getAppContext()))));
-      p.g(paramj, "consumed(result)");
-      AppMethodBeat.o(197923);
+      } while (!((String)localObject).equals("setCanOverScroll"));
+      paramj = eO(Boolean.TRUE);
+      p.j(paramj, "consumed(true)");
+      AppMethodBeat.o(259173);
       return paramj;
-    } while (!((String)localObject).equals("navigateBack"));
-    label299:
-    label428:
-    paramj = com.tencent.wxa.c.hrH();
-    p.g(paramj, "WxaRouter.getInstance()");
-    paramj = paramj.hrJ();
-    p.g(paramj, "WxaRouter.getInstance().currentActivity");
-    paramj = paramj.getActivity();
-    if (paramj == null) {}
+    } while (!((String)localObject).equals("openWebView"));
+    label555:
+    p.j(paramj, "args");
+    localObject = com.tencent.wxa.c.ivt();
+    p.j(localObject, "WxaRouter.getInstance()");
+    localObject = ((com.tencent.wxa.c)localObject).ivv();
+    p.j(localObject, "WxaRouter.getInstance().currentActivity");
+    localObject = ((com.tencent.wxa.b.b)localObject).getActivity();
+    if (localObject == null) {}
     for (;;)
     {
-      paramj = eI(Boolean.TRUE);
-      p.g(paramj, "consumed(true)");
-      AppMethodBeat.o(197923);
+      paramj = eO(Boolean.TRUE);
+      p.j(paramj, "consumed(true)");
+      AppMethodBeat.o(259173);
       return paramj;
-      if (!((String)localObject).equals("showPicker")) {
+      if ((!(localObject instanceof com.tencent.liteapp.ui.a)) || (!(paramj instanceof Map))) {
         break;
       }
-      paramj = eI(Boolean.TRUE);
-      p.g(paramj, "consumed(true)");
-      AppMethodBeat.o(197923);
-      return paramj;
-      if (!((String)localObject).equals("inputOnKeyboardValueChange")) {
-        break;
-      }
-      paramj = eI(Boolean.TRUE);
-      p.g(paramj, "consumed(true)");
-      AppMethodBeat.o(197923);
-      return paramj;
-      if (!((String)localObject).equals("onRenderCallback")) {
-        break;
-      }
-      paramj = eI(Boolean.TRUE);
-      p.g(paramj, "consumed(true)");
-      AppMethodBeat.o(197923);
-      return paramj;
-      if (!((String)localObject).equals("generateInputEventData")) {
-        break;
-      }
-      paramj = eI(Boolean.TRUE);
-      p.g(paramj, "consumed(true)");
-      AppMethodBeat.o(197923);
-      return paramj;
-      if (!((String)localObject).equals("publishEvent")) {
-        break;
-      }
-      paramj = eI(Boolean.TRUE);
-      p.g(paramj, "consumed(true)");
-      AppMethodBeat.o(197923);
-      return paramj;
-      if (!((String)localObject).equals("exitFullScreen")) {
-        break;
-      }
-      p.g(paramj, "args");
-      paramj = com.tencent.wxa.c.hrH();
-      p.g(paramj, "WxaRouter.getInstance()");
-      paramj = paramj.hrJ();
-      p.g(paramj, "WxaRouter.getInstance().currentActivity");
-      paramj = paramj.getActivity();
-      if (paramj == null) {}
-      for (;;)
+      localObject = (com.tencent.liteapp.ui.a)localObject;
+      paramj = ((Map)paramj).get("offset");
+      if (paramj == null)
       {
-        paramj = eI(Boolean.TRUE);
-        p.g(paramj, "consumed(true)");
-        AppMethodBeat.o(197923);
-        return paramj;
-        if (!((String)localObject).equals("getLocalFileData")) {
-          break;
-        }
-        paramj = eI(Boolean.TRUE);
-        p.g(paramj, "consumed(true)");
-        AppMethodBeat.o(197923);
-        return paramj;
-        if (!((String)localObject).equals("setCanOverScroll")) {
-          break;
-        }
-        paramj = eI(Boolean.TRUE);
-        p.g(paramj, "consumed(true)");
-        AppMethodBeat.o(197923);
-        return paramj;
-        if ((!(localObject instanceof com.tencent.liteapp.ui.a)) || (!(paramj instanceof Map))) {
-          break label238;
-        }
-        localObject = (com.tencent.liteapp.ui.a)localObject;
-        paramj = ((Map)paramj).get("offset");
-        if (paramj == null)
-        {
-          paramj = new t("null cannot be cast to non-null type kotlin.Int");
-          AppMethodBeat.o(197923);
-          throw paramj;
-        }
-        ((com.tencent.liteapp.ui.a)localObject).hD(((Integer)paramj).intValue());
-        break label238;
-        label899:
-        if (!(paramj instanceof com.tencent.liteapp.ui.a)) {
-          break label299;
-        }
-        ((com.tencent.liteapp.ui.a)paramj).hideKeyboard();
-        break label299;
-        if ((paramj instanceof com.tencent.liteapp.ui.a)) {
-          ((com.tencent.liteapp.ui.a)paramj).KC();
-        }
+        paramj = new t("null cannot be cast to non-null type kotlin.Int");
+        AppMethodBeat.o(259173);
+        throw paramj;
       }
-      label937:
+      ((com.tencent.liteapp.ui.a)localObject).iD(((Integer)paramj).intValue());
+      break;
+      label980:
       if (!(paramj instanceof com.tencent.liteapp.ui.a)) {
-        break label428;
+        break label307;
       }
-      ((com.tencent.liteapp.ui.a)paramj).KD();
-      break label428;
-      if ((paramj instanceof com.tencent.liteapp.ui.a)) {
-        ((com.tencent.liteapp.ui.a)paramj).navigateBack();
+      ((com.tencent.liteapp.ui.a)paramj).hideKeyboard();
+      break label307;
+      label999:
+      if (!(paramj instanceof com.tencent.liteapp.ui.a)) {
+        break label767;
+      }
+      ((com.tencent.liteapp.ui.a)paramj).Np();
+      break label767;
+      label1018:
+      if (!(paramj instanceof com.tencent.liteapp.ui.a)) {
+        break label436;
+      }
+      ((com.tencent.liteapp.ui.a)paramj).Nq();
+      break label436;
+      label1037:
+      if ((!(localObject instanceof com.tencent.liteapp.ui.a)) || (!(paramj instanceof Map))) {
+        break label555;
+      }
+      localObject = (com.tencent.liteapp.ui.a)localObject;
+      paramj = ((Map)paramj).get("animation");
+      if (paramj == null)
+      {
+        paramj = new t("null cannot be cast to non-null type kotlin.Boolean");
+        AppMethodBeat.o(259173);
+        throw paramj;
+      }
+      ((com.tencent.liteapp.ui.a)localObject).navigateBack(((Boolean)paramj).booleanValue());
+      break label555;
+      if (((localObject instanceof com.tencent.liteapp.ui.a)) && ((paramj instanceof Map))) {
+        ((com.tencent.liteapp.ui.a)localObject).Nr();
       }
     }
   }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/liteapp/channel/WxaLiteAppConsumer$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "wxa_lite_app_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.liteapp.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,15 +2,14 @@ package com.tencent.mm.plugin.exdevice.g.b;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.plugin.exdevice.g.a.j;
 import com.tencent.mm.plugin.exdevice.g.a.m;
 import com.tencent.mm.plugin.exdevice.g.a.n;
-import com.tencent.mm.plugin.exdevice.model.ad;
-import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.plugin.exdevice.model.ae;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
@@ -21,28 +20,28 @@ import junit.framework.Assert;
 public final class c
   implements i
 {
-  public f rCX;
-  public com.tencent.mm.plugin.exdevice.g.a.f rCY;
+  public f viH;
+  public com.tencent.mm.plugin.exdevice.g.a.f viI;
   
   public c()
   {
     AppMethodBeat.i(23546);
     Log.d("MicroMsg.ExdeviceRankInfoManager", "hy: constructing manager....");
-    bg.azz().a(1042, this);
-    bg.azz().a(1041, this);
-    bg.azz().a(1043, this);
-    bg.azz().a(1040, this);
+    bh.aGY().a(1042, this);
+    bh.aGY().a(1041, this);
+    bh.aGY().a(1043, this);
+    bh.aGY().a(1040, this);
     AppMethodBeat.o(23546);
   }
   
-  public static ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.d> anB(String paramString)
+  public static ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.d> avA(String paramString)
   {
     com.tencent.mm.plugin.exdevice.g.b.a.d locald = null;
     AppMethodBeat.i(23548);
     Log.d("MicroMsg.ExdeviceRankInfoManager", "hy: getting like info...");
     if (!Util.isNullOrNil(paramString))
     {
-      Object localObject = ad.cKM();
+      Object localObject = ae.cZz();
       if (Util.isNullOrNil(paramString))
       {
         Log.e("MicroMsg.ExdeviceRankInfoStg", "hy: param error");
@@ -84,14 +83,14 @@ public final class c
   public static void c(String paramString1, String paramString2, String paramString3, int paramInt)
   {
     AppMethodBeat.i(23547);
-    bg.azz().a(new m(paramString3, paramString2, paramInt, paramString1), 0);
+    bh.aGY().a(new m(paramString3, paramString2, paramInt, paramString1), 0);
     AppMethodBeat.o(23547);
   }
   
   public static void f(String paramString, ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.d> paramArrayList)
   {
     AppMethodBeat.i(23549);
-    com.tencent.mm.plugin.exdevice.g.b.b.d locald = ad.cKM();
+    com.tencent.mm.plugin.exdevice.g.b.b.d locald = ae.cZz();
     if (!Util.isNullOrNil(paramString)) {}
     for (boolean bool = true;; bool = false)
     {
@@ -135,6 +134,13 @@ public final class c
     AppMethodBeat.o(23549);
   }
   
+  public static void gp(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(271240);
+    bh.aGY().a(new n(paramString1, paramString2), 0);
+    AppMethodBeat.o(271240);
+  }
+  
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(23550);
@@ -157,7 +163,7 @@ public final class c
     }
     else if (((paramq instanceof n)) && ((paramInt1 != 0) || (paramInt2 != 0)))
     {
-      e.Cxv.idkeyStat(323L, 0L, 1L, false);
+      com.tencent.mm.plugin.report.f.Iyx.idkeyStat(323L, 0L, 1L, false);
       Log.w("MicroMsg.ExdeviceRankInfoManager", "hy: scene error");
     }
     AppMethodBeat.o(23550);
@@ -165,7 +171,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.g.b.c
  * JD-Core Version:    0.7.0.1
  */

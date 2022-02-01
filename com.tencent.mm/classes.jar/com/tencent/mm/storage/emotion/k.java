@@ -3,12 +3,9 @@ package com.tencent.mm.storage.emotion;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.storagebase.g;
-import com.tencent.mm.storagebase.g.a;
 
 public final class k
   extends MAutoStorage<j>
-  implements g.a
 {
   public static final String[] SQL_CREATE;
   public ISQLiteDatabase db;
@@ -26,50 +23,44 @@ public final class k
     this.db = paramISQLiteDatabase;
   }
   
-  public final int a(g paramg)
-  {
-    this.db = paramg;
-    return 0;
-  }
-  
   /* Error */
-  public final com.tencent.mm.protocal.protobuf.bmi blr(String paramString)
+  public final com.tencent.mm.protocal.protobuf.btr bxR(String paramString)
   {
     // Byte code:
-    //   0: ldc 56
-    //   2: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 53
+    //   2: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
-    //   6: invokestatic 62	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   6: invokestatic 59	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   9: ifeq +17 -> 26
-    //   12: ldc 64
-    //   14: ldc 66
-    //   16: invokestatic 72	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   19: ldc 56
-    //   21: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   12: ldc 61
+    //   14: ldc 63
+    //   16: invokestatic 69	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   19: ldc 53
+    //   21: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   24: aconst_null
     //   25: areturn
-    //   26: new 74	java/lang/StringBuilder
+    //   26: new 71	java/lang/StringBuilder
     //   29: dup
-    //   30: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   30: invokespecial 73	java/lang/StringBuilder:<init>	()V
     //   33: aload_1
-    //   34: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: getstatic 84	com/tencent/mm/storage/emotion/k$a:OsJ	Lcom/tencent/mm/storage/emotion/k$a;
-    //   40: getfield 88	com/tencent/mm/storage/emotion/k$a:value	I
-    //   43: invokevirtual 91	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   46: invokevirtual 95	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   34: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: getstatic 81	com/tencent/mm/storage/emotion/k$a:VII	Lcom/tencent/mm/storage/emotion/k$a;
+    //   40: getfield 85	com/tencent/mm/storage/emotion/k$a:value	I
+    //   43: invokevirtual 88	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   46: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   49: astore_1
     //   50: aload_0
-    //   51: getfield 50	com/tencent/mm/storage/emotion/k:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
-    //   54: ldc 33
+    //   51: getfield 48	com/tencent/mm/storage/emotion/k:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
+    //   54: ldc 31
     //   56: iconst_1
-    //   57: anewarray 25	java/lang/String
+    //   57: anewarray 23	java/lang/String
     //   60: dup
     //   61: iconst_0
-    //   62: ldc 97
+    //   62: ldc 94
     //   64: aastore
-    //   65: ldc 99
+    //   65: ldc 96
     //   67: iconst_1
-    //   68: anewarray 25	java/lang/String
+    //   68: anewarray 23	java/lang/String
     //   71: dup
     //   72: iconst_0
     //   73: aload_1
@@ -78,28 +69,28 @@ public final class k
     //   76: aconst_null
     //   77: aconst_null
     //   78: iconst_2
-    //   79: invokeinterface 105 9 0
+    //   79: invokeinterface 102 9 0
     //   84: astore_1
     //   85: aload_1
     //   86: ifnull +132 -> 218
     //   89: aload_1
     //   90: astore_2
     //   91: aload_1
-    //   92: invokeinterface 111 1 0
+    //   92: invokeinterface 108 1 0
     //   97: ifeq +121 -> 218
     //   100: aload_1
     //   101: astore_2
-    //   102: new 113	com/tencent/mm/protocal/protobuf/bmi
+    //   102: new 110	com/tencent/mm/protocal/protobuf/btr
     //   105: dup
-    //   106: invokespecial 114	com/tencent/mm/protocal/protobuf/bmi:<init>	()V
+    //   106: invokespecial 111	com/tencent/mm/protocal/protobuf/btr:<init>	()V
     //   109: astore_3
     //   110: aload_1
     //   111: astore_2
     //   112: aload_3
     //   113: aload_1
     //   114: iconst_0
-    //   115: invokeinterface 118 2 0
-    //   120: invokevirtual 122	com/tencent/mm/protocal/protobuf/bmi:parseFrom	([B)Lcom/tencent/mm/bw/a;
+    //   115: invokeinterface 115 2 0
+    //   120: invokevirtual 119	com/tencent/mm/protocal/protobuf/btr:parseFrom	([B)Lcom/tencent/mm/cd/a;
     //   123: pop
     //   124: aload_3
     //   125: astore_2
@@ -108,11 +99,11 @@ public final class k
     //   128: aload_1
     //   129: ifnull +11 -> 140
     //   132: aload_1
-    //   133: invokeinterface 125 1 0
+    //   133: invokeinterface 122 1 0
     //   138: aload_2
     //   139: astore_3
-    //   140: ldc 56
-    //   142: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   140: ldc 53
+    //   142: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   145: aload_3
     //   146: areturn
     //   147: astore_3
@@ -120,20 +111,20 @@ public final class k
     //   149: astore_1
     //   150: aload_1
     //   151: astore_2
-    //   152: ldc 64
-    //   154: ldc 127
+    //   152: ldc 61
+    //   154: ldc 124
     //   156: iconst_1
-    //   157: anewarray 129	java/lang/Object
+    //   157: anewarray 126	java/lang/Object
     //   160: dup
     //   161: iconst_0
     //   162: aload_3
-    //   163: invokestatic 133	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   163: invokestatic 130	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   166: aastore
-    //   167: invokestatic 137	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   167: invokestatic 134	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   170: aload_1
     //   171: ifnull +42 -> 213
     //   174: aload_1
-    //   175: invokeinterface 125 1 0
+    //   175: invokeinterface 122 1 0
     //   180: aconst_null
     //   181: astore_3
     //   182: goto -42 -> 140
@@ -143,9 +134,9 @@ public final class k
     //   188: aload_2
     //   189: ifnull +9 -> 198
     //   192: aload_2
-    //   193: invokeinterface 125 1 0
-    //   198: ldc 56
-    //   200: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   193: invokeinterface 122 1 0
+    //   198: ldc 53
+    //   200: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   203: aload_1
     //   204: athrow
     //   205: astore_1
@@ -182,43 +173,43 @@ public final class k
   }
   
   /* Error */
-  public final com.tencent.mm.protocal.protobuf.bmg bls(String paramString)
+  public final com.tencent.mm.protocal.protobuf.btp bxS(String paramString)
   {
     // Byte code:
-    //   0: ldc 142
-    //   2: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 139
+    //   2: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
-    //   6: invokestatic 62	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   6: invokestatic 59	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   9: ifeq +17 -> 26
-    //   12: ldc 64
-    //   14: ldc 144
-    //   16: invokestatic 72	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   19: ldc 142
-    //   21: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   12: ldc 61
+    //   14: ldc 141
+    //   16: invokestatic 69	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   19: ldc 139
+    //   21: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   24: aconst_null
     //   25: areturn
-    //   26: new 74	java/lang/StringBuilder
+    //   26: new 71	java/lang/StringBuilder
     //   29: dup
-    //   30: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   30: invokespecial 73	java/lang/StringBuilder:<init>	()V
     //   33: aload_1
-    //   34: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: getstatic 147	com/tencent/mm/storage/emotion/k$a:OsL	Lcom/tencent/mm/storage/emotion/k$a;
-    //   40: getfield 88	com/tencent/mm/storage/emotion/k$a:value	I
-    //   43: invokevirtual 91	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   46: invokevirtual 95	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   34: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: getstatic 144	com/tencent/mm/storage/emotion/k$a:VIK	Lcom/tencent/mm/storage/emotion/k$a;
+    //   40: getfield 85	com/tencent/mm/storage/emotion/k$a:value	I
+    //   43: invokevirtual 88	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   46: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   49: astore_1
     //   50: aload_0
-    //   51: getfield 50	com/tencent/mm/storage/emotion/k:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
-    //   54: ldc 33
+    //   51: getfield 48	com/tencent/mm/storage/emotion/k:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
+    //   54: ldc 31
     //   56: iconst_1
-    //   57: anewarray 25	java/lang/String
+    //   57: anewarray 23	java/lang/String
     //   60: dup
     //   61: iconst_0
-    //   62: ldc 97
+    //   62: ldc 94
     //   64: aastore
-    //   65: ldc 99
+    //   65: ldc 96
     //   67: iconst_1
-    //   68: anewarray 25	java/lang/String
+    //   68: anewarray 23	java/lang/String
     //   71: dup
     //   72: iconst_0
     //   73: aload_1
@@ -227,28 +218,28 @@ public final class k
     //   76: aconst_null
     //   77: aconst_null
     //   78: iconst_2
-    //   79: invokeinterface 105 9 0
+    //   79: invokeinterface 102 9 0
     //   84: astore_1
     //   85: aload_1
     //   86: ifnull +132 -> 218
     //   89: aload_1
     //   90: astore_2
     //   91: aload_1
-    //   92: invokeinterface 111 1 0
+    //   92: invokeinterface 108 1 0
     //   97: ifeq +121 -> 218
     //   100: aload_1
     //   101: astore_2
-    //   102: new 149	com/tencent/mm/protocal/protobuf/bmg
+    //   102: new 146	com/tencent/mm/protocal/protobuf/btp
     //   105: dup
-    //   106: invokespecial 150	com/tencent/mm/protocal/protobuf/bmg:<init>	()V
+    //   106: invokespecial 147	com/tencent/mm/protocal/protobuf/btp:<init>	()V
     //   109: astore_3
     //   110: aload_1
     //   111: astore_2
     //   112: aload_3
     //   113: aload_1
     //   114: iconst_0
-    //   115: invokeinterface 118 2 0
-    //   120: invokevirtual 151	com/tencent/mm/protocal/protobuf/bmg:parseFrom	([B)Lcom/tencent/mm/bw/a;
+    //   115: invokeinterface 115 2 0
+    //   120: invokevirtual 148	com/tencent/mm/protocal/protobuf/btp:parseFrom	([B)Lcom/tencent/mm/cd/a;
     //   123: pop
     //   124: aload_3
     //   125: astore_2
@@ -257,11 +248,11 @@ public final class k
     //   128: aload_1
     //   129: ifnull +11 -> 140
     //   132: aload_1
-    //   133: invokeinterface 125 1 0
+    //   133: invokeinterface 122 1 0
     //   138: aload_2
     //   139: astore_3
-    //   140: ldc 142
-    //   142: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   140: ldc 139
+    //   142: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   145: aload_3
     //   146: areturn
     //   147: astore_3
@@ -269,20 +260,20 @@ public final class k
     //   149: astore_1
     //   150: aload_1
     //   151: astore_2
-    //   152: ldc 64
-    //   154: ldc 127
+    //   152: ldc 61
+    //   154: ldc 124
     //   156: iconst_1
-    //   157: anewarray 129	java/lang/Object
+    //   157: anewarray 126	java/lang/Object
     //   160: dup
     //   161: iconst_0
     //   162: aload_3
-    //   163: invokestatic 133	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   163: invokestatic 130	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   166: aastore
-    //   167: invokestatic 137	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   167: invokestatic 134	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   170: aload_1
     //   171: ifnull +42 -> 213
     //   174: aload_1
-    //   175: invokeinterface 125 1 0
+    //   175: invokeinterface 122 1 0
     //   180: aconst_null
     //   181: astore_3
     //   182: goto -42 -> 140
@@ -292,9 +283,9 @@ public final class k
     //   188: aload_2
     //   189: ifnull +9 -> 198
     //   192: aload_2
-    //   193: invokeinterface 125 1 0
-    //   198: ldc 142
-    //   200: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   193: invokeinterface 122 1 0
+    //   198: ldc 139
+    //   200: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   203: aload_1
     //   204: athrow
     //   205: astore_1
@@ -337,10 +328,10 @@ public final class k
     static
     {
       AppMethodBeat.i(105111);
-      OsJ = new a("DesignerSimpleInfo", 0, 0);
-      OsK = new a("PersonalDesigner", 1, 1);
-      OsL = new a("DesignerEmojiList", 2, 2);
-      OsM = new a[] { OsJ, OsK, OsL };
+      VII = new a("DesignerSimpleInfo", 0, 0);
+      VIJ = new a("PersonalDesigner", 1, 1);
+      VIK = new a("DesignerEmojiList", 2, 2);
+      VIL = new a[] { VII, VIJ, VIK };
       AppMethodBeat.o(105111);
     }
     
@@ -352,7 +343,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.k
  * JD-Core Version:    0.7.0.1
  */

@@ -8,20 +8,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/animation/SwingAnimator;", "Lcom/tencent/mm/plugin/story/animation/BaseViewAnimator;", "()V", "tag", "", "getTag", "()Ljava/lang/String;", "prepare", "", "target", "Landroid/view/View;", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/animation/SwingAnimator;", "Lcom/tencent/mm/plugin/story/animation/BaseViewAnimator;", "()V", "tag", "", "getTag", "()Ljava/lang/String;", "prepare", "", "target", "Landroid/view/View;", "plugin-story_release"})
 public final class b
   extends a
 {
   private final String tag = "MicroMsg.SwingAnimator";
   
-  protected final void fN(View paramView)
+  protected final void gU(View paramView)
   {
     AppMethodBeat.i(118566);
-    p.h(paramView, "target");
+    p.k(paramView, "target");
     paramView.setPivotX(paramView.getWidth() / 2.0F);
     paramView.setPivotY(paramView.getHeight());
     this.mDuration = 800L;
-    AnimatorSet localAnimatorSet = this.Fkp;
+    AnimatorSet localAnimatorSet = this.LEr;
     if (localAnimatorSet != null)
     {
       localAnimatorSet.playTogether(new Animator[] { (Animator)ObjectAnimator.ofFloat(paramView, "rotation", new float[] { 0.0F, 5.0F, 0.0F, -5.0F, 0.0F, 5.0F, 0.0F, -5.0F, 0.0F }) });
@@ -33,7 +33,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -5,8 +5,8 @@ import com.tencent.thumbplayer.api.TPCaptureParams;
 
 final class f$l
 {
-  TPCaptureParams SbN;
-  TPCaptureCallBack SbO;
+  TPCaptureParams ZEy;
+  TPCaptureCallBack ZEz;
 }
 
 

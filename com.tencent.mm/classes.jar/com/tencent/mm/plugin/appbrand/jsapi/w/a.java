@@ -1,127 +1,82 @@
 package com.tencent.mm.plugin.appbrand.jsapi.w;
 
-import android.support.v4.e.l.a;
-import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import com.tencent.mm.plugin.appbrand.jsapi.k;
-import com.tencent.mm.plugin.appbrand.permission.d;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.plugin.appbrand.report.model.i;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.concurrent.ConcurrentLinkedDeque;
-import kotlin.g.b.p;
+import com.tencent.mm.plugin.appbrand.jsapi.r;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import java.util.HashMap;
+import java.util.Map;
 import kotlin.l;
+import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/AppBrandJsApiReporter;", "", "()V", "mInfoMap", "Landroid/util/SparseArray;", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiInfo;", "mObjectPool", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/AppBrandJsApiReporter$JsApiInfoPool;", "doCleanupJobOnRuntimeDestroyed", "", "doCleanupJobOnRuntimeSuspended", "report", "callbackId", "", "ret", "", "setJsApiInfo", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWithExtra;", "api", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandBaseJsApi;", "data", "path", "getPermissionValue", "safeClear", "T", "safePut", "key", "value", "(Landroid/util/SparseArray;ILjava/lang/Object;)V", "safeRemoveReturnOld", "(Landroid/util/SparseArray;I)Ljava/lang/Object;", "JsApiInfoPool", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/rendering_cache/EventOnInitialRenderingCacheReady;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApiEvent;", "()V", "Companion", "luggage-wechat-full-sdk_release"})
 public final class a
+  extends r
 {
-  public final SparseArray<b> moY;
-  public final a moZ;
+  public static final int CTRL_INDEX = -2;
+  public static final String NAME = "onInitialRenderingCacheReady";
+  public static final a pna;
   
-  public a()
+  static
   {
-    AppMethodBeat.i(50666);
-    this.moY = new SparseArray();
-    this.moZ = new a();
-    AppMethodBeat.o(50666);
+    AppMethodBeat.i(147955);
+    pna = new a((byte)0);
+    AppMethodBeat.o(147955);
   }
   
-  private static <T> T b(SparseArray<T> paramSparseArray, int paramInt)
+  public static final void a(String paramString1, String paramString2, ad paramad)
   {
-    AppMethodBeat.i(50665);
-    try
+    r localr = null;
+    AppMethodBeat.i(147956);
+    if (paramString1 == null)
     {
-      Object localObject1 = paramSparseArray.get(paramInt, null);
-      if (localObject1 != null) {
-        paramSparseArray.remove(paramInt);
-      }
-      return localObject1;
-    }
-    finally
-    {
-      AppMethodBeat.o(50665);
-    }
-  }
-  
-  public final void ao(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(50664);
-    p.h(paramString, "ret");
-    b localb = (b)b(this.moY, paramInt);
-    if (localb == null)
-    {
-      AppMethodBeat.o(50664);
+      AppMethodBeat.o(147956);
       return;
     }
-    long l1 = Util.currentTicks();
-    long l2 = localb.startTime;
-    Object localObject = localb.mpb;
-    p.g(localObject, "info.component");
-    String str1 = ((k)localObject).getAppId();
-    String str2 = localb.path;
-    localObject = localb.mpc;
-    p.g(localObject, "info.api");
-    String str3 = ((e)localObject).getName();
-    String str4 = localb.data;
-    localObject = localb.mpb;
-    p.g(localObject, "this.component");
-    AppBrandRuntime localAppBrandRuntime = ((k)localObject).getRuntime();
-    localObject = localAppBrandRuntime;
-    if (!(localAppBrandRuntime instanceof q)) {
-      localObject = null;
-    }
-    localObject = (q)localObject;
-    if (localObject != null)
+    if (paramad == null)
     {
-      localObject = ((q)localObject).OI();
-      if (localObject == null) {}
-    }
-    for (paramInt = ((d)localObject).a((f)localb.mpb, localb.mpc, localb.data, false);; paramInt = -1)
-    {
-      i.a(str1, str2, str3, str4, paramInt, l1 - l2, paramString);
-      this.moZ.a(localb);
-      AppMethodBeat.o(50664);
+      AppMethodBeat.o(147956);
       return;
+    }
+    Object localObject = (CharSequence)paramString2;
+    int i;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0))
+    {
+      i = 1;
+      if (i == 0) {
+        break label137;
+      }
+      paramString2 = localr;
+    }
+    for (;;)
+    {
+      localr = new a().i((e)paramad);
+      localObject = new HashMap();
+      ((HashMap)localObject).put("content", paramString1);
+      ((HashMap)localObject).put("webviewData", paramString2);
+      ((HashMap)localObject).put("path", paramad.btD());
+      localr.D((Map)localObject).bPO();
+      AppMethodBeat.o(147956);
+      return;
+      i = 0;
+      break;
+      try
+      {
+        label137:
+        paramString2 = new JSONObject(paramString2);
+      }
+      catch (Exception paramString2)
+      {
+        for (;;)
+        {
+          paramString2 = null;
+        }
+      }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/AppBrandJsApiReporter$JsApiInfoPool;", "Landroid/support/v4/util/Pools$Pool;", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiInfo;", "()V", "mQueue", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "acquire", "clear", "", "release", "", "jsApiInfo", "plugin-appbrand-integration_release"})
-  public static final class a
-    implements l.a<b>
-  {
-    public final ConcurrentLinkedDeque<b> mpa;
-    
-    public a()
-    {
-      AppMethodBeat.i(50663);
-      this.mpa = new ConcurrentLinkedDeque();
-      AppMethodBeat.o(50663);
-    }
-    
-    public final boolean a(b paramb)
-    {
-      AppMethodBeat.i(50661);
-      p.h(paramb, "jsApiInfo");
-      boolean bool = this.mpa.offer(paramb);
-      AppMethodBeat.o(50661);
-      return bool;
-    }
-    
-    public final b bIz()
-    {
-      AppMethodBeat.i(50659);
-      b localb2 = (b)this.mpa.poll();
-      b localb1 = localb2;
-      if (localb2 == null) {
-        localb1 = new b();
-      }
-      AppMethodBeat.o(50659);
-      return localb1;
-    }
-  }
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/rendering_cache/EventOnInitialRenderingCacheReady$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "dispatchReady", "", "content", "webviewData", "page", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "luggage-wechat-full-sdk_release"})
+  public static final class a {}
 }
 
 

@@ -7,9 +7,9 @@
         <TextView android:textAppearance="@style/rl" android:ellipsize="end" android:id="@id/fqd" android:layout_width="fill_parent" android:layout_height="fill_parent" android:maxLines="1" />
     </LinearLayout>
     <LinearLayout android:paddingLeft="@dimen/br" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <ImageView android:id="@id/fqg" android:layout_width="wrap_content" android:layout_height="fill_parent" android:scaleType="center" />
+        <ImageView android:id="@id/fqg" android:layout_width="wrap_content" android:layout_height="fill_parent" android:scaleType="center" android:contentDescription="@string/jm3" />
         <ImageView android:id="@id/fqf" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/br" android:scaleType="center" />
-        <ImageView android:id="@id/fqe" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/br" android:scaleType="center" />
-        <ImageView android:id="@id/fqc" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/br" android:layout_marginRight="@dimen/cb" android:scaleType="center" />
+        <ImageView android:id="@id/fqe" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/br" android:scaleType="center" android:contentDescription="@string/jm0" />
+        <ImageView android:id="@id/fqc" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/br" android:layout_marginRight="@dimen/cb" android:scaleType="center" android:contentDescription="@string/jm4" />
     </LinearLayout>
 </LinearLayout>

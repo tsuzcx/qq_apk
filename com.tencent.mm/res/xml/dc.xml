@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceTitleCategory android:key="wallet_transfer_title_tips" android:title="" />
-    <Preference android:key="wallet_transfer_realtime" android:layout="@layout/b8j" android:title="@string/ibx" android:widgetLayout="@layout/b_n" />
-    <Preference android:key="wallet_transfer_2h" android:layout="@layout/b8j" android:title="@string/ibw" android:widgetLayout="@layout/b_n" />
-    <Preference android:key="wallet_transfer_24h" android:layout="@layout/b8j" android:title="@string/ibv" android:widgetLayout="@layout/b_n" />
+    <com.tencent.mm.plugin.wallet.pwd.ui.WalletDelayTransferUISelectPreference android:key="wallet_transfer_realtime" android:title="@string/ibx" />
+    <com.tencent.mm.plugin.wallet.pwd.ui.WalletDelayTransferUISelectPreference android:key="wallet_transfer_2h" android:title="@string/ibw" />
+    <com.tencent.mm.plugin.wallet.pwd.ui.WalletDelayTransferUISelectPreference android:key="wallet_transfer_24h" android:title="@string/ibv" />
 </PreferenceScreen>

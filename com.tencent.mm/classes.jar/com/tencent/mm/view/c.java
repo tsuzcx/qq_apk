@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/view/DefaultViewActionCallback;", "Lcom/tencent/mm/view/IViewActionCallback;", "()V", "onChanged", "", "onItemRangeChanged", "positionStart", "", "itemCount", "payload", "", "onItemRangeInserted", "onItemRangeMoved", "fromPosition", "toPosition", "onItemRangeRemoved", "onPreFinishLoadMore", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "onPreFinishLoadMoreSmooth", "onPreFinishRefresh", "libmmui_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/DefaultViewActionCallback;", "Lcom/tencent/mm/view/IViewActionCallback;", "()V", "onChanged", "", "onItemRangeChanged", "positionStart", "", "itemCount", "payload", "", "onItemRangeInserted", "onItemRangeMoved", "fromPosition", "toPosition", "onItemRangeRemoved", "onPreFinishLoadMore", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "onPreFinishLoadMoreSmooth", "onPreFinishRefresh", "libmmui_release"})
 public class c
   implements j
 {
@@ -20,23 +20,23 @@ public class c
   
   public void onPreFinishLoadMore(RefreshLoadMoreLayout.c<Object> paramc)
   {
-    AppMethodBeat.i(204921);
-    p.h(paramc, "reason");
-    AppMethodBeat.o(204921);
+    AppMethodBeat.i(205008);
+    p.k(paramc, "reason");
+    AppMethodBeat.o(205008);
   }
   
   public void onPreFinishLoadMoreSmooth(RefreshLoadMoreLayout.c<Object> paramc)
   {
-    AppMethodBeat.i(204922);
-    p.h(paramc, "reason");
-    AppMethodBeat.o(204922);
+    AppMethodBeat.i(205011);
+    p.k(paramc, "reason");
+    AppMethodBeat.o(205011);
   }
   
   public void onPreFinishRefresh(RefreshLoadMoreLayout.c<Object> paramc)
   {
-    AppMethodBeat.i(204920);
-    p.h(paramc, "reason");
-    AppMethodBeat.o(204920);
+    AppMethodBeat.i(205006);
+    p.k(paramc, "reason");
+    AppMethodBeat.o(205006);
   }
 }
 

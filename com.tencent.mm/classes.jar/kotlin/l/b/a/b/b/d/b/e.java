@@ -9,27 +9,27 @@ public final class e
   extends d
   implements kotlin.l.b.a.b.d.a.e.c
 {
-  private final Annotation TmG;
+  private final Annotation aaPA;
   
   public e(f paramf, Annotation paramAnnotation)
   {
     super(paramf);
     AppMethodBeat.i(57417);
-    this.TmG = paramAnnotation;
+    this.aaPA = paramAnnotation;
     AppMethodBeat.o(57417);
   }
   
-  public final a hCF()
+  public final a iGW()
   {
     AppMethodBeat.i(57416);
-    a locala = (a)new c(this.TmG);
+    a locala = (a)new c(this.aaPA);
     AppMethodBeat.o(57416);
     return locala;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.d.b.e
  * JD-Core Version:    0.7.0.1
  */

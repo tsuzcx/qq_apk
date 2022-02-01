@@ -1,125 +1,94 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
-import android.os.Looper;
-import android.os.Message;
+import android.app.Activity;
+import android.app.Application;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.content.Context;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.report.q;
-import com.tencent.mm.sdk.statemachine.StateMachine;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public abstract class j<Task>
-  extends StateMachine
+public class j
+  implements Application.ActivityLifecycleCallbacks
 {
-  private final j<Task>.b ogM = new b((byte)0);
-  private final j<Task>.a ogN = new a((byte)0);
-  private final String ogO;
-  protected final Queue<Task> ogP = new LinkedList();
+  public Application app;
+  public final Queue<a> rix;
+  private int riy;
+  public boolean riz;
   
-  protected j(String paramString, Looper paramLooper)
+  public j()
   {
-    super(paramString, paramLooper);
-    this.ogO = paramString;
-    addState(this.ogM);
-    addState(this.ogN);
-    setInitialState(this.ogM);
-    start();
+    AppMethodBeat.i(137911);
+    this.rix = new LinkedList();
+    this.riy = 0;
+    this.riz = false;
+    AppMethodBeat.o(137911);
   }
   
-  protected abstract boolean bEJ();
-  
-  protected abstract void cE(Task paramTask);
-  
-  public final void cQ(Task paramTask)
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
-    if (bEJ()) {
-      return;
-    }
-    synchronized (this.ogP)
+    AppMethodBeat.i(137912);
+    this.riy += 1;
+    if (this.riy == 1)
     {
-      this.ogP.offer(paramTask);
-      sendMessage(1);
-      return;
-    }
-  }
-  
-  public void onQuitting()
-  {
-    super.onQuitting();
-    synchronized (this.ogP)
-    {
-      this.ogP.clear();
-      return;
-    }
-  }
-  
-  final class a
-    extends q
-  {
-    private a() {}
-    
-    public final String getName()
-    {
-      AppMethodBeat.i(107819);
-      String str = j.b(j.this) + "|StateExecuting";
-      AppMethodBeat.o(107819);
-      return str;
-    }
-    
-    public final boolean processMessage(Message paramMessage)
-    {
-      AppMethodBeat.i(107818);
-      if (2 == paramMessage.what)
-      {
-        j.a(j.this, j.a(j.this));
-        AppMethodBeat.o(107818);
-        return true;
+      Log.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.notifyOnActivityCreated ");
+      paramBundle = this.rix.iterator();
+      while (paramBundle.hasNext()) {
+        ((a)paramBundle.next()).er(paramActivity);
       }
-      boolean bool = super.processMessage(paramMessage);
-      AppMethodBeat.o(107818);
-      return bool;
     }
+    AppMethodBeat.o(137912);
   }
   
-  final class b
-    extends q
+  public void onActivityDestroyed(Activity paramActivity)
   {
-    private b() {}
-    
-    public final void enter()
+    AppMethodBeat.i(137913);
+    this.riy -= 1;
+    if (this.riy == 0)
     {
-      AppMethodBeat.i(107820);
-      super.enter();
-      j.c(j.this);
-      AppMethodBeat.o(107820);
-    }
-    
-    public final String getName()
-    {
-      AppMethodBeat.i(107822);
-      String str = j.b(j.this) + "|StateIdle";
-      AppMethodBeat.o(107822);
-      return str;
-    }
-    
-    public final boolean processMessage(Message paramMessage)
-    {
-      AppMethodBeat.i(107821);
-      if ((1 == paramMessage.what) || (2 == paramMessage.what))
-      {
-        j.c(j.this);
-        AppMethodBeat.o(107821);
-        return true;
+      Log.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.notifyOnNoActivityLeft ");
+      paramActivity = this.rix.iterator();
+      while (paramActivity.hasNext()) {
+        ((a)paramActivity.next()).cmf();
       }
-      boolean bool = super.processMessage(paramMessage);
-      AppMethodBeat.o(107821);
-      return bool;
+      if ((this.riz) && (this.app != null))
+      {
+        paramActivity = this.app;
+        Log.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.release ");
+        paramActivity.unregisterActivityLifecycleCallbacks(this);
+        this.rix.clear();
+        this.app = null;
+        this.riz = false;
+        this.riz = false;
+        this.app = null;
+      }
     }
+    AppMethodBeat.o(137913);
+  }
+  
+  public void onActivityPaused(Activity paramActivity) {}
+  
+  public void onActivityResumed(Activity paramActivity) {}
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity) {}
+  
+  public void onActivityStopped(Activity paramActivity) {}
+  
+  public static abstract interface a
+  {
+    public abstract void cmf();
+    
+    public abstract void er(Context paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.j
  * JD-Core Version:    0.7.0.1
  */

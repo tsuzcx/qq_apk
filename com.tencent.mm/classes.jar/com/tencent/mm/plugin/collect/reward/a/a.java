@@ -3,9 +3,10 @@ package com.tencent.mm.plugin.collect.reward.a;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.ui.base.h;
 import java.lang.ref.WeakReference;
 
@@ -13,21 +14,21 @@ public abstract class a
   extends q
   implements m
 {
+  protected WeakReference<Activity> context;
   protected int errCode = 0;
   protected String errMsg;
   protected int errType = 0;
-  protected WeakReference<Activity> lAM;
-  protected boolean qxx = false;
-  protected boolean qxy = false;
+  protected boolean tWx = false;
+  protected boolean tWy = false;
   
-  public final void M(Activity paramActivity)
+  public final void N(Activity paramActivity)
   {
-    this.lAM = new WeakReference(paramActivity);
+    this.context = new WeakReference(paramActivity);
   }
   
   public final a a(a parama)
   {
-    if ((!this.qxx) && (!this.qxy)) {
+    if ((!this.tWx) && (!this.tWy)) {
       parama.g(this);
     }
     return this;
@@ -35,7 +36,7 @@ public abstract class a
   
   public final a b(a parama)
   {
-    if (this.qxy) {
+    if (this.tWy) {
       parama.g(this);
     }
     return this;
@@ -45,13 +46,13 @@ public abstract class a
   
   public final a c(a parama)
   {
-    if (this.qxx) {
+    if (this.tWx) {
       parama.g(this);
     }
     return this;
   }
   
-  protected boolean czP()
+  protected boolean cOp()
   {
     return true;
   }
@@ -60,12 +61,12 @@ public abstract class a
   {
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      this.qxx = true;
-      if ((czP()) && (this.lAM != null))
+      this.tWx = true;
+      if ((cOp()) && (this.context != null))
       {
-        paramArrayOfByte = (Activity)this.lAM.get();
+        paramArrayOfByte = (Activity)this.context.get();
         if (paramArrayOfByte != null) {
-          h.a(paramArrayOfByte, paramArrayOfByte.getString(2131768354), null, false, new DialogInterface.OnClickListener()
+          h.a(paramArrayOfByte, paramArrayOfByte.getString(a.i.wallet_unknown_err), null, false, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
           });

@@ -18,7 +18,7 @@ public class TPSubtitleParser
   
   public TPSubtitleParser(String paramString, ITPSubtitleParserCallback paramITPSubtitleParserCallback)
   {
-    AppMethodBeat.i(189994);
+    AppMethodBeat.i(223875);
     this.mUrl = null;
     this.mOutputType = 0;
     this.mCallback = null;
@@ -28,12 +28,12 @@ public class TPSubtitleParser
     loadLibrary();
     this.mUrl = paramString;
     this.mCallback = paramITPSubtitleParserCallback;
-    AppMethodBeat.o(189994);
+    AppMethodBeat.o(223875);
   }
   
   public TPSubtitleParser(String paramString, ITPSubtitleParserCallback paramITPSubtitleParserCallback, int paramInt)
   {
-    AppMethodBeat.i(189995);
+    AppMethodBeat.i(223878);
     this.mUrl = null;
     this.mOutputType = 0;
     this.mCallback = null;
@@ -44,7 +44,7 @@ public class TPSubtitleParser
     this.mUrl = paramString;
     this.mCallback = paramITPSubtitleParserCallback;
     this.mOutputType = paramInt;
-    AppMethodBeat.o(189995);
+    AppMethodBeat.o(223878);
   }
   
   private native int _subtitleCreate(String paramString, Object paramObject, int paramInt);
@@ -65,74 +65,74 @@ public class TPSubtitleParser
   
   private void loadLibrary()
   {
-    AppMethodBeat.i(189993);
+    AppMethodBeat.i(223870);
     try
     {
       TPNativeLibraryLoader.loadLibIfNeeded(null);
       this.mIsLibLoaded = true;
-      AppMethodBeat.o(189993);
+      AppMethodBeat.o(223870);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
     {
       this.mIsLibLoaded = false;
-      AppMethodBeat.o(189993);
+      AppMethodBeat.o(223870);
     }
   }
   
   public TPSubtitleFrameWrapper getSubtitleFrame(long paramLong)
   {
-    AppMethodBeat.i(190002);
+    AppMethodBeat.i(223900);
     if (!this.mIsLibLoaded)
     {
       localObject = new UnsupportedOperationException("Failed to load native library");
-      AppMethodBeat.o(190002);
+      AppMethodBeat.o(223900);
       throw ((Throwable)localObject);
     }
     if (!this.mInited)
     {
       localObject = new IllegalStateException("Failed to getSubtitleFrame due to invalid state.");
-      AppMethodBeat.o(190002);
+      AppMethodBeat.o(223900);
       throw ((Throwable)localObject);
     }
     Object localObject = _subtitleGetFrame(paramLong);
-    AppMethodBeat.o(190002);
+    AppMethodBeat.o(223900);
     return localObject;
   }
   
   public String getSubtitleText(long paramLong, int paramInt)
   {
-    AppMethodBeat.i(190000);
+    AppMethodBeat.i(223896);
     if (!this.mIsLibLoaded)
     {
       localObject = new UnsupportedOperationException("Failed to load native library");
-      AppMethodBeat.o(190000);
+      AppMethodBeat.o(223896);
       throw ((Throwable)localObject);
     }
     if (!this.mInited)
     {
       localObject = new IllegalStateException("Failed to getSubtitleText due to invalid state.");
-      AppMethodBeat.o(190000);
+      AppMethodBeat.o(223896);
       throw ((Throwable)localObject);
     }
     Object localObject = _subtitleGetText(paramLong, paramInt);
-    AppMethodBeat.o(190000);
+    AppMethodBeat.o(223896);
     return localObject;
   }
   
   public TPMediaTrackInfo[] getTrackInfo()
   {
-    AppMethodBeat.i(189998);
+    AppMethodBeat.i(223889);
     if (!this.mIsLibLoaded)
     {
       localObject = new UnsupportedOperationException("Failed to load native library");
-      AppMethodBeat.o(189998);
+      AppMethodBeat.o(223889);
       throw ((Throwable)localObject);
     }
     if (!this.mInited)
     {
       localObject = new IllegalStateException("Failed to getTrackInfo due to invalid state.");
-      AppMethodBeat.o(189998);
+      AppMethodBeat.o(223889);
       throw ((Throwable)localObject);
     }
     Object localObject = null;
@@ -154,51 +154,51 @@ public class TPSubtitleParser
         i += 1;
       }
     }
-    AppMethodBeat.o(189998);
+    AppMethodBeat.o(223889);
     return localObject;
   }
   
   public void init()
   {
-    AppMethodBeat.i(189996);
+    AppMethodBeat.i(223882);
     Object localObject;
     if (!this.mIsLibLoaded)
     {
       localObject = new UnsupportedOperationException("Failed to load native library");
-      AppMethodBeat.o(189996);
+      AppMethodBeat.o(223882);
       throw ((Throwable)localObject);
     }
     if (this.mInited)
     {
       localObject = new IllegalStateException("Failed to init due to invalid state.");
-      AppMethodBeat.o(189996);
+      AppMethodBeat.o(223882);
       throw ((Throwable)localObject);
     }
     this.mInited = true;
     if ((this.mUrl != null) && (this.mCallback != null)) {
       _subtitleCreate(this.mUrl, this.mCallback, this.mOutputType);
     }
-    AppMethodBeat.o(189996);
+    AppMethodBeat.o(223882);
   }
   
   public int selectTrackAsync(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(189999);
+    AppMethodBeat.i(223894);
     Object localObject;
     if (!this.mIsLibLoaded)
     {
       localObject = new UnsupportedOperationException("Failed to load native library");
-      AppMethodBeat.o(189999);
+      AppMethodBeat.o(223894);
       throw ((Throwable)localObject);
     }
     if (!this.mInited)
     {
       localObject = new IllegalStateException("Failed to selectTrackAsync due to invalid state.");
-      AppMethodBeat.o(189999);
+      AppMethodBeat.o(223894);
       throw ((Throwable)localObject);
     }
     paramInt = _subtitleSelectTrackAsync(paramInt, paramLong);
-    AppMethodBeat.o(189999);
+    AppMethodBeat.o(223894);
     return paramInt;
   }
   
@@ -209,46 +209,46 @@ public class TPSubtitleParser
   
   public void setCanvasSize(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(190001);
+    AppMethodBeat.i(223899);
     Object localObject;
     if (!this.mIsLibLoaded)
     {
       localObject = new UnsupportedOperationException("Failed to load native library");
-      AppMethodBeat.o(190001);
+      AppMethodBeat.o(223899);
       throw ((Throwable)localObject);
     }
     if (!this.mInited)
     {
       localObject = new IllegalStateException("Failed to setCanvasSize due to invalid state.");
-      AppMethodBeat.o(190001);
+      AppMethodBeat.o(223899);
       throw ((Throwable)localObject);
     }
     _subtitleSetCanvasSize(paramInt1, paramInt2);
-    AppMethodBeat.o(190001);
+    AppMethodBeat.o(223899);
   }
   
   public void unInit()
   {
-    AppMethodBeat.i(189997);
+    AppMethodBeat.i(223885);
     if (!this.mIsLibLoaded)
     {
       UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException("Failed to load native library");
-      AppMethodBeat.o(189997);
+      AppMethodBeat.o(223885);
       throw localUnsupportedOperationException;
     }
     if (!this.mInited)
     {
-      AppMethodBeat.o(189997);
+      AppMethodBeat.o(223885);
       return;
     }
     this.mInited = false;
     _subtitleDelete();
-    AppMethodBeat.o(189997);
+    AppMethodBeat.o(223885);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.thumbplayer.core.subtitle.TPSubtitleParser
  * JD-Core Version:    0.7.0.1
  */

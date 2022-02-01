@@ -10,13 +10,13 @@ public class KindaPlatformLayout
   extends LinearLayout
 {
   public static String TAG = "KindaPlatformLayout";
-  private h CqA;
+  private h InR;
   
   public KindaPlatformLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(67928);
-    this.CqA = new h();
+    this.InR = new h();
     AppMethodBeat.o(67928);
   }
   
@@ -24,7 +24,7 @@ public class KindaPlatformLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(67929);
-    this.CqA = new h();
+    this.InR = new h();
     AppMethodBeat.o(67929);
   }
   
@@ -34,9 +34,9 @@ public class KindaPlatformLayout
     long l = System.currentTimeMillis();
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     l = System.currentTimeMillis() - l;
-    h localh = this.CqA;
+    h localh = this.InR;
     localh.valLayout += l;
-    Log.i(TAG, "testandroid root layout out %s %s", new Object[] { Long.valueOf(l), this.CqA.result() });
+    Log.i(TAG, "testandroid root layout out %s %s", new Object[] { Long.valueOf(l), this.InR.result() });
     AppMethodBeat.o(67932);
   }
   
@@ -46,9 +46,9 @@ public class KindaPlatformLayout
     long l = System.currentTimeMillis();
     super.onMeasure(paramInt1, paramInt2);
     l = System.currentTimeMillis() - l;
-    h localh = this.CqA;
+    h localh = this.InR;
     localh.valMeasure += l;
-    Log.i(TAG, "testandroid root measure out %s %s", new Object[] { Long.valueOf(l), this.CqA.result() });
+    Log.i(TAG, "testandroid root measure out %s %s", new Object[] { Long.valueOf(l), this.InR.result() });
     AppMethodBeat.o(67930);
   }
   
@@ -61,7 +61,7 @@ public class KindaPlatformLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.KindaPlatformLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -7,47 +7,47 @@ import com.tencent.mm.sdk.platformtools.Util;
 public final class g
   extends a
 {
-  private long yrS;
-  public long yrT;
-  public long ysh = 0L;
-  public String ysi = "";
-  public String ysj = "";
-  public long ysk = 0L;
-  public long ysl = 0L;
-  public long ysm = 0L;
-  public String ysn = "";
+  private long DRU;
+  public long DRV;
+  public long DSj = 0L;
+  public String DSk = "";
+  public String DSl = "";
+  public long DSm = 0L;
+  public long DSn = 0L;
+  public long DSo = 0L;
+  public String DSp = "";
   
-  protected final void bUV()
+  protected final void cig()
   {
     AppMethodBeat.i(25506);
-    h.CyF.a(12933, new Object[] { Long.valueOf(this.yrS), Long.valueOf(this.yrT), Long.valueOf(this.ysh), this.ysi, this.ysj, Long.valueOf(this.ysk), Long.valueOf(this.ysl), Long.valueOf(this.ysm), this.ysn });
+    h.IzE.a(12933, new Object[] { Long.valueOf(this.DRU), Long.valueOf(this.DRV), Long.valueOf(this.DSj), this.DSk, this.DSl, Long.valueOf(this.DSm), Long.valueOf(this.DSn), Long.valueOf(this.DSo), this.DSp });
     AppMethodBeat.o(25506);
   }
   
   public final void reset()
   {
-    this.yrS = 0L;
-    this.yrT = 0L;
-    this.ysh = 0L;
-    this.ysi = "";
-    this.ysj = "";
-    this.ysk = 0L;
-    this.ysl = 0L;
-    this.ysm = 0L;
-    this.ysn = "";
+    this.DRU = 0L;
+    this.DRV = 0L;
+    this.DSj = 0L;
+    this.DSk = "";
+    this.DSl = "";
+    this.DSm = 0L;
+    this.DSn = 0L;
+    this.DSo = 0L;
+    this.DSp = "";
   }
   
   public final void start()
   {
     AppMethodBeat.i(25505);
     super.start();
-    this.yrS = Util.nowMilliSecond();
+    this.DRU = Util.nowMilliSecond();
     AppMethodBeat.o(25505);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.f.g
  * JD-Core Version:    0.7.0.1
  */

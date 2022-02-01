@@ -1,212 +1,113 @@
 package com.tencent.mm.plugin.appbrand.jsapi.ac;
 
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
+import android.os.IInterface;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
-import com.tencent.mm.plugin.appbrand.jsapi.base.f;
-import com.tencent.mm.plugin.appbrand.jsapi.bc;
-import com.tencent.mm.plugin.appbrand.widget.base.AppBrandViewMotionCompat;
+import com.tencent.mm.plugin.appbrand.jsapi.j;
 import com.tencent.mm.sdk.platformtools.Log;
-import org.json.JSONException;
+import com.tencent.mm.sdk.trafficcard.ITencentSmartcardOpenService;
+import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONObject;
 
 public final class e
+  extends a
 {
-  public static void a(ViewGroup paramViewGroup, MotionEvent paramMotionEvent)
+  public static final int CTRL_INDEX = 897;
+  public static final String NAME = "issueTrafficCard";
+  
+  protected final void a(j paramj, int paramInt, IInterface paramIInterface, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(140690);
-    int j = paramViewGroup.getChildCount();
-    int i = paramMotionEvent.getActionIndex();
-    if (paramViewGroup.isMotionEventSplittingEnabled())
+    AppMethodBeat.i(243125);
+    if (paramJSONObject == null)
     {
-      i = 1 << paramMotionEvent.getPointerId(i);
-      j -= 1;
+      paramIInterface = new HashMap();
+      paramIInterface.put("errCode", Integer.valueOf(b.psC.errorCode));
+      paramj.j(paramInt, m("fail:" + b.psC.errorMsg, paramIInterface));
+      q(3, b.psC.errorCode, "deviceData is null");
+      Log.e("MicroMsg.JsApiIssueTrafficCard", "deviceData is null, invoke fail: [%s] ! with appId[%s] callbackId[%s]", new Object[] { b.psC.errorMsg, paramj.getAppId(), Integer.valueOf(paramInt) });
+      AppMethodBeat.o(243125);
+      return;
     }
+    HashMap localHashMap = new HashMap();
+    String str1 = paramJSONObject.optString("issuerID");
+    String str2 = paramJSONObject.optString("orderNo");
+    String str3 = paramJSONObject.optString("cityCode");
+    paramJSONObject = paramJSONObject.optString("orderStatus");
+    localHashMap.put("issuerID", str1);
+    localHashMap.put("orderNo", str2);
+    localHashMap.put("appID", "APP-WECHAT");
+    localHashMap.put("operation", "1");
+    localHashMap.put("cityCode", str3);
+    localHashMap.put("orderStatus", paramJSONObject);
+    boolean bool = paramIInterface instanceof com.huawei.b.a.a.a;
+    if (bool) {}
     for (;;)
     {
-      if (j < 0) {
-        break label142;
-      }
-      View localView = paramViewGroup.getChildAt(j);
-      float f1 = paramMotionEvent.getX();
-      float f2 = paramMotionEvent.getY();
-      if ((AppBrandViewMotionCompat.cN(localView)) && (AppBrandViewMotionCompat.a(paramViewGroup, f1, f2, localView)) && (localView.isDuplicateParentStateEnabled()))
-      {
-        a(paramViewGroup, paramMotionEvent, localView, i);
-        if (((localView instanceof f)) && (((f)localView).bEY()))
-        {
-          AppMethodBeat.o(140690);
-          return;
-          i = -1;
-          break;
-        }
-      }
-      j -= 1;
-    }
-    label142:
-    AppMethodBeat.o(140690);
-  }
-  
-  public static boolean a(ViewGroup paramViewGroup, MotionEvent paramMotionEvent, View paramView, int paramInt)
-  {
-    AppMethodBeat.i(140691);
-    if (paramView == null)
-    {
-      Log.v("MicroMsg.ViewMotionHelper", "child is null.");
-      AppMethodBeat.o(140691);
-      return false;
-    }
-    int i = paramMotionEvent.getAction();
-    if (i == 3)
-    {
-      paramMotionEvent.setAction(3);
-      bool = paramView.dispatchTouchEvent(paramMotionEvent);
-      paramMotionEvent.setAction(i);
-      AppMethodBeat.o(140691);
-      return bool;
-    }
-    i = AppBrandViewMotionCompat.J(paramMotionEvent);
-    paramInt = i & paramInt;
-    if (paramInt == 0)
-    {
-      Log.v("MicroMsg.ViewMotionHelper", "newPointerIdBits is 0.");
-      AppMethodBeat.o(140691);
-      return false;
-    }
-    boolean bool = AppBrandViewMotionCompat.cO(paramView);
-    Object localObject;
-    if (paramInt == i)
-    {
-      if (bool)
-      {
-        float f1 = paramViewGroup.getScrollX() - paramView.getLeft();
-        float f2 = paramViewGroup.getScrollY() - paramView.getTop();
-        paramMotionEvent.offsetLocation(f1, f2);
-        bool = paramView.dispatchTouchEvent(paramMotionEvent);
-        paramMotionEvent.offsetLocation(-f1, -f2);
-        AppMethodBeat.o(140691);
-        return bool;
-      }
-      localObject = MotionEvent.obtain(paramMotionEvent);
-    }
-    for (;;)
-    {
-      ((MotionEvent)localObject).offsetLocation(paramViewGroup.getScrollX() - paramView.getLeft(), paramViewGroup.getScrollY() - paramView.getTop());
-      if (!bool) {
-        ((MotionEvent)localObject).transform(AppBrandViewMotionCompat.cP(paramView));
-      }
-      bool = paramView.dispatchTouchEvent((MotionEvent)localObject);
-      ((MotionEvent)localObject).recycle();
-      AppMethodBeat.o(140691);
-      return bool;
-      MotionEvent localMotionEvent = AppBrandViewMotionCompat.g(paramMotionEvent, paramInt);
-      localObject = localMotionEvent;
-      if (localMotionEvent == null) {
-        localObject = MotionEvent.obtain(paramMotionEvent);
-      }
-    }
-  }
-  
-  public static f cv(View paramView)
-  {
-    AppMethodBeat.i(140689);
-    int[] arrayOfInt = new int[2];
-    paramView.getLocationOnScreen(arrayOfInt);
-    paramView = new f(0, arrayOfInt[0], arrayOfInt[1]);
-    AppMethodBeat.o(140689);
-    return paramView;
-  }
-  
-  public static final class a
-    extends bc
-  {
-    private static final int CTRL_INDEX = 137;
-    public static final String NAME = "onLongPress";
-  }
-  
-  public static final class b
-    extends bc
-  {
-    private static final int CTRL_INDEX = -2;
-    public static final String NAME = "onTouchCancel";
-  }
-  
-  public static final class c
-    extends bc
-  {
-    private static final int CTRL_INDEX = -2;
-    public static final String NAME = "onTouchStart";
-  }
-  
-  public static final class d
-    extends bc
-  {
-    private static final int CTRL_INDEX = -2;
-    public static final String NAME = "onTouchMove";
-  }
-  
-  public static final class e
-    extends bc
-  {
-    private static final int CTRL_INDEX = -2;
-    public static final String NAME = "onTouchEnd";
-  }
-  
-  public static final class f
-  {
-    public int id;
-    public float x;
-    public float y;
-    
-    public f() {}
-    
-    public f(int paramInt, float paramFloat1, float paramFloat2)
-    {
-      this.id = paramInt;
-      this.x = paramFloat1;
-      this.y = paramFloat2;
-    }
-    
-    public final void b(int paramInt, float paramFloat1, float paramFloat2)
-    {
-      this.id = paramInt;
-      this.x = paramFloat1;
-      this.y = paramFloat2;
-    }
-    
-    public final JSONObject toJSONObject()
-    {
-      AppMethodBeat.i(140687);
-      JSONObject localJSONObject = new JSONObject();
       try
       {
-        localJSONObject.put("id", this.id);
-        localJSONObject.put("x", g.aS(this.x));
-        localJSONObject.put("y", g.aS(this.y));
-        label54:
-        AppMethodBeat.o(140687);
-        return localJSONObject;
+        ((com.huawei.b.a.a.a)paramIInterface).preIssueCard(localHashMap);
+        paramIInterface = ((com.huawei.b.a.a.a)paramIInterface).issueCard(localHashMap);
+        if (TextUtils.isEmpty(paramIInterface)) {
+          continue;
+        }
+        paramIInterface = new JSONObject(paramIInterface);
       }
-      catch (JSONException localJSONException)
+      catch (Exception paramIInterface)
       {
-        break label54;
+        Log.e("MicroMsg.JsApiIssueTrafficCard", "call remote interface fail: [%s] ! ", new Object[] { paramIInterface.getMessage() });
+        paramIInterface = null;
+        continue;
+        int i = paramIInterface.optInt("resultCode");
+        if (i == b.psB.errorCode) {
+          continue;
+        }
+        if (!bool) {
+          continue;
+        }
+        paramIInterface = b.AM(i);
+        paramJSONObject = paramIInterface;
+        if (paramIInterface != b.ptn) {
+          continue;
+        }
+        paramJSONObject = b.ptf;
+        localHashMap.put("errCode", Integer.valueOf(paramJSONObject.errorCode));
+        paramj.j(paramInt, m("fail:" + paramJSONObject.errorMsg, localHashMap));
+        q(3, paramJSONObject.errorCode, paramJSONObject.errorMsg);
+        Log.e("MicroMsg.JsApiIssueTrafficCard", "Return code from remote interface! with RetCode issueCard[%s] ", new Object[] { Integer.valueOf(i) });
+        AppMethodBeat.o(243125);
+        return;
+        paramIInterface = b.AN(i);
+        continue;
+        localHashMap.put("errCode", Integer.valueOf(b.psB.errorCode));
+        paramj.j(paramInt, m(b.psB.errorMsg, localHashMap));
+        q(3, b.psB.errorCode, "");
+        AppMethodBeat.o(243125);
+        return;
       }
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(140688);
-      String str = toJSONObject().toString();
-      AppMethodBeat.o(140688);
-      return str;
+      localHashMap = new HashMap();
+      if (paramIInterface == null)
+      {
+        localHashMap.put("errCode", Integer.valueOf(b.psG.errorCode));
+        paramj.j(paramInt, m("fail:" + b.psG.errorMsg, localHashMap));
+        q(3, b.psG.errorCode, "call remote interface exception");
+        Log.e("MicroMsg.JsApiIssueTrafficCard", "call remote interface exception.");
+        AppMethodBeat.o(243125);
+        return;
+        if (!(paramIInterface instanceof ITencentSmartcardOpenService)) {
+          break label632;
+        }
+        ((ITencentSmartcardOpenService)paramIInterface).preIssueCard(localHashMap);
+        paramIInterface = ((ITencentSmartcardOpenService)paramIInterface).issueCard(localHashMap);
+      }
+      label632:
+      paramIInterface = "";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ac.e
  * JD-Core Version:    0.7.0.1
  */

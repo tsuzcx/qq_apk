@@ -5,13 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.aaa;
-import com.tencent.mm.g.a.aaa.a;
+import com.tencent.mm.an.q;
+import com.tencent.mm.f.a.abh;
+import com.tencent.mm.f.a.abh.a;
 import com.tencent.mm.plugin.wallet.a.s;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
-import com.tencent.mm.plugin.wallet_core.model.an;
+import com.tencent.mm.plugin.wallet_core.model.ao;
 import com.tencent.mm.plugin.wallet_core.ui.WalletPwdConfirmUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletSetPasswordUI;
 import com.tencent.mm.plugin.wallet_payu.balance.ui.WalletPayUBalanceManagerUI;
@@ -20,6 +20,7 @@ import com.tencent.mm.plugin.wallet_payu.create.ui.WalletPayUVerifyCodeUI;
 import com.tencent.mm.plugin.wallet_payu.pay.ui.WalletPayUChangeBankcardUI;
 import com.tencent.mm.plugin.wallet_payu.pay.ui.WalletPayUOrderInfoUI;
 import com.tencent.mm.plugin.wallet_payu.pay.ui.WalletPayUPayUI;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -41,7 +42,7 @@ public class d
     localIntent.putExtra("shouldForceViewPort", paramBoolean);
     localIntent.putExtra("pay_channel", 2);
     localIntent.putExtra("view_port_code", paramString2);
-    com.tencent.mm.br.c.b(paramContext, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent, 23351);
+    com.tencent.mm.by.c.b(paramContext, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent, 23351);
     AppMethodBeat.o(72095);
   }
   
@@ -81,7 +82,7 @@ public class d
   
   public final int a(MMActivity paramMMActivity, int paramInt)
   {
-    return 2131768144;
+    return a.i.wallet_pay_finish_confirm_payu;
   }
   
   public final g a(MMActivity paramMMActivity, i parami)
@@ -95,10 +96,10 @@ public class d
         {
           AppMethodBeat.i(72087);
           paramAnonymousVarArgs = (PayInfo)this.activity.getIntent().getParcelableExtra("key_pay_info");
-          if ((paramAnonymousVarArgs != null) && (!Util.isNullOrNil(paramAnonymousVarArgs.dDL)))
+          if ((paramAnonymousVarArgs != null) && (!Util.isNullOrNil(paramAnonymousVarArgs.fwv)))
           {
-            this.Ruz.a(new b(paramAnonymousVarArgs.dDL), paramAnonymousVarArgs.Kxs, 1);
-            this.Ruz.a(new com.tencent.mm.plugin.wallet_core.c.b.a(), paramAnonymousVarArgs.Kxs, 1);
+            this.YVX.a(new b(paramAnonymousVarArgs.fwv), paramAnonymousVarArgs.Rzg, 1);
+            this.YVX.a(new com.tencent.mm.plugin.wallet_core.c.b.a(), paramAnonymousVarArgs.Rzg, 1);
             AppMethodBeat.o(72087);
             return true;
           }
@@ -133,11 +134,11 @@ public class d
             AppMethodBeat.o(72089);
             return localObject;
           case 0: 
-            localObject = this.activity.getString(2131767463);
+            localObject = this.activity.getString(a.i.wallet_balance_result_save_title);
             AppMethodBeat.o(72089);
             return localObject;
           }
-          Object localObject = this.activity.getString(2131767462);
+          Object localObject = this.activity.getString(a.i.wallet_balance_result_save_success);
           AppMethodBeat.o(72089);
           return localObject;
         }
@@ -151,9 +152,9 @@ public class d
         {
           AppMethodBeat.i(72088);
           paramAnonymousVarArgs = (Orders)paramAnonymousVarArgs[0];
-          s.fOg();
-          Bankcard localBankcard = s.fOh().Hwc;
-          localBankcard.HVC += paramAnonymousVarArgs.dDO;
+          s.gGL();
+          Bankcard localBankcard = s.gGM().OnP;
+          localBankcard.OND += paramAnonymousVarArgs.fwy;
           AppMethodBeat.o(72088);
           return false;
         }
@@ -169,7 +170,7 @@ public class d
   public final com.tencent.mm.wallet_core.d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(72090);
-    paramBundle.putInt("key_pay_scene", ((PayInfo)paramBundle.getParcelable("key_pay_info")).dVv);
+    paramBundle.putInt("key_pay_scene", ((PayInfo)paramBundle.getParcelable("key_pay_info")).fOY);
     switch (paramBundle.getInt("key_err_code", 0))
     {
     default: 
@@ -226,7 +227,7 @@ public class d
     {
       AppMethodBeat.o(72091);
       return;
-      paramInt = this.dQL.getInt("key_pay_flag", 0);
+      paramInt = this.fKb.getInt("key_pay_flag", 0);
       break;
       if ((paramActivity instanceof WalletPayUVerifyCodeUI))
       {
@@ -262,28 +263,28 @@ public class d
   {
     int j = -1;
     AppMethodBeat.i(72093);
-    Log.d("MicroMsg.PayUPayProcess", "end pay_flag : " + this.dQL.getInt("key_pay_flag", 0));
+    Log.d("MicroMsg.PayUPayProcess", "end pay_flag : " + this.fKb.getInt("key_pay_flag", 0));
     int i;
     Intent localIntent;
-    aaa.a locala;
-    if (this.dQL.getBoolean("intent_pay_end", false))
+    abh.a locala;
+    if (this.fKb.getBoolean("intent_pay_end", false))
     {
       i = -1;
       localIntent = new Intent();
       if (paramBundle != null)
       {
         paramBundle = new Bundle();
-        paramBundle.putInt("intent_pay_end_errcode", this.dQL.getInt("intent_pay_end_errcode"));
-        paramBundle.putString("intent_pay_app_url", this.dQL.getString("intent_pay_app_url"));
-        paramBundle.putBoolean("intent_pay_end", this.dQL.getBoolean("intent_pay_end"));
-        paramBundle.putString("intent_wap_pay_jump_url", this.dQL.getString("intent_wap_pay_jump_url"));
+        paramBundle.putInt("intent_pay_end_errcode", this.fKb.getInt("intent_pay_end_errcode"));
+        paramBundle.putString("intent_pay_app_url", this.fKb.getString("intent_pay_app_url"));
+        paramBundle.putBoolean("intent_pay_end", this.fKb.getBoolean("intent_pay_end"));
+        paramBundle.putString("intent_wap_pay_jump_url", this.fKb.getString("intent_wap_pay_jump_url"));
         localIntent.putExtras(paramBundle);
       }
-      paramBundle = new aaa();
-      paramBundle.egJ.intent = localIntent;
-      locala = paramBundle.egJ;
-      if (!this.dQL.getBoolean("intent_pay_end", false)) {
-        break label218;
+      paramBundle = new abh();
+      paramBundle.gaZ.intent = localIntent;
+      locala = paramBundle.gaZ;
+      if (!this.fKb.getBoolean("intent_pay_end", false)) {
+        break label220;
       }
     }
     for (;;)
@@ -295,7 +296,7 @@ public class d
       return;
       i = 0;
       break;
-      label218:
+      label220:
       j = 0;
     }
   }
@@ -303,8 +304,8 @@ public class d
   public final boolean c(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(72097);
-    Log.d("MicroMsg.PayUPayProcess", "needupdatebankcardlist pay_flag : " + this.dQL.getInt("key_pay_flag", 0));
-    switch (this.dQL.getInt("key_pay_flag", 0))
+    Log.d("MicroMsg.PayUPayProcess", "needupdatebankcardlist pay_flag : " + this.fKb.getInt("key_pay_flag", 0));
+    switch (this.fKb.getInt("key_pay_flag", 0))
     {
     default: 
       AppMethodBeat.o(72097);
@@ -314,22 +315,22 @@ public class d
     return false;
   }
   
-  public final String dKC()
+  public final String epb()
   {
     return "PayUPayProcess";
   }
   
-  public final void g(Activity paramActivity, int paramInt)
+  public final void h(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(72092);
-    Log.d("MicroMsg.PayUPayProcess", "bakck pay_flag : " + this.dQL.getInt("key_pay_flag", 0));
+    Log.d("MicroMsg.PayUPayProcess", "bakck pay_flag : " + this.fKb.getInt("key_pay_flag", 0));
     if ((paramActivity instanceof WalletPwdConfirmUI))
     {
       a(paramActivity, WalletSetPasswordUI.class, paramInt);
       AppMethodBeat.o(72092);
       return;
     }
-    P(paramActivity);
+    Q(paramActivity);
     AppMethodBeat.o(72092);
   }
 }

@@ -50,6 +50,7 @@ public class APMidasPayHelper
   public static final String MED_DISTRIBUTE_HF_COUPONS_ROLLBACK = "hfCouponsRollBack";
   public static String MED_DISTRIBUTE_INFO;
   public static String MED_DISTRIBUTE_INIT;
+  public static String MED_DISTRIBUTE_LongConnection;
   public static String MED_DISTRIBUTE_NET;
   public static String MED_DISTRIBUTE_PAY;
   public static String MED_DISTRIBUTE_RECEIVE;
@@ -62,7 +63,7 @@ public class APMidasPayHelper
   public static int MIDAS_INNER_WEBVIEW = 0;
   public static int MIDAS_OUT_WEBVIEW = 0;
   public static String MIDAS_PLUGIN_NAME;
-  public static final String MIDAS_PLUGIN_VERSION = "1.7.1f";
+  public static final String MIDAS_PLUGIN_VERSION = "1.7.4";
   public static int MIDAS_WEBVIEW = 0;
   public static String PKG_DISTRIBUTE;
   public static final int PLUGIN_INITFAIL = 2;
@@ -82,6 +83,7 @@ public class APMidasPayHelper
   private static boolean isNeedLocalUpdate;
   public static boolean isNewProcess;
   private static Object loadingObject;
+  private static String logCallbackClassName;
   private static boolean logEnable;
   public static IAPMidasPayCallBack midasCallBack;
   public static IAPMidasNetCallBack netCallBack;
@@ -99,7 +101,7 @@ public class APMidasPayHelper
   
   static
   {
-    AppMethodBeat.i(192994);
+    AppMethodBeat.i(252943);
     MIDAS_PLUGIN_NAME = "MidasPay";
     PKG_DISTRIBUTE = "com.tencent.midas.pay.APMidasDistribute";
     MED_DISTRIBUTE_INIT = "golbalInit";
@@ -114,10 +116,12 @@ public class APMidasPayHelper
     MED_DISTRIBUTE_WEB = "openMidasWeb";
     MED_DISTRIBUTE_HANDLE_WX_INTENT = "handleWXIntent";
     MED_DISTRIBUTE_HANDLE_QQ_WALLET_INTENT = "handleQQWalletIntent";
+    MED_DISTRIBUTE_LongConnection = "setLongConnection";
     MIDAS_WEBVIEW = 0;
     MIDAS_INNER_WEBVIEW = 0;
     MIDAS_OUT_WEBVIEW = 1;
     env = "release";
+    logCallbackClassName = "";
     midasCallBack = null;
     netCallBack = null;
     netCallBack_ReqType = "";
@@ -133,18 +137,18 @@ public class APMidasPayHelper
     isNewProcess = false;
     requestObject = null;
     staticActivityContext = null;
-    AppMethodBeat.o(192994);
+    AppMethodBeat.o(252943);
   }
   
   public static String getJSContent(Context paramContext)
   {
     try
     {
-      AppMethodBeat.i(192957);
+      AppMethodBeat.i(252849);
       APLog.i("APMidasPayHelper", "getJSContent");
       init(paramContext, null);
       paramContext = (String)new APMidasPayHelper().callWithContext(paramContext, "getH5JS", new Object[] { paramContext });
-      AppMethodBeat.o(192957);
+      AppMethodBeat.o(252849);
       return paramContext;
     }
     finally
@@ -154,6 +158,11 @@ public class APMidasPayHelper
     }
   }
   
+  public static String getLogCallbackClassName()
+  {
+    return logCallbackClassName;
+  }
+  
   /* Error */
   @android.annotation.SuppressLint({"NewApi"})
   public static void h5Init(Activity paramActivity, android.webkit.WebView paramWebView, com.tencent.smtt.sdk.WebView paramWebView1)
@@ -161,70 +170,70 @@ public class APMidasPayHelper
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc_w 316
-    //   6: invokestatic 128	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: ldc 84
-    //   11: ldc_w 317
-    //   14: invokestatic 295	com/tencent/midas/comm/APLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   3: ldc_w 333
+    //   6: invokestatic 138	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: ldc 93
+    //   11: ldc_w 334
+    //   14: invokestatic 311	com/tencent/midas/comm/APLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   17: aload_2
-    //   18: putstatic 319	com/tencent/midas/control/APMidasPayHelper:x5Webview	Lcom/tencent/smtt/sdk/WebView;
+    //   18: putstatic 336	com/tencent/midas/control/APMidasPayHelper:x5Webview	Lcom/tencent/smtt/sdk/WebView;
     //   21: aload_1
-    //   22: putstatic 321	com/tencent/midas/control/APMidasPayHelper:webview	Landroid/webkit/WebView;
+    //   22: putstatic 338	com/tencent/midas/control/APMidasPayHelper:webview	Landroid/webkit/WebView;
     //   25: aload_0
-    //   26: invokestatic 324	com/tencent/midas/control/APMidasPayHelper:isNewProcess	(Landroid/content/Context;)Z
-    //   29: putstatic 223	com/tencent/midas/control/APMidasPayHelper:isNewProcess	Z
-    //   32: getstatic 202	com/tencent/midas/control/APMidasPayHelper:initCount	I
+    //   26: invokestatic 341	com/tencent/midas/control/APMidasPayHelper:isNewProcess	(Landroid/content/Context;)Z
+    //   29: putstatic 239	com/tencent/midas/control/APMidasPayHelper:isNewProcess	Z
+    //   32: getstatic 218	com/tencent/midas/control/APMidasPayHelper:initCount	I
     //   35: ifgt +31 -> 66
-    //   38: invokestatic 328	com/tencent/midas/plugin/APPluginUtils:release	()V
+    //   38: invokestatic 345	com/tencent/midas/plugin/APPluginUtils:release	()V
     //   41: aload_0
-    //   42: ldc_w 329
-    //   45: new 22	com/tencent/midas/control/APMidasPayHelper$4
+    //   42: ldc_w 346
+    //   45: new 24	com/tencent/midas/control/APMidasPayHelper$4
     //   48: dup
     //   49: aload_0
-    //   50: invokespecial 332	com/tencent/midas/control/APMidasPayHelper$4:<init>	(Landroid/app/Activity;)V
-    //   53: invokestatic 335	com/tencent/midas/control/APMidasPayHelper:preLoadPlugin	(Landroid/content/Context;Ljava/lang/String;Lcom/tencent/midas/control/IAPInitCallBack;)V
-    //   56: ldc_w 316
-    //   59: invokestatic 230	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   50: invokespecial 349	com/tencent/midas/control/APMidasPayHelper$4:<init>	(Landroid/app/Activity;)V
+    //   53: invokestatic 352	com/tencent/midas/control/APMidasPayHelper:preLoadPlugin	(Landroid/content/Context;Ljava/lang/String;Lcom/tencent/midas/control/IAPInitCallBack;)V
+    //   56: ldc_w 333
+    //   59: invokestatic 246	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   62: ldc 2
     //   64: monitorexit
     //   65: return
     //   66: new 2	com/tencent/midas/control/APMidasPayHelper
     //   69: dup
-    //   70: invokespecial 300	com/tencent/midas/control/APMidasPayHelper:<init>	()V
+    //   70: invokespecial 316	com/tencent/midas/control/APMidasPayHelper:<init>	()V
     //   73: aload_0
-    //   74: ldc_w 302
+    //   74: ldc_w 318
     //   77: iconst_1
     //   78: anewarray 4	java/lang/Object
     //   81: dup
     //   82: iconst_0
     //   83: aload_0
     //   84: aastore
-    //   85: invokevirtual 339	com/tencent/midas/control/APMidasPayHelper:call	(Landroid/app/Activity;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   88: checkcast 308	java/lang/String
+    //   85: invokevirtual 356	com/tencent/midas/control/APMidasPayHelper:call	(Landroid/app/Activity;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   88: checkcast 324	java/lang/String
     //   91: astore_0
     //   92: aload_0
-    //   93: invokestatic 345	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   93: invokestatic 362	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   96: istore_3
     //   97: iload_3
     //   98: ifne +86 -> 184
-    //   101: getstatic 321	com/tencent/midas/control/APMidasPayHelper:webview	Landroid/webkit/WebView;
+    //   101: getstatic 338	com/tencent/midas/control/APMidasPayHelper:webview	Landroid/webkit/WebView;
     //   104: ifnull +17 -> 121
     //   107: aload_1
-    //   108: ldc_w 347
+    //   108: ldc_w 364
     //   111: aload_0
-    //   112: invokestatic 351	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   115: invokevirtual 354	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   118: invokevirtual 360	android/webkit/WebView:loadUrl	(Ljava/lang/String;)V
-    //   121: getstatic 319	com/tencent/midas/control/APMidasPayHelper:x5Webview	Lcom/tencent/smtt/sdk/WebView;
+    //   112: invokestatic 368	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   115: invokevirtual 371	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   118: invokevirtual 377	android/webkit/WebView:loadUrl	(Ljava/lang/String;)V
+    //   121: getstatic 336	com/tencent/midas/control/APMidasPayHelper:x5Webview	Lcom/tencent/smtt/sdk/WebView;
     //   124: ifnull +19 -> 143
-    //   127: getstatic 319	com/tencent/midas/control/APMidasPayHelper:x5Webview	Lcom/tencent/smtt/sdk/WebView;
-    //   130: ldc_w 347
+    //   127: getstatic 336	com/tencent/midas/control/APMidasPayHelper:x5Webview	Lcom/tencent/smtt/sdk/WebView;
+    //   130: ldc_w 364
     //   133: aload_0
-    //   134: invokestatic 351	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   137: invokevirtual 354	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   140: invokevirtual 363	com/tencent/smtt/sdk/WebView:loadUrl	(Ljava/lang/String;)V
-    //   143: ldc_w 316
-    //   146: invokestatic 230	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   134: invokestatic 368	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   137: invokevirtual 371	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   140: invokevirtual 380	com/tencent/smtt/sdk/WebView:loadUrl	(Ljava/lang/String;)V
+    //   143: ldc_w 333
+    //   146: invokestatic 246	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   149: goto -87 -> 62
     //   152: astore_0
     //   153: ldc 2
@@ -232,18 +241,18 @@ public class APMidasPayHelper
     //   156: aload_0
     //   157: athrow
     //   158: astore_0
-    //   159: ldc 84
-    //   161: new 365	java/lang/StringBuilder
+    //   159: ldc 93
+    //   161: new 382	java/lang/StringBuilder
     //   164: dup
-    //   165: ldc_w 367
-    //   168: invokespecial 369	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   165: ldc_w 384
+    //   168: invokespecial 386	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   171: aload_0
-    //   172: invokevirtual 372	java/lang/Exception:toString	()Ljava/lang/String;
-    //   175: invokevirtual 376	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   178: invokevirtual 377	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   181: invokestatic 380	com/tencent/midas/comm/APLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   184: ldc_w 316
-    //   187: invokestatic 230	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   172: invokevirtual 389	java/lang/Exception:toString	()Ljava/lang/String;
+    //   175: invokevirtual 393	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   178: invokevirtual 394	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   181: invokestatic 397	com/tencent/midas/comm/APLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   184: ldc_w 333
+    //   187: invokestatic 246	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   190: goto -128 -> 62
     // Local variable table:
     //   start	length	slot	name	signature
@@ -271,60 +280,60 @@ public class APMidasPayHelper
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc_w 384
-    //   6: invokestatic 128	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: ldc 84
-    //   11: ldc_w 385
-    //   14: invokestatic 295	com/tencent/midas/comm/APLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   3: ldc_w 401
+    //   6: invokestatic 138	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: ldc 93
+    //   11: ldc_w 402
+    //   14: invokestatic 311	com/tencent/midas/comm/APLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   17: aload_1
-    //   18: putstatic 387	com/tencent/midas/control/APMidasPayHelper:sIWebView	Lcom/tencent/midas/api/IAPWebView;
+    //   18: putstatic 404	com/tencent/midas/control/APMidasPayHelper:sIWebView	Lcom/tencent/midas/api/IAPWebView;
     //   21: aload_0
-    //   22: invokestatic 324	com/tencent/midas/control/APMidasPayHelper:isNewProcess	(Landroid/content/Context;)Z
-    //   25: putstatic 223	com/tencent/midas/control/APMidasPayHelper:isNewProcess	Z
-    //   28: getstatic 202	com/tencent/midas/control/APMidasPayHelper:initCount	I
+    //   22: invokestatic 341	com/tencent/midas/control/APMidasPayHelper:isNewProcess	(Landroid/content/Context;)Z
+    //   25: putstatic 239	com/tencent/midas/control/APMidasPayHelper:isNewProcess	Z
+    //   28: getstatic 218	com/tencent/midas/control/APMidasPayHelper:initCount	I
     //   31: ifgt +31 -> 62
-    //   34: invokestatic 328	com/tencent/midas/plugin/APPluginUtils:release	()V
+    //   34: invokestatic 345	com/tencent/midas/plugin/APPluginUtils:release	()V
     //   37: aload_0
-    //   38: ldc_w 329
-    //   41: new 20	com/tencent/midas/control/APMidasPayHelper$3
+    //   38: ldc_w 346
+    //   41: new 22	com/tencent/midas/control/APMidasPayHelper$3
     //   44: dup
     //   45: aload_0
-    //   46: invokespecial 388	com/tencent/midas/control/APMidasPayHelper$3:<init>	(Landroid/app/Activity;)V
-    //   49: invokestatic 335	com/tencent/midas/control/APMidasPayHelper:preLoadPlugin	(Landroid/content/Context;Ljava/lang/String;Lcom/tencent/midas/control/IAPInitCallBack;)V
-    //   52: ldc_w 384
-    //   55: invokestatic 230	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   46: invokespecial 405	com/tencent/midas/control/APMidasPayHelper$3:<init>	(Landroid/app/Activity;)V
+    //   49: invokestatic 352	com/tencent/midas/control/APMidasPayHelper:preLoadPlugin	(Landroid/content/Context;Ljava/lang/String;Lcom/tencent/midas/control/IAPInitCallBack;)V
+    //   52: ldc_w 401
+    //   55: invokestatic 246	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   58: ldc 2
     //   60: monitorexit
     //   61: return
     //   62: new 2	com/tencent/midas/control/APMidasPayHelper
     //   65: dup
-    //   66: invokespecial 300	com/tencent/midas/control/APMidasPayHelper:<init>	()V
+    //   66: invokespecial 316	com/tencent/midas/control/APMidasPayHelper:<init>	()V
     //   69: aload_0
-    //   70: ldc_w 302
+    //   70: ldc_w 318
     //   73: iconst_1
     //   74: anewarray 4	java/lang/Object
     //   77: dup
     //   78: iconst_0
     //   79: aload_0
     //   80: aastore
-    //   81: invokevirtual 339	com/tencent/midas/control/APMidasPayHelper:call	(Landroid/app/Activity;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   84: checkcast 308	java/lang/String
+    //   81: invokevirtual 356	com/tencent/midas/control/APMidasPayHelper:call	(Landroid/app/Activity;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   84: checkcast 324	java/lang/String
     //   87: astore_0
     //   88: aload_0
-    //   89: invokestatic 345	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   89: invokestatic 362	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   92: istore_2
     //   93: iload_2
     //   94: ifne +68 -> 162
-    //   97: getstatic 387	com/tencent/midas/control/APMidasPayHelper:sIWebView	Lcom/tencent/midas/api/IAPWebView;
+    //   97: getstatic 404	com/tencent/midas/control/APMidasPayHelper:sIWebView	Lcom/tencent/midas/api/IAPWebView;
     //   100: ifnull +21 -> 121
-    //   103: getstatic 387	com/tencent/midas/control/APMidasPayHelper:sIWebView	Lcom/tencent/midas/api/IAPWebView;
-    //   106: ldc_w 347
+    //   103: getstatic 404	com/tencent/midas/control/APMidasPayHelper:sIWebView	Lcom/tencent/midas/api/IAPWebView;
+    //   106: ldc_w 364
     //   109: aload_0
-    //   110: invokestatic 351	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   113: invokevirtual 354	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   116: invokeinterface 391 2 0
-    //   121: ldc_w 384
-    //   124: invokestatic 230	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   110: invokestatic 368	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   113: invokevirtual 371	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   116: invokeinterface 408 2 0
+    //   121: ldc_w 401
+    //   124: invokestatic 246	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   127: goto -69 -> 58
     //   130: astore_0
     //   131: ldc 2
@@ -332,18 +341,18 @@ public class APMidasPayHelper
     //   134: aload_0
     //   135: athrow
     //   136: astore_0
-    //   137: ldc 84
-    //   139: new 365	java/lang/StringBuilder
+    //   137: ldc 93
+    //   139: new 382	java/lang/StringBuilder
     //   142: dup
-    //   143: ldc_w 393
-    //   146: invokespecial 369	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   143: ldc_w 410
+    //   146: invokespecial 386	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   149: aload_0
-    //   150: invokevirtual 372	java/lang/Exception:toString	()Ljava/lang/String;
-    //   153: invokevirtual 376	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   156: invokevirtual 377	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   159: invokestatic 380	com/tencent/midas/comm/APLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   162: ldc_w 384
-    //   165: invokestatic 230	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   150: invokevirtual 389	java/lang/Exception:toString	()Ljava/lang/String;
+    //   153: invokevirtual 393	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   156: invokevirtual 394	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   159: invokestatic 397	com/tencent/midas/comm/APLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   162: ldc_w 401
+    //   165: invokestatic 246	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   168: goto -110 -> 58
     // Local variable table:
     //   start	length	slot	name	signature
@@ -361,75 +370,93 @@ public class APMidasPayHelper
     //   97	121	136	java/lang/Exception
   }
   
-  /* Error */
   public static void init(Context paramContext, APMidasBaseRequest paramAPMidasBaseRequest)
+  {
+    try
+    {
+      AppMethodBeat.i(252844);
+      init(paramContext, paramAPMidasBaseRequest, null);
+      AppMethodBeat.o(252844);
+      return;
+    }
+    finally
+    {
+      paramContext = finally;
+      throw paramContext;
+    }
+  }
+  
+  /* Error */
+  public static void init(final Context paramContext, APMidasBaseRequest paramAPMidasBaseRequest, ResultReceiver paramResultReceiver)
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc_w 394
-    //   6: invokestatic 128	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: ldc 84
-    //   11: new 365	java/lang/StringBuilder
+    //   3: ldc_w 415
+    //   6: invokestatic 138	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: ldc 93
+    //   11: new 382	java/lang/StringBuilder
     //   14: dup
-    //   15: ldc_w 396
-    //   18: invokespecial 369	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   21: getstatic 202	com/tencent/midas/control/APMidasPayHelper:initCount	I
-    //   24: invokevirtual 399	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   27: invokevirtual 377	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   30: invokestatic 295	com/tencent/midas/comm/APLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   15: ldc_w 417
+    //   18: invokespecial 386	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   21: getstatic 218	com/tencent/midas/control/APMidasPayHelper:initCount	I
+    //   24: invokevirtual 420	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   27: invokevirtual 394	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   30: invokestatic 311	com/tencent/midas/comm/APLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   33: aload_0
-    //   34: invokestatic 324	com/tencent/midas/control/APMidasPayHelper:isNewProcess	(Landroid/content/Context;)Z
-    //   37: putstatic 223	com/tencent/midas/control/APMidasPayHelper:isNewProcess	Z
+    //   34: invokestatic 341	com/tencent/midas/control/APMidasPayHelper:isNewProcess	(Landroid/content/Context;)Z
+    //   37: putstatic 239	com/tencent/midas/control/APMidasPayHelper:isNewProcess	Z
     //   40: aload_1
-    //   41: putstatic 217	com/tencent/midas/control/APMidasPayHelper:initRequest	Lcom/tencent/midas/api/request/APMidasBaseRequest;
-    //   44: getstatic 202	com/tencent/midas/control/APMidasPayHelper:initCount	I
+    //   41: putstatic 233	com/tencent/midas/control/APMidasPayHelper:initRequest	Lcom/tencent/midas/api/request/APMidasBaseRequest;
+    //   44: getstatic 218	com/tencent/midas/control/APMidasPayHelper:initCount	I
     //   47: ifgt +53 -> 100
-    //   50: getstatic 215	com/tencent/midas/control/APMidasPayHelper:isInitSucc	Z
+    //   50: getstatic 231	com/tencent/midas/control/APMidasPayHelper:isInitSucc	Z
     //   53: ifne +47 -> 100
-    //   56: invokestatic 328	com/tencent/midas/plugin/APPluginUtils:release	()V
+    //   56: invokestatic 345	com/tencent/midas/plugin/APPluginUtils:release	()V
     //   59: aload_0
-    //   60: ldc_w 329
+    //   60: ldc_w 346
     //   63: new 8	com/tencent/midas/control/APMidasPayHelper$1
     //   66: dup
-    //   67: invokespecial 400	com/tencent/midas/control/APMidasPayHelper$1:<init>	()V
-    //   70: invokestatic 335	com/tencent/midas/control/APMidasPayHelper:preLoadPlugin	(Landroid/content/Context;Ljava/lang/String;Lcom/tencent/midas/control/IAPInitCallBack;)V
-    //   73: invokestatic 406	com/tencent/midas/data/APPluginReportManager:getInstance	()Lcom/tencent/midas/data/APPluginReportManager;
-    //   76: ldc_w 329
-    //   79: invokevirtual 409	com/tencent/midas/data/APPluginReportManager:dataReport	(Ljava/lang/String;)V
-    //   82: getstatic 202	com/tencent/midas/control/APMidasPayHelper:initCount	I
+    //   67: invokespecial 421	com/tencent/midas/control/APMidasPayHelper$1:<init>	()V
+    //   70: invokestatic 352	com/tencent/midas/control/APMidasPayHelper:preLoadPlugin	(Landroid/content/Context;Ljava/lang/String;Lcom/tencent/midas/control/IAPInitCallBack;)V
+    //   73: invokestatic 427	com/tencent/midas/data/APPluginReportManager:getInstance	()Lcom/tencent/midas/data/APPluginReportManager;
+    //   76: ldc_w 346
+    //   79: invokevirtual 430	com/tencent/midas/data/APPluginReportManager:dataReport	(Ljava/lang/String;)V
+    //   82: getstatic 218	com/tencent/midas/control/APMidasPayHelper:initCount	I
     //   85: iconst_1
     //   86: iadd
-    //   87: putstatic 202	com/tencent/midas/control/APMidasPayHelper:initCount	I
-    //   90: ldc_w 394
-    //   93: invokestatic 230	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   87: putstatic 218	com/tencent/midas/control/APMidasPayHelper:initCount	I
+    //   90: ldc_w 415
+    //   93: invokestatic 246	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   96: ldc 2
     //   98: monitorexit
     //   99: return
-    //   100: getstatic 215	com/tencent/midas/control/APMidasPayHelper:isInitSucc	Z
+    //   100: getstatic 231	com/tencent/midas/control/APMidasPayHelper:isInitSucc	Z
     //   103: ifeq -30 -> 73
     //   106: aload_0
-    //   107: checkcast 411	android/app/Activity
-    //   110: new 18	com/tencent/midas/control/APMidasPayHelper$2
+    //   107: checkcast 432	android/app/Activity
+    //   110: new 20	com/tencent/midas/control/APMidasPayHelper$2
     //   113: dup
-    //   114: aload_0
-    //   115: invokespecial 414	com/tencent/midas/control/APMidasPayHelper$2:<init>	(Landroid/content/Context;)V
-    //   118: invokevirtual 418	android/app/Activity:runOnUiThread	(Ljava/lang/Runnable;)V
-    //   121: goto -48 -> 73
-    //   124: astore_0
-    //   125: ldc 2
-    //   127: monitorexit
-    //   128: aload_0
-    //   129: athrow
+    //   114: aload_2
+    //   115: aload_0
+    //   116: invokespecial 435	com/tencent/midas/control/APMidasPayHelper$2:<init>	(Landroid/os/ResultReceiver;Landroid/content/Context;)V
+    //   119: invokevirtual 439	android/app/Activity:runOnUiThread	(Ljava/lang/Runnable;)V
+    //   122: goto -49 -> 73
+    //   125: astore_0
+    //   126: ldc 2
+    //   128: monitorexit
+    //   129: aload_0
+    //   130: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	130	0	paramContext	Context
-    //   0	130	1	paramAPMidasBaseRequest	APMidasBaseRequest
+    //   0	131	0	paramContext	Context
+    //   0	131	1	paramAPMidasBaseRequest	APMidasBaseRequest
+    //   0	131	2	paramResultReceiver	ResultReceiver
     // Exception table:
     //   from	to	target	type
-    //   3	73	124	finally
-    //   73	96	124	finally
-    //   100	121	124	finally
+    //   3	73	125	finally
+    //   73	96	125	finally
+    //   100	122	125	finally
   }
   
   public static boolean isLogEnable()
@@ -439,7 +466,7 @@ public class APMidasPayHelper
   
   public static boolean isNewProcess(Context paramContext)
   {
-    AppMethodBeat.i(192989);
+    AppMethodBeat.i(252922);
     try
     {
       Object localObject = paramContext.getApplicationContext().getPackageManager();
@@ -456,7 +483,7 @@ public class APMidasPayHelper
             boolean bool = ((String)localObject).contains("midasPay");
             if (bool)
             {
-              AppMethodBeat.o(192989);
+              AppMethodBeat.o(252922);
               return true;
             }
           }
@@ -467,17 +494,17 @@ public class APMidasPayHelper
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(192989);
+      AppMethodBeat.o(252922);
     }
   }
   
   public static void midasCallBack(APMidasResponse paramAPMidasResponse)
   {
-    AppMethodBeat.i(192981);
+    AppMethodBeat.i(252906);
     if ((paramAPMidasResponse != null) && (paramAPMidasResponse.resultCode == -100011) && ("needChangeH5".equals(paramAPMidasResponse.resultMsg)) && (APWebJSBridgeActivity.startPureH5Pay(staticActivityContext, "", "change_h5_from_cgi")))
     {
       staticActivityContext = null;
-      AppMethodBeat.o(192981);
+      AppMethodBeat.o(252906);
       return;
     }
     APLog.i("APMidasPayHelper", "midasCallBack resultCode :" + paramAPMidasResponse.resultCode + " midasCallBack:" + midasCallBack);
@@ -496,12 +523,12 @@ public class APMidasPayHelper
     APPluginUtils.release();
     APLog.closeLog();
     staticActivityContext = null;
-    AppMethodBeat.o(192981);
+    AppMethodBeat.o(252906);
   }
   
   public static void midasH5CallBack(String paramString)
   {
-    AppMethodBeat.i(192983);
+    AppMethodBeat.i(252910);
     APLog.i("APMidasPayHelper", "midasH5CallBack params:" + paramString + " webview:" + webview + " x5Webview:" + x5Webview);
     if (webview != null) {}
     try
@@ -524,7 +551,7 @@ public class APMidasPayHelper
         APLog.closeLog();
         staticActivityContext = null;
         requestObject = null;
-        AppMethodBeat.o(192983);
+        AppMethodBeat.o(252910);
         return;
         localException = localException;
         APLog.w("APMidasPayHelper", "midasH5CallBack error:" + localException.toString());
@@ -541,7 +568,7 @@ public class APMidasPayHelper
   
   public static void midasLoginExpire()
   {
-    AppMethodBeat.i(192982);
+    AppMethodBeat.i(252908);
     if (midasCallBack != null)
     {
       midasCallBack.MidasPayNeedLogin();
@@ -557,12 +584,12 @@ public class APMidasPayHelper
     APLog.closeLog();
     staticActivityContext = null;
     requestObject = null;
-    AppMethodBeat.o(192982);
+    AppMethodBeat.o(252908);
   }
   
   public static void onNetError(String paramString1, Integer paramInteger, String paramString2)
   {
-    AppMethodBeat.i(192984);
+    AppMethodBeat.i(252912);
     if (netCallBack != null)
     {
       netCallBack.MidasNetError(paramString1, paramInteger.intValue(), paramString2);
@@ -570,12 +597,12 @@ public class APMidasPayHelper
       netCallBack_ReqType = "";
     }
     staticActivityContext = null;
-    AppMethodBeat.o(192984);
+    AppMethodBeat.o(252912);
   }
   
   public static void onNetFinish(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(192986);
+    AppMethodBeat.i(252918);
     if (netCallBack != null)
     {
       netCallBack.MidasNetFinish(paramString1, paramString2);
@@ -583,12 +610,12 @@ public class APMidasPayHelper
       netCallBack_ReqType = "";
     }
     staticActivityContext = null;
-    AppMethodBeat.o(192986);
+    AppMethodBeat.o(252918);
   }
   
   public static void onNetStop(String paramString)
   {
-    AppMethodBeat.i(192985);
+    AppMethodBeat.i(252916);
     if (netCallBack != null)
     {
       netCallBack.MidasNetStop(paramString);
@@ -596,12 +623,12 @@ public class APMidasPayHelper
       netCallBack_ReqType = "";
     }
     staticActivityContext = null;
-    AppMethodBeat.o(192985);
+    AppMethodBeat.o(252916);
   }
   
   private void openPlugin(Activity paramActivity, Intent paramIntent, String paramString)
   {
-    AppMethodBeat.i(192978);
+    AppMethodBeat.i(252897);
     APLog.d("APMidasPayHelper", "Calling into openPlugin, method = " + paramString + " caller = " + Thread.currentThread().getStackTrace()[3].toString());
     try
     {
@@ -615,7 +642,7 @@ public class APMidasPayHelper
         {
           APPluginReportManager.getInstance().dataReport(APPluginDataInterface.singleton().getLaunchInterface());
           APLog.i("APMidasPayHelper", "openPlugin obj:".concat(String.valueOf(paramActivity)));
-          AppMethodBeat.o(192978);
+          AppMethodBeat.o(252897);
           return;
           paramActivity = paramActivity;
           paramActivity = null;
@@ -633,18 +660,18 @@ public class APMidasPayHelper
   
   private void pluginInitErrCallBack(final Activity paramActivity)
   {
-    AppMethodBeat.i(192987);
+    AppMethodBeat.i(252919);
     APLog.i("APMidasPayHelper", "pluginInitErrCallBack" + midasCallBack);
     if (APWebJSBridgeActivity.startPureH5Pay(paramActivity, APPluginUtils.getInitErrorMsg(), "pluginInitErrCallBack"))
     {
-      AppMethodBeat.o(192987);
+      AppMethodBeat.o(252919);
       return;
     }
     paramActivity.runOnUiThread(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(192943);
+        AppMethodBeat.i(252817);
         APPluginReportManager.getInstance().insertData(APPluginDataInterface.singleton().getLaunchInterface(), "sdk.loadapk_error", "", APPluginUtils.getInitErrorMsg());
         Toast.makeText(paramActivity, "腾讯支付服务加载失败，请退出重试", 1).show();
         APMidasResponse localAPMidasResponse = new APMidasResponse();
@@ -665,16 +692,16 @@ public class APMidasPayHelper
           APMidasPayHelper.staticActivityContext = null;
         }
         APPluginReportManager.getInstance().dataReport(APPluginDataInterface.singleton().getLaunchInterface());
-        AppMethodBeat.o(192943);
+        AppMethodBeat.o(252817);
       }
     });
-    AppMethodBeat.o(192987);
+    AppMethodBeat.o(252919);
   }
   
   private static void preLoadMidasPay(Context arg0, final String paramString, final IAPInitCallBack paramIAPInitCallBack)
   {
     int i = 0;
-    AppMethodBeat.i(192980);
+    AppMethodBeat.i(252903);
     APLog.d("APMidasPayHelper", "Calling into preLoadMidasPay " + Thread.currentThread().getStackTrace()[3].toString());
     System.currentTimeMillis();
     long l;
@@ -717,7 +744,7 @@ public class APMidasPayHelper
       {
         label258:
         boolean bool;
-        AppMethodBeat.o(192980);
+        AppMethodBeat.o(252903);
       }
       APLog.d("APMidasPayHelper", "Calling into preLoadMidasPay isNeedLocalUpdate == false");
       break;
@@ -895,7 +922,6 @@ public class APMidasPayHelper
               //   from	to	target	type
               //   72	104	205	java/lang/Exception
               //   191	199	246	finally
-              //   248	250	246	finally
               //   104	117	258	java/lang/Exception
               //   120	144	258	java/lang/Exception
             }
@@ -919,7 +945,7 @@ public class APMidasPayHelper
   
   private static void preLoadPlugin(Context paramContext, final String paramString, final IAPInitCallBack paramIAPInitCallBack)
   {
-    AppMethodBeat.i(192979);
+    AppMethodBeat.i(252899);
     synchronized (initObject)
     {
       initState = 0;
@@ -927,34 +953,34 @@ public class APMidasPayHelper
       {
         public final void run()
         {
-          AppMethodBeat.i(192941);
+          AppMethodBeat.i(252948);
           APMidasPayHelper.access$1200(this.val$context, paramString, paramIAPInitCallBack);
-          AppMethodBeat.o(192941);
+          AppMethodBeat.o(252948);
         }
       });
       paramContext.setName(APPluginDataInterface.singleton().getLaunchInterface());
       paramContext.start();
-      AppMethodBeat.o(192979);
+      AppMethodBeat.o(252899);
       return;
     }
   }
   
   public static void release(Context arg0)
   {
-    AppMethodBeat.i(192988);
+    AppMethodBeat.i(252921);
     APLog.d("APMidasPayHelper", "release");
     APPluginInstallerAndUpdater.unInstallPlugin(???);
     synchronized (initObject)
     {
       initState = -1;
-      AppMethodBeat.o(192988);
+      AppMethodBeat.o(252921);
       return;
     }
   }
   
   public static void setEnv(String paramString)
   {
-    AppMethodBeat.i(192958);
+    AppMethodBeat.i(252850);
     String str = paramString;
     if (!"release".equals(paramString))
     {
@@ -976,7 +1002,12 @@ public class APMidasPayHelper
       }
     }
     env = str;
-    AppMethodBeat.o(192958);
+    AppMethodBeat.o(252850);
+  }
+  
+  public static void setLogCallbackClassName(String paramString)
+  {
+    logCallbackClassName = paramString;
   }
   
   public static void setLogEnable(boolean paramBoolean)
@@ -984,11 +1015,41 @@ public class APMidasPayHelper
     logEnable = paramBoolean;
   }
   
-  private int toH5Midas(Activity paramActivity, android.webkit.WebView arg2, String paramString1, String paramString2, String paramString3, String paramString4)
+  public static void setLongConnection(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(192976);
+    try
+    {
+      AppMethodBeat.i(252846);
+      APLog.i("APMidasPayHelper", "setLongConnection to open = ".concat(String.valueOf(paramBoolean)));
+      Intent localIntent = new Intent();
+      localIntent.putExtra("version", "1.7.4");
+      localIntent.putExtra("env", env);
+      localIntent.putExtra("logEnable", logEnable);
+      localIntent.putExtra("openLongConnection", paramBoolean);
+      localIntent.putExtra("launchInterfaceName", Thread.currentThread().getName());
+      try
+      {
+        APPluginInterfaceManager.initPluginInterface(paramContext, MIDAS_PLUGIN_NAME, PKG_DISTRIBUTE, MED_DISTRIBUTE_LongConnection, new Object[] { paramContext, localIntent });
+        AppMethodBeat.o(252846);
+      }
+      catch (Exception paramContext)
+      {
+        for (;;)
+        {
+          APLog.i("APMidasPayHelper", "initcallback isInitSucc direct call init function e:" + paramContext.toString());
+          AppMethodBeat.o(252846);
+        }
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  private int toH5Midas(final Activity paramActivity, android.webkit.WebView arg2, final String paramString1, final String paramString2, final String paramString3, String paramString4)
+  {
+    AppMethodBeat.i(252891);
     APLog.i("APMidasPayHelper", "toH5Midas initState: " + initState);
-    ProgressDialog localProgressDialog;
+    final ProgressDialog localProgressDialog;
     int i;
     synchronized (initObject)
     {
@@ -1014,15 +1075,87 @@ public class APMidasPayHelper
       }
       if (initState == 0)
       {
-        new Thread(new APMidasPayHelper.10(this, localProgressDialog, paramActivity, paramString1, paramString2, paramString3)).start();
-        AppMethodBeat.o(192976);
+        new Thread(new Runnable()
+        {
+          /* Error */
+          public void run()
+          {
+            // Byte code:
+            //   0: ldc 45
+            //   2: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+            //   5: invokestatic 55	com/tencent/midas/control/APMidasPayHelper:access$600	()Ljava/lang/Object;
+            //   8: astore_1
+            //   9: aload_1
+            //   10: monitorenter
+            //   11: invokestatic 55	com/tencent/midas/control/APMidasPayHelper:access$600	()Ljava/lang/Object;
+            //   14: invokevirtual 58	java/lang/Object:wait	()V
+            //   17: aload_1
+            //   18: monitorexit
+            //   19: aload_0
+            //   20: getfield 27	com/tencent/midas/control/APMidasPayHelper$10:val$progressDialog	Landroid/app/ProgressDialog;
+            //   23: invokevirtual 64	android/app/ProgressDialog:isShowing	()Z
+            //   26: ifeq +10 -> 36
+            //   29: aload_0
+            //   30: getfield 27	com/tencent/midas/control/APMidasPayHelper$10:val$progressDialog	Landroid/app/ProgressDialog;
+            //   33: invokevirtual 67	android/app/ProgressDialog:dismiss	()V
+            //   36: aload_0
+            //   37: getfield 25	com/tencent/midas/control/APMidasPayHelper$10:this$0	Lcom/tencent/midas/control/APMidasPayHelper;
+            //   40: aload_0
+            //   41: getfield 29	com/tencent/midas/control/APMidasPayHelper$10:val$activity	Landroid/app/Activity;
+            //   44: aload_0
+            //   45: getfield 31	com/tencent/midas/control/APMidasPayHelper$10:val$url	Ljava/lang/String;
+            //   48: aload_0
+            //   49: getfield 33	com/tencent/midas/control/APMidasPayHelper$10:val$message	Ljava/lang/String;
+            //   52: aload_0
+            //   53: getfield 35	com/tencent/midas/control/APMidasPayHelper$10:val$toMethod	Ljava/lang/String;
+            //   56: invokestatic 71	com/tencent/midas/control/APMidasPayHelper:access$1100	(Lcom/tencent/midas/control/APMidasPayHelper;Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
+            //   59: pop
+            //   60: ldc 45
+            //   62: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+            //   65: return
+            //   66: astore_2
+            //   67: aload_1
+            //   68: monitorexit
+            //   69: ldc 45
+            //   71: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+            //   74: aload_2
+            //   75: athrow
+            //   76: astore_1
+            //   77: ldc 76
+            //   79: new 78	java/lang/StringBuilder
+            //   82: dup
+            //   83: ldc 80
+            //   85: invokespecial 83	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+            //   88: aload_1
+            //   89: invokevirtual 87	java/lang/InterruptedException:toString	()Ljava/lang/String;
+            //   92: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+            //   95: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
+            //   98: invokestatic 98	com/tencent/midas/comm/APLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+            //   101: goto -82 -> 19
+            //   104: astore_1
+            //   105: goto -69 -> 36
+            // Local variable table:
+            //   start	length	slot	name	signature
+            //   0	108	0	this	10
+            //   76	13	1	localInterruptedException	InterruptedException
+            //   104	1	1	localThrowable	Throwable
+            //   66	9	2	localObject2	Object
+            // Exception table:
+            //   from	to	target	type
+            //   11	19	66	finally
+            //   5	11	76	java/lang/InterruptedException
+            //   67	76	76	java/lang/InterruptedException
+            //   19	36	104	java/lang/Throwable
+          }
+        }).start();
+        AppMethodBeat.o(252891);
         return 0;
       }
       i = toH5MidasPay(paramActivity, paramString1, paramString2, paramString3);
-      AppMethodBeat.o(192976);
+      AppMethodBeat.o(252891);
       return i;
       paramActivity = finally;
-      AppMethodBeat.o(192976);
+      AppMethodBeat.o(252891);
       throw paramActivity;
     }
     catch (Throwable localThrowable)
@@ -1033,7 +1166,7 @@ public class APMidasPayHelper
   
   private int toH5MidasPay(final Activity paramActivity, final String paramString1, final String paramString2, final String paramString3)
   {
-    AppMethodBeat.i(192977);
+    AppMethodBeat.i(252894);
     synchronized (initObject)
     {
       if (initState == 2)
@@ -1041,14 +1174,14 @@ public class APMidasPayHelper
         APLog.i("APMidasPayHelper", "toH5MidasPay plugin init error");
         pluginInitErrCallBack(paramActivity);
         initState = -1;
-        AppMethodBeat.o(192977);
+        AppMethodBeat.o(252894);
         return -1;
       }
       paramActivity.runOnUiThread(new Runnable()
       {
         public void run()
         {
-          AppMethodBeat.i(192946);
+          AppMethodBeat.i(252820);
           Intent localIntent = new Intent();
           localIntent.putExtra("version", APMidasPayAPI.getMidasPluginVersion());
           localIntent.putExtra("env", APMidasPayHelper.env);
@@ -1081,28 +1214,28 @@ public class APMidasPayHelper
             localIntent.putExtra("remoteReceiver", APMidasPayHelper.remotRecevier);
           }
           APMidasPayHelper.access$1000(APMidasPayHelper.this, paramActivity, localIntent, paramString3);
-          AppMethodBeat.o(192946);
+          AppMethodBeat.o(252820);
         }
       });
-      AppMethodBeat.o(192977);
+      AppMethodBeat.o(252894);
       return 0;
     }
   }
   
-  private int toMidas(Activity paramActivity, APMidasBaseRequest paramAPMidasBaseRequest, String paramString1, String paramString2)
+  private int toMidas(Activity paramActivity, final APMidasBaseRequest paramAPMidasBaseRequest, final String paramString1, final String paramString2)
   {
-    AppMethodBeat.i(192974);
+    AppMethodBeat.i(252885);
     if (paramAPMidasBaseRequest == null)
     {
       APLog.w("APMidasPayHelper", "toMidas pay request is null");
-      AppMethodBeat.o(192974);
+      AppMethodBeat.o(252885);
       return -1;
     }
     requestObject = paramAPMidasBaseRequest;
     staticActivityContext = paramActivity;
     APLog.i("APMidasPayHelper", "ToMidas initState = " + initState);
-    ProgressDialog localProgressDialog;
-    long l;
+    final ProgressDialog localProgressDialog;
+    final long l;
     synchronized (initObject)
     {
       localProgressDialog = new ProgressDialog(paramActivity);
@@ -1137,18 +1270,91 @@ public class APMidasPayHelper
       }
       if (initState == 0)
       {
-        new Thread(new APMidasPayHelper.8(this, localProgressDialog, l, paramActivity, paramAPMidasBaseRequest, paramString1, paramString2)).start();
-        AppMethodBeat.o(192974);
+        new Thread(new Runnable()
+        {
+          /* Error */
+          public void run()
+          {
+            // Byte code:
+            //   0: ldc 50
+            //   2: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+            //   5: invokestatic 60	com/tencent/midas/control/APMidasPayHelper:access$600	()Ljava/lang/Object;
+            //   8: astore_1
+            //   9: aload_1
+            //   10: monitorenter
+            //   11: invokestatic 60	com/tencent/midas/control/APMidasPayHelper:access$600	()Ljava/lang/Object;
+            //   14: invokevirtual 63	java/lang/Object:wait	()V
+            //   17: aload_1
+            //   18: monitorexit
+            //   19: aload_0
+            //   20: getfield 30	com/tencent/midas/control/APMidasPayHelper$8:val$progressDialog	Landroid/app/ProgressDialog;
+            //   23: invokevirtual 69	android/app/ProgressDialog:isShowing	()Z
+            //   26: ifeq +10 -> 36
+            //   29: aload_0
+            //   30: getfield 30	com/tencent/midas/control/APMidasPayHelper$8:val$progressDialog	Landroid/app/ProgressDialog;
+            //   33: invokevirtual 72	android/app/ProgressDialog:dismiss	()V
+            //   36: invokestatic 78	com/tencent/midas/data/APPluginReportManager:getInstance	()Lcom/tencent/midas/data/APPluginReportManager;
+            //   39: invokestatic 84	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+            //   42: invokestatic 90	com/pay/tool/APMidasTools:getCurrentThreadName	(Ljava/lang/Thread;)Ljava/lang/String;
+            //   45: ldc 92
+            //   47: aload_0
+            //   48: getfield 32	com/tencent/midas/control/APMidasPayHelper$8:val$startTime	J
+            //   51: invokevirtual 96	com/tencent/midas/data/APPluginReportManager:insertTimeDataEx	(Ljava/lang/String;Ljava/lang/String;J)V
+            //   54: aload_0
+            //   55: getfield 28	com/tencent/midas/control/APMidasPayHelper$8:this$0	Lcom/tencent/midas/control/APMidasPayHelper;
+            //   58: aload_0
+            //   59: getfield 34	com/tencent/midas/control/APMidasPayHelper$8:val$activity	Landroid/app/Activity;
+            //   62: aload_0
+            //   63: getfield 36	com/tencent/midas/control/APMidasPayHelper$8:val$request	Lcom/tencent/midas/api/request/APMidasBaseRequest;
+            //   66: aload_0
+            //   67: getfield 38	com/tencent/midas/control/APMidasPayHelper$8:val$toMethod	Ljava/lang/String;
+            //   70: aload_0
+            //   71: getfield 40	com/tencent/midas/control/APMidasPayHelper$8:val$fromMethod	Ljava/lang/String;
+            //   74: invokestatic 100	com/tencent/midas/control/APMidasPayHelper:access$700	(Lcom/tencent/midas/control/APMidasPayHelper;Landroid/app/Activity;Lcom/tencent/midas/api/request/APMidasBaseRequest;Ljava/lang/String;Ljava/lang/String;)I
+            //   77: pop
+            //   78: ldc 50
+            //   80: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+            //   83: return
+            //   84: astore_2
+            //   85: aload_1
+            //   86: monitorexit
+            //   87: ldc 50
+            //   89: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+            //   92: aload_2
+            //   93: athrow
+            //   94: astore_1
+            //   95: ldc 105
+            //   97: aload_1
+            //   98: invokevirtual 109	java/lang/InterruptedException:toString	()Ljava/lang/String;
+            //   101: invokestatic 115	com/tencent/midas/comm/APLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+            //   104: goto -85 -> 19
+            //   107: astore_1
+            //   108: goto -72 -> 36
+            // Local variable table:
+            //   start	length	slot	name	signature
+            //   0	111	0	this	8
+            //   94	4	1	localInterruptedException	InterruptedException
+            //   107	1	1	localThrowable	Throwable
+            //   84	9	2	localObject2	Object
+            // Exception table:
+            //   from	to	target	type
+            //   11	19	84	finally
+            //   5	11	94	java/lang/InterruptedException
+            //   85	94	94	java/lang/InterruptedException
+            //   19	36	107	java/lang/Throwable
+          }
+        }).start();
+        AppMethodBeat.o(252885);
         return 0;
         paramActivity = finally;
-        AppMethodBeat.o(192974);
+        AppMethodBeat.o(252885);
         throw paramActivity;
         paramActivity = finally;
-        AppMethodBeat.o(192974);
+        AppMethodBeat.o(252885);
         throw paramActivity;
       }
       int i = toMidasPay(paramActivity, paramAPMidasBaseRequest, paramString1, paramString2);
-      AppMethodBeat.o(192974);
+      AppMethodBeat.o(252885);
       return i;
     }
     catch (Throwable localThrowable)
@@ -1159,7 +1365,7 @@ public class APMidasPayHelper
   
   private int toMidasPay(final Activity paramActivity, final APMidasBaseRequest paramAPMidasBaseRequest, final String paramString1, String arg4)
   {
-    AppMethodBeat.i(192975);
+    AppMethodBeat.i(252887);
     synchronized (initObject)
     {
       if (initState == 2)
@@ -1167,7 +1373,7 @@ public class APMidasPayHelper
         APLog.i("APMidasPayHelper", "toMidasPay plugin init error");
         pluginInitErrCallBack(paramActivity);
         initState = -1;
-        AppMethodBeat.o(192975);
+        AppMethodBeat.o(252887);
         return -1;
       }
       requestObject = paramAPMidasBaseRequest;
@@ -1179,7 +1385,7 @@ public class APMidasPayHelper
       {
         public void run()
         {
-          AppMethodBeat.i(192939);
+          AppMethodBeat.i(252968);
           Intent localIntent = new Intent();
           localIntent.putExtra("version", APMidasPayAPI.getMidasPluginVersion());
           localIntent.putExtra("env", APMidasPayHelper.env);
@@ -1212,14 +1418,14 @@ public class APMidasPayHelper
             break label200;
           }
           APMidasPayHelper.access$1000(APMidasPayHelper.this, paramActivity, localIntent, paramString1);
-          AppMethodBeat.o(192939);
+          AppMethodBeat.o(252968);
         }
       });
       label75:
-      AppMethodBeat.o(192975);
+      AppMethodBeat.o(252887);
       return 0;
       paramActivity = finally;
-      AppMethodBeat.o(192975);
+      AppMethodBeat.o(252887);
       throw paramActivity;
     }
     catch (Exception paramActivity)
@@ -1230,7 +1436,7 @@ public class APMidasPayHelper
   
   private void waitingPluginReady(Context paramContext, ResultReceiver paramResultReceiver)
   {
-    AppMethodBeat.i(192971);
+    AppMethodBeat.i(252878);
     if (("test".equals(env)) && (initCount <= 0)) {
       Toast.makeText(paramContext, "腾讯支付尚未初始化，请先调用初始化接口!", 1).show();
     }
@@ -1241,8 +1447,8 @@ public class APMidasPayHelper
       ((SharedPreferences.Editor)???).commit();
     }
     APLog.i("APMidasPayHelper", "ToMidas initState = " + initState);
-    ProgressDialog localProgressDialog;
-    long l;
+    final ProgressDialog localProgressDialog;
+    final long l;
     synchronized (initObject)
     {
       localProgressDialog = new ProgressDialog(paramContext);
@@ -1276,17 +1482,85 @@ public class APMidasPayHelper
         preLoadPlugin(paramContext, "launchFunction", null);
       }
       if (initState == 0) {
-        new Thread(new APMidasPayHelper.6(this, localProgressDialog, l, paramResultReceiver)).start();
+        new Thread(new Runnable()
+        {
+          /* Error */
+          public void run()
+          {
+            // Byte code:
+            //   0: ldc 39
+            //   2: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+            //   5: invokestatic 49	com/tencent/midas/control/APMidasPayHelper:access$600	()Ljava/lang/Object;
+            //   8: astore_1
+            //   9: aload_1
+            //   10: monitorenter
+            //   11: invokestatic 49	com/tencent/midas/control/APMidasPayHelper:access$600	()Ljava/lang/Object;
+            //   14: invokevirtual 52	java/lang/Object:wait	()V
+            //   17: aload_1
+            //   18: monitorexit
+            //   19: aload_0
+            //   20: getfield 25	com/tencent/midas/control/APMidasPayHelper$6:val$progressDialog	Landroid/app/ProgressDialog;
+            //   23: invokevirtual 58	android/app/ProgressDialog:isShowing	()Z
+            //   26: ifeq +10 -> 36
+            //   29: aload_0
+            //   30: getfield 25	com/tencent/midas/control/APMidasPayHelper$6:val$progressDialog	Landroid/app/ProgressDialog;
+            //   33: invokevirtual 61	android/app/ProgressDialog:dismiss	()V
+            //   36: invokestatic 67	com/tencent/midas/data/APPluginReportManager:getInstance	()Lcom/tencent/midas/data/APPluginReportManager;
+            //   39: invokestatic 73	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+            //   42: invokestatic 79	com/pay/tool/APMidasTools:getCurrentThreadName	(Ljava/lang/Thread;)Ljava/lang/String;
+            //   45: ldc 81
+            //   47: aload_0
+            //   48: getfield 27	com/tencent/midas/control/APMidasPayHelper$6:val$startTime	J
+            //   51: invokevirtual 85	com/tencent/midas/data/APPluginReportManager:insertTimeDataEx	(Ljava/lang/String;Ljava/lang/String;J)V
+            //   54: aload_0
+            //   55: getfield 29	com/tencent/midas/control/APMidasPayHelper$6:val$followupAction	Landroid/os/ResultReceiver;
+            //   58: iconst_0
+            //   59: new 87	android/os/Bundle
+            //   62: dup
+            //   63: invokespecial 88	android/os/Bundle:<init>	()V
+            //   66: invokevirtual 94	android/os/ResultReceiver:send	(ILandroid/os/Bundle;)V
+            //   69: ldc 39
+            //   71: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+            //   74: return
+            //   75: astore_2
+            //   76: aload_1
+            //   77: monitorexit
+            //   78: ldc 39
+            //   80: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+            //   83: aload_2
+            //   84: athrow
+            //   85: astore_1
+            //   86: ldc 99
+            //   88: aload_1
+            //   89: invokevirtual 103	java/lang/InterruptedException:toString	()Ljava/lang/String;
+            //   92: invokestatic 109	com/tencent/midas/comm/APLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+            //   95: goto -76 -> 19
+            //   98: astore_1
+            //   99: goto -63 -> 36
+            // Local variable table:
+            //   start	length	slot	name	signature
+            //   0	102	0	this	6
+            //   85	4	1	localInterruptedException	InterruptedException
+            //   98	1	1	localThrowable	Throwable
+            //   75	9	2	localObject2	Object
+            // Exception table:
+            //   from	to	target	type
+            //   11	19	75	finally
+            //   5	11	85	java/lang/InterruptedException
+            //   76	85	85	java/lang/InterruptedException
+            //   19	36	98	java/lang/Throwable
+          }
+        }).start();
       }
       for (;;)
       {
-        AppMethodBeat.o(192971);
+        AppMethodBeat.o(252878);
         return;
         paramContext = finally;
-        AppMethodBeat.o(192971);
+        AppMethodBeat.o(252878);
         throw paramContext;
         paramContext = finally;
-        AppMethodBeat.o(192971);
+        AppMethodBeat.o(252878);
         throw paramContext;
         paramResultReceiver.send(0, new Bundle());
       }
@@ -1299,36 +1573,36 @@ public class APMidasPayHelper
   
   public Object call(Activity paramActivity, String paramString, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(192968);
+    AppMethodBeat.i(252871);
     paramActivity = callWithContext(paramActivity, paramString, paramArrayOfObject);
-    AppMethodBeat.o(192968);
+    AppMethodBeat.o(252871);
     return paramActivity;
   }
   
   public Object call(Activity paramActivity, String paramString, Object[] paramArrayOfObject, Class<?>[] paramArrayOfClass)
   {
-    AppMethodBeat.i(192969);
+    AppMethodBeat.i(252873);
     paramActivity = callWithContext(paramActivity, paramString, paramArrayOfObject, paramArrayOfClass);
-    AppMethodBeat.o(192969);
+    AppMethodBeat.o(252873);
     return paramActivity;
   }
   
   public Object call(Context paramContext, String paramString, Class<?>[] paramArrayOfClass, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(192970);
+    AppMethodBeat.i(252875);
     paramContext = callWithContext(paramContext, paramString, paramArrayOfObject, paramArrayOfClass);
-    AppMethodBeat.o(192970);
+    AppMethodBeat.o(252875);
     return paramContext;
   }
   
   public Object callWithContext(Context paramContext, String paramString, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(192972);
+    AppMethodBeat.i(252881);
     Object localObject = null;
     try
     {
       paramContext = APPluginInterfaceManager.initPluginInterface(paramContext, MIDAS_PLUGIN_NAME, PKG_DISTRIBUTE, MED_DISTRIBUTE_CALL, new Object[] { paramString, paramArrayOfObject });
-      AppMethodBeat.o(192972);
+      AppMethodBeat.o(252881);
       return paramContext;
     }
     catch (Exception paramContext)
@@ -1343,7 +1617,7 @@ public class APMidasPayHelper
   
   public Object callWithContext(final Context paramContext, final String paramString, final Object[] paramArrayOfObject, final Class<?>[] paramArrayOfClass)
   {
-    AppMethodBeat.i(192973);
+    AppMethodBeat.i(252882);
     synchronized (initObject)
     {
       APLog.i("callWithContext ", "initState:" + initState);
@@ -1352,7 +1626,7 @@ public class APMidasPayHelper
         {
           public void run()
           {
-            AppMethodBeat.i(192937);
+            AppMethodBeat.i(252813);
             try
             {
               APLog.d("callWithContext ", "PLUGIN_INITING wait");
@@ -1360,25 +1634,25 @@ public class APMidasPayHelper
               {
                 APMidasPayHelper.dexloadObject.wait();
                 APLog.d("callWithContext ", "PLUGIN_INITING go");
-                ((Activity)paramContext).runOnUiThread(new Runnable()
+                new Handler(Looper.getMainLooper()).post(new Runnable()
                 {
                   public void run()
                   {
-                    AppMethodBeat.i(192938);
+                    AppMethodBeat.i(252809);
                     try
                     {
                       APMidasPayHelper.this.retobj = APPluginInterfaceManager.initPluginInterface2(APMidasPayHelper.7.this.val$context, APMidasPayHelper.MIDAS_PLUGIN_NAME, APMidasPayHelper.PKG_DISTRIBUTE, APMidasPayHelper.MED_DISTRIBUTE_CALL2, new Object[] { APMidasPayHelper.7.this.val$methodName, APMidasPayHelper.7.this.val$params, APMidasPayHelper.7.this.val$paramsType });
-                      AppMethodBeat.o(192938);
+                      AppMethodBeat.o(252809);
                       return;
                     }
                     catch (Exception localException)
                     {
                       APLog.e("callWithContext", "error1 " + localException.toString());
-                      AppMethodBeat.o(192938);
+                      AppMethodBeat.o(252809);
                     }
                   }
                 });
-                AppMethodBeat.o(192937);
+                AppMethodBeat.o(252813);
                 return;
               }
               return;
@@ -1386,13 +1660,19 @@ public class APMidasPayHelper
             catch (InterruptedException localInterruptedException)
             {
               APLog.e("callWithContext", "error2 " + localInterruptedException.toString());
-              AppMethodBeat.o(192937);
+              AppMethodBeat.o(252813);
+              return;
+            }
+            catch (Exception localException)
+            {
+              APLog.e("callWithContext", "error3 " + localException.toString());
+              AppMethodBeat.o(252813);
               return;
             }
             catch (Throwable localThrowable)
             {
-              APLog.e("callWithContext", "error3 " + localThrowable.toString());
-              AppMethodBeat.o(192937);
+              APLog.e("callWithContext", "error4 " + localThrowable.toString());
+              AppMethodBeat.o(252813);
             }
           }
         }).start();
@@ -1400,7 +1680,7 @@ public class APMidasPayHelper
       for (;;)
       {
         paramContext = this.retobj;
-        AppMethodBeat.o(192973);
+        AppMethodBeat.o(252882);
         return paramContext;
         try
         {
@@ -1416,79 +1696,79 @@ public class APMidasPayHelper
   
   public int getInfo(Activity paramActivity, String paramString, APMidasBaseRequest paramAPMidasBaseRequest, IAPMidasNetCallBack paramIAPMidasNetCallBack)
   {
-    AppMethodBeat.i(192964);
+    AppMethodBeat.i(252863);
     netCallBack = paramIAPMidasNetCallBack;
     netCallBack_ReqType = paramString;
     int i = toMidas(paramActivity, paramAPMidasBaseRequest, MED_DISTRIBUTE_INFO, "getInfo");
-    AppMethodBeat.o(192964);
+    AppMethodBeat.o(252863);
     return i;
   }
   
   public int h5Pay(Activity paramActivity, android.webkit.WebView paramWebView, com.tencent.smtt.sdk.WebView paramWebView1, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(192962);
+    AppMethodBeat.i(252858);
     webview = paramWebView;
     x5Webview = paramWebView1;
     APLog.i("APMidasPayHelper", "h5Pay webview:" + webview + " x5Webview:" + x5Webview + " msg:" + paramString2);
     if ((!TextUtils.isEmpty(paramString2)) && (paramString2.startsWith("midas_js_bridge_")))
     {
       int i = toH5Midas(paramActivity, paramWebView, paramString1, paramString2, MED_DISTRIBUTE_H5PAY, "h5Pay");
-      AppMethodBeat.o(192962);
+      AppMethodBeat.o(252858);
       return i;
     }
-    AppMethodBeat.o(192962);
+    AppMethodBeat.o(252858);
     return -2;
   }
   
   public void launchWXMiniProgram(Context paramContext, Bundle paramBundle, ResultReceiver paramResultReceiver)
   {
-    AppMethodBeat.i(192965);
+    AppMethodBeat.i(252865);
     call(paramContext, "launchWXMiniProgram", new Class[] { Context.class, Bundle.class, ResultReceiver.class }, new Object[] { paramContext, paramBundle, paramResultReceiver });
-    AppMethodBeat.o(192965);
+    AppMethodBeat.o(252865);
   }
   
   public void launchWXMiniProgram_OnResponse(Context paramContext, int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(192966);
+    AppMethodBeat.i(252867);
     call(paramContext, "launchWXMiniProgram_OnResponse", new Class[] { Integer.TYPE, Bundle.class }, new Object[] { Integer.valueOf(paramInt), paramBundle });
-    AppMethodBeat.o(192966);
+    AppMethodBeat.o(252867);
   }
   
   public void launchWeb(Activity paramActivity, APMidasBaseRequest paramAPMidasBaseRequest, IAPMidasPayCallBack paramIAPMidasPayCallBack)
   {
-    AppMethodBeat.i(192961);
+    AppMethodBeat.i(252856);
     paramAPMidasBaseRequest = new Intent();
     paramAPMidasBaseRequest.setClass(paramActivity, APWebJSBridgeActivity.class);
-    paramAPMidasBaseRequest = new com.tencent.mm.hellhoundlib.b.a().bl(paramAPMidasBaseRequest);
-    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramAPMidasBaseRequest.axQ(), "com/tencent/midas/control/APMidasPayHelper", "launchWeb", "(Landroid/app/Activity;Lcom/tencent/midas/api/request/APMidasBaseRequest;Lcom/tencent/midas/api/IAPMidasPayCallBack;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramActivity.startActivity((Intent)paramAPMidasBaseRequest.pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/midas/control/APMidasPayHelper", "launchWeb", "(Landroid/app/Activity;Lcom/tencent/midas/api/request/APMidasBaseRequest;Lcom/tencent/midas/api/IAPMidasPayCallBack;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(192961);
+    paramAPMidasBaseRequest = new com.tencent.mm.hellhoundlib.b.a().bm(paramAPMidasBaseRequest);
+    com.tencent.mm.hellhoundlib.a.a.b(paramActivity, paramAPMidasBaseRequest.aFh(), "com/tencent/midas/control/APMidasPayHelper", "launchWeb", "(Landroid/app/Activity;Lcom/tencent/midas/api/request/APMidasBaseRequest;Lcom/tencent/midas/api/IAPMidasPayCallBack;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramActivity.startActivity((Intent)paramAPMidasBaseRequest.sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramActivity, "com/tencent/midas/control/APMidasPayHelper", "launchWeb", "(Landroid/app/Activity;Lcom/tencent/midas/api/request/APMidasBaseRequest;Lcom/tencent/midas/api/IAPMidasPayCallBack;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(252856);
   }
   
   public int net(Activity paramActivity, APMidasNetRequest paramAPMidasNetRequest, IAPMidasNetCallBack paramIAPMidasNetCallBack)
   {
-    AppMethodBeat.i(192963);
+    AppMethodBeat.i(252861);
     netCallBack = paramIAPMidasNetCallBack;
     netCallBack_ReqType = paramAPMidasNetRequest.reqType;
     int i = toMidas(paramActivity, paramAPMidasNetRequest, MED_DISTRIBUTE_NET, "net");
-    AppMethodBeat.o(192963);
+    AppMethodBeat.o(252861);
     return i;
   }
   
   public void onReceiveResult(int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(192952);
+    AppMethodBeat.i(252842);
     APLog.i("APMidasPayHelper", "remotRecevier payHelper resultCode:".concat(String.valueOf(paramInt)));
     if (paramInt == 0) {
       progressRemoteInfo(paramBundle);
     }
-    AppMethodBeat.o(192952);
+    AppMethodBeat.o(252842);
   }
   
   public int pay(Activity paramActivity, APMidasBaseRequest paramAPMidasBaseRequest, IAPMidasPayCallBack paramIAPMidasPayCallBack)
   {
-    AppMethodBeat.i(192959);
+    AppMethodBeat.i(252852);
     APLog.d("APMidasPayHelper", "Calling into pay, caller = " + Thread.currentThread().getStackTrace()[3].toString());
     if (("test".equals(env)) && (initCount <= 0)) {
       Toast.makeText(paramActivity, "腾讯支付尚未初始化，请先调用初始化接口!", 1).show();
@@ -1501,13 +1781,13 @@ public class APMidasPayHelper
       paramIAPMidasPayCallBack.commit();
     }
     int i = toMidas(paramActivity, paramAPMidasBaseRequest, MED_DISTRIBUTE_PAY, "pay");
-    AppMethodBeat.o(192959);
+    AppMethodBeat.o(252852);
     return i;
   }
   
   public void progressRemoteInfo(Bundle paramBundle)
   {
-    AppMethodBeat.i(192953);
+    AppMethodBeat.i(252843);
     Object localObject = paramBundle.getString("type");
     APLog.i("APMidasPayHelper", "progressRemoteInfo type:".concat(String.valueOf(localObject)));
     if ("callback".equals(localObject))
@@ -1531,7 +1811,7 @@ public class APMidasPayHelper
         paramBundle = new APPurchase(str, paramBundle);
         ((APMidasResponse)localObject).mAPPurchase = paramBundle;
         midasCallBack((APMidasResponse)localObject);
-        AppMethodBeat.o(192953);
+        AppMethodBeat.o(252843);
         return;
       }
       catch (JSONException localJSONException)
@@ -1554,20 +1834,51 @@ public class APMidasPayHelper
     if ("h5callback".equals(localObject))
     {
       midasH5CallBack(paramBundle.getString("callbackinfo"));
-      AppMethodBeat.o(192953);
+      AppMethodBeat.o(252843);
       return;
     }
     if ("needlogin".equals(localObject)) {
       midasLoginExpire();
     }
-    AppMethodBeat.o(192953);
+    AppMethodBeat.o(252843);
   }
   
-  public void sendMidas(Context paramContext, Bundle paramBundle, ResultReceiver paramResultReceiver)
+  public void sendMidas(final Context paramContext, final Bundle paramBundle, final ResultReceiver paramResultReceiver)
   {
-    AppMethodBeat.i(192967);
-    waitingPluginReady(paramContext, new APMidasPayHelper.5(this, new Handler(Looper.getMainLooper()), paramContext, paramBundle, paramResultReceiver));
-    AppMethodBeat.o(192967);
+    AppMethodBeat.i(252869);
+    waitingPluginReady(paramContext, new ResultReceiver(new Handler(Looper.getMainLooper()))
+    {
+      protected void onReceiveResult(int paramAnonymousInt, Bundle paramAnonymousBundle)
+      {
+        AppMethodBeat.i(252976);
+        if (paramAnonymousInt == 0) {
+          try
+          {
+            APMidasPayHelper.this.retobj = APPluginInterfaceManager.initPluginInterface(paramContext, APMidasPayHelper.MIDAS_PLUGIN_NAME, APMidasPayHelper.PKG_DISTRIBUTE, APMidasPayHelper.MED_DISTRIBUTE_RECEIVE, new Object[] { paramContext, paramBundle, paramResultReceiver }, new Class[] { Context.class, Bundle.class, ResultReceiver.class });
+            AppMethodBeat.o(252976);
+            return;
+          }
+          catch (Exception paramAnonymousBundle)
+          {
+            APLog.e("APMidasPayHelper", "sendMidas() e = " + paramAnonymousBundle.toString());
+            AppMethodBeat.o(252976);
+            return;
+          }
+        }
+        if (paramResultReceiver != null)
+        {
+          String str = paramBundle.getString("__midas_ability_baseReq__postBack");
+          Bundle localBundle = new Bundle();
+          localBundle.putString("midas_callback_ability_postBack", str);
+          localBundle.putInt("midas_callback_ability_code", -1999);
+          localBundle.putString("midas_callback_ability_msg", "MidasPlugin load failure");
+          localBundle.putBundle("midas_callback_ability_data", paramAnonymousBundle);
+          paramResultReceiver.send(-1, localBundle);
+        }
+        AppMethodBeat.o(252976);
+      }
+    });
+    AppMethodBeat.o(252869);
   }
   
   public void setScreenType(int paramInt)
@@ -1577,15 +1888,15 @@ public class APMidasPayHelper
   
   public void web(Activity paramActivity, APMidasBaseRequest paramAPMidasBaseRequest, IAPMidasPayCallBack paramIAPMidasPayCallBack)
   {
-    AppMethodBeat.i(192960);
+    AppMethodBeat.i(252853);
     midasCallBack = paramIAPMidasPayCallBack;
     launchWeb(paramActivity, paramAPMidasBaseRequest, paramIAPMidasPayCallBack);
-    AppMethodBeat.o(192960);
+    AppMethodBeat.o(252853);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.control.APMidasPayHelper
  * JD-Core Version:    0.7.0.1
  */

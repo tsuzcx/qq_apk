@@ -3,11 +3,11 @@ package kotlin.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/random/XorWowRandom;", "Lkotlin/random/Random;", "seed1", "", "seed2", "(II)V", "x", "y", "z", "w", "v", "addend", "(IIIIII)V", "nextBits", "bitCount", "nextInt", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/random/XorWowRandom;", "Lkotlin/random/Random;", "seed1", "", "seed2", "(II)V", "x", "y", "z", "w", "v", "addend", "(IIIIII)V", "nextBits", "bitCount", "nextInt", "kotlin-stdlib"})
 public final class e
   extends c
 {
-  private int SYR;
+  private int aaBN;
   private int v;
   private int w;
   private int x;
@@ -29,7 +29,7 @@ public final class e
     this.z = 0;
     this.w = 0;
     this.v = paramInt3;
-    this.SYR = paramInt4;
+    this.aaBN = paramInt4;
     if ((this.x | this.y | this.z | this.w | this.v) != 0) {}
     for (paramInt1 = 1;; paramInt1 = 0)
     {
@@ -43,21 +43,21 @@ public final class e
     }
     while (paramInt2 < 64)
     {
-      nextInt();
+      zD();
       paramInt2 += 1;
     }
     AppMethodBeat.o(129556);
   }
   
-  public final int atK(int paramInt)
+  public final int aDE(int paramInt)
   {
     AppMethodBeat.i(129555);
-    paramInt = d.mX(nextInt(), paramInt);
+    paramInt = d.ot(zD(), paramInt);
     AppMethodBeat.o(129555);
     return paramInt;
   }
   
-  public final int nextInt()
+  public final int zD()
   {
     int i = this.x;
     i ^= i >>> 2;
@@ -68,13 +68,13 @@ public final class e
     this.w = j;
     i = i ^ i << 1 ^ j ^ j << 4;
     this.v = i;
-    this.SYR += 362437;
-    return i + this.SYR;
+    this.aaBN += 362437;
+    return i + this.aaBN;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlin.j.e
  * JD-Core Version:    0.7.0.1
  */

@@ -8,69 +8,69 @@ import java.util.Map;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/jsapi/ScanWebViewJsApiPool;", "Lcom/tencent/mm/plugin/webview/jsapi/IWebViewJsApiPool;", "()V", "TAG", "", "jsApis", "", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "initJsApis", "", "jsApiList", "", "support", "webview-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/jsapi/ScanWebViewJsApiPool;", "Lcom/tencent/mm/plugin/webview/jsapi/IWebViewJsApiPool;", "()V", "TAG", "", "jsApis", "", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "initJsApis", "", "jsApiList", "", "support", "webview-sdk_release"})
 public final class o
   implements e
 {
-  private static Map<String, a> ISh;
-  public static final o ISi;
+  private static Map<String, a> POx;
+  public static final o POy;
   
   static
   {
-    AppMethodBeat.i(225114);
-    ISi = new o();
-    ISh = (Map)new HashMap();
-    AppMethodBeat.o(225114);
+    AppMethodBeat.i(205398);
+    POy = new o();
+    POx = (Map)new HashMap();
+    AppMethodBeat.o(205398);
   }
   
-  public static void bM(Map<String, ? extends a> paramMap)
+  public static void bR(Map<String, ? extends a> paramMap)
   {
-    AppMethodBeat.i(225111);
-    p.h(paramMap, "jsApiList");
-    ISh.clear();
-    ISh.putAll(paramMap);
-    AppMethodBeat.o(225111);
+    AppMethodBeat.i(205390);
+    p.k(paramMap, "jsApiList");
+    POx.clear();
+    POx.putAll(paramMap);
+    AppMethodBeat.o(205390);
   }
   
   public final boolean a(f paramf, n paramn)
   {
-    AppMethodBeat.i(225113);
-    p.h(paramf, "env");
-    p.h(paramn, "msg");
-    if (ISh.containsKey(paramn.mhO))
+    AppMethodBeat.i(205396);
+    p.k(paramf, "env");
+    p.k(paramn, "msg");
+    if (POx.containsKey(paramn.function))
     {
-      Object localObject = ISh.get(paramn.mhO);
+      Object localObject = POx.get(paramn.function);
       if (localObject == null) {
-        p.hyc();
+        p.iCn();
       }
       localObject = (a)localObject;
-      if (((a)localObject).ePA() == 10007) {
+      if (((a)localObject).fCn() == 10007) {
         ((a)localObject).a(paramf, paramn);
       }
       for (;;)
       {
-        AppMethodBeat.o(225113);
+        AppMethodBeat.o(205396);
         return true;
-        Log.e("MicroMsg.ScanWebViewJsApiPool", "handleMsg access denied func: " + paramn.mhO);
-        paramf.IQZ.h(paramn.ISe, "system:access_denied", null);
+        Log.e("MicroMsg.ScanWebViewJsApiPool", "handleMsg access denied func: " + paramn.function);
+        paramf.PNo.h(paramn.POu, "system:access_denied", null);
       }
     }
-    AppMethodBeat.o(225113);
+    AppMethodBeat.o(205396);
     return true;
   }
   
   public final boolean b(f paramf, n paramn)
   {
-    AppMethodBeat.i(225112);
-    p.h(paramf, "env");
-    p.h(paramn, "msg");
-    if (!ISh.isEmpty()) {}
-    for (int i = 1; (i != 0) && (p.j(paramf.IQZ.IKO, (o)this)); i = 0)
+    AppMethodBeat.i(205392);
+    p.k(paramf, "env");
+    p.k(paramn, "msg");
+    if (!POx.isEmpty()) {}
+    for (int i = 1; (i != 0) && (p.h(paramf.PNo.PGM, (o)this)); i = 0)
     {
-      AppMethodBeat.o(225112);
+      AppMethodBeat.o(205392);
       return true;
     }
-    AppMethodBeat.o(225112);
+    AppMethodBeat.o(205392);
     return false;
   }
 }

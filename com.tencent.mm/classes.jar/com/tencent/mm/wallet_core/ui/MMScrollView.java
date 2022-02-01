@@ -7,7 +7,7 @@ import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
@@ -16,8 +16,8 @@ public class MMScrollView
   extends ScrollView
   implements View.OnFocusChangeListener
 {
-  private b Rvr;
-  private a Rvs;
+  private MMScrollView.b YWP;
+  private a YWQ;
   
   public MMScrollView(Context paramContext)
   {
@@ -82,8 +82,8 @@ public class MMScrollView
   {
     AppMethodBeat.i(72946);
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.Rvs != null) {
-      this.Rvs.onScrollChange(this, paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.YWQ != null) {
+      this.YWQ.onScrollChange(this, paramInt1, paramInt2, paramInt3, paramInt4);
     }
     AppMethodBeat.o(72946);
   }
@@ -91,10 +91,10 @@ public class MMScrollView
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(72945);
-    b localb;
-    if ((this.Rvr != null) && (paramInt2 != paramInt4))
+    MMScrollView.b localb;
+    if ((this.YWP != null) && (paramInt2 != paramInt4))
     {
-      localb = this.Rvr;
+      localb = this.YWP;
       if (paramInt2 >= paramInt4) {
         break label57;
       }
@@ -102,7 +102,7 @@ public class MMScrollView
     label57:
     for (boolean bool = true;; bool = false)
     {
-      localb.ym(bool);
+      localb.Ch(bool);
       super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
       AppMethodBeat.o(72945);
       return;
@@ -111,13 +111,13 @@ public class MMScrollView
   
   public void setOnScrollListener(a parama)
   {
-    this.Rvs = parama;
+    this.YWQ = parama;
   }
   
-  public void setOnSizeChangeListener(b paramb)
+  public void setOnSizeChangeListener(MMScrollView.b paramb)
   {
     if (paramb != null) {
-      this.Rvr = paramb;
+      this.YWP = paramb;
     }
   }
   
@@ -125,15 +125,10 @@ public class MMScrollView
   {
     public abstract void onScrollChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   }
-  
-  public static abstract interface b
-  {
-    public abstract void ym(boolean paramBoolean);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.MMScrollView
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.appbrand.widget.input.autofill;
 import android.content.Context;
 import android.content.res.Resources;
 import android.widget.PopupWindow;
+import com.tencent.luggage.wxa.b.a.a;
+import com.tencent.luggage.wxa.b.a.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
@@ -15,14 +17,14 @@ public final class e
     super(paramContext, null, 0);
     AppMethodBeat.i(136645);
     this.mContext = paramContext;
-    this.arA.setInputMethodMode(2);
-    paramContext = paramContext.getResources().getDrawable(2131230807);
-    this.arA.setBackgroundDrawable(paramContext);
-    this.arz = true;
-    this.arA.setFocusable(false);
-    this.ark = false;
-    this.arl = true;
-    this.arA.setAnimationStyle(2130772001);
+    this.ty.setInputMethodMode(2);
+    paramContext = paramContext.getResources().getDrawable(a.d.abc_popup_background_mtrl_mult);
+    this.ty.setBackgroundDrawable(paramContext);
+    cpv();
+    cpx();
+    cpw();
+    int i = a.a.appbrand_autofill_dropdown;
+    this.ty.setAnimationStyle(i);
     AppMethodBeat.o(136645);
   }
   
@@ -35,7 +37,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.autofill.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.kinda.framework.module.impl;
 
 import android.content.Context;
+import com.tencent.kinda.framework.R.string;
 import com.tencent.kinda.framework.widget.tools.KindaContext;
 import com.tencent.kinda.gen.KWordingService;
 import com.tencent.kinda.gen.Wording;
@@ -20,8 +21,8 @@ public class KindaWordingServiceImpl
     {
       if (localContext != null)
       {
-        str = localContext.getString(2131767558);
-        paramString2 = localContext.getString(2131767559);
+        str = localContext.getString(R.string.wallet_card_date_illustraction);
+        paramString2 = localContext.getString(R.string.wallet_card_date_illustraction_detail);
       }
       paramString2 = new Wording(true, "entryTip", str, "subTitle", paramString2, "subDesc");
     }
@@ -33,8 +34,8 @@ public class KindaWordingServiceImpl
       {
         if (localContext != null)
         {
-          str = localContext.getString(2131758234);
-          paramString2 = localContext.getString(2131758232);
+          str = localContext.getString(R.string.cvv_tip_title);
+          paramString2 = localContext.getString(R.string.cvv_tip_content);
         }
         paramString2 = new Wording(true, "entryTip", str, "subTitle", paramString2, "subDesc");
       }
@@ -56,7 +57,7 @@ public class KindaWordingServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.KindaWordingServiceImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,10 @@ import android.widget.TextView;
 public class ChangeNumView
   extends TextView
 {
-  private int FNL = -1;
-  private int ImS = 0;
-  private boolean ImT = false;
-  private final int ImU = 100;
+  private int MhM = -1;
+  private int Pfk = 0;
+  private boolean Pfl = false;
+  private final int Pfm = 100;
   private int max = 0;
   private int min = 0;
   
@@ -26,7 +26,7 @@ public class ChangeNumView
   
   public void setInteral(int paramInt)
   {
-    this.FNL = paramInt;
+    this.MhM = paramInt;
   }
 }
 

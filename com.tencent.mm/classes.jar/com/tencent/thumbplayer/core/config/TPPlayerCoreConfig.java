@@ -9,19 +9,19 @@ public class TPPlayerCoreConfig
   
   static
   {
-    AppMethodBeat.i(189867);
+    AppMethodBeat.i(223290);
     mIsLibLoaded = false;
     try
     {
       TPNativeLibraryLoader.loadLibIfNeeded(null);
       mIsLibLoaded = true;
-      AppMethodBeat.o(189867);
+      AppMethodBeat.o(223290);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
     {
       mIsLibLoaded = false;
-      AppMethodBeat.o(189867);
+      AppMethodBeat.o(223290);
     }
   }
   
@@ -31,32 +31,32 @@ public class TPPlayerCoreConfig
   
   public static int getVideoMediaCodecCoexistMaxCnt()
   {
-    AppMethodBeat.i(189866);
+    AppMethodBeat.i(223288);
     if (!mIsLibLoaded)
     {
-      AppMethodBeat.o(189866);
+      AppMethodBeat.o(223288);
       return -1;
     }
     int i = _getVideoMediaCodecCoexistMaxCnt();
-    AppMethodBeat.o(189866);
+    AppMethodBeat.o(223288);
     return i;
   }
   
   public static void setVideoMediaCodecCoexistMaxCnt(int paramInt)
   {
-    AppMethodBeat.i(189865);
+    AppMethodBeat.i(223287);
     if (!mIsLibLoaded)
     {
-      AppMethodBeat.o(189865);
+      AppMethodBeat.o(223287);
       return;
     }
     _setVideoMediaCodecCoexistMaxCnt(paramInt);
-    AppMethodBeat.o(189865);
+    AppMethodBeat.o(223287);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.core.config.TPPlayerCoreConfig
  * JD-Core Version:    0.7.0.1
  */

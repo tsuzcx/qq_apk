@@ -1,13 +1,13 @@
 package com.tencent.mm.platformtools;
 
-import a.f;
-import android.support.v4.e.c;
+import a.d;
+import androidx.core.f.a;
 import java.util.concurrent.Callable;
 
 final class p$7
-  implements c<Boolean>
+  implements a<Boolean>
 {
-  p$7(Callable paramCallable, c paramc) {}
+  p$7(Callable paramCallable, a parama) {}
 }
 
 

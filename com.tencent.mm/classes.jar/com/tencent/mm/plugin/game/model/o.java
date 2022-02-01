@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dd;
+import com.tencent.mm.f.c.dh;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -11,72 +11,72 @@ import java.util.List;
 import java.util.Map;
 
 public final class o
-  extends dd
+  extends dh
 {
   protected static IAutoDBItem.MAutoDBInfo info;
+  public long CIV;
+  private boolean CIW;
+  public String CIX;
+  public String CIY;
+  public String CIZ;
+  public boolean CIt;
+  public String CJA;
+  public String CJB;
+  public String CJC;
+  public String CJD;
+  public String CJE;
+  public String CJF;
+  public String CJG;
+  public String CJH;
+  public String CJI;
+  public String CJJ;
+  public j CJK;
+  public i CJL;
+  public k CJM;
+  public m CJN;
+  public e CJO;
+  public q CJP;
+  public p CJQ;
+  public o CJR;
+  public d CJS;
+  public n CJT;
+  public c CJU;
+  public int CJV;
+  public int CJW;
+  public String CJX;
+  public String CJY;
+  public String CJZ;
+  public String CJa;
+  public String CJb;
+  public int CJc;
+  public String CJd;
+  public String CJe;
+  public LinkedList<l> CJf;
+  public boolean CJg;
+  public g CJh;
+  public boolean CJi;
+  public f CJj;
+  public HashMap<String, h> CJk;
+  public String CJl;
+  public int CJm;
+  public int CJn;
+  public int CJo;
+  public String CJp;
+  public String CJq;
+  public String CJr;
+  public int CJs;
+  public int CJt;
+  public long CJu;
+  public long CJv;
+  public int CJw;
+  public b CJx;
+  public String CJy;
+  public String CJz;
+  public int CKa;
+  public String CKb;
+  public boolean CKc;
   public String mAppName;
-  public String rfc;
-  public long xEU;
-  private boolean xEV;
-  public String xEW;
-  public String xEX;
-  public String xEY;
-  public String xEZ;
-  public boolean xEs;
-  public String xFA;
-  public String xFB;
-  public String xFC;
-  public String xFD;
-  public String xFE;
-  public String xFF;
-  public String xFG;
-  public String xFH;
-  public String xFI;
-  public i xFJ;
-  public h xFK;
-  public j xFL;
-  public l xFM;
-  public d xFN;
-  public p xFO;
-  public o xFP;
-  public n xFQ;
-  public c xFR;
-  public m xFS;
-  public b xFT;
-  public int xFU;
-  public int xFV;
-  public String xFW;
-  public String xFX;
-  public String xFY;
-  public int xFZ;
-  public String xFa;
-  public int xFb;
-  public String xFc;
-  public String xFd;
-  public LinkedList<o.k> xFe;
-  public boolean xFf;
-  public f xFg;
-  public boolean xFh;
-  public e xFi;
-  public HashMap<String, o.g> xFj;
-  public String xFk;
-  public int xFl;
-  public int xFm;
-  public int xFn;
-  public String xFo;
-  public String xFp;
-  public String xFq;
-  public int xFr;
-  public int xFs;
-  public long xFt;
-  public long xFu;
-  public int xFv;
-  public a xFw;
-  public String xFx;
-  public String xFy;
-  public String xFz;
-  public String xGa;
-  public boolean xGb;
+  public String uIi;
   
   static
   {
@@ -170,76 +170,76 @@ public final class o
   public o()
   {
     AppMethodBeat.i(41452);
-    this.xEU = 0L;
-    this.xEV = false;
-    this.rfc = "";
-    this.xEW = "";
-    this.xEX = "";
+    this.CIV = 0L;
+    this.CIW = false;
+    this.uIi = "";
+    this.CIX = "";
+    this.CIY = "";
     this.mAppName = "";
-    this.xEY = "";
-    this.xEZ = "";
-    this.xFa = "";
-    this.xFb = 0;
-    this.xFc = "";
-    this.xFd = "";
-    this.xFe = new LinkedList();
-    this.xFg = new f();
-    this.xFi = new e();
-    this.xFj = new HashMap();
-    this.xFk = "";
-    this.xFl = 0;
-    this.xFm = 0;
-    this.xFn = 0;
-    this.xFo = "";
-    this.xFp = "";
-    this.xFq = "";
-    this.xFr = 0;
-    this.xFs = 0;
-    this.xFt = 0L;
-    this.xFu = 0L;
-    this.xFv = 0;
-    this.xFw = new a();
-    this.xFx = "";
-    this.xFy = "";
-    this.xFz = "";
-    this.xFA = "";
-    this.xFB = "";
-    this.xFC = "";
-    this.xFD = "";
-    this.xFK = new h();
-    this.xFL = new j();
-    this.xFM = new l();
-    this.xFN = new d();
-    this.xFO = new p();
-    this.xFP = new o();
-    this.xFQ = new n();
-    this.xFR = new c();
-    this.xFS = new m();
-    this.xFT = new b();
-    this.xEs = false;
-    this.xFZ = 0;
-    this.xGa = "";
-    this.xGb = false;
+    this.CIZ = "";
+    this.CJa = "";
+    this.CJb = "";
+    this.CJc = 0;
+    this.CJd = "";
+    this.CJe = "";
+    this.CJf = new LinkedList();
+    this.CJh = new g();
+    this.CJj = new f();
+    this.CJk = new HashMap();
+    this.CJl = "";
+    this.CJm = 0;
+    this.CJn = 0;
+    this.CJo = 0;
+    this.CJp = "";
+    this.CJq = "";
+    this.CJr = "";
+    this.CJs = 0;
+    this.CJt = 0;
+    this.CJu = 0L;
+    this.CJv = 0L;
+    this.CJw = 0;
+    this.CJx = new b();
+    this.CJy = "";
+    this.CJz = "";
+    this.CJA = "";
+    this.CJB = "";
+    this.CJC = "";
+    this.CJD = "";
+    this.CJE = "";
+    this.CJL = new i();
+    this.CJM = new k();
+    this.CJN = new m();
+    this.CJO = new e();
+    this.CJP = new q();
+    this.CJQ = new p();
+    this.CJR = new o();
+    this.CJS = new d();
+    this.CJT = new n();
+    this.CJU = new c();
+    this.CIt = false;
+    this.CKa = 0;
+    this.CKb = "";
+    this.CKc = false;
     AppMethodBeat.o(41452);
   }
   
-  public final void dVl()
+  public final void eyt()
   {
     AppMethodBeat.i(41453);
-    if (this.xEV)
+    if (this.CIW)
     {
       AppMethodBeat.o(41453);
       return;
     }
     if (this.field_msgType == 100)
     {
-      u.dVC();
+      u.eyK();
       u.a(this);
     }
     for (;;)
     {
       q.b(this);
-      this.xEV = true;
+      this.CIW = true;
       AppMethodBeat.o(41453);
       return;
       q.a(this);
@@ -253,135 +253,166 @@ public final class o
   
   public static final class a
   {
-    public boolean crp;
-    public int orientation;
-    public String url;
-    public List<String> xGc;
-    public boolean xvW;
-    
-    public a()
-    {
-      AppMethodBeat.i(41450);
-      this.xGc = new ArrayList();
-      AppMethodBeat.o(41450);
-    }
+    public String CKd;
   }
   
   public static final class b
   {
-    public String xGd;
+    public List<String> CKe;
+    public boolean CzQ;
+    public int FO;
+    public boolean cpf;
+    public String url;
+    
+    public b()
+    {
+      AppMethodBeat.i(41450);
+      this.CKe = new ArrayList();
+      AppMethodBeat.o(41450);
+    }
   }
   
   public static final class c
   {
-    public boolean dWA = false;
-    public boolean xGe = false;
+    public String CKf;
   }
   
   public static final class d
   {
-    public List<String> xGc;
-    public String xGf;
+    public boolean CKg;
+    public o.a CKh;
+    public boolean fQf;
     
     public d()
     {
-      AppMethodBeat.i(41451);
-      this.xGc = new ArrayList();
-      AppMethodBeat.o(41451);
+      AppMethodBeat.i(198131);
+      this.CKg = false;
+      this.fQf = false;
+      this.CKh = new o.a();
+      AppMethodBeat.o(198131);
     }
   }
   
   public static final class e
   {
-    public String mDesc;
-    public String xGg;
-    public String xGh;
+    public List<String> CKe;
+    public String CKi;
+    
+    public e()
+    {
+      AppMethodBeat.i(41451);
+      this.CKe = new ArrayList();
+      AppMethodBeat.o(41451);
+    }
   }
   
   public static final class f
   {
+    public String CKj;
+    public String CKk;
+    public String mDesc;
+  }
+  
+  public static final class g
+  {
+    public String CKj;
+    public int CKl;
+    public boolean CKm;
+    public int CKn;
+    public boolean CKo;
     public int mIconHeight;
     public int mIconWidth;
     public String mText;
-    public String xGg;
-    public int xGi;
-    public boolean xGj;
-    public int xGk;
-    public boolean xGl;
   }
   
   public static final class h
   {
-    public String mContent;
-    public String xGg;
-    public String xGh;
+    public int mJumpType;
+    public String vnr;
   }
   
   public static final class i
   {
-    public String xGh;
-    public String xGm;
-    public String xGn;
-    public String xGo;
+    public String CKj;
+    public String CKk;
+    public String mContent;
   }
   
   public static final class j
   {
+    public String CKk;
+    public String CKp;
+    public String CKq;
+    public String CKr;
+  }
+  
+  public static final class k
+  {
+    public String CKk;
     public boolean mClickable;
     public String mName;
-    public String xGh;
   }
   
   public static final class l
   {
-    public int pXp = 0;
-    public String xGt;
-    public long xGu = 0L;
+    public String CKs;
+    public String CKt;
+    public String CKu;
+    public String CKv;
+    public String nickName;
+    public String userName;
   }
   
   public static final class m
   {
-    public String xGv;
-    public String xGw;
-    public long xGx;
+    public String CKw;
+    public long CKx = 0L;
+    public int ttm = 0;
   }
   
   public static final class n
   {
-    public int xGA;
-    public String xGB;
-    public String xGC;
-    public String xGD;
-    public String xGE;
-    public String xGF;
-    public String xGG;
-    public String xGH;
-    public int xGI;
-    public String xGJ;
-    public String xGK;
-    public String xGL;
-    public String xGM;
-    public String xGN;
-    public String xGy;
-    public int xGz;
+    public long CKA;
+    public String CKy;
+    public String CKz;
   }
   
   public static final class o
   {
-    public Boolean eay = null;
-    public String iGB;
-    public int xGO = 0;
-    public int xGP;
+    public String CKB;
+    public int CKC;
+    public int CKD;
+    public String CKE;
+    public String CKF;
+    public String CKG;
+    public String CKH;
+    public String CKI;
+    public String CKJ;
+    public String CKK;
+    public int CKL;
+    public String CKM;
+    public String CKN;
+    public String CKO;
+    public String CKP;
+    public String CKQ;
   }
   
   public static final class p
   {
-    public int xGQ;
+    public int CKR = 0;
+    public int CKS;
+    public Boolean fUv = null;
+    public String lwD;
+  }
+  
+  public static final class q
+  {
+    public int CKT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.o
  * JD-Core Version:    0.7.0.1
  */

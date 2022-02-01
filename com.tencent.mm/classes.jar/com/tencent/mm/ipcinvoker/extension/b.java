@@ -2,7 +2,7 @@ package com.tencent.mm.ipcinvoker.extension;
 
 import android.os.Parcel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.o;
+import com.tencent.mm.ipcinvoker.r;
 
 public final class b
   implements a
@@ -26,7 +26,7 @@ public final class b
     AppMethodBeat.i(158791);
     Object localObject = paramParcel.readString();
     paramParcel = paramParcel.readBundle();
-    localObject = (com.tencent.mm.ipcinvoker.d.a)o.c((String)localObject, com.tencent.mm.ipcinvoker.d.a.class);
+    localObject = (com.tencent.mm.ipcinvoker.d.a)r.c((String)localObject, com.tencent.mm.ipcinvoker.d.a.class);
     if (localObject != null)
     {
       ((com.tencent.mm.ipcinvoker.d.a)localObject).fromBundle(paramParcel);
@@ -39,7 +39,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.extension.b
  * JD-Core Version:    0.7.0.1
  */

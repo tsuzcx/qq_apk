@@ -16,17 +16,17 @@ import com.tencent.kinda.gen.IPlatformUtil;
 import com.tencent.kinda.gen.Platform;
 import com.tencent.kinda.gen.VoidStringCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aa.c;
 import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.f.a.bs;
 import com.tencent.mm.framework.app.UIPageFragmentActivity;
-import com.tencent.mm.g.a.bn;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cr;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.cs;
 import com.tencent.mm.plugin.expt.h.d;
-import com.tencent.mm.plugin.wallet_core.model.al;
-import com.tencent.mm.plugin.wallet_core.model.an;
+import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.plugin.wallet_core.model.k;
-import com.tencent.mm.plugin.wallet_core.model.t;
+import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
@@ -37,8 +37,8 @@ import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.wallet_core.ui.f;
-import com.tencent.mm.y.c;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.wallet_core.ui.g;
 
 public class KindaPlatformUtil
   implements IPlatformUtil
@@ -55,7 +55,7 @@ public class KindaPlatformUtil
     this.TAG = "KindaPlatformUtil";
     this.checkLanguageChangeIListener = new IListener()
     {
-      public boolean callback(bn paramAnonymousbn)
+      public boolean callback(bs paramAnonymousbs)
       {
         AppMethodBeat.i(18469);
         if (KindaPlatformUtil.this.languageChangeCallback != null) {
@@ -87,36 +87,36 @@ public class KindaPlatformUtil
     ar.a locala;
     if (paramString.equals("receipt"))
     {
-      paramString = ar.a.OeA;
-      locala = ar.a.Odv;
+      paramString = ar.a.VsL;
+      locala = ar.a.VrG;
       AppMethodBeat.o(18472);
       return new ar.a[] { paramString, locala };
     }
     if (paramString.equals("reward"))
     {
-      paramString = ar.a.OeC;
-      locala = ar.a.Odv;
+      paramString = ar.a.VsN;
+      locala = ar.a.VrG;
       AppMethodBeat.o(18472);
       return new ar.a[] { paramString, locala };
     }
     if (paramString.equals("groupaa"))
     {
-      paramString = ar.a.Oez;
-      locala = ar.a.Odv;
+      paramString = ar.a.VsK;
+      locala = ar.a.VrG;
       AppMethodBeat.o(18472);
       return new ar.a[] { paramString, locala };
     }
     if (paramString.equals("faceHongBao"))
     {
-      paramString = ar.a.OeB;
-      locala = ar.a.Odv;
+      paramString = ar.a.VsM;
+      locala = ar.a.VrG;
       AppMethodBeat.o(18472);
       return new ar.a[] { paramString, locala };
     }
     if (paramString.equals("transferBank"))
     {
-      paramString = ar.a.OeD;
-      locala = ar.a.Odv;
+      paramString = ar.a.VsO;
+      locala = ar.a.VrG;
       AppMethodBeat.o(18472);
       return new ar.a[] { paramString, locala };
     }
@@ -182,6 +182,11 @@ public class KindaPlatformUtil
     return Platform.ANDROID;
   }
   
+  public boolean delSecurityStore(String paramString)
+  {
+    return false;
+  }
+  
   public void endIgnoringInteractionEvents() {}
   
   protected void finalize()
@@ -194,7 +199,7 @@ public class KindaPlatformUtil
   public String genUUID()
   {
     AppMethodBeat.i(18494);
-    String str = q.aoG();
+    String str = q.auM();
     AppMethodBeat.o(18494);
     return str;
   }
@@ -207,7 +212,7 @@ public class KindaPlatformUtil
   public boolean getExptBoolValue(String paramString)
   {
     AppMethodBeat.i(18482);
-    paramString = d.cRY().b(paramString, "", false, false);
+    paramString = d.dgX().a(paramString, "", false, false);
     if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(18482);
@@ -272,7 +277,7 @@ public class KindaPlatformUtil
         AppMethodBeat.o(18480);
         return 0.0F;
       }
-      float f = com.tencent.mm.compatible.util.a.u((MMActivity)localContext) / getDensity(localContext);
+      float f = com.tencent.mm.compatible.util.a.t((MMActivity)localContext) / getDensity(localContext);
       AppMethodBeat.o(18480);
       return f;
     }
@@ -320,7 +325,7 @@ public class KindaPlatformUtil
     paramString = getRedDotKey(paramString);
     if (paramString != null)
     {
-      boolean bool = c.axV().b(paramString[0], paramString[1]);
+      boolean bool = c.aFn().b(paramString[0], paramString[1]);
       AppMethodBeat.o(18484);
       return bool;
     }
@@ -333,8 +338,8 @@ public class KindaPlatformUtil
     AppMethodBeat.i(18485);
     if (paramString.equals("receipt"))
     {
-      g.aAi();
-      paramString = (String)g.aAh().azQ().get(ar.a.OdP, "");
+      h.aHH();
+      paramString = (String)h.aHG().aHp().get(ar.a.Vsa, "");
       AppMethodBeat.o(18485);
       return paramString;
     }
@@ -361,7 +366,7 @@ public class KindaPlatformUtil
     AppMethodBeat.i(18479);
     if (KindaContext.get() != null)
     {
-      float f = com.tencent.mm.ui.ao.getStatusBarHeight(KindaContext.get());
+      float f = ar.getStatusBarHeight(KindaContext.get());
       AppMethodBeat.o(18479);
       return f;
     }
@@ -392,10 +397,15 @@ public class KindaPlatformUtil
     return false;
   }
   
+  public byte[] loadSecurityStore(String paramString)
+  {
+    return new byte[0];
+  }
+  
   public void makesureLonglink()
   {
     AppMethodBeat.i(18493);
-    f.hhU();
+    g.ijv();
     AppMethodBeat.o(18493);
   }
   
@@ -439,18 +449,23 @@ public class KindaPlatformUtil
   
   public String resolveLanguageStringForGlobal(String paramString)
   {
-    AppMethodBeat.i(214425);
-    paramString = cr.KN(paramString);
-    AppMethodBeat.o(214425);
+    AppMethodBeat.i(264775);
+    paramString = cs.Sg(paramString);
+    AppMethodBeat.o(264775);
     return paramString;
   }
   
   public String resolveURLStringForGlobal(String paramString)
   {
-    AppMethodBeat.i(214424);
-    paramString = cr.KO(paramString);
-    AppMethodBeat.o(214424);
+    AppMethodBeat.i(264774);
+    paramString = cs.Sh(paramString);
+    AppMethodBeat.o(264774);
     return paramString;
+  }
+  
+  public boolean saveSecurityStore(String paramString, byte[] paramArrayOfByte)
+  {
+    return false;
   }
   
   public void setIdleTimerDisable(boolean paramBoolean) {}
@@ -468,7 +483,7 @@ public class KindaPlatformUtil
     AppMethodBeat.i(18486);
     paramString = getRedDotKey(paramString);
     if ((paramString != null) && (!paramBoolean)) {
-      c.axV().c(paramString[0], paramString[1]);
+      c.aFn().c(paramString[0], paramString[1]);
     }
     AppMethodBeat.o(18486);
   }
@@ -477,22 +492,22 @@ public class KindaPlatformUtil
   {
     AppMethodBeat.i(18502);
     Log.i("KindaPlatformUtil", "setLocationState, set wifiSsidState as: [%b], set cellInfoState as [%b].", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
-    al localal = t.fQI().fRs();
+    am localam = u.gJo().gJY();
     Log.i("MicroMsg.WalletSwitchConfig", "setReportLocation, set wifiSsidState as: [%b], set cellInfoState as [%b].", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
     if (paramBoolean1)
     {
-      localal.IbF |= 0x40000;
+      localam.OTR |= 0x40000;
       if (!paramBoolean2) {
         break label143;
       }
     }
     label143:
-    for (localal.IbF |= 0x800000;; localal.IbF &= 0xFF7FFFFF)
+    for (localam.OTR |= 0x800000;; localam.OTR &= 0xFF7FFFFF)
     {
-      Log.i("MicroMsg.WalletSwitchConfig", "setReportLocation, After set, switchBit is [%d]", new Object[] { Integer.valueOf(localal.IbF) });
+      Log.i("MicroMsg.WalletSwitchConfig", "setReportLocation, After set, switchBit is [%d]", new Object[] { Integer.valueOf(localam.OTR) });
       AppMethodBeat.o(18502);
       return;
-      localal.IbF &= 0xFFFBFFFF;
+      localam.OTR &= 0xFFFBFFFF;
       break;
     }
   }
@@ -536,6 +551,11 @@ public class KindaPlatformUtil
     AppMethodBeat.o(18487);
   }
   
+  public String sha256(byte[] paramArrayOfByte, boolean paramBoolean)
+  {
+    return "";
+  }
+  
   public boolean shouldReportCellInfo()
   {
     AppMethodBeat.i(18500);
@@ -555,9 +575,14 @@ public class KindaPlatformUtil
   public boolean shouldReportWifiSsid()
   {
     AppMethodBeat.i(18499);
-    boolean bool = k.fQz();
+    boolean bool = k.gJf();
     AppMethodBeat.o(18499);
     return bool;
+  }
+  
+  public boolean supportSecurityStore()
+  {
+    return false;
   }
 }
 

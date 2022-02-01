@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.appbrand.task;
 
-import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.plugin.appbrand.config.GetOnLineInfoInfoResult;
 
 public class a$a
-  implements b<IPCString, GetOnLineInfoInfoResult>
+  implements d<IPCString, GetOnLineInfoInfoResult>
 {}
 
 

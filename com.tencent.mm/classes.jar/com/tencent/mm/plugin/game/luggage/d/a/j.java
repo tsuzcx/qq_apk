@@ -1,98 +1,51 @@
 package com.tencent.mm.plugin.game.luggage.d.a;
 
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ch.a;
-import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
-import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.plugin.lite.jsapi.b;
+import com.tencent.mm.by.c;
 import com.tencent.mm.plugin.lite.jsapi.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import java.util.Iterator;
-import java.util.LinkedList;
-import org.json.JSONArray;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import org.json.JSONObject;
 
 public class j
-  extends b
+  extends com.tencent.mm.plugin.lite.jsapi.b
 {
-  private static void a(JSONObject paramJSONObject, LinkedList<String> paramLinkedList)
+  public final void a(String paramString, JSONObject paramJSONObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(186918);
-    if (Util.isNullOrNil(paramLinkedList))
+    AppMethodBeat.i(231630);
+    if (paramJSONObject == null)
     {
-      AppMethodBeat.o(186918);
+      this.Ega.aNa("invalid_params");
+      AppMethodBeat.o(231630);
       return;
     }
-    paramLinkedList = paramLinkedList.iterator();
-    while (paramLinkedList.hasNext())
+    paramString = MMApplicationContext.getContext();
+    if (com.tencent.mm.plugin.game.luggage.b.gp(paramString))
     {
-      String str = (String)paramLinkedList.next();
-      JSONObject localJSONObject = new JSONObject();
-      try
-      {
-        localJSONObject.put("download_id", -1);
-        localJSONObject.put("state", "default");
-        paramJSONObject.put(str, localJSONObject);
-      }
-      catch (Exception localException)
-      {
-        Log.e("LiteAppJsApiQueryDownloadTask", localException.getMessage());
-      }
+      this.Ega.aNa("exist_tab");
+      AppMethodBeat.o(231630);
+      return;
     }
-    AppMethodBeat.o(186918);
+    String str = paramJSONObject.optString("tabKey");
+    Log.i("LiteAppJsApiOpenGameTabHome", "tabKey:[%s]", new Object[] { str });
+    long l1 = paramJSONObject.optLong("sourceid", 0L);
+    long l2 = paramJSONObject.optLong("ssid", 0L);
+    paramJSONObject = new Intent();
+    paramJSONObject.putExtra("from_find_more_friend", false);
+    paramJSONObject.putExtra("game_report_from_scene", 5);
+    paramJSONObject.putExtra("start_time", System.currentTimeMillis());
+    paramJSONObject.putExtra("has_game_life_chat_msg", false);
+    paramJSONObject.putExtra("default_game_tab_key", str);
+    paramJSONObject.putExtra("disable_game_page_swipe", true);
+    paramJSONObject.putExtra("game_report_sourceid", l1);
+    paramJSONObject.putExtra("game_report_ssid", l2);
+    c.b(paramString, "game", ".ui.GameCenterUI", paramJSONObject);
+    this.Ega.eLC();
+    AppMethodBeat.o(231630);
   }
   
-  public final void a(String paramString, final JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(186917);
-    a.post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(186916);
-        Object localObject = paramJSONObject.optJSONArray("appIdArray");
-        if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-        {
-          j.a(j.this, (JSONArray)localObject);
-          AppMethodBeat.o(186916);
-          return;
-        }
-        long l = paramJSONObject.optLong("download_id", -1L);
-        String str = paramJSONObject.optString("appid");
-        FileDownloadTaskInfo localFileDownloadTaskInfo;
-        if (l > 0L)
-        {
-          localFileDownloadTaskInfo = f.cBv().Co(l);
-          localObject = localFileDownloadTaskInfo;
-          if (localFileDownloadTaskInfo == null) {
-            localObject = new FileDownloadTaskInfo();
-          }
-          ((FileDownloadTaskInfo)localObject).appId = str;
-          j.a(j.this, (FileDownloadTaskInfo)localObject);
-          AppMethodBeat.o(186916);
-          return;
-        }
-        if (!Util.isNullOrNil(str))
-        {
-          localFileDownloadTaskInfo = f.cBv().alg(str);
-          localObject = localFileDownloadTaskInfo;
-          if (localFileDownloadTaskInfo == null) {
-            localObject = new FileDownloadTaskInfo();
-          }
-          ((FileDownloadTaskInfo)localObject).appId = str;
-          j.a(j.this, (FileDownloadTaskInfo)localObject);
-          AppMethodBeat.o(186916);
-          return;
-        }
-        j.a(j.this).aCS("fail");
-        AppMethodBeat.o(186916);
-      }
-    });
-    AppMethodBeat.o(186917);
-  }
-  
-  public final int dTw()
+  public final int ewF()
   {
     return 1;
   }

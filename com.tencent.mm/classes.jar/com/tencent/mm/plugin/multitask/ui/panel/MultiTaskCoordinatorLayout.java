@@ -13,73 +13,73 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.Xfermode;
-import android.support.design.widget.CoordinatorLayout;
 import android.util.AttributeSet;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.multitask.ui.uic.MultiTaskUIC;
-import com.tencent.mm.plugin.multitask.ui.uic.MultiTaskUIC.a;
-import com.tencent.mm.ui.at;
+import com.tencent.mm.plugin.multitask.ui.a.c;
+import com.tencent.mm.plugin.multitask.ui.a.c.a;
+import com.tencent.mm.ui.aw;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitask/ui/panel/MultiTaskCoordinatorLayout;", "Landroid/support/design/widget/CoordinatorLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "cornerBitmap", "Landroid/graphics/Bitmap;", "cornorRadius", "paint", "Landroid/graphics/Paint;", "pathPaint", "rect", "Landroid/graphics/RectF;", "createCornerBitmap", "width", "height", "draw", "", "canvas", "Landroid/graphics/Canvas;", "onLayout", "changed", "", "l", "t", "r", "b", "setMode", "mode", "Companion", "ui-multitask_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/ui/panel/MultiTaskCoordinatorLayout;", "Landroidx/coordinatorlayout/widget/CoordinatorLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "cornerBitmap", "Landroid/graphics/Bitmap;", "cornorRadius", "paint", "Landroid/graphics/Paint;", "pathPaint", "rect", "Landroid/graphics/RectF;", "createCornerBitmap", "width", "height", "draw", "", "canvas", "Landroid/graphics/Canvas;", "onLayout", "changed", "", "l", "t", "r", "b", "setMode", "mode", "Companion", "ui-multitask_release"})
 public final class MultiTaskCoordinatorLayout
   extends CoordinatorLayout
 {
-  private static final int Afe = 0;
-  private static final int Aff = 1;
-  public static final MultiTaskCoordinatorLayout.a Afg;
-  private static final int MODE_DEFAULT = -1;
+  private static final int FLH = 0;
+  private static final int FLI = 1;
+  public static final MultiTaskCoordinatorLayout.a FLJ;
+  private static final int kEu = -1;
   private static int mMode;
-  private Paint Afb;
-  private int Afc;
-  private Bitmap Afd;
-  private final RectF cuN;
+  private Paint FLE;
+  private int FLF;
+  private Bitmap FLG;
+  private final RectF ctb;
   private Paint paint;
   
   static
   {
-    AppMethodBeat.i(236594);
-    Afg = new MultiTaskCoordinatorLayout.a((byte)0);
-    MODE_DEFAULT = -1;
-    Aff = 1;
-    mMode = MODE_DEFAULT;
-    AppMethodBeat.o(236594);
+    AppMethodBeat.i(196864);
+    FLJ = new MultiTaskCoordinatorLayout.a((byte)0);
+    kEu = -1;
+    FLI = 1;
+    mMode = kEu;
+    AppMethodBeat.o(196864);
   }
   
   public MultiTaskCoordinatorLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(236592);
+    AppMethodBeat.i(196861);
     this.paint = new Paint(1);
-    this.Afb = new Paint(1);
-    this.cuN = new RectF();
-    this.Afc = at.fromDPToPix(getContext(), 8);
+    this.FLE = new Paint(1);
+    this.ctb = new RectF();
+    this.FLF = aw.fromDPToPix(getContext(), 8);
     this.paint.setXfermode((Xfermode)new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
     setWillNotDraw(false);
-    AppMethodBeat.o(236592);
+    AppMethodBeat.o(196861);
   }
   
   public MultiTaskCoordinatorLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(236593);
+    AppMethodBeat.i(196863);
     this.paint = new Paint(1);
-    this.Afb = new Paint(1);
-    this.cuN = new RectF();
-    this.Afc = at.fromDPToPix(getContext(), 8);
+    this.FLE = new Paint(1);
+    this.ctb = new RectF();
+    this.FLF = aw.fromDPToPix(getContext(), 8);
     this.paint.setXfermode((Xfermode)new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
     setWillNotDraw(false);
-    AppMethodBeat.o(236593);
+    AppMethodBeat.o(196863);
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(236591);
-    p.h(paramCanvas, "canvas");
+    AppMethodBeat.i(196859);
+    p.k(paramCanvas, "canvas");
     if ((paramCanvas.getWidth() <= 0) || (paramCanvas.getHeight() <= 0))
     {
-      AppMethodBeat.o(236591);
+      AppMethodBeat.o(196859);
       return;
     }
     int i = paramCanvas.saveLayer(new RectF(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight()), null, 31);
@@ -90,55 +90,55 @@ public final class MultiTaskCoordinatorLayout
     Path localPath;
     Object localObject;
     float f1;
-    if (this.Afd == null)
+    if (this.FLG == null)
     {
       j = paramCanvas.getWidth();
       int k = paramCanvas.getHeight();
       localBitmap = Bitmap.createBitmap(j, k, Bitmap.Config.ALPHA_8);
       localCanvas = new Canvas(localBitmap);
       localPath = new Path();
-      this.cuN.set(0.0F, this.Afc * 2.0F, j, k);
-      localPath.addRect(this.cuN, Path.Direction.CCW);
-      if (mMode != Afe) {
+      this.ctb.set(0.0F, this.FLF * 2.0F, j, k);
+      localPath.addRect(this.ctb, Path.Direction.CCW);
+      if (mMode != FLH) {
         break label307;
       }
       localObject = new Path();
-      MultiTaskUIC.a locala = MultiTaskUIC.Ago;
-      k = MultiTaskUIC.esk();
+      c.a locala = c.FNc;
+      k = c.fcs();
       f1 = (j - k) / 2.0F;
-      this.cuN.set(f1, 0.0F, k + f1, this.Afc * 4.0F);
-      ((Path)localObject).addRoundRect(this.cuN, this.Afc, this.Afc, Path.Direction.CCW);
+      this.ctb.set(f1, 0.0F, k + f1, this.FLF * 4.0F);
+      ((Path)localObject).addRoundRect(this.ctb, this.FLF, this.FLF, Path.Direction.CCW);
       localPath.op((Path)localObject, Path.Op.UNION);
     }
     for (;;)
     {
       localPath.setFillType(Path.FillType.WINDING);
-      localCanvas.drawPath(localPath, this.Afb);
-      p.g(localBitmap, "bitmap");
-      this.Afd = localBitmap;
-      localBitmap = this.Afd;
+      localCanvas.drawPath(localPath, this.FLE);
+      p.j(localBitmap, "bitmap");
+      this.FLG = localBitmap;
+      localBitmap = this.FLG;
       if (localBitmap != null) {
         paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, this.paint);
       }
       paramCanvas.restoreToCount(i);
-      AppMethodBeat.o(236591);
+      AppMethodBeat.o(196859);
       return;
       label307:
-      if (mMode == Aff)
+      if (mMode == FLI)
       {
-        localObject = MultiTaskUIC.Ago;
-        float f2 = MultiTaskUIC.esd() + 0.0F;
-        localObject = MultiTaskUIC.Ago;
-        f1 = MultiTaskUIC.esi() + 0.0F;
+        localObject = c.FNc;
+        float f2 = c.fcl() + 0.0F;
+        localObject = c.FNc;
+        f1 = c.fcq() + 0.0F;
         localObject = new Path();
-        this.cuN.set(j - f2 - f1, 0.0F, j - f2, this.Afc * 4.0F);
-        ((Path)localObject).addRoundRect(this.cuN, this.Afc, this.Afc, Path.Direction.CCW);
+        this.ctb.set(j - f2 - f1, 0.0F, j - f2, this.FLF * 4.0F);
+        ((Path)localObject).addRoundRect(this.ctb, this.FLF, this.FLF, Path.Direction.CCW);
         localPath.op((Path)localObject, Path.Op.UNION);
-        localObject = MultiTaskUIC.Ago;
-        f2 = MultiTaskUIC.esd() + 0.0F;
-        this.cuN.set(f2, 0.0F, f1 + f2, this.Afc * 4.0F);
+        localObject = c.FNc;
+        f2 = c.fcl() + 0.0F;
+        this.ctb.set(f2, 0.0F, f1 + f2, this.FLF * 4.0F);
         localObject = new Path();
-        ((Path)localObject).addRoundRect(this.cuN, this.Afc, this.Afc, Path.Direction.CW);
+        ((Path)localObject).addRoundRect(this.ctb, this.FLF, this.FLF, Path.Direction.CW);
         localPath.op((Path)localObject, Path.Op.UNION);
       }
     }
@@ -146,32 +146,32 @@ public final class MultiTaskCoordinatorLayout
   
   public final void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(236589);
+    AppMethodBeat.i(196846);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.Afd = null;
-    AppMethodBeat.o(236589);
+    this.FLG = null;
+    AppMethodBeat.o(196846);
   }
   
   public final void setMode(int paramInt)
   {
-    AppMethodBeat.i(236590);
+    AppMethodBeat.i(196847);
     if (mMode == paramInt)
     {
-      AppMethodBeat.o(236590);
+      AppMethodBeat.o(196847);
       return;
     }
     mMode = paramInt;
-    if (this.Afd != null)
+    if (this.FLG != null)
     {
-      this.Afd = null;
+      this.FLG = null;
       postInvalidate();
     }
-    AppMethodBeat.o(236590);
+    AppMethodBeat.o(196847);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.ui.panel.MultiTaskCoordinatorLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -4,17 +4,22 @@ import android.content.Context;
 import android.graphics.Color;
 import android.text.TextUtils;
 import android.view.View;
+import com.tencent.luggage.b.d.a.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.plugin.appbrand.jsapi.i.b;
-import com.tencent.mm.plugin.appbrand.jsapi.i.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i.d;
+import com.tencent.mm.plugin.appbrand.jsapi.g;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a;
+import com.tencent.mm.plugin.appbrand.jsapi.h.b;
+import com.tencent.mm.plugin.appbrand.jsapi.h.c;
+import com.tencent.mm.plugin.appbrand.jsapi.h.d;
 import com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoView;
+import com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoView.a;
 import com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoWrapper;
-import com.tencent.mm.plugin.appbrand.jsapi.video.e.a;
+import com.tencent.mm.plugin.appbrand.jsapi.video.d.a;
 import com.tencent.mm.plugin.appbrand.jsapi.video.progressbar.AppBrandVideoViewControlBar;
-import com.tencent.mm.plugin.appbrand.page.bu;
+import com.tencent.mm.plugin.appbrand.k;
+import com.tencent.mm.plugin.appbrand.k.d;
+import com.tencent.mm.plugin.appbrand.page.bx;
 import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,80 +30,158 @@ public class a
   public static final int CTRL_INDEX = 6;
   public static final String NAME = "insertVideoPlayer";
   
-  public final int H(JSONObject paramJSONObject)
+  public final int K(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(234922);
+    AppMethodBeat.i(230172);
     int i = paramJSONObject.getInt("videoPlayerId");
-    AppMethodBeat.o(234922);
+    AppMethodBeat.o(230172);
     return i;
   }
   
-  public final View a(h paramh, JSONObject paramJSONObject)
+  public final View a(g paramg, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(234921);
-    paramh = paramh.getContext();
-    paramJSONObject = new AppBrandVideoViewControlBar(paramh);
-    Object localObject = new AppBrandVideoWrapper(paramh);
-    ((AppBrandVideoWrapper)localObject).setVideoFooterView(paramJSONObject);
-    localObject = new AppBrandVideoView(paramh, (View)localObject);
-    ((AppBrandVideoView)localObject).a(paramJSONObject);
-    paramh = new CoverViewContainer(paramh, (View)localObject);
-    AppMethodBeat.o(234921);
-    return paramh;
+    AppMethodBeat.i(230168);
+    paramg = paramg.getContext();
+    AppBrandVideoViewControlBar localAppBrandVideoViewControlBar = new AppBrandVideoViewControlBar(paramg);
+    AppBrandVideoWrapper localAppBrandVideoWrapper = new AppBrandVideoWrapper(paramg);
+    localAppBrandVideoWrapper.setVideoFooterView(localAppBrandVideoViewControlBar);
+    paramJSONObject = paramJSONObject.optString("playerHint");
+    int j;
+    if (!TextUtils.isEmpty(paramJSONObject))
+    {
+      String[] arrayOfString = paramJSONObject.split(",");
+      int m = arrayOfString.length;
+      int k = 0;
+      int i = 0;
+      j = i;
+      if (k < m)
+      {
+        String str = arrayOfString[k];
+        if ("supportSoftDecode".equals(str.trim())) {
+          j = i | 0x1;
+        }
+        for (;;)
+        {
+          k += 1;
+          i = j;
+          break;
+          j = i;
+          if ("mp4Only".equals(str.trim())) {
+            j = i | 0x2;
+          }
+        }
+      }
+    }
+    else
+    {
+      j = 0;
+    }
+    Log.i("MicroMsg.JsApiInsertVideoPlayer", "convertPlayerHint, playerHintStr: %s, playerHint: %d", new Object[] { paramJSONObject, Integer.valueOf(j) });
+    localAppBrandVideoWrapper.setPlayerHint(j);
+    paramJSONObject = new AppBrandVideoView(paramg, localAppBrandVideoWrapper);
+    paramJSONObject.a(localAppBrandVideoViewControlBar);
+    paramg = new CoverViewContainer(paramg, paramJSONObject);
+    AppMethodBeat.o(230168);
+    return paramg;
   }
   
-  public void a(final h paramh, int paramInt, View paramView, JSONObject paramJSONObject)
+  public void a(final g paramg, final int paramInt, View paramView, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(234923);
+    AppMethodBeat.i(230178);
     Log.i("MicroMsg.JsApiInsertVideoPlayer", "onInsertView videoPlayerId=%d", new Object[] { Integer.valueOf(paramInt) });
-    final AppBrandVideoView localAppBrandVideoView = (AppBrandVideoView)((CoverViewContainer)paramView).aB(AppBrandVideoView.class);
+    final AppBrandVideoView localAppBrandVideoView = (AppBrandVideoView)((CoverViewContainer)paramView).aA(AppBrandVideoView.class);
     if (localAppBrandVideoView == null)
     {
       Log.e("MicroMsg.JsApiInsertVideoPlayer", "onInsertView appBrandVideoView null");
-      AppMethodBeat.o(234923);
+      AppMethodBeat.o(230178);
       return;
     }
-    Object localObject1 = new bu()
+    Object localObject1 = new bx()
     {
-      public final void Na()
+      public final void PS()
       {
-        AppMethodBeat.i(234914);
+        AppMethodBeat.i(228812);
         AppBrandVideoView localAppBrandVideoView = localAppBrandVideoView;
         Log.i("MicroMsg.Video.AppBrandVideoView", "onExitFullScreen");
-        if (localAppBrandVideoView.mvM.bJx()) {
-          localAppBrandVideoView.mvM.bGL();
+        if (localAppBrandVideoView.pum.bVe()) {
+          localAppBrandVideoView.pum.bSs();
         }
-        localAppBrandVideoView.hN(false);
-        AppMethodBeat.o(234914);
+        localAppBrandVideoView.iD(false);
+        AppMethodBeat.o(228812);
       }
     };
-    Object localObject2 = new i.d()
+    Object localObject2 = new h.d()
     {
       public final void onForeground()
       {
-        AppMethodBeat.i(234915);
+        AppMethodBeat.i(229364);
         localAppBrandVideoView.onUIResume();
-        AppMethodBeat.o(234915);
+        AppMethodBeat.o(229364);
       }
     };
-    Object localObject3 = new a.3(this, paramh, localAppBrandVideoView);
-    Object localObject4 = new i.c()
+    Object localObject3 = new h.b()
+    {
+      public final void onBackground()
+      {
+        AppMethodBeat.i(230405);
+        k.d locald = k.abM(paramg.getAppId());
+        Log.i("MicroMsg.JsApiInsertVideoPlayer", "VideoPlayer enter background, pause type:%s", new Object[] { locald.name() });
+        if (locald == k.d.nth)
+        {
+          localAppBrandVideoView.AO(2);
+          AppMethodBeat.o(230405);
+          return;
+        }
+        if (locald == k.d.ntd)
+        {
+          localAppBrandVideoView.AO(1);
+          AppMethodBeat.o(230405);
+          return;
+        }
+        localAppBrandVideoView.AO(3);
+        AppMethodBeat.o(230405);
+      }
+    };
+    Object localObject4 = new h.c()
     {
       public final void onDestroy()
       {
-        AppMethodBeat.i(234917);
+        AppMethodBeat.i(230597);
         localAppBrandVideoView.onUIDestroy();
-        paramh.b(this.lXR);
-        paramh.b(this.lXQ);
-        paramh.b(this);
-        AppMethodBeat.o(234917);
+        paramg.b(this.oVE);
+        paramg.b(this.oVD);
+        paramg.b(this);
+        AppMethodBeat.o(230597);
       }
     };
-    paramh.a((i.d)localObject2);
-    paramh.a((i.b)localObject3);
-    paramh.a((i.c)localObject4);
-    localAppBrandVideoView.setFullScreenDelegate(new a.5(this, paramh, paramJSONObject.optBoolean("independent", false), paramInt, (bu)localObject1));
-    localAppBrandVideoView.setContentDescription(paramView.getContext().getString(2131755327));
+    paramg.a((h.d)localObject2);
+    paramg.a((h.b)localObject3);
+    paramg.a((h.c)localObject4);
+    localAppBrandVideoView.setFullScreenDelegate(new AppBrandVideoView.a()
+    {
+      public final void Az(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(230087);
+        paramg.hl(this.oGm).a(paramInt, this.oVC, paramAnonymousInt);
+        AppMethodBeat.o(230087);
+      }
+      
+      public final boolean QT()
+      {
+        AppMethodBeat.i(230089);
+        boolean bool = paramg.hl(this.oGm).zW(paramInt);
+        AppMethodBeat.o(230089);
+        return bool;
+      }
+      
+      public final void bSs()
+      {
+        AppMethodBeat.i(230088);
+        paramg.hl(this.oGm).zV(paramInt);
+        AppMethodBeat.o(230088);
+      }
+    });
+    localAppBrandVideoView.setContentDescription(paramView.getContext().getString(a.f.app_brand_accessibility_video_view));
     localAppBrandVideoView.setMute(paramJSONObject.optBoolean("muted", false));
     boolean bool1 = paramJSONObject.optBoolean("needEvent", false);
     boolean bool2 = paramJSONObject.optBoolean("autoplay", false);
@@ -130,10 +213,10 @@ public class a
     boolean bool18 = paramJSONObject.optBoolean("autoPauseIfNavigate", true);
     boolean bool19 = paramJSONObject.optBoolean("autoPauseIfOpenNative", true);
     localObject4 = paramJSONObject.optString("backgroundColor");
-    localAppBrandVideoView.setComponent(paramh);
+    localAppBrandVideoView.setComponent(paramg);
     localAppBrandVideoView.setCookieData(str3);
     localAppBrandVideoView.setIsShowBasicControls(bool5);
-    localAppBrandVideoView.setCover$16da05f7(str2);
+    localAppBrandVideoView.aiL(str2);
     localAppBrandVideoView.setFullScreenDirection(paramInt);
     localAppBrandVideoView.setObjectFit(str1);
     localAppBrandVideoView.setLoop(bool6);
@@ -141,7 +224,7 @@ public class a
     localAppBrandVideoView.setPageGestureInFullscreen(bool8);
     try
     {
-      localAppBrandVideoView.setVideoPlayerId(H(paramJSONObject));
+      localAppBrandVideoView.setVideoPlayerId(K(paramJSONObject));
       localAppBrandVideoView.setAutoPlay(bool2);
       localAppBrandVideoView.setShowDanmakuBtn(bool3);
       localAppBrandVideoView.setDanmakuEnable(bool4);
@@ -153,7 +236,7 @@ public class a
       localAppBrandVideoView.setShowFullScreenBtn(bool11);
       localAppBrandVideoView.setShowPlayBtn(bool12);
       localAppBrandVideoView.setShowCenterPlayBtn(bool13);
-      localAppBrandVideoView.hM(bool14);
+      localAppBrandVideoView.iC(bool14);
       if (((String)localObject1).equalsIgnoreCase("default"))
       {
         localAppBrandVideoView.setVideoSource(0);
@@ -167,20 +250,20 @@ public class a
         {
           paramInt = -16777216;
           if (!"transparent".equals(localObject4)) {
-            break label862;
+            break label880;
           }
           paramInt = 0;
           localAppBrandVideoView.setBackgroundColor(paramInt);
         }
         if (bool1) {
-          localAppBrandVideoView.setCallback(new com.tencent.mm.plugin.appbrand.jsapi.video.c.b(localAppBrandVideoView, paramh));
+          localAppBrandVideoView.setCallback(new com.tencent.mm.plugin.appbrand.jsapi.video.c.b(localAppBrandVideoView, paramg));
         }
         paramInt = paramJSONObject.optInt("duration", -1);
-        paramh = paramJSONObject.optString("filePath");
+        paramg = paramJSONObject.optString("filePath");
         bool1 = paramJSONObject.optBoolean("live", false);
-        Log.i("MicroMsg.JsApiInsertVideoPlayer", "onInsertView filePath=%s live=%b", new Object[] { paramh, Boolean.valueOf(bool1) });
-        localAppBrandVideoView.e(paramh, bool1, paramInt);
-        AppMethodBeat.o(234923);
+        Log.i("MicroMsg.JsApiInsertVideoPlayer", "onInsertView filePath=%s live=%b", new Object[] { paramg, Boolean.valueOf(bool1) });
+        localAppBrandVideoView.f(paramg, bool1, paramInt);
+        AppMethodBeat.o(230178);
       }
     }
     catch (JSONException localJSONException)
@@ -193,7 +276,7 @@ public class a
         continue;
         try
         {
-          label862:
+          label880:
           int i = Color.parseColor((String)localObject4);
           paramInt = i;
         }
@@ -204,7 +287,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.d.a
  * JD-Core Version:    0.7.0.1
  */

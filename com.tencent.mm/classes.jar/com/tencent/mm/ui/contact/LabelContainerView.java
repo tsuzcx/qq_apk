@@ -10,30 +10,30 @@ import com.tencent.mm.ui.base.MMTagPanelScrollView;
 public class LabelContainerView
   extends MMTagPanelScrollView
 {
-  boolean PD;
-  float PI;
-  float PJ;
-  float PK;
-  float PL;
-  boolean PVX;
-  boolean PVY;
-  boolean PVZ;
-  float PWa;
-  float PWb;
-  float PWc;
-  float PWd;
-  private a PWe;
-  private int Pr;
+  private int MI;
+  boolean MU;
+  float MZ;
+  float Na;
+  float Nb;
+  float Nc;
+  boolean XsN;
+  boolean XsO;
+  boolean XsP;
+  float XsQ;
+  float XsR;
+  float XsS;
+  float XsT;
+  private a XsU;
   
   public LabelContainerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(102845);
-    this.PD = true;
-    this.PVX = false;
-    this.PVY = true;
-    this.PVZ = false;
-    cMT();
+    this.MU = true;
+    this.XsN = false;
+    this.XsO = true;
+    this.XsP = false;
+    dbH();
     AppMethodBeat.o(102845);
   }
   
@@ -41,26 +41,26 @@ public class LabelContainerView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(102844);
-    this.PD = true;
-    this.PVX = false;
-    this.PVY = true;
-    this.PVZ = false;
-    cMT();
+    this.MU = true;
+    this.XsN = false;
+    this.XsO = true;
+    this.XsP = false;
+    dbH();
     AppMethodBeat.o(102844);
   }
   
-  private void cMT()
+  private void dbH()
   {
     AppMethodBeat.i(102847);
     int i = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-    this.Pr = (i * i);
+    this.MI = (i * i);
     AppMethodBeat.o(102847);
   }
   
-  public final void cIi()
+  public final void cWP()
   {
     AppMethodBeat.i(102850);
-    this.PWe.cIi();
+    this.XsU.cWP();
     AppMethodBeat.o(102850);
   }
   
@@ -125,22 +125,22 @@ public class LabelContainerView
       return bool;
       i = m;
       break;
-      this.PVY = true;
-      this.PWb = f2;
-      this.PWa = f2;
-      this.PWd = f1;
-      this.PWc = f1;
-      this.PVZ = true;
+      this.XsO = true;
+      this.XsR = f2;
+      this.XsQ = f2;
+      this.XsT = f1;
+      this.XsS = f1;
+      this.XsP = true;
       continue;
-      i = (int)(f2 - this.PWa);
-      j = (int)(f1 - this.PWc);
-      if (j * j + i * i > this.Pr)
+      i = (int)(f2 - this.XsQ);
+      j = (int)(f1 - this.XsS);
+      if (j * j + i * i > this.MI)
       {
-        this.PVY = false;
+        this.XsO = false;
         AppMethodBeat.o(102846);
         return true;
-        this.PVY = true;
-        this.PVZ = false;
+        this.XsO = true;
+        this.XsP = false;
       }
     }
   }
@@ -198,55 +198,55 @@ public class LabelContainerView
       return bool;
       i = m;
       break;
-      this.PD = true;
-      this.PI = f2;
-      this.PK = f2;
-      this.PJ = f1;
-      this.PL = f1;
-      this.PVX = true;
+      this.MU = true;
+      this.MZ = f2;
+      this.Nb = f2;
+      this.Na = f1;
+      this.Nc = f1;
+      this.XsN = true;
       continue;
-      if (!this.PVX)
+      if (!this.XsN)
       {
-        this.PD = true;
-        this.PI = f2;
-        this.PK = f2;
-        this.PJ = f1;
-        this.PL = f1;
-        this.PVX = true;
+        this.MU = true;
+        this.MZ = f2;
+        this.Nb = f2;
+        this.Na = f1;
+        this.Nc = f1;
+        this.XsN = true;
       }
-      if (this.PWe != null) {
-        this.PWe.cIj();
+      if (this.XsU != null) {
+        this.XsU.cWQ();
       }
-      i = (int)(f2 - this.PK);
-      j = (int)(f1 - this.PL);
-      if (j * j + i * i > this.Pr)
+      i = (int)(f2 - this.Nb);
+      j = (int)(f1 - this.Nc);
+      if (j * j + i * i > this.MI)
       {
-        this.PD = false;
+        this.MU = false;
         continue;
-        if (((this.PD) || (!this.PVX)) && (this.PWe != null)) {
-          this.PWe.cIi();
+        if (((this.MU) || (!this.XsN)) && (this.XsU != null)) {
+          this.XsU.cWP();
         }
-        this.PD = true;
-        this.PVX = false;
+        this.MU = true;
+        this.XsN = false;
       }
     }
   }
   
   public void setOnLabelContainerListener(a parama)
   {
-    this.PWe = parama;
+    this.XsU = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void cIi();
+    public abstract void cWP();
     
-    public abstract void cIj();
+    public abstract void cWQ();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.LabelContainerView
  * JD-Core Version:    0.7.0.1
  */

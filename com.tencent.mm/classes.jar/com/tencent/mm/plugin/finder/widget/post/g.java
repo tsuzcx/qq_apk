@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.finder.widget.post;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cjk;
+import com.tencent.mm.protocal.protobuf.csf;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/widget/post/UploadData;", "", "ok", "", "type", "", "localFinderContent", "Lcom/tencent/mm/protocal/protobuf/LocalFinderContent;", "videoPathBeforeCut", "", "(ZILcom/tencent/mm/protocal/protobuf/LocalFinderContent;Ljava/lang/String;)V", "getLocalFinderContent", "()Lcom/tencent/mm/protocal/protobuf/LocalFinderContent;", "getOk", "()Z", "getType", "()I", "getVideoPathBeforeCut", "()Ljava/lang/String;", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/widget/post/UploadData;", "", "ok", "", "type", "", "localFinderContent", "Lcom/tencent/mm/protocal/protobuf/LocalFinderContent;", "videoPathBeforeCut", "", "(ZILcom/tencent/mm/protocal/protobuf/LocalFinderContent;Ljava/lang/String;)V", "getLocalFinderContent", "()Lcom/tencent/mm/protocal/protobuf/LocalFinderContent;", "getOk", "()Z", "getType", "()I", "getVideoPathBeforeCut", "()Ljava/lang/String;", "component1", "component2", "component3", "component4", "copy", "equals", "other", "hashCode", "toString", "plugin-finder_release"})
 public final class g
 {
-  public final boolean efd;
+  final String ABe;
+  public final csf Bul;
+  public final boolean fZs;
   final int type;
-  final String vTB;
-  public final cjk wDD;
   
-  public g(boolean paramBoolean, int paramInt, cjk paramcjk, String paramString)
+  public g(boolean paramBoolean, int paramInt, csf paramcsf, String paramString)
   {
-    AppMethodBeat.i(256151);
-    this.efd = paramBoolean;
+    AppMethodBeat.i(290406);
+    this.fZs = paramBoolean;
     this.type = paramInt;
-    this.wDD = paramcjk;
-    this.vTB = paramString;
-    AppMethodBeat.o(256151);
+    this.Bul = paramcsf;
+    this.ABe = paramString;
+    AppMethodBeat.o(290406);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(256155);
+    AppMethodBeat.i(290410);
     if (this != paramObject)
     {
       if ((paramObject instanceof g))
       {
         paramObject = (g)paramObject;
-        if ((this.efd != paramObject.efd) || (this.type != paramObject.type) || (!p.j(this.wDD, paramObject.wDD)) || (!p.j(this.vTB, paramObject.vTB))) {}
+        if ((this.fZs != paramObject.fZs) || (this.type != paramObject.type) || (!p.h(this.Bul, paramObject.Bul)) || (!p.h(this.ABe, paramObject.ABe))) {}
       }
     }
     else
     {
-      AppMethodBeat.o(256155);
+      AppMethodBeat.o(290410);
       return true;
     }
-    AppMethodBeat.o(256155);
+    AppMethodBeat.o(290410);
     return false;
   }
   
@@ -50,15 +50,15 @@ public final class g
   
   public final String toString()
   {
-    AppMethodBeat.i(256153);
-    String str = "UploadData(ok=" + this.efd + ", type=" + this.type + ", localFinderContent=" + this.wDD + ", videoPathBeforeCut=" + this.vTB + ")";
-    AppMethodBeat.o(256153);
+    AppMethodBeat.i(290408);
+    String str = "UploadData(ok=" + this.fZs + ", type=" + this.type + ", localFinderContent=" + this.Bul + ", videoPathBeforeCut=" + this.ABe + ")";
+    AppMethodBeat.o(290408);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.widget.post.g
  * JD-Core Version:    0.7.0.1
  */

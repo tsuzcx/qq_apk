@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/bqs" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/c2j" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <com.tencent.mm.ui.widget.InputPanelLinearLayout android:orientation="vertical" android:id="@id/dym" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/ir3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" />
+        <com.tencent.mm.ui.base.MMClearEditText android:textSize="@dimen/t" android:id="@id/j2f" android:background="@drawable/ayf" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:layout_width="fill_parent" android:layout_height="@dimen/cp" android:layout_marginLeft="@dimen/ci" android:layout_marginTop="@dimen/ci" android:layout_marginRight="@dimen/ci" android:layout_marginBottom="@dimen/ci" android:singleLine="true" />
+        <Button android:layout_gravity="center_horizontal" android:id="@id/g3k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cl" android:text="@string/x_" style="@style/ov" />
+    </com.tencent.mm.ui.widget.InputPanelLinearLayout>
+</LinearLayout>

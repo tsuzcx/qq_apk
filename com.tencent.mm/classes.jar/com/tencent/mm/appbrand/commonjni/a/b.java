@@ -4,35 +4,35 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private static a doM;
+  private static a fhs;
   private static boolean sLibraryLoaded;
   
   static
   {
-    AppMethodBeat.i(201244);
+    AppMethodBeat.i(246851);
     sLibraryLoaded = false;
-    doM = new a()
+    fhs = new a()
     {
       public final void loadLibrary(String paramAnonymousString)
       {
-        AppMethodBeat.i(201242);
+        AppMethodBeat.i(246841);
         System.loadLibrary(paramAnonymousString);
-        AppMethodBeat.o(201242);
+        AppMethodBeat.o(246841);
       }
     };
-    AppMethodBeat.o(201244);
+    AppMethodBeat.o(246851);
   }
   
   public static void a(a parama)
   {
-    doM = parama;
+    fhs = parama;
   }
   
   public static void loadLibrary(String paramString)
   {
-    AppMethodBeat.i(201243);
-    doM.loadLibrary(paramString);
-    AppMethodBeat.o(201243);
+    AppMethodBeat.i(246850);
+    fhs.loadLibrary(paramString);
+    AppMethodBeat.o(246850);
   }
   
   public static abstract interface a
@@ -42,7 +42,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.appbrand.commonjni.a.b
  * JD-Core Version:    0.7.0.1
  */

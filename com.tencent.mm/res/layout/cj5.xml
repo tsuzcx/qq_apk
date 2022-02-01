@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:padding="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/ir3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{title}" />
+    <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:id="@id/bn6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:text="{desc}" />
+    <TextView android:textSize="@dimen/ka" android:textColor="@color/uj" android:id="@id/in3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:text="time" />
+    <Button android:id="@id/kjr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:text="更新这条消息" />
+</LinearLayout>

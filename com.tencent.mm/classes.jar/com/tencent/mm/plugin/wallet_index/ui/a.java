@@ -7,10 +7,10 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.wallet_index.b.a.a.a;
-import com.tencent.mm.protocal.protobuf.ccu;
+import com.tencent.mm.protocal.protobuf.cky;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -24,33 +24,33 @@ import java.util.Map;
 public final class a
   implements b
 {
-  private static final String Ire;
-  public static long Iri;
-  private String IqF;
-  String IqG;
-  private d Irf;
-  private d Irg;
-  private c Irh;
-  private d Irj;
-  private com.tencent.mm.plugin.wallet_index.b.a.a Irk;
-  private com.tencent.mm.plugin.wallet_index.b.a.b Irl;
-  String Irm;
+  private static final String PjN;
+  public static long PjR;
+  private d PjO;
+  private d PjP;
+  private c PjQ;
+  private d PjS;
+  private com.tencent.mm.plugin.wallet_index.b.a.a PjT;
+  private com.tencent.mm.plugin.wallet_index.b.a.b PjU;
+  String PjV;
+  private String Pjo;
+  String Pjp;
   BroadcastReceiver mReceiver;
-  String rcD;
+  String uFI;
   
   static
   {
-    AppMethodBeat.i(214276);
-    Ire = MMApplicationContext.getApplicationId();
-    Iri = 0L;
-    AppMethodBeat.o(214276);
+    AppMethodBeat.i(268768);
+    PjN = MMApplicationContext.getApplicationId();
+    PjR = 0L;
+    AppMethodBeat.o(268768);
   }
   
   public a(Activity paramActivity, c paramc, d paramd)
   {
     AppMethodBeat.i(71854);
-    this.Irf = null;
-    this.Irg = null;
+    this.PjO = null;
+    this.PjP = null;
     this.mReceiver = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
@@ -85,8 +85,8 @@ public final class a
               a.a(a.this, paramAnonymous2b);
               paramAnonymous2c = a.c(a.this);
               ArrayList localArrayList = new ArrayList(paramAnonymous2b.mPurchaseMap.keySet());
-              paramAnonymous2c.Irt.clear();
-              paramAnonymous2c.Irt.addAll(localArrayList);
+              paramAnonymous2c.Pkc.clear();
+              paramAnonymous2c.Pkc.addAll(localArrayList);
               paramAnonymous2c = new ArrayList(paramAnonymous2b.mPurchaseMap.values());
               if (paramAnonymous2c.size() > 0)
               {
@@ -94,9 +94,9 @@ public final class a
                 while (paramAnonymous2c.hasNext())
                 {
                   paramAnonymous2b = (com.tencent.mm.plugin.wallet_index.b.a.c)paramAnonymous2c.next();
-                  Log.i("MicroMsg.GoogleWallet", "do NetSceneVerifyPurchase. productId:" + paramAnonymous2b.rcD + ",billNo:" + paramAnonymous2b.IqE);
-                  g.aAi();
-                  g.aAg().hqi.a(a.c(a.this).a(paramAnonymous2b, true), 0);
+                  Log.i("MicroMsg.GoogleWallet", "do NetSceneVerifyPurchase. productId:" + paramAnonymous2b.uFI + ",billNo:" + paramAnonymous2b.Pjn);
+                  h.aHH();
+                  h.aHF().kcd.a(a.c(a.this).a(paramAnonymous2b, true), 0);
                 }
                 AppMethodBeat.o(71852);
                 return;
@@ -105,7 +105,7 @@ public final class a
               if (!bool) {
                 Log.d("MicroMsg.GoogleWallet", "unknown_purchase");
               }
-              for (paramAnonymous2c = com.tencent.mm.plugin.wallet_index.c.c.cJ(5, "");; paramAnonymous2c = com.tencent.mm.plugin.wallet_index.c.c.cJ(0, ""))
+              for (paramAnonymous2c = com.tencent.mm.plugin.wallet_index.c.c.cK(5, "");; paramAnonymous2c = com.tencent.mm.plugin.wallet_index.c.c.cK(0, ""))
               {
                 if (a.d(a.this) != null) {
                   a.d(a.this).a(paramAnonymous2c, null);
@@ -120,25 +120,25 @@ public final class a
         AppMethodBeat.o(71853);
       }
     };
-    this.Irj = paramd;
-    Iri = 0L;
-    this.Irh = paramc;
+    this.PjS = paramd;
+    PjR = 0L;
+    this.PjQ = paramc;
     paramc = new IntentFilter();
     paramc.addAction("com.tencent.mm.gwallet.ACTION_QUERY_RESPONSE");
     paramc.addAction("com.tencent.mm.gwallet.ACTION_PAY_RESPONSE");
     paramActivity.registerReceiver(this.mReceiver, paramc);
-    this.Irk = new com.tencent.mm.plugin.wallet_index.b.a.a();
+    this.PjT = new com.tencent.mm.plugin.wallet_index.b.a.a();
     AppMethodBeat.o(71854);
   }
   
   private static void b(MMActivity paramMMActivity, int paramInt)
   {
     AppMethodBeat.i(71857);
-    com.tencent.mm.plugin.wallet_index.c.c localc = com.tencent.mm.plugin.wallet_index.c.c.cJ(paramInt, "");
+    com.tencent.mm.plugin.wallet_index.c.c localc = com.tencent.mm.plugin.wallet_index.c.c.cK(paramInt, "");
     Intent localIntent = new Intent();
     localIntent.putExtra("key_err_code", localc.mResponse);
     localIntent.putExtra("key_err_msg", localc.mMessage);
-    localIntent.putExtra("key_launch_ts", Iri);
+    localIntent.putExtra("key_launch_ts", PjR);
     paramMMActivity.setResult(-1, localIntent);
     paramMMActivity.finish();
     AppMethodBeat.o(71857);
@@ -147,17 +147,17 @@ public final class a
   public final int a(MMActivity paramMMActivity, d paramd)
   {
     AppMethodBeat.i(71855);
-    this.Irf = paramd;
-    this.rcD = this.Irh.IqP.AZx;
-    this.IqG = this.Irh.IqP.price;
-    this.IqF = this.Irh.IqP.LSm;
+    this.PjO = paramd;
+    this.uFI = this.PjQ.Pjy.GTv;
+    this.Pjp = this.PjQ.Pjy.price;
+    this.Pjo = this.PjQ.Pjy.TaW;
     Intent localIntent = new Intent("com.tencent.mm.gwallet.ACTION_PAY_REQUEST");
-    localIntent.setPackage(Ire);
-    localIntent.putExtra("product_id", this.rcD);
-    this.Irm = this.Irh.IqP.MiH;
-    Object localObject1 = this.Irm;
-    Object localObject2 = this.IqG;
-    String str = this.IqF;
+    localIntent.setPackage(PjN);
+    localIntent.putExtra("product_id", this.uFI);
+    this.PjV = this.PjQ.Pjy.Tsx;
+    Object localObject1 = this.PjV;
+    Object localObject2 = this.Pjp;
+    String str = this.Pjo;
     paramd = (d)localObject1;
     if (Util.isNullOrNil((String)localObject1)) {
       paramd = "";
@@ -173,7 +173,7 @@ public final class a
     localIntent.putExtra("developer_pay_load", paramd + "[#]" + (String)localObject1 + "[#]" + (String)localObject2);
     if (!paramMMActivity.getPackageManager().queryIntentActivities(localIntent, 65536).isEmpty())
     {
-      Iri = Util.nowMilliSecond();
+      PjR = Util.nowMilliSecond();
       Log.i("MicroMsg.GoogleWallet", "GWallet Found!");
       paramMMActivity.startActivityForResult(localIntent, 10001);
     }
@@ -182,9 +182,9 @@ public final class a
       AppMethodBeat.o(71855);
       return 10001;
       Log.i("MicroMsg.GoogleWallet", "Try to downloading GWallet Moudle!");
-      paramMMActivity = com.tencent.mm.plugin.wallet_index.c.c.cJ(3, "");
-      if (this.Irf != null) {
-        this.Irf.a(paramMMActivity, null);
+      paramMMActivity = com.tencent.mm.plugin.wallet_index.c.c.cK(3, "");
+      if (this.PjO != null) {
+        this.PjO.a(paramMMActivity, null);
       }
     }
   }
@@ -192,9 +192,9 @@ public final class a
   public final void a(MMActivity paramMMActivity, ArrayList<String> paramArrayList, d paramd, boolean paramBoolean)
   {
     AppMethodBeat.i(71860);
-    this.Irg = paramd;
+    this.PjP = paramd;
     Log.d("MicroMsg.GoogleWallet", "consumePurchase. consume...");
-    com.tencent.mm.plugin.wallet_index.b.a.b localb = this.Irl;
+    com.tencent.mm.plugin.wallet_index.b.a.b localb = this.PjU;
     paramd = new ArrayList();
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
@@ -208,16 +208,16 @@ public final class a
     if (paramd.size() > 0)
     {
       paramArrayList = new Intent("com.tencent.mm.gwallet.ACTION_CONSUME_REQUEST");
-      paramArrayList.setPackage(Ire);
+      paramArrayList.setPackage(PjN);
       paramArrayList.putStringArrayListExtra("tokens", paramd);
       paramArrayList.putExtra("IS_FAILED_CONSUME", paramBoolean);
       paramMMActivity.sendBroadcast(paramArrayList);
       AppMethodBeat.o(71860);
       return;
     }
-    paramMMActivity = com.tencent.mm.plugin.wallet_index.c.c.cJ(0, "");
-    if (this.Irg != null) {
-      this.Irg.a(paramMMActivity, null);
+    paramMMActivity = com.tencent.mm.plugin.wallet_index.c.c.cK(0, "");
+    if (this.PjP != null) {
+      this.PjP.a(paramMMActivity, null);
     }
     AppMethodBeat.o(71860);
   }
@@ -233,7 +233,7 @@ public final class a
         paramInt1 = paramIntent.getIntExtra("RESPONSE_CODE", 0);
         if ((paramInt1 == 3) || (paramInt1 == 105))
         {
-          ab.e(this.Irm, this.rcD, this.IqG, paramInt1, "");
+          ab.e(this.PjV, this.uFI, this.Pjp, paramInt1, "");
           b(paramMMActivity, paramInt1);
           AppMethodBeat.o(71858);
           return true;
@@ -252,13 +252,13 @@ public final class a
         return true;
       }
     }
-    paramMMActivity = this.Irg;
-    String str1 = this.Irm;
-    String str2 = this.rcD;
-    String str3 = this.IqG;
+    paramMMActivity = this.PjP;
+    String str1 = this.PjV;
+    String str2 = this.uFI;
+    String str3 = this.Pjp;
     paramInt1 = com.tencent.mm.plugin.wallet_index.b.a.a.bh(paramIntent);
     Log.d("MicroMsg.IabResolver", "Owned items response: " + String.valueOf(paramInt1));
-    paramIntent = com.tencent.mm.plugin.wallet_index.c.c.cJ(paramInt1, "");
+    paramIntent = com.tencent.mm.plugin.wallet_index.c.c.cK(paramInt1, "");
     ab.e(str1, str2, str3, paramInt1, paramIntent.mMessage);
     if (paramMMActivity != null) {
       paramMMActivity.a(paramIntent, null);
@@ -273,18 +273,18 @@ public final class a
     Log.d("MicroMsg.GoogleWallet", "restorePurchase. Querying inventory.");
     Log.d("MicroMsg.GoogleWallet", "is direct? ".concat(String.valueOf(paramBoolean)));
     Intent localIntent = new Intent("com.tencent.mm.gwallet.ACTION_QUERY_REQUEST");
-    localIntent.setPackage(Ire);
+    localIntent.setPackage(PjN);
     localIntent.putExtra("is_direct", paramBoolean);
     paramMMActivity.startActivityForResult(localIntent, 10001);
     AppMethodBeat.o(71859);
   }
   
-  public final int fUr()
+  public final int gMX()
   {
     return 3;
   }
   
-  public final void p(MMActivity paramMMActivity)
+  public final void q(MMActivity paramMMActivity)
   {
     AppMethodBeat.i(71856);
     try
@@ -294,7 +294,7 @@ public final class a
       {
         Log.d("MicroMsg.GoogleWallet", "close front UI.");
         Intent localIntent = new Intent("com.tencent.mm.gwallet.ACTION_CONSUME_REQUEST");
-        localIntent.setPackage(Ire);
+        localIntent.setPackage(PjN);
         paramMMActivity.sendBroadcast(localIntent);
       }
       Log.d("MicroMsg.GoogleWallet", "Destroying helper.");

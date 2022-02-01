@@ -2,8 +2,6 @@
 <resources>
     <item type="drawable" name="b72">false</item>
     <item type="drawable" name="b75">false</item>
-    <item type="drawable" name="b9r">false</item>
-    <item type="drawable" name="b9v">false</item>
     <item type="drawable" name="b9y">false</item>
     <item type="drawable" name="b9z">false</item>
     <item type="drawable" name="b_0">false</item>
@@ -35,6 +33,8 @@
     <item type="drawable" name="bsh">false</item>
     <item type="drawable" name="bsi">false</item>
     <item type="drawable" name="bsl">false</item>
+    <item type="drawable" name="b9r">false</item>
+    <item type="drawable" name="b9v">false</item>
     <item type="drawable" name="bsr">false</item>
     <item type="drawable" name="bt0">false</item>
     <item type="drawable" name="bta">false</item>
@@ -49,9 +49,6 @@
     <item type="drawable" name="bve">false</item>
     <item type="drawable" name="bvj">false</item>
     <item type="drawable" name="bvk">false</item>
-    <item type="drawable" name="bvm">false</item>
-    <item type="drawable" name="bvo">false</item>
-    <item type="drawable" name="bvp">false</item>
     <item type="drawable" name="bvq">false</item>
     <item type="drawable" name="bvr">false</item>
 </resources>

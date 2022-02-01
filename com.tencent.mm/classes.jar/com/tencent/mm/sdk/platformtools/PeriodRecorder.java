@@ -30,14 +30,14 @@ public final class PeriodRecorder
   
   public PeriodRecorder(String paramString, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(215431);
+    AppMethodBeat.i(263243);
     this.mPeriod = 0L;
     this.mPreloadLock = new byte[0];
     this.mIsPreloaded = false;
     if (paramString == null)
     {
       paramString = new IllegalArgumentException("scene is null.");
-      AppMethodBeat.o(215431);
+      AppMethodBeat.o(263243);
       throw paramString;
     }
     this.mScene = paramString;
@@ -50,7 +50,7 @@ public final class PeriodRecorder
       this.mLastTimeCache = new ConcurrentHashMap(20);
       this.mPeriod = paramLong;
       this.mTriggerOnNewlyInit = paramBoolean2;
-      AppMethodBeat.o(215431);
+      AppMethodBeat.o(263243);
       return;
     }
   }
@@ -135,29 +135,29 @@ public final class PeriodRecorder
   
   private long getNowTime()
   {
-    AppMethodBeat.i(215432);
+    AppMethodBeat.i(263248);
     if (this.mUseCalenderTime)
     {
       l = System.currentTimeMillis();
-      AppMethodBeat.o(215432);
+      AppMethodBeat.o(263248);
       return l;
     }
     long l = SystemClock.elapsedRealtime();
-    AppMethodBeat.o(215432);
+    AppMethodBeat.o(263248);
     return l;
   }
   
   private void preloadOnDemand()
   {
     int i = 0;
-    AppMethodBeat.i(215433);
+    AppMethodBeat.i(263251);
     for (;;)
     {
       synchronized (this.mPreloadLock)
       {
         if ((this.mIsPreloaded) || (this.mStorage == null))
         {
-          AppMethodBeat.o(215433);
+          AppMethodBeat.o(263251);
           return;
         }
         if ((this.mStorage instanceof MultiProcessMMKV))
@@ -165,7 +165,7 @@ public final class PeriodRecorder
           String[] arrayOfString = ((MultiProcessMMKV)this.mStorage).allKeys();
           if (arrayOfString == null)
           {
-            AppMethodBeat.o(215433);
+            AppMethodBeat.o(263251);
             return;
           }
           int j = arrayOfString.length;
@@ -190,7 +190,7 @@ public final class PeriodRecorder
       Object localObject2 = this.mStorage.getAll();
       if (localObject2 == null)
       {
-        AppMethodBeat.o(215433);
+        AppMethodBeat.o(263251);
         return;
       }
       localObject2 = ((Map)localObject2).entrySet().iterator();
@@ -204,7 +204,7 @@ public final class PeriodRecorder
       }
       label265:
       this.mIsPreloaded = true;
-      AppMethodBeat.o(215433);
+      AppMethodBeat.o(263251);
       return;
       label279:
       i += 1;

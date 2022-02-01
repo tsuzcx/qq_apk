@@ -8,14 +8,14 @@ import java.util.List;
 
 public class a
 {
-  protected int RJt;
-  protected QbarNative RJu;
+  protected int Zmb;
+  protected QbarNative Zmc;
   
   public a()
   {
     AppMethodBeat.i(88393);
-    this.RJt = -1;
-    this.RJu = new QbarNative();
+    this.Zmb = -1;
+    this.Zmc = new QbarNative();
     AppMethodBeat.o(88393);
   }
   
@@ -35,7 +35,7 @@ public class a
     return str;
   }
   
-  public final int F(List<QbarNative.QBarCodeDetectInfo> paramList, List<QbarNative.QBarPoint> paramList1)
+  public final int L(List<QbarNative.QBarCodeDetectInfo> paramList, List<QbarNative.QBarPoint> paramList1)
   {
     int k = 0;
     AppMethodBeat.i(88401);
@@ -45,7 +45,7 @@ public class a
       int j;
       try
       {
-        if (this.RJt < 0) {
+        if (this.Zmb < 0) {
           return 0;
         }
         QbarNative.QBarCodeDetectInfo[] arrayOfQBarCodeDetectInfo = new QbarNative.QBarCodeDetectInfo[3];
@@ -60,7 +60,7 @@ public class a
         }
         paramList.clear();
         paramList1.clear();
-        this.RJu.GetCodeDetectInfo(arrayOfQBarCodeDetectInfo, arrayOfQBarPoint, this.RJt);
+        this.Zmc.GetCodeDetectInfo(arrayOfQBarCodeDetectInfo, arrayOfQBarPoint, this.Zmb);
         i = 0;
         j = k;
         if (i < 3)
@@ -96,15 +96,15 @@ public class a
     }
   }
   
-  public int S(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public int U(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(88397);
     try
     {
-      if (this.RJt < 0) {
+      if (this.Zmb < 0) {
         return -1;
       }
-      paramInt1 = this.RJu.ScanImage(paramArrayOfByte, paramInt1, paramInt2, this.RJt);
+      paramInt1 = this.Zmc.ScanImage(paramArrayOfByte, paramInt1, paramInt2, this.Zmb);
       return paramInt1;
     }
     finally
@@ -118,11 +118,11 @@ public class a
     AppMethodBeat.i(88395);
     try
     {
-      if (this.RJt < 0) {
-        this.RJt = this.RJu.Init(1, paramInt, paramString1, paramString2, paramQbarAiModelParam);
+      if (this.Zmb < 0) {
+        this.Zmb = this.Zmc.Init(1, paramInt, paramString1, paramString2, paramQbarAiModelParam);
       }
-      System.out.println("qbarId:" + this.RJt);
-      if (this.RJt < 0) {
+      System.out.println("qbarId:" + this.Zmb);
+      if (this.Zmb < 0) {
         return -1;
       }
       return 0;
@@ -133,7 +133,7 @@ public class a
     }
   }
   
-  public final List<a> hkc()
+  public final List<a> iny()
   {
     int j = 0;
     AppMethodBeat.i(88399);
@@ -142,7 +142,7 @@ public class a
       int i;
       try
       {
-        if (this.RJt < 0) {
+        if (this.Zmb < 0) {
           return null;
         }
         QbarNative.QBarResultJNI[] arrayOfQBarResultJNI = new QbarNative.QBarResultJNI[3];
@@ -156,7 +156,7 @@ public class a
           i += 1;
           continue;
         }
-        this.RJu.GetResults(arrayOfQBarResultJNI, this.RJt);
+        this.Zmc.GetResults(arrayOfQBarResultJNI, this.Zmb);
         ArrayList localArrayList = new ArrayList();
         i = j;
         if (i < 3)
@@ -198,16 +198,16 @@ public class a
     }
   }
   
-  public final QbarNative.QBarZoomInfo hkd()
+  public final QbarNative.QBarZoomInfo inz()
   {
     AppMethodBeat.i(88400);
     try
     {
-      if (this.RJt < 0) {
+      if (this.Zmb < 0) {
         return null;
       }
       QbarNative.QBarZoomInfo localQBarZoomInfo = new QbarNative.QBarZoomInfo();
-      this.RJu.GetZoomInfo(localQBarZoomInfo, this.RJt);
+      this.Zmc.GetZoomInfo(localQBarZoomInfo, this.Zmb);
       return localQBarZoomInfo;
     }
     finally
@@ -221,10 +221,10 @@ public class a
     AppMethodBeat.i(88396);
     try
     {
-      if (this.RJt < 0) {
+      if (this.Zmb < 0) {
         return -1;
       }
-      paramInt = this.RJu.SetReaders(paramArrayOfInt, paramInt, this.RJt);
+      paramInt = this.Zmc.SetReaders(paramArrayOfInt, paramInt, this.Zmb);
       return paramInt;
     }
     finally
@@ -238,11 +238,11 @@ public class a
     AppMethodBeat.i(88398);
     try
     {
-      if (this.RJt < 0) {
+      if (this.Zmb < 0) {
         return 0;
       }
-      int i = this.RJu.Release(this.RJt);
-      this.RJt = -1;
+      int i = this.Zmc.Release(this.Zmb);
+      this.Zmb = -1;
       return i;
     }
     finally

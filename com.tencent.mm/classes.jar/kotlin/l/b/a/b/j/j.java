@@ -17,16 +17,16 @@ public final class j
   public static final <H> Collection<H> b(Collection<? extends H> paramCollection, b<? super H, ? extends a> paramb)
   {
     AppMethodBeat.i(60009);
-    p.h(paramCollection, "$this$selectMostSpecificInEachOverridableGroup");
-    p.h(paramb, "descriptorByHandle");
+    p.k(paramCollection, "$this$selectMostSpecificInEachOverridableGroup");
+    p.k(paramb, "descriptorByHandle");
     if (paramCollection.size() <= 1)
     {
       AppMethodBeat.o(60009);
       return paramCollection;
     }
     paramCollection = new LinkedList(paramCollection);
-    Object localObject1 = kotlin.l.b.a.b.o.i.TSf;
-    localObject1 = i.b.hLZ();
+    Object localObject1 = kotlin.l.b.a.b.o.i.abuE;
+    localObject1 = i.b.iQq();
     int i;
     if (!((Collection)paramCollection).isEmpty()) {
       i = 1;
@@ -35,28 +35,28 @@ public final class j
     {
       if (i != 0)
       {
-        Object localObject3 = kotlin.a.j.ks((List)paramCollection);
-        Object localObject2 = kotlin.l.b.a.b.o.i.TSf;
-        localObject2 = i.b.hLZ();
+        Object localObject3 = kotlin.a.j.lo((List)paramCollection);
+        Object localObject2 = kotlin.l.b.a.b.o.i.abuE;
+        localObject2 = i.b.iQq();
         Object localObject4 = i.a(localObject3, (Collection)paramCollection, paramb, (b)new b((kotlin.l.b.a.b.o.i)localObject2));
-        p.g(localObject4, "OverridingUtil.extractMe…nflictedHandles.add(it) }");
+        p.j(localObject4, "OverridingUtil.extractMe…nflictedHandles.add(it) }");
         if ((((Collection)localObject4).size() == 1) && (((kotlin.l.b.a.b.o.i)localObject2).isEmpty()))
         {
           localObject2 = kotlin.a.j.i((Iterable)localObject4);
-          p.g(localObject2, "overridableGroup.single()");
+          p.j(localObject2, "overridableGroup.single()");
           ((kotlin.l.b.a.b.o.i)localObject1).add(localObject2);
           break;
           i = 0;
           continue;
         }
         localObject3 = i.a((Collection)localObject4, paramb);
-        p.g(localObject3, "OverridingUtil.selectMos…roup, descriptorByHandle)");
+        p.j(localObject3, "OverridingUtil.selectMos…roup, descriptorByHandle)");
         a locala = (a)paramb.invoke(localObject3);
         localObject4 = ((Iterable)localObject4).iterator();
         while (((Iterator)localObject4).hasNext())
         {
           Object localObject5 = ((Iterator)localObject4).next();
-          p.g(localObject5, "it");
+          p.j(localObject5, "it");
           if (!i.e(locala, (a)paramb.invoke(localObject5))) {
             ((Collection)localObject2).add(localObject5);
           }
@@ -77,6 +77,25 @@ public final class j
     return paramCollection;
   }
   
+  public static final class a
+    extends q
+    implements b<D, D>
+  {
+    public static final a abkM;
+    
+    static
+    {
+      AppMethodBeat.i(60007);
+      abkM = new a();
+      AppMethodBeat.o(60007);
+    }
+    
+    a()
+    {
+      super();
+    }
+  }
+  
   static final class b
     extends q
     implements b<H, x>
@@ -89,7 +108,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlin.l.b.a.b.j.j
  * JD-Core Version:    0.7.0.1
  */

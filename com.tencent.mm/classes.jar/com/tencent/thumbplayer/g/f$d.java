@@ -2,11 +2,11 @@ package com.tencent.thumbplayer.g;
 
 final class f$d
 {
-  Object SbB;
-  Object SbC;
-  Object SbD;
-  Object SbE;
-  int bca;
+  Object ZEm;
+  Object ZEn;
+  Object ZEo;
+  Object ZEp;
+  int aLz;
 }
 
 

@@ -19,7 +19,7 @@ public class aw
     AppMethodBeat.o(78610);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

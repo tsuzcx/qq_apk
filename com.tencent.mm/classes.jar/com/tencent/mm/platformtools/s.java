@@ -1,41 +1,54 @@
 package com.tencent.mm.platformtools;
 
 import android.graphics.Bitmap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract interface s
 {
-  public abstract Bitmap a(Bitmap paramBitmap, s.a parama, String paramString);
+  public abstract Bitmap a(Bitmap paramBitmap, a parama, String paramString);
   
-  public abstract void a(s.a parama, String paramString);
+  public abstract void a(a parama);
   
-  public abstract void ad(String paramString, boolean paramBoolean);
+  public abstract b bvp();
   
-  public abstract String blA();
+  public abstract String bvq();
   
-  public abstract String blB();
+  public abstract String bvr();
   
-  public abstract String blC();
+  public abstract String bvs();
   
-  public abstract boolean blD();
+  public abstract boolean bvt();
   
-  public abstract boolean blE();
+  public abstract Bitmap bvu();
   
-  public abstract Bitmap blF();
+  public abstract void bvv();
   
-  public abstract void blG();
-  
-  public abstract b blz();
+  public abstract void bvw();
   
   public abstract String getCacheKey();
   
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(151381);
+      mEp = new a("NET", 0);
+      mEq = new a("DISK", 1);
+      mEr = new a[] { mEp, mEq };
+      AppMethodBeat.o(151381);
+    }
+    
+    private a() {}
+  }
+  
   public static abstract interface b
   {
-    public abstract Bitmap So(String paramString);
+    public abstract Bitmap ZQ(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.platformtools.s
  * JD-Core Version:    0.7.0.1
  */

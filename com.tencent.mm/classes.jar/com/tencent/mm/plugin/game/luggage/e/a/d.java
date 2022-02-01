@@ -8,14 +8,14 @@ import android.widget.Toast;
 import com.tencent.luggage.d.p;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.game.luggage.ipc.AddShortcutTask;
+import com.tencent.mm.plugin.game.luggage.j.f;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.luggage.w;
-import com.tencent.mm.protocal.protobuf.coq;
+import com.tencent.mm.protocal.protobuf.cxc;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.o;
 import org.json.JSONObject;
 
 public final class d
@@ -26,34 +26,34 @@ public final class d
     super(8);
   }
   
-  public final void a(final Context paramContext, final g paramg, coq paramcoq)
+  public final void a(final Context paramContext, final g paramg, cxc paramcxc)
   {
     AppMethodBeat.i(83106);
-    paramcoq = paramg.mParams.getString("shortcut_user_name");
-    String str = paramg.ITw.getAppId();
-    if ((Util.isNullOrNil(paramcoq)) || (Util.isNullOrNil(str)))
+    paramcxc = paramg.mParams.getString("shortcut_user_name");
+    String str = paramg.PPO.getAppId();
+    if ((Util.isNullOrNil(paramcxc)) || (Util.isNullOrNil(str)))
     {
       AppMethodBeat.o(83106);
       return;
     }
     final AddShortcutTask localAddShortcutTask = new AddShortcutTask();
-    localAddShortcutTask.username = paramcoq;
+    localAddShortcutTask.username = paramcxc;
     localAddShortcutTask.appId = str;
-    localAddShortcutTask.lyv = new Runnable()
+    localAddShortcutTask.otv = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(83104);
-        localAddShortcutTask.bDK();
-        paramg.ctS.a(new com.tencent.luggage.d.d()
+        localAddShortcutTask.bPk();
+        paramg.crX.a(new com.tencent.luggage.d.d()
         {
-          public final JSONObject Ld()
+          public final JSONObject NU()
           {
             AppMethodBeat.i(83102);
             JSONObject localJSONObject = new JSONObject();
             try
             {
-              localJSONObject.put("success", d.1.this.xxE.success);
+              localJSONObject.put("success", d.1.this.CBN.success);
               label30:
               AppMethodBeat.o(83102);
               return localJSONObject;
@@ -71,7 +71,7 @@ public final class d
         });
         if (localAddShortcutTask.success)
         {
-          h.a(paramContext, 2131768755, 2131755998, false, new DialogInterface.OnClickListener()
+          h.a(paramContext, j.f.wv_add_shortcut_success, j.f.app_tip, false, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
@@ -83,24 +83,23 @@ public final class d
           AppMethodBeat.o(83104);
           return;
         }
-        Toast.makeText(paramContext, paramContext.getString(2131768754), 0).show();
+        Toast.makeText(paramContext, paramContext.getString(j.f.wv_add_shortcut_fail), 0).show();
         AppMethodBeat.o(83104);
       }
     };
-    localAddShortcutTask.bDJ();
-    AppBrandMainProcessService.a(localAddShortcutTask);
+    localAddShortcutTask.bsM();
     AppMethodBeat.o(83106);
   }
   
-  public final void a(g paramg, m paramm, coq paramcoq)
+  public final void a(g paramg, o paramo, cxc paramcxc)
   {
     AppMethodBeat.i(83105);
-    String str1 = paramg.ITw.getAppId();
+    String str1 = paramg.PPO.getAppId();
     String str2 = paramg.mParams.getString("shortcut_user_name");
     if ((!paramg.mParams.getBoolean("from_shortcut", false)) && (!Util.isNullOrNil(str1)) && (!Util.isNullOrNil(str2)))
     {
-      paramg = paramcoq.Title + "__" + paramcoq.ThumbUrl;
-      paramm.d(paramcoq.KWb, paramg);
+      paramg = paramcxc.fwr + "__" + paramcxc.ThumbUrl;
+      paramo.d(paramcxc.RXp, paramg);
     }
     AppMethodBeat.o(83105);
   }

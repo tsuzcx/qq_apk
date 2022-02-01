@@ -1,65 +1,29 @@
 package com.tencent.mm.appbrand.v8;
 
-import com.eclipsesource.v8.ILoadLibraryDelegate;
-import com.eclipsesource.v8.V8;
+import com.eclipsesource.mmv8.V8;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.j;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
 
 public final class f
 {
-  private static boolean dpt;
+  private static boolean fia;
   
   static
   {
     AppMethodBeat.i(144000);
-    V8.setLoadLibraryDelegate(new ILoadLibraryDelegate()
-    {
-      public final void loadLibrary(String paramAnonymousString)
-      {
-        AppMethodBeat.i(143996);
-        try
-        {
-          Util.nowMilliSecond();
-          f.access$000();
-          h.class.getClassLoader();
-          j.Ed("mmskia");
-          h.class.getClassLoader();
-          j.Ed("canvas");
-          h.class.getClassLoader();
-          j.Ed("skia-canvas");
-          h.class.getClassLoader();
-          j.Ed("skia-canvas-log-bridge");
-          Log.i("MicroMsg.JSRuntimeCreator", "load so done");
-          AppMethodBeat.o(143996);
-          return;
-        }
-        catch (Exception paramAnonymousString)
-        {
-          do
-          {
-            Log.printErrStackTrace("MicroMsg.JSRuntimeCreator", paramAnonymousString, "", new Object[0]);
-          } while ((!BuildInfo.DEBUG) && (!BuildInfo.IS_FLAVOR_RED));
-          AppMethodBeat.o(143996);
-          throw paramAnonymousString;
-        }
-      }
-    });
-    dpt = false;
+    V8.setLoadLibraryDelegate(new f.1());
+    fia = false;
     AppMethodBeat.o(144000);
   }
   
   /* Error */
-  private static void Xz()
+  private static void acc()
   {
     // Byte code:
     //   0: ldc 37
-    //   2: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: ldc 2
     //   7: monitorenter
-    //   8: getstatic 28	com/tencent/mm/appbrand/v8/f:dpt	Z
+    //   8: getstatic 28	com/tencent/mm/appbrand/v8/f:fia	Z
     //   11: ifeq +19 -> 30
     //   14: ldc 39
     //   16: ldc 41
@@ -77,17 +41,17 @@ public final class f
     //   39: invokevirtual 60	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
     //   42: pop
     //   43: ldc 62
-    //   45: invokestatic 68	com/tencent/mm/compatible/util/j:Ed	(Ljava/lang/String;)V
+    //   45: invokestatic 68	com/tencent/mm/compatible/util/j:KW	(Ljava/lang/String;)V
     //   48: ldc 54
     //   50: invokevirtual 60	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
     //   53: pop
     //   54: ldc 70
-    //   56: invokestatic 68	com/tencent/mm/compatible/util/j:Ed	(Ljava/lang/String;)V
+    //   56: invokestatic 68	com/tencent/mm/compatible/util/j:KW	(Ljava/lang/String;)V
     //   59: ldc 54
     //   61: invokevirtual 60	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
     //   64: pop
     //   65: ldc 72
-    //   67: invokestatic 68	com/tencent/mm/compatible/util/j:Ed	(Ljava/lang/String;)V
+    //   67: invokestatic 68	com/tencent/mm/compatible/util/j:KW	(Ljava/lang/String;)V
     //   70: bipush 6
     //   72: invokestatic 52	com/tencent/mm/sdk/platformtools/Util:nowMilliSecond	()J
     //   75: lload_0
@@ -104,7 +68,7 @@ public final class f
     //   92: ldc 2
     //   94: monitorenter
     //   95: iconst_1
-    //   96: putstatic 28	com/tencent/mm/appbrand/v8/f:dpt	Z
+    //   96: putstatic 28	com/tencent/mm/appbrand/v8/f:fia	Z
     //   99: ldc 2
     //   101: monitorexit
     //   102: ldc 37
@@ -143,16 +107,13 @@ public final class f
     //   start	length	slot	name	signature
     //   36	40	0	l	long
     //   108	10	2	localObject1	Object
-    //   119	31	2	localException	Exception
+    //   119	31	2	localException	java.lang.Exception
     //   151	10	2	localObject2	Object
     // Exception table:
     //   from	to	target	type
     //   8	24	108	finally
-    //   30	33	108	finally
-    //   109	112	108	finally
     //   33	85	119	java/lang/Exception
     //   95	102	151	finally
-    //   152	155	151	finally
   }
   
   public static h b(IJSRuntime.Config paramConfig)
@@ -181,16 +142,16 @@ public final class f
   
   public static long getNativeTransManager()
   {
-    AppMethodBeat.i(216872);
-    Xz();
+    AppMethodBeat.i(262224);
+    acc();
     long l = V8.getNativeTransManager();
-    AppMethodBeat.o(216872);
+    AppMethodBeat.o(262224);
     return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.f
  * JD-Core Version:    0.7.0.1
  */

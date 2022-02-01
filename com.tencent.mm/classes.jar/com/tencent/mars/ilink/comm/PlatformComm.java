@@ -3,8 +3,6 @@ package com.tencent.mars.ilink.comm;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.os.Handler;
 import android.telephony.TelephonyManager;
 import java.io.PrintWriter;
@@ -127,37 +125,10 @@ public class PlatformComm
     
     public static PlatformComm.WifiInfo getCurWifiInfo()
     {
-      try
-      {
-        if (PlatformComm.context == null) {
-          return null;
-        }
-        Object localObject = (ConnectivityManager)PlatformComm.context.getSystemService("connectivity");
-        if (localObject == null) {
-          return null;
-        }
-        localObject = ((ConnectivityManager)localObject).getActiveNetworkInfo();
-        if ((localObject != null) && (1 == ((NetworkInfo)localObject).getType()))
-        {
-          localObject = (WifiManager)PlatformComm.context.getSystemService("wifi");
-          if (localObject == null) {
-            return null;
-          }
-          localObject = ((WifiManager)localObject).getConnectionInfo();
-          if (localObject == null) {
-            return null;
-          }
-          PlatformComm.WifiInfo localWifiInfo = new PlatformComm.WifiInfo();
-          localWifiInfo.ssid = ((WifiInfo)localObject).getSSID();
-          localWifiInfo.bssid = ((WifiInfo)localObject).getBSSID();
-          return localWifiInfo;
-        }
-      }
-      catch (Exception localException)
-      {
-        return null;
-      }
-      return null;
+      PlatformComm.WifiInfo localWifiInfo = new PlatformComm.WifiInfo();
+      localWifiInfo.ssid = NetworkSignalUtil.getSSID();
+      localWifiInfo.bssid = NetworkSignalUtil.getBSSID();
+      return localWifiInfo;
     }
     
     public static int getNetInfo()
@@ -346,7 +317,7 @@ public class PlatformComm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mars.ilink.comm.PlatformComm
  * JD-Core Version:    0.7.0.1
  */

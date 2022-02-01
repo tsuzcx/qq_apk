@@ -9,14 +9,14 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class ElfCallUpReceiver
   extends BroadcastReceiver
 {
-  public static int AUm = -1;
+  public static int GNH = -1;
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(124973);
     Log.i("MicroMsg.ElfCallUpReceiver", "[onReceive] call up! ");
     if (getClass().getName().equals(paramIntent.getAction())) {
-      AUm = paramIntent.getIntExtra("processId", 0);
+      GNH = paramIntent.getIntExtra("processId", 0);
     }
     AppMethodBeat.o(124973);
   }

@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.remittance;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.model.be;
+import com.tencent.mm.pluginsdk.c.d;
 import com.tencent.mm.pluginsdk.n;
 
 public final class Plugin
@@ -13,7 +13,7 @@ public final class Plugin
     return null;
   }
   
-  public final bd createSubCore()
+  public final be createSubCore()
   {
     AppMethodBeat.i(67332);
     com.tencent.mm.plugin.remittance.a.c localc = new com.tencent.mm.plugin.remittance.a.c();
@@ -21,7 +21,7 @@ public final class Plugin
     return localc;
   }
   
-  public final com.tencent.mm.pluginsdk.b.c getContactWidgetFactory()
+  public final com.tencent.mm.pluginsdk.c.c getContactWidgetFactory()
   {
     return null;
   }

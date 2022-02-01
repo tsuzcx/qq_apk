@@ -9,12 +9,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/view/StoryCommentBubbleView;", "Landroid/widget/ImageView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bubbleLeft", "getBubbleLeft", "()I", "setBubbleLeft", "(I)V", "bubbleTop", "getBubbleTop", "setBubbleTop", "onTouchEvent", "", "event", "Landroid/view/MotionEvent;", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/view/StoryCommentBubbleView;", "Landroid/widget/ImageView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bubbleLeft", "getBubbleLeft", "()I", "setBubbleLeft", "(I)V", "bubbleTop", "getBubbleTop", "setBubbleTop", "onTouchEvent", "", "event", "Landroid/view/MotionEvent;", "plugin-story_release"})
 public final class StoryCommentBubbleView
   extends ImageView
 {
-  private int FBD;
-  private int FBE;
+  private int LVH;
+  private int LVI;
   
   public StoryCommentBubbleView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -53,7 +53,7 @@ public final class StoryCommentBubbleView
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(120092);
-    p.h(paramMotionEvent, "event");
+    p.k(paramMotionEvent, "event");
     switch (paramMotionEvent.getActionMasked())
     {
     }
@@ -70,17 +70,17 @@ public final class StoryCommentBubbleView
   
   public final void setBubbleLeft(int paramInt)
   {
-    this.FBD = paramInt;
+    this.LVH = paramInt;
   }
   
   public final void setBubbleTop(int paramInt)
   {
-    this.FBE = paramInt;
+    this.LVI = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.StoryCommentBubbleView
  * JD-Core Version:    0.7.0.1
  */

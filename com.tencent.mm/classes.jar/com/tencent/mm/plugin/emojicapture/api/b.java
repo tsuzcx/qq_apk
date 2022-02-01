@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.emojicapture.api;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.view.ContextThemeWrapper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.n.f;
+import com.tencent.mm.modelcontrol.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
@@ -36,22 +37,22 @@ public final class b
     if (!Util.isNullOrNil(paramString1))
     {
       i = 1;
-      bool = ((a)g.ah(a.class)).isStickerEnable();
-      j = ((a)g.ah(a.class)).stickerRecommendCount();
+      bool = ((a)com.tencent.mm.kernel.h.ag(a.class)).isStickerEnable();
+      j = ((a)com.tencent.mm.kernel.h.ag(a.class)).stickerRecommendCount();
       if ((paramInt != 1) && (paramInt != 6)) {
         break label352;
       }
-      com.tencent.mm.plugin.report.service.h.CyF.a(15982, new Object[] { Integer.valueOf(2), Long.valueOf(l1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramInt), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(j) });
+      com.tencent.mm.plugin.report.service.h.IzE.a(15982, new Object[] { Integer.valueOf(2), Long.valueOf(l1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramInt), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(j) });
     }
     for (;;)
     {
       try
       {
-        Intent localIntent = new Intent(paramContext, Class.forName("com.tencent.mm.plugin.emojicapture.ui.EmojiCaptureUI"));
-        localIntent.putExtra("key_video_params", com.tencent.mm.modelcontrol.e.baZ().bba());
+        final Intent localIntent = new Intent(paramContext, Class.forName("com.tencent.mm.plugin.emojicapture.ui.EmojiCaptureUI"));
+        localIntent.putExtra("key_video_params", e.bkp().bkq());
         localIntent.putExtra("key_enter_time", l1);
         localIntent.putExtra("enter_scene", paramInt);
-        localIntent.putExtra("key_capture_max_duration", com.tencent.mm.n.h.aqJ().getInt("EmoticonCameraCaptureMaxDuration", 5));
+        localIntent.putExtra("key_capture_max_duration", com.tencent.mm.n.h.axc().getInt("EmoticonCameraCaptureMaxDuration", 5));
         if (i != 0) {
           localIntent.putExtra("key_imitated_md5", paramString1);
         }
@@ -60,7 +61,47 @@ public final class b
           localIntent.putExtra("lens_id", paramString2);
         }
         localIntent.putExtra("username", paramString3);
-        ((a)g.ah(a.class)).preCheck(paramContext, paramInt, new b.1(paramContext, localIntent));
+        ((a)com.tencent.mm.kernel.h.ag(a.class)).preCheck(paramContext, paramInt, new a.a()
+        {
+          public final void hR(boolean paramAnonymousBoolean)
+          {
+            AppMethodBeat.i(104401);
+            if (paramAnonymousBoolean)
+            {
+              if ((this.val$context instanceof Activity))
+              {
+                ((Activity)this.val$context).startActivityForResult(localIntent, this.val$requestCode);
+                AppMethodBeat.o(104401);
+                return;
+              }
+              if ((this.val$context instanceof ContextThemeWrapper))
+              {
+                localContext = ((ContextThemeWrapper)this.val$context).getBaseContext();
+                if ((localContext instanceof Activity))
+                {
+                  ((Activity)localContext).startActivityForResult(localIntent, this.val$requestCode);
+                  AppMethodBeat.o(104401);
+                  return;
+                }
+                localContext = this.val$context;
+                localObject = localIntent;
+                localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+                com.tencent.mm.hellhoundlib.a.a.b(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/emojicapture/api/TakeEmojiCapture$1", "onCheckResult", "(Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+                com.tencent.mm.hellhoundlib.a.a.c(localContext, "com/tencent/mm/plugin/emojicapture/api/TakeEmojiCapture$1", "onCheckResult", "(Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                AppMethodBeat.o(104401);
+                return;
+              }
+              Context localContext = this.val$context;
+              Object localObject = localIntent;
+              localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+              com.tencent.mm.hellhoundlib.a.a.b(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/emojicapture/api/TakeEmojiCapture$1", "onCheckResult", "(Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+              com.tencent.mm.hellhoundlib.a.a.c(localContext, "com/tencent/mm/plugin/emojicapture/api/TakeEmojiCapture$1", "onCheckResult", "(Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            }
+            AppMethodBeat.o(104401);
+          }
+        });
         AppMethodBeat.o(104406);
         return;
       }
@@ -77,13 +118,13 @@ public final class b
       if (paramInt == 2)
       {
         l2 = System.currentTimeMillis();
-        l3 = g.aAh().azQ().a(ar.a.OgZ, l2);
-        com.tencent.mm.plugin.report.service.h.CyF.a(15982, new Object[] { Integer.valueOf(1), Long.valueOf(l1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramInt), "", Integer.valueOf(0), Long.valueOf(l2 - l3), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(j) });
+        l3 = com.tencent.mm.kernel.h.aHG().aHp().a(ar.a.Vvp, l2);
+        com.tencent.mm.plugin.report.service.h.IzE.a(15982, new Object[] { Integer.valueOf(1), Long.valueOf(l1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramInt), "", Integer.valueOf(0), Long.valueOf(l2 - l3), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(j) });
       }
     }
   }
   
-  public static void fa(Context paramContext)
+  public static void fe(Context paramContext)
   {
     AppMethodBeat.i(104407);
     try
@@ -91,10 +132,10 @@ public final class b
       Object localObject = Class.forName("com.tencent.mm.plugin.emojicapture.ui.StickerPreviewUI");
       localObject = new Intent(paramContext, (Class)localObject);
       ((Intent)localObject).putExtra("sticker_url", null);
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/emojicapture/api/TakeEmojiCapture", "startStickerPreview", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/emojicapture/api/TakeEmojiCapture", "startStickerPreview", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/emojicapture/api/TakeEmojiCapture", "startStickerPreview", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/emojicapture/api/TakeEmojiCapture", "startStickerPreview", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(104407);
       return;
     }
@@ -105,7 +146,7 @@ public final class b
     }
   }
   
-  public static void w(Context paramContext, String paramString1, String paramString2)
+  public static void z(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(104404);
     if (Util.isNullOrNil(paramString1)) {}
@@ -119,7 +160,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.api.b
  * JD-Core Version:    0.7.0.1
  */

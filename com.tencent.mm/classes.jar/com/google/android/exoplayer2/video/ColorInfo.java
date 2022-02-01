@@ -10,11 +10,11 @@ public final class ColorInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<ColorInfo> CREATOR;
-  private int aHK;
-  public final byte[] bHM;
-  public final int bjW;
-  public final int bjX;
-  public final int bjY;
+  private int aNf;
+  public final int aTA;
+  public final byte[] brw;
+  public final int colorRange;
+  public final int colorTransfer;
   
   static
   {
@@ -25,18 +25,18 @@ public final class ColorInfo
   
   public ColorInfo(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
   {
-    this.bjW = paramInt1;
-    this.bjY = paramInt2;
-    this.bjX = paramInt3;
-    this.bHM = paramArrayOfByte;
+    this.aTA = paramInt1;
+    this.colorRange = paramInt2;
+    this.colorTransfer = paramInt3;
+    this.brw = paramArrayOfByte;
   }
   
   ColorInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(93253);
-    this.bjW = paramParcel.readInt();
-    this.bjY = paramParcel.readInt();
-    this.bjX = paramParcel.readInt();
+    this.aTA = paramParcel.readInt();
+    this.colorRange = paramParcel.readInt();
+    this.colorTransfer = paramParcel.readInt();
     int i;
     if (paramParcel.readInt() != 0)
     {
@@ -48,7 +48,7 @@ public final class ColorInfo
     label67:
     for (paramParcel = paramParcel.createByteArray();; paramParcel = null)
     {
-      this.bHM = paramParcel;
+      this.brw = paramParcel;
       AppMethodBeat.o(93253);
       return;
       i = 0;
@@ -75,7 +75,7 @@ public final class ColorInfo
       return false;
     }
     paramObject = (ColorInfo)paramObject;
-    if ((this.bjW != paramObject.bjW) || (this.bjY != paramObject.bjY) || (this.bjX != paramObject.bjX) || (!Arrays.equals(this.bHM, paramObject.bHM)))
+    if ((this.aTA != paramObject.aTA) || (this.colorRange != paramObject.colorRange) || (this.colorTransfer != paramObject.colorTransfer) || (!Arrays.equals(this.brw, paramObject.brw)))
     {
       AppMethodBeat.o(93254);
       return false;
@@ -87,10 +87,10 @@ public final class ColorInfo
   public final int hashCode()
   {
     AppMethodBeat.i(93256);
-    if (this.aHK == 0) {
-      this.aHK = ((((this.bjW + 527) * 31 + this.bjY) * 31 + this.bjX) * 31 + Arrays.hashCode(this.bHM));
+    if (this.aNf == 0) {
+      this.aNf = ((((this.aTA + 527) * 31 + this.colorRange) * 31 + this.colorTransfer) * 31 + Arrays.hashCode(this.brw));
     }
-    int i = this.aHK;
+    int i = this.aNf;
     AppMethodBeat.o(93256);
     return i;
   }
@@ -98,8 +98,8 @@ public final class ColorInfo
   public final String toString()
   {
     AppMethodBeat.i(93255);
-    Object localObject = new StringBuilder("ColorInfo(").append(this.bjW).append(", ").append(this.bjY).append(", ").append(this.bjX).append(", ");
-    if (this.bHM != null) {}
+    Object localObject = new StringBuilder("ColorInfo(").append(this.aTA).append(", ").append(this.colorRange).append(", ").append(this.colorTransfer).append(", ");
+    if (this.brw != null) {}
     for (boolean bool = true;; bool = false)
     {
       localObject = bool + ")";
@@ -111,15 +111,15 @@ public final class ColorInfo
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(93257);
-    paramParcel.writeInt(this.bjW);
-    paramParcel.writeInt(this.bjY);
-    paramParcel.writeInt(this.bjX);
-    if (this.bHM != null) {}
+    paramParcel.writeInt(this.aTA);
+    paramParcel.writeInt(this.colorRange);
+    paramParcel.writeInt(this.colorTransfer);
+    if (this.brw != null) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      if (this.bHM != null) {
-        paramParcel.writeByteArray(this.bHM);
+      if (this.brw != null) {
+        paramParcel.writeByteArray(this.brw);
       }
       AppMethodBeat.o(93257);
       return;
@@ -128,7 +128,7 @@ public final class ColorInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.video.ColorInfo
  * JD-Core Version:    0.7.0.1
  */

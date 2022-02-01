@@ -1,22 +1,19 @@
 package com.tencent.mm.plugin.luckymoney.b;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.fp;
-import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.plugin.luckymoney.story.b.d;
+import com.tencent.mm.storagebase.h.b;
 
 final class a$13
-  extends IListener<fp>
+  implements h.b
 {
-  a$13(a parama)
+  public final String[] getSQLs()
   {
-    AppMethodBeat.i(213252);
-    this.__eventId = fp.class.getName().hashCode();
-    AppMethodBeat.o(213252);
+    return d.SQL_CREATE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.b.a.13
  * JD-Core Version:    0.7.0.1
  */

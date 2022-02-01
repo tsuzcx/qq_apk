@@ -1,18 +1,21 @@
 package com.tencent.mm.openim.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
 
 public class i
   extends k.b
 {
-  private int jHF;
+  private int myJ;
   
   public i(int paramInt)
   {
     super(0);
-    this.jHF = paramInt;
-    this.zqr = paramInt;
-    this.zqt = "@openim";
+    AppMethodBeat.i(238898);
+    this.myJ = paramInt;
+    this.EVQ = paramInt;
+    this.EVS = "@openim";
+    AppMethodBeat.o(238898);
   }
 }
 

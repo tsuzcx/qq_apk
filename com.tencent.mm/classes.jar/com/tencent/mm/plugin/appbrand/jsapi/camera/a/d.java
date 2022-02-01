@@ -7,25 +7,25 @@ public final class d
   extends c
   implements b.a
 {
-  private a lQM;
+  private a oNh;
   
   public d()
   {
     AppMethodBeat.i(46236);
-    this.lQM = new a(this, "barcode|qrcode");
+    this.oNh = new a(this, "barcode|qrcode");
     AppMethodBeat.o(46236);
   }
   
   public final void a(int paramInt1, String paramString, int paramInt2, byte[] paramArrayOfByte, QbarNative.QBarPoint paramQBarPoint)
   {
-    AppMethodBeat.i(226733);
-    this.lQL.a(paramInt1, paramInt2, paramString, paramArrayOfByte, paramQBarPoint);
-    AppMethodBeat.o(226733);
+    AppMethodBeat.i(283029);
+    this.oNg.a(paramInt1, paramInt2, paramString, paramArrayOfByte, paramQBarPoint);
+    AppMethodBeat.o(283029);
   }
   
-  protected final b bGb()
+  protected final b bRL()
   {
-    return this.lQM;
+    return this.oNh;
   }
 }
 

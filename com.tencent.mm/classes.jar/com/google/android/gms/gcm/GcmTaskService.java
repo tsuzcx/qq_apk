@@ -66,20 +66,17 @@ public abstract class GcmTaskService
   
   private final boolean zzg(String paramString)
   {
-    for (;;)
+    synchronized (this.lock)
     {
-      synchronized (this.lock)
+      if (!this.zzw.zzd(paramString, this.componentName.getClassName()))
       {
-        if (!this.zzw.zzd(paramString, this.componentName.getClassName()))
+        bool = true;
+        if (bool)
         {
-          bool = true;
-          if (bool)
-          {
-            String str = getPackageName();
-            new StringBuilder(String.valueOf(str).length() + 44 + String.valueOf(paramString).length()).append(str).append(" ").append(paramString).append(": Task already running, won't start another");
-          }
-          return bool;
+          String str = getPackageName();
+          new StringBuilder(String.valueOf(str).length() + 44 + String.valueOf(paramString).length()).append(str).append(" ").append(paramString).append(": Task already running, won't start another");
         }
+        return bool;
       }
       boolean bool = false;
     }
@@ -357,7 +354,7 @@ public abstract class GcmTaskService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.gcm.GcmTaskService
  * JD-Core Version:    0.7.0.1
  */

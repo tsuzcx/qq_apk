@@ -8,25 +8,25 @@ import org.json.JSONObject;
 
 public final class b
 {
-  public String IcA;
-  public boolean IcB;
-  public int IcC;
-  public Bankcard Icy;
-  public String Icz;
-  public boolean sPX;
+  public Bankcard OUK;
+  public String OUL;
+  public String OUM;
+  public boolean OUN;
+  public int OUO;
+  public boolean wvU;
   
   public b(Bankcard paramBankcard)
   {
     AppMethodBeat.i(70578);
-    this.Icy = paramBankcard;
+    this.OUK = paramBankcard;
     try
     {
-      paramBankcard = new JSONObject(this.Icy.field_ext_msg);
-      this.Icz = paramBankcard.optString("information");
-      this.sPX = paramBankcard.optBoolean("verified");
-      this.IcA = paramBankcard.optString("card_expiry");
-      this.IcC = paramBankcard.optInt("cvv_length");
-      this.IcB = paramBankcard.optBoolean("is_credit");
+      paramBankcard = new JSONObject(this.OUK.field_ext_msg);
+      this.OUL = paramBankcard.optString("information");
+      this.wvU = paramBankcard.optBoolean("verified");
+      this.OUM = paramBankcard.optString("card_expiry");
+      this.OUO = paramBankcard.optInt("cvv_length");
+      this.OUN = paramBankcard.optBoolean("is_credit");
       AppMethodBeat.o(70578);
       return;
     }
@@ -37,7 +37,7 @@ public final class b
     }
   }
   
-  public static String bU(JSONObject paramJSONObject)
+  public static String cf(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70577);
     JSONObject localJSONObject = new JSONObject();
@@ -63,7 +63,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.a.b
  * JD-Core Version:    0.7.0.1
  */

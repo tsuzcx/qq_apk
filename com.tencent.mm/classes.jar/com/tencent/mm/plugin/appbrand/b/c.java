@@ -7,16 +7,30 @@ import java.util.HashMap;
 
 public final class c
 {
-  public HashMap<String, a> lbc;
+  public HashMap<String, a> nVl;
   
   public c()
   {
     AppMethodBeat.i(44824);
-    this.lbc = new HashMap();
+    this.nVl = new HashMap();
     AppMethodBeat.o(44824);
   }
   
-  public final a WH(String paramString)
+  public final void a(a parama)
+  {
+    AppMethodBeat.i(44825);
+    if ((parama == null) || (Util.isNullOrNil(parama.fCM)))
+    {
+      Log.e("MicroMsg.AppbrandMediaCdnItemManager", "item is null or local id is null, ignore this add");
+      AppMethodBeat.o(44825);
+      return;
+    }
+    Log.i("MicroMsg.AppbrandMediaCdnItemManager", "add cdn item, local id : %s, file path : %s", new Object[] { parama.fCM, parama.nVa });
+    this.nVl.put(parama.fCM, parama);
+    AppMethodBeat.o(44825);
+  }
+  
+  public final a aes(String paramString)
   {
     AppMethodBeat.i(44826);
     if (Util.isNullOrNil(paramString))
@@ -25,23 +39,9 @@ public final class c
       AppMethodBeat.o(44826);
       return null;
     }
-    paramString = (a)this.lbc.get(paramString);
+    paramString = (a)this.nVl.get(paramString);
     AppMethodBeat.o(44826);
     return paramString;
-  }
-  
-  public final void a(a parama)
-  {
-    AppMethodBeat.i(44825);
-    if ((parama == null) || (Util.isNullOrNil(parama.dJX)))
-    {
-      Log.e("MicroMsg.AppbrandMediaCdnItemManager", "item is null or local id is null, ignore this add");
-      AppMethodBeat.o(44825);
-      return;
-    }
-    Log.i("MicroMsg.AppbrandMediaCdnItemManager", "add cdn item, local id : %s, file path : %s", new Object[] { parama.dJX, parama.laR });
-    this.lbc.put(parama.dJX, parama);
-    AppMethodBeat.o(44825);
   }
 }
 

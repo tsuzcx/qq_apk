@@ -5,23 +5,23 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.q.b;
-import com.tencent.mm.g.a.ql;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.q.b;
+import com.tencent.mm.f.a.rl;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.emoji.g.c;
 import com.tencent.mm.plugin.emoji.g.c.a;
-import com.tencent.mm.plugin.emoji.model.k;
-import com.tencent.mm.protocal.protobuf.ajf;
-import com.tencent.mm.protocal.protobuf.bmr;
-import com.tencent.mm.protocal.protobuf.bms;
-import com.tencent.mm.protocal.protobuf.cgx;
+import com.tencent.mm.plugin.emoji.model.p;
+import com.tencent.mm.protocal.protobuf.ajz;
+import com.tencent.mm.protocal.protobuf.bua;
+import com.tencent.mm.protocal.protobuf.bub;
+import com.tencent.mm.protocal.protobuf.cpt;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
@@ -36,65 +36,68 @@ public final class l
   extends q
   implements m
 {
-  private i heq;
-  private c.a rcV;
-  private boolean rcW;
-  private ql rcX;
-  public String rcq;
-  public final com.tencent.mm.ak.d rr;
+  private i jQg;
+  public final com.tencent.mm.an.d rr;
+  public String uFv;
+  private c.a uGb;
+  private boolean uGc;
+  private rl uGd;
   
   public l(String paramString)
   {
     AppMethodBeat.i(108695);
-    this.rcq = "";
-    this.rcW = false;
-    this.rcX = null;
+    this.uFv = "";
+    this.uGc = false;
+    this.uGd = null;
     d.a locala = new d.a();
-    locala.iLN = new bmr();
-    locala.iLO = new bms();
+    locala.lBU = new bua();
+    locala.lBV = new bub();
     locala.uri = "/cgi-bin/micromsg-bin/getemotiondesc";
     locala.funcId = 521;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    this.rcq = paramString;
-    this.rcX = new ql();
+    this.rr = locala.bgN();
+    this.uFv = paramString;
+    this.uGd = new rl();
     AppMethodBeat.o(108695);
   }
   
   public l(String paramString, c.a parama)
   {
     AppMethodBeat.i(108696);
-    this.rcq = "";
-    this.rcW = false;
-    this.rcX = null;
+    this.uFv = "";
+    this.uGc = false;
+    this.uGd = null;
     d.a locala = new d.a();
-    locala.iLN = new bmr();
-    locala.iLO = new bms();
+    locala.lBU = new bua();
+    locala.lBV = new bub();
     locala.uri = "/cgi-bin/micromsg-bin/getemotiondesc";
     locala.funcId = 521;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    this.rcq = paramString;
-    this.rcV = parama;
-    this.rcW = true;
-    this.rcX = new ql();
+    this.rr = locala.bgN();
+    this.uFv = paramString;
+    this.uGb = parama;
+    this.uGc = true;
+    this.uGd = new rl();
     AppMethodBeat.o(108696);
   }
   
-  private int cGu()
+  private int cVd()
   {
-    return ((bms)this.rr.iLL.iLR).LVu;
+    AppMethodBeat.i(256076);
+    int i = ((bub)d.c.b(this.rr.lBS)).Tee;
+    AppMethodBeat.o(256076);
+    return i;
   }
   
   public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(108697);
-    Log.d("MicroMsg.emoji.NetSceneGetEmotionDesc", "getEmotionDesc %s ", new Object[] { this.rcq });
-    this.heq = parami;
-    ((bmr)this.rr.iLK.iLR).ProductID = this.rcq;
-    if (TextUtils.isEmpty(this.rcq))
+    Log.d("MicroMsg.emoji.NetSceneGetEmotionDesc", "getEmotionDesc %s ", new Object[] { this.uFv });
+    this.jQg = parami;
+    ((bua)d.b.b(this.rr.lBR)).ProductID = this.uFv;
+    if (TextUtils.isEmpty(this.uFv))
     {
       Log.w("MicroMsg.emoji.NetSceneGetEmotionDesc", "get emoji desc faild. product id is null.");
       AppMethodBeat.o(108697);
@@ -118,25 +121,25 @@ public final class l
     int i;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      if (this.rcW) {
-        if ((cGu() & 0x1) == 1) {
-          c.a(this.rcV);
+      if (this.uGc) {
+        if ((cVd() & 0x1) == 1) {
+          c.a(this.uGb);
         }
       }
       for (;;)
       {
-        this.heq.onSceneEnd(paramInt2, paramInt3, paramString, this);
+        this.jQg.onSceneEnd(paramInt2, paramInt3, paramString, this);
         AppMethodBeat.o(108698);
         return;
         Log.i("MicroMsg.emoji.NetSceneGetEmotionDesc", "new emotion is can't download. ignore");
         continue;
-        paramArrayOfByte = ((bms)this.rr.iLL.iLR).oTA;
-        locale = k.getEmojiStorageMgr().OpP;
-        localObject1 = this.rcq;
-        paramInt1 = ((bms)this.rr.iLL.iLR).LVs;
-        i = cGu();
-        if (locale.OsE != null) {
-          locale.OsE.edit().putLong("274544".concat(String.valueOf(localObject1)), System.currentTimeMillis()).commit();
+        paramArrayOfByte = ((bub)d.c.b(this.rr.lBS)).rVy;
+        locale = p.getEmojiStorageMgr().VFJ;
+        localObject1 = this.uFv;
+        paramInt1 = ((bub)d.c.b(this.rr.lBS)).Tec;
+        i = cVd();
+        if (locale.VID != null) {
+          locale.VID.edit().putLong("274544".concat(String.valueOf(localObject1)), System.currentTimeMillis()).commit();
         }
         if ((paramArrayOfByte != null) && (paramArrayOfByte.size() > 0)) {
           break;
@@ -145,9 +148,9 @@ public final class l
         if ((paramArrayOfByte == null) || (paramArrayOfByte.size() <= 0)) {
           break label538;
         }
-        Log.i("MicroMsg.emoji.NetSceneGetEmotionDesc", "end getEmojiDesc, productId: %s ", new Object[] { this.rcq });
-        this.rcX.dWU.productId = this.rcq;
-        EventCenter.instance.publish(this.rcX);
+        Log.i("MicroMsg.emoji.NetSceneGetEmotionDesc", "end getEmojiDesc, productId: %s ", new Object[] { this.uFv });
+        this.uGd.fQG.productId = this.uFv;
+        EventCenter.instance.publish(this.uGd);
       }
       params = null;
       if (!(locale.db instanceof h)) {
@@ -174,13 +177,13 @@ public final class l
           if (!((Iterator)localObject1).hasNext()) {
             break;
           }
-          localObject2 = (ajf)((Iterator)localObject1).next();
-          locald.field_md5 = ((ajf)localObject2).Md5;
-          localObject2 = ((ajf)localObject2).oTA.iterator();
+          localObject2 = (ajz)((Iterator)localObject1).next();
+          locald.field_md5 = ((ajz)localObject2).Md5;
+          localObject2 = ((ajz)localObject2).rVy.iterator();
         }
-        localObject3 = (cgx)((Iterator)localObject2).next();
-        locald.field_desc = ((cgx)localObject3).Desc;
-        locald.field_lang = ((cgx)localObject3).xLl;
+        localObject3 = (cpt)((Iterator)localObject2).next();
+        locald.field_desc = ((cpt)localObject3).CMB;
+        locald.field_lang = ((cpt)localObject3).CPt;
         locald.field_md5_lang = (locald.field_md5 + locald.field_lang);
         localObject3 = locald.convertTo();
       } while (locale.db.replace("EmojiInfoDesc", "md5_lang", (ContentValues)localObject3) >= 0L);
@@ -196,8 +199,8 @@ public final class l
       params.endTransaction(l);
       break label179;
       break;
-      Log.i("MicroMsg.emoji.NetSceneGetEmotionDesc", "end getEmojiDesc, & errType:%d, errCode:%d, productId: %s ", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), this.rcq });
-      if (!this.rcW) {
+      Log.i("MicroMsg.emoji.NetSceneGetEmotionDesc", "end getEmojiDesc, & errType:%d, errCode:%d, productId: %s ", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), this.uFv });
+      if (!this.uGc) {
         break;
       }
       Log.i("MicroMsg.emoji.NetSceneGetEmotionDesc", "new emotion get des failed. ignore");
@@ -212,12 +215,12 @@ public final class l
   
   public final q.b securityVerificationChecked(s params)
   {
-    return q.b.iMq;
+    return q.b.lCx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.f.l
  * JD-Core Version:    0.7.0.1
  */

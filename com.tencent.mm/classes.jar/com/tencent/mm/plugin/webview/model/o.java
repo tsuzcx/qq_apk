@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bjt;
-import com.tencent.mm.protocal.protobuf.bju;
+import com.tencent.mm.protocal.protobuf.brc;
+import com.tencent.mm.protocal.protobuf.brd;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Map;
 
@@ -26,21 +26,21 @@ public final class o
   {
     AppMethodBeat.i(78882);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new bjt();
-    ((d.a)localObject).iLO = new bju();
+    ((d.a)localObject).lBU = new brc();
+    ((d.a)localObject).lBV = new brd();
     ((d.a)localObject).uri = "/cgi-bin/mmocbiz-bin/getbizjsapiredirecturl";
     ((d.a)localObject).funcId = 1393;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (bjt)this.rr.iLK.iLR;
-    ((bjt)localObject).Lpg = paramString1;
-    ((bjt)localObject).KXJ = paramString2;
-    ((bjt)localObject).LTm = ((String)paramMap.get("groupId"));
-    ((bjt)localObject).HXc = ((String)paramMap.get("timestamp"));
-    ((bjt)localObject).qcM = ((String)paramMap.get("nonceStr"));
-    ((bjt)localObject).signature = ((String)paramMap.get("signature"));
-    ((bjt)localObject).LTn = paramMap.get("params").toString();
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (brc)d.b.b(this.rr.lBR);
+    ((brc)localObject).SqC = paramString1;
+    ((brc)localObject).RYS = paramString2;
+    ((brc)localObject).MFH = ((String)paramMap.get("groupId"));
+    ((brc)localObject).OPc = ((String)paramMap.get("timestamp"));
+    ((brc)localObject).tyJ = ((String)paramMap.get("nonceStr"));
+    ((brc)localObject).signature = ((String)paramMap.get("signature"));
+    ((brc)localObject).TbX = paramMap.get("params").toString();
     AppMethodBeat.o(78882);
   }
   
@@ -54,11 +54,16 @@ public final class o
     return i;
   }
   
-  public final bju gcv()
+  public final brd gVq()
   {
-    if ((this.rr != null) && (this.rr.iLL.iLR != null)) {
-      return (bju)this.rr.iLL.iLR;
+    AppMethodBeat.i(267731);
+    if ((this.rr != null) && (d.c.b(this.rr.lBS) != null))
+    {
+      brd localbrd = (brd)d.c.b(this.rr.lBS);
+      AppMethodBeat.o(267731);
+      return localbrd;
     }
+    AppMethodBeat.o(267731);
     return null;
   }
   

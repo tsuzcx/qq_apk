@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:gravity="center" android:orientation="vertical" android:background="@color/ac_" android:layout_width="wrap_content" android:layout_height="@dimen/cc" android:layout_marginTop="@dimen/a4s" android:layout_marginBottom="@dimen/a4s"
+<androidx.constraintlayout.widget.ConstraintLayout android:gravity="center" android:orientation="vertical" android:background="@color/ac_" android:paddingLeft="@dimen/ct" android:paddingTop="@dimen/c5" android:paddingBottom="@dimen/c5" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView android:textSize="@dimen/bd" android:textColor="@color/l4" android:ellipsize="end" android:gravity="center" android:id="@id/ifz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
-</android.support.constraint.ConstraintLayout>
+    <ImageView android:id="@id/ifw" android:visibility="invisible" android:layout_width="@dimen/ct" android:layout_height="@dimen/ct" android:layout_marginTop="-4.0dip" app:layout_constraintLeft_toRightOf="@id/ifz" app:layout_constraintTop_toTopOf="@id/ifz" />
+</androidx.constraintlayout.widget.ConstraintLayout>

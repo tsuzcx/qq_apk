@@ -8,58 +8,58 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a
 {
-  private static a iui;
-  public static boolean iuj;
-  public String dUb;
-  public int iuk;
-  public int iul;
-  public int ium;
-  public double iun;
-  public int iuo;
+  private static a ljr;
+  public static boolean ljs;
+  public String fND;
+  public int ljt;
+  public int lju;
+  public int ljv;
+  public double ljw;
+  public int ljx;
   public Class<?> targetClass;
   
   static
   {
     AppMethodBeat.i(156507);
-    iui = new a();
-    iuj = false;
+    ljr = new a();
+    ljs = false;
     AppMethodBeat.o(156507);
   }
   
   public a()
   {
     AppMethodBeat.i(156505);
-    this.iuk = 10485760;
-    this.iul = 3;
-    this.ium = 2000;
-    this.iun = 0.15D;
-    this.iuo = 3;
-    this.dUb = "default";
+    this.ljt = 10485760;
+    this.lju = 3;
+    this.ljv = 2000;
+    this.ljw = 0.15D;
+    this.ljx = 3;
+    this.fND = "default";
     int i = ((ActivityManager)MMApplicationContext.getContext().getSystemService("activity")).getLargeMemoryClass();
     Log.i("MicroMsg.CacheInvoke", "BitmapPool %dMB", new Object[] { Integer.valueOf(i) });
     if (i >= 512) {
-      this.iuk = 62914560;
+      this.ljt = 62914560;
     }
     for (;;)
     {
       this.targetClass = com.tencent.mm.memory.a.a.a.class;
-      this.iul = 3;
-      this.ium = 2000;
-      this.iuo = 3;
-      this.iun = 0.15D;
+      this.lju = 3;
+      this.ljv = 2000;
+      this.ljx = 3;
+      this.ljw = 0.15D;
       AppMethodBeat.o(156505);
       return;
       if (i >= 256) {
-        this.iuk = 31457280;
+        this.ljt = 31457280;
       } else {
-        this.iuk = 15728640;
+        this.ljt = 15728640;
       }
     }
   }
   
-  public static a aSp()
+  public static a bbm()
   {
-    return iui;
+    return ljr;
   }
   
   public final boolean equals(Object paramObject)
@@ -67,7 +67,7 @@ public final class a
     AppMethodBeat.i(156506);
     if ((paramObject instanceof a))
     {
-      bool = this.dUb.equals(((a)paramObject).dUb);
+      bool = this.fND.equals(((a)paramObject).fND);
       AppMethodBeat.o(156506);
       return bool;
     }

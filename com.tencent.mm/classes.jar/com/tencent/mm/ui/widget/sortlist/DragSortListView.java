@@ -8,7 +8,6 @@ import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.os.SystemClock;
 import android.util.AttributeSet;
-import android.util.SparseIntArray;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
@@ -21,97 +20,96 @@ import android.widget.Checkable;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ck.a.a;
-import java.util.ArrayList;
+import com.tencent.mm.cr.a.k;
 
 public class DragSortListView
   extends ListView
 {
-  private float QWA;
-  private float QWB;
-  private int QWC;
-  private int QWD;
-  private float QWE;
-  private float QWF;
-  private float QWG;
-  private float QWH;
-  private float QWI;
-  private c QWJ;
-  private int QWK;
-  private int QWL;
-  private boolean QWM;
-  boolean QWN;
-  i QWO;
-  private MotionEvent QWP;
-  private int QWQ;
-  private float QWR;
-  private float QWS;
-  private a QWT;
-  private boolean QWU;
-  private DragSortListView.f QWV;
-  private boolean QWW;
-  private boolean QWX;
-  private j QWY;
-  private k QWZ;
-  private Point QWd;
-  private Point QWe;
-  private int QWf;
-  private boolean QWg;
-  private float QWh;
-  private float QWi;
-  private int QWj;
-  private int QWk;
-  private int QWl;
-  private boolean QWm;
-  private int QWn;
-  private int QWo;
-  private int QWp;
-  private b QWq;
-  private h QWr;
-  private l QWs;
-  boolean QWt;
-  private int QWu;
-  private int QWv;
-  private int QWw;
-  private int QWx;
-  private View[] QWy;
-  private d QWz;
-  private g QXa;
-  private boolean QXb;
-  private float QXc;
-  boolean QXd;
-  private boolean QXe;
-  private int Wx;
+  private int CD;
+  private int CE;
+  private int CL;
+  private int CM;
+  private int Rh;
+  private Point YuN;
+  private Point YuO;
+  private int YuP;
+  private boolean YuQ;
+  private float YuR;
+  private float YuS;
+  private int YuT;
+  private int YuU;
+  private int YuV;
+  private boolean YuW;
+  private int YuX;
+  private int YuY;
+  private int YuZ;
+  private int YvA;
+  private float YvB;
+  private float YvC;
+  private a YvD;
+  private boolean YvE;
+  private DragSortListView.f YvF;
+  private boolean YvG;
+  private boolean YvH;
+  private DragSortListView.j YvI;
+  private k YvJ;
+  private g YvK;
+  private boolean YvL;
+  private float YvM;
+  boolean YvN;
+  private boolean YvO;
+  private DragSortListView.b Yva;
+  private DragSortListView.h Yvb;
+  private DragSortListView.l Yvc;
+  boolean Yvd;
+  private int Yve;
+  private int Yvf;
+  private int Yvg;
+  private int Yvh;
+  private View[] Yvi;
+  private d Yvj;
+  private float Yvk;
+  private float Yvl;
+  private int Yvm;
+  private int Yvn;
+  private float Yvo;
+  private float Yvp;
+  private float Yvq;
+  private float Yvr;
+  private float Yvs;
+  private c Yvt;
+  private int Yvu;
+  private int Yvv;
+  private boolean Yvw;
+  boolean Yvx;
+  i Yvy;
+  private MotionEvent Yvz;
   private DataSetObserver mObserver;
-  private int mOffsetX;
-  private int mOffsetY;
-  private int mX;
-  private int mY;
-  private int nrK;
-  private int nrL;
-  private View ooN;
+  private int qtC;
+  private int qtD;
+  private View rqz;
   
   public DragSortListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159791);
-    this.QWd = new Point();
-    this.QWe = new Point();
-    this.QWg = false;
-    this.QWh = 1.0F;
-    this.QWi = 1.0F;
-    this.QWm = false;
-    this.QWt = true;
-    this.Wx = 0;
-    this.QWu = 1;
-    this.QWx = 0;
-    this.QWy = new View[1];
-    this.QWA = 0.3333333F;
-    this.QWB = 0.3333333F;
-    this.QWI = 0.5F;
-    this.QWJ = new c()
+    this.YuN = new Point();
+    this.YuO = new Point();
+    this.YuQ = false;
+    this.YuR = 1.0F;
+    this.YuS = 1.0F;
+    this.YuW = false;
+    this.Yvd = true;
+    this.Rh = 0;
+    this.Yve = 1;
+    this.Yvh = 0;
+    this.Yvi = new View[1];
+    this.Yvk = 0.3333333F;
+    this.Yvl = 0.3333333F;
+    this.Yvs = 0.5F;
+    this.Yvt = new c()
     {
-      public final float cD(float paramAnonymousFloat)
+      public final float cY(float paramAnonymousFloat)
       {
         AppMethodBeat.i(159754);
         float f = DragSortListView.a(DragSortListView.this);
@@ -119,79 +117,79 @@ public class DragSortListView
         return f * paramAnonymousFloat;
       }
     };
-    this.QWL = 0;
-    this.QWM = false;
-    this.QWN = false;
-    this.QWO = null;
-    this.QWQ = 0;
-    this.QWR = 0.25F;
-    this.QWS = 0.0F;
-    this.QWU = false;
-    this.QWW = false;
-    this.QWX = false;
-    this.QWY = new j((byte)0);
-    this.QXc = 0.0F;
-    this.QXd = false;
-    this.QXe = false;
+    this.Yvv = 0;
+    this.Yvw = false;
+    this.Yvx = false;
+    this.Yvy = null;
+    this.YvA = 0;
+    this.YvB = 0.25F;
+    this.YvC = 0.0F;
+    this.YvE = false;
+    this.YvG = false;
+    this.YvH = false;
+    this.YvI = new DragSortListView.j(this, (byte)0);
+    this.YvM = 0.0F;
+    this.YvN = false;
+    this.YvO = false;
     int j = 150;
     int i = 150;
     if (paramAttributeSet != null)
     {
-      paramContext = getContext().obtainStyledAttributes(paramAttributeSet, a.a.DragSortListView, 0, 0);
-      this.QWu = Math.max(1, paramContext.getDimensionPixelSize(1, 1));
-      this.QWU = paramContext.getBoolean(16, false);
-      if (this.QWU) {
-        this.QWV = new DragSortListView.f(this);
+      paramContext = getContext().obtainStyledAttributes(paramAttributeSet, a.k.DragSortListView, 0, 0);
+      this.Yve = Math.max(1, paramContext.getDimensionPixelSize(a.k.DragSortListView_collapsed_height, 1));
+      this.YvE = paramContext.getBoolean(a.k.DragSortListView_track_drag_sort, false);
+      if (this.YvE) {
+        this.YvF = new DragSortListView.f(this);
       }
-      this.QWh = paramContext.getFloat(8, this.QWh);
-      this.QWi = this.QWh;
-      this.QWt = paramContext.getBoolean(2, this.QWt);
-      this.QWR = Math.max(0.0F, Math.min(1.0F, 1.0F - paramContext.getFloat(14, 0.75F)));
-      if (this.QWR <= 0.0F) {
-        break label603;
+      this.YuR = paramContext.getFloat(a.k.DragSortListView_float_alpha, this.YuR);
+      this.YuS = this.YuR;
+      this.Yvd = paramContext.getBoolean(a.k.DragSortListView_drag_enabled, this.Yvd);
+      this.YvB = Math.max(0.0F, Math.min(1.0F, 1.0F - paramContext.getFloat(a.k.DragSortListView_slide_shuffle_speed, 0.75F)));
+      if (this.YvB <= 0.0F) {
+        break label628;
       }
     }
-    label603:
+    label628:
     for (boolean bool1 = true;; bool1 = false)
     {
-      this.QWm = bool1;
-      setDragScrollStart(paramContext.getFloat(4, this.QWA));
-      this.QWI = paramContext.getFloat(10, this.QWI);
-      j = paramContext.getInt(11, 150);
-      i = paramContext.getInt(6, 150);
-      if (paramContext.getBoolean(17, true))
+      this.YuW = bool1;
+      setDragScrollStart(paramContext.getFloat(a.k.DragSortListView_drag_scroll_start, this.Yvk));
+      this.Yvs = paramContext.getFloat(a.k.DragSortListView_max_drag_scroll_speed, this.Yvs);
+      j = paramContext.getInt(a.k.DragSortListView_remove_animation_duration, 150);
+      i = paramContext.getInt(a.k.DragSortListView_drop_animation_duration, 150);
+      if (paramContext.getBoolean(a.k.DragSortListView_use_default_controller, true))
       {
-        bool1 = paramContext.getBoolean(12, false);
-        int k = paramContext.getInt(13, 1);
-        boolean bool2 = paramContext.getBoolean(15, true);
-        int m = paramContext.getInt(5, 0);
-        int n = paramContext.getResourceId(3, 0);
-        int i1 = paramContext.getResourceId(7, 0);
-        int i2 = paramContext.getResourceId(0, 0);
-        int i3 = paramContext.getColor(9, -16777216);
+        bool1 = paramContext.getBoolean(a.k.DragSortListView_remove_enabled, false);
+        int k = paramContext.getInt(a.k.DragSortListView_remove_mode, 1);
+        boolean bool2 = paramContext.getBoolean(a.k.DragSortListView_sort_enabled, true);
+        int m = paramContext.getInt(a.k.DragSortListView_drag_start_mode, 0);
+        int n = paramContext.getResourceId(a.k.DragSortListView_drag_handle_id, 0);
+        int i1 = paramContext.getResourceId(a.k.DragSortListView_fling_handle_id, 0);
+        int i2 = paramContext.getResourceId(a.k.DragSortListView_click_remove_id, 0);
+        int i3 = paramContext.getColor(a.k.DragSortListView_float_background_color, -16777216);
         paramAttributeSet = new a(this, n, m, k, i2, i1);
-        paramAttributeSet.QVM = bool1;
-        paramAttributeSet.QVL = bool2;
-        paramAttributeSet.QXK = i3;
-        this.QWO = paramAttributeSet;
+        paramAttributeSet.Yuw = bool1;
+        paramAttributeSet.Yuv = bool2;
+        paramAttributeSet.Yws = i3;
+        this.Yvy = paramAttributeSet;
         setOnTouchListener(paramAttributeSet);
       }
       paramContext.recycle();
-      this.QWz = new d();
+      this.Yvj = new d();
       if (j > 0) {
-        this.QWZ = new k(j, (byte)0);
+        this.YvJ = new k(j, (byte)0);
       }
       if (i > 0) {
-        this.QXa = new g(i, (byte)0);
+        this.YvK = new g(i, (byte)0);
       }
-      this.QWP = MotionEvent.obtain(0L, 0L, 3, 0.0F, 0.0F, 0.0F, 0.0F, 0, 0.0F, 0.0F, 0, 0);
+      this.Yvz = MotionEvent.obtain(0L, 0L, 3, 0.0F, 0.0F, 0.0F, 0.0F, 0, 0.0F, 0.0F, 0, 0);
       this.mObserver = new DataSetObserver()
       {
         private void cancel()
         {
           AppMethodBeat.i(159755);
           if (DragSortListView.b(DragSortListView.this) == 4) {
-            DragSortListView.this.hcC();
+            DragSortListView.this.idS();
           }
           AppMethodBeat.o(159755);
         }
@@ -218,36 +216,36 @@ public class DragSortListView
   private void D(int paramInt, float paramFloat)
   {
     AppMethodBeat.i(159800);
-    if ((this.Wx == 0) || (this.Wx == 4))
+    if ((this.Rh == 0) || (this.Rh == 4))
     {
-      if (this.Wx == 0)
+      if (this.Rh == 0)
       {
-        this.QWn = (getHeaderViewsCount() + paramInt);
-        this.QWk = this.QWn;
-        this.QWl = this.QWn;
-        this.QWj = this.QWn;
-        View localView = getChildAt(this.QWn - getFirstVisiblePosition());
+        this.YuX = (getHeaderViewsCount() + paramInt);
+        this.YuU = this.YuX;
+        this.YuV = this.YuX;
+        this.YuT = this.YuX;
+        View localView = getChildAt(this.YuX - getFirstVisiblePosition());
         if (localView != null) {
           localView.setVisibility(4);
         }
       }
-      this.Wx = 1;
-      this.QXc = paramFloat;
-      if (this.QWN) {
-        switch (this.QWQ)
+      this.Rh = 1;
+      this.YvM = paramFloat;
+      if (this.Yvx) {
+        switch (this.YvA)
         {
         }
       }
-      while (this.QWZ != null)
+      while (this.YvJ != null)
       {
-        this.QWZ.start();
+        this.YvJ.start();
         AppMethodBeat.o(159800);
         return;
-        super.onTouchEvent(this.QWP);
+        super.onTouchEvent(this.Yvz);
         continue;
-        super.onInterceptTouchEvent(this.QWP);
+        super.onInterceptTouchEvent(this.Yvz);
       }
-      apw(paramInt);
+      ayU(paramInt);
     }
     AppMethodBeat.o(159800);
   }
@@ -255,29 +253,29 @@ public class DragSortListView
   private int a(int paramInt1, View paramView, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(159820);
-    int i = apx(paramInt1);
+    int i = ayV(paramInt1);
     int m = paramView.getHeight();
-    int n = lO(paramInt1, i);
+    int n = ne(paramInt1, i);
     int j;
-    if (paramInt1 != this.QWn)
+    if (paramInt1 != this.YuX)
     {
       j = m - i;
       i = n - i;
     }
     for (;;)
     {
-      int i1 = this.QWv;
+      int i1 = this.Yvf;
       int k = i1;
-      if (this.QWn != this.QWk)
+      if (this.YuX != this.YuU)
       {
         k = i1;
-        if (this.QWn != this.QWl) {
-          k = i1 - this.QWu;
+        if (this.YuX != this.YuV) {
+          k = i1 - this.Yve;
         }
       }
       if (paramInt1 <= paramInt2)
       {
-        if (paramInt1 <= this.QWk) {
+        if (paramInt1 <= this.YuU) {
           break label208;
         }
         paramInt1 = k - i + 0;
@@ -288,17 +286,17 @@ public class DragSortListView
         return paramInt1;
         if (paramInt1 == paramInt3)
         {
-          if (paramInt1 <= this.QWk) {
+          if (paramInt1 <= this.YuU) {
             paramInt1 = j - k + 0;
-          } else if (paramInt1 == this.QWl) {
+          } else if (paramInt1 == this.YuV) {
             paramInt1 = m - n + 0;
           } else {
             paramInt1 = j + 0;
           }
         }
-        else if (paramInt1 <= this.QWk) {
+        else if (paramInt1 <= this.YuU) {
           paramInt1 = 0 - k;
-        } else if (paramInt1 == this.QWl) {
+        } else if (paramInt1 == this.YuV) {
           paramInt1 = 0 - i;
         } else {
           label208:
@@ -327,7 +325,7 @@ public class DragSortListView
         j = getPaddingLeft();
         k = getWidth() - getPaddingRight();
         i = localViewGroup.getChildAt(0).getHeight();
-        if (paramInt <= this.QWn) {
+        if (paramInt <= this.YuX) {
           break label140;
         }
         i += localViewGroup.getTop();
@@ -354,7 +352,7 @@ public class DragSortListView
     AppMethodBeat.i(159815);
     ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
     int i;
-    if ((paramInt != this.QWn) && (paramInt != this.QWk) && (paramInt != this.QWl))
+    if ((paramInt != this.YuX) && (paramInt != this.YuU) && (paramInt != this.YuV))
     {
       i = -2;
       if (i != localLayoutParams.height)
@@ -362,9 +360,9 @@ public class DragSortListView
         localLayoutParams.height = i;
         paramView.setLayoutParams(localLayoutParams);
       }
-      if ((paramInt == this.QWk) || (paramInt == this.QWl))
+      if ((paramInt == this.YuU) || (paramInt == this.YuV))
       {
-        if (paramInt >= this.QWn) {
+        if (paramInt >= this.YuX) {
           break label163;
         }
         ((b)paramView).setGravity(80);
@@ -375,10 +373,10 @@ public class DragSortListView
       int k = paramView.getVisibility();
       int j = 0;
       i = j;
-      if (paramInt == this.QWn)
+      if (paramInt == this.YuX)
       {
         i = j;
-        if (this.ooN != null) {
+        if (this.rqz != null) {
           i = 4;
         }
       }
@@ -390,13 +388,34 @@ public class DragSortListView
       i = c(paramInt, paramView, paramBoolean);
       break;
       label163:
-      if (paramInt > this.QWn) {
+      if (paramInt > this.YuX) {
         ((b)paramView).setGravity(48);
       }
     }
   }
   
-  private int apv(int paramInt)
+  private void aG(MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(159809);
+    int i = paramMotionEvent.getAction() & 0xFF;
+    if (i != 0)
+    {
+      this.qtC = this.CD;
+      this.qtD = this.CE;
+    }
+    this.CD = ((int)paramMotionEvent.getX());
+    this.CE = ((int)paramMotionEvent.getY());
+    if (i == 0)
+    {
+      this.qtC = this.CD;
+      this.qtD = this.CE;
+    }
+    this.CL = ((int)paramMotionEvent.getRawX() - this.CD);
+    this.CM = ((int)paramMotionEvent.getRawY() - this.CE);
+    AppMethodBeat.o(159809);
+  }
+  
+  private int ayT(int paramInt)
   {
     AppMethodBeat.i(159795);
     View localView = getChildAt(paramInt - getFirstVisiblePosition());
@@ -406,35 +425,35 @@ public class DragSortListView
       AppMethodBeat.o(159795);
       return paramInt;
     }
-    paramInt = lO(paramInt, apx(paramInt));
+    paramInt = ne(paramInt, ayV(paramInt));
     AppMethodBeat.o(159795);
     return paramInt;
   }
   
-  private void apw(int paramInt)
+  private void ayU(int paramInt)
   {
     AppMethodBeat.i(159803);
-    this.Wx = 1;
-    if (this.QWs != null) {
-      this.QWs.remove(paramInt);
+    this.Rh = 1;
+    if (this.Yvc != null) {
+      this.Yvc.remove(paramInt);
     }
-    hcM();
-    hcF();
-    hcD();
-    if (this.QWN)
+    iec();
+    idV();
+    idT();
+    if (this.Yvx)
     {
-      this.Wx = 3;
+      this.Rh = 3;
       AppMethodBeat.o(159803);
       return;
     }
-    this.Wx = 0;
+    this.Rh = 0;
     AppMethodBeat.o(159803);
   }
   
-  private int apx(int paramInt)
+  private int ayV(int paramInt)
   {
     AppMethodBeat.i(159816);
-    if (paramInt == this.QWn)
+    if (paramInt == this.YuX)
     {
       AppMethodBeat.o(159816);
       return 0;
@@ -446,7 +465,7 @@ public class DragSortListView
       AppMethodBeat.o(159816);
       return paramInt;
     }
-    int i = this.QWY.get(paramInt);
+    int i = this.YvI.get(paramInt);
     if (i != -1)
     {
       AppMethodBeat.o(159816);
@@ -455,53 +474,32 @@ public class DragSortListView
     localObject = getAdapter();
     i = ((ListAdapter)localObject).getItemViewType(paramInt);
     int j = ((ListAdapter)localObject).getViewTypeCount();
-    if (j != this.QWy.length) {
-      this.QWy = new View[j];
+    if (j != this.Yvi.length) {
+      this.Yvi = new View[j];
     }
     if (i >= 0) {
-      if (this.QWy[i] == null)
+      if (this.Yvi[i] == null)
       {
         localObject = ((ListAdapter)localObject).getView(paramInt, null, this);
-        this.QWy[i] = localObject;
+        this.Yvi[i] = localObject;
       }
     }
     for (;;)
     {
       i = b(paramInt, (View)localObject, true);
-      this.QWY.add(paramInt, i);
+      this.YvI.nf(paramInt, i);
       AppMethodBeat.o(159816);
       return i;
-      localObject = ((ListAdapter)localObject).getView(paramInt, this.QWy[i], this);
+      localObject = ((ListAdapter)localObject).getView(paramInt, this.Yvi[i], this);
       continue;
       localObject = ((ListAdapter)localObject).getView(paramInt, null, this);
     }
   }
   
-  private void ay(MotionEvent paramMotionEvent)
-  {
-    AppMethodBeat.i(159809);
-    int i = paramMotionEvent.getAction() & 0xFF;
-    if (i != 0)
-    {
-      this.nrK = this.mX;
-      this.nrL = this.mY;
-    }
-    this.mX = ((int)paramMotionEvent.getX());
-    this.mY = ((int)paramMotionEvent.getY());
-    if (i == 0)
-    {
-      this.nrK = this.mX;
-      this.nrL = this.mY;
-    }
-    this.mOffsetX = ((int)paramMotionEvent.getRawX() - this.mX);
-    this.mOffsetY = ((int)paramMotionEvent.getRawY() - this.mY);
-    AppMethodBeat.o(159809);
-  }
-  
   private int b(int paramInt, View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(159817);
-    if (paramInt == this.QWn)
+    if (paramInt == this.YuX)
     {
       AppMethodBeat.o(159817);
       return 0;
@@ -526,7 +524,7 @@ public class DragSortListView
     paramInt = localView.getHeight();
     if ((paramInt == 0) || (paramBoolean))
     {
-      hz(localView);
+      iV(localView);
       paramInt = localView.getMeasuredHeight();
     }
     AppMethodBeat.o(159817);
@@ -536,7 +534,7 @@ public class DragSortListView
   private int c(int paramInt, View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(159818);
-    paramInt = lO(paramInt, b(paramInt, paramView, paramBoolean));
+    paramInt = ne(paramInt, b(paramInt, paramView, paramBoolean));
     AppMethodBeat.o(159818);
     return paramInt;
   }
@@ -544,44 +542,44 @@ public class DragSortListView
   private void d(int paramInt, View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(159827);
-    this.QWW = true;
-    hcL();
-    int i = this.QWk;
-    int j = this.QWl;
-    boolean bool = hcB();
+    this.YvG = true;
+    ieb();
+    int i = this.YuU;
+    int j = this.YuV;
+    boolean bool = idR();
     if (bool)
     {
-      hcI();
+      idY();
       setSelectionFromTop(paramInt, a(paramInt, paramView, i, j) + paramView.getTop() - getPaddingTop());
       layoutChildren();
     }
     if ((bool) || (paramBoolean)) {
       invalidate();
     }
-    this.QWW = false;
+    this.YvG = false;
     AppMethodBeat.o(159827);
   }
   
-  private boolean e(boolean paramBoolean, float paramFloat)
+  private boolean f(boolean paramBoolean, float paramFloat)
   {
     AppMethodBeat.i(159806);
-    if (this.ooN != null)
+    if (this.rqz != null)
     {
-      this.QWz.hcN();
+      this.Yvj.ied();
       if (paramBoolean) {
-        D(this.QWn - getHeaderViewsCount(), paramFloat);
+        D(this.YuX - getHeaderViewsCount(), paramFloat);
       }
       for (;;)
       {
-        if (this.QWU) {
-          this.QWV.stopTracking();
+        if (this.YvE) {
+          this.YvF.stopTracking();
         }
         AppMethodBeat.o(159806);
         return true;
-        if (this.QXa != null) {
-          this.QXa.start();
+        if (this.YvK != null) {
+          this.YvK.start();
         } else {
-          hcE();
+          idU();
         }
       }
     }
@@ -589,12 +587,32 @@ public class DragSortListView
     return false;
   }
   
-  private boolean hcB()
+  private void iV(View paramView)
+  {
+    AppMethodBeat.i(159821);
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    Object localObject = localLayoutParams;
+    if (localLayoutParams == null)
+    {
+      localObject = new AbsListView.LayoutParams(-1, -2);
+      paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    int j = ViewGroup.getChildMeasureSpec(this.Yvh, getListPaddingLeft() + getListPaddingRight(), ((ViewGroup.LayoutParams)localObject).width);
+    if (((ViewGroup.LayoutParams)localObject).height > 0) {}
+    for (int i = View.MeasureSpec.makeMeasureSpec(((ViewGroup.LayoutParams)localObject).height, 1073741824);; i = View.MeasureSpec.makeMeasureSpec(0, 0))
+    {
+      paramView.measure(j, i);
+      AppMethodBeat.o(159821);
+      return;
+    }
+  }
+  
+  private boolean idR()
   {
     boolean bool2 = true;
     AppMethodBeat.i(159797);
     int j = getFirstVisiblePosition();
-    int i = this.QWk;
+    int i = this.YuU;
     View localView2 = getChildAt(i - j);
     View localView1 = localView2;
     if (localView2 == null)
@@ -604,12 +622,12 @@ public class DragSortListView
     }
     int i2 = localView1.getTop();
     int i1 = localView1.getHeight();
-    j = lN(i, i2);
+    j = nd(i, i2);
     int i3 = getDividerHeight();
     int k;
     int m;
     int n;
-    if (this.QWf < j)
+    if (this.YuP < j)
     {
       k = j;
       m = i;
@@ -621,7 +639,7 @@ public class DragSortListView
         break label662;
       }
       i1 = m - 1;
-      i = apv(i1);
+      i = ayT(i1);
       if (i1 == 0)
       {
         i = i2 - i3 - i;
@@ -633,35 +651,35 @@ public class DragSortListView
       label154:
       n = getHeaderViewsCount();
       i3 = getFooterViewsCount();
-      i1 = this.QWk;
-      i2 = this.QWl;
-      float f1 = this.QWS;
+      i1 = this.YuU;
+      i2 = this.YuV;
+      float f1 = this.YvC;
       int i4;
       label207:
       float f2;
-      if (this.QWm)
+      if (this.YuW)
       {
         i4 = Math.abs(i - j);
-        if (this.QWf < i)
+        if (this.YuP < i)
         {
-          m = (int)(this.QWR * 0.5F * i4);
+          m = (int)(this.YvB * 0.5F * i4);
           f2 = m;
           j += m;
-          if (this.QWf >= j) {
+          if (this.YuP >= j) {
             break label552;
           }
-          this.QWk = (k - 1);
-          this.QWl = k;
-          this.QWS = ((j - this.QWf) * 0.5F / f2);
+          this.YuU = (k - 1);
+          this.YuV = k;
+          this.YvC = ((j - this.YuP) * 0.5F / f2);
           label272:
-          if (this.QWk >= n) {
+          if (this.YuU >= n) {
             break label613;
           }
-          this.QWk = n;
-          this.QWl = n;
+          this.YuU = n;
+          this.YuV = n;
           k = n;
           label297:
-          if ((this.QWk == i1) && (this.QWl == i2) && (Math.abs(this.QWS - f1) <= 0.0F)) {
+          if ((this.YuU == i1) && (this.YuV == i2) && (Math.abs(this.YvC - f1) <= 0.0F)) {
             break label656;
           }
         }
@@ -669,9 +687,9 @@ public class DragSortListView
       label656:
       for (boolean bool1 = true;; bool1 = false)
       {
-        if (k != this.QWj)
+        if (k != this.YuT)
         {
-          this.QWj = k;
+          this.YuT = k;
           bool1 = bool2;
         }
         for (;;)
@@ -679,10 +697,10 @@ public class DragSortListView
           AppMethodBeat.o(159797);
           return bool1;
           i2 -= i + i3;
-          m = lN(i1, i2);
+          m = nd(i1, i2);
           i = m;
           k = i1;
-          if (this.QWf >= m) {
+          if (this.YuP >= m) {
             break label154;
           }
           j = m;
@@ -709,11 +727,11 @@ public class DragSortListView
               break;
             }
             i2 += i3 + i1;
-            i1 = apv(m + 1);
-            n = lN(m + 1, i2);
+            i1 = ayT(m + 1);
+            n = nd(m + 1, i2);
             i = n;
             k = m;
-            if (this.QWf < n) {
+            if (this.YuP < n) {
               break;
             }
             m += 1;
@@ -725,23 +743,23 @@ public class DragSortListView
           j = m;
           break label207;
           label552:
-          if (this.QWf >= i - m)
+          if (this.YuP >= i - m)
           {
-            this.QWk = k;
-            this.QWl = (k + 1);
-            this.QWS = ((1.0F + (i - this.QWf) / f2) * 0.5F);
+            this.YuU = k;
+            this.YuV = (k + 1);
+            this.YvC = ((1.0F + (i - this.YuP) / f2) * 0.5F);
             break label272;
           }
-          this.QWk = k;
-          this.QWl = k;
+          this.YuU = k;
+          this.YuV = k;
           break label272;
           label613:
-          if (this.QWl < getCount() - i3) {
+          if (this.YuV < getCount() - i3) {
             break label297;
           }
           k = getCount() - i3 - 1;
-          this.QWk = k;
-          this.QWl = k;
+          this.YuU = k;
+          this.YuV = k;
           break label297;
         }
       }
@@ -751,43 +769,43 @@ public class DragSortListView
     }
   }
   
-  private void hcD()
+  private void idT()
   {
-    this.QWn = -1;
-    this.QWk = -1;
-    this.QWl = -1;
-    this.QWj = -1;
+    this.YuX = -1;
+    this.YuU = -1;
+    this.YuV = -1;
+    this.YuT = -1;
   }
   
-  private void hcE()
+  private void idU()
   {
     AppMethodBeat.i(159802);
-    this.Wx = 2;
-    if ((this.QWr != null) && (this.QWj >= 0) && (this.QWj < getCount()))
+    this.Rh = 2;
+    if ((this.Yvb != null) && (this.YuT >= 0) && (this.YuT < getCount()))
     {
       int i = getHeaderViewsCount();
-      this.QWr.ey(this.QWn - i, this.QWj - i);
+      this.Yvb.eX(this.YuX - i, this.YuT - i);
     }
-    hcM();
-    hcF();
-    hcD();
-    hcI();
-    if (this.QWN)
+    iec();
+    idV();
+    idT();
+    idY();
+    if (this.Yvx)
     {
-      this.Wx = 3;
+      this.Rh = 3;
       AppMethodBeat.o(159802);
       return;
     }
-    this.Wx = 0;
+    this.Rh = 0;
     AppMethodBeat.o(159802);
   }
   
-  private void hcF()
+  private void idV()
   {
     int i = 0;
     AppMethodBeat.i(159804);
     int j = getFirstVisiblePosition();
-    if (this.QWn < j)
+    if (this.YuX < j)
     {
       View localView = getChildAt(0);
       if (localView != null) {
@@ -798,37 +816,37 @@ public class DragSortListView
     AppMethodBeat.o(159804);
   }
   
-  private void hcG()
+  private void idW()
   {
     AppMethodBeat.i(159808);
-    this.QWQ = 0;
-    this.QWN = false;
-    if (this.Wx == 3) {
-      this.Wx = 0;
+    this.YvA = 0;
+    this.Yvx = false;
+    if (this.Rh == 3) {
+      this.Rh = 0;
     }
-    this.QWi = this.QWh;
-    this.QXd = false;
-    this.QWY.clear();
+    this.YuS = this.YuR;
+    this.YvN = false;
+    this.YvI.clear();
     AppMethodBeat.o(159808);
   }
   
-  private void hcH()
+  private void idX()
   {
     AppMethodBeat.i(159812);
     int i = getPaddingTop();
     int j = getHeight() - i - getPaddingBottom();
     float f1 = j;
-    this.QWF = (i + this.QWA * f1);
+    this.Yvp = (i + this.Yvk * f1);
     float f2 = i;
-    this.QWE = (f1 * (1.0F - this.QWB) + f2);
-    this.QWC = ((int)this.QWF);
-    this.QWD = ((int)this.QWE);
-    this.QWG = (this.QWF - i);
-    this.QWH = (i + j - this.QWE);
+    this.Yvo = (f1 * (1.0F - this.Yvl) + f2);
+    this.Yvm = ((int)this.Yvp);
+    this.Yvn = ((int)this.Yvo);
+    this.Yvq = (this.Yvp - i);
+    this.Yvr = (i + j - this.Yvo);
     AppMethodBeat.o(159812);
   }
   
-  private void hcI()
+  private void idY()
   {
     AppMethodBeat.i(159814);
     int j = getFirstVisiblePosition();
@@ -846,19 +864,19 @@ public class DragSortListView
     AppMethodBeat.o(159814);
   }
   
-  private void hcJ()
+  private void idZ()
   {
     AppMethodBeat.i(159822);
-    if (this.ooN != null)
+    if (this.rqz != null)
     {
-      hz(this.ooN);
-      this.QWv = this.ooN.getMeasuredHeight();
-      this.QWw = (this.QWv / 2);
+      iV(this.rqz);
+      this.Yvf = this.rqz.getMeasuredHeight();
+      this.Yvg = (this.Yvf / 2);
     }
     AppMethodBeat.o(159822);
   }
   
-  private void hcK()
+  private void iea()
   {
     AppMethodBeat.i(159826);
     int i = getFirstVisiblePosition();
@@ -873,21 +891,21 @@ public class DragSortListView
     AppMethodBeat.o(159826);
   }
   
-  private void hcL()
+  private void ieb()
   {
     AppMethodBeat.i(159828);
-    if (this.QWO != null)
+    if (this.Yvy != null)
     {
-      this.QWe.set(this.mX, this.mY);
-      this.QWO.n(this.QWd);
+      this.YuO.set(this.CD, this.CE);
+      this.Yvy.m(this.YuN);
     }
-    int i = this.QWd.x;
-    int m = this.QWd.y;
+    int i = this.YuN.x;
+    int m = this.YuN.y;
     int j = getPaddingLeft();
     int k;
-    if (((this.QWL & 0x1) == 0) && (i > j))
+    if (((this.Yvv & 0x1) == 0) && (i > j))
     {
-      this.QWd.x = j;
+      this.YuN.x = j;
       j = getHeaderViewsCount();
       k = getFooterViewsCount();
       int n = getFirstVisiblePosition();
@@ -897,11 +915,11 @@ public class DragSortListView
         i = getChildAt(j - n - 1).getBottom();
       }
       j = i;
-      if ((this.QWL & 0x8) == 0)
+      if ((this.Yvv & 0x8) == 0)
       {
         j = i;
-        if (n <= this.QWn) {
-          j = Math.max(getChildAt(this.QWn - n).getTop(), i);
+        if (n <= this.YuX) {
+          j = Math.max(getChildAt(this.YuX - n).getTop(), i);
         }
       }
       i = getHeight() - getPaddingBottom();
@@ -909,71 +927,51 @@ public class DragSortListView
         i = getChildAt(getCount() - k - 1 - n).getBottom();
       }
       k = i;
-      if ((this.QWL & 0x4) == 0)
+      if ((this.Yvv & 0x4) == 0)
       {
         k = i;
-        if (i1 >= this.QWn) {
-          k = Math.min(getChildAt(this.QWn - n).getBottom(), i);
+        if (i1 >= this.YuX) {
+          k = Math.min(getChildAt(this.YuX - n).getBottom(), i);
         }
       }
       if (m >= j) {
         break label319;
       }
-      this.QWd.y = j;
+      this.YuN.y = j;
     }
     for (;;)
     {
-      this.QWf = (this.QWd.y + this.QWw);
+      this.YuP = (this.YuN.y + this.Yvg);
       AppMethodBeat.o(159828);
       return;
-      if (((this.QWL & 0x2) != 0) || (i >= j)) {
+      if (((this.Yvv & 0x2) != 0) || (i >= j)) {
         break;
       }
-      this.QWd.x = j;
+      this.YuN.x = j;
       break;
       label319:
-      if (this.QWv + m > k) {
-        this.QWd.y = (k - this.QWv);
+      if (this.Yvf + m > k) {
+        this.YuN.y = (k - this.Yvf);
       }
     }
   }
   
-  private void hcM()
+  private void iec()
   {
     AppMethodBeat.i(159829);
-    if (this.ooN != null)
+    if (this.rqz != null)
     {
-      this.ooN.setVisibility(8);
-      if (this.QWO != null) {
-        this.QWO.hA(this.ooN);
+      this.rqz.setVisibility(8);
+      if (this.Yvy != null) {
+        this.Yvy.iW(this.rqz);
       }
-      this.ooN = null;
+      this.rqz = null;
       invalidate();
     }
     AppMethodBeat.o(159829);
   }
   
-  private void hz(View paramView)
-  {
-    AppMethodBeat.i(159821);
-    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-    Object localObject = localLayoutParams;
-    if (localLayoutParams == null)
-    {
-      localObject = new AbsListView.LayoutParams(-1, -2);
-      paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    }
-    int j = ViewGroup.getChildMeasureSpec(this.QWx, getListPaddingLeft() + getListPaddingRight(), ((ViewGroup.LayoutParams)localObject).width);
-    if (((ViewGroup.LayoutParams)localObject).height > 0) {}
-    for (int i = View.MeasureSpec.makeMeasureSpec(((ViewGroup.LayoutParams)localObject).height, 1073741824);; i = View.MeasureSpec.makeMeasureSpec(0, 0))
-    {
-      paramView.measure(j, i);
-      AppMethodBeat.o(159821);
-      return;
-    }
-  }
-  
-  private int lN(int paramInt1, int paramInt2)
+  private int nd(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159796);
     int i = getHeaderViewsCount();
@@ -984,48 +982,48 @@ public class DragSortListView
       return paramInt2;
     }
     j = getDividerHeight();
-    int m = this.QWv - this.QWu;
-    int k = apx(paramInt1);
-    int n = apv(paramInt1);
-    if (this.QWl <= this.QWn) {
-      if ((paramInt1 == this.QWl) && (this.QWk != this.QWl)) {
-        if (paramInt1 == this.QWn)
+    int m = this.Yvf - this.Yve;
+    int k = ayV(paramInt1);
+    int n = ayT(paramInt1);
+    if (this.YuV <= this.YuX) {
+      if ((paramInt1 == this.YuV) && (this.YuU != this.YuV)) {
+        if (paramInt1 == this.YuX)
         {
-          i = paramInt2 + n - this.QWv;
-          if (paramInt1 > this.QWn) {
+          i = paramInt2 + n - this.Yvf;
+          if (paramInt1 > this.YuX) {
             break label256;
           }
         }
       }
     }
     label256:
-    for (paramInt1 = (this.QWv - j - apx(paramInt1 - 1)) / 2 + i;; paramInt1 = (k - j - this.QWv) / 2 + i)
+    for (paramInt1 = (this.Yvf - j - ayV(paramInt1 - 1)) / 2 + i;; paramInt1 = (k - j - this.Yvf) / 2 + i)
     {
       AppMethodBeat.o(159796);
       return paramInt1;
       i = n - k + paramInt2 - m;
       break;
       i = paramInt2;
-      if (paramInt1 <= this.QWl) {
+      if (paramInt1 <= this.YuV) {
         break;
       }
       i = paramInt2;
-      if (paramInt1 > this.QWn) {
+      if (paramInt1 > this.YuX) {
         break;
       }
       i = paramInt2 - m;
       break;
-      if ((paramInt1 > this.QWn) && (paramInt1 <= this.QWk))
+      if ((paramInt1 > this.YuX) && (paramInt1 <= this.YuU))
       {
         i = paramInt2 + m;
         break;
       }
       i = paramInt2;
-      if (paramInt1 != this.QWl) {
+      if (paramInt1 != this.YuV) {
         break;
       }
       i = paramInt2;
-      if (this.QWk == this.QWl) {
+      if (this.YuU == this.YuV) {
         break;
       }
       i = paramInt2 + (n - k);
@@ -1033,26 +1031,26 @@ public class DragSortListView
     }
   }
   
-  private int lO(int paramInt1, int paramInt2)
+  private int ne(int paramInt1, int paramInt2)
   {
     int i;
     int j;
     int k;
-    if ((this.QWm) && (this.QWk != this.QWl))
+    if ((this.YuW) && (this.YuU != this.YuV))
     {
       i = 1;
-      j = this.QWv - this.QWu;
-      k = (int)(this.QWS * j);
-      if (paramInt1 != this.QWn) {
+      j = this.Yvf - this.Yve;
+      k = (int)(this.YvC * j);
+      if (paramInt1 != this.YuX) {
         break label109;
       }
-      if (this.QWn != this.QWk) {
+      if (this.YuX != this.YuU) {
         break label85;
       }
       if (i == 0) {
         break label80;
       }
-      i = k + this.QWu;
+      i = k + this.Yve;
     }
     label80:
     label85:
@@ -1062,12 +1060,12 @@ public class DragSortListView
       return i;
       i = 0;
       break;
-      return this.QWv;
-      if (this.QWn == this.QWl) {
-        return this.QWv - k;
+      return this.Yvf;
+      if (this.YuX == this.YuV) {
+        return this.Yvf - k;
       }
-      return this.QWu;
-      if (paramInt1 == this.QWk)
+      return this.Yve;
+      if (paramInt1 == this.YuU)
       {
         if (i != 0) {
           return paramInt2 + k;
@@ -1075,14 +1073,14 @@ public class DragSortListView
         return paramInt2 + j;
       }
       i = paramInt2;
-    } while (paramInt1 != this.QWl);
+    } while (paramInt1 != this.YuV);
     return paramInt2 + j - k;
   }
   
   public final boolean a(int paramInt1, View paramView, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(159825);
-    if ((this.Wx != 0) || (!this.QWN) || (this.ooN != null) || (paramView == null) || (!this.QWt))
+    if ((this.Rh != 0) || (!this.Yvx) || (this.rqz != null) || (paramView == null) || (!this.Yvd))
     {
       AppMethodBeat.o(159825);
       return false;
@@ -1091,32 +1089,32 @@ public class DragSortListView
       getParent().requestDisallowInterceptTouchEvent(true);
     }
     paramInt1 = getHeaderViewsCount() + paramInt1;
-    this.QWk = paramInt1;
-    this.QWl = paramInt1;
-    this.QWn = paramInt1;
-    this.QWj = paramInt1;
-    this.Wx = 4;
-    this.QWL = 0;
-    this.QWL |= paramInt2;
-    this.ooN = paramView;
-    hcJ();
-    this.QWo = paramInt3;
-    this.QWp = paramInt4;
-    this.QWK = this.mY;
-    this.QWd.x = (this.mX - this.QWo);
-    this.QWd.y = (this.mY - this.QWp);
-    paramView = getChildAt(this.QWn - getFirstVisiblePosition());
+    this.YuU = paramInt1;
+    this.YuV = paramInt1;
+    this.YuX = paramInt1;
+    this.YuT = paramInt1;
+    this.Rh = 4;
+    this.Yvv = 0;
+    this.Yvv |= paramInt2;
+    this.rqz = paramView;
+    idZ();
+    this.YuY = paramInt3;
+    this.YuZ = paramInt4;
+    this.Yvu = this.CE;
+    this.YuN.x = (this.CD - this.YuY);
+    this.YuN.y = (this.CE - this.YuZ);
+    paramView = getChildAt(this.YuX - getFirstVisiblePosition());
     if (paramView != null) {
       paramView.setVisibility(4);
     }
-    if (this.QWU)
+    if (this.YvE)
     {
-      paramView = this.QWV;
+      paramView = this.YvF;
       paramView.mBuilder.append("<DSLVStates>\n");
-      paramView.QXq = 0;
-      paramView.QXr = true;
+      paramView.YvY = 0;
+      paramView.YvZ = true;
     }
-    switch (this.QWQ)
+    switch (this.YvA)
     {
     }
     for (;;)
@@ -1124,17 +1122,17 @@ public class DragSortListView
       requestLayout();
       AppMethodBeat.o(159825);
       return true;
-      super.onTouchEvent(this.QWP);
+      super.onTouchEvent(this.Yvz);
       continue;
-      super.onInterceptTouchEvent(this.QWP);
+      super.onInterceptTouchEvent(this.Yvz);
     }
   }
   
-  public final boolean cC(float paramFloat)
+  public final boolean cX(float paramFloat)
   {
     AppMethodBeat.i(159805);
-    this.QXb = true;
-    boolean bool = e(true, paramFloat);
+    this.YvL = true;
+    boolean bool = f(true, paramFloat);
     AppMethodBeat.o(159805);
     return bool;
   }
@@ -1143,24 +1141,24 @@ public class DragSortListView
   {
     AppMethodBeat.i(159794);
     super.dispatchDraw(paramCanvas);
-    if (this.Wx != 0)
+    if (this.Rh != 0)
     {
-      if (this.QWk != this.QWn) {
-        a(this.QWk, paramCanvas);
+      if (this.YuU != this.YuX) {
+        a(this.YuU, paramCanvas);
       }
-      if ((this.QWl != this.QWk) && (this.QWl != this.QWn)) {
-        a(this.QWl, paramCanvas);
+      if ((this.YuV != this.YuU) && (this.YuV != this.YuX)) {
+        a(this.YuV, paramCanvas);
       }
     }
     int k;
     int m;
     int i;
     float f;
-    if (this.ooN != null)
+    if (this.rqz != null)
     {
-      k = this.ooN.getWidth();
-      m = this.ooN.getHeight();
-      int j = this.QWd.x;
+      k = this.rqz.getWidth();
+      m = this.rqz.getHeight();
+      int j = this.YuN.x;
       int n = getWidth();
       i = j;
       if (j < 0) {
@@ -1174,12 +1172,12 @@ public class DragSortListView
     label228:
     for (f *= f;; f = 0.0F)
     {
-      i = (int)(f * (255.0F * this.QWi));
+      i = (int)(f * (255.0F * this.YuS));
       paramCanvas.save();
-      paramCanvas.translate(this.QWd.x, this.QWd.y);
+      paramCanvas.translate(this.YuN.x, this.YuN.y);
       paramCanvas.clipRect(0, 0, k, m);
       paramCanvas.saveLayerAlpha(0.0F, 0.0F, k, m, i, 31);
-      this.ooN.draw(paramCanvas);
+      this.rqz.draw(paramCanvas);
       paramCanvas.restore();
       paramCanvas.restore();
       AppMethodBeat.o(159794);
@@ -1189,33 +1187,33 @@ public class DragSortListView
   
   public float getFloatAlpha()
   {
-    return this.QWi;
+    return this.YuS;
   }
   
   public ListAdapter getInputAdapter()
   {
-    if (this.QWT == null) {
+    if (this.YvD == null) {
       return null;
     }
-    return this.QWT.GO;
+    return this.YvD.eP;
   }
   
-  public final void hcC()
+  public final void idS()
   {
     AppMethodBeat.i(159801);
-    if (this.Wx == 4)
+    if (this.Rh == 4)
     {
-      this.QWz.hcN();
-      hcM();
-      hcD();
-      hcI();
-      if (this.QWN)
+      this.Yvj.ied();
+      iec();
+      idT();
+      idY();
+      if (this.Yvx)
       {
-        this.Wx = 3;
+        this.Rh = 3;
         AppMethodBeat.o(159801);
         return;
       }
-      this.Wx = 0;
+      this.Rh = 0;
     }
     AppMethodBeat.o(159801);
   }
@@ -1224,13 +1222,13 @@ public class DragSortListView
   {
     AppMethodBeat.i(159824);
     super.layoutChildren();
-    if (this.ooN != null)
+    if (this.rqz != null)
     {
-      if ((this.ooN.isLayoutRequested()) && (!this.QWg)) {
-        hcJ();
+      if ((this.rqz.isLayoutRequested()) && (!this.YuQ)) {
+        idZ();
       }
-      this.ooN.layout(0, 0, this.ooN.getMeasuredWidth(), this.ooN.getMeasuredHeight());
-      this.QWg = false;
+      this.rqz.layout(0, 0, this.rqz.getMeasuredWidth(), this.rqz.getMeasuredHeight());
+      this.YuQ = false;
     }
     AppMethodBeat.o(159824);
   }
@@ -1239,14 +1237,14 @@ public class DragSortListView
   {
     AppMethodBeat.i(159798);
     super.onDraw(paramCanvas);
-    if (this.QWU)
+    if (this.YvE)
     {
-      paramCanvas = this.QWV;
-      if (paramCanvas.QXr)
+      paramCanvas = this.YvF;
+      if (paramCanvas.YvZ)
       {
         paramCanvas.mBuilder.append("<DSLVState>\n");
-        int j = paramCanvas.QXf.getChildCount();
-        int k = paramCanvas.QXf.getFirstVisiblePosition();
+        int j = paramCanvas.YvP.getChildCount();
+        int k = paramCanvas.YvP.getFirstVisiblePosition();
         paramCanvas.mBuilder.append("    <Positions>");
         int i = 0;
         while (i < j)
@@ -1259,7 +1257,7 @@ public class DragSortListView
         i = 0;
         while (i < j)
         {
-          paramCanvas.mBuilder.append(paramCanvas.QXf.getChildAt(i).getTop()).append(",");
+          paramCanvas.mBuilder.append(paramCanvas.YvP.getChildAt(i).getTop()).append(",");
           i += 1;
         }
         paramCanvas.mBuilder.append("</Tops>\n");
@@ -1267,33 +1265,33 @@ public class DragSortListView
         i = 0;
         while (i < j)
         {
-          paramCanvas.mBuilder.append(paramCanvas.QXf.getChildAt(i).getBottom()).append(",");
+          paramCanvas.mBuilder.append(paramCanvas.YvP.getChildAt(i).getBottom()).append(",");
           i += 1;
         }
         paramCanvas.mBuilder.append("</Bottoms>\n");
-        paramCanvas.mBuilder.append("    <FirstExpPos>").append(paramCanvas.QXf.QWk).append("</FirstExpPos>\n");
-        paramCanvas.mBuilder.append("    <FirstExpBlankHeight>").append(paramCanvas.QXf.apv(paramCanvas.QXf.QWk) - paramCanvas.QXf.apx(paramCanvas.QXf.QWk)).append("</FirstExpBlankHeight>\n");
-        paramCanvas.mBuilder.append("    <SecondExpPos>").append(paramCanvas.QXf.QWl).append("</SecondExpPos>\n");
-        paramCanvas.mBuilder.append("    <SecondExpBlankHeight>").append(paramCanvas.QXf.apv(paramCanvas.QXf.QWl) - paramCanvas.QXf.apx(paramCanvas.QXf.QWl)).append("</SecondExpBlankHeight>\n");
-        paramCanvas.mBuilder.append("    <SrcPos>").append(paramCanvas.QXf.QWn).append("</SrcPos>\n");
-        paramCanvas.mBuilder.append("    <SrcHeight>").append(paramCanvas.QXf.QWv + paramCanvas.QXf.getDividerHeight()).append("</SrcHeight>\n");
-        paramCanvas.mBuilder.append("    <ViewHeight>").append(paramCanvas.QXf.getHeight()).append("</ViewHeight>\n");
-        paramCanvas.mBuilder.append("    <LastY>").append(paramCanvas.QXf.nrL).append("</LastY>\n");
-        paramCanvas.mBuilder.append("    <FloatY>").append(paramCanvas.QXf.QWf).append("</FloatY>\n");
+        paramCanvas.mBuilder.append("    <FirstExpPos>").append(paramCanvas.YvP.YuU).append("</FirstExpPos>\n");
+        paramCanvas.mBuilder.append("    <FirstExpBlankHeight>").append(paramCanvas.YvP.ayT(paramCanvas.YvP.YuU) - paramCanvas.YvP.ayV(paramCanvas.YvP.YuU)).append("</FirstExpBlankHeight>\n");
+        paramCanvas.mBuilder.append("    <SecondExpPos>").append(paramCanvas.YvP.YuV).append("</SecondExpPos>\n");
+        paramCanvas.mBuilder.append("    <SecondExpBlankHeight>").append(paramCanvas.YvP.ayT(paramCanvas.YvP.YuV) - paramCanvas.YvP.ayV(paramCanvas.YvP.YuV)).append("</SecondExpBlankHeight>\n");
+        paramCanvas.mBuilder.append("    <SrcPos>").append(paramCanvas.YvP.YuX).append("</SrcPos>\n");
+        paramCanvas.mBuilder.append("    <SrcHeight>").append(paramCanvas.YvP.Yvf + paramCanvas.YvP.getDividerHeight()).append("</SrcHeight>\n");
+        paramCanvas.mBuilder.append("    <ViewHeight>").append(paramCanvas.YvP.getHeight()).append("</ViewHeight>\n");
+        paramCanvas.mBuilder.append("    <LastY>").append(paramCanvas.YvP.qtD).append("</LastY>\n");
+        paramCanvas.mBuilder.append("    <FloatY>").append(paramCanvas.YvP.YuP).append("</FloatY>\n");
         paramCanvas.mBuilder.append("    <ShuffleEdges>");
         i = 0;
         while (i < j)
         {
-          paramCanvas.mBuilder.append(paramCanvas.QXf.lN(k + i, paramCanvas.QXf.getChildAt(i).getTop())).append(",");
+          paramCanvas.mBuilder.append(paramCanvas.YvP.nd(k + i, paramCanvas.YvP.getChildAt(i).getTop())).append(",");
           i += 1;
         }
         paramCanvas.mBuilder.append("</ShuffleEdges>\n");
         paramCanvas.mBuilder.append("</DSLVState>\n");
-        paramCanvas.QXp += 1;
-        if (paramCanvas.QXp > 1000)
+        paramCanvas.YvX += 1;
+        if (paramCanvas.YvX > 1000)
         {
           paramCanvas.flush();
-          paramCanvas.QXp = 0;
+          paramCanvas.YvX = 0;
         }
       }
     }
@@ -1303,36 +1301,36 @@ public class DragSortListView
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(159810);
-    if (!this.QWt)
+    if (!this.Yvd)
     {
       bool = super.onInterceptTouchEvent(paramMotionEvent);
       AppMethodBeat.o(159810);
       return bool;
     }
-    ay(paramMotionEvent);
-    this.QWM = true;
+    aG(paramMotionEvent);
+    this.Yvw = true;
     int i = paramMotionEvent.getAction() & 0xFF;
     if (i == 0)
     {
-      if (this.Wx != 0)
+      if (this.Rh != 0)
       {
-        this.QWX = true;
+        this.YvH = true;
         AppMethodBeat.o(159810);
         return true;
       }
-      this.QWN = true;
+      this.Yvx = true;
     }
-    if (this.ooN != null)
+    if (this.rqz != null)
     {
       bool = true;
       if ((i == 1) || (i == 3)) {
-        this.QWN = false;
+        this.Yvx = false;
       }
       AppMethodBeat.o(159810);
       return bool;
     }
     if (super.onInterceptTouchEvent(paramMotionEvent)) {
-      this.QXd = true;
+      this.YvN = true;
     }
     for (boolean bool = true;; bool = false) {
       switch (i)
@@ -1340,14 +1338,14 @@ public class DragSortListView
       case 2: 
       default: 
         if (bool) {
-          this.QWQ = 1;
+          this.YvA = 1;
         }
         break;
       case 1: 
       case 3: 
-        hcG();
+        idW();
         break;
-        this.QWQ = 2;
+        this.YvA = 2;
         break;
       }
     }
@@ -1357,14 +1355,14 @@ public class DragSortListView
   {
     AppMethodBeat.i(159823);
     super.onMeasure(paramInt1, paramInt2);
-    if (this.ooN != null)
+    if (this.rqz != null)
     {
-      if (this.ooN.isLayoutRequested()) {
-        hcJ();
+      if (this.rqz.isLayoutRequested()) {
+        idZ();
       }
-      this.QWg = true;
+      this.YuQ = true;
     }
-    this.QWx = paramInt1;
+    this.Yvh = paramInt1;
     AppMethodBeat.o(159823);
   }
   
@@ -1372,32 +1370,32 @@ public class DragSortListView
   {
     AppMethodBeat.i(159813);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    hcH();
+    idX();
     AppMethodBeat.o(159813);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(159807);
-    if (this.QWX)
+    if (this.YvH)
     {
-      this.QWX = false;
+      this.YvH = false;
       AppMethodBeat.o(159807);
       return false;
     }
-    if (!this.QWt)
+    if (!this.Yvd)
     {
       bool1 = super.onTouchEvent(paramMotionEvent);
       AppMethodBeat.o(159807);
       return bool1;
     }
-    boolean bool1 = this.QWM;
-    this.QWM = false;
+    boolean bool1 = this.Yvw;
+    this.Yvw = false;
     if (!bool1) {
-      ay(paramMotionEvent);
+      aG(paramMotionEvent);
     }
     boolean bool2;
-    if (this.Wx == 4)
+    if (this.Rh == 4)
     {
       switch (paramMotionEvent.getAction() & 0xFF)
       {
@@ -1407,53 +1405,53 @@ public class DragSortListView
         bool2 = true;
         AppMethodBeat.o(159807);
         return bool2;
-        if (this.Wx == 4) {
-          hcC();
+        if (this.Rh == 4) {
+          idS();
         }
-        hcG();
+        idW();
         continue;
-        if (this.Wx == 4)
+        if (this.Rh == 4)
         {
-          this.QXb = false;
-          e(false, 0.0F);
+          this.YvL = false;
+          f(false, 0.0F);
         }
-        hcG();
+        idW();
         continue;
         int j = (int)paramMotionEvent.getX();
         int i = (int)paramMotionEvent.getY();
-        this.QWd.x = (j - this.QWo);
-        this.QWd.y = (i - this.QWp);
-        hcK();
-        j = Math.min(i, this.QWf + this.QWw);
-        int k = Math.max(i, this.QWf - this.QWw);
-        paramMotionEvent = this.QWz;
-        if (paramMotionEvent.hfx) {}
-        for (i = paramMotionEvent.QXn;; i = -1)
+        this.YuN.x = (j - this.YuY);
+        this.YuN.y = (i - this.YuZ);
+        iea();
+        j = Math.min(i, this.YuP + this.Yvg);
+        int k = Math.max(i, this.YuP - this.Yvg);
+        paramMotionEvent = this.Yvj;
+        if (paramMotionEvent.jRp) {}
+        for (i = paramMotionEvent.YvV;; i = -1)
         {
-          if ((j <= this.nrL) || (j <= this.QWD) || (i == 1)) {
+          if ((j <= this.qtD) || (j <= this.Yvn) || (i == 1)) {
             break label307;
           }
           if (i != -1) {
-            this.QWz.hcN();
+            this.Yvj.ied();
           }
-          this.QWz.apy(1);
+          this.Yvj.ayW(1);
           break;
         }
         label307:
-        if ((k < this.nrL) && (k < this.QWC) && (i != 0))
+        if ((k < this.qtD) && (k < this.Yvm) && (i != 0))
         {
           if (i != -1) {
-            this.QWz.hcN();
+            this.Yvj.ied();
           }
-          this.QWz.apy(0);
+          this.Yvj.ayW(0);
         }
-        else if ((k >= this.QWC) && (j <= this.QWD) && (this.QWz.hfx))
+        else if ((k >= this.Yvm) && (j <= this.Yvn) && (this.Yvj.jRp))
         {
-          this.QWz.hcN();
+          this.Yvj.ied();
         }
       }
     }
-    if ((this.Wx == 0) && (super.onTouchEvent(paramMotionEvent))) {}
+    if ((this.Rh == 0) && (super.onTouchEvent(paramMotionEvent))) {}
     for (bool1 = true;; bool1 = false) {
       switch (paramMotionEvent.getAction() & 0xFF)
       {
@@ -1463,12 +1461,12 @@ public class DragSortListView
         if (!bool1) {
           break;
         }
-        this.QWQ = 1;
+        this.YvA = 1;
         bool2 = bool1;
         break;
       case 1: 
       case 3: 
-        hcG();
+        idW();
         bool2 = bool1;
         break;
       }
@@ -1478,7 +1476,7 @@ public class DragSortListView
   public final void removeItem(int paramInt)
   {
     AppMethodBeat.i(159799);
-    this.QXb = false;
+    this.YvL = false;
     D(paramInt, 0.0F);
     AppMethodBeat.o(159799);
   }
@@ -1486,7 +1484,7 @@ public class DragSortListView
   public void requestLayout()
   {
     AppMethodBeat.i(159819);
-    if (!this.QWW) {
+    if (!this.YvG) {
       super.requestLayout();
     }
     AppMethodBeat.o(159819);
@@ -1497,41 +1495,41 @@ public class DragSortListView
     AppMethodBeat.i(159792);
     if (paramListAdapter != null)
     {
-      this.QWT = new a(paramListAdapter, (byte)0);
+      this.YvD = new a(paramListAdapter, (byte)0);
       paramListAdapter.registerDataSetObserver(this.mObserver);
-      if ((paramListAdapter instanceof h)) {
-        setDropListener((h)paramListAdapter);
+      if ((paramListAdapter instanceof DragSortListView.h)) {
+        setDropListener((DragSortListView.h)paramListAdapter);
       }
-      if ((paramListAdapter instanceof b)) {
-        setDragListener((b)paramListAdapter);
+      if ((paramListAdapter instanceof DragSortListView.b)) {
+        setDragListener((DragSortListView.b)paramListAdapter);
       }
-      if ((paramListAdapter instanceof l)) {
-        setRemoveListener((l)paramListAdapter);
+      if ((paramListAdapter instanceof DragSortListView.l)) {
+        setRemoveListener((DragSortListView.l)paramListAdapter);
       }
     }
     for (;;)
     {
-      super.setAdapter(this.QWT);
+      super.setAdapter(this.YvD);
       AppMethodBeat.o(159792);
       return;
-      this.QWT = null;
+      this.YvD = null;
     }
   }
   
   public void setDragEnabled(boolean paramBoolean)
   {
-    this.QWt = paramBoolean;
+    this.Yvd = paramBoolean;
   }
   
-  public void setDragListener(b paramb)
+  public void setDragListener(DragSortListView.b paramb)
   {
-    this.QWq = paramb;
+    this.Yva = paramb;
   }
   
   public void setDragScrollProfile(c paramc)
   {
     if (paramc != null) {
-      this.QWJ = paramc;
+      this.Yvt = paramc;
     }
   }
   
@@ -1540,25 +1538,25 @@ public class DragSortListView
     AppMethodBeat.i(159811);
     if (paramFloat > 0.5F)
     {
-      this.QWB = 0.5F;
+      this.Yvl = 0.5F;
       if (paramFloat <= 0.5F) {
         break label58;
       }
     }
     label58:
-    for (this.QWA = 0.5F;; this.QWA = paramFloat)
+    for (this.Yvk = 0.5F;; this.Yvk = paramFloat)
     {
       if (getHeight() != 0) {
-        hcH();
+        idX();
       }
       AppMethodBeat.o(159811);
       return;
-      this.QWB = paramFloat;
+      this.Yvl = paramFloat;
       break;
     }
   }
   
-  public void setDragSortListener(e parame)
+  public void setDragSortListener(DragSortListView.e parame)
   {
     AppMethodBeat.i(159830);
     setDropListener(parame);
@@ -1567,41 +1565,41 @@ public class DragSortListView
     AppMethodBeat.o(159830);
   }
   
-  public void setDropListener(h paramh)
+  public void setDropListener(DragSortListView.h paramh)
   {
-    this.QWr = paramh;
+    this.Yvb = paramh;
   }
   
   public void setFloatAlpha(float paramFloat)
   {
-    this.QWi = paramFloat;
+    this.YuS = paramFloat;
   }
   
   public void setFloatViewManager(i parami)
   {
-    this.QWO = parami;
+    this.Yvy = parami;
   }
   
   public void setMaxScrollSpeed(float paramFloat)
   {
-    this.QWI = paramFloat;
+    this.Yvs = paramFloat;
   }
   
-  public void setRemoveListener(l paraml)
+  public void setRemoveListener(DragSortListView.l paraml)
   {
-    this.QWs = paraml;
+    this.Yvc = paraml;
   }
   
   final class a
     extends BaseAdapter
   {
-    ListAdapter GO;
+    ListAdapter eP;
     
     private a(ListAdapter paramListAdapter)
     {
       AppMethodBeat.i(159760);
-      this.GO = paramListAdapter;
-      this.GO.registerDataSetObserver(new DataSetObserver()
+      this.eP = paramListAdapter;
+      this.eP.registerDataSetObserver(new DataSetObserver()
       {
         public final void onChanged()
         {
@@ -1623,7 +1621,7 @@ public class DragSortListView
     public final boolean areAllItemsEnabled()
     {
       AppMethodBeat.i(159764);
-      boolean bool = this.GO.areAllItemsEnabled();
+      boolean bool = this.eP.areAllItemsEnabled();
       AppMethodBeat.o(159764);
       return bool;
     }
@@ -1631,7 +1629,7 @@ public class DragSortListView
     public final int getCount()
     {
       AppMethodBeat.i(159763);
-      int i = this.GO.getCount();
+      int i = this.eP.getCount();
       AppMethodBeat.o(159763);
       return i;
     }
@@ -1639,7 +1637,7 @@ public class DragSortListView
     public final Object getItem(int paramInt)
     {
       AppMethodBeat.i(159762);
-      Object localObject = this.GO.getItem(paramInt);
+      Object localObject = this.eP.getItem(paramInt);
       AppMethodBeat.o(159762);
       return localObject;
     }
@@ -1647,7 +1645,7 @@ public class DragSortListView
     public final long getItemId(int paramInt)
     {
       AppMethodBeat.i(159761);
-      long l = this.GO.getItemId(paramInt);
+      long l = this.eP.getItemId(paramInt);
       AppMethodBeat.o(159761);
       return l;
     }
@@ -1655,7 +1653,7 @@ public class DragSortListView
     public final int getItemViewType(int paramInt)
     {
       AppMethodBeat.i(159766);
-      paramInt = this.GO.getItemViewType(paramInt);
+      paramInt = this.eP.getItemViewType(paramInt);
       AppMethodBeat.o(159766);
       return paramInt;
     }
@@ -1667,7 +1665,7 @@ public class DragSortListView
       {
         paramViewGroup = (b)paramView;
         View localView1 = paramViewGroup.getChildAt(0);
-        View localView2 = this.GO.getView(paramInt, localView1, DragSortListView.this);
+        View localView2 = this.eP.getView(paramInt, localView1, DragSortListView.this);
         paramView = paramViewGroup;
         if (localView2 != localView1)
         {
@@ -1682,7 +1680,7 @@ public class DragSortListView
         AppMethodBeat.o(159770);
         return paramView;
       }
-      paramViewGroup = this.GO.getView(paramInt, null, DragSortListView.this);
+      paramViewGroup = this.eP.getView(paramInt, null, DragSortListView.this);
       if ((paramViewGroup instanceof Checkable)) {}
       for (paramView = new c(DragSortListView.this.getContext());; paramView = new b(DragSortListView.this.getContext()))
       {
@@ -1695,7 +1693,7 @@ public class DragSortListView
     public final int getViewTypeCount()
     {
       AppMethodBeat.i(159767);
-      int i = this.GO.getViewTypeCount();
+      int i = this.eP.getViewTypeCount();
       AppMethodBeat.o(159767);
       return i;
     }
@@ -1703,7 +1701,7 @@ public class DragSortListView
     public final boolean hasStableIds()
     {
       AppMethodBeat.i(159768);
-      boolean bool = this.GO.hasStableIds();
+      boolean bool = this.eP.hasStableIds();
       AppMethodBeat.o(159768);
       return bool;
     }
@@ -1711,7 +1709,7 @@ public class DragSortListView
     public final boolean isEmpty()
     {
       AppMethodBeat.i(159769);
-      boolean bool = this.GO.isEmpty();
+      boolean bool = this.eP.isEmpty();
       AppMethodBeat.o(159769);
       return bool;
     }
@@ -1719,54 +1717,52 @@ public class DragSortListView
     public final boolean isEnabled(int paramInt)
     {
       AppMethodBeat.i(159765);
-      boolean bool = this.GO.isEnabled(paramInt);
+      boolean bool = this.eP.isEnabled(paramInt);
       AppMethodBeat.o(159765);
       return bool;
     }
   }
   
-  public static abstract interface b {}
-  
   public static abstract interface c
   {
-    public abstract float cD(float paramFloat);
+    public abstract float cY(float paramFloat);
   }
   
   final class d
     implements Runnable
   {
-    private long QXi;
-    private long QXj;
-    private int QXk;
-    private float QXl;
-    private long QXm;
-    int QXn;
-    private float QXo;
-    boolean hfx = false;
+    private long Gsg;
+    private long Gsh;
+    private int YvS;
+    private float YvT;
+    private long YvU;
+    int YvV;
+    private float YvW;
+    boolean jRp = false;
     private boolean mAbort;
     
     d() {}
     
-    public final void apy(int paramInt)
+    public final void ayW(int paramInt)
     {
       AppMethodBeat.i(159771);
-      if (!this.hfx)
+      if (!this.jRp)
       {
         this.mAbort = false;
-        this.hfx = true;
-        this.QXm = SystemClock.uptimeMillis();
-        this.QXi = this.QXm;
-        this.QXn = paramInt;
+        this.jRp = true;
+        this.YvU = SystemClock.uptimeMillis();
+        this.Gsh = this.YvU;
+        this.YvV = paramInt;
         DragSortListView.this.post(this);
       }
       AppMethodBeat.o(159771);
     }
     
-    public final void hcN()
+    public final void ied()
     {
       AppMethodBeat.i(159772);
       DragSortListView.this.removeCallbacks(this);
-      this.hfx = false;
+      this.jRp = false;
       AppMethodBeat.o(159772);
     }
     
@@ -1775,7 +1771,7 @@ public class DragSortListView
       AppMethodBeat.i(159773);
       if (this.mAbort)
       {
-        this.hfx = false;
+        this.jRp = false;
         AppMethodBeat.o(159773);
         return;
       }
@@ -1787,35 +1783,35 @@ public class DragSortListView
       int i1 = Math.min(DragSortListView.e(DragSortListView.this), DragSortListView.r(DragSortListView.this) + DragSortListView.c(DragSortListView.this));
       int i2 = Math.max(DragSortListView.e(DragSortListView.this), DragSortListView.r(DragSortListView.this) - DragSortListView.c(DragSortListView.this));
       View localView;
-      if (this.QXn == 0)
+      if (this.YvV == 0)
       {
         localView = DragSortListView.this.getChildAt(0);
         if (localView == null)
         {
-          this.hfx = false;
+          this.jRp = false;
           AppMethodBeat.o(159773);
           return;
         }
         if ((j == 0) && (localView.getTop() == k))
         {
-          this.hfx = false;
+          this.jRp = false;
           AppMethodBeat.o(159773);
           return;
         }
-        this.QXo = DragSortListView.u(DragSortListView.this).cD((DragSortListView.s(DragSortListView.this) - i2) / DragSortListView.t(DragSortListView.this));
-        this.QXj = SystemClock.uptimeMillis();
-        this.QXl = ((float)(this.QXj - this.QXi));
-        this.QXk = Math.round(this.QXo * this.QXl);
-        if (this.QXk < 0) {
+        this.YvW = DragSortListView.u(DragSortListView.this).cY((DragSortListView.s(DragSortListView.this) - i2) / DragSortListView.t(DragSortListView.this));
+        this.Gsg = SystemClock.uptimeMillis();
+        this.YvT = ((float)(this.Gsg - this.Gsh));
+        this.YvS = Math.round(this.YvW * this.YvT);
+        if (this.YvS < 0) {
           break label496;
         }
-        this.QXk = Math.min(n, this.QXk);
+        this.YvS = Math.min(n, this.YvS);
         i = j;
       }
       for (;;)
       {
         localView = DragSortListView.this.getChildAt(i - j);
-        m = localView.getTop() + this.QXk;
+        m = localView.getTop() + this.YvS;
         j = m;
         if (i == 0)
         {
@@ -1830,57 +1826,53 @@ public class DragSortListView
         DragSortListView.this.invalidate();
         DragSortListView.a(DragSortListView.this, false);
         DragSortListView.c(DragSortListView.this, i, localView);
-        this.QXi = this.QXj;
+        this.Gsh = this.Gsg;
         DragSortListView.this.post(this);
         AppMethodBeat.o(159773);
         return;
         localView = DragSortListView.this.getChildAt(i - j);
         if (localView == null)
         {
-          this.hfx = false;
+          this.jRp = false;
           AppMethodBeat.o(159773);
           return;
         }
         if ((i == m - 1) && (localView.getBottom() <= n + k))
         {
-          this.hfx = false;
+          this.jRp = false;
           AppMethodBeat.o(159773);
           return;
         }
-        this.QXo = (-DragSortListView.u(DragSortListView.this).cD((i1 - DragSortListView.v(DragSortListView.this)) / DragSortListView.w(DragSortListView.this)));
+        this.YvW = (-DragSortListView.u(DragSortListView.this).cY((i1 - DragSortListView.v(DragSortListView.this)) / DragSortListView.w(DragSortListView.this)));
         break;
         label496:
-        this.QXk = Math.max(-n, this.QXk);
+        this.YvS = Math.max(-n, this.YvS);
       }
     }
   }
   
-  public static abstract interface e
-    extends DragSortListView.b, DragSortListView.h, DragSortListView.l
-  {}
-  
   final class g
     extends DragSortListView.m
   {
-    private int QXs;
-    private int QXt;
-    private float QXu;
-    private float QXv;
+    private int Ywa;
+    private int Ywb;
+    private float Ywc;
+    private float Ywd;
     
     private g(int paramInt)
     {
       super(0.5F, paramInt, (byte)0);
     }
     
-    private int hcO()
+    private int iee()
     {
       AppMethodBeat.i(159778);
       int i = DragSortListView.this.getFirstVisiblePosition();
       int j = (DragSortListView.i(DragSortListView.this) + DragSortListView.this.getDividerHeight()) / 2;
-      View localView = DragSortListView.this.getChildAt(this.QXs - i);
+      View localView = DragSortListView.this.getChildAt(this.Ywa - i);
       i = -1;
       if (localView != null) {
-        if (this.QXs == this.QXt) {
+        if (this.Ywa == this.Ywb) {
           i = localView.getTop();
         }
       }
@@ -1888,7 +1880,7 @@ public class DragSortListView
       {
         AppMethodBeat.o(159778);
         return i;
-        if (this.QXs < this.QXt)
+        if (this.Ywa < this.Ywb)
         {
           i = localView.getTop() - j;
         }
@@ -1896,23 +1888,23 @@ public class DragSortListView
         {
           i = localView.getBottom() + j - DragSortListView.j(DragSortListView.this);
           continue;
-          this.mCanceled = true;
+          cancel();
         }
       }
     }
     
-    public final void cE(float paramFloat)
+    public final void cZ(float paramFloat)
     {
       AppMethodBeat.i(159779);
-      int i = hcO();
+      int i = iee();
       int j = DragSortListView.this.getPaddingLeft();
       float f1 = DragSortListView.d(DragSortListView.this).y - i;
       float f2 = DragSortListView.d(DragSortListView.this).x - j;
       paramFloat = 1.0F - paramFloat;
-      if ((paramFloat < Math.abs(f1 / this.QXu)) || (paramFloat < Math.abs(f2 / this.QXv)))
+      if ((paramFloat < Math.abs(f1 / this.Ywc)) || (paramFloat < Math.abs(f2 / this.Ywd)))
       {
-        DragSortListView.d(DragSortListView.this).y = (i + (int)(this.QXu * paramFloat));
-        DragSortListView.d(DragSortListView.this).x = (DragSortListView.this.getPaddingLeft() + (int)(this.QXv * paramFloat));
+        DragSortListView.d(DragSortListView.this).y = (i + (int)(this.Ywc * paramFloat));
+        DragSortListView.d(DragSortListView.this).x = (DragSortListView.this.getPaddingLeft() + (int)(this.Ywd * paramFloat));
         DragSortListView.f(DragSortListView.this);
       }
       AppMethodBeat.o(159779);
@@ -1921,11 +1913,11 @@ public class DragSortListView
     public final void onStart()
     {
       AppMethodBeat.i(159777);
-      this.QXs = DragSortListView.g(DragSortListView.this);
-      this.QXt = DragSortListView.h(DragSortListView.this);
+      this.Ywa = DragSortListView.g(DragSortListView.this);
+      this.Ywb = DragSortListView.h(DragSortListView.this);
       DragSortListView.a(DragSortListView.this, 2);
-      this.QXu = (DragSortListView.d(DragSortListView.this).y - hcO());
-      this.QXv = (DragSortListView.d(DragSortListView.this).x - DragSortListView.this.getPaddingLeft());
+      this.Ywc = (DragSortListView.d(DragSortListView.this).y - iee());
+      this.Ywd = (DragSortListView.d(DragSortListView.this).x - DragSortListView.this.getPaddingLeft());
       AppMethodBeat.o(159777);
     }
     
@@ -1937,98 +1929,37 @@ public class DragSortListView
     }
   }
   
-  public static abstract interface h
-  {
-    public abstract void ey(int paramInt1, int paramInt2);
-  }
-  
   public static abstract interface i
   {
-    public abstract View apz(int paramInt);
+    public abstract View ayX(int paramInt);
     
-    public abstract void hA(View paramView);
+    public abstract void iW(View paramView);
     
-    public abstract void n(Point paramPoint);
-  }
-  
-  final class j
-  {
-    private SparseIntArray QXw;
-    private ArrayList<Integer> QXx;
-    private int mMaxSize;
-    
-    private j()
-    {
-      AppMethodBeat.i(159781);
-      this.QXw = new SparseIntArray(3);
-      this.QXx = new ArrayList(3);
-      this.mMaxSize = 3;
-      AppMethodBeat.o(159781);
-    }
-    
-    public final void add(int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(159782);
-      int i = this.QXw.get(paramInt1, -1);
-      if (i != paramInt2)
-      {
-        if (i != -1) {
-          break label87;
-        }
-        if (this.QXw.size() == this.mMaxSize) {
-          this.QXw.delete(((Integer)this.QXx.remove(0)).intValue());
-        }
-      }
-      for (;;)
-      {
-        this.QXw.put(paramInt1, paramInt2);
-        this.QXx.add(Integer.valueOf(paramInt1));
-        AppMethodBeat.o(159782);
-        return;
-        label87:
-        this.QXx.remove(Integer.valueOf(paramInt1));
-      }
-    }
-    
-    public final void clear()
-    {
-      AppMethodBeat.i(159784);
-      this.QXw.clear();
-      this.QXx.clear();
-      AppMethodBeat.o(159784);
-    }
-    
-    public final int get(int paramInt)
-    {
-      AppMethodBeat.i(159783);
-      paramInt = this.QXw.get(paramInt, -1);
-      AppMethodBeat.o(159783);
-      return paramInt;
-    }
+    public abstract void m(Point paramPoint);
   }
   
   final class k
     extends DragSortListView.m
   {
-    private float QXA;
-    private int QXB = -1;
-    private int QXC = -1;
-    private int QXD;
-    private float QXy;
-    private float QXz;
-    private int gzS;
+    private float Ywg;
+    private float Ywh;
+    private float Ywi;
+    private int Ywj = -1;
+    private int Ywk = -1;
+    private int Ywl;
+    private int jjV;
     
     private k(int paramInt)
     {
       super(0.5F, paramInt, (byte)0);
     }
     
-    public final void cE(float paramFloat)
+    public final void cZ(float paramFloat)
     {
       AppMethodBeat.i(159786);
       paramFloat = 1.0F - paramFloat;
       int j = DragSortListView.this.getFirstVisiblePosition();
-      View localView = DragSortListView.this.getChildAt(this.gzS - j);
+      View localView = DragSortListView.this.getChildAt(this.jjV - j);
       Object localObject;
       int i;
       if (DragSortListView.n(DragSortListView.this))
@@ -2047,9 +1978,9 @@ public class DragSortListView
         for (i = 1;; i = -1)
         {
           DragSortListView.a((DragSortListView)localObject, i * f1 * k + f3);
-          this.QXy += f2 * f1;
-          DragSortListView.d(DragSortListView.this).x = ((int)this.QXy);
-          if ((this.QXy >= k) || (this.QXy <= -k)) {
+          this.Ywg += f2 * f1;
+          DragSortListView.d(DragSortListView.this).x = ((int)this.Ywg);
+          if ((this.Ywg >= k) || (this.Ywg <= -k)) {
             break;
           }
           this.mStartTime = SystemClock.uptimeMillis();
@@ -2060,29 +1991,29 @@ public class DragSortListView
       }
       if (localView != null)
       {
-        if (this.QXB == -1)
+        if (this.Ywj == -1)
         {
-          this.QXB = DragSortListView.b(DragSortListView.this, this.gzS, localView);
-          this.QXz = (localView.getHeight() - this.QXB);
+          this.Ywj = DragSortListView.b(DragSortListView.this, this.jjV, localView);
+          this.Ywh = (localView.getHeight() - this.Ywj);
         }
-        i = Math.max((int)(this.QXz * paramFloat), 1);
+        i = Math.max((int)(this.Ywh * paramFloat), 1);
         localObject = localView.getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject).height = (i + this.QXB);
+        ((ViewGroup.LayoutParams)localObject).height = (i + this.Ywj);
         localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
-      if (this.QXD != this.gzS)
+      if (this.Ywl != this.jjV)
       {
-        localView = DragSortListView.this.getChildAt(this.QXD - j);
+        localView = DragSortListView.this.getChildAt(this.Ywl - j);
         if (localView != null)
         {
-          if (this.QXC == -1)
+          if (this.Ywk == -1)
           {
-            this.QXC = DragSortListView.b(DragSortListView.this, this.QXD, localView);
-            this.QXA = (localView.getHeight() - this.QXC);
+            this.Ywk = DragSortListView.b(DragSortListView.this, this.Ywl, localView);
+            this.Ywi = (localView.getHeight() - this.Ywk);
           }
-          i = Math.max((int)(this.QXA * paramFloat), 1);
+          i = Math.max((int)(this.Ywi * paramFloat), 1);
           localObject = localView.getLayoutParams();
-          ((ViewGroup.LayoutParams)localObject).height = (i + this.QXC);
+          ((ViewGroup.LayoutParams)localObject).height = (i + this.Ywk);
           localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
         }
       }
@@ -2093,19 +2024,19 @@ public class DragSortListView
     {
       int i = -1;
       AppMethodBeat.i(159785);
-      this.QXB = -1;
-      this.QXC = -1;
-      this.gzS = DragSortListView.l(DragSortListView.this);
-      this.QXD = DragSortListView.m(DragSortListView.this);
+      this.Ywj = -1;
+      this.Ywk = -1;
+      this.jjV = DragSortListView.l(DragSortListView.this);
+      this.Ywl = DragSortListView.m(DragSortListView.this);
       DragSortListView.a(DragSortListView.this, 1);
-      this.QXy = DragSortListView.d(DragSortListView.this).x;
+      this.Ywg = DragSortListView.d(DragSortListView.this).x;
       if (DragSortListView.n(DragSortListView.this))
       {
         float f = DragSortListView.this.getWidth() * 2.0F;
         if (DragSortListView.o(DragSortListView.this) == 0.0F)
         {
           DragSortListView localDragSortListView = DragSortListView.this;
-          if (this.QXy < 0.0F) {}
+          if (this.Ywg < 0.0F) {}
           for (;;)
           {
             DragSortListView.a(localDragSortListView, i * f);
@@ -2138,94 +2069,10 @@ public class DragSortListView
       AppMethodBeat.o(159787);
     }
   }
-  
-  public static abstract interface l
-  {
-    public abstract void remove(int paramInt);
-  }
-  
-  class m
-    implements Runnable
-  {
-    private float QXE;
-    private float QXF;
-    private float QXG;
-    private float QXH;
-    private float QXI;
-    private float mAlpha;
-    boolean mCanceled;
-    protected long mStartTime;
-    
-    private m(float paramFloat, int paramInt)
-    {
-      AppMethodBeat.i(198542);
-      this.mAlpha = paramFloat;
-      this.QXE = paramInt;
-      paramFloat = 1.0F / (this.mAlpha * 2.0F * (1.0F - this.mAlpha));
-      this.QXI = paramFloat;
-      this.QXF = paramFloat;
-      this.QXG = (this.mAlpha / ((this.mAlpha - 1.0F) * 2.0F));
-      this.QXH = (1.0F / (1.0F - this.mAlpha));
-      AppMethodBeat.o(198542);
-    }
-    
-    public void cE(float paramFloat) {}
-    
-    public void onStart() {}
-    
-    public void onStop() {}
-    
-    public void run()
-    {
-      AppMethodBeat.i(159790);
-      if (this.mCanceled)
-      {
-        AppMethodBeat.o(159790);
-        return;
-      }
-      float f1 = (float)(SystemClock.uptimeMillis() - this.mStartTime) / this.QXE;
-      if (f1 >= 1.0F)
-      {
-        cE(1.0F);
-        onStop();
-        AppMethodBeat.o(159790);
-        return;
-      }
-      if (f1 < this.mAlpha) {
-        f1 *= this.QXF * f1;
-      }
-      for (;;)
-      {
-        cE(f1);
-        DragSortListView.this.post(this);
-        AppMethodBeat.o(159790);
-        return;
-        if (f1 < 1.0F - this.mAlpha)
-        {
-          float f2 = this.QXG;
-          f1 = f1 * this.QXH + f2;
-        }
-        else
-        {
-          f1 = 1.0F - (f1 - 1.0F) * (this.QXI * (f1 - 1.0F));
-        }
-      }
-    }
-    
-    public final void start()
-    {
-      AppMethodBeat.i(159789);
-      this.mStartTime = SystemClock.uptimeMillis();
-      this.mCanceled = false;
-      onStart();
-      DragSortListView.this.post(this);
-      AppMethodBeat.o(159789);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.widget.sortlist.DragSortListView
  * JD-Core Version:    0.7.0.1
  */

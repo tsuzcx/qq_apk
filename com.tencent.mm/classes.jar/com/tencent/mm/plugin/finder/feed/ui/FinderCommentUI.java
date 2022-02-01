@@ -2,7 +2,6 @@ package com.tencent.mm.plugin.finder.feed.ui;
 
 import android.animation.TimeInterpolator;
 import android.app.Activity;
-import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -10,9 +9,6 @@ import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
@@ -23,36 +19,43 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.d;
-import com.tencent.mm.plugin.finder.feed.f;
-import com.tencent.mm.plugin.finder.loader.k;
-import com.tencent.mm.plugin.finder.loader.m;
-import com.tencent.mm.plugin.finder.loader.m.a;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.b.k;
+import com.tencent.mm.plugin.finder.loader.r;
+import com.tencent.mm.plugin.finder.loader.t;
+import com.tencent.mm.plugin.finder.loader.t.a;
 import com.tencent.mm.plugin.finder.model.s;
 import com.tencent.mm.plugin.finder.presenter.contract.CommentDrawerContract.CloseDrawerCallback;
 import com.tencent.mm.plugin.finder.presenter.contract.CommentDrawerContract.NPresenter;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.x;
+import com.tencent.mm.plugin.finder.storage.u;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
 import com.tencent.mm.plugin.finder.view.FinderCommentDrawer;
 import com.tencent.mm.plugin.finder.view.FinderCommentDrawer.a;
 import com.tencent.mm.plugin.finder.view.FinderCommentDrawer.b;
 import com.tencent.mm.plugin.finder.view.FinderTouchLayout;
 import com.tencent.mm.plugin.finder.view.FinderTouchLayout.a;
-import com.tencent.mm.plugin.finder.view.e;
-import com.tencent.mm.plugin.finder.view.e.a;
-import com.tencent.mm.plugin.finder.view.e.a.a;
-import com.tencent.mm.plugin.finder.view.e.a.b;
-import com.tencent.mm.plugin.finder.view.e.a.c;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
-import com.tencent.mm.protocal.protobuf.cjl;
+import com.tencent.mm.plugin.finder.view.f.a;
+import com.tencent.mm.plugin.finder.view.f.a.a;
+import com.tencent.mm.plugin.finder.view.f.a.b;
+import com.tencent.mm.plugin.finder.view.f.a.c;
+import com.tencent.mm.plugin.finder.viewmodel.component.aj;
+import com.tencent.mm.plugin.finder.viewmodel.component.aj.a;
+import com.tencent.mm.protocal.protobuf.csg;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMFragmentActivity;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.component.g;
+import com.tencent.mm.ui.component.g.a;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -63,37 +66,37 @@ import kotlin.g.b.q;
 import kotlin.o;
 
 @com.tencent.mm.ui.base.a(3)
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderCommentUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "DRAG_CLOSE_THRESHOLD", "", "DRAG_START_X", "", "DRAG_START_Y", "DURATION", "", "TAG", "", "builder", "Lcom/tencent/mm/plugin/finder/view/builder/FinderTimelineDrawerBuilder;", "getBuilder", "()Lcom/tencent/mm/plugin/finder/view/builder/FinderTimelineDrawerBuilder;", "setBuilder", "(Lcom/tencent/mm/plugin/finder/view/builder/FinderTimelineDrawerBuilder;)V", "containerView", "Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout;", "getContainerView", "()Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout;", "setContainerView", "(Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout;)V", "drawer", "Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer;", "getDrawer", "()Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer;", "setDrawer", "(Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer;)V", "fromMsg", "", "getFromMsg", "()Z", "setFromMsg", "(Z)V", "isFinish", "mentionCreateTime", "getMentionCreateTime", "()I", "setMentionCreateTime", "(I)V", "mentionId", "getMentionId", "()J", "setMentionId", "(J)V", "requestData", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerCreateData;", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerOpenData;", "getRequestData", "()Lkotlin/Pair;", "setRequestData", "(Lkotlin/Pair;)V", "finish", "", "getLayoutId", "initBuilder", "showTopItem", "feed", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "scene", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderCommentUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "DRAG_CLOSE_THRESHOLD", "", "DRAG_START_X", "", "DRAG_START_Y", "DURATION", "", "TAG", "", "builder", "Lcom/tencent/mm/plugin/finder/view/builder/FinderTimelineDrawerBuilder;", "getBuilder", "()Lcom/tencent/mm/plugin/finder/view/builder/FinderTimelineDrawerBuilder;", "setBuilder", "(Lcom/tencent/mm/plugin/finder/view/builder/FinderTimelineDrawerBuilder;)V", "containerView", "Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout;", "getContainerView", "()Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout;", "setContainerView", "(Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout;)V", "drawer", "Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer;", "getDrawer", "()Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer;", "setDrawer", "(Lcom/tencent/mm/plugin/finder/view/FinderCommentDrawer;)V", "fromMsg", "", "getFromMsg", "()Z", "setFromMsg", "(Z)V", "isFinish", "mentionCreateTime", "getMentionCreateTime", "()I", "setMentionCreateTime", "(I)V", "mentionId", "getMentionId", "()J", "setMentionId", "(J)V", "requestData", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerCreateData;", "Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerOpenData;", "getRequestData", "()Lkotlin/Pair;", "setRequestData", "(Lkotlin/Pair;)V", "finish", "", "getLayoutId", "initBuilder", "showTopItem", "feed", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "scene", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "plugin-finder_release"})
 public final class FinderCommentUI
   extends MMFinderUI
 {
   private final String TAG = "Finder.FinderCommentUI";
   private HashMap _$_findViewCache;
-  private boolean iGD;
-  private final long lZa = 300L;
-  public FinderCommentDrawer tNb;
-  private boolean tZA;
-  private long tZB;
-  private int tZC;
-  private final int tZu = 50;
-  private final int tZv = 300;
-  private final float tZw = 0.3F;
-  public FinderTouchLayout tZx;
-  public o<e.a.a, e.a.b> tZy;
-  public com.tencent.mm.plugin.finder.view.builder.b tZz;
+  private boolean lwF;
+  private final long oWT = 300L;
+  private final int xLK = 50;
+  private final int xLL = 300;
+  private final float xLM = 0.3F;
+  public FinderTouchLayout xLN;
+  public o<f.a.a, f.a.b> xLO;
+  public com.tencent.mm.plugin.finder.view.builder.b xLP;
+  private boolean xLQ;
+  private int xLR;
+  private long xcD;
+  public FinderCommentDrawer xwQ;
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(245137);
+    AppMethodBeat.i(278260);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(245137);
+    AppMethodBeat.o(278260);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(245136);
+    AppMethodBeat.i(278259);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -104,162 +107,162 @@ public final class FinderCommentUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(245136);
+    AppMethodBeat.o(278259);
     return localView1;
   }
   
-  public final FinderTouchLayout ddT()
+  public final FinderTouchLayout duX()
   {
-    AppMethodBeat.i(245129);
-    FinderTouchLayout localFinderTouchLayout = this.tZx;
+    AppMethodBeat.i(278250);
+    FinderTouchLayout localFinderTouchLayout = this.xLN;
     if (localFinderTouchLayout == null) {
-      p.btv("containerView");
+      p.bGy("containerView");
     }
-    AppMethodBeat.o(245129);
+    AppMethodBeat.o(278250);
     return localFinderTouchLayout;
   }
   
-  public final FinderCommentDrawer ddU()
+  public final FinderCommentDrawer duY()
   {
-    AppMethodBeat.i(245130);
-    FinderCommentDrawer localFinderCommentDrawer = this.tNb;
+    AppMethodBeat.i(278251);
+    FinderCommentDrawer localFinderCommentDrawer = this.xwQ;
     if (localFinderCommentDrawer == null) {
-      p.btv("drawer");
+      p.bGy("drawer");
     }
-    AppMethodBeat.o(245130);
+    AppMethodBeat.o(278251);
     return localFinderCommentDrawer;
   }
   
   public final void finish()
   {
-    AppMethodBeat.i(245132);
+    AppMethodBeat.i(278253);
     hideVKB();
     super.finish();
     overridePendingTransition(0, 0);
-    AppMethodBeat.o(245132);
+    AppMethodBeat.o(278253);
   }
   
   public final int getLayoutId()
   {
-    return 2131494220;
+    return b.g.finder_comment_ui_layout;
   }
   
   public final void onCreate(final Bundle paramBundle)
   {
-    AppMethodBeat.i(245131);
-    setTheme(2131821174);
+    AppMethodBeat.i(278252);
+    setTheme(b.k.MMTheme_Holo_Transparent);
     super.onCreate(paramBundle);
     if (getSupportActionBar() != null)
     {
       paramBundle = getSupportActionBar();
       if (paramBundle == null) {
-        p.hyc();
+        p.iCn();
       }
       paramBundle.setBackgroundDrawable((Drawable)new ColorDrawable(0));
       paramBundle = getSupportActionBar();
       if (paramBundle == null) {
-        p.hyc();
+        p.iCn();
       }
       paramBundle.hide();
     }
-    paramBundle = e.wky;
+    paramBundle = com.tencent.mm.plugin.finder.view.f.AVu;
     paramBundle = getIntent();
-    p.g(paramBundle, "intent");
-    p.h(paramBundle, "intent");
+    p.j(paramBundle, "intent");
+    p.k(paramBundle, "intent");
     long l = paramBundle.getLongExtra("COMMENT_REQUEST_KEY", 0L);
-    paramBundle = (o)e.dGt().remove(Long.valueOf(l));
+    paramBundle = (o)com.tencent.mm.plugin.finder.view.f.eit().remove(Long.valueOf(l));
     if (paramBundle == null)
     {
       finish();
-      AppMethodBeat.o(245131);
+      AppMethodBeat.o(278252);
       return;
     }
-    this.tZy = paramBundle;
-    paramBundle = e.wky;
+    this.xLO = paramBundle;
+    paramBundle = com.tencent.mm.plugin.finder.view.f.AVu;
     paramBundle = getIntent();
-    p.g(paramBundle, "intent");
-    p.h(paramBundle, "intent");
-    this.tZA = paramBundle.getBooleanExtra("FROM_MSG", false);
-    paramBundle = e.wky;
+    p.j(paramBundle, "intent");
+    p.k(paramBundle, "intent");
+    this.xLQ = paramBundle.getBooleanExtra("FROM_MSG", false);
+    paramBundle = com.tencent.mm.plugin.finder.view.f.AVu;
     paramBundle = getIntent();
-    p.g(paramBundle, "intent");
-    p.h(paramBundle, "intent");
-    this.tZB = paramBundle.getLongExtra("MENTION_ID", 0L);
-    paramBundle = e.wky;
+    p.j(paramBundle, "intent");
+    p.k(paramBundle, "intent");
+    this.xcD = paramBundle.getLongExtra("MENTION_ID", 0L);
+    paramBundle = com.tencent.mm.plugin.finder.view.f.AVu;
     paramBundle = getIntent();
-    p.g(paramBundle, "intent");
-    p.h(paramBundle, "intent");
-    this.tZC = paramBundle.getIntExtra("MENTION_CREATE_TIME", 0);
-    paramBundle = this.tZy;
+    p.j(paramBundle, "intent");
+    p.k(paramBundle, "intent");
+    this.xLR = paramBundle.getIntExtra("MENTION_CREATE_TIME", 0);
+    paramBundle = this.xLO;
     if (paramBundle == null) {
-      p.btv("requestData");
+      p.bGy("requestData");
     }
-    Object localObject1 = (e.a.a)paramBundle.first;
-    paramBundle = this.tZy;
+    Object localObject1 = (f.a.a)paramBundle.Mx;
+    paramBundle = this.xLO;
     if (paramBundle == null) {
-      p.btv("requestData");
+      p.bGy("requestData");
     }
-    paramBundle = (e.a.b)paramBundle.second;
-    Object localObject2 = findViewById(2131298971);
-    p.g(localObject2, "findViewById(R.id.comment_ui_container)");
-    this.tZx = ((FinderTouchLayout)localObject2);
-    this.tZz = ((com.tencent.mm.plugin.finder.view.builder.b)new a(this, this.tZA, paramBundle.tMO, this.tZB, this.tZC, ((e.a.a)localObject1).scene, (CommentDrawerContract.NPresenter)new f((Context)this)));
-    localObject2 = com.tencent.mm.ui.component.a.PRN;
-    localObject2 = (FinderReporterUIC)com.tencent.mm.ui.component.a.b((AppCompatActivity)this).get(FinderReporterUIC.class);
-    Object localObject3 = com.tencent.mm.ui.component.a.PRN;
-    ((FinderReporterUIC)localObject2).tCE = ((FinderReporterUIC)com.tencent.mm.ui.component.a.b((AppCompatActivity)this).get(FinderReporterUIC.class)).tyh;
-    localObject2 = FinderCommentDrawer.wkG;
+    paramBundle = (f.a.b)paramBundle.My;
+    Object localObject2 = findViewById(b.f.comment_ui_container);
+    p.j(localObject2, "findViewById(R.id.comment_ui_container)");
+    this.xLN = ((FinderTouchLayout)localObject2);
+    this.xLP = ((com.tencent.mm.plugin.finder.view.builder.b)new a(this, this.xLQ, paramBundle.xwF, this.xcD, this.xLR, ((f.a.a)localObject1).scene, (CommentDrawerContract.NPresenter)new com.tencent.mm.plugin.finder.feed.f((Context)this)));
+    localObject2 = g.Xox;
+    localObject2 = (aj)g.b((AppCompatActivity)this).i(aj.class);
+    Object localObject3 = g.Xox;
+    ((aj)localObject2).xkX = ((aj)g.b((AppCompatActivity)this).i(aj.class)).fGo;
+    localObject2 = FinderCommentDrawer.AVC;
     localObject2 = (MMFragmentActivity)this;
     localObject3 = getWindow();
-    p.g(localObject3, "window");
+    p.j(localObject3, "window");
     localObject3 = ((Window)localObject3).getDecorView();
-    p.g(localObject3, "window.decorView");
-    int i = ((e.a.a)localObject1).scene;
-    com.tencent.mm.plugin.finder.view.builder.b localb = this.tZz;
+    p.j(localObject3, "window.decorView");
+    int i = ((f.a.a)localObject1).scene;
+    com.tencent.mm.plugin.finder.view.builder.b localb = this.xLP;
     if (localb == null) {
-      p.btv("builder");
+      p.bGy("builder");
     }
-    this.tNb = FinderCommentDrawer.b.a((MMFragmentActivity)localObject2, (View)localObject3, i, (FinderCommentDrawer.a)localb, ((e.a.a)localObject1).tAj, true, 0, 64);
-    localObject1 = this.tNb;
+    this.xwQ = FinderCommentDrawer.b.a((MMFragmentActivity)localObject2, (View)localObject3, i, (FinderCommentDrawer.a)localb, ((f.a.a)localObject1).safeMode, true, 0, 64);
+    localObject1 = this.xwQ;
     if (localObject1 == null) {
-      p.btv("drawer");
+      p.bGy("drawer");
     }
-    ((FinderCommentDrawer)localObject1).setInterceptClose((kotlin.g.a.a)b.tZJ);
-    localObject1 = this.tNb;
+    ((FinderCommentDrawer)localObject1).setInterceptClose((kotlin.g.a.a)b.xLY);
+    localObject1 = this.xwQ;
     if (localObject1 == null) {
-      p.btv("drawer");
+      p.bGy("drawer");
     }
     ((FinderCommentDrawer)localObject1).setOnCloseDrawerCallback((CommentDrawerContract.CloseDrawerCallback)new c(this));
-    localObject1 = this.tZx;
+    localObject1 = this.xLN;
     if (localObject1 == null) {
-      p.btv("containerView");
+      p.bGy("containerView");
     }
     ((FinderTouchLayout)localObject1).post((Runnable)new d(this, paramBundle));
-    paramBundle = this.tZx;
+    paramBundle = this.xLN;
     if (paramBundle == null) {
-      p.btv("containerView");
+      p.bGy("containerView");
     }
     paramBundle.setTouchListener((FinderTouchLayout.a)new e(this));
-    AppMethodBeat.o(245131);
+    AppMethodBeat.o(278252);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(245134);
-    FinderCommentDrawer localFinderCommentDrawer = this.tNb;
+    AppMethodBeat.i(278257);
+    FinderCommentDrawer localFinderCommentDrawer = this.xwQ;
     if (localFinderCommentDrawer == null) {
-      p.btv("drawer");
+      p.bGy("drawer");
     }
-    localFinderCommentDrawer.dHu();
+    localFinderCommentDrawer.ejF();
     super.onDestroy();
-    AppMethodBeat.o(245134);
+    AppMethodBeat.o(278257);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(245133);
+    AppMethodBeat.i(278256);
     super.onResume();
-    AppMethodBeat.o(245133);
+    AppMethodBeat.o(278256);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -268,7 +271,7 @@ public final class FinderCommentUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/feed/ui/FinderCommentUI$initBuilder$1", "Lcom/tencent/mm/plugin/finder/view/builder/FinderTimelineDrawerBuilder;", "onBuildDrawerHeader", "", "context", "Landroid/content/Context;", "headerLayout", "Landroid/widget/FrameLayout;", "fullScreen", "", "plugin-finder_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/ui/FinderCommentUI$initBuilder$1", "Lcom/tencent/mm/plugin/finder/view/builder/FinderTimelineDrawerBuilder;", "onBuildDrawerHeader", "", "context", "Landroid/content/Context;", "headerLayout", "Landroid/widget/FrameLayout;", "fullScreen", "", "plugin-finder_release"})
   public static final class a
     extends com.tencent.mm.plugin.finder.view.builder.b
   {
@@ -279,86 +282,86 @@ public final class FinderCommentUI
     
     public final void a(final Context paramContext, FrameLayout paramFrameLayout, boolean paramBoolean)
     {
-      AppMethodBeat.i(245120);
-      p.h(paramContext, "context");
-      p.h(paramFrameLayout, "headerLayout");
+      AppMethodBeat.i(267110);
+      p.k(paramContext, "context");
+      p.k(paramFrameLayout, "headerLayout");
       super.a(paramContext, paramFrameLayout, paramBoolean);
-      if (this.tZE)
+      if (this.xLT)
       {
-        View localView = paramFrameLayout.findViewById(2131301827);
+        View localView = paramFrameLayout.findViewById(b.f.full_screen_comment_top_item);
         if (localView == null)
         {
-          AppMethodBeat.o(245120);
+          AppMethodBeat.o(267110);
           return;
         }
         localView.setVisibility(0);
         localView.setOnClickListener((View.OnClickListener)new a(this, paramContext));
-        Object localObject1 = (ImageView)paramFrameLayout.findViewById(2131301829);
-        Object localObject3 = (cjl)j.kt((List)this.tZF.getMediaList());
+        Object localObject1 = (ImageView)paramFrameLayout.findViewById(b.f.full_screen_comment_top_item_thumb);
+        Object localObject3 = (csg)j.lp((List)this.xLU.getMediaList());
         Object localObject2;
-        m localm;
+        t localt;
         if (localObject3 != null)
         {
-          if (((cjl)localObject3).mediaType == 4)
+          if (((csg)localObject3).mediaType == 4)
           {
-            localObject2 = new k((cjl)localObject3, x.vEo, null, null, 12);
-            localObject3 = m.uJa;
-            localObject3 = m.djY();
-            p.g(localObject1, "thumbIv");
-            localm = m.uJa;
-            ((d)localObject3).a(localObject2, (ImageView)localObject1, m.a(m.a.uJb));
+            localObject2 = new r((csg)localObject3, u.Alz, null, null, 12);
+            localObject3 = t.ztT;
+            localObject3 = t.dJe();
+            p.j(localObject1, "thumbIv");
+            localt = t.ztT;
+            ((d)localObject3).a(localObject2, (ImageView)localObject1, t.a(t.a.ztU));
           }
         }
         else
         {
-          localObject1 = (TextView)paramFrameLayout.findViewById(2131301830);
-          p.g(localObject1, "titleTv");
-          ao.a((Paint)((TextView)localObject1).getPaint(), 0.8F);
-          ((TextView)localObject1).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(paramContext, (CharSequence)paramContext.getString(2131759748, new Object[] { this.tZF.getNickName() })));
-          paramFrameLayout = (TextView)paramFrameLayout.findViewById(2131301828);
-          if (Util.isNullOrNil(this.tZF.getDescription())) {
-            break label391;
+          localObject1 = (TextView)paramFrameLayout.findViewById(b.f.full_screen_comment_top_item_title);
+          p.j(localObject1, "titleTv");
+          ar.a((Paint)((TextView)localObject1).getPaint(), 0.8F);
+          ((TextView)localObject1).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(paramContext, (CharSequence)paramContext.getString(b.j.finder_feed_of_user, new Object[] { this.xLU.getNickName() })));
+          paramFrameLayout = (TextView)paramFrameLayout.findViewById(b.f.full_screen_comment_top_item_desc);
+          if (Util.isNullOrNil(this.xLU.getDescription())) {
+            break label396;
           }
-          p.g(paramFrameLayout, "descTv");
+          p.j(paramFrameLayout, "descTv");
           paramFrameLayout.setVisibility(0);
-          if (!Util.isNullOrNil(this.tZF.getDescription())) {
-            break label368;
+          if (!Util.isNullOrNil(this.xLU.getDescription())) {
+            break label373;
           }
           paramContext = (CharSequence)"";
-          label290:
+          label295:
           paramFrameLayout.setText(paramContext);
         }
         for (;;)
         {
-          dHw().hH(localView);
-          AppMethodBeat.o(245120);
+          ejH().jc(localView);
+          AppMethodBeat.o(267110);
           return;
-          localObject2 = m.uJa;
-          localObject2 = m.djY();
-          localObject3 = new k((cjl)localObject3, x.vEo, null, null, 12);
-          p.g(localObject1, "thumbIv");
-          localm = m.uJa;
-          ((d)localObject2).a(localObject3, (ImageView)localObject1, m.a(m.a.uJb));
+          localObject2 = t.ztT;
+          localObject2 = t.dJe();
+          localObject3 = new r((csg)localObject3, u.Alz, null, null, 12);
+          p.j(localObject1, "thumbIv");
+          localt = t.ztT;
+          ((d)localObject2).a(localObject3, (ImageView)localObject1, t.a(t.a.ztU));
           break;
-          label368:
-          paramContext = (CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(MMApplicationContext.getContext(), (CharSequence)this.tZF.getDescription());
-          break label290;
-          label391:
-          p.g(paramFrameLayout, "descTv");
+          label373:
+          paramContext = (CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(MMApplicationContext.getContext(), (CharSequence)this.xLU.getDescription());
+          break label295;
+          label396:
+          p.j(paramFrameLayout, "descTv");
           paramFrameLayout.setVisibility(8);
         }
       }
-      paramContext = paramFrameLayout.findViewById(2131301827);
+      paramContext = paramFrameLayout.findViewById(b.f.full_screen_comment_top_item);
       if (paramContext != null)
       {
         paramContext.setVisibility(8);
-        AppMethodBeat.o(245120);
+        AppMethodBeat.o(267110);
         return;
       }
-      AppMethodBeat.o(245120);
+      AppMethodBeat.o(267110);
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class a
       implements View.OnClickListener
     {
@@ -366,38 +369,38 @@ public final class FinderCommentUI
       
       public final void onClick(View paramView)
       {
-        AppMethodBeat.i(245119);
+        AppMethodBeat.i(284923);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderCommentUI$initBuilder$1$onBuildDrawerHeader$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/ui/FinderCommentUI$initBuilder$1$onBuildDrawerHeader$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
         paramView = new Intent();
-        paramView.putExtra("feed_object_id", this.tZI.tZF.getId());
-        paramView.putExtra("mention_id", this.tZI.tZG);
-        paramView.putExtra("mention_create_time", this.tZI.tZH);
-        paramView.putExtra("from_scene", this.tZI.$scene);
+        paramView.putExtra("feed_object_id", this.xLX.xLU.getId());
+        paramView.putExtra("mention_id", this.xLX.xLV);
+        paramView.putExtra("mention_create_time", this.xLX.xLW);
+        paramView.putExtra("from_scene", this.xLX.$scene);
         paramView.putExtra("from_comment_ui", true);
-        localObject = FinderReporterUIC.wzC;
-        FinderReporterUIC.a.a(paramContext, paramView, 0L, 0, false, 124);
-        localObject = com.tencent.mm.plugin.finder.utils.a.vUU;
-        com.tencent.mm.plugin.finder.utils.a.I((Context)this.tZI.tZD, paramView);
+        localObject = aj.Bnu;
+        aj.a.a(paramContext, paramView, 0L, 0, false, 124);
+        localObject = com.tencent.mm.plugin.finder.utils.a.ACH;
+        com.tencent.mm.plugin.finder.utils.a.H((Context)this.xLX.xLS, paramView);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderCommentUI$initBuilder$1$onBuildDrawerHeader$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(245119);
+        AppMethodBeat.o(284923);
       }
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class b
     extends q
     implements kotlin.g.a.a<Boolean>
   {
-    public static final b tZJ;
+    public static final b xLY;
     
     static
     {
-      AppMethodBeat.i(245121);
-      tZJ = new b();
-      AppMethodBeat.o(245121);
+      AppMethodBeat.i(291092);
+      xLY = new b();
+      AppMethodBeat.o(291092);
     }
     
     b()
@@ -406,34 +409,34 @@ public final class FinderCommentUI
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/feed/ui/FinderCommentUI$onCreate$2", "Lcom/tencent/mm/plugin/finder/presenter/contract/CommentDrawerContract$CloseDrawerCallback;", "onClose", "", "commentCount", "", "data", "", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "plugin-finder_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/ui/FinderCommentUI$onCreate$2", "Lcom/tencent/mm/plugin/finder/presenter/contract/CommentDrawerContract$CloseDrawerCallback;", "onClose", "", "commentCount", "", "data", "", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "plugin-finder_release"})
   public static final class c
     implements CommentDrawerContract.CloseDrawerCallback
   {
-    public final void g(int paramInt, List<? extends s> paramList)
+    public final void i(int paramInt, List<? extends s> paramList)
     {
-      AppMethodBeat.i(245123);
-      p.h(paramList, "data");
-      if (FinderCommentUI.a(this.tZD))
+      AppMethodBeat.i(285786);
+      p.k(paramList, "data");
+      if (FinderCommentUI.a(this.xLS))
       {
-        AppMethodBeat.o(245123);
+        AppMethodBeat.o(285786);
         return;
       }
-      FinderCommentUI.b(this.tZD);
+      FinderCommentUI.b(this.xLS);
       Intent localIntent = new Intent();
-      e.a locala = e.wky;
-      paramList = new e.a.c(paramInt, paramList);
-      p.h(localIntent, "intent");
-      p.h(paramList, "resultData");
+      f.a locala = com.tencent.mm.plugin.finder.view.f.AVu;
+      paramList = new f.a.c(paramInt, paramList);
+      p.k(localIntent, "intent");
+      p.k(paramList, "resultData");
       long l = System.currentTimeMillis();
       localIntent.putExtra("COMMENT_RESULT_KEY", l);
-      ((Map)e.dGu()).put(Long.valueOf(l), paramList);
-      this.tZD.setResult(0, localIntent);
-      FinderCommentUI.c(this.tZD).postDelayed((Runnable)new a(this), FinderCommentUI.d(this.tZD));
-      AppMethodBeat.o(245123);
+      ((Map)com.tencent.mm.plugin.finder.view.f.eiu()).put(Long.valueOf(l), paramList);
+      this.xLS.setResult(0, localIntent);
+      FinderCommentUI.c(this.xLS).postDelayed((Runnable)new a(this), FinderCommentUI.d(this.xLS));
+      AppMethodBeat.o(285786);
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -441,81 +444,81 @@ public final class FinderCommentUI
       
       public final void run()
       {
-        AppMethodBeat.i(245122);
-        this.tZK.tZD.finish();
-        AppMethodBeat.o(245122);
+        AppMethodBeat.i(283005);
+        this.xLZ.xLS.finish();
+        AppMethodBeat.o(283005);
       }
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
-    d(FinderCommentUI paramFinderCommentUI, e.a.b paramb) {}
+    d(FinderCommentUI paramFinderCommentUI, f.a.b paramb) {}
     
     public final void run()
     {
-      AppMethodBeat.i(245124);
-      FinderCommentDrawer.a(this.tZD.ddU(), paramBundle.tMO, paramBundle.tMV, paramBundle.tuj, paramBundle.tMW, paramBundle.wkz, paramBundle.wkA, false, 0, 384);
-      AppMethodBeat.o(245124);
+      AppMethodBeat.i(275085);
+      FinderCommentDrawer.a(this.xLS.duY(), paramBundle.xwF, paramBundle.mss, paramBundle.xbT, paramBundle.xwM, paramBundle.AVv, paramBundle.AVw, false, 0, 384);
+      AppMethodBeat.o(275085);
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/feed/ui/FinderCommentUI$onCreate$4", "Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout$TouchListener;", "ratio", "", "getRatio", "()F", "setRatio", "(F)V", "interceptDown", "", "event", "Landroid/view/MotionEvent;", "onScrollX", "", "x", "onTouchUp", "plugin-finder_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/ui/FinderCommentUI$onCreate$4", "Lcom/tencent/mm/plugin/finder/view/FinderTouchLayout$TouchListener;", "ratio", "", "getRatio", "()F", "setRatio", "(F)V", "interceptDown", "", "event", "Landroid/view/MotionEvent;", "onScrollX", "", "x", "onTouchUp", "plugin-finder_release"})
   public static final class e
     implements FinderTouchLayout.a
   {
-    private float tEJ;
+    private float xnl;
     
     e()
     {
-      AppMethodBeat.i(245128);
+      AppMethodBeat.i(287285);
       Resources localResources2 = localResources1.getResources();
-      p.g(localResources2, "resources");
+      p.j(localResources2, "resources");
       float f = localResources2.getDisplayMetrics().heightPixels;
       Resources localResources1 = localResources1.getResources();
-      p.g(localResources1, "resources");
-      this.tEJ = (f / localResources1.getDisplayMetrics().widthPixels);
-      AppMethodBeat.o(245128);
+      p.j(localResources1, "resources");
+      this.xnl = (f / localResources1.getDisplayMetrics().widthPixels);
+      AppMethodBeat.o(287285);
     }
     
-    public final boolean T(MotionEvent paramMotionEvent)
+    public final boolean Z(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(245125);
-      p.h(paramMotionEvent, "event");
-      if ((paramMotionEvent.getRawX() <= FinderCommentUI.e(this.tZD)) && (paramMotionEvent.getRawY() > FinderCommentUI.f(this.tZD)))
+      AppMethodBeat.i(287282);
+      p.k(paramMotionEvent, "event");
+      if ((paramMotionEvent.getRawX() <= FinderCommentUI.e(this.xLS)) && (paramMotionEvent.getRawY() > FinderCommentUI.f(this.xLS)))
       {
-        AppMethodBeat.o(245125);
+        AppMethodBeat.o(287282);
         return true;
       }
-      AppMethodBeat.o(245125);
+      AppMethodBeat.o(287282);
       return false;
     }
     
-    public final void U(MotionEvent paramMotionEvent)
+    public final void aa(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(245127);
-      p.h(paramMotionEvent, "event");
-      Log.i(FinderCommentUI.g(this.tZD), "translationY " + this.tZD.ddT().getTranslationY() + ", height:" + this.tZD.ddT().getHeight());
-      if (this.tZD.ddT().getTranslationY() > FinderCommentUI.h(this.tZD) * this.tZD.ddT().getHeight())
+      AppMethodBeat.i(287284);
+      p.k(paramMotionEvent, "event");
+      Log.i(FinderCommentUI.g(this.xLS), "translationY " + this.xLS.duX().getTranslationY() + ", height:" + this.xLS.duX().getHeight());
+      if (this.xLS.duX().getTranslationY() > FinderCommentUI.h(this.xLS) * this.xLS.duX().getHeight())
       {
-        this.tZD.ddU().dGr();
-        AppMethodBeat.o(245127);
+        this.xLS.duY().eir();
+        AppMethodBeat.o(287284);
         return;
       }
-      this.tZD.ddT().clearAnimation();
-      this.tZD.ddT().animate().cancel();
-      this.tZD.ddT().animate().setInterpolator((TimeInterpolator)new DecelerateInterpolator(1.5F)).translationY(0.0F).setDuration(FinderCommentUI.d(this.tZD)).start();
-      AppMethodBeat.o(245127);
+      this.xLS.duX().clearAnimation();
+      this.xLS.duX().animate().cancel();
+      this.xLS.duX().animate().setInterpolator((TimeInterpolator)new DecelerateInterpolator(1.5F)).translationY(0.0F).setDuration(FinderCommentUI.d(this.xLS)).start();
+      AppMethodBeat.o(287284);
     }
     
-    public final void bh(float paramFloat)
+    public final void bg(float paramFloat)
     {
-      AppMethodBeat.i(245126);
-      this.tZD.ddT().setTranslationY(this.tEJ * paramFloat);
-      Log.i(FinderCommentUI.g(this.tZD), "distanceX " + paramFloat + ", translationY " + this.tZD.ddT().getTranslationY());
-      AppMethodBeat.o(245126);
+      AppMethodBeat.i(287283);
+      this.xLS.duX().setTranslationY(this.xnl * paramFloat);
+      Log.i(FinderCommentUI.g(this.xLS), "distanceX " + paramFloat + ", translationY " + this.xLS.duX().getTranslationY());
+      AppMethodBeat.o(287283);
     }
   }
 }

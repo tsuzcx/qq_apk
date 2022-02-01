@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.c.h;
 import com.tencent.mm.plugin.webview.d.h;
 import com.tencent.mm.ui.base.h.d;
 
@@ -17,7 +18,7 @@ public class QRCodeIntroductionWebViewUI
   {
     AppMethodBeat.i(79672);
     super.onCreate(paramBundle);
-    addIconOptionMenu(0, 2131690843, new MenuItem.OnMenuItemClickListener()
+    addIconOptionMenu(0, c.h.icons_outlined_more, new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {

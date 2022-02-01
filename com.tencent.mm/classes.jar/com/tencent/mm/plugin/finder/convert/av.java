@@ -1,40 +1,37 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.graphics.Paint;
-import android.support.v7.widget.RecyclerView;
-import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.am;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.model.an;
+import com.tencent.mm.protocal.protobuf.bda;
 import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.h;
+import com.tencent.mm.view.recyclerview.i;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/convert/FinderLiveWeCoinHotConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderLiveWeCoinData;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "setRankTv", "rankTv", "Landroid/widget/TextView;", "contact", "Lcom/tencent/mm/protocal/protobuf/FinderLiveContact;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderLiveSubTagConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderLiveTagData;", "selectedTagInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveTagInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveTagInfo;)V", "getSelectedTagInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveTagInfo;", "setSelectedTagInfo", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-finder_release"})
 public final class av
-  extends e<am>
+  extends e<an>
 {
-  private final String TAG = "FinderLiveWeCoinHotConvert";
+  public bda xne;
   
-  public final void a(RecyclerView paramRecyclerView, h paramh, int paramInt)
+  public av(bda parambda)
   {
-    AppMethodBeat.i(243159);
-    p.h(paramRecyclerView, "recyclerView");
-    p.h(paramh, "holder");
-    paramRecyclerView = (TextView)paramh.Mn(2131301336);
-    if (paramRecyclerView != null) {}
-    for (paramRecyclerView = paramRecyclerView.getPaint();; paramRecyclerView = null)
-    {
-      ao.a((Paint)paramRecyclerView, 0.8F);
-      AppMethodBeat.o(243159);
-      return;
-    }
+    this.xne = parambda;
+  }
+  
+  public final void a(RecyclerView paramRecyclerView, i parami, int paramInt)
+  {
+    AppMethodBeat.i(285958);
+    p.k(paramRecyclerView, "recyclerView");
+    p.k(parami, "holder");
+    AppMethodBeat.o(285958);
   }
   
   public final int getLayoutId()
   {
-    return 2131494485;
+    return b.g.finder_live_sub_tag_item_ui;
   }
 }
 

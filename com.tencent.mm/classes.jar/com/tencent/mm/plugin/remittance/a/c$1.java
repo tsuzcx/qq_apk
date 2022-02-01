@@ -13,7 +13,7 @@ final class c$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.a.c.1
  * JD-Core Version:    0.7.0.1
  */

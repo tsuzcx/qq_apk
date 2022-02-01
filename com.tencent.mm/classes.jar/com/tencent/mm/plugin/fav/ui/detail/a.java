@@ -5,8 +5,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.protocal.protobuf.anb;
-import com.tencent.mm.protocal.protobuf.anh;
+import com.tencent.mm.plugin.fav.ui.s.i;
+import com.tencent.mm.protocal.protobuf.aoc;
+import com.tencent.mm.protocal.protobuf.aoi;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 
@@ -22,41 +23,41 @@ public final class a
     for (;;)
     {
       paramg = DateFormat.format("yyyy/M/d", paramg.field_updateTime);
-      paramMMActivity.setMMSubTitle(String.format(paramMMActivity.getString(2131759180), new Object[] { localObject, paramg }));
+      paramMMActivity.setMMSubTitle(String.format(paramMMActivity.getString(s.i.favorite_detail_header_desc), new Object[] { localObject, paramg }));
       AppMethodBeat.o(107255);
       return;
-      anh localanh = paramg.field_favProto.Lya;
-      if ((localanh != null) && (!Util.isNullOrNil(localanh.LxA)))
+      aoi localaoi = paramg.field_favProto.SAB;
+      if ((localaoi != null) && (!Util.isNullOrNil(localaoi.SAb)))
       {
-        String str1 = b.arL(localanh.LxA);
+        String str1 = b.azM(localaoi.SAb);
         String str2;
-        if (z.aTY().equals(localanh.dRL))
+        if (z.bcZ().equals(localaoi.fLi))
         {
-          str2 = b.Is(localanh.toUser);
+          str2 = b.PK(localaoi.toUser);
           localObject = str1;
-          if (!Util.nullAs(str2, "").equals(localanh.toUser)) {
+          if (!Util.nullAs(str2, "").equals(localaoi.toUser)) {
             localObject = str1 + " - " + str2;
           }
         }
         else
         {
-          str2 = b.Is(localanh.dRL);
+          str2 = b.PK(localaoi.fLi);
           localObject = str1;
-          if (!Util.nullAs(str2, "").equals(localanh.dRL)) {
+          if (!Util.nullAs(str2, "").equals(localaoi.fLi)) {
             localObject = str1 + " - " + str2;
           }
         }
       }
       else
       {
-        localObject = b.Is(paramg.field_fromUser);
+        localObject = b.PK(paramg.field_fromUser);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.detail.a
  * JD-Core Version:    0.7.0.1
  */

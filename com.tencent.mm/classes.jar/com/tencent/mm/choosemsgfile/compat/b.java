@@ -1,6 +1,6 @@
 package com.tencent.mm.choosemsgfile.compat;
 
-import com.tencent.mm.av.g;
+import com.tencent.mm.ay.g;
 import com.tencent.mm.pluginsdk.model.app.c;
 import com.tencent.mm.storage.ca;
 
@@ -27,23 +27,23 @@ public abstract interface b
   
   public abstract boolean m(ca paramca);
   
-  public abstract c s(String paramString, long paramLong);
+  public abstract c p(String paramString, long paramLong);
   
   public static abstract interface a
   {
-    public abstract void cs(int paramInt1, int paramInt2);
+    public abstract void cK(int paramInt1, int paramInt2);
     
-    public abstract void t(int paramInt, String paramString);
+    public abstract void u(int paramInt, String paramString);
   }
   
   public static abstract interface b
   {
-    public abstract void u(int paramInt, String paramString);
+    public abstract void v(int paramInt, String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.choosemsgfile.compat.b
  * JD-Core Version:    0.7.0.1
  */

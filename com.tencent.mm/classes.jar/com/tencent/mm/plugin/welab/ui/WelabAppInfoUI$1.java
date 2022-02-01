@@ -12,8 +12,8 @@ final class WelabAppInfoUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(146270);
-    this.JGp.hideVKB();
-    this.JGp.finish();
+    this.QFB.hideVKB();
+    this.QFB.finish();
     AppMethodBeat.o(146270);
     return true;
   }

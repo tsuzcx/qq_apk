@@ -12,12 +12,12 @@ import org.json.JSONObject;
 public final class f
   extends m
 {
-  private boolean ebI;
+  private boolean fVK;
   
   public f(String paramString1, String paramString2)
   {
     AppMethodBeat.i(66292);
-    this.ebI = true;
+    this.fVK = true;
     HashMap localHashMap = new HashMap();
     localHashMap.put("code_ver", paramString1);
     localHashMap.put("cn", paramString2);
@@ -43,7 +43,7 @@ public final class f
   
   public final boolean isBlock()
   {
-    return this.ebI;
+    return this.fVK;
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
@@ -53,22 +53,22 @@ public final class f
     if (paramInt == 0)
     {
       Log.i("MicroMsg.NetSceneOfflineVerifyToken", "NetSceneOfflineVerifyToken succ");
-      h.CyF.idkeyStat(135L, 22L, 1L, true);
+      h.IzE.idkeyStat(135L, 22L, 1L, true);
       AppMethodBeat.o(66293);
       return;
     }
     Log.i("MicroMsg.NetSceneOfflineVerifyToken", "NetSceneOfflineVerifyToken fail.errCode = %d ;errMsg = ", new Object[] { Integer.valueOf(paramInt), paramString });
-    h.CyF.idkeyStat(135L, 23L, 1L, true);
+    h.IzE.idkeyStat(135L, 23L, 1L, true);
     AppMethodBeat.o(66293);
   }
   
   public final void onGYNetEnd2(e parame, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(66294);
-    if ((parame.Rtu == 0) && (parame.errType != 0)) {}
-    for (this.ebI = false;; this.ebI = true)
+    if ((parame.YUS == 0) && (parame.errType != 0)) {}
+    for (this.fVK = false;; this.fVK = true)
     {
-      Log.i("MicroMsg.NetSceneOfflineVerifyToken", "onGYNetEnd2 isBlock %s", new Object[] { Boolean.valueOf(this.ebI) });
+      Log.i("MicroMsg.NetSceneOfflineVerifyToken", "onGYNetEnd2 isBlock %s", new Object[] { Boolean.valueOf(this.fVK) });
       AppMethodBeat.o(66294);
       return;
     }

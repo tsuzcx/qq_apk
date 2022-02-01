@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.product.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.akg;
-import com.tencent.mm.protocal.protobuf.boy;
-import com.tencent.mm.protocal.protobuf.boz;
-import com.tencent.mm.protocal.protobuf.dr;
+import com.tencent.mm.protocal.protobuf.alj;
+import com.tencent.mm.protocal.protobuf.bwt;
+import com.tencent.mm.protocal.protobuf.bwu;
+import com.tencent.mm.protocal.protobuf.dp;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
@@ -20,28 +20,28 @@ public final class g
   extends q
   implements m
 {
-  public LinkedList<akg> AZk;
-  public String AZs;
+  public LinkedList<alj> GTi;
+  public String GTq;
   private i callback;
   private d rr;
   
-  public g(String paramString1, String paramString2, dr paramdr)
+  public g(String paramString1, String paramString2, dp paramdp)
   {
     AppMethodBeat.i(66891);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new boy();
-    ((d.a)localObject).iLO = new boz();
+    ((d.a)localObject).lBU = new bwt();
+    ((d.a)localObject).lBV = new bwu();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getlastestexpressinfo";
     ((d.a)localObject).funcId = 578;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (boy)this.rr.iLK.iLR;
-    this.AZs = paramString1;
-    ((boy)localObject).KZu = paramString1;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (bwt)d.b.b(this.rr.lBR);
+    this.GTq = paramString1;
+    ((bwt)localObject).SaD = paramString1;
     Log.d("MicroMsg.NetSceneMallGetLastestExpressInfo", "pid ".concat(String.valueOf(paramString1)));
-    ((boy)localObject).Lca = paramString2;
-    ((boy)localObject).LWZ = paramdr;
+    ((bwt)localObject).Sdn = paramString2;
+    ((bwt)localObject).Tgx = paramdp;
     AppMethodBeat.o(66891);
   }
   
@@ -62,11 +62,11 @@ public final class g
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(66892);
-    paramArrayOfByte = (boz)((d)params).iLL.iLR;
-    if ((paramInt2 == 0) && (paramInt3 == 0) && (paramArrayOfByte.KOt == 0))
+    paramArrayOfByte = (bwu)d.c.b(((d)params).lBS);
+    if ((paramInt2 == 0) && (paramInt3 == 0) && (paramArrayOfByte.RPr == 0))
     {
-      Log.d("MicroMsg.NetSceneMallGetLastestExpressInfo", "resp.ExpressCount " + paramArrayOfByte.LXb);
-      this.AZk = paramArrayOfByte.LXa;
+      Log.d("MicroMsg.NetSceneMallGetLastestExpressInfo", "resp.ExpressCount " + paramArrayOfByte.Tgz);
+      this.GTi = paramArrayOfByte.Tgy;
     }
     paramInt1 = paramInt3;
     params = paramString;
@@ -74,10 +74,10 @@ public final class g
     {
       paramInt1 = paramInt3;
       params = paramString;
-      if (paramArrayOfByte.KOt != 0)
+      if (paramArrayOfByte.RPr != 0)
       {
-        paramInt1 = paramArrayOfByte.KOt;
-        params = paramArrayOfByte.KOu;
+        paramInt1 = paramArrayOfByte.RPr;
+        params = paramArrayOfByte.RPs;
       }
     }
     Log.d("MicroMsg.NetSceneMallGetLastestExpressInfo", "errCode " + paramInt1 + ", errMsg " + params);

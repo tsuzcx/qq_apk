@@ -1,11 +1,12 @@
 package com.tencent.kinda.framework.app;
 
+import com.tencent.kinda.framework.R.string;
 import com.tencent.kinda.framework.widget.tools.KindaContext;
 import com.tencent.kinda.gen.IShakeCheckingManager;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.l.d;
-import com.tencent.mm.pluginsdk.l.d.a;
+import com.tencent.mm.pluginsdk.m.d;
+import com.tencent.mm.pluginsdk.m.d.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.PlaySound;
@@ -52,18 +53,18 @@ public class KindaShakeCheckingManager
     AppMethodBeat.i(18515);
     if (paramBoolean)
     {
-      PlaySound.play(KindaContext.get(), 2131765775);
+      PlaySound.play(KindaContext.get(), R.string.shake_match);
       AppMethodBeat.o(18515);
       return;
     }
-    PlaySound.play(KindaContext.get(), 2131765783);
+    PlaySound.play(KindaContext.get(), R.string.shake_nomatch);
     AppMethodBeat.o(18515);
   }
   
   public void playShakeSound()
   {
     AppMethodBeat.i(18514);
-    PlaySound.play(KindaContext.get(), 2131765806);
+    PlaySound.play(KindaContext.get(), R.string.shake_sound_male);
     AppMethodBeat.o(18514);
   }
   
@@ -126,7 +127,7 @@ public class KindaShakeCheckingManager
     AppMethodBeat.i(18513);
     if (this.shakeSensor != null)
     {
-      this.shakeSensor.cBo();
+      this.shakeSensor.cPS();
       this.shakeSensor = null;
     }
     this.isInvokeCallback = false;
@@ -137,7 +138,7 @@ public class KindaShakeCheckingManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaShakeCheckingManager
  * JD-Core Version:    0.7.0.1
  */

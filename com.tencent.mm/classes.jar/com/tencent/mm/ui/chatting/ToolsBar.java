@@ -8,17 +8,21 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.d;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.l;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.at;
+import com.tencent.mm.ui.aw;
 import com.tencent.mm.ui.widget.imageview.WeImageButton;
 
 public class ToolsBar
   extends LinearLayout
 {
-  private WeImageButton Phu;
-  private WeImageButton Phy;
-  private WeImageButton Pld;
-  private LinearLayout.LayoutParams xTw;
+  private LinearLayout.LayoutParams CXH;
+  private WeImageButton WAW;
+  private WeImageButton WBa;
+  private WeImageButton WEN;
   
   public ToolsBar(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,27 +30,27 @@ public class ToolsBar
     AppMethodBeat.i(34960);
     setOrientation(0);
     setGravity(16);
-    setBackground(at.aN(getContext(), 2130969286));
-    this.xTw = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131165585), 1.0F);
-    this.Phu = new WeImageButton(getContext());
-    this.Phu.setImageResource(2131231639);
-    this.Phu.setScaleType(ImageView.ScaleType.CENTER);
-    this.Phu.setBackgroundResource(0);
-    this.Phu.setContentDescription(paramContext.getString(2131757465));
-    this.Phy = new WeImageButton(getContext());
-    this.Phy.setImageResource(2131231636);
-    this.Phy.setScaleType(ImageView.ScaleType.CENTER);
-    this.Phy.setBackgroundResource(0);
-    this.Phy.setContentDescription(paramContext.getString(2131757464));
-    this.Pld = new WeImageButton(getContext());
-    this.Pld.setImageResource(2131231638);
-    this.Pld.setScaleType(ImageView.ScaleType.CENTER);
-    this.Pld.setBackgroundResource(0);
-    this.Pld.setContentDescription(paramContext.getString(2131757464));
+    setBackground(aw.bf(getContext(), R.d.list_top_line_selector));
+    this.CXH = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(R.f.SmallListHeight), 1.0F);
+    this.WAW = new WeImageButton(getContext());
+    this.WAW.setImageResource(R.g.dmN);
+    this.WAW.setScaleType(ImageView.ScaleType.CENTER);
+    this.WAW.setBackgroundResource(0);
+    this.WAW.setContentDescription(paramContext.getString(R.l.chatting_more_share));
+    this.WBa = new WeImageButton(getContext());
+    this.WBa.setImageResource(R.g.dmL);
+    this.WBa.setScaleType(ImageView.ScaleType.CENTER);
+    this.WBa.setBackgroundResource(0);
+    this.WBa.setContentDescription(paramContext.getString(R.l.chatting_more_favorite));
+    this.WEN = new WeImageButton(getContext());
+    this.WEN.setImageResource(R.g.dmM);
+    this.WEN.setScaleType(ImageView.ScaleType.CENTER);
+    this.WEN.setBackgroundResource(0);
+    this.WEN.setContentDescription(paramContext.getString(R.l.chatting_more_favorite));
     removeAllViews();
-    addView(this.Phu, this.xTw);
-    addView(this.Phy, this.xTw);
-    addView(this.Pld, this.xTw);
+    addView(this.WAW, this.CXH);
+    addView(this.WBa, this.CXH);
+    addView(this.WEN, this.CXH);
     AppMethodBeat.o(34960);
   }
   
@@ -60,21 +64,21 @@ public class ToolsBar
       AppMethodBeat.o(34961);
       return;
     case 0: 
-      this.Phu.setOnClickListener(paramOnClickListener);
+      this.WAW.setOnClickListener(paramOnClickListener);
       AppMethodBeat.o(34961);
       return;
     case 1: 
-      this.Phy.setOnClickListener(paramOnClickListener);
+      this.WBa.setOnClickListener(paramOnClickListener);
       AppMethodBeat.o(34961);
       return;
     }
-    this.Pld.setOnClickListener(paramOnClickListener);
+    this.WEN.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(34961);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ToolsBar
  * JD-Core Version:    0.7.0.1
  */

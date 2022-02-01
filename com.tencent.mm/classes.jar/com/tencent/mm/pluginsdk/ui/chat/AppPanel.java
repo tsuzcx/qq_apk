@@ -16,15 +16,20 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.Toast;
-import com.tencent.f.i;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.xq;
-import com.tencent.mm.g.a.xq.b;
-import com.tencent.mm.g.b.a.gx;
-import com.tencent.mm.g.b.a.gy;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.f.a.yx;
+import com.tencent.mm.f.a.yx.b;
+import com.tencent.mm.f.b.a.jc;
+import com.tencent.mm.f.b.a.jd;
+import com.tencent.mm.live.d.e;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.appbrand.service.r;
+import com.tencent.mm.plugin.topstory.ui.c.g;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
 import com.tencent.mm.sdk.event.EventCenter;
@@ -50,638 +55,639 @@ import java.util.Map;
 public class AppPanel
   extends LinearLayout
 {
-  private static int COl = 215;
-  private static int COm = 158;
-  private static boolean Khh = false;
-  private boolean COA;
-  private int COB;
-  private int COC;
-  public MMFlipper COD;
-  private MMDotView COE;
-  private final boolean[] KgI;
-  private a KgJ;
-  private AppPanel.b KgK;
-  private ChatFooter.b KgL;
-  private List<AppGrid> KgM;
-  private int KgN;
-  public int KgO;
-  private int KgP;
-  public a KgQ;
-  private int KgR;
-  private int KgS;
-  private int KgT;
-  private boolean KgU;
-  private boolean KgV;
-  private boolean KgW;
-  private boolean KgX;
-  boolean KgY;
-  boolean KgZ;
-  private int Kgu;
-  private int Kgx;
-  boolean Kha;
-  boolean Khb;
-  private Map<String, com.tencent.mm.pluginsdk.model.app.g> Khc;
-  private boolean Khd;
-  private final int Khe;
-  private int Khf;
-  private AppGrid.b Khg;
-  private boolean Khi;
-  private int Khj;
+  private static int ITN = 215;
+  private static int ITO = 158;
+  private static boolean RhS = false;
+  private int BQJ;
+  private boolean IUc;
+  private int IUd;
+  private int IUe;
+  public MMFlipper IUf;
+  private MMDotView IUg;
+  private int RhA;
+  public a RhB;
+  private int RhC;
+  private int RhD;
+  private int RhE;
+  private boolean RhF;
+  private boolean RhG;
+  private boolean RhH;
+  private boolean RhI;
+  boolean RhJ;
+  boolean RhK;
+  boolean RhL;
+  boolean RhM;
+  private Map<String, com.tencent.mm.pluginsdk.model.app.g> RhN;
+  private boolean RhO;
+  private final int RhP;
+  private int RhQ;
+  private AppGrid.b RhR;
+  private boolean RhT;
+  private int RhU;
+  private int Rhf;
+  private int Rhi;
+  private final boolean[] Rht;
+  private a Rhu;
+  private AppPanel.b Rhv;
+  private ChatFooter.b Rhw;
+  private List<AppGrid> Rhx;
+  private int Rhy;
+  public int Rhz;
   Context context;
   private boolean isInit;
-  private List<com.tencent.mm.pluginsdk.model.app.g> jGV;
+  private List<com.tencent.mm.pluginsdk.model.app.g> mxJ;
   private SharedPreferences sp;
-  private int xeA;
   
   public AppPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(31459);
-    this.KgI = new boolean[21];
-    this.COA = false;
-    this.Kgx = 21;
-    this.xeA = this.Kgx;
-    this.KgO = 0;
-    this.KgP = -1;
+    this.Rht = new boolean[21];
+    this.IUc = false;
+    this.Rhi = 21;
+    this.BQJ = this.Rhi;
+    this.Rhz = 0;
+    this.RhA = -1;
     this.isInit = false;
-    this.KgR = 0;
-    this.KgS = 0;
-    this.KgT = 0;
-    this.KgU = false;
-    this.KgV = false;
-    this.KgW = false;
-    this.KgX = false;
-    this.KgY = false;
-    this.KgZ = false;
-    this.Kha = false;
-    this.Khb = false;
-    this.Khc = null;
-    this.Khd = true;
-    this.jGV = new LinkedList();
-    this.Khe = 2;
-    this.Khf = -1;
-    this.Khg = new AppGrid.b()
+    this.RhC = 0;
+    this.RhD = 0;
+    this.RhE = 0;
+    this.RhF = false;
+    this.RhG = false;
+    this.RhH = false;
+    this.RhI = false;
+    this.RhJ = false;
+    this.RhK = false;
+    this.RhL = false;
+    this.RhM = false;
+    this.RhN = null;
+    this.RhO = true;
+    this.mxJ = new LinkedList();
+    this.RhP = 2;
+    this.RhQ = -1;
+    this.RhR = new AppGrid.b()
     {
       public final void a(int paramAnonymousInt, com.tencent.mm.pluginsdk.model.app.g paramAnonymousg)
       {
         int i = 0;
-        AppMethodBeat.i(232209);
+        AppMethodBeat.i(277930);
         if (paramAnonymousg != null) {}
         for (boolean bool1 = true;; bool1 = false)
         {
           Log.d("MicroMsg.AppPanel", "pos=%d, has appInfo = %b", new Object[] { Integer.valueOf(paramAnonymousInt), Boolean.valueOf(bool1) });
           if ((paramAnonymousg != null) && (com.tencent.mm.pluginsdk.model.app.h.p(paramAnonymousg))) {
-            z.aH(paramAnonymousg.field_appId, "1");
+            z.aK(paramAnonymousg.field_appId, "1");
           }
           AppPanel.d(AppPanel.this, AppPanel.q(AppPanel.this).getCurScreen());
           if (!(paramAnonymousg instanceof a.a)) {
-            break label488;
+            break label500;
           }
           paramAnonymousg = (a.a)paramAnonymousg;
-          Log.i("MicroMsg.AppPanel", "jump_type:%s", new Object[] { Integer.valueOf(paramAnonymousg.uSc) });
-          if ((paramAnonymousg.Kig == null) || (paramAnonymousg.Kig.gqg() == null)) {
+          Log.i("MicroMsg.AppPanel", "jump_type:%s", new Object[] { Integer.valueOf(paramAnonymousg.jump_type) });
+          if ((paramAnonymousg.RiQ == null) || (paramAnonymousg.RiQ.hle() == null)) {
             break;
           }
-          AppPanel.a(AppPanel.this, paramAnonymousg.Kig.gqg());
-          AppMethodBeat.o(232209);
+          AppPanel.a(AppPanel.this, paramAnonymousg.RiQ.hle());
+          AppMethodBeat.o(277930);
           return;
         }
         Object localObject;
-        if (paramAnonymousg.uSc == 1)
+        if (paramAnonymousg.jump_type == 1)
         {
           localObject = new com.tencent.mm.plugin.appbrand.api.g();
-          if (!TextUtils.isEmpty(paramAnonymousg.KhS))
+          if (!TextUtils.isEmpty(paramAnonymousg.RiC))
           {
-            ((com.tencent.mm.plugin.appbrand.api.g)localObject).username = paramAnonymousg.KhS;
-            ((com.tencent.mm.plugin.appbrand.api.g)localObject).version = paramAnonymousg.KhU;
+            ((com.tencent.mm.plugin.appbrand.api.g)localObject).username = paramAnonymousg.RiC;
+            ((com.tencent.mm.plugin.appbrand.api.g)localObject).version = paramAnonymousg.RiE;
           }
         }
         for (;;)
         {
           try
           {
-            ((com.tencent.mm.plugin.appbrand.api.g)localObject).iOo = Integer.parseInt(paramAnonymousg.KhW);
-            ((com.tencent.mm.plugin.appbrand.api.g)localObject).kHw = paramAnonymousg.KhV;
+            ((com.tencent.mm.plugin.appbrand.api.g)localObject).cBU = Integer.parseInt(paramAnonymousg.RiG);
+            ((com.tencent.mm.plugin.appbrand.api.g)localObject).nBq = paramAnonymousg.RiF;
             ((com.tencent.mm.plugin.appbrand.api.g)localObject).scene = 1156;
-            ((com.tencent.mm.plugin.appbrand.api.g)localObject).kHG = paramAnonymousg.kHG;
-            ((r)com.tencent.mm.kernel.g.af(r.class)).a(AppPanel.this.getContext(), (com.tencent.mm.plugin.appbrand.api.g)localObject);
-            localObject = new gx();
-            ((gx)localObject).ejA = 2L;
-            ((gx)localObject).eLg = 0L;
-            ((gx)localObject).uM(paramAnonymousg.KhQ);
-            ((gx)localObject).bfK();
-            AppMethodBeat.o(232209);
+            ((com.tencent.mm.plugin.appbrand.api.g)localObject).fWY = paramAnonymousg.fWY;
+            ((r)com.tencent.mm.kernel.h.ae(r.class)).a(AppPanel.this.getContext(), (com.tencent.mm.plugin.appbrand.api.g)localObject);
+            localObject = new jc();
+            ((jc)localObject).gef = 2L;
+            ((jc)localObject).gKK = 0L;
+            ((jc)localObject).Aj(paramAnonymousg.RiB);
+            ((jc)localObject).bpa();
+            AppMethodBeat.o(277930);
             return;
-            ((com.tencent.mm.plugin.appbrand.api.g)localObject).appId = paramAnonymousg.KhT;
+            ((com.tencent.mm.plugin.appbrand.api.g)localObject).appId = paramAnonymousg.RiD;
           }
           catch (NumberFormatException localNumberFormatException)
           {
-            ((com.tencent.mm.plugin.appbrand.api.g)localObject).iOo = 0;
+            ((com.tencent.mm.plugin.appbrand.api.g)localObject).cBU = 0;
             continue;
           }
-          if (paramAnonymousg.uSc == 2) {
-            if (paramAnonymousg.Kif > 0)
+          if (paramAnonymousg.jump_type == 2) {
+            if (paramAnonymousg.RiP > 0)
             {
               localObject = AppPanel.j(AppPanel.this);
-              String str = paramAnonymousg.nnB;
-              paramAnonymousInt = paramAnonymousg.Kif;
+              String str = paramAnonymousg.qpi;
+              paramAnonymousInt = paramAnonymousg.RiP;
               Intent localIntent = new Intent();
               localIntent.putExtra("rawUrl", str);
               localIntent.putExtra("showShare", false);
               localIntent.putExtra("show_bottom", false);
               localIntent.putExtra("needRedirect", false);
               localIntent.putExtra("neverGetA8Key", false);
-              localIntent.putExtra("hardcode_jspermission", JsapiPermissionWrapper.Kzm);
-              localIntent.putExtra("hardcode_general_ctrl", GeneralControlWrapper.Kzg);
+              localIntent.putExtra("hardcode_jspermission", JsapiPermissionWrapper.RBc);
+              localIntent.putExtra("hardcode_general_ctrl", GeneralControlWrapper.RAX);
               localIntent.putExtra("KHalfScreenHeight", paramAnonymousInt);
-              com.tencent.mm.br.c.b((Context)localObject, "webview", ".ui.tools.WebViewUI", localIntent);
+              localIntent.putExtra("KHalfScreenHeightPercent", -1.0F);
+              com.tencent.mm.by.c.b((Context)localObject, "webview", ".ui.tools.WebViewUI", localIntent);
             }
             else
             {
-              com.tencent.mm.plugin.account.a.b.a.b(AppPanel.j(AppPanel.this), paramAnonymousg.nnB, 0, true);
+              com.tencent.mm.plugin.account.sdk.b.a.b(AppPanel.j(AppPanel.this), paramAnonymousg.qpi, 0, true);
             }
           }
         }
-        label488:
+        label500:
         switch (paramAnonymousInt)
         {
         }
         for (;;)
         {
-          AppMethodBeat.o(232209);
+          AppMethodBeat.o(277930);
           return;
           if (AppPanel.g(AppPanel.this) == null)
           {
             Log.e("MicroMsg.AppPanel", "infoList == null");
-            AppMethodBeat.o(232209);
+            AppMethodBeat.o(277930);
             return;
           }
-          com.tencent.mm.plugin.report.service.h.CyF.kvStat(10305, String.valueOf(AppPanel.g(AppPanel.this).size()));
-          com.tencent.mm.plugin.report.service.h.CyF.a(10923, new Object[] { Integer.valueOf(10) });
-          com.tencent.mm.kernel.g.aAh().azQ().set(69121, "");
-          AppPanel.t(AppPanel.this).ehZ();
-          AppMethodBeat.o(232209);
+          com.tencent.mm.plugin.report.service.h.IzE.kvStat(10305, String.valueOf(AppPanel.g(AppPanel.this).size()));
+          com.tencent.mm.plugin.report.service.h.IzE.a(10923, new Object[] { Integer.valueOf(10) });
+          com.tencent.mm.kernel.h.aHG().aHp().i(69121, "");
+          AppPanel.v(AppPanel.this).eRG();
+          AppMethodBeat.o(277930);
           return;
           if (!WeChatBrands.Business.Entries.SessionPayment.checkAvailable(AppPanel.this.getContext()))
           {
-            AppMethodBeat.o(232209);
+            AppMethodBeat.o(277930);
             return;
           }
           localObject = paramAnonymousg;
           if (paramAnonymousg == null) {
-            localObject = (com.tencent.mm.pluginsdk.model.app.g)AppPanel.u(AppPanel.this).get(com.tencent.mm.pluginsdk.model.app.g.JVR);
+            localObject = (com.tencent.mm.pluginsdk.model.app.g)AppPanel.w(AppPanel.this).get(com.tencent.mm.pluginsdk.model.app.g.QWe);
           }
-          bg.aVF();
-          paramAnonymousInt = ((Integer)com.tencent.mm.model.c.azQ().get(ar.a.NXG, Integer.valueOf(0))).intValue();
-          bg.aVF();
-          paramAnonymousg = Util.stringsToList(((String)com.tencent.mm.model.c.azQ().get(ar.a.NZY, "")).split(";"));
+          bh.beI();
+          paramAnonymousInt = ((Integer)com.tencent.mm.model.c.aHp().get(ar.a.VlG, Integer.valueOf(0))).intValue();
+          bh.beI();
+          paramAnonymousg = Util.stringsToList(((String)com.tencent.mm.model.c.aHp().get(ar.a.VnZ, "")).split(";"));
           if (!paramAnonymousg.contains(String.valueOf(paramAnonymousInt)))
           {
             paramAnonymousg.add(String.valueOf(paramAnonymousInt));
-            bg.aVF();
-            com.tencent.mm.model.c.azQ().set(ar.a.NZY, Util.listToString(paramAnonymousg, ";"));
-            AppPanel.this.refresh();
+            bh.beI();
+            com.tencent.mm.model.c.aHp().set(ar.a.VnZ, Util.listToString(paramAnonymousg, ";"));
+            AppPanel.this.bfU();
           }
-          bg.aVF();
-          com.tencent.mm.model.c.azQ().set(80, Boolean.FALSE);
-          AppPanel.t(AppPanel.this).d((com.tencent.mm.pluginsdk.model.app.g)localObject);
-          AppMethodBeat.o(232209);
+          bh.beI();
+          com.tencent.mm.model.c.aHp().i(80, Boolean.FALSE);
+          AppPanel.v(AppPanel.this).d((com.tencent.mm.pluginsdk.model.app.g)localObject);
+          AppMethodBeat.o(277930);
           return;
-          if (!AppPanel.this.KgQ.Khw.value)
+          if (!AppPanel.this.RhB.Rih.value)
           {
-            Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(2131757466), 0).show();
-            AppMethodBeat.o(232209);
+            Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(R.l.chatting_msg_type_not_support), 0).show();
+            AppMethodBeat.o(277930);
             return;
           }
           if (paramAnonymousg == null)
           {
             Log.e("MicroMsg.AppPanel", "APP_MSG_POS bug appInfo is null");
-            AppMethodBeat.o(232209);
+            AppMethodBeat.o(277930);
             return;
           }
-          if ((paramAnonymousg.gmR()) || (paramAnonymousg.gmT()))
+          if ((paramAnonymousg.hhs()) || (paramAnonymousg.hhu()))
           {
-            if (AppPanel.v(AppPanel.this) == null) {
+            if (AppPanel.x(AppPanel.this) == null) {
               AppPanel.a(AppPanel.this, AppPanel.j(AppPanel.this).getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0));
             }
-            if (AppPanel.v(AppPanel.this).getBoolean("SP_KEY_SERVICE_APP_PREFIX_" + paramAnonymousg.field_appId, true)) {
-              AppPanel.v(AppPanel.this).edit().putBoolean("SP_KEY_SERVICE_APP_PREFIX_" + paramAnonymousg.field_appId, false).commit();
+            if (AppPanel.x(AppPanel.this).getBoolean("SP_KEY_SERVICE_APP_PREFIX_" + paramAnonymousg.field_appId, true)) {
+              AppPanel.x(AppPanel.this).edit().putBoolean("SP_KEY_SERVICE_APP_PREFIX_" + paramAnonymousg.field_appId, false).commit();
             }
-            if (paramAnonymousg.gmT()) {
-              com.tencent.mm.plugin.report.service.h.CyF.a(10923, new Object[] { Integer.valueOf(16), paramAnonymousg.field_appId, Integer.valueOf(0) });
+            if (paramAnonymousg.hhu()) {
+              com.tencent.mm.plugin.report.service.h.IzE.a(10923, new Object[] { Integer.valueOf(16), paramAnonymousg.field_appId, Integer.valueOf(0) });
             }
-            com.tencent.mm.plugin.report.service.h.CyF.a(10923, new Object[] { Integer.valueOf(13), paramAnonymousg.field_appId, Integer.valueOf(0) });
+            com.tencent.mm.plugin.report.service.h.IzE.a(10923, new Object[] { Integer.valueOf(13), paramAnonymousg.field_appId, Integer.valueOf(0) });
           }
           for (;;)
           {
-            AppPanel.t(AppPanel.this).d(paramAnonymousg);
-            AppMethodBeat.o(232209);
+            AppPanel.v(AppPanel.this).d(paramAnonymousg);
+            AppMethodBeat.o(277930);
             return;
-            com.tencent.mm.plugin.report.service.h.CyF.a(10923, new Object[] { Integer.valueOf(11), paramAnonymousg.field_appId });
+            com.tencent.mm.plugin.report.service.h.IzE.a(10923, new Object[] { Integer.valueOf(11), paramAnonymousg.field_appId });
           }
-          if (AppPanel.w(AppPanel.this))
+          if (AppPanel.t(AppPanel.this))
           {
-            AppPanel.x(AppPanel.this);
-            AppMethodBeat.o(232209);
+            AppPanel.u(AppPanel.this);
+            AppMethodBeat.o(277930);
             return;
           }
-          paramAnonymousg = ((com.tencent.mm.plugin.gamelife.a.d)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.gamelife.a.d.class)).aAV(AppPanel.i(AppPanel.this).getTalkerUserName());
+          paramAnonymousg = ((com.tencent.mm.plugin.gamelife.a.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.d.class)).aKI(AppPanel.i(AppPanel.this).getTalkerUserName());
           if (!TextUtils.isEmpty(paramAnonymousg))
           {
             AppPanel.a(AppPanel.this, paramAnonymousg);
-            AppMethodBeat.o(232209);
+            AppMethodBeat.o(277930);
             return;
           }
-          com.tencent.mm.plugin.report.service.h.CyF.a(10923, new Object[] { Integer.valueOf(14) });
-          paramAnonymousg = AppPanel.t(AppPanel.this);
-          if (AppPanel.this.KgQ.KhF.value) {}
+          com.tencent.mm.plugin.report.service.h.IzE.a(10923, new Object[] { Integer.valueOf(14) });
+          paramAnonymousg = AppPanel.v(AppPanel.this);
+          if (AppPanel.this.RhB.Riq.value) {}
           for (paramAnonymousInt = i;; paramAnonymousInt = 2)
           {
-            paramAnonymousg.Qk(paramAnonymousInt);
-            AppMethodBeat.o(232209);
+            paramAnonymousg.Ww(paramAnonymousInt);
+            AppMethodBeat.o(277930);
             return;
           }
-          if (!AppPanel.this.KgQ.Khq.value)
+          if (!AppPanel.this.RhB.Rib.value)
           {
-            Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(2131757466), 0).show();
-            AppMethodBeat.o(232209);
+            Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(R.l.chatting_msg_type_not_support), 0).show();
+            AppMethodBeat.o(277930);
             return;
           }
-          com.tencent.mm.plugin.report.service.h.CyF.a(10923, new Object[] { Integer.valueOf(4) });
-          AppPanel.t(AppPanel.this).ehY();
-          AppMethodBeat.o(232209);
+          com.tencent.mm.plugin.report.service.h.IzE.a(10923, new Object[] { Integer.valueOf(4) });
+          AppPanel.v(AppPanel.this).eRF();
+          AppMethodBeat.o(277930);
           return;
           if (!WeChatBrands.Business.Entries.SessionLuckyMoney.checkAvailable(AppPanel.this.getContext()))
           {
-            AppMethodBeat.o(232209);
+            AppMethodBeat.o(277930);
             return;
           }
-          if (!AppPanel.this.KgQ.KhG.value)
+          if (!AppPanel.this.RhB.Rir.value)
           {
-            Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(2131757466), 0).show();
-            AppMethodBeat.o(232209);
+            Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(R.l.chatting_msg_type_not_support), 0).show();
+            AppMethodBeat.o(277930);
             return;
           }
           if (paramAnonymousg == null)
           {
-            localObject = (com.tencent.mm.pluginsdk.model.app.g)AppPanel.u(AppPanel.this).get(com.tencent.mm.pluginsdk.model.app.g.JVT);
+            localObject = (com.tencent.mm.pluginsdk.model.app.g)AppPanel.w(AppPanel.this).get(com.tencent.mm.pluginsdk.model.app.g.QWg);
             paramAnonymousg = (com.tencent.mm.pluginsdk.model.app.g)localObject;
             if (localObject == null)
             {
-              AppMethodBeat.o(232209);
+              AppMethodBeat.o(277930);
               return;
             }
           }
-          if ((paramAnonymousg.gmR()) || (paramAnonymousg.gmT()))
+          if ((paramAnonymousg.hhs()) || (paramAnonymousg.hhu()))
           {
-            if (AppPanel.v(AppPanel.this) == null) {
+            if (AppPanel.x(AppPanel.this) == null) {
               AppPanel.a(AppPanel.this, AppPanel.j(AppPanel.this).getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0));
             }
-            if (AppPanel.v(AppPanel.this).getBoolean("SP_KEY_SERVICE_APP_PREFIX_" + paramAnonymousg.field_appId, true)) {
-              AppPanel.v(AppPanel.this).edit().putBoolean("SP_KEY_SERVICE_APP_PREFIX_" + paramAnonymousg.field_appId, false).commit();
+            if (AppPanel.x(AppPanel.this).getBoolean("SP_KEY_SERVICE_APP_PREFIX_" + paramAnonymousg.field_appId, true)) {
+              AppPanel.x(AppPanel.this).edit().putBoolean("SP_KEY_SERVICE_APP_PREFIX_" + paramAnonymousg.field_appId, false).commit();
             }
-            com.tencent.mm.plugin.report.service.h.CyF.a(10923, new Object[] { Integer.valueOf(13), paramAnonymousg.field_appId, Integer.valueOf(0) });
+            com.tencent.mm.plugin.report.service.h.IzE.a(10923, new Object[] { Integer.valueOf(13), paramAnonymousg.field_appId, Integer.valueOf(0) });
           }
           for (;;)
           {
-            bg.aVF();
-            paramAnonymousInt = ((Integer)com.tencent.mm.model.c.azQ().get(ar.a.NXG, Integer.valueOf(0))).intValue();
-            bg.aVF();
-            paramAnonymousg = Util.stringsToList(((String)com.tencent.mm.model.c.azQ().get(ar.a.NZZ, "")).split(";"));
+            bh.beI();
+            paramAnonymousInt = ((Integer)com.tencent.mm.model.c.aHp().get(ar.a.VlG, Integer.valueOf(0))).intValue();
+            bh.beI();
+            paramAnonymousg = Util.stringsToList(((String)com.tencent.mm.model.c.aHp().get(ar.a.Voa, "")).split(";"));
             if (!paramAnonymousg.contains(String.valueOf(paramAnonymousInt)))
             {
               paramAnonymousg.add(String.valueOf(paramAnonymousInt));
-              bg.aVF();
-              com.tencent.mm.model.c.azQ().set(ar.a.NZZ, Util.listToString(paramAnonymousg, ";"));
-              AppPanel.this.refresh();
+              bh.beI();
+              com.tencent.mm.model.c.aHp().set(ar.a.Voa, Util.listToString(paramAnonymousg, ";"));
+              AppPanel.this.bfU();
             }
-            AppPanel.t(AppPanel.this).eid();
-            AppMethodBeat.o(232209);
+            AppPanel.v(AppPanel.this).eRK();
+            AppMethodBeat.o(277930);
             return;
-            com.tencent.mm.plugin.report.service.h.CyF.a(10923, new Object[] { Integer.valueOf(11), paramAnonymousg.field_appId });
+            com.tencent.mm.plugin.report.service.h.IzE.a(10923, new Object[] { Integer.valueOf(11), paramAnonymousg.field_appId });
           }
           if (!WeChatBrands.Business.Entries.SessionLocation.checkAvailable(AppPanel.this.getContext()))
           {
-            AppMethodBeat.o(232209);
+            AppMethodBeat.o(277930);
             return;
           }
-          if ((!AppPanel.this.KgQ.KhC.value) || (!AppPanel.this.KgQ.KhD.value))
+          if ((!AppPanel.this.RhB.Rin.value) || (!AppPanel.this.RhB.Rio.value))
           {
-            Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(2131757466), 0).show();
-            AppMethodBeat.o(232209);
+            Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(R.l.chatting_msg_type_not_support), 0).show();
+            AppMethodBeat.o(277930);
             return;
           }
-          bg.aVF();
-          if (((Boolean)com.tencent.mm.model.c.azQ().get(290817, Boolean.TRUE)).booleanValue())
+          bh.beI();
+          if (((Boolean)com.tencent.mm.model.c.aHp().b(290817, Boolean.TRUE)).booleanValue())
           {
-            bg.aVF();
-            com.tencent.mm.model.c.azQ().set(290817, Boolean.FALSE);
-            AppPanel.this.refresh();
+            bh.beI();
+            com.tencent.mm.model.c.aHp().i(290817, Boolean.FALSE);
+            AppPanel.this.bfU();
           }
-          com.tencent.mm.plugin.report.service.h.CyF.a(10923, new Object[] { Integer.valueOf(3) });
-          AppPanel.t(AppPanel.this).ehX();
-          AppMethodBeat.o(232209);
+          com.tencent.mm.plugin.report.service.h.IzE.a(10923, new Object[] { Integer.valueOf(3) });
+          AppPanel.v(AppPanel.this).eRE();
+          AppMethodBeat.o(277930);
           return;
-          if (!AppPanel.this.KgQ.Khu.value)
+          if (!AppPanel.this.RhB.Rif.value)
           {
-            Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(2131757466), 0).show();
-            AppMethodBeat.o(232209);
+            Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(R.l.chatting_msg_type_not_support), 0).show();
+            AppMethodBeat.o(277930);
             return;
           }
-          bg.aVF();
-          if (((Boolean)com.tencent.mm.model.c.azQ().get(327744, Boolean.TRUE)).booleanValue())
+          bh.beI();
+          if (((Boolean)com.tencent.mm.model.c.aHp().b(327744, Boolean.TRUE)).booleanValue())
           {
-            bg.aVF();
-            com.tencent.mm.model.c.azQ().set(327744, Boolean.FALSE);
-            AppPanel.this.refresh();
+            bh.beI();
+            com.tencent.mm.model.c.aHp().i(327744, Boolean.FALSE);
+            AppPanel.this.bfU();
           }
-          com.tencent.mm.plugin.report.service.h.CyF.a(10923, new Object[] { Integer.valueOf(12) });
-          AppPanel.t(AppPanel.this).eib();
-          AppMethodBeat.o(232209);
+          com.tencent.mm.plugin.report.service.h.IzE.a(10923, new Object[] { Integer.valueOf(12) });
+          AppPanel.v(AppPanel.this).eRI();
+          AppMethodBeat.o(277930);
           return;
-          if (AppPanel.w(AppPanel.this))
+          if (AppPanel.t(AppPanel.this))
           {
-            AppPanel.x(AppPanel.this);
-            AppMethodBeat.o(232209);
+            AppPanel.u(AppPanel.this);
+            AppMethodBeat.o(277930);
             return;
           }
-          paramAnonymousg = ((com.tencent.mm.plugin.gamelife.a.d)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.gamelife.a.d.class)).aAU(AppPanel.i(AppPanel.this).getTalkerUserName());
+          paramAnonymousg = ((com.tencent.mm.plugin.gamelife.a.d)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.gamelife.a.d.class)).aKH(AppPanel.i(AppPanel.this).getTalkerUserName());
           if (!TextUtils.isEmpty(paramAnonymousg))
           {
             AppPanel.a(AppPanel.this, paramAnonymousg);
-            AppMethodBeat.o(232209);
+            AppMethodBeat.o(277930);
             return;
           }
-          if (!AppPanel.this.KgQ.Khp.value)
+          if (!AppPanel.this.RhB.Ria.value)
           {
-            Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(2131757466), 0).show();
-            AppMethodBeat.o(232209);
+            Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(R.l.chatting_msg_type_not_support), 0).show();
+            AppMethodBeat.o(277930);
             return;
           }
-          com.tencent.mm.plugin.report.service.h.CyF.a(10923, new Object[] { Integer.valueOf(1) });
+          com.tencent.mm.plugin.report.service.h.IzE.a(10923, new Object[] { Integer.valueOf(1) });
           AppPanel.a(AppPanel.this, false);
-          AppMethodBeat.o(232209);
+          AppMethodBeat.o(277930);
           return;
-          if (!AppPanel.this.KgQ.Khs.value)
+          if (!AppPanel.this.RhB.Rid.value)
           {
-            Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(2131757466), 0).show();
-            AppMethodBeat.o(232209);
+            Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(R.l.chatting_msg_type_not_support), 0).show();
+            AppMethodBeat.o(277930);
             return;
           }
-          com.tencent.mm.plugin.report.service.h.CyF.a(10923, new Object[] { Integer.valueOf(8) });
-          bg.aVF();
-          com.tencent.mm.model.c.azQ().set(54, Boolean.FALSE);
-          if (AppPanel.t(AppPanel.this) != null)
+          com.tencent.mm.plugin.report.service.h.IzE.a(10923, new Object[] { Integer.valueOf(8) });
+          bh.beI();
+          com.tencent.mm.model.c.aHp().i(54, Boolean.FALSE);
+          if (AppPanel.v(AppPanel.this) != null)
           {
-            paramAnonymousg = new xq();
-            paramAnonymousg.edR.edT = true;
+            paramAnonymousg = new yx();
+            paramAnonymousg.fYg.fYi = true;
             EventCenter.instance.publish(paramAnonymousg);
-            paramAnonymousg = paramAnonymousg.edS.edV;
+            paramAnonymousg = paramAnonymousg.fYh.fYk;
             if (!Util.isNullOrNil(paramAnonymousg))
             {
               Log.v("MicroMsg.AppPanel", "Talkroom is on: ".concat(String.valueOf(paramAnonymousg)));
-              com.tencent.mm.ui.base.h.c(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(2131766611), "", AppPanel.j(AppPanel.this).getString(2131755921), AppPanel.j(AppPanel.this).getString(2131755761), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+              com.tencent.mm.ui.base.h.c(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(R.l.eTP), "", AppPanel.j(AppPanel.this).getString(R.l.app_ok), AppPanel.j(AppPanel.this).getString(R.l.app_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
               {
                 public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                 {
-                  AppMethodBeat.i(232203);
-                  xq localxq = new xq();
-                  localxq.edR.edU = true;
-                  EventCenter.instance.publish(localxq);
-                  AppPanel.t(AppPanel.this).ehU();
+                  AppMethodBeat.i(283449);
+                  yx localyx = new yx();
+                  localyx.fYg.fYj = true;
+                  EventCenter.instance.publish(localyx);
+                  AppPanel.v(AppPanel.this).eRB();
                   paramAnonymous2DialogInterface.dismiss();
-                  AppMethodBeat.o(232203);
+                  AppMethodBeat.o(283449);
                 }
               }, new DialogInterface.OnClickListener()
               {
                 public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                 {
-                  AppMethodBeat.i(232204);
+                  AppMethodBeat.i(270660);
                   paramAnonymous2DialogInterface.dismiss();
-                  AppMethodBeat.o(232204);
+                  AppMethodBeat.o(270660);
                 }
               });
-              AppMethodBeat.o(232209);
+              AppMethodBeat.o(277930);
               return;
             }
-            AppPanel.t(AppPanel.this).ehU();
-            AppMethodBeat.o(232209);
+            AppPanel.v(AppPanel.this).eRB();
+            AppMethodBeat.o(277930);
             return;
-            if (!AppPanel.this.KgQ.Khy.value)
+            if (!AppPanel.this.RhB.Rij.value)
             {
-              Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(2131757466), 0).show();
-              AppMethodBeat.o(232209);
+              Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(R.l.chatting_msg_type_not_support), 0).show();
+              AppMethodBeat.o(277930);
               return;
             }
-            com.tencent.mm.plugin.report.service.h.CyF.a(10923, new Object[] { Integer.valueOf(7) });
-            bg.aVF();
-            com.tencent.mm.model.c.azQ().set(62, Boolean.FALSE);
-            paramAnonymousg = new xq();
-            paramAnonymousg.edR.edT = true;
+            com.tencent.mm.plugin.report.service.h.IzE.a(10923, new Object[] { Integer.valueOf(7) });
+            bh.beI();
+            com.tencent.mm.model.c.aHp().i(62, Boolean.FALSE);
+            paramAnonymousg = new yx();
+            paramAnonymousg.fYg.fYi = true;
             EventCenter.instance.publish(paramAnonymousg);
-            paramAnonymousg = paramAnonymousg.edS.edV;
+            paramAnonymousg = paramAnonymousg.fYh.fYk;
             if (!Util.isNullOrNil(paramAnonymousg))
             {
               Log.v("MicroMsg.AppPanel", "Talkroom is on: ".concat(String.valueOf(paramAnonymousg)));
-              com.tencent.mm.ui.base.h.c(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(2131766611), "", AppPanel.j(AppPanel.this).getString(2131755921), AppPanel.j(AppPanel.this).getString(2131755761), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+              com.tencent.mm.ui.base.h.c(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(R.l.eTP), "", AppPanel.j(AppPanel.this).getString(R.l.app_ok), AppPanel.j(AppPanel.this).getString(R.l.app_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
               {
                 public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                 {
-                  AppMethodBeat.i(232205);
-                  xq localxq = new xq();
-                  localxq.edR.edU = true;
-                  EventCenter.instance.publish(localxq);
-                  AppPanel.t(AppPanel.this).ehV();
+                  AppMethodBeat.i(271659);
+                  yx localyx = new yx();
+                  localyx.fYg.fYj = true;
+                  EventCenter.instance.publish(localyx);
+                  AppPanel.v(AppPanel.this).eRC();
                   paramAnonymous2DialogInterface.dismiss();
-                  AppMethodBeat.o(232205);
+                  AppMethodBeat.o(271659);
                 }
               }, new DialogInterface.OnClickListener()
               {
                 public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                 {
-                  AppMethodBeat.i(232206);
+                  AppMethodBeat.i(219906);
                   paramAnonymous2DialogInterface.dismiss();
-                  AppMethodBeat.o(232206);
+                  AppMethodBeat.o(219906);
                 }
               });
-              AppMethodBeat.o(232209);
+              AppMethodBeat.o(277930);
               return;
             }
-            AppPanel.t(AppPanel.this).ehV();
-            AppMethodBeat.o(232209);
+            AppPanel.v(AppPanel.this).eRC();
+            AppMethodBeat.o(277930);
             return;
-            if (AppPanel.t(AppPanel.this) != null)
+            if (AppPanel.v(AppPanel.this) != null)
             {
-              com.tencent.mm.plugin.report.service.h.CyF.a(10923, new Object[] { Integer.valueOf(6) });
-              bg.aVF();
-              com.tencent.mm.model.c.azQ().set(67, Boolean.FALSE);
-              AppPanel.t(AppPanel.this).ehW();
-              AppMethodBeat.o(232209);
+              com.tencent.mm.plugin.report.service.h.IzE.a(10923, new Object[] { Integer.valueOf(6) });
+              bh.beI();
+              com.tencent.mm.model.c.aHp().i(67, Boolean.FALSE);
+              AppPanel.v(AppPanel.this).eRD();
+              AppMethodBeat.o(277930);
               return;
-              if (AppPanel.w(AppPanel.this))
+              if (AppPanel.t(AppPanel.this))
               {
-                AppPanel.x(AppPanel.this);
-                AppMethodBeat.o(232209);
+                AppPanel.u(AppPanel.this);
+                AppMethodBeat.o(277930);
                 return;
               }
               if (!WeChatBrands.Business.Entries.SessionVoiceMsg.checkAvailable(AppPanel.this.getContext()))
               {
-                AppMethodBeat.o(232209);
+                AppMethodBeat.o(277930);
                 return;
               }
-              com.tencent.mm.plugin.report.service.h.CyF.a(10923, new Object[] { Integer.valueOf(9) });
-              bg.aVF();
-              com.tencent.mm.model.c.azQ().set(73, Boolean.FALSE);
-              AppPanel.y(AppPanel.this).gqc();
-              AppMethodBeat.o(232209);
+              com.tencent.mm.plugin.report.service.h.IzE.a(10923, new Object[] { Integer.valueOf(9) });
+              bh.beI();
+              com.tencent.mm.model.c.aHp().i(73, Boolean.FALSE);
+              AppPanel.y(AppPanel.this).hla();
+              AppMethodBeat.o(277930);
               return;
-              if (!AppPanel.this.KgQ.Khr.value)
+              if (!AppPanel.this.RhB.Ric.value)
               {
-                Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(2131757466), 0).show();
-                AppMethodBeat.o(232209);
+                Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(R.l.chatting_msg_type_not_support), 0).show();
+                AppMethodBeat.o(277930);
                 return;
               }
-              com.tencent.mm.plugin.report.service.h.CyF.a(10923, new Object[] { Integer.valueOf(5) });
-              if (AppPanel.t(AppPanel.this) != null)
+              com.tencent.mm.plugin.report.service.h.IzE.a(10923, new Object[] { Integer.valueOf(5) });
+              if (AppPanel.v(AppPanel.this) != null)
               {
-                AppPanel.t(AppPanel.this).eia();
-                AppMethodBeat.o(232209);
+                AppPanel.v(AppPanel.this).eRH();
+                AppMethodBeat.o(277930);
                 return;
-                if (!AppPanel.this.KgQ.KhE.value)
+                if (!AppPanel.this.RhB.Rip.value)
                 {
-                  Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(2131757466), 0).show();
-                  AppMethodBeat.o(232209);
+                  Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(R.l.chatting_msg_type_not_support), 0).show();
+                  AppMethodBeat.o(277930);
                   return;
                 }
-                if (AppPanel.t(AppPanel.this) != null) {
-                  AppPanel.t(AppPanel.this).eic();
+                if (AppPanel.v(AppPanel.this) != null) {
+                  AppPanel.v(AppPanel.this).eRJ();
                 }
-                com.tencent.mm.plugin.report.service.h.CyF.a(10923, new Object[] { Integer.valueOf(15) });
-                bg.aVF();
-                bool1 = ((Boolean)com.tencent.mm.model.c.azQ().get(208899, Boolean.FALSE)).booleanValue();
-                bg.aVF();
-                boolean bool2 = ((Boolean)com.tencent.mm.model.c.azQ().get(208913, Boolean.FALSE)).booleanValue();
+                com.tencent.mm.plugin.report.service.h.IzE.a(10923, new Object[] { Integer.valueOf(15) });
+                bh.beI();
+                bool1 = ((Boolean)com.tencent.mm.model.c.aHp().b(208899, Boolean.FALSE)).booleanValue();
+                bh.beI();
+                boolean bool2 = ((Boolean)com.tencent.mm.model.c.aHp().b(208913, Boolean.FALSE)).booleanValue();
                 if (bool1)
                 {
-                  com.tencent.mm.plugin.report.service.h.CyF.a(11594, new Object[] { Integer.valueOf(3) });
-                  AppMethodBeat.o(232209);
+                  com.tencent.mm.plugin.report.service.h.IzE.a(11594, new Object[] { Integer.valueOf(3) });
+                  AppMethodBeat.o(277930);
                   return;
                 }
                 if (bool2)
                 {
-                  com.tencent.mm.plugin.report.service.h.CyF.a(11594, new Object[] { Integer.valueOf(4) });
-                  AppMethodBeat.o(232209);
+                  com.tencent.mm.plugin.report.service.h.IzE.a(11594, new Object[] { Integer.valueOf(4) });
+                  AppMethodBeat.o(277930);
                   return;
-                  if (AppPanel.t(AppPanel.this) != null)
+                  if (AppPanel.v(AppPanel.this) != null)
                   {
-                    AppPanel.t(AppPanel.this).eie();
-                    AppMethodBeat.o(232209);
+                    AppPanel.v(AppPanel.this).eRL();
+                    AppMethodBeat.o(277930);
                     return;
-                    if (!AppPanel.this.KgQ.KhI.value)
+                    if (!AppPanel.this.RhB.Rit.value)
                     {
-                      Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(2131757466), 0).show();
-                      AppMethodBeat.o(232209);
+                      Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(R.l.chatting_msg_type_not_support), 0).show();
+                      AppMethodBeat.o(277930);
                       return;
                     }
-                    AppPanel.t(AppPanel.this).eif();
-                    AppMethodBeat.o(232209);
+                    AppPanel.v(AppPanel.this).eRM();
+                    AppMethodBeat.o(277930);
                     return;
-                    if (!AppPanel.this.KgQ.KhO.value)
+                    if (!AppPanel.this.RhB.Riz.value)
                     {
-                      Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(2131757466), 0).show();
-                      AppMethodBeat.o(232209);
+                      Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(R.l.chatting_msg_type_not_support), 0).show();
+                      AppMethodBeat.o(277930);
                       return;
                     }
-                    AppPanel.t(AppPanel.this).eig();
-                    com.tencent.mm.plugin.report.service.h.CyF.a(10923, new Object[] { Integer.valueOf(21) });
-                    AppMethodBeat.o(232209);
+                    AppPanel.v(AppPanel.this).eRN();
+                    com.tencent.mm.plugin.report.service.h.IzE.a(10923, new Object[] { Integer.valueOf(21) });
+                    AppMethodBeat.o(277930);
                     return;
-                    if (AppPanel.t(AppPanel.this) != null)
+                    if (AppPanel.v(AppPanel.this) != null)
                     {
                       if (paramAnonymousg == null)
                       {
-                        localObject = (com.tencent.mm.pluginsdk.model.app.g)AppPanel.u(AppPanel.this).get(com.tencent.mm.pluginsdk.model.app.g.JVU);
+                        localObject = (com.tencent.mm.pluginsdk.model.app.g)AppPanel.w(AppPanel.this).get(com.tencent.mm.pluginsdk.model.app.g.QWh);
                         paramAnonymousg = (com.tencent.mm.pluginsdk.model.app.g)localObject;
                         if (localObject == null)
                         {
                           Log.i("MicroMsg.AppPanel", "empty info");
-                          AppMethodBeat.o(232209);
+                          AppMethodBeat.o(277930);
                           return;
                         }
                       }
-                      if ((paramAnonymousg.gmR()) || (paramAnonymousg.gmT()))
+                      if ((paramAnonymousg.hhs()) || (paramAnonymousg.hhu()))
                       {
-                        if (AppPanel.v(AppPanel.this) == null) {
+                        if (AppPanel.x(AppPanel.this) == null) {
                           AppPanel.a(AppPanel.this, AppPanel.j(AppPanel.this).getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0));
                         }
-                        if (AppPanel.v(AppPanel.this).getBoolean("SP_KEY_SERVICE_APP_PREFIX_" + paramAnonymousg.field_appId, true)) {
-                          AppPanel.v(AppPanel.this).edit().putBoolean("SP_KEY_SERVICE_APP_PREFIX_" + paramAnonymousg.field_appId, false).commit();
+                        if (AppPanel.x(AppPanel.this).getBoolean("SP_KEY_SERVICE_APP_PREFIX_" + paramAnonymousg.field_appId, true)) {
+                          AppPanel.x(AppPanel.this).edit().putBoolean("SP_KEY_SERVICE_APP_PREFIX_" + paramAnonymousg.field_appId, false).commit();
                         }
                       }
-                      AppPanel.t(AppPanel.this).eih();
-                      AppMethodBeat.o(232209);
+                      AppPanel.v(AppPanel.this).eRO();
+                      AppMethodBeat.o(277930);
                       return;
-                      if (!AppPanel.this.KgQ.KhK.value)
+                      if (!AppPanel.this.RhB.Riv.value)
                       {
-                        Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(2131757466), 0).show();
-                        AppMethodBeat.o(232209);
+                        Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(R.l.chatting_msg_type_not_support), 0).show();
+                        AppMethodBeat.o(277930);
                         return;
                       }
-                      com.tencent.mm.plugin.report.service.h.CyF.a(10923, new Object[] { Integer.valueOf(17) });
-                      if (AppPanel.t(AppPanel.this) != null)
+                      com.tencent.mm.plugin.report.service.h.IzE.a(10923, new Object[] { Integer.valueOf(17) });
+                      if (AppPanel.v(AppPanel.this) != null)
                       {
-                        AppPanel.t(AppPanel.this).eii();
-                        AppMethodBeat.o(232209);
+                        AppPanel.v(AppPanel.this).eRP();
+                        AppMethodBeat.o(277930);
                         return;
                         if (!WeChatBrands.Business.Entries.SessionGroupTools.checkAvailable(AppPanel.this.getContext()))
                         {
-                          AppMethodBeat.o(232209);
+                          AppMethodBeat.o(277930);
                           return;
                         }
-                        if (!AppPanel.this.KgQ.KhL.value)
+                        if (!AppPanel.this.RhB.Riw.value)
                         {
-                          Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(2131757466), 0).show();
-                          AppMethodBeat.o(232209);
+                          Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(R.l.chatting_msg_type_not_support), 0).show();
+                          AppMethodBeat.o(277930);
                           return;
                         }
-                        if (AppPanel.t(AppPanel.this) != null)
+                        if (AppPanel.v(AppPanel.this) != null)
                         {
-                          AppPanel.t(AppPanel.this).eik();
-                          AppMethodBeat.o(232209);
+                          AppPanel.v(AppPanel.this).eRR();
+                          AppMethodBeat.o(277930);
                           return;
                           if (!WeChatBrands.Business.Entries.SessionGroupSolitaire.checkAvailable(AppPanel.this.getContext()))
                           {
-                            AppMethodBeat.o(232209);
+                            AppMethodBeat.o(277930);
                             return;
                           }
-                          if (!AppPanel.this.KgQ.KhM.value)
+                          if (!AppPanel.this.RhB.Rix.value)
                           {
-                            Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(2131757466), 0).show();
-                            AppMethodBeat.o(232209);
+                            Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(R.l.chatting_msg_type_not_support), 0).show();
+                            AppMethodBeat.o(277930);
                             return;
                           }
-                          com.tencent.mm.plugin.report.service.h.CyF.a(10923, new Object[] { Integer.valueOf(19) });
-                          if (AppPanel.t(AppPanel.this) != null)
+                          com.tencent.mm.plugin.report.service.h.IzE.a(10923, new Object[] { Integer.valueOf(19) });
+                          if (AppPanel.v(AppPanel.this) != null)
                           {
-                            AppPanel.t(AppPanel.this).eil();
-                            AppMethodBeat.o(232209);
+                            AppPanel.v(AppPanel.this).eRS();
+                            AppMethodBeat.o(277930);
                             return;
                             if (!WeChatBrands.Business.Entries.SessionGroupLive.checkAvailable(AppPanel.this.getContext()))
                             {
-                              AppMethodBeat.o(232209);
+                              AppMethodBeat.o(277930);
                               return;
                             }
-                            if (!AppPanel.this.KgQ.KhN.value)
+                            if (!AppPanel.this.RhB.Riy.value)
                             {
-                              Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(2131757466), 0).show();
-                              AppMethodBeat.o(232209);
+                              Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(R.l.chatting_msg_type_not_support), 0).show();
+                              AppMethodBeat.o(277930);
                               return;
                             }
-                            com.tencent.mm.plugin.report.service.h.CyF.a(10923, new Object[] { Integer.valueOf(20) });
-                            if (AppPanel.t(AppPanel.this) != null)
+                            com.tencent.mm.plugin.report.service.h.IzE.a(10923, new Object[] { Integer.valueOf(20) });
+                            if (AppPanel.v(AppPanel.this) != null)
                             {
-                              AppPanel.t(AppPanel.this).eij();
-                              com.tencent.mm.live.d.a.aHT();
+                              AppPanel.v(AppPanel.this).eRQ();
+                              com.tencent.mm.live.d.a.aPR();
                             }
                           }
                         }
@@ -695,9 +701,9 @@ public class AppPanel
         }
       }
       
-      public final int air(int paramAnonymousInt)
+      public final int aqt(int paramAnonymousInt)
       {
-        AppMethodBeat.i(232207);
+        AppMethodBeat.i(277921);
         if (paramAnonymousInt < AppPanel.f(AppPanel.this))
         {
           int m = AppPanel.r(AppPanel.this).length;
@@ -710,7 +716,7 @@ public class AppPanel
             {
               if (j == paramAnonymousInt)
               {
-                AppMethodBeat.o(232207);
+                AppMethodBeat.o(277921);
                 return i;
               }
               k = j + 1;
@@ -720,41 +726,47 @@ public class AppPanel
         }
         if ((paramAnonymousInt >= AppPanel.f(AppPanel.this)) && (paramAnonymousInt < AppPanel.s(AppPanel.this)))
         {
-          AppMethodBeat.o(232207);
+          AppMethodBeat.o(277921);
           return -2147483648;
         }
-        AppMethodBeat.o(232207);
+        AppMethodBeat.o(277921);
         return 2147483647;
       }
       
-      public final void ais(int paramAnonymousInt)
+      public final void aqu(int paramAnonymousInt)
       {
-        AppMethodBeat.i(232208);
+        AppMethodBeat.i(277922);
         if (paramAnonymousInt == 0)
         {
-          if (!AppPanel.this.KgQ.Khp.value)
+          if (!AppPanel.this.RhB.Ria.value)
           {
-            Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(2131757466), 0).show();
-            AppMethodBeat.o(232208);
+            Toast.makeText(AppPanel.j(AppPanel.this), AppPanel.j(AppPanel.this).getString(R.l.chatting_msg_type_not_support), 0).show();
+            AppMethodBeat.o(277922);
+            return;
+          }
+          if (AppPanel.t(AppPanel.this))
+          {
+            AppPanel.u(AppPanel.this);
+            AppMethodBeat.o(277922);
             return;
           }
           AppPanel.a(AppPanel.this, true);
-          AppMethodBeat.o(232208);
+          AppMethodBeat.o(277922);
           return;
         }
-        AppMethodBeat.o(232208);
+        AppMethodBeat.o(277922);
       }
     };
-    this.Khi = true;
-    this.Khj = -1;
+    this.RhT = true;
+    this.RhU = -1;
     this.context = paramContext;
     AppMethodBeat.o(31459);
   }
   
-  private int ait(int paramInt)
+  private int aqv(int paramInt)
   {
-    int i = paramInt / this.Kgu;
-    if (paramInt % this.Kgu > 0) {}
+    int i = paramInt / this.Rhf;
+    if (paramInt % this.Rhf > 0) {}
     for (paramInt = i;; paramInt = i - 1)
     {
       i = paramInt;
@@ -765,37 +777,37 @@ public class AppPanel
     }
   }
   
-  private void beW(String paramString)
+  private void brs(String paramString)
   {
-    AppMethodBeat.i(232215);
+    AppMethodBeat.i(265022);
     Log.i("MicroMsg.AppPanel", "showForbiddenDialog: %s", new Object[] { paramString });
     f.a locala = new f.a(MMApplicationContext.getContext());
-    locala.bow(paramString).Dq(true);
-    locala.apa(2131768713).b(new f.c()
+    locala.bBl(paramString).HL(true);
+    locala.ayp(c.g.welcome_i_know).b(new f.c()
     {
-      public final void e(boolean paramAnonymousBoolean, String paramAnonymousString) {}
+      public final void g(boolean paramAnonymousBoolean, String paramAnonymousString) {}
     }).b(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface) {}
     }).show();
-    AppMethodBeat.o(232215);
+    AppMethodBeat.o(265022);
   }
   
-  private void bqe()
+  private void dlN()
   {
-    AppMethodBeat.i(232213);
-    com.tencent.f.h.RTc.bqo("AppPanel-loadinfo");
-    com.tencent.f.h.RTc.b(new Runnable()
+    AppMethodBeat.i(265020);
+    com.tencent.e.h.ZvG.bDh("AppPanel-loadinfo");
+    com.tencent.e.h.ZvG.d(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(232202);
+        AppMethodBeat.i(292230);
         AppPanel.g(AppPanel.this).clear();
         for (;;)
         {
           try
           {
-            String str = com.tencent.mm.n.h.aqJ().getValue("ShowAPPSuggestion");
+            String str = com.tencent.mm.n.h.axc().getValue("ShowAPPSuggestion");
             if ((!Util.isNullOrNil(str)) && (Integer.valueOf(str).intValue() == 1)) {
               continue;
             }
@@ -809,21 +821,21 @@ public class AppPanel
             continue;
           }
           if (!AppPanel.l(AppPanel.this)) {
-            AppPanel.iu(AppPanel.g(AppPanel.this));
+            AppPanel.jl(AppPanel.g(AppPanel.this));
           }
           AppPanel.b(AppPanel.this, AppPanel.g(AppPanel.this));
-          if (AppPanel.this.KgQ != null)
+          if (AppPanel.this.RhB != null)
           {
-            AppPanel.this.KgQ.Aa(AppPanel.m(AppPanel.this));
-            AppPanel.this.KgQ.Ab(AppPanel.n(AppPanel.this));
-            AppPanel.this.KgQ.Ae(AppPanel.o(AppPanel.this));
-            AppPanel.this.KgQ.Af(AppPanel.p(AppPanel.this));
+            AppPanel.this.RhB.Ef(AppPanel.m(AppPanel.this));
+            AppPanel.this.RhB.Eg(AppPanel.n(AppPanel.this));
+            AppPanel.this.RhB.Ej(AppPanel.o(AppPanel.this));
+            AppPanel.this.RhB.Ek(AppPanel.p(AppPanel.this));
           }
-          com.tencent.f.h.RTc.aV(new Runnable()
+          com.tencent.e.h.ZvG.bc(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(232201);
+              AppMethodBeat.i(267037);
               if (AppPanel.h(AppPanel.this) == -1) {}
               for (int i = AppPanel.q(AppPanel.this).getCurScreen();; i = -1)
               {
@@ -833,31 +845,31 @@ public class AppPanel
                   AppPanel.q(AppPanel.this).setToScreen(i);
                   AppPanel.e(AppPanel.this).setSelectedDot(i);
                 }
-                AppMethodBeat.o(232201);
+                AppMethodBeat.o(267037);
                 return;
               }
             }
           });
-          AppMethodBeat.o(232202);
+          AppMethodBeat.o(292230);
           return;
           Log.i("MicroMsg.AppPanel", "jacks show App Suggestion");
           AppPanel.a(AppPanel.this, com.tencent.mm.pluginsdk.model.app.h.a(AppPanel.j(AppPanel.this), true, AppPanel.k(AppPanel.this)));
         }
       }
     }, "AppPanel-loadinfo");
-    AppMethodBeat.o(232213);
+    AppMethodBeat.o(265020);
   }
   
   private int getPortHeightPX()
   {
     AppMethodBeat.i(31485);
-    if (this.Khj > 0)
+    if (this.RhU > 0)
     {
-      i = this.Khj;
+      i = this.RhU;
       AppMethodBeat.o(31485);
       return i;
     }
-    int i = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, COl);
+    int i = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, ITN);
     AppMethodBeat.o(31485);
     return i;
   }
@@ -874,15 +886,15 @@ public class AppPanel
     }
   }
   
-  private void gpW()
+  private void hkU()
   {
     AppMethodBeat.i(31477);
     Log.d("MicroMsg.AppPanel", "AppPanel initFlipper");
-    this.Khf = -1;
-    this.COD.removeAllViews();
-    this.COD.setOnMeasureListener(new MMFlipper.b()
+    this.RhQ = -1;
+    this.IUf.removeAllViews();
+    this.IUf.setOnMeasureListener(new MMFlipper.b()
     {
-      public final void ig(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void jl(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(31448);
         Log.i("MicroMsg.AppPanel", "onMeasure width:" + paramAnonymousInt1 + " height:" + paramAnonymousInt2 + " isMeasured:" + AppPanel.a(AppPanel.this));
@@ -909,48 +921,48 @@ public class AppPanel
         }
       }
     });
-    this.COD.setOnFlipperViewShowedListener(new MMFlipper.a()
+    this.IUf.setOnFlipperViewShowedListener(new MMFlipper.a()
     {
-      public final void aiv(int paramAnonymousInt)
+      public final void aqx(int paramAnonymousInt)
       {
-        AppMethodBeat.i(232199);
+        AppMethodBeat.i(278159);
         Log.i("MicroMsg.AppPanel", "viewpage reshow %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        int i = AppPanel.this.aiu(14);
-        if ((paramAnonymousInt == i) && (AppPanel.this.KgQ.KhN.value)) {
-          com.tencent.mm.live.d.e.rj(i + 1);
+        int i = AppPanel.this.aqw(14);
+        if ((paramAnonymousInt == i) && (AppPanel.this.RhB.Riy.value)) {
+          e.tX(i + 1);
         }
-        AppMethodBeat.o(232199);
+        AppMethodBeat.o(278159);
       }
     });
-    this.COD.setOnScreenChangedListener(new MMFlipper.c()
+    this.IUf.setOnScreenChangedListener(new MMFlipper.c()
     {
-      public final void z(int paramAnonymousInt1, int paramAnonymousInt2, boolean paramAnonymousBoolean)
+      public final void E(int paramAnonymousInt1, int paramAnonymousInt2, boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(232200);
+        AppMethodBeat.i(286447);
         AppPanel.e(AppPanel.this).setSelectedDot(paramAnonymousInt2);
         Object localObject2;
         if ((AppPanel.this.getVisibility() == 0) && (paramAnonymousInt1 != -1) && (paramAnonymousInt1 != paramAnonymousInt2) && (paramAnonymousBoolean))
         {
-          if (AppPanel.this.KgQ.Khw.value) {}
+          if (AppPanel.this.RhB.Rih.value) {}
           for (int i = AppPanel.f(AppPanel.this) + AppPanel.g(AppPanel.this).size();; i = AppPanel.f(AppPanel.this))
           {
-            localObject1 = new gx();
-            ((gx)localObject1).ejA = 1L;
-            ((gx)localObject1).eLg = 0L;
+            localObject1 = new jc();
+            ((jc)localObject1).gef = 1L;
+            ((jc)localObject1).gKK = 0L;
             localObject2 = new StringBuilder();
             int j = 0;
             while (j < AppPanel.this.getAppPanelUnCertainEnterArrayList().size())
             {
               AppPanel localAppPanel = AppPanel.this;
               if (paramAnonymousInt1 == AppPanel.c(localAppPanel, AppPanel.h(localAppPanel) + i + 1)) {
-                ((StringBuilder)localObject2).append(((a.a)AppPanel.this.getAppPanelUnCertainEnterArrayList().get(j)).KhQ).append("|");
+                ((StringBuilder)localObject2).append(((a.a)AppPanel.this.getAppPanelUnCertainEnterArrayList().get(j)).RiB).append("|");
               }
               j += 1;
             }
           }
-          ((gx)localObject1).uM(((StringBuilder)localObject2).toString());
-          ((gx)localObject1).bfK();
-          paramAnonymousInt1 = AppPanel.this.aiu(13);
+          ((jc)localObject1).Aj(((StringBuilder)localObject2).toString());
+          ((jc)localObject1).bpa();
+          paramAnonymousInt1 = AppPanel.this.aqw(13);
           if ((paramAnonymousInt1 != -1) && (paramAnonymousInt1 == AppPanel.this.getCurScreen())) {
             if (AppPanel.i(AppPanel.this) != null) {
               break label364;
@@ -960,111 +972,166 @@ public class AppPanel
         label364:
         for (Object localObject1 = "";; localObject1 = AppPanel.i(AppPanel.this).getTalkerUserName())
         {
-          localObject2 = new gy();
-          ((gy)localObject2).uN((String)localObject1);
-          ((gy)localObject2).eLg = 0L;
-          ((gy)localObject2).uO("19");
-          ((gy)localObject2).eLj = (paramAnonymousInt1 + 1);
-          ((gy)localObject2).bfK();
+          localObject2 = new jd();
+          ((jd)localObject2).Ak((String)localObject1);
+          ((jd)localObject2).gKK = 0L;
+          ((jd)localObject2).Al("19");
+          ((jd)localObject2).gKN = (paramAnonymousInt1 + 1);
+          ((jd)localObject2).bpa();
           Log.i("MicroMsg.AppPanel", "scroll to show page %s", new Object[] { Integer.valueOf(paramAnonymousInt2) });
-          paramAnonymousInt1 = AppPanel.this.aiu(14);
-          if ((paramAnonymousInt2 == paramAnonymousInt1) && (AppPanel.this.KgQ.KhN.value)) {
-            com.tencent.mm.live.d.e.rj(paramAnonymousInt1 + 1);
+          paramAnonymousInt1 = AppPanel.this.aqw(14);
+          if ((paramAnonymousInt2 == paramAnonymousInt1) && (AppPanel.this.RhB.Riy.value)) {
+            e.tX(paramAnonymousInt1 + 1);
           }
-          AppMethodBeat.o(232200);
+          AppMethodBeat.o(286447);
           return;
         }
       }
     });
-    gqa();
+    hkY();
     AppMethodBeat.o(31477);
   }
   
-  private void gpX()
+  private void hkV()
   {
     AppMethodBeat.i(163206);
-    if (this.KgP == -1)
+    if (this.RhA == -1)
     {
       AppMethodBeat.o(163206);
       return;
     }
-    if (this.KgQ.Khw.value) {}
-    gx localgx;
+    if (this.RhB.Rih.value) {}
+    jc localjc;
     StringBuilder localStringBuilder;
-    for (int i = this.Kgx + this.jGV.size();; i = this.Kgx)
+    for (int i = this.Rhi + this.mxJ.size();; i = this.Rhi)
     {
-      this.KgO = ait(this.KgP + i + 1);
-      this.COD.setToScreen(this.KgO);
-      this.KgP = -1;
-      localgx = new gx();
-      localgx.ejA = 1L;
-      localgx.eLg = 1L;
+      this.Rhz = aqv(this.RhA + i + 1);
+      this.IUf.setToScreen(this.Rhz);
+      this.RhA = -1;
+      localjc = new jc();
+      localjc.gef = 1L;
+      localjc.gKK = 1L;
       localStringBuilder = new StringBuilder();
       int j = 0;
       while (j < getAppPanelUnCertainEnterArrayList().size())
       {
-        if (this.KgO == ait(this.KgP + i + 1)) {
-          localStringBuilder.append(((a.a)getAppPanelUnCertainEnterArrayList().get(j)).KhQ).append("|");
+        if (this.Rhz == aqv(this.RhA + i + 1)) {
+          localStringBuilder.append(((a.a)getAppPanelUnCertainEnterArrayList().get(j)).RiB).append("|");
         }
         j += 1;
       }
     }
-    localgx.uM(localStringBuilder.toString());
-    localgx.bfK();
+    localjc.Aj(localStringBuilder.toString());
+    localjc.bpa();
     AppMethodBeat.o(163206);
   }
   
-  private void gpY()
+  private void hkW()
   {
     AppMethodBeat.i(31482);
     Log.i("MicroMsg.AppPanel", "[dealOrientationChange]");
-    this.COA = false;
-    this.COD.setToScreen(0);
-    gpW();
+    this.IUc = false;
+    this.IUf.setToScreen(0);
+    hkU();
     requestLayout();
     AppMethodBeat.o(31482);
   }
   
-  private void gqa()
+  private void hkY()
   {
     AppMethodBeat.i(31484);
     View localView;
     LinearLayout.LayoutParams localLayoutParams;
-    if (this.Khi)
+    if (this.RhT)
     {
       if (getScreenOrientation() != 2) {
         break label79;
       }
       Log.d("MicroMsg.AppPanel", "initFlipper, landscape");
-      localView = findViewById(2131296960);
+      localView = findViewById(R.h.dre);
       localLayoutParams = new LinearLayout.LayoutParams(-1, 0);
-      localLayoutParams.height = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, COm);
+      localLayoutParams.height = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, ITO);
       localView.setLayoutParams(localLayoutParams);
     }
     for (;;)
     {
-      this.Khi = false;
+      this.RhT = false;
       AppMethodBeat.o(31484);
       return;
       label79:
-      Log.d("MicroMsg.AppPanel", "initFlipper, portrait: %d", new Object[] { Integer.valueOf(COl) });
-      localView = findViewById(2131296960);
+      Log.d("MicroMsg.AppPanel", "initFlipper, portrait: %d", new Object[] { Integer.valueOf(ITN) });
+      localView = findViewById(R.h.dre);
       localLayoutParams = new LinearLayout.LayoutParams(-1, 0);
       localLayoutParams.height = getPortHeightPX();
       localView.setLayoutParams(localLayoutParams);
     }
   }
   
-  public final int aiu(int paramInt)
+  public final void Eb(boolean paramBoolean)
   {
-    int m = this.KgI.length;
+    AppMethodBeat.i(31466);
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      this.RhB.Rid.value = paramBoolean;
+      hkT();
+      Log.d("MicroMsg.AppPanel", "enable " + paramBoolean + " isVoipPluginEnable " + this.RhB.Rie.value);
+      AppMethodBeat.o(31466);
+      return;
+    }
+  }
+  
+  public final void Ec(boolean paramBoolean)
+  {
+    AppMethodBeat.i(31467);
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      this.RhB.Rij.value = paramBoolean;
+      hkT();
+      Log.d("MicroMsg.AppPanel", "enable " + this.RhB.Rik.value + " isVoipAudioEnable " + paramBoolean);
+      AppMethodBeat.o(31467);
+      return;
+    }
+  }
+  
+  public final void Ed(boolean paramBoolean)
+  {
+    AppMethodBeat.i(31468);
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      this.RhB.Ris.value = paramBoolean;
+      hkT();
+      Log.d("MicroMsg.AppPanel", "enable " + this.RhB.Ris.value + " isMultiTalkEnable " + paramBoolean);
+      AppMethodBeat.o(31468);
+      return;
+    }
+  }
+  
+  public final void Ee(boolean paramBoolean)
+  {
+    AppMethodBeat.i(31469);
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      this.RhB.Ril.value = paramBoolean;
+      hkT();
+      AppMethodBeat.o(31469);
+      return;
+    }
+  }
+  
+  public final int aqw(int paramInt)
+  {
+    int m = this.Rht.length;
     int j = 0;
     int i = 0;
     int k;
     if (j < m)
     {
       k = i;
-      if (this.KgI[j] != 0) {
+      if (this.Rht[j] != 0) {
         if (j != paramInt) {}
       }
     }
@@ -1083,8 +1150,8 @@ public class AppPanel
     }
     label63:
     i += 1;
-    paramInt = i / this.Kgu;
-    if (i % this.Kgu > 0) {}
+    paramInt = i / this.Rhf;
+    if (i % this.Rhf > 0) {}
     for (;;)
     {
       i = paramInt;
@@ -1096,307 +1163,315 @@ public class AppPanel
     }
   }
   
+  public final void bfU()
+  {
+    AppMethodBeat.i(31478);
+    Log.i("MicroMsg.AppPanel", "app panel refleshed: %s", new Object[] { Integer.valueOf(this.RhE) });
+    dlN();
+    AppMethodBeat.o(31478);
+  }
+  
   public ArrayList<a.a> getAppPanelUnCertainEnterArrayList()
   {
     AppMethodBeat.i(163205);
-    ArrayList localArrayList = this.KgQ.getAppPanelUnCertainEnterArrayList();
+    ArrayList localArrayList = this.RhB.getAppPanelUnCertainEnterArrayList();
     AppMethodBeat.o(163205);
     return localArrayList;
   }
   
   public int getCurScreen()
   {
-    AppMethodBeat.i(232214);
-    if (this.COD != null)
+    AppMethodBeat.i(265021);
+    if (this.IUf != null)
     {
-      int i = this.COD.getCurScreen();
-      AppMethodBeat.o(232214);
+      int i = this.IUf.getCurScreen();
+      AppMethodBeat.o(265021);
       return i;
     }
-    AppMethodBeat.o(232214);
+    AppMethodBeat.o(265021);
     return -1;
   }
   
   public int getPageMaxRowCount()
   {
-    if (this.KgN == 0)
+    if (this.Rhy == 0)
     {
-      int i = (this.xeA + 3) / 4;
+      int i = (this.BQJ + 3) / 4;
       if (i > 2) {
         return 2;
       }
       return i;
     }
-    return this.KgN;
+    return this.Rhy;
   }
   
-  public final void gpK()
+  public final void hkI()
   {
     AppMethodBeat.i(31463);
-    this.KgQ.gqd();
-    this.KgY = false;
-    this.KgZ = false;
-    this.Kha = false;
-    this.Khb = false;
-    gpL();
-    this.KgQ.Aa(this.KgU);
-    this.KgQ.Ab(this.KgV);
-    this.KgQ.Ae(this.KgW);
-    this.KgQ.Af(this.KgX);
-    gpV();
+    this.RhB.hlb();
+    this.RhJ = false;
+    this.RhK = false;
+    this.RhL = false;
+    this.RhM = false;
+    hkJ();
+    this.RhB.Ef(this.RhF);
+    this.RhB.Eg(this.RhG);
+    this.RhB.Ej(this.RhH);
+    this.RhB.Ek(this.RhI);
+    hkT();
     AppMethodBeat.o(31463);
   }
   
-  public final void gpL()
+  public final void hkJ()
   {
     AppMethodBeat.i(31464);
-    com.tencent.mm.n.h.aqK();
-    if (com.tencent.mm.n.d.aqw() == 2) {}
+    com.tencent.mm.n.h.axd();
+    if (com.tencent.mm.n.d.awQ() == 2) {}
     for (boolean bool = true;; bool = false)
     {
-      this.KgQ.gqe();
-      this.KgQ.Ac(bool);
-      bool = com.tencent.mm.br.c.aZU("location");
-      this.KgQ.Ad(bool);
-      this.KgQ.gqf();
+      this.RhB.hlc();
+      this.RhB.Eh(bool);
+      bool = com.tencent.mm.by.c.blP("location");
+      this.RhB.Ei(bool);
+      this.RhB.hld();
       AppMethodBeat.o(31464);
       return;
     }
   }
   
-  public final void gpM()
+  public final void hkK()
   {
     AppMethodBeat.i(31465);
-    this.KgQ.Khq.value = false;
-    gpV();
+    this.RhB.Rib.value = false;
+    hkT();
     AppMethodBeat.o(31465);
   }
   
-  public final void gpN()
+  public final void hkL()
   {
     AppMethodBeat.i(31470);
-    this.KgQ.Khx.value = false;
-    gpV();
+    this.RhB.Rii.value = false;
+    hkT();
     Log.d("MicroMsg.AppPanel", "disableTalkroom enable false");
     AppMethodBeat.o(31470);
   }
   
-  public final void gpO()
+  public final void hkM()
   {
     AppMethodBeat.i(31471);
-    this.KgQ.KhC.value = false;
-    gpV();
+    this.RhB.Rin.value = false;
+    hkT();
     AppMethodBeat.o(31471);
   }
   
-  public final void gpP()
+  public final void hkN()
   {
     AppMethodBeat.i(31472);
-    this.KgQ.Khw.value = false;
-    gpV();
+    this.RhB.Rih.value = false;
+    hkT();
     AppMethodBeat.o(31472);
   }
   
-  public final void gpQ()
+  public final void hkO()
   {
     AppMethodBeat.i(31473);
-    this.KgQ.KhE.value = false;
-    gpV();
+    this.RhB.Rip.value = false;
+    hkT();
     AppMethodBeat.o(31473);
   }
   
-  public final void gpR()
+  public final void hkP()
   {
     AppMethodBeat.i(31474);
-    this.KgQ.KhK.value = false;
-    gpV();
+    this.RhB.Riv.value = false;
+    hkT();
     AppMethodBeat.o(31474);
   }
   
-  public final void gpS()
+  public final void hkQ()
   {
     AppMethodBeat.i(185751);
-    this.KgQ.KhL.value = false;
-    gpV();
+    this.RhB.Riw.value = false;
+    hkT();
     AppMethodBeat.o(185751);
   }
   
-  public final void gpT()
+  public final void hkR()
   {
-    AppMethodBeat.i(232211);
-    this.KgQ.KhM.value = false;
-    gpV();
-    AppMethodBeat.o(232211);
+    AppMethodBeat.i(265018);
+    this.RhB.Rix.value = false;
+    hkT();
+    AppMethodBeat.o(265018);
   }
   
-  public final void gpU()
+  public final void hkS()
   {
-    AppMethodBeat.i(232212);
-    this.KgQ.Ag(false);
-    gpV();
-    AppMethodBeat.o(232212);
+    AppMethodBeat.i(265019);
+    this.RhB.El(false);
+    hkT();
+    AppMethodBeat.o(265019);
   }
   
-  public final void gpV()
+  public final void hkT()
   {
     AppMethodBeat.i(31475);
-    int j = this.KgI.length;
+    int j = this.Rht.length;
     int i = 0;
     while (i < j)
     {
-      this.KgI[i] = true;
+      this.Rht[i] = true;
       i += 1;
     }
-    if (!this.KgQ.Khp.value) {
-      this.KgI[0] = false;
+    if (!this.RhB.Ria.value) {
+      this.Rht[0] = false;
     }
     for (j = 1;; j = 0)
     {
       i = j;
-      if (!this.KgQ.Kho.value)
+      if (!this.RhB.RhZ.value)
       {
-        this.KgI[1] = false;
+        this.Rht[1] = false;
         i = j + 1;
       }
       j = i;
-      if (!this.KgQ.KhK.value)
+      if (!this.RhB.Riv.value)
       {
-        this.KgI[19] = false;
+        this.Rht[19] = false;
         j = i + 1;
       }
       i = j;
-      if (!this.KgQ.KhL.value)
+      if (!this.RhB.Riw.value)
       {
-        this.KgI[12] = false;
+        this.Rht[12] = false;
         i = j + 1;
       }
       j = i;
-      if (!this.KgQ.KhM.value)
+      if (!this.RhB.Rix.value)
       {
-        this.KgI[13] = false;
+        this.Rht[13] = false;
         j = i + 1;
       }
       i = j;
-      if (!this.KgQ.KhN.value)
+      if (!this.RhB.Riy.value)
       {
-        this.KgI[14] = false;
+        this.Rht[14] = false;
         i = j + 1;
       }
-      if (this.KgQ.KhC.value)
+      if (this.RhB.Rin.value)
       {
         j = i;
-        if (this.KgQ.KhD.value) {}
+        if (this.RhB.Rio.value) {}
       }
       else
       {
-        this.KgI[6] = false;
+        this.Rht[6] = false;
         j = i + 1;
       }
       i = j;
-      if (!this.KgQ.Khu.value)
+      if (!this.RhB.Rif.value)
       {
-        this.KgI[17] = false;
+        this.Rht[17] = false;
         i = j + 1;
       }
       j = i;
-      if (!this.KgQ.Khv.value)
+      if (!this.RhB.Rig.value)
       {
         Log.i("MicroMsg.AppPanel", "disable remittance");
-        this.KgI[8] = false;
+        this.Rht[8] = false;
         j = i + 1;
       }
       i = j;
-      if (!this.KgQ.Khq.value)
+      if (!this.RhB.Rib.value)
       {
-        this.KgI[15] = false;
+        this.Rht[15] = false;
         i = j + 1;
       }
       j = i;
-      if (!this.KgQ.KhE.value)
+      if (!this.RhB.Rip.value)
       {
-        this.KgI[16] = false;
+        this.Rht[16] = false;
         j = i + 1;
       }
       i = j;
-      if (!this.KgQ.KhH.value)
+      if (!this.RhB.Ris.value)
       {
-        this.KgI[3] = false;
+        this.Rht[3] = false;
         i = j + 1;
       }
       j = i;
-      if (!this.KgQ.Khr.value)
+      if (!this.RhB.Ric.value)
       {
-        this.KgI[11] = false;
+        this.Rht[11] = false;
         j = i + 1;
       }
       i = j;
-      if (!this.KgQ.Khx.value)
+      if (!this.RhB.Rii.value)
       {
-        this.KgI[5] = false;
+        this.Rht[5] = false;
         i = j + 1;
       }
-      if (this.KgQ.Khz.value)
+      if (this.RhB.Rik.value)
       {
         j = i;
-        if (this.KgQ.Khy.value) {}
+        if (this.RhB.Rij.value) {}
       }
       else
       {
-        this.KgI[4] = false;
+        this.Rht[4] = false;
         j = i + 1;
       }
-      if (this.KgQ.Kht.value)
+      if (this.RhB.Rie.value)
       {
         i = j;
-        if (this.KgQ.Khs.value) {}
+        if (this.RhB.Rid.value) {}
       }
       else
       {
-        this.KgI[2] = false;
+        this.Rht[2] = false;
         i = j + 1;
       }
-      if (this.KgQ.KhB.value)
+      if (this.RhB.Rim.value)
       {
         j = i;
-        if (this.KgQ.KhA.value) {}
+        if (this.RhB.Ril.value) {}
       }
       else
       {
-        this.KgI[10] = false;
+        this.Rht[10] = false;
         j = i + 1;
       }
       i = j;
-      if (!this.KgQ.KhG.value)
+      if (!this.RhB.Rir.value)
       {
         Log.i("MicroMsg.AppPanel", "disable lucky money");
-        this.KgI[7] = false;
+        this.Rht[7] = false;
         i = j + 1;
       }
       j = i;
-      if (!this.KgQ.KhI.value)
+      if (!this.RhB.Rit.value)
       {
-        this.KgI[18] = false;
+        this.Rht[18] = false;
         j = i + 1;
       }
       i = j;
-      if (!this.KgQ.KhO.value)
+      if (!this.RhB.Riz.value)
       {
-        this.KgI[20] = false;
+        this.Rht[20] = false;
         i = j + 1;
       }
-      this.KgI[9] = false;
-      this.Kgx = (21 - (i + 1));
+      this.Rht[9] = false;
+      this.Rhi = (21 - (i + 1));
       AppMethodBeat.o(31475);
       return;
     }
   }
   
-  public final void gpZ()
+  public final void hkX()
   {
     AppMethodBeat.i(31483);
     Log.i("MicroMsg.AppPanel", "[forceRefreshSize]");
-    gqa();
-    gpY();
+    hkY();
+    hkW();
     AppMethodBeat.o(31483);
   }
   
@@ -1404,23 +1479,23 @@ public class AppPanel
   {
     AppMethodBeat.i(31460);
     Log.i("MicroMsg.AppPanel", "init: %s", new Object[] { Integer.valueOf(paramInt) });
-    this.KgQ = new a();
-    this.KgT = paramInt;
+    this.RhB = new a();
+    this.RhE = paramInt;
     Display localDisplay = ((WindowManager)getContext().getSystemService("window")).getDefaultDisplay();
     if (localDisplay.getWidth() < localDisplay.getHeight()) {
-      this.KgR = localDisplay.getWidth();
+      this.RhC = localDisplay.getWidth();
     }
-    for (this.KgS = localDisplay.getHeight();; this.KgS = localDisplay.getWidth())
+    for (this.RhD = localDisplay.getHeight();; this.RhD = localDisplay.getWidth())
     {
-      View.inflate(this.context, 2131493128, this);
-      this.COE = ((MMDotView)findViewById(2131296961));
-      this.COD = ((MMFlipper)findViewById(2131296962));
-      gpW();
-      gpK();
-      bqe();
+      View.inflate(this.context, R.i.ebB, this);
+      this.IUg = ((MMDotView)findViewById(R.h.drf));
+      this.IUf = ((MMFlipper)findViewById(R.h.drg));
+      hkU();
+      hkI();
+      dlN();
       AppMethodBeat.o(31460);
       return;
-      this.KgR = localDisplay.getHeight();
+      this.RhC = localDisplay.getHeight();
     }
   }
   
@@ -1435,63 +1510,55 @@ public class AppPanel
       }
     }
     label76:
-    for (this.Khd = true;; this.Khd = false)
+    for (this.RhO = true;; this.RhO = false)
     {
       setNeedRefreshHeight(true);
-      gpY();
+      hkW();
       AppMethodBeat.o(31481);
       return;
     }
   }
   
-  public final void refresh()
-  {
-    AppMethodBeat.i(31478);
-    Log.i("MicroMsg.AppPanel", "app panel refleshed: %s", new Object[] { Integer.valueOf(this.KgT) });
-    bqe();
-    AppMethodBeat.o(31478);
-  }
-  
   public void setAppPanelListener(a parama)
   {
-    this.KgJ = parama;
+    this.Rhu = parama;
   }
   
   public void setAppPanelUnCertainEnterArrayList(ArrayList<a.a> paramArrayList)
   {
-    this.KgQ.KhP = paramArrayList;
+    this.RhB.RiA = paramArrayList;
   }
   
   public void setChattingContext(ChatFooter.b paramb)
   {
-    this.KgL = paramb;
+    this.Rhw = paramb;
   }
   
   public void setNeedRefreshHeight(boolean paramBoolean)
   {
-    this.Khi = paramBoolean;
+    this.RhT = paramBoolean;
   }
   
   public void setOnSwitchPanelListener(AppPanel.b paramb)
   {
-    this.KgK = paramb;
+    this.Rhv = paramb;
   }
   
   public void setPortHeighDP(int paramInt)
   {
-    if (COl != paramInt)
+    if (ITN != paramInt)
     {
-      COl = paramInt;
-      this.Khi = true;
+      ITN = paramInt;
+      this.RhT = true;
     }
   }
   
   public void setPortHeighPx(int paramInt)
   {
-    if (this.Khj != paramInt)
+    if (this.RhU != paramInt)
     {
-      this.Khj = paramInt;
-      this.Khi = true;
+      this.RhU = paramInt;
+      this.RhT = true;
     }
   }
   
@@ -1499,118 +1566,63 @@ public class AppPanel
   {
     AppMethodBeat.i(31461);
     Log.i("MicroMsg.AppPanel", "setServiceShowFlag: %s", new Object[] { Integer.valueOf(paramInt) });
-    this.KgT = paramInt;
+    this.RhE = paramInt;
     AppMethodBeat.o(31461);
   }
   
   public void setUncertainEnterLocation(int paramInt)
   {
-    this.KgP = paramInt;
-  }
-  
-  public final void zW(boolean paramBoolean)
-  {
-    AppMethodBeat.i(31466);
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      this.KgQ.Khs.value = paramBoolean;
-      gpV();
-      Log.d("MicroMsg.AppPanel", "enable " + paramBoolean + " isVoipPluginEnable " + this.KgQ.Kht.value);
-      AppMethodBeat.o(31466);
-      return;
-    }
-  }
-  
-  public final void zX(boolean paramBoolean)
-  {
-    AppMethodBeat.i(31467);
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      this.KgQ.Khy.value = paramBoolean;
-      gpV();
-      Log.d("MicroMsg.AppPanel", "enable " + this.KgQ.Khz.value + " isVoipAudioEnable " + paramBoolean);
-      AppMethodBeat.o(31467);
-      return;
-    }
-  }
-  
-  public final void zY(boolean paramBoolean)
-  {
-    AppMethodBeat.i(31468);
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      this.KgQ.KhH.value = paramBoolean;
-      gpV();
-      Log.d("MicroMsg.AppPanel", "enable " + this.KgQ.KhH.value + " isMultiTalkEnable " + paramBoolean);
-      AppMethodBeat.o(31468);
-      return;
-    }
-  }
-  
-  public final void zZ(boolean paramBoolean)
-  {
-    AppMethodBeat.i(31469);
-    if (!paramBoolean) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      this.KgQ.KhA.value = paramBoolean;
-      gpV();
-      AppMethodBeat.o(31469);
-      return;
-    }
+    this.RhA = paramInt;
   }
   
   public static abstract interface a
   {
-    public abstract void Qj(int paramInt);
+    public abstract void Wv(int paramInt);
     
-    public abstract void Qk(int paramInt);
+    public abstract void Ww(int paramInt);
     
     public abstract void d(com.tencent.mm.pluginsdk.model.app.g paramg);
     
-    public abstract void ehU();
+    public abstract void eRB();
     
-    public abstract void ehV();
+    public abstract void eRC();
     
-    public abstract void ehW();
+    public abstract void eRD();
     
-    public abstract void ehX();
+    public abstract void eRE();
     
-    public abstract void ehY();
+    public abstract void eRF();
     
-    public abstract void ehZ();
+    public abstract void eRG();
     
-    public abstract void eia();
+    public abstract void eRH();
     
-    public abstract void eib();
+    public abstract void eRI();
     
-    public abstract void eic();
+    public abstract void eRJ();
     
-    public abstract void eid();
+    public abstract void eRK();
     
-    public abstract void eie();
+    public abstract void eRL();
     
-    public abstract void eif();
+    public abstract void eRM();
     
-    public abstract void eig();
+    public abstract void eRN();
     
-    public abstract void eih();
+    public abstract void eRO();
     
-    public abstract void eii();
+    public abstract void eRP();
     
-    public abstract void eij();
+    public abstract void eRQ();
     
-    public abstract void eik();
+    public abstract void eRR();
     
-    public abstract void eil();
+    public abstract void eRS();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.AppPanel
  * JD-Core Version:    0.7.0.1
  */

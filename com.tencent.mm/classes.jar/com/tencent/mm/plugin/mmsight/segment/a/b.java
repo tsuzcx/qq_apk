@@ -3,68 +3,68 @@ package com.tencent.mm.plugin.mmsight.segment.a;
 import android.os.Looper;
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.n.d;
-import com.tencent.mm.plugin.n.j;
-import com.tencent.mm.plugin.n.k;
+import com.tencent.mm.plugin.u.d;
+import com.tencent.mm.plugin.u.j;
+import com.tencent.mm.plugin.u.k;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
   implements a
 {
-  boolean ZA;
+  j Ffh;
+  int Ffi;
+  int Ffj;
+  private int Ffk;
+  a.a Ffl;
+  a.d Ffm;
+  a.b Ffn;
+  a.c Ffo;
+  boolean gX;
   boolean isStart;
   boolean loop;
-  j zAm;
-  int zAn;
-  int zAo;
-  private int zAp;
-  a.a zAq;
-  a.d zAr;
-  a.b zAs;
-  a.c zAt;
   
   public b()
   {
     AppMethodBeat.i(107715);
     this.loop = false;
     this.isStart = false;
-    this.ZA = false;
-    this.zAo = 0;
-    this.zAp = 0;
-    this.zAm = new j(Looper.getMainLooper());
-    Object localObject = this.zAm;
-    if (((j)localObject).zrS != null)
+    this.gX = false;
+    this.Ffj = 0;
+    this.Ffk = 0;
+    this.Ffh = new j(Looper.getMainLooper());
+    Object localObject = this.Ffh;
+    if (((j)localObject).EXt != null)
     {
-      localObject = ((j)localObject).zrS;
-      if (((k)localObject).zrC != null) {
-        ((k)localObject).zrC.zrx = false;
+      localObject = ((j)localObject).EXt;
+      if (((k)localObject).EXa != null) {
+        ((k)localObject).EXa.EWV = false;
       }
     }
-    this.zAm.setNeedResetExtractor(false);
-    this.zAm.zrT = new d()
+    this.Ffh.setNeedResetExtractor(false);
+    this.Ffh.EXu = new d()
     {
-      public final void aa(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
+      public final void ab(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
         AppMethodBeat.i(107714);
-        b.this.zAn = paramAnonymousInt3;
-        if (b.this.zAr != null) {
-          b.this.zAr.ap(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3);
+        b.this.Ffi = paramAnonymousInt3;
+        if (b.this.Ffm != null) {
+          b.this.Ffm.au(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3);
         }
         AppMethodBeat.o(107714);
       }
       
-      public final void cJH()
+      public final void cYp()
       {
         AppMethodBeat.i(107713);
-        Log.i("MicroMsg.MMSegmentVideoPlayer", "onSeekComplete, onSeekCompleteListener: %s", new Object[] { b.this.zAt });
-        if (b.this.zAt != null)
+        Log.i("MicroMsg.MMSegmentVideoPlayer", "onSeekComplete, onSeekCompleteListener: %s", new Object[] { b.this.Ffo });
+        if (b.this.Ffo != null)
         {
-          b.this.zAt.dE(b.this.zAm);
+          b.this.Ffo.dH(b.this.Ffh);
           AppMethodBeat.o(107713);
           return;
         }
         if (b.this.isStart) {
-          b.this.zAm.start();
+          b.this.Ffh.start();
         }
         AppMethodBeat.o(107713);
       }
@@ -73,7 +73,7 @@ public final class b
       {
         AppMethodBeat.i(107711);
         if (b.this.loop) {
-          b.this.zAm.QC(b.this.zAo);
+          b.this.Ffh.WQ(b.this.Ffj);
         }
         AppMethodBeat.o(107711);
       }
@@ -81,22 +81,22 @@ public final class b
       public final void onError(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(107712);
-        if (b.this.zAq != null) {
-          b.this.zAq.hc(paramAnonymousInt1, paramAnonymousInt2);
+        if (b.this.Ffl != null) {
+          b.this.Ffl.ig(paramAnonymousInt1, paramAnonymousInt2);
         }
         AppMethodBeat.o(107712);
       }
       
-      public final void tf()
+      public final void qX()
       {
         AppMethodBeat.i(107710);
-        if (b.this.zAs != null) {
-          b.this.zAs.dD(b.this.zAm);
+        if (b.this.Ffn != null) {
+          b.this.Ffn.dG(b.this.Ffh);
         }
         if (b.this.isStart) {
-          b.this.zAm.start();
+          b.this.Ffh.start();
         }
-        b.this.ZA = true;
+        b.this.gX = true;
         AppMethodBeat.o(107710);
       }
     };
@@ -105,41 +105,47 @@ public final class b
   
   public final void a(a.a parama)
   {
-    this.zAq = parama;
+    this.Ffl = parama;
   }
   
   public final void a(a.b paramb)
   {
-    this.zAs = paramb;
+    this.Ffn = paramb;
   }
   
   public final void a(a.c paramc)
   {
-    this.zAt = paramc;
+    this.Ffo = paramc;
   }
   
   public final void a(a.d paramd)
   {
-    this.zAr = paramd;
+    this.Ffm = paramd;
   }
   
   public final int getCurrentPosition()
   {
     AppMethodBeat.i(107724);
-    int i = this.zAm.ejm();
+    int i = this.Ffh.eST();
     AppMethodBeat.o(107724);
     return i;
   }
   
   public final int getDuration()
   {
-    return (int)this.zAm.zrS.durationMs;
+    return (int)this.Ffh.EXt.durationMs;
+  }
+  
+  public final void ih(int paramInt1, int paramInt2)
+  {
+    this.Ffj = paramInt1;
+    this.Ffk = paramInt2;
   }
   
   public final boolean isPlaying()
   {
     AppMethodBeat.i(107722);
-    boolean bool = this.zAm.isPlaying();
+    boolean bool = this.Ffh.isPlaying();
     AppMethodBeat.o(107722);
     return bool;
   }
@@ -147,31 +153,31 @@ public final class b
   public final void pause()
   {
     AppMethodBeat.i(107721);
-    this.zAm.pause();
+    this.Ffh.pause();
     AppMethodBeat.o(107721);
   }
   
   public final void prepareAsync()
   {
     AppMethodBeat.i(107718);
-    this.zAm.prepare();
+    this.Ffh.prepare();
     AppMethodBeat.o(107718);
   }
   
   public final void release()
   {
     AppMethodBeat.i(107725);
-    this.zAm.release();
+    this.Ffh.release();
     AppMethodBeat.o(107725);
   }
   
   public final void seekTo(int paramInt)
   {
     AppMethodBeat.i(107723);
-    if (this.zAm != null)
+    if (this.Ffh != null)
     {
       Log.i("MicroMsg.MMSegmentVideoPlayer", "seekTo: %s", new Object[] { Integer.valueOf(paramInt) });
-      this.zAm.QC(paramInt);
+      this.Ffh.WQ(paramInt);
     }
     AppMethodBeat.o(107723);
   }
@@ -181,14 +187,8 @@ public final class b
   public final void setDataSource(String paramString)
   {
     AppMethodBeat.i(107717);
-    this.zAm.setPath(paramString);
+    this.Ffh.setPath(paramString);
     AppMethodBeat.o(107717);
-  }
-  
-  public final void setLoop(int paramInt1, int paramInt2)
-  {
-    this.zAo = paramInt1;
-    this.zAp = paramInt2;
   }
   
   public final void setLooping(boolean paramBoolean)
@@ -199,15 +199,15 @@ public final class b
   public final void setSurface(Surface paramSurface)
   {
     AppMethodBeat.i(107716);
-    this.zAm.setSurface(paramSurface);
+    this.Ffh.setSurface(paramSurface);
     AppMethodBeat.o(107716);
   }
   
   public final void start()
   {
     AppMethodBeat.i(107719);
-    if (this.ZA) {
-      this.zAm.start();
+    if (this.gX) {
+      this.Ffh.start();
     }
     this.isStart = true;
     AppMethodBeat.o(107719);
@@ -216,14 +216,14 @@ public final class b
   public final void stop()
   {
     AppMethodBeat.i(107720);
-    this.zAm.stop();
+    this.Ffh.stop();
     this.isStart = false;
     AppMethodBeat.o(107720);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.a.b
  * JD-Core Version:    0.7.0.1
  */

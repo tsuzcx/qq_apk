@@ -23,9 +23,9 @@ import org.apache.http.util.EntityUtils;
 
 public final class i
 {
-  static i lli;
-  MulticastSocket llj;
-  InetAddress llk;
+  static i ofU;
+  MulticastSocket ofV;
+  InetAddress ofW;
   int port;
   
   i(boolean paramBoolean)
@@ -34,12 +34,12 @@ public final class i
     this.port = -1;
     try
     {
-      this.llk = InetAddress.getByName("239.255.255.250");
+      this.ofW = InetAddress.getByName("239.255.255.250");
       if (paramBoolean)
       {
-        this.llj = new MulticastSocket();
-        this.llj.setBroadcast(true);
-        this.port = this.llj.getLocalPort();
+        this.ofV = new MulticastSocket();
+        this.ofV.setBroadcast(true);
+        this.port = this.ofV.getLocalPort();
       }
       AppMethodBeat.o(159011);
       return;
@@ -60,8 +60,8 @@ public final class i
       localObject1 = AndroidHttpClient.newInstance("");
       try
       {
-        localObject2 = new a(parame.getUrl(), parame.bBj());
-        localObject3 = parame.bBk();
+        localObject2 = new a(parame.getUrl(), parame.bME());
+        localObject3 = parame.bMF();
         if ((localObject3 == null) || (((Map)localObject3).isEmpty())) {
           break label141;
         }
@@ -94,7 +94,7 @@ public final class i
     AppMethodBeat.o(159013);
     throw parame;
     label141:
-    parame = parame.bBh();
+    parame = parame.bMC();
     if (!TextUtils.isEmpty(parame))
     {
       parame = new StringEntity(parame, "utf-8");
@@ -104,33 +104,33 @@ public final class i
     parame = ((AndroidHttpClient)localObject1).execute((HttpUriRequest)localObject2);
     ((AndroidHttpClient)localObject1).close();
     localObject2 = new com.tencent.mm.plugin.appbrand.g.c.b.e();
-    ((com.tencent.mm.plugin.appbrand.g.c.b.e)localObject2).llp = new b();
+    ((com.tencent.mm.plugin.appbrand.g.c.b.e)localObject2).ogb = new b();
     localObject3 = parame.getAllHeaders();
     j = localObject3.length;
     i = 0;
     while (i < j)
     {
       localEntry = localObject3[i];
-      ((com.tencent.mm.plugin.appbrand.g.c.b.e)localObject2).llp.put(localEntry.getName(), localEntry.getValue());
+      ((com.tencent.mm.plugin.appbrand.g.c.b.e)localObject2).ogb.put(localEntry.getName(), localEntry.getValue());
       i += 1;
     }
     localObject3 = EntityUtils.toString(parame.getEntity(), "utf-8").replaceAll("&(?!amp;)", "&amp;");
-    ((com.tencent.mm.plugin.appbrand.g.c.b.e)localObject2).llq = j.bBE().Yf((String)localObject3);
-    ((com.tencent.mm.plugin.appbrand.g.c.b.e)localObject2).responseCode = parame.getStatusLine().getStatusCode();
+    ((com.tencent.mm.plugin.appbrand.g.c.b.e)localObject2).ogc = j.bNa().afT((String)localObject3);
+    ((com.tencent.mm.plugin.appbrand.g.c.b.e)localObject2).bpg = parame.getStatusLine().getStatusCode();
     AppMethodBeat.o(159013);
     return localObject2;
   }
   
-  public static i bBD()
+  public static i bMZ()
   {
     AppMethodBeat.i(159012);
-    if (lli == null) {}
+    if (ofU == null) {}
     try
     {
-      if (lli == null) {
-        lli = new i(true);
+      if (ofU == null) {
+        ofU = new i(true);
       }
-      i locali = lli;
+      i locali = ofU;
       AppMethodBeat.o(159012);
       return locali;
     }
@@ -143,8 +143,8 @@ public final class i
   protected final void finalize()
   {
     AppMethodBeat.i(159014);
-    if (this == lli) {
-      this.llj.close();
+    if (this == ofU) {
+      this.ofV.close();
     }
     super.finalize();
     AppMethodBeat.o(159014);
@@ -153,18 +153,18 @@ public final class i
   public static final class a
     extends HttpPost
   {
-    private e.a ljv;
+    private e.a oee;
     
     public a(String paramString, e.a parama)
     {
       super();
-      this.ljv = parama;
+      this.oee = parama;
     }
     
     public final String getMethod()
     {
       AppMethodBeat.i(159010);
-      String str = this.ljv.name();
+      String str = this.oee.name();
       AppMethodBeat.o(159010);
       return str;
     }
@@ -172,7 +172,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.c.i
  * JD-Core Version:    0.7.0.1
  */

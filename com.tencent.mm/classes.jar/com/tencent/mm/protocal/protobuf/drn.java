@@ -1,232 +1,89 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
+import java.util.LinkedList;
 
 public final class drn
-  extends com.tencent.mm.bw.a
+  extends dyl
 {
-  public String KQY;
-  public String MUb;
-  public String MUc;
-  public b MUd;
-  public b MUe;
-  public b MUf;
-  public int MmK;
-  public String Username;
-  public int kdY;
-  public String kdZ;
-  public String kea;
-  public String keb;
-  public String keh;
-  public int kem;
-  public String oUJ;
-  public String xJE;
+  public int CPw;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(187877);
+    AppMethodBeat.i(134249);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Username != null) {
-        paramVarArgs.e(1, this.Username);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.oUJ != null) {
-        paramVarArgs.e(2, this.oUJ);
-      }
-      if (this.MUb != null) {
-        paramVarArgs.e(3, this.MUb);
-      }
-      if (this.MUc != null) {
-        paramVarArgs.e(4, this.MUc);
-      }
-      if (this.keh != null) {
-        paramVarArgs.e(5, this.keh);
-      }
-      if (this.kdZ != null) {
-        paramVarArgs.e(6, this.kdZ);
-      }
-      if (this.kea != null) {
-        paramVarArgs.e(7, this.kea);
-      }
-      if (this.keb != null) {
-        paramVarArgs.e(8, this.keb);
-      }
-      paramVarArgs.aM(9, this.kdY);
-      paramVarArgs.aM(10, this.MmK);
-      if (this.MUd != null) {
-        paramVarArgs.c(11, this.MUd);
-      }
-      if (this.KQY != null) {
-        paramVarArgs.e(12, this.KQY);
-      }
-      if (this.MUe != null) {
-        paramVarArgs.c(13, this.MUe);
-      }
-      if (this.MUf != null) {
-        paramVarArgs.c(14, this.MUf);
-      }
-      paramVarArgs.aM(15, this.kem);
-      if (this.xJE != null) {
-        paramVarArgs.e(16, this.xJE);
-      }
-      AppMethodBeat.o(187877);
+      paramVarArgs.aY(2, this.CPw);
+      AppMethodBeat.o(134249);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Username == null) {
-        break label1086;
+      if (this.BaseRequest == null) {
+        break label332;
       }
     }
-    label1086:
-    for (int i = g.a.a.b.b.a.f(1, this.Username) + 0;; i = 0)
+    label332:
+    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.oUJ != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.oUJ);
-      }
-      i = paramInt;
-      if (this.MUb != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.MUb);
-      }
-      paramInt = i;
-      if (this.MUc != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.MUc);
-      }
-      i = paramInt;
-      if (this.keh != null) {
-        i = paramInt + g.a.a.b.b.a.f(5, this.keh);
-      }
-      paramInt = i;
-      if (this.kdZ != null) {
-        paramInt = i + g.a.a.b.b.a.f(6, this.kdZ);
-      }
-      i = paramInt;
-      if (this.kea != null) {
-        i = paramInt + g.a.a.b.b.a.f(7, this.kea);
-      }
-      paramInt = i;
-      if (this.keb != null) {
-        paramInt = i + g.a.a.b.b.a.f(8, this.keb);
-      }
-      i = paramInt + g.a.a.b.b.a.bu(9, this.kdY) + g.a.a.b.b.a.bu(10, this.MmK);
-      paramInt = i;
-      if (this.MUd != null) {
-        paramInt = i + g.a.a.b.b.a.b(11, this.MUd);
-      }
-      i = paramInt;
-      if (this.KQY != null) {
-        i = paramInt + g.a.a.b.b.a.f(12, this.KQY);
-      }
-      paramInt = i;
-      if (this.MUe != null) {
-        paramInt = i + g.a.a.b.b.a.b(13, this.MUe);
-      }
-      i = paramInt;
-      if (this.MUf != null) {
-        i = paramInt + g.a.a.b.b.a.b(14, this.MUf);
-      }
-      i += g.a.a.b.b.a.bu(15, this.kem);
-      paramInt = i;
-      if (this.xJE != null) {
-        paramInt = i + g.a.a.b.b.a.f(16, this.xJE);
-      }
-      AppMethodBeat.o(187877);
-      return paramInt;
+      int i = g.a.a.b.b.a.bM(2, this.CPw);
+      AppMethodBeat.o(134249);
+      return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(187877);
+        AppMethodBeat.o(134249);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         drn localdrn = (drn)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(187877);
+          AppMethodBeat.o(134249);
           return -1;
         case 1: 
-          localdrn.Username = locala.UbS.readString();
-          AppMethodBeat.o(187877);
-          return 0;
-        case 2: 
-          localdrn.oUJ = locala.UbS.readString();
-          AppMethodBeat.o(187877);
-          return 0;
-        case 3: 
-          localdrn.MUb = locala.UbS.readString();
-          AppMethodBeat.o(187877);
-          return 0;
-        case 4: 
-          localdrn.MUc = locala.UbS.readString();
-          AppMethodBeat.o(187877);
-          return 0;
-        case 5: 
-          localdrn.keh = locala.UbS.readString();
-          AppMethodBeat.o(187877);
-          return 0;
-        case 6: 
-          localdrn.kdZ = locala.UbS.readString();
-          AppMethodBeat.o(187877);
-          return 0;
-        case 7: 
-          localdrn.kea = locala.UbS.readString();
-          AppMethodBeat.o(187877);
-          return 0;
-        case 8: 
-          localdrn.keb = locala.UbS.readString();
-          AppMethodBeat.o(187877);
-          return 0;
-        case 9: 
-          localdrn.kdY = locala.UbS.zi();
-          AppMethodBeat.o(187877);
-          return 0;
-        case 10: 
-          localdrn.MmK = locala.UbS.zi();
-          AppMethodBeat.o(187877);
-          return 0;
-        case 11: 
-          localdrn.MUd = locala.UbS.hPo();
-          AppMethodBeat.o(187877);
-          return 0;
-        case 12: 
-          localdrn.KQY = locala.UbS.readString();
-          AppMethodBeat.o(187877);
-          return 0;
-        case 13: 
-          localdrn.MUe = locala.UbS.hPo();
-          AppMethodBeat.o(187877);
-          return 0;
-        case 14: 
-          localdrn.MUf = locala.UbS.hPo();
-          AppMethodBeat.o(187877);
-          return 0;
-        case 15: 
-          localdrn.kem = locala.UbS.zi();
-          AppMethodBeat.o(187877);
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            jg localjg = new jg();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localjg.parseFrom((byte[])localObject);
+            }
+            localdrn.BaseRequest = localjg;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(134249);
           return 0;
         }
-        localdrn.xJE = locala.UbS.readString();
-        AppMethodBeat.o(187877);
+        localdrn.CPw = ((g.a.a.a.a)localObject).abFh.AK();
+        AppMethodBeat.o(134249);
         return 0;
       }
-      AppMethodBeat.o(187877);
+      AppMethodBeat.o(134249);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.drn
  * JD-Core Version:    0.7.0.1
  */

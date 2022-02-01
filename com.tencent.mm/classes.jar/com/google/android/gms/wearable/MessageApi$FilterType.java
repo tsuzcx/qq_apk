@@ -8,7 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 public @interface MessageApi$FilterType {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.gms.wearable.MessageApi.FilterType
  * JD-Core Version:    0.7.0.1
  */

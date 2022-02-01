@@ -1,13 +1,21 @@
 package com.tencent.sqlitelint.behaviour.alert;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.sqlitelint.R.id;
+import com.tencent.sqlitelint.R.layout;
+import com.tencent.sqlitelint.R.string;
 import com.tencent.sqlitelint.behaviour.persistence.IssueStorage;
 import com.tencent.sqlitelint.behaviour.persistence.SQLiteLintDbHelper;
 import com.tencent.sqlitelint.util.SLog;
@@ -18,15 +26,15 @@ public class CheckedDatabaseListActivity
   extends SQLiteLintBaseActivity
 {
   private static final String TAG = "SQLiteLint.CheckedDatabaseListActivity";
-  private CheckedDatabaseListActivity.CheckedDatabaseListAdapter mListAdapter;
+  private CheckedDatabaseListAdapter mListAdapter;
   private ListView mListView;
   
   private void initView()
   {
     AppMethodBeat.i(52899);
-    setTitle(getString(2131757561));
-    this.mListView = ((ListView)findViewById(2131303226));
-    this.mListAdapter = new CheckedDatabaseListActivity.CheckedDatabaseListAdapter(this);
+    setTitle(getString(R.string.checked_database_list_title));
+    this.mListView = ((ListView)findViewById(R.id.list));
+    this.mListAdapter = new CheckedDatabaseListAdapter(this);
     this.mListView.setAdapter(this.mListAdapter);
     this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
@@ -45,10 +53,10 @@ public class CheckedDatabaseListActivity
         paramAnonymousAdapterView.setClass(CheckedDatabaseListActivity.this, CheckResultActivity.class);
         paramAnonymousAdapterView.putExtra("db_label", paramAnonymousView);
         paramAnonymousView = CheckedDatabaseListActivity.this;
-        paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().bl(paramAnonymousAdapterView);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.axQ(), "com/tencent/sqlitelint/behaviour/alert/CheckedDatabaseListActivity$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/sqlitelint/behaviour/alert/CheckedDatabaseListActivity$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousAdapterView);
+        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, paramAnonymousAdapterView.aFh(), "com/tencent/sqlitelint/behaviour/alert/CheckedDatabaseListActivity$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/sqlitelint/behaviour/alert/CheckedDatabaseListActivity$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(52890);
       }
     });
@@ -66,7 +74,7 @@ public class CheckedDatabaseListActivity
   
   protected int getLayoutId()
   {
-    return 2131492953;
+    return R.layout.activity_checked_database_list;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -91,10 +99,83 @@ public class CheckedDatabaseListActivity
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  static class CheckedDatabaseListAdapter
+    extends BaseAdapter
+  {
+    private List<String> mDefectiveDbList;
+    private final LayoutInflater mInflater;
+    
+    CheckedDatabaseListAdapter(Context paramContext)
+    {
+      AppMethodBeat.i(52891);
+      this.mInflater = LayoutInflater.from(paramContext);
+      AppMethodBeat.o(52891);
+    }
+    
+    public int getCount()
+    {
+      AppMethodBeat.i(52893);
+      if (this.mDefectiveDbList == null)
+      {
+        AppMethodBeat.o(52893);
+        return 0;
+      }
+      int i = this.mDefectiveDbList.size();
+      AppMethodBeat.o(52893);
+      return i;
+    }
+    
+    public String getItem(int paramInt)
+    {
+      AppMethodBeat.i(52894);
+      String str = (String)this.mDefectiveDbList.get(paramInt);
+      AppMethodBeat.o(52894);
+      return str;
+    }
+    
+    public long getItemId(int paramInt)
+    {
+      return 0L;
+    }
+    
+    public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+    {
+      AppMethodBeat.i(52895);
+      if (paramView == null)
+      {
+        paramView = this.mInflater.inflate(R.layout.view_checked_database_item, paramViewGroup, false);
+        paramViewGroup = new CheckedDatabaseListActivity.ViewHolder();
+        paramViewGroup.dbPathTv = ((TextView)paramView.findViewById(R.id.db_path));
+        paramView.setTag(paramViewGroup);
+      }
+      for (;;)
+      {
+        String str = getItem(paramInt);
+        paramViewGroup.dbPathTv.setText(str);
+        AppMethodBeat.o(52895);
+        return paramView;
+        paramViewGroup = (CheckedDatabaseListActivity.ViewHolder)paramView.getTag();
+      }
+    }
+    
+    public void setData(List<String> paramList)
+    {
+      AppMethodBeat.i(52892);
+      this.mDefectiveDbList = paramList;
+      notifyDataSetChanged();
+      AppMethodBeat.o(52892);
+    }
+  }
+  
+  static class ViewHolder
+  {
+    public TextView dbPathTv;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.sqlitelint.behaviour.alert.CheckedDatabaseListActivity
  * JD-Core Version:    0.7.0.1
  */

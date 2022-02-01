@@ -6,19 +6,19 @@ import com.tencent.mm.plugin.fts.a.a;
 public final class c
   extends a
 {
-  public final void awY()
+  public final void aEr()
   {
     AppMethodBeat.i(45022);
-    if (awZ()) {
-      W(-104L, 3L);
+    if (aEs()) {
+      ad(-104L, 3L);
     }
     AppMethodBeat.o(45022);
   }
   
-  public final boolean awZ()
+  public final boolean aEs()
   {
     AppMethodBeat.i(45023);
-    if (!gD(-104, 3))
+    if (!hw(-104, 3))
     {
       AppMethodBeat.o(45023);
       return true;
@@ -49,7 +49,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.j.c
  * JD-Core Version:    0.7.0.1
  */

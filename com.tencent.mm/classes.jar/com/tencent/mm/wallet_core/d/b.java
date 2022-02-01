@@ -1,10 +1,11 @@
 package com.tencent.mm.wallet_core.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.tenpay.model.ITenpaySave;
 import com.tencent.mm.wallet_core.tenpay.model.ITenpaySave.RetryPayInfo;
@@ -15,35 +16,35 @@ public final class b
   implements i
 {
   static ITenpaySave.RetryPayInfo retryPayInfo;
-  private n Ruu;
-  private int Ruw = 0;
-  private i Rux;
+  private n YVS;
+  private int YVU = 0;
+  private i YVV;
   
   public b(i parami)
   {
-    this.Rux = parami;
+    this.YVV = parami;
   }
   
   private void a(int paramInt1, int paramInt2, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72838);
     Log.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "doRealCallback errCode = " + paramInt2 + "errType = " + paramInt1);
-    if ((this.Ruu != null) && (paramJSONObject != null) && (paramInt1 == 0) && (paramInt2 == 0))
+    if ((this.YVS != null) && (paramJSONObject != null) && (paramInt1 == 0) && (paramInt2 == 0))
     {
       Log.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "doRealCallback mScene !=null");
-      this.Ruu.onGYNetEnd(paramInt2, paramString, paramJSONObject);
-      this.Rux.onSceneEnd(paramInt1, paramInt2, paramString, this.Ruu);
+      this.YVS.onGYNetEnd(paramInt2, paramString, paramJSONObject);
+      this.YVV.onSceneEnd(paramInt1, paramInt2, paramString, this.YVS);
     }
     for (;;)
     {
       Log.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "doRealCallback reset");
-      this.Ruw = 0;
+      this.YVU = 0;
       AppMethodBeat.o(72838);
       return;
-      if (this.Rux != null)
+      if (this.YVV != null)
       {
         Log.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "doRealCallback mRealCallback !=null");
-        this.Rux.onSceneEnd(paramInt1, paramInt2, paramString, this.Ruu);
+        this.YVV.onSceneEnd(paramInt1, paramInt2, paramString, this.YVS);
       }
     }
   }
@@ -51,8 +52,8 @@ public final class b
   private boolean canRetry()
   {
     AppMethodBeat.i(72834);
-    int i = hhG();
-    if (this.Ruw >= i)
+    int i = ijh();
+    if (this.YVU >= i)
     {
       AppMethodBeat.o(72834);
       return false;
@@ -64,16 +65,16 @@ public final class b
   private void d(int paramInt1, int paramInt2, q paramq)
   {
     AppMethodBeat.i(72840);
-    a(paramInt1, paramInt2, retryPayInfo.RuI, ((n)paramq).RuU);
+    a(paramInt1, paramInt2, retryPayInfo.YWg, ((n)paramq).YWs);
     AppMethodBeat.o(72840);
   }
   
-  private static int hhG()
+  private static int ijh()
   {
     AppMethodBeat.i(72835);
-    if ((retryPayInfo != null) && (retryPayInfo.exv()))
+    if ((retryPayInfo != null) && (retryPayInfo.fiY()))
     {
-      int i = retryPayInfo.MSD;
+      int i = retryPayInfo.UeK;
       AppMethodBeat.o(72835);
       return i;
     }
@@ -84,31 +85,31 @@ public final class b
   public final boolean c(n paramn)
   {
     AppMethodBeat.i(72836);
-    if ((retryPayInfo != null) && (retryPayInfo.exv())) {}
+    if ((retryPayInfo != null) && (retryPayInfo.fiY())) {}
     int k;
-    for (int i = retryPayInfo.RuH;; i = 0)
+    for (int i = retryPayInfo.YWf;; i = 0)
     {
-      k = hhG();
-      this.Ruw += 1;
-      if (this.Ruw <= k) {
+      k = ijh();
+      this.YVU += 1;
+      if (this.YVU <= k) {
         break;
       }
       AppMethodBeat.o(72836);
       return false;
     }
-    this.Ruu = paramn;
-    this.Ruu.setHasRetried(true);
-    g.aAi();
-    g.aAg().hqi.a(385, this);
-    this.Ruu.resetForRetry();
-    int m = this.Ruw;
-    if (this.Ruw >= k) {}
+    this.YVS = paramn;
+    this.YVS.setHasRetried(true);
+    h.aHH();
+    h.aHF().kcd.a(385, this);
+    this.YVS.resetForRetry();
+    int m = this.YVU;
+    if (this.YVU >= k) {}
     for (int j = 1;; j = 0)
     {
       paramn.updateConfig(m, j);
       Log.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "doLoopDelayScene,delay = %s queryOrderCount %s", new Object[] { Integer.valueOf(i), Integer.valueOf(k) });
-      g.aAi();
-      g.aAg().hqi.a(paramn, i * 1000);
+      h.aHH();
+      h.aHF().kcd.a(paramn, i * 1000);
       AppMethodBeat.o(72836);
       return true;
     }
@@ -117,9 +118,9 @@ public final class b
   public final void destory()
   {
     AppMethodBeat.i(72837);
-    this.Rux = null;
-    g.aAi();
-    g.aAg().hqi.b(385, this);
+    this.YVV = null;
+    h.aHH();
+    h.aHF().kcd.b(385, this);
     AppMethodBeat.o(72837);
   }
   
@@ -132,25 +133,25 @@ public final class b
       if ((paramq instanceof ITenpaySave))
       {
         ITenpaySave.RetryPayInfo localRetryPayInfo = ((ITenpaySave)paramq).getRetryPayInfo();
-        if (localRetryPayInfo.exv()) {
+        if (localRetryPayInfo.fiY()) {
           retryPayInfo = localRetryPayInfo;
         }
       }
-      g.aAi();
-      g.aAg().hqi.b(385, this);
+      h.aHH();
+      h.aHF().kcd.b(385, this);
       if (((n)paramq).ishasCGiRetried())
       {
-        if (this.Ruu.checkPaySuccess())
+        if (this.YVS.checkPaySuccess())
         {
           Log.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "PaySuccess ok");
-          a(paramInt1, paramInt2, paramString, ((n)paramq).RuU);
+          a(paramInt1, paramInt2, paramString, ((n)paramq).YWs);
           AppMethodBeat.o(72839);
           return;
         }
-        if ((this.Ruu.canPayRetry()) && (canRetry()))
+        if ((this.YVS.canPayRetry()) && (canRetry()))
         {
-          Log.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "try isServerDelayQuery true svrcanRetry %s localCanRetry %s", new Object[] { Boolean.valueOf(this.Ruu.canPayRetry()), Boolean.valueOf(canRetry()) });
-          if (!c(this.Ruu))
+          Log.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "try isServerDelayQuery true svrcanRetry %s localCanRetry %s", new Object[] { Boolean.valueOf(this.YVS.canPayRetry()), Boolean.valueOf(canRetry()) });
+          if (!c(this.YVS))
           {
             d(paramInt1, paramInt2, paramq);
             AppMethodBeat.o(72839);
@@ -159,7 +160,7 @@ public final class b
         else if (((n)paramq).checkRecSrvResp())
         {
           Log.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "try svr no resp");
-          if (!c(this.Ruu))
+          if (!c(this.YVS))
           {
             d(paramInt1, paramInt2, paramq);
             AppMethodBeat.o(72839);
@@ -167,9 +168,9 @@ public final class b
         }
         else
         {
-          paramString = retryPayInfo.RuI;
+          paramString = retryPayInfo.YWg;
           Log.i("MicroMsg.DelayQueryOrderSaveOrFetchHelper", "PaySuccess error %s", new Object[] { paramString });
-          a(paramInt1, paramInt2, paramString, ((n)paramq).RuU);
+          a(paramInt1, paramInt2, paramString, ((n)paramq).YWs);
         }
       }
     }

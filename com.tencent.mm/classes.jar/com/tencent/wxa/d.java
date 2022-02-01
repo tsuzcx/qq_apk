@@ -8,30 +8,28 @@ import io.flutter.plugin.a.k.d;
 import java.util.HashSet;
 import java.util.Iterator;
 
-public final class d
+public class d
   implements io.flutter.embedding.engine.plugins.a
 {
-  private static com.tencent.wxa.a.a SxP;
-  private static HashSet<a> SxQ;
-  private final k.c SxR;
-  
-  static
-  {
-    AppMethodBeat.i(206309);
-    SxQ = new HashSet();
-    AppMethodBeat.o(206309);
-  }
+  public final String ZYU;
+  private final String ZYV;
+  public com.tencent.wxa.a.a ZYW;
+  private HashSet<b> ZYX;
+  private final k.c ZYY;
   
   public d()
   {
-    AppMethodBeat.i(206303);
-    this.SxR = new k.c()
+    AppMethodBeat.i(224799);
+    this.ZYU = "WxaRouterPlugin";
+    this.ZYV = "com.tencent.wxa/wxa_router";
+    this.ZYX = new HashSet();
+    this.ZYY = new k.c()
     {
       public final void a(j paramAnonymousj, k.d paramAnonymousd)
       {
-        AppMethodBeat.i(206302);
+        AppMethodBeat.i(224798);
         HashSet localHashSet = new HashSet();
-        localHashSet.addAll(d.fcc());
+        localHashSet.addAll(d.a(d.this));
         String str = paramAnonymousj.method;
         if (!localHashSet.isEmpty())
         {
@@ -39,16 +37,16 @@ public final class d
           boolean bool = false;
           while (localIterator.hasNext())
           {
-            Object localObject = (a)localIterator.next();
+            Object localObject = (b)localIterator.next();
             if (!bool)
             {
-              localObject = ((a)localObject).a(paramAnonymousj);
-              bool = ((a.a)localObject).result;
-              if (((a.a)localObject).result)
+              localObject = ((b)localObject).a(paramAnonymousj);
+              bool = ((b.a)localObject).result;
+              if (((b.a)localObject).result)
               {
                 com.tencent.wxa.c.a.i("WxaRouter.WxaRouterPlugin", "method call %s success ", new Object[] { str });
-                paramAnonymousd.ba(((a.a)localObject).SxC);
-                AppMethodBeat.o(206302);
+                paramAnonymousd.bb(((b.a)localObject).ZYG);
+                AppMethodBeat.o(224798);
               }
             }
             else
@@ -59,66 +57,58 @@ public final class d
           if (!bool)
           {
             com.tencent.wxa.c.a.i("WxaRouter.WxaRouterPlugin", "method call %s had no ", new Object[] { str });
-            paramAnonymousd.dLv();
+            paramAnonymousd.epZ();
           }
           localHashSet.clear();
         }
-        AppMethodBeat.o(206302);
+        AppMethodBeat.o(224798);
       }
     };
-    AppMethodBeat.o(206303);
+    AppMethodBeat.o(224799);
   }
   
-  public static void G(String paramString, Object paramObject)
+  public final void G(String paramString, Object paramObject)
   {
-    AppMethodBeat.i(206307);
-    SxP.a(paramString, paramObject, null);
-    AppMethodBeat.o(206307);
-  }
-  
-  public static void a(String paramString, k.d paramd)
-  {
-    AppMethodBeat.i(206308);
-    SxP.a(paramString, null, paramd);
-    AppMethodBeat.o(206308);
-  }
-  
-  public static void k(HashSet<a> paramHashSet)
-  {
-    AppMethodBeat.i(206306);
-    if (!SxQ.contains(paramHashSet))
-    {
-      SxQ.addAll(paramHashSet);
-      AppMethodBeat.o(206306);
-      return;
-    }
-    com.tencent.wxa.c.a.i("WxaRouter.WxaRouterPlugin", "had add method call handler %s", new Object[] { Integer.valueOf(paramHashSet.hashCode()) });
-    AppMethodBeat.o(206306);
+    AppMethodBeat.i(224807);
+    this.ZYW.a(paramString, paramObject, null);
+    AppMethodBeat.o(224807);
   }
   
   public final void a(a.b paramb)
   {
-    AppMethodBeat.i(206304);
+    AppMethodBeat.i(224802);
     com.tencent.wxa.c.a.i("WxaRouter.WxaRouterPlugin", "onAttachedToEngine", new Object[0]);
-    paramb = new com.tencent.wxa.a.a(paramb.SOH, "com.tencent.wxa/wxa_router");
-    SxP = paramb;
-    paramb.SxT = this.SxR;
-    AppMethodBeat.o(206304);
+    this.ZYW = new com.tencent.wxa.a.a(paramb.aaqF, "com.tencent.wxa/wxa_router");
+    this.ZYW.ZZa = this.ZYY;
+    AppMethodBeat.o(224802);
   }
   
   public final void b(a.b paramb)
   {
-    AppMethodBeat.i(206305);
+    AppMethodBeat.i(224803);
     com.tencent.wxa.c.a.i("WxaRouter.WxaRouterPlugin", "onDetachedFromEngine", new Object[0]);
-    if (SxP != null) {
-      SxP.SxT = null;
+    if (this.ZYW != null) {
+      this.ZYW.ZZa = null;
     }
-    AppMethodBeat.o(206305);
+    AppMethodBeat.o(224803);
+  }
+  
+  public final void l(HashSet<b> paramHashSet)
+  {
+    AppMethodBeat.i(224805);
+    if (!this.ZYX.contains(paramHashSet))
+    {
+      this.ZYX.addAll(paramHashSet);
+      AppMethodBeat.o(224805);
+      return;
+    }
+    com.tencent.wxa.c.a.i("WxaRouter.WxaRouterPlugin", "had add method call handler %s", new Object[] { Integer.valueOf(paramHashSet.hashCode()) });
+    AppMethodBeat.o(224805);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.wxa.d
  * JD-Core Version:    0.7.0.1
  */

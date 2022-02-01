@@ -2,17 +2,18 @@ package com.tencent.luggage.xweb_ext.extendplugin.component;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.jsapi.k;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.j;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
 import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public final class f
 {
-  public static boolean a(p paramp, com.tencent.mm.plugin.appbrand.jsapi.f paramf, JSONObject paramJSONObject, int paramInt)
+  public static boolean a(o paramo, e parame, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(177123);
-    if (!paramp.getName().contains("operate"))
+    if (!paramo.getName().contains("operate"))
     {
       AppMethodBeat.o(177123);
       return false;
@@ -28,26 +29,26 @@ public final class f
       AppMethodBeat.o(177123);
       return false;
     }
-    if ((paramf instanceof k)) {}
-    for (localObject = ((k)paramf).getRuntime();; localObject = null)
+    if ((parame instanceof j)) {}
+    for (localObject = ((j)parame).getRuntime();; localObject = null)
     {
       if (localObject == null)
       {
-        paramf.i(paramInt, paramp.h("fail", null));
+        parame.j(paramInt, paramo.h("fail", null));
         AppMethodBeat.o(177123);
         return true;
       }
-      localObject = ((AppBrandRuntime)localObject).kAQ;
+      localObject = ((AppBrandRuntime)localObject).nuc;
       if (localObject == null)
       {
-        paramf.i(paramInt, paramp.h("fail", null));
+        parame.j(paramInt, paramo.h("fail", null));
         AppMethodBeat.o(177123);
         return true;
       }
-      if (((com.tencent.mm.plugin.appbrand.pip.f)localObject).yV(paramJSONObject.optInt("viewId"))) {}
+      if (((com.tencent.mm.plugin.appbrand.pip.f)localObject).CA(paramJSONObject.optInt("viewId"))) {}
       for (paramJSONObject = "ok";; paramJSONObject = "fail")
       {
-        paramf.i(paramInt, paramp.h(paramJSONObject, null));
+        parame.j(paramInt, paramo.h(paramJSONObject, null));
         AppMethodBeat.o(177123);
         return true;
       }
@@ -56,7 +57,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.f
  * JD-Core Version:    0.7.0.1
  */

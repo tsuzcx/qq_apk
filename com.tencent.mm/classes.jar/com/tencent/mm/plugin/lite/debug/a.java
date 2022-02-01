@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.lite.debug;
 
-import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.f;
 
 public final class a {}
 

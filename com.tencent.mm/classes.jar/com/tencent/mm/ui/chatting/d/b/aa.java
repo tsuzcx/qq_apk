@@ -3,37 +3,39 @@ package com.tencent.mm.ui.chatting.d.b;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.ui.chatting.d.af;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.ui.chatting.d.ag;
+import com.tencent.mm.ui.z;
 
 public abstract interface aa
-  extends af
+  extends ag
 {
-  public abstract void BR(boolean paramBoolean);
+  public abstract void Gm(boolean paramBoolean);
   
   public abstract void a(boolean paramBoolean, View.OnClickListener paramOnClickListener);
   
-  public abstract void amB(int paramInt);
+  public abstract void avC(int paramInt);
   
-  public abstract void gC(View paramView);
+  public abstract void bzm(String paramString);
   
-  public abstract w gNg();
+  public abstract z hMp();
   
-  public abstract void gPx();
+  public abstract void hN(View paramView);
   
-  public abstract void gQk();
+  public abstract void hOL();
   
-  public abstract void gQn();
+  public abstract void hPF();
   
-  public abstract void gQp();
+  public abstract void hPJ();
   
-  public abstract void gQr();
+  public abstract void hPL();
   
-  public abstract void gQs();
+  public abstract void hPN();
   
-  public abstract int gQy();
+  public abstract void hPP();
   
-  public abstract int gQz();
+  public abstract int hPV();
+  
+  public abstract int hPW();
   
   public abstract void setBackBtn(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener);
   
@@ -43,15 +45,13 @@ public abstract interface aa
   
   public abstract void setMMTitle(CharSequence paramCharSequence);
   
-  public abstract void setTitleForceNotifyIconVisibility(int paramInt);
-  
   public abstract void setTitleMuteIconVisibility(int paramInt);
   
   public abstract void setTitlePhoneIconVisibility(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.b.aa
  * JD-Core Version:    0.7.0.1
  */

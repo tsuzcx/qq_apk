@@ -2,19 +2,20 @@ package com.tencent.mm.pluginsdk.wallet;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.b;
-import com.tencent.mm.g.a.aaf;
-import com.tencent.mm.g.a.aaf.b;
-import com.tencent.mm.g.a.aag;
-import com.tencent.mm.g.a.aag.b;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.aj.j;
+import com.tencent.mm.aj.k.b;
+import com.tencent.mm.f.a.abm;
+import com.tencent.mm.f.a.abm.b;
+import com.tencent.mm.f.a.abn;
+import com.tencent.mm.f.a.abn.b;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.aq.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -24,35 +25,39 @@ import java.util.List;
 
 public final class d
 {
-  public static boolean aU(ca paramca)
+  public static boolean bn(ca paramca)
   {
     Object localObject1 = null;
     AppMethodBeat.i(116324);
     if (paramca.getType() == 419430449)
     {
       if (paramca.field_isSend != 0) {
-        break label330;
+        break label372;
       }
       localObject1 = paramca.field_content;
       if (localObject1 == null) {
-        break label344;
+        break label386;
       }
     }
-    label330:
-    label337:
-    label344:
-    for (paramca = k.b.aD((String)localObject1, paramca.field_reserved);; paramca = null)
+    label386:
+    for (localObject1 = k.b.aG((String)localObject1, paramca.field_reserved);; localObject1 = null)
     {
       int i;
-      if (paramca != null)
+      if (localObject1 != null)
       {
-        localObject1 = new aag();
-        ((aag)localObject1).ehb.dQp = paramca.ixQ;
-        EventCenter.instance.publish((IEvent)localObject1);
-        j = ((aag)localObject1).ehc.status;
+        Object localObject2 = (j)((k.b)localObject1).ar(j.class);
+        if ((ab.Lj(paramca.field_talker)) && (!z.bcZ().equals(((j)localObject2).llO)))
+        {
+          AppMethodBeat.o(116324);
+          return false;
+        }
+        paramca = new abn();
+        paramca.gbr.fJG = ((k.b)localObject1).lnf;
+        EventCenter.instance.publish(paramca);
+        j = paramca.gbs.status;
         i = j;
         if (j <= 0) {
-          i = paramca.ixN;
+          i = ((k.b)localObject1).lnc;
         }
         if ((i >= 0) && ((i == 1) || (i == 7)))
         {
@@ -60,32 +65,32 @@ public final class d
           return true;
           if ((paramca.getType() == 436207665) && (paramca.field_isSend == 0))
           {
-            Object localObject2 = paramca.field_content;
+            localObject2 = paramca.field_content;
             if (localObject2 != null) {
-              localObject1 = k.b.HD((String)localObject2);
+              localObject1 = k.b.OQ((String)localObject2);
             }
             if (localObject1 != null) {
-              if ((!"1001".equals(((k.b)localObject1).iyq)) && (!ab.Eq(paramca.field_talker)))
+              if ((!"1001".equals(((k.b)localObject1).lnG)) && (!ab.Lj(paramca.field_talker)))
               {
-                paramca = new aaf();
-                if (!Util.isNullOrNil(((k.b)localObject1).iyr))
+                paramca = new abm();
+                if (!Util.isNullOrNil(((k.b)localObject1).lnH))
                 {
-                  paramca.egV.egX = ((k.b)localObject1).iyr;
+                  paramca.gbl.gbn = ((k.b)localObject1).lnH;
                   EventCenter.instance.publish(paramca);
-                  if (paramca.egW.eha == 0)
+                  if (paramca.gbm.gbq == 0)
                   {
                     AppMethodBeat.o(116324);
                     return true;
                   }
                 }
               }
-              else if (ab.Eq(paramca.field_talker))
+              else if (ab.Lj(paramca.field_talker))
               {
-                paramca = z.aTY();
-                if (Util.isNullOrNil(((k.b)localObject1).iyG)) {
-                  break label337;
+                paramca = z.bcZ();
+                if (Util.isNullOrNil(((k.b)localObject1).lnW)) {
+                  break label379;
                 }
-                localObject1 = ((k.b)localObject1).iyG.iterator();
+                localObject1 = ((k.b)localObject1).lnW.iterator();
                 while (((Iterator)localObject1).hasNext())
                 {
                   localObject2 = ((String)((Iterator)localObject1).next()).split(",");
@@ -105,56 +110,58 @@ public final class d
           AppMethodBeat.o(116324);
           return true;
         }
+        label372:
         AppMethodBeat.o(116324);
         return false;
+        label379:
         i = 0;
       }
     }
   }
   
-  public static String bfO(String paramString)
+  public static String bsh(String paramString)
   {
     AppMethodBeat.i(116323);
-    Object localObject = ((l)g.af(l.class)).eiy().aEU(paramString);
+    paramString = ((n)h.ae(n.class)).eSe().aPe(paramString);
     int k;
     int j;
     int i;
-    if (localObject != null)
+    if (paramString != null)
     {
-      Log.i("MicroMsg.WalletConvDelCheckLogic", "checkUnProcessWalletMsgCount, msgInfoList size: %s", new Object[] { Integer.valueOf(((List)localObject).size()) });
-      Iterator localIterator = ((List)localObject).iterator();
+      Log.i("MicroMsg.WalletConvDelCheckLogic", "checkUnProcessWalletMsgCount, msgInfoList size: %s", new Object[] { Integer.valueOf(paramString.size()) });
+      Iterator localIterator = paramString.iterator();
       k = 0;
       j = 0;
       i = 0;
       while (localIterator.hasNext())
       {
-        localObject = (ca)localIterator.next();
-        if (!aU((ca)localObject)) {
-          break label343;
+        paramString = (ca)localIterator.next();
+        if (!bn(paramString)) {
+          break label329;
         }
-        if (((ca)localObject).getType() == 419430449)
+        if (paramString.getType() == 419430449)
         {
           k += 1;
         }
         else
         {
-          if (((ca)localObject).getType() != 436207665) {
-            break label343;
+          if (paramString.getType() != 436207665) {
+            break label329;
           }
-          localObject = ((eo)localObject).field_content;
-          if (localObject == null) {
-            break label346;
+          paramString = paramString.field_content;
+          if (paramString == null) {
+            break label332;
           }
         }
       }
     }
-    label343:
-    label346:
-    for (localObject = k.b.HD((String)localObject);; localObject = null)
+    label329:
+    label332:
+    for (paramString = k.b.OQ(paramString);; paramString = null)
     {
-      if (localObject != null)
+      if (paramString != null)
       {
-        if ("1001".equals(((k.b)localObject).iyq))
+        if ("1001".equals(paramString.lnG))
         {
           j += 1;
           break;
@@ -166,27 +173,27 @@ public final class d
         break;
         if ((i > 0) || (j > 0) || (k > 0))
         {
-          if (ab.Eq(paramString))
+          if (j > 0)
           {
-            paramString = MMApplicationContext.getContext().getString(2131767680, new Object[] { Integer.valueOf(j) });
+            paramString = MMApplicationContext.getContext().getString(a.h.wallet_delete_note_aa_stub, new Object[] { Integer.valueOf(j) });
             AppMethodBeat.o(116323);
             return paramString;
           }
           if ((i > 0) && (k <= 0))
           {
-            paramString = MMApplicationContext.getContext().getString(2131767682, new Object[] { Integer.valueOf(i) });
+            paramString = MMApplicationContext.getContext().getString(a.h.wallet_delete_note_luckymoney_stub, new Object[] { Integer.valueOf(i) });
             AppMethodBeat.o(116323);
             return paramString;
           }
           if ((k > 0) && (i <= 0))
           {
-            paramString = MMApplicationContext.getContext().getString(2131767683, new Object[] { Integer.valueOf(k) });
+            paramString = MMApplicationContext.getContext().getString(a.h.wallet_delete_note_remittance_stub, new Object[] { Integer.valueOf(k) });
             AppMethodBeat.o(116323);
             return paramString;
           }
           if ((k > 0) && (i > 0))
           {
-            paramString = MMApplicationContext.getContext().getString(2131767681, new Object[] { Integer.valueOf(i), Integer.valueOf(k) });
+            paramString = MMApplicationContext.getContext().getString(a.h.wallet_delete_note_luckymoney_remittance_stub, new Object[] { Integer.valueOf(i), Integer.valueOf(k) });
             AppMethodBeat.o(116323);
             return paramString;
           }
@@ -199,7 +206,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.wallet.d
  * JD-Core Version:    0.7.0.1
  */

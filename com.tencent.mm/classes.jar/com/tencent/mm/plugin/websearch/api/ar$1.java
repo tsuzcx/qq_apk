@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.nh;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cl;
+import com.tencent.mm.f.b.a.qh;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.cm;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 
@@ -17,7 +17,7 @@ final class ar$1
   {
     int i = 0;
     int j = 0;
-    AppMethodBeat.i(187863);
+    AppMethodBeat.i(212542);
     int[] arrayOfInt = new int[5];
     int[] tmp16_14 = arrayOfInt;
     tmp16_14[0] = 1;
@@ -32,22 +32,22 @@ final class ar$1
     tmp33_28;
     if (this.val$type == -1)
     {
-      long l = g.aAh().azQ().a(ar.a.Ohw, 0L);
-      if (cl.aWA() - l > 86400000L)
+      long l = h.aHG().aHp().a(ar.a.VvM, 0L);
+      if (cm.bfE() - l > 86400000L)
       {
         i = j;
         while (i < 5)
         {
-          localnh = new nh();
-          localnh.erY = (i + 1);
-          localnh.fgr = ai.aft(arrayOfInt[i]);
-          localnh.bfK();
-          ar.a(localnh);
+          localqh = new qh();
+          localqh.goe = (i + 1);
+          localqh.hjA = ai.anh(arrayOfInt[i]);
+          localqh.bpa();
+          ar.a(localqh);
           i += 1;
         }
-        g.aAh().azQ().set(ar.a.Ohw, Long.valueOf(cl.aWA()));
+        h.aHG().aHp().set(ar.a.VvM, Long.valueOf(cm.bfE()));
       }
-      AppMethodBeat.o(187863);
+      AppMethodBeat.o(212542);
       return;
     }
     do
@@ -57,19 +57,19 @@ final class ar$1
         break;
       }
     } while (arrayOfInt[i] != this.val$type);
-    nh localnh = new nh();
-    localnh.erY = (i + 1);
-    localnh.fgr = ai.aft(arrayOfInt[i]);
-    localnh.bfK();
-    ar.a(localnh);
-    AppMethodBeat.o(187863);
+    qh localqh = new qh();
+    localqh.goe = (i + 1);
+    localqh.hjA = ai.anh(arrayOfInt[i]);
+    localqh.bpa();
+    ar.a(localqh);
+    AppMethodBeat.o(212542);
     return;
-    AppMethodBeat.o(187863);
+    AppMethodBeat.o(212542);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.ar.1
  * JD-Core Version:    0.7.0.1
  */

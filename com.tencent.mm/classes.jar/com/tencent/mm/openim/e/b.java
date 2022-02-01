@@ -5,11 +5,11 @@ import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 import com.tencent.mm.storagebase.h;
 
-public final class b
+public class b
   extends MAutoStorage<a>
 {
   public static final String[] SQL_CREATE;
-  public h iFy;
+  public h lvy;
   
   static
   {
@@ -21,7 +21,7 @@ public final class b
   public b(h paramh)
   {
     super(paramh, a.info, "OpenIMAccTypeInfo", null);
-    this.iFy = paramh;
+    this.lvy = paramh;
   }
   
   public final boolean a(a parama)
@@ -35,7 +35,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.openim.e.b
  * JD-Core Version:    0.7.0.1
  */

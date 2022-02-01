@@ -8,27 +8,27 @@ public final class b
   extends com.tencent.mm.ui.chatting.d.a
   implements com.tencent.mm.ui.chatting.d.b.a
 {
-  private a PvX;
+  private a WQq;
   
   public b(a parama)
   {
-    this.PvX = parama;
+    this.WQq = parama;
   }
   
-  private boolean gPo()
+  private boolean hOE()
   {
     AppMethodBeat.i(35816);
-    if (Util.isNullOrNil(this.dom.getTalkerUserName()))
+    if (Util.isNullOrNil(this.fgR.getTalkerUserName()))
     {
       AppMethodBeat.o(35816);
       return false;
     }
-    if (ab.JB(this.dom.getTalkerUserName()))
+    if (ab.QU(this.fgR.getTalkerUserName()))
     {
       AppMethodBeat.o(35816);
       return false;
     }
-    if (this.PvX != null)
+    if (this.WQq != null)
     {
       AppMethodBeat.o(35816);
       return true;
@@ -41,109 +41,109 @@ public final class b
   {
     AppMethodBeat.i(35804);
     super.a(parama);
-    if (this.PvX != null) {
-      this.PvX.a(parama);
+    if (this.WQq != null) {
+      this.WQq.a(parama);
     }
     AppMethodBeat.o(35804);
   }
   
-  public final void cFx()
-  {
-    AppMethodBeat.i(35809);
-    if (gPo()) {
-      this.PvX.cFx();
-    }
-    AppMethodBeat.o(35809);
-  }
-  
-  public final void cFy()
-  {
-    AppMethodBeat.i(35810);
-    if (gPo()) {
-      this.PvX.cFy();
-    }
-    AppMethodBeat.o(35810);
-  }
-  
-  public final void gIk()
+  public final void hGU()
   {
     AppMethodBeat.i(35806);
-    if (gPo()) {
-      this.PvX.gIk();
+    if (hOE()) {
+      this.WQq.hGU();
     }
     AppMethodBeat.o(35806);
   }
   
-  public final void gIl()
+  public final void hGV()
   {
     AppMethodBeat.i(35807);
-    if (gPo()) {
-      this.PvX.gIl();
+    if (hOE()) {
+      this.WQq.hGV();
     }
     AppMethodBeat.o(35807);
   }
   
-  public final void gIm()
+  public final void hGW()
   {
     AppMethodBeat.i(35808);
-    if (gPo()) {
-      this.PvX.gIm();
+    if (hOE()) {
+      this.WQq.hGW();
     }
     AppMethodBeat.o(35808);
   }
   
-  public final void gIn()
+  public final void hGX()
+  {
+    AppMethodBeat.i(35809);
+    if (hOE()) {
+      this.WQq.hGX();
+    }
+    AppMethodBeat.o(35809);
+  }
+  
+  public final void hGY()
+  {
+    AppMethodBeat.i(35810);
+    if (hOE()) {
+      this.WQq.hGY();
+    }
+    AppMethodBeat.o(35810);
+  }
+  
+  public final void hGZ()
   {
     AppMethodBeat.i(35811);
-    if (gPo()) {
-      this.PvX.gIn();
+    if (hOE()) {
+      this.WQq.hGZ();
     }
     AppMethodBeat.o(35811);
   }
   
-  public final void gIo()
+  public final void hHa()
   {
     AppMethodBeat.i(35812);
-    if (gPo()) {
-      this.PvX.gIo();
+    if (hOE()) {
+      this.WQq.hHa();
     }
     AppMethodBeat.o(35812);
   }
   
-  public final void gOK()
+  public final void hNZ()
   {
     AppMethodBeat.i(35805);
-    super.gOK();
-    if (this.PvX != null) {
-      this.PvX.gOK();
+    super.hNZ();
+    if (this.WQq != null) {
+      this.WQq.hNZ();
     }
     AppMethodBeat.o(35805);
   }
   
-  public final void gPx()
+  public final void hOL()
   {
     AppMethodBeat.i(35813);
-    if (gPo()) {
-      this.PvX.gPx();
+    if (hOE()) {
+      this.WQq.hOL();
     }
     AppMethodBeat.o(35813);
   }
   
-  public final void gRG()
+  public final void hRd()
   {
     AppMethodBeat.i(35814);
-    if (gPo()) {
-      this.PvX.gRG();
+    if (hOE()) {
+      this.WQq.hRd();
     }
     AppMethodBeat.o(35814);
   }
   
-  public final String gRH()
+  public final String hRe()
   {
     AppMethodBeat.i(35815);
-    if (gPo())
+    if (hOE())
     {
-      String str = this.PvX.gRH();
+      String str = this.WQq.hRe();
       AppMethodBeat.o(35815);
       return str;
     }
@@ -153,7 +153,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.c.b
  * JD-Core Version:    0.7.0.1
  */

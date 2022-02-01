@@ -2,7 +2,6 @@ package com.tencent.mm.pointers;
 
 public class PString
 {
-  private byte _hellAccFlag_;
   public String value = "";
 }
 

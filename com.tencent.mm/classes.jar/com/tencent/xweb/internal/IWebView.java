@@ -12,15 +12,16 @@ import android.webkit.WebBackForwardList;
 import android.webkit.WebView.FindListener;
 import com.tencent.xweb.WebView.a;
 import com.tencent.xweb.WebView.b;
-import com.tencent.xweb.ab;
+import com.tencent.xweb.aa;
 import com.tencent.xweb.ac;
-import com.tencent.xweb.ae;
+import com.tencent.xweb.ad;
+import com.tencent.xweb.af;
+import com.tencent.xweb.ah;
 import com.tencent.xweb.i;
 import com.tencent.xweb.u;
 import com.tencent.xweb.v;
 import com.tencent.xweb.x;
 import com.tencent.xweb.x5.export.external.extension.proxy.a;
-import com.tencent.xweb.z;
 import java.util.Map;
 
 public abstract interface IWebView
@@ -61,7 +62,7 @@ public abstract interface IWebView
   
   public abstract x getCurWebChromeClient();
   
-  public abstract ac getCurWebviewClient();
+  public abstract ad getCurWebviewClient();
   
   public abstract e getDefalutOpProvider();
   
@@ -77,7 +78,7 @@ public abstract interface IWebView
   
   public abstract int getScrollHeight();
   
-  public abstract z getSettings();
+  public abstract aa getSettings();
   
   public abstract String getTitle();
   
@@ -148,7 +149,7 @@ public abstract interface IWebView
   
   public abstract void setHttpAuthUsernamePassword(String paramString1, String paramString2, String paramString3, String paramString4);
   
-  public abstract void setJSExceptionListener(ae paramae);
+  public abstract void setJSExceptionListener(af paramaf);
   
   public abstract void setVerticalScrollBarEnabled(boolean paramBoolean);
   
@@ -156,11 +157,15 @@ public abstract interface IWebView
   
   public abstract void setWebChromeClient(x paramx);
   
-  public abstract void setWebViewCallbackClient(ab paramab);
+  public abstract void setWebContentsSize(int paramInt1, int paramInt2);
   
-  public abstract void setWebViewClient(ac paramac);
+  public abstract void setWebViewCallbackClient(ac paramac);
+  
+  public abstract void setWebViewClient(ad paramad);
   
   public abstract void setWebViewClientExtension(a parama);
+  
+  public abstract void setXWebKeyEventHandler(ah paramah);
   
   public abstract void smoothScroll(int paramInt1, int paramInt2, long paramLong);
   
@@ -182,6 +187,8 @@ public abstract interface IWebView
   
   public abstract boolean supportFeature(int paramInt);
   
+  public abstract boolean supportSetWebContentsSize();
+  
   public abstract boolean zoomIn();
   
   public abstract boolean zoomOut();
@@ -190,7 +197,7 @@ public abstract interface IWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.internal.IWebView
  * JD-Core Version:    0.7.0.1
  */

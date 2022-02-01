@@ -17,7 +17,7 @@ public class TAVVideoConfiguration
   public static CGRect DEFAULT_VIDEO_FRAME;
   public static final CGRect FIX_RENDER_SIZE;
   public static final CGRect SOURCE_SIZE;
-  private TAVVideoConfigurationContentMode contentMode;
+  private TAVVideoConfiguration.TAVVideoConfigurationContentMode contentMode;
   private List<TAVVideoEffect> effects;
   private CGRect frame;
   private int preferRotation;
@@ -25,61 +25,61 @@ public class TAVVideoConfiguration
   
   static
   {
-    AppMethodBeat.i(197579);
+    AppMethodBeat.i(212464);
     FIX_RENDER_SIZE = new CGRect();
     CGRect localCGRect = new CGRect();
     SOURCE_SIZE = localCGRect;
     DEFAULT_VIDEO_FRAME = localCGRect;
-    AppMethodBeat.o(197579);
+    AppMethodBeat.o(212464);
   }
   
   public TAVVideoConfiguration()
   {
-    AppMethodBeat.i(197572);
+    AppMethodBeat.i(212451);
     this.frame = DEFAULT_VIDEO_FRAME;
     this.preferRotation = 0;
-    this.contentMode = TAVVideoConfigurationContentMode.aspectFit;
+    this.contentMode = TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFit;
     this.transform = new Matrix();
     this.effects = new ArrayList();
-    AppMethodBeat.o(197572);
+    AppMethodBeat.o(212451);
   }
   
   public void addEffect(TAVVideoEffect paramTAVVideoEffect)
   {
-    AppMethodBeat.i(197574);
+    AppMethodBeat.i(212457);
     if (this.effects == null) {
       this.effects = new ArrayList();
     }
     this.effects.add(paramTAVVideoEffect);
-    AppMethodBeat.o(197574);
+    AppMethodBeat.o(212457);
   }
   
   public TAVVideoConfiguration clone()
   {
-    AppMethodBeat.i(197575);
+    AppMethodBeat.i(212458);
     TAVVideoConfiguration localTAVVideoConfiguration = new TAVVideoConfiguration();
     localTAVVideoConfiguration.contentMode = this.contentMode;
     localTAVVideoConfiguration.frame = this.frame;
     localTAVVideoConfiguration.transform = this.transform;
     localTAVVideoConfiguration.effects = new ArrayList(this.effects);
     localTAVVideoConfiguration.preferRotation = this.preferRotation;
-    AppMethodBeat.o(197575);
+    AppMethodBeat.o(212458);
     return localTAVVideoConfiguration;
   }
   
   public boolean frameEnable()
   {
-    AppMethodBeat.i(197573);
+    AppMethodBeat.i(212455);
     if ((this.frame != null) && (this.frame != FIX_RENDER_SIZE) && (this.frame != SOURCE_SIZE) && (Utils.isRectValid(this.frame)))
     {
-      AppMethodBeat.o(197573);
+      AppMethodBeat.o(212455);
       return true;
     }
-    AppMethodBeat.o(197573);
+    AppMethodBeat.o(212455);
     return false;
   }
   
-  public TAVVideoConfigurationContentMode getContentMode()
+  public TAVVideoConfiguration.TAVVideoConfigurationContentMode getContentMode()
   {
     return this.contentMode;
   }
@@ -104,7 +104,7 @@ public class TAVVideoConfiguration
     return this.transform;
   }
   
-  public void setContentMode(TAVVideoConfigurationContentMode paramTAVVideoConfigurationContentMode)
+  public void setContentMode(TAVVideoConfiguration.TAVVideoConfigurationContentMode paramTAVVideoConfigurationContentMode)
   {
     this.contentMode = paramTAVVideoConfigurationContentMode;
   }
@@ -131,18 +131,18 @@ public class TAVVideoConfiguration
   
   public String toString()
   {
-    AppMethodBeat.i(197577);
+    AppMethodBeat.i(212461);
     String str = "TAVVideoConfiguration{contentMode=" + this.contentMode + ", frame=" + this.frame + ", transform=" + this.transform + '}';
-    AppMethodBeat.o(197577);
+    AppMethodBeat.o(212461);
     return str;
   }
   
   public void updateTimeRange(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(197576);
+    AppMethodBeat.i(212460);
     if (this.effects == null)
     {
-      AppMethodBeat.o(197576);
+      AppMethodBeat.o(212460);
       return;
     }
     Iterator localIterator = this.effects.iterator();
@@ -153,27 +153,12 @@ public class TAVVideoConfiguration
         ((TAVAttachTimeRangeSourceEffect)localTAVVideoEffect).attachTimeRange(paramCMTimeRange);
       }
     }
-    AppMethodBeat.o(197576);
-  }
-  
-  public static enum TAVVideoConfigurationContentMode
-  {
-    static
-    {
-      AppMethodBeat.i(197571);
-      aspectFit = new TAVVideoConfigurationContentMode("aspectFit", 0);
-      aspectFill = new TAVVideoConfigurationContentMode("aspectFill", 1);
-      scaleToFit = new TAVVideoConfigurationContentMode("scaleToFit", 2);
-      $VALUES = new TAVVideoConfigurationContentMode[] { aspectFit, aspectFill, scaleToFit };
-      AppMethodBeat.o(197571);
-    }
-    
-    private TAVVideoConfigurationContentMode() {}
+    AppMethodBeat.o(212460);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tavkit.composition.model.TAVVideoConfiguration
  * JD-Core Version:    0.7.0.1
  */

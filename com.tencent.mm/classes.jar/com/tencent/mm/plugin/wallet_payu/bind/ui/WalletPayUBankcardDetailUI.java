@@ -7,6 +7,8 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet.bind.ui.WalletBankcardDetailUI;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.i;
 
 public class WalletPayUBankcardDetailUI
   extends WalletBankcardDetailUI
@@ -15,19 +17,19 @@ public class WalletPayUBankcardDetailUI
   {
     AppMethodBeat.i(71993);
     super.onCreate(paramBundle);
-    if (1 == this.Hww.field_bankcardState)
+    if (1 == this.Ooj.field_bankcardState)
     {
-      fNX();
-      findViewById(2131310132).setVisibility(8);
-      findViewById(2131310131).setVisibility(8);
+      gGC();
+      findViewById(a.f.wallet_bankcard_detail_expired_bankphone_title).setVisibility(8);
+      findViewById(a.f.wallet_bankcard_detail_expired_bankphone).setVisibility(8);
     }
     for (;;)
     {
-      findViewById(2131310134).setVisibility(8);
-      ((TextView)findViewById(2131310136)).setText(2131767491);
+      findViewById(a.f.wallet_bankcard_detail_international_default).setVisibility(8);
+      ((TextView)findViewById(a.f.wallet_bankcard_detail_international_wording)).setText(a.i.wallet_bankcard_detail_international_tips_payu);
       AppMethodBeat.o(71993);
       return;
-      xR(false);
+      BL(false);
     }
   }
   

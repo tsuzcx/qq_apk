@@ -16,52 +16,52 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public final class d
+public class d
   implements b
 {
-  public static d iOv;
-  double cin;
-  private MMHandler hAk;
-  private f iVA;
-  private g iVB;
-  public boolean iVk;
-  h iVl;
-  long iVm;
-  public long iVn;
-  boolean iVo;
-  public boolean iVp;
-  double iVq;
-  double iVr;
-  int iVs;
-  double iVt;
-  double iVu;
-  String iVv;
-  String iVw;
-  int iVx;
-  private boolean iVy;
-  private boolean iVz;
-  List<WeakReference<b.a>> listeners;
+  public static d lEL;
+  private MMHandler knk;
+  public boolean lLE;
+  private i lLF;
+  long lLG;
+  public long lLH;
+  private boolean lLI;
+  public boolean lLJ;
+  private double lLK;
+  private double lLL;
+  private int lLM;
+  private double lLN;
+  private double lLO;
+  private double lLP;
+  private String lLQ;
+  private String lLR;
+  private int lLS;
+  private boolean lLT;
+  private boolean lLU;
+  private g lLV;
+  private h lLW;
+  private List<WeakReference<b.a>> listeners;
   private Context mContext;
   
   private d(Context paramContext)
   {
     AppMethodBeat.i(150488);
-    this.iVk = false;
+    this.lLE = false;
     this.listeners = new ArrayList();
-    this.iVm = 0L;
-    this.iVn = 0L;
-    this.iVo = false;
-    this.iVp = false;
-    this.iVq = 23.0D;
-    this.iVr = 100.0D;
-    this.iVs = 0;
-    this.iVt = 0.0D;
-    this.iVu = 0.0D;
-    this.cin = 0.0D;
-    this.iVy = false;
-    this.iVz = false;
-    this.hAk = new MMHandler(Looper.getMainLooper());
-    this.iVA = new f()
+    this.lLG = 0L;
+    this.lLH = 0L;
+    this.lLI = false;
+    this.lLJ = false;
+    this.lLK = 23.0D;
+    this.lLL = 100.0D;
+    this.lLM = 0;
+    this.lLN = 0.0D;
+    this.lLO = 0.0D;
+    this.lLP = 0.0D;
+    this.lLT = false;
+    this.lLU = false;
+    this.knk = new MMHandler(Looper.getMainLooper());
+    this.lLV = new g()
     {
       public final void a(final boolean paramAnonymousBoolean, final double paramAnonymousDouble1, double paramAnonymousDouble2, final int paramAnonymousInt1, double paramAnonymousDouble3, final double paramAnonymousDouble4, final double paramAnonymousDouble5, String paramAnonymousString1, String paramAnonymousString2, int paramAnonymousInt2)
       {
@@ -69,19 +69,19 @@ public final class d
         d.a(d.this, paramAnonymousBoolean, paramAnonymousDouble1, paramAnonymousDouble2, paramAnonymousDouble4, true);
         if (paramAnonymousBoolean)
         {
-          d.this.iVq = paramAnonymousDouble1;
-          d.this.iVr = paramAnonymousDouble2;
-          d.this.iVs = paramAnonymousInt1;
-          d.this.iVt = paramAnonymousDouble3;
-          d.this.iVu = paramAnonymousDouble4;
-          d.this.cin = paramAnonymousDouble5;
-          d.this.iVv = paramAnonymousString1;
-          d.this.iVw = paramAnonymousString2;
-          d.this.iVx = paramAnonymousInt2;
-          d.this.iVn = System.currentTimeMillis();
-          d.this.iVo = true;
-          d.this.iVp = false;
-          d.a(d.this, 67592);
+          d.a(d.this, paramAnonymousDouble1);
+          d.b(d.this, paramAnonymousDouble2);
+          d.a(d.this, paramAnonymousInt1);
+          d.c(d.this, paramAnonymousDouble3);
+          d.d(d.this, paramAnonymousDouble4);
+          d.e(d.this, paramAnonymousDouble5);
+          d.a(d.this, paramAnonymousString1);
+          d.b(d.this, paramAnonymousString2);
+          d.b(d.this, paramAnonymousInt2);
+          d.a(d.this, System.currentTimeMillis());
+          d.a(d.this, true);
+          d.b(d.this, false);
+          d.c(d.this, 67592);
         }
         Log.d("MicroMsg.LocationGeo", "onGetLocation fLongitude: %f fLatitude:%f locType:%d %f:spped", new Object[] { Double.valueOf(paramAnonymousDouble2), Double.valueOf(paramAnonymousDouble1), Integer.valueOf(paramAnonymousInt1), Double.valueOf(paramAnonymousDouble3) });
         new MMHandler(Looper.getMainLooper()).post(new Runnable()
@@ -90,10 +90,10 @@ public final class d
           {
             AppMethodBeat.i(150481);
             Bundle localBundle = new Bundle();
-            localBundle.putString("indoor_building_floor", d.this.iVw);
-            localBundle.putString("indoor_building_id", d.this.iVv);
-            localBundle.putInt("indoor_building_type", d.this.iVx);
-            d.a(d.this, paramAnonymousBoolean, paramAnonymousDouble1, paramAnonymousInt1, paramAnonymousDouble4, paramAnonymousDouble5, this.iVI, localBundle);
+            localBundle.putString("indoor_building_floor", d.a(d.this));
+            localBundle.putString("indoor_building_id", d.b(d.this));
+            localBundle.putInt("indoor_building_type", d.c(d.this));
+            d.a(d.this, paramAnonymousBoolean, paramAnonymousDouble1, paramAnonymousInt1, paramAnonymousDouble4, paramAnonymousDouble5, this.lMd, localBundle);
             AppMethodBeat.o(150481);
           }
         });
@@ -107,7 +107,7 @@ public final class d
         AppMethodBeat.o(150483);
       }
     };
-    this.iVB = new g()
+    this.lLW = new h()
     {
       public final void a(final boolean paramAnonymousBoolean, final double paramAnonymousDouble1, double paramAnonymousDouble2, final int paramAnonymousInt1, double paramAnonymousDouble3, final double paramAnonymousDouble4, final double paramAnonymousDouble5, String paramAnonymousString1, String paramAnonymousString2, int paramAnonymousInt2)
       {
@@ -115,19 +115,19 @@ public final class d
         d.a(d.this, paramAnonymousBoolean, paramAnonymousDouble1, paramAnonymousDouble2, paramAnonymousDouble4, false);
         if (paramAnonymousBoolean)
         {
-          d.this.iVq = paramAnonymousDouble1;
-          d.this.iVr = paramAnonymousDouble2;
-          d.this.iVs = paramAnonymousInt1;
-          d.this.iVt = paramAnonymousDouble3;
-          d.this.iVu = paramAnonymousDouble4;
-          d.this.cin = paramAnonymousDouble5;
-          d.this.iVv = paramAnonymousString1;
-          d.this.iVw = paramAnonymousString2;
-          d.this.iVx = paramAnonymousInt2;
-          d.this.iVp = true;
-          d.this.iVo = false;
-          d.this.iVn = System.currentTimeMillis();
-          d.a(d.this, 67591);
+          d.a(d.this, paramAnonymousDouble1);
+          d.b(d.this, paramAnonymousDouble2);
+          d.a(d.this, paramAnonymousInt1);
+          d.c(d.this, paramAnonymousDouble3);
+          d.d(d.this, paramAnonymousDouble4);
+          d.e(d.this, paramAnonymousDouble5);
+          d.a(d.this, paramAnonymousString1);
+          d.b(d.this, paramAnonymousString2);
+          d.b(d.this, paramAnonymousInt2);
+          d.b(d.this, true);
+          d.a(d.this, false);
+          d.a(d.this, System.currentTimeMillis());
+          d.c(d.this, 67591);
         }
         Log.d("MicroMsg.LocationGeo", "onGetLocationWgs84 fLongitude: %f fLatitude:%f locType:%d %f:spped", new Object[] { Double.valueOf(paramAnonymousDouble2), Double.valueOf(paramAnonymousDouble1), Integer.valueOf(paramAnonymousInt1), Double.valueOf(paramAnonymousDouble3) });
         new MMHandler(Looper.getMainLooper()).postDelayed(new Runnable()
@@ -136,10 +136,10 @@ public final class d
           {
             AppMethodBeat.i(150484);
             Bundle localBundle = new Bundle();
-            localBundle.putString("indoor_building_floor", d.this.iVw);
-            localBundle.putString("indoor_building_id", d.this.iVv);
-            localBundle.putInt("indoor_building_type", d.this.iVx);
-            d.a(d.this, paramAnonymousBoolean, paramAnonymousDouble1, paramAnonymousInt1, paramAnonymousDouble4, paramAnonymousDouble5, this.iVI, localBundle);
+            localBundle.putString("indoor_building_floor", d.a(d.this));
+            localBundle.putString("indoor_building_id", d.b(d.this));
+            localBundle.putInt("indoor_building_type", d.c(d.this));
+            d.a(d.this, paramAnonymousBoolean, paramAnonymousDouble1, paramAnonymousInt1, paramAnonymousDouble4, paramAnonymousDouble5, this.lMd, localBundle);
             AppMethodBeat.o(150484);
           }
         }, 200L);
@@ -147,22 +147,22 @@ public final class d
       }
     };
     this.mContext = paramContext;
-    this.iVl = h.da(paramContext);
+    this.lLF = i.cX(paramContext);
     AppMethodBeat.o(150488);
   }
   
-  public static d bca()
+  public static d blq()
   {
     AppMethodBeat.i(150487);
-    if (iOv == null) {
-      iOv = new d(MMApplicationContext.getContext());
+    if (lEL == null) {
+      lEL = new d(MMApplicationContext.getContext());
     }
-    d locald = iOv;
+    d locald = lEL;
     AppMethodBeat.o(150487);
     return locald;
   }
   
-  public static boolean bcc()
+  public static boolean blr()
   {
     AppMethodBeat.i(150494);
     try
@@ -179,7 +179,7 @@ public final class d
     return false;
   }
   
-  public static boolean bcd()
+  public static boolean bls()
   {
     AppMethodBeat.i(150496);
     try
@@ -196,7 +196,7 @@ public final class d
     return false;
   }
   
-  public static void cZ(Context paramContext)
+  public static void cW(Context paramContext)
   {
     AppMethodBeat.i(150495);
     Object localObject = new Intent("android.settings.LOCATION_SOURCE_SETTINGS");
@@ -207,33 +207,33 @@ public final class d
       return;
     }
     ((Intent)localObject).addFlags(268435456);
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/modelgeo/LocationGeo", "jumpToOpenGps", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/modelgeo/LocationGeo", "jumpToOpenGps", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/modelgeo/LocationGeo", "jumpToOpenGps", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/modelgeo/LocationGeo", "jumpToOpenGps", "(Landroid/content/Context;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(150495);
   }
   
   public final void a(b.a parama)
   {
-    AppMethodBeat.i(150491);
-    b(parama, true);
-    AppMethodBeat.o(150491);
+    AppMethodBeat.i(293012);
+    a(parama, true);
+    AppMethodBeat.o(293012);
   }
   
   public final void a(b.a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(150489);
     Log.i("MicroMsg.LocationGeo", "startWgs84 %s userCache %s delay %d", new Object[] { parama, Boolean.valueOf(paramBoolean), Integer.valueOf(0) });
-    if ((this.iVk) && (this.listeners.size() > 0)) {}
+    if ((this.lLE) && (this.listeners.size() > 0)) {}
     try
     {
-      this.iVm = System.currentTimeMillis();
-      this.iVy = false;
-      this.iVz = false;
-      this.iVl.bcf();
-      this.iVl.a(this.iVB, 0, Looper.getMainLooper());
-      this.iVk = false;
+      this.lLG = System.currentTimeMillis();
+      this.lLT = false;
+      this.lLU = false;
+      this.lLF.blu();
+      this.lLF.a(this.lLW, 0, Looper.getMainLooper());
+      this.lLE = false;
       Iterator localIterator = this.listeners.iterator();
       WeakReference localWeakReference;
       do
@@ -250,25 +250,25 @@ public final class d
       Log.i("MicroMsg.LocationGeo", "add listeners size %d", new Object[] { Integer.valueOf(this.listeners.size()) });
       if ((this.listeners.size() != 1) || (i == 0)) {}
     }
-    catch (h.a locala)
+    catch (i.a locala)
     {
       for (;;)
       {
         try
         {
-          this.iVm = System.currentTimeMillis();
-          this.iVy = false;
-          this.iVz = false;
-          this.iVl.a(this.iVB, 0, Looper.getMainLooper());
-          if ((paramBoolean) && (this.iVp) && (System.currentTimeMillis() - this.iVn < 60000L)) {
-            this.iVB.a(true, this.iVq, this.iVr, this.iVs, this.iVt, this.iVu, this.cin, this.iVv, this.iVw, this.iVx);
+          this.lLG = System.currentTimeMillis();
+          this.lLT = false;
+          this.lLU = false;
+          this.lLF.a(this.lLW, 0, Looper.getMainLooper());
+          if ((paramBoolean) && (this.lLJ) && (System.currentTimeMillis() - this.lLH < 60000L)) {
+            this.lLW.a(true, this.lLK, this.lLL, this.lLM, this.lLN, this.lLO, this.lLP, this.lLQ, this.lLR, this.lLS);
           }
           AppMethodBeat.o(150489);
           return;
           locala = locala;
           Log.d("MicroMsg.LocationGeo", locala.toString());
         }
-        catch (h.a parama)
+        catch (i.a parama)
         {
           Log.d("MicroMsg.LocationGeo", parama.toString());
           continue;
@@ -278,25 +278,51 @@ public final class d
     }
   }
   
-  public final void b(b.a parama)
+  public final void b(final b.a parama)
   {
-    AppMethodBeat.i(258494);
-    a(parama, true);
-    AppMethodBeat.o(258494);
+    AppMethodBeat.i(150493);
+    new MMHandler().post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(150486);
+        Object localObject1 = new ArrayList();
+        Object localObject2 = d.d(d.this).iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          WeakReference localWeakReference = (WeakReference)((Iterator)localObject2).next();
+          if ((localWeakReference == null) || (localWeakReference.get() == null) || (((b.a)localWeakReference.get()).equals(parama))) {
+            ((List)localObject1).add(localWeakReference);
+          }
+        }
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (WeakReference)((Iterator)localObject1).next();
+          d.d(d.this).remove(localObject2);
+        }
+        Log.i("MicroMsg.LocationGeo", "stop listeners size %d", new Object[] { Integer.valueOf(d.d(d.this).size()) });
+        if ((d.d(d.this).size() == 0) && (d.e(d.this) != null)) {
+          d.e(d.this).blu();
+        }
+        AppMethodBeat.o(150486);
+      }
+    });
+    AppMethodBeat.o(150493);
   }
   
   public final void b(b.a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(150492);
-    if ((!this.iVk) && (this.listeners.size() > 0)) {}
+    if ((!this.lLE) && (this.listeners.size() > 0)) {}
     try
     {
-      this.iVm = System.currentTimeMillis();
-      this.iVy = false;
-      this.iVz = false;
-      this.iVl.bcf();
-      this.iVl.a(this.iVA, 1, Looper.getMainLooper());
-      this.iVk = true;
+      this.lLG = System.currentTimeMillis();
+      this.lLT = false;
+      this.lLU = false;
+      this.lLF.blu();
+      this.lLF.a(this.lLV, 1, Looper.getMainLooper());
+      this.lLE = true;
       Iterator localIterator = this.listeners.iterator();
       WeakReference localWeakReference;
       do
@@ -313,25 +339,25 @@ public final class d
       Log.i("MicroMsg.LocationGeo", "add listeners size %d", new Object[] { Integer.valueOf(this.listeners.size()) });
       if ((this.listeners.size() != 1) || (i == 0)) {}
     }
-    catch (h.a locala)
+    catch (i.a locala)
     {
       for (;;)
       {
         try
         {
-          this.iVm = System.currentTimeMillis();
-          this.iVy = false;
-          this.iVz = false;
-          this.iVl.a(this.iVA, 1, Looper.getMainLooper());
-          if ((paramBoolean) && (this.iVo) && (System.currentTimeMillis() - this.iVn < 60000L)) {
-            this.iVA.a(true, this.iVq, this.iVr, this.iVs, this.iVt, this.iVu, this.cin, this.iVv, this.iVw, this.iVx);
+          this.lLG = System.currentTimeMillis();
+          this.lLT = false;
+          this.lLU = false;
+          this.lLF.a(this.lLV, 1, Looper.getMainLooper());
+          if ((paramBoolean) && (this.lLI) && (System.currentTimeMillis() - this.lLH < 60000L)) {
+            this.lLV.a(true, this.lLK, this.lLL, this.lLM, this.lLN, this.lLO, this.lLP, this.lLQ, this.lLR, this.lLS);
           }
           AppMethodBeat.o(150492);
           return;
           locala = locala;
           Log.d("MicroMsg.LocationGeo", locala.toString());
         }
-        catch (h.a parama)
+        catch (i.a parama)
         {
           Log.d("MicroMsg.LocationGeo", parama.toString());
           continue;
@@ -341,21 +367,16 @@ public final class d
     }
   }
   
-  public final boolean bcb()
-  {
-    return this.iVk;
-  }
-  
   public final void c(b.a parama)
   {
-    AppMethodBeat.i(150493);
-    new MMHandler().post(new d.3(this, parama));
-    AppMethodBeat.o(150493);
+    AppMethodBeat.i(150491);
+    b(parama, true);
+    AppMethodBeat.o(150491);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.modelgeo.d
  * JD-Core Version:    0.7.0.1
  */

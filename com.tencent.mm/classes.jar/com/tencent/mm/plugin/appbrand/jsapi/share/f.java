@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi.share;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.a;
+import com.tencent.mm.aj.k.a;
 import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
 import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.plugin.appbrand.w;
+import com.tencent.mm.plugin.appbrand.z;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
@@ -20,8 +20,8 @@ public class f
   {
     AppMethodBeat.i(174910);
     a locala = (a)super.a(paramc, paramJSONObject);
-    locala.mrG = paramJSONObject.optInt("bizType", k.a.iwD.ordinal());
-    if (!k.a.isValid(locala.mrG))
+    locala.ppO = paramJSONObject.optInt("bizType", k.a.llS.ordinal());
+    if (!k.a.uB(locala.ppO))
     {
       Log.e("MicroMsg.JsApiShareAppMessageForFakeNative", "share app message fail, biz is invalid.");
       paramc = new JsApiShareAppMessageBase.c("biz is invalid");
@@ -31,16 +31,16 @@ public class f
     String str2 = paramJSONObject.optString("defaultHintUrl");
     String str1 = str2;
     if (Util.isNullOrNil(str2)) {
-      str1 = w.Ur(paramc.getAppId());
+      str1 = z.aca(paramc.getAppId());
     }
-    locala.lho = str1;
-    locala.mrH = paramJSONObject.optString("tailLang", "");
-    locala.mrI = paramJSONObject.optString("bizSourceName", "");
-    locala.mrJ = paramJSONObject.optString("bizSourceIconUrl", "");
-    locala.mrv.put("biz", Integer.valueOf(locala.mrG));
-    locala.mrv.put("tail_lang", locala.mrH);
-    locala.mrv.put("icon_url", locala.mrj.jyi);
-    locala.mrv.put("nickname", locala.mrj.brandName);
+    locala.obX = str1;
+    locala.ppP = paramJSONObject.optString("tailLang", "");
+    locala.ppQ = paramJSONObject.optString("bizSourceName", "");
+    locala.ppR = paramJSONObject.optString("bizSourceIconUrl", "");
+    locala.ppD.put("biz", Integer.valueOf(locala.ppO));
+    locala.ppD.put("tail_lang", locala.ppP);
+    locala.ppD.put("icon_url", locala.ppr.mnM);
+    locala.ppD.put("nickname", locala.ppr.fzM);
     AppMethodBeat.o(174910);
     return locala;
   }
@@ -48,15 +48,15 @@ public class f
   static final class a
     extends JsApiShareAppMessageBase.d
   {
-    public int mrG;
-    public String mrH;
-    public String mrI;
-    public String mrJ;
+    public int ppO;
+    public String ppP;
+    public String ppQ;
+    public String ppR;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.share.f
  * JD-Core Version:    0.7.0.1
  */

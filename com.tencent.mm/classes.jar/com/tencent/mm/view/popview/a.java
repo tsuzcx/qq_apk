@@ -5,13 +5,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/view/popview/BasePopupHelper;", "", "()V", "onLongPress", "", "anchor", "Landroid/view/View;", "item", "onMove", "", "onOutsideTouched", "onTouchEnd", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/popview/BasePopupHelper;", "", "()V", "onLongPress", "", "anchor", "Landroid/view/View;", "item", "onMove", "", "onOutsideTouched", "onTouchEnd", "plugin-emojisdk_release"})
 public class a
 {
   public boolean c(View paramView, Object paramObject)
   {
     AppMethodBeat.i(183994);
-    p.h(paramView, "anchor");
+    p.k(paramView, "anchor");
     AppMethodBeat.o(183994);
     return false;
   }
@@ -19,15 +19,15 @@ public class a
   public void d(View paramView, Object paramObject)
   {
     AppMethodBeat.i(183995);
-    p.h(paramView, "anchor");
+    p.k(paramView, "anchor");
     AppMethodBeat.o(183995);
   }
   
-  public void fdM() {}
+  public void fRF() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.view.popview.a
  * JD-Core Version:    0.7.0.1
  */

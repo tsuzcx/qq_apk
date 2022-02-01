@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.mv.ui.view;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvMarqueeTextView$ScrollReverseEffect$Companion;", "", "()V", "StateNone", "", "StateReverse", "StateScroll", "StateWait", "plugin-mv_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvMarqueeTextView$ScrollToNextEffect$Companion;", "", "()V", "StateNone", "", "StateScroll", "StateWait", "plugin-mv_release"})
 public final class MusicMvMarqueeTextView$c$a {}
 
 

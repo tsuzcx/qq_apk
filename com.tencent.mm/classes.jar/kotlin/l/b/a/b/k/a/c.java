@@ -6,7 +6,7 @@ import kotlin.l.b.a.b.e.a.m;
 import kotlin.l.b.a.b.e.a.p;
 import kotlin.l.b.a.b.e.a.r;
 import kotlin.l.b.a.b.e.a.t;
-import kotlin.l.b.a.b.h.q;
+import kotlin.l.b.a.b.h.r;
 import kotlin.l.b.a.b.m.ab;
 
 public abstract interface c<A, C>
@@ -21,19 +21,19 @@ public abstract interface c<A, C>
   
   public abstract List<A> a(z paramz, a.m paramm);
   
-  public abstract List<A> a(z paramz, q paramq, b paramb);
+  public abstract List<A> a(z paramz, r paramr, b paramb);
   
-  public abstract List<A> a(z paramz, q paramq, b paramb, int paramInt, a.t paramt);
+  public abstract List<A> a(z paramz, r paramr, b paramb, int paramInt, a.t paramt);
   
   public abstract List<A> b(z.a parama);
   
   public abstract List<A> b(z paramz, a.m paramm);
   
-  public abstract List<A> b(z paramz, q paramq, b paramb);
+  public abstract List<A> b(z paramz, r paramr, b paramb);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,8 @@ package com.tencent.mm.booter;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.o.a;
-import com.tencent.mm.g.a.ua;
+import com.tencent.mm.f.a.rs;
+import com.tencent.mm.f.a.vd;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
@@ -15,67 +16,67 @@ import java.util.Locale;
 
 public final class z
 {
-  public static z gmQ;
+  public static z iQZ;
   public o.a appForegroundListener;
-  public an gmR;
-  public IListener gmS;
-  public IListener gmT;
-  public a gmU;
-  public int gmV;
-  HashSet<Long> gmW;
-  HashSet<Long> gmX;
-  public long gmY;
-  public long gmZ;
-  public String gna;
-  public long gnb;
-  public int gnc;
-  public int gnd;
-  private int gne;
-  private int gnf;
   private boolean hasInit;
+  public an iRa;
+  public IListener iRb;
+  public IListener iRc;
+  public a iRd;
+  public int iRe;
+  HashSet<Long> iRf;
+  HashSet<Long> iRg;
+  public long iRh;
+  public long iRi;
+  public String iRj;
+  public long iRk;
+  public int iRl;
+  public int iRm;
+  private int iRn;
+  private int iRo;
   
   static
   {
     AppMethodBeat.i(19915);
-    gmQ = new z();
+    iQZ = new z();
     AppMethodBeat.o(19915);
   }
   
   private z()
   {
     AppMethodBeat.i(19913);
-    this.gmS = new IListener() {};
-    this.gmT = new z.2(this);
+    this.iRb = new IListener() {};
+    this.iRc = new IListener() {};
     this.appForegroundListener = new o.a()
     {
       public final void onAppBackground(String paramAnonymousString) {}
       
       public final void onAppForeground(String paramAnonymousString) {}
     };
-    this.gmV = 0;
-    this.gmW = new HashSet();
-    this.gmX = new HashSet();
-    this.gnb = -1L;
-    this.gnc = 20;
-    this.gnd = 24;
-    this.gne = 30;
-    this.gnf = 10800;
+    this.iRe = 0;
+    this.iRf = new HashSet();
+    this.iRg = new HashSet();
+    this.iRk = -1L;
+    this.iRl = 20;
+    this.iRm = 24;
+    this.iRn = 30;
+    this.iRo = 10800;
     this.hasInit = false;
-    this.gmR = new an(ar.NSe + "staytime.cfg");
+    this.iRa = new an(ar.Vgb + "staytime.cfg");
     AppMethodBeat.o(19913);
   }
   
-  public final void CU(String paramString)
+  public final void JK(String paramString)
   {
     AppMethodBeat.i(19914);
-    EventCenter.instance.removeListener(this.gmS);
-    EventCenter.instance.removeListener(this.gmT);
+    EventCenter.instance.removeListener(this.iRb);
+    EventCenter.instance.removeListener(this.iRc);
     this.appForegroundListener.dead();
-    this.gmX.clear();
-    this.gmW.clear();
-    if ((paramString == null) || (this.gmU == null))
+    this.iRg.clear();
+    this.iRf.clear();
+    if ((paramString == null) || (this.iRd == null))
     {
-      if (this.gmU == null) {}
+      if (this.iRd == null) {}
       for (boolean bool = true;; bool = false)
       {
         Log.i("MicroMsg.StayTimeReport", "exitChattingUI chatUser or reprotingItem is null, chatUser:%s, reportingItem is null:%b", new Object[] { paramString, Boolean.valueOf(bool) });
@@ -83,39 +84,39 @@ public final class z
         return;
       }
     }
-    if (!paramString.equals(this.gmU.gnh))
+    if (!paramString.equals(this.iRd.iRq))
     {
-      Log.i("MicroMsg.StayTimeReport", "exitChattingUI no startedUI: %s, start:", new Object[] { paramString, this.gmU.gnh });
+      Log.i("MicroMsg.StayTimeReport", "exitChattingUI no startedUI: %s, start:", new Object[] { paramString, this.iRd.iRq });
       AppMethodBeat.o(19914);
       return;
     }
-    paramString = this.gmU;
-    paramString.time += Util.ticksToNow(this.gmY) / 1000L;
-    paramString = (String)this.gmR.get(5, "");
-    this.gmR.set(5, paramString + this.gmU.toString());
+    paramString = this.iRd;
+    paramString.time += Util.ticksToNow(this.iRh) / 1000L;
+    paramString = (String)this.iRa.b(5, "");
+    this.iRa.i(5, paramString + this.iRd.toString());
     long l;
-    if (this.gmU != null)
+    if (this.iRd != null)
     {
-      l = this.gmR.getLong(4, 0L);
-      i = this.gmR.ake(6) + 1;
-      this.gmR.setInt(6, i);
-      Log.i("MicroMsg.StayTimeReport", "exitChattingUI, chatUser:%s, type:%d, stayTime:%d, stayWebTime:%d, chattingReportCnt:%d", new Object[] { this.gmU.gnh, Integer.valueOf(this.gmU.type), Long.valueOf(this.gmU.time), Integer.valueOf(this.gmU.gnk), Integer.valueOf(i) });
-      Log.i("MicroMsg.StayTimeReport", "exitChattingUI goBackHistoryStatus:%d, recnCnt:%d, sendCnt:%d", new Object[] { Integer.valueOf(this.gmU.gnl), Integer.valueOf(this.gmU.gnm), Integer.valueOf(this.gmU.gnn) });
-      if ((Util.secondsToNow(l) <= this.gnf) && (i <= this.gne)) {
-        break label516;
+      l = this.iRa.ahV(4);
+      i = this.iRa.asB(6) + 1;
+      this.iRa.setInt(6, i);
+      Log.i("MicroMsg.StayTimeReport", "exitChattingUI, chatUser:%s, type:%d, stayTime:%d, stayWebTime:%d, chattingReportCnt:%d", new Object[] { this.iRd.iRq, Integer.valueOf(this.iRd.type), Long.valueOf(this.iRd.time), Integer.valueOf(this.iRd.iRt), Integer.valueOf(i) });
+      Log.i("MicroMsg.StayTimeReport", "exitChattingUI goBackHistoryStatus:%d, recnCnt:%d, sendCnt:%d", new Object[] { Integer.valueOf(this.iRd.iRu), Integer.valueOf(this.iRd.iRv), Integer.valueOf(this.iRd.iRw) });
+      if ((Util.secondsToNow(l) <= this.iRo) && (i <= this.iRn)) {
+        break label515;
       }
     }
-    label516:
+    label515:
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        paramString = (String)this.gmR.get(5, "");
+        paramString = (String)this.iRa.b(5, "");
         paramString = paramString + "," + l + "," + Util.nowSecond();
         Log.i("MicroMsg.StayTimeReport", "report （13062） %d: %s", new Object[] { Integer.valueOf(13062), paramString });
-        h.CyF.kvStat(13062, paramString);
-        this.gmR.setInt(6, 0);
-        this.gmR.set(5, "");
+        h.IzE.kvStat(13062, paramString);
+        this.iRa.setInt(6, 0);
+        this.iRa.i(5, "");
       }
       AppMethodBeat.o(19914);
       return;
@@ -124,15 +125,15 @@ public final class z
   
   public final class a
   {
-    public int dCm;
     public long enterTime;
-    public String gnh;
-    public int gni;
-    public int gnj;
-    public int gnk;
-    public int gnl = 0;
-    int gnm = 0;
-    int gnn = 0;
+    public int fuP;
+    public String iRq;
+    public int iRr;
+    public int iRs;
+    public int iRt;
+    public int iRu = 0;
+    int iRv = 0;
+    int iRw = 0;
     public long time;
     public int type;
     
@@ -141,7 +142,7 @@ public final class z
     public final String toString()
     {
       AppMethodBeat.i(19912);
-      String str = String.format(Locale.US, "%d#%d#%d#%d#%d#%d#%d#%s#%d#%d#%d|", new Object[] { Integer.valueOf(this.type), Long.valueOf(this.time), Integer.valueOf(this.gni), Integer.valueOf(this.dCm), Integer.valueOf(this.gnj), Long.valueOf(this.enterTime), Integer.valueOf(this.gnk), this.gnh, Integer.valueOf(this.gnl), Integer.valueOf(this.gnm), Integer.valueOf(this.gnn) });
+      String str = String.format(Locale.US, "%d#%d#%d#%d#%d#%d#%d#%s#%d#%d#%d|", new Object[] { Integer.valueOf(this.type), Long.valueOf(this.time), Integer.valueOf(this.iRr), Integer.valueOf(this.fuP), Integer.valueOf(this.iRs), Long.valueOf(this.enterTime), Integer.valueOf(this.iRt), this.iRq, Integer.valueOf(this.iRu), Integer.valueOf(this.iRv), Integer.valueOf(this.iRw) });
       AppMethodBeat.o(19912);
       return str;
     }
@@ -149,7 +150,7 @@ public final class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.booter.z
  * JD-Core Version:    0.7.0.1
  */

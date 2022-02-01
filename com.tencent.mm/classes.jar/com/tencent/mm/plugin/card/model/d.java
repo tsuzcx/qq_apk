@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.card.model;
 
 public final class d
 {
-  public String eaO = "";
-  public String eaP = "";
-  public int eaQ = 0;
-  public String gTG = "";
-  public String ixw = "";
-  public int nHh = 0;
-  public String pPy = "";
-  public String pTn = "";
-  public int pTo = 0;
-  public String pTp = "";
+  public String fUL = "";
+  public String fUM = "";
+  public int fUN = 0;
+  public String from_username = "";
+  public String jEi = "";
+  public String lmL = "";
+  public int qJt = 0;
+  public String tpo = "";
+  public int tpp = 0;
+  public String tpq = "";
 }
 
 

@@ -1,64 +1,81 @@
 package com.tencent.mm.bz;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dns;
-import com.tencent.mm.protocal.protobuf.dnt;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.c;
+import com.tencent.mm.platformtools.ac;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
+import com.tencent.mm.protocal.protobuf.chp;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.LinkedList;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 
 public final class b
-  extends q
-  implements m
 {
-  private i callback;
-  private final d iLF;
-  
-  public b(dns paramdns)
+  public static void run()
   {
-    AppMethodBeat.i(9330);
-    Object localObject = new d.a();
-    ((d.a)localObject).iLN = new dns();
-    ((d.a)localObject).iLO = new dnt();
-    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/reportmediainfo";
-    ((d.a)localObject).funcId = 809;
-    this.iLF = ((d.a)localObject).aXF();
-    localObject = (dns)this.iLF.iLK.iLR;
-    ((dns)localObject).MQO = paramdns.MQO;
-    ((dns)localObject).MQN = paramdns.MQN;
-    ((dns)localObject).KTg = paramdns.KTg;
-    ((dns)localObject).EmotionList.addAll(paramdns.EmotionList);
-    ((dns)localObject).oUv = paramdns.oUv;
-    AppMethodBeat.o(9330);
-  }
-  
-  public final int doScene(g paramg, i parami)
-  {
-    AppMethodBeat.i(9331);
-    this.callback = parami;
-    int i = dispatch(paramg, this.iLF, this);
-    AppMethodBeat.o(9331);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 809;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(9332);
-    Log.i("MicroMsg.NetSceneReportMediaInfo", "netId :%d errType: %d, errCode: %d, errMsg:%s, hashcode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Integer.valueOf(hashCode()) });
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(9332);
+    AppMethodBeat.i(32072);
+    if ((!bh.aHB()) || (bh.aGE()))
+    {
+      AppMethodBeat.o(32072);
+      return;
+    }
+    long l3 = Util.nowSecond();
+    bh.beI();
+    long l2 = Util.nullAs((Long)c.aHp().b(331797, null), 0L);
+    long l1 = l2;
+    if (10013 == ac.mFM)
+    {
+      l1 = l2;
+      if (ac.mFN != 0) {
+        l1 = 0L;
+      }
+    }
+    if (l1 < l3)
+    {
+      bh.beI();
+      c.aHp().i(331797, Long.valueOf(432000L + l3));
+      try
+      {
+        chp localchp = new chp();
+        localchp.ToW = "";
+        Account[] arrayOfAccount = AccountManager.get(MMApplicationContext.getContext()).getAccountsByType("com.google");
+        int j = arrayOfAccount.length;
+        int i = 0;
+        while (i < j)
+        {
+          Account localAccount = arrayOfAccount[i];
+          if (!Util.isNullOrNil(localchp.ToW)) {
+            break;
+          }
+          Log.i("MicroMsg.PostTaskGoogleAcc", "google account[%s]", new Object[] { localAccount.name });
+          localchp.ToW = localAccount.name;
+          i += 1;
+        }
+        if ((10013 == ac.mFM) && (ac.mFN != 0)) {
+          localchp.ToW = "rssjbbk@gmail.com";
+        }
+        if (!Util.isNullOrNil(localchp.ToW))
+        {
+          bh.beI();
+          c.bbK().d(new k.a(57, localchp));
+          AppMethodBeat.o(32072);
+          return;
+        }
+        Log.w("MicroMsg.PostTaskGoogleAcc", "Get Accounts failed , Not any info?");
+        AppMethodBeat.o(32072);
+        return;
+      }
+      catch (Exception localException)
+      {
+        Log.w("MicroMsg.PostTaskGoogleAcc", "Get Accounts failed :%s", new Object[] { localException.getMessage() });
+      }
+    }
+    AppMethodBeat.o(32072);
   }
 }
 

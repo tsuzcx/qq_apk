@@ -1,239 +1,238 @@
 package com.tencent.mm.plugin.finder.nearby.video;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.PluginFinder;
 import com.tencent.mm.plugin.finder.cgi.ab.a;
 import com.tencent.mm.plugin.finder.cgi.ab.c;
-import com.tencent.mm.plugin.finder.cgi.al;
+import com.tencent.mm.plugin.finder.cgi.am;
 import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader.a;
 import com.tencent.mm.plugin.finder.feed.model.internal.DataBuffer;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
-import com.tencent.mm.plugin.finder.feed.model.internal.f;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.bo;
+import com.tencent.mm.plugin.finder.model.bu;
 import com.tencent.mm.plugin.finder.model.w;
 import com.tencent.mm.plugin.finder.model.z;
-import com.tencent.mm.plugin.finder.report.k;
+import com.tencent.mm.plugin.finder.report.n;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.storage.data.e;
 import com.tencent.mm.plugin.finder.storage.data.e.a;
-import com.tencent.mm.plugin.finder.storage.data.l.a;
-import com.tencent.mm.plugin.finder.utils.y;
-import com.tencent.mm.plugin.finder.viewmodel.FinderHomeTabStateVM;
-import com.tencent.mm.plugin.finder.viewmodel.FinderHomeTabStateVM.a;
-import com.tencent.mm.plugin.finder.viewmodel.FinderTabStreamUnreadVM;
-import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.awe;
-import com.tencent.mm.protocal.protobuf.bbn;
-import com.tencent.mm.protocal.protobuf.dpc;
+import com.tencent.mm.plugin.finder.storage.data.k.a;
+import com.tencent.mm.plugin.finder.utils.aj;
+import com.tencent.mm.plugin.finder.viewmodel.b.a;
+import com.tencent.mm.protocal.protobuf.bac;
+import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.protocal.protobuf.dyy;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.component.g.a;
+import com.tencent.mm.vending.e.c;
 import com.tencent.mm.view.RefreshLoadMoreLayout.c;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import kotlin.g.a.b<-Lcom.tencent.mm.plugin.finder.feed.model.internal.IResponse<Lcom.tencent.mm.plugin.finder.model.bo;>;Lkotlin.x;>;
+import kotlin.g.a.b<-Lcom.tencent.mm.plugin.finder.feed.model.internal.IResponse<Lcom.tencent.mm.plugin.finder.model.bu;>;Lkotlin.x;>;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
+import kotlin.l;
 import kotlin.t;
 import kotlin.x;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoFeedLoader;", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "scene", "Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;", "firstLoad", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;ILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "getFirstLoad", "()I", "setFirstLoad", "(I)V", "value", "Landroid/support/v7/widget/RecyclerView;", "recyclerView", "getRecyclerView", "()Landroid/support/v7/widget/RecyclerView;", "setRecyclerView", "(Landroid/support/v7/widget/RecyclerView;)V", "getScene", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;", "streamFetcher", "Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoFeedFetcher;", "getStreamFetcher", "()Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoFeedFetcher;", "colletExtraPageName", "", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "createDataMerger", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "getPageName", "onDead", "", "preloadMoreToBuffer", "callback", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "printVisibleFeeds", "", "hasVisibleFeeds", "Landroid/util/LongSparseArray;", "requestRefresh", "unreadList", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "TimelineDataFetcher", "TimelineRequest", "TimelineResponse", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoFeedLoader;", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "scene", "Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;", "firstLoad", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;ILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "getFirstLoad", "()I", "setFirstLoad", "(I)V", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "getRecyclerView", "()Landroidx/recyclerview/widget/RecyclerView;", "setRecyclerView", "(Landroidx/recyclerview/widget/RecyclerView;)V", "getScene", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;", "streamFetcher", "Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoFeedFetcher;", "getStreamFetcher", "()Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoFeedFetcher;", "colletExtraPageName", "", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "createDataMerger", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "getPageName", "onDead", "", "preloadMoreToBuffer", "callback", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "printVisibleFeeds", "", "hasVisibleFeeds", "Landroid/util/LongSparseArray;", "requestRefresh", "unreadList", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "TimelineDataFetcher", "TimelineRequest", "TimelineResponse", "plugin-finder-nearby_release"})
 public final class NearbyVideoFeedLoader
   extends BaseFinderFeedLoader
 {
-  private final com.tencent.mm.plugin.finder.feed.model.internal.e tVT;
-  int tXs;
-  private final b uTt;
+  private final com.tencent.mm.plugin.finder.feed.model.internal.g xHL;
+  int xJs;
+  private final b zJG;
   
-  public NearbyVideoFeedLoader(com.tencent.mm.plugin.finder.feed.model.internal.e parame, int paramInt, bbn parambbn)
+  public NearbyVideoFeedLoader(com.tencent.mm.plugin.finder.feed.model.internal.g paramg, int paramInt, bid parambid)
   {
-    super(parambbn);
-    AppMethodBeat.i(249384);
-    this.tVT = parame;
-    this.tXs = paramInt;
-    this.uTt = new b(this.tVT.value, parambbn);
-    AppMethodBeat.o(249384);
+    super(parambid);
+    AppMethodBeat.i(200390);
+    this.xHL = paramg;
+    this.xJs = paramInt;
+    this.zJG = new b(this.xHL.value, parambid);
+    AppMethodBeat.o(200390);
   }
   
   public final List<Integer> colletExtraPageName()
   {
-    AppMethodBeat.i(249383);
+    AppMethodBeat.i(200388);
     Object localObject = new ArrayList();
     ((ArrayList)localObject).add(Integer.valueOf(4));
     localObject = (List)localObject;
-    AppMethodBeat.o(249383);
+    AppMethodBeat.o(200388);
     return localObject;
   }
   
-  public final com.tencent.mm.plugin.finder.feed.model.internal.g<bo> createDataFetch()
+  public final com.tencent.mm.plugin.finder.feed.model.internal.i<bu> createDataFetch()
   {
-    AppMethodBeat.i(249379);
-    com.tencent.mm.plugin.finder.feed.model.internal.g localg = (com.tencent.mm.plugin.finder.feed.model.internal.g)new a(this.uTt, this.tVT);
-    AppMethodBeat.o(249379);
-    return localg;
+    AppMethodBeat.i(200377);
+    com.tencent.mm.plugin.finder.feed.model.internal.i locali = (com.tencent.mm.plugin.finder.feed.model.internal.i)new a(this.zJG, this.xHL);
+    AppMethodBeat.o(200377);
+    return locali;
   }
   
-  public final com.tencent.mm.plugin.finder.feed.model.internal.b<bo> createDataMerger()
+  public final com.tencent.mm.plugin.finder.feed.model.internal.d<bu> createDataMerger()
   {
-    AppMethodBeat.i(249380);
-    com.tencent.mm.plugin.finder.feed.model.internal.b localb = (com.tencent.mm.plugin.finder.feed.model.internal.b)new d(this);
-    AppMethodBeat.o(249380);
-    return localb;
+    AppMethodBeat.i(200378);
+    com.tencent.mm.plugin.finder.feed.model.internal.d locald = (com.tencent.mm.plugin.finder.feed.model.internal.d)new d(this);
+    AppMethodBeat.o(200378);
+    return locald;
   }
   
   public final int getPageName()
   {
-    AppMethodBeat.i(249382);
-    y localy = y.vXH;
-    int i = y.LL(this.tVT.value);
-    localy = y.vXH;
-    i = y.LJ(i);
-    AppMethodBeat.o(249382);
+    AppMethodBeat.i(200384);
+    aj localaj = aj.AGc;
+    int i = aj.QY(this.xHL.value);
+    localaj = aj.AGc;
+    i = aj.QW(i);
+    AppMethodBeat.o(200384);
     return i;
   }
   
   public final void onDead()
   {
-    AppMethodBeat.i(249381);
+    AppMethodBeat.i(200381);
     super.onDead();
-    this.uTt.ttK.dead();
-    AppMethodBeat.o(249381);
+    this.zJG.xbq.dead();
+    AppMethodBeat.o(200381);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoFeedLoader$TimelineDataFetcher;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderTimelineStream$Callback;", "streamFetcher", "Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoFeedFetcher;", "scene", "Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;", "(Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoFeedLoader;Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoFeedFetcher;Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;)V", "taskExecutor", "Lcom/tencent/mm/loader/loader/SingleTaskExecutor;", "alive", "", "dead", "fetch", "request", "", "callback", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "fetchInit", "fetchLoadMore", "fetchRefresh", "keep", "target", "onFetchDone", "info", "Lcom/tencent/mm/plugin/finder/feed/model/CgiFinderStreamResult;", "pullType", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoFeedLoader$TimelineDataFetcher;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderTimelineStream$Callback;", "streamFetcher", "Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoFeedFetcher;", "scene", "Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;", "(Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoFeedLoader;Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoFeedFetcher;Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;)V", "taskExecutor", "Lcom/tencent/mm/loader/loader/SingleTaskExecutor;", "alive", "", "dead", "fetch", "request", "", "callback", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "fetchInit", "fetchLoadMore", "fetchRefresh", "keep", "target", "onFetchDone", "info", "Lcom/tencent/mm/plugin/finder/feed/model/CgiFinderStreamResult;", "pullType", "", "plugin-finder-nearby_release"})
   public final class a
-    extends com.tencent.mm.plugin.finder.feed.model.internal.g<bo>
+    extends com.tencent.mm.plugin.finder.feed.model.internal.i<bu>
     implements ab.a, com.tencent.mm.vending.e.b<com.tencent.mm.vending.e.a>
   {
-    com.tencent.mm.loader.g.i tMX;
-    private final com.tencent.mm.plugin.finder.feed.model.internal.e tVT;
-    final b uTt;
+    private final com.tencent.mm.plugin.finder.feed.model.internal.g xHL;
+    private com.tencent.mm.loader.g.i xeM;
+    private final b zJG;
     
-    public a(com.tencent.mm.plugin.finder.feed.model.internal.e parame)
+    public a(com.tencent.mm.plugin.finder.feed.model.internal.g paramg)
     {
-      AppMethodBeat.i(249376);
-      this.uTt = parame;
-      this.tVT = localObject;
-      AppMethodBeat.o(249376);
+      AppMethodBeat.i(199636);
+      this.zJG = paramg;
+      this.xHL = localObject;
+      AppMethodBeat.o(199636);
     }
     
-    public final void a(com.tencent.mm.plugin.finder.feed.model.b paramb, int paramInt)
+    public final void a(com.tencent.mm.plugin.finder.feed.model.d paramd, int paramInt)
     {
-      AppMethodBeat.i(249375);
-      p.h(paramb, "info");
-      AppMethodBeat.o(249375);
+      AppMethodBeat.i(199635);
+      p.k(paramd, "info");
+      AppMethodBeat.o(199635);
     }
     
     public final void alive()
     {
-      AppMethodBeat.i(249372);
+      AppMethodBeat.i(199629);
       super.alive();
-      if (this.tVT == com.tencent.mm.plugin.finder.feed.model.internal.e.tYk)
+      if (this.xHL == com.tencent.mm.plugin.finder.feed.model.internal.g.xKo)
       {
-        this.tMX = ((PluginFinder)com.tencent.mm.kernel.g.ah(PluginFinder.class)).getFollowTlSingleExecutor();
-        locali = this.tMX;
+        this.xeM = ((PluginFinder)com.tencent.mm.kernel.h.ag(PluginFinder.class)).getFollowTlSingleExecutor();
+        locali = this.xeM;
         if (locali != null)
         {
           locali.clean();
-          AppMethodBeat.o(249372);
+          AppMethodBeat.o(199629);
           return;
         }
-        AppMethodBeat.o(249372);
+        AppMethodBeat.o(199629);
         return;
       }
-      com.tencent.mm.loader.g.i locali = new com.tencent.mm.loader.g.i("SingleExecutor#TabType=" + this.uTt.dLS);
+      com.tencent.mm.loader.g.i locali = new com.tencent.mm.loader.g.i("SingleExecutor#TabType=" + this.zJG.fEH);
       locali.start();
-      this.tMX = locali;
-      AppMethodBeat.o(249372);
+      this.xeM = locali;
+      AppMethodBeat.o(199629);
     }
     
     public final void dead()
     {
-      AppMethodBeat.i(249373);
+      AppMethodBeat.i(199630);
       super.dead();
-      com.tencent.mm.loader.g.i locali = this.tMX;
+      com.tencent.mm.loader.g.i locali = this.xeM;
       if (locali != null) {
         locali.reset();
       }
-      this.tMX = null;
-      AppMethodBeat.o(249373);
+      this.xeM = null;
+      AppMethodBeat.o(199630);
     }
     
-    public final void fetch(final Object paramObject, f<bo> paramf)
+    public final void fetch(final Object paramObject, com.tencent.mm.plugin.finder.feed.model.internal.h<bu> paramh)
     {
-      AppMethodBeat.i(249374);
-      p.h(paramf, "callback");
+      AppMethodBeat.i(199634);
+      p.k(paramh, "callback");
       if ((paramObject instanceof NearbyVideoFeedLoader.b))
       {
         final long l = SystemClock.uptimeMillis();
-        com.tencent.mm.loader.g.i locali = this.tMX;
+        com.tencent.mm.loader.g.i locali = this.xeM;
         if (locali != null)
         {
-          locali.a(new com.tencent.mm.loader.g.h((kotlin.g.a.b)new a(this, paramObject, l, paramf)));
-          AppMethodBeat.o(249374);
+          locali.a(new com.tencent.mm.loader.g.h((kotlin.g.a.b)new a(this, paramObject, l, paramh)));
+          AppMethodBeat.o(199634);
           return;
         }
       }
-      AppMethodBeat.o(249374);
+      AppMethodBeat.o(199634);
     }
     
-    public final void fetchInit(f<bo> paramf)
+    public final void fetchInit(com.tencent.mm.plugin.finder.feed.model.internal.h<bu> paramh)
     {
-      AppMethodBeat.i(249371);
-      p.h(paramf, "callback");
+      AppMethodBeat.i(199628);
+      p.k(paramh, "callback");
       Object localObject2 = new LinkedList();
-      Object localObject1 = com.tencent.mm.ui.component.a.PRN;
-      localObject1 = ((FinderHomeTabStateVM)com.tencent.mm.ui.component.a.bi(PluginFinder.class).get(FinderHomeTabStateVM.class)).Mq(this.tVT.value);
+      Object localObject1 = com.tencent.mm.ui.component.g.Xox;
+      localObject1 = ((com.tencent.mm.plugin.finder.viewmodel.b)com.tencent.mm.ui.component.g.bD(PluginFinder.class).i(com.tencent.mm.plugin.finder.viewmodel.b.class)).RI(this.xHL.value);
       Object localObject3;
       Object localObject4;
       Object localObject5;
       Object localObject6;
       boolean bool;
-      label552:
-      label629:
+      label534:
+      label611:
       long l;
-      if (((FinderHomeTabStateVM.a)localObject1).wuc.isEmpty())
+      if (((b.a)localObject1).Bgw.isEmpty())
       {
-        localObject1 = l.a.a(com.tencent.mm.plugin.finder.storage.data.l.vGw, NearbyVideoFeedLoader.this.getPageName());
+        localObject1 = k.a.a(com.tencent.mm.plugin.finder.storage.data.k.Anu, NearbyVideoFeedLoader.this.getPageName());
         localObject3 = ((Iterable)localObject1).iterator();
         while (((Iterator)localObject3).hasNext())
         {
-          localObject4 = (bo)((Iterator)localObject3).next();
+          localObject4 = (bu)((Iterator)localObject3).next();
           if ((localObject4 instanceof BaseFinderFeed))
           {
             localObject5 = NearbyVideoFeedLoader.this.getContextObj();
             if (localObject5 != null)
             {
-              localObject6 = k.vfA;
-              k.e(((bo)localObject4).lT(), ((bbn)localObject5).tCE, ((BaseFinderFeed)localObject4).feedObject.getFeedObject().sessionBuffer);
+              localObject6 = n.zWF;
+              n.a(((BaseFinderFeed)localObject4).feedObject.getFeedObject(), ((bid)localObject5).xkX);
             }
             localObject4 = ((Iterable)((BaseFinderFeed)localObject4).feedObject.getFoldedFeedList()).iterator();
             while (((Iterator)localObject4).hasNext())
             {
               localObject5 = (BaseFinderFeed)((Iterator)localObject4).next();
-              localObject6 = k.vfA;
-              k.e(((BaseFinderFeed)localObject5).lT(), 14, ((BaseFinderFeed)localObject5).feedObject.getFeedObject().sessionBuffer);
+              localObject6 = n.zWF;
+              n.a(((BaseFinderFeed)localObject5).feedObject.getFeedObject(), 14);
             }
           }
         }
         localObject3 = NearbyVideoFeedLoader.this.getContextObj();
         if (localObject3 != null)
         {
-          localObject4 = com.tencent.mm.plugin.finder.storage.data.e.vFX;
-          i = ((bbn)localObject3).tCE;
+          localObject4 = e.AmW;
+          i = ((bid)localObject3).xkX;
           localObject4 = (Iterable)localObject1;
           localObject3 = (Collection)new ArrayList();
           localObject4 = ((Iterable)localObject4).iterator();
           while (((Iterator)localObject4).hasNext())
           {
             localObject5 = ((Iterator)localObject4).next();
-            if (((bo)localObject5 instanceof BaseFinderFeed)) {
+            if (((bu)localObject5 instanceof BaseFinderFeed)) {
               ((Collection)localObject3).add(localObject5);
             }
           }
@@ -242,165 +241,165 @@ public final class NearbyVideoFeedLoader
           localObject4 = ((Iterable)localObject4).iterator();
           while (((Iterator)localObject4).hasNext())
           {
-            localObject5 = (bo)((Iterator)localObject4).next();
+            localObject5 = (bu)((Iterator)localObject4).next();
             if (localObject5 == null)
             {
-              paramf = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.model.BaseFinderFeed");
-              AppMethodBeat.o(249371);
-              throw paramf;
+              paramh = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.model.BaseFinderFeed");
+              AppMethodBeat.o(199628);
+              throw paramh;
             }
             ((Collection)localObject3).add(((BaseFinderFeed)localObject5).feedObject.getFeedObject());
           }
-          e.a.k(i, (List)localObject3);
+          e.a.m(i, (List)localObject3);
         }
         ((LinkedList)localObject2).addAll((Collection)localObject1);
         localObject1 = NearbyVideoFeedLoader.this.getContextObj();
         if (localObject1 != null)
         {
-          localObject3 = com.tencent.mm.ui.component.a.PRN;
-          localObject3 = (FinderTabStreamUnreadVM)com.tencent.mm.ui.component.a.bi(PluginFinder.class).get(FinderTabStreamUnreadVM.class);
-          i = ((bbn)localObject1).tCE;
-          localObject1 = y.vXH;
-          ((FinderTabStreamUnreadVM)localObject3).o(i, y.a((List)localObject2, BaseFinderFeed.class));
+          localObject3 = com.tencent.mm.ui.component.g.Xox;
+          localObject3 = (com.tencent.mm.plugin.finder.viewmodel.f)com.tencent.mm.ui.component.g.bD(PluginFinder.class).i(com.tencent.mm.plugin.finder.viewmodel.f.class);
+          i = ((bid)localObject1).xkX;
+          localObject1 = aj.AGc;
+          ((com.tencent.mm.plugin.finder.viewmodel.f)localObject3).r(i, aj.a((List)localObject2, BaseFinderFeed.class));
         }
-        localObject1 = com.tencent.mm.plugin.finder.report.h.veu;
-        int i = this.uTt.dLS;
+        localObject1 = com.tencent.mm.plugin.finder.report.j.zVy;
+        int i = this.zJG.fEH;
         if (((Collection)localObject2).isEmpty()) {
-          break label855;
+          break label837;
         }
         bool = true;
-        com.tencent.mm.plugin.finder.report.h.an(i, bool);
-        localObject1 = (bo)kotlin.a.j.kt((List)localObject2);
+        com.tencent.mm.plugin.finder.report.j.aq(i, bool);
+        localObject1 = (bu)kotlin.a.j.lp((List)localObject2);
         localObject3 = getTAG();
-        localObject4 = new StringBuilder("fetchInit tabType=").append(this.uTt.dLS).append(" callInitData scene=").append(this.tVT).append(", contextObj=");
+        localObject4 = new StringBuilder("fetchInit tabType=").append(this.zJG.fEH).append(" callInitData scene=").append(this.xHL).append(", contextObj=");
         if (NearbyVideoFeedLoader.this.getContextObj() != null) {
-          break label860;
+          break label842;
         }
         bool = true;
         localObject4 = ((StringBuilder)localObject4).append(bool).append(" list first=");
         if (!(localObject1 instanceof BaseFinderFeed)) {
-          break label865;
+          break label847;
         }
         localObject1 = ((BaseFinderFeed)localObject1).feedObject.getNickName();
-        label664:
+        label646:
         localObject1 = ((StringBuilder)localObject4).append((String)localObject1).append(" => ");
-        localObject4 = (bo)kotlin.a.j.kt((List)localObject2);
+        localObject4 = (bu)kotlin.a.j.lp((List)localObject2);
         if (localObject4 == null) {
-          break label873;
+          break label855;
         }
-        l = ((bo)localObject4).lT();
-        label706:
-        Log.i((String)localObject3, com.tencent.mm.ac.d.zs(l));
+        l = ((bu)localObject4).mf();
+        label688:
+        Log.i((String)localObject3, com.tencent.mm.ae.d.Fw(l));
         localObject1 = new NearbyVideoFeedLoader.c(0, 0, "", (byte)0);
         localObject3 = (Iterable)localObject2;
         localObject2 = (Collection)new ArrayList();
         localObject3 = ((Iterable)localObject3).iterator();
       }
+      label837:
+      label842:
+      label847:
       label855:
-      label860:
-      label865:
-      label873:
-      label882:
+      label864:
       for (;;)
       {
-        label767:
+        label749:
         if (!((Iterator)localObject3).hasNext()) {
-          break label884;
+          break label866;
         }
         localObject4 = ((Iterator)localObject3).next();
-        localObject5 = (bo)localObject4;
+        localObject5 = (bu)localObject4;
         if ((localObject5 instanceof BaseFinderFeed)) {
-          localObject6 = y.vXH;
+          localObject6 = aj.AGc;
         }
-        for (bool = y.r(((BaseFinderFeed)localObject5).feedObject.getFeedObject());; bool = true)
+        for (bool = aj.w(((BaseFinderFeed)localObject5).feedObject.getFeedObject());; bool = true)
         {
           if (!bool) {
-            break label882;
+            break label864;
           }
           ((Collection)localObject2).add(localObject4);
-          break label767;
-          ((LinkedList)localObject2).addAll((Collection)((FinderHomeTabStateVM.a)localObject1).wuc);
+          break label749;
+          ((LinkedList)localObject2).addAll((Collection)((b.a)localObject1).Bgw);
           break;
           bool = false;
-          break label552;
+          break label534;
           bool = false;
-          break label629;
+          break label611;
           localObject1 = "";
-          break label664;
+          break label646;
           l = 0L;
-          break label706;
+          break label688;
         }
       }
-      label884:
+      label866:
       ((NearbyVideoFeedLoader.c)localObject1).setIncrementList((List)localObject2);
       ((NearbyVideoFeedLoader.c)localObject1).setPullType(1000);
-      paramf.onFetchDone((IResponse)localObject1);
-      AppMethodBeat.o(249371);
+      paramh.onFetchDone((IResponse)localObject1);
+      AppMethodBeat.o(199628);
     }
     
-    public final void fetchLoadMore(f<bo> paramf)
+    public final void fetchLoadMore(com.tencent.mm.plugin.finder.feed.model.internal.h<bu> paramh)
     {
-      AppMethodBeat.i(249370);
-      p.h(paramf, "callback");
-      fetch(new NearbyVideoFeedLoader.b(2, (byte)0), paramf);
-      AppMethodBeat.o(249370);
+      AppMethodBeat.i(199619);
+      p.k(paramh, "callback");
+      fetch(new NearbyVideoFeedLoader.b(2, (byte)0), paramh);
+      AppMethodBeat.o(199619);
     }
     
-    public final void fetchRefresh(f<bo> paramf)
+    public final void fetchRefresh(com.tencent.mm.plugin.finder.feed.model.internal.h<bu> paramh)
     {
-      AppMethodBeat.i(249369);
-      p.h(paramf, "callback");
-      NearbyVideoFeedLoader.b localb = new NearbyVideoFeedLoader.b(NearbyVideoFeedLoader.this.tXs, (byte)0);
-      if (localb.tXC) {}
-      for (localb.pullType = 4;; localb.pullType = NearbyVideoFeedLoader.this.tXs)
+      AppMethodBeat.i(199616);
+      p.k(paramh, "callback");
+      NearbyVideoFeedLoader.b localb = new NearbyVideoFeedLoader.b(NearbyVideoFeedLoader.this.xJs, (byte)0);
+      if (localb.xJx) {}
+      for (localb.pullType = 4;; localb.pullType = NearbyVideoFeedLoader.this.xJs)
       {
-        if (NearbyVideoFeedLoader.this.tXs == 0) {
-          NearbyVideoFeedLoader.this.tXs = 1;
+        if (NearbyVideoFeedLoader.this.xJs == 0) {
+          NearbyVideoFeedLoader.this.xJs = 1;
         }
-        Log.i(getTAG(), "[requestRefresh] pullType=" + localb.pullType + "  hasPrefetch=" + localb.tXB + " needToRefreshForPrefetch=" + localb.tXC);
-        fetch(localb, paramf);
-        AppMethodBeat.o(249369);
+        Log.i(getTAG(), "[requestRefresh] pullType=" + localb.pullType + "  hasPrefetch=" + localb.xJw + " needToRefreshForPrefetch=" + localb.xJx);
+        fetch(localb, paramh);
+        AppMethodBeat.o(199616);
         return;
       }
     }
     
     public final void keep(com.tencent.mm.vending.e.a parama) {}
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "task", "Lcom/tencent/mm/loader/loader/SingleTask;", "invoke"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "task", "Lcom/tencent/mm/loader/loader/SingleTask;", "invoke"})
     static final class a
       extends q
       implements kotlin.g.a.b<com.tencent.mm.loader.g.h, x>
     {
-      a(NearbyVideoFeedLoader.a parama, Object paramObject, long paramLong, f paramf)
+      a(NearbyVideoFeedLoader.a parama, Object paramObject, long paramLong, com.tencent.mm.plugin.finder.feed.model.internal.h paramh)
       {
         super();
       }
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoFeedLoader$TimelineRequest;", "", "pullType", "", "unreadList", "", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "(ILjava/util/List;)V", "hasPrefetch", "", "getHasPrefetch", "()Z", "setHasPrefetch", "(Z)V", "isPreloadMore", "setPreloadMore", "minDuration", "", "getMinDuration", "()J", "setMinDuration", "(J)V", "needToRefreshForPrefetch", "getNeedToRefreshForPrefetch", "setNeedToRefreshForPrefetch", "getPullType", "()I", "setPullType", "(I)V", "getUnreadList", "()Ljava/util/List;", "setUnreadList", "(Ljava/util/List;)V", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoFeedLoader$TimelineRequest;", "", "pullType", "", "unreadList", "", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "(ILjava/util/List;)V", "hasPrefetch", "", "getHasPrefetch", "()Z", "setHasPrefetch", "(Z)V", "isPreloadMore", "setPreloadMore", "minDuration", "", "getMinDuration", "()J", "setMinDuration", "(J)V", "needToRefreshForPrefetch", "getNeedToRefreshForPrefetch", "setNeedToRefreshForPrefetch", "getPullType", "()I", "setPullType", "(I)V", "getUnreadList", "()Ljava/util/List;", "setUnreadList", "(Ljava/util/List;)V", "plugin-finder-nearby_release"})
   public static final class b
   {
     int pullType;
-    boolean tXB;
-    boolean tXC;
-    long tXD;
-    boolean tXE;
-    List<? extends BaseFinderFeed> tsE;
+    boolean xJw;
+    boolean xJx;
+    long xJy;
+    boolean xJz;
+    List<? extends BaseFinderFeed> xam;
     
     private b(int paramInt)
     {
       this.pullType = paramInt;
-      this.tsE = null;
+      this.xam = null;
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoFeedLoader$TimelineResponse;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "extraData", "", "(IILjava/lang/String;Ljava/lang/Object;)V", "dataBufferList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getDataBufferList", "()Ljava/util/ArrayList;", "setDataBufferList", "(Ljava/util/ArrayList;)V", "getExtraData", "()Ljava/lang/Object;", "setExtraData", "(Ljava/lang/Object;)V", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/video/NearbyVideoFeedLoader$TimelineResponse;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "extraData", "", "(IILjava/lang/String;Ljava/lang/Object;)V", "dataBufferList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getDataBufferList", "()Ljava/util/ArrayList;", "setDataBufferList", "(Ljava/util/ArrayList;)V", "getExtraData", "()Ljava/lang/Object;", "setExtraData", "(Ljava/lang/Object;)V", "plugin-finder-nearby_release"})
   public static final class c
-    extends IResponse<bo>
+    extends IResponse<bu>
   {
-    ArrayList<bo> tUG;
-    Object tXF = null;
+    ArrayList<bu> xFM;
+    Object xJA = null;
     
     private c(int paramInt1, int paramInt2, String paramString)
     {
@@ -408,32 +407,32 @@ public final class NearbyVideoFeedLoader
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/nearby/video/NearbyVideoFeedLoader$createDataMerger$1", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader$DefaultDataMerger;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "mergeRefresh", "", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "next", "Lkotlin/Function1;", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/nearby/video/NearbyVideoFeedLoader$createDataMerger$1", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader$DefaultDataMerger;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "mergeRefresh", "", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "next", "Lkotlin/Function1;", "plugin-finder-nearby_release"})
   public static final class d
-    extends BaseFeedLoader<bo>.a
+    extends BaseFeedLoader<bu>.a
   {
     d()
     {
       super();
     }
     
-    public final void mergeRefresh(IResponse<bo> paramIResponse, kotlin.g.a.b<? super IResponse<bo>, x> paramb)
+    public final void mergeRefresh(IResponse<bu> paramIResponse, kotlin.g.a.b<? super IResponse<bu>, x> paramb)
     {
-      AppMethodBeat.i(249378);
-      p.h(paramIResponse, "response");
-      paramb = RefreshLoadMoreLayout.c.Rms;
-      final RefreshLoadMoreLayout.c localc = new RefreshLoadMoreLayout.c(RefreshLoadMoreLayout.c.hfT());
-      localc.Rmj = paramIResponse.getHasMore();
-      int m = this.uTu.getDataList().size();
+      AppMethodBeat.i(203925);
+      p.k(paramIResponse, "response");
+      paramb = RefreshLoadMoreLayout.c.YNO;
+      final RefreshLoadMoreLayout.c localc = new RefreshLoadMoreLayout.c(RefreshLoadMoreLayout.c.ihs());
+      localc.YNF = paramIResponse.getHasMore();
+      int m = this.zJH.getDataList().size();
       Object localObject1 = paramIResponse.getIncrementList();
-      paramb = (kotlin.g.a.b<? super IResponse<bo>, x>)localObject1;
+      paramb = (kotlin.g.a.b<? super IResponse<bu>, x>)localObject1;
       if (localObject1 == null) {
         paramb = (List)new LinkedList();
       }
       localObject1 = new LinkedList();
-      Object localObject2 = (bo)kotlin.a.j.kt((List)this.uTu.getDataList());
+      Object localObject2 = (bu)kotlin.a.j.lp((List)this.zJH.getDataList());
       if ((localObject2 != null) && ((localObject2 instanceof z))) {
-        ((LinkedList)localObject1).add(this.uTu.getDataList().get(0));
+        ((LinkedList)localObject1).add(this.zJH.getDataList().get(0));
       }
       ((LinkedList)localObject1).addAll((Collection)paramb);
       paramb = ((Iterable)localObject1).iterator();
@@ -447,22 +446,22 @@ public final class NearbyVideoFeedLoader
         {
           localObject2 = paramb.next();
           if (i < 0) {
-            kotlin.a.j.hxH();
+            kotlin.a.j.iBO();
           }
-          localObject2 = (bo)localObject2;
-          localObject3 = ((List)this.uTu.getDataList()).iterator();
+          localObject2 = (bu)localObject2;
+          localObject3 = ((List)this.zJH.getDataList()).iterator();
           j = 0;
           if (((Iterator)localObject3).hasNext())
           {
-            bo localbo = (bo)((Iterator)localObject3).next();
-            if ((localbo.a((com.tencent.mm.plugin.finder.feed.model.internal.i)localObject2) == 0) && ((localbo instanceof w)))
+            bu localbu = (bu)((Iterator)localObject3).next();
+            if ((localbu.a((com.tencent.mm.plugin.finder.feed.model.internal.k)localObject2) == 0) && ((localbu instanceof w)))
             {
-              awe localawe = ((w)localbo).feedObject.getLiveInfo();
-              if ((localawe != null) && (localawe.liveStatus == 1)) {}
+              bac localbac = ((w)localbu).feedObject.getLiveInfo();
+              if ((localbac != null) && (localbac.liveStatus == 1)) {}
             }
             else
             {
-              if ((i != 0) || (!(localObject2 instanceof z)) || (!(localbo instanceof z))) {
+              if ((i != 0) || (!(localObject2 instanceof z)) || (!(localbu instanceof z))) {
                 break label562;
               }
             }
@@ -481,32 +480,32 @@ public final class NearbyVideoFeedLoader
         for (;;)
         {
           paramb = new LinkedList();
-          paramb.addAll((Collection)this.uTu.getDataList());
-          this.uTu.getDataList().clear();
-          this.uTu.getDataList().addAll((Collection)localObject1);
+          paramb.addAll((Collection)this.zJH.getDataList());
+          this.zJH.getDataList().clear();
+          this.zJH.getDataList().addAll((Collection)localObject1);
           j = ((LinkedList)localObject1).size();
           if (j > 0) {
             if (i + 1 == j)
             {
               i += 1;
               j = m - j;
-              this.uTu.dispatcher().onItemRangeRemoved(i, j);
+              this.zJH.dispatcher().onItemRangeRemoved(i, j);
               if (BuildInfo.DEBUG)
               {
-                localObject2 = this.uTu.getTAG();
+                localObject2 = this.zJH.getTAG();
                 paramIResponse = new StringBuilder("mergeRefresh() hasMore:").append(paramIResponse.getHasMore()).append(' ').append("removeIndex:").append(i).append("  removeSize:").append(j).append(' ').append("newList:");
-                localObject3 = al.tuv;
-                paramIResponse = paramIResponse.append(al.dP((List)localObject1)).append(' ').append("oldList:");
-                localObject1 = al.tuv;
-                Log.i((String)localObject2, al.dP((List)paramb));
+                localObject3 = am.xch;
+                paramIResponse = paramIResponse.append(am.dX((List)localObject1)).append(' ').append("oldList:");
+                localObject1 = am.xch;
+                Log.i((String)localObject2, am.dX((List)paramb));
               }
             }
           }
           for (;;)
           {
-            localc.Rmk = 0;
-            com.tencent.mm.ac.d.h((kotlin.g.a.a)new a(this, localc));
-            AppMethodBeat.o(249378);
+            localc.YNG = 0;
+            com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a(this, localc));
+            AppMethodBeat.o(203925);
             return;
             label562:
             k = 0;
@@ -517,30 +516,30 @@ public final class NearbyVideoFeedLoader
             break label307;
             if (i + 1 > j)
             {
-              Log.w(this.uTu.getTAG(), "数据出错，需要检查.");
+              Log.w(this.zJH.getTAG(), "数据出错，需要检查.");
             }
             else
             {
               k = i + 1;
               int n = m - k;
               if ((m > 0) && (n > 0)) {
-                this.uTu.dispatcher().onItemRangeRemoved(k, n);
+                this.zJH.dispatcher().onItemRangeRemoved(k, n);
               }
               i += 1;
               j -= i;
               if (j > 0) {
-                this.uTu.dispatcher().onItemRangeInserted(i, j);
+                this.zJH.dispatcher().onItemRangeInserted(i, j);
               }
               if (BuildInfo.DEBUG)
               {
-                localObject2 = this.uTu.getTAG();
+                localObject2 = this.zJH.getTAG();
                 paramIResponse = new StringBuilder("mergeRefresh() hasMore:").append(paramIResponse.getHasMore()).append(' ').append("removeIndex:").append(k).append("  removeSize:").append(n).append(' ').append("insertIndex:").append(i).append("  insertSize:").append(j).append(' ').append("newList:");
-                localObject3 = al.tuv;
-                paramIResponse = paramIResponse.append(al.dP((List)localObject1)).append(' ').append("oldList:");
-                localObject1 = al.tuv;
-                Log.i((String)localObject2, al.dP((List)paramb));
+                localObject3 = am.xch;
+                paramIResponse = paramIResponse.append(am.dX((List)localObject1)).append(' ').append("oldList:");
+                localObject1 = am.xch;
+                Log.i((String)localObject2, am.dX((List)paramb));
                 continue;
-                Log.w(this.uTu.getTAG(), "没有新的数据.");
+                Log.w(this.zJH.getTAG(), "没有新的数据.");
               }
             }
           }
@@ -552,7 +551,7 @@ public final class NearbyVideoFeedLoader
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
     static final class a
       extends q
       implements kotlin.g.a.a<x>

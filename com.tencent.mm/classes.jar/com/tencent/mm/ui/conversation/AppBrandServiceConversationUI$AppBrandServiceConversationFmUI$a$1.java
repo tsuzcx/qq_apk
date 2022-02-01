@@ -1,22 +1,22 @@
 package com.tencent.mm.ui.conversation;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.op;
+import com.tencent.mm.f.a.pm;
 import com.tencent.mm.sdk.event.IListener;
 
 final class AppBrandServiceConversationUI$AppBrandServiceConversationFmUI$a$1
-  extends IListener<op>
+  extends IListener<pm>
 {
   AppBrandServiceConversationUI$AppBrandServiceConversationFmUI$a$1(AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.a parama)
   {
     AppMethodBeat.i(161553);
-    this.__eventId = op.class.getName().hashCode();
+    this.__eventId = pm.class.getName().hashCode();
     AppMethodBeat.o(161553);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.a.1
  * JD-Core Version:    0.7.0.1
  */

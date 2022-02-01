@@ -3,82 +3,91 @@ package com.tencent.mm.ui.chatting.g;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.co;
-import com.tencent.mm.plugin.ball.c.e;
+import com.tencent.mm.plugin.ball.a.f;
 import com.tencent.mm.plugin.ball.f.b;
 import com.tencent.mm.plugin.ball.model.BallInfo;
+import com.tencent.mm.plugin.ball.service.FloatBallHelper;
 import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.util.HashSet;
 import java.util.Set;
 
 public final class a
-  extends com.tencent.mm.plugin.ball.service.f
+  extends com.tencent.mm.plugin.ball.service.e
 {
-  private static final Set<String> Pwp;
-  private static boolean Pwq;
-  private static long Pwr;
-  private static e lqt;
+  private static long DlT;
+  private static final Set<String> WQI;
+  private static boolean WQJ;
+  private static com.tencent.mm.plugin.ball.c.e old;
   private String mFilePath = "";
-  private String nhr = "";
-  private int qpr = 0;
+  private String qia = "";
+  private int tOb = 0;
   
   static
   {
     AppMethodBeat.i(35866);
     HashSet localHashSet = new HashSet();
-    Pwp = localHashSet;
+    WQI = localHashSet;
     localHashSet.add("app_type");
-    Pwp.add("app_media_id");
-    Pwp.add("app_msg_id");
-    Pwp.add("app_show_share");
-    Pwp.add("scene");
-    lqt = new com.tencent.mm.plugin.ball.c.f()
-    {
-      public final void b(BallInfo paramAnonymousBallInfo)
-      {
-        AppMethodBeat.i(35856);
-        a.a(paramAnonymousBallInfo);
-        AppMethodBeat.o(35856);
-      }
-      
-      public final void c(BallInfo paramAnonymousBallInfo) {}
-      
-      public final void d(BallInfo paramAnonymousBallInfo) {}
-    };
-    Pwq = false;
-    Pwr = 0L;
+    WQI.add("app_media_id");
+    WQI.add("app_msg_id");
+    WQI.add("app_show_share");
+    WQI.add("scene");
+    old = new a.1();
+    WQJ = false;
+    DlT = 0L;
     AppMethodBeat.o(35866);
   }
   
-  public a(com.tencent.mm.plugin.ball.a.f paramf)
+  public a(f paramf)
   {
     super(paramf);
   }
   
-  public static void ebz()
+  public static void eKx()
   {
     AppMethodBeat.i(35863);
-    EventCenter.instance.add(new IListener() {});
+    EventCenter.instance.add(new a.2());
     AppMethodBeat.o(35863);
   }
   
   public static boolean isFileExist(String paramString)
   {
     AppMethodBeat.i(35864);
-    boolean bool = new o(paramString).exists();
+    boolean bool = new q(paramString).ifE();
     AppMethodBeat.o(35864);
     return bool;
   }
   
-  public final boolean aGg()
+  public final void aC(String paramString1, String paramString2, int paramInt)
+  {
+    AppMethodBeat.i(290042);
+    Log.i("MicroMsg.FilesFloatBall.FilesPageFloatBallHelper", "onCreate, filePath:%s fileExt:%s sence:%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
+    this.mFilePath = paramString1;
+    this.qia = paramString2;
+    this.tOb = paramInt;
+    super.I(4, b.aoC(paramString1));
+    cvL().kqZ = 4;
+    cvL().rYx = this.tOb;
+    cvG();
+    if (this.rYE.mab != null)
+    {
+      this.rYE.mab.putString("filePath", paramString1);
+      this.rYE.mab.putBoolean("ifAppAttachDownloadUI", false);
+      this.rYE.mab.putString("fileExt", paramString2);
+      this.rYE.mab.putInt("sence", paramInt);
+      cvG();
+    }
+    AppMethodBeat.o(290042);
+  }
+  
+  public final boolean aOg()
   {
     AppMethodBeat.i(35858);
-    if ((!Util.isNullOrNil(this.mFilePath)) && (!s.YS(this.mFilePath)))
+    if ((!Util.isNullOrNil(this.mFilePath)) && (!u.agG(this.mFilePath)))
     {
       AppMethodBeat.o(35858);
       return false;
@@ -87,60 +96,38 @@ public final class a
     return true;
   }
   
-  public final boolean aGh()
+  public final boolean aOh()
   {
     return true;
   }
   
-  public final void aGi()
+  public final void aOi()
   {
     AppMethodBeat.i(35859);
     Log.i("MicroMsg.FilesFloatBall.FilesPageFloatBallHelper", "onReceivedFinishWhenSwitchBallEvent, filePath:%s", new Object[] { this.mFilePath });
-    super.aGi();
-    if ((this.oXA != null) && (this.oXA.getActivity() != null)) {
-      this.oXA.getActivity().finish();
+    super.aOi();
+    if ((this.rZC != null) && (this.rZC.getActivity() != null)) {
+      this.rZC.getActivity().finish();
     }
     AppMethodBeat.o(35859);
   }
   
-  public final void ay(String paramString1, String paramString2, int paramInt)
-  {
-    AppMethodBeat.i(258285);
-    Log.i("MicroMsg.FilesFloatBall.FilesPageFloatBallHelper", "onCreate, filePath:%s fileExt:%s sence:%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
-    this.mFilePath = paramString1;
-    this.nhr = paramString2;
-    this.qpr = paramInt;
-    super.G(4, b.agW(paramString1));
-    ciw().hDa = 4;
-    ciw().oWx = this.qpr;
-    cit();
-    if (this.oWE.jkf != null)
-    {
-      this.oWE.jkf.putString("filePath", paramString1);
-      this.oWE.jkf.putBoolean("ifAppAttachDownloadUI", false);
-      this.oWE.jkf.putString("fileExt", paramString2);
-      this.oWE.jkf.putInt("sence", paramInt);
-      cit();
-    }
-    AppMethodBeat.o(258285);
-  }
-  
-  public final void bCB()
+  public final void bNW()
   {
     AppMethodBeat.i(35860);
     Log.i("MicroMsg.FilesFloatBall.FilesPageFloatBallHelper", "onReceivedBallInfoRemovedEvent, filePath:%s", new Object[] { this.mFilePath });
-    super.bCB();
+    super.bNW();
     AppMethodBeat.o(35860);
   }
   
-  public final boolean bCG()
+  public final boolean bOb()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.g.a
  * JD-Core Version:    0.7.0.1
  */

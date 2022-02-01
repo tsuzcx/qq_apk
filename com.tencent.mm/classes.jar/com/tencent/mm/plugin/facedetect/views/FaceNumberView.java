@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.facedetect.views;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -9,21 +10,25 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.facedetect.a.a;
+import com.tencent.mm.plugin.facedetect.a.c;
+import com.tencent.mm.plugin.facedetect.a.d;
+import com.tencent.mm.plugin.facedetect.a.g;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.util.Timer;
 
 public class FaceNumberView
   extends LinearLayout
 {
-  private int sWA;
-  private Animation sWB;
-  private FaceNumberView.a sWC;
-  private String sWw;
-  private int sWx;
-  private ViewGroup sWy;
-  public FaceNumberItemView[] sWz;
+  private FaceNumberView.a wCA;
+  private String wCu;
+  private int wCv;
+  private ViewGroup wCw;
+  public FaceNumberItemView[] wCx;
+  private int wCy;
+  private Animation wCz;
   
   public FaceNumberView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,14 +39,14 @@ public class FaceNumberView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(104176);
-    this.sWw = null;
-    this.sWz = null;
-    this.sWA = 0;
-    this.sWB = null;
-    this.sWC = FaceNumberView.a.sWE;
-    this.sWy = ((ViewGroup)inflate(getContext(), 2131494083, null));
-    addView(this.sWy);
-    this.sWB = AnimationUtils.loadAnimation(getContext(), 2130772119);
+    this.wCu = null;
+    this.wCx = null;
+    this.wCy = 0;
+    this.wCz = null;
+    this.wCA = FaceNumberView.a.wCC;
+    this.wCw = ((ViewGroup)inflate(getContext(), a.g.face_number_view, null));
+    addView(this.wCw);
+    this.wCz = AnimationUtils.loadAnimation(getContext(), a.a.pop_in);
     AppMethodBeat.o(104176);
   }
   
@@ -55,103 +60,102 @@ public class FaceNumberView
     }
     if (paramString.equals("0"))
     {
-      paramFaceNumberItemView.setImageResource(2131232252);
+      paramFaceNumberItemView.setImageResource(a.d.face_number0);
       AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("1"))
     {
-      paramFaceNumberItemView.setImageResource(2131232253);
+      paramFaceNumberItemView.setImageResource(a.d.face_number1);
       AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("2"))
     {
-      paramFaceNumberItemView.setImageResource(2131232254);
+      paramFaceNumberItemView.setImageResource(a.d.face_number2);
       AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("3"))
     {
-      paramFaceNumberItemView.setImageResource(2131232255);
+      paramFaceNumberItemView.setImageResource(a.d.face_number3);
       AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("4"))
     {
-      paramFaceNumberItemView.setImageResource(2131232256);
+      paramFaceNumberItemView.setImageResource(a.d.face_number4);
       AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("5"))
     {
-      paramFaceNumberItemView.setImageResource(2131232257);
+      paramFaceNumberItemView.setImageResource(a.d.face_number5);
       AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("6"))
     {
-      paramFaceNumberItemView.setImageResource(2131232258);
+      paramFaceNumberItemView.setImageResource(a.d.face_number6);
       AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("7"))
     {
-      paramFaceNumberItemView.setImageResource(2131232259);
+      paramFaceNumberItemView.setImageResource(a.d.face_number7);
       AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("8"))
     {
-      paramFaceNumberItemView.setImageResource(2131232260);
+      paramFaceNumberItemView.setImageResource(a.d.face_number8);
       AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("9"))
     {
-      paramFaceNumberItemView.setImageResource(2131232261);
+      paramFaceNumberItemView.setImageResource(a.d.face_number9);
       AppMethodBeat.o(104178);
       return;
     }
-    paramFaceNumberItemView.setImageResource(2131232262);
+    paramFaceNumberItemView.setImageResource(a.d.face_point);
     AppMethodBeat.o(104178);
   }
   
-  private void cTU()
+  private void dja()
   {
     int i = 0;
+    int j = 0;
     AppMethodBeat.i(104177);
-    if ((this.sWz != null) && (this.sWz.length > 0))
+    if ((this.wCx != null) && (this.wCx.length > 0))
     {
-      if (!Util.isNullOrNil(this.sWw))
+      if (!Util.isNullOrNil(this.wCu))
       {
-        i = 0;
-        if (i < this.sWz.length)
+        i = j;
+        if (i < this.wCx.length)
         {
           String str;
           FaceNumberItemView localFaceNumberItemView;
-          if (this.sWx > i)
+          if (this.wCv > i)
           {
-            str = this.sWw.charAt(i);
-            if (this.sWx == i + 1)
+            str = this.wCu.charAt(i);
+            if (this.wCv == i + 1)
             {
-              localFaceNumberItemView = this.sWz[i];
-              if (localFaceNumberItemView.sWl != null) {
-                localFaceNumberItemView.cTT();
-              }
-              localFaceNumberItemView.sWl = new Timer("FaceNumberItemView_karaoke", true);
-              FaceNumberItemView.a locala = new FaceNumberItemView.a(localFaceNumberItemView, localFaceNumberItemView.sWt, (byte)0);
-              localFaceNumberItemView.sWl.scheduleAtFixedRate(locala, 0L, FaceNumberItemView.sWm);
+              localFaceNumberItemView = this.wCx[i];
+              localFaceNumberItemView.diZ();
+              FaceNumberItemView.a locala = new FaceNumberItemView.a(localFaceNumberItemView.wCr);
+              localFaceNumberItemView.wCj = new MTimerHandler(Looper.getMainLooper(), locala, true);
+              localFaceNumberItemView.wCj.startTimer(0L, FaceNumberItemView.wCk);
             }
           }
           for (;;)
           {
-            a(this.sWz[i], str);
+            a(this.wCx[i], str);
             i += 1;
             break;
-            this.sWz[i].cTT();
-            localFaceNumberItemView = this.sWz[i];
-            localFaceNumberItemView.sWs = 30;
+            this.wCx[i].diZ();
+            localFaceNumberItemView = this.wCx[i];
+            localFaceNumberItemView.wCq = 30;
             localFaceNumberItemView.invalidate();
             continue;
             str = "";
@@ -160,34 +164,34 @@ public class FaceNumberView
         AppMethodBeat.o(104177);
         return;
       }
-      while (i < this.sWz.length)
+      while (i < this.wCx.length)
       {
-        a(this.sWz[i], "point");
+        a(this.wCx[i], "point");
         i += 1;
       }
     }
     AppMethodBeat.o(104177);
   }
   
-  private void cTV()
+  private void djb()
   {
     AppMethodBeat.i(104179);
-    if (this.sWw != null)
+    if (this.wCu != null)
     {
-      this.sWx = this.sWw.length();
+      this.wCv = this.wCu.length();
       AppMethodBeat.o(104179);
       return;
     }
-    this.sWx = 0;
+    this.wCv = 0;
     AppMethodBeat.o(104179);
   }
   
-  public final void arF(String paramString)
+  public final void azG(String paramString)
   {
     AppMethodBeat.i(104180);
-    this.sWw = paramString;
-    cTV();
-    cTU();
+    this.wCu = paramString;
+    djb();
+    dja();
     AppMethodBeat.o(104180);
   }
   
@@ -206,44 +210,44 @@ public class FaceNumberView
       AppMethodBeat.o(104175);
       return;
     }
-    if (paramInt == this.sWA)
+    if (paramInt == this.wCy)
     {
       Log.i("MicroMsg.Facing.MMPwdInputView", "hy: already correct length. quit");
-      arF(null);
+      azG(null);
       AppMethodBeat.o(104175);
       return;
     }
-    this.sWy.removeAllViews();
-    this.sWA = paramInt;
-    this.sWz = new FaceNumberItemView[this.sWA];
+    this.wCw.removeAllViews();
+    this.wCy = paramInt;
+    this.wCx = new FaceNumberItemView[this.wCy];
     int k = 0;
     if (k < paramInt)
     {
-      FaceNumberItemView localFaceNumberItemView = (FaceNumberItemView)inflate(getContext(), 2131494084, null);
-      localFaceNumberItemView.setImageResource(2131232262);
+      FaceNumberItemView localFaceNumberItemView = (FaceNumberItemView)inflate(getContext(), a.g.face_number_view_item, null);
+      localFaceNumberItemView.setImageResource(a.d.face_point);
       int j;
       int i;
       if (k == 0)
       {
         j = 3;
-        i = (getResources().getDimensionPixelSize(2131166326) + a.fromDPToPix(getContext(), 48)) / 2;
+        i = (getResources().getDimensionPixelSize(a.c.face_number_width) + a.fromDPToPix(getContext(), 48)) / 2;
       }
       for (;;)
       {
         localFaceNumberItemView.setGravity(j);
-        this.sWz[k] = localFaceNumberItemView;
-        this.sWy.addView(localFaceNumberItemView, new ViewGroup.LayoutParams(i, getResources().getDimensionPixelSize(2131166324)));
+        this.wCx[k] = localFaceNumberItemView;
+        this.wCw.addView(localFaceNumberItemView, new ViewGroup.LayoutParams(i, getResources().getDimensionPixelSize(a.c.face_number_height)));
         k += 1;
         break;
         if (k == paramInt - 1)
         {
           j = 5;
-          i = (getResources().getDimensionPixelSize(2131166326) + a.fromDPToPix(getContext(), 48)) / 2;
+          i = (getResources().getDimensionPixelSize(a.c.face_number_width) + a.fromDPToPix(getContext(), 48)) / 2;
         }
         else
         {
           j = 17;
-          i = getResources().getDimensionPixelSize(2131166326);
+          i = getResources().getDimensionPixelSize(a.c.face_number_width);
         }
       }
     }
@@ -252,7 +256,7 @@ public class FaceNumberView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.views.FaceNumberView
  * JD-Core Version:    0.7.0.1
  */

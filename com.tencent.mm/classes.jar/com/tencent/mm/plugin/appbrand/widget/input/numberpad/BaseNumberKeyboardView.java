@@ -14,6 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import com.tencent.luggage.wxa.b.a.c;
+import com.tencent.luggage.wxa.b.a.d;
+import com.tencent.luggage.wxa.b.a.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
@@ -21,7 +24,6 @@ import com.tencent.mm.hellhoundlib.b.b;
 public class BaseNumberKeyboardView
   extends LinearLayout
 {
-  public View jBN;
   private Context mContext;
   private EditText mInputEditText;
   public Button mKey0;
@@ -36,8 +38,9 @@ public class BaseNumberKeyboardView
   public Button mKey9;
   public Button mKeyX;
   private int mXMode;
-  public boolean orS;
-  public ImageButton owM;
+  public View mrI;
+  public boolean rub;
+  public ImageButton rzG;
   
   public BaseNumberKeyboardView(Context paramContext)
   {
@@ -61,27 +64,27 @@ public class BaseNumberKeyboardView
   {
     AppMethodBeat.i(136681);
     this.mContext = paramContext.getApplicationContext();
-    this.jBN = LayoutInflater.from(paramContext).inflate(2131493144, this, true);
-    this.mKey1 = ((Button)this.jBN.findViewById(getId("tenpay_keyboard_1")));
-    this.mKey2 = ((Button)this.jBN.findViewById(getId("tenpay_keyboard_2")));
-    this.mKey3 = ((Button)this.jBN.findViewById(getId("tenpay_keyboard_3")));
-    this.mKey4 = ((Button)this.jBN.findViewById(getId("tenpay_keyboard_4")));
-    this.mKey5 = ((Button)this.jBN.findViewById(getId("tenpay_keyboard_5")));
-    this.mKey6 = ((Button)this.jBN.findViewById(getId("tenpay_keyboard_6")));
-    this.mKey7 = ((Button)this.jBN.findViewById(getId("tenpay_keyboard_7")));
-    this.mKey8 = ((Button)this.jBN.findViewById(getId("tenpay_keyboard_8")));
-    this.mKey9 = ((Button)this.jBN.findViewById(getId("tenpay_keyboard_9")));
-    this.mKeyX = ((Button)this.jBN.findViewById(getId("tenpay_keyboard_x")));
-    this.mKey0 = ((Button)this.jBN.findViewById(getId("tenpay_keyboard_0")));
-    this.owM = ((ImageButton)this.jBN.findViewById(getId("tenpay_keyboard_d")));
+    this.mrI = LayoutInflater.from(paramContext).inflate(a.f.appbrand_number_keyboard, this, true);
+    this.mKey1 = ((Button)this.mrI.findViewById(getId("tenpay_keyboard_1")));
+    this.mKey2 = ((Button)this.mrI.findViewById(getId("tenpay_keyboard_2")));
+    this.mKey3 = ((Button)this.mrI.findViewById(getId("tenpay_keyboard_3")));
+    this.mKey4 = ((Button)this.mrI.findViewById(getId("tenpay_keyboard_4")));
+    this.mKey5 = ((Button)this.mrI.findViewById(getId("tenpay_keyboard_5")));
+    this.mKey6 = ((Button)this.mrI.findViewById(getId("tenpay_keyboard_6")));
+    this.mKey7 = ((Button)this.mrI.findViewById(getId("tenpay_keyboard_7")));
+    this.mKey8 = ((Button)this.mrI.findViewById(getId("tenpay_keyboard_8")));
+    this.mKey9 = ((Button)this.mrI.findViewById(getId("tenpay_keyboard_9")));
+    this.mKeyX = ((Button)this.mrI.findViewById(getId("tenpay_keyboard_x")));
+    this.mKey0 = ((Button)this.mrI.findViewById(getId("tenpay_keyboard_0")));
+    this.rzG = ((ImageButton)this.mrI.findViewById(getId("tenpay_keyboard_d")));
     paramContext = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(136678);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/appbrand/widget/input/numberpad/BaseNumberKeyboardView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/appbrand/widget/input/numberpad/BaseNumberKeyboardView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (BaseNumberKeyboardView.a(BaseNumberKeyboardView.this) == null)
         {
           a.a(this, "com/tencent/mm/plugin/appbrand/widget/input/numberpad/BaseNumberKeyboardView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -155,7 +158,7 @@ public class BaseNumberKeyboardView
       this.mKey9.setContentDescription("9");
       this.mKey0.setContentDescription("0");
       this.mKeyX.setContentDescription("字母X");
-      this.owM.setContentDescription("删除");
+      this.rzG.setContentDescription("删除");
     }
     this.mKey1.setOnClickListener(paramContext);
     this.mKey2.setOnClickListener(paramContext);
@@ -168,7 +171,7 @@ public class BaseNumberKeyboardView
     this.mKey9.setOnClickListener(paramContext);
     this.mKeyX.setOnClickListener(paramContext);
     this.mKey0.setOnClickListener(paramContext);
-    this.owM.setOnClickListener(paramContext);
+    this.rzG.setOnClickListener(paramContext);
     AppMethodBeat.o(136681);
   }
   
@@ -227,7 +230,7 @@ public class BaseNumberKeyboardView
     this.mKey8.setAccessibilityDelegate(paramAccessibilityDelegate);
     this.mKey9.setAccessibilityDelegate(paramAccessibilityDelegate);
     this.mKeyX.setAccessibilityDelegate(paramAccessibilityDelegate);
-    this.owM.setAccessibilityDelegate(paramAccessibilityDelegate);
+    this.rzG.setAccessibilityDelegate(paramAccessibilityDelegate);
     AppMethodBeat.o(136682);
   }
   
@@ -243,35 +246,35 @@ public class BaseNumberKeyboardView
       return;
     case 0: 
       this.mKeyX.setText("");
-      if (this.orS)
+      if (this.rub)
       {
-        this.mKeyX.setBackgroundResource(2131100000);
+        this.mKeyX.setBackgroundResource(a.c.appbrand_keyboard_bottom_left_right_light);
         AppMethodBeat.o(136684);
         return;
       }
-      this.mKeyX.setBackgroundResource(2131099997);
+      this.mKeyX.setBackgroundResource(a.c.appbrand_keyboard_bottom_left_right);
       AppMethodBeat.o(136684);
       return;
     case 1: 
       this.mKeyX.setText("X");
-      if (this.orS)
+      if (this.rub)
       {
-        this.mKeyX.setBackgroundResource(2131235232);
+        this.mKeyX.setBackgroundResource(a.d.tenpay_keybtn_bottom_left_right_force_light);
         AppMethodBeat.o(136684);
         return;
       }
-      this.mKeyX.setBackgroundResource(2131235231);
+      this.mKeyX.setBackgroundResource(a.d.tenpay_keybtn_bottom_left_right);
       AppMethodBeat.o(136684);
       return;
     }
     this.mKeyX.setText(".");
-    if (this.orS)
+    if (this.rub)
     {
-      this.mKeyX.setBackgroundResource(2131235232);
+      this.mKeyX.setBackgroundResource(a.d.tenpay_keybtn_bottom_left_right_force_light);
       AppMethodBeat.o(136684);
       return;
     }
-    this.mKeyX.setBackgroundResource(2131235231);
+    this.mKeyX.setBackgroundResource(a.d.tenpay_keybtn_bottom_left_right);
     AppMethodBeat.o(136684);
   }
 }

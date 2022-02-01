@@ -1,25 +1,22 @@
 package com.tencent.mm.plugin.finder.megavideo.loader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.cgi.cn;
-import com.tencent.mm.plugin.finder.feed.model.h;
+import com.tencent.mm.plugin.finder.cgi.cr;
 import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader.a;
 import com.tencent.mm.plugin.finder.feed.model.internal.DataBuffer;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
-import com.tencent.mm.plugin.finder.feed.model.internal.g;
-import com.tencent.mm.plugin.finder.feed.model.internal.n;
-import com.tencent.mm.plugin.finder.model.bm;
-import com.tencent.mm.plugin.finder.model.bo;
+import com.tencent.mm.plugin.finder.feed.model.internal.i;
+import com.tencent.mm.plugin.finder.model.bs;
+import com.tencent.mm.plugin.finder.model.bu;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.data.l.a;
-import com.tencent.mm.plugin.finder.storage.logic.c;
+import com.tencent.mm.plugin.finder.storage.data.k;
+import com.tencent.mm.plugin.finder.storage.data.k.a;
 import com.tencent.mm.plugin.finder.storage.logic.c.a;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.bbn;
-import com.tencent.mm.protocal.protobuf.cng;
+import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.protocal.protobuf.cvy;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.view.RefreshLoadMoreLayout.c;
 import java.util.ArrayList;
@@ -30,39 +27,40 @@ import java.util.LinkedList;
 import java.util.List;
 import kotlin.a.j;
 import kotlin.g.b.p;
+import kotlin.l;
 import kotlin.t;
 import kotlin.x;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/megavideo/loader/FinderMegaVideoProfileLoader;", "Lcom/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader;", "targetUsername", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "initRemoveItemCount", "", "getInitRemoveItemCount", "()I", "setInitRemoveItemCount", "(I)V", "needMergeLocalData", "", "getNeedMergeLocalData", "()Z", "setNeedMergeLocalData", "(Z)V", "getTargetUsername", "()Ljava/lang/String;", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "createDataMerger", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "getLastItem", "", "isObservePostEvent", "onFetchDone", "", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "MegaVideoProfileDataFetcher", "MegaVideoProfileResponse", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/loader/FinderMegaVideoProfileLoader;", "Lcom/tencent/mm/plugin/finder/megavideo/loader/BaseMegaVideoLoader;", "targetUsername", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "initRemoveItemCount", "", "getInitRemoveItemCount", "()I", "setInitRemoveItemCount", "(I)V", "needMergeLocalData", "", "getNeedMergeLocalData", "()Z", "setNeedMergeLocalData", "(Z)V", "getTargetUsername", "()Ljava/lang/String;", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "createDataMerger", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "getLastItem", "", "isObservePostEvent", "onFetchDone", "", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "MegaVideoProfileDataFetcher", "MegaVideoProfileResponse", "plugin-finder_release"})
 public final class FinderMegaVideoProfileLoader
   extends BaseMegaVideoLoader
 {
-  public final String tvp;
-  public boolean uKQ;
-  public int uKR;
+  public final String xcW;
+  public boolean zwH;
+  public int zwI;
   
-  public FinderMegaVideoProfileLoader(String paramString, bbn parambbn)
+  public FinderMegaVideoProfileLoader(String paramString, bid parambid)
   {
-    super(parambbn);
-    AppMethodBeat.i(248402);
-    this.tvp = paramString;
-    AppMethodBeat.o(248402);
+    super(parambid);
+    AppMethodBeat.i(230740);
+    this.xcW = paramString;
+    AppMethodBeat.o(230740);
   }
   
-  public final g<bo> createDataFetch()
+  public final i<bu> createDataFetch()
   {
-    AppMethodBeat.i(248399);
-    g localg = (g)new a();
-    AppMethodBeat.o(248399);
-    return localg;
+    AppMethodBeat.i(230737);
+    i locali = (i)new a();
+    AppMethodBeat.o(230737);
+    return locali;
   }
   
-  public final com.tencent.mm.plugin.finder.feed.model.internal.b<bo> createDataMerger()
+  public final com.tencent.mm.plugin.finder.feed.model.internal.d<bu> createDataMerger()
   {
-    AppMethodBeat.i(248400);
-    com.tencent.mm.plugin.finder.feed.model.internal.b localb = (com.tencent.mm.plugin.finder.feed.model.internal.b)new c(this);
-    AppMethodBeat.o(248400);
-    return localb;
+    AppMethodBeat.i(230738);
+    com.tencent.mm.plugin.finder.feed.model.internal.d locald = (com.tencent.mm.plugin.finder.feed.model.internal.d)new c(this);
+    AppMethodBeat.o(230738);
+    return locald;
   }
   
   public final boolean isObservePostEvent()
@@ -70,14 +68,14 @@ public final class FinderMegaVideoProfileLoader
     return true;
   }
   
-  public final void onFetchDone(IResponse<bo> paramIResponse)
+  public final void onFetchDone(IResponse<bu> paramIResponse)
   {
-    AppMethodBeat.i(248401);
-    p.h(paramIResponse, "response");
+    AppMethodBeat.i(230739);
+    p.k(paramIResponse, "response");
     super.onFetchDone(paramIResponse);
     if (isInitOperation(paramIResponse))
     {
-      AppMethodBeat.o(248401);
+      AppMethodBeat.o(230739);
       return;
     }
     this.hasMore = paramIResponse.getHasMore();
@@ -85,44 +83,44 @@ public final class FinderMegaVideoProfileLoader
     if (localb != null)
     {
       localb.invoke(paramIResponse);
-      AppMethodBeat.o(248401);
+      AppMethodBeat.o(230739);
       return;
     }
-    AppMethodBeat.o(248401);
+    AppMethodBeat.o(230739);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/megavideo/loader/FinderMegaVideoProfileLoader$MegaVideoProfileDataFetcher;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataFetchNetscene;", "(Lcom/tencent/mm/plugin/finder/megavideo/loader/FinderMegaVideoProfileLoader;)V", "callInit", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "dealOnSceneEnd", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "genLoadMoreNetScene", "genRefreshNetScene", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderUserPage;", "getCmdIds", "", "mergeLocalData", "Lcom/tencent/mm/plugin/finder/model/MegaVideoFeed;", "nowList", "username", "start", "end", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/loader/FinderMegaVideoProfileLoader$MegaVideoProfileDataFetcher;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataFetchNetscene;", "(Lcom/tencent/mm/plugin/finder/megavideo/loader/FinderMegaVideoProfileLoader;)V", "callInit", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "dealOnSceneEnd", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "genLoadMoreNetScene", "genRefreshNetScene", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderUserPage;", "getCmdIds", "", "mergeLocalData", "Lcom/tencent/mm/plugin/finder/model/MegaVideoFeed;", "nowList", "username", "start", "end", "plugin-finder_release"})
   public final class a
-    extends com.tencent.mm.plugin.finder.feed.model.internal.a
+    extends com.tencent.mm.plugin.finder.feed.model.internal.c
   {
-    private final List<bm> i(List<bm> paramList, String paramString)
+    private final List<bs> k(List<bs> paramList, String paramString)
     {
-      AppMethodBeat.i(248396);
+      AppMethodBeat.i(281533);
       if (((CharSequence)paramString).length() == 0) {}
-      for (int i = 1; (i != 0) || ((p.j(paramString, z.aUg()) ^ true)) || (!this.uKS.uKQ); i = 0)
+      for (int i = 1; (i != 0) || ((p.h(paramString, z.bdh()) ^ true)) || (!this.zwJ.zwH); i = 0)
       {
-        AppMethodBeat.o(248396);
+        AppMethodBeat.o(281533);
         return paramList;
       }
       Log.i(getTAG(), "mergeLocalData start 0 end 2147483647");
       LinkedList localLinkedList = new LinkedList();
-      Object localObject = c.vGN;
-      paramString = c.a.af(paramString, 0, 2147483647);
+      Object localObject = com.tencent.mm.plugin.finder.storage.logic.c.AnK;
+      paramString = c.a.ai(paramString, 0, 2147483647);
       localLinkedList.addAll((Collection)paramList);
       localObject = (List)localLinkedList;
       if (((List)localObject).size() > 1) {
         j.a((List)localObject, (Comparator)new b());
       }
-      d.a(paramString, (kotlin.g.a.b)new c(paramList));
+      com.tencent.mm.ae.d.a(paramString, (kotlin.g.a.b)new c(paramList));
       localObject = (Iterable)paramString;
       paramList = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
       localObject = ((Iterable)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
         FinderItem localFinderItem = (FinderItem)((Iterator)localObject).next();
-        bm localbm = new bm(localFinderItem.getFeedObject());
-        localbm.uOW = localFinderItem;
-        paramList.add(localbm);
+        bs localbs = new bs(localFinderItem.getFeedObject());
+        localbs.zBs = localFinderItem;
+        paramList.add(localbs);
       }
       localLinkedList.addAll(0, (Collection)paramList);
       Log.i(getTAG(), "mergeLocalData: databaseList size:" + paramString.size());
@@ -133,75 +131,75 @@ public final class FinderMegaVideoProfileLoader
         Log.i(getTAG(), "mergeLocalData: databaseList item, localId:" + paramString.getLocalId() + ", id:" + paramString.getId());
       }
       paramList = (List)localLinkedList;
-      AppMethodBeat.o(248396);
+      AppMethodBeat.o(281533);
       return paramList;
     }
     
-    public final IResponse<bo> callInit()
+    public final IResponse<bu> callInit()
     {
-      AppMethodBeat.i(248395);
+      AppMethodBeat.i(281532);
       Log.i(getTAG(), "fetchInit");
       final FinderMegaVideoProfileLoader.b localb = new FinderMegaVideoProfileLoader.b(0, 0, "");
       localb.setPullType(1000);
-      Object localObject1 = this.uKS.getCache();
+      Object localObject1 = this.zwJ.getCache();
       if (localObject1 != null)
       {
-        localObject1 = ((h)localObject1).kgc;
+        localObject1 = ((com.tencent.mm.plugin.finder.feed.model.q)localObject1).mXB;
         if (localObject1 != null)
         {
           Log.i(getTAG(), "fetchInit: use old data list, size: " + ((ArrayList)localObject1).size());
-          if (!this.uKS.uKQ) {
-            d.a((ArrayList)localObject1, (kotlin.g.a.b)new a(this, localb));
+          if (!this.zwJ.zwH) {
+            com.tencent.mm.ae.d.a((ArrayList)localObject1, (kotlin.g.a.b)new a(this, localb));
           }
           localb.setIncrementList((List)localObject1);
-          localObject1 = this.uKS.getCache();
+          localObject1 = this.zwJ.getCache();
           if (localObject1 != null)
           {
-            localObject1 = ((h)localObject1).lastBuffer;
-            localb.setLastBuffer((com.tencent.mm.bw.b)localObject1);
+            localObject1 = ((com.tencent.mm.plugin.finder.feed.model.q)localObject1).lastBuffer;
+            localb.setLastBuffer((com.tencent.mm.cd.b)localObject1);
           }
         }
       }
       for (;;)
       {
         localObject1 = (IResponse)localb;
-        AppMethodBeat.o(248395);
+        AppMethodBeat.o(281532);
         return localObject1;
         localObject1 = null;
         break;
-        localObject1 = com.tencent.mm.plugin.finder.storage.data.l.vGw.bc(13, this.uKS.tvp);
+        localObject1 = k.Anu.bc(13, this.zwJ.xcW);
         Log.i(getTAG(), "fetchInit: use first page data list, size: " + ((List)localObject1).size());
         Object localObject2 = (Iterable)localObject1;
         localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
         localObject2 = ((Iterable)localObject2).iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          bo localbo = (bo)((Iterator)localObject2).next();
-          if (localbo == null)
+          bu localbu = (bu)((Iterator)localObject2).next();
+          if (localbu == null)
           {
             localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.model.MegaVideoFeed");
-            AppMethodBeat.o(248395);
+            AppMethodBeat.o(281532);
             throw ((Throwable)localObject1);
           }
-          ((Collection)localObject1).add((bm)localbo);
+          ((Collection)localObject1).add((bs)localbu);
         }
-        localb.setIncrementList(i((List)localObject1, this.uKS.tvp));
+        localb.setIncrementList(k((List)localObject1, this.zwJ.xcW));
       }
     }
     
-    public final IResponse<bo> dealOnSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+    public final IResponse<bu> dealOnSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
     {
-      AppMethodBeat.i(248394);
-      p.h(paramq, "scene");
-      if ((paramq instanceof cn))
+      AppMethodBeat.i(281531);
+      p.k(paramq, "scene");
+      if ((paramq instanceof cr))
       {
         if ((paramInt1 == 0) && (paramInt2 == 0)) {}
         FinderMegaVideoProfileLoader.b localb;
-        for (boolean bool = ((cn)paramq).tuG;; bool = true)
+        for (boolean bool = ((cr)paramq).xcp;; bool = true)
         {
           localb = new FinderMegaVideoProfileLoader.b(paramInt1, paramInt2, paramString);
-          localb.setPullType(((cn)paramq).pullType);
-          localObject1 = ((cn)paramq).tvo;
+          localb.setPullType(((cr)paramq).pullType);
+          localObject1 = ((cr)paramq).xcV;
           paramString = (String)localObject1;
           if (localObject1 == null) {
             paramString = (List)new LinkedList();
@@ -210,20 +208,20 @@ public final class FinderMegaVideoProfileLoader
           localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
           localObject2 = ((Iterable)localObject2).iterator();
           while (((Iterator)localObject2).hasNext()) {
-            ((Collection)localObject1).add(new bm(((FinderItem)((Iterator)localObject2).next()).getFeedObject()));
+            ((Collection)localObject1).add(new bs(((FinderItem)((Iterator)localObject2).next()).getFeedObject()));
           }
         }
-        localb.setIncrementList(i((List)localObject1, this.uKS.tvp));
-        localb.setLastBuffer(((cn)paramq).getLastBuffer());
+        localb.setIncrementList(k((List)localObject1, this.zwJ.xcW));
+        localb.setLastBuffer(((cr)paramq).getLastBuffer());
         localb.setHasMore(bool);
-        paramq = c.vGN;
+        paramq = com.tencent.mm.plugin.finder.storage.logic.c.AnK;
         paramq = (Iterable)paramString;
         paramString = (Collection)new ArrayList(j.a(paramq, 10));
         paramq = paramq.iterator();
         while (paramq.hasNext()) {
           paramString.add(((FinderItem)paramq.next()).getFeedObject());
         }
-        c.a.b((List)paramString, this.uKS.getContextObj());
+        c.a.b((List)paramString, this.zwJ.getContextObj());
         paramq = getTAG();
         Object localObject1 = new StringBuilder("incrementList size: ");
         paramString = localb.getIncrementList();
@@ -232,29 +230,29 @@ public final class FinderMegaVideoProfileLoader
         {
           Log.i(paramq, paramString);
           paramString = (IResponse)localb;
-          AppMethodBeat.o(248394);
+          AppMethodBeat.o(281531);
           return paramString;
         }
       }
-      AppMethodBeat.o(248394);
+      AppMethodBeat.o(281531);
       return null;
     }
     
-    public final com.tencent.mm.ak.q genLoadMoreNetScene()
+    public final com.tencent.mm.an.q genLoadMoreNetScene()
     {
-      AppMethodBeat.i(248393);
-      Object localObject = this.uKS;
+      AppMethodBeat.i(281530);
+      Object localObject = this.zwJ;
       int i = ((FinderMegaVideoProfileLoader)localObject).getDataList().size() - 1;
-      bo localbo;
+      bu localbu;
       if (i >= 0)
       {
-        localbo = (bo)((FinderMegaVideoProfileLoader)localObject).getDataList().get(i);
-        if ((!(localbo instanceof bm)) || (((bm)localbo).getFeedObject().id == 0L)) {}
+        localbu = (bu)((FinderMegaVideoProfileLoader)localObject).getDataList().get(i);
+        if ((!(localbu instanceof bs)) || (((bs)localbu).getFeedObject().id == 0L)) {}
       }
-      for (long l = ((bm)localbo).getFeedObject().id;; l = 0L)
+      for (long l = ((bs)localbu).getFeedObject().id;; l = 0L)
       {
-        localObject = (com.tencent.mm.ak.q)new cn(this.uKS.tvp, l, this.uKS.getLastBuffer(), 2, this.uKS.getContextObj(), 1, 0L, 64);
-        AppMethodBeat.o(248393);
+        localObject = (com.tencent.mm.an.q)new cr(this.zwJ.xcW, l, this.zwJ.getLastBuffer(), 2, this.zwJ.getContextObj(), 1, 0L, 64);
+        AppMethodBeat.o(281530);
         return localObject;
         i -= 1;
         break;
@@ -263,16 +261,16 @@ public final class FinderMegaVideoProfileLoader
     
     public final List<Integer> getCmdIds()
     {
-      AppMethodBeat.i(248391);
+      AppMethodBeat.i(281527);
       List localList = j.listOf(Integer.valueOf(3736));
-      AppMethodBeat.o(248391);
+      AppMethodBeat.o(281527);
       return localList;
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "invoke", "com/tencent/mm/plugin/finder/megavideo/loader/FinderMegaVideoProfileLoader$MegaVideoProfileDataFetcher$callInit$1$1"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "invoke", "com/tencent/mm/plugin/finder/megavideo/loader/FinderMegaVideoProfileLoader$MegaVideoProfileDataFetcher$callInit$1$1"})
     static final class a
       extends kotlin.g.b.q
-      implements kotlin.g.a.b<bo, Boolean>
+      implements kotlin.g.a.b<bu, Boolean>
     {
       a(FinderMegaVideoProfileLoader.a parama, FinderMegaVideoProfileLoader.b paramb)
       {
@@ -280,32 +278,32 @@ public final class FinderMegaVideoProfileLoader
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
     public static final class b<T>
       implements Comparator<T>
     {
       public final int compare(T paramT1, T paramT2)
       {
         int j = 0;
-        AppMethodBeat.i(248389);
-        paramT2 = ((bm)paramT2).tuP;
+        AppMethodBeat.i(281603);
+        paramT2 = ((bs)paramT2).xcy;
         if (paramT2 != null) {}
-        for (int i = paramT2.iXu;; i = 0)
+        for (int i = paramT2.createTime;; i = 0)
         {
           paramT2 = (Comparable)Integer.valueOf(i);
-          paramT1 = ((bm)paramT1).tuP;
+          paramT1 = ((bs)paramT1).xcy;
           i = j;
           if (paramT1 != null) {
-            i = paramT1.iXu;
+            i = paramT1.createTime;
           }
           i = kotlin.b.a.a(paramT2, (Comparable)Integer.valueOf(i));
-          AppMethodBeat.o(248389);
+          AppMethodBeat.o(281603);
           return i;
         }
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "removeIt", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "invoke"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "removeIt", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "invoke"})
     static final class c
       extends kotlin.g.b.q
       implements kotlin.g.a.b<FinderItem, Boolean>
@@ -317,9 +315,9 @@ public final class FinderMegaVideoProfileLoader
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/megavideo/loader/FinderMegaVideoProfileLoader$MegaVideoProfileResponse;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "(IILjava/lang/String;)V", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/megavideo/loader/FinderMegaVideoProfileLoader$MegaVideoProfileResponse;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "(IILjava/lang/String;)V", "plugin-finder_release"})
   public static final class b
-    extends IResponse<bo>
+    extends IResponse<bu>
   {
     public b(int paramInt1, int paramInt2, String paramString)
     {
@@ -327,31 +325,31 @@ public final class FinderMegaVideoProfileLoader
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/megavideo/loader/FinderMegaVideoProfileLoader$createDataMerger$1", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader$DefaultDataMerger;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "mergeRefresh", "", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "next", "Lkotlin/Function1;", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/megavideo/loader/FinderMegaVideoProfileLoader$createDataMerger$1", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader$DefaultDataMerger;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "mergeRefresh", "", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "next", "Lkotlin/Function1;", "plugin-finder_release"})
   public static final class c
-    extends BaseFeedLoader<bo>.a
+    extends BaseFeedLoader<bu>.a
   {
     c()
     {
       super();
     }
     
-    public final void mergeRefresh(final IResponse<bo> paramIResponse, final kotlin.g.a.b<? super IResponse<bo>, x> paramb)
+    public final void mergeRefresh(final IResponse<bu> paramIResponse, final kotlin.g.a.b<? super IResponse<bu>, x> paramb)
     {
-      AppMethodBeat.i(248398);
-      p.h(paramIResponse, "response");
-      Object localObject = RefreshLoadMoreLayout.c.Rms;
-      localObject = new RefreshLoadMoreLayout.c(RefreshLoadMoreLayout.c.hfT());
-      d.h((kotlin.g.a.a)new a(this, new n(7, paramIResponse.getIncrementList(), false, 12), (RefreshLoadMoreLayout.c)localObject, paramb, paramIResponse));
-      AppMethodBeat.o(248398);
+      AppMethodBeat.i(285107);
+      p.k(paramIResponse, "response");
+      Object localObject = RefreshLoadMoreLayout.c.YNO;
+      localObject = new RefreshLoadMoreLayout.c(RefreshLoadMoreLayout.c.ihs());
+      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new a(this, new com.tencent.mm.plugin.finder.feed.model.internal.q(7, paramIResponse.getIncrementList(), false, 12), (RefreshLoadMoreLayout.c)localObject, paramb, paramIResponse));
+      AppMethodBeat.o(285107);
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
     static final class a
       extends kotlin.g.b.q
       implements kotlin.g.a.a<x>
     {
-      a(FinderMegaVideoProfileLoader.c paramc, n paramn, RefreshLoadMoreLayout.c paramc1, kotlin.g.a.b paramb, IResponse paramIResponse)
+      a(FinderMegaVideoProfileLoader.c paramc, com.tencent.mm.plugin.finder.feed.model.internal.q paramq, RefreshLoadMoreLayout.c paramc1, kotlin.g.a.b paramb, IResponse paramIResponse)
       {
         super();
       }

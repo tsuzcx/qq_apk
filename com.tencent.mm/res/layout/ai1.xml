@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView android:textSize="@dimen/cc" android:textColor="@color/a2x" android:id="@id/ge7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" />
     <TextView android:textSize="14.0dip" android:textColor="@color/BW_0_Alpha_0_5" android:id="@id/ge8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" />
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+    <RelativeLayout android:id="@id/khz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
         <TextView android:textSize="14.0dip" android:textColor="@color/a2x" android:id="@id/gdn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/ce" />
         <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/gdz" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:layout_marginTop="2.0dip" android:src="@raw/poi_navigation" android:layout_marginStart="-20.0dip" android:layout_toEndOf="@id/gdn" app:iconColor="@color/Brand" />
     </RelativeLayout>
@@ -12,5 +12,9 @@
     <LinearLayout android:orientation="vertical" android:id="@id/eo4" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     <TextView android:textSize="14.0dip" android:textColor="@color/a2x" android:id="@id/gdo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
     <TextView android:textSize="14.0dip" android:textColor="@color/BW_0_Alpha_0_5" android:id="@id/ge3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
-    <TextView android:textSize="15.0dip" android:textColor="@color/a2x" android:id="@id/ge9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:layout_marginBottom="12.0dip" android:text="@string/d54" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:layout_marginBottom="12.0dip">
+        <TextView android:textSize="15.0dip" android:textColor="@color/a2x" android:id="@id/ge9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d54" />
+        <View android:id="@id/brt" android:background="@color/BW_0_Alpha_0_1" android:visibility="gone" android:layout_width="1.0dip" android:layout_height="12.0dip" android:layout_marginStart="@dimen/ct" android:layout_marginEnd="@dimen/ct" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/a2x" android:id="@id/kjv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
 </LinearLayout>

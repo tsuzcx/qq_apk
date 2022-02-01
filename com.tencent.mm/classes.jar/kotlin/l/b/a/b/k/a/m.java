@@ -7,12 +7,12 @@ public abstract interface m
   public static final class a
     implements m
   {
-    public static final a TKX;
+    public static final a abnA;
     
     static
     {
       AppMethodBeat.i(60306);
-      TKX = new a();
+      abnA = new a();
       AppMethodBeat.o(60306);
     }
   }

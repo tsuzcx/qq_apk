@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.finder.view;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderGridGalleryView$OnItemSelectListener;", "", "onItemClick", "", "mediaItem", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "onItemSelectedChanged", "selected", "Landroid/os/Bundle;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderGridGalleryView$OnItemSelectListener;", "", "onItemClick", "", "mediaItem", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "onItemSelectedChanged", "selected", "Landroid/os/Bundle;", "plugin-finder_release"})
 public abstract interface FinderGridGalleryView$b {}
 
 

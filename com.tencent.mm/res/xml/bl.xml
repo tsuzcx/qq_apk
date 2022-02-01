@@ -11,7 +11,7 @@
     <com.tencent.mm.plugin.newtips.NormalIconNewTipPreference mm:icon="?gc" mm:key="settings_mm_cardpackage" mm:path="card" mm:title="@string/gq_" />
     <NormalIconPreference mm:icon="@raw/icons_outlined_emoji" mm:iconColor="@color/Orange" mm:key="settings_emoji_store" mm:title="@string/goh" />
     <PreferenceSmallCategory />
-    <NormalIconPreference mm:icon="@raw/icons_outlined_setting" mm:iconColor="@color/Indigo" mm:key="more_setting" mm:title="@string/gvb" />
+    <com.tencent.mm.plugin.newtips.NormalIconNewTipPreference mm:icon="@raw/icons_outlined_setting" mm:iconColor="@color/Indigo" mm:key="more_setting" mm:path="setting" mm:title="@string/gvb" />
     <PreferenceSmallCategory />
     <NormalIconPreference mm:icon="@raw/more_ui_show" mm:key="more_uishow" mm:title="@string/hrv" />
     <PreferenceCategory />

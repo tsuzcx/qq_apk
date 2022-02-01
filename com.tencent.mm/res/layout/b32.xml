@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/a9x" android:paddingLeft="@dimen/cb" android:paddingTop="@dimen/ce" android:paddingRight="@dimen/cb" android:paddingBottom="@dimen/ce" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/eww" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" />
-        <TextView android:textSize="@dimen/l" android:textColor="@color/ae" android:id="@id/ex6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:text="{test}" android:singleLine="false" android:layout_weight="1.0" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="12.0dip" android:layout_height="24.0dip" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/ac" />
+        <TextView android:textSize="@dimen/l" android:textColor="@color/UN_BW_0_Alpha_0_9" android:id="@id/ex6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:text="{test}" android:singleLine="false" android:layout_weight="1.0" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="12.0dip" android:layout_height="24.0dip" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/UN_BW_0_Alpha_0_3" />
     </LinearLayout>
 </FrameLayout>

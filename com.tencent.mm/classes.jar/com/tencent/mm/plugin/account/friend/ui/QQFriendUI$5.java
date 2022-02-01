@@ -12,8 +12,8 @@ final class QQFriendUI$5
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(131278);
-    this.kht.hideVKB();
-    this.kht.finish();
+    this.mYS.hideVKB();
+    this.mYS.finish();
     AppMethodBeat.o(131278);
     return true;
   }

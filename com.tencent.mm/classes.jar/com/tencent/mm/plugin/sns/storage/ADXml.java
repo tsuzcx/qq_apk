@@ -2,17 +2,19 @@ package com.tencent.mm.plugin.sns.storage;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.annotation.Keep;
 import android.text.TextUtils;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.a.b;
-import com.tencent.mm.plugin.sns.ad.a.d;
-import com.tencent.mm.plugin.sns.ad.a.f;
-import com.tencent.mm.plugin.sns.ad.a.g;
-import com.tencent.mm.plugin.sns.ad.a.h;
-import com.tencent.mm.plugin.sns.data.i;
-import com.tencent.mm.plugin.sns.data.r;
-import com.tencent.mm.plugin.sns.ui.aw;
+import com.tencent.mm.plugin.sns.ad.adxml.AdClickActionInfo;
+import com.tencent.mm.plugin.sns.ad.adxml.b;
+import com.tencent.mm.plugin.sns.ad.adxml.c;
+import com.tencent.mm.plugin.sns.ad.adxml.d;
+import com.tencent.mm.plugin.sns.ad.adxml.f;
+import com.tencent.mm.plugin.sns.ad.adxml.g;
+import com.tencent.mm.plugin.sns.ad.adxml.h;
+import com.tencent.mm.plugin.sns.ad.adxml.j;
+import com.tencent.mm.plugin.sns.data.t;
+import com.tencent.mm.plugin.sns.ui.ay;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -33,6 +35,7 @@ public class ADXml
   public static final int AD_CONTENT_STYLE_FINDER_TOPIC_CARD = 5;
   public static final int AD_CONTENT_STYLE_FULL_CARD = 3;
   public static final int AD_CONTENT_STYLE_LINK = 2;
+  public static final int AD_CONTENT_STYLE_SLIDE_FULL_CARD = 6;
   public static final int AD_CONTENT_STYLE_SPHERE_CARD = 4;
   public static final int AD_FULL_CARD_MEDIA_SIZE_W1_H1 = 1;
   public static final int AD_FULL_CARD_MEDIA_SIZE_W4_H3 = 0;
@@ -44,6 +47,7 @@ public class ADXml
   public static final int AD_TURN_CARD_ANIMATION_TIME = 374;
   public static final String PRE_KEY_AD_ARGS = ".adxml.adArgs.arg";
   public static final String PRE_KEY_CARD_TAG_LIST = ".adxml.adCardInfo.adRatingCardInfo.tagList.tag";
+  public static final String PRE_KEY_GESTURE_LIST = ".pointsItem";
   public static final String SUFF_KEY_CARD_TAG_BACKGROUND_DARK_MODE_COLOR = ".$tag_dark_bg_color";
   public static final String SUFF_KEY_CARD_TAG_BACKGROUND_LIGHT_MODE_COLOR = ".$tag_light_bg_color";
   public static final String SUFF_KEY_CARD_TAG_CONTENT_DARK_MODE_COLOR = ".$tag_dark_name_color";
@@ -60,7 +64,7 @@ public class ADXml
   public String adActionLinkTitle_tw;
   public String adActionTitle;
   public Map<String, String> adArgs;
-  public com.tencent.mm.plugin.sns.ad.a.a adAvatarFinderTopicInfo;
+  public com.tencent.mm.plugin.sns.ad.adxml.a adAvatarFinderTopicInfo;
   public int adBasicRemWidth;
   public int adBasicRootFontSize;
   public int adBtnDisplayType;
@@ -77,7 +81,7 @@ public class ADXml
   public String adExtInfo;
   public e adFeedbackInfo;
   public a adFinderInfo;
-  public com.tencent.mm.plugin.sns.ad.a.c adFinderLiveInfo;
+  public c adFinderLiveInfo;
   public d adFinderTopicInfo;
   public ADXml.n adFloatWebViewInfo;
   public g adFullCardInfo;
@@ -94,13 +98,18 @@ public class ADXml
   public h adPromotionInfo;
   public b adScanJumpInfo;
   private h adSelectInfo;
+  public com.tencent.mm.plugin.sns.ad.widget.shakead.a adShakeInfo;
+  public j adSliderFullCardInfo;
   public i adSphereCardInfo;
+  public com.tencent.mm.plugin.sns.ad.adxml.k adTagBtnInfo;
   public j adTurnInfo;
   public k adTwistInfo;
   public int adType;
   public boolean adVideoContinuePlay;
   public l adVoteInfo;
   public int addPlayIconOnCover;
+  public String appGiftPackCode;
+  public String appGiftPackCodeTips;
   public Intent appMarketIntent;
   public int attachShareLinkIsHidden;
   public String attachShareLinkUrl;
@@ -116,6 +125,9 @@ public class ADXml
   public String expandOutsideTitle_cn;
   public String expandOutsideTitle_en;
   public String expandOutsideTitle_tw;
+  public String feedbackWeAppPath;
+  public String feedbackWeAppUsername;
+  public String feedbackWording;
   public String firstDownloadApkPkgName;
   public boolean forbiddenCustomAnimation;
   public String headClickParam;
@@ -178,36 +190,36 @@ public class ADXml
   
   private void feed(String paramString)
   {
-    AppMethodBeat.i(202822);
+    AppMethodBeat.i(195669);
     if ((!Util.isNullOrNil(paramString)) && (paramString.trim().startsWith("<RecXml")))
     {
       feedRecXml(paramString);
-      AppMethodBeat.o(202822);
+      AppMethodBeat.o(195669);
       return;
     }
     feedAdXml(paramString);
-    AppMethodBeat.o(202822);
+    AppMethodBeat.o(195669);
   }
   
   private void feedAdXml(String paramString)
   {
-    AppMethodBeat.i(202824);
+    AppMethodBeat.i(195674);
     feedXml(paramString, "", "adxml");
-    AppMethodBeat.o(202824);
+    AppMethodBeat.o(195674);
   }
   
   private void feedRecXml(String paramString)
   {
-    AppMethodBeat.i(202823);
+    AppMethodBeat.i(195672);
     paramString = feedXml(paramString, ".RecXml", "RecXml");
     if ((paramString != null) && (!paramString.isEmpty()))
     {
       this.recType = Util.safeParseInt((String)paramString.get(".RecXml.$type"));
       this.recSrc = Util.safeParseInt((String)paramString.get(".RecXml.$source"));
       this.recExpId = Util.safeParseInt((String)paramString.get(".RecXml.$expId"));
-      this.originSnsId = r.aOw((String)paramString.get(".RecXml.$expOriginSnsId"));
+      this.originSnsId = t.aZs((String)paramString.get(".RecXml.$expOriginSnsId"));
     }
-    AppMethodBeat.o(202823);
+    AppMethodBeat.o(195672);
   }
   
   private Map<String, String> feedXml(String paramString1, String paramString2, String paramString3)
@@ -313,7 +325,7 @@ public class ADXml
       this.adContentStyle = Util.safeParseInt((String)paramString3.get(str + ".adxml.adContentStyle"));
       this.adCardTitle = Util.nullAs((String)paramString3.get(str + ".adxml.adCardInfo.title"), "");
       this.adCardDesc = Util.nullAs((String)paramString3.get(str + ".adxml.adCardInfo.description"), "");
-      this.adCardTagInfo = new c().G(paramString3, str);
+      this.adCardTagInfo = new c().R(paramString3, str);
       this.adCard3dHeadTitle = Util.nullAsNil((String)paramString3.get(str + ".adxml.adCardInfo.adRatingCardInfo.headTitle"));
       this.adCard3dHeadUrl = Util.nullAsNil((String)paramString3.get(str + ".adxml.adCardInfo.adRatingCardInfo.headUrl"));
       paramString1 = Util.nullAs((String)paramString3.get(str + ".adxml.adSelectInfo.leftBtnTitle"), "");
@@ -321,39 +333,38 @@ public class ADXml
       if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
       {
         this.adSelectInfo = new h();
-        this.adSelectInfo.Dse = paramString1;
-        this.adSelectInfo.DWI = paramString2;
+        this.adSelectInfo.JyA = paramString1;
+        this.adSelectInfo.KjU = paramString2;
       }
       paramString1 = Util.nullAs((String)paramString3.get(str + ".adxml.adVoteInfo.componentUrl"), "");
       if (TextUtils.isEmpty(paramString1)) {
         break label2710;
       }
       this.adVoteInfo = new l();
-      this.adVoteInfo.DWX = paramString1;
-      this.adVoteInfo.DWY = Util.nullAs((String)paramString3.get(str + ".adxml.adVoteInfo.voteLabel"), "");
+      this.adVoteInfo.Kkg = paramString1;
+      this.adVoteInfo.Kkh = Util.nullAs((String)paramString3.get(str + ".adxml.adVoteInfo.voteLabel"), "");
       paramString2 = str + ".adxml.adVoteInfo.optionList.option";
       i = 0;
       label2373:
       if (i == 0) {
-        break label5853;
+        break label5565;
       }
     }
     label2710:
-    label4442:
-    label4827:
-    label5853:
+    label4280:
+    label5565:
     for (paramString1 = paramString2 + i;; paramString1 = paramString2)
     {
       if (!TextUtils.isEmpty(Util.nullAs((String)paramString3.get(paramString1 + ".title"), "")))
       {
         localObject1 = new m();
         ((m)localObject1).title = Util.nullAs((String)paramString3.get(paramString1 + ".title"), "");
-        ((m)localObject1).msN = Util.nullAs((String)paramString3.get(paramString1 + ".shareTitle"), "");
-        ((m)localObject1).xDQ = Util.nullAs((String)paramString3.get(paramString1 + ".shareDesc"), "");
-        ((m)localObject1).DXa = Util.nullAs((String)paramString3.get(paramString1 + ".shareThumb"), "");
-        ((m)localObject1).DXb = Util.nullAs((String)paramString3.get(paramString1 + ".selectedTitle"), "");
+        ((m)localObject1).pqW = Util.nullAs((String)paramString3.get(paramString1 + ".shareTitle"), "");
+        ((m)localObject1).CHR = Util.nullAs((String)paramString3.get(paramString1 + ".shareDesc"), "");
+        ((m)localObject1).Kkj = Util.nullAs((String)paramString3.get(paramString1 + ".shareThumb"), "");
+        ((m)localObject1).Kkk = Util.nullAs((String)paramString3.get(paramString1 + ".selectedTitle"), "");
         ((m)localObject1).id = Util.nullAs((String)paramString3.get(paramString1 + ".id"), "");
-        this.adVoteInfo.DWZ.add(localObject1);
+        this.adVoteInfo.Kki.add(localObject1);
         i += 1;
         break label2373;
         bool = false;
@@ -361,52 +372,57 @@ public class ADXml
       }
       this.bTurnLandingPagesAd = paramString3.containsKey(str + ".adxml.adTurnCanvasInfo");
       this.adTurnInfo = new j();
-      this.adTurnInfo.I(paramString3, str);
-      this.adFeedbackInfo = new e().H(paramString3, str);
+      this.adTurnInfo.U(paramString3, str);
+      this.adFeedbackInfo = new e().S(paramString3, str);
       if (this.adContentStyle == 3)
       {
         this.adFullCardInfo = new g();
         paramString2 = str + ".adxml.adFullCardInfo";
         paramString1 = this.adFullCardInfo;
-        paramString1.DWw = Util.safeParseInt((String)paramString3.get(paramString2 + ".displayType"));
+        paramString1.KjH = Util.safeParseInt((String)paramString3.get(paramString2 + ".displayType"));
         paramString1.title = Util.nullAsNil((String)paramString3.get(paramString2 + ".title"));
         paramString1.description = Util.nullAsNil((String)paramString3.get(paramString2 + ".description"));
-        paramString1.DWx = Util.getInt((String)paramString3.get(paramString2 + ".markMaxAlpha"), 30);
-        paramString1.DWy = Util.safeParseInt((String)paramString3.get(paramString2 + ".titlePosition"));
-        paramString1.DWA = Util.nullAsNil((String)paramString3.get(paramString2 + ".maskImg"));
-        paramString1.DWB = Util.safeParseInt((String)paramString3.get(paramString2 + ".maskImgDisappearTime"));
-        paramString1.DWC = Util.nullAsNil((String)paramString3.get(paramString2 + ".coverImg"));
-        paramString1.DWD = Util.safeParseInt((String)paramString3.get(paramString2 + ".coverImgAppearTime"));
-        if (!Util.isNullOrNil((String)paramString3.get(paramString2 + ".adGestureInfo.points")))
+        paramString1.KjI = Util.getInt((String)paramString3.get(paramString2 + ".markMaxAlpha"), 30);
+        paramString1.KjJ = Util.safeParseInt((String)paramString3.get(paramString2 + ".titlePosition"));
+        paramString1.KjL = Util.nullAsNil((String)paramString3.get(paramString2 + ".maskImg"));
+        paramString1.KjM = Util.safeParseInt((String)paramString3.get(paramString2 + ".maskImgDisappearTime"));
+        paramString1.KjN = Util.nullAsNil((String)paramString3.get(paramString2 + ".coverImg"));
+        paramString1.KjO = Util.safeParseInt((String)paramString3.get(paramString2 + ".coverImgAppearTime"));
+        localObject1 = (String)paramString3.get(paramString2 + ".adGestureInfo.points");
+        localObject2 = paramString2 + ".adGestureInfo.pointsList";
+        if ((!Util.isNullOrNil((String)localObject1)) || (paramString3.containsKey(localObject2)))
         {
-          paramString1.DWz = new ADXml.g.a();
-          paramString1.DWz.color = -1;
-          paramString1.DWz.startTime = Util.safeParseInt((String)paramString3.get(paramString2 + ".adGestureInfo.startTime"));
-          paramString1.DWz.endTime = Util.safeParseInt((String)paramString3.get(paramString2 + ".adGestureInfo.endTime"));
-          paramString1.DWz.DWG = Util.safeParseFloat((String)paramString3.get(paramString2 + ".adGestureInfo.distance"));
-          paramString1.DWz.color = Color.parseColor(Util.nullAsNil((String)paramString3.get(paramString2 + ".adGestureInfo.color")));
-          paramString1.DWz.DWH = Util.nullAsNil((String)paramString3.get(paramString2 + ".adGestureInfo.points"));
+          paramString1.KjK = new ADXml.g.a();
+          paramString1.KjK.color = -1;
+          paramString1.KjK.startTime = Util.safeParseInt((String)paramString3.get(paramString2 + ".adGestureInfo.startTime"));
+          paramString1.KjK.endTime = Util.safeParseInt((String)paramString3.get(paramString2 + ".adGestureInfo.endTime"));
+          paramString1.KjK.KjR = Util.safeParseFloat((String)paramString3.get(paramString2 + ".adGestureInfo.distance"));
+          paramString1.KjK.color = Color.parseColor(Util.nullAsNil((String)paramString3.get(paramString2 + ".adGestureInfo.color")));
+          paramString1.KjK.KjS = Util.nullAsNil((String)paramString3.get(paramString2 + ".adGestureInfo.points"));
+          if (paramString3.containsKey(localObject2)) {
+            paramString1.KjK.T(paramString3, (String)localObject2);
+          }
         }
         localObject1 = paramString2 + ".endCoverInfo";
         if (paramString3.containsKey(localObject1))
         {
-          paramString1.DWE = new aw();
-          paramString1.DWE.title = Util.nullAsNil((String)paramString3.get((String)localObject1 + ".title"));
-          paramString1.DWE.desc = Util.nullAsNil((String)paramString3.get((String)localObject1 + ".description"));
-          paramString1.DWE.EwS = Util.nullAsNil((String)paramString3.get((String)localObject1 + ".actionTitle"));
-          paramString1.DWE.coverImgUrl = Util.nullAsNil((String)paramString3.get((String)localObject1 + ".ambientImageUrl"));
-          paramString1.DWE.EwR = Util.nullAsNil((String)paramString3.get((String)localObject1 + ".titleImageUrl"));
-          paramString1.DWE.duration = Util.safeParseInt((String)paramString3.get((String)localObject1 + ".endCoverEndTime"));
+          paramString1.KjP = new ay();
+          paramString1.KjP.title = Util.nullAsNil((String)paramString3.get((String)localObject1 + ".title"));
+          paramString1.KjP.desc = Util.nullAsNil((String)paramString3.get((String)localObject1 + ".description"));
+          paramString1.KjP.KKL = Util.nullAsNil((String)paramString3.get((String)localObject1 + ".actionTitle"));
+          paramString1.KjP.coverImgUrl = Util.nullAsNil((String)paramString3.get((String)localObject1 + ".ambientImageUrl"));
+          paramString1.KjP.KKK = Util.nullAsNil((String)paramString3.get((String)localObject1 + ".titleImageUrl"));
+          paramString1.KjP.duration = Util.safeParseInt((String)paramString3.get((String)localObject1 + ".endCoverEndTime"));
         }
         paramString2 = paramString2 + ".adLongPressGestureInfo";
         if (paramString3.containsKey(paramString2))
         {
-          paramString1.DWF = new p();
-          paramString1.DWF.DXc = Util.safeParseInt((String)paramString3.get(paramString2 + ".pressStartTime"));
-          paramString1.DWF.DXd = Util.safeParseInt((String)paramString3.get(paramString2 + ".pressEndTime"));
-          paramString1.DWF.DXe = Util.safeParseInt((String)paramString3.get(paramString2 + ".pressDuration"));
-          paramString1.DWF.DXf = Util.nullAsNil((String)paramString3.get(paramString2 + ".spriteImageUrl"));
-          paramString1.DWF.DXg = Util.safeParseInt((String)paramString3.get(paramString2 + ".spriteType"));
+          paramString1.KjQ = new p();
+          paramString1.KjQ.Kkl = Util.safeParseInt((String)paramString3.get(paramString2 + ".pressStartTime"));
+          paramString1.KjQ.Kkm = Util.safeParseInt((String)paramString3.get(paramString2 + ".pressEndTime"));
+          paramString1.KjQ.Kkn = Util.safeParseInt((String)paramString3.get(paramString2 + ".pressDuration"));
+          paramString1.KjQ.Kko = Util.nullAsNil((String)paramString3.get(paramString2 + ".spriteImageUrl"));
+          paramString1.KjQ.Kkp = Util.safeParseInt((String)paramString3.get(paramString2 + ".spriteType"));
         }
         this.clientMinVersion = Util.safeParseInt((String)paramString3.get(str + ".adxml.compatible.clientVersion.androidMin"));
         this.clientMaxVersion = Util.safeParseInt((String)paramString3.get(str + ".adxml.compatible.clientVersion.androidMax"));
@@ -416,88 +432,70 @@ public class ADXml
         {
           this.adCardActionBtnInfo = new AdCardActionBtnInfo();
           this.adCardActionBtnInfo.parse(paramString3, paramString1);
-          if (!TextUtils.isEmpty(this.adCardActionBtnInfo.downloadApkPkgName))
+          if (!TextUtils.isEmpty(this.adCardActionBtnInfo.clickActionInfo.JxN))
           {
-            this.firstDownloadApkPkgName = this.adCardActionBtnInfo.downloadApkPkgName;
-            Log.i("MicroMsg.ADXml", "findDownloadApkPkgName, adCardActionBtnInfo.pkg=" + this.adCardActionBtnInfo.downloadApkPkgName);
+            this.firstDownloadApkPkgName = this.adCardActionBtnInfo.clickActionInfo.JxN;
+            Log.i("MicroMsg.ADXml", "findDownloadApkPkgName, adCardActionBtnInfo.pkg=" + this.adCardActionBtnInfo.clickActionInfo.JxN);
           }
         }
         if (TextUtils.isEmpty(this.firstDownloadApkPkgName)) {
           findDownloadApkPkgName(paramString3);
         }
-        this.adExtInfo = i.aNZ((String)paramString3.get(str + ".adxml.adExtInfo"));
+        this.adExtInfo = com.tencent.mm.plugin.sns.data.k.aYR((String)paramString3.get(str + ".adxml.adExtInfo"));
       }
       try
       {
-        paramString1 = com.tencent.mm.plugin.sns.device.appstore.a.b(MMApplicationContext.getContext(), paramString3);
+        paramString1 = com.tencent.mm.plugin.sns.device.appstore.a.c(MMApplicationContext.getContext(), paramString3);
         if (paramString1 != null) {
-          this.appMarketIntent = paramString1.eZA();
+          this.appMarketIntent = paramString1.fNs();
         }
       }
       catch (Throwable paramString1)
       {
-        label4213:
-        break label4213;
+        break label4280;
       }
-      this.adScanJumpInfo = b.F(paramString3, str + ".adxml.adScanInfo");
-      this.adFloatWebViewInfo = ADXml.n.K(paramString3, str + ".adxml.adCanvasInfo.globalComponentItems.componentItem");
-      paramString1 = str + ".adxml.adFinderInfo";
-      paramString2 = Util.nullAsNil((String)paramString3.get(paramString1 + ".objectNonceId"));
-      localObject1 = Util.nullAsNil((String)paramString3.get(paramString1 + ".finderUsername"));
-      localObject2 = Util.nullAsNil((String)paramString3.get(paramString1 + ".exportId"));
-      if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+      this.adScanJumpInfo = b.Q(paramString3, str + ".adxml.adScanInfo");
+      this.adFloatWebViewInfo = ADXml.n.W(paramString3, str + ".adxml.adCanvasInfo.globalComponentItems.componentItem");
+      this.adFinderInfo = a.P(paramString3, str + ".adxml.adFinderInfo");
+      this.addPlayIconOnCover = Util.safeParseInt((String)paramString3.get(str + ".adxml.addPlayIconOnCover"));
+      this.adTwistInfo = k.V(paramString3, str + ".adxml.adTwistInfo");
+      this.adShakeInfo = com.tencent.mm.plugin.sns.ad.widget.shakead.a.M(paramString3, str + ".adxml.adShakeInfo");
+      this.verticalVideoDisplayType = Util.safeParseInt((String)paramString3.get(str + ".adxml.verticalVideoDisplayType"));
+      this.weAppInfo = q.X(paramString3, str + ".adxml.headWeAppInfo");
+      if (Util.safeParseInt((String)paramString3.get(str + ".adxml.forbiddenCustomAnimation")) == 1)
       {
-        paramString1 = new a();
-        paramString1.objectNonceId = paramString2;
-        paramString1.finderUsername = ((String)localObject1);
-        paramString1.DrX = ((String)localObject2);
-        this.adFinderInfo = paramString1;
-        this.addPlayIconOnCover = Util.safeParseInt((String)paramString3.get(str + ".adxml.addPlayIconOnCover"));
-        this.adTwistInfo = k.J(paramString3, str + ".adxml.adTwistInfo");
-        this.verticalVideoDisplayType = Util.safeParseInt((String)paramString3.get(str + ".adxml.verticalVideoDisplayType"));
-        paramString1 = str + ".adxml.headWeAppInfo";
-        paramString2 = Util.nullAsNil((String)paramString3.get(paramString1 + ".appUserName"));
-        localObject1 = Util.nullAsNil((String)paramString3.get(paramString1 + ".relativePagePath"));
-        localObject2 = Util.nullAsNil((String)paramString3.get(paramString1 + ".appVersion"));
-        i = Util.safeParseInt((String)paramString3.get(paramString1 + ".miniProgramType"));
-        if (TextUtils.isEmpty(paramString2)) {
-          break label5522;
-        }
-        paramString1 = new q();
-        paramString1.appUserName = paramString2;
-        paramString1.dCx = ((String)localObject1);
-        paramString1.appVersion = ((String)localObject2);
-        paramString1.weAppType = i;
-        this.weAppInfo = paramString1;
-        if (Util.safeParseInt((String)paramString3.get(str + ".adxml.forbiddenCustomAnimation")) != 1) {
-          break label5527;
-        }
         bool = true;
+        label4568:
         this.forbiddenCustomAnimation = bool;
-        paramString2 = str + ".adxml.adCardInfo.promotionInfo";
-        if (!com.tencent.mm.plugin.sns.ad.i.c.isEmpty(paramString3)) {
-          break label5533;
-        }
-        paramString1 = null;
-        this.adPromotionInfo = paramString1;
-        this.adLiveInfo = g.B(paramString3, str + ".adxml.adLiveInfo");
-        this.adFinderLiveInfo = com.tencent.mm.plugin.sns.ad.a.c.v(paramString3, str + ".adxml.adFinderLiveInfo");
-        this.adHeadFinderProfile = f.A(paramString3, str + ".adxml.headFinderProfile");
-        this.adFinderTopicInfo = d.w(paramString3, str + ".adxml.adFinderTopicInfo");
-        this.adAvatarFinderTopicInfo = com.tencent.mm.plugin.sns.ad.a.a.s(paramString3, str + ".adxml.headFinderTopicInfo");
+        this.adPromotionInfo = h.F(paramString3, str + ".adxml.adCardInfo.promotionInfo");
+        this.adLiveInfo = g.C(paramString3, str + ".adxml.adLiveInfo");
+        this.adFinderLiveInfo = c.w(paramString3, str + ".adxml.adFinderLiveInfo");
+        this.adHeadFinderProfile = f.B(paramString3, str + ".adxml.headFinderProfile");
+        this.adFinderTopicInfo = d.x(paramString3, str + ".adxml.adFinderTopicInfo");
+        this.adAvatarFinderTopicInfo = com.tencent.mm.plugin.sns.ad.adxml.a.s(paramString3, str + ".adxml.headFinderTopicInfo");
         if (Util.safeParseInt((String)paramString3.get(str + ".adxml.preloadWeAppPkg")) != 1) {
-          break label5837;
+          break label5549;
         }
         bool = true;
         this.preloadWeAppPkg = bool;
         if (Util.safeParseInt((String)paramString3.get(str + ".adxml.adVideoContinuePlay")) != 1) {
-          break label5843;
+          break label5555;
         }
       }
       for (bool = true;; bool = false)
       {
         this.adVideoContinuePlay = bool;
-        this.adDynamicUpdateInfo = b.t(paramString3, str + ".adxml.adDynamicUpdateInfo");
+        this.adDynamicUpdateInfo = b.u(paramString3, str + ".adxml.adDynamicUpdateInfo");
+        this.feedbackWording = Util.nullAsNil((String)paramString3.get(str + ".adxml.feedbackWording"));
+        this.feedbackWeAppUsername = Util.nullAsNil((String)paramString3.get(str + ".adxml.feedbackWeAppUsername"));
+        this.feedbackWeAppPath = Util.nullAsNil((String)paramString3.get(str + ".adxml.feedbackWeAppPath"));
+        paramString1 = str + ".adxml.tagButtonInfo";
+        if (paramString3.containsKey(paramString1)) {
+          this.adTagBtnInfo = com.tencent.mm.plugin.sns.ad.adxml.k.J(paramString3, paramString1);
+        }
+        this.appGiftPackCode = Util.nullAsNil((String)paramString3.get(str + ".adxml.appGiftPackCode"));
+        this.appGiftPackCodeTips = Util.nullAsNil((String)paramString3.get(str + ".adxml.appGiftPackCodeTips"));
+        this.adSliderFullCardInfo = j.H(paramString3, str + ".adxml.adSliderCardInfo");
         AppMethodBeat.o(96270);
         return paramString3;
         if (this.adContentStyle != 4) {
@@ -506,62 +504,66 @@ public class ADXml
         this.adSphereCardInfo = new i();
         paramString1 = str + ".adxml.adSphereCardInfo";
         paramString2 = this.adSphereCardInfo;
-        paramString2.DWw = Util.safeParseInt((String)paramString3.get(paramString1 + ".displayType"));
+        paramString2.KjH = Util.safeParseInt((String)paramString3.get(paramString1 + ".displayType"));
         paramString2.title = Util.nullAsNil((String)paramString3.get(paramString1 + ".title"));
         paramString2.description = Util.nullAsNil((String)paramString3.get(paramString1 + ".description"));
-        paramString2.DWx = Util.getInt((String)paramString3.get(paramString1 + ".markMaxAlpha"), 30);
-        paramString2.DWy = Util.safeParseInt((String)paramString3.get(paramString1 + ".titlePosition"));
-        paramString2.DWK = Util.safeParseInt((String)paramString3.get(paramString1 + ".gestureDelayTime"));
-        paramString2.DWM = Util.nullAsNil((String)paramString3.get(paramString1 + ".sphereThumbUrl"));
-        paramString2.DWN = Util.nullAsNil((String)paramString3.get(paramString1 + ".bgColor"));
-        paramString2.DWO = Util.nullAsNil((String)paramString3.get(paramString1 + ".bgColorAlpha"));
-        paramString2.DWL = Util.nullAsNil((String)paramString3.get(paramString1 + ".sphereImageUrl"));
+        paramString2.KjI = Util.getInt((String)paramString3.get(paramString1 + ".markMaxAlpha"), 30);
+        paramString2.KjJ = Util.safeParseInt((String)paramString3.get(paramString1 + ".titlePosition"));
+        paramString2.KjW = Util.safeParseInt((String)paramString3.get(paramString1 + ".gestureDelayTime"));
+        paramString2.KjY = Util.nullAsNil((String)paramString3.get(paramString1 + ".sphereThumbUrl"));
+        paramString2.bgColor = Util.nullAsNil((String)paramString3.get(paramString1 + ".bgColor"));
+        paramString2.KjZ = Util.nullAsNil((String)paramString3.get(paramString1 + ".bgColorAlpha"));
+        paramString2.KjX = Util.nullAsNil((String)paramString3.get(paramString1 + ".sphereImageUrl"));
         break;
-        paramString1 = null;
-        break label4442;
-        paramString1 = null;
-        break label4745;
         bool = false;
-        break label4790;
-        paramString1 = (String)paramString3.get(paramString2 + ".endTime");
-        long l = Util.safeParseLong(paramString1);
-        if ((TextUtils.isEmpty(paramString1)) || (l == 0L))
-        {
-          paramString1 = null;
-          break label4827;
-        }
-        paramString1 = new h();
-        paramString1.endTime = (l * 1000L);
-        paramString1.startTime = (Util.safeParseLong((String)paramString3.get(paramString2 + ".startTime")) * 1000L);
-        paramString1.lco = Util.nullAs((String)paramString3.get(paramString2 + ".barBgColor"), "");
-        paramString1.Dsc = Util.nullAs((String)paramString3.get(paramString2 + ".barBgAlpha"), "");
-        paramString1.Dsd = Util.safeParseInt((String)paramString3.get(paramString2 + ".leftTitleType"));
-        paramString1.Dse = Util.nullAs((String)paramString3.get(paramString2 + ".leftTitle"), "");
-        paramString1.Dsf = Util.nullAs((String)paramString3.get(paramString2 + ".rightTitle"), "");
-        break label4827;
+        break label4568;
         bool = false;
-        break label5017;
+        break label4788;
       }
     }
   }
   
   public static String getGestureCanvasInfo(String paramString)
   {
-    AppMethodBeat.i(202826);
+    AppMethodBeat.i(195769);
     if (paramString.contains("<adFullCardGestureCanvasInfo>")) {}
     for (paramString = paramString.replaceAll("(?s)<adCanvasInfo[^>]*>.*?</adCanvasInfo>", "").replaceAll("adFullCardGestureCanvasInfo", "adCanvasInfo");; paramString = "")
     {
-      AppMethodBeat.o(202826);
+      AppMethodBeat.o(195769);
       return paramString;
     }
   }
   
+  public static boolean isShakeAdCanvas(String paramString)
+  {
+    AppMethodBeat.i(195777);
+    if ((paramString != null) && (paramString.contains("<isShakeAnimView>1</isShakeAnimView>")))
+    {
+      AppMethodBeat.o(195777);
+      return true;
+    }
+    AppMethodBeat.o(195777);
+    return false;
+  }
+  
+  public static boolean isTwistAdCanvas(String paramString)
+  {
+    AppMethodBeat.i(195776);
+    if ((paramString != null) && (paramString.contains("<isTwistAnimView>1</isTwistAnimView>")))
+    {
+      AppMethodBeat.o(195776);
+      return true;
+    }
+    AppMethodBeat.o(195776);
+    return false;
+  }
+  
   public void findDownloadApkPkgName(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(202827);
+    AppMethodBeat.i(195774);
     if ((paramMap == null) || (paramMap.isEmpty()))
     {
-      AppMethodBeat.o(202827);
+      AppMethodBeat.o(195774);
       return;
     }
     Iterator localIterator = paramMap.keySet().iterator();
@@ -575,12 +577,12 @@ public class ADXml
         {
           this.firstDownloadApkPkgName = str2;
           Log.i("MicroMsg.ADXml", "findDownloadApkPkgName, key=" + str1 + ", pkg=" + str2);
-          AppMethodBeat.o(202827);
+          AppMethodBeat.o(195774);
           return;
         }
       }
     }
-    AppMethodBeat.o(202827);
+    AppMethodBeat.o(195774);
   }
   
   public String getAdVoteComponentUrl()
@@ -588,7 +590,7 @@ public class ADXml
     AppMethodBeat.i(96273);
     if (hasVoteInfo())
     {
-      String str = this.adVoteInfo.DWX;
+      String str = this.adVoteInfo.Kkg;
       AppMethodBeat.o(96273);
       return str;
     }
@@ -602,13 +604,13 @@ public class ADXml
     String str;
     if (hasSelectInfo())
     {
-      str = this.adSelectInfo.Dse;
+      str = this.adSelectInfo.JyA;
       AppMethodBeat.o(96271);
       return str;
     }
     if (hasVoteInfo())
     {
-      str = ((m)this.adVoteInfo.DWZ.get(0)).title;
+      str = ((m)this.adVoteInfo.Kki.get(0)).title;
       AppMethodBeat.o(96271);
       return str;
     }
@@ -622,13 +624,13 @@ public class ADXml
     String str;
     if (hasSelectInfo())
     {
-      str = this.adSelectInfo.DWI;
+      str = this.adSelectInfo.KjU;
       AppMethodBeat.o(96272);
       return str;
     }
     if (hasVoteInfo())
     {
-      str = ((m)this.adVoteInfo.DWZ.get(1)).title;
+      str = ((m)this.adVoteInfo.Kki.get(1)).title;
       AppMethodBeat.o(96272);
       return str;
     }
@@ -686,7 +688,7 @@ public class ADXml
   
   public boolean hasActionBtn()
   {
-    return (this.adCardActionBtnInfo != null) && (this.adCardActionBtnInfo.clickActionType >= 0);
+    return (this.adCardActionBtnInfo != null) && (this.adCardActionBtnInfo.clickActionInfo.Jxx >= 0);
   }
   
   public boolean hasSelectInfo()
@@ -697,7 +699,7 @@ public class ADXml
   public boolean hasVoteInfo()
   {
     AppMethodBeat.i(96275);
-    if ((this.adVoteInfo != null) && (this.adVoteInfo.DWZ.size() > 1))
+    if ((this.adVoteInfo != null) && (this.adVoteInfo.Kki.size() > 1))
     {
       AppMethodBeat.o(96275);
       return true;
@@ -721,6 +723,18 @@ public class ADXml
     return this.adContentStyle == 3;
   }
   
+  public boolean isGestureAd()
+  {
+    AppMethodBeat.i(195756);
+    if ((isFullCardAd()) && (this.adFullCardInfo != null) && (this.adFullCardInfo.KjK != null) && (this.adFullCardInfo.KjK.startTime >= 0L) && (this.adFullCardInfo.KjK.endTime > this.adFullCardInfo.KjK.startTime))
+    {
+      AppMethodBeat.o(195756);
+      return true;
+    }
+    AppMethodBeat.o(195756);
+    return false;
+  }
+  
   public boolean isLandingPagesAd()
   {
     return (this.bLandingPagesAd) || (this.bTurnLandingPagesAd);
@@ -733,20 +747,20 @@ public class ADXml
   
   public boolean isLongPressGestureAd()
   {
-    AppMethodBeat.i(202825);
-    if ((isFullCardAd()) && (this.adFullCardInfo != null) && (this.adFullCardInfo.DWF != null) && (this.adFullCardInfo.DWF.DXc > 0) && (this.adFullCardInfo.DWF.DXd > this.adFullCardInfo.DWF.DXc))
+    AppMethodBeat.i(195750);
+    if ((isFullCardAd()) && (this.adFullCardInfo != null) && (this.adFullCardInfo.KjQ != null) && (this.adFullCardInfo.KjQ.Kkl > 0) && (this.adFullCardInfo.KjQ.Kkm > this.adFullCardInfo.KjQ.Kkl))
     {
-      AppMethodBeat.o(202825);
+      AppMethodBeat.o(195750);
       return true;
     }
-    AppMethodBeat.o(202825);
+    AppMethodBeat.o(195750);
     return false;
   }
   
   public boolean isNewStyleVote()
   {
     AppMethodBeat.i(96274);
-    if ((this.adVoteInfo != null) && (this.adVoteInfo.DWZ.size() > 1) && (!TextUtils.isEmpty(((m)this.adVoteInfo.DWZ.get(0)).id)) && (!TextUtils.isEmpty(((m)this.adVoteInfo.DWZ.get(1)).id)))
+    if ((this.adVoteInfo != null) && (this.adVoteInfo.Kki.size() > 1) && (!TextUtils.isEmpty(((m)this.adVoteInfo.Kki.get(0)).id)) && (!TextUtils.isEmpty(((m)this.adVoteInfo.Kki.get(1)).id)))
     {
       AppMethodBeat.o(96274);
       return true;
@@ -765,9 +779,26 @@ public class ADXml
     return this.recSrc == 2;
   }
   
+  public boolean isShakeAd()
+  {
+    AppMethodBeat.i(195752);
+    if ((isFullCardAd()) && (this.adShakeInfo != null))
+    {
+      AppMethodBeat.o(195752);
+      return true;
+    }
+    AppMethodBeat.o(195752);
+    return false;
+  }
+  
   public boolean isShowPlayIconOnCover()
   {
     return this.addPlayIconOnCover == 1;
+  }
+  
+  public boolean isSlideFullCard()
+  {
+    return this.adContentStyle == 6;
   }
   
   public boolean isSphereCardAd()
@@ -775,131 +806,73 @@ public class ADXml
     return this.adContentStyle == 4;
   }
   
+  public boolean isTwistAd()
+  {
+    AppMethodBeat.i(195751);
+    if ((isFullCardAd()) && (this.adTwistInfo != null))
+    {
+      AppMethodBeat.o(195751);
+      return true;
+    }
+    AppMethodBeat.o(195751);
+    return false;
+  }
+  
   @Keep
   public static class AdCardActionBtnInfo
   {
-    public String appId;
-    public String appPageUrl;
-    public String appType;
-    public String brandDesc;
-    public String brandHead;
-    public String brandName;
-    public String brandUsername;
     public String btnTitle;
-    public String btnTitleAfterAddBrand;
-    public String btnTitleAfterOrder;
-    public String cardExt;
-    public String cardTpId;
-    public String clickActionLink;
-    public int clickActionType;
-    public String couponAppId;
-    public String couponDesc;
-    public String couponName;
-    public String couponSenderName;
-    public String couponSenderPhoto;
-    public String couponStockId;
-    public String downloadApkAppId;
-    public String downloadApkPkgName;
-    public String finderAvatar;
-    public String finderEncryptedTopicId;
-    public String finderLiveFeedExportId;
-    public String finderLiveFeedNonceId;
-    @Keep
-    public String finderLiveId;
-    public String finderLiveNoticeId;
-    public String finderLiveTitle;
-    public String finderNickName;
-    public String finderTopicName;
-    @Keep
-    public String finderUsername;
+    public AdClickActionInfo clickActionInfo;
     public String iconUrl;
-    public String subscribeContent;
-    public long subscribeExpiredTime;
-    public String subscribeExpiredTip;
-    public String subscribeFailedTip;
-    public String subscribeHeadImg;
-    public String subscribeNickname;
-    public String subscribeSubmitBtnTitle;
-    public String subscribeSucTip;
-    public String subscribeTitle;
-    public String tempId;
-    public int weAppType;
-    public String weappPath;
-    public String weappUserName;
-    public int weappVersion;
     
     public void parse(Map<String, String> paramMap, String paramString)
     {
-      AppMethodBeat.i(202815);
+      AppMethodBeat.i(226415);
       this.iconUrl = Util.nullAsNil((String)paramMap.get(paramString + ".iconUrl"));
       this.btnTitle = Util.nullAsNil((String)paramMap.get(paramString + ".btnTitle"));
-      this.clickActionType = Util.getInt((String)paramMap.get(paramString + ".clickActionType"), 0);
-      this.clickActionLink = Util.nullAsNil((String)paramMap.get(paramString + ".clickActionLink"));
-      this.weappUserName = Util.nullAsNil((String)paramMap.get(paramString + ".weappUserName"));
-      this.weappPath = Util.nullAsNil((String)paramMap.get(paramString + ".weappPath"));
-      this.weappVersion = Util.getInt((String)paramMap.get(paramString + ".weappVersion"), 0);
-      this.weAppType = Util.safeParseInt((String)paramMap.get(paramString + ".miniProgramType"));
-      this.tempId = Util.nullAsNil((String)paramMap.get(paramString + ".tempId"));
-      this.btnTitleAfterOrder = Util.nullAsNil((String)paramMap.get(paramString + ".btnTitleAfterOrder"));
-      this.subscribeTitle = Util.nullAsNil((String)paramMap.get(paramString + ".subscribeTitle"));
-      this.subscribeContent = Util.nullAsNil((String)paramMap.get(paramString + ".subscribeContent"));
-      this.subscribeSubmitBtnTitle = Util.nullAsNil((String)paramMap.get(paramString + ".subscribeSubmitBtnTitle"));
-      this.subscribeFailedTip = Util.nullAsNil((String)paramMap.get(paramString + ".subscribeFailedTip"));
-      this.subscribeSucTip = Util.nullAsNil((String)paramMap.get(paramString + ".subscribeSucTip"));
-      this.appType = Util.nullAsNil((String)paramMap.get(paramString + ".appType"));
-      this.appId = Util.nullAsNil((String)paramMap.get(paramString + ".appId"));
-      this.subscribeHeadImg = Util.nullAsNil((String)paramMap.get(paramString + ".subscribeHeadImg"));
-      this.subscribeNickname = Util.nullAsNil((String)paramMap.get(paramString + ".subscribeNickname"));
-      this.subscribeExpiredTime = r.aOw((String)paramMap.get(paramString + ".subscribeExpiredTime"));
-      this.subscribeExpiredTip = Util.nullAsNil((String)paramMap.get(paramString + ".subscribeExpiredTip"));
-      this.downloadApkAppId = Util.nullAsNil((String)paramMap.get(paramString + ".openSdkAppId"));
-      this.downloadApkPkgName = Util.nullAsNil((String)paramMap.get(paramString + ".packageName"));
-      this.appPageUrl = Util.nullAsNil((String)paramMap.get(paramString + ".appPageUrlAndroid"));
-      this.cardTpId = Util.nullAsNil((String)paramMap.get(paramString + ".cardTpId"));
-      this.cardExt = Util.nullAsNil((String)paramMap.get(paramString + ".cardExt"));
-      this.brandUsername = Util.nullAsNil((String)paramMap.get(paramString + ".brandUsername"));
-      this.brandHead = Util.nullAsNil((String)paramMap.get(paramString + ".brandHead"));
-      this.brandName = Util.nullAsNil((String)paramMap.get(paramString + ".brandName"));
-      this.brandDesc = Util.nullAsNil((String)paramMap.get(paramString + ".brandDesc"));
-      this.btnTitleAfterAddBrand = Util.nullAsNil((String)paramMap.get(paramString + ".btnTitleAfterAddBrand"));
-      this.couponAppId = Util.nullAsNil((String)paramMap.get(paramString + ".couponAppId"));
-      this.couponStockId = Util.nullAsNil((String)paramMap.get(paramString + ".couponStockId"));
-      this.couponSenderPhoto = Util.nullAsNil((String)paramMap.get(paramString + ".couponSenderPhoto"));
-      this.couponSenderName = Util.nullAsNil((String)paramMap.get(paramString + ".couponSenderName"));
-      this.couponName = Util.nullAsNil((String)paramMap.get(paramString + ".couponName"));
-      this.couponDesc = Util.nullAsNil((String)paramMap.get(paramString + ".couponDesc"));
-      this.finderUsername = Util.nullAsNil((String)paramMap.get(paramString + ".finderUsername"));
-      this.finderLiveNoticeId = Util.nullAsNil((String)paramMap.get(paramString + ".finderLiveNoticeId"));
-      this.finderAvatar = Util.nullAsNil((String)paramMap.get(paramString + ".finderAvatar"));
-      this.finderNickName = Util.nullAsNil((String)paramMap.get(paramString + ".finderNickname"));
-      this.finderLiveTitle = Util.nullAsNil((String)paramMap.get(paramString + ".finderLiveTitle"));
-      this.finderLiveId = Util.nullAsNil((String)paramMap.get(paramString + ".finderLiveId"));
-      this.finderLiveFeedExportId = Util.nullAsNil((String)paramMap.get(paramString + ".finderLiveFeedExportId"));
-      this.finderLiveFeedNonceId = Util.nullAsNil((String)paramMap.get(paramString + ".finderLiveFeedNonceId"));
-      this.finderEncryptedTopicId = Util.nullAsNil((String)paramMap.get(paramString + ".finderEncryptedTopicId"));
-      this.finderTopicName = Util.nullAsNil((String)paramMap.get(paramString + ".finderTopicName"));
-      AppMethodBeat.o(202815);
+      this.clickActionInfo = AdClickActionInfo.t(paramMap, paramString);
+      this.clickActionInfo.scene = 1;
+      AppMethodBeat.o(226415);
     }
   }
   
-  public static final class a
+  public static class a
   {
-    public String DrX;
     public String finderUsername;
+    public String fwa;
     public String objectNonceId;
+    
+    public static a P(Map<String, String> paramMap, String paramString)
+    {
+      AppMethodBeat.i(223520);
+      String str1 = Util.nullAsNil((String)paramMap.get(paramString + ".objectNonceId"));
+      String str2 = Util.nullAsNil((String)paramMap.get(paramString + ".finderUsername"));
+      paramMap = Util.nullAsNil((String)paramMap.get(paramString + ".exportId"));
+      if ((!TextUtils.isEmpty(paramMap)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
+      {
+        paramString = new a();
+        paramString.objectNonceId = str1;
+        paramString.finderUsername = str2;
+        paramString.fwa = paramMap;
+        AppMethodBeat.o(223520);
+        return paramString;
+      }
+      AppMethodBeat.o(223520);
+      return null;
+    }
   }
   
-  public static final class b
+  public static class b
   {
-    public String DWj;
-    public String DWk;
-    public int DWl;
+    public String JyG;
+    public String Kjv;
+    public int Kjw;
     public String desc;
-    public String pSE;
+    public String toE;
     
-    public static b F(Map<String, String> paramMap, String paramString)
+    public static b Q(Map<String, String> paramMap, String paramString)
     {
-      AppMethodBeat.i(202814);
+      AppMethodBeat.i(223625);
       String str1 = Util.nullAsNil((String)paramMap.get(paramString + ".bgImage"));
       String str2 = Util.nullAsNil((String)paramMap.get(paramString + ".desc"));
       String str3 = Util.nullAsNil((String)paramMap.get(paramString + ".descIcon"));
@@ -908,33 +881,33 @@ public class ADXml
       if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str3)) && (!TextUtils.isEmpty(str4)) && (i > 0))
       {
         paramMap = new b();
-        paramMap.DWj = str1;
+        paramMap.JyG = str1;
         paramMap.desc = str2;
-        paramMap.pSE = str3;
-        paramMap.DWk = str4;
-        paramMap.DWl = i;
-        AppMethodBeat.o(202814);
+        paramMap.toE = str3;
+        paramMap.Kjv = str4;
+        paramMap.Kjw = i;
+        AppMethodBeat.o(223625);
         return paramMap;
       }
-      AppMethodBeat.o(202814);
+      AppMethodBeat.o(223625);
       return null;
     }
   }
   
-  public static final class c
+  public static class c
   {
-    public List<ADXml.d> DWm;
+    public List<ADXml.d> Kjx;
     
     public c()
     {
-      AppMethodBeat.i(202816);
-      this.DWm = new ArrayList();
-      AppMethodBeat.o(202816);
+      AppMethodBeat.i(202008);
+      this.Kjx = new ArrayList();
+      AppMethodBeat.o(202008);
     }
     
-    public final c G(Map<String, String> paramMap, String paramString)
+    public final c R(Map<String, String> paramMap, String paramString)
     {
-      AppMethodBeat.i(202817);
+      AppMethodBeat.i(202032);
       int i = 0;
       Object localObject2 = new StringBuilder().append(paramString).append(".adxml.adCardInfo.adRatingCardInfo.tagList.tag");
       if (i == 0) {}
@@ -948,43 +921,43 @@ public class ADXml
         if (!Util.isNullOrNil((String)paramMap.get(str5)))
         {
           localObject1 = new ADXml.d();
-          ((ADXml.d)localObject1).DWn = Util.nullAs((String)paramMap.get(str5), "");
+          ((ADXml.d)localObject1).Kjy = Util.nullAs((String)paramMap.get(str5), "");
           localObject2 = str5 + ".$light_mode_url";
           String str1 = str5 + ".$dark_mode_url";
           String str2 = str5 + ".$tag_light_bg_color";
           String str3 = str5 + ".$tag_dark_bg_color";
           String str4 = str5 + ".$tag_light_name_color";
           str5 = str5 + ".$tag_dark_name_color";
-          ((ADXml.d)localObject1).DWo = Util.nullAs((String)paramMap.get(localObject2), "");
-          ((ADXml.d)localObject1).DWp = Util.nullAs((String)paramMap.get(str1), "");
-          ((ADXml.d)localObject1).DWq = Util.nullAsNil((String)paramMap.get(str2));
-          ((ADXml.d)localObject1).DWr = Util.nullAsNil((String)paramMap.get(str3));
-          ((ADXml.d)localObject1).DWs = Util.nullAsNil((String)paramMap.get(str4));
-          ((ADXml.d)localObject1).DWt = Util.nullAsNil((String)paramMap.get(str5));
-          Log.i("MicroMsg.ADXml", "Tag content = ", new Object[] { ((ADXml.d)localObject1).DWn + ", Tag light iconUrl = " + ((ADXml.d)localObject1).DWo + ", Tag dark iconUrl = " + ((ADXml.d)localObject1).DWp + ", Tag background light color = " + ((ADXml.d)localObject1).DWq + ", Tag background dark color = " + ((ADXml.d)localObject1).DWr + ", Tag content light color = " + ((ADXml.d)localObject1).DWs + ", Tag content dark color = " + ((ADXml.d)localObject1).DWt });
-          this.DWm.add(localObject1);
+          ((ADXml.d)localObject1).Kjz = Util.nullAs((String)paramMap.get(localObject2), "");
+          ((ADXml.d)localObject1).KjA = Util.nullAs((String)paramMap.get(str1), "");
+          ((ADXml.d)localObject1).KjB = Util.nullAsNil((String)paramMap.get(str2));
+          ((ADXml.d)localObject1).KjC = Util.nullAsNil((String)paramMap.get(str3));
+          ((ADXml.d)localObject1).KjD = Util.nullAsNil((String)paramMap.get(str4));
+          ((ADXml.d)localObject1).KjE = Util.nullAsNil((String)paramMap.get(str5));
+          Log.i("MicroMsg.ADXml", "Tag content = ", new Object[] { ((ADXml.d)localObject1).Kjy + ", Tag light iconUrl = " + ((ADXml.d)localObject1).Kjz + ", Tag dark iconUrl = " + ((ADXml.d)localObject1).KjA + ", Tag background light color = " + ((ADXml.d)localObject1).KjB + ", Tag background dark color = " + ((ADXml.d)localObject1).KjC + ", Tag content light color = " + ((ADXml.d)localObject1).KjD + ", Tag content dark color = " + ((ADXml.d)localObject1).KjE });
+          this.Kjx.add(localObject1);
         }
         i += 1;
         break;
       }
       label513:
-      AppMethodBeat.o(202817);
+      AppMethodBeat.o(202032);
       return this;
     }
   }
   
   public static final class d
   {
-    public String DWn;
-    public String DWo;
-    public String DWp;
-    public String DWq;
-    public String DWr;
-    public String DWs;
-    public String DWt;
+    public String KjA;
+    public String KjB;
+    public String KjC;
+    public String KjD;
+    public String KjE;
+    public String Kjy;
+    public String Kjz;
   }
   
-  public static final class e
+  public static class e
   {
     public List<ADXml.f> list;
     
@@ -995,7 +968,7 @@ public class ADXml
       AppMethodBeat.o(96262);
     }
     
-    public final e H(Map<String, String> paramMap, String paramString)
+    public final e S(Map<String, String> paramMap, String paramString)
     {
       AppMethodBeat.i(96263);
       String str1 = paramString + ".adxml.feedbackInfo.feedbackList.item";
@@ -1008,10 +981,10 @@ public class ADXml
         {
           ADXml.f localf = new ADXml.f();
           localf.url = Util.nullAs((String)paramMap.get(str2), "");
-          localf.DWu = Util.nullAs((String)paramMap.get(paramString + ".Wording.zh"), "");
-          localf.DQp = Util.nullAs((String)paramMap.get(paramString + ".Wording.en"), "");
-          localf.DWv = Util.nullAs((String)paramMap.get(paramString + ".Wording.tw"), "");
-          if (localf.DWu.length() + localf.DQp.length() + localf.DWv.length() > 0) {
+          localf.KjF = Util.nullAs((String)paramMap.get(paramString + ".Wording.zh"), "");
+          localf.Kdw = Util.nullAs((String)paramMap.get(paramString + ".Wording.en"), "");
+          localf.KjG = Util.nullAs((String)paramMap.get(paramString + ".Wording.tw"), "");
+          if (localf.KjF.length() + localf.Kdw.length() + localf.KjG.length() > 0) {
             this.list.add(localf);
           }
           i += 1;
@@ -1025,76 +998,116 @@ public class ADXml
   
   public static final class f
   {
-    public String DQp = "";
-    public String DWu = "";
-    public String DWv = "";
+    public String Kdw = "";
+    public String KjF = "";
+    public String KjG = "";
     public String url = "";
   }
   
-  public static final class g
+  public static class g
   {
-    public String DWA;
-    public int DWB;
-    public String DWC;
-    public int DWD;
-    public aw DWE;
-    public ADXml.p DWF;
-    public int DWw;
-    public int DWx = 30;
-    public int DWy;
-    public a DWz;
+    public int KjH;
+    public int KjI = 30;
+    public int KjJ;
+    public a KjK;
+    public String KjL;
+    public int KjM;
+    public String KjN;
+    public int KjO;
+    public ay KjP;
+    public ADXml.p KjQ;
     public String description;
     public String title;
     
     public static final class a
     {
-      public float DWG;
-      public String DWH;
+      public float KjR;
+      public String KjS;
+      public List<ADXml.g.b> KjT;
       public int color;
       public long endTime;
       public long startTime;
+      
+      public a()
+      {
+        AppMethodBeat.i(269345);
+        this.KjT = new ArrayList();
+        AppMethodBeat.o(269345);
+      }
+      
+      final void T(Map<String, String> paramMap, String paramString)
+      {
+        AppMethodBeat.i(269347);
+        int i = 0;
+        Object localObject2 = new StringBuilder().append(paramString).append(".pointsItem");
+        if (i == 0) {}
+        for (Object localObject1 = "";; localObject1 = Integer.valueOf(i))
+        {
+          localObject1 = localObject1;
+          if ((!paramMap.containsKey(localObject1)) || (this.KjT == null)) {
+            break label149;
+          }
+          localObject1 = (String)paramMap.get(localObject1);
+          Log.i("MicroMsg.ADXml", "parse points item %s", new Object[] { localObject1 });
+          if (!Util.isNullOrNil((String)localObject1))
+          {
+            localObject2 = new ADXml.g.b();
+            ((ADXml.g.b)localObject2).KjS = Util.nullAs((String)localObject1, "");
+            this.KjT.add(localObject2);
+          }
+          i += 1;
+          break;
+        }
+        label149:
+        AppMethodBeat.o(269347);
+      }
+    }
+    
+    public static final class b
+    {
+      public String KjS;
     }
   }
   
-  public final class h
+  public class h
   {
-    public String DWI;
-    public String Dse;
+    public String JyA;
+    public String KjU;
     
     public h() {}
   }
   
-  public static final class i
+  public static class i
   {
-    public int DWK;
-    public String DWL;
-    public String DWM;
-    public String DWN;
-    public String DWO;
-    public int DWw;
-    public int DWx = 30;
-    public int DWy;
+    public int KjH;
+    public int KjI = 30;
+    public int KjJ;
+    public int KjW;
+    public String KjX;
+    public String KjY;
+    public String KjZ;
+    public String bgColor;
     public String description;
     public String title;
   }
   
-  public static final class j
+  public static class j
   {
-    public List<ADXml.o> DWP;
+    public List<ADXml.o> Kka;
     public String adActionLink;
     public String appUserName;
     public String appVersion;
-    public String dCx;
+    public String fve;
     
     public j()
     {
       AppMethodBeat.i(96264);
       this.adActionLink = "";
-      this.DWP = new ArrayList();
+      this.Kka = new ArrayList();
       AppMethodBeat.o(96264);
     }
     
-    public final void I(Map<String, String> paramMap, String paramString)
+    public final void U(Map<String, String> paramMap, String paramString)
     {
       AppMethodBeat.i(96265);
       this.adActionLink = Util.nullAs((String)paramMap.get(paramString + ".adxml.adTurnActionLink"), "");
@@ -1103,7 +1116,7 @@ public class ADXml
       {
         this.appUserName = str;
         this.appVersion = ((String)paramMap.get(paramString + ".adxml.adTurnActionExtWeApp.appVersion"));
-        this.dCx = ((String)paramMap.get(paramString + ".adxml.adTurnActionExtWeApp.relativePagePath"));
+        this.fve = ((String)paramMap.get(paramString + ".adxml.adTurnActionExtWeApp.relativePagePath"));
       }
       str = paramString + ".adxml.adTurnInfo.materialInfo";
       int i = 0;
@@ -1115,8 +1128,8 @@ public class ADXml
           ADXml.o localo = new ADXml.o();
           localo.title = Util.nullAs((String)paramMap.get(paramString + ".title"), "");
           localo.desc = Util.nullAs((String)paramMap.get(paramString + ".desc"), "");
-          localo.DWw = Util.safeParseInt((String)paramMap.get(paramString + ".displayType"));
-          this.DWP.add(localo);
+          localo.KjH = Util.safeParseInt((String)paramMap.get(paramString + ".displayType"));
+          this.Kka.add(localo);
           i += 1;
           break;
         }
@@ -1126,23 +1139,23 @@ public class ADXml
     }
   }
   
-  public static final class k
+  public static class k
     implements Serializable
   {
-    public int DWQ;
-    public int DWR;
-    public int DWS;
-    public int DWT;
-    public int DWU;
-    public boolean DWV;
-    public boolean DWW;
+    public int JNw;
+    public int JNx;
+    public int Kkb;
+    public int Kkc;
+    public int Kkd;
+    public boolean Kke;
+    public boolean Kkf;
     public String desc;
     public String title;
     
-    public static k J(Map<String, String> paramMap, String paramString)
+    public static k V(Map<String, String> paramMap, String paramString)
     {
       boolean bool2 = true;
-      AppMethodBeat.i(202818);
+      AppMethodBeat.i(205762);
       int k;
       int m;
       int n;
@@ -1176,78 +1189,66 @@ public class ADXml
             String str = Util.nullAsNil((String)paramMap.get(paramString + ".title"));
             paramMap = Util.nullAsNil((String)paramMap.get(paramString + ".desc"));
             paramString = new k();
-            paramString.DWQ = k;
-            paramString.DWR = m;
-            paramString.DWS = i;
-            paramString.DWT = j;
-            paramString.DWU = n;
+            paramString.Kkb = k;
+            paramString.Kkc = m;
+            paramString.JNw = i;
+            paramString.JNx = j;
+            paramString.Kkd = n;
             paramString.title = str;
             paramString.desc = paramMap;
             if (i1 == 1)
             {
               bool1 = true;
-              paramString.DWV = bool1;
+              paramString.Kke = bool1;
               if (i2 != 1) {
                 break label451;
               }
             }
             for (boolean bool1 = bool2;; bool1 = false)
             {
-              paramString.DWW = bool1;
-              AppMethodBeat.o(202818);
+              paramString.Kkf = bool1;
+              AppMethodBeat.o(205762);
               return paramString;
               bool1 = false;
               break;
             }
           }
-          AppMethodBeat.o(202818);
+          AppMethodBeat.o(205762);
           return null;
         }
       }
     }
     
-    public static boolean aPT(String paramString)
+    public String toString()
     {
-      AppMethodBeat.i(202820);
-      if ((paramString != null) && (paramString.contains("<isTwistAnimView>1</isTwistAnimView>")))
-      {
-        AppMethodBeat.o(202820);
-        return true;
-      }
-      AppMethodBeat.o(202820);
-      return false;
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(202819);
-      String str = "{twistStartTime=" + this.DWQ + ", twistEndTime=" + this.DWR + ", coverStartTime=" + this.DWS + ", coverEndTime=" + this.DWT + ", maxDegree=" + this.DWU + ", isClockWise=" + this.DWV + ", title='" + this.title + '\'' + ", desc='" + this.desc + '\'' + '}';
-      AppMethodBeat.o(202819);
+      AppMethodBeat.i(205763);
+      String str = "{twistStartTime=" + this.Kkb + ", twistEndTime=" + this.Kkc + ", coverStartTime=" + this.JNw + ", coverEndTime=" + this.JNx + ", maxDegree=" + this.Kkd + ", isClockWise=" + this.Kke + ", title='" + this.title + '\'' + ", desc='" + this.desc + '\'' + '}';
+      AppMethodBeat.o(205763);
       return str;
     }
   }
   
-  public final class l
+  public class l
   {
-    public String DWX;
-    public String DWY;
-    public ArrayList<ADXml.m> DWZ;
+    public String Kkg;
+    public String Kkh;
+    public ArrayList<ADXml.m> Kki;
     
     public l()
     {
       AppMethodBeat.i(96266);
-      this.DWX = "";
-      this.DWY = "";
-      this.DWZ = new ArrayList();
+      this.Kkg = "";
+      this.Kkh = "";
+      this.Kki = new ArrayList();
       AppMethodBeat.o(96266);
     }
     
-    public final String YR(int paramInt)
+    public final String agi(int paramInt)
     {
       AppMethodBeat.i(96267);
-      if ((paramInt >= 0) && (paramInt < this.DWZ.size()))
+      if ((paramInt >= 0) && (paramInt < this.Kki.size()))
       {
-        String str = ((ADXml.m)this.DWZ.get(paramInt)).DXb;
+        String str = ((ADXml.m)this.Kki.get(paramInt)).Kkk;
         AppMethodBeat.o(96267);
         return str;
       }
@@ -1255,12 +1256,12 @@ public class ADXml
       return "";
     }
     
-    public final String YS(int paramInt)
+    public final String agj(int paramInt)
     {
       AppMethodBeat.i(96268);
-      if ((paramInt >= 0) && (paramInt < this.DWZ.size()))
+      if ((paramInt >= 0) && (paramInt < this.Kki.size()))
       {
-        String str = ((ADXml.m)this.DWZ.get(paramInt)).title;
+        String str = ((ADXml.m)this.Kki.get(paramInt)).title;
         AppMethodBeat.o(96268);
         return str;
       }
@@ -1271,43 +1272,64 @@ public class ADXml
   
   public final class m
   {
-    public String DXa = "";
-    public String DXb = "";
+    public String CHR = "";
+    public String Kkj = "";
+    public String Kkk = "";
     public String id = "";
-    public String msN = "";
+    public String pqW = "";
     public String title = "";
-    public String xDQ = "";
     
     public m() {}
   }
   
   public static final class o
   {
-    public int DWw = 0;
+    public int KjH = 0;
     public String desc;
     public String title;
   }
   
   public static final class p
   {
-    public int DXc;
-    public int DXd;
-    public int DXe;
-    public String DXf;
-    public int DXg;
+    public int Kkl;
+    public int Kkm;
+    public int Kkn;
+    public String Kko;
+    public int Kkp;
   }
   
-  public static final class q
+  public static class q
   {
+    public int Jxz;
     public String appUserName;
     public String appVersion;
-    public String dCx;
-    public int weAppType;
+    public String fve;
+    
+    public static q X(Map<String, String> paramMap, String paramString)
+    {
+      AppMethodBeat.i(270535);
+      String str1 = Util.nullAsNil((String)paramMap.get(paramString + ".appUserName"));
+      String str2 = Util.nullAsNil((String)paramMap.get(paramString + ".relativePagePath"));
+      String str3 = Util.nullAsNil((String)paramMap.get(paramString + ".appVersion"));
+      int i = Util.safeParseInt((String)paramMap.get(paramString + ".miniProgramType"));
+      if (!TextUtils.isEmpty(str1))
+      {
+        paramMap = new q();
+        paramMap.appUserName = str1;
+        paramMap.fve = str2;
+        paramMap.appVersion = str3;
+        paramMap.Jxz = i;
+        AppMethodBeat.o(270535);
+        return paramMap;
+      }
+      AppMethodBeat.o(270535);
+      return null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.ADXml
  * JD-Core Version:    0.7.0.1
  */

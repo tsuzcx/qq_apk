@@ -5,100 +5,98 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.setting.model.n;
+import com.tencent.mm.plugin.setting.b.g;
+import com.tencent.mm.plugin.setting.b.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.base.preference.f;
 
 public class SettingsPluginsNotifyUI
   extends MMPreference
 {
-  private f screen;
+  private com.tencent.mm.ui.base.preference.f screen;
   private int state;
   
-  private void Xr(int paramInt)
+  private void aeq(int paramInt)
   {
     AppMethodBeat.i(74332);
     this.state = paramInt;
     if ((this.state == 1) || (this.state == 0))
     {
-      g.aAh().azQ().set(8200, Boolean.TRUE);
+      h.aHG().aHp().i(8200, Boolean.TRUE);
       if (this.state == 1)
       {
-        g.aAh().azQ().set(8201, Integer.valueOf(22));
-        g.aAh().azQ().set(8208, Integer.valueOf(8));
-        ((l)g.af(l.class)).aSM().d(new n(true, 22, 8));
+        h.aHG().aHp().i(8201, Integer.valueOf(22));
+        h.aHG().aHp().i(8208, Integer.valueOf(8));
+        ((com.tencent.mm.plugin.messenger.foundation.a.n)h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbK().d(new com.tencent.mm.plugin.setting.model.n(true, 22, 8));
       }
     }
     for (;;)
     {
-      eTt();
+      fGx();
       AppMethodBeat.o(74332);
       return;
-      g.aAh().azQ().set(8201, Integer.valueOf(0));
-      g.aAh().azQ().set(8208, Integer.valueOf(0));
-      ((l)g.af(l.class)).aSM().d(new n(true, 0, 0));
+      h.aHG().aHp().i(8201, Integer.valueOf(0));
+      h.aHG().aHp().i(8208, Integer.valueOf(0));
+      ((com.tencent.mm.plugin.messenger.foundation.a.n)h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbK().d(new com.tencent.mm.plugin.setting.model.n(true, 0, 0));
       continue;
-      g.aAh().azQ().set(8200, Boolean.FALSE);
-      ((l)g.af(l.class)).aSM().d(new n());
+      h.aHG().aHp().i(8200, Boolean.FALSE);
+      ((com.tencent.mm.plugin.messenger.foundation.a.n)h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbK().d(new com.tencent.mm.plugin.setting.model.n());
     }
   }
   
-  private void eTt()
+  private void fGx()
   {
     AppMethodBeat.i(74331);
     this.screen.removeAll();
     Preference localPreference = new Preference(this);
-    localPreference.setTitle(2131765532);
+    localPreference.setTitle(b.i.settings_plugings_disturb_on);
     localPreference.setKey("settings_plugings_disturb_on");
-    localPreference.setLayoutResource(2131495538);
+    localPreference.setLayoutResource(b.g.mm_preference);
     if (this.state == 0)
     {
-      localPreference.setWidgetLayoutResource(2131495615);
-      this.screen.c(localPreference);
+      localPreference.auN(b.g.mm_preference_radio_checked);
+      this.screen.b(localPreference);
       localPreference = new Preference(this);
-      localPreference.setTitle(2131765533);
+      localPreference.setTitle(b.i.settings_plugings_disturb_on_night);
       localPreference.setKey("settings_plugings_disturb_on_night");
-      localPreference.setLayoutResource(2131495538);
+      localPreference.setLayoutResource(b.g.mm_preference);
       if (this.state != 1) {
-        break label221;
+        break label233;
       }
-      localPreference.setWidgetLayoutResource(2131495615);
-      label105:
-      this.screen.c(localPreference);
+      localPreference.auN(b.g.mm_preference_radio_checked);
+      label111:
+      this.screen.b(localPreference);
       localPreference = new Preference(this);
-      localPreference.setTitle(2131765531);
+      localPreference.setTitle(b.i.settings_plugings_disturb_off);
       localPreference.setKey("settings_plugings_disturb_off");
-      localPreference.setLayoutResource(2131495538);
+      localPreference.setLayoutResource(b.g.mm_preference);
       if (this.state != 2) {
-        break label230;
+        break label243;
       }
-      localPreference.setWidgetLayoutResource(2131495615);
+      localPreference.auN(b.g.mm_preference_radio_checked);
     }
     for (;;)
     {
-      this.screen.c(localPreference);
+      this.screen.b(localPreference);
       localPreference = new Preference(this);
-      localPreference.setTitle(2131765534);
-      localPreference.setLayoutResource(2131495599);
-      this.screen.c(localPreference);
+      localPreference.setTitle(b.i.settings_plugings_disturb_time_tip);
+      localPreference.setLayoutResource(b.g.mm_preference_info);
+      this.screen.b(localPreference);
       this.screen.notifyDataSetChanged();
       AppMethodBeat.o(74331);
       return;
-      localPreference.setWidgetLayoutResource(2131495616);
+      localPreference.auN(b.g.mm_preference_radio_unchecked);
       break;
-      label221:
-      localPreference.setWidgetLayoutResource(2131495616);
-      break label105;
-      label230:
-      localPreference.setWidgetLayoutResource(2131495616);
+      label233:
+      localPreference.auN(b.g.mm_preference_radio_unchecked);
+      break label111;
+      label243:
+      localPreference.auN(b.g.mm_preference_radio_unchecked);
     }
   }
   
@@ -110,9 +108,9 @@ public class SettingsPluginsNotifyUI
   public void initView()
   {
     AppMethodBeat.i(74333);
-    Boolean localBoolean = Boolean.valueOf(z.aUz());
-    int j = z.aUJ();
-    int k = z.aUK();
+    Boolean localBoolean = Boolean.valueOf(z.bdB());
+    int j = z.bdL();
+    int k = z.bdM();
     int i;
     if (localBoolean.booleanValue()) {
       if (j == k) {
@@ -124,7 +122,7 @@ public class SettingsPluginsNotifyUI
       Log.d("ui.settings.SettingsPlugingsNotify", localBoolean + "st " + j + " ed " + k + "  state " + this.state);
       this.state = this.state;
       this.screen = getPreferenceScreen();
-      setMMTitle(2131765535);
+      setMMTitle(b.i.settings_plugings_disturb_title);
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -151,18 +149,18 @@ public class SettingsPluginsNotifyUI
     AppMethodBeat.o(74328);
   }
   
-  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
     AppMethodBeat.i(74330);
     paramf = paramPreference.mKey;
     if (paramf.equals("settings_plugings_disturb_on")) {
-      Xr(0);
+      aeq(0);
     }
     if (paramf.equals("settings_plugings_disturb_on_night")) {
-      Xr(1);
+      aeq(1);
     }
     if (paramf.equals("settings_plugings_disturb_off")) {
-      Xr(2);
+      aeq(2);
     }
     AppMethodBeat.o(74330);
     return false;
@@ -172,7 +170,7 @@ public class SettingsPluginsNotifyUI
   {
     AppMethodBeat.i(74329);
     super.onResume();
-    eTt();
+    fGx();
     AppMethodBeat.o(74329);
   }
   
@@ -184,7 +182,7 @@ public class SettingsPluginsNotifyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsPluginsNotifyUI
  * JD-Core Version:    0.7.0.1
  */

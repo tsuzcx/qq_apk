@@ -1,0 +1,29 @@
+package com.tencent.mm.plugin.editor;
+
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+final class EditorUI$18
+  implements DialogInterface.OnCancelListener
+{
+  EditorUI$18(EditorUI paramEditorUI) {}
+  
+  public final void onCancel(DialogInterface paramDialogInterface)
+  {
+    AppMethodBeat.i(181536);
+    if (EditorUI.c(this.upk) != null)
+    {
+      EditorUI.c(this.upk).dismiss();
+      EditorUI.d(this.upk);
+    }
+    AppMethodBeat.o(181536);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+ * Qualified Name:     com.tencent.mm.plugin.editor.EditorUI.18
+ * JD-Core Version:    0.7.0.1
+ */

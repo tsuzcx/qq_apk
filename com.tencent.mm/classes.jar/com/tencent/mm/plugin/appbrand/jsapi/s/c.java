@@ -1,17 +1,24 @@
 package com.tencent.mm.plugin.appbrand.jsapi.s;
 
-import kotlin.l;
+import android.view.View;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/pip/AppBrandPipJsApiEventFactory;", "", "createEnterPipJsApiEvent", "Lcom/tencent/mm/plugin/appbrand/jsapi/pip/AppBrandPipEvent;", "viewId", "", "createLeavePipJsApiEvent", "luggage-wxa-app_release"})
-public abstract interface c
+public abstract interface c<T>
 {
-  public abstract a hW(int paramInt);
+  public abstract T currentValue();
   
-  public abstract a hX(int paramInt);
+  public abstract View getView();
+  
+  public abstract void onAttach(com.tencent.mm.plugin.appbrand.widget.picker.c paramc);
+  
+  public abstract void onDetach(com.tencent.mm.plugin.appbrand.widget.picker.c paramc);
+  
+  public abstract void onHide(com.tencent.mm.plugin.appbrand.widget.picker.c paramc);
+  
+  public abstract void onShow(com.tencent.mm.plugin.appbrand.widget.picker.c paramc);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.s.c
  * JD-Core Version:    0.7.0.1
  */

@@ -5,15 +5,15 @@ import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"kvJsLoader", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getKvJsLoader", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "webview-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"kvJsLoader", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getKvJsLoader", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "webview-sdk_release"})
 public final class m
 {
-  static final MultiProcessMMKV gbp()
+  static final MultiProcessMMKV gUj()
   {
-    AppMethodBeat.i(225110);
+    AppMethodBeat.i(206754);
     MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("_webview_jsloader");
-    p.g(localMultiProcessMMKV, "MultiProcessMMKV.getMMKV(\"_webview_jsloader\")");
-    AppMethodBeat.o(225110);
+    p.j(localMultiProcessMMKV, "MultiProcessMMKV.getMMKV(\"_webview_jsloader\")");
+    AppMethodBeat.o(206754);
     return localMultiProcessMMKV;
   }
 }

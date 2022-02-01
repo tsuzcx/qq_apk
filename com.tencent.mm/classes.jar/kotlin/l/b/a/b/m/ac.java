@@ -13,25 +13,25 @@ import kotlin.l.b.a.b.j.f.h;
 
 public final class ac
 {
-  private static final b<kotlin.l.b.a.b.m.a.i, aj> TOh;
-  public static final ac TOi;
+  private static final b<kotlin.l.b.a.b.m.a.i, aj> abqH;
+  public static final ac abqI;
   
   static
   {
     AppMethodBeat.i(60771);
-    TOi = new ac();
-    TOh = (b)ac.a.TOj;
+    abqI = new ac();
+    abqH = (b)ac.a.abqJ;
     AppMethodBeat.o(60771);
   }
   
   public static final aj a(g paramg, e parame, List<? extends av> paramList)
   {
     AppMethodBeat.i(60768);
-    p.h(paramg, "annotations");
-    p.h(parame, "descriptor");
-    p.h(paramList, "arguments");
-    parame = parame.hzz();
-    p.g(parame, "descriptor.typeConstructor");
+    p.k(paramg, "annotations");
+    p.k(parame, "descriptor");
+    p.k(paramList, "arguments");
+    parame = parame.iDL();
+    p.j(parame, "descriptor.typeConstructor");
     paramg = c(paramg, parame, paramList, false);
     AppMethodBeat.o(60768);
     return paramg;
@@ -40,12 +40,12 @@ public final class ac
   public static final aj a(g paramg, n paramn)
   {
     AppMethodBeat.i(60770);
-    p.h(paramg, "annotations");
-    p.h(paramn, "constructor");
+    p.k(paramg, "annotations");
+    p.k(paramn, "constructor");
     paramn = (at)paramn;
-    List localList = (List)v.SXr;
-    h localh = u.dU("Scope for integer literal type", true);
-    p.g(localh, "ErrorUtils.createErrorSc…eger literal type\", true)");
+    List localList = (List)v.aaAd;
+    h localh = u.eh("Scope for integer literal type", true);
+    p.j(localh, "ErrorUtils.createErrorSc…eger literal type\", true)");
     paramg = a(paramg, paramn, localList, false, localh);
     AppMethodBeat.o(60770);
     return paramg;
@@ -53,31 +53,31 @@ public final class ac
   
   public static final aj a(final g paramg, at paramat, final List<? extends av> paramList, final boolean paramBoolean, final h paramh)
   {
-    AppMethodBeat.i(186271);
-    p.h(paramg, "annotations");
-    p.h(paramat, "constructor");
-    p.h(paramList, "arguments");
-    p.h(paramh, "memberScope");
+    AppMethodBeat.i(269971);
+    p.k(paramg, "annotations");
+    p.k(paramat, "constructor");
+    p.k(paramList, "arguments");
+    p.k(paramh, "memberScope");
     paramat = new ak(paramat, paramList, paramBoolean, paramh, (b)new d(paramat, paramList, paramg, paramBoolean, paramh));
     if (paramg.isEmpty())
     {
       paramg = (aj)paramat;
-      AppMethodBeat.o(186271);
+      AppMethodBeat.o(269971);
       return paramg;
     }
     paramg = (aj)new i((aj)paramat, paramg);
-    AppMethodBeat.o(186271);
+    AppMethodBeat.o(269971);
     return paramg;
   }
   
   public static final aj a(g paramg, at paramat, List<? extends av> paramList, boolean paramBoolean, h paramh, b<? super kotlin.l.b.a.b.m.a.i, ? extends aj> paramb)
   {
     AppMethodBeat.i(60767);
-    p.h(paramg, "annotations");
-    p.h(paramat, "constructor");
-    p.h(paramList, "arguments");
-    p.h(paramh, "memberScope");
-    p.h(paramb, "refinedTypeFactory");
+    p.k(paramg, "annotations");
+    p.k(paramat, "constructor");
+    p.k(paramList, "arguments");
+    p.k(paramh, "memberScope");
+    p.k(paramb, "refinedTypeFactory");
     paramat = new ak(paramat, paramList, paramBoolean, paramh, paramb);
     if (paramg.isEmpty())
     {
@@ -93,9 +93,9 @@ public final class ac
   public static final bg a(aj paramaj1, aj paramaj2)
   {
     AppMethodBeat.i(60769);
-    p.h(paramaj1, "lowerBound");
-    p.h(paramaj2, "upperBound");
-    if (p.j(paramaj1, paramaj2))
+    p.k(paramaj1, "lowerBound");
+    p.k(paramaj2, "upperBound");
+    if (p.h(paramaj1, paramaj2))
     {
       paramaj1 = (bg)paramaj1;
       AppMethodBeat.o(60769);
@@ -130,7 +130,7 @@ public final class ac
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.ac
  * JD-Core Version:    0.7.0.1
  */

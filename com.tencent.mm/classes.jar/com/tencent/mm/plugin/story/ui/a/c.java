@@ -1,47 +1,48 @@
 package com.tencent.mm.plugin.story.ui.a;
 
-import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.story.a.d;
 import java.util.ArrayList;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/adapter/GalleryDateAdapter;", "Lcom/tencent/mm/plugin/story/ui/adapter/GalleryHeaderAdapter;", "Lcom/tencent/mm/plugin/story/ui/adapter/GalleryDateAdapter$GalleryDateViewHolder;", "()V", "onDateClick", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "date", "", "getOnDateClick", "()Lkotlin/jvm/functions/Function1;", "setOnDateClick", "(Lkotlin/jvm/functions/Function1;)V", "getItemCount", "", "onBindViewHolder", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "GalleryDateViewHolder", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/adapter/GalleryDateAdapter;", "Lcom/tencent/mm/plugin/story/ui/adapter/GalleryHeaderAdapter;", "Lcom/tencent/mm/plugin/story/ui/adapter/GalleryDateAdapter$GalleryDateViewHolder;", "()V", "onDateClick", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "date", "", "getOnDateClick", "()Lkotlin/jvm/functions/Function1;", "setOnDateClick", "(Lkotlin/jvm/functions/Function1;)V", "getItemCount", "", "onBindViewHolder", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "GalleryDateViewHolder", "plugin-story_release"})
 public final class c
   extends d<a>
 {
   public final int getItemCount()
   {
     AppMethodBeat.i(119725);
-    int i = this.kgc.size();
+    int i = this.mXB.size();
     AppMethodBeat.o(119725);
     return i;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/adapter/GalleryDateAdapter$GalleryDateViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/story/ui/adapter/GalleryDateAdapter;Landroid/view/View;)V", "arrowIv", "Landroid/widget/ImageView;", "getArrowIv", "()Landroid/widget/ImageView;", "bg", "getBg", "()Landroid/view/View;", "dateTv", "Landroid/widget/TextView;", "getDateTv", "()Landroid/widget/TextView;", "plugin-story_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/adapter/GalleryDateAdapter$GalleryDateViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/story/ui/adapter/GalleryDateAdapter;Landroid/view/View;)V", "arrowIv", "Landroid/widget/ImageView;", "getArrowIv", "()Landroid/widget/ImageView;", "bg", "getBg", "()Landroid/view/View;", "dateTv", "Landroid/widget/TextView;", "getDateTv", "()Landroid/widget/TextView;", "plugin-story_release"})
   public final class a
     extends RecyclerView.v
   {
-    final View FxI;
-    final TextView jUO;
-    final ImageView yKM;
+    final ImageView EoF;
+    final View LRK;
+    final TextView mMb;
     
     public a()
     {
       super();
       AppMethodBeat.i(119724);
-      this$1 = localObject.findViewById(2131308631);
-      p.g(c.this, "itemView.findViewById(R.…y_gallery_header_date_ll)");
-      this.FxI = c.this;
-      this$1 = localObject.findViewById(2131299419);
-      p.g(c.this, "itemView.findViewById(R.id.date_tv)");
-      this.jUO = ((TextView)c.this);
-      this$1 = localObject.findViewById(2131297043);
-      p.g(c.this, "itemView.findViewById(R.id.arrow)");
-      this.yKM = ((ImageView)c.this);
+      this$1 = localObject.findViewById(a.d.LBC);
+      p.j(c.this, "itemView.findViewById(R.…y_gallery_header_date_ll)");
+      this.LRK = c.this;
+      this$1 = localObject.findViewById(a.d.date_tv);
+      p.j(c.this, "itemView.findViewById(R.id.date_tv)");
+      this.mMb = ((TextView)c.this);
+      this$1 = localObject.findViewById(a.d.arrow);
+      p.j(c.this, "itemView.findViewById(R.id.arrow)");
+      this.EoF = ((ImageView)c.this);
       AppMethodBeat.o(119724);
     }
   }

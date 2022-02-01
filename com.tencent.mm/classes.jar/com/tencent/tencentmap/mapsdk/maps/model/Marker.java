@@ -7,6 +7,7 @@ import com.tencent.tencentmap.mapsdk.maps.interfaces.Alphable;
 import com.tencent.tencentmap.mapsdk.maps.interfaces.Anchorable;
 import com.tencent.tencentmap.mapsdk.maps.interfaces.Animationable;
 import com.tencent.tencentmap.mapsdk.maps.interfaces.Clickable;
+import com.tencent.tencentmap.mapsdk.maps.interfaces.Collisionable;
 import com.tencent.tencentmap.mapsdk.maps.interfaces.Draggable;
 import com.tencent.tencentmap.mapsdk.maps.interfaces.Levelable;
 import com.tencent.tencentmap.mapsdk.maps.interfaces.Removable;
@@ -15,7 +16,7 @@ import com.tencent.tencentmap.mapsdk.maps.interfaces.Tagable;
 import com.tencent.tencentmap.mapsdk.maps.interfaces.Visible;
 
 public abstract interface Marker
-  extends Accessible, Alphable, Anchorable, Animationable, Clickable, Draggable, Levelable, Removable, Rotatable, Tagable<Object>, Visible, IOverlay
+  extends Accessible, Alphable, Anchorable, Animationable, Clickable, Collisionable, Draggable, Levelable, Removable, Rotatable, Tagable<Object>, Visible, IOverlay
 {
   public abstract int getDisplayLevel();
   
@@ -79,7 +80,7 @@ public abstract interface Marker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.Marker
  * JD-Core Version:    0.7.0.1
  */

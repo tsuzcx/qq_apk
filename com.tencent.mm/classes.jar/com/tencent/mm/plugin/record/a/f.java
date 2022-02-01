@@ -5,11 +5,11 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface f
   extends a
 {
-  public abstract void C(long paramLong, String paramString);
+  public abstract void K(long paramLong, String paramString);
   
-  public abstract void D(long paramLong, String paramString);
+  public abstract void L(long paramLong, String paramString);
   
-  public abstract void HQ(long paramLong);
+  public abstract void Pl(long paramLong);
 }
 
 

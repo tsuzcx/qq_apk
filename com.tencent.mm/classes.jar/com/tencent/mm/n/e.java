@@ -15,22 +15,22 @@ import java.util.Map;
 
 public final class e
 {
-  public static final int[] gMg = { 1 };
-  HashMap<String, HashMap<String, String>> gMh;
-  public Map<String, String> gMi;
+  public static final int[] jwv = { 1 };
   private int id;
+  HashMap<String, HashMap<String, String>> jww;
+  public Map<String, String> jwx;
   int version;
   
   public e(int paramInt)
   {
     AppMethodBeat.i(131988);
-    this.gMh = new HashMap();
-    this.gMi = null;
+    this.jww = new HashMap();
+    this.jwx = null;
     this.id = paramInt;
     AppMethodBeat.o(131988);
   }
   
-  static boolean Ek(String paramString)
+  static boolean Ld(String paramString)
   {
     AppMethodBeat.i(131989);
     for (;;)
@@ -140,7 +140,7 @@ public final class e
     }
   }
   
-  public static LinkedList<a> s(Map<String, String> paramMap)
+  public static LinkedList<a> k(Map<String, String> paramMap)
   {
     AppMethodBeat.i(131991);
     Object localObject1 = null;
@@ -203,7 +203,7 @@ public final class e
   public static final class b
     implements ContextMenu.ContextMenuInfo
   {
-    private static int gMj = 10000;
+    private static int jwy = 10000;
     public final int id;
     public final String key;
     public final String title;
@@ -211,8 +211,8 @@ public final class e
     public b(String paramString1, String paramString2)
     {
       AppMethodBeat.i(131987);
-      int i = gMj;
-      gMj = i + 1;
+      int i = jwy;
+      jwy = i + 1;
       this.id = i;
       this.key = paramString1;
       this.title = paramString2;

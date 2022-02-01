@@ -38,7 +38,7 @@ public class TPUnitendCodecUtils
   
   public static int convertOmxProfileToDolbyVision(int paramInt)
   {
-    AppMethodBeat.i(189864);
+    AppMethodBeat.i(223282);
     int i = 0;
     switch (paramInt)
     {
@@ -46,7 +46,7 @@ public class TPUnitendCodecUtils
     for (;;)
     {
       TPNativeLog.printLog(2, "TPUnitendCodecUtils", "convertOmxProfileToDolbyVision omxProfile:" + paramInt + " dolbyVisionProfile:" + i);
-      AppMethodBeat.o(189864);
+      AppMethodBeat.o(223282);
       return i;
       i = DolbyVisionProfileDvavPer;
       continue;
@@ -76,17 +76,17 @@ public class TPUnitendCodecUtils
     {
       try
       {
-        AppMethodBeat.i(189863);
+        AppMethodBeat.i(223277);
         if (!TextUtils.equals("video/dolby-vision", paramString))
         {
           paramString = null;
-          AppMethodBeat.o(189863);
+          AppMethodBeat.o(223277);
           return paramString;
         }
         if (Build.VERSION.SDK_INT < 21)
         {
           paramString = null;
-          AppMethodBeat.o(189863);
+          AppMethodBeat.o(223277);
           continue;
         }
         arrayOfMediaCodecInfo = new MediaCodecList(1).getCodecInfos();
@@ -96,7 +96,7 @@ public class TPUnitendCodecUtils
       if (arrayOfMediaCodecInfo == null)
       {
         paramString = null;
-        AppMethodBeat.o(189863);
+        AppMethodBeat.o(223277);
         continue;
       }
       Object localObject2 = null;
@@ -148,7 +148,7 @@ public class TPUnitendCodecUtils
                 break label347;
               }
               TPNativeLog.printLog(2, "TPUnitendCodecUtils", "getDolbyVisionDecoderName name:".concat(String.valueOf(localObject1)));
-              AppMethodBeat.o(189863);
+              AppMethodBeat.o(223277);
               paramString = (String)localObject1;
               break;
             }
@@ -179,10 +179,10 @@ public class TPUnitendCodecUtils
     {
       try
       {
-        AppMethodBeat.i(189862);
+        AppMethodBeat.i(223273);
         if ((!TextUtils.equals("video/avc", paramString)) && (!TextUtils.equals("video/hevc", paramString)) && (!TextUtils.equals("video/dolby-vision", paramString)))
         {
-          AppMethodBeat.o(189862);
+          AppMethodBeat.o(223273);
           return localObject1;
         }
         if (mSecureDecoderNameMaps == null) {
@@ -191,7 +191,7 @@ public class TPUnitendCodecUtils
         if (mSecureDecoderNameMaps.containsKey(paramString))
         {
           localObject1 = (String)mSecureDecoderNameMaps.get(paramString);
-          AppMethodBeat.o(189862);
+          AppMethodBeat.o(223273);
           continue;
         }
         arrayOfMediaCodecInfo = new MediaCodecList(1).getCodecInfos();
@@ -200,7 +200,7 @@ public class TPUnitendCodecUtils
       if (arrayOfMediaCodecInfo != null) {
         break;
       }
-      AppMethodBeat.o(189862);
+      AppMethodBeat.o(223273);
     }
     int j = arrayOfMediaCodecInfo.length;
     int i = 0;
@@ -225,7 +225,7 @@ public class TPUnitendCodecUtils
             {
               localObject1 = localMediaCodecInfo.getName();
               mSecureDecoderNameMaps.put(paramString, localObject1);
-              AppMethodBeat.o(189862);
+              AppMethodBeat.o(223273);
             }
           }
           catch (Exception localException)
@@ -243,7 +243,7 @@ public class TPUnitendCodecUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPUnitendCodecUtils
  * JD-Core Version:    0.7.0.1
  */

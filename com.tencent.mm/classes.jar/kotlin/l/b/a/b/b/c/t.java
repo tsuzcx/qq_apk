@@ -10,7 +10,7 @@ import kotlin.l.b.a.b.m.ay;
 public abstract class t
   implements e
 {
-  public static final a TlH = new a((byte)0);
+  public static final a aaOB = new a((byte)0);
   
   protected abstract h a(i parami);
   
@@ -21,8 +21,8 @@ public abstract class t
     public static h a(e parame, i parami)
     {
       AppMethodBeat.i(57168);
-      p.h(parame, "$this$getRefinedUnsubstitutedMemberScopeIfPossible");
-      p.h(parami, "kotlinTypeRefiner");
+      p.k(parame, "$this$getRefinedUnsubstitutedMemberScopeIfPossible");
+      p.k(parami, "kotlinTypeRefiner");
       if (!(parame instanceof t)) {}
       for (Object localObject = null;; localObject = parame)
       {
@@ -35,8 +35,8 @@ public abstract class t
         }
         else
         {
-          parami = parame.hAM();
-          p.g(parami, "this.unsubstitutedMemberScope");
+          parami = parame.iEZ();
+          p.j(parami, "this.unsubstitutedMemberScope");
         }
         AppMethodBeat.o(57168);
         return parami;
@@ -46,9 +46,9 @@ public abstract class t
     public static h a(e parame, ay paramay, i parami)
     {
       AppMethodBeat.i(57169);
-      p.h(parame, "$this$getRefinedMemberScopeIfPossible");
-      p.h(paramay, "typeSubstitution");
-      p.h(parami, "kotlinTypeRefiner");
+      p.k(parame, "$this$getRefinedMemberScopeIfPossible");
+      p.k(paramay, "typeSubstitution");
+      p.k(parami, "kotlinTypeRefiner");
       if (!(parame instanceof t)) {}
       for (Object localObject = null;; localObject = parame)
       {
@@ -62,7 +62,7 @@ public abstract class t
         else
         {
           parami = parame.a(paramay);
-          p.g(parami, "this.getMemberScope(\n   …ubstitution\n            )");
+          p.j(parami, "this.getMemberScope(\n   …ubstitution\n            )");
         }
         AppMethodBeat.o(57169);
         return parami;
@@ -72,7 +72,7 @@ public abstract class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.c.t
  * JD-Core Version:    0.7.0.1
  */

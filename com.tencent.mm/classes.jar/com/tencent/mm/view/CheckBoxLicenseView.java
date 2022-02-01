@@ -9,14 +9,16 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 
 public class CheckBoxLicenseView
   extends LinearLayout
 {
-  private CompoundButton.OnCheckedChangeListener RiF;
-  private View.OnClickListener RiG;
+  private CompoundButton.OnCheckedChangeListener YKm;
+  private View.OnClickListener YKn;
   
   public CheckBoxLicenseView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,67 +28,67 @@ public class CheckBoxLicenseView
   public CheckBoxLicenseView(Context paramContext, final AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(206165);
-    Object localObject = inflate(getContext(), 2131493695, this);
-    paramContext = ((View)localObject).findViewById(2131308964);
-    paramAttributeSet = (CheckBox)((View)localObject).findViewById(2131308965);
-    localObject = (TextView)((View)localObject).findViewById(2131308968);
+    AppMethodBeat.i(197613);
+    Object localObject = inflate(getContext(), a.h.common_term_check_view, this);
+    paramContext = ((View)localObject).findViewById(a.g.term_check);
+    paramAttributeSet = (CheckBox)((View)localObject).findViewById(a.g.term_check_box);
+    localObject = (TextView)((View)localObject).findViewById(a.g.term_tv);
     paramContext.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(206164);
+        AppMethodBeat.i(189028);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/view/CheckBoxLicenseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/view/CheckBoxLicenseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         paramAttributeSet.performClick();
         a.a(this, "com/tencent/mm/view/CheckBoxLicenseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(206164);
+        AppMethodBeat.o(189028);
       }
     });
-    if (this.RiF != null) {
-      paramAttributeSet.setOnCheckedChangeListener(this.RiF);
+    if (this.YKm != null) {
+      paramAttributeSet.setOnCheckedChangeListener(this.YKm);
     }
-    if (this.RiG != null) {
-      ((TextView)localObject).setOnClickListener(this.RiG);
+    if (this.YKn != null) {
+      ((TextView)localObject).setOnClickListener(this.YKn);
     }
-    AppMethodBeat.o(206165);
+    AppMethodBeat.o(197613);
   }
   
   public void setCheckStateChangeListener(CompoundButton.OnCheckedChangeListener paramOnCheckedChangeListener)
   {
-    AppMethodBeat.i(206166);
-    this.RiF = paramOnCheckedChangeListener;
-    ((CheckBox)findViewById(2131308965)).setOnCheckedChangeListener(paramOnCheckedChangeListener);
-    AppMethodBeat.o(206166);
+    AppMethodBeat.i(197618);
+    this.YKm = paramOnCheckedChangeListener;
+    ((CheckBox)findViewById(a.g.term_check_box)).setOnCheckedChangeListener(paramOnCheckedChangeListener);
+    AppMethodBeat.o(197618);
   }
   
   public void setLicenseClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(206167);
-    TextView localTextView = (TextView)findViewById(2131308968);
-    this.RiG = paramOnClickListener;
+    AppMethodBeat.i(197621);
+    TextView localTextView = (TextView)findViewById(a.g.term_tv);
+    this.YKn = paramOnClickListener;
     localTextView.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(206167);
+    AppMethodBeat.o(197621);
   }
   
   public void setTermText(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(206168);
-    ((TextView)findViewById(2131308968)).setText(paramCharSequence);
-    AppMethodBeat.o(206168);
+    AppMethodBeat.i(197622);
+    ((TextView)findViewById(a.g.term_tv)).setText(paramCharSequence);
+    AppMethodBeat.o(197622);
   }
   
   public void setTermTip(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(206169);
-    ((TextView)findViewById(2131308967)).setText(paramCharSequence);
-    AppMethodBeat.o(206169);
+    AppMethodBeat.i(197625);
+    ((TextView)findViewById(a.g.term_tip)).setText(paramCharSequence);
+    AppMethodBeat.o(197625);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.view.CheckBoxLicenseView
  * JD-Core Version:    0.7.0.1
  */

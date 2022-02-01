@@ -6,16 +6,16 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/remuxer/MediaCodecRemuxerFactory;", "Lcom/tencent/mm/media/remuxer/IMediaCodecVideoRemuxer$Factory;", "()V", "get", "Lcom/tencent/mm/media/remuxer/IMediaCodecVideoRemuxer;", "filePath", "", "outputFilePath", "outputWidth", "", "outputHeight", "outputBitrate", "outputFps", "minQP", "maxQP", "callback", "Lcom/tencent/mm/media/remuxer/IMediaCodecVideoRemuxer$FinishCallback;", "startTimeMs", "", "endTimeMs", "plugin-mediaeditor_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/remuxer/MediaCodecRemuxerFactory;", "Lcom/tencent/mm/media/remuxer/IMediaCodecVideoRemuxer$Factory;", "()V", "get", "Lcom/tencent/mm/media/remuxer/IMediaCodecVideoRemuxer;", "filePath", "", "outputFilePath", "outputWidth", "", "outputHeight", "outputBitrate", "outputFps", "minQP", "maxQP", "callback", "Lcom/tencent/mm/media/remuxer/IMediaCodecVideoRemuxer$FinishCallback;", "startTimeMs", "", "endTimeMs", "getWithSoftEncode", "outputHevc", "", "plugin-mediaeditor_release"})
 public final class h
   implements d.a
 {
-  public static final h ijh;
+  public static final h kXT;
   
   static
   {
     AppMethodBeat.i(93825);
-    ijh = new h();
+    kXT = new h();
     AppMethodBeat.o(93825);
   }
   
@@ -34,6 +34,26 @@ public final class h
       {
         paramString1 = (d)new f(null, paramString1, 1, paramString2, 0, 0, paramInt1, paramInt2, paramInt3, 48000, 44100, 1, paramInt4, 0L, 0L, false, false, paramInt5, paramInt6, false, 0, (b)new a(paramb), 7340032);
         AppMethodBeat.o(93823);
+        return paramString1;
+      }
+    }
+  }
+  
+  public final d a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean, d.b paramb)
+  {
+    AppMethodBeat.i(260259);
+    if (paramString1 == null) {
+      paramString1 = "";
+    }
+    for (;;)
+    {
+      if (paramString2 == null) {
+        paramString2 = "";
+      }
+      for (;;)
+      {
+        paramString1 = (d)new f(null, paramString1, 1, paramString2, 0, 0, paramInt1, paramInt2, paramInt3, 48000, 44100, 1, paramInt4, 0L, 0L, true, paramBoolean, paramInt5, paramInt6, false, 0, (b)new c(paramb), 7340032);
+        AppMethodBeat.o(260259);
         return paramString1;
       }
     }
@@ -59,7 +79,7 @@ public final class h
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "path", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "path", "", "invoke"})
   static final class a
     extends q
     implements b<String, x>
@@ -70,12 +90,23 @@ public final class h
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "path", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "path", "", "invoke"})
   static final class b
     extends q
     implements b<String, x>
   {
     b(d.b paramb)
+    {
+      super();
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "path", "", "invoke"})
+  static final class c
+    extends q
+    implements b<String, x>
+  {
+    c(d.b paramb)
     {
       super();
     }

@@ -5,26 +5,26 @@ import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.r;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/Atom/Mp4ParserStat;", "", "()V", "ID", "", "TAG", "", "markIncrementParseCost", "", "cost", "markParse", "useLazy", "", "markParseCost", "timeTableLength", "", "plugin-playvideo_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/Atom/Mp4ParserStat;", "", "()V", "ID", "", "TAG", "", "markIncrementParseCost", "", "cost", "markParse", "useLazy", "", "markParseCost", "timeTableLength", "", "plugin-playvideo_release"})
 public final class l
 {
-  public static final l jQN;
+  public static final l mHX;
   
   static
   {
     AppMethodBeat.i(175938);
-    jQN = new l();
+    mHX = new l();
     AppMethodBeat.o(175938);
   }
   
-  public static void AS(long paramLong)
+  public static void Hb(long paramLong)
   {
     AppMethodBeat.i(175937);
     Log.i("MicroMsg.Mp4ParserStat", "markIncrementParseCost:".concat(String.valueOf(paramLong)));
     if (paramLong >= 0L)
     {
-      h.CyF.n(1290L, 72L, paramLong);
-      h.CyF.n(1290L, 73L, 1L);
+      h.IzE.p(1290L, 72L, paramLong);
+      h.IzE.p(1290L, 73L, 1L);
     }
     AppMethodBeat.o(175937);
   }
@@ -46,8 +46,8 @@ public final class l
     r localr;
     if (paramBoolean)
     {
-      h.CyF.n(1290L, 8L, paramLong);
-      h.CyF.n(1290L, 9L, 1L);
+      h.IzE.p(1290L, 8L, paramLong);
+      h.IzE.p(1290L, 9L, 1L);
       if (paramInt >= 0) {
         break label258;
       }
@@ -70,16 +70,16 @@ public final class l
     }
     for (;;)
     {
-      paramInt = ((Number)localr.first).intValue();
-      int i = ((Number)localr.second).intValue();
-      int j = ((Number)localr.SWY).intValue();
-      h.CyF.n(1290L, paramInt, 1L);
-      h.CyF.n(1290L, i, paramLong);
-      h.CyF.n(1290L, j, 1L);
+      paramInt = ((Number)localr.Mx).intValue();
+      int i = ((Number)localr.My).intValue();
+      int j = ((Number)localr.aazK).intValue();
+      h.IzE.p(1290L, paramInt, 1L);
+      h.IzE.p(1290L, i, paramLong);
+      h.IzE.p(1290L, j, 1L);
       AppMethodBeat.o(175936);
       return;
-      h.CyF.n(1290L, 3L, paramLong);
-      h.CyF.n(1290L, 4L, 1L);
+      h.IzE.p(1290L, 3L, paramLong);
+      h.IzE.p(1290L, 4L, 1L);
       break;
       label258:
       if (30 < paramInt) {
@@ -151,23 +151,23 @@ public final class l
     }
   }
   
-  public static void ge(boolean paramBoolean)
+  public static void gQ(boolean paramBoolean)
   {
     AppMethodBeat.i(175935);
     Log.i("MicroMsg.Mp4ParserStat", "markParse, useLazy:".concat(String.valueOf(paramBoolean)));
     if (paramBoolean)
     {
-      h.CyF.n(1290L, 0L, 1L);
+      h.IzE.p(1290L, 0L, 1L);
       AppMethodBeat.o(175935);
       return;
     }
-    h.CyF.n(1290L, 1L, 1L);
+    h.IzE.p(1290L, 1L, 1L);
     AppMethodBeat.o(175935);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.a.l
  * JD-Core Version:    0.7.0.1
  */

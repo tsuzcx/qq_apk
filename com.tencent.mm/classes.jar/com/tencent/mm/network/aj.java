@@ -8,26 +8,26 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class aj
 {
-  public static final String jFY;
-  private static long jFZ;
   private static long lastUpdateTime;
+  public static final String mwB;
+  private static long mwC;
   
   static
   {
     AppMethodBeat.i(132942);
-    jFY = b.aKD() + "/tencent/noop.dat";
+    mwB = b.aSF() + "/tencent/noop.dat";
     lastUpdateTime = 0L;
     Object localObject = MMApplicationContext.getContext().getSharedPreferences("noop_prefs", 0);
     int i = ((SharedPreferences)localObject).getInt("noop_strategy", 1);
     if (1 == i)
     {
-      jFZ = 270L;
-      new StringBuilder("getNoopIntervalInMs use hard code noop:").append(jFZ);
-      l = jFZ * 1000L;
+      mwC = 270L;
+      new StringBuilder("getNoopIntervalInMs use hard code noop:").append(mwC);
+      l = mwC * 1000L;
     }
     for (;;)
     {
-      jFZ = l / 1000L;
+      mwC = l / 1000L;
       AppMethodBeat.o(132942);
       return;
       if (3 != i) {
@@ -36,36 +36,36 @@ public final class aj
       l = ((SharedPreferences)localObject).getLong("noop_min_interval", 270L);
       if ((l >= 180L) && (l <= 3600L))
       {
-        jFZ = l;
+        mwC = l;
         l *= 1000L;
       }
       else
       {
-        jFZ = 270L;
-        new StringBuilder("getNoopIntervalInMs use wx noop:").append(jFZ);
-        l = jFZ * 1000L;
+        mwC = 270L;
+        new StringBuilder("getNoopIntervalInMs use wx noop:").append(mwC);
+        l = mwC * 1000L;
       }
     }
     long l = System.currentTimeMillis() / 1000L;
     if (l - lastUpdateTime > 3600L)
     {
-      localObject = bkq();
+      localObject = btZ();
       if ((localObject[0] < 180L) || (localObject[0] > 3600L)) {
         break label262;
       }
     }
     label262:
-    for (jFZ = localObject[0];; jFZ = 270L)
+    for (mwC = localObject[0];; mwC = 270L)
     {
       lastUpdateTime = l;
-      new StringBuilder("getNoopIntervalInMs use sync noop:").append(jFZ);
-      l = jFZ * 1000L;
+      new StringBuilder("getNoopIntervalInMs use sync noop:").append(mwC);
+      l = mwC * 1000L;
       break;
     }
   }
   
   /* Error */
-  public static void E(long paramLong1, long paramLong2)
+  public static void D(long paramLong1, long paramLong2)
   {
     // Byte code:
     //   0: ldc 111
@@ -170,15 +170,15 @@ public final class aj
     //   223: ldc 111
     //   225: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   228: return
-    //   229: new 139	com/tencent/mm/vfs/o
+    //   229: new 139	com/tencent/mm/vfs/q
     //   232: dup
-    //   233: getstatic 40	com/tencent/mm/network/aj:jFY	Ljava/lang/String;
-    //   236: invokespecial 140	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   233: getstatic 40	com/tencent/mm/network/aj:mwB	Ljava/lang/String;
+    //   236: invokespecial 140	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
     //   239: astore 8
     //   241: aload 8
-    //   243: invokevirtual 143	com/tencent/mm/vfs/o:exists	()Z
+    //   243: invokevirtual 143	com/tencent/mm/vfs/q:ifE	()Z
     //   246: ifeq +36 -> 282
-    //   249: invokestatic 103	com/tencent/mm/network/aj:bkq	()[J
+    //   249: invokestatic 103	com/tencent/mm/network/aj:btZ	()[J
     //   252: astore 8
     //   254: aload 8
     //   256: iconst_1
@@ -198,7 +198,7 @@ public final class aj
     //   278: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   281: return
     //   282: aload 8
-    //   284: invokevirtual 146	com/tencent/mm/vfs/o:createNewFile	()Z
+    //   284: invokevirtual 146	com/tencent/mm/vfs/q:ifM	()Z
     //   287: istore 7
     //   289: iload 7
     //   291: ifne +9 -> 300
@@ -211,20 +211,20 @@ public final class aj
     //   304: astore 10
     //   306: aload 9
     //   308: astore 8
-    //   310: new 139	com/tencent/mm/vfs/o
+    //   310: new 139	com/tencent/mm/vfs/q
     //   313: dup
-    //   314: getstatic 40	com/tencent/mm/network/aj:jFY	Ljava/lang/String;
-    //   317: invokespecial 140	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   314: getstatic 40	com/tencent/mm/network/aj:mwB	Ljava/lang/String;
+    //   317: invokespecial 140	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
     //   320: astore 11
     //   322: aload 9
     //   324: astore 8
     //   326: aload 11
-    //   328: invokevirtual 143	com/tencent/mm/vfs/o:exists	()Z
+    //   328: invokevirtual 143	com/tencent/mm/vfs/q:ifE	()Z
     //   331: ifne +51 -> 382
     //   334: aload 9
     //   336: astore 8
     //   338: aload 11
-    //   340: invokevirtual 146	com/tencent/mm/vfs/o:createNewFile	()Z
+    //   340: invokevirtual 146	com/tencent/mm/vfs/q:ifM	()Z
     //   343: istore 7
     //   345: iload 7
     //   347: ifne +35 -> 382
@@ -248,7 +248,7 @@ public final class aj
     //   386: new 157	java/io/DataOutputStream
     //   389: dup
     //   390: aload 11
-    //   392: invokestatic 163	com/tencent/mm/vfs/s:ap	(Lcom/tencent/mm/vfs/o;)Ljava/io/OutputStream;
+    //   392: invokestatic 163	com/tencent/mm/vfs/u:an	(Lcom/tencent/mm/vfs/q;)Ljava/io/OutputStream;
     //   395: invokespecial 166	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   398: astore 9
     //   400: lload_0
@@ -340,7 +340,7 @@ public final class aj
     //   304	167	10	localException6	java.lang.Exception
     //   503	7	10	localObject7	Object
     //   541	1	10	localException7	java.lang.Exception
-    //   320	71	11	localo	com.tencent.mm.vfs.o
+    //   320	71	11	localq	com.tencent.mm.vfs.q
     // Exception table:
     //   from	to	target	type
     //   229	254	356	java/lang/Exception
@@ -368,7 +368,7 @@ public final class aj
   }
   
   /* Error */
-  private static long[] bkq()
+  private static long[] btZ()
   {
     // Byte code:
     //   0: ldc 178
@@ -386,13 +386,13 @@ public final class aj
     //   18: lconst_0
     //   19: lastore
     //   20: pop
-    //   21: new 139	com/tencent/mm/vfs/o
+    //   21: new 139	com/tencent/mm/vfs/q
     //   24: dup
-    //   25: getstatic 40	com/tencent/mm/network/aj:jFY	Ljava/lang/String;
-    //   28: invokespecial 140	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   25: getstatic 40	com/tencent/mm/network/aj:mwB	Ljava/lang/String;
+    //   28: invokespecial 140	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
     //   31: astore_3
     //   32: aload_3
-    //   33: invokevirtual 143	com/tencent/mm/vfs/o:exists	()Z
+    //   33: invokevirtual 143	com/tencent/mm/vfs/q:ifE	()Z
     //   36: ifne +11 -> 47
     //   39: ldc 178
     //   41: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -401,7 +401,7 @@ public final class aj
     //   47: new 180	java/io/DataInputStream
     //   50: dup
     //   51: aload_3
-    //   52: invokestatic 184	com/tencent/mm/vfs/s:ao	(Lcom/tencent/mm/vfs/o;)Ljava/io/InputStream;
+    //   52: invokestatic 184	com/tencent/mm/vfs/u:al	(Lcom/tencent/mm/vfs/q;)Ljava/io/InputStream;
     //   55: invokespecial 187	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   58: astore 4
     //   60: aload 4
@@ -565,7 +565,7 @@ public final class aj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.network.aj
  * JD-Core Version:    0.7.0.1
  */

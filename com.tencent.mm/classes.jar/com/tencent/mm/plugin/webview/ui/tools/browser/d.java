@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.browser;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -14,93 +14,45 @@ import kotlin.l;
 import kotlin.n.n;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserConfigManager;", "", "()V", "TAG", "", "allowBrowserList", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "blockBrowserList", "enableBlockBrowser", "", "addAllowBrowserList", "", "configString", "addBlockBrowserList", "enableFilterBlockBrowser", "getAllowBrowserList", "", "getBlockBrowserList", "isAllowBrowser", "packageName", "isBlockBrowser", "plugin-webview_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserConfigManager;", "", "()V", "TAG", "", "allowBrowserList", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "blockBrowserList", "enableBlockBrowser", "", "addAllowBrowserList", "", "configString", "addBlockBrowserList", "enableFilterBlockBrowser", "getAllowBrowserList", "", "getBlockBrowserList", "isAllowBrowser", "packageName", "isBlockBrowser", "plugin-webview_release"})
 public final class d
 {
-  private static final HashSet<String> JlH;
-  private static boolean JlI;
-  private static final HashSet<String> JlJ;
-  public static final d JlK;
+  private static final HashSet<String> QiZ;
+  private static boolean Qja;
+  private static final HashSet<String> Qjb;
+  public static final d Qjc;
   
   static
   {
-    AppMethodBeat.i(210434);
-    JlK = new d();
-    JlH = ak.ae(new String[] { "com.tencent.mtt", "com.tencent.mtt.x86", "com.tencent.mtt.qbx", "com.tencent.qbx5", "com.ucmobile", "com.ucmobile.lite", "com.android.chrome", "com.baidu.browser.apps", "com.baidu.searchbox", "com.baidu.searchbox.lite", "com.ijinshan.browser_fast", "com.qihoo.browser", "com.qihoo.contents", "org.mozilla.firefox", "sogou.mobile.explorer" });
-    JlJ = new HashSet();
-    String str = ((b)g.af(b.class)).a(b.a.see, "");
-    p.g(str, "allowConfig1");
-    bay(str);
-    str = ((b)g.af(b.class)).a(b.a.sef, "");
-    p.g(str, "allowConfig2");
-    bay(str);
-    if (((b)g.af(b.class)).a(b.a.sei, 0) == 1) {}
+    AppMethodBeat.i(268394);
+    Qjc = new d();
+    QiZ = ak.ai(new String[] { "com.tencent.mtt", "com.tencent.mtt.x86", "com.tencent.mtt.qbx", "com.tencent.qbx5", "com.ucmobile", "com.ucmobile.lite", "com.android.chrome", "com.baidu.browser.apps", "com.baidu.searchbox", "com.baidu.searchbox.lite", "com.ijinshan.browser_fast", "com.qihoo.browser", "com.qihoo.contents", "org.mozilla.firefox", "sogou.mobile.explorer" });
+    Qjb = new HashSet();
+    String str = ((b)h.ae(b.class)).a(b.a.vNJ, "");
+    p.j(str, "allowConfig1");
+    bmw(str);
+    str = ((b)h.ae(b.class)).a(b.a.vNK, "");
+    p.j(str, "allowConfig2");
+    bmw(str);
+    if (((b)h.ae(b.class)).a(b.a.vNN, 0) == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      JlI = bool;
-      str = ((b)g.af(b.class)).a(b.a.seg, "");
-      p.g(str, "blockConfig1");
-      baz(str);
-      str = ((b)g.af(b.class)).a(b.a.seh, "");
-      p.g(str, "blockConfig2");
-      baz(str);
-      Log.i("MicroMsg.BrowserConfigManager", "alvinluo initBrowserConfig allowBrowserList size: " + JlH.size() + ", " + JlH + ", enableBlockBrowser: " + JlI + ", blockBrowserList size: " + JlJ.size() + ", " + JlJ);
-      AppMethodBeat.o(210434);
+      Qja = bool;
+      str = ((b)h.ae(b.class)).a(b.a.vNL, "");
+      p.j(str, "blockConfig1");
+      bmx(str);
+      str = ((b)h.ae(b.class)).a(b.a.vNM, "");
+      p.j(str, "blockConfig2");
+      bmx(str);
+      Log.i("MicroMsg.BrowserConfigManager", "alvinluo initBrowserConfig allowBrowserList size: " + QiZ.size() + ", " + QiZ + ", enableBlockBrowser: " + Qja + ", blockBrowserList size: " + Qjb.size() + ", " + Qjb);
+      AppMethodBeat.o(268394);
       return;
     }
   }
   
-  public static boolean baA(String paramString)
+  private static void bmw(String paramString)
   {
-    AppMethodBeat.i(210432);
-    Iterable localIterable = (Iterable)JlH;
-    if (paramString != null)
-    {
-      if (paramString == null)
-      {
-        paramString = new t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(210432);
-        throw paramString;
-      }
-      paramString = paramString.toLowerCase();
-      p.g(paramString, "(this as java.lang.String).toLowerCase()");
-    }
-    for (;;)
-    {
-      boolean bool = j.a(localIterable, paramString);
-      AppMethodBeat.o(210432);
-      return bool;
-      paramString = null;
-    }
-  }
-  
-  public static boolean baB(String paramString)
-  {
-    AppMethodBeat.i(210433);
-    Iterable localIterable = (Iterable)JlJ;
-    if (paramString != null)
-    {
-      if (paramString == null)
-      {
-        paramString = new t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(210433);
-        throw paramString;
-      }
-      paramString = paramString.toLowerCase();
-      p.g(paramString, "(this as java.lang.String).toLowerCase()");
-    }
-    for (;;)
-    {
-      boolean bool = j.a(localIterable, paramString);
-      AppMethodBeat.o(210433);
-      return bool;
-      paramString = null;
-    }
-  }
-  
-  private static void bay(String paramString)
-  {
-    AppMethodBeat.i(210430);
+    AppMethodBeat.i(268387);
     paramString = ((Iterable)n.a((CharSequence)paramString, new String[] { ";" })).iterator();
     label123:
     while (paramString.hasNext())
@@ -109,27 +61,27 @@ public final class d
       if (str == null)
       {
         paramString = new t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(210430);
+        AppMethodBeat.o(268387);
         throw paramString;
       }
       str = str.toLowerCase();
-      p.g(str, "(this as java.lang.String).toLowerCase()");
+      p.j(str, "(this as java.lang.String).toLowerCase()");
       if (((CharSequence)str).length() > 0) {}
       for (int i = 1;; i = 0)
       {
-        if ((i == 0) || (JlH.contains(str))) {
+        if ((i == 0) || (QiZ.contains(str))) {
           break label123;
         }
-        JlH.add(str);
+        QiZ.add(str);
         break;
       }
     }
-    AppMethodBeat.o(210430);
+    AppMethodBeat.o(268387);
   }
   
-  private static void baz(String paramString)
+  private static void bmx(String paramString)
   {
-    AppMethodBeat.i(210431);
+    AppMethodBeat.i(268389);
     paramString = ((Iterable)n.a((CharSequence)paramString, new String[] { ";" })).iterator();
     label123:
     while (paramString.hasNext())
@@ -138,27 +90,75 @@ public final class d
       if (str == null)
       {
         paramString = new t("null cannot be cast to non-null type java.lang.String");
-        AppMethodBeat.o(210431);
+        AppMethodBeat.o(268389);
         throw paramString;
       }
       str = str.toLowerCase();
-      p.g(str, "(this as java.lang.String).toLowerCase()");
+      p.j(str, "(this as java.lang.String).toLowerCase()");
       if (((CharSequence)str).length() > 0) {}
       for (int i = 1;; i = 0)
       {
-        if ((i == 0) || (JlJ.contains(str))) {
+        if ((i == 0) || (Qjb.contains(str))) {
           break label123;
         }
-        JlJ.add(str);
+        Qjb.add(str);
         break;
       }
     }
-    AppMethodBeat.o(210431);
+    AppMethodBeat.o(268389);
   }
   
-  public static boolean ggu()
+  public static boolean bmy(String paramString)
   {
-    return JlI;
+    AppMethodBeat.i(268391);
+    Iterable localIterable = (Iterable)QiZ;
+    if (paramString != null)
+    {
+      if (paramString == null)
+      {
+        paramString = new t("null cannot be cast to non-null type java.lang.String");
+        AppMethodBeat.o(268391);
+        throw paramString;
+      }
+      paramString = paramString.toLowerCase();
+      p.j(paramString, "(this as java.lang.String).toLowerCase()");
+    }
+    for (;;)
+    {
+      boolean bool = j.a(localIterable, paramString);
+      AppMethodBeat.o(268391);
+      return bool;
+      paramString = null;
+    }
+  }
+  
+  public static boolean bmz(String paramString)
+  {
+    AppMethodBeat.i(268392);
+    Iterable localIterable = (Iterable)Qjb;
+    if (paramString != null)
+    {
+      if (paramString == null)
+      {
+        paramString = new t("null cannot be cast to non-null type java.lang.String");
+        AppMethodBeat.o(268392);
+        throw paramString;
+      }
+      paramString = paramString.toLowerCase();
+      p.j(paramString, "(this as java.lang.String).toLowerCase()");
+    }
+    for (;;)
+    {
+      boolean bool = j.a(localIterable, paramString);
+      AppMethodBeat.o(268392);
+      return bool;
+      paramString = null;
+    }
+  }
+  
+  public static boolean gZI()
+  {
+    return Qja;
   }
 }
 

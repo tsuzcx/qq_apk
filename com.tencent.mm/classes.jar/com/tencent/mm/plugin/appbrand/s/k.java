@@ -1,11 +1,10 @@
 package com.tencent.mm.plugin.appbrand.s;
 
-import com.tencent.luggage.h.l;
+import com.tencent.luggage.k.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ae.e.h;
-import com.tencent.mm.plugin.appbrand.ae.f.b;
+import com.tencent.mm.plugin.appbrand.af.e.h;
+import com.tencent.mm.plugin.appbrand.af.f.b;
 import com.tencent.mm.plugin.appbrand.jsapi.websocket.c;
-import com.tencent.mm.plugin.appbrand.jsapi.websocket.e;
 import com.tencent.mm.plugin.appbrand.jsapi.websocket.e.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -28,70 +27,70 @@ import org.json.JSONObject;
 public final class k
   implements com.tencent.mm.plugin.appbrand.jsapi.websocket.d
 {
-  private SSLSocketFactory liT;
-  protected final ArrayList<e> mGL;
-  private final String mGo;
-  private int mGp;
-  private boolean niN;
+  private SSLSocketFactory odC;
+  protected final ArrayList<com.tencent.mm.plugin.appbrand.jsapi.websocket.e> pFQ;
+  private final String pFt;
+  private int pFu;
+  private boolean qjy;
   
   public k(a parama)
   {
     AppMethodBeat.i(144405);
-    this.mGL = new ArrayList();
+    this.pFQ = new ArrayList();
     SSLContext localSSLContext = j.a(parama);
     if (localSSLContext != null) {
-      this.liT = localSSLContext.getSocketFactory();
+      this.odC = localSSLContext.getSocketFactory();
     }
-    this.mGo = parama.nhM;
-    this.mGp = parama.nhI;
-    this.niN = parama.cyQ;
-    Log.i("MicroMsg.AppBrandNetworkWebSocket", "mTLSSkipHostnameCheck is %b", new Object[] { Boolean.valueOf(this.niN) });
+    this.pFt = parama.qiv;
+    this.pFu = parama.qir;
+    this.qjy = parama.cxv;
+    Log.i("MicroMsg.AppBrandNetworkWebSocket", "mTLSSkipHostnameCheck is %b", new Object[] { Boolean.valueOf(this.qjy) });
     AppMethodBeat.o(144405);
   }
   
-  private void c(e parame)
+  private void c(com.tencent.mm.plugin.appbrand.jsapi.websocket.e parame)
   {
     AppMethodBeat.i(144407);
-    synchronized (this.mGL)
+    synchronized (this.pFQ)
     {
-      if ("0".equals(parame.bjl())) {
-        this.mGL.clear();
+      if ("0".equals(parame.bsL())) {
+        this.pFQ.clear();
       }
-      this.mGL.add(parame);
+      this.pFQ.add(parame);
       AppMethodBeat.o(144407);
       return;
     }
   }
   
   /* Error */
-  private void d(e parame)
+  private void d(com.tencent.mm.plugin.appbrand.jsapi.websocket.e parame)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: ldc 126
-    //   4: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   4: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_1
     //   8: ifnonnull +11 -> 19
     //   11: ldc 126
-    //   13: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   13: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   16: aload_0
     //   17: monitorexit
     //   18: return
     //   19: aload_0
-    //   20: getfield 47	com/tencent/mm/plugin/appbrand/s/k:mGL	Ljava/util/ArrayList;
+    //   20: getfield 49	com/tencent/mm/plugin/appbrand/s/k:pFQ	Ljava/util/ArrayList;
     //   23: astore_2
     //   24: aload_2
     //   25: monitorenter
     //   26: aload_0
-    //   27: getfield 47	com/tencent/mm/plugin/appbrand/s/k:mGL	Ljava/util/ArrayList;
+    //   27: getfield 49	com/tencent/mm/plugin/appbrand/s/k:pFQ	Ljava/util/ArrayList;
     //   30: aload_1
     //   31: invokevirtual 129	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
     //   34: pop
     //   35: aload_2
     //   36: monitorexit
     //   37: ldc 126
-    //   39: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   39: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   42: goto -26 -> 16
     //   45: astore_1
     //   46: aload_0
@@ -102,25 +101,24 @@ public final class k
     //   51: aload_2
     //   52: monitorexit
     //   53: ldc 126
-    //   55: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   55: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   58: aload_1
     //   59: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	60	0	this	k
-    //   0	60	1	parame	e
+    //   0	60	1	parame	com.tencent.mm.plugin.appbrand.jsapi.websocket.e
     // Exception table:
     //   from	to	target	type
     //   2	7	45	finally
     //   11	16	45	finally
     //   19	26	45	finally
     //   37	42	45	finally
-    //   53	60	45	finally
+    //   51	60	45	finally
     //   26	37	50	finally
-    //   51	53	50	finally
   }
   
-  private static void e(e parame)
+  private static void e(com.tencent.mm.plugin.appbrand.jsapi.websocket.e parame)
   {
     AppMethodBeat.i(144415);
     if (parame == null)
@@ -128,7 +126,7 @@ public final class k
       AppMethodBeat.o(144415);
       return;
     }
-    Timer localTimer = parame.bLn();
+    Timer localTimer = parame.bXn();
     Log.i("MicroMsg.AppBrandNetworkWebSocket", "try to stop connectTimer");
     if (localTimer != null)
     {
@@ -138,7 +136,7 @@ public final class k
     AppMethodBeat.o(144415);
   }
   
-  public final void a(e parame)
+  public final void a(com.tencent.mm.plugin.appbrand.jsapi.websocket.e parame)
   {
     AppMethodBeat.i(144409);
     if (parame != null) {}
@@ -160,14 +158,14 @@ public final class k
     }
   }
   
-  public final void a(e parame, int paramInt, String paramString)
+  public final void a(com.tencent.mm.plugin.appbrand.jsapi.websocket.e parame, int paramInt, String paramString)
   {
     AppMethodBeat.i(144410);
     if (parame != null) {}
     try
     {
       Log.i("MicroMsg.AppBrandNetworkWebSocket", "try to close socket");
-      parame.bQ(paramString, paramInt);
+      parame.cn(paramString, paramInt);
       d(parame);
       AppMethodBeat.o(144410);
       return;
@@ -181,31 +179,31 @@ public final class k
     }
   }
   
-  public final void a(e parame, String paramString)
+  public final void a(com.tencent.mm.plugin.appbrand.jsapi.websocket.e parame, String paramString)
   {
     AppMethodBeat.i(144412);
     if (parame != null) {
-      parame.abA(paramString);
+      parame.aju(paramString);
     }
     AppMethodBeat.o(144412);
   }
   
-  public final void a(e parame, ByteBuffer paramByteBuffer)
+  public final void a(com.tencent.mm.plugin.appbrand.jsapi.websocket.e parame, ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(144413);
-    parame.o(paramByteBuffer);
+    parame.l(paramByteBuffer);
     AppMethodBeat.o(144413);
   }
   
   public final void a(final String paramString1, final String paramString2, int paramInt1, int paramInt2, final JSONObject paramJSONObject, Map<String, String> paramMap, final com.tencent.mm.plugin.appbrand.jsapi.websocket.d.a parama)
   {
     AppMethodBeat.i(144406);
-    synchronized (this.mGL)
+    synchronized (this.pFQ)
     {
-      if (this.mGL.size() >= this.mGp)
+      if (this.pFQ.size() >= this.pFu)
       {
-        parama.XU("max connected");
-        Log.i("MicroMsg.AppBrandNetworkWebSocket", "max connected mTaskList.size():%d,mMaxWebsocketConnect:%d", new Object[] { Integer.valueOf(this.mGL.size()), Integer.valueOf(this.mGp) });
+        parama.afH("max connected");
+        Log.i("MicroMsg.AppBrandNetworkWebSocket", "max connected mTaskList.size():%d,mMaxWebsocketConnect:%d", new Object[] { Integer.valueOf(this.pFQ.size()), Integer.valueOf(this.pFu) });
         AppMethodBeat.o(144406);
         return;
       }
@@ -216,8 +214,8 @@ public final class k
       URI localURI = new URI((String)???);
       boolean bool = paramJSONObject.optBoolean("tcpNoDelay", false);
       Log.i("MicroMsg.AppBrandNetworkWebSocket", "connectSocket, url= %s, timeout = %d, tcpNoDelay = %b, taskId=%s", new Object[] { ???, Integer.valueOf(paramInt2), Boolean.valueOf(bool), paramString2 });
-      paramMap.put("User-Agent", this.mGo);
-      paramJSONObject = j.ap(paramJSONObject);
+      paramMap.put("User-Agent", this.pFt);
+      paramJSONObject = j.at(paramJSONObject);
       if (!Util.isNullOrNil(paramJSONObject))
       {
         Log.i("MicroMsg.AppBrandNetworkWebSocket", "protocols %s", new Object[] { paramJSONObject });
@@ -231,51 +229,37 @@ public final class k
       }
       try
       {
-        paramJSONObject = new c(localURI, new com.tencent.mm.plugin.appbrand.ae.b.d(), paramMap, paramInt2)
+        paramJSONObject = new c(localURI, new com.tencent.mm.plugin.appbrand.af.b.d(), paramMap, paramInt2)
         {
-          private com.tencent.mm.plugin.appbrand.ae.d.d liU = null;
+          private com.tencent.mm.plugin.appbrand.af.d.d odD = null;
           
-          public final void XY(String paramAnonymousString)
-          {
-            AppMethodBeat.i(144398);
-            String str = this.val$url;
-            if (paramAnonymousString != null) {}
-            for (int i = paramAnonymousString.length();; i = -1)
-            {
-              Log.i("MicroMsg.AppBrandNetworkWebSocket", "url is %s ,socket onmessage length :%d, taskId=%s", new Object[] { str, Integer.valueOf(i), paramString2 });
-              parama.aar(paramAnonymousString);
-              AppMethodBeat.o(144398);
-              return;
-            }
-          }
-          
-          public final void a(com.tencent.mm.plugin.appbrand.ae.d.d paramAnonymousd)
+          public final void a(com.tencent.mm.plugin.appbrand.af.d.d paramAnonymousd)
           {
             AppMethodBeat.i(144402);
-            if ((paramAnonymousd.bZK() != com.tencent.mm.plugin.appbrand.ae.d.d.a.oji) && (!paramAnonymousd.bZI()))
+            if ((paramAnonymousd.cmF() != com.tencent.mm.plugin.appbrand.af.d.d.a.rlw) && (!paramAnonymousd.cmD()))
             {
-              this.liU = paramAnonymousd;
+              this.odD = paramAnonymousd;
               AppMethodBeat.o(144402);
               return;
             }
-            if (paramAnonymousd.bZK() == com.tencent.mm.plugin.appbrand.ae.d.d.a.oji)
+            if (paramAnonymousd.cmF() == com.tencent.mm.plugin.appbrand.af.d.d.a.rlw)
             {
-              if (this.liU == null)
+              if (this.odD == null)
               {
                 AppMethodBeat.o(144402);
                 return;
               }
-              if (this.liU.bZH().position() > 10485760)
+              if (this.odD.cmC().position() > 10485760)
               {
                 Log.e("MicroMsg.AppBrandNetworkWebSocket", "Pending Frame exploded");
-                this.liU = null;
+                this.odD = null;
                 AppMethodBeat.o(144402);
                 return;
               }
               try
               {
-                this.liU.e(paramAnonymousd);
-                if (!paramAnonymousd.bZI())
+                this.odD.e(paramAnonymousd);
+                if (!paramAnonymousd.cmD())
                 {
                   AppMethodBeat.o(144402);
                   return;
@@ -288,21 +272,21 @@ public final class k
                   Log.printErrStackTrace("MicroMsg.AppBrandNetworkWebSocket", localException, "Exception: Framedata append fail", new Object[0]);
                 }
               }
-              if (this.liU.bZK() != com.tencent.mm.plugin.appbrand.ae.d.d.a.ojk) {
+              if (this.odD.cmF() != com.tencent.mm.plugin.appbrand.af.d.d.a.rly) {
                 break label177;
               }
-              l(this.liU.bZH());
+              i(this.odD.cmC());
             }
             for (;;)
             {
-              this.liU = null;
+              this.odD = null;
               AppMethodBeat.o(144402);
               return;
               label177:
-              if (this.liU.bZK() == com.tencent.mm.plugin.appbrand.ae.d.d.a.ojj) {
+              if (this.odD.cmF() == com.tencent.mm.plugin.appbrand.af.d.d.a.rlx) {
                 try
                 {
-                  XY(Util.nullAsNil(b.B(this.liU.bZH())));
+                  afL(Util.nullAsNil(b.y(this.odD.cmC())));
                 }
                 catch (Exception paramAnonymousd)
                 {
@@ -323,7 +307,21 @@ public final class k
           
           public final void a(e.a paramAnonymousa) {}
           
-          public final void af(int paramAnonymousInt, String paramAnonymousString)
+          public final void afL(String paramAnonymousString)
+          {
+            AppMethodBeat.i(144398);
+            String str = this.val$url;
+            if (paramAnonymousString != null) {}
+            for (int i = paramAnonymousString.length();; i = -1)
+            {
+              Log.i("MicroMsg.AppBrandNetworkWebSocket", "url is %s ,socket onmessage length :%d, taskId=%s", new Object[] { str, Integer.valueOf(i), paramString2 });
+              parama.aii(paramAnonymousString);
+              AppMethodBeat.o(144398);
+              return;
+            }
+          }
+          
+          public final void ah(int paramAnonymousInt, String paramAnonymousString)
           {
             AppMethodBeat.i(144399);
             Log.i("MicroMsg.AppBrandNetworkWebSocket", "url is %s ,state: closed ,reason: %s, errCode = %d, taskId=%s", new Object[] { this.val$url, paramAnonymousString, Integer.valueOf(paramAnonymousInt), paramString2 });
@@ -340,8 +338,8 @@ public final class k
               }
               for (;;)
               {
-                locala.XT(str);
-                parama.ae(1006, paramAnonymousString);
+                locala.afG(str);
+                parama.ag(1006, paramAnonymousString);
                 AppMethodBeat.o(144399);
                 return;
                 locala = parama;
@@ -352,18 +350,18 @@ public final class k
                 }
               }
             }
-            parama.ae(paramAnonymousInt, paramAnonymousString);
+            parama.ag(paramAnonymousInt, paramAnonymousString);
             AppMethodBeat.o(144399);
           }
           
-          public final void b(com.tencent.mm.plugin.appbrand.ae.e.a paramAnonymousa)
+          public final void b(com.tencent.mm.plugin.appbrand.af.e.a paramAnonymousa)
           {
             AppMethodBeat.i(144397);
             parama.a(paramAnonymousa);
             AppMethodBeat.o(144397);
           }
           
-          public final void l(ByteBuffer paramAnonymousByteBuffer)
+          public final void i(ByteBuffer paramAnonymousByteBuffer)
           {
             AppMethodBeat.i(144401);
             String str = this.val$url;
@@ -371,7 +369,7 @@ public final class k
             for (int i = paramAnonymousByteBuffer.capacity();; i = -1)
             {
               Log.i("MicroMsg.AppBrandNetworkWebSocket", "url is %s , socket onMessage buffer length : %d, taskId=%s", new Object[] { str, Integer.valueOf(i), paramString2 });
-              parama.k(paramAnonymousByteBuffer);
+              parama.h(paramAnonymousByteBuffer);
               AppMethodBeat.o(144401);
               return;
             }
@@ -383,20 +381,20 @@ public final class k
             Log.printErrStackTrace("MicroMsg.AppBrandNetworkWebSocket", paramAnonymousException, "onError Exception: url %s, taskId=%s", new Object[] { this.val$url, paramString2 });
             k.g(this);
             k.a(k.this, this);
-            parama.XT("exception " + paramAnonymousException.getMessage());
+            parama.afG("exception " + paramAnonymousException.getMessage());
             AppMethodBeat.o(144400);
           }
         };
-        paramJSONObject.abz(paramString2);
+        paramJSONObject.ajt(paramString2);
         paramJSONObject.setTcpNoDelay(bool);
-        if (!l.C((String)???, "ws://")) {
-          break label473;
+        if (!l.J((String)???, "ws://")) {
+          break label476;
         }
         Log.i("MicroMsg.AppBrandNetworkWebSocket", "url is %s ,user ws connect", new Object[] { ??? });
-        paramJSONObject.a(new Socket(Proxy.NO_PROXY));
+        paramJSONObject.b(new Socket(Proxy.NO_PROXY));
         paramJSONObject.connect();
         c(paramJSONObject);
-        paramString1 = new Timer();
+        paramString1 = new Timer("AppNetSocket");
         paramString2 = new TimerTask()
         {
           public final void run()
@@ -405,7 +403,7 @@ public final class k
             Log.e("MicroMsg.AppBrandNetworkWebSocket", "connect response time out");
             paramJSONObject.close();
             k.a(k.this, paramJSONObject);
-            parama.XT("connect response time out");
+            parama.afG("connect response time out");
             cancel();
             paramString1.cancel();
             AppMethodBeat.o(144403);
@@ -419,7 +417,7 @@ public final class k
       catch (Exception paramString1)
       {
         Log.printErrStackTrace("MicroMsg.AppBrandNetworkWebSocket", paramString1, "Exception: url %s", new Object[] { ??? });
-        parama.XT(paramString1.getMessage());
+        parama.afG(paramString1.getMessage());
         AppMethodBeat.o(144406);
         return;
       }
@@ -430,21 +428,21 @@ public final class k
     catch (Exception paramString1)
     {
       Log.printErrStackTrace("MicroMsg.AppBrandNetworkWebSocket", paramString1, "Exception: connect fail", new Object[0]);
-      parama.XU("url not well format");
+      parama.afH("url not well format");
       AppMethodBeat.o(144406);
       return;
     }
-    label473:
-    if (l.C((String)???, "wss://"))
+    label476:
+    if (l.J((String)???, "wss://"))
     {
       Log.i("MicroMsg.AppBrandNetworkWebSocket", "url is %s ,user wss connect", new Object[] { ??? });
-      if (this.liT != null) {}
-      for (paramString2 = this.liT;; paramString2 = (SSLSocketFactory)SSLSocketFactory.getDefault())
+      if (this.odC != null) {}
+      for (paramString2 = this.odC;; paramString2 = (SSLSocketFactory)SSLSocketFactory.getDefault())
       {
-        paramJSONObject.a(paramString2.createSocket());
+        paramJSONObject.b(paramString2.createSocket());
         if ((paramString1.equals("wx577c74fb940daaea")) || (paramString1.equals("wx850d691fd02de8a1")))
         {
-          paramString1 = (SSLSocket)paramJSONObject.getSocket();
+          paramString1 = (SSLSocket)paramJSONObject.bXo();
           paramString2 = paramString1.getSupportedCipherSuites();
           if (paramString2 != null) {
             paramString1.setEnabledCipherSuites(paramString2);
@@ -452,7 +450,7 @@ public final class k
         }
         paramJSONObject.connect();
         c(paramJSONObject);
-        paramString1 = new Timer();
+        paramString1 = new Timer("AppTestSocket");
         paramString2 = new TimerTask()
         {
           public final void run()
@@ -461,7 +459,7 @@ public final class k
             Log.e("MicroMsg.AppBrandNetworkWebSocket", "connect response time out");
             paramJSONObject.close();
             k.a(k.this, paramJSONObject);
-            parama.XT("connect response time out");
+            parama.afG("connect response time out");
             cancel();
             paramString1.cancel();
             AppMethodBeat.o(144404);
@@ -474,11 +472,11 @@ public final class k
       }
     }
     Log.i("MicroMsg.AppBrandNetworkWebSocket", "url error: %s not ws:// or wss://", new Object[] { ??? });
-    parama.XU("url not ws or wss");
+    parama.afH("url not ws or wss");
     AppMethodBeat.o(144406);
   }
   
-  public final e aby(String paramString)
+  public final com.tencent.mm.plugin.appbrand.jsapi.websocket.e ajs(String paramString)
   {
     AppMethodBeat.i(144416);
     if (paramString == null)
@@ -486,13 +484,13 @@ public final class k
       AppMethodBeat.o(144416);
       return null;
     }
-    synchronized (this.mGL)
+    synchronized (this.pFQ)
     {
-      Iterator localIterator = this.mGL.iterator();
+      Iterator localIterator = this.pFQ.iterator();
       while (localIterator.hasNext())
       {
-        e locale = (e)localIterator.next();
-        if (paramString.equals(locale.bjl()))
+        com.tencent.mm.plugin.appbrand.jsapi.websocket.e locale = (com.tencent.mm.plugin.appbrand.jsapi.websocket.e)localIterator.next();
+        if (paramString.equals(locale.bsL()))
         {
           AppMethodBeat.o(144416);
           return locale;
@@ -503,7 +501,7 @@ public final class k
     }
   }
   
-  public final boolean b(e parame)
+  public final boolean b(com.tencent.mm.plugin.appbrand.jsapi.websocket.e parame)
   {
     AppMethodBeat.i(144411);
     if (parame != null)
@@ -519,28 +517,42 @@ public final class k
   public final void release()
   {
     AppMethodBeat.i(144414);
-    a(aby("0"));
+    a(ajs("0"));
     AppMethodBeat.o(144414);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(com.tencent.mm.plugin.appbrand.jsapi.e parame, String paramString, com.tencent.mm.plugin.appbrand.jsapi.p.e parame1);
+    
+    public abstract void d(com.tencent.mm.plugin.appbrand.jsapi.e parame, String paramString);
   }
   
   public static abstract interface b
   {
-    public abstract void XT(String paramString);
+    public abstract void afG(String paramString);
     
-    public abstract void XU(String paramString);
+    public abstract void afH(String paramString);
     
-    public abstract void ae(int paramInt, String paramString);
+    public abstract void ag(int paramInt, String paramString);
     
-    public abstract void bAN();
+    public abstract void bMi();
     
-    public abstract void bAO();
+    public abstract void bMj();
     
-    public abstract void k(ByteBuffer paramByteBuffer);
+    public abstract void h(ByteBuffer paramByteBuffer);
+  }
+  
+  public static abstract interface c
+  {
+    public abstract boolean acg(String paramString);
+    
+    public abstract boolean bEw();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.s.k
  * JD-Core Version:    0.7.0.1
  */

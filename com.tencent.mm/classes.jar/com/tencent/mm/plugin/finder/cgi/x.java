@@ -1,125 +1,73 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.live.b.o.l;
-import com.tencent.mm.live.b.o.m;
-import com.tencent.mm.live.core.core.d.b.a;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.live.viewmodel.g;
-import com.tencent.mm.plugin.finder.utils.m;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.aut;
-import com.tencent.mm.protocal.protobuf.avb;
-import com.tencent.mm.protocal.protobuf.avn;
-import com.tencent.mm.protocal.protobuf.awe;
-import com.tencent.mm.protocal.protobuf.bam;
-import com.tencent.mm.protocal.protobuf.ban;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.a.r;
-import kotlin.g.b.p;
+import com.tencent.mm.plugin.findersdk.b.c;
+import com.tencent.mm.protocal.protobuf.bew;
+import com.tencent.mm.protocal.protobuf.bex;
+import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.protocal.protobuf.cyn;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.jh;
+import java.util.LinkedList;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderPostLiveAppMsg;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderPostLiveAppMsgResponse;", "appMsg", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;", "roomData", "Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderLiveRoomData;", "callBack", "Lkotlin/Function4;", "", "Lkotlin/ParameterName;", "name", "errType", "errCode", "", "errMsg", "resp", "", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderLiveRoomData;Lkotlin/jvm/functions/Function4;)V", "TAG", "getCallBack", "()Lkotlin/jvm/functions/Function4;", "setCallBack", "(Lkotlin/jvm/functions/Function4;)V", "request", "Lcom/tencent/mm/protocal/protobuf/FinderPostLiveAppMsgRequest;", "initReqResp", "onCgiEnd", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderModMentioned;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderModMentionedResponse;", "opType", "", "objectId", "", "userName", "", "mentionList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/ModMentionedInfo;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(IJLjava/lang/String;Ljava/util/LinkedList;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "getObjectId", "()J", "getOpType", "()I", "getUserName", "()Ljava/lang/String;", "onCgiEnd", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
 public final class x
-  extends an<ban>
+  extends c<bex>
 {
-  public static final a ttF;
-  private final String TAG;
-  private bam ttD;
-  private r<? super Integer, ? super Integer, ? super String, ? super ban, kotlin.x> ttE;
+  public static final a xbl;
+  private final int opType;
+  private final String userName;
+  private final long xbk;
   
   static
   {
-    AppMethodBeat.i(242254);
-    ttF = new a((byte)0);
-    AppMethodBeat.o(242254);
+    AppMethodBeat.i(282996);
+    xbl = new a((byte)0);
+    AppMethodBeat.o(282996);
   }
   
-  public x(aut paramaut, g paramg, r<? super Integer, ? super Integer, ? super String, ? super ban, kotlin.x> paramr)
+  private x(int paramInt, long paramLong, String paramString, LinkedList<cyn> paramLinkedList, bid parambid)
   {
-    AppMethodBeat.i(242253);
-    this.ttE = paramr;
-    this.TAG = "Finder.CgiFinderPostLiveAppMsg";
-    this.ttD = new bam();
-    this.ttD.LFp = com.tencent.mm.bw.b.cD(paramg.hIt);
-    this.ttD.uio = paramaut;
-    this.ttD.hyH = paramg.liveInfo.liveId;
-    this.ttD.object_id = paramg.hFK;
-    this.ttD.object_nonce_id = paramg.hwg;
-    paramaut = this.ttD;
-    paramg = m.vVH;
-    int i;
-    if (m.dBP())
-    {
-      paramg = o.m.hHB;
-      i = o.m.aFV();
-      paramaut.scene = i;
-      this.ttD.LAt = z.aUg();
-      paramaut = this.ttD;
-      paramg = am.tuw;
-      paramaut.LAI = am.cXY();
-      paramaut = new d.a();
-      paramaut.c((a)this.ttD);
-      paramg = new ban();
-      paramg.setBaseResponse(new BaseResponse());
-      paramg.getBaseResponse().ErrMsg = new dqi();
-      paramaut.d((a)paramg);
-      paramaut.MB("/cgi-bin/micromsg-bin/finderpostliveappmsg");
-      paramaut.sG(6888);
-      c(paramaut.aXF());
-      paramg = this.TAG;
-      paramr = new StringBuilder("CgiFinderPostLiveAppMsg init ").append(this.ttD.hyH).append(",msgType ");
-      paramaut = this.ttD.uio;
-      if (paramaut == null) {
-        break label341;
-      }
+    AppMethodBeat.i(282994);
+    this.opType = paramInt;
+    this.xbk = paramLong;
+    this.userName = paramString;
+    d.a locala = new d.a();
+    bew localbew = new bew();
+    locala.c((a)localbew);
+    localbew.fSo = this.opType;
+    String str = this.userName;
+    paramString = str;
+    if (str == null) {
+      paramString = z.bdh();
     }
-    label341:
-    for (paramaut = Integer.valueOf(paramaut.ybm);; paramaut = null)
-    {
-      Log.i(paramg, paramaut);
-      AppMethodBeat.o(242253);
-      return;
-      paramg = com.tencent.mm.live.core.core.d.b.hCo;
-      if (b.a.aDp())
-      {
-        paramg = o.m.hHB;
-        i = o.m.aFW();
-        break;
-      }
-      paramg = o.m.hHB;
-      i = o.m.aFW();
-      break;
+    localbew.finderUsername = paramString;
+    localbew.SPJ.add(Long.valueOf(this.xbk));
+    paramString = ao.xcj;
+    localbew.RLM = ao.a(parambid);
+    if (paramLinkedList != null) {
+      localbew.SPK = paramLinkedList;
     }
+    paramString = new bex();
+    paramString.setBaseResponse(new jh());
+    paramString.getBaseResponse().Tef = new eaf();
+    locala.d((a)paramString);
+    locala.TW("/cgi-bin/micromsg-bin/findermodmentioned");
+    locala.vD(6205);
+    c(locala.bgN());
+    AppMethodBeat.o(282994);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderPostLiveAppMsg$Companion;", "", "()V", "genComplaintMsg", "Lcom/tencent/mm/protocal/protobuf/FinderLiveAppMsg;", "msg", "Lcom/tencent/mm/protocal/protobuf/FinderLiveMsg;", "genReplyCommentMsg", "atUser", "Lcom/tencent/mm/protocal/protobuf/FinderLiveContact;", "replyContent", "", "getHighlightCheerMsg", "getTickleMsg", "tickleUser", "plugin-finder_release"})
-  public static final class a
-  {
-    public static aut a(avn paramavn, String paramString)
-    {
-      AppMethodBeat.i(242251);
-      p.h(paramavn, "atUser");
-      p.h(paramString, "replyContent");
-      aut localaut = new aut();
-      localaut.LFz = paramavn;
-      paramavn = new avb();
-      paramavn.content = paramString;
-      localaut.LFB = com.tencent.mm.bw.b.cD(paramavn.toByteArray());
-      paramavn = o.l.hHy;
-      localaut.ybm = o.l.aFP();
-      localaut.LFr = (z.aTY() + System.currentTimeMillis());
-      AppMethodBeat.o(242251);
-      return localaut;
-    }
-  }
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderModMentioned$Companion;", "", "()V", "OP_TYPE_ADD", "", "OP_TYPE_DELETE", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.x
  * JD-Core Version:    0.7.0.1
  */

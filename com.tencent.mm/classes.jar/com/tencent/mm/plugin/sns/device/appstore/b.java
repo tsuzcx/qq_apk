@@ -11,30 +11,30 @@ import java.util.Set;
 
 final class b
 {
-  private final String DET;
-  private final String DEU;
-  private final String DEW;
-  private final String DEX;
+  private final String JRP;
+  private final String JRQ;
+  private final String JRR;
+  private final String JRS;
   
   private b(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.DET = paramString1;
-    this.DEU = paramString2;
-    this.DEW = paramString3;
-    this.DEX = paramString4;
+    this.JRP = paramString1;
+    this.JRQ = paramString2;
+    this.JRR = paramString3;
+    this.JRS = paramString4;
   }
   
-  static b B(String paramString1, String paramString2, String paramString3, String paramString4)
+  static b H(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(202640);
+    AppMethodBeat.i(264460);
     paramString1 = new b(paramString1, paramString2, paramString3, paramString4);
-    AppMethodBeat.o(202640);
+    AppMethodBeat.o(264460);
     return paramString1;
   }
   
-  private static Uri kc(String paramString1, String paramString2)
+  private static Uri kx(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(202642);
+    AppMethodBeat.i(264464);
     paramString1 = Uri.parse(paramString1);
     Object localObject;
     if (!TextUtils.isEmpty(paramString2))
@@ -46,7 +46,7 @@ final class b
     }
     for (;;)
     {
-      AppMethodBeat.o(202642);
+      AppMethodBeat.o(264464);
       return paramString1;
       if (!paramString2.equals(paramString1.getQueryParameter("id")))
       {
@@ -72,18 +72,18 @@ final class b
     }
   }
   
-  final Intent eZB()
+  final Intent fNt()
   {
-    AppMethodBeat.i(202641);
+    AppMethodBeat.i(264462);
     try
     {
-      Object localObject2 = this.DET;
+      Object localObject2 = this.JRP;
       if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
         Intent localIntent = new Intent();
-        Object localObject1 = this.DEW;
+        Object localObject1 = this.JRR;
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          localObject2 = kc((String)localObject2, (String)localObject1);
+          localObject2 = kx((String)localObject2, (String)localObject1);
         }
         String str;
         do
@@ -91,35 +91,35 @@ final class b
           localIntent.putExtra("target_app_id", (String)localObject1);
           localIntent.setAction("android.intent.action.VIEW");
           localIntent.setData((Uri)localObject2);
-          if (!TextUtils.isEmpty(this.DEU)) {
-            localIntent.setPackage(this.DEU);
+          if (!TextUtils.isEmpty(this.JRQ)) {
+            localIntent.setPackage(this.JRQ);
           }
-          if (!TextUtils.isEmpty(this.DEX)) {
-            localIntent.putExtra("market_app_name", this.DEX);
+          if (!TextUtils.isEmpty(this.JRS)) {
+            localIntent.putExtra("market_app_name", this.JRS);
           }
-          AppMethodBeat.o(202641);
+          AppMethodBeat.o(264462);
           return localIntent;
           localObject2 = Uri.parse((String)localObject2);
           str = ((Uri)localObject2).getQueryParameter("id");
           localObject1 = str;
         } while (!TextUtils.isEmpty(str));
-        AppMethodBeat.o(202641);
+        AppMethodBeat.o(264462);
         return null;
       }
     }
     catch (Throwable localThrowable)
     {
       Log.e("MicroMsg.AdAppMarketIntentNode", "there is something wrong in toIntent");
-      AppMethodBeat.o(202641);
+      AppMethodBeat.o(264462);
       return null;
     }
-    AppMethodBeat.o(202641);
+    AppMethodBeat.o(264462);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.device.appstore.b
  * JD-Core Version:    0.7.0.1
  */

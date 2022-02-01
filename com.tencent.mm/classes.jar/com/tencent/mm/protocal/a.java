@@ -50,7 +50,7 @@ public class a
     }
   }
   
-  public static int gtq()
+  public static int hoC()
   {
     if (CrashReportFactory.foreground) {
       return 1;
@@ -60,7 +60,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.a
  * JD-Core Version:    0.7.0.1
  */

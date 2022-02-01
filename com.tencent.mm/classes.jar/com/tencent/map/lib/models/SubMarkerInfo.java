@@ -1,6 +1,6 @@
 package com.tencent.map.lib.models;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 @Keep
@@ -51,9 +51,9 @@ public class SubMarkerInfo
   
   public String toString()
   {
-    AppMethodBeat.i(193501);
+    AppMethodBeat.i(236049);
     String str = "SubMarkerInfo{mIconName='" + this.mIconName + '\'' + ", mIconWidth=" + this.mIconWidth + ", mIconHeight=" + this.mIconHeight + ", mInteractive=" + this.mInteractive + ", mIsAvoidAnnotation=" + this.mIsAvoidAnnotation + ", mAvoidOtherMarker=" + this.mAvoidOtherMarker + '}';
-    AppMethodBeat.o(193501);
+    AppMethodBeat.o(236049);
     return str;
   }
 }

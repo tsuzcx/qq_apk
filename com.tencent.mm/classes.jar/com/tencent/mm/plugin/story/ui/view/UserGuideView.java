@@ -13,19 +13,23 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.story.a.d;
+import com.tencent.mm.plugin.story.a.e;
+import com.tencent.mm.plugin.story.a.f;
+import com.tencent.mm.plugin.story.a.g;
 import com.tencent.mm.plugin.story.c.a.e;
-import com.tencent.mm.ui.at;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.ax;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/view/UserGuideView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "clickListener", "Lkotlin/Function0;", "", "getClickListener", "()Lkotlin/jvm/functions/Function0;", "setClickListener", "(Lkotlin/jvm/functions/Function0;)V", "initNewGuide", "initOldGuide", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/view/UserGuideView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "clickListener", "Lkotlin/Function0;", "", "getClickListener", "()Lkotlin/jvm/functions/Function0;", "setClickListener", "(Lkotlin/jvm/functions/Function0;)V", "initNewGuide", "initOldGuide", "plugin-story_release"})
 public final class UserGuideView
   extends RelativeLayout
 {
-  private kotlin.g.a.a<x> FEi;
+  private kotlin.g.a.a<x> LYk;
   
   public UserGuideView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,12 +42,12 @@ public final class UserGuideView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(120311);
-    if (e.Fln.fng())
+    if (e.LFp.gbz())
     {
-      View.inflate(getContext(), 2131496627, (ViewGroup)this);
-      setOnClickListener((View.OnClickListener)a.FEj);
-      paramContext = findViewById(2131308702);
-      p.g(paramContext, "findViewById<View>(R.id.story_user_guide_btn)");
+      View.inflate(getContext(), a.e.LDs, (ViewGroup)this);
+      setOnClickListener((View.OnClickListener)a.LYl);
+      paramContext = findViewById(a.d.LCr);
+      p.j(paramContext, "findViewById<View>(R.id.story_user_guide_btn)");
       paramContext = paramContext.getLayoutParams();
       if (paramContext == null)
       {
@@ -51,49 +55,49 @@ public final class UserGuideView
         AppMethodBeat.o(120311);
         throw paramContext;
       }
-      ((ViewGroup.MarginLayoutParams)paramContext).bottomMargin = (at.fromDPToPix(getContext(), 64) + au.aD(getContext()));
-      findViewById(2131308702).setOnClickListener((View.OnClickListener)new b(this));
+      ((ViewGroup.MarginLayoutParams)paramContext).bottomMargin = (aw.fromDPToPix(getContext(), 64) + ax.aB(getContext()));
+      findViewById(a.d.LCr).setOnClickListener((View.OnClickListener)new b(this));
       AppMethodBeat.o(120311);
       return;
     }
-    View.inflate(getContext(), 2131496626, (ViewGroup)this);
+    View.inflate(getContext(), a.e.LDr, (ViewGroup)this);
     setBackgroundColor(-13421773);
-    paramContext = findViewById(2131308704);
-    p.g(paramContext, "findViewById(R.id.story_user_guide_content_2)");
+    paramContext = findViewById(a.d.LCt);
+    p.j(paramContext, "findViewById(R.id.story_user_guide_content_2)");
     paramContext = (TextView)paramContext;
-    paramAttributeSet = getContext().getString(2131766568);
-    p.g(paramAttributeSet, "context.getString(R.stri…ory_user_guide_content_2)");
+    paramAttributeSet = getContext().getString(a.g.LCt);
+    p.j(paramAttributeSet, "context.getString(R.stri…ory_user_guide_content_2)");
     SpannableString localSpannableString = new SpannableString((CharSequence)paramAttributeSet);
-    Drawable localDrawable = getResources().getDrawable(2131689912);
-    paramInt = com.tencent.mm.cb.a.fromDPToPix(getContext(), 10);
+    Drawable localDrawable = getResources().getDrawable(a.f.chatting_avatar_story_hint);
+    paramInt = com.tencent.mm.ci.a.fromDPToPix(getContext(), 10);
     localDrawable.setBounds(0, 0, paramInt, paramInt);
-    localSpannableString.setSpan(new com.tencent.mm.ui.widget.a(localDrawable), paramAttributeSet.length() - 3, paramAttributeSet.length() - 2, 17);
+    localSpannableString.setSpan(new com.tencent.mm.ui.widget.a(localDrawable, 1), paramAttributeSet.length() - 3, paramAttributeSet.length() - 2, 17);
     paramContext.setText((CharSequence)localSpannableString);
-    setOnClickListener((View.OnClickListener)c.FEl);
-    findViewById(2131308703).setOnClickListener((View.OnClickListener)new d(this));
+    setOnClickListener((View.OnClickListener)c.LYn);
+    findViewById(a.d.LCs).setOnClickListener((View.OnClickListener)new d(this));
     AppMethodBeat.o(120311);
   }
   
   public final kotlin.g.a.a<x> getClickListener()
   {
-    return this.FEi;
+    return this.LYk;
   }
   
   public final void setClickListener(kotlin.g.a.a<x> parama)
   {
-    this.FEi = parama;
+    this.LYk = parama;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class a
     implements View.OnClickListener
   {
-    public static final a FEj;
+    public static final a LYl;
     
     static
     {
       AppMethodBeat.i(120306);
-      FEj = new a();
+      LYl = new a();
       AppMethodBeat.o(120306);
     }
     
@@ -101,14 +105,14 @@ public final class UserGuideView
     {
       AppMethodBeat.i(120305);
       b localb = new b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/UserGuideView$initNewGuide$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/view/UserGuideView$initNewGuide$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/view/UserGuideView$initNewGuide$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(120305);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
@@ -118,9 +122,9 @@ public final class UserGuideView
     {
       AppMethodBeat.i(120307);
       b localb = new b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/UserGuideView$initNewGuide$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      paramView = this.FEk.getClickListener();
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/view/UserGuideView$initNewGuide$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      paramView = this.LYm.getClickListener();
       if (paramView != null) {
         paramView.invoke();
       }
@@ -129,16 +133,16 @@ public final class UserGuideView
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
-    public static final c FEl;
+    public static final c LYn;
     
     static
     {
       AppMethodBeat.i(120309);
-      FEl = new c();
+      LYn = new c();
       AppMethodBeat.o(120309);
     }
     
@@ -146,14 +150,14 @@ public final class UserGuideView
     {
       AppMethodBeat.i(120308);
       b localb = new b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/UserGuideView$initOldGuide$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/view/UserGuideView$initOldGuide$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/view/UserGuideView$initOldGuide$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(120308);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class d
     implements View.OnClickListener
   {
@@ -163,9 +167,9 @@ public final class UserGuideView
     {
       AppMethodBeat.i(120310);
       b localb = new b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/view/UserGuideView$initOldGuide$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      paramView = this.FEk.getClickListener();
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/view/UserGuideView$initOldGuide$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      paramView = this.LYm.getClickListener();
       if (paramView != null) {
         paramView.invoke();
       }

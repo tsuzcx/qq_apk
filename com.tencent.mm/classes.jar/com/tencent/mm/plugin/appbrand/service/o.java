@@ -5,13 +5,13 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface o
   extends a
 {
-  public abstract int beL();
+  public abstract int boa();
   
-  public abstract int beM();
+  public abstract int bob();
   
-  public abstract boolean beN();
+  public abstract boolean boc();
   
-  public abstract String beO();
+  public abstract String bod();
 }
 
 

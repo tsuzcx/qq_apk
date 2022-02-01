@@ -2,9 +2,9 @@ package com.tencent.mm.ui.base.preference;
 
 public abstract interface g
 {
-  public abstract void bfe(String paramString);
+  public abstract void brA(String paramString);
   
-  public abstract int grS();
+  public abstract int hmS();
 }
 
 

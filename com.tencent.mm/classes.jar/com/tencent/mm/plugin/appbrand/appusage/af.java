@@ -1,11 +1,9 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c.a;
-import com.tencent.mm.co.f;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.bzl;
+import com.tencent.mm.an.c.a;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.protocal.protobuf.chf;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
@@ -16,21 +14,21 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appusage/FetchStarListLogic;", "", "()V", "Companion", "IFetchStartListCallback", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appusage/FetchStarListLogic;", "", "()V", "Companion", "IFetchStartListCallback", "plugin-appbrand-integration_release"})
 public final class af
 {
-  public static final a kVR;
-  private static final long kVx;
+  private static final long nPK;
+  public static final a nQe;
   
   static
   {
     AppMethodBeat.i(50295);
-    kVR = new a((byte)0);
-    kVx = TimeUnit.DAYS.toSeconds(1L);
+    nQe = new a((byte)0);
+    nPK = TimeUnit.DAYS.toSeconds(1L);
     AppMethodBeat.o(50295);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appusage/FetchStarListLogic$Companion;", "", "()V", "FETCH_FREQUENCY", "", "TAG", "", "fetchListFromServer", "", "reason", "", "prescene", "callback", "Lcom/tencent/mm/plugin/appbrand/appusage/FetchStarListLogic$IFetchStartListCallback;", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appusage/FetchStarListLogic$Companion;", "", "()V", "FETCH_FREQUENCY", "", "TAG", "", "fetchListFromServer", "", "reason", "", "prescene", "callback", "Lcom/tencent/mm/plugin/appbrand/appusage/FetchStarListLogic$IFetchStartListCallback;", "plugin-appbrand-integration_release"})
   public static final class a
   {
     private static void a(final int paramInt1, int paramInt2, af.b paramb)
@@ -45,9 +43,9 @@ public final class af
         }
         try
         {
-          Object localObject = g.aAh();
-          p.g(localObject, "MMKernel.storage()");
-          localObject = ((e)localObject).azQ().get(ar.a.NXN, Long.valueOf(0L));
+          Object localObject = h.aHG();
+          p.j(localObject, "MMKernel.storage()");
+          localObject = ((com.tencent.mm.kernel.f)localObject).aHp().get(ar.a.VlN, Long.valueOf(0L));
           if (localObject == null)
           {
             localObject = new t("null cannot be cast to non-null type kotlin.Long");
@@ -68,7 +66,7 @@ public final class af
           Log.d("MicroMsg.AppBrandCollectionModifyQueue[collection].FetchStarListLogic", "daily fetch blocked by frequency");
           if (paramb != null)
           {
-            paramb.bxE();
+            paramb.bIU();
             AppMethodBeat.o(50293);
             return;
             i = 0;
@@ -80,17 +78,17 @@ public final class af
           return;
         }
       }
-      e locale = g.aAh();
-      p.g(locale, "MMKernel.storage()");
-      locale.azQ().set(ar.a.NXN, Long.valueOf(Util.nowSecond() + af.byu()));
+      com.tencent.mm.kernel.f localf = h.aHG();
+      p.j(localf, "MMKernel.storage()");
+      localf.aHp().set(ar.a.VlN, Long.valueOf(Util.nowSecond() + af.bJI()));
       label190:
       Log.i("MicroMsg.AppBrandCollectionModifyQueue[collection].FetchStarListLogic", "fetchList reason=" + paramInt1 + ", prescene=" + paramInt2);
       final long l = Util.nowMilliSecond();
-      new z(paramInt1, paramInt2, 2, 2147483647, 0).aYI().j((a)new a(paramb, paramInt1, l));
+      new z(paramInt1, paramInt2, 2, 2147483647, 0).bhW().j((a)new a(paramb, paramInt1, l));
       AppMethodBeat.o(50293);
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetWxaUsageRecordResponse;", "kotlin.jvm.PlatformType", "back", "call"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetWxaUsageRecordResponse;", "kotlin.jvm.PlatformType", "back", "call"})
     static final class a<_Ret, _Var>
       implements a<_Ret, _Var>
     {
@@ -98,17 +96,17 @@ public final class af
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appusage/FetchStarListLogic$IFetchStartListCallback;", "", "onCgiBack", "", "back", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetWxaUsageRecordResponse;", "onHitFrequencyLimit", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/appusage/FetchStarListLogic$IFetchStartListCallback;", "", "onCgiBack", "", "back", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetWxaUsageRecordResponse;", "onHitFrequencyLimit", "plugin-appbrand-integration_release"})
   public static abstract interface b
   {
-    public abstract void b(c.a<bzl> parama);
+    public abstract void b(c.a<chf> parama);
     
-    public abstract void bxE();
+    public abstract void bIU();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.af
  * JD-Core Version:    0.7.0.1
  */

@@ -9,18 +9,18 @@ import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
 public final class i
   extends ReentrantReadWriteLock
 {
-  public Condition Sfu;
+  public Condition ZIf;
   
   public i()
   {
-    AppMethodBeat.i(189665);
-    this.Sfu = writeLock().newCondition();
-    AppMethodBeat.o(189665);
+    AppMethodBeat.i(222303);
+    this.ZIf = writeLock().newCondition();
+    AppMethodBeat.o(222303);
   }
   
-  public final boolean OG(long paramLong)
+  public final boolean WW(long paramLong)
   {
-    AppMethodBeat.i(189666);
+    AppMethodBeat.i(222305);
     boolean bool2 = false;
     int i = 3;
     for (;;)
@@ -30,8 +30,8 @@ public final class i
       if (i >= 0) {}
       try
       {
-        bool1 = this.Sfu.await(500L, TimeUnit.MILLISECONDS);
-        AppMethodBeat.o(189666);
+        bool1 = this.ZIf.await(500L, TimeUnit.MILLISECONDS);
+        AppMethodBeat.o(222305);
         return bool1;
       }
       catch (InterruptedException localInterruptedException)
@@ -43,7 +43,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.utils.i
  * JD-Core Version:    0.7.0.1
  */

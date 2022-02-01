@@ -3,15 +3,14 @@ package com.tencent.mm.plugin.finder.nearby.person;
 import android.content.Context;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.b.j;
 import com.tencent.mm.plugin.finder.nearby.base.AbsNearByFragment;
-import com.tencent.mm.plugin.finder.nearby.report.b;
-import com.tencent.mm.plugin.finder.nearby.report.d;
+import com.tencent.mm.plugin.finder.nearby.report.c;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.SmoothScrollFactory;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.o.f;
-import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.base.q.f;
+import com.tencent.mm.ui.base.q.g;
 import com.tencent.mm.ui.component.UIComponent;
-import com.tencent.mm.ui.widget.a.e;
 import com.tencent.mm.ui.widget.a.e.a;
 import com.tencent.mm.ui.widget.a.e.b;
 import java.util.HashMap;
@@ -19,7 +18,7 @@ import java.util.Set;
 import kotlin.a.ak;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/nearby/person/NearbyPersonFragment;", "Lcom/tencent/mm/plugin/finder/nearby/base/AbsNearByFragment;", "()V", "getClickTabContextId", "", "getCommentScene", "", "getPageName", "getReportType", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onActionbarClick", "", "onActionbarDoubleClick", "onMenuClick", "onUserVisibleFocused", "onUserVisibleUnFocused", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/nearby/person/NearbyPersonFragment;", "Lcom/tencent/mm/plugin/finder/nearby/base/AbsNearByFragment;", "()V", "getClickTabId", "", "getCommentScene", "", "getPageName", "getReportType", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onActionbarClick", "", "onActionbarDoubleClick", "onMenuClick", "onUserVisibleFocused", "onUserVisibleUnFocused", "plugin-finder-nearby_release"})
 public final class NearbyPersonFragment
   extends AbsNearByFragment
 {
@@ -27,101 +26,101 @@ public final class NearbyPersonFragment
   
   public NearbyPersonFragment()
   {
-    super(2131763492, 1003);
+    super(b.j.nearby_tab_person, 1003);
   }
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(249258);
+    AppMethodBeat.i(200945);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(249258);
+    AppMethodBeat.o(200945);
   }
   
-  public final String ack()
-  {
-    return "1003";
-  }
-  
-  public final String afB()
+  public final String akA()
   {
     return "77-1003";
   }
   
-  public final int ddN()
+  public final void dLs()
   {
-    return 0;
-  }
-  
-  public final void dlk()
-  {
-    AppMethodBeat.i(249255);
-    super.dlk();
+    AppMethodBeat.i(200940);
+    super.dLs();
     if (getActivity() == null)
     {
       Log.w("MicroMsg.UIComponentFragment", "onMenuClick()");
-      AppMethodBeat.o(249255);
+      AppMethodBeat.o(200940);
       return;
     }
-    Object localObject = (NearbyPersonV1UIC)component(NearbyPersonV1UIC.class);
-    ((NearbyPersonV1UIC)localObject).uSx = new e((Context)((NearbyPersonV1UIC)localObject).getActivity(), 1, false);
-    e locale = ((NearbyPersonV1UIC)localObject).uSx;
+    Object localObject = (b)component(b.class);
+    ((b)localObject).zHL = new com.tencent.mm.ui.widget.a.e((Context)((b)localObject).getActivity(), 1, false);
+    com.tencent.mm.ui.widget.a.e locale = ((b)localObject).zHL;
     if (locale != null) {
-      locale.a((o.f)NearbyPersonV1UIC.s.uSV);
+      locale.a((q.f)b.s.zIj);
     }
-    locale = ((NearbyPersonV1UIC)localObject).uSx;
+    locale = ((b)localObject).zHL;
     if (locale != null) {
-      locale.a((o.g)new NearbyPersonV1UIC.t((NearbyPersonV1UIC)localObject));
+      locale.a((q.g)new b.t((b)localObject));
     }
-    locale = ((NearbyPersonV1UIC)localObject).uSx;
+    locale = ((b)localObject).zHL;
     if (locale != null) {
-      locale.a((e.a)NearbyPersonV1UIC.u.uSW);
+      locale.a((e.a)b.u.zIk);
     }
-    locale = ((NearbyPersonV1UIC)localObject).uSx;
+    locale = ((b)localObject).zHL;
     if (locale != null) {
-      locale.b((e.b)NearbyPersonV1UIC.v.uSX);
+      locale.b((e.b)b.v.zIl);
     }
-    localObject = ((NearbyPersonV1UIC)localObject).uSx;
+    localObject = ((b)localObject).zHL;
     if (localObject != null) {
-      ((e)localObject).dGm();
+      ((com.tencent.mm.ui.widget.a.e)localObject).eik();
     }
-    localObject = b.uSZ;
-    b.a("", 0L, "", "", "", 0L, 3L, 3L);
-    AppMethodBeat.o(249255);
+    localObject = c.zJb;
+    c.a("", 0L, "", "", "", 0L, 3L, 3L);
+    AppMethodBeat.o(200940);
   }
   
-  public final void dll()
+  public final void dLt()
   {
-    AppMethodBeat.i(249253);
-    super.dll();
+    AppMethodBeat.i(200935);
+    super.dLt();
     if (getActivity() == null)
     {
       Log.w("MicroMsg.UIComponentFragment", "onActionbarClick()");
-      AppMethodBeat.o(249253);
+      AppMethodBeat.o(200935);
       return;
     }
-    component(NearbyPersonV1UIC.class);
-    AppMethodBeat.o(249253);
+    component(b.class);
+    AppMethodBeat.o(200935);
   }
   
-  public final void dlm()
+  public final void dLu()
   {
-    AppMethodBeat.i(249254);
-    super.dlm();
+    AppMethodBeat.i(200937);
+    super.dLu();
     if (getActivity() == null)
     {
       Log.w("MicroMsg.UIComponentFragment", "onActionbarDoubleClick()");
-      AppMethodBeat.o(249254);
+      AppMethodBeat.o(200937);
       return;
     }
-    Object localObject1 = ((NearbyPersonV1UIC)component(NearbyPersonV1UIC.class)).khv;
-    localObject1 = new com.tencent.mm.hellhoundlib.b.a().bl(localObject1);
+    Object localObject1 = ((b)component(b.class)).mYU;
+    localObject1 = new com.tencent.mm.hellhoundlib.b.a().bm(localObject1);
     Object localObject2 = new Object();
-    com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).axQ(), "com/tencent/mm/plugin/finder/nearby/person/NearbyPersonV1UIC", "onActionbarDoubleClick", "()V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-    BackwardSupportUtil.SmoothScrollFactory.scrollToTop((ListView)((com.tencent.mm.hellhoundlib.b.a)localObject1).pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(localObject2, "com/tencent/mm/plugin/finder/nearby/person/NearbyPersonV1UIC", "onActionbarDoubleClick", "()V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-    AppMethodBeat.o(249254);
+    com.tencent.mm.hellhoundlib.a.a.b(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aFh(), "com/tencent/mm/plugin/finder/nearby/person/NearbyPersonV1UIC", "onActionbarDoubleClick", "()V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+    BackwardSupportUtil.SmoothScrollFactory.scrollToTop((ListView)((com.tencent.mm.hellhoundlib.b.a)localObject1).sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject2, "com/tencent/mm/plugin/finder/nearby/person/NearbyPersonV1UIC", "onActionbarDoubleClick", "()V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+    AppMethodBeat.o(200937);
+  }
+  
+  public final String dLv()
+  {
+    return "1003";
+  }
+  
+  public final int duR()
+  {
+    return 0;
   }
   
   public final int getCommentScene()
@@ -131,28 +130,28 @@ public final class NearbyPersonFragment
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(249252);
-    Set localSet = ak.setOf(NearbyPersonV1UIC.class);
-    AppMethodBeat.o(249252);
+    AppMethodBeat.i(200934);
+    Set localSet = ak.setOf(b.class);
+    AppMethodBeat.o(200934);
     return localSet;
   }
   
   public final void onUserVisibleFocused()
   {
-    AppMethodBeat.i(249256);
+    AppMethodBeat.i(200941);
     super.onUserVisibleFocused();
-    d locald = d.uTq;
-    d.b((AbsNearByFragment)this);
-    AppMethodBeat.o(249256);
+    com.tencent.mm.plugin.finder.nearby.report.e locale = com.tencent.mm.plugin.finder.nearby.report.e.zJs;
+    com.tencent.mm.plugin.finder.nearby.report.e.d((AbsNearByFragment)this);
+    AppMethodBeat.o(200941);
   }
   
   public final void onUserVisibleUnFocused()
   {
-    AppMethodBeat.i(249257);
+    AppMethodBeat.i(200942);
     super.onUserVisibleUnFocused();
-    d locald = d.uTq;
-    d.c((AbsNearByFragment)this);
-    AppMethodBeat.o(249257);
+    com.tencent.mm.plugin.finder.nearby.report.e locale = com.tencent.mm.plugin.finder.nearby.report.e.zJs;
+    com.tencent.mm.plugin.finder.nearby.report.e.e((AbsNearByFragment)this);
+    AppMethodBeat.o(200942);
   }
 }
 

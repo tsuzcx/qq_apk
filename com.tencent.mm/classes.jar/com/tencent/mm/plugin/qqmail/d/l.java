@@ -4,13 +4,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import g.a.a.b;
 
 public class l
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int Bry;
-  public int bNi;
+  public String Ejj;
+  public int HlR;
+  public int bPh;
   public String name;
   public String pinyin;
-  public String yFq;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -24,41 +24,41 @@ public class l
         AppMethodBeat.o(122694);
         throw paramVarArgs;
       }
-      if (this.yFq == null)
+      if (this.Ejj == null)
       {
         paramVarArgs = new b("Not all required fields were included: addr");
         AppMethodBeat.o(122694);
         throw paramVarArgs;
       }
-      paramVarArgs.aM(1, this.bNi);
+      paramVarArgs.aY(1, this.bPh);
       if (this.name != null) {
-        paramVarArgs.e(2, this.name);
+        paramVarArgs.f(2, this.name);
       }
-      if (this.yFq != null) {
-        paramVarArgs.e(3, this.yFq);
+      if (this.Ejj != null) {
+        paramVarArgs.f(3, this.Ejj);
       }
-      paramVarArgs.aM(4, this.Bry);
+      paramVarArgs.aY(4, this.HlR);
       if (this.pinyin != null) {
-        paramVarArgs.e(5, this.pinyin);
+        paramVarArgs.f(5, this.pinyin);
       }
       AppMethodBeat.o(122694);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bu(1, this.bNi) + 0;
+      int i = g.a.a.b.b.a.bM(1, this.bPh) + 0;
       paramInt = i;
       if (this.name != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.name);
+        paramInt = i + g.a.a.b.b.a.g(2, this.name);
       }
       i = paramInt;
-      if (this.yFq != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.yFq);
+      if (this.Ejj != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.Ejj);
       }
-      i += g.a.a.b.b.a.bu(4, this.Bry);
+      i += g.a.a.b.b.a.bM(4, this.HlR);
       paramInt = i;
       if (this.pinyin != null) {
-        paramInt = i + g.a.a.b.b.a.f(5, this.pinyin);
+        paramInt = i + g.a.a.b.b.a.g(5, this.pinyin);
       }
       AppMethodBeat.o(122694);
       return paramInt;
@@ -66,9 +66,9 @@ public class l
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
       if (this.name == null)
@@ -77,7 +77,7 @@ public class l
         AppMethodBeat.o(122694);
         throw paramVarArgs;
       }
-      if (this.yFq == null)
+      if (this.Ejj == null)
       {
         paramVarArgs = new b("Not all required fields were included: addr");
         AppMethodBeat.o(122694);
@@ -96,23 +96,23 @@ public class l
         AppMethodBeat.o(122694);
         return -1;
       case 1: 
-        locall.bNi = locala.UbS.zi();
+        locall.bPh = locala.abFh.AK();
         AppMethodBeat.o(122694);
         return 0;
       case 2: 
-        locall.name = locala.UbS.readString();
+        locall.name = locala.abFh.readString();
         AppMethodBeat.o(122694);
         return 0;
       case 3: 
-        locall.yFq = locala.UbS.readString();
+        locall.Ejj = locala.abFh.readString();
         AppMethodBeat.o(122694);
         return 0;
       case 4: 
-        locall.Bry = locala.UbS.zi();
+        locall.HlR = locala.abFh.AK();
         AppMethodBeat.o(122694);
         return 0;
       }
-      locall.pinyin = locala.UbS.readString();
+      locall.pinyin = locala.abFh.readString();
       AppMethodBeat.o(122694);
       return 0;
     }
@@ -122,7 +122,7 @@ public class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.d.l
  * JD-Core Version:    0.7.0.1
  */

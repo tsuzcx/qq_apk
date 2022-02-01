@@ -1,95 +1,220 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
+import android.database.Cursor;
+import android.os.StatFs;
+import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.loader.a;
-import com.tencent.mm.plugin.appbrand.appstorage.n;
+import com.tencent.mm.f.b.a.op;
+import com.tencent.mm.plugin.appbrand.app.m;
+import com.tencent.mm.plugin.appbrand.config.y;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.vfs.u;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Locale;
 
 public final class ad
 {
-  private static String[] kLP = { "__APP__", "__WITHOUT_PLUGINCODE__", "__WITHOUT_MULTI_PLUGINCODE__", "__PLUGINCODE__" };
-  private final String appId;
-  private final String cBp;
-  private volatile String kLO;
+  private static final byte[] nFB = new byte[0];
   
-  public ad(String paramString)
+  public static b a(long paramLong, a parama)
   {
-    this.appId = paramString;
-    this.cBp = null;
-  }
-  
-  public ad(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(146000);
-    this.appId = paramString1;
-    this.cBp = Ve(paramString2);
-    AppMethodBeat.o(146000);
-  }
-  
-  public ad(String paramString1, String paramString2, int paramInt)
-  {
-    AppMethodBeat.i(146002);
-    switch (paramInt)
+    AppMethodBeat.i(44310);
+    if (paramLong <= 0L)
     {
-    default: 
-      this.cBp = Ve(paramString2);
+      parama = b.nFD;
+      AppMethodBeat.o(44310);
+      return parama;
     }
-    for (;;)
+    Object localObject1 = new StatFs(bc.bHt());
+    int i = ((StatFs)localObject1).getAvailableBlocks();
+    long l = ((StatFs)localObject1).getBlockSize() * i;
+    if ((l < 0L) || (l > paramLong))
     {
-      this.appId = paramString1;
-      AppMethodBeat.o(146002);
-      return;
-      this.cBp = "";
-      continue;
-      this.cBp = (Ve(paramString2) + '$' + "__WITHOUT_PLUGINCODE__");
-      continue;
-      this.cBp = (Ve(paramString2) + '$' + "__WITHOUT_MULTI_PLUGINCODE__");
-      continue;
-      this.cBp = "__PLUGINCODE__";
-      continue;
-      this.cBp = "__WITHOUT_PLUGINCODE__";
-      continue;
-      this.cBp = "__WITHOUT_MULTI_PLUGINCODE__";
+      parama = b.nFD;
+      AppMethodBeat.o(44310);
+      return parama;
     }
-  }
-  
-  private static String Ve(String paramString)
-  {
-    AppMethodBeat.i(146001);
-    if ((Util.isNullOrNil(paramString)) || (a.contains(kLP, paramString)))
+    localObject1 = (aj)m.W(aj.class);
+    if (localObject1 == null)
     {
-      AppMethodBeat.o(146001);
-      return paramString;
+      Log.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimBy %d, lruStorage NULL", new Object[] { Long.valueOf(paramLong) });
+      parama = b.nFF;
+      AppMethodBeat.o(44310);
+      return parama;
     }
-    paramString = n.We(paramString);
-    AppMethodBeat.o(146001);
-    return paramString;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(146003);
-    StringBuilder localStringBuilder;
-    if (Util.isNullOrNil(this.kLO))
+    Object localObject4 = String.format(Locale.US, " %s, %s ASC", new Object[] { "hit", "hitTimeMS" });
+    Object localObject3 = new LinkedList();
+    synchronized (nFB)
     {
-      localStringBuilder = new StringBuilder().append(this.appId);
-      if (!Util.isNullOrNil(this.cBp)) {
-        break label67;
+      localObject4 = ((aj)localObject1).db.query("PkgUsageLRURecord", new String[] { "appId", "type" }, null, null, null, null, (String)localObject4, 2);
+      if (localObject4 == null)
+      {
+        parama = b.nFF;
+        AppMethodBeat.o(44310);
+        return parama;
+      }
+      if (!((Cursor)localObject4).moveToFirst())
+      {
+        ((Cursor)localObject4).close();
+        parama = b.nFF;
+        AppMethodBeat.o(44310);
+        return parama;
+      }
+      try
+      {
+        boolean bool;
+        do
+        {
+          ((LinkedList)localObject3).add(Pair.create(((Cursor)localObject4).getString(0), Integer.valueOf(((Cursor)localObject4).getInt(1))));
+          bool = ((Cursor)localObject4).moveToNext();
+        } while (bool);
+        ((Cursor)localObject4).close();
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          Log.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimBy, read from cursor e = %s", new Object[] { localException });
+          ((Cursor)localObject4).close();
+        }
+        parama = finally;
+        AppMethodBeat.o(44310);
+        throw parama;
+      }
+      finally
+      {
+        ((Cursor)localObject4).close();
+        AppMethodBeat.o(44310);
+      }
+      ??? = m.bFP();
+      if (??? == null)
+      {
+        Log.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimBy %d, pkgStorage NULL", new Object[] { Long.valueOf(paramLong) });
+        parama = b.nFF;
+        AppMethodBeat.o(44310);
+        return parama;
       }
     }
-    label67:
-    for (String str = "";; str = "$" + this.cBp)
+    a(parama);
+    localObject3 = ((LinkedList)localObject3).iterator();
+    l = 0L;
+    i = 0;
+    while (((Iterator)localObject3).hasNext())
     {
-      this.kLO = str;
-      str = this.kLO;
-      AppMethodBeat.o(146003);
-      return str;
+      localObject4 = (Pair)((Iterator)localObject3).next();
+      Iterator localIterator = ((bm)???).a((String)((Pair)localObject4).first, ((Integer)((Pair)localObject4).second).intValue(), bm.a.nHP, new String[] { "pkgPath" }).iterator();
+      while (localIterator.hasNext())
+      {
+        bh localbh = (bh)localIterator.next();
+        l = u.bBQ(localbh.field_pkgPath) + l;
+        u.deleteFile(localbh.field_pkgPath);
+        i += 1;
+        ((aj)localObject1).bk((String)((Pair)localObject4).first, ((Integer)((Pair)localObject4).second).intValue());
+        a(parama);
+        if (l >= paramLong)
+        {
+          parama = new op();
+          parama.hci = 3L;
+          parama.hck = i;
+          parama.hcg = 1L;
+          parama.bpa();
+          parama = b.nFE;
+          AppMethodBeat.o(44310);
+          return parama;
+        }
+      }
     }
+    parama = b.nFF;
+    AppMethodBeat.o(44310);
+    return parama;
+  }
+  
+  private static void a(a parama)
+  {
+    AppMethodBeat.i(44311);
+    if ((parama != null) && (parama.bBN()))
+    {
+      parama = new InterruptedException();
+      AppMethodBeat.o(44311);
+      throw parama;
+    }
+    AppMethodBeat.o(44311);
+  }
+  
+  public static void bj(String arg0, int paramInt)
+  {
+    AppMethodBeat.i(44308);
+    if (Util.isNullOrNil(???))
+    {
+      AppMethodBeat.o(44308);
+      return;
+    }
+    String str = y.afi(???);
+    if (Util.isNullOrNil(str))
+    {
+      AppMethodBeat.o(44308);
+      return;
+    }
+    aj localaj = (aj)m.W(aj.class);
+    if (localaj == null)
+    {
+      AppMethodBeat.o(44308);
+      return;
+    }
+    synchronized (nFB)
+    {
+      ai localai = new ai();
+      localai.field_appId = str;
+      localai.field_type = paramInt;
+      if (localaj.get(localai, ai.nDP))
+      {
+        localai.field_hit += 1;
+        localai.field_hitTimeMS = Util.nowMilliSecond();
+        localaj.update(localai, ai.nDP);
+        AppMethodBeat.o(44308);
+        return;
+      }
+      localai.field_hit = 1;
+      localai.field_hitTimeMS = Util.nowMilliSecond();
+      localaj.insert(localai);
+    }
+  }
+  
+  public static abstract interface a
+  {
+    public static final a nFC = new a()
+    {
+      public final boolean bBN()
+      {
+        return false;
+      }
+    };
+    
+    public abstract boolean bBN();
+  }
+  
+  public static enum b
+  {
+    static
+    {
+      AppMethodBeat.i(44307);
+      nFD = new b("NO_NEED", 0);
+      nFE = new b("TRIMMED", 1);
+      nFF = new b("TRIM_FAIL", 2);
+      nFG = new b[] { nFD, nFE, nFF };
+      AppMethodBeat.o(44307);
+    }
+    
+    private b() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ad
  * JD-Core Version:    0.7.0.1
  */

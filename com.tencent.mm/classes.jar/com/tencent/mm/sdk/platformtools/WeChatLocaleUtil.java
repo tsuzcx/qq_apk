@@ -10,17 +10,17 @@ public class WeChatLocaleUtil
 {
   public static boolean isOverseasUser()
   {
-    AppMethodBeat.i(200974);
+    AppMethodBeat.i(249042);
     if (!Locale.getDefault().getCountry().equalsIgnoreCase("CN"))
     {
-      AppMethodBeat.o(200974);
+      AppMethodBeat.o(249042);
       return true;
     }
     Object localObject = TimeZone.getDefault();
     TimeZone localTimeZone = TimeZone.getTimeZone("GMT+08:00");
     if (((TimeZone)localObject).getRawOffset() != localTimeZone.getRawOffset())
     {
-      AppMethodBeat.o(200974);
+      AppMethodBeat.o(249042);
       return true;
     }
     localObject = (TelephonyManager)MMApplicationContext.getContext().getSystemService("phone");
@@ -29,11 +29,11 @@ public class WeChatLocaleUtil
       localObject = ((TelephonyManager)localObject).getNetworkCountryIso();
       if ((!Util.isNullOrNil((String)localObject)) && (!((String)localObject).contains("cn")) && (!((String)localObject).contains("CN")))
       {
-        AppMethodBeat.o(200974);
+        AppMethodBeat.o(249042);
         return true;
       }
     }
-    AppMethodBeat.o(200974);
+    AppMethodBeat.o(249042);
     return false;
   }
   
@@ -76,7 +76,7 @@ public class WeChatLocaleUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.WeChatLocaleUtil
  * JD-Core Version:    0.7.0.1
  */

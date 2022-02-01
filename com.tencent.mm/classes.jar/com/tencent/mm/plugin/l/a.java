@@ -1,80 +1,63 @@
 package com.tencent.mm.plugin.l;
 
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.be.w;
+import com.tencent.mm.kernel.api.bucket.b;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.y;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public final class a
+  extends y
+  implements b
 {
-  private static List<a> yOP;
-  private static String yOQ;
+  private static a uea;
   
-  /* Error */
-  public static List<a> aDm(String paramString)
+  private a()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: ldc 15
-    //   5: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: aload_0
-    //   9: ifnull +27 -> 36
-    //   12: aload_0
-    //   13: getstatic 23	com/tencent/mm/plugin/l/a:yOQ	Ljava/lang/String;
-    //   16: invokevirtual 29	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   19: ifeq +17 -> 36
-    //   22: getstatic 31	com/tencent/mm/plugin/l/a:yOP	Ljava/util/List;
-    //   25: astore_0
-    //   26: ldc 15
-    //   28: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   31: ldc 2
-    //   33: monitorexit
-    //   34: aload_0
-    //   35: areturn
-    //   36: aconst_null
-    //   37: astore_0
-    //   38: ldc 15
-    //   40: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   43: goto -12 -> 31
-    //   46: astore_0
-    //   47: ldc 2
-    //   49: monitorexit
-    //   50: aload_0
-    //   51: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	52	0	paramString	String
-    // Exception table:
-    //   from	to	target	type
-    //   3	8	46	finally
-    //   12	31	46	finally
-    //   38	43	46	finally
+    super(w.class);
   }
   
-  public static void z(String paramString, List<a> paramList)
+  public static String bcd()
+  {
+    AppMethodBeat.i(151486);
+    Object localObject = new StringBuilder();
+    h.aHH();
+    localObject = h.aHG().kcB + "package/";
+    AppMethodBeat.o(151486);
+    return localObject;
+  }
+  
+  public static a cPO()
   {
     try
     {
-      yOQ = paramString;
-      yOP = paramList;
-      return;
+      AppMethodBeat.i(151484);
+      if (uea == null) {
+        uea = new a();
+      }
+      a locala = uea;
+      AppMethodBeat.o(151484);
+      return locala;
     }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+    finally {}
   }
   
-  public static final class a
+  public final List<String> aHP()
   {
-    public String mRa;
-    public int yOR;
-    public SKBuiltinBuffer_t yOS;
+    AppMethodBeat.i(151485);
+    LinkedList localLinkedList = new LinkedList();
+    Collections.addAll(localLinkedList, new String[] { "package/" });
+    AppMethodBeat.o(151485);
+    return localLinkedList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.l.a
  * JD-Core Version:    0.7.0.1
  */

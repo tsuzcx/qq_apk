@@ -8,12 +8,8 @@ import com.google.firebase.messaging.RemoteMessage;
 import com.tencent.mars.comm.WakerLock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.booter.NotifyReceiver.NotifyService;
-import com.tencent.mm.br.c;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.kernel.l;
-import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.kernel.n;
+import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -25,20 +21,20 @@ import java.util.Map;
 public class WCFirebaseMessagingService
   extends FirebaseMessagingService
 {
-  static List<Pair<Long, Long>> tnI;
+  static List<Pair<Long, Long>> wUg;
   private WakerLock wakerlock;
   
   static
   {
     AppMethodBeat.i(127596);
-    tnI = new LinkedList();
+    wUg = new LinkedList();
     AppMethodBeat.o(127596);
   }
   
-  public static void cXl()
+  public static void dmt()
   {
     AppMethodBeat.i(127595);
-    tnI.clear();
+    wUg.clear();
     AppMethodBeat.o(127595);
   }
   
@@ -46,18 +42,18 @@ public class WCFirebaseMessagingService
   {
     AppMethodBeat.i(127594);
     Log.i("MicroMsg.FCM.WCFirebaseMessagingService", "on message received");
-    Object localObject1 = b.cXf();
+    Object localObject1 = b.dmn();
     if (localObject1 == null)
     {
       Log.w("MicroMsg.FCM.WCFirebaseMessagingService", "fcmRegister is null");
-      e.Cxv.idkeyStat(901L, 26L, 1L, false);
+      f.Iyx.idkeyStat(901L, 26L, 1L, false);
       AppMethodBeat.o(127594);
       return;
     }
-    if (!((b)localObject1).cXj())
+    if (!((b)localObject1).dmr())
     {
       Log.w("MicroMsg.FCM.WCFirebaseMessagingService", "fcm push not reg to server.");
-      e.Cxv.idkeyStat(901L, 25L, 1L, false);
+      f.Iyx.idkeyStat(901L, 25L, 1L, false);
       AppMethodBeat.o(127594);
       return;
     }
@@ -66,20 +62,20 @@ public class WCFirebaseMessagingService
       try
       {
         localObject1 = MMApplicationContext.getContext();
-        if (l.cK((Context)localObject1))
+        if (n.cG((Context)localObject1))
         {
           Log.i("MicroMsg.FCM.WCFirebaseMessagingService", "Logout or exit MM. no need show Notification.");
-          h.CyF.kvStat(11250, "1,2");
-          e.Cxv.idkeyStat(901L, 28L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.IzE.kvStat(11250, "1,2");
+          f.Iyx.idkeyStat(901L, 28L, 1L, false);
           AppMethodBeat.o(127594);
           return;
         }
-        Object localObject3 = paramRemoteMessage.yA();
+        Object localObject3 = paramRemoteMessage.yU();
         if (((Map)localObject3).isEmpty())
         {
           Log.i("MicroMsg.FCM.WCFirebaseMessagingService", "msg data is empty: ");
-          h.CyF.kvStat(11250, "1,0");
-          e.Cxv.idkeyStat(901L, 29L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.IzE.kvStat(11250, "1,0");
+          f.Iyx.idkeyStat(901L, 29L, 1L, false);
           AppMethodBeat.o(127594);
           return;
         }
@@ -94,7 +90,7 @@ public class WCFirebaseMessagingService
         String str6 = (String)((Map)localObject3).get("msgType");
         String str7 = (String)((Map)localObject3).get("badge");
         localObject3 = (String)((Map)localObject3).get("from");
-        e.Cxv.idkeyStat(901L, 32L, 1L, false);
+        f.Iyx.idkeyStat(901L, 32L, 1L, false);
         str8 = Util.secPrint(str8);
         if (str5 == null)
         {
@@ -111,13 +107,13 @@ public class WCFirebaseMessagingService
               continue;
             }
             l3 = 0L;
-            i = a.azs();
+            i = com.tencent.mm.kernel.b.aGP();
             if ((l1 != 0L) && (Integer.toHexString(i).equals(Long.toHexString(l1)))) {
               continue;
             }
             Log.e("MicroMsg.FCM.WCFirebaseMessagingService", "Logined user changed. no need show Notification.uin:" + l1 + ", oldUin:" + i);
-            h.CyF.kvStat(11250, "1,3");
-            paramRemoteMessage = e.Cxv;
+            com.tencent.mm.plugin.report.service.h.IzE.kvStat(11250, "1,3");
+            paramRemoteMessage = f.Iyx;
             if (l1 != 0L) {
               break label971;
             }
@@ -137,7 +133,7 @@ public class WCFirebaseMessagingService
         continue;
         long l3 = Util.getLong(str1, 0L);
         continue;
-        paramRemoteMessage = tnI.iterator();
+        paramRemoteMessage = wUg.iterator();
         if (paramRemoteMessage.hasNext())
         {
           localObject2 = (Pair)paramRemoteMessage.next();
@@ -148,13 +144,13 @@ public class WCFirebaseMessagingService
           if (i != 0)
           {
             Log.w("MicroMsg.FCM.WCFirebaseMessagingService", "already has this seq:".concat(String.valueOf(l2)));
-            e.Cxv.idkeyStat(901L, 35L, 1L, false);
+            f.Iyx.idkeyStat(901L, 35L, 1L, false);
             AppMethodBeat.o(127594);
             return;
           }
-          tnI.add(Pair.create(Long.valueOf(l3), Long.valueOf(l2)));
-          if (tnI.size() > 60) {
-            tnI.remove(0);
+          wUg.add(Pair.create(Long.valueOf(l3), Long.valueOf(l2)));
+          if (wUg.size() > 60) {
+            wUg.remove(0);
           }
           if (this.wakerlock == null)
           {
@@ -165,13 +161,13 @@ public class WCFirebaseMessagingService
           Log.i("MicroMsg.FCM.WCFirebaseMessagingService", "summerauths tryDoSync");
           paramRemoteMessage = new Intent(MMApplicationContext.getContext(), NotifyReceiver.NotifyService.class);
           paramRemoteMessage.putExtra("notify_option_type", 2);
-          paramRemoteMessage.putExtra("notify_uin", a.azs());
+          paramRemoteMessage.putExtra("notify_uin", com.tencent.mm.kernel.b.aGP());
           paramRemoteMessage.putExtra("notify_respType", 2147480001);
           paramRemoteMessage.putExtra("notify_respBuf", new byte[0]);
           paramRemoteMessage.putExtra("notfiy_recv_time", Util.nowMilliSecond());
-          g.aAi();
-          paramRemoteMessage.putExtra("notify_skey", g.aAg().qe(1));
-          c.startService(paramRemoteMessage);
+          com.tencent.mm.kernel.h.aHH();
+          paramRemoteMessage.putExtra("notify_skey", com.tencent.mm.kernel.h.aHF().sE(1));
+          com.tencent.mm.by.c.startService(paramRemoteMessage);
           Log.i("MicroMsg.FCM.WCFirebaseMessagingService", "summerauths tryDoSync end!");
           AppMethodBeat.o(127594);
           return;
@@ -181,7 +177,7 @@ public class WCFirebaseMessagingService
       {
         Log.e("MicroMsg.FCM.WCFirebaseMessagingService", "onMessageReceived error :".concat(String.valueOf(paramRemoteMessage.toString())));
         Log.printErrStackTrace("MicroMsg.FCM.WCFirebaseMessagingService", paramRemoteMessage, "", new Object[0]);
-        e.Cxv.idkeyStat(901L, 36L, 1L, false);
+        f.Iyx.idkeyStat(901L, 36L, 1L, false);
         AppMethodBeat.o(127594);
         return;
       }
@@ -196,8 +192,8 @@ public class WCFirebaseMessagingService
   {
     AppMethodBeat.i(127593);
     super.a(paramString, paramException);
-    h.CyF.kvStat(11250, "1,1");
-    e.Cxv.idkeyStat(901L, 30L, 1L, false);
+    com.tencent.mm.plugin.report.service.h.IzE.kvStat(11250, "1,1");
+    f.Iyx.idkeyStat(901L, 30L, 1L, false);
     AppMethodBeat.o(127593);
   }
   
@@ -206,14 +202,14 @@ public class WCFirebaseMessagingService
     AppMethodBeat.i(127592);
     super.onDeletedMessages();
     Log.i("MicroMsg.FCM.WCFirebaseMessagingService", "Deleted messages on server.");
-    h.CyF.kvStat(11250, "1,1");
-    e.Cxv.idkeyStat(901L, 31L, 1L, false);
+    com.tencent.mm.plugin.report.service.h.IzE.kvStat(11250, "1,1");
+    f.Iyx.idkeyStat(901L, 31L, 1L, false);
     AppMethodBeat.o(127592);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fcm.WCFirebaseMessagingService
  * JD-Core Version:    0.7.0.1
  */

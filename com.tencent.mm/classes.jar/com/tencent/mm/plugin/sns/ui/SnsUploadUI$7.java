@@ -15,9 +15,9 @@ final class SnsUploadUI$7
   {
     AppMethodBeat.i(176368);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/sns/ui/SnsUploadUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    SnsUploadUI.M(this.EPZ);
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/sns/ui/SnsUploadUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    SnsUploadUI.M(this.LdU);
     a.a(this, "com/tencent/mm/plugin/sns/ui/SnsUploadUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(176368);
   }

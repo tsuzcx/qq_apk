@@ -37,8 +37,8 @@ public class MapView
   public MapView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0, new TencentMapOptions());
-    AppMethodBeat.i(193597);
-    AppMethodBeat.o(193597);
+    AppMethodBeat.i(237119);
+    AppMethodBeat.o(237119);
   }
   
   public MapView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -51,9 +51,9 @@ public class MapView
   public MapView(Context paramContext, AttributeSet paramAttributeSet, int paramInt, TencentMapOptions paramTencentMapOptions)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(193598);
+    AppMethodBeat.i(237124);
     this.mMap = getMap(paramTencentMapOptions);
-    AppMethodBeat.o(193598);
+    AppMethodBeat.o(237124);
   }
   
   public MapView(Context paramContext, AttributeSet paramAttributeSet, TencentMapOptions paramTencentMapOptions)
@@ -179,16 +179,16 @@ public class MapView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(193599);
+    AppMethodBeat.i(237128);
     if ((this.mMapDelegate != null) && (this.mMapDelegate.isTouchable()))
     {
       bool = this.mMapDelegate.onInterceptTouchEvent(paramMotionEvent);
       getParent().requestDisallowInterceptTouchEvent(bool);
-      AppMethodBeat.o(193599);
+      AppMethodBeat.o(237128);
       return bool;
     }
     boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(193599);
+    AppMethodBeat.o(237128);
     return bool;
   }
   
@@ -293,7 +293,7 @@ public class MapView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.MapView
  * JD-Core Version:    0.7.0.1
  */

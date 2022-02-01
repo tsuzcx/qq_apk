@@ -14,17 +14,17 @@ import java.util.concurrent.ScheduledExecutorService;
 
 public final class a
 {
-  private static int[] RXZ = new int[0];
+  private static int[] ZAJ = new int[0];
   
   /* Error */
-  public static boolean aqY(int paramInt)
+  public static boolean aAL(int paramInt)
   {
     // Byte code:
     //   0: iconst_0
     //   1: istore 5
     //   3: ldc 2
     //   5: monitorenter
-    //   6: getstatic 12	com/tencent/thumbplayer/a/a/b/a:RXZ	[I
+    //   6: getstatic 12	com/tencent/thumbplayer/a/a/b/a:ZAJ	[I
     //   9: astore 6
     //   11: aload 6
     //   13: arraylength
@@ -78,7 +78,7 @@ public final class a
   {
     try
     {
-      int[] arrayOfInt = RXZ;
+      int[] arrayOfInt = ZAJ;
       return arrayOfInt;
     }
     finally
@@ -95,24 +95,24 @@ public final class a
       int i;
       try
       {
-        AppMethodBeat.i(188913);
+        AppMethodBeat.i(219385);
         if ((paramHashSet != null) && (paramHashSet.size() > 0))
         {
           paramHashSet = paramHashSet.toArray();
-          RXZ = new int[paramHashSet.length];
+          ZAJ = new int[paramHashSet.length];
           i = 0;
           if (i < paramHashSet.length) {
             if ((paramHashSet[i] instanceof String)) {
-              RXZ[i] = Integer.parseInt((String)paramHashSet[i]);
+              ZAJ[i] = Integer.parseInt((String)paramHashSet[i]);
             } else {
-              RXZ[i] = -1;
+              ZAJ[i] = -1;
             }
           }
         }
       }
       finally {}
-      g.i("TPDrmCapability", "TPDrmCapability, read sp ret:" + Arrays.toString(RXZ));
-      AppMethodBeat.o(188913);
+      g.i("TPDrmCapability", "TPDrmCapability, read sp ret:" + Arrays.toString(ZAJ));
+      AppMethodBeat.o(219385);
       return;
       i += 1;
     }
@@ -120,11 +120,11 @@ public final class a
   
   public static void init(Context paramContext)
   {
-    AppMethodBeat.i(188914);
+    AppMethodBeat.i(219388);
     g.i("TPDrmCapability", "TPDrmCapability, init");
     if (!TPPlayerMgr.isThumbPlayerEnable())
     {
-      AppMethodBeat.o(188914);
+      AppMethodBeat.o(219388);
       return;
     }
     g.i("TPDrmCapability", "TPDrmCapability, read sp.");
@@ -134,12 +134,12 @@ public final class a
     {
       public final void run()
       {
-        AppMethodBeat.i(188912);
+        AppMethodBeat.i(219380);
         Object localObject = TPThumbplayerCapabilityHelper.getDRMCapabilities();
         g.i("TPDrmCapability", "TPThumbplayerCapabilityHelper, drm cap:" + Arrays.toString((int[])localObject));
         if (localObject.length == 0)
         {
-          AppMethodBeat.o(188912);
+          AppMethodBeat.o(219380);
           return;
         }
         HashSet localHashSet = new HashSet();
@@ -175,18 +175,18 @@ public final class a
           }
         }
         a.j(localHashSet);
-        localObject = this.OHp.edit();
+        localObject = this.WaK.edit();
         ((SharedPreferences.Editor)localObject).putStringSet("DRM_CAP_LIST", localHashSet);
         ((SharedPreferences.Editor)localObject).apply();
-        AppMethodBeat.o(188912);
+        AppMethodBeat.o(219380);
       }
     });
-    AppMethodBeat.o(188914);
+    AppMethodBeat.o(219388);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.a.a.b.a
  * JD-Core Version:    0.7.0.1
  */

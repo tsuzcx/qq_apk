@@ -7,7 +7,10 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.luggage.h.j;
+import com.tencent.luggage.k.j;
+import com.tencent.luggage.l.a.a;
+import com.tencent.luggage.l.a.g;
+import com.tencent.luggage.l.a.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.BaseLuggageActivity;
@@ -16,55 +19,55 @@ import kotlin.g.b.p;
 import kotlin.g.b.q;
 import kotlin.x;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberAddUI;", "Lcom/tencent/mm/ui/base/BaseLuggageActivity;", "()V", "mPhoneNumberAddLogic", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddLogic;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "Companion", "luggage-wechat-full-sdk_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberAddUI;", "Lcom/tencent/mm/ui/base/BaseLuggageActivity;", "()V", "mPhoneNumberAddLogic", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddLogic;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "Companion", "luggage-wechat-full-sdk_release"})
 public final class PhoneNumberAddUI
   extends BaseLuggageActivity
 {
-  public static final PhoneNumberAddUI.a nzW;
-  private l nzV;
+  public static final PhoneNumberAddUI.a qCh;
+  private l qCg;
   
   static
   {
     AppMethodBeat.i(148111);
-    nzW = new PhoneNumberAddUI.a((byte)0);
+    qCh = new PhoneNumberAddUI.a((byte)0);
     AppMethodBeat.o(148111);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(148109);
-    if (j.cDv.isDarkMode())
+    String str = getIntent().getStringExtra("APPID");
+    if (j.cEc.em(str))
     {
-      setTheme(2131821592);
+      setTheme(a.h.WeUITheme_DarkMode);
       super.onCreate(paramBundle);
-      setNavigationbarColor(getResources().getColor(2131099649));
-      setActionBarColor(getResources().getColor(2131099650));
+      setNavigationbarColor(getResources().getColor(a.a.BG_1));
+      setActionBarColor(getResources().getColor(a.a.BG_2));
       hideActionbarLine();
-      paramBundle = getIntent().getStringExtra("APPID");
-      Log.i("MicroMsg.PhoneNumberAddUI", "onCreate() appId:".concat(String.valueOf(paramBundle)));
-      setTitle(2131756125);
+      Log.i("MicroMsg.PhoneNumberAddUI", "onCreate() appId:".concat(String.valueOf(str)));
+      setTitle(a.g.appbrand_phone_number_add_phone_number);
       setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
-      Object localObject = u.nAe;
-      localObject = u.bTz();
+      paramBundle = u.qCp;
+      paramBundle = u.cgE();
       Context localContext = (Context)this;
-      p.g(paramBundle, "appId");
-      this.nzV = ((n)localObject).a(localContext, paramBundle, (a)new c(this));
-      paramBundle = this.nzV;
+      p.j(str, "appId");
+      this.qCg = paramBundle.a(localContext, str, (a)new c(this));
+      paramBundle = this.qCg;
       if (paramBundle != null) {
         paramBundle.init();
       }
-      paramBundle = this.nzV;
+      paramBundle = this.qCg;
       if (paramBundle == null) {
-        break label193;
+        break label199;
       }
     }
-    label193:
+    label199:
     for (paramBundle = paramBundle.getView();; paramBundle = null)
     {
       setContentView(paramBundle);
       AppMethodBeat.o(148109);
       return;
-      setTheme(2131821593);
+      setTheme(a.h.WeUITheme_LightMode);
       break;
     }
   }
@@ -73,7 +76,7 @@ public final class PhoneNumberAddUI
   {
     AppMethodBeat.i(148110);
     super.onDestroy();
-    l locall = this.nzV;
+    l locall = this.qCg;
     if (locall != null)
     {
       locall.uninit();
@@ -89,7 +92,7 @@ public final class PhoneNumberAddUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class b
     implements MenuItem.OnMenuItemClickListener
   {
@@ -98,13 +101,13 @@ public final class PhoneNumberAddUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(148107);
-      this.nzX.finish();
+      this.qCi.finish();
       AppMethodBeat.o(148107);
       return true;
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class c
     extends q
     implements a<x>
@@ -117,7 +120,7 @@ public final class PhoneNumberAddUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.PhoneNumberAddUI
  * JD-Core Version:    0.7.0.1
  */

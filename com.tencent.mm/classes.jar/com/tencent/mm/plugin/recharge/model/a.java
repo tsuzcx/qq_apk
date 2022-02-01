@@ -6,14 +6,14 @@ import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class a
+public class a
 {
-  public static final int[] BCV = { -1, -1 };
-  public static final int[] BCW = { -2, -2 };
-  public String BCX;
-  public int[] BCY = BCV;
-  public String ljO;
+  public static final int[] HyZ = { -1, -1 };
+  public static final int[] Hza = { -2, -2 };
+  public String Hzb;
+  public int[] Hzc = HyZ;
   public String name;
+  public String oex;
   public int sourceType;
   
   public a(String paramString1, String paramString2, int paramInt)
@@ -23,13 +23,13 @@ public final class a
   
   public a(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    this.BCX = paramString1;
+    this.Hzb = paramString1;
     this.name = paramString2;
-    this.ljO = paramString3;
+    this.oex = paramString3;
     this.sourceType = paramInt;
   }
   
-  public static a bj(JSONObject paramJSONObject)
+  public static a bq(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(67090);
     String str1 = paramJSONObject.optString("name");
@@ -51,9 +51,9 @@ public final class a
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("record", Util.nullAs(this.BCX, ""));
+      localJSONObject.put("record", Util.nullAs(this.Hzb, ""));
       localJSONObject.put("name", Util.nullAs(this.name, ""));
-      localJSONObject.put("location", Util.nullAs(this.ljO, ""));
+      localJSONObject.put("location", Util.nullAs(this.oex, ""));
       AppMethodBeat.o(67089);
       return localJSONObject;
     }
@@ -67,7 +67,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.model.a
  * JD-Core Version:    0.7.0.1
  */

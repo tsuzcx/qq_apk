@@ -1,24 +1,23 @@
 package com.tencent.mm.plugin.byp.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.ak.c.a;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.c;
+import com.tencent.mm.an.c.a;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.byp.a.a;
 import com.tencent.mm.plugin.byp.c.b;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.protocal.protobuf.st;
-import com.tencent.mm.protocal.protobuf.su;
-import com.tencent.mm.protocal.protobuf.sv;
-import com.tencent.mm.protocal.protobuf.sw;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.protocal.protobuf.sm;
+import com.tencent.mm.protocal.protobuf.sn;
+import com.tencent.mm.protocal.protobuf.so;
+import com.tencent.mm.protocal.protobuf.sp;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -27,94 +26,107 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/byp/cgi/CgiBypSync;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/BypSyncResponse;", "selector", "", "", "source", "Lcom/tencent/mm/plugin/byp/BypSyncCore$SyncSource;", "(Ljava/util/List;Lcom/tencent/mm/plugin/byp/BypSyncCore$SyncSource;)V", "request", "Lcom/tencent/mm/protocal/protobuf/BypSyncRequest;", "getSource", "()Lcom/tencent/mm/plugin/byp/BypSyncCore$SyncSource;", "mergeSyncKey", "", "req", "Lcom/tencent/mm/protocal/protobuf/BypSyncKeyBuff;", "resp", "onCgiBack", "", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onFailed", "onSuccessfully", "run", "Lcom/tencent/mm/wx/WxPipeline;", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "print", "Companion", "plugin-byp_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/byp/cgi/CgiBypSync;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/BypSyncResponse;", "selector", "", "", "source", "Lcom/tencent/mm/plugin/byp/BypSyncCore$SyncSource;", "(Ljava/util/List;Lcom/tencent/mm/plugin/byp/BypSyncCore$SyncSource;)V", "request", "Lcom/tencent/mm/protocal/protobuf/BypSyncRequest;", "getSource", "()Lcom/tencent/mm/plugin/byp/BypSyncCore$SyncSource;", "mergeSyncKey", "", "req", "Lcom/tencent/mm/protocal/protobuf/BypSyncKeyBuff;", "resp", "onCgiBack", "", "errType", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onFailed", "onSuccessfully", "run", "Lcom/tencent/mm/wx/WxPipeline;", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "print", "Companion", "plugin-byp_release"})
 public final class f
-  extends c<sw>
+  extends c<sp>
 {
-  public static final a pPI;
-  private final sv pPG;
-  private final c.b pPH;
+  public static final a sWJ;
+  private final so sWH;
+  private final c.b sWI;
   
   static
   {
-    AppMethodBeat.i(199129);
-    pPI = new a((byte)0);
-    AppMethodBeat.o(199129);
+    AppMethodBeat.i(213442);
+    sWJ = new a((byte)0);
+    AppMethodBeat.o(213442);
   }
   
   public f(List<Integer> paramList, c.b paramb)
   {
-    AppMethodBeat.i(199128);
-    this.pPH = paramb;
-    this.pPG = new sv();
+    AppMethodBeat.i(213441);
+    this.sWI = paramb;
+    this.sWH = new so();
     paramb = new d.a();
-    this.pPG.LaF = new LinkedList((Collection)paramList);
-    paramList = g.aAh();
-    p.g(paramList, "MMKernel.storage()");
-    paramList.azQ().get(ar.a.OkY, "");
-    paramList = g.aAh();
-    p.g(paramList, "MMKernel.storage()");
-    paramList = paramList.azQ().get(ar.a.OkY, "");
+    Object localObject1 = this.sWH;
+    Object localObject2 = (Iterable)paramList;
+    paramList = (Collection)new ArrayList();
+    localObject2 = ((Iterable)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      Object localObject3 = ((Iterator)localObject2).next();
+      int i = ((Number)localObject3).intValue();
+      a.a locala = a.a.sVT;
+      if (a.a.cEY().contains(Integer.valueOf(i))) {
+        paramList.add(localObject3);
+      }
+    }
+    ((so)localObject1).SbO = new LinkedList((Collection)paramList);
+    paramList = com.tencent.mm.kernel.h.aHG();
+    p.j(paramList, "MMKernel.storage()");
+    paramList.aHp().get(ar.a.VzT, "");
+    paramList = com.tencent.mm.kernel.h.aHG();
+    p.j(paramList, "MMKernel.storage()");
+    paramList = paramList.aHp().get(ar.a.VzT, "");
     if (paramList == null)
     {
       paramList = new t("null cannot be cast to non-null type kotlin.String");
-      AppMethodBeat.o(199128);
+      AppMethodBeat.o(213441);
       throw paramList;
     }
     paramList = Util.decodeHexString((String)paramList);
-    Object localObject = this.pPG;
-    st localst = new st();
-    localst.parseFrom(paramList);
-    ((sv)localObject).LaN = localst;
-    this.pPG.scene = this.pPH.value;
-    paramb.c((a)this.pPG);
-    localObject = new sw();
-    ((sw)localObject).setBaseResponse(new BaseResponse());
-    ((sw)localObject).getBaseResponse().ErrMsg = new dqi();
-    paramb.d((a)localObject);
-    paramb.MB("/cgi-bin/micromsg-bin/bypsync");
-    paramb.sG(3673);
-    c(paramb.aXF());
-    Log.i("Byp.CgiBypSync", "[CgiBypSync] selector=" + this.pPG.LaF + " scene=" + this.pPH.value + " size=" + paramList.length);
-    AppMethodBeat.o(199128);
+    localObject1 = this.sWH;
+    localObject2 = new sm();
+    ((sm)localObject2).parseFrom(paramList);
+    ((so)localObject1).SbX = ((sm)localObject2);
+    this.sWH.scene = this.sWI.value;
+    paramb.c((a)this.sWH);
+    localObject1 = new sp();
+    ((sp)localObject1).setBaseResponse(new jh());
+    ((sp)localObject1).getBaseResponse().Tef = new eaf();
+    paramb.d((a)localObject1);
+    paramb.TW("/cgi-bin/micromsg-bin/bypsync");
+    paramb.vD(3673);
+    c(paramb.bgN());
+    Log.i("Byp.CgiBypSync", "[CgiBypSync] selector=" + this.sWH.SbO + " scene=" + this.sWI.value + " size=" + paramList.length);
+    AppMethodBeat.o(213441);
   }
   
-  private static String a(st paramst)
+  private static String a(sm paramsm)
   {
-    AppMethodBeat.i(199127);
-    p.h(paramst, "$this$print");
+    AppMethodBeat.i(213439);
+    p.k(paramsm, "$this$print");
     StringBuilder localStringBuilder = new StringBuilder();
-    paramst = paramst.LaK;
-    p.g(paramst, "sync_key_pair_list");
-    paramst = ((Iterable)paramst).iterator();
-    while (paramst.hasNext())
+    paramsm = paramsm.SbU;
+    p.j(paramsm, "sync_key_pair_list");
+    paramsm = ((Iterable)paramsm).iterator();
+    while (paramsm.hasNext())
     {
-      su localsu = (su)paramst.next();
-      localStringBuilder.append(localsu.LaL).append("=").append(localsu.LaM).append(", ");
+      sn localsn = (sn)paramsm.next();
+      localStringBuilder.append(localsn.SbV).append("=").append(localsn.SbW).append(", ");
     }
-    paramst = localStringBuilder.toString();
-    p.g(paramst, "ss.toString()");
-    AppMethodBeat.o(199127);
-    return paramst;
+    paramsm = localStringBuilder.toString();
+    p.j(paramsm, "ss.toString()");
+    AppMethodBeat.o(213439);
+    return paramsm;
   }
   
-  private static boolean a(st paramst1, st paramst2)
+  private static boolean a(sm paramsm1, sm paramsm2)
   {
-    AppMethodBeat.i(199126);
-    Object localObject2 = new StringBuilder("[mergeSyncKey] req: ").append(a(paramst1)).append(" resp: ");
+    AppMethodBeat.i(213438);
+    Object localObject2 = new StringBuilder("[mergeSyncKey] req: ").append(a(paramsm1)).append(" resp: ");
     Object localObject1;
     int i;
     boolean bool1;
-    if (paramst2 != null)
+    if (paramsm2 != null)
     {
-      localObject1 = a(paramst2);
+      localObject1 = a(paramsm2);
       Log.i("Byp.CgiBypSync", (String)localObject1);
-      if (paramst2 != null)
+      if (paramsm2 != null)
       {
-        paramst2 = paramst2.LaK;
-        if (paramst2 != null)
+        paramsm2 = paramsm2.SbU;
+        if (paramsm2 != null)
         {
-          localObject1 = ((Iterable)paramst2).iterator();
+          localObject1 = ((Iterable)paramsm2).iterator();
           i = 0;
           bool1 = false;
         }
@@ -124,83 +136,83 @@ public final class f
     {
       for (;;)
       {
-        label85:
+        label86:
         j = i;
         bool2 = bool1;
         if (!((Iterator)localObject1).hasNext()) {
-          break label373;
+          break label377;
         }
-        localObject2 = (su)((Iterator)localObject1).next();
-        paramst2 = paramst1.LaK;
-        p.g(paramst2, "req.sync_key_pair_list");
-        Iterator localIterator = ((Iterable)paramst2).iterator();
-        label136:
+        localObject2 = (sn)((Iterator)localObject1).next();
+        paramsm2 = paramsm1.SbU;
+        p.j(paramsm2, "req.sync_key_pair_list");
+        Iterator localIterator = ((Iterable)paramsm2).iterator();
+        label137:
         if (localIterator.hasNext())
         {
-          paramst2 = localIterator.next();
-          if (((su)paramst2).LaL == ((su)localObject2).LaL)
+          paramsm2 = localIterator.next();
+          if (((sn)paramsm2).SbV == ((sn)localObject2).SbV)
           {
             j = 1;
-            label171:
+            label172:
             if (j == 0) {
-              break label260;
+              break label262;
             }
           }
         }
         for (;;)
         {
-          paramst2 = (su)paramst2;
-          if (paramst2 == null) {
-            break label314;
+          paramsm2 = (sn)paramsm2;
+          if (paramsm2 == null) {
+            break label317;
           }
-          if (paramst2.LaM >= ((su)localObject2).LaM) {
-            break label267;
+          if (paramsm2.SbW >= ((sn)localObject2).SbW) {
+            break label269;
           }
-          paramst2.LaM = ((su)localObject2).LaM;
-          Log.i("Byp.CgiBypSync", "[mergeSyncKey] modify " + ((su)localObject2).LaL + '=' + ((su)localObject2).LaM);
+          paramsm2.SbW = ((sn)localObject2).SbW;
+          Log.i("Byp.CgiBypSync", "[mergeSyncKey] modify " + ((sn)localObject2).SbV + '=' + ((sn)localObject2).SbW);
           bool1 = true;
-          break label85;
+          break label86;
           localObject1 = null;
           break;
           j = 0;
-          break label171;
-          label260:
-          break label136;
-          paramst2 = null;
+          break label172;
+          label262:
+          break label137;
+          paramsm2 = null;
         }
-        label267:
-        Log.e("Byp.CgiBypSync", "[mergeSyncKey] value(" + ((su)localObject2).LaM + ") is invalid, client value=" + paramst2.LaM + ' ');
+        label269:
+        Log.e("Byp.CgiBypSync", "[mergeSyncKey] value(" + ((sn)localObject2).SbW + ") is invalid, client value=" + paramsm2.SbW + ' ');
         continue;
-        label314:
-        Log.i("Byp.CgiBypSync", "[mergeSyncKey] insert " + ((su)localObject2).LaL + '=' + ((su)localObject2).LaM);
-        paramst1.LaK.add(localObject2);
+        label317:
+        Log.i("Byp.CgiBypSync", "[mergeSyncKey] insert " + ((sn)localObject2).SbV + '=' + ((sn)localObject2).SbW);
+        paramsm1.SbU.add(localObject2);
         i = 1;
       }
     }
     int j = 0;
     boolean bool2 = false;
-    label373:
+    label377:
     if ((bool2) || (j != 0))
     {
-      paramst2 = g.aAh();
-      p.g(paramst2, "MMKernel.storage()");
-      paramst2.azQ().set(ar.a.OkY, Util.encodeHexString(paramst1.toByteArray()));
+      paramsm2 = com.tencent.mm.kernel.h.aHG();
+      p.j(paramsm2, "MMKernel.storage()");
+      paramsm2.aHp().set(ar.a.VzT, Util.encodeHexString(paramsm1.toByteArray()));
     }
-    AppMethodBeat.o(199126);
+    AppMethodBeat.o(213438);
     return bool2;
   }
   
-  public final com.tencent.mm.co.f<c.a<sw>> aYI()
+  public final com.tencent.mm.cw.f<c.a<sp>> bhW()
   {
-    AppMethodBeat.i(199124);
-    h.CyF.n(1465L, this.pPH.value, 1L);
-    com.tencent.mm.co.f localf = super.aYI();
-    p.g(localf, "super.run()");
-    AppMethodBeat.o(199124);
+    AppMethodBeat.i(213436);
+    com.tencent.mm.plugin.report.service.h.IzE.p(1465L, this.sWI.value, 1L);
+    com.tencent.mm.cw.f localf = super.bhW();
+    p.j(localf, "super.run()");
+    AppMethodBeat.o(213436);
     return localf;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/byp/cgi/CgiBypSync$Companion;", "", "()V", "TAG", "", "plugin-byp_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/byp/cgi/CgiBypSync$Companion;", "", "()V", "TAG", "", "plugin-byp_release"})
   public static final class a {}
 }
 

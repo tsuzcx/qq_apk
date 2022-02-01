@@ -1,95 +1,103 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import g.a.a.b;
 
 public final class eag
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public dqi MZA;
-  public int MZz;
-  public int Scene;
+  public int UfA;
+  private boolean UfB;
   
-  public final int op(int paramInt, Object... paramVarArgs)
+  private eag hpI()
   {
-    AppMethodBeat.i(125797);
-    if (paramInt == 0)
+    AppMethodBeat.i(2380);
+    if (!this.UfB)
     {
-      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.MZz);
-      if (this.MZA != null)
-      {
-        paramVarArgs.ni(2, this.MZA.computeSize());
-        this.MZA.writeFields(paramVarArgs);
-      }
-      paramVarArgs.aM(3, this.Scene);
-      AppMethodBeat.o(125797);
-      return 0;
+      b localb = new b("Not all required fields were included (false = not included in message),  uiVal:" + this.UfB);
+      AppMethodBeat.o(2380);
+      throw localb;
     }
-    int i;
-    if (paramInt == 1)
+    AppMethodBeat.o(2380);
+    return this;
+  }
+  
+  public final eag arE(int paramInt)
+  {
+    this.UfA = paramInt;
+    this.UfB = true;
+    return this;
+  }
+  
+  public final int computeSize()
+  {
+    AppMethodBeat.i(2381);
+    int i = g.a.a.b.b.a.bM(1, this.UfA);
+    AppMethodBeat.o(2381);
+    return i + 0 + 0;
+  }
+  
+  public final eag df(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(198957);
+    paramArrayOfByte = new g.a.a.a.a(paramArrayOfByte, unknownTagHandler);
+    for (int i = getNextFieldNumber(paramArrayOfByte); i > 0; i = getNextFieldNumber(paramArrayOfByte)) {
+      if (!populateBuilderWithField(paramArrayOfByte, this, i)) {
+        paramArrayOfByte.iUs();
+      }
+    }
+    paramArrayOfByte = hpI();
+    AppMethodBeat.o(198957);
+    return paramArrayOfByte;
+  }
+  
+  public final boolean populateBuilderWithField(g.a.a.a.a parama, com.tencent.mm.cd.a parama1, int paramInt)
+  {
+    AppMethodBeat.i(2384);
+    parama1 = (eag)parama1;
+    boolean bool = true;
+    switch (paramInt)
     {
-      i = g.a.a.b.b.a.bu(1, this.MZz) + 0;
-      paramInt = i;
-      if (this.MZA != null) {
-        paramInt = i + g.a.a.a.nh(2, this.MZA.computeSize());
-      }
-      i = g.a.a.b.b.a.bu(3, this.Scene);
-      AppMethodBeat.o(125797);
-      return paramInt + i;
+    default: 
+      bool = false;
     }
-    if (paramInt == 2)
+    for (;;)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
-        }
-      }
-      AppMethodBeat.o(125797);
-      return 0;
+      AppMethodBeat.o(2384);
+      return bool;
+      parama1.arE(parama.abFh.AK());
     }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
-      eag localeag = (eag)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
-      {
-      default: 
-        AppMethodBeat.o(125797);
-        return -1;
-      case 1: 
-        localeag.MZz = ((g.a.a.a.a)localObject1).UbS.zi();
-        AppMethodBeat.o(125797);
-        return 0;
-      case 2: 
-        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new dqi();
-          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((dqi)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-          localeag.MZA = ((dqi)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(125797);
-        return 0;
-      }
-      localeag.Scene = ((g.a.a.a.a)localObject1).UbS.zi();
-      AppMethodBeat.o(125797);
-      return 0;
-    }
-    AppMethodBeat.o(125797);
-    return -1;
+  }
+  
+  public final byte[] toByteArray()
+  {
+    AppMethodBeat.i(2382);
+    hpI();
+    byte[] arrayOfByte = super.toByteArray();
+    AppMethodBeat.o(2382);
+    return arrayOfByte;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(2379);
+    String str = "" + getClass().getName() + "(";
+    str = str + "uiVal = " + this.UfA + "   ";
+    str = str + ")";
+    AppMethodBeat.o(2379);
+    return str;
+  }
+  
+  public final void writeFields(g.a.a.c.a parama)
+  {
+    AppMethodBeat.i(2383);
+    parama.aY(1, this.UfA);
+    AppMethodBeat.o(2383);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.eag
  * JD-Core Version:    0.7.0.1
  */

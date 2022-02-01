@@ -13,8 +13,8 @@ final class RegByMobileRegAIOUI$11
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(128524);
-    RegByMobileRegAIOUI.x(this.kqp);
-    a.bwV("RE200_250");
+    RegByMobileRegAIOUI.x(this.nic);
+    a.bkD("RE200_250");
     AppMethodBeat.o(128524);
   }
 }

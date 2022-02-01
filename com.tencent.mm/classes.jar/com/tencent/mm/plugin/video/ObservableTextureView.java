@@ -12,15 +12,15 @@ public class ObservableTextureView
   extends MMTextureView
   implements TextureView.SurfaceTextureListener
 {
-  protected b GwU;
-  private boolean GwV;
+  protected b Nkn;
+  private boolean Nko;
   protected SurfaceTexture surfaceTexture;
   
   public ObservableTextureView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(127133);
-    this.GwV = false;
+    this.Nko = false;
     init();
     AppMethodBeat.o(127133);
   }
@@ -29,7 +29,7 @@ public class ObservableTextureView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(127134);
-    this.GwV = false;
+    this.Nko = false;
     init();
     AppMethodBeat.o(127134);
   }
@@ -37,7 +37,7 @@ public class ObservableTextureView
   public ObservableTextureView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.GwV = false;
+    this.Nko = false;
   }
   
   private void init()
@@ -50,17 +50,17 @@ public class ObservableTextureView
   
   public boolean isAvailable()
   {
-    return this.GwV;
+    return this.Nko;
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(127136);
     Log.i("MicroMsg.ObservableTextureView", "onSurfaceTextureAvailable");
-    gLi();
-    this.GwV = true;
-    if (this.GwU != null) {
-      this.GwU.f(paramSurfaceTexture);
+    hKg();
+    this.Nko = true;
+    if (this.Nkn != null) {
+      this.Nkn.g(paramSurfaceTexture);
     }
     AppMethodBeat.o(127136);
   }
@@ -69,7 +69,7 @@ public class ObservableTextureView
   {
     AppMethodBeat.i(127138);
     Log.i("MicroMsg.ObservableTextureView", "onSurfaceTextureDestroyed");
-    this.GwV = false;
+    this.Nko = false;
     AppMethodBeat.o(127138);
     return false;
   }
@@ -85,12 +85,12 @@ public class ObservableTextureView
   
   public void setTextureChangeCallback(b paramb)
   {
-    this.GwU = paramb;
+    this.Nkn = paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.video.ObservableTextureView
  * JD-Core Version:    0.7.0.1
  */

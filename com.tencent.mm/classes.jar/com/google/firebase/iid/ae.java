@@ -4,11 +4,11 @@ import com.google.android.gms.tasks.Task;
 
 abstract interface ae
 {
-  public abstract Task<String> q(String paramString1, String paramString2);
+  public abstract Task<String> u(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.ae
  * JD-Core Version:    0.7.0.1
  */

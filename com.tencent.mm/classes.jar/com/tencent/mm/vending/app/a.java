@@ -5,7 +5,6 @@ import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.vending.base.Vending;
 import com.tencent.mm.vending.base.Vending.h;
-import com.tencent.mm.vending.e.b;
 import com.tencent.mm.vending.h.d;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,25 +12,25 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class a
-  implements b
+  implements com.tencent.mm.vending.e.b
 {
-  public com.tencent.mm.vending.e.c<Vending> QYN = new com.tencent.mm.vending.e.c();
-  Map<Class, a> QYO = new ConcurrentHashMap();
-  byte[] QYP = new byte[0];
-  com.tencent.mm.vending.base.a<Object> QYQ = new com.tencent.mm.vending.base.a()
+  public com.tencent.mm.vending.e.c<Vending> Yzd = new com.tencent.mm.vending.e.c();
+  private Map<Class, a> Yze = new ConcurrentHashMap();
+  byte[] Yzf = new byte[0];
+  private com.tencent.mm.vending.base.a<Object> Yzg = new com.tencent.mm.vending.base.a()
   {
-    public final Object bl(Class<?> paramAnonymousClass)
+    public final Object bH(Class<?> paramAnonymousClass)
     {
       AppMethodBeat.i(74889);
-      a.a locala = (a.a)a.this.QYO.get(paramAnonymousClass);
+      a.a locala = (a.a)a.a(a.this).get(paramAnonymousClass);
       Object localObject;
       if (locala != null)
       {
-        locala.QYX = true;
-        localObject = locala.bmp();
-        locala.QYX = false;
-        if (locala.QYW) {
-          locala.QYY = defer(paramAnonymousClass);
+        locala.Yzn = true;
+        localObject = locala.bwx();
+        locala.Yzn = false;
+        if (locala.Yzm) {
+          locala.Yzo = defer(paramAnonymousClass);
         }
       }
       else
@@ -43,82 +42,71 @@ public abstract class a
       return localObject;
     }
   };
-  private AtomicBoolean QYR = new AtomicBoolean(false);
-  volatile boolean QYS = false;
-  Map<Class, com.tencent.mm.vending.b.c<b>> QYT = new HashMap();
-  public com.tencent.mm.vending.d.a QYU;
+  private AtomicBoolean Yzh = new AtomicBoolean(false);
+  volatile boolean Yzi = false;
+  private Map<Class, com.tencent.mm.vending.b.c<b>> Yzj = new HashMap();
+  public com.tencent.mm.vending.d.a Yzk;
   Context mContext;
-  private com.tencent.mm.vending.e.c rfv = new com.tencent.mm.vending.e.c();
+  private com.tencent.mm.vending.e.c uIE = new com.tencent.mm.vending.e.c();
   
   public a()
   {
-    this.QYN.keep(this.QYQ);
-    this.QYQ.addVendingDataResolvedCallback(new com.tencent.mm.vending.base.a.a() {});
+    this.Yzd.keep(this.Yzg);
+    this.Yzg.addVendingDataResolvedCallback(new com.tencent.mm.vending.base.b() {});
   }
   
-  private void hdo()
+  private void iev()
   {
-    if ((Looper.myLooper() == this.QYQ.getLooper()) && (!this.QYR.get())) {
+    if ((Looper.myLooper() == this.Yzg.getLooper()) && (!this.Yzh.get())) {
       com.tencent.mm.vending.f.a.e("Vending.Interactor", "This interactor has not call onCreate() yet! Interactor : %s", new Object[] { this });
     }
   }
   
   protected final <_Struct> void a(Class<_Struct> paramClass, a<_Struct> parama)
   {
-    hdo();
-    this.QYO.put(paramClass, parama);
+    iev();
+    this.Yze.put(paramClass, parama);
   }
   
   public final <_Struct> void a(Class<_Struct> paramClass, b<_Struct> paramb)
   {
-    com.tencent.mm.vending.b.c localc = (com.tencent.mm.vending.b.c)this.QYT.get(paramClass);
+    com.tencent.mm.vending.b.c localc = (com.tencent.mm.vending.b.c)this.Yzj.get(paramClass);
     Object localObject = localc;
     if (localc == null)
     {
       localObject = new com.tencent.mm.vending.b.c(d.UI) {};
-      this.QYT.put(paramClass, localObject);
+      this.Yzj.put(paramClass, localObject);
     }
     ((com.tencent.mm.vending.b.c)localObject).add(paramb);
-    paramClass = this.QYQ.peek(paramClass);
+    paramClass = this.Yzg.peek(paramClass);
     if (paramClass != null) {
-      paramb.co(paramClass);
+      paramb.cn(paramClass);
     }
   }
   
-  public final void bk(Class<?> paramClass)
+  public final void bG(Class<?> paramClass)
   {
-    hdo();
-    this.QYQ.request(paramClass);
+    iev();
+    this.Yzg.request(paramClass);
   }
   
   public void keep(com.tencent.mm.vending.e.a parama)
   {
-    this.rfv.keep(parama);
+    this.uIE.keep(parama);
   }
   
-  protected void onCreate()
+  public final <_Struct> _Struct m(Class<_Struct> paramClass)
   {
-    this.QYR.set(true);
-  }
-  
-  protected void onDestroy()
-  {
-    this.rfv.dead();
-    this.QYN.dead();
-  }
-  
-  public final <_Struct> _Struct y(Class<_Struct> paramClass)
-  {
-    hdo();
-    if ((Looper.myLooper() == Looper.getMainLooper()) && (!this.QYS)) {}
-    synchronized (this.QYP)
+    iev();
+    if ((Looper.myLooper() == Looper.getMainLooper()) && (!this.Yzi)) {}
+    synchronized (this.Yzf)
     {
-      boolean bool = this.QYS;
+      boolean bool = this.Yzi;
       if (!bool) {}
       try
       {
-        this.QYP.wait();
-        return this.QYQ.get(paramClass);
+        this.Yzf.wait();
+        return this.Yzg.get(paramClass);
       }
       catch (InterruptedException localInterruptedException)
       {
@@ -130,25 +118,36 @@ public abstract class a
     }
   }
   
+  protected void onCreate()
+  {
+    this.Yzh.set(true);
+  }
+  
+  protected void onDestroy()
+  {
+    this.uIE.dead();
+    this.Yzd.dead();
+  }
+  
   public abstract class a<_Struct>
   {
-    boolean QYW = false;
-    boolean QYX = false;
-    Vending.h QYY;
+    boolean Yzm = false;
+    boolean Yzn = false;
+    Vending.h Yzo;
     
     public a() {}
     
-    protected abstract _Struct bmp();
+    protected abstract _Struct bwx();
   }
   
   public static abstract interface b<_Struct>
   {
-    public abstract void co(_Struct param_Struct);
+    public abstract void cn(_Struct param_Struct);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.vending.app.a
  * JD-Core Version:    0.7.0.1
  */

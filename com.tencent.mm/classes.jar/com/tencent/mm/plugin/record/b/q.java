@@ -1,23 +1,20 @@
 package com.tencent.mm.plugin.record.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a.e;
+import com.tencent.mm.ao.a.e;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.plugin.fav.a.a.b;
-import com.tencent.mm.plugin.i.a.ak;
-import com.tencent.mm.plugin.i.a.l;
-import com.tencent.mm.protocal.protobuf.amj;
-import com.tencent.mm.protocal.protobuf.aml;
-import com.tencent.mm.protocal.protobuf.amm;
-import com.tencent.mm.protocal.protobuf.amn;
-import com.tencent.mm.protocal.protobuf.ams;
-import com.tencent.mm.protocal.protobuf.ana;
+import com.tencent.mm.plugin.findersdk.a.am;
+import com.tencent.mm.plugin.findersdk.a.k;
 import com.tencent.mm.protocal.protobuf.ank;
-import com.tencent.mm.protocal.protobuf.anq;
-import com.tencent.mm.protocal.protobuf.aoi;
-import com.tencent.mm.protocal.protobuf.bcg;
-import com.tencent.mm.protocal.protobuf.bci;
-import com.tencent.mm.protocal.protobuf.bcl;
+import com.tencent.mm.protocal.protobuf.anm;
+import com.tencent.mm.protocal.protobuf.ann;
+import com.tencent.mm.protocal.protobuf.ano;
+import com.tencent.mm.protocal.protobuf.ant;
+import com.tencent.mm.protocal.protobuf.aob;
+import com.tencent.mm.protocal.protobuf.aol;
+import com.tencent.mm.protocal.protobuf.aor;
+import com.tencent.mm.protocal.protobuf.bjd;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
@@ -25,7 +22,7 @@ import java.util.List;
 
 public final class q
 {
-  public static String dE(List<aml> paramList)
+  public static String dK(List<anm> paramList)
   {
     AppMethodBeat.i(9550);
     if ((paramList == null) || (paramList.size() == 0))
@@ -40,196 +37,202 @@ public final class q
     int i = 0;
     if (i < j)
     {
-      Object localObject1 = (aml)paramList.get(i);
+      Object localObject1 = (anm)paramList.get(i);
       localStringBuffer.append("<dataitem ");
-      if (((aml)localObject1).LvB) {
-        localStringBuffer.append("datatype='").append(((aml)localObject1).dataType).append("'");
+      if (((anm)localObject1).Syb) {
+        localStringBuffer.append("datatype='").append(((anm)localObject1).dataType).append("'");
       }
-      if (((aml)localObject1).Lwe) {
-        localStringBuffer.append(" datastatus='").append(((aml)localObject1).Lwd).append("'");
+      if (((anm)localObject1).SyD) {
+        localStringBuffer.append(" datastatus='").append(((anm)localObject1).SyC).append("'");
       }
-      if (((aml)localObject1).LvK) {
-        localStringBuffer.append(" dataid='").append(((aml)localObject1).dLl).append("'");
+      if (((anm)localObject1).Syk) {
+        localStringBuffer.append(" dataid='").append(((anm)localObject1).fEa).append("'");
       }
-      if (((aml)localObject1).Lwq) {
-        localStringBuffer.append(" htmlid='").append(((aml)localObject1).Lwp).append("'");
+      if (((anm)localObject1).SyP) {
+        localStringBuffer.append(" htmlid='").append(((anm)localObject1).SyO).append("'");
       }
-      if (((aml)localObject1).Lww) {
-        localStringBuffer.append(" dataillegaltype='").append(((aml)localObject1).Lwv).append("'");
+      if (((anm)localObject1).SyV) {
+        localStringBuffer.append(" dataillegaltype='").append(((anm)localObject1).SyU).append("'");
       }
-      if (((aml)localObject1).LvW) {
-        localStringBuffer.append(" datasourceid='").append(((aml)localObject1).LvV).append("'");
+      if (((anm)localObject1).Syv) {
+        localStringBuffer.append(" datasourceid='").append(((anm)localObject1).Syu).append("'");
       }
       localStringBuffer.append(">");
-      if (((aml)localObject1).LvD) {
-        localStringBuffer.append("<datafmt>").append(((aml)localObject1).LvC).append("</datafmt>");
+      if (((anm)localObject1).Syd) {
+        localStringBuffer.append("<datafmt>").append(((anm)localObject1).Syc).append("</datafmt>");
       }
-      if (((aml)localObject1).Lvh) {
-        localStringBuffer.append("<datatitle>").append(Util.escapeStringForXml(((aml)localObject1).title)).append("</datatitle>");
+      if (((anm)localObject1).SxH) {
+        localStringBuffer.append("<datatitle>").append(Util.escapeStringForXml(((anm)localObject1).title)).append("</datatitle>");
       }
-      if (((aml)localObject1).Lvi) {
-        localStringBuffer.append("<datadesc>").append(Util.escapeStringForXml(((aml)localObject1).desc)).append("</datadesc>");
+      if (((anm)localObject1).SxI) {
+        localStringBuffer.append("<datadesc>").append(Util.escapeStringForXml(((anm)localObject1).desc)).append("</datadesc>");
       }
-      if (((aml)localObject1).Lvj) {
-        localStringBuffer.append("<cdnthumburl>").append(Util.escapeStringForXml(((aml)localObject1).iwX)).append("</cdnthumburl>");
+      if (((anm)localObject1).SxJ) {
+        localStringBuffer.append("<cdnthumburl>").append(Util.escapeStringForXml(((anm)localObject1).lmm)).append("</cdnthumburl>");
       }
-      if (((aml)localObject1).Lvm) {
-        localStringBuffer.append("<thumbwidth>").append(((aml)localObject1).thumbWidth).append("</thumbwidth>");
+      if (((anm)localObject1).SxM) {
+        localStringBuffer.append("<thumbwidth>").append(((anm)localObject1).thumbWidth).append("</thumbwidth>");
       }
-      if (((aml)localObject1).Lvn) {
-        localStringBuffer.append("<thumbheight>").append(((aml)localObject1).thumbHeight).append("</thumbheight>");
+      if (((anm)localObject1).SxN) {
+        localStringBuffer.append("<thumbheight>").append(((anm)localObject1).thumbHeight).append("</thumbheight>");
       }
-      if (((aml)localObject1).Lvo) {
-        localStringBuffer.append("<cdndataurl>").append(Util.escapeStringForXml(((aml)localObject1).KuR)).append("</cdndataurl>");
+      if (((anm)localObject1).SxO) {
+        localStringBuffer.append("<cdndataurl>").append(Util.escapeStringForXml(((anm)localObject1).Rwb)).append("</cdndataurl>");
       }
-      if (((aml)localObject1).Lvl) {
-        localStringBuffer.append("<cdnthumbkey>").append(Util.escapeStringForXml(((aml)localObject1).Lvk)).append("</cdnthumbkey>");
+      if (((anm)localObject1).SxL) {
+        localStringBuffer.append("<cdnthumbkey>").append(Util.escapeStringForXml(((anm)localObject1).SxK)).append("</cdnthumbkey>");
       }
-      if (((aml)localObject1).Lvq) {
-        localStringBuffer.append("<cdndatakey>").append(Util.escapeStringForXml(((aml)localObject1).Lvp)).append("</cdndatakey>");
+      if (((anm)localObject1).SxQ) {
+        localStringBuffer.append("<cdndatakey>").append(Util.escapeStringForXml(((anm)localObject1).SxP)).append("</cdndatakey>");
       }
-      if (((aml)localObject1).Lvs) {
-        localStringBuffer.append("<cdnencryver>").append(((aml)localObject1).Lvr).append("</cdnencryver>");
+      if (((anm)localObject1).SxS) {
+        localStringBuffer.append("<cdnencryver>").append(((anm)localObject1).SxR).append("</cdnencryver>");
       }
-      if (((aml)localObject1).Lvt) {
-        localStringBuffer.append("<duration>").append(((aml)localObject1).duration).append("</duration>");
+      if (((anm)localObject1).SxT) {
+        localStringBuffer.append("<duration>").append(((anm)localObject1).duration).append("</duration>");
       }
-      if (((aml)localObject1).Lvv) {
-        localStringBuffer.append("<streamweburl>").append(Util.escapeStringForXml(((aml)localObject1).Lvu)).append("</streamweburl>");
+      if (((anm)localObject1).SxV) {
+        localStringBuffer.append("<streamweburl>").append(Util.escapeStringForXml(((anm)localObject1).SxU)).append("</streamweburl>");
       }
-      if (((aml)localObject1).Lvx) {
-        localStringBuffer.append("<streamdataurl>").append(Util.escapeStringForXml(((aml)localObject1).Lvw)).append("</streamdataurl>");
+      if (((anm)localObject1).SxX) {
+        localStringBuffer.append("<streamdataurl>").append(Util.escapeStringForXml(((anm)localObject1).SxW)).append("</streamdataurl>");
       }
-      if (((aml)localObject1).Lvz) {
-        localStringBuffer.append("<streamlowbandurl>").append(Util.escapeStringForXml(((aml)localObject1).Lvy)).append("</streamlowbandurl>");
+      if (((anm)localObject1).SxZ) {
+        localStringBuffer.append("<streamlowbandurl>").append(Util.escapeStringForXml(((anm)localObject1).SxY)).append("</streamlowbandurl>");
       }
-      if (((aml)localObject1).LvA) {
-        localStringBuffer.append("<dataext>").append(Util.escapeStringForXml(((aml)localObject1).dFN)).append("</dataext>");
+      if (((anm)localObject1).Sya) {
+        localStringBuffer.append("<dataext>").append(Util.escapeStringForXml(((anm)localObject1).fyu)).append("</dataext>");
       }
-      if (((aml)localObject1).LvF) {
-        localStringBuffer.append("<fullmd5>").append(((aml)localObject1).LvE).append("</fullmd5>");
+      if (((anm)localObject1).Syf) {
+        localStringBuffer.append("<fullmd5>").append(((anm)localObject1).Sye).append("</fullmd5>");
       }
-      if (((aml)localObject1).LvH) {
-        localStringBuffer.append("<head256md5>").append(((aml)localObject1).LvG).append("</head256md5>");
+      if (((anm)localObject1).Syh) {
+        localStringBuffer.append("<head256md5>").append(((anm)localObject1).Syg).append("</head256md5>");
       }
-      if (((aml)localObject1).LvJ) {
-        localStringBuffer.append("<datasize>").append(((aml)localObject1).LvI).append("</datasize>");
+      if (((anm)localObject1).Syj) {
+        localStringBuffer.append("<datasize>").append(((anm)localObject1).Syi).append("</datasize>");
       }
-      if (((aml)localObject1).LvQ) {
-        localStringBuffer.append("<thumbfullmd5>").append(((aml)localObject1).LvP).append("</thumbfullmd5>");
+      if (((anm)localObject1).Syp) {
+        localStringBuffer.append("<thumbfullmd5>").append(((anm)localObject1).Kll).append("</thumbfullmd5>");
       }
-      if (((aml)localObject1).LvS) {
-        localStringBuffer.append("<thumbhead256md5>").append(((aml)localObject1).LvR).append("</thumbhead256md5>");
+      if (((anm)localObject1).Syr) {
+        localStringBuffer.append("<thumbhead256md5>").append(((anm)localObject1).Syq).append("</thumbhead256md5>");
       }
-      if (((aml)localObject1).LvU) {
-        localStringBuffer.append("<thumbsize>").append(((aml)localObject1).LvT).append("</thumbsize>");
+      if (((anm)localObject1).Syt) {
+        localStringBuffer.append("<thumbsize>").append(((anm)localObject1).Sys).append("</thumbsize>");
       }
-      if (((aml)localObject1).LvY) {
-        localStringBuffer.append("<streamvideoid>").append(Util.escapeStringForXml(((aml)localObject1).LvX)).append("</streamvideoid>");
+      if (((anm)localObject1).Syx) {
+        localStringBuffer.append("<streamvideoid>").append(Util.escapeStringForXml(((anm)localObject1).Syw)).append("</streamvideoid>");
       }
-      if (((aml)localObject1).Lwg) {
-        localStringBuffer.append("<sourcetitle>").append(Util.escapeStringForXml(((aml)localObject1).Lwf)).append("</sourcetitle>");
+      if (((anm)localObject1).SyF) {
+        localStringBuffer.append("<sourcetitle>").append(Util.escapeStringForXml(((anm)localObject1).SyE)).append("</sourcetitle>");
       }
-      if (((aml)localObject1).Lwk) {
-        localStringBuffer.append("<sourcename>").append(Util.escapeStringForXml(((aml)localObject1).Lwj)).append("</sourcename>");
+      if (((anm)localObject1).SyJ) {
+        localStringBuffer.append("<sourcename>").append(Util.escapeStringForXml(((anm)localObject1).SyI)).append("</sourcename>");
       }
-      if (((aml)localObject1).LwJ) {
-        localStringBuffer.append("<sourcedesc>").append(Util.escapeStringForXml(((aml)localObject1).LwI)).append("</sourcedesc>");
+      if (((anm)localObject1).Szi) {
+        localStringBuffer.append("<sourcedesc>").append(Util.escapeStringForXml(((anm)localObject1).Szh)).append("</sourcedesc>");
       }
-      if (((aml)localObject1).LwL) {
-        localStringBuffer.append("<sourceheadurl>").append(Util.escapeStringForXml(((aml)localObject1).LwK)).append("</sourceheadurl>");
+      if (((anm)localObject1).Szk) {
+        localStringBuffer.append("<sourceheadurl>").append(Util.escapeStringForXml(((anm)localObject1).Szj)).append("</sourceheadurl>");
       }
-      if (((aml)localObject1).Lwm) {
-        localStringBuffer.append("<sourcetime>").append(Util.escapeStringForXml(((aml)localObject1).Lwl)).append("</sourcetime>");
+      if (((anm)localObject1).SyL) {
+        localStringBuffer.append("<sourcetime>").append(Util.escapeStringForXml(((anm)localObject1).SyK)).append("</sourcetime>");
       }
-      if (((aml)localObject1).Lwr) {
-        localStringBuffer.append("<statextstr>").append(Util.escapeStringForXml(((aml)localObject1).ean)).append("</statextstr>");
+      if (((anm)localObject1).SyQ) {
+        localStringBuffer.append("<statextstr>").append(Util.escapeStringForXml(((anm)localObject1).fUk)).append("</statextstr>");
       }
-      if (((aml)localObject1).LwM) {
-        localStringBuffer.append("<songalbumurl>").append(Util.escapeStringForXml(((aml)localObject1).songAlbumUrl)).append("</songalbumurl>");
+      if (((anm)localObject1).Szl) {
+        localStringBuffer.append("<songalbumurl>").append(Util.escapeStringForXml(((anm)localObject1).songAlbumUrl)).append("</songalbumurl>");
       }
-      if (((aml)localObject1).LwN) {
-        localStringBuffer.append("<songlyric>").append(Util.escapeStringForXml(((aml)localObject1).songLyric)).append("</songlyric>");
+      if (((anm)localObject1).Szm) {
+        localStringBuffer.append("<songlyric>").append(Util.escapeStringForXml(((anm)localObject1).songLyric)).append("</songlyric>");
       }
-      if (((aml)localObject1).Lwy) {
-        localStringBuffer.append("<recordxml>").append(((aml)localObject1).Lwx).append("</recordxml>");
+      if (((anm)localObject1).SyX) {
+        localStringBuffer.append("<recordxml>").append(((anm)localObject1).SyW).append("</recordxml>");
       }
-      if (((aml)localObject1).jsB) {
-        localStringBuffer.append("<messageuuid>").append(Util.escapeStringForXml(((aml)localObject1).jsz)).append("</messageuuid>");
+      if (((anm)localObject1).mie) {
+        localStringBuffer.append("<messageuuid>").append(Util.escapeStringForXml(((anm)localObject1).mic)).append("</messageuuid>");
       }
-      Object localObject2 = ((aml)localObject1).Lwh;
-      if ((localObject2 == null) || (((amm)localObject2).LwO == null) || (((amm)localObject2).LwO.computeSize() == 0))
+      Object localObject2 = ((anm)localObject1).SyG;
+      if ((localObject2 == null) || (((ann)localObject2).Szn == null) || (((ann)localObject2).Szn.computeSize() == 0))
       {
         Log.w("MicroMsg.RecordMsgParser", "klem toXml, data source item empty");
         label1299:
-        localObject2 = ((aml)localObject1).Lwh;
-        if ((localObject2 != null) && (((amm)localObject2).LwQ != null) && (((amm)localObject2).LwQ.computeSize() != 0)) {
-          break label1979;
+        localObject2 = ((anm)localObject1).SyG;
+        if ((localObject2 != null) && (((ann)localObject2).Szp != null) && (((ann)localObject2).Szp.computeSize() != 0)) {
+          break label2007;
         }
         Log.w("MicroMsg.RecordMsgParser", "klem toXml, loc item empty");
         label1338:
-        localObject2 = ((aml)localObject1).Lwh;
-        if ((localObject2 != null) && (((amm)localObject2).LwS != null) && (((amm)localObject2).LwS.computeSize() != 0)) {
-          break label2158;
+        localObject2 = ((anm)localObject1).SyG;
+        if ((localObject2 != null) && (((ann)localObject2).Szr != null) && (((ann)localObject2).Szr.computeSize() != 0)) {
+          break label2186;
         }
         Log.w("MicroMsg.RecordMsgParser", "klem toXml, url item empty");
-        localObject2 = ((aml)localObject1).Lwh;
-        if ((localObject2 != null) && (((amm)localObject2).Lxk != null)) {
-          break label2413;
+        localObject2 = ((anm)localObject1).SyG;
+        if ((localObject2 != null) && (((ann)localObject2).SzJ != null)) {
+          break label2463;
         }
         Log.i("MicroMsg.RecordMsgParser", "klem toXml, finder item empty");
         label1405:
-        localObject2 = ((aml)localObject1).Lwh;
-        if ((localObject2 != null) && (((amm)localObject2).Lxm != null)) {
-          break label2429;
+        localObject2 = ((anm)localObject1).SyG;
+        if ((localObject2 != null) && (((ann)localObject2).SzL != null)) {
+          break label2479;
         }
         Log.i("MicroMsg.RecordMsgParser", "klem toXml, finder item empty");
         label1433:
-        localObject2 = ((aml)localObject1).Lwh;
-        if ((localObject2 != null) && (((amm)localObject2).Lxu != null)) {
-          break label2445;
+        localObject2 = ((anm)localObject1).SyG;
+        if ((localObject2 != null) && (((ann)localObject2).SzV != null)) {
+          break label2495;
+        }
+        Log.i("MicroMsg.RecordMsgParser", "klem toXml, finder activity item empty");
+        label1461:
+        localObject2 = ((anm)localObject1).SyG;
+        if ((localObject2 != null) && (((ann)localObject2).SzT != null)) {
+          break label2511;
         }
         Log.i("MicroMsg.RecordMsgParser", "klem toXml, finder topic item empty");
-        label1461:
-        localObject2 = ((aml)localObject1).Lwh;
-        if ((localObject2 != null) && (((amm)localObject2).Lxo != null)) {
-          break label2724;
+        label1489:
+        localObject2 = ((anm)localObject1).SyG;
+        if ((localObject2 != null) && (((ann)localObject2).SzN != null)) {
+          break label2527;
         }
         Log.i("MicroMsg.RecordMsgParser", "klem toXml, finder namecard item empty");
-        label1489:
-        localObject2 = ((aml)localObject1).Lwh;
-        if ((localObject2 != null) && (((amm)localObject2).Lxq != null)) {
-          break label2849;
+        label1517:
+        localObject2 = ((anm)localObject1).SyG;
+        if ((localObject2 != null) && (((ann)localObject2).SzP != null)) {
+          break label2652;
         }
         Log.i("MicroMsg.RecordMsgParser", "klem toXml, finder column item empty");
-        label1517:
-        localObject2 = ((aml)localObject1).Lwh;
-        if ((localObject2 != null) && (((amm)localObject2).Lxi != null)) {
-          break label2865;
+        label1545:
+        localObject2 = ((anm)localObject1).SyG;
+        if ((localObject2 != null) && (((ann)localObject2).SzH != null)) {
+          break label2668;
         }
         Log.d("MicroMsg.RecordMsgParser", "setMpVideoXml toXml, item empty");
-        label1545:
-        localObject2 = ((aml)localObject1).Lwh;
-        if ((localObject2 != null) && (((amm)localObject2).LwU != null) && (((amm)localObject2).LwU.computeSize() != 0)) {
-          break label2881;
+        label1573:
+        localObject2 = ((anm)localObject1).SyG;
+        if ((localObject2 != null) && (((ann)localObject2).Szt != null) && (((ann)localObject2).Szt.computeSize() != 0)) {
+          break label2684;
         }
         Log.w("MicroMsg.RecordMsgParser", "klem toXml, product item empty");
-        label1584:
-        localObject2 = ((aml)localObject1).Lwh;
-        if ((localObject2 != null) && (((amm)localObject2).LwW != null) && (((amm)localObject2).LwW.computeSize() != 0)) {
-          break label3075;
+        label1612:
+        localObject2 = ((anm)localObject1).SyG;
+        if ((localObject2 != null) && (((ann)localObject2).Szv != null) && (((ann)localObject2).Szv.computeSize() != 0)) {
+          break label2878;
         }
         Log.w("MicroMsg.RecordMsgParser", "klem toXml, product item empty");
-        label1623:
-        localObject2 = ((aml)localObject1).Lwh;
-        if ((localObject2 != null) && (((amm)localObject2).Lxf != null)) {
-          break label3233;
+        label1651:
+        localObject2 = ((anm)localObject1).SyG;
+        if ((localObject2 != null) && (((ann)localObject2).SzE != null)) {
+          break label3036;
         }
         Log.e("MicroMsg.RecordMsgParser", "setAppBrandXml toXml, item empty");
-        label1651:
-        localObject1 = ((aml)localObject1).Lwh;
-        if ((localObject1 != null) && (((amm)localObject1).Lxs != null)) {
-          break label3556;
+        label1679:
+        localObject1 = ((anm)localObject1).SyG;
+        if ((localObject1 != null) && (((ann)localObject1).SzR != null)) {
+          break label3359;
         }
         Log.w("MicroMsg.RecordMsgParser", "klem toXml, music item empty");
       }
@@ -238,185 +241,176 @@ public final class q
         localStringBuffer.append("</dataitem>");
         i += 1;
         break;
-        localObject2 = ((amm)localObject2).LwO;
-        if (((amn)localObject2).LxE) {
-          localStringBuffer.append("<appid>").append(((amn)localObject2).appId).append("</appid>");
+        localObject2 = ((ann)localObject2).Szn;
+        if (((ano)localObject2).SAf) {
+          localStringBuffer.append("<appid>").append(((ano)localObject2).appId).append("</appid>");
         }
-        if (((amn)localObject2).LxF) {
-          localStringBuffer.append("<link>").append(Util.escapeStringForXml(((amn)localObject2).link)).append("</link>");
+        if (((ano)localObject2).SAg) {
+          localStringBuffer.append("<link>").append(Util.escapeStringForXml(((ano)localObject2).link)).append("</link>");
         }
-        if (((amn)localObject2).LxI) {
-          localStringBuffer.append("<brandid>").append(Util.escapeStringForXml(((amn)localObject2).dCl)).append("</brandid>");
+        if (((ano)localObject2).SAj) {
+          localStringBuffer.append("<brandid>").append(Util.escapeStringForXml(((ano)localObject2).fuO)).append("</brandid>");
         }
-        if ((((amn)localObject2).Lxx) && (((amn)localObject2).LxB))
+        if ((((ano)localObject2).SzY) && (((ano)localObject2).SAc))
         {
-          if (((amn)localObject2).dRL.equals(((amn)localObject2).LxA))
+          if (((ano)localObject2).fLi.equals(((ano)localObject2).SAb))
           {
-            localStringBuffer.append("<dataitemsource><fromusr>").append(Util.escapeStringForXml(((amn)localObject2).dRL)).append("</fromusr></dataitemsource>");
+            localStringBuffer.append("<dataitemsource><fromusr>").append(Util.escapeStringForXml(((ano)localObject2).fLi)).append("</fromusr></dataitemsource>");
             break label1299;
           }
-          if ((!ab.Eq(((amn)localObject2).dRL)) && (!e.NF(((amn)localObject2).LxA))) {
+          if ((!ab.Lj(((ano)localObject2).fLi)) && (!e.Vb(((ano)localObject2).SAb))) {
             break label1299;
           }
-          localStringBuffer.append("<dataitemsource><realchatname>").append(Util.escapeStringForXml(((amn)localObject2).LxA)).append("</realchatname></dataitemsource>");
+          localStringBuffer.append("<dataitemsource><realchatname>").append(Util.escapeStringForXml(((ano)localObject2).SAb)).append("</realchatname></dataitemsource>");
           break label1299;
         }
-        if (((amn)localObject2).Lxx)
+        if (((ano)localObject2).SzY)
         {
-          localStringBuffer.append("<dataitemsource><fromusr>").append(Util.escapeStringForXml(((amn)localObject2).dRL)).append("</fromusr></dataitemsource>");
+          localStringBuffer.append("<dataitemsource><fromusr>").append(Util.escapeStringForXml(((ano)localObject2).fLi)).append("</fromusr></dataitemsource>");
           break label1299;
         }
-        if (!((amn)localObject2).LxB) {
+        if (!((ano)localObject2).SAc) {
           break label1299;
         }
-        localStringBuffer.append("<dataitemsource><realchatname>").append(Util.escapeStringForXml(((amn)localObject2).LxA)).append("</realchatname></dataitemsource>");
+        localStringBuffer.append("<dataitemsource><realchatname>").append(Util.escapeStringForXml(((ano)localObject2).SAb)).append("</realchatname></dataitemsource>");
         break label1299;
-        label1979:
-        localObject2 = ((amm)localObject2).LwQ;
+        label2007:
+        localObject2 = ((ann)localObject2).Szp;
         localStringBuffer.append("<locitem>");
-        if (((ams)localObject2).LxQ) {
-          localStringBuffer.append("<label>").append(Util.escapeStringForXml(((ams)localObject2).label)).append("</label>");
+        if (((ant)localObject2).SAr) {
+          localStringBuffer.append("<label>").append(Util.escapeStringForXml(((ant)localObject2).label)).append("</label>");
         }
-        if (((ams)localObject2).LxO) {
-          localStringBuffer.append("<lat>").append(((ams)localObject2).lat).append("</lat>");
+        if (((ant)localObject2).SAp) {
+          localStringBuffer.append("<lat>").append(((ant)localObject2).lat).append("</lat>");
         }
-        if (((ams)localObject2).LxN) {
-          localStringBuffer.append("<lng>").append(((ams)localObject2).lng).append("</lng>");
+        if (((ant)localObject2).SAo) {
+          localStringBuffer.append("<lng>").append(((ant)localObject2).lng).append("</lng>");
         }
-        if (((ams)localObject2).LxP) {
-          localStringBuffer.append("<scale>").append(((ams)localObject2).dRt).append("</scale>");
+        if (((ant)localObject2).SAq) {
+          localStringBuffer.append("<scale>").append(((ant)localObject2).fKJ).append("</scale>");
         }
-        if (((ams)localObject2).LxR) {
-          localStringBuffer.append("<poiname>").append(((ams)localObject2).dWi).append("</poiname>");
+        if (((ant)localObject2).SAs) {
+          localStringBuffer.append("<poiname>").append(((ant)localObject2).fPN).append("</poiname>");
         }
         localStringBuffer.append("</locitem>");
         break label1338;
-        label2158:
-        Object localObject3 = ((amm)localObject2).LwS;
+        label2186:
+        Object localObject3 = ((ann)localObject2).Szr;
         localStringBuffer.append("<weburlitem>");
-        if (((anq)localObject3).LyD) {
-          localStringBuffer.append("<link>").append(Util.escapeStringForXml(((anq)localObject3).LyC)).append("</link>");
+        if (((aor)localObject3).SBd) {
+          localStringBuffer.append("<link>").append(Util.escapeStringForXml(((aor)localObject3).SBc)).append("</link>");
         }
-        if (((anq)localObject3).Lvi) {
-          localStringBuffer.append("<desc>").append(Util.escapeStringForXml(((anq)localObject3).desc)).append("</desc>");
+        if (((aor)localObject3).SxI) {
+          localStringBuffer.append("<desc>").append(Util.escapeStringForXml(((aor)localObject3).desc)).append("</desc>");
         }
-        if (((anq)localObject3).LxX) {
-          localStringBuffer.append("<thumburl>").append(Util.escapeStringForXml(((anq)localObject3).thumbUrl)).append("</thumburl>");
+        if (((aor)localObject3).SAy) {
+          localStringBuffer.append("<thumburl>").append(Util.escapeStringForXml(((aor)localObject3).thumbUrl)).append("</thumburl>");
         }
-        if (((anq)localObject3).Lvh) {
-          localStringBuffer.append("<title>").append(Util.escapeStringForXml(((anq)localObject3).title)).append("</title>");
+        if (((aor)localObject3).SxH) {
+          localStringBuffer.append("<title>").append(Util.escapeStringForXml(((aor)localObject3).title)).append("</title>");
         }
-        if (((anq)localObject3).LyF) {
-          localStringBuffer.append("<opencache>").append(((anq)localObject3).LyE).append("</opencache>");
+        if (((aor)localObject3).SBf) {
+          localStringBuffer.append("<opencache>").append(((aor)localObject3).SBe).append("</opencache>");
         }
-        if (((anq)localObject3).LyG) {
-          localStringBuffer.append("<contentattr>").append(((anq)localObject3).contentattr).append("</contentattr>");
+        if (((aor)localObject3).SBg) {
+          localStringBuffer.append("<contentattr>").append(((aor)localObject3).contentattr).append("</contentattr>");
         }
-        if ((localObject2 == null) || (((amm)localObject2).IXu == null)) {
+        localStringBuffer.append("<forwardflag>").append(((aor)localObject3).mjT).append("</forwardflag>");
+        if ((localObject2 == null) || (((ann)localObject2).PTL == null)) {
           Log.d("MicroMsg.RecordMsgParser", "setMpMsgXml toXml, item empty");
         }
         for (;;)
         {
           localStringBuffer.append("</weburlitem>");
           break;
-          localStringBuffer.append(b.a(((amm)localObject2).IXu));
+          localStringBuffer.append(b.a(((ann)localObject2).PTL));
         }
-        label2413:
-        localStringBuffer.append(l.b(((amm)localObject2).Lxk));
+        label2463:
+        localStringBuffer.append(k.b(((ann)localObject2).SzJ));
         break label1405;
-        label2429:
-        localStringBuffer.append(l.c(((amm)localObject2).Lxm));
+        label2479:
+        localStringBuffer.append(k.c(((ann)localObject2).SzL));
         break label1433;
-        label2445:
-        localObject2 = ((amm)localObject2).Lxu;
-        localObject3 = new StringBuilder();
-        if (localObject2 != null)
-        {
-          ((StringBuilder)localObject3).append("<finderTopicShareItem><topic>").append(Util.escapeStringForXml(((bcl)localObject2).dST)).append("</topic><topicType>").append(((bcl)localObject2).tvC).append("</topicType><iconUrl>").append(XmlParser.getCDataWrapper(((bcl)localObject2).iconUrl)).append("</iconUrl><desc>").append(Util.escapeStringForXml(((bcl)localObject2).desc)).append("</desc><patMusicId>").append(Util.escapeStringForXml(((bcl)localObject2).LLC)).append("</patMusicId>");
-          if (((bcl)localObject2).LLB != null) {
-            ((StringBuilder)localObject3).append("<location><poiClassifyId>").append(Util.escapeStringForXml(((bcl)localObject2).LLB.LIb)).append("</poiClassifyId><longitude>").append(((bcl)localObject2).LLB.dTj).append("</longitude><latitude>").append(((bcl)localObject2).LLB.latitude).append("</latitude></location>");
-          }
-          if (((bcl)localObject2).LLD != null) {
-            ((StringBuilder)localObject3).append("<event><topicId>").append(((bcl)localObject2).LLD.LAp).append("</topicId><topicEventName>").append(Util.escapeStringForXml(((bcl)localObject2).LLD.LAq)).append("</topicEventName><creatorNickName>").append(Util.escapeStringForXml(((bcl)localObject2).LLD.LAr)).append("</creatorNickName></event>");
-          }
-          ((StringBuilder)localObject3).append("</finderTopicShareItem>");
-        }
-        localStringBuffer.append(((StringBuilder)localObject3).toString());
+        label2495:
+        localStringBuffer.append(k.c(((ann)localObject2).SzV));
         break label1461;
-        label2724:
-        localObject2 = ((amm)localObject2).Lxo;
+        label2511:
+        localStringBuffer.append(k.c(((ann)localObject2).SzT));
+        break label1489;
+        label2527:
+        localObject2 = ((ann)localObject2).SzN;
         localObject3 = new StringBuilder();
         if (localObject2 != null) {
-          ((StringBuilder)localObject3).append("<finderShareNameCard><username>").append(Util.escapeStringForXml(((bci)localObject2).username)).append("</username><nickname>").append(Util.escapeStringForXml(((bci)localObject2).nickname)).append("</nickname><avatar>").append(XmlParser.getCDataWrapper(((bci)localObject2).uNR)).append("</avatar><authJob>").append(Util.escapeStringForXml(((bci)localObject2).wDX)).append("</authJob><authIcon>").append(((bci)localObject2).wDY).append("</authIcon></finderShareNameCard>");
+          ((StringBuilder)localObject3).append("<finderShareNameCard><username>").append(Util.escapeStringForXml(((bjd)localObject2).username)).append("</username><nickname>").append(Util.escapeStringForXml(((bjd)localObject2).nickname)).append("</nickname><avatar>").append(XmlParser.getCDataWrapper(((bjd)localObject2).avatar)).append("</avatar><authJob>").append(Util.escapeStringForXml(((bjd)localObject2).Bvd)).append("</authJob><authIcon>").append(((bjd)localObject2).Bve).append("</authIcon></finderShareNameCard>");
         }
         localStringBuffer.append(((StringBuilder)localObject3).toString());
-        break label1489;
-        label2849:
-        localStringBuffer.append(l.b(((amm)localObject2).Lxq));
         break label1517;
-        label2865:
-        localStringBuffer.append(b.b(((amm)localObject2).Lxi));
+        label2652:
+        localStringBuffer.append(k.b(((ann)localObject2).SzP));
         break label1545;
-        label2881:
-        localObject2 = ((amm)localObject2).LwU;
+        label2668:
+        localStringBuffer.append(b.b(((ann)localObject2).SzH));
+        break label1573;
+        label2684:
+        localObject2 = ((ann)localObject2).Szt;
         localStringBuffer.append("<productitem");
-        if (((ana)localObject2).LxZ) {
-          localStringBuffer.append(" type='").append(((ana)localObject2).type).append("'");
+        if (((aob)localObject2).SAA) {
+          localStringBuffer.append(" type='").append(((aob)localObject2).type).append("'");
         }
         localStringBuffer.append(">");
-        if (((ana)localObject2).Lvh) {
-          localStringBuffer.append("<title>").append(Util.escapeStringForXml(((ana)localObject2).title)).append("</title>");
+        if (((aob)localObject2).SxH) {
+          localStringBuffer.append("<title>").append(Util.escapeStringForXml(((aob)localObject2).title)).append("</title>");
         }
-        if (((ana)localObject2).Lvi) {
-          localStringBuffer.append("<desc>").append(Util.escapeStringForXml(((ana)localObject2).desc)).append("</desc>");
+        if (((aob)localObject2).SxI) {
+          localStringBuffer.append("<desc>").append(Util.escapeStringForXml(((aob)localObject2).desc)).append("</desc>");
         }
-        if (((ana)localObject2).LxX) {
-          localStringBuffer.append("<thumburl>").append(Util.escapeStringForXml(((ana)localObject2).thumbUrl)).append("</thumburl>");
+        if (((aob)localObject2).SAy) {
+          localStringBuffer.append("<thumburl>").append(Util.escapeStringForXml(((aob)localObject2).thumbUrl)).append("</thumburl>");
         }
-        if (((ana)localObject2).LxY) {
-          localStringBuffer.append("<productinfo>").append(Util.escapeStringForXml(((ana)localObject2).info)).append("</productinfo>");
+        if (((aob)localObject2).SAz) {
+          localStringBuffer.append("<productinfo>").append(Util.escapeStringForXml(((aob)localObject2).fTp)).append("</productinfo>");
         }
         localStringBuffer.append("</productitem>");
-        break label1584;
-        label3075:
-        localObject2 = ((amm)localObject2).LwW;
+        break label1612;
+        label2878:
+        localObject2 = ((ann)localObject2).Szv;
         localStringBuffer.append("<tvitem>");
-        if (((ank)localObject2).Lvh) {
-          localStringBuffer.append("<title>").append(Util.escapeStringForXml(((ank)localObject2).title)).append("</title>");
+        if (((aol)localObject2).SxH) {
+          localStringBuffer.append("<title>").append(Util.escapeStringForXml(((aol)localObject2).title)).append("</title>");
         }
-        if (((ank)localObject2).Lvi) {
-          localStringBuffer.append("<desc>").append(Util.escapeStringForXml(((ank)localObject2).desc)).append("</desc>");
+        if (((aol)localObject2).SxI) {
+          localStringBuffer.append("<desc>").append(Util.escapeStringForXml(((aol)localObject2).desc)).append("</desc>");
         }
-        if (((ank)localObject2).LxX) {
-          localStringBuffer.append("<thumburl>").append(Util.escapeStringForXml(((ank)localObject2).thumbUrl)).append("</thumburl>");
+        if (((aol)localObject2).SAy) {
+          localStringBuffer.append("<thumburl>").append(Util.escapeStringForXml(((aol)localObject2).thumbUrl)).append("</thumburl>");
         }
-        if (((ank)localObject2).LxY) {
-          localStringBuffer.append("<tvinfo>").append(Util.escapeStringForXml(((ank)localObject2).info)).append("</tvinfo>");
+        if (((aol)localObject2).SAz) {
+          localStringBuffer.append("<tvinfo>").append(Util.escapeStringForXml(((aol)localObject2).fTp)).append("</tvinfo>");
         }
         localStringBuffer.append("</tvitem>");
-        break label1623;
-        label3233:
-        localObject2 = ((amm)localObject2).Lxf;
+        break label1651;
+        label3036:
+        localObject2 = ((ann)localObject2).SzE;
         if (localObject2 == null) {
-          break label1651;
+          break label1679;
         }
         localStringBuffer.append("<appbranditem>");
-        localStringBuffer.append("<username>").append(Util.escapeStringForXml(((amj)localObject2).username)).append("</username>");
-        localStringBuffer.append("<appid>").append(Util.escapeStringForXml(((amj)localObject2).appId)).append("</appid>");
-        localStringBuffer.append("<pkgtype>").append(((amj)localObject2).dMe).append("</pkgtype>");
-        localStringBuffer.append("<iconurl>").append(Util.escapeStringForXml(((amj)localObject2).iconUrl)).append("</iconurl>");
-        localStringBuffer.append("<type>").append(((amj)localObject2).type).append("</type>");
-        localStringBuffer.append("<pagepath>").append(Util.escapeStringForXml(((amj)localObject2).dCx)).append("</pagepath>");
-        localStringBuffer.append("<sourcedisplayname>").append(Util.escapeStringForXml(((amj)localObject2).Lve)).append("</sourcedisplayname>");
-        localStringBuffer.append("<version>").append(((amj)localObject2).version).append("</version>");
-        localStringBuffer.append("<disableforward>").append(((amj)localObject2).lyE).append("</disableforward>");
-        localStringBuffer.append("<tradingguaranteeflag>").append(((amj)localObject2).leb).append("</tradingguaranteeflag>");
-        localStringBuffer.append("<messageextradata>").append(String.format("<![CDATA[%s]]>", new Object[] { ((amj)localObject2).eda })).append("</messageextradata>");
-        localStringBuffer.append("<subtype>").append(((amj)localObject2).subType).append("</subtype>");
+        localStringBuffer.append("<username>").append(Util.escapeStringForXml(((ank)localObject2).username)).append("</username>");
+        localStringBuffer.append("<appid>").append(Util.escapeStringForXml(((ank)localObject2).appId)).append("</appid>");
+        localStringBuffer.append("<pkgtype>").append(((ank)localObject2).fES).append("</pkgtype>");
+        localStringBuffer.append("<iconurl>").append(Util.escapeStringForXml(((ank)localObject2).iconUrl)).append("</iconurl>");
+        localStringBuffer.append("<type>").append(((ank)localObject2).type).append("</type>");
+        localStringBuffer.append("<pagepath>").append(Util.escapeStringForXml(((ank)localObject2).fve)).append("</pagepath>");
+        localStringBuffer.append("<sourcedisplayname>").append(Util.escapeStringForXml(((ank)localObject2).SxE)).append("</sourcedisplayname>");
+        localStringBuffer.append("<version>").append(((ank)localObject2).version).append("</version>");
+        localStringBuffer.append("<disableforward>").append(((ank)localObject2).otE).append("</disableforward>");
+        localStringBuffer.append("<tradingguaranteeflag>").append(((ank)localObject2).nYp).append("</tradingguaranteeflag>");
+        localStringBuffer.append("<messageextradata>").append(String.format("<![CDATA[%s]]>", new Object[] { ((ank)localObject2).fXg })).append("</messageextradata>");
+        localStringBuffer.append("<subtype>").append(((ank)localObject2).subType).append("</subtype>");
         localStringBuffer.append("</appbranditem>");
-        break label1651;
-        label3556:
-        localStringBuffer.append(ak.a(((amm)localObject1).Lxs));
+        break label1679;
+        label3359:
+        localStringBuffer.append(am.a(((ann)localObject1).SzR));
       }
     }
     localStringBuffer.append("</datalist>");
@@ -427,7 +421,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.record.b.q
  * JD-Core Version:    0.7.0.1
  */

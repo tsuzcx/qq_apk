@@ -11,46 +11,73 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
 {
-  private static b ndc = null;
-  private static String ndd = null;
-  private static a.a nde = null;
-  private static MTimerHandler ndf = null;
+  private static b qdr = null;
+  private static String qds = null;
+  private static a.a qdt = null;
+  private static MTimerHandler qdu = null;
+  
+  public static void BV(int paramInt)
+  {
+    AppMethodBeat.i(146139);
+    Log.i("MicroMsg.Record.AudioRecorder", "stopRecord what:%d", new Object[] { Integer.valueOf(paramInt) });
+    if (Util.isNullOrNil(qds))
+    {
+      AppMethodBeat.o(146139);
+      return;
+    }
+    if (qdr == null)
+    {
+      Log.i("MicroMsg.Record.AudioRecorder", "sRecorder is null,err");
+      AppMethodBeat.o(146139);
+      return;
+    }
+    qdr.TV();
+    qdr.release();
+    qdr = null;
+    stopTimer();
+    qds = null;
+    if (qdt != null) {
+      qdt.Ab(paramInt);
+    }
+    qdt = null;
+    AppMethodBeat.o(146139);
+  }
   
   public static boolean a(String paramString, a.a parama, int paramInt)
   {
     AppMethodBeat.i(146138);
     Log.i("MicroMsg.Record.AudioRecorder", "startRecord");
-    yv(1);
+    BV(1);
     if (Util.isNullOrNil(paramString))
     {
       Log.e("MicroMsg.Record.AudioRecorder", "startRecord, path is null or nil");
       AppMethodBeat.o(146138);
       return false;
     }
-    b localb = new b(c.a.gCO);
-    ndc = localb;
-    if (localb.dyJ == c.a.gCN) {
-      if (localb.dyH != null) {
-        localb.dyH.reset();
+    b localb = new b(c.a.jmU);
+    qdr = localb;
+    if (localb.fry == c.a.jmT) {
+      if (localb.frw != null) {
+        localb.frw.reset();
       }
     }
     for (;;)
     {
-      ndc.aac();
-      ndc.aad();
-      ndc.aab();
-      ndc.setOutputFile(paramString);
-      ndc.a(new a.2());
+      qdr.aeN();
+      qdr.aeO();
+      qdr.aeM();
+      qdr.setOutputFile(paramString);
+      qdr.a(new a.2());
       try
       {
-        ndc.prepare();
-        ndc.start();
-        nde = parama;
-        ndd = paramString;
+        qdr.prepare();
+        qdr.start();
+        qdt = parama;
+        qds = paramString;
         long l = paramInt;
         stopTimer();
         paramString = new MTimerHandler(new a.1(), false);
-        ndf = paramString;
+        qdu = paramString;
         paramString.startTimer(l);
         AppMethodBeat.o(146138);
         return true;
@@ -60,10 +87,10 @@ public final class a
         Log.e("MicroMsg.Record.AudioRecorder", "record prepare, exp = %s", new Object[] { Util.stackTraceToString(paramString) });
         AppMethodBeat.o(146138);
       }
-      if (localb.dyK != b.b.dyW)
+      if (localb.frz != b.b.frL)
       {
         localb.release();
-        localb.aae();
+        localb.aeP();
       }
     }
     return false;
@@ -72,43 +99,16 @@ public final class a
   private static void stopTimer()
   {
     AppMethodBeat.i(146137);
-    if (ndf != null) {
-      ndf.stopTimer();
+    if (qdu != null) {
+      qdu.stopTimer();
     }
-    ndf = null;
+    qdu = null;
     AppMethodBeat.o(146137);
-  }
-  
-  public static void yv(int paramInt)
-  {
-    AppMethodBeat.i(146139);
-    Log.i("MicroMsg.Record.AudioRecorder", "stopRecord what:%d", new Object[] { Integer.valueOf(paramInt) });
-    if (Util.isNullOrNil(ndd))
-    {
-      AppMethodBeat.o(146139);
-      return;
-    }
-    if (ndc == null)
-    {
-      Log.i("MicroMsg.Record.AudioRecorder", "sRecorder is null,err");
-      AppMethodBeat.o(146139);
-      return;
-    }
-    ndc.Qt();
-    ndc.release();
-    ndc = null;
-    stopTimer();
-    ndd = null;
-    if (nde != null) {
-      nde.wM(paramInt);
-    }
-    nde = null;
-    AppMethodBeat.o(146139);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.a
  * JD-Core Version:    0.7.0.1
  */

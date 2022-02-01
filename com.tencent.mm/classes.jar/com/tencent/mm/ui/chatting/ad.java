@@ -1,22 +1,22 @@
 package com.tencent.mm.ui.chatting;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.b;
-import com.tencent.mm.av.g;
-import com.tencent.mm.av.i;
-import com.tencent.mm.av.q;
-import com.tencent.mm.g.c.eo;
+import com.tencent.mm.aj.k.b;
+import com.tencent.mm.ay.g;
+import com.tencent.mm.ay.i;
+import com.tencent.mm.ay.q;
+import com.tencent.mm.f.c.et;
 import com.tencent.mm.pluginsdk.model.app.ao;
 import com.tencent.mm.pluginsdk.model.app.c;
 import com.tencent.mm.pluginsdk.model.app.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ca;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 
 public final class ad
 {
-  public static String b(ca paramca, k.b paramb)
+  public static String c(ca paramca, k.b paramb)
   {
     AppMethodBeat.i(34824);
     String str2 = "";
@@ -24,17 +24,17 @@ public final class ad
     if (paramb != null)
     {
       str1 = str2;
-      if (!Util.isNullOrNil(paramb.dCK))
+      if (!Util.isNullOrNil(paramb.fvr))
       {
-        paramb = ao.cgO().bdx(paramb.dCK);
+        paramb = ao.ctZ().bpR(paramb.fvr);
         str1 = str2;
         if (paramb != null)
         {
           str1 = str2;
-          if (paramb.deQ())
+          if (paramb.evg())
           {
             str1 = str2;
-            if (s.YS(paramb.field_fileFullPath)) {
+            if (u.agG(paramb.field_fileFullPath)) {
               str1 = paramb.field_fileFullPath;
             }
           }
@@ -48,36 +48,36 @@ public final class ad
       return str1;
     }
     if (paramca != null) {
-      str1 = q.bcR().R(paramca.field_imgPath, true);
+      str1 = q.bmh().T(paramca.field_imgPath, true);
     }
     Log.d("MicroMsg.HistoryExportUtil", "try get thumb appmsg image path finish, %s", new Object[] { str1 });
     AppMethodBeat.o(34824);
     return str1;
   }
   
-  public static String cf(String paramString, long paramLong)
+  public static String cm(String paramString, long paramLong)
   {
-    AppMethodBeat.i(232912);
-    paramString = f(q.bcR().H(paramString, paramLong));
+    AppMethodBeat.i(271118);
+    paramString = f(q.bmh().D(paramString, paramLong));
     if (paramString != null)
     {
-      AppMethodBeat.o(232912);
+      AppMethodBeat.o(271118);
       return paramString;
     }
-    AppMethodBeat.o(232912);
+    AppMethodBeat.o(271118);
     return null;
   }
   
-  public static String cg(String paramString, long paramLong)
+  public static String cn(String paramString, long paramLong)
   {
-    AppMethodBeat.i(232913);
-    paramString = f(q.bcR().G(paramString, paramLong));
+    AppMethodBeat.i(271120);
+    paramString = f(q.bmh().C(paramString, paramLong));
     if (paramString != null)
     {
-      AppMethodBeat.o(232913);
+      AppMethodBeat.o(271120);
       return paramString;
     }
-    AppMethodBeat.o(232913);
+    AppMethodBeat.o(271120);
     return null;
   }
   
@@ -86,25 +86,25 @@ public final class ad
     AppMethodBeat.i(34823);
     if (paramg != null)
     {
-      if (paramg.bcv())
+      if (paramg.blK())
       {
-        str = paramg.iXm;
-        if ((str != null) && (s.YS(str)))
+        str = paramg.lNH;
+        if ((str != null) && (u.agG(str)))
         {
           AppMethodBeat.o(34823);
           return str;
         }
       }
-      String str = paramg.iXm;
-      str = q.bcR().o(str, null, null);
-      if ((str != null) && (s.YS(str)))
+      String str = paramg.lNH;
+      str = q.bmh().r(str, null, null);
+      if ((str != null) && (u.agG(str)))
       {
         AppMethodBeat.o(34823);
         return str;
       }
-      paramg = paramg.iXo;
-      paramg = q.bcR().o(paramg, null, null);
-      if ((paramg != null) && (s.YS(paramg)))
+      paramg = paramg.lNJ;
+      paramg = q.bmh().r(paramg, null, null);
+      if ((paramg != null) && (u.agG(paramg)))
       {
         AppMethodBeat.o(34823);
         return paramg;
@@ -116,7 +116,7 @@ public final class ad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ad
  * JD-Core Version:    0.7.0.1
  */

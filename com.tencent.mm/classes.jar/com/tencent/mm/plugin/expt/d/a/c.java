@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.expt.d.a;
 
-import com.tencent.mm.plugin.expt.d.e.a;
+import com.tencent.mm.plugin.expt.d.f.a;
 import java.util.List;
 
 public abstract interface c
 {
   public abstract void a(a parama);
   
-  public abstract List<a> aol(String paramString);
+  public abstract List<a> awk(String paramString);
+  
+  public abstract long bUj();
   
   public abstract void clear(String paramString);
   
-  public abstract void clearAll();
+  public abstract void dp(List<String> paramList);
   
   public abstract int getType();
-  
-  public abstract long size();
 }
 
 

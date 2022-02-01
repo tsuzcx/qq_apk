@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class a
   implements b.a
 {
-  private final long bdJ;
+  private final long aNk;
   private final int bitrate;
   private final long firstFramePosition;
   
@@ -16,30 +16,30 @@ final class a
     this.firstFramePosition = paramLong1;
     this.bitrate = paramInt;
     if (paramLong2 == -1L) {}
-    for (paramLong1 = -9223372036854775807L;; paramLong1 = N(paramLong2))
+    for (paramLong1 = -9223372036854775807L;; paramLong1 = Q(paramLong2))
     {
-      this.bdJ = paramLong1;
+      this.aNk = paramLong1;
       AppMethodBeat.o(92034);
       return;
     }
   }
   
-  public final long L(long paramLong)
+  public final long O(long paramLong)
   {
     AppMethodBeat.i(92035);
-    if (this.bdJ == -9223372036854775807L)
+    if (this.aNk == -9223372036854775807L)
     {
       AppMethodBeat.o(92035);
       return 0L;
     }
-    long l = x.l(paramLong, this.bdJ);
+    long l = x.m(paramLong, this.aNk);
     paramLong = this.firstFramePosition;
     l = l * this.bitrate / 8000000L;
     AppMethodBeat.o(92035);
     return l + paramLong;
   }
   
-  public final long N(long paramLong)
+  public final long Q(long paramLong)
   {
     AppMethodBeat.i(92036);
     paramLong = Math.max(0L, paramLong - this.firstFramePosition) * 1000000L * 8L / this.bitrate;
@@ -49,17 +49,17 @@ final class a
   
   public final long getDurationUs()
   {
-    return this.bdJ;
+    return this.aNk;
   }
   
-  public final boolean uu()
+  public final boolean so()
   {
-    return this.bdJ != -9223372036854775807L;
+    return this.aNk != -9223372036854775807L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.c.c.a
  * JD-Core Version:    0.7.0.1
  */

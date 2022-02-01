@@ -490,12 +490,14 @@ public class g
     this.f = "";
     if ((paramString == null) || (paramString.isEmpty()))
     {
+      TXCLog.i("TXRTMPAccUrlFetcher", "getAccerateStreamPlayUrl input playUrl is empty");
       AppMethodBeat.o(15414);
       return -1;
     }
     final String str1 = TXCCommonUtil.getStreamIDByStreamUrl(paramString);
     if ((str1 == null) || (str1.isEmpty()))
     {
+      TXCLog.i("TXRTMPAccUrlFetcher", "getAccerateStreamPlayUrl streamID is empty");
       AppMethodBeat.o(15414);
       return -2;
     }
@@ -585,7 +587,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.network.g
  * JD-Core Version:    0.7.0.1
  */

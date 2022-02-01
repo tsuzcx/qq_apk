@@ -10,13 +10,19 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.br.c;
+import com.tencent.mm.an.q;
+import com.tencent.mm.by.c;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.wxpay.a.a;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.ui.ar;
 import org.xwalk.core.Log;
 
 public class MobileRemitWelcomeUI
@@ -24,7 +30,7 @@ public class MobileRemitWelcomeUI
 {
   public int getLayoutId()
   {
-    return 2131495676;
+    return a.g.mobile_remit_welcome_ui;
   }
   
   public void initView()
@@ -33,27 +39,27 @@ public class MobileRemitWelcomeUI
     super.initView();
     setMMTitle("");
     hideActionbarLine();
-    setActionbarColor(getResources().getColor(2131101424));
-    setBackGroundColorResource(2131101424);
+    setActionbarColor(getResources().getColor(a.c.white));
+    setBackGroundColorResource(a.c.white);
     setBackBtn(null);
-    ((ImageView)findViewById(2131304808)).getDrawable().setColorFilter(getResources().getColor(2131099710), PorterDuff.Mode.SRC_ATOP);
-    findViewById(2131304806).setOnClickListener(new View.OnClickListener()
+    ((ImageView)findViewById(a.f.mobile_remit_welcome_icon_iv)).getDrawable().setColorFilter(getResources().getColor(a.c.Brand), PorterDuff.Mode.SRC_ATOP);
+    findViewById(a.f.mobile_remit_welcome_finish_bt).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(67754);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitWelcomeUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitWelcomeUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         Log.i("MicroMsg.mobileRemit.MobileRemitWelcomeUI", "goto MobileRemitNumberInputUI");
-        g.aAh().azQ().set(ar.a.Ojn, Boolean.FALSE);
+        h.aHG().aHp().set(ar.a.VxD, Boolean.FALSE);
         c.b(MobileRemitWelcomeUI.this.getContext(), "remittance", ".mobile.ui.MobileRemitNumberInputUI", MobileRemitWelcomeUI.this.getIntent());
         MobileRemitWelcomeUI.this.finish();
         a.a(this, "com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitWelcomeUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(67754);
       }
     });
-    com.tencent.mm.ui.ao.a(((TextView)findViewById(2131304812)).getPaint(), 0.8F);
+    ar.a(((TextView)findViewById(a.f.mobile_remit_welcome_title_tv)).getPaint(), 0.8F);
     AppMethodBeat.o(67756);
   }
   
@@ -62,7 +68,7 @@ public class MobileRemitWelcomeUI
     AppMethodBeat.i(67755);
     super.onCreate(paramBundle);
     initView();
-    overridePendingTransition(2130772169, 2130772166);
+    overridePendingTransition(a.a.slide_right_in, a.a.slide_left_out);
     AppMethodBeat.o(67755);
   }
   

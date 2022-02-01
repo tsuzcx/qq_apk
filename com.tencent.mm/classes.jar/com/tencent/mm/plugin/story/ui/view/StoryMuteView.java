@@ -10,28 +10,33 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.story.a.b;
+import com.tencent.mm.plugin.story.a.d;
+import com.tencent.mm.plugin.story.a.e;
+import com.tencent.mm.plugin.story.a.f;
+import com.tencent.mm.plugin.story.a.g;
 import com.tencent.mm.plugin.story.api.AbsStoryMuteView;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.au;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/view/StoryMuteView;", "Lcom/tencent/mm/plugin/story/api/AbsStoryMuteView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "MUTE_IN_BG_PADDING", "MUTE_OUT_BG_PADDING", "mMuteBg", "Landroid/widget/ImageView;", "mMuteTv", "Landroid/widget/TextView;", "muteDrawable", "Landroid/graphics/drawable/Drawable;", "initViews", "", "measureDimension", "defaultSize", "parentMeasureSpec", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "triggerMuteIn", "triggerMuteOut", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/view/StoryMuteView;", "Lcom/tencent/mm/plugin/story/api/AbsStoryMuteView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "MUTE_IN_BG_PADDING", "MUTE_OUT_BG_PADDING", "mMuteBg", "Landroid/widget/ImageView;", "mMuteTv", "Landroid/widget/TextView;", "muteDrawable", "Landroid/graphics/drawable/Drawable;", "initViews", "", "measureDimension", "defaultSize", "parentMeasureSpec", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "triggerMuteIn", "triggerMuteOut", "plugin-story_release"})
 public final class StoryMuteView
   extends AbsStoryMuteView
 {
-  private final int FDP;
-  private final int FDQ;
-  private Drawable FDR;
-  private TextView FDS;
-  private ImageView FDT;
+  private final int LXR;
+  private final int LXS;
+  private Drawable LXT;
+  private TextView LXU;
+  private ImageView LXV;
   
   public StoryMuteView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(120281);
-    this.FDP = 30;
-    blb();
+    this.LXR = 30;
+    buQ();
     AppMethodBeat.o(120281);
   }
   
@@ -39,8 +44,8 @@ public final class StoryMuteView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(120282);
-    this.FDP = 30;
-    blb();
+    this.LXR = 30;
+    buQ();
     AppMethodBeat.o(120282);
   }
   
@@ -48,47 +53,47 @@ public final class StoryMuteView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(120283);
-    this.FDP = 30;
-    blb();
+    this.LXR = 30;
+    buQ();
     AppMethodBeat.o(120283);
   }
   
-  private final void blb()
+  private final void buQ()
   {
     AppMethodBeat.i(120276);
-    LayoutInflater.from(getContext()).inflate(2131496617, (ViewGroup)this);
-    this.FDS = ((TextView)findViewById(2131308687));
-    this.FDT = ((ImageView)findViewById(2131308686));
+    LayoutInflater.from(getContext()).inflate(a.e.LDi, (ViewGroup)this);
+    this.LXU = ((TextView)findViewById(a.d.LCk));
+    this.LXV = ((ImageView)findViewById(a.d.LCj));
     Object localObject = getContext();
-    p.g(localObject, "context");
-    this.FDR = ar.e(((Context)localObject).getResources().getDrawable(2131690932), -1);
-    localObject = this.FDR;
+    p.j(localObject, "context");
+    this.LXT = au.e(((Context)localObject).getResources().getDrawable(a.f.icons_outlined_volume_off), -1);
+    localObject = this.LXT;
     if (localObject == null) {
-      p.hyc();
+      p.iCn();
     }
     ((Drawable)localObject).setBounds(0, 0, a.fromDPToPix(getContext(), 48), a.fromDPToPix(getContext(), 48));
-    localObject = this.FDS;
+    localObject = this.LXU;
     if (localObject != null) {
-      ((TextView)localObject).setCompoundDrawables(null, this.FDR, null, null);
+      ((TextView)localObject).setCompoundDrawables(null, this.LXT, null, null);
     }
-    localObject = this.FDS;
+    localObject = this.LXU;
     if (localObject != null)
     {
       Context localContext = getContext();
-      p.g(localContext, "context");
-      ((TextView)localObject).setText((CharSequence)localContext.getResources().getString(2131766545));
+      p.j(localContext, "context");
+      ((TextView)localObject).setText((CharSequence)localContext.getResources().getString(a.g.LEj));
     }
-    localObject = this.FDT;
+    localObject = this.LXV;
     if (localObject != null)
     {
-      ((ImageView)localObject).setPadding(this.FDQ, this.FDP, this.FDP, this.FDQ);
+      ((ImageView)localObject).setPadding(this.LXS, this.LXR, this.LXR, this.LXS);
       AppMethodBeat.o(120276);
       return;
     }
     AppMethodBeat.o(120276);
   }
   
-  private static int jg(int paramInt1, int paramInt2)
+  private static int kq(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(120277);
     int j = View.MeasureSpec.getMode(paramInt2);
@@ -107,26 +112,26 @@ public final class StoryMuteView
     }
   }
   
-  public final void fmV()
+  public final void gbo()
   {
     AppMethodBeat.i(120279);
-    ImageView localImageView = this.FDT;
+    ImageView localImageView = this.LXV;
     if (localImageView != null)
     {
-      localImageView.setPadding(this.FDQ, this.FDQ, this.FDQ, this.FDQ);
+      localImageView.setPadding(this.LXS, this.LXS, this.LXS, this.LXS);
       AppMethodBeat.o(120279);
       return;
     }
     AppMethodBeat.o(120279);
   }
   
-  public final void fmW()
+  public final void gbp()
   {
     AppMethodBeat.i(120280);
-    ImageView localImageView = this.FDT;
+    ImageView localImageView = this.LXV;
     if (localImageView != null)
     {
-      localImageView.setPadding(this.FDQ, this.FDP, this.FDP, this.FDQ);
+      localImageView.setPadding(this.LXS, this.LXR, this.LXR, this.LXS);
       AppMethodBeat.o(120280);
       return;
     }
@@ -136,8 +141,8 @@ public final class StoryMuteView
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(120278);
-    int i = jg(a.aH(getContext(), 2131166840), paramInt1);
-    int j = jg(a.aH(getContext(), 2131166840), paramInt2);
+    int i = kq(a.aZ(getContext(), a.b.dlA), paramInt1);
+    int j = kq(a.aZ(getContext(), a.b.dlA), paramInt2);
     super.onMeasure(paramInt1, paramInt2);
     setMeasuredDimension(i, j);
     AppMethodBeat.o(120278);
@@ -145,7 +150,7 @@ public final class StoryMuteView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.StoryMuteView
  * JD-Core Version:    0.7.0.1
  */

@@ -7,8 +7,8 @@ import com.tencent.mm.compatible.util.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -138,7 +138,7 @@ public class CdnLogic
   {
     Log.i("mars.CdnLogic", "init cdnlogic");
     setAppCallback(paramAppCallback);
-    onCreate(s.k(paramString1, true));
+    onCreate(u.n(paramString1, true));
     setRSAPublicKeyParams(paramString2, paramString3, paramString4);
     setToUserCiper(paramString5);
   }
@@ -277,14 +277,14 @@ public class CdnLogic
   public static int isFileReady(String paramString)
   {
     int i;
-    if (!new o(paramString).exists()) {
+    if (!new q(paramString).ifE()) {
       i = -1;
     }
     int j;
     do
     {
       return i;
-      Log.i("mars.CdnLogic", "checkFileProperty sdcard state ".concat(String.valueOf(g.getExternalStorageState())));
+      Log.i("mars.CdnLogic", "checkFileProperty sdcard state ".concat(String.valueOf(g.avJ())));
       j = getUSBState();
       i = j;
     } while (2 != j);
@@ -306,20 +306,20 @@ public class CdnLogic
   
   public static long queryFreeSpace(String paramString)
   {
-    o localo = new o(paramString);
-    paramString = localo;
-    if (!localo.isDirectory()) {
-      paramString = localo.heq();
+    q localq = new q(paramString);
+    paramString = localq;
+    if (!localq.isDirectory()) {
+      paramString = localq.ifB();
     }
     do
     {
-      long l = paramString.getUsableSpace();
+      long l = paramString.ifN();
       if (l > 0L) {
         return l;
       }
-      localo = paramString.heq();
-      paramString = localo;
-    } while (localo != null);
+      localq = paramString.ifB();
+      paramString = localq;
+    } while (localq != null);
     return 0L;
   }
   
@@ -367,17 +367,17 @@ public class CdnLogic
   
   public static native int startHttpMultiSocketDownloadTask(C2CDownloadRequest paramC2CDownloadRequest, CdnLogic.DownloadCallback paramDownloadCallback);
   
-  public static native int startHttpVideoStreamingDownload(C2CDownloadRequest paramC2CDownloadRequest, CdnLogic.VideoStreamingCallback paramVideoStreamingCallback, CdnLogic.DownloadCallback paramDownloadCallback, int paramInt);
+  public static native int startHttpVideoStreamingDownload(C2CDownloadRequest paramC2CDownloadRequest, VideoStreamingCallback paramVideoStreamingCallback, CdnLogic.DownloadCallback paramDownloadCallback, int paramInt);
   
   public static native int startHttpsDownload(C2CDownloadRequest paramC2CDownloadRequest, CdnLogic.DownloadCallback paramDownloadCallback);
   
-  public static native int startSNSDownload(C2CDownloadRequest paramC2CDownloadRequest, CdnLogic.VideoStreamingCallback paramVideoStreamingCallback, CdnLogic.DownloadCallback paramDownloadCallback, int paramInt);
+  public static native int startSNSDownload(C2CDownloadRequest paramC2CDownloadRequest, VideoStreamingCallback paramVideoStreamingCallback, CdnLogic.DownloadCallback paramDownloadCallback, int paramInt);
   
   public static native int startSSUpload(C2CUploadRequest paramC2CUploadRequest, SessionCallback paramSessionCallback, CdnLogic.UploadCallback paramUploadCallback);
   
   public static native int startURLDownload(C2CDownloadRequest paramC2CDownloadRequest, CdnLogic.DownloadCallback paramDownloadCallback);
   
-  public static native int startVideoStreamingDownload(C2CDownloadRequest paramC2CDownloadRequest, CdnLogic.VideoStreamingCallback paramVideoStreamingCallback, CdnLogic.DownloadCallback paramDownloadCallback, int paramInt);
+  public static native int startVideoStreamingDownload(C2CDownloadRequest paramC2CDownloadRequest, VideoStreamingCallback paramVideoStreamingCallback, CdnLogic.DownloadCallback paramDownloadCallback, int paramInt);
   
   public static native boolean taskExist(String paramString);
   
@@ -399,6 +399,8 @@ public class CdnLogic
     public String[] dcIpList = null;
     public int dcIpListSource = 2;
     public String debugIP = "";
+    public String expectFileMD5 = "";
+    public long expectFileSize = 0L;
     public int expectImageFormat = 1;
     public String fakeBigfileSignature = "";
     public String fakeBigfileSignatureAeskey = "";
@@ -425,10 +427,13 @@ public class CdnLogic
     public int marscdnAppType = -1;
     public int marscdnBizType = -1;
     public int maxHttpRedirectCount = 3;
+    public int maxPCDNConnections = 0;
     public String msgExtra = "";
     public int msgType = 1;
+    public boolean needEchoAfterDownSucc = false;
     public String[] ocIpList = null;
     public int ocIpListSource = 2;
+    public int pcdnAppID = 0;
     public long preloadMinSize = 0L;
     public int preloadRatio = 30;
     public int queueTimeoutSeconds = 1800;
@@ -445,6 +450,7 @@ public class CdnLogic
     public long taskStartTime = 0L;
     public int transforTimeoutSeconds = 600;
     public String url = "";
+    public boolean useCronet = false;
     public boolean useMultithread = false;
     public boolean useNewdns = false;
     public String videofileid = "";
@@ -712,12 +718,12 @@ public class CdnLogic
     
     public void setSavePath(String paramString)
     {
-      this.savePath = s.k(paramString, false);
+      this.savePath = u.n(paramString, false);
     }
     
     public void setStatePath(String paramString)
     {
-      this.statePath = s.k(paramString, false);
+      this.statePath = u.n(paramString, false);
     }
     
     public C2CDownloadRequest signalQuality(String paramString)
@@ -817,6 +823,7 @@ public class CdnLogic
     public String picCachePath = "";
     public int picIndex = -1;
     public int previousCompletedSize = 0;
+    public String profile = "";
     public String realUsedURL = "";
     public int receiveCostTime = 0;
     public long recvedBytes = 0L;
@@ -836,6 +843,7 @@ public class CdnLogic
     public long tryWritenBytes = 0L;
     public boolean usePrivateProtocol = false;
     public String[] usedSvrIps;
+    public String videoCdnMsg = "";
     public String videoFlag = "";
     public int videoFormat = 0;
     public int waitResponseCostTime = 0;
@@ -849,6 +857,7 @@ public class CdnLogic
     public int bizscene = 0;
     public int chatType = 0;
     public boolean checkExistOnly = false;
+    public int concurrentCount = 1;
     public int connectionCount = 1;
     public String customHeader = "";
     public String debugIP = "";
@@ -891,7 +900,7 @@ public class CdnLogic
     
     public void setFilePath(String paramString)
     {
-      this.filePath = s.k(paramString, false);
+      this.filePath = u.n(paramString, false);
       if (Util.isNullOrNil(this.filePath)) {
         this.filePath = "";
       }
@@ -899,7 +908,7 @@ public class CdnLogic
     
     public void setMidimgPath(String paramString)
     {
-      this.midimgPath = s.k(paramString, false);
+      this.midimgPath = u.n(paramString, false);
       if (Util.isNullOrNil(this.midimgPath)) {
         this.midimgPath = "";
       }
@@ -907,7 +916,7 @@ public class CdnLogic
     
     public void setThumbfilePath(String paramString)
     {
-      this.thumbfilePath = s.k(paramString, false);
+      this.thumbfilePath = u.n(paramString, false);
       if (Util.isNullOrNil(this.thumbfilePath)) {
         this.thumbfilePath = "";
       }
@@ -985,6 +994,7 @@ public class CdnLogic
     public int C2COverloadDelaySeconds = 10;
     public int EnableCDNVerifyConnect = 1;
     public int EnableCDNVideoRedirectOC = 1;
+    public int EnableConnectionReuse = 0;
     public int EnableSafeCDN = 0;
     public int EnableSnsImageDownload = 0;
     public int EnableSnsStreamDownload = 0;
@@ -1005,11 +1015,33 @@ public class CdnLogic
     }
   }
   
+  public static class CronetTaskResult
+  {
+    public CdnLogic.WebPageProfile performance = null;
+    public int statusCode = 0;
+    public String statusText = "";
+    public boolean useHttp2 = false;
+    public boolean useQuic = false;
+  }
+  
   public static abstract interface SessionCallback
   {
     public abstract byte[] decodeSessionResponseBuf(String paramString, byte[] paramArrayOfByte);
     
     public abstract byte[] getSessionRequestBuf(String paramString, byte[] paramArrayOfByte);
+  }
+  
+  public static abstract interface VideoStreamingCallback
+  {
+    public abstract void onDataAvailable(String paramString, long paramLong1, long paramLong2);
+    
+    public abstract void onDownloadToEnd(String paramString, long paramLong1, long paramLong2);
+    
+    public abstract void onM3U8Ready(String paramString1, String paramString2);
+    
+    public abstract void onMoovReadyWithFlag(String paramString1, long paramLong1, long paramLong2, String paramString2);
+    
+    public abstract void onPreloadCompletedWithResult(String paramString, long paramLong1, long paramLong2, CdnLogic.C2CDownloadResult paramC2CDownloadResult);
   }
 }
 

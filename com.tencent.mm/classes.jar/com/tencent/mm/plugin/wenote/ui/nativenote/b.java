@@ -5,7 +5,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.wenote.model.a.q;
 import com.tencent.mm.plugin.wenote.model.f;
@@ -17,8 +21,8 @@ import com.tencent.mm.storage.ar.a;
 public final class b
   extends com.tencent.mm.pluginsdk.ui.b.b
 {
-  private View oQL;
-  private View oQM;
+  private View rSI;
+  private View rSJ;
   private TextView titleTv;
   
   public b(Context paramContext)
@@ -28,20 +32,20 @@ public final class b
     this.titleTv = null;
     if (this.view != null)
     {
-      this.titleTv = ((TextView)this.view.findViewById(2131310472));
-      this.oQL = this.view.findViewById(2131310473);
-      this.oQM = this.view.findViewById(2131297327);
-      this.titleTv.setTextSize(0, com.tencent.mm.cb.a.aG(this.titleTv.getContext(), 2131165482));
+      this.titleTv = ((TextView)this.view.findViewById(R.h.eaV));
+      this.rSI = this.view.findViewById(R.h.eaW);
+      this.rSJ = this.view.findViewById(R.h.banner_root);
+      this.titleTv.setTextSize(0, com.tencent.mm.ci.a.aY(this.titleTv.getContext(), R.f.HintTextSize));
       this.view.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(30809);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/WNNoteBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wenote/ui/nativenote/WNNoteBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           Log.i("WNNoteBanner", "click WNNoteBanner");
-          paramAnonymousView = com.tencent.mm.plugin.wenote.model.nativenote.manager.h.gjO().gjP();
+          paramAnonymousView = com.tencent.mm.plugin.wenote.model.nativenote.manager.h.hdC().hdD();
           if (paramAnonymousView == null)
           {
             Log.i("WNNoteBanner", "keepTopItem is null");
@@ -50,7 +54,7 @@ public final class b
             AppMethodBeat.o(30809);
             return;
           }
-          com.tencent.mm.plugin.wenote.b.a.a(paramAnonymousView);
+          com.tencent.mm.plugin.wenote.b.b.a(paramAnonymousView);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/WNNoteBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(30809);
         }
@@ -59,38 +63,38 @@ public final class b
     AppMethodBeat.o(30810);
   }
   
-  public final boolean bYa()
+  public final boolean ckL()
   {
     AppMethodBeat.i(30812);
     try
     {
-      if (com.tencent.mm.plugin.wenote.model.nativenote.manager.h.gjO().gjP() != null)
+      if (com.tencent.mm.plugin.wenote.model.nativenote.manager.h.hdC().hdD() != null)
       {
         long l = System.currentTimeMillis();
-        bg.aVF();
-        if (l - ((Long)c.azQ().get(ar.a.Ocj, Long.valueOf(0L))).longValue() > 86400000L)
+        bh.beI();
+        if (l - ((Long)c.aHp().get(ar.a.Vqm, Long.valueOf(0L))).longValue() > 86400000L)
         {
-          com.tencent.mm.plugin.report.service.h.CyF.a(18728, new Object[] { Integer.valueOf(1) });
-          bg.aVF();
-          c.azQ().set(ar.a.Ocj, Long.valueOf(l));
+          com.tencent.mm.plugin.report.service.h.IzE.a(18728, new Object[] { Integer.valueOf(1) });
+          bh.beI();
+          c.aHp().set(ar.a.Vqm, Long.valueOf(l));
         }
       }
-      Object localObject = com.tencent.mm.plugin.wenote.model.nativenote.manager.h.gjO().gjP();
-      if ((this.isFirst) && (this.ifo))
+      Object localObject = com.tencent.mm.plugin.wenote.model.nativenote.manager.h.hdC().hdD();
+      if ((this.isFirst) && (this.kUc))
       {
-        this.oQM.setBackgroundResource(2131235299);
-        this.oQL.setBackground(null);
+        this.rSJ.setBackgroundResource(R.g.tips_bar_white_selector);
+        this.rSI.setBackground(null);
         this.titleTv.setBackground(null);
-        if ((localObject == null) || (!((q)localObject).JHR) || (((q)localObject).JHT <= 0L) || (Util.isNullOrNil(((q)localObject).JHV))) {
-          break label313;
+        if ((localObject == null) || (!((q)localObject).QHj) || (((q)localObject).QHl <= 0L) || (Util.isNullOrNil(((q)localObject).QHn))) {
+          break label321;
         }
       }
       for (i = 1;; i = 1)
       {
         if (i == 0) {
-          break label342;
+          break label350;
         }
-        localObject = ((q)localObject).JHU;
+        localObject = ((q)localObject).QHm;
         if (this.titleTv != null) {
           this.titleTv.setText((CharSequence)localObject);
         }
@@ -99,30 +103,30 @@ public final class b
         return true;
         if (this.isFirst)
         {
-          this.oQM.setBackgroundResource(2131233332);
-          this.oQL.setBackgroundResource(2131233330);
-          this.titleTv.setBackgroundResource(2131233327);
+          this.rSJ.setBackgroundResource(R.g.list_item_top_selector);
+          this.rSI.setBackgroundResource(R.g.list_item_top_normal);
+          this.titleTv.setBackgroundResource(R.g.list_item_normal);
           break;
         }
-        if (this.ifo)
+        if (this.kUc)
         {
-          this.oQM.setBackgroundResource(2131233332);
-          this.oQL.setBackgroundResource(2131233327);
+          this.rSJ.setBackgroundResource(R.g.list_item_top_selector);
+          this.rSI.setBackgroundResource(R.g.list_item_normal);
           this.titleTv.setBackground(null);
           break;
         }
-        this.oQM.setBackgroundResource(2131233332);
-        this.oQL.setBackground(null);
-        this.titleTv.setBackgroundResource(2131233327);
+        this.rSJ.setBackgroundResource(R.g.list_item_top_selector);
+        this.rSI.setBackground(null);
+        this.titleTv.setBackgroundResource(R.g.list_item_normal);
         break;
-        label313:
-        if ((localObject == null) || (((q)localObject).JHR) || (f.HT(((q)localObject).JHS) == null)) {
-          break label373;
+        label321:
+        if ((localObject == null) || (((q)localObject).QHj) || (f.Po(((q)localObject).QHk) == null)) {
+          break label381;
         }
       }
-      label342:
+      label350:
       if (localObject != null) {
-        com.tencent.mm.plugin.wenote.model.nativenote.manager.h.gjO().c(null);
+        com.tencent.mm.plugin.wenote.model.nativenote.manager.h.hdC().c(null);
       }
       setVisibility(8);
       AppMethodBeat.o(30812);
@@ -133,7 +137,7 @@ public final class b
       for (;;)
       {
         continue;
-        label373:
+        label381:
         int i = 0;
       }
     }
@@ -143,7 +147,7 @@ public final class b
   
   public final int getLayoutId()
   {
-    return 2131497090;
+    return R.i.eaW;
   }
   
   public final int getOrder()
@@ -155,14 +159,14 @@ public final class b
   {
     AppMethodBeat.i(30811);
     if (this.view != null) {
-      this.view.findViewById(2131310473).setVisibility(paramInt);
+      this.view.findViewById(R.h.eaW).setVisibility(paramInt);
     }
     AppMethodBeat.o(30811);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.b
  * JD-Core Version:    0.7.0.1
  */

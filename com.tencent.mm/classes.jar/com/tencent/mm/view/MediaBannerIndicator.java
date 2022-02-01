@@ -12,29 +12,31 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.a.a;
+import com.tencent.mm.ah.a.e;
+import com.tencent.mm.ah.a.f;
+import com.tencent.mm.ah.a.m;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/view/MediaBannerIndicator;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/view/IMediaBannerIndicator;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "count", "currentIndex", "indicatorMargin", "getIndicatorMargin", "()I", "setIndicatorMargin", "(I)V", "indicatorWidth", "getIndicatorWidth", "setIndicatorWidth", "isShowOnlyOneIndicator", "", "listener", "Lcom/tencent/mm/view/IMediaBannerIndicator$OnSelectedPageListener;", "selectDrawable", "Landroid/graphics/drawable/Drawable;", "getSelectDrawable", "()Landroid/graphics/drawable/Drawable;", "setSelectDrawable", "(Landroid/graphics/drawable/Drawable;)V", "unSelectDrawable", "getUnSelectDrawable", "setUnSelectDrawable", "getCount", "getCurrentIndex", "getOnSelectedPageListener", "getView", "Landroid/view/View;", "init", "", "initAttribute", "defStyle", "setCount", "value", "setCurrentIndex", "setOnSelectedPageListener", "setShowOnlyOneIndicator", "isShow", "Companion", "libmmui_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/MediaBannerIndicator;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/view/IMediaBannerIndicator;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "count", "currentIndex", "indicatorMargin", "getIndicatorMargin", "()I", "setIndicatorMargin", "(I)V", "indicatorWidth", "getIndicatorWidth", "setIndicatorWidth", "isShowOnlyOneIndicator", "", "listener", "Lcom/tencent/mm/view/IMediaBannerIndicator$OnSelectedPageListener;", "selectDrawable", "Landroid/graphics/drawable/Drawable;", "getSelectDrawable", "()Landroid/graphics/drawable/Drawable;", "setSelectDrawable", "(Landroid/graphics/drawable/Drawable;)V", "unSelectDrawable", "getUnSelectDrawable", "setUnSelectDrawable", "getCount", "getCurrentIndex", "getOnSelectedPageListener", "getView", "Landroid/view/View;", "init", "", "initAttribute", "defStyle", "setCount", "value", "setCurrentIndex", "setOnSelectedPageListener", "setShowOnlyOneIndicator", "isShow", "Companion", "libmmui_release"})
 public class MediaBannerIndicator
   extends LinearLayout
   implements h
 {
-  public static final a RjZ;
-  private int RjU;
-  private int RjV;
-  private Drawable RjW;
-  private Drawable RjX;
-  private h.a RjY;
+  public static final a YLE;
+  private boolean BeH;
+  private Drawable YLB;
+  private Drawable YLC;
+  private h.a YLD;
   private int count;
   private int currentIndex;
-  private boolean wsp;
+  private int indicatorMargin;
+  private int indicatorWidth;
   
   static
   {
     AppMethodBeat.i(164560);
-    RjZ = new a((byte)0);
+    YLE = new a((byte)0);
     AppMethodBeat.o(164560);
   }
   
@@ -42,10 +44,10 @@ public class MediaBannerIndicator
   {
     super(paramContext);
     AppMethodBeat.i(164557);
-    this.RjU = ((int)getResources().getDimension(2131166524));
-    this.RjV = ((int)getResources().getDimension(2131165277));
-    this.RjW = getContext().getDrawable(2131234768);
-    this.RjX = getContext().getDrawable(2131233001);
+    this.indicatorWidth = ((int)getResources().getDimension(a.e.indicatorSize));
+    this.indicatorMargin = ((int)getResources().getDimension(a.e.Edge_0_5_A));
+    this.YLB = getContext().getDrawable(a.f.selected_radius);
+    this.YLC = getContext().getDrawable(a.f.gray_radius);
     setOrientation(0);
     setGravity(17);
     AppMethodBeat.o(164557);
@@ -55,10 +57,10 @@ public class MediaBannerIndicator
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164558);
-    this.RjU = ((int)getResources().getDimension(2131166524));
-    this.RjV = ((int)getResources().getDimension(2131165277));
-    this.RjW = getContext().getDrawable(2131234768);
-    this.RjX = getContext().getDrawable(2131233001);
+    this.indicatorWidth = ((int)getResources().getDimension(a.e.indicatorSize));
+    this.indicatorMargin = ((int)getResources().getDimension(a.e.Edge_0_5_A));
+    this.YLB = getContext().getDrawable(a.f.selected_radius);
+    this.YLC = getContext().getDrawable(a.f.gray_radius);
     setOrientation(0);
     setGravity(17);
     b(paramAttributeSet, 0);
@@ -69,10 +71,10 @@ public class MediaBannerIndicator
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164559);
-    this.RjU = ((int)getResources().getDimension(2131166524));
-    this.RjV = ((int)getResources().getDimension(2131165277));
-    this.RjW = getContext().getDrawable(2131234768);
-    this.RjX = getContext().getDrawable(2131233001);
+    this.indicatorWidth = ((int)getResources().getDimension(a.e.indicatorSize));
+    this.indicatorMargin = ((int)getResources().getDimension(a.e.Edge_0_5_A));
+    this.YLB = getContext().getDrawable(a.f.selected_radius);
+    this.YLC = getContext().getDrawable(a.f.gray_radius);
     setOrientation(0);
     setGravity(17);
     b(paramAttributeSet, paramInt);
@@ -81,18 +83,18 @@ public class MediaBannerIndicator
   
   private final void b(AttributeSet paramAttributeSet, int paramInt)
   {
-    AppMethodBeat.i(204979);
-    paramAttributeSet = getContext().obtainStyledAttributes(paramAttributeSet, a.a.MediaBannerIndicator, paramInt, 0);
-    setIndicatorMargin((int)paramAttributeSet.getDimension(0, getResources().getDimension(2131165277)));
-    setIndicatorWidth((int)paramAttributeSet.getDimension(3, getResources().getDimension(2131166524)));
-    if (paramAttributeSet.hasValue(1)) {
-      setSelectDrawable(paramAttributeSet.getDrawable(1));
+    AppMethodBeat.i(212426);
+    paramAttributeSet = getContext().obtainStyledAttributes(paramAttributeSet, a.m.MediaBannerIndicator, paramInt, 0);
+    setIndicatorMargin((int)paramAttributeSet.getDimension(a.m.MediaBannerIndicator_indicatorMargin, getResources().getDimension(a.e.Edge_0_5_A)));
+    setIndicatorWidth((int)paramAttributeSet.getDimension(a.m.MediaBannerIndicator_indicatorWidth, getResources().getDimension(a.e.indicatorSize)));
+    if (paramAttributeSet.hasValue(a.m.MediaBannerIndicator_indicatorSelectedDrawable)) {
+      setSelectDrawable(paramAttributeSet.getDrawable(a.m.MediaBannerIndicator_indicatorSelectedDrawable));
     }
-    if (paramAttributeSet.hasValue(2)) {
-      setUnSelectDrawable(paramAttributeSet.getDrawable(2));
+    if (paramAttributeSet.hasValue(a.m.MediaBannerIndicator_indicatorUnSelectedDrawable)) {
+      setUnSelectDrawable(paramAttributeSet.getDrawable(a.m.MediaBannerIndicator_indicatorUnSelectedDrawable));
     }
     paramAttributeSet.recycle();
-    AppMethodBeat.o(204979);
+    AppMethodBeat.o(212426);
   }
   
   public int getCount()
@@ -107,27 +109,27 @@ public class MediaBannerIndicator
   
   public int getIndicatorMargin()
   {
-    return this.RjV;
+    return this.indicatorMargin;
   }
   
   public int getIndicatorWidth()
   {
-    return this.RjU;
+    return this.indicatorWidth;
   }
   
   public h.a getOnSelectedPageListener()
   {
-    return this.RjY;
+    return this.YLD;
   }
   
   public Drawable getSelectDrawable()
   {
-    return this.RjW;
+    return this.YLB;
   }
   
   public Drawable getUnSelectDrawable()
   {
-    return this.RjX;
+    return this.YLC;
   }
   
   public View getView()
@@ -140,7 +142,7 @@ public class MediaBannerIndicator
     AppMethodBeat.i(164555);
     removeAllViews();
     this.count = paramInt;
-    if ((paramInt > 1) || ((paramInt > 0) && (this.wsp)))
+    if ((paramInt > 1) || ((paramInt > 0) && (this.BeH)))
     {
       setVisibility(0);
       this.currentIndex = 0;
@@ -200,43 +202,43 @@ public class MediaBannerIndicator
   
   public void setIndicatorMargin(int paramInt)
   {
-    this.RjV = paramInt;
+    this.indicatorMargin = paramInt;
   }
   
   public void setIndicatorWidth(int paramInt)
   {
-    this.RjU = paramInt;
+    this.indicatorWidth = paramInt;
   }
   
   public void setOnSelectedPageListener(h.a parama)
   {
-    AppMethodBeat.i(204980);
-    p.h(parama, "listener");
-    this.RjY = parama;
-    AppMethodBeat.o(204980);
+    AppMethodBeat.i(212433);
+    p.k(parama, "listener");
+    this.YLD = parama;
+    AppMethodBeat.o(212433);
   }
   
   public void setSelectDrawable(Drawable paramDrawable)
   {
-    this.RjW = paramDrawable;
+    this.YLB = paramDrawable;
   }
   
   public void setShowOnlyOneIndicator(boolean paramBoolean)
   {
-    this.wsp = paramBoolean;
+    this.BeH = paramBoolean;
   }
   
   public void setUnSelectDrawable(Drawable paramDrawable)
   {
-    this.RjX = paramDrawable;
+    this.YLC = paramDrawable;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/view/MediaBannerIndicator$Companion;", "", "()V", "TAG", "", "libmmui_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/MediaBannerIndicator$Companion;", "", "()V", "TAG", "", "libmmui_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.view.MediaBannerIndicator
  * JD-Core Version:    0.7.0.1
  */

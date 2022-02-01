@@ -12,43 +12,52 @@ import java.util.Vector;
 public final class e
   implements b
 {
-  private static e RCN = null;
-  private final SparseArray<Set<b>> RCO = new SparseArray();
-  private d RCP = null;
+  private static e Zep = null;
+  private final SparseArray<Set<b>> Zeq = new SparseArray();
+  private d Zer = null;
   private final Handler handler = new Handler(Looper.getMainLooper())
   {
     public final void handleMessage(Message paramAnonymousMessage)
     {
-      e.this.a((d)paramAnonymousMessage.obj);
+      e.this.b((d)paramAnonymousMessage.obj);
     }
   };
-  private Vector<d> iMy = new Vector();
-  private Vector<d> iMz = new Vector();
+  private Vector<d> lCF = new Vector();
+  private Vector<d> lCG = new Vector();
   
-  private void aYX()
+  private void bim()
   {
-    if (this.iMz.size() > 0)
+    if (this.lCG.size() > 0)
     {
-      d locald = (d)this.iMz.get(0);
+      d locald = (d)this.lCG.get(0);
       int i = 1;
-      while (i < this.iMz.size())
+      while (i < this.lCG.size())
       {
-        this.iMz.get(i);
+        this.lCG.get(i);
         i += 1;
       }
-      if (hiX())
+      if (ikH())
       {
-        this.iMz.remove(locald);
-        b(locald);
+        this.lCG.remove(locald);
+        d(locald);
       }
     }
   }
   
-  private void b(final d paramd)
+  private boolean c(d paramd)
   {
-    if (hiX())
+    if (paramd == null) {
+      return false;
+    }
+    d(paramd);
+    return true;
+  }
+  
+  private void d(final d paramd)
+  {
+    if (ikH())
     {
-      this.iMy.add(paramd);
+      this.lCF.add(paramd);
       int i = paramd.a(this);
       if (i < 0)
       {
@@ -65,34 +74,34 @@ public final class e
     }
     for (;;)
     {
-      aYX();
+      bim();
       return;
-      this.iMz.add(paramd);
+      this.lCG.add(paramd);
     }
   }
   
-  public static e hiW()
+  public static e ikG()
   {
-    if (RCN == null) {}
+    if (Zep == null) {}
     try
     {
-      if (RCN == null) {
-        RCN = new e();
+      if (Zep == null) {
+        Zep = new e();
       }
-      return RCN;
+      return Zep;
     }
     finally {}
   }
   
-  private boolean hiX()
+  private boolean ikH()
   {
-    return this.iMy.size() < 20;
+    return this.lCF.size() < 20;
   }
   
   public final void a(final int paramInt1, final int paramInt2, final String paramString, final d paramd)
   {
-    this.iMy.remove(paramd);
-    aYX();
+    this.lCF.remove(paramd);
+    bim();
     this.handler.post(new Runnable()
     {
       public final void run()
@@ -117,15 +126,15 @@ public final class e
   
   public final void a(int paramInt, b paramb)
   {
-    if (this.RCO.get(paramInt) == null) {
-      this.RCO.put(paramInt, new HashSet());
+    if (this.Zeq.get(paramInt) == null) {
+      this.Zeq.put(paramInt, new HashSet());
     }
-    if (!((Set)this.RCO.get(paramInt)).contains(paramb)) {
-      ((Set)this.RCO.get(paramInt)).add(paramb);
+    if (!((Set)this.Zeq.get(paramInt)).contains(paramb)) {
+      ((Set)this.Zeq.get(paramInt)).add(paramb);
     }
   }
   
-  public final boolean a(d paramd)
+  public final boolean b(d paramd)
   {
     if (!h.isNetworkConnected())
     {
@@ -133,14 +142,10 @@ public final class e
       if ((i == 102) || (i == 104) || (i == 103))
       {
         com.tencent.pb.common.c.b.w("MicroMsg.Voip", new Object[] { "doScene do retain mReissueNetScene" });
-        this.RCP = paramd;
+        this.Zer = paramd;
       }
     }
-    if (paramd == null) {
-      return false;
-    }
-    b(paramd);
-    return true;
+    return c(paramd);
   }
 }
 

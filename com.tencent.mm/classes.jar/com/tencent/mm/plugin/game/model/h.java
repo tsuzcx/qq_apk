@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 public abstract class h
 {
-  JSONObject xEH = new JSONObject();
+  private JSONObject CII = new JSONObject();
   
   protected h(String paramString)
   {
@@ -20,7 +20,7 @@ public abstract class h
     }
     try
     {
-      this.xEH = new JSONObject(paramString);
+      this.CII = new JSONObject(paramString);
       return;
     }
     catch (JSONException paramString)
@@ -79,42 +79,42 @@ public abstract class h
           localc.field_appIconUrl = l((JSONObject)localObject, "iconURL");
           localc.field_appType = ",1,";
           localc.field_packageName = l((JSONObject)localObject, "AndroidPackageName");
-          localc.Bl(l((JSONObject)localObject, "downloadURL"));
-          localc.Bo(l((JSONObject)localObject, "AndroidApkMd5"));
+          localc.HZ(l((JSONObject)localObject, "downloadURL"));
+          localc.Ic(l((JSONObject)localObject, "AndroidApkMd5"));
           str = l((JSONObject)localObject, "GooglePlayDownloadUrl");
           int j = ((JSONObject)localObject).optInt("GooglePlayDownloadFlag");
-          localc.Bp(str);
+          localc.Id(str);
           if (!Util.isNullOrNil(str))
           {
             Log.i("MicroMsg.GameServerData", "GooglePlay URL: %s, Download Flag: %d", new Object[] { str, Integer.valueOf(j) });
-            localc.mZ(j);
+            localc.pm(j);
           }
           if (localJSONObject != null) {
-            localc.mZ(localJSONObject.optInt("AndroidDownloadFlag"));
+            localc.pm(localJSONObject.optInt("AndroidDownloadFlag"));
           }
           if (localJSONObject != null)
           {
-            localc.Bu(l(localJSONObject, "DownloadUrl"));
-            localc.Bv(l(localJSONObject, "ApkMd5"));
-            localc.Bs(l(localJSONObject, "PreemptiveUrl"));
-            localc.Bt(l(localJSONObject, "ExtInfo"));
-            localc.na(localJSONObject.optInt("SupportedVersionCode"));
+            localc.Ii(l(localJSONObject, "DownloadUrl"));
+            localc.Ij(l(localJSONObject, "ApkMd5"));
+            localc.Ig(l(localJSONObject, "PreemptiveUrl"));
+            localc.Ih(l(localJSONObject, "ExtInfo"));
+            localc.pn(localJSONObject.optInt("SupportedVersionCode"));
           }
-          localc.xDV = l((JSONObject)localObject, "desc");
-          localc.xDU = l((JSONObject)localObject, "brief");
+          localc.CHW = l((JSONObject)localObject, "desc");
+          localc.CHV = l((JSONObject)localObject, "brief");
           localc.type = ((JSONObject)localObject).optInt("type", 0);
           localc.status = ((JSONObject)localObject).optInt("status");
-          localc.xDX = l((JSONObject)localObject, "webURL");
-          localc.xDY = l((JSONObject)localObject, "adUrl");
-          localc.dDJ = l((JSONObject)localObject, "noticeid");
-          localc.jyX = ((JSONObject)localObject).optBoolean("isSubscribed");
+          localc.CHY = l((JSONObject)localObject, "webURL");
+          localc.CHZ = l((JSONObject)localObject, "adUrl");
+          localc.fwt = l((JSONObject)localObject, "noticeid");
+          localc.moD = ((JSONObject)localObject).optBoolean("isSubscribed");
           localc.versionCode = ((JSONObject)localObject).optInt("versionCode");
           localObject = localc;
           if (localJSONObject != null)
           {
-            localc.xDZ = l(localJSONObject, "DownloadTipsWording");
-            localc.xEa = l(localJSONObject, "BackBtnWording");
-            localc.xEb = l(localJSONObject, "DownloadBtnWording");
+            localc.CIa = l(localJSONObject, "DownloadTipsWording");
+            localc.CIb = l(localJSONObject, "BackBtnWording");
+            localc.CIc = l(localJSONObject, "DownloadBtnWording");
             localObject = localc;
           }
         }
@@ -123,14 +123,19 @@ public abstract class h
     return localLinkedList;
   }
   
+  protected final int optInt(String paramString)
+  {
+    return this.CII.optInt(paramString);
+  }
+  
   protected final JSONArray optJSONArray(String paramString)
   {
-    return this.xEH.optJSONArray(paramString);
+    return this.CII.optJSONArray(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.h
  * JD-Core Version:    0.7.0.1
  */

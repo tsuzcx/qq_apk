@@ -1,241 +1,159 @@
 package com.tencent.mm.plugin.finder.utils;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.co.f;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cl;
-import com.tencent.mm.plugin.finder.cgi.o;
-import com.tencent.mm.plugin.finder.storage.c;
-import com.tencent.mm.plugin.i.a.ac;
-import com.tencent.mm.plugin.i.a.af.a;
-import com.tencent.mm.plugin.i.a.af.a<Ljava.lang.Boolean;>;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.finder.b.c;
+import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.storage.d;
+import com.tencent.mm.plugin.finder.view.o;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.vending.c.a;
-import java.util.HashMap;
-import kotlin.a.j;
 import kotlin.g.b.p;
 import kotlin.l;
+import kotlin.n.n;
+import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/utils/FinderSwitchApi;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderSwitchApi;", "()V", "TAG", "", "getFinderActivityShareBusinessType", "", "getUserInfoFinderSetting", "", "hasFinderSetting", "", "type", "setUserInfoFinderSetting", "", "finderSetting", "showFinderAtWxProfile", "showFinderEntryAtWxMe", "showFinderEntrySetting", "showFinderRecentLike", "succCallback", "Lcom/tencent/mm/plugin/findersdk/api/IFinderUtilApi$Callback;", "failedCallback", "showFriendFinderEntry", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/utils/FinderOriginalUtil;", "", "()V", "ORIGINAL_TERMS_URL", "", "getORIGINAL_TERMS_URL", "()Ljava/lang/String;", "setORIGINAL_TERMS_URL", "(Ljava/lang/String;)V", "TAG", "debugOriginalNeedCheck", "", "getDebugOriginalNeedCheck", "()Z", "setDebugOriginalNeedCheck", "(Z)V", "checkInsertOriginalRedDot", "", "checkPostNeedOriginal", "context", "Lcom/tencent/mm/ui/MMActivity;", "continuePost", "Lkotlin/Function0;", "getRemainApplyCount", "", "getRemainForwardCount", "getSelfOriginalEntranceFlag", "getSelfOriginalFlag", "getSpamDay", "getSpamYearFlag", "isSelfOriginal", "isSelfOriginalNeedCheck", "isSelfOriginalSpam", "setSpanTouch", "tv", "Landroid/widget/TextView;", "text", "Landroid/text/Spannable;", "spanLink", "Landroid/content/Context;", "h5url", "allText", "linkText", "descTv", "logTag", "rawDescText", "startTag", "endTag", "plugin-finder_release"})
 public final class v
-  implements ac
 {
-  private static final String TAG = "Finder.FinderSwitchApi";
-  public static final v vXn;
+  private static String ADU;
+  public static final v ADV;
+  public static final String TAG = "Finder.FinderOriginalUtil";
   
   static
   {
-    AppMethodBeat.i(253547);
-    vXn = new v();
-    TAG = "Finder.FinderSwitchApi";
-    AppMethodBeat.o(253547);
+    AppMethodBeat.i(267414);
+    ADV = new v();
+    TAG = "Finder.FinderOriginalUtil";
+    ADU = "https://" + WeChatHosts.domainString(b.j.host_weixin_qq_com) + "/cgi-bin/readtemplate?t=finder_appeal";
+    AppMethodBeat.o(267414);
   }
   
-  public static boolean dCt()
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, TextView paramTextView, String paramString4)
   {
-    AppMethodBeat.i(253542);
-    Object localObject = y.vXH;
-    boolean bool2 = y.dCB();
-    localObject = c.vCb;
-    if (((Number)c.dsL().value()).intValue() == 1) {}
-    for (boolean bool1 = true;; bool1 = false)
+    AppMethodBeat.i(267407);
+    p.k(paramContext, "context");
+    p.k(paramString1, "h5url");
+    p.k(paramString2, "allText");
+    p.k(paramString3, "linkText");
+    p.k(paramTextView, "descTv");
+    p.k(paramString4, "logTag");
+    int i = n.a((CharSequence)paramString2, paramString3, 0, false, 6);
+    int j = i + paramString3.length();
+    paramString3 = new SpannableString((CharSequence)paramString2);
+    if ((i >= 0) && (j <= paramString2.length()))
     {
-      Log.i(TAG, "showFinderEntrySetting hasFinderAccount" + bool2 + ", switch:" + bool1);
-      if ((!bool2) || (!bool1)) {
-        break;
-      }
-      AppMethodBeat.o(253542);
-      return true;
+      paramString2 = MMApplicationContext.getContext();
+      p.j(paramString2, "MMApplicationContext.getContext()");
+      int k = paramString2.getResources().getColor(b.c.link_color);
+      paramString2 = MMApplicationContext.getContext();
+      p.j(paramString2, "MMApplicationContext.getContext()");
+      paramString3.setSpan(new o(paramString1, k, paramString2.getResources().getColor(b.c.BW_0_Alpha_0_2), (kotlin.g.a.b)new v.b(paramString4, paramContext)), i, j, 17);
     }
-    AppMethodBeat.o(253542);
-    return false;
+    paramTextView.setText((CharSequence)paramString3);
+    paramTextView.setOnTouchListener((View.OnTouchListener)new v.a((Spannable)paramString3, paramTextView));
+    AppMethodBeat.o(267407);
   }
   
-  public final void Gf(long paramLong)
+  public static String edh()
   {
-    AppMethodBeat.i(253538);
-    e locale = g.aAh();
-    p.g(locale, "MMKernel.storage()");
-    locale.azQ().set(ar.a.OmU, Long.valueOf(paramLong));
-    AppMethodBeat.o(253538);
+    return ADU;
   }
   
-  public final boolean a(af.a<Boolean> parama)
+  public static int edi()
   {
-    AppMethodBeat.i(253546);
-    Object localObject = u.vXk;
-    af.a locala = (af.a)new a(parama);
-    localObject = (Integer)u.vXj.get(Integer.valueOf(1));
-    parama = (af.a<Boolean>)localObject;
-    if (localObject == null) {
-      parama = Integer.valueOf(0);
-    }
-    p.g(parama, "requestTimeMap[exptId] ?: 0");
-    int i = parama.intValue();
-    if (cl.aWB() - i > u.ufh) {
-      new o(j.listOf(Integer.valueOf(1))).aYI().g((a)new u.a(locala));
-    }
-    parama = g.aAh();
-    p.g(parama, "MMKernel.storage()");
-    if (parama.azQ().getInt(ar.a.OmT, 0) == 1)
+    AppMethodBeat.i(267408);
+    Object localObject = h.aHG();
+    p.j(localObject, "MMKernel.storage()");
+    localObject = ((f)localObject).aHp().get(ar.a.Vym, Integer.valueOf(1));
+    if (localObject == null)
     {
-      AppMethodBeat.o(253546);
-      return true;
+      localObject = new t("null cannot be cast to non-null type kotlin.Int");
+      AppMethodBeat.o(267408);
+      throw ((Throwable)localObject);
     }
-    AppMethodBeat.o(253546);
-    return false;
-  }
-  
-  public final long dCq()
-  {
-    AppMethodBeat.i(253539);
-    e locale = g.aAh();
-    p.g(locale, "MMKernel.storage()");
-    long l = locale.azQ().a(ar.a.OmU, 0L);
-    AppMethodBeat.o(253539);
-    return l;
-  }
-  
-  public final boolean dCr()
-  {
-    AppMethodBeat.i(253540);
-    if ((dCq() & 1L) != 0L)
+    int i = ((Integer)localObject).intValue();
+    if (i < 0)
     {
-      AppMethodBeat.o(253540);
-      return true;
+      AppMethodBeat.o(267408);
+      return 0;
     }
-    AppMethodBeat.o(253540);
-    return false;
-  }
-  
-  public final boolean dCs()
-  {
-    AppMethodBeat.i(253541);
-    Object localObject = y.vXH;
-    int i = y.dCL();
-    localObject = g.af(com.tencent.mm.plugin.teenmode.a.b.class);
-    p.g(localObject, "MMKernel.service(ITeenModeService::class.java)");
-    boolean bool1 = ((com.tencent.mm.plugin.teenmode.a.b)localObject).Vt();
-    localObject = c.vCb;
-    switch (((Number)c.dsI().value()).intValue())
-    {
-    }
-    for (;;)
-    {
-      Log.i(TAG, "showFinderEntryAtWxMe teenMode:" + bool1 + ", state:" + i);
-      if (!bool1) {
-        break;
-      }
-      AppMethodBeat.o(253541);
-      return false;
-      bool1 = true;
-      continue;
-      i = 1;
-      continue;
-      i = 4;
-    }
-    boolean bool2;
-    switch (i)
-    {
-    case 2: 
-    case 3: 
-    default: 
-      localObject = c.vCb;
-      if (((Number)c.dsJ().value()).intValue() == 1)
-      {
-        bool1 = true;
-        localObject = c.vCb;
-        if (((Number)c.dsK().value()).intValue() != 1) {
-          break label338;
-        }
-        bool2 = true;
-        label226:
-        localObject = c.vCb;
-        if (((Number)c.dsL().value()).intValue() != 1) {
-          break label343;
-        }
-      }
-      break;
-    }
-    boolean bool4;
-    label338:
-    label343:
-    for (boolean bool3 = true;; bool3 = false)
-    {
-      localObject = y.vXH;
-      bool4 = y.dCG();
-      Log.i(TAG, "showFinderEntryAtWxMe switchA:" + bool1 + ", switchB:" + bool2 + ", switchC:" + bool3 + ", showFinderAtWxProfile:" + bool4);
-      if (!bool1) {
-        break label349;
-      }
-      AppMethodBeat.o(253541);
-      return true;
-      AppMethodBeat.o(253541);
-      return false;
-      bool1 = false;
-      break;
-      bool2 = false;
-      break label226;
-    }
-    label349:
-    if (!bool2)
-    {
-      AppMethodBeat.o(253541);
-      return false;
-    }
-    if (!bool3)
-    {
-      AppMethodBeat.o(253541);
-      return false;
-    }
-    if (bool4)
-    {
-      AppMethodBeat.o(253541);
-      return true;
-    }
-    AppMethodBeat.o(253541);
-    return false;
-  }
-  
-  public final boolean dCu()
-  {
-    AppMethodBeat.i(253543);
-    c localc = c.vCb;
-    if (((Number)c.dsL().value()).intValue() == 1)
-    {
-      AppMethodBeat.o(253543);
-      return true;
-    }
-    AppMethodBeat.o(253543);
-    return false;
-  }
-  
-  public final boolean dCv()
-  {
-    AppMethodBeat.i(258554);
-    y localy = y.vXH;
-    boolean bool = y.dCG();
-    AppMethodBeat.o(258554);
-    return bool;
-  }
-  
-  public final int dCw()
-  {
-    AppMethodBeat.i(253545);
-    c localc = c.vCb;
-    int i = ((Number)c.dwH().value()).intValue();
-    AppMethodBeat.o(253545);
+    AppMethodBeat.o(267408);
     return i;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/utils/FinderSwitchApi$showFinderRecentLike$1", "Lcom/tencent/mm/plugin/findersdk/api/IFinderUtilApi$Callback;", "", "onCallback", "", "ret", "(Ljava/lang/Integer;)V", "plugin-finder_release"})
-  public static final class a
-    implements af.a<Integer>
+  public static boolean edj()
   {
-    a(af.a parama) {}
+    AppMethodBeat.i(267409);
+    Object localObject = d.AjH;
+    if (((Number)d.dVI().aSr()).intValue() != 1)
+    {
+      localObject = h.aHG();
+      p.j(localObject, "MMKernel.storage()");
+      if (!p.h(((f)localObject).aHp().get(ar.a.Vyq, Integer.valueOf(0)), Integer.valueOf(1))) {}
+    }
+    else
+    {
+      AppMethodBeat.o(267409);
+      return true;
+    }
+    AppMethodBeat.o(267409);
+    return false;
+  }
+  
+  public static int edk()
+  {
+    AppMethodBeat.i(267410);
+    f localf = h.aHG();
+    p.j(localf, "MMKernel.storage()");
+    int i = localf.aHp().getInt(ar.a.Vyl, 0);
+    AppMethodBeat.o(267410);
+    return i;
+  }
+  
+  public static boolean edl()
+  {
+    AppMethodBeat.i(267411);
+    f localf = h.aHG();
+    p.j(localf, "MMKernel.storage()");
+    if (localf.aHp().getInt(ar.a.Vyp, 0) > 0)
+    {
+      AppMethodBeat.o(267411);
+      return true;
+    }
+    AppMethodBeat.o(267411);
+    return false;
+  }
+  
+  public static int edm()
+  {
+    AppMethodBeat.i(267412);
+    f localf = h.aHG();
+    p.j(localf, "MMKernel.storage()");
+    int i = localf.aHp().getInt(ar.a.Vyo, 0);
+    AppMethodBeat.o(267412);
+    return i;
+  }
+  
+  public static boolean edn()
+  {
+    AppMethodBeat.i(267413);
+    if (edk() == 2)
+    {
+      AppMethodBeat.o(267413);
+      return true;
+    }
+    AppMethodBeat.o(267413);
+    return false;
   }
 }
 

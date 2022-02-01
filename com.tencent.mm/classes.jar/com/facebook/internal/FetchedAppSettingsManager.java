@@ -56,7 +56,7 @@ public final class FetchedAppSettingsManager
   private static final Map<String, FetchedAppSettings> fetchedAppSettings;
   private static final ConcurrentLinkedQueue<FetchedAppSettingsCallback> fetchedAppSettingsCallbacks;
   private static boolean isUnityInit;
-  private static final AtomicReference<FetchAppSettingState> loadingState;
+  private static final AtomicReference<FetchedAppSettingsManager.FetchAppSettingState> loadingState;
   private static boolean printedSDKUpdatedMessage;
   private static JSONArray unityEventBindings;
   
@@ -66,7 +66,7 @@ public final class FetchedAppSettingsManager
     TAG = FetchedAppSettingsManager.class.getSimpleName();
     APP_SETTING_FIELDS = new String[] { "supports_implicit_sdk_logging", "gdpv4_nux_content", "gdpv4_nux_enabled", "gdpv4_chrome_custom_tabs_enabled", "android_dialog_configs", "android_sdk_error_categories", "app_events_session_timeout", "app_events_feature_bitmask", "auto_event_mapping_android", "auto_event_setup_enabled", "seamless_login", "smart_login_bookmark_icon_url", "smart_login_menu_icon_url" };
     fetchedAppSettings = new ConcurrentHashMap();
-    loadingState = new AtomicReference(FetchAppSettingState.NOT_LOADED);
+    loadingState = new AtomicReference(FetchedAppSettingsManager.FetchAppSettingState.NOT_LOADED);
     fetchedAppSettingsCallbacks = new ConcurrentLinkedQueue();
     printedSDKUpdatedMessage = false;
     isUnityInit = false;
@@ -119,19 +119,19 @@ public final class FetchedAppSettingsManager
     final String str1 = FacebookSdk.getApplicationId();
     if (Utility.isNullOrEmpty(str1))
     {
-      loadingState.set(FetchAppSettingState.ERROR);
+      loadingState.set(FetchedAppSettingsManager.FetchAppSettingState.ERROR);
       pollCallbacks();
       AppMethodBeat.o(17746);
       return;
     }
     if (fetchedAppSettings.containsKey(str1))
     {
-      loadingState.set(FetchAppSettingState.SUCCESS);
+      loadingState.set(FetchedAppSettingsManager.FetchAppSettingState.SUCCESS);
       pollCallbacks();
       AppMethodBeat.o(17746);
       return;
     }
-    if ((loadingState.compareAndSet(FetchAppSettingState.NOT_LOADED, FetchAppSettingState.LOADING)) || (loadingState.compareAndSet(FetchAppSettingState.ERROR, FetchAppSettingState.LOADING))) {}
+    if ((loadingState.compareAndSet(FetchedAppSettingsManager.FetchAppSettingState.NOT_LOADED, FetchedAppSettingsManager.FetchAppSettingState.LOADING)) || (loadingState.compareAndSet(FetchedAppSettingsManager.FetchAppSettingState.ERROR, FetchedAppSettingsManager.FetchAppSettingState.LOADING))) {}
     for (int i = 1; i == 0; i = 0)
     {
       pollCallbacks();
@@ -295,8 +295,8 @@ public final class FetchedAppSettingsManager
       try
       {
         AppMethodBeat.i(17749);
-        FetchAppSettingState localFetchAppSettingState = (FetchAppSettingState)loadingState.get();
-        if ((FetchAppSettingState.NOT_LOADED.equals(localFetchAppSettingState)) || (FetchAppSettingState.LOADING.equals(localFetchAppSettingState)))
+        FetchedAppSettingsManager.FetchAppSettingState localFetchAppSettingState = (FetchedAppSettingsManager.FetchAppSettingState)loadingState.get();
+        if ((FetchedAppSettingsManager.FetchAppSettingState.NOT_LOADED.equals(localFetchAppSettingState)) || (FetchedAppSettingsManager.FetchAppSettingState.LOADING.equals(localFetchAppSettingState)))
         {
           AppMethodBeat.o(17749);
           return;
@@ -304,7 +304,7 @@ public final class FetchedAppSettingsManager
         localObject2 = FacebookSdk.getApplicationId();
         localObject2 = (FetchedAppSettings)fetchedAppSettings.get(localObject2);
         localHandler = new Handler(Looper.getMainLooper());
-        if (!FetchAppSettingState.ERROR.equals(localFetchAppSettingState)) {
+        if (!FetchedAppSettingsManager.FetchAppSettingState.ERROR.equals(localFetchAppSettingState)) {
           break label135;
         }
         if (!fetchedAppSettingsCallbacks.isEmpty())
@@ -358,7 +358,7 @@ public final class FetchedAppSettingsManager
     localObject = parseAppSettingsFromJSON(paramString, (JSONObject)localObject);
     if (paramString.equals(FacebookSdk.getApplicationId()))
     {
-      loadingState.set(FetchAppSettingState.SUCCESS);
+      loadingState.set(FetchedAppSettingsManager.FetchAppSettingState.SUCCESS);
       pollCallbacks();
     }
     AppMethodBeat.o(17750);
@@ -375,22 +375,6 @@ public final class FetchedAppSettingsManager
     AppMethodBeat.o(17752);
   }
   
-  static enum FetchAppSettingState
-  {
-    static
-    {
-      AppMethodBeat.i(17745);
-      NOT_LOADED = new FetchAppSettingState("NOT_LOADED", 0);
-      LOADING = new FetchAppSettingState("LOADING", 1);
-      SUCCESS = new FetchAppSettingState("SUCCESS", 2);
-      ERROR = new FetchAppSettingState("ERROR", 3);
-      $VALUES = new FetchAppSettingState[] { NOT_LOADED, LOADING, SUCCESS, ERROR };
-      AppMethodBeat.o(17745);
-    }
-    
-    private FetchAppSettingState() {}
-  }
-  
   public static abstract interface FetchedAppSettingsCallback
   {
     public abstract void onError();
@@ -400,7 +384,7 @@ public final class FetchedAppSettingsManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.internal.FetchedAppSettingsManager
  * JD-Core Version:    0.7.0.1
  */

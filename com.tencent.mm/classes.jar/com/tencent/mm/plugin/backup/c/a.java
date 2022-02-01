@@ -18,17 +18,17 @@ import java.io.IOException;
 public final class a
   implements b.a
 {
-  public static final byte[] oJy;
+  public static final byte[] rLo;
   private int mode = 0;
-  public MMHandler oJA = null;
-  public a oJB;
-  private int oJz;
   private String peerIP;
+  private int rLp;
+  public MMHandler rLq = null;
+  public a rLr;
   
   static
   {
     AppMethodBeat.i(21224);
-    oJy = "GSMW".getBytes();
+    rLo = "GSMW".getBytes();
     AppMethodBeat.o(21224);
   }
   
@@ -54,9 +54,9 @@ public final class a
     Log.i("MicroMsg.BackupCEngine", "listen, before server.stop");
     Server.Java2C.stop();
     Log.i("MicroMsg.BackupCEngine", "listen, before server.start listener");
-    com.tencent.mm.lan_cs.Server.hvv = new Server.a()
+    com.tencent.mm.lan_cs.Server.khv = new Server.a()
     {
-      public final void aBy()
+      public final void aJb()
       {
         AppMethodBeat.i(21209);
         a.a(a.this, 10011, "listen server onDisconnect".getBytes());
@@ -89,11 +89,11 @@ public final class a
         }
       }
       
-      public final void qm(int paramAnonymousInt)
+      public final void sM(int paramAnonymousInt)
       {
         AppMethodBeat.i(21207);
         if (a.a(a.this) == 1) {
-          b.Bp(paramAnonymousInt);
+          b.EQ(paramAnonymousInt);
         }
         AppMethodBeat.o(21207);
       }
@@ -118,15 +118,15 @@ public final class a
     return true;
   }
   
-  public final void connect(String paramString, int paramInt)
+  public final void cQ(String paramString, int paramInt)
   {
     AppMethodBeat.i(21217);
     this.mode = 2;
     this.peerIP = paramString;
-    this.oJz = paramInt;
-    com.tencent.mm.lan_cs.Client.hvu = new Client.a()
+    this.rLp = paramInt;
+    com.tencent.mm.lan_cs.Client.khu = new Client.a()
     {
-      public final void aBy()
+      public final void aJb()
       {
         AppMethodBeat.i(21212);
         a.a(a.this, 10011, "client onDisconnect".getBytes());
@@ -154,17 +154,17 @@ public final class a
     AppMethodBeat.o(21217);
   }
   
-  public final void l(final int paramInt, final byte[] paramArrayOfByte)
+  public final void m(final int paramInt, final byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(21219);
     final long l = Util.nowMilliSecond();
     Log.v("MicroMsg.BackupCEngine", "send seq:%d buff:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(Util.getLength(paramArrayOfByte)) });
-    if ((this.oJA == null) || (this.oJA.isQuit()))
+    if ((this.rLq == null) || (this.rLq.isQuit()))
     {
-      this.oJA = new MMHandler("BackupCEngine_sendHandler");
+      this.rLq = new MMHandler("BackupCEngine_sendHandler");
       Log.w("MicroMsg.BackupCEngine", "BackupCEngine send");
     }
-    this.oJA.post(new Runnable()
+    this.rLq.post(new Runnable()
     {
       public final void run()
       {
@@ -186,7 +186,7 @@ public final class a
         }
         for (;;)
         {
-          b.Bp(Util.getLength(paramArrayOfByte));
+          b.EQ(Util.getLength(paramArrayOfByte));
           Log.i("MicroMsg.BackupCEngine", "send result[%d], seq[%d], buff[%d], time[%d,%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), Integer.valueOf(Util.getLength(paramArrayOfByte)), Long.valueOf(Util.milliSecondsToNow(l)), Long.valueOf(Util.milliSecondsToNow(l)) });
           AppMethodBeat.o(21214);
           return;
@@ -201,13 +201,13 @@ public final class a
     AppMethodBeat.o(21219);
   }
   
-  public final int m(int paramInt, byte[] paramArrayOfByte)
+  public final int n(int paramInt, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(21220);
     long l = Util.nowMilliSecond();
     int i;
     if (this.mode == 1) {
-      i = Server.Java2C.send(this.peerIP, this.oJz, paramArrayOfByte);
+      i = Server.Java2C.send(this.peerIP, this.rLp, paramArrayOfByte);
     }
     for (;;)
     {
@@ -216,8 +216,8 @@ public final class a
       return i;
       if (this.mode == 2)
       {
-        i = Client.Java2C.send(this.peerIP, this.oJz, paramArrayOfByte);
-        b.Bp(Util.getLength(paramArrayOfByte));
+        i = Client.Java2C.send(this.peerIP, this.rLp, paramArrayOfByte);
+        b.EQ(Util.getLength(paramArrayOfByte));
       }
       else
       {
@@ -233,7 +233,7 @@ public final class a
     if (this.mode == 1)
     {
       Server.Java2C.stop();
-      b.cfK();
+      b.csV();
       this.mode = 0;
       AppMethodBeat.o(21218);
       return;
@@ -241,7 +241,7 @@ public final class a
     if (this.mode == 2)
     {
       Client.Java2C.disconnect();
-      b.cfK();
+      b.csV();
       this.mode = 0;
       AppMethodBeat.o(21218);
       return;
@@ -256,7 +256,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.c.a
  * JD-Core Version:    0.7.0.1
  */

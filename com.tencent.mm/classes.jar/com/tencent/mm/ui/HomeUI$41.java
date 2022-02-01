@@ -1,26 +1,18 @@
 package com.tencent.mm.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.account.ui.FacebookAuthUI;
+import com.tencent.mm.plugin.sight.decode.a.b;
 
 final class HomeUI$41
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   HomeUI$41(HomeUI paramHomeUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void run()
   {
-    AppMethodBeat.i(33215);
-    paramDialogInterface = HomeUI.i(this.ODr);
-    Object localObject = new Intent(HomeUI.i(this.ODr), FacebookAuthUI.class);
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/ui/HomeUI$9", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, "com/tencent/mm/ui/HomeUI$9", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(33215);
+    AppMethodBeat.i(33214);
+    b.baL();
+    AppMethodBeat.o(33214);
   }
 }
 

@@ -3,9 +3,9 @@ package com.tencent.mm.kernel.a.b;
 import android.os.Handler;
 import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.co.b;
+import com.tencent.mm.cw.b;
 import com.tencent.mm.kernel.a.a.a.a;
-import com.tencent.mm.kernel.j;
+import com.tencent.mm.kernel.l;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.vending.c.a;
 import com.tencent.mm.vending.h.h;
@@ -16,47 +16,47 @@ import junit.framework.Assert;
 
 public final class e<T>
 {
-  private static e hsO = null;
-  private Queue<c> hsH;
-  private int hsI;
-  private volatile a hsJ;
-  private volatile boolean hsK;
-  private final byte[] hsL;
-  private volatile a<Void, f.a> hsM;
-  private volatile c<T> hsN;
+  private static e keJ = null;
+  private Queue<c> keC;
+  private int keD;
+  private volatile a keE;
+  private volatile boolean keF;
+  private final byte[] keG;
+  private volatile a<Void, f.a> keH;
+  private volatile c<T> keI;
   
   private e()
   {
     AppMethodBeat.i(158364);
-    this.hsH = new LinkedList();
-    this.hsK = false;
-    this.hsL = new byte[0];
+    this.keC = new LinkedList();
+    this.keF = false;
+    this.keG = new byte[0];
     AppMethodBeat.o(158364);
   }
   
   private void a(final c paramc, final f.a<T> parama)
   {
     AppMethodBeat.i(158376);
-    paramc.hsS.arrange(new Runnable()
+    paramc.keN.arrange(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(158359);
         f.a locala = parama;
         a locala1 = e.a(e.this);
-        if (!locala.hsC)
+        if (!locala.kex)
         {
-          locala.htd.hte.hin();
-          if (!locala.hsC)
+          locala.keY.keZ.ijO();
+          if (!locala.kex)
           {
             locala1.call(locala);
             Log.d("MMSkeleton.ParallelsDependencies", "consume call functional %s, node %s", new Object[] { locala1, locala });
-            locala.hsC = true;
+            locala.kex = true;
           }
-          locala.htd.hte.done();
+          locala.keY.keZ.done();
         }
         e.b(e.this).a(parama);
-        locala = e.b(e.this).aAJ();
+        locala = e.b(e.this).aIm();
         if (locala == null)
         {
           e.a(e.this, paramc);
@@ -82,7 +82,7 @@ public final class e<T>
     //   4: ldc 93
     //   6: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
-    //   10: getfield 55	com/tencent/mm/kernel/a/b/e:hsH	Ljava/util/Queue;
+    //   10: getfield 55	com/tencent/mm/kernel/a/b/e:keC	Ljava/util/Queue;
     //   13: aload_1
     //   14: invokeinterface 99 2 0
     //   19: pop
@@ -93,22 +93,22 @@ public final class e<T>
     //   28: dup
     //   29: iconst_0
     //   30: aload_0
-    //   31: getfield 55	com/tencent/mm/kernel/a/b/e:hsH	Ljava/util/Queue;
+    //   31: getfield 55	com/tencent/mm/kernel/a/b/e:keC	Ljava/util/Queue;
     //   34: invokeinterface 107 1 0
     //   39: invokestatic 113	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   42: aastore
     //   43: dup
     //   44: iconst_1
     //   45: aload_0
-    //   46: getfield 115	com/tencent/mm/kernel/a/b/e:hsI	I
+    //   46: getfield 115	com/tencent/mm/kernel/a/b/e:keD	I
     //   49: invokestatic 113	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   52: aastore
-    //   53: invokestatic 121	com/tencent/mm/kernel/j:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   53: invokestatic 121	com/tencent/mm/kernel/l:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   56: aload_0
-    //   57: getfield 55	com/tencent/mm/kernel/a/b/e:hsH	Ljava/util/Queue;
+    //   57: getfield 55	com/tencent/mm/kernel/a/b/e:keC	Ljava/util/Queue;
     //   60: invokeinterface 107 1 0
     //   65: aload_0
-    //   66: getfield 115	com/tencent/mm/kernel/a/b/e:hsI	I
+    //   66: getfield 115	com/tencent/mm/kernel/a/b/e:keD	I
     //   69: if_icmpne +12 -> 81
     //   72: ldc 93
     //   74: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -137,28 +137,28 @@ public final class e<T>
     //   81	86	91	finally
   }
   
-  public static e aAK()
+  public static e aIn()
   {
-    return hsO;
+    return keJ;
   }
   
-  public static e aAL()
+  public static e aIo()
   {
     AppMethodBeat.i(158363);
-    if (hsO == null) {
-      hsO = new e();
+    if (keJ == null) {
+      keJ = new e();
     }
-    e locale = hsO;
+    e locale = keJ;
     AppMethodBeat.o(158363);
     return locale;
   }
   
-  private c aAO()
+  private c aIr()
   {
     try
     {
       AppMethodBeat.i(158372);
-      c localc = (c)this.hsH.poll();
+      c localc = (c)this.keC.poll();
       AppMethodBeat.o(158372);
       return localc;
     }
@@ -175,11 +175,11 @@ public final class e<T>
     c localc;
     for (;;)
     {
-      localc = aAO();
+      localc = aIr();
       if (localc == null) {
         break label48;
       }
-      f.a locala = this.hsN.aAJ();
+      f.a locala = this.keI.aIm();
       if (locala == null) {
         break;
       }
@@ -196,13 +196,13 @@ public final class e<T>
   {
     AppMethodBeat.i(158374);
     if (a(???)) {
-      synchronized (this.hsL)
+      synchronized (this.keG)
       {
-        if (this.hsK) {
-          j.i("MMSkeleton.Parallels", "Parallels notify done", new Object[0]);
+        if (this.keF) {
+          l.i("MMSkeleton.Parallels", "Parallels notify done", new Object[0]);
         }
-        this.hsK = false;
-        this.hsJ.aAP();
+        this.keF = false;
+        this.keE.aIs();
         AppMethodBeat.o(158374);
         return;
       }
@@ -217,7 +217,7 @@ public final class e<T>
     {
       paramc.prepare();
       start(paramString);
-      aAM();
+      aIp();
     }
     AppMethodBeat.o(158368);
   }
@@ -225,36 +225,36 @@ public final class e<T>
   public final boolean a(a parama, a<Void, f.a> parama1, c<T> paramc)
   {
     AppMethodBeat.i(158367);
-    synchronized (this.hsL)
+    synchronized (this.keG)
     {
-      if (this.hsK)
+      if (this.keF)
       {
         Log.w("MMSkeleton.Parallels", "Arrange parallels task failed. It's busy on working.");
         Assert.assertTrue(false);
         AppMethodBeat.o(158367);
         return false;
       }
-      this.hsJ = parama;
-      this.hsM = parama1;
-      this.hsN = paramc;
+      this.keE = parama;
+      this.keH = parama1;
+      this.keI = paramc;
       AppMethodBeat.o(158367);
       return true;
     }
   }
   
-  public final void aAM()
+  public final void aIp()
   {
     AppMethodBeat.i(158369);
-    this.hsJ.aAM();
+    this.keE.aIp();
     AppMethodBeat.o(158369);
   }
   
-  public final List<c> aAN()
+  public final List<c> aIq()
   {
     try
     {
       AppMethodBeat.i(158371);
-      LinkedList localLinkedList = new LinkedList(this.hsH);
+      LinkedList localLinkedList = new LinkedList(this.keC);
       AppMethodBeat.o(158371);
       return localLinkedList;
     }
@@ -273,15 +273,15 @@ public final class e<T>
       int i = 0;
       while (i < paramInt)
       {
-        Queue localQueue = this.hsH;
+        Queue localQueue = this.keC;
         HandlerThread localHandlerThread = new HandlerThread("parallels-".concat(String.valueOf(i)), -8);
         localHandlerThread.start();
         c localc = new c();
-        localc.dli = localHandlerThread;
+        localc.fcO = localHandlerThread;
         localQueue.add(localc);
         i += 1;
       }
-      this.hsI = paramInt;
+      this.keD = paramInt;
       AppMethodBeat.o(158365);
       return;
     }
@@ -294,13 +294,13 @@ public final class e<T>
     {
       AppMethodBeat.i(158366);
       int i = 0;
-      while (i < this.hsI)
+      while (i < this.keD)
       {
-        c localc = (c)((LinkedList)this.hsH).get(i);
-        Handler localHandler = new Handler(localc.dli.getLooper());
-        h localh = new h(localHandler, localc.dli.getName());
+        c localc = (c)((LinkedList)this.keC).get(i);
+        Handler localHandler = new Handler(localc.fcO.getLooper());
+        h localh = new h(localHandler, localc.fcO.getName());
         localc.handler = localHandler;
-        localc.hsS = localh;
+        localc.keN = localh;
         i += 1;
       }
       AppMethodBeat.o(158366);
@@ -312,10 +312,10 @@ public final class e<T>
   public final void start(String arg1)
   {
     AppMethodBeat.i(158370);
-    j.i("MMSkeleton.Parallels", "Start working. For %s", new Object[] { ??? });
-    synchronized (this.hsL)
+    l.i("MMSkeleton.Parallels", "Start working. For %s", new Object[] { ??? });
+    synchronized (this.keG)
     {
-      this.hsK = true;
+      this.keF = true;
       active();
       AppMethodBeat.o(158370);
       return;
@@ -324,9 +324,9 @@ public final class e<T>
   
   public static abstract interface a
   {
-    public abstract void aAM();
+    public abstract void aIp();
     
-    public abstract void aAP();
+    public abstract void aIs();
   }
   
   public static final class b
@@ -341,7 +341,7 @@ public final class e<T>
       AppMethodBeat.o(158360);
     }
     
-    public final void aAM()
+    public final void aIp()
     {
       AppMethodBeat.i(158361);
       try
@@ -350,12 +350,12 @@ public final class e<T>
         {
           if (this.mLock[0] == 0)
           {
-            j.i("MMSkeleton.Parallels", "Waiting for lock(%s)", new Object[] { this.mLock });
+            l.i("MMSkeleton.Parallels", "Waiting for lock(%s)", new Object[] { this.mLock });
             this.mLock.wait();
             AppMethodBeat.o(158361);
             return;
           }
-          j.i("MMSkeleton.Parallels", "Not need wait for lock(%s)", new Object[] { this.mLock });
+          l.i("MMSkeleton.Parallels", "Not need wait for lock(%s)", new Object[] { this.mLock });
         }
         return;
       }
@@ -366,14 +366,14 @@ public final class e<T>
       }
     }
     
-    public final void aAP()
+    public final void aIs()
     {
       AppMethodBeat.i(158362);
       synchronized (this.mLock)
       {
         this.mLock[0] = 1;
         this.mLock.notify();
-        j.i("MMSkeleton.Parallels", "Lock(%s) notified", new Object[] { this.mLock });
+        l.i("MMSkeleton.Parallels", "Lock(%s) notified", new Object[] { this.mLock });
         AppMethodBeat.o(158362);
         return;
       }
@@ -382,14 +382,14 @@ public final class e<T>
   
   public static final class c
   {
-    public HandlerThread dli;
+    public HandlerThread fcO;
     Handler handler;
-    h hsS;
+    h keN;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.kernel.a.b.e
  * JD-Core Version:    0.7.0.1
  */

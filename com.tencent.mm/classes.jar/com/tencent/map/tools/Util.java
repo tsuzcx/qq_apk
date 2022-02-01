@@ -3,6 +3,8 @@ package com.tencent.map.tools;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.ConfigurationInfo;
 import android.content.pm.PackageInfo;
@@ -18,13 +20,16 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URLEncoder;
 import java.security.MessageDigest;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.UUID;
 
 public class Util
 {
@@ -33,6 +38,18 @@ public class Util
   public static final String META_NAME_API_KEY = "TencentMapSDK";
   public static final int SMALL_SCREEN_THRESHOLD = 400;
   private static final String TAG = "Util";
+  
+  public static boolean equals(Object paramObject1, Object paramObject2)
+  {
+    AppMethodBeat.i(236271);
+    if ((paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2))))
+    {
+      AppMethodBeat.o(236271);
+      return true;
+    }
+    AppMethodBeat.o(236271);
+    return false;
+  }
   
   public static String filterBuilder(String... paramVarArgs)
   {
@@ -117,17 +134,35 @@ public class Util
   
   public static <T> void foreach(Iterable<T> paramIterable, Callback<T> paramCallback)
   {
-    AppMethodBeat.i(193524);
+    AppMethodBeat.i(236273);
     if ((paramIterable == null) || (paramCallback == null))
     {
-      AppMethodBeat.o(193524);
+      AppMethodBeat.o(236273);
       return;
     }
     paramIterable = paramIterable.iterator();
     while (paramIterable.hasNext()) {
       paramCallback.callback(paramIterable.next());
     }
-    AppMethodBeat.o(193524);
+    AppMethodBeat.o(236273);
+  }
+  
+  public static <T> void foreach(T[] paramArrayOfT, Callback<T> paramCallback)
+  {
+    AppMethodBeat.i(236274);
+    if ((paramArrayOfT == null) || (paramCallback == null))
+    {
+      AppMethodBeat.o(236274);
+      return;
+    }
+    int j = paramArrayOfT.length;
+    int i = 0;
+    while (i < j)
+    {
+      paramCallback.callback(paramArrayOfT[i]);
+      i += 1;
+    }
+    AppMethodBeat.o(236274);
   }
   
   public static String getAppName(Context paramContext)
@@ -235,9 +270,9 @@ public class Util
     if (Build.VERSION.SDK_INT >= 23)
     {
       if (paramContext.checkSelfPermission("android.permission.READ_PHONE_STATE") != 0) {
-        break label168;
+        break label219;
       }
-      if ((Build.VERSION.SDK_INT >= 29) && (paramContext.checkSelfPermission("android.permission.READ_PRIVILEGED_PHONE_STATE") == 0)) {
+      if (Build.VERSION.SDK_INT >= 29) {
         if (i != 1) {}
       }
     }
@@ -251,40 +286,57 @@ public class Util
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
           localObject3 = Settings.Secure.getString(paramContext.getContentResolver(), "android_id");
         }
-        paramContext = (Context)localObject3;
-        if (TextUtils.isEmpty((CharSequence)localObject3)) {
-          paramContext = "";
+        localObject1 = localObject3;
+        if (TextUtils.isEmpty((CharSequence)localObject3))
+        {
+          localObject3 = paramContext.getSharedPreferences("device", 0);
+          paramContext = ((SharedPreferences)localObject3).getString("device_id", "");
+          localObject1 = paramContext;
+          if (TextUtils.isEmpty(paramContext))
+          {
+            localObject1 = UUID.randomUUID().toString();
+            ((SharedPreferences)localObject3).edit().putString("device_id", (String)localObject1).apply();
+          }
         }
         AppMethodBeat.o(180760);
-        return paramContext;
+        return localObject1;
       }
-      catch (Exception localException1)
+      catch (Throwable localThrowable1)
       {
         str1 = null;
         continue;
       }
       if (i == 2)
       {
+        String str2;
         try
         {
           str1 = str1.getMeid();
         }
-        catch (Exception localException2)
+        catch (Throwable localThrowable2)
         {
           str2 = null;
         }
         continue;
-        String str2 = str2.getDeviceId();
-        continue;
+        String str3;
         try
         {
           str2 = str2.getDeviceId();
         }
-        catch (Exception localException3) {}
+        catch (Throwable localThrowable3)
+        {
+          str3 = null;
+        }
+        continue;
+        try
+        {
+          str3 = str3.getDeviceId();
+        }
+        catch (Exception localException) {}
       }
       else
       {
-        label168:
+        label219:
         Object localObject2 = null;
       }
     }
@@ -292,20 +344,20 @@ public class Util
   
   public static String getMD5String(String paramString)
   {
-    AppMethodBeat.i(193522);
+    AppMethodBeat.i(236266);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(193522);
+      AppMethodBeat.o(236266);
       return "";
     }
     paramString = getMD5String(paramString.getBytes());
-    AppMethodBeat.o(193522);
+    AppMethodBeat.o(236266);
     return paramString;
   }
   
   public static String getMD5String(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(193523);
+    AppMethodBeat.i(236269);
     char[] arrayOfChar = new char[16];
     char[] tmp14_12 = arrayOfChar;
     tmp14_12[0] = 48;
@@ -360,7 +412,7 @@ public class Util
         continue;
       }
       paramArrayOfByte = new String((char[])localObject);
-      AppMethodBeat.o(193523);
+      AppMethodBeat.o(236269);
       return paramArrayOfByte;
       while (i < 16)
       {
@@ -384,7 +436,7 @@ public class Util
       AppMethodBeat.o(180759);
       return "";
     }
-    paramContext = paramContext.getConnectionInfo();
+    paramContext = (WifiInfo)a.a(paramContext, "com/tencent/map/tools/Util", "getMacAddress", "(Landroid/content/Context;)Ljava/lang/String;", "android/net/wifi/WifiManager", "getConnectionInfo", "()Landroid/net/wifi/WifiInfo;");
     if (paramContext == null)
     {
       AppMethodBeat.o(180759);
@@ -451,10 +503,10 @@ public class Util
   
   public static String getRawAppName(Context paramContext)
   {
-    AppMethodBeat.i(193520);
+    AppMethodBeat.i(236249);
     if (paramContext == null)
     {
-      AppMethodBeat.o(193520);
+      AppMethodBeat.o(236249);
       return "";
     }
     PackageManager localPackageManager = paramContext.getPackageManager();
@@ -466,7 +518,7 @@ public class Util
       {
         paramContext = paramContext.loadLabel(localPackageManager);
         paramContext = paramContext.toString();
-        AppMethodBeat.o(193520);
+        AppMethodBeat.o(236249);
         return paramContext;
       }
     }
@@ -519,6 +571,14 @@ public class Util
     AppMethodBeat.i(180754);
     int i = paramContext.getResources().getDisplayMetrics().widthPixels;
     AppMethodBeat.o(180754);
+    return i;
+  }
+  
+  public static int hash(Object... paramVarArgs)
+  {
+    AppMethodBeat.i(236272);
+    int i = Arrays.hashCode(paramVarArgs);
+    AppMethodBeat.o(236272);
     return i;
   }
   
@@ -595,10 +655,10 @@ public class Util
   
   public static Object invokeStaticMethod(Class paramClass, String paramString, Class[] paramArrayOfClass, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(193521);
+    AppMethodBeat.i(236258);
     if (paramClass == null)
     {
-      AppMethodBeat.o(193521);
+      AppMethodBeat.o(236258);
       return null;
     }
     try
@@ -608,19 +668,19 @@ public class Util
       {
         paramString.setAccessible(true);
         paramClass = paramString.invoke(paramClass, paramArrayOfObject);
-        AppMethodBeat.o(193521);
+        AppMethodBeat.o(236258);
         return paramClass;
       }
     }
     catch (InvocationTargetException paramClass)
     {
       paramClass = new RuntimeException(paramClass.getTargetException());
-      AppMethodBeat.o(193521);
+      AppMethodBeat.o(236258);
       throw paramClass;
     }
     catch (IllegalAccessException paramClass)
     {
-      AppMethodBeat.o(193521);
+      AppMethodBeat.o(236258);
     }
     return null;
   }
@@ -740,29 +800,54 @@ public class Util
     }
   }
   
-  public static <T> void where(Iterable<T> paramIterable, ReturnCallback<Boolean, T> paramReturnCallback)
+  public static <T> boolean where(Iterable<T> paramIterable, ReturnCallback<Boolean, T> paramReturnCallback)
   {
-    AppMethodBeat.i(193525);
+    AppMethodBeat.i(236275);
     if ((paramIterable == null) || (paramReturnCallback == null))
     {
-      AppMethodBeat.o(193525);
-      return;
+      AppMethodBeat.o(236275);
+      return false;
     }
     paramIterable = paramIterable.iterator();
     while (paramIterable.hasNext()) {
       if (((Boolean)paramReturnCallback.callback(paramIterable.next())).booleanValue())
       {
-        AppMethodBeat.o(193525);
-        return;
+        AppMethodBeat.o(236275);
+        return true;
       }
     }
     paramReturnCallback.callback(null);
-    AppMethodBeat.o(193525);
+    AppMethodBeat.o(236275);
+    return false;
+  }
+  
+  public static <T> boolean where(T[] paramArrayOfT, ReturnCallback<Boolean, T> paramReturnCallback)
+  {
+    AppMethodBeat.i(236276);
+    if ((paramArrayOfT == null) || (paramReturnCallback == null))
+    {
+      AppMethodBeat.o(236276);
+      return false;
+    }
+    int j = paramArrayOfT.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (((Boolean)paramReturnCallback.callback(paramArrayOfT[i])).booleanValue())
+      {
+        AppMethodBeat.o(236276);
+        return true;
+      }
+      i += 1;
+    }
+    paramReturnCallback.callback(null);
+    AppMethodBeat.o(236276);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.map.tools.Util
  * JD-Core Version:    0.7.0.1
  */

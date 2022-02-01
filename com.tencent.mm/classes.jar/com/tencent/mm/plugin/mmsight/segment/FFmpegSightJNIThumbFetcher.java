@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.mmsight.segment;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.memory.o;
 import com.tencent.mm.memory.o.b;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -87,9 +88,9 @@ public class FFmpegSightJNIThumbFetcher
         if ((this.mReusedBitmap == null) || (this.mReusedBitmap.isRecycled()) || (this.mReusedBitmap.getWidth() != this.mScaledWidth) || (this.mReusedBitmap.getHeight() != this.mScaledHeight))
         {
           if ((this.mReusedBitmap != null) && (!this.mReusedBitmap.isRecycled())) {
-            com.tencent.mm.memory.o.itM.f(this.mReusedBitmap);
+            o.liV.E(this.mReusedBitmap);
           }
-          this.mReusedBitmap = com.tencent.mm.memory.o.itM.a(new o.b(this.mScaledWidth, this.mScaledHeight));
+          this.mReusedBitmap = o.liV.a(new o.b(this.mScaledWidth, this.mScaledHeight));
         }
         Log.i("MicroMsg.FFmpegSightJNIThumbFetcher", "getFrameAtTime() dr return %d", new Object[] { Integer.valueOf(SightVideoJNI.drawScaledFrame(this.mBufId, this.mReusedBitmap, this.mScaledWidth, this.mScaledHeight)) });
         Bitmap localBitmap = this.mReusedBitmap;
@@ -125,7 +126,7 @@ public class FFmpegSightJNIThumbFetcher
     this.mBufId = SightVideoJNI.openFileVFS(paramString, 1, 16, false);
     if (this.mBufId < 0)
     {
-      paramString = new o("open file error.");
+      paramString = new p("open file error.");
       AppMethodBeat.o(107630);
       throw paramString;
     }
@@ -176,7 +177,7 @@ public class FFmpegSightJNIThumbFetcher
     {
       AppMethodBeat.i(107629);
       if ((this.mReusedBitmap != null) && (!this.mReusedBitmap.isRecycled())) {
-        com.tencent.mm.memory.o.itM.f(this.mReusedBitmap);
+        o.liV.E(this.mReusedBitmap);
       }
       SightVideoJNI.freeObj(this.mBufId);
       AppMethodBeat.o(107629);
@@ -185,7 +186,7 @@ public class FFmpegSightJNIThumbFetcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.FFmpegSightJNIThumbFetcher
  * JD-Core Version:    0.7.0.1
  */

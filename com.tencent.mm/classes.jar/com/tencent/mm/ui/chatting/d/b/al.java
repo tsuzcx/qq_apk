@@ -1,15 +1,16 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import com.tencent.mm.ui.chatting.d.af;
-import kotlin.l;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.ui.chatting.d.ag;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/chatting/component/api/IScanComponent;", "Lcom/tencent/mm/ui/chatting/component/IChattingComponent;", "app_release"})
 public abstract interface al
-  extends af
-{}
+  extends ag
+{
+  public abstract void k(ca paramca, String paramString);
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.b.al
  * JD-Core Version:    0.7.0.1
  */

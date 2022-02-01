@@ -9,33 +9,38 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.plugin.recordvideo.b.b;
+import com.tencent.mm.plugin.recordvideo.b.e;
+import com.tencent.mm.plugin.recordvideo.b.f;
+import com.tencent.mm.plugin.recordvideo.b.g;
+import com.tencent.mm.plugin.recordvideo.b.h;
+import com.tencent.mm.ui.au;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorMoreDialog;", "Landroid/support/design/widget/BottomSheetDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "favorite", "Landroid/view/View;", "favoriteIcon", "Landroid/widget/ImageView;", "favoriteTv", "Landroid/widget/TextView;", "isFavorite", "", "()Z", "setFavorite", "(Z)V", "isNotifySns", "setNotifySns", "notifySns", "notifySnsIcon", "notifySnsTv", "onNotifySns", "Lkotlin/Function0;", "", "getOnNotifySns", "()Lkotlin/jvm/functions/Function0;", "setOnNotifySns", "(Lkotlin/jvm/functions/Function0;)V", "onSelectRange", "getOnSelectRange", "setOnSelectRange", "onSetFav", "getOnSetFav", "setOnSetFav", "rangeIcon", "rangeTv", "rangeView", "initFavoriteBtn", "initNotifySnsBtn", "initRangeBtn", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorMoreDialog;", "Lcom/google/android/material/bottomsheet/BottomSheetDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "favorite", "Landroid/view/View;", "favoriteIcon", "Landroid/widget/ImageView;", "favoriteTv", "Landroid/widget/TextView;", "isFavorite", "", "()Z", "setFavorite", "(Z)V", "isNotifySns", "setNotifySns", "notifySns", "notifySnsIcon", "notifySnsTv", "onNotifySns", "Lkotlin/Function0;", "", "getOnNotifySns", "()Lkotlin/jvm/functions/Function0;", "setOnNotifySns", "(Lkotlin/jvm/functions/Function0;)V", "onSelectRange", "getOnSelectRange", "setOnSelectRange", "onSetFav", "getOnSetFav", "setOnSetFav", "rangeIcon", "rangeTv", "rangeView", "initFavoriteBtn", "initNotifySnsBtn", "initRangeBtn", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "plugin-recordvideo_release"})
 public final class e
-  extends android.support.design.widget.a
+  extends com.google.android.material.bottomsheet.a
 {
-  private View Cdi;
-  private TextView Cdj;
-  private ImageView Cdk;
-  private View Cdl;
-  private TextView Cdm;
-  private ImageView Cdn;
-  private View Cdo;
-  private TextView Cdp;
-  private ImageView Cdq;
-  public kotlin.g.a.a<x> Cdr;
-  public boolean Cds;
+  private View HZA;
+  private TextView HZB;
+  private ImageView HZC;
+  private View HZD;
+  private TextView HZE;
+  private ImageView HZF;
+  public kotlin.g.a.a<x> HZG;
+  public boolean HZH;
+  private View HZx;
+  private TextView HZy;
+  private ImageView HZz;
   
   public e(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(76012);
-    this.Cds = true;
-    setContentView(2131496589);
+    this.HZH = true;
+    setContentView(b.f.story_editor_dialog_view);
     AppMethodBeat.o(76012);
   }
   
@@ -49,83 +54,86 @@ public final class e
       paramBundle.addFlags(134218752);
       paramBundle.clearFlags(2);
     }
-    this.Cdl = findViewById(2131308596);
-    this.Cdm = ((TextView)findViewById(2131308598));
-    this.Cdn = ((ImageView)findViewById(2131308597));
-    this.Cdi = findViewById(2131308599);
-    this.Cdj = ((TextView)findViewById(2131308601));
-    this.Cdk = ((ImageView)findViewById(2131308600));
-    this.Cdo = findViewById(2131308602);
-    this.Cdp = ((TextView)findViewById(2131308604));
-    this.Cdq = ((ImageView)findViewById(2131308603));
-    if (!com.tencent.mm.plugin.recordvideo.b.a.a.BNL.eJD())
+    this.HZA = findViewById(b.e.story_editor_dialog_favorite);
+    this.HZB = ((TextView)findViewById(b.e.story_editor_dialog_favorite_text));
+    this.HZC = ((ImageView)findViewById(b.e.story_editor_dialog_favorite_icon));
+    this.HZx = findViewById(b.e.story_editor_dialog_notify_sns);
+    this.HZy = ((TextView)findViewById(b.e.story_editor_dialog_notify_sns_text));
+    this.HZz = ((ImageView)findViewById(b.e.story_editor_dialog_notify_sns_icon));
+    this.HZD = findViewById(b.e.story_editor_dialog_range);
+    this.HZE = ((TextView)findViewById(b.e.story_editor_dialog_range_text));
+    this.HZF = ((ImageView)findViewById(b.e.story_editor_dialog_range_icon));
+    if (!com.tencent.mm.plugin.recordvideo.b.a.a.HKu.fvN())
     {
-      paramBundle = this.Cdi;
+      paramBundle = this.HZx;
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
     }
     for (;;)
     {
-      paramBundle = this.Cdl;
+      paramBundle = this.HZA;
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
-      paramBundle = this.Cdo;
+      paramBundle = this.HZD;
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
-      paramBundle = findViewById(2131299514);
+      paramBundle = findViewById(b.e.design_bottom_sheet);
       if (paramBundle == null) {
         break;
       }
-      paramBundle.setBackgroundResource(2131101287);
+      paramBundle.setBackgroundResource(b.b.transparent);
       AppMethodBeat.o(76011);
       return;
-      paramBundle = this.Cdi;
+      paramBundle = this.HZx;
       if (paramBundle != null) {
         paramBundle.setVisibility(0);
       }
-      paramBundle = this.Cdi;
+      paramBundle = this.HZx;
       if (paramBundle != null) {
         paramBundle.setOnClickListener((View.OnClickListener)new e.a(this));
       }
       Context localContext1;
+      int i;
       Context localContext2;
-      if (this.Cds)
+      if (this.HZH)
       {
-        paramBundle = this.Cdj;
+        paramBundle = this.HZy;
         if (paramBundle != null)
         {
           localContext1 = getContext();
-          p.g(localContext1, "context");
-          paramBundle.setText((CharSequence)localContext1.getResources().getString(2131766508));
+          p.j(localContext1, "context");
+          paramBundle.setText((CharSequence)localContext1.getResources().getString(b.h.story_editor_not_notify_moment_tip));
         }
-        paramBundle = this.Cdk;
+        paramBundle = this.HZz;
         if (paramBundle != null)
         {
           localContext1 = getContext();
+          i = b.g.icons_outlined_moment_off;
           localContext2 = getContext();
-          p.g(localContext2, "context");
-          paramBundle.setImageDrawable(ar.m(localContext1, 2131690842, localContext2.getResources().getColor(2131099669)));
+          p.j(localContext2, "context");
+          paramBundle.setImageDrawable(au.o(localContext1, i, localContext2.getResources().getColor(b.b.BW_0_Alpha_0_9)));
         }
       }
       else
       {
-        paramBundle = this.Cdj;
+        paramBundle = this.HZy;
         if (paramBundle != null)
         {
           localContext1 = getContext();
-          p.g(localContext1, "context");
-          paramBundle.setText((CharSequence)localContext1.getResources().getString(2131766509));
+          p.j(localContext1, "context");
+          paramBundle.setText((CharSequence)localContext1.getResources().getString(b.h.story_editor_notify_moment_tip));
         }
-        paramBundle = this.Cdk;
+        paramBundle = this.HZz;
         if (paramBundle != null)
         {
           localContext1 = getContext();
+          i = b.g.icons_outlined_moment;
           localContext2 = getContext();
-          p.g(localContext2, "context");
-          paramBundle.setImageDrawable(ar.m(localContext1, 2131690841, localContext2.getResources().getColor(2131099669)));
+          p.j(localContext2, "context");
+          paramBundle.setImageDrawable(au.o(localContext1, i, localContext2.getResources().getColor(b.b.BW_0_Alpha_0_9)));
         }
       }
     }
@@ -134,7 +142,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.e
  * JD-Core Version:    0.7.0.1
  */

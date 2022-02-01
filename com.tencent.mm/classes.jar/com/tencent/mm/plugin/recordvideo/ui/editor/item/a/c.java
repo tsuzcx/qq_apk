@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BitmapEditorItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "bitmap", "Landroid/graphics/Bitmap;", "matrix", "Landroid/graphics/Matrix;", "(Landroid/graphics/Bitmap;Landroid/graphics/Matrix;)V", "destroy", "", "draw", "canvas", "Landroid/graphics/Canvas;", "paint", "Landroid/graphics/Paint;", "init", "prepareNext", "", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BitmapEditorItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "bitmap", "Landroid/graphics/Bitmap;", "matrix", "Landroid/graphics/Matrix;", "(Landroid/graphics/Bitmap;Landroid/graphics/Matrix;)V", "destroy", "", "draw", "canvas", "Landroid/graphics/Canvas;", "paint", "Landroid/graphics/Paint;", "init", "prepareNext", "", "plugin-recordvideo_release"})
 public final class c
   extends a
 {
@@ -17,33 +17,33 @@ public final class c
   public c(Bitmap paramBitmap, Matrix paramMatrix)
   {
     super(paramMatrix);
-    AppMethodBeat.i(237853);
+    AppMethodBeat.i(218555);
     this.bitmap = paramBitmap;
-    AppMethodBeat.o(237853);
+    AppMethodBeat.o(218555);
   }
   
   public final void destroy() {}
   
   public final void draw(Canvas paramCanvas, Paint paramPaint)
   {
-    AppMethodBeat.i(237852);
-    p.h(paramCanvas, "canvas");
-    p.h(paramPaint, "paint");
-    if (eMu())
+    AppMethodBeat.i(218551);
+    p.k(paramCanvas, "canvas");
+    p.k(paramPaint, "paint");
+    if (fyU())
     {
       paramCanvas.save();
-      paramCanvas.concat(this.gT);
+      paramCanvas.concat(fyW());
       Bitmap localBitmap = this.bitmap;
       if (localBitmap == null) {
-        p.hyc();
+        p.iCn();
       }
       paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, paramPaint);
       paramCanvas.restore();
     }
-    AppMethodBeat.o(237852);
+    AppMethodBeat.o(218551);
   }
   
-  public final long eMv()
+  public final long fyV()
   {
     return 9223372036854775807L;
   }
@@ -52,7 +52,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.a.c
  * JD-Core Version:    0.7.0.1
  */

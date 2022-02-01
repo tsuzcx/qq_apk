@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.plugin.fingerprint.faceid.auth.WalletFaceIdAuthUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -61,7 +61,7 @@ public class a
     if ((paramActivity instanceof WalletCheckPwdUI))
     {
       Log.i("MicroMsg.FingerPrintAuthProcess", "forward to FingerPrintAuthUI");
-      if (this.dQL.getInt("key_open_biometric_type") == 1)
+      if (this.fKb.getInt("key_open_biometric_type") == 1)
       {
         b(paramActivity, FingerPrintAuthUI.class, paramBundle);
         AppMethodBeat.o(64478);
@@ -88,9 +88,15 @@ public class a
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(64480);
-    paramBundle = new Intent();
+    Intent localIntent = new Intent();
     Log.i("MicroMsg.FingerPrintAuthProcess", "FingerPrintAuthProcess end");
-    a(paramActivity, "wallet", ".pwd.ui.WalletBiometricPaySettingsUI", 0, paramBundle, true);
+    if (paramBundle.getInt("open_scene", 0) == 1)
+    {
+      a(paramActivity, "wallet", ".pwd.ui.WalletBiometricPaySettingsUI", 0, localIntent, true);
+      AppMethodBeat.o(64480);
+      return;
+    }
+    bH(paramActivity);
     AppMethodBeat.o(64480);
   }
   
@@ -99,12 +105,12 @@ public class a
     return false;
   }
   
-  public final String dKC()
+  public final String epb()
   {
     return "FingerprintAuth";
   }
   
-  public final void g(Activity paramActivity, int paramInt)
+  public final void h(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(64479);
     b(paramActivity, new Bundle());

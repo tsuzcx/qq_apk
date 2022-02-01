@@ -2,7 +2,7 @@ package com.tencent.mm.dynamicbackground.view;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 11}, hxE={""}, hxF={"Lcom/tencent/mm/dynamicbackground/view/DynamicBackgroundGLSurfaceView$Companion;", "", "()V", "DRAW_LOG", "", "TAG", "", "dynamicbg_release"})
+@l(iBK={1, 1, 11}, iBL={""}, iBM={"Lcom/tencent/mm/dynamicbackground/view/DynamicBackgroundGLSurfaceView$Companion;", "", "()V", "DRAW_LOG", "", "TAG", "", "dynamicbg_release"})
 public final class DynamicBackgroundGLSurfaceView$a {}
 
 

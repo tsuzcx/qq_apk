@@ -25,75 +25,78 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.plugin.scanner.l.d;
+import com.tencent.mm.plugin.scanner.l.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.ax;
 import com.tencent.mm.ui.widget.MMWebView;
+import com.tencent.mm.ui.widget.MMWebView.f;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/box/BaseBoxDialogView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "animator", "Landroid/animation/ValueAnimator;", "backgroundListener", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogMoveListener;", "backgroundOpContainer", "Landroid/widget/LinearLayout;", "backgroundOpView", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundOpViewModel;", "backgroundTouchListener", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundTouchListener;", "backgroundViewModel", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundViewModel;", "bgViewCurrentTranslationY", "", "boxWebView", "Lcom/tencent/mm/ui/widget/MMWebView;", "canMeasured", "", "closeButton", "Landroid/view/View;", "closeButtonLayoutHeight", "dialog", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogModel;", "dialogBg", "dialogContainer", "dialogContainerCurrentTranslationY", "dialogContainerHalfTranslationY", "dialogContainerHeight", "dialogContainerMinTranslationY", "dialogState", "enableCancelOutSide", "enableScrollRightClose", "enableScrollVertical", "fixedDialogHeight", "fixedDialogHeightRate", "fixedWebViewHeight", "fullScreenAnimationInfo", "Lcom/tencent/mm/plugin/scanner/box/BaseBoxDialogView$AnimationInfo;", "halfScreenAnimationInfo", "isAnimating", "isAtWebViewTop", "isExpand", "isFixedDialogHeight", "isShowing", "isTouchScrolling", "lastOrientation", "mDownX", "mDownY", "mInterceptTracker", "Landroid/view/VelocityTracker;", "mInterceptXDown", "mInterceptYDown", "mStatusBarHeight", "mTopEmptyHeight", "markViewOriginTranslationY", "maxWebViewHeight", "minWebViewHeight", "moveOffsetXFactor", "moveOffsetY", "navigationBarHeight", "screenHeight", "scrollingHorizontal", "scrollingVertical", "showAnimationInterpolator", "Landroid/view/animation/DecelerateInterpolator;", "topExtraHeight", "webViewContainer", "Lcom/tencent/mm/plugin/scanner/box/BoxWebViewContainer;", "webViewScrollHeight", "windowVisibleHeight", "animateDialogVerticalTranslation", "", "fromTranslationY", "targetTranslationY", "duration", "", "switchToFullScreen", "animateShowBackground", "attachDialog", "dialogModel", "attachWebView", "webView", "canCloseWhenFullScreen", "canCloseWhenHalfScreen", "canOpenWhenHalfScreen", "computeAnimationInfo", "computeFixedWebViewHeight", "dialogHeight", "computeFullScreenAnimationInfo", "computeHalfScreenAnimationInfo", "computeTargetValueByRef", "refStart", "refEnd", "refCurrent", "targetStart", "targetEnd", "dismiss", "exitType", "getCloseButton", "root", "getCloseLayoutHeight", "getLayoutId", "getMaxTranslationY", "getMoveDistanceByOffsetX", "offsetX", "getMoveDistanceByOffsetY", "offsetY", "handleScroll", "offset", "vertical", "init", "initBackgroundOpView", "initDialogBg", "initMoveOffsetXFactor", "initWebViewHeight", "initWindowVisibleHeight", "onBackPressed", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreateView", "view", "onDialogContainerTranslationYChanged", "transY", "onInterceptTouchEvent", "ev", "Landroid/view/MotionEvent;", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "onPause", "onResume", "onTouchEvent", "onTouchUp", "setBackgroundListener", "listener", "setBackgroundOpView", "opView", "setBackgroundTouchListener", "setBackgroundTranslationY", "setBackgroundViewModel", "model", "setCanceledOnTouchOutside", "cancel", "setEnableDialogScroll", "enableScroll", "setEnableScrollRightClose", "setEnableWebViewScroll", "setFixDialogHeight", "fixedHeight", "setFixDialogHeightRate", "rate", "setIsFixDialogHeight", "fixed", "show", "switchToHalfScreen", "updateDialogContainerTranslationY", "updateLayoutHeight", "layout", "targetHeight", "needRequestLayout", "AnimationInfo", "Companion", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/BaseBoxDialogView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "animator", "Landroid/animation/ValueAnimator;", "backgroundListener", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogMoveListener;", "backgroundOpContainer", "Landroid/widget/LinearLayout;", "backgroundOpView", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundOpViewModel;", "backgroundTouchListener", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundTouchListener;", "backgroundViewModel", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundViewModel;", "bgViewCurrentTranslationY", "", "boxWebView", "Lcom/tencent/mm/ui/widget/MMWebView;", "canMeasured", "", "closeButton", "Landroid/view/View;", "closeButtonLayoutHeight", "currentEnableTouchScroll", "dialog", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogModel;", "dialogBg", "dialogContainer", "dialogContainerCurrentTranslationY", "dialogContainerHalfTranslationY", "dialogContainerHeight", "dialogContainerMinTranslationY", "dialogState", "enableCancelOutSide", "enableScrollRightClose", "enableScrollVertical", "fixedDialogHeight", "fixedDialogHeightRate", "fixedWebViewHeight", "fullScreenAnimationInfo", "Lcom/tencent/mm/plugin/scanner/box/BaseBoxDialogView$AnimationInfo;", "halfScreenAnimationInfo", "isAnimating", "isAtWebViewTop", "isExpand", "isFixedDialogHeight", "isShowing", "isTouchScrolling", "lastOrientation", "mDownX", "mDownY", "mInterceptTracker", "Landroid/view/VelocityTracker;", "mInterceptXDown", "mInterceptYDown", "mStatusBarHeight", "mTopEmptyHeight", "markViewOriginTranslationY", "maxWebViewHeight", "minWebViewHeight", "moveOffsetXFactor", "moveOffsetY", "navigationBarHeight", "screenHeight", "scrollingHorizontal", "scrollingVertical", "showAnimationInterpolator", "Landroid/view/animation/DecelerateInterpolator;", "topExtraHeight", "webViewContainer", "Lcom/tencent/mm/plugin/scanner/box/BoxWebViewContainer;", "webViewScrollHeight", "windowVisibleHeight", "animateDialogVerticalTranslation", "", "fromTranslationY", "targetTranslationY", "duration", "", "switchToFullScreen", "animateShowBackground", "attachDialog", "dialogModel", "attachWebView", "webView", "canCloseWhenFullScreen", "canCloseWhenHalfScreen", "canOpenWhenHalfScreen", "computeAnimationInfo", "computeFixedWebViewHeight", "dialogHeight", "computeFullScreenAnimationInfo", "computeHalfScreenAnimationInfo", "computeTargetValueByRef", "refStart", "refEnd", "refCurrent", "targetStart", "targetEnd", "dismiss", "exitType", "getCloseButton", "root", "getCloseLayoutHeight", "getLayoutId", "getMaxTranslationY", "getMoveDistanceByOffsetX", "offsetX", "getMoveDistanceByOffsetY", "offsetY", "handleScroll", "offset", "vertical", "init", "initBackgroundOpView", "initDialogBg", "initMoveOffsetXFactor", "initWebViewHeight", "initWindowVisibleHeight", "onBackPressed", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreateView", "view", "onDialogContainerTranslationYChanged", "transY", "onInterceptTouchEvent", "ev", "Landroid/view/MotionEvent;", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "onPause", "onResume", "onTouchEvent", "onTouchUp", "setBackgroundListener", "listener", "setBackgroundOpView", "opView", "setBackgroundTouchListener", "setBackgroundTranslationY", "setBackgroundViewModel", "model", "setCanceledOnTouchOutside", "cancel", "setEnableDialogScroll", "enableScroll", "setEnableScrollRightClose", "setEnableWebViewScroll", "setFixDialogHeight", "fixedHeight", "setFixDialogHeightRate", "rate", "setIsFixDialogHeight", "fixed", "show", "switchToHalfScreen", "updateDialogContainerTranslationY", "updateLayoutHeight", "layout", "targetHeight", "needRequestLayout", "AnimationInfo", "Companion", "plugin-scan_release"})
 public abstract class BaseBoxDialogView
   extends RelativeLayout
 {
-  public static final BaseBoxDialogView.b CBX = new BaseBoxDialogView.b((byte)0);
-  private boolean CAL;
-  private int CBA;
-  private int CBB;
-  public boolean CBC = true;
-  private int CBD;
-  private int CBE;
-  private int CBF;
-  private boolean CBG;
-  private int CBH;
-  private int CBI;
-  private float CBJ;
-  private float CBK;
-  private float CBL = 1.0F;
-  private boolean CBM = true;
-  private boolean CBN;
-  private boolean CBO;
-  private boolean CBP;
-  private boolean CBQ = true;
-  private boolean CBS = true;
-  a CBT = new a();
-  private a CBU = new a();
-  final DecelerateInterpolator CBV = new DecelerateInterpolator();
-  int CBW;
-  private float CBd;
-  private float CBe;
-  private float CBf;
-  private VelocityTracker CBg;
-  e CBh;
-  private View CBi;
-  View CBj;
-  BoxWebViewContainer CBk;
-  private View CBl;
-  private LinearLayout CBm;
-  MMWebView CBn;
-  private f CBo;
-  private c CBp;
-  private d CBq;
-  private b CBr;
-  private float CBs;
-  private float CBt;
-  private int CBu;
-  private float CBv;
-  private float CBw;
-  float CBx;
-  private int CBy;
-  private int CBz;
+  public static final b IGR = new b((byte)0);
+  private float BpS;
+  private float BpT;
+  private float BpU;
+  private VelocityTracker BpV;
+  private View BpX;
+  View BpY;
+  private float BqA = 1.0F;
+  boolean BqB;
+  private boolean BqC = true;
+  private boolean BqD;
+  private boolean BqE;
+  private boolean BqF;
+  private boolean BqG = true;
+  private boolean BqH = true;
+  private boolean BqI;
+  private boolean BqJ = true;
+  final DecelerateInterpolator BqM = new DecelerateInterpolator();
+  int BqN;
+  private View Bqa;
+  private LinearLayout Bqb;
+  MMWebView Bqc;
+  private float Bqh;
+  private float Bqi;
+  private int Bqj;
+  private float Bqk;
+  private float Bql;
+  float Bqm;
+  private int Bqn;
+  private int Bqo;
+  private int Bqp;
+  private int Bqq;
+  public boolean Bqr = true;
+  private int Bqs;
+  private int Bqt;
+  private int Bqu;
+  private boolean Bqv;
+  private int Bqw;
+  private int Bqx;
+  private float Bqy;
+  private float Bqz;
+  e IGJ;
+  BoxWebViewContainer IGK;
+  private f IGL;
+  private c IGM;
+  private d IGN;
+  private b IGO;
+  a IGP = new a();
+  private a IGQ = new a();
   final ValueAnimator animator = new ValueAnimator();
-  private boolean ddZ;
+  private boolean dic;
   boolean isAnimating;
   private int lastOrientation;
-  private int mEY;
   private int mStatusBarHeight;
-  private int nmS;
-  private float onW;
-  boolean yPa;
+  private int pEk;
+  private int qoA;
+  private float rpT;
   
   public BaseBoxDialogView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -105,44 +108,44 @@ public abstract class BaseBoxDialogView
     super(paramContext, paramAttributeSet, paramInt);
     setFitsSystemWindows(true);
     paramAttributeSet = getResources();
-    p.g(paramAttributeSet, "resources");
+    p.j(paramAttributeSet, "resources");
     this.lastOrientation = paramAttributeSet.getConfiguration().orientation;
     paramAttributeSet = LayoutInflater.from(paramContext).inflate(getLayoutId(), (ViewGroup)this, true);
-    p.g(paramAttributeSet, "view");
-    eP(paramAttributeSet);
-    View localView = paramAttributeSet.findViewById(2131299644);
-    p.g(localView, "view.findViewById(R.id.dialog_container)");
-    this.CBj = localView;
-    localView = paramAttributeSet.findViewById(2131299641);
-    p.g(localView, "view.findViewById(R.id.dialog_bg)");
-    this.CBi = localView;
-    localView = paramAttributeSet.findViewById(2131310385);
-    p.g(localView, "view.findViewById(R.id.webview_container)");
-    this.CBk = ((BoxWebViewContainer)localView);
-    this.CBl = eQ(paramAttributeSet);
-    this.CBm = ((LinearLayout)paramAttributeSet.findViewById(2131297174));
-    paramAttributeSet = this.CBm;
+    p.j(paramAttributeSet, "view");
+    fU(paramAttributeSet);
+    View localView = paramAttributeSet.findViewById(l.f.dialog_container);
+    p.j(localView, "view.findViewById(R.id.dialog_container)");
+    this.BpY = localView;
+    localView = paramAttributeSet.findViewById(l.f.dialog_bg);
+    p.j(localView, "view.findViewById(R.id.dialog_bg)");
+    this.BpX = localView;
+    localView = paramAttributeSet.findViewById(l.f.webview_container);
+    p.j(localView, "view.findViewById(R.id.webview_container)");
+    this.IGK = ((BoxWebViewContainer)localView);
+    this.Bqa = eW(paramAttributeSet);
+    this.Bqb = ((LinearLayout)paramAttributeSet.findViewById(l.f.background_op_container));
+    paramAttributeSet = this.Bqb;
     if (paramAttributeSet != null) {
       paramAttributeSet.setVisibility(8);
     }
-    this.nmS = au.aD(paramContext);
-    ePa();
-    paramAttributeSet = this.CBl;
+    this.qoA = ax.aB(paramContext);
+    elB();
+    paramAttributeSet = this.Bqa;
     if (paramAttributeSet == null) {
-      p.btv("closeButton");
+      p.bGy("closeButton");
     }
-    paramAttributeSet.setOnClickListener((View.OnClickListener)new BaseBoxDialogView.j(this));
-    this.mStatusBarHeight = au.getStatusBarHeight(paramContext);
-    this.mEY = (a.jo(paramContext) + this.mStatusBarHeight);
-    this.CBy = getCloseLayoutHeight();
-    this.CBA = a.fromDPToPix(paramContext, 50);
-    Log.i("MicroMsg.BaseBoxDialogView", "alvinluo initBoxDialogView orientation: %s, getScreenHeight: %d, statusBarHeight: %d, topEmptyHeight: %d", new Object[] { Integer.valueOf(this.lastOrientation), Integer.valueOf(this.mEY), Integer.valueOf(this.mStatusBarHeight), Integer.valueOf(this.CBA) });
-    paramContext = this.CBj;
+    paramAttributeSet.setOnClickListener((View.OnClickListener)new j(this));
+    this.mStatusBarHeight = ax.getStatusBarHeight(paramContext);
+    this.pEk = (com.tencent.mm.ci.a.ks(paramContext) + this.mStatusBarHeight);
+    this.Bqn = getCloseLayoutHeight();
+    this.Bqp = com.tencent.mm.ci.a.fromDPToPix(paramContext, 50);
+    Log.i("MicroMsg.BaseBoxDialogView", "alvinluo initBoxDialogView orientation: %s, getScreenHeight: %d, statusBarHeight: %d, topEmptyHeight: %d", new Object[] { Integer.valueOf(this.lastOrientation), Integer.valueOf(this.pEk), Integer.valueOf(this.mStatusBarHeight), Integer.valueOf(this.Bqp) });
+    paramContext = this.BpY;
     if (paramContext == null) {
-      p.btv("dialogContainer");
+      p.bGy("dialogContainer");
     }
-    paramContext.setTranslationY(this.mEY);
-    ePb();
+    paramContext.setTranslationY(this.pEk);
+    elC();
   }
   
   private static float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
@@ -150,28 +153,28 @@ public abstract class BaseBoxDialogView
     return 1.0F * (paramFloat3 - paramFloat1) / (paramFloat2 - paramFloat1) * (paramFloat5 - paramFloat4) + paramFloat4;
   }
   
-  private final void bP(float paramFloat)
+  private final void bn(float paramFloat)
   {
-    View localView = this.CBj;
+    View localView = this.BpY;
     if (localView == null) {
-      p.btv("dialogContainer");
+      p.bGy("dialogContainer");
     }
     localView.setTranslationY(paramFloat);
-    bQ(paramFloat);
+    bo(paramFloat);
   }
   
-  private final void bQ(float paramFloat)
+  private final void bo(float paramFloat)
   {
-    float f = 1.0F * paramFloat / this.CBu;
-    Object localObject = this.CBo;
+    float f = 1.0F * paramFloat / this.Bqj;
+    Object localObject = this.IGL;
     if (localObject != null) {
-      ((f)localObject).c(this.CBW, paramFloat, f);
+      ((f)localObject).c(this.BqN, paramFloat, f);
     }
-    localObject = this.CBm;
+    localObject = this.Bqb;
     int i;
     if (localObject != null)
     {
-      b localb = this.CBr;
+      b localb = this.IGO;
       if (localb != null)
       {
         i = localb.getVieHeight();
@@ -180,8 +183,8 @@ public abstract class BaseBoxDialogView
     }
     else
     {
-      i = this.CBu;
-      localObject = this.CBr;
+      i = this.Bqj;
+      localObject = this.IGO;
       if (localObject == null) {
         break label139;
       }
@@ -198,74 +201,74 @@ public abstract class BaseBoxDialogView
   
   private final void c(float paramFloat, boolean paramBoolean)
   {
-    if (!this.CBP)
-    {
-      this.CBP = true;
-      localObject = this.CBo;
-      if (localObject != null) {
-        ((f)localObject).ePg();
-      }
-    }
-    Object localObject = this.CBn;
-    int i;
-    label135:
-    float f1;
-    if (localObject != null)
-    {
-      i = ((MMWebView)localObject).getScrollHeight();
-      this.CBD = i;
-      if ((!ePc()) || (this.CBE <= this.CBI)) {
-        break label310;
-      }
-      i = Math.max(this.CBI, this.CBF);
-      Log.d("MicroMsg.BaseBoxDialogView", "alvinluo handleScroll fixedWebViewHeight: %d, target: %d", new Object[] { Integer.valueOf(this.CBI), Integer.valueOf(i) });
-      this.CBw = Math.max(this.CBw, this.CBE - i);
-      if (!paramBoolean) {
-        break label387;
-      }
-      f1 = 0.68F * paramFloat;
-      label145:
-      float f2 = this.CBv;
-      f2 = Math.max(this.CBw, f2 + f1);
-      f2 = Math.min(this.CBu, f2);
-      Log.d("MicroMsg.BaseBoxDialogView", "alvinluo handleScroll vertical: %b, offset: %f, moveDis: %f, currentTranslationY: %f, targetTranslationY: %f, minTranslationY: %f", new Object[] { Boolean.valueOf(paramBoolean), Float.valueOf(paramFloat), Float.valueOf(f1), Float.valueOf(this.CBv), Float.valueOf(f2), Float.valueOf(this.CBw) });
-      this.CBK = f1;
-      bP(f2);
-      if (f1 < 0.0F) {
-        break label396;
-      }
-      paramFloat = this.CBv;
-      f1 = this.CBu;
-      localObject = this.CBj;
-      if (localObject == null) {
-        p.btv("dialogContainer");
-      }
-      setBackgroundTranslationY(a(paramFloat, f1, ((View)localObject).getTranslationY(), this.CBs, 0.0F));
-    }
-    label310:
-    while (this.CBv <= 0.0F)
+    if (!this.BqG) {}
+    label143:
+    label318:
+    do
     {
       return;
-      i = 0;
-      break;
-      if (this.CBE <= this.CBD) {
-        break label135;
+      if (!this.BqF)
+      {
+        this.BqF = true;
+        localObject = this.IGL;
+        if (localObject != null) {
+          ((f)localObject).fCc();
+        }
       }
-      i = Math.max(this.CBD, this.CBF);
-      Log.d("MicroMsg.BaseBoxDialogView", "alvinluo handleScroll webViewScrollHeight: %d, target: %d", new Object[] { Integer.valueOf(this.CBD), Integer.valueOf(i) });
-      this.CBw = Math.max(this.CBw, this.CBE - i);
-      break label135;
-      f1 = 0.85F * paramFloat;
-      break label145;
-    }
-    label387:
-    label396:
-    paramFloat = this.CBv;
-    localObject = this.CBj;
+      localObject = this.Bqc;
+      int i;
+      if (localObject != null)
+      {
+        i = ((MMWebView)localObject).getScrollHeight();
+        this.Bqs = i;
+        if ((!elD()) || (this.Bqt <= this.Bqx)) {
+          break label318;
+        }
+        i = Math.max(this.Bqx, this.Bqu);
+        Log.d("MicroMsg.BaseBoxDialogView", "alvinluo handleScroll fixedWebViewHeight: %d, target: %d", new Object[] { Integer.valueOf(this.Bqx), Integer.valueOf(i) });
+        this.Bql = Math.max(this.Bql, this.Bqt - i);
+        if (!paramBoolean) {
+          break label395;
+        }
+      }
+      for (float f1 = 0.68F * paramFloat;; f1 = 0.85F * paramFloat)
+      {
+        float f2 = this.Bqk;
+        f2 = Math.max(this.Bql, f2 + f1);
+        f2 = Math.min(this.Bqj, f2);
+        Log.d("MicroMsg.BaseBoxDialogView", "alvinluo handleScroll vertical: %b, offset: %f, moveDis: %f, currentTranslationY: %f, targetTranslationY: %f, minTranslationY: %f", new Object[] { Boolean.valueOf(paramBoolean), Float.valueOf(paramFloat), Float.valueOf(f1), Float.valueOf(this.Bqk), Float.valueOf(f2), Float.valueOf(this.Bql) });
+        this.Bqz = f1;
+        bn(f2);
+        if (f1 < 0.0F) {
+          break label404;
+        }
+        paramFloat = this.Bqk;
+        f1 = this.Bqj;
+        localObject = this.BpY;
+        if (localObject == null) {
+          p.bGy("dialogContainer");
+        }
+        setBackgroundTranslationY(a(paramFloat, f1, ((View)localObject).getTranslationY(), this.Bqh, 0.0F));
+        return;
+        i = 0;
+        break;
+        if (this.Bqt <= this.Bqs) {
+          break label143;
+        }
+        i = Math.max(this.Bqs, this.Bqu);
+        Log.d("MicroMsg.BaseBoxDialogView", "alvinluo handleScroll webViewScrollHeight: %d, target: %d", new Object[] { Integer.valueOf(this.Bqs), Integer.valueOf(i) });
+        this.Bql = Math.max(this.Bql, this.Bqt - i);
+        break label143;
+      }
+    } while (this.Bqk <= 0.0F);
+    label395:
+    label404:
+    paramFloat = this.Bqk;
+    Object localObject = this.BpY;
     if (localObject == null) {
-      p.btv("dialogContainer");
+      p.bGy("dialogContainer");
     }
-    setBackgroundTranslationY(a(paramFloat, 0.0F, ((View)localObject).getTranslationY(), this.CBU.CBY, this.CBU.CBZ));
+    setBackgroundTranslationY(a(paramFloat, 0.0F, ((View)localObject).getTranslationY(), this.IGQ.BqP, this.IGQ.BqQ));
   }
   
   private final void d(View paramView, int paramInt, boolean paramBoolean)
@@ -283,7 +286,7 @@ public abstract class BaseBoxDialogView
     {
       paramView.setLayoutParams(localLayoutParams);
       if (paramBoolean) {
-        post((Runnable)new BaseBoxDialogView.n(paramView));
+        post((Runnable)new n(paramView));
       }
       return;
       label48:
@@ -291,16 +294,16 @@ public abstract class BaseBoxDialogView
     }
   }
   
-  private final void ePa()
+  private final void elB()
   {
-    View localView = this.CBi;
+    View localView = this.BpX;
     if (localView == null) {
-      p.btv("dialogBg");
+      p.bGy("dialogBg");
     }
-    localView.setOnClickListener((View.OnClickListener)new BaseBoxDialogView.k(this));
+    localView.setOnClickListener((View.OnClickListener)new k(this));
   }
   
-  private final void ePb()
+  private final void elC()
   {
     if ((getContext() instanceof Activity))
     {
@@ -317,29 +320,29 @@ public abstract class BaseBoxDialogView
           ((View)localObject).getWindowVisibleDisplayFrame(localRect);
         }
       }
-      this.CBz = localRect.height();
-      Log.i("MicroMsg.BaseBoxDialogView", "alvinluo initWindowVisibleHeight: %s, height: %d, windowVisibleHeight: %d, navigationBarHeight: %d", new Object[] { localRect, Integer.valueOf(localRect.height()), Integer.valueOf(this.CBz), Integer.valueOf(this.nmS) });
+      this.Bqo = localRect.height();
+      Log.i("MicroMsg.BaseBoxDialogView", "alvinluo initWindowVisibleHeight: %s, height: %d, windowVisibleHeight: %d, navigationBarHeight: %d", new Object[] { localRect, Integer.valueOf(localRect.height()), Integer.valueOf(this.Bqo), Integer.valueOf(this.qoA) });
     }
   }
   
-  private final boolean ePc()
+  private final boolean elD()
   {
-    return (this.CBG) && ((this.CBH > 0) || (this.CBJ > 0.0F));
+    return (this.Bqv) && ((this.Bqw > 0) || (this.Bqy > 0.0F));
   }
   
-  private final boolean ePd()
+  private final boolean elE()
   {
-    return (this.CBK > 0.0F) && (Math.abs(this.CBK) >= this.CBE * 0.15F);
+    return (this.Bqz > 0.0F) && (Math.abs(this.Bqz) >= this.Bqt * 0.15F);
   }
   
-  private final boolean ePe()
+  private final boolean elF()
   {
-    return (this.CBK < 0.0F) && (Math.abs(this.CBK) >= this.CBE * 0.05F);
+    return (this.Bqz < 0.0F) && (Math.abs(this.Bqz) >= this.Bqt * 0.05F);
   }
   
-  private final boolean ePf()
+  private final boolean elG()
   {
-    return (this.CBK > 0.0F) && (Math.abs(this.CBK) >= this.CBE * 0.15F);
+    return (this.Bqz > 0.0F) && (Math.abs(this.Bqz) >= this.Bqt * 0.15F);
   }
   
   private final void f(final float paramFloat1, final float paramFloat2, final boolean paramBoolean)
@@ -350,12 +353,12 @@ public abstract class BaseBoxDialogView
       Log.w("MicroMsg.BaseBoxDialogView", "alvinluo animateDialogVerticalTranslation start equals end and ignore");
       return;
     }
-    Object localObject = this.CBq;
+    Object localObject = this.IGN;
     if (localObject != null) {}
     for (final float f = ((d)localObject).getBackgroundTransY();; f = 0.0F)
     {
       localObject = ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2 });
-      p.g(localObject, "animator");
+      p.j(localObject, "animator");
       ((ValueAnimator)localObject).setInterpolator((TimeInterpolator)new DecelerateInterpolator());
       ((ValueAnimator)localObject).setDuration(200L);
       ((ValueAnimator)localObject).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new c(this, paramBoolean, paramFloat1, paramFloat2, f));
@@ -368,28 +371,28 @@ public abstract class BaseBoxDialogView
   private final void setBackgroundTranslationY(float paramFloat)
   {
     Log.v("MicroMsg.BaseBoxDialogView", "alvinluo setBackgroundTranslationY: %f", new Object[] { Float.valueOf(paramFloat) });
-    d locald = this.CBq;
+    d locald = this.IGN;
     if (locald != null) {
       locald.setBackgroundTransY(paramFloat);
     }
-    locald = this.CBq;
+    locald = this.IGN;
     if (locald != null) {
-      locald.setMarkViewTransY(this.CBt + paramFloat);
+      locald.setMarkViewTransY(this.Bqi + paramFloat);
     }
   }
   
-  public final void Wr(final int paramInt)
+  public final void Se(final int paramInt)
   {
     float f2 = getMaxTranslationY();
-    Object localObject = this.CBq;
+    Object localObject = this.IGN;
     if (localObject != null) {}
     for (final float f1 = ((d)localObject).getBackgroundTransY();; f1 = 0.0F)
     {
       this.isAnimating = true;
-      this.ddZ = false;
-      localObject = this.CBj;
+      this.dic = false;
+      localObject = this.BpY;
       if (localObject == null) {
-        p.btv("dialogContainer");
+        p.bGy("dialogContainer");
       }
       localObject = ((View)localObject).animate();
       if (localObject != null)
@@ -419,12 +422,12 @@ public abstract class BaseBoxDialogView
     }
   }
   
-  public void eP(View paramView)
-  {
-    p.h(paramView, "view");
-  }
+  public abstract View eW(View paramView);
   
-  public abstract View eQ(View paramView);
+  public void fU(View paramView)
+  {
+    p.k(paramView, "view");
+  }
   
   public abstract int getCloseLayoutHeight();
   
@@ -432,7 +435,7 @@ public abstract class BaseBoxDialogView
   
   final int getMaxTranslationY()
   {
-    return this.CBu;
+    return this.Bqj;
   }
   
   protected void onConfigurationChanged(Configuration paramConfiguration)
@@ -444,7 +447,7 @@ public abstract class BaseBoxDialogView
       Log.i("MicroMsg.BaseBoxDialogView", "alvinluo onConfigurationChanged newConfig orientation: %s, last: %s", new Object[] { localInteger, Integer.valueOf(this.lastOrientation) });
       int i = this.lastOrientation;
       if ((paramConfiguration == null) || (i != paramConfiguration.orientation)) {
-        ePb();
+        elC();
       }
       return;
     }
@@ -471,27 +474,27 @@ public abstract class BaseBoxDialogView
       localObject = null;
       break;
     }
-    if (this.CBg == null) {
-      this.CBg = VelocityTracker.obtain();
+    if (this.BpV == null) {
+      this.BpV = VelocityTracker.obtain();
     }
-    Object localObject = this.CBg;
+    Object localObject = this.BpV;
     if (localObject == null) {
-      p.hyc();
+      p.iCn();
     }
     ((VelocityTracker)localObject).addMovement(paramMotionEvent);
-    localObject = this.CBg;
+    localObject = this.BpV;
     if (localObject == null) {
-      p.hyc();
+      p.iCn();
     }
     ((VelocityTracker)localObject).computeCurrentVelocity(1000);
-    localObject = this.CBg;
+    localObject = this.BpV;
     if (localObject == null) {
-      p.hyc();
+      p.iCn();
     }
     int i = (int)((VelocityTracker)localObject).getXVelocity();
-    localObject = this.CBg;
+    localObject = this.BpV;
     if (localObject == null) {
-      p.hyc();
+      p.iCn();
     }
     int j = (int)((VelocityTracker)localObject).getYVelocity();
     switch (paramMotionEvent.getAction() & 0xFF)
@@ -501,34 +504,34 @@ public abstract class BaseBoxDialogView
     }
     for (;;)
     {
-      Log.v("MicroMsg.BaseBoxDialogView", "alvinluo onInterceptTouchEvent enableScrollVertical: %b, action: %s, isIntercept: %b, scrollingVertical: %b, scrollingHorizontal: %b", new Object[] { Boolean.valueOf(this.CBQ), Integer.valueOf(paramMotionEvent.getAction()), Boolean.valueOf(bool1), Boolean.valueOf(this.CBN), Boolean.valueOf(this.CBO) });
+      Log.v("MicroMsg.BaseBoxDialogView", "alvinluo onInterceptTouchEvent enableScrollVertical: %b, action: %s, isIntercept: %b, scrollingVertical: %b, scrollingHorizontal: %b", new Object[] { Boolean.valueOf(this.BqH), Integer.valueOf(paramMotionEvent.getAction()), Boolean.valueOf(bool1), Boolean.valueOf(this.BqD), Boolean.valueOf(this.BqE) });
       return bool1;
       float f1 = paramMotionEvent.getRawX();
       float f2 = paramMotionEvent.getRawY();
-      localObject = this.CBj;
+      localObject = this.BpY;
       if (localObject == null) {
-        p.btv("dialogContainer");
+        p.bGy("dialogContainer");
       }
       Log.d("MicroMsg.BaseBoxDialogView", "alvinluo onInterceptTouchEvent down: %f, %f, dialogContainer translationY: %f", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(((View)localObject).getTranslationY()) });
-      this.CBe = paramMotionEvent.getRawX();
-      this.CBf = paramMotionEvent.getRawY();
+      this.BpT = paramMotionEvent.getRawX();
+      this.BpU = paramMotionEvent.getRawY();
       bool1 = false;
       continue;
-      f1 = paramMotionEvent.getRawX() - this.CBe;
-      f2 = paramMotionEvent.getRawY() - this.CBf;
+      f1 = paramMotionEvent.getRawX() - this.BpT;
+      f2 = paramMotionEvent.getRawY() - this.BpU;
       Log.d("MicroMsg.BaseBoxDialogView", "alvinluo onInterceptTouchEvent action_move tx: %f, ty: %f, velocityX: %d, velocityY: %d", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(i), Integer.valueOf(j) });
       float f3 = paramMotionEvent.getRawY();
-      localObject = this.CBj;
+      localObject = this.BpY;
       if (localObject == null) {
-        p.btv("dialogContainer");
+        p.bGy("dialogContainer");
       }
       if (f3 >= ((View)localObject).getTranslationY())
       {
-        if ((Math.abs(f2) >= 5.0F) && (this.CBQ) && (Math.abs(f1) <= 250.0F) && (Math.abs(j) > Math.abs(i)) && (Math.abs(j) > 0) && (Math.abs(f2) > Math.abs(f1)))
+        if ((Math.abs(f2) >= 5.0F) && (this.BqH) && (Math.abs(f1) <= 250.0F) && (Math.abs(j) > Math.abs(i)) && (Math.abs(j) > 0) && (Math.abs(f2) > Math.abs(f1)))
         {
-          Log.i("MicroMsg.BaseBoxDialogView", "alvinluo ViewPager onInterceptTouchEvent action: %d, dialogContainerCurrentTranslationY: %s", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Float.valueOf(this.CBv) });
-          if (this.CBv <= this.CBw) {
-            if (this.CBM) {
+          Log.i("MicroMsg.BaseBoxDialogView", "alvinluo ViewPager onInterceptTouchEvent action: %d, dialogContainerCurrentTranslationY: %s", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Float.valueOf(this.Bqk) });
+          if (this.Bqk <= this.Bql) {
+            if (this.BqC) {
               if (f2 >= 0.0F) {
                 bool2 = true;
               }
@@ -540,7 +543,7 @@ public abstract class BaseBoxDialogView
             if (!bool2) {
               break;
             }
-            this.CBN = true;
+            this.BqD = true;
             bool1 = bool2;
             break;
             bool2 = false;
@@ -550,18 +553,18 @@ public abstract class BaseBoxDialogView
             bool2 = true;
           }
         }
-        if (!this.CAL) {
+        if (!this.BqI) {
           break;
         }
-        if ((Math.abs(i) > Math.abs(j)) && (f1 > 0.0F) && (Math.abs(f1) > Math.abs(f2)) && (this.CBe <= 20.0F)) {}
+        if ((Math.abs(i) > Math.abs(j)) && (f1 > 0.0F) && (Math.abs(f1) > Math.abs(f2)) && (this.BpT <= 20.0F)) {}
         for (bool2 = true;; bool2 = false)
         {
-          Log.d("MicroMsg.BaseBoxDialogView", "alvinluo onInterceptTouchEvent interceptXDown: %f, scrollLeftRight: %b", new Object[] { Float.valueOf(this.CBe), Boolean.valueOf(bool2) });
+          Log.d("MicroMsg.BaseBoxDialogView", "alvinluo onInterceptTouchEvent interceptXDown: %f, scrollLeftRight: %b", new Object[] { Float.valueOf(this.BpT), Boolean.valueOf(bool2) });
           bool1 = bool2;
           if (!bool2) {
             break;
           }
-          this.CBO = true;
+          this.BqE = true;
           bool1 = bool2;
           break;
         }
@@ -574,66 +577,66 @@ public abstract class BaseBoxDialogView
   {
     float f3 = 0.0F;
     super.onMeasure(paramInt1, paramInt2);
-    if (this.CBz == 0) {
-      ePb();
+    if (this.Bqo == 0) {
+      elC();
     }
-    Object localObject1 = this.CBj;
+    Object localObject1 = this.BpY;
     if (localObject1 == null) {
-      p.btv("dialogContainer");
+      p.bGy("dialogContainer");
     }
     boolean bool2;
     boolean bool1;
-    if ((((View)localObject1).getMeasuredHeight() != this.CBu) && (this.CBC))
+    if ((((View)localObject1).getMeasuredHeight() != this.Bqj) && (this.Bqr))
     {
-      localObject1 = this.CBj;
+      localObject1 = this.BpY;
       if (localObject1 == null) {
-        p.btv("dialogContainer");
+        p.bGy("dialogContainer");
       }
-      this.CBu = ((View)localObject1).getMeasuredHeight();
-      paramInt1 = Math.max(0, this.CBz - this.CBu);
-      this.CBB = Math.max(0, this.CBA - paramInt1);
-      if (ePc())
+      this.Bqj = ((View)localObject1).getMeasuredHeight();
+      paramInt1 = Math.max(0, this.Bqo - this.Bqj);
+      this.Bqq = Math.max(0, this.Bqp - paramInt1);
+      if (elD())
       {
         localObject1 = getContext();
-        p.g(localObject1, "context");
-        this.CBB = ((Context)localObject1).getResources().getDimensionPixelSize(2131165314);
+        p.j(localObject1, "context");
+        this.Bqq = ((Context)localObject1).getResources().getDimensionPixelSize(l.d.Edge_A);
       }
-      this.CBE = (this.CBu - this.CBy - this.CBB);
-      Log.v("MicroMsg.BaseBoxDialogView", "alvinluo onMeasure dialogContainerHeight: %d, extraHeight: %d, diff: %d, fixedDialogHeight: %b", new Object[] { Integer.valueOf(this.CBu), Integer.valueOf(this.CBB), Integer.valueOf(paramInt1), Boolean.valueOf(ePc()) });
-      this.CBF = (this.CBz / 2 - this.CBy);
-      localObject1 = this.CBi;
+      this.Bqt = (this.Bqj - this.Bqn - this.Bqq);
+      Log.v("MicroMsg.BaseBoxDialogView", "alvinluo onMeasure dialogContainerHeight: %d, extraHeight: %d, diff: %d, fixedDialogHeight: %b", new Object[] { Integer.valueOf(this.Bqj), Integer.valueOf(this.Bqq), Integer.valueOf(paramInt1), Boolean.valueOf(elD()) });
+      this.Bqu = (this.Bqo / 2 - this.Bqn);
+      localObject1 = this.BpX;
       if (localObject1 == null) {
-        p.btv("dialogBg");
+        p.bGy("dialogBg");
       }
-      Object localObject2 = this.CBi;
+      Object localObject2 = this.BpX;
       if (localObject2 == null) {
-        p.btv("dialogBg");
+        p.bGy("dialogBg");
       }
       localObject2 = ((View)localObject2).getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject2).height = (this.CBz / 2);
+      ((ViewGroup.LayoutParams)localObject2).height = (this.Bqo / 2);
       ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      bool2 = ePc();
+      bool2 = elD();
       bool1 = bool2;
       if (bool2)
       {
-        paramInt2 = this.CBu;
-        if (this.CBH <= 0) {
+        paramInt2 = this.Bqj;
+        if (this.Bqw <= 0) {
           break label1046;
         }
-        paramInt1 = this.CBH - this.CBy;
+        paramInt1 = this.Bqw - this.Bqn;
       }
     }
     for (;;)
     {
-      paramInt1 = Math.min(this.CBE, paramInt1);
-      Log.v("MicroMsg.BaseBoxDialogView", "alvinluo computeFixedWebViewHeight dialogHeight: %s, fixedDialogHeight: %s, fixedDiaogHeightRate: %s, fixedWebViewHeight: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(this.CBH), Float.valueOf(this.CBJ), Integer.valueOf(paramInt1), Integer.valueOf(paramInt1) });
-      this.CBI = paramInt1;
-      if (this.CBI > 0)
+      paramInt1 = Math.min(this.Bqt, paramInt1);
+      Log.v("MicroMsg.BaseBoxDialogView", "alvinluo computeFixedWebViewHeight dialogHeight: %s, fixedDialogHeight: %s, fixedDiaogHeightRate: %s, fixedWebViewHeight: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(this.Bqw), Float.valueOf(this.Bqy), Integer.valueOf(paramInt1), Integer.valueOf(paramInt1) });
+      this.Bqx = paramInt1;
+      if (this.Bqx > 0)
       {
-        this.CBF = this.CBI;
+        this.Bqu = this.Bqx;
         bool1 = bool2;
         label412:
-        localObject1 = this.CBn;
+        localObject1 = this.Bqc;
         if (localObject1 == null) {
           break label1079;
         }
@@ -646,18 +649,18 @@ public abstract class BaseBoxDialogView
         if (!bool1) {
           break label1084;
         }
-        if (this.CBn == null) {
+        if (this.Bqc == null) {
           break label1473;
         }
-        localObject1 = this.CBn;
+        localObject1 = this.Bqc;
         if (localObject1 == null) {
-          p.hyc();
+          p.iCn();
         }
-        if (((MMWebView)localObject1).getLayoutParams().height == this.CBI) {
+        if (((MMWebView)localObject1).getLayoutParams().height == this.Bqx) {
           break label1473;
         }
-        paramInt1 = this.CBI;
-        d((View)this.CBn, this.CBI, false);
+        paramInt1 = this.Bqx;
+        d((View)this.Bqc, this.Bqx, false);
       }
       label663:
       label1079:
@@ -665,62 +668,62 @@ public abstract class BaseBoxDialogView
       label1473:
       for (;;)
       {
-        localObject1 = this.CBk;
+        localObject1 = this.IGK;
         if (localObject1 == null) {
-          p.btv("webViewContainer");
+          p.bGy("webViewContainer");
         }
-        if (((BoxWebViewContainer)localObject1).getLayoutParams().height != this.CBE)
+        if (((BoxWebViewContainer)localObject1).getLayoutParams().height != this.Bqt)
         {
-          localObject1 = this.CBk;
+          localObject1 = this.IGK;
           if (localObject1 == null) {
-            p.btv("webViewContainer");
+            p.bGy("webViewContainer");
           }
-          d((View)localObject1, this.CBE, true);
+          d((View)localObject1, this.Bqt, true);
         }
-        localObject1 = this.CBj;
+        localObject1 = this.BpY;
         if (localObject1 == null) {
-          p.btv("dialogContainer");
+          p.bGy("dialogContainer");
         }
         paramInt2 = paramInt1;
-        if (((View)localObject1).getTranslationY() != this.CBE - this.CBI)
+        if (((View)localObject1).getTranslationY() != this.Bqt - this.Bqx)
         {
-          this.CBv = (this.CBE - this.CBI);
-          this.CBx = this.CBv;
+          this.Bqk = (this.Bqt - this.Bqx);
+          this.Bqm = this.Bqk;
           paramInt2 = paramInt1;
-          if (this.ddZ)
+          if (this.dic)
           {
-            localObject1 = this.CBj;
+            localObject1 = this.BpY;
             if (localObject1 == null) {
-              p.btv("dialogContainer");
+              p.bGy("dialogContainer");
             }
-            ((View)localObject1).setTranslationY(this.CBv);
+            ((View)localObject1).setTranslationY(this.Bqk);
             paramInt2 = paramInt1;
           }
         }
-        paramInt1 = this.CBE;
-        int i = this.CBF;
-        localObject1 = this.CBj;
+        paramInt1 = this.Bqt;
+        int i = this.Bqu;
+        localObject1 = this.BpY;
         if (localObject1 == null) {
-          p.btv("dialogContainer");
+          p.bGy("dialogContainer");
         }
-        Log.i("MicroMsg.BaseBoxDialogView", "alvinluo initWebViewHeight maxWebViewHeight: %d, minWebVieHeight: %d, translationY: %s, dialogContainerCurrentTranslationY: %s, fixedDialog: %b, fixedWebViewHeight: %s, currentWebViewHeight: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(i), Float.valueOf(((View)localObject1).getTranslationY()), Float.valueOf(this.CBv), Boolean.valueOf(bool1), Integer.valueOf(this.CBI), Integer.valueOf(paramInt2) });
-        paramInt1 = a.jn(getContext());
-        localObject1 = this.CBj;
+        Log.i("MicroMsg.BaseBoxDialogView", "alvinluo initWebViewHeight maxWebViewHeight: %d, minWebVieHeight: %d, translationY: %s, dialogContainerCurrentTranslationY: %s, fixedDialog: %b, fixedWebViewHeight: %s, currentWebViewHeight: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(i), Float.valueOf(((View)localObject1).getTranslationY()), Float.valueOf(this.Bqk), Boolean.valueOf(bool1), Integer.valueOf(this.Bqx), Integer.valueOf(paramInt2) });
+        paramInt1 = com.tencent.mm.ci.a.kr(getContext());
+        localObject1 = this.BpY;
         if (localObject1 == null) {
-          p.btv("dialogContainer");
+          p.bGy("dialogContainer");
         }
-        this.CBL = (((View)localObject1).getMeasuredHeight() / (paramInt1 * 0.5F));
-        Log.d("MicroMsg.BaseBoxDialogView", "alvinluo initMoveOffsetXFactor %f", new Object[] { Float.valueOf(this.CBL) });
-        this.CBT.CBY = 0.0F;
-        this.CBT.CCa = true;
-        paramInt1 = this.CBz - this.CBF - this.CBy;
-        localObject1 = this.CBq;
+        this.BqA = (((View)localObject1).getMeasuredHeight() / (paramInt1 * 0.5F));
+        Log.d("MicroMsg.BaseBoxDialogView", "alvinluo initMoveOffsetXFactor %f", new Object[] { Float.valueOf(this.BqA) });
+        this.IGP.BqP = 0.0F;
+        this.IGP.BqR = true;
+        paramInt1 = this.Bqo - this.Bqu - this.Bqn;
+        localObject1 = this.IGN;
         float f1;
         if (localObject1 != null)
         {
           f1 = ((d)localObject1).getMarkViewHeight();
           label882:
-          localObject1 = this.CBq;
+          localObject1 = this.IGN;
           if (localObject1 == null) {
             break label1244;
           }
@@ -728,59 +731,59 @@ public abstract class BaseBoxDialogView
         label1244:
         for (float f2 = ((d)localObject1).getMarkViewTransY();; f2 = 0.0F)
         {
-          Log.i("MicroMsg.BaseBoxDialogView", "alvinluo computeHalfScreenAnimationInfo temp: %f, %f, markViewTransY: %f", new Object[] { Float.valueOf(paramInt1 / 2.0F), Float.valueOf(this.CBz / 4.0F), Float.valueOf(f2) });
+          Log.i("MicroMsg.BaseBoxDialogView", "alvinluo computeHalfScreenAnimationInfo temp: %f, %f, markViewTransY: %f", new Object[] { Float.valueOf(paramInt1 / 2.0F), Float.valueOf(this.Bqo / 4.0F), Float.valueOf(f2) });
           if (f2 > paramInt1 / 2.0F - f1 / 2.0F) {
             break label1250;
           }
           Log.d("MicroMsg.BaseBoxDialogView", "alvinluo computeHalfScreenAnimationInfo not need animation");
-          this.CBT.CCa = false;
-          this.CBU.CCa = true;
-          this.CBU.CBY = this.CBT.CBZ;
-          f2 = this.CBT.CBZ + this.CBt;
-          if (f2 > this.CBA / 2.0F) {
+          this.IGP.BqR = false;
+          this.IGQ.BqR = true;
+          this.IGQ.BqP = this.IGP.BqQ;
+          f2 = this.IGP.BqQ + this.Bqi;
+          if (f2 > this.Bqp / 2.0F) {
             break label1347;
           }
           Log.d("MicroMsg.BaseBoxDialogView", "alvinluo computeFullScreenAnimationInfo not need animation");
-          this.CBU.CCa = false;
+          this.IGQ.BqR = false;
           return;
-          if (this.CBJ <= 0.0F) {
+          if (this.Bqy <= 0.0F) {
             break label1476;
           }
-          paramInt1 = (int)(this.CBJ * paramInt2 - this.CBy);
+          paramInt1 = (int)(this.Bqy * paramInt2 - this.Bqn);
           break;
           bool1 = false;
           break label412;
           paramInt1 = 0;
           break label441;
           paramInt2 = paramInt1;
-          if (this.CBn != null)
+          if (this.Bqc != null)
           {
-            localObject1 = this.CBn;
+            localObject1 = this.Bqc;
             if (localObject1 == null) {
-              p.hyc();
+              p.iCn();
             }
             paramInt2 = paramInt1;
-            if (((MMWebView)localObject1).getLayoutParams().height != this.CBE)
+            if (((MMWebView)localObject1).getLayoutParams().height != this.Bqt)
             {
-              paramInt2 = this.CBE;
-              d((View)this.CBn, this.CBE, true);
+              paramInt2 = this.Bqt;
+              d((View)this.Bqc, this.Bqt, true);
             }
           }
-          localObject1 = this.CBj;
+          localObject1 = this.BpY;
           if (localObject1 == null) {
-            p.btv("dialogContainer");
+            p.bGy("dialogContainer");
           }
-          if (((View)localObject1).getTranslationY() != this.CBE - this.CBF)
+          if (((View)localObject1).getTranslationY() != this.Bqt - this.Bqu)
           {
-            this.CBv = (this.CBE - this.CBF);
-            this.CBx = this.CBv;
-            if (this.ddZ)
+            this.Bqk = (this.Bqt - this.Bqu);
+            this.Bqm = this.Bqk;
+            if (this.dic)
             {
-              localObject1 = this.CBj;
+              localObject1 = this.BpY;
               if (localObject1 == null) {
-                p.btv("dialogContainer");
+                p.bGy("dialogContainer");
               }
-              ((View)localObject1).setTranslationY(this.CBv);
+              ((View)localObject1).setTranslationY(this.Bqk);
             }
           }
           break label663;
@@ -788,19 +791,19 @@ public abstract class BaseBoxDialogView
           break label882;
         }
         label1250:
-        if (f2 >= this.CBz - paramInt1 / 2.0F - f1 / 2.0F) {}
-        for (this.CBT.CBZ = (-this.CBx);; this.CBT.CBZ = (paramInt1 / 2.0F - f1 / 2.0F - this.CBt))
+        if (f2 >= this.Bqo - paramInt1 / 2.0F - f1 / 2.0F) {}
+        for (this.IGP.BqQ = (-this.Bqm);; this.IGP.BqQ = (paramInt1 / 2.0F - f1 / 2.0F - this.Bqi))
         {
-          Log.d("MicroMsg.BaseBoxDialogView", "alvinluo computeHalfScreenAnimationInfo current: %f, target: %f", new Object[] { Float.valueOf(this.CBT.CBY), Float.valueOf(this.CBT.CBZ) });
+          Log.d("MicroMsg.BaseBoxDialogView", "alvinluo computeHalfScreenAnimationInfo current: %f, target: %f", new Object[] { Float.valueOf(this.IGP.BqP), Float.valueOf(this.IGP.BqQ) });
           break;
         }
         label1347:
-        if (f2 >= this.CBu / 2.0F - this.CBA / 2.0F) {}
-        for (this.CBU.CBZ = (-this.CBu);; this.CBU.CBZ = (this.CBT.CBZ - f2 - (f1 - this.CBA) / 2.0F))
+        if (f2 >= this.Bqj / 2.0F - this.Bqp / 2.0F) {}
+        for (this.IGQ.BqQ = (-this.Bqj);; this.IGQ.BqQ = (this.IGP.BqQ - f2 - (f1 - this.Bqp) / 2.0F))
         {
-          Log.d("MicroMsg.BaseBoxDialogView", "alvinluo computeFullScreenAnimationInfo start: %f, target: %f", new Object[] { Float.valueOf(this.CBU.CBY), Float.valueOf(this.CBU.CBZ) });
+          Log.d("MicroMsg.BaseBoxDialogView", "alvinluo computeFullScreenAnimationInfo start: %f, target: %f", new Object[] { Float.valueOf(this.IGQ.BqP), Float.valueOf(this.IGQ.BqQ) });
           return;
-          localObject1 = this.CBq;
+          localObject1 = this.IGN;
           f1 = f3;
           if (localObject1 != null) {
             f1 = ((d)localObject1).getMarkViewHeight();
@@ -815,33 +818,36 @@ public abstract class BaseBoxDialogView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i = 1;
-    int j = 1;
-    boolean bool2 = true;
+    int i = 2;
+    boolean bool3 = true;
+    boolean bool1;
     if (paramMotionEvent == null) {
-      bool2 = super.onTouchEvent(paramMotionEvent);
+      bool1 = super.onTouchEvent(paramMotionEvent);
     }
     Object localObject;
     float f1;
-    boolean bool1;
+    boolean bool2;
+    label95:
     do
     {
-      return bool2;
-      if ((this.CBO) || (this.CBp == null)) {
+      return bool1;
+      if ((this.isAnimating) || (this.BqE) || (this.IGM == null)) {
         break;
       }
-      localObject = this.CBj;
+      localObject = this.BpY;
       if (localObject == null) {
-        p.btv("dialogContainer");
+        p.bGy("dialogContainer");
       }
-      f1 = ((View)localObject).getTranslationY() + this.CBB;
-      Log.v("MicroMsg.BaseBoxDialogView", "alvinluo onTouchEvent handle by backgroundListener offsetY: %s, event.y: %s", new Object[] { Float.valueOf(f1), Float.valueOf(paramMotionEvent.getRawY()) });
-      localObject = this.CBp;
+      f1 = ((View)localObject).getTranslationY();
+      f1 = this.Bqq + f1;
+      localObject = this.IGM;
       if (localObject == null) {
-        break label186;
+        break label206;
       }
-      bool1 = ((c)localObject).i(paramMotionEvent, (int)f1);
-    } while (bool1);
+      bool2 = ((c)localObject).i(paramMotionEvent, (int)f1);
+      Log.v("MicroMsg.BaseBoxDialogView", "alvinluo onTouchEvent handle by backgroundListener offsetY: %s, event.y: %s, handled: %s", new Object[] { Float.valueOf(f1), Float.valueOf(paramMotionEvent.getRawY()), Boolean.valueOf(bool2) });
+      bool1 = bool3;
+    } while (bool2);
     Log.d("MicroMsg.BaseBoxDialogView", "alvinluo onTouchEvent %s", new Object[] { Integer.valueOf(paramMotionEvent.getAction()) });
     switch (paramMotionEvent.getAction() & 0xFF)
     {
@@ -851,27 +857,35 @@ public abstract class BaseBoxDialogView
       for (;;)
       {
         return super.onTouchEvent(paramMotionEvent);
-        label186:
-        bool1 = false;
-        break;
-        this.CBd = paramMotionEvent.getRawX();
-        this.onW = paramMotionEvent.getRawY();
+        label206:
+        bool2 = false;
+        break label95;
+        this.BpS = paramMotionEvent.getRawX();
+        this.rpT = paramMotionEvent.getRawY();
+        bool1 = bool3;
+        if (!this.isAnimating) {
+          break;
+        }
+        this.BqG = false;
         return true;
-        if ((this.CBd == 0.0F) && (this.onW == 0.0F))
+        if (this.isAnimating) {
+          this.BqG = false;
+        }
+        if ((this.BpS == 0.0F) && (this.rpT == 0.0F))
         {
-          this.CBd = paramMotionEvent.getRawX();
-          this.onW = paramMotionEvent.getRawY();
+          this.BpS = paramMotionEvent.getRawX();
+          this.rpT = paramMotionEvent.getRawY();
         }
         else
         {
-          f1 = paramMotionEvent.getRawX() - this.CBd;
-          float f2 = paramMotionEvent.getRawY() - this.onW;
+          f1 = paramMotionEvent.getRawX() - this.BpS;
+          float f2 = paramMotionEvent.getRawY() - this.rpT;
           if (Math.abs(f2) > Math.abs(f1)) {
-            this.CBN = true;
+            this.BqD = true;
           }
-          if ((this.CBN) && (this.CBQ)) {
+          if ((this.BqD) && (this.BqH)) {
             c(f2, true);
-          } else if (this.CBO) {
+          } else if (this.BqE) {
             c(f1, false);
           } else {
             Log.v("MicroMsg.BaseBoxDialogView", "alvinluo handleScroll ignore");
@@ -879,87 +893,96 @@ public abstract class BaseBoxDialogView
         }
       }
     }
-    this.CBd = 0.0F;
-    this.onW = 0.0F;
-    Log.i("MicroMsg.BaseBoxDialogView", "alvinluo onTouchUp isExpand: %b, isTouchScrolling: %s", new Object[] { Boolean.valueOf(this.yPa), Boolean.valueOf(this.CBP) });
-    if (this.CBP)
+    this.BpS = 0.0F;
+    this.rpT = 0.0F;
+    Log.i("MicroMsg.BaseBoxDialogView", "alvinluo onTouchUp isExpand: %b, isTouchScrolling: %s, currentEnableTouchScroll: %s", new Object[] { Boolean.valueOf(this.BqB), Boolean.valueOf(this.BqF), Boolean.valueOf(this.BqG) });
+    if (this.BqG)
     {
-      this.CBP = false;
-      localObject = this.CBo;
-      if (localObject != null) {
-        ((f)localObject).ePh();
-      }
-    }
-    if (!this.yPa)
-    {
-      Log.d("MicroMsg.BaseBoxDialogView", "alvinluo onTouchUp canClose: %b, canOpen: %b", new Object[] { Boolean.valueOf(ePd()), Boolean.valueOf(ePe()) });
-      if (ePd()) {
-        if (this.CBN) {
-          label462:
-          Wr(i);
+      if (this.BqF)
+      {
+        this.BqF = false;
+        localObject = this.IGL;
+        if (localObject != null) {
+          ((f)localObject).fCd();
         }
       }
+      if (this.BqB) {
+        break label601;
+      }
+      Log.d("MicroMsg.BaseBoxDialogView", "alvinluo onTouchUp canClose: %b, canOpen: %b", new Object[] { Boolean.valueOf(elE()), Boolean.valueOf(elF()) });
+      if (!elE()) {
+        break label560;
+      }
+      if (!this.BqD) {
+        break label554;
+      }
+      i = 1;
+      label530:
+      Se(i);
     }
     for (;;)
     {
-      this.CBN = false;
-      this.CBO = false;
+      this.BqD = false;
+      this.BqE = false;
+      this.BqG = true;
       break;
+      label554:
       i = 2;
-      break label462;
-      if (!ePe())
+      break label530;
+      label560:
+      if (!elF())
       {
-        localObject = this.CBj;
+        localObject = this.BpY;
         if (localObject == null) {
-          p.btv("dialogContainer");
+          p.bGy("dialogContainer");
         }
-        f(((View)localObject).getTranslationY(), this.CBx, false);
+        f(((View)localObject).getTranslationY(), this.Bqm, false);
         continue;
-        Log.d("MicroMsg.BaseBoxDialogView", "alvinluo onTouchUp canClose: %b", new Object[] { Boolean.valueOf(ePf()) });
-        if (ePf())
+        label601:
+        Log.d("MicroMsg.BaseBoxDialogView", "alvinluo onTouchUp canClose: %b", new Object[] { Boolean.valueOf(elG()) });
+        if (elG())
         {
-          if (this.CBN) {}
-          for (i = j;; i = 2)
-          {
-            Wr(i);
-            break;
+          if (this.BqD) {
+            i = 1;
           }
+          Se(i);
+          continue;
         }
       }
-      localObject = this.CBj;
+      localObject = this.BpY;
       if (localObject == null) {
-        p.btv("dialogContainer");
+        p.bGy("dialogContainer");
       }
-      f(((View)localObject).getTranslationY(), this.CBw, true);
+      f(((View)localObject).getTranslationY(), this.Bql, true);
     }
   }
   
   public final void setBackgroundListener(f paramf)
   {
-    p.h(paramf, "listener");
-    this.CBo = paramf;
+    p.k(paramf, "listener");
+    this.IGL = paramf;
   }
   
   public final void setBackgroundOpView(b paramb)
   {
-    p.h(paramb, "opView");
-    this.CBr = paramb;
-    if ((this.CBr instanceof View))
+    p.k(paramb, "opView");
+    this.IGO = paramb;
+    if ((this.IGO instanceof View))
     {
-      paramb = this.CBm;
+      paramb = this.Bqb;
       if (paramb != null) {
         paramb.removeAllViews();
       }
-      paramb = this.CBm;
+      paramb = this.Bqb;
       if (paramb != null)
       {
-        b localb = this.CBr;
+        b localb = this.IGO;
         if (localb == null) {
           throw new t("null cannot be cast to non-null type android.view.View");
         }
         paramb.addView((View)localb);
       }
-      paramb = this.CBm;
+      paramb = this.Bqb;
       if (paramb != null) {
         paramb.setVisibility(0);
       }
@@ -968,43 +991,43 @@ public abstract class BaseBoxDialogView
     do
     {
       return;
-      paramb = this.CBm;
+      paramb = this.Bqb;
     } while (paramb == null);
     paramb.setVisibility(8);
   }
   
   public final void setBackgroundTouchListener(c paramc)
   {
-    p.h(paramc, "listener");
-    this.CBp = paramc;
+    p.k(paramc, "listener");
+    this.IGM = paramc;
   }
   
   public final void setBackgroundViewModel(d paramd)
   {
-    p.h(paramd, "model");
-    this.CBq = paramd;
-    paramd = this.CBq;
+    p.k(paramd, "model");
+    this.IGN = paramd;
+    paramd = this.IGN;
     float f;
     if (paramd != null)
     {
       f = paramd.getMarkViewTransY();
-      this.CBt = f;
-      if (this.CBq != null)
+      this.Bqi = f;
+      if (this.IGN != null)
       {
-        paramd = this.CBq;
+        paramd = this.IGN;
         if (paramd == null) {
-          p.hyc();
+          p.iCn();
         }
-        if (paramd.getMarkViewHeight() > this.CBA)
+        if (paramd.getMarkViewHeight() > this.Bqp)
         {
-          paramd = this.CBq;
+          paramd = this.IGN;
           if (paramd == null) {
-            p.hyc();
+            p.iCn();
           }
-          this.CBA = ((int)paramd.getMarkViewHeight());
+          this.Bqp = ((int)paramd.getMarkViewHeight());
         }
       }
-      paramd = this.CBq;
+      paramd = this.IGN;
       if (paramd == null) {
         break label132;
       }
@@ -1021,44 +1044,44 @@ public abstract class BaseBoxDialogView
   
   public final void setCanceledOnTouchOutside(boolean paramBoolean)
   {
-    this.CBS = paramBoolean;
-    if (!this.CBS)
+    this.BqJ = paramBoolean;
+    if (!this.BqJ)
     {
-      localView = this.CBi;
+      localView = this.BpX;
       if (localView == null) {
-        p.btv("dialogBg");
+        p.bGy("dialogBg");
       }
       localView.setVisibility(8);
-      localView = this.CBi;
+      localView = this.BpX;
       if (localView == null) {
-        p.btv("dialogBg");
+        p.bGy("dialogBg");
       }
       localView.setOnClickListener(null);
       return;
     }
-    View localView = this.CBi;
+    View localView = this.BpX;
     if (localView == null) {
-      p.btv("dialogBg");
+      p.bGy("dialogBg");
     }
     localView.setVisibility(0);
-    ePa();
+    elB();
   }
   
   public final void setEnableDialogScroll(boolean paramBoolean)
   {
-    this.CBQ = paramBoolean;
+    this.BqH = paramBoolean;
   }
   
   public final void setEnableScrollRightClose(boolean paramBoolean)
   {
-    this.CAL = paramBoolean;
+    this.BqI = paramBoolean;
   }
   
   public final void setEnableWebViewScroll(boolean paramBoolean)
   {
-    BoxWebViewContainer localBoxWebViewContainer = this.CBk;
+    BoxWebViewContainer localBoxWebViewContainer = this.IGK;
     if (localBoxWebViewContainer == null) {
-      p.btv("webViewContainer");
+      p.bGy("webViewContainer");
     }
     localBoxWebViewContainer.setEnableScroll(paramBoolean);
   }
@@ -1066,29 +1089,32 @@ public abstract class BaseBoxDialogView
   public final void setFixDialogHeight(int paramInt)
   {
     Log.v("MicroMsg.BaseBoxDialogView", "alvinluo setFixDialogHeight: %d", new Object[] { Integer.valueOf(paramInt) });
-    this.CBH = paramInt;
+    this.Bqw = paramInt;
   }
   
   public final void setFixDialogHeightRate(float paramFloat)
   {
     Log.v("MicroMsg.BaseBoxDialogView", "alvinluo setFixDialogHeightRate: %s", new Object[] { Float.valueOf(paramFloat) });
-    this.CBJ = paramFloat;
+    this.Bqy = paramFloat;
   }
   
   public final void setIsFixDialogHeight(boolean paramBoolean)
   {
-    this.CBG = paramBoolean;
+    this.Bqv = paramBoolean;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/box/BaseBoxDialogView$AnimationInfo;", "", "(Lcom/tencent/mm/plugin/scanner/box/BaseBoxDialogView;)V", "bgViewEndTranslationY", "", "getBgViewEndTranslationY", "()F", "setBgViewEndTranslationY", "(F)V", "bgViewNeedAnimation", "", "getBgViewNeedAnimation", "()Z", "setBgViewNeedAnimation", "(Z)V", "bgViewStartTranslationY", "getBgViewStartTranslationY", "setBgViewStartTranslationY", "plugin-scan_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/BaseBoxDialogView$AnimationInfo;", "", "(Lcom/tencent/mm/plugin/scanner/box/BaseBoxDialogView;)V", "bgViewEndTranslationY", "", "getBgViewEndTranslationY", "()F", "setBgViewEndTranslationY", "(F)V", "bgViewNeedAnimation", "", "getBgViewNeedAnimation", "()Z", "setBgViewNeedAnimation", "(Z)V", "bgViewStartTranslationY", "getBgViewStartTranslationY", "setBgViewStartTranslationY", "plugin-scan_release"})
   final class a
   {
-    float CBY;
-    float CBZ;
-    boolean CCa;
+    float BqP;
+    float BqQ;
+    boolean BqR;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/BaseBoxDialogView$Companion;", "", "()V", "DIALOG_SHOW_ANIMATION_DURATION", "", "DIALOG_SWITCH_ANIMATION_DURATION", "FULL_SCREEN_DRAG_CLOSE_FACTOR", "", "FULL_SCREEN_MOVE_OFFSET_Y_FACTOR", "HALF_SCREEN_DRAG_CLOSE_FACTOR", "HALF_SCREEN_DRAG_OPEN_FACTOR", "SCROLL_RIGHT_CLOSE_MOVE_OFFSET_X_FACTOR", "TAG", "", "plugin-scan_release"})
+  public static final class b {}
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
   static final class c
     implements ValueAnimator.AnimatorUpdateListener
   {
@@ -1096,29 +1122,29 @@ public abstract class BaseBoxDialogView
     
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
-      AppMethodBeat.i(240222);
-      p.g(paramValueAnimator, "animation");
+      AppMethodBeat.i(221458);
+      p.j(paramValueAnimator, "animation");
       paramValueAnimator = paramValueAnimator.getAnimatedValue();
       if (paramValueAnimator == null)
       {
         paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(240222);
+        AppMethodBeat.o(221458);
         throw paramValueAnimator;
       }
       float f2 = ((Float)paramValueAnimator).floatValue();
-      BaseBoxDialogView.e(this.CCb, f2);
+      BaseBoxDialogView.e(this.IGS, f2);
       if (paramBoolean) {}
-      for (float f1 = BaseBoxDialogView.i(this.CCb).CBZ;; f1 = BaseBoxDialogView.j(this.CCb).CBZ)
+      for (float f1 = BaseBoxDialogView.i(this.IGS).BqQ;; f1 = BaseBoxDialogView.j(this.IGS).BqQ)
       {
-        f1 = BaseBoxDialogView.b(paramFloat1, paramFloat2, f2, f, f1);
-        BaseBoxDialogView.b(this.CCb, f1);
-        AppMethodBeat.o(240222);
+        f1 = BaseBoxDialogView.c(paramFloat1, paramFloat2, f2, f, f1);
+        BaseBoxDialogView.b(this.IGS, f1);
+        AppMethodBeat.o(221458);
         return;
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/box/BaseBoxDialogView$animateDialogVerticalTranslation$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/box/BaseBoxDialogView$animateDialogVerticalTranslation$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
   public static final class d
     implements Animator.AnimatorListener
   {
@@ -1128,17 +1154,17 @@ public abstract class BaseBoxDialogView
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(240223);
-      BaseBoxDialogView.b(this.CCb, paramBoolean);
-      BaseBoxDialogView.c(this.CCb, BaseBoxDialogView.e(this.CCb).getTranslationY());
-      paramAnimator = this.CCb;
-      d locald = BaseBoxDialogView.h(this.CCb);
+      AppMethodBeat.i(218019);
+      BaseBoxDialogView.b(this.IGS, paramBoolean);
+      BaseBoxDialogView.c(this.IGS, BaseBoxDialogView.e(this.IGS).getTranslationY());
+      paramAnimator = this.IGS;
+      d locald = BaseBoxDialogView.h(this.IGS);
       float f;
       if (locald != null)
       {
         f = locald.getBackgroundTransY();
         BaseBoxDialogView.d(paramAnimator, f);
-        paramAnimator = this.CCb;
+        paramAnimator = this.IGS;
         if (!paramBoolean) {
           break label95;
         }
@@ -1147,7 +1173,7 @@ public abstract class BaseBoxDialogView
       for (int i = 2;; i = 1)
       {
         BaseBoxDialogView.a(paramAnimator, i);
-        AppMethodBeat.o(240223);
+        AppMethodBeat.o(218019);
         return;
         f = 0.0F;
         break;
@@ -1159,7 +1185,7 @@ public abstract class BaseBoxDialogView
     public final void onAnimationStart(Animator paramAnimator) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/scanner/box/BaseBoxDialogView$animateShowBackground$1$1"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/scanner/box/BaseBoxDialogView$animateShowBackground$1$1"})
   static final class e
     implements ValueAnimator.AnimatorUpdateListener
   {
@@ -1167,22 +1193,22 @@ public abstract class BaseBoxDialogView
     
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
-      AppMethodBeat.i(240224);
-      BaseBoxDialogView localBaseBoxDialogView = this.CCb;
-      p.g(paramValueAnimator, "animation");
+      AppMethodBeat.i(217247);
+      BaseBoxDialogView localBaseBoxDialogView = this.IGS;
+      p.j(paramValueAnimator, "animation");
       paramValueAnimator = paramValueAnimator.getAnimatedValue();
       if (paramValueAnimator == null)
       {
         paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(240224);
+        AppMethodBeat.o(217247);
         throw paramValueAnimator;
       }
       BaseBoxDialogView.b(localBaseBoxDialogView, ((Float)paramValueAnimator).floatValue());
-      AppMethodBeat.o(240224);
+      AppMethodBeat.o(217247);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/box/BaseBoxDialogView$animateShowBackground$1$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/box/BaseBoxDialogView$animateShowBackground$1$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
   public static final class f
     implements Animator.AnimatorListener
   {
@@ -1193,16 +1219,16 @@ public abstract class BaseBoxDialogView
     public final void onAnimationEnd(Animator paramAnimator)
     {
       Float localFloat = null;
-      AppMethodBeat.i(240225);
-      BaseBoxDialogView.a(this.CCb, 1);
-      paramAnimator = this.CCb;
-      d locald = BaseBoxDialogView.h(this.CCb);
+      AppMethodBeat.i(220854);
+      BaseBoxDialogView.a(this.IGS, 1);
+      paramAnimator = this.IGS;
+      d locald = BaseBoxDialogView.h(this.IGS);
       float f;
       if (locald != null)
       {
         f = locald.getBackgroundTransY();
         BaseBoxDialogView.d(paramAnimator, f);
-        paramAnimator = BaseBoxDialogView.h(this.CCb);
+        paramAnimator = BaseBoxDialogView.h(this.IGS);
         if (paramAnimator == null) {
           break label124;
         }
@@ -1210,12 +1236,12 @@ public abstract class BaseBoxDialogView
       label124:
       for (paramAnimator = Float.valueOf(paramAnimator.getBackgroundTransY());; paramAnimator = null)
       {
-        locald = BaseBoxDialogView.h(this.CCb);
+        locald = BaseBoxDialogView.h(this.IGS);
         if (locald != null) {
           localFloat = Float.valueOf(locald.getMarkViewTransY());
         }
         Log.d("MicroMsg.BaseBoxDialogView", "alvinluo animateShowBackground onAnimationEnd bgTranslationY: %s, markViewTranslationY: %s", new Object[] { paramAnimator, localFloat });
-        AppMethodBeat.o(240225);
+        AppMethodBeat.o(220854);
         return;
         f = 0.0F;
         break;
@@ -1227,7 +1253,30 @@ public abstract class BaseBoxDialogView
     public final void onAnimationStart(Animator paramAnimator) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/box/BaseBoxDialogView$dismiss$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "l", "", "t", "oldl", "oldt", "onWebViewScrollChanged"})
+  static final class g
+    implements MMWebView.f
+  {
+    g(BaseBoxDialogView paramBaseBoxDialogView) {}
+    
+    public final void onWebViewScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    {
+      boolean bool = true;
+      AppMethodBeat.i(217180);
+      Log.v("MicroMsg.BaseBoxDialogView", "alvinluo onWebViewScrollChanged l: %d, t: %d, oldl: %d, oldt: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+      BaseBoxDialogView localBaseBoxDialogView = this.IGS;
+      if (paramInt2 == 0) {}
+      for (;;)
+      {
+        BaseBoxDialogView.a(localBaseBoxDialogView, bool);
+        AppMethodBeat.o(217180);
+        return;
+        bool = false;
+      }
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/box/BaseBoxDialogView$dismiss$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
   public static final class h
     implements Animator.AnimatorListener
   {
@@ -1235,40 +1284,40 @@ public abstract class BaseBoxDialogView
     
     public final void onAnimationCancel(Animator paramAnimator)
     {
-      AppMethodBeat.i(240229);
-      BaseBoxDialogView.b(this.CCb);
-      AppMethodBeat.o(240229);
+      AppMethodBeat.i(219362);
+      BaseBoxDialogView.b(this.IGS);
+      AppMethodBeat.o(219362);
     }
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(240228);
-      BaseBoxDialogView.b(this.CCb);
-      BaseBoxDialogView.a(this.CCb, 0);
-      paramAnimator = BaseBoxDialogView.c(this.CCb);
+      AppMethodBeat.i(219359);
+      BaseBoxDialogView.b(this.IGS);
+      BaseBoxDialogView.a(this.IGS, 0);
+      paramAnimator = BaseBoxDialogView.c(this.IGS);
       if (paramAnimator != null) {
-        paramAnimator.ePj();
+        paramAnimator.fCf();
       }
       MMHandlerThread.postToMainThread((Runnable)new a(this));
-      AppMethodBeat.o(240228);
+      AppMethodBeat.o(219359);
     }
     
     public final void onAnimationRepeat(Animator paramAnimator) {}
     
     public final void onAnimationStart(Animator paramAnimator)
     {
-      AppMethodBeat.i(240230);
-      paramAnimator = BaseBoxDialogView.c(this.CCb);
+      AppMethodBeat.i(219363);
+      paramAnimator = BaseBoxDialogView.c(this.IGS);
       if (paramAnimator != null)
       {
-        paramAnimator.ePi();
-        AppMethodBeat.o(240230);
+        paramAnimator.fCe();
+        AppMethodBeat.o(219363);
         return;
       }
-      AppMethodBeat.o(240230);
+      AppMethodBeat.o(219363);
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -1276,51 +1325,93 @@ public abstract class BaseBoxDialogView
       
       public final void run()
       {
-        AppMethodBeat.i(240227);
-        e locale = BaseBoxDialogView.d(this.CCh.CCb);
+        AppMethodBeat.i(217233);
+        e locale = BaseBoxDialogView.d(this.IGT.IGS);
         if (locale != null)
         {
-          locale.dismissDialog(this.CCh.CCg);
-          AppMethodBeat.o(240227);
+          locale.adl(this.IGT.Bmm);
+          AppMethodBeat.o(217233);
           return;
         }
-        AppMethodBeat.o(240227);
+        AppMethodBeat.o(217233);
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/box/BaseBoxDialogView$dismiss$2", "Landroid/animation/ValueAnimator$AnimatorUpdateListener;", "onAnimationUpdate", "", "animation", "Landroid/animation/ValueAnimator;", "plugin-scan_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/box/BaseBoxDialogView$dismiss$2", "Landroid/animation/ValueAnimator$AnimatorUpdateListener;", "onAnimationUpdate", "", "animation", "Landroid/animation/ValueAnimator;", "plugin-scan_release"})
   public static final class i
     implements ValueAnimator.AnimatorUpdateListener
   {
-    i(float paramFloat1, float paramFloat2) {}
+    i(float paramFloat) {}
     
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
-      AppMethodBeat.i(240231);
-      BaseBoxDialogView.a(this.CCb, BaseBoxDialogView.e(this.CCb).getTranslationY());
+      AppMethodBeat.i(223380);
+      BaseBoxDialogView.a(this.IGS, BaseBoxDialogView.e(this.IGS).getTranslationY());
       if (paramValueAnimator == null)
       {
-        AppMethodBeat.o(240231);
+        AppMethodBeat.o(223380);
         return;
       }
       paramValueAnimator = paramValueAnimator.getAnimatedValue();
       if (paramValueAnimator == null)
       {
         paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(240231);
+        AppMethodBeat.o(223380);
         throw paramValueAnimator;
       }
       float f1 = ((Float)paramValueAnimator).floatValue();
       float f2 = f1;
-      float f3 = this.CCj;
+      float f3 = this.BqZ;
       float f4 = f1;
-      BaseBoxDialogView.b(this.CCb, f1 * (f3 - f4) + f2);
-      AppMethodBeat.o(240231);
+      BaseBoxDialogView.b(this.IGS, f1 * (f3 - f4) + f2);
+      AppMethodBeat.o(223380);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class j
+    implements View.OnClickListener
+  {
+    j(BaseBoxDialogView paramBaseBoxDialogView) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(218536);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/scanner/box/BaseBoxDialogView$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      this.IGS.Se(4);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/box/BaseBoxDialogView$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(218536);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class k
+    implements View.OnClickListener
+  {
+    k(BaseBoxDialogView paramBaseBoxDialogView) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(220539);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/scanner/box/BaseBoxDialogView$initDialogBg$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      if (!BaseBoxDialogView.a(this.IGS))
+      {
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/box/BaseBoxDialogView$initDialogBg$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(220539);
+        return;
+      }
+      this.IGS.Se(3);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/box/BaseBoxDialogView$initDialogBg$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(220539);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
   static final class l
     implements ValueAnimator.AnimatorUpdateListener
   {
@@ -1328,14 +1419,14 @@ public abstract class BaseBoxDialogView
     
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
-      AppMethodBeat.i(240234);
-      BaseBoxDialogView.c(this.CCb, BaseBoxDialogView.e(this.CCb).getTranslationY());
-      BaseBoxDialogView.a(this.CCb, BaseBoxDialogView.e(this.CCb).getTranslationY());
-      AppMethodBeat.o(240234);
+      AppMethodBeat.i(217302);
+      BaseBoxDialogView.c(this.IGS, BaseBoxDialogView.e(this.IGS).getTranslationY());
+      BaseBoxDialogView.a(this.IGS, BaseBoxDialogView.e(this.IGS).getTranslationY());
+      AppMethodBeat.o(217302);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/box/BaseBoxDialogView$show$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/box/BaseBoxDialogView$show$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-scan_release"})
   public static final class m
     implements Animator.AnimatorListener
   {
@@ -1343,43 +1434,63 @@ public abstract class BaseBoxDialogView
     
     public final void onAnimationCancel(Animator paramAnimator)
     {
-      AppMethodBeat.i(240236);
-      BaseBoxDialogView.b(this.CCb);
-      AppMethodBeat.o(240236);
+      AppMethodBeat.i(219296);
+      BaseBoxDialogView.b(this.IGS);
+      AppMethodBeat.o(219296);
     }
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(240235);
-      paramAnimator = BaseBoxDialogView.c(this.CCb);
+      AppMethodBeat.i(219295);
+      paramAnimator = BaseBoxDialogView.c(this.IGS);
       if (paramAnimator != null) {
-        paramAnimator.ePk();
+        paramAnimator.fCg();
       }
-      BaseBoxDialogView.f(this.CCb);
-      BaseBoxDialogView.b(this.CCb);
-      Log.v("MicroMsg.BaseBoxDialogView", "alvinluo show onAnimationEnd current translationY: %f", new Object[] { Float.valueOf(BaseBoxDialogView.e(this.CCb).getTranslationY()) });
-      AppMethodBeat.o(240235);
+      BaseBoxDialogView.f(this.IGS);
+      BaseBoxDialogView.b(this.IGS);
+      Log.v("MicroMsg.BaseBoxDialogView", "alvinluo show onAnimationEnd current translationY: %f", new Object[] { Float.valueOf(BaseBoxDialogView.e(this.IGS).getTranslationY()) });
+      AppMethodBeat.o(219295);
     }
     
     public final void onAnimationRepeat(Animator paramAnimator) {}
     
     public final void onAnimationStart(Animator paramAnimator)
     {
-      AppMethodBeat.i(240237);
-      paramAnimator = BaseBoxDialogView.c(this.CCb);
+      AppMethodBeat.i(219298);
+      paramAnimator = BaseBoxDialogView.c(this.IGS);
       if (paramAnimator != null)
       {
-        paramAnimator.d(BaseBoxDialogView.g(this.CCb), this.CCk, this.CCl);
-        AppMethodBeat.o(240237);
+        paramAnimator.d(BaseBoxDialogView.g(this.IGS), this.IGU, this.IGV);
+        AppMethodBeat.o(219298);
         return;
       }
-      AppMethodBeat.o(240237);
+      AppMethodBeat.o(219298);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  static final class n
+    implements Runnable
+  {
+    n(View paramView) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(220833);
+      View localView = this.AWI;
+      if (localView != null)
+      {
+        localView.requestLayout();
+        AppMethodBeat.o(220833);
+        return;
+      }
+      AppMethodBeat.o(220833);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.box.BaseBoxDialogView
  * JD-Core Version:    0.7.0.1
  */

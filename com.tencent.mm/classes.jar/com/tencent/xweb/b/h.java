@@ -6,55 +6,47 @@ import java.io.File;
 public final class h
   implements d
 {
-  public d SCC;
+  public d aadM;
   
   private h(d paramd)
   {
-    this.SCC = paramd;
+    this.aadM = paramd;
   }
   
   public h(File paramFile)
   {
     AppMethodBeat.i(183514);
-    this.SCC = g.htt().aj(paramFile);
+    this.aadM = g.ixc().ad(paramFile);
     AppMethodBeat.o(183514);
   }
   
   public h(String paramString)
   {
     AppMethodBeat.i(183513);
-    this.SCC = g.htt().bst(paramString);
+    this.aadM = g.ixc().bFs(paramString);
     AppMethodBeat.o(183513);
   }
   
-  public final boolean delete()
-  {
-    AppMethodBeat.i(183521);
-    boolean bool = this.SCC.delete();
-    AppMethodBeat.o(183521);
-    return bool;
-  }
-  
-  public final boolean exists()
-  {
-    AppMethodBeat.i(183520);
-    boolean bool = this.SCC.exists();
-    AppMethodBeat.o(183520);
-    return bool;
-  }
-  
-  public final String getAbsolutePath()
+  public final String bOF()
   {
     AppMethodBeat.i(183519);
-    String str = this.SCC.getPath();
+    String str = this.aadM.getPath();
     AppMethodBeat.o(183519);
     return str;
+  }
+  
+  public final boolean cFq()
+  {
+    AppMethodBeat.i(183521);
+    boolean bool = this.aadM.cFq();
+    AppMethodBeat.o(183521);
+    return bool;
   }
   
   public final String getName()
   {
     AppMethodBeat.i(183518);
-    String str = this.SCC.getPath();
+    String str = this.aadM.getPath();
     AppMethodBeat.o(183518);
     return str;
   }
@@ -62,16 +54,40 @@ public final class h
   public final String getPath()
   {
     AppMethodBeat.i(183515);
-    String str = this.SCC.getPath();
+    String str = this.aadM.getPath();
     AppMethodBeat.o(183515);
     return str;
   }
   
-  public final h[] htu()
+  public final boolean ifE()
+  {
+    AppMethodBeat.i(183520);
+    boolean bool = this.aadM.ifE();
+    AppMethodBeat.o(183520);
+    return bool;
+  }
+  
+  public final String[] ifI()
+  {
+    AppMethodBeat.i(183522);
+    String[] arrayOfString = this.aadM.ifI();
+    AppMethodBeat.o(183522);
+    return arrayOfString;
+  }
+  
+  public final boolean isDirectory()
+  {
+    AppMethodBeat.i(183516);
+    boolean bool = this.aadM.isDirectory();
+    AppMethodBeat.o(183516);
+    return bool;
+  }
+  
+  public final h[] ixd()
   {
     int i = 0;
     AppMethodBeat.i(183517);
-    d[] arrayOfd = this.SCC.htr();
+    d[] arrayOfd = this.aadM.ixa();
     if ((arrayOfd == null) || (arrayOfd.length == 0))
     {
       AppMethodBeat.o(183517);
@@ -86,26 +102,10 @@ public final class h
     AppMethodBeat.o(183517);
     return arrayOfh;
   }
-  
-  public final boolean isDirectory()
-  {
-    AppMethodBeat.i(183516);
-    boolean bool = this.SCC.isDirectory();
-    AppMethodBeat.o(183516);
-    return bool;
-  }
-  
-  public final String[] list()
-  {
-    AppMethodBeat.i(183522);
-    String[] arrayOfString = this.SCC.list();
-    AppMethodBeat.o(183522);
-    return arrayOfString;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.b.h
  * JD-Core Version:    0.7.0.1
  */

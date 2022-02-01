@@ -11,53 +11,53 @@ import kotlin.x;
 
 public final class p
 {
-  public static int dAR = 100;
-  public int FKi;
-  public b GRo;
-  public String GRp;
-  public boolean GRq;
-  public a GRr;
-  public a GRs;
-  public com.tencent.mm.modelvoice.m doF;
+  public static int ftG = 100;
+  public int Mef;
+  public String NHA;
+  public boolean NHB;
+  public a NHC;
+  public a NHD;
+  public b NHz;
+  public com.tencent.mm.modelvoice.m fhj;
   public String fileName;
-  private int pkT;
-  public long qPl;
+  private int snc;
+  public long urr;
   
   public p()
   {
-    AppMethodBeat.i(232124);
-    this.doF = null;
-    this.pkT = 0;
+    AppMethodBeat.i(283567);
+    this.fhj = null;
+    this.snc = 0;
     this.fileName = "";
-    this.qPl = 0L;
-    this.FKi = 0;
-    this.GRq = false;
-    this.GRs = null;
-    this.GRr = new a(new b() {});
-    AppMethodBeat.o(232124);
+    this.urr = 0L;
+    this.Mef = 0;
+    this.NHB = false;
+    this.NHD = null;
+    this.NHC = new a(new b() {});
+    AppMethodBeat.o(283567);
   }
   
-  public final boolean Qt()
+  public final boolean TV()
   {
     long l = 0L;
     AppMethodBeat.i(29808);
-    this.GRr.wN(false);
-    this.GRq = false;
+    this.NHC.AF(false);
+    this.NHB = false;
     Log.d("MicroMsg.VoicePrintRecoder", "stop Record :" + this.fileName);
     try
     {
       Log.d("MicroMsg.VoicePrintRecoder", "stop synchronized Record :" + this.fileName);
-      if (this.doF != null) {
-        this.doF.ZZ();
+      if (this.fhj != null) {
+        this.fhj.aeJ();
       }
-      if (this.FKi != 2)
+      if (this.Mef != 2)
       {
         this.fileName = null;
-        this.GRq = false;
+        this.NHB = false;
         Log.d("MicroMsg.VoicePrintRecoder", "Stop " + this.fileName);
-        this.FKi = -1;
-        Log.d("MicroMsg.VoicePrintRecoder", "bLongEnough " + this.GRq);
-        boolean bool = this.GRq;
+        this.Mef = -1;
+        Log.d("MicroMsg.VoicePrintRecoder", "bLongEnough " + this.NHB);
+        boolean bool = this.NHB;
         AppMethodBeat.o(29808);
         return bool;
       }
@@ -66,32 +66,32 @@ public final class p
     {
       AppMethodBeat.o(29808);
     }
-    if (this.qPl <= 0L)
+    if (this.urr <= 0L)
     {
       label194:
-      this.pkT = ((int)l);
-      if (this.pkT >= 1000) {
+      this.snc = ((int)l);
+      if (this.snc >= 1000) {
         break label277;
       }
-      Log.d("MicroMsg.VoicePrintRecoder", "Stop " + this.fileName + " by voiceLen: " + this.pkT);
+      Log.d("MicroMsg.VoicePrintRecoder", "Stop " + this.fileName + " by voiceLen: " + this.snc);
       this.fileName = "";
-      this.GRq = false;
+      this.NHB = false;
     }
     for (;;)
     {
       this.fileName = "";
       break;
-      l = Util.ticksToNow(this.qPl);
+      l = Util.ticksToNow(this.urr);
       break label194;
       label277:
-      this.GRq = true;
+      this.NHB = true;
       Log.d("MicroMsg.VoicePrintRecoder", "Stop file success: " + this.fileName);
     }
   }
   
   public static abstract interface a
   {
-    public abstract void fEG();
+    public abstract void gwT();
   }
   
   final class b
@@ -130,19 +130,19 @@ public final class p
       }
       synchronized (p.this)
       {
-        String str = m.cz(p.e(p.this), true);
+        String str = m.cN(p.e(p.this), true);
         Log.d("MicroMsg.VoicePrintRecoder", "fullPathName %s", new Object[] { str });
-        p.this.GRp = str;
-        p.this.GRr.wN(true);
-        if (!p.d(p.this).hw(str))
+        p.this.NHA = str;
+        p.this.NHC.AF(true);
+        if (!p.d(p.this).ik(str))
         {
           p.f(p.this);
           Log.d("MicroMsg.VoicePrintRecoder", "Thread Start Record  Error fileName[" + p.e(p.this) + "]");
-          p.d(p.this).ZZ();
+          p.d(p.this).aeJ();
           p.g(p.this);
-          p.this.GRr.wN(true);
+          p.this.NHC.AF(true);
           if (p.h(p.this) != null) {
-            p.h(p.this).fEG();
+            p.h(p.this).gwT();
           }
           AppMethodBeat.o(29806);
           return;

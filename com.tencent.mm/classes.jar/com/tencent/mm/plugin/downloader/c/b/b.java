@@ -4,12 +4,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class b
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
   public String icon;
-  public r qGm;
-  public r qGn;
-  public String qGo;
+  public r ufn;
+  public r ufo;
+  public String ufp;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -18,52 +18,52 @@ public final class b
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.icon != null) {
-        paramVarArgs.e(1, this.icon);
+        paramVarArgs.f(1, this.icon);
       }
-      if (this.qGm != null)
+      if (this.ufn != null)
       {
-        paramVarArgs.ni(2, this.qGm.computeSize());
-        this.qGm.writeFields(paramVarArgs);
+        paramVarArgs.oE(2, this.ufn.computeSize());
+        this.ufn.writeFields(paramVarArgs);
       }
-      if (this.qGn != null)
+      if (this.ufo != null)
       {
-        paramVarArgs.ni(3, this.qGn.computeSize());
-        this.qGn.writeFields(paramVarArgs);
+        paramVarArgs.oE(3, this.ufo.computeSize());
+        this.ufo.writeFields(paramVarArgs);
       }
-      if (this.qGo != null) {
-        paramVarArgs.e(4, this.qGo);
+      if (this.ufp != null) {
+        paramVarArgs.f(4, this.ufp);
       }
       AppMethodBeat.o(153059);
       return 0;
     }
     if (paramInt == 1) {
       if (this.icon == null) {
-        break label586;
+        break label542;
       }
     }
-    label586:
-    for (int i = g.a.a.b.b.a.f(1, this.icon) + 0;; i = 0)
+    label542:
+    for (int i = g.a.a.b.b.a.g(1, this.icon) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.qGm != null) {
-        paramInt = i + g.a.a.a.nh(2, this.qGm.computeSize());
+      if (this.ufn != null) {
+        paramInt = i + g.a.a.a.oD(2, this.ufn.computeSize());
       }
       i = paramInt;
-      if (this.qGn != null) {
-        i = paramInt + g.a.a.a.nh(3, this.qGn.computeSize());
+      if (this.ufo != null) {
+        i = paramInt + g.a.a.a.oD(3, this.ufo.computeSize());
       }
       paramInt = i;
-      if (this.qGo != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.qGo);
+      if (this.ufp != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.ufp);
       }
       AppMethodBeat.o(153059);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
         AppMethodBeat.o(153059);
@@ -71,52 +71,53 @@ public final class b
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         b localb = (b)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
+        r localr;
         switch (paramInt)
         {
         default: 
           AppMethodBeat.o(153059);
           return -1;
         case 1: 
-          localb.icon = ((g.a.a.a.a)localObject1).UbS.readString();
+          localb.icon = ((g.a.a.a.a)localObject).abFh.readString();
           AppMethodBeat.o(153059);
           return 0;
         case 2: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new r();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((r)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localb.qGm = ((r)localObject1);
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            localr = new r();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localr.parseFrom((byte[])localObject);
+            }
+            localb.ufn = localr;
             paramInt += 1;
           }
           AppMethodBeat.o(153059);
           return 0;
         case 3: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new r();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((r)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localb.qGn = ((r)localObject1);
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            localr = new r();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localr.parseFrom((byte[])localObject);
+            }
+            localb.ufo = localr;
             paramInt += 1;
           }
           AppMethodBeat.o(153059);
           return 0;
         }
-        localb.qGo = ((g.a.a.a.a)localObject1).UbS.readString();
+        localb.ufp = ((g.a.a.a.a)localObject).abFh.readString();
         AppMethodBeat.o(153059);
         return 0;
       }
@@ -127,7 +128,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.c.b.b
  * JD-Core Version:    0.7.0.1
  */

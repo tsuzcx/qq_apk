@@ -5,7 +5,7 @@ import com.tencent.liteav.audio.impl.Record.TXCAudioSysRecord;
 import com.tencent.liteav.audio.impl.Record.a;
 import com.tencent.liteav.audio.impl.Record.c;
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -39,19 +39,19 @@ public class TXCAudioUGCRecorder
   private AtomicReference<Float> mSpeedRate;
   protected int mVoiceChangerType;
   private float mVolume;
-  private WeakReference<e> mWeakRecordListener;
+  private WeakReference<g> mWeakRecordListener;
   
   static
   {
     AppMethodBeat.i(16329);
-    f.f();
+    h.f();
     INSTANCE = new TXCAudioUGCRecorder();
     AppMethodBeat.o(16329);
   }
   
   private TXCAudioUGCRecorder()
   {
-    AppMethodBeat.i(222009);
+    AppMethodBeat.i(247990);
     this.AAC_SAMPLE_NUM = 1024;
     this.mSampleRate = new AtomicInteger(48000);
     this.mChannels = 1;
@@ -74,7 +74,7 @@ public class TXCAudioUGCRecorder
     this.mEncodedAudioList = new ArrayList();
     TXCAudioSysRecord.getInstance();
     nativeClassInit();
-    AppMethodBeat.o(222009);
+    AppMethodBeat.o(247990);
   }
   
   public static TXCAudioUGCRecorder getInstance()
@@ -104,7 +104,7 @@ public class TXCAudioUGCRecorder
     {
       try
       {
-        AppMethodBeat.i(222012);
+        AppMethodBeat.i(248007);
         boolean bool = false;
         if ((!this.mEnableBGMRecord) && (this.mAECType != 1))
         {
@@ -123,7 +123,7 @@ public class TXCAudioUGCRecorder
             }
             nativeEnableMixMode(bool);
             nativeSetSpeedRate(((Float)this.mSpeedRate.get()).floatValue());
-            AppMethodBeat.o(222012);
+            AppMethodBeat.o(248007);
             return;
           }
           nativeSetVolume(this.mVolume);
@@ -181,10 +181,9 @@ public class TXCAudioUGCRecorder
     // Exception table:
     //   from	to	target	type
     //   22	33	42	finally
-    //   43	45	42	finally
     //   2	22	53	finally
     //   33	39	53	finally
-    //   45	53	53	finally
+    //   43	53	53	finally
   }
   
   public void enableBGMRecord(boolean paramBoolean)
@@ -204,24 +203,24 @@ public class TXCAudioUGCRecorder
     return this.mChannels;
   }
   
-  public e getListener()
+  public g getListener()
   {
-    AppMethodBeat.i(16309);
+    AppMethodBeat.i(247996);
     if (this.mWeakRecordListener != null)
     {
-      e locale = (e)this.mWeakRecordListener.get();
-      AppMethodBeat.o(16309);
-      return locale;
+      g localg = (g)this.mWeakRecordListener.get();
+      AppMethodBeat.o(247996);
+      return localg;
     }
-    AppMethodBeat.o(16309);
+    AppMethodBeat.o(247996);
     return null;
   }
   
   public int getSampleRate()
   {
-    AppMethodBeat.i(222010);
+    AppMethodBeat.i(248000);
     int i = this.mSampleRate.get();
-    AppMethodBeat.o(222010);
+    AppMethodBeat.o(248000);
     return i;
   }
   
@@ -242,9 +241,9 @@ public class TXCAudioUGCRecorder
   {
     AppMethodBeat.i(16324);
     TXCLog.e("AudioCenter:TXCAudioUGCRecorder", "sys audio record error: " + paramInt + ", " + paramString);
-    e locale = getListener();
-    if (locale != null) {
-      locale.onRecordError(paramInt, paramString);
+    g localg = getListener();
+    if (localg != null) {
+      localg.onRecordError(paramInt, paramString);
     }
     AppMethodBeat.o(16324);
   }
@@ -273,11 +272,11 @@ public class TXCAudioUGCRecorder
           if (paramArrayOfByte != null)
           {
             this.mLastPTS = paramLong;
-            e locale = getListener();
-            if (locale == null) {
+            g localg = getListener();
+            if (localg == null) {
               continue;
             }
-            locale.onRecordEncData(paramArrayOfByte, paramLong, this.mSampleRate.get(), this.mChannels, this.mBits);
+            localg.onRecordEncData(paramArrayOfByte, paramLong, this.mSampleRate.get(), this.mChannels, this.mBits);
             paramInt = this.mSampleRate.get();
             l = paramLong;
             if (paramInt > 0) {
@@ -316,11 +315,11 @@ public class TXCAudioUGCRecorder
   
   public void onEncodedData(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(222011);
+    AppMethodBeat.i(248001);
     synchronized (this.mEncodedAudioList)
     {
       this.mEncodedAudioList.add(paramArrayOfByte);
-      AppMethodBeat.o(222011);
+      AppMethodBeat.o(248001);
       return;
     }
   }
@@ -373,11 +372,11 @@ public class TXCAudioUGCRecorder
   {
     try
     {
-      AppMethodBeat.i(222013);
+      AppMethodBeat.i(248008);
       TXCLog.i("AudioCenter:TXCAudioUGCRecorder", "setChangerType: ".concat(String.valueOf(paramInt)));
       this.mVoiceChangerType = paramInt;
       nativeSetChangerType(paramInt);
-      AppMethodBeat.o(222013);
+      AppMethodBeat.o(248008);
       return;
     }
     finally
@@ -396,30 +395,30 @@ public class TXCAudioUGCRecorder
   }
   
   /* Error */
-  public void setListener(e parame)
+  public void setListener(g paramg)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: sipush 16308
+    //   2: ldc_w 320
     //   5: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_1
     //   9: ifnonnull +17 -> 26
     //   12: aload_0
     //   13: aconst_null
-    //   14: putfield 203	com/tencent/liteav/audio/TXCAudioUGCRecorder:mWeakRecordListener	Ljava/lang/ref/WeakReference;
-    //   17: sipush 16308
+    //   14: putfield 204	com/tencent/liteav/audio/TXCAudioUGCRecorder:mWeakRecordListener	Ljava/lang/ref/WeakReference;
+    //   17: ldc_w 320
     //   20: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   23: aload_0
     //   24: monitorexit
     //   25: return
     //   26: aload_0
-    //   27: new 205	java/lang/ref/WeakReference
+    //   27: new 206	java/lang/ref/WeakReference
     //   30: dup
     //   31: aload_1
-    //   32: invokespecial 319	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   35: putfield 203	com/tencent/liteav/audio/TXCAudioUGCRecorder:mWeakRecordListener	Ljava/lang/ref/WeakReference;
-    //   38: sipush 16308
+    //   32: invokespecial 321	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   35: putfield 204	com/tencent/liteav/audio/TXCAudioUGCRecorder:mWeakRecordListener	Ljava/lang/ref/WeakReference;
+    //   38: ldc_w 320
     //   41: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   44: goto -21 -> 23
     //   47: astore_1
@@ -430,7 +429,7 @@ public class TXCAudioUGCRecorder
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	52	0	this	TXCAudioUGCRecorder
-    //   0	52	1	parame	e
+    //   0	52	1	paramg	g
     // Exception table:
     //   from	to	target	type
     //   2	8	47	finally
@@ -506,9 +505,9 @@ public class TXCAudioUGCRecorder
     //   2: sipush 16319
     //   5: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: ldc 12
-    //   10: ldc_w 342
+    //   10: ldc_w 344
     //   13: fload_1
-    //   14: invokestatic 337	java/lang/String:valueOf	(F)Ljava/lang/String;
+    //   14: invokestatic 339	java/lang/String:valueOf	(F)Ljava/lang/String;
     //   17: invokevirtual 195	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   20: invokestatic 178	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   23: aload_0
@@ -591,7 +590,7 @@ public class TXCAudioUGCRecorder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.audio.TXCAudioUGCRecorder
  * JD-Core Version:    0.7.0.1
  */

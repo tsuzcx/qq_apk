@@ -11,16 +11,16 @@ import org.xwalk.core.XWalkView;
 public final class h
   implements e
 {
-  m SGX;
-  o SGY;
-  XWalkView SGZ;
+  m aain;
+  o aaio;
+  XWalkView aaip;
   
   public h(XWalkView paramXWalkView)
   {
     AppMethodBeat.i(154285);
-    this.SGZ = paramXWalkView;
-    this.SGX = new m(paramXWalkView);
-    this.SGY = new o(paramXWalkView);
+    this.aaip = paramXWalkView;
+    this.aain = new m(paramXWalkView);
+    this.aaio = new o(paramXWalkView);
     AppMethodBeat.o(154285);
   }
   
@@ -29,7 +29,7 @@ public final class h
     AppMethodBeat.i(154289);
     if ((paramJsResult instanceof g.c))
     {
-      boolean bool = this.SGX.b(this.SGZ, paramString1, paramString2, ((g.c)paramJsResult).SGT);
+      boolean bool = this.aain.b(this.aaip, paramString1, paramString2, ((g.c)paramJsResult).aaij);
       AppMethodBeat.o(154289);
       return bool;
     }
@@ -42,7 +42,7 @@ public final class h
     AppMethodBeat.i(154291);
     if ((paramo instanceof g.e))
     {
-      boolean bool = this.SGX.a(this.SGZ, paramString1, paramString2, paramString3, ((g.e)paramo).SGT);
+      boolean bool = this.aain.a(this.aaip, paramString1, paramString2, paramString3, ((g.e)paramo).aaij);
       AppMethodBeat.o(154291);
       return bool;
     }
@@ -55,7 +55,7 @@ public final class h
     AppMethodBeat.i(154290);
     if ((paramJsResult instanceof g.c))
     {
-      boolean bool = this.SGX.a(this.SGZ, paramString1, paramString2, ((g.c)paramJsResult).SGT);
+      boolean bool = this.aain.a(this.aaip, paramString1, paramString2, ((g.c)paramJsResult).aaij);
       AppMethodBeat.o(154290);
       return bool;
     }
@@ -66,7 +66,7 @@ public final class h
   public final void onHideCustomView()
   {
     AppMethodBeat.i(154288);
-    this.SGX.huJ();
+    this.aain.iyw();
     AppMethodBeat.o(154288);
   }
   
@@ -74,7 +74,7 @@ public final class h
   {
     AppMethodBeat.i(154287);
     if ((paramCustomViewCallback instanceof g.a)) {
-      this.SGX.a(paramView, ((g.a)paramCustomViewCallback).SGR);
+      this.aain.a(paramView, ((g.a)paramCustomViewCallback).aaih);
     }
     AppMethodBeat.o(154287);
   }
@@ -82,13 +82,13 @@ public final class h
   public final void y(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(154286);
-    this.SGX.a(this.SGZ, paramString);
+    this.aain.a(this.aaip, paramString);
     AppMethodBeat.o(154286);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.xwalk.h
  * JD-Core Version:    0.7.0.1
  */

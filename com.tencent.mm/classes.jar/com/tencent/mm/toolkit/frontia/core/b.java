@@ -5,38 +5,38 @@ import android.text.TextUtils;
 
 public abstract class b<P>
 {
-  protected int OvS = -2233;
-  protected StringBuffer OvT = new StringBuffer(String.valueOf(this.mState));
-  protected boolean OvU = true;
+  protected int VPi = -2233;
+  protected StringBuffer VPj = new StringBuffer(String.valueOf(this.mState));
+  protected boolean VPk = true;
   public final Bundle mExtras = new Bundle();
   private final byte[] mLock = new byte[0];
   protected int mState = -1;
   
-  public final b blD(String paramString)
+  public final b bye(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      this.OvT.append(" --> ").append(paramString);
+      this.VPj.append(" --> ").append(paramString);
     }
     return this;
   }
   
-  public final b gGh()
+  public final b hEU()
   {
     synchronized (this.mLock)
     {
       this.mState = 0;
-      return blD("0");
+      return bye("0");
     }
   }
   
-  public final void gGi()
+  public final void hEV()
   {
-    this.OvU = true;
+    this.VPk = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.toolkit.frontia.core.b
  * JD-Core Version:    0.7.0.1
  */

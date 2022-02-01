@@ -8,32 +8,34 @@ import android.view.View;
 import android.view.ViewOutlineProvider;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.multitalk.a.e;
+import com.tencent.mm.plugin.multitalk.a.g;
 import com.tencent.mm.plugin.voip.ui.e;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.au;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/ui/widget/MultiTalkMiniVoiceView;", "", "rootView", "Landroid/view/View;", "(Landroid/view/View;)V", "bgView", "contentView", "context", "Landroid/content/Context;", "mainIconLayout", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "radius", "", "getRootView", "()Landroid/view/View;", "setRootView", "timeTv", "Landroid/widget/TextView;", "tipTv", "value", "", "visibility", "getVisibility", "()Ljava/lang/Integer;", "setVisibility", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "doAnimationHide", "", "doAnimationShow", "onHangupHappened", "onResumeIconAndTipShow", "refreshLayoutCauseDockChanged", "isDockerLeft", "", "refreshMiniView", "release", "setVoicePlayDevice", "device", "updateText", "text", "", "updateTime", "plugin-multitalk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/MultiTalkMiniVoiceView;", "", "rootView", "Landroid/view/View;", "(Landroid/view/View;)V", "bgView", "contentView", "context", "Landroid/content/Context;", "mainIconLayout", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "radius", "", "getRootView", "()Landroid/view/View;", "setRootView", "timeTv", "Landroid/widget/TextView;", "tipTv", "value", "", "visibility", "getVisibility", "()Ljava/lang/Integer;", "setVisibility", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "doAnimationHide", "", "doAnimationShow", "onHangupHappened", "onResumeIconAndTipShow", "refreshLayoutCauseDockChanged", "isDockerLeft", "", "refreshMiniView", "release", "setVoicePlayDevice", "device", "updateText", "text", "", "updateTime", "plugin-multitalk_release"})
 public final class j
 {
-  View cBH;
+  WeImageView FyV;
+  Integer FyW;
+  View cCj;
   View contentView;
   Context context;
-  TextView jBS;
-  View lJI;
+  TextView mrN;
+  View oFW;
   private final float radius;
   TextView timeTv;
-  WeImageView zTt;
-  Integer zTu;
   
   public j(View paramView)
   {
-    AppMethodBeat.i(239805);
-    this.lJI = paramView;
+    AppMethodBeat.i(197549);
+    this.oFW = paramView;
     this.radius = a.fromDPToPix(MMApplicationContext.getContext(), 12);
-    this.contentView = this.lJI.findViewById(2131305030);
+    this.contentView = this.oFW.findViewById(a.e.multitalk_content_view);
     paramView = this.contentView;
     if (paramView != null) {
       paramView.setClipToOutline(true);
@@ -42,46 +44,46 @@ public final class j
     if (paramView != null) {
       paramView.setOutlineProvider((ViewOutlineProvider)new e(this.radius));
     }
-    this.cBH = this.lJI.findViewById(2131310502);
-    paramView = this.cBH;
+    this.cCj = this.oFW.findViewById(a.e.widget_bg);
+    paramView = this.cCj;
     if (paramView != null) {
       paramView.setClipToOutline(true);
     }
-    paramView = this.cBH;
+    paramView = this.cCj;
     if (paramView != null) {
       paramView.setOutlineProvider((ViewOutlineProvider)new e(this.radius));
     }
-    this.timeTv = ((TextView)this.lJI.findViewById(2131305072));
-    this.jBS = ((TextView)this.lJI.findViewById(2131305073));
-    this.context = this.lJI.getContext();
-    this.zTt = ((WeImageView)this.lJI.findViewById(2131305038));
-    paramView = this.zTt;
+    this.timeTv = ((TextView)this.oFW.findViewById(a.e.multitalk_voice_mini_time_tv));
+    this.mrN = ((TextView)this.oFW.findViewById(a.e.multitalk_voice_mini_tip_tv));
+    this.context = this.oFW.getContext();
+    this.FyV = ((WeImageView)this.oFW.findViewById(a.e.multitalk_main_status_icon_iv));
+    paramView = this.FyV;
     if (paramView != null) {
-      paramView.setBackground(ar.m(this.context, 2131690498, Color.parseColor("#07C160")));
+      paramView.setBackground(au.o(this.context, a.g.icons_filled_call, Color.parseColor("#07C160")));
     }
-    paramView = this.zTt;
+    paramView = this.FyV;
     if (paramView != null) {
       paramView.setIconColor(Color.parseColor("#07C160"));
     }
-    paramView = this.zTt;
+    paramView = this.FyV;
     if (paramView != null)
     {
       paramView.setVisibility(0);
-      AppMethodBeat.o(239805);
+      AppMethodBeat.o(197549);
       return;
     }
-    AppMethodBeat.o(239805);
+    AppMethodBeat.o(197549);
   }
   
-  public final Integer eoH()
+  public final Integer eYy()
   {
-    AppMethodBeat.i(239804);
-    int i = this.lJI.getVisibility();
-    AppMethodBeat.o(239804);
+    AppMethodBeat.i(197542);
+    int i = this.oFW.getVisibility();
+    AppMethodBeat.o(197542);
     return Integer.valueOf(i);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkMiniVoiceView$doAnimationHide$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-multitalk_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkMiniVoiceView$doAnimationHide$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-multitalk_release"})
   public static final class a
     implements Animator.AnimatorListener
   {
@@ -89,9 +91,9 @@ public final class j
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(239802);
-      this.zTv.lJI.setVisibility(4);
-      AppMethodBeat.o(239802);
+      AppMethodBeat.i(205366);
+      this.FyX.oFW.setVisibility(4);
+      AppMethodBeat.o(205366);
     }
     
     public final void onAnimationRepeat(Animator paramAnimator) {}
@@ -99,7 +101,7 @@ public final class j
     public final void onAnimationStart(Animator paramAnimator) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkMiniVoiceView$doAnimationShow$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-multitalk_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/multitalk/ui/widget/MultiTalkMiniVoiceView$doAnimationShow$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-multitalk_release"})
   public static final class b
     implements Animator.AnimatorListener
   {
@@ -107,9 +109,9 @@ public final class j
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(239803);
-      this.zTv.lJI.setAlpha(1.0F);
-      AppMethodBeat.o(239803);
+      AppMethodBeat.i(199236);
+      this.FyX.oFW.setAlpha(1.0F);
+      AppMethodBeat.o(199236);
     }
     
     public final void onAnimationRepeat(Animator paramAnimator) {}
@@ -119,7 +121,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.j
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,98 @@
 package com.tencent.mm.plugin.game.luggage.d.a;
 
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.nr;
+import com.tencent.mm.co.a;
+import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
+import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.plugin.lite.jsapi.b;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.plugin.lite.jsapi.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import org.json.JSONException;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Iterator;
+import java.util.LinkedList;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class l
   extends b
 {
-  public final void a(String paramString, JSONObject paramJSONObject)
+  private static void a(JSONObject paramJSONObject, LinkedList<String> paramLinkedList)
   {
-    AppMethodBeat.i(186927);
-    if (!paramJSONObject.has("url"))
+    AppMethodBeat.i(231754);
+    if (Util.isNullOrNil(paramLinkedList))
     {
-      AppMethodBeat.o(186927);
+      AppMethodBeat.o(231754);
       return;
     }
-    try
+    paramLinkedList = paramLinkedList.iterator();
+    while (paramLinkedList.hasNext())
     {
-      paramString = new nr();
-      paramString.dTO.type = 2;
-      Intent localIntent = new Intent();
-      localIntent.putExtra("rawUrl", paramJSONObject.getString("url"));
-      localIntent.putExtra("nextAnimIn", aU(paramJSONObject));
-      localIntent.putExtra("currentAnimOut", aV(paramJSONObject));
-      paramString.dTO.intent = localIntent;
-      EventCenter.instance.publish(paramString);
-      AppMethodBeat.o(186927);
-      return;
+      String str = (String)paramLinkedList.next();
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("download_id", -1);
+        localJSONObject.put("state", "default");
+        paramJSONObject.put(str, localJSONObject);
+      }
+      catch (Exception localException)
+      {
+        Log.e("LiteAppJsApiQueryDownloadTask", localException.getMessage());
+      }
     }
-    catch (JSONException paramString)
-    {
-      Log.printErrStackTrace("LiteAppJsApiStartGameWebview", paramString, "get url", new Object[0]);
-      AppMethodBeat.o(186927);
-    }
+    AppMethodBeat.o(231754);
   }
   
-  public final int dTw()
+  public final void a(String paramString, final JSONObject paramJSONObject, boolean paramBoolean)
+  {
+    AppMethodBeat.i(231752);
+    a.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(231956);
+        Object localObject = paramJSONObject.optJSONArray("appIdArray");
+        if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+        {
+          l.a(l.this, (JSONArray)localObject);
+          AppMethodBeat.o(231956);
+          return;
+        }
+        long l = paramJSONObject.optLong("download_id", -1L);
+        String str = paramJSONObject.optString("appid");
+        FileDownloadTaskInfo localFileDownloadTaskInfo;
+        if (l > 0L)
+        {
+          localFileDownloadTaskInfo = f.cPZ().Ix(l);
+          localObject = localFileDownloadTaskInfo;
+          if (localFileDownloadTaskInfo == null) {
+            localObject = new FileDownloadTaskInfo();
+          }
+          ((FileDownloadTaskInfo)localObject).appId = str;
+          l.a(l.this, (FileDownloadTaskInfo)localObject);
+          AppMethodBeat.o(231956);
+          return;
+        }
+        if (!Util.isNullOrNil(str))
+        {
+          localFileDownloadTaskInfo = f.cPZ().asZ(str);
+          localObject = localFileDownloadTaskInfo;
+          if (localFileDownloadTaskInfo == null) {
+            localObject = new FileDownloadTaskInfo();
+          }
+          ((FileDownloadTaskInfo)localObject).appId = str;
+          l.a(l.this, (FileDownloadTaskInfo)localObject);
+          AppMethodBeat.o(231956);
+          return;
+        }
+        l.a(l.this).aNa("fail");
+        AppMethodBeat.o(231956);
+      }
+    });
+    AppMethodBeat.o(231752);
+  }
+  
+  public final int ewF()
   {
     return 1;
   }

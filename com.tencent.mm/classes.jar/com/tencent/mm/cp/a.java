@@ -1,16 +1,21 @@
 package com.tencent.mm.cp;
 
-public abstract interface a
+public final class a
 {
-  public static final int[] RwX = { 0, 4, 22, 23, 13, 12, 6 };
-  public static final int[] RwY = { 22, 23, 13, 12 };
-  public static final int[] RwZ = { 0, 4, 12, 13, 6 };
-  public static final int[] Rxa = { 6 };
-  public static final int[] Rxb = { 0, 12, 22 };
+  public static byte[] dk(byte[] paramArrayOfByte)
+  {
+    int i = 0;
+    while (i < paramArrayOfByte.length)
+    {
+      paramArrayOfByte[i] = ((byte)(paramArrayOfByte[i] ^ 0x12));
+      i += 1;
+    }
+    return paramArrayOfByte;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.cp.a
  * JD-Core Version:    0.7.0.1
  */

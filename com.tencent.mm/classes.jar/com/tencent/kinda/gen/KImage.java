@@ -12,13 +12,15 @@ public abstract interface KImage
   
   public abstract void setSvgUrl(String paramString, DynamicColor paramDynamicColor);
   
+  public abstract void setSvgUrl(String paramString, DynamicColor paramDynamicColor, KSize paramKSize);
+  
   public abstract void setUrl(String paramString);
   
   public abstract void stretchImage(float paramFloat1, float paramFloat2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.gen.KImage
  * JD-Core Version:    0.7.0.1
  */

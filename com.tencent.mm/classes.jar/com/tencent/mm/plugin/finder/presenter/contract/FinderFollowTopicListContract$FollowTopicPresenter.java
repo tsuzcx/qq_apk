@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.finder.presenter.contract;
 
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.i;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.cgi.ck;
-import com.tencent.mm.plugin.finder.storage.c;
-import com.tencent.mm.plugin.finder.storage.data.m;
-import com.tencent.mm.protocal.protobuf.ash;
-import com.tencent.mm.protocal.protobuf.asi;
-import com.tencent.mm.protocal.protobuf.bds;
+import com.tencent.mm.plugin.finder.cgi.bn;
+import com.tencent.mm.plugin.finder.cgi.co;
+import com.tencent.mm.plugin.finder.model.bq;
+import com.tencent.mm.protocal.protobuf.aui;
+import com.tencent.mm.protocal.protobuf.auj;
+import com.tencent.mm.protocal.protobuf.bkr;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
@@ -21,79 +21,65 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import kotlin.a.j;
+import kotlin.g.b.aa.a;
+import kotlin.g.b.aa.f;
 import kotlin.g.b.p;
-import kotlin.g.b.z.a;
-import kotlin.g.b.z.f;
-import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/presenter/contract/FinderFollowTopicListContract$FollowTopicPresenter;", "Lcom/tencent/mm/plugin/finder/presenter/base/IPresenter;", "Lcom/tencent/mm/plugin/finder/presenter/contract/FinderFollowTopicListContract$FollowTopicViewCallback;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/FinderTopicFollowData;", "Lkotlin/collections/ArrayList;", "firstPageData", "Lcom/tencent/mm/plugin/finder/storage/data/FinderTopicFollowListPage;", "hasMore", "", "getHasMore", "()Z", "setHasMore", "(Z)V", "isDown", "lastBuf", "Lcom/tencent/mm/protobuf/ByteString;", "startLoadingTime", "", "viewCallback", "doGetFollowScene", "", "fakeTopicInfos", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderTopicInfo;", "getData", "loadStart", "onAttach", "callback", "onDetach", "onSceneEnd", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "refresh", "firstPage", "", "Companion", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/presenter/contract/FinderFollowTopicListContract$FollowTopicPresenter;", "Lcom/tencent/mm/plugin/finder/presenter/base/IPresenter;", "Lcom/tencent/mm/plugin/finder/presenter/contract/FinderFollowTopicListContract$FollowTopicViewCallback;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/FinderTopicFollowData;", "Lkotlin/collections/ArrayList;", "firstPageData", "Lcom/tencent/mm/plugin/finder/storage/data/FinderTopicFollowListPage;", "hasMore", "", "getHasMore", "()Z", "setHasMore", "(Z)V", "isDown", "lastBuf", "Lcom/tencent/mm/protobuf/ByteString;", "startLoadingTime", "", "viewCallback", "doGetFollowScene", "", "fakeTopicInfos", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderTopicInfo;", "getData", "loadStart", "onAttach", "callback", "onDetach", "onSceneEnd", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "refresh", "firstPage", "", "Companion", "plugin-finder_release"})
 public final class FinderFollowTopicListContract$FollowTopicPresenter
   implements i, com.tencent.mm.plugin.finder.presenter.base.a<FinderFollowTopicListContract.FollowTopicViewCallback>
 {
-  private static final String uWR = "topicFollowList.fp";
-  public static final Companion uWS;
+  private static final String zNg = "topicFollowList.fp";
+  public static final Companion zNh;
   boolean hasMore;
-  public final ArrayList<com.tencent.mm.plugin.finder.model.bk> kgc;
-  private boolean tQl;
-  private long tQo;
-  private com.tencent.mm.bw.b tsO;
-  FinderFollowTopicListContract.FollowTopicViewCallback uWP;
-  private final m uWQ;
+  public final ArrayList<bq> mXB;
+  private boolean xBb;
+  private long xBe;
+  private com.tencent.mm.cd.b xaw;
+  FinderFollowTopicListContract.FollowTopicViewCallback zNe;
+  private final com.tencent.mm.plugin.finder.storage.data.l zNf;
   
   static
   {
-    AppMethodBeat.i(249763);
-    uWS = new Companion((byte)0);
-    uWR = "topicFollowList.fp";
-    AppMethodBeat.o(249763);
+    AppMethodBeat.i(261821);
+    zNh = new Companion((byte)0);
+    zNg = "topicFollowList.fp";
+    AppMethodBeat.o(261821);
   }
   
   public FinderFollowTopicListContract$FollowTopicPresenter()
   {
-    AppMethodBeat.i(249762);
-    this.uWQ = new m(uWR);
-    this.kgc = new ArrayList();
+    AppMethodBeat.i(261819);
+    this.zNf = new com.tencent.mm.plugin.finder.storage.data.l(zNg);
+    this.mXB = new ArrayList();
     this.hasMore = true;
-    this.tQo = SystemClock.uptimeMillis();
-    AppMethodBeat.o(249762);
+    this.xBe = SystemClock.uptimeMillis();
+    AppMethodBeat.o(261819);
   }
   
   public final void a(FinderFollowTopicListContract.FollowTopicViewCallback paramFollowTopicViewCallback)
   {
-    AppMethodBeat.i(249757);
-    p.h(paramFollowTopicViewCallback, "callback");
-    this.uWP = paramFollowTopicViewCallback;
-    g.azz().a(712, (i)this);
-    g.azz().a(3844, (i)this);
-    AppMethodBeat.o(249757);
-  }
-  
-  public final void nO(boolean paramBoolean)
-  {
-    AppMethodBeat.i(249761);
-    this.tQo = SystemClock.uptimeMillis();
-    this.tQl = paramBoolean;
-    Object localObject = this.tsO;
-    String str = z.aUg();
-    p.g(str, "ConfigStorageLogic.getMyFinderUsername()");
-    localObject = new com.tencent.mm.plugin.finder.cgi.bk((com.tencent.mm.bw.b)localObject, str);
-    g.azz().b((com.tencent.mm.ak.q)localObject);
-    AppMethodBeat.o(249761);
+    AppMethodBeat.i(261805);
+    p.k(paramFollowTopicViewCallback, "callback");
+    this.zNe = paramFollowTopicViewCallback;
+    h.aGY().a(712, (i)this);
+    h.aGY().a(3844, (i)this);
+    AppMethodBeat.o(261805);
   }
   
   public final void onDetach()
   {
-    AppMethodBeat.i(249759);
-    g.azz().b(712, (i)this);
-    g.azz().b(3844, (i)this);
-    AppMethodBeat.o(249759);
+    AppMethodBeat.i(261809);
+    h.aGY().b(712, (i)this);
+    h.aGY().b(3844, (i)this);
+    AppMethodBeat.o(261809);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final com.tencent.mm.ak.q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final com.tencent.mm.an.q paramq)
   {
     Object localObject1 = null;
-    AppMethodBeat.i(249760);
+    AppMethodBeat.i(261814);
     Object localObject2 = new StringBuilder("errType ").append(paramInt1).append(", errCode ").append(paramInt2).append(", errMsg ").append(paramString).append(" scene type ");
     if (paramq != null)
     {
@@ -110,10 +96,10 @@ public final class FinderFollowTopicListContract$FollowTopicPresenter
     }
     for (;;)
     {
-      label561:
+      label560:
       if (paramString == null)
       {
-        AppMethodBeat.o(249760);
+        AppMethodBeat.o(261814);
         return;
         paramString = null;
         break;
@@ -123,128 +109,128 @@ public final class FinderFollowTopicListContract$FollowTopicPresenter
         label112:
         if (paramString.intValue() == 712)
         {
-          z.f localf = new z.f();
-          localf.SYG = null;
+          aa.f localf = new aa.f();
+          localf.aaBC = null;
           boolean bool;
           if ((paramInt1 == 0) && (paramInt2 == 0))
           {
-            final z.a locala = new z.a();
-            locala.SYB = false;
+            final aa.a locala = new aa.a();
+            locala.aaBx = false;
             if (paramq == null)
             {
               paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderGetFollowTopicList");
-              AppMethodBeat.o(249760);
+              AppMethodBeat.o(261814);
               throw paramString;
             }
-            localObject2 = ((com.tencent.mm.plugin.finder.cgi.bk)paramq).rr.aYJ();
+            localObject2 = ((bn)paramq).rr.bhX();
             paramString = (String)localObject2;
-            if (!(localObject2 instanceof ash)) {
+            if (!(localObject2 instanceof aui)) {
               paramString = null;
             }
-            paramString = (ash)paramString;
+            paramString = (aui)paramString;
             if (paramString != null) {}
-            for (paramString = paramString.LDs; (p.j(this.tsO, paramString) ^ true); paramString = null)
+            for (paramString = paramString.SDI; (p.h(this.xaw, paramString) ^ true); paramString = null)
             {
               Log.i("Finder.FollowTopicPresenter", "not my buf, ignore!");
-              AppMethodBeat.o(249760);
+              AppMethodBeat.o(261814);
               return;
             }
-            if (this.tsO == null)
+            if (this.xaw == null)
             {
-              locala.SYB = true;
-              com.tencent.mm.ac.d.a(com.tencent.mm.ac.d.aBx(), (kotlin.g.a.b)new kotlin.g.b.q(locala) {});
+              locala.aaBx = true;
+              com.tencent.mm.ae.d.a(com.tencent.mm.ae.d.aJa(), (kotlin.g.a.b)new kotlin.g.b.q(locala) {});
             }
-            paramString = g.aAh();
-            p.g(paramString, "MMKernel.storage()");
-            paramString.azQ().set(ar.a.OlB, Integer.valueOf(((com.tencent.mm.plugin.finder.cgi.bk)paramq).cYv()));
-            paramString = this.uWP;
+            paramString = h.aHG();
+            p.j(paramString, "MMKernel.storage()");
+            paramString.aHp().set(ar.a.VAw, Integer.valueOf(((bn)paramq).doj()));
+            paramString = this.zNe;
             if (paramString == null) {
-              p.btv("viewCallback");
+              p.bGy("viewCallback");
             }
-            paramString.JT(((com.tencent.mm.plugin.finder.cgi.bk)paramq).cYv());
-            paramString = this.uWP;
+            paramString.OU(((bn)paramq).doj());
+            paramString = this.zNe;
             if (paramString == null) {
-              p.btv("viewCallback");
+              p.bGy("viewCallback");
             }
-            paramString.dlT();
-            paramString = ((com.tencent.mm.plugin.finder.cgi.bk)paramq).rr.aYK();
+            paramString.dMX();
+            paramString = ((bn)paramq).rr.bhY();
             if (paramString == null)
             {
               paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetFollowTopicListResponse");
-              AppMethodBeat.o(249760);
+              AppMethodBeat.o(261814);
               throw paramString;
             }
-            if (((asi)paramString).tUC != 0)
+            if (((auj)paramString).xFI != 0)
             {
               bool = true;
               this.hasMore = bool;
-              localObject2 = ((com.tencent.mm.plugin.finder.cgi.bk)paramq).rr.aYK();
+              localObject2 = ((bn)paramq).rr.bhY();
               paramString = (String)localObject2;
-              if (!(localObject2 instanceof asi)) {
+              if (!(localObject2 instanceof auj)) {
                 paramString = null;
               }
-              localObject2 = (asi)paramString;
+              localObject2 = (auj)paramString;
               paramString = localObject1;
               if (localObject2 != null) {
-                paramString = ((asi)localObject2).LDs;
+                paramString = ((auj)localObject2).SDI;
               }
-              this.tsO = paramString;
-              localf.SYG = ((Runnable)new Runnable()
+              this.xaw = paramString;
+              localf.aaBC = ((Runnable)new Runnable()
               {
                 public final void run()
                 {
-                  AppMethodBeat.i(249754);
-                  Object localObject1 = this.uWT;
-                  boolean bool1 = locala.SYB;
-                  Object localObject2 = (List)((com.tencent.mm.plugin.finder.cgi.bk)paramq).cYu();
-                  boolean bool2 = FinderFollowTopicListContract.FollowTopicPresenter.e(this.uWT);
-                  p.h(localObject2, "dataList");
+                  AppMethodBeat.i(271053);
+                  Object localObject1 = this.zNi;
+                  boolean bool1 = locala.aaBx;
+                  Object localObject2 = (List)((bn)paramq).doi();
+                  boolean bool2 = FinderFollowTopicListContract.FollowTopicPresenter.e(this.zNi);
+                  p.k(localObject2, "dataList");
                   Log.i("Finder.FollowTopicPresenter", "firstPage " + bool1 + ", get follow contact " + ((List)localObject2).size());
-                  int j = ((FinderFollowTopicListContract.FollowTopicPresenter)localObject1).kgc.size();
+                  int j = ((FinderFollowTopicListContract.FollowTopicPresenter)localObject1).mXB.size();
                   int i = ((List)localObject2).size();
                   if (bool1)
                   {
-                    ((FinderFollowTopicListContract.FollowTopicPresenter)localObject1).kgc.clear();
+                    ((FinderFollowTopicListContract.FollowTopicPresenter)localObject1).mXB.clear();
                     i = -1;
                     j = -1;
                   }
-                  ArrayList localArrayList = ((FinderFollowTopicListContract.FollowTopicPresenter)localObject1).kgc;
+                  ArrayList localArrayList = ((FinderFollowTopicListContract.FollowTopicPresenter)localObject1).mXB;
                   Object localObject3 = (Iterable)localObject2;
                   localObject2 = (Collection)new ArrayList(j.a((Iterable)localObject3, 10));
                   localObject3 = ((Iterable)localObject3).iterator();
                   while (((Iterator)localObject3).hasNext()) {
-                    ((Collection)localObject2).add(new com.tencent.mm.plugin.finder.model.bk((bds)((Iterator)localObject3).next()));
+                    ((Collection)localObject2).add(new bq((bkr)((Iterator)localObject3).next()));
                   }
                   localArrayList.addAll((Collection)localObject2);
-                  localObject1 = ((FinderFollowTopicListContract.FollowTopicPresenter)localObject1).uWP;
+                  localObject1 = ((FinderFollowTopicListContract.FollowTopicPresenter)localObject1).zNe;
                   if (localObject1 == null) {
-                    p.btv("viewCallback");
+                    p.bGy("viewCallback");
                   }
-                  ((FinderFollowTopicListContract.FollowTopicViewCallback)localObject1).f(bool2, j, i);
-                  AppMethodBeat.o(249754);
+                  ((FinderFollowTopicListContract.FollowTopicViewCallback)localObject1).i(bool2, j, i);
+                  AppMethodBeat.o(271053);
                 }
               });
             }
           }
           else
           {
-            l = SystemClock.uptimeMillis() - this.tQo;
-            if (!this.tQl)
+            l = SystemClock.uptimeMillis() - this.xBe;
+            if (!this.xBb)
             {
-              paramString = c.vCb;
-              if (l < ((Number)c.dty().value()).longValue()) {
-                break label561;
+              paramString = com.tencent.mm.plugin.finder.storage.d.AjH;
+              if (l < ((Number)com.tencent.mm.plugin.finder.storage.d.dUI().aSr()).longValue()) {
+                break label560;
               }
             }
           }
-          for (long l = 0L;; l = ((Number)c.dty().value()).longValue() - l)
+          for (long l = 0L;; l = ((Number)com.tencent.mm.plugin.finder.storage.d.dUI().aSr()).longValue() - l)
           {
-            com.tencent.mm.ac.d.a(l, (kotlin.g.a.a)new kotlin.g.b.q(localf) {});
-            AppMethodBeat.o(249760);
+            com.tencent.mm.ae.d.a(l, (kotlin.g.a.a)new kotlin.g.b.q(localf) {});
+            AppMethodBeat.o(261814);
             return;
             bool = false;
             break;
-            paramString = c.vCb;
+            paramString = com.tencent.mm.plugin.finder.storage.d.AjH;
           }
         }
       }
@@ -254,56 +240,69 @@ public final class FinderFollowTopicListContract$FollowTopicPresenter
       if (paramq == null)
       {
         paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderTopicFollow");
-        AppMethodBeat.o(249760);
+        AppMethodBeat.o(261814);
         throw paramString;
       }
-      paramString = (ck)paramq;
+      paramString = (co)paramq;
       paramInt1 = paramString.opType;
-      paramq = ck.twr;
-      if (paramInt1 == ck.cYj()) {
-        j.c((List)this.kgc, (kotlin.g.a.b)new kotlin.g.b.q(paramString) {});
+      paramq = co.xeg;
+      if (paramInt1 == co.dnB()) {
+        j.c((List)this.mXB, (kotlin.g.a.b)new kotlin.g.b.q(paramString) {});
       }
-      paramString = this.uWP;
+      paramString = this.zNe;
       if (paramString == null) {
-        p.btv("viewCallback");
+        p.bGy("viewCallback");
       }
       FinderFollowTopicListContract.FollowTopicViewCallback.b(paramString);
-      paramString = g.aAh();
-      p.g(paramString, "MMKernel.storage()");
-      paramInt1 = paramString.azQ().getInt(ar.a.OlB, 0);
+      paramString = h.aHG();
+      p.j(paramString, "MMKernel.storage()");
+      paramInt1 = paramString.aHp().getInt(ar.a.VAw, 0);
       if (paramInt1 > 0)
       {
-        paramString = g.aAh();
-        p.g(paramString, "MMKernel.storage()");
-        paramString.azQ().set(ar.a.OlB, Integer.valueOf(paramInt1 - 1));
-        paramString = this.uWP;
+        paramString = h.aHG();
+        p.j(paramString, "MMKernel.storage()");
+        paramString.aHp().set(ar.a.VAw, Integer.valueOf(paramInt1 - 1));
+        paramString = this.zNe;
         if (paramString == null) {
-          p.btv("viewCallback");
+          p.bGy("viewCallback");
         }
-        paramString.JT(paramInt1 - 1);
-        paramString = this.uWP;
+        paramString.OU(paramInt1 - 1);
+        paramString = this.zNe;
         if (paramString == null) {
-          p.btv("viewCallback");
+          p.bGy("viewCallback");
         }
-        paramString.dlT();
-        AppMethodBeat.o(249760);
+        paramString.dMX();
+        AppMethodBeat.o(261814);
         return;
       }
-      paramString = this.uWP;
+      paramString = this.zNe;
       if (paramString == null) {
-        p.btv("viewCallback");
+        p.bGy("viewCallback");
       }
-      paramString.JT(0);
-      paramString = this.uWP;
+      paramString.OU(0);
+      paramString = this.zNe;
       if (paramString == null) {
-        p.btv("viewCallback");
+        p.bGy("viewCallback");
       }
-      paramString.dlT();
+      paramString.dMX();
     }
-    AppMethodBeat.o(249760);
+    AppMethodBeat.o(261814);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/presenter/contract/FinderFollowTopicListContract$FollowTopicPresenter$Companion;", "", "()V", "FIRST_PAGE_FILE_NAME", "", "getFIRST_PAGE_FILE_NAME", "()Ljava/lang/String;", "TAG", "plugin-finder_release"})
+  public final void pY(boolean paramBoolean)
+  {
+    AppMethodBeat.i(261816);
+    this.xBe = SystemClock.uptimeMillis();
+    this.xBb = paramBoolean;
+    Object localObject = this.xaw;
+    String str = z.bdh();
+    p.j(str, "ConfigStorageLogic.getMyFinderUsername()");
+    localObject = new bn((com.tencent.mm.cd.b)localObject, str);
+    h.aGY().b((com.tencent.mm.an.q)localObject);
+    AppMethodBeat.o(261816);
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/presenter/contract/FinderFollowTopicListContract$FollowTopicPresenter$Companion;", "", "()V", "FIRST_PAGE_FILE_NAME", "", "getFIRST_PAGE_FILE_NAME", "()Ljava/lang/String;", "TAG", "plugin-finder_release"})
   public static final class Companion {}
 }
 

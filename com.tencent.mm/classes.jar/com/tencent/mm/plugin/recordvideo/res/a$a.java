@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.recordvideo.res;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/res/BaseVideoResLogic$Companion;", "", "()V", "RES_CONFIG", "", "RES_FILE_KEY", "RES_FILE_NAME", "RES_SUB_TYPE", "", "RES_TMP_PATH", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/res/BaseVideoResLogic$Companion;", "", "()V", "RES_CONFIG", "", "RES_FILE_KEY", "RES_FILE_NAME", "RES_SUB_TYPE", "", "RES_TMP_PATH", "plugin-recordvideo_release"})
 public final class a$a {}
 
 

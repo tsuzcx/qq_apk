@@ -10,12 +10,12 @@ final class d$m
 {
   static
   {
-    AppMethodBeat.i(188585);
+    AppMethodBeat.i(248729);
     String str = new StringBuilder("txegsmron").reverse().toString();
     if (Process.myPid() == Process.myTid())
     {
       System.loadLibrary(str);
-      AppMethodBeat.o(188585);
+      AppMethodBeat.o(248729);
       return;
     }
     final CountDownLatch localCountDownLatch = new CountDownLatch(1);
@@ -23,21 +23,21 @@ final class d$m
     {
       public final void run()
       {
-        AppMethodBeat.i(188584);
-        System.loadLibrary(this.jGF);
+        AppMethodBeat.i(248724);
+        System.loadLibrary(this.mxi);
         localCountDownLatch.countDown();
-        AppMethodBeat.o(188584);
+        AppMethodBeat.o(248724);
       }
     });
     try
     {
       localCountDownLatch.await();
-      AppMethodBeat.o(188585);
+      AppMethodBeat.o(248729);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(188585);
+      AppMethodBeat.o(248729);
     }
   }
   
@@ -45,7 +45,7 @@ final class d$m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.normsgext.d.m
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,62 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class ehz
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String Nhm;
-  public int type;
+  public LinkedList<String> UjW;
+  public LinkedList<String> UjX;
+  public LinkedList<Integer> UjY;
+  public LinkedList<Integer> UjZ;
+  
+  public ehz()
+  {
+    AppMethodBeat.i(114079);
+    this.UjW = new LinkedList();
+    this.UjX = new LinkedList();
+    this.UjY = new LinkedList();
+    this.UjZ = new LinkedList();
+    AppMethodBeat.o(114079);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(200229);
+    AppMethodBeat.i(114080);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.type);
-      if (this.Nhm != null) {
-        paramVarArgs.e(2, this.Nhm);
-      }
-      AppMethodBeat.o(200229);
+      paramVarArgs.e(1, 1, this.UjW);
+      paramVarArgs.e(2, 1, this.UjX);
+      paramVarArgs.e(3, 2, this.UjY);
+      paramVarArgs.e(4, 2, this.UjZ);
+      AppMethodBeat.o(114080);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bu(1, this.type) + 0;
-      paramInt = i;
-      if (this.Nhm != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.Nhm);
-      }
-      AppMethodBeat.o(200229);
-      return paramInt;
+      paramInt = g.a.a.a.c(1, 1, this.UjW);
+      int i = g.a.a.a.c(2, 1, this.UjX);
+      int j = g.a.a.a.c(3, 2, this.UjY);
+      int k = g.a.a.a.c(4, 2, this.UjZ);
+      AppMethodBeat.o(114080);
+      return paramInt + 0 + i + j + k;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.UjW.clear();
+      this.UjX.clear();
+      this.UjY.clear();
+      this.UjZ.clear();
+      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      AppMethodBeat.o(200229);
+      AppMethodBeat.o(114080);
       return 0;
     }
     if (paramInt == 3)
@@ -49,18 +66,26 @@ public final class ehz
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(200229);
+        AppMethodBeat.o(114080);
         return -1;
       case 1: 
-        localehz.type = locala.UbS.zi();
-        AppMethodBeat.o(200229);
+        localehz.UjW.add(locala.abFh.readString());
+        AppMethodBeat.o(114080);
+        return 0;
+      case 2: 
+        localehz.UjX.add(locala.abFh.readString());
+        AppMethodBeat.o(114080);
+        return 0;
+      case 3: 
+        localehz.UjY.add(Integer.valueOf(locala.abFh.AK()));
+        AppMethodBeat.o(114080);
         return 0;
       }
-      localehz.Nhm = locala.UbS.readString();
-      AppMethodBeat.o(200229);
+      localehz.UjZ.add(Integer.valueOf(locala.abFh.AK()));
+      AppMethodBeat.o(114080);
       return 0;
     }
-    AppMethodBeat.o(200229);
+    AppMethodBeat.o(114080);
     return -1;
   }
 }

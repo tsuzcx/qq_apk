@@ -15,16 +15,16 @@ import java.io.InputStream;
 
 public final class a
 {
-  private static final b.l lmM;
+  private static final b.l ohy;
   
   static
   {
     AppMethodBeat.i(121250);
-    lmM = new b.d();
+    ohy = new b.d();
     AppMethodBeat.o(121250);
   }
   
-  public static Bitmap db(String paramString1, String paramString2)
+  public static Bitmap dk(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121249);
     if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
@@ -32,20 +32,20 @@ public final class a
       AppMethodBeat.o(121249);
       return null;
     }
-    Object localObject = LaunchParcel.Wf(paramString2);
+    Object localObject = LaunchParcel.adT(paramString2);
     if (Util.isNullOrNil((String)localObject))
     {
       AppMethodBeat.o(121249);
       return null;
     }
     paramString2 = paramString1 + '#' + (String)localObject;
-    Bitmap localBitmap = lmM.EP(paramString2);
+    Bitmap localBitmap = ohy.LI(paramString2);
     if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
       AppMethodBeat.o(121249);
       return localBitmap;
     }
-    paramString1 = c.dh(paramString1, (String)localObject);
+    paramString1 = c.dq(paramString1, (String)localObject);
     if (paramString1 != null) {}
     try
     {
@@ -61,7 +61,7 @@ public final class a
       localObject = BitmapUtil.decodeStream(paramString1.mInputStream);
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
       {
-        lmM.put(paramString2, (Bitmap)localObject);
+        ohy.put(paramString2, (Bitmap)localObject);
         return localObject;
       }
       if (paramString1 != null) {
@@ -92,7 +92,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -10,21 +10,21 @@ public abstract interface l$c
   
   public abstract void b(l.b paramb);
   
-  public abstract List<String> fnj();
+  public abstract List<String> gbC();
   
-  public abstract List<String> fnk();
+  public abstract List<String> gbD();
   
-  public abstract LinkedHashMap<String, ArrayList<Long>> fnl();
+  public abstract LinkedHashMap<String, ArrayList<Long>> gbE();
   
-  public abstract int fnm();
+  public abstract int gbF();
   
-  public abstract List<String> fnn();
+  public abstract List<String> gbG();
   
-  public abstract void fno();
+  public abstract void gbH();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.api.l.c
  * JD-Core Version:    0.7.0.1
  */

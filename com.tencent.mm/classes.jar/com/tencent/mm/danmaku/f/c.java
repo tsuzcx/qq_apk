@@ -7,18 +7,18 @@ public final class c
 {
   public static Object b(Class<?> paramClass, String paramString, Object paramObject)
   {
-    AppMethodBeat.i(241783);
+    AppMethodBeat.i(285072);
     try
     {
       paramClass = paramClass.getDeclaredField(paramString);
       paramClass.setAccessible(true);
       paramClass = paramClass.get(paramObject);
-      AppMethodBeat.o(241783);
+      AppMethodBeat.o(285072);
       return paramClass;
     }
     catch (Exception paramClass)
     {
-      AppMethodBeat.o(241783);
+      AppMethodBeat.o(285072);
     }
     return null;
   }

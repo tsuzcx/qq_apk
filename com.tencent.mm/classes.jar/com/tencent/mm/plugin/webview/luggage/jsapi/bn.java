@@ -20,23 +20,23 @@ public class bn
   {
     AppMethodBeat.i(78636);
     Log.i("MicroMsg.JsApiShowMenuItems", "invokeInOwn");
-    JSONArray localJSONArray = paramb.ctb.csi.optJSONArray("menuList");
+    JSONArray localJSONArray = paramb.crh.cqn.optJSONArray("menuList");
     if (localJSONArray == null)
     {
       Log.i("MicroMsg.JsApiShowMenuItems", "data is null");
-      paramb.c("invalid_data", null);
+      paramb.a("invalid_data", null);
       AppMethodBeat.o(78636);
       return;
     }
-    m localm = ((g)paramb.cta).gbC();
+    m localm = ((g)paramb.crg).gUx();
     if (localm != null) {
-      localm.U(localJSONArray);
+      localm.W(localJSONArray);
     }
-    paramb.c("", null);
+    paramb.a("", null);
     AppMethodBeat.o(78636);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

@@ -2,7 +2,7 @@ package com.tencent.mm.chatroom.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dl;
+import com.tencent.mm.f.c.dp;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
@@ -12,10 +12,10 @@ import java.util.List;
 import java.util.Map;
 
 public final class c
-  extends dl
+  extends dp
 {
   protected static IAutoDBItem.MAutoDBInfo info;
-  public List<Long> gts;
+  public List<Long> iXE;
   
   static
   {
@@ -96,16 +96,60 @@ public final class c
   public c()
   {
     AppMethodBeat.i(182132);
-    this.gts = new ArrayList();
+    this.iXE = new ArrayList();
     AppMethodBeat.o(182132);
   }
   
-  public final long amk()
+  public final void ET(long paramLong)
+  {
+    AppMethodBeat.i(189484);
+    if (!this.iXE.contains(Long.valueOf(paramLong)))
+    {
+      this.iXE.add(Long.valueOf(paramLong));
+      StringBuilder localStringBuilder = new StringBuilder();
+      Iterator localIterator = this.iXE.iterator();
+      while (localIterator.hasNext()) {
+        localStringBuilder.append(((Long)localIterator.next()).longValue()).append(",");
+      }
+      if (localStringBuilder.length() - 1 >= 0) {
+        localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+      }
+      this.field_related_msgids = localStringBuilder.toString();
+    }
+    AppMethodBeat.o(189484);
+  }
+  
+  public final boolean EU(long paramLong)
+  {
+    AppMethodBeat.i(182137);
+    if (this.iXE.contains(Long.valueOf(paramLong)))
+    {
+      this.iXE.remove(Long.valueOf(paramLong));
+      StringBuilder localStringBuilder = new StringBuilder();
+      Iterator localIterator = this.iXE.iterator();
+      while (localIterator.hasNext()) {
+        localStringBuilder.append(((Long)localIterator.next()).longValue()).append(",");
+      }
+      if (localStringBuilder.length() - 1 >= 0) {
+        localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+      }
+      this.field_related_msgids = localStringBuilder.toString();
+    }
+    if (this.iXE.size() == 0)
+    {
+      AppMethodBeat.o(182137);
+      return true;
+    }
+    AppMethodBeat.o(182137);
+    return false;
+  }
+  
+  public final long asl()
   {
     AppMethodBeat.i(182135);
-    if (this.gts.size() > 0)
+    if (this.iXE.size() > 0)
     {
-      long l = ((Long)this.gts.get(0)).longValue();
+      long l = ((Long)this.iXE.get(0)).longValue();
       AppMethodBeat.o(182135);
       return l;
     }
@@ -113,7 +157,7 @@ public final class c
     return 0L;
   }
   
-  public final boolean aml()
+  public final boolean asm()
   {
     AppMethodBeat.i(182136);
     boolean bool = Util.isEqual("roomannouncement@app.origin", this.field_username);
@@ -125,7 +169,7 @@ public final class c
   {
     AppMethodBeat.i(182133);
     super.convertFrom(paramCursor);
-    this.gts.clear();
+    this.iXE.clear();
     if (!Util.isNullOrNil(this.field_related_msgids))
     {
       paramCursor = this.field_related_msgids.split(",");
@@ -134,7 +178,7 @@ public final class c
       while (i < j)
       {
         String str = paramCursor[i];
-        this.gts.add(Long.valueOf(Long.parseLong(str)));
+        this.iXE.add(Long.valueOf(Long.parseLong(str)));
         i += 1;
       }
     }
@@ -158,54 +202,10 @@ public final class c
   {
     return info;
   }
-  
-  public final void yR(long paramLong)
-  {
-    AppMethodBeat.i(194054);
-    if (!this.gts.contains(Long.valueOf(paramLong)))
-    {
-      this.gts.add(Long.valueOf(paramLong));
-      StringBuilder localStringBuilder = new StringBuilder();
-      Iterator localIterator = this.gts.iterator();
-      while (localIterator.hasNext()) {
-        localStringBuilder.append(((Long)localIterator.next()).longValue()).append(",");
-      }
-      if (localStringBuilder.length() - 1 >= 0) {
-        localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-      }
-      this.field_related_msgids = localStringBuilder.toString();
-    }
-    AppMethodBeat.o(194054);
-  }
-  
-  public final boolean yS(long paramLong)
-  {
-    AppMethodBeat.i(182137);
-    if (this.gts.contains(Long.valueOf(paramLong)))
-    {
-      this.gts.remove(Long.valueOf(paramLong));
-      StringBuilder localStringBuilder = new StringBuilder();
-      Iterator localIterator = this.gts.iterator();
-      while (localIterator.hasNext()) {
-        localStringBuilder.append(((Long)localIterator.next()).longValue()).append(",");
-      }
-      if (localStringBuilder.length() - 1 >= 0) {
-        localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-      }
-      this.field_related_msgids = localStringBuilder.toString();
-    }
-    if (this.gts.size() == 0)
-    {
-      AppMethodBeat.o(182137);
-      return true;
-    }
-    AppMethodBeat.o(182137);
-    return false;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.chatroom.storage.c
  * JD-Core Version:    0.7.0.1
  */

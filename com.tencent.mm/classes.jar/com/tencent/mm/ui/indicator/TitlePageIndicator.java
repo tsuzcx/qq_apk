@@ -9,15 +9,15 @@ import android.graphics.Typeface;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.support.v4.view.q;
-import android.support.v4.view.v;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.BaseSavedState;
 import android.view.ViewConfiguration;
+import androidx.core.g.x;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.CustomViewPager;
 import java.util.ArrayList;
@@ -26,177 +26,177 @@ public class TitlePageIndicator
   extends View
   implements b
 {
-  private ViewPager.OnPageChangeListener Qlc;
-  private int Qld;
-  private float Qle;
-  private int Qlf;
-  private final Paint Qlg;
-  private boolean Qlh;
-  private int Qli;
-  private int Qlj;
-  private int Qlk;
-  private int Qll;
-  private float Qlm;
-  private float Qln;
-  private float Qlo;
-  private a Qlp;
-  private a Qlq;
+  private float XIA;
+  private int XIB;
+  private final Paint XIC;
+  private boolean XID;
+  private int XIE;
+  private int XIF;
+  private int XIG;
+  private int XIH;
+  private float XII;
+  private float XIJ;
+  private float XIK;
+  private a XIL;
+  private a XIM;
+  private ViewPager.OnPageChangeListener XIy;
+  private int XIz;
   private int mActivePointerId;
   private final Rect mBounds;
   private float mLastMotionX;
   private int mScrollState;
   private int mTouchSlop;
   private CustomViewPager mViewPager;
-  private boolean okz;
+  private boolean rmR;
   
   public TitlePageIndicator(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(205321);
-    this.Qld = -1;
-    this.Qlg = new Paint();
+    AppMethodBeat.i(198332);
+    this.XIz = -1;
+    this.XIC = new Paint();
     this.mBounds = new Rect();
     this.mLastMotionX = -1.0F;
     this.mActivePointerId = -1;
     init();
-    AppMethodBeat.o(205321);
+    AppMethodBeat.o(198332);
   }
   
   public TitlePageIndicator(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(205322);
-    this.Qld = -1;
-    this.Qlg = new Paint();
+    AppMethodBeat.i(198337);
+    this.XIz = -1;
+    this.XIC = new Paint();
     this.mBounds = new Rect();
     this.mLastMotionX = -1.0F;
     this.mActivePointerId = -1;
     init();
-    AppMethodBeat.o(205322);
+    AppMethodBeat.o(198337);
   }
   
   private Rect a(int paramInt, Paint paramPaint)
   {
-    AppMethodBeat.i(205335);
+    AppMethodBeat.i(198385);
     Rect localRect1 = new Rect();
     Rect localRect2 = new Rect();
-    CharSequence localCharSequence = aoj(paramInt);
+    CharSequence localCharSequence = axn(paramInt);
     paramPaint.getTextBounds(localCharSequence.toString(), 0, localCharSequence.length(), localRect2);
     localRect1.left = 0;
     localRect1.top = ((getHeight() - localRect2.height()) / 2);
     localRect1.right = (localRect1.left + localRect2.width());
     paramInt = localRect1.top;
     localRect1.bottom = (localRect2.height() + paramInt);
-    AppMethodBeat.o(205335);
+    AppMethodBeat.o(198385);
     return localRect1;
   }
   
-  private CharSequence aoj(int paramInt)
+  private CharSequence axn(int paramInt)
   {
-    AppMethodBeat.i(205343);
+    AppMethodBeat.i(198405);
     CharSequence localCharSequence = this.mViewPager.getAdapter().getPageTitle(paramInt);
     Object localObject = localCharSequence;
     if (localCharSequence == null) {
       localObject = "";
     }
-    AppMethodBeat.o(205343);
+    AppMethodBeat.o(198405);
     return localObject;
   }
   
   private int getCount()
   {
-    AppMethodBeat.i(205344);
+    AppMethodBeat.i(198406);
     int i = this.mViewPager.getAdapter().getCount();
-    AppMethodBeat.o(205344);
+    AppMethodBeat.o(198406);
     return i + 1;
   }
   
   private void init()
   {
-    AppMethodBeat.i(205323);
+    AppMethodBeat.i(198346);
     if (isInEditMode())
     {
-      AppMethodBeat.o(205323);
+      AppMethodBeat.o(198346);
       return;
     }
-    this.Qln = com.tencent.mm.cb.a.fromDPToPix(getContext(), 16);
-    this.Qlm = com.tencent.mm.cb.a.fromDPToPix(getContext(), 16);
-    this.Qlo = com.tencent.mm.cb.a.fromDPToPix(getContext(), 16);
-    this.Qli = com.tencent.mm.cb.a.n(getContext(), 2131099651);
-    this.Qlj = com.tencent.mm.cb.a.n(getContext(), 2131101424);
-    this.Qlk = com.tencent.mm.cb.a.fromDPToPix(getContext(), 17);
-    this.Qll = com.tencent.mm.cb.a.fromDPToPix(getContext(), 22);
-    this.Qlp = new a(this.Qli, this.Qlj);
-    this.Qlq = new a(this.Qlj, this.Qli);
-    this.Qlh = true;
-    this.Qlg.setAntiAlias(true);
-    this.Qlg.setTextAlign(Paint.Align.LEFT);
-    this.mTouchSlop = v.a(ViewConfiguration.get(getContext()));
-    AppMethodBeat.o(205323);
+    this.XIJ = com.tencent.mm.ci.a.fromDPToPix(getContext(), 16);
+    this.XII = com.tencent.mm.ci.a.fromDPToPix(getContext(), 16);
+    this.XIK = com.tencent.mm.ci.a.fromDPToPix(getContext(), 16);
+    this.XIE = com.tencent.mm.ci.a.w(getContext(), a.d.BG_3);
+    this.XIF = com.tencent.mm.ci.a.w(getContext(), a.d.white);
+    this.XIG = com.tencent.mm.ci.a.fromDPToPix(getContext(), 17);
+    this.XIH = com.tencent.mm.ci.a.fromDPToPix(getContext(), 22);
+    this.XIL = new a(this.XIE, this.XIF);
+    this.XIM = new a(this.XIF, this.XIE);
+    this.XID = true;
+    this.XIC.setAntiAlias(true);
+    this.XIC.setTextAlign(Paint.Align.LEFT);
+    this.mTouchSlop = x.a(ViewConfiguration.get(getContext()));
+    AppMethodBeat.o(198346);
   }
   
   public float getClipPadding()
   {
-    return this.Qlo;
+    return this.XIK;
   }
   
   public int getSelectedColor()
   {
-    return this.Qlj;
+    return this.XIF;
   }
   
   public int getTextColor()
   {
-    return this.Qli;
+    return this.XIE;
   }
   
   public float getTextSize()
   {
-    AppMethodBeat.i(205327);
-    float f = this.Qlg.getTextSize();
-    AppMethodBeat.o(205327);
+    AppMethodBeat.i(198352);
+    float f = this.XIC.getTextSize();
+    AppMethodBeat.o(198352);
     return f;
   }
   
   public float getTitlePadding()
   {
-    return this.Qlm;
+    return this.XII;
   }
   
   public float getTopPadding()
   {
-    return this.Qln;
+    return this.XIJ;
   }
   
   public Typeface getTypeface()
   {
-    AppMethodBeat.i(205332);
-    Typeface localTypeface = this.Qlg.getTypeface();
-    AppMethodBeat.o(205332);
+    AppMethodBeat.i(198361);
+    Typeface localTypeface = this.XIC.getTypeface();
+    AppMethodBeat.o(198361);
     return localTypeface;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(205333);
+    AppMethodBeat.i(198368);
     super.onDraw(paramCanvas);
     if (this.mViewPager == null)
     {
-      AppMethodBeat.o(205333);
+      AppMethodBeat.o(198368);
       return;
     }
     int m = getCount();
     if (m == 0)
     {
-      AppMethodBeat.o(205333);
+      AppMethodBeat.o(198368);
       return;
     }
-    if ((this.Qld == -1) && (this.mViewPager != null)) {
-      this.Qld = this.mViewPager.getCurrentItem();
+    if ((this.XIz == -1) && (this.mViewPager != null)) {
+      this.XIz = this.mViewPager.getCurrentItem();
     }
     int n = getLeft();
     int i1 = n + getWidth();
-    int i = this.Qld;
+    int i = this.XIz;
     float f1;
     Object localObject;
     ArrayList localArrayList;
@@ -206,10 +206,10 @@ public class TitlePageIndicator
     label145:
     int i4;
     int i5;
-    if (this.Qle <= 0.5D)
+    if (this.XIA <= 0.5D)
     {
-      f1 = this.Qle;
-      localObject = this.Qlg;
+      f1 = this.XIA;
+      localObject = this.XIC;
       localArrayList = new ArrayList();
       k = getCount();
       i2 = getWidth();
@@ -222,9 +222,9 @@ public class TitlePageIndicator
       if (i != j) {
         break label335;
       }
-      i4 = this.Qll;
-      i5 = this.Qlk;
-      ((Paint)localObject).setTextSize(this.Qll - (i4 - i5) * f1);
+      i4 = this.XIH;
+      i5 = this.XIG;
+      ((Paint)localObject).setTextSize(this.XIH - (i4 - i5) * f1);
     }
     label335:
     float f2;
@@ -233,25 +233,25 @@ public class TitlePageIndicator
       i4 = localRect.right - localRect.left;
       i5 = localRect.bottom;
       i5 = localRect.top;
-      localRect.left = ((int)(i3 - i4 / 2.0F) - (int)(this.Qlf - this.Qle * (i4 + getClipPadding())) / 2 + (int)((j - this.Qld) * (i2 - i4 - getClipPadding())) / 2);
+      localRect.left = ((int)(i3 - i4 / 2.0F) - (int)(this.XIB - this.XIA * (i4 + getClipPadding())) / 2 + (int)((j - this.XIz) * (i2 - i4 - getClipPadding())) / 2);
       localRect.right = (i4 + localRect.left);
       localArrayList.add(localRect);
       j += 1;
       break label145;
-      f1 = 1.0F - this.Qle;
+      f1 = 1.0F - this.XIA;
       i += 1;
       break;
-      i4 = this.Qll;
-      i5 = this.Qlk;
-      f2 = this.Qlk;
+      i4 = this.XIH;
+      i5 = this.XIG;
+      f2 = this.XIG;
       ((Paint)localObject).setTextSize((i4 - i5) * f1 + f2);
     }
     label381:
     int j = localArrayList.size();
-    if (this.Qld >= j)
+    if (this.XIz >= j)
     {
       setCurrentItem(j - 1);
-      AppMethodBeat.o(205333);
+      AppMethodBeat.o(198368);
       return;
     }
     j = 0;
@@ -266,106 +266,106 @@ public class TitlePageIndicator
           break label594;
         }
         k = 1;
-        localObject = aoj(j);
+        localObject = axn(j);
         if (k == 0) {
           break label600;
         }
-        k = this.Qll;
-        i2 = this.Qlk;
-        f2 = this.Qll;
+        k = this.XIH;
+        i2 = this.XIG;
+        f2 = this.XIH;
         f3 = k - i2;
-        this.Qlg.setTextSize(f2 - f3 * f1);
-        this.Qlg.setColor(this.Qlq.getColor((int)(100.0F * f1)));
+        this.XIC.setTextSize(f2 - f3 * f1);
+        this.XIC.setColor(this.XIM.getColor((int)(100.0F * f1)));
       }
       for (;;)
       {
-        paramCanvas.drawText((CharSequence)localObject, 0, ((CharSequence)localObject).length(), localRect.left, localRect.bottom, this.Qlg);
+        paramCanvas.drawText((CharSequence)localObject, 0, ((CharSequence)localObject).length(), localRect.left, localRect.bottom, this.XIC);
         j += 1;
         break;
         label594:
         k = 0;
         break label483;
         label600:
-        k = this.Qll;
-        i2 = this.Qlk;
-        f2 = this.Qlk;
+        k = this.XIH;
+        i2 = this.XIG;
+        f2 = this.XIG;
         f3 = k - i2;
-        this.Qlg.setTextSize(f3 * f1 + f2);
-        this.Qlg.setColor(this.Qlp.getColor((int)(100.0F * f1)));
+        this.XIC.setTextSize(f3 * f1 + f2);
+        this.XIC.setColor(this.XIL.getColor((int)(100.0F * f1)));
       }
     }
-    AppMethodBeat.o(205333);
+    AppMethodBeat.o(198368);
   }
   
   public void onPageScrollStateChanged(int paramInt)
   {
-    AppMethodBeat.i(205338);
+    AppMethodBeat.i(198394);
     this.mScrollState = paramInt;
-    if (this.Qlc != null) {
-      this.Qlc.onPageScrollStateChanged(paramInt);
+    if (this.XIy != null) {
+      this.XIy.onPageScrollStateChanged(paramInt);
     }
-    AppMethodBeat.o(205338);
+    AppMethodBeat.o(198394);
   }
   
   public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    AppMethodBeat.i(205339);
+    AppMethodBeat.i(198397);
     Log.i("MicroMsg.TitlePageIndicator", "onPageScrolled %s, %s, %s", new Object[] { Integer.valueOf(paramInt1), Float.valueOf(paramFloat), Integer.valueOf(paramInt2) });
-    this.Qld = paramInt1;
-    this.Qle = paramFloat;
-    this.Qlf = paramInt2;
+    this.XIz = paramInt1;
+    this.XIA = paramFloat;
+    this.XIB = paramInt2;
     invalidate();
-    if (this.Qlc != null) {
-      this.Qlc.onPageScrolled(paramInt1, paramFloat, paramInt2);
+    if (this.XIy != null) {
+      this.XIy.onPageScrolled(paramInt1, paramFloat, paramInt2);
     }
-    AppMethodBeat.o(205339);
+    AppMethodBeat.o(198397);
   }
   
   public void onPageSelected(int paramInt)
   {
-    AppMethodBeat.i(205340);
+    AppMethodBeat.i(198400);
     if (this.mScrollState == 0)
     {
-      this.Qld = paramInt;
+      this.XIz = paramInt;
       invalidate();
     }
-    if (this.Qlc != null) {
-      this.Qlc.onPageSelected(paramInt);
+    if (this.XIy != null) {
+      this.XIy.onPageSelected(paramInt);
     }
-    AppMethodBeat.o(205340);
+    AppMethodBeat.o(198400);
   }
   
   public void onRestoreInstanceState(Parcelable paramParcelable)
   {
-    AppMethodBeat.i(205341);
+    AppMethodBeat.i(198402);
     paramParcelable = (SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    this.Qld = paramParcelable.zXP;
+    this.XIz = paramParcelable.FDB;
     requestLayout();
-    AppMethodBeat.o(205341);
+    AppMethodBeat.o(198402);
   }
   
   public Parcelable onSaveInstanceState()
   {
-    AppMethodBeat.i(205342);
+    AppMethodBeat.i(198403);
     SavedState localSavedState = new SavedState(super.onSaveInstanceState());
-    localSavedState.zXP = this.Qld;
-    AppMethodBeat.o(205342);
+    localSavedState.FDB = this.XIz;
+    AppMethodBeat.o(198403);
     return localSavedState;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     int i = 0;
-    AppMethodBeat.i(205334);
+    AppMethodBeat.i(198380);
     if (super.onTouchEvent(paramMotionEvent))
     {
-      AppMethodBeat.o(205334);
+      AppMethodBeat.o(198380);
       return true;
     }
     if ((this.mViewPager == null) || (getCount() == 0))
     {
-      AppMethodBeat.o(205334);
+      AppMethodBeat.o(198380);
       return false;
     }
     int j = paramMotionEvent.getAction() & 0xFF;
@@ -374,24 +374,24 @@ public class TitlePageIndicator
     }
     for (;;)
     {
-      AppMethodBeat.o(205334);
+      AppMethodBeat.o(198380);
       return true;
       this.mActivePointerId = paramMotionEvent.getPointerId(0);
       this.mLastMotionX = paramMotionEvent.getX();
       continue;
       float f1 = paramMotionEvent.getX(paramMotionEvent.findPointerIndex(this.mActivePointerId));
       float f2 = f1 - this.mLastMotionX;
-      if ((!this.okz) && (Math.abs(f2) > this.mTouchSlop)) {
-        this.okz = true;
+      if ((!this.rmR) && (Math.abs(f2) > this.mTouchSlop)) {
+        this.rmR = true;
       }
-      if (this.okz)
+      if (this.rmR)
       {
         this.mLastMotionX = f1;
         if ((this.mViewPager.isFakeDragging()) || (this.mViewPager.beginFakeDrag()))
         {
           this.mViewPager.fakeDragBy(f2);
           continue;
-          if (!this.okz)
+          if (!this.rmR)
           {
             i = getCount();
             int k = getWidth();
@@ -400,25 +400,25 @@ public class TitlePageIndicator
             float f3 = paramMotionEvent.getX();
             if (f3 < f1 - f2)
             {
-              if (this.Qld > 0)
+              if (this.XIz > 0)
               {
                 if (j != 3) {
-                  this.mViewPager.setCurrentItem(this.Qld - 1);
+                  this.mViewPager.setCurrentItem(this.XIz - 1);
                 }
-                AppMethodBeat.o(205334);
+                AppMethodBeat.o(198380);
                 return true;
               }
             }
-            else if ((f3 > f2 + f1) && (this.Qld < i - 1))
+            else if ((f3 > f2 + f1) && (this.XIz < i - 1))
             {
               if (j != 3) {
-                this.mViewPager.setCurrentItem(this.Qld + 1);
+                this.mViewPager.setCurrentItem(this.XIz + 1);
               }
-              AppMethodBeat.o(205334);
+              AppMethodBeat.o(198380);
               return true;
             }
           }
-          this.okz = false;
+          this.rmR = false;
           this.mActivePointerId = -1;
           if (this.mViewPager.isFakeDragging())
           {
@@ -445,87 +445,87 @@ public class TitlePageIndicator
   
   public void setCurrentItem(int paramInt)
   {
-    AppMethodBeat.i(205337);
+    AppMethodBeat.i(198393);
     if (this.mViewPager == null)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("ViewPager has not been bound.");
-      AppMethodBeat.o(205337);
+      AppMethodBeat.o(198393);
       throw localIllegalStateException;
     }
     this.mViewPager.setCurrentItem(paramInt);
-    this.Qld = paramInt;
+    this.XIz = paramInt;
     invalidate();
-    AppMethodBeat.o(205337);
+    AppMethodBeat.o(198393);
   }
   
   public void setOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
   {
-    this.Qlc = paramOnPageChangeListener;
+    this.XIy = paramOnPageChangeListener;
   }
   
   public void setSelectedBold(boolean paramBoolean)
   {
-    AppMethodBeat.i(205325);
-    this.Qlh = paramBoolean;
+    AppMethodBeat.i(198348);
+    this.XID = paramBoolean;
     invalidate();
-    AppMethodBeat.o(205325);
+    AppMethodBeat.o(198348);
   }
   
   public void setSelectedColor(int paramInt)
   {
-    AppMethodBeat.i(205324);
-    this.Qlj = paramInt;
+    AppMethodBeat.i(198347);
+    this.XIF = paramInt;
     invalidate();
-    AppMethodBeat.o(205324);
+    AppMethodBeat.o(198347);
   }
   
   public void setTextColor(int paramInt)
   {
-    AppMethodBeat.i(205326);
-    this.Qlg.setColor(paramInt);
-    this.Qli = paramInt;
+    AppMethodBeat.i(198351);
+    this.XIC.setColor(paramInt);
+    this.XIE = paramInt;
     invalidate();
-    AppMethodBeat.o(205326);
+    AppMethodBeat.o(198351);
   }
   
   public void setTextSize(float paramFloat)
   {
-    AppMethodBeat.i(205328);
-    this.Qlg.setTextSize(paramFloat);
+    AppMethodBeat.i(198355);
+    this.XIC.setTextSize(paramFloat);
     invalidate();
-    AppMethodBeat.o(205328);
+    AppMethodBeat.o(198355);
   }
   
   public void setTitlePadding(float paramFloat)
   {
-    AppMethodBeat.i(205329);
-    this.Qlm = paramFloat;
+    AppMethodBeat.i(198357);
+    this.XII = paramFloat;
     invalidate();
-    AppMethodBeat.o(205329);
+    AppMethodBeat.o(198357);
   }
   
   public void setTopPadding(float paramFloat)
   {
-    AppMethodBeat.i(205330);
-    this.Qln = paramFloat;
+    AppMethodBeat.i(198359);
+    this.XIJ = paramFloat;
     invalidate();
-    AppMethodBeat.o(205330);
+    AppMethodBeat.o(198359);
   }
   
   public void setTypeface(Typeface paramTypeface)
   {
-    AppMethodBeat.i(205331);
-    this.Qlg.setTypeface(paramTypeface);
+    AppMethodBeat.i(198360);
+    this.XIC.setTypeface(paramTypeface);
     invalidate();
-    AppMethodBeat.o(205331);
+    AppMethodBeat.o(198360);
   }
   
   public void setViewPager(CustomViewPager paramCustomViewPager)
   {
-    AppMethodBeat.i(205336);
+    AppMethodBeat.i(198388);
     if (this.mViewPager == paramCustomViewPager)
     {
-      AppMethodBeat.o(205336);
+      AppMethodBeat.o(198388);
       return;
     }
     if (this.mViewPager != null) {
@@ -534,34 +534,34 @@ public class TitlePageIndicator
     if (paramCustomViewPager.getAdapter() == null)
     {
       paramCustomViewPager = new IllegalStateException("ViewPager does not have adapter instance.");
-      AppMethodBeat.o(205336);
+      AppMethodBeat.o(198388);
       throw paramCustomViewPager;
     }
     this.mViewPager = paramCustomViewPager;
     this.mViewPager.setOnPageChangeListener(this);
     invalidate();
-    AppMethodBeat.o(205336);
+    AppMethodBeat.o(198388);
   }
   
   static class SavedState
     extends View.BaseSavedState
   {
     public static final Parcelable.Creator<SavedState> CREATOR;
-    int zXP;
+    int FDB;
     
     static
     {
-      AppMethodBeat.i(205320);
+      AppMethodBeat.i(195822);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(205320);
+      AppMethodBeat.o(195822);
     }
     
     private SavedState(Parcel paramParcel)
     {
       super();
-      AppMethodBeat.i(205318);
-      this.zXP = paramParcel.readInt();
-      AppMethodBeat.o(205318);
+      AppMethodBeat.i(195813);
+      this.FDB = paramParcel.readInt();
+      AppMethodBeat.o(195813);
     }
     
     public SavedState(Parcelable paramParcelable)
@@ -571,16 +571,16 @@ public class TitlePageIndicator
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(205319);
+      AppMethodBeat.i(195818);
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeInt(this.zXP);
-      AppMethodBeat.o(205319);
+      paramParcel.writeInt(this.FDB);
+      AppMethodBeat.o(195818);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.indicator.TitlePageIndicator
  * JD-Core Version:    0.7.0.1
  */

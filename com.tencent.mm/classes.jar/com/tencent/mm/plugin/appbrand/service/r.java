@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.service;
 
 import android.content.Context;
 import android.os.Bundle;
-import com.tencent.mm.ag.k.b;
+import com.tencent.mm.aj.k.b;
 import com.tencent.mm.kernel.b.e;
 import com.tencent.mm.kernel.c.a;
 import com.tencent.mm.plugin.appbrand.api.c;
@@ -11,7 +11,7 @@ import com.tencent.mm.plugin.appbrand.api.g;
 import com.tencent.mm.plugin.appbrand.api.i;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 
-@e(c.class)
+@e(gf=c.class)
 public abstract interface r
   extends a
 {
@@ -38,13 +38,13 @@ public abstract interface r
   
   public abstract void b(g paramg, f paramf);
   
-  public abstract boolean bW(String paramString, int paramInt);
+  public abstract boolean cu(String paramString, int paramInt);
   
-  public abstract void ej(String paramString1, String paramString2);
+  public abstract void ex(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.service.r
  * JD-Core Version:    0.7.0.1
  */

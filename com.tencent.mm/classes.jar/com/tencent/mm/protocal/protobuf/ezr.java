@@ -3,41 +3,62 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ezr
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int KLp;
-  public long KMm;
-  public int Ret;
+  public String ORW;
+  public String ORX;
+  public String ORY;
+  public int Utq;
+  public int jDZ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32561);
+    AppMethodBeat.i(250005);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.Ret);
-      paramVarArgs.aM(2, this.KLp);
-      paramVarArgs.bb(3, this.KMm);
-      AppMethodBeat.o(32561);
+      paramVarArgs.aY(1, this.jDZ);
+      if (this.ORW != null) {
+        paramVarArgs.f(2, this.ORW);
+      }
+      if (this.ORX != null) {
+        paramVarArgs.f(3, this.ORX);
+      }
+      if (this.ORY != null) {
+        paramVarArgs.f(4, this.ORY);
+      }
+      paramVarArgs.aY(5, this.Utq);
+      AppMethodBeat.o(250005);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.bu(1, this.Ret);
-      int i = g.a.a.b.b.a.bu(2, this.KLp);
-      int j = g.a.a.b.b.a.r(3, this.KMm);
-      AppMethodBeat.o(32561);
-      return paramInt + 0 + i + j;
+      int i = g.a.a.b.b.a.bM(1, this.jDZ) + 0;
+      paramInt = i;
+      if (this.ORW != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.ORW);
+      }
+      i = paramInt;
+      if (this.ORX != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.ORX);
+      }
+      paramInt = i;
+      if (this.ORY != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.ORY);
+      }
+      i = g.a.a.b.b.a.bM(5, this.Utq);
+      AppMethodBeat.o(250005);
+      return paramInt + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      AppMethodBeat.o(32561);
+      AppMethodBeat.o(250005);
       return 0;
     }
     if (paramInt == 3)
@@ -47,22 +68,30 @@ public final class ezr
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(32561);
+        AppMethodBeat.o(250005);
         return -1;
       case 1: 
-        localezr.Ret = locala.UbS.zi();
-        AppMethodBeat.o(32561);
+        localezr.jDZ = locala.abFh.AK();
+        AppMethodBeat.o(250005);
         return 0;
       case 2: 
-        localezr.KLp = locala.UbS.zi();
-        AppMethodBeat.o(32561);
+        localezr.ORW = locala.abFh.readString();
+        AppMethodBeat.o(250005);
+        return 0;
+      case 3: 
+        localezr.ORX = locala.abFh.readString();
+        AppMethodBeat.o(250005);
+        return 0;
+      case 4: 
+        localezr.ORY = locala.abFh.readString();
+        AppMethodBeat.o(250005);
         return 0;
       }
-      localezr.KMm = locala.UbS.zl();
-      AppMethodBeat.o(32561);
+      localezr.Utq = locala.abFh.AK();
+      AppMethodBeat.o(250005);
       return 0;
     }
-    AppMethodBeat.o(32561);
+    AppMethodBeat.o(250005);
     return -1;
   }
 }

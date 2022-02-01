@@ -1,47 +1,54 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.cd.b;
 import com.tencent.mm.network.b.a;
 import com.tencent.mm.pointers.PByteArray;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.protocal.protobuf.jr;
-import com.tencent.mm.protocal.protobuf.wl;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.jg;
+import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.protocal.protobuf.wn;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class l
 {
-  public static jr a(d paramd)
+  public static jg a(d paramd)
   {
     AppMethodBeat.i(133100);
-    jr localjr = new jr();
-    localjr.KOj = paramd.getClientVersion();
-    localjr.Scene = paramd.getSceneStatus();
-    localjr.rBx = paramd.getUin();
-    localjr.KOi = b.cD(paramd.getDeviceID().getBytes());
-    if (localjr.KOi.zy.length >= 16) {
-      localjr.KOi = localjr.KOi.aiU(16);
+    jg localjg = new jg();
+    localjg.RPe = paramd.getClientVersion();
+    localjg.CPw = paramd.getSceneStatus();
+    localjg.vhf = paramd.getUin();
+    localjg.RPd = b.cU(paramd.getDeviceID().getBytes());
+    if (localjg.RPd.UH.length >= 16) {
+      localjg.RPd = localjg.RPd.arf(16);
     }
-    localjr.KOk = b.cD(paramd.getDeviceType().getBytes());
-    if (localjr.KOk.zy.length >= 132) {
-      localjr.KOk = localjr.KOk.aiU(132);
+    localjg.RPf = b.cU(paramd.getDeviceType().getBytes());
+    if (localjg.RPf.UH.length >= 132) {
+      localjg.RPf = localjg.RPf.arf(132);
     }
-    localjr.KOh = b.cD(paramd.getSessionKey());
-    if (localjr.KOh.zy.length >= 36) {
-      localjr.KOh = localjr.KOh.aiU(36);
+    try
+    {
+      localjg.RPc = b.nz(new String(""), "UTF-8");
+      AppMethodBeat.o(133100);
+      return localjg;
     }
-    AppMethodBeat.o(133100);
-    return localjr;
+    catch (Exception paramd)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.MMBase", paramd.getLocalizedMessage());
+      }
+    }
   }
   
-  public static void a(e parame, BaseResponse paramBaseResponse)
+  public static void a(e parame, jh paramjh)
   {
     AppMethodBeat.i(133101);
-    if (paramBaseResponse.ErrMsg != null)
+    if (paramjh.Tef != null)
     {
-      parame.setErrMsg(paramBaseResponse.ErrMsg.MTo);
+      parame.setErrMsg(paramjh.Tef.Ufy);
       AppMethodBeat.o(133101);
       return;
     }
@@ -52,7 +59,7 @@ public final class l
   
   public static abstract interface a
   {
-    public abstract boolean a(PByteArray paramPByteArray, int paramInt1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2);
+    public abstract boolean a(PByteArray paramPByteArray, int paramInt1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, int paramInt3);
   }
   
   public static abstract interface b
@@ -110,7 +117,7 @@ public final class l
       this.sDeviceType = "";
       this.sDeviceID = "";
       this.iSceneStatus = 0;
-      this.rsaInfo = new ac("", "", 0);
+      this.rsaInfo = ac.hpk();
       this.routeInfo = 0;
       this.ecdhEngine = 0L;
       AppMethodBeat.o(133097);
@@ -125,7 +132,7 @@ public final class l
     {
       String str = "";
       if (this.cgiVerifyKeys != null) {
-        str = this.cgiVerifyKeys.jDC;
+        str = this.cgiVerifyKeys.muf;
       }
       return str;
     }
@@ -134,7 +141,7 @@ public final class l
     {
       String str = "";
       if (this.cgiVerifyKeys != null) {
-        str = this.cgiVerifyKeys.jDD;
+        str = this.cgiVerifyKeys.mug;
       }
       return str;
     }
@@ -268,8 +275,8 @@ public final class l
     {
       AppMethodBeat.i(133098);
       this.rsaInfo = paramac;
-      Log.i("MicroMsg.MMBase.Req", "summerauths setRsaInfo cgi[%s], USE_ECDH[%b], stack[%s]", new Object[] { Integer.valueOf(getCmdId()), Boolean.valueOf(f.KyZ), Util.getStack() });
-      if (f.KyZ) {
+      Log.i("MicroMsg.MMBase.Req", "summerauths setRsaInfo cgi[%s], USE_ECDH[%b], stack[%s]", new Object[] { Integer.valueOf(getCmdId()), Boolean.valueOf(f.RAO), Util.getStack() });
+      if (f.RAO) {
         setUseECDH(true);
       }
       AppMethodBeat.o(133098);
@@ -330,7 +337,7 @@ public final class l
     private long bufferSize = 0L;
     private int iHeadExtFlags = 255;
     private int iRetCode = -99;
-    private wl profile;
+    private wn profile;
     private String sErrMsg = "";
     
     public byte[] getAuthResponse()
@@ -358,7 +365,7 @@ public final class l
       return this.iHeadExtFlags;
     }
     
-    public wl getProfile()
+    public wn getProfile()
     {
       return this.profile;
     }
@@ -390,18 +397,18 @@ public final class l
     
     public void setProfile(byte[] paramArrayOfByte)
     {
-      AppMethodBeat.i(197128);
-      this.profile = new wl();
+      AppMethodBeat.i(197430);
+      this.profile = new wn();
       try
       {
         this.profile.parseFrom(paramArrayOfByte);
-        AppMethodBeat.o(197128);
+        AppMethodBeat.o(197430);
         return;
       }
       catch (Exception paramArrayOfByte)
       {
         Log.e("setProfile", paramArrayOfByte.getLocalizedMessage());
-        AppMethodBeat.o(197128);
+        AppMethodBeat.o(197430);
       }
     }
     
@@ -413,7 +420,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.l
  * JD-Core Version:    0.7.0.1
  */

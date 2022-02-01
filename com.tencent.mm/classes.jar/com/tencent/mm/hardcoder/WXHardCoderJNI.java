@@ -54,7 +54,7 @@ public class WXHardCoderJNI
   public static HashMap<Long, String> flagKeyMap;
   public static boolean foreground = false;
   private static c.b funcRet;
-  private static GetParametersCallback getParametersCallback;
+  private static WXHardCoderJNI.GetParametersCallback getParametersCallback;
   private static h.a hardCoderReporterInfo;
   public static int hcBeginTimeHour = 0;
   public static int hcBeginTimeMin = 0;
@@ -110,36 +110,7 @@ public class WXHardCoderJNI
     hcEndTimeMin = 0;
     sSystemPropertiesClazz = null;
     sGetStringPropsMethod = null;
-    wxHardCoderLog = new d.a()
-    {
-      public final void d(String paramAnonymousString1, String paramAnonymousString2)
-      {
-        AppMethodBeat.i(155945);
-        Log.d(paramAnonymousString1, paramAnonymousString2);
-        AppMethodBeat.o(155945);
-      }
-      
-      public final void e(String paramAnonymousString1, String paramAnonymousString2)
-      {
-        AppMethodBeat.i(155946);
-        Log.e(paramAnonymousString1, paramAnonymousString2);
-        AppMethodBeat.o(155946);
-      }
-      
-      public final void i(String paramAnonymousString1, String paramAnonymousString2)
-      {
-        AppMethodBeat.i(155944);
-        Log.i(paramAnonymousString1, paramAnonymousString2);
-        AppMethodBeat.o(155944);
-      }
-      
-      public final void printErrStackTrace(String paramAnonymousString1, Throwable paramAnonymousThrowable, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-      {
-        AppMethodBeat.i(155947);
-        Log.printErrStackTrace(paramAnonymousString1, paramAnonymousThrowable, paramAnonymousString2, paramAnonymousVarArgs);
-        AppMethodBeat.o(155947);
-      }
-    };
+    wxHardCoderLog = new WXHardCoderJNI.1();
     sceneReportCallback = new c.d()
     {
       public final void sceneReport(int paramAnonymousInt, long paramAnonymousLong)
@@ -256,7 +227,7 @@ public class WXHardCoderJNI
     return bool;
   }
   
-  public static long getParameters(int paramInt, GetParametersCallback paramGetParametersCallback, JSONObject paramJSONObject)
+  public static long getParameters(int paramInt, WXHardCoderJNI.GetParametersCallback paramGetParametersCallback, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(155973);
     paramJSONObject = paramJSONObject.toString();
@@ -277,7 +248,7 @@ public class WXHardCoderJNI
     }
   }
   
-  public static long getParameters(int paramInt, GetParametersCallback paramGetParametersCallback, String... paramVarArgs)
+  public static long getParameters(int paramInt, WXHardCoderJNI.GetParametersCallback paramGetParametersCallback, String... paramVarArgs)
   {
     AppMethodBeat.i(155972);
     long l1 = -1L;
@@ -335,7 +306,7 @@ public class WXHardCoderJNI
       public final Thread newThread(Runnable paramAnonymousRunnable, String paramAnonymousString, int paramAnonymousInt)
       {
         AppMethodBeat.i(155948);
-        paramAnonymousRunnable = com.tencent.f.c.d.b(paramAnonymousString, paramAnonymousRunnable, paramAnonymousInt);
+        paramAnonymousRunnable = com.tencent.e.c.d.b(paramAnonymousString, paramAnonymousRunnable, paramAnonymousInt);
         AppMethodBeat.o(155948);
         return paramAnonymousRunnable;
       }
@@ -500,7 +471,7 @@ public class WXHardCoderJNI
     return l;
   }
   
-  public static int registerGetParametersCallback(int paramInt, GetParametersCallback paramGetParametersCallback, String... paramVarArgs)
+  public static int registerGetParametersCallback(int paramInt, WXHardCoderJNI.GetParametersCallback paramGetParametersCallback, String... paramVarArgs)
   {
     AppMethodBeat.i(155971);
     if (!HardCoderJNI.isCheckEnv())
@@ -802,11 +773,6 @@ public class WXHardCoderJNI
     return paramLong;
   }
   
-  public static abstract interface GetParametersCallback
-  {
-    public abstract void onGetParameters(int paramInt, JSONObject paramJSONObject);
-  }
-  
   public static abstract interface SystemEventCallback
   {
     public abstract void onEvent(int paramInt);
@@ -814,7 +780,7 @@ public class WXHardCoderJNI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.hardcoder.WXHardCoderJNI
  * JD-Core Version:    0.7.0.1
  */

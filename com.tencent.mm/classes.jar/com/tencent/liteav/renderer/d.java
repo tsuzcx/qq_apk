@@ -151,6 +151,38 @@ public class d
     AppMethodBeat.o(16790);
   }
   
+  public void a(final boolean paramBoolean)
+  {
+    AppMethodBeat.i(220261);
+    try
+    {
+      this.b.post(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(220966);
+          if (d.e(d.this) != null)
+          {
+            d.a(d.this, Math.abs(d.f(d.this)));
+            if (paramBoolean) {
+              d.a(d.this, -d.f(d.this));
+            }
+            d.e(d.this).setScaleX(d.f(d.this));
+            d.e(d.this).setScaleY(Math.abs(d.f(d.this)));
+          }
+          AppMethodBeat.o(220966);
+        }
+      });
+      AppMethodBeat.o(220261);
+      return;
+    }
+    catch (Exception localException)
+    {
+      TXCLog.e("TXCTextureViewWrapper", "set mirror failed.", localException);
+      AppMethodBeat.o(220261);
+    }
+  }
+  
   public void b(int paramInt)
   {
     float f2 = 1.0F;
@@ -359,7 +391,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.renderer.d
  * JD-Core Version:    0.7.0.1
  */

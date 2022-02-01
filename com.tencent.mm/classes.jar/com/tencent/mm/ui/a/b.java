@@ -8,31 +8,31 @@ import java.util.List;
 
 public final class b
 {
-  private List<String> OLY;
   private final String TAG;
+  private List<String> Wfx;
   
   public b()
   {
     AppMethodBeat.i(141500);
     this.TAG = "MicroMsg.Accessibility.Tool";
-    this.OLY = new ArrayList();
+    this.Wfx = new ArrayList();
     AppMethodBeat.o(141500);
   }
   
-  public final b blW(String paramString)
+  public final b byv(String paramString)
   {
     AppMethodBeat.i(141501);
-    this.OLY.add(paramString);
+    this.Wfx.add(paramString);
     AppMethodBeat.o(141501);
     return this;
   }
   
-  public final void gt(View paramView)
+  public final void hE(View paramView)
   {
     AppMethodBeat.i(141502);
-    if ((paramView != null) && (this.OLY.size() > 0))
+    if ((paramView != null) && (this.Wfx.size() > 0))
     {
-      Iterator localIterator = this.OLY.iterator();
+      Iterator localIterator = this.Wfx.iterator();
       String str2;
       for (String str1 = ""; localIterator.hasNext(); str1 = str1 + str2 + ",") {
         str2 = (String)localIterator.next();
@@ -44,7 +44,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.a.b
  * JD-Core Version:    0.7.0.1
  */

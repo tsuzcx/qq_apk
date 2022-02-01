@@ -8,16 +8,16 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class b$b
 {
-  public static final int wZQ;
-  public static final int wZR;
-  public static final int wZS;
+  public static final int BLP;
+  public static final int BLQ;
+  public static final int BLR;
   
   static
   {
     AppMethodBeat.i(111811);
-    wZQ = MMApplicationContext.getContext().getResources().getColor(2131099715);
-    wZR = Color.parseColor("#661AAD19");
-    wZS = Color.parseColor("#801AAD19");
+    BLP = MMApplicationContext.getContext().getResources().getColor(o.a.Brand_90);
+    BLQ = Color.parseColor("#661AAD19");
+    BLR = Color.parseColor("#801AAD19");
     AppMethodBeat.o(111811);
   }
 }

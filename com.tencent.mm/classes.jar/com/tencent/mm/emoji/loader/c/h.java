@@ -9,24 +9,24 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/loader/fetcher/FetcherFactory;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "fetch", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "success", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/loader/fetcher/FetcherFactory;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "fetch", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "success", "plugin-emojisdk_release"})
 public final class h
 {
   private static final String TAG = "MicroMsg.EmojiLoader.FetcherFactory";
-  public static final h gWs;
+  public static final h jHn;
   
   static
   {
     AppMethodBeat.i(105443);
-    gWs = new h();
+    jHn = new h();
     TAG = "MicroMsg.EmojiLoader.FetcherFactory";
     AppMethodBeat.o(105443);
   }
   
-  public static void d(EmojiInfo paramEmojiInfo, final b<? super Boolean, x> paramb)
+  public static void c(EmojiInfo paramEmojiInfo, final b<? super Boolean, x> paramb)
   {
     AppMethodBeat.i(105442);
-    p.h(paramEmojiInfo, "emojiInfo");
+    p.k(paramEmojiInfo, "emojiInfo");
     new f(paramEmojiInfo, (m)new a(paramEmojiInfo, paramb));
     AppMethodBeat.o(105442);
   }
@@ -36,7 +36,7 @@ public final class h
     return TAG;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "success", "", "config", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfig;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "success", "", "config", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfig;", "invoke"})
   static final class a
     extends q
     implements m<Boolean, e, x>
@@ -49,7 +49,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.c.h
  * JD-Core Version:    0.7.0.1
  */

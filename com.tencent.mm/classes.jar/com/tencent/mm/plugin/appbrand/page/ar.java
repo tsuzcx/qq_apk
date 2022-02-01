@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.appbrand.page;
 
 public abstract interface ar
-  extends aq
-{}
+{
+  public abstract boolean ceX();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

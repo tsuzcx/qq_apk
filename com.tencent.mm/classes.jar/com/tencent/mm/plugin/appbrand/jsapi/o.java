@@ -1,102 +1,110 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.webkit.JavascriptInterface;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.m.k;
+import com.tencent.mm.plugin.appbrand.utils.z;
+import com.tencent.mm.plugin.appbrand.utils.z.a;
+import com.tencent.mm.plugin.appbrand.utils.z.b;
 import com.tencent.mm.sdk.platformtools.Log;
-import org.json.JSONArray;
+import java.nio.ByteBuffer;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import org.json.JSONObject;
 
-public final class o
+public abstract class o
+  extends d
 {
-  volatile g lxN;
+  protected boolean osB = false;
   
-  public o(g paramg)
+  public final String a(e parame, String paramString, Map<String, ? extends Object> paramMap)
   {
-    this.lxN = paramg;
+    if (z.a(parame.getJsRuntime(), paramMap, (z.a)parame.au(z.a.class)) == z.b.rjd) {
+      return h("fail:convert native buffer parameter fail. native buffer exceed size limit.", null);
+    }
+    return m(paramString, paramMap);
   }
   
-  private static int[] XV(String paramString)
+  public ByteBuffer a(String paramString, k paramk, int paramInt)
   {
-    int i = 0;
-    AppMethodBeat.i(140639);
-    localObject2 = new int[0];
-    Object localObject1 = localObject2;
+    return paramk.P(paramInt, false);
+  }
+  
+  public final String agS(String paramString)
+  {
+    return h(paramString, null);
+  }
+  
+  public boolean bPG()
+  {
+    return false;
+  }
+  
+  public final String h(String paramString, JSONObject paramJSONObject)
+  {
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {
+      localJSONObject = new JSONObject();
+    }
+    if (localJSONObject.has("errMsg"))
+    {
+      paramJSONObject = "api " + getName() + ": Cant put errMsg in res!!!";
+      if (this.osB) {
+        throw new IllegalArgumentException(paramJSONObject);
+      }
+      Log.e("MicroMsg.AppBrandJsApi", paramJSONObject);
+    }
     try
     {
-      JSONArray localJSONArray = new JSONArray(paramString);
-      localObject1 = localObject2;
-      paramString = new int[localJSONArray.length()];
-      for (;;)
-      {
-        localObject1 = paramString;
-        localObject2 = paramString;
-        if (i >= localJSONArray.length()) {
-          break;
-        }
-        localObject1 = paramString;
-        paramString[i] = localJSONArray.getInt(i);
-        i += 1;
-      }
-      return localObject2;
+      localJSONObject.put("errMsg", getName() + ":" + paramString);
+      return localJSONObject.toString();
     }
     catch (Exception paramString)
     {
-      Log.e("MicroMsg.AppBrandJSInterface", paramString.getMessage());
-      localObject2 = localObject1;
-      AppMethodBeat.o(140639);
+      for (;;)
+      {
+        Log.e("MicroMsg.AppBrandJsApi", "makeReturnJson with JSONObject, put errMsg, e=%s", new Object[] { paramString });
+      }
     }
   }
   
-  @JavascriptInterface
-  public final String invokeHandler(String paramString1, String paramString2, int paramInt)
+  public final String m(String paramString, Map<String, ? extends Object> paramMap)
   {
-    AppMethodBeat.i(140637);
-    try
+    String str = paramString;
+    if ("cancel".equals(paramString)) {
+      str = "fail cancel";
+    }
+    if ((!str.startsWith("fail")) && (!str.startsWith("ok")))
     {
-      g localg = this.lxN;
-      if (localg == null)
-      {
-        AppMethodBeat.o(140637);
-        return "";
+      paramString = String.format(Locale.ENGLISH, "api[%s] assert, argument [reason] must start with special prefix", new Object[] { getName() });
+      if (this.osB) {
+        throw new IllegalArgumentException(paramString);
       }
-      paramString1 = localg.y(paramString1, paramString2, paramInt);
-      AppMethodBeat.o(140637);
-      return paramString1;
+      Log.e("MicroMsg.AppBrandJsApi", paramString);
     }
-    catch (Exception paramString1)
-    {
-      Log.printErrStackTrace("MicroMsg.AppBrandJSInterface", paramString1, "invokeHandler", new Object[0]);
-      AppMethodBeat.o(140637);
-      throw paramString1;
+    if ((paramMap instanceof HashMap)) {
+      paramString = paramMap;
     }
-  }
-  
-  @JavascriptInterface
-  public final void publishHandler(String paramString1, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(140636);
-    try
+    while ((paramMap != null) && (paramMap.containsKey("errMsg")))
     {
-      g localg = this.lxN;
-      if (localg == null)
+      paramMap = "api " + getName() + ": Cant put errMsg in res!!!";
+      if (this.osB)
       {
-        AppMethodBeat.o(140636);
-        return;
+        throw new IllegalArgumentException(paramMap);
+        paramString = new HashMap();
       }
-      localg.b(paramString1, paramString2, XV(paramString3));
-      AppMethodBeat.o(140636);
-      return;
+      else
+      {
+        Log.e("MicroMsg.AppBrandJsApi", paramMap);
+      }
     }
-    catch (Exception paramString1)
-    {
-      Log.printErrStackTrace("MicroMsg.AppBrandJSInterface", paramString1, "publishHandler", new Object[0]);
-      AppMethodBeat.o(140636);
-      throw paramString1;
-    }
+    paramString.put("errMsg", getName() + ":" + str);
+    com.tencent.luggage.k.e.e(paramString);
+    return new JSONObject(paramString).toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.o
  * JD-Core Version:    0.7.0.1
  */

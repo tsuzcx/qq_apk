@@ -649,6 +649,7 @@
     <attr name="km" format="reference" />
     <attr name="kn" format="reference" />
     <attr name="ko" format="reference" />
+    <attr name="a6l" format="integer" />
     <attr name="kp">
         <enum name="dkj" value="0" />
         <enum name="dzf" value="1" />
@@ -788,6 +789,7 @@
     </attr>
     <attr name="md" format="string" />
     <attr name="me" format="string" />
+    <attr name="a6o" format="integer" />
     <attr name="mf" format="reference" />
     <attr name="mg" format="reference" />
     <attr name="mh" format="reference" />
@@ -848,6 +850,11 @@
     </attr>
     <attr name="nq" format="string" />
     <attr name="nr" format="color" />
+    <attr name="a6p" format="dimension" />
+    <attr name="a6q" format="reference|color" />
+    <attr name="a6r" format="reference|color" />
+    <attr name="a6s" format="reference|color" />
+    <attr name="a6t" format="dimension" />
     <attr name="ns" format="boolean" />
     <attr name="nt" format="string" />
     <attr name="nu" format="float" />
@@ -858,6 +865,22 @@
     </attr>
     <attr name="nw" format="color" />
     <attr name="nx" format="reference" />
+    <attr name="a6u" format="reference" />
+    <attr name="a6v" format="string" />
+    <attr name="a6w" format="string|dimension" />
+    <attr name="a6x" format="boolean" />
+    <attr name="a6y" format="string|dimension" />
+    <attr name="a6z" format="string|dimension" />
+    <attr name="a70" format="string|dimension" />
+    <attr name="a71" format="boolean" />
+    <attr name="a72" format="string" />
+    <attr name="a73" format="integer" />
+    <attr name="a74" format="string" />
+    <attr name="a75" format="string" />
+    <attr name="a76" format="string" />
+    <attr name="a77" format="string" />
+    <attr name="a78" format="integer" />
+    <attr name="a79" format="integer" />
     <attr name="ny" format="reference" />
     <attr name="nz" format="reference" />
     <attr name="o0">
@@ -933,6 +956,16 @@
         <enum name="i37" value="5" />
     </attr>
     <attr name="p9" format="string" />
+    <attr name="a7_" format="integer" />
+    <attr name="a7a" format="boolean" />
+    <attr name="a7b" format="color" />
+    <attr name="a7c" format="color" />
+    <attr name="a7d" format="dimension" />
+    <attr name="a7e" format="dimension" />
+    <attr name="a7f" format="dimension" />
+    <attr name="a7g" format="dimension" />
+    <attr name="a7h" format="integer" />
+    <attr name="a7i" format="string" />
     <attr name="p_" format="reference" />
     <attr name="pa" format="string" />
     <attr name="pb" format="reference|color" />
@@ -1657,6 +1690,8 @@
     <attr name="a0k" format="reference" />
     <attr name="a0l" format="reference" />
     <attr name="a0m" format="string" />
+    <attr name="a6m" format="string" />
+    <attr name="a6n" format="string" />
     <attr name="a0n" format="reference" />
     <attr name="a0o" format="dimension" />
     <attr name="a0p">
@@ -1853,6 +1888,7 @@
     <attr name="a40" format="reference" />
     <attr name="a41" format="reference" />
     <attr name="a42" format="dimension" />
+    <attr name="a7j" format="string" />
     <attr name="a43" format="boolean" />
     <attr name="a44" format="boolean" />
     <attr name="a45" format="boolean" />
@@ -2011,4 +2047,22 @@
         <enum name="jr1" value="1" />
     </attr>
     <attr name="a6k" format="boolean" />
+    <attr name="a7k" format="dimension" />
+    <attr name="a7l" format="boolean" />
+    <attr name="a7m" format="dimension" />
+    <attr name="a7n" format="dimension" />
+    <attr name="a7o" format="dimension" />
+    <attr name="a7p" format="dimension" />
+    <attr name="a7q" format="color" />
+    <attr name="a7r" format="float" />
+    <attr name="a7s" format="reference" />
+    <attr name="a7t" format="float" />
+    <attr name="a7u" format="float" />
+    <attr name="a7v" format="reference" />
+    <attr name="a7w" format="dimension" />
+    <attr name="a7x" format="dimension" />
+    <attr name="a7y" format="reference" />
+    <attr name="a7z" format="reference" />
+    <attr name="a80" format="reference" />
+    <attr name="a81" format="boolean" />
 </resources>

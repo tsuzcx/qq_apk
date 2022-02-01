@@ -5,13 +5,14 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.plugin.secinforeport.a.d;
 import com.tencent.mm.plugin.wallet.pay.a.a.b;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.FavorPayInfo;
 import com.tencent.mm.plugin.wallet_core.ui.cashier.WcPayCashierDialog;
 import com.tencent.mm.plugin.wallet_core.ui.cashier.WcPayCashierDialog.a;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.a;
@@ -22,26 +23,26 @@ import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 public class WalletBalanceFetchPwdInputUI
   extends WalletBaseUI
 {
-  private String HuW = "";
-  private WcPayCashierDialog HuX;
-  private String lem;
+  private String OmJ = "";
+  private WcPayCashierDialog OmK;
   private String mTitle = "";
+  private String nYA;
   
   /* Error */
-  private void showDialog()
+  private void elK()
   {
     // Byte code:
     //   0: ldc 38
     //   2: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 46	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:HuX	Lcom/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog;
+    //   6: getfield 46	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:OmK	Lcom/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog;
     //   9: ifnull +20 -> 29
     //   12: aload_0
-    //   13: getfield 46	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:HuX	Lcom/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog;
+    //   13: getfield 46	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:OmK	Lcom/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog;
     //   16: invokevirtual 52	com/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog:isShowing	()Z
     //   19: ifeq +10 -> 29
     //   22: aload_0
-    //   23: getfield 46	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:HuX	Lcom/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog;
+    //   23: getfield 46	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:OmK	Lcom/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog;
     //   26: invokevirtual 55	com/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog:dismiss	()V
     //   29: aload_0
     //   30: invokevirtual 59	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:getInput	()Landroid/os/Bundle;
@@ -60,40 +61,40 @@ public class WalletBalanceFetchPwdInputUI
     //   60: astore_3
     //   61: aload_2
     //   62: invokestatic 84	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
-    //   65: ifne +367 -> 432
+    //   65: ifne +368 -> 433
     //   68: new 86	org/json/JSONObject
     //   71: dup
     //   72: aload_2
     //   73: invokespecial 89	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   76: astore 5
-    //   78: new 91	com/tencent/mm/protocal/protobuf/anz
+    //   78: new 91	com/tencent/mm/protocal/protobuf/apa
     //   81: dup
-    //   82: invokespecial 92	com/tencent/mm/protocal/protobuf/anz:<init>	()V
+    //   82: invokespecial 92	com/tencent/mm/protocal/protobuf/apa:<init>	()V
     //   85: astore_2
     //   86: aload_2
     //   87: aload 5
     //   89: ldc 94
     //   91: iconst_0
     //   92: invokevirtual 98	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   95: putfield 102	com/tencent/mm/protocal/protobuf/anz:HZA	I
+    //   95: putfield 102	com/tencent/mm/protocal/protobuf/apa:ORA	I
     //   98: aload_2
     //   99: aload 5
     //   101: ldc 104
     //   103: invokevirtual 107	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   106: putfield 110	com/tencent/mm/protocal/protobuf/anz:LzE	Ljava/lang/String;
+    //   106: putfield 110	com/tencent/mm/protocal/protobuf/apa:SCe	Ljava/lang/String;
     //   109: aload_2
     //   110: aload 5
     //   112: ldc 112
     //   114: invokevirtual 107	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   117: putfield 115	com/tencent/mm/protocal/protobuf/anz:LzF	Ljava/lang/String;
+    //   117: putfield 115	com/tencent/mm/protocal/protobuf/apa:SCf	Ljava/lang/String;
     //   120: aload_2
-    //   121: getfield 102	com/tencent/mm/protocal/protobuf/anz:HZA	I
+    //   121: getfield 102	com/tencent/mm/protocal/protobuf/apa:ORA	I
     //   124: istore_1
     //   125: iload_1
     //   126: iconst_1
-    //   127: if_icmpne +305 -> 432
+    //   127: if_icmpne +306 -> 433
     //   130: aload_2
-    //   131: getfield 110	com/tencent/mm/protocal/protobuf/anz:LzE	Ljava/lang/String;
+    //   131: getfield 110	com/tencent/mm/protocal/protobuf/apa:SCe	Ljava/lang/String;
     //   134: invokestatic 84	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   137: ifne +31 -> 168
     //   140: aload_0
@@ -101,13 +102,13 @@ public class WalletBalanceFetchPwdInputUI
     //   144: dup
     //   145: invokespecial 118	java/lang/StringBuilder:<init>	()V
     //   148: aload_2
-    //   149: getfield 115	com/tencent/mm/protocal/protobuf/anz:LzF	Ljava/lang/String;
+    //   149: getfield 115	com/tencent/mm/protocal/protobuf/apa:SCf	Ljava/lang/String;
     //   152: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   155: aload_2
-    //   156: getfield 110	com/tencent/mm/protocal/protobuf/anz:LzE	Ljava/lang/String;
+    //   156: getfield 110	com/tencent/mm/protocal/protobuf/apa:SCe	Ljava/lang/String;
     //   159: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   162: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   165: putfield 27	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:HuW	Ljava/lang/String;
+    //   165: putfield 27	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:OmJ	Ljava/lang/String;
     //   168: aload 5
     //   170: ldc 128
     //   172: invokevirtual 107	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
@@ -120,30 +121,30 @@ public class WalletBalanceFetchPwdInputUI
     //   188: invokestatic 134	android/util/Base64:decode	(Ljava/lang/String;I)[B
     //   191: astore 5
     //   193: aload_2
-    //   194: new 136	com/tencent/mm/protocal/protobuf/aoa
+    //   194: new 136	com/tencent/mm/protocal/protobuf/apb
     //   197: dup
-    //   198: invokespecial 137	com/tencent/mm/protocal/protobuf/aoa:<init>	()V
+    //   198: invokespecial 137	com/tencent/mm/protocal/protobuf/apb:<init>	()V
     //   201: aload 5
-    //   203: invokevirtual 141	com/tencent/mm/protocal/protobuf/aoa:parseFrom	([B)Lcom/tencent/mm/bw/a;
-    //   206: checkcast 136	com/tencent/mm/protocal/protobuf/aoa
-    //   209: putfield 145	com/tencent/mm/protocal/protobuf/anz:field_area_info	Lcom/tencent/mm/protocal/protobuf/aoa;
+    //   203: invokevirtual 141	com/tencent/mm/protocal/protobuf/apb:parseFrom	([B)Lcom/tencent/mm/cd/a;
+    //   206: checkcast 136	com/tencent/mm/protocal/protobuf/apb
+    //   209: putfield 145	com/tencent/mm/protocal/protobuf/apa:field_area_info	Lcom/tencent/mm/protocal/protobuf/apb;
     //   212: aload_3
     //   213: aload_2
-    //   214: getfield 145	com/tencent/mm/protocal/protobuf/anz:field_area_info	Lcom/tencent/mm/protocal/protobuf/aoa;
-    //   217: getfield 149	com/tencent/mm/protocal/protobuf/aoa:field_info	Ljava/util/LinkedList;
+    //   214: getfield 145	com/tencent/mm/protocal/protobuf/apa:field_area_info	Lcom/tencent/mm/protocal/protobuf/apb;
+    //   217: getfield 149	com/tencent/mm/protocal/protobuf/apb:field_info	Ljava/util/LinkedList;
     //   220: invokeinterface 155 2 0
     //   225: pop
     //   226: iconst_1
     //   227: istore_1
     //   228: aload 4
-    //   230: ifnull +196 -> 426
+    //   230: ifnull +197 -> 427
     //   233: aload 4
-    //   235: getfield 159	com/tencent/mm/plugin/wallet_core/model/Orders:CoZ	D
+    //   235: getfield 159	com/tencent/mm/plugin/wallet_core/model/Orders:Imo	D
     //   238: dconst_0
     //   239: dcmpl
-    //   240: ifle +186 -> 426
+    //   240: ifle +187 -> 427
     //   243: iload_1
-    //   244: ifne +182 -> 426
+    //   244: ifne +183 -> 427
     //   247: aload_0
     //   248: invokevirtual 59	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:getInput	()Landroid/os/Bundle;
     //   251: ldc 161
@@ -158,10 +159,10 @@ public class WalletBalanceFetchPwdInputUI
     //   269: dup
     //   270: iconst_0
     //   271: aload 4
-    //   273: getfield 159	com/tencent/mm/plugin/wallet_core/model/Orders:CoZ	D
+    //   273: getfield 159	com/tencent/mm/plugin/wallet_core/model/Orders:Imo	D
     //   276: aload 4
-    //   278: getfield 166	com/tencent/mm/plugin/wallet_core/model/Orders:AOl	Ljava/lang/String;
-    //   281: invokestatic 172	com/tencent/mm/wallet_core/ui/f:d	(DLjava/lang/String;)Ljava/lang/String;
+    //   278: getfield 166	com/tencent/mm/plugin/wallet_core/model/Orders:GHz	Ljava/lang/String;
+    //   281: invokestatic 172	com/tencent/mm/wallet_core/ui/g:d	(DLjava/lang/String;)Ljava/lang/String;
     //   284: aastore
     //   285: invokestatic 178	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   288: astore_2
@@ -169,31 +170,31 @@ public class WalletBalanceFetchPwdInputUI
     //   290: new 48	com/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog
     //   293: dup
     //   294: aload_0
-    //   295: invokevirtual 182	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:getContext	()Landroid/support/v7/app/AppCompatActivity;
+    //   295: invokevirtual 182	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:getContext	()Landroidx/appcompat/app/AppCompatActivity;
     //   298: invokespecial 185	com/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog:<init>	(Landroid/content/Context;)V
-    //   301: putfield 46	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:HuX	Lcom/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog;
+    //   301: putfield 46	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:OmK	Lcom/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog;
     //   304: aload_0
-    //   305: getfield 46	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:HuX	Lcom/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog;
+    //   305: getfield 46	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:OmK	Lcom/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog;
     //   308: aload_0
     //   309: getfield 25	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:mTitle	Ljava/lang/String;
     //   312: aload_0
-    //   313: getfield 27	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:HuW	Ljava/lang/String;
+    //   313: getfield 27	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:OmJ	Ljava/lang/String;
     //   316: aload_2
     //   317: aload_3
     //   318: invokevirtual 188	com/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V
     //   321: aload_0
-    //   322: getfield 46	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:HuX	Lcom/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog;
+    //   322: getfield 46	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:OmK	Lcom/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog;
     //   325: new 8	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI$2
     //   328: dup
     //   329: aload_0
     //   330: invokespecial 191	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI$2:<init>	(Lcom/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI;)V
-    //   333: putfield 195	com/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog:IlX	Lcom/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog$a;
+    //   333: putfield 195	com/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog:Pep	Lcom/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog$a;
     //   336: aload_0
-    //   337: getfield 46	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:HuX	Lcom/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog;
+    //   337: getfield 46	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:OmK	Lcom/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog;
     //   340: invokevirtual 198	com/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog:show	()V
     //   343: aload_0
     //   344: aload_0
-    //   345: getfield 46	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:HuX	Lcom/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog;
+    //   345: getfield 46	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:OmK	Lcom/tencent/mm/plugin/wallet_core/ui/cashier/WcPayCashierDialog;
     //   348: invokevirtual 202	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:addDialog	(Landroid/app/Dialog;)V
     //   351: ldc 38
     //   353: invokestatic 205	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -210,60 +211,60 @@ public class WalletBalanceFetchPwdInputUI
     //   372: goto -144 -> 228
     //   375: aload_0
     //   376: invokevirtual 217	com/tencent/mm/plugin/wallet/balance/ui/WalletBalanceFetchPwdInputUI:getResources	()Landroid/content/res/Resources;
-    //   379: ldc 218
-    //   381: iconst_1
-    //   382: anewarray 163	java/lang/Object
-    //   385: dup
-    //   386: iconst_0
-    //   387: aload 4
-    //   389: getfield 159	com/tencent/mm/plugin/wallet_core/model/Orders:CoZ	D
-    //   392: aload 4
-    //   394: getfield 166	com/tencent/mm/plugin/wallet_core/model/Orders:AOl	Ljava/lang/String;
-    //   397: invokestatic 172	com/tencent/mm/wallet_core/ui/f:d	(DLjava/lang/String;)Ljava/lang/String;
-    //   400: aastore
-    //   401: invokevirtual 223	android/content/res/Resources:getString	(I[Ljava/lang/Object;)Ljava/lang/String;
-    //   404: astore_2
-    //   405: goto -116 -> 289
-    //   408: astore_2
-    //   409: iconst_1
-    //   410: istore_1
-    //   411: goto -51 -> 360
-    //   414: astore_2
-    //   415: iconst_0
-    //   416: istore_1
-    //   417: goto -57 -> 360
-    //   420: astore_2
-    //   421: iconst_1
-    //   422: istore_1
-    //   423: goto -63 -> 360
-    //   426: ldc 23
-    //   428: astore_2
-    //   429: goto -140 -> 289
-    //   432: iconst_0
-    //   433: istore_1
-    //   434: goto -206 -> 228
+    //   379: getstatic 222	com/tencent/mm/plugin/wxpay/a$i:wallet_balance_additional_deduction_fee_tips_2	I
+    //   382: iconst_1
+    //   383: anewarray 163	java/lang/Object
+    //   386: dup
+    //   387: iconst_0
+    //   388: aload 4
+    //   390: getfield 159	com/tencent/mm/plugin/wallet_core/model/Orders:Imo	D
+    //   393: aload 4
+    //   395: getfield 166	com/tencent/mm/plugin/wallet_core/model/Orders:GHz	Ljava/lang/String;
+    //   398: invokestatic 172	com/tencent/mm/wallet_core/ui/g:d	(DLjava/lang/String;)Ljava/lang/String;
+    //   401: aastore
+    //   402: invokevirtual 227	android/content/res/Resources:getString	(I[Ljava/lang/Object;)Ljava/lang/String;
+    //   405: astore_2
+    //   406: goto -117 -> 289
+    //   409: astore_2
+    //   410: iconst_1
+    //   411: istore_1
+    //   412: goto -52 -> 360
+    //   415: astore_2
+    //   416: iconst_0
+    //   417: istore_1
+    //   418: goto -58 -> 360
+    //   421: astore_2
+    //   422: iconst_1
+    //   423: istore_1
+    //   424: goto -64 -> 360
+    //   427: ldc 23
+    //   429: astore_2
+    //   430: goto -141 -> 289
+    //   433: iconst_0
+    //   434: istore_1
+    //   435: goto -207 -> 228
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	437	0	this	WalletBalanceFetchPwdInputUI
-    //   124	310	1	i	int
+    //   0	438	0	this	WalletBalanceFetchPwdInputUI
+    //   124	311	1	i	int
     //   52	265	2	localObject1	Object
     //   357	6	2	localJSONException1	org.json.JSONException
-    //   404	1	2	str1	String
-    //   408	1	2	localJSONException2	org.json.JSONException
-    //   414	1	2	localIOException1	java.io.IOException
-    //   420	1	2	localIOException2	java.io.IOException
-    //   428	1	2	str2	String
+    //   405	1	2	str1	String
+    //   409	1	2	localJSONException2	org.json.JSONException
+    //   415	1	2	localIOException1	java.io.IOException
+    //   421	1	2	localIOException2	java.io.IOException
+    //   429	1	2	str2	String
     //   60	258	3	localArrayList	java.util.ArrayList
-    //   41	352	4	localOrders	com.tencent.mm.plugin.wallet_core.model.Orders
+    //   41	353	4	localOrders	com.tencent.mm.plugin.wallet_core.model.Orders
     //   76	126	5	localObject2	Object
     // Exception table:
     //   from	to	target	type
     //   68	125	357	org/json/JSONException
-    //   130	168	408	org/json/JSONException
-    //   168	226	408	org/json/JSONException
-    //   68	125	414	java/io/IOException
-    //   130	168	420	java/io/IOException
-    //   168	226	420	java/io/IOException
+    //   130	168	409	org/json/JSONException
+    //   168	226	409	org/json/JSONException
+    //   68	125	415	java/io/IOException
+    //   130	168	421	java/io/IOException
+    //   168	226	421	java/io/IOException
   }
   
   public void cleanUiData(int paramInt)
@@ -276,7 +277,7 @@ public class WalletBalanceFetchPwdInputUI
       return;
     }
     if (paramInt == 1) {
-      showDialog();
+      elK();
     }
     AppMethodBeat.o(68562);
   }
@@ -293,13 +294,13 @@ public class WalletBalanceFetchPwdInputUI
     super.onCreate(paramBundle);
     setContentViewVisibility(4);
     this.mTitle = getInput().getString("key_pwd_cash_title");
-    this.HuW = getInput().getString("key_pwd_cash_money");
-    this.lem = getInput().getString("key_report_session_id");
-    Log.i("MicroMsg.WalletBalanceFetchPwdInputUI", "hy: money : %s, title : %s", new Object[] { Util.nullAsNil(this.HuW), Util.nullAsNil(this.mTitle) });
-    if ((!Util.isNullOrNil(this.mTitle)) && (!Util.isNullOrNil(this.HuW))) {}
+    this.OmJ = getInput().getString("key_pwd_cash_money");
+    this.nYA = getInput().getString("key_report_session_id");
+    Log.i("MicroMsg.WalletBalanceFetchPwdInputUI", "hy: money : %s, title : %s", new Object[] { Util.nullAsNil(this.OmJ), Util.nullAsNil(this.mTitle) });
+    if ((!Util.isNullOrNil(this.mTitle)) && (!Util.isNullOrNil(this.OmJ))) {}
     while (i == 0)
     {
-      com.tencent.mm.ui.base.h.a(getContext(), 2131767999, 0, new DialogInterface.OnClickListener()
+      com.tencent.mm.ui.base.h.a(getContext(), a.i.wallet_order_info_err, 0, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -312,8 +313,8 @@ public class WalletBalanceFetchPwdInputUI
       return;
       i = 0;
     }
-    d.CWG.asyncReportPaySecurityInfoThroughCgi();
-    showDialog();
+    d.Jcm.asyncReportPaySecurityInfoThroughCgi();
+    elK();
     AppMethodBeat.o(68559);
   }
   

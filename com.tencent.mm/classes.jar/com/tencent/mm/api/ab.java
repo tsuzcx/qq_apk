@@ -6,116 +6,121 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class ab
 {
-  public static ab.b diQ;
-  protected a diP;
+  public static b fax;
+  protected a faw;
   
-  public abstract boolean Ul();
+  public abstract boolean YD();
   
-  public abstract x Um();
+  public abstract x YE();
   
-  public void Un() {}
+  public void YF() {}
   
   public void a(a parama)
   {
-    this.diP = parama;
+    this.faw = parama;
   }
   
   public abstract void a(u paramu);
   
-  public abstract e bB(Context paramContext);
+  public abstract e bA(Context paramContext);
   
   public abstract void onDestroy();
   
-  public static final class a
+  public static class a
   {
     public int backgroundColor;
-    public ab.c diR;
-    public boolean diS;
-    public boolean diT;
-    public boolean diU;
-    public Rect diV;
+    public Rect byG;
+    public boolean faA;
+    public boolean faB;
+    public Rect faC;
+    public ab.c fay;
+    public boolean faz;
     public String path;
-    public Rect rect;
     
     public a(String paramString, ab.c paramc, boolean paramBoolean1, boolean paramBoolean2, Rect paramRect1, boolean paramBoolean3, Rect paramRect2, int paramInt)
     {
-      this.diR = paramc;
+      this.fay = paramc;
       this.path = paramString;
-      this.diS = paramBoolean1;
-      this.diT = paramBoolean2;
-      this.rect = paramRect1;
-      this.diU = paramBoolean3;
-      this.diV = paramRect2;
+      this.faz = paramBoolean1;
+      this.faA = paramBoolean2;
+      this.byG = paramRect1;
+      this.faB = paramBoolean3;
+      this.faC = paramRect2;
       this.backgroundColor = paramInt;
     }
     
     public static final class a
     {
       int backgroundColor;
-      public ab.c diR;
-      public boolean diS;
-      boolean diU = false;
-      Rect diV;
-      public boolean diW = true;
-      public Rect diX;
+      boolean faB = false;
+      Rect faC;
+      public boolean faD = true;
+      public Rect faE;
+      public ab.c fay;
+      public boolean faz;
       public String path;
       
-      public final a VH()
+      public final a a(ab.c paramc)
       {
-        this.diW = false;
+        this.fay = paramc;
         return this;
       }
       
-      public final a VI()
+      public final a aac()
+      {
+        this.faD = false;
+        return this;
+      }
+      
+      public final a aad()
       {
         this.backgroundColor = 0;
         return this;
       }
       
-      public final ab.a VJ()
+      public final ab.a aae()
       {
         AppMethodBeat.i(149428);
-        ab.a locala = new ab.a(this.path, this.diR, this.diS, this.diW, this.diX, this.diU, this.diV, this.backgroundColor);
+        ab.a locala = new ab.a(this.path, this.fay, this.faz, this.faD, this.faE, this.faB, this.faC, this.backgroundColor);
         AppMethodBeat.o(149428);
         return locala;
       }
       
-      public final a a(ab.c paramc)
+      public final a df(boolean paramBoolean)
       {
-        this.diR = paramc;
+        this.faz = paramBoolean;
         return this;
       }
       
-      public final a cJ(boolean paramBoolean)
+      public final a dg(boolean paramBoolean)
       {
-        this.diS = paramBoolean;
+        this.faB = paramBoolean;
         return this;
       }
       
-      public final a cK(boolean paramBoolean)
-      {
-        this.diU = paramBoolean;
-        return this;
-      }
-      
-      public final a fN(String paramString)
+      public final a gx(String paramString)
       {
         this.path = paramString;
         return this;
       }
       
-      public final a i(Rect paramRect)
+      public final a n(Rect paramRect)
       {
-        this.diV = paramRect;
+        this.faC = paramRect;
         return this;
       }
       
-      public final a j(Rect paramRect)
+      public final a o(Rect paramRect)
       {
-        this.diX = paramRect;
+        this.faE = paramRect;
         return this;
       }
     }
+  }
+  
+  public static abstract interface b
+  {
+    public abstract ab YG();
   }
   
   public static enum c
@@ -123,10 +128,10 @@ public abstract class ab
     static
     {
       AppMethodBeat.i(149431);
-      diY = new c("VIDEO", 0);
-      diZ = new c("PHOTO", 1);
-      dja = new c("SCREEN", 2);
-      djb = new c[] { diY, diZ, dja };
+      faF = new c("VIDEO", 0);
+      faG = new c("PHOTO", 1);
+      faH = new c("SCREEN", 2);
+      faI = new c[] { faF, faG, faH };
       AppMethodBeat.o(149431);
     }
     
@@ -135,7 +140,7 @@ public abstract class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.api.ab
  * JD-Core Version:    0.7.0.1
  */

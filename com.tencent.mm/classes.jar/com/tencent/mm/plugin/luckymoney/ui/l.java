@@ -13,36 +13,36 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class l
 {
-  public static void a(Context paramContext, l.a parama)
+  private static void a(Context paramContext, int paramInt, l.a parama)
   {
-    AppMethodBeat.i(65971);
+    AppMethodBeat.i(272504);
     if ((paramContext == null) || (parama == null))
     {
-      Log.e("MicroMsg.LuckySoundUtil", "play Err context:%s pathId:%d speekeron:%s looping:%b", new Object[] { paramContext, Integer.valueOf(2131762576), parama, Boolean.FALSE });
-      AppMethodBeat.o(65971);
+      Log.e("MicroMsg.LuckySoundUtil", "play Err context:%s pathId:%d speekeron:%s looping:%b", new Object[] { paramContext, Integer.valueOf(paramInt), parama, Boolean.FALSE });
+      AppMethodBeat.o(272504);
       return;
     }
-    if (!b.apN())
+    if (!b.awg())
     {
-      AppMethodBeat.o(65971);
+      AppMethodBeat.o(272504);
       return;
     }
-    if (!b.apR())
+    if (!b.awk())
     {
-      AppMethodBeat.o(65971);
+      AppMethodBeat.o(272504);
       return;
     }
-    String str = paramContext.getString(2131762576);
+    String str = paramContext.getString(paramInt);
     k localk = new k();
-    if (parama != l.a.zjb) {
-      if (parama != l.a.zjc) {
-        break label240;
+    if (parama != l.a.EOr) {
+      if (parama != l.a.EOs) {
+        break label241;
       }
     }
     for (int i = 5;; i = 0)
     {
       localk.setAudioStreamType(i);
-      Log.i("MicroMsg.LuckySoundUtil", "play start mp:%d path:%s context:%s pathId:%d speakerOn:%s looping:%b ", new Object[] { Integer.valueOf(localk.hashCode()), str, paramContext, Integer.valueOf(2131762576), parama, Boolean.FALSE });
+      Log.i("MicroMsg.LuckySoundUtil", "play start mp:%d path:%s context:%s pathId:%d speakerOn:%s looping:%b ", new Object[] { Integer.valueOf(localk.hashCode()), str, paramContext, Integer.valueOf(paramInt), parama, Boolean.FALSE });
       try
       {
         paramContext = paramContext.getAssets().openFd(str);
@@ -78,22 +78,29 @@ public final class l
             }
           }
         });
-        AppMethodBeat.o(65971);
+        AppMethodBeat.o(272504);
         return;
       }
       catch (Exception paramContext)
       {
-        label240:
-        Log.e("MicroMsg.LuckySoundUtil", "play failed pathId:%d e:%s", new Object[] { Integer.valueOf(2131762576), paramContext.getMessage() });
+        label241:
+        Log.e("MicroMsg.LuckySoundUtil", "play failed pathId:%d e:%s", new Object[] { Integer.valueOf(paramInt), paramContext.getMessage() });
         Log.printErrStackTrace("MicroMsg.LuckySoundUtil", paramContext, "", new Object[0]);
-        AppMethodBeat.o(65971);
+        AppMethodBeat.o(272504);
       }
     }
+  }
+  
+  public static void play(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(272503);
+    a(paramContext, paramInt, l.a.EOr);
+    AppMethodBeat.o(272503);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.l
  * JD-Core Version:    0.7.0.1
  */

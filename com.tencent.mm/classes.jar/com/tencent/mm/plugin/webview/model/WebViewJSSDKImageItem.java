@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,7 +18,7 @@ public class WebViewJSSDKImageItem
   implements Parcelable
 {
   public static final Parcelable.Creator<WebViewJSSDKImageItem> CREATOR;
-  public boolean xlR;
+  public boolean BYl;
   
   static
   {
@@ -39,19 +39,19 @@ public class WebViewJSSDKImageItem
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.xlR = bool;
+      this.BYl = bool;
       AppMethodBeat.o(79014);
       return;
       bool = false;
     }
   }
   
-  public final void cb(JSONObject paramJSONObject)
+  public final void cm(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(182695);
-    super.cb(paramJSONObject);
+    super.cm(paramJSONObject);
     if (paramJSONObject != null) {
-      this.xlR = paramJSONObject.optBoolean("isGif");
+      this.BYl = paramJSONObject.optBoolean("isGif");
     }
     AppMethodBeat.o(182695);
   }
@@ -61,13 +61,13 @@ public class WebViewJSSDKImageItem
     return 0;
   }
   
-  public final JSONObject gWR()
+  public final JSONObject gVK()
   {
     AppMethodBeat.i(182696);
-    JSONObject localJSONObject = super.gWR();
+    JSONObject localJSONObject = super.gVK();
     try
     {
-      localJSONObject.put("isGif", this.xlR);
+      localJSONObject.put("isGif", this.BYl);
       label21:
       AppMethodBeat.o(182696);
       return localJSONObject;
@@ -78,53 +78,48 @@ public class WebViewJSSDKImageItem
     }
   }
   
-  public final WebViewJSSDKFileItem gWS()
+  public final WebViewJSSDKFileItem gVL()
   {
     AppMethodBeat.i(79012);
-    this.dJX = ay.aYY(this.laR);
-    hdZ();
+    this.fCM = az.bkS(this.nVa);
+    gVO();
     AppMethodBeat.o(79012);
     return this;
   }
   
-  public final String getFileType()
-  {
-    return "image";
-  }
-  
-  public final String hdY()
+  public final String gVM()
   {
     return "jpeg";
   }
   
-  public final void hdZ()
+  public final void gVO()
   {
     AppMethodBeat.i(79011);
-    if (!new o(this.laR).exists())
+    if (!new q(this.nVa).ifE())
     {
       Log.i("MicroMsg.WebViewJSSDkImageItem", "Original file not existed");
       AppMethodBeat.o(79011);
       return;
     }
-    if (this.lPx == null) {
-      this.lPx = ay.aYW(System.currentTimeMillis());
+    if (this.oLR == null) {
+      this.oLR = az.getFilePath(System.currentTimeMillis());
     }
     for (;;)
     {
-      Bitmap localBitmap = BitmapUtil.extractThumbNail(this.laR, 640, 640, false);
+      Bitmap localBitmap = BitmapUtil.extractThumbNail(this.nVa, 640, 640, false);
       if (localBitmap != null)
       {
         Log.i("MicroMsg.WebViewJSSDkImageItem", "extract thumbnail bitmap");
-        localBitmap = BitmapUtil.rotate(localBitmap, BackwardSupportUtil.ExifHelper.getExifOrientation(this.laR));
+        localBitmap = BitmapUtil.rotate(localBitmap, BackwardSupportUtil.ExifHelper.getExifOrientation(this.nVa));
         if (localBitmap == null) {}
       }
       try
       {
-        BitmapUtil.saveBitmapToImage(localBitmap, 100, Bitmap.CompressFormat.JPEG, this.lPx, true);
-        Log.i("MicroMsg.WebViewJSSDkImageItem", "Thumb Path: %s", new Object[] { this.lPx });
+        BitmapUtil.saveBitmapToImage(localBitmap, 100, Bitmap.CompressFormat.JPEG, this.oLR, true);
+        Log.i("MicroMsg.WebViewJSSDkImageItem", "Thumb Path: %s", new Object[] { this.oLR });
         AppMethodBeat.o(79011);
         return;
-        if (!this.lPx.equals(this.laR)) {
+        if (!this.oLR.equals(this.nVa)) {
           continue;
         }
         Log.i("MicroMsg.WebViewJSSDkImageItem", "Thumb file is original file");
@@ -141,11 +136,16 @@ public class WebViewJSSDKImageItem
     }
   }
   
+  public final String getFileType()
+  {
+    return "image";
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(79013);
     super.writeToParcel(paramParcel, paramInt);
-    if (this.xlR) {}
+    if (this.BYl) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
@@ -156,7 +156,7 @@ public class WebViewJSSDKImageItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.WebViewJSSDKImageItem
  * JD-Core Version:    0.7.0.1
  */

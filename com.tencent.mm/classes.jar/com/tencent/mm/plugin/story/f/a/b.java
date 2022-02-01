@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.story.f.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.bw.a;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
 import com.tencent.mm.platformtools.z;
@@ -13,31 +13,31 @@ import com.tencent.mm.plugin.story.f.j;
 import com.tencent.mm.plugin.story.f.j.b;
 import com.tencent.mm.plugin.story.f.k;
 import com.tencent.mm.plugin.story.i.f;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.edb;
-import com.tencent.mm.protocal.protobuf.edc;
-import com.tencent.mm.protocal.protobuf.edd;
+import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.enc;
+import com.tencent.mm.protocal.protobuf.end;
+import com.tencent.mm.protocal.protobuf.ene;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.IAutoDBItem;
 import java.util.Iterator;
 import kotlin.g.b.p;
 import kotlin.t;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/cgi/NetSceneStoryChatRoomSync;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "chatRoom", "", "(Ljava/lang/String;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "getChatRoom", "()Ljava/lang/String;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResp", "Lcom/tencent/mm/protocal/protobuf/StoryChatRoomSyncResponse;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "irr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-story_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/model/cgi/NetSceneStoryChatRoomSync;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "chatRoom", "", "(Ljava/lang/String;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "getChatRoom", "()Ljava/lang/String;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResp", "Lcom/tencent/mm/protocal/protobuf/StoryChatRoomSyncResponse;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "irr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-story_release"})
 public final class b
   extends q
   implements com.tencent.mm.network.m
 {
-  public static final a Fnz;
+  public static final a LHB;
   private static final String TAG = "MicroMsg.StoryCgi.NetSceneStoryChatRoomSync";
   private i callback;
-  public final String jVv;
+  public final String mMI;
   public final d rr;
   
   static
   {
     AppMethodBeat.i(118799);
-    Fnz = new a((byte)0);
+    LHB = new a((byte)0);
     TAG = "MicroMsg.StoryCgi.NetSceneStoryChatRoomSync";
     AppMethodBeat.o(118799);
   }
@@ -45,35 +45,35 @@ public final class b
   public b(String paramString)
   {
     AppMethodBeat.i(118798);
-    this.jVv = paramString;
+    this.mMI = paramString;
     paramString = new d.a();
-    paramString.c((a)new edc());
-    paramString.d((a)new edd());
-    paramString.MB("/cgi-bin/micromsg-bin/mmstorychatroomsync");
-    paramString.sG(998);
-    paramString.sI(0);
-    paramString.sJ(0);
-    paramString = paramString.aXF();
-    p.g(paramString, "builder.buildInstance()");
+    paramString.c((a)new end());
+    paramString.d((a)new ene());
+    paramString.TW("/cgi-bin/micromsg-bin/mmstorychatroomsync");
+    paramString.vD(998);
+    paramString.vF(0);
+    paramString.vG(0);
+    paramString = paramString.bgN();
+    p.j(paramString, "builder.buildInstance()");
     this.rr = paramString;
-    paramString = this.rr.aYJ();
+    paramString = this.rr.bhX();
     if (paramString == null)
     {
       paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StoryChatRoomSyncRequest");
       AppMethodBeat.o(118798);
       throw paramString;
     }
-    edc localedc = (edc)paramString;
-    paramString = j.Fmy;
-    String str = j.b.fau();
-    paramString = j.Fmy;
-    paramString = j.b.foe().aSB(this.jVv);
-    localedc.UserName = str;
-    localedc.KGO = this.jVv;
+    end localend = (end)paramString;
+    paramString = j.LGA;
+    String str = j.b.fOo();
+    paramString = j.LGA;
+    paramString = j.b.gcy().bdF(this.mMI);
+    localend.UserName = str;
+    localend.RIi = this.mMI;
     paramString = paramString.field_extbuf;
     if (paramString != null)
     {
-      paramString = z.aC(paramString);
+      paramString = z.aN(paramString);
       if (paramString != null) {}
     }
     else
@@ -82,8 +82,8 @@ public final class b
     }
     for (;;)
     {
-      localedc.Ndv = paramString;
-      Log.i(TAG, "req userName " + str + " chatRoomName " + this.jVv + " buf " + localedc.Ndv);
+      localend.UpS = paramString;
+      Log.i(TAG, "req userName " + str + " chatRoomName " + this.mMI + " buf " + localend.UpS);
       AppMethodBeat.o(118798);
       return;
     }
@@ -92,8 +92,8 @@ public final class b
   public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(118797);
-    p.h(paramg, "dispatcher");
-    p.h(parami, "callback");
+    p.k(paramg, "dispatcher");
+    p.k(parami, "callback");
     this.callback = parami;
     int i = dispatch(paramg, (s)this.rr, (com.tencent.mm.network.m)this);
     AppMethodBeat.o(118797);
@@ -114,52 +114,52 @@ public final class b
     }
     for (;;)
     {
-      paramArrayOfByte = (edd)this.rr.aYK();
+      paramArrayOfByte = (ene)this.rr.bhY();
       if (paramArrayOfByte != null)
       {
-        params = j.Fmy;
-        Object localObject = j.b.foe().aSB(this.jVv);
-        params = paramArrayOfByte.Ndv;
+        params = j.LGA;
+        Object localObject = j.b.gcy().bdF(this.mMI);
+        params = paramArrayOfByte.UpS;
         if (params != null) {}
         try
         {
-          for (params = params.getBufferToBytes();; params = null)
+          for (params = params.Tkb.UH;; params = null)
           {
             ((com.tencent.mm.plugin.story.i.l)localObject).field_extbuf = params;
-            Log.i(TAG, "onGYNetEnd: count " + paramArrayOfByte.Ndw);
+            Log.i(TAG, "onGYNetEnd: count " + paramArrayOfByte.UpT);
             if (paramInt1 == 0) {
-              break label493;
+              break label496;
             }
             ((com.tencent.mm.plugin.story.i.l)localObject).field_nextSyncTime = (60000L + System.currentTimeMillis());
-            params = j.Fmy;
-            j.b.foe().replace((IAutoDBItem)localObject);
-            Log.i(TAG, "response: count " + paramArrayOfByte.Ndw + ", interval " + paramArrayOfByte.Ndy);
-            params = paramArrayOfByte.Ndx;
-            p.g(params, "resp.SyncInfoList");
+            params = j.LGA;
+            j.b.gcy().replace((IAutoDBItem)localObject);
+            Log.i(TAG, "response: count " + paramArrayOfByte.UpT + ", interval " + paramArrayOfByte.UpV);
+            params = paramArrayOfByte.UpU;
+            p.j(params, "resp.SyncInfoList");
             paramArrayOfByte = ((Iterable)params).iterator();
             for (;;)
             {
               if (!paramArrayOfByte.hasNext()) {
-                break label521;
+                break label524;
               }
-              localObject = (edb)paramArrayOfByte.next();
+              localObject = (enc)paramArrayOfByte.next();
               if (localObject == null) {
                 break;
               }
-              params = ((edb)localObject).UserName;
-              if ((params != null) && (((edb)localObject).ThumbUrl != null))
+              params = ((enc)localObject).UserName;
+              if ((params != null) && (((enc)localObject).ThumbUrl != null))
               {
-                params = k.FmH;
-                params = ((edb)localObject).UserName;
-                p.g(params, "it.UserName");
-                params = k.aRS(params);
-                Log.d(TAG, "fetch " + ((edb)localObject).UserName + ' ' + ((edb)localObject).Nds + ' ' + ((edb)localObject).Ndt + ", oldId " + params.field_syncId);
-                if (params.field_syncId != ((edb)localObject).Nds)
+                params = k.LGJ;
+                params = ((enc)localObject).UserName;
+                p.j(params, "it.UserName");
+                params = k.bcW(params);
+                Log.d(TAG, "fetch " + ((enc)localObject).UserName + ' ' + ((enc)localObject).UpP + ' ' + ((enc)localObject).UpQ + ", oldId " + params.field_syncId);
+                if (params.field_syncId != ((enc)localObject).UpP)
                 {
-                  params = k.FmH;
-                  params = ((edb)localObject).UserName;
-                  p.g(params, "it.UserName");
-                  k.a(params, ((edb)localObject).Nds, ((edb)localObject).Ndt, ((edb)localObject).ThumbUrl, ((edb)localObject).xLk, 0L);
+                  params = k.LGJ;
+                  params = ((enc)localObject).UserName;
+                  p.j(params, "it.UserName");
+                  k.a(params, ((enc)localObject).UpP, ((enc)localObject).UpQ, ((enc)localObject).ThumbUrl, ((enc)localObject).CPs, 0L);
                 }
               }
             }
@@ -174,29 +174,29 @@ public final class b
             Log.printDebugStack("safeBufferToByte", "", new Object[] { params });
             params = null;
             continue;
-            label493:
-            ((com.tencent.mm.plugin.story.i.l)localObject).field_nextSyncTime = (paramArrayOfByte.Ndy * 1000L + System.currentTimeMillis());
+            label496:
+            ((com.tencent.mm.plugin.story.i.l)localObject).field_nextSyncTime = (paramArrayOfByte.UpV * 1000L + System.currentTimeMillis());
             continue;
             params = null;
           }
         }
       }
     }
-    label521:
+    label524:
     params = this.callback;
     if (params == null) {
-      p.btv("callback");
+      p.bGy("callback");
     }
     params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
     AppMethodBeat.o(118796);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/cgi/NetSceneStoryChatRoomSync$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/model/cgi/NetSceneStoryChatRoomSync$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.a.b
  * JD-Core Version:    0.7.0.1
  */

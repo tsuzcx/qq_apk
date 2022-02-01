@@ -13,37 +13,35 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
 import com.tencent.mm.plugin.account.friend.a.z;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
 
 public class RegByMobileVoiceVerifyUI
   extends MMActivity
   implements i
 {
-  private String dSf;
-  private String kbV;
-  private String klo;
-  private com.tencent.mm.modelfriend.a kqU;
-  private z kqV;
-  private int kqW = 0;
+  private TextView bFR;
+  private String fLC;
   private String languageCode;
-  private TextView vr;
+  private String mTu;
+  private String nde;
+  private com.tencent.mm.modelfriend.a niH;
+  private z niI;
+  private int niJ = 0;
   
   public int getLayoutId()
   {
-    return 2131493230;
+    return r.g.bindmcontact_voice_verify;
   }
   
   public void initView()
   {
     AppMethodBeat.i(128633);
-    setMMTitle(2131756660);
+    setMMTitle(r.j.bind_mcontact_voice_verify_voice_title);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -55,19 +53,19 @@ public class RegByMobileVoiceVerifyUI
         return true;
       }
     });
-    this.vr = ((TextView)findViewById(2131303005));
-    Button localButton = (Button)findViewById(2131297410);
-    this.klo = RegByMobileVoiceVerifySelectUI.Ty(this.dSf);
-    this.vr.setText(this.klo);
-    this.languageCode = com.tencent.mm.aw.b.Ph(this.dSf);
-    findViewById(2131303643).setOnClickListener(new View.OnClickListener()
+    this.bFR = ((TextView)findViewById(r.f.languagename));
+    Button localButton = (Button)findViewById(r.f.bind_mcontact_voice_verify_btn);
+    this.nde = RegByMobileVoiceVerifySelectUI.abe(this.fLC);
+    this.bFR.setText(this.nde);
+    this.languageCode = com.tencent.mm.az.b.WE(this.fLC);
+    findViewById(r.f.ll_current_language).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(128625);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/RegByMobileVoiceVerifyUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/ui/RegByMobileVoiceVerifyUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         RegByMobileVoiceVerifyUI.this.startActivityForResult(new Intent(RegByMobileVoiceVerifyUI.this, RegByMobileVoiceVerifySelectUI.class).putExtra("voice_verify_code", RegByMobileVoiceVerifyUI.a(RegByMobileVoiceVerifyUI.this)), 10000);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/RegByMobileVoiceVerifyUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(128625);
@@ -79,13 +77,13 @@ public class RegByMobileVoiceVerifyUI
       {
         AppMethodBeat.i(128628);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/RegByMobileVoiceVerifyUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/ui/RegByMobileVoiceVerifyUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if ((RegByMobileVoiceVerifyUI.b(RegByMobileVoiceVerifyUI.this) == 0) || (RegByMobileVoiceVerifyUI.b(RegByMobileVoiceVerifyUI.this) == 2) || (RegByMobileVoiceVerifyUI.b(RegByMobileVoiceVerifyUI.this) == 3))
         {
           RegByMobileVoiceVerifyUI.a(RegByMobileVoiceVerifyUI.this, new com.tencent.mm.modelfriend.a(RegByMobileVoiceVerifyUI.c(RegByMobileVoiceVerifyUI.this), RegByMobileVoiceVerifyUI.d(RegByMobileVoiceVerifyUI.this), "", 1, RegByMobileVoiceVerifyUI.a(RegByMobileVoiceVerifyUI.this)));
-          g.azz().a(RegByMobileVoiceVerifyUI.e(RegByMobileVoiceVerifyUI.this), 0);
-          h.a(RegByMobileVoiceVerifyUI.this, 2131756657, 2131755998, new DialogInterface.OnClickListener()
+          com.tencent.mm.kernel.h.aGY().a(RegByMobileVoiceVerifyUI.e(RegByMobileVoiceVerifyUI.this), 0);
+          com.tencent.mm.ui.base.h.a(RegByMobileVoiceVerifyUI.this, r.j.bind_mcontact_voice_verify_select_tips, r.j.app_tip, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
@@ -103,8 +101,8 @@ public class RegByMobileVoiceVerifyUI
           if ((RegByMobileVoiceVerifyUI.b(RegByMobileVoiceVerifyUI.this) == 4) || (RegByMobileVoiceVerifyUI.b(RegByMobileVoiceVerifyUI.this) == 1))
           {
             RegByMobileVoiceVerifyUI.a(RegByMobileVoiceVerifyUI.this, new z(RegByMobileVoiceVerifyUI.c(RegByMobileVoiceVerifyUI.this), 1, "", 1, RegByMobileVoiceVerifyUI.a(RegByMobileVoiceVerifyUI.this)));
-            g.azz().a(RegByMobileVoiceVerifyUI.f(RegByMobileVoiceVerifyUI.this), 0);
-            h.a(RegByMobileVoiceVerifyUI.this, 2131756657, 2131755998, new DialogInterface.OnClickListener()
+            com.tencent.mm.kernel.h.aGY().a(RegByMobileVoiceVerifyUI.f(RegByMobileVoiceVerifyUI.this), 0);
+            com.tencent.mm.ui.base.h.a(RegByMobileVoiceVerifyUI.this, r.j.bind_mcontact_voice_verify_select_tips, r.j.app_tip, new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
               {
@@ -131,9 +129,9 @@ public class RegByMobileVoiceVerifyUI
         AppMethodBeat.o(128634);
         return;
       }
-      this.klo = paramIntent.getStringExtra("voice_verify_language");
+      this.nde = paramIntent.getStringExtra("voice_verify_language");
       this.languageCode = paramIntent.getStringExtra("voice_verify_code");
-      this.vr.setText(this.klo);
+      this.bFR.setText(this.nde);
     }
     AppMethodBeat.o(128634);
   }
@@ -142,19 +140,19 @@ public class RegByMobileVoiceVerifyUI
   {
     AppMethodBeat.i(128629);
     super.onCreate(paramBundle);
-    this.dSf = getIntent().getExtras().getString("bindmcontact_mobile");
-    this.kqW = getIntent().getExtras().getInt("voice_verify_type");
-    if ((this.kqW == 0) || (this.kqW == 2) || (this.kqW == 3)) {
-      g.azz().a(145, this);
+    this.fLC = getIntent().getExtras().getString("bindmcontact_mobile");
+    this.niJ = getIntent().getExtras().getInt("voice_verify_type");
+    if ((this.niJ == 0) || (this.niJ == 2) || (this.niJ == 3)) {
+      com.tencent.mm.kernel.h.aGY().a(145, this);
     }
     for (;;)
     {
-      this.kbV = com.tencent.mm.plugin.b.a.bpZ();
+      this.mTu = com.tencent.mm.plugin.b.a.bAt();
       initView();
       AppMethodBeat.o(128629);
       return;
-      if ((this.kqW == 4) || (this.kqW == 1)) {
-        g.azz().a(132, this);
+      if ((this.niJ == 4) || (this.niJ == 1)) {
+        com.tencent.mm.kernel.h.aGY().a(132, this);
       }
     }
   }
@@ -163,15 +161,15 @@ public class RegByMobileVoiceVerifyUI
   {
     AppMethodBeat.i(128631);
     super.onDestroy();
-    g.azz().b(132, this);
-    g.azz().b(145, this);
-    if ((this.kqW == 0) || (this.kqW == 2) || (this.kqW == 3))
+    com.tencent.mm.kernel.h.aGY().b(132, this);
+    com.tencent.mm.kernel.h.aGY().b(145, this);
+    if ((this.niJ == 0) || (this.niJ == 2) || (this.niJ == 3))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      g.aAf();
-      localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.azt()).append(",").append(getClass().getName()).append(",R200_500,");
-      g.aAf();
-      com.tencent.mm.plugin.b.a.j(false, com.tencent.mm.kernel.a.FN("R200_500") + ",2");
+      com.tencent.mm.kernel.h.aHE();
+      localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.b.aGR()).append(",").append(getClass().getName()).append(",R200_500,");
+      com.tencent.mm.kernel.h.aHE();
+      com.tencent.mm.plugin.b.a.m(false, com.tencent.mm.kernel.b.MN("R200_500") + ",2");
     }
     AppMethodBeat.o(128631);
   }
@@ -181,7 +179,7 @@ public class RegByMobileVoiceVerifyUI
     AppMethodBeat.i(128632);
     if (paramInt == 4)
     {
-      com.tencent.mm.plugin.b.a.bwV(this.kbV);
+      com.tencent.mm.plugin.b.a.bkD(this.mTu);
       hideVKB();
       finish();
       AppMethodBeat.o(128632);
@@ -196,14 +194,14 @@ public class RegByMobileVoiceVerifyUI
   {
     AppMethodBeat.i(128630);
     super.onResume();
-    if ((this.kqW == 0) || (this.kqW == 2) || (this.kqW == 3))
+    if ((this.niJ == 0) || (this.niJ == 2) || (this.niJ == 3))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      g.aAf();
-      localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.azt()).append(",").append(getClass().getName()).append(",R200_500,");
-      g.aAf();
-      com.tencent.mm.plugin.b.a.j(true, com.tencent.mm.kernel.a.FN("R200_500") + ",1");
-      com.tencent.mm.plugin.b.a.bwU("R200_500");
+      com.tencent.mm.kernel.h.aHE();
+      localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.b.aGR()).append(",").append(getClass().getName()).append(",R200_500,");
+      com.tencent.mm.kernel.h.aHE();
+      com.tencent.mm.plugin.b.a.m(true, com.tencent.mm.kernel.b.MN("R200_500") + ",1");
+      com.tencent.mm.plugin.b.a.bgi("R200_500");
     }
     AppMethodBeat.o(128630);
   }
@@ -223,7 +221,7 @@ public class RegByMobileVoiceVerifyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.RegByMobileVoiceVerifyUI
  * JD-Core Version:    0.7.0.1
  */

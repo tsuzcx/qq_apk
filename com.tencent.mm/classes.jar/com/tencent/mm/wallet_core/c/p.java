@@ -1,9 +1,6 @@
 package com.tencent.mm.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MD5Util;
@@ -15,43 +12,43 @@ import org.json.JSONObject;
 public final class p
   extends m
 {
-  private int RtU;
-  private a RtV;
-  private boolean ebI;
+  private int YVt;
+  private a YVu;
+  private boolean fVK;
   
   public p(String paramString, int paramInt)
   {
-    AppMethodBeat.i(214333);
-    this.RtU = 0;
-    this.ebI = true;
-    this.RtV = null;
+    AppMethodBeat.i(222594);
+    this.YVt = 0;
+    this.fVK = true;
+    this.YVu = null;
     HashMap localHashMap1 = new HashMap();
     HashMap localHashMap2 = new HashMap();
-    this.RtU = 1;
+    this.YVt = 1;
     baseRequset(localHashMap1);
-    localHashMap1.put("type", com.tencent.mm.compatible.util.q.encode("1"));
-    localHashMap1.put("id_no", com.tencent.mm.compatible.util.q.encode(paramString));
-    localHashMap1.put("id_type", com.tencent.mm.compatible.util.q.encode(String.valueOf(paramInt)));
+    localHashMap1.put("type", com.tencent.mm.compatible.util.q.aT("1"));
+    localHashMap1.put("id_no", com.tencent.mm.compatible.util.q.aT(paramString));
+    localHashMap1.put("id_type", com.tencent.mm.compatible.util.q.aT(String.valueOf(paramInt)));
     setRequestData(localHashMap1);
     setWXRequestData(localHashMap2);
-    AppMethodBeat.o(214333);
+    AppMethodBeat.o(222594);
   }
   
   public p(String paramString1, String paramString2, a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(72785);
-    this.RtU = 0;
-    this.ebI = true;
-    this.RtV = null;
+    this.YVt = 0;
+    this.fVK = true;
+    this.YVu = null;
     HashMap localHashMap1 = new HashMap();
     HashMap localHashMap2 = new HashMap();
-    this.ebI = paramBoolean;
-    this.RtU = 2;
+    this.fVK = paramBoolean;
+    this.YVt = 2;
     baseRequset(localHashMap1);
-    localHashMap1.put("type", com.tencent.mm.compatible.util.q.encode("2"));
-    localHashMap1.put("crt_sms", com.tencent.mm.compatible.util.q.encode(paramString1));
-    localHashMap1.put("reqkey", com.tencent.mm.compatible.util.q.encode(paramString2));
-    this.RtV = parama;
+    localHashMap1.put("type", com.tencent.mm.compatible.util.q.aT("2"));
+    localHashMap1.put("crt_sms", com.tencent.mm.compatible.util.q.aT(paramString1));
+    localHashMap1.put("reqkey", com.tencent.mm.compatible.util.q.aT(paramString2));
+    this.YVu = parama;
     setRequestData(localHashMap1);
     setWXRequestData(localHashMap2);
     AppMethodBeat.o(72785);
@@ -60,19 +57,19 @@ public final class p
   public p(String paramString1, String paramString2, String paramString3, a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(72786);
-    this.RtU = 0;
-    this.ebI = true;
-    this.RtV = null;
+    this.YVt = 0;
+    this.fVK = true;
+    this.YVu = null;
     HashMap localHashMap1 = new HashMap();
     HashMap localHashMap2 = new HashMap();
-    this.RtU = 4;
-    this.RtV = parama;
-    this.ebI = paramBoolean;
+    this.YVt = 4;
+    this.YVu = parama;
+    this.fVK = paramBoolean;
     baseRequset(localHashMap1);
-    localHashMap1.put("type", com.tencent.mm.compatible.util.q.encode("4"));
-    localHashMap1.put("id_type", com.tencent.mm.compatible.util.q.encode(paramString1));
-    localHashMap1.put("cre_tail", com.tencent.mm.compatible.util.q.encode(paramString2));
-    localHashMap1.put("reqkey", com.tencent.mm.compatible.util.q.encode(paramString3));
+    localHashMap1.put("type", com.tencent.mm.compatible.util.q.aT("4"));
+    localHashMap1.put("id_type", com.tencent.mm.compatible.util.q.aT(paramString1));
+    localHashMap1.put("cre_tail", com.tencent.mm.compatible.util.q.aT(paramString2));
+    localHashMap1.put("reqkey", com.tencent.mm.compatible.util.q.aT(paramString3));
     setRequestData(localHashMap1);
     setWXRequestData(localHashMap2);
     AppMethodBeat.o(72786);
@@ -82,12 +79,12 @@ public final class p
   {
     int k = 0;
     AppMethodBeat.i(72783);
-    g.aAi();
-    g.aAf();
-    Object localObject3 = com.tencent.mm.b.p.getString(a.getUin());
-    String str1 = com.tencent.mm.compatible.deviceinfo.q.dr(false);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHE();
+    Object localObject3 = com.tencent.mm.b.p.getString(com.tencent.mm.kernel.b.getUin());
+    String str1 = com.tencent.mm.compatible.deviceinfo.q.dR(false);
     byte[] arrayOfByte = new byte[16];
-    Object localObject2 = y.hhp().getBytes();
+    Object localObject2 = y.iiR().getBytes();
     if (localObject2 != null)
     {
       localObject1 = localObject2;
@@ -117,20 +114,20 @@ public final class p
     String str2 = MD5Util.getMD5String((String)localObject3 + (String)localObject2 + new String(arrayOfByte));
     Log.i("MicroMsg.NetSceneGendigitalcert", "salt " + new String(arrayOfByte));
     Log.i("MicroMsg.NetSceneGendigitalcert", "crt_csr uin: %s: devideid: %s crt: %s", new Object[] { localObject3, str1, str2 });
-    localObject3 = b.hhj();
-    com.tencent.mm.wallet_core.b.hgC();
+    localObject3 = b.iiL();
+    com.tencent.mm.wallet_core.b.iie();
     i = k;
-    if (com.tencent.mm.wallet_core.b.hgF()) {
+    if (com.tencent.mm.wallet_core.b.iih()) {
       i = 1;
     }
-    localObject3 = ((b)localObject3).hr(str2, i);
+    localObject3 = ((b)localObject3).ia(str2, i);
     try
     {
-      paramMap.put("sn_salt", com.tencent.mm.compatible.util.q.encode((String)localObject1));
-      paramMap.put("crt_csr", com.tencent.mm.compatible.util.q.encode((String)localObject3));
+      paramMap.put("sn_salt", com.tencent.mm.compatible.util.q.aT((String)localObject1));
+      paramMap.put("crt_csr", com.tencent.mm.compatible.util.q.aT((String)localObject3));
       paramMap.put("crt_device_id", localObject2);
-      paramMap.put("device_os", d.ics);
-      paramMap.put("device_name", d.KyL);
+      paramMap.put("device_os", d.kQZ);
+      paramMap.put("device_name", d.RAz);
       AppMethodBeat.o(72783);
       return;
     }
@@ -157,7 +154,7 @@ public final class p
   
   public final boolean isBlock()
   {
-    return this.ebI;
+    return this.fVK;
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
@@ -170,27 +167,27 @@ public final class p
       {
         paramString = paramJSONObject.optString("crt_crt");
         paramJSONObject = paramJSONObject.optString("crt_no");
-        h.CyF.idkeyStat(414L, 0L, 1L, true);
-        boolean bool = b.hhj().importCert(paramJSONObject, paramString);
-        ad.bpn(paramJSONObject);
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(414L, 0L, 1L, true);
+        boolean bool = b.iiL().importCert(paramJSONObject, paramString);
+        ad.bCk(paramJSONObject);
         if (bool)
         {
-          h.CyF.idkeyStat(414L, 1L, 1L, true);
+          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(414L, 1L, 1L, true);
           Log.i("MicroMsg.NetSceneGendigitalcert", "importCert crt_crt success");
-          if (this.RtU == 1)
+          if (this.YVt == 1)
           {
-            h.CyF.a(13731, new Object[] { Integer.valueOf(3) });
+            com.tencent.mm.plugin.report.service.h.IzE.a(13731, new Object[] { Integer.valueOf(3) });
             Log.i("MicroMsg.NetSceneGendigitalcert", "_crt_crt %s _crt_no %s", new Object[] { MD5Util.getMD5String(paramString), paramJSONObject });
             AppMethodBeat.o(72787);
           }
         }
         else
         {
-          h.CyF.idkeyStat(414L, 2L, 1L, true);
+          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(414L, 2L, 1L, true);
           Log.e("MicroMsg.NetSceneGendigitalcert", "importCert crt_crt fail");
           continue;
         }
-        if (this.RtU != 2) {
+        if (this.YVt != 2) {
           continue;
         }
       }
@@ -200,38 +197,38 @@ public final class p
         AppMethodBeat.o(72787);
         return;
       }
-      h.CyF.a(13731, new Object[] { Integer.valueOf(7) });
+      com.tencent.mm.plugin.report.service.h.IzE.a(13731, new Object[] { Integer.valueOf(7) });
     }
   }
   
   public final void onGYNetEnd2(e parame, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72788);
-    b.hhj().hhk();
+    b.iiL().iiM();
     if (parame.errCode != 0)
     {
-      if (this.RtU != 1) {
+      if (this.YVt != 1) {
         break label85;
       }
-      h.CyF.a(13731, new Object[] { Integer.valueOf(4) });
+      com.tencent.mm.plugin.report.service.h.IzE.a(13731, new Object[] { Integer.valueOf(4) });
     }
     for (;;)
     {
-      if ((this.RtV != null) && ((!this.ebI) || (parame.errCode == 0))) {
-        this.RtV.fTo();
+      if ((this.YVu != null) && ((!this.fVK) || (parame.errCode == 0))) {
+        this.YVu.gLU();
       }
       AppMethodBeat.o(72788);
       return;
       label85:
-      if (this.RtU == 2) {
-        h.CyF.a(13731, new Object[] { Integer.valueOf(8) });
+      if (this.YVt == 2) {
+        com.tencent.mm.plugin.report.service.h.IzE.a(13731, new Object[] { Integer.valueOf(8) });
       }
     }
   }
   
   public static abstract interface a
   {
-    public abstract void fTo();
+    public abstract void gLU();
   }
 }
 

@@ -1,59 +1,53 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class dkf
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int Category;
-  public int MOb;
-  public int MOc;
-  public LinkedList<String> MOd;
-  public int MOe;
-  
-  public dkf()
-  {
-    AppMethodBeat.i(117893);
-    this.MOd = new LinkedList();
-    AppMethodBeat.o(117893);
-  }
+  public int TRE;
+  public String TRF;
+  public String lpr;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117894);
+    AppMethodBeat.i(124538);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.MOb);
-      paramVarArgs.aM(2, this.MOc);
-      paramVarArgs.aM(3, this.Category);
-      paramVarArgs.e(4, 1, this.MOd);
-      paramVarArgs.aM(5, this.MOe);
-      AppMethodBeat.o(117894);
+      paramVarArgs.aY(1, this.TRE);
+      if (this.TRF != null) {
+        paramVarArgs.f(2, this.TRF);
+      }
+      if (this.lpr != null) {
+        paramVarArgs.f(3, this.lpr);
+      }
+      AppMethodBeat.o(124538);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.bu(1, this.MOb);
-      int i = g.a.a.b.b.a.bu(2, this.MOc);
-      int j = g.a.a.b.b.a.bu(3, this.Category);
-      int k = g.a.a.a.c(4, 1, this.MOd);
-      int m = g.a.a.b.b.a.bu(5, this.MOe);
-      AppMethodBeat.o(117894);
-      return paramInt + 0 + i + j + k + m;
+      int i = g.a.a.b.b.a.bM(1, this.TRE) + 0;
+      paramInt = i;
+      if (this.TRF != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.TRF);
+      }
+      i = paramInt;
+      if (this.lpr != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.lpr);
+      }
+      AppMethodBeat.o(124538);
+      return i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.MOd.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      AppMethodBeat.o(117894);
+      AppMethodBeat.o(124538);
       return 0;
     }
     if (paramInt == 3)
@@ -63,30 +57,22 @@ public final class dkf
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(117894);
+        AppMethodBeat.o(124538);
         return -1;
       case 1: 
-        localdkf.MOb = locala.UbS.zi();
-        AppMethodBeat.o(117894);
+        localdkf.TRE = locala.abFh.AK();
+        AppMethodBeat.o(124538);
         return 0;
       case 2: 
-        localdkf.MOc = locala.UbS.zi();
-        AppMethodBeat.o(117894);
-        return 0;
-      case 3: 
-        localdkf.Category = locala.UbS.zi();
-        AppMethodBeat.o(117894);
-        return 0;
-      case 4: 
-        localdkf.MOd.add(locala.UbS.readString());
-        AppMethodBeat.o(117894);
+        localdkf.TRF = locala.abFh.readString();
+        AppMethodBeat.o(124538);
         return 0;
       }
-      localdkf.MOe = locala.UbS.zi();
-      AppMethodBeat.o(117894);
+      localdkf.lpr = locala.abFh.readString();
+      AppMethodBeat.o(124538);
       return 0;
     }
-    AppMethodBeat.o(117894);
+    AppMethodBeat.o(124538);
     return -1;
   }
 }

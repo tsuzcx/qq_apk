@@ -43,18 +43,18 @@ class TextureFilter
   
   public TextureFilter()
   {
-    AppMethodBeat.i(197336);
+    AppMethodBeat.i(211222);
     this.TAG = ("TextureFilter@" + Integer.toHexString(hashCode()));
     this.shaderIndexes = new int[2];
     this.outputTextureInfo = null;
     this.outputFrameBufferId = -1;
     Logger.d(this.TAG, "TextureFilter() called");
-    AppMethodBeat.o(197336);
+    AppMethodBeat.o(211222);
   }
   
   private void checkAndInitFrameBuffer(TextureInfo paramTextureInfo)
   {
-    AppMethodBeat.i(197339);
+    AppMethodBeat.i(211225);
     int j = paramTextureInfo.getFrameBuffer();
     int i = j;
     if (j == -1)
@@ -71,7 +71,7 @@ class TextureFilter
       if (GLES20.glCheckFramebufferStatus(36160) != 36053)
       {
         new RuntimeException("EGL error encountered: FramebufferStatus is not complete.");
-        AppMethodBeat.o(197339);
+        AppMethodBeat.o(211225);
         return;
       }
       GLES20.glBindFramebuffer(36160, 0);
@@ -79,39 +79,39 @@ class TextureFilter
     this.outputFrameBufferId = i;
     paramTextureInfo.setFrameBuffer(i);
     this.outputTextureInfo = paramTextureInfo;
-    AppMethodBeat.o(197339);
+    AppMethodBeat.o(211225);
   }
   
   private void finishDraw(TextureInfo paramTextureInfo)
   {
-    AppMethodBeat.i(197346);
+    AppMethodBeat.i(211238);
     GLES20.glActiveTexture(33984);
     GLES20.glBindTexture(paramTextureInfo.textureType, 0);
-    AppMethodBeat.o(197346);
+    AppMethodBeat.o(211238);
   }
   
   private void initShaderForTextureInfo(TextureInfo paramTextureInfo)
   {
-    AppMethodBeat.i(197341);
+    AppMethodBeat.i(211227);
     if (paramTextureInfo.textureType == 36197)
     {
       initShaders("uniform vec2 uScreenSize;\nuniform vec2 uTextureSize;\nuniform mat3 uMatrix;\nuniform mat3 stMatrix;\nattribute vec2 aPosition;\nvarying vec2 vTextureCoord;\nvoid main() {\n  vec3 position = uMatrix * vec3(aPosition, 1);\n  vec2 clipSpace = (position.xy / uScreenSize) * 2.0 - 1.0;\n  gl_Position = vec4(clipSpace, 0, 1);\n  vec3 coord = vec3(aPosition / uTextureSize, 1);\n  vTextureCoord = (stMatrix * coord).xy;\n}\n", "#extension GL_OES_EGL_image_external : require\nuniform samplerExternalOES sTexture;\nprecision mediump float;\nvarying vec2 vTextureCoord;\nuniform float uAlpha;\nvoid main() {\n  vec4 color = texture2D(sTexture, vTextureCoord);\n  gl_FragColor = mix(vec4(0,0,0,1), color, uAlpha);\n}\n");
-      AppMethodBeat.o(197341);
+      AppMethodBeat.o(211227);
       return;
     }
     initShaders("uniform vec2 uScreenSize;\nuniform vec2 uTextureSize;\nuniform mat3 uMatrix;\nuniform mat3 stMatrix;\nattribute vec2 aPosition;\nvarying vec2 vTextureCoord;\nvoid main() {\n  vec3 position = uMatrix * vec3(aPosition, 1);\n  vec2 clipSpace = (position.xy / uScreenSize) * 2.0 - 1.0;\n  gl_Position = vec4(clipSpace, 0, 1);\n  vec3 coord = vec3(aPosition / uTextureSize, 1);\n  vTextureCoord = (stMatrix * coord).xy;\n}\n", "uniform sampler2D sTexture;\nprecision mediump float;\nvarying vec2 vTextureCoord;\nuniform float uAlpha;\nvoid main() {\n  vec4 color = texture2D(sTexture, vTextureCoord);\n  gl_FragColor = mix(vec4(0,0,0,1), color, uAlpha);\n}\n");
-    AppMethodBeat.o(197341);
+    AppMethodBeat.o(211227);
   }
   
   private void initShaders(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(197342);
+    AppMethodBeat.i(211229);
     this.triangleVertices = ByteBuffer.allocateDirect(64).order(ByteOrder.nativeOrder()).asFloatBuffer();
     this.program = Program.createProgram(paramString1, paramString2, this.shaderIndexes);
     if (this.program == 0)
     {
       new RuntimeException("failed creating program");
-      AppMethodBeat.o(197342);
+      AppMethodBeat.o(211229);
       return;
     }
     this.aPositionHandle = GLES20.glGetAttribLocation(this.program, "aPosition");
@@ -119,7 +119,7 @@ class TextureFilter
     if (this.aPositionHandle == -1)
     {
       new RuntimeException("Could not get attribute location for aPosition");
-      AppMethodBeat.o(197342);
+      AppMethodBeat.o(211229);
       return;
     }
     this.uMatrixHandle = GLES20.glGetUniformLocation(this.program, "uMatrix");
@@ -127,7 +127,7 @@ class TextureFilter
     if (this.uMatrixHandle == -1)
     {
       new RuntimeException("Could not get uniform location for uMatrix");
-      AppMethodBeat.o(197342);
+      AppMethodBeat.o(211229);
       return;
     }
     this.uAlphaHandle = GLES20.glGetUniformLocation(this.program, "uAlpha");
@@ -135,7 +135,7 @@ class TextureFilter
     if (this.uAlphaHandle == -1)
     {
       new RuntimeException("Could not get uniform location for uAlpha");
-      AppMethodBeat.o(197342);
+      AppMethodBeat.o(211229);
       return;
     }
     this.stMatrixHandle = GLES20.glGetUniformLocation(this.program, "stMatrix");
@@ -143,7 +143,7 @@ class TextureFilter
     if (this.stMatrixHandle == -1)
     {
       new RuntimeException("Could not get uniform location for stMatrix");
-      AppMethodBeat.o(197342);
+      AppMethodBeat.o(211229);
       return;
     }
     this.uScreenSizeHandle = GLES20.glGetUniformLocation(this.program, "uScreenSize");
@@ -151,7 +151,7 @@ class TextureFilter
     if (this.uScreenSizeHandle == -1)
     {
       new RuntimeException("Could not get uniform location for uScreenSize");
-      AppMethodBeat.o(197342);
+      AppMethodBeat.o(211229);
       return;
     }
     this.uTextureSizeHandle = GLES20.glGetUniformLocation(this.program, "uTextureSize");
@@ -159,34 +159,34 @@ class TextureFilter
     if (this.uTextureSizeHandle == -1) {
       new RuntimeException("Could not get uniform location for uTextureSize");
     }
-    AppMethodBeat.o(197342);
+    AppMethodBeat.o(211229);
   }
   
   private boolean isEqualsCurrentOutputTexture(TextureInfo paramTextureInfo)
   {
-    AppMethodBeat.i(197338);
+    AppMethodBeat.i(211224);
     if (this.outputTextureInfo == null)
     {
-      AppMethodBeat.o(197338);
+      AppMethodBeat.o(211224);
       return false;
     }
     if (this.outputTextureInfo.equals(paramTextureInfo))
     {
-      AppMethodBeat.o(197338);
+      AppMethodBeat.o(211224);
       return true;
     }
     if ((this.outputTextureInfo.textureID == paramTextureInfo.textureID) && (this.outputTextureInfo.width == paramTextureInfo.width) && (this.outputTextureInfo.height == paramTextureInfo.height))
     {
-      AppMethodBeat.o(197338);
+      AppMethodBeat.o(211224);
       return true;
     }
-    AppMethodBeat.o(197338);
+    AppMethodBeat.o(211224);
     return false;
   }
   
   private void prepareDraw(TextureInfo paramTextureInfo, float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(197345);
+    AppMethodBeat.i(211236);
     GLES20.glActiveTexture(33984);
     GLES20.glBindTexture(paramTextureInfo.textureType, paramTextureInfo.textureID);
     this.triangleVertices.position(0);
@@ -197,15 +197,15 @@ class TextureFilter
     GLES20.glUniformMatrix3fv(this.uMatrixHandle, 1, false, paramArrayOfFloat, 0);
     GLES20.glUniform2f(this.uTextureSizeHandle, paramTextureInfo.width, paramTextureInfo.height);
     GLES20.glUniform2f(this.uScreenSizeHandle, this.rendererWidth, this.rendererHeight);
-    AppMethodBeat.o(197345);
+    AppMethodBeat.o(211236);
   }
   
   public TextureInfo applyFilter(TextureInfo paramTextureInfo, Matrix paramMatrix1, Matrix paramMatrix2, float paramFloat, CGRect paramCGRect)
   {
-    AppMethodBeat.i(197340);
+    AppMethodBeat.i(211226);
     if (paramTextureInfo == null)
     {
-      AppMethodBeat.o(197340);
+      AppMethodBeat.o(211226);
       return null;
     }
     if (this.glBlendStateCache == null) {
@@ -271,7 +271,7 @@ class TextureFilter
       }
       this.glBlendStateCache.restore();
       paramTextureInfo = this.outputTextureInfo;
-      AppMethodBeat.o(197340);
+      AppMethodBeat.o(211226);
       return paramTextureInfo;
       paramCGRect.size.width = Math.min(paramTextureInfo.width, paramCGRect.size.width);
       paramCGRect.size.height = Math.min(paramTextureInfo.height, paramCGRect.size.height);
@@ -284,26 +284,26 @@ class TextureFilter
   
   public void clearBufferBuffer(int paramInt)
   {
-    AppMethodBeat.i(197343);
+    AppMethodBeat.i(211232);
     clearBufferBuffer(paramInt, 0.0F);
-    AppMethodBeat.o(197343);
+    AppMethodBeat.o(211232);
   }
   
   public void clearBufferBuffer(int paramInt, float paramFloat)
   {
-    AppMethodBeat.i(197344);
+    AppMethodBeat.i(211235);
     if (this.outputFrameBufferId != -1)
     {
       GLES20.glBindFramebuffer(36160, this.outputFrameBufferId);
       GLES20.glClearColor(((0xFF0000 & paramInt) >> 16) / 255.0F, ((0xFF00 & paramInt) >> 8) / 255.0F, (paramInt & 0xFF) / 255.0F, paramFloat);
       GLES20.glClear(16384);
     }
-    AppMethodBeat.o(197344);
+    AppMethodBeat.o(211235);
   }
   
   public void release()
   {
-    AppMethodBeat.i(197347);
+    AppMethodBeat.i(211240);
     Logger.d(this.TAG, "release: start, thread = " + Thread.currentThread().getName() + ", egl = " + EGL14.eglGetCurrentContext());
     if (this.outputTextureInfo != null)
     {
@@ -331,28 +331,28 @@ class TextureFilter
       i += 1;
     }
     Logger.d(this.TAG, "release: end");
-    AppMethodBeat.o(197347);
+    AppMethodBeat.o(211240);
   }
   
   public void setOutputTextureInfo(TextureInfo paramTextureInfo)
   {
-    AppMethodBeat.i(197337);
+    AppMethodBeat.i(211223);
     if (paramTextureInfo == null)
     {
       paramTextureInfo = new RuntimeException("outputTextureInfo 为空");
-      AppMethodBeat.o(197337);
+      AppMethodBeat.o(211223);
       throw paramTextureInfo;
     }
     if (paramTextureInfo.isReleased())
     {
       paramTextureInfo = new RuntimeException("outputTextureInfo 已经被释放了");
-      AppMethodBeat.o(197337);
+      AppMethodBeat.o(211223);
       throw paramTextureInfo;
     }
     if (paramTextureInfo.textureType != 3553)
     {
       paramTextureInfo = new RuntimeException("目标纹理类型需要GLES20.GL_TEXTURE_2D");
-      AppMethodBeat.o(197337);
+      AppMethodBeat.o(211223);
       throw paramTextureInfo;
     }
     this.rendererWidth = paramTextureInfo.width;
@@ -360,20 +360,20 @@ class TextureFilter
     if (!isEqualsCurrentOutputTexture(paramTextureInfo)) {
       checkAndInitFrameBuffer(paramTextureInfo);
     }
-    AppMethodBeat.o(197337);
+    AppMethodBeat.o(211223);
   }
   
   public String toString()
   {
-    AppMethodBeat.i(197348);
+    AppMethodBeat.i(211242);
     String str = "TextureFilter{program=" + this.program + ", rendererWidth=" + this.rendererWidth + ", rendererHeight=" + this.rendererHeight + ", outputTextureInfo=" + this.outputTextureInfo + ", outputFrameBufferId=" + this.outputFrameBufferId + '}';
-    AppMethodBeat.o(197348);
+    AppMethodBeat.o(211242);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tavkit.ciimage.TextureFilter
  * JD-Core Version:    0.7.0.1
  */

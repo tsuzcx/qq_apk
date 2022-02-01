@@ -6,8 +6,8 @@ import org.xwalk.core.Log;
 public class WXFileDownloaderBridge
   implements b
 {
-  public static a SAX = null;
-  public c SAY = null;
+  public static a aabS = null;
+  public c aabT = null;
   
   public static void a(a parama)
   {
@@ -17,7 +17,7 @@ public class WXFileDownloaderBridge
     for (boolean bool = true;; bool = false)
     {
       Log.i("WXFileDownloaderBridge", bool);
-      SAX = parama;
+      aabS = parama;
       AppMethodBeat.o(156946);
       return;
     }
@@ -25,36 +25,36 @@ public class WXFileDownloaderBridge
   
   public static boolean isValid()
   {
-    return SAX != null;
+    return aabS != null;
   }
   
   public final void c(String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(156947);
     Log.i("WXFileDownloaderBridge", "onTaskFinished url=" + paramString1 + ", save_path=" + paramString2);
-    this.SAY.onTaskSucc(paramString1, paramString2, paramBoolean);
+    this.aabT.onTaskSucc(paramString1, paramString2, paramBoolean);
     AppMethodBeat.o(156947);
   }
   
-  public final void d(String paramString, int paramInt, boolean paramBoolean)
+  public final void h(String paramString, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(156948);
     Log.i("WXFileDownloaderBridge", "onTaskFailed, url=" + paramString + ", errCode=" + paramInt);
-    this.SAY.onTaskFail(paramString, paramInt, paramBoolean);
+    this.aabT.onTaskFail(paramString, paramInt, paramBoolean);
     AppMethodBeat.o(156948);
   }
   
-  public final void j(String paramString, long paramLong1, long paramLong2)
+  public final void i(String paramString, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(156949);
     Log.i("WXFileDownloaderBridge", "onTaskProgressChanged, url=" + paramString + ", cur_size:" + paramLong1 + ", total_size:" + paramLong2);
-    this.SAY.onProgressChange(paramString, paramLong1, paramLong2);
+    this.aabT.onProgressChange(paramString, paramLong1, paramLong2);
     AppMethodBeat.o(156949);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.downloader.WXFileDownloaderBridge
  * JD-Core Version:    0.7.0.1
  */

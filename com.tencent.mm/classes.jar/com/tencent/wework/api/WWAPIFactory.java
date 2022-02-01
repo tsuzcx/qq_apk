@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class WWAPIFactory
 {
-  public static IWWAPI ly(Context paramContext)
+  public static IWWAPI mw(Context paramContext)
   {
     AppMethodBeat.i(106526);
     if (TextUtils.equals(paramContext.getPackageName(), "com.tencent.mm"))
@@ -22,7 +22,7 @@ public class WWAPIFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.wework.api.WWAPIFactory
  * JD-Core Version:    0.7.0.1
  */

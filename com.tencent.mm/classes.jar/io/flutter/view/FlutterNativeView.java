@@ -10,16 +10,20 @@ import io.flutter.plugin.a.c.a;
 import io.flutter.plugin.a.c.b;
 import io.flutter.plugin.platform.PlatformViewsController;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
+@Deprecated
 public class FlutterNativeView
   implements io.flutter.plugin.a.c
 {
-  private final io.flutter.embedding.engine.b.b SMD;
-  public FlutterView SMe;
-  final DartExecutor SNW;
-  public final io.flutter.app.c SWe;
-  final FlutterJNI SWf;
-  public boolean SWg;
+  public final io.flutter.embedding.engine.renderer.b aaoE;
+  public FlutterView aaod;
+  public final DartExecutor aapU;
+  public final io.flutter.app.c aayQ;
+  public final FlutterJNI aayR;
+  public boolean aayS;
   private final Context mContext;
   
   public FlutterNativeView(Context paramContext)
@@ -30,38 +34,43 @@ public class FlutterNativeView
   private FlutterNativeView(Context paramContext, byte paramByte)
   {
     AppMethodBeat.i(9670);
-    this.SMD = new io.flutter.embedding.engine.b.b()
+    this.aaoE = new io.flutter.embedding.engine.renderer.b()
     {
-      public final void dLt()
+      public final void epX()
       {
-        AppMethodBeat.i(214925);
+        AppMethodBeat.i(255073);
         if (FlutterNativeView.b(FlutterNativeView.this) == null)
         {
-          AppMethodBeat.o(214925);
+          AppMethodBeat.o(255073);
           return;
         }
-        FlutterNativeView.b(FlutterNativeView.this).onFirstFrame();
-        AppMethodBeat.o(214925);
+        Object localObject = FlutterNativeView.b(FlutterNativeView.this);
+        ((FlutterView)localObject).aazg = true;
+        localObject = new ArrayList(((FlutterView)localObject).aaze).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((FlutterView.a)((Iterator)localObject).next()).onFirstFrame();
+        }
+        AppMethodBeat.o(255073);
       }
       
-      public final void dLu() {}
+      public final void epY() {}
     };
     this.mContext = paramContext;
-    this.SWe = new io.flutter.app.c(this, paramContext);
-    this.SWf = new FlutterJNI();
-    this.SWf.addIsDisplayingFlutterUiListener(this.SMD);
-    this.SNW = new DartExecutor(this.SWf, paramContext.getAssets());
-    this.SWf.addEngineLifecycleListener(new a((byte)0));
-    this.SWf.attachToNative(false);
-    this.SNW.onAttachedToJNI();
-    assertAttached();
+    this.aayQ = new io.flutter.app.c(this, paramContext);
+    this.aayR = new FlutterJNI();
+    this.aayR.addIsDisplayingFlutterUiListener(this.aaoE);
+    this.aapU = new DartExecutor(this.aayR, paramContext.getAssets());
+    this.aayR.addEngineLifecycleListener(new a((byte)0));
+    this.aayR.attachToNative(false);
+    this.aapU.onAttachedToJNI();
+    iBE();
     AppMethodBeat.o(9670);
   }
   
-  private void assertAttached()
+  private void iBE()
   {
     AppMethodBeat.i(9672);
-    if (!this.SWf.isAttached())
+    if (!this.aayR.isAttached())
     {
       AssertionError localAssertionError = new AssertionError("Platform view is not attached");
       AppMethodBeat.o(9672);
@@ -73,65 +82,54 @@ public class FlutterNativeView
   public final void a(b paramb)
   {
     AppMethodBeat.i(9673);
-    if (paramb.SWj == null)
+    if (paramb.aayV == null)
     {
       paramb = new AssertionError("An entrypoint must be specified");
       AppMethodBeat.o(9673);
       throw paramb;
     }
-    assertAttached();
-    if (this.SWg)
+    iBE();
+    if (this.aayS)
     {
       paramb = new AssertionError("This Flutter engine instance is already running an application");
       AppMethodBeat.o(9673);
       throw paramb;
     }
-    this.SWf.runBundleAndSnapshotFromLibrary(paramb.SWi, paramb.SWj, paramb.SWk, this.mContext.getResources().getAssets());
-    this.SWg = true;
+    this.aayR.runBundleAndSnapshotFromLibrary(paramb.aayU, paramb.aayV, paramb.aayW, this.mContext.getResources().getAssets());
+    this.aayS = true;
     AppMethodBeat.o(9673);
   }
   
   public final void a(String paramString, c.a parama)
   {
     AppMethodBeat.i(9676);
-    this.SNW.SOH.a(paramString, parama);
+    this.aapU.aaqF.a(paramString, parama);
     AppMethodBeat.o(9676);
   }
   
   public final void a(String paramString, ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(9674);
-    this.SNW.SOH.a(paramString, paramByteBuffer);
+    this.aapU.aaqF.a(paramString, paramByteBuffer);
     AppMethodBeat.o(9674);
   }
   
   public final void a(String paramString, ByteBuffer paramByteBuffer, c.b paramb)
   {
     AppMethodBeat.i(9675);
-    if (!this.SWf.isAttached())
+    if (!this.aayR.isAttached())
     {
+      io.flutter.b.iAe();
       AppMethodBeat.o(9675);
       return;
     }
-    this.SNW.SOH.a(paramString, paramByteBuffer, paramb);
+    this.aapU.aaqF.a(paramString, paramByteBuffer, paramb);
     AppMethodBeat.o(9675);
-  }
-  
-  public final void destroy()
-  {
-    AppMethodBeat.i(9671);
-    this.SWe.SMf.onDetachedFromJNI();
-    this.SNW.onDetachedFromJNI();
-    this.SMe = null;
-    this.SWf.removeIsDisplayingFlutterUiListener(this.SMD);
-    this.SWf.detachFromNativeAndReleaseResources();
-    this.SWg = false;
-    AppMethodBeat.o(9671);
   }
   
   FlutterJNI getFlutterJNI()
   {
-    return this.SWf;
+    return this.aayR;
   }
   
   final class a
@@ -143,14 +141,14 @@ public class FlutterNativeView
     {
       AppMethodBeat.i(9775);
       if (FlutterNativeView.b(FlutterNativeView.this) != null) {
-        FlutterNativeView.b(FlutterNativeView.this).hxB();
+        FlutterNativeView.b(FlutterNativeView.this).iBH();
       }
       if (FlutterNativeView.c(FlutterNativeView.this) == null)
       {
         AppMethodBeat.o(9775);
         return;
       }
-      FlutterNativeView.c(FlutterNativeView.this).SMf.hxs();
+      FlutterNativeView.c(FlutterNativeView.this).aaoe.iBw();
       AppMethodBeat.o(9775);
     }
   }

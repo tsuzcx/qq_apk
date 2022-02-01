@@ -1,120 +1,70 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.config.i;
-import com.tencent.mm.plugin.appbrand.launching.AppBrandPreInitTask;
-import com.tencent.mm.plugin.appbrand.launching.AppBrandPreInitTask.a;
-import com.tencent.mm.plugin.appbrand.launching.AppBrandPrepareTask;
-import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
-import com.tencent.mm.plugin.appbrand.launching.report.AppBrandRuntimeReloadReportBundle;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
-import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.atomic.AtomicBoolean;
-import kotlin.g.b.p;
-import kotlin.l;
+import kotlin.g.a.b;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/RuntimeLaunchTimeoutFallbackReloadTask;", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPreInitTask$PreInitCallback;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "prepareTask", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPrepareTask;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPrepareTask;)V", "TAG", "", "mCanceled", "Ljava/util/concurrent/atomic/AtomicBoolean;", "cancel", "", "onResult", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "Companion", "plugin-appbrand-integration_release"})
-public final class ax
-  implements AppBrandPreInitTask.a
+final class ax
+  implements ay
 {
-  public static final a kFF;
-  private final String TAG;
-  final AtomicBoolean kFD;
-  private final AppBrandPrepareTask kFE;
-  private final q kFk;
+  final ConcurrentSkipListSet<ay> nzg;
+  final AtomicBoolean nzh;
   
-  static
+  ax()
   {
-    AppMethodBeat.i(227953);
-    kFF = new a((byte)0);
-    AppMethodBeat.o(227953);
+    AppMethodBeat.i(245663);
+    this.nzg = new ConcurrentSkipListSet(new Comparator() {});
+    this.nzh = new AtomicBoolean(false);
+    AppMethodBeat.o(245663);
   }
   
-  private ax(q paramq, AppBrandPrepareTask paramAppBrandPrepareTask)
+  private void s(b<ay, Void> paramb)
   {
-    AppMethodBeat.i(227952);
-    this.kFk = paramq;
-    this.kFE = paramAppBrandPrepareTask;
-    this.TAG = ("MicroMsg.AppBrand.RuntimeLaunchTimeoutFallbackReloadTask[" + this.kFk.getAppId() + '|' + this.kFk.hashCode() + ']');
-    this.kFD = new AtomicBoolean(false);
-    AppMethodBeat.o(227952);
+    AppMethodBeat.i(245664);
+    Iterator localIterator = new LinkedList(this.nzg).iterator();
+    while (localIterator.hasNext()) {
+      paramb.invoke((ay)localIterator.next());
+    }
+    AppMethodBeat.o(245664);
   }
   
-  public static final ax a(q paramq, AppBrandPrepareTask paramAppBrandPrepareTask)
+  public final void ace(final String paramString)
   {
-    AppMethodBeat.i(227954);
-    p.h(paramq, "rt");
-    p.h(paramAppBrandPrepareTask, "prepareTask");
-    Object localObject1 = paramq.getContext();
-    if (localObject1 != null) {
-      localObject1 = (Context)localObject1;
-    }
-    for (;;)
-    {
-      Object localObject2 = paramq.bsC();
-      p.g(localObject2, "rt.initConfig");
-      localObject2 = i.e((AppBrandInitConfigWC)localObject2);
-      paramq = new ax(paramq, paramAppBrandPrepareTask);
-      new AppBrandPreInitTask((Context)localObject1, (LaunchParcel)localObject2, true, (AppBrandPreInitTask.a)paramq).bNf();
-      AppMethodBeat.o(227954);
-      return paramq;
-      localObject1 = paramq.getAppContext();
-      p.g(localObject1, "rt.appContext");
-    }
+    AppMethodBeat.i(245667);
+    s(new b() {});
+    AppMethodBeat.o(245667);
   }
   
-  public final void a(final AppBrandInitConfigWC paramAppBrandInitConfigWC, final AppBrandStatObject paramAppBrandStatObject)
+  public final void bCk()
   {
-    AppMethodBeat.i(227951);
-    if (this.kFD.get())
-    {
-      Log.w(this.TAG, "onResult but canceled");
-      AppMethodBeat.o(227951);
-      return;
-    }
-    Log.i(this.TAG, "onResult with config:".concat(String.valueOf(paramAppBrandInitConfigWC)));
-    this.kFE.interrupt();
-    if (paramAppBrandInitConfigWC == null)
-    {
-      this.kFk.finish();
-      AppMethodBeat.o(227951);
-      return;
-    }
-    this.kFk.P((Runnable)new b(this, paramAppBrandInitConfigWC, paramAppBrandStatObject));
-    AppMethodBeat.o(227951);
+    AppMethodBeat.i(245668);
+    s(new b() {});
+    AppMethodBeat.o(245668);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/RuntimeLaunchTimeoutFallbackReloadTask$Companion;", "", "()V", "start", "Lcom/tencent/mm/plugin/appbrand/RuntimeLaunchTimeoutFallbackReloadTask;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "prepareTask", "Lcom/tencent/mm/plugin/appbrand/launching/AppBrandPrepareTask;", "plugin-appbrand-integration_release"})
-  public static final class a {}
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
+  public final void bEq()
   {
-    b(ax paramax, AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(227950);
-      paramAppBrandInitConfigWC.led = true;
-      paramAppBrandInitConfigWC.a(paramAppBrandStatObject);
-      paramAppBrandInitConfigWC.resetSession();
-      AppBrandInitConfigWC localAppBrandInitConfigWC = paramAppBrandInitConfigWC;
-      String str = ax.a(this.kFG).bsC().ldW.kEY;
-      p.g(str, "rt.initConfig.qualityReportSession.instanceId");
-      localAppBrandInitConfigWC.lef = new AppBrandRuntimeReloadReportBundle(str, "TimeoutFallback");
-      ax.a(this.kFG).a((AppBrandInitConfig)paramAppBrandInitConfigWC, "TimeoutFallback");
-      AppMethodBeat.o(227950);
-    }
+    AppMethodBeat.i(245665);
+    s(new b() {});
+    AppMethodBeat.o(245665);
+  }
+  
+  public final void bEr()
+  {
+    AppMethodBeat.i(245666);
+    s(new b() {});
+    this.nzh.set(true);
+    this.nzg.clear();
+    AppMethodBeat.o(245666);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ax
  * JD-Core Version:    0.7.0.1
  */

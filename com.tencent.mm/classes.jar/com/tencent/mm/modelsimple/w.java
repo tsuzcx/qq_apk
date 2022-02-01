@@ -4,27 +4,27 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.l;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
+import com.tencent.mm.R.l;
+import com.tencent.mm.aj.l;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
 import com.tencent.mm.chatroom.d.aa;
-import com.tencent.mm.g.a.nv;
-import com.tencent.mm.g.a.sx;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.cl;
+import com.tencent.mm.f.a.os;
+import com.tencent.mm.f.a.ty;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.cm;
 import com.tencent.mm.model.x;
 import com.tencent.mm.model.z;
 import com.tencent.mm.modelstat.b;
-import com.tencent.mm.modelstat.b.b;
 import com.tencent.mm.modelvoice.o;
 import com.tencent.mm.modelvoice.r;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.msgquote.a;
-import com.tencent.mm.protocal.protobuf.dpk;
-import com.tencent.mm.protocal.protobuf.dpl;
+import com.tencent.mm.protocal.protobuf.dzg;
+import com.tencent.mm.protocal.protobuf.dzh;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -35,135 +35,133 @@ import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.ca;
 
 public final class w
-  extends com.tencent.mm.ak.q
+  extends com.tencent.mm.an.q
   implements m
 {
-  private static final MMHandler jkv;
-  private com.tencent.mm.ak.i callback;
-  private final com.tencent.mm.ak.d iUB;
-  private final String jkw;
+  private static final MMHandler mat;
+  private com.tencent.mm.an.i callback;
+  private final com.tencent.mm.an.d lKU;
+  private final String mau;
+  private String mav;
   private final long msgId;
   
   static
   {
     AppMethodBeat.i(20646);
-    jkv = new MMHandler("deleteRevokeMessageThread");
+    mat = new MMHandler("deleteRevokeMessageThread");
     AppMethodBeat.o(20646);
   }
   
-  public w(ca paramca, String paramString)
+  public w(ca paramca, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(20642);
-    bg.aVF();
-    Object localObject = com.tencent.mm.model.c.azQ().get(290818, Integer.valueOf(0));
+    AppMethodBeat.i(274316);
+    bh.beI();
+    Object localObject = com.tencent.mm.model.c.aHp().b(290818, Integer.valueOf(0));
     if (localObject != null) {}
     for (int i = Util.getInt(localObject.toString(), 0);; i = 0)
     {
       this.msgId = paramca.field_msgId;
-      this.jkw = paramString;
+      this.mau = paramString1;
       localObject = null;
       int k = 0;
       int m = (int)(paramca.field_createTime / 1000L);
       long l = paramca.field_msgSvrId;
-      String str1 = z.aTY();
+      String str1 = z.bcZ();
       String str2 = paramca.field_talker;
       int j = k;
-      paramString = (String)localObject;
-      if (paramca.fQV != 1) {}
-      switch (paramca.getType())
-      {
-      default: 
-        paramString = (String)localObject;
-        j = k;
-      case 1: 
-      case 42: 
-      case 48: 
-      case 66: 
-      case 34: 
-      case 43: 
-      case 62: 
-      case 3: 
-      case 47: 
-        for (;;)
+      paramString1 = (String)localObject;
+      if (paramca.ill != 1) {
+        switch (paramca.getType())
         {
-          paramca = new d.a();
-          paramca.iLN = new dpk();
-          paramca.iLO = new dpl();
-          paramca.uri = "/cgi-bin/micromsg-bin/revokemsg";
-          paramca.funcId = 594;
-          paramca.iLP = 0;
-          paramca.respCmdId = 0;
-          this.iUB = paramca.aXF();
-          paramca = (dpk)this.iUB.iLK.iLR;
-          paramca.KIz = paramString;
-          paramca.MSH = j;
-          paramca.MSI = 0;
-          paramca.MSK = l;
-          paramca.CreateTime = m;
-          paramca.xNH = str1;
-          paramca.xNG = str2;
-          paramca.MSJ = i;
-          Log.i("MicroMsg.NetSceneRevokeMsg", "[oneliang][NetSceneRevokeMsg]:clientMsgId:%s,newClientMsgId:%d,svrMsgId:%d,createTime:%d,fromUserName:%s,toUserName:%s,indexOfRequest:%d", new Object[] { paramca.KIz, Integer.valueOf(paramca.MSH), Integer.valueOf(paramca.MSI), Integer.valueOf(paramca.CreateTime), paramca.xNH, paramca.xNG, Integer.valueOf(paramca.MSJ) });
-          AppMethodBeat.o(20642);
-          return;
-          j = x.x(z.aTY(), paramca.field_createTime).hashCode();
-          Log.i("MicroMsg.NetSceneRevokeMsg", "[oneliang][doSendRevokeMsg] type:text,newClientMsgId:%d", new Object[] { Integer.valueOf(j) });
-          paramString = (String)localObject;
-          continue;
-          paramca = o.bib().Rr(paramca.field_imgPath);
+        default: 
+          paramString1 = (String)localObject;
           j = k;
-          paramString = (String)localObject;
-          if (paramca != null)
-          {
-            paramString = paramca.clientId;
-            Log.i("MicroMsg.NetSceneRevokeMsg", "[oneliang][doSendRevokeMsg] type:voice,clientMsgId:%s", new Object[] { paramString });
-            j = k;
-            continue;
-            paramString = paramca.field_imgPath;
-            Log.i("MicroMsg.NetSceneRevokeMsg", "[oneliang][doSendRevokeMsg] type:video,clientMsgId:%s", new Object[] { paramString });
-            j = k;
-            continue;
-            localObject = com.tencent.mm.av.q.bcR().H(paramca.field_talker, paramca.field_msgId);
-            paramString = paramca.fQY;
-            Log.i("MicroMsg.NetSceneRevokeMsg", "[oneliang][doSendRevokeMsg] type:img,talker:%s,hdId:%s,localId:%s,clientMsgId:%s", new Object[] { paramca.field_talker, Integer.valueOf(((com.tencent.mm.av.g)localObject).iXx), Long.valueOf(((com.tencent.mm.av.g)localObject).localId), paramString });
-            j = k;
-            continue;
-            paramString = String.valueOf(be.bkr(paramca.field_content).time);
-            Log.i("MicroMsg.NetSceneRevokeMsg", "[oneliang][doSendRevokeMsg] type:emoji,clientMsgId:%s", new Object[] { paramString });
-            j = k;
-          }
         }
       }
-      paramString = com.tencent.mm.pluginsdk.model.app.ao.cgO().Mp(paramca.field_msgId);
-      if (paramString != null) {}
-      for (paramca = paramString.field_clientAppDataId;; paramca = paramca.field_talker + paramca.field_msgId + "T" + paramca.field_createTime)
+      for (;;)
       {
-        Log.i("MicroMsg.NetSceneRevokeMsg", "[oneliang][doSendRevokeMsg] type:app msg/emoji/img,clientMsgId:%s", new Object[] { paramca });
+        paramca = new d.a();
+        paramca.lBU = new dzg();
+        paramca.lBV = new dzh();
+        paramca.uri = "/cgi-bin/micromsg-bin/revokemsg";
+        paramca.funcId = 594;
+        paramca.lBW = 0;
+        paramca.respCmdId = 0;
+        this.lKU = paramca.bgN();
+        paramca = (dzg)d.b.b(this.lKU.lBR);
+        paramca.RJQ = paramString1;
+        paramca.UeO = j;
+        paramca.UeP = 0;
+        paramca.UeR = l;
+        paramca.CreateTime = m;
+        paramca.CRR = str1;
+        paramca.CRQ = str2;
+        paramca.UeQ = i;
+        paramca.UeS = paramString2;
+        this.mav = paramString2;
+        Log.i("MicroMsg.NetSceneRevokeMsg", "[oneliang][NetSceneRevokeMsg]:clientMsgId:%s,newClientMsgId:%d,svrMsgId:%d,createTime:%d,fromUserName:%s,toUserName:%s,indexOfRequest:%d", new Object[] { paramca.RJQ, Integer.valueOf(paramca.UeO), Integer.valueOf(paramca.UeP), Integer.valueOf(paramca.CreateTime), paramca.CRR, paramca.CRQ, Integer.valueOf(paramca.UeQ) });
+        AppMethodBeat.o(274316);
+        return;
+        j = x.u(z.bcZ(), paramca.field_createTime).hashCode();
+        Log.i("MicroMsg.NetSceneRevokeMsg", "[oneliang][doSendRevokeMsg] type:text,newClientMsgId:%d", new Object[] { Integer.valueOf(j) });
+        paramString1 = (String)localObject;
+        continue;
+        paramca = o.brz().YO(paramca.field_imgPath);
         j = k;
-        paramString = paramca;
-        break;
+        paramString1 = (String)localObject;
+        if (paramca != null)
+        {
+          paramString1 = paramca.clientId;
+          Log.i("MicroMsg.NetSceneRevokeMsg", "[oneliang][doSendRevokeMsg] type:voice,clientMsgId:%s", new Object[] { paramString1 });
+          j = k;
+          continue;
+          paramString1 = paramca.field_imgPath;
+          Log.i("MicroMsg.NetSceneRevokeMsg", "[oneliang][doSendRevokeMsg] type:video,clientMsgId:%s", new Object[] { paramString1 });
+          j = k;
+          continue;
+          localObject = com.tencent.mm.ay.q.bmh().D(paramca.field_talker, paramca.field_msgId);
+          paramString1 = paramca.ilo;
+          Log.i("MicroMsg.NetSceneRevokeMsg", "[oneliang][doSendRevokeMsg] type:img,talker:%s,hdId:%s,localId:%s,clientMsgId:%s", new Object[] { paramca.field_talker, Integer.valueOf(((com.tencent.mm.ay.g)localObject).lNR), Long.valueOf(((com.tencent.mm.ay.g)localObject).localId), paramString1 });
+          j = k;
+          continue;
+          paramString1 = String.valueOf(be.bwQ(paramca.field_content).time);
+          Log.i("MicroMsg.NetSceneRevokeMsg", "[oneliang][doSendRevokeMsg] type:emoji,clientMsgId:%s", new Object[] { paramString1 });
+          j = k;
+          continue;
+          paramString1 = com.tencent.mm.pluginsdk.model.app.ao.ctZ().TR(paramca.field_msgId);
+          if (paramString1 != null) {}
+          for (paramca = paramString1.field_clientAppDataId;; paramca = paramca.field_talker + paramca.field_msgId + "T" + paramca.field_createTime)
+          {
+            Log.i("MicroMsg.NetSceneRevokeMsg", "[oneliang][doSendRevokeMsg] type:app msg/emoji/img,clientMsgId:%s", new Object[] { paramca });
+            j = k;
+            paramString1 = paramca;
+            break;
+          }
+          paramString1 = paramca.field_talker + paramca.field_msgId + "T" + paramca.field_createTime;
+          j = k;
+        }
       }
     }
   }
   
-  private static String PD(String paramString)
+  private static String Xb(String paramString)
   {
-    AppMethodBeat.i(231570);
+    AppMethodBeat.i(274318);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(231570);
+      AppMethodBeat.o(274318);
       return "";
     }
     try
     {
       String str = Base64.encodeToString(paramString.getBytes(), 0);
-      AppMethodBeat.o(231570);
+      AppMethodBeat.o(274318);
       return str;
     }
     catch (Throwable localThrowable)
     {
       Log.printErrStackTrace("MicroMsg.NetSceneRevokeMsg", localThrowable, "safeBase64Encode err:%s", new Object[] { paramString });
-      AppMethodBeat.o(231570);
+      AppMethodBeat.o(274318);
     }
     return "";
   }
@@ -171,51 +169,57 @@ public final class w
   public static void a(String paramString1, String paramString2, ca paramca, String paramString3)
   {
     AppMethodBeat.i(20645);
-    if (aa(paramca))
+    if (ag(paramca))
     {
       String str = paramString3;
       if (paramca.getType() == 822083633) {
-        str = PD(paramString3);
+        str = Xb(paramString3);
       }
-      paramString3 = PD(paramca.fqK);
+      paramString3 = Xb(paramca.hxy);
       int i = paramca.getType();
-      paramca.setType(10002);
-      paramca.setContent(String.format("<sysmsg type=\"invokeMessage\"><invokeMessage><text><![CDATA[%s]]></text><timestamp><![CDATA[%s]]></timestamp><link><text><![CDATA[%s]]></text></link><preContent><![CDATA[%s]]></preContent><type><![CDATA[%s]]></type><msgSource><![CDATA[%s]]></msgSource></invokeMessage></sysmsg>", new Object[] { paramString1, Long.valueOf(cl.aWy()), paramString2, str, Integer.valueOf(i), paramString3 }));
+      paramca.setType(268445458);
+      paramString1 = String.format("<sysmsg type=\"invokeMessage\"><invokeMessage><text><![CDATA[%s]]></text><timestamp><![CDATA[%s]]></timestamp><link><text><![CDATA[%s]]></text></link><preContent><![CDATA[%s]]></preContent><type><![CDATA[%s]]></type><msgSource><![CDATA[%s]]></msgSource></invokeMessage></sysmsg>", new Object[] { paramString1, Long.valueOf(cm.bfC()), paramString2, "", Integer.valueOf(i), paramString3 });
+      paramca.setContent(str);
+      paramca.Jz(paramString1);
       AppMethodBeat.o(20645);
       return;
     }
-    paramca.setType(10000);
+    paramca.setType(268445456);
     paramca.setContent(paramString1);
+    paramca.Jz(paramString1);
     AppMethodBeat.o(20645);
   }
   
-  private static boolean aa(ca paramca)
+  private static boolean ag(ca paramca)
   {
-    AppMethodBeat.i(231569);
+    AppMethodBeat.i(274317);
     if (paramca != null)
     {
       if ((paramca.getType() == 1) || (paramca.getType() == 16777265) || (paramca.getType() == 822083633))
       {
-        AppMethodBeat.o(231569);
+        AppMethodBeat.o(274317);
         return true;
       }
-      AppMethodBeat.o(231569);
+      AppMethodBeat.o(274317);
       return false;
     }
-    AppMethodBeat.o(231569);
+    AppMethodBeat.o(274317);
     return false;
   }
   
-  public final dpl bfA()
+  public final dzh boQ()
   {
-    return (dpl)this.iUB.iLL.iLR;
+    AppMethodBeat.i(274320);
+    dzh localdzh = (dzh)d.c.b(this.lKU.lBS);
+    AppMethodBeat.o(274320);
+    return localdzh;
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, com.tencent.mm.ak.i parami)
+  public final int doScene(com.tencent.mm.network.g paramg, com.tencent.mm.an.i parami)
   {
     AppMethodBeat.i(20643);
     this.callback = parami;
-    int i = dispatch(paramg, this.iUB, this);
+    int i = dispatch(paramg, this.lKU, this);
     AppMethodBeat.o(20643);
     return i;
   }
@@ -228,50 +232,55 @@ public final class w
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(20644);
-    Object localObject;
-    if ((paramInt2 == 0) && (paramInt3 == 0))
+    if (((paramInt2 == 0) && (paramInt3 == 0)) || (!Util.isNullOrNil(this.mav)))
     {
-      bg.aVF();
-      paramArrayOfByte = com.tencent.mm.model.c.aSQ().Hb(this.msgId);
-      if (paramArrayOfByte.field_msgId != this.msgId) {
-        break label445;
+      bh.beI();
+      params = com.tencent.mm.model.c.bbO().Oq(this.msgId);
+      if (params.field_msgId != this.msgId) {
+        break label464;
       }
-      params = ca.aZ(paramArrayOfByte);
-      localObject = bfA();
-      Log.i("MicroMsg.NetSceneRevokeMsg", "[oneliang][doSceneEnd.revokeMsg] msgId:%s,msgSvrId:%s,responseSysWording:%s， type:%s", new Object[] { Long.valueOf(paramArrayOfByte.field_msgId), Long.valueOf(paramArrayOfByte.field_msgSvrId), ((dpl)localObject).MSL, Integer.valueOf(paramArrayOfByte.getType()) });
-      int i = paramArrayOfByte.getType();
-      a(this.jkw, "  " + MMApplicationContext.getContext().getString(2131761865), paramArrayOfByte, paramArrayOfByte.field_content);
-      paramArrayOfByte.nv(0);
-      paramArrayOfByte.nc(paramArrayOfByte.fqJ | 0x4);
-      localObject = new sx();
-      ((sx)localObject).dZt.msgId = this.msgId;
+      if (params.getType() == 1090519089)
+      {
+        paramArrayOfByte = params.field_content;
+        com.tencent.e.h.ZvG.be(new w.1(this, paramArrayOfByte));
+      }
+      paramArrayOfByte = ca.bs(params);
+      Object localObject = boQ();
+      if (localObject == null)
+      {
+        AppMethodBeat.o(20644);
+        return;
+      }
+      Log.i("MicroMsg.NetSceneRevokeMsg", "[oneliang][doSceneEnd.revokeMsg] msgId:%s,msgSvrId:%s,responseSysWording:%s， type:%s", new Object[] { Long.valueOf(params.field_msgId), Long.valueOf(params.field_msgSvrId), ((dzh)localObject).UeT, Integer.valueOf(params.getType()) });
+      int i = params.getType();
+      a(this.mau, "  " + MMApplicationContext.getContext().getString(R.l.eIv), params, params.field_content);
+      params.pJ(0);
+      params.hzU();
+      localObject = new ty();
+      ((ty)localObject).fTm.msgId = this.msgId;
       EventCenter.instance.publish((IEvent)localObject);
-      bg.aVF();
-      com.tencent.mm.model.c.aSQ().a(paramArrayOfByte.field_msgId, paramArrayOfByte);
-      ((a)com.tencent.mm.kernel.g.ah(a.class)).handleRevokeMsgBySelf(paramArrayOfByte.field_msgId);
+      bh.beI();
+      com.tencent.mm.model.c.bbO().a(params.field_msgId, params);
+      ((a)com.tencent.mm.kernel.h.ag(a.class)).handleRevokeMsgBySelf(params.field_msgId);
       paramInt1 = 0;
-      bg.aVF();
-      localObject = com.tencent.mm.model.c.azQ().get(290818, Integer.valueOf(0));
+      bh.beI();
+      localObject = com.tencent.mm.model.c.aHp().b(290818, Integer.valueOf(0));
       if (localObject != null) {
         paramInt1 = Util.getInt(localObject.toString(), 0);
       }
-      bg.aVF();
-      com.tencent.mm.model.c.azQ().set(290818, Integer.valueOf(paramInt1 + 1));
-      paramArrayOfByte.setType(i);
-      if (!paramArrayOfByte.dOQ()) {
-        break label418;
+      bh.beI();
+      com.tencent.mm.model.c.aHp().i(290818, Integer.valueOf(paramInt1 + 1));
+      params.setType(i);
+      if (!params.erk()) {
+        break label453;
       }
-      localObject = b.jmd;
-      paramInt1 = l.t(paramArrayOfByte);
-      if (((b)localObject).bfZ()) {
-        ((b)localObject).a(paramArrayOfByte, b.b.jmq, paramInt1);
-      }
-      jkv.postDelayed(new w.1(this, paramArrayOfByte), 300000L);
-      if (aa.i(params))
+      b.mcf.f(params, l.v(params));
+      mat.postDelayed(new w.2(this, params), 300000L);
+      if (aa.i(paramArrayOfByte))
       {
-        paramArrayOfByte = new nv();
-        paramArrayOfByte.dTW.dTX = params;
-        EventCenter.instance.publish(paramArrayOfByte);
+        params = new os();
+        params.fNy.fNz = paramArrayOfByte;
+        EventCenter.instance.publish(params);
       }
     }
     for (;;)
@@ -279,21 +288,17 @@ public final class w
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(20644);
       return;
-      label418:
-      localObject = b.jmd;
-      if (!((b)localObject).bfZ()) {
-        break;
-      }
-      ((b)localObject).a(paramArrayOfByte, b.b.jmq, 0);
+      label453:
+      b.mcf.ak(params);
       break;
-      label445:
+      label464:
       Log.e("MicroMsg.NetSceneRevokeMsg", "cannot find the msg:%d after revoke.", new Object[] { Long.valueOf(this.msgId) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsimple.w
  * JD-Core Version:    0.7.0.1
  */

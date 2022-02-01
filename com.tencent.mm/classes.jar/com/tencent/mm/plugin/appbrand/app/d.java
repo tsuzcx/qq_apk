@@ -9,48 +9,48 @@ import com.tencent.mm.sdk.platformtools.MD5Util;
 public final class d
   implements g
 {
-  private String kIg;
-  private g.a kIh;
-  
-  public final void UF(String paramString)
-  {
-    AppMethodBeat.i(226293);
-    this.kIg = MD5Util.getMD5String(paramString + String.valueOf(System.currentTimeMillis()));
-    AppMethodBeat.o(226293);
-  }
+  private String nBW;
+  private g.a nBX;
   
   public final void a(g.a parama)
   {
-    this.kIh = parama;
+    this.nBX = parama;
   }
   
-  public final String bul()
+  public final void acp(String paramString)
   {
-    return this.kIg;
+    AppMethodBeat.i(257831);
+    this.nBW = MD5Util.getMD5String(paramString + String.valueOf(System.currentTimeMillis()));
+    AppMethodBeat.o(257831);
   }
   
-  public final g.a bum()
+  public final String bFl()
   {
-    return this.kIh;
+    return this.nBW;
+  }
+  
+  public final g.a bFm()
+  {
+    return this.nBX;
   }
   
   public final void clear()
   {
-    this.kIg = null;
-    this.kIh = null;
+    this.nBW = null;
+    this.nBX = null;
   }
   
-  public final String cp(String paramString1, String paramString2)
+  public final String cu(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(226292);
-    paramString1 = n.NL().get(paramString1, paramString2);
-    AppMethodBeat.o(226292);
+    AppMethodBeat.i(257830);
+    paramString1 = m.QG().L(paramString1, paramString2);
+    AppMethodBeat.o(257830);
     return paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.d
  * JD-Core Version:    0.7.0.1
  */

@@ -4,17 +4,17 @@ import java.util.HashMap;
 
 public final class c
 {
-  public int adT;
   public long endTime;
+  public int ka;
   public HashMap<String, String> map;
-  public int sLf;
-  public int sLg;
-  public String sLh;
   public long startTime;
+  public int wrb;
+  public int wrc;
+  public String wrd;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.b.c
  * JD-Core Version:    0.7.0.1
  */

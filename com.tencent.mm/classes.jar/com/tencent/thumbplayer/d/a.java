@@ -11,60 +11,50 @@ import org.json.JSONObject;
 
 public final class a
 {
-  private static String RYZ = "";
-  private static String RZa;
-  private static String RZb;
-  private static int RZc = -1;
-  private static String RZd;
-  private static boolean RZe;
-  private static String RZf = "";
-  private static int RZg = 0;
-  private static String RZh = "";
-  private static boolean RZi = true;
-  private static int RZj = -1;
-  public static String RZk = "";
-  public static String RZl = "";
-  private static String RZm = "";
-  private static String RZn = "\\.";
-  private static long RZo = -1L;
+  private static String ZBJ = "";
+  private static String ZBK;
+  private static String ZBL;
+  private static int ZBM = -1;
+  private static String ZBN;
+  private static boolean ZBO;
+  private static String ZBP = "";
+  private static int ZBQ = 0;
+  private static String ZBR = "";
+  private static boolean ZBS = true;
+  private static int ZBT = -1;
+  public static String ZBU = "";
+  public static String ZBV = "";
+  private static String ZBW = "";
+  private static String ZBX = "\\.";
+  private static long ZBY = -1L;
   private static String appVersion = "";
   private static String appVersionName;
   
-  public static void DT(boolean paramBoolean)
+  public static void Iu(boolean paramBoolean)
   {
-    RZi = paramBoolean;
+    ZBS = paramBoolean;
   }
   
-  public static void DU(boolean paramBoolean)
+  public static void Iv(boolean paramBoolean)
   {
-    RZe = paramBoolean;
+    ZBO = paramBoolean;
   }
   
-  public static void arn(int paramInt)
+  public static void aBa(int paramInt)
   {
-    RZg = paramInt;
+    ZBQ = paramInt;
   }
   
-  public static void bqA(String paramString)
+  public static void bDs(String paramString)
   {
-    RZf = paramString;
-  }
-  
-  public static void bqB(String paramString)
-  {
-    RZh = paramString;
-  }
-  
-  public static void bqy(String paramString)
-  {
-    AppMethodBeat.i(189143);
+    AppMethodBeat.i(220247);
     if (TextUtils.isEmpty(paramString))
     {
       g.w("TPPlayerConfig", "parseHostConfig, config is null.");
-      AppMethodBeat.o(189143);
+      AppMethodBeat.o(220247);
       return;
     }
-    RZm = paramString;
+    ZBW = paramString;
     g.i("TPPlayerConfig", "parseHostConfig:".concat(String.valueOf(paramString)));
     try
     {
@@ -73,39 +63,49 @@ public final class a
       {
         paramString = paramString.getJSONObject("player_host_config");
         if (paramString.has("beacon_policy_host")) {
-          RZk = paramString.getString("beacon_policy_host");
+          ZBU = paramString.getString("beacon_policy_host");
         }
         if (paramString.has("beacon_log_host")) {
-          RZl = paramString.getString("beacon_log_host");
+          ZBV = paramString.getString("beacon_log_host");
         }
       }
-      AppMethodBeat.o(189143);
+      AppMethodBeat.o(220247);
       return;
     }
     catch (Throwable paramString)
     {
       g.w("TPPlayerConfig", "parseHostConfig exception: " + paramString.toString());
-      AppMethodBeat.o(189143);
+      AppMethodBeat.o(220247);
     }
   }
   
-  public static void bqz(String paramString)
+  public static void bDt(String paramString)
   {
-    RZd = paramString;
+    ZBN = paramString;
+  }
+  
+  public static void bDu(String paramString)
+  {
+    ZBP = paramString;
+  }
+  
+  public static void bDv(String paramString)
+  {
+    ZBR = paramString;
   }
   
   public static String getAppVersionName(Context paramContext)
   {
-    AppMethodBeat.i(189146);
+    AppMethodBeat.i(220262);
     if (!TextUtils.isEmpty(appVersionName))
     {
       paramContext = appVersionName;
-      AppMethodBeat.o(189146);
+      AppMethodBeat.o(220262);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(189146);
+      AppMethodBeat.o(220262);
       return "";
     }
     try
@@ -116,51 +116,51 @@ public final class a
       if (str == null) {
         paramContext = "";
       }
-      AppMethodBeat.o(189146);
+      AppMethodBeat.o(220262);
       return paramContext;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(189146);
+      AppMethodBeat.o(220262);
     }
     return "";
   }
   
   public static String getGuid()
   {
-    return RYZ;
+    return ZBJ;
   }
   
   public static int getPlatform()
   {
-    return RZj;
+    return ZBT;
   }
   
-  public static boolean hnj()
+  public static boolean iqK()
   {
-    return RZi;
+    return ZBS;
   }
   
-  public static String hnk()
+  public static String iqL()
   {
-    return RZa;
+    return ZBK;
   }
   
-  public static String hnl()
+  public static String iqM()
   {
-    return RZb;
+    return ZBL;
   }
   
-  public static String hnm()
+  public static String iqN()
   {
-    AppMethodBeat.i(189145);
+    AppMethodBeat.i(220254);
     Object localObject = new JSONObject();
-    if (!TextUtils.isEmpty(RZm)) {}
+    if (!TextUtils.isEmpty(ZBW)) {}
     try
     {
-      ((JSONObject)localObject).put("host_config", new JSONObject(RZm));
+      ((JSONObject)localObject).put("host_config", new JSONObject(ZBW));
       localObject = ((JSONObject)localObject).toString();
-      AppMethodBeat.o(189145);
+      AppMethodBeat.o(220254);
       return localObject;
     }
     catch (JSONException localJSONException)
@@ -172,90 +172,90 @@ public final class a
     }
   }
   
-  public static String hnn()
+  public static String iqO()
   {
-    return RZd;
+    return ZBN;
   }
   
-  public static String hno()
+  public static String iqP()
   {
-    return RZf;
+    return ZBP;
   }
   
-  public static int hnp()
+  public static int iqQ()
   {
-    return RZg;
+    return ZBQ;
   }
   
-  public static String hnq()
+  public static String iqR()
   {
-    return RZh;
+    return ZBR;
   }
   
-  public static boolean hnr()
+  public static boolean iqS()
   {
-    return RZe;
+    return ZBO;
   }
   
-  public static int hns()
+  public static int iqT()
   {
-    if ((RZc == -1) && (RZj != -1)) {
-      return RZj;
+    if ((ZBM == -1) && (ZBT != -1)) {
+      return ZBT;
     }
-    return RZc;
+    return ZBM;
   }
   
-  public static long li(Context paramContext)
+  public static long mg(Context paramContext)
   {
-    AppMethodBeat.i(189147);
+    AppMethodBeat.i(220263);
     long l;
-    if (-1L != RZo)
+    if (-1L != ZBY)
     {
-      l = RZo;
-      AppMethodBeat.o(189147);
+      l = ZBY;
+      AppMethodBeat.o(220263);
       return l;
     }
     try
     {
       l = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).getLongVersionCode();
-      RZo = l;
-      AppMethodBeat.o(189147);
+      ZBY = l;
+      AppMethodBeat.o(220263);
       return l;
     }
     catch (Throwable paramContext)
     {
       g.e("TPPlayerConfig", "getLongVersionCode less api 28");
-      l = RZo;
-      AppMethodBeat.o(189147);
+      l = ZBY;
+      AppMethodBeat.o(220263);
     }
     return l;
   }
   
   public static void setDebugEnable(boolean paramBoolean)
   {
-    AppMethodBeat.i(189144);
+    AppMethodBeat.i(220248);
     g.setDebugEnable(paramBoolean);
-    AppMethodBeat.o(189144);
+    AppMethodBeat.o(220248);
   }
   
   public static void setGuid(String paramString)
   {
-    RYZ = paramString;
+    ZBJ = paramString;
   }
   
   public static void setPlatform(int paramInt)
   {
-    RZj = paramInt;
+    ZBT = paramInt;
   }
   
   public static void setProxyServiceType(int paramInt)
   {
-    RZc = paramInt;
+    ZBM = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.d.a
  * JD-Core Version:    0.7.0.1
  */

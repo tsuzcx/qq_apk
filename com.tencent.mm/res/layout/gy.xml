@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:gravity="center" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/kb"
+<LinearLayout android:orientation="vertical" android:id="@id/da6" android:paddingTop="@dimen/c5" android:paddingBottom="@dimen/c5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.MMImageView android:layout_gravity="center" android:id="@id/ur" android:background="?ka" android:padding="@dimen/k5" android:layout_width="46.0dip" android:layout_height="46.0dip" android:scaleType="fitCenter" />
-</FrameLayout>
+    <TextView android:textSize="12.0dip" android:textColor="@color/uj" android:gravity="center" android:id="@id/da8" android:paddingLeft="@dimen/hs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dhr" android:includeFontPadding="false" />
+    <com.tencent.mm.plugin.brandservice.ui.timeline.offenread.BizTimeLineHotListView android:orientation="horizontal" android:id="@id/da7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" />
+</LinearLayout>

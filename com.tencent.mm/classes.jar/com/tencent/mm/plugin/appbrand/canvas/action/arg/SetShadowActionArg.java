@@ -13,7 +13,7 @@ public class SetShadowActionArg
 {
   public static final Parcelable.Creator<SetShadowActionArg> CREATOR;
   public int color;
-  public float kZP;
+  public float nUa;
   public float x;
   public float y;
   
@@ -55,7 +55,7 @@ public class SetShadowActionArg
       return false;
     }
     paramObject = (SetShadowActionArg)paramObject;
-    if ((Float.compare(paramObject.x, this.x) == 0) && (Float.compare(paramObject.y, this.y) == 0) && (Float.compare(paramObject.kZP, this.kZP) == 0) && (this.color == paramObject.color))
+    if ((Float.compare(paramObject.x, this.x) == 0) && (Float.compare(paramObject.y, this.y) == 0) && (Float.compare(paramObject.nUa, this.nUa) == 0) && (this.color == paramObject.color))
     {
       AppMethodBeat.o(145228);
       return true;
@@ -67,7 +67,7 @@ public class SetShadowActionArg
   public int hashCode()
   {
     AppMethodBeat.i(145229);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.x), Float.valueOf(this.y), Float.valueOf(this.kZP), Integer.valueOf(this.color) });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.x), Float.valueOf(this.y), Float.valueOf(this.nUa), Integer.valueOf(this.color) });
     AppMethodBeat.o(145229);
     return i;
   }
@@ -78,7 +78,7 @@ public class SetShadowActionArg
     super.i(paramParcel);
     this.x = paramParcel.readFloat();
     this.y = paramParcel.readFloat();
-    this.kZP = paramParcel.readFloat();
+    this.nUa = paramParcel.readFloat();
     this.color = paramParcel.readInt();
     AppMethodBeat.o(145225);
   }
@@ -91,7 +91,7 @@ public class SetShadowActionArg
     paramJSONObject.length();
     this.x = g.f(paramJSONObject, 0);
     this.y = g.f(paramJSONObject, 1);
-    this.kZP = g.f(paramJSONObject, 2);
+    this.nUa = g.f(paramJSONObject, 2);
     paramJSONObject = paramJSONObject.optJSONArray(3);
     if ((paramJSONObject == null) || (paramJSONObject.length() < 4))
     {
@@ -108,14 +108,14 @@ public class SetShadowActionArg
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeFloat(this.x);
     paramParcel.writeFloat(this.y);
-    paramParcel.writeFloat(this.kZP);
+    paramParcel.writeFloat(this.nUa);
     paramParcel.writeInt(this.color);
     AppMethodBeat.o(145226);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetShadowActionArg
  * JD-Core Version:    0.7.0.1
  */

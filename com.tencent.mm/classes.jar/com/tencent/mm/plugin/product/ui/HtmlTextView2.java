@@ -11,19 +11,19 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.ac;
-import com.tencent.xweb.z;
+import com.tencent.xweb.aa;
+import com.tencent.xweb.ad;
 
 public class HtmlTextView2
   extends MMWebView
 {
-  private ac Ban;
+  private ad GUl;
   
   public HtmlTextView2(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(MMApplicationContext.getContext(), paramAttributeSet);
     AppMethodBeat.i(66930);
-    this.Ban = new ac()
+    this.GUl = new ad()
     {
       public final boolean a(WebView paramAnonymousWebView, String paramAnonymousString)
       {
@@ -41,7 +41,7 @@ public class HtmlTextView2
   {
     super(MMApplicationContext.getContext(), paramAttributeSet, paramInt);
     AppMethodBeat.i(66929);
-    this.Ban = new ac()
+    this.GUl = new ad()
     {
       public final boolean a(WebView paramAnonymousWebView, String paramAnonymousString)
       {
@@ -73,7 +73,7 @@ public class HtmlTextView2
       }
     });
     setVerticalScrollBarEnabled(false);
-    getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
+    getSettings().a(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
     getSettings().setDefaultTextEncodingName("utf-8");
     AppMethodBeat.o(66931);
   }
@@ -83,13 +83,13 @@ public class HtmlTextView2
     AppMethodBeat.i(66932);
     setWebViewClient(null);
     loadData(paramString, "text/html", "utf-8");
-    setWebViewClient(this.Ban);
+    setWebViewClient(this.GUl);
     AppMethodBeat.o(66932);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.HtmlTextView2
  * JD-Core Version:    0.7.0.1
  */

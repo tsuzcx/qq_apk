@@ -12,18 +12,18 @@ import java.util.List;
 
 public final class h
 {
-  public static boolean AGq;
+  public static boolean Gzz;
   
   static
   {
     AppMethodBeat.i(149094);
-    AGq = false;
+    Gzz = false;
     long l = System.nanoTime();
     try
     {
-      AGq = false;
+      Gzz = false;
       if (Build.VERSION.SDK_INT < 21) {}
-      for (AGq = false;; AGq = false)
+      for (Gzz = false;; Gzz = false)
       {
         return;
         Field localField = ActivityManager.RecentTaskInfo.class.getDeclaredField("instanceId");
@@ -39,16 +39,16 @@ public final class h
       for (;;)
       {
         List localList;
-        AGq = false;
+        Gzz = false;
         return;
         if (localThrowable.getInt((ActivityManager.RecentTaskInfo)localList.get(0)) > 0) {
-          AGq = true;
+          Gzz = true;
         }
       }
     }
     finally
     {
-      Log.i("MicroMsg.NormalMsgSource.QSDTH", "QSDT, result: %b, time: %d ns", new Object[] { Boolean.valueOf(AGq), Long.valueOf(System.nanoTime() - l) });
+      Log.i("MicroMsg.NormalMsgSource.QSDTH", "QSDT, result: %b, time: %d ns", new Object[] { Boolean.valueOf(Gzz), Long.valueOf(System.nanoTime() - l) });
       AppMethodBeat.o(149094);
     }
   }

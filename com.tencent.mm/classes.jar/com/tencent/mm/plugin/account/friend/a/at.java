@@ -7,23 +7,23 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.MStorageEx;
 import com.tencent.mm.storagebase.h;
 
-public final class at
+public class at
   extends MStorageEx
 {
   public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS qqlist ( qq long  PRIMARY KEY , wexinstatus int  , groupid int  , username text  , nickname text  , pyinitial text  , quanpin text  , qqnickname text  , qqpyinitial text  , qqquanpin text  , qqremark text  , qqremarkpyinitial text  , qqremarkquanpin text  , reserved1 text  , reserved2 text  , reserved3 int  , reserved4 int  ) ", "CREATE INDEX IF NOT EXISTS groupid_index ON qqlist ( groupid ) ", "CREATE INDEX IF NOT EXISTS qq_index ON qqlist ( qq ) " };
-  public final h iFy;
+  public final h lvy;
   
   public at(h paramh)
   {
-    this.iFy = paramh;
+    this.lvy = paramh;
   }
   
-  public final as AT(long paramLong)
+  public final as Hd(long paramLong)
   {
     as localas = null;
     AppMethodBeat.i(131166);
     Object localObject = "select qqlist.qq,qqlist.wexinstatus,qqlist.groupid,qqlist.username,qqlist.nickname,qqlist.pyinitial,qqlist.quanpin,qqlist.qqnickname,qqlist.qqpyinitial,qqlist.qqquanpin,qqlist.qqremark,qqlist.qqremarkpyinitial,qqlist.qqremarkquanpin,qqlist.reserved1,qqlist.reserved2,qqlist.reserved3,qqlist.reserved4 from qqlist  where qqlist.qq = \"" + paramLong + "\"";
-    localObject = this.iFy.rawQuery((String)localObject, null, 2);
+    localObject = this.lvy.rawQuery((String)localObject, null, 2);
     if (localObject == null)
     {
       AppMethodBeat.o(131166);
@@ -39,7 +39,7 @@ public final class at
     return localas;
   }
   
-  public final Cursor J(int paramInt, boolean paramBoolean)
+  public final Cursor L(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(131164);
     Object localObject;
@@ -52,7 +52,7 @@ public final class at
     }
     for (;;)
     {
-      localObject = this.iFy.rawQuery((String)localObject, arrayOfString);
+      localObject = this.lvy.rawQuery((String)localObject, arrayOfString);
       AppMethodBeat.o(131164);
       return localObject;
       localObject = "select qqlist.qq,qqlist.wexinstatus,qqlist.groupid,qqlist.username,qqlist.nickname,qqlist.pyinitial,qqlist.quanpin,qqlist.qqnickname,qqlist.qqpyinitial,qqlist.qqquanpin,qqlist.qqremark,qqlist.qqremarkpyinitial,qqlist.qqremarkquanpin,qqlist.reserved1,qqlist.reserved2,qqlist.reserved3,qqlist.reserved4 from qqlist  where qqlist.groupid=? and (wexinstatus=? or wexinstatus=?) order by reserved3";
@@ -63,35 +63,13 @@ public final class at
     }
   }
   
-  public final as Tg(String paramString)
-  {
-    Object localObject = null;
-    AppMethodBeat.i(131167);
-    paramString = "select qqlist.qq,qqlist.wexinstatus,qqlist.groupid,qqlist.username,qqlist.nickname,qqlist.pyinitial,qqlist.quanpin,qqlist.qqnickname,qqlist.qqpyinitial,qqlist.qqquanpin,qqlist.qqremark,qqlist.qqremarkpyinitial,qqlist.qqremarkquanpin,qqlist.reserved1,qqlist.reserved2,qqlist.reserved3,qqlist.reserved4 from qqlist  where qqlist.username = \"" + paramString + "\"";
-    Cursor localCursor = this.iFy.rawQuery(paramString, null, 2);
-    if (localCursor == null)
-    {
-      AppMethodBeat.o(131167);
-      return null;
-    }
-    paramString = localObject;
-    if (localCursor.moveToFirst())
-    {
-      paramString = new as();
-      paramString.convertFrom(localCursor);
-    }
-    localCursor.close();
-    AppMethodBeat.o(131167);
-    return paramString;
-  }
-  
   public final int a(long paramLong, as paramas)
   {
     int i = 0;
     AppMethodBeat.i(131168);
-    paramas = paramas.bov();
+    paramas = paramas.byE();
     if (paramas.size() > 0) {
-      i = this.iFy.update("qqlist", paramas, "qq=?", new String[] { String.valueOf(paramLong) });
+      i = this.lvy.update("qqlist", paramas, "qq=?", new String[] { String.valueOf(paramLong) });
     }
     if (i > 0) {
       doNotify(3, this, String.valueOf(paramLong));
@@ -108,17 +86,39 @@ public final class at
       AppMethodBeat.o(131169);
       return false;
     }
-    Log.d("MicroMsg.QQListStorage", "insert: name:" + paramas.bow());
-    paramas.cSx = -1;
-    ContentValues localContentValues = paramas.bov();
-    if ((int)this.iFy.insert("qqlist", "qq", localContentValues) != -1)
+    Log.d("MicroMsg.QQListStorage", "insert: name:" + paramas.byF());
+    paramas.cUP = -1;
+    ContentValues localContentValues = paramas.byE();
+    if ((int)this.lvy.insert("qqlist", "qq", localContentValues) != -1)
     {
-      doNotify(2, this, paramas.kfN);
+      doNotify(2, this, paramas.mXm);
       AppMethodBeat.o(131169);
       return true;
     }
     AppMethodBeat.o(131169);
     return false;
+  }
+  
+  public final as aaM(String paramString)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(131167);
+    paramString = "select qqlist.qq,qqlist.wexinstatus,qqlist.groupid,qqlist.username,qqlist.nickname,qqlist.pyinitial,qqlist.quanpin,qqlist.qqnickname,qqlist.qqpyinitial,qqlist.qqquanpin,qqlist.qqremark,qqlist.qqremarkpyinitial,qqlist.qqremarkquanpin,qqlist.reserved1,qqlist.reserved2,qqlist.reserved3,qqlist.reserved4 from qqlist  where qqlist.username = \"" + paramString + "\"";
+    Cursor localCursor = this.lvy.rawQuery(paramString, null, 2);
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(131167);
+      return null;
+    }
+    paramString = localObject;
+    if (localCursor.moveToFirst())
+    {
+      paramString = new as();
+      paramString.convertFrom(localCursor);
+    }
+    localCursor.close();
+    AppMethodBeat.o(131167);
+    return paramString;
   }
   
   public final Cursor b(int paramInt, String paramString, boolean paramBoolean)
@@ -141,20 +141,20 @@ public final class at
       localStringBuilder.append("qqlist.qqquanpin like '%" + paramString + "%' or ");
       localStringBuilder.append("qqlist.qqremark like '%" + paramString + "%' )");
       localStringBuilder.append(" order by reserved3");
-      paramString = this.iFy.rawQuery(localStringBuilder.toString(), null);
+      paramString = this.lvy.rawQuery(localStringBuilder.toString(), null);
       AppMethodBeat.o(131165);
       return paramString;
       localStringBuilder.append("select qqlist.qq,qqlist.wexinstatus,qqlist.groupid,qqlist.username,qqlist.nickname,qqlist.pyinitial,qqlist.quanpin,qqlist.qqnickname,qqlist.qqpyinitial,qqlist.qqquanpin,qqlist.qqremark,qqlist.qqremarkpyinitial,qqlist.qqremarkquanpin,qqlist.reserved1,qqlist.reserved2,qqlist.reserved3,qqlist.reserved4 from qqlist  where qqlist.groupid = \"" + paramInt + "\" and (wexinstatus =\"1\" or wexinstatus =\"2" + "\") and ( ");
     }
   }
   
-  public final boolean shouldProcessEvent()
+  public boolean shouldProcessEvent()
   {
     AppMethodBeat.i(131170);
-    if ((this.iFy == null) || (this.iFy.isClose()))
+    if ((this.lvy == null) || (this.lvy.isClose()))
     {
-      if (this.iFy == null) {}
-      for (Object localObject = "null";; localObject = Boolean.valueOf(this.iFy.isClose()))
+      if (this.lvy == null) {}
+      for (Object localObject = "null";; localObject = Boolean.valueOf(this.lvy.isClose()))
       {
         Log.w("MicroMsg.QQListStorage", "shouldProcessEvent db is close :%s", new Object[] { localObject });
         AppMethodBeat.o(131170);
@@ -165,7 +165,7 @@ public final class at
     return true;
   }
   
-  public final boolean vj(int paramInt)
+  public final boolean yn(int paramInt)
   {
     bool3 = false;
     bool2 = false;
@@ -174,7 +174,7 @@ public final class at
     localObject1 = null;
     try
     {
-      Cursor localCursor = this.iFy.rawQuery("select reserved3 from qqlist where groupid=? and reserved3=?  limit 1", new String[] { String.valueOf(paramInt), "0" }, 2);
+      Cursor localCursor = this.lvy.rawQuery("select reserved3 from qqlist where groupid=? and reserved3=?  limit 1", new String[] { String.valueOf(paramInt), "0" }, 2);
       boolean bool1 = bool2;
       if (localCursor != null)
       {
@@ -221,7 +221,7 @@ public final class at
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.at
  * JD-Core Version:    0.7.0.1
  */

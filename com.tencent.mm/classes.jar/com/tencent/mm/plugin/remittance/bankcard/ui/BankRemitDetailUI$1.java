@@ -14,7 +14,7 @@ final class BankRemitDetailUI$1
   {
     AppMethodBeat.i(67508);
     Log.i("MicroMsg.BankRemitDetailUI", "back press");
-    this.CkI.finish();
+    this.IhB.finish();
     AppMethodBeat.o(67508);
     return false;
   }

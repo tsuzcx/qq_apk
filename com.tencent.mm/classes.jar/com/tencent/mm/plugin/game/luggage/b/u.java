@@ -5,8 +5,8 @@ import android.content.Intent;
 import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
-import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.api.g;
 import com.tencent.mm.plugin.game.luggage.g.i;
 import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bs;
@@ -26,18 +26,18 @@ public class u
   public final void b(final b<i>.a paramb)
   {
     AppMethodBeat.i(83078);
-    String str1 = paramb.ctb.csi.optString("videoUrl");
-    String str2 = paramb.ctb.csi.optString("thumbUrl");
-    String str3 = paramb.ctb.csi.optString("appId");
-    int i = paramb.ctb.csi.optInt("sourceSceneId");
+    String str1 = paramb.crh.cqn.optString("videoUrl");
+    String str2 = paramb.crh.cqn.optString("thumbUrl");
+    String str3 = paramb.crh.cqn.optString("appId");
+    int i = paramb.crh.cqn.optInt("sourceSceneId");
     if (Util.isNullOrNil(str1))
     {
-      paramb.c("invalid_videoUrl", null);
+      paramb.a("invalid_videoUrl", null);
       AppMethodBeat.o(83078);
       return;
     }
-    ((com.tencent.mm.plugin.game.api.g)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.g.class)).a(((i)paramb.cta).mContext, str1, str2, str3, 510, i);
-    ((MMActivity)((i)paramb.cta).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
+    ((g)com.tencent.mm.kernel.h.ae(g.class)).a(((i)paramb.crg).mContext, str1, str2, str3, 510, i);
+    ((MMActivity)((i)paramb.crg).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
     {
       public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
@@ -53,7 +53,7 @@ public class u
         }
         for (;;)
         {
-          ((MMActivity)((i)paramb.cta).mContext).mmSetOnActivityResultCallback(null);
+          ((MMActivity)((i)paramb.crg).mContext).mmSetOnActivityResultCallback(null);
           AppMethodBeat.o(83077);
           return;
           JSONObject localJSONObject = new JSONObject();
@@ -61,7 +61,7 @@ public class u
           try
           {
             localJSONObject.put("videoInfo", new JSONArray(paramAnonymousIntent).getJSONObject(0));
-            paramb.c("", localJSONObject);
+            paramb.a("", localJSONObject);
           }
           catch (JSONException paramAnonymousIntent)
           {
@@ -70,19 +70,19 @@ public class u
               Log.e("MicroMsg.JsApiLaunchGameVideoEditor", "json_err:%s", new Object[] { paramAnonymousIntent.getMessage() });
             }
           }
-          paramb.c("cancel", null);
+          paramb.a("cancel", null);
           continue;
-          paramb.c("download_err", null);
+          paramb.a("download_err", null);
           continue;
           label176:
-          paramb.c("cancel", null);
+          paramb.a("cancel", null);
         }
       }
     });
     AppMethodBeat.o(83078);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

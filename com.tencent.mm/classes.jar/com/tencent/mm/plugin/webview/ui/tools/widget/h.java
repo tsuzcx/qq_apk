@@ -4,23 +4,23 @@ import android.view.View;
 
 public abstract interface h
 {
-  public abstract boolean gik();
+  public abstract void Ds(boolean paramBoolean);
   
-  public abstract void gil();
+  public abstract boolean hbM();
   
-  public abstract void gim();
+  public abstract void hbN();
   
-  public abstract void gin();
+  public abstract void hbO();
+  
+  public abstract void hbP();
   
   public abstract void setEmbeddedBottomBar(View paramView);
   
   public abstract void setEmbeddedTitleBarCompat(View paramView);
-  
-  public abstract void zu(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.h
  * JD-Core Version:    0.7.0.1
  */

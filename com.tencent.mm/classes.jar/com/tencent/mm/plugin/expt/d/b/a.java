@@ -1,190 +1,81 @@
 package com.tencent.mm.plugin.expt.d.b;
 
-import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.d.e.a.b;
-import com.tencent.mm.plugin.expt.d.e.a.c;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.expt.d.h.c;
+import com.tencent.mm.protocal.protobuf.aiv;
+import com.tencent.mm.protocal.protobuf.aiw;
+import com.tencent.mm.protocal.protobuf.aix;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
-import org.apache.commons.b.g;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public final class a
+  extends q
+  implements m
 {
-  private static com.tencent.mm.plugin.expt.d.e.a.a aL(JSONObject paramJSONObject)
+  private i callback;
+  private List<aiv> wdo;
+  private c wdp;
+  
+  public a(List<aiv> paramList, c paramc)
   {
-    AppMethodBeat.i(220295);
-    if (paramJSONObject == null)
-    {
-      AppMethodBeat.o(220295);
-      return null;
-    }
-    Log.d("EdgeComputingConfigParser", "[EdgeComputingConfigParser] parseScriptFieldConfig fieldConfigJson : " + paramJSONObject.toString());
-    try
-    {
-      int i = paramJSONObject.optInt("index", 0);
-      String str = paramJSONObject.optString("name", "");
-      int j = paramJSONObject.optInt("type", 0);
-      boolean bool = g.eP(str);
-      if (bool)
-      {
-        AppMethodBeat.o(220295);
-        return null;
-      }
-      com.tencent.mm.plugin.expt.d.e.a.a locala = new com.tencent.mm.plugin.expt.d.e.a.a();
-      locala.index = i;
-      locala.name = str;
-      locala.type = j;
-      AppMethodBeat.o(220295);
-      return locala;
-    }
-    catch (Exception localException)
-    {
-      Log.e("EdgeComputingConfigParser", "[EdgeComputingConfigParser] parseScriptFieldConfig throw Exception : " + localException.getMessage() + ", fieldConfigJson : " + paramJSONObject.toString());
-      AppMethodBeat.o(220295);
-    }
-    return null;
+    this.wdo = paramList;
+    this.wdp = paramc;
   }
   
-  public static c gm(String paramString1, String paramString2)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(220296);
-    if ((g.eP(paramString1)) || (g.eP(paramString2)))
-    {
-      AppMethodBeat.o(220296);
-      return null;
-    }
-    Log.d("EdgeComputingConfigParser", "[EdgeComputingConfigParser] parseSqlJsonConfig configID : " + paramString1 + ", json : " + paramString2);
-    try
-    {
-      Object localObject = new JSONObject(paramString2);
-      int i = ((JSONObject)localObject).optInt("reportID", 0);
-      String str1 = ((JSONObject)localObject).optString("sql", "");
-      String str2 = ((JSONObject)localObject).optString("dbPath", "");
-      localObject = ((JSONObject)localObject).optString("sqlMD5", "");
-      if ((i > 0) && (!g.eP(str1)))
-      {
-        boolean bool = g.eP((String)localObject);
-        if (!bool) {}
-      }
-      else
-      {
-        AppMethodBeat.o(220296);
-        return null;
-      }
-      c localc = new c();
-      localc.syg = paramString1;
-      localc.dbPath = str2;
-      localc.sql = str1;
-      localc.syt = ((String)localObject);
-      localc.syl = i;
-      localc.syr = paramString2;
-      com.tencent.mm.plugin.expt.d.f.a.lU(true);
-      AppMethodBeat.o(220296);
-      return localc;
-    }
-    catch (Exception paramString1)
-    {
-      com.tencent.mm.plugin.expt.d.f.a.lU(false);
-      Log.e("EdgeComputingConfigParser", "[EdgeComputingConfigParser] parseSqlJsonConfig throw Exception : " + paramString1.getMessage() + ", json : " + paramString2);
-      AppMethodBeat.o(220296);
-    }
-    return null;
+    AppMethodBeat.i(253898);
+    this.callback = parami;
+    parami = new d.a();
+    parami.lBU = new aiw();
+    parami.lBV = new aix();
+    parami.uri = "/cgi-bin/mmfddataecappsvr/edgerealtimereport";
+    parami.funcId = 4871;
+    parami.lBW = 0;
+    parami.respCmdId = 0;
+    parami = parami.bgN();
+    ((aiw)d.b.b(parami.lBR)).Stp.addAll(this.wdo);
+    int i = dispatch(paramg, parami, this);
+    AppMethodBeat.o(253898);
+    return i;
   }
   
-  public final b gl(String paramString1, String paramString2)
+  public final int getType()
   {
-    AppMethodBeat.i(220294);
-    if ((g.eP(paramString1)) || (g.eP(paramString2)))
+    return 4871;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(253900);
+    Log.i("MicroMsg.NetSceneEdgeComputingRtReport", "[onGYNetEnd] netId[%d] errType[%d] errCode[%d] errMsg[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      AppMethodBeat.o(220294);
-      return null;
+      params = (aix)d.c.b(((d)params).lBS);
+      this.wdp.a(params.Stq, params.Str, this.wdo);
     }
-    Log.d("EdgeComputingConfigParser", "[EdgeComputingConfigParser] parseScriptJsonConfig configID : " + paramString1 + ", json : " + paramString2);
     for (;;)
     {
-      int i;
-      try
-      {
-        Object localObject = new JSONObject(paramString2);
-        i = ((JSONObject)localObject).optInt("dataSourceType", 0);
-        int j = ((JSONObject)localObject).optInt("dataSourceID", 0);
-        int k = ((JSONObject)localObject).optInt("reportID", 0);
-        int m = ((JSONObject)localObject).optInt("isInstantReport", 0);
-        int n = ((JSONObject)localObject).optInt("isRepeat", 1);
-        int i1 = ((JSONObject)localObject).optInt("runPeriod", 0);
-        int i2 = ((JSONObject)localObject).optInt("dbExpireTime", 0);
-        String str1 = ((JSONObject)localObject).optString("scriptMD5", "");
-        String str2 = ((JSONObject)localObject).optString("script", "");
-        localObject = ((JSONObject)localObject).optJSONArray("fields");
-        if (!g.eP(str2))
-        {
-          boolean bool = g.eP(str1);
-          if (!bool) {}
-        }
-        else
-        {
-          AppMethodBeat.o(220294);
-          return null;
-        }
-        b localb = new b();
-        localb.syg = paramString1;
-        localb.syj = i;
-        localb.syk = j;
-        localb.syl = k;
-        localb.syn = m;
-        localb.syo = n;
-        localb.syp = i1;
-        localb.syq = i2;
-        localb.sys = str1;
-        localb.script = new String(Base64.decode(str2, 0), "UTF-8");
-        localb.syr = paramString2;
-        localb.sym = new ArrayList();
-        if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-        {
-          paramString1 = new com.tencent.mm.plugin.expt.d.e.a.a();
-          paramString1.index = 0;
-          paramString1.name = "report_time_ec";
-          paramString1.type = 2;
-          localb.sym.add(paramString1);
-          i = 0;
-          if (i < ((JSONArray)localObject).length())
-          {
-            paramString1 = aL(((JSONArray)localObject).getJSONObject(i));
-            if (paramString1 != null) {
-              localb.sym.add(paramString1);
-            }
-          }
-          else
-          {
-            Collections.sort(localb.sym, new Comparator() {});
-          }
-        }
-        else
-        {
-          com.tencent.mm.plugin.expt.d.f.a.lT(true);
-          AppMethodBeat.o(220294);
-          return localb;
-        }
-      }
-      catch (Exception paramString1)
-      {
-        com.tencent.mm.plugin.expt.d.f.a.lT(false);
-        Log.e("EdgeComputingConfigParser", "[EdgeComputingConfigParser] parseScriptJsonConfig throw Exception : " + paramString1.getMessage() + ", json : " + paramString2);
-        AppMethodBeat.o(220294);
-        return null;
-      }
-      i += 1;
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(253900);
+      return;
+      this.wdp.du(this.wdo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.d.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.game.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
+import com.tencent.mm.an.d;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.sdk.platformtools.Log;
 

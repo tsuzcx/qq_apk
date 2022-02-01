@@ -3,27 +3,29 @@ package com.tencent.mm.plugin.product.b;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.b;
+import com.tencent.mm.aj.k.b;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.plugin.product.c.f;
 import com.tencent.mm.plugin.product.c.h;
 import com.tencent.mm.plugin.product.c.j;
 import com.tencent.mm.plugin.product.c.k;
 import com.tencent.mm.plugin.product.c.l;
-import com.tencent.mm.protocal.protobuf.ahl;
-import com.tencent.mm.protocal.protobuf.akg;
-import com.tencent.mm.protocal.protobuf.bd;
-import com.tencent.mm.protocal.protobuf.cfw;
-import com.tencent.mm.protocal.protobuf.dev;
-import com.tencent.mm.protocal.protobuf.dki;
-import com.tencent.mm.protocal.protobuf.dqn;
-import com.tencent.mm.protocal.protobuf.dr;
-import com.tencent.mm.protocal.protobuf.dyy;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.protocal.protobuf.ahw;
+import com.tencent.mm.protocal.protobuf.alj;
+import com.tencent.mm.protocal.protobuf.bb;
+import com.tencent.mm.protocal.protobuf.cos;
+import com.tencent.mm.protocal.protobuf.doo;
+import com.tencent.mm.protocal.protobuf.dp;
+import com.tencent.mm.protocal.protobuf.dtx;
+import com.tencent.mm.protocal.protobuf.eak;
+import com.tencent.mm.protocal.protobuf.eiy;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -34,34 +36,34 @@ import java.util.Set;
 
 public final class c
 {
-  private d AYW;
-  public m AYX;
-  public List<n> AYY;
-  public String AYZ;
-  public String AZa;
-  public String AZb;
-  public akg AZc;
-  public dr AZd;
-  public dki AZe;
-  public String AZf;
-  public String AZg;
-  public int AZh;
-  public Map<String, e> AZi;
-  public Map<String, String> AZj;
-  public LinkedList<akg> AZk;
-  public LinkedList<bd> AZl;
-  public e AZm;
-  private com.tencent.mm.plugin.product.ui.e AZn;
-  public Map<String, LinkedList<ahl>> AZo;
+  private d GSU;
+  public m GSV;
+  public List<n> GSW;
+  public String GSX;
+  public String GSY;
+  public String GSZ;
+  public alj GTa;
+  public dp GTb;
+  public dtx GTc;
+  public String GTd;
+  public String GTe;
+  public int GTf;
+  public Map<String, e> GTg;
+  public Map<String, String> GTh;
+  public LinkedList<alj> GTi;
+  public LinkedList<bb> GTj;
+  public e GTk;
+  private com.tencent.mm.plugin.product.ui.e GTl;
+  public Map<String, LinkedList<ahw>> GTm;
   public int mCount;
   
   public c()
   {
     AppMethodBeat.i(66858);
-    this.AYW = null;
+    this.GSU = null;
     this.mCount = 1;
-    this.AZj = new HashMap();
-    this.AZo = null;
+    this.GTh = new HashMap();
+    this.GTm = null;
     AppMethodBeat.o(66858);
   }
   
@@ -87,68 +89,45 @@ public final class c
         j += 1;
       }
       localStringBuilder.deleteCharAt(localStringBuilder.lastIndexOf(";"));
-      e locale = (e)this.AZi.get(localStringBuilder.toString());
+      e locale = (e)this.GTg.get(localStringBuilder.toString());
       if (locale != null)
       {
-        if (locale.AZq < paraml.Bac) {
-          locale.AZq = paraml.Bac;
+        if (locale.GTo < paraml.GUa) {
+          locale.GTo = paraml.GUa;
         }
-        if (locale.AZr > paraml.Bac) {
-          locale.AZr = paraml.Bac;
+        if (locale.GTp > paraml.GUa) {
+          locale.GTp = paraml.GUa;
         }
-        locale.AZz += paraml.AZz;
+        locale.GTx += paraml.GTx;
       }
       for (;;)
       {
         i += 1;
         break;
         locale = new e();
-        locale.AZq = paraml.Bac;
-        locale.AZr = paraml.Bac;
-        locale.AZz = paraml.AZz;
-        locale.Bad = paraml.Bad;
+        locale.GTo = paraml.GUa;
+        locale.GTp = paraml.GUa;
+        locale.GTx = paraml.GTx;
+        locale.GUb = paraml.GUb;
         locale.url = paraml.url;
-        this.AZi.put(localStringBuilder.toString(), locale);
+        this.GTg.put(localStringBuilder.toString(), locale);
       }
     }
     AppMethodBeat.o(66881);
   }
   
-  public static String aF(Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(66879);
-    if ((paramMap == null) || (paramMap.isEmpty()))
-    {
-      AppMethodBeat.o(66879);
-      return null;
-    }
-    Object localObject = new ArrayList(paramMap.entrySet());
-    Collections.sort((List)localObject, new c.1());
-    paramMap = new StringBuilder();
-    localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-      paramMap.append((String)localEntry.getKey()).append(":").append((String)localEntry.getValue()).append(";");
-    }
-    paramMap.deleteCharAt(paramMap.lastIndexOf(";"));
-    paramMap = paramMap.toString();
-    AppMethodBeat.o(66879);
-    return paramMap;
-  }
-  
-  private int aKh(String paramString)
+  private int aUF(String paramString)
   {
     AppMethodBeat.i(66869);
     int k = 0;
     int i = 0;
     int j = k;
-    if (this.AZo != null)
+    if (this.GTm != null)
     {
       j = k;
-      if (this.AZo.size() > 0)
+      if (this.GTm.size() > 0)
       {
-        paramString = (LinkedList)this.AZo.get(paramString);
+        paramString = (LinkedList)this.GTm.get(paramString);
         j = k;
         if (paramString != null)
         {
@@ -162,7 +141,7 @@ public final class c
               if (!paramString.hasNext()) {
                 break;
               }
-              i = ((ahl)paramString.next()).KZx + i;
+              i = ((ahw)paramString.next()).SaG + i;
             }
           }
         }
@@ -172,10 +151,33 @@ public final class c
     return j;
   }
   
-  private void bh(LinkedList<l> paramLinkedList)
+  public static String az(Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(66879);
+    if ((paramMap == null) || (paramMap.isEmpty()))
+    {
+      AppMethodBeat.o(66879);
+      return null;
+    }
+    Object localObject = new ArrayList(paramMap.entrySet());
+    Collections.sort((List)localObject, new Comparator() {});
+    paramMap = new StringBuilder();
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+      paramMap.append((String)localEntry.getKey()).append(":").append((String)localEntry.getValue()).append(";");
+    }
+    paramMap.deleteCharAt(paramMap.lastIndexOf(";"));
+    paramMap = paramMap.toString();
+    AppMethodBeat.o(66879);
+    return paramMap;
+  }
+  
+  private void bB(LinkedList<l> paramLinkedList)
   {
     AppMethodBeat.i(66880);
-    this.AZi = new HashMap();
+    this.GTg = new HashMap();
     if ((paramLinkedList == null) || (paramLinkedList.size() <= 0))
     {
       AppMethodBeat.o(66880);
@@ -186,25 +188,11 @@ public final class c
     while (i < j)
     {
       l locall = (l)paramLinkedList.get(i);
-      a(locall.Bab.split(";"), locall);
+      a(locall.GTZ.split(";"), locall);
       i += 1;
     }
-    eDt();
+    fpm();
     AppMethodBeat.o(66880);
-  }
-  
-  public final void Ut(int paramInt)
-  {
-    AppMethodBeat.i(66866);
-    if (this.AZk == null)
-    {
-      AppMethodBeat.o(66866);
-      return;
-    }
-    if ((paramInt < this.AZk.size()) && (paramInt >= 0)) {
-      this.AZc = ((akg)this.AZk.get(paramInt));
-    }
-    AppMethodBeat.o(66866);
   }
   
   public final String a(m paramm)
@@ -212,19 +200,19 @@ public final class c
     AppMethodBeat.i(66884);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("<mallProductInfo>");
-    localStringBuilder.append("<type>").append(paramm.AZy).append("</type>");
-    localStringBuilder.append("<id>").append(paramm.AZx).append("</id>");
-    localStringBuilder.append("<version>").append(paramm.AZB.version).append("</version>");
-    localStringBuilder.append("<name>").append(Util.escapeStringForXml(paramm.AZB.name)).append("</name>");
-    localStringBuilder.append("<highPrice>").append(paramm.AZB.AZM).append("</highPrice>");
-    localStringBuilder.append("<lowPrice>").append(paramm.AZB.AZN).append("</lowPrice>");
-    localStringBuilder.append("<originPrice>").append(paramm.AZB.AZL).append("</originPrice>");
-    localStringBuilder.append("<sourceUrl>").append(Util.escapeStringForXml(this.AYX.eby)).append("</sourceUrl>");
-    if (paramm.AZB.AZO != null)
+    localStringBuilder.append("<type>").append(paramm.GTw).append("</type>");
+    localStringBuilder.append("<id>").append(paramm.GTv).append("</id>");
+    localStringBuilder.append("<version>").append(paramm.GTz.version).append("</version>");
+    localStringBuilder.append("<name>").append(Util.escapeStringForXml(paramm.GTz.name)).append("</name>");
+    localStringBuilder.append("<highPrice>").append(paramm.GTz.GTK).append("</highPrice>");
+    localStringBuilder.append("<lowPrice>").append(paramm.GTz.GTL).append("</lowPrice>");
+    localStringBuilder.append("<originPrice>").append(paramm.GTz.GTJ).append("</originPrice>");
+    localStringBuilder.append("<sourceUrl>").append(Util.escapeStringForXml(this.GSV.fVx)).append("</sourceUrl>");
+    if (paramm.GTz.GTM != null)
     {
-      localStringBuilder.append("<imgCount>").append(paramm.AZB.AZO.size()).append("</imgCount>");
+      localStringBuilder.append("<imgCount>").append(paramm.GTz.GTM.size()).append("</imgCount>");
       localStringBuilder.append("<imgList>");
-      Iterator localIterator = paramm.AZB.AZO.iterator();
+      Iterator localIterator = paramm.GTz.GTM.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
@@ -233,15 +221,15 @@ public final class c
       localStringBuilder.append("</imgList>");
     }
     localStringBuilder.append("<shareInfo>");
-    localStringBuilder.append("<shareUrl>").append(Util.escapeStringForXml(eDm())).append("</shareUrl>");
-    localStringBuilder.append("<shareThumbUrl>").append(Util.escapeStringForXml(paramm.eDx())).append("</shareThumbUrl>");
+    localStringBuilder.append("<shareUrl>").append(Util.escapeStringForXml(fpf())).append("</shareUrl>");
+    localStringBuilder.append("<shareThumbUrl>").append(Util.escapeStringForXml(paramm.fpq())).append("</shareThumbUrl>");
     localStringBuilder.append("</shareInfo>");
-    if (this.AYX.AZC != null)
+    if (this.GSV.GTA != null)
     {
       localStringBuilder.append("<sellerInfo>");
-      localStringBuilder.append("<appID>").append(paramm.AZC.dNI).append("</appID>");
-      localStringBuilder.append("<appName>").append(paramm.AZC.name).append("</appName>");
-      localStringBuilder.append("<usrName>").append(paramm.AZC.username).append("</usrName>");
+      localStringBuilder.append("<appID>").append(paramm.GTA.appid).append("</appID>");
+      localStringBuilder.append("<appName>").append(paramm.GTA.name).append("</appName>");
+      localStringBuilder.append("<usrName>").append(paramm.GTA.username).append("</usrName>");
       localStringBuilder.append("</sellerInfo>");
     }
     localStringBuilder.append("</mallProductInfo>");
@@ -255,56 +243,56 @@ public final class c
     int j = 0;
     AppMethodBeat.i(66860);
     clear();
-    this.AYX = paramm;
-    this.AYY = paramList;
-    if (Util.isNullOrNil(this.AYX.eby)) {
-      this.AYX.eby = this.AZa;
+    this.GSV = paramm;
+    this.GSW = paramList;
+    if (Util.isNullOrNil(this.GSV.fVx)) {
+      this.GSV.fVx = this.GSY;
     }
-    bh(this.AYX.AZD);
-    if ((this.AYX.AZB != null) && (this.AYX.AZB.AZU != null)) {
-      this.AZh = this.AYX.AZB.AZU.size();
+    bB(this.GSV.GTB);
+    if ((this.GSV.GTz != null) && (this.GSV.GTz.GTS != null)) {
+      this.GTf = this.GSV.GTz.GTS.size();
     }
-    if ((this.AYX.AZB != null) && (this.AYX.AZB.AZO != null) && (this.AYX.AZB.AZO.size() > 0)) {
-      this.AZf = ((String)this.AYX.AZB.AZO.get(0));
+    if ((this.GSV.GTz != null) && (this.GSV.GTz.GTM != null) && (this.GSV.GTz.GTM.size() > 0)) {
+      this.GTd = ((String)this.GSV.GTz.GTM.get(0));
     }
-    if (!Util.isNullOrNil(this.AYX.eDx()))
+    if (!Util.isNullOrNil(this.GSV.fpq()))
     {
-      u.a(new com.tencent.mm.plugin.product.ui.c(this.AYX.eDx()));
-      Log.d("MicroMsg.MallProductManager", "product img path : " + eDl());
+      u.a(new com.tencent.mm.plugin.product.ui.c(this.GSV.fpq()));
+      Log.d("MicroMsg.MallProductManager", "product img path : " + fpe());
     }
-    if ((this.AYX.AZE != null) && (this.AYX.AZE.AZY != null)) {}
-    for (int i = this.AYX.AZE.AZY.cSx;; i = 0)
+    if ((this.GSV.GTC != null) && (this.GSV.GTC.GTW != null)) {}
+    for (int i = this.GSV.GTC.GTW.cUP;; i = 0)
     {
-      if (this.AYX.AZC != null) {
-        j = this.AYX.AZC.cSx;
+      if (this.GSV.GTA != null) {
+        j = this.GSV.GTA.cUP;
       }
-      this.AZn = new com.tencent.mm.plugin.product.ui.e(i, j);
+      this.GTl = new com.tencent.mm.plugin.product.ui.e(i, j);
       AppMethodBeat.o(66860);
       return;
     }
   }
   
-  public final LinkedList<com.tencent.mm.plugin.product.c.a> aB(Activity paramActivity)
+  public final LinkedList<com.tencent.mm.plugin.product.c.a> aH(Activity paramActivity)
   {
     AppMethodBeat.i(66865);
     LinkedList localLinkedList = new LinkedList();
-    if (this.AZl != null)
+    if (this.GTj != null)
     {
-      Iterator localIterator = this.AZl.iterator();
+      Iterator localIterator = this.GTj.iterator();
       while (localIterator.hasNext())
       {
-        bd localbd = (bd)localIterator.next();
+        bb localbb = (bb)localIterator.next();
         com.tencent.mm.plugin.product.c.a locala = new com.tencent.mm.plugin.product.c.a();
-        locala.Name = localbd.Name;
-        locala.AZI = localbd.AZI;
-        locala.iAc = localbd.iAc;
-        locala.oUv = localbd.oUv;
-        locala.IconUrl = localbd.IconUrl;
-        if (locala.oUv == 1)
+        locala.CMP = localbb.CMP;
+        locala.GTG = localbb.GTG;
+        locala.lpy = localbb.lpy;
+        locala.rWu = localbb.rWu;
+        locala.CNj = localbb.CNj;
+        if (locala.rWu == 1)
         {
-          int i = aKh(locala.iAc);
+          int i = aUF(locala.lpy);
           if (i > 0) {
-            locala.AZI = paramActivity.getString(2131762927, new Object[] { b.c(i, this.AYX.AZB.AOl) });
+            locala.GTG = paramActivity.getString(a.i.mall_product_submit_preferential_summray, new Object[] { b.c(i, this.GSV.GTz.GHz) });
           }
         }
         localLinkedList.add(locala);
@@ -314,102 +302,116 @@ public final class c
     return localLinkedList;
   }
   
-  public final void aO(Intent paramIntent)
+  public final void aN(Intent paramIntent)
   {
     AppMethodBeat.i(66864);
-    dr localdr = new dr();
-    localdr.UserName = Util.nullAs(paramIntent.getStringExtra("userName"), "");
-    localdr.KHE = Util.nullAs(paramIntent.getStringExtra("telNumber"), "");
-    localdr.KHF = Util.nullAs(paramIntent.getStringExtra("addressPostalCode"), "");
-    localdr.kdZ = Util.nullAs(paramIntent.getStringExtra("proviceFirstStageName"), "");
-    localdr.kea = Util.nullAs(paramIntent.getStringExtra("addressCitySecondStageName"), "");
-    localdr.keh = Util.nullAs(paramIntent.getStringExtra("addressCountiesThirdStageName"), "");
-    localdr.xKd = Util.nullAs(paramIntent.getStringExtra("addressDetailInfo"), "");
-    if ((!Util.isNullOrNil(localdr.UserName)) && (!Util.isNullOrNil(localdr.KHE))) {
-      this.AZd = localdr;
+    dp localdp = new dp();
+    localdp.UserName = Util.nullAs(paramIntent.getStringExtra("userName"), "");
+    localdp.RIX = Util.nullAs(paramIntent.getStringExtra("telNumber"), "");
+    localdp.RIY = Util.nullAs(paramIntent.getStringExtra("addressPostalCode"), "");
+    localdp.mVz = Util.nullAs(paramIntent.getStringExtra("proviceFirstStageName"), "");
+    localdp.mVA = Util.nullAs(paramIntent.getStringExtra("addressCitySecondStageName"), "");
+    localdp.mVH = Util.nullAs(paramIntent.getStringExtra("addressCountiesThirdStageName"), "");
+    localdp.COk = Util.nullAs(paramIntent.getStringExtra("addressDetailInfo"), "");
+    if ((!Util.isNullOrNil(localdp.UserName)) && (!Util.isNullOrNil(localdp.RIX))) {
+      this.GTb = localdp;
     }
     AppMethodBeat.o(66864);
+  }
+  
+  public final void abf(int paramInt)
+  {
+    AppMethodBeat.i(66866);
+    if (this.GTi == null)
+    {
+      AppMethodBeat.o(66866);
+      return;
+    }
+    if ((paramInt < this.GTi.size()) && (paramInt >= 0)) {
+      this.GTa = ((alj)this.GTi.get(paramInt));
+    }
+    AppMethodBeat.o(66866);
   }
   
   public final void clear()
   {
     AppMethodBeat.i(66859);
-    this.AYX = null;
-    if (this.AYY != null)
+    this.GSV = null;
+    if (this.GSW != null)
     {
-      this.AYY.clear();
-      this.AYY = null;
+      this.GSW.clear();
+      this.GSW = null;
     }
-    this.AYZ = null;
-    this.AZa = null;
+    this.GSX = null;
+    this.GSY = null;
     this.mCount = 1;
-    this.AZb = null;
-    this.AZc = null;
-    this.AZe = null;
-    this.AZf = null;
-    this.AZh = 0;
-    this.AZm = null;
-    if (this.AZi != null)
+    this.GSZ = null;
+    this.GTa = null;
+    this.GTc = null;
+    this.GTd = null;
+    this.GTf = 0;
+    this.GTk = null;
+    if (this.GTg != null)
     {
-      this.AZi.clear();
-      this.AZi = null;
+      this.GTg.clear();
+      this.GTg = null;
     }
-    if (this.AZj != null) {
-      this.AZj.clear();
+    if (this.GTh != null) {
+      this.GTh.clear();
     }
-    if (this.AZk != null)
+    if (this.GTi != null)
     {
-      this.AZk.clear();
-      this.AZk = null;
+      this.GTi.clear();
+      this.GTi = null;
     }
-    if (this.AZo != null)
+    if (this.GTm != null)
     {
-      this.AZo.clear();
-      this.AZo = null;
+      this.GTm.clear();
+      this.GTm = null;
     }
     AppMethodBeat.o(66859);
   }
   
-  public final com.tencent.mm.plugin.product.ui.e eDe()
+  public final com.tencent.mm.plugin.product.ui.e foX()
   {
     AppMethodBeat.i(66861);
-    if (this.AZn == null) {
-      this.AZn = new com.tencent.mm.plugin.product.ui.e(0, 0);
+    if (this.GTl == null) {
+      this.GTl = new com.tencent.mm.plugin.product.ui.e(0, 0);
     }
-    com.tencent.mm.plugin.product.ui.e locale = this.AZn;
+    com.tencent.mm.plugin.product.ui.e locale = this.GTl;
     AppMethodBeat.o(66861);
     return locale;
   }
   
-  public final String eDf()
+  public final String foY()
   {
     AppMethodBeat.i(66862);
-    if ((this.AZm != null) && (!Util.isNullOrNil(this.AZm.url)))
+    if ((this.GTk != null) && (!Util.isNullOrNil(this.GTk.url)))
     {
-      str = this.AZm.url;
+      str = this.GTk.url;
       AppMethodBeat.o(66862);
       return str;
     }
-    String str = this.AZf;
+    String str = this.GTd;
     AppMethodBeat.o(66862);
     return str;
   }
   
-  public final String eDg()
+  public final String foZ()
   {
     AppMethodBeat.i(66863);
     Object localObject1 = new StringBuilder();
-    Iterator localIterator = this.AYX.AZB.AZU.iterator();
+    Iterator localIterator = this.GSV.GTz.GTS.iterator();
     for (;;)
     {
       if (!localIterator.hasNext()) {
         break label133;
       }
       Object localObject2 = (com.tencent.mm.plugin.product.c.m)localIterator.next();
-      String str = (String)this.AZj.get(((com.tencent.mm.plugin.product.c.m)localObject2).Bae);
+      String str = (String)this.GTh.get(((com.tencent.mm.plugin.product.c.m)localObject2).GUc);
       if (str != null)
       {
-        localObject2 = ((com.tencent.mm.plugin.product.c.m)localObject2).Bag.iterator();
+        localObject2 = ((com.tencent.mm.plugin.product.c.m)localObject2).GUe.iterator();
         if (((Iterator)localObject2).hasNext())
         {
           h localh = (h)((Iterator)localObject2).next();
@@ -426,41 +428,41 @@ public final class c
     return localObject1;
   }
   
-  public final int eDh()
+  public final int fpa()
   {
     AppMethodBeat.i(66867);
     int j = 0;
     int i = j;
-    if (!eDe().eDA())
+    if (!foX().fpt())
     {
       i = j;
-      if (this.AZc != null) {
-        i = this.AZc.KZx + 0;
+      if (this.GTa != null) {
+        i = this.GTa.SaG + 0;
       }
     }
-    if (this.AZm != null) {
-      i += this.AZm.AZq * this.mCount;
+    if (this.GTk != null) {
+      i += this.GTk.GTo * this.mCount;
     }
     for (;;)
     {
-      j = eDi();
+      j = fpb();
       AppMethodBeat.o(66867);
       return i - j;
-      i += this.AYX.AZB.AZM * this.mCount;
+      i += this.GSV.GTz.GTK * this.mCount;
     }
   }
   
-  public final int eDi()
+  public final int fpb()
   {
     AppMethodBeat.i(66868);
     int j = 0;
     int i = j;
-    if (this.AZo != null)
+    if (this.GTm != null)
     {
       i = j;
-      if (this.AZo.size() > 0)
+      if (this.GTm.size() > 0)
       {
-        Iterator localIterator = this.AZo.values().iterator();
+        Iterator localIterator = this.GTm.values().iterator();
         for (i = 0; localIterator.hasNext(); i = j)
         {
           Object localObject = (LinkedList)localIterator.next();
@@ -477,7 +479,7 @@ public final class c
                 if (!((Iterator)localObject).hasNext()) {
                   break;
                 }
-                i += ((ahl)((Iterator)localObject).next()).KZx;
+                i += ((ahw)((Iterator)localObject).next()).SaG;
               }
             }
           }
@@ -488,36 +490,36 @@ public final class c
     return i;
   }
   
-  public final dki eDj()
+  public final dtx fpc()
   {
     AppMethodBeat.i(66870);
-    if (this.AZe != null)
+    if (this.GTc != null)
     {
-      localObject = this.AZe;
+      localObject = this.GTc;
       AppMethodBeat.o(66870);
       return localObject;
     }
-    if (this.AYW == null) {
-      this.AYW = com.tencent.mm.plugin.product.a.a.eDb().eDd();
+    if (this.GSU == null) {
+      this.GSU = com.tencent.mm.plugin.product.a.a.foU().foW();
     }
-    Object localObject = this.AYW;
-    if ((((d)localObject).AZp != null) && (((d)localObject).AZp.size() > 0)) {}
-    for (localObject = (String)((d)localObject).AZp.get(0); !Util.isNullOrNil((String)localObject); localObject = null)
+    Object localObject = this.GSU;
+    if ((((d)localObject).GTn != null) && (((d)localObject).GTn.size() > 0)) {}
+    for (localObject = (String)((d)localObject).GTn.get(0); !Util.isNullOrNil((String)localObject); localObject = null)
     {
-      this.AZe = new dki();
-      this.AZe.xKd = ((String)localObject);
-      this.AZe.MOm = 1;
-      localObject = this.AZe;
+      this.GTc = new dtx();
+      this.GTc.COk = ((String)localObject);
+      this.GTc.Uaf = 1;
+      localObject = this.GTc;
       AppMethodBeat.o(66870);
       return localObject;
     }
-    localObject = this.AZd;
-    if ((localObject != null) && (!Util.isNullOrNil(((dr)localObject).UserName)))
+    localObject = this.GTb;
+    if ((localObject != null) && (!Util.isNullOrNil(((dp)localObject).UserName)))
     {
-      this.AZe = new dki();
-      this.AZe.xKd = ((dr)localObject).UserName;
-      this.AZe.MOm = 1;
-      localObject = this.AZe;
+      this.GTc = new dtx();
+      this.GTc.COk = ((dp)localObject).UserName;
+      this.GTc.Uaf = 1;
+      localObject = this.GTc;
       AppMethodBeat.o(66870);
       return localObject;
     }
@@ -525,20 +527,20 @@ public final class c
     return null;
   }
   
-  public final String eDk()
+  public final String fpd()
   {
-    if (this.AYX.AZC != null) {
-      return this.AYX.AZC.username;
+    if (this.GSV.GTA != null) {
+      return this.GSV.GTA.username;
     }
     return null;
   }
   
-  public final String eDl()
+  public final String fpe()
   {
     AppMethodBeat.i(66871);
-    if (!Util.isNullOrNil(this.AYX.eDx()))
+    if (!Util.isNullOrNil(this.GSV.fpq()))
     {
-      String str = com.tencent.mm.plugin.product.ui.c.aKj(this.AYX.eDx());
+      String str = com.tencent.mm.plugin.product.ui.c.aUH(this.GSV.fpq());
       AppMethodBeat.o(66871);
       return str;
     }
@@ -546,44 +548,44 @@ public final class c
     return null;
   }
   
-  public final String eDm()
+  public final String fpf()
   {
     AppMethodBeat.i(66872);
-    if ((this.AYX.AZB != null) && (this.AYX.AZB.AZW != null))
+    if ((this.GSV.GTz != null) && (this.GSV.GTz.GTU != null))
     {
-      str = this.AYX.AZB.AZW.url;
+      str = this.GSV.GTz.GTU.url;
       AppMethodBeat.o(66872);
       return str;
     }
-    if (!Util.isNullOrNil(this.AYX.eby))
+    if (!Util.isNullOrNil(this.GSV.fVx))
     {
-      str = this.AYX.eby;
+      str = this.GSV.fVx;
       AppMethodBeat.o(66872);
       return str;
     }
-    String str = this.AZa;
+    String str = this.GSY;
     AppMethodBeat.o(66872);
     return str;
   }
   
-  public final int eDn()
+  public final int fpg()
   {
-    int j = this.AYX.AZz;
+    int j = this.GSV.GTx;
     int i = j;
-    if (this.AZm != null)
+    if (this.GTk != null)
     {
       i = j;
-      if (j > this.AZm.AZz) {
-        i = this.AZm.AZz;
+      if (j > this.GTk.GTx) {
+        i = this.GTk.GTx;
       }
     }
     return i;
   }
   
-  public final boolean eDo()
+  public final boolean fph()
   {
     AppMethodBeat.i(66873);
-    if ((this.mCount > 0) && (this.AYX != null) && (this.mCount <= eDn()) && (this.AYX.AZB != null) && (this.AYX.AZB.AZU != null))
+    if ((this.mCount > 0) && (this.GSV != null) && (this.mCount <= fpg()) && (this.GSV.GTz != null) && (this.GSV.GTz.GTS != null))
     {
       AppMethodBeat.o(66873);
       return true;
@@ -592,24 +594,24 @@ public final class c
     return false;
   }
   
-  public final boolean eDp()
+  public final boolean fpi()
   {
     AppMethodBeat.i(66874);
-    if (!eDo())
+    if (!fph())
     {
       AppMethodBeat.o(66874);
       return false;
     }
-    if ((this.AZj != null) && (this.AZj.size() == this.AZh)) {
-      if (this.AZh > 0)
+    if ((this.GTh != null) && (this.GTh.size() == this.GTf)) {
+      if (this.GTf > 0)
       {
-        if ((this.AZm != null) && (this.mCount > 0) && (this.mCount <= eDn()))
+        if ((this.GTk != null) && (this.mCount > 0) && (this.mCount <= fpg()))
         {
           AppMethodBeat.o(66874);
           return true;
         }
       }
-      else if (this.AZh == 0)
+      else if (this.GTf == 0)
       {
         AppMethodBeat.o(66874);
         return true;
@@ -619,20 +621,20 @@ public final class c
     return false;
   }
   
-  public final boolean eDq()
+  public final boolean fpj()
   {
     AppMethodBeat.i(66875);
-    if (!eDp())
+    if (!fpi())
     {
       AppMethodBeat.o(66875);
       return false;
     }
-    if (this.AZd == null)
+    if (this.GTb == null)
     {
       AppMethodBeat.o(66875);
       return false;
     }
-    if ((!eDe().eDA()) && (this.AZc == null))
+    if ((!foX().fpt()) && (this.GTa == null))
     {
       AppMethodBeat.o(66875);
       return false;
@@ -641,97 +643,97 @@ public final class c
     return true;
   }
   
-  public final LinkedList<dqn> eDr()
+  public final LinkedList<eak> fpk()
   {
     AppMethodBeat.i(66876);
     LinkedList localLinkedList = new LinkedList();
-    dqn localdqn = new dqn();
-    localdqn.oTz = this.mCount;
-    localdqn.LZy = this.AYX.AZx;
-    localdqn.MJR = this.AYX.eby;
-    localdqn.MJS = this.AZb;
-    localLinkedList.add(localdqn);
+    eak localeak = new eak();
+    localeak.rVx = this.mCount;
+    localeak.TiR = this.GSV.GTv;
+    localeak.TVK = this.GSV.fVx;
+    localeak.TVL = this.GSZ;
+    localLinkedList.add(localeak);
     AppMethodBeat.o(66876);
     return localLinkedList;
   }
   
-  public final dyy eDs()
+  public final eiy fpl()
   {
     AppMethodBeat.i(66877);
-    dyy localdyy = new dyy();
-    localdyy.Lca = this.AYZ;
-    localdyy.APg = 1;
-    localdyy.MYz = new LinkedList();
-    dev localdev = new dev();
-    localdev.oTz = this.mCount;
-    localdev.LZy = this.AYX.AZx;
-    localdev.Name = this.AYX.AZB.name;
-    if (this.AZm != null) {}
+    eiy localeiy = new eiy();
+    localeiy.Sdn = this.GSX;
+    localeiy.GIu = 1;
+    localeiy.UkR = new LinkedList();
+    doo localdoo = new doo();
+    localdoo.rVx = this.mCount;
+    localdoo.TiR = this.GSV.GTv;
+    localdoo.CMP = this.GSV.GTz.name;
+    if (this.GTk != null) {}
     Iterator localIterator;
     Object localObject;
-    for (localdev.MJQ = this.AZm.AZq;; localdev.MJQ = this.AYX.AZB.AZM)
+    for (localdoo.TVJ = this.GTk.GTo;; localdoo.TVJ = this.GSV.GTz.GTK)
     {
-      localdev.MJR = this.AYX.eby;
-      localdev.MJS = this.AZb;
-      localdev.oUv = this.AYX.AZy;
-      localdev.MJO = this.AZh;
-      localdev.MJP = new LinkedList();
-      localIterator = this.AZj.keySet().iterator();
+      localdoo.TVK = this.GSV.fVx;
+      localdoo.TVL = this.GSZ;
+      localdoo.rWu = this.GSV.GTw;
+      localdoo.TVH = this.GTf;
+      localdoo.TVI = new LinkedList();
+      localIterator = this.GTh.keySet().iterator();
       while (localIterator.hasNext())
       {
         localObject = (String)localIterator.next();
-        String str = (String)this.AZj.get(localObject);
-        cfw localcfw = new cfw();
-        localcfw.xMX = ((String)localObject);
-        localcfw.Cyk = str;
-        localdev.MJP.add(localcfw);
+        String str = (String)this.GTh.get(localObject);
+        cos localcos = new cos();
+        localcos.CRg = ((String)localObject);
+        localcos.Izj = str;
+        localdoo.TVI.add(localcos);
       }
     }
-    localdev.MJW = new LinkedList();
-    localdev.MJV = 0;
-    if ((this.AZo != null) && (this.AZo.size() > 0))
+    localdoo.TVP = new LinkedList();
+    localdoo.TVO = 0;
+    if ((this.GTm != null) && (this.GTm.size() > 0))
     {
-      localIterator = this.AZo.values().iterator();
+      localIterator = this.GTm.values().iterator();
       while (localIterator.hasNext())
       {
         localObject = (LinkedList)localIterator.next();
-        localdev.MJW.addAll((Collection)localObject);
-        int i = localdev.MJV;
-        localdev.MJV = (((LinkedList)localObject).size() + i);
+        localdoo.TVP.addAll((Collection)localObject);
+        int i = localdoo.TVO;
+        localdoo.TVO = (((LinkedList)localObject).size() + i);
       }
     }
-    localdyy.MYz.add(localdev);
-    localdyy.MYB = new LinkedList();
-    localdyy.MYC = 1;
-    this.AZe = eDj();
-    if (this.AZe != null) {
-      localdyy.MYB.add(this.AZe);
+    localeiy.UkR.add(localdoo);
+    localeiy.UkT = new LinkedList();
+    localeiy.UkU = 1;
+    this.GTc = fpc();
+    if (this.GTc != null) {
+      localeiy.UkT.add(this.GTc);
     }
     for (;;)
     {
-      localdyy.LWZ = this.AZd;
-      localdyy.MYA = this.AZc;
+      localeiy.Tgx = this.GTb;
+      localeiy.UkS = this.GTa;
       AppMethodBeat.o(66877);
-      return localdyy;
-      this.AZe = new dki();
-      this.AZe.MOm = 0;
-      localdyy.MYB.add(this.AZe);
+      return localeiy;
+      this.GTc = new dtx();
+      this.GTc.Uaf = 0;
+      localeiy.UkT.add(this.GTc);
     }
   }
   
-  public final void eDt()
+  public final void fpm()
   {
     AppMethodBeat.i(66878);
-    if (this.AZj == null)
+    if (this.GTh == null)
     {
       AppMethodBeat.o(66878);
       return;
     }
-    Iterator localIterator1 = this.AYX.AZB.AZU.iterator();
+    Iterator localIterator1 = this.GSV.GTz.GTS.iterator();
     if (localIterator1.hasNext())
     {
       com.tencent.mm.plugin.product.c.m localm = (com.tencent.mm.plugin.product.c.m)localIterator1.next();
-      Iterator localIterator2 = localm.Bag.iterator();
+      Iterator localIterator2 = localm.GUe.iterator();
       label62:
       h localh;
       Object localObject;
@@ -740,31 +742,31 @@ public final class c
       if (localIterator2.hasNext())
       {
         localh = (h)localIterator2.next();
-        localObject = localm.Bae;
+        localObject = localm.GUc;
         str2 = localh.id;
-        if ((this.AZj != null) && (this.AZi != null)) {
+        if ((this.GTh != null) && (this.GTg != null)) {
           break label176;
         }
         bool = false;
       }
       for (;;)
       {
-        localh.iJ = bool;
-        Log.d("MicroMsg.MallProductManager", "(" + localm.Bae + " , " + localh.id + ") hasStock--> " + localh.iJ);
+        localh.bzb = bool;
+        Log.d("MicroMsg.MallProductManager", "(" + localm.GUc + " , " + localh.id + ") hasStock--> " + localh.bzb);
         break label62;
         break;
         label176:
         String str1;
-        if (this.AZj.containsKey(localObject))
+        if (this.GTh.containsKey(localObject))
         {
-          str1 = (String)this.AZj.get(localObject);
-          this.AZj.put(localObject, str2);
-          str2 = aF(this.AZj);
-          this.AZj.put(localObject, str1);
-          localObject = (e)this.AZi.get(str2);
+          str1 = (String)this.GTh.get(localObject);
+          this.GTh.put(localObject, str2);
+          str2 = az(this.GTh);
+          this.GTh.put(localObject, str1);
+          localObject = (e)this.GTg.get(str2);
           if (localObject != null)
           {
-            if (((e)localObject).AZz > 0) {
+            if (((e)localObject).GTx > 0) {
               bool = true;
             } else {
               bool = false;
@@ -776,13 +778,13 @@ public final class c
         }
         else
         {
-          this.AZj.put(localObject, str2);
-          str1 = aF(this.AZj);
-          this.AZj.remove(localObject);
-          localObject = (e)this.AZi.get(str1);
+          this.GTh.put(localObject, str2);
+          str1 = az(this.GTh);
+          this.GTh.remove(localObject);
+          localObject = (e)this.GTg.get(str1);
           if (localObject != null)
           {
-            if (((e)localObject).AZz > 0) {
+            if (((e)localObject).GTx > 0) {
               bool = true;
             } else {
               bool = false;
@@ -797,41 +799,41 @@ public final class c
     AppMethodBeat.o(66878);
   }
   
-  public final String eDu()
+  public final String fpn()
   {
     AppMethodBeat.i(66882);
     Object localObject = new k.b();
-    ((k.b)localObject).title = this.AYX.AZB.name;
-    ((k.b)localObject).description = eDv();
+    ((k.b)localObject).title = this.GSV.GTz.name;
+    ((k.b)localObject).description = fpo();
     ((k.b)localObject).type = 13;
-    ((k.b)localObject).url = eDm();
-    ((k.b)localObject).thumburl = this.AYX.eDx();
-    ((k.b)localObject).ixm = this.AYX.AZy;
-    ((k.b)localObject).ixn = a(this.AYX);
+    ((k.b)localObject).url = fpf();
+    ((k.b)localObject).thumburl = this.GSV.fpq();
+    ((k.b)localObject).lmB = this.GSV.GTw;
+    ((k.b)localObject).lmC = a(this.GSV);
     localObject = k.b.a((k.b)localObject, null, null);
     AppMethodBeat.o(66882);
     return localObject;
   }
   
-  public final String eDv()
+  public final String fpo()
   {
     AppMethodBeat.i(66883);
-    String str = b.c(this.AYX.AZB.AZN, this.AYX.AZB.AOl);
+    String str = b.c(this.GSV.GTz.GTL, this.GSV.GTz.GHz);
     AppMethodBeat.o(66883);
     return str;
   }
   
   public final String getAppId()
   {
-    if (this.AYX.AZC != null) {
-      return this.AYX.AZC.dNI;
+    if (this.GSV.GTA != null) {
+      return this.GSV.GTA.appid;
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.product.b.c
  * JD-Core Version:    0.7.0.1
  */

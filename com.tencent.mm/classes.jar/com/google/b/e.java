@@ -1,66 +1,39 @@
 package com.google.b;
 
-import com.google.b.d.d;
-import com.google.b.d.f;
-import com.google.b.d.h;
-import com.google.b.d.j;
-import com.google.b.d.k;
-import com.google.b.d.m;
-import com.google.b.d.p;
-import com.google.b.d.t;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Map;
-
-public final class e
-  implements g
+final class e
 {
-  public final com.google.b.b.b a(String paramString, a parama, int paramInt1, int paramInt2, Map<c, ?> paramMap)
+  private static final Class<?> bPd = cs("libcore.io.Memory");
+  private static final boolean bPe;
+  
+  static
   {
-    AppMethodBeat.i(12285);
-    Object localObject;
-    switch (1.cca[parama.ordinal()])
+    if (cs("org.robolectric.Robolectric") != null) {}
+    for (boolean bool = true;; bool = false)
     {
-    default: 
-      paramString = new IllegalArgumentException("No encoder available for format ".concat(String.valueOf(parama)));
-      AppMethodBeat.o(12285);
-      throw paramString;
-    case 1: 
-      localObject = new k();
+      bPe = bool;
+      return;
     }
-    for (;;)
+  }
+  
+  static boolean An()
+  {
+    return (bPd != null) && (!bPe);
+  }
+  
+  private static <T> Class<T> cs(String paramString)
+  {
+    try
     {
-      paramString = ((g)localObject).a(paramString, parama, paramInt1, paramInt2, paramMap);
-      AppMethodBeat.o(12285);
+      paramString = Class.forName(paramString);
       return paramString;
-      localObject = new t();
-      continue;
-      localObject = new j();
-      continue;
-      localObject = new p();
-      continue;
-      localObject = new com.google.b.f.a();
-      continue;
-      localObject = new f();
-      continue;
-      localObject = new h();
-      continue;
-      localObject = new d();
-      continue;
-      localObject = new m();
-      continue;
-      localObject = new com.google.b.e.a();
-      continue;
-      localObject = new com.google.b.d.b();
-      continue;
-      localObject = new com.google.b.c.a();
-      continue;
-      localObject = new com.google.b.a.a();
     }
+    catch (Throwable paramString) {}
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.b.e
  * JD-Core Version:    0.7.0.1
  */

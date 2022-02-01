@@ -1,35 +1,49 @@
 package com.tencent.mm.recoveryv2;
 
-import android.support.v4.e.l.c;
 import android.util.Log;
+import androidx.core.f.f.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
-public final class a
+final class a
 {
-  public static void w(String paramString1, String paramString2, Throwable paramThrowable)
+  static void i(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(193757);
-    a.log(5, paramString1, paramString2 + " : " + Log.getStackTraceString(paramThrowable));
-    AppMethodBeat.o(193757);
+    AppMethodBeat.i(189865);
+    a.log(4, paramString1, paramString2);
+    AppMethodBeat.o(189865);
   }
   
-  public static class a
+  static void w(String paramString1, String paramString2)
   {
-    private static final List<a.b> NBq;
+    AppMethodBeat.i(189867);
+    a.log(5, paramString1, paramString2);
+    AppMethodBeat.o(189867);
+  }
+  
+  static void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    AppMethodBeat.i(189870);
+    a.log(5, paramString1, paramString2 + " : " + Log.getStackTraceString(paramThrowable));
+    AppMethodBeat.o(189870);
+  }
+  
+  static class a
+  {
+    private static final List<a.b> UOT;
     
     static
     {
-      AppMethodBeat.i(193754);
-      NBq = new LinkedList();
-      AppMethodBeat.o(193754);
+      AppMethodBeat.i(189853);
+      UOT = new LinkedList();
+      AppMethodBeat.o(189853);
     }
     
     /* Error */
-    public static void L(java.io.File paramFile)
+    public static void D(java.io.File paramFile)
     {
       // Byte code:
       //   0: ldc 36
@@ -38,15 +52,15 @@ public final class a
       //   6: invokevirtual 42	java/io/File:exists	()Z
       //   9: ifne +7 -> 16
       //   12: aload_0
-      //   13: invokestatic 47	com/tencent/mm/recoveryv2/l$b:O	(Ljava/io/File;)V
+      //   13: invokestatic 47	com/tencent/mm/recoveryv2/m$b:G	(Ljava/io/File;)V
       //   16: ldc 2
       //   18: monitorenter
       //   19: new 21	java/util/LinkedList
       //   22: dup
-      //   23: getstatic 26	com/tencent/mm/recoveryv2/a$a:NBq	Ljava/util/List;
+      //   23: getstatic 26	com/tencent/mm/recoveryv2/a$a:UOT	Ljava/util/List;
       //   26: invokespecial 50	java/util/LinkedList:<init>	(Ljava/util/Collection;)V
       //   29: astore_1
-      //   30: getstatic 26	com/tencent/mm/recoveryv2/a$a:NBq	Ljava/util/List;
+      //   30: getstatic 26	com/tencent/mm/recoveryv2/a$a:UOT	Ljava/util/List;
       //   33: invokeinterface 55 1 0
       //   38: ldc 2
       //   40: monitorexit
@@ -84,7 +98,7 @@ public final class a
       //   102: new 89	java/lang/StringBuilder
       //   105: dup
       //   106: invokespecial 90	java/lang/StringBuilder:<init>	()V
-      //   109: getstatic 94	com/tencent/mm/recoveryv2/a$b:NBs	Ljava/text/SimpleDateFormat;
+      //   109: getstatic 94	com/tencent/mm/recoveryv2/a$b:UOV	Ljava/text/SimpleDateFormat;
       //   112: aload 4
       //   114: getfield 98	com/tencent/mm/recoveryv2/a$b:time	J
       //   117: invokestatic 104	java/lang/Long:valueOf	(J)Ljava/lang/Long;
@@ -111,7 +125,7 @@ public final class a
       //   186: ldc 128
       //   188: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   191: aload 4
-      //   193: getfield 131	com/tencent/mm/recoveryv2/a$b:NBt	Ljava/lang/String;
+      //   193: getfield 131	com/tencent/mm/recoveryv2/a$b:UOW	Ljava/lang/String;
       //   196: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   199: ldc 133
       //   201: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -133,7 +147,7 @@ public final class a
       //   232: aload_2
       //   233: invokestatic 152	com/tencent/mm/recoveryv2/a:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
       //   236: aload_1
-      //   237: invokestatic 156	com/tencent/mm/recoveryv2/l$b:closeQuietly	(Ljava/lang/Object;)V
+      //   237: invokestatic 156	com/tencent/mm/recoveryv2/m$b:closeQuietly	(Ljava/lang/Object;)V
       //   240: ldc 36
       //   242: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   245: return
@@ -159,7 +173,7 @@ public final class a
       //   280: astore_1
       //   281: goto -117 -> 164
       //   284: aload_2
-      //   285: invokestatic 156	com/tencent/mm/recoveryv2/l$b:closeQuietly	(Ljava/lang/Object;)V
+      //   285: invokestatic 156	com/tencent/mm/recoveryv2/m$b:closeQuietly	(Ljava/lang/Object;)V
       //   288: ldc 36
       //   290: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   293: return
@@ -167,7 +181,7 @@ public final class a
       //   295: aconst_null
       //   296: astore_0
       //   297: aload_0
-      //   298: invokestatic 156	com/tencent/mm/recoveryv2/l$b:closeQuietly	(Ljava/lang/Object;)V
+      //   298: invokestatic 156	com/tencent/mm/recoveryv2/m$b:closeQuietly	(Ljava/lang/Object;)V
       //   301: ldc 36
       //   303: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   306: aload_1
@@ -203,7 +217,6 @@ public final class a
       //   166	218	221	java/io/IOException
       //   12	16	246	java/io/IOException
       //   19	41	261	finally
-      //   262	265	261	finally
       //   41	67	294	finally
       //   69	76	308	finally
       //   78	87	308	finally
@@ -217,32 +230,32 @@ public final class a
     
     public static void log(int paramInt, String paramString1, String paramString2)
     {
-      AppMethodBeat.i(193752);
-      a.b localb = a.b.guz();
+      AppMethodBeat.i(189840);
+      a.b localb = a.b.hpX();
       long l = System.currentTimeMillis();
       String str = Thread.currentThread().getName();
       localb.priority = paramInt;
       localb.time = l;
       localb.tag = paramString1;
-      localb.NBt = str;
+      localb.UOW = str;
       localb.msg = paramString2;
       try
       {
-        NBq.add(localb);
+        UOT.add(localb);
         return;
       }
       finally
       {
-        AppMethodBeat.o(193752);
+        AppMethodBeat.o(189840);
       }
     }
   }
   
   public static final class b
   {
-    private static final l.c<b> NBr;
-    static final SimpleDateFormat NBs;
-    public String NBt;
+    private static final f.c<b> UOU;
+    static final SimpleDateFormat UOV;
+    public String UOW;
     public String msg;
     public int priority;
     public String tag;
@@ -250,30 +263,30 @@ public final class a
     
     static
     {
-      AppMethodBeat.i(193756);
-      NBr = new l.c(20);
-      NBs = new SimpleDateFormat("MM-dd HH:mm:ss.SSS", Locale.US);
-      AppMethodBeat.o(193756);
+      AppMethodBeat.i(189859);
+      UOU = new f.c(20);
+      UOV = new SimpleDateFormat("MM-dd HH:mm:ss.SSS", Locale.US);
+      AppMethodBeat.o(189859);
     }
     
-    public static b guz()
+    public static b hpX()
     {
-      AppMethodBeat.i(193755);
-      b localb = (b)NBr.acquire();
+      AppMethodBeat.i(189857);
+      b localb = (b)UOU.acquire();
       if (localb != null)
       {
-        AppMethodBeat.o(193755);
+        AppMethodBeat.o(189857);
         return localb;
       }
       localb = new b();
-      AppMethodBeat.o(193755);
+      AppMethodBeat.o(189857);
       return localb;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.recoveryv2.a
  * JD-Core Version:    0.7.0.1
  */

@@ -13,22 +13,22 @@ import java.util.List;
 public class a
   extends b.a
 {
-  protected RemoteService NCu;
-  public b NCv;
-  private final d gVN;
+  protected RemoteService UPW;
+  public b UPX;
+  private final d jGJ;
   
   public a(d paramd)
   {
-    this.gVN = paramd;
+    this.jGJ = paramd;
   }
   
   public Object CLIENT_CALL(String paramString, Object... paramVarArgs)
   {
     AppMethodBeat.i(152736);
-    paramVarArgs = objectsToBundle(paramVarArgs);
+    paramVarArgs = o(paramVarArgs);
     try
     {
-      this.NCv.onCallback(paramString, paramVarArgs, true);
+      this.UPX.onCallback(paramString, paramVarArgs, true);
       paramString = paramVarArgs.get("result_key");
       AppMethodBeat.o(152736);
       return paramString;
@@ -45,21 +45,21 @@ public class a
   public Object REMOTE_CALL(final String paramString, final Object... paramVarArgs)
   {
     AppMethodBeat.i(152735);
-    if (this.gVN.isConnected())
+    if (this.jGJ.isConnected())
     {
-      paramVarArgs = objectsToBundle(paramVarArgs);
-      this.gVN.a(this, paramString, paramVarArgs);
+      paramVarArgs = o(paramVarArgs);
+      this.jGJ.a(this, paramString, paramVarArgs);
       paramVarArgs.setClassLoader(getClass().getClassLoader());
       paramString = paramVarArgs.get("result_key");
       AppMethodBeat.o(152735);
       return paramString;
     }
-    this.gVN.connect(new Runnable()
+    this.jGJ.connect(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(152733);
-        Bundle localBundle = a.this.objectsToBundle(paramVarArgs);
+        Bundle localBundle = a.this.o(paramVarArgs);
         a.a(a.this).a(a.this, paramString, localBundle);
         AppMethodBeat.o(152733);
       }
@@ -87,7 +87,7 @@ public class a
     return paramBundle;
   }
   
-  protected Bundle objectsToBundle(Object... paramVarArgs)
+  protected Bundle o(Object... paramVarArgs)
   {
     AppMethodBeat.i(152737);
     Bundle localBundle = new Bundle();
@@ -168,7 +168,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.remoteservice.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,68 +1,162 @@
 package com.tencent.mm.plugin.finder.live.viewmodel;
 
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.finder.b.c;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.i;
+import com.tencent.mm.ui.component.UIComponent;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
+import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/viewmodel/AnchorFinishInfo;", "", "duration", "", "audienceNum", "likeCount", "newFans", "wecoinHot", "", "(IIIIJ)V", "getAudienceNum", "()I", "setAudienceNum", "(I)V", "getDuration", "setDuration", "getLikeCount", "setLikeCount", "getNewFans", "setNewFans", "getWecoinHot", "()J", "setWecoinHot", "(J)V", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderGameFinishUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroidx/appcompat/app/AppCompatActivity;", "(Landroidx/appcompat/app/AppCompatActivity;)V", "TAG", "", "desc", "getDesc", "()Ljava/lang/String;", "setDesc", "(Ljava/lang/String;)V", "root", "Landroid/view/View;", "getRoot", "()Landroid/view/View;", "setRoot", "(Landroid/view/View;)V", "succ", "", "getSucc", "()Z", "setSucc", "(Z)V", "title", "getTitle", "setTitle", "getDescTv", "Landroid/widget/TextView;", "hide", "", "initViews", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "setData", "show", "plugin-finder_release"})
 public final class a
+  extends UIComponent
 {
-  public int duration;
-  public int likeCount;
-  public int uCk;
-  public int uCl;
-  public long uCm;
+  private final String TAG;
+  private String desc;
+  private boolean fFA;
+  public View jac;
+  private String title;
   
-  public a()
+  public a(AppCompatActivity paramAppCompatActivity)
   {
-    this(0, 0, 0, 0, 31);
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(287994);
+    this.TAG = "Finder.FinderGameFinishUIC";
+    this.fFA = true;
+    this.title = "";
+    this.desc = "";
+    AppMethodBeat.o(287994);
   }
   
-  public a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong)
+  private final void buQ()
   {
-    this.duration = paramInt1;
-    this.uCk = paramInt2;
-    this.likeCount = paramInt3;
-    this.uCl = paramInt4;
-    this.uCm = paramLong;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    if (this != paramObject)
+    AppMethodBeat.i(287993);
+    Object localObject = this.jac;
+    if (localObject == null) {
+      p.bGy("root");
+    }
+    localObject = (WeImageView)((View)localObject).findViewById(b.f.finish_iv);
+    if (this.fFA)
     {
-      if ((paramObject instanceof a))
-      {
-        paramObject = (a)paramObject;
-        if ((this.duration != paramObject.duration) || (this.uCk != paramObject.uCk) || (this.likeCount != paramObject.likeCount) || (this.uCl != paramObject.uCl) || (this.uCm != paramObject.uCm)) {}
+      ((WeImageView)localObject).setImageResource(b.i.finder_live_icon);
+      ((WeImageView)localObject).setIconColor(getResources().getColor(b.c.finder_live_logo_color));
+    }
+    for (;;)
+    {
+      localObject = this.jac;
+      if (localObject == null) {
+        p.bGy("root");
       }
+      localObject = (TextView)((View)localObject).findViewById(b.f.finish_title_tv);
+      p.j(localObject, "titleTv");
+      ((TextView)localObject).setText((CharSequence)this.title);
+      localObject = this.jac;
+      if (localObject == null) {
+        p.bGy("root");
+      }
+      localObject = (TextView)((View)localObject).findViewById(b.f.finish_desc_tv);
+      p.j(localObject, "descTv");
+      ((TextView)localObject).setText((CharSequence)this.desc);
+      localObject = this.jac;
+      if (localObject == null) {
+        p.bGy("root");
+      }
+      ((View)localObject).findViewById(b.f.finish_btn).setOnClickListener((View.OnClickListener)new a(this));
+      AppMethodBeat.o(287993);
+      return;
+      ((WeImageView)localObject).setImageResource(b.i.icons_filled_error);
+      ((WeImageView)localObject).setIconColor(getResources().getColor(b.c.finder_live_logo_color));
     }
-    else {
-      return true;
-    }
-    return false;
   }
   
-  public final int hashCode()
+  public final void f(boolean paramBoolean, String paramString1, String paramString2)
   {
-    int i = this.duration;
-    int j = this.uCk;
-    int k = this.likeCount;
-    int m = this.uCl;
-    long l = this.uCm;
-    return (((i * 31 + j) * 31 + k) * 31 + m) * 31 + (int)(l ^ l >>> 32);
+    AppMethodBeat.i(287989);
+    p.k(paramString1, "title");
+    p.k(paramString2, "desc");
+    this.fFA = paramBoolean;
+    this.title = paramString1;
+    this.desc = paramString2;
+    AppMethodBeat.o(287989);
   }
   
-  public final String toString()
+  public final TextView getDescTv()
   {
-    AppMethodBeat.i(247868);
-    String str = "AnchorFinishInfo:duration:" + this.duration + ",audienceNum:" + this.uCk + ",likeCount:" + this.likeCount + ",newFans:" + this.uCl;
-    AppMethodBeat.o(247868);
-    return str;
+    AppMethodBeat.i(287991);
+    Object localObject = this.jac;
+    if (localObject == null) {
+      p.bGy("root");
+    }
+    localObject = ((View)localObject).findViewById(b.f.finish_desc_tv);
+    p.j(localObject, "root.findViewById(R.id.finish_desc_tv)");
+    localObject = (TextView)localObject;
+    AppMethodBeat.o(287991);
+    return localObject;
+  }
+  
+  public final void hide()
+  {
+    AppMethodBeat.i(287992);
+    View localView = this.jac;
+    if (localView == null) {
+      p.bGy("root");
+    }
+    localView.setVisibility(8);
+    AppMethodBeat.o(287992);
+  }
+  
+  public final void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(287988);
+    super.onCreate(paramBundle);
+    paramBundle = findViewById(b.f.finish_area);
+    p.j(paramBundle, "findViewById(R.id.finish_area)");
+    this.jac = paramBundle;
+    AppMethodBeat.o(287988);
+  }
+  
+  public final void show()
+  {
+    AppMethodBeat.i(287990);
+    buQ();
+    View localView = this.jac;
+    if (localView == null) {
+      p.bGy("root");
+    }
+    localView.setVisibility(0);
+    AppMethodBeat.o(287990);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class a
+    implements View.OnClickListener
+  {
+    a(a parama) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(280353);
+      b localb = new b();
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/viewmodel/FinderGameFinishUIC$initViews$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      this.zbf.getActivity().finish();
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/viewmodel/FinderGameFinishUIC$initViews$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(280353);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.viewmodel.a
  * JD-Core Version:    0.7.0.1
  */

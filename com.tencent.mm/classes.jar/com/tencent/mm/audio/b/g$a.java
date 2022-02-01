@@ -3,26 +3,26 @@ package com.tencent.mm.audio.b;
 public final class g$a
 {
   public byte[] buf;
-  public int dAc = 0;
-  public boolean dAd = false;
+  public int fsR = 0;
+  public boolean fsS = false;
   
   public g$a(byte[] paramArrayOfByte, int paramInt)
   {
     this.buf = paramArrayOfByte;
-    this.dAc = paramInt;
-    this.dAd = false;
+    this.fsR = paramInt;
+    this.fsS = false;
   }
   
   public g$a(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean)
   {
     this.buf = paramArrayOfByte;
-    this.dAc = paramInt;
-    this.dAd = paramBoolean;
+    this.fsR = paramInt;
+    this.fsS = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.audio.b.g.a
  * JD-Core Version:    0.7.0.1
  */

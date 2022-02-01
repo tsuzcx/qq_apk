@@ -14,7 +14,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import com.tencent.f.j.a;
+import com.tencent.e.j.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 
@@ -32,7 +32,7 @@ public final class ScreenShotUtil
   static
   {
     AppMethodBeat.i(157810);
-    workHandler = new MMHandler(a.bqt("MicroMsg.ScreenShotUtil"));
+    workHandler = new MMHandler(a.bDn("MicroMsg.ScreenShotUtil"));
     sHandler = new Handler(Looper.getMainLooper());
     EXTERNAL_CONTENT_URI_MATCHER = MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString();
     PROJECTION = new String[] { "_display_name", "_data", "date_added" };
@@ -46,14 +46,14 @@ public final class ScreenShotUtil
     {
       public final void run()
       {
-        AppMethodBeat.i(230380);
+        AppMethodBeat.i(186751);
         Log.i("MicroMsg.ScreenShotUtil", "summerscreenshot setScreenShotCallback context[%s] callback[%s], stack[%s]", new Object[] { this.val$context, paramScreenShotCallback, Util.getStack() });
         try
         {
           Context localContext = this.val$context;
           if (localContext == null)
           {
-            AppMethodBeat.o(230380);
+            AppMethodBeat.o(186751);
             return;
           }
           if (paramScreenShotCallback == null)
@@ -68,7 +68,7 @@ public final class ScreenShotUtil
               ScreenShotUtil.mCallbackWeakRef.clear();
               ScreenShotUtil.access$102(null);
             }
-            AppMethodBeat.o(230380);
+            AppMethodBeat.o(186751);
             return;
           }
           ScreenShotUtil.access$102(new WeakReference(paramScreenShotCallback));
@@ -77,13 +77,13 @@ public final class ScreenShotUtil
             ScreenShotUtil.access$002(new ScreenShotUtil.ScreenShotContentObserver(this.val$context, ScreenShotUtil.sHandler));
             this.val$context.getContentResolver().registerContentObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, true, ScreenShotUtil.mScreenShotContentObserver);
           }
-          AppMethodBeat.o(230380);
+          AppMethodBeat.o(186751);
           return;
         }
         catch (Throwable localThrowable)
         {
           Log.w("MicroMsg.ScreenShotUtil", "summerscreenshot fail e:" + localThrowable.getMessage());
-          AppMethodBeat.o(230380);
+          AppMethodBeat.o(186751);
         }
       }
     });
@@ -272,7 +272,7 @@ public final class ScreenShotUtil
     
     private void postOnChangeImpl(Context paramContext, String paramString, long paramLong1, long paramLong2)
     {
-      AppMethodBeat.i(230385);
+      AppMethodBeat.i(194435);
       for (;;)
       {
         try
@@ -287,7 +287,7 @@ public final class ScreenShotUtil
               if ((ScreenShotUtil.mCallbackWeakRef != null) && (ScreenShotUtil.mCallbackWeakRef.get() != null))
               {
                 ((ScreenShotUtil.ScreenShotCallback)ScreenShotUtil.mCallbackWeakRef.get()).onScreenShot(paramString, paramLong1);
-                AppMethodBeat.o(230385);
+                AppMethodBeat.o(194435);
                 return;
               }
               if (ScreenShotUtil.mScreenShotContentObserver != null)
@@ -302,14 +302,14 @@ public final class ScreenShotUtil
               }
               Log.i("MicroMsg.ScreenShotUtil", "summerscreenshot unregisterContentObserver callback is null 2");
             }
-            AppMethodBeat.o(230385);
+            AppMethodBeat.o(194435);
             return;
           }
         }
         catch (Throwable paramContext)
         {
           Log.w("MicroMsg.ScreenShotUtil", "summerscreenshot fail e:" + paramContext.getMessage());
-          AppMethodBeat.o(230385);
+          AppMethodBeat.o(194435);
           return;
         }
         paramLong1 = 0L;
@@ -319,12 +319,12 @@ public final class ScreenShotUtil
     
     public final void onChange(final boolean paramBoolean, final Uri paramUri)
     {
-      AppMethodBeat.i(230383);
+      AppMethodBeat.i(194430);
       ScreenShotUtil.workHandler.post(new Runnable()
       {
         public void run()
         {
-          AppMethodBeat.i(230381);
+          AppMethodBeat.i(194214);
           Log.d("MicroMsg.ScreenShotUtil", "summerscreenshot onChange: " + paramBoolean + ", uri:" + paramUri.toString());
           try
           {
@@ -340,25 +340,25 @@ public final class ScreenShotUtil
               {
                 ScreenShotUtil.mCallbackWeakRef.clear();
                 ScreenShotUtil.access$102(null);
-                AppMethodBeat.o(230381);
+                AppMethodBeat.o(194214);
               }
             }
             else if ((paramUri.toString().matches(ScreenShotUtil.EXTERNAL_CONTENT_URI_MATCHER)) || (paramUri.toString().contains(ScreenShotUtil.EXTERNAL_CONTENT_URI_MATCHER)))
             {
               ScreenShotUtil.ScreenShotContentObserver.access$500(ScreenShotUtil.ScreenShotContentObserver.this, ScreenShotUtil.ScreenShotContentObserver.this.context, paramUri);
             }
-            AppMethodBeat.o(230381);
+            AppMethodBeat.o(194214);
             return;
           }
           catch (Throwable localThrowable)
           {
             Log.w("MicroMsg.ScreenShotUtil", "summerscreenshot fail e:" + localThrowable.getMessage());
-            AppMethodBeat.o(230381);
+            AppMethodBeat.o(194214);
           }
         }
       });
       super.onChange(paramBoolean, paramUri);
-      AppMethodBeat.o(230383);
+      AppMethodBeat.o(194430);
     }
   }
 }

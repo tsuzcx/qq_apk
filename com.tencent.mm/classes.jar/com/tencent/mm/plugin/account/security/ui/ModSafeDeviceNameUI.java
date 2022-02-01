@@ -10,17 +10,20 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.plugin.account.security.a.a;
+import com.tencent.mm.plugin.account.security.a.b;
+import com.tencent.mm.plugin.account.security.a.d;
 import com.tencent.mm.plugin.account.security.a.c;
 import com.tencent.mm.plugin.account.security.a.d;
 import com.tencent.mm.plugin.account.security.a.e;
+import com.tencent.mm.plugin.account.security.a.g;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.MMEditText.b;
 import com.tencent.mm.ui.widget.MMEditText.c;
 
@@ -29,25 +32,25 @@ public class ModSafeDeviceNameUI
   implements i
 {
   private long createTime;
-  private String dGP;
-  private ProgressDialog gtM = null;
-  private EditText kiW;
-  private String kiX;
-  private String kiY;
-  private String kiZ;
+  private String fzF;
+  private ProgressDialog iXX = null;
+  private EditText naM;
+  private String naN;
+  private String naO;
+  private String naP;
   
   public int getLayoutId()
   {
-    return 2131495682;
+    return a.b.mod_safe_device_name;
   }
   
   public void initView()
   {
     AppMethodBeat.i(125552);
-    this.kiX = getIntent().getStringExtra("safe_device_name");
-    this.kiZ = getIntent().getStringExtra("safe_device_uid");
-    this.dGP = getIntent().getStringExtra("safe_device_type");
-    setMMTitle(com.tencent.mm.cb.a.aI(this, 2131764844));
+    this.naN = getIntent().getStringExtra("safe_device_name");
+    this.naP = getIntent().getStringExtra("safe_device_uid");
+    this.fzF = getIntent().getStringExtra("safe_device_type");
+    setMMTitle(com.tencent.mm.ci.a.ba(this, a.d.safe_device_edit_title));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -58,7 +61,7 @@ public class ModSafeDeviceNameUI
         return true;
       }
     });
-    addTextOptionMenu(0, getString(2131755970), new MenuItem.OnMenuItemClickListener()
+    addTextOptionMenu(0, getString(a.d.app_save), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(final MenuItem paramAnonymousMenuItem)
       {
@@ -71,13 +74,13 @@ public class ModSafeDeviceNameUI
         }
         ModSafeDeviceNameUI.this.hideVKB();
         paramAnonymousMenuItem = new c(ModSafeDeviceNameUI.c(ModSafeDeviceNameUI.this), ModSafeDeviceNameUI.b(ModSafeDeviceNameUI.this), ModSafeDeviceNameUI.d(ModSafeDeviceNameUI.this));
-        com.tencent.mm.kernel.g.azz().a(paramAnonymousMenuItem, 0);
-        ModSafeDeviceNameUI.a(ModSafeDeviceNameUI.this, h.a(ModSafeDeviceNameUI.this, com.tencent.mm.cb.a.aI(ModSafeDeviceNameUI.this, 2131756029), true, new DialogInterface.OnCancelListener()
+        com.tencent.mm.kernel.h.aGY().a(paramAnonymousMenuItem, 0);
+        ModSafeDeviceNameUI.a(ModSafeDeviceNameUI.this, com.tencent.mm.ui.base.h.a(ModSafeDeviceNameUI.this, com.tencent.mm.ci.a.ba(ModSafeDeviceNameUI.this, a.d.app_waiting), true, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
           {
             AppMethodBeat.i(125545);
-            com.tencent.mm.kernel.g.azz().a(paramAnonymousMenuItem);
+            com.tencent.mm.kernel.h.aGY().a(paramAnonymousMenuItem);
             AppMethodBeat.o(125545);
           }
         }));
@@ -87,7 +90,7 @@ public class ModSafeDeviceNameUI
     });
     MMEditText.b local3 = new MMEditText.b()
     {
-      public final void boS()
+      public final void bzd()
       {
         AppMethodBeat.i(125547);
         if (ModSafeDeviceNameUI.a(ModSafeDeviceNameUI.this).getText().toString().trim().length() > 0)
@@ -100,13 +103,13 @@ public class ModSafeDeviceNameUI
         AppMethodBeat.o(125547);
       }
     };
-    this.kiW = ((EditText)findViewById(2131304820));
-    MMEditText.c localc = new MMEditText.c(this.kiW, null, 32);
-    localc.QCQ = local3;
-    this.kiW.addTextChangedListener(localc);
-    if (!Util.isNullOrNil(this.kiX))
+    this.naM = ((EditText)findViewById(a.a.mod_safe_device_name));
+    MMEditText.c localc = new MMEditText.c(this.naM, null, 32);
+    localc.Ybt = local3;
+    this.naM.addTextChangedListener(localc);
+    if (!Util.isNullOrNil(this.naN))
     {
-      this.kiW.setText(this.kiX);
+      this.naM.setText(this.naN);
       AppMethodBeat.o(125552);
       return;
     }
@@ -125,7 +128,7 @@ public class ModSafeDeviceNameUI
   public void onPause()
   {
     AppMethodBeat.i(125551);
-    com.tencent.mm.kernel.g.azz().b(361, this);
+    com.tencent.mm.kernel.h.aGY().b(361, this);
     super.onPause();
     AppMethodBeat.o(125551);
   }
@@ -133,7 +136,7 @@ public class ModSafeDeviceNameUI
   public void onResume()
   {
     AppMethodBeat.i(125550);
-    com.tencent.mm.kernel.g.azz().a(361, this);
+    com.tencent.mm.kernel.h.aGY().a(361, this);
     super.onResume();
     AppMethodBeat.o(125550);
   }
@@ -141,20 +144,20 @@ public class ModSafeDeviceNameUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(125553);
-    if ((this.gtM != null) && (this.gtM.isShowing()))
+    if ((this.iXX != null) && (this.iXX.isShowing()))
     {
-      this.gtM.dismiss();
-      this.gtM = null;
+      this.iXX.dismiss();
+      this.iXX = null;
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       paramString = new d();
-      paramString.field_devicetype = this.dGP;
-      paramString.field_name = this.kiY;
-      paramString.field_uid = this.kiZ;
+      paramString.field_devicetype = this.fzF;
+      paramString.field_name = this.naO;
+      paramString.field_uid = this.naP;
       paramString.field_createtime = this.createTime;
-      com.tencent.mm.plugin.account.security.a.g.boR().update(paramString, new String[0]);
-      h.cD(this, com.tencent.mm.cb.a.aI(this, 2131764848));
+      g.bzc().update(paramString, new String[0]);
+      com.tencent.mm.ui.base.h.cO(this, com.tencent.mm.ci.a.ba(this, a.d.safe_device_mod_name_ok));
       new MMHandler().postDelayed(new Runnable()
       {
         public final void run()
@@ -167,7 +170,7 @@ public class ModSafeDeviceNameUI
       AppMethodBeat.o(125553);
       return;
     }
-    if (com.tencent.mm.plugin.account.a.a.jRu.a(this, paramInt1, paramInt2, paramString))
+    if (com.tencent.mm.plugin.account.sdk.a.mIH.a(this, paramInt1, paramInt2, paramString))
     {
       AppMethodBeat.o(125553);
       return;

@@ -48,8 +48,8 @@ final class a$a
               c.unFreeze(paramContext);
             }
             this.mMarkPermanentlyCallbacked = true;
-            localb = this.RPl;
-            paramAnonymousb = paramAnonymousb.RPo;
+            localb = this.ZrQ;
+            paramAnonymousb = paramAnonymousb.ZrT;
             if (paramAnonymousb == null) {
               break label154;
             }
@@ -62,7 +62,7 @@ final class a$a
           for (;;)
           {
             new a.c(paramAnonymousb);
-            localb.fme();
+            localb.gaA();
             AppMethodBeat.o(88604);
             return;
             label110:
@@ -91,7 +91,7 @@ final class a$a
             if (paramAnonymousInt == 5)
             {
               d.i("Soter.FingerprintManagerCompat", "soter: user cancelled fingerprint authen", new Object[0]);
-              this.RPl.onAuthenticationCancelled();
+              this.ZrQ.onAuthenticationCancelled();
               AppMethodBeat.o(88602);
               return;
             }
@@ -106,7 +106,7 @@ final class a$a
             paramAnonymousInt = 10308;
             paramAnonymousCharSequence = "Too many failed times";
           }
-          this.RPl.onAuthenticationError(paramAnonymousInt, paramAnonymousCharSequence);
+          this.ZrQ.onAuthenticationError(paramAnonymousInt, paramAnonymousCharSequence);
           AppMethodBeat.o(88602);
         }
         
@@ -134,7 +134,7 @@ final class a$a
                 return;
               }
             }
-            this.RPl.onAuthenticationFailed();
+            this.ZrQ.onAuthenticationFailed();
           }
           AppMethodBeat.o(88605);
         }
@@ -149,7 +149,7 @@ final class a$a
             return;
           }
           if (!a.a.a(this, paramContext)) {
-            this.RPl.onAuthenticationHelp(paramAnonymousInt, paramAnonymousCharSequence);
+            this.ZrQ.onAuthenticationHelp(paramAnonymousInt, paramAnonymousCharSequence);
           }
           AppMethodBeat.o(88603);
         }
@@ -231,7 +231,7 @@ final class a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.soter.core.a.a.a
  * JD-Core Version:    0.7.0.1
  */

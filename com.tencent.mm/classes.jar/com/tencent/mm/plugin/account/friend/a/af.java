@@ -3,27 +3,26 @@ package com.tencent.mm.plugin.account.friend.a;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.c.ax;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.b.p;
+import com.tencent.mm.f.c.ax;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.platformtools.f;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.protocal.protobuf.bte;
-import com.tencent.mm.protocal.protobuf.btf;
-import com.tencent.mm.protocal.protobuf.dgk;
-import com.tencent.mm.protocal.protobuf.dgl;
-import com.tencent.mm.protocal.protobuf.dgm;
-import com.tencent.mm.protocal.protobuf.dgn;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.protocal.protobuf.caw;
+import com.tencent.mm.protocal.protobuf.cax;
+import com.tencent.mm.protocal.protobuf.dqe;
+import com.tencent.mm.protocal.protobuf.dqf;
+import com.tencent.mm.protocal.protobuf.dqg;
+import com.tencent.mm.protocal.protobuf.dqh;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.MStorageEx;
 import com.tencent.mm.storage.bv;
-import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -33,34 +32,34 @@ import java.util.Map;
 import java.util.Set;
 
 public final class af
-  extends q
+  extends com.tencent.mm.an.q
   implements m
 {
-  private com.tencent.mm.ak.i callback;
-  public final d rr;
+  private i callback;
+  public final com.tencent.mm.an.d rr;
   
   public af(int paramInt)
   {
     AppMethodBeat.i(131111);
     this.callback = null;
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new bte();
-    ((d.a)localObject).iLO = new btf();
+    ((d.a)localObject).lBU = new caw();
+    ((d.a)localObject).lBV = new cax();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getqqgroup";
     ((d.a)localObject).funcId = 143;
-    ((d.a)localObject).iLP = 38;
+    ((d.a)localObject).lBW = 38;
     ((d.a)localObject).respCmdId = 1000000038;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (bte)this.rr.iLK.iLR;
-    ((bte)localObject).him = 1;
-    ((bte)localObject).LPy = paramInt;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (caw)d.b.b(this.rr.lBR);
+    ((caw)localObject).jUk = 1;
+    ((caw)localObject).SXM = paramInt;
     AppMethodBeat.o(131111);
   }
   
-  private static void a(dgn paramdgn)
+  private static void a(dqh paramdqh)
   {
     AppMethodBeat.i(131114);
-    Object localObject1 = ((ar)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getQQGroupStg()).iFy.rawQuery("select qqgroup.grouopid,qqgroup.membernum,qqgroup.weixinnum,qqgroup.insert_time,qqgroup.lastupdate_time,qqgroup.needupdate,qqgroup.updatekey,qqgroup.groupname from qqgroup ", null);
+    Object localObject1 = ((ar)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getQQGroupStg()).lvy.rawQuery("select qqgroup.grouopid,qqgroup.membernum,qqgroup.weixinnum,qqgroup.insert_time,qqgroup.lastupdate_time,qqgroup.needupdate,qqgroup.updatekey,qqgroup.groupname from qqgroup ", null);
     HashMap localHashMap;
     int i;
     if (localObject1 == null)
@@ -68,12 +67,12 @@ public final class af
       localHashMap = null;
       i = 0;
       label41:
-      if (i >= paramdgn.oTz) {
+      if (i >= paramdqh.rVx) {
         break label689;
       }
-      localObject2 = (dgm)paramdgn.MLf.get(i);
-      Log.d("MicroMsg.NetSceneGetQQGroup", "id:" + ((dgm)localObject2).LPy + " name:" + ((dgm)localObject2).LPg + " mem:" + ((dgm)localObject2).Ltc + " wei:" + ((dgm)localObject2).MLe + " md5:" + ((dgm)localObject2).MD5);
-      if (((dgm)localObject2).LPy >= 0) {
+      localObject2 = (dqg)paramdqh.TXa.get(i);
+      Log.d("MicroMsg.NetSceneGetQQGroup", "id:" + ((dqg)localObject2).SXM + " name:" + ((dqg)localObject2).SXx + " mem:" + ((dqg)localObject2).Svx + " wei:" + ((dqg)localObject2).TWZ + " md5:" + ((dqg)localObject2).MD5);
+      if (((dqg)localObject2).SXM >= 0) {
         break label278;
       }
       localObject1 = null;
@@ -85,7 +84,7 @@ public final class af
     }
     label278:
     label340:
-    while (((aq)localObject1).kfG == 0)
+    while (((aq)localObject1).mXf == 0)
     {
       i += 1;
       break label41;
@@ -102,82 +101,82 @@ public final class af
         ((Cursor)localObject1).moveToPosition(i);
         localObject2 = new aq();
         ((aq)localObject2).convertFrom((Cursor)localObject1);
-        localHashMap.put(Integer.valueOf(((aq)localObject2).kfF), localObject2);
+        localHashMap.put(Integer.valueOf(((aq)localObject2).mXe), localObject2);
         i += 1;
       }
       ((Cursor)localObject1).close();
       break;
       localObject1 = new aq();
-      ((aq)localObject1).kfF = ((dgm)localObject2).LPy;
-      ((aq)localObject1).kfM = ((dgm)localObject2).LPg;
-      ((aq)localObject1).kfG = ((dgm)localObject2).Ltc;
-      ((aq)localObject1).kfH = ((dgm)localObject2).MLe;
-      ((aq)localObject1).kfL = ((dgm)localObject2).MD5;
+      ((aq)localObject1).mXe = ((dqg)localObject2).SXM;
+      ((aq)localObject1).mXl = ((dqg)localObject2).SXx;
+      ((aq)localObject1).mXf = ((dqg)localObject2).Svx;
+      ((aq)localObject1).mXg = ((dqg)localObject2).TWZ;
+      ((aq)localObject1).mXk = ((dqg)localObject2).MD5;
       break label150;
     }
     if (localHashMap != null) {}
-    for (Object localObject2 = (aq)localHashMap.get(Integer.valueOf(((aq)localObject1).kfF));; localObject2 = null)
+    for (Object localObject2 = (aq)localHashMap.get(Integer.valueOf(((aq)localObject1).mXe));; localObject2 = null)
     {
       if (localObject2 == null)
       {
-        ((aq)localObject1).kfI = ((int)Util.nowSecond());
-        ((aq)localObject1).kfJ = ((int)Util.nowSecond());
-        ((aq)localObject1).kfK = 1;
-        localObject2 = (ar)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getQQGroupStg();
+        ((aq)localObject1).mXh = ((int)Util.nowSecond());
+        ((aq)localObject1).mXi = ((int)Util.nowSecond());
+        ((aq)localObject1).mXj = 1;
+        localObject2 = (ar)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getQQGroupStg();
         if (localObject1 != null)
         {
-          Log.d("MicroMsg.QQGroupStorage", "insert: name:" + ((aq)localObject1).bou());
-          ((aq)localObject1).cSx = -1;
-          ContentValues localContentValues = ((aq)localObject1).bos();
-          if ((int)((ar)localObject2).iFy.insert("qqgroup", "grouopid", localContentValues) >= 0) {
+          Log.d("MicroMsg.QQGroupStorage", "insert: name:" + ((aq)localObject1).byD());
+          ((aq)localObject1).cUP = -1;
+          ContentValues localContentValues = ((aq)localObject1).byB();
+          if ((int)((ar)localObject2).lvy.insert("qqgroup", "grouopid", localContentValues) >= 0) {
             ((ar)localObject2).doNotify();
           }
         }
         for (bool = true;; bool = false)
         {
-          Log.d("MicroMsg.NetSceneGetQQGroup", "Insert name:" + ((aq)localObject1).bou() + " ret:" + bool);
+          Log.d("MicroMsg.NetSceneGetQQGroup", "Insert name:" + ((aq)localObject1).byD() + " ret:" + bool);
           break;
         }
       }
-      ((aq)localObject2).kfK = -1;
-      Log.d("MicroMsg.NetSceneGetQQGroup", ((aq)localObject1).bot() + " " + ((aq)localObject2).bot() + " " + ((aq)localObject1).kfF);
-      if (((aq)localObject2).bot().equals(((aq)localObject1).bot())) {
+      ((aq)localObject2).mXj = -1;
+      Log.d("MicroMsg.NetSceneGetQQGroup", ((aq)localObject1).byC() + " " + ((aq)localObject2).byC() + " " + ((aq)localObject1).mXe);
+      if (((aq)localObject2).byC().equals(((aq)localObject1).byC())) {
         break;
       }
-      ((aq)localObject1).kfJ = ((int)Util.nowSecond());
-      ((aq)localObject1).kfK = 1;
-      ((aq)localObject1).cSx = -1;
-      boolean bool = ((ar)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getQQGroupStg()).a((aq)localObject1);
-      Log.d("MicroMsg.NetSceneGetQQGroup", "Update name:" + ((aq)localObject1).bou() + " ret:" + bool);
+      ((aq)localObject1).mXi = ((int)Util.nowSecond());
+      ((aq)localObject1).mXj = 1;
+      ((aq)localObject1).cUP = -1;
+      boolean bool = ((ar)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getQQGroupStg()).a((aq)localObject1);
+      Log.d("MicroMsg.NetSceneGetQQGroup", "Update name:" + ((aq)localObject1).byD() + " ret:" + bool);
       break;
       label689:
       if (localHashMap != null)
       {
-        paramdgn = localHashMap.keySet().iterator();
-        while (paramdgn.hasNext())
+        paramdqh = localHashMap.keySet().iterator();
+        while (paramdqh.hasNext())
         {
-          localObject1 = (aq)localHashMap.get(paramdgn.next());
-          if (((aq)localObject1).kfK == 0)
+          localObject1 = (aq)localHashMap.get(paramdqh.next());
+          if (((aq)localObject1).mXj == 0)
           {
-            localObject2 = (ar)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getQQGroupStg();
-            i = ((aq)localObject1).kfF;
+            localObject2 = (ar)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getQQGroupStg();
+            i = ((aq)localObject1).mXe;
             Log.d("MicroMsg.QQGroupStorage", "delete: id:".concat(String.valueOf(i)));
-            if (((ar)localObject2).iFy.delete("qqgroup", "grouopid= ?", new String[] { String.valueOf(i) }) > 0)
+            if (((ar)localObject2).lvy.delete("qqgroup", "grouopid= ?", new String[] { String.valueOf(i) }) > 0)
             {
               ((ar)localObject2).doNotify();
               bool = true;
-              Log.d("MicroMsg.NetSceneGetQQGroup", "delete name:" + ((aq)localObject1).bou() + " ret:" + bool);
-              localObject2 = (at)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getQQListStg();
-              i = ((aq)localObject1).kfF;
+              Log.d("MicroMsg.NetSceneGetQQGroup", "delete name:" + ((aq)localObject1).byD() + " ret:" + bool);
+              localObject2 = (at)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getQQListStg();
+              i = ((aq)localObject1).mXe;
               Log.d("MicroMsg.QQListStorage", "delete: GroupID:".concat(String.valueOf(i)));
-              if (((at)localObject2).iFy.delete("qqlist", "groupid= ?", new String[] { String.valueOf(i) }) <= 0) {
+              if (((at)localObject2).lvy.delete("qqlist", "groupid= ?", new String[] { String.valueOf(i) }) <= 0) {
                 break label964;
               }
             }
             label964:
             for (bool = true;; bool = false)
             {
-              Log.d("MicroMsg.NetSceneGetQQGroup", "delete QQList name:" + ((aq)localObject1).bou() + " ret:" + bool);
+              Log.d("MicroMsg.NetSceneGetQQGroup", "delete QQList name:" + ((aq)localObject1).byD() + " ret:" + bool);
               break;
               bool = false;
               break label814;
@@ -191,12 +190,12 @@ public final class af
     }
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, com.tencent.mm.ak.i parami)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(131112);
     this.callback = parami;
-    parami = (bte)this.rr.iLK.iLR;
-    if ((parami.him == 1) && (((ar)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getQQGroupStg()).vi(parami.LPy) == null))
+    parami = (caw)d.b.b(this.rr.lBR);
+    if ((parami.jUk == 1) && (((ar)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getQQGroupStg()).ym(parami.SXM) == null))
     {
       Log.e("MicroMsg.NetSceneGetQQGroup", "Err group not exist");
       AppMethodBeat.o(131112);
@@ -223,10 +222,10 @@ public final class af
       return;
     }
     Log.d("MicroMsg.NetSceneGetQQGroup", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
-    paramArrayOfByte = (bte)this.rr.iLK.iLR;
-    Object localObject2 = (btf)this.rr.iLL.iLR;
-    if (paramArrayOfByte.him == 0) {
-      a(((btf)localObject2).LZP);
+    paramArrayOfByte = (caw)d.b.b(this.rr.lBR);
+    Object localObject2 = (cax)d.c.b(this.rr.lBS);
+    if (paramArrayOfByte.jUk == 0) {
+      a(((cax)localObject2).Tji);
     }
     for (;;)
     {
@@ -237,65 +236,65 @@ public final class af
       ArrayList localArrayList1 = new ArrayList();
       ArrayList localArrayList2 = new ArrayList();
       int j = 0;
-      while (j < ((btf)localObject2).LZQ.oTz)
+      while (j < ((cax)localObject2).Tjj.rVx)
       {
-        localObject3 = (dgk)((btf)localObject2).LZQ.MLd.get(j);
-        paramInt1 = paramArrayOfByte.LPy;
+        localObject3 = (dqe)((cax)localObject2).Tjj.TWY.get(j);
+        paramInt1 = paramArrayOfByte.SXM;
         Log.v("MicroMsg.NetSceneGetQQGroup", "friend");
         params = new as();
-        params.kfN = new com.tencent.mm.b.p(((dgk)localObject3).MKZ).longValue();
-        com.tencent.mm.aj.c.e(params.kfN, 3);
-        params.kfP = paramInt1;
-        params.kfO = ((dgk)localObject3).MLb;
+        params.mXm = new p(((dqe)localObject3).TWU).longValue();
+        com.tencent.mm.am.d.f(params.mXm, 3);
+        params.mXo = paramInt1;
+        params.mXn = ((dqe)localObject3).TWW;
         label552:
         label694:
         int i;
-        if (((dgk)localObject3).MLb != 0)
+        if (((dqe)localObject3).TWW != 0)
         {
-          if ((((dgk)localObject3).UserName == null) || (((dgk)localObject3).UserName.equals("")))
+          if ((((dqe)localObject3).UserName == null) || (((dqe)localObject3).UserName.equals("")))
           {
             params = null;
             ((List)localObject1).add(params);
             params = new j();
-            params.fuA = ((dgk)localObject3).kdY;
-            params.fuI = ((dgk)localObject3).kec;
-            params.fuJ = ((dgk)localObject3).kdZ;
-            params.fuK = ((dgk)localObject3).kea;
-            params.signature = ((dgk)localObject3).keb;
-            params.username = ((dgk)localObject3).UserName;
+            params.sex = ((dqe)localObject3).mVy;
+            params.hDk = ((dqe)localObject3).mVC;
+            params.province = ((dqe)localObject3).mVz;
+            params.city = ((dqe)localObject3).mVA;
+            params.signature = ((dqe)localObject3).mVB;
+            params.username = ((dqe)localObject3).UserName;
             localArrayList1.add(params);
-            params = new com.tencent.mm.aj.i();
-            params.fuz = 3;
-            params.fv(true);
-            params.username = ((dgk)localObject3).UserName;
-            params.iKX = ((dgk)localObject3).Lir;
-            params.iKW = ((dgk)localObject3).Lis;
+            params = new com.tencent.mm.am.j();
+            params.hDc = 3;
+            params.gg(true);
+            params.username = ((dqe)localObject3).UserName;
+            params.lBe = ((dqe)localObject3).SjI;
+            params.lBd = ((dqe)localObject3).SjJ;
             localArrayList2.add(params);
             j += 1;
             continue;
           }
-          com.tencent.mm.storage.as localas = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().Kn(((dgk)localObject3).UserName);
-          if ((localas != null) && (localas.field_username.equals(((dgk)localObject3).UserName)) && (com.tencent.mm.contact.c.oR(localas.field_type))) {
-            params.kfO = 2;
+          com.tencent.mm.storage.as localas = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().RG(((dqe)localObject3).UserName);
+          if ((localas != null) && (localas.field_username.equals(((dqe)localObject3).UserName)) && (com.tencent.mm.contact.d.rk(localas.field_type))) {
+            params.mXn = 2;
           }
         }
         else
         {
-          params.username = ((dgk)localObject3).UserName;
-          params.nickname = ((dgk)localObject3).oUJ;
-          params.kfV = ((dgk)localObject3).MLc;
-          params.kfW = f.Si(((dgk)localObject3).MLc);
-          params.kfX = f.Sh(((dgk)localObject3).MLc);
-          params.kfQ = f.Si(((dgk)localObject3).oUJ);
-          params.kfR = f.Sh(((dgk)localObject3).oUJ);
-          params.kfS = ((dgk)localObject3).MLa;
-          params.kfT = f.Si(((dgk)localObject3).MLa);
-          params.kfU = f.Sh(((dgk)localObject3).MLa);
+          params.username = ((dqe)localObject3).UserName;
+          params.nickname = ((dqe)localObject3).rWI;
+          params.mXu = ((dqe)localObject3).TWX;
+          params.mXv = f.ZK(((dqe)localObject3).TWX);
+          params.mXw = f.ZJ(((dqe)localObject3).TWX);
+          params.mXp = f.ZK(((dqe)localObject3).rWI);
+          params.mXq = f.ZJ(((dqe)localObject3).rWI);
+          params.mXr = ((dqe)localObject3).TWV;
+          params.mXs = f.ZK(((dqe)localObject3).TWV);
+          params.mXt = f.ZJ(((dqe)localObject3).TWV);
           paramInt1 = 32;
-          if (Util.isNullOrNil(params.boA())) {
+          if (Util.isNullOrNil(params.byJ())) {
             break label791;
           }
-          paramInt1 = params.boA().charAt(0);
+          paramInt1 = params.byJ().charAt(0);
           if ((paramInt1 < 97) || (paramInt1 > 122)) {
             break label863;
           }
@@ -303,27 +302,27 @@ public final class af
         }
         for (;;)
         {
-          params.iKT = i;
-          com.tencent.mm.plugin.c.a.bqE().aTp().mP(((dgk)localObject3).UserName, ((dgk)localObject3).LRO);
-          Log.v("MicroMsg.NetSceneGetQQGroup", "QQ Friend nickname: " + params.bow() + "  remark: " + params.boz());
+          params.lBa = i;
+          com.tencent.mm.plugin.c.a.bBt().bcn().nG(((dqe)localObject3).UserName, ((dqe)localObject3).Tav);
+          Log.v("MicroMsg.NetSceneGetQQGroup", "QQ Friend nickname: " + params.byF() + "  remark: " + params.byI());
           break;
-          params.kfO = 1;
+          params.mXn = 1;
           break label552;
           label791:
-          if (!Util.isNullOrNil(params.boB()))
+          if (!Util.isNullOrNil(params.byK()))
           {
-            paramInt1 = params.boB().charAt(0);
+            paramInt1 = params.byK().charAt(0);
             break label694;
           }
-          if (!Util.isNullOrNil(params.box()))
+          if (!Util.isNullOrNil(params.byG()))
           {
-            paramInt1 = params.box().charAt(0);
+            paramInt1 = params.byG().charAt(0);
             break label694;
           }
-          if (Util.isNullOrNil(params.boy())) {
+          if (Util.isNullOrNil(params.byH())) {
             break label694;
           }
-          paramInt1 = params.boy().charAt(0);
+          paramInt1 = params.byH().charAt(0);
           break label694;
           label863:
           if (paramInt1 >= 65)
@@ -338,26 +337,26 @@ public final class af
         }
       }
       params = new HashMap();
-      localObject2 = (at)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getQQListStg();
-      paramInt1 = paramArrayOfByte.LPy;
+      localObject2 = (at)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getQQListStg();
+      paramInt1 = paramArrayOfByte.SXM;
       Log.d("MicroMsg.QQListStorage", "getByGroupID: GroupID:".concat(String.valueOf(paramInt1)));
       Object localObject3 = "select qqlist.qq,qqlist.wexinstatus,qqlist.groupid,qqlist.username,qqlist.nickname,qqlist.pyinitial,qqlist.quanpin,qqlist.qqnickname,qqlist.qqpyinitial,qqlist.qqquanpin,qqlist.qqremark,qqlist.qqremarkpyinitial,qqlist.qqremarkquanpin,qqlist.reserved1,qqlist.reserved2,qqlist.reserved3,qqlist.reserved4 from qqlist  where qqlist.groupid = \"" + paramInt1 + "\"";
-      localObject2 = ((at)localObject2).iFy.rawQuery((String)localObject3, null);
+      localObject2 = ((at)localObject2).lvy.rawQuery((String)localObject3, null);
       while (((Cursor)localObject2).moveToNext())
       {
         localObject3 = new as();
         ((as)localObject3).convertFrom((Cursor)localObject2);
-        params.put(Long.valueOf(((as)localObject3).kfN), localObject3);
+        params.put(Long.valueOf(((as)localObject3).mXm), localObject3);
       }
       ((Cursor)localObject2).close();
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (as)((Iterator)localObject1).next();
-        if (params.containsKey(Long.valueOf(((as)localObject2).kfN)))
+        if (params.containsKey(Long.valueOf(((as)localObject2).mXm)))
         {
-          localObject3 = (as)params.get(Long.valueOf(((as)localObject2).kfN));
-          if (!Util.compare(Long.valueOf(((as)localObject3).kfN), Long.valueOf(((as)localObject2).kfN))) {
+          localObject3 = (as)params.get(Long.valueOf(((as)localObject2).mXm));
+          if (!Util.compare(Long.valueOf(((as)localObject3).mXm), Long.valueOf(((as)localObject2).mXm))) {
             paramInt1 = 0;
           }
           for (;;)
@@ -365,40 +364,40 @@ public final class af
             if (paramInt1 != 0) {
               break label1524;
             }
-            ((at)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getQQListStg()).a(((as)localObject2).kfN, (as)localObject2);
-            params.remove(Long.valueOf(((as)localObject2).kfN));
+            ((at)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getQQListStg()).a(((as)localObject2).mXm, (as)localObject2);
+            params.remove(Long.valueOf(((as)localObject2).mXm));
             break;
-            if (!Util.compare(Integer.valueOf(((as)localObject3).kfO), Integer.valueOf(((as)localObject2).kfO))) {
+            if (!Util.compare(Integer.valueOf(((as)localObject3).mXn), Integer.valueOf(((as)localObject2).mXn))) {
               paramInt1 = 0;
-            } else if (!Util.compare(Integer.valueOf(((as)localObject3).kfP), Integer.valueOf(((as)localObject2).kfP))) {
+            } else if (!Util.compare(Integer.valueOf(((as)localObject3).mXo), Integer.valueOf(((as)localObject2).mXo))) {
               paramInt1 = 0;
             } else if (!Util.compare(((as)localObject3).username, ((as)localObject2).username)) {
               paramInt1 = 0;
             } else if (!Util.compare(((as)localObject3).nickname, ((as)localObject2).nickname)) {
               paramInt1 = 0;
-            } else if (!Util.compare(((as)localObject3).kfQ, ((as)localObject2).kfQ)) {
+            } else if (!Util.compare(((as)localObject3).mXp, ((as)localObject2).mXp)) {
               paramInt1 = 0;
-            } else if (!Util.compare(((as)localObject3).kfR, ((as)localObject2).kfR)) {
+            } else if (!Util.compare(((as)localObject3).mXq, ((as)localObject2).mXq)) {
               paramInt1 = 0;
-            } else if (!Util.compare(((as)localObject3).kfS, ((as)localObject2).kfS)) {
+            } else if (!Util.compare(((as)localObject3).mXr, ((as)localObject2).mXr)) {
               paramInt1 = 0;
-            } else if (!Util.compare(((as)localObject3).kfT, ((as)localObject2).kfT)) {
+            } else if (!Util.compare(((as)localObject3).mXs, ((as)localObject2).mXs)) {
               paramInt1 = 0;
-            } else if (!Util.compare(((as)localObject3).kfU, ((as)localObject2).kfU)) {
+            } else if (!Util.compare(((as)localObject3).mXt, ((as)localObject2).mXt)) {
               paramInt1 = 0;
-            } else if (!Util.compare(((as)localObject3).kfV, ((as)localObject2).kfV)) {
+            } else if (!Util.compare(((as)localObject3).mXu, ((as)localObject2).mXu)) {
               paramInt1 = 0;
-            } else if (!Util.compare(((as)localObject3).kfW, ((as)localObject2).kfW)) {
+            } else if (!Util.compare(((as)localObject3).mXv, ((as)localObject2).mXv)) {
               paramInt1 = 0;
-            } else if (!Util.compare(((as)localObject3).kfX, ((as)localObject2).kfX)) {
+            } else if (!Util.compare(((as)localObject3).mXw, ((as)localObject2).mXw)) {
               paramInt1 = 0;
-            } else if (!Util.compare(((as)localObject3).iKR, ((as)localObject2).iKR)) {
+            } else if (!Util.compare(((as)localObject3).lAY, ((as)localObject2).lAY)) {
               paramInt1 = 0;
-            } else if (!Util.compare(((as)localObject3).iKS, ((as)localObject2).iKS)) {
+            } else if (!Util.compare(((as)localObject3).lAZ, ((as)localObject2).lAZ)) {
               paramInt1 = 0;
-            } else if (!Util.compare(Integer.valueOf(((as)localObject3).iKT), Integer.valueOf(((as)localObject2).iKT))) {
+            } else if (!Util.compare(Integer.valueOf(((as)localObject3).lBa), Integer.valueOf(((as)localObject2).lBa))) {
               paramInt1 = 0;
-            } else if (!Util.compare(Integer.valueOf(((as)localObject3).iKU), Integer.valueOf(((as)localObject2).iKU))) {
+            } else if (!Util.compare(Integer.valueOf(((as)localObject3).lBb), Integer.valueOf(((as)localObject2).lBb))) {
               paramInt1 = 0;
             } else {
               paramInt1 = 1;
@@ -408,33 +407,33 @@ public final class af
         else
         {
           label1524:
-          ((at)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getQQListStg()).a((as)localObject2);
+          ((at)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getQQListStg()).a((as)localObject2);
         }
       }
       params = params.keySet().iterator();
       while (params.hasNext())
       {
         long l = ((Long)params.next()).longValue();
-        localObject1 = (at)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getQQListStg();
+        localObject1 = (at)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getQQListStg();
         Log.d("MicroMsg.QQListStorage", "delete: QQ:".concat(String.valueOf(l)));
-        if (((at)localObject1).iFy.delete("qqlist", "qq= ?", new String[] { String.valueOf(l) }) > 0) {
+        if (((at)localObject1).lvy.delete("qqlist", "qq= ?", new String[] { String.valueOf(l) }) > 0) {
           ((at)localObject1).doNotify(5, (MStorageEx)localObject1, String.valueOf(l));
         }
       }
-      ((k)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getFrdExtStg()).av(localArrayList1);
-      com.tencent.mm.aj.p.aYB().av(localArrayList2);
+      ((k)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getFrdExtStg()).at(localArrayList1);
+      com.tencent.mm.am.q.bhP().at(localArrayList2);
       params = new aq();
-      params.kfF = paramArrayOfByte.LPy;
-      params.kfK = 0;
-      params.kfJ = ((int)Util.nowSecond());
-      params.cSx = 48;
-      ((ar)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getQQGroupStg()).a(params);
+      params.mXe = paramArrayOfByte.SXM;
+      params.mXj = 0;
+      params.mXi = ((int)Util.nowSecond());
+      params.cUP = 48;
+      ((ar)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getQQGroupStg()).a(params);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.af
  * JD-Core Version:    0.7.0.1
  */

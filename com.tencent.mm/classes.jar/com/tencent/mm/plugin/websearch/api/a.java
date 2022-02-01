@@ -1,64 +1,64 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import android.os.Bundle;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.protocal.protobuf.eou;
+import com.tencent.mm.an.q;
+import com.tencent.mm.protocal.protobuf.ezc;
 import java.util.LinkedList;
 
 public abstract class a
   extends q
 {
-  protected int IDq;
-  protected Bundle IDr;
-  protected String dVP;
-  protected int fs;
+  protected String CeE;
+  protected int PxG;
+  protected Bundle PxH;
+  protected String fPt;
   protected int mScene;
-  protected String xsj;
+  protected int zP;
   
-  public final void aWX(String paramString)
+  public final void anc(int paramInt)
   {
-    this.dVP = paramString;
+    this.PxG = paramInt;
   }
   
-  public final void afo(int paramInt)
+  public void bV(LinkedList<ezc> paramLinkedList) {}
+  
+  public final void biI(String paramString)
   {
-    this.IDq = paramInt;
+    this.fPt = paramString;
   }
   
-  public void by(LinkedList<eou> paramLinkedList) {}
-  
-  public final boolean fXA()
+  public final int gQm()
   {
-    return this.fs == 0;
+    return this.PxG;
   }
   
-  public final Bundle fXB()
+  public final boolean gQn()
   {
-    return this.IDr;
+    return this.zP == 0;
   }
   
-  public abstract String fXC();
-  
-  public abstract int fXD();
-  
-  public final String fXE()
+  public final Bundle gQo()
   {
-    return this.dVP;
+    return this.PxH;
   }
   
-  public final int fXz()
+  public abstract String gQp();
+  
+  public abstract int gQq();
+  
+  public final String gQr()
   {
-    return this.IDq;
+    return this.fPt;
   }
   
   public final String getKeyword()
   {
-    return this.xsj;
+    return this.CeE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.a
  * JD-Core Version:    0.7.0.1
  */

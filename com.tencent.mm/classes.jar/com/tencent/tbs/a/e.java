@@ -11,9 +11,9 @@ import java.util.List;
 
 public final class e
 {
-  private static c RSk = c.RSl;
-  private static e.a RSo;
   private static volatile Boolean a = Boolean.FALSE;
+  private static e.a abTA;
+  private static c abTw = c.abTx;
   private static List<d> c;
   private static boolean d;
   private static String f = "";
@@ -31,9 +31,9 @@ public final class e
       AppMethodBeat.o(174272);
       return;
     }
-    RSo.a = paramString1;
-    Object localObject = RSo;
-    paramString1 = c.aqN(paramInt);
+    abTA.a = paramString1;
+    Object localObject = abTA;
+    paramString1 = c.aGq(paramInt);
     localObject = ((e.a)localObject).a;
     try
     {
@@ -44,7 +44,7 @@ public final class e
         return;
       }
       paramInt = paramString1.h;
-      int i = RSk.h;
+      int i = abTw.h;
       if (paramInt < i)
       {
         AppMethodBeat.o(174272);
@@ -67,7 +67,7 @@ public final class e
     }
   }
   
-  public static void cV(Context paramContext, String paramString)
+  public static void dg(Context paramContext, String paramString)
   {
     AppMethodBeat.i(174269);
     try
@@ -75,7 +75,7 @@ public final class e
       Object localObject;
       if (!a.booleanValue())
       {
-        RSo = new e.a((byte)0);
+        abTA = new e.a((byte)0);
         localObject = new ArrayList();
         c = (List)localObject;
         ((List)localObject).add(new com.tencent.tbs.a.a.b(paramContext, new a(), new com.tencent.tbs.a.a.b.b(), new com.tencent.tbs.a.a.a.b()));
@@ -91,7 +91,7 @@ public final class e
       label127:
       for (f = ((File)localObject).getAbsolutePath();; f = paramContext.getFilesDir() + File.separator + paramString)
       {
-        RSk = c.RSl;
+        abTw = c.abTx;
         d = true;
         a = Boolean.TRUE;
         AppMethodBeat.o(174269);
@@ -118,7 +118,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tbs.a.e
  * JD-Core Version:    0.7.0.1
  */

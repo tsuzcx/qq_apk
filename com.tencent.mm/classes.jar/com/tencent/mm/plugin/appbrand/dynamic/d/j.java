@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aa.b.b.a;
+import com.tencent.mm.ac.b.b.a;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONArray;
@@ -15,13 +15,13 @@ public final class j
     super("reportIDKey", paramInt);
   }
   
-  public final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
+  public final void a(com.tencent.mm.ac.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
   {
     AppMethodBeat.i(121331);
     parama = paramJSONObject.optJSONArray("dataArray");
     if (parama == null)
     {
-      parama1.bt(a(false, "dataArray is null", null));
+      parama1.bt(i(false, "dataArray is null"));
       AppMethodBeat.o(121331);
       return;
     }
@@ -35,7 +35,7 @@ public final class j
           int j = paramJSONObject.optInt("id");
           int k = paramJSONObject.optInt("key");
           int m = paramJSONObject.optInt("value");
-          h.CyF.idkeyStat(j, k, m, false);
+          h.IzE.idkeyStat(j, k, m, false);
           i += 1;
         }
         catch (Exception paramJSONObject)
@@ -47,13 +47,13 @@ public final class j
         }
       }
     }
-    parama1.bt(a(true, "", null));
+    parama1.bt(i(true, ""));
     AppMethodBeat.o(121331);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.j
  * JD-Core Version:    0.7.0.1
  */

@@ -9,69 +9,69 @@ import kotlin.l;
 import kotlin.n.d;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/music/model/MusicMediaPath;", "", "()V", "musicCachePath", "", "getMusicCachePath", "()Ljava/lang/String;", "thumbSuffix", "getCaptureFilePath", "getCaptureThumbPath", "plugin-music_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/music/model/MusicMediaPath;", "", "()V", "musicCachePath", "", "getMusicCachePath", "()Ljava/lang/String;", "thumbSuffix", "getCaptureFilePath", "getCaptureThumbPath", "plugin-music_release"})
 public final class j
 {
-  private static final String AkD = "_thumb";
-  public static final j AkE;
+  private static final String FRH = "_thumb";
+  public static final j FRI;
   
   static
   {
-    AppMethodBeat.i(219981);
-    AkE = new j();
-    AkD = "_thumb";
-    AppMethodBeat.o(219981);
+    AppMethodBeat.i(260214);
+    FRI = new j();
+    FRH = "_thumb";
+    AppMethodBeat.o(260214);
   }
   
-  public static String dEC()
+  public static String egp()
   {
-    AppMethodBeat.i(219979);
-    Object localObject1 = new StringBuilder().append(euy());
+    AppMethodBeat.i(260209);
+    Object localObject1 = new StringBuilder().append(feT());
     Object localObject2 = String.valueOf(System.currentTimeMillis());
     Charset localCharset = d.UTF_8;
     if (localObject2 == null)
     {
       localObject1 = new t("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(219979);
+      AppMethodBeat.o(260209);
       throw ((Throwable)localObject1);
     }
     localObject2 = ((String)localObject2).getBytes(localCharset);
-    p.g(localObject2, "(this as java.lang.String).getBytes(charset)");
+    p.j(localObject2, "(this as java.lang.String).getBytes(charset)");
     localObject1 = g.getMessageDigest((byte[])localObject2);
-    AppMethodBeat.o(219979);
+    AppMethodBeat.o(260209);
     return localObject1;
   }
   
-  private static String euy()
+  private static String feT()
   {
-    AppMethodBeat.i(219978);
-    String str = b.aKS() + "music/";
-    AppMethodBeat.o(219978);
+    AppMethodBeat.i(260207);
+    String str = b.aSU() + "music/";
+    AppMethodBeat.o(260207);
     return str;
   }
   
-  public static String euz()
+  public static String feU()
   {
-    AppMethodBeat.i(219980);
-    Object localObject1 = new StringBuilder().append(euy());
+    AppMethodBeat.i(260211);
+    Object localObject1 = new StringBuilder().append(feT());
     Object localObject2 = String.valueOf(System.currentTimeMillis());
     Charset localCharset = d.UTF_8;
     if (localObject2 == null)
     {
       localObject1 = new t("null cannot be cast to non-null type java.lang.String");
-      AppMethodBeat.o(219980);
+      AppMethodBeat.o(260211);
       throw ((Throwable)localObject1);
     }
     localObject2 = ((String)localObject2).getBytes(localCharset);
-    p.g(localObject2, "(this as java.lang.String).getBytes(charset)");
-    localObject1 = g.getMessageDigest((byte[])localObject2) + AkD;
-    AppMethodBeat.o(219980);
+    p.j(localObject2, "(this as java.lang.String).getBytes(charset)");
+    localObject1 = g.getMessageDigest((byte[])localObject2) + FRH;
+    AppMethodBeat.o(260211);
     return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.j
  * JD-Core Version:    0.7.0.1
  */

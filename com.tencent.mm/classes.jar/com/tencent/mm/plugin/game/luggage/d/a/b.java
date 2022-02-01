@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.game.luggage.d.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.plugin.game.luggage.j.f;
 import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog;
 import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog.a;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -12,45 +13,45 @@ import org.json.JSONObject;
 public class b
   extends com.tencent.mm.plugin.lite.jsapi.b
 {
-  public final void a(String paramString, JSONObject paramJSONObject)
+  public final void a(String paramString, JSONObject paramJSONObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(186902);
-    if (!com.tencent.mm.compatible.e.b.cx(MMApplicationContext.getContext()))
+    AppMethodBeat.i(230916);
+    if (!com.tencent.mm.compatible.e.b.ct(MMApplicationContext.getContext()))
     {
       paramString = new RequestFloatWindowPermissionDialog.a()
       {
-        public final void onResultAllow(RequestFloatWindowPermissionDialog paramAnonymousRequestFloatWindowPermissionDialog)
+        public final void a(RequestFloatWindowPermissionDialog paramAnonymousRequestFloatWindowPermissionDialog)
         {
-          AppMethodBeat.i(186899);
+          AppMethodBeat.i(231310);
           Log.w("LiteAppJsApiBookDownloadGame", "float window permission granted");
           paramAnonymousRequestFloatWindowPermissionDialog.finish();
-          AppMethodBeat.o(186899);
+          AppMethodBeat.o(231310);
         }
         
-        public final void onResultCancel(RequestFloatWindowPermissionDialog paramAnonymousRequestFloatWindowPermissionDialog)
+        public final void b(RequestFloatWindowPermissionDialog paramAnonymousRequestFloatWindowPermissionDialog)
         {
-          AppMethodBeat.i(186901);
-          Log.w("LiteAppJsApiBookDownloadGame", "onResultCancel ok:%b", new Object[] { Boolean.valueOf(com.tencent.mm.compatible.e.b.cx(MMApplicationContext.getContext())) });
-          paramAnonymousRequestFloatWindowPermissionDialog.finish();
-          AppMethodBeat.o(186901);
-        }
-        
-        public final void onResultRefuse(RequestFloatWindowPermissionDialog paramAnonymousRequestFloatWindowPermissionDialog)
-        {
-          AppMethodBeat.i(186900);
+          AppMethodBeat.i(231312);
           Log.w("LiteAppJsApiBookDownloadGame", "float window permission refused");
           paramAnonymousRequestFloatWindowPermissionDialog.finish();
-          AppMethodBeat.o(186900);
+          AppMethodBeat.o(231312);
+        }
+        
+        public final void c(RequestFloatWindowPermissionDialog paramAnonymousRequestFloatWindowPermissionDialog)
+        {
+          AppMethodBeat.i(231315);
+          Log.w("LiteAppJsApiBookDownloadGame", "onResultCancel ok:%b", new Object[] { Boolean.valueOf(com.tencent.mm.compatible.e.b.ct(MMApplicationContext.getContext())) });
+          paramAnonymousRequestFloatWindowPermissionDialog.finish();
+          AppMethodBeat.o(231315);
         }
       };
-      RequestFloatWindowPermissionDialog.a(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(2131760767), paramString, true, a.apJ());
+      RequestFloatWindowPermissionDialog.a(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(j.f.float_ball_no_float_window_permission_alert_download), paramString, true, a.awc());
     }
-    AppMethodBeat.o(186902);
+    AppMethodBeat.o(230916);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.d.a.b
  * JD-Core Version:    0.7.0.1
  */

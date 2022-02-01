@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.finder.nearby.video;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.report.h;
+import com.tencent.mm.plugin.finder.report.j;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
 final class NearbyVideoPresenter$feedLoader$2$1$call$3
   implements Runnable
 {
@@ -12,17 +12,17 @@ final class NearbyVideoPresenter$feedLoader$2$1$call$3
   
   static
   {
-    AppMethodBeat.i(249401);
+    AppMethodBeat.i(199676);
     INSTANCE = new 3();
-    AppMethodBeat.o(249401);
+    AppMethodBeat.o(199676);
   }
   
   public final void run()
   {
-    AppMethodBeat.i(249400);
-    h localh = h.veu;
-    h.dnT();
-    AppMethodBeat.o(249400);
+    AppMethodBeat.i(199674);
+    j localj = j.zVy;
+    j.dPu();
+    AppMethodBeat.o(199674);
   }
 }
 

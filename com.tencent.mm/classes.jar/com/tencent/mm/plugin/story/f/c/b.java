@@ -3,21 +3,21 @@ package com.tencent.mm.plugin.story.f.c;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.c.e;
-import com.tencent.mm.protocal.protobuf.edt;
+import com.tencent.mm.protocal.protobuf.enu;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import kotlin.g.b.p;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/download/StoryDiskCache;", "Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache;", "Lcom/tencent/mm/plugin/story/model/download/StoryImage;", "()V", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "Landroid/graphics/Bitmap;", "clear", "", "get", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "onSaveCompleted", "", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "plugin-story_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/model/download/StoryDiskCache;", "Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache;", "Lcom/tencent/mm/plugin/story/model/download/StoryImage;", "()V", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "Landroid/graphics/Bitmap;", "clear", "", "get", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "onSaveCompleted", "", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "plugin-story_release"})
 public final class b
   extends com.tencent.mm.loader.b.a.a<d>
 {
   public final boolean a(com.tencent.mm.loader.h.a.a<d> parama, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
   {
     AppMethodBeat.i(118892);
-    p.h(parama, "url");
-    p.h(parame, "opts");
-    p.h(paramf, "reaper");
+    p.k(parama, "url");
+    p.k(parame, "opts");
+    p.k(paramf, "reaper");
     AppMethodBeat.o(118892);
     return true;
   }
@@ -25,10 +25,10 @@ public final class b
   public final boolean a(com.tencent.mm.loader.h.a.a<d> parama, com.tencent.mm.loader.h.f<?> paramf, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf1)
   {
     AppMethodBeat.i(118891);
-    p.h(parama, "url");
-    p.h(paramf, "httpResponse");
-    p.h(parame, "opts");
-    p.h(paramf1, "reaper");
+    p.k(parama, "url");
+    p.k(paramf, "httpResponse");
+    p.k(parame, "opts");
+    p.k(paramf1, "reaper");
     AppMethodBeat.o(118891);
     return true;
   }
@@ -36,25 +36,25 @@ public final class b
   public final com.tencent.mm.loader.h.b.a b(com.tencent.mm.loader.h.a.a<d> parama, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
   {
     AppMethodBeat.i(118894);
-    p.h(parama, "url");
-    p.h(parame, "opts");
-    p.h(paramf, "reaper");
+    p.k(parama, "url");
+    p.k(parame, "opts");
+    p.k(paramf, "reaper");
     parame = c(parama, parame, paramf);
-    boolean bool = s.YS(parame);
+    boolean bool = u.agG(parame);
     Log.i(g.getTAG(), "url " + parama + " and path " + parame + " ret " + bool);
     if (bool)
     {
-      parama = com.tencent.mm.loader.h.b.a.Hk(parame);
+      parama = com.tencent.mm.loader.h.b.a.Ov(parame);
       AppMethodBeat.o(118894);
       return parama;
     }
-    paramf = com.tencent.mm.plugin.story.f.l.FmK;
-    paramf = com.tencent.mm.plugin.story.f.l.aRV(((d)parama.value()).FoD.Id);
-    bool = s.YS(paramf);
+    paramf = com.tencent.mm.plugin.story.f.l.LGM;
+    paramf = com.tencent.mm.plugin.story.f.l.bcZ(((d)parama.aSr()).LIF.Id);
+    bool = u.agG(paramf);
     Log.i(g.getTAG(), "thumb url " + parama + " and path " + parame + " ret " + bool);
     if (bool)
     {
-      parama = com.tencent.mm.loader.h.b.a.Hk(paramf);
+      parama = com.tencent.mm.loader.h.b.a.Ov(paramf);
       AppMethodBeat.o(118894);
       return parama;
     }
@@ -65,12 +65,12 @@ public final class b
   public final String c(com.tencent.mm.loader.h.a.a<d> parama, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
   {
     AppMethodBeat.i(118893);
-    p.h(parama, "url");
-    p.h(parame, "opts");
-    p.h(paramf, "reaper");
-    parama = com.tencent.mm.plugin.story.f.l.FmK.kX(((d)parama.value()).FoD.Id, ((d)parama.value()).username);
-    parame = com.tencent.mm.plugin.story.f.l.FmK;
-    com.tencent.mm.plugin.story.f.l.aLP(parama);
+    p.k(parama, "url");
+    p.k(parame, "opts");
+    p.k(paramf, "reaper");
+    parama = com.tencent.mm.plugin.story.f.l.LGM.lu(((d)parama.aSr()).LIF.Id, ((d)parama.aSr()).username);
+    parame = com.tencent.mm.plugin.story.f.l.LGM;
+    com.tencent.mm.plugin.story.f.l.aWs(parama);
     AppMethodBeat.o(118893);
     return parama;
   }

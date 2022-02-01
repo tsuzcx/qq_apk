@@ -30,13 +30,13 @@ public class APPayGameService
   
   static
   {
-    AppMethodBeat.i(193369);
+    AppMethodBeat.i(253849);
     serviceDelegate = null;
     midasCallBack = new IAPMidasPayCallBack()
     {
       public final void MidasPayCallBack(APMidasResponse paramAnonymousAPMidasResponse)
       {
-        AppMethodBeat.i(193348);
+        AppMethodBeat.i(253864);
         APPayResponseInfo localAPPayResponseInfo;
         if (APPayGameService.serviceDelegate != null) {
           localAPPayResponseInfo = new APPayResponseInfo();
@@ -46,7 +46,7 @@ public class APPayGameService
           APBeanUtil.copyProperties(paramAnonymousAPMidasResponse, localAPPayResponseInfo);
           APLog.i("midasCallBack", "MidasPayCallBack");
           APPayGameService.serviceDelegate.PayGameServiceCallBack(localAPPayResponseInfo);
-          AppMethodBeat.o(193348);
+          AppMethodBeat.o(253864);
           return;
         }
         catch (Exception paramAnonymousAPMidasResponse)
@@ -60,16 +60,16 @@ public class APPayGameService
       
       public final void MidasPayNeedLogin()
       {
-        AppMethodBeat.i(193347);
+        AppMethodBeat.i(253863);
         if (APPayGameService.serviceDelegate != null)
         {
           APLog.i("midasCallBack", "MidasPayNeedLogin");
           APPayGameService.serviceDelegate.PayGameNeedLogin();
         }
-        AppMethodBeat.o(193347);
+        AppMethodBeat.o(253863);
       }
     };
-    AppMethodBeat.o(193369);
+    AppMethodBeat.o(253849);
   }
   
   public static IAPPayGameServiceCallBack GetDelegate()
@@ -79,27 +79,27 @@ public class APPayGameService
   
   public static void LauchVmallView(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
-    AppMethodBeat.i(193355);
+    AppMethodBeat.i(253826);
     paramString8 = new APMidasGoodsRequest();
     setCommParams(paramString8, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7);
     paramString8.mallType = 2;
     APMidasPayAPI.launchPay(AndroidPay.singleton().fromActivity, paramString8, midasCallBack);
-    AppMethodBeat.o(193355);
+    AppMethodBeat.o(253826);
   }
   
   public static void LaunchGroupBuyView(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
-    AppMethodBeat.i(193356);
+    AppMethodBeat.i(253827);
     paramString8 = new APMidasGoodsRequest();
     setCommParams(paramString8, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7);
     paramString8.mallType = 1;
     APMidasPayAPI.launchPay(AndroidPay.singleton().fromActivity, paramString8, midasCallBack);
-    AppMethodBeat.o(193356);
+    AppMethodBeat.o(253827);
   }
   
   public static void LaunchMPSaveCurrencyView(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, int paramInt, String paramString10, String paramString11, String paramString12, String paramString13)
   {
-    AppMethodBeat.i(193361);
+    AppMethodBeat.i(253833);
     APMidasGameRequest localAPMidasGameRequest = new APMidasGameRequest();
     setCommParams(localAPMidasGameRequest, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7);
     localAPMidasGameRequest.acctType = paramString8;
@@ -110,12 +110,12 @@ public class APPayGameService
     localAPMidasGameRequest.mpInfo.discountUrl = paramString12;
     localAPMidasGameRequest.mpInfo.extras = paramString13;
     APMidasPayAPI.launchPay(AndroidPay.singleton().fromActivity, localAPMidasGameRequest, midasCallBack);
-    AppMethodBeat.o(193361);
+    AppMethodBeat.o(253833);
   }
   
   public static void LaunchMPSaveGoodsView(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt, String paramString9, String paramString10, String paramString11, String paramString12)
   {
-    AppMethodBeat.i(193363);
+    AppMethodBeat.i(253835);
     APMidasGoodsRequest localAPMidasGoodsRequest = new APMidasGoodsRequest();
     localAPMidasGoodsRequest.tokenType = 1;
     setCommParams(localAPMidasGoodsRequest, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7);
@@ -126,26 +126,26 @@ public class APPayGameService
     localAPMidasGoodsRequest.mpInfo.discountUrl = paramString11;
     localAPMidasGoodsRequest.mpInfo.extras = paramString12;
     APMidasPayAPI.launchPay(AndroidPay.singleton().fromActivity, localAPMidasGoodsRequest, midasCallBack);
-    AppMethodBeat.o(193363);
+    AppMethodBeat.o(253835);
   }
   
   public static void LaunchMp(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, IAPHttpAnsObserver paramIAPHttpAnsObserver)
   {
-    AppMethodBeat.i(193365);
+    AppMethodBeat.i(253838);
     startMpNetWork(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, "", paramIAPHttpAnsObserver);
-    AppMethodBeat.o(193365);
+    AppMethodBeat.o(253838);
   }
   
   public static void LaunchMp(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, IAPHttpAnsObserver paramIAPHttpAnsObserver)
   {
-    AppMethodBeat.i(193366);
+    AppMethodBeat.i(253839);
     startMpNetWork(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramIAPHttpAnsObserver);
-    AppMethodBeat.o(193366);
+    AppMethodBeat.o(253839);
   }
   
   public static void LaunchSaveCurrencyView(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt)
   {
-    AppMethodBeat.i(193359);
+    AppMethodBeat.i(253831);
     APMidasGameRequest localAPMidasGameRequest = new APMidasGameRequest();
     setCommParams(localAPMidasGameRequest, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7);
     localAPMidasGameRequest.acctType = paramString8;
@@ -153,12 +153,12 @@ public class APPayGameService
     localAPMidasGameRequest.isCanChange = true;
     localAPMidasGameRequest.resId = paramInt;
     APMidasPayAPI.launchPay(AndroidPay.singleton().fromActivity, localAPMidasGameRequest, midasCallBack);
-    AppMethodBeat.o(193359);
+    AppMethodBeat.o(253831);
   }
   
   public static void LaunchSaveCurrencyView(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt, String paramString9, String paramString10)
   {
-    AppMethodBeat.i(193360);
+    AppMethodBeat.i(253832);
     APMidasGameRequest localAPMidasGameRequest = new APMidasGameRequest();
     setCommParams(localAPMidasGameRequest, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7);
     localAPMidasGameRequest.acctType = paramString8;
@@ -168,12 +168,12 @@ public class APPayGameService
     localAPMidasGameRequest.mpInfo.drmInfo = paramString9;
     localAPMidasGameRequest.mpInfo.discoutId = paramString10;
     APMidasPayAPI.launchPay(AndroidPay.singleton().fromActivity, localAPMidasGameRequest, midasCallBack);
-    AppMethodBeat.o(193360);
+    AppMethodBeat.o(253832);
   }
   
   public static void LaunchSaveCurrencyView(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(193357);
+    AppMethodBeat.i(253829);
     APMidasGameRequest localAPMidasGameRequest = new APMidasGameRequest();
     setCommParams(localAPMidasGameRequest, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7);
     localAPMidasGameRequest.acctType = paramString8;
@@ -181,12 +181,12 @@ public class APPayGameService
     localAPMidasGameRequest.isCanChange = paramBoolean;
     localAPMidasGameRequest.resId = paramInt;
     APMidasPayAPI.launchPay(AndroidPay.singleton().fromActivity, localAPMidasGameRequest, midasCallBack);
-    AppMethodBeat.o(193357);
+    AppMethodBeat.o(253829);
   }
   
   public static void LaunchSaveCurrencyView(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, boolean paramBoolean, int paramInt, String paramString10, String paramString11)
   {
-    AppMethodBeat.i(193358);
+    AppMethodBeat.i(253830);
     APMidasGameRequest localAPMidasGameRequest = new APMidasGameRequest();
     setCommParams(localAPMidasGameRequest, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7);
     localAPMidasGameRequest.acctType = paramString8;
@@ -196,24 +196,24 @@ public class APPayGameService
     localAPMidasGameRequest.mpInfo.drmInfo = paramString10;
     localAPMidasGameRequest.mpInfo.discoutId = paramString11;
     APMidasPayAPI.launchPay(AndroidPay.singleton().fromActivity, localAPMidasGameRequest, midasCallBack);
-    AppMethodBeat.o(193358);
+    AppMethodBeat.o(253830);
   }
   
   public static void LaunchSaveGoodsView(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt)
   {
-    AppMethodBeat.i(193362);
+    AppMethodBeat.i(253834);
     APMidasGoodsRequest localAPMidasGoodsRequest = new APMidasGoodsRequest();
     localAPMidasGoodsRequest.tokenType = 1;
     setCommParams(localAPMidasGoodsRequest, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7);
     localAPMidasGoodsRequest.goodsTokenUrl = paramString8;
     localAPMidasGoodsRequest.resId = paramInt;
     APMidasPayAPI.launchPay(AndroidPay.singleton().fromActivity, localAPMidasGoodsRequest, midasCallBack);
-    AppMethodBeat.o(193362);
+    AppMethodBeat.o(253834);
   }
   
   public static void LaunchSaveGoodsViewWithoutToken(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, boolean paramBoolean, String paramString10)
   {
-    AppMethodBeat.i(193364);
+    AppMethodBeat.i(253837);
     paramString10 = new APMidasGoodsRequest();
     paramString10.tokenType = 2;
     setCommParams(paramString10, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7);
@@ -221,7 +221,7 @@ public class APPayGameService
     paramString10.saveValue = paramString9;
     paramString10.isCanChange = paramBoolean;
     APMidasPayAPI.launchPay(AndroidPay.singleton().fromActivity, paramString10, midasCallBack);
-    AppMethodBeat.o(193364);
+    AppMethodBeat.o(253837);
   }
   
   public static void SetDelegate(IAPPayGameServiceCallBack paramIAPPayGameServiceCallBack)
@@ -242,7 +242,7 @@ public class APPayGameService
   
   private static void setCommParams(APMidasBaseRequest paramAPMidasBaseRequest, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
-    AppMethodBeat.i(193368);
+    AppMethodBeat.i(253848);
     paramAPMidasBaseRequest.offerId = AndroidPay.singleton().offerId;
     paramAPMidasBaseRequest.openId = paramString1;
     paramAPMidasBaseRequest.openKey = paramString2;
@@ -255,12 +255,12 @@ public class APPayGameService
     paramAPMidasBaseRequest.extendInfo.isShowNum = AndroidPay.singleton().isShowNum;
     paramAPMidasBaseRequest.resData = AndroidPay.singleton().resdata;
     paramAPMidasBaseRequest.extendInfo.isShowListOtherNum = AndroidPay.singleton().isShowListOtherNum;
-    AppMethodBeat.o(193368);
+    AppMethodBeat.o(253848);
   }
   
   private static void startMpNetWork(final String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, IAPHttpAnsObserver paramIAPHttpAnsObserver)
   {
-    AppMethodBeat.i(193367);
+    AppMethodBeat.i(253840);
     APMidasNetRequest localAPMidasNetRequest = new APMidasNetRequest();
     setCommParams(localAPMidasNetRequest, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7);
     localAPMidasNetRequest.reqType = APMidasNetRequest.NET_REQ_MP;
@@ -272,34 +272,34 @@ public class APPayGameService
     {
       public final void MidasNetError(String paramAnonymousString1, int paramAnonymousInt, String paramAnonymousString2)
       {
-        AppMethodBeat.i(193346);
+        AppMethodBeat.i(253896);
         paramString1.resultCode = paramAnonymousInt;
         paramString1.resultMsg = paramAnonymousString2;
         this.val$observer.onError(paramString1);
-        AppMethodBeat.o(193346);
+        AppMethodBeat.o(253896);
       }
       
       public final void MidasNetFinish(String paramAnonymousString1, String paramAnonymousString2)
       {
-        AppMethodBeat.i(193345);
+        AppMethodBeat.i(253894);
         paramString1.onFinishAns(paramAnonymousString2.getBytes(), null);
         this.val$observer.onFinish(paramString1);
-        AppMethodBeat.o(193345);
+        AppMethodBeat.o(253894);
       }
       
       public final void MidasNetStop(String paramAnonymousString)
       {
-        AppMethodBeat.i(193344);
+        AppMethodBeat.i(253893);
         this.val$observer.onStop(paramString1);
-        AppMethodBeat.o(193344);
+        AppMethodBeat.o(253893);
       }
     });
-    AppMethodBeat.o(193367);
+    AppMethodBeat.o(253840);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.pay.api.APPayGameService
  * JD-Core Version:    0.7.0.1
  */

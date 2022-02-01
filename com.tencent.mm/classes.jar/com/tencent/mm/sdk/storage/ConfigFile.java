@@ -2,7 +2,7 @@ package com.tencent.mm.sdk.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -23,7 +23,7 @@ public class ConfigFile
     this.filePath = paramString;
     try
     {
-      InputStream localInputStream = s.openRead(paramString);
+      InputStream localInputStream = u.Tf(paramString);
       localObject1 = localInputStream;
       localObject3 = localInputStream;
       this.propertie.load(localInputStream);
@@ -84,37 +84,37 @@ public class ConfigFile
   
   public static int getIntValue(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(230502);
+    AppMethodBeat.i(186332);
     paramString1 = new ConfigFile(paramString1).getIntegerValue(paramString2);
     if (paramString1 == null)
     {
-      AppMethodBeat.o(230502);
+      AppMethodBeat.o(186332);
       return paramInt;
     }
     paramInt = paramString1.intValue();
-    AppMethodBeat.o(230502);
+    AppMethodBeat.o(186332);
     return paramInt;
   }
   
   public static Integer getIntegerValue(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(230500);
+    AppMethodBeat.i(186328);
     paramString1 = new ConfigFile(paramString1).getIntegerValue(paramString2);
-    AppMethodBeat.o(230500);
+    AppMethodBeat.o(186328);
     return paramString1;
   }
   
   public static long getLongValue(String paramString1, String paramString2, long paramLong)
   {
-    AppMethodBeat.i(230501);
+    AppMethodBeat.i(186329);
     paramString1 = new ConfigFile(paramString1).getLongValue(paramString2);
     if (paramString1 == null)
     {
-      AppMethodBeat.o(230501);
+      AppMethodBeat.o(186329);
       return paramLong;
     }
     paramLong = paramString1.longValue();
-    AppMethodBeat.o(230501);
+    AppMethodBeat.o(186329);
     return paramLong;
   }
   
@@ -136,9 +136,9 @@ public class ConfigFile
   
   public static boolean saveValue(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(230503);
+    AppMethodBeat.i(186334);
     boolean bool = new ConfigFile(paramString1).saveValue(paramString2, paramInt);
-    AppMethodBeat.o(230503);
+    AppMethodBeat.o(186334);
     return bool;
   }
   
@@ -243,7 +243,7 @@ public class ConfigFile
     {
       try
       {
-        localOutputStream = s.dw(this.filePath, false);
+        localOutputStream = u.Te(this.filePath);
         localObject1 = localOutputStream;
         localObject2 = localOutputStream;
         this.propertie.setProperty(paramString1, paramString2);
@@ -309,7 +309,7 @@ public class ConfigFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.storage.ConfigFile
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ final class c$dz
 {
   c$dz()
   {
-    super("handleHaokanAction", "handleHaokanAction", 335, false);
+    super("handleDeviceInfo", "handleDeviceInfo", 372, false);
   }
 }
 

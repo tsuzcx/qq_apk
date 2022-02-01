@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.appbrand.jsapi.auth;
 
-import com.tencent.mm.plugin.appbrand.d;
+import com.tencent.mm.plugin.appbrand.g;
 import org.json.JSONObject;
 
 public abstract interface c
 {
-  public abstract void a(i parami, d paramd, JSONObject paramJSONObject, int paramInt);
+  public abstract void a(i parami, g paramg, JSONObject paramJSONObject, int paramInt);
 }
 
 

@@ -16,23 +16,23 @@ public class ae
   {
     boolean bool2 = true;
     AppMethodBeat.i(78570);
-    int i = parama.ctb.csi.optInt("id");
+    int i = parama.crh.cqn.optInt("id");
     if (i <= 0) {
-      parama.c("fail", null);
+      parama.a("fail", null);
     }
-    String str = parama.ctb.csi.optString("value");
+    String str = parama.crh.cqn.optString("value");
     boolean bool1;
-    if (parama.ctb.csi.optInt("is_important") > 0)
+    if (parama.crh.cqn.optInt("is_important") > 0)
     {
       bool1 = true;
-      if (parama.ctb.csi.optInt("is_report_now") <= 0) {
+      if (parama.crh.cqn.optInt("is_report_now") <= 0) {
         break label108;
       }
     }
     for (;;)
     {
-      h.CyF.a(i, str, bool2, bool1);
-      parama.c("", null);
+      h.IzE.b(i, str, bool2, bool1);
+      parama.a("", null);
       AppMethodBeat.o(78570);
       return;
       bool1 = false;
@@ -42,7 +42,7 @@ public class ae
     }
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

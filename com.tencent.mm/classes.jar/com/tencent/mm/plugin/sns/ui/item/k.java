@@ -1,121 +1,110 @@
 package com.tencent.mm.plugin.sns.ui.item;
 
-import android.app.Activity;
-import android.content.res.Resources;
-import android.text.SpannableString;
+import android.text.TextUtils;
+import android.util.Pair;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.TextView.BufferType;
+import androidx.constraintlayout.widget.Guideline;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.r;
-import com.tencent.mm.plugin.sns.model.aj;
-import com.tencent.mm.plugin.sns.model.g;
-import com.tencent.mm.plugin.sns.ui.TagImageView;
-import com.tencent.mm.plugin.sns.ui.bk;
-import com.tencent.mm.plugin.sns.ui.bl;
-import com.tencent.mm.plugin.sns.ui.br;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.modelsns.o;
+import com.tencent.mm.plugin.findersdk.a.ak;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.mm.plugin.sns.ui.bm;
+import com.tencent.mm.plugin.sns.ui.bn;
+import com.tencent.mm.plugin.sns.ui.bu;
 import com.tencent.mm.plugin.sns.ui.d.c;
-import com.tencent.mm.plugin.sns.ui.s;
+import com.tencent.mm.plugin.sns.ui.view.ImageIndicatorView;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.adp;
-import com.tencent.mm.protocal.protobuf.cnb;
+import com.tencent.mm.protocal.protobuf.adw;
+import com.tencent.mm.protocal.protobuf.cww;
+import com.tencent.mm.protocal.protobuf.cwx;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.bp;
 import com.tencent.mm.ui.widget.b.a;
 import java.util.LinkedList;
 
 public final class k
   extends BaseTimeLineItem
 {
-  public final void a(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder, int paramInt1, bl parambl, TimeLineObject paramTimeLineObject, int paramInt2, bk parambk)
+  public final void a(ViewStub paramViewStub, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
-    AppMethodBeat.i(100088);
-    String str = parambl.Eql;
-    if (!paramTimeLineObject.ContentObj.LoV.isEmpty())
+    AppMethodBeat.i(258316);
+    paramViewStub = (a)paramBaseViewHolder;
+    if ((paramViewStub.LkR != null) && (paramViewStub.LkR.getParent() != null))
     {
-      paramBaseViewHolder.EWG.setPosition(paramInt1);
-      paramBaseViewHolder.EIs.setVisibility(0);
-      parambl = (cnb)paramTimeLineObject.ContentObj.LoV.get(0);
-      g localg = aj.faL();
-      TagImageView localTagImageView = paramBaseViewHolder.EWG;
-      paramInt1 = this.mActivity.hashCode();
-      bp localbp = bp.gCU();
-      localbp.hXs = paramTimeLineObject.CreateTime;
-      localg.a(parambl, localTagImageView, 2131689567, paramInt1, localbp);
-      paramBaseViewHolder.uzC.setPressed(false);
-      if (bk.aMJ(paramTimeLineObject.Id))
-      {
-        paramBaseViewHolder.uzC.setImageResource(2131234170);
-        paramBaseViewHolder.EWG.setTag(new s(paramTimeLineObject, str));
-        paramBaseViewHolder.EWG.setOnClickListener(parambk.EBo.ERq);
-        paramBaseViewHolder.EIs.setTag(new s(paramTimeLineObject, str));
-        parambk.fiV().c(paramBaseViewHolder.EIs, parambk.DQs.FaG, parambk.DQs.Far);
-        paramBaseViewHolder.EIs.setOnClickListener(parambk.EBo.EIc);
-        paramTimeLineObject = parambl.Desc;
-        if (Util.isNullOrNil(paramTimeLineObject)) {
-          break label315;
-        }
-        paramBaseViewHolder.EWH.setVisibility(0);
-        paramBaseViewHolder.EWH.setText(paramTimeLineObject);
+      paramViewStub.LkR.setLayoutResource(i.g.sns_finder_media_item);
+      if (!paramViewStub.Lmy) {
+        paramViewStub.Lmz = paramViewStub.LkR.inflate();
       }
-      for (;;)
-      {
-        parambl = parambl.Title;
-        if (Util.isNullOrNil(parambl)) {
-          break label326;
-        }
-        paramBaseViewHolder.titleTv.setVisibility(0);
-        parambl = new SpannableString(parambl);
-        paramBaseViewHolder.titleTv.setText(parambl, TextView.BufferType.SPANNABLE);
-        AppMethodBeat.o(100088);
-        return;
-        paramBaseViewHolder.uzC.setImageResource(2131234185);
-        break;
-        label315:
-        paramBaseViewHolder.EWH.setVisibility(4);
-      }
-      label326:
-      paramBaseViewHolder.titleTv.setVisibility(8);
-      AppMethodBeat.o(100088);
-      return;
     }
-    paramBaseViewHolder.EIs.setVisibility(8);
-    AppMethodBeat.o(100088);
+    for (paramViewStub.Lmy = true;; paramViewStub.Lmy = true)
+    {
+      paramViewStub.KDh = ((ImageView)paramViewStub.Lmz.findViewById(i.f.sns_finder_media_status_icon));
+      paramViewStub.LmN = ((ImageIndicatorView)paramViewStub.Lmz.findViewById(i.f.sns_finder_media_image_count_indicator));
+      paramViewStub.wPh = ((ImageView)paramViewStub.Lmz.findViewById(i.f.sns_finder_media_thumb));
+      paramViewStub.LmM = ((Guideline)paramViewStub.Lmz.findViewById(i.f.sns_finder_media_image_count_indicator_guide_line));
+      AppMethodBeat.o(258316);
+      return;
+      paramViewStub.Lmz = paramViewStub.convertView.findViewById(i.f.sns_finder_media_content_rl);
+    }
   }
   
-  public final void d(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
+  public final void a(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder, int paramInt1, bn parambn, TimeLineObject paramTimeLineObject, int paramInt2, bm parambm)
   {
-    AppMethodBeat.i(100087);
-    if (paramBaseViewHolder.EWD != null)
+    AppMethodBeat.i(258317);
+    if ((paramTimeLineObject != null) && (paramTimeLineObject.ContentObj != null) && (paramTimeLineObject.ContentObj.Sqy != null))
     {
-      paramBaseViewHolder.EWD.setLayoutResource(2131496461);
-      paramBaseViewHolder.EXp = ((ViewStub)paramBaseViewHolder.convertView.findViewById(2131302605));
-      if ((!paramBaseViewHolder.EXq) && (paramBaseViewHolder.EXp != null)) {
-        paramBaseViewHolder.EXr = paramBaseViewHolder.EXp.inflate();
+      paramBaseViewHolder = (a)paramBaseViewHolder;
+      parambn = paramTimeLineObject.ContentObj.Sqy;
+      if (!Util.isNullOrNil(parambn.mediaList))
+      {
+        parambn = (cww)parambn.mediaList.get(0);
+        if (parambn != null)
+        {
+          paramBaseViewHolder.KDh.setVisibility(0);
+          paramBaseViewHolder.LmN.setVisibility(8);
+          paramBaseViewHolder.LmM.setGuidelineEnd(0);
+          Pair localPair = o.a((int)parambn.width, (int)parambn.height, paramBaseViewHolder.Lmz.getContext(), false);
+          paramInt1 = ((Integer)localPair.first).intValue();
+          paramInt2 = ((Integer)localPair.second).intValue();
+          paramBaseViewHolder.Lmz.getLayoutParams().width = paramInt1;
+          paramBaseViewHolder.Lmz.getLayoutParams().height = paramInt2;
+          paramBaseViewHolder.Lmz.requestLayout();
+          if (TextUtils.isEmpty(parambn.coverUrl)) {
+            break label261;
+          }
+          ((ak)h.ag(ak.class)).loadImage(parambn.coverUrl, paramBaseViewHolder.wPh);
+        }
       }
     }
-    for (paramBaseViewHolder.EXq = true;; paramBaseViewHolder.EXq = true)
+    for (;;)
     {
-      paramBaseViewHolder.EIs = paramBaseViewHolder.EXr;
-      paramBaseViewHolder.EIs.findViewById(2131308376).setOnTouchListener(this.DQX.EqE);
-      paramBaseViewHolder.EWG = ((TagImageView)paramBaseViewHolder.EIs.findViewById(2131302578));
-      paramBaseViewHolder.uzC = ((ImageView)paramBaseViewHolder.EIs.findViewById(2131308376));
-      paramBaseViewHolder.EWH = ((TextView)paramBaseViewHolder.EIs.findViewById(2131307116));
-      paramBaseViewHolder.titleTv = ((TextView)paramBaseViewHolder.EIs.findViewById(2131309253));
-      paramBaseViewHolder.titleTv.setTextColor(this.mActivity.getResources().getColor(2131101131));
-      paramBaseViewHolder.titleTv.setMaxLines(1);
-      r.b(paramBaseViewHolder.EWG, this.mActivity);
-      AppMethodBeat.o(100087);
+      paramBaseViewHolder.Lmz.setTag(paramTimeLineObject);
+      paramBaseViewHolder.Lmz.setOnClickListener(parambm.KPg.Lff);
+      parambm.fXi().c(paramBaseViewHolder.Lmz, parambm.Kdz.Lpl, parambm.Kdz.LoP);
+      AppMethodBeat.o(258317);
       return;
-      paramBaseViewHolder.EXr = paramBaseViewHolder.convertView.findViewById(2131304553);
+      label261:
+      ((ak)h.ag(ak.class)).loadImage(parambn.thumbUrl, paramBaseViewHolder.wPh);
     }
+  }
+  
+  public static class a
+    extends BaseTimeLineItem.BaseViewHolder
+  {
+    ImageView KDh;
+    Guideline LmM;
+    ImageIndicatorView LmN;
+    boolean Lmy = false;
+    View Lmz;
+    ImageView wPh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.item.k
  * JD-Core Version:    0.7.0.1
  */

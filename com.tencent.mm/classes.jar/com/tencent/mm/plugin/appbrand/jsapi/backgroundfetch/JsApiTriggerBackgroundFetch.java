@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.plugin.appbrand.service.c;
 
 public final class JsApiTriggerBackgroundFetch
-  extends com.tencent.mm.plugin.appbrand.jsapi.d<c>
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<com.tencent.mm.plugin.appbrand.service.c>
 {
   public static final int CTRL_INDEX = 685;
   public static final String NAME = "triggerBackgroundFetch";
@@ -57,7 +57,7 @@ public final class JsApiTriggerBackgroundFetch
   }
   
   static class a
-    implements b<JsApiTriggerBackgroundFetch.TriggerBackgroundFetchParcel, IPCString>
+    implements d<JsApiTriggerBackgroundFetch.TriggerBackgroundFetchParcel, IPCString>
   {}
 }
 

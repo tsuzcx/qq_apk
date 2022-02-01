@@ -10,7 +10,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
-  public static boolean w(Activity paramActivity)
+  public static boolean v(Activity paramActivity)
   {
     AppMethodBeat.i(155922);
     Intent localIntent = new Intent("android.media.action.VIDEO_CAPTURE");
@@ -20,8 +20,8 @@ public final class b
       public final void run()
       {
         AppMethodBeat.i(155921);
-        this.gLE.putExtra("android.intent.extra.durationLimit", 30);
-        this.gLE.putExtra("android.intent.extra.sizeLimit", 10485760);
+        this.jvT.putExtra("android.intent.extra.durationLimit", 30);
+        this.jvT.putExtra("android.intent.extra.sizeLimit", 10485760);
         AppMethodBeat.o(155921);
       }
     });
@@ -41,7 +41,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.compatible.i.b
  * JD-Core Version:    0.7.0.1
  */

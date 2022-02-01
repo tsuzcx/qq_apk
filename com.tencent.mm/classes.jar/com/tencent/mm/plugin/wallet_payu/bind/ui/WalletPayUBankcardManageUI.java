@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.wallet_payu.bind.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.plugin.wallet.bind.ui.WalletBankcardManageUI;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_payu.bind.model.c;
@@ -13,6 +13,19 @@ import com.tencent.mm.plugin.wallet_payu.bind.model.d;
 public class WalletPayUBankcardManageUI
   extends WalletBankcardManageUI
 {
+  public final void BN(boolean paramBoolean)
+  {
+    AppMethodBeat.i(71995);
+    if (paramBoolean)
+    {
+      doSceneProgress(new com.tencent.mm.plugin.wallet_core.c.b.a(), false);
+      AppMethodBeat.o(71995);
+      return;
+    }
+    doSceneForceProgress(new com.tencent.mm.plugin.wallet_core.c.b.a());
+    AppMethodBeat.o(71995);
+  }
+  
   public final void e(Bankcard paramBankcard)
   {
     AppMethodBeat.i(71999);
@@ -22,15 +35,15 @@ public class WalletPayUBankcardManageUI
     AppMethodBeat.o(71999);
   }
   
-  public final com.tencent.mm.plugin.wallet.bind.ui.a fNZ()
+  public final com.tencent.mm.plugin.wallet.bind.ui.a gGE()
   {
     AppMethodBeat.i(71998);
-    a locala = new a(this, this.HDi);
+    a locala = new a(this, this.Ovb);
     AppMethodBeat.o(71998);
     return locala;
   }
   
-  public final void fOa()
+  public final void gGF()
   {
     AppMethodBeat.i(71996);
     com.tencent.mm.wallet_core.a.a(this, c.class, null);
@@ -49,7 +62,7 @@ public class WalletPayUBankcardManageUI
     AppMethodBeat.i(71997);
     if ((paramq instanceof com.tencent.mm.plugin.wallet_core.c.b.a))
     {
-      fOb();
+      gGG();
       AppMethodBeat.o(71997);
       return true;
     }
@@ -61,19 +74,6 @@ public class WalletPayUBankcardManageUI
   {
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
-  }
-  
-  public final void xT(boolean paramBoolean)
-  {
-    AppMethodBeat.i(71995);
-    if (paramBoolean)
-    {
-      doSceneProgress(new com.tencent.mm.plugin.wallet_core.c.b.a(), false);
-      AppMethodBeat.o(71995);
-      return;
-    }
-    doSceneForceProgress(new com.tencent.mm.plugin.wallet_core.c.b.a());
-    AppMethodBeat.o(71995);
   }
 }
 

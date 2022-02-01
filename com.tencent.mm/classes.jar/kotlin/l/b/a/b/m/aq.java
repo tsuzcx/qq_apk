@@ -13,31 +13,31 @@ public final class aq
   extends aj
   implements k
 {
-  private final boolean TIm;
-  private final at TNJ;
-  private final at TOy;
-  private final h Tly;
+  private final h aaOs;
+  private final boolean abkQ;
+  private final at abqY;
+  private final at abql;
   
   private aq(at paramat1, boolean paramBoolean, at paramat2, h paramh)
   {
     AppMethodBeat.i(60825);
-    this.TOy = paramat1;
-    this.TIm = paramBoolean;
-    this.TNJ = paramat2;
-    this.Tly = paramh;
+    this.abqY = paramat1;
+    this.abkQ = paramBoolean;
+    this.abql = paramat2;
+    this.aaOs = paramh;
     AppMethodBeat.o(60825);
   }
   
-  public final aj EG(boolean paramBoolean)
+  public final aj Jn(boolean paramBoolean)
   {
     AppMethodBeat.i(60820);
-    if (paramBoolean == this.TIm)
+    if (paramBoolean == this.abkQ)
     {
       localaj = (aj)this;
       AppMethodBeat.o(60820);
       return localaj;
     }
-    aj localaj = (aj)new aq(this.TOy, paramBoolean, this.TNJ, this.Tly);
+    aj localaj = (aj)new aq(this.abqY, paramBoolean, this.abql, this.aaOs);
     AppMethodBeat.o(60820);
     return localaj;
   }
@@ -45,52 +45,52 @@ public final class aq
   public final aj d(g paramg)
   {
     AppMethodBeat.i(60818);
-    p.h(paramg, "newAnnotations");
+    p.k(paramg, "newAnnotations");
     paramg = (aj)this;
     AppMethodBeat.o(60818);
     return paramg;
   }
   
-  public final h hAp()
-  {
-    return this.Tly;
-  }
-  
-  public final boolean hEa()
-  {
-    return this.TIm;
-  }
-  
-  public final List<av> hKB()
-  {
-    return (List)v.SXr;
-  }
-  
-  public final at hKE()
-  {
-    return this.TNJ;
-  }
-  
-  public final g hzL()
+  public final g iDY()
   {
     AppMethodBeat.i(60817);
-    Object localObject = g.TiC;
-    localObject = g.a.hBP();
+    Object localObject = g.aaLw;
+    localObject = g.a.iGe();
     AppMethodBeat.o(60817);
     return localObject;
+  }
+  
+  public final h iEC()
+  {
+    return this.aaOs;
+  }
+  
+  public final boolean iIu()
+  {
+    return this.abkQ;
+  }
+  
+  public final List<av> iOR()
+  {
+    return (List)v.aaAd;
+  }
+  
+  public final at iOU()
+  {
+    return this.abql;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(60822);
-    String str = "NonFixed: " + this.TOy;
+    String str = "NonFixed: " + this.abqY;
     AppMethodBeat.o(60822);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.aq
  * JD-Core Version:    0.7.0.1
  */

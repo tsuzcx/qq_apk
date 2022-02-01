@@ -9,19 +9,19 @@ import java.util.Map;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/decoder/CfrDecodeStrategy;", "Lcom/tencent/mm/media/decoder/DecodeStrategy;", "()V", "TAG", "", "frameTimeInterval", "", "getFrameTimeInterval", "()J", "setFrameTimeInterval", "(J)V", "init", "", "startTime", "frames", "", "inFPS", "", "outFPS", "parents", "", "outPts", "", "plugin-mediaeditor_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/decoder/CfrDecodeStrategy;", "Lcom/tencent/mm/media/decoder/DecodeStrategy;", "()V", "TAG", "", "frameTimeInterval", "", "getFrameTimeInterval", "()J", "setFrameTimeInterval", "(J)V", "init", "", "startTime", "frames", "", "inFPS", "", "outFPS", "parents", "", "outPts", "", "plugin-mediaeditor_release"})
 public final class a
   implements c
 {
   private final String TAG = "DecodeStrategy";
-  long oss = 33L;
+  long kSw = 33L;
   
   public final void a(long paramLong, List<Long> paramList, int paramInt1, int paramInt2, Map<Long, Long> paramMap, Map<Long, List<Long>> paramMap1)
   {
     AppMethodBeat.i(93522);
-    p.h(paramList, "frames");
-    p.h(paramMap, "parents");
-    p.h(paramMap1, "outPts");
+    p.k(paramList, "frames");
+    p.k(paramMap, "parents");
+    p.k(paramMap1, "outPts");
     Log.i(this.TAG, "use cfr decode strategy");
     long l3 = 0L;
     long l2 = -1L;
@@ -32,7 +32,7 @@ public final class a
     long l7;
     for (;;)
     {
-      this.oss = (1000000L / paramInt2);
+      this.kSw = (1000000L / paramInt2);
       Iterator localIterator = ((Iterable)paramList).iterator();
       if (!localIterator.hasNext()) {
         break label286;
@@ -55,7 +55,7 @@ public final class a
         break;
       }
       paramMap.put(Long.valueOf(l4), Long.valueOf(l5));
-      for (l2 = l3; l4 >= l2; l2 += this.oss)
+      for (l2 = l3; l4 >= l2; l2 += this.kSw)
       {
         Long localLong = Long.valueOf(l4);
         Object localObject = paramMap1.get(localLong);
@@ -87,7 +87,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.media.d.a
  * JD-Core Version:    0.7.0.1
  */

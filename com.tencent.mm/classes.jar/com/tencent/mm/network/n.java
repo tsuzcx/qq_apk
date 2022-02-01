@@ -20,9 +20,9 @@ public abstract interface n
       attachInterface(this, "com.tencent.mm.network.IOnGYNetEnd_AIDL");
     }
     
-    public static n bjH()
+    public static n btl()
     {
-      return a.jDW;
+      return a.muz;
     }
     
     public IBinder asBinder()
@@ -41,7 +41,7 @@ public abstract interface n
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.network.IOnGYNetEnd_AIDL");
-      a(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString(), t.a.q(paramParcel1.readStrongBinder()), paramParcel1.createByteArray());
+      a(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString(), t.a.s(paramParcel1.readStrongBinder()), paramParcel1.createByteArray());
       paramParcel2.writeNoException();
       return true;
     }
@@ -49,7 +49,7 @@ public abstract interface n
     static final class a
       implements n
     {
-      public static n jDW;
+      public static n muz;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -74,10 +74,10 @@ public abstract interface n
           {
             localParcel1.writeStrongBinder(localIBinder);
             localParcel1.writeByteArray(paramArrayOfByte);
-            if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (n.a.bjH() == null)) {
+            if ((this.mRemote.transact(1, localParcel1, localParcel2, 0)) || (n.a.btl() == null)) {
               break;
             }
-            n.a.bjH().a(paramInt1, paramInt2, paramInt3, paramString, paramt, paramArrayOfByte);
+            n.a.btl().a(paramInt1, paramInt2, paramInt3, paramString, paramt, paramArrayOfByte);
             return;
           }
           localParcel2.readException();
@@ -100,7 +100,7 @@ public abstract interface n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.network.n
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.model.internal.i;
-import com.tencent.mm.protocal.protobuf.aul;
+import com.tencent.mm.plugin.finder.feed.model.internal.k;
+import com.tencent.mm.protocal.protobuf.awr;
 import com.tencent.mm.view.recyclerview.a;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/model/FinderFeedLike;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "likeObj", "Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;)V", "blink", "", "getBlink", "()Z", "setBlink", "(Z)V", "hasBlink", "getHasBlink", "setHasBlink", "getLikeObj", "()Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;", "setLikeObj", "compare", "", "obj", "getItemId", "", "getItemType", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderFeedLike;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "likeObj", "Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;)V", "blink", "", "getBlink", "()Z", "setBlink", "(Z)V", "hasBlink", "getHasBlink", "setHasBlink", "getLikeObj", "()Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;", "setLikeObj", "compare", "", "obj", "getItemId", "", "getItemType", "plugin-finder_release"})
 public final class v
-  implements i, a
+  implements k, a
 {
-  public boolean uOb;
-  public boolean uOc;
-  public aul uOk;
+  public boolean zAp;
+  public boolean zAq;
+  public awr zAz;
   
-  public v(aul paramaul)
+  public v(awr paramawr)
   {
-    AppMethodBeat.i(248737);
-    this.uOk = paramaul;
-    AppMethodBeat.o(248737);
+    AppMethodBeat.i(276297);
+    this.zAz = paramawr;
+    AppMethodBeat.o(276297);
   }
   
-  public final int a(i parami)
+  public final int a(k paramk)
   {
-    AppMethodBeat.i(248736);
-    p.h(parami, "obj");
-    AppMethodBeat.o(248736);
+    AppMethodBeat.i(276296);
+    p.k(paramk, "obj");
+    AppMethodBeat.o(276296);
     return 0;
   }
   
-  public final int cxn()
+  public final int bAQ()
   {
     return 0;
   }
   
-  public final long lT()
+  public final long mf()
   {
-    AppMethodBeat.i(248735);
-    long l = Long.valueOf(this.uOk.tsR).hashCode();
-    AppMethodBeat.o(248735);
+    AppMethodBeat.i(276294);
+    long l = Long.valueOf(this.zAz.xaG).hashCode();
+    AppMethodBeat.o(276294);
     return l;
   }
 }

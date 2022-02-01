@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.hp.net;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cxu;
+import com.tencent.mm.protocal.protobuf.dhf;
 
 public final class e
 {
   /* Error */
-  public static java.util.LinkedList<cxu> dZe()
+  public static java.util.LinkedList<dhf> eIb()
   {
     // Byte code:
     //   0: ldc 11
@@ -17,7 +17,7 @@ public final class e
     //   12: astore 6
     //   14: lconst_0
     //   15: lstore_1
-    //   16: invokestatic 29	com/tencent/mm/kernel/a:azs	()I
+    //   16: invokestatic 29	com/tencent/mm/kernel/b:aGP	()I
     //   19: i2l
     //   20: ldc2_w 30
     //   23: land
@@ -40,38 +40,38 @@ public final class e
     //   50: aload 6
     //   52: ldc 54
     //   54: getstatic 60	com/tencent/mm/sdk/platformtools/BuildInfo:CLIENT_VERSION	Ljava/lang/String;
-    //   57: invokestatic 64	com/tencent/mm/plugin/hp/net/e:ih	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cxu;
+    //   57: invokestatic 64	com/tencent/mm/plugin/hp/net/e:iu	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/dhf;
     //   60: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   63: pop
     //   64: aload 6
     //   66: ldc 70
     //   68: getstatic 73	com/tencent/mm/sdk/platformtools/BuildInfo:REV	Ljava/lang/String;
-    //   71: invokestatic 64	com/tencent/mm/plugin/hp/net/e:ih	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cxu;
+    //   71: invokestatic 64	com/tencent/mm/plugin/hp/net/e:iu	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/dhf;
     //   74: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   77: pop
     //   78: aload 6
     //   80: ldc 75
     //   82: getstatic 81	android/os/Build$VERSION:SDK_INT	I
     //   85: invokestatic 84	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   88: invokestatic 64	com/tencent/mm/plugin/hp/net/e:ih	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cxu;
+    //   88: invokestatic 64	com/tencent/mm/plugin/hp/net/e:iu	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/dhf;
     //   91: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   94: pop
     //   95: aload 6
     //   97: ldc 86
-    //   99: getstatic 91	com/tencent/mm/protocal/d:KyL	Ljava/lang/String;
-    //   102: invokestatic 64	com/tencent/mm/plugin/hp/net/e:ih	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cxu;
+    //   99: getstatic 91	com/tencent/mm/protocal/d:RAz	Ljava/lang/String;
+    //   102: invokestatic 64	com/tencent/mm/plugin/hp/net/e:iu	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/dhf;
     //   105: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   108: pop
     //   109: aload 6
     //   111: ldc 93
-    //   113: getstatic 96	com/tencent/mm/protocal/d:KyI	Ljava/lang/String;
-    //   116: invokestatic 64	com/tencent/mm/plugin/hp/net/e:ih	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cxu;
+    //   113: getstatic 96	com/tencent/mm/protocal/d:RAw	Ljava/lang/String;
+    //   116: invokestatic 64	com/tencent/mm/plugin/hp/net/e:iu	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/dhf;
     //   119: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   122: pop
     //   123: aload 6
     //   125: ldc 98
-    //   127: getstatic 101	com/tencent/mm/protocal/d:DEVICE_NAME	Ljava/lang/String;
-    //   130: invokestatic 64	com/tencent/mm/plugin/hp/net/e:ih	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cxu;
+    //   127: getstatic 101	com/tencent/mm/protocal/d:RAB	Ljava/lang/String;
+    //   130: invokestatic 64	com/tencent/mm/plugin/hp/net/e:iu	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/dhf;
     //   133: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   136: pop
     //   137: getstatic 107	android/os/Build:SUPPORTED_64_BIT_ABIS	[Ljava/lang/String;
@@ -82,7 +82,7 @@ public final class e
     //   148: aload 6
     //   150: ldc 111
     //   152: aload 5
-    //   154: invokestatic 64	com/tencent/mm/plugin/hp/net/e:ih	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cxu;
+    //   154: invokestatic 64	com/tencent/mm/plugin/hp/net/e:iu	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/dhf;
     //   157: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   160: pop
     //   161: invokestatic 117	com/tencent/mm/compatible/deviceinfo/q:is64BitRuntime	()Z
@@ -92,26 +92,26 @@ public final class e
     //   171: aload 6
     //   173: ldc 119
     //   175: aload 5
-    //   177: invokestatic 64	com/tencent/mm/plugin/hp/net/e:ih	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cxu;
+    //   177: invokestatic 64	com/tencent/mm/plugin/hp/net/e:iu	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/dhf;
     //   180: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   183: pop
     //   184: aload 6
     //   186: ldc 121
     //   188: lload_1
     //   189: invokestatic 41	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   192: invokestatic 64	com/tencent/mm/plugin/hp/net/e:ih	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cxu;
+    //   192: invokestatic 64	com/tencent/mm/plugin/hp/net/e:iu	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/dhf;
     //   195: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   198: pop
     //   199: aload 6
     //   201: ldc 123
     //   203: ldc 125
-    //   205: invokestatic 131	com/tencent/mm/kernel/g:af	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+    //   205: invokestatic 131	com/tencent/mm/kernel/h:ae	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
     //   208: checkcast 125	com/tencent/mm/plugin/expt/b/b
-    //   211: getstatic 137	com/tencent/mm/plugin/expt/b/b$a:rVb	Lcom/tencent/mm/plugin/expt/b/b$a;
+    //   211: getstatic 137	com/tencent/mm/plugin/expt/b/b$a:vBw	Lcom/tencent/mm/plugin/expt/b/b$a;
     //   214: iconst_0
     //   215: invokeinterface 141 3 0
     //   220: invokestatic 84	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   223: invokestatic 64	com/tencent/mm/plugin/hp/net/e:ih	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cxu;
+    //   223: invokestatic 64	com/tencent/mm/plugin/hp/net/e:iu	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/dhf;
     //   226: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   229: pop
     //   230: invokestatic 147	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
@@ -123,17 +123,17 @@ public final class e
     //   243: ldc 155
     //   245: iload_0
     //   246: invokestatic 84	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   249: invokestatic 64	com/tencent/mm/plugin/hp/net/e:ih	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cxu;
+    //   249: invokestatic 64	com/tencent/mm/plugin/hp/net/e:iu	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/dhf;
     //   252: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   255: pop
     //   256: aload 6
     //   258: ldc 157
-    //   260: getstatic 160	com/tencent/mm/protocal/d:KyJ	Ljava/lang/String;
-    //   263: invokestatic 64	com/tencent/mm/plugin/hp/net/e:ih	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cxu;
+    //   260: getstatic 160	com/tencent/mm/protocal/d:RAx	Ljava/lang/String;
+    //   263: invokestatic 64	com/tencent/mm/plugin/hp/net/e:iu	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/dhf;
     //   266: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   269: pop
     //   270: ldc 162
-    //   272: invokestatic 131	com/tencent/mm/kernel/g:af	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+    //   272: invokestatic 131	com/tencent/mm/kernel/h:ae	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
     //   275: checkcast 162	com/tencent/mm/plugin/boots/a/c
     //   278: astore 5
     //   280: aload 5
@@ -160,7 +160,7 @@ public final class e
     //   340: aload 7
     //   342: getfield 194	com/tencent/mm/plugin/boots/a/a:field_dau	I
     //   345: invokestatic 84	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   348: invokestatic 64	com/tencent/mm/plugin/hp/net/e:ih	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cxu;
+    //   348: invokestatic 64	com/tencent/mm/plugin/hp/net/e:iu	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/dhf;
     //   351: invokevirtual 68	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   354: pop
     //   355: goto -47 -> 308
@@ -216,19 +216,19 @@ public final class e
     //   27	48	381	java/lang/Exception
   }
   
-  public static cxu ih(String paramString1, String paramString2)
+  public static dhf iu(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(196782);
-    cxu localcxu = new cxu();
-    localcxu.key = paramString1;
-    localcxu.value = paramString2;
-    AppMethodBeat.o(196782);
-    return localcxu;
+    AppMethodBeat.i(195797);
+    dhf localdhf = new dhf();
+    localdhf.key = paramString1;
+    localdhf.value = paramString2;
+    AppMethodBeat.o(195797);
+    return localdhf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.net.e
  * JD-Core Version:    0.7.0.1
  */

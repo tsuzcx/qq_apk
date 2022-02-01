@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.shake;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bd;
+import com.tencent.mm.model.be;
 import com.tencent.mm.plugin.shake.b.m;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.pluginsdk.c.c;
+import com.tencent.mm.pluginsdk.c.d;
 import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
   implements d
 {
-  private c Dgq;
+  private c JlU;
   
   public Plugin()
   {
     AppMethodBeat.i(28083);
-    this.Dgq = new c()
+    this.JlU = new c()
     {
-      public final com.tencent.mm.pluginsdk.b.a ak(Context paramAnonymousContext, String paramAnonymousString)
+      public final com.tencent.mm.pluginsdk.c.a ak(Context paramAnonymousContext, String paramAnonymousString)
       {
         AppMethodBeat.i(28082);
         paramAnonymousContext = new com.tencent.mm.plugin.shake.ui.a(paramAnonymousContext);
@@ -37,7 +37,7 @@ public class Plugin
     return locala;
   }
   
-  public bd createSubCore()
+  public be createSubCore()
   {
     AppMethodBeat.i(28085);
     m localm = new m();
@@ -47,7 +47,7 @@ public class Plugin
   
   public c getContactWidgetFactory()
   {
-    return this.Dgq;
+    return this.JlU;
   }
 }
 

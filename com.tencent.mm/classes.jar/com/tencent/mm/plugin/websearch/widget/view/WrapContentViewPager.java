@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.websearch.widget.view;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import androidx.viewpager.widget.ViewPager;
 
 public class WrapContentViewPager
   extends ViewPager
@@ -19,7 +19,7 @@ public class WrapContentViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.view.WrapContentViewPager
  * JD-Core Version:    0.7.0.1
  */

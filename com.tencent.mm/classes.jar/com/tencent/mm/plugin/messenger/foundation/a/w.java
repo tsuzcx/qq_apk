@@ -1,21 +1,17 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.modelmulti.o.c;
-import com.tencent.mm.storage.ca;
 
 public abstract interface w
   extends a
 {
-  public abstract String Z(ca paramca);
+  public abstract void ah(String paramString1, String paramString2);
   
-  public abstract void a(o.c paramc);
+  public abstract boolean asb();
   
-  public abstract void a(h paramh);
+  public abstract void b(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract void a(o paramo);
-  
-  public abstract o bdO();
+  public abstract void o(String paramString, long paramLong);
 }
 
 

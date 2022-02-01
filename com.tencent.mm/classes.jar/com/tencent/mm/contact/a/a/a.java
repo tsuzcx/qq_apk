@@ -1,40 +1,40 @@
 package com.tencent.mm.contact.a.a;
 
-import com.tencent.mm.model.aq;
+import com.tencent.mm.model.ar;
 import com.tencent.mm.model.t;
-import com.tencent.mm.ui.base.q;
+import com.tencent.mm.ui.base.s;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class a
-  implements aq
+  implements ar
 {
-  protected List<t> gNc = new ArrayList();
-  protected List<t> gNd = new ArrayList();
-  protected List<t> gNe = new ArrayList();
-  protected boolean gNf = true;
-  protected q tipDialog;
+  protected List<t> jxw = new ArrayList();
+  protected List<t> jxx = new ArrayList();
+  protected List<t> jxy = new ArrayList();
+  protected boolean jxz = true;
+  protected s tipDialog;
   
-  public static b arN()
+  public static b ayw()
   {
     return new b(false);
   }
   
-  public final aq a(t paramt)
+  public final ar a(t paramt)
   {
-    this.gNc.add(paramt);
+    this.jxw.add(paramt);
     return this;
   }
   
-  public final aq b(t paramt)
+  public final ar b(t paramt)
   {
-    this.gNe.add(paramt);
+    this.jxy.add(paramt);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.contact.a.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,17 +7,17 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "Landroid/content/Intent;", "invoke", "(Ljava/lang/Integer;Landroid/content/Intent;)V"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "Landroid/content/Intent;", "invoke", "(Ljava/lang/Integer;Landroid/content/Intent;)V"})
 final class w$a
   extends q
   implements m<Integer, Intent, x>
 {
-  public static final a nAr;
+  public static final a qCC;
   
   static
   {
     AppMethodBeat.i(148136);
-    nAr = new a();
+    qCC = new a();
     AppMethodBeat.o(148136);
   }
   

@@ -1,27 +1,25 @@
 package com.tencent.mm.plugin.wallet.wecoin.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dej;
-import com.tencent.mm.protocal.protobuf.dek;
-import com.tencent.mm.protocal.protobuf.dop;
-import com.tencent.mm.protocal.protobuf.dpc;
+import com.tencent.mm.protocal.protobuf.cgk;
+import com.tencent.mm.protocal.protobuf.cgl;
+import com.tencent.mm.protocal.protobuf.dyl;
+import com.tencent.mm.protocal.protobuf.dyy;
 import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.l;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CgiPrepareIncomeEncashRequest;", "Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CommonWeCoinCgi;", "Lcom/tencent/mm/protocal/protobuf/PrepareIncomeEncashResponse;", "requestID", "", "sessionID", "amount", "", "(Ljava/lang/String;Ljava/lang/String;J)V", "plugin-wxpay_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CgiGetWecoinPriceListRequest;", "Lcom/tencent/mm/plugin/wallet/wecoin/cgi/CommonWeCoinCgi;", "Lcom/tencent/mm/protocal/protobuf/GetWecoinPriceListResponse;", "()V", "plugin-wxpay_release"})
 public final class j
-  extends l<dek>
+  extends m<cgl>
 {
-  public j(String paramString1, String paramString2, long paramLong)
+  public j()
   {
-    AppMethodBeat.i(212696);
-    dej localdej = new dej();
-    localdej.request_id = paramString1;
-    localdej.eht = paramLong;
-    localdej.LoB = paramString2;
-    paramString2 = new dek();
-    a((dop)localdej, (dpc)paramString2, 5838, "/cgi-bin/micromsg-bin/prepareincomeencash");
-    Log.i("MicroMsg.CommonWeCoinCgi", "CgiPrepareIncomeEncashRequest: requestID: " + paramString1 + ", amount: " + paramLong);
-    AppMethodBeat.o(212696);
+    AppMethodBeat.i(277904);
+    cgk localcgk = new cgk();
+    cgl localcgl = new cgl();
+    a((dyl)localcgk, (dyy)localcgl, 6299, "/cgi-bin/micromsg-bin/getwecoinpricelist");
+    Log.i("MicroMsg.CommonWeCoinCgi", "CgiGetWecoinPriceListRequest: ");
+    AppMethodBeat.o(277904);
   }
 }
 

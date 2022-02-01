@@ -2,8 +2,10 @@ package com.tencent.mm.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.eb;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.f.c.ef;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.messenger.foundation.a.a.g;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
@@ -12,7 +14,7 @@ import java.util.ArrayList;
 
 public final class by
   extends MAutoStorage<bx>
-  implements com.tencent.mm.plugin.messenger.foundation.a.a.g
+  implements g
 {
   public static final String[] SQL_CREATE;
   public ISQLiteDatabase db;
@@ -26,11 +28,11 @@ public final class by
   
   public by(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, bx.info, "LBSVerifyMessage", eb.INDEX_CREATE);
+    super(paramISQLiteDatabase, bx.info, "LBSVerifyMessage", ef.INDEX_CREATE);
     this.db = paramISQLiteDatabase;
   }
   
-  public final Cursor Pf(int paramInt)
+  public final Cursor Vo(int paramInt)
   {
     AppMethodBeat.i(117175);
     Object localObject = "SELECT * FROM " + getTableName() + " where isSend = 0 ORDER BY createtime desc LIMIT " + paramInt;
@@ -58,19 +60,7 @@ public final class by
     return false;
   }
   
-  public final void aEp(String paramString)
-  {
-    AppMethodBeat.i(117177);
-    paramString = "svrid = '" + paramString + "'";
-    int i = this.db.delete(getTableName(), paramString, null);
-    if (i > 0) {
-      doNotify();
-    }
-    Log.i("MicroMsg.LBSVerifyMessageStorage", "delBySvrId = ".concat(String.valueOf(i)));
-    AppMethodBeat.o(117177);
-  }
-  
-  public final void aEq(String paramString)
+  public final void aOA(String paramString)
   {
     AppMethodBeat.i(117178);
     paramString = "sayhiuser = '" + paramString + "' or sayhiencryptuser='" + paramString + "'";
@@ -82,13 +72,13 @@ public final class by
     AppMethodBeat.o(117178);
   }
   
-  public final long aEr(String paramString)
+  public final long aOB(String paramString)
   {
     AppMethodBeat.i(117184);
     Cursor localCursor;
     if (paramString != null)
     {
-      paramString = (by)((l)com.tencent.mm.kernel.g.af(l.class)).eiv();
+      paramString = (by)((n)h.ae(n.class)).eSb();
       localCursor = paramString.db.rawQuery("SELECT * FROM " + paramString.getTableName() + " ORDER BY createtime DESC LIMIT 1", null, 2);
       if (localCursor == null)
       {
@@ -122,7 +112,19 @@ public final class by
     }
   }
   
-  public final Cursor akl(int paramInt)
+  public final void aOz(String paramString)
+  {
+    AppMethodBeat.i(117177);
+    paramString = "svrid = '" + paramString + "'";
+    int i = this.db.delete(getTableName(), paramString, null);
+    if (i > 0) {
+      doNotify();
+    }
+    Log.i("MicroMsg.LBSVerifyMessageStorage", "delBySvrId = ".concat(String.valueOf(i)));
+    AppMethodBeat.o(117177);
+  }
+  
+  public final Cursor asI(int paramInt)
   {
     AppMethodBeat.i(117176);
     Object localObject = "SELECT sayhiencryptuser,max(createtime) createtime FROM " + getTableName() + " where isSend = 0 GROUP BY sayhiencryptuser LIMIT " + paramInt;
@@ -132,7 +134,14 @@ public final class by
     return localObject;
   }
   
-  public final bx[] bkx(String paramString)
+  public final void bJQ()
+  {
+    AppMethodBeat.i(117179);
+    this.db.delete(getTableName(), null, null);
+    AppMethodBeat.o(117179);
+  }
+  
+  public final bx[] bwW(String paramString)
   {
     AppMethodBeat.i(117181);
     Log.d("MicroMsg.LBSVerifyMessageStorage", "getLastLBSVerifyMessage");
@@ -151,7 +160,7 @@ public final class by
     return paramString;
   }
   
-  public final bx bky(String paramString)
+  public final bx bwX(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(117182);
@@ -173,14 +182,7 @@ public final class by
     }
   }
   
-  public final void byC()
-  {
-    AppMethodBeat.i(117179);
-    this.db.delete(getTableName(), null, null);
-    AppMethodBeat.o(117179);
-  }
-  
-  public final int ctM()
+  public final int cHo()
   {
     AppMethodBeat.i(117172);
     Cursor localCursor = this.db.rawQuery("select count(*) from " + getTableName() + " where status != 4", null, 2);
@@ -196,7 +198,7 @@ public final class by
     return i;
   }
   
-  public final bx eiG()
+  public final bx eSm()
   {
     AppMethodBeat.i(117174);
     Cursor localCursor = this.db.rawQuery("SELECT * FROM " + getTableName() + " where status != 4 ORDER BY createtime DESC LIMIT 1", null, 2);
@@ -218,7 +220,20 @@ public final class by
     return localbx;
   }
   
-  public final bx[] gR(String paramString, int paramInt)
+  public final int getCount()
+  {
+    int i = 0;
+    AppMethodBeat.i(117173);
+    Cursor localCursor = this.db.rawQuery("select count(*) from " + getTableName(), null, 2);
+    if (localCursor.moveToFirst()) {
+      i = localCursor.getInt(0);
+    }
+    localCursor.close();
+    AppMethodBeat.o(117173);
+    return i;
+  }
+  
+  public final bx[] hz(String paramString, int paramInt)
   {
     AppMethodBeat.i(117183);
     if ((paramString == null) || (paramString.length() == 0))
@@ -240,19 +255,6 @@ public final class by
     paramString = (bx[])localArrayList.toArray(new bx[localArrayList.size()]);
     AppMethodBeat.o(117183);
     return paramString;
-  }
-  
-  public final int getCount()
-  {
-    int i = 0;
-    AppMethodBeat.i(117173);
-    Cursor localCursor = this.db.rawQuery("select count(*) from " + getTableName(), null, 2);
-    if (localCursor.moveToFirst()) {
-      i = localCursor.getInt(0);
-    }
-    localCursor.close();
-    AppMethodBeat.o(117173);
-    return i;
   }
 }
 

@@ -1,74 +1,74 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.e;
-import com.google.a.a.g;
+import com.google.b.a.b;
+import com.google.b.a.e;
+import com.google.b.a.g;
 import java.util.Arrays;
 
 public final class a$ab
   extends e
 {
-  public int GXO = 0;
-  public long GXP = 0L;
-  public int Lnt = -1;
-  public int RDQ = 0;
-  public a.bb[] RDX = a.bb.hjl();
-  public a.ay RDY = null;
-  public String RDo = "";
-  public a.az RDq = null;
-  public int RDt = 0;
-  public a.q[] REL = a.q.hjd();
-  public a.bc[] REM = a.bc.hjm();
-  public int REN = 0;
-  public int[] REO = g.bYn;
-  public a.q[] REP = a.q.hjd();
-  public int REQ = 0;
-  public int RER = 0;
-  public a.q[] RES = a.q.hjd();
-  public int RET = 0;
-  public int REU = 0;
-  public int REW = 0;
-  public byte[] REX = g.cbu;
-  public int[] REY = g.bYn;
-  public int REa = 0;
-  public a.bb[] REe = a.bb.hjl();
+  public int NOc = 0;
+  public long NOd = 0L;
+  public int SoO = -1;
+  public String ZeQ = "";
+  public a.ay ZeS = null;
+  public int ZeV = 0;
+  public a.ba[] ZfD = a.ba.ikV();
+  public a.ax ZfE = null;
+  public int ZfG = 0;
+  public a.ba[] ZfK = a.ba.ikV();
+  public int Zfw = 0;
+  public int ZgA = 0;
+  public byte[] ZgB = g.ccX;
+  public int[] ZgC = g.bZR;
+  public a.q[] Zgq = a.q.ikN();
+  public a.bb[] Zgr = a.bb.ikW();
+  public int Zgs = 0;
+  public int[] Zgt = g.bZR;
+  public a.q[] Zgu = a.q.ikN();
+  public int Zgv = 0;
+  public int Zgw = 0;
+  public a.q[] Zgx = a.q.ikN();
+  public int Zgy = 0;
+  public int Zgz = 0;
   public String groupId = "";
   
   public a$ab()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public final int Ig()
+  public final int JG()
   {
-    int j = super.Ig();
+    int j = super.JG();
     int i = j;
     if (!this.groupId.equals("")) {
-      i = j + b.f(1, this.groupId);
+      i = j + b.g(1, this.groupId);
     }
     j = i;
-    if (this.GXO != 0) {
-      j = i + b.bu(2, this.GXO);
+    if (this.NOc != 0) {
+      j = i + b.bM(2, this.NOc);
     }
     int k = j;
-    if (this.GXP != 0L) {
-      k = j + b.r(3, this.GXP);
+    if (this.NOd != 0L) {
+      k = j + b.p(3, this.NOd);
     }
     i = k;
-    if (this.RDt != 0) {
-      i = k + b.bC(4, this.RDt);
+    if (this.ZeV != 0) {
+      i = k + b.bN(4, this.ZeV);
     }
     j = i;
     Object localObject;
-    if (this.REL != null)
+    if (this.Zgq != null)
     {
       j = i;
-      if (this.REL.length > 0)
+      if (this.Zgq.length > 0)
       {
         j = 0;
-        while (j < this.REL.length)
+        while (j < this.Zgq.length)
         {
-          localObject = this.REL[j];
+          localObject = this.Zgq[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(5, (e)localObject);
@@ -80,17 +80,17 @@ public final class a$ab
       }
     }
     i = j;
-    if (this.REM != null)
+    if (this.Zgr != null)
     {
       i = j;
-      if (this.REM.length > 0)
+      if (this.Zgr.length > 0)
       {
         k = 0;
         i = j;
         j = k;
-        while (j < this.REM.length)
+        while (j < this.Zgr.length)
         {
-          localObject = this.REM[j];
+          localObject = this.Zgr[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(6, (e)localObject);
@@ -101,23 +101,23 @@ public final class a$ab
       }
     }
     j = i;
-    if (this.RDY != null) {
-      j = i + b.b(7, this.RDY);
+    if (this.ZfE != null) {
+      j = i + b.b(7, this.ZfE);
     }
     i = j;
-    if (!this.RDo.equals("")) {
-      i = j + b.f(8, this.RDo);
+    if (!this.ZeQ.equals("")) {
+      i = j + b.g(8, this.ZeQ);
     }
     j = i;
-    if (this.RDX != null)
+    if (this.ZfD != null)
     {
       j = i;
-      if (this.RDX.length > 0)
+      if (this.ZfD.length > 0)
       {
         j = 0;
-        while (j < this.RDX.length)
+        while (j < this.ZfD.length)
         {
-          localObject = this.RDX[j];
+          localObject = this.ZfD[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(9, (e)localObject);
@@ -129,43 +129,43 @@ public final class a$ab
       }
     }
     i = j;
-    if (this.REN != 0) {
-      i = j + b.bu(10, this.REN);
+    if (this.Zgs != 0) {
+      i = j + b.bM(10, this.Zgs);
     }
     j = i;
-    if (this.REO != null)
+    if (this.Zgt != null)
     {
       j = i;
-      if (this.REO.length > 0)
+      if (this.Zgt.length > 0)
       {
         j = 0;
         k = 0;
-        while (j < this.REO.length)
+        while (j < this.Zgt.length)
         {
-          k += b.fT(this.REO[j]);
+          k += b.gM(this.Zgt[j]);
           j += 1;
         }
-        j = i + k + this.REO.length * 1;
+        j = i + k + this.Zgt.length * 1;
       }
     }
     k = j;
-    if (this.RDq != null) {
-      k = j + b.b(12, this.RDq);
+    if (this.ZeS != null) {
+      k = j + b.b(12, this.ZeS);
     }
     i = k;
-    if (this.RDQ != 0) {
-      i = k + b.bC(13, this.RDQ);
+    if (this.Zfw != 0) {
+      i = k + b.bN(13, this.Zfw);
     }
     j = i;
-    if (this.REP != null)
+    if (this.Zgu != null)
     {
       j = i;
-      if (this.REP.length > 0)
+      if (this.Zgu.length > 0)
       {
         j = 0;
-        while (j < this.REP.length)
+        while (j < this.Zgu.length)
         {
-          localObject = this.REP[j];
+          localObject = this.Zgu[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(14, (e)localObject);
@@ -177,23 +177,23 @@ public final class a$ab
       }
     }
     k = j;
-    if (this.REQ != 0) {
-      k = j + b.bC(15, this.REQ);
+    if (this.Zgv != 0) {
+      k = j + b.bN(15, this.Zgv);
     }
     i = k;
-    if (this.RER != 0) {
-      i = k + b.bC(16, this.RER);
+    if (this.Zgw != 0) {
+      i = k + b.bN(16, this.Zgw);
     }
     j = i;
-    if (this.REe != null)
+    if (this.ZfK != null)
     {
       j = i;
-      if (this.REe.length > 0)
+      if (this.ZfK.length > 0)
       {
         j = 0;
-        while (j < this.REe.length)
+        while (j < this.ZfK.length)
         {
-          localObject = this.REe[j];
+          localObject = this.ZfK[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(17, (e)localObject);
@@ -205,17 +205,17 @@ public final class a$ab
       }
     }
     i = j;
-    if (this.RES != null)
+    if (this.Zgx != null)
     {
       i = j;
-      if (this.RES.length > 0)
+      if (this.Zgx.length > 0)
       {
         k = 0;
         i = j;
         j = k;
-        while (j < this.RES.length)
+        while (j < this.Zgx.length)
         {
-          localObject = this.RES[j];
+          localObject = this.Zgx[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(18, (e)localObject);
@@ -226,44 +226,44 @@ public final class a$ab
       }
     }
     j = i;
-    if (this.RET != 0) {
-      j = i + b.bu(19, this.RET);
+    if (this.Zgy != 0) {
+      j = i + b.bM(19, this.Zgy);
     }
     i = j;
-    if (this.REU != 0) {
-      i = j + b.bu(20, this.REU);
+    if (this.Zgz != 0) {
+      i = j + b.bM(20, this.Zgz);
     }
     j = i;
-    if (this.REW != 0) {
-      j = i + b.bu(21, this.REW);
+    if (this.ZgA != 0) {
+      j = i + b.bM(21, this.ZgA);
     }
     k = j;
-    if (!Arrays.equals(this.REX, g.cbu)) {
-      k = j + b.c(22, this.REX);
+    if (!Arrays.equals(this.ZgB, g.ccX)) {
+      k = j + b.c(22, this.ZgB);
     }
     i = k;
-    if (this.Lnt != -1) {
-      i = k + b.bu(23, this.Lnt);
+    if (this.SoO != -1) {
+      i = k + b.bM(23, this.SoO);
     }
     j = i;
-    if (this.REY != null)
+    if (this.ZgC != null)
     {
       j = i;
-      if (this.REY.length > 0)
+      if (this.ZgC.length > 0)
       {
         j = 0;
         k = 0;
-        while (j < this.REY.length)
+        while (j < this.ZgC.length)
         {
-          k += b.fY(this.REY[j]);
+          k += b.gR(this.ZgC[j]);
           j += 1;
         }
-        j = i + k + this.REY.length * 2;
+        j = i + k + this.ZgC.length * 2;
       }
     }
     i = j;
-    if (this.REa != 0) {
-      i = j + b.bC(25, this.REa);
+    if (this.ZfG != 0) {
+      i = j + b.bN(25, this.ZfG);
     }
     return i;
   }
@@ -272,147 +272,147 @@ public final class a$ab
   {
     int j = 0;
     if (!this.groupId.equals("")) {
-      paramb.e(1, this.groupId);
+      paramb.f(1, this.groupId);
     }
-    if (this.GXO != 0) {
-      paramb.bs(2, this.GXO);
+    if (this.NOc != 0) {
+      paramb.bJ(2, this.NOc);
     }
-    if (this.GXP != 0L) {
-      paramb.q(3, this.GXP);
+    if (this.NOd != 0L) {
+      paramb.r(3, this.NOd);
     }
-    if (this.RDt != 0) {
-      paramb.bB(4, this.RDt);
+    if (this.ZeV != 0) {
+      paramb.bK(4, this.ZeV);
     }
     int i;
     Object localObject;
-    if ((this.REL != null) && (this.REL.length > 0))
+    if ((this.Zgq != null) && (this.Zgq.length > 0))
     {
       i = 0;
-      while (i < this.REL.length)
+      while (i < this.Zgq.length)
       {
-        localObject = this.REL[i];
+        localObject = this.Zgq[i];
         if (localObject != null) {
           paramb.a(5, (e)localObject);
         }
         i += 1;
       }
     }
-    if ((this.REM != null) && (this.REM.length > 0))
+    if ((this.Zgr != null) && (this.Zgr.length > 0))
     {
       i = 0;
-      while (i < this.REM.length)
+      while (i < this.Zgr.length)
       {
-        localObject = this.REM[i];
+        localObject = this.Zgr[i];
         if (localObject != null) {
           paramb.a(6, (e)localObject);
         }
         i += 1;
       }
     }
-    if (this.RDY != null) {
-      paramb.a(7, this.RDY);
+    if (this.ZfE != null) {
+      paramb.a(7, this.ZfE);
     }
-    if (!this.RDo.equals("")) {
-      paramb.e(8, this.RDo);
+    if (!this.ZeQ.equals("")) {
+      paramb.f(8, this.ZeQ);
     }
-    if ((this.RDX != null) && (this.RDX.length > 0))
+    if ((this.ZfD != null) && (this.ZfD.length > 0))
     {
       i = 0;
-      while (i < this.RDX.length)
+      while (i < this.ZfD.length)
       {
-        localObject = this.RDX[i];
+        localObject = this.ZfD[i];
         if (localObject != null) {
           paramb.a(9, (e)localObject);
         }
         i += 1;
       }
     }
-    if (this.REN != 0) {
-      paramb.bs(10, this.REN);
+    if (this.Zgs != 0) {
+      paramb.bJ(10, this.Zgs);
     }
-    if ((this.REO != null) && (this.REO.length > 0))
+    if ((this.Zgt != null) && (this.Zgt.length > 0))
     {
       i = 0;
-      while (i < this.REO.length)
+      while (i < this.Zgt.length)
       {
-        paramb.bs(11, this.REO[i]);
+        paramb.bJ(11, this.Zgt[i]);
         i += 1;
       }
     }
-    if (this.RDq != null) {
-      paramb.a(12, this.RDq);
+    if (this.ZeS != null) {
+      paramb.a(12, this.ZeS);
     }
-    if (this.RDQ != 0) {
-      paramb.bB(13, this.RDQ);
+    if (this.Zfw != 0) {
+      paramb.bK(13, this.Zfw);
     }
-    if ((this.REP != null) && (this.REP.length > 0))
+    if ((this.Zgu != null) && (this.Zgu.length > 0))
     {
       i = 0;
-      while (i < this.REP.length)
+      while (i < this.Zgu.length)
       {
-        localObject = this.REP[i];
+        localObject = this.Zgu[i];
         if (localObject != null) {
           paramb.a(14, (e)localObject);
         }
         i += 1;
       }
     }
-    if (this.REQ != 0) {
-      paramb.bB(15, this.REQ);
+    if (this.Zgv != 0) {
+      paramb.bK(15, this.Zgv);
     }
-    if (this.RER != 0) {
-      paramb.bB(16, this.RER);
+    if (this.Zgw != 0) {
+      paramb.bK(16, this.Zgw);
     }
-    if ((this.REe != null) && (this.REe.length > 0))
+    if ((this.ZfK != null) && (this.ZfK.length > 0))
     {
       i = 0;
-      while (i < this.REe.length)
+      while (i < this.ZfK.length)
       {
-        localObject = this.REe[i];
+        localObject = this.ZfK[i];
         if (localObject != null) {
           paramb.a(17, (e)localObject);
         }
         i += 1;
       }
     }
-    if ((this.RES != null) && (this.RES.length > 0))
+    if ((this.Zgx != null) && (this.Zgx.length > 0))
     {
       i = 0;
-      while (i < this.RES.length)
+      while (i < this.Zgx.length)
       {
-        localObject = this.RES[i];
+        localObject = this.Zgx[i];
         if (localObject != null) {
           paramb.a(18, (e)localObject);
         }
         i += 1;
       }
     }
-    if (this.RET != 0) {
-      paramb.bs(19, this.RET);
+    if (this.Zgy != 0) {
+      paramb.bJ(19, this.Zgy);
     }
-    if (this.REU != 0) {
-      paramb.bs(20, this.REU);
+    if (this.Zgz != 0) {
+      paramb.bJ(20, this.Zgz);
     }
-    if (this.REW != 0) {
-      paramb.bs(21, this.REW);
+    if (this.ZgA != 0) {
+      paramb.bJ(21, this.ZgA);
     }
-    if (!Arrays.equals(this.REX, g.cbu)) {
-      paramb.b(22, this.REX);
+    if (!Arrays.equals(this.ZgB, g.ccX)) {
+      paramb.b(22, this.ZgB);
     }
-    if (this.Lnt != -1) {
-      paramb.bs(23, this.Lnt);
+    if (this.SoO != -1) {
+      paramb.bJ(23, this.SoO);
     }
-    if ((this.REY != null) && (this.REY.length > 0))
+    if ((this.ZgC != null) && (this.ZgC.length > 0))
     {
       i = j;
-      while (i < this.REY.length)
+      while (i < this.ZgC.length)
       {
-        paramb.bB(24, this.REY[i]);
+        paramb.bK(24, this.ZgC[i]);
         i += 1;
       }
     }
-    if (this.REa != 0) {
-      paramb.bB(25, this.REa);
+    if (this.ZfG != 0) {
+      paramb.bK(25, this.ZfG);
     }
     super.a(paramb);
   }

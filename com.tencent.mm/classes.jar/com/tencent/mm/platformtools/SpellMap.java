@@ -6,21 +6,19 @@ import java.util.HashMap;
 
 public class SpellMap
 {
-  public static HashMap<String, String> jNI;
+  public static HashMap<String, String> mEQ;
   
   static
   {
     AppMethodBeat.i(132985);
-    jNI = new HashMap();
+    mEQ = new HashMap();
     AppMethodBeat.o(132985);
   }
   
-  public static native String spellGetJni(int paramInt1, int paramInt2);
-  
-  public static String x(char paramChar)
+  public static String D(char paramChar)
   {
     AppMethodBeat.i(132983);
-    int j = y(paramChar);
+    int j = E(paramChar);
     if (j < 65536)
     {
       AppMethodBeat.o(132983);
@@ -52,7 +50,7 @@ public class SpellMap
     return str;
   }
   
-  private static int y(char paramChar)
+  private static int E(char paramChar)
   {
     AppMethodBeat.i(132984);
     if (paramChar <= '')
@@ -91,10 +89,12 @@ public class SpellMap
     AppMethodBeat.o(132984);
     return 0;
   }
+  
+  public static native String spellGetJni(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.platformtools.SpellMap
  * JD-Core Version:    0.7.0.1
  */

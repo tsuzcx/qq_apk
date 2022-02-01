@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.expt.roomexpt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fu;
+import com.tencent.mm.f.c.gb;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class e
-  extends fu
+  extends gb
 {
   protected static IAutoDBItem.MAutoDBInfo info;
   

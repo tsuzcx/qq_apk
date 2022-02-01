@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.os.Build.VERSION;
 import android.os.Parcelable;
-import android.support.v4.content.WakefulBroadcastReceiver;
 import android.util.Base64;
+import androidx.legacy.content.WakefulBroadcastReceiver;
 import com.google.android.gms.common.util.PlatformVersion;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import javax.annotation.concurrent.GuardedBy;
@@ -14,11 +14,11 @@ import javax.annotation.concurrent.GuardedBy;
 public final class FirebaseInstanceIdReceiver
   extends WakefulBroadcastReceiver
 {
-  private static boolean bLo = false;
+  private static boolean bIT = false;
   @GuardedBy("FirebaseInstanceIdReceiver.class")
-  private static y bLp;
+  private static y bIU;
   @GuardedBy("FirebaseInstanceIdReceiver.class")
-  private static y bLq;
+  private static y bIV;
   
   private final void a(Context paramContext, Intent paramIntent, String paramString)
   {
@@ -57,11 +57,11 @@ public final class FirebaseInstanceIdReceiver
         if (isOrderedBroadcast()) {
           setResultCode(-1);
         }
-        i(paramContext, str1).a(paramIntent, goAsync());
+        j(paramContext, str1).a(paramIntent, goAsync());
       }
     }
     label223:
-    for (int i = j;; i = o.yr().a(paramContext, str1, paramIntent))
+    for (int i = j;; i = o.yL().a(paramContext, str1, paramIntent))
     {
       if (isOrderedBroadcast()) {
         setResultCode(i);
@@ -77,45 +77,45 @@ public final class FirebaseInstanceIdReceiver
   }
   
   /* Error */
-  private static y i(Context paramContext, String paramString)
+  private static y j(Context paramContext, String paramString)
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
     //   3: sipush 4145
     //   6: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: ldc 127
+    //   9: ldc 128
     //   11: aload_1
     //   12: invokevirtual 85	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   15: ifeq +36 -> 51
-    //   18: getstatic 138	com/google/firebase/iid/FirebaseInstanceIdReceiver:bLq	Lcom/google/firebase/iid/y;
+    //   18: getstatic 139	com/google/firebase/iid/FirebaseInstanceIdReceiver:bIV	Lcom/google/firebase/iid/y;
     //   21: ifnonnull +15 -> 36
-    //   24: new 117	com/google/firebase/iid/y
+    //   24: new 118	com/google/firebase/iid/y
     //   27: dup
     //   28: aload_0
     //   29: aload_1
-    //   30: invokespecial 141	com/google/firebase/iid/y:<init>	(Landroid/content/Context;Ljava/lang/String;)V
-    //   33: putstatic 138	com/google/firebase/iid/FirebaseInstanceIdReceiver:bLq	Lcom/google/firebase/iid/y;
-    //   36: getstatic 138	com/google/firebase/iid/FirebaseInstanceIdReceiver:bLq	Lcom/google/firebase/iid/y;
+    //   30: invokespecial 142	com/google/firebase/iid/y:<init>	(Landroid/content/Context;Ljava/lang/String;)V
+    //   33: putstatic 139	com/google/firebase/iid/FirebaseInstanceIdReceiver:bIV	Lcom/google/firebase/iid/y;
+    //   36: getstatic 139	com/google/firebase/iid/FirebaseInstanceIdReceiver:bIV	Lcom/google/firebase/iid/y;
     //   39: astore_0
     //   40: sipush 4145
-    //   43: invokestatic 123	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   43: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   46: ldc 2
     //   48: monitorexit
     //   49: aload_0
     //   50: areturn
-    //   51: getstatic 143	com/google/firebase/iid/FirebaseInstanceIdReceiver:bLp	Lcom/google/firebase/iid/y;
+    //   51: getstatic 144	com/google/firebase/iid/FirebaseInstanceIdReceiver:bIU	Lcom/google/firebase/iid/y;
     //   54: ifnonnull +15 -> 69
-    //   57: new 117	com/google/firebase/iid/y
+    //   57: new 118	com/google/firebase/iid/y
     //   60: dup
     //   61: aload_0
     //   62: aload_1
-    //   63: invokespecial 141	com/google/firebase/iid/y:<init>	(Landroid/content/Context;Ljava/lang/String;)V
-    //   66: putstatic 143	com/google/firebase/iid/FirebaseInstanceIdReceiver:bLp	Lcom/google/firebase/iid/y;
-    //   69: getstatic 143	com/google/firebase/iid/FirebaseInstanceIdReceiver:bLp	Lcom/google/firebase/iid/y;
+    //   63: invokespecial 142	com/google/firebase/iid/y:<init>	(Landroid/content/Context;Ljava/lang/String;)V
+    //   66: putstatic 144	com/google/firebase/iid/FirebaseInstanceIdReceiver:bIU	Lcom/google/firebase/iid/y;
+    //   69: getstatic 144	com/google/firebase/iid/FirebaseInstanceIdReceiver:bIU	Lcom/google/firebase/iid/y;
     //   72: astore_0
     //   73: sipush 4145
-    //   76: invokestatic 123	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   76: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   79: goto -33 -> 46
     //   82: astore_0
     //   83: ldc 2
@@ -155,7 +155,7 @@ public final class FirebaseInstanceIdReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.FirebaseInstanceIdReceiver
  * JD-Core Version:    0.7.0.1
  */

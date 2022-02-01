@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.handoff.model;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ball.model.BallInfo;
 import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
 import com.tencent.mm.pluginsdk.ui.tools.FileExplorerUI;
-import com.tencent.mm.protocal.protobuf.aml;
-import com.tencent.mm.protocal.protobuf.amm;
-import com.tencent.mm.protocal.protobuf.amn;
-import com.tencent.mm.protocal.protobuf.aoe;
-import com.tencent.mm.protocal.protobuf.cru;
+import com.tencent.mm.protocal.protobuf.anm;
+import com.tencent.mm.protocal.protobuf.ann;
+import com.tencent.mm.protocal.protobuf.ano;
+import com.tencent.mm.protocal.protobuf.apf;
+import com.tencent.mm.protocal.protobuf.dar;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ca;
@@ -20,7 +20,7 @@ import kotlin.l;
 import kotlin.n.n;
 import kotlin.o;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/handoff/model/HandOffFile;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "fullPath", "", "fileType", "title", "md5", "size", "", "source", "", "svrId", "extId", "cdnURL", "aesKey", "authKey", "fileStatus", "appId", "sdkVersion", "mediaId", "uploadedSize", "handOffType", "from", "to", "key", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;JILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "()V", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getAesKey", "()Ljava/lang/String;", "setAesKey", "(Ljava/lang/String;)V", "getAppId", "setAppId", "getAuthKey", "setAuthKey", "getCdnURL", "setCdnURL", "getExtId", "setExtId", "getFileStatus", "()I", "setFileStatus", "(I)V", "getFileType", "setFileType", "getFullPath", "setFullPath", "getMd5", "setMd5", "getMediaId", "setMediaId", "getSdkVersion", "setSdkVersion", "getSize", "()J", "setSize", "(J)V", "getSource", "setSource", "getSvrId", "setSvrId", "getTitle", "setTitle", "getUploadedSize", "setUploadedSize", "body", "copy", "describeContents", "doCreateBallInfo", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "doCreateMultiTaskInfo", "Lkotlin/Pair;", "Lcom/tencent/mm/protocal/protobuf/MultiTaskShowData;", "", "getDataType", "saveToBallInfo", "", "ballInfo", "saveToMultiTaskInfo", "multiTaskInfo", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "toString", "update", "newHandOff", "writeToParcel", "dest", "flags", "Companion", "api-handoff_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/model/HandOffFile;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "fullPath", "", "fileType", "title", "md5", "size", "", "source", "", "svrId", "extId", "cdnURL", "aesKey", "authKey", "fileStatus", "appId", "sdkVersion", "mediaId", "uploadedSize", "handOffType", "from", "to", "key", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;JILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "()V", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getAesKey", "()Ljava/lang/String;", "setAesKey", "(Ljava/lang/String;)V", "getAppId", "setAppId", "getAuthKey", "setAuthKey", "getCdnURL", "setCdnURL", "getExtId", "setExtId", "getFileStatus", "()I", "setFileStatus", "(I)V", "getFileType", "setFileType", "getFullPath", "setFullPath", "getMd5", "setMd5", "getMediaId", "setMediaId", "getSdkVersion", "setSdkVersion", "getSize", "()J", "setSize", "(J)V", "getSource", "setSource", "getSvrId", "setSvrId", "getTitle", "setTitle", "getUploadedSize", "setUploadedSize", "body", "copy", "describeContents", "doCreateBallInfo", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "doCreateMultiTaskInfo", "Lkotlin/Pair;", "Lcom/tencent/mm/protocal/protobuf/MultiTaskShowData;", "", "getDataType", "saveToBallInfo", "", "ballInfo", "saveToMultiTaskInfo", "multiTaskInfo", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "toString", "update", "newHandOff", "writeToParcel", "dest", "flags", "Companion", "api-handoff_release"})
 @Keep
 public final class HandOffFile
   extends HandOff
@@ -67,7 +67,7 @@ public final class HandOffFile
   {
     AppMethodBeat.i(121708);
     Companion = new a((byte)0);
-    CREATOR = (Parcelable.Creator)new b();
+    CREATOR = (Parcelable.Creator)new HandOffFile.b();
     AppMethodBeat.o(121708);
   }
   
@@ -82,61 +82,61 @@ public final class HandOffFile
     AppMethodBeat.i(121707);
     String str = paramParcel.readString();
     if (str == null) {
-      p.hyc();
+      p.iCn();
     }
     this.fullPath = str;
     str = paramParcel.readString();
     if (str == null) {
-      p.hyc();
+      p.iCn();
     }
     this.fileType = str;
     str = paramParcel.readString();
     if (str == null) {
-      p.hyc();
+      p.iCn();
     }
     this.title = str;
     str = paramParcel.readString();
     if (str == null) {
-      p.hyc();
+      p.iCn();
     }
     this.md5 = str;
     this.size = paramParcel.readLong();
     this.source = paramParcel.readInt();
     str = paramParcel.readString();
     if (str == null) {
-      p.hyc();
+      p.iCn();
     }
     this.svrId = str;
     str = paramParcel.readString();
     if (str == null) {
-      p.hyc();
+      p.iCn();
     }
     this.extId = str;
     str = paramParcel.readString();
     if (str == null) {
-      p.hyc();
+      p.iCn();
     }
     this.cdnURL = str;
     str = paramParcel.readString();
     if (str == null) {
-      p.hyc();
+      p.iCn();
     }
     this.aesKey = str;
     str = paramParcel.readString();
     if (str == null) {
-      p.hyc();
+      p.iCn();
     }
     this.authKey = str;
     this.fileStatus = paramParcel.readInt();
     str = paramParcel.readString();
     if (str == null) {
-      p.hyc();
+      p.iCn();
     }
     this.appId = str;
     this.sdkVersion = paramParcel.readInt();
     str = paramParcel.readString();
     if (str == null) {
-      p.hyc();
+      p.iCn();
     }
     this.mediaId = str;
     this.uploadedSize = paramParcel.readLong();
@@ -199,50 +199,50 @@ public final class HandOffFile
     return paramBallInfo;
   }
   
-  public static final HandOffFile fromFavItem(aml paramaml, String paramString)
+  public static final HandOffFile fromFavItem(anm paramanm, String paramString)
   {
-    AppMethodBeat.i(238046);
-    paramaml = a.a(paramaml, null, paramString, 6);
-    AppMethodBeat.o(238046);
-    return paramaml;
+    AppMethodBeat.i(192817);
+    paramanm = a.a(paramanm, null, paramString, 6);
+    AppMethodBeat.o(192817);
+    return paramanm;
   }
   
-  public static final HandOffFile fromFavItem(aml paramaml, String paramString1, ca paramca, String paramString2)
+  public static final HandOffFile fromFavItem(anm paramanm, String paramString1, ca paramca, String paramString2)
   {
-    AppMethodBeat.i(238044);
-    paramaml = a.fromFavItem(paramaml, paramString1, paramca, paramString2);
-    AppMethodBeat.o(238044);
-    return paramaml;
+    AppMethodBeat.i(192807);
+    paramanm = a.fromFavItem(paramanm, paramString1, paramca, paramString2);
+    AppMethodBeat.o(192807);
+    return paramanm;
   }
   
-  public static final HandOffFile fromFavItem(aml paramaml, String paramString1, String paramString2)
+  public static final HandOffFile fromFavItem(anm paramanm, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(238045);
-    paramaml = a.a(paramaml, paramString1, paramString2, 4);
-    AppMethodBeat.o(238045);
-    return paramaml;
+    AppMethodBeat.i(192814);
+    paramanm = a.a(paramanm, paramString1, paramString2, 4);
+    AppMethodBeat.o(192814);
+    return paramanm;
   }
   
   public static final HandOffFile fromMultiTask(MultiTaskInfo paramMultiTaskInfo)
   {
-    AppMethodBeat.i(238047);
+    AppMethodBeat.i(192820);
     paramMultiTaskInfo = a.fromMultiTask(paramMultiTaskInfo);
-    AppMethodBeat.o(238047);
+    AppMethodBeat.o(192820);
     return paramMultiTaskInfo;
   }
   
   public static final boolean isSupportOpenFile(String paramString)
   {
-    AppMethodBeat.i(238048);
+    AppMethodBeat.i(192825);
     boolean bool = a.isSupportOpenFile(paramString);
-    AppMethodBeat.o(238048);
+    AppMethodBeat.o(192825);
     return bool;
   }
   
   protected final String body()
   {
     AppMethodBeat.i(121700);
-    String str = n.buv("\n        <filetype>" + a.du(this.fileType) + "</filetype>\n        <title>" + a.du(this.title) + "</title>\n        <md5>" + a.du(this.md5) + "</md5>\n        <uploadedsize>" + a.du(Long.valueOf(this.uploadedSize)) + "</uploadedsize>\n        <size>" + a.du(Long.valueOf(this.size)) + "</size>\n        <source>" + a.du(Integer.valueOf(this.source)) + "</source>\n        <id>" + a.du(this.svrId) + "</id>\n        <extid>" + a.du(this.extId) + "</extid>\n        <cdnurl>" + a.du(this.cdnURL) + "</cdnurl>\n        <aeskey>" + a.du(this.aesKey) + "</aeskey>\n        <authkey>" + a.du(this.authKey) + "</authkey>\n        <filestatus>" + a.du(Integer.valueOf(this.fileStatus)) + "</filestatus>\n        <appid>" + a.du(this.appId) + "</appid>\n        <sdkversion>" + a.du(Integer.valueOf(this.sdkVersion)) + "</sdkversion>\n        <mediaid>" + a.du(this.mediaId) + "</mediaid>\n    ");
+    String str = n.bHx("\n        <filetype>" + a.dy(this.fileType) + "</filetype>\n        <title>" + a.dy(this.title) + "</title>\n        <md5>" + a.dy(this.md5) + "</md5>\n        <uploadedsize>" + a.dy(Long.valueOf(this.uploadedSize)) + "</uploadedsize>\n        <size>" + a.dy(Long.valueOf(this.size)) + "</size>\n        <source>" + a.dy(Integer.valueOf(this.source)) + "</source>\n        <id>" + a.dy(this.svrId) + "</id>\n        <extid>" + a.dy(this.extId) + "</extid>\n        <cdnurl>" + a.dy(this.cdnURL) + "</cdnurl>\n        <aeskey>" + a.dy(this.aesKey) + "</aeskey>\n        <authkey>" + a.dy(this.authKey) + "</authkey>\n        <filestatus>" + a.dy(Integer.valueOf(this.fileStatus)) + "</filestatus>\n        <appid>" + a.dy(this.appId) + "</appid>\n        <sdkversion>" + a.dy(Integer.valueOf(this.sdkVersion)) + "</sdkversion>\n        <mediaid>" + a.dy(this.mediaId) + "</mediaid>\n    ");
     AppMethodBeat.o(121700);
     return str;
   }
@@ -267,7 +267,7 @@ public final class HandOffFile
     return null;
   }
   
-  protected final o<cru, byte[]> doCreateMultiTaskInfo()
+  protected final o<dar, byte[]> doCreateMultiTaskInfo()
   {
     return null;
   }
@@ -359,105 +359,105 @@ public final class HandOffFile
   
   public final void saveToBallInfo(BallInfo paramBallInfo)
   {
-    AppMethodBeat.i(238041);
-    p.h(paramBallInfo, "ballInfo");
+    AppMethodBeat.i(192736);
+    p.k(paramBallInfo, "ballInfo");
     try
     {
-      paramBallInfo.eS("handoff#fullPath", this.fullPath);
-      paramBallInfo.eS("handoff#fileType", this.fileType);
-      paramBallInfo.eS("handoff#title", this.title);
-      paramBallInfo.eS("handoff#md5", this.md5);
-      paramBallInfo.X("handoff#size", this.size);
-      paramBallInfo.cy("handoff#source", this.source);
-      paramBallInfo.eS("handoff#svrId", this.svrId);
-      paramBallInfo.eS("handoff#extId", this.extId);
-      paramBallInfo.eS("handoff#cdnURL", this.cdnURL);
-      paramBallInfo.eS("handoff#aesKey", this.aesKey);
-      paramBallInfo.eS("handoff#authKey", this.authKey);
-      paramBallInfo.cy("handoff#fileStatus", this.fileStatus);
-      paramBallInfo.eS("handoff#appId", this.appId);
-      paramBallInfo.cy("handoff#sdkVersion", this.sdkVersion);
-      paramBallInfo.eS("handoff#KmediaId", this.mediaId);
-      paramBallInfo.X("handoff#KUploadedSize", this.uploadedSize);
-      paramBallInfo.eS("handoff#from", getFrom());
-      paramBallInfo.eS("handoff#to", getTo());
-      paramBallInfo.eS("handoff#key", getKey());
-      AppMethodBeat.o(238041);
+      paramBallInfo.fg("handoff#fullPath", this.fullPath);
+      paramBallInfo.fg("handoff#fileType", this.fileType);
+      paramBallInfo.fg("handoff#title", this.title);
+      paramBallInfo.fg("handoff#md5", this.md5);
+      paramBallInfo.Y("handoff#size", this.size);
+      paramBallInfo.cT("handoff#source", this.source);
+      paramBallInfo.fg("handoff#svrId", this.svrId);
+      paramBallInfo.fg("handoff#extId", this.extId);
+      paramBallInfo.fg("handoff#cdnURL", this.cdnURL);
+      paramBallInfo.fg("handoff#aesKey", this.aesKey);
+      paramBallInfo.fg("handoff#authKey", this.authKey);
+      paramBallInfo.cT("handoff#fileStatus", this.fileStatus);
+      paramBallInfo.fg("handoff#appId", this.appId);
+      paramBallInfo.cT("handoff#sdkVersion", this.sdkVersion);
+      paramBallInfo.fg("handoff#KmediaId", this.mediaId);
+      paramBallInfo.Y("handoff#KUploadedSize", this.uploadedSize);
+      paramBallInfo.fg("handoff#from", getFrom());
+      paramBallInfo.fg("handoff#to", getTo());
+      paramBallInfo.fg("handoff#key", getKey());
+      AppMethodBeat.o(192736);
       return;
     }
     catch (Exception paramBallInfo)
     {
-      AppMethodBeat.o(238041);
+      AppMethodBeat.o(192736);
     }
   }
   
   public final void saveToMultiTaskInfo(MultiTaskInfo paramMultiTaskInfo)
   {
-    AppMethodBeat.i(238042);
+    AppMethodBeat.i(192738);
     if (paramMultiTaskInfo == null)
     {
-      AppMethodBeat.o(238042);
+      AppMethodBeat.o(192738);
       return;
     }
-    aoe localaoe = new aoe();
-    localaoe.parseFrom(paramMultiTaskInfo.field_data);
-    localaoe.LAh = this.size;
-    localaoe.LzT = this.md5;
-    localaoe.LzU = this.source;
-    localaoe.LzV = this.svrId;
-    localaoe.LzW = this.extId;
-    localaoe.LzX = this.cdnURL;
-    localaoe.LzY = this.aesKey;
-    localaoe.LzZ = this.authKey;
-    localaoe.LAa = this.fileStatus;
-    localaoe.LAb = this.appId;
-    localaoe.LAc = this.sdkVersion;
-    localaoe.LAd = this.mediaId;
-    localaoe.LAe = this.uploadedSize;
-    localaoe.LAf = getFrom();
-    localaoe.LAg = getTo();
-    paramMultiTaskInfo.field_data = localaoe.toByteArray();
-    AppMethodBeat.o(238042);
+    apf localapf = new apf();
+    localapf.parseFrom(paramMultiTaskInfo.field_data);
+    localapf.SCG = this.size;
+    localapf.SCs = this.md5;
+    localapf.SCt = this.source;
+    localapf.SCu = this.svrId;
+    localapf.SCv = this.extId;
+    localapf.SCw = this.cdnURL;
+    localapf.SCx = this.aesKey;
+    localapf.SCy = this.authKey;
+    localapf.SCz = this.fileStatus;
+    localapf.SCA = this.appId;
+    localapf.SCB = this.sdkVersion;
+    localapf.SCC = this.mediaId;
+    localapf.SCD = this.uploadedSize;
+    localapf.SCE = getFrom();
+    localapf.SCF = getTo();
+    paramMultiTaskInfo.field_data = localapf.toByteArray();
+    AppMethodBeat.o(192738);
   }
   
   public final void setAesKey(String paramString)
   {
     AppMethodBeat.i(121698);
-    p.h(paramString, "<set-?>");
+    p.k(paramString, "<set-?>");
     this.aesKey = paramString;
     AppMethodBeat.o(121698);
   }
   
   public final void setAppId(String paramString)
   {
-    AppMethodBeat.i(238039);
-    p.h(paramString, "<set-?>");
+    AppMethodBeat.i(192709);
+    p.k(paramString, "<set-?>");
     this.appId = paramString;
-    AppMethodBeat.o(238039);
+    AppMethodBeat.o(192709);
   }
   
   public final void setAuthKey(String paramString)
   {
-    AppMethodBeat.i(238038);
-    p.h(paramString, "<set-?>");
+    AppMethodBeat.i(192706);
+    p.k(paramString, "<set-?>");
     this.authKey = paramString;
-    AppMethodBeat.o(238038);
+    AppMethodBeat.o(192706);
   }
   
   public final void setCdnURL(String paramString)
   {
     AppMethodBeat.i(121697);
-    p.h(paramString, "<set-?>");
+    p.k(paramString, "<set-?>");
     this.cdnURL = paramString;
     AppMethodBeat.o(121697);
   }
   
   public final void setExtId(String paramString)
   {
-    AppMethodBeat.i(238037);
-    p.h(paramString, "<set-?>");
+    AppMethodBeat.i(192702);
+    p.k(paramString, "<set-?>");
     this.extId = paramString;
-    AppMethodBeat.o(238037);
+    AppMethodBeat.o(192702);
   }
   
   public final void setFileStatus(int paramInt)
@@ -467,34 +467,34 @@ public final class HandOffFile
   
   public final void setFileType(String paramString)
   {
-    AppMethodBeat.i(238033);
-    p.h(paramString, "<set-?>");
+    AppMethodBeat.i(192684);
+    p.k(paramString, "<set-?>");
     this.fileType = paramString;
-    AppMethodBeat.o(238033);
+    AppMethodBeat.o(192684);
   }
   
   public final void setFullPath(String paramString)
   {
     AppMethodBeat.i(121696);
-    p.h(paramString, "<set-?>");
+    p.k(paramString, "<set-?>");
     this.fullPath = paramString;
     AppMethodBeat.o(121696);
   }
   
   public final void setMd5(String paramString)
   {
-    AppMethodBeat.i(238035);
-    p.h(paramString, "<set-?>");
+    AppMethodBeat.i(192693);
+    p.k(paramString, "<set-?>");
     this.md5 = paramString;
-    AppMethodBeat.o(238035);
+    AppMethodBeat.o(192693);
   }
   
   public final void setMediaId(String paramString)
   {
-    AppMethodBeat.i(238040);
-    p.h(paramString, "<set-?>");
+    AppMethodBeat.i(192712);
+    p.k(paramString, "<set-?>");
     this.mediaId = paramString;
-    AppMethodBeat.o(238040);
+    AppMethodBeat.o(192712);
   }
   
   public final void setSdkVersion(int paramInt)
@@ -514,18 +514,18 @@ public final class HandOffFile
   
   public final void setSvrId(String paramString)
   {
-    AppMethodBeat.i(238036);
-    p.h(paramString, "<set-?>");
+    AppMethodBeat.i(192699);
+    p.k(paramString, "<set-?>");
     this.svrId = paramString;
-    AppMethodBeat.o(238036);
+    AppMethodBeat.o(192699);
   }
   
   public final void setTitle(String paramString)
   {
-    AppMethodBeat.i(238034);
-    p.h(paramString, "<set-?>");
+    AppMethodBeat.i(192689);
+    p.k(paramString, "<set-?>");
     this.title = paramString;
-    AppMethodBeat.o(238034);
+    AppMethodBeat.o(192689);
   }
   
   public final void setUploadedSize(long paramLong)
@@ -544,7 +544,7 @@ public final class HandOffFile
   public final void update(HandOff paramHandOff)
   {
     AppMethodBeat.i(121699);
-    p.h(paramHandOff, "newHandOff");
+    p.k(paramHandOff, "newHandOff");
     super.update(paramHandOff);
     if ((paramHandOff instanceof HandOffFile))
     {
@@ -690,7 +690,7 @@ public final class HandOffFile
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(121701);
-    p.h(paramParcel, "dest");
+    p.k(paramParcel, "dest");
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeString(this.fullPath);
     paramParcel.writeString(this.fileType);
@@ -711,65 +711,65 @@ public final class HandOffFile
     AppMethodBeat.o(121701);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/handoff/model/HandOffFile$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/handoff/model/HandOffFile;", "KAesKey", "", "KAppId", "KAuthKey", "KCdnURL", "KExtId", "KFileStatus", "KFileType", "KFrom", "KFullPath", "KKey", "KMd5", "KMediaId", "KSdkVersion", "KSize", "KSource", "KSvrId", "KTitle", "KTo", "KUploadedSize", "fromBallInfo", "ballInfo", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "fromFavItem", "dataItem", "Lcom/tencent/mm/protocal/protobuf/FavDataItem;", "favId", "msg", "Lcom/tencent/mm/storage/MsgInfo;", "fullpath", "fromMultiTask", "multiTaskInfo", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "isSupportOpenFile", "", "fileExt", "api-handoff_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/handoff/model/HandOffFile$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/handoff/model/HandOffFile;", "KAesKey", "", "KAppId", "KAuthKey", "KCdnURL", "KExtId", "KFileStatus", "KFileType", "KFrom", "KFullPath", "KKey", "KMd5", "KMediaId", "KSdkVersion", "KSize", "KSource", "KSvrId", "KTitle", "KTo", "KUploadedSize", "fromBallInfo", "ballInfo", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "fromFavItem", "dataItem", "Lcom/tencent/mm/protocal/protobuf/FavDataItem;", "favId", "msg", "Lcom/tencent/mm/storage/MsgInfo;", "fullpath", "fromMultiTask", "multiTaskInfo", "Lcom/tencent/mm/plugin/multitask/model/MultiTaskInfo;", "isSupportOpenFile", "", "fileExt", "api-handoff_release"})
   public static final class a
   {
     public static HandOffFile fromBallInfo(BallInfo paramBallInfo)
     {
       AppMethodBeat.i(121695);
-      p.h(paramBallInfo, "ballInfo");
-      String str1 = paramBallInfo.eT("handoff#fullPath", "");
-      String str2 = paramBallInfo.eT("handoff#fileType", "");
-      String str3 = paramBallInfo.eT("handoff#title", "");
-      String str4 = paramBallInfo.eT("handoff#md5", "");
-      long l1 = paramBallInfo.agQ("handoff#size");
+      p.k(paramBallInfo, "ballInfo");
+      String str1 = paramBallInfo.fh("handoff#fullPath", "");
+      String str2 = paramBallInfo.fh("handoff#fileType", "");
+      String str3 = paramBallInfo.fh("handoff#title", "");
+      String str4 = paramBallInfo.fh("handoff#md5", "");
+      long l1 = paramBallInfo.aov("handoff#size");
       int i = paramBallInfo.getIntExtra("handoff#source", 0);
-      String str5 = paramBallInfo.eT("handoff#svrId", "");
-      String str6 = paramBallInfo.eT("handoff#extId", "");
-      String str7 = paramBallInfo.eT("handoff#cdnURL", "");
-      String str8 = paramBallInfo.eT("handoff#aesKey", "");
-      String str9 = paramBallInfo.eT("handoff#authKey", "");
+      String str5 = paramBallInfo.fh("handoff#svrId", "");
+      String str6 = paramBallInfo.fh("handoff#extId", "");
+      String str7 = paramBallInfo.fh("handoff#cdnURL", "");
+      String str8 = paramBallInfo.fh("handoff#aesKey", "");
+      String str9 = paramBallInfo.fh("handoff#authKey", "");
       int j = paramBallInfo.getIntExtra("handoff#fileStatus", 0);
-      String str10 = paramBallInfo.eT("handoff#appId", "");
+      String str10 = paramBallInfo.fh("handoff#appId", "");
       int k = paramBallInfo.getIntExtra("handoff#sdkVersion", 0);
-      String str11 = paramBallInfo.eT("handoff#KmediaId", "");
-      long l2 = paramBallInfo.agQ("handoff#KUploadedSize");
-      String str12 = paramBallInfo.eT("handoff#from", "");
-      String str13 = paramBallInfo.eT("handoff#to", "");
-      paramBallInfo = paramBallInfo.eT("handoff#key", "");
-      p.g(str1, "fullPath");
-      p.g(str2, "fileType");
-      p.g(str3, "title");
-      p.g(str4, "md5");
-      p.g(str5, "svrId");
-      p.g(str6, "extId");
-      p.g(str7, "cdnURL");
-      p.g(str8, "aesKey");
-      p.g(str9, "authKey");
-      p.g(str10, "appId");
-      p.g(str11, "mediaId");
-      p.g(str12, "from");
-      p.g(str13, "to");
-      p.g(paramBallInfo, "key");
+      String str11 = paramBallInfo.fh("handoff#KmediaId", "");
+      long l2 = paramBallInfo.aov("handoff#KUploadedSize");
+      String str12 = paramBallInfo.fh("handoff#from", "");
+      String str13 = paramBallInfo.fh("handoff#to", "");
+      paramBallInfo = paramBallInfo.fh("handoff#key", "");
+      p.j(str1, "fullPath");
+      p.j(str2, "fileType");
+      p.j(str3, "title");
+      p.j(str4, "md5");
+      p.j(str5, "svrId");
+      p.j(str6, "extId");
+      p.j(str7, "cdnURL");
+      p.j(str8, "aesKey");
+      p.j(str9, "authKey");
+      p.j(str10, "appId");
+      p.j(str11, "mediaId");
+      p.j(str12, "from");
+      p.j(str13, "to");
+      p.j(paramBallInfo, "key");
       paramBallInfo = new HandOffFile(str1, str2, str3, str4, l1, i, str5, str6, str7, str8, str9, j, str10, k, str11, l2, 2, str12, str13, paramBallInfo);
       AppMethodBeat.o(121695);
       return paramBallInfo;
     }
     
-    public static HandOffFile fromFavItem(aml paramaml, String paramString1, ca paramca, String paramString2)
+    public static HandOffFile fromFavItem(anm paramanm, String paramString1, ca paramca, String paramString2)
     {
-      AppMethodBeat.i(238029);
-      p.h(paramaml, "dataItem");
+      AppMethodBeat.i(193065);
+      p.k(paramanm, "dataItem");
       String str7 = Util.nullAsNil(paramString2);
-      String str8 = Util.nullAsNil(paramaml.gtZ());
-      String str9 = Util.nullAsNil(paramaml.getTitle());
-      String str10 = Util.nullAsNil(paramaml.gua());
-      long l = Util.nullAsNil(Long.valueOf(paramaml.gub()));
-      String str4 = Util.nullAsNil(paramaml.gtW());
-      String str11 = Util.nullAsNil(paramaml.gtX());
-      String str12 = Util.nullAsNil(paramaml.guf());
-      String str5 = Util.nullAsNil(paramaml.gug());
-      String str13 = Util.nullAsNil(paramaml.gsp());
+      String str8 = Util.nullAsNil(paramanm.hpq());
+      String str9 = Util.nullAsNil(paramanm.getTitle());
+      String str10 = Util.nullAsNil(paramanm.hpr());
+      long l = Util.nullAsNil(Long.valueOf(paramanm.hps()));
+      String str4 = Util.nullAsNil(paramanm.hpn());
+      String str11 = Util.nullAsNil(paramanm.hpo());
+      String str12 = Util.nullAsNil(paramanm.hpw());
+      String str5 = Util.nullAsNil(paramanm.hpx());
+      String str13 = Util.nullAsNil(paramanm.hns());
       String str3 = "";
       int i = 3;
       String str1 = "";
@@ -781,12 +781,12 @@ public final class HandOffFile
         i = 2;
         str2 = str6;
         paramString2 = str1;
-        p.g(str7, "fullPath");
-        p.g(str8, "fileExt");
-        p.g(str9, "fileName");
-        p.g(str10, "fileMd5");
-        p.g(str13, "extId");
-        p.g(str4, "cdnURL");
+        p.j(str7, "fullPath");
+        p.j(str8, "fileExt");
+        p.j(str9, "fileName");
+        p.j(str10, "fileMd5");
+        p.j(str13, "extId");
+        p.j(str4, "cdnURL");
         if (((CharSequence)str4).length() <= 0) {
           break label384;
         }
@@ -798,16 +798,16 @@ public final class HandOffFile
       }
       label384:
       label390:
-      for (paramaml = str4;; paramaml = str5)
+      for (paramanm = str4;; paramanm = str5)
       {
         for (;;)
         {
-          p.g(paramaml, "if (cdnURL.isNotEmpty()) cdnURL else tpURL");
-          p.g(str11, "aesKey");
-          p.g(str12, "authKey");
-          paramaml = new HandOffFile(str7, str8, str9, str10, l, i, paramString1, str13, paramaml, str11, str12, 1, "", 0, "", 0L, 1, paramString2, str2, null, 524288, null);
-          AppMethodBeat.o(238029);
-          return paramaml;
+          p.j(paramanm, "if (cdnURL.isNotEmpty()) cdnURL else tpURL");
+          p.j(str11, "aesKey");
+          p.j(str12, "authKey");
+          paramanm = new HandOffFile(str7, str8, str9, str10, l, i, paramString1, str13, paramanm, str11, str12, 1, "", 0, "", 0L, 1, paramString2, str2, null, 524288, null);
+          AppMethodBeat.o(193065);
+          return paramanm;
           paramString1 = str3;
           paramString2 = str1;
           str2 = str6;
@@ -818,40 +818,40 @@ public final class HandOffFile
           paramString2 = str3;
           try
           {
-            paramString1 = String.valueOf(paramca.ajM());
+            paramString1 = String.valueOf(paramca.apH());
             paramString2 = paramString1;
-            paramaml = paramaml.guc();
+            paramanm = paramanm.hpt();
             paramString2 = paramString1;
-            p.g(paramaml, "dataItem.dataProtoItem");
+            p.j(paramanm, "dataItem.dataProtoItem");
             paramString2 = paramString1;
-            paramaml = paramaml.guh();
+            paramanm = paramanm.hpy();
             paramString2 = paramString1;
-            p.g(paramaml, "dataItem.dataProtoItem.dataSourceItem");
+            p.j(paramanm, "dataItem.dataProtoItem.dataSourceItem");
             paramString2 = paramString1;
-            paramaml = paramaml.getFromUser();
+            paramanm = paramanm.getFromUser();
             paramString2 = paramString1;
-            p.g(paramaml, "dataItem.dataProtoItem.dataSourceItem.fromUser");
+            p.j(paramanm, "dataItem.dataProtoItem.dataSourceItem.fromUser");
           }
-          catch (Exception paramaml)
+          catch (Exception paramanm)
           {
             try
             {
-              str2 = paramca.ajO();
-              p.g(str2, "msg.talker");
-              paramString2 = paramaml;
+              str2 = paramca.apJ();
+              p.j(str2, "msg.talker");
+              paramString2 = paramanm;
             }
             catch (Exception paramca)
             {
               break label366;
             }
-            paramaml = paramaml;
-            paramaml = str1;
+            paramanm = paramanm;
+            paramanm = str1;
             paramString1 = paramString2;
           }
         }
         label366:
         Log.w("HandOffService", "Get null from record msg, use default value");
-        paramString2 = paramaml;
+        paramString2 = paramanm;
         str2 = str6;
         break;
         j = 0;
@@ -861,83 +861,78 @@ public final class HandOffFile
     
     public static HandOffFile fromMultiTask(MultiTaskInfo paramMultiTaskInfo)
     {
-      AppMethodBeat.i(238031);
+      AppMethodBeat.i(193084);
       if (paramMultiTaskInfo == null)
       {
-        AppMethodBeat.o(238031);
+        AppMethodBeat.o(193084);
         return null;
       }
-      Object localObject1 = paramMultiTaskInfo.erh();
-      Object localObject2 = new aoe();
-      ((aoe)localObject2).parseFrom(paramMultiTaskInfo.field_data);
-      String str1 = Util.nullAsNil(((aoe)localObject2).filePath);
-      String str2 = Util.nullAsNil(((aoe)localObject2).gCr);
-      localObject1 = Util.nullAsNil(((cru)localObject1).title);
-      String str3 = Util.nullAsNil(((aoe)localObject2).LzT);
-      long l1 = ((aoe)localObject2).LAh;
-      int i = ((aoe)localObject2).LzU;
-      String str4 = Util.nullAsNil(((aoe)localObject2).LzV);
-      String str5 = Util.nullAsNil(((aoe)localObject2).LzW);
-      String str6 = Util.nullAsNil(((aoe)localObject2).LzX);
-      String str7 = Util.nullAsNil(((aoe)localObject2).LzY);
-      String str8 = Util.nullAsNil(((aoe)localObject2).LzZ);
-      int j = ((aoe)localObject2).LAa;
-      String str9 = Util.nullAsNil(((aoe)localObject2).LAb);
-      int k = ((aoe)localObject2).LAc;
-      String str10 = Util.nullAsNil(((aoe)localObject2).LAd);
-      long l2 = ((aoe)localObject2).LAe;
-      String str11 = Util.nullAsNil(((aoe)localObject2).LAf);
-      localObject2 = Util.nullAsNil(((aoe)localObject2).LAg);
+      Object localObject1 = paramMultiTaskInfo.fbc();
+      Object localObject2 = new apf();
+      ((apf)localObject2).parseFrom(paramMultiTaskInfo.field_data);
+      String str1 = Util.nullAsNil(((apf)localObject2).filePath);
+      String str2 = Util.nullAsNil(((apf)localObject2).jmx);
+      localObject1 = Util.nullAsNil(((dar)localObject1).title);
+      String str3 = Util.nullAsNil(((apf)localObject2).SCs);
+      long l1 = ((apf)localObject2).SCG;
+      int i = ((apf)localObject2).SCt;
+      String str4 = Util.nullAsNil(((apf)localObject2).SCu);
+      String str5 = Util.nullAsNil(((apf)localObject2).SCv);
+      String str6 = Util.nullAsNil(((apf)localObject2).SCw);
+      String str7 = Util.nullAsNil(((apf)localObject2).SCx);
+      String str8 = Util.nullAsNil(((apf)localObject2).SCy);
+      int j = ((apf)localObject2).SCz;
+      String str9 = Util.nullAsNil(((apf)localObject2).SCA);
+      int k = ((apf)localObject2).SCB;
+      String str10 = Util.nullAsNil(((apf)localObject2).SCC);
+      long l2 = ((apf)localObject2).SCD;
+      String str11 = Util.nullAsNil(((apf)localObject2).SCE);
+      localObject2 = Util.nullAsNil(((apf)localObject2).SCF);
       paramMultiTaskInfo = Util.nullAsNil(paramMultiTaskInfo.field_id);
-      p.g(str1, "fullPath");
-      p.g(str2, "fileType");
-      p.g(localObject1, "title");
-      p.g(str3, "md5");
-      p.g(str4, "svrId");
-      p.g(str5, "extId");
-      p.g(str6, "cdnURL");
-      p.g(str7, "aesKey");
-      p.g(str8, "authKey");
-      p.g(str9, "appId");
-      p.g(str10, "mediaId");
-      p.g(str11, "from");
-      p.g(localObject2, "to");
-      p.g(paramMultiTaskInfo, "key");
+      p.j(str1, "fullPath");
+      p.j(str2, "fileType");
+      p.j(localObject1, "title");
+      p.j(str3, "md5");
+      p.j(str4, "svrId");
+      p.j(str5, "extId");
+      p.j(str6, "cdnURL");
+      p.j(str7, "aesKey");
+      p.j(str8, "authKey");
+      p.j(str9, "appId");
+      p.j(str10, "mediaId");
+      p.j(str11, "from");
+      p.j(localObject2, "to");
+      p.j(paramMultiTaskInfo, "key");
       paramMultiTaskInfo = new HandOffFile(str1, str2, (String)localObject1, str3, l1, i, str4, str5, str6, str7, str8, j, str9, k, str10, l2, 2, str11, (String)localObject2, paramMultiTaskInfo);
-      AppMethodBeat.o(238031);
+      AppMethodBeat.o(193084);
       return paramMultiTaskInfo;
     }
     
     public static boolean isSupportOpenFile(String paramString)
     {
-      AppMethodBeat.i(238032);
+      AppMethodBeat.i(193088);
       CharSequence localCharSequence = (CharSequence)paramString;
       if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
       for (int i = 1; i != 0; i = 0)
       {
-        AppMethodBeat.o(238032);
+        AppMethodBeat.o(193088);
         return false;
       }
-      if (n.J(paramString, ".", false)) {}
-      while ((FileExplorerUI.bfu(paramString)) || (FileExplorerUI.bft(paramString)) || (FileExplorerUI.bfv(paramString)) || (FileExplorerUI.bfw(paramString)))
+      if (n.M(paramString, ".", false)) {}
+      while ((FileExplorerUI.brP(paramString)) || (FileExplorerUI.brO(paramString)) || (FileExplorerUI.brQ(paramString)) || (FileExplorerUI.brR(paramString)))
       {
-        AppMethodBeat.o(238032);
+        AppMethodBeat.o(193088);
         return true;
         paramString = ".".concat(String.valueOf(paramString));
       }
-      AppMethodBeat.o(238032);
+      AppMethodBeat.o(193088);
       return false;
     }
   }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/handoff/model/HandOffFile$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/handoff/model/HandOffFile;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/handoff/model/HandOffFile;", "api-handoff_release"})
-  public static final class b
-    implements Parcelable.Creator<HandOffFile>
-  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.handoff.model.HandOffFile
  * JD-Core Version:    0.7.0.1
  */

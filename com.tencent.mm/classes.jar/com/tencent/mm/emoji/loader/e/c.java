@@ -14,14 +14,14 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "Ljava/lang/Runnable;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "finished", "", "requests", "", "Lcom/tencent/mm/emoji/loader/request/Request;", "kotlin.jvm.PlatformType", "", "result", "running", "runningInQueue", "started", "addRequest", "", "request", "call", "getTaskKey", "", "onResult", "success", "removeRequest", "run", "start", "async", "uniqueId", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "Ljava/lang/Runnable;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "finished", "", "requests", "", "Lcom/tencent/mm/emoji/loader/request/Request;", "kotlin.jvm.PlatformType", "", "result", "running", "runningInQueue", "started", "addRequest", "", "request", "call", "getTaskKey", "", "onResult", "success", "removeRequest", "run", "start", "async", "uniqueId", "plugin-emojisdk_release"})
 public abstract class c
   extends com.tencent.mm.loader.g.c
   implements Runnable
 {
-  private boolean chA;
-  private boolean gWO;
-  final EmojiInfo gWm;
+  private boolean jHL;
+  private boolean jHM;
+  final EmojiInfo jHh;
   private final List<i<?>> requests;
   private boolean result;
   private boolean running;
@@ -29,22 +29,22 @@ public abstract class c
   
   public c(EmojiInfo paramEmojiInfo)
   {
-    this.gWm = paramEmojiInfo;
+    this.jHh = paramEmojiInfo;
     this.requests = Collections.synchronizedList((List)new LinkedList());
   }
   
-  public abstract String auJ();
+  public abstract String aBF();
   
-  public final String auK()
+  public final String aBG()
   {
-    return auJ();
+    return aBF();
   }
   
   public final void c(i<?> parami)
   {
-    p.h(parami, "request");
-    if (this.chA) {
-      parami.dR(this.result);
+    p.k(parami, "request");
+    if (this.jHM) {
+      parami.eq(this.result);
     }
     while (this.requests.contains(parami)) {
       return;
@@ -54,50 +54,50 @@ public abstract class c
   
   public final void call()
   {
-    this.gWO = true;
+    this.jHL = true;
     run();
   }
   
   public final void d(i<?> parami)
   {
-    p.h(parami, "request");
+    p.k(parami, "request");
     this.requests.remove(parami);
     if (this.requests.size() == 0)
     {
-      Log.d(d.auD(), "cancel " + auJ() + ", " + this.running);
+      Log.d(d.aBy(), "cancel " + aBF() + ", " + this.running);
       if (!this.running)
       {
-        parami = e.gVM;
-        e.EN(auJ());
-        dQ(false);
+        parami = e.jGI;
+        e.LG(aBF());
+        ep(false);
       }
     }
   }
   
-  public void dQ(boolean paramBoolean)
+  public void ep(boolean paramBoolean)
   {
     this.result = paramBoolean;
-    this.chA = true;
-    if (this.gWO) {
-      a(j.ibw);
+    this.jHM = true;
+    if (this.jHL) {
+      a(j.kQd);
     }
     for (;;)
     {
       LinkedList localLinkedList = new LinkedList();
       Object localObject1 = this.requests;
-      p.g(localObject1, "requests");
+      p.j(localObject1, "requests");
       try
       {
         localLinkedList.addAll((Collection)this.requests);
         this.requests.clear();
-        x localx = x.SXb;
+        x localx = x.aazN;
         localObject1 = ((Iterable)localLinkedList).iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          ((i)((Iterator)localObject1).next()).dR(paramBoolean);
+          ((i)((Iterator)localObject1).next()).eq(paramBoolean);
           continue;
-          localObject1 = e.gVM;
-          e.EN(auJ());
+          localObject1 = e.jGI;
+          e.LG(aBF());
         }
       }
       finally {}
@@ -114,14 +114,14 @@ public abstract class c
     if (!this.started)
     {
       this.started = true;
-      e locale = e.gVM;
-      e.a(auJ(), this, paramBoolean);
+      e locale = e.jGI;
+      e.a(aBF(), this, paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.e.c
  * JD-Core Version:    0.7.0.1
  */

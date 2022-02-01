@@ -5,13 +5,13 @@ import com.tencent.mars.cdn.CdnLogic.CronetTaskResult;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Util;
 
-public final class d
+public class d
 {
-  protected static final char[] gqp;
+  protected static final char[] iUx;
   public String cachePath;
   public CdnLogic.CronetTaskResult cronetTaskResult = null;
-  public String dRS;
   public String emojiMD5 = "";
+  public String fLp;
   public int field_UploadHitCacheType = 0;
   public String field_aesKey;
   public String field_arg;
@@ -75,6 +75,7 @@ public final class d
   public boolean field_upload_by_safecdn;
   public boolean field_usePrivateProtocol = true;
   public String[] field_usedSvrIps;
+  public String field_videoCdnMsg = "";
   public String field_videoFileId;
   public String field_videoFlag = "";
   public int field_videoFormat = 0;
@@ -82,15 +83,16 @@ public final class d
   public String field_xErrorNo = "";
   public String fileKey;
   public boolean fromCronet = false;
-  public String gqk = "";
-  public String gql = ",,,,,,";
-  public String gqm;
-  public boolean gqn;
-  public CdnLogic.BatchSnsReqImageData[] gqo;
+  public String iUs = "";
+  public String iUt = ",,,,,,";
+  public String iUu;
+  public boolean iUv;
+  public CdnLogic.BatchSnsReqImageData[] iUw;
   public int index;
   public int lastNetType = -1;
   public int lastSvrPort = 0;
   public String mediaId;
+  public String profile = "";
   public int svrFallbackCount = 0;
   public long traceId = 0L;
   public String traceMsg = "";
@@ -100,7 +102,7 @@ public final class d
   static
   {
     AppMethodBeat.i(120674);
-    gqp = "0123456789ABCDEF".toCharArray();
+    iUx = "0123456789ABCDEF".toCharArray();
     AppMethodBeat.o(120674);
   }
   
@@ -112,8 +114,8 @@ public final class d
     while (i < paramArrayOfByte.length)
     {
       int j = paramArrayOfByte[i] & 0xFF;
-      arrayOfChar[(i * 2)] = gqp[(j >>> 4)];
-      arrayOfChar[(i * 2 + 1)] = gqp[(j & 0xF)];
+      arrayOfChar[(i * 2)] = iUx[(j >>> 4)];
+      arrayOfChar[(i * 2 + 1)] = iUx[(j & 0xF)];
       i += 1;
     }
     paramArrayOfByte = new String(arrayOfChar);
@@ -121,12 +123,12 @@ public final class d
     return paramArrayOfByte;
   }
   
-  public final boolean alL()
+  public final boolean arK()
   {
     return (this.field_upload_by_safecdn) && ((2 == this.field_UploadHitCacheType) || (3 == this.field_UploadHitCacheType));
   }
   
-  public final String alM()
+  public final String arL()
   {
     AppMethodBeat.i(120673);
     Object localObject = "";
@@ -147,7 +149,7 @@ public final class d
     return localObject;
   }
   
-  public final String toString()
+  public String toString()
   {
     AppMethodBeat.i(120672);
     String str2 = String.format("id:%s file:%s filelen:%d midlen:%d thlen:%d transInfo:%s retCode:%d toUser:%s arg:%s videoFileId:%s argInfo:%s hitcache:%d needsend:%b msgid:%d convert2baseline:%b thumbUrl:%s fileUrl:%s filemd5:%s thumbfilemd5:%s,mp4identifymd5:%s, exist_whencheck[%b], aesKey[%s], crc[%s], safecdn:%b", new Object[] { this.mediaId, this.field_fileId, Long.valueOf(this.field_fileLength), Integer.valueOf(this.field_midimgLength), Integer.valueOf(this.field_thumbimgLength), this.field_transInfo, Integer.valueOf(this.field_retCode), this.field_toUser, this.field_arg, this.field_videoFileId, this.field_argInfo, Integer.valueOf(this.field_UploadHitCacheType), Boolean.valueOf(this.field_needSendMsgField), Integer.valueOf(0), Boolean.valueOf(this.field_convert2baseline), this.field_thumbUrl, this.field_fileUrl, this.field_filemd5, this.field_thumbfilemd5, this.field_mp4identifymd5, Boolean.valueOf(this.field_exist_whencheck), Util.secPrint(this.field_aesKey), Integer.valueOf(this.field_filecrc), Boolean.valueOf(this.field_upload_by_safecdn) });
@@ -161,7 +163,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.i.d
  * JD-Core Version:    0.7.0.1
  */

@@ -2,179 +2,179 @@ package com.tencent.mm.plugin.webview.core;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bhj;
+import com.tencent.mm.protocal.protobuf.bot;
 import com.tencent.xweb.WebResourceRequest;
 import com.tencent.xweb.WebResourceResponse;
 import com.tencent.xweb.WebView;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor;", "", "()V", "clientListener", "Lcom/tencent/mm/plugin/webview/core/WebViewClientListener;", "getClientListener", "()Lcom/tencent/mm/plugin/webview/core/WebViewClientListener;", "controller", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;", "getController", "()Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;", "setController", "(Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;)V", "controllerListener", "Lcom/tencent/mm/plugin/webview/core/WebViewControllerListener;", "getControllerListener", "()Lcom/tencent/mm/plugin/webview/core/WebViewControllerListener;", "screenOrientation", "", "getScreenOrientation", "()I", "attach", "", "enableMinimize", "", "getA8KeyReason", "url", "", "intercept", "Lcom/tencent/xweb/WebResourceResponse;", "webview", "Lcom/tencent/xweb/WebView;", "request", "Lcom/tencent/xweb/WebResourceRequest;", "interceptLoadError", "errorCode", "description", "failingUrl", "overrideGetA8Key", "force", "reason", "overrideNeedSyncGetA8Key", "overrideProcessResult", "reqUrl", "resp", "Lcom/tencent/mm/protocal/protobuf/GetA8KeyResp;", "overrideReload", "overrideRequestAuthCurrentUrl", "overrideStartLoad", "overrideStartLoadBefore", "intent", "Landroid/content/Intent;", "overrideUrl", "Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor$OverrideUrlResult;", "webView", "overrideUrlRedirect", "forceRedirect", "fullUrl", "shouldBeFinished", "OverrideUrlResult", "webview-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor;", "", "()V", "clientListener", "Lcom/tencent/mm/plugin/webview/core/WebViewClientListener;", "getClientListener", "()Lcom/tencent/mm/plugin/webview/core/WebViewClientListener;", "controller", "Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;", "getController", "()Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;", "setController", "(Lcom/tencent/mm/plugin/webview/core/BaseWebViewController;)V", "controllerListener", "Lcom/tencent/mm/plugin/webview/core/WebViewControllerListener;", "getControllerListener", "()Lcom/tencent/mm/plugin/webview/core/WebViewControllerListener;", "screenOrientation", "", "getScreenOrientation", "()I", "attach", "", "enableMinimize", "", "getA8KeyReason", "url", "", "intercept", "Lcom/tencent/xweb/WebResourceResponse;", "webview", "Lcom/tencent/xweb/WebView;", "request", "Lcom/tencent/xweb/WebResourceRequest;", "interceptLoadError", "errorCode", "description", "failingUrl", "overrideGetA8Key", "force", "reason", "overrideNeedSyncGetA8Key", "overrideProcessResult", "reqUrl", "resp", "Lcom/tencent/mm/protocal/protobuf/GetA8KeyResp;", "overrideReload", "overrideRequestAuthCurrentUrl", "overrideStartLoad", "overrideStartLoadBefore", "intent", "Landroid/content/Intent;", "overrideUrl", "Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor$OverrideUrlResult;", "webView", "overrideUrlRedirect", "forceRedirect", "fullUrl", "shouldBeFinished", "OverrideUrlResult", "webview-sdk_release"})
 public class k
 {
-  private final f IMY;
-  private final j IMZ;
+  private final int PJe = -1;
+  private final f PJf;
   public BaseWebViewController controller;
-  private final int screenOrientation = -1;
+  private final j pHv;
   
-  public boolean a(int paramInt, String paramString, bhj parambhj)
+  public boolean a(int paramInt, String paramString, bot parambot)
   {
-    AppMethodBeat.i(225071);
-    p.h(paramString, "reqUrl");
-    p.h(parambhj, "resp");
-    AppMethodBeat.o(225071);
+    AppMethodBeat.i(205622);
+    p.k(paramString, "reqUrl");
+    p.k(parambot, "resp");
+    AppMethodBeat.o(205622);
     return false;
   }
   
   public boolean a(int paramInt, boolean paramBoolean, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(225066);
-    p.h(paramString1, "reqUrl");
-    p.h(paramString2, "fullUrl");
-    AppMethodBeat.o(225066);
+    AppMethodBeat.i(205617);
+    p.k(paramString1, "reqUrl");
+    p.k(paramString2, "fullUrl");
+    AppMethodBeat.o(205617);
     return false;
   }
   
-  public int aXA(String paramString)
+  public boolean a(WebView paramWebView, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(225075);
-    p.h(paramString, "url");
-    AppMethodBeat.o(225075);
-    return -1;
-  }
-  
-  public boolean aXP(String paramString)
-  {
-    AppMethodBeat.i(225067);
-    p.h(paramString, "url");
-    AppMethodBeat.o(225067);
+    AppMethodBeat.i(205625);
+    p.k(paramWebView, "webview");
+    p.k(paramString1, "description");
+    p.k(paramString2, "failingUrl");
+    AppMethodBeat.o(205625);
     return false;
   }
   
-  public boolean aXQ(String paramString)
+  public boolean aqs(String paramString)
   {
-    AppMethodBeat.i(225069);
-    p.h(paramString, "url");
-    AppMethodBeat.o(225069);
-    return false;
-  }
-  
-  public boolean aXR(String paramString)
-  {
-    AppMethodBeat.i(225070);
-    p.h(paramString, "url");
-    AppMethodBeat.o(225070);
-    return true;
-  }
-  
-  public boolean aiD(String paramString)
-  {
-    AppMethodBeat.i(225072);
-    p.h(paramString, "url");
-    AppMethodBeat.o(225072);
+    AppMethodBeat.i(205623);
+    p.k(paramString, "url");
+    AppMethodBeat.o(205623);
     return false;
   }
   
   public WebResourceResponse b(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
-    AppMethodBeat.i(225073);
-    p.h(paramWebView, "webview");
-    p.h(paramWebResourceRequest, "request");
-    AppMethodBeat.o(225073);
+    AppMethodBeat.i(205624);
+    p.k(paramWebView, "webview");
+    p.k(paramWebResourceRequest, "request");
+    AppMethodBeat.o(205624);
     return null;
+  }
+  
+  public j bXJ()
+  {
+    return this.pHv;
+  }
+  
+  public boolean bjJ(String paramString)
+  {
+    AppMethodBeat.i(205620);
+    p.k(paramString, "url");
+    AppMethodBeat.o(205620);
+    return false;
+  }
+  
+  public boolean bjK(String paramString)
+  {
+    AppMethodBeat.i(205621);
+    p.k(paramString, "url");
+    AppMethodBeat.o(205621);
+    return true;
+  }
+  
+  public int bjr(String paramString)
+  {
+    AppMethodBeat.i(205626);
+    p.k(paramString, "url");
+    AppMethodBeat.o(205626);
+    return -1;
   }
   
   public a c(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
-    AppMethodBeat.i(225065);
-    p.h(paramWebView, "webView");
-    p.h(paramWebResourceRequest, "request");
+    AppMethodBeat.i(205616);
+    p.k(paramWebView, "webView");
+    p.k(paramWebResourceRequest, "request");
     paramWebView = new a(false, false);
-    AppMethodBeat.o(225065);
+    AppMethodBeat.o(205616);
     return paramWebView;
-  }
-  
-  public boolean c(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(225074);
-    p.h(paramWebView, "webview");
-    p.h(paramString1, "description");
-    p.h(paramString2, "failingUrl");
-    AppMethodBeat.o(225074);
-    return false;
   }
   
   public boolean e(String paramString, Intent paramIntent)
   {
-    AppMethodBeat.i(225068);
-    p.h(paramString, "url");
-    AppMethodBeat.o(225068);
+    AppMethodBeat.i(205619);
+    p.k(paramString, "url");
+    AppMethodBeat.o(205619);
     return false;
   }
   
-  public boolean gag()
+  public boolean g(String paramString, boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(205618);
+    p.k(paramString, "url");
+    AppMethodBeat.o(205618);
+    return false;
+  }
+  
+  public boolean gSZ()
   {
     return false;
   }
   
-  public boolean gah()
+  public boolean gTa()
   {
     return false;
   }
   
-  public f gai()
+  public f gTb()
   {
-    return this.IMY;
-  }
-  
-  public j gaj()
-  {
-    return this.IMZ;
+    return this.PJf;
   }
   
   public final BaseWebViewController getController()
   {
-    AppMethodBeat.i(225062);
+    AppMethodBeat.i(205613);
     BaseWebViewController localBaseWebViewController = this.controller;
     if (localBaseWebViewController == null) {
-      p.btv("controller");
+      p.bGy("controller");
     }
-    AppMethodBeat.o(225062);
+    AppMethodBeat.o(205613);
     return localBaseWebViewController;
   }
   
   public int getScreenOrientation()
   {
-    return this.screenOrientation;
+    return this.PJe;
   }
   
   public final void k(BaseWebViewController paramBaseWebViewController)
   {
-    AppMethodBeat.i(225063);
-    p.h(paramBaseWebViewController, "controller");
+    AppMethodBeat.i(205614);
+    p.k(paramBaseWebViewController, "controller");
     this.controller = paramBaseWebViewController;
-    AppMethodBeat.o(225063);
+    AppMethodBeat.o(205614);
   }
   
   public a o(WebView paramWebView, String paramString)
   {
-    AppMethodBeat.i(225064);
-    p.h(paramWebView, "webView");
-    p.h(paramString, "url");
+    AppMethodBeat.i(205615);
+    p.k(paramWebView, "webView");
+    p.k(paramString, "url");
     paramWebView = new a(false, false);
-    AppMethodBeat.o(225064);
+    AppMethodBeat.o(205615);
     return paramWebView;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor$OverrideUrlResult;", "", "override", "", "result", "(ZZ)V", "getOverride", "()Z", "getResult", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "", "webview-sdk_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/WebViewInterceptor$OverrideUrlResult;", "", "override", "", "result", "(ZZ)V", "getOverride", "()Z", "getResult", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "", "webview-sdk_release"})
   public static final class a
   {
-    final boolean INa;
+    final boolean PJg;
     final boolean result;
     
     public a(boolean paramBoolean1, boolean paramBoolean2)
     {
-      this.INa = paramBoolean1;
+      this.PJg = paramBoolean1;
       this.result = paramBoolean2;
     }
     
@@ -185,7 +185,7 @@ public class k
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if ((this.INa != paramObject.INa) || (this.result != paramObject.result)) {}
+          if ((this.PJg != paramObject.PJg) || (this.result != paramObject.result)) {}
         }
       }
       else {
@@ -201,9 +201,9 @@ public class k
     
     public final String toString()
     {
-      AppMethodBeat.i(225061);
-      String str = "OverrideUrlResult(override=" + this.INa + ", result=" + this.result + ")";
-      AppMethodBeat.o(225061);
+      AppMethodBeat.i(205386);
+      String str = "OverrideUrlResult(override=" + this.PJg + ", result=" + this.result + ")";
+      AppMethodBeat.o(205386);
       return str;
     }
   }

@@ -13,34 +13,80 @@ import rx.i;
 public final class a<T>
   extends i<T>
 {
-  private final i<? super T> UkG;
+  private final i<? super T> abOc;
   boolean done;
   
   public a(i<? super T> parami)
   {
     super(parami);
-    this.UkG = parami;
+    this.abOc = parami;
   }
   
-  public final void gL(T paramT)
+  public final void c(Throwable paramThrowable)
   {
-    AppMethodBeat.i(90434);
-    try
+    AppMethodBeat.i(90433);
+    b.R(paramThrowable);
+    if (!this.done)
     {
-      if (!this.done) {
-        this.UkG.gL(paramT);
+      this.done = true;
+      c.c(paramThrowable);
+      try
+      {
+        this.abOc.c(paramThrowable);
+        AppMethodBeat.o(90433);
       }
-      AppMethodBeat.o(90434);
-      return;
-    }
-    catch (Throwable paramT)
-    {
-      b.a(paramT, this);
-      AppMethodBeat.o(90434);
+      catch (f localf)
+      {
+        try
+        {
+          iVJ();
+          AppMethodBeat.o(90433);
+          return;
+        }
+        catch (Throwable paramThrowable)
+        {
+          c.c(paramThrowable);
+          paramThrowable = new e(paramThrowable);
+          AppMethodBeat.o(90433);
+          throw paramThrowable;
+        }
+        localf = localf;
+        try
+        {
+          iVJ();
+          AppMethodBeat.o(90433);
+          throw localf;
+        }
+        catch (Throwable localThrowable1)
+        {
+          c.c(localThrowable1);
+          paramThrowable = new f("Observer.onError not implemented and error while unsubscribing.", new rx.a.a(Arrays.asList(new Throwable[] { paramThrowable, localThrowable1 }), (byte)0));
+          AppMethodBeat.o(90433);
+          throw paramThrowable;
+        }
+      }
+      catch (Throwable localThrowable2)
+      {
+        c.c(localThrowable2);
+        try
+        {
+          iVJ();
+          paramThrowable = new e("Error occurred when trying to propagate error to Observer.onError", new rx.a.a(Arrays.asList(new Throwable[] { paramThrowable, localThrowable2 }), (byte)0));
+          AppMethodBeat.o(90433);
+          throw paramThrowable;
+        }
+        catch (Throwable localThrowable3)
+        {
+          c.c(localThrowable3);
+          paramThrowable = new e("Error occurred when trying to propagate error to Observer.onError and during unsubscription.", new rx.a.a(Arrays.asList(new Throwable[] { paramThrowable, localThrowable2, localThrowable3 }), (byte)0));
+          AppMethodBeat.o(90433);
+          throw paramThrowable;
+        }
+      }
     }
   }
   
-  public final void hQw()
+  public final void fUB()
   {
     AppMethodBeat.i(90432);
     if (!this.done)
@@ -48,16 +94,16 @@ public final class a<T>
       this.done = true;
       try
       {
-        this.UkG.hQw();
+        this.abOc.fUB();
         try
         {
-          hQA();
+          iVJ();
           AppMethodBeat.o(90432);
           return;
         }
         catch (Throwable localThrowable1)
         {
-          c.onError(localThrowable1);
+          c.c(localThrowable1);
           h localh1 = new h(localThrowable1.getMessage(), localThrowable1);
           AppMethodBeat.o(90432);
           throw localh1;
@@ -68,8 +114,8 @@ public final class a<T>
       }
       catch (Throwable localThrowable2)
       {
-        b.N(localThrowable2);
-        c.onError(localThrowable2);
+        b.R(localThrowable2);
+        c.c(localThrowable2);
         locald = new d(localThrowable2.getMessage(), localThrowable2);
         AppMethodBeat.o(90432);
         throw locald;
@@ -78,13 +124,13 @@ public final class a<T>
       {
         try
         {
-          hQA();
+          iVJ();
           AppMethodBeat.o(90432);
           throw localObject;
         }
         catch (Throwable localThrowable3)
         {
-          c.onError(localThrowable3);
+          c.c(localThrowable3);
           localh2 = new h(localThrowable3.getMessage(), localThrowable3);
           AppMethodBeat.o(90432);
           throw localh2;
@@ -93,73 +139,27 @@ public final class a<T>
     }
   }
   
-  public final void onError(Throwable paramThrowable)
+  public final void he(T paramT)
   {
-    AppMethodBeat.i(90433);
-    b.N(paramThrowable);
-    if (!this.done)
+    AppMethodBeat.i(90434);
+    try
     {
-      this.done = true;
-      c.onError(paramThrowable);
-      try
-      {
-        this.UkG.onError(paramThrowable);
-        AppMethodBeat.o(90433);
+      if (!this.done) {
+        this.abOc.he(paramT);
       }
-      catch (f localf)
-      {
-        try
-        {
-          hQA();
-          AppMethodBeat.o(90433);
-          return;
-        }
-        catch (Throwable paramThrowable)
-        {
-          c.onError(paramThrowable);
-          paramThrowable = new e(paramThrowable);
-          AppMethodBeat.o(90433);
-          throw paramThrowable;
-        }
-        localf = localf;
-        try
-        {
-          hQA();
-          AppMethodBeat.o(90433);
-          throw localf;
-        }
-        catch (Throwable localThrowable1)
-        {
-          c.onError(localThrowable1);
-          paramThrowable = new f("Observer.onError not implemented and error while unsubscribing.", new rx.a.a(Arrays.asList(new Throwable[] { paramThrowable, localThrowable1 }), (byte)0));
-          AppMethodBeat.o(90433);
-          throw paramThrowable;
-        }
-      }
-      catch (Throwable localThrowable2)
-      {
-        c.onError(localThrowable2);
-        try
-        {
-          hQA();
-          paramThrowable = new e("Error occurred when trying to propagate error to Observer.onError", new rx.a.a(Arrays.asList(new Throwable[] { paramThrowable, localThrowable2 }), (byte)0));
-          AppMethodBeat.o(90433);
-          throw paramThrowable;
-        }
-        catch (Throwable localThrowable3)
-        {
-          c.onError(localThrowable3);
-          paramThrowable = new e("Error occurred when trying to propagate error to Observer.onError and during unsubscription.", new rx.a.a(Arrays.asList(new Throwable[] { paramThrowable, localThrowable2, localThrowable3 }), (byte)0));
-          AppMethodBeat.o(90433);
-          throw paramThrowable;
-        }
-      }
+      AppMethodBeat.o(90434);
+      return;
+    }
+    catch (Throwable paramT)
+    {
+      b.a(paramT, this);
+      AppMethodBeat.o(90434);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     rx.c.a
  * JD-Core Version:    0.7.0.1
  */

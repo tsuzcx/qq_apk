@@ -15,8 +15,8 @@ public final class ae
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt)
   {
     AppMethodBeat.i(144968);
-    paramd.kZm.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
-    paramd.kZl.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
+    paramd.nTx.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
+    paramd.nTw.setShadowLayer(paramFloat3, paramFloat1, paramFloat2, paramInt);
     AppMethodBeat.o(144968);
     return true;
   }
@@ -30,7 +30,7 @@ public final class ae
       AppMethodBeat.o(144969);
       return false;
     }
-    boolean bool = a(paramd, paramCanvas.x, paramCanvas.y, paramCanvas.kZP, paramCanvas.color);
+    boolean bool = a(paramd, paramCanvas.x, paramCanvas.y, paramCanvas.nUa, paramCanvas.color);
     AppMethodBeat.o(144969);
     return bool;
   }
@@ -57,7 +57,7 @@ public final class ae
     return bool;
   }
   
-  public final BaseDrawActionArg bzj()
+  public final BaseDrawActionArg bKy()
   {
     AppMethodBeat.i(144966);
     SetShadowActionArg localSetShadowActionArg = new SetShadowActionArg();
@@ -72,7 +72,7 @@ public final class ae
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.ae
  * JD-Core Version:    0.7.0.1
  */

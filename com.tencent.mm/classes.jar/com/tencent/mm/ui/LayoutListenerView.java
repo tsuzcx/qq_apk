@@ -12,29 +12,29 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class LayoutListenerView
   extends FrameLayout
 {
-  private byte[] OEW;
-  private a OEX;
-  private c OEY;
-  private b OEZ;
   private String TAG;
+  private byte[] VYp;
+  private a VYq;
+  private c VYr;
+  private b VYs;
   
   public LayoutListenerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(141306);
     this.TAG = "MicroMsg.LayoutListenerView";
-    this.OEW = new byte[0];
+    this.VYp = new byte[0];
     AppMethodBeat.o(141306);
   }
   
   protected void onDetachedFromWindow()
   {
     AppMethodBeat.i(141312);
-    synchronized (this.OEW)
+    synchronized (this.VYp)
     {
-      this.OEX = null;
-      this.OEY = null;
-      this.OEZ = null;
+      this.VYq = null;
+      this.VYr = null;
+      this.VYs = null;
       super.onDetachedFromWindow();
       AppMethodBeat.o(141312);
       return;
@@ -62,15 +62,10 @@ public class LayoutListenerView
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(141307);
-    synchronized (this.OEW)
-    {
-      super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    }
+    byte[] arrayOfByte = this.VYp;
+    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    arrayOfByte = this.VYp;
     AppMethodBeat.o(141307);
-    throw localObject1;
-    localObject2 = finally;
-    AppMethodBeat.o(141307);
-    throw localObject2;
   }
   
   @TargetApi(14)
@@ -86,10 +81,10 @@ public class LayoutListenerView
   {
     AppMethodBeat.i(141308);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    synchronized (this.OEW)
+    synchronized (this.VYp)
     {
-      if (this.OEY != null) {
-        this.OEY.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+      if (this.VYr != null) {
+        this.VYr.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
       }
       AppMethodBeat.o(141308);
       return;
@@ -98,27 +93,27 @@ public class LayoutListenerView
   
   public void setOnLayoutListener(a parama)
   {
-    synchronized (this.OEW)
+    synchronized (this.VYp)
     {
-      this.OEX = parama;
+      this.VYq = parama;
       return;
     }
   }
   
   public void setOnPreLayoutListener(b paramb)
   {
-    synchronized (this.OEW)
+    synchronized (this.VYp)
     {
-      this.OEZ = paramb;
+      this.VYs = paramb;
       return;
     }
   }
   
   public void setOnResizedListener(c paramc)
   {
-    synchronized (this.OEW)
+    synchronized (this.VYp)
     {
-      this.OEY = paramc;
+      this.VYr = paramc;
       return;
     }
   }
@@ -134,7 +129,7 @@ public class LayoutListenerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.LayoutListenerView
  * JD-Core Version:    0.7.0.1
  */

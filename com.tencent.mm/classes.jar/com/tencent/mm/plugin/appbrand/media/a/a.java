@@ -14,46 +14,25 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class a
 {
-  private static Map<String, c> ncL;
-  private static Map<String, IListener> ncM;
-  private static ArrayList<String> ncN;
-  private static Map<String, Boolean> ncO;
+  private static Map<String, c> qda;
+  private static Map<String, IListener> qdb;
+  private static ArrayList<String> qdc;
+  private static Map<String, Boolean> qdd;
   
   static
   {
     AppMethodBeat.i(145783);
-    ncL = new ConcurrentHashMap();
-    ncM = new HashMap();
-    ncN = new ArrayList();
-    ncO = new ConcurrentHashMap();
+    qda = new ConcurrentHashMap();
+    qdb = new HashMap();
+    qdc = new ArrayList();
+    qdd = new ConcurrentHashMap();
     AppMethodBeat.o(145783);
-  }
-  
-  public static void Zl(String paramString)
-  {
-    AppMethodBeat.i(145776);
-    Log.i("MicroMsg.Audio.AppBrandAudioClientService", "onDestroy");
-    b.Zl(paramString);
-    ncL.clear();
-    Iterator localIterator = ncN.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (String)localIterator.next();
-      localObject = (IListener)ncM.remove(localObject);
-      if (localObject != null) {
-        EventCenter.instance.removeListener((IListener)localObject);
-      }
-    }
-    ncM.clear();
-    ncN.clear();
-    ncO.remove(paramString);
-    AppMethodBeat.o(145776);
   }
   
   public static void a(String paramString, c paramc)
   {
     AppMethodBeat.i(145777);
-    ncL.put(paramString, paramc);
+    qda.put(paramString, paramc);
     AppMethodBeat.o(145777);
   }
   
@@ -72,61 +51,82 @@ public final class a
       AppMethodBeat.o(145779);
       return;
     }
-    if (ncM.containsKey(paramString)) {
-      acA(paramString);
+    if (qdb.containsKey(paramString)) {
+      aku(paramString);
     }
     Log.d("MicroMsg.Audio.AppBrandAudioClientService", "addAudioPlayerListener,appId:%s", new Object[] { paramString });
-    ncM.put(paramString, paramIListener);
-    if (!ncN.contains(paramString)) {
-      ncN.add(paramString);
+    qdb.put(paramString, paramIListener);
+    if (!qdc.contains(paramString)) {
+      qdc.add(paramString);
     }
     EventCenter.instance.add(paramIListener);
     AppMethodBeat.o(145779);
   }
   
-  public static void acA(String paramString)
+  public static void agY(String paramString)
+  {
+    AppMethodBeat.i(145776);
+    Log.i("MicroMsg.Audio.AppBrandAudioClientService", "onDestroy");
+    b.agY(paramString);
+    qda.clear();
+    Iterator localIterator = qdc.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (String)localIterator.next();
+      localObject = (IListener)qdb.remove(localObject);
+      if (localObject != null) {
+        EventCenter.instance.removeListener((IListener)localObject);
+      }
+    }
+    qdb.clear();
+    qdc.clear();
+    qdd.remove(paramString);
+    AppMethodBeat.o(145776);
+  }
+  
+  public static c akt(String paramString)
+  {
+    AppMethodBeat.i(145778);
+    paramString = (c)qda.get(paramString);
+    AppMethodBeat.o(145778);
+    return paramString;
+  }
+  
+  public static void aku(String paramString)
   {
     AppMethodBeat.i(145780);
-    if (!ncM.containsKey(paramString))
+    if (!qdb.containsKey(paramString))
     {
       Log.e("MicroMsg.Audio.AppBrandAudioClientService", "appId:%s not exist the appId for listener", new Object[] { paramString });
       AppMethodBeat.o(145780);
       return;
     }
     Log.d("MicroMsg.Audio.AppBrandAudioClientService", "removeAudioPlayerListener,appId:%s", new Object[] { paramString });
-    ncN.remove(paramString);
-    paramString = (IListener)ncM.remove(paramString);
+    qdc.remove(paramString);
+    paramString = (IListener)qdb.remove(paramString);
     if (paramString != null) {
       EventCenter.instance.removeListener(paramString);
     }
     AppMethodBeat.o(145780);
   }
   
-  public static boolean acB(String paramString)
+  public static boolean akv(String paramString)
   {
     AppMethodBeat.i(145781);
-    if (!ncO.containsKey(paramString))
+    if (!qdd.containsKey(paramString))
     {
       AppMethodBeat.o(145781);
       return false;
     }
-    boolean bool = ((Boolean)ncO.get(paramString)).booleanValue();
+    boolean bool = ((Boolean)qdd.get(paramString)).booleanValue();
     AppMethodBeat.o(145781);
     return bool;
   }
   
-  public static c acz(String paramString)
-  {
-    AppMethodBeat.i(145778);
-    paramString = (c)ncL.get(paramString);
-    AppMethodBeat.o(145778);
-    return paramString;
-  }
-  
-  public static void aw(String paramString, boolean paramBoolean)
+  public static void ay(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(145782);
-    ncO.put(paramString, Boolean.valueOf(paramBoolean));
+    qdd.put(paramString, Boolean.valueOf(paramBoolean));
     AppMethodBeat.o(145782);
   }
   
@@ -134,15 +134,15 @@ public final class a
   {
     AppMethodBeat.i(145775);
     Log.i("MicroMsg.Audio.AppBrandAudioClientService", "onCreate");
-    ncL.clear();
+    qda.clear();
     b.onCreate(paramString);
-    ncO.put(paramString, Boolean.TRUE);
+    qdd.put(paramString, Boolean.TRUE);
     AppMethodBeat.o(145775);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.a.a
  * JD-Core Version:    0.7.0.1
  */

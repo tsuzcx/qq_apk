@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.location.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cfe;
-import com.tencent.mm.protocal.protobuf.cff;
+import com.tencent.mm.protocal.protobuf.cnz;
+import com.tencent.mm.protocal.protobuf.coa;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
   extends q
   implements m
 {
+  public String Ejl;
   private i callback;
   public int errCode;
   public String errMsg;
   public int errType;
-  private Runnable jkz;
-  public String qwG;
+  private Runnable maA;
   public final d rr;
-  public String yFs;
+  public String tVH;
   
   public b(String paramString)
   {
     AppMethodBeat.i(55788);
-    this.yFs = "";
+    this.Ejl = "";
     d.a locala = new d.a();
-    locala.iLN = new cfe();
-    locala.iLO = new cff();
+    locala.lBU = new cnz();
+    locala.lBV = new coa();
     locala.uri = "/cgi-bin/micromsg-bin/jointrackroom";
     locala.funcId = 490;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    ((cfe)this.rr.iLK.iLR).Mls = paramString;
+    this.rr = locala.bgN();
+    ((cnz)d.b.b(this.rr.lBR)).Twk = paramString;
     Log.d("MicroMsg.NetSceneJoinTrackRoom", "chatNameId:".concat(String.valueOf(paramString)));
     AppMethodBeat.o(55788);
   }
@@ -64,23 +64,23 @@ public final class b
     this.errType = paramInt2;
     this.errCode = paramInt3;
     this.errMsg = paramString;
-    if (((d)params).iLL.iLR != null) {}
-    for (params = (cff)((d)params).iLL.iLR;; params = null)
+    if (d.c.b(((d)params).lBS) != null) {}
+    for (params = (coa)d.c.b(((d)params).lBS);; params = null)
     {
       Log.d("MicroMsg.NetSceneJoinTrackRoom", "onGYNetEnd errType %d errCode%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
       if (((paramInt3 == 0) || (paramInt3 >= 1000)) && (params != null))
       {
-        this.yFs = params.Ltk;
-        Log.d("MicroMsg.NetSceneJoinTrackRoom", "get trackRoomid %s", new Object[] { this.yFs });
+        this.Ejl = params.SvI;
+        Log.d("MicroMsg.NetSceneJoinTrackRoom", "get trackRoomid %s", new Object[] { this.Ejl });
       }
       if (params != null) {
-        this.qwG = params.KOu;
+        this.tVH = params.RPs;
       }
       if (this.callback != null) {
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       }
-      if (this.jkz != null) {
-        this.jkz.run();
+      if (this.maA != null) {
+        this.maA.run();
       }
       AppMethodBeat.o(55790);
       return;

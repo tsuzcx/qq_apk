@@ -10,16 +10,16 @@ public class VertifyInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<VertifyInfo> CREATOR;
-  public int DsN = 0;
-  public String GQO = "";
-  public int GRa;
-  public int GRb;
-  public int GRc = 0;
-  public boolean GRd = false;
-  public String kly = "";
+  public int JzA = 0;
+  public String NGZ = "";
+  public int NHl;
+  public int NHm;
+  public int NHn = 0;
+  public boolean NHo = false;
   public String mFileName = "";
   public String mText = "";
-  public boolean sXX = false;
+  public String ndo = "";
+  public boolean wDW = false;
   
   static
   {
@@ -37,18 +37,18 @@ public class VertifyInfo
   {
     int i = 1;
     AppMethodBeat.i(29790);
-    paramParcel.writeInt(this.GRa);
-    paramParcel.writeInt(this.GRb);
-    paramParcel.writeInt(this.GRc);
-    paramParcel.writeInt(this.DsN);
+    paramParcel.writeInt(this.NHl);
+    paramParcel.writeInt(this.NHm);
+    paramParcel.writeInt(this.NHn);
+    paramParcel.writeInt(this.JzA);
     paramParcel.writeString(Util.nullAs(this.mText, ""));
-    paramParcel.writeString(Util.nullAs(this.GQO, ""));
+    paramParcel.writeString(Util.nullAs(this.NGZ, ""));
     paramParcel.writeString(Util.nullAs(this.mFileName, ""));
-    if (this.GRd)
+    if (this.NHo)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.sXX) {
+      if (!this.wDW) {
         break label119;
       }
     }

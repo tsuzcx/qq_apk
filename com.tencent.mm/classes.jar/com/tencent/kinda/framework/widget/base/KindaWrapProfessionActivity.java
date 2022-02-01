@@ -2,7 +2,7 @@ package com.tencent.kinda.framework.widget.base;
 
 import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.py;
+import com.tencent.mm.f.a.qw;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.Profession;
 import com.tencent.mm.plugin.wallet_core.ui.WalletSelectProfessionUI;
 import com.tencent.mm.sdk.event.EventCenter;
@@ -22,9 +22,9 @@ public class KindaWrapProfessionActivity
     super.onPause();
     if (isFinishing())
     {
-      py localpy = new py();
-      localpy.dWd.dWe = "flag_activity_close_WalletSelectProfessionUI";
-      EventCenter.instance.publish(localpy);
+      qw localqw = new qw();
+      localqw.fPI.fPJ = "flag_activity_close_WalletSelectProfessionUI";
+      EventCenter.instance.publish(localqw);
     }
     AppMethodBeat.o(18987);
   }
@@ -40,9 +40,9 @@ public class KindaWrapProfessionActivity
       }
       int i = Util.getInt(paramf[1], 0);
       paramf = this.mProfessions[i];
-      paramPreference = new py();
-      paramPreference.dWd.dWe = paramf.HTX;
-      paramPreference.dWd.dWf = paramf.HTY;
+      paramPreference = new qw();
+      paramPreference.fPI.fPJ = paramf.OLY;
+      paramPreference.fPI.fPK = paramf.OLZ;
       EventCenter.instance.publish(paramPreference);
       Log.i("", "KindaWrapProfessionActivity.onPreferenceTreeClick，发送事件，当前线程：" + Thread.currentThread().getId());
     }

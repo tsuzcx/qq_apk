@@ -15,12 +15,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.i;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class LivingDescBarLayout
   extends RelativeLayout
 {
-  a DAz;
+  a JMm;
   
   public LivingDescBarLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,132 +34,132 @@ public class LivingDescBarLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void eYt()
+  public final void fMd()
   {
-    AppMethodBeat.i(202419);
-    a locala = this.DAz;
+    AppMethodBeat.i(201103);
+    a locala = this.JMm;
     if (locala != null) {
       locala.stop();
     }
-    AppMethodBeat.o(202419);
+    AppMethodBeat.o(201103);
   }
   
   protected void onAttachedToWindow()
   {
-    AppMethodBeat.i(202420);
+    AppMethodBeat.i(201104);
     super.onAttachedToWindow();
     Log.w("SnsAd.LivingDescBarLayout", "onAttachedToWindow is called!!");
-    AppMethodBeat.o(202420);
+    AppMethodBeat.o(201104);
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(202421);
+    AppMethodBeat.i(201107);
     super.onDetachedFromWindow();
-    a locala = this.DAz;
+    a locala = this.JMm;
     if (locala != null) {
       locala.a(null);
     }
-    AppMethodBeat.o(202421);
+    AppMethodBeat.o(201107);
   }
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(202417);
+    AppMethodBeat.i(201097);
     super.onFinishInflate();
     try
     {
-      ((ImageView)findViewById(2131296498)).setImageResource(2131689519);
-      this.DAz = new a((TextView)findViewById(2131296495), (TextView)findViewById(2131296496));
-      AppMethodBeat.o(202417);
+      ((ImageView)findViewById(i.f.ad_live_desc_image)).setImageResource(i.i.ad_living_description_icon);
+      this.JMm = new a((TextView)findViewById(i.f.ad_live_desc_content1), (TextView)findViewById(i.f.ad_live_desc_content2));
+      AppMethodBeat.o(201097);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(202417);
+      AppMethodBeat.o(201097);
     }
   }
   
   public void setSlideAdapter(b paramb)
   {
-    AppMethodBeat.i(202418);
-    a locala = this.DAz;
+    AppMethodBeat.i(201100);
+    a locala = this.JMm;
     if (locala != null) {
       locala.a(paramb);
     }
-    AppMethodBeat.o(202418);
+    AppMethodBeat.o(201100);
   }
   
   static final class a
     implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener, Handler.Callback
   {
-    private TextView DAA;
-    private TextView DAB;
-    Handler DAC;
-    LivingDescBarLayout.b DAD;
-    private int DAE;
-    float DAF;
-    ValueAnimator aAO;
+    private TextView JMn;
+    private TextView JMo;
+    Handler JMp;
+    LivingDescBarLayout.b JMq;
+    private int JMr;
+    float JMs;
+    ValueAnimator aiD;
     int mState;
     
     public a(TextView paramTextView1, TextView paramTextView2)
     {
-      AppMethodBeat.i(202408);
-      this.DAE = 0;
-      this.DAF = 0.0F;
+      AppMethodBeat.i(265149);
+      this.JMr = 0;
+      this.JMs = 0.0F;
       this.mState = 1;
-      this.DAC = new Handler(Looper.getMainLooper(), this);
-      this.DAA = paramTextView1;
-      this.DAB = paramTextView2;
-      AppMethodBeat.o(202408);
+      this.JMp = new Handler(Looper.getMainLooper(), this);
+      this.JMn = paramTextView1;
+      this.JMo = paramTextView2;
+      AppMethodBeat.o(265149);
     }
     
-    private boolean eYu()
+    private boolean fMe()
     {
-      return (this.DAB != null) && (this.DAA != null);
+      return (this.JMo != null) && (this.JMn != null);
     }
     
-    private static void fd(View paramView)
+    private static void gk(View paramView)
     {
-      AppMethodBeat.i(202416);
+      AppMethodBeat.i(265165);
       if (paramView != null)
       {
         paramView.setVisibility(4);
         paramView.setTranslationY(0.0F);
         paramView.setAlpha(1.0F);
       }
-      AppMethodBeat.o(202416);
+      AppMethodBeat.o(265165);
     }
     
     public final void a(LivingDescBarLayout.b paramb)
     {
-      AppMethodBeat.i(202409);
+      AppMethodBeat.i(265152);
       try
       {
         stop();
-        if ((paramb != null) && (paramb.getCount() > 0) && (eYu()))
+        if ((paramb != null) && (paramb.getCount() > 0) && (fMe()))
         {
-          this.DAE = 0;
-          String str = paramb.XW(this.DAE);
-          this.DAA.setVisibility(0);
-          this.DAA.setText(str);
+          this.JMr = 0;
+          String str = paramb.afk(this.JMr);
+          this.JMn.setVisibility(0);
+          this.JMn.setText(str);
           if (paramb.getCount() > 1) {
-            this.DAC.sendEmptyMessageDelayed(1, 2000L);
+            this.JMp.sendEmptyMessageDelayed(1, 2000L);
           }
         }
-        this.DAD = paramb;
-        AppMethodBeat.o(202409);
+        this.JMq = paramb;
+        AppMethodBeat.o(265152);
         return;
       }
       catch (Throwable paramb)
       {
-        AppMethodBeat.o(202409);
+        AppMethodBeat.o(265152);
       }
     }
     
     public final boolean handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(202415);
+      AppMethodBeat.i(265164);
       try
       {
         int i = paramMessage.what;
@@ -166,21 +168,21 @@ public class LivingDescBarLayout
       catch (Throwable paramMessage)
       {
         label93:
-        AppMethodBeat.o(202415);
+        AppMethodBeat.o(265164);
         return false;
       }
       try
       {
-        if (this.aAO == null)
+        if (this.aiD == null)
         {
-          this.aAO = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F }).setDuration(1000L);
-          this.aAO.addUpdateListener(this);
-          this.aAO.addListener(this);
+          this.aiD = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F }).setDuration(1000L);
+          this.aiD.addUpdateListener(this);
+          this.aiD.addListener(this);
         }
-        if (eYu())
+        if (fMe())
         {
-          this.DAF = this.DAA.getHeight();
-          this.aAO.start();
+          this.JMs = this.JMn.getHeight();
+          this.aiD.start();
           this.mState = 0;
         }
       }
@@ -188,56 +190,56 @@ public class LivingDescBarLayout
       {
         break label93;
       }
-      AppMethodBeat.o(202415);
+      AppMethodBeat.o(265164);
       return true;
     }
     
     public final void onAnimationCancel(Animator paramAnimator)
     {
-      AppMethodBeat.i(202413);
+      AppMethodBeat.i(265162);
       try
       {
         Log.d("SlideController", "onAnimationCancel is called ");
-        fd(this.DAB);
-        fd(this.DAA);
-        AppMethodBeat.o(202413);
+        gk(this.JMo);
+        gk(this.JMn);
+        AppMethodBeat.o(265162);
         return;
       }
       catch (Throwable paramAnimator)
       {
-        AppMethodBeat.o(202413);
+        AppMethodBeat.o(265162);
       }
     }
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(202412);
+      AppMethodBeat.i(265160);
       Log.d("SlideController", "onAnimationEnd is called ");
       try
       {
-        paramAnimator = this.DAD;
-        if ((paramAnimator == null) || (paramAnimator.getCount() <= 0) || (!eYu()))
+        paramAnimator = this.JMq;
+        if ((paramAnimator == null) || (paramAnimator.getCount() <= 0) || (!fMe()))
         {
           Log.d("SlideController", "onAnimationEnd return because of count is 0");
-          AppMethodBeat.o(202412);
+          AppMethodBeat.o(265160);
           return;
         }
-        TextView localTextView = this.DAB;
-        this.DAB = this.DAA;
-        this.DAA = localTextView;
-        fd(this.DAB);
-        this.DAE = ((this.DAE + 1) % paramAnimator.getCount());
-        this.DAF = 0.0F;
+        TextView localTextView = this.JMo;
+        this.JMo = this.JMn;
+        this.JMn = localTextView;
+        gk(this.JMo);
+        this.JMr = ((this.JMr + 1) % paramAnimator.getCount());
+        this.JMs = 0.0F;
         if (this.mState == 0) {
-          this.DAC.sendEmptyMessageDelayed(1, 2000L);
+          this.JMp.sendEmptyMessageDelayed(1, 2000L);
         }
-        this.aAO = null;
-        AppMethodBeat.o(202412);
+        this.aiD = null;
+        AppMethodBeat.o(265160);
         return;
       }
       catch (Throwable paramAnimator)
       {
-        AppMethodBeat.o(202412);
+        AppMethodBeat.o(265160);
       }
     }
     
@@ -245,89 +247,89 @@ public class LivingDescBarLayout
     
     public final void onAnimationStart(Animator paramAnimator)
     {
-      AppMethodBeat.i(202411);
+      AppMethodBeat.i(265157);
       Log.d("SlideController", "onAnimationStart is called ");
       try
       {
-        paramAnimator = this.DAD;
-        if ((paramAnimator == null) || (paramAnimator.getCount() <= 0) || (!eYu()))
+        paramAnimator = this.JMq;
+        if ((paramAnimator == null) || (paramAnimator.getCount() <= 0) || (!fMe()))
         {
           Log.d("SlideController", "onAnimationStart return because of count is 0 ");
-          AppMethodBeat.o(202411);
+          AppMethodBeat.o(265157);
           return;
         }
-        this.DAB.setTranslationY(this.DAF);
-        this.DAB.setAlpha(0.0F);
-        this.DAB.setVisibility(0);
-        int i = this.DAE;
+        this.JMo.setTranslationY(this.JMs);
+        this.JMo.setAlpha(0.0F);
+        this.JMo.setVisibility(0);
+        int i = this.JMr;
         int j = paramAnimator.getCount();
-        this.DAB.setText(paramAnimator.XW((i + 1) % j));
-        AppMethodBeat.o(202411);
+        this.JMo.setText(paramAnimator.afk((i + 1) % j));
+        AppMethodBeat.o(265157);
         return;
       }
       catch (Throwable paramAnimator)
       {
-        AppMethodBeat.o(202411);
+        AppMethodBeat.o(265157);
       }
     }
     
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
-      AppMethodBeat.i(202414);
+      AppMethodBeat.i(265163);
       try
       {
         paramValueAnimator = paramValueAnimator.getAnimatedValue();
         if ((paramValueAnimator instanceof Float))
         {
           float f1 = ((Float)paramValueAnimator).floatValue();
-          if (eYu())
+          if (fMe())
           {
-            float f2 = this.DAF * f1;
-            this.DAB.setTranslationY(this.DAF - f2);
-            this.DAB.setAlpha(f1);
-            this.DAA.setTranslationY(-f2);
-            this.DAA.setAlpha(1.0F - f1);
+            float f2 = this.JMs * f1;
+            this.JMo.setTranslationY(this.JMs - f2);
+            this.JMo.setAlpha(f1);
+            this.JMn.setTranslationY(-f2);
+            this.JMn.setAlpha(1.0F - f1);
           }
         }
-        AppMethodBeat.o(202414);
+        AppMethodBeat.o(265163);
         return;
       }
       catch (Throwable paramValueAnimator)
       {
-        AppMethodBeat.o(202414);
+        AppMethodBeat.o(265163);
       }
     }
     
     public final void stop()
     {
-      AppMethodBeat.i(202410);
+      AppMethodBeat.i(265154);
       try
       {
         this.mState = 1;
-        this.DAC.removeMessages(1);
-        if ((this.aAO != null) && (this.aAO.isRunning())) {
-          this.aAO.cancel();
+        this.JMp.removeMessages(1);
+        if ((this.aiD != null) && (this.aiD.isRunning())) {
+          this.aiD.cancel();
         }
-        AppMethodBeat.o(202410);
+        AppMethodBeat.o(265154);
         return;
       }
       catch (Throwable localThrowable)
       {
-        AppMethodBeat.o(202410);
+        AppMethodBeat.o(265154);
       }
     }
   }
   
   public static abstract interface b
   {
-    public abstract String XW(int paramInt);
+    public abstract String afk(int paramInt);
     
     public abstract int getCount();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.widget.living.LivingDescBarLayout
  * JD-Core Version:    0.7.0.1
  */

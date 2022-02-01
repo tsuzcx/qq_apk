@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.sns.model.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.r;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.plugin.sns.data.t;
+import com.tencent.mm.vfs.u;
 
 public final class g
   extends c
@@ -13,18 +13,18 @@ public final class g
     super(parama, parama1);
   }
   
-  public final String aPI(String paramString)
+  public final String baE(String paramString)
   {
     return paramString;
   }
   
-  public final boolean fbX()
+  public final boolean fPQ()
   {
     AppMethodBeat.i(96072);
-    if ((this.DPt != null) && (!TextUtils.isEmpty(this.DPt.DEu))) {}
-    for (String str = this.DPt.DEu;; str = r.j(this.ebR))
+    if ((this.KcA != null) && (!TextUtils.isEmpty(this.KcA.JRp))) {}
+    for (String str = this.KcA.JRp;; str = t.i(this.fVT))
     {
-      s.bo(this.DPt.getPath(), this.DPt.fbV(), str);
+      u.bj(this.KcA.getPath(), this.KcA.fPO(), str);
       AppMethodBeat.o(96072);
       return true;
     }
@@ -37,7 +37,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.a.g
  * JD-Core Version:    0.7.0.1
  */

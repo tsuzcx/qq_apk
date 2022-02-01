@@ -1,30 +1,32 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.SmoothScrollFactory;
 
 final class ExdeviceProfileUI$14
-  implements View.OnClickListener
+  implements Runnable
 {
   ExdeviceProfileUI$14(ExdeviceProfileUI paramExdeviceProfileUI) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    AppMethodBeat.i(179610);
-    b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileUI$21", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    ExdeviceProfileUI.w(this.rJu);
-    a.a(this, "com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileUI$21", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(179610);
+    AppMethodBeat.i(24108);
+    Object localObject1 = ExdeviceProfileUI.u(this.vpc);
+    localObject1 = new com.tencent.mm.hellhoundlib.b.a().bm(localObject1);
+    Object localObject2 = new Object();
+    com.tencent.mm.hellhoundlib.a.a.b(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aFh(), "com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileUI$21", "run", "()V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+    BackwardSupportUtil.SmoothScrollFactory.scrollToTop((ListView)((com.tencent.mm.hellhoundlib.b.a)localObject1).sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localObject2, "com/tencent/mm/plugin/exdevice/ui/ExdeviceProfileUI$21", "run", "()V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+    if (ExdeviceProfileUI.u(this.vpc).getCount() > 0) {
+      BackwardSupportUtil.SmoothScrollFactory.scrollTo(ExdeviceProfileUI.u(this.vpc), ExdeviceProfileUI.u(this.vpc).getCount() - 1);
+    }
+    AppMethodBeat.o(24108);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceProfileUI.14
  * JD-Core Version:    0.7.0.1
  */

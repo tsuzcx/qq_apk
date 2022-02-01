@@ -12,7 +12,7 @@ public final class d
   final char[] b;
   boolean c;
   j[] d;
-  d.l[] e;
+  l[] e;
   byte[] f;
   private final a g;
   private final a h;
@@ -145,7 +145,7 @@ public final class d
   {
     // Byte code:
     //   0: ldc 234
-    //   2: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: new 236	java/io/RandomAccessFile
     //   8: dup
     //   9: aload_0
@@ -167,7 +167,7 @@ public final class d
     //   39: lcmp
     //   40: ifne +66 -> 106
     //   43: ldc 234
-    //   45: invokestatic 100	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   45: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   48: iconst_1
     //   49: ireturn
     //   50: astore 6
@@ -199,11 +199,11 @@ public final class d
     //   94: aload 4
     //   96: invokestatic 249	com/tencent/tbs/one/impl/a/c:a	(Ljava/io/Closeable;)V
     //   99: ldc 234
-    //   101: invokestatic 100	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   101: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   104: aload_0
     //   105: athrow
     //   106: ldc 234
-    //   108: invokestatic 100	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   108: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   111: iconst_0
     //   112: ireturn
     //   113: astore_0
@@ -264,7 +264,7 @@ public final class d
         k = 24;
         label108:
         m /= k;
-        this.e = new d.l[m];
+        this.e = new l[m];
         arrayOfChar = new char[1];
         k = 0;
         label127:
@@ -515,10 +515,18 @@ public final class d
     
     public abstract long b();
   }
+  
+  static abstract class l
+  {
+    int c;
+    char d;
+    char e;
+    short f;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.tbs.one.impl.c.a.d
  * JD-Core Version:    0.7.0.1
  */

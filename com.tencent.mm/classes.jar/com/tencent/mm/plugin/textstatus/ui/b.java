@@ -1,94 +1,75 @@
 package com.tencent.mm.plugin.textstatus.ui;
 
-import android.app.Dialog;
-import android.content.Context;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.LinearLayout;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.plugin.textstatus.a.i;
+import com.tencent.mm.plugin.textstatus.g.e.a;
+import com.tencent.mm.plugin.textstatus.k.f;
+import com.tencent.mm.plugin.textstatus.proto.TextStatusTopicInfo;
+import com.tencent.mm.vfs.u;
+import java.util.LinkedList;
+import java.util.List;
+import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/textstatus/ui/MMCardDialog;", "Landroid/app/Dialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "layoutCustom", "Landroid/widget/LinearLayout;", "viewBack", "Landroid/view/View;", "getLayoutCustom", "initUI", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onStart", "setCustomView", "customView", "plugin-textstatus_release"})
-public class b
-  extends Dialog
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"isCanPullDown", "", "username", "", "customParts", "Lcom/tencent/mm/plugin/textstatus/api/IStatusCustomParts;", "info", "Lcom/tencent/mm/plugin/textstatus/model/storage/TextStatusItem;", "runCurrentUi", "", "runnable", "Ljava/lang/Runnable;", "isSameThird", "Lcom/tencent/mm/plugin/textstatus/proto/TextStatusTopicInfo;", "topicInfo", "plugin-textstatus_release"})
+public final class b
 {
-  LinearLayout GcD;
-  
-  public b(Context paramContext)
+  public static final boolean a(TextStatusTopicInfo paramTextStatusTopicInfo1, TextStatusTopicInfo paramTextStatusTopicInfo2)
   {
-    super(paramContext, 2131821025);
-    AppMethodBeat.i(216365);
-    AppMethodBeat.o(216365);
-  }
-  
-  protected void initUI()
-  {
-    AppMethodBeat.i(216364);
-    Window localWindow = getWindow();
-    if (localWindow != null) {
-      localWindow.setWindowAnimations(2131821529);
-    }
-    setContentView(LayoutInflater.from(getContext()).inflate(2131493361, null, false));
-    this.GcD = ((LinearLayout)findViewById(2131303087));
-    findViewById(2131299644).setOnClickListener((View.OnClickListener)new a(this));
-    AppMethodBeat.o(216364);
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    AppMethodBeat.i(216362);
-    super.onCreate(paramBundle);
-    initUI();
-    AppMethodBeat.o(216362);
-  }
-  
-  protected void onStart()
-  {
-    AppMethodBeat.i(216363);
-    super.onStart();
-    Window localWindow = getWindow();
-    if (localWindow != null) {
-      localWindow.addFlags(67108864);
-    }
-    localWindow = getWindow();
-    if (localWindow != null) {
-      localWindow.setDimAmount(0.5F);
-    }
-    localWindow = getWindow();
-    if (localWindow != null)
+    AppMethodBeat.i(232500);
+    p.k(paramTextStatusTopicInfo1, "$this$isSameThird");
+    if (paramTextStatusTopicInfo2 == null)
     {
-      localWindow.setLayout(-1, -1);
-      AppMethodBeat.o(216363);
-      return;
+      AppMethodBeat.o(232500);
+      return false;
     }
-    AppMethodBeat.o(216363);
+    if ((p.h(paramTextStatusTopicInfo1.sourceId, paramTextStatusTopicInfo2.sourceId) ^ true))
+    {
+      AppMethodBeat.o(232500);
+      return false;
+    }
+    LinkedList localLinkedList = paramTextStatusTopicInfo2.jumpInfos;
+    if ((localLinkedList != null) && (k.B((List)localLinkedList, (List)paramTextStatusTopicInfo1.jumpInfos) == true))
+    {
+      paramTextStatusTopicInfo2 = paramTextStatusTopicInfo2.sourceJumpInfos;
+      if ((paramTextStatusTopicInfo2 != null) && (k.B((List)paramTextStatusTopicInfo2, (List)paramTextStatusTopicInfo1.sourceJumpInfos) == true))
+      {
+        AppMethodBeat.o(232500);
+        return true;
+      }
+    }
+    AppMethodBeat.o(232500);
+    return false;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class a
-    implements View.OnClickListener
+  public static final boolean a(String paramString, i parami, a parama)
   {
-    a(b paramb) {}
-    
-    public final void onClick(View paramView)
+    AppMethodBeat.i(232502);
+    p.k(paramString, "username");
+    f localf = f.MOw;
+    if (u.agG(f.lD("thumb", paramString)))
     {
-      AppMethodBeat.i(216361);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      a.b("com/tencent/mm/plugin/textstatus/ui/MMCardDialog$initUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      this.GcE.dismiss();
-      a.a(this, "com/tencent/mm/plugin/textstatus/ui/MMCardDialog$initUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(216361);
+      AppMethodBeat.o(232502);
+      return true;
     }
+    if ((parami != null) && (parami.dDH() == true))
+    {
+      AppMethodBeat.o(232502);
+      return true;
+    }
+    if ((parama != null) && (!TextUtils.isEmpty((CharSequence)parama.field_MediaThumbUrl)))
+    {
+      AppMethodBeat.o(232502);
+      return true;
+    }
+    AppMethodBeat.o(232502);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.ui.b
  * JD-Core Version:    0.7.0.1
  */

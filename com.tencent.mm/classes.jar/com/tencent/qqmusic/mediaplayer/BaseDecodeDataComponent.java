@@ -16,17 +16,14 @@ import com.tencent.qqmusic.mediaplayer.util.PcmConvertionUtil;
 import com.tencent.qqmusic.mediaplayer.util.WaitNotify;
 import com.tencent.qqmusic.mediaplayer.util.WaitNotify.WaitListener;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 abstract class BaseDecodeDataComponent
 {
   static final int CALL_PREPARED_DELAY_TIME = 20;
   private static int MAX_PLAY_SAMPLE_RATE = 0;
   private static final String TAG = "BaseDecodeDataComponent";
-  final List<IAudioListener> audioEffects = new ArrayList(3);
   boolean isUseFloatForHighDepth = false;
+  final IAudioListener mAudioEffectListener;
   int mAudioStreamType = getAudioStreamType();
   AudioTrack mAudioTrack;
   int mBuffSize;
@@ -50,10 +47,10 @@ abstract class BaseDecodeDataComponent
   final PlayerStateRunner mStateRunner;
   int mTargetBitDepth = 2;
   long mTargetPlaySample;
-  final List<IAudioListener> mTerminalAudioEffectList = new ArrayList();
+  final IAudioListener mTerminalAudioEffectListener;
   PerformanceTracer performanceTracer = null;
   
-  BaseDecodeDataComponent(CorePlayer paramCorePlayer, PlayerStateRunner paramPlayerStateRunner, AudioInformation paramAudioInformation, PlayerCallback paramPlayerCallback, HandleDecodeDataCallback paramHandleDecodeDataCallback, Handler paramHandler, int paramInt)
+  BaseDecodeDataComponent(CorePlayer paramCorePlayer, PlayerStateRunner paramPlayerStateRunner, AudioInformation paramAudioInformation, PlayerCallback paramPlayerCallback, HandleDecodeDataCallback paramHandleDecodeDataCallback, Handler paramHandler, int paramInt, IAudioListener paramIAudioListener1, IAudioListener paramIAudioListener2)
   {
     this.mCorePlayer = paramCorePlayer;
     this.mStateRunner = paramPlayerStateRunner;
@@ -62,6 +59,8 @@ abstract class BaseDecodeDataComponent
     this.mHandleDecodeDataCallback = paramHandleDecodeDataCallback;
     this.mEventHandler = paramHandler;
     this.mPlayerID = paramInt;
+    this.mAudioEffectListener = paramIAudioListener1;
+    this.mTerminalAudioEffectListener = paramIAudioListener2;
   }
   
   private void callExceptionCallback(int paramInt1, int paramInt2, int paramInt3)
@@ -71,20 +70,8 @@ abstract class BaseDecodeDataComponent
   
   private void destroyAudioListeners()
   {
-    synchronized (this.audioEffects)
-    {
-      Iterator localIterator1 = this.audioEffects.iterator();
-      if (localIterator1.hasNext()) {
-        ((IAudioListener)localIterator1.next()).onPlayerStopped();
-      }
-    }
-    synchronized (this.mTerminalAudioEffectList)
-    {
-      Iterator localIterator2 = this.mTerminalAudioEffectList.iterator();
-      if (localIterator2.hasNext()) {
-        ((IAudioListener)localIterator2.next()).onPlayerStopped();
-      }
-    }
+    this.mAudioEffectListener.onPlayerStopped();
+    this.mTerminalAudioEffectListener.onPlayerStopped();
   }
   
   static int getAudioTrackPosition(long paramLong, AudioTrack paramAudioTrack)
@@ -123,84 +110,6 @@ abstract class BaseDecodeDataComponent
       return new AudioTrack(localBuilder.build(), localBuilder1.build(), paramInt5, paramInt6, 0);
     }
     return new AudioTrack(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
-  }
-  
-  private static boolean processAudioListener(IAudioListener paramIAudioListener, BufferInfo paramBufferInfo1, BufferInfo paramBufferInfo2, long paramLong)
-  {
-    try
-    {
-      paramBufferInfo2.setByteBufferCapacity(paramBufferInfo1.bufferSize);
-      boolean bool = paramIAudioListener.onPcm(paramBufferInfo1, paramBufferInfo2, paramLong);
-      return bool;
-    }
-    catch (Throwable paramBufferInfo1)
-    {
-      Logger.e("BaseDecodeDataComponent", "[processAudioListener] failed. audio: ".concat(String.valueOf(paramIAudioListener)), paramBufferInfo1);
-    }
-    return false;
-  }
-  
-  private static boolean processAudioListener(IAudioListener paramIAudioListener, FloatBufferInfo paramFloatBufferInfo1, FloatBufferInfo paramFloatBufferInfo2, long paramLong)
-  {
-    try
-    {
-      paramFloatBufferInfo2.setFloatBufferCapacity(paramFloatBufferInfo1.bufferSize);
-      boolean bool = paramIAudioListener.onPcm(paramFloatBufferInfo1, paramFloatBufferInfo2, paramLong);
-      return bool;
-    }
-    catch (Throwable paramFloatBufferInfo1)
-    {
-      Logger.e("BaseDecodeDataComponent", "[processAudioListener] failed. audio: ".concat(String.valueOf(paramIAudioListener)), paramFloatBufferInfo1);
-    }
-    return false;
-  }
-  
-  void addAudioListener(IAudioListener paramIAudioListener)
-  {
-    if (paramIAudioListener.isTerminal()) {
-      synchronized (this.mTerminalAudioEffectList)
-      {
-        if (!this.mTerminalAudioEffectList.contains(paramIAudioListener))
-        {
-          this.mTerminalAudioEffectList.add(paramIAudioListener);
-          Logger.i("BaseDecodeDataComponent", "[addAudioListener] terminal audio added: ".concat(String.valueOf(paramIAudioListener)));
-        }
-        if ((this.mInformation == null) || (this.mInformation.getPlaySample() <= 0L) || (this.mInformation.getChannels() <= 0)) {
-          break label228;
-        }
-      }
-    }
-    try
-    {
-      for (;;)
-      {
-        l = paramIAudioListener.onPlayerReady(this.mTargetBitDepth, this.mInformation, getCurPosition());
-        if (l != 0L) {
-          Logger.e("BaseDecodeDataComponent", "[addAudioListener] failed to init audio %s, ret: %d", new Object[] { paramIAudioListener, Long.valueOf(l) });
-        }
-        return;
-        paramIAudioListener = finally;
-        throw paramIAudioListener;
-        synchronized (this.audioEffects)
-        {
-          if (!this.audioEffects.contains(paramIAudioListener))
-          {
-            this.audioEffects.add(paramIAudioListener);
-            Logger.i("BaseDecodeDataComponent", "[addAudioListener] audio added: ".concat(String.valueOf(paramIAudioListener)));
-          }
-        }
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        Logger.e("BaseDecodeDataComponent", "[addAudioListener] failed to init audio: ".concat(String.valueOf(paramIAudioListener)), localThrowable);
-        long l = 0L;
-      }
-    }
-    label228:
-    Logger.i("BaseDecodeDataComponent", "[addAudioListener] audio information not ready. init will be delayed.");
   }
   
   String axiliary(String paramString)
@@ -414,21 +323,8 @@ abstract class BaseDecodeDataComponent
   
   void initAudioListeners(int paramInt, AudioInformation paramAudioInformation, long paramLong)
   {
-    Iterator localIterator;
-    synchronized (this.audioEffects)
-    {
-      localIterator = this.audioEffects.iterator();
-      if (localIterator.hasNext()) {
-        ((IAudioListener)localIterator.next()).onPlayerReady(paramInt, paramAudioInformation, paramLong);
-      }
-    }
-    synchronized (this.mTerminalAudioEffectList)
-    {
-      localIterator = this.mTerminalAudioEffectList.iterator();
-      if (localIterator.hasNext()) {
-        ((IAudioListener)localIterator.next()).onPlayerReady(paramInt, paramAudioInformation, paramLong);
-      }
-    }
+    this.mAudioEffectListener.onPlayerReady(paramInt, paramAudioInformation, paramLong);
+    this.mTerminalAudioEffectListener.onPlayerReady(paramInt, paramAudioInformation, paramLong);
   }
   
   boolean isCompleted()
@@ -527,20 +423,8 @@ abstract class BaseDecodeDataComponent
   
   void notifySeekCompleteForAudioListeners(long paramLong)
   {
-    synchronized (this.audioEffects)
-    {
-      Iterator localIterator1 = this.audioEffects.iterator();
-      if (localIterator1.hasNext()) {
-        ((IAudioListener)localIterator1.next()).onPlayerSeekComplete(paramLong);
-      }
-    }
-    synchronized (this.mTerminalAudioEffectList)
-    {
-      Iterator localIterator2 = this.mTerminalAudioEffectList.iterator();
-      if (localIterator2.hasNext()) {
-        ((IAudioListener)localIterator2.next()).onPlayerSeekComplete(paramLong);
-      }
-    }
+    this.mAudioEffectListener.onPlayerSeekComplete(paramLong);
+    this.mTerminalAudioEffectListener.onPlayerSeekComplete(paramLong);
   }
   
   void pause(boolean paramBoolean)
@@ -563,88 +447,6 @@ abstract class BaseDecodeDataComponent
   void postRunnable(Runnable paramRunnable, int paramInt)
   {
     this.mEventHandler.postDelayed(paramRunnable, paramInt);
-  }
-  
-  void processAudioListeners(BufferInfo paramBufferInfo1, BufferInfo paramBufferInfo2)
-  {
-    for (;;)
-    {
-      Object localObject1;
-      Object localObject2;
-      synchronized (this.audioEffects)
-      {
-        if (this.audioEffects.size() == 0)
-        {
-          paramBufferInfo1.fillInto(paramBufferInfo2);
-          return;
-        }
-        Iterator localIterator = this.audioEffects.iterator();
-        localObject1 = paramBufferInfo2;
-        localObject2 = paramBufferInfo1;
-        if (!localIterator.hasNext()) {
-          break label136;
-        }
-        Object localObject3 = (IAudioListener)localIterator.next();
-        if (((IAudioListener)localObject3).isEnabled())
-        {
-          if (processAudioListener((IAudioListener)localObject3, (BufferInfo)localObject2, (BufferInfo)localObject1, this.mCorePlayer.getCurPositionByDecoder()))
-          {
-            localObject3 = localObject1;
-            localObject1 = localObject2;
-            localObject2 = localObject3;
-            continue;
-          }
-          ((BufferInfo)localObject2).fillInto((BufferInfo)localObject1);
-        }
-      }
-      ((BufferInfo)localObject2).fillInto((BufferInfo)localObject1);
-      continue;
-      label136:
-      if (localObject2 == paramBufferInfo1) {
-        paramBufferInfo1.fillInto(paramBufferInfo2);
-      }
-    }
-  }
-  
-  void processAudioListeners(FloatBufferInfo paramFloatBufferInfo1, FloatBufferInfo paramFloatBufferInfo2)
-  {
-    for (;;)
-    {
-      Object localObject1;
-      Object localObject2;
-      synchronized (this.audioEffects)
-      {
-        if (this.audioEffects.size() == 0)
-        {
-          paramFloatBufferInfo1.copy(paramFloatBufferInfo2);
-          return;
-        }
-        Iterator localIterator = this.audioEffects.iterator();
-        localObject1 = paramFloatBufferInfo2;
-        localObject2 = paramFloatBufferInfo1;
-        if (!localIterator.hasNext()) {
-          break label136;
-        }
-        Object localObject3 = (IAudioListener)localIterator.next();
-        if (((IAudioListener)localObject3).isEnabled())
-        {
-          if (processAudioListener((IAudioListener)localObject3, (FloatBufferInfo)localObject2, (FloatBufferInfo)localObject1, this.mCorePlayer.getCurPositionByDecoder()))
-          {
-            localObject3 = localObject1;
-            localObject1 = localObject2;
-            localObject2 = localObject3;
-            continue;
-          }
-          ((FloatBufferInfo)localObject2).copy((FloatBufferInfo)localObject1);
-        }
-      }
-      ((FloatBufferInfo)localObject2).copy((FloatBufferInfo)localObject1);
-      continue;
-      label136:
-      if (localObject2 == paramFloatBufferInfo1) {
-        paramFloatBufferInfo1.copy(paramFloatBufferInfo2);
-      }
-    }
   }
   
   void refreshTimeAndNotify(int paramInt)
@@ -721,25 +523,6 @@ abstract class BaseDecodeDataComponent
     {
       Logger.d("BaseDecodeDataComponent", axiliary("lock is Waiting, event: release, doNotify"));
       this.mSignalControl.doNotify();
-    }
-  }
-  
-  void removeAudioListener(IAudioListener paramIAudioListener)
-  {
-    synchronized (this.audioEffects)
-    {
-      if (this.audioEffects.remove(paramIAudioListener)) {
-        Logger.i("BaseDecodeDataComponent", "[removeAudioListener] audio removed: ".concat(String.valueOf(paramIAudioListener)));
-      }
-    }
-    synchronized (this.mTerminalAudioEffectList)
-    {
-      if (this.mTerminalAudioEffectList.remove(paramIAudioListener)) {
-        Logger.i("BaseDecodeDataComponent", "[removeAudioListener] terminal audio removed: ".concat(String.valueOf(paramIAudioListener)));
-      }
-      return;
-      paramIAudioListener = finally;
-      throw paramIAudioListener;
     }
   }
   
@@ -820,7 +603,7 @@ abstract class BaseDecodeDataComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.BaseDecodeDataComponent
  * JD-Core Version:    0.7.0.1
  */

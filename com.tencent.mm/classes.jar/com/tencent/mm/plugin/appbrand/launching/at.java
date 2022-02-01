@@ -1,63 +1,78 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
+import android.content.Intent;
+import android.os.Build.VERSION;
+import com.tencent.luggage.sdk.processes.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.protocal.protobuf.ys;
+import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.plugin.appbrand.task.g;
+import com.tencent.mm.plugin.appbrand.task.i;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.ui.MMActivity.a;
 
-public final class at
-  extends MAutoStorage<as>
+public class at
+  implements y, MMActivity.a
 {
-  public static final String[] iBh;
+  public final int requestCode;
   
-  static
+  protected at()
   {
-    AppMethodBeat.i(227093);
-    iBh = new String[] { MAutoStorage.getCreateSQLs(as.kLR, "WxaJsApiPluginInfo") };
-    AppMethodBeat.o(227093);
+    AppMethodBeat.i(47308);
+    this.requestCode = (at.class.hashCode() & 0xFFFF);
+    AppMethodBeat.o(47308);
   }
   
-  public at(ISQLiteDatabase paramISQLiteDatabase)
+  public void NR() {}
+  
+  public final boolean bZy()
   {
-    super(paramISQLiteDatabase, as.kLR, "WxaJsApiPluginInfo", as.INDEX_CREATE);
+    return true;
   }
   
-  public final ys ach(String paramString)
+  public void cad() {}
+  
+  public void cae()
   {
-    AppMethodBeat.i(227092);
-    try
-    {
-      as localas = new as();
-      localas.field_appId = paramString;
-      if (get(localas, new String[0]))
-      {
-        Log.i("MicroMsg.LaunchWxaJsApiPluginInfoStorage", "found info with appId(%s)", new Object[] { paramString });
-        ys localys = new ys();
-        localys.parseFrom(localas.field_permissionProtoBlob);
-        int i = localys.LjS.zy.length;
-        if (i > 0)
-        {
-          AppMethodBeat.o(227092);
-          return localys;
-        }
-        Log.i("MicroMsg.LaunchWxaJsApiPluginInfoStorage", "found info with appId(%s) but jsapi_control_bytes invalid", new Object[] { paramString });
-      }
-      AppMethodBeat.o(227092);
-      return null;
+    AppMethodBeat.i(47309);
+    if (d.qV(17)) {
+      NR();
     }
-    catch (Exception localException)
+    AppMethodBeat.o(47309);
+  }
+  
+  public final void d(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(47310);
+    if (this.requestCode != paramInt1)
     {
-      Log.printErrStackTrace("MicroMsg.LaunchWxaJsApiPluginInfoStorage", localException, "get with appId(%s)", new Object[] { paramString });
-      AppMethodBeat.o(227092);
+      AppMethodBeat.o(47310);
+      return;
     }
-    return null;
+    if (paramInt2 == -1)
+    {
+      Log.i("MicroMsg.AppBrand.PreLaunchCheckForXWEB", "onActivityResult, tbs download ok");
+      g.cjb().b(b.cBi);
+      NR();
+      AppMethodBeat.o(47310);
+      return;
+    }
+    if (paramInt2 == 2)
+    {
+      Log.i("MicroMsg.AppBrand.PreLaunchCheckForXWEB", "onActivityResult, tbs cancel loading, download in background");
+      cad();
+      AppMethodBeat.o(47310);
+      return;
+    }
+    Log.i("MicroMsg.AppBrand.PreLaunchCheckForXWEB", "onActivityResult, tbs download unknown error, resultCode = %d, apiLevel = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(Build.VERSION.SDK_INT) });
+    h.IzE.idkeyStat(366L, 8L, 1L, false);
+    cae();
+    AppMethodBeat.o(47310);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.at
  * JD-Core Version:    0.7.0.1
  */

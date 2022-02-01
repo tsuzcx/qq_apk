@@ -16,7 +16,7 @@
                 <View android:layout_width="0.0dip" android:layout_height="24.0dip" android:layout_weight="1.0" />
             </LinearLayout>
         </RelativeLayout>
-        <android.support.v7.widget.RecyclerView android:id="@id/dpt" android:background="@color/p_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/dpr" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/dpt" android:background="@color/p_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/dpr" />
         <TextView android:textSize="@dimen/hc" android:textColor="@color/bl" android:gravity="center|left" android:id="@id/lb" android:background="@color/u_" android:paddingLeft="@dimen/k5" android:paddingTop="@dimen/kb" android:paddingRight="@dimen/k5" android:paddingBottom="@dimen/kb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </RelativeLayout>
 </RelativeLayout>

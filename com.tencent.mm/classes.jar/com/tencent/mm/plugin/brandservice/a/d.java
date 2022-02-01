@@ -1,10 +1,9 @@
 package com.tencent.mm.plugin.brandservice.a;
 
-import com.tencent.mm.kernel.b.a;
-
 public abstract interface d
-  extends a
-{}
+{
+  public abstract String getUserName();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar

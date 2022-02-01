@@ -12,7 +12,7 @@
     <View android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="@dimen/cc" android:layout_marginRight="@dimen/cc" />
     <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/esu" android:background="@drawable/asf" android:paddingLeft="@dimen/cc" android:paddingRight="@dimen/cc" android:layout_width="fill_parent" android:layout_height="@dimen/cr">
         <TextView android:textSize="@dimen/t" android:textColor="@color/FG_0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d5p" />
-        <TextView android:textSize="@dimen/bd" android:textColor="@color/FG_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d5q" />
+        <TextView android:textSize="@dimen/bd" android:textColor="@color/FG_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/k61" />
     </LinearLayout>
     <View android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="@dimen/cc" android:layout_marginRight="@dimen/cc" android:layout_marginBottom="98.0dip" />
 </LinearLayout>

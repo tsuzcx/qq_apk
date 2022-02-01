@@ -6,57 +6,65 @@ import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.Window;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.plugin.l.a;
+import com.tencent.mm.an.q;
 import com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyBaseUI;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
 import java.util.LinkedList;
 import java.util.List;
 
 public class SnsLuckyMoneyDetailUI
   extends LuckyMoneyBaseUI
 {
-  private b DGf;
-  private ListView yQs;
-  AbsListView.OnScrollListener yQz;
-  private final int zec;
-  private final int zed;
+  private final int EID;
+  private final int EIE;
+  private ListView Eur;
+  AbsListView.OnScrollListener Euy;
+  private b JTb;
   
   public SnsLuckyMoneyDetailUI()
   {
     AppMethodBeat.i(68357);
-    this.yQz = new AbsListView.OnScrollListener()
+    this.Euy = new AbsListView.OnScrollListener()
     {
-      private boolean yQA = false;
-      private boolean yQB;
+      private boolean EuA;
+      private boolean Euz = false;
       
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
         boolean bool = true;
         AppMethodBeat.i(68355);
-        if ((paramAnonymousInt3 == 0) || (!this.yQA))
+        if ((paramAnonymousInt3 == 0) || (!this.Euz))
         {
           AppMethodBeat.o(68355);
           return;
         }
         if (paramAnonymousInt1 > 0) {}
-        label60:
-        label107:
-        label110:
+        label61:
+        label108:
+        label111:
         for (;;)
         {
-          if (this.yQB != bool)
+          if (this.EuA != bool)
           {
             if (bool)
             {
-              SnsLuckyMoneyDetailUI.this.getResources().getDrawable(2131101135);
-              SnsLuckyMoneyDetailUI.eZN();
-              this.yQB = bool;
+              SnsLuckyMoneyDetailUI.this.getResources().getDrawable(a.c.sns_lucky_background_start_color);
+              SnsLuckyMoneyDetailUI.fNE();
+              this.EuA = bool;
             }
           }
           else
@@ -65,18 +73,18 @@ public class SnsLuckyMoneyDetailUI
             return;
             paramAnonymousAbsListView = paramAnonymousAbsListView.getChildAt(paramAnonymousInt1);
             if (paramAnonymousAbsListView == null) {
-              break label107;
+              break label108;
             }
           }
           for (paramAnonymousInt1 = 0 - paramAnonymousAbsListView.getTop();; paramAnonymousInt1 = 0)
           {
             if (paramAnonymousInt1 > 100) {
-              break label110;
+              break label111;
             }
             bool = false;
             break;
-            SnsLuckyMoneyDetailUI.eZO();
-            break label60;
+            SnsLuckyMoneyDetailUI.fNF();
+            break label61;
           }
         }
       }
@@ -96,15 +104,15 @@ public class SnsLuckyMoneyDetailUI
         {
           AppMethodBeat.o(68354);
           return;
-          this.yQA = false;
+          this.Euz = false;
           AppMethodBeat.o(68354);
           return;
-          this.yQA = true;
+          this.Euz = true;
         }
       }
     };
-    this.zec = 750;
-    this.zed = 240;
+    this.EID = 750;
+    this.EIE = 240;
     AppMethodBeat.o(68357);
   }
   
@@ -118,20 +126,43 @@ public class SnsLuckyMoneyDetailUI
   
   public int getLayoutId()
   {
-    return 2131496527;
+    return a.g.snslucky_money_detail_ui;
   }
   
   public void initView()
   {
     AppMethodBeat.i(68359);
-    getResources().getDrawable(2131233600);
-    setMMTitle(2131766119);
-    setBackBtn(new SnsLuckyMoneyDetailUI.2(this));
-    this.yQs = ((ListView)findViewById(2131304073));
-    this.DGf = new b(getContext());
-    this.yQs.setAdapter(this.DGf);
-    this.yQs.setOnScrollListener(this.yQz);
-    this.yQs.setOnItemClickListener(new SnsLuckyMoneyDetailUI.3(this));
+    getResources().getDrawable(a.e.lucky_money_actionbar_bg);
+    setMMTitle(a.i.sns_lucky_detail_ui_title);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(68356);
+        SnsLuckyMoneyDetailUI.this.finish();
+        AppMethodBeat.o(68356);
+        return true;
+      }
+    });
+    this.Eur = ((ListView)findViewById(a.f.lucky_money_detail_record_list));
+    this.JTb = new b(getContext());
+    this.Eur.setAdapter(this.JTb);
+    this.Eur.setOnScrollListener(this.Euy);
+    this.Eur.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    {
+      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(270894);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bn(paramAnonymousAdapterView);
+        localb.bn(paramAnonymousView);
+        localb.sg(paramAnonymousInt);
+        localb.Fs(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/lucky/ui/SnsLuckyMoneyDetailUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/lucky/ui/SnsLuckyMoneyDetailUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+        AppMethodBeat.o(270894);
+      }
+    });
     AppMethodBeat.o(68359);
   }
   
@@ -140,19 +171,19 @@ public class SnsLuckyMoneyDetailUI
     AppMethodBeat.i(68358);
     super.onCreate(paramBundle);
     initView();
-    paramBundle = a.aDm(getIntent().getStringExtra("key_feedid"));
+    paramBundle = com.tencent.mm.plugin.r.a.aNw(getIntent().getStringExtra("key_feedid"));
     if ((paramBundle == null) || (paramBundle.size() == 0))
     {
       if (Build.VERSION.SDK_INT >= 21)
       {
-        int i = getResources().getColor(2131101138);
+        int i = getResources().getColor(a.c.sns_lucky_detail_ui_status_bar_color);
         getWindow().setStatusBarColor(i);
       }
       setMMSubTitle(null);
       AppMethodBeat.o(68358);
       return;
     }
-    b localb = this.DGf;
+    b localb = this.JTb;
     if (paramBundle == null) {
       new LinkedList();
     }
@@ -160,7 +191,7 @@ public class SnsLuckyMoneyDetailUI
     {
       localb.notifyDataSetChanged();
       break;
-      localb.yQe = paramBundle;
+      localb.Eud = paramBundle;
     }
   }
   
@@ -184,7 +215,7 @@ public class SnsLuckyMoneyDetailUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.lucky.ui.SnsLuckyMoneyDetailUI
  * JD-Core Version:    0.7.0.1
  */

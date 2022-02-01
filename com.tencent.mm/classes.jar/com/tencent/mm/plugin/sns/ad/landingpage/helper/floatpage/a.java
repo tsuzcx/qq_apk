@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.sns.ad.landingpage.helper.floatpage;
 
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.i.c;
-import com.tencent.mm.plugin.sns.ad.landingpage.component.b.d;
+import com.tencent.mm.plugin.sns.ad.i.d;
+import com.tencent.mm.plugin.sns.ad.landingpage.component.b.e;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i.a;
 import java.util.ArrayList;
@@ -15,96 +15,96 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class a
 {
-  private Map<Integer, FloatCompHelperWithLifecycle> DtX;
-  private b DtY;
+  private Map<Integer, FloatCompHelperWithLifecycle> JDm;
+  private b JDn;
   
   public a()
   {
-    AppMethodBeat.i(202003);
-    this.DtX = new ConcurrentHashMap();
-    AppMethodBeat.o(202003);
+    AppMethodBeat.i(207164);
+    this.JDm = new ConcurrentHashMap();
+    AppMethodBeat.o(207164);
   }
   
-  public final FloatJumpCompHelper a(d paramd, ViewGroup paramViewGroup)
+  public final FloatJumpCompHelper a(e parame, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(202004);
-    if ((paramd == null) || (paramViewGroup == null))
+    AppMethodBeat.i(207166);
+    if ((parame == null) || (paramViewGroup == null))
     {
-      AppMethodBeat.o(202004);
+      AppMethodBeat.o(207166);
       return null;
     }
     try
     {
-      paramViewGroup = new FloatJumpCompHelper(paramd, paramViewGroup);
-      int i = paramd.type;
-      this.DtX.put(Integer.valueOf(i), paramViewGroup);
-      AppMethodBeat.o(202004);
+      paramViewGroup = new FloatJumpCompHelper(parame, paramViewGroup);
+      int i = parame.type;
+      this.JDm.put(Integer.valueOf(i), paramViewGroup);
+      AppMethodBeat.o(207166);
       return paramViewGroup;
     }
-    catch (Throwable paramd)
+    catch (Throwable parame)
     {
-      AppMethodBeat.o(202004);
+      AppMethodBeat.o(207166);
     }
     return null;
   }
   
   public final b a(i.a parama)
   {
-    AppMethodBeat.i(202005);
+    AppMethodBeat.i(207167);
     if (parama == null)
     {
-      AppMethodBeat.o(202005);
+      AppMethodBeat.o(207167);
       return null;
     }
     try
     {
-      this.DtY = new b(parama);
-      parama = this.DtY;
-      AppMethodBeat.o(202005);
+      this.JDn = new b(parama);
+      parama = this.JDn;
+      AppMethodBeat.o(207167);
       return parama;
     }
     catch (Throwable parama)
     {
-      AppMethodBeat.o(202005);
+      AppMethodBeat.o(207167);
     }
     return null;
   }
   
-  public final List<m> eXi()
+  public final List<m> fKI()
   {
-    AppMethodBeat.i(202006);
+    AppMethodBeat.i(207169);
     try
     {
       ArrayList localArrayList = new ArrayList();
-      localObject = this.DtX.values().iterator();
+      localObject = this.JDm.values().iterator();
       while (((Iterator)localObject).hasNext())
       {
-        m localm = ((FloatCompHelperWithLifecycle)((Iterator)localObject).next()).eXj();
+        m localm = ((FloatCompHelperWithLifecycle)((Iterator)localObject).next()).fKJ();
         if (localm != null) {
           localArrayList.add(localm);
         }
       }
-      if (this.DtY == null) {
+      if (this.JDn == null) {
         break label103;
       }
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(202006);
+      AppMethodBeat.o(207169);
       return null;
     }
-    Object localObject = this.DtY.getAllComp();
-    if (c.o((Collection)localObject)) {
+    Object localObject = this.JDn.getAllComp();
+    if (d.n((Collection)localObject)) {
       localThrowable.addAll((Collection)localObject);
     }
     label103:
-    AppMethodBeat.o(202006);
+    AppMethodBeat.o(207169);
     return localThrowable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.landingpage.helper.floatpage.a
  * JD-Core Version:    0.7.0.1
  */

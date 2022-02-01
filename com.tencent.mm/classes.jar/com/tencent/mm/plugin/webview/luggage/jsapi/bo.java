@@ -17,19 +17,19 @@ public class bo
   {
     AppMethodBeat.i(78637);
     Log.i("MicroMsg.JsApiShowOptionMenu", "invoke");
-    m localm = ((g)paramb.cta).gbC();
+    m localm = ((g)paramb.crg).gUx();
     if (localm == null)
     {
       Log.i("MicroMsg.JsApiShowOptionMenu", "actionBar is null");
       AppMethodBeat.o(78637);
       return;
     }
-    localm.gbY();
-    paramb.c("", null);
+    localm.gUU();
+    paramb.a("", null);
     AppMethodBeat.o(78637);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

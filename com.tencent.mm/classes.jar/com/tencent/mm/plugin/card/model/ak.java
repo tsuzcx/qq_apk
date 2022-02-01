@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ff;
-import com.tencent.mm.protocal.protobuf.vb;
+import com.tencent.mm.f.c.fl;
+import com.tencent.mm.protocal.protobuf.vd;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class ak
-  extends ff
+  extends fl
 {
   protected static IAutoDBItem.MAutoDBInfo info;
   
@@ -33,11 +33,11 @@ public final class ak
     AppMethodBeat.o(112869);
   }
   
-  public static ak b(vb paramvb)
+  public static ak b(vd paramvd)
   {
     AppMethodBeat.i(112868);
     ak localak = new ak();
-    localak.field_cardUserId = paramvb.KUk;
+    localak.field_cardUserId = paramvd.RVi;
     AppMethodBeat.o(112868);
     return localak;
   }
@@ -73,7 +73,7 @@ public final class ak
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.ak
  * JD-Core Version:    0.7.0.1
  */

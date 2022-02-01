@@ -5,14 +5,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Map;
 
-public final class ADXml$n
+public class ADXml$n
 {
-  public String lDS;
+  public String ozt;
   public int type;
   
-  public static n K(Map<String, String> paramMap, String paramString)
+  public static n W(Map<String, String> paramMap, String paramString)
   {
-    AppMethodBeat.i(202821);
+    AppMethodBeat.i(267096);
     int i = 0;
     for (;;)
     {
@@ -29,14 +29,14 @@ public final class ADXml$n
         }
         paramString = new n();
         paramString.type = j;
-        paramString.lDS = ((String)paramMap.get(str1 + ".webViewUrl"));
-        AppMethodBeat.o(202821);
+        paramString.ozt = ((String)paramMap.get(str1 + ".webViewUrl"));
+        AppMethodBeat.o(267096);
         return paramString;
       }
       i += 1;
     }
     label149:
-    AppMethodBeat.o(202821);
+    AppMethodBeat.o(267096);
     return null;
   }
 }

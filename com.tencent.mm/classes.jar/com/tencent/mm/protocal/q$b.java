@@ -1,34 +1,34 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.zi;
+import com.tencent.mm.protocal.protobuf.jh;
+import com.tencent.mm.protocal.protobuf.zm;
 
 public final class q$b
   extends l.e
   implements l.c
 {
-  public final zi KzT;
+  public final zm RBJ;
   
   public q$b()
   {
     AppMethodBeat.i(152470);
-    this.KzT = new zi();
+    this.RBJ = new zm();
     AppMethodBeat.o(152470);
   }
   
   public final int fromProtoBuf(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(152471);
-    this.KzT.parseFrom(paramArrayOfByte);
-    int i = this.KzT.BaseResponse.Ret;
+    this.RBJ.parseFrom(paramArrayOfByte);
+    int i = this.RBJ.BaseResponse.CqV;
     AppMethodBeat.o(152471);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.q.b
  * JD-Core Version:    0.7.0.1
  */

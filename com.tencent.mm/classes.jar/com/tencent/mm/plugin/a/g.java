@@ -7,20 +7,20 @@ import java.io.RandomAccessFile;
 public final class g
   extends a
 {
-  public static final int jQp;
-  public static final int jQq;
-  public static final int jQr;
+  public static final int mHA;
+  public static final int mHB;
+  public static final int mHz;
   public long duration = 0L;
-  public long jQs = 0L;
-  public long jQt = 0L;
-  long jQu = 0L;
+  public long mHC = 0L;
+  public long mHD = 0L;
+  long mHE = 0L;
   
   static
   {
     AppMethodBeat.i(133867);
-    jQp = c.bJ("vide");
-    jQq = c.bJ("soun");
-    jQr = c.bJ("hint");
+    mHz = c.bU("vide");
+    mHA = c.bU("soun");
+    mHB = c.bU("hint");
     AppMethodBeat.o(133867);
   }
   
@@ -41,7 +41,7 @@ public final class g
       i1 = c.readInt(paramArrayOfByte, 0);
       int i = c.readInt(paramArrayOfByte, 4);
       long l;
-      if (i == a.blA)
+      if (i == a.aVc)
       {
         byte[] arrayOfByte = new byte[4];
         i = paramRandomAccessFile.read(arrayOfByte);
@@ -70,8 +70,8 @@ public final class g
               else
               {
                 i = i + 8 + m;
-                this.jQs = c.D(paramArrayOfByte, 0);
-                this.duration = c.D(paramArrayOfByte, 4);
+                this.mHC = c.C(paramArrayOfByte, 0);
+                this.duration = c.C(paramArrayOfByte, 4);
               }
             }
           }
@@ -88,7 +88,7 @@ public final class g
             }
             else
             {
-              this.jQs = c.D(arrayOfByte, 0);
+              this.mHC = c.C(arrayOfByte, 0);
               int i2 = paramRandomAccessFile.read(paramArrayOfByte);
               if (i2 < 8)
               {
@@ -97,7 +97,7 @@ public final class g
               else
               {
                 i = i2 + (i + 16 + m);
-                this.duration = c.aE(paramArrayOfByte);
+                this.duration = c.aP(paramArrayOfByte);
               }
             }
           }
@@ -122,7 +122,7 @@ public final class g
         }
         AppMethodBeat.o(133866);
         return false;
-        if (i == a.blB)
+        if (i == a.aVd)
         {
           if (!c.a(paramRandomAccessFile, 8L)) {
             i = -1;
@@ -139,7 +139,7 @@ public final class g
             }
             else
             {
-              this.jQt = c.readInt(paramArrayOfByte, 0);
+              this.mHD = c.readInt(paramArrayOfByte, 0);
               i += 8;
             }
           }
@@ -147,9 +147,9 @@ public final class g
           l = i1 - n - i;
           i = j;
         }
-        else if (i == a.blo)
+        else if (i == a.aUQ)
         {
-          this.jQu = (paramRandomAccessFile.getFilePointer() - n);
+          this.mHE = (paramRandomAccessFile.getFilePointer() - n);
           l = i1 - n;
           i = 1;
         }
@@ -177,7 +177,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.a.g
  * JD-Core Version:    0.7.0.1
  */

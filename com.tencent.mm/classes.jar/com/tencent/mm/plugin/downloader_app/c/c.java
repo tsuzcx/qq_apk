@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.downloader_app.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 
@@ -21,6 +22,11 @@ public final class c
     super(paramISQLiteDatabase, a.info, "DownloadTaskItem", null);
   }
   
+  public c(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, String[] paramArrayOfString)
+  {
+    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, paramArrayOfString);
+  }
+  
   public final boolean a(a parama)
   {
     AppMethodBeat.i(8964);
@@ -31,7 +37,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.c.c
  * JD-Core Version:    0.7.0.1
  */

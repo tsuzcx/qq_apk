@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.appbrand.shortlink;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/shortlink/ShortLinkConstants;", "", "Companion", "luggage-wechat-full-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/shortlink/ShortLinkConstants;", "", "Companion", "luggage-wechat-full-sdk_release"})
 @Keep
 public abstract interface ShortLinkConstants
 {
-  public static final Companion Companion = Companion.nNL;
+  public static final Companion Companion = Companion.qQi;
   public static final String SHORT_LINK_SCHEME = "mp://";
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/shortlink/ShortLinkConstants$Companion;", "", "()V", "SHORT_LINK_SCHEME", "", "luggage-wechat-full-sdk_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/shortlink/ShortLinkConstants$Companion;", "", "()V", "SHORT_LINK_SCHEME", "", "luggage-wechat-full-sdk_release"})
   public static final class Companion
   {
     @Keep
@@ -19,9 +19,9 @@ public abstract interface ShortLinkConstants
     
     static
     {
-      AppMethodBeat.i(230173);
-      nNL = new Companion();
-      AppMethodBeat.o(230173);
+      AppMethodBeat.i(246713);
+      qQi = new Companion();
+      AppMethodBeat.o(246713);
     }
   }
 }

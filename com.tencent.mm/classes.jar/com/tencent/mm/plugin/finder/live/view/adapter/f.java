@@ -1,226 +1,223 @@
 package com.tencent.mm.plugin.finder.live.view.adapter;
 
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
-import android.widget.ImageView;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
 import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.core.core.d.b;
-import com.tencent.mm.live.core.core.d.b.a;
-import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.live.viewmodel.g;
-import com.tencent.mm.plugin.finder.loader.a;
-import com.tencent.mm.plugin.finder.loader.m;
-import com.tencent.mm.plugin.finder.loader.m.a;
-import com.tencent.mm.protocal.protobuf.awh;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.live.model.aq;
+import com.tencent.mm.plugin.finder.utils.aj;
+import com.tencent.mm.protocal.protobuf.bbg;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import kotlin.a.j;
+import kotlin.g.a.q;
 import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveLotteryWinnerListAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveLotteryWinnerListAdapter$WinnerViewHolder;", "liveData", "Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderLiveRoomData;", "(Lcom/tencent/mm/plugin/finder/live/viewmodel/FinderLiveRoomData;)V", "dataList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveLotteryContact;", "getDataList", "()Ljava/util/LinkedList;", "setDataList", "(Ljava/util/LinkedList;)V", "getItemCount", "", "getWinnderData", "pos", "onBindViewHolder", "", "holder", "position", "payloads", "", "", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "i", "updateWinnerList", "winnerList", "Companion", "WinnerViewHolder", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveAnchorMusicEditAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveAnchorMusicEditAdapter$MusicEditViewHolder;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "curPlayItem", "Lcom/tencent/mm/plugin/finder/live/model/MusicItem;", "getCurPlayItem", "()Lcom/tencent/mm/plugin/finder/live/model/MusicItem;", "setCurPlayItem", "(Lcom/tencent/mm/plugin/finder/live/model/MusicItem;)V", "dataList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getDataList", "()Ljava/util/ArrayList;", "setDataList", "(Ljava/util/ArrayList;)V", "itemClickListener", "Lkotlin/Function3;", "Landroid/view/View;", "Lkotlin/ParameterName;", "name", "view", "", "pos", "musicItem", "", "getItemClickListener", "()Lkotlin/jvm/functions/Function3;", "setItemClickListener", "(Lkotlin/jvm/functions/Function3;)V", "nextPlayItem", "getNextPlayItem", "setNextPlayItem", "songIdList", "Ljava/util/LinkedList;", "getSongIdList", "()Ljava/util/LinkedList;", "setSongIdList", "(Ljava/util/LinkedList;)V", "deleteMusicItems", "getItemCount", "haveSelectMusic", "", "moveMusicItem", "from", "to", "onBindViewHolder", "holder", "position", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "i", "onItemClickListener", "printInfo", "list", "tag", "resetSelectMusicItems", "selectAllMusicItems", "updateMusicList", "MusicEditViewHolder", "plugin-finder_release"})
 public final class f
-  extends RecyclerView.a<b>
+  extends RecyclerView.a<a>
 {
-  public static final a uAU;
-  private final g liveData;
-  private LinkedList<awh> ppH;
+  public final String TAG;
+  public ArrayList<aq> mXB;
+  public q<? super View, ? super Integer, ? super aq, x> yWa;
+  private aq yWi;
+  public aq yWj;
+  public LinkedList<Integer> ydh;
   
-  static
+  public f()
   {
-    AppMethodBeat.i(247794);
-    uAU = new a((byte)0);
-    AppMethodBeat.o(247794);
+    AppMethodBeat.i(282658);
+    this.TAG = "FinderLiveAnchorMusicEditAdapter";
+    this.ydh = new LinkedList();
+    this.mXB = new ArrayList();
+    this.yWj = this.yWi;
+    AppMethodBeat.o(282658);
   }
   
-  public f(g paramg)
+  private final void d(ArrayList<aq> paramArrayList, String paramString)
   {
-    AppMethodBeat.i(247793);
-    this.liveData = paramg;
-    this.ppH = new LinkedList();
-    AppMethodBeat.o(247793);
-  }
-  
-  private final awh Jo(int paramInt)
-  {
-    AppMethodBeat.i(247792);
-    int i = this.ppH.size();
-    if (paramInt < 0) {}
-    while (i <= paramInt)
+    AppMethodBeat.i(282652);
+    Object localObject = aj.AGc;
+    if (aj.eej())
     {
-      AppMethodBeat.o(247792);
-      return null;
+      paramString = new StringBuilder(paramString + "(MusicList):");
+      if (paramArrayList != null)
+      {
+        paramArrayList = ((Iterable)paramArrayList).iterator();
+        int i = 0;
+        while (paramArrayList.hasNext())
+        {
+          localObject = paramArrayList.next();
+          if (i < 0) {
+            j.iBO();
+          }
+          localObject = (aq)localObject;
+          paramString.append("[" + i + ',' + localObject + ']');
+          i += 1;
+        }
+      }
+      Log.i(this.TAG, paramString.toString());
     }
-    awh localawh = (awh)this.ppH.get(paramInt);
-    AppMethodBeat.o(247792);
-    return localawh;
+    AppMethodBeat.o(282652);
   }
   
-  private void a(b paramb, int paramInt)
+  public final void a(LinkedList<Integer> paramLinkedList, ArrayList<aq> paramArrayList, aq paramaq)
   {
-    Object localObject2 = null;
-    AppMethodBeat.i(247790);
-    p.h(paramb, "holder");
-    Object localObject3 = Jo(paramInt);
-    Object localObject1 = b.hCo;
-    if (b.a.aDp())
-    {
-      localObject1 = paramb.keC;
-      p.g(localObject1, "holder.avatar");
-      ((ImageView)localObject1).setVisibility(8);
-      if (localObject3 != null)
-      {
-        localObject1 = ((awh)localObject3).nickname;
-        if (localObject3 != null) {
-          localObject2 = ((awh)localObject3).username;
-        }
-        localObject3 = (CharSequence)localObject2;
-        if ((localObject3 != null) && (((CharSequence)localObject3).length() != 0)) {
-          break label200;
-        }
-      }
-      label200:
-      for (paramInt = 1;; paramInt = 0)
-      {
-        if ((paramInt != 0) || (!p.j(localObject2, z.aTY()))) {
-          break label205;
-        }
-        localObject3 = paramb.qbF;
-        p.g(localObject3, "holder.nickName");
-        paramb = paramb.qbF;
-        p.g(paramb, "holder.nickName");
-        ((TextView)localObject3).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(paramb.getContext(), (CharSequence)localObject1));
-        Log.i("Finder.LiveLotteryWinnerListAdapter", "onBindViewHolder username:" + (String)localObject2 + "(nickname:" + (String)localObject1 + ")win the award");
-        AppMethodBeat.o(247790);
-        return;
-        localObject1 = null;
-        break;
-      }
-      label205:
-      if ((localObject1 != null) && (((String)localObject1).length() >= 2))
-      {
-        localObject1 = com.tencent.mm.ac.d.Gb((String)localObject1);
-        localObject3 = (String)localObject1 + "***";
-        localObject2 = paramb.qbF;
-        p.g(localObject2, "holder.nickName");
-        paramb = paramb.qbF;
-        p.g(paramb, "holder.nickName");
-        localObject1 = paramb.getContext();
-        paramb = (b)localObject3;
-      }
+    AppMethodBeat.i(282648);
+    p.k(paramLinkedList, "songIdList");
+    p.k(paramArrayList, "dataList");
+    this.ydh.clear();
+    this.ydh.addAll((Collection)paramLinkedList);
+    this.mXB.clear();
+    this.mXB.addAll((Collection)paramArrayList);
+    this.yWi = paramaq;
+    this.yWj = paramaq;
+    AppMethodBeat.o(282648);
+  }
+  
+  public final void dFm()
+  {
+    AppMethodBeat.i(282649);
+    Iterator localIterator = ((Iterable)this.mXB).iterator();
+    while (localIterator.hasNext()) {
+      ((aq)localIterator.next()).yip = true;
     }
+    AppMethodBeat.o(282649);
+  }
+  
+  public final ArrayList<Integer> dFn()
+  {
+    AppMethodBeat.i(282651);
+    ArrayList localArrayList = new ArrayList();
     for (;;)
     {
-      ((TextView)localObject2).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject1, (CharSequence)paramb));
-      AppMethodBeat.o(247790);
-      return;
-      Log.i("Finder.LiveLotteryWinnerListAdapter", "onBindViewHolder invalid nickName:".concat(String.valueOf(localObject1)));
-      localObject2 = paramb.qbF;
-      p.g(localObject2, "holder.nickName");
-      localObject2 = String.valueOf(com.tencent.mm.pluginsdk.ui.span.l.c(((TextView)localObject2).getContext(), (CharSequence)((String)localObject1 + "***")));
-      localObject1 = (CharSequence)localObject1;
-      if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
-      for (paramInt = 1;; paramInt = 0)
+      try
       {
-        localObject1 = localObject2;
-        if (paramInt != 0) {
-          localObject1 = "***";
+        Iterator localIterator = this.mXB.iterator();
+        p.j(localIterator, "dataList.iterator()");
+        int i = 0;
+        int j = 0;
+        if (localIterator.hasNext())
+        {
+          localObject2 = localIterator.next();
+          p.j(localObject2, "iterator.next()");
+          localObject2 = (aq)localObject2;
+          if (((aq)localObject2).yip)
+          {
+            localIterator.remove();
+            localArrayList.add(Integer.valueOf(((aq)localObject2).yin.SMT));
+            int k = ((aq)localObject2).yin.SMT;
+            localObject2 = this.yWj;
+            if (localObject2 != null)
+            {
+              localObject2 = ((aq)localObject2).yin;
+              if (localObject2 != null) {
+                if (k == ((bbg)localObject2).SMT) {
+                  j = 1;
+                }
+              }
+            }
+          }
+          else if ((j != 0) && (i == 0))
+          {
+            this.yWj = ((aq)localObject2);
+            i = 1;
+          }
         }
-        paramb = paramb.qbF;
-        p.g(paramb, "holder.nickName");
-        paramb.setText((CharSequence)localObject1);
-        AppMethodBeat.o(247790);
-        return;
+        else
+        {
+          if ((j != 0) && (i == 0)) {
+            this.yWj = ((aq)j.lp((List)this.mXB));
+          }
+          this.ydh.removeAll((Collection)localArrayList);
+          Log.i(this.TAG, "curPlayItem:" + this.yWi + ", nextPlayItem:" + this.yWj);
+          d(this.mXB, "deleteMusicItems");
+        }
       }
-      localObject1 = m.uJa;
-      localObject2 = m.dkb();
-      if (localObject3 != null) {}
-      for (localObject1 = ((awh)localObject3).iAR;; localObject1 = null)
+      catch (Exception localException)
       {
-        localObject1 = new a((String)localObject1);
-        ImageView localImageView = paramb.keC;
-        p.g(localImageView, "holder.avatar");
-        m localm = m.uJa;
-        ((com.tencent.mm.loader.d)localObject2).a(localObject1, localImageView, m.a(m.a.uJg));
-        localObject2 = paramb.qbF;
-        p.g(localObject2, "holder.nickName");
-        paramb = paramb.qbF;
-        p.g(paramb, "holder.nickName");
-        localObject1 = paramb.getContext();
-        if (localObject3 == null) {
-          break label528;
-        }
-        paramb = ((awh)localObject3).nickname;
-        break;
+        Object localObject2 = aj.AGc;
+        aj.a(localException, this.TAG + ",deleteMusicItems:");
       }
-      label528:
-      paramb = null;
+      finally
+      {
+        AppMethodBeat.o(282651);
+        return localArrayList;
+      }
     }
   }
   
-  public final void an(LinkedList<awh> paramLinkedList)
+  public final void dxP()
   {
-    AppMethodBeat.i(247788);
-    Object localObject2 = new StringBuilder("updateWinnerList,ori size:").append(this.ppH.size()).append(",new size:");
-    if (paramLinkedList != null) {}
-    for (Object localObject1 = Integer.valueOf(paramLinkedList.size());; localObject1 = null)
-    {
-      Log.i("Finder.LiveShoppingListAdapter", localObject1);
-      if (paramLinkedList == null) {
-        break label151;
-      }
-      this.ppH.clear();
-      localObject1 = (Iterable)paramLinkedList;
-      paramLinkedList = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
-      localObject1 = ((Iterable)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (awh)((Iterator)localObject1).next();
-        paramLinkedList.add(Boolean.valueOf(this.ppH.add(localObject2)));
-      }
+    AppMethodBeat.i(282650);
+    Iterator localIterator = ((Iterable)this.mXB).iterator();
+    while (localIterator.hasNext()) {
+      ((aq)localIterator.next()).yip = false;
     }
-    AppMethodBeat.o(247788);
-    return;
-    label151:
-    AppMethodBeat.o(247788);
+    AppMethodBeat.o(282650);
   }
   
   public final int getItemCount()
   {
-    AppMethodBeat.i(247787);
-    int i = this.ppH.size();
-    AppMethodBeat.o(247787);
+    AppMethodBeat.i(282655);
+    int i = this.mXB.size();
+    com.tencent.mm.plugin.finder.live.utils.a locala = com.tencent.mm.plugin.finder.live.utils.a.yRm;
+    com.tencent.mm.plugin.finder.live.utils.a.ha(this.TAG, "getItemCount ".concat(String.valueOf(i)));
+    AppMethodBeat.o(282655);
     return i;
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveLotteryWinnerListAdapter$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveLotteryWinnerListAdapter$WinnerViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveLotteryWinnerListAdapter;Landroid/view/View;)V", "avatar", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "getAvatar", "()Landroid/widget/ImageView;", "setAvatar", "(Landroid/widget/ImageView;)V", "nickName", "Landroid/widget/TextView;", "getNickName", "()Landroid/widget/TextView;", "setNickName", "(Landroid/widget/TextView;)V", "plugin-finder_release"})
-  public final class b
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveAnchorMusicEditAdapter$MusicEditViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/finder/live/view/adapter/FinderLiveAnchorMusicEditAdapter;Landroid/view/View;)V", "checkBox", "Landroid/widget/CheckBox;", "kotlin.jvm.PlatformType", "getCheckBox", "()Landroid/widget/CheckBox;", "setCheckBox", "(Landroid/widget/CheckBox;)V", "musicName", "Landroid/widget/TextView;", "getMusicName", "()Landroid/widget/TextView;", "setMusicName", "(Landroid/widget/TextView;)V", "singer", "getSinger", "setSinger", "plugin-finder_release"})
+  public final class a
     extends RecyclerView.v
   {
-    ImageView keC;
-    TextView qbF;
+    CheckBox checkBox;
+    TextView yWf;
+    TextView yWg;
     
-    public b()
+    public a()
     {
       super();
-      AppMethodBeat.i(247785);
-      this.keC = ((ImageView)localObject.findViewById(2131297119));
-      this.qbF = ((TextView)localObject.findViewById(2131305436));
-      AppMethodBeat.o(247785);
+      AppMethodBeat.i(220701);
+      this.checkBox = ((CheckBox)localObject.findViewById(b.f.music_edit_checkbox));
+      this.yWf = ((TextView)localObject.findViewById(b.f.music_name));
+      this.yWg = ((TextView)localObject.findViewById(b.f.singer));
+      AppMethodBeat.o(220701);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class b
+    implements View.OnClickListener
+  {
+    b(f paramf, f.a parama, int paramInt, aq paramaq) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(274690);
+      b localb = new b();
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/live/view/adapter/FinderLiveAnchorMusicEditAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      f.a(this.yWk, this.yWl, this.jEN, this.xZa);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/live/view/adapter/FinderLiveAnchorMusicEditAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(274690);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.view.adapter.f
  * JD-Core Version:    0.7.0.1
  */

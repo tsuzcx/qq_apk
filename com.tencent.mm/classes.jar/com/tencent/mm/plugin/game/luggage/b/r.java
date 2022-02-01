@@ -2,10 +2,11 @@ package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.game.luggage.g.i;
 import com.tencent.mm.plugin.gamelife.a.a;
 import com.tencent.mm.plugin.gamelife.a.b.c;
+import com.tencent.mm.plugin.webview.luggage.c.c;
 import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bs;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -18,13 +19,13 @@ public class r
 {
   public final void a(Context paramContext, String paramString, final br.a parama)
   {
-    AppMethodBeat.i(186871);
+    AppMethodBeat.i(231518);
     Log.i("MicroMsg.GameLife.JsApiInitGameLifeContact", "invokeInMM");
-    paramContext = com.tencent.mm.plugin.webview.luggage.c.b.Zc(paramString);
+    paramContext = c.agO(paramString);
     if (paramContext == null)
     {
       parama.i("invalid_params", null);
-      AppMethodBeat.o(186871);
+      AppMethodBeat.o(231518);
       return;
     }
     paramContext = paramContext.optString("userName");
@@ -32,24 +33,24 @@ public class r
     if (Util.isNullOrNil(paramContext))
     {
       parama.i("null_data", null);
-      AppMethodBeat.o(186871);
+      AppMethodBeat.o(231518);
       return;
     }
-    ((com.tencent.mm.plugin.gamelife.a.b)g.af(com.tencent.mm.plugin.gamelife.a.b.class)).a(paramContext, new b.c()
+    ((com.tencent.mm.plugin.gamelife.a.b)h.ae(com.tencent.mm.plugin.gamelife.a.b.class)).a(paramContext, new b.c()
     {
-      public final void aj(Map<String, a> paramAnonymousMap)
+      public final void ac(Map<String, a> paramAnonymousMap)
       {
-        AppMethodBeat.i(186870);
+        AppMethodBeat.i(232250);
         parama.i(null, null);
-        AppMethodBeat.o(186870);
+        AppMethodBeat.o(232250);
       }
     });
-    AppMethodBeat.o(186871);
+    AppMethodBeat.o(231518);
   }
   
   public final void b(com.tencent.luggage.d.b<i>.a paramb) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 1;
   }

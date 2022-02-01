@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.messenger.foundation.a.a;
 
 import com.tencent.mm.sdk.storage.IStorage;
-import com.tencent.mm.storage.ci;
+import com.tencent.mm.storage.cj;
 import java.util.List;
 
 public abstract interface l
   extends IStorage
 {
-  public abstract ci aEY(String paramString);
+  public abstract void Up(String paramString);
   
-  public abstract void bO(String paramString, boolean paramBoolean);
+  public abstract cj aPi(String paramString);
   
-  public abstract void delete(String paramString);
+  public abstract void bV(String paramString, boolean paramBoolean);
   
-  public abstract void eJ(String paramString, int paramInt);
+  public abstract List<cj> eSy();
   
-  public abstract List<ci> eiS();
+  public abstract void fk(String paramString, int paramInt);
   
   public abstract boolean has(String paramString);
   
@@ -23,7 +23,7 @@ public abstract interface l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.a.a.l
  * JD-Core Version:    0.7.0.1
  */

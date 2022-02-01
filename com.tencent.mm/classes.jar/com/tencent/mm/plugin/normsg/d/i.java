@@ -9,16 +9,16 @@ import java.util.Arrays;
 
 public final class i
 {
-  private static final LruCache<String, LruCache<String, Field>> AGr;
-  private static final LruCache<String, LruCache<String, Method>> AGs;
-  private static final LruCache<String, LruCache<String, Constructor<?>>> AGt;
+  private static final LruCache<String, LruCache<String, Field>> GzA;
+  private static final LruCache<String, LruCache<String, Method>> GzB;
+  private static final LruCache<String, LruCache<String, Constructor<?>>> GzC;
   
   static
   {
     AppMethodBeat.i(149105);
-    AGr = new LruCache(50);
-    AGs = new LruCache(50);
-    AGt = new LruCache(50);
+    GzA = new LruCache(50);
+    GzB = new LruCache(50);
+    GzC = new LruCache(50);
     AppMethodBeat.o(149105);
   }
   
@@ -65,18 +65,13 @@ public final class i
     }
   }
   
-  public static Class<?>[] b(Class<?>... paramVarArgs)
-  {
-    return paramVarArgs;
-  }
-  
   public static <T> void c(Object paramObject, String paramString, T paramT)
   {
     AppMethodBeat.i(149099);
     Class localClass = paramObject.getClass();
     try
     {
-      j(localClass, paramString).set(paramObject, paramT);
+      i(localClass, paramString).set(paramObject, paramT);
       AppMethodBeat.o(149099);
       return;
     }
@@ -88,32 +83,19 @@ public final class i
     }
   }
   
-  public static <T> T d(Object paramObject, String paramString)
+  public static Class<?>[] c(Class<?>... paramVarArgs)
   {
-    AppMethodBeat.i(149096);
-    Class localClass = paramObject.getClass();
-    try
-    {
-      paramObject = j(localClass, paramString).get(paramObject);
-      AppMethodBeat.o(149096);
-      return paramObject;
-    }
-    catch (Throwable paramObject)
-    {
-      paramObject = new a(paramObject);
-      AppMethodBeat.o(149096);
-      throw paramObject;
-    }
+    return paramVarArgs;
   }
   
   private static Method d(Class<?> paramClass, String paramString, Class<?>... paramVarArgs)
   {
     AppMethodBeat.i(149104);
-    LruCache localLruCache = (LruCache)AGs.get(paramClass.getName());
+    LruCache localLruCache = (LruCache)GzB.get(paramClass.getName());
     if (localLruCache == null)
     {
       localLruCache = new LruCache(30);
-      AGs.put(paramClass.getName(), localLruCache);
+      GzB.put(paramClass.getName(), localLruCache);
     }
     for (;;)
     {
@@ -166,12 +148,30 @@ public final class i
     }
   }
   
-  private static <T> T i(Class<?> paramClass, String paramString)
+  public static <T> T g(Object paramObject, String paramString)
+  {
+    AppMethodBeat.i(149096);
+    Class localClass = paramObject.getClass();
+    try
+    {
+      paramObject = i(localClass, paramString).get(paramObject);
+      AppMethodBeat.o(149096);
+      return paramObject;
+    }
+    catch (Throwable paramObject)
+    {
+      paramObject = new a(paramObject);
+      AppMethodBeat.o(149096);
+      throw paramObject;
+    }
+  }
+  
+  private static <T> T h(Class<?> paramClass, String paramString)
   {
     AppMethodBeat.i(149098);
     try
     {
-      paramClass = j(paramClass, paramString).get(null);
+      paramClass = i(paramClass, paramString).get(null);
       AppMethodBeat.o(149098);
       return paramClass;
     }
@@ -183,14 +183,14 @@ public final class i
     }
   }
   
-  private static Field j(Class<?> paramClass, String paramString)
+  private static Field i(Class<?> paramClass, String paramString)
   {
     AppMethodBeat.i(149103);
-    LruCache localLruCache = (LruCache)AGr.get(paramClass.getName());
+    LruCache localLruCache = (LruCache)GzA.get(paramClass.getName());
     if (localLruCache == null)
     {
       localLruCache = new LruCache(30);
-      AGr.put(paramClass.getName(), localLruCache);
+      GzA.put(paramClass.getName(), localLruCache);
     }
     for (;;)
     {
@@ -220,10 +220,10 @@ public final class i
     }
   }
   
-  public static <T> T jh(String paramString1, String paramString2)
+  public static <T> T js(String paramString1, String paramString2)
   {
     AppMethodBeat.i(149097);
-    paramString1 = i(findClass(paramString1), paramString2);
+    paramString1 = h(findClass(paramString1), paramString2);
     AppMethodBeat.o(149097);
     return paramString1;
   }

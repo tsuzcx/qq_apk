@@ -2,7 +2,6 @@ package com.tencent.tinker.loader.shareutil;
 
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import java.lang.reflect.Constructor;
 
 public class ShareTinkerLog
@@ -10,62 +9,7 @@ public class ShareTinkerLog
   public static final int FN_LOG_PRINT_PENDING_LOGS = 4002;
   public static final int FN_LOG_PRINT_STACKTRACE = 4001;
   private static final String TAG = "Tinker.ShareTinkerLog";
-  private static final TinkerLogImp debugLog = new TinkerLogImp()
-  {
-    public final void d(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-    {
-      if ((paramAnonymousVarArgs == null) || (paramAnonymousVarArgs.length == 0)) {
-        return;
-      }
-      String.format(paramAnonymousString2, paramAnonymousVarArgs);
-    }
-    
-    public final void e(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-    {
-      if ((paramAnonymousVarArgs == null) || (paramAnonymousVarArgs.length == 0)) {
-        return;
-      }
-      String.format(paramAnonymousString2, paramAnonymousVarArgs);
-    }
-    
-    public final void i(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-    {
-      if ((paramAnonymousVarArgs == null) || (paramAnonymousVarArgs.length == 0)) {
-        return;
-      }
-      String.format(paramAnonymousString2, paramAnonymousVarArgs);
-    }
-    
-    public final void printErrStackTrace(String paramAnonymousString1, Throwable paramAnonymousThrowable, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-    {
-      if ((paramAnonymousVarArgs == null) || (paramAnonymousVarArgs.length == 0)) {}
-      for (paramAnonymousString1 = paramAnonymousString2;; paramAnonymousString1 = String.format(paramAnonymousString2, paramAnonymousVarArgs))
-      {
-        paramAnonymousString2 = paramAnonymousString1;
-        if (paramAnonymousString1 == null) {
-          paramAnonymousString2 = "";
-        }
-        new StringBuilder().append(paramAnonymousString2).append("  ").append(Log.getStackTraceString(paramAnonymousThrowable));
-        return;
-      }
-    }
-    
-    public final void v(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-    {
-      if ((paramAnonymousVarArgs == null) || (paramAnonymousVarArgs.length == 0)) {
-        return;
-      }
-      String.format(paramAnonymousString2, paramAnonymousVarArgs);
-    }
-    
-    public final void w(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
-    {
-      if ((paramAnonymousVarArgs == null) || (paramAnonymousVarArgs.length == 0)) {
-        return;
-      }
-      String.format(paramAnonymousString2, paramAnonymousVarArgs);
-    }
-  };
+  private static final TinkerLogImp debugLog = new ShareTinkerLog.1();
   private static final TinkerLogImp[] tinkerLogImpRef = { debugLog };
   private static final Handler[] tinkerLogInlineFenceRef = { null };
   
@@ -211,7 +155,7 @@ public class ShareTinkerLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.loader.shareutil.ShareTinkerLog
  * JD-Core Version:    0.7.0.1
  */

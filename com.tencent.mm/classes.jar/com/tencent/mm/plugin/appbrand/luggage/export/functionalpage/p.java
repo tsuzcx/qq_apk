@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.luggage.export.functionalpage;
 
-import com.tencent.mm.plugin.appbrand.jsapi.k;
+import com.tencent.mm.plugin.appbrand.jsapi.j;
 
 public abstract interface p
-  extends k
+  extends j
 {}
 
 

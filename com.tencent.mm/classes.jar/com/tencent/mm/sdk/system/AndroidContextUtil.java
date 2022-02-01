@@ -91,10 +91,10 @@ public class AndroidContextUtil
   
   private static boolean isContextReferencedByOtherContext(Context paramContext1, Context paramContext2)
   {
-    AppMethodBeat.i(214358);
+    AppMethodBeat.i(210042);
     if (paramContext1 == paramContext2)
     {
-      AppMethodBeat.o(214358);
+      AppMethodBeat.o(210042);
       return true;
     }
     if ((paramContext2 instanceof ContextWrapper))
@@ -105,7 +105,7 @@ public class AndroidContextUtil
       {
         if (paramContext1 == paramContext2)
         {
-          AppMethodBeat.o(214358);
+          AppMethodBeat.o(210042);
           return true;
         }
         if (!(paramContext2 instanceof ContextWrapper)) {
@@ -114,10 +114,10 @@ public class AndroidContextUtil
         localContext = ((ContextWrapper)paramContext2).getBaseContext();
         paramContext2 = localContext;
       } while (localContext != null);
-      AppMethodBeat.o(214358);
+      AppMethodBeat.o(210042);
       return false;
     }
-    AppMethodBeat.o(214358);
+    AppMethodBeat.o(210042);
     return false;
   }
 }

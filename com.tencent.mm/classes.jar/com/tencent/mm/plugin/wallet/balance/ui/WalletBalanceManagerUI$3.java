@@ -9,8 +9,8 @@ import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.e.p;
-import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.ui.f.r;
+import com.tencent.mm.wallet_core.ui.g;
 
 final class WalletBalanceManagerUI$3
   implements MenuItem.OnMenuItemClickListener
@@ -21,30 +21,30 @@ final class WalletBalanceManagerUI$3
   {
     AppMethodBeat.i(68648);
     paramMenuItem = new Intent();
-    if (!Util.isNullOrNil(this.Hwm.Hwc.HVG))
+    if (!Util.isNullOrNil(this.OnZ.OnP.ONH))
     {
-      Log.i("MicroMsg.WalletBalanceManagerUI", "carson: entry_url: %s", new Object[] { this.Hwm.Hwc.HVG });
-      paramMenuItem.putExtra("rawUrl", this.Hwm.Hwc.HVG);
+      Log.i("MicroMsg.WalletBalanceManagerUI", "carson: entry_url: %s", new Object[] { this.OnZ.OnP.ONH });
+      paramMenuItem.putExtra("rawUrl", this.OnZ.OnP.ONH);
     }
     for (;;)
     {
       paramMenuItem.putExtra("showShare", false);
-      paramMenuItem.putExtra("geta8key_username", z.aTY());
+      paramMenuItem.putExtra("geta8key_username", z.bcZ());
       paramMenuItem.putExtra("KPublisherId", "pay_blance_list");
       paramMenuItem.putExtra("geta8key_scene", 33);
-      paramMenuItem.putExtra(e.p.OzJ, true);
-      f.aA(this.Hwm.getContext(), paramMenuItem);
-      f.aqm(16);
-      h.CyF.a(16503, new Object[] { Integer.valueOf(1), "balanceBill" });
+      paramMenuItem.putExtra(f.r.VSX, true);
+      g.aJ(this.OnZ.getContext(), paramMenuItem);
+      g.azK(16);
+      h.IzE.a(16503, new Object[] { Integer.valueOf(1), "balanceBill" });
       AppMethodBeat.o(68648);
       return true;
-      paramMenuItem.putExtra("rawUrl", this.Hwm.Hwc.HVF);
+      paramMenuItem.putExtra("rawUrl", this.OnZ.OnP.ONG);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.WalletBalanceManagerUI.3
  * JD-Core Version:    0.7.0.1
  */

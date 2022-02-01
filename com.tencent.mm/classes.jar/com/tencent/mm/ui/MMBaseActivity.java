@@ -46,7 +46,7 @@ public class MMBaseActivity
     Object localObject = super.getSystemService(paramString);
     if ((getAssets() != null) && ("layout_inflater".equals(paramString)))
     {
-      paramString = aa.b((LayoutInflater)localObject);
+      paramString = ad.b((LayoutInflater)localObject);
       AppMethodBeat.o(141355);
       return paramString;
     }
@@ -145,7 +145,7 @@ public class MMBaseActivity
   public void startActivities(Intent[] paramArrayOfIntent, Bundle paramBundle)
   {
     AppMethodBeat.i(141364);
-    if (d.a(this, this.mIsPaused, paramArrayOfIntent, new Object[] { paramBundle }))
+    if (e.a(this, this.mIsPaused, paramArrayOfIntent, new Object[] { paramBundle }))
     {
       AppMethodBeat.o(141364);
       return;
@@ -178,7 +178,7 @@ public class MMBaseActivity
   public void startActivityForResult(Intent paramIntent, int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(141361);
-    if (d.a(this, this.mIsPaused, new Intent[] { paramIntent }, new Object[] { Integer.valueOf(paramInt), paramBundle }))
+    if (e.a(this, this.mIsPaused, new Intent[] { paramIntent }, new Object[] { Integer.valueOf(paramInt), paramBundle }))
     {
       AppMethodBeat.o(141361);
       return;
@@ -189,7 +189,7 @@ public class MMBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.MMBaseActivity
  * JD-Core Version:    0.7.0.1
  */

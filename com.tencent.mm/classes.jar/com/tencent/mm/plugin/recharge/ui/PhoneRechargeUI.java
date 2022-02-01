@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -24,9 +25,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.g.a.aaa;
+import com.tencent.mm.an.t;
+import com.tencent.mm.f.a.abh;
 import com.tencent.mm.plugin.recharge.ui.form.InstantAutoCompleteTextView;
 import com.tencent.mm.plugin.recharge.ui.form.MallFormView;
 import com.tencent.mm.plugin.recharge.ui.form.MallFormView.a;
@@ -39,9 +39,14 @@ import com.tencent.mm.plugin.recharge.ui.form.c.b.4;
 import com.tencent.mm.plugin.recharge.ui.form.c.b.5;
 import com.tencent.mm.plugin.recharge.ui.form.c.b.6;
 import com.tencent.mm.plugin.recharge.ui.form.d.a;
+import com.tencent.mm.plugin.wallet.a.e;
 import com.tencent.mm.plugin.wallet.a.p;
 import com.tencent.mm.plugin.wallet_core.model.mall.MallFunction;
 import com.tencent.mm.plugin.wallet_core.model.mall.MallNews;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
 import com.tencent.mm.sdk.event.EventCenter;
@@ -53,9 +58,9 @@ import com.tencent.mm.sdk.thread.ThreadPool;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.aa;
+import com.tencent.mm.ui.ad;
 import com.tencent.mm.ui.base.h.a;
-import com.tencent.mm.ui.base.u;
+import com.tencent.mm.ui.base.w;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -65,94 +70,94 @@ import java.util.List;
 
 public class PhoneRechargeUI
   extends MMActivity
-  implements i, d.a
+  implements com.tencent.mm.an.i, d.a
 {
-  private int BDq;
-  private ArrayList<com.tencent.mm.plugin.wallet.a.q> BDr;
-  private ArrayList<com.tencent.mm.plugin.wallet.a.q> BDs;
-  private com.tencent.mm.plugin.wallet.a.e BDt;
-  private com.tencent.mm.plugin.wallet.a.e BDu;
-  private com.tencent.mm.plugin.wallet.a.e BDv;
-  private com.tencent.mm.plugin.wallet.a.e BDw;
-  private com.tencent.mm.plugin.wallet.a.e BDx;
-  private boolean BEA;
-  private View BEd;
-  private ImageView BEe;
-  private TextView BEf;
-  private MallFormView BEg;
-  private TextView BEh;
-  private TextView BEi;
-  private GridView BEj;
-  private GridView BEk;
-  private TextView BEl;
-  private TextView BEm;
-  private TextView BEn;
-  private TextView BEo;
-  private TextView BEp;
-  private TextView BEq;
-  private b BEr;
-  private b BEs;
-  private MallFunction BEt;
-  private String BEu;
-  private String BEv;
-  private c.b BEw;
-  private p BEx;
-  private boolean BEy;
-  private List<String[]> BEz;
-  private boolean BaO;
-  private IListener BaR;
+  private int AYZ;
+  private boolean GUM;
+  private IListener GUP;
+  private c.b HAA;
+  private p HAB;
+  private boolean HAC;
+  private List<String[]> HAD;
+  private boolean HAE;
+  private View HAh;
+  private ImageView HAi;
+  private TextView HAj;
+  private MallFormView HAk;
+  private TextView HAl;
+  private TextView HAm;
+  private GridView HAn;
+  private GridView HAo;
+  private TextView HAp;
+  private TextView HAq;
+  private TextView HAr;
+  private TextView HAs;
+  private TextView HAt;
+  private TextView HAu;
+  private b HAv;
+  private b HAw;
+  private MallFunction HAx;
+  private String HAy;
+  private String HAz;
+  private e HzA;
+  private e HzB;
+  private int Hzu;
+  private ArrayList<com.tencent.mm.plugin.wallet.a.q> Hzv;
+  private ArrayList<com.tencent.mm.plugin.wallet.a.q> Hzw;
+  private e Hzx;
+  private e Hzy;
+  private e Hzz;
   private String desc;
   private int errCode;
   private String errMsg;
   private String headUrl;
   private String mAppId;
   protected Dialog tipDialog;
-  private int wnT;
   
   public PhoneRechargeUI()
   {
     AppMethodBeat.i(67185);
-    this.BEd = null;
-    this.BEe = null;
-    this.BEf = null;
-    this.BEg = null;
-    this.BEh = null;
-    this.BEi = null;
-    this.BEj = null;
-    this.BEk = null;
-    this.BEl = null;
-    this.BEm = null;
-    this.BEn = null;
-    this.BEo = null;
-    this.BEp = null;
-    this.BEq = null;
-    this.BEr = null;
-    this.BEs = null;
+    this.HAh = null;
+    this.HAi = null;
+    this.HAj = null;
+    this.HAk = null;
+    this.HAl = null;
+    this.HAm = null;
+    this.HAn = null;
+    this.HAo = null;
+    this.HAp = null;
+    this.HAq = null;
+    this.HAr = null;
+    this.HAs = null;
+    this.HAt = null;
+    this.HAu = null;
+    this.HAv = null;
+    this.HAw = null;
     this.tipDialog = null;
-    this.BEt = null;
+    this.HAx = null;
     this.mAppId = "";
-    this.BDr = null;
-    this.BDs = null;
-    this.BDt = null;
-    this.BDu = null;
-    this.BDv = null;
-    this.BDw = null;
-    this.BDx = null;
+    this.Hzv = null;
+    this.Hzw = null;
+    this.Hzx = null;
+    this.Hzy = null;
+    this.Hzz = null;
+    this.HzA = null;
+    this.HzB = null;
     this.errCode = 0;
     this.errMsg = "";
-    this.BEu = "";
+    this.HAy = "";
     this.desc = "";
-    this.BEv = "";
+    this.HAz = "";
     this.headUrl = "";
-    this.BaO = false;
-    this.BEw = null;
-    this.BEx = null;
-    this.BEy = false;
-    this.BaR = new IListener() {};
+    this.GUM = false;
+    this.HAA = null;
+    this.HAB = null;
+    this.HAC = false;
+    this.GUP = new IListener() {};
     AppMethodBeat.o(67185);
   }
   
-  private String aKS(String paramString)
+  private String aVt(String paramString)
   {
     AppMethodBeat.i(67188);
     if (Util.isNullOrNil(paramString))
@@ -165,28 +170,28 @@ public class PhoneRechargeUI
     String str1 = paramString;
     try
     {
-      if (this.BEw != null)
+      if (this.HAA != null)
       {
         localObject1 = localObject2;
         str1 = paramString;
-        if (this.BEw.BDH != null)
+        if (this.HAA.HzL != null)
         {
           localObject1 = localObject2;
           str1 = paramString;
-          if (!Util.isNullOrNil(this.BEw.BDH.name))
+          if (!Util.isNullOrNil(this.HAA.HzL.name))
           {
             str1 = paramString;
-            localObject1 = this.BEw.BDH.name;
+            localObject1 = this.HAA.HzL.name;
           }
         }
       }
       localObject2 = localObject1;
       str1 = paramString;
-      if (((String)localObject1).equals(getString(2131768240))) {
+      if (((String)localObject1).equals(getString(a.i.wallet_recharge_me))) {
         localObject2 = "WeChatAccountBindNumber";
       }
       str1 = paramString;
-      String str2 = this.BEg.getText();
+      String str2 = this.HAk.getText();
       str1 = paramString;
       localObject1 = URLEncoder.encode(URLEncoder.encode((String)localObject2, "utf-8"), "utf-8");
       str1 = paramString;
@@ -238,18 +243,18 @@ public class PhoneRechargeUI
     return str1;
   }
   
-  private void aKT(final String paramString)
+  private void aVu(final String paramString)
   {
     AppMethodBeat.i(67198);
-    View localView = aa.jQ(this).inflate(2131496055, null);
-    com.tencent.mm.ui.base.h.a(getContext(), getString(2131768249), localView, getString(2131768250), getString(2131768248), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    View localView = ad.kS(this).inflate(a.g.recharge_remind_dialog, null);
+    com.tencent.mm.ui.base.h.a(getContext(), getString(a.i.wallet_recharge_unicom_message_title), localView, getString(a.i.wallet_recharge_unicom_message_yes), getString(a.i.wallet_recharge_unicom_message_no), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(67169);
         paramAnonymousDialogInterface = PhoneRechargeUI.b(PhoneRechargeUI.this, paramString);
         Log.d("MicroMsg.PhoneRechargeUI", "go to h5: %s", new Object[] { paramAnonymousDialogInterface });
-        PhoneRechargeUI.a(PhoneRechargeUI.this, paramAnonymousDialogInterface, PhoneRechargeUI.this.getString(2131768249), "");
+        PhoneRechargeUI.a(PhoneRechargeUI.this, paramAnonymousDialogInterface, PhoneRechargeUI.this.getString(a.i.wallet_recharge_unicom_message_title), "");
         AppMethodBeat.o(67169);
       }
     }, new DialogInterface.OnClickListener()
@@ -264,7 +269,7 @@ public class PhoneRechargeUI
     AppMethodBeat.o(67198);
   }
   
-  private void aKU(String paramString)
+  private void aVv(String paramString)
   {
     AppMethodBeat.i(67200);
     com.tencent.mm.ui.base.h.a(this, paramString, "", false, new DialogInterface.OnClickListener()
@@ -279,33 +284,33 @@ public class PhoneRechargeUI
     AppMethodBeat.o(67200);
   }
   
-  private void ad(boolean paramBoolean1, boolean paramBoolean2)
+  private void ap(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(67194);
     label105:
     String str;
-    if ((this.BEx != null) && (!eHT()))
+    if ((this.HAB != null) && (!ftY()))
     {
-      this.BEd.setVisibility(0);
-      this.BEf.setText(this.BEx.name);
+      this.HAh.setVisibility(0);
+      this.HAj.setText(this.HAB.name);
       Log.d("MicroMsg.PhoneRechargeUI", "hy: Show banner!");
-      com.tencent.mm.protocal.g.gH(6, 0);
-      this.BEr.BDV = this.BDr;
-      this.BEr.notifyDataSetChanged();
-      this.BEs.BDV = this.BDs;
-      this.BEs.notifyDataSetChanged();
+      com.tencent.mm.protocal.g.gU(6, 0);
+      this.HAv.HzZ = this.Hzv;
+      this.HAv.notifyDataSetChanged();
+      this.HAw.HzZ = this.Hzw;
+      this.HAw.notifyDataSetChanged();
       if (paramBoolean1) {
         break label424;
       }
-      this.BEp.setVisibility(8);
-      this.BEq.setVisibility(8);
+      this.HAt.setVisibility(8);
+      this.HAu.setVisibility(8);
       if (paramBoolean2) {
-        addTextOptionMenu(0, this.BDx.name, new MenuItem.OnMenuItemClickListener()
+        addTextOptionMenu(0, this.HzB.name, new MenuItem.OnMenuItemClickListener()
         {
           public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
           {
             AppMethodBeat.i(67164);
-            if (!PhoneRechargeUI.a(PhoneRechargeUI.this, PhoneRechargeUI.i(PhoneRechargeUI.this).HEm, PhoneRechargeUI.i(PhoneRechargeUI.this).weappPath, PhoneRechargeUI.i(PhoneRechargeUI.this).name, "")) {}
+            if (!PhoneRechargeUI.a(PhoneRechargeUI.this, PhoneRechargeUI.i(PhoneRechargeUI.this).Owf, PhoneRechargeUI.i(PhoneRechargeUI.this).lpQ, PhoneRechargeUI.i(PhoneRechargeUI.this).name, "")) {}
             try
             {
               paramAnonymousMenuItem = URLDecoder.decode(PhoneRechargeUI.i(PhoneRechargeUI.this).url, "utf-8");
@@ -323,83 +328,83 @@ public class PhoneRechargeUI
           }
         });
       }
-      TextView localTextView = this.BEh;
-      if ((this.BDr == null) || (this.BDr.size() <= 0) || (Util.isNullOrNil(((com.tencent.mm.plugin.wallet.a.q)this.BDr.get(0)).HER))) {
+      TextView localTextView = this.HAl;
+      if ((this.Hzv == null) || (this.Hzv.size() <= 0) || (Util.isNullOrNil(((com.tencent.mm.plugin.wallet.a.q)this.Hzv.get(0)).OwK))) {
         break label469;
       }
-      str = ((com.tencent.mm.plugin.wallet.a.q)this.BDr.get(0)).HER;
+      str = ((com.tencent.mm.plugin.wallet.a.q)this.Hzv.get(0)).OwK;
       label196:
       localTextView.setText(str);
-      localTextView = this.BEi;
-      if ((this.BDs == null) || (this.BDs.size() <= 0) || (Util.isNullOrNil(((com.tencent.mm.plugin.wallet.a.q)this.BDs.get(0)).HER))) {
+      localTextView = this.HAm;
+      if ((this.Hzw == null) || (this.Hzw.size() <= 0) || (Util.isNullOrNil(((com.tencent.mm.plugin.wallet.a.q)this.Hzw.get(0)).OwK))) {
         break label480;
       }
-      str = ((com.tencent.mm.plugin.wallet.a.q)this.BDs.get(0)).HER;
+      str = ((com.tencent.mm.plugin.wallet.a.q)this.Hzw.get(0)).OwK;
       label260:
       localTextView.setText(str);
-      if ((this.BDw != null) && (!Util.isNullOrNil(this.BDw.name))) {
+      if ((this.HzA != null) && (!Util.isNullOrNil(this.HzA.name))) {
         break label491;
       }
-      this.BEm.setVisibility(8);
+      this.HAq.setVisibility(8);
       label295:
-      if ((this.BDt != null) && (!Util.isNullOrNil(this.BDt.name))) {
+      if ((this.Hzx != null) && (!Util.isNullOrNil(this.Hzx.name))) {
         break label531;
       }
-      this.BEl.setVisibility(8);
+      this.HAp.setVisibility(8);
       label324:
-      if ((this.BDu != null) && (!Util.isNullOrNil(this.BDu.name))) {
+      if ((this.Hzy != null) && (!Util.isNullOrNil(this.Hzy.name))) {
         break label571;
       }
-      this.BEn.setVisibility(8);
+      this.HAr.setVisibility(8);
       label353:
-      if ((this.BDv != null) && (!Util.isNullOrNil(this.BDv.name))) {
+      if ((this.Hzz != null) && (!Util.isNullOrNil(this.Hzz.name))) {
         break label611;
       }
-      this.BEo.setVisibility(8);
+      this.HAs.setVisibility(8);
     }
     for (;;)
     {
-      if (this.BEA) {
-        h(this.BEt);
+      if (this.HAE) {
+        h(this.HAx);
       }
       AppMethodBeat.o(67194);
       return;
-      this.BEd.setVisibility(8);
+      this.HAh.setVisibility(8);
       Log.d("MicroMsg.PhoneRechargeUI", "hy: dismiss banner!");
       break;
       label424:
-      if (eHV()) {
-        this.BEp.setVisibility(0);
+      if (fua()) {
+        this.HAt.setVisibility(0);
       }
       for (;;)
       {
-        if (!eHU()) {
+        if (!ftZ()) {
           break label467;
         }
-        this.BEq.setVisibility(0);
+        this.HAu.setVisibility(0);
         break;
-        this.BEp.setVisibility(8);
+        this.HAt.setVisibility(8);
       }
       label467:
       break label105;
       label469:
-      str = getString(2131768233);
+      str = getString(a.i.wallet_recharge_fee_title);
       break label196;
       label480:
-      str = getString(2131768234);
+      str = getString(a.i.wallet_recharge_flow_title);
       break label260;
       label491:
-      this.BEm.setVisibility(0);
-      this.BEm.setText(this.BDw.name);
-      this.BEm.setOnClickListener(new View.OnClickListener()
+      this.HAq.setVisibility(0);
+      this.HAq.setText(this.HzA.name);
+      this.HAq.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(67165);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recharge/ui/PhoneRechargeUI$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          if (!PhoneRechargeUI.a(PhoneRechargeUI.this, PhoneRechargeUI.j(PhoneRechargeUI.this).HEm, PhoneRechargeUI.j(PhoneRechargeUI.this).weappPath, PhoneRechargeUI.j(PhoneRechargeUI.this).name, ""))
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/recharge/ui/PhoneRechargeUI$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          if (!PhoneRechargeUI.a(PhoneRechargeUI.this, PhoneRechargeUI.j(PhoneRechargeUI.this).Owf, PhoneRechargeUI.j(PhoneRechargeUI.this).lpQ, PhoneRechargeUI.j(PhoneRechargeUI.this).name, ""))
           {
             paramAnonymousView = PhoneRechargeUI.b(PhoneRechargeUI.this, PhoneRechargeUI.j(PhoneRechargeUI.this).url);
             Log.d("MicroMsg.PhoneRechargeUI", "go to h5: %s", new Object[] { paramAnonymousView });
@@ -411,17 +416,17 @@ public class PhoneRechargeUI
       });
       break label295;
       label531:
-      this.BEl.setVisibility(0);
-      this.BEl.setText(this.BDt.name);
-      this.BEl.setOnClickListener(new View.OnClickListener()
+      this.HAp.setVisibility(0);
+      this.HAp.setText(this.Hzx.name);
+      this.HAp.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(67166);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recharge/ui/PhoneRechargeUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          if (!PhoneRechargeUI.a(PhoneRechargeUI.this, PhoneRechargeUI.k(PhoneRechargeUI.this).HEm, PhoneRechargeUI.k(PhoneRechargeUI.this).weappPath, PhoneRechargeUI.k(PhoneRechargeUI.this).name, ""))
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/recharge/ui/PhoneRechargeUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          if (!PhoneRechargeUI.a(PhoneRechargeUI.this, PhoneRechargeUI.k(PhoneRechargeUI.this).Owf, PhoneRechargeUI.k(PhoneRechargeUI.this).lpQ, PhoneRechargeUI.k(PhoneRechargeUI.this).name, ""))
           {
             paramAnonymousView = PhoneRechargeUI.b(PhoneRechargeUI.this, PhoneRechargeUI.k(PhoneRechargeUI.this).url);
             Log.d("MicroMsg.PhoneRechargeUI", "go to h5: %s", new Object[] { paramAnonymousView });
@@ -433,17 +438,17 @@ public class PhoneRechargeUI
       });
       break label324;
       label571:
-      this.BEn.setVisibility(0);
-      this.BEn.setText(this.BDu.name);
-      this.BEn.setOnClickListener(new View.OnClickListener()
+      this.HAr.setVisibility(0);
+      this.HAr.setText(this.Hzy.name);
+      this.HAr.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(67167);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recharge/ui/PhoneRechargeUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          if (!PhoneRechargeUI.a(PhoneRechargeUI.this, PhoneRechargeUI.l(PhoneRechargeUI.this).HEm, PhoneRechargeUI.l(PhoneRechargeUI.this).weappPath, PhoneRechargeUI.l(PhoneRechargeUI.this).name, ""))
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/recharge/ui/PhoneRechargeUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          if (!PhoneRechargeUI.a(PhoneRechargeUI.this, PhoneRechargeUI.l(PhoneRechargeUI.this).Owf, PhoneRechargeUI.l(PhoneRechargeUI.this).lpQ, PhoneRechargeUI.l(PhoneRechargeUI.this).name, ""))
           {
             paramAnonymousView = PhoneRechargeUI.b(PhoneRechargeUI.this, PhoneRechargeUI.l(PhoneRechargeUI.this).url);
             Log.d("MicroMsg.PhoneRechargeUI", "go to h5: %s", new Object[] { paramAnonymousView });
@@ -455,17 +460,17 @@ public class PhoneRechargeUI
       });
       break label353;
       label611:
-      this.BEo.setVisibility(0);
-      this.BEo.setText(this.BDv.name);
-      this.BEo.setOnClickListener(new View.OnClickListener()
+      this.HAs.setVisibility(0);
+      this.HAs.setText(this.Hzz.name);
+      this.HAs.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(67168);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recharge/ui/PhoneRechargeUI$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          if (!PhoneRechargeUI.a(PhoneRechargeUI.this, PhoneRechargeUI.m(PhoneRechargeUI.this).HEm, PhoneRechargeUI.m(PhoneRechargeUI.this).weappPath, PhoneRechargeUI.m(PhoneRechargeUI.this).name, ""))
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/recharge/ui/PhoneRechargeUI$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          if (!PhoneRechargeUI.a(PhoneRechargeUI.this, PhoneRechargeUI.m(PhoneRechargeUI.this).Owf, PhoneRechargeUI.m(PhoneRechargeUI.this).lpQ, PhoneRechargeUI.m(PhoneRechargeUI.this).name, ""))
           {
             paramAnonymousView = PhoneRechargeUI.b(PhoneRechargeUI.this, PhoneRechargeUI.m(PhoneRechargeUI.this).url);
             Log.d("MicroMsg.PhoneRechargeUI", "go to h5: %s", new Object[] { paramAnonymousView });
@@ -478,7 +483,7 @@ public class PhoneRechargeUI
     }
   }
   
-  private void c(com.tencent.mm.ak.q paramq, boolean paramBoolean)
+  private void c(final com.tencent.mm.an.q paramq, boolean paramBoolean)
   {
     AppMethodBeat.i(67191);
     if ((this.tipDialog == null) || ((this.tipDialog != null) && (!this.tipDialog.isShowing()))) {
@@ -487,31 +492,47 @@ public class PhoneRechargeUI
       }
     }
     label71:
-    for (this.tipDialog = com.tencent.mm.wallet_core.ui.h.a(getContext(), true, new PhoneRechargeUI.2(this, paramq));; this.tipDialog = com.tencent.mm.wallet_core.ui.h.c(getContext(), true, new PhoneRechargeUI.3(this, paramq)))
+    for (this.tipDialog = com.tencent.mm.wallet_core.ui.i.a(getContext(), true, new DialogInterface.OnCancelListener()
+        {
+          public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+          {
+            AppMethodBeat.i(67162);
+            com.tencent.mm.kernel.h.aGY().a(paramq);
+            AppMethodBeat.o(67162);
+          }
+        });; this.tipDialog = com.tencent.mm.wallet_core.ui.i.c(getContext(), true, new DialogInterface.OnCancelListener()
+        {
+          public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+          {
+            AppMethodBeat.i(67163);
+            com.tencent.mm.kernel.h.aGY().a(paramq);
+            AppMethodBeat.o(67163);
+          }
+        }))
     {
-      com.tencent.mm.kernel.g.azz().a(paramq, 0);
+      com.tencent.mm.kernel.h.aGY().a(paramq, 0);
       AppMethodBeat.o(67191);
       return;
     }
   }
   
-  private void eHS()
+  private void ftX()
   {
     AppMethodBeat.i(67186);
     this.mAppId = "";
-    eHW();
+    fub();
     this.errCode = 0;
     this.errMsg = "";
     this.desc = "";
     AppMethodBeat.o(67186);
   }
   
-  private boolean eHT()
+  private boolean ftY()
   {
     AppMethodBeat.i(67189);
-    if (this.BEx != null)
+    if (this.HAB != null)
     {
-      Object localObject1 = (String)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.NTF, "");
+      Object localObject1 = (String)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VhF, "");
       if (!Util.isNullOrNil((String)localObject1))
       {
         localObject1 = ((String)localObject1).split(";");
@@ -522,7 +543,7 @@ public class PhoneRechargeUI
           while (i < j)
           {
             Object localObject2 = localObject1[i];
-            if ((localObject2 != null) && (localObject2.equals(String.valueOf(this.BEx.id))))
+            if ((localObject2 != null) && (localObject2.equals(String.valueOf(this.HAB.id))))
             {
               Log.i("MicroMsg.PhoneRechargeUI", "hy: found closed. ");
               AppMethodBeat.o(67189);
@@ -544,10 +565,10 @@ public class PhoneRechargeUI
     return true;
   }
   
-  private boolean eHU()
+  private boolean ftZ()
   {
     AppMethodBeat.i(67195);
-    Iterator localIterator = this.BDs.iterator();
+    Iterator localIterator = this.Hzw.iterator();
     while (localIterator.hasNext()) {
       if (((com.tencent.mm.plugin.wallet.a.q)localIterator.next()).status != 0)
       {
@@ -559,10 +580,10 @@ public class PhoneRechargeUI
     return true;
   }
   
-  private boolean eHV()
+  private boolean fua()
   {
     AppMethodBeat.i(67196);
-    Iterator localIterator = this.BDr.iterator();
+    Iterator localIterator = this.Hzv.iterator();
     while (localIterator.hasNext()) {
       if (((com.tencent.mm.plugin.wallet.a.q)localIterator.next()).status != 0)
       {
@@ -574,54 +595,54 @@ public class PhoneRechargeUI
     return true;
   }
   
-  private void eHW()
+  private void fub()
   {
     AppMethodBeat.i(67199);
-    this.BDr = new ArrayList();
+    this.Hzv = new ArrayList();
     com.tencent.mm.plugin.wallet.a.q localq1 = new com.tencent.mm.plugin.wallet.a.q();
-    localq1.name = getString(2131768222);
+    localq1.name = getString(a.i.wallet_recharge_default_item_0);
     localq1.status = 0;
     com.tencent.mm.plugin.wallet.a.q localq2 = new com.tencent.mm.plugin.wallet.a.q();
-    localq2.name = getString(2131768223);
+    localq2.name = getString(a.i.wallet_recharge_default_item_1);
     localq2.status = 0;
     com.tencent.mm.plugin.wallet.a.q localq3 = new com.tencent.mm.plugin.wallet.a.q();
-    localq3.name = getString(2131768224);
+    localq3.name = getString(a.i.wallet_recharge_default_item_2);
     localq3.status = 0;
     com.tencent.mm.plugin.wallet.a.q localq4 = new com.tencent.mm.plugin.wallet.a.q();
-    localq4.name = getString(2131768225);
+    localq4.name = getString(a.i.wallet_recharge_default_item_3);
     localq4.status = 0;
     com.tencent.mm.plugin.wallet.a.q localq5 = new com.tencent.mm.plugin.wallet.a.q();
-    localq5.name = getString(2131768226);
+    localq5.name = getString(a.i.wallet_recharge_default_item_4);
     localq5.status = 0;
     com.tencent.mm.plugin.wallet.a.q localq6 = new com.tencent.mm.plugin.wallet.a.q();
-    localq6.name = getString(2131768227);
+    localq6.name = getString(a.i.wallet_recharge_default_item_5);
     localq6.status = 0;
-    this.BDr.add(localq1);
-    this.BDr.add(localq2);
-    this.BDr.add(localq3);
-    this.BDr.add(localq4);
-    this.BDr.add(localq5);
-    this.BDr.add(localq6);
-    this.BDs = new ArrayList();
+    this.Hzv.add(localq1);
+    this.Hzv.add(localq2);
+    this.Hzv.add(localq3);
+    this.Hzv.add(localq4);
+    this.Hzv.add(localq5);
+    this.Hzv.add(localq6);
+    this.Hzw = new ArrayList();
     localq1 = new com.tencent.mm.plugin.wallet.a.q();
-    localq1.name = getString(2131768228);
+    localq1.name = getString(a.i.wallet_recharge_default_item_6);
     localq1.status = 0;
     localq2 = new com.tencent.mm.plugin.wallet.a.q();
-    localq2.name = getString(2131768229);
+    localq2.name = getString(a.i.wallet_recharge_default_item_7);
     localq2.status = 0;
     localq3 = new com.tencent.mm.plugin.wallet.a.q();
-    localq3.name = getString(2131768230);
+    localq3.name = getString(a.i.wallet_recharge_default_item_8);
     localq3.status = 0;
-    this.BDs.add(localq1);
-    this.BDs.add(localq2);
-    this.BDs.add(localq3);
+    this.Hzw.add(localq1);
+    this.Hzw.add(localq2);
+    this.Hzw.add(localq3);
     AppMethodBeat.o(67199);
   }
   
-  private void eHX()
+  private void fuc()
   {
     AppMethodBeat.i(67203);
-    com.tencent.mm.kernel.g.azz().a(new com.tencent.mm.plugin.recharge.model.f(this.BEg.getText()), 0);
+    com.tencent.mm.kernel.h.aGY().a(new com.tencent.mm.plugin.recharge.model.f(this.HAk.getText()), 0);
     AppMethodBeat.o(67203);
   }
   
@@ -630,19 +651,19 @@ public class PhoneRechargeUI
     AppMethodBeat.i(67197);
     if (com.tencent.mm.plugin.recharge.model.b.g(paramMallFunction))
     {
-      com.tencent.mm.plugin.recharge.model.b.eHO();
-      if (this.BEt.Icf == null)
+      com.tencent.mm.plugin.recharge.model.b.ftT();
+      if (this.HAx.OUr == null)
       {
         AppMethodBeat.o(67197);
         return;
       }
-      Log.d("MicroMsg.PhoneRechargeUI", this.BEt.Icf.toString());
-      aKT(this.BEt.Icf.Ict);
+      Log.d("MicroMsg.PhoneRechargeUI", this.HAx.OUr.toString());
+      aVu(this.HAx.OUr.OUF);
     }
     AppMethodBeat.o(67197);
   }
   
-  private void m(com.tencent.mm.ak.q paramq)
+  private void m(com.tencent.mm.an.q paramq)
   {
     AppMethodBeat.i(67190);
     if ((this.tipDialog != null) && (this.tipDialog.isShowing()) && (paramq.getType() != 497))
@@ -653,17 +674,17 @@ public class PhoneRechargeUI
     AppMethodBeat.o(67190);
   }
   
-  public final void eHY()
+  public final void fud()
   {
     AppMethodBeat.i(67204);
     com.tencent.mm.plugin.recharge.model.f localf = new com.tencent.mm.plugin.recharge.model.f("", 1);
-    com.tencent.mm.kernel.g.azz().a(localf, 0);
+    com.tencent.mm.kernel.h.aGY().a(localf, 0);
     AppMethodBeat.o(67204);
   }
   
   public int getLayoutId()
   {
-    return 2131495920;
+    return a.g.phone_recharge_ui;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -679,7 +700,7 @@ public class PhoneRechargeUI
       return;
       if (paramInt2 == -1)
       {
-        this.BEy = true;
+        this.HAC = true;
         Object localObject1 = null;
         Object localObject4 = null;
         final ArrayList localArrayList = new ArrayList();
@@ -731,7 +752,7 @@ public class PhoneRechargeUI
                 if (localObject3 != null)
                 {
                   Log.d("MicroMsg.PhoneRechargeUI", "hy: phoneNumber : ".concat(String.valueOf(localObject3)));
-                  localObject3 = com.tencent.mm.plugin.recharge.model.b.Ts((String)localObject3);
+                  localObject3 = com.tencent.mm.plugin.recharge.model.b.aaY((String)localObject3);
                   Log.d("MicroMsg.PhoneRechargeUI", "hy: phoneNumber : ".concat(String.valueOf(localObject3)));
                   if ((PhoneNumberUtils.isGlobalPhoneNumber((String)localObject3)) && (((String)localObject3).length() == 11)) {
                     localArrayList.add(localObject3);
@@ -746,7 +767,7 @@ public class PhoneRechargeUI
         catch (SecurityException localSecurityException)
         {
           Log.e("MicroMsg.PhoneRechargeUI", "hy: permission denied: %s", new Object[] { localSecurityException.toString() });
-          com.tencent.mm.ui.base.h.c(this, getString(2131762951), "", true);
+          com.tencent.mm.ui.base.h.c(this, getString(a.i.mall_recharge_read_contact_error), "", true);
         }
         localObject3 = localSecurityException;
         if (localCursor2 != null)
@@ -761,13 +782,13 @@ public class PhoneRechargeUI
         Object localObject2;
         if (localArrayList.size() > 1)
         {
-          localObject2 = com.tencent.mm.ui.base.h.a(this, getString(2131768243), localArrayList, -1, new h.a()
+          localObject2 = com.tencent.mm.ui.base.h.a(this, getString(a.i.wallet_recharge_pick_phone_number), localArrayList, -1, new h.a()
           {
-            public final void Vq(int paramAnonymousInt)
+            public final void abY(int paramAnonymousInt)
             {
               AppMethodBeat.i(67176);
               Log.d("MicroMsg.PhoneRechargeUI", "choose: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-              PhoneRechargeUI.b(PhoneRechargeUI.this).setInput(new com.tencent.mm.plugin.recharge.model.a((String)localArrayList.get(paramAnonymousInt), this.BEG, 1));
+              PhoneRechargeUI.b(PhoneRechargeUI.this).setInput(new com.tencent.mm.plugin.recharge.model.a((String)localArrayList.get(paramAnonymousInt), this.HAK, 1));
               PhoneRechargeUI.n(PhoneRechargeUI.this);
               AppMethodBeat.o(67176);
             }
@@ -778,22 +799,22 @@ public class PhoneRechargeUI
         }
         else if (localArrayList.size() == 1)
         {
-          this.BEw.setInput(new com.tencent.mm.plugin.recharge.model.a((String)localArrayList.get(0), (String)localObject3, 1));
-          eHX();
+          this.HAA.setInput(new com.tencent.mm.plugin.recharge.model.a((String)localArrayList.get(0), (String)localObject3, 1));
+          fuc();
         }
         else
         {
-          com.tencent.mm.ui.base.h.c(this, getString(2131762949), "", true);
+          com.tencent.mm.ui.base.h.c(this, getString(a.i.mall_recharge_pick_contact_error), "", true);
           continue;
           if (paramInt2 == -1)
           {
-            if (!this.BaO)
+            if (!this.GUM)
             {
               Log.i("MicroMsg.PhoneRechargeUI", "hy: MallRecharge pay result : ok");
-              localObject2 = new com.tencent.mm.plugin.recharge.model.a(this.BEg.getText(), this.BEg.getTipsTv().getText().toString(), 0);
-              com.tencent.mm.plugin.recharge.a.a.eHL().a((com.tencent.mm.plugin.recharge.model.a)localObject2);
+              localObject2 = new com.tencent.mm.plugin.recharge.model.a(this.HAk.getText(), this.HAk.getTipsTv().getText().toString(), 0);
+              com.tencent.mm.plugin.recharge.a.a.ftQ().a((com.tencent.mm.plugin.recharge.model.a)localObject2);
               finish();
-              this.BaO = true;
+              this.GUM = true;
             }
           }
           else {
@@ -810,20 +831,20 @@ public class PhoneRechargeUI
     fixStatusbar(true);
     super.onCreate(paramBundle);
     setActionbarColor(getActionbarColor());
-    com.tencent.mm.kernel.g.azz().a(1571, this);
-    com.tencent.mm.kernel.g.azz().a(498, this);
-    this.BEt = ((MallFunction)getIntent().getParcelableExtra("key_func_info"));
-    this.BEA = getIntent().getBooleanExtra("key_need_show_remind_dialog", true);
-    eHW();
-    if (this.BEt == null)
+    com.tencent.mm.kernel.h.aGY().a(1571, this);
+    com.tencent.mm.kernel.h.aGY().a(498, this);
+    this.HAx = ((MallFunction)getIntent().getParcelableExtra("key_func_info"));
+    this.HAE = getIntent().getBooleanExtra("key_need_show_remind_dialog", true);
+    fub();
+    if (this.HAx == null)
     {
       Log.e("MicroMsg.PhoneRechargeUI", "hy: function info is null");
-      u.makeText(this, "function info is null", 1).show();
+      w.makeText(this, "function info is null", 1).show();
       finish();
       AppMethodBeat.o(67187);
       return;
     }
-    setMMTitle(this.BEt.edq);
+    setMMTitle(this.HAx.fXz);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -835,43 +856,43 @@ public class PhoneRechargeUI
         return true;
       }
     });
-    this.BDx = new com.tencent.mm.plugin.wallet.a.e();
-    this.BDx.name = getString(2131768236);
-    this.BDx.url = getString(2131768237);
-    this.BEd = findViewById(2131305903);
-    this.BEe = ((ImageView)findViewById(2131305418));
-    this.BEf = ((TextView)findViewById(2131305419));
-    this.BEg = ((MallFormView)findViewById(2131306627));
-    c.b(this.BEg);
-    this.BEw = new c.b(this.BEg);
-    paramBundle = this.BEw;
+    this.HzB = new e();
+    this.HzB.name = getString(a.i.wallet_recharge_hardcode_head_name);
+    this.HzB.url = getString(a.i.wallet_recharge_hardcode_head_url);
+    this.HAh = findViewById(a.f.phone_recharge_banner_rl);
+    this.HAi = ((ImageView)findViewById(a.f.news_close));
+    this.HAj = ((TextView)findViewById(a.f.news_wording));
+    this.HAk = ((MallFormView)findViewById(a.f.recharge_content_input_view));
+    c.b(this.HAk);
+    this.HAA = new c.b(this.HAk);
+    paramBundle = this.HAA;
     Log.d(c.access$100(), "hy: setMobileEditTv");
-    Object localObject = paramBundle.BFp;
+    Object localObject = paramBundle.HBt;
     c.b.1 local1 = new c.b.1(paramBundle);
-    if (((MallFormView)localObject).BFv != null) {
-      ((MallFormView)localObject).BFv.addTextChangedListener(local1);
+    if (((MallFormView)localObject).HBz != null) {
+      ((MallFormView)localObject).HBz.addTextChangedListener(local1);
     }
-    localObject = (InstantAutoCompleteTextView)paramBundle.BFp.getContentEditText();
+    localObject = (InstantAutoCompleteTextView)paramBundle.HBt.getContentEditText();
     ThreadPool.post(new c.b.2(paramBundle), "fetch_phone_book");
-    paramBundle.BFq = new com.tencent.mm.plugin.recharge.ui.form.d(paramBundle.BFp, paramBundle.BDG);
-    paramBundle.BFq.BGd = new c.b.3(paramBundle);
-    paramBundle.BFq.BGe = this;
+    paramBundle.HBu = new com.tencent.mm.plugin.recharge.ui.form.d(paramBundle.HBt, paramBundle.HzK);
+    paramBundle.HBu.HCh = new c.b.3(paramBundle);
+    paramBundle.HBu.HCi = this;
     ((InstantAutoCompleteTextView)localObject).setShowAlways(true);
-    ((InstantAutoCompleteTextView)localObject).setAdapter(paramBundle.BFq);
+    ((InstantAutoCompleteTextView)localObject).setAdapter(paramBundle.HBu);
     ((InstantAutoCompleteTextView)localObject).setOnItemClickListener(new c.b.4(paramBundle, (InstantAutoCompleteTextView)localObject));
-    paramBundle.BFp.setOnFocusChangeListener(new c.b.5(paramBundle, (InstantAutoCompleteTextView)localObject));
+    paramBundle.HBt.setOnFocusChangeListener(new c.b.5(paramBundle, (InstantAutoCompleteTextView)localObject));
     ((InstantAutoCompleteTextView)localObject).setOnClickListener(new c.b.6(paramBundle, (InstantAutoCompleteTextView)localObject));
-    this.BEj = ((GridView)findViewById(2131306645));
-    this.BEl = ((TextView)findViewById(2131306653));
-    this.BEm = ((TextView)findViewById(2131306654));
-    this.BEn = ((TextView)findViewById(2131306625));
-    this.BEo = ((TextView)findViewById(2131306641));
-    this.BEh = ((TextView)findViewById(2131306647));
-    this.BEi = ((TextView)findViewById(2131306649));
-    this.BEk = ((GridView)findViewById(2131306628));
-    this.BEp = ((TextView)findViewById(2131306646));
-    this.BEq = ((TextView)findViewById(2131306648));
-    this.BEg.setOnInputValidChangeListener(new MallFormView.a()
+    this.HAn = ((GridView)findViewById(a.f.recharge_phone_grid));
+    this.HAp = ((TextView)findViewById(a.f.recharge_remind));
+    this.HAq = ((TextView)findViewById(a.f.recharge_weSim));
+    this.HAr = ((TextView)findViewById(a.f.recharge_buy_card));
+    this.HAs = ((TextView)findViewById(a.f.recharge_hall));
+    this.HAl = ((TextView)findViewById(a.f.recharge_product_1_title));
+    this.HAm = ((TextView)findViewById(a.f.recharge_product_2_title));
+    this.HAo = ((GridView)findViewById(a.f.recharge_dataflow_grid));
+    this.HAt = ((TextView)findViewById(a.f.recharge_product_1_lack_alert));
+    this.HAu = ((TextView)findViewById(a.f.recharge_product_2_lack_alert));
+    this.HAk.setOnInputValidChangeListener(new MallFormView.a()
     {
       public final void onInputValidChange(boolean paramAnonymousBoolean)
       {
@@ -879,7 +900,7 @@ public class PhoneRechargeUI
         if (paramAnonymousBoolean)
         {
           PhoneRechargeUI.this.hideVKB();
-          final String str = com.tencent.mm.plugin.recharge.model.b.Ts(PhoneRechargeUI.a(PhoneRechargeUI.this).getText());
+          final String str = com.tencent.mm.plugin.recharge.model.b.aaY(PhoneRechargeUI.a(PhoneRechargeUI.this).getText());
           if (str == null)
           {
             Log.e("MicroMsg.PhoneRechargeUI", "null phone, return");
@@ -900,7 +921,7 @@ public class PhoneRechargeUI
                 {
                   AppMethodBeat.i(67172);
                   PhoneRechargeUI.b(PhoneRechargeUI.this).setInput(locala);
-                  PhoneRechargeUI.aKV(PhoneRechargeUI.12.1.this.BEC);
+                  PhoneRechargeUI.aVw(PhoneRechargeUI.12.1.this.HAG);
                   AppMethodBeat.o(67172);
                 }
               });
@@ -919,7 +940,7 @@ public class PhoneRechargeUI
           return;
         }
         PhoneRechargeUI.a(PhoneRechargeUI.this).getTipsTv().setText("");
-        PhoneRechargeUI.a(PhoneRechargeUI.this).getTipsTv().setTextColor(PhoneRechargeUI.this.getResources().getColor(2131100904));
+        PhoneRechargeUI.a(PhoneRechargeUI.this).getTipsTv().setTextColor(PhoneRechargeUI.this.getResources().getColor(a.c.normal_text_color));
         PhoneRechargeUI.d(PhoneRechargeUI.this);
         PhoneRechargeUI.e(PhoneRechargeUI.this);
         if (Util.isNullOrNil(PhoneRechargeUI.a(PhoneRechargeUI.this).getText())) {
@@ -928,9 +949,9 @@ public class PhoneRechargeUI
         AppMethodBeat.o(67174);
       }
     });
-    this.BEg.getInfoIv().setOnClickListener(new PhoneRechargeUI.16(this));
-    this.BEr = new b();
-    this.BEr.BDW = new b.a()
+    this.HAk.getInfoIv().setOnClickListener(new PhoneRechargeUI.16(this));
+    this.HAv = new b();
+    this.HAv.HAa = new b.a()
     {
       public final void a(com.tencent.mm.plugin.wallet.a.q paramAnonymousq)
       {
@@ -941,7 +962,7 @@ public class PhoneRechargeUI
           AppMethodBeat.o(67179);
           return;
         }
-        if (!PhoneRechargeUI.a(PhoneRechargeUI.this, paramAnonymousq.HEm, paramAnonymousq.weappPath, paramAnonymousq.name, paramAnonymousq.desc))
+        if (!PhoneRechargeUI.a(PhoneRechargeUI.this, paramAnonymousq.Owf, paramAnonymousq.lpQ, paramAnonymousq.name, paramAnonymousq.desc))
         {
           if (!Util.isNullOrNil(paramAnonymousq.url))
           {
@@ -957,13 +978,13 @@ public class PhoneRechargeUI
         AppMethodBeat.o(67179);
       }
     };
-    this.BEs = new b();
-    this.BEs.BDW = new b.a()
+    this.HAw = new b();
+    this.HAw.HAa = new b.a()
     {
       public final void a(com.tencent.mm.plugin.wallet.a.q paramAnonymousq)
       {
         AppMethodBeat.i(67180);
-        if (!PhoneRechargeUI.a(PhoneRechargeUI.this, paramAnonymousq.HEm, paramAnonymousq.weappPath, paramAnonymousq.name, paramAnonymousq.desc))
+        if (!PhoneRechargeUI.a(PhoneRechargeUI.this, paramAnonymousq.Owf, paramAnonymousq.lpQ, paramAnonymousq.name, paramAnonymousq.desc))
         {
           if (!Util.isNullOrNil(paramAnonymousq.url))
           {
@@ -983,16 +1004,16 @@ public class PhoneRechargeUI
         AppMethodBeat.o(67180);
       }
     };
-    this.BEj.setAdapter(this.BEr);
-    this.BEk.setAdapter(this.BEs);
-    this.BEe.setOnClickListener(new View.OnClickListener()
+    this.HAn.setAdapter(this.HAv);
+    this.HAo.setAdapter(this.HAw);
+    this.HAi.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(67181);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recharge/ui/PhoneRechargeUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/recharge/ui/PhoneRechargeUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (PhoneRechargeUI.f(PhoneRechargeUI.this) != null) {
           PhoneRechargeUI.g(PhoneRechargeUI.this);
         }
@@ -1006,18 +1027,18 @@ public class PhoneRechargeUI
         }
       }
     });
-    this.BEf.setOnClickListener(new View.OnClickListener()
+    this.HAj.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(67182);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recharge/ui/PhoneRechargeUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/recharge/ui/PhoneRechargeUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (PhoneRechargeUI.f(PhoneRechargeUI.this) != null)
         {
-          com.tencent.mm.protocal.g.gH(6, 1);
-          if ((PhoneRechargeUI.a(PhoneRechargeUI.this, PhoneRechargeUI.f(PhoneRechargeUI.this).HEm, PhoneRechargeUI.f(PhoneRechargeUI.this).weappPath, PhoneRechargeUI.f(PhoneRechargeUI.this).name, "")) || (Util.isNullOrNil(PhoneRechargeUI.f(PhoneRechargeUI.this).url))) {}
+          com.tencent.mm.protocal.g.gU(6, 1);
+          if ((PhoneRechargeUI.a(PhoneRechargeUI.this, PhoneRechargeUI.f(PhoneRechargeUI.this).Owf, PhoneRechargeUI.f(PhoneRechargeUI.this).lpQ, PhoneRechargeUI.f(PhoneRechargeUI.this).name, "")) || (Util.isNullOrNil(PhoneRechargeUI.f(PhoneRechargeUI.this).url))) {}
         }
         try
         {
@@ -1036,25 +1057,25 @@ public class PhoneRechargeUI
         }
       }
     });
-    this.BEg.eIh();
-    int i = com.tencent.mm.cb.a.jn(this) / 4 - 20;
+    this.HAk.fum();
+    int i = com.tencent.mm.ci.a.kr(this) / 4 - 20;
     Log.i("MicroMsg.PhoneRechargeUI", "max width: %s", new Object[] { Integer.valueOf(i) });
-    this.BEl.setMaxWidth(i);
-    this.BEm.setMaxWidth(i);
-    this.BEn.setMaxWidth(i);
-    this.BEo.setMaxWidth(i);
-    this.wnT = getResources().getColor(2131100904);
-    if ((this.BEw.BDH != null) && (!Util.isNullOrNil(this.BEw.BDH.name))) {
-      this.desc = this.BEw.BDH.name;
+    this.HAp.setMaxWidth(i);
+    this.HAq.setMaxWidth(i);
+    this.HAr.setMaxWidth(i);
+    this.HAs.setMaxWidth(i);
+    this.AYZ = getResources().getColor(a.c.normal_text_color);
+    if ((this.HAA.HzL != null) && (!Util.isNullOrNil(this.HAA.HzL.name))) {
+      this.desc = this.HAA.HzL.name;
     }
-    this.BEg.getContentEditText().setHintTextColor(getResources().getColor(2131100983));
-    if (Util.isNullOrNil(this.BEg.getText()))
+    this.HAk.getContentEditText().setHintTextColor(getResources().getColor(a.c.recharge_no_phone_hint_text_color));
+    if (Util.isNullOrNil(this.HAk.getText()))
     {
       c(new com.tencent.mm.plugin.recharge.model.f(""), false);
       AppMethodBeat.o(67187);
       return;
     }
-    c(new com.tencent.mm.plugin.recharge.model.f(this.BEg.getText()), false);
+    c(new com.tencent.mm.plugin.recharge.model.f(this.HAk.getText()), false);
     AppMethodBeat.o(67187);
   }
   
@@ -1062,9 +1083,9 @@ public class PhoneRechargeUI
   {
     AppMethodBeat.i(67193);
     super.onDestroy();
-    com.tencent.mm.kernel.g.azz().b(1571, this);
-    com.tencent.mm.kernel.g.azz().b(498, this);
-    EventCenter.instance.removeListener(this.BaR);
+    com.tencent.mm.kernel.h.aGY().b(1571, this);
+    com.tencent.mm.kernel.h.aGY().b(498, this);
+    EventCenter.instance.removeListener(this.GUP);
     AppMethodBeat.o(67193);
   }
   
@@ -1072,11 +1093,11 @@ public class PhoneRechargeUI
   {
     AppMethodBeat.i(67192);
     super.onResume();
-    ad(false, true);
+    ap(false, true);
     AppMethodBeat.o(67192);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
   {
     AppMethodBeat.i(67201);
     if ((paramq instanceof com.tencent.mm.plugin.recharge.model.f))
@@ -1085,92 +1106,92 @@ public class PhoneRechargeUI
       m(paramq);
       if (paramString.cmdId == 0)
       {
-        if ((!Util.isNullOrNil(paramString.knP)) && (!paramString.knP.equals(this.BEg.getText())))
+        if ((!Util.isNullOrNil(paramString.nfH)) && (!paramString.nfH.equals(this.HAk.getText())))
         {
-          Log.i("MicroMsg.PhoneRechargeUI", "hy: mobiel num not match.abourt, %s, %s", new Object[] { paramString.knP, this.BEg.getText() });
+          Log.i("MicroMsg.PhoneRechargeUI", "hy: mobiel num not match.abourt, %s, %s", new Object[] { paramString.nfH, this.HAk.getText() });
           AppMethodBeat.o(67201);
           return;
         }
-        if (paramString.BDp)
+        if (paramString.Hzt)
         {
           Log.e("MicroMsg.PhoneRechargeUI", "hy: cgi failed.");
-          aKU(paramString.errMsg);
-          eHS();
+          aVv(paramString.errMsg);
+          ftX();
           AppMethodBeat.o(67201);
           return;
         }
         this.mAppId = paramString.appId;
-        this.BDq = paramString.BDq;
-        this.BDr = paramString.BDr;
-        this.BDt = paramString.BDt;
-        this.BDu = paramString.BDu;
-        this.BDv = paramString.BDv;
-        this.BDw = paramString.BDw;
+        this.Hzu = paramString.Hzu;
+        this.Hzv = paramString.Hzv;
+        this.Hzx = paramString.Hzx;
+        this.Hzy = paramString.Hzy;
+        this.Hzz = paramString.Hzz;
+        this.HzA = paramString.HzA;
         this.errCode = paramString.errCode;
         this.errMsg = paramString.errMsg;
-        this.BEu = paramString.desc;
-        Log.i("MicroMsg.PhoneRechargeUI", "desc: %s, mobile: %s", new Object[] { this.BEu, this.BEg.getText() });
-        if (Util.isNullOrNil(this.BEu))
+        this.HAy = paramString.desc;
+        Log.i("MicroMsg.PhoneRechargeUI", "desc: %s, mobile: %s", new Object[] { this.HAy, this.HAk.getText() });
+        if (Util.isNullOrNil(this.HAy))
         {
           this.desc = "";
-          this.wnT = getResources().getColor(2131100904);
+          this.AYZ = getResources().getColor(a.c.normal_text_color);
         }
         for (;;)
         {
-          this.BEx = paramString.BDy;
-          this.BDs = paramString.BDs;
-          if (this.BDs == null) {
+          this.HAB = paramString.HzC;
+          this.Hzw = paramString.Hzw;
+          if (this.Hzw == null) {
             break;
           }
-          paramInt1 = this.BDs.size() - 1;
+          paramInt1 = this.Hzw.size() - 1;
           while (paramInt1 >= 0)
           {
-            paramq = (com.tencent.mm.plugin.wallet.a.q)this.BDs.get(paramInt1);
+            paramq = (com.tencent.mm.plugin.wallet.a.q)this.Hzw.get(paramInt1);
             if (paramq.name.isEmpty()) {
-              this.BDs.remove(paramq);
+              this.Hzw.remove(paramq);
             }
             paramInt1 -= 1;
           }
-          if ((this.BEw.BDH != null) && (this.BEw.BDH.BCX.trim().equals(this.BEg.getText())))
+          if ((this.HAA.HzL != null) && (this.HAA.HzL.Hzb.trim().equals(this.HAk.getText())))
           {
-            this.BEw.BDH.ljO = this.BEu;
-            this.BEw.setInput(this.BEw.BDH);
+            this.HAA.HzL.oex = this.HAy;
+            this.HAA.setInput(this.HAA.HzL);
           }
         }
-        if ((paramString.BDx == null) || ((paramString.BDx.name.equals(this.BDx.name)) && (paramString.BDx.url.equals(this.BDx.url)) && (paramString.BDx.HEm.equals(this.BDx.HEm)) && (paramString.BDx.weappPath.equals(this.BDx.weappPath)))) {
+        if ((paramString.HzB == null) || ((paramString.HzB.name.equals(this.HzB.name)) && (paramString.HzB.url.equals(this.HzB.url)) && (paramString.HzB.Owf.equals(this.HzB.Owf)) && (paramString.HzB.lpQ.equals(this.HzB.lpQ)))) {
           break label844;
         }
         Log.i("MicroMsg.PhoneRechargeUI", "need to update head");
-        this.BDx = paramString.BDx;
+        this.HzB = paramString.HzB;
       }
     }
     label844:
     for (boolean bool1 = true;; bool1 = false)
     {
       boolean bool2;
-      if (this.BEu.equals(""))
+      if (this.HAy.equals(""))
       {
         bool2 = false;
-        ad(bool2, bool1);
-        paramString = paramString.BDz;
+        ap(bool2, bool1);
+        paramString = paramString.HzD;
         Log.d("MicroMsg.PhoneRechargeUI", "update record history");
-        com.tencent.mm.plugin.recharge.a.a.eHL().ga(paramString);
-        if (this.BEw != null)
+        com.tencent.mm.plugin.recharge.a.a.ftQ().gE(paramString);
+        if (this.HAA != null)
         {
-          if (!Util.isNullOrNil(this.BEg.getText())) {
+          if (!Util.isNullOrNil(this.HAk.getText())) {
             break label623;
           }
-          this.BEw.sY(true);
+          this.HAA.ws(true);
         }
       }
       for (;;)
       {
-        this.BEg.postDelayed(new Runnable()
+        this.HAk.postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(67175);
-            PhoneRechargeUI.a(PhoneRechargeUI.this).eIi();
+            PhoneRechargeUI.a(PhoneRechargeUI.this).fun();
             AppMethodBeat.o(67175);
           }
         }, 300L);
@@ -1179,7 +1200,7 @@ public class PhoneRechargeUI
         bool2 = true;
         break;
         label623:
-        this.BEw.sY(false);
+        this.HAA.ws(false);
       }
       Log.i("MicroMsg.PhoneRechargeUI", "do delete phone number");
       AppMethodBeat.o(67201);
@@ -1189,22 +1210,22 @@ public class PhoneRechargeUI
         m(paramq);
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          com.tencent.mm.wallet_core.b.hgC();
-          bool1 = com.tencent.mm.wallet_core.b.b(com.tencent.mm.plugin.expt.b.b.a.rWd, true);
+          com.tencent.mm.wallet_core.b.iie();
+          bool1 = com.tencent.mm.wallet_core.b.b(com.tencent.mm.plugin.expt.b.b.a.vCG, true);
           paramString = (com.tencent.mm.plugin.recharge.model.g)paramq;
           if (bool1)
           {
-            ((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.g.af(com.tencent.mm.pluginsdk.wallet.a.class)).startWxpayQueryCashierPay(paramString.BDB.dDL, 6);
-            EventCenter.instance.addListener(this.BaR);
+            ((com.tencent.mm.pluginsdk.wallet.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.pluginsdk.wallet.a.class)).startWxpayQueryCashierPay(paramString.HzF.fwv, 6);
+            EventCenter.instance.addListener(this.GUP);
             AppMethodBeat.o(67201);
             return;
           }
-          paramq = paramString.BDB;
-          paramq.dVv = 6;
-          paramq.Kxr = 100;
-          paramq.pSm = this.BEg.getText();
-          if (this.BEw.BDH != null) {}
-          for (paramString = this.BEw.BDH.name;; paramString = "")
+          paramq = paramString.HzF;
+          paramq.fOY = 6;
+          paramq.Rzf = 100;
+          paramq.tol = this.HAk.getText();
+          if (this.HAA.HzL != null) {}
+          for (paramString = this.HAA.HzL.name;; paramString = "")
           {
             paramq.remark = paramString;
             com.tencent.mm.pluginsdk.wallet.f.a(this, paramq, 2);
@@ -1213,9 +1234,9 @@ public class PhoneRechargeUI
         }
         paramq = paramString;
         if (Util.isNullOrNil(paramString)) {
-          paramq = getString(2131768354);
+          paramq = getString(a.i.wallet_unknown_err);
         }
-        aKU(paramq);
+        aVv(paramq);
       }
       AppMethodBeat.o(67201);
       return;
@@ -1230,7 +1251,7 @@ public class PhoneRechargeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.ui.PhoneRechargeUI
  * JD-Core Version:    0.7.0.1
  */

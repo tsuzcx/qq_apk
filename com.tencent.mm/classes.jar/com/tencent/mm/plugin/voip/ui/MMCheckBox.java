@@ -13,8 +13,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MMCheckBox
   extends CheckBox
 {
-  private Drawable HcG;
-  private int HcH;
+  private Drawable NTw;
+  private int NTx;
   
   public MMCheckBox(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,10 +30,10 @@ public class MMCheckBox
   {
     AppMethodBeat.i(115298);
     super.drawableStateChanged();
-    if (this.HcG != null)
+    if (this.NTw != null)
     {
       int[] arrayOfInt = getDrawableState();
-      this.HcG.setState(arrayOfInt);
+      this.NTw.setState(arrayOfInt);
       invalidate();
     }
     AppMethodBeat.o(115298);
@@ -44,8 +44,8 @@ public class MMCheckBox
   {
     AppMethodBeat.i(115300);
     super.jumpDrawablesToCurrentState();
-    if ((Build.VERSION.SDK_INT >= 11) && (this.HcG != null)) {
-      this.HcG.jumpToCurrentState();
+    if ((Build.VERSION.SDK_INT >= 11) && (this.NTw != null)) {
+      this.NTw.jumpToCurrentState();
     }
     AppMethodBeat.o(115300);
   }
@@ -55,7 +55,7 @@ public class MMCheckBox
     int j = 0;
     AppMethodBeat.i(115301);
     super.onDraw(paramCanvas);
-    Drawable localDrawable = this.HcG;
+    Drawable localDrawable = this.NTw;
     int i;
     int k;
     int m;
@@ -94,15 +94,15 @@ public class MMCheckBox
   public void setButtonDrawable(int paramInt)
   {
     AppMethodBeat.i(115297);
-    if ((paramInt != 0) && (paramInt == this.HcH))
+    if ((paramInt != 0) && (paramInt == this.NTx))
     {
       AppMethodBeat.o(115297);
       return;
     }
-    this.HcH = paramInt;
+    this.NTx = paramInt;
     Drawable localDrawable = null;
-    if (this.HcH != 0) {
-      localDrawable = getResources().getDrawable(this.HcH);
+    if (this.NTx != 0) {
+      localDrawable = getResources().getDrawable(this.NTx);
     }
     setButtonDrawable(localDrawable);
     AppMethodBeat.o(115297);
@@ -110,13 +110,13 @@ public class MMCheckBox
   
   public void setButtonDrawable(Drawable paramDrawable)
   {
-    this.HcG = paramDrawable;
+    this.NTw = paramDrawable;
   }
   
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
     AppMethodBeat.i(115299);
-    if ((super.verifyDrawable(paramDrawable)) || (paramDrawable == this.HcG))
+    if ((super.verifyDrawable(paramDrawable)) || (paramDrawable == this.NTw))
     {
       AppMethodBeat.o(115299);
       return true;
@@ -127,7 +127,7 @@ public class MMCheckBox
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.MMCheckBox
  * JD-Core Version:    0.7.0.1
  */

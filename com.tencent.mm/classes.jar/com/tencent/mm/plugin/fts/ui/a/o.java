@@ -4,8 +4,8 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.fts.a.a.e;
 import com.tencent.mm.plugin.fts.a.a.m;
 import com.tencent.mm.plugin.fts.a.d;
@@ -13,30 +13,31 @@ import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
 import com.tencent.mm.plugin.fts.ui.b.c;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.fts.ui.o.g;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.bv;
 
 public final class o
   extends f
 {
-  private a xdE;
+  private a BPC;
   
   public o(int paramInt)
   {
     super(paramInt);
     AppMethodBeat.i(112108);
-    this.xdE = new a();
+    this.BPC = new a();
     AppMethodBeat.o(112108);
   }
   
   public final void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
     AppMethodBeat.i(112109);
-    String str = this.xcP.wVX;
+    String str = this.BON.BHS;
     boolean bool2;
     boolean bool1;
-    switch (this.xcP.wVW)
+    switch (this.BON.BHR)
     {
     case 4: 
     default: 
@@ -47,49 +48,49 @@ public final class o
     case 3: 
       for (;;)
       {
-        this.xcM = str;
+        this.BOK = str;
         if (Util.isNullOrNil(paramVarArgs)) {
           break;
         }
-        this.xcL = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.xcP.wWd, bool2, bool1, b.c.wZU, paramVarArgs + "(", ")")).wWu;
-        this.xcL = TextUtils.concat(new CharSequence[] { "\"", this.xcL, paramContext.getString(2131765105) });
+        this.BOJ = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.BON.BHY, bool2, bool1, b.c.BLT, paramVarArgs + "(", ")")).BIp;
+        this.BOJ = TextUtils.concat(new CharSequence[] { "\"", this.BOJ, paramContext.getString(o.g.search_talker_message_info_3) });
         AppMethodBeat.o(112109);
         return;
         bool1 = true;
         bool2 = true;
-        parama = d.arL(str);
+        parama = d.azM(str);
         paramVarArgs = null;
       }
     case 7: 
       label136:
-      label177:
-      label180:
+      label178:
+      label181:
       bool1 = true;
-      label194:
+      label195:
       bool2 = true;
     }
     for (;;)
     {
-      parama = ((l)g.af(l.class)).aSN().Kn(str).field_nickname;
-      paramVarArgs = d.arL(str);
+      parama = ((n)h.ae(n.class)).bbL().RG(str).field_nickname;
+      paramVarArgs = d.azM(str);
       break;
-      this.xcL = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.xcP.wWd, bool2, bool1, 400.0F, b.c.wZU)).wWu;
+      this.BOJ = com.tencent.mm.plugin.fts.a.f.a(e.a(parama, this.BON.BHY, bool2, bool1, 400.0F, b.c.BLT)).BIp;
       break label136;
       bool1 = false;
-      break label177;
+      break label178;
       bool2 = false;
       bool1 = false;
-      break label180;
+      break label181;
       bool1 = false;
-      break label194;
+      break label195;
       bool2 = false;
       bool1 = false;
     }
   }
   
-  public final a.b axc()
+  public final a.b aEw()
   {
-    return this.xdE;
+    return this.BPC;
   }
   
   public final class a
@@ -104,14 +105,14 @@ public final class o
     {
       AppMethodBeat.i(112107);
       super.a(paramContext, parama, parama1, paramVarArgs);
-      ((f.b)parama).xcX.setVisibility(8);
+      ((f.b)parama).BOV.setVisibility(8);
       AppMethodBeat.o(112107);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.o
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:orientation="vertical" android:id="@id/avt" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.constraint.ConstraintLayout android:orientation="vertical" android:id="@id/ayp" android:layout_width="fill_parent" android:layout_height="@dimen/x1">
+    <androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:id="@id/ayp" android:layout_width="fill_parent" android:layout_height="@dimen/x1">
         <ImageView android:id="@id/bgv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
         <View android:id="@id/dmp" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginBottom="20.0dip" app:layout_constraintBottom_toTopOf="@id/ir3" />
         <ImageView android:id="@id/bh9" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintTop_toBottomOf="@id/dmp" />
@@ -12,6 +12,6 @@
                 <TextView android:textSize="@dimen/k6" android:textColor="@color/ag2" android:layout_gravity="center_horizontal" android:id="@id/in3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/g" />
             </LinearLayout>
         </LinearLayout>
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <ImageView android:orientation="vertical" android:id="@id/ggb" android:background="@drawable/oj" android:layout_width="fill_parent" android:layout_height="@dimen/x1" />
 </RelativeLayout>

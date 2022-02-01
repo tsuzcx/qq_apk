@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView$animateBackgroundView$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationPause", "onAnimationRepeat", "onAnimationResume", "onAnimationStart", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView$animateBackgroundView$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationPause", "onAnimationRepeat", "onAnimationResume", "onAnimationStart", "plugin-scan_release"})
 public final class ScanSharedMaskView$b
   extends AnimatorListenerAdapter
 {
@@ -14,90 +14,90 @@ public final class ScanSharedMaskView$b
   
   public final void onAnimationCancel(Animator paramAnimator)
   {
-    AppMethodBeat.i(240675);
-    AnimatorListenerAdapter localAnimatorListenerAdapter = this.CSh;
+    AppMethodBeat.i(221823);
+    AnimatorListenerAdapter localAnimatorListenerAdapter = this.IXz;
     if (localAnimatorListenerAdapter != null)
     {
       localAnimatorListenerAdapter.onAnimationCancel(paramAnimator);
-      AppMethodBeat.o(240675);
+      AppMethodBeat.o(221823);
       return;
     }
-    AppMethodBeat.o(240675);
+    AppMethodBeat.o(221823);
   }
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    AppMethodBeat.i(240674);
-    if (!this.rti)
+    AppMethodBeat.i(221820);
+    if (!this.uYN)
     {
-      ScanSharedMaskView.c(this.CST);
-      ScanSharedMaskView.d(this.CST).setVisibility(8);
+      ScanSharedMaskView.c(this.IYl);
+      ScanSharedMaskView.d(this.IYl).setVisibility(8);
     }
-    AnimatorListenerAdapter localAnimatorListenerAdapter = this.CSh;
+    AnimatorListenerAdapter localAnimatorListenerAdapter = this.IXz;
     if (localAnimatorListenerAdapter != null)
     {
       localAnimatorListenerAdapter.onAnimationEnd(paramAnimator);
-      AppMethodBeat.o(240674);
+      AppMethodBeat.o(221820);
       return;
     }
-    AppMethodBeat.o(240674);
+    AppMethodBeat.o(221820);
   }
   
   public final void onAnimationPause(Animator paramAnimator)
   {
-    AppMethodBeat.i(240678);
-    AnimatorListenerAdapter localAnimatorListenerAdapter = this.CSh;
+    AppMethodBeat.i(221833);
+    AnimatorListenerAdapter localAnimatorListenerAdapter = this.IXz;
     if (localAnimatorListenerAdapter != null)
     {
       localAnimatorListenerAdapter.onAnimationPause(paramAnimator);
-      AppMethodBeat.o(240678);
+      AppMethodBeat.o(221833);
       return;
     }
-    AppMethodBeat.o(240678);
+    AppMethodBeat.o(221833);
   }
   
   public final void onAnimationRepeat(Animator paramAnimator)
   {
-    AppMethodBeat.i(240676);
-    AnimatorListenerAdapter localAnimatorListenerAdapter = this.CSh;
+    AppMethodBeat.i(221826);
+    AnimatorListenerAdapter localAnimatorListenerAdapter = this.IXz;
     if (localAnimatorListenerAdapter != null)
     {
       localAnimatorListenerAdapter.onAnimationRepeat(paramAnimator);
-      AppMethodBeat.o(240676);
+      AppMethodBeat.o(221826);
       return;
     }
-    AppMethodBeat.o(240676);
+    AppMethodBeat.o(221826);
   }
   
   public final void onAnimationResume(Animator paramAnimator)
   {
-    AppMethodBeat.i(240679);
-    AnimatorListenerAdapter localAnimatorListenerAdapter = this.CSh;
+    AppMethodBeat.i(221835);
+    AnimatorListenerAdapter localAnimatorListenerAdapter = this.IXz;
     if (localAnimatorListenerAdapter != null)
     {
       localAnimatorListenerAdapter.onAnimationResume(paramAnimator);
-      AppMethodBeat.o(240679);
+      AppMethodBeat.o(221835);
       return;
     }
-    AppMethodBeat.o(240679);
+    AppMethodBeat.o(221835);
   }
   
   public final void onAnimationStart(Animator paramAnimator)
   {
-    AppMethodBeat.i(240677);
-    AnimatorListenerAdapter localAnimatorListenerAdapter = this.CSh;
+    AppMethodBeat.i(221829);
+    AnimatorListenerAdapter localAnimatorListenerAdapter = this.IXz;
     if (localAnimatorListenerAdapter != null)
     {
       localAnimatorListenerAdapter.onAnimationStart(paramAnimator);
-      AppMethodBeat.o(240677);
+      AppMethodBeat.o(221829);
       return;
     }
-    AppMethodBeat.o(240677);
+    AppMethodBeat.o(221829);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.widget.ScanSharedMaskView.b
  * JD-Core Version:    0.7.0.1
  */

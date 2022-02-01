@@ -5,14 +5,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.utils.g;
+import com.tencent.mm.plugin.wallet_core.utils.k;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class i
   extends Preference
 {
-  private int AQP;
-  String AQQ;
+  private int GKa;
+  String GKb;
   private View mView;
   
   public i(Context paramContext)
@@ -20,28 +22,28 @@ public final class i
     super(paramContext);
     AppMethodBeat.i(66827);
     this.mView = null;
-    this.AQP = 2147483647;
-    setLayoutResource(2131495442);
+    this.GKa = 2147483647;
+    setLayoutResource(a.g.mall_order_fee_pref);
     AppMethodBeat.o(66827);
   }
   
-  public final void aJH(String paramString)
+  public final void aUd(String paramString)
   {
     AppMethodBeat.i(66830);
     try
     {
-      this.AQP = g.cI(paramString, true);
+      this.GKa = k.cW(paramString, true);
       AppMethodBeat.o(66830);
       return;
     }
     catch (Exception paramString)
     {
-      this.AQP = -1;
+      this.GKa = -1;
       AppMethodBeat.o(66830);
     }
   }
   
-  public final View getView(View paramView, ViewGroup paramViewGroup)
+  public final View c(View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(66828);
     if (this.mView == null) {
@@ -57,12 +59,12 @@ public final class i
   {
     AppMethodBeat.i(66829);
     super.onBindView(paramView);
-    TextView localTextView = (TextView)paramView.findViewById(2131304383);
-    paramView = (TextView)paramView.findViewById(2131304382);
+    TextView localTextView = (TextView)paramView.findViewById(a.f.mall_order_fee_pref_title);
+    paramView = (TextView)paramView.findViewById(a.f.mall_order_fee_pref_fee);
     localTextView.setText(getTitle());
-    paramView.setText(this.AQQ);
-    if (this.AQP != 2147483647) {
-      paramView.setTextColor(this.AQP);
+    paramView.setText(this.GKb);
+    if (this.GKa != 2147483647) {
+      paramView.setTextColor(this.GKa);
     }
     AppMethodBeat.o(66829);
   }

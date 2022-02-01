@@ -4,16 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.an.t;
 import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.g.a.ar;
-import com.tencent.mm.g.a.ar.a;
-import com.tencent.mm.g.a.yg;
-import com.tencent.mm.g.a.yg.a;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.f.a.at;
+import com.tencent.mm.f.a.at.a;
+import com.tencent.mm.f.a.zn;
+import com.tencent.mm.f.a.zn.a;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.platformtools.ac;
 import com.tencent.mm.plugin.account.ui.DisasterUI;
-import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -28,24 +29,24 @@ import java.util.Map;
 
 public final class b
 {
-  public b.a gpc;
-  public Map<Integer, Long> gpd;
-  public Map<Long, b.a> gpe;
-  public IListener gpf;
+  public b.a iTl;
+  public Map<Integer, Long> iTm;
+  public Map<Long, b.a> iTn;
+  public IListener iTo;
   
   public b()
   {
     AppMethodBeat.i(20099);
-    this.gpd = new HashMap();
-    this.gpe = new HashMap();
-    this.gpf = new IListener() {};
+    this.iTm = new HashMap();
+    this.iTn = new HashMap();
+    this.iTo = new IListener() {};
     AppMethodBeat.o(20099);
   }
   
-  final boolean Dl(final String paramString)
+  final boolean Kc(String paramString)
   {
     AppMethodBeat.i(20101);
-    Log.i("MicroMsg.BroadcastController", "summerdiz handleEventOOB oldNoticeInfo[%s], event[%s]", new Object[] { this.gpc, paramString });
+    Log.i("MicroMsg.BroadcastController", "summerdiz handleEventOOB oldNoticeInfo[%s], event[%s]", new Object[] { this.iTl, paramString });
     if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(20101);
@@ -63,33 +64,33 @@ public final class b
       AppMethodBeat.o(20101);
       return false;
     }
-    if (this.gpc == null)
+    if (this.iTl == null)
     {
-      this.gpc = new b.a();
-      paramString = new yg();
-      this.gpc.gpm.put(Integer.valueOf(0), paramString);
-      paramString.eeB.desc = "";
-      paramString.eeB.url = "";
-      paramString.eeB.dDG = 0;
-      paramString.eeB.dDF = 30;
-      paramString.eeB.visible = false;
-      paramString.eeB.Title = "";
-      paramString.eeB.dDH = 0;
-      paramString.eeB.dDI = 2131495655;
-      paramString.eeB.dDJ = "";
-      paramString.eeB.position = 0;
+      this.iTl = new b.a();
+      paramString = new zn();
+      this.iTl.iTv.put(Integer.valueOf(0), paramString);
+      paramString.fYQ.desc = "";
+      paramString.fYQ.url = "";
+      paramString.fYQ.fwp = 0;
+      paramString.fYQ.fwo = 30;
+      paramString.fYQ.visible = false;
+      paramString.fYQ.fwr = "";
+      paramString.fYQ.fwq = 0;
+      paramString.fYQ.fws = R.i.mmnotify_view;
+      paramString.fYQ.fwt = "";
+      paramString.fYQ.position = 0;
     }
-    if (!ac.jPM)
+    if (!ac.mGW)
     {
-      if ((this.gpc.gpk != 0L) && (Util.ticksToNow(this.gpc.gpk) < 1800000L))
+      if ((this.iTl.iTt != 0L) && (Util.ticksToNow(this.iTl.iTt) < 1800000L))
       {
         Log.i("MicroMsg.BroadcastController", "disasterTick within half an hour, drop it");
         AppMethodBeat.o(20101);
         return false;
       }
-      this.gpc.gpk = Util.currentTicks();
+      this.iTl.iTt = Util.currentTicks();
     }
-    if (!ac.jPN) {
+    if (!ac.mGX) {
       try
       {
         long l = Util.getLong((String)localMap.get(".e.ExpiredTime"), 0L);
@@ -105,11 +106,11 @@ public final class b
         Log.i("MicroMsg.BroadcastController", "parseLong expiredTime error:%s", new Object[] { paramString });
       }
     }
-    this.gpc.gpj = ((String)localMap.get(".e.NoticeId"));
-    paramString = MMApplicationContext.getContext().getSharedPreferences("disaster_pref", g.aps()).getString("disaster_noticeid_list_key", "");
-    if ((!ac.jPO) && (paramString.contains(this.gpc.gpj)))
+    this.iTl.iTs = ((String)localMap.get(".e.NoticeId"));
+    paramString = MMApplicationContext.getContext().getSharedPreferences("disaster_pref", g.avK()).getString("disaster_noticeid_list_key", "");
+    if ((!ac.mGY) && (paramString.contains(this.iTl.iTs)))
     {
-      Log.i("MicroMsg.BroadcastController", "noticeIdList %s contain notifyID:%s, drop id", new Object[] { paramString, this.gpc.gpj });
+      Log.i("MicroMsg.BroadcastController", "noticeIdList %s contain notifyID:%s, drop id", new Object[] { paramString, this.iTl.iTs });
       AppMethodBeat.o(20101);
       return false;
     }
@@ -122,14 +123,14 @@ public final class b
     if (i == 0)
     {
       localObject3 = "";
-      label483:
+      label484:
       localObject3 = localObject3;
       localObject4 = (String)localMap.get((String)localObject3 + ".Language");
       if ((localObject4 == null) && (i > 3)) {
-        break label1025;
+        break label1026;
       }
       if (!str.equalsIgnoreCase((String)localObject4)) {
-        break label865;
+        break label866;
       }
       str = (String)localMap.get((String)localObject3 + ".Content");
       localObject4 = (String)localMap.get((String)localObject3 + ".Url");
@@ -139,54 +140,45 @@ public final class b
       if (Util.isNullOrNil(str))
       {
         Log.i("MicroMsg.BroadcastController", "handleEventOOB cann't hit curLang");
-        label663:
+        label664:
         localObject3 = localObject1;
         if (Util.isNullOrNil((String)localObject1)) {
-          localObject3 = MMApplicationContext.getContext().getString(2131758346);
+          localObject3 = MMApplicationContext.getContext().getString(R.l.disaster_default_url);
         }
         localObject1 = localObject2;
         if (Util.isNullOrNil((String)localObject2))
         {
           Log.i("MicroMsg.BroadcastController", "handleEventOOB defContent is also null use hardcode");
-          localObject1 = MMApplicationContext.getContext().getString(2131758339);
+          localObject1 = MMApplicationContext.getContext().getString(R.l.disaster_default_content_default);
         }
         localObject2 = paramString;
         if (Util.isNullOrNil(paramString))
         {
           if (Util.isNullOrNil((String)localObject1)) {
-            localObject2 = MMApplicationContext.getContext().getString(2131758343);
+            localObject2 = MMApplicationContext.getContext().getString(R.l.disaster_default_tips_default);
           }
         }
         else
         {
-          label746:
-          paramString = (yg)this.gpc.gpm.get(Integer.valueOf(0));
-          paramString.eeB.desc = ((String)localObject2);
-          paramString.eeB.url = ((String)localObject3);
-          paramString.eeB.visible = true;
-          paramString.eeB.dDH = 2;
-          paramString.eeB.dDJ = this.gpc.gpj;
-          MMHandlerThread.postToMainThread(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(20096);
-              Log.i("MicroMsg.BroadcastController", "summerdiz handleEventOOB publish uiEvent");
-              EventCenter.instance.publish(paramString);
-              AppMethodBeat.o(20096);
-            }
-          });
-          this.gpc.gpl = ((String)localObject1);
-          if (bg.azz().foreground) {
-            alz();
+          label747:
+          paramString = (zn)this.iTl.iTv.get(Integer.valueOf(0));
+          paramString.fYQ.desc = ((String)localObject2);
+          paramString.fYQ.url = ((String)localObject3);
+          paramString.fYQ.visible = true;
+          paramString.fYQ.fwq = 2;
+          paramString.fYQ.fwt = this.iTl.iTs;
+          MMHandlerThread.postToMainThread(new b.3(this, paramString));
+          this.iTl.iTu = ((String)localObject1);
+          if (bh.aGY().foreground) {
+            ary();
           }
           AppMethodBeat.o(20101);
           return true;
           localObject3 = Integer.valueOf(i);
-          break label483;
-          label865:
+          break label484;
+          label866:
           if (!"en".equalsIgnoreCase((String)localObject4)) {
-            break label1012;
+            break label1013;
           }
           paramString = (String)localMap.get((String)localObject3 + ".Content");
           localObject1 = (String)localMap.get((String)localObject3 + ".Url");
@@ -200,25 +192,25 @@ public final class b
         localObject2 = localObject3;
         break;
         localObject2 = localObject1;
-        break label746;
+        break label747;
         localObject1 = localObject4;
         localObject2 = str;
         paramString = (String)localObject3;
-        break label663;
-        label1012:
+        break label664;
+        label1013:
         localObject3 = paramString;
         paramString = (String)localObject2;
       }
-      label1025:
+      label1026:
       localObject4 = null;
       str = null;
     }
   }
   
-  final boolean a(ar paramar)
+  final boolean a(at paramat)
   {
     AppMethodBeat.i(20100);
-    String str = paramar.dDD.event;
+    String str = paramat.fwm.event;
     if (str == null) {}
     Map localMap;
     for (int i = -1;; i = str.length())
@@ -237,7 +229,7 @@ public final class b
     if (l1 <= 0L) {
       Log.e("MicroMsg.BroadcastController", "summerdiz handleNewDisaster noticeID null");
     }
-    if (!ac.jPN) {
+    if (!ac.mGX) {
       try
       {
         long l2 = Util.getLong((String)localMap.get(".e.ExpiredTime"), 0L);
@@ -254,18 +246,18 @@ public final class b
       }
     }
     Object localObject1 = new b.a();
-    ((b.a)localObject1).gpj = String.valueOf(l1);
-    Object localObject2 = MMApplicationContext.getContext().getSharedPreferences("disaster_pref", g.aps()).getString("disaster_noticeid_list_key", "");
-    if ((!ac.jPO) && (((String)localObject2).contains(((b.a)localObject1).gpj)))
+    ((b.a)localObject1).iTs = String.valueOf(l1);
+    Object localObject2 = MMApplicationContext.getContext().getSharedPreferences("disaster_pref", g.avK()).getString("disaster_noticeid_list_key", "");
+    if ((!ac.mGY) && (((String)localObject2).contains(((b.a)localObject1).iTs)))
     {
-      Log.i("MicroMsg.BroadcastController", "summerdiz handleNewDisaster noticeIdList %s contain notifyID:%s, drop id", new Object[] { localObject2, ((b.a)localObject1).gpj });
+      Log.i("MicroMsg.BroadcastController", "summerdiz handleNewDisaster noticeIdList %s contain notifyID:%s, drop id", new Object[] { localObject2, ((b.a)localObject1).iTs });
       AppMethodBeat.o(20100);
       return false;
     }
     Object localObject4;
-    if (this.gpe.size() > 0)
+    if (this.iTn.size() > 0)
     {
-      localObject4 = (b.a)this.gpe.get(Long.valueOf(l1));
+      localObject4 = (b.a)this.iTn.get(Long.valueOf(l1));
       if (localObject4 != null) {
         Log.i("MicroMsg.BroadcastController", "summerdiz  handleNewDisaster found info in map[%s]", new Object[] { localObject4 });
       }
@@ -279,10 +271,10 @@ public final class b
       Log.e("MicroMsg.BroadcastController", "summerdiz handleNewDisaster positionStr is null!");
       AppMethodBeat.o(20100);
       return false;
-      this.gpe.put(Long.valueOf(l1), localObject1);
+      this.iTn.put(Long.valueOf(l1), localObject1);
       localObject4 = localObject1;
       continue;
-      this.gpe.put(Long.valueOf(l1), localObject1);
+      this.iTn.put(Long.valueOf(l1), localObject1);
       localObject4 = localObject1;
     }
     Object localObject8 = new ArrayList();
@@ -333,7 +325,7 @@ public final class b
       localObject5 = localObject5;
       localObject7 = (String)localMap.get((String)localObject5 + ".Language");
       if ((localObject7 == null) && (j > 3)) {
-        break label1756;
+        break label1757;
       }
       if (!((String)localObject6).equalsIgnoreCase((String)localObject7)) {
         break label1057;
@@ -350,7 +342,7 @@ public final class b
         label854:
         localObject6 = localObject2;
         if (Util.isNullOrNil((String)localObject2)) {
-          localObject6 = MMApplicationContext.getContext().getString(2131758346);
+          localObject6 = MMApplicationContext.getContext().getString(R.l.disaster_default_url);
         }
         localObject5 = localObject1;
         localObject2 = localObject3;
@@ -358,22 +350,22 @@ public final class b
         {
           localObject2 = localObject3;
           if (Util.isNullOrNil((String)localObject3)) {
-            localObject2 = MMApplicationContext.getContext().getString(2131758340);
+            localObject2 = MMApplicationContext.getContext().getString(R.l.disaster_default_content_login);
           }
           localObject5 = localObject1;
           if (Util.isNullOrNil((String)localObject1)) {
-            localObject5 = MMApplicationContext.getContext().getString(2131758344);
+            localObject5 = MMApplicationContext.getContext().getString(R.l.disaster_default_tips_login);
           }
-          paramar.dDE.desc = ((String)localObject2);
-          paramar.dDE.dDF = 30;
-          paramar.dDE.dDG = 0;
-          paramar.dDE.url = ((String)localObject6);
-          paramar.dDE.visible = true;
-          paramar.dDE.dDI = 0;
-          paramar.dDE.dDH = 6;
-          paramar.dDE.Title = "";
-          paramar.dDE.dDJ = String.valueOf(l1);
-          paramar.dDE.position = 1;
+          paramat.fwn.desc = ((String)localObject2);
+          paramat.fwn.fwo = 30;
+          paramat.fwn.fwp = 0;
+          paramat.fwn.url = ((String)localObject6);
+          paramat.fwn.visible = true;
+          paramat.fwn.fws = 0;
+          paramat.fwn.fwq = 6;
+          paramat.fwn.fwr = "";
+          paramat.fwn.fwt = String.valueOf(l1);
+          paramat.fwn.position = 1;
         }
         if (((ArrayList)localObject8).size() == 0)
         {
@@ -384,7 +376,7 @@ public final class b
           break label652;
           label1057:
           if (!"en".equalsIgnoreCase((String)localObject7)) {
-            break label1741;
+            break label1742;
           }
           localObject1 = (String)localMap.get((String)localObject5 + ".Content");
           localObject2 = (String)localMap.get((String)localObject5 + ".Url");
@@ -397,39 +389,39 @@ public final class b
         localObject1 = localObject3;
         localObject3 = localObject5;
         break;
-        if ((((b.a)localObject4).gpk != 0L) && (Util.ticksToNow(((b.a)localObject4).gpk) < 1800000L))
+        if ((((b.a)localObject4).iTt != 0L) && (Util.ticksToNow(((b.a)localObject4).iTt) < 1800000L))
         {
           Log.i("MicroMsg.BroadcastController", "summerdiz handleNewDisaster disasterTick within half an hour, drop it");
           AppMethodBeat.o(20100);
           return false;
         }
-        ((b.a)localObject4).gpk = Util.currentTicks();
+        ((b.a)localObject4).iTt = Util.currentTicks();
         localObject7 = ((ArrayList)localObject8).iterator();
         localObject1 = localObject5;
         while (((Iterator)localObject7).hasNext())
         {
           localObject8 = (Integer)((Iterator)localObject7).next();
-          localObject3 = Long.valueOf(Util.nullAs((Long)this.gpd.get(localObject8), 0L));
+          localObject3 = Long.valueOf(Util.nullAs((Long)this.iTm.get(localObject8), 0L));
           if ((((Long)localObject3).longValue() > 0L) && (((Long)localObject3).longValue() >= l1))
           {
             Log.i("MicroMsg.BroadcastController", "summerdiz p[%d] has bigger oldPositionNoticeId[%d, %d]", new Object[] { localObject8, localObject3, Long.valueOf(l1) });
           }
           else
           {
-            localObject5 = (yg)((b.a)localObject4).gpm.get(localObject8);
+            localObject5 = (zn)((b.a)localObject4).iTv.get(localObject8);
             if (localObject5 != null) {
-              break label1723;
+              break label1724;
             }
-            localObject5 = new yg();
-            ((yg)localObject5).eeB.dDG = 0;
-            ((yg)localObject5).eeB.dDF = 30;
-            ((yg)localObject5).eeB.Title = "";
-            ((yg)localObject5).eeB.dDI = 2131495655;
-            ((yg)localObject5).eeB.position = ((Integer)localObject8).intValue();
-            ((b.a)localObject4).gpm.put(localObject8, localObject5);
+            localObject5 = new zn();
+            ((zn)localObject5).fYQ.fwp = 0;
+            ((zn)localObject5).fYQ.fwo = 30;
+            ((zn)localObject5).fYQ.fwr = "";
+            ((zn)localObject5).fYQ.fws = R.i.mmnotify_view;
+            ((zn)localObject5).fYQ.position = ((Integer)localObject8).intValue();
+            ((b.a)localObject4).iTv.put(localObject8, localObject5);
           }
         }
-        label1723:
+        label1724:
         for (;;)
         {
           if (Util.isNullOrNil((String)localObject1)) {
@@ -440,7 +432,7 @@ public final class b
             localObject3 = localObject1;
             if (Util.isNullOrNil((String)localObject1))
             {
-              j = 2131758343;
+              j = R.l.disaster_default_tips_default;
               switch (((Integer)localObject8).intValue())
               {
               }
@@ -448,39 +440,31 @@ public final class b
             for (;;)
             {
               localObject3 = MMApplicationContext.getContext().getString(j);
-              ((yg)localObject5).eeB.desc = ((String)localObject3);
-              ((yg)localObject5).eeB.url = ((String)localObject6);
-              ((yg)localObject5).eeB.visible = true;
-              ((yg)localObject5).eeB.dDH = 2;
-              ((yg)localObject5).eeB.dDJ = ((b.a)localObject4).gpj;
-              this.gpd.put(localObject8, Long.valueOf(l1));
+              ((zn)localObject5).fYQ.desc = ((String)localObject3);
+              ((zn)localObject5).fYQ.url = ((String)localObject6);
+              ((zn)localObject5).fYQ.visible = true;
+              ((zn)localObject5).fYQ.fwq = 2;
+              ((zn)localObject5).fYQ.fwt = ((b.a)localObject4).iTs;
+              this.iTm.put(localObject8, Long.valueOf(l1));
               if (i == 0)
               {
-                paramar.dDE.desc = ((String)localObject3);
-                paramar.dDE.dDF = 30;
-                paramar.dDE.dDG = 0;
-                paramar.dDE.url = ((String)localObject6);
-                paramar.dDE.visible = true;
-                paramar.dDE.dDI = 2131495655;
-                paramar.dDE.dDH = 2;
-                paramar.dDE.Title = "";
-                paramar.dDE.dDJ = String.valueOf(l1);
-                paramar.dDE.position = ((Integer)localObject8).intValue();
+                paramat.fwn.desc = ((String)localObject3);
+                paramat.fwn.fwo = 30;
+                paramat.fwn.fwp = 0;
+                paramat.fwn.url = ((String)localObject6);
+                paramat.fwn.visible = true;
+                paramat.fwn.fws = R.i.mmnotify_view;
+                paramat.fwn.fwq = 2;
+                paramat.fwn.fwr = "";
+                paramat.fwn.fwt = String.valueOf(l1);
+                paramat.fwn.position = ((Integer)localObject8).intValue();
               }
-              MMHandlerThread.postToMainThread(new Runnable()
-              {
-                public final void run()
-                {
-                  AppMethodBeat.i(20095);
-                  EventCenter.instance.publish(this.gph);
-                  AppMethodBeat.o(20095);
-                }
-              });
+              MMHandlerThread.postToMainThread(new b.2(this, (zn)localObject5));
               localObject1 = localObject3;
               break;
-              j = 2131758345;
+              j = R.l.disaster_default_tips_moment;
               continue;
-              j = 2131758342;
+              j = R.l.disaster_default_tips_chat;
             }
             AppMethodBeat.o(20100);
             return true;
@@ -490,35 +474,35 @@ public final class b
         localObject2 = localObject6;
         localObject1 = localObject5;
         break label854;
-        label1741:
+        label1742:
         localObject5 = localObject1;
         localObject1 = localObject3;
       }
-      label1756:
+      label1757:
       localObject7 = null;
       localObject6 = null;
     }
   }
   
-  final void alz()
+  final void ary()
   {
     AppMethodBeat.i(20102);
-    if ((this.gpc == null) || (this.gpc.gpm.get(Integer.valueOf(0)) == null) || (Util.isNullOrNil(this.gpc.gpl)))
+    if ((this.iTl == null) || (this.iTl.iTv.get(Integer.valueOf(0)) == null) || (Util.isNullOrNil(this.iTl.iTu)))
     {
       AppMethodBeat.o(20102);
       return;
     }
-    Log.i("MicroMsg.BroadcastController", "summerdize checkShowDisasterContent showDisasterContent[%s]", new Object[] { this.gpc.gpl });
+    Log.i("MicroMsg.BroadcastController", "summerdize checkShowDisasterContent showDisasterContent[%s]", new Object[] { this.iTl.iTu });
     Object localObject = new Intent();
-    ((Intent)localObject).putExtra("key_disaster_content", this.gpc.gpl);
-    ((Intent)localObject).putExtra("key_disaster_url", ((yg)this.gpc.gpm.get(Integer.valueOf(0))).eeB.url);
+    ((Intent)localObject).putExtra("key_disaster_content", this.iTl.iTu);
+    ((Intent)localObject).putExtra("key_disaster_url", ((zn)this.iTl.iTv.get(Integer.valueOf(0))).fYQ.url);
     ((Intent)localObject).setClass(MMApplicationContext.getContext(), DisasterUI.class).addFlags(268435456);
     Context localContext = MMApplicationContext.getContext();
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/broadcast/BroadcastController", "checkShowDisasterContent", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/mm/broadcast/BroadcastController", "checkShowDisasterContent", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    this.gpc.gpl = null;
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/broadcast/BroadcastController", "checkShowDisasterContent", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(localContext, "com/tencent/mm/broadcast/BroadcastController", "checkShowDisasterContent", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    this.iTl.iTu = null;
     AppMethodBeat.o(20102);
   }
 }

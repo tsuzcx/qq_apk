@@ -39,7 +39,7 @@ public final class c
           paramString.putExtra((String)localEntry.getKey(), (String)localEntry.getValue());
         }
       }
-      com.tencent.mm.ch.a.post(new Runnable()
+      com.tencent.mm.co.a.post(new Runnable()
       {
         public final void run()
         {
@@ -59,15 +59,15 @@ public final class c
     return true;
   }
   
-  public final boolean Mb(long paramLong)
+  public final boolean Tz(long paramLong)
   {
     AppMethodBeat.i(116661);
-    boolean bool = com.tencent.mm.plugin.websearch.widget.c.c.ak(paramLong, 1);
+    boolean bool = com.tencent.mm.plugin.websearch.widget.c.c.at(paramLong, 1);
     AppMethodBeat.o(116661);
     return bool;
   }
   
-  public final boolean aXt(String paramString)
+  public final boolean bjf(String paramString)
   {
     AppMethodBeat.i(116662);
     if (TextUtils.isEmpty(paramString))
@@ -80,10 +80,10 @@ public final class c
     return bool;
   }
   
-  public final boolean aXu(String paramString)
+  public final boolean bjg(String paramString)
   {
     AppMethodBeat.i(116663);
-    if (!aXt(paramString))
+    if (!bjf(paramString))
     {
       AppMethodBeat.o(116663);
       return false;
@@ -102,7 +102,7 @@ public final class c
       paramString = new Intent();
       paramString.putExtra("rawUrl", (String)localObject);
       paramString.putExtra("useJs", true);
-      com.tencent.mm.br.c.b(MMApplicationContext.getContext(), "webview", ".ui.tools.WebViewUI", paramString);
+      com.tencent.mm.by.c.b(MMApplicationContext.getContext(), "webview", ".ui.tools.WebViewUI", paramString);
     }
     AppMethodBeat.o(116663);
     return true;
@@ -110,7 +110,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.c.a.c
  * JD-Core Version:    0.7.0.1
  */

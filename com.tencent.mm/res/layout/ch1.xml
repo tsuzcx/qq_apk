@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="wrap_content" android:layout_height="@dimen/atw"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/eaa" android:background="@drawable/cx2" android:layout_width="@dimen/auj" android:layout_height="@dimen/aui" />
+    <RelativeLayout android:id="@id/k46" android:background="@drawable/cx7" android:layout_width="wrap_content" android:layout_height="@dimen/atw" android:layout_toRightOf="@id/eaa" />
+</merge>

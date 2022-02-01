@@ -1,112 +1,120 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.e;
+import com.google.b.a.b;
+import com.google.b.a.e;
 
 public final class a$aj
   extends e
 {
-  public int LGa = 0;
-  public int RFa = 0;
-  public int RFb = 0;
-  public int RFc = 0;
-  public int RFd = 0;
-  public int RFe = 0;
-  public int RFf = -1;
-  public int RFg = 0;
-  public int RFh = 0;
+  public long DPJ = 0L;
+  public int SKL = 0;
+  public int ZgE = 0;
+  public int ZgF = 0;
+  public int ZgG = 0;
+  public int ZgH = 0;
+  public int ZgI = 0;
+  public int ZgJ = -1;
+  public int ZgK = 0;
+  public int ZgL = 0;
+  public int ZgM = 0;
   public int roomId = 0;
-  public long ypH = 0L;
   
   public a$aj()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public final int Ig()
+  public final int JG()
   {
-    int j = super.Ig();
+    int j = super.JG();
     int i = j;
-    if (this.LGa != 0) {
-      i = j + b.bC(1, this.LGa);
+    if (this.SKL != 0) {
+      i = j + b.bN(1, this.SKL);
     }
     j = i;
     if (this.roomId != 0) {
-      j = i + b.bu(2, this.roomId);
+      j = i + b.bM(2, this.roomId);
     }
     i = j;
-    if (this.ypH != 0L) {
-      i = j + b.r(3, this.ypH);
+    if (this.DPJ != 0L) {
+      i = j + b.p(3, this.DPJ);
     }
     j = i;
-    if (this.RFa != 0) {
-      j = i + b.bC(4, this.RFa);
+    if (this.ZgE != 0) {
+      j = i + b.bN(4, this.ZgE);
     }
     i = j;
-    if (this.RFb != 0) {
-      i = j + b.bC(5, this.RFb);
+    if (this.ZgF != 0) {
+      i = j + b.bN(5, this.ZgF);
     }
     j = i;
-    if (this.RFc != 0) {
-      j = i + b.bC(6, this.RFc);
+    if (this.ZgG != 0) {
+      j = i + b.bN(6, this.ZgG);
     }
     i = j;
-    if (this.RFd != 0) {
-      i = j + b.bC(7, this.RFd);
+    if (this.ZgH != 0) {
+      i = j + b.bN(7, this.ZgH);
     }
     j = i;
-    if (this.RFe != 0) {
-      j = i + b.bC(8, this.RFe);
+    if (this.ZgI != 0) {
+      j = i + b.bN(8, this.ZgI);
     }
     i = j;
-    if (this.RFf != -1) {
-      i = j + b.bu(9, this.RFf);
+    if (this.ZgJ != -1) {
+      i = j + b.bM(9, this.ZgJ);
     }
     j = i;
-    if (this.RFg != 0) {
-      j = i + b.bu(10, this.RFg);
+    if (this.ZgK != 0) {
+      j = i + b.bM(10, this.ZgK);
     }
     i = j;
-    if (this.RFh != 0) {
-      i = j + b.bu(11, this.RFh);
+    if (this.ZgL != 0) {
+      i = j + b.bM(11, this.ZgL);
     }
-    return i;
+    j = i;
+    if (this.ZgM != 0) {
+      j = i + b.bM(12, this.ZgM);
+    }
+    return j;
   }
   
   public final void a(b paramb)
   {
-    if (this.LGa != 0) {
-      paramb.bB(1, this.LGa);
+    if (this.SKL != 0) {
+      paramb.bK(1, this.SKL);
     }
     if (this.roomId != 0) {
-      paramb.bs(2, this.roomId);
+      paramb.bJ(2, this.roomId);
     }
-    if (this.ypH != 0L) {
-      paramb.q(3, this.ypH);
+    if (this.DPJ != 0L) {
+      paramb.r(3, this.DPJ);
     }
-    if (this.RFa != 0) {
-      paramb.bB(4, this.RFa);
+    if (this.ZgE != 0) {
+      paramb.bK(4, this.ZgE);
     }
-    if (this.RFb != 0) {
-      paramb.bB(5, this.RFb);
+    if (this.ZgF != 0) {
+      paramb.bK(5, this.ZgF);
     }
-    if (this.RFc != 0) {
-      paramb.bB(6, this.RFc);
+    if (this.ZgG != 0) {
+      paramb.bK(6, this.ZgG);
     }
-    if (this.RFd != 0) {
-      paramb.bB(7, this.RFd);
+    if (this.ZgH != 0) {
+      paramb.bK(7, this.ZgH);
     }
-    if (this.RFe != 0) {
-      paramb.bB(8, this.RFe);
+    if (this.ZgI != 0) {
+      paramb.bK(8, this.ZgI);
     }
-    if (this.RFf != -1) {
-      paramb.bs(9, this.RFf);
+    if (this.ZgJ != -1) {
+      paramb.bJ(9, this.ZgJ);
     }
-    if (this.RFg != 0) {
-      paramb.bs(10, this.RFg);
+    if (this.ZgK != 0) {
+      paramb.bJ(10, this.ZgK);
     }
-    if (this.RFh != 0) {
-      paramb.bs(11, this.RFh);
+    if (this.ZgL != 0) {
+      paramb.bJ(11, this.ZgL);
+    }
+    if (this.ZgM != 0) {
+      paramb.bJ(12, this.ZgM);
     }
     super.a(paramb);
   }

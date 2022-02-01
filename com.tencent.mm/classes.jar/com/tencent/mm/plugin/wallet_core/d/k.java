@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.wallet_core.d;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.model.am;
+import com.tencent.mm.plugin.wallet_core.model.an;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class k
-  extends MAutoStorage<am>
+  extends MAutoStorage<an>
 {
   public static final String[] SQL_CREATE;
   private ISQLiteDatabase db;
@@ -20,13 +20,13 @@ public final class k
   static
   {
     AppMethodBeat.i(70634);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(am.info, "WalletUserInfo") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(an.info, "WalletUserInfo") };
     AppMethodBeat.o(70634);
   }
   
   public k(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, am.info, "WalletUserInfo", null);
+    super(paramISQLiteDatabase, an.info, "WalletUserInfo", null);
     AppMethodBeat.i(70627);
     this.listeners = new LinkedList();
     Log.i("MicroMsg.WalletUserInfoStorage", "already call constructor.");
@@ -34,14 +34,14 @@ public final class k
     AppMethodBeat.o(70627);
   }
   
-  public final boolean b(am paramam)
+  public final boolean b(an paraman)
   {
     AppMethodBeat.i(70629);
-    if (super.insert(paramam))
+    if (super.insert(paraman))
     {
-      paramam = this.listeners.iterator();
-      while (paramam.hasNext()) {
-        paramam.next();
+      paraman = this.listeners.iterator();
+      while (paraman.hasNext()) {
+        paraman.next();
       }
       AppMethodBeat.o(70629);
       return true;
@@ -50,7 +50,7 @@ public final class k
     return false;
   }
   
-  public final boolean bnU()
+  public final boolean byd()
   {
     AppMethodBeat.i(70630);
     boolean bool = this.db.execSQL("WalletUserInfo", "delete from WalletUserInfo");
@@ -58,23 +58,23 @@ public final class k
     return bool;
   }
   
-  public final am fRN()
+  public final an gKZ()
   {
     AppMethodBeat.i(70628);
-    am localam = new am();
+    an localan = new an();
     Cursor localCursor = this.db.rawQuery("select * from WalletUserInfo", null, 2);
-    localam.field_is_reg = -1;
+    localan.field_is_reg = -1;
     if (localCursor == null)
     {
       AppMethodBeat.o(70628);
-      return localam;
+      return localan;
     }
     if (localCursor.moveToNext()) {
-      localam.convertFrom(localCursor);
+      localan.convertFrom(localCursor);
     }
     localCursor.close();
     AppMethodBeat.o(70628);
-    return localam;
+    return localan;
   }
 }
 

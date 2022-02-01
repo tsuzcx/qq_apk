@@ -3,7 +3,9 @@ package com.tencent.mm.plugin.account.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.b.a;
 
 final class l$4
   implements DialogInterface.OnClickListener
@@ -14,10 +16,10 @@ final class l$4
   {
     AppMethodBeat.i(128294);
     paramDialogInterface = new StringBuilder();
-    g.aAf();
-    paramDialogInterface = paramDialogInterface.append(com.tencent.mm.kernel.a.azt()).append(",").append(getClass().getName()).append(",R200_200,");
-    g.aAf();
-    com.tencent.mm.plugin.b.a.j(true, com.tencent.mm.kernel.a.FN("R200_200") + ",2");
+    h.aHE();
+    paramDialogInterface = paramDialogInterface.append(b.aGR()).append(",").append(getClass().getName()).append(",R200_200,");
+    h.aHE();
+    a.m(true, b.MN("R200_200") + ",2");
     AppMethodBeat.o(128294);
   }
 }

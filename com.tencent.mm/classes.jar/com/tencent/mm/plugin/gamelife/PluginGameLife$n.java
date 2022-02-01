@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.gamelife;
 
 import android.content.Context;
-import com.tencent.f.i.d;
+import com.tencent.e.i.d;
 import kotlin.g.a.b;
+import kotlin.g.b.aa.f;
 import kotlin.g.b.q;
-import kotlin.g.b.z.f;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "invoke"})
 final class PluginGameLife$n
   extends q
   implements b<String, x>
 {
-  PluginGameLife$n(d paramd, z.f paramf, String paramString, Context paramContext)
+  PluginGameLife$n(d paramd, aa.f paramf, String paramString, Context paramContext)
   {
     super(1);
   }

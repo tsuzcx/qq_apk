@@ -15,35 +15,35 @@ import java.util.LinkedList;
 
 public final class j
 {
-  private static LinkedList<String> qLl;
-  private static LinkedList<String> qLm;
-  private static d.d qLn;
+  private static LinkedList<String> umx;
+  private static LinkedList<String> umy;
+  private static d.d umz;
   
   static
   {
     AppMethodBeat.i(8920);
-    qLl = new LinkedList();
-    qLm = new LinkedList();
+    umx = new LinkedList();
+    umy = new LinkedList();
     AppMethodBeat.o(8920);
   }
   
-  public static void EN(String paramString)
+  public static void LG(String paramString)
   {
     AppMethodBeat.i(8916);
-    qLm.remove(paramString);
-    qLl.remove(paramString);
-    if (b.cCi() != null) {
-      b.cCi().execSQL("DownloadTaskItem", String.format("delete from %s where %s=\"%s\"", new Object[] { "DownloadTaskItem", "appId", paramString }));
+    umy.remove(paramString);
+    umx.remove(paramString);
+    if (b.cQM() != null) {
+      b.cQM().execSQL("DownloadTaskItem", String.format("delete from %s where %s=\"%s\"", new Object[] { "DownloadTaskItem", "appId", paramString }));
     }
     AppMethodBeat.o(8916);
   }
   
-  public static int alA(String paramString)
+  public static int att(String paramString)
   {
     AppMethodBeat.i(8913);
-    if (qLm.contains(paramString))
+    if (umy.contains(paramString))
     {
-      i = k.qLo;
+      i = k.umA;
       AppMethodBeat.o(8913);
       return i;
     }
@@ -52,54 +52,28 @@ public final class j
     return i;
   }
   
-  public static void alB(String paramString)
+  public static void atu(String paramString)
   {
     AppMethodBeat.i(8915);
     if (!contains(paramString))
     {
-      qLl.addFirst(paramString);
-      if (b.cCi() != null)
+      umx.addFirst(paramString);
+      if (b.cQM() != null)
       {
         com.tencent.mm.plugin.downloader_app.c.a locala = new com.tencent.mm.plugin.downloader_app.c.a();
         locala.field_appId = paramString;
         locala.field_modifyTime = System.currentTimeMillis();
-        b.cCi().insert(locala);
+        b.cQM().insert(locala);
       }
     }
     AppMethodBeat.o(8915);
   }
   
-  public static boolean cBP()
-  {
-    AppMethodBeat.i(8917);
-    if (qLl.size() > 0)
-    {
-      AppMethodBeat.o(8917);
-      return true;
-    }
-    AppMethodBeat.o(8917);
-    return false;
-  }
-  
-  public static void cBS()
-  {
-    AppMethodBeat.i(175275);
-    Iterator localIterator = qLl.iterator();
-    while (localIterator.hasNext())
-    {
-      com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.alb((String)localIterator.next());
-      if ((locala != null) && (locala.field_status == 1)) {
-        f.cBv().Cp(locala.field_downloadId);
-      }
-    }
-    AppMethodBeat.o(175275);
-  }
-  
-  public static void cCf()
+  public static void cQJ()
   {
     Object localObject1 = null;
     AppMethodBeat.i(8909);
-    if (b.cCi() == null)
+    if (b.cQM() == null)
     {
       if (localObject1 != null) {
         localObject1 = ((LinkedList)localObject1).iterator();
@@ -113,14 +87,14 @@ public final class j
         }
         Object localObject2 = (com.tencent.mm.plugin.downloader_app.c.a)((Iterator)localObject1).next();
         Log.d("MicroMsg.TaskManager", "initFromDB, appId:%s, status:%d", new Object[] { ((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_appId, Integer.valueOf(((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_status) });
-        if (((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_status == k.qLo)
+        if (((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_status == k.umA)
         {
-          if (qLm.contains(((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_appId)) {
+          if (umy.contains(((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_appId)) {
             continue;
           }
-          qLm.add(((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_appId);
+          umy.add(((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_appId);
           continue;
-          localObject2 = b.cCi().rawQuery(String.format("select * from %s order by %s desc", new Object[] { "DownloadTaskItem", "modifyTime" }), new String[0]);
+          localObject2 = b.cQM().rawQuery(String.format("select * from %s order by %s desc", new Object[] { "DownloadTaskItem", "modifyTime" }), new String[0]);
           if (localObject2 == null) {
             break;
           }
@@ -134,19 +108,19 @@ public final class j
           ((Cursor)localObject2).close();
           break;
         }
-        if (!qLl.contains(((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_appId)) {
-          qLl.add(((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_appId);
+        if (!umx.contains(((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_appId)) {
+          umx.add(((com.tencent.mm.plugin.downloader_app.c.a)localObject2).field_appId);
         }
       }
     }
     label216:
-    if (qLn == null) {
-      qLn = new d.d()
+    if (umz == null) {
+      umz = new d.d()
       {
         public final void O(int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(8908);
-          com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.Cw(paramAnonymousLong);
+          com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.IF(paramAnonymousLong);
           if (locala == null)
           {
             AppMethodBeat.o(8908);
@@ -160,52 +134,78 @@ public final class j
           }
           if (paramAnonymousInt == 9)
           {
-            j.CS(locala.field_appId);
+            j.JI(locala.field_appId);
             AppMethodBeat.o(8908);
             return;
           }
           if ((paramAnonymousInt == 1) || (paramAnonymousInt == 7))
           {
             g localg = h.o(locala.field_appId, true, false);
-            if ((localg != null) && (q.s(MMApplicationContext.getContext(), localg.field_packageName)))
+            if ((localg != null) && (q.u(MMApplicationContext.getContext(), localg.field_packageName)))
             {
               Log.i("MicroMsg.TaskManager", "onDownloadStatusChange, hasInstall");
               AppMethodBeat.o(8908);
               return;
             }
-            j.Pn(locala.field_appId);
+            j.WK(locala.field_appId);
           }
           AppMethodBeat.o(8908);
         }
       };
     }
-    d.a(qLn);
+    d.a(umz);
     AppMethodBeat.o(8909);
   }
   
-  public static LinkedList<String> cCg()
+  public static LinkedList<String> cQK()
   {
     AppMethodBeat.i(8911);
     LinkedList localLinkedList = new LinkedList();
-    localLinkedList.addAll(qLl);
-    localLinkedList.addAll(qLm);
+    localLinkedList.addAll(umx);
+    localLinkedList.addAll(umy);
     AppMethodBeat.o(8911);
     return localLinkedList;
   }
   
-  public static LinkedList<String> cCh()
+  public static LinkedList<String> cQL()
   {
     AppMethodBeat.i(8912);
     LinkedList localLinkedList = new LinkedList();
-    localLinkedList.addAll(qLl);
+    localLinkedList.addAll(umx);
     AppMethodBeat.o(8912);
     return localLinkedList;
+  }
+  
+  public static boolean cQt()
+  {
+    AppMethodBeat.i(8917);
+    if (umx.size() > 0)
+    {
+      AppMethodBeat.o(8917);
+      return true;
+    }
+    AppMethodBeat.o(8917);
+    return false;
+  }
+  
+  public static void cQw()
+  {
+    AppMethodBeat.i(175275);
+    Iterator localIterator = umx.iterator();
+    while (localIterator.hasNext())
+    {
+      com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.asU((String)localIterator.next());
+      if ((locala != null) && (locala.field_status == 1)) {
+        f.cPZ().Iy(locala.field_downloadId);
+      }
+    }
+    AppMethodBeat.o(175275);
   }
   
   public static boolean contains(String paramString)
   {
     AppMethodBeat.i(8914);
-    if ((qLm.contains(paramString)) || (qLl.contains(paramString)))
+    if ((umy.contains(paramString)) || (umx.contains(paramString)))
     {
       AppMethodBeat.o(8914);
       return true;
@@ -217,18 +217,18 @@ public final class j
   public static void stop()
   {
     AppMethodBeat.i(8910);
-    qLl.clear();
-    qLm.clear();
-    if (qLn != null) {
-      d.b(qLn);
+    umx.clear();
+    umy.clear();
+    if (umz != null) {
+      d.b(umz);
     }
-    qLn = null;
+    umz = null;
     AppMethodBeat.o(8910);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.a.j
  * JD-Core Version:    0.7.0.1
  */

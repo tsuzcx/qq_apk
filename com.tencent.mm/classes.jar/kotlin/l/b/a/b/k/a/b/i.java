@@ -14,25 +14,25 @@ import kotlin.l.b.a.b.k.a.n;
 public final class i
   extends h
 {
-  private final ab TMD;
-  private final kotlin.l.b.a.b.f.b TfF;
+  private final kotlin.l.b.a.b.f.b aaIz;
+  private final ab abpf;
   
   public i(ab paramab, a.k paramk, c paramc, kotlin.l.b.a.b.e.b.a parama, f paramf, kotlin.l.b.a.b.k.a.l paraml, kotlin.g.a.a<? extends Collection<kotlin.l.b.a.b.f.f>> parama1)
   {
     super(paramc, parama, paramf, (Collection)paramk, parama1);
     AppMethodBeat.i(60473);
-    this.TMD = paramab;
-    this.TfF = this.TMD.hBk();
+    this.abpf = paramab;
+    this.aaIz = this.abpf.iFy();
     AppMethodBeat.o(60473);
   }
   
   protected final boolean C(kotlin.l.b.a.b.f.f paramf)
   {
     AppMethodBeat.i(60468);
-    p.h(paramf, "name");
+    p.k(paramf, "name");
     if (!super.C(paramf))
     {
-      Object localObject = this.TLm.Tvt.TKS;
+      Object localObject = this.abnP.aaYm.abnv;
       if (((localObject instanceof Collection)) && (((Collection)localObject).isEmpty())) {
         break label100;
       }
@@ -42,7 +42,7 @@ public final class i
         if (!((Iterator)localObject).hasNext()) {
           break;
         }
-      } while (!((kotlin.l.b.a.b.b.b.b)((Iterator)localObject).next()).a(this.TfF, paramf));
+      } while (!((kotlin.l.b.a.b.b.b.b)((Iterator)localObject).next()).a(this.aaIz, paramf));
     }
     label100:
     for (int i = 1; i != 0; i = 0)
@@ -57,8 +57,8 @@ public final class i
   public final kotlin.l.b.a.b.b.h c(kotlin.l.b.a.b.f.f paramf, kotlin.l.b.a.b.c.a.a parama)
   {
     AppMethodBeat.i(60470);
-    p.h(paramf, "name");
-    p.h(parama, "location");
+    p.k(paramf, "name");
+    p.k(parama, "location");
     d(paramf, parama);
     paramf = super.c(paramf, parama);
     AppMethodBeat.o(60470);
@@ -68,42 +68,42 @@ public final class i
   protected final void c(Collection<kotlin.l.b.a.b.b.l> paramCollection, kotlin.g.a.b<? super kotlin.l.b.a.b.f.f, Boolean> paramb)
   {
     AppMethodBeat.i(60472);
-    p.h(paramCollection, "result");
-    p.h(paramb, "nameFilter");
+    p.k(paramCollection, "result");
+    p.k(paramb, "nameFilter");
     AppMethodBeat.o(60472);
   }
   
   public final void d(kotlin.l.b.a.b.f.f paramf, kotlin.l.b.a.b.c.a.a parama)
   {
     AppMethodBeat.i(60471);
-    p.h(paramf, "name");
-    p.h(parama, "location");
-    kotlin.l.b.a.b.c.a.a(this.TLm.Tvt.Trb, parama, this.TMD, paramf);
+    p.k(paramf, "name");
+    p.k(parama, "location");
+    kotlin.l.b.a.b.c.a.a(this.abnP.aaYm.aaTV, parama, this.abpf, paramf);
     AppMethodBeat.o(60471);
   }
   
-  protected final Set<kotlin.l.b.a.b.f.f> hLm()
+  protected final Set<kotlin.l.b.a.b.f.f> iPE()
   {
-    return (Set)x.SXt;
+    return (Set)x.aaAf;
   }
   
-  protected final Set<kotlin.l.b.a.b.f.f> hLn()
+  protected final Set<kotlin.l.b.a.b.f.f> iPF()
   {
-    return (Set)x.SXt;
+    return (Set)x.aaAf;
   }
   
   protected final kotlin.l.b.a.b.f.a z(kotlin.l.b.a.b.f.f paramf)
   {
     AppMethodBeat.i(60469);
-    p.h(paramf, "name");
-    paramf = new kotlin.l.b.a.b.f.a(this.TfF, paramf);
+    p.k(paramf, "name");
+    paramf = new kotlin.l.b.a.b.f.a(this.aaIz, paramf);
     AppMethodBeat.o(60469);
     return paramf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.b.i
  * JD-Core Version:    0.7.0.1
  */

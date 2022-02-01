@@ -7,21 +7,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/qbar/ScanDecodeFrameData;", "Landroid/os/Parcelable;", "frameData", "", "width", "", "height", "cameraRotation", "([BIII)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getCameraRotation", "()I", "setCameraRotation", "(I)V", "getHeight", "setHeight", "previewData", "getPreviewData", "()[B", "setPreviewData", "([B)V", "getWidth", "setWidth", "describeContents", "writeToParcel", "", "flags", "Companion", "scan-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/qbar/ScanDecodeFrameData;", "Landroid/os/Parcelable;", "frameData", "", "width", "", "height", "cameraRotation", "([BIII)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getCameraRotation", "()I", "setCameraRotation", "(I)V", "getHeight", "setHeight", "previewData", "getPreviewData", "()[B", "setPreviewData", "([B)V", "getWidth", "setWidth", "describeContents", "writeToParcel", "", "flags", "Companion", "scan-sdk_release"})
 public final class ScanDecodeFrameData
   implements Parcelable
 {
   public static final Parcelable.Creator<ScanDecodeFrameData> CREATOR;
-  public static final ScanDecodeFrameData.a RKa;
-  public byte[] CDY;
+  public static final a ZmI;
+  public byte[] IIA;
   public int height;
-  public int sRI;
   public int width;
+  public int wxE;
   
   static
   {
     AppMethodBeat.i(176216);
-    RKa = new ScanDecodeFrameData.a((byte)0);
+    ZmI = new a((byte)0);
     CREATOR = (Parcelable.Creator)new b();
     AppMethodBeat.o(176216);
   }
@@ -29,8 +29,8 @@ public final class ScanDecodeFrameData
   public ScanDecodeFrameData(Parcel paramParcel)
   {
     AppMethodBeat.i(176215);
-    this.CDY = paramParcel.createByteArray();
-    this.sRI = paramParcel.readInt();
+    this.IIA = paramParcel.createByteArray();
+    this.wxE = paramParcel.readInt();
     this.width = paramParcel.readInt();
     this.height = paramParcel.readInt();
     AppMethodBeat.o(176215);
@@ -38,10 +38,10 @@ public final class ScanDecodeFrameData
   
   public ScanDecodeFrameData(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.CDY = paramArrayOfByte;
+    this.IIA = paramArrayOfByte;
     this.width = paramInt1;
     this.height = paramInt2;
-    this.sRI = paramInt3;
+    this.wxE = paramInt3;
   }
   
   public final int describeContents()
@@ -52,22 +52,25 @@ public final class ScanDecodeFrameData
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(176214);
-    p.h(paramParcel, "parcel");
-    paramParcel.writeByteArray(this.CDY);
-    paramParcel.writeInt(this.sRI);
+    p.k(paramParcel, "parcel");
+    paramParcel.writeByteArray(this.IIA);
+    paramParcel.writeInt(this.wxE);
     paramParcel.writeInt(this.width);
     paramParcel.writeInt(this.height);
     AppMethodBeat.o(176214);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/qbar/ScanDecodeFrameData$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/qbar/ScanDecodeFrameData;", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/qbar/ScanDecodeFrameData;", "scan-sdk_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/qbar/ScanDecodeFrameData$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/qbar/ScanDecodeFrameData;", "TAG", "", "scan-sdk_release"})
+  public static final class a {}
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/qbar/ScanDecodeFrameData$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/qbar/ScanDecodeFrameData;", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/qbar/ScanDecodeFrameData;", "scan-sdk_release"})
   public static final class b
     implements Parcelable.Creator<ScanDecodeFrameData>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.qbar.ScanDecodeFrameData
  * JD-Core Version:    0.7.0.1
  */

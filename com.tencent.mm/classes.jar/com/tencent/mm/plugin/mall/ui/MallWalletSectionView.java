@@ -4,17 +4,21 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.appbrand.api.i;
+import com.tencent.mm.plugin.wallet_core.utils.k.b;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.plugin.wxpay.a.a;
-import com.tencent.mm.protocal.protobuf.cdv;
-import com.tencent.mm.protocal.protobuf.egf;
+import com.tencent.mm.protocal.protobuf.cmp;
+import com.tencent.mm.protocal.protobuf.eqh;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.wallet_core.c.aa;
-import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.g;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.LinkedList;
@@ -51,25 +55,25 @@ public class MallWalletSectionView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(66161);
-    inflate(paramContext, 2131495457, this);
+    inflate(paramContext, a.g.mall_wallet_section_layout, this);
     setOrientation(1);
     AppMethodBeat.o(66161);
   }
   
-  public final void a(cdv paramcdv, boolean paramBoolean)
+  public final void a(cmp paramcmp, boolean paramBoolean, i parami, k.b paramb)
   {
-    AppMethodBeat.i(66162);
-    if (paramcdv.Mjq != null)
+    AppMethodBeat.i(293325);
+    if (paramcmp.Tue != null)
     {
-      g.aAi();
-      String str1 = (String)g.aAh().azQ().get(ar.a.Ofd, "");
+      h.aHH();
+      String str1 = (String)h.aHG().aHp().get(ar.a.Vtp, "");
       if (!Util.isNullOrNil(str1)) {}
       JSONObject localJSONObject;
       int j;
       int k;
       int i;
-      egf localegf;
-      label279:
+      eqh localeqh;
+      label291:
       String str2;
       for (;;)
       {
@@ -78,29 +82,29 @@ public class MallWalletSectionView
         {
           localJSONObject = new JSONObject(str1);
           j = getChildCount();
-          k = paramcdv.Mjq.size();
+          k = paramcmp.Tue.size();
           Log.i("MicroMsg.MallWalletSectionView", "cell size: %s", new Object[] { Integer.valueOf(k) });
           i = 0;
           if (i >= k) {
-            break label439;
+            break label456;
           }
-          localegf = (egf)paramcdv.Mjq.get(i);
+          localeqh = (eqh)paramcmp.Tue.get(i);
           str1 = null;
-          if (!"balance_cell".equals(localegf.KNW)) {
-            break label279;
+          if (!"balance_cell".equals(localeqh.ROQ)) {
+            break label291;
           }
-          l = ((Long)((a)g.ah(a.class)).getWalletCacheStg().get(ar.a.OfA, Long.valueOf(0L))).longValue();
-          str1 = getContext().getString(2131768266) + f.formatMoney2f(f.b(String.valueOf(l), "100", 2, RoundingMode.HALF_UP).doubleValue());
+          l = ((Long)((a)h.ag(a.class)).getWalletCacheStg().get(ar.a.VtM, Long.valueOf(0L))).longValue();
+          str1 = getContext().getString(a.i.wallet_rmb_symbol) + g.formatMoney2f(g.b(String.valueOf(l), "100", 2, RoundingMode.HALF_UP).doubleValue());
           if (i >= j) {
             break;
           }
           Log.d("MicroMsg.MallWalletSectionView", "update view");
           localMallWalletSectionCellView = (MallWalletSectionCellView)getChildAt(i);
           if (i >= k - 1) {
-            break label373;
+            break label386;
           }
           bool = true;
-          localMallWalletSectionCellView.a(localegf, localJSONObject, bool, str1, paramBoolean);
+          localMallWalletSectionCellView.a(localeqh, localJSONObject, bool, str1, paramBoolean, parami, paramb);
           i += 1;
           continue;
           localJSONObject = null;
@@ -110,12 +114,12 @@ public class MallWalletSectionView
           Log.printErrStackTrace("MicroMsg.MallWalletSectionView", localJSONException, "", new Object[0]);
         }
         continue;
-        if ("lqt_cell".equals(localegf.KNW))
+        if ("lqt_cell".equals(localeqh.ROQ))
         {
-          l = ((Long)((a)g.ah(a.class)).getWalletCacheStg().get(ar.a.OfB, Long.valueOf(0L))).longValue();
-          str2 = getContext().getString(2131768266) + f.formatMoney2f(f.b(String.valueOf(l), "100", 2, RoundingMode.HALF_UP).doubleValue());
+          l = ((Long)((a)h.ag(a.class)).getWalletCacheStg().get(ar.a.VtN, Long.valueOf(0L))).longValue();
+          str2 = getContext().getString(a.i.wallet_rmb_symbol) + g.formatMoney2f(g.b(String.valueOf(l), "100", 2, RoundingMode.HALF_UP).doubleValue());
           continue;
-          label373:
+          label386:
           bool = false;
         }
       }
@@ -124,23 +128,23 @@ public class MallWalletSectionView
       if (i < k - 1) {}
       for (boolean bool = true;; bool = false)
       {
-        localMallWalletSectionCellView.a(localegf, localJSONObject, bool, str2, paramBoolean);
+        localMallWalletSectionCellView.a(localeqh, localJSONObject, bool, str2, paramBoolean, parami, paramb);
         addView(localMallWalletSectionCellView);
         break;
       }
-      label439:
+      label456:
       if (j > k)
       {
         Log.d("MicroMsg.MallWalletSectionView", "remove layout");
         removeViews(k, j - k);
       }
     }
-    AppMethodBeat.o(66162);
+    AppMethodBeat.o(293325);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.ui.MallWalletSectionView
  * JD-Core Version:    0.7.0.1
  */

@@ -5,23 +5,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.d.k;
 import com.tencent.mm.d.l;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.RandomAccessFile;
 
 public final class g
 {
-  private static final k djp;
+  private static final k faW;
   
   static
   {
     AppMethodBeat.i(88881);
-    djp = new k(101010256L);
+    faW = new k(101010256L);
     AppMethodBeat.o(88881);
   }
   
-  public static byte[] ala(String paramString)
+  public static byte[] asT(String paramString)
   {
     AppMethodBeat.i(88880);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -29,7 +28,7 @@ public final class g
       AppMethodBeat.o(88880);
       return null;
     }
-    RandomAccessFile localRandomAccessFile1 = s.dB(paramString, false);
+    RandomAccessFile localRandomAccessFile1 = u.dO(paramString, false);
     if (localRandomAccessFile1.length() == 0L)
     {
       localRandomAccessFile1.close();
@@ -41,9 +40,9 @@ public final class g
     {
       try
       {
-        paramString = new o(paramString);
-        localRandomAccessFile2 = s.dB(aa.z(paramString.mUri), false);
-        localRandomAccessFile2.seek(((Long)e.L(paramString).second).longValue() + 22L - 2L);
+        paramString = new q(paramString);
+        localRandomAccessFile2 = u.dO(paramString.getPath(), false);
+        localRandomAccessFile2.seek(((Long)e.K(paramString).second).longValue() + 22L - 2L);
         paramString = new byte[2];
         localRandomAccessFile2.readFully(paramString);
         i = new l(paramString).value;
@@ -72,7 +71,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.d.g
  * JD-Core Version:    0.7.0.1
  */

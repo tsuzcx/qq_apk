@@ -18,9 +18,12 @@ import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.plugin.webview.c.g;
+import com.tencent.mm.plugin.webview.c.j;
 
 public final class e
-  extends android.support.v7.app.e
+  extends androidx.appcompat.app.e
 {
   private Context mContext;
   
@@ -31,9 +34,9 @@ public final class e
   
   private e(Context paramContext, byte paramByte)
   {
-    super(paramContext, 2131820981);
+    super(paramContext, c.j.GameMenuSheetStyle);
     AppMethodBeat.i(80990);
-    gR();
+    bb();
     this.mContext = paramContext;
     AppMethodBeat.o(80990);
   }
@@ -47,14 +50,14 @@ public final class e
     if (isLandscape())
     {
       ((Window)localObject1).setGravity(5);
-      ((Window)localObject1).setWindowAnimations(2131821287);
+      ((Window)localObject1).setWindowAnimations(c.j.RightToLeftAnimation);
       ((Window)localObject1).getDecorView().setPadding(0, 0, 0, 0);
       localObject2 = ((Window)localObject1).getAttributes();
       ((WindowManager.LayoutParams)localObject2).width = -1;
       ((WindowManager.LayoutParams)localObject2).height = -1;
       ((Window)localObject1).setAttributes((WindowManager.LayoutParams)localObject2);
-      localObject2 = (ViewGroup)LayoutInflater.from(this.mContext).inflate(2131494913, null);
-      localView = ((ViewGroup)localObject2).findViewById(2131309368);
+      localObject2 = (ViewGroup)LayoutInflater.from(this.mContext).inflate(c.g.game_menu_sheet_dialog, null);
+      localView = ((ViewGroup)localObject2).findViewById(c.f.touch_outside);
       localObject1 = paramView;
       if (paramInt != 0)
       {
@@ -64,27 +67,27 @@ public final class e
         }
       }
       if (!isLandscape()) {
-        break label201;
+        break label206;
       }
-      paramView = (FrameLayout)((ViewGroup)localObject2).findViewById(2131304632);
-      label141:
+      paramView = (FrameLayout)((ViewGroup)localObject2).findViewById(c.f.menu_sheet_right_container);
+      label145:
       paramView.setVisibility(0);
       if (paramLayoutParams != null) {
-        break label215;
+        break label221;
       }
       paramView.addView((View)localObject1);
     }
     for (;;)
     {
-      if (ghl()) {
+      if (haG()) {
         localView.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(80989);
             b localb = new b();
-            localb.bm(paramAnonymousView);
-            a.b("com/tencent/mm/plugin/webview/ui/tools/game/menu/GameSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+            localb.bn(paramAnonymousView);
+            a.c("com/tencent/mm/plugin/webview/ui/tools/game/menu/GameSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
             if (e.this.isShowing()) {
               e.this.cancel();
             }
@@ -96,17 +99,17 @@ public final class e
       AppMethodBeat.o(80995);
       return localObject2;
       ((Window)localObject1).setGravity(80);
-      ((Window)localObject1).setWindowAnimations(2131820792);
+      ((Window)localObject1).setWindowAnimations(c.j.BottomToTopAnimation);
       break;
-      label201:
-      paramView = (FrameLayout)((ViewGroup)localObject2).findViewById(2131304630);
-      break label141;
-      label215:
+      label206:
+      paramView = (FrameLayout)((ViewGroup)localObject2).findViewById(c.f.menu_sheet_bottom_container);
+      break label145;
+      label221:
       paramView.addView((View)localObject1, paramLayoutParams);
     }
   }
   
-  private boolean ghl()
+  private boolean haG()
   {
     AppMethodBeat.i(80996);
     if (Build.VERSION.SDK_INT < 11)

@@ -1043,7 +1043,7 @@ public class XWalkDecompressor
     //   203: astore 8
     //   205: aload 10
     //   207: aload 9
-    //   209: invokevirtual 269	i/a/b/a:dz	([B)Z
+    //   209: invokevirtual 269	i/a/b/a:dY	([B)Z
     //   212: ifne +250 -> 462
     //   215: aload_0
     //   216: astore 7
@@ -1757,7 +1757,7 @@ public class XWalkDecompressor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.XWalkDecompressor
  * JD-Core Version:    0.7.0.1
  */

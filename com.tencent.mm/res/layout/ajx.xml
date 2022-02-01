@@ -2,16 +2,16 @@
 <com.tencent.mm.view.TouchableLayout android:id="@id/h8v" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <FrameLayout android:id="@id/hq0" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <android.support.design.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/hpr" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <androidx.coordinatorlayout.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/hpr" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent">
             <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/b21">
-                <android.support.v7.widget.RecyclerView android:id="@id/gka" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <androidx.recyclerview.widget.RecyclerView android:id="@id/gka" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
             </com.tencent.mm.view.RefreshLoadMoreLayout>
-        </android.support.design.widget.CoordinatorLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
         <ViewStub android:layout_gravity="bottom|center" android:id="@id/fku" android:layout="@layout/ah0" android:layout_width="fill_parent" android:layout_height="@dimen/bz" />
     </FrameLayout>
     <FrameLayout android:id="@id/hp3" android:background="@color/ac_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <ImageView android:id="@id/dcj" android:background="@color/afz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <com.tencent.mm.view.AnimationLayout android:id="@id/hp5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="60.0dip">
+        <com.tencent.mm.view.AnimationLayout android:id="@id/hp5" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <com.tencent.mm.view.NinePatchCropImageView android:id="@id/hp4" android:background="@color/BW_90" android:layout_width="fill_parent" android:layout_height="100.0dip" android:scaleType="centerCrop" />
         </com.tencent.mm.view.AnimationLayout>
     </FrameLayout>

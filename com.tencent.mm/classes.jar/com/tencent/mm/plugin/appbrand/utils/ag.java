@@ -1,30 +1,17 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
-import android.os.Looper;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.type.IPCBoolean;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import kotlin.l;
 
-public final class ag
-{
-  public static boolean LB()
-  {
-    AppMethodBeat.i(185648);
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      AppMethodBeat.o(185648);
-      return true;
-    }
-    if (Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId())
-    {
-      AppMethodBeat.o(185648);
-      return true;
-    }
-    AppMethodBeat.o(185648);
-    return false;
-  }
-}
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/utils/QueryIsWeChatNFCEnabledTask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
+final class ag
+  implements d<IPCVoid, IPCBoolean>
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.ag
  * JD-Core Version:    0.7.0.1
  */

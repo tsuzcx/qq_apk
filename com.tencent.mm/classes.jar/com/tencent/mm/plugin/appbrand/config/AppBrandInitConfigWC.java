@@ -21,58 +21,59 @@ public class AppBrandInitConfigWC
   implements Parcelable
 {
   public static final Parcelable.Creator<AppBrandInitConfigWC> CREATOR;
-  public String kHG;
-  public String kHH;
-  public AppBrandLaunchFromNotifyReferrer kHI;
-  public List<String> kHK;
-  public HalfScreenConfig kHL;
-  public boolean kHM;
-  public ParcelableMultiTaskData kHP;
-  public String kHQ;
+  public String fWY;
   public int launchMode;
-  public boolean ldN;
-  public long ldO;
-  public String ldP;
-  public PersistableBundle ldQ;
-  public String ldR;
-  public String ldS;
-  public String ldT;
-  public boolean ldU;
-  public WebRenderingCacheDirectoryDescriptor ldV;
-  public volatile QualitySession ldW;
-  public transient int ldX;
-  public boolean ldY;
-  public int ldZ;
-  public String lea;
-  public int leb;
-  public int lec;
-  public boolean led;
-  public WeAppOpenDeclarePromptBundle lee;
-  public AppBrandRuntimeReloadReportBundle lef;
-  public boolean leg;
-  public WeAppOpenUICallbackIPCProxy leh;
-  public boolean lei;
+  public int lyw;
+  public String nBA;
+  public AppBrandLaunchFromNotifyReferrer nBB;
+  public List<String> nBD;
+  public HalfScreenConfig nBE;
+  public boolean nBF;
+  public ParcelableMultiTaskData nBI;
+  public String nBJ;
+  public boolean nYb;
+  public long nYc;
+  public String nYd;
+  public PersistableBundle nYe;
+  public String nYf;
+  public String nYg;
+  public String nYh;
+  public boolean nYi;
+  public WebRenderingCacheDirectoryDescriptor nYj;
+  public volatile QualitySession nYk;
+  public transient int nYl;
+  public boolean nYm;
+  public int nYn;
+  public String nYo;
+  public int nYp;
+  public int nYq;
+  public boolean nYr;
+  public WeAppOpenDeclarePromptBundle nYs;
+  public AppBrandRuntimeReloadReportBundle nYt;
+  public boolean nYu;
+  public WeAppOpenUICallbackIPCProxy nYv;
+  public boolean nYw;
   
   static
   {
     AppMethodBeat.i(44843);
-    CREATOR = new Parcelable.Creator() {};
+    CREATOR = new AppBrandInitConfigWC.1();
     AppMethodBeat.o(44843);
   }
   
   public AppBrandInitConfigWC()
   {
     AppMethodBeat.i(44834);
-    this.ldQ = new PersistableBundle();
-    this.ldU = false;
-    this.led = false;
-    this.kHL = HalfScreenConfig.lfr;
-    this.kHK = new ArrayList();
-    this.kHQ = "";
-    this.leg = false;
-    this.kHM = false;
-    this.lei = false;
-    this.kHP = null;
+    this.nYe = new PersistableBundle();
+    this.nYi = false;
+    this.nYr = false;
+    this.nBE = HalfScreenConfig.nZJ;
+    this.nBD = new ArrayList();
+    this.nBJ = "";
+    this.nYu = false;
+    this.nBF = false;
+    this.nYw = false;
+    this.nBI = null;
     AppMethodBeat.o(44834);
   }
   
@@ -80,91 +81,92 @@ public class AppBrandInitConfigWC
   {
     super(paramParcel);
     AppMethodBeat.i(44839);
-    this.ldQ = new PersistableBundle();
-    this.ldU = false;
-    this.led = false;
-    this.kHL = HalfScreenConfig.lfr;
-    this.kHK = new ArrayList();
-    this.kHQ = "";
-    this.leg = false;
-    this.kHM = false;
-    this.lei = false;
-    this.kHP = null;
+    this.nYe = new PersistableBundle();
+    this.nYi = false;
+    this.nYr = false;
+    this.nBE = HalfScreenConfig.nZJ;
+    this.nBD = new ArrayList();
+    this.nBJ = "";
+    this.nYu = false;
+    this.nBF = false;
+    this.nYw = false;
+    this.nBI = null;
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.ldN = bool1;
+      this.nYb = bool1;
       if (paramParcel.readByte() == 0) {
-        break label457;
+        break label465;
       }
       bool1 = true;
       label100:
-      this.ldY = bool1;
-      this.ldZ = paramParcel.readInt();
-      this.ldO = paramParcel.readLong();
-      this.ldP = paramParcel.readString();
-      this.ldW = ((QualitySession)paramParcel.readParcelable(QualitySession.class.getClassLoader()));
-      this.ldR = paramParcel.readString();
-      this.ldQ = paramParcel.readPersistableBundle(AppBrandInitConfigWC.class.getClassLoader());
-      this.ldS = paramParcel.readString();
+      this.nYm = bool1;
+      this.nYn = paramParcel.readInt();
+      this.nYc = paramParcel.readLong();
+      this.nYd = paramParcel.readString();
+      this.nYk = ((QualitySession)paramParcel.readParcelable(QualitySession.class.getClassLoader()));
+      this.nYf = paramParcel.readString();
+      this.nYe = paramParcel.readPersistableBundle(AppBrandInitConfigWC.class.getClassLoader());
+      this.nYg = paramParcel.readString();
       if (paramParcel.readByte() <= 0) {
-        break label462;
+        break label470;
       }
       bool1 = true;
       label183:
-      this.ldU = bool1;
-      this.ldT = paramParcel.readString();
-      this.ldV = ((WebRenderingCacheDirectoryDescriptor)paramParcel.readParcelable(WebRenderingCacheDirectoryDescriptor.class.getClassLoader()));
-      this.kHG = paramParcel.readString();
+      this.nYi = bool1;
+      this.nYh = paramParcel.readString();
+      this.nYj = ((WebRenderingCacheDirectoryDescriptor)paramParcel.readParcelable(WebRenderingCacheDirectoryDescriptor.class.getClassLoader()));
+      this.fWY = paramParcel.readString();
       this.launchMode = paramParcel.readInt();
-      this.kHH = paramParcel.readString();
-      this.kHI = ((AppBrandLaunchFromNotifyReferrer)paramParcel.readParcelable(AppBrandLaunchFromNotifyReferrer.class.getClassLoader()));
-      this.lea = paramParcel.readString();
-      this.leb = paramParcel.readInt();
-      this.lec = paramParcel.readInt();
+      this.nBA = paramParcel.readString();
+      this.nBB = ((AppBrandLaunchFromNotifyReferrer)paramParcel.readParcelable(AppBrandLaunchFromNotifyReferrer.class.getClassLoader()));
+      this.nYo = paramParcel.readString();
+      this.nYp = paramParcel.readInt();
+      this.nYq = paramParcel.readInt();
       if (paramParcel.readByte() <= 0) {
-        break label467;
+        break label475;
       }
       bool1 = true;
       label285:
-      this.led = bool1;
-      this.lee = ((WeAppOpenDeclarePromptBundle)paramParcel.readParcelable(WeAppOpenDeclarePromptBundle.class.getClassLoader()));
-      this.lef = ((AppBrandRuntimeReloadReportBundle)paramParcel.readParcelable(AppBrandRuntimeReloadReportBundle.class.getClassLoader()));
-      paramParcel.readStringList(this.kHK);
+      this.nYr = bool1;
+      this.nYs = ((WeAppOpenDeclarePromptBundle)paramParcel.readParcelable(WeAppOpenDeclarePromptBundle.class.getClassLoader()));
+      this.nYt = ((AppBrandRuntimeReloadReportBundle)paramParcel.readParcelable(AppBrandRuntimeReloadReportBundle.class.getClassLoader()));
+      paramParcel.readStringList(this.nBD);
       HalfScreenConfig localHalfScreenConfig2 = (HalfScreenConfig)paramParcel.readParcelable(HalfScreenConfig.class.getClassLoader());
       HalfScreenConfig localHalfScreenConfig1 = localHalfScreenConfig2;
       if (localHalfScreenConfig2 == null) {
-        localHalfScreenConfig1 = HalfScreenConfig.lfr;
+        localHalfScreenConfig1 = HalfScreenConfig.nZJ;
       }
-      this.kHL = localHalfScreenConfig1;
+      this.nBE = localHalfScreenConfig1;
       if (paramParcel.readByte() <= 0) {
-        break label472;
+        break label480;
       }
       bool1 = true;
       label373:
-      this.leg = bool1;
+      this.nYu = bool1;
       if (paramParcel.readByte() <= 0) {
-        break label477;
+        break label485;
       }
       bool1 = true;
       label387:
-      this.kHM = bool1;
-      this.leh = ((WeAppOpenUICallbackIPCProxy)paramParcel.readParcelable(WeAppOpenUICallbackIPCProxy.class.getClassLoader()));
+      this.nBF = bool1;
+      this.nYv = ((WeAppOpenUICallbackIPCProxy)paramParcel.readParcelable(WeAppOpenUICallbackIPCProxy.class.getClassLoader()));
       if (paramParcel.readByte() <= 0) {
-        break label482;
+        break label490;
       }
     }
-    label457:
-    label462:
-    label467:
-    label472:
-    label477:
-    label482:
+    label465:
+    label470:
+    label475:
+    label480:
+    label485:
+    label490:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.lei = bool1;
-      this.kHQ = paramParcel.readString();
-      this.kHP = ((ParcelableMultiTaskData)paramParcel.readParcelable(ParcelableMultiTaskData.class.getClassLoader()));
+      this.nYw = bool1;
+      this.nBJ = paramParcel.readString();
+      this.nBI = ((ParcelableMultiTaskData)paramParcel.readParcelable(ParcelableMultiTaskData.class.getClassLoader()));
+      this.lyw = paramParcel.readInt();
       AppMethodBeat.o(44839);
       return;
       bool1 = false;
@@ -182,12 +184,12 @@ public class AppBrandInitConfigWC
     }
   }
   
-  public final boolean NA()
+  public final boolean Qv()
   {
-    return this.cyo == 4;
+    return this.cwR == 4;
   }
   
-  public final Parcel bzR()
+  public final Parcel bLg()
   {
     AppMethodBeat.i(44837);
     Parcel localParcel = Parcel.obtain();
@@ -198,10 +200,10 @@ public class AppBrandInitConfigWC
     return localParcel;
   }
   
-  public final AppBrandInitConfigWC bzU()
+  public final AppBrandInitConfigWC bLj()
   {
     AppMethodBeat.i(44836);
-    Parcel localParcel = bzR();
+    Parcel localParcel = bLg();
     AppBrandInitConfigWC localAppBrandInitConfigWC = new AppBrandInitConfigWC(localParcel);
     localParcel.recycle();
     AppMethodBeat.o(44836);
@@ -211,7 +213,7 @@ public class AppBrandInitConfigWC
   public String toString()
   {
     AppMethodBeat.i(44835);
-    String str = "AppBrandInitConfigWC {visitingSessionId='" + this.cym + '\'' + ", username='" + this.username + '\'' + ", appId='" + this.appId + '\'' + ", brandName='" + this.brandName + '\'' + ", debugType=" + this.eix + ", uin=" + p.getString(this.uin) + ", isPluginApp=" + this.ldN + ", isAdContact=" + this.ldY + ", performanceValue=" + this.ldZ + ", orientation='" + this.cBG + '\'' + ", enterPath='" + this.kHw + '\'' + ", shareName='" + this.cyq + '\'' + ", shareKey='" + this.cyr + '\'' + ", startTime=" + this.startTime + ", attrsFromCgi=" + this.cyy + ", referrer=" + this.cys + ", extInfo=" + this.extInfo + ", appVersion=" + this.appVersion + ", launchMode=" + this.launchMode + "， triggerServiceName=" + this.ldT + "， createdAsHalfScreen=" + this.leg + ", halfScreenConfig=" + this.kHL + '}';
+    String str = "AppBrandInitConfigWC {visitingSessionId='" + this.cwP + '\'' + ", username='" + this.username + '\'' + ", appId='" + this.appId + '\'' + ", brandName='" + this.fzM + '\'' + ", debugType=" + this.cBI + ", uin=" + p.getString(this.uin) + ", isPluginApp=" + this.nYb + ", isAdContact=" + this.nYm + ", performanceValue=" + this.nYn + ", orientation='" + this.cCi + '\'' + ", enterPath='" + this.nBq + '\'' + ", shareName='" + this.cwT + '\'' + ", shareKey='" + this.cwU + '\'' + ", startTime=" + this.startTime + ", attrsFromCgi=" + this.cxd + ", referrer=" + this.cwV + ", extInfo=" + this.extInfo + ", appVersion=" + this.appVersion + ", launchMode=" + this.launchMode + "， triggerServiceName=" + this.nYh + "， createdAsHalfScreen=" + this.nYu + ", halfScreenConfig=" + this.nBE + ", secFlagForSinglePageMode=" + this.lyw + '}';
     AppMethodBeat.o(44835);
     return str;
   }
@@ -222,76 +224,77 @@ public class AppBrandInitConfigWC
     AppMethodBeat.i(44838);
     super.writeToParcel(paramParcel, paramInt);
     byte b;
-    if (this.ldN)
+    if (this.nYb)
     {
       b = 1;
       paramParcel.writeByte(b);
-      if (!this.ldY) {
-        break label333;
+      if (!this.nYm) {
+        break label341;
       }
       b = 1;
       label38:
       paramParcel.writeByte(b);
-      paramParcel.writeInt(this.ldZ);
-      paramParcel.writeLong(this.ldO);
-      paramParcel.writeString(this.ldP);
-      paramParcel.writeParcelable(this.ldW, paramInt);
-      paramParcel.writeString(this.ldR);
-      paramParcel.writePersistableBundle(this.ldQ);
-      paramParcel.writeString(this.ldS);
-      if (!this.ldU) {
-        break label338;
+      paramParcel.writeInt(this.nYn);
+      paramParcel.writeLong(this.nYc);
+      paramParcel.writeString(this.nYd);
+      paramParcel.writeParcelable(this.nYk, paramInt);
+      paramParcel.writeString(this.nYf);
+      paramParcel.writePersistableBundle(this.nYe);
+      paramParcel.writeString(this.nYg);
+      if (!this.nYi) {
+        break label346;
       }
       i = 1;
       label110:
       paramParcel.writeByte((byte)i);
-      paramParcel.writeString(this.ldT);
-      paramParcel.writeParcelable(this.ldV, paramInt);
-      paramParcel.writeString(this.kHG);
+      paramParcel.writeString(this.nYh);
+      paramParcel.writeParcelable(this.nYj, paramInt);
+      paramParcel.writeString(this.fWY);
       paramParcel.writeInt(this.launchMode);
-      paramParcel.writeString(this.kHH);
-      paramParcel.writeParcelable(this.kHI, paramInt);
-      paramParcel.writeString(this.lea);
-      paramParcel.writeInt(this.leb);
-      paramParcel.writeInt(this.lec);
-      if (!this.led) {
-        break label344;
+      paramParcel.writeString(this.nBA);
+      paramParcel.writeParcelable(this.nBB, paramInt);
+      paramParcel.writeString(this.nYo);
+      paramParcel.writeInt(this.nYp);
+      paramParcel.writeInt(this.nYq);
+      if (!this.nYr) {
+        break label352;
       }
       i = 1;
       label201:
       paramParcel.writeByte((byte)i);
-      paramParcel.writeParcelable(this.lee, paramInt);
-      paramParcel.writeParcelable(this.lef, paramInt);
-      paramParcel.writeStringList(this.kHK);
-      paramParcel.writeParcelable(this.kHL, paramInt);
-      if (!this.leg) {
-        break label350;
+      paramParcel.writeParcelable(this.nYs, paramInt);
+      paramParcel.writeParcelable(this.nYt, paramInt);
+      paramParcel.writeStringList(this.nBD);
+      paramParcel.writeParcelable(this.nBE, paramInt);
+      if (!this.nYu) {
+        break label358;
       }
       i = 1;
       label253:
       paramParcel.writeByte((byte)i);
-      if (!this.kHM) {
-        break label356;
+      if (!this.nBF) {
+        break label364;
       }
       i = 1;
       label270:
       paramParcel.writeByte((byte)i);
-      paramParcel.writeParcelable(this.leh, paramInt);
-      if (!this.lei) {
-        break label362;
+      paramParcel.writeParcelable(this.nYv, paramInt);
+      if (!this.nYw) {
+        break label370;
       }
     }
-    label333:
-    label338:
-    label344:
-    label350:
-    label356:
-    label362:
+    label341:
+    label346:
+    label352:
+    label358:
+    label364:
+    label370:
     for (int i = j;; i = 0)
     {
       paramParcel.writeByte((byte)i);
-      paramParcel.writeString(this.kHQ);
-      paramParcel.writeParcelable(this.kHP, paramInt);
+      paramParcel.writeString(this.nBJ);
+      paramParcel.writeParcelable(this.nBI, paramInt);
+      paramParcel.writeInt(this.lyw);
       AppMethodBeat.o(44838);
       return;
       b = 0;
@@ -311,7 +314,7 @@ public class AppBrandInitConfigWC
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC
  * JD-Core Version:    0.7.0.1
  */

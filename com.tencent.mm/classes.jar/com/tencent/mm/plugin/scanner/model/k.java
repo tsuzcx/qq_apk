@@ -1,67 +1,106 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ol;
-import com.tencent.mm.protocal.protobuf.om;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.util.LinkedList;
+import com.tencent.mm.protocal.protobuf.dcl;
+import com.tencent.mm.protocal.protobuf.dcm;
+import com.tencent.mm.protocal.protobuf.euy;
+import java.util.List;
 
 public final class k
   extends q
   implements m
 {
+  public List<euy> IKQ;
+  public long IKR;
+  public float angle;
   private i callback;
+  public int fwM;
   public d rr;
   
-  public k(String paramString1, LinkedList<String> paramLinkedList, int paramInt, String paramString2, double paramDouble1, double paramDouble2)
+  public k(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(51617);
-    Object localObject = new d.a();
-    ((d.a)localObject).iLN = new ol();
-    ((d.a)localObject).iLO = new om();
-    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/bizscangetactioninfo";
-    ((d.a)localObject).funcId = 1068;
-    ((d.a)localObject).iLP = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (ol)this.rr.iLK.iLR;
-    ((ol)localObject).ProductID = paramString1;
-    ((ol)localObject).Scene = paramInt;
-    ((ol)localObject).KUs = paramString2;
-    ((ol)localObject).KUr = paramLinkedList;
-    ((ol)localObject).KUu = paramDouble2;
-    ((ol)localObject).KUt = paramDouble1;
-    AppMethodBeat.o(51617);
+    AppMethodBeat.i(120856);
+    d.a locala = new d.a();
+    dcl localdcl = new dcl();
+    localdcl.TJP = paramInt2;
+    localdcl.TJQ = paramInt3;
+    localdcl.TJU = paramString1;
+    localdcl.TJV = paramString2;
+    localdcl.CPw = paramInt1;
+    locala.lBU = localdcl;
+    locala.lBV = new dcm();
+    locala.uri = "/cgi-bin/micromsg-bin/newocrtranslation";
+    locala.funcId = getType();
+    locala.lBW = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.bgN();
+    this.fwM = paramInt2;
+    AppMethodBeat.o(120856);
+  }
+  
+  public k(int paramInt1, int paramInt2, String paramString1, String paramString2)
+  {
+    this(0, paramInt1, paramInt2, paramString1, paramString2);
   }
   
   public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(51619);
+    AppMethodBeat.i(120857);
     this.callback = parami;
+    this.IKR = System.currentTimeMillis();
     int i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(51619);
+    AppMethodBeat.o(120857);
     return i;
+  }
+  
+  public final List<euy> fCL()
+  {
+    return this.IKQ;
+  }
+  
+  public final String fCM()
+  {
+    AppMethodBeat.i(211365);
+    String str = ((dcm)d.c.b(this.rr.lBS)).TJY;
+    AppMethodBeat.o(211365);
+    return str;
+  }
+  
+  public final long fCN()
+  {
+    return this.IKR;
+  }
+  
+  public final float getAngle()
+  {
+    return this.angle;
+  }
+  
+  public final int getSessionId()
+  {
+    return this.fwM;
   }
   
   public final int getType()
   {
-    return 1068;
+    return 294;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(51618);
-    Log.i("MicroMsg.NetSceneGetActionInfo", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
+    AppMethodBeat.i(120858);
+    this.angle = ((dcm)d.c.b(((d)params).lBS)).TJW;
+    this.IKQ = ((dcm)d.c.b(((d)params).lBS)).TfA;
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(51618);
+    AppMethodBeat.o(120858);
   }
 }
 

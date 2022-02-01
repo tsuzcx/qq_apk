@@ -10,10 +10,10 @@ public class SelectedItem
   implements Parcelable
 {
   public static final Parcelable.Creator<SelectedItem> CREATOR;
-  public Matrix gT;
+  public long BVT;
+  public Matrix aHZ;
   public String path;
   public int type;
-  public long xjE;
   
   static
   {
@@ -28,8 +28,8 @@ public class SelectedItem
   {
     AppMethodBeat.i(164772);
     this.path = paramParcel.readString();
-    this.xjE = paramParcel.readLong();
-    this.gT.setValues(paramParcel.createFloatArray());
+    this.BVT = paramParcel.readLong();
+    this.aHZ.setValues(paramParcel.createFloatArray());
     this.type = paramParcel.readInt();
     AppMethodBeat.o(164772);
   }
@@ -44,7 +44,7 @@ public class SelectedItem
     AppMethodBeat.i(164770);
     if ((paramObject instanceof SelectedItem))
     {
-      if (((SelectedItem)paramObject).xjE == this.xjE)
+      if (((SelectedItem)paramObject).BVT == this.BVT)
       {
         AppMethodBeat.o(164770);
         return true;
@@ -66,9 +66,9 @@ public class SelectedItem
   {
     AppMethodBeat.i(164771);
     paramParcel.writeString(this.path);
-    paramParcel.writeLong(this.xjE);
+    paramParcel.writeLong(this.BVT);
     float[] arrayOfFloat = new float[9];
-    this.gT.getValues(arrayOfFloat);
+    this.aHZ.getValues(arrayOfFloat);
     paramParcel.writeFloatArray(arrayOfFloat);
     paramParcel.writeInt(this.type);
     AppMethodBeat.o(164771);
@@ -76,7 +76,7 @@ public class SelectedItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.SelectedItem
  * JD-Core Version:    0.7.0.1
  */

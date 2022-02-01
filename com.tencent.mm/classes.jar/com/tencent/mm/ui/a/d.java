@@ -11,6 +11,8 @@ import android.view.accessibility.AccessibilityNodeProvider;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
@@ -18,14 +20,30 @@ import com.tencent.mm.sdk.platformtools.Util;
 public final class d
   extends View.AccessibilityDelegate
 {
-  private boolean OLZ;
+  private boolean Wfy;
   
-  public d()
+  private d()
   {
     AppMethodBeat.i(141503);
-    this.OLZ = false;
-    this.OLZ = a.a.gKe().gKd();
+    this.Wfy = false;
+    this.Wfy = a.a.hJg().hJf();
     AppMethodBeat.o(141503);
+  }
+  
+  public static View.AccessibilityDelegate hJh()
+  {
+    AppMethodBeat.i(205897);
+    if (((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vLg, 1) == 1) {}
+    for (int i = 1; (i != 0) && (com.tencent.mm.compatible.util.d.qV(30)) && (a.a.hJg().hJd()); i = 0)
+    {
+      com.tencent.mm.plugin.report.service.h.IzE.el(1624, 11);
+      localObject = new c();
+      AppMethodBeat.o(205897);
+      return localObject;
+    }
+    Object localObject = new d();
+    AppMethodBeat.o(205897);
+    return localObject;
   }
   
   public final boolean dispatchPopulateAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
@@ -57,10 +75,16 @@ public final class d
   public final void sendAccessibilityEvent(View paramView, int paramInt)
   {
     AppMethodBeat.i(141504);
-    if (!this.OLZ)
+    if (!a.a.hJg().hJd())
+    {
+      AppMethodBeat.o(141504);
+      return;
+    }
+    Log.i("MicroMsg.MMSecureAccessibilityDelegate", "sendAccessibilityEvent shouldSpeakPassWord: %s, eventType: %s", new Object[] { Boolean.valueOf(this.Wfy), Integer.valueOf(paramInt) });
+    if (!this.Wfy)
     {
       if ((paramView != null) && ((paramInt == 128) || (paramInt == 1))) {
-        a.a.gKe().gs(paramView);
+        a.a.hJg().hD(paramView);
       }
       AppMethodBeat.o(141504);
       return;
@@ -77,7 +101,6 @@ public final class d
     }
     for (;;)
     {
-      Log.d("MicroMsg.MMSecureAccessibilityDelegate", "speak content: %s", new Object[] { localObject });
       if (Util.isNullOrNil((CharSequence)localObject))
       {
         AppMethodBeat.o(141504);
@@ -106,7 +129,7 @@ public final class d
       }
       else
       {
-        a.a.gKe().g(paramView, ((CharSequence)localObject).toString());
+        a.a.hJg().j(paramView, ((CharSequence)localObject).toString());
         AppMethodBeat.o(141504);
         return;
       }
@@ -118,7 +141,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.a.d
  * JD-Core Version:    0.7.0.1
  */

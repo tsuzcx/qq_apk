@@ -1,166 +1,181 @@
 package com.tencent.mm.bd;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.q.b;
-import com.tencent.mm.contact.c;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.kernel.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.o;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.q.b;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.ena;
-import com.tencent.mm.protocal.protobuf.enb;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
+import com.tencent.mm.protocal.l.b;
+import com.tencent.mm.protocal.l.c;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.l.e;
+import com.tencent.mm.protocal.protobuf.abu;
+import com.tencent.mm.protocal.protobuf.abv;
+import com.tencent.mm.protocal.protobuf.dgw;
+import com.tencent.mm.protocal.protobuf.dgx;
+import com.tencent.mm.protocal.protobuf.eae;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.vfs.o;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-public final class b
+public class b
   extends q
   implements m
 {
-  private int bNu;
   private i callback;
-  private String clientId;
-  private String dRr;
-  private int iKP;
-  public String jid;
-  private d rr;
-  private String username;
+  public a lWE;
+  public final List<k.b> lWF;
   
-  private b(String paramString)
+  public b(List<k.b> paramList)
   {
-    AppMethodBeat.i(90688);
-    this.username = paramString;
-    this.iKP = 0;
-    this.bNu = 0;
-    paramString = new StringBuilder();
-    com.tencent.mm.kernel.g.aAf();
-    this.clientId = (a.getUin() + System.currentTimeMillis());
-    AppMethodBeat.o(90688);
+    AppMethodBeat.i(43049);
+    this.lWF = new ArrayList();
+    this.lWF.addAll(paramList);
+    this.lWE = new a();
+    ((b)this.lWE.getReqObj()).lWI.TKA = ax(paramList);
+    AppMethodBeat.o(43049);
   }
   
-  public b(String paramString1, String paramString2)
+  private static abv ax(List<k.b> paramList)
   {
-    this(paramString1);
-    this.dRr = paramString2;
+    AppMethodBeat.i(43050);
+    abv localabv = new abv();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
+    {
+      k.b localb = (k.b)localIterator.next();
+      byte[] arrayOfByte = localb.getBuffer();
+      abu localabu = new abu();
+      localabu.SnG = localb.getCmdId();
+      localabu.SnH = new eae().dc(arrayOfByte);
+      localabv.rVy.add(localabu);
+    }
+    localabv.rVx = paramList.size();
+    Log.d("MicroMsg.NetSceneOplog", "summeroplog oplogs size=" + paramList.size());
+    AppMethodBeat.o(43050);
+    return localabv;
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(90690);
+    AppMethodBeat.i(43051);
     this.callback = parami;
-    if ((this.dRr == null) || (this.dRr.length() == 0))
-    {
-      Log.e("MicroMsg.NetSceneUploadCardImg", "imgPath is null or length = 0");
-      AppMethodBeat.o(90690);
-      return -1;
-    }
-    if (!com.tencent.mm.vfs.s.YS(this.dRr))
-    {
-      Log.e("MicroMsg.NetSceneUploadCardImg", "The img does not exist, imgPath = " + this.dRr);
-      AppMethodBeat.o(90690);
-      return -1;
-    }
-    if (this.iKP == 0) {
-      this.iKP = ((int)new o(this.dRr).length());
-    }
-    parami = new d.a();
-    parami.iLN = new ena();
-    parami.iLO = new enb();
-    parami.uri = "/cgi-bin/micromsg-bin/uploadcardimg";
-    parami.funcId = 575;
-    parami.iLP = 0;
-    parami.respCmdId = 0;
-    this.rr = parami.aXF();
-    int i = Math.min(this.iKP - this.bNu, 32768);
-    parami = com.tencent.mm.vfs.s.aW(this.dRr, this.bNu, i);
-    if (parami == null)
-    {
-      Log.e("MicroMsg.NetSceneUploadCardImg", "readFromFile error");
-      AppMethodBeat.o(90690);
-      return -1;
-    }
-    Log.i("MicroMsg.NetSceneUploadCardImg", "doScene uploadLen:%d, total: %d", new Object[] { Integer.valueOf(parami.length), Integer.valueOf(this.iKP) });
-    ena localena = (ena)this.rr.iLK.iLR;
-    localena.Lqx = this.username;
-    localena.BsF = this.iKP;
-    localena.BsG = this.bNu;
-    localena.BsI = new SKBuiltinBuffer_t().setBuffer(parami);
-    localena.BsH = localena.BsI.getILen();
-    localena.izX = this.clientId;
-    i = dispatch(paramg, this.rr, this);
-    AppMethodBeat.o(90690);
+    int i = dispatch(paramg, this.lWE, this);
+    AppMethodBeat.o(43051);
     return i;
   }
   
-  public final int getType()
+  public int getType()
   {
-    return 575;
+    return 681;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
+  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(90691);
-    Log.d("MicroMsg.NetSceneUploadCardImg", "onGYNetEnd:%s, %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    if ((paramInt2 != 0) || (paramInt3 != 0))
-    {
-      Log.e("MicroMsg.NetSceneUploadCardImg", "upload card img error");
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(90691);
-      return;
-    }
-    params = (enb)((d)params).iLL.iLR;
-    this.jid = params.Mvw;
-    this.bNu = params.BsG;
-    if (this.bNu < this.iKP)
-    {
-      if (doScene(dispatcher(), this.callback) < 0)
-      {
-        Log.e("MicroMsg.NetSceneUploadCardImg", "doScene again failed");
-        this.callback.onSceneEnd(3, -1, "", this);
-      }
-      Log.d("MicroMsg.NetSceneUploadCardImg", "doScene again");
-      AppMethodBeat.o(90691);
-      return;
-    }
-    if (!Util.isNullOrNil(this.jid))
-    {
-      params = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().Kn(this.username);
-      if ((params != null) && ((int)params.gMZ > 0) && (c.oR(params.field_type)))
-      {
-        params.Cd(this.jid);
-        ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().c(this.username, params);
-      }
-    }
+    AppMethodBeat.i(43052);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(90691);
+    AppMethodBeat.o(43052);
   }
   
-  public final int securityLimitCount()
+  public int securityLimitCount()
   {
-    return 100;
+    return 5;
   }
   
-  public final q.b securityVerificationChecked(com.tencent.mm.network.s params)
+  public q.b securityVerificationChecked(s params)
   {
-    AppMethodBeat.i(90689);
-    if ((this.dRr == null) || (this.dRr.length() == 0))
+    return q.b.lCx;
+  }
+  
+  public static final class a
+    extends o
+  {
+    private final b.b lWG;
+    private final b.c lWH;
+    
+    public a()
     {
-      params = q.b.iMr;
-      AppMethodBeat.o(90689);
-      return params;
+      AppMethodBeat.i(43044);
+      this.lWG = new b.b();
+      this.lWH = new b.c();
+      AppMethodBeat.o(43044);
     }
-    params = q.b.iMq;
-    AppMethodBeat.o(90689);
-    return params;
+    
+    public final l.d getReqObjImp()
+    {
+      return this.lWG;
+    }
+    
+    public final l.e getRespObj()
+    {
+      return this.lWH;
+    }
+    
+    public final int getType()
+    {
+      return 681;
+    }
+    
+    public final String getUri()
+    {
+      return "/cgi-bin/micromsg-bin/oplog";
+    }
+  }
+  
+  static final class b
+    extends l.d
+    implements l.b
+  {
+    public dgw lWI;
+    
+    b()
+    {
+      AppMethodBeat.i(43045);
+      this.lWI = new dgw();
+      AppMethodBeat.o(43045);
+    }
+    
+    public final int getFuncId()
+    {
+      return 681;
+    }
+    
+    public final byte[] toProtoBuf()
+    {
+      AppMethodBeat.i(43046);
+      byte[] arrayOfByte = this.lWI.toByteArray();
+      AppMethodBeat.o(43046);
+      return arrayOfByte;
+    }
+  }
+  
+  public static final class c
+    extends l.e
+    implements l.c
+  {
+    public dgx lWJ;
+    
+    public c()
+    {
+      AppMethodBeat.i(43047);
+      this.lWJ = new dgx();
+      AppMethodBeat.o(43047);
+    }
+    
+    public final int fromProtoBuf(byte[] paramArrayOfByte)
+    {
+      AppMethodBeat.i(43048);
+      this.lWJ = ((dgx)new dgx().parseFrom(paramArrayOfByte));
+      int i = this.lWJ.CqV;
+      AppMethodBeat.o(43048);
+      return i;
+    }
   }
 }
 

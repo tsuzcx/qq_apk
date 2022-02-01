@@ -25,28 +25,28 @@ import kotlin.l.b.a.b.m.ab;
 public final class m
   extends kotlin.l.b.a.b.b.c.b
 {
-  final n TLm;
-  private final b TMK;
-  final a.r TML;
+  final n abnP;
+  private final b abpm;
+  final a.r abpn;
   
   public m(n paramn, a.r paramr, int paramInt)
   {
-    super(localj, locall, localf, aa.b((a.r.b)localObject), paramr.TzM, paramInt, an.ThK, (aq)aq.a.ThM);
+    super(localj, locall, localf, aa.b((a.r.b)localObject), paramr.abcD, paramInt, an.aaKE, (aq)aq.a.aaKG);
     AppMethodBeat.i(60492);
-    this.TLm = paramn;
-    this.TML = paramr;
-    this.TMK = new b(this.TLm.Tvt.TcN, (kotlin.g.a.a)new a(this));
+    this.abnP = paramn;
+    this.abpn = paramr;
+    this.abpm = new b(this.abnP.aaYm.aaFH, (kotlin.g.a.a)new a(this));
     AppMethodBeat.o(60492);
   }
   
-  public final List<ab> hBW()
+  public final List<ab> iGl()
   {
     AppMethodBeat.i(60490);
-    Object localObject4 = this.TML;
-    Object localObject3 = this.TLm.SZI;
-    p.h(localObject4, "$this$upperBounds");
-    p.h(localObject3, "typeTable");
-    Object localObject1 = ((a.r)localObject4).TzO;
+    Object localObject4 = this.abpn;
+    Object localObject3 = this.abnP.aaCC;
+    p.k(localObject4, "$this$upperBounds");
+    p.k(localObject3, "typeTable");
+    Object localObject1 = ((a.r)localObject4).abcF;
     int i;
     if (!((Collection)localObject1).isEmpty())
     {
@@ -61,16 +61,16 @@ public final class m
       if (localObject1 != null) {
         break label167;
       }
-      localObject1 = ((a.r)localObject4).TzP;
-      p.g(localObject1, "upperBoundIdList");
+      localObject1 = ((a.r)localObject4).abcG;
+      p.j(localObject1, "upperBoundIdList");
       localObject2 = (Iterable)localObject1;
       localObject1 = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject2, 10));
       localObject2 = ((Iterable)localObject2).iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject4 = (Integer)((Iterator)localObject2).next();
-        p.g(localObject4, "it");
-        ((Collection)localObject1).add(((h)localObject3).avo(((Integer)localObject4).intValue()));
+        p.j(localObject4, "it");
+        ((Collection)localObject1).add(((h)localObject3).aFi(((Integer)localObject4).intValue()));
       }
       i = 0;
       break;
@@ -81,12 +81,12 @@ public final class m
     label167:
     if (((List)localObject2).isEmpty())
     {
-      localObject1 = kotlin.a.j.listOf(kotlin.l.b.a.b.j.d.a.G((kotlin.l.b.a.b.b.l)this).hzk());
+      localObject1 = kotlin.a.j.listOf(kotlin.l.b.a.b.j.d.a.G((kotlin.l.b.a.b.b.l)this).iDw());
       AppMethodBeat.o(60490);
       return localObject1;
     }
     localObject3 = (Iterable)localObject2;
-    localObject1 = this.TLm.TKY;
+    localObject1 = this.abnP.abnB;
     localObject2 = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject3, 10));
     localObject3 = ((Iterable)localObject3).iterator();
     while (((Iterator)localObject3).hasNext()) {
@@ -109,7 +109,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.b.m
  * JD-Core Version:    0.7.0.1
  */

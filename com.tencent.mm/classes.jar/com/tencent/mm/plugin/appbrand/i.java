@@ -1,138 +1,81 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.app.Activity;
-import android.app.Application;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.abg;
-import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI;
-import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI1;
-import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI2;
-import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI3;
-import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI4;
-import com.tencent.mm.plugin.appbrand.ui.AppBrandUI;
-import com.tencent.mm.sdk.event.IListener;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import com.tencent.xweb.WebView;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import kotlin.a.j;
 import kotlin.g.b.p;
-import kotlin.g.b.q;
 import kotlin.l;
-import kotlin.x;
-import org.xwalk.core.XWalkCoreWrapper;
+import kotlin.n.n;
+import kotlin.t;
+import org.apache.commons.b.g;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/AppBrandPersistentRuntimeConfig;", "", "()V", "KEY_XWEB_INSTALLED", "", "PERSISTENT_UI_CLASS", "", "Ljava/lang/Class;", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandPluginUI;", "[Ljava/lang/Class;", "TAG", "canKeepPersistent", "", "container", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeContainerWC;", "isPersistentConfigOpen", "isPersistentXWebConfigOpen", "watchApp", "", "app", "Landroid/app/Application;", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/AppBrandFakeNativeCheckXWebConfig;", "", "()V", "DEFAULT_CONFIG", "", "kotlin.jvm.PlatformType", "checkIfXWebRequired", "", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "plugin-appbrand-integration_release"})
 public final class i
 {
-  private static final Class<? extends AppBrandPluginUI>[] kzY;
-  public static final i kzZ;
+  private static final String nsM;
+  public static final i nsN;
   
   static
   {
-    AppMethodBeat.i(50136);
-    kzZ = new i();
-    kzY = new Class[] { AppBrandPluginUI.class, AppBrandPluginUI1.class, AppBrandPluginUI2.class, AppBrandPluginUI3.class, AppBrandPluginUI4.class };
-    AppMethodBeat.o(50136);
+    AppMethodBeat.i(175098);
+    nsN = new i();
+    nsM = g.a(new String[] { "wxfe02ecfe70800f46", "wx1d9b0b103d81d15d", "wx162102d2ff543cb2" }, ',', 3);
+    AppMethodBeat.o(175098);
   }
   
-  public static final boolean a(AppBrandRuntimeContainerWC paramAppBrandRuntimeContainerWC)
+  public static final boolean a(AppBrandInitConfigWC paramAppBrandInitConfigWC)
   {
-    AppMethodBeat.i(50133);
-    p.h(paramAppBrandRuntimeContainerWC, "container");
-    Object localObject = paramAppBrandRuntimeContainerWC.getActivity();
-    paramAppBrandRuntimeContainerWC = (AppBrandRuntimeContainerWC)localObject;
-    if (localObject == null) {
-      paramAppBrandRuntimeContainerWC = ((kotlin.g.a.a)i.a.kAa).invoke();
-    }
-    localObject = new Boolean[2];
-    localObject[0] = Boolean.valueOf(WebView.isX5());
-    if ((WebView.isXWalk()) && (XWalkCoreWrapper.getInstance().hasFeature(2003))) {}
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(175097);
+    p.k(paramAppBrandInitConfigWC, "config");
+    Object localObject1 = ((b)h.ae(b.class)).a(b.a.vBp, nsM);
+    p.j(localObject1, "MMKernel.service(IExptSe…required, DEFAULT_CONFIG)");
+    Object localObject2 = (Iterable)n.a((CharSequence)localObject1, new String[] { "," });
+    localObject1 = (Collection)new ArrayList();
+    localObject2 = ((Iterable)localObject2).iterator();
+    Object localObject3;
+    label134:
+    while (((Iterator)localObject2).hasNext())
     {
-      localObject[1] = Boolean.valueOf(bool);
-      Log.i("MicroMsg.AppBrandPersistentRuntimeConfig", "canKeepPersistent, containerUI[" + paramAppBrandRuntimeContainerWC.getClass().getSimpleName() + "], kernelConditions[" + org.apache.commons.b.a.toString(localObject) + ']');
-      if ((!org.apache.commons.b.a.contains(kzY, paramAppBrandRuntimeContainerWC.getClass())) || (!org.apache.commons.b.a.contains((Object[])localObject, Boolean.TRUE))) {
+      localObject3 = ((Iterator)localObject2).next();
+      if (((CharSequence)localObject3).length() == 0) {}
+      for (int i = 1;; i = 0)
+      {
+        if (i != 0) {
+          break label134;
+        }
+        ((Collection)localObject1).add(localObject3);
         break;
       }
-      AppMethodBeat.o(50133);
-      return true;
     }
-    AppMethodBeat.o(50133);
-    return false;
-  }
-  
-  public static final boolean brb()
-  {
-    AppMethodBeat.i(50135);
-    boolean bool = MultiProcessMMKV.getMMKV("MicroMsg.AppBrandPersistentRuntimeConfig").getBoolean("KEY_XWEB_INSTALLED", false);
-    AppMethodBeat.o(50135);
+    localObject2 = (Iterable)localObject1;
+    localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
+    localObject2 = ((Iterable)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      localObject3 = (String)((Iterator)localObject2).next();
+      if (localObject3 == null)
+      {
+        paramAppBrandInitConfigWC = new t("null cannot be cast to non-null type kotlin.CharSequence");
+        AppMethodBeat.o(175097);
+        throw paramAppBrandInitConfigWC;
+      }
+      ((Collection)localObject1).add(n.bb((CharSequence)localObject3).toString());
+    }
+    boolean bool = ((List)localObject1).contains(paramAppBrandInitConfigWC.appId);
+    AppMethodBeat.o(175097);
     return bool;
   }
-  
-  public static final void i(Application paramApplication)
-  {
-    AppMethodBeat.i(50134);
-    p.h(paramApplication, "app");
-    b localb = b.kAb;
-    paramApplication.registerActivityLifecycleCallbacks((Application.ActivityLifecycleCallbacks)new c());
-    new d().alive();
-    AppMethodBeat.o(50134);
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"checkSaveXWebInstallState", "", "invoke"})
-  static final class b
-    extends q
-    implements kotlin.g.a.a<x>
-  {
-    public static final b kAb;
-    
-    static
-    {
-      AppMethodBeat.i(50130);
-      kAb = new b();
-      AppMethodBeat.o(50130);
-    }
-    
-    b()
-    {
-      super();
-    }
-    
-    public static void invoke()
-    {
-      AppMethodBeat.i(50129);
-      if (WebView.isXWalk()) {
-        MultiProcessMMKV.getMMKV("MicroMsg.AppBrandPersistentRuntimeConfig").putBoolean("KEY_XWEB_INSTALLED", XWalkCoreWrapper.getInstance().hasFeature(2003)).commit();
-      }
-      AppMethodBeat.o(50129);
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/AppBrandPersistentRuntimeConfig$watchApp$2", "Lcom/tencent/mm/plugin/appbrand/util/ActivityLifecycleCallbacksAdapter;", "onActivityStarted", "", "activity", "Landroid/app/Activity;", "plugin-appbrand-integration_release"})
-  public static final class c
-    extends com.tencent.mm.plugin.appbrand.ac.a
-  {
-    public final void onActivityStarted(Activity paramActivity)
-    {
-      AppMethodBeat.i(50131);
-      if ((paramActivity instanceof AppBrandUI))
-      {
-        paramActivity = i.b.kAb;
-        i.b.invoke();
-      }
-      AppMethodBeat.o(50131);
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/AppBrandPersistentRuntimeConfig$watchApp$3", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/XWebViewInitCompleteEvent;", "callback", "", "event", "plugin-appbrand-integration_release"})
-  public static final class d
-    extends IListener<abg>
-  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.i
  * JD-Core Version:    0.7.0.1
  */

@@ -3,22 +3,22 @@ package com.tencent.mm.plugin.sns.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class j
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int ecf;
+  public int fWh;
   public String sessionId;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(202800);
+    AppMethodBeat.i(227029);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.sessionId != null) {
-        paramVarArgs.e(1, this.sessionId);
+        paramVarArgs.f(1, this.sessionId);
       }
-      paramVarArgs.aM(2, this.ecf);
-      AppMethodBeat.o(202800);
+      paramVarArgs.aY(2, this.fWh);
+      AppMethodBeat.o(227029);
       return 0;
     }
     if (paramInt == 1) {
@@ -27,20 +27,20 @@ public class j
       }
     }
     label258:
-    for (paramInt = g.a.a.b.b.a.f(1, this.sessionId) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.g(1, this.sessionId) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bu(2, this.ecf);
-      AppMethodBeat.o(202800);
+      int i = g.a.a.b.b.a.bM(2, this.fWh);
+      AppMethodBeat.o(227029);
       return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(202800);
+        AppMethodBeat.o(227029);
         return 0;
       }
       if (paramInt == 3)
@@ -50,18 +50,18 @@ public class j
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(202800);
+          AppMethodBeat.o(227029);
           return -1;
         case 1: 
-          localj.sessionId = locala.UbS.readString();
-          AppMethodBeat.o(202800);
+          localj.sessionId = locala.abFh.readString();
+          AppMethodBeat.o(227029);
           return 0;
         }
-        localj.ecf = locala.UbS.zi();
-        AppMethodBeat.o(202800);
+        localj.fWh = locala.abFh.AK();
+        AppMethodBeat.o(227029);
         return 0;
       }
-      AppMethodBeat.o(202800);
+      AppMethodBeat.o(227029);
       return -1;
     }
   }

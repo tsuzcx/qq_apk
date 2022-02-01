@@ -4,13 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.g;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,15 +20,15 @@ public final class c
     AppMethodBeat.i(66845);
     if (paramBoolean.booleanValue())
     {
-      h.CyF.a(11030, new Object[] { paramString1, "", paramString3, paramString4 });
+      com.tencent.mm.plugin.report.service.h.IzE.a(11030, new Object[] { paramString1, "", paramString3, paramString4 });
       AppMethodBeat.o(66845);
       return;
     }
-    h.CyF.a(11030, new Object[] { paramString1, paramString2, paramString3, paramString4 });
+    com.tencent.mm.plugin.report.service.h.IzE.a(11030, new Object[] { paramString1, paramString2, paramString3, paramString4 });
     AppMethodBeat.o(66845);
   }
   
-  private static HashMap<String, String> aJI(String paramString)
+  private static HashMap<String, String> aUe(String paramString)
   {
     AppMethodBeat.i(66841);
     if (paramString == null)
@@ -70,12 +68,23 @@ public final class c
     return localHashMap;
   }
   
-  public static boolean bl(Context paramContext, String paramString)
+  public static void bA(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(66844);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("rawUrl", paramString);
+    localIntent.putExtra("showShare", false);
+    localIntent.putExtra("pay_channel", 1);
+    g.aJ(paramContext, localIntent);
+    AppMethodBeat.o(66844);
+  }
+  
+  public static boolean by(Context paramContext, String paramString)
   {
     AppMethodBeat.i(66842);
     Log.v("MicroMsg.MallUtil", "jumpToUrl:".concat(String.valueOf(paramString)));
     Intent localIntent = new Intent();
-    HashMap localHashMap = aJI(paramString);
+    HashMap localHashMap = aUe(paramString);
     if ((localHashMap != null) && (!localHashMap.isEmpty()))
     {
       paramString = (String)localHashMap.get("action");
@@ -96,30 +105,30 @@ public final class c
       localIntent.putExtra("rawUrl", (String)localHashMap.get("3rdurl"));
       localIntent.putExtra("showShare", false);
       localIntent.putExtra("pay_channel", 1);
-      f.aA(paramContext, localIntent);
+      g.aJ(paramContext, localIntent);
       continue;
-      f.am(paramContext, (String)localHashMap.get("username"));
+      g.am(paramContext, (String)localHashMap.get("username"));
       continue;
       localIntent.putExtra("key_func_id", (String)localHashMap.get("functionid"));
       localIntent.putExtra("key_scene", 1);
-      boolean bool = ((b)g.af(b.class)).a(b.a.sad, true);
+      boolean bool = ((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vHh, true);
       Log.i("MicroMsg.MallUtil", " walletMallV2 switch is ：%s", new Object[] { Boolean.valueOf(bool) });
       if (bool)
       {
-        com.tencent.mm.br.c.b(paramContext, "mall", ".ui.MallIndexUIv2", localIntent);
+        com.tencent.mm.by.c.b(paramContext, "mall", ".ui.MallIndexUIv2", localIntent);
       }
       else
       {
-        com.tencent.mm.br.c.b(paramContext, "mall", ".ui.MallIndexUI", localIntent);
+        com.tencent.mm.by.c.b(paramContext, "mall", ".ui.MallIndexUI", localIntent);
         continue;
         localIntent.putExtra("key_product_id", (String)localHashMap.get("productid"));
         localIntent.putExtra("key_product_scene", 5);
-        com.tencent.mm.br.c.b(paramContext, "product", ".ui.MallProductUI", localIntent);
+        com.tencent.mm.by.c.b(paramContext, "product", ".ui.MallProductUI", localIntent);
         continue;
         if (TextUtils.isEmpty(paramString)) {
           break;
         }
-        bn(paramContext, paramString);
+        bA(paramContext, paramString);
       }
     }
     Log.e("MicroMsg.MallUtil", "jumpToUrl illegal url:".concat(String.valueOf(paramString)));
@@ -127,7 +136,7 @@ public final class c
     return false;
   }
   
-  public static void bm(Context paramContext, String paramString)
+  public static void bz(Context paramContext, String paramString)
   {
     AppMethodBeat.i(66843);
     if (TextUtils.isEmpty(paramString))
@@ -138,19 +147,8 @@ public final class c
     Intent localIntent = new Intent();
     localIntent.putExtra("key_product_id", paramString);
     localIntent.putExtra("key_product_scene", 5);
-    com.tencent.mm.br.c.b(paramContext, "product", ".ui.MallProductUI", localIntent);
+    com.tencent.mm.by.c.b(paramContext, "product", ".ui.MallProductUI", localIntent);
     AppMethodBeat.o(66843);
-  }
-  
-  public static void bn(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(66844);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("rawUrl", paramString);
-    localIntent.putExtra("showShare", false);
-    localIntent.putExtra("pay_channel", 1);
-    f.aA(paramContext, localIntent);
-    AppMethodBeat.o(66844);
   }
   
   public static boolean isNumeric(String paramString)
@@ -163,7 +161,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.order.c.c
  * JD-Core Version:    0.7.0.1
  */

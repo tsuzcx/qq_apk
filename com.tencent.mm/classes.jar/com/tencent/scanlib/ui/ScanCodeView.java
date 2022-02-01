@@ -11,6 +11,7 @@ import com.tencent.qbar.a.a;
 import com.tencent.scanlib.a.b.b.a;
 import com.tencent.scanlib.a.b.d.a;
 import com.tencent.scanlib.a.f;
+import com.tencent.scanlib.b;
 import com.tencent.scanlib.b.c;
 import com.tencent.scanlib.b.c.a;
 import com.tencent.scanlib.b.c.c;
@@ -21,17 +22,17 @@ import java.util.concurrent.ExecutorService;
 public class ScanCodeView
   extends ScanView
 {
-  public long CDU;
-  private c.c ROO;
-  public a ROT;
+  public long IIw;
+  private c.c Zru;
+  public a Zrz;
   
   public ScanCodeView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(3592);
-    this.ROO = new c.c()
+    this.Zru = new c.c()
     {
-      public final void aj(final long paramAnonymousLong1, long paramAnonymousLong2)
+      public final void as(final long paramAnonymousLong1, long paramAnonymousLong2)
       {
         AppMethodBeat.i(3588);
         ScanCodeView.this.post(new Runnable()
@@ -39,8 +40,8 @@ public class ScanCodeView
           public final void run()
           {
             AppMethodBeat.i(3585);
-            if ((paramAnonymousLong1 == ScanCodeView.this.CDU) && (paramAnonymousLong1 != 0L)) {
-              ScanCodeView.this.IC(this.ynh);
+            if ((paramAnonymousLong1 == ScanCodeView.this.IIw) && (paramAnonymousLong1 != 0L)) {
+              ScanCodeView.this.PW(this.DNj);
             }
             AppMethodBeat.o(3585);
           }
@@ -56,13 +57,13 @@ public class ScanCodeView
           public final void run()
           {
             AppMethodBeat.i(3587);
-            if ((paramAnonymousLong == ScanCodeView.this.CDU) && (paramAnonymousLong != 0L) && (this.val$param.containsKey("param_zoom_ratio")))
+            if ((paramAnonymousLong == ScanCodeView.this.IIw) && (paramAnonymousLong != 0L) && (this.val$param.containsKey("param_zoom_ratio")))
             {
               float f = this.val$param.getFloat("param_zoom_ratio", 0.0F);
-              if ((f > 0.0F) && (ScanCodeView.this.ROY.dEO()))
+              if ((f > 0.0F) && (ScanCodeView.this.ZrD.egx()))
               {
-                int i = (int)(((com.tencent.scanlib.a.a)ScanCodeView.this.ROY).hkX() * f);
-                ((com.tencent.scanlib.a.a)ScanCodeView.this.ROY).aqE(i);
+                int i = (int)(((com.tencent.scanlib.a.a)ScanCodeView.this.ZrD).iov() * f);
+                ((com.tencent.scanlib.a.a)ScanCodeView.this.ZrD).aAr(i);
               }
             }
             AppMethodBeat.o(3587);
@@ -81,24 +82,24 @@ public class ScanCodeView
             public final void run()
             {
               AppMethodBeat.i(3586);
-              if ((ScanCodeView.this.CDU == paramAnonymousLong) && (paramAnonymousLong != 0L))
+              if ((ScanCodeView.this.IIw == paramAnonymousLong) && (paramAnonymousLong != 0L))
               {
                 ScanCodeView.a(ScanCodeView.this);
-                if ((this.CFR != null) && (!this.CFR.isEmpty()))
+                if ((this.ILd != null) && (!this.ILd.isEmpty()))
                 {
                   Bundle localBundle = new Bundle();
-                  String str = ((a.a)this.CFR.get(0)).data;
+                  String str = ((a.a)this.ILd.get(0)).data;
                   localBundle.putString("result_content", str);
-                  int i = ((a.a)this.CFR.get(0)).typeID;
+                  int i = ((a.a)this.ILd.get(0)).typeID;
                   localBundle.putInt("result_code_format", i);
-                  localBundle.putString("result_code_name", ((a.a)this.CFR.get(0)).typeName);
-                  byte[] arrayOfByte = ((a.a)this.CFR.get(0)).rawData;
+                  localBundle.putString("result_code_name", ((a.a)this.ILd.get(0)).typeName);
+                  byte[] arrayOfByte = ((a.a)this.ILd.get(0)).rawData;
                   if (arrayOfByte != null) {
                     localBundle.putByteArray("result_raw_data", arrayOfByte);
                   }
                   Log.i("ScanCodeView", String.format("scan result format: %d, content:%s", new Object[] { Integer.valueOf(i), str }));
-                  if (ScanCodeView.this.ROT != null) {
-                    ScanCodeView.this.ROT.ay(localBundle);
+                  if (ScanCodeView.this.Zrz != null) {
+                    ScanCodeView.this.Zrz.au(localBundle);
                   }
                 }
               }
@@ -116,9 +117,9 @@ public class ScanCodeView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(3593);
-    this.ROO = new c.c()
+    this.Zru = new c.c()
     {
-      public final void aj(final long paramAnonymousLong1, long paramAnonymousLong2)
+      public final void as(final long paramAnonymousLong1, long paramAnonymousLong2)
       {
         AppMethodBeat.i(3588);
         ScanCodeView.this.post(new Runnable()
@@ -126,8 +127,8 @@ public class ScanCodeView
           public final void run()
           {
             AppMethodBeat.i(3585);
-            if ((paramAnonymousLong1 == ScanCodeView.this.CDU) && (paramAnonymousLong1 != 0L)) {
-              ScanCodeView.this.IC(this.ynh);
+            if ((paramAnonymousLong1 == ScanCodeView.this.IIw) && (paramAnonymousLong1 != 0L)) {
+              ScanCodeView.this.PW(this.DNj);
             }
             AppMethodBeat.o(3585);
           }
@@ -143,13 +144,13 @@ public class ScanCodeView
           public final void run()
           {
             AppMethodBeat.i(3587);
-            if ((paramAnonymousLong == ScanCodeView.this.CDU) && (paramAnonymousLong != 0L) && (this.val$param.containsKey("param_zoom_ratio")))
+            if ((paramAnonymousLong == ScanCodeView.this.IIw) && (paramAnonymousLong != 0L) && (this.val$param.containsKey("param_zoom_ratio")))
             {
               float f = this.val$param.getFloat("param_zoom_ratio", 0.0F);
-              if ((f > 0.0F) && (ScanCodeView.this.ROY.dEO()))
+              if ((f > 0.0F) && (ScanCodeView.this.ZrD.egx()))
               {
-                int i = (int)(((com.tencent.scanlib.a.a)ScanCodeView.this.ROY).hkX() * f);
-                ((com.tencent.scanlib.a.a)ScanCodeView.this.ROY).aqE(i);
+                int i = (int)(((com.tencent.scanlib.a.a)ScanCodeView.this.ZrD).iov() * f);
+                ((com.tencent.scanlib.a.a)ScanCodeView.this.ZrD).aAr(i);
               }
             }
             AppMethodBeat.o(3587);
@@ -168,24 +169,24 @@ public class ScanCodeView
             public final void run()
             {
               AppMethodBeat.i(3586);
-              if ((ScanCodeView.this.CDU == paramAnonymousLong) && (paramAnonymousLong != 0L))
+              if ((ScanCodeView.this.IIw == paramAnonymousLong) && (paramAnonymousLong != 0L))
               {
                 ScanCodeView.a(ScanCodeView.this);
-                if ((this.CFR != null) && (!this.CFR.isEmpty()))
+                if ((this.ILd != null) && (!this.ILd.isEmpty()))
                 {
                   Bundle localBundle = new Bundle();
-                  String str = ((a.a)this.CFR.get(0)).data;
+                  String str = ((a.a)this.ILd.get(0)).data;
                   localBundle.putString("result_content", str);
-                  int i = ((a.a)this.CFR.get(0)).typeID;
+                  int i = ((a.a)this.ILd.get(0)).typeID;
                   localBundle.putInt("result_code_format", i);
-                  localBundle.putString("result_code_name", ((a.a)this.CFR.get(0)).typeName);
-                  byte[] arrayOfByte = ((a.a)this.CFR.get(0)).rawData;
+                  localBundle.putString("result_code_name", ((a.a)this.ILd.get(0)).typeName);
+                  byte[] arrayOfByte = ((a.a)this.ILd.get(0)).rawData;
                   if (arrayOfByte != null) {
                     localBundle.putByteArray("result_raw_data", arrayOfByte);
                   }
                   Log.i("ScanCodeView", String.format("scan result format: %d, content:%s", new Object[] { Integer.valueOf(i), str }));
-                  if (ScanCodeView.this.ROT != null) {
-                    ScanCodeView.this.ROT.ay(localBundle);
+                  if (ScanCodeView.this.Zrz != null) {
+                    ScanCodeView.this.Zrz.au(localBundle);
                   }
                 }
               }
@@ -199,11 +200,11 @@ public class ScanCodeView
     AppMethodBeat.o(3593);
   }
   
-  private void eRa()
+  private void fEa()
   {
     AppMethodBeat.i(3596);
-    c.hld().Iv(this.CDU);
-    this.CDU = 0L;
+    c.ioC().PP(this.IIw);
+    this.IIw = 0L;
     AppMethodBeat.o(3596);
   }
   
@@ -212,9 +213,9 @@ public class ScanCodeView
     AppMethodBeat.i(3601);
     Log.i("ScanCodeView", "onAutoFocus %s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean) {
-      IC(0L);
+      PW(0L);
     }
-    Oy(1000L);
+    WO(1000L);
     AppMethodBeat.o(3601);
   }
   
@@ -222,15 +223,15 @@ public class ScanCodeView
   {
     AppMethodBeat.i(3594);
     super.onCreate();
-    c localc = c.hld();
+    c localc = c.ioC();
     Context localContext = getContext();
-    synchronized (localc.ROF)
+    synchronized (localc.Zrl)
     {
-      if (!localc.ROF.hasInited())
+      if (!localc.Zrl.hasInited())
       {
-        localc.ROF.a(0, com.tencent.scanlib.a.lb(localContext));
-        if (localc.ROF.hasInited()) {
-          localc.ROF.T(localc.RKg);
+        localc.Zrl.a(0, b.lZ(localContext));
+        if (localc.Zrl.hasInited()) {
+          localc.Zrl.S(localc.ZmP);
         }
       }
       AppMethodBeat.o(3594);
@@ -242,11 +243,11 @@ public class ScanCodeView
   {
     AppMethodBeat.i(3599);
     super.onDestroy();
-    c localc = c.hld();
+    c localc = c.ioC();
     Log.i("ScanDecodeQueue", "release QBar");
-    synchronized (localc.ROF)
+    synchronized (localc.Zrl)
     {
-      localc.ROF.release();
+      localc.Zrl.release();
       AppMethodBeat.o(3599);
       return;
     }
@@ -256,7 +257,7 @@ public class ScanCodeView
   {
     AppMethodBeat.i(3597);
     super.onPause();
-    eRa();
+    fEa();
     AppMethodBeat.o(3597);
   }
   
@@ -276,24 +277,24 @@ public class ScanCodeView
       Rect localRect;
       c localc;
       int i;
-      if ((this.CDU != 0L) && (this.ROY.dEO()))
+      if ((this.IIw != 0L) && (this.ZrD.egx()))
       {
-        localPoint = this.ROY.hkU();
-        localRect = ((com.tencent.scanlib.a.a)this.ROY).w(new Rect(0, 0, getWidth(), getHeight()));
-        localc = c.hld();
-        i = this.ROY.getCameraRotation();
+        localPoint = this.ZrD.ios();
+        localRect = ((com.tencent.scanlib.a.a)this.ZrD).G(new Rect(0, 0, getWidth(), getHeight()));
+        localc = c.ioC();
+        i = this.ZrD.getCameraRotation();
       }
-      synchronized (localc.CCt)
+      synchronized (localc.Brg)
       {
-        Log.d("ScanDecodeQueue", String.format("%d submit crop gray", new Object[] { Long.valueOf(localc.CDU) }));
-        if (localc.CDU != 0L) {
-          localc.ROH.execute(new c.a(localc, localc.CDU, paramArrayOfByte, localPoint, i, localRect));
+        Log.d("ScanDecodeQueue", String.format("%d submit crop gray", new Object[] { Long.valueOf(localc.IIw) }));
+        if (localc.IIw != 0L) {
+          localc.Zrn.execute(new c.a(localc, localc.IIw, paramArrayOfByte, localPoint, i, localRect));
         }
-        if ((!((com.tencent.scanlib.a.a)this.ROY).eQZ()) && (c.hld().CDX > 50))
+        if ((!((com.tencent.scanlib.a.a)this.ZrD).fDZ()) && (c.ioC().IIz > 50))
         {
           Log.i("ScanCodeView", "change to FOCUS_MODE_AUTO");
-          this.ROY.setFocusMode("auto");
-          Oy(100L);
+          this.ZrD.bCY("auto");
+          WO(100L);
         }
         AppMethodBeat.o(3600);
         return;
@@ -306,18 +307,18 @@ public class ScanCodeView
   {
     AppMethodBeat.i(3595);
     super.onResume();
-    if (!this.ROY.isOpen()) {
+    if (!this.ZrD.isOpen()) {
       a(new b.b.a()
       {
-        public final void eRl()
+        public final void fEl()
         {
           AppMethodBeat.i(3591);
           ScanCodeView.this.a(new b.d.a()
           {
-            public final void eRk()
+            public final void fEk()
             {
               AppMethodBeat.i(174604);
-              ScanCodeView.this.IC(0L);
+              ScanCodeView.this.PW(0L);
               AppMethodBeat.o(174604);
             }
           });
@@ -327,22 +328,22 @@ public class ScanCodeView
     }
     for (;;)
     {
-      this.CDU = System.currentTimeMillis();
-      c.hld().a(this.CDU, this.ROO);
+      this.IIw = System.currentTimeMillis();
+      c.ioC().a(this.IIw, this.Zru);
       AppMethodBeat.o(3595);
       return;
-      if (!this.ROY.dEO()) {
+      if (!this.ZrD.egx()) {
         a(new b.d.a()
         {
-          public final void eRk()
+          public final void fEk()
           {
             AppMethodBeat.i(174605);
-            ScanCodeView.this.IC(0L);
+            ScanCodeView.this.PW(0L);
             AppMethodBeat.o(174605);
           }
         });
       } else {
-        IC(0L);
+        PW(0L);
       }
     }
   }
@@ -351,26 +352,26 @@ public class ScanCodeView
   {
     AppMethodBeat.i(3598);
     super.onStop();
-    stopPreview();
-    aPK();
+    TL();
+    aYA();
     AppMethodBeat.o(3598);
   }
   
   public void setScanCallBack(a parama)
   {
-    this.ROT = parama;
+    this.Zrz = parama;
   }
   
   public void setScanCodeReaders(int[] paramArrayOfInt)
   {
     AppMethodBeat.i(3602);
-    c localc = c.hld();
+    c localc = c.ioC();
     if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0)) {
-      synchronized (localc.ROF)
+      synchronized (localc.Zrl)
       {
-        localc.RKg = paramArrayOfInt;
-        if (localc.ROF.hasInited()) {
-          localc.ROF.T(localc.RKg);
+        localc.ZmP = paramArrayOfInt;
+        if (localc.Zrl.hasInited()) {
+          localc.Zrl.S(localc.ZmP);
         }
         AppMethodBeat.o(3602);
         return;
@@ -381,12 +382,12 @@ public class ScanCodeView
   
   public static abstract interface a
   {
-    public abstract void ay(Bundle paramBundle);
+    public abstract void au(Bundle paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.scanlib.ui.ScanCodeView
  * JD-Core Version:    0.7.0.1
  */

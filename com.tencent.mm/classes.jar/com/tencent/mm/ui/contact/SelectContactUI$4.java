@@ -20,33 +20,33 @@ final class SelectContactUI$4
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(234022);
+    AppMethodBeat.i(270589);
     Object localObject = new b();
-    ((b)localObject).bm(paramView);
-    a.b("com/tencent/mm/ui/contact/SelectContactUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+    ((b)localObject).bn(paramView);
+    a.c("com/tencent/mm/ui/contact/SelectContactUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
     if (!WeChatBrands.Business.Entries.ContactWeCom.checkAvailable(paramView.getContext()))
     {
       a.a(this, "com/tencent/mm/ui/contact/SelectContactUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(234022);
+      AppMethodBeat.o(270589);
       return;
     }
-    paramView = new Intent(this.PZl.getIntent());
-    paramView.setClass(this.PZl.getContext(), OpenIMSelectContactUI.class);
+    paramView = new Intent(this.Xwj.getIntent());
+    paramView.setClass(this.Xwj.getContext(), OpenIMSelectContactUI.class);
     paramView.removeExtra("titile");
     paramView.putExtra("openim_appid", "3552365301");
     localObject = new ArrayList();
-    Iterator localIterator = SelectContactUI.q(this.PZl).iterator();
+    Iterator localIterator = SelectContactUI.q(this.Xwj).iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if (as.bjp(str)) {
+      if (as.bvK(str)) {
         ((ArrayList)localObject).add(str);
       }
     }
     paramView.putExtra("already_select_contact", Util.listToString((List)localObject, ","));
-    this.PZl.startActivityForResult(paramView, 5);
+    this.Xwj.startActivityForResult(paramView, 5);
     a.a(this, "com/tencent/mm/ui/contact/SelectContactUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(234022);
+    AppMethodBeat.o(270589);
   }
 }
 

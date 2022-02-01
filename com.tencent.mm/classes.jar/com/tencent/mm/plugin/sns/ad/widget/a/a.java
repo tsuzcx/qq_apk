@@ -12,14 +12,14 @@ import java.util.Iterator;
 
 public abstract class a
 {
-  protected int DAQ;
-  protected int DAR;
-  protected int DAS;
-  protected int DAT;
-  protected FrameLayout DAU;
-  protected BitmapDrawable DAV;
-  protected ArrayList<Rect> DAW = new ArrayList();
-  protected int atU;
+  protected int DIY;
+  protected int JMD;
+  protected int JME;
+  protected int JMF;
+  protected FrameLayout JMG;
+  protected BitmapDrawable JMH;
+  protected ArrayList<Rect> JMI = new ArrayList();
+  protected int alM;
   protected Bitmap mBmp;
   protected Context mContext;
   protected int mMaxSize;
@@ -28,14 +28,14 @@ public abstract class a
   {
     this.mBmp = paramBitmap;
     this.mContext = paramContext;
-    this.DAQ = paramInt3;
+    this.DIY = paramInt3;
     this.mMaxSize = paramInt4;
-    this.DAU = paramFrameLayout;
-    this.DAR = paramInt1;
-    this.DAS = paramInt2;
-    this.atU = paramInt5;
-    this.DAV = new BitmapDrawable(paramContext.getResources(), this.mBmp);
-    eYA();
+    this.JMG = paramFrameLayout;
+    this.JMD = paramInt1;
+    this.JME = paramInt2;
+    this.alM = paramInt5;
+    this.JMH = new BitmapDrawable(paramContext.getResources(), this.mBmp);
+    fMk();
   }
   
   protected static Rect a(Rect paramRect, int paramInt1, int paramInt2, int paramInt3)
@@ -48,25 +48,25 @@ public abstract class a
     return paramRect;
   }
   
-  private void eYA()
+  private void fMk()
   {
     int j;
     for (int i = 16;; i = j) {
       try
       {
         clear();
-        j = (int)(1.3F * this.DAR * this.DAS / this.mMaxSize / this.DAQ / 12.0F);
+        j = (int)(1.3F * this.JMD * this.JME / this.mMaxSize / this.DIY / 12.0F);
         if (j < 16)
         {
-          this.DAT = i;
-          com.tencent.mm.sdk.platformtools.Log.i("BaseAnimScene", "spireNum=" + this.DAT);
+          this.JMF = i;
+          com.tencent.mm.sdk.platformtools.Log.i("BaseAnimScene", "spireNum=" + this.JMF);
           i = 0;
-          while (i < this.DAT)
+          while (i < this.JMF)
           {
-            this.DAW.add(eYz());
+            this.JMI.add(fMj());
             i += 1;
           }
-          Iterator localIterator = this.DAW.iterator();
+          Iterator localIterator = this.JMI.iterator();
           while (localIterator.hasNext())
           {
             Rect localRect = (Rect)localIterator.next();
@@ -76,8 +76,8 @@ public abstract class a
             FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i, j);
             localLayoutParams.leftMargin = localRect.left;
             localLayoutParams.topMargin = localRect.top;
-            localView.setBackgroundDrawable(this.DAV);
-            this.DAU.addView(localView, localLayoutParams);
+            localView.setBackgroundDrawable(this.JMH);
+            this.JMG.addView(localView, localLayoutParams);
             int k = localRect.left;
             c(localView, i / 2 + k, localRect.top + j / 2, j);
           }
@@ -95,15 +95,15 @@ public abstract class a
   
   public final void clear()
   {
-    this.DAU.removeAllViews();
-    this.DAW.clear();
+    this.JMG.removeAllViews();
+    this.JMI.clear();
   }
   
-  protected abstract Rect eYz();
+  protected abstract Rect fMj();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.widget.a.a
  * JD-Core Version:    0.7.0.1
  */

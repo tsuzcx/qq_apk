@@ -64,14 +64,14 @@ public class LipReadLivenessState
   
   static
   {
-    AppMethodBeat.i(187169);
+    AppMethodBeat.i(247127);
     TAG = LipReadLivenessState.class.getSimpleName();
-    AppMethodBeat.o(187169);
+    AppMethodBeat.o(247127);
   }
   
   public LipReadLivenessState()
   {
-    AppMethodBeat.i(187157);
+    AppMethodBeat.i(247109);
     this.currentRotateState = YtFSM.getInstance().getContext().currentRotateState;
     this.continuousDetectCount = 0;
     this.innerMp4Path = (Environment.getExternalStorageDirectory().getPath() + "/lipreadtemp.mp4");
@@ -88,12 +88,12 @@ public class LipReadLivenessState
     this.innerAudioPath = (Environment.getExternalStorageDirectory().getPath() + "/tmpaudio.spx");
     this.backendProtoType = 0;
     this.needCheckMultiFaces = false;
-    AppMethodBeat.o(187157);
+    AppMethodBeat.o(247109);
   }
   
   private void clearData()
   {
-    AppMethodBeat.i(187161);
+    AppMethodBeat.i(247117);
     this.isFinished = false;
     this.canTransit = false;
     this.poseState = SilentLivenessState.FacePreviewingAdvise.ADVISE_NAN;
@@ -106,12 +106,12 @@ public class LipReadLivenessState
     if (this.ytLipReader != null) {
       this.ytLipReader.reset();
     }
-    AppMethodBeat.o(187161);
+    AppMethodBeat.o(247117);
   }
   
   private void sendCancelFailEvent()
   {
-    AppMethodBeat.i(187168);
+    AppMethodBeat.i(247126);
     Object localObject = SilentLivenessState.convertAdvise(this.poseState);
     String str = CommonUtils.makeMessageJson(4194304, (String)localObject, "LipRead check failed");
     YtSDKStats.getInstance().reportError(4194304, (String)localObject);
@@ -123,12 +123,12 @@ public class LipReadLivenessState
     ((HashMap)localObject).put("error_reason_code", Integer.valueOf(4194304));
     ((HashMap)localObject).put("message", str);
     YtFSM.getInstance().sendFSMEvent((HashMap)localObject);
-    AppMethodBeat.o(187168);
+    AppMethodBeat.o(247126);
   }
   
   public void enter()
   {
-    AppMethodBeat.i(187163);
+    AppMethodBeat.i(247119);
     super.enter();
     try
     {
@@ -147,20 +147,20 @@ public class LipReadLivenessState
         this.actionDataParsed = ((String)localObject).split(",");
         this.stateData.put("action_seq", this.actionDataParsed);
       }
-      AppMethodBeat.o(187163);
+      AppMethodBeat.o(247119);
       return;
     }
     catch (Exception localException)
     {
       YtLogger.e(TAG, "lipread enter failed " + localException.getLocalizedMessage());
       CommonUtils.reportException("lipread enter failed ", localException);
-      AppMethodBeat.o(187163);
+      AppMethodBeat.o(247119);
     }
   }
   
   public void enterFirst()
   {
-    AppMethodBeat.i(187162);
+    AppMethodBeat.i(247118);
     this.beginTimeMs = System.currentTimeMillis();
     Camera.Size localSize;
     int i;
@@ -176,7 +176,7 @@ public class LipReadLivenessState
     {
       this.videoEncoder = new YtVideoEncoder(null, true);
       this.videoEncoder.startAudioVideoEncoding(i, j, new File(this.innerMp4Path), this.codecSettingBitRate, this.codecSettingFrameRate, this.codecSettingiFrameInterval, this.audioSampleRate, this.audioBitRate);
-      AppMethodBeat.o(187162);
+      AppMethodBeat.o(247118);
       return;
       label120:
       i = localSize.width;
@@ -185,17 +185,17 @@ public class LipReadLivenessState
   
   public void handleEvent(YtSDKKitFramework.YtFrameworkFireEventType paramYtFrameworkFireEventType, Object paramObject)
   {
-    AppMethodBeat.i(187167);
+    AppMethodBeat.i(247125);
     super.handleEvent(paramYtFrameworkFireEventType, paramObject);
     if ((this.needManualTrigger) && (paramYtFrameworkFireEventType == YtSDKKitFramework.YtFrameworkFireEventType.YT_EVENT_TRIGGER_CANCEL_LIVENESS)) {
       clearData();
     }
-    AppMethodBeat.o(187167);
+    AppMethodBeat.o(247125);
   }
   
   public void loadStateWith(String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(187158);
+    AppMethodBeat.i(247113);
     super.loadStateWith(paramString, paramJSONObject);
     for (;;)
     {
@@ -273,7 +273,7 @@ public class LipReadLivenessState
       YtLogger.i(TAG, "YTLipReader Version: " + this.ytLipReader.getVersion());
       this.nextStateName = YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE;
       this.stateData.put("action_seq", this.actionDataParsed);
-      AppMethodBeat.o(187158);
+      AppMethodBeat.o(247113);
       return;
       this.actionDataParsed = new String[paramString.length()];
       i = 0;
@@ -287,7 +287,7 @@ public class LipReadLivenessState
   
   public void moveToNextState()
   {
-    AppMethodBeat.i(187166);
+    AppMethodBeat.i(247124);
     super.moveToNextState();
     this.endTimeMs = System.currentTimeMillis();
     if (this.endTimeMs - this.beginTimeMs > this.actionDataParsed.length * this.numIntervalMs)
@@ -357,7 +357,7 @@ public class LipReadLivenessState
         for (;;)
         {
           this.canTransit = true;
-          AppMethodBeat.o(187166);
+          AppMethodBeat.o(247124);
           return;
           YtLogger.w(TAG, "Base function listener for getting voice data not found");
           break;
@@ -389,20 +389,20 @@ public class LipReadLivenessState
       }
     }
     YtFSM.getInstance().transitNextRound(YtSDKKitCommon.StateNameHelper.classNameOfState(this.nextStateName));
-    AppMethodBeat.o(187166);
+    AppMethodBeat.o(247124);
   }
   
   public void reset()
   {
-    AppMethodBeat.i(187160);
+    AppMethodBeat.i(247115);
     clearData();
     super.reset();
-    AppMethodBeat.o(187160);
+    AppMethodBeat.o(247115);
   }
   
   public void unload()
   {
-    AppMethodBeat.i(187159);
+    AppMethodBeat.i(247114);
     if (this.ytLipReader != null) {
       this.ytLipReader = null;
     }
@@ -412,12 +412,12 @@ public class LipReadLivenessState
       this.videoEncoder = null;
     }
     super.unload();
-    AppMethodBeat.o(187159);
+    AppMethodBeat.o(247114);
   }
   
   public void update(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    AppMethodBeat.i(187164);
+    AppMethodBeat.i(247120);
     super.update(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramLong);
     if (this.backendProtoType != 2)
     {
@@ -435,7 +435,7 @@ public class LipReadLivenessState
       for (;;)
       {
         moveToNextState();
-        AppMethodBeat.o(187164);
+        AppMethodBeat.o(247120);
         return;
         this.ytLipReader.feed(this.faceStatus[0].xys, paramArrayOfByte, paramInt1, paramInt2, this.currentRotateState, this.faceStatus[0].pitch, this.faceStatus[0].yaw, this.faceStatus[0].roll);
       }
@@ -443,23 +443,23 @@ public class LipReadLivenessState
     if (this.canTransit) {
       YtFSM.getInstance().transitNow(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.NET_LIVENESS_REQ_RESULT_STATE));
     }
-    AppMethodBeat.o(187164);
+    AppMethodBeat.o(247120);
   }
   
   public void updateSDKSetting(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(187165);
+    AppMethodBeat.i(247122);
     try
     {
       this.needCheckPose = paramJSONObject.optBoolean("force_pose_check", this.needCheckPose);
       this.needCheckMultiFaces = paramJSONObject.optBoolean("need_check_multiface", this.needCheckMultiFaces);
-      AppMethodBeat.o(187165);
+      AppMethodBeat.o(247122);
       return;
     }
     catch (Exception paramJSONObject)
     {
       YtLogger.e(TAG, paramJSONObject.getLocalizedMessage());
-      AppMethodBeat.o(187165);
+      AppMethodBeat.o(247122);
     }
   }
   

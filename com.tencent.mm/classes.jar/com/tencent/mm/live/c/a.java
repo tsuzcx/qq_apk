@@ -5,48 +5,56 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import java.util.LinkedHashMap;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Lcom/tencent/mm/live/view/ILivePlugin;", "root", "Landroid/view/ViewGroup;", "broadcast", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "getRoot", "()Landroid/view/ViewGroup;", "applyState", "", "liveState", "", "uiState", "extraMsg", "Landroid/os/Bundle;", "getCurrentOrientation", "getVisible", "isLandscape", "", "keyboardChange", "show", "height", "mount", "name", "", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPress", "pause", "resume", "setVisible", "visible", "start", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "stop", "unMount", "plugin-logic_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Lcom/tencent/mm/live/view/ILivePlugin;", "root", "Landroid/view/ViewGroup;", "broadcast", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "getRoot", "()Landroid/view/ViewGroup;", "applyState", "", "liveState", "", "uiState", "extraMsg", "Landroid/os/Bundle;", "getCurrentOrientation", "getVisible", "isLandscape", "", "keyboardChange", "show", "height", "mount", "name", "", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPress", "onMicUserChanged", "micUserMap", "Ljava/util/LinkedHashMap;", "Landroid/graphics/Rect;", "Lkotlin/collections/LinkedHashMap;", "isPkAnchor", "onNetworkChange", "state", "onSwipeBack", "pause", "resume", "setVisible", "visible", "start", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "stop", "unMount", "plugin-logic_release"})
 public abstract class a
-  implements com.tencent.mm.live.view.a
 {
-  public final ViewGroup hwr;
+  public final ViewGroup kiF;
   
   public a(ViewGroup paramViewGroup, b paramb)
   {
-    this.hwr = paramViewGroup;
+    this.kiF = paramViewGroup;
     paramb.registerPlugin(this);
   }
   
+  public void a(LinkedHashMap<String, Rect> paramLinkedHashMap, boolean paramBoolean)
+  {
+    p.k(paramLinkedHashMap, "micUserMap");
+  }
+  
+  public void applyState(int paramInt1, int paramInt2, Bundle paramBundle) {}
+  
   public final int getCurrentOrientation()
   {
-    Object localObject = this.hwr.getContext();
+    Object localObject = this.kiF.getContext();
     if (localObject == null) {
       throw new t("null cannot be cast to non-null type android.app.Activity");
     }
     localObject = ((Activity)localObject).getWindow();
-    p.g(localObject, "(root.context as Activity).window");
+    p.j(localObject, "(root.context as Activity).window");
     localObject = ((Window)localObject).getWindowManager();
-    p.g(localObject, "(root.context as Activity).window.windowManager");
+    p.j(localObject, "(root.context as Activity).window.windowManager");
     localObject = ((WindowManager)localObject).getDefaultDisplay();
-    p.g(localObject, "(root.context as Activit…dowManager.defaultDisplay");
+    p.j(localObject, "(root.context as Activit…dowManager.defaultDisplay");
     return ((Display)localObject).getRotation();
   }
   
   public final boolean isLandscape()
   {
-    Object localObject = this.hwr.getContext();
-    p.g(localObject, "root.context");
+    Object localObject = this.kiF.getContext();
+    p.j(localObject, "root.context");
     localObject = ((Context)localObject).getResources();
-    p.g(localObject, "root.context.resources");
+    p.j(localObject, "root.context.resources");
     return ((Resources)localObject).getConfiguration().orientation == 2;
   }
   
@@ -57,7 +65,7 @@ public abstract class a
   public String name()
   {
     String str = getClass().getSimpleName();
-    p.g(str, "this.javaClass.simpleName");
+    p.j(str, "this.javaClass.simpleName");
     return str;
   }
   
@@ -68,27 +76,32 @@ public abstract class a
     return false;
   }
   
+  public void onNetworkChange(int paramInt) {}
+  
+  public boolean onSwipeBack()
+  {
+    return false;
+  }
+  
   public void pause() {}
   
   public void resume() {}
   
-  public void rf(int paramInt) {}
-  
-  public void rg(int paramInt)
-  {
-    this.hwr.setVisibility(paramInt);
-  }
-  
   public void statusChange(b.c paramc, Bundle paramBundle)
   {
-    p.h(paramc, "status");
+    p.k(paramc, "status");
+  }
+  
+  public void tU(int paramInt)
+  {
+    this.kiF.setVisibility(paramInt);
   }
   
   public void unMount() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.c.a
  * JD-Core Version:    0.7.0.1
  */

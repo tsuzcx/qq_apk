@@ -7,16 +7,13 @@ import android.os.Debug.MemoryInfo;
 import android.os.Process;
 import android.util.LruCache;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ge;
-import com.tencent.mm.plugin.recordvideo.ui.editor.item.a;
-import com.tencent.mm.plugin.recordvideo.ui.editor.item.q;
-import com.tencent.mm.plugin.vlog.model.MultiMediaVideoChecker;
-import com.tencent.mm.plugin.vlog.model.MultiMediaVideoChecker.a;
+import com.tencent.mm.f.b.a.hz;
+import com.tencent.mm.plugin.recordvideo.ui.editor.item.r;
 import com.tencent.mm.plugin.vlog.model.ac;
 import com.tencent.mm.plugin.vlog.model.ad;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -27,170 +24,120 @@ import kotlin.n.n;
 import kotlin.t;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/model/report/VideoEditResultReport;", "", "()V", "reportJson", "Lcom/tencent/mm/plugin/vlog/model/report/ReportJson;", "getReportJson", "()Lcom/tencent/mm/plugin/vlog/model/report/ReportJson;", "setReportJson", "(Lcom/tencent/mm/plugin/vlog/model/report/ReportJson;)V", "struct", "Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditResultStruct;", "getStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditResultStruct;", "setStruct", "(Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditResultStruct;)V", "fillReportMem", "", "report", "setAction", "action", "", "setComposition", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "setEditItem", "itemList", "", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "setSourceType", "source", "setTemplateId", "templateId", "", "setTemplateResourceReady", "ready", "", "Companion", "plugin-vlog_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/report/VideoEditResultReport;", "", "()V", "reportJson", "Lcom/tencent/mm/plugin/vlog/model/report/ReportJson;", "getReportJson", "()Lcom/tencent/mm/plugin/vlog/model/report/ReportJson;", "setReportJson", "(Lcom/tencent/mm/plugin/vlog/model/report/ReportJson;)V", "struct", "Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditResultStruct;", "getStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditResultStruct;", "setStruct", "(Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditResultStruct;)V", "fillReportMem", "", "report", "setAction", "action", "", "setComposition", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "setEditItem", "itemList", "", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "setSourceType", "source", "setTemplateId", "templateId", "", "setTemplateResourceReady", "ready", "", "Companion", "plugin-vlog_release"})
 public final class d
 {
-  public static final a GBk;
-  public ge GBi;
-  private c GBj;
+  public static final a NoW;
+  public hz NoU;
+  private c NoV;
   
   static
   {
-    AppMethodBeat.i(190833);
-    GBk = new a((byte)0);
-    AppMethodBeat.o(190833);
+    AppMethodBeat.i(224428);
+    NoW = new a((byte)0);
+    AppMethodBeat.o(224428);
   }
   
   public d()
   {
-    AppMethodBeat.i(190832);
-    this.GBi = new ge();
-    this.GBj = new c();
-    AppMethodBeat.o(190832);
+    AppMethodBeat.i(224425);
+    this.NoU = new hz();
+    this.NoV = new c();
+    AppMethodBeat.o(224425);
   }
   
-  public final void KT(long paramLong)
+  public final void Sq(long paramLong)
   {
-    AppMethodBeat.i(190829);
-    this.GBi.pT(paramLong);
-    AppMethodBeat.o(190829);
+    AppMethodBeat.i(224413);
+    this.NoU.si(paramLong);
+    AppMethodBeat.o(224413);
   }
   
-  public final void KU(long paramLong)
+  public final void Sr(long paramLong)
   {
-    AppMethodBeat.i(190830);
-    this.GBi.pU(paramLong);
-    AppMethodBeat.o(190830);
+    AppMethodBeat.i(224415);
+    this.NoU.sj(paramLong);
+    AppMethodBeat.o(224415);
   }
   
-  public final void b(ac paramac)
+  public final void c(ac paramac)
   {
-    AppMethodBeat.i(190827);
-    p.h(paramac, "composition");
-    this.GBj.tGk.clear();
-    long l2 = 0L;
-    Iterator localIterator = ((Iterable)paramac.Gzn).iterator();
+    long l5 = 0L;
+    AppMethodBeat.i(224403);
+    p.k(paramac, "composition");
+    this.NoV.xoX.clear();
+    Object localObject1 = ((Iterable)paramac.MQY).iterator();
     long l1 = 0L;
-    ad localad;
-    Object localObject1;
-    Object localObject2;
-    long l3;
-    if (localIterator.hasNext())
+    long l2 = 0L;
+    if (((Iterator)localObject1).hasNext())
     {
-      localad = (ad)localIterator.next();
-      localObject1 = null;
-      if (localad.type == 2)
+      Object localObject2 = (ad)((Iterator)localObject1).next();
+      com.tencent.mm.plugin.vlog.report.c localc = com.tencent.mm.plugin.vlog.report.c.NqY;
+      localObject2 = com.tencent.mm.plugin.vlog.report.c.b((ad)localObject2);
+      long l3 = l1;
+      long l4 = l2;
+      if (localObject2 != null)
       {
-        l2 += 1L;
-        localObject2 = (c.e)new c.f();
-        ((c.f)localObject2).mwH = localad.GzA.mwH;
-        MultiMediaVideoChecker.a locala = MultiMediaVideoChecker.GyY.aTV(localad.path);
-        localObject1 = localObject2;
-        l3 = l2;
-        if (locala == null) {
-          break label476;
+        if (!(localObject2 instanceof c.d)) {
+          break label134;
         }
-        ((c.f)localObject2).bitrate = locala.bitrate;
-        ((c.f)localObject2).cKu = locala.cKu;
-        ((c.f)localObject2).audioSampleRate = locala.audioSampleRate;
-        ((c.f)localObject2).audioBitrate = locala.audioBitrate;
-        localObject1 = localObject2;
-      }
-    }
-    for (;;)
-    {
-      if (localObject1 != null) {
-        ((c.e)localObject1).type = localad.type;
-      }
-      if (localObject1 != null)
-      {
-        localObject2 = ((c.e)localObject1).GBh;
-        if (localObject2 != null) {
-          ((ArrayList)localObject2).add(Integer.valueOf(localad.Gzu));
-        }
-      }
-      if (localObject1 != null)
-      {
-        localObject2 = ((c.e)localObject1).GBh;
-        if (localObject2 != null) {
-          ((ArrayList)localObject2).add(Integer.valueOf(localad.Gzv));
-        }
-      }
-      if (localObject1 != null)
-      {
-        localObject2 = ((c.e)localObject1).GBd;
-        if (localObject2 != null) {
-          ((ArrayList)localObject2).add(Long.valueOf(localad.GzA.startTimeMs));
-        }
-      }
-      if (localObject1 != null)
-      {
-        localObject2 = ((c.e)localObject1).GBd;
-        if (localObject2 != null) {
-          ((ArrayList)localObject2).add(Long.valueOf(localad.GzA.endTimeMs));
-        }
-      }
-      if (localObject1 != null) {
-        this.GBj.tGk.add(localObject1);
-      }
-      break;
-      l3 = l2;
-      if (localad.type == 1)
-      {
-        localObject1 = (c.e)new c.d();
         l1 += 1L;
-        continue;
-        this.GBi.ln(1);
-        this.GBi.pP(l2);
-        this.GBi.pQ(l1);
-        localObject1 = this.GBi;
-        if (paramac.Gzp) {}
-        for (l1 = 1L;; l1 = 0L)
-        {
-          ((ge)localObject1).pV(l1);
-          Log.i("MicroMsg.MultiMediaEditReport", "setComposition, isEnableVideoEnhancement:" + paramac.Gzp);
-          AppMethodBeat.o(190827);
-          return;
-        }
       }
-      else
+      for (;;)
       {
-        label476:
-        l2 = l3;
+        this.NoV.xoX.add(localObject2);
+        l4 = l2;
+        l3 = l1;
+        l1 = l3;
+        l2 = l4;
+        break;
+        label134:
+        l2 += 1L;
       }
     }
+    this.NoU.ng(1);
+    this.NoU.se(l2);
+    this.NoU.sf(l1);
+    localObject1 = this.NoU;
+    l1 = l5;
+    if (paramac.NmV) {
+      l1 = 1L;
+    }
+    ((hz)localObject1).sk(l1);
+    Log.i("MicroMsg.MultiMediaEditReport", "setComposition, isEnableVideoEnhancement:" + paramac.NmV);
+    AppMethodBeat.o(224403);
   }
   
-  public final void hR(List<? extends a> paramList)
+  public final void iG(List<? extends com.tencent.mm.plugin.recordvideo.ui.editor.item.a> paramList)
   {
-    AppMethodBeat.i(190828);
-    p.h(paramList, "itemList");
-    this.GBj.editList.clear();
+    AppMethodBeat.i(224411);
+    p.k(paramList, "itemList");
+    this.NoV.editList.clear();
     Iterator localIterator = ((Iterable)paramList).iterator();
-    a locala;
+    com.tencent.mm.plugin.recordvideo.ui.editor.item.a locala;
     c.a locala1;
     c.b localb;
     if (localIterator.hasNext())
     {
-      locala = (a)localIterator.next();
-      if (locala.Cex == com.tencent.mm.plugin.recordvideo.ui.editor.item.d.CeK)
+      locala = (com.tencent.mm.plugin.recordvideo.ui.editor.item.a)localIterator.next();
+      if (locala.Ibt == com.tencent.mm.plugin.recordvideo.ui.editor.item.d.IbG)
       {
         locala1 = (c.a)new c.b();
         localb = (c.b)locala1;
-        if ((locala instanceof q)) {
-          break label350;
+        if ((locala instanceof r)) {
+          break label344;
         }
       }
     }
-    label345:
-    label350:
+    label339:
+    label344:
     for (Object localObject = null;; localObject = locala)
     {
-      localObject = (q)localObject;
+      localObject = (r)localObject;
       String str;
       if (localObject != null)
       {
-        str = ((q)localObject).CeI;
+        str = ((r)localObject).IbE;
         localObject = str;
         if (str != null) {}
       }
@@ -198,21 +145,21 @@ public final class d
       {
         localObject = "";
       }
-      localObject = new o((String)localObject).getName();
-      p.g(localObject, "VFSFile((it as? TextItem)?.font ?: \"\").name");
+      localObject = new q((String)localObject).getName();
+      p.j(localObject, "VFSFile((it as? TextItem)?.font ?: \"\").name");
       localb.setFont((String)localObject);
       localObject = locala1;
-      ((c.a)localObject).type = locala.Cex.value;
-      ((c.a)localObject).GBd.add(Long.valueOf(locala.Cev.Cgx.getTime()));
-      ((c.a)localObject).GBd.add(Long.valueOf(locala.Cev.Cgy.getTime()));
-      this.GBj.editList.add(localObject);
+      ((c.a)localObject).type = locala.Ibt.value;
+      ((c.a)localObject).NoN.add(Long.valueOf(locala.Ibr.Ido.getTime()));
+      ((c.a)localObject).NoN.add(Long.valueOf(locala.Ibr.Idp.getTime()));
+      this.NoV.editList.add(localObject);
       break;
-      if (locala.Cex == com.tencent.mm.plugin.recordvideo.ui.editor.item.d.CeP)
+      if (locala.Ibt == com.tencent.mm.plugin.recordvideo.ui.editor.item.d.IbL)
       {
         locala1 = (c.a)new c.b();
         localb = (c.b)locala1;
         if ((locala instanceof com.tencent.mm.plugin.recordvideo.ui.editor.item.c)) {
-          break label345;
+          break label339;
         }
       }
       for (localObject = null;; localObject = locala)
@@ -220,7 +167,7 @@ public final class d
         localObject = (com.tencent.mm.plugin.recordvideo.ui.editor.item.c)localObject;
         if (localObject != null)
         {
-          str = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.c)localObject).CeI;
+          str = ((com.tencent.mm.plugin.recordvideo.ui.editor.item.c)localObject).IbE;
           localObject = str;
           if (str != null) {}
         }
@@ -228,15 +175,15 @@ public final class d
         {
           localObject = "";
         }
-        localObject = new o((String)localObject).getName();
-        p.g(localObject, "VFSFile((it as? CaptionItem)?.font ?: \"\").name");
+        localObject = new q((String)localObject).getName();
+        p.j(localObject, "VFSFile((it as? CaptionItem)?.font ?: \"\").name");
         localb.setFont((String)localObject);
         localObject = locala1;
         break;
         localObject = new c.a();
         break;
-        this.GBi.pR(paramList.size());
-        AppMethodBeat.o(190828);
+        this.NoU.sg(paramList.size());
+        AppMethodBeat.o(224411);
         return;
       }
     }
@@ -244,12 +191,12 @@ public final class d
   
   public final void report()
   {
-    AppMethodBeat.i(190831);
+    AppMethodBeat.i(224423);
     Object localObject1 = MMApplicationContext.getContext().getSystemService("activity");
     if (localObject1 == null)
     {
       localObject1 = new t("null cannot be cast to non-null type android.app.ActivityManager");
-      AppMethodBeat.o(190831);
+      AppMethodBeat.o(224423);
       throw ((Throwable)localObject1);
     }
     Object localObject2 = ((ActivityManager)localObject1).getProcessMemoryInfo(new int[] { Process.myPid() });
@@ -258,41 +205,41 @@ public final class d
     {
       if (i > 0)
       {
-        localObject1 = this.GBj.GBc;
+        localObject1 = this.NoV.NoL;
         localObject2 = localObject2[0];
-        p.g(localObject2, "memInfos[0]");
-        ((c.c)localObject1).GBe = ((Debug.MemoryInfo)localObject2).getTotalPss();
+        p.j(localObject2, "memInfos[0]");
+        ((c.c)localObject1).NoO = ((Debug.MemoryInfo)localObject2).getTotalPss();
       }
-      localObject1 = com.tencent.mm.videocomposition.c.RgU;
-      localObject2 = com.tencent.mm.videocomposition.c.evK().snapshot();
-      this.GBj.GBc.GBf = ((Map)localObject2).size();
-      localObject1 = this.GBj.GBc;
+      localObject1 = com.tencent.mm.videocomposition.a.YHM;
+      localObject2 = com.tencent.mm.videocomposition.a.fgL().snapshot();
+      this.NoV.NoL.NoP = ((Map)localObject2).size();
+      localObject1 = this.NoV.NoL;
       localObject2 = ((Iterable)((Map)localObject2).values()).iterator();
       Bitmap localBitmap;
       for (i = 0; ((Iterator)localObject2).hasNext(); i = localBitmap.getAllocationByteCount() + i)
       {
         localBitmap = (Bitmap)((Iterator)localObject2).next();
-        p.g(localBitmap, "it");
+        p.j(localBitmap, "it");
       }
     }
-    ((c.c)localObject1).GBg = i;
-    localObject1 = this.GBj.toJson().toString();
-    p.g(localObject1, "reportJson.toJson().toString()");
-    localObject1 = n.j((String)localObject1, ",", ";", false);
-    this.GBi.tI((String)localObject1);
-    Log.i("MicroMsg.MultiMediaEditReport", "report: " + this.GBi.abW());
-    this.GBi.bfK();
-    this.GBi = new ge();
-    this.GBj = new c();
-    AppMethodBeat.o(190831);
+    ((c.c)localObject1).NoQ = i;
+    localObject1 = this.NoV.toJson().toString();
+    p.j(localObject1, "reportJson.toJson().toString()");
+    localObject1 = n.l((String)localObject1, ",", ";", false);
+    this.NoU.xA((String)localObject1);
+    Log.i("MicroMsg.MultiMediaEditReport", "report: " + this.NoU.agI());
+    this.NoU.bpa();
+    this.NoU = new hz();
+    this.NoV = new c();
+    AppMethodBeat.o(224423);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/model/report/VideoEditResultReport$Companion;", "", "()V", "ACTION_EXIT", "", "ACTION_NEXT", "SOURCE_MUSIC_FOLLOW", "SOURCE_OTHER", "SOURCE_TEMPLATE_FOLLOW", "SOURCE_TEMPLATE_POST", "TAG", "", "plugin-vlog_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/report/VideoEditResultReport$Companion;", "", "()V", "ACTION_EXIT", "", "ACTION_NEXT", "SOURCE_MUSIC_FOLLOW", "SOURCE_OTHER", "SOURCE_TEMPLATE_FOLLOW", "SOURCE_TEMPLATE_POST", "TAG", "", "plugin-vlog_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.report.d
  * JD-Core Version:    0.7.0.1
  */

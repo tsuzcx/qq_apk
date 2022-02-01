@@ -1,55 +1,49 @@
 package kotlin.g.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.Serializable;
+import kotlin.l.d;
+import kotlin.l.r.a;
 
 public final class z
+  extends y
 {
-  public static final class a
-    implements Serializable
+  private final d aaBw;
+  private final String name;
+  private final String signature;
+  
+  public z(d paramd, String paramString1, String paramString2)
   {
-    public boolean SYB;
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(128956);
-      boolean bool = this.SYB;
-      AppMethodBeat.o(128956);
-      return String.valueOf(bool);
-    }
+    this.aaBw = paramd;
+    this.name = paramString1;
+    this.signature = paramString2;
   }
   
-  public static final class e
-    implements Serializable
+  public final d Vc()
   {
-    public long SYF;
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(128957);
-      long l = this.SYF;
-      AppMethodBeat.o(128957);
-      return String.valueOf(l);
-    }
+    return this.aaBw;
   }
   
-  public static final class f<T>
-    implements Serializable
+  public final Object get(Object paramObject)
   {
-    public T SYG;
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(128972);
-      String str = String.valueOf(this.SYG);
-      AppMethodBeat.o(128972);
-      return str;
-    }
+    AppMethodBeat.i(128971);
+    paramObject = iCp().ak(new Object[] { paramObject });
+    AppMethodBeat.o(128971);
+    return paramObject;
+  }
+  
+  public final String getName()
+  {
+    return this.name;
+  }
+  
+  public final String getSignature()
+  {
+    return this.signature;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.g.b.z
  * JD-Core Version:    0.7.0.1
  */

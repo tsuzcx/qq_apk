@@ -1,96 +1,97 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.model.cl;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.model.cm;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.c;
-import com.tencent.mm.plugin.finder.upload.action.i;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.bbn;
-import com.tencent.mm.protocal.protobuf.coa;
-import com.tencent.mm.protocal.protobuf.cob;
-import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.plugin.finder.storage.d;
+import com.tencent.mm.plugin.finder.upload.action.k;
+import com.tencent.mm.plugin.findersdk.b.c;
+import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.protocal.protobuf.cwn;
+import com.tencent.mm.protocal.protobuf.cwo;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.jh;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiLikeMegaVideo;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/MegaVideoLikeResponse;", "action", "Lcom/tencent/mm/plugin/finder/upload/action/LikeAction;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/plugin/finder/upload/action/LikeAction;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "getAction", "()Lcom/tencent/mm/plugin/finder/upload/action/LikeAction;", "likeId", "", "request", "Lcom/tencent/mm/protocal/protobuf/MegaVideoLikeRequest;", "initCommReqResp", "", "onCgiEnd", "errType", "", "errCode", "errMsg", "", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiLikeMegaVideo;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/MegaVideoLikeResponse;", "action", "Lcom/tencent/mm/plugin/finder/upload/action/LikeAction;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/plugin/finder/upload/action/LikeAction;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "getAction", "()Lcom/tencent/mm/plugin/finder/upload/action/LikeAction;", "likeId", "", "request", "Lcom/tencent/mm/protocal/protobuf/MegaVideoLikeRequest;", "initCommReqResp", "", "onCgiEnd", "errType", "", "errCode", "errMsg", "", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
 public final class aj
-  extends an<cob>
+  extends c<cwo>
 {
-  private static long tsS;
-  public static final a tus;
-  private long tsR;
-  private final i ttn;
-  private coa tur;
+  private static long xaH;
+  public static final a xcc;
+  private long xaG;
+  private final k xbe;
+  private cwn xcb;
   
   static
   {
-    AppMethodBeat.i(242315);
-    tus = new a((byte)0);
-    AppMethodBeat.o(242315);
+    AppMethodBeat.i(228939);
+    xcc = new a((byte)0);
+    AppMethodBeat.o(228939);
   }
   
-  public aj(i parami, bbn parambbn)
+  public aj(k paramk, bid parambid)
   {
-    super(parambbn);
-    AppMethodBeat.i(242314);
-    this.ttn = parami;
-    this.tsR = cl.aWz();
-    if (this.tsR < tsS)
+    super(parambid);
+    AppMethodBeat.i(228938);
+    this.xbe = paramk;
+    this.xaG = cm.bfD();
+    if (this.xaG < xaH)
     {
-      l = tsS;
-      tsS = 1L + l;
-      this.tsR = l;
+      l = xaH;
+      xaH = 1L + l;
+      this.xaG = l;
     }
-    tsS = this.tsR;
-    this.tur = new coa();
-    parami = this.tur;
-    ap localap = ap.tuF;
-    parami.MtV = ap.b(parambbn);
-    parami = this.tur;
+    xaH = this.xaG;
+    this.xcb = new cwn();
+    paramk = this.xcb;
+    as localas = as.xco;
+    paramk.TFa = as.b(parambid);
+    paramk = this.xcb;
     int i;
-    if (this.ttn.vUr)
+    if (this.xbe.ACe)
     {
       i = 1;
-      parami.opType = i;
-      this.tur.tsR = this.tsR;
-      parami = this.tur;
-      parambbn = c.vCb;
-      if (!c.drg()) {
+      paramk.opType = i;
+      this.xcb.xaG = this.xaG;
+      paramk = this.xcb;
+      parambid = d.AjH;
+      if (!d.dSu()) {
         break label425;
       }
     }
     label425:
-    for (long l = 0L;; l = this.ttn.feedId)
+    for (long l = 0L;; l = this.xbe.feedId)
     {
-      parami.twG = l;
-      this.tur.LOd = this.ttn.objectNonceId;
-      Log.i("CgiLikeMegaVideo", "likeId:" + this.tsR + " opType:" + this.tur.opType + " likeId:" + this.tur.tsR + " action:" + this.ttn.vUr);
-      parami = new d.a();
-      parami.c((a)this.tur);
-      parambbn = new cob();
-      parambbn.setBaseResponse(new BaseResponse());
-      parambbn.getBaseResponse().ErrMsg = new dqi();
-      parami.d((a)parambbn);
-      parami.MB("/cgi-bin/micromsg-bin/megavideolike");
-      parami.sG(5232);
-      c(parami.aXF());
-      Log.i("CgiLikeMegaVideo", "likeId:" + this.tsR + " CgiLikeMegaVideo init " + this.tur.twG + " and userName " + this.ttn.vTS.getUserName() + " nickname " + this.ttn.vTS.getNickName() + " totalCount:" + this.ttn.vTS.getLikeCount());
-      AppMethodBeat.o(242314);
+      paramk.HLs = l;
+      this.xcb.SWw = this.xbe.objectNonceId;
+      Log.i("CgiLikeMegaVideo", "likeId:" + this.xaG + " opType:" + this.xcb.opType + " likeId:" + this.xcb.xaG + " action:" + this.xbe.ACe);
+      paramk = new d.a();
+      paramk.c((a)this.xcb);
+      parambid = new cwo();
+      parambid.setBaseResponse(new jh());
+      parambid.getBaseResponse().Tef = new eaf();
+      paramk.d((a)parambid);
+      paramk.TW("/cgi-bin/micromsg-bin/megavideolike");
+      paramk.vD(5232);
+      c(paramk.bgN());
+      Log.i("CgiLikeMegaVideo", "likeId:" + this.xaG + " CgiLikeMegaVideo init " + this.xcb.HLs + " and userName " + this.xbe.ABv.getUserName() + " nickname " + this.xbe.ABv.getNickName() + " totalCount:" + this.xbe.ABv.getLikeCount());
+      AppMethodBeat.o(228938);
       return;
       i = 2;
       break;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiLikeMegaVideo$Companion;", "", "()V", "GlobalLikeFeedId", "", "getGlobalLikeFeedId", "()J", "setGlobalLikeFeedId", "(J)V", "TAG", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiLikeMegaVideo$Companion;", "", "()V", "GlobalLikeFeedId", "", "getGlobalLikeFeedId", "()J", "setGlobalLikeFeedId", "(J)V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.aj
  * JD-Core Version:    0.7.0.1
  */

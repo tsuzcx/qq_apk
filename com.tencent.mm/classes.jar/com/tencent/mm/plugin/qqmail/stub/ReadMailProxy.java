@@ -1,25 +1,26 @@
 package com.tencent.mm.plugin.qqmail.stub;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.p;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.c.et;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
-import com.tencent.mm.plugin.downloader.model.g.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.plugin.qqmail.c.a;
 import com.tencent.mm.plugin.qqmail.c.b;
 import com.tencent.mm.plugin.qqmail.d.k;
 import com.tencent.mm.plugin.qqmail.d.v;
 import com.tencent.mm.plugin.qqmail.ui.ReadMailUI.a;
-import com.tencent.mm.pluginsdk.ui.tools.o;
-import com.tencent.mm.pluginsdk.ui.tools.o.a;
-import com.tencent.mm.remoteservice.a;
+import com.tencent.mm.pluginsdk.ui.tools.q;
+import com.tencent.mm.pluginsdk.ui.tools.q.a;
+import com.tencent.mm.remoteservice.e;
 import com.tencent.mm.sdk.platformtools.ChannelUtil;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
@@ -30,91 +31,91 @@ import java.net.URL;
 import java.util.Map;
 
 public class ReadMailProxy
-  extends a
+  extends com.tencent.mm.remoteservice.a
 {
-  private c.a BqR;
-  private c.a BtA;
-  private ReadMailUI.a BtB;
-  private o.a BtC;
+  private c.a Hlk;
+  private c.a HnU;
+  private ReadMailUI.a HnV;
+  private q.a HnW;
   
   public ReadMailProxy(com.tencent.mm.remoteservice.d paramd, c.a parama)
   {
     super(paramd);
-    AppMethodBeat.i(198675);
-    this.BtC = new o.a()
+    AppMethodBeat.i(249801);
+    this.HnW = new q.a()
     {
-      public final void eGv()
+      public final void XN()
       {
-        AppMethodBeat.i(198669);
+        AppMethodBeat.i(250048);
         ReadMailProxy.this.CLIENT_CALL("onGetQQMailUnreadFailed", new Object[0]);
-        AppMethodBeat.o(198669);
+        AppMethodBeat.o(250048);
       }
       
       public final void onSuccess(int paramAnonymousInt)
       {
-        AppMethodBeat.i(198668);
+        AppMethodBeat.i(250047);
         ReadMailProxy.this.CLIENT_CALL("onGetQQMailUnreadSuccess", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        AppMethodBeat.o(198668);
+        AppMethodBeat.o(250047);
       }
     };
-    this.BqR = parama;
-    this.BtA = new c.a()
+    this.Hlk = parama;
+    this.HnU = new c.a()
     {
       public final void onComplete()
       {
-        AppMethodBeat.i(198673);
+        AppMethodBeat.i(249988);
         ReadMailProxy.this.CLIENT_CALL("onComplete", new Object[0]);
-        AppMethodBeat.o(198673);
+        AppMethodBeat.o(249988);
       }
       
       public final void onError(int paramAnonymousInt, String paramAnonymousString)
       {
-        AppMethodBeat.i(198672);
+        AppMethodBeat.i(249987);
         ReadMailProxy.this.CLIENT_CALL("onError", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
-        AppMethodBeat.o(198672);
+        AppMethodBeat.o(249987);
       }
       
       public final boolean onReady()
       {
-        AppMethodBeat.i(198670);
+        AppMethodBeat.i(249985);
         boolean bool = ((Boolean)ReadMailProxy.this.CLIENT_CALL("onReady", new Object[0])).booleanValue();
-        AppMethodBeat.o(198670);
+        AppMethodBeat.o(249985);
         return bool;
       }
       
       public final void onSuccess(String paramAnonymousString, Map<String, String> paramAnonymousMap)
       {
-        AppMethodBeat.i(198671);
+        AppMethodBeat.i(249986);
         ReadMailProxy.this.CLIENT_CALL("onSuccess", new Object[] { paramAnonymousString, paramAnonymousMap });
-        AppMethodBeat.o(198671);
+        AppMethodBeat.o(249986);
       }
     };
-    AppMethodBeat.o(198675);
+    AppMethodBeat.o(249801);
   }
   
   public ReadMailProxy(com.tencent.mm.remoteservice.d paramd, c.a parama, ReadMailUI.a parama1)
   {
     super(paramd);
-    AppMethodBeat.i(198676);
-    this.BtC = new o.a()
+    AppMethodBeat.i(249802);
+    this.HnW = new q.a()
     {
-      public final void eGv()
+      public final void XN()
       {
-        AppMethodBeat.i(198669);
+        AppMethodBeat.i(250048);
         ReadMailProxy.this.CLIENT_CALL("onGetQQMailUnreadFailed", new Object[0]);
-        AppMethodBeat.o(198669);
+        AppMethodBeat.o(250048);
       }
       
       public final void onSuccess(int paramAnonymousInt)
       {
-        AppMethodBeat.i(198668);
+        AppMethodBeat.i(250047);
         ReadMailProxy.this.CLIENT_CALL("onGetQQMailUnreadSuccess", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        AppMethodBeat.o(198668);
+        AppMethodBeat.o(250047);
       }
     };
-    this.BqR = parama;
-    this.BtB = parama1;
-    this.BtA = new c.a()
+    this.Hlk = parama;
+    this.HnV = parama1;
+    this.HnU = new c.a()
     {
       public final void onComplete()
       {
@@ -145,7 +146,7 @@ public class ReadMailProxy
         AppMethodBeat.o(122813);
       }
     };
-    AppMethodBeat.o(198676);
+    AppMethodBeat.o(249802);
   }
   
   @com.tencent.mm.remoteservice.f
@@ -156,9 +157,9 @@ public class ReadMailProxy
     {
       public final void run()
       {
-        AppMethodBeat.i(198674);
-        ((k)g.ah(k.class)).getNormalMailAppService().cancel(paramLong);
-        AppMethodBeat.o(198674);
+        AppMethodBeat.i(250413);
+        ((k)com.tencent.mm.kernel.h.ag(k.class)).getNormalMailAppService().cancel(paramLong);
+        AppMethodBeat.o(250413);
       }
     });
     AppMethodBeat.o(122835);
@@ -168,7 +169,7 @@ public class ReadMailProxy
   public void deleteMsgById(long paramLong)
   {
     AppMethodBeat.i(122840);
-    ((l)g.af(l.class)).eiy().Hc(paramLong);
+    ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().Or(paramLong);
     AppMethodBeat.o(122840);
   }
   
@@ -179,16 +180,22 @@ public class ReadMailProxy
     try
     {
       paramString1 = new URL(paramString1);
-      paramString1 = new URI(paramString1.getProtocol(), paramString1.getUserInfo(), paramString1.getHost(), paramString1.getPort(), paramString1.getPath(), paramString1.getQuery(), paramString1.getRef()).toURL();
-      g.a locala = new g.a();
-      locala.alj(paramString1.toString());
-      locala.all("qqmail.apk");
-      locala.setFileMD5(paramString2);
-      locala.kS(true);
-      locala.Fl(1);
-      l = com.tencent.mm.plugin.downloader.model.f.cBv().a(locala.qIY);
+      URL localURL = new URI(paramString1.getProtocol(), paramString1.getUserInfo(), paramString1.getHost(), paramString1.getPort(), paramString1.getPath(), paramString1.getQuery(), paramString1.getRef()).toURL();
+      paramString1 = new Intent();
+      paramString1.setClassName(MMApplicationContext.getContext(), "com.tencent.mm.plugin.webview.ui.tools.WebViewDownloadUI");
+      paramString1.putExtra("task_name", "QQ 邮箱");
+      paramString1.putExtra("title", "QQ 邮箱");
+      paramString1.putExtra("task_url", localURL.toString());
+      paramString1.putExtra("file_md5", paramString2);
+      paramString1.putExtra("fileType", 1);
+      paramString1.putExtra("package_name", "com.tencent.androidqqmail");
+      paramString2 = MMApplicationContext.getContext();
+      paramString1 = new com.tencent.mm.hellhoundlib.b.a().bm(paramString1);
+      com.tencent.mm.hellhoundlib.a.a.b(paramString2, paramString1.aFh(), "com/tencent/mm/plugin/qqmail/stub/ReadMailProxy", "downloadQQMailApp", "(Ljava/lang/String;Ljava/lang/String;)J", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramString2.startActivity((Intent)paramString1.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramString2, "com/tencent/mm/plugin/qqmail/stub/ReadMailProxy", "downloadQQMailApp", "(Ljava/lang/String;Ljava/lang/String;)J", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(122844);
-      return l;
+      return -1L;
     }
     catch (Exception paramString1)
     {
@@ -196,7 +203,6 @@ public class ReadMailProxy
       {
         Log.e("MicroMsg.ReadMailProxy", "dz[download qq mail error:%s]", new Object[] { paramString1.toString() });
         Log.printErrStackTrace("MicroMsg.ReadMailProxy", paramString1, "", new Object[0]);
-        long l = -1L;
       }
     }
   }
@@ -207,7 +213,7 @@ public class ReadMailProxy
     AppMethodBeat.i(122833);
     c.b localb = new c.b();
     localb.fromBundle(paramBundle);
-    long l = ((k)g.ah(k.class)).getNormalMailAppService().a(paramString, 0, paramMap, localb, this.BtA);
+    long l = ((k)com.tencent.mm.kernel.h.ag(k.class)).getNormalMailAppService().a(paramString, 0, paramMap, localb, this.HnU);
     AppMethodBeat.o(122833);
     return l;
   }
@@ -216,7 +222,7 @@ public class ReadMailProxy
   public String getBindUin()
   {
     AppMethodBeat.i(122846);
-    String str = new p(Util.nullAsNil((Integer)g.aAh().azQ().get(9, null))).toString();
+    String str = new p(Util.nullAsNil((Integer)com.tencent.mm.kernel.h.aHG().aHp().b(9, null))).toString();
     AppMethodBeat.o(122846);
     return str;
   }
@@ -225,13 +231,13 @@ public class ReadMailProxy
   public double getMailAppDownloadProgress(long paramLong)
   {
     AppMethodBeat.i(122851);
-    FileDownloadTaskInfo localFileDownloadTaskInfo = com.tencent.mm.plugin.downloader.model.f.cBv().Co(paramLong);
-    if (localFileDownloadTaskInfo.oJj <= 0L)
+    FileDownloadTaskInfo localFileDownloadTaskInfo = com.tencent.mm.plugin.downloader.model.f.cPZ().Ix(paramLong);
+    if (localFileDownloadTaskInfo.rKZ <= 0L)
     {
       AppMethodBeat.o(122851);
       return 0.0D;
     }
-    double d = 1.0D * localFileDownloadTaskInfo.qJe / localFileDownloadTaskInfo.oJj;
+    double d = 1.0D * localFileDownloadTaskInfo.uih / localFileDownloadTaskInfo.rKZ;
     AppMethodBeat.o(122851);
     return d;
   }
@@ -240,7 +246,7 @@ public class ReadMailProxy
   public Integer getMailAppDownloadStatus(long paramLong)
   {
     AppMethodBeat.i(122850);
-    int i = com.tencent.mm.plugin.downloader.model.f.cBv().Co(paramLong).status;
+    int i = com.tencent.mm.plugin.downloader.model.f.cPZ().Ix(paramLong).status;
     AppMethodBeat.o(122850);
     return Integer.valueOf(i);
   }
@@ -249,7 +255,7 @@ public class ReadMailProxy
   public String getMailAppEnterUlAndroid()
   {
     AppMethodBeat.i(122848);
-    String str = com.tencent.mm.n.h.aqK().getMailAppEnterUlAndroid();
+    String str = com.tencent.mm.n.h.axd().getMailAppEnterUlAndroid();
     AppMethodBeat.o(122848);
     return str;
   }
@@ -258,7 +264,7 @@ public class ReadMailProxy
   public String getMailAppRedirectUrlAndroid()
   {
     AppMethodBeat.i(122849);
-    String str = com.tencent.mm.n.h.aqK().aqC();
+    String str = com.tencent.mm.n.h.axd().awV();
     AppMethodBeat.o(122849);
     return str;
   }
@@ -267,7 +273,7 @@ public class ReadMailProxy
   public String getMsgContent(long paramLong)
   {
     AppMethodBeat.i(122837);
-    String str = ((l)g.af(l.class)).eiy().Hb(paramLong).field_content;
+    String str = ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().Oq(paramLong).field_content;
     AppMethodBeat.o(122837);
     return str;
   }
@@ -276,7 +282,7 @@ public class ReadMailProxy
   public Object getUneradMailCountFromConfig()
   {
     AppMethodBeat.i(122855);
-    Object localObject = g.aAh().azQ().get(ar.a.NTG, Integer.valueOf(-1));
+    Object localObject = com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VhG, Integer.valueOf(-1));
     AppMethodBeat.o(122855);
     return localObject;
   }
@@ -285,7 +291,7 @@ public class ReadMailProxy
   public void getUnreadMailCount()
   {
     AppMethodBeat.i(122854);
-    o.a(this.BtC);
+    q.a(this.HnW);
     AppMethodBeat.o(122854);
   }
   
@@ -302,51 +308,51 @@ public class ReadMailProxy
   public boolean isSDCardAvailable()
   {
     AppMethodBeat.i(122836);
-    boolean bool = g.aAh().isSDCardAvailable();
+    boolean bool = com.tencent.mm.kernel.h.aHG().isSDCardAvailable();
     AppMethodBeat.o(122836);
     return bool;
   }
   
-  @com.tencent.mm.remoteservice.e
+  @e
   public void onComplete()
   {
     AppMethodBeat.i(122827);
-    if (this.BqR != null) {
-      this.BqR.onComplete();
+    if (this.Hlk != null) {
+      this.Hlk.onComplete();
     }
     AppMethodBeat.o(122827);
   }
   
-  @com.tencent.mm.remoteservice.e
+  @e
   public void onError(int paramInt, String paramString)
   {
     AppMethodBeat.i(122826);
-    if (this.BqR != null) {
-      this.BqR.onError(paramInt, paramString);
+    if (this.Hlk != null) {
+      this.Hlk.onError(paramInt, paramString);
     }
     AppMethodBeat.o(122826);
   }
   
-  @com.tencent.mm.remoteservice.e
+  @e
   public boolean onReady()
   {
     AppMethodBeat.i(122824);
-    if (this.BqR == null)
+    if (this.Hlk == null)
     {
       AppMethodBeat.o(122824);
       return true;
     }
-    boolean bool = this.BqR.onReady();
+    boolean bool = this.Hlk.onReady();
     AppMethodBeat.o(122824);
     return bool;
   }
   
-  @com.tencent.mm.remoteservice.e
+  @e
   public void onSuccess(String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(122825);
-    if (this.BqR != null) {
-      this.BqR.onSuccess(paramString, paramMap);
+    if (this.Hlk != null) {
+      this.Hlk.onSuccess(paramString, paramMap);
     }
     AppMethodBeat.o(122825);
   }
@@ -357,7 +363,7 @@ public class ReadMailProxy
     AppMethodBeat.i(122834);
     c.b localb = new c.b();
     localb.fromBundle(paramBundle);
-    long l = ((k)g.ah(k.class)).getNormalMailAppService().a(paramString, paramMap, localb, this.BtA);
+    long l = ((k)com.tencent.mm.kernel.h.ag(k.class)).getNormalMailAppService().a(paramString, paramMap, localb, this.HnU);
     AppMethodBeat.o(122834);
     return l;
   }
@@ -366,7 +372,7 @@ public class ReadMailProxy
   public int removeDownloadQQMailAppTask(long paramLong)
   {
     AppMethodBeat.i(122845);
-    int i = com.tencent.mm.plugin.downloader.model.f.cBv().Cn(paramLong);
+    int i = com.tencent.mm.plugin.downloader.model.f.cPZ().Iw(paramLong);
     AppMethodBeat.o(122845);
     return i;
   }
@@ -380,9 +386,9 @@ public class ReadMailProxy
       public final void run()
       {
         AppMethodBeat.i(122820);
-        ca localca = ((l)g.af(l.class)).eiy().Hb(paramLong);
-        localca.setContent(localca.field_content.replaceFirst("<digest>.*</digest>", "<digest>" + this.raN + "</digest>"));
-        ((l)g.af(l.class)).eiy().a(paramLong, localca);
+        ca localca = ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().Oq(paramLong);
+        localca.setContent(localca.field_content.replaceFirst("<digest>.*</digest>", "<digest>" + this.uDN + "</digest>"));
+        ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().a(paramLong, localca);
         AppMethodBeat.o(122820);
       }
     });
@@ -393,7 +399,7 @@ public class ReadMailProxy
   public void reportKvState(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(122852);
-    com.tencent.mm.plugin.report.service.h.CyF.a(paramInt1, new Object[] { Integer.valueOf(paramInt2) });
+    com.tencent.mm.plugin.report.service.h.IzE.a(paramInt1, new Object[] { Integer.valueOf(paramInt2) });
     AppMethodBeat.o(122852);
   }
   
@@ -401,7 +407,7 @@ public class ReadMailProxy
   public void reportKvStates(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(122853);
-    com.tencent.mm.plugin.report.service.h.CyF.a(paramInt1, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    com.tencent.mm.plugin.report.service.h.IzE.a(paramInt1, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     AppMethodBeat.o(122853);
   }
   
@@ -414,14 +420,14 @@ public class ReadMailProxy
       AppMethodBeat.o(122847);
       return Integer.valueOf(0);
     }
-    int i = com.tencent.mm.n.h.aqK().aqB();
+    int i = com.tencent.mm.n.h.axd().awU();
     AppMethodBeat.o(122847);
     return Integer.valueOf(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.stub.ReadMailProxy
  * JD-Core Version:    0.7.0.1
  */

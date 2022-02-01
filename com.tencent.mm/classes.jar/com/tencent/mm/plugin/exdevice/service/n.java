@@ -11,7 +11,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface n
   extends IInterface
 {
-  public abstract Bundle n(int paramInt, Bundle paramBundle);
+  public abstract Bundle p(int paramInt, Bundle paramBundle);
   
   public static abstract class a
     extends Binder
@@ -22,9 +22,9 @@ public abstract interface n
       attachInterface(this, "com.tencent.mm.plugin.exdevice.service.IExDeviceInvoker_AIDL");
     }
     
-    public static n cLj()
+    public static n cZW()
     {
-      return a.rDM;
+      return a.vjw;
     }
     
     public IBinder asBinder()
@@ -47,7 +47,7 @@ public abstract interface n
       if (paramParcel1.readInt() != 0)
       {
         paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
-        paramParcel1 = n(paramInt1, paramParcel1);
+        paramParcel1 = p(paramInt1, paramParcel1);
         paramParcel2.writeNoException();
         if (paramParcel1 == null) {
           break label110;
@@ -68,7 +68,7 @@ public abstract interface n
     static final class a
       implements n
     {
-      public static n rDM;
+      public static n vjw;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -81,7 +81,7 @@ public abstract interface n
         return this.mRemote;
       }
       
-      public final Bundle n(int paramInt, Bundle paramBundle)
+      public final Bundle p(int paramInt, Bundle paramBundle)
       {
         AppMethodBeat.i(23683);
         Parcel localParcel1 = Parcel.obtain();
@@ -95,9 +95,9 @@ public abstract interface n
             localParcel1.writeInt(1);
             paramBundle.writeToParcel(localParcel1, 0);
           }
-          while ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (n.a.cLj() != null))
+          while ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (n.a.cZW() != null))
           {
-            paramBundle = n.a.cLj().n(paramInt, paramBundle);
+            paramBundle = n.a.cZW().p(paramInt, paramBundle);
             return paramBundle;
             localParcel1.writeInt(0);
           }

@@ -25,13 +25,13 @@ public class WXMiniProgramObject
   
   public WXMiniProgramObject()
   {
-    AppMethodBeat.i(190363);
+    AppMethodBeat.i(253686);
     this.miniprogramType = 0;
     this.disableforward = 0;
     this.isUpdatableMessage = false;
     this.isSecretMessage = false;
     this.extraInfoMap = null;
-    AppMethodBeat.o(190363);
+    AppMethodBeat.o(253686);
   }
   
   public boolean checkArgs()
@@ -62,7 +62,7 @@ public class WXMiniProgramObject
   
   public String getExtra(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(190365);
+    AppMethodBeat.i(253690);
     HashMap localHashMap = this.extraInfoMap;
     if (localHashMap != null)
     {
@@ -73,9 +73,9 @@ public class WXMiniProgramObject
     }
     for (;;)
     {
-      AppMethodBeat.o(190365);
+      AppMethodBeat.o(253690);
       return paramString2;
-      AppMethodBeat.o(190365);
+      AppMethodBeat.o(253690);
       return null;
       label41:
       paramString2 = paramString1;
@@ -84,14 +84,14 @@ public class WXMiniProgramObject
   
   public void putExtra(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(190364);
+    AppMethodBeat.i(253689);
     if (this.extraInfoMap == null) {
       this.extraInfoMap = new HashMap();
     }
     if (!b.b(paramString1)) {
       this.extraInfoMap.put(paramString1, paramString2);
     }
-    AppMethodBeat.o(190364);
+    AppMethodBeat.o(253689);
   }
   
   public void serialize(Bundle paramBundle)
@@ -134,7 +134,7 @@ public class WXMiniProgramObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXMiniProgramObject
  * JD-Core Version:    0.7.0.1
  */

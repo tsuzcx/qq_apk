@@ -1,10 +1,12 @@
 package com.tencent.mm.plugin.soter.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -16,16 +18,16 @@ public final class f
   extends q
   implements m, e
 {
+  private b<e.b> Bzg = null;
   private i callback;
   private d rr;
-  private b<e.b> wGj = null;
   
   public final void a(b<e.b> paramb)
   {
-    this.wGj = paramb;
+    this.Bzg = paramb;
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(130817);
     this.callback = parami;
@@ -38,7 +40,7 @@ public final class f
   {
     AppMethodBeat.i(130819);
     Log.v("MicroMsg.NetSceneUploadSoterASK", "alvinluo NetSceneUploadSoterASK execute doScene");
-    com.tencent.mm.kernel.g.azz().a(this, 0);
+    h.aGY().a(this, 0);
     AppMethodBeat.o(130819);
   }
   
@@ -54,21 +56,21 @@ public final class f
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    com.tencent.mm.plugin.soter.d.m.Fic = paramString;
+    com.tencent.mm.plugin.soter.d.m.LwH = paramString;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
       Log.i("MicroMsg.NetSceneUploadSoterASK", "netscene upload soter ask successfully");
-      if (this.wGj != null)
+      if (this.Bzg != null)
       {
-        this.wGj.eB(new e.b(true));
+        this.Bzg.eH(new e.b(true));
         AppMethodBeat.o(130818);
       }
     }
     else
     {
       Log.e("MicroMsg.NetSceneUploadSoterASK", "netscene upload soter ask failed");
-      if (this.wGj != null) {
-        this.wGj.eB(new e.b(false));
+      if (this.Bzg != null) {
+        this.Bzg.eH(new e.b(false));
       }
     }
     AppMethodBeat.o(130818);
@@ -76,7 +78,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.b.f
  * JD-Core Version:    0.7.0.1
  */

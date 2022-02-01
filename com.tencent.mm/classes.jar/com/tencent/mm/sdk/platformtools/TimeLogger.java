@@ -59,11 +59,11 @@ public class TimeLogger
   
   public void reset()
   {
-    AppMethodBeat.i(230401);
+    AppMethodBeat.i(189537);
     this.mDisabled = false;
     if (this.mDisabled)
     {
-      AppMethodBeat.o(230401);
+      AppMethodBeat.o(189537);
       return;
     }
     if (this.mSplits == null)
@@ -74,7 +74,7 @@ public class TimeLogger
     for (;;)
     {
       addSplit(null);
-      AppMethodBeat.o(230401);
+      AppMethodBeat.o(189537);
       return;
       this.mSplits.clear();
       this.mSplitLabels.clear();
@@ -83,16 +83,16 @@ public class TimeLogger
   
   public void reset(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(230400);
+    AppMethodBeat.i(189531);
     this.mTag = paramString1;
     this.mLabel = paramString2;
     reset();
-    AppMethodBeat.o(230400);
+    AppMethodBeat.o(189531);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.TimeLogger
  * JD-Core Version:    0.7.0.1
  */

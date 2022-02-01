@@ -15,44 +15,46 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cr.a.f;
+import com.tencent.mm.cr.a.g;
 import com.tencent.mm.hellhoundlib.b.b;
 
 public class a
 {
   private Context context;
-  boolean ddZ;
-  protected com.tencent.mm.picker.c.a jKP;
-  boolean jLA;
-  private Animation jLB;
-  private Animation jLC;
-  protected int jLD;
-  private boolean jLE;
-  private View.OnKeyListener jLF;
-  private final View.OnTouchListener jLG;
-  protected ViewGroup jLx;
-  ViewGroup jLy;
-  private ViewGroup jLz;
+  boolean dic;
+  protected com.tencent.mm.picker.c.a mBU;
+  protected ViewGroup mCB;
+  ViewGroup mCC;
+  private ViewGroup mCD;
+  boolean mCE;
+  private Animation mCF;
+  private Animation mCG;
+  protected int mCH;
+  private boolean mCI;
+  private View.OnKeyListener mCJ;
+  private final View.OnTouchListener mCK;
   private Dialog mDialog;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(175337);
-    this.jLD = 80;
-    this.jLE = true;
-    this.jLF = new View.OnKeyListener()
+    this.mCH = 80;
+    this.mCI = true;
+    this.mCJ = new View.OnKeyListener()
     {
       public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
         AppMethodBeat.i(175335);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        localb.pH(paramAnonymousInt);
-        localb.bm(paramAnonymousKeyEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/picker/view/BasePickerView$3", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        localb.sg(paramAnonymousInt);
+        localb.bn(paramAnonymousKeyEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/picker/view/BasePickerView$3", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.aFi());
         if ((paramAnonymousInt == 4) && (paramAnonymousKeyEvent.getAction() == 0))
         {
           paramAnonymousView = a.this;
-          if ((!paramAnonymousView.blf()) && ((paramAnonymousView.jLy.getParent() != null) || (paramAnonymousView.ddZ))) {}
+          if ((!paramAnonymousView.buU()) && ((paramAnonymousView.mCC.getParent() != null) || (paramAnonymousView.dic))) {}
           for (paramAnonymousInt = 1; paramAnonymousInt != 0; paramAnonymousInt = 0)
           {
             a.this.dismiss();
@@ -66,7 +68,7 @@ public class a
         return false;
       }
     };
-    this.jLG = new View.OnTouchListener()
+    this.mCK = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -82,65 +84,65 @@ public class a
     AppMethodBeat.o(175337);
   }
   
-  protected final void blb()
+  protected final void buQ()
   {
     AppMethodBeat.i(175338);
     Object localObject = new FrameLayout.LayoutParams(-1, -2, 80);
-    this.jLy = ((ViewGroup)LayoutInflater.from(this.context).inflate(2131495165, this.jKP.Zv, false));
-    this.jLy.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    if (this.jKP.jLt != -1) {
-      this.jLy.setBackgroundColor(this.jKP.jLt);
+    this.mCC = ((ViewGroup)LayoutInflater.from(this.context).inflate(a.g.layout_basepickerview, this.mBU.gR, false));
+    this.mCC.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    if (this.mBU.mCx != -1) {
+      this.mCC.setBackgroundColor(this.mBU.mCx);
     }
-    this.jLx = ((ViewGroup)this.jLy.findViewById(2131299195));
-    this.jLx.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    if (blf()) {}
-    for (localObject = this.jLz;; localObject = this.jLy)
+    this.mCB = ((ViewGroup)this.mCC.findViewById(a.f.content_container));
+    this.mCB.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    if (buU()) {}
+    for (localObject = this.mCD;; localObject = this.mCC)
     {
       ((ViewGroup)localObject).setFocusable(true);
       ((ViewGroup)localObject).setFocusableInTouchMode(true);
-      ((ViewGroup)localObject).setOnKeyListener(this.jLF);
+      ((ViewGroup)localObject).setOnKeyListener(this.mCJ);
       AppMethodBeat.o(175338);
       return;
     }
   }
   
-  protected final void blc()
+  protected final void buR()
   {
     AppMethodBeat.i(175339);
-    int i = com.tencent.mm.picker.e.a.I(this.jLD, true);
-    this.jLC = AnimationUtils.loadAnimation(this.context, i);
-    i = com.tencent.mm.picker.e.a.I(this.jLD, false);
-    this.jLB = AnimationUtils.loadAnimation(this.context, i);
+    int i = com.tencent.mm.picker.e.a.K(this.mCH, true);
+    this.mCG = AnimationUtils.loadAnimation(this.context, i);
+    i = com.tencent.mm.picker.e.a.K(this.mCH, false);
+    this.mCF = AnimationUtils.loadAnimation(this.context, i);
     AppMethodBeat.o(175339);
   }
   
-  public final void bld()
+  public final void buS()
   {
     AppMethodBeat.i(175341);
-    this.jKP.Zv.post(new Runnable()
+    this.mBU.gR.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(175334);
-        a.this.jKP.Zv.removeView(a.this.jLy);
-        a.this.ddZ = false;
-        a.this.jLA = false;
+        a.this.mBU.gR.removeView(a.this.mCC);
+        a.this.dic = false;
+        a.this.mCE = false;
         AppMethodBeat.o(175334);
       }
     });
     AppMethodBeat.o(175341);
   }
   
-  public final void ble()
+  public final void buT()
   {
     AppMethodBeat.i(175343);
     if (this.mDialog != null) {
-      this.mDialog.setCancelable(this.jKP.ox);
+      this.mDialog.setCancelable(this.mBU.bxO);
     }
     AppMethodBeat.o(175343);
   }
   
-  public boolean blf()
+  public boolean buU()
   {
     return false;
   }
@@ -148,7 +150,7 @@ public class a
   public final void dismiss()
   {
     AppMethodBeat.i(175340);
-    if (blf())
+    if (buU())
     {
       if (this.mDialog != null) {
         this.mDialog.dismiss();
@@ -156,19 +158,19 @@ public class a
       AppMethodBeat.o(175340);
       return;
     }
-    if (this.jLA)
+    if (this.mCE)
     {
       AppMethodBeat.o(175340);
       return;
     }
-    if (this.jLE)
+    if (this.mCI)
     {
-      this.jLB.setAnimationListener(new Animation.AnimationListener()
+      this.mCF.setAnimationListener(new Animation.AnimationListener()
       {
         public final void onAnimationEnd(Animation paramAnonymousAnimation)
         {
           AppMethodBeat.i(175333);
-          a.this.bld();
+          a.this.buS();
           AppMethodBeat.o(175333);
         }
         
@@ -176,49 +178,49 @@ public class a
         
         public final void onAnimationStart(Animation paramAnonymousAnimation) {}
       });
-      this.jLx.startAnimation(this.jLB);
+      this.mCB.startAnimation(this.mCF);
     }
     for (;;)
     {
-      this.jLA = true;
+      this.mCE = true;
       AppMethodBeat.o(175340);
       return;
-      bld();
+      buS();
     }
   }
   
   public final View findViewById(int paramInt)
   {
     AppMethodBeat.i(175344);
-    View localView = this.jLx.findViewById(paramInt);
+    View localView = this.mCB.findViewById(paramInt);
     AppMethodBeat.o(175344);
     return localView;
   }
   
-  protected final a gd(boolean paramBoolean)
+  protected final a gP(boolean paramBoolean)
   {
     AppMethodBeat.i(175342);
     View localView;
-    if (this.jLy != null)
+    if (this.mCC != null)
     {
-      localView = this.jLy.findViewById(2131305747);
+      localView = this.mCC.findViewById(a.f.outmost_container);
       if (!paramBoolean) {
-        break label41;
+        break label42;
       }
-      localView.setOnTouchListener(this.jLG);
+      localView.setOnTouchListener(this.mCK);
     }
     for (;;)
     {
       AppMethodBeat.o(175342);
       return this;
-      label41:
+      label42:
       localView.setOnTouchListener(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.picker.f.a
  * JD-Core Version:    0.7.0.1
  */

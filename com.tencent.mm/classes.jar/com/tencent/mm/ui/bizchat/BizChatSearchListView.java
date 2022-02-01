@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class BizChatSearchListView
   extends ListView
 {
-  private a PaY;
+  private a Wul;
   
   public BizChatSearchListView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,8 +24,8 @@ public class BizChatSearchListView
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(33987);
-    if (this.PaY != null) {
-      this.PaY.clY();
+    if (this.Wul != null) {
+      this.Wul.czC();
     }
     if (super.onInterceptTouchEvent(paramMotionEvent))
     {
@@ -38,12 +38,12 @@ public class BizChatSearchListView
   
   public void setOnTouchListener(a parama)
   {
-    this.PaY = parama;
+    this.Wul = parama;
   }
   
   public static abstract interface a
   {
-    public abstract boolean clY();
+    public abstract boolean czC();
   }
 }
 

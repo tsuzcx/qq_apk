@@ -2,15 +2,15 @@ package kotlin;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"", "", "toString", "", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"", "", "toString", "", "kotlin-stdlib"})
 public final class x
 {
-  public static final x SXb;
+  public static final x aazN;
   
   static
   {
     AppMethodBeat.i(129471);
-    SXb = new x();
+    aazN = new x();
     AppMethodBeat.o(129471);
   }
   

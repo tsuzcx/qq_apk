@@ -3,39 +3,40 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 import android.content.Intent;
 
 public final class b
-  extends q
+  extends r
 {
-  public String DXA;
-  public boolean DXB = true;
-  public int DXC;
-  public String DXD;
-  public String DXE = "";
-  public String DXF = "";
-  public String DXG = "";
-  public String DXH = "";
-  public String DXI = "";
-  public String DXJ = "";
-  public String DXK = "";
-  public String DXL = "";
-  public String DXM = "";
-  public int DXN = -1;
-  public boolean DXO = false;
-  public int DXP;
-  public int DXQ;
-  public Intent DXR;
-  public String DXy;
-  public boolean DXz = false;
-  public String LG;
-  public String appPageUrl;
+  public String JxO;
+  public String KkH;
+  public boolean KkI = false;
+  public String KkJ;
+  public boolean KkK = true;
+  public int KkL;
+  public String KkM;
+  public String KkN = "";
+  public String KkO = "";
+  public String KkP = "";
+  public String KkQ = "";
+  public String KkR = "";
+  public String KkS = "";
+  public String KkT = "";
+  public String KkU = "";
+  public String KkV = "";
+  public int KkW = -1;
+  public boolean KkX = false;
+  public int KkY;
+  public int KkZ;
+  public Intent Kla;
+  public String Klb;
+  public String abY;
+  public String appid;
   public String channelId;
-  public String dNI;
   public String downloadUrl;
   public long fileSize;
   public String md5;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b
  * JD-Core Version:    0.7.0.1
  */

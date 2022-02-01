@@ -2,9 +2,8 @@ package com.tencent.mm.plugin.appbrand.widget.picker;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.support.constraint.ConstraintLayout.LayoutParams;
-import android.support.v4.content.b;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.MeasureSpec;
@@ -12,15 +11,25 @@ import android.view.View.OnLayoutChangeListener;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import androidx.constraintlayout.widget.ConstraintLayout.LayoutParams;
+import androidx.core.content.a;
+import com.tencent.luggage.b.a.a.a;
+import com.tencent.luggage.b.a.a.b;
+import com.tencent.luggage.b.a.a.c;
+import com.tencent.luggage.b.a.a.d;
+import com.tencent.luggage.b.a.a.e;
+import com.tencent.luggage.b.a.a.f;
+import com.tencent.luggage.b.a.a.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.utils.a;
-import com.tencent.mm.plugin.appbrand.utils.a.a;
-import com.tencent.mm.plugin.appbrand.utils.ac;
-import com.tencent.mm.plugin.appbrand.utils.q;
+import com.tencent.mm.plugin.appbrand.utils.ae;
+import com.tencent.mm.plugin.appbrand.utils.b;
+import com.tencent.mm.plugin.appbrand.utils.b.a;
+import com.tencent.mm.plugin.appbrand.utils.s;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
@@ -28,44 +37,47 @@ public class c
   extends FrameLayout
 {
   private boolean isAnimating;
-  TextView mMg;
-  private com.tencent.mm.plugin.appbrand.jsapi.r.c ozH;
-  private FrameLayout ozI;
-  View ozJ;
-  View ozK;
-  View ozL;
-  private a ozM;
-  private boolean ozN;
-  private View ozO;
-  View ozP;
-  private b ozQ;
-  private q ozR;
+  TextView pMY;
+  private s rCA;
+  private com.tencent.mm.plugin.appbrand.jsapi.s.c rCo;
+  private FrameLayout rCp;
+  View rCq;
+  View rCr;
+  View rCs;
+  private a rCt;
+  private boolean rCu;
+  private View rCv;
+  View rCw;
+  private int rCx;
+  private Runnable rCy;
+  private b rCz;
   
   public c(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(138049);
-    this.ozR = null;
+    this.rCA = null;
+    this.rCx = getResources().getConfiguration().uiMode;
     setClickable(true);
     setLongClickable(true);
     paramContext = new FrameLayout.LayoutParams(-1, -2);
     paramContext.gravity = 80;
-    this.ozO = LayoutInflater.from(getContext()).inflate(2131493060, this, false);
-    this.ozI = ((FrameLayout)this.ozO.findViewById(2131296874));
-    this.ozP = this.ozO.findViewById(2131296872);
-    this.ozK = this.ozO.findViewById(2131305938);
-    this.ozL = this.ozK.findViewById(2131309854);
-    ccu();
-    this.ozK.findViewById(2131297812).setOnClickListener(new c.4(this));
-    this.ozK.findViewById(2131297811).setOnClickListener(new c.5(this));
-    this.ozK.setOnClickListener(new c.6(this));
-    View localView = this.ozO.findViewById(2131296874);
+    this.rCv = LayoutInflater.from(getContext()).inflate(a.f.app_brand_picker_container, this, false);
+    this.rCp = ((FrameLayout)this.rCv.findViewById(a.e.app_brand_picker_panel_internal_picker));
+    this.rCw = this.rCv.findViewById(a.e.app_brand_picker_no_title_place_holder);
+    this.rCr = this.rCv.findViewById(a.e.picker_toolbar);
+    this.rCs = this.rCr.findViewById(a.e.view);
+    cpL();
+    this.rCr.findViewById(a.e.bt_picker_confirm).setOnClickListener(new c.4(this));
+    this.rCr.findViewById(a.e.bt_picker_cancel).setOnClickListener(new c.5(this));
+    this.rCr.setOnClickListener(new c.6(this));
+    View localView = this.rCv.findViewById(a.e.app_brand_picker_panel_internal_picker);
     localView.setOnClickListener(new c.7(this));
-    localView.setBackgroundColor(b.n(localView.getContext(), 2131099653));
-    addView(this.ozO, paramContext);
-    this.mMg = ((TextView)findViewById(2131296871));
-    this.mMg.setClickable(true);
-    this.ozJ = findViewById(2131296870);
+    localView.setBackgroundColor(a.w(localView.getContext(), a.b.BG_5));
+    addView(this.rCv, paramContext);
+    this.pMY = ((TextView)findViewById(a.e.app_brand_picker_header));
+    this.pMY.setClickable(true);
+    this.rCq = findViewById(a.e.app_brand_picker_divider);
     addOnLayoutChangeListener(new View.OnLayoutChangeListener()
     {
       public final void onLayoutChange(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8)
@@ -82,105 +94,105 @@ public class c
   private void b(boolean paramBoolean, Object paramObject)
   {
     AppMethodBeat.i(138048);
-    if ((!this.ozN) && (this.ozM != null))
+    if ((!this.rCu) && (this.rCt != null))
     {
-      this.ozN = true;
-      this.ozM.a(paramBoolean, paramObject);
-      this.ozN = false;
+      this.rCu = true;
+      this.rCt.a(paramBoolean, paramObject);
+      this.rCu = false;
     }
     AppMethodBeat.o(138048);
   }
   
-  private void ccs()
+  private void cpJ()
   {
-    this.ozM = null;
-    this.ozQ = null;
+    this.rCt = null;
+    this.rCz = null;
   }
   
-  private void cct()
+  private void cpK()
   {
-    AppMethodBeat.i(193735);
+    AppMethodBeat.i(206939);
     if (isLandscape()) {}
-    for (int i = 0;; i = getContext().getResources().getDimensionPixelSize(2131165299))
+    for (int i = 0;; i = getContext().getResources().getDimensionPixelSize(a.c.Edge_3A))
     {
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.ozP.getLayoutParams();
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.rCw.getLayoutParams();
       localLayoutParams.height = i;
-      this.ozP.setLayoutParams(localLayoutParams);
-      AppMethodBeat.o(193735);
+      this.rCw.setLayoutParams(localLayoutParams);
+      AppMethodBeat.o(206939);
       return;
     }
   }
   
-  private void ccu()
+  private void cpL()
   {
-    AppMethodBeat.i(193736);
+    AppMethodBeat.i(206941);
     int k;
     int j;
     if (isLandscape())
     {
-      k = getContext().getResources().getDimensionPixelSize(2131165296);
-      j = getContext().getResources().getDimensionPixelSize(2131165296);
+      k = getContext().getResources().getDimensionPixelSize(a.c.Edge_2A);
+      j = getContext().getResources().getDimensionPixelSize(a.c.Edge_2A);
     }
-    for (int i = getContext().getResources().getDimensionPixelSize(2131166803);; i = getContext().getResources().getDimensionPixelSize(2131166804))
+    for (int i = getContext().getResources().getDimensionPixelSize(a.c.picker_toolbar_height_land_space);; i = getContext().getResources().getDimensionPixelSize(a.c.picker_toolbar_height_portrait))
     {
-      ConstraintLayout.LayoutParams localLayoutParams = (ConstraintLayout.LayoutParams)this.ozL.getLayoutParams();
+      ConstraintLayout.LayoutParams localLayoutParams = (ConstraintLayout.LayoutParams)this.rCs.getLayoutParams();
       localLayoutParams.topMargin = k;
       localLayoutParams.bottomMargin = j;
-      this.ozL.setLayoutParams(localLayoutParams);
-      this.ozK.setLayoutParams(new LinearLayout.LayoutParams(-1, i));
-      AppMethodBeat.o(193736);
+      this.rCs.setLayoutParams(localLayoutParams);
+      this.rCr.setLayoutParams(new LinearLayout.LayoutParams(-1, i));
+      AppMethodBeat.o(206941);
       return;
-      k = getContext().getResources().getDimensionPixelSize(2131165306);
-      j = getContext().getResources().getDimensionPixelSize(2131165303);
+      k = getContext().getResources().getDimensionPixelSize(a.c.Edge_5A);
+      j = getContext().getResources().getDimensionPixelSize(a.c.Edge_4A);
     }
   }
   
-  private q ccv()
+  private s cpM()
   {
-    AppMethodBeat.i(193739);
-    if (this.ozR == null)
+    AppMethodBeat.i(206948);
+    if (this.rCA == null)
     {
       Log.w("MicroMsg.AppBrand.AppBrandPickerBottomPanelBase", "requireOrientationGetter, orientationGetter is null, use AndroidOrientationGetter as fallback");
-      localObject = a.ogC;
-      this.ozR = a.a.b(null);
+      localObject = b.rip;
+      this.rCA = b.a.b(null);
     }
-    Object localObject = this.ozR;
-    AppMethodBeat.o(193739);
+    Object localObject = this.rCA;
+    AppMethodBeat.o(206948);
     return localObject;
   }
   
   private boolean isLandscape()
   {
-    AppMethodBeat.i(193737);
-    if (ac.ohw == ccv().bTN())
+    AppMethodBeat.i(206943);
+    if (ae.rjk == cpM().cgT())
     {
-      AppMethodBeat.o(193737);
+      AppMethodBeat.o(206943);
       return true;
     }
-    AppMethodBeat.o(193737);
+    AppMethodBeat.o(206943);
     return false;
   }
   
-  protected final void cY(Object paramObject)
+  protected final void cV(Object paramObject)
   {
     AppMethodBeat.i(138059);
-    if (this.ozQ != null) {
-      this.ozQ.cH(paramObject);
+    if (this.rCz != null) {
+      this.rCz.cI(paramObject);
     }
     AppMethodBeat.o(138059);
   }
   
   @SuppressLint({"WrongCall"})
-  protected final void eM(int paramInt1, int paramInt2)
+  protected final void fn(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(138054);
     super.onMeasure(paramInt1, paramInt2);
     AppMethodBeat.o(138054);
   }
   
-  public com.tencent.mm.plugin.appbrand.jsapi.r.c getPicker()
+  public com.tencent.mm.plugin.appbrand.jsapi.s.c getPicker()
   {
-    return this.ozH;
+    return this.rCo;
   }
   
   public void hide()
@@ -192,19 +204,19 @@ public class c
       return;
     }
     b(false, null);
-    if (this.ozH != null)
+    if (this.rCo != null)
     {
-      this.ozH.onHide(this);
+      this.rCo.onHide(this);
       this.isAnimating = true;
-      Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772105);
-      this.ozO.startAnimation(localAnimation);
-      startAnimation(AnimationUtils.loadAnimation(getContext(), 2130771998));
+      Animation localAnimation = AnimationUtils.loadAnimation(getContext(), a.a.out_to_bottom);
+      this.rCv.startAnimation(localAnimation);
+      startAnimation(AnimationUtils.loadAnimation(getContext(), a.a.app_brand_faded_out));
       localAnimation.setAnimationListener(new Animation.AnimationListener()
       {
         public final void onAnimationEnd(Animation paramAnonymousAnimation)
         {
           AppMethodBeat.i(138042);
-          c.this.setBackgroundResource(2131101287);
+          c.this.setBackgroundResource(a.b.transparent);
           c.this.clearAnimation();
           c.b(c.this);
           c.this.requestLayout();
@@ -220,11 +232,36 @@ public class c
     AppMethodBeat.o(138052);
   }
   
+  protected void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    AppMethodBeat.i(206949);
+    super.onConfigurationChanged(paramConfiguration);
+    if ((paramConfiguration.uiMode != this.rCx) && (this.rCy == null)) {
+      this.rCy = new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(206584);
+          c.f(c.this).setBackground(a.m(c.this.getContext(), a.d.app_brand_picker_bg));
+          c.this.pMY.setTextColor(a.w(c.this.getContext(), a.b.BW_0_Alpha_0_9));
+          c.this.rCr.setBackgroundColor(a.w(c.this.getContext(), a.b.BG_5));
+          ((Button)c.this.rCr.findViewById(a.e.bt_picker_confirm)).setTextColor(a.w(c.this.getContext(), a.b.color_btn_text_selector));
+          ((Button)c.this.rCr.findViewById(a.e.bt_picker_confirm)).setBackground(a.m(c.this.getContext(), a.d.btn_solid_green));
+          ((Button)c.this.rCr.findViewById(a.e.bt_picker_cancel)).setTextColor(a.w(c.this.getContext(), a.b.white_btn_text_selector));
+          ((Button)c.this.rCr.findViewById(a.e.bt_picker_cancel)).setBackground(a.m(c.this.getContext(), a.d.btn_solid_white));
+          AppMethodBeat.o(206584);
+        }
+      };
+    }
+    this.rCx = paramConfiguration.uiMode;
+    AppMethodBeat.o(206949);
+  }
+  
   protected void onDetachedFromWindow()
   {
     AppMethodBeat.i(138058);
     super.onDetachedFromWindow();
-    ccs();
+    cpJ();
     removeAllViews();
     AppMethodBeat.o(138058);
   }
@@ -243,33 +280,33 @@ public class c
     AppMethodBeat.i(138056);
     if (Util.isNullOrNil(paramString))
     {
-      cct();
-      this.ozP.setVisibility(0);
-      this.mMg.setText("");
-      this.ozJ.setVisibility(8);
-      this.mMg.setVisibility(8);
+      cpK();
+      this.rCw.setVisibility(0);
+      this.pMY.setText("");
+      this.rCq.setVisibility(8);
+      this.pMY.setVisibility(8);
       AppMethodBeat.o(138056);
       return;
     }
     String str;
     if ("设置时间".equals(paramString)) {
-      str = getContext().getString(2131755617);
+      str = getContext().getString(a.g.app_brand_pick_set_time);
     }
     for (;;)
     {
-      this.ozP.setVisibility(8);
-      this.ozJ.setVisibility(0);
-      this.mMg.setVisibility(0);
-      this.mMg.setText(str);
+      this.rCw.setVisibility(8);
+      this.rCq.setVisibility(0);
+      this.pMY.setVisibility(0);
+      this.pMY.setText(str);
       AppMethodBeat.o(138056);
       return;
       if ("设置地区".equals(paramString))
       {
-        str = getContext().getString(2131755616);
+        str = getContext().getString(a.g.app_brand_pick_set_local);
       }
       else if ("设置日期".equals(paramString))
       {
-        str = getContext().getString(2131755615);
+        str = getContext().getString(a.g.app_brand_pick_set_date);
       }
       else
       {
@@ -283,42 +320,42 @@ public class c
   
   public void setOnResultListener(a parama)
   {
-    this.ozM = parama;
+    this.rCt = parama;
   }
   
   public void setOnValueUpdateListener(b paramb)
   {
-    this.ozQ = paramb;
+    this.rCz = paramb;
   }
   
-  public void setOrientationGetter(q paramq)
+  public void setOrientationGetter(s params)
   {
-    AppMethodBeat.i(193738);
-    Log.d("MicroMsg.AppBrand.AppBrandPickerBottomPanelBase", "setOrientationGetter, orientationGetter is " + paramq.getName());
-    this.ozR = paramq;
-    AppMethodBeat.o(193738);
+    AppMethodBeat.i(206946);
+    Log.d("MicroMsg.AppBrand.AppBrandPickerBottomPanelBase", "setOrientationGetter, orientationGetter is " + params.getName());
+    this.rCA = params;
+    AppMethodBeat.o(206946);
   }
   
-  protected void setPickerImpl(com.tencent.mm.plugin.appbrand.jsapi.r.c paramc)
+  protected void setPickerImpl(com.tencent.mm.plugin.appbrand.jsapi.s.c paramc)
   {
     AppMethodBeat.i(138050);
-    if (this.ozH != null) {
-      this.ozH.onDetach(this);
+    if (this.rCo != null) {
+      this.rCo.onDetach(this);
     }
-    this.ozH = paramc;
-    if (this.ozH != null) {
-      this.ozH.onAttach(this);
+    this.rCo = paramc;
+    if (this.rCo != null) {
+      this.rCo.onAttach(this);
     }
-    if ((this.ozI == null) || (this.ozH == null) || (this.ozH.getView() == null))
+    if ((this.rCp == null) || (this.rCo == null) || (this.rCo.getView() == null))
     {
       AppMethodBeat.o(138050);
       return;
     }
-    this.ozI.removeAllViews();
-    ccs();
+    this.rCp.removeAllViews();
+    cpJ();
     paramc = new FrameLayout.LayoutParams(-1, -1);
     paramc.gravity = 17;
-    this.ozI.addView(this.ozH.getView(), paramc);
+    this.rCp.addView(this.rCo.getView(), paramc);
     AppMethodBeat.o(138050);
   }
   
@@ -343,25 +380,30 @@ public class c
       AppMethodBeat.o(138051);
       return;
     }
-    if (this.ozH == null)
+    if (this.rCo == null)
     {
       setVisibility(8);
       AppMethodBeat.o(138051);
       return;
     }
-    this.ozH.onShow(this);
+    if (this.rCy != null)
+    {
+      this.rCy.run();
+      this.rCy = null;
+    }
+    this.rCo.onShow(this);
     clearAnimation();
     setVisibility(0);
     this.isAnimating = true;
-    Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130771999);
-    this.ozO.startAnimation(localAnimation);
-    startAnimation(AnimationUtils.loadAnimation(getContext(), 2130771997));
+    Animation localAnimation = AnimationUtils.loadAnimation(getContext(), a.a.app_brand_in_from_bottom);
+    this.rCv.startAnimation(localAnimation);
+    startAnimation(AnimationUtils.loadAnimation(getContext(), a.a.app_brand_faded_in));
     localAnimation.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(138041);
-        c.this.setBackgroundResource(2131100930);
+        c.this.setBackgroundResource(a.b.picker_half_alpha_bg);
         c.a(c.this);
         AppMethodBeat.o(138041);
       }
@@ -380,12 +422,12 @@ public class c
   
   public static abstract interface b<T>
   {
-    public abstract void cH(T paramT);
+    public abstract void cI(T paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.c
  * JD-Core Version:    0.7.0.1
  */

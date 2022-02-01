@@ -7,28 +7,28 @@ import kotlin.l;
 import kotlinx.a.h;
 import kotlinx.a.n;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/serialization/internal/LinkedHashSetSerializer;", "E", "Lkotlinx/serialization/internal/ListLikeSerializer;", "", "Ljava/util/LinkedHashSet;", "Lkotlin/collections/LinkedHashSet;", "eSerializer", "Lkotlinx/serialization/KSerializer;", "(Lkotlinx/serialization/KSerializer;)V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "builder", "builderSize", "", "checkCapacity", "", "size", "collectionIterator", "", "collectionSize", "insert", "index", "element", "(Ljava/util/LinkedHashSet;ILjava/lang/Object;)V", "toBuilder", "toResult", "kotlinx-serialization-runtime"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/serialization/internal/LinkedHashSetSerializer;", "E", "Lkotlinx/serialization/internal/ListLikeSerializer;", "", "Ljava/util/LinkedHashSet;", "Lkotlin/collections/LinkedHashSet;", "eSerializer", "Lkotlinx/serialization/KSerializer;", "(Lkotlinx/serialization/KSerializer;)V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "builder", "builderSize", "", "checkCapacity", "", "size", "collectionIterator", "", "collectionSize", "insert", "index", "element", "(Ljava/util/LinkedHashSet;ILjava/lang/Object;)V", "toBuilder", "toResult", "kotlinx-serialization-runtime"})
 public final class ag<E>
   extends ai<E, Set<? extends E>, LinkedHashSet<E>>
 {
-  private final n TXo;
+  private final n abAF;
   
   public ag(h<E> paramh)
   {
     super(paramh, (byte)0);
-    AppMethodBeat.i(225587);
-    this.TXo = ((n)new af(paramh.fWv()));
-    AppMethodBeat.o(225587);
+    AppMethodBeat.i(254801);
+    this.abAF = ((n)new af(paramh.gPe()));
+    AppMethodBeat.o(254801);
   }
   
-  public final n fWv()
+  public final n gPe()
   {
-    return this.TXo;
+    return this.abAF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlinx.a.b.ag
  * JD-Core Version:    0.7.0.1
  */

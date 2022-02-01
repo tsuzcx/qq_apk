@@ -14,47 +14,47 @@ public abstract class a
 {
   public Collection<ah> a(f paramf, kotlin.l.b.a.b.c.a.a parama)
   {
-    p.h(paramf, "name");
-    p.h(parama, "location");
-    return hKM().a(paramf, parama);
+    p.k(paramf, "name");
+    p.k(parama, "location");
+    return iPc().a(paramf, parama);
   }
   
   public Collection<l> a(d paramd, b<? super f, Boolean> paramb)
   {
-    p.h(paramd, "kindFilter");
-    p.h(paramb, "nameFilter");
-    return hKM().a(paramd, paramb);
+    p.k(paramd, "kindFilter");
+    p.k(paramb, "nameFilter");
+    return iPc().a(paramd, paramb);
   }
   
   public Collection<am> b(f paramf, kotlin.l.b.a.b.c.a.a parama)
   {
-    p.h(paramf, "name");
-    p.h(parama, "location");
-    return hKM().b(paramf, parama);
+    p.k(paramf, "name");
+    p.k(parama, "location");
+    return iPc().b(paramf, parama);
   }
   
   public final kotlin.l.b.a.b.b.h c(f paramf, kotlin.l.b.a.b.c.a.a parama)
   {
-    p.h(paramf, "name");
-    p.h(parama, "location");
-    return hKM().c(paramf, parama);
+    p.k(paramf, "name");
+    p.k(parama, "location");
+    return iPc().c(paramf, parama);
   }
   
-  public final Set<f> hCa()
+  public final Set<f> iGp()
   {
-    return hKM().hCa();
+    return iPc().iGp();
   }
   
-  public final Set<f> hCb()
+  public final Set<f> iGq()
   {
-    return hKM().hCb();
+    return iPc().iGq();
   }
   
-  protected abstract h hKM();
+  protected abstract h iPc();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.j.f.a
  * JD-Core Version:    0.7.0.1
  */

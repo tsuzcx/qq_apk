@@ -7,10 +7,10 @@ public enum NoMeasuredTextView$a
   static
   {
     AppMethodBeat.i(142370);
-    OVV = new a("NORMAL", 0);
-    OVW = new a("SPANNABLE", 1);
-    OVX = new a("EDITABLE", 2);
-    OVY = new a[] { OVV, OVW, OVX };
+    Wph = new a("NORMAL", 0);
+    Wpi = new a("SPANNABLE", 1);
+    Wpj = new a("EDITABLE", 2);
+    Wpk = new a[] { Wph, Wpi, Wpj };
     AppMethodBeat.o(142370);
   }
   
@@ -18,7 +18,7 @@ public enum NoMeasuredTextView$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.NoMeasuredTextView.a
  * JD-Core Version:    0.7.0.1
  */

@@ -5,19 +5,19 @@ import java.util.List;
 
 public abstract interface b
 {
-  public abstract int fna();
+  public abstract void g(WeakReference<c> paramWeakReference);
   
-  public abstract void fnb();
+  public abstract int gbt();
   
-  public abstract List<String> fnc();
+  public abstract void gbu();
   
-  public abstract void h(WeakReference<c> paramWeakReference);
+  public abstract List<String> gbv();
   
-  public abstract void hp(List<String> paramList);
+  public abstract void hY(List<String> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.api.b
  * JD-Core Version:    0.7.0.1
  */

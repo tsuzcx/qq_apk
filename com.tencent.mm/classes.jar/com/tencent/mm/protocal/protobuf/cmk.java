@@ -1,123 +1,97 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class cmk
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int MrG;
-  public String MrH;
-  public String bssid;
-  public String dFd;
-  public int dIX;
-  public String ssid;
-  public int wNc;
+  public LinkedList<dfd> RIQ;
+  public String mye;
+  
+  public cmk()
+  {
+    AppMethodBeat.i(152613);
+    this.RIQ = new LinkedList();
+    AppMethodBeat.o(152613);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32344);
+    AppMethodBeat.i(152614);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.ssid != null) {
-        paramVarArgs.e(1, this.ssid);
+      if (this.mye != null) {
+        paramVarArgs.f(1, this.mye);
       }
-      if (this.bssid != null) {
-        paramVarArgs.e(2, this.bssid);
-      }
-      paramVarArgs.aM(3, this.dIX);
-      paramVarArgs.aM(4, this.MrG);
-      if (this.MrH != null) {
-        paramVarArgs.e(5, this.MrH);
-      }
-      if (this.dFd != null) {
-        paramVarArgs.e(6, this.dFd);
-      }
-      paramVarArgs.aM(7, this.wNc);
-      AppMethodBeat.o(32344);
+      paramVarArgs.e(2, 8, this.RIQ);
+      AppMethodBeat.o(152614);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.ssid == null) {
-        break label543;
+      if (this.mye == null) {
+        break label336;
       }
     }
-    label543:
-    for (paramInt = g.a.a.b.b.a.f(1, this.ssid) + 0;; paramInt = 0)
+    label336:
+    for (paramInt = g.a.a.b.b.a.g(1, this.mye) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.bssid != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.bssid);
-      }
-      i = i + g.a.a.b.b.a.bu(3, this.dIX) + g.a.a.b.b.a.bu(4, this.MrG);
-      paramInt = i;
-      if (this.MrH != null) {
-        paramInt = i + g.a.a.b.b.a.f(5, this.MrH);
-      }
-      i = paramInt;
-      if (this.dFd != null) {
-        i = paramInt + g.a.a.b.b.a.f(6, this.dFd);
-      }
-      paramInt = g.a.a.b.b.a.bu(7, this.wNc);
-      AppMethodBeat.o(32344);
-      return i + paramInt;
+      int i = g.a.a.a.c(2, 8, this.RIQ);
+      AppMethodBeat.o(152614);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.RIQ.clear();
+        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(32344);
+        AppMethodBeat.o(152614);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         cmk localcmk = (cmk)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32344);
+          AppMethodBeat.o(152614);
           return -1;
         case 1: 
-          localcmk.ssid = locala.UbS.readString();
-          AppMethodBeat.o(32344);
-          return 0;
-        case 2: 
-          localcmk.bssid = locala.UbS.readString();
-          AppMethodBeat.o(32344);
-          return 0;
-        case 3: 
-          localcmk.dIX = locala.UbS.zi();
-          AppMethodBeat.o(32344);
-          return 0;
-        case 4: 
-          localcmk.MrG = locala.UbS.zi();
-          AppMethodBeat.o(32344);
-          return 0;
-        case 5: 
-          localcmk.MrH = locala.UbS.readString();
-          AppMethodBeat.o(32344);
-          return 0;
-        case 6: 
-          localcmk.dFd = locala.UbS.readString();
-          AppMethodBeat.o(32344);
+          localcmk.mye = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(152614);
           return 0;
         }
-        localcmk.wNc = locala.UbS.zi();
-        AppMethodBeat.o(32344);
+        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          dfd localdfd = new dfd();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localdfd.parseFrom((byte[])localObject);
+          }
+          localcmk.RIQ.add(localdfd);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(152614);
         return 0;
       }
-      AppMethodBeat.o(32344);
+      AppMethodBeat.o(152614);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cmk
  * JD-Core Version:    0.7.0.1
  */

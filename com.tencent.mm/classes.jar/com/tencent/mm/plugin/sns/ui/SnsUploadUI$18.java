@@ -1,38 +1,35 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kp;
-import com.tencent.mm.g.a.kp.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.event.IListener;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.ui.widget.cedit.api.c;
 
 final class SnsUploadUI$18
-  extends IListener<kp>
+  implements TextWatcher
 {
-  SnsUploadUI$18(SnsUploadUI paramSnsUploadUI)
-  {
-    AppMethodBeat.i(203776);
-    this.__eventId = kp.class.getName().hashCode();
-    AppMethodBeat.o(203776);
-  }
+  SnsUploadUI$18(SnsUploadUI paramSnsUploadUI) {}
   
-  private boolean a(kp paramkp)
+  public final void afterTextChanged(Editable paramEditable) {}
+  
+  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(203777);
-    if ((paramkp != null) && (Util.isEqual(paramkp.dPH.dPI, this.EPZ.hashCode()))) {
-      g.aAh().azQ().set(ar.a.Onx, paramkp.dPH.dPJ);
+    AppMethodBeat.i(293262);
+    if (SnsUploadUI.a(this.LdU).getText().toString().trim().length() > 0)
+    {
+      this.LdU.enableOptionMenu(true);
+      AppMethodBeat.o(293262);
+      return;
     }
-    AppMethodBeat.o(203777);
-    return false;
+    this.LdU.enableOptionMenu(false);
+    AppMethodBeat.o(293262);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsUploadUI.18
  * JD-Core Version:    0.7.0.1
  */

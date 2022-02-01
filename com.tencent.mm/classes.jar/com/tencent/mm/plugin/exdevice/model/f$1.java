@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.c;
-import com.tencent.mm.model.ay.b.a;
+import com.tencent.mm.am.d;
+import com.tencent.mm.model.az.b.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class f$1
-  implements ay.b.a
+  implements az.b.a
 {
   public f$1(long paramLong, Runnable paramRunnable) {}
   
-  public final void p(String paramString, boolean paramBoolean)
+  public final void s(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(23314);
     if (paramBoolean)
     {
-      Log.v("MicroMsg.exdevice.ExdeviceLogic", "getContact suc; cost=" + (Util.nowMilliSecond() - this.qze) + " ms");
-      c.ap(paramString, 3);
+      Log.v("MicroMsg.exdevice.ExdeviceLogic", "getContact suc; cost=" + (Util.nowMilliSecond() - this.tYe) + " ms");
+      d.aH(paramString, 3);
       if (this.val$callback != null)
       {
         this.val$callback.run();

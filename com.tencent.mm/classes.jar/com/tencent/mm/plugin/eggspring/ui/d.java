@@ -1,373 +1,580 @@
 package com.tencent.mm.plugin.eggspring.ui;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.view.View.OnClickListener;
+import androidx.lifecycle.r;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.e;
-import com.tencent.mm.i.h;
-import com.tencent.mm.i.h.a;
-import com.tencent.mm.modelvideo.b;
-import com.tencent.mm.modelvideo.b.a;
-import com.tencent.mm.modelvideo.o;
-import com.tencent.mm.plugin.eggspring.PluginEggSpring;
-import com.tencent.mm.plugin.gif.MMAnimateView;
-import com.tencent.mm.pluginsdk.ui.i.a;
-import com.tencent.mm.pluginsdk.ui.i.b;
+import com.tencent.mm.an.c;
+import com.tencent.mm.plugin.eggspring.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.widget.imageview.WeImageView;
-import com.tencent.mm.vfs.s;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.n.n;
+import com.tencent.mm.t.a.n;
+import java.util.Iterator;
+import kotlin.ResultKt;
+import kotlin.d.b.a.j;
+import kotlin.g.a.m;
+import kotlinx.coroutines.ak;
+import kotlinx.coroutines.al;
+import kotlinx.coroutines.aw;
+import kotlinx.coroutines.bc;
+import kotlinx.coroutines.i;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/eggspring/ui/VideoController;", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$IMMVideoViewCallback;", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$IMMDownloadFinish;", "Lcom/tencent/mm/modelvideo/IOnlineVideoProxy;", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo$IVideoCdnCallback;", "videoView", "Lcom/tencent/mm/plugin/eggspring/ui/SpringEggVideoView;", "viewBinding", "Lcom/tencent/mm/plugin/eggspring/ui/SpringLuckyEggViewBinding;", "url", "", "(Lcom/tencent/mm/plugin/eggspring/ui/SpringEggVideoView;Lcom/tencent/mm/plugin/eggspring/ui/SpringLuckyEggViewBinding;Ljava/lang/String;)V", "count", "", "getCount", "()I", "setCount", "(I)V", "engineCallback", "Lcom/tencent/mm/modelvideo/IOnlineVideoProxy$IEngineCallback;", "value", "", "mute", "setMute", "(Z)V", "playDuration", "", "playStartTime", "uiHandler", "Landroid/os/Handler;", "videoDuration", "getVideoDuration", "()J", "setVideoDuration", "(J)V", "videoMediaId", "createVideoPlayCDNTask", "Lcom/tencent/mm/cdn/keep_VideoTaskInfo;", "mediaId", "path", "isVideoDataAvailable", "offset", "length", "onDataAvailable", "", "onDownloadFinish", "isPlayNow", "onError", "sessionId", "errorMsg", "what", "extra", "onFinish", "ret", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onGetVideoSize", "width", "height", "onM3U8Ready", "p0", "p1", "onMoovReady", "svrflag", "onPrepared", "onProgress", "total", "onVideoEnded", "onVideoFirstFrameDraw", "onVideoPause", "onVideoPlay", "onVideoWaiting", "onVideoWaitingEnd", "pause", "release", "requestVideoData", "resume", "setIEngineCallback", "callback", "start", "startHttpStream", "stop", "totalDuration", "Companion", "plugin-eggspring_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/eggspring/ui/SpringLuckyEggViewModel;", "Landroidx/lifecycle/ViewModel;", "eggName", "", "keyword", "appId", "traceId", "defaultBackgroundColor", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "acceptEvent", "Landroidx/lifecycle/MutableLiveData;", "Lcom/tencent/mm/plugin/eggspring/model/AcceptEvent;", "getAcceptEvent", "()Landroidx/lifecycle/MutableLiveData;", "acceptLink", "", "getAcceptLink", "accepted", "", "getAccepted", "backgroundColor", "getBackgroundColor", "bag", "Lcom/tencent/mm/modelpackage/LuckyBag;", "getBag", "bottomLink", "getBottomLink", "loading", "getLoading", "material", "Lcom/tencent/mm/eggspring/model/Material;", "getMaterial", "scope", "Lkotlinx/coroutines/CoroutineScope;", "startMills", "", "acceptCoupon", "", "stockId", "acceptEventHandled", "acceptMoney", "materialId", "amount", "loadEgg", "Lkotlinx/coroutines/Job;", "loadMaterial", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "onCleared", "parseLink", "type", "", "info", "Lcom/tencent/mm/eggspring/model/MaterialPageInfo;", "sendAcceptError", "error", "Lcom/tencent/mm/plugin/eggspring/CgiException;", "Companion", "plugin-eggspring_release"})
 public final class d
-  implements h.a, b, i.a, i.b
+  extends androidx.lifecycle.x
 {
-  public static final d.a qWq;
-  private final Handler cPw;
-  int count;
-  private boolean isb;
-  long pLQ;
-  long playDuration;
-  final SpringEggVideoView qVU;
-  final c qVv;
-  private b.a qWn;
-  String qWo;
-  long qWp;
+  public static final a uyR;
+  private String appId;
+  private final String fwe;
+  String nTp;
+  final ak rcY;
+  final r<Boolean> uyH;
+  final r<com.tencent.mm.plugin.eggspring.c.a> uyI;
+  final r<String> uyJ;
+  final r<Object> uyK;
+  final r<Object> uyL;
+  final r<n> uyM;
+  final r<com.tencent.mm.be.l> uyN;
+  final r<Boolean> uyO;
+  private final long uyP;
+  private final String uyQ;
   
   static
   {
-    AppMethodBeat.i(194671);
-    qWq = new d.a((byte)0);
-    AppMethodBeat.o(194671);
+    AppMethodBeat.i(249574);
+    uyR = new a((byte)0);
+    AppMethodBeat.o(249574);
   }
   
-  public d(SpringEggVideoView paramSpringEggVideoView, c paramc, String paramString)
+  public d(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    AppMethodBeat.i(194670);
-    this.qVU = paramSpringEggVideoView;
-    this.qVv = paramc;
-    this.cPw = new Handler(Looper.getMainLooper());
-    this.isb = true;
-    this.qVU.setLoop(true);
-    this.qVU.setIMMVideoViewCallback((i.b)this);
-    this.qVU.setIMMDownloadFinish((i.a)this);
-    this.qVU.setIOnlineVideoProxy((b)this);
-    this.qVU.c(false, paramString, 0);
-    this.qVU.setFilepath(PluginEggSpring.qUF + "MMVideo_" + paramString.hashCode() + ".mp4.temp");
-    this.qVv.qVV.setOnClickListener((View.OnClickListener)new d.1(this));
-    AppMethodBeat.o(194670);
+    AppMethodBeat.i(249573);
+    this.uyQ = paramString1;
+    this.fwe = paramString2;
+    this.appId = paramString3;
+    this.nTp = paramString4;
+    this.rcY = al.iRe();
+    this.uyH = new r();
+    this.uyI = new r();
+    this.uyJ = new r();
+    this.uyK = new r();
+    this.uyL = new r();
+    this.uyM = new r();
+    this.uyN = new r();
+    this.uyO = new r();
+    this.uyP = Util.nowMilliSecond();
+    this.uyJ.setValue(paramString5);
+    this.uyH.setValue(Boolean.TRUE);
+    kotlinx.coroutines.g.b(this.rcY, null, (m)new d(this, null), 3);
+    AppMethodBeat.o(249573);
   }
   
-  public final void Ds(String paramString) {}
-  
-  public final void a(b.a parama)
+  private static Object a(int paramInt, com.tencent.mm.t.a.p paramp)
   {
-    this.qWn = parama;
-  }
-  
-  public final void a(final String paramString, final int paramInt, com.tencent.mm.i.d paramd)
-  {
-    AppMethodBeat.i(194669);
-    p.h(paramString, "mediaId");
-    Log.i("MicroMsg.VideoController", "onFinish!!! mediaId[%s].", new Object[] { paramString });
-    if ((this.qWn != null) && (this.qWo != null) && (p.j(this.qWo, paramString))) {
-      this.cPw.post((Runnable)new c(this, paramString, paramInt));
-    }
-    AppMethodBeat.o(194669);
-  }
-  
-  public final void a(final String paramString1, final long paramLong1, long paramLong2, final String paramString2)
-  {
-    AppMethodBeat.i(194666);
-    p.h(paramString1, "mediaId");
-    Log.i("MicroMsg.VideoController", "onMoovReady!!! mediaId[%s] offset[%s] length[%s].", new Object[] { paramString1, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-    if ((this.qWn != null) && (this.qWo != null) && (p.j(this.qWo, paramString1))) {
-      this.cPw.post((Runnable)new d(this, paramString1, paramLong1, paramLong2, paramString2));
-    }
-    AppMethodBeat.o(194666);
-  }
-  
-  public final void aO(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(194661);
-    if (paramString != null)
+    switch (paramInt)
     {
-      String str = n.j(paramString, ".temp", "", false);
-      if ((!s.YS(str)) && (n.K(paramString, ".temp", false))) {
-        s.nw(paramString, str);
-      }
-      AppMethodBeat.o(194661);
-      return;
+    case 6: 
+    default: 
+      return null;
+    case 1: 
+      return (com.tencent.mm.cd.a)paramp.jEq;
+    case 4: 
+    case 5: 
+      return (com.tencent.mm.cd.a)paramp.jEt;
+    case 3: 
+      return (com.tencent.mm.cd.a)paramp.jEs;
+    case 2: 
+      return (com.tencent.mm.cd.a)paramp.jEr;
+    case 7: 
+      return (com.tencent.mm.cd.a)paramp.jEu;
     }
-    AppMethodBeat.o(194661);
+    return (com.tencent.mm.cd.a)paramp.jEv;
   }
   
-  public final void c(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  public final void onCleared()
   {
-    AppMethodBeat.i(194652);
-    Log.i("MicroMsg.VideoController", "onError!!! mediaId[%s] errorMsg[%s].", new Object[] { paramString2, paramString3 });
-    this.qVv.qVQ.setVisibility(0);
-    this.qVU.setVisibility(8);
-    this.qVv.qVV.setVisibility(8);
-    this.playDuration += Util.milliSecondsToNow(this.qWp);
-    this.qWp = 0L;
-    AppMethodBeat.o(194652);
+    AppMethodBeat.i(249571);
+    super.onCleared();
+    Log.i("MicroMsg.SpringLuckyEggViewModel", "onCleared()");
+    al.a(this.rcY, null);
+    AppMethodBeat.o(249571);
   }
   
-  public final void d(String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(194655);
-    Log.i("MicroMsg.VideoController", "onGetVideoSize!!! mediaId[%s].", new Object[] { paramString2 });
-    AppMethodBeat.o(194655);
-  }
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/eggspring/ui/SpringLuckyEggViewModel$Companion;", "", "()V", "LOAD_MATERIAL_TIMEOUT", "", "TAG", "", "plugin-eggspring_release"})
+  public static final class a {}
   
-  public final void dH(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(194653);
-    Log.i("MicroMsg.VideoController", "onPrepared!!! mediaId[%s].", new Object[] { paramString2 });
-    this.qWp = Util.nowMilliSecond();
-    this.pLQ = (this.qVU.getVideoDurationSec() * 1000L);
-    AppMethodBeat.o(194653);
-  }
-  
-  public final void dI(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(194654);
-    Log.i("MicroMsg.VideoController", "onVideoEnded!!! mediaId[%s].", new Object[] { paramString2 });
-    AppMethodBeat.o(194654);
-  }
-  
-  public final void dJ(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(194656);
-    Log.i("MicroMsg.VideoController", "onVideoPause!!! mediaId[%s].", new Object[] { paramString2 });
-    AppMethodBeat.o(194656);
-  }
-  
-  public final void dK(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(194657);
-    Log.i("MicroMsg.VideoController", "onVideoPlay!!! mediaId[%s], duration[%s].", new Object[] { paramString2, Integer.valueOf(this.qVU.getVideoDurationSec()) });
-    this.count += 1;
-    AppMethodBeat.o(194657);
-  }
-  
-  public final void dL(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(194658);
-    Log.i("MicroMsg.VideoController", "onVideoWaiting!!! mediaId[%s].", new Object[] { paramString2 });
-    AppMethodBeat.o(194658);
-  }
-  
-  public final void dM(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(194659);
-    Log.i("MicroMsg.VideoController", "onVideoWaitingEnd!!! mediaId[%s].", new Object[] { paramString2 });
-    AppMethodBeat.o(194659);
-  }
-  
-  public final void fo(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(194660);
-    Log.i("MicroMsg.VideoController", "onVideoFirstFrameDraw!!! mediaId[%s].", new Object[] { paramString2 });
-    AppMethodBeat.o(194660);
-  }
-  
-  public final void he(String paramString)
-  {
-    AppMethodBeat.i(194663);
-    p.h(paramString, "mediaId");
-    Log.w("MicroMsg.VideoController", "stop ".concat(String.valueOf(paramString)));
-    String str = this.qWo;
-    if (str != null)
-    {
-      if (p.j(str, paramString)) {
-        o.bhk().m(paramString, null);
-      }
-      AppMethodBeat.o(194663);
-      return;
-    }
-    AppMethodBeat.o(194663);
-  }
-  
-  public final void i(final String paramString, final long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(194668);
-    p.h(paramString, "mediaId");
-    Log.i("MicroMsg.VideoController", "onProgress!!! mediaId[%s] offset[%s] length[%s].", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-    if ((this.qWn != null) && (this.qWo != null) && (p.j(this.qWo, paramString))) {
-      this.cPw.post((Runnable)new e(this, paramString, paramLong1, paramLong2));
-    }
-    AppMethodBeat.o(194668);
-  }
-  
-  public final boolean isVideoDataAvailable(String paramString, int paramInt1, int paramInt2)
-  {
-    boolean bool2 = false;
-    AppMethodBeat.i(194665);
-    Log.i("MicroMsg.VideoController", "isVideoDataAvailable!!! mediaId[%s] offset[%s] length[%s].", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    String str = this.qWo;
-    boolean bool1 = bool2;
-    if (str != null)
-    {
-      bool1 = bool2;
-      if (p.j(str, paramString)) {
-        bool1 = o.bhk().isVideoDataAvailable(paramString, paramInt1, paramInt2);
-      }
-    }
-    AppMethodBeat.o(194665);
-    return bool1;
-  }
-  
-  public final void onDataAvailable(final String paramString, final long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(194667);
-    p.h(paramString, "mediaId");
-    Log.i("MicroMsg.VideoController", "onDataAvailable!!! mediaId[%s] offset[%s] length[%s].", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-    if ((this.qWn != null) && (this.qWo != null) && (p.j(this.qWo, paramString))) {
-      this.cPw.post((Runnable)new b(this, paramString, paramLong1, paramLong2));
-    }
-    AppMethodBeat.o(194667);
-  }
-  
-  public final void p(String paramString1, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(194662);
-    p.h(paramString1, "mediaId");
-    p.h(paramString2, "path");
-    p.h(paramString3, "url");
-    this.qWo = paramString1;
-    if (s.YS(PluginEggSpring.qUF + "MMVideo_" + paramString3.hashCode() + ".mp4"))
-    {
-      a(paramString1, 0, null);
-      AppMethodBeat.o(194662);
-      return;
-    }
-    e locale = o.bhk();
-    h localh = new h();
-    localh.field_mediaId = paramString1;
-    localh.url = paramString3;
-    localh.gqU = 1;
-    localh.gqP = 5;
-    localh.concurrentCount = 3;
-    localh.field_fullpath = paramString2;
-    localh.gre = ((h.a)this);
-    locale.a(localh, false);
-    AppMethodBeat.o(194662);
-  }
-  
-  public final void requestVideoData(String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(194664);
-    String str = this.qWo;
-    if (str != null)
-    {
-      if (p.j(str, paramString))
-      {
-        Log.w("MicroMsg.VideoController", "requestVideoData offset=" + paramInt1 + ", length=" + paramInt2);
-        o.bhk();
-        e.r(paramString, paramInt1, paramInt2);
-      }
-      AppMethodBeat.o(194664);
-      return;
-    }
-    AppMethodBeat.o(194664);
-  }
-  
-  final void setMute(boolean paramBoolean)
-  {
-    AppMethodBeat.i(194651);
-    this.isb = paramBoolean;
-    this.qVU.setMute(paramBoolean);
-    WeImageView localWeImageView = this.qVv.qVV;
-    if (paramBoolean) {}
-    for (int i = 2131690469;; i = 2131690470)
-    {
-      localWeImageView.setImageResource(i);
-      AppMethodBeat.o(194651);
-      return;
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
   static final class b
-    implements Runnable
+    extends j
+    implements m<ak, kotlin.d.d<? super kotlin.x>, Object>
   {
-    b(d paramd, String paramString, long paramLong1, long paramLong2) {}
+    Object L$0;
+    int label;
+    private ak p$;
     
-    public final void run()
+    b(d paramd, String paramString1, String paramString2, kotlin.d.d paramd1)
     {
-      AppMethodBeat.i(194647);
-      b.a locala = d.a(this.qWr);
-      if (locala == null) {
-        p.hyc();
+      super(paramd1);
+    }
+    
+    public final kotlin.d.d<kotlin.x> create(Object paramObject, kotlin.d.d<?> paramd)
+    {
+      AppMethodBeat.i(249661);
+      kotlin.g.b.p.k(paramd, "completion");
+      paramd = new b(this.uyS, this.cBD, this.uyT, paramd);
+      paramd.p$ = ((ak)paramObject);
+      AppMethodBeat.o(249661);
+      return paramd;
+    }
+    
+    public final Object invoke(Object paramObject1, Object paramObject2)
+    {
+      AppMethodBeat.i(249662);
+      paramObject1 = ((b)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(kotlin.x.aazN);
+      AppMethodBeat.o(249662);
+      return paramObject1;
+    }
+    
+    public final Object invokeSuspend(Object paramObject)
+    {
+      AppMethodBeat.i(249660);
+      kotlin.d.a.a locala = kotlin.d.a.a.aaAA;
+      ak localak;
+      switch (this.label)
+      {
+      default: 
+        paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
+        AppMethodBeat.o(249660);
+        throw paramObject;
+      case 0: 
+        ResultKt.throwOnFailure(paramObject);
+        localak = this.p$;
       }
-      locala.onDataAvailable(paramString, paramLong1, this.qWu);
-      AppMethodBeat.o(194647);
+      for (;;)
+      {
+        try
+        {
+          String str1 = this.cBD;
+          String str2 = this.uyT;
+          Object localObject = d.d(this.uyS);
+          paramObject = localObject;
+          if (localObject == null) {
+            paramObject = "";
+          }
+          paramObject = (c)new com.tencent.mm.plugin.eggspring.b.a(str1, str2, "CNY_EXPRESSION", paramObject);
+          this.L$0 = localak;
+          this.label = 1;
+          paramObject = b.a(paramObject, this);
+          localObject = paramObject;
+          if (paramObject == locala)
+          {
+            AppMethodBeat.o(249660);
+            return locala;
+            ResultKt.throwOnFailure(paramObject);
+            localObject = paramObject;
+          }
+          paramObject = (com.tencent.mm.t.a.l)localObject;
+          Log.w("MicroMsg.SpringLuckyEggViewModel", "accept coupon result: " + paramObject.ret);
+          if (paramObject.ret != 0) {
+            continue;
+          }
+          this.uyS.uyO.setValue(Boolean.TRUE);
+          this.uyS.uyI.L(com.tencent.mm.plugin.eggspring.c.a.uxL);
+        }
+        catch (com.tencent.mm.plugin.eggspring.a paramObject)
+        {
+          d.a(this.uyS, paramObject);
+          Log.w("MicroMsg.SpringLuckyEggViewModel", "Unable to accept money");
+          continue;
+        }
+        paramObject = kotlin.x.aazN;
+        AppMethodBeat.o(249660);
+        return paramObject;
+        this.uyS.uyI.L(com.tencent.mm.plugin.eggspring.c.a.uxM);
+      }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
   static final class c
-    implements Runnable
+    extends j
+    implements m<ak, kotlin.d.d<? super kotlin.x>, Object>
   {
-    c(d paramd, String paramString, int paramInt) {}
+    Object L$0;
+    int label;
+    private ak p$;
+    long uyU;
     
-    public final void run()
+    c(d paramd, long paramLong, kotlin.d.d paramd1)
     {
-      AppMethodBeat.i(194648);
-      b.a locala = d.a(this.qWr);
-      if (locala == null) {
-        p.hyc();
+      super(paramd1);
+    }
+    
+    public final kotlin.d.d<kotlin.x> create(Object paramObject, kotlin.d.d<?> paramd)
+    {
+      AppMethodBeat.i(249344);
+      kotlin.g.b.p.k(paramd, "completion");
+      paramd = new c(this.uyS, this.uyV, paramd);
+      paramd.p$ = ((ak)paramObject);
+      AppMethodBeat.o(249344);
+      return paramd;
+    }
+    
+    public final Object invoke(Object paramObject1, Object paramObject2)
+    {
+      AppMethodBeat.i(249345);
+      paramObject1 = ((c)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(kotlin.x.aazN);
+      AppMethodBeat.o(249345);
+      return paramObject1;
+    }
+    
+    public final Object invokeSuspend(Object paramObject)
+    {
+      AppMethodBeat.i(249342);
+      kotlin.d.a.a locala = kotlin.d.a.a.aaAA;
+      switch (this.label)
+      {
+      default: 
+        paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
+        AppMethodBeat.o(249342);
+        throw paramObject;
+      case 0: 
+        ResultKt.throwOnFailure(paramObject);
+        localak = this.p$;
       }
-      locala.ax(paramString, paramInt);
-      AppMethodBeat.o(194648);
+      try
+      {
+        l = this.uyV;
+        String str = d.d(this.uyS);
+        paramObject = str;
+        if (str == null) {
+          paramObject = "";
+        }
+        paramObject = (c)new com.tencent.mm.plugin.eggspring.b.e("", l, paramObject);
+        this.L$0 = localak;
+        this.label = 1;
+        paramObject = b.a(paramObject, this);
+        if (paramObject != locala) {
+          break label341;
+        }
+        AppMethodBeat.o(249342);
+        return locala;
+      }
+      catch (com.tencent.mm.plugin.eggspring.a paramObject)
+      {
+        for (;;)
+        {
+          long l;
+          Log.w("MicroMsg.SpringLuckyEggViewModel", "unable to accept money: " + paramObject.getMessage());
+          this.uyS.uyH.setValue(Boolean.FALSE);
+          this.uyS.uyO.setValue(Boolean.TRUE);
+        }
+      }
+      finally
+      {
+        this.uyS.uyH.setValue(Boolean.FALSE);
+        this.uyS.uyO.setValue(Boolean.TRUE);
+        AppMethodBeat.o(249342);
+      }
+      ak localak = (ak)this.L$0;
+      ResultKt.throwOnFailure(paramObject);
+      label341:
+      for (paramObject = localak;; paramObject = localak)
+      {
+        l = Util.milliSecondsToNow(d.e(this.uyS));
+        if (l < 2000L)
+        {
+          this.L$0 = paramObject;
+          this.uyU = l;
+          this.label = 2;
+          paramObject = aw.a(2000L - l, this);
+          if (paramObject == locala)
+          {
+            AppMethodBeat.o(249342);
+            return locala;
+            ResultKt.throwOnFailure(paramObject);
+          }
+        }
+        this.uyS.uyH.setValue(Boolean.FALSE);
+        this.uyS.uyO.setValue(Boolean.TRUE);
+        paramObject = kotlin.x.aazN;
+        AppMethodBeat.o(249342);
+        return paramObject;
+      }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
   static final class d
-    implements Runnable
+    extends j
+    implements m<ak, kotlin.d.d<? super kotlin.x>, Object>
   {
-    d(d paramd, String paramString1, long paramLong1, long paramLong2, String paramString2) {}
+    Object L$0;
+    int label;
+    Object oDA;
+    private ak p$;
     
-    public final void run()
+    d(d paramd, kotlin.d.d paramd1)
     {
-      AppMethodBeat.i(194649);
-      b.a locala = d.a(this.qWr);
-      if (locala == null) {
-        p.hyc();
+      super(paramd1);
+    }
+    
+    public final kotlin.d.d<kotlin.x> create(Object paramObject, kotlin.d.d<?> paramd)
+    {
+      AppMethodBeat.i(249352);
+      kotlin.g.b.p.k(paramd, "completion");
+      paramd = new d(this.uyS, paramd);
+      paramd.p$ = ((ak)paramObject);
+      AppMethodBeat.o(249352);
+      return paramd;
+    }
+    
+    public final Object invoke(Object paramObject1, Object paramObject2)
+    {
+      AppMethodBeat.i(249353);
+      paramObject1 = ((d)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(kotlin.x.aazN);
+      AppMethodBeat.o(249353);
+      return paramObject1;
+    }
+    
+    public final Object invokeSuspend(Object paramObject)
+    {
+      AppMethodBeat.i(249351);
+      kotlin.d.a.a locala = kotlin.d.a.a.aaAA;
+      Object localObject1;
+      Object localObject2;
+      switch (this.label)
+      {
+      default: 
+        paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
+        AppMethodBeat.o(249351);
+        throw paramObject;
+      case 0: 
+        ResultKt.throwOnFailure(paramObject);
+        paramObject = this.p$;
+        Log.i("MicroMsg.SpringLuckyEggViewModel", "load egg");
+        localObject1 = (kotlin.d.f)bc.iRs();
+        localObject2 = (m)new a(this, null);
+        this.L$0 = paramObject;
+        this.label = 1;
+        localObject2 = i.a((kotlin.d.f)localObject1, (m)localObject2, this);
+        localObject1 = localObject2;
+        if (localObject2 == locala)
+        {
+          AppMethodBeat.o(249351);
+          return locala;
+        }
+      case 1: 
+        localObject2 = (ak)this.L$0;
+        ResultKt.throwOnFailure(paramObject);
+        localObject1 = paramObject;
+        paramObject = localObject2;
+        localObject2 = (com.tencent.mm.be.e)localObject1;
+        if (localObject2 != null) {}
+        for (localObject1 = ((com.tencent.mm.be.e)localObject2).jIS; localObject1 == null; localObject1 = null)
+        {
+          Log.e("MicroMsg.SpringLuckyEggViewModel", "couldn't find the luck egg");
+          this.uyS.uyI.setValue(com.tencent.mm.plugin.eggspring.c.a.uxO);
+          paramObject = kotlin.x.aazN;
+          AppMethodBeat.o(249351);
+          return paramObject;
+        }
+        this.uyS.uyN.setValue(((com.tencent.mm.be.e)localObject2).jIS);
+        this.uyS.uyJ.setValue(((com.tencent.mm.be.e)localObject2).jIS.lXE);
+        d.a(this.uyS, ((com.tencent.mm.be.e)localObject2).jIS.appId);
+        localObject1 = this.uyS;
+        this.L$0 = paramObject;
+        this.oDA = localObject2;
+        this.label = 2;
+        if (((d)localObject1).d(this) != locala) {
+          break label283;
+        }
+        AppMethodBeat.o(249351);
+        return locala;
       }
-      locala.AI(paramLong1);
-      AppMethodBeat.o(194649);
+      ResultKt.throwOnFailure(paramObject);
+      label283:
+      paramObject = kotlin.x.aazN;
+      AppMethodBeat.o(249351);
+      return paramObject;
+    }
+    
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/modelpackage/EggInfo;", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+    static final class a
+      extends j
+      implements m<ak, kotlin.d.d<? super com.tencent.mm.be.e>, Object>
+    {
+      int label;
+      private ak p$;
+      
+      a(d.d paramd, kotlin.d.d paramd1)
+      {
+        super(paramd1);
+      }
+      
+      public final kotlin.d.d<kotlin.x> create(Object paramObject, kotlin.d.d<?> paramd)
+      {
+        AppMethodBeat.i(249684);
+        kotlin.g.b.p.k(paramd, "completion");
+        paramd = new a(this.uyW, paramd);
+        paramd.p$ = ((ak)paramObject);
+        AppMethodBeat.o(249684);
+        return paramd;
+      }
+      
+      public final Object invoke(Object paramObject1, Object paramObject2)
+      {
+        AppMethodBeat.i(249685);
+        paramObject1 = ((a)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(kotlin.x.aazN);
+        AppMethodBeat.o(249685);
+        return paramObject1;
+      }
+      
+      public final Object invokeSuspend(Object paramObject)
+      {
+        AppMethodBeat.i(249683);
+        Object localObject1 = kotlin.d.a.a.aaAA;
+        switch (this.label)
+        {
+        default: 
+          paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
+          AppMethodBeat.o(249683);
+          throw paramObject;
+        }
+        ResultKt.throwOnFailure(paramObject);
+        paramObject = com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.emoji.b.d.class);
+        kotlin.g.b.p.j(paramObject, "MMKernel.plugin(IPluginEmoji::class.java)");
+        paramObject = ((com.tencent.mm.plugin.emoji.b.d)paramObject).getEmojiMgr();
+        kotlin.g.b.p.j(paramObject, "MMKernel.plugin(IPluginEmoji::class.java).emojiMgr");
+        paramObject = paramObject.cUq().lXv;
+        kotlin.g.b.p.j(paramObject, "eggList.eggList");
+        localObject1 = ((Iterable)paramObject).iterator();
+        label274:
+        label277:
+        while (((Iterator)localObject1).hasNext())
+        {
+          Object localObject2 = ((Iterator)localObject1).next();
+          paramObject = (com.tencent.mm.be.e)localObject2;
+          if ((paramObject.lXs >= 5) && (kotlin.g.b.p.h(paramObject.name, d.a(this.uyW.uyS))) && (paramObject.jIS != null) && (kotlin.g.b.p.h(paramObject.jIS.appId, d.b(this.uyW.uyS))))
+          {
+            paramObject = paramObject.lXn;
+            kotlin.g.b.p.j(paramObject, "egg.keyWords");
+            Iterator localIterator = ((Iterable)paramObject).iterator();
+            while (localIterator.hasNext())
+            {
+              paramObject = localIterator.next();
+              if (kotlin.g.b.p.h(((com.tencent.mm.be.f)paramObject).lXu, d.c(this.uyW.uyS))) {
+                if (paramObject == null) {
+                  break label274;
+                }
+              }
+            }
+          }
+          for (int i = 1;; i = 0)
+          {
+            if (i == 0) {
+              break label277;
+            }
+            AppMethodBeat.o(249683);
+            return localObject2;
+            paramObject = null;
+            break;
+          }
+        }
+        AppMethodBeat.o(249683);
+        return null;
+      }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"loadMaterial", "", "continuation", "Lkotlin/coroutines/Continuation;", ""})
   static final class e
-    implements Runnable
+    extends kotlin.d.b.a.d
   {
-    e(d paramd, String paramString, long paramLong1, long paramLong2) {}
+    Object L$0;
+    int label;
     
-    public final void run()
+    e(d paramd, kotlin.d.d paramd1)
     {
-      AppMethodBeat.i(194650);
-      b.a locala = d.a(this.qWr);
-      if (locala == null) {
-        p.hyc();
+      super();
+    }
+    
+    public final Object invokeSuspend(Object paramObject)
+    {
+      AppMethodBeat.i(249505);
+      this.result = paramObject;
+      this.label |= 0x80000000;
+      paramObject = this.uyS.d(this);
+      AppMethodBeat.o(249505);
+      return paramObject;
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/eggspring/model/GetInteractionMaterialResp;", "Lkotlinx/coroutines/CoroutineScope;", "invoke", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"})
+  static final class f
+    extends j
+    implements m<ak, kotlin.d.d<? super com.tencent.mm.t.a.h>, Object>
+  {
+    Object L$0;
+    int label;
+    private ak p$;
+    
+    f(d paramd, kotlin.d.d paramd1)
+    {
+      super(paramd1);
+    }
+    
+    public final kotlin.d.d<kotlin.x> create(Object paramObject, kotlin.d.d<?> paramd)
+    {
+      AppMethodBeat.i(249524);
+      kotlin.g.b.p.k(paramd, "completion");
+      paramd = new f(this.uyS, paramd);
+      paramd.p$ = ((ak)paramObject);
+      AppMethodBeat.o(249524);
+      return paramd;
+    }
+    
+    public final Object invoke(Object paramObject1, Object paramObject2)
+    {
+      AppMethodBeat.i(249525);
+      paramObject1 = ((f)create(paramObject1, (kotlin.d.d)paramObject2)).invokeSuspend(kotlin.x.aazN);
+      AppMethodBeat.o(249525);
+      return paramObject1;
+    }
+    
+    public final Object invokeSuspend(Object paramObject)
+    {
+      AppMethodBeat.i(249523);
+      kotlin.d.a.a locala = kotlin.d.a.a.aaAA;
+      switch (this.label)
+      {
+      default: 
+        paramObject = new IllegalStateException("call to 'resume' before 'invoke' with coroutine");
+        AppMethodBeat.o(249523);
+        throw paramObject;
+      case 0: 
+        ResultKt.throwOnFailure(paramObject);
+        paramObject = this.p$;
+        Object localObject = (c)new com.tencent.mm.plugin.eggspring.b.d(d.c(this.uyS), "", "");
+        this.L$0 = paramObject;
+        this.label = 1;
+        localObject = b.a((c)localObject, this);
+        paramObject = localObject;
+        if (localObject == locala)
+        {
+          AppMethodBeat.o(249523);
+          return locala;
+        }
+        break;
+      case 1: 
+        ResultKt.throwOnFailure(paramObject);
       }
-      locala.i(paramString, paramLong1, this.qWx);
-      AppMethodBeat.o(194650);
+      AppMethodBeat.o(249523);
+      return paramObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.eggspring.ui.d
  * JD-Core Version:    0.7.0.1
  */

@@ -5,19 +5,21 @@ import com.tencent.mm.kernel.c.a;
 import com.tencent.mm.plugin.appbrand.api.c;
 import java.util.List;
 
-@e(c.class)
+@e(gf=c.class)
 public abstract interface w
   extends a
 {
-  public abstract void VA(String paramString);
+  public abstract void adj(String paramString);
   
-  public abstract void bb(String paramString, int paramInt);
+  public abstract void bHS();
   
-  public abstract void bg(List<String> paramList);
+  public abstract void be(List<String> paramList);
   
-  public abstract void bh(List<String> paramList);
+  public abstract void bf(List<String> paramList);
   
-  public abstract void bwL();
+  public abstract void bu(String paramString, int paramInt);
+  
+  public abstract void t(String paramString1, String paramString2, int paramInt);
 }
 
 

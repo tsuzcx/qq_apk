@@ -98,7 +98,7 @@ public class enterprise_chat_entry_avatar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.enterprise_chat_entry_avatar
  * JD-Core Version:    0.7.0.1
  */

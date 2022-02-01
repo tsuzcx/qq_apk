@@ -4,10 +4,11 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
-import android.support.v4.view.u;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnAttachStateChangeListener;
+import android.view.ViewParent;
+import androidx.core.g.w;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.b;
 import com.tencent.mm.plugin.appbrand.canvas.d;
@@ -21,16 +22,16 @@ public class MCanvasView
   extends View
   implements a
 {
-  public final b laI;
-  private final Set<View.OnAttachStateChangeListener> laJ;
   private Bitmap mBitmap;
+  public final b nUR;
+  private final Set<View.OnAttachStateChangeListener> nUS;
   
   public MCanvasView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(145395);
-    this.laI = new b(this);
-    this.laJ = new LinkedHashSet();
+    this.nUR = new b(this);
+    this.nUS = new LinkedHashSet();
     init();
     AppMethodBeat.o(145395);
   }
@@ -39,8 +40,8 @@ public class MCanvasView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(145396);
-    this.laI = new b(this);
-    this.laJ = new LinkedHashSet();
+    this.nUR = new b(this);
+    this.nUS = new LinkedHashSet();
     init();
     AppMethodBeat.o(145396);
   }
@@ -49,8 +50,8 @@ public class MCanvasView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(145397);
-    this.laI = new b(this);
-    this.laJ = new LinkedHashSet();
+    this.nUR = new b(this);
+    this.nUS = new LinkedHashSet();
     init();
     AppMethodBeat.o(145397);
   }
@@ -62,7 +63,7 @@ public class MCanvasView
     AppMethodBeat.o(161173);
   }
   
-  public final void U(Runnable paramRunnable)
+  public final void V(Runnable paramRunnable)
   {
     AppMethodBeat.i(145407);
     post(paramRunnable);
@@ -72,26 +73,26 @@ public class MCanvasView
   public final void a(DrawCanvasArg paramDrawCanvasArg, a.a parama)
   {
     AppMethodBeat.i(145404);
-    this.laI.a(paramDrawCanvasArg, parama);
+    this.nUR.a(paramDrawCanvasArg, parama);
     AppMethodBeat.o(145404);
   }
   
   public final void a(JSONArray paramJSONArray, a.a parama)
   {
     AppMethodBeat.i(145402);
-    this.laI.a(paramJSONArray, parama);
+    this.nUR.a(paramJSONArray, parama);
     AppMethodBeat.o(145402);
   }
   
   public void addOnAttachStateChangeListener(View.OnAttachStateChangeListener paramOnAttachStateChangeListener)
   {
     AppMethodBeat.i(145412);
-    if (this.laJ.contains(paramOnAttachStateChangeListener))
+    if (this.nUS.contains(paramOnAttachStateChangeListener))
     {
       AppMethodBeat.o(145412);
       return;
     }
-    this.laJ.add(paramOnAttachStateChangeListener);
+    this.nUS.add(paramOnAttachStateChangeListener);
     super.addOnAttachStateChangeListener(paramOnAttachStateChangeListener);
     AppMethodBeat.o(145412);
   }
@@ -99,45 +100,18 @@ public class MCanvasView
   public final void b(DrawCanvasArg paramDrawCanvasArg, a.a parama)
   {
     AppMethodBeat.i(145405);
-    this.laI.b(paramDrawCanvasArg, parama);
+    this.nUR.b(paramDrawCanvasArg, parama);
     AppMethodBeat.o(145405);
   }
   
   public final void b(JSONArray paramJSONArray, a.a parama)
   {
     AppMethodBeat.i(145403);
-    this.laI.b(paramJSONArray, parama);
+    this.nUR.b(paramJSONArray, parama);
     AppMethodBeat.o(145403);
   }
   
-  public final void bzg()
-  {
-    AppMethodBeat.i(145401);
-    if (!u.az(this))
-    {
-      post(new MCanvasView.1(this));
-      AppMethodBeat.o(145401);
-      return;
-    }
-    postInvalidate();
-    AppMethodBeat.o(145401);
-  }
-  
-  public final void bzh()
-  {
-    AppMethodBeat.i(145406);
-    this.laI.bzh();
-    AppMethodBeat.o(145406);
-  }
-  
-  public final void bzi()
-  {
-    AppMethodBeat.i(145418);
-    this.laI.bzi();
-    AppMethodBeat.o(145418);
-  }
-  
-  public final void bzx()
+  public final void bKM()
   {
     AppMethodBeat.i(161175);
     if ((this.mBitmap != null) && (!this.mBitmap.isRecycled()))
@@ -148,10 +122,57 @@ public class MCanvasView
     AppMethodBeat.o(161175);
   }
   
+  public final void bKv()
+  {
+    AppMethodBeat.i(145401);
+    if (!w.ah(this))
+    {
+      post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(145394);
+          Object localObject = MCanvasView.this.getParent();
+          ViewParent localViewParent;
+          do
+          {
+            ((View)localObject).forceLayout();
+            localViewParent = ((ViewParent)localObject).getParent();
+            localObject = localViewParent;
+          } while ((localViewParent instanceof View));
+          if (localViewParent != null)
+          {
+            localViewParent.requestLayout();
+            MCanvasView.this.invalidate();
+          }
+          AppMethodBeat.o(145394);
+        }
+      });
+      AppMethodBeat.o(145401);
+      return;
+    }
+    postInvalidate();
+    AppMethodBeat.o(145401);
+  }
+  
+  public final void bKw()
+  {
+    AppMethodBeat.i(145406);
+    this.nUR.bKw();
+    AppMethodBeat.o(145406);
+  }
+  
+  public final void bKx()
+  {
+    AppMethodBeat.i(145418);
+    this.nUR.bKx();
+    AppMethodBeat.o(145418);
+  }
+  
   public d getDrawContext()
   {
     AppMethodBeat.i(145408);
-    d locald = this.laI.getDrawContext();
+    d locald = this.nUR.getDrawContext();
     AppMethodBeat.o(145408);
     return locald;
   }
@@ -159,7 +180,7 @@ public class MCanvasView
   public String getSessionId()
   {
     AppMethodBeat.i(145415);
-    String str = this.laI.getSessionId();
+    String str = this.nUR.getSessionId();
     AppMethodBeat.o(145415);
     return str;
   }
@@ -167,29 +188,21 @@ public class MCanvasView
   public String getTraceId()
   {
     AppMethodBeat.i(145411);
-    String str = this.laI.getTraceId();
+    String str = this.nUR.getTraceId();
     AppMethodBeat.o(145411);
     return str;
   }
   
   public final boolean isPaused()
   {
-    return this.laI.mPause;
-  }
-  
-  public final boolean o(Canvas paramCanvas)
-  {
-    AppMethodBeat.i(145400);
-    boolean bool = this.laI.o(paramCanvas);
-    AppMethodBeat.o(145400);
-    return bool;
+    return this.nUR.mPause;
   }
   
   protected void onDetachedFromWindow()
   {
     AppMethodBeat.i(161174);
     super.onDetachedFromWindow();
-    bzx();
+    bKM();
     AppMethodBeat.o(161174);
   }
   
@@ -204,7 +217,7 @@ public class MCanvasView
       return;
     }
     if ((this.mBitmap == null) || (this.mBitmap.isRecycled()) || (this.mBitmap.getWidth() != i) || (this.mBitmap.getHeight() != j)) {
-      bzx();
+      bKM();
     }
     try
     {
@@ -226,7 +239,7 @@ public class MCanvasView
       }
       this.mBitmap.eraseColor(0);
       f localf = new f(this.mBitmap);
-      o(localf);
+      q(localf);
       try
       {
         paramCanvas.drawBitmap(localf.mBitmap, 0.0F, 0.0F, null);
@@ -236,7 +249,7 @@ public class MCanvasView
       catch (Exception localException)
       {
         Log.printErrStackTrace("MicroMsg.MCanvasView", localException, "", new Object[0]);
-        o(paramCanvas);
+        q(paramCanvas);
         AppMethodBeat.o(145398);
       }
     }
@@ -246,7 +259,7 @@ public class MCanvasView
   {
     AppMethodBeat.i(145414);
     Log.v("MicroMsg.MCanvasView", "onResume :%s", new Object[] { Integer.valueOf(hashCode()) });
-    this.laI.onResume();
+    this.nUR.onResume();
     AppMethodBeat.o(145414);
   }
   
@@ -254,7 +267,7 @@ public class MCanvasView
   {
     AppMethodBeat.i(145399);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    bzx();
+    bKM();
     paramInt3 = getMeasuredWidth();
     paramInt4 = getMeasuredHeight();
     if ((paramInt3 > 0) && (paramInt4 > 0)) {}
@@ -273,10 +286,18 @@ public class MCanvasView
     }
   }
   
+  public final boolean q(Canvas paramCanvas)
+  {
+    AppMethodBeat.i(145400);
+    boolean bool = this.nUR.q(paramCanvas);
+    AppMethodBeat.o(145400);
+    return bool;
+  }
+  
   public void removeOnAttachStateChangeListener(View.OnAttachStateChangeListener paramOnAttachStateChangeListener)
   {
     AppMethodBeat.i(145413);
-    this.laJ.remove(paramOnAttachStateChangeListener);
+    this.nUS.remove(paramOnAttachStateChangeListener);
     super.removeOnAttachStateChangeListener(paramOnAttachStateChangeListener);
     AppMethodBeat.o(145413);
   }
@@ -284,34 +305,34 @@ public class MCanvasView
   public void setDrawActionReportable(com.tencent.mm.plugin.appbrand.canvas.c.a parama)
   {
     AppMethodBeat.i(145409);
-    this.laI.setDrawActionReportable(parama);
+    this.nUR.setDrawActionReportable(parama);
     AppMethodBeat.o(145409);
   }
   
   public void setSessionId(String paramString)
   {
     AppMethodBeat.i(145416);
-    this.laI.setSessionId(paramString);
+    this.nUR.setSessionId(paramString);
     AppMethodBeat.o(145416);
   }
   
   public void setStartTime(long paramLong)
   {
     AppMethodBeat.i(145417);
-    this.laI.setStartTime(paramLong);
+    this.nUR.setStartTime(paramLong);
     AppMethodBeat.o(145417);
   }
   
   public void setTraceId(String paramString)
   {
     AppMethodBeat.i(145410);
-    this.laI.setTraceId(paramString);
+    this.nUR.setTraceId(paramString);
     AppMethodBeat.o(145410);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.widget.MCanvasView
  * JD-Core Version:    0.7.0.1
  */

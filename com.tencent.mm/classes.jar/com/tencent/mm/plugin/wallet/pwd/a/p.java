@@ -11,53 +11,53 @@ import org.json.JSONObject;
 public final class p
   extends m
 {
-  private Map<String, String> AJV;
-  public boolean HFE;
+  private Map<String, String> ECl;
+  public boolean Oxx;
   private String token;
   
   public p(Authen paramAuthen, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(69567);
     this.token = null;
-    this.AJV = new HashMap();
-    this.AJV.put("flag", paramAuthen.cSx);
-    if (!Util.isNullOrNil(paramAuthen.HUV))
+    this.ECl = new HashMap();
+    this.ECl.put("flag", paramAuthen.cUP);
+    if (!Util.isNullOrNil(paramAuthen.OMW))
     {
-      this.AJV.put("first_name", paramAuthen.HUV);
-      this.AJV.put("last_name", paramAuthen.HUW);
-      this.AJV.put("country", paramAuthen.country);
-      this.AJV.put("area", paramAuthen.fuJ);
-      this.AJV.put("city", paramAuthen.fuK);
-      this.AJV.put("address", paramAuthen.iUO);
-      this.AJV.put("phone_number", paramAuthen.ynV);
-      this.AJV.put("zip_code", paramAuthen.ksV);
-      this.AJV.put("email", paramAuthen.fuD);
+      this.ECl.put("first_name", paramAuthen.OMW);
+      this.ECl.put("last_name", paramAuthen.OMX);
+      this.ECl.put("country", paramAuthen.country);
+      this.ECl.put("area", paramAuthen.province);
+      this.ECl.put("city", paramAuthen.city);
+      this.ECl.put("address", paramAuthen.lLg);
+      this.ECl.put("phone_number", paramAuthen.DNX);
+      this.ECl.put("zip_code", paramAuthen.nkC);
+      this.ECl.put("email", paramAuthen.hDf);
     }
-    this.AJV.put("business_source", String.valueOf(paramInt));
-    this.AJV.put("bank_type", paramAuthen.dDj);
-    if (paramAuthen.HUQ > 0) {
-      this.AJV.put("cre_type", paramAuthen.HUQ);
+    this.ECl.put("business_source", String.valueOf(paramInt));
+    this.ECl.put("bank_type", paramAuthen.fvP);
+    if (paramAuthen.OMR > 0) {
+      this.ECl.put("cre_type", paramAuthen.OMR);
     }
-    if (!Util.isNullOrNil(paramAuthen.HTZ)) {
-      this.AJV.put("true_name", paramAuthen.HTZ);
+    if (!Util.isNullOrNil(paramAuthen.OMa)) {
+      this.ECl.put("true_name", paramAuthen.OMa);
     }
-    if (!Util.isNullOrNil(paramAuthen.HUP)) {
-      this.AJV.put("identify_card", paramAuthen.HUP);
+    if (!Util.isNullOrNil(paramAuthen.OMQ)) {
+      this.ECl.put("identify_card", paramAuthen.OMQ);
     }
-    this.AJV.put("mobile_no", paramAuthen.HQc);
-    this.AJV.put("bank_card_id", paramAuthen.HUR);
-    if (!Util.isNullOrNil(paramAuthen.HUS)) {
-      this.AJV.put("cvv2", paramAuthen.HUS);
+    this.ECl.put("mobile_no", paramAuthen.OIl);
+    this.ECl.put("bank_card_id", paramAuthen.OMS);
+    if (!Util.isNullOrNil(paramAuthen.OMT)) {
+      this.ECl.put("cvv2", paramAuthen.OMT);
     }
-    if (!Util.isNullOrNil(paramAuthen.HUT)) {
-      this.AJV.put("valid_thru", paramAuthen.HUT);
+    if (!Util.isNullOrNil(paramAuthen.OMU)) {
+      this.ECl.put("valid_thru", paramAuthen.OMU);
     }
-    Map localMap = this.AJV;
+    Map localMap = this.ECl;
     if (paramBoolean) {}
     for (paramAuthen = "1";; paramAuthen = "0")
     {
       localMap.put("new_card_reset_pwd", paramAuthen);
-      setRequestData(this.AJV);
+      setRequestData(this.ECl);
       AppMethodBeat.o(69567);
       return;
     }
@@ -96,9 +96,9 @@ public final class p
   {
     AppMethodBeat.i(69568);
     super.resend();
-    this.AJV.put("is_repeat_send", "1");
-    setRequestData(this.AJV);
-    this.HFE = true;
+    this.ECl.put("is_repeat_send", "1");
+    setRequestData(this.ECl);
+    this.Oxx = true;
     AppMethodBeat.o(69568);
     return true;
   }

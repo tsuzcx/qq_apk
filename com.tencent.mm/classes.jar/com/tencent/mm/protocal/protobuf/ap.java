@@ -1,118 +1,113 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
 import java.util.LinkedList;
 
 public final class ap
-  extends dpc
+  extends dyl
 {
-  public String pTY;
-  public int pTZ;
-  public String pUa;
+  public int REC;
+  public String REE;
+  public boolean REG;
+  public String chatroom_name;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(113926);
+    AppMethodBeat.i(113927);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
+      if (this.BaseRequest != null)
       {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(113926);
-        throw paramVarArgs;
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.ni(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+      paramVarArgs.aY(2, this.REC);
+      if (this.REE != null) {
+        paramVarArgs.f(3, this.REE);
       }
-      if (this.pTY != null) {
-        paramVarArgs.e(2, this.pTY);
+      if (this.chatroom_name != null) {
+        paramVarArgs.f(4, this.chatroom_name);
       }
-      paramVarArgs.aM(3, this.pTZ);
-      if (this.pUa != null) {
-        paramVarArgs.e(4, this.pUa);
-      }
-      AppMethodBeat.o(113926);
+      paramVarArgs.co(5, this.REG);
+      AppMethodBeat.o(113927);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label522;
+      if (this.BaseRequest == null) {
+        break label496;
       }
     }
-    label522:
-    for (paramInt = g.a.a.a.nh(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label496:
+    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.pTY != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.pTY);
-      }
-      i += g.a.a.b.b.a.bu(3, this.pTZ);
+      int i = paramInt + g.a.a.b.b.a.bM(2, this.REC);
       paramInt = i;
-      if (this.pUa != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.pUa);
+      if (this.REE != null) {
+        paramInt = i + g.a.a.b.b.a.g(3, this.REE);
       }
-      AppMethodBeat.o(113926);
-      return paramInt;
+      i = paramInt;
+      if (this.chatroom_name != null) {
+        i = paramInt + g.a.a.b.b.a.g(4, this.chatroom_name);
+      }
+      paramInt = g.a.a.b.b.a.gL(5);
+      AppMethodBeat.o(113927);
+      return i + (paramInt + 1);
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dpc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dpc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.BaseResponse == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(113926);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(113926);
+        AppMethodBeat.o(113927);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         ap localap = (ap)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(113926);
+          AppMethodBeat.o(113927);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localap.BaseResponse = ((BaseResponse)localObject1);
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            jg localjg = new jg();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localjg.parseFrom((byte[])localObject);
+            }
+            localap.BaseRequest = localjg;
             paramInt += 1;
           }
-          AppMethodBeat.o(113926);
+          AppMethodBeat.o(113927);
           return 0;
         case 2: 
-          localap.pTY = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(113926);
+          localap.REC = ((g.a.a.a.a)localObject).abFh.AK();
+          AppMethodBeat.o(113927);
           return 0;
         case 3: 
-          localap.pTZ = ((g.a.a.a.a)localObject1).UbS.zi();
-          AppMethodBeat.o(113926);
+          localap.REE = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(113927);
+          return 0;
+        case 4: 
+          localap.chatroom_name = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(113927);
           return 0;
         }
-        localap.pUa = ((g.a.a.a.a)localObject1).UbS.readString();
-        AppMethodBeat.o(113926);
+        localap.REG = ((g.a.a.a.a)localObject).abFh.AB();
+        AppMethodBeat.o(113927);
         return 0;
       }
-      AppMethodBeat.o(113926);
+      AppMethodBeat.o(113927);
       return -1;
     }
   }

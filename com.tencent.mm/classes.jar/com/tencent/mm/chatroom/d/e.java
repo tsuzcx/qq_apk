@@ -1,31 +1,31 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.protocal.protobuf.dg;
-import com.tencent.mm.protocal.protobuf.dh;
+import com.tencent.mm.an.c;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.protocal.protobuf.df;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 
 public final class e
-  extends c<dh>
+  extends c<df>
 {
   public e(String paramString, LinkedList<String> paramLinkedList)
   {
-    AppMethodBeat.i(194021);
+    AppMethodBeat.i(194167);
     Log.d("MicroMsg.CgiOpenImAddChatRoomAdmin", "roomName:%s,username:%s", new Object[] { paramString, Util.listToString(paramLinkedList, ";") });
-    dg localdg = new dg();
-    localdg.dOe = paramString;
-    localdg.ybk = paramLinkedList;
+    de localde = new de();
+    localde.fHp = paramString;
+    localde.username_list = paramLinkedList;
     paramString = new d.a();
-    paramString.iLN = localdg;
-    paramString.iLO = new dh();
+    paramString.lBU = localde;
+    paramString.lBV = new df();
     paramString.uri = "/cgi-bin/micromsg-bin/addopenimchatroomadmin";
     paramString.funcId = 776;
-    c(paramString.aXF());
-    AppMethodBeat.o(194021);
+    c(paramString.bgN());
+    AppMethodBeat.o(194167);
   }
 }
 

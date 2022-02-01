@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.card.base;
 
 public abstract interface a
 {
-  public abstract b Ed(int paramInt);
+  public abstract b HE(int paramInt);
   
   public abstract void onCreate();
   

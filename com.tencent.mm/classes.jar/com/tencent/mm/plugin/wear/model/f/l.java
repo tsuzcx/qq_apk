@@ -4,44 +4,39 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.plugin.wear.model.e.r;
 import com.tencent.mm.plugin.wear.model.h;
-import com.tencent.mm.protocal.protobuf.ezw;
+import com.tencent.mm.protocal.protobuf.fkn;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 public final class l
   extends c
 {
-  private int jiX;
+  private int lYT;
   private String talker;
   
   public l(int paramInt, String paramString)
   {
-    this.jiX = paramInt;
+    this.lYT = paramInt;
     this.talker = paramString;
   }
   
-  public final String getName()
-  {
-    return "WearVoipControllerTask";
-  }
-  
-  protected final void send()
+  protected final void gOA()
   {
     AppMethodBeat.i(30134);
-    switch (this.jiX)
+    switch (this.lYT)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(30134);
       return;
-      ezw localezw = new ezw();
-      localezw.MRZ = this.talker;
-      localezw.oUJ = h.aWo(this.talker);
+      fkn localfkn = new fkn();
+      localfkn.Ueg = this.talker;
+      localfkn.rWI = h.bhV(this.talker);
       try
       {
-        a.fVQ();
-        r.a(this.jiX, localezw.toByteArray(), false);
+        a.gOx();
+        r.a(this.lYT, localfkn.toByteArray(), false);
         AppMethodBeat.o(30134);
         return;
       }
@@ -52,18 +47,23 @@ public final class l
       }
       try
       {
-        a.fVQ();
-        r.a(this.jiX, this.talker.getBytes("utf8"), false);
+        a.gOx();
+        r.a(this.lYT, this.talker.getBytes("utf8"), false);
         AppMethodBeat.o(30134);
         return;
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException) {}
     }
   }
+  
+  public final String getName()
+  {
+    return "WearVoipControllerTask";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.l
  * JD-Core Version:    0.7.0.1
  */

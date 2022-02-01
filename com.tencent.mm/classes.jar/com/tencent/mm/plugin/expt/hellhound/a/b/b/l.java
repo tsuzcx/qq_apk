@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.expt.hellhound.a.b.b;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.l;
 import android.util.Pair;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.a.c;
+import com.tencent.mm.hellhoundlib.a.d;
 import com.tencent.mm.hellhoundlib.b.b;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -15,70 +15,70 @@ import java.util.Map;
 import kotlin.g.b.p;
 import kotlin.t;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback;", "", "()V", "mItemDecorationListener", "com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mItemDecorationListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mItemDecorationListener$1;", "mMethodMap", "Ljava/util/HashMap;", "", "Landroid/util/Pair;", "", "mRecyclerListener", "com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mRecyclerListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mRecyclerListener$1;", "mRecyclerViewRef", "Ljava/lang/ref/WeakReference;", "Landroid/support/v7/widget/RecyclerView;", "illegalPage", "", "pageName", "monitor", "", "needNotRun", "className", "unmonitor", "Companion", "plugin-expt_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback;", "", "()V", "mItemDecorationListener", "com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mItemDecorationListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mItemDecorationListener$1;", "mMethodMap", "Ljava/util/HashMap;", "", "Landroid/util/Pair;", "", "mRecyclerListener", "com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mRecyclerListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mRecyclerListener$1;", "mRecyclerViewRef", "Ljava/lang/ref/WeakReference;", "Landroidx/recyclerview/widget/RecyclerView;", "illegalPage", "", "pageName", "monitor", "", "needNotRun", "className", "unmonitor", "Companion", "plugin-expt_release"})
 public final class l
 {
-  public static final l.a sGb;
-  WeakReference<RecyclerView> sCb;
-  final HashMap<String, Pair<String, List<Pair<String, String>>>> sEh;
-  final b sFZ;
-  final c sGa;
+  public static final l.a wlW;
+  WeakReference<RecyclerView> whW;
+  final HashMap<String, Pair<String, List<Pair<String, String>>>> wkb;
+  final b wlU;
+  final c wlV;
   
   static
   {
-    AppMethodBeat.i(221004);
-    sGb = new l.a((byte)0);
-    AppMethodBeat.o(221004);
+    AppMethodBeat.i(254254);
+    wlW = new l.a((byte)0);
+    AppMethodBeat.o(254254);
   }
   
   public l()
   {
-    AppMethodBeat.i(221003);
-    this.sEh = new HashMap();
+    AppMethodBeat.i(254253);
+    this.wkb = new HashMap();
     Object localObject = (List)new ArrayList();
-    ((List)localObject).add(new Pair("getItemOffsets", "(Landroid/graphics/Rect;Landroid/view/View;Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$State;)V"));
-    ((List)localObject).add(new Pair("onDrawOver", "(Landroid/graphics/Canvas;Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$State;)V"));
-    ((Map)this.sEh).put("com/tencent/mm/plugin/finder/feed/FinderTimelineMachineViewCallback$SpacesItemDecoration", new Pair("android/support/v7/widget/RecyclerView$ItemDecoration", localObject));
-    ((Map)this.sEh).put("com/tencent/mm/plugin/finder/search/FinderMixSearchViewCallback$SpacesItemDecoration", new Pair("android/support/v7/widget/RecyclerView$ItemDecoration", localObject));
-    ((Map)this.sEh).put("com/tencent/mm/plugin/finder/storage/FinderStaggeredConfig$getItemDecoration$", new Pair("android/support/v7/widget/RecyclerView$ItemDecoration", localObject));
-    localObject = this.sCb;
+    ((List)localObject).add(new Pair("getItemOffsets", "(Landroid/graphics/Rect;Landroid/view/View;Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$State;)V"));
+    ((List)localObject).add(new Pair("onDrawOver", "(Landroid/graphics/Canvas;Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$State;)V"));
+    ((Map)this.wkb).put("com/tencent/mm/plugin/finder/feed/FinderTimelineMachineViewCallback$SpacesItemDecoration", new Pair("androidx/recyclerview/widget/RecyclerView$ItemDecoration", localObject));
+    ((Map)this.wkb).put("com/tencent/mm/plugin/finder/search/FinderMixSearchViewCallback$SpacesItemDecoration", new Pair("androidx/recyclerview/widget/RecyclerView$ItemDecoration", localObject));
+    ((Map)this.wkb).put("com/tencent/mm/plugin/finder/storage/FinderStaggeredConfig$getItemDecoration$", new Pair("androidx/recyclerview/widget/RecyclerView$ItemDecoration", localObject));
+    localObject = this.whW;
     if (localObject != null) {
       ((WeakReference)localObject).clear();
     }
-    this.sFZ = new b(this);
-    this.sGa = new c();
-    AppMethodBeat.o(221003);
+    this.wlU = new b(this);
+    this.wlV = new c();
+    AppMethodBeat.o(254253);
   }
   
-  static boolean apW(String paramString)
+  static boolean axW(String paramString)
   {
-    AppMethodBeat.i(221002);
-    if (((p.j("com.tencent.mm.plugin.finder.ui.FinderTimelineMachineUI", paramString) ^ true)) && ((p.j("com.tencent.mm.plugin.finder.search.FinderMixSearchUI", paramString) ^ true)) && ((p.j("com.tencent.mm.plugin.finder.feed.ui.FinderFavFeedUI", paramString) ^ true)))
+    AppMethodBeat.i(254252);
+    if (((p.h("com.tencent.mm.plugin.finder.ui.FinderTimelineMachineUI", paramString) ^ true)) && ((p.h("com.tencent.mm.plugin.finder.search.FinderMixSearchUI", paramString) ^ true)) && ((p.h("com.tencent.mm.plugin.finder.feed.ui.FinderFavFeedUI", paramString) ^ true)))
     {
-      AppMethodBeat.o(221002);
+      AppMethodBeat.o(254252);
       return true;
     }
-    AppMethodBeat.o(221002);
+    AppMethodBeat.o(254252);
     return false;
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mItemDecorationListener$1", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "runOnEnter", "", "className", "", "methodName", "methodDec", "caller", "", "args", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V", "runOnExit", "retVal", "plugin-expt_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mItemDecorationListener$1", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "runOnEnter", "", "className", "", "methodName", "methodDec", "caller", "", "args", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V", "runOnExit", "retVal", "plugin-expt_release"})
   public static final class b
-    implements c
+    implements d
   {
     public final void a(String paramString1, String paramString2, String paramString3, Object paramObject1, Object paramObject2) {}
     
-    public final void a(String paramString1, String paramString2, String paramString3, Object paramObject, Object[] paramArrayOfObject)
+    public final void b(String paramString1, String paramString2, String paramString3, Object paramObject, Object[] paramArrayOfObject)
     {
-      AppMethodBeat.i(220999);
-      if (l.apX(paramString1))
+      AppMethodBeat.i(255957);
+      if (l.axX(paramString1))
       {
-        AppMethodBeat.o(220999);
+        AppMethodBeat.o(255957);
         return;
       }
-      if ((p.j(paramString2, "getItemOffsets")) && (p.j(paramString3, "(Landroid/graphics/Rect;Landroid/view/View;Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$State;)V")) && (paramArrayOfObject != null) && (paramArrayOfObject.length >= 4))
+      if ((p.h(paramString2, "getItemOffsets")) && (p.h(paramString3, "(Landroid/graphics/Rect;Landroid/view/View;Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$State;)V")) && (paramArrayOfObject != null) && (paramArrayOfObject.length >= 4))
       {
-        paramString1 = l.a(this.sGc);
+        paramString1 = l.a(this.wlX);
         if (paramString1 != null) {
           paramString1 = (RecyclerView)paramString1.get();
         }
@@ -87,58 +87,58 @@ public final class l
           paramString1 = paramArrayOfObject[2];
           if (paramString1 == null)
           {
-            paramString1 = new t("null cannot be cast to non-null type android.support.v7.widget.RecyclerView");
-            AppMethodBeat.o(220999);
+            paramString1 = new t("null cannot be cast to non-null type androidx.recyclerview.widget.RecyclerView");
+            AppMethodBeat.o(255957);
             throw paramString1;
             paramString1 = null;
           }
           else
           {
             paramString1 = (RecyclerView)paramString1;
-            paramString1.a((RecyclerView.l)l.b(this.sGc));
-            l.a(this.sGc, new WeakReference(paramString1));
+            paramString1.a((RecyclerView.l)l.b(this.wlX));
+            l.a(this.wlX, new WeakReference(paramString1));
           }
         }
       }
-      AppMethodBeat.o(220999);
+      AppMethodBeat.o(255957);
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mRecyclerListener$1", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "onScrollStateChanged", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "newState", "", "onScrolled", "dx", "dy", "plugin-expt_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mRecyclerListener$1", "Landroidx/recyclerview/widget/RecyclerView$OnScrollListener;", "onScrollStateChanged", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "newState", "", "onScrolled", "dx", "dy", "plugin-expt_release"})
   public static final class c
     extends RecyclerView.l
   {
     public final void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
     {
-      AppMethodBeat.i(221000);
+      AppMethodBeat.i(255820);
       b localb = new b();
-      localb.bm(paramRecyclerView);
-      localb.pH(paramInt);
-      a.b("com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mRecyclerListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.axR());
-      p.h(paramRecyclerView, "recyclerView");
-      k.sFY.onScrollStateChanged(paramRecyclerView, paramInt);
-      a.a(this, "com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mRecyclerListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
-      AppMethodBeat.o(221000);
+      localb.bn(paramRecyclerView);
+      localb.sg(paramInt);
+      a.c("com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mRecyclerListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
+      p.k(paramRecyclerView, "recyclerView");
+      k.wlT.onScrollStateChanged(paramRecyclerView, paramInt);
+      a.a(this, "com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mRecyclerListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
+      AppMethodBeat.o(255820);
     }
     
     public final void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(221001);
+      AppMethodBeat.i(255821);
       b localb = new b();
-      localb.bm(paramRecyclerView);
-      localb.pH(paramInt1);
-      localb.pH(paramInt2);
-      a.b("com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mRecyclerListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.axR());
-      p.h(paramRecyclerView, "recyclerView");
-      k.sFY.e(paramRecyclerView, paramInt2);
-      a.a(this, "com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mRecyclerListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-      AppMethodBeat.o(221001);
+      localb.bn(paramRecyclerView);
+      localb.sg(paramInt1);
+      localb.sg(paramInt2);
+      a.c("com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mRecyclerListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aFi());
+      p.k(paramRecyclerView, "recyclerView");
+      k.wlT.d(paramRecyclerView, paramInt2);
+      a.a(this, "com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mRecyclerListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
+      AppMethodBeat.o(255821);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.b.b.l
  * JD-Core Version:    0.7.0.1
  */

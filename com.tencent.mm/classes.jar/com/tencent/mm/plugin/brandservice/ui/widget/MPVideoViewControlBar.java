@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.brandservice.ui.widget;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.View;
@@ -17,84 +16,74 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.jsapi.video.e.a;
-import com.tencent.mm.plugin.appbrand.jsapi.video.e.d;
-import com.tencent.mm.plugin.appbrand.jsapi.video.e.e;
-import com.tencent.mm.plugin.appbrand.jsapi.video.e.f;
-import com.tencent.mm.plugin.appbrand.jsapi.video.e.g;
-import com.tencent.mm.plugin.appbrand.jsapi.video.e.i;
-import com.tencent.mm.plugin.brandservice.ui.timeline.video.util.m;
+import com.tencent.mm.plugin.appbrand.jsapi.video.d.g;
+import com.tencent.mm.plugin.brandservice.d.c;
+import com.tencent.mm.plugin.brandservice.d.h;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.pluginsdk.ui.h;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerSeekBar;
-import com.tencent.mm.protocal.protobuf.gh;
+import com.tencent.mm.protocal.protobuf.fv;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.tools.o;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashSet;
+import com.tencent.mm.ui.au;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public class MPVideoViewControlBar
   extends VideoPlayerSeekBar
-  implements e.a, h
+  implements com.tencent.mm.plugin.appbrand.jsapi.video.d.a, com.tencent.mm.pluginsdk.ui.h
 {
-  private int add;
-  private TextView ayz;
-  private ImageView mDc;
-  private LinearLayout mDe;
-  private ImageView mDf;
-  private FrameLayout mDg;
-  private ImageView mDh;
-  private ImageView mDi;
-  private ImageView mDj;
-  private LinearLayout mDk;
-  private LinearLayout mDl;
-  private e.i mDm;
-  private MTimerHandler mDn;
-  private boolean mDo;
-  private boolean mDq;
-  private boolean mDr;
-  private boolean mDs;
-  private boolean mDt;
-  private boolean mDu;
-  private e.e mDw;
-  private MTimerHandler mww;
-  private View pOA;
-  private LinearLayout pOB;
-  private TextView pOC;
-  private View pOD;
-  private LinearLayout pOE;
-  private a pOF;
-  private b pOG;
-  private Animation pOH;
-  private Animation pOI;
-  private Animation pOJ;
-  private Animation pOK;
-  private LinkedList<gh> pOL;
-  private gh pOM;
-  private e.f pON;
-  private RelativeLayout pOu;
-  private LinkedList<com.tencent.mm.plugin.brandservice.ui.timeline.video.util.c> pOv;
-  private LinearLayout pOw;
-  private ImageView pOx;
-  private TextView pOy;
-  private TextView pOz;
+  private boolean pCA;
+  private boolean pCC;
+  private boolean pCD;
+  private boolean pCE;
+  private boolean pCF;
+  private boolean pCG;
+  private com.tencent.mm.plugin.appbrand.jsapi.video.d.e pCI;
+  private ImageView pCo;
+  private LinearLayout pCq;
+  private ImageView pCr;
+  private FrameLayout pCs;
+  private ImageView pCt;
+  private ImageView pCu;
+  private ImageView pCv;
+  private LinearLayout pCw;
+  private LinearLayout pCx;
+  private com.tencent.mm.plugin.appbrand.jsapi.video.d.i pCy;
+  private MTimerHandler pCz;
+  private MTimerHandler puW;
+  private int puh;
+  private LinearLayout sVA;
+  private a sVB;
+  private b sVC;
+  private Animation sVD;
+  private Animation sVE;
+  private Animation sVF;
+  private Animation sVG;
+  private LinkedList<fv> sVH;
+  private fv sVI;
+  private com.tencent.mm.plugin.appbrand.jsapi.video.d.f sVJ;
+  private RelativeLayout sVq;
+  private LinkedList<com.tencent.mm.plugin.brandservice.ui.timeline.video.a.a> sVr;
+  private LinearLayout sVs;
+  private ImageView sVt;
+  private TextView sVu;
+  private TextView sVv;
+  private View sVw;
+  private LinearLayout sVx;
+  private TextView sVy;
+  private View sVz;
+  private TextView wB;
   
   public MPVideoViewControlBar(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(6285);
-    this.pOv = null;
-    this.pOL = new LinkedList();
+    this.sVr = null;
+    this.sVH = new LinkedList();
     AppMethodBeat.o(6285);
   }
   
@@ -102,8 +91,8 @@ public class MPVideoViewControlBar
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(6286);
-    this.pOv = null;
-    this.pOL = new LinkedList();
+    this.sVr = null;
+    this.sVH = new LinkedList();
     AppMethodBeat.o(6286);
   }
   
@@ -111,193 +100,229 @@ public class MPVideoViewControlBar
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(6287);
-    this.pOv = null;
-    this.pOL = new LinkedList();
+    this.sVr = null;
+    this.sVH = new LinkedList();
     AppMethodBeat.o(6287);
   }
   
-  private void bKP()
+  private void M(final LinkedList<com.tencent.mm.plugin.brandservice.ui.timeline.video.a.a> paramLinkedList)
+  {
+    AppMethodBeat.i(6323);
+    this.sVr = paramLinkedList;
+    if ((this.sVq == null) || (Util.isNullOrNil(this.sVr)))
+    {
+      this.sVq.removeAllViews();
+      AppMethodBeat.o(6323);
+      return;
+    }
+    Log.i("MicroMsg.MPVideoViewControlBar", "updateControlBarDotPos");
+    MMHandlerThread.postToMainThreadDelayed(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(257532);
+        MPVideoViewControlBar.g(MPVideoViewControlBar.this).removeAllViews();
+        Object localObject = paramLinkedList;
+        if (!Util.isNullOrNil((List)localObject))
+        {
+          localObject = ((LinkedList)localObject).iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            com.tencent.mm.plugin.brandservice.ui.timeline.video.a.a locala = (com.tencent.mm.plugin.brandservice.ui.timeline.video.a.a)((Iterator)localObject).next();
+            ImageView localImageView = new ImageView(MPVideoViewControlBar.this.getContext());
+            MPVideoViewControlBar.g(MPVideoViewControlBar.this).addView(localImageView);
+            MPVideoViewControlBar.a(MPVideoViewControlBar.this, locala);
+            MPVideoViewControlBar.g(MPVideoViewControlBar.this).removeView(localImageView);
+          }
+        }
+        AppMethodBeat.o(257532);
+      }
+    }, 100L);
+    AppMethodBeat.o(6323);
+  }
+  
+  private void bWP()
   {
     AppMethodBeat.i(6298);
-    if (this.mDo)
+    if (this.pCA)
     {
-      this.mDk.setVisibility(0);
-      this.pOw.setVisibility(0);
+      this.pCw.setVisibility(0);
+      this.sVs.setVisibility(0);
       AppMethodBeat.o(6298);
       return;
     }
-    this.mDk.setVisibility(8);
-    this.pOw.setVisibility(8);
+    this.pCw.setVisibility(8);
+    this.sVs.setVisibility(8);
     AppMethodBeat.o(6298);
   }
   
-  private void bKQ()
+  private void bWQ()
   {
     AppMethodBeat.i(6302);
-    if (this.mDt)
+    if (this.pCF)
     {
-      if (this.mDu)
+      if (this.pCG)
       {
-        this.mCP.setVisibility(8);
-        this.mDi.setVisibility(0);
+        this.pCc.setVisibility(8);
+        this.pCu.setVisibility(0);
         AppMethodBeat.o(6302);
         return;
       }
-      this.mCP.setVisibility(0);
-      this.mDi.setVisibility(8);
+      this.pCc.setVisibility(0);
+      this.pCu.setVisibility(8);
       AppMethodBeat.o(6302);
       return;
     }
-    this.mCP.setVisibility(8);
-    this.mDi.setVisibility(8);
+    this.pCc.setVisibility(8);
+    this.pCu.setVisibility(8);
     AppMethodBeat.o(6302);
   }
   
-  private void bKS()
+  private void bWS()
   {
     AppMethodBeat.i(6305);
-    if (this.mDq)
+    if (this.pCC)
     {
-      this.mDc.setVisibility(0);
-      ViewGroup.LayoutParams localLayoutParams = this.mDc.getLayoutParams();
-      getResources().getDimensionPixelSize(2131166719);
-      if (this.mDo) {
-        this.mDc.setImageResource(2131234769);
+      this.pCo.setVisibility(0);
+      ViewGroup.LayoutParams localLayoutParams = this.pCo.getLayoutParams();
+      getResources().getDimensionPixelSize(d.c.spv);
+      if (this.pCA) {
+        this.pCo.setImageResource(com.tencent.mm.plugin.brandservice.d.d.spK);
       }
-      for (int i = getResources().getDimensionPixelSize(2131166717);; i = getResources().getDimensionPixelSize(2131166719))
+      for (int i = getResources().getDimensionPixelSize(d.c.spt);; i = getResources().getDimensionPixelSize(d.c.spv))
       {
         localLayoutParams.height = i;
         localLayoutParams.width = i;
-        this.mDc.setLayoutParams(localLayoutParams);
+        this.pCo.setLayoutParams(localLayoutParams);
         AppMethodBeat.o(6305);
         return;
-        this.mDc.setImageResource(2131691148);
+        this.pCo.setImageResource(d.h.mp_video_fullscreen_btn);
       }
     }
-    this.mDc.setVisibility(8);
+    this.pCo.setVisibility(8);
     AppMethodBeat.o(6305);
   }
   
-  private void bKT()
+  private void bWT()
   {
     AppMethodBeat.i(6315);
-    bKW();
-    bKS();
-    bKP();
-    bKV();
-    bKU();
-    N(this.pOv);
-    crK();
-    crM();
-    crO();
-    crP();
+    bWW();
+    bWS();
+    bWP();
+    bWV();
+    bWU();
+    M(this.sVr);
+    cER();
+    cET();
+    cEV();
+    cEW();
     AppMethodBeat.o(6315);
   }
   
-  private void bKU()
+  private void bWU()
   {
     AppMethodBeat.i(6316);
-    if (crI()) {}
-    for (int i = getResources().getDimensionPixelSize(2131166713);; i = getResources().getDimensionPixelSize(2131166703))
+    if (cEP()) {}
+    for (int i = getResources().getDimensionPixelSize(d.c.spp);; i = getResources().getDimensionPixelSize(d.c.spl))
     {
       ViewGroup.MarginLayoutParams localMarginLayoutParams;
-      if (this.mCP != null)
+      if (this.pCc != null)
       {
-        localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.mCP.getLayoutParams();
+        localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.pCc.getLayoutParams();
         localMarginLayoutParams.setMarginStart(i);
-        this.mCP.setLayoutParams(localMarginLayoutParams);
+        this.pCc.setLayoutParams(localMarginLayoutParams);
       }
-      if (this.mDl != null)
+      if (this.pCx != null)
       {
-        localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.mDl.getLayoutParams();
+        localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.pCx.getLayoutParams();
         localMarginLayoutParams.setMarginStart(i);
-        this.mDl.setLayoutParams(localMarginLayoutParams);
+        this.pCx.setLayoutParams(localMarginLayoutParams);
       }
-      if (this.mDh != null)
+      if (this.pCt != null)
       {
-        localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.mDh.getLayoutParams();
+        localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.pCt.getLayoutParams();
         localMarginLayoutParams.setMarginStart(i);
-        this.mDh.setLayoutParams(localMarginLayoutParams);
+        this.pCt.setLayoutParams(localMarginLayoutParams);
       }
-      if (this.mDc != null)
+      if (this.pCo != null)
       {
-        localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.mDc.getLayoutParams();
+        localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.pCo.getLayoutParams();
         localMarginLayoutParams.setMarginStart(i);
-        this.mDc.setLayoutParams(localMarginLayoutParams);
+        this.pCo.setLayoutParams(localMarginLayoutParams);
       }
-      if (this.pOA != null)
+      if (this.sVw != null)
       {
-        localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.pOA.getLayoutParams();
+        localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.sVw.getLayoutParams();
         localMarginLayoutParams.setMarginStart(i);
-        this.pOA.setLayoutParams(localMarginLayoutParams);
+        this.sVw.setLayoutParams(localMarginLayoutParams);
       }
-      if (this.pOD != null)
+      if (this.sVz != null)
       {
-        localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.pOA.getLayoutParams();
+        localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.sVw.getLayoutParams();
         localMarginLayoutParams.setMarginStart(i);
-        this.pOD.setLayoutParams(localMarginLayoutParams);
+        this.sVz.setLayoutParams(localMarginLayoutParams);
       }
       AppMethodBeat.o(6316);
       return;
     }
   }
   
-  private void bKV()
+  private void bWV()
   {
     AppMethodBeat.i(6317);
-    if (crI()) {}
-    for (float f = getResources().getDimensionPixelSize(2131166716);; f = getResources().getDimensionPixelSize(2131166709))
+    if (cEP()) {}
+    for (float f = getResources().getDimensionPixelSize(d.c.sps);; f = getResources().getDimensionPixelSize(d.c.spo))
     {
-      this.mCQ.setTextSize(0, f);
-      this.mCR.setTextSize(0, f);
+      this.pCd.setTextSize(0, f);
+      this.pCe.setTextSize(0, f);
       AppMethodBeat.o(6317);
       return;
     }
   }
   
-  private void bKW()
+  private void bWW()
   {
     AppMethodBeat.i(6318);
-    ViewGroup.LayoutParams localLayoutParams = this.mDe.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams = this.pCq.getLayoutParams();
     int j;
-    if (this.mDo)
+    if (this.pCA)
     {
-      localLayoutParams.height = getResources().getDimensionPixelSize(2131166714);
-      this.mDe.setLayoutParams(localLayoutParams);
-      if (!crI()) {
+      localLayoutParams.height = getResources().getDimensionPixelSize(d.c.spq);
+      this.pCq.setLayoutParams(localLayoutParams);
+      if (!cEP()) {
         break label143;
       }
-      j = getResources().getDimensionPixelSize(2131166715);
+      j = getResources().getDimensionPixelSize(d.c.spr);
     }
-    for (int i = getResources().getDimensionPixelSize(2131166713);; i = getResources().getDimensionPixelSize(2131166706))
+    for (int i = getResources().getDimensionPixelSize(d.c.spp);; i = getResources().getDimensionPixelSize(d.c.spn))
     {
-      this.mDe.setPadding(0, 0, i, 0);
-      if (this.mDk != null) {
-        this.mDk.setPadding(j, 0, j, 0);
+      this.pCq.setPadding(0, 0, i, 0);
+      if (this.pCw != null) {
+        this.pCw.setPadding(j, 0, j, 0);
       }
-      if (this.pOw != null) {
-        this.pOw.setPadding(j, 0, j, 0);
+      if (this.sVs != null) {
+        this.sVs.setPadding(j, 0, j, 0);
       }
       AppMethodBeat.o(6318);
       return;
-      localLayoutParams.height = getResources().getDimensionPixelSize(2131166705);
+      localLayoutParams.height = getResources().getDimensionPixelSize(d.c.spm);
       break;
       label143:
-      j = getResources().getDimensionPixelSize(2131166706);
+      j = getResources().getDimensionPixelSize(d.c.spn);
     }
   }
   
-  private boolean bKX()
+  private boolean bWX()
   {
     AppMethodBeat.i(6321);
-    if (this.mDm == null)
+    if (this.pCy == null)
     {
       Log.i("MicroMsg.MPVideoViewControlBar", "updateMiddleBar mStatePorter null");
       AppMethodBeat.o(6321);
       return false;
     }
-    int k = this.mDm.bJh();
-    int j = this.mDm.bJi();
+    int k = this.pCy.bUQ();
+    int j = this.pCy.bUR();
     if ((k < 0) || (j < 0))
     {
       AppMethodBeat.o(6321);
@@ -317,39 +342,39 @@ public class MPVideoViewControlBar
     double d;
     for (i = 0;; i = (int)(i * 1.0D / j * d))
     {
-      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.mDf.getLayoutParams();
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.pCr.getLayoutParams();
       localLayoutParams.width = i;
-      this.mDf.setLayoutParams(localLayoutParams);
+      this.pCr.setLayoutParams(localLayoutParams);
       AppMethodBeat.o(6321);
       return true;
       d = k;
     }
   }
   
-  private void bKY()
+  private void bWY()
   {
     int j = 0;
     AppMethodBeat.i(6333);
     boolean bool;
     Object localObject;
-    if (this.mDs)
+    if (this.pCE)
     {
-      bool = this.mDr;
-      localObject = this.mDg;
+      bool = this.pCD;
+      localObject = this.pCs;
       if (!bool) {
         break label86;
       }
       i = 0;
       label32:
       ((FrameLayout)localObject).setVisibility(i);
-      localObject = this.mCQ;
+      localObject = this.pCd;
       if (!bool) {
         break label92;
       }
       i = 0;
       label50:
       ((TextView)localObject).setVisibility(i);
-      localObject = this.mCR;
+      localObject = this.pCe;
       if (!bool) {
         break label98;
       }
@@ -371,76 +396,54 @@ public class MPVideoViewControlBar
     }
   }
   
-  private boolean crI()
+  private boolean cEP()
   {
-    return (this.mDo) && ((90 == this.add) || (-90 == this.add));
+    return (this.pCA) && ((90 == this.puh) || (-90 == this.puh));
   }
   
-  private void crJ()
+  private void cEQ()
   {
     AppMethodBeat.i(6322);
-    if (Util.isNullOrNil(this.pOv))
+    if (Util.isNullOrNil(this.sVr))
     {
       AppMethodBeat.o(6322);
       return;
     }
-    Iterator localIterator = this.pOv.iterator();
-    int i = 0;
-    while (localIterator.hasNext())
+    Iterator localIterator = this.sVr.iterator();
+    if (localIterator.hasNext())
     {
-      com.tencent.mm.plugin.brandservice.ui.timeline.video.util.c localc = (com.tencent.mm.plugin.brandservice.ui.timeline.video.util.c)localIterator.next();
-      if (localc.pKt <= this.mPosition)
-      {
-        if (localc.pKr) {
-          break label108;
-        }
-        i = 1;
-      }
-      else
-      {
-        if (!localc.pKr) {
-          break label108;
-        }
-        i = 1;
-      }
-    }
-    label108:
-    for (;;)
-    {
-      break;
-      if (i != 0) {
-        N(this.pOv);
-      }
+      localIterator.next();
       AppMethodBeat.o(6322);
-      return;
+      throw null;
     }
+    AppMethodBeat.o(6322);
   }
   
-  private void crK()
+  private void cER()
   {
     AppMethodBeat.i(6325);
-    if ((!crI()) || (Util.isNullOrNil(this.pOL)) || (this.pOM == null))
+    if ((!cEP()) || (Util.isNullOrNil(this.sVH)) || (this.sVI == null))
     {
-      crL();
-      this.pOA.setVisibility(8);
+      cES();
+      this.sVw.setVisibility(8);
       AppMethodBeat.o(6325);
       return;
     }
-    this.pOz.setText(this.pOM.KKh);
-    this.pOA.setVisibility(0);
-    this.pOA.setOnClickListener(new View.OnClickListener()
+    this.sVv.setText(this.sVI.RKY);
+    this.sVw.setVisibility(0);
+    this.sVw.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(6284);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/brandservice/ui/widget/MPVideoViewControlBar$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/brandservice/ui/widget/MPVideoViewControlBar$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (MPVideoViewControlBar.b(MPVideoViewControlBar.this).getVisibility() == 0)
         {
           MPVideoViewControlBar.d(MPVideoViewControlBar.this);
-          if (MPVideoViewControlBar.this.cEF()) {
-            MPVideoViewControlBar.this.bJB();
+          if (MPVideoViewControlBar.this.cTl()) {
+            MPVideoViewControlBar.this.bVi();
           }
         }
         for (;;)
@@ -449,7 +452,7 @@ public class MPVideoViewControlBar
           AppMethodBeat.o(6284);
           return;
           if (MPVideoViewControlBar.h(MPVideoViewControlBar.this) != null) {
-            MPVideoViewControlBar.h(MPVideoViewControlBar.this).cqH();
+            MPVideoViewControlBar.h(MPVideoViewControlBar.this).cEN();
           }
           MPVideoViewControlBar.i(MPVideoViewControlBar.this);
           MPVideoViewControlBar.j(MPVideoViewControlBar.this);
@@ -459,51 +462,50 @@ public class MPVideoViewControlBar
     AppMethodBeat.o(6325);
   }
   
-  private void crL()
+  private void cES()
   {
     AppMethodBeat.i(6326);
     Log.d("MicroMsg.MPVideoViewControlBar", "hideResolutionContainer");
-    if (this.pOB.getVisibility() != 8)
+    if (this.sVx.getVisibility() != 8)
     {
-      this.pOB.setVisibility(8);
-      if (this.pOF != null) {
-        this.pOF.cqI();
+      this.sVx.setVisibility(8);
+      if (this.sVB != null) {
+        this.sVB.cEM();
       }
     }
     AppMethodBeat.o(6326);
   }
   
-  private void crM()
+  private void cET()
   {
     AppMethodBeat.i(179005);
-    if (((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rTZ, 1) == 0) {}
-    for (int i = 1; (!crI()) || (Util.isNullOrNil(this.pOL)) || (this.pOM == null) || (i != 0); i = 0)
+    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vAE, 1) == 0) {}
+    for (int i = 1; (!cEP()) || (Util.isNullOrNil(this.sVH)) || (this.sVI == null) || (i != 0); i = 0)
     {
-      crN();
-      this.pOD.setVisibility(8);
+      cEU();
+      this.sVz.setVisibility(8);
       AppMethodBeat.o(179005);
       return;
     }
-    Object localObject = c.pNP;
-    if (c.cry().pNW == 1.0F) {}
-    for (localObject = getResources().getString(2131767091);; localObject = c.cry().desc)
+    Object localObject = a.sUM;
+    if (a.cEG().sUT == 1.0F) {}
+    for (localObject = getResources().getString(com.tencent.mm.plugin.brandservice.d.i.video_multispeed);; localObject = a.cEG().desc)
     {
-      this.pOC.setText((CharSequence)localObject);
-      this.pOD.setVisibility(0);
-      this.pOD.setOnClickListener(new View.OnClickListener()
+      this.sVy.setText((CharSequence)localObject);
+      this.sVz.setVisibility(0);
+      this.sVz.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(179004);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/brandservice/ui/widget/MPVideoViewControlBar$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          m.DR(42);
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/brandservice/ui/widget/MPVideoViewControlBar$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           if (MPVideoViewControlBar.k(MPVideoViewControlBar.this).getVisibility() == 0)
           {
             MPVideoViewControlBar.e(MPVideoViewControlBar.this);
-            if (MPVideoViewControlBar.this.cEF()) {
-              MPVideoViewControlBar.this.bJB();
+            if (MPVideoViewControlBar.this.cTl()) {
+              MPVideoViewControlBar.this.bVi();
             }
           }
           for (;;)
@@ -512,7 +514,7 @@ public class MPVideoViewControlBar
             AppMethodBeat.o(179004);
             return;
             if (MPVideoViewControlBar.l(MPVideoViewControlBar.this) != null) {
-              MPVideoViewControlBar.l(MPVideoViewControlBar.this).crF();
+              MPVideoViewControlBar.l(MPVideoViewControlBar.this).cEK();
             }
             MPVideoViewControlBar.m(MPVideoViewControlBar.this);
             MPVideoViewControlBar.n(MPVideoViewControlBar.this);
@@ -521,29 +523,29 @@ public class MPVideoViewControlBar
       });
       AppMethodBeat.o(179005);
       return;
-      localObject = c.pNP;
+      localObject = a.sUM;
     }
   }
   
-  private void crN()
+  private void cEU()
   {
     AppMethodBeat.i(179006);
     Log.d("MicroMsg.MPVideoViewControlBar", "hideSpeedContainer");
-    if (this.pOE.getVisibility() != 8)
+    if (this.sVA.getVisibility() != 8)
     {
-      this.pOE.setVisibility(8);
-      if (this.pOG != null) {
-        this.pOG.crG();
+      this.sVA.setVisibility(8);
+      if (this.sVC != null) {
+        this.sVC.cEL();
       }
     }
     AppMethodBeat.o(179006);
   }
   
-  private void crO()
+  private void cEV()
   {
     AppMethodBeat.i(179007);
-    ImageView localImageView = this.mDh;
-    if (this.mDo) {}
+    ImageView localImageView = this.pCt;
+    if (this.pCA) {}
     for (int i = 8;; i = 0)
     {
       localImageView.setVisibility(i);
@@ -552,248 +554,106 @@ public class MPVideoViewControlBar
     }
   }
   
-  private void crP()
+  private void cEW()
   {
     AppMethodBeat.i(179008);
-    ViewGroup.LayoutParams localLayoutParams = this.mCP.getLayoutParams();
-    int i = getResources().getDimensionPixelSize(2131166719);
-    if (this.mDo) {
-      i = getResources().getDimensionPixelSize(2131166718);
+    ViewGroup.LayoutParams localLayoutParams = this.pCc.getLayoutParams();
+    int i = getResources().getDimensionPixelSize(d.c.spv);
+    if (this.pCA) {
+      i = getResources().getDimensionPixelSize(d.c.spu);
     }
     localLayoutParams.height = i;
     localLayoutParams.width = i;
-    this.mCP.setLayoutParams(localLayoutParams);
+    this.pCc.setLayoutParams(localLayoutParams);
     AppMethodBeat.o(179008);
   }
   
-  private void em(int paramInt1, int paramInt2)
+  private void eK(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(6334);
-    if (this.mDw != null) {
-      this.mDw.onProgressChanged(paramInt1, paramInt2);
+    if (this.pCI != null) {
+      this.pCI.onProgressChanged(paramInt1, paramInt2);
     }
-    crJ();
+    cEQ();
     AppMethodBeat.o(6334);
   }
   
-  public final void KD()
+  public final void Nq()
   {
     AppMethodBeat.i(6313);
-    this.mDo = true;
-    bKT();
+    this.pCA = true;
+    bWT();
     AppMethodBeat.o(6313);
   }
   
-  public final void N(final LinkedList<com.tencent.mm.plugin.brandservice.ui.timeline.video.util.c> paramLinkedList)
+  public final void a(com.tencent.mm.plugin.appbrand.jsapi.video.d.f paramf)
   {
-    AppMethodBeat.i(6323);
-    this.pOv = paramLinkedList;
-    if ((this.pOu == null) || (Util.isNullOrNil(this.pOv)))
-    {
-      this.pOu.removeAllViews();
-      AppMethodBeat.o(6323);
-      return;
-    }
-    Log.i("MicroMsg.MPVideoViewControlBar", "updateControlBarDotPos");
-    MMHandlerThread.postToMainThreadDelayed(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(195072);
-        MPVideoViewControlBar.g(MPVideoViewControlBar.this).removeAllViews();
-        Object localObject = paramLinkedList;
-        if (!Util.isNullOrNil((List)localObject))
-        {
-          localObject = ((LinkedList)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            com.tencent.mm.plugin.brandservice.ui.timeline.video.util.c localc = (com.tencent.mm.plugin.brandservice.ui.timeline.video.util.c)((Iterator)localObject).next();
-            ImageView localImageView = new ImageView(MPVideoViewControlBar.this.getContext());
-            MPVideoViewControlBar.g(MPVideoViewControlBar.this).addView(localImageView);
-            if (!MPVideoViewControlBar.a(MPVideoViewControlBar.this, localImageView, localc)) {
-              MPVideoViewControlBar.g(MPVideoViewControlBar.this).removeView(localImageView);
-            }
-          }
-        }
-        AppMethodBeat.o(195072);
-      }
-    }, 100L);
-    AppMethodBeat.o(6323);
+    this.sVJ = paramf;
   }
   
-  public final void T(String paramString1, final String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(195073);
-    com.tencent.mm.av.a.a locala = com.tencent.mm.av.a.a.bdb();
-    ImageView localImageView = this.pOx;
-    com.tencent.mm.av.a.a.c.a locala1 = new com.tencent.mm.av.a.a.c.a();
-    locala1.iaT = true;
-    locala1.jbq = 2131231405;
-    locala.a(paramString3, localImageView, locala1.bdv());
-    this.pOy.setText(paramString1);
-    this.pOw.setOnClickListener(null);
-    this.pOw.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(195068);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/brandservice/ui/widget/MPVideoViewControlBar$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        paramAnonymousView = new Intent();
-        paramAnonymousView.putExtra("Contact_User", paramString2);
-        paramAnonymousView.putExtra("Contact_Scene", 179);
-        paramAnonymousView.putExtra("force_get_contact", true);
-        paramAnonymousView.putExtra("key_use_new_contact_profile", true);
-        com.tencent.mm.br.c.b(MPVideoViewControlBar.this.getContext(), "profile", ".ui.ContactInfoUI", paramAnonymousView);
-        m.DR(45);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/brandservice/ui/widget/MPVideoViewControlBar$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(195068);
-      }
-    });
-    o.hq(this.pOw);
-    AppMethodBeat.o(195073);
-  }
-  
-  public final void a(e.f paramf)
-  {
-    this.pON = paramf;
-  }
-  
-  public final void a(LinkedList<gh> paramLinkedList, gh paramgh)
-  {
-    AppMethodBeat.i(6324);
-    if ((paramLinkedList == null) || (paramgh == null))
-    {
-      AppMethodBeat.o(6324);
-      return;
-    }
-    this.pOL.clear();
-    HashSet localHashSet = new HashSet();
-    paramLinkedList = paramLinkedList.iterator();
-    while (paramLinkedList.hasNext())
-    {
-      gh localgh = (gh)paramLinkedList.next();
-      if ((!Util.isNullOrNil(localgh.KKh)) && (!localHashSet.contains(Integer.valueOf(localgh.KKg))))
-      {
-        this.pOL.add(localgh);
-        localHashSet.add(Integer.valueOf(localgh.KKg));
-      }
-    }
-    Collections.sort(this.pOL, new Comparator() {});
-    this.pOM = paramgh;
-    AppMethodBeat.o(6324);
-  }
-  
-  public final void bGL()
+  public final void bSs()
   {
     AppMethodBeat.i(6314);
-    this.mDo = false;
-    bKT();
+    this.pCA = false;
+    bWT();
     AppMethodBeat.o(6314);
   }
   
-  public final void bIZ()
+  public final void bUI()
   {
     AppMethodBeat.i(6300);
-    if ((this.mDt) && (this.mDu)) {
-      this.mDi.setVisibility(8);
+    if ((this.pCF) && (this.pCG)) {
+      this.pCu.setVisibility(8);
     }
     AppMethodBeat.o(6300);
   }
   
-  public final void bJA()
-  {
-    AppMethodBeat.i(6320);
-    if (this.mww != null) {
-      this.mww.stopTimer();
-    }
-    AppMethodBeat.o(6320);
-  }
-  
-  public final void bJB()
-  {
-    AppMethodBeat.i(6307);
-    if (this.mDn != null)
-    {
-      this.mDn.stopTimer();
-      this.mDn.startTimer(4000L);
-    }
-    AppMethodBeat.o(6307);
-  }
-  
-  public final void bJC()
-  {
-    AppMethodBeat.i(6301);
-    if ((this.mDt) && (this.mDu)) {
-      this.mDi.setVisibility(0);
-    }
-    AppMethodBeat.o(6301);
-  }
-  
-  public final boolean bJD()
-  {
-    AppMethodBeat.i(6332);
-    if (this.mDg != null)
-    {
-      if ((getVisibility() == 0) && (this.mDg.getVisibility() == 0))
-      {
-        AppMethodBeat.o(6332);
-        return true;
-      }
-      AppMethodBeat.o(6332);
-      return false;
-    }
-    AppMethodBeat.o(6332);
-    return false;
-  }
-  
-  public final boolean bJt()
+  public final boolean bVa()
   {
     return false;
   }
   
-  public final void bJu()
+  public final void bVb()
   {
     AppMethodBeat.i(6312);
-    if (bJw())
+    if (bVd())
     {
       hide();
       AppMethodBeat.o(6312);
       return;
     }
-    bJv();
+    bVc();
     AppMethodBeat.o(6312);
   }
   
-  public final void bJv()
+  public final void bVc()
   {
     AppMethodBeat.i(6306);
     show();
-    if (this.mDn == null) {
-      this.mDn = new MTimerHandler(new MTimerHandler.CallBack()
+    if (this.pCz == null) {
+      this.pCz = new MTimerHandler(new MTimerHandler.CallBack()
       {
         public final boolean onTimerExpired()
         {
-          AppMethodBeat.i(195069);
+          AppMethodBeat.i(266918);
           if ((MPVideoViewControlBar.a(MPVideoViewControlBar.this)) || (MPVideoViewControlBar.b(MPVideoViewControlBar.this).getVisibility() == 0))
           {
-            AppMethodBeat.o(195069);
+            AppMethodBeat.o(266918);
             return true;
           }
           MPVideoViewControlBar.this.hide();
           MPVideoViewControlBar.c(MPVideoViewControlBar.this).stopTimer();
-          AppMethodBeat.o(195069);
+          AppMethodBeat.o(266918);
           return false;
         }
       }, false);
     }
-    this.mDn.stopTimer();
-    this.mDn.startTimer(4000L);
+    this.pCz.stopTimer();
+    this.pCz.startTimer(4000L);
     AppMethodBeat.o(6306);
   }
   
-  public final boolean bJw()
+  public final boolean bVd()
   {
     AppMethodBeat.i(6311);
     if (getVisibility() == 0)
@@ -805,129 +665,175 @@ public class MPVideoViewControlBar
     return false;
   }
   
-  public final boolean bJx()
+  public final boolean bVe()
   {
-    return this.mDo;
+    return this.pCA;
   }
   
-  public final boolean bJy()
+  public final boolean bVf()
   {
     return true;
   }
   
-  public final void bJz()
+  public final void bVg()
   {
     AppMethodBeat.i(6319);
-    if (this.mww == null) {
-      this.mww = new MTimerHandler(new MTimerHandler.CallBack()
+    if (this.puW == null) {
+      this.puW = new MTimerHandler(new MTimerHandler.CallBack()
       {
         public final boolean onTimerExpired()
         {
-          AppMethodBeat.i(195071);
+          AppMethodBeat.i(266770);
           if (!MPVideoViewControlBar.f(MPVideoViewControlBar.this))
           {
-            AppMethodBeat.o(195071);
+            AppMethodBeat.o(266770);
             return false;
           }
-          AppMethodBeat.o(195071);
+          AppMethodBeat.o(266770);
           return true;
         }
       }, true);
     }
-    bKX();
-    this.mww.stopTimer();
-    this.mww.startTimer(500L);
+    bWX();
+    this.puW.stopTimer();
+    this.puW.startTimer(500L);
     AppMethodBeat.o(6319);
   }
   
-  public final void bKO()
+  public final void bVh()
+  {
+    AppMethodBeat.i(6320);
+    if (this.puW != null) {
+      this.puW.stopTimer();
+    }
+    AppMethodBeat.o(6320);
+  }
+  
+  public final void bVi()
+  {
+    AppMethodBeat.i(6307);
+    if (this.pCz != null)
+    {
+      this.pCz.stopTimer();
+      this.pCz.startTimer(4000L);
+    }
+    AppMethodBeat.o(6307);
+  }
+  
+  public final void bVj()
+  {
+    AppMethodBeat.i(6301);
+    if ((this.pCF) && (this.pCG)) {
+      this.pCu.setVisibility(0);
+    }
+    AppMethodBeat.o(6301);
+  }
+  
+  public final boolean bVk()
+  {
+    AppMethodBeat.i(6332);
+    if (this.pCs != null)
+    {
+      if ((getVisibility() == 0) && (this.pCs.getVisibility() == 0))
+      {
+        AppMethodBeat.o(6332);
+        return true;
+      }
+      AppMethodBeat.o(6332);
+      return false;
+    }
+    AppMethodBeat.o(6332);
+    return false;
+  }
+  
+  public final void bWO()
   {
     AppMethodBeat.i(6328);
-    if (this.mCS == 0)
+    if (this.pCf == 0)
     {
       AppMethodBeat.o(6328);
       return;
     }
-    if (this.mbo)
+    if (this.oZf)
     {
       AppMethodBeat.o(6328);
       return;
     }
-    if (this.mCO == null)
+    if (this.pCb == null)
     {
       AppMethodBeat.o(6328);
       return;
     }
-    this.mCQ.setText(xt(this.mPosition / 60) + ":" + xt(this.mPosition % 60));
+    this.pCd.setText(AQ(this.mPosition / 60) + ":" + AQ(this.mPosition % 60));
     if (getBarLen() == 0)
     {
       AppMethodBeat.o(6328);
       return;
     }
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.mCO.getLayoutParams();
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.pCb.getLayoutParams();
     int i = getBarLen();
-    localLayoutParams.leftMargin = en(this.mPosition, i);
-    this.mCO.setLayoutParams(localLayoutParams);
-    localLayoutParams = (FrameLayout.LayoutParams)this.mCM.getLayoutParams();
-    localLayoutParams.width = ((int)(this.mPosition * 1.0D / this.mCS * i));
-    this.mCM.setLayoutParams(localLayoutParams);
+    localLayoutParams.leftMargin = eL(this.mPosition, i);
+    this.pCb.setLayoutParams(localLayoutParams);
+    localLayoutParams = (FrameLayout.LayoutParams)this.pBZ.getLayoutParams();
+    localLayoutParams.width = ((int)(this.mPosition * 1.0D / this.pCf * i));
+    this.pBZ.setLayoutParams(localLayoutParams);
     requestLayout();
-    em(this.mPosition, this.mCS);
+    eK(this.mPosition, this.pCf);
     AppMethodBeat.o(6328);
   }
   
-  public final void crH()
+  public final void cEO()
   {
     AppMethodBeat.i(6308);
-    if (this.mDn != null) {
-      this.mDn.stopTimer();
+    if (this.pCz != null) {
+      this.pCz.stopTimer();
     }
     AppMethodBeat.o(6308);
   }
   
   public int getLayoutId()
   {
-    return 2131495703;
+    return com.tencent.mm.plugin.brandservice.d.f.suu;
   }
   
   public final void hide()
   {
     AppMethodBeat.i(6309);
-    if (this.pOI == null)
+    if (this.sVE == null)
     {
-      this.pOI = AnimationUtils.loadAnimation(getContext(), 2130772130);
-      this.pOI.setDuration(300L);
+      this.sVE = AnimationUtils.loadAnimation(getContext(), com.tencent.mm.plugin.brandservice.d.a.push_down_out);
+      this.sVE.setDuration(300L);
     }
-    this.mDe.clearAnimation();
-    this.mDe.startAnimation(this.pOI);
-    if (this.mDo)
+    this.pCq.clearAnimation();
+    this.pCq.startAnimation(this.sVE);
+    if (this.pCA)
     {
-      if (this.pOK == null)
+      if (this.sVG == null)
       {
-        this.pOK = AnimationUtils.loadAnimation(getContext(), 2130772133);
-        this.pOK.setDuration(300L);
+        this.sVG = AnimationUtils.loadAnimation(getContext(), com.tencent.mm.plugin.brandservice.d.a.push_up_out);
+        this.sVG.setDuration(300L);
       }
-      this.mDk.clearAnimation();
-      this.mDk.startAnimation(this.pOK);
-      this.pOw.clearAnimation();
-      this.pOw.startAnimation(this.pOK);
+      this.pCw.clearAnimation();
+      this.pCw.startAnimation(this.sVG);
+      this.sVs.clearAnimation();
+      this.sVs.startAnimation(this.sVG);
     }
-    if (this.pOB.getVisibility() == 0) {
-      this.pOB.startAnimation(this.pOI);
+    if (this.sVx.getVisibility() == 0) {
+      this.sVx.startAnimation(this.sVE);
     }
-    if (this.pOE.getVisibility() == 0) {
-      this.pOE.startAnimation(this.pOI);
+    if (this.sVA.getVisibility() == 0) {
+      this.sVA.startAnimation(this.sVE);
     }
     MMHandlerThread.postToMainThreadDelayed(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(195070);
+        AppMethodBeat.i(266473);
         MPVideoViewControlBar.this.setVisibility(8);
         MPVideoViewControlBar.d(MPVideoViewControlBar.this);
         MPVideoViewControlBar.e(MPVideoViewControlBar.this);
         MPVideoViewControlBar.b(MPVideoViewControlBar.this).clearAnimation();
-        AppMethodBeat.o(195070);
+        AppMethodBeat.o(266473);
       }
     }, 200L);
     AppMethodBeat.o(6309);
@@ -937,38 +843,38 @@ public class MPVideoViewControlBar
   {
     AppMethodBeat.i(6290);
     super.init();
-    this.mDc = ((ImageView)this.contentView.findViewById(2131301826));
-    this.mDf = ((ImageView)this.contentView.findViewById(2131305976));
-    this.mDg = ((FrameLayout)this.contentView.findViewById(2131305979));
-    this.mDe = ((LinearLayout)findViewById(2131307157));
-    this.pOu = ((RelativeLayout)findViewById(2131305968));
-    this.pOB = ((LinearLayout)findViewById(2131307030));
-    this.pOz = ((TextView)findViewById(2131307032));
-    this.pOA = findViewById(2131307031);
-    this.pOE = ((LinearLayout)findViewById(2131308326));
-    this.pOC = ((TextView)findViewById(2131308328));
-    this.pOD = findViewById(2131308327);
-    this.mDh = ((ImageView)findViewById(2131305118));
-    this.mDi = ((ImageView)findViewById(2131298258));
-    this.mDj = ((ImageView)findViewById(2131300227));
-    this.ayz = ((TextView)findViewById(2131309195));
-    this.mDk = ((LinearLayout)findViewById(2131301848));
-    this.mDl = ((LinearLayout)findViewById(2131305973));
-    this.pOw = ((LinearLayout)findViewById(2131304937));
-    this.pOx = ((ImageView)findViewById(2131304927));
-    this.pOy = ((TextView)findViewById(2131304928));
-    this.mDe.setOnClickListener(new MPVideoViewControlBar.5(this));
+    this.pCo = ((ImageView)this.contentView.findViewById(com.tencent.mm.plugin.brandservice.d.e.full_screen_btn));
+    this.pCr = ((ImageView)this.contentView.findViewById(com.tencent.mm.plugin.brandservice.d.e.player_progress_bar_middle));
+    this.pCs = ((FrameLayout)this.contentView.findViewById(com.tencent.mm.plugin.brandservice.d.e.player_progress_root));
+    this.pCq = ((LinearLayout)findViewById(com.tencent.mm.plugin.brandservice.d.e.root));
+    this.sVq = ((RelativeLayout)findViewById(com.tencent.mm.plugin.brandservice.d.e.ssv));
+    this.sVx = ((LinearLayout)findViewById(com.tencent.mm.plugin.brandservice.d.e.ssM));
+    this.sVv = ((TextView)findViewById(com.tencent.mm.plugin.brandservice.d.e.ssO));
+    this.sVw = findViewById(com.tencent.mm.plugin.brandservice.d.e.ssN);
+    this.sVA = ((LinearLayout)findViewById(com.tencent.mm.plugin.brandservice.d.e.ssX));
+    this.sVy = ((TextView)findViewById(com.tencent.mm.plugin.brandservice.d.e.ssZ));
+    this.sVz = findViewById(com.tencent.mm.plugin.brandservice.d.e.ssY);
+    this.pCt = ((ImageView)findViewById(com.tencent.mm.plugin.brandservice.d.e.mute_btn));
+    this.pCu = ((ImageView)findViewById(com.tencent.mm.plugin.brandservice.d.e.center_play_btn));
+    this.pCv = ((ImageView)findViewById(com.tencent.mm.plugin.brandservice.d.e.exit_fullscreen_btn));
+    this.wB = ((TextView)findViewById(com.tencent.mm.plugin.brandservice.d.e.title));
+    this.pCw = ((LinearLayout)findViewById(com.tencent.mm.plugin.brandservice.d.e.fullscreen_title_bar));
+    this.pCx = ((LinearLayout)findViewById(com.tencent.mm.plugin.brandservice.d.e.player_progress_bar));
+    this.sVs = ((LinearLayout)findViewById(com.tencent.mm.plugin.brandservice.d.e.ssb));
+    this.sVt = ((ImageView)findViewById(com.tencent.mm.plugin.brandservice.d.e.srY));
+    this.sVu = ((TextView)findViewById(com.tencent.mm.plugin.brandservice.d.e.srZ));
+    this.pCq.setOnClickListener(new MPVideoViewControlBar.5(this));
     AppMethodBeat.o(6290);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(6288);
-    if (this.mww != null) {
-      this.mww.stopTimer();
+    if (this.puW != null) {
+      this.puW.stopTimer();
     }
-    if (this.mDn != null) {
-      this.mDn.stopTimer();
+    if (this.pCz != null) {
+      this.pCz.stopTimer();
     }
     AppMethodBeat.o(6288);
   }
@@ -977,75 +883,60 @@ public class MPVideoViewControlBar
   {
     AppMethodBeat.i(6327);
     super.seek(paramInt);
-    em(this.mPosition, this.mCS);
+    eK(this.mPosition, this.pCf);
     AppMethodBeat.o(6327);
   }
   
-  public void setDanmakuBtnOnClickListener(e.g paramg) {}
+  public void setDanmakuBtnOnClickListener(d.g paramg) {}
   
   public void setDanmakuBtnOpen(boolean paramBoolean) {}
   
   public void setDirection(int paramInt)
   {
-    this.add = paramInt;
+    this.puh = paramInt;
   }
   
   public void setExitFullScreenBtnOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(6292);
-    this.mDj.setOnClickListener(paramOnClickListener);
+    this.pCv.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(6292);
   }
   
   public void setFullScreenBtnOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(6304);
-    this.mDc.setOnClickListener(paramOnClickListener);
+    this.pCo.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(6304);
   }
   
-  public void setIplaySeekCallback(final e.d paramd)
+  public void setIplaySeekCallback(com.tencent.mm.plugin.appbrand.jsapi.video.d.d paramd)
   {
     AppMethodBeat.i(6289);
-    setIplaySeekCallback(new com.tencent.mm.plugin.sight.decode.ui.b()
-    {
-      public final void aJq()
-      {
-        AppMethodBeat.i(6276);
-        paramd.aJq();
-        AppMethodBeat.o(6276);
-      }
-      
-      public final void rk(int paramAnonymousInt)
-      {
-        AppMethodBeat.i(6277);
-        paramd.rk(paramAnonymousInt);
-        AppMethodBeat.o(6277);
-      }
-    });
+    setIplaySeekCallback(new MPVideoViewControlBar.1(this, paramd));
     AppMethodBeat.o(6289);
   }
   
   public void setIsPlay(boolean paramBoolean)
   {
     AppMethodBeat.i(6303);
-    this.dLB = paramBoolean;
-    if (this.dLB)
+    this.fEq = paramBoolean;
+    if (this.fEq)
     {
-      this.mCP.setImageDrawable(ar.m(getContext(), 2131690631, -1));
-      this.mDi.setImageResource(2131691158);
+      this.pCc.setImageDrawable(au.o(getContext(), d.h.icons_filled_pause, -1));
+      this.pCu.setImageResource(d.h.mp_video_play_btn_pause);
       AppMethodBeat.o(6303);
       return;
     }
-    this.mCP.setImageDrawable(ar.m(getContext(), 2131690647, -1));
-    this.mDi.setImageResource(2131691159);
+    this.pCc.setImageDrawable(au.o(getContext(), d.h.icons_filled_play, -1));
+    this.pCu.setImageResource(d.h.mp_video_play_btn_play);
     AppMethodBeat.o(6303);
   }
   
   public void setMuteBtnOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(6291);
-    this.mDh.setOnClickListener(paramOnClickListener);
+    this.pCt.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(6291);
   }
   
@@ -1054,11 +945,11 @@ public class MPVideoViewControlBar
     AppMethodBeat.i(6296);
     if (paramBoolean)
     {
-      this.mDh.setImageResource(2131691154);
+      this.pCt.setImageResource(d.h.mp_video_mute_btn_off);
       AppMethodBeat.o(6296);
       return;
     }
-    this.mDh.setImageResource(2131691155);
+    this.pCt.setImageResource(d.h.mp_video_mute_btn_on);
     AppMethodBeat.o(6296);
   }
   
@@ -1066,28 +957,28 @@ public class MPVideoViewControlBar
   {
     AppMethodBeat.i(6293);
     super.setOnPlayButtonClickListener(paramOnClickListener);
-    this.mDi.setOnClickListener(paramOnClickListener);
+    this.pCu.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(6293);
   }
   
-  public void setOnUpdateProgressLenListener(e.e parame)
+  public void setOnUpdateProgressLenListener(com.tencent.mm.plugin.appbrand.jsapi.video.d.e parame)
   {
-    this.mDw = parame;
+    this.pCI = parame;
   }
   
   public void setPlayBtnInCenterPosition(boolean paramBoolean)
   {
     AppMethodBeat.i(6299);
-    this.mDu = paramBoolean;
-    bKQ();
+    this.pCG = paramBoolean;
+    bWQ();
     AppMethodBeat.o(6299);
   }
   
   public void setShowControlProgress(boolean paramBoolean)
   {
     AppMethodBeat.i(6297);
-    this.mDs = paramBoolean;
-    bKY();
+    this.pCE = paramBoolean;
+    bWY();
     AppMethodBeat.o(6297);
   }
   
@@ -1096,16 +987,16 @@ public class MPVideoViewControlBar
   public void setShowFullScreenBtn(boolean paramBoolean)
   {
     AppMethodBeat.i(6329);
-    this.mDq = paramBoolean;
-    bKS();
-    bKP();
+    this.pCC = paramBoolean;
+    bWS();
+    bWP();
     AppMethodBeat.o(6329);
   }
   
   public void setShowMuteBtn(boolean paramBoolean)
   {
     AppMethodBeat.i(6295);
-    ImageView localImageView = this.mDh;
+    ImageView localImageView = this.pCt;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -1118,39 +1009,39 @@ public class MPVideoViewControlBar
   public void setShowPlayBtn(boolean paramBoolean)
   {
     AppMethodBeat.i(6330);
-    this.mDt = paramBoolean;
-    bKQ();
+    this.pCF = paramBoolean;
+    bWQ();
     AppMethodBeat.o(6330);
   }
   
   public void setShowProgress(boolean paramBoolean)
   {
     AppMethodBeat.i(6331);
-    this.mDr = paramBoolean;
-    bKY();
+    this.pCD = paramBoolean;
+    bWY();
     AppMethodBeat.o(6331);
   }
   
-  public void setStatePorter(e.i parami)
+  public void setStatePorter(com.tencent.mm.plugin.appbrand.jsapi.video.d.i parami)
   {
-    this.mDm = parami;
+    this.pCy = parami;
   }
   
   public void setSwitchResolutionListener(a parama)
   {
-    this.pOF = parama;
+    this.sVB = parama;
   }
   
   public void setSwitchSpeedListener(b paramb)
   {
-    this.pOG = paramb;
+    this.sVC = paramb;
   }
   
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(6294);
     if (!Util.isNullOrNil(paramString)) {
-      this.ayz.setText(paramString);
+      this.wB.setText(paramString);
     }
     AppMethodBeat.o(6294);
   }
@@ -1161,14 +1052,14 @@ public class MPVideoViewControlBar
     super.setVisibility(paramInt);
     if (paramInt == 0)
     {
-      if (this.pON != null)
+      if (this.sVJ != null)
       {
-        this.pON.onVisibilityChanged(true);
+        this.sVJ.onVisibilityChanged(true);
         AppMethodBeat.o(6335);
       }
     }
-    else if (((paramInt == 8) || (paramInt == 4)) && (this.pON != null)) {
-      this.pON.onVisibilityChanged(false);
+    else if (((paramInt == 8) || (paramInt == 4)) && (this.sVJ != null)) {
+      this.sVJ.onVisibilityChanged(false);
     }
     AppMethodBeat.o(6335);
   }
@@ -1181,24 +1072,24 @@ public class MPVideoViewControlBar
       AppMethodBeat.o(6310);
       return;
     }
-    if (this.pOH == null)
+    if (this.sVD == null)
     {
-      this.pOH = AnimationUtils.loadAnimation(getContext(), 2130772132);
-      this.pOH.setDuration(300L);
+      this.sVD = AnimationUtils.loadAnimation(getContext(), com.tencent.mm.plugin.brandservice.d.a.push_up_in);
+      this.sVD.setDuration(300L);
     }
-    this.mDe.clearAnimation();
-    this.mDe.startAnimation(this.pOH);
-    if (this.mDo)
+    this.pCq.clearAnimation();
+    this.pCq.startAnimation(this.sVD);
+    if (this.pCA)
     {
-      if (this.pOJ == null)
+      if (this.sVF == null)
       {
-        this.pOJ = AnimationUtils.loadAnimation(getContext(), 2130772129);
-        this.pOJ.setDuration(300L);
+        this.sVF = AnimationUtils.loadAnimation(getContext(), com.tencent.mm.plugin.brandservice.d.a.push_down_in);
+        this.sVF.setDuration(300L);
       }
-      this.mDk.clearAnimation();
-      this.mDk.startAnimation(this.pOJ);
-      this.pOw.clearAnimation();
-      this.pOw.startAnimation(this.pOJ);
+      this.pCw.clearAnimation();
+      this.pCw.startAnimation(this.sVF);
+      this.sVs.clearAnimation();
+      this.sVs.startAnimation(this.sVF);
     }
     setVisibility(0);
     AppMethodBeat.o(6310);
@@ -1206,25 +1097,25 @@ public class MPVideoViewControlBar
   
   public static abstract interface a
   {
-    public abstract void a(gh paramgh, int paramInt1, int paramInt2);
+    public abstract void b(fv paramfv);
     
-    public abstract void cqH();
+    public abstract void cEM();
     
-    public abstract void cqI();
+    public abstract void cEN();
   }
   
   public static abstract interface b
   {
-    public abstract void a(gh paramgh, c.a parama1, c.a parama2);
+    public abstract void a(fv paramfv);
     
-    public abstract void crF();
+    public abstract void cEK();
     
-    public abstract void crG();
+    public abstract void cEL();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.widget.MPVideoViewControlBar
  * JD-Core Version:    0.7.0.1
  */

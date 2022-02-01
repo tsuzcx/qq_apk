@@ -1,93 +1,76 @@
 package com.tencent.mm.plugin.webview.model;
 
-import android.os.Bundle;
-import android.os.Parcelable;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.b;
-import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.modelsns.SnsAdClick;
+import com.tencent.mm.ay.a.c.h;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.ArrayList;
-import java.util.Collection;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/model/WebViewSnsAdReporter;", "Lcom/tencent/mm/plugin/webview/model/IWebviewReporter;", "()V", "errCode", "", "loadReportInfo", "Ljava/util/ArrayList;", "", "snsAdClick", "Lcom/tencent/mm/modelsns/SnsAdClick;", "report", "", "setErrorCode", "setLoadReportInfo", "loadReports", "", "([Ljava/lang/String;)V", "setSnsAdClick", "adClick", "plugin-webview_release"})
 public final class au
 {
-  public SnsAdClick Bfh;
-  private final ArrayList<String> IZv;
-  public int errCode;
-  
-  public au()
+  public static Intent a(Bitmap paramBitmap, String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(210358);
-    this.IZv = new ArrayList();
-    AppMethodBeat.o(210358);
-  }
-  
-  public final void U(String... paramVarArgs)
-  {
-    AppMethodBeat.i(210356);
-    p.h(paramVarArgs, "loadReports");
-    int i = 0;
-    while (i < 4)
+    AppMethodBeat.i(79043);
+    Log.i("MicroMsg.WebViewShortcutManager", "buildIntent, install = %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    if ((paramBitmap == null) && (paramBoolean))
     {
-      String str = paramVarArgs[i];
-      this.IZv.add(str);
-      i += 1;
+      Log.e("MicroMsg.WebViewShortcutManager", "no bmp");
+      AppMethodBeat.o(79043);
+      return null;
     }
-    AppMethodBeat.o(210356);
-  }
-  
-  public final void report()
-  {
-    AppMethodBeat.i(210357);
+    Object localObject;
+    if (paramBoolean) {
+      localObject = "com.android.launcher.action.INSTALL_SHORTCUT";
+    }
     for (;;)
     {
+      localObject = new Intent((String)localObject);
+      ((Intent)localObject).putExtra("android.intent.extra.shortcut.NAME", paramString2);
+      ((Intent)localObject).putExtra("duplicate", false);
+      paramString2 = new Intent("com.tencent.mm.action.WX_SHORTCUT");
+      paramString2.putExtra("type", 4);
       try
       {
-        if (((Collection)this.IZv).isEmpty()) {
-          continue;
-        }
-        i = 1;
-        if (i != 0)
+        paramString2.putExtra("ext_info", URLEncoder.encode(paramString1, "utf-8"));
+        label113:
+        paramString2.setPackage(MMApplicationContext.getPackageName());
+        paramString2.addFlags(67108864);
+        ((Intent)localObject).putExtra("android.intent.extra.shortcut.INTENT", paramString2);
+        if (paramBitmap != null)
         {
-          Bundle localBundle = new Bundle();
-          localBundle.putStringArrayList("reportAdH5Load", new ArrayList((Collection)this.IZv));
-          localBundle.putInt("errCode", this.errCode);
-          localBundle.putParcelable("snsAdClick", (Parcelable)this.Bfh);
-          h.a(MainProcessIPCService.dkO, (Parcelable)localBundle, a.IZw.getClass(), null);
+          ((Intent)localObject).putExtra("android.intent.extra.shortcut.ICON", paramBitmap);
+          ((Intent)localObject).putExtra("shortcut_is_adaptive_icon", true);
         }
+        AppMethodBeat.o(79043);
+        return localObject;
+        localObject = "com.android.launcher.action.UNINSTALL_SHORTCUT";
       }
-      catch (Exception localException)
+      catch (UnsupportedEncodingException paramString1)
       {
-        int i;
-        Log.printErrStackTrace("MicroMsg.WebviewReporter", (Throwable)localException, "", new Object[0]);
-        continue;
+        break label113;
       }
-      this.Bfh = null;
-      this.IZv.clear();
-      AppMethodBeat.o(210357);
-      return;
-      i = 0;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "data", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
-  static final class a<InputType, ResultType>
-    implements b<Bundle, IPCVoid>
+  public static void a(a parama, boolean paramBoolean)
   {
-    public static final a IZw;
-    
-    static
-    {
-      AppMethodBeat.i(210355);
-      IZw = new a();
-      AppMethodBeat.o(210355);
+    AppMethodBeat.i(79042);
+    if (parama != null) {
+      parama.Da(paramBoolean);
     }
+    AppMethodBeat.o(79042);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void Da(boolean paramBoolean);
   }
 }
 

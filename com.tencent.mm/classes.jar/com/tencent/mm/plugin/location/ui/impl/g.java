@@ -5,22 +5,22 @@ import com.tencent.mm.plugin.report.service.h;
 
 public final class g
 {
+  int EqY;
   private int enterScene;
-  private int gmJ;
-  private int jVX;
-  int yNa;
+  private int iQS;
+  private int selectType;
   
   private g()
   {
     AppMethodBeat.i(56107);
-    this.jVX = b.yNk.ordinal();
+    this.selectType = b.Eri.ordinal();
     AppMethodBeat.o(56107);
   }
   
   private void report()
   {
     AppMethodBeat.i(56111);
-    h.CyF.a(17993, new Object[] { Integer.valueOf(this.gmJ), Integer.valueOf(this.enterScene), Integer.valueOf(this.jVX), Integer.valueOf(this.yNa) });
+    h.IzE.a(17993, new Object[] { Integer.valueOf(this.iQS), Integer.valueOf(this.enterScene), Integer.valueOf(this.selectType), Integer.valueOf(this.EqY) });
     reset();
     AppMethodBeat.o(56111);
   }
@@ -29,16 +29,16 @@ public final class g
   {
     AppMethodBeat.i(56110);
     this.enterScene = 0;
-    this.jVX = b.yNk.ordinal();
-    this.yNa = 0;
-    this.gmJ = 0;
+    this.selectType = b.Eri.ordinal();
+    this.EqY = 0;
+    this.iQS = 0;
     AppMethodBeat.o(56110);
   }
   
   public final void a(g.a parama)
   {
     AppMethodBeat.i(56109);
-    this.gmJ = parama.ordinal();
+    this.iQS = parama.ordinal();
     report();
     AppMethodBeat.o(56109);
   }
@@ -46,7 +46,7 @@ public final class g
   public final void a(b paramb)
   {
     AppMethodBeat.i(56108);
-    this.jVX = paramb.ordinal();
+    this.selectType = paramb.ordinal();
     AppMethodBeat.o(56108);
   }
   
@@ -73,13 +73,13 @@ public final class g
     static
     {
       AppMethodBeat.i(56105);
-      yNf = new b("UNKNOWN", 0);
-      yNg = new b("SEARCH_LIST", 1);
-      yNh = new b("SEARCH_MAP", 2);
-      yNi = new b("DRAG_MAP", 3);
-      yNj = new b("LIST", 4);
-      yNk = new b("DIRECT", 5);
-      yNl = new b[] { yNf, yNg, yNh, yNi, yNj, yNk };
+      Erd = new b("UNKNOWN", 0);
+      Ere = new b("SEARCH_LIST", 1);
+      Erf = new b("SEARCH_MAP", 2);
+      Erg = new b("DRAG_MAP", 3);
+      Erh = new b("LIST", 4);
+      Eri = new b("DIRECT", 5);
+      Erj = new b[] { Erd, Ere, Erf, Erg, Erh, Eri };
       AppMethodBeat.o(56105);
     }
     
@@ -88,19 +88,19 @@ public final class g
   
   static final class c
   {
-    static g yNm;
+    static g Erk;
     
     static
     {
       AppMethodBeat.i(56106);
-      yNm = new g((byte)0);
+      Erk = new g((byte)0);
       AppMethodBeat.o(56106);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.g
  * JD-Core Version:    0.7.0.1
  */

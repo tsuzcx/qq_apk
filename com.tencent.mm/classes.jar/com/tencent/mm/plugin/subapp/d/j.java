@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.subapp.d;
 
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
 import com.tencent.mm.compatible.util.f.a;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.modelvoice.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -20,31 +20,31 @@ import java.util.Queue;
 public final class j
   implements i
 {
-  private static int jrr = 0;
-  Queue<String> dAA;
-  Queue<String> dAB;
-  Map<String, f.a> dAC;
-  private boolean dAD;
-  private boolean dAE;
-  int dAF;
-  private long dAG;
-  f.a dAI;
-  private MTimerHandler dAJ;
+  private static int mgU = 0;
+  Queue<String> ftp;
+  Queue<String> ftq;
+  Map<String, f.a> ftr;
+  private boolean fts;
+  private boolean ftt;
+  int ftu;
+  private long ftv;
+  f.a ftx;
+  private MTimerHandler fty;
   private boolean running;
   
   public j()
   {
     AppMethodBeat.i(28989);
-    this.dAA = new LinkedList();
-    this.dAB = new LinkedList();
-    this.dAC = new HashMap();
-    this.dAD = false;
-    this.dAE = false;
+    this.ftp = new LinkedList();
+    this.ftq = new LinkedList();
+    this.ftr = new HashMap();
+    this.fts = false;
+    this.ftt = false;
     this.running = false;
-    this.dAF = 0;
-    this.dAG = 0L;
-    this.dAI = new f.a();
-    this.dAJ = new MTimerHandler(bg.aAk().getLooper(), new MTimerHandler.CallBack()
+    this.ftu = 0;
+    this.ftv = 0L;
+    this.ftx = new f.a();
+    this.fty = new MTimerHandler(bh.aHJ().getLooper(), new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -65,27 +65,27 @@ public final class j
         }
       }
     }, false);
-    bg.azz().a(329, this);
+    bh.aGY().a(329, this);
     AppMethodBeat.o(28989);
   }
   
-  private void aax()
+  private void afk()
   {
     AppMethodBeat.i(28991);
-    this.dAC.clear();
-    this.dAA.clear();
-    this.dAB.clear();
-    this.dAE = false;
-    this.dAD = false;
+    this.ftr.clear();
+    this.ftp.clear();
+    this.ftq.clear();
+    this.ftt = false;
+    this.fts = false;
     this.running = false;
-    Log.d("MicroMsg.VoiceRemindService", "Finish service use time(ms):" + this.dAI.apr());
+    Log.d("MicroMsg.VoiceRemindService", "Finish service use time(ms):" + this.ftx.avE());
     AppMethodBeat.o(28991);
   }
   
   public final void onSceneEnd(final int paramInt1, final int paramInt2, String paramString, final q paramq)
   {
     AppMethodBeat.i(28990);
-    bg.aAk().postToWorker(new Runnable()
+    bh.aHJ().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -103,10 +103,10 @@ public final class j
           if (str != null)
           {
             l1 = l2;
-            if (j.this.dAC.get(str) != null)
+            if (j.this.ftr.get(str) != null)
             {
-              l1 = ((f.a)j.this.dAC.get(str)).apr();
-              j.this.dAC.remove(str);
+              l1 = ((f.a)j.this.ftr.get(str)).avE();
+              j.this.ftr.remove(str);
             }
           }
           Log.d("MicroMsg.VoiceRemindService", "onSceneEnd SceneType:" + paramq.getType() + " errtype:" + paramInt1 + " errCode:" + paramInt2 + " retCode:" + i + " file:" + str + " time:" + l1);
@@ -115,7 +115,7 @@ public final class j
           }
           j.c(j.this);
           label220:
-          Log.d("MicroMsg.VoiceRemindService", "onSceneEnd  inCnt:" + j.jrr + " stop:" + j.d(j.this) + " running:" + j.e(j.this) + " recving:" + j.f(j.this) + " sending:" + j.g(j.this));
+          Log.d("MicroMsg.VoiceRemindService", "onSceneEnd  inCnt:" + j.mgU + " stop:" + j.d(j.this) + " running:" + j.e(j.this) + " recving:" + j.f(j.this) + " sending:" + j.g(j.this));
           if (j.d(j.this) <= 0) {
             break label435;
           }
@@ -123,7 +123,7 @@ public final class j
         }
         for (;;)
         {
-          j.chC();
+          j.cuN();
           AppMethodBeat.o(28986);
           return;
           if (paramq.getType() == 329)
@@ -134,7 +134,7 @@ public final class j
             break;
           }
           Log.e("MicroMsg.VoiceRemindService", "onSceneEnd Error SceneType:" + paramq.getType());
-          j.chC();
+          j.cuN();
           AppMethodBeat.o(28986);
           return;
           label416:
@@ -156,7 +156,7 @@ public final class j
   public final void run()
   {
     AppMethodBeat.i(28992);
-    bg.aAk().postToWorker(new Runnable()
+    bh.aHJ().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -176,7 +176,7 @@ public final class j
         j.b(j.this);
         j.a(j.this, 3);
         j.a(j.this);
-        j.this.dAI.gLm = SystemClock.elapsedRealtime();
+        j.this.ftx.jvB = SystemClock.elapsedRealtime();
         j.l(j.this).startTimer(10L);
         AppMethodBeat.o(28987);
       }
@@ -186,7 +186,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.d.j
  * JD-Core Version:    0.7.0.1
  */

@@ -9,121 +9,123 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.b.d;
+import com.tencent.mm.plugin.finder.b.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.ArrayList;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/view/FinderLiveGiftPanelIndicator;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "INDICATOR_H", "getINDICATOR_H", "()I", "INDICATOR_MARGIN", "getINDICATOR_MARGIN", "INDICATOR_W", "getINDICATOR_W", "TAG", "", "indicatorList", "Ljava/util/ArrayList;", "Landroid/widget/ImageView;", "Lkotlin/collections/ArrayList;", "getIndicatorList", "()Ljava/util/ArrayList;", "attachViewPager", "", "viewpager", "Landroid/support/v4/view/ViewPager;", "init", "setCurrentChoosedIndicator", "choosedIndicator", "setIndicatorSize", "indicatorSize", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/view/FinderLiveGiftPanelIndicator;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "INDICATOR_H", "getINDICATOR_H", "()I", "INDICATOR_MARGIN", "getINDICATOR_MARGIN", "INDICATOR_W", "getINDICATOR_W", "TAG", "", "indicatorList", "Ljava/util/ArrayList;", "Landroid/widget/ImageView;", "Lkotlin/collections/ArrayList;", "getIndicatorList", "()Ljava/util/ArrayList;", "attachViewPager", "", "viewpager", "Landroidx/viewpager/widget/ViewPager;", "init", "setCurrentChoosedIndicator", "choosedIndicator", "setIndicatorSize", "indicatorSize", "plugin-finder_release"})
 public final class FinderLiveGiftPanelIndicator
   extends LinearLayout
 {
   private final String TAG;
-  private final int uyr;
-  private final int uys;
-  private final int uyt;
-  private final ArrayList<ImageView> uyu;
+  private final int yUi;
+  private final int yUj;
+  private final int yUk;
+  private final ArrayList<ImageView> yUl;
   
   public FinderLiveGiftPanelIndicator(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(247448);
+    AppMethodBeat.i(289145);
     this.TAG = "FinderLiveGiftPanelIndicator";
     paramContext = MMApplicationContext.getContext();
-    p.g(paramContext, "MMApplicationContext.getContext()");
-    this.uyr = paramContext.getResources().getDimensionPixelOffset(2131165314);
-    this.uys = this.uyr;
+    p.j(paramContext, "MMApplicationContext.getContext()");
+    this.yUi = paramContext.getResources().getDimensionPixelOffset(b.d.Edge_A);
+    this.yUj = this.yUi;
     paramContext = MMApplicationContext.getContext();
-    p.g(paramContext, "MMApplicationContext.getContext()");
-    this.uyt = paramContext.getResources().getDimensionPixelOffset(2131165277);
-    this.uyu = new ArrayList();
+    p.j(paramContext, "MMApplicationContext.getContext()");
+    this.yUk = paramContext.getResources().getDimensionPixelOffset(b.d.Edge_0_5_A);
+    this.yUl = new ArrayList();
     setOrientation(0);
-    AppMethodBeat.o(247448);
+    AppMethodBeat.o(289145);
   }
   
   public FinderLiveGiftPanelIndicator(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(247449);
+    AppMethodBeat.i(289147);
     this.TAG = "FinderLiveGiftPanelIndicator";
     paramContext = MMApplicationContext.getContext();
-    p.g(paramContext, "MMApplicationContext.getContext()");
-    this.uyr = paramContext.getResources().getDimensionPixelOffset(2131165314);
-    this.uys = this.uyr;
+    p.j(paramContext, "MMApplicationContext.getContext()");
+    this.yUi = paramContext.getResources().getDimensionPixelOffset(b.d.Edge_A);
+    this.yUj = this.yUi;
     paramContext = MMApplicationContext.getContext();
-    p.g(paramContext, "MMApplicationContext.getContext()");
-    this.uyt = paramContext.getResources().getDimensionPixelOffset(2131165277);
-    this.uyu = new ArrayList();
+    p.j(paramContext, "MMApplicationContext.getContext()");
+    this.yUk = paramContext.getResources().getDimensionPixelOffset(b.d.Edge_0_5_A);
+    this.yUl = new ArrayList();
     setOrientation(0);
-    AppMethodBeat.o(247449);
+    AppMethodBeat.o(289147);
   }
   
   public final int getINDICATOR_H()
   {
-    return this.uys;
+    return this.yUj;
   }
   
   public final int getINDICATOR_MARGIN()
   {
-    return this.uyt;
+    return this.yUk;
   }
   
   public final int getINDICATOR_W()
   {
-    return this.uyr;
+    return this.yUi;
   }
   
   public final ArrayList<ImageView> getIndicatorList()
   {
-    return this.uyu;
+    return this.yUl;
   }
   
   public final void setCurrentChoosedIndicator(int paramInt)
   {
-    AppMethodBeat.i(247447);
-    int j = this.uyu.size();
+    AppMethodBeat.i(289144);
+    int j = this.yUl.size();
     int i = 0;
     if (i < j)
     {
       if (i == paramInt) {
-        ((ImageView)this.uyu.get(i)).setImageResource(2131232611);
+        ((ImageView)this.yUl.get(i)).setImageResource(b.e.finder_live_indicator_light_round_bg);
       }
       for (;;)
       {
         i += 1;
         break;
-        ((ImageView)this.uyu.get(i)).setImageResource(2131232635);
+        ((ImageView)this.yUl.get(i)).setImageResource(b.e.finder_live_round_dark_btn_bg);
       }
     }
-    AppMethodBeat.o(247447);
+    AppMethodBeat.o(289144);
   }
   
   public final void setIndicatorSize(int paramInt)
   {
-    AppMethodBeat.i(247446);
+    AppMethodBeat.i(289142);
     removeAllViews();
-    this.uyu.clear();
+    this.yUl.clear();
     Log.i(this.TAG, "setIndicatorSize indicatorSize:".concat(String.valueOf(paramInt)));
     if (paramInt < 2)
     {
-      AppMethodBeat.o(247446);
+      AppMethodBeat.o(289142);
       return;
     }
     int i = 0;
     while (i < paramInt)
     {
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.uyr, this.uys);
-      localLayoutParams.setMargins(this.uyt, 0, this.uyt, 0);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.yUi, this.yUj);
+      localLayoutParams.setMargins(this.yUk, 0, this.yUk, 0);
       localLayoutParams.gravity = 16;
       ImageView localImageView = new ImageView(getContext());
-      localImageView.setImageResource(2131232635);
+      localImageView.setImageResource(b.e.finder_live_round_dark_btn_bg);
       localImageView.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams);
       addView((View)localImageView);
-      this.uyu.add(localImageView);
+      this.yUl.add(localImageView);
       i += 1;
     }
-    AppMethodBeat.o(247446);
+    AppMethodBeat.o(289142);
   }
 }
 

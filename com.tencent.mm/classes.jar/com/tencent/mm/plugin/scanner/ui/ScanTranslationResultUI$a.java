@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.scanner.ui;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$Companion;", "", "()V", "CUR_STATE_DEFAULT", "", "CUR_STATE_PREVIEW", "CUR_STATE_TRANSLATING", "CUR_STATE_VIEW_ORIGINAL", "CUR_STATE_VIEW_TRANSLATION", "REQUEST_CODE_SELECT_PICTURE", "SCAN_LINE_ANIMATION_DURATION", "", "SOURCE_CAPTURE", "SOURCE_GALLERY", "TAG", "", "scan-translation_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$Companion;", "", "()V", "CUR_STATE_DEFAULT", "", "CUR_STATE_PREVIEW", "CUR_STATE_TRANSLATING", "CUR_STATE_VIEW_ORIGINAL", "CUR_STATE_VIEW_TRANSLATION", "REQUEST_CODE_SELECT_PICTURE", "SCAN_LINE_ANIMATION_DURATION", "", "SOURCE_CAPTURE", "SOURCE_GALLERY", "TAG", "", "scan-translation_release"})
 public final class ScanTranslationResultUI$a {}
 
 

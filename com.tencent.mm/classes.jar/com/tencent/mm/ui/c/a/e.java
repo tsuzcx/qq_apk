@@ -20,113 +20,119 @@ final class e
   
   public final b a(b.a parama)
   {
-    AppMethodBeat.i(205199);
-    if ((ViewPropertyAnimator)this.OMC.get() != null) {
-      this.OMn = parama;
+    AppMethodBeat.i(198989);
+    if ((ViewPropertyAnimator)this.Wgb.get() != null) {
+      this.WfM = parama;
     }
-    AppMethodBeat.o(205199);
+    AppMethodBeat.o(198989);
     return this;
   }
   
   public final void start()
   {
-    AppMethodBeat.i(205200);
+    AppMethodBeat.i(198992);
     System.currentTimeMillis();
     final ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F });
-    ViewPropertyAnimator localViewPropertyAnimator = (ViewPropertyAnimator)this.OMC.get();
-    if (this.OMl != null)
+    ViewPropertyAnimator localViewPropertyAnimator = (ViewPropertyAnimator)this.Wgb.get();
+    if (this.WfK != null)
     {
-      this.OMj.put(localValueAnimator, this.OMl);
-      this.OMl = null;
+      this.WfI.put(localValueAnimator, this.WfK);
+      this.WfK = null;
     }
-    if (this.OMm != null)
+    if (this.WfL != null)
     {
-      this.OMk.put(localValueAnimator, this.OMm);
-      this.OMm = null;
+      this.WfJ.put(localValueAnimator, this.WfL);
+      this.WfL = null;
     }
     localViewPropertyAnimator.setListener(new Animator.AnimatorListener()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(205197);
-        if (e.this.OMr != null) {
-          e.this.OMr.onAnimationCancel(null);
+        AppMethodBeat.i(203608);
+        if (e.this.WfQ != null) {
+          e.this.WfQ.onAnimationCancel(null);
         }
-        if (e.this.OMk != null) {
-          e.this.OMk.remove(localValueAnimator);
+        if (e.this.WfJ != null) {
+          e.this.WfJ.remove(localValueAnimator);
         }
-        AppMethodBeat.o(205197);
+        AppMethodBeat.o(203608);
       }
       
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(205196);
-        e.this.OMD = false;
-        if (e.this.OMr != null) {
-          e.this.OMr.onAnimationEnd(null);
+        AppMethodBeat.i(203607);
+        e.this.Wgc = false;
+        if (e.this.WfQ != null) {
+          e.this.WfQ.onAnimationEnd(null);
         }
-        if (e.this.OMk != null)
+        if (e.this.WfJ != null)
         {
-          paramAnonymousAnimator = (Runnable)e.this.OMk.get(localValueAnimator);
+          paramAnonymousAnimator = (Runnable)e.this.WfJ.get(localValueAnimator);
           if (paramAnonymousAnimator != null) {
             paramAnonymousAnimator.run();
           }
-          e.this.OMk.remove(localValueAnimator);
+          e.this.WfJ.remove(localValueAnimator);
         }
-        AppMethodBeat.o(205196);
+        if ((e.this.WfJ != null) && (e.this.WfJ.isEmpty())) {
+          e.this.WfQ = null;
+        }
+        e.this.WfM = null;
+        AppMethodBeat.o(203607);
       }
       
       public final void onAnimationRepeat(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(205195);
-        if (e.this.OMr != null) {
-          e.this.OMr.onAnimationRepeat(null);
+        AppMethodBeat.i(203606);
+        if (e.this.WfQ != null) {
+          e.this.WfQ.onAnimationRepeat(null);
         }
-        AppMethodBeat.o(205195);
+        AppMethodBeat.o(203606);
       }
       
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(205194);
-        if (e.this.OMr != null) {
-          e.this.OMr.onAnimationStart(null);
+        AppMethodBeat.i(203605);
+        if (e.this.WfQ != null) {
+          e.this.WfQ.onAnimationStart(null);
         }
-        if (e.this.OMj != null)
+        if (e.this.WfI != null)
         {
-          paramAnonymousAnimator = (Runnable)e.this.OMj.get(localValueAnimator);
+          paramAnonymousAnimator = (Runnable)e.this.WfI.get(localValueAnimator);
           if (paramAnonymousAnimator != null) {
             paramAnonymousAnimator.run();
           }
-          e.this.OMj.remove(localValueAnimator);
+          e.this.WfI.remove(localValueAnimator);
         }
-        AppMethodBeat.o(205194);
+        AppMethodBeat.o(203605);
       }
     });
     if (localViewPropertyAnimator != null)
     {
-      if (this.OMD) {
+      if (this.Wgc) {
         localViewPropertyAnimator.withLayer();
       }
-      if (this.OMn != null) {
+      if (this.WfM != null) {
         localViewPropertyAnimator.setUpdateListener(new ValueAnimator.AnimatorUpdateListener()
         {
           public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
           {
-            AppMethodBeat.i(205198);
+            AppMethodBeat.i(191047);
             float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-            e.this.OMn.by(f);
-            AppMethodBeat.o(205198);
+            if (e.this.WfM != null) {
+              e.this.WfM.bB(f);
+            }
+            AppMethodBeat.o(191047);
           }
         });
       }
       localViewPropertyAnimator.start();
     }
-    AppMethodBeat.o(205200);
+    AppMethodBeat.o(198992);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.c.a.e
  * JD-Core Version:    0.7.0.1
  */

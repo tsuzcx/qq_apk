@@ -30,7 +30,7 @@ public final class ch
     AppMethodBeat.o(32881);
   }
   
-  public final cg bkL(String paramString)
+  public final cg bxk(String paramString)
   {
     AppMethodBeat.i(32882);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -53,7 +53,7 @@ public final class ch
     return paramString;
   }
   
-  public final Cursor gEl()
+  public final Cursor hAB()
   {
     AppMethodBeat.i(32883);
     Cursor localCursor = rawQuery("select * from OpenMsgListener where (status = ?) ", new String[] { "1" });
@@ -63,7 +63,7 @@ public final class ch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.ch
  * JD-Core Version:    0.7.0.1
  */

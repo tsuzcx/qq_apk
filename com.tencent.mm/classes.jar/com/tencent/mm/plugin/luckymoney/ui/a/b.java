@@ -9,6 +9,7 @@ import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.api.ac.a;
 import com.tencent.mm.api.ad;
+import com.tencent.mm.plugin.wxpay.a.a;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 
 public final class b
@@ -18,12 +19,12 @@ public final class b
     AppMethodBeat.i(65985);
     paramChatFooterPanel.setEntranceScene(paramInt);
     paramChatFooterPanel.setVisibility(0);
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, ad.bD(paramViewGroup.getContext()));
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, ad.bC(paramViewGroup.getContext()));
     localLayoutParams.gravity = 80;
     paramViewGroup.removeAllViews();
     paramViewGroup.addView(paramChatFooterPanel, localLayoutParams);
-    paramViewGroup = ad.VK();
-    paramViewGroup.djc = parama;
+    paramViewGroup = ad.aaf();
+    paramViewGroup.faJ = parama;
     paramChatFooterPanel.setCallback(paramViewGroup);
     AppMethodBeat.o(65985);
   }
@@ -40,16 +41,16 @@ public final class b
     if (paramChatFooterPanel.getVisibility() == 0)
     {
       paramChatFooterPanel.setVisibility(8);
-      paramContext = AnimationUtils.loadAnimation(paramContext, 2130772130);
+      paramContext = AnimationUtils.loadAnimation(paramContext, a.a.push_down_out);
       paramContext.setAnimationListener(new Animation.AnimationListener()
       {
         public final void onAnimationEnd(Animation paramAnonymousAnimation)
         {
           AppMethodBeat.i(65983);
-          if (this.zjh != null)
+          if (this.EOx != null)
           {
-            this.zjh.onPause();
-            this.zjh.setVisibility(8);
+            this.EOx.onPause();
+            this.EOx.setVisibility(8);
           }
           AppMethodBeat.o(65983);
         }
@@ -59,8 +60,8 @@ public final class b
         public final void onAnimationStart(Animation paramAnonymousAnimation)
         {
           AppMethodBeat.i(65982);
-          if (this.zjh != null) {
-            this.zjh.setVisibility(0);
+          if (this.EOx != null) {
+            this.EOx.setVisibility(0);
           }
           AppMethodBeat.o(65982);
         }
@@ -75,7 +76,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.a.b
  * JD-Core Version:    0.7.0.1
  */

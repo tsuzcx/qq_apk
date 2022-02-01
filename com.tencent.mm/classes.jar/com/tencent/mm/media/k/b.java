@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.i.c;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.util.ArrayList;
 import java.util.List;
 import kotlin.a.j;
@@ -14,25 +14,25 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.n.n;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/util/FPSComputer;", "", "()V", "REPORT_ID_SROTY_VIDEO", "", "REPORT_KEY_EXECUTE_TIME", "REPORT_KEY_FAIL_COUNT", "TAG", "", "computeMinMaxAvgFps", "", "path", "result", "", "threshold", "", "plugin-mediaeditor_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/util/FPSComputer;", "", "()V", "REPORT_ID_SROTY_VIDEO", "", "REPORT_KEY_EXECUTE_TIME", "REPORT_KEY_FAIL_COUNT", "TAG", "", "computeMinMaxAvgFps", "", "path", "result", "", "threshold", "", "plugin-mediaeditor_release"})
 public final class b
 {
-  public static final b ill;
+  public static final b lai;
   
   static
   {
     AppMethodBeat.i(93873);
-    ill = new b();
+    lai = new b();
     AppMethodBeat.o(93873);
   }
   
   public static final List<Long> a(String paramString, double[] paramArrayOfDouble, int paramInt)
   {
     AppMethodBeat.i(93871);
-    p.h(paramArrayOfDouble, "result");
-    if ((paramString == null) || (!s.YS(paramString)))
+    p.k(paramArrayOfDouble, "result");
+    if ((paramString == null) || (!u.agG(paramString)))
     {
-      paramString = (List)v.SXr;
+      paramString = (List)v.aaAd;
       AppMethodBeat.o(93871);
       return paramString;
     }
@@ -54,10 +54,10 @@ public final class b
         if (i < m)
         {
           localObject = localc.getTrackFormat(i);
-          p.g(localObject, "mediaExtractor.getTrackFormat(i)");
+          p.j(localObject, "mediaExtractor.getTrackFormat(i)");
           localObject = ((MediaFormat)localObject).getString("mime");
-          p.g(localObject, "format.getString(MediaFormat.KEY_MIME)");
-          if (!n.J((String)localObject, "video/", false)) {
+          p.j(localObject, "format.getString(MediaFormat.KEY_MIME)");
+          if (!n.M((String)localObject, "video/", false)) {
             continue;
           }
           j = 1;
@@ -125,7 +125,7 @@ public final class b
         int i3;
         int i2;
         Log.e("FPSComputer", "compute fps error: " + localException.getLocalizedMessage());
-        h.CyF.F(986L, 103L);
+        h.IzE.F(986L, 103L);
         localc.release();
         continue;
       }
@@ -136,7 +136,7 @@ public final class b
       }
       l2 = System.currentTimeMillis();
       Log.i("FPSComputer", "compute fps for file: " + paramString + ", threshold = " + paramInt + " frames = " + localList.size() + ", execute time = " + (l2 - l1) + "ms, min fps = " + paramArrayOfDouble[0] + ", max fps = " + paramArrayOfDouble[1] + ", avg fps = " + paramArrayOfDouble[2]);
-      h.CyF.n(986L, 102L, l2 - l1);
+      h.IzE.p(986L, 102L, l2 - l1);
       AppMethodBeat.o(93871);
       return localList;
       i += 1;
@@ -150,7 +150,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.media.k.b
  * JD-Core Version:    0.7.0.1
  */

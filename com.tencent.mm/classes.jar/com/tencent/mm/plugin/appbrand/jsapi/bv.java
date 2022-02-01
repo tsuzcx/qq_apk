@@ -1,25 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.content.Intent;
-import com.tencent.luggage.h.f.c;
-import com.tencent.luggage.sdk.g.a;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.s;
-import com.tencent.mm.sdk.platformtools.Log;
-
 public final class bv
-  extends d<s>
+  extends c<j>
 {
-  public static final int CTRL_INDEX = 59;
-  public static final String NAME = "openCard";
-  final int lAW;
-  
-  public bv()
-  {
-    AppMethodBeat.i(174756);
-    this.lAW = a.aK(this);
-    AppMethodBeat.o(174756);
-  }
+  public static final int CTRL_INDEX = 642;
+  public static final String NAME = "openWCCardHomePage";
 }
 
 

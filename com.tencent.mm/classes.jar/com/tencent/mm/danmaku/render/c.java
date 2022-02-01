@@ -9,47 +9,47 @@ import com.tencent.mm.danmaku.e.d;
 public final class c
   extends a
 {
-  private TextPaint ayn;
+  private TextPaint wi;
   
   public c()
   {
-    AppMethodBeat.i(241698);
-    this.ayn = new TextPaint();
-    AppMethodBeat.o(241698);
+    AppMethodBeat.i(280747);
+    this.wi = new TextPaint();
+    AppMethodBeat.o(280747);
   }
   
   public final void b(Canvas paramCanvas, com.tencent.mm.danmaku.b.a parama, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(241700);
-    m localm = com.tencent.mm.danmaku.c.a.asO();
-    this.ayn.setTextSize(localm.gPN);
-    this.ayn.setColor(-1);
-    paramCanvas.drawText(String.valueOf(parama.mData), localm.gPQ + paramFloat1, localm.gPP + paramFloat2 - this.ayn.ascent(), this.ayn);
-    AppMethodBeat.o(241700);
+    AppMethodBeat.i(280749);
+    m localm = com.tencent.mm.danmaku.c.a.azC();
+    this.wi.setTextSize(localm.jAg);
+    this.wi.setColor(-1);
+    paramCanvas.drawText(String.valueOf(parama.mData), localm.jAj + paramFloat1, localm.jAi + paramFloat2 - this.wi.ascent(), this.wi);
+    AppMethodBeat.o(280749);
   }
   
-  public final boolean f(com.tencent.mm.danmaku.b.a parama)
+  public final boolean e(com.tencent.mm.danmaku.b.a parama)
   {
     return true;
   }
   
-  public final com.tencent.mm.danmaku.e.a g(com.tencent.mm.danmaku.b.a parama)
+  public final com.tencent.mm.danmaku.e.a f(com.tencent.mm.danmaku.b.a parama)
   {
-    AppMethodBeat.i(241699);
-    m localm = com.tencent.mm.danmaku.c.a.asO();
-    float f1 = d.a(localm.gPN, String.valueOf(parama.mData)) + localm.gPQ + localm.gPQ;
-    float f2 = d.ap(localm.gPN);
-    f2 = localm.gPP * 2.0F + f2;
-    parama.gPc = f2;
-    parama.gPb = f1;
+    AppMethodBeat.i(280748);
+    m localm = com.tencent.mm.danmaku.c.a.azC();
+    float f1 = d.a(localm.jAg, String.valueOf(parama.mData)) + localm.jAj + localm.jAj;
+    float f2 = d.ao(localm.jAg);
+    f2 = localm.jAi * 2.0F + f2;
+    parama.jzw = f2;
+    parama.jzv = f1;
     parama = new com.tencent.mm.danmaku.e.a(f1, f2);
-    AppMethodBeat.o(241699);
+    AppMethodBeat.o(280748);
     return parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.danmaku.render.c
  * JD-Core Version:    0.7.0.1
  */

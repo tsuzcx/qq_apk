@@ -6,10 +6,12 @@ import com.tencent.luggage.d.p;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.webview.c.h;
+import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bb;
 import com.tencent.mm.plugin.webview.luggage.q.a;
-import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.o;
 import org.json.JSONObject;
 
 public final class l
@@ -23,11 +25,11 @@ public final class l
   public final void a(Context paramContext, g paramg)
   {
     AppMethodBeat.i(78706);
-    bb.afY(0);
-    paramg.gbG().aYu("sendAppMessage");
-    paramg.ctS.a(new d()
+    bb.anM(0);
+    paramg.gUB().bkp("sendAppMessage");
+    paramg.crX.a(new d()
     {
-      public final JSONObject Ld()
+      public final JSONObject NU()
       {
         return null;
       }
@@ -37,15 +39,15 @@ public final class l
         return "menu:share:appmessage";
       }
     });
-    h.CyF.dN(982, 9);
+    h.IzE.el(982, 9);
     AppMethodBeat.o(78706);
   }
   
-  public final void a(Context paramContext, g paramg, m paramm)
+  public final void a(Context paramContext, g paramg, o paramo)
   {
     AppMethodBeat.i(78705);
-    if (paramg.Oc(21)) {
-      paramm.b(this.id, paramContext.getString(2131764184), 2131689844);
+    if (paramg.Tv(21)) {
+      paramo.b(this.id, paramContext.getString(c.i.readerapp_alert_retransmit), c.h.bottomsheet_icon_transmit);
     }
     AppMethodBeat.o(78705);
   }

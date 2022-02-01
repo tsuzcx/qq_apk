@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.shake.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cvi;
-import com.tencent.mm.protocal.protobuf.cvj;
+import com.tencent.mm.protocal.protobuf.des;
+import com.tencent.mm.protocal.protobuf.det;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
@@ -24,16 +24,16 @@ public final class c
   {
     AppMethodBeat.i(28277);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new cvi();
-    ((d.a)localObject).iLO = new cvj();
+    ((d.a)localObject).lBU = new des();
+    ((d.a)localObject).lBV = new det();
     ((d.a)localObject).uri = "/cgi-bin/mmoctv/optvhist";
     ((d.a)localObject).funcId = 1740;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (cvi)this.rr.iLK.iLR;
-    ((cvi)localObject).him = paramInt;
-    ((cvi)localObject).MAK = paramString;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (des)d.b.b(this.rr.lBR);
+    ((des)localObject).jUk = paramInt;
+    ((des)localObject).TMt = paramString;
     AppMethodBeat.o(28277);
   }
   
@@ -61,7 +61,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.d.a.c
  * JD-Core Version:    0.7.0.1
  */

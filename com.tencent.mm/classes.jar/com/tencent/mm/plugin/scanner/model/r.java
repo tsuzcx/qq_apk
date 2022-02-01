@@ -1,72 +1,122 @@
 package com.tencent.mm.plugin.scanner.model;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.b;
-import com.tencent.mm.plugin.scanner.util.n;
-import com.tencent.mm.plugin.scanner.util.n.a;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 public final class r
 {
-  public static String Wu(int paramInt)
+  public static boolean a(a.a parama)
   {
-    if (paramInt == 4) {
-      return "wxfbc915ff7c30e335";
+    AppMethodBeat.i(51640);
+    if (!Util.isNullOrNil(parama.key))
+    {
+      AppMethodBeat.o(51640);
+      return true;
     }
-    if (paramInt == 3) {
-      return "wx482a4001c37e2b74";
-    }
-    return "wxfbc915ff7c30e335";
+    AppMethodBeat.o(51640);
+    return false;
   }
   
-  public static String a(Context paramContext, n.a parama)
+  public static boolean b(List<a> paramList, Map<String, a.a> paramMap)
   {
-    AppMethodBeat.i(51634);
-    k.b localb = new k.b();
-    localb.appId = Wu(parama.field_functionType);
-    localb.title = parama.field_title;
-    localb.description = parama.field_source;
-    localb.type = 10;
-    localb.url = parama.field_shareurl;
-    localb.action = "";
-    localb.appName = n.am(paramContext, parama.field_type);
-    localb.thumburl = parama.field_thumburl;
-    localb.ixg = parama.field_type;
-    localb.ixh = n.c(parama);
-    paramContext = k.b.a(localb, null, null);
-    AppMethodBeat.o(51634);
-    return paramContext;
+    AppMethodBeat.i(51639);
+    if ((paramMap == null) || (paramMap.size() <= 0) || (paramList == null))
+    {
+      AppMethodBeat.o(51639);
+      return false;
+    }
+    int i = 0;
+    boolean bool2;
+    for (boolean bool1 = false; i < paramList.size(); bool1 = bool2)
+    {
+      bool2 = bool1;
+      if (paramList.get(i) != null)
+      {
+        LinkedList localLinkedList = ((a)paramList.get(i)).pSC;
+        int j = 0;
+        bool2 = false;
+        if (j < localLinkedList.size())
+        {
+          a.a locala1 = (a.a)localLinkedList.get(j);
+          if (a(locala1))
+          {
+            a.a locala2 = (a.a)paramMap.get(locala1.key);
+            if (locala2 != null)
+            {
+              Log.i("MicroMsg.ProductUpdateLogic", "Updating action , info: key=" + locala1.key);
+              localLinkedList.remove(j);
+              localLinkedList.add(j, locala2);
+              bool2 = true;
+              bool1 = true;
+            }
+          }
+          for (;;)
+          {
+            j += 1;
+            break;
+            bool2 = true;
+          }
+        }
+        ((a)paramList.get(i)).IKg = bool2;
+        bool2 = bool1;
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(51639);
+    return bool1;
   }
   
-  public static n.a fn(String paramString, int paramInt)
+  public static LinkedList<String> hg(List<a> paramList)
   {
-    AppMethodBeat.i(51635);
-    if (Util.isNullOrNil(paramString))
+    AppMethodBeat.i(51637);
+    LinkedList localLinkedList1 = new LinkedList();
+    int i = 0;
+    while (i < paramList.size())
     {
-      AppMethodBeat.o(51635);
-      return null;
+      LinkedList localLinkedList2 = ((a)paramList.get(i)).pSC;
+      int j = 0;
+      while (j < localLinkedList2.size())
+      {
+        a.a locala = (a.a)localLinkedList2.get(j);
+        if (a(locala)) {
+          localLinkedList1.add(locala.key);
+        }
+        j += 1;
+      }
+      i += 1;
     }
-    int i = n.aMS(paramString);
-    if (i == 3)
+    AppMethodBeat.o(51637);
+    return localLinkedList1;
+  }
+  
+  public static Map<String, a.a> hh(List<String> paramList)
+  {
+    AppMethodBeat.i(51638);
+    HashMap localHashMap = new HashMap();
+    int i = 0;
+    while (i < paramList.size())
     {
-      paramString = n.fp(paramString, paramInt);
-      AppMethodBeat.o(51635);
-      return paramString;
+      Object localObject = (String)paramList.get(i);
+      Log.d("MicroMsg.ProductUpdateLogic", "toUpdateXmlList info: i=" + i + ";" + Util.nullAsNil((String)localObject));
+      localObject = a.p(XmlParser.parseXml((String)localObject, "action", null), ".action");
+      if ((localObject != null) && (((a.a)localObject).fwp != 2)) {
+        localHashMap.put(((a.a)localObject).key, localObject);
+      }
+      i += 1;
     }
-    if (i == 4)
-    {
-      paramString = n.aMT(paramString);
-      AppMethodBeat.o(51635);
-      return paramString;
-    }
-    AppMethodBeat.o(51635);
-    return null;
+    AppMethodBeat.o(51638);
+    return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.r
  * JD-Core Version:    0.7.0.1
  */

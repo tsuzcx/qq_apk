@@ -6,7 +6,10 @@ import android.graphics.SurfaceTexture;
 import android.media.AudioManager;
 import android.media.MediaCodecInfo;
 import android.media.MediaCodecList;
+import android.net.ConnectivityManager;
 import android.net.DhcpInfo;
+import android.net.LinkProperties;
+import android.net.RouteInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Build.VERSION;
@@ -16,157 +19,171 @@ import android.view.Display;
 import android.view.Surface;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ae;
+import com.tencent.mm.compatible.deviceinfo.af;
 import com.tencent.mm.compatible.deviceinfo.c.a;
 import com.tencent.mm.compatible.deviceinfo.m;
 import com.tencent.mm.compatible.util.j;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ay.a;
-import com.tencent.mm.model.ay.e;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.az.a;
+import com.tencent.mm.model.az.e;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.voip.video.OpenGlRender;
-import com.tencent.mm.protocal.protobuf.csu;
-import com.tencent.mm.protocal.protobuf.ecd;
-import com.tencent.mm.protocal.protobuf.esq;
-import com.tencent.mm.protocal.protobuf.ety;
-import com.tencent.mm.protocal.protobuf.eub;
-import com.tencent.mm.protocal.protobuf.eur;
+import com.tencent.mm.protocal.protobuf.dbt;
+import com.tencent.mm.protocal.protobuf.eme;
+import com.tencent.mm.protocal.protobuf.fdb;
+import com.tencent.mm.protocal.protobuf.fej;
+import com.tencent.mm.protocal.protobuf.fem;
+import com.tencent.mm.protocal.protobuf.ffc;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
+import java.net.Inet6Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class v2protocal
 {
-  public static boolean Hap;
-  public static boolean Haq;
-  public static boolean Har;
-  public static int Has;
-  public static int Hbf;
-  public static d HcA;
-  public static Surface HcC;
-  public static com.tencent.mm.media.g.d HcD;
-  private static int Hcc;
+  public static int Fno;
+  public static boolean Fnp;
+  public static boolean NQA;
+  public static boolean NQB;
+  public static boolean NQC;
+  public static boolean NQD;
+  public static int NQE;
+  public static int NRr;
+  public static d NSM;
+  public static Surface NSO;
+  public static com.tencent.mm.media.g.d NSP;
+  private static int NSo;
   public static final int VOICE_FRAME_BYTES;
   public static final int VOICE_SAMPLERATE;
   protected static int cpuFlag0;
   public static SurfaceTexture mSurfaceTexture;
-  public int HaA;
-  public byte[] HaB;
-  public int HaC;
-  public int HaD;
-  public int HaE;
-  public int HaF;
-  public byte[] HaG;
-  public byte[] HaH;
-  public byte[] HaI;
-  public int HaJ;
-  public int HaK;
-  public int HaL;
-  public int HaM;
-  public int HaN;
-  public int HaO;
-  public int HaP;
-  public int HaQ;
-  public int HaR;
-  public int HaS;
-  public int HaT;
-  public int HaU;
-  public int HaV;
-  public int HaW;
-  public int HaX;
-  public int HaY;
-  public int HaZ;
-  public int Hat;
-  public int Hau;
-  public int Hav;
-  public long Haw;
-  public byte[] Hax;
-  public volatile byte[] Hay;
-  public byte[] Haz;
-  public int HbA;
-  public int HbB;
-  public int HbC;
-  public int HbD;
-  public int HbE;
-  public int[] HbF;
-  public int HbG;
-  public int HbH;
-  public int HbI;
-  public int HbJ;
-  public byte[] HbK;
-  public int HbL;
-  public int HbM;
-  public int HbN;
-  public int HbO;
-  public byte[] HbP;
-  public int HbQ;
-  public byte[] HbR;
-  public byte[] HbS;
-  public int HbT;
-  public int HbU;
-  public int HbV;
-  public int HbW;
-  public int HbX;
-  public int HbY;
-  public byte[] HbZ;
-  public int Hba;
-  public int Hbb;
-  public int Hbc;
-  public int Hbd;
-  public int Hbe;
-  public String Hbg;
-  public int Hbh;
-  public int Hbi;
-  public int Hbj;
-  public int Hbk;
-  public int Hbl;
-  public int Hbm;
-  public int Hbn;
-  public int Hbo;
-  public int Hbp;
-  public int Hbq;
-  public int Hbr;
-  public int Hbs;
-  public int Hbt;
-  public int Hbu;
-  public int Hbv;
-  public int Hbw;
-  public int Hbx;
-  public int Hby;
-  public int Hbz;
-  int HcB;
-  public byte[] Hca;
-  public byte[] Hcb;
-  public ArrayBlockingQueue<byte[]> Hcd;
-  long Hce;
-  public byte[] Hcf;
-  public int Hcg;
-  public int Hch;
-  public int Hci;
-  public int Hcj;
-  public int Hck;
-  byte[] Hcl;
-  byte[] Hcm;
-  byte[] Hcn;
-  byte[] Hco;
-  byte[] Hcp;
-  byte[] Hcq;
-  byte[] Hcr;
-  public byte[] Hcs;
-  public byte[] Hct;
-  public int[] Hcu;
-  int Hcv;
-  public o Hcw;
-  public int Hcx;
-  private int Hcy;
-  public volatile e Hcz;
+  public long DPJ;
+  public int DPL;
+  public int DPQ;
+  public int Ftu;
+  public int NQF;
+  public int NQG;
+  public int NQH;
+  public long NQI;
+  public byte[] NQJ;
+  public volatile byte[] NQK;
+  public byte[] NQL;
+  public int NQM;
+  public byte[] NQN;
+  public int NQO;
+  public int NQP;
+  public int NQQ;
+  public int NQR;
+  public byte[] NQS;
+  public byte[] NQT;
+  public byte[] NQU;
+  public int NQV;
+  public int NQW;
+  public int NQX;
+  public int NQY;
+  public int NQZ;
+  public int NRA;
+  public int NRB;
+  public int NRC;
+  public int NRD;
+  public int NRE;
+  public int NRF;
+  public int NRG;
+  public int NRH;
+  public int NRI;
+  public int NRJ;
+  public int NRK;
+  public int NRL;
+  public int NRM;
+  public int NRN;
+  public int NRO;
+  public int NRP;
+  public int NRQ;
+  public int[] NRR;
+  public int NRS;
+  public int NRT;
+  public int NRU;
+  public int NRV;
+  public byte[] NRW;
+  public int NRX;
+  public int NRY;
+  public int NRZ;
+  public int NRa;
+  public int NRb;
+  public int NRc;
+  public int NRd;
+  public int NRe;
+  public int NRf;
+  public int NRg;
+  public int NRh;
+  public int NRi;
+  public int NRj;
+  public int NRk;
+  public int NRl;
+  public int NRm;
+  public int NRn;
+  public int NRo;
+  public int NRp;
+  public int NRq;
+  public String NRs;
+  public int NRt;
+  public int NRu;
+  public int NRv;
+  public int NRw;
+  public int NRx;
+  public int NRy;
+  public int NRz;
+  byte[] NSA;
+  byte[] NSB;
+  byte[] NSC;
+  byte[] NSD;
+  public byte[] NSE;
+  public byte[] NSF;
+  public int[] NSG;
+  int NSH;
+  public o NSI;
+  public int NSJ;
+  private int NSK;
+  public volatile e NSL;
+  int NSN;
+  public int NSa;
+  public byte[] NSb;
+  public int NSc;
+  public byte[] NSd;
+  public byte[] NSe;
+  public int NSf;
+  public int NSg;
+  public int NSh;
+  public int NSi;
+  public int NSj;
+  public int NSk;
+  public byte[] NSl;
+  public byte[] NSm;
+  public byte[] NSn;
+  public ArrayBlockingQueue<byte[]> NSp;
+  long NSq;
+  public byte[] NSr;
+  public int NSs;
+  public int NSt;
+  public int NSu;
+  public int NSv;
+  public int NSw;
+  byte[] NSx;
+  byte[] NSy;
+  byte[] NSz;
   int bitrate;
   public int channelStrategy;
   public int defaultHeight;
@@ -212,42 +229,41 @@ public class v2protocal
   int field_statInfoLength;
   public int field_statusSyncKey;
   public int field_videoDuration;
-  public String haD;
   private MMHandler handler;
   public int height;
-  protected boolean iCs;
-  public long iXv;
+  public String jLI;
+  public long lNP;
+  protected boolean lsn;
   public int netType;
-  public int qDA;
-  public boolean qtK;
   public int roomId;
+  public boolean tSw;
+  public int ucB;
   public int width;
-  public long ypH;
-  public int ypJ;
-  public int ypO;
-  public int zNX;
   
   static
   {
     AppMethodBeat.i(115291);
     v2protocal.class.getClassLoader();
-    j.Ed("voipMain");
-    int i = m.aon();
+    j.KW("voipMain");
+    int i = m.aus();
     cpuFlag0 = i;
     if ((i & 0x400) != 0) {}
     for (i = 16000;; i = 8000)
     {
       VOICE_SAMPLERATE = i;
       VOICE_FRAME_BYTES = i / 1000 * 20 * 2;
-      Hap = false;
-      Haq = false;
-      Har = false;
-      Has = 0;
-      Hbf = 0;
-      Hcc = 10;
-      HcA = null;
-      HcC = null;
-      HcD = null;
+      NQA = false;
+      NQB = false;
+      NQC = false;
+      NQD = false;
+      NQE = 0;
+      NRr = 0;
+      Fnp = false;
+      Fno = 0;
+      NSo = 10;
+      NSM = null;
+      NSO = null;
+      NSP = null;
       AppMethodBeat.o(115291);
       return;
     }
@@ -256,111 +272,111 @@ public class v2protocal
   public v2protocal(MMHandler paramMMHandler)
   {
     AppMethodBeat.i(115273);
-    this.iXv = 0L;
+    this.lNP = 0L;
     this.defaultWidth = 320;
     this.defaultHeight = 240;
     this.netType = 0;
-    this.Hat = 0;
-    this.qDA = 0;
-    this.haD = "";
-    this.Hau = 0;
-    this.Hav = 0;
+    this.NQF = 0;
+    this.ucB = 0;
+    this.jLI = "";
+    this.NQG = 0;
+    this.NQH = 0;
     this.roomId = 0;
-    this.Haw = 0L;
-    this.ypO = 0;
-    this.ypH = 0L;
-    this.ypJ = 0;
-    this.Hax = null;
-    this.Hay = null;
-    this.Haz = null;
-    this.HaA = 0;
-    this.HaB = null;
+    this.NQI = 0L;
+    this.DPQ = 0;
+    this.DPJ = 0L;
+    this.DPL = 0;
+    this.NQJ = null;
+    this.NQK = null;
+    this.NQL = null;
+    this.NQM = 0;
+    this.NQN = null;
     this.channelStrategy = 0;
-    this.HaC = 500;
-    this.HaD = 30;
-    this.HaE = 999;
-    this.HaF = 0;
-    this.HaG = null;
-    this.HaH = null;
-    this.HaI = new byte[10];
-    this.HaJ = 20;
-    this.HaK = 0;
-    this.zNX = 0;
-    this.HaL = 0;
-    this.HaM = 0;
-    this.HaN = 0;
-    this.HaO = 65536;
-    this.HaP = 0;
-    this.HaQ = 0;
-    this.HaR = 0;
-    this.HaS = 7;
-    this.HaT = 3;
-    this.HaU = 3;
-    this.HaV = 0;
-    this.HaW = 0;
-    this.HaX = -1;
-    this.HaY = -1;
-    this.HaZ = 0;
-    this.Hba = 0;
-    this.Hbb = 0;
-    this.Hbc = 0;
-    this.Hbd = 0;
-    this.Hbe = 0;
-    this.Hbg = "";
-    this.Hbh = 0;
-    this.Hbi = 0;
-    this.Hbj = 0;
-    this.Hbk = 0;
-    this.Hbl = 100;
-    this.Hbm = 300;
-    this.Hbn = 1;
-    this.Hbo = 1;
-    this.Hbp = 0;
-    this.Hbq = 1;
-    this.Hbr = 0;
-    this.Hbs = 0;
-    this.Hbt = 0;
-    this.Hbu = 0;
-    this.Hbv = 0;
-    this.Hbw = 0;
-    this.Hbx = 0;
-    this.Hby = 0;
-    this.Hbz = 0;
-    this.HbA = 0;
-    this.HbB = 0;
-    this.HbC = 0;
-    this.HbD = 0;
-    this.HbE = 0;
-    this.HbF = null;
+    this.NQO = 500;
+    this.NQP = 30;
+    this.NQQ = 999;
+    this.NQR = 0;
+    this.NQS = null;
+    this.NQT = null;
+    this.NQU = new byte[10];
+    this.NQV = 20;
+    this.NQW = 0;
+    this.Ftu = 0;
+    this.NQX = 0;
+    this.NQY = 0;
+    this.NQZ = 0;
+    this.NRa = 65536;
+    this.NRb = 0;
+    this.NRc = 0;
+    this.NRd = 0;
+    this.NRe = 7;
+    this.NRf = 3;
+    this.NRg = 3;
+    this.NRh = 0;
+    this.NRi = 0;
+    this.NRj = -1;
+    this.NRk = -1;
+    this.NRl = 0;
+    this.NRm = 0;
+    this.NRn = 0;
+    this.NRo = 0;
+    this.NRp = 0;
+    this.NRq = 0;
+    this.NRs = "";
+    this.NRt = 0;
+    this.NRu = 0;
+    this.NRv = 0;
+    this.NRw = 0;
+    this.NRx = 100;
+    this.NRy = 300;
+    this.NRz = 1;
+    this.NRA = 1;
+    this.NRB = 0;
+    this.NRC = 1;
+    this.NRD = 0;
+    this.NRE = 0;
+    this.NRF = 0;
+    this.NRG = 0;
+    this.NRH = 0;
+    this.NRI = 0;
+    this.NRJ = 0;
+    this.NRK = 0;
+    this.NRL = 0;
+    this.NRM = 0;
+    this.NRN = 0;
+    this.NRO = 0;
+    this.NRP = 0;
+    this.NRQ = 0;
+    this.NRR = null;
     this.field_natSvrArray = null;
     this.field_peerId = null;
     this.field_capInfo = null;
     this.field_ChannelReportDial = null;
     this.field_EngineReportStatFromApp = null;
     this.field_mGetValidSample = 0;
-    this.HbG = 0;
-    this.HbH = 0;
-    this.HbI = 0;
-    this.HbJ = 0;
-    this.HbK = null;
-    this.HbL = 0;
-    this.HbM = 0;
-    this.HbN = 0;
-    this.HbO = 0;
-    this.HbP = new byte[1500];
-    this.HbQ = 0;
-    this.HbR = null;
-    this.HbS = null;
-    this.HbT = 0;
-    this.HbU = 0;
-    this.HbV = 0;
-    this.HbW = 0;
-    this.HbX = 0;
-    this.HbY = 0;
-    this.HbZ = null;
-    this.Hca = null;
-    this.Hcb = null;
-    this.Hcd = new ArrayBlockingQueue(Hcc);
+    this.NRS = 0;
+    this.NRT = 0;
+    this.NRU = 0;
+    this.NRV = 0;
+    this.NRW = null;
+    this.NRX = 0;
+    this.NRY = 0;
+    this.NRZ = 0;
+    this.NSa = 0;
+    this.NSb = new byte[1500];
+    this.NSc = 0;
+    this.NSd = null;
+    this.NSe = null;
+    this.NSf = 0;
+    this.NSg = 0;
+    this.NSh = 0;
+    this.NSi = 0;
+    this.NSj = 0;
+    this.NSk = 0;
+    this.NSl = null;
+    this.NSm = null;
+    this.NSn = null;
+    this.NSp = new ArrayBlockingQueue(NSo);
     this.field_localImgWidth = 0;
     this.field_localImgHeight = 0;
     this.field_statusSyncKey = 0;
@@ -375,23 +391,23 @@ public class v2protocal
     this.field_remoteImgWidth = 0;
     this.field_remoteImgOrien = 0;
     this.field_recvVideoLen = 120;
-    this.Hce = 0L;
-    this.Hcf = new byte[8];
-    this.Hcg = 0;
-    this.Hch = 0;
-    this.Hci = 0;
-    this.Hcj = 0;
-    this.Hck = 0;
-    this.Hcl = new byte[4096];
-    this.Hcm = new byte[2048];
-    this.Hcn = new byte[2048];
-    this.Hco = new byte[4096];
-    this.Hcp = new byte[4096];
-    this.Hcq = new byte[2048];
-    this.Hcr = new byte[4096];
-    this.Hcs = new byte[2048];
-    this.Hct = new byte[2048];
-    this.Hcu = new int[30];
+    this.NSq = 0L;
+    this.NSr = new byte[8];
+    this.NSs = 0;
+    this.NSt = 0;
+    this.NSu = 0;
+    this.NSv = 0;
+    this.NSw = 0;
+    this.NSx = new byte[4096];
+    this.NSy = new byte[2048];
+    this.NSz = new byte[2048];
+    this.NSA = new byte[4096];
+    this.NSB = new byte[4096];
+    this.NSC = new byte[2048];
+    this.NSD = new byte[4096];
+    this.NSE = new byte[2048];
+    this.NSF = new byte[2048];
+    this.NSG = new int[30];
     this.field_statInfoLength = 0;
     this.field_speedTestInfoLength = 0;
     this.field_engineVersionStatLength = 0;
@@ -413,26 +429,48 @@ public class v2protocal
     this.field_jbmParamArraySize = 0;
     this.field_jbmBitratRsSvrParamDoubleArray = null;
     this.field_jbmParamDoubleArraySize = 0;
-    this.Hcv = 0;
-    this.Hcw = new o();
-    this.Hcx = 0;
-    this.Hcy = 0;
+    this.NSH = 0;
+    this.NSI = new o();
+    this.NSJ = 0;
+    this.NSK = 0;
     this.handler = null;
-    this.iCs = false;
-    this.Hcz = null;
+    this.lsn = false;
+    this.NSL = null;
     this.width = 640;
     this.height = 480;
-    this.HcB = 8;
+    this.NSN = 8;
     this.bitrate = 300;
-    this.qtK = false;
+    this.tSw = true;
     this.handler = paramMMHandler;
     AppMethodBeat.o(115273);
   }
   
-  @SuppressLint({"NewApi"})
-  private static boolean aFU(String paramString)
+  private static boolean aQg(String paramString)
   {
     AppMethodBeat.i(115288);
+    if ((((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.wbV, 0) == 1) || (com.tencent.mm.protocal.d.RAG) || (BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i("MicroMsg.Voip", "SupportAvcCodec codecUseCache = %b", new Object[] { Boolean.valueOf(bool) });
+      if ((!bool) || (!MultiProcessMMKV.getDefault().contains("SupportAvcCodec_".concat(String.valueOf(paramString))))) {
+        break;
+      }
+      bool = MultiProcessMMKV.getDefault().decodeBool("SupportAvcCodec_".concat(String.valueOf(paramString)));
+      Log.i("MicroMsg.Voip", "SupportAvcCodec use MMKV cache res = %b", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(115288);
+      return bool;
+    }
+    bool = bgh(paramString);
+    MultiProcessMMKV.getDefault().encode("SupportAvcCodec_".concat(String.valueOf(paramString)), bool);
+    Log.i("MicroMsg.Voip", "SupportAvcCodec result saving to MMKV, key = %s, val = %b", new Object[] { paramString, Boolean.valueOf(bool) });
+    AppMethodBeat.o(115288);
+    return bool;
+  }
+  
+  @SuppressLint({"NewApi"})
+  private static boolean bgh(String paramString)
+  {
+    AppMethodBeat.i(238093);
     boolean bool1;
     for (;;)
     {
@@ -464,7 +502,7 @@ public class v2protocal
       {
         localObject = MediaCodecList.getCodecInfoAt(i);
         bool1 = bool2;
-        com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "steve codecInfo : " + ((MediaCodecInfo)localObject).getName());
+        com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "steve codecInfo : " + ((MediaCodecInfo)localObject).getName());
         bool1 = bool2;
         arrayOfString1 = ((MediaCodecInfo)localObject).getSupportedTypes();
         bool1 = bool2;
@@ -498,7 +536,7 @@ public class v2protocal
       }
       try
       {
-        com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "steve : H.264 HW encoder found:".concat(String.valueOf(localObject)));
+        com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "steve : H.264 HW encoder found:".concat(String.valueOf(localObject)));
         bool2 = true;
         k += 1;
       }
@@ -517,14 +555,14 @@ public class v2protocal
     }
     for (;;)
     {
-      AppMethodBeat.o(115288);
+      AppMethodBeat.o(238093);
       return bool1;
       label268:
       bool1 = false;
     }
   }
   
-  public static long cn(byte[] paramArrayOfByte)
+  public static long cD(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(115262);
     paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
@@ -534,7 +572,9 @@ public class v2protocal
     return l;
   }
   
-  private static String fIL()
+  private native int forceredirect(int paramInt1, int paramInt2, byte[] paramArrayOfByte, int paramInt3);
+  
+  private static String gBa()
   {
     AppMethodBeat.i(115261);
     Object localObject2 = Build.MANUFACTURER;
@@ -562,47 +602,50 @@ public class v2protocal
     return localObject1;
   }
   
-  private String fIM()
+  private String gBb()
   {
     long l3 = 0L;
     AppMethodBeat.i(115263);
-    if ((this.zNX == 0) && (this.HaL == 0))
+    int i;
+    if ((this.Ftu == 0) && (this.NQX == 0))
     {
-      this.Hcw.GXt = 0;
-      this.Hcw.GXB = com.tencent.mm.plugin.voip.b.e.getNetType(MMApplicationContext.getContext());
-      this.Hcw.GXA = this.field_videoDuration;
-      this.Hcw.GXz = this.field_audioDuration;
-      this.HaP = com.tencent.mm.plugin.audio.c.a.ced();
-      if ((this.Hcw.GXJ <= 0L) || (this.Hcw.GXD <= this.Hcw.GXJ)) {
-        break label1475;
+      this.NSI.NNH = 0;
+      this.NSI.NNP = com.tencent.mm.plugin.voip.c.e.getNetType(MMApplicationContext.getContext());
+      MMApplicationContext.getContext();
+      i = com.tencent.mm.plugin.voip.c.e.gCA();
+      this.NSI.NNO = this.field_videoDuration;
+      this.NSI.NNN = this.field_audioDuration;
+      this.NRb = com.tencent.mm.plugin.audio.c.a.crq();
+      if ((this.NSI.NNX <= 0L) || (this.NSI.NNR <= this.NSI.NNX)) {
+        break label1496;
       }
     }
-    label1475:
-    for (long l1 = this.Hcw.GXD - this.Hcw.GXJ;; l1 = 0L)
+    label1496:
+    for (long l1 = this.NSI.NNR - this.NSI.NNX;; l1 = 0L)
     {
-      com.tencent.mm.plugin.voip.b.e.Logd("MicroMsg.Voip", "voipreport:acceptcalltime:".concat(String.valueOf(l1)));
-      setJNIAppCmd(1, this.Hcf, this.Hcf.length);
-      long l4 = cn(this.Hcf);
-      Object localObject1 = this.Hcw;
-      if ((l4 > this.Hcw.GXH) && (this.Hcw.GXH > 0L)) {}
-      for (long l2 = l4 - this.Hcw.GXH;; l2 = 0L)
+      com.tencent.mm.plugin.voip.c.e.Logd("MicroMsg.Voip", "voipreport:acceptcalltime:".concat(String.valueOf(l1)));
+      setJNIAppCmd(1, this.NSr, this.NSr.length);
+      long l4 = cD(this.NSr);
+      Object localObject1 = this.NSI;
+      if ((l4 > this.NSI.NNV) && (this.NSI.NNV > 0L)) {}
+      for (long l2 = l4 - this.NSI.NNV;; l2 = 0L)
       {
-        ((o)localObject1).GXK = l2;
-        localObject1 = this.Hcw;
+        ((o)localObject1).NNY = l2;
+        localObject1 = this.NSI;
         l2 = l3;
-        if (l4 > this.Hcw.GXJ)
+        if (l4 > this.NSI.NNX)
         {
           l2 = l3;
-          if (this.Hcw.GXJ > 0L) {
-            l2 = l4 - this.Hcw.GXJ;
+          if (this.NSI.NNX > 0L) {
+            l2 = l4 - this.NSI.NNX;
           }
         }
-        ((o)localObject1).GXL = l2;
-        com.tencent.mm.plugin.voip.b.e.Logd("MicroMsg.Voip", "voipreport:lCallerWaitTime:" + this.Hcw.GXK + " lCalledWaitTime:" + this.Hcw.GXL);
-        int i = cpuFlag0;
-        boolean bool = com.tencent.mm.plugin.voip.c.fFj();
-        int j = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.smt, 0);
-        StringBuilder localStringBuilder = new StringBuilder().append(this.HaK).append(",").append(this.roomId).append(",").append(this.ypH).append(",").append(this.ypO).append(",").append(this.Hcw.GXc).append(",").append(this.Hcw.GXo).append(",").append(this.Hcw.GXp).append(",").append(this.Hcw.GXq).append(",").append(this.Hcw.GXr).append(",").append(this.Hcw.GXs).append(",").append(this.Hcw.GXt).append(",").append(this.Hcw.GXm).append(",").append(this.Hcw.GXu).append(",").append(this.Hcw.GXv).append(",").append(this.Hcw.GXw).append(",").append(this.Hcw.GXx).append(",").append(this.Hcw.GXy).append(",").append(this.Hcw.GXz).append(",").append(this.Hcw.GXA).append(",").append(this.Hcw.GXB).append(fIS()).append(fIT()).append(fIL()).append(",").append(this.Hcw.GXC).append(",").append(this.HaO).append(",").append(this.HaP).append(",").append(l1).append(",").append(this.Hcw.GXK).append(",").append(this.Hcw.GXL).append(",").append(this.HaQ).append(",").append(this.Hau).append(fIN()).append(",").append(i & 0xFF).append(",").append(this.HaX).append(",").append(this.HaY);
+        ((o)localObject1).NNZ = l2;
+        com.tencent.mm.plugin.voip.c.e.Logd("MicroMsg.Voip", "voipreport:lCallerWaitTime:" + this.NSI.NNY + " lCalledWaitTime:" + this.NSI.NNZ);
+        int j = cpuFlag0;
+        boolean bool = com.tencent.mm.plugin.voip.c.gxv();
+        int k = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vXn, 0);
+        StringBuilder localStringBuilder = new StringBuilder().append(this.NQW).append(",").append(this.roomId).append(",").append(this.DPJ).append(",").append(this.DPQ).append(",").append(this.NSI.NNq).append(",").append(this.NSI.NNC).append(",").append(this.NSI.NND).append(",").append(this.NSI.NNE).append(",").append(this.NSI.NNF).append(",").append(this.NSI.NNG).append(",").append(this.NSI.NNH).append(",").append(this.NSI.NNA).append(",").append(this.NSI.NNI).append(",").append(this.NSI.NNJ).append(",").append(this.NSI.NNK).append(",").append(this.NSI.NNL).append(",").append(this.NSI.NNM).append(",").append(this.NSI.NNN).append(",").append(this.NSI.NNO).append(",").append(this.NSI.NNP).append(gBh()).append(gBi()).append(gBa()).append(",").append(this.NSI.NNQ).append(",").append(this.NRa).append(",").append(this.NRb).append(",").append(l1).append(",").append(this.NSI.NNY).append(",").append(this.NSI.NNZ).append(",").append(this.NRc).append(",").append(this.NQG).append(gBc()).append(",").append(j & 0xFF).append(",").append(this.NRj).append(",").append(this.NRk);
         Object localObject2 = Build.VERSION.INCREMENTAL;
         localObject1 = localObject2;
         if (((String)localObject2).contains(",")) {
@@ -613,34 +656,34 @@ public class v2protocal
         if (str.contains(",")) {
           localObject2 = str.replace(',', ' ');
         }
-        localObject1 = new StringBuilder(",").append((String)localObject1).append(",").append((String)localObject2).toString() + "," + this.Hcw.GXE + "," + this.Hcw.GXG + "," + this.Hcw.GXF + ",0," + this.Hcw.GXM + "," + this.Hcw.GUE + "," + this.Hcw.GUF + "," + this.Hcw.GXN + ",0,0,0," + this.HaZ + "," + this.Hba + "," + this.HaR + "," + this.Hbb + "," + this.Hbc + "," + this.Hbd + "," + this.Hcx + "," + this.Hbg + "," + this.Hbe + "," + Hbf + "," + j + "," + bool;
-        com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "voipreport:initNetType:" + this.Hau);
-        com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", ":".concat(String.valueOf(localObject1)));
-        com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "voipreport:getChannelStrategyString:" + fIN());
-        com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "lInterruptStartTime:" + this.Hcw.GUE + ",lInterruptEndTime:" + this.Hcw.GUF + ",mIinterruptCnt:" + this.Hcw.GXN + ",iPlayMinBufSize:" + this.HaZ + ",iRecordMinBufSize:" + this.Hba);
-        com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "steve:[simucall]voipreport::iSimulCallStatus:" + this.Hcx);
+        localObject1 = new StringBuilder(",").append((String)localObject1).append(",").append((String)localObject2).toString() + "," + this.NSI.NNS + "," + this.NSI.NNU + "," + this.NSI.NNT + ",0," + this.NSI.NOa + "," + this.NSI.NKQ + "," + this.NSI.NKR + "," + this.NSI.NOb + ",0,0,0," + this.NRl + "," + this.NRm + "," + this.NRd + "," + this.NRn + "," + this.NRo + "," + this.NRp + "," + this.NSJ + "," + this.NRs + "," + this.NRq + "," + NRr + "," + k + "," + bool + "," + i;
+        com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "voipreport:initNetType:" + this.NQG);
+        com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", ":".concat(String.valueOf(localObject1)));
+        com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "voipreport:getChannelStrategyString:" + gBc());
+        com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "lInterruptStartTime:" + this.NSI.NKQ + ",lInterruptEndTime:" + this.NSI.NKR + ",mIinterruptCnt:" + this.NSI.NOb + ",iPlayMinBufSize:" + this.NRl + ",iRecordMinBufSize:" + this.NRm);
+        com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "steve:[simucall]voipreport::iSimulCallStatus:" + this.NSJ);
         AppMethodBeat.o(115263);
         return localObject1;
-        if ((this.HaL != 0) && (this.zNX != 0))
+        if ((this.NQX != 0) && (this.Ftu != 0))
         {
-          this.Hcw.GXt = 3;
+          this.NSI.NNH = 3;
           break;
         }
-        if (this.HaL != 0)
+        if (this.NQX != 0)
         {
-          this.Hcw.GXt = 1;
+          this.NSI.NNH = 1;
           break;
         }
-        if (this.zNX == 0) {
+        if (this.Ftu == 0) {
           break;
         }
-        this.Hcw.GXt = 2;
+        this.NSI.NNH = 2;
         break;
       }
     }
   }
   
-  private String fIN()
+  private String gBc()
   {
     AppMethodBeat.i(115264);
     String str = "," + this.channelStrategy;
@@ -648,121 +691,389 @@ public class v2protocal
     return str;
   }
   
-  private void fIR()
+  private void gBg()
   {
     AppMethodBeat.i(184064);
-    if ((this.Hcg <= 0) || (this.field_videoDuration <= 0))
+    if ((this.NSs <= 0) || (this.field_videoDuration <= 0))
     {
       AppMethodBeat.o(184064);
       return;
     }
-    this.Hcy = (this.Hcg / this.field_videoDuration);
-    Log.i("MicroMsg.Voip", "calcCpatureFps:%s", new Object[] { Integer.valueOf(this.Hcy) });
+    this.NSK = (this.NSs / this.field_videoDuration);
+    Log.i("MicroMsg.Voip", "calcCpatureFps:%s", new Object[] { Integer.valueOf(this.NSK) });
     AppMethodBeat.o(184064);
   }
   
-  private String fIS()
+  private String gBh()
   {
     AppMethodBeat.i(115266);
-    com.tencent.mm.plugin.voip.b.e.Logd("MicroMsg.Voip", "usePreConnect:" + this.Hbj);
-    String str = "," + this.Hbj;
+    com.tencent.mm.plugin.voip.c.e.Logd("MicroMsg.Voip", "usePreConnect:" + this.NRv);
+    String str = "," + this.NRv;
     AppMethodBeat.o(115266);
     return str;
   }
   
-  private String fIT()
+  private String gBi()
   {
     AppMethodBeat.i(115267);
-    com.tencent.mm.plugin.voip.b.e.Logd("MicroMsg.Voip", "preConnectSuccess:" + this.Hbk);
-    String str = "," + this.Hbk;
+    com.tencent.mm.plugin.voip.c.e.Logd("MicroMsg.Voip", "preConnectSuccess:" + this.NRw);
+    String str = "," + this.NRw;
     AppMethodBeat.o(115267);
     return str;
   }
   
-  private String fIU()
+  private String gBj()
   {
     AppMethodBeat.i(115268);
-    this.HaT = com.tencent.mm.plugin.audio.c.a.cea().audioManager.getMode();
-    this.HaU = com.tencent.mm.plugin.audio.c.a.cea().audioManager.getMode();
-    if (ae.gKu.gEe >= 0) {
-      this.HaT = ae.gKu.gEe;
+    this.NRf = com.tencent.mm.plugin.audio.c.a.crn().audioManager.getMode();
+    this.NRg = com.tencent.mm.plugin.audio.c.a.crn().audioManager.getMode();
+    if (af.juI.joo >= 0) {
+      this.NRf = af.juI.joo;
     }
-    if ((Build.VERSION.SDK_INT >= 11) && (com.tencent.mm.compatible.util.k.alh()) && (2 == ae.gKE.gGF)) {
-      this.HaU = 2;
+    if ((Build.VERSION.SDK_INT >= 11) && (com.tencent.mm.compatible.util.k.are()) && (2 == af.juS.jqR)) {
+      this.NRg = 2;
     }
-    if (ae.gKu.gEf >= 0) {
-      this.HaU = ae.gKu.gEf;
+    if (af.juI.jop >= 0) {
+      this.NRg = af.juI.jop;
     }
     if (Build.VERSION.SDK_INT < 11)
     {
-      this.HaS = 1;
-      if (ae.gKu.gDA) {
-        this.HaS = 1;
+      this.NRe = 1;
+      if (af.juI.jnK) {
+        this.NRe = 1;
       }
-      if (ae.gKu.gEd >= 0) {
-        this.HaS = ae.gKu.gEd;
+      if (af.juI.jon >= 0) {
+        this.NRe = af.juI.jon;
       }
-      if (ae.gKu.gDB <= 0) {
+      if (af.juI.jnL <= 0) {
         break label292;
       }
-      this.HaV = 3;
-      this.HaW = 0;
+      this.NRh = 3;
+      this.NRi = 0;
     }
     for (;;)
     {
-      if (ae.gKu.gEh >= 0) {
-        this.HaV = ae.gKu.gEh;
+      if (af.juI.jor >= 0) {
+        this.NRh = af.juI.jor;
       }
-      if (ae.gKu.gEi >= 0) {
-        this.HaW = ae.gKu.gEi;
+      if (af.juI.jos >= 0) {
+        this.NRi = af.juI.jos;
       }
-      String str = "," + this.HaT + "," + this.HaU + "," + this.HaS + "," + this.HaV + "," + this.HaW;
+      String str = "," + this.NRf + "," + this.NRg + "," + this.NRe + "," + this.NRh + "," + this.NRi;
       AppMethodBeat.o(115268);
       return str;
-      this.HaS = 7;
+      this.NRe = 7;
       break;
       label292:
-      if (ae.gKu.gEg >= 0)
+      if (af.juI.joq >= 0)
       {
-        this.HaV = ae.gKu.gEg;
-        this.HaW = ae.gKu.gEg;
+        this.NRh = af.juI.joq;
+        this.NRi = af.juI.joq;
       }
     }
   }
   
-  private String fIW()
+  private String gBl()
   {
     AppMethodBeat.i(115270);
-    getNewEngineInfo(this.Hcp, this.Hcp.length);
-    getNewEngineExtInfo(this.Hcq, this.Hcq.length);
-    com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "voipreport:oldNewEngineString:".concat(String.valueOf(this.ypO + "," + this.ypH + this.Hcw.fGX() + "," + this.zNX + "," + this.HaL + fIO() + new String(this.Hcp, 0, this.field_newEngineStatLength) + "," + this.HaM + "," + this.HaN + fIU() + new String(this.Hcq, 0, this.field_newEngineExtStatLength))));
-    getNewEngineInfoReport(this.Hcp, this.Hcp.length);
-    String str = this.ypO + "," + this.ypH + this.Hcw.fGX() + "," + this.zNX + "," + this.HaL + fIO() + new String(this.Hcp, 0, this.field_newEngineReportLength);
-    com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "voipreport:yaoyaoguoNewEngineString:".concat(String.valueOf(str)));
+    getNewEngineInfo(this.NSB, this.NSB.length);
+    getNewEngineExtInfo(this.NSC, this.NSC.length);
+    com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "voipreport:oldNewEngineString:".concat(String.valueOf(this.DPQ + "," + this.DPJ + this.NSI.gzl() + "," + this.Ftu + "," + this.NQX + gBd() + new String(this.NSB, 0, this.field_newEngineStatLength) + "," + this.NQY + "," + this.NQZ + gBj() + new String(this.NSC, 0, this.field_newEngineExtStatLength))));
+    getNewEngineInfoReport(this.NSB, this.NSB.length);
+    String str = this.DPQ + "," + this.DPJ + this.NSI.gzl() + "," + this.Ftu + "," + this.NQX + gBd() + new String(this.NSB, 0, this.field_newEngineReportLength);
+    com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "voipreport:yaoyaoguoNewEngineString:".concat(String.valueOf(str)));
     AppMethodBeat.o(115270);
     return str;
   }
   
-  public static int fJa()
+  public static String gBp()
   {
-    AppMethodBeat.i(115276);
-    DhcpInfo localDhcpInfo = ((WifiManager)MMApplicationContext.getContext().getApplicationContext().getSystemService("wifi")).getDhcpInfo();
-    com.tencent.mm.plugin.voip.b.e.Logd("MicroMsg.Voip", "get wifi route ip:".concat(String.valueOf(Formatter.formatIpAddress(localDhcpInfo.gateway))));
-    int i = localDhcpInfo.gateway;
-    AppMethodBeat.o(115276);
-    return i;
+    AppMethodBeat.i(238064);
+    if (Build.VERSION.SDK_INT < 23)
+    {
+      localObject1 = Formatter.formatIpAddress(((WifiManager)MMApplicationContext.getContext().getApplicationContext().getSystemService("wifi")).getDhcpInfo().gateway);
+      com.tencent.mm.plugin.voip.c.e.Logd("MicroMsg.Voip", "get wifi route ip:".concat(String.valueOf(localObject1)));
+      AppMethodBeat.o(238064);
+      return localObject1;
+    }
+    Object localObject1 = (ConnectivityManager)MMApplicationContext.getContext().getSystemService("connectivity");
+    localObject1 = ((ConnectivityManager)localObject1).getLinkProperties(((ConnectivityManager)localObject1).getActiveNetwork());
+    if (localObject1 == null)
+    {
+      Log.i("MicroMsg.Voip", "linkProperties null");
+      AppMethodBeat.o(238064);
+      return "";
+    }
+    com.tencent.mm.plugin.voip.c.e.Logd("MicroMsg.Voip", "Interface name:" + ((LinkProperties)localObject1).getInterfaceName());
+    Object localObject2 = ((LinkProperties)localObject1).getRoutes().iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      RouteInfo localRouteInfo = (RouteInfo)((Iterator)localObject2).next();
+      if ((localRouteInfo.isDefaultRoute()) && (localRouteInfo.hasGateway()))
+      {
+        localObject2 = localRouteInfo.getGateway();
+        com.tencent.mm.plugin.voip.c.e.Logd("MicroMsg.Voip", "get wifi route ip:" + ((InetAddress)localObject2).getHostAddress());
+        if ((localObject2 instanceof Inet6Address)) {
+          try
+          {
+            i = NetworkInterface.getByName(((LinkProperties)localObject1).getInterfaceName()).getIndex();
+            localObject1 = ((InetAddress)localObject2).getHostAddress() + "%" + i;
+            AppMethodBeat.o(238064);
+            return localObject1;
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              Log.printErrStackTrace("MicroMsg.Voip", localException, "NetworkInterface error: %s", new Object[] { localException.getMessage() });
+              int i = 0;
+            }
+          }
+        }
+        String str = ((InetAddress)localObject2).getHostAddress();
+        if (str == null)
+        {
+          AppMethodBeat.o(238064);
+          return "";
+        }
+        AppMethodBeat.o(238064);
+        return str;
+      }
+    }
+    AppMethodBeat.o(238064);
+    return "";
   }
   
-  public static String fJc()
+  public static boolean gBr()
+  {
+    AppMethodBeat.i(238068);
+    int i = m.aus();
+    boolean bool1;
+    int j;
+    int k;
+    int m;
+    long l;
+    boolean bool2;
+    label80:
+    boolean bool3;
+    label106:
+    boolean bool4;
+    if ((i & 0x400) != 0)
+    {
+      bool1 = true;
+      j = i >> 12 & 0xF;
+      k = i & 0xFF;
+      m = Build.VERSION.SDK_INT;
+      l = com.tencent.matrix.e.a.getTotalMemory(MMApplicationContext.getContext()) / 1024L / 1024L;
+      if (j < ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vDP, 4)) {
+        break label295;
+      }
+      bool2 = true;
+      if (k < ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vDQ, 71)) {
+        break label301;
+      }
+      bool3 = true;
+      if (m < ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vDR, 23)) {
+        break label307;
+      }
+      bool4 = true;
+      label132:
+      if (l < ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vDS, 4096)) {
+        break label313;
+      }
+    }
+    label295:
+    label301:
+    label307:
+    label313:
+    for (boolean bool5 = true;; bool5 = false)
+    {
+      Log.i("MicroMsg.Voip", "check720EncodeLocalConfig, cpuFlags:%s, isNeon:%s, nCores:%s, nFreq:%s, sdkInt:%s, totalMemMB:%s, coreNumCheck:%s, freqCheck:%s, sdkIntCheck:%s, totalMemMBCheck:%s", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool1), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Long.valueOf(l), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5) });
+      if ((!bool1) || (!bool2) || (!bool3) || (!bool4) || (!bool5)) {
+        break label319;
+      }
+      AppMethodBeat.o(238068);
+      return true;
+      bool1 = false;
+      break;
+      bool2 = false;
+      break label80;
+      bool3 = false;
+      break label106;
+      bool4 = false;
+      break label132;
+    }
+    label319:
+    AppMethodBeat.o(238068);
+    return false;
+  }
+  
+  public static String gBs()
   {
     return "";
   }
   
-  private native int forceredirect(int paramInt1, int paramInt2, byte[] paramArrayOfByte, int paramInt3);
-  
   private native int setsvraddr(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, int paramInt4, byte[] paramArrayOfByte, int paramInt5);
   
   private native int uninit(int paramInt1, long paramLong, int paramInt2);
+  
+  public final String AZ(boolean paramBoolean)
+  {
+    int j = 1;
+    AppMethodBeat.i(115280);
+    if (this.lsn)
+    {
+      com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "call protocalUninit now...needStatInfo=".concat(String.valueOf(paramBoolean)));
+      this.field_ChannelReportDial = new int[6];
+      this.field_ChannelReportDial[0] = this.NSI.NNA;
+      this.field_ChannelReportDial[1] = this.NSI.NNG;
+      this.field_ChannelReportDial[2] = this.NRS;
+      this.field_ChannelReportDial[3] = this.NRT;
+      this.field_ChannelReportDial[4] = this.NRU;
+      this.field_ChannelReportDial[5] = this.NRV;
+      this.field_EngineReportStatFromApp = new int[19];
+      gBj();
+      this.field_EngineReportStatFromApp[0] = this.NQY;
+      this.field_EngineReportStatFromApp[1] = this.NQZ;
+      this.field_EngineReportStatFromApp[2] = this.NRf;
+      this.field_EngineReportStatFromApp[3] = this.NRg;
+      this.field_EngineReportStatFromApp[4] = this.NRe;
+      this.field_EngineReportStatFromApp[5] = this.NRh;
+      this.field_EngineReportStatFromApp[6] = this.NRi;
+      this.field_EngineReportStatFromApp[7] = -1;
+      label265:
+      label324:
+      Object localObject1;
+      if (this.NSL != null)
+      {
+        this.field_EngineReportStatFromApp[8] = this.NSL.tQS;
+        this.field_EngineReportStatFromApp[9] = this.NSL.tQU;
+        this.field_EngineReportStatFromApp[10] = this.NSL.tQK;
+        if (NSM == null) {
+          break label1280;
+        }
+        this.field_EngineReportStatFromApp[11] = NSM.FqT;
+        this.field_EngineReportStatFromApp[12] = this.NSi;
+        this.field_EngineReportStatFromApp[13] = this.NSj;
+        this.field_EngineReportStatFromApp[14] = this.NSk;
+        if (!NQD) {
+          break label1291;
+        }
+        this.field_EngineReportStatFromApp[15] = 1280;
+        this.field_EngineReportStatFromApp[16] = 720;
+        localObject1 = this.field_EngineReportStatFromApp;
+        if (!NQC) {
+          break label1314;
+        }
+        i = 1;
+        label338:
+        localObject1[17] = i;
+        localObject1 = this.field_EngineReportStatFromApp;
+        if (!NQB) {
+          break label1319;
+        }
+      }
+      label1280:
+      label1291:
+      label1314:
+      label1319:
+      for (int i = j;; i = 0)
+      {
+        localObject1[18] = i;
+        this.lsn = false;
+        uninit(this.roomId, this.DPJ, this.DPQ);
+        NQA = false;
+        NQE = 0;
+        if (this.NSL != null)
+        {
+          this.NSL.eWp();
+          this.NSL = null;
+          localObject1 = com.tencent.mm.plugin.voip.c.c.NXF;
+          com.tencent.mm.plugin.voip.c.c.gCn();
+        }
+        if (NSM != null)
+        {
+          NSM.interrupt();
+          localObject1 = NSM;
+          ((d)localObject1).FqM = false;
+          ((d)localObject1).FqN = false;
+          ((d)localObject1).FqP = 0;
+          Log.d("MicroMsg.AvcDecoder", "steve: Stop Decode Thread!");
+        }
+        try
+        {
+          if (((d)localObject1).outputStream != null)
+          {
+            ((d)localObject1).outputStream.flush();
+            ((d)localObject1).outputStream.close();
+          }
+          if (((d)localObject1).FqD != null)
+          {
+            ((d)localObject1).FqD.flush();
+            ((d)localObject1).FqD.close();
+          }
+        }
+        catch (IOException localIOException)
+        {
+          for (;;)
+          {
+            long l;
+            Object localObject2;
+            o localo;
+            Log.e("MicroMsg.AvcDecoder", " error:" + localIOException.toString());
+          }
+        }
+        NSM = null;
+        if (NSO != null) {
+          NSO.release();
+        }
+        NSO = null;
+        com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "uninit over.");
+        if (!paramBoolean) {
+          break label1356;
+        }
+        getStatInfo(this.NSx, this.NSx.length, this.NSG, 30);
+        getEngineVersionInfo(this.NSy, this.NSy.length);
+        getEngineQosInfo(this.NSz, this.NSz.length);
+        localObject1 = new StringBuilder();
+        l = this.ucB;
+        if (this.ucB < 0) {
+          l = this.ucB + 4294967296L;
+        }
+        localObject2 = new StringBuilder().append(l).append(",").append(this.DPJ).append(",").append(this.roomId).append(",").append(this.DPQ).append(",");
+        localo = this.NSI;
+        localObject2 = new StringBuilder().append(localo.NNq).append(",").append(localo.NNr).append(",").append(localo.NNs).append(",").append(localo.NNt).append(",").append(localo.NNu).append(",").append(localo.NNv).append(",").append(localo.NNw).append(",").append(localo.NNx).append(",").append(localo.NNy).append(",").append(localo.NNz).append(",").append(localo.NNA).toString();
+        com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "voipreport:DailStatString:".concat(String.valueOf(localObject2)));
+        localObject1 = ((StringBuilder)localObject1).append((String)localObject2).append(new String(this.NSx, 0, this.field_statInfoLength)).append(gBa()).append(gBc());
+        localObject2 = this.NSI;
+        localObject1 = ((StringBuilder)localObject1).append("," + ((o)localObject2).NNB).append(new String(this.NSy, 0, this.field_engineVersionStatLength)).append(gBd());
+        com.tencent.mm.plugin.voip.c.e.Logd("MicroMsg.Voip", "cpuCapacity:" + cpuFlag0);
+        localObject1 = new StringBuilder(",").append(cpuFlag0).toString() + gBh() + gBi() + new String(this.NSz, 0, this.field_engineQosStatLength);
+        com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "statInfoBuffer = " + new String(this.NSx, 0, this.field_statInfoLength));
+        com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "engineVersionInfoBuffer = " + new String(this.NSy, 0, this.field_engineVersionStatLength));
+        com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "engineQosInfoBuffer = " + new String(this.NSz, 0, this.field_engineQosStatLength));
+        com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "voipreport:StatString = ".concat(String.valueOf(localObject1)));
+        az.a.lts.dH(this.field_netFlowRecv, this.field_netFlowSent);
+        com.tencent.mm.plugin.voip.c.e.Logd("MicroMsg.Voip", "voip net flow = " + (this.field_netFlowSent + this.field_netFlowRecv));
+        AppMethodBeat.o(115280);
+        return localObject1;
+        this.field_EngineReportStatFromApp[8] = 0;
+        this.field_EngineReportStatFromApp[9] = 0;
+        this.field_EngineReportStatFromApp[10] = 0;
+        break;
+        this.field_EngineReportStatFromApp[11] = 0;
+        break label265;
+        this.field_EngineReportStatFromApp[15] = 640;
+        this.field_EngineReportStatFromApp[16] = 480;
+        break label324;
+        i = 0;
+        break label338;
+      }
+    }
+    label1356:
+    AppMethodBeat.o(115280);
+    return "";
+  }
   
   public native int ActivateConn(int paramInt);
   
@@ -800,60 +1111,60 @@ public class v2protocal
     if (j == 0)
     {
       parama.channels = localAtomicInteger3.get();
-      parama.GSV = localAtomicInteger2.get();
-      parama.Bry = localAtomicInteger1.get();
-      parama.GSU = 0;
-      com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "V2Protocal: GetAudioDeviceFmt ret :" + j + ",samplerate = " + parama.Bry + ", framelenms =" + parama.GSV + ", channels =" + parama.channels);
+      parama.NJg = localAtomicInteger2.get();
+      parama.HlR = localAtomicInteger1.get();
+      parama.NJf = 0;
+      com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "V2Protocal: GetAudioDeviceFmt ret :" + j + ",samplerate = " + parama.HlR + ", framelenms =" + parama.NJg + ", channels =" + parama.channels);
       AppMethodBeat.o(115289);
       return j;
     }
-    if ((m.aon() & 0x400) != 0) {}
+    if ((m.aus() & 0x400) != 0) {}
     for (int i = 16000;; i = 8000)
     {
-      parama.Bry = i;
+      parama.HlR = i;
       parama.channels = 1;
-      parama.GSV = 20;
-      parama.GSU = 0;
+      parama.NJg = 20;
+      parama.NJf = 0;
       break;
     }
   }
   
-  public final int a(eur parameur)
+  public final int a(ffc paramffc)
   {
     AppMethodBeat.i(115260);
-    if (this.Hce != 0L)
+    if (this.NSq != 0L)
     {
-      com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "v2protocal StartVoipSpeedTest fail: a speedtest is doing");
+      com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "v2protocal StartVoipSpeedTest fail: a speedtest is doing");
       AppMethodBeat.o(115260);
       return -1;
     }
-    this.Hce = parameur.NsG;
-    ety localety = new ety();
-    localety.Nrb = parameur.NsG;
+    this.NSq = paramffc.UFD;
+    fej localfej = new fej();
+    localfej.UDX = paramffc.UFD;
     int i = 0;
-    while (i < parameur.NsL)
+    while (i < paramffc.UFI)
     {
-      eub localeub = new eub();
-      localeub.Ngz = ((ecd)parameur.NsM.get(i)).NbG.NgC;
-      localeub.port = ((ecd)parameur.NsM.get(i)).NbG.MKe;
-      localeub.HiN = ((ecd)parameur.NsM.get(i)).NbF;
-      localeub.gap = ((ecd)parameur.NsM.get(i)).Ncl;
-      localeub.timeout = ((ecd)parameur.NsM.get(i)).Ncm;
-      localeub.Nrv = ((ecd)parameur.NsM.get(i)).Ncn;
-      localety.Nrc.add(localeub);
+      fem localfem = new fem();
+      localfem.Utd = ((eme)paramffc.UFJ.get(i)).Uoc.Utg;
+      localfem.port = ((eme)paramffc.UFJ.get(i)).Uoc.TVY;
+      localfem.NZB = ((eme)paramffc.UFJ.get(i)).Uob;
+      localfem.UEr = ((eme)paramffc.UFJ.get(i)).UoH;
+      localfem.timeout = ((eme)paramffc.UFJ.get(i)).UoI;
+      localfem.UEs = ((eme)paramffc.UFJ.get(i)).UoJ;
+      localfej.UDY.add(localfem);
       i += 1;
     }
     try
     {
-      com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "v2protocal StartVoipSpeedTest ret :".concat(String.valueOf(StartSpeedTest(localety.toByteArray(), localety.toByteArray().length))));
+      com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "v2protocal StartVoipSpeedTest ret :".concat(String.valueOf(StartSpeedTest(localfej.toByteArray(), localfej.toByteArray().length))));
       AppMethodBeat.o(115260);
       return 0;
     }
-    catch (IOException parameur)
+    catch (IOException paramffc)
     {
       for (;;)
       {
-        Log.printErrStackTrace("MicroMsg.Voip", parameur, "StartVoipSpeedTest exception", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.Voip", paramffc, "StartVoipSpeedTest exception", new Object[0]);
       }
     }
   }
@@ -862,7 +1173,7 @@ public class v2protocal
   
   public native int app2EngineLinkQualityEx(int paramInt, byte[] paramArrayOfByte);
   
-  public final int bv(LinkedList<csu> paramLinkedList)
+  public final int bS(LinkedList<dbt> paramLinkedList)
   {
     AppMethodBeat.i(115290);
     Object localObject = new AtomicInteger();
@@ -878,18 +1189,18 @@ public class v2protocal
     {
       if (((AtomicInteger)localObject).get() > 0)
       {
-        csu localcsu = new csu();
-        localcsu.LYu = new String(arrayOfByte2, 0, ((AtomicInteger)localObject).get());
-        localcsu.MxQ = localAtomicInteger5.get();
-        localcsu.Loh = localAtomicInteger4.get();
-        paramLinkedList.add(localcsu);
+        dbt localdbt = new dbt();
+        localdbt.ThL = new String(arrayOfByte2, 0, ((AtomicInteger)localObject).get());
+        localdbt.TJp = localAtomicInteger5.get();
+        localdbt.SpF = localAtomicInteger4.get();
+        paramLinkedList.add(localdbt);
       }
       if (localAtomicInteger1.get() > 0)
       {
-        localObject = new csu();
-        ((csu)localObject).LYu = new String(arrayOfByte1, 0, localAtomicInteger1.get());
-        ((csu)localObject).MxQ = localAtomicInteger3.get();
-        ((csu)localObject).Loh = localAtomicInteger2.get();
+        localObject = new dbt();
+        ((dbt)localObject).ThL = new String(arrayOfByte1, 0, localAtomicInteger1.get());
+        ((dbt)localObject).TJp = localAtomicInteger3.get();
+        ((dbt)localObject).SpF = localAtomicInteger2.get();
         paramLinkedList.add(localObject);
       }
     }
@@ -907,99 +1218,101 @@ public class v2protocal
   
   public native int exchangeCabInfo(byte[] paramArrayOfByte, int paramInt);
   
-  protected final String fIO()
+  public native int freeJNIReport();
+  
+  protected final String gBd()
   {
     AppMethodBeat.i(115265);
     if (this.field_videoDuration == 0)
     {
-      com.tencent.mm.plugin.voip.b.e.Logd("MicroMsg.Voip", "captureFrames:" + this.Hcg + ", videoduration: 0");
+      com.tencent.mm.plugin.voip.c.e.Logd("MicroMsg.Voip", "captureFrames:" + this.NSs + ", videoduration: 0");
       AppMethodBeat.o(115265);
       return ",0";
     }
-    com.tencent.mm.plugin.voip.b.e.Logd("MicroMsg.Voip", "capturefps:" + this.Hcg / this.field_videoDuration + " framecount:" + this.Hcg + " videoDuration:" + this.field_videoDuration);
-    String str = "," + this.Hcg / this.field_videoDuration;
+    com.tencent.mm.plugin.voip.c.e.Logd("MicroMsg.Voip", "capturefps:" + this.NSs / this.field_videoDuration + " framecount:" + this.NSs + " videoDuration:" + this.field_videoDuration);
+    String str = "," + this.NSs / this.field_videoDuration;
     AppMethodBeat.o(115265);
     return str;
   }
   
-  public final int fIP()
+  public final int gBe()
   {
-    if (this.Hcy > 0) {
-      return this.Hcy;
+    if (this.NSK > 0) {
+      return this.NSK;
     }
     if (this.field_videoDuration == 0) {
       return 0;
     }
-    return this.Hcg / this.field_videoDuration;
+    return this.NSs / this.field_videoDuration;
   }
   
-  public final void fIQ()
+  public final void gBf()
   {
-    AppMethodBeat.i(235703);
-    this.Hcy = 0;
+    AppMethodBeat.i(238047);
+    this.NSK = 0;
     Log.i("MicroMsg.Voip", "resetCaptureFps");
-    AppMethodBeat.o(235703);
+    AppMethodBeat.o(238047);
   }
   
-  final String fIV()
+  final String gBk()
   {
     AppMethodBeat.i(115269);
-    getChannelInfo(this.Hco, this.Hco.length, this.HbG, this.HbH, this.HbI, this.HbJ);
-    Object localObject = new StringBuilder().append(this.ypH).append(",").append(this.roomId).append(",").append(this.ypO).append(this.Hcw.fGX());
-    o localo = this.Hcw;
-    com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "voipreport:oldChannelString: ".concat(String.valueOf(new StringBuilder(",").append(localo.GXs).toString() + new String(this.Hco, 0, this.field_channelStatLength))));
-    getChannelReport(this.Hco, this.Hco.length);
-    localObject = new String(this.Hco, 0, this.field_channelReportLength);
-    com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "voipreport:newChannelString: ".concat(String.valueOf(localObject)));
+    getChannelInfo(this.NSA, this.NSA.length, this.NRS, this.NRT, this.NRU, this.NRV);
+    Object localObject = new StringBuilder().append(this.DPJ).append(",").append(this.roomId).append(",").append(this.DPQ).append(this.NSI.gzl());
+    o localo = this.NSI;
+    com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "voipreport:oldChannelString: ".concat(String.valueOf(new StringBuilder(",").append(localo.NNG).toString() + new String(this.NSA, 0, this.field_channelStatLength))));
+    getChannelReport(this.NSA, this.NSA.length);
+    localObject = new String(this.NSA, 0, this.field_channelReportLength);
+    com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "voipreport:newChannelString: ".concat(String.valueOf(localObject)));
     AppMethodBeat.o(115269);
     return localObject;
   }
   
-  final String fIX()
+  final String gBm()
   {
     AppMethodBeat.i(115271);
-    getEngine2ndInfo(this.Hcr, this.Hcr.length);
-    com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "voipreport:12805,oldEngine2ndString:".concat(String.valueOf(this.ypH + "," + this.roomId + "," + this.ypO + new String(this.Hcr, 0, this.field_engine2ndStatLength))));
-    getEngine2ndInfoReport(this.Hcr, this.Hcr.length);
-    String str = this.ypH + "," + this.roomId + "," + this.ypO + new String(this.Hcr, 0, this.field_engine2ndReportLength);
-    com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "voipreport:12805,newEngine2ndString:".concat(String.valueOf(str)));
+    getEngine2ndInfo(this.NSD, this.NSD.length);
+    com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "voipreport:12805,oldEngine2ndString:".concat(String.valueOf(this.DPJ + "," + this.roomId + "," + this.DPQ + new String(this.NSD, 0, this.field_engine2ndStatLength))));
+    getEngine2ndInfoReport(this.NSD, this.NSD.length);
+    String str = this.DPJ + "," + this.roomId + "," + this.DPQ + new String(this.NSD, 0, this.field_engine2ndReportLength);
+    com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "voipreport:12805,newEngine2ndString:".concat(String.valueOf(str)));
     AppMethodBeat.o(115271);
     return str;
   }
   
-  public final String fIY()
+  public final String gBn()
   {
     AppMethodBeat.i(115272);
     int i = cpuFlag0;
-    String str = fIL() + "," + this.Hbh + "," + (i & 0xFF) + fIU() + "," + this.HaY;
+    String str = gBa() + "," + this.NRt + "," + (i & 0xFF) + gBj() + "," + this.NRk;
     AppMethodBeat.o(115272);
     return str;
   }
   
-  public final boolean fIZ()
+  public final boolean gBo()
   {
-    return this.iCs;
+    return this.lsn;
   }
   
-  public final int fJb()
+  public final int gBq()
   {
     AppMethodBeat.i(115278);
-    this.netType = com.tencent.mm.plugin.voip.b.e.getNetType(MMApplicationContext.getContext());
+    this.netType = com.tencent.mm.plugin.voip.c.e.getNetType(MMApplicationContext.getContext());
     if (this.netType == 5) {
       this.netType = 4;
     }
-    this.HbF = new int[this.defaultWidth * this.defaultHeight];
-    g.aAf();
-    this.qDA = com.tencent.mm.kernel.a.getUin();
-    int i = m.aon();
+    this.NRR = new int[this.defaultWidth * this.defaultHeight];
+    h.aHE();
+    this.ucB = com.tencent.mm.kernel.b.getUin();
+    int i = m.aus();
     int j = Build.VERSION.SDK_INT;
     int k = OpenGlRender.getGLVersion();
     Display localDisplay = ((WindowManager)MMApplicationContext.getContext().getSystemService("window")).getDefaultDisplay();
     int m = localDisplay.getWidth();
     int n = localDisplay.getHeight();
-    i = init(this.netType, 65538, this.defaultWidth << 16 | this.defaultHeight, m << 16 | n, this.qDA, k << 24 | j << 16 | i, com.tencent.mm.loader.j.b.aKA() + "lib/", 4, 0L, 0);
-    com.tencent.mm.plugin.voip.b.e.Logd("MicroMsg.Voip", "protocalInitForPstn protocal init ret :" + i + ",uin= " + this.qDA + ", groupRsCap = 0");
-    this.iCs = true;
+    i = init(this.netType, 65538, this.defaultWidth << 16 | this.defaultHeight, m << 16 | n, this.ucB, k << 24 | j << 16 | i, com.tencent.mm.loader.j.b.aSC() + "lib/", 4, 0L, 0, 0);
+    com.tencent.mm.plugin.voip.c.e.Logd("MicroMsg.Voip", "protocalInitForPstn protocal init ret :" + i + ",uin= " + this.ucB + ", groupRsCap = 0, x_vcodec2_paras = 0");
+    this.lsn = true;
     if (i < 0) {
       reset();
     }
@@ -1007,428 +1320,81 @@ public class v2protocal
     return i;
   }
   
-  public final String fJd()
+  public final String gBt()
   {
     AppMethodBeat.i(115281);
-    String str = fIM();
+    String str = gBb();
     AppMethodBeat.o(115281);
     return str;
   }
   
-  public final String[] fJe()
+  public final String[] gBu()
   {
     AppMethodBeat.i(115282);
     String[] arrayOfString = getNatReport();
-    com.tencent.mm.plugin.voip.b.e.Loge("MicroMsg.Voip", "nat_report size:" + arrayOfString.length);
+    com.tencent.mm.plugin.voip.c.e.Loge("MicroMsg.Voip", "nat_report size:" + arrayOfString.length);
     int i = 0;
     while (i < arrayOfString.length)
     {
-      com.tencent.mm.plugin.voip.b.e.Loge("MicroMsg.Voip", "nat_report:" + arrayOfString[i]);
+      com.tencent.mm.plugin.voip.c.e.Loge("MicroMsg.Voip", "nat_report:" + arrayOfString[i]);
       i += 1;
     }
     AppMethodBeat.o(115282);
     return arrayOfString;
   }
   
-  public final String[] fJf()
+  public final String[] gBv()
   {
     AppMethodBeat.i(115283);
     String[] arrayOfString = getMPDirectReport();
-    com.tencent.mm.plugin.voip.b.e.Loge("MicroMsg.Voip", "direct_report_string size:" + arrayOfString.length);
+    com.tencent.mm.plugin.voip.c.e.Loge("MicroMsg.Voip", "direct_report_string size:" + arrayOfString.length);
     int i = 0;
     while (i < arrayOfString.length)
     {
-      com.tencent.mm.plugin.voip.b.e.Loge("MicroMsg.Voip", "direct_report_string:" + arrayOfString[i]);
+      com.tencent.mm.plugin.voip.c.e.Loge("MicroMsg.Voip", "direct_report_string:" + arrayOfString[i]);
       i += 1;
     }
     AppMethodBeat.o(115283);
     return arrayOfString;
   }
   
-  public final String[] fJg()
+  public final String[] gBw()
   {
     AppMethodBeat.i(115284);
     String[] arrayOfString = getMPRelayReport();
-    com.tencent.mm.plugin.voip.b.e.Loge("MicroMsg.Voip", "relay_report_string size:" + arrayOfString.length);
+    com.tencent.mm.plugin.voip.c.e.Loge("MicroMsg.Voip", "relay_report_string size:" + arrayOfString.length);
     int i = 0;
     while (i < arrayOfString.length)
     {
-      com.tencent.mm.plugin.voip.b.e.Loge("MicroMsg.Voip", "relay_report_string:" + arrayOfString[i]);
+      com.tencent.mm.plugin.voip.c.e.Loge("MicroMsg.Voip", "relay_report_string:" + arrayOfString[i]);
       i += 1;
     }
     AppMethodBeat.o(115284);
     return arrayOfString;
   }
   
-  public final String[] fJh()
+  public final String[] gBx()
   {
     AppMethodBeat.i(115285);
     String[] arrayOfString = getMPEngineReport();
-    com.tencent.mm.plugin.voip.b.e.Loge("MicroMsg.Voip", "engine_report_string size:" + arrayOfString.length);
+    com.tencent.mm.plugin.voip.c.e.Loge("MicroMsg.Voip", "engine_report_string size:" + arrayOfString.length);
     int i = 0;
     while (i < arrayOfString.length)
     {
-      arrayOfString[i] = (this.ypH + "," + this.ypO + arrayOfString[i]);
-      com.tencent.mm.plugin.voip.b.e.Loge("MicroMsg.Voip", "engine_report_string:" + arrayOfString[i]);
+      arrayOfString[i] = (this.DPJ + "," + this.DPQ + arrayOfString[i]);
+      com.tencent.mm.plugin.voip.c.e.Loge("MicroMsg.Voip", "engine_report_string:" + arrayOfString[i]);
       i += 1;
     }
     AppMethodBeat.o(115285);
     return arrayOfString;
   }
   
-  public final String fJi()
+  public final String gBy()
   {
     AppMethodBeat.i(115286);
-    String str = fIW();
+    String str = gBl();
     AppMethodBeat.o(115286);
     return str;
-  }
-  
-  public native int freeJNIReport();
-  
-  public final int ftD()
-  {
-    AppMethodBeat.i(115279);
-    this.netType = com.tencent.mm.plugin.voip.b.e.getNetType(MMApplicationContext.getContext());
-    this.Hau = this.netType;
-    if (this.netType == 5) {
-      this.netType = 4;
-    }
-    boolean bool5;
-    boolean bool6;
-    label90:
-    boolean bool7;
-    label110:
-    int i;
-    label129:
-    boolean bool8;
-    label201:
-    boolean bool9;
-    label274:
-    int k;
-    label286:
-    int j;
-    label298:
-    boolean bool10;
-    label311:
-    boolean bool11;
-    label323:
-    int m;
-    label335:
-    int n;
-    label347:
-    int i1;
-    label359:
-    int i2;
-    label383:
-    int i3;
-    label407:
-    boolean bool1;
-    label428:
-    label456:
-    boolean bool12;
-    label549:
-    label566:
-    boolean bool3;
-    label578:
-    boolean bool2;
-    label598:
-    label618:
-    boolean bool4;
-    label638:
-    boolean bool13;
-    label650:
-    label663:
-    Object localObject;
-    if ((this.Hau >= 4) && ((cpuFlag0 & 0x400) != 0) && ((cpuFlag0 & 0xFF) >= 26))
-    {
-      bool5 = true;
-      if ((!bool5) || ((cpuFlag0 & 0xFF) < 30)) {
-        break label1518;
-      }
-      bool6 = true;
-      if ((!bool6) || ((cpuFlag0 & 0xFF) < 60)) {
-        break label1524;
-      }
-      bool7 = true;
-      if ((!bool7) || ((cpuFlag0 & 0xFF) < 71)) {
-        break label1530;
-      }
-      i = 1;
-      if ((ae.gKt.gGc <= 0) || (ae.gKt.gFE.width < 480) || (ae.gKt.gFE.height < 360) || (ae.gKt.gFG.width < 480) || (ae.gKt.gFG.height < 360)) {
-        break label1535;
-      }
-      bool8 = true;
-      if ((ae.gKt.gGc < 2) || (ae.gKt.gFE.width < 640) || (ae.gKt.gFE.height < 480) || (ae.gKt.gFG.width < 640) || (ae.gKt.gFG.height < 480)) {
-        break label1541;
-      }
-      bool9 = true;
-      if (ae.gKt.gGc != 2) {
-        break label1547;
-      }
-      k = 1;
-      if (ae.gKt.gGc != 3) {
-        break label1552;
-      }
-      j = 1;
-      if (ae.gKt.gGc < 4) {
-        break label1557;
-      }
-      bool10 = true;
-      if (ae.gKt.gGc != 0) {
-        break label1563;
-      }
-      bool11 = true;
-      if (ae.gKt.gGd != 0) {
-        break label1569;
-      }
-      m = 1;
-      if (ae.gKt.gGd <= 0) {
-        break label1575;
-      }
-      n = 1;
-      if (ae.gKt.gGe <= 0) {
-        break label1581;
-      }
-      i1 = 1;
-      if (((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rXb, 0) == 0) {
-        break label1587;
-      }
-      i2 = 1;
-      if (((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rXa, 0) == 0) {
-        break label1593;
-      }
-      i3 = 1;
-      if (((i == 0) || (!bool10)) && ((i == 0) || (i2 == 0))) {
-        break label1599;
-      }
-      bool1 = true;
-      Haq = bool1;
-      if (((!bool7) || (i1 == 0)) && ((!bool7) || (i3 == 0))) {
-        break label1605;
-      }
-      bool1 = true;
-      Har = bool1;
-      if ((ae.gKt.gFE.width >= 480) || (ae.gKt.gFG.width >= 480))
-      {
-        com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "hseasun:Close the 720p force due to configuration from svr");
-        Haq = false;
-        Har = false;
-      }
-      if (Haq) {
-        Har = true;
-      }
-      Has = 0;
-      this.qtK = false;
-      if (m != 0) {
-        break label1708;
-      }
-      if ((!bool6) || (!aFU("video/avc"))) {
-        break label1611;
-      }
-      bool1 = true;
-      if ((!bool7) || (!aFU("video/hevc"))) {
-        break label1617;
-      }
-      bool12 = true;
-      if ((!bool12) || (j == 0)) {
-        break label1623;
-      }
-      bool3 = true;
-      if (n == 0) {
-        break label1686;
-      }
-      if ((ae.gKt.gGd & 0x10) == 0) {
-        break label1629;
-      }
-      bool2 = true;
-      if ((!bool3) || ((ae.gKt.gGd & 0x20) == 0)) {
-        break label1635;
-      }
-      bool3 = true;
-      if ((!bool1) || ((ae.gKt.gGd & 0xF) == 0)) {
-        break label1641;
-      }
-      bool4 = true;
-      bool13 = bool4;
-      bool4 = bool3;
-      bool3 = bool13;
-      if ((!bool4) && (!bool3)) {
-        break label1647;
-      }
-      bool13 = true;
-      this.qtK = bool13;
-      localObject = new StringBuilder("hwH264Local:").append(bool1).append(",hwHEVCLocal:").append(bool12).append(", bSupportH264HW:").append(bool3).append(", bSupportHEVCSW:").append(bool2).append(", bSupportHEVCHW:").append(bool4).append(", svrHWCfg:").append(ae.gKt.gGd).append(", 720p jcchen ").append(bool7).append("-");
-      if (k != 0) {
-        break label1653;
-      }
-      bool1 = true;
-      label769:
-      com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", bool1 + "-" + bool10 + "-" + Haq + " svr 480p:" + ae.gKt.gGc);
-      if (!bool3) {
-        break label1681;
-      }
-      i = 1;
-      label830:
-      j = i;
-      if (bool2) {
-        j = i | 0x2;
-      }
-      if (!bool4) {
-        break label1676;
-      }
-      i = j | 0x4;
-    }
-    for (;;)
-    {
-      if (((bool5) || (bool8)) && (!bool11))
-      {
-        if ((!this.qtK) && (!bool9)) {
-          break label1659;
-        }
-        this.defaultWidth = 640;
-        this.defaultHeight = 480;
-        if ((bool7) && (k == 0)) {
-          this.defaultWidth = 1280;
-        }
-      }
-      for (this.defaultHeight = 720;; this.defaultHeight = 360)
-      {
-        Hap = true;
-        com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "steve:Set Enable 480! " + this.defaultWidth + "x" + this.defaultHeight);
-        com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "steve: Android CPUFlag:" + (cpuFlag0 & 0xFF) + ", 480x360 Enc flags: bEnable480FromLocal:" + bool5 + ", bEnable480FromSvr:" + bool8 + ", bDisable480FromSvr:" + bool11 + ", bEnable640FromLocal:" + bool6 + ", bEnable640FromSvr:" + bool9);
-        this.HbF = new int[this.defaultWidth * this.defaultHeight];
-        g.aAf();
-        this.qDA = com.tencent.mm.kernel.a.getUin();
-        m = Build.VERSION.SDK_INT;
-        j = OpenGlRender.getGLVersion();
-        localObject = ((WindowManager)MMApplicationContext.getContext().getSystemService("window")).getDefaultDisplay();
-        n = ((Display)localObject).getWidth();
-        i1 = ((Display)localObject).getHeight();
-        k = ae.gKE.gHf;
-        long l2 = 0L;
-        i2 = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.sgG, -1);
-        Log.i("MicroMsg.Voip", "kerrizhang, fullbandmode = %d", new Object[] { Integer.valueOf(i2) });
-        i3 = ae.gKu.gEr;
-        Log.i("MicroMsg.Voip", "kerrizhang SrvDeviceInfo.mAudioInfo.voipfullbandcfg %d", new Object[] { Integer.valueOf(i3) });
-        long l1 = l2;
-        if (i2 > 0)
-        {
-          l1 = l2;
-          if (i3 > 0)
-          {
-            l1 = (i2 * 100000.0D) + 456L;
-            Log.i("MicroMsg.Voip", "kerrizhang typectrl %d", new Object[] { Long.valueOf(l1) });
-          }
-        }
-        i2 = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.shc, 0);
-        Log.i("MicroMsg.Voip", "winterwang get server opuswbswitch %d", new Object[] { Integer.valueOf(i2) });
-        localObject = new byte[4];
-        localObject[0] = ((byte)i2);
-        Log.i("MicroMsg.Voip", "winterwang setJNIAppCmd  EMethod_AudioOptionSwitch ,ret: %d", new Object[] { Integer.valueOf(setJNIAppCmd(5, (byte[])localObject, 4)) });
-        i2 = this.netType;
-        i3 = this.defaultWidth;
-        m = init(i << 8 | i2, 2, this.defaultHeight | i3 << 16, n << 16 | i1, this.qDA, j << 24 | m << 16 | cpuFlag0, com.tencent.mm.loader.j.b.aKA() + "lib/", 0, l1, k);
-        com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "protocalInit protocal init ret :" + m + ",uin= " + this.qDA + ", gl_vs:" + j + ", cpuFlag0=" + cpuFlag0 + ", hwCap= " + i + ", groupRsCap = " + k);
-        this.iCs = true;
-        if (m < 0) {
-          reset();
-        }
-        AppMethodBeat.o(115279);
-        return m;
-        bool5 = false;
-        break;
-        label1518:
-        bool6 = false;
-        break label90;
-        label1524:
-        bool7 = false;
-        break label110;
-        label1530:
-        i = 0;
-        break label129;
-        label1535:
-        bool8 = false;
-        break label201;
-        label1541:
-        bool9 = false;
-        break label274;
-        label1547:
-        k = 0;
-        break label286;
-        label1552:
-        j = 0;
-        break label298;
-        label1557:
-        bool10 = false;
-        break label311;
-        label1563:
-        bool11 = false;
-        break label323;
-        label1569:
-        m = 0;
-        break label335;
-        label1575:
-        n = 0;
-        break label347;
-        label1581:
-        i1 = 0;
-        break label359;
-        label1587:
-        i2 = 0;
-        break label383;
-        label1593:
-        i3 = 0;
-        break label407;
-        label1599:
-        bool1 = false;
-        break label428;
-        label1605:
-        bool1 = false;
-        break label456;
-        label1611:
-        bool1 = false;
-        break label549;
-        label1617:
-        bool12 = false;
-        break label566;
-        label1623:
-        bool3 = false;
-        break label578;
-        label1629:
-        bool2 = false;
-        break label598;
-        label1635:
-        bool3 = false;
-        break label618;
-        label1641:
-        bool4 = false;
-        break label638;
-        label1647:
-        bool13 = false;
-        break label663;
-        label1653:
-        bool1 = false;
-        break label769;
-        label1659:
-        this.defaultWidth = 480;
-      }
-      label1676:
-      i = j;
-      continue;
-      label1681:
-      i = 0;
-      break label830;
-      label1686:
-      bool2 = false;
-      bool4 = bool1;
-      bool13 = bool3;
-      bool3 = bool4;
-      bool4 = bool13;
-      break label650;
-      label1708:
-      i = 0;
-    }
   }
   
   public native int getAVDuration(byte[] paramArrayOfByte, int paramInt);
@@ -1475,9 +1441,375 @@ public class v2protocal
   
   public native int getcurstrategy();
   
+  public final int gid()
+  {
+    AppMethodBeat.i(115279);
+    this.netType = com.tencent.mm.plugin.voip.c.e.getNetType(MMApplicationContext.getContext());
+    this.NQG = this.netType;
+    if (this.netType == 5) {
+      this.netType = 4;
+    }
+    boolean bool5;
+    boolean bool6;
+    label90:
+    boolean bool7;
+    label110:
+    boolean bool1;
+    label124:
+    boolean bool8;
+    label201:
+    boolean bool9;
+    label274:
+    int k;
+    label286:
+    int i;
+    label298:
+    boolean bool10;
+    label311:
+    boolean bool11;
+    label323:
+    int j;
+    label334:
+    int m;
+    label346:
+    int i2;
+    int n;
+    label378:
+    int i1;
+    label402:
+    label416:
+    label426:
+    boolean bool12;
+    label550:
+    label567:
+    boolean bool3;
+    label579:
+    boolean bool2;
+    label599:
+    label619:
+    boolean bool4;
+    label639:
+    boolean bool13;
+    label651:
+    label664:
+    Object localObject;
+    if ((this.NQG >= 4) && ((cpuFlag0 & 0x400) != 0) && ((cpuFlag0 & 0xFF) >= 26))
+    {
+      bool5 = true;
+      if ((!bool5) || ((cpuFlag0 & 0xFF) < 30)) {
+        break label2263;
+      }
+      bool6 = true;
+      if ((!bool6) || ((cpuFlag0 & 0xFF) < 60)) {
+        break label2269;
+      }
+      bool7 = true;
+      if ((!bool7) || (!gBr())) {
+        break label2275;
+      }
+      bool1 = true;
+      NQC = bool1;
+      if ((af.juH.jqm <= 0) || (af.juH.jpO.width < 480) || (af.juH.jpO.height < 360) || (af.juH.jpQ.width < 480) || (af.juH.jpQ.height < 360)) {
+        break label2281;
+      }
+      bool8 = true;
+      if ((af.juH.jqm < 2) || (af.juH.jpO.width < 640) || (af.juH.jpO.height < 480) || (af.juH.jpQ.width < 640) || (af.juH.jpQ.height < 480)) {
+        break label2287;
+      }
+      bool9 = true;
+      if (af.juH.jqm != 2) {
+        break label2293;
+      }
+      k = 1;
+      if (af.juH.jqm != 3) {
+        break label2298;
+      }
+      i = 1;
+      if (af.juH.jqm < 4) {
+        break label2303;
+      }
+      bool10 = true;
+      if (af.juH.jqm != 0) {
+        break label2309;
+      }
+      bool11 = true;
+      if (af.juH.jqn != 0) {
+        break label2315;
+      }
+      j = 1;
+      if (af.juH.jqn <= 0) {
+        break label2320;
+      }
+      m = 1;
+      i2 = af.juH.jqo;
+      if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vDN, 0) == 0) {
+        break label2326;
+      }
+      n = 1;
+      if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vDM, 0) == 0) {
+        break label2332;
+      }
+      i1 = 1;
+      if (af.juH.jqp != 2) {
+        break label2338;
+      }
+      NQB = false;
+      if (i2 != 2) {
+        break label2373;
+      }
+      NQD = false;
+      if ((af.juH.jpO.width >= 480) || (af.juH.jpQ.width >= 480))
+      {
+        com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "hseasun:Close the 720p force due to configuration from svr");
+        NQB = false;
+        NQD = false;
+      }
+      if (NQB) {
+        NQD = true;
+      }
+      com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "hseasun: enable720Cap: " + NQD + " enable1280HWEnc: " + NQB);
+      NQE = 0;
+      this.tSw = false;
+      if (j != 0) {
+        break label2501;
+      }
+      if ((!bool6) || (!aQg("video/avc"))) {
+        break label2404;
+      }
+      bool1 = true;
+      if ((!bool7) || (!aQg("video/hevc"))) {
+        break label2410;
+      }
+      bool12 = true;
+      if ((!bool12) || (i == 0)) {
+        break label2416;
+      }
+      bool3 = true;
+      if (m == 0) {
+        break label2479;
+      }
+      if ((af.juH.jqn & 0x10) == 0) {
+        break label2422;
+      }
+      bool2 = true;
+      if ((!bool3) || ((af.juH.jqn & 0x20) == 0)) {
+        break label2428;
+      }
+      bool3 = true;
+      if ((!bool1) || ((af.juH.jqn & 0xF) == 0)) {
+        break label2434;
+      }
+      bool4 = true;
+      bool13 = bool4;
+      bool4 = bool3;
+      bool3 = bool13;
+      if ((!bool4) && (!bool3)) {
+        break label2440;
+      }
+      bool13 = true;
+      this.tSw = bool13;
+      localObject = new StringBuilder("hwH264Local:").append(bool1).append(",hwHEVCLocal:").append(bool12).append(", bSupportH264HW:").append(bool3).append(", bSupportHEVCSW:").append(bool2).append(", bSupportHEVCHW:").append(bool4).append(", svrHWCfg:").append(af.juH.jqn).append(", 720p jcchen ").append(bool7).append("-");
+      if (k != 0) {
+        break label2446;
+      }
+      bool1 = true;
+      label770:
+      com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", bool1 + "-" + bool10 + "-" + NQB + " svr 480p:" + af.juH.jqm);
+      if (!bool3) {
+        break label2474;
+      }
+      i = 1;
+      label831:
+      j = i;
+      if (bool2) {
+        j = i | 0x2;
+      }
+      if (!bool4) {
+        break label2469;
+      }
+      i = j | 0x4;
+    }
+    for (;;)
+    {
+      if (((bool5) || (bool8)) && (!bool11))
+      {
+        if ((!this.tSw) && (!bool9)) {
+          break label2452;
+        }
+        this.defaultWidth = 640;
+        this.defaultHeight = 480;
+        if ((bool7) && (k == 0)) {
+          this.defaultWidth = 1280;
+        }
+      }
+      for (this.defaultHeight = 720;; this.defaultHeight = 360)
+      {
+        NQA = true;
+        com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "steve:Set Enable 480! " + this.defaultWidth + "x" + this.defaultHeight);
+        com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "steve: Android CPUFlag:" + (cpuFlag0 & 0xFF) + ", 480x360 Enc flags: bEnable480FromLocal:" + bool5 + ", bEnable480FromSvr:" + bool8 + ", bDisable480FromSvr:" + bool11 + ", bEnable640FromLocal:" + bool6 + ", bEnable640FromSvr:" + bool9);
+        this.NRR = new int[this.defaultWidth * this.defaultHeight];
+        h.aHE();
+        this.ucB = com.tencent.mm.kernel.b.getUin();
+        n = Build.VERSION.SDK_INT;
+        j = OpenGlRender.getGLVersion();
+        localObject = ((WindowManager)MMApplicationContext.getContext().getSystemService("window")).getDefaultDisplay();
+        i1 = ((Display)localObject).getWidth();
+        i2 = ((Display)localObject).getHeight();
+        k = af.juS.jrr;
+        m = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vQz, -1);
+        long l2 = 0L;
+        int i3 = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vQy, -1);
+        Log.i("MicroMsg.Voip", "kerrizhang, fullbandmode = %d", new Object[] { Integer.valueOf(i3) });
+        int i4 = af.juI.joB;
+        Log.i("MicroMsg.Voip", "kerrizhang SrvDeviceInfo.mAudioInfo.voipfullbandcfg %d", new Object[] { Integer.valueOf(i4) });
+        long l1 = l2;
+        if (i3 > 0)
+        {
+          l1 = l2;
+          if (i4 > 0)
+          {
+            l1 = (i3 * 100000.0D) + 456L;
+            Log.i("MicroMsg.Voip", "kerrizhang typectrl %d", new Object[] { Long.valueOf(l1) });
+          }
+        }
+        i3 = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vRa, 0);
+        Log.i("MicroMsg.Voip", "winterwang get server opuswbswitch %d", new Object[] { Integer.valueOf(i3) });
+        localObject = new byte[4];
+        localObject[0] = ((byte)i3);
+        Log.i("MicroMsg.Voip", "winterwang setJNIAppCmd  EMethod_AudioOptionSwitch ,ret: %d", new Object[] { Integer.valueOf(setJNIAppCmd(5, (byte[])localObject, 4)) });
+        i3 = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vQK, -1);
+        i4 = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vQL, -1);
+        int i5 = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vQM, -1);
+        int i6 = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vQN, -1);
+        int i7 = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vQO, -1);
+        int i8 = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vQP, -1);
+        int i9 = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vQQ, -1);
+        int i10 = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vQR, -1);
+        Log.i("MicroMsg.Voip", "qipengfeng, neteq-x-expt: %d, %d, %d, %d, %d, %d, %d, %d", new Object[] { Integer.valueOf(i3), Integer.valueOf(i4), Integer.valueOf(i5), Integer.valueOf(i6), Integer.valueOf(i7), Integer.valueOf(i8), Integer.valueOf(i9), Integer.valueOf(i10) });
+        if ((i3 > 0) && (i4 > 0) && (i5 > 0) && (i6 > 0) && (i7 >= 0) && (i8 > 0) && (i9 > 0) && (i10 >= 0)) {
+          setJNIAppCmd(6, new byte[] { (byte)(i3 & 0xFF), (byte)(i3 >> 8 & 0xFF), (byte)(i3 >> 16 & 0xFF), (byte)(i3 >> 24 & 0xFF), (byte)(i4 & 0xFF), (byte)(i4 >> 8 & 0xFF), (byte)(i4 >> 16 & 0xFF), (byte)(i4 >> 24 & 0xFF), (byte)(i5 & 0xFF), (byte)(i5 >> 8 & 0xFF), (byte)(i5 >> 16 & 0xFF), (byte)(i5 >> 24 & 0xFF), (byte)(i6 & 0xFF), (byte)(i6 >> 8 & 0xFF), (byte)(i6 >> 16 & 0xFF), (byte)(i6 >> 24 & 0xFF), (byte)(i7 & 0xFF), (byte)(i7 >> 8 & 0xFF), (byte)(i7 >> 16 & 0xFF), (byte)(i7 >> 24 & 0xFF), (byte)(i8 & 0xFF), (byte)(i8 >> 8 & 0xFF), (byte)(i8 >> 16 & 0xFF), (byte)(i8 >> 24 & 0xFF), (byte)(i9 & 0xFF), (byte)(i9 >> 8 & 0xFF), (byte)(i9 >> 16 & 0xFF), (byte)(i9 >> 24 & 0xFF), (byte)(i10 & 0xFF), (byte)(i10 >> 8 & 0xFF), (byte)(i10 >> 16 & 0xFF), (byte)(i10 >> 24 & 0xFF) }, 8);
+        }
+        i3 = this.netType;
+        i4 = this.defaultWidth;
+        n = init(i << 8 | i3, 2, this.defaultHeight | i4 << 16, i1 << 16 | i2, this.ucB, j << 24 | n << 16 | cpuFlag0, com.tencent.mm.loader.j.b.aSC() + "lib/", 0, l1, k, m);
+        com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "protocalInit protocal init ret :" + n + ",uin= " + this.ucB + ", gl_vs:" + j + ", cpuFlag0=" + cpuFlag0 + ", hwCap= " + i + ", groupRsCap = " + k + ", x_vcodec2_paras = " + m);
+        this.lsn = true;
+        if (n < 0) {
+          reset();
+        }
+        AppMethodBeat.o(115279);
+        return n;
+        bool5 = false;
+        break;
+        label2263:
+        bool6 = false;
+        break label90;
+        label2269:
+        bool7 = false;
+        break label110;
+        label2275:
+        bool1 = false;
+        break label124;
+        label2281:
+        bool8 = false;
+        break label201;
+        label2287:
+        bool9 = false;
+        break label274;
+        label2293:
+        k = 0;
+        break label286;
+        label2298:
+        i = 0;
+        break label298;
+        label2303:
+        bool10 = false;
+        break label311;
+        label2309:
+        bool11 = false;
+        break label323;
+        label2315:
+        j = 0;
+        break label334;
+        label2320:
+        m = 0;
+        break label346;
+        label2326:
+        n = 0;
+        break label378;
+        label2332:
+        i1 = 0;
+        break label402;
+        label2338:
+        if (af.juH.jqp == 1)
+        {
+          NQB = true;
+          break label416;
+        }
+        if ((!NQC) || (n == 0)) {
+          break label416;
+        }
+        NQB = true;
+        break label416;
+        label2373:
+        if (i2 == 1)
+        {
+          NQD = true;
+          break label426;
+        }
+        if ((!NQC) || (i1 == 0)) {
+          break label426;
+        }
+        NQD = true;
+        break label426;
+        label2404:
+        bool1 = false;
+        break label550;
+        label2410:
+        bool12 = false;
+        break label567;
+        label2416:
+        bool3 = false;
+        break label579;
+        label2422:
+        bool2 = false;
+        break label599;
+        label2428:
+        bool3 = false;
+        break label619;
+        label2434:
+        bool4 = false;
+        break label639;
+        label2440:
+        bool13 = false;
+        break label664;
+        label2446:
+        bool1 = false;
+        break label770;
+        label2452:
+        this.defaultWidth = 480;
+      }
+      label2469:
+      i = j;
+      continue;
+      label2474:
+      i = 0;
+      break label831;
+      label2479:
+      bool2 = false;
+      bool4 = bool1;
+      bool13 = bool3;
+      bool3 = bool4;
+      bool4 = bool13;
+      break label651;
+      label2501:
+      i = 0;
+    }
+  }
+  
   public native int handleCommand(int paramInt1, byte[] paramArrayOfByte, int paramInt2);
   
-  protected native int init(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString, int paramInt7, long paramLong, int paramInt8);
+  protected native int init(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString, int paramInt7, long paramLong, int paramInt8, int paramInt9);
   
   public native int isDCReady();
   
@@ -1488,16 +1820,16 @@ public class v2protocal
   public int keep_onNotifyFromJni(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(115274);
-    com.tencent.mm.plugin.voip.b.e.Logd("MicroMsg.VoipService", "callByJni : arg1:" + paramInt1 + " arg2:" + paramInt2);
+    com.tencent.mm.plugin.voip.c.e.Logd("MicroMsg.VoipService", "callByJni : arg1:" + paramInt1 + " arg2:" + paramInt2);
     if (paramInt1 == 100)
     {
-      com.tencent.mm.plugin.voip.b.e.outputJniLog(paramArrayOfByte, "MicroMsg.Voip", paramInt2);
+      com.tencent.mm.plugin.voip.c.e.outputJniLog(paramArrayOfByte, "MicroMsg.Voip", paramInt2);
       AppMethodBeat.o(115274);
       return 0;
     }
     if (paramInt1 == 101)
     {
-      com.tencent.mm.plugin.voip.b.e.outputJniLog(paramArrayOfByte, "MicroMsg.v2Core", paramInt2);
+      com.tencent.mm.plugin.voip.c.e.outputJniLog(paramArrayOfByte, "MicroMsg.v2Core", paramInt2);
       AppMethodBeat.o(115274);
       return 0;
     }
@@ -1516,7 +1848,7 @@ public class v2protocal
     AppMethodBeat.i(115275);
     if (paramArrayOfInt != null)
     {
-      com.tencent.mm.plugin.voip.b.e.Logd("MicroMsg.VoipService", "callByJniInt : arg1:" + paramInt1 + " arg2:" + paramInt2);
+      com.tencent.mm.plugin.voip.c.e.Logd("MicroMsg.VoipService", "callByJniInt : arg1:" + paramInt1 + " arg2:" + paramInt2);
       Message localMessage = new Message();
       localMessage.what = 59998;
       localMessage.arg1 = paramInt1;
@@ -1538,80 +1870,82 @@ public class v2protocal
   {
     AppMethodBeat.i(115287);
     Log.printInfoStack("MicroMsg.Voip", "v2protocal reset!", new Object[0]);
-    fIR();
+    gBg();
     this.field_natSvrArray = null;
     this.field_peerId = null;
     this.field_capInfo = null;
     this.roomId = 0;
-    this.Haw = 0L;
-    this.Hav = 0;
-    this.ypO = 0;
-    this.ypH = 0L;
+    this.NQI = 0L;
+    this.NQH = 0;
+    this.DPQ = 0;
+    this.DPJ = 0L;
     this.channelStrategy = 0;
-    this.ypJ = 0;
-    this.iXv = 0L;
-    this.Hax = null;
-    this.Hay = null;
-    this.Haz = null;
-    this.HaA = 0;
-    this.HaB = null;
-    this.HbJ = 0;
-    this.HbK = null;
-    this.HbL = 0;
-    this.HbM = 0;
-    this.HaG = null;
-    this.HaH = null;
-    this.HbR = null;
-    this.HbS = null;
-    this.HbZ = null;
-    this.Hca = null;
-    this.Hcb = null;
-    this.Hcg = 0;
-    this.Hch = 0;
-    this.Hci = 0;
-    this.Hcj = 0;
-    this.Hck = 0;
+    this.DPL = 0;
+    this.lNP = 0L;
+    this.NQJ = null;
+    this.NQK = null;
+    this.NQL = null;
+    this.NQM = 0;
+    this.NQN = null;
+    this.NRV = 0;
+    this.NRW = null;
+    this.NRX = 0;
+    this.NRY = 0;
+    this.NQS = null;
+    this.NQT = null;
+    this.NSd = null;
+    this.NSe = null;
+    this.NSl = null;
+    this.NSm = null;
+    this.NSn = null;
+    this.NSs = 0;
+    this.NSt = 0;
+    this.NSu = 0;
+    this.NSv = 0;
+    this.NSw = 0;
     this.field_videoDuration = 0;
     this.field_audioDuration = 0;
-    this.Hcv = 0;
-    this.Hbk = 0;
-    this.Hbj = 0;
+    this.NSH = 0;
+    this.NRw = 0;
+    this.NRv = 0;
     this.field_engineVersionStatLength = 0;
     this.field_engineQosStatLength = 0;
     this.field_statusSyncKey = 0;
     this.field_relayDataSyncKey = 0;
     this.field_connectingStatusKey = 0;
-    this.HaM = 0;
-    this.HaN = 0;
-    this.HaO = 65536;
-    this.HaP = 0;
-    this.HaQ = 0;
-    this.HaR = 0;
-    this.HaY = -1;
-    this.Hbh = 0;
-    this.HbV = 0;
-    this.Hat = 0;
-    this.haD = "";
-    this.HbT = 0;
-    this.HbU = 0;
-    this.Hcw.reset();
-    this.Hcw.fGW();
-    Hap = false;
-    Has = 0;
+    this.NQY = 0;
+    this.NQZ = 0;
+    this.NRa = 65536;
+    this.NRb = 0;
+    this.NRc = 0;
+    this.NRd = 0;
+    this.NRk = -1;
+    this.NRt = 0;
+    this.NSh = 0;
+    this.NQF = 0;
+    this.jLI = "";
+    this.NSf = 0;
+    this.NSg = 0;
+    this.NSI.reset();
+    this.NSI.gzk();
+    NQA = false;
+    NQE = 0;
     this.field_jbmBitratRsSvrParamArray = null;
     this.field_jbmParamArraySize = 0;
     this.field_jbmBitratRsSvrParamDoubleArray = null;
     this.field_jbmParamDoubleArraySize = 0;
-    this.Hbb = 0;
-    this.Hbc = 0;
-    this.Hbd = 0;
-    this.Hbe = 0;
-    Hbf = 0;
-    this.Hbg = "";
-    this.Hcx = 0;
-    com.tencent.mm.plugin.voip.c.fFi();
+    this.NRn = 0;
+    this.NRo = 0;
+    this.NRp = 0;
+    this.NRq = 0;
+    NRr = 0;
+    Fnp = false;
+    Fno = 0;
+    this.NRs = "";
+    this.NSJ = 0;
+    com.tencent.mm.plugin.voip.c.gxu();
     int i = freeJNIReport();
-    com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "freeJNIReport : " + i + ". [0: null, no need to free, 1: free success!]");
+    com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "freeJNIReport : " + i + ". [0: null, no need to free, 1: free success!]");
     AppMethodBeat.o(115287);
   }
   
@@ -1622,7 +1956,7 @@ public class v2protocal
     AppMethodBeat.i(115259);
     paramInt = setAppCmd(paramInt, new byte[] { 0 }, 1);
     if (paramInt < 0) {
-      com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "setAppCmd: type:" + paramInt + ":ret:" + paramInt);
+      com.tencent.mm.plugin.voip.c.e.Logi("MicroMsg.Voip", "setAppCmd: type:" + paramInt + ":ret:" + paramInt);
     }
     AppMethodBeat.o(115259);
     return paramInt;
@@ -1630,7 +1964,7 @@ public class v2protocal
   
   public native int setAppCmd(int paramInt1, byte[] paramArrayOfByte, int paramInt2);
   
-  public native int setConfigInfo(int paramInt1, long paramLong1, int paramInt2, long paramLong2, byte[] paramArrayOfByte1, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, byte[] paramArrayOfByte2, int paramInt8, int paramInt9, int paramInt10, int paramInt11, byte[] paramArrayOfByte3, int paramInt12, int paramInt13, int paramInt14, byte[] paramArrayOfByte4, int paramInt15, int paramInt16, int paramInt17, int paramInt18, String paramString1, String paramString2, int paramInt19);
+  public native int setConfigInfo(int paramInt1, long paramLong1, int paramInt2, long paramLong2, byte[] paramArrayOfByte1, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, byte[] paramArrayOfByte2, int paramInt8, int paramInt9, int paramInt10, int paramInt11, byte[] paramArrayOfByte3, int paramInt12, int paramInt13, int paramInt14, byte[] paramArrayOfByte4, int paramInt15, int paramInt16, int paramInt17, int paramInt18, String paramString1, String paramString2, String paramString3);
   
   public native int setInactive();
   
@@ -1664,147 +1998,13 @@ public class v2protocal
   
   public native int videoHWProcess2(ByteBuffer paramByteBuffer1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ByteBuffer paramByteBuffer2);
   
-  public native int videoRorate90D(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte2, int paramInt5, int paramInt6, int paramInt7, int paramInt8);
+  public native int videoHWProcess3(ByteBuffer paramByteBuffer1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ByteBuffer paramByteBuffer2, int paramInt5);
   
-  public final String xh(boolean paramBoolean)
-  {
-    AppMethodBeat.i(115280);
-    if (this.iCs)
-    {
-      com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "call protocalUninit now...needStatInfo=".concat(String.valueOf(paramBoolean)));
-      this.field_ChannelReportDial = new int[6];
-      this.field_ChannelReportDial[0] = this.Hcw.GXm;
-      this.field_ChannelReportDial[1] = this.Hcw.GXs;
-      this.field_ChannelReportDial[2] = this.HbG;
-      this.field_ChannelReportDial[3] = this.HbH;
-      this.field_ChannelReportDial[4] = this.HbI;
-      this.field_ChannelReportDial[5] = this.HbJ;
-      this.field_EngineReportStatFromApp = new int[17];
-      fIU();
-      this.field_EngineReportStatFromApp[0] = this.HaM;
-      this.field_EngineReportStatFromApp[1] = this.HaN;
-      this.field_EngineReportStatFromApp[2] = this.HaT;
-      this.field_EngineReportStatFromApp[3] = this.HaU;
-      this.field_EngineReportStatFromApp[4] = this.HaS;
-      this.field_EngineReportStatFromApp[5] = this.HaV;
-      this.field_EngineReportStatFromApp[6] = this.HaW;
-      this.field_EngineReportStatFromApp[7] = -1;
-      if (this.Hcz != null)
-      {
-        this.field_EngineReportStatFromApp[8] = this.Hcz.qsj;
-        this.field_EngineReportStatFromApp[9] = this.Hcz.qsl;
-        this.field_EngineReportStatFromApp[10] = this.Hcz.qsb;
-        if (HcA == null) {
-          break label1227;
-        }
-        this.field_EngineReportStatFromApp[11] = HcA.zLC;
-        label263:
-        this.field_EngineReportStatFromApp[12] = this.HbW;
-        this.field_EngineReportStatFromApp[13] = this.HbX;
-        this.field_EngineReportStatFromApp[14] = this.HbY;
-        if (!Har) {
-          break label1238;
-        }
-        this.field_EngineReportStatFromApp[15] = 1280;
-        this.field_EngineReportStatFromApp[16] = 720;
-      }
-      for (;;)
-      {
-        this.iCs = false;
-        uninit(this.roomId, this.ypH, this.ypO);
-        Hap = false;
-        Has = 0;
-        if (this.Hcz != null)
-        {
-          this.Hcz.emB();
-          this.Hcz = null;
-        }
-        if (HcA != null)
-        {
-          HcA.interrupt();
-          localObject1 = HcA;
-          ((d)localObject1).zLv = false;
-          ((d)localObject1).zLw = false;
-          ((d)localObject1).zLy = 0;
-          Log.d("MeidaCodec[HWDec]", "steve: Stop Decode Thread!");
-        }
-        try
-        {
-          if (((d)localObject1).outputStream != null)
-          {
-            ((d)localObject1).outputStream.flush();
-            ((d)localObject1).outputStream.close();
-          }
-          if (((d)localObject1).zLm != null)
-          {
-            ((d)localObject1).zLm.flush();
-            ((d)localObject1).zLm.close();
-          }
-        }
-        catch (IOException localIOException)
-        {
-          for (;;)
-          {
-            long l;
-            Object localObject2;
-            o localo;
-            Log.e("MeidaCodec[HWDec]", " error:" + localIOException.toString());
-          }
-        }
-        HcA = null;
-        if (HcC != null) {
-          HcC.release();
-        }
-        HcC = null;
-        com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "uninit over.");
-        if (!paramBoolean) {
-          break label1293;
-        }
-        getStatInfo(this.Hcl, this.Hcl.length, this.Hcu, 30);
-        getEngineVersionInfo(this.Hcm, this.Hcm.length);
-        getEngineQosInfo(this.Hcn, this.Hcn.length);
-        Object localObject1 = new StringBuilder();
-        l = this.qDA;
-        if (this.qDA < 0) {
-          l = this.qDA + 4294967296L;
-        }
-        localObject2 = new StringBuilder().append(l).append(",").append(this.ypH).append(",").append(this.roomId).append(",").append(this.ypO).append(",");
-        localo = this.Hcw;
-        localObject2 = new StringBuilder().append(localo.GXc).append(",").append(localo.GXd).append(",").append(localo.GXe).append(",").append(localo.GXf).append(",").append(localo.GXg).append(",").append(localo.GXh).append(",").append(localo.GXi).append(",").append(localo.GXj).append(",").append(localo.GXk).append(",").append(localo.GXl).append(",").append(localo.GXm).toString();
-        com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "voipreport:DailStatString:".concat(String.valueOf(localObject2)));
-        localObject1 = ((StringBuilder)localObject1).append((String)localObject2).append(new String(this.Hcl, 0, this.field_statInfoLength)).append(fIL()).append(fIN());
-        localObject2 = this.Hcw;
-        localObject1 = ((StringBuilder)localObject1).append("," + ((o)localObject2).GXn).append(new String(this.Hcm, 0, this.field_engineVersionStatLength)).append(fIO());
-        com.tencent.mm.plugin.voip.b.e.Logd("MicroMsg.Voip", "cpuCapacity:" + cpuFlag0);
-        localObject1 = new StringBuilder(",").append(cpuFlag0).toString() + fIS() + fIT() + new String(this.Hcn, 0, this.field_engineQosStatLength);
-        com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "statInfoBuffer = " + new String(this.Hcl, 0, this.field_statInfoLength));
-        com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "engineVersionInfoBuffer = " + new String(this.Hcm, 0, this.field_engineVersionStatLength));
-        com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "engineQosInfoBuffer = " + new String(this.Hcn, 0, this.field_engineQosStatLength));
-        com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip", "voipreport:StatString = ".concat(String.valueOf(localObject1)));
-        ay.a.iDr.dl(this.field_netFlowRecv, this.field_netFlowSent);
-        com.tencent.mm.plugin.voip.b.e.Logd("MicroMsg.Voip", "voip net flow = " + (this.field_netFlowSent + this.field_netFlowRecv));
-        AppMethodBeat.o(115280);
-        return localObject1;
-        this.field_EngineReportStatFromApp[8] = 0;
-        this.field_EngineReportStatFromApp[9] = 0;
-        this.field_EngineReportStatFromApp[10] = 0;
-        break;
-        label1227:
-        this.field_EngineReportStatFromApp[11] = 0;
-        break label263;
-        label1238:
-        this.field_EngineReportStatFromApp[15] = 640;
-        this.field_EngineReportStatFromApp[16] = 480;
-      }
-    }
-    label1293:
-    AppMethodBeat.o(115280);
-    return "";
-  }
+  public native int videoRorate90D(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte2, int paramInt5, int paramInt6, int paramInt7, int paramInt8);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.v2protocal
  * JD-Core Version:    0.7.0.1
  */

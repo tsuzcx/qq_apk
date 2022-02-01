@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.card.d;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.model.e;
-import com.tencent.mm.protocal.protobuf.um;
+import com.tencent.mm.protocal.protobuf.uo;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -45,13 +45,13 @@ public final class h
         {
           paramLinkedList = "cardId";
           localJSONStringer.key(paramLinkedList);
-          localJSONStringer.value(locale.pRX);
+          localJSONStringer.value(locale.tnX);
           if (paramInt != 26) {
             break label353;
           }
           paramLinkedList = "cardExt";
           localJSONStringer.key(paramLinkedList);
-          if (locale.eaP != null) {
+          if (locale.fUM != null) {
             break label272;
           }
           paramLinkedList = "";
@@ -88,7 +88,7 @@ public final class h
       }
       continue;
       label272:
-      paramLinkedList = locale.eaP;
+      paramLinkedList = locale.fUM;
       continue;
       label281:
       paramLinkedList = Integer.valueOf(1);
@@ -119,7 +119,7 @@ public final class h
     }
   }
   
-  public static ArrayList<um> cR(String paramString, int paramInt)
+  public static ArrayList<uo> dl(String paramString, int paramInt)
   {
     AppMethodBeat.i(113801);
     if (TextUtils.isEmpty(paramString))
@@ -168,17 +168,17 @@ public final class h
         try
         {
           localJSONObject = new JSONObject(paramString.optString(i));
-          um localum = new um();
+          uo localuo = new uo();
           if (paramInt == 26)
           {
             str = "cardId";
-            localum.pRX = localJSONObject.optString(str);
+            localuo.tnX = localJSONObject.optString(str);
             if (paramInt != 26) {
               break label278;
             }
             str = "cardExt";
-            localum.eaP = localJSONObject.optString(str);
-            localArrayList.add(localum);
+            localuo.fUM = localJSONObject.optString(str);
+            localArrayList.add(localuo);
           }
         }
         catch (JSONException localJSONException)
@@ -207,7 +207,7 @@ public final class h
     }
   }
   
-  public static String cS(String paramString, int paramInt)
+  public static String dm(String paramString, int paramInt)
   {
     AppMethodBeat.i(113803);
     if (TextUtils.isEmpty(paramString))
@@ -310,7 +310,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.card.d.h
  * JD-Core Version:    0.7.0.1
  */

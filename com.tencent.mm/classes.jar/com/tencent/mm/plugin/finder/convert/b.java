@@ -1,38 +1,37 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
 import android.view.View;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.i;
+import com.tencent.mm.plugin.finder.b.g;
 import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.h;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/convert/FinderBlockListSearchConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FeedHeaderSearchData;", "()V", "view", "Landroid/view/View;", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/convert/FinderBlockListSearchConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FeedHeaderSearchData;", "()V", "view", "Landroid/view/View;", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "plugin-finder_release"})
 public final class b
-  extends e<i>
+  extends e<com.tencent.mm.plugin.finder.model.i>
 {
   private View view;
   
-  public final void a(RecyclerView paramRecyclerView, h paramh, int paramInt)
+  public final void a(RecyclerView paramRecyclerView, com.tencent.mm.view.recyclerview.i parami, int paramInt)
   {
-    AppMethodBeat.i(242767);
-    p.h(paramRecyclerView, "recyclerView");
-    p.h(paramh, "holder");
-    paramRecyclerView = paramh.aus;
-    p.g(paramRecyclerView, "holder.itemView");
+    AppMethodBeat.i(288848);
+    p.k(paramRecyclerView, "recyclerView");
+    p.k(parami, "holder");
+    paramRecyclerView = parami.amk;
+    p.j(paramRecyclerView, "holder.itemView");
     paramRecyclerView = paramRecyclerView.getLayoutParams();
     if ((paramRecyclerView instanceof StaggeredGridLayoutManager.LayoutParams)) {
-      ((StaggeredGridLayoutManager.LayoutParams)paramRecyclerView).aC(true);
+      ((StaggeredGridLayoutManager.LayoutParams)paramRecyclerView).aA(true);
     }
-    AppMethodBeat.o(242767);
+    AppMethodBeat.o(288848);
   }
   
   public final int getLayoutId()
   {
-    return 2131492875;
+    return b.g._feed_header_search_item;
   }
 }
 

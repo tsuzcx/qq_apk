@@ -1,9 +1,8 @@
 package com.tencent.mm.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.bd;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.be;
 import com.tencent.mm.model.y;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
@@ -11,26 +10,26 @@ import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class g
-  implements bd
+  implements be
 {
-  private c iGE = null;
+  private c lwG = null;
   
-  private static g aWS()
+  private static g bfZ()
   {
     AppMethodBeat.i(153100);
-    g localg = (g)y.at(g.class);
+    g localg = (g)y.as(g.class);
     AppMethodBeat.o(153100);
     return localg;
   }
   
-  public static c aWT()
+  public static c bga()
   {
     AppMethodBeat.i(153103);
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (aWS().iGE == null) {
-      aWS().iGE = new c();
+    h.aHE().aGH();
+    if (bfZ().lwG == null) {
+      bfZ().lwG = new c();
     }
-    c localc = aWS().iGE;
+    c localc = bfZ().lwG;
     AppMethodBeat.o(153103);
     return localc;
   }
@@ -45,13 +44,13 @@ public class g
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(153101);
-    c localc = aWT();
+    c localc = bga();
     long l = System.currentTimeMillis();
     try
     {
-      localc.KS((String)com.tencent.mm.kernel.g.aAh().azQ().get(328193, null));
-      if (localc.aWR()) {
-        f.KU(localc.iGz.iGw);
+      localc.Sl((String)h.aHG().aHp().b(328193, null));
+      if (localc.bfY()) {
+        f.Sn(localc.lwB.lwy);
       }
       Log.i("MicroMsg.abtest.AbTestManager", "[Abtest] init use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
       AppMethodBeat.o(153101);
@@ -69,9 +68,9 @@ public class g
   public void onAccountRelease()
   {
     AppMethodBeat.i(153102);
-    c localc = aWT();
-    localc.iGA = null;
-    localc.iGz = null;
+    c localc = bga();
+    localc.lwC = null;
+    localc.lwB = null;
     AppMethodBeat.o(153102);
   }
   
@@ -79,7 +78,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.a.g
  * JD-Core Version:    0.7.0.1
  */

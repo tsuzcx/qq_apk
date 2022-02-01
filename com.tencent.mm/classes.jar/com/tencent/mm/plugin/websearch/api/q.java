@@ -2,76 +2,76 @@ package com.tencent.mm.plugin.websearch.api;
 
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.audio.mix.i.b;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.audio.mix.h.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.buu;
-import com.tencent.mm.protocal.protobuf.buv;
+import com.tencent.mm.protocal.protobuf.ccm;
+import com.tencent.mm.protocal.protobuf.ccn;
 
 public final class q
-  extends com.tencent.mm.ak.q
+  extends com.tencent.mm.an.q
   implements m
 {
-  private buu IDv;
-  private buv IDw;
-  private int IDx;
-  private Bitmap IDy;
+  private ccm PxL;
+  private ccn PxM;
+  private int PxN;
+  private Bitmap PxO;
   private i callback;
-  private d iUB;
+  private d lKU;
   
-  public q(buu parambuu, int paramInt)
+  public q(ccm paramccm, int paramInt)
   {
-    AppMethodBeat.i(187826);
-    this.IDx = -1;
-    this.IDy = null;
-    this.IDv = parambuu;
-    this.IDx = paramInt;
+    AppMethodBeat.i(212203);
+    this.PxN = -1;
+    this.PxO = null;
+    this.PxL = paramccm;
+    this.PxN = paramInt;
     d.a locala = new d.a();
     locala.funcId = 4614;
     locala.uri = "/cgi-bin/mmsearch-bin/searchshare";
-    locala.iLN = parambuu;
-    locala.iLO = new buv();
-    this.iUB = locala.aXF();
-    AppMethodBeat.o(187826);
+    locala.lBU = paramccm;
+    locala.lBV = new ccn();
+    this.lKU = locala.bgN();
+    AppMethodBeat.o(212203);
   }
   
-  public final void aG(Bitmap paramBitmap)
+  public final void aD(Bitmap paramBitmap)
   {
-    this.IDy = paramBitmap;
+    this.PxO = paramBitmap;
   }
   
   public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(187827);
+    AppMethodBeat.i(212208);
     this.callback = parami;
-    int i = dispatch(paramg, this.iUB, this);
-    AppMethodBeat.o(187827);
+    int i = dispatch(paramg, this.lKU, this);
+    AppMethodBeat.o(212208);
     return i;
   }
   
-  public final buv fXK()
+  public final int gQm()
   {
-    return this.IDw;
+    return this.PxN;
   }
   
-  public final buu fXL()
+  public final ccn gQv()
   {
-    return this.IDv;
+    return this.PxM;
   }
   
-  public final int fXz()
+  public final ccm gQw()
   {
-    return this.IDx;
+    return this.PxL;
   }
   
   public final Bitmap getCropBitmap()
   {
-    return this.IDy;
+    return this.PxO;
   }
   
   public final int getType()
@@ -81,18 +81,18 @@ public final class q
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(187828);
+    AppMethodBeat.i(212211);
     b.i("MicroMsg.WebSearch.NetSceneGetSearchShare", "onGYNetEnd errType:%s errCode:%s errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.IDw = ((buv)this.iUB.iLL.iLR);
+    this.PxM = ((ccn)d.c.b(this.lKU.lBS));
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(187828);
+    AppMethodBeat.o(212211);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.q
  * JD-Core Version:    0.7.0.1
  */

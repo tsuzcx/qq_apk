@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.multitalk.a;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/audio/MultiTalkAudioManager$Companion;", "", "()V", "RINGTYPE_END", "", "RINGTYPE_INVITE", "TAG", "", "plugin-multitalk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/audio/ILinkAudioManager$Companion;", "", "()V", "IS_SPEAKER_ON", "", "TAG", "", "plugin-multitalk_release"})
 public final class a$a {}
 
 

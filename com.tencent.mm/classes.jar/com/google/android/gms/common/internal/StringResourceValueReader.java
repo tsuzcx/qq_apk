@@ -2,6 +2,7 @@ package com.google.android.gms.common.internal;
 
 import android.content.Context;
 import android.content.res.Resources;
+import com.google.android.gms.common.R.string;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import javax.annotation.Nullable;
 
@@ -15,7 +16,7 @@ public class StringResourceValueReader
     AppMethodBeat.i(4743);
     Preconditions.checkNotNull(paramContext);
     this.zzvb = paramContext.getResources();
-    this.zzvc = this.zzvb.getResourcePackageName(2131757764);
+    this.zzvc = this.zzvb.getResourcePackageName(R.string.common_google_play_services_unknown_issue);
     AppMethodBeat.o(4743);
   }
   
@@ -36,7 +37,7 @@ public class StringResourceValueReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.common.internal.StringResourceValueReader
  * JD-Core Version:    0.7.0.1
  */

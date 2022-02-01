@@ -16,14 +16,14 @@ public final class PlaybackStateCompat
   implements Parcelable
 {
   public static final Parcelable.Creator<PlaybackStateCompat> CREATOR = new Parcelable.Creator() {};
-  final long Nd;
-  final float Ne;
-  final long Nf;
-  final CharSequence Ng;
-  final long Nh;
-  List<CustomAction> Ni;
-  final long Nj;
-  private Object Nk;
+  final long dT;
+  final float dU;
+  final long dV;
+  final CharSequence dW;
+  final long dX;
+  List<CustomAction> dY;
+  final long dZ;
+  private Object ea;
   final int mErrorCode;
   final Bundle mExtras;
   final long mPosition;
@@ -33,14 +33,14 @@ public final class PlaybackStateCompat
   {
     this.mState = paramInt;
     this.mPosition = paramLong1;
-    this.Nd = paramLong2;
-    this.Ne = paramFloat;
-    this.Nf = paramLong3;
+    this.dT = paramLong2;
+    this.dU = paramFloat;
+    this.dV = paramLong3;
     this.mErrorCode = 0;
-    this.Ng = paramCharSequence;
-    this.Nh = paramLong4;
-    this.Ni = new ArrayList(paramList);
-    this.Nj = paramLong5;
+    this.dW = paramCharSequence;
+    this.dX = paramLong4;
+    this.dY = new ArrayList(paramList);
+    this.dZ = paramLong5;
     this.mExtras = paramBundle;
   }
   
@@ -48,18 +48,18 @@ public final class PlaybackStateCompat
   {
     this.mState = paramParcel.readInt();
     this.mPosition = paramParcel.readLong();
-    this.Ne = paramParcel.readFloat();
-    this.Nh = paramParcel.readLong();
-    this.Nd = paramParcel.readLong();
-    this.Nf = paramParcel.readLong();
-    this.Ng = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
-    this.Ni = paramParcel.createTypedArrayList(CustomAction.CREATOR);
-    this.Nj = paramParcel.readLong();
+    this.dU = paramParcel.readFloat();
+    this.dX = paramParcel.readLong();
+    this.dT = paramParcel.readLong();
+    this.dV = paramParcel.readLong();
+    this.dW = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
+    this.dY = paramParcel.createTypedArrayList(CustomAction.CREATOR);
+    this.dZ = paramParcel.readLong();
     this.mExtras = paramParcel.readBundle(MediaSessionCompat.class.getClassLoader());
     this.mErrorCode = paramParcel.readInt();
   }
   
-  public static PlaybackStateCompat B(Object paramObject)
+  public static PlaybackStateCompat j(Object paramObject)
   {
     if ((paramObject != null) && (Build.VERSION.SDK_INT >= 21))
     {
@@ -75,14 +75,14 @@ public final class PlaybackStateCompat
           if (!((Iterator)localObject3).hasNext()) {
             break;
           }
-          ((List)localObject2).add(CustomAction.C(((Iterator)localObject3).next()));
+          ((List)localObject2).add(CustomAction.k(((Iterator)localObject3).next()));
         }
       }
       if (Build.VERSION.SDK_INT >= 22) {}
       for (Object localObject2 = ((PlaybackState)paramObject).getExtras();; localObject2 = null)
       {
         localObject1 = new PlaybackStateCompat(((PlaybackState)paramObject).getState(), ((PlaybackState)paramObject).getPosition(), ((PlaybackState)paramObject).getBufferedPosition(), ((PlaybackState)paramObject).getPlaybackSpeed(), ((PlaybackState)paramObject).getActions(), ((PlaybackState)paramObject).getErrorMessage(), ((PlaybackState)paramObject).getLastPositionUpdateTime(), (List)localObject1, ((PlaybackState)paramObject).getActiveQueueItemId(), (Bundle)localObject2);
-        ((PlaybackStateCompat)localObject1).Nk = paramObject;
+        ((PlaybackStateCompat)localObject1).ea = paramObject;
         return localObject1;
       }
     }
@@ -99,14 +99,14 @@ public final class PlaybackStateCompat
     StringBuilder localStringBuilder = new StringBuilder("PlaybackState {");
     localStringBuilder.append("state=").append(this.mState);
     localStringBuilder.append(", position=").append(this.mPosition);
-    localStringBuilder.append(", buffered position=").append(this.Nd);
-    localStringBuilder.append(", speed=").append(this.Ne);
-    localStringBuilder.append(", updated=").append(this.Nh);
-    localStringBuilder.append(", actions=").append(this.Nf);
+    localStringBuilder.append(", buffered position=").append(this.dT);
+    localStringBuilder.append(", speed=").append(this.dU);
+    localStringBuilder.append(", updated=").append(this.dX);
+    localStringBuilder.append(", actions=").append(this.dV);
     localStringBuilder.append(", error code=").append(this.mErrorCode);
-    localStringBuilder.append(", error message=").append(this.Ng);
-    localStringBuilder.append(", custom actions=").append(this.Ni);
-    localStringBuilder.append(", active item id=").append(this.Nj);
+    localStringBuilder.append(", error message=").append(this.dW);
+    localStringBuilder.append(", custom actions=").append(this.dY);
+    localStringBuilder.append(", active item id=").append(this.dZ);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
@@ -115,13 +115,13 @@ public final class PlaybackStateCompat
   {
     paramParcel.writeInt(this.mState);
     paramParcel.writeLong(this.mPosition);
-    paramParcel.writeFloat(this.Ne);
-    paramParcel.writeLong(this.Nh);
-    paramParcel.writeLong(this.Nd);
-    paramParcel.writeLong(this.Nf);
-    TextUtils.writeToParcel(this.Ng, paramParcel, paramInt);
-    paramParcel.writeTypedList(this.Ni);
-    paramParcel.writeLong(this.Nj);
+    paramParcel.writeFloat(this.dU);
+    paramParcel.writeLong(this.dX);
+    paramParcel.writeLong(this.dT);
+    paramParcel.writeLong(this.dV);
+    TextUtils.writeToParcel(this.dW, paramParcel, paramInt);
+    paramParcel.writeTypedList(this.dY);
+    paramParcel.writeLong(this.dZ);
     paramParcel.writeBundle(this.mExtras);
     paramParcel.writeInt(this.mErrorCode);
   }
@@ -130,35 +130,35 @@ public final class PlaybackStateCompat
     implements Parcelable
   {
     public static final Parcelable.Creator<CustomAction> CREATOR = new Parcelable.Creator() {};
-    private final int Hm;
-    private final String Nl;
-    private final CharSequence Nm;
-    private Object Nn;
+    private final String eb;
+    private final CharSequence ec;
+    private final int ed;
+    private Object ee;
     private final Bundle mExtras;
     
     CustomAction(Parcel paramParcel)
     {
-      this.Nl = paramParcel.readString();
-      this.Nm = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
-      this.Hm = paramParcel.readInt();
+      this.eb = paramParcel.readString();
+      this.ec = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
+      this.ed = paramParcel.readInt();
       this.mExtras = paramParcel.readBundle(MediaSessionCompat.class.getClassLoader());
     }
     
     private CustomAction(String paramString, CharSequence paramCharSequence, int paramInt, Bundle paramBundle)
     {
-      this.Nl = paramString;
-      this.Nm = paramCharSequence;
-      this.Hm = paramInt;
+      this.eb = paramString;
+      this.ec = paramCharSequence;
+      this.ed = paramInt;
       this.mExtras = paramBundle;
     }
     
-    public static CustomAction C(Object paramObject)
+    public static CustomAction k(Object paramObject)
     {
       if ((paramObject == null) || (Build.VERSION.SDK_INT < 21)) {
         return null;
       }
       CustomAction localCustomAction = new CustomAction(((PlaybackState.CustomAction)paramObject).getAction(), ((PlaybackState.CustomAction)paramObject).getName(), ((PlaybackState.CustomAction)paramObject).getIcon(), ((PlaybackState.CustomAction)paramObject).getExtras());
-      localCustomAction.Nn = paramObject;
+      localCustomAction.ee = paramObject;
       return localCustomAction;
     }
     
@@ -169,21 +169,21 @@ public final class PlaybackStateCompat
     
     public final String toString()
     {
-      return "Action:mName='" + this.Nm + ", mIcon=" + this.Hm + ", mExtras=" + this.mExtras;
+      return "Action:mName='" + this.ec + ", mIcon=" + this.ed + ", mExtras=" + this.mExtras;
     }
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      paramParcel.writeString(this.Nl);
-      TextUtils.writeToParcel(this.Nm, paramParcel, paramInt);
-      paramParcel.writeInt(this.Hm);
+      paramParcel.writeString(this.eb);
+      TextUtils.writeToParcel(this.ec, paramParcel, paramInt);
+      paramParcel.writeInt(this.ed);
       paramParcel.writeBundle(this.mExtras);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.v4.media.session.PlaybackStateCompat
  * JD-Core Version:    0.7.0.1
  */

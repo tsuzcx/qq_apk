@@ -14,14 +14,18 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.data.t;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.mm.plugin.sns.i.j;
+import com.tencent.mm.plugin.sns.i.k;
 import com.tencent.mm.plugin.sns.model.aj;
 import com.tencent.mm.plugin.sns.model.c.b;
 import com.tencent.mm.plugin.sns.model.g;
 import com.tencent.mm.plugin.sns.model.g.e;
-import com.tencent.mm.protocal.protobuf.cnb;
-import com.tencent.mm.protocal.protobuf.he;
-import com.tencent.mm.protocal.protobuf.hf;
+import com.tencent.mm.protocal.protobuf.cvt;
+import com.tencent.mm.protocal.protobuf.gs;
+import com.tencent.mm.protocal.protobuf.gt;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.bp;
 import com.tencent.mm.ui.base.i;
@@ -30,20 +34,20 @@ public class ArtistHeader
   extends LinearLayout
   implements c.b
 {
-  private he EnQ;
-  private b EnV;
-  private ImageView EnW;
-  private ProgressBar EnX;
+  private i Bso;
+  private gs KAZ;
+  private b KBe;
+  private ImageView KBf;
+  private ProgressBar KBg;
   private Context context;
   private View maskView;
-  private i wGm;
   
   public ArtistHeader(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(97731);
-    this.EnQ = null;
-    this.wGm = null;
+    this.KAZ = null;
+    this.Bso = null;
     this.context = null;
     init(paramContext);
     AppMethodBeat.o(97731);
@@ -53,8 +57,8 @@ public class ArtistHeader
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(97732);
-    this.EnQ = null;
-    this.wGm = null;
+    this.KAZ = null;
+    this.Bso = null;
     this.context = null;
     init(paramContext);
     AppMethodBeat.o(97732);
@@ -63,22 +67,22 @@ public class ArtistHeader
   private void init(final Context paramContext)
   {
     AppMethodBeat.i(97733);
-    View localView = LayoutInflater.from(paramContext).inflate(2131496415, this, true);
+    View localView = LayoutInflater.from(paramContext).inflate(i.g.sns_artist_header, this, true);
     this.context = paramContext;
-    this.EnV = new b();
-    this.EnV.gyr = ((ImageView)localView.findViewById(2131297054));
-    this.EnV.hPW = ((TextView)localView.findViewById(2131296285));
-    this.EnV.zQY = ((TextView)localView.findViewById(2131296288));
-    this.EnV.Eob = ((TextView)localView.findViewById(2131296286));
-    this.EnV.titleTv = ((TextView)localView.findViewById(2131296287));
-    this.EnV.gyr.setOnClickListener(new View.OnClickListener()
+    this.KBe = new b();
+    this.KBe.jiu = ((ImageView)localView.findViewById(i.f.artist_avatar));
+    this.KBe.kEs = ((TextView)localView.findViewById(i.f.a_desc));
+    this.KBe.FwB = ((TextView)localView.findViewById(i.f.a_username));
+    this.KBe.KBk = ((TextView)localView.findViewById(i.f.a_sign));
+    this.KBe.titleTv = ((TextView)localView.findViewById(i.f.a_title));
+    this.KBe.jiu.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(97728);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/sns/ui/ArtistHeader$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/plugin/sns/ui/ArtistHeader$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if ((ArtistHeader.a(ArtistHeader.this) != null) && (ArtistHeader.a(ArtistHeader.this).isShowing()))
         {
           a.a(this, "com/tencent/mm/plugin/sns/ui/ArtistHeader$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -91,21 +95,33 @@ public class ArtistHeader
           AppMethodBeat.o(97728);
           return;
         }
-        paramAnonymousView = LayoutInflater.from(ArtistHeader.this.getContext()).inflate(2131496815, null);
-        ArtistHeader.a(ArtistHeader.this, new i(ArtistHeader.this.getContext(), 2131821771));
-        paramAnonymousView.setOnClickListener(new ArtistHeader.1.1(this));
+        paramAnonymousView = LayoutInflater.from(ArtistHeader.this.getContext()).inflate(i.g.view_get_hd_avatar_dialogview, null);
+        ArtistHeader.a(ArtistHeader.this, new i(ArtistHeader.this.getContext(), i.k.mmAvatarDialog));
+        paramAnonymousView.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymous2View)
+          {
+            AppMethodBeat.i(97726);
+            b localb = new b();
+            localb.bn(paramAnonymous2View);
+            a.c("com/tencent/mm/plugin/sns/ui/ArtistHeader$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+            ArtistHeader.a(ArtistHeader.this).dismiss();
+            a.a(this, "com/tencent/mm/plugin/sns/ui/ArtistHeader$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(97726);
+          }
+        });
         ArtistHeader.a(ArtistHeader.this).setCanceledOnTouchOutside(true);
         ArtistHeader.a(ArtistHeader.this).setContentView(paramAnonymousView);
         ArtistHeader.a(ArtistHeader.this).show();
-        ArtistHeader.a(ArtistHeader.this, (ImageView)paramAnonymousView.findViewById(2131302257));
-        ArtistHeader.a(ArtistHeader.this, (ProgressBar)paramAnonymousView.findViewById(2131302258));
-        ArtistHeader.a(ArtistHeader.this, paramAnonymousView.findViewById(2131302259));
-        aj.faL().a(ArtistHeader.b(ArtistHeader.this).KKO.KKP, ArtistHeader.c(ArtistHeader.this), paramContext.hashCode(), true, bp.Oqt, false, new g.e()
+        ArtistHeader.a(ArtistHeader.this, (ImageView)paramAnonymousView.findViewById(i.f.hd_avatar_iv));
+        ArtistHeader.a(ArtistHeader.this, (ProgressBar)paramAnonymousView.findViewById(i.f.hd_avatar_laoding_pb));
+        ArtistHeader.a(ArtistHeader.this, paramAnonymousView.findViewById(i.f.hd_avatar_mask_view));
+        aj.fOF().a(ArtistHeader.b(ArtistHeader.this).RLG.RLH, ArtistHeader.c(ArtistHeader.this), paramContext.hashCode(), true, bp.VGp, false, new g.e()
         {
-          public final void ax(Bitmap paramAnonymous2Bitmap)
+          public final void au(Bitmap paramAnonymous2Bitmap)
           {
             AppMethodBeat.i(97727);
-            if (r.M(paramAnonymous2Bitmap))
+            if (t.K(paramAnonymous2Bitmap))
             {
               ArtistHeader.a(ArtistHeader.this, paramAnonymous2Bitmap);
               ArtistHeader.d(ArtistHeader.this).setVisibility(4);
@@ -113,7 +129,7 @@ public class ArtistHeader
               AppMethodBeat.o(97727);
               return;
             }
-            aj.faL().b(ArtistHeader.b(ArtistHeader.this).KKO.KKP, ArtistHeader.c(ArtistHeader.this), ArtistHeader.1.this.val$context.hashCode(), bp.Oqt);
+            aj.fOF().b(ArtistHeader.b(ArtistHeader.this).RLG.RLH, ArtistHeader.c(ArtistHeader.this), ArtistHeader.1.this.val$context.hashCode(), bp.VGp);
             AppMethodBeat.o(97727);
           }
         });
@@ -124,40 +140,42 @@ public class ArtistHeader
     AppMethodBeat.o(97733);
   }
   
-  public final void aOG(String paramString) {}
+  public final void aYK(String paramString) {}
   
-  public final void ci(String paramString, boolean paramBoolean)
+  public final void cq(String paramString, boolean paramBoolean) {}
+  
+  public final void cr(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(97735);
-    if (this.EnQ == null)
+    if (this.KAZ == null)
     {
       AppMethodBeat.o(97735);
       return;
     }
-    if ((this.wGm != null) && (this.wGm.isShowing()))
+    if ((this.Bso != null) && (this.Bso.isShowing()))
     {
       if (!paramBoolean)
       {
-        cnb localcnb = this.EnQ.KKO.KKP;
-        if ((localcnb.Id != null) && (localcnb.Id.equals(paramString)))
+        cvt localcvt = this.KAZ.RLG.RLH;
+        if ((localcvt.Id != null) && (localcvt.Id.equals(paramString)))
         {
-          Toast.makeText(this.context, this.context.getString(2131766030), 0).show();
+          Toast.makeText(this.context, this.context.getString(i.j.sns_down_error), 0).show();
           AppMethodBeat.o(97735);
           return;
         }
       }
-      if (this.EnW != null) {
-        this.EnW.post(new Runnable()
+      if (this.KBf != null) {
+        this.KBf.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(97730);
-            aj.faL().a(ArtistHeader.b(ArtistHeader.this).KKO.KKP, ArtistHeader.c(ArtistHeader.this), ArtistHeader.f(ArtistHeader.this).hashCode(), true, bp.Oqt, false, new g.e()
+            aj.fOF().a(ArtistHeader.b(ArtistHeader.this).RLG.RLH, ArtistHeader.c(ArtistHeader.this), ArtistHeader.f(ArtistHeader.this).hashCode(), true, bp.VGp, false, new g.e()
             {
-              public final void ax(Bitmap paramAnonymous2Bitmap)
+              public final void au(Bitmap paramAnonymous2Bitmap)
               {
                 AppMethodBeat.i(97729);
-                if (r.M(paramAnonymous2Bitmap))
+                if (t.K(paramAnonymous2Bitmap))
                 {
                   ArtistHeader.a(ArtistHeader.this, paramAnonymous2Bitmap);
                   ArtistHeader.d(ArtistHeader.this).setVisibility(4);
@@ -174,27 +192,25 @@ public class ArtistHeader
     AppMethodBeat.o(97735);
   }
   
-  public final void cj(String paramString, boolean paramBoolean) {}
-  
-  public final void eZJ() {}
+  public final void fLL() {}
   
   public void setBackClickListener(a parama) {}
   
-  public void setUserName(he paramhe)
+  public void setUserName(gs paramgs)
   {
     AppMethodBeat.i(97734);
-    if (paramhe == null)
+    if (paramgs == null)
     {
       Log.e("MicroMsg.ArtistHeader", "userName or selfName is null ");
       AppMethodBeat.o(97734);
       return;
     }
-    this.EnQ = paramhe;
-    aj.faL().b(paramhe.KKO.KKP, this.EnV.gyr, this.context.hashCode(), bp.Oqt);
-    this.EnV.zQY.setText(paramhe.Name);
-    this.EnV.hPW.setText(paramhe.KHk);
-    this.EnV.titleTv.setText(paramhe.Title);
-    this.EnV.Eob.setText(paramhe.KKN);
+    this.KAZ = paramgs;
+    aj.fOF().b(paramgs.RLG.RLH, this.KBe.jiu, this.context.hashCode(), bp.VGp);
+    this.KBe.FwB.setText(paramgs.CMP);
+    this.KBe.kEs.setText(paramgs.RIC);
+    this.KBe.titleTv.setText(paramgs.fwr);
+    this.KBe.KBk.setText(paramgs.RLF);
     AppMethodBeat.o(97734);
   }
   
@@ -202,18 +218,18 @@ public class ArtistHeader
   
   final class b
   {
-    TextView Eob;
-    ImageView gyr;
-    TextView hPW;
+    TextView FwB;
+    TextView KBk;
+    ImageView jiu;
+    TextView kEs;
     TextView titleTv;
-    TextView zQY;
     
     b() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.ArtistHeader
  * JD-Core Version:    0.7.0.1
  */

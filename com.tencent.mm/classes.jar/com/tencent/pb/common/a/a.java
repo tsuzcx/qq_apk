@@ -2,27 +2,27 @@ package com.tencent.pb.common.a;
 
 public final class a
 {
-  public static boolean RCA = false;
-  public static boolean RCB = true;
-  public static boolean RCC = false;
-  public static boolean RCD = false;
-  public static boolean RCj = false;
-  public static boolean RCk = true;
-  public static int RCl = 1500;
-  public static int RCm = 500;
-  public static boolean RCn = false;
-  public static int RCo = 533;
-  public static String RCp = "http://dldir1.qq.com/foxmail/home.apk";
-  public static boolean RCq = true;
-  public static boolean RCr = true;
-  public static boolean RCs = true;
-  public static boolean RCt = false;
-  public static boolean RCu = true;
-  public static boolean RCv = false;
-  public static boolean RCw = false;
-  public static boolean RCx = false;
-  public static boolean RCy = true;
-  public static boolean RCz = true;
+  public static boolean ZdL = false;
+  public static boolean ZdM = true;
+  public static int ZdN = 1500;
+  public static int ZdO = 500;
+  public static boolean ZdP = false;
+  public static int ZdQ = 533;
+  public static String ZdR = "http://dldir1.qq.com/foxmail/home.apk";
+  public static boolean ZdS = true;
+  public static boolean ZdT = true;
+  public static boolean ZdU = true;
+  public static boolean ZdV = false;
+  public static boolean ZdW = true;
+  public static boolean ZdX = false;
+  public static boolean ZdY = false;
+  public static boolean ZdZ = false;
+  public static boolean Zea = true;
+  public static boolean Zeb = true;
+  public static boolean Zec = false;
+  public static boolean Zed = true;
+  public static boolean Zee = false;
+  public static boolean Zef = false;
 }
 
 

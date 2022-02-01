@@ -1,22 +1,24 @@
 package com.tencent.mm.plugin.emoji.model;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.y;
+import com.tencent.mm.protocal.protobuf.aju;
+import com.tencent.mm.protocal.protobuf.ajw;
 
 public final class b
-  extends y
 {
-  public b()
+  public ajw uDW;
+  public aju uDX;
+  public boolean uDY = false;
+  
+  public b(aju paramaju, ajw paramajw, boolean paramBoolean)
   {
-    super(com.tencent.mm.br.b.bfR("emoji"));
-    AppMethodBeat.i(108544);
-    com.tencent.mm.plugin.emoji.b.b.a.qYv = new b.1(this);
-    AppMethodBeat.o(108544);
+    this.uDX = paramaju;
+    this.uDW = paramajw;
+    this.uDY = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.model.b
  * JD-Core Version:    0.7.0.1
  */

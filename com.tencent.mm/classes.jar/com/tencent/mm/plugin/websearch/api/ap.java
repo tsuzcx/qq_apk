@@ -5,8 +5,8 @@ import com.tencent.mm.ui.widget.MMWebView;
 
 public final class ap
 {
-  private i IFj;
-  private String dVO;
+  private i PzB;
+  private String fPs;
   int scene;
   private String sessionId;
   MMWebView webView;
@@ -15,8 +15,8 @@ public final class ap
   {
     this.webView = paramMMWebView;
     this.sessionId = paramString1;
-    this.dVO = paramString2;
-    this.IFj = parami;
+    this.fPs = paramString2;
+    this.PzB = parami;
     this.scene = paramInt;
   }
 }

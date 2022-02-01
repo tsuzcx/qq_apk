@@ -10,114 +10,144 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.live.core.a.d;
+import com.tencent.mm.live.core.a.e;
+import com.tencent.mm.live.core.b.n;
 import com.tencent.mm.live.core.debug.LiveDebugView;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 import com.tencent.rtmp.ui.TXCloudVideoView;
+import java.util.List;
 import kotlin.g.a.m;
 import kotlin.g.a.q;
 import kotlin.g.b.p;
+import kotlin.l;
 import kotlin.x;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/view/LivePreviewView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "debugView", "Lcom/tencent/mm/live/core/debug/LiveDebugView;", "downTime", "", "previewTouchListener", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "x", "y", "", "renderLayout", "Lcom/tencent/mm/live/core/view/TRTCVideoLayoutManager;", "getRenderLayout", "()Lcom/tencent/mm/live/core/view/TRTCVideoLayoutManager;", "setRenderLayout", "(Lcom/tencent/mm/live/core/view/TRTCVideoLayoutManager;)V", "bringToFront", "userId", "streamType", "", "cameraOrientationChanged", "orientation", "enableDebugView", "enable", "", "getCameraRootView", "getCameraView", "Landroid/view/SurfaceView;", "getSurface", "callback", "Lkotlin/Function3;", "Lcom/tencent/mm/live/core/render/RenderSurfaceHolder;", "surface", "width", "height", "getTXCloudView", "Lcom/tencent/rtmp/ui/TXCloudVideoView;", "halfCameraAndRemote", "halfRemoteAndCamera", "halfRemoteAndRemote", "anchorUserId", "onInterceptTouchEvent", "ev", "Landroid/view/MotionEvent;", "orientationChanged", "recyclerCameraView", "recyclerCloudViewView", "refreshCameraView", "refreshVideoView", "release", "remoteViewFullScreen", "value", "remoteViewPkScreen", "restoreFromHalfMode", "setPkUserId", "setPreviewMoveListener", "xOffset", "yOffset", "setPreviewTouchListener", "setSelfUserId", "plugin-core_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/view/LivePreviewView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "debugView", "Lcom/tencent/mm/live/core/debug/LiveDebugView;", "downTime", "", "previewTouchListener", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "x", "y", "", "renderLayout", "Lcom/tencent/mm/live/core/view/TRTCVideoLayoutManager;", "getRenderLayout", "()Lcom/tencent/mm/live/core/view/TRTCVideoLayoutManager;", "setRenderLayout", "(Lcom/tencent/mm/live/core/view/TRTCVideoLayoutManager;)V", "bringToFront", "userId", "streamType", "", "cameraOrientationChanged", "orientation", "enableDebugView", "enable", "", "getCameraRootView", "getCameraView", "Landroid/view/SurfaceView;", "getSurface", "callback", "Lkotlin/Function3;", "Lcom/tencent/mm/live/core/render/RenderSurfaceHolder;", "surface", "width", "height", "getTXCloudView", "Lcom/tencent/rtmp/ui/TXCloudVideoView;", "halfRemoteAndCamera", "onInterceptTouchEvent", "ev", "Landroid/view/MotionEvent;", "orientationChanged", "recyclerCameraView", "recyclerCloudViewView", "refreshCameraView", "refreshVideoView", "relayoutAnchorPreview", "userIdList", "", "relayoutVisitorPreview", "anchorUserId", "selfUserId", "release", "remoteViewFullScreen", "value", "remoteViewPkScreen", "restoreFromHalfMode", "setPkUserId", "setPreviewMoveListener", "xOffset", "yOffset", "setPreviewTouchListener", "setSelfUserId", "plugin-core_release"})
 public class LivePreviewView
   extends RelativeLayout
 {
   private final String TAG;
-  private LiveDebugView hCz;
-  public TRTCVideoLayoutManager hER;
-  private m<? super Float, ? super Float, x> hES;
-  private long hET;
+  private LiveDebugView kqA;
+  public TRTCVideoLayoutManager ksW;
+  private m<? super Float, ? super Float, x> ksX;
+  private long ksY;
   
   public LivePreviewView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(196765);
+    AppMethodBeat.i(201314);
     this.TAG = "MicroMsg.LiveCore";
-    this.hET = -1L;
-    paramContext = LayoutInflater.from(paramContext).inflate(2131495295, (ViewGroup)this, true);
-    paramAttributeSet = paramContext.findViewById(2131306943);
-    p.g(paramAttributeSet, "parent.findViewById(R.id.render_view)");
-    this.hER = ((TRTCVideoLayoutManager)paramAttributeSet);
-    paramContext = paramContext.findViewById(2131303382);
-    p.g(paramContext, "parent.findViewById(R.id.live_debug_view)");
-    this.hCz = ((LiveDebugView)paramContext);
-    paramContext = g.aAh();
-    p.g(paramContext, "MMKernel.storage()");
-    if (paramContext.azQ().getInt(ar.a.Onl, 0) == 1) {}
+    this.ksY = -1L;
+    paramContext = LayoutInflater.from(paramContext).inflate(a.e.live_visitor_preview_view, (ViewGroup)this, true);
+    paramAttributeSet = paramContext.findViewById(a.d.render_view);
+    p.j(paramAttributeSet, "parent.findViewById(R.id.render_view)");
+    this.ksW = ((TRTCVideoLayoutManager)paramAttributeSet);
+    paramContext = paramContext.findViewById(a.d.live_debug_view);
+    p.j(paramContext, "parent.findViewById(R.id.live_debug_view)");
+    this.kqA = ((LiveDebugView)paramContext);
+    paramContext = h.aHG();
+    p.j(paramContext, "MMKernel.storage()");
+    if (paramContext.aHp().getInt(ar.a.VCx, 0) == 1) {}
     for (int i = 1; i != 0; i = 0)
     {
-      this.hCz.setVisibility(0);
-      paramContext = com.tencent.mm.live.core.debug.a.hCA;
-      com.tencent.mm.live.core.debug.a.c(this.hCz);
-      AppMethodBeat.o(196765);
+      this.kqA.setVisibility(0);
+      paramContext = com.tencent.mm.live.core.debug.a.kqB;
+      com.tencent.mm.live.core.debug.a.c(this.kqA);
+      AppMethodBeat.o(201314);
       return;
     }
-    this.hCz.setVisibility(8);
-    paramContext = com.tencent.mm.live.core.debug.a.hCA;
+    this.kqA.setVisibility(8);
+    paramContext = com.tencent.mm.live.core.debug.a.kqB;
     com.tencent.mm.live.core.debug.a.release();
-    AppMethodBeat.o(196765);
+    AppMethodBeat.o(201314);
   }
   
   private final SurfaceView getCameraView()
   {
-    AppMethodBeat.i(196761);
-    SurfaceView localSurfaceView = this.hER.aEX();
-    p.g(localSurfaceView, "renderLayout.allocCameraView()");
-    AppMethodBeat.o(196761);
+    AppMethodBeat.i(201293);
+    SurfaceView localSurfaceView = this.ksW.aNp();
+    p.j(localSurfaceView, "renderLayout.allocCameraView()");
+    AppMethodBeat.o(201293);
     return localSurfaceView;
   }
   
-  public final void GE(final String paramString)
+  public final void NR(final String paramString)
   {
-    AppMethodBeat.i(196754);
+    AppMethodBeat.i(201271);
     post((Runnable)new a(this, paramString));
-    AppMethodBeat.o(196754);
+    AppMethodBeat.o(201271);
   }
   
-  public final TXCloudVideoView X(String paramString, int paramInt)
+  public final void NS(String paramString)
   {
-    AppMethodBeat.i(196755);
-    paramString = this.hER.Y(paramString, paramInt);
-    AppMethodBeat.o(196755);
+    AppMethodBeat.i(201282);
+    this.ksW.NS(paramString);
+    AppMethodBeat.o(201282);
+  }
+  
+  public final void a(String paramString1, String paramString2, List<String> paramList)
+  {
+    AppMethodBeat.i(201279);
+    p.k(paramString1, "anchorUserId");
+    p.k(paramString2, "selfUserId");
+    p.k(paramList, "userIdList");
+    this.ksW.a(paramString1, paramString2, paramList);
+    AppMethodBeat.o(201279);
+  }
+  
+  public final void a(q<? super n, ? super Integer, ? super Integer, x> paramq)
+  {
+    AppMethodBeat.i(201295);
+    p.k(paramq, "callback");
+    paramq.c(new n(getCameraView().getHolder()), Integer.valueOf(this.ksW.getCameraViewWidth()), Integer.valueOf(this.ksW.getCameraViewHeight()));
+    AppMethodBeat.o(201295);
+  }
+  
+  public final void ad(List<String> paramList)
+  {
+    AppMethodBeat.i(201274);
+    p.k(paramList, "userIdList");
+    this.ksW.ad(paramList);
+    AppMethodBeat.o(201274);
+  }
+  
+  public final TXCloudVideoView ap(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(201280);
+    paramString = this.ksW.aq(paramString, paramInt);
+    AppMethodBeat.o(201280);
     return paramString;
-  }
-  
-  public final void a(q<? super com.tencent.mm.live.core.b.l, ? super Integer, ? super Integer, x> paramq)
-  {
-    AppMethodBeat.i(196762);
-    p.h(paramq, "callback");
-    paramq.d(new com.tencent.mm.live.core.b.l(getCameraView().getHolder()), Integer.valueOf(this.hER.getCameraViewWidth()), Integer.valueOf(this.hER.getCameraViewHeight()));
-    AppMethodBeat.o(196762);
   }
   
   public final void c(int paramInt1, String paramString, int paramInt2)
   {
-    AppMethodBeat.i(196758);
-    p.h(paramString, "userId");
-    this.hER.c(paramInt1, paramString, paramInt2);
-    AppMethodBeat.o(196758);
+    AppMethodBeat.i(201288);
+    p.k(paramString, "userId");
+    this.ksW.c(paramInt1, paramString, paramInt2);
+    AppMethodBeat.o(201288);
   }
   
   public final RelativeLayout getCameraRootView()
   {
-    AppMethodBeat.i(196756);
-    RelativeLayout localRelativeLayout = this.hER.getCameraContentView();
-    AppMethodBeat.o(196756);
+    AppMethodBeat.i(201283);
+    RelativeLayout localRelativeLayout = this.ksW.getCameraContentView();
+    AppMethodBeat.o(201283);
     return localRelativeLayout;
   }
   
   public final TRTCVideoLayoutManager getRenderLayout()
   {
-    return this.hER;
+    return this.ksW;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(196764);
+    AppMethodBeat.i(201306);
     Object localObject;
     if (paramMotionEvent != null)
     {
@@ -133,7 +163,7 @@ public class LivePreviewView
     for (;;)
     {
       boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(196764);
+      AppMethodBeat.o(201306);
       return bool;
       localObject = null;
       break;
@@ -141,76 +171,76 @@ public class LivePreviewView
       if (((Integer)localObject).intValue() != 0) {
         break label22;
       }
-      this.hET = System.currentTimeMillis();
+      this.ksY = System.currentTimeMillis();
       continue;
       label62:
       if (((Integer)localObject).intValue() == 1)
       {
-        if ((this.hET > 0L) && (System.currentTimeMillis() - this.hET <= ViewConfiguration.getTapTimeout()))
+        if ((this.ksY > 0L) && (System.currentTimeMillis() - this.ksY <= ViewConfiguration.getTapTimeout()))
         {
           Log.d(this.TAG, "preview action up");
-          localObject = this.hES;
+          localObject = this.ksX;
           if (localObject != null) {
             ((m)localObject).invoke(Float.valueOf(paramMotionEvent.getRawX()), Float.valueOf(paramMotionEvent.getRawY()));
           }
         }
-        this.hET = -1L;
+        this.ksY = -1L;
       }
     }
   }
   
-  public final void qO(int paramInt)
-  {
-    AppMethodBeat.i(196757);
-    this.hER.qQ(paramInt);
-    AppMethodBeat.o(196757);
-  }
-  
   public final void setPkUserId(String paramString)
   {
-    AppMethodBeat.i(196759);
-    p.h(paramString, "userId");
-    this.hER.setPkUserId(paramString);
-    AppMethodBeat.o(196759);
+    AppMethodBeat.i(201289);
+    p.k(paramString, "userId");
+    this.ksW.setPkUserId(paramString);
+    AppMethodBeat.o(201289);
   }
   
   public final void setPreviewMoveListener(m<? super Float, ? super Float, x> paramm)
   {
-    AppMethodBeat.i(196763);
-    TRTCVideoLayoutManager localTRTCVideoLayoutManager = this.hER;
+    AppMethodBeat.i(201299);
+    TRTCVideoLayoutManager localTRTCVideoLayoutManager = this.ksW;
     if (paramm != null) {
       paramm = new a(paramm);
     }
     for (;;)
     {
       localTRTCVideoLayoutManager.setGestureListener((b.a)paramm);
-      AppMethodBeat.o(196763);
+      AppMethodBeat.o(201299);
       return;
     }
   }
   
   public final void setPreviewTouchListener(m<? super Float, ? super Float, x> paramm)
   {
-    this.hES = paramm;
+    this.ksX = paramm;
   }
   
   public final void setRenderLayout(TRTCVideoLayoutManager paramTRTCVideoLayoutManager)
   {
-    AppMethodBeat.i(196753);
-    p.h(paramTRTCVideoLayoutManager, "<set-?>");
-    this.hER = paramTRTCVideoLayoutManager;
-    AppMethodBeat.o(196753);
+    AppMethodBeat.i(201268);
+    p.k(paramTRTCVideoLayoutManager, "<set-?>");
+    this.ksW = paramTRTCVideoLayoutManager;
+    AppMethodBeat.o(201268);
   }
   
   public final void setSelfUserId(String paramString)
   {
-    AppMethodBeat.i(196760);
-    p.h(paramString, "userId");
-    this.hER.setMySelfUserId(paramString);
-    AppMethodBeat.o(196760);
+    AppMethodBeat.i(201291);
+    p.k(paramString, "userId");
+    this.ksW.setMySelfUserId(paramString);
+    AppMethodBeat.o(201291);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  public final void tD(int paramInt)
+  {
+    AppMethodBeat.i(201285);
+    this.ksW.tF(paramInt);
+    AppMethodBeat.o(201285);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
@@ -218,16 +248,16 @@ public class LivePreviewView
     
     public final void run()
     {
-      AppMethodBeat.i(196751);
-      int i = this.hEU.getRenderLayout().Z(paramString, this.hEW);
-      this.hEU.getRenderLayout().qP(i);
-      AppMethodBeat.o(196751);
+      AppMethodBeat.i(199691);
+      int i = this.ksZ.getRenderLayout().ar(paramString, this.ktb);
+      this.ksZ.getRenderLayout().tE(i);
+      AppMethodBeat.o(199691);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.core.view.LivePreviewView
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ import org.json.JSONObject;
 public final class g
   extends m
 {
-  public String dVu;
+  public String fOX;
   
   public g(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     AppMethodBeat.i(72308);
-    this.dVu = null;
+    this.fOX = null;
     HashMap localHashMap = new HashMap();
     localHashMap.put("verify_code", paramString1);
     localHashMap.put("session_key", paramString2);
@@ -43,13 +43,13 @@ public final class g
       AppMethodBeat.o(72309);
       return;
     }
-    this.dVu = paramJSONObject.optString("app_username");
+    this.fOX = paramJSONObject.optString("app_username");
     AppMethodBeat.o(72309);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.a.g
  * JD-Core Version:    0.7.0.1
  */

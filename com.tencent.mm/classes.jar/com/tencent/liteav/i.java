@@ -1,12 +1,12 @@
 package com.tencent.liteav;
 
 import android.content.Context;
-import com.tencent.liteav.basic.a.c;
+import com.tencent.liteav.basic.b.c;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.Monitor;
 import com.tencent.liteav.basic.module.TXCStatus;
-import com.tencent.liteav.basic.util.d;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.e;
+import com.tencent.liteav.basic.util.h;
 import com.tencent.liteav.screencapture.a;
 import com.tencent.liteav.screencapture.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -22,9 +22,9 @@ public class i
   private final a a;
   private l b;
   private EGLContext c;
-  private WeakReference<com.tencent.liteav.basic.b.b> d;
+  private WeakReference<com.tencent.liteav.basic.c.b> d;
   private int e;
-  private d f;
+  private e f;
   private int g;
   private int h;
   private String i;
@@ -37,26 +37,26 @@ public class i
   
   public i(Context paramContext, g paramg, a.a parama)
   {
-    AppMethodBeat.i(221602);
+    AppMethodBeat.i(231034);
     this.c = null;
     this.d = null;
     this.i = "";
     this.j = 0;
     this.o = new LinkedList();
-    this.a = new a(paramContext, paramg.V, parama);
+    this.a = new a(paramContext, paramg.W, parama);
     this.a.a(this);
     paramg.a();
     this.f = c(paramg.a, paramg.b);
-    this.e = paramg.h;
+    this.e = paramg.i;
     this.g = paramg.a;
     this.h = paramg.b;
     TXCLog.i("TXCScreenCaptureSource", "capture size: %s, encode size: %dx%d", new Object[] { this.f, Integer.valueOf(this.g), Integer.valueOf(this.h) });
-    AppMethodBeat.o(221602);
+    AppMethodBeat.o(231034);
   }
   
   private boolean a(Queue<Runnable> paramQueue)
   {
-    AppMethodBeat.i(221612);
+    AppMethodBeat.i(231095);
     try
     {
       if (paramQueue.isEmpty()) {
@@ -65,29 +65,29 @@ public class i
       Runnable localRunnable = (Runnable)paramQueue.poll();
       if (localRunnable == null)
       {
-        AppMethodBeat.o(221612);
+        AppMethodBeat.o(231095);
         return false;
       }
     }
     finally
     {
-      AppMethodBeat.o(221612);
+      AppMethodBeat.o(231095);
     }
     localObject.run();
-    AppMethodBeat.o(221612);
+    AppMethodBeat.o(231095);
     return true;
   }
   
-  private d c(int paramInt1, int paramInt2)
+  private e c(int paramInt1, int paramInt2)
   {
     int i2 = 720;
-    AppMethodBeat.i(221603);
+    AppMethodBeat.i(231037);
     int i1;
-    d locald;
+    e locale;
     if (paramInt1 > paramInt2)
     {
       i1 = 1;
-      locald = new d();
+      locale = new e();
       if ((paramInt1 <= 1280) && (paramInt2 <= 1280)) {
         break label106;
       }
@@ -96,7 +96,7 @@ public class i
       }
       i2 = Math.max(paramInt1, paramInt2);
       label51:
-      locald.a = i2;
+      locale.a = i2;
       if (i1 == 0) {
         break label97;
       }
@@ -105,9 +105,9 @@ public class i
     label97:
     for (paramInt1 = Math.min(paramInt1, paramInt2);; paramInt1 = Math.max(paramInt1, paramInt2))
     {
-      locald.b = paramInt1;
-      AppMethodBeat.o(221603);
-      return locald;
+      locale.b = paramInt1;
+      AppMethodBeat.o(231037);
+      return locale;
       i1 = 0;
       break;
       i2 = Math.min(paramInt1, paramInt2);
@@ -118,7 +118,7 @@ public class i
     {
       paramInt1 = 1280;
       label114:
-      locald.a = paramInt1;
+      locale.a = paramInt1;
       if (i1 == 0) {
         break label143;
       }
@@ -126,7 +126,7 @@ public class i
     label143:
     for (paramInt1 = i2;; paramInt1 = 1280)
     {
-      locald.b = paramInt1;
+      locale.b = paramInt1;
       break;
       paramInt1 = 720;
       break label114;
@@ -135,31 +135,31 @@ public class i
   
   private void f(boolean paramBoolean)
   {
-    AppMethodBeat.i(221615);
+    AppMethodBeat.i(231102);
     if (paramBoolean)
     {
       if (this.g > this.h)
       {
         b(this.h, this.g);
-        AppMethodBeat.o(221615);
+        AppMethodBeat.o(231102);
       }
     }
     else if (this.g < this.h) {
       b(this.h, this.g);
     }
-    AppMethodBeat.o(221615);
+    AppMethodBeat.o(231102);
   }
   
   public void a()
   {
-    AppMethodBeat.i(221604);
+    AppMethodBeat.i(231039);
     Monitor.a(2, String.format("VideoCapture[%d]: start screen", new Object[] { Integer.valueOf(hashCode()) }), "", 0);
     this.k = 0L;
     this.l = 0L;
     this.m = 0L;
     this.n = true;
     this.a.a(this.f.a, this.f.b, this.e);
-    AppMethodBeat.o(221604);
+    AppMethodBeat.o(231039);
   }
   
   public void a(float paramFloat) {}
@@ -170,20 +170,20 @@ public class i
   
   public void a(int paramInt1, EGLContext paramEGLContext, int paramInt2, int paramInt3, int paramInt4, long paramLong)
   {
-    AppMethodBeat.i(221613);
+    AppMethodBeat.i(231097);
     this.c = paramEGLContext;
     while (a(this.o)) {}
     if (paramInt1 != 0)
     {
       TXCLog.e("TXCScreenCaptureSource", "onScreenCaptureFrame failed");
-      AppMethodBeat.o(221613);
+      AppMethodBeat.o(231097);
       return;
     }
     if (this.n)
     {
       this.n = false;
       Monitor.a(2, String.format("VideoCapture[%d]: capture first frame", new Object[] { Integer.valueOf(hashCode()) }), "", 0);
-      f.a(this.d, 1007, "First frame capture completed");
+      h.a(this.d, 1007, "First frame capture completed");
       TXCLog.i("TXCScreenCaptureSource", "on Got first frame");
     }
     this.k += 1L;
@@ -212,23 +212,23 @@ public class i
       paramEGLContext.a = paramInt2;
       paramEGLContext.b = 0;
       paramEGLContext.j = 0;
-      paramEGLContext.l = f.a(paramEGLContext.e, paramEGLContext.f, this.g, this.h);
+      paramEGLContext.l = h.a(paramEGLContext.e, paramEGLContext.f, this.g, this.h);
       this.b.b(paramEGLContext);
-      AppMethodBeat.o(221613);
+      AppMethodBeat.o(231097);
       return;
     }
   }
   
   public void a(c paramc) {}
   
-  public void a(com.tencent.liteav.basic.b.b paramb)
+  public void a(com.tencent.liteav.basic.c.b paramb)
   {
-    AppMethodBeat.i(221610);
+    AppMethodBeat.i(231074);
     this.d = new WeakReference(paramb);
     if (this.a != null) {
       this.a.a(paramb);
     }
-    AppMethodBeat.o(221610);
+    AppMethodBeat.o(231074);
   }
   
   public void a(com.tencent.liteav.basic.structs.b paramb) {}
@@ -240,21 +240,21 @@ public class i
   
   public void a(Object paramObject)
   {
-    AppMethodBeat.i(221614);
+    AppMethodBeat.i(231100);
     while (a(this.o)) {}
     if (this.b != null) {
-      this.b.s();
+      this.b.t();
     }
-    AppMethodBeat.o(221614);
+    AppMethodBeat.o(231100);
   }
   
   public void a(Runnable paramRunnable)
   {
-    AppMethodBeat.i(221609);
+    AppMethodBeat.i(231070);
     if (this.a != null) {
       this.a.a(paramRunnable);
     }
-    AppMethodBeat.o(221609);
+    AppMethodBeat.o(231070);
   }
   
   public void a(String paramString)
@@ -264,10 +264,10 @@ public class i
   
   public void a(boolean paramBoolean)
   {
-    AppMethodBeat.i(221605);
+    AppMethodBeat.i(231042);
     Monitor.a(2, String.format("VideoCapture[%d]: stop screen", new Object[] { Integer.valueOf(hashCode()) }), "", 0);
     this.a.a(null);
-    AppMethodBeat.o(221605);
+    AppMethodBeat.o(231042);
   }
   
   public boolean a(int paramInt)
@@ -277,9 +277,9 @@ public class i
   
   public void b()
   {
-    AppMethodBeat.i(221607);
+    AppMethodBeat.i(231048);
     this.a.a(true);
-    AppMethodBeat.o(221607);
+    AppMethodBeat.o(231048);
   }
   
   public void b(int paramInt) {}
@@ -292,22 +292,22 @@ public class i
   
   public void b(boolean paramBoolean)
   {
-    AppMethodBeat.i(221608);
-    d locald = c(this.g, this.h);
-    if (!locald.equals(this.f))
+    AppMethodBeat.i(231050);
+    e locale = c(this.g, this.h);
+    if (!locale.equals(this.f))
     {
-      this.f = locald;
-      this.a.a(locald.a, locald.b);
+      this.f = locale;
+      this.a.a(locale.a, locale.b);
       TXCLog.i("TXCScreenCaptureSource", "capture size: %s, encode size: %dx%d", new Object[] { this.f, Integer.valueOf(this.g), Integer.valueOf(this.h) });
     }
-    AppMethodBeat.o(221608);
+    AppMethodBeat.o(231050);
   }
   
   public void c()
   {
-    AppMethodBeat.i(221606);
+    AppMethodBeat.i(231046);
     this.a.a(false);
-    AppMethodBeat.o(221606);
+    AppMethodBeat.o(231046);
   }
   
   public void c(int paramInt) {}
@@ -342,10 +342,10 @@ public class i
   
   public void f(int paramInt)
   {
-    AppMethodBeat.i(221611);
+    AppMethodBeat.i(231082);
     this.e = paramInt;
     this.a.a(paramInt);
-    AppMethodBeat.o(221611);
+    AppMethodBeat.o(231082);
   }
   
   public int g()
@@ -385,7 +385,7 @@ public class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.i
  * JD-Core Version:    0.7.0.1
  */

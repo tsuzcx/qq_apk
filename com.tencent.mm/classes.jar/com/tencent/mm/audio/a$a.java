@@ -2,7 +2,7 @@ package com.tencent.mm.audio;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/audio/SceneVoicePlayerAudioManager$Companion;", "", "()V", "TAG", "", "plugin-audiologic_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/audio/SceneVoicePlayerAudioManager$Companion;", "", "()V", "TAG", "", "plugin-audiologic_release"})
 public final class a$a {}
 
 

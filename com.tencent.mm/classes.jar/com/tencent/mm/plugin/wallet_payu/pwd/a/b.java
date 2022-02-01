@@ -19,7 +19,7 @@ public final class b
     AppMethodBeat.o(72144);
   }
   
-  public final int fPU()
+  public final int gIA()
   {
     return 2;
   }

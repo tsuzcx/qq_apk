@@ -1,13 +1,13 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.c.h;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.opengl.j;
 import com.tencent.liteav.beauty.NativeLoad;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class o
-  extends h
+  extends j
 {
   private static float[] C = { 0.1826F, 0.6142F, 0.062F, -0.1006F, -0.3386F, 0.4392F, 0.4392F, -0.3989F, -0.0403F };
   private static float[] D = { 0.256816F, 0.504154F, 0.0979137F, -0.148246F, -0.29102F, 0.439266F, 0.439271F, -0.367833F, -0.071438F };
@@ -56,14 +56,13 @@ public class o
     AppMethodBeat.i(15059);
     if (1 == this.B)
     {
-      NativeLoad.getInstance();
       this.a = NativeLoad.nativeLoadGLProgram(8);
       TXCLog.i(this.A, "RGB-->I420 init!");
       if ((this.a == 0) || (!b())) {
-        break label182;
+        break label170;
       }
     }
-    label182:
+    label170:
     for (this.g = true;; this.g = false)
     {
       c();
@@ -73,7 +72,6 @@ public class o
       if (3 == this.B)
       {
         TXCLog.i(this.A, "RGB-->NV21 init!");
-        NativeLoad.getInstance();
         this.a = NativeLoad.nativeLoadGLProgram(11);
         break;
       }
@@ -85,7 +83,6 @@ public class o
         return bool;
       }
       TXCLog.i(this.A, "don't support format " + this.B + " use default I420");
-      NativeLoad.getInstance();
       this.a = NativeLoad.nativeLoadGLProgram(8);
       break;
     }
@@ -110,7 +107,7 @@ public class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.o
  * JD-Core Version:    0.7.0.1
  */

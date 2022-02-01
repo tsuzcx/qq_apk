@@ -10,34 +10,34 @@ public final class e
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList<d> SLE;
-  public ArrayList<d> dtS = null;
+  static ArrayList<d> aanz;
+  public ArrayList<d> fmA = null;
   
   public final void display(StringBuilder paramStringBuilder, int paramInt) {}
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(214841);
-    if (SLE == null)
+    AppMethodBeat.i(207466);
+    if (aanz == null)
     {
       ArrayList localArrayList = new ArrayList();
-      SLE = localArrayList;
+      aanz = localArrayList;
       localArrayList.add(new d());
     }
-    this.dtS = ((ArrayList)paramJceInputStream.read(SLE, 0, true));
-    AppMethodBeat.o(214841);
+    this.fmA = ((ArrayList)paramJceInputStream.read(aanz, 0, true));
+    AppMethodBeat.o(207466);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(214840);
-    paramJceOutputStream.write(this.dtS, 0);
-    AppMethodBeat.o(214840);
+    AppMethodBeat.i(207464);
+    paramJceOutputStream.write(this.fmA, 0);
+    AppMethodBeat.o(207464);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     d.e
  * JD-Core Version:    0.7.0.1
  */

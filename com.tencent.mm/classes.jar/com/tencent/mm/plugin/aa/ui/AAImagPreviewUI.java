@@ -13,7 +13,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
@@ -23,13 +22,19 @@ import android.widget.BaseAdapter;
 import android.widget.Gallery.LayoutParams;
 import android.widget.ImageView;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.r.a;
+import com.tencent.mm.ay.r.a;
 import com.tencent.mm.b.g;
 import com.tencent.mm.compatible.util.Exif;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.aa.model.i;
 import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.wxpay.a.a;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.ForceGpuUtil;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -37,14 +42,14 @@ import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.system.AndroidMediaUtil;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MultiTouchImageView;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.o.f;
-import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.q.f;
+import com.tencent.mm.ui.base.q.g;
 import com.tencent.mm.ui.tools.MMGestureGallery;
 import com.tencent.mm.ui.tools.MMGestureGallery.c;
 import com.tencent.mm.ui.tools.MMGestureGallery.f;
 import com.tencent.mm.ui.widget.a.e;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import com.tencent.mm.view.AnimationLayout;
 import com.tencent.mm.view.ViewAnimHelper;
 import com.tencent.mm.view.ViewAnimHelper.ViewInfo;
@@ -52,21 +57,21 @@ import com.tencent.mm.view.ViewAnimHelper.ViewInfo;
 public class AAImagPreviewUI
   extends MMActivity
 {
-  private View gvQ;
   private String imagePath;
   private String imageUrl;
-  private int jUA;
-  private int jUB;
-  private Dialog jUC = null;
-  private AnimationLayout jUD;
-  private boolean jUE = false;
-  private ViewAnimHelper.ViewInfo jUF;
-  private ImageView jUG;
-  private int jUH;
-  private final int jUw = 1;
-  private final int jUx = 2;
-  private MMGestureGallery jUy;
-  private a jUz;
+  private View jac;
+  private final int mLJ = 1;
+  private final int mLK = 2;
+  private MMGestureGallery mLL;
+  private a mLM;
+  private int mLN;
+  private int mLO;
+  private Dialog mLP = null;
+  private AnimationLayout mLQ;
+  private boolean mLR = false;
+  private ViewAnimHelper.ViewInfo mLS;
+  private ImageView mLT;
+  private int mLU;
   
   private static void a(MultiTouchImageView paramMultiTouchImageView, Bitmap paramBitmap)
   {
@@ -93,7 +98,7 @@ public class AAImagPreviewUI
     for (;;)
     {
       paramMultiTouchImageView.setImageMatrix(localMatrix);
-      paramMultiTouchImageView.cN(paramBitmap.getWidth(), paramBitmap.getHeight());
+      paramMultiTouchImageView.di(paramBitmap.getWidth(), paramBitmap.getHeight());
       paramMultiTouchImageView.setMaxZoomDoubleTab(true);
       paramMultiTouchImageView.setImageBitmap(paramBitmap);
       AppMethodBeat.o(63489);
@@ -150,26 +155,26 @@ public class AAImagPreviewUI
     }
   }
   
-  private void bms()
+  private void bwA()
   {
-    AppMethodBeat.i(212959);
-    if (this.jUE)
+    AppMethodBeat.i(205360);
+    if (this.mLR)
     {
-      AppMethodBeat.o(212959);
+      AppMethodBeat.o(205360);
       return;
     }
-    this.jUE = true;
+    this.mLR = true;
     Log.i("MicroMsg.PreviewHdHeadImg", "runExitAnimation");
-    this.jUD.a(this.jUG, this.gvQ, this.jUF, new Animator.AnimatorListener()new ValueAnimator.AnimatorUpdateListener
+    this.mLQ.a(this.mLT, this.jac, this.mLS, new Animator.AnimatorListener()new ValueAnimator.AnimatorUpdateListener
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
       
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(212952);
+        AppMethodBeat.i(220502);
         AAImagPreviewUI.this.finish();
-        AAImagPreviewUI.this.overridePendingTransition(2130772188, 2130772189);
-        AppMethodBeat.o(212952);
+        AAImagPreviewUI.this.overridePendingTransition(a.a.toast_fade_in, a.a.toast_fade_out);
+        AppMethodBeat.o(220502);
       }
       
       public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
@@ -179,26 +184,26 @@ public class AAImagPreviewUI
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
-        AppMethodBeat.i(212953);
+        AppMethodBeat.i(272804);
         ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        AppMethodBeat.o(212953);
+        AppMethodBeat.o(272804);
       }
     });
-    AppMethodBeat.o(212959);
+    AppMethodBeat.o(205360);
   }
   
   public void finish()
   {
     AppMethodBeat.i(63488);
     super.finish();
-    bms();
-    overridePendingTransition(2130772188, 2130772189);
+    bwA();
+    overridePendingTransition(a.a.toast_fade_in, a.a.toast_fade_out);
     AppMethodBeat.o(63488);
   }
   
   public int getLayoutId()
   {
-    return 2131492897;
+    return a.g.aa_image_view;
   }
   
   public void initView()
@@ -206,48 +211,48 @@ public class AAImagPreviewUI
     AppMethodBeat.i(63487);
     hideTitleView();
     fullScreenNoTitleBar(true);
-    if (d.oD(19)) {
+    if (d.qV(19)) {
       getWindow().setFlags(201327616, 201327616);
     }
     for (;;)
     {
-      this.jUD = ((AnimationLayout)findViewById(2131296763));
-      this.gvQ = findViewById(2131307160);
-      this.jUG = ((ImageView)findViewById(2131301854));
-      if (this.jUF == null) {
-        this.jUF = ViewAnimHelper.q(this.jUG, getContext().getWindow().getDecorView());
+      this.mLQ = ((AnimationLayout)findViewById(a.f.animation_layout));
+      this.jac = findViewById(a.f.root_container);
+      this.mLT = ((ImageView)findViewById(a.f.gallery_bg));
+      if (this.mLS == null) {
+        this.mLS = ViewAnimHelper.q(this.mLT, getContext().getWindow().getDecorView());
       }
-      this.jUy = ((MMGestureGallery)findViewById(2131301853));
-      this.jUy.setVerticalFadingEdgeEnabled(false);
-      this.jUy.setHorizontalFadingEdgeEnabled(false);
-      this.jUy.setSingleClickOverListener(new MMGestureGallery.f()
+      this.mLL = ((MMGestureGallery)findViewById(a.f.gallery));
+      this.mLL.setVerticalFadingEdgeEnabled(false);
+      this.mLL.setHorizontalFadingEdgeEnabled(false);
+      this.mLL.setSingleClickOverListener(new MMGestureGallery.f()
       {
-        public final void bmt()
+        public final void bwB()
         {
           AppMethodBeat.i(63477);
           AAImagPreviewUI.this.finish();
           AppMethodBeat.o(63477);
         }
       });
-      this.jUy.setLongClickOverListener(new MMGestureGallery.c()
+      this.mLL.setLongClickOverListener(new MMGestureGallery.c()
       {
-        public final void bmu()
+        public final void bwC()
         {
           AppMethodBeat.i(63480);
           e locale = new e(AAImagPreviewUI.this, 1, false);
-          locale.HLX = new o.f()
+          locale.ODT = new q.f()
           {
-            public final void onCreateMMMenu(m paramAnonymous2m)
+            public final void onCreateMMMenu(o paramAnonymous2o)
             {
               AppMethodBeat.i(63478);
-              paramAnonymous2m.kV(1, 2131762187);
+              paramAnonymous2o.mn(1, a.i.launch_aa_save_imag);
               if (AAImagPreviewUI.a(AAImagPreviewUI.this) == 1) {
-                paramAnonymous2m.a(2, AAImagPreviewUI.this.getContext().getResources().getColor(2131099818), AAImagPreviewUI.this.getString(2131762173));
+                paramAnonymous2o.a(2, AAImagPreviewUI.this.getContext().getResources().getColor(a.c.Red), AAImagPreviewUI.this.getString(a.i.launch_aa_delete_imag));
               }
               AppMethodBeat.o(63478);
             }
           };
-          locale.HLY = new o.g()
+          locale.ODU = new q.g()
           {
             public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
             {
@@ -268,12 +273,12 @@ public class AAImagPreviewUI
               }
             }
           };
-          locale.dGm();
+          locale.eik();
           AppMethodBeat.o(63480);
         }
       });
-      this.jUz = new a((byte)0);
-      this.jUy.setAdapter(this.jUz);
+      this.mLM = new a((byte)0);
+      this.mLL.setAdapter(this.mLM);
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -284,28 +289,28 @@ public class AAImagPreviewUI
           return true;
         }
       });
-      if (!this.jUE)
+      if (!this.mLR)
       {
-        this.jUE = true;
+        this.mLR = true;
         Log.i("MicroMsg.PreviewHdHeadImg", "runEnterAnimation");
-        this.jUD.b(this.jUG, this.gvQ, this.jUF, new Animator.AnimatorListener()
+        this.mLQ.b(this.mLT, this.jac, this.mLS, new Animator.AnimatorListener()
         {
           public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
           
           public final void onAnimationEnd(Animator paramAnonymousAnimator)
           {
-            AppMethodBeat.i(212958);
+            AppMethodBeat.i(200872);
             AAImagPreviewUI.g(AAImagPreviewUI.this);
-            AppMethodBeat.o(212958);
+            AppMethodBeat.o(200872);
           }
           
           public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
           
           public final void onAnimationStart(Animator paramAnonymousAnimator)
           {
-            AppMethodBeat.i(212957);
+            AppMethodBeat.i(200871);
             AAImagPreviewUI.f(AAImagPreviewUI.this).setVisibility(0);
-            AppMethodBeat.o(212957);
+            AppMethodBeat.o(200871);
           }
         }, null);
       }
@@ -317,10 +322,10 @@ public class AAImagPreviewUI
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(212960);
+    AppMethodBeat.i(205361);
     super.onBackPressed();
-    bms();
-    AppMethodBeat.o(212960);
+    bwA();
+    AppMethodBeat.o(205361);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -328,14 +333,14 @@ public class AAImagPreviewUI
     AppMethodBeat.i(63486);
     customfixStatusbar(true);
     super.onCreate(paramBundle);
-    overridePendingTransition(2130772188, 2130772189);
+    overridePendingTransition(a.a.toast_fade_in, a.a.toast_fade_out);
     getWindow().getDecorView().setSystemUiVisibility(1280);
-    this.jUA = getIntent().getIntExtra("use_scene", 1);
-    this.jUB = getIntent().getIntExtra("scene", 1);
+    this.mLN = getIntent().getIntExtra("use_scene", 1);
+    this.mLO = getIntent().getIntExtra("scene", 1);
     this.imagePath = getIntent().getStringExtra("path");
     this.imageUrl = getIntent().getStringExtra("url");
-    this.jUF = ((ViewAnimHelper.ViewInfo)getIntent().getParcelableExtra("view_info"));
-    this.jUH = getIntent().getIntExtra("aa_type", 2);
+    this.mLS = ((ViewAnimHelper.ViewInfo)getIntent().getParcelableExtra("view_info"));
+    this.mLU = getIntent().getIntExtra("aa_type", 2);
     initView();
     setResult(0);
     AppMethodBeat.o(63486);
@@ -370,8 +375,8 @@ public class AAImagPreviewUI
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(63485);
-      paramView = View.inflate(AAImagPreviewUI.this.getContext(), 2131492898, null);
-      paramViewGroup = (MultiTouchImageView)paramView.findViewById(2131302526);
+      paramView = View.inflate(AAImagPreviewUI.this.getContext(), a.g.aa_image_view_item, null);
+      paramViewGroup = (MultiTouchImageView)paramView.findViewById(a.f.image);
       paramView.setLayoutParams(new Gallery.LayoutParams(-1, -1));
       AAImagPreviewUI.a(AAImagPreviewUI.this, paramViewGroup);
       AppMethodBeat.o(63485);
@@ -381,7 +386,7 @@ public class AAImagPreviewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.AAImagPreviewUI
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package kotlin.l.b.a.b.m.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collection;
 import java.util.List;
-import kotlin.g.b.aa;
+import kotlin.g.b.ab;
 import kotlin.g.b.p;
 
 public abstract interface q
@@ -71,11 +71,11 @@ public abstract interface q
   
   public abstract boolean k(j paramj);
   
-  public abstract h kJ(List<? extends h> paramList);
-  
   public abstract boolean l(j paramj);
   
   public abstract boolean l(n paramn);
+  
+  public abstract h lG(List<? extends h> paramList);
   
   public abstract boolean m(n paramn);
   
@@ -100,7 +100,7 @@ public abstract interface q
     public static int a(q paramq, l paraml)
     {
       AppMethodBeat.i(61238);
-      p.h(paraml, "$this$size");
+      p.k(paraml, "$this$size");
       int i;
       if ((paraml instanceof j))
       {
@@ -114,7 +114,7 @@ public abstract interface q
         AppMethodBeat.o(61238);
         return i;
       }
-      paramq = (Throwable)new IllegalStateException(("unknown type argument list type: " + paraml + ", " + aa.bp(paraml.getClass())).toString());
+      paramq = (Throwable)new IllegalStateException(("unknown type argument list type: " + paraml + ", " + ab.bO(paraml.getClass())).toString());
       AppMethodBeat.o(61238);
       throw paramq;
     }
@@ -122,7 +122,7 @@ public abstract interface q
     public static j a(q paramq, h paramh)
     {
       AppMethodBeat.i(61227);
-      p.h(paramh, "$this$lowerBoundIfFlexible");
+      p.k(paramh, "$this$lowerBoundIfFlexible");
       Object localObject = paramq.p(paramh);
       if (localObject != null)
       {
@@ -136,7 +136,7 @@ public abstract interface q
         localObject = paramq;
         if (paramq == null)
         {
-          p.hyc();
+          p.iCn();
           localObject = paramq;
         }
       }
@@ -147,7 +147,7 @@ public abstract interface q
     public static m a(q paramq, j paramj, int paramInt)
     {
       AppMethodBeat.i(61226);
-      p.h(paramj, "$this$getArgumentOrNull");
+      p.k(paramj, "$this$getArgumentOrNull");
       int i = paramq.q((h)paramj);
       if (paramInt < 0) {}
       while (i <= paramInt)
@@ -163,7 +163,7 @@ public abstract interface q
     public static m a(q paramq, l paraml, int paramInt)
     {
       AppMethodBeat.i(61237);
-      p.h(paraml, "$this$get");
+      p.k(paraml, "$this$get");
       if ((paraml instanceof j))
       {
         paramq = paramq.a((h)paraml, paramInt);
@@ -173,12 +173,12 @@ public abstract interface q
       if ((paraml instanceof a))
       {
         paramq = ((a)paraml).get(paramInt);
-        p.g(paramq, "get(index)");
+        p.j(paramq, "get(index)");
         paramq = (m)paramq;
         AppMethodBeat.o(61237);
         return paramq;
       }
-      paramq = (Throwable)new IllegalStateException(("unknown type argument list type: " + paraml + ", " + aa.bp(paraml.getClass())).toString());
+      paramq = (Throwable)new IllegalStateException(("unknown type argument list type: " + paraml + ", " + ab.bO(paraml.getClass())).toString());
       AppMethodBeat.o(61237);
       throw paramq;
     }
@@ -186,7 +186,7 @@ public abstract interface q
     public static boolean a(q paramq, j paramj)
     {
       AppMethodBeat.i(61234);
-      p.h(paramj, "$this$isClassType");
+      p.k(paramj, "$this$isClassType");
       boolean bool = paramq.l(paramq.i(paramj));
       AppMethodBeat.o(61234);
       return bool;
@@ -195,8 +195,8 @@ public abstract interface q
     public static List<j> b(j paramj, n paramn)
     {
       AppMethodBeat.i(61235);
-      p.h(paramj, "$this$fastCorrespondingSupertypes");
-      p.h(paramn, "constructor");
+      p.k(paramj, "$this$fastCorrespondingSupertypes");
+      p.k(paramn, "constructor");
       AppMethodBeat.o(61235);
       return null;
     }
@@ -204,7 +204,7 @@ public abstract interface q
     public static j b(q paramq, h paramh)
     {
       AppMethodBeat.i(61228);
-      p.h(paramh, "$this$upperBoundIfFlexible");
+      p.k(paramh, "$this$upperBoundIfFlexible");
       Object localObject = paramq.p(paramh);
       if (localObject != null)
       {
@@ -218,7 +218,7 @@ public abstract interface q
         localObject = paramq;
         if (paramq == null)
         {
-          p.hyc();
+          p.iCn();
           localObject = paramq;
         }
       }
@@ -229,7 +229,7 @@ public abstract interface q
     public static boolean b(q paramq, j paramj)
     {
       AppMethodBeat.i(61236);
-      p.h(paramj, "$this$isIntegerLiteralType");
+      p.k(paramj, "$this$isIntegerLiteralType");
       boolean bool = paramq.h(paramq.i(paramj));
       AppMethodBeat.o(61236);
       return bool;
@@ -238,7 +238,7 @@ public abstract interface q
     public static boolean c(q paramq, h paramh)
     {
       AppMethodBeat.i(61229);
-      p.h(paramh, "$this$isDynamic");
+      p.k(paramh, "$this$isDynamic");
       paramh = paramq.p(paramh);
       if (paramh != null) {}
       for (paramq = paramq.a(paramh); paramq != null; paramq = null)
@@ -253,7 +253,7 @@ public abstract interface q
     public static boolean d(q paramq, h paramh)
     {
       AppMethodBeat.i(61230);
-      p.h(paramh, "$this$isDefinitelyNotNullType");
+      p.k(paramh, "$this$isDefinitelyNotNullType");
       paramh = paramq.o(paramh);
       if (paramh != null) {}
       for (paramq = paramq.g(paramh); paramq != null; paramq = null)
@@ -268,7 +268,7 @@ public abstract interface q
     public static boolean e(q paramq, h paramh)
     {
       AppMethodBeat.i(61231);
-      p.h(paramh, "$this$hasFlexibleNullability");
+      p.k(paramh, "$this$hasFlexibleNullability");
       if (paramq.h(paramq.e(paramh)) != paramq.h(paramq.f(paramh)))
       {
         AppMethodBeat.o(61231);
@@ -281,7 +281,7 @@ public abstract interface q
     public static n f(q paramq, h paramh)
     {
       AppMethodBeat.i(61232);
-      p.h(paramh, "$this$typeConstructor");
+      p.k(paramh, "$this$typeConstructor");
       j localj2 = paramq.o(paramh);
       j localj1 = localj2;
       if (localj2 == null) {
@@ -295,7 +295,7 @@ public abstract interface q
     public static boolean g(q paramq, h paramh)
     {
       AppMethodBeat.i(61233);
-      p.h(paramh, "$this$isNothing");
+      p.k(paramh, "$this$isNothing");
       if ((paramq.o(paramq.d(paramh))) && (!paramq.s(paramh)))
       {
         AppMethodBeat.o(61233);
@@ -308,7 +308,7 @@ public abstract interface q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.c.q
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.tencentmap.mapsdk.vector.compat.utils.clustering.algo;
 
-import android.support.v4.e.h;
+import androidx.b.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tencentmap.mapsdk.vector.compat.utils.clustering.Cluster;
 import com.tencent.tencentmap.mapsdk.vector.compat.utils.clustering.ClusterItem;
@@ -14,21 +14,21 @@ public class PreCachingAlgorithmDecorator<T extends ClusterItem>
   implements Algorithm<T>
 {
   private final Algorithm<T> a;
-  private final h<Integer, Set<? extends Cluster<T>>> b;
+  private final e<Integer, Set<? extends Cluster<T>>> b;
   private final ReadWriteLock c;
   
   public PreCachingAlgorithmDecorator(Algorithm<T> paramAlgorithm)
   {
-    AppMethodBeat.i(199529);
-    this.b = new h(5);
+    AppMethodBeat.i(246992);
+    this.b = new e(5);
     this.c = new ReentrantReadWriteLock();
     this.a = paramAlgorithm;
-    AppMethodBeat.o(199529);
+    AppMethodBeat.o(246992);
   }
   
   private Set<? extends Cluster<T>> a(int paramInt)
   {
-    AppMethodBeat.i(199537);
+    AppMethodBeat.i(247006);
     this.c.readLock().lock();
     Set localSet2 = (Set)this.b.get(Integer.valueOf(paramInt));
     this.c.readLock().unlock();
@@ -45,39 +45,39 @@ public class PreCachingAlgorithmDecorator<T extends ClusterItem>
       }
       this.c.writeLock().unlock();
     }
-    AppMethodBeat.o(199537);
+    AppMethodBeat.o(247006);
     return localSet1;
   }
   
   private void a()
   {
-    AppMethodBeat.i(199534);
+    AppMethodBeat.i(247003);
     this.b.evictAll();
-    AppMethodBeat.o(199534);
+    AppMethodBeat.o(247003);
   }
   
   public void addItem(T paramT)
   {
-    AppMethodBeat.i(199530);
+    AppMethodBeat.i(246995);
     this.a.addItem(paramT);
     a();
-    AppMethodBeat.o(199530);
+    AppMethodBeat.o(246995);
   }
   
   public void addItems(Collection<T> paramCollection)
   {
-    AppMethodBeat.i(199531);
+    AppMethodBeat.i(246997);
     this.a.addItems(paramCollection);
     a();
-    AppMethodBeat.o(199531);
+    AppMethodBeat.o(246997);
   }
   
   public void clearItems()
   {
-    AppMethodBeat.i(199532);
+    AppMethodBeat.i(246999);
     this.a.clearItems();
     a();
-    AppMethodBeat.o(199532);
+    AppMethodBeat.o(246999);
   }
   
   public Algorithm getAlgorithm()
@@ -87,38 +87,66 @@ public class PreCachingAlgorithmDecorator<T extends ClusterItem>
   
   public Set<? extends Cluster<T>> getClusters(double paramDouble)
   {
-    AppMethodBeat.i(199535);
+    AppMethodBeat.i(247004);
     int i = (int)paramDouble;
     Set localSet = a(i);
     if (this.b.get(Integer.valueOf(i + 1)) == null) {
-      new Thread(new PreCachingAlgorithmDecorator.PrecacheRunnable(this, i + 1)).start();
+      new Thread(new PrecacheRunnable(i + 1)).start();
     }
     if (this.b.get(Integer.valueOf(i - 1)) == null) {
-      new Thread(new PreCachingAlgorithmDecorator.PrecacheRunnable(this, i - 1)).start();
+      new Thread(new PrecacheRunnable(i - 1)).start();
     }
-    AppMethodBeat.o(199535);
+    AppMethodBeat.o(247004);
     return localSet;
   }
   
   public Collection<T> getItems()
   {
-    AppMethodBeat.i(199536);
+    AppMethodBeat.i(247005);
     Collection localCollection = this.a.getItems();
-    AppMethodBeat.o(199536);
+    AppMethodBeat.o(247005);
     return localCollection;
   }
   
   public void removeItem(T paramT)
   {
-    AppMethodBeat.i(199533);
+    AppMethodBeat.i(247002);
     this.a.removeItem(paramT);
     a();
-    AppMethodBeat.o(199533);
+    AppMethodBeat.o(247002);
+  }
+  
+  class PrecacheRunnable
+    implements Runnable
+  {
+    private final int b;
+    
+    public PrecacheRunnable(int paramInt)
+    {
+      this.b = paramInt;
+    }
+    
+    public void run()
+    {
+      AppMethodBeat.i(247010);
+      try
+      {
+        Thread.sleep((Math.random() * 500.0D + 500.0D));
+        label20:
+        PreCachingAlgorithmDecorator.a(PreCachingAlgorithmDecorator.this, this.b);
+        AppMethodBeat.o(247010);
+        return;
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        break label20;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.vector.compat.utils.clustering.algo.PreCachingAlgorithmDecorator
  * JD-Core Version:    0.7.0.1
  */

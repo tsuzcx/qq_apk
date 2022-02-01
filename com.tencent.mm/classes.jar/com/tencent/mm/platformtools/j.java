@@ -3,7 +3,7 @@ package com.tencent.mm.platformtools;
 import android.app.Activity;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class j
@@ -14,49 +14,49 @@ public final class j
     super(paramActivity);
   }
   
-  public final boolean b(ae paramae)
+  public final boolean b(ad paramad)
   {
     AppMethodBeat.i(127694);
     Log.d("MicroMsg.ErrorClientProcessor", "handleOpenUrl");
-    Toast.makeText(this.activity, paramae.content, 0).show();
+    Toast.makeText(this.activity, paramad.content, 0).show();
     AppMethodBeat.o(127694);
     return true;
   }
   
-  public final boolean c(ae paramae)
+  public final boolean c(ad paramad)
   {
     AppMethodBeat.i(127695);
     Log.d("MicroMsg.ErrorClientProcessor", "handleIgnore");
-    Toast.makeText(this.activity, paramae.content, 0).show();
+    Toast.makeText(this.activity, paramad.content, 0).show();
     AppMethodBeat.o(127695);
     return true;
   }
   
-  public final boolean d(ae paramae)
+  public final boolean d(ad paramad)
   {
     AppMethodBeat.i(127696);
     Log.d("MicroMsg.ErrorClientProcessor", "handleFalseLast");
-    Toast.makeText(this.activity, paramae.content, 0).show();
+    Toast.makeText(this.activity, paramad.content, 0).show();
     AppMethodBeat.o(127696);
     return true;
   }
   
-  public final boolean e(ae paramae)
+  public final boolean e(ad paramad)
   {
     AppMethodBeat.i(127697);
     Log.d("MicroMsg.ErrorClientProcessor", "handleFalseCancel");
-    Toast.makeText(this.activity, paramae.content, 0).show();
+    Toast.makeText(this.activity, paramad.content, 0).show();
     AppMethodBeat.o(127697);
     return true;
   }
   
-  public final boolean f(ae paramae)
+  public final boolean f(ad paramad)
   {
-    AppMethodBeat.i(196836);
+    AppMethodBeat.i(217379);
     Log.d("MicroMsg.ErrorClientProcessor", "handleDoneBack");
-    Toast.makeText(this.activity, paramae.content, 0).show();
+    Toast.makeText(this.activity, paramad.content, 0).show();
     this.activity.finish();
-    AppMethodBeat.o(196836);
+    AppMethodBeat.o(217379);
     return true;
   }
   
@@ -69,7 +69,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.platformtools.j
  * JD-Core Version:    0.7.0.1
  */

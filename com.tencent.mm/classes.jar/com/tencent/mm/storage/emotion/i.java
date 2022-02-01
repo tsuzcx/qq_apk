@@ -6,14 +6,11 @@ import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.storagebase.g;
-import com.tencent.mm.storagebase.g.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class i
   extends MAutoStorage<h>
-  implements g.a
 {
   public static final String[] SQL_CREATE;
   private ISQLiteDatabase db;
@@ -27,22 +24,16 @@ public final class i
   
   public i(ISQLiteDatabase paramISQLiteDatabase)
   {
-    this(paramISQLiteDatabase, h.info, "EmojiSuggestDescInfo");
+    this(paramISQLiteDatabase, h.info, "EmojiSuggestDescInfo", null);
   }
   
-  private i(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString)
+  public i(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, String[] paramArrayOfString)
   {
-    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, null);
+    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, paramArrayOfString);
     this.db = paramISQLiteDatabase;
   }
   
-  public final int a(g paramg)
-  {
-    this.db = paramg;
-    return 0;
-  }
-  
-  public final boolean bm(ArrayList<ArrayList<String>> paramArrayList)
+  public final boolean bB(ArrayList<ArrayList<String>> paramArrayList)
   {
     AppMethodBeat.i(105106);
     if (paramArrayList.isEmpty())
@@ -98,7 +89,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.i
  * JD-Core Version:    0.7.0.1
  */

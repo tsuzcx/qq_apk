@@ -9,23 +9,23 @@ import org.json.JSONObject;
 public final class a
   extends com.tencent.mm.wallet_core.e.a.a
 {
-  public String Ita;
-  public String Itb;
-  public String Itc;
-  public String Itd;
-  public String Ite;
-  public String dRM;
-  public String pin;
+  public String PlK;
+  public String PlL;
+  public String PlM;
+  public String PlN;
+  public String PlO;
+  public String Pla;
+  public String fLj;
   
   public a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
     AppMethodBeat.i(72009);
-    this.Ita = paramString1;
-    this.Itb = paramString2;
-    this.pin = paramString3;
-    this.Itd = paramString4;
-    this.Itc = paramString4;
-    this.Ite = paramString6;
+    this.PlK = paramString1;
+    this.PlL = paramString2;
+    this.Pla = paramString3;
+    this.PlN = paramString4;
+    this.PlM = paramString4;
+    this.PlO = paramString6;
     HashMap localHashMap = new HashMap();
     localHashMap.put("dial_code", paramString1);
     localHashMap.put("number", String.valueOf(paramString2));
@@ -37,7 +37,7 @@ public final class a
     AppMethodBeat.o(72009);
   }
   
-  public final int fPU()
+  public final int gIA()
   {
     return 5;
   }
@@ -46,7 +46,7 @@ public final class a
   {
     AppMethodBeat.i(72010);
     Log.d("MicroMsg.NetScenePayUCreateUser", "hy: get NetScenePayUCreateUser info. errCode: %d, errMsg:%s, json:%s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject.toString() });
-    this.dRM = paramJSONObject.optString("payu_reference");
+    this.fLj = paramJSONObject.optString("payu_reference");
     AppMethodBeat.o(72010);
   }
 }

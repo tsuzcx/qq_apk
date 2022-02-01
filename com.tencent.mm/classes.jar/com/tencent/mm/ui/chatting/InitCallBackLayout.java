@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class InitCallBackLayout
   extends FrameLayout
 {
-  private ar OLl;
+  private ar WeK;
   private boolean hasDrawed;
   
   public InitCallBackLayout(Context paramContext, AttributeSet paramAttributeSet)
@@ -24,8 +24,8 @@ public class InitCallBackLayout
     if (!this.hasDrawed)
     {
       this.hasDrawed = true;
-      if (this.OLl != null) {
-        this.OLl.dSa();
+      if (this.WeK != null) {
+        this.WeK.euB();
       }
     }
     AppMethodBeat.o(34834);
@@ -33,12 +33,12 @@ public class InitCallBackLayout
   
   public void setListener(ar paramar)
   {
-    this.OLl = paramar;
+    this.WeK = paramar;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.InitCallBackLayout
  * JD-Core Version:    0.7.0.1
  */

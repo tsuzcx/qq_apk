@@ -19,7 +19,7 @@ public class YtLivenessNetProtoHelper$ImageInfo
   
   public YtLivenessNetProtoHelper$ImageInfo(byte[] paramArrayOfByte, float[] paramArrayOfFloat, String paramString)
   {
-    AppMethodBeat.i(187293);
+    AppMethodBeat.i(247503);
     this.image = new String(Base64.encode(paramArrayOfByte, 2));
     this.five_points = new ArrayList();
     this.checksum = paramString;
@@ -36,7 +36,7 @@ public class YtLivenessNetProtoHelper$ImageInfo
       this.five_points.add(Float.valueOf(paramArrayOfFloat[102]));
       this.five_points.add(Float.valueOf(paramArrayOfFloat[103]));
     }
-    AppMethodBeat.o(187293);
+    AppMethodBeat.o(247503);
   }
   
   /* Error */
@@ -179,7 +179,7 @@ public class YtLivenessNetProtoHelper$ImageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.YtLivenessNetProtoHelper.ImageInfo
  * JD-Core Version:    0.7.0.1
  */

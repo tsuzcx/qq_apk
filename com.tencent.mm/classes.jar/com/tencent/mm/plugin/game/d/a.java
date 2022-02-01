@@ -1,230 +1,334 @@
 package com.tencent.mm.plugin.game.d;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.game.report.api.b;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.game.model.e;
+import com.tencent.mm.plugin.game.ui.GameRegionPreference.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.net.URLEncoder;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.concurrent.ConcurrentHashMap;
 
-@Deprecated
 public final class a
 {
-  private static String xNZ = "";
+  private Map<String, GameRegionPreference.a> CZS;
+  public boolean DdC;
+  public b DdD;
+  private Map<String, Boolean> DdE;
   
-  public static String Fh(String paramString)
+  private a()
   {
-    AppMethodBeat.i(41852);
-    if (Util.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(41852);
-      return "";
-    }
+    AppMethodBeat.i(42483);
+    this.DdC = false;
+    this.DdD = new b();
+    this.DdE = new ConcurrentHashMap();
+    AppMethodBeat.o(42483);
+  }
+  
+  /* Error */
+  public final boolean aKr(String paramString)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 49
+    //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_1
+    //   8: invokestatic 54	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   11: ifeq +14 -> 25
+    //   14: ldc 49
+    //   16: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   19: iconst_0
+    //   20: istore_2
+    //   21: aload_0
+    //   22: monitorexit
+    //   23: iload_2
+    //   24: ireturn
+    //   25: aload_0
+    //   26: getfield 40	com/tencent/mm/plugin/game/d/a:DdE	Ljava/util/Map;
+    //   29: aload_1
+    //   30: invokeinterface 60 2 0
+    //   35: ifeq +22 -> 57
+    //   38: aload_0
+    //   39: getfield 40	com/tencent/mm/plugin/game/d/a:DdE	Ljava/util/Map;
+    //   42: aload_1
+    //   43: invokeinterface 64 2 0
+    //   48: checkcast 66	java/lang/Boolean
+    //   51: invokevirtual 70	java/lang/Boolean:booleanValue	()Z
+    //   54: ifne +42 -> 96
+    //   57: ldc 72
+    //   59: ldc 74
+    //   61: iconst_1
+    //   62: anewarray 4	java/lang/Object
+    //   65: dup
+    //   66: iconst_0
+    //   67: aload_1
+    //   68: aastore
+    //   69: invokestatic 79	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   72: aload_0
+    //   73: getfield 40	com/tencent/mm/plugin/game/d/a:DdE	Ljava/util/Map;
+    //   76: aload_1
+    //   77: getstatic 83	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
+    //   80: invokeinterface 87 3 0
+    //   85: pop
+    //   86: ldc 49
+    //   88: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   91: iconst_1
+    //   92: istore_2
+    //   93: goto -72 -> 21
+    //   96: ldc 49
+    //   98: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   101: iconst_0
+    //   102: istore_2
+    //   103: goto -82 -> 21
+    //   106: astore_1
+    //   107: aload_0
+    //   108: monitorexit
+    //   109: aload_1
+    //   110: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	111	0	this	a
+    //   0	111	1	paramString	String
+    //   20	83	2	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   2	19	106	finally
+    //   25	57	106	finally
+    //   57	91	106	finally
+    //   96	101	106	finally
+  }
+  
+  public final void aKs(String paramString)
+  {
     try
     {
-      paramString = URLEncoder.encode(paramString, "UTF-8");
-      AppMethodBeat.o(41852);
-      return paramString;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      AppMethodBeat.i(42489);
+      if ((!Util.isNullOrNil(paramString)) && (this.DdE.containsKey(paramString)))
       {
-        paramString = "";
-        Log.e("MicroMsg.GameReportUtil", localException.getMessage());
+        Log.i("MicroMsg.GameCacheUtil", "download entrance image finish : %s", new Object[] { paramString });
+        this.DdE.remove(paramString);
       }
+      AppMethodBeat.o(42489);
+      return;
     }
+    finally {}
   }
   
-  public static void a(int paramInt1, int paramInt2, int paramInt3, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
+  public final void clearCache()
   {
-    AppMethodBeat.i(41850);
-    paramString1 = b.e(14683, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Long.valueOf(paramLong1), paramString1, null, paramString2, Long.valueOf(paramLong2), Long.valueOf(paramLong3), null });
-    com.tencent.mm.game.report.api.a.hhr.a(paramString1);
-    AppMethodBeat.o(41850);
-  }
-  
-  public static void aAy(String paramString)
-  {
-    xNZ = paramString;
-  }
-  
-  public static String as(String paramString1, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(41854);
-    JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put(paramString2, paramString3);
-      paramString2 = localJSONObject;
-    }
-    catch (Exception paramString2)
-    {
-      for (;;)
-      {
-        Log.e("MicroMsg.GameReportUtil", paramString2.getMessage());
-        paramString2 = null;
+      AppMethodBeat.i(42484);
+      if (this.CZS != null) {
+        this.CZS.clear();
       }
+      this.DdC = false;
+      AppMethodBeat.o(42484);
+      return;
     }
-    paramString3 = paramString1;
-    if (paramString2 != null) {
-      paramString3 = hN(paramString1, paramString2.toString());
-    }
-    paramString1 = Fh(paramString3);
-    AppMethodBeat.o(41854);
-    return paramString1;
+    finally {}
   }
   
-  public static void b(Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString1, int paramInt4, String paramString2)
+  public final void ezT()
   {
-    AppMethodBeat.i(41849);
-    Log.i("MicroMsg.GameReportUtil", "reportExposureInfo : " + paramInt1 + " , " + paramInt2 + " , " + paramInt3 + " , 1 , 0 , " + Util.nullAsNil(paramString1) + " , " + paramInt4 + " , 0 , " + Util.nullAsNil(null) + " , " + Util.nullAsNil(null) + " , " + Util.nullAsNil(paramString2));
-    h localh = h.CyF;
-    int j = Util.getInt(null, 0);
-    int i;
-    if (NetStatusUtil.is3G(paramContext)) {
-      i = 4;
+    try
+    {
+      AppMethodBeat.i(42485);
+      if (this.CZS != null)
+      {
+        Iterator localIterator = this.CZS.values().iterator();
+        while (localIterator.hasNext()) {
+          ((GameRegionPreference.a)localIterator.next()).isSelected = false;
+        }
+      }
+      AppMethodBeat.o(42485);
     }
+    finally {}
+  }
+  
+  public final void ezU()
+  {
+    Object localObject6;
     for (;;)
     {
-      localh.a(13384, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(1), Integer.valueOf(0), paramString1, Integer.valueOf(paramInt4), Integer.valueOf(0), null, Integer.valueOf(j), Integer.valueOf(i), paramString2 });
-      AppMethodBeat.o(41849);
-      return;
-      if (NetStatusUtil.is4G(paramContext)) {
-        i = 5;
-      } else {
-        switch (NetStatusUtil.getNetType(paramContext))
-        {
-        case 1: 
-        case 2: 
-        case 3: 
-        case 4: 
-        default: 
-          i = 6;
-          break;
-        case -1: 
-          i = 255;
-          break;
-        case 0: 
-          i = 1;
-          break;
-        case 5: 
-          i = 2;
-          break;
-        case 6: 
-          i = 3;
-        }
-      }
-    }
-  }
-  
-  public static void bz(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(41851);
-    b localb = new b();
-    localb.hhs = paramInt;
-    localb.hht = paramString;
-    com.tencent.mm.game.report.api.a.hhr.a(localb);
-    AppMethodBeat.o(41851);
-  }
-  
-  private static String hN(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(41855);
-    if (Util.isNullOrNil(paramString1))
-    {
-      AppMethodBeat.o(41855);
-      return paramString2;
-    }
-    Iterator localIterator = null;
-    try
-    {
-      paramString1 = new JSONObject(paramString1);
+      Object localObject1;
+      InputStream localInputStream;
+      Object localObject7;
       try
       {
-        paramString2 = new JSONObject(paramString2);
-        if (paramString1 != null)
+        AppMethodBeat.i(42486);
+        if (this.CZS == null) {
+          this.CZS = new LinkedHashMap();
+        }
+        if (this.CZS.size() > 0) {
+          break label423;
+        }
+        localObject6 = null;
+        localObject1 = null;
+      }
+      finally {}
+      try
+      {
+        localInputStream = MMApplicationContext.getContext().getAssets().open("game_region_data.txt");
+        localObject1 = localInputStream;
+        localObject6 = localInputStream;
+        localObject7 = new byte[localInputStream.available()];
+        localObject1 = localInputStream;
+        localObject6 = localInputStream;
+        localInputStream.read((byte[])localObject7);
+        localObject1 = localInputStream;
+        localObject6 = localInputStream;
+        localObject7 = new String((byte[])localObject7);
+        localObject1 = localObject7;
+        if (localInputStream == null) {}
+      }
+      catch (IOException localIOException4)
+      {
+        localObject6 = localObject3;
+        Log.e("MicroMsg.GameCacheUtil", "exception:%s", new Object[] { Util.stackTraceToString(localIOException4) });
+        if (localObject3 == null) {
+          break label431;
+        }
+        try
         {
-          localIterator = paramString1.keys();
+          localObject3.close();
+          str1 = "";
+        }
+        catch (IOException localIOException2)
+        {
+          Log.e("MicroMsg.GameCacheUtil", "exception:%s", new Object[] { Util.stackTraceToString(localIOException2) });
+          str2 = "";
+        }
+        continue;
+      }
+      finally
+      {
+        if (localObject6 == null) {
+          break label273;
+        }
+        try
+        {
+          ((InputStream)localObject6).close();
+          AppMethodBeat.o(42486);
+          throw localObject4;
+        }
+        catch (IOException localIOException3)
+        {
           for (;;)
           {
-            if (localIterator.hasNext()) {
-              try
-              {
-                String str = (String)localIterator.next();
-                paramString2.put(str, paramString1.opt(str));
-              }
-              catch (Exception paramString1)
-              {
-                AppMethodBeat.o(41855);
-                return "";
-              }
-            }
+            Log.e("MicroMsg.GameCacheUtil", "exception:%s", new Object[] { Util.stackTraceToString(localIOException3) });
           }
         }
-        paramString1 = paramString2.toString();
+        locala = new GameRegionPreference.a();
+        locala.CZP = localIOException3[0];
+        locala.CZQ = localIOException3[1];
+        locala.CZR = localIOException3[2];
+        locala.hDn = localIOException3[3];
+        locala.isSelected = false;
+        locala.lJx = false;
+        this.CZS.put(locala.hDn, locala);
+        break label437;
       }
-      catch (JSONException paramString1)
+      try
       {
-        AppMethodBeat.o(41855);
-        return "";
+        localInputStream.close();
+        localObject1 = localObject7;
       }
-      AppMethodBeat.o(41855);
-      return paramString1;
+      catch (IOException localIOException1)
+      {
+        Log.e("MicroMsg.GameCacheUtil", "exception:%s", new Object[] { Util.stackTraceToString(localIOException1) });
+        localObject2 = localObject7;
+      }
     }
-    catch (Exception paramString1)
+    localObject1 = ((String)localObject1).trim().split("\n|\r\n|\r");
+    int i = 0;
+    for (;;)
     {
-      for (;;)
+      if (i < localObject1.length)
       {
-        paramString1 = localIterator;
+        localObject6 = localObject1[i].trim().split("\\|");
+        if (localObject6.length < 4)
+        {
+          Log.e("MicroMsg.GameCacheUtil", "this GameRegion item has problem %s", new Object[] { localObject1[i] });
+          break label437;
+        }
       }
+      Object localObject2;
+      String str1;
+      String str2;
+      label273:
+      GameRegionPreference.a locala;
+      Object localObject5 = e.exZ();
+      localObject5 = (GameRegionPreference.a)this.CZS.get(localObject5);
+      if (localObject5 != null)
+      {
+        ((GameRegionPreference.a)localObject5).CZP = e.eya();
+        ((GameRegionPreference.a)localObject5).CZQ = e.eyb();
+        ((GameRegionPreference.a)localObject5).CZR = e.eyc();
+        ((GameRegionPreference.a)localObject5).lJx = true;
+      }
+      label423:
+      AppMethodBeat.o(42486);
+      return;
+      label431:
+      localObject5 = "";
+      break;
+      label437:
+      i += 1;
     }
   }
   
-  public static String u(Map<String, String> paramMap)
+  public final Map<String, GameRegionPreference.a> ezV()
   {
-    AppMethodBeat.i(41853);
-    if (paramMap.size() == 0)
-    {
-      AppMethodBeat.o(41853);
-      return "";
-    }
-    JSONObject localJSONObject = new JSONObject();
-    paramMap = paramMap.entrySet().iterator();
-    while (paramMap.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)paramMap.next();
-      try
-      {
-        localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
-      }
-      catch (Exception paramMap)
-      {
-        Log.e("MicroMsg.GameReportUtil", paramMap.getMessage());
-        AppMethodBeat.o(41853);
-        return "";
-      }
-    }
     try
     {
-      paramMap = URLEncoder.encode(localJSONObject.toString(), "UTF-8");
-      AppMethodBeat.o(41853);
-      return paramMap;
+      AppMethodBeat.i(42487);
+      ezU();
+      Map localMap = this.CZS;
+      AppMethodBeat.o(42487);
+      return localMap;
     }
-    catch (Exception paramMap)
+    finally
     {
-      Log.e("MicroMsg.GameReportUtil", paramMap.getMessage());
-      AppMethodBeat.o(41853);
+      localObject = finally;
+      throw localObject;
     }
-    return "";
+  }
+  
+  public static final class a
+  {
+    private static a DdF;
+    
+    static
+    {
+      AppMethodBeat.i(42482);
+      DdF = new a((byte)0);
+      AppMethodBeat.o(42482);
+    }
+  }
+  
+  public static final class b
+  {
+    public long DdG;
+    public long endTimeMs;
+    public long startTimeMs;
+    public long wmw;
+    
+    public final void ezX()
+    {
+      this.startTimeMs = 0L;
+      this.endTimeMs = 0L;
+      this.wmw = 0L;
+      this.DdG = 0L;
+    }
   }
 }
 

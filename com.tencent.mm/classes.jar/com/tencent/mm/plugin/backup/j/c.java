@@ -8,7 +8,7 @@ public final class c
 {
   private static String TAG = "MicroMsg.BackupModelFactory";
   
-  public static d BA(int paramInt)
+  public static d Fb(int paramInt)
   {
     AppMethodBeat.i(22163);
     switch (paramInt)
@@ -18,22 +18,22 @@ public final class c
       AppMethodBeat.o(22163);
       return null;
     case 1: 
-      localObject = com.tencent.mm.plugin.backup.backuppcmodel.b.cga();
+      localObject = com.tencent.mm.plugin.backup.backuppcmodel.b.ctm();
       AppMethodBeat.o(22163);
       return localObject;
     case 2: 
-      localObject = com.tencent.mm.plugin.backup.d.b.cfv();
+      localObject = com.tencent.mm.plugin.backup.d.b.csI();
       AppMethodBeat.o(22163);
       return localObject;
     }
-    Object localObject = a.cgZ();
+    Object localObject = a.cuk();
     AppMethodBeat.o(22163);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.j.c
  * JD-Core Version:    0.7.0.1
  */

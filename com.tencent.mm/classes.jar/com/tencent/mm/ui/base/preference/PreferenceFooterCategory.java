@@ -5,23 +5,28 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.h;
 
 public class PreferenceFooterCategory
   extends Preference
 {
+  public boolean WsU;
+  
   public PreferenceFooterCategory(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(205305);
-    setLayoutResource(2131495602);
-    AppMethodBeat.o(205305);
+    AppMethodBeat.i(192710);
+    this.WsU = false;
+    setLayoutResource(a.h.mm_preference_info_footer);
+    AppMethodBeat.o(192710);
   }
   
   public PreferenceFooterCategory(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142656);
-    setLayoutResource(2131495602);
+    this.WsU = false;
+    setLayoutResource(a.h.mm_preference_info_footer);
     AppMethodBeat.o(142656);
   }
   
@@ -29,7 +34,8 @@ public class PreferenceFooterCategory
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142657);
-    setLayoutResource(2131495602);
+    this.WsU = false;
+    setLayoutResource(a.h.mm_preference_info_footer);
     AppMethodBeat.o(142657);
   }
   
@@ -51,6 +57,9 @@ public class PreferenceFooterCategory
     }
     paramView.setVisibility(0);
     paramView.setText(getTitle());
+    if (this.WsU) {
+      paramView.setTextSize(0, 38.0F);
+    }
     AppMethodBeat.o(142658);
   }
 }

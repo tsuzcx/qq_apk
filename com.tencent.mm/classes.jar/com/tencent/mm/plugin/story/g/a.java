@@ -1,14 +1,12 @@
 package com.tencent.mm.plugin.story.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.c;
 import com.tencent.mm.plugin.story.f.a.e;
 import com.tencent.mm.plugin.story.f.j.b;
 import com.tencent.mm.plugin.story.f.o.a;
-import com.tencent.mm.plugin.story.i.h;
 import com.tencent.mm.plugin.story.i.k;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
@@ -21,25 +19,25 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/presenter/AlbumPresenter;", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IPresenter;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "view", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IView;", "(Lcom/tencent/mm/plugin/story/contract/AlbumContract$IView;)V", "localCachedMinId", "", "localMinId", "mIsAll", "", "mMap", "Ljava/util/LinkedHashMap;", "", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfo;", "Lkotlin/collections/ArrayList;", "mNpLoopCount", "", "mUsername", "respMaxId", "getView", "()Lcom/tencent/mm/plugin/story/contract/AlbumContract$IView;", "assembleRealData", "", "Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumInfo;", "infos", "checkStoryPost", "", "isAll", "errCode", "loadDBData", "loadFpData", "loadNpData", "needLoopFetch", "onCreate", "userName", "onDestory", "onHandleFp", "onHandleNp", "onSceneEnd", "errType", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "updateLocalMinId", "lastId", "Companion", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/presenter/AlbumPresenter;", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IPresenter;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "view", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IView;", "(Lcom/tencent/mm/plugin/story/contract/AlbumContract$IView;)V", "localCachedMinId", "", "localMinId", "mIsAll", "", "mMap", "Ljava/util/LinkedHashMap;", "", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfo;", "Lkotlin/collections/ArrayList;", "mNpLoopCount", "", "mUsername", "respMaxId", "getView", "()Lcom/tencent/mm/plugin/story/contract/AlbumContract$IView;", "assembleRealData", "", "Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumInfo;", "infos", "checkStoryPost", "", "isAll", "errCode", "loadDBData", "loadFpData", "loadNpData", "needLoopFetch", "onCreate", "userName", "onDestory", "onHandleFp", "onHandleNp", "onSceneEnd", "errType", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "updateLocalMinId", "lastId", "Companion", "plugin-story_release"})
 public final class a
-  implements com.tencent.mm.ak.i, com.tencent.mm.plugin.story.d.a.e
+  implements com.tencent.mm.an.i, com.tencent.mm.plugin.story.d.a.e
 {
-  public static final a FqV;
+  public static final a LKY;
   private static final String TAG = "MicroMsg.AlbumPresenter";
-  private final LinkedHashMap<String, ArrayList<h>> FqP;
-  private long FqQ;
-  private long FqR;
-  private long FqS;
-  private int FqT;
-  final com.tencent.mm.plugin.story.d.a.f FqU;
-  private String mRa;
-  private boolean qhf;
+  private final LinkedHashMap<String, ArrayList<com.tencent.mm.plugin.story.i.h>> LKS;
+  private long LKT;
+  private long LKU;
+  private long LKV;
+  private int LKW;
+  final com.tencent.mm.plugin.story.d.a.f LKX;
+  private String pRV;
+  private boolean tDb;
   
   static
   {
     AppMethodBeat.i(119154);
-    FqV = new a((byte)0);
+    LKY = new a((byte)0);
     TAG = "MicroMsg.AlbumPresenter";
     AppMethodBeat.o(119154);
   }
@@ -47,137 +45,137 @@ public final class a
   public a(com.tencent.mm.plugin.story.d.a.f paramf)
   {
     AppMethodBeat.i(119153);
-    this.FqU = paramf;
-    this.mRa = "";
-    this.FqP = new LinkedHashMap();
+    this.LKX = paramf;
+    this.pRV = "";
+    this.LKS = new LinkedHashMap();
     AppMethodBeat.o(119153);
   }
   
-  public final void Km(long paramLong)
+  public final void RG(long paramLong)
   {
     AppMethodBeat.i(119146);
-    Object localObject = com.tencent.mm.plugin.story.f.j.Fmy;
-    localObject = j.b.foc();
-    j.b localb = com.tencent.mm.plugin.story.f.j.Fmy;
-    j.b.fol();
-    this.FqS = ((k)localObject).ab(paramLong, o.a.aSa(this.mRa));
-    if (this.FqQ != 0L) {
-      if (this.FqS >= this.FqQ) {
+    Object localObject = com.tencent.mm.plugin.story.f.j.LGA;
+    localObject = j.b.gcw();
+    j.b localb = com.tencent.mm.plugin.story.f.j.LGA;
+    j.b.gcF();
+    this.LKV = ((k)localObject).ak(paramLong, o.a.bde(this.pRV));
+    if (this.LKT != 0L) {
+      if (this.LKV >= this.LKT) {
         break label116;
       }
     }
     label116:
-    for (paramLong = this.FqS;; paramLong = this.FqQ)
+    for (paramLong = this.LKV;; paramLong = this.LKT)
     {
-      this.FqS = paramLong;
-      Log.d(TAG, "localMinId=" + this.FqS + ", respMaxId=" + this.FqQ);
+      this.LKV = paramLong;
+      Log.d(TAG, "localMinId=" + this.LKV + ", respMaxId=" + this.LKT);
       AppMethodBeat.o(119146);
       return;
     }
   }
   
-  public final void fib()
+  public final void fWn()
   {
     AppMethodBeat.i(119148);
-    b localb = g.aAg();
-    p.g(localb, "MMKernel.network()");
-    localb.azz().b(191, (com.tencent.mm.ak.i)this);
-    localb = g.aAg();
-    p.g(localb, "MMKernel.network()");
-    localb.azz().b(3926, (com.tencent.mm.ak.i)this);
-    localb = g.aAg();
-    p.g(localb, "MMKernel.network()");
-    localb.azz().b(764, (com.tencent.mm.ak.i)this);
+    c localc = com.tencent.mm.kernel.h.aHF();
+    p.j(localc, "MMKernel.network()");
+    localc.aGY().b(191, (com.tencent.mm.an.i)this);
+    localc = com.tencent.mm.kernel.h.aHF();
+    p.j(localc, "MMKernel.network()");
+    localc.aGY().b(3926, (com.tencent.mm.an.i)this);
+    localc = com.tencent.mm.kernel.h.aHF();
+    p.j(localc, "MMKernel.network()");
+    localc.aGY().b(764, (com.tencent.mm.an.i)this);
     AppMethodBeat.o(119148);
   }
   
-  public final void fnw()
+  public final void gbQ()
   {
     AppMethodBeat.i(119151);
-    j.b localb = com.tencent.mm.plugin.story.f.j.Fmy;
-    j.b.eJP().post((Runnable)new d(this));
+    j.b localb = com.tencent.mm.plugin.story.f.j.LGA;
+    j.b.fwa().post((Runnable)new d(this));
     AppMethodBeat.o(119151);
   }
   
-  public final void fnx()
+  public final void gbR()
   {
     AppMethodBeat.i(119150);
-    j.b localb = com.tencent.mm.plugin.story.f.j.Fmy;
-    j.b.eJP().post((Runnable)new c(this));
+    j.b localb = com.tencent.mm.plugin.story.f.j.LGA;
+    j.b.fwa().post((Runnable)new c(this));
     AppMethodBeat.o(119150);
   }
   
-  public final void fnz()
+  public final void gbT()
   {
     AppMethodBeat.i(119149);
-    j.b localb = com.tencent.mm.plugin.story.f.j.Fmy;
-    j.b.eJP().post((Runnable)new b(this));
+    j.b localb = com.tencent.mm.plugin.story.f.j.LGA;
+    j.b.fwa().post((Runnable)new b(this));
     AppMethodBeat.o(119149);
   }
   
   public final void onCreate(String paramString)
   {
     AppMethodBeat.i(119147);
-    p.h(paramString, "userName");
-    this.mRa = paramString;
-    Km(this.FqR);
-    paramString = g.aAg();
-    p.g(paramString, "MMKernel.network()");
-    paramString.azz().a(191, (com.tencent.mm.ak.i)this);
-    paramString = g.aAg();
-    p.g(paramString, "MMKernel.network()");
-    paramString.azz().a(3926, (com.tencent.mm.ak.i)this);
-    paramString = g.aAg();
-    p.g(paramString, "MMKernel.network()");
-    paramString.azz().a(764, (com.tencent.mm.ak.i)this);
+    p.k(paramString, "userName");
+    this.pRV = paramString;
+    RG(this.LKU);
+    paramString = com.tencent.mm.kernel.h.aHF();
+    p.j(paramString, "MMKernel.network()");
+    paramString.aGY().a(191, (com.tencent.mm.an.i)this);
+    paramString = com.tencent.mm.kernel.h.aHF();
+    p.j(paramString, "MMKernel.network()");
+    paramString.aGY().a(3926, (com.tencent.mm.an.i)this);
+    paramString = com.tencent.mm.kernel.h.aHF();
+    p.j(paramString, "MMKernel.network()");
+    paramString.aGY().a(764, (com.tencent.mm.an.i)this);
     AppMethodBeat.o(119147);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
   {
     AppMethodBeat.i(119152);
     boolean bool;
-    if (((paramq instanceof e)) && (Util.isEqual(((e)paramq).userName, this.mRa)))
+    if (((paramq instanceof e)) && (Util.isEqual(((e)paramq).userName, this.pRV)))
     {
-      paramString = com.tencent.mm.plugin.story.i.a.FvD;
-      if (paramInt2 != com.tencent.mm.plugin.story.i.a.fqP())
+      paramString = com.tencent.mm.plugin.story.i.a.LPG;
+      if (paramInt2 != com.tencent.mm.plugin.story.i.a.gfl())
       {
-        paramString = com.tencent.mm.plugin.story.i.a.FvD;
-        if (paramInt2 != com.tencent.mm.plugin.story.i.a.fqQ()) {
+        paramString = com.tencent.mm.plugin.story.i.a.LPG;
+        if (paramInt2 != com.tencent.mm.plugin.story.i.a.gfm()) {
           break label188;
         }
       }
       bool = true;
-      this.qhf = bool;
-      if (this.qhf) {
-        this.FqU.fnA();
+      this.tDb = bool;
+      if (this.tDb) {
+        this.LKX.gbU();
       }
-      if (!((e)paramq).DIe) {
+      if (!((e)paramq).JVe) {
         break label194;
       }
-      paramString = com.tencent.mm.plugin.story.f.j.Fmy;
-      j.b.eJP().post((Runnable)new e(this));
+      paramString = com.tencent.mm.plugin.story.f.j.LGA;
+      j.b.fwa().post((Runnable)new e(this));
     }
     for (;;)
     {
-      this.FqQ = ((e)paramq).DJB;
-      Log.d(TAG, "onSceneEnd username=" + this.mRa + " respMaxId=" + this.FqQ + ' ' + paramInt1 + ' ' + paramInt2);
+      this.LKT = ((e)paramq).JWB;
+      Log.d(TAG, "onSceneEnd username=" + this.pRV + " respMaxId=" + this.LKT + ' ' + paramInt1 + ' ' + paramInt2);
       AppMethodBeat.o(119152);
       return;
       label188:
       bool = false;
       break;
       label194:
-      this.FqT = 0;
-      paramString = com.tencent.mm.plugin.story.f.j.Fmy;
-      j.b.eJP().post((Runnable)new f(this));
+      this.LKW = 0;
+      paramString = com.tencent.mm.plugin.story.f.j.LGA;
+      j.b.fwa().post((Runnable)new f(this));
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/presenter/AlbumPresenter$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-story_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/presenter/AlbumPresenter$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-story_release"})
   public static final class a {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -187,26 +185,26 @@ public final class a
     {
       AppMethodBeat.i(119141);
       ArrayList localArrayList1 = new ArrayList();
-      Object localObject1 = com.tencent.mm.plugin.story.f.j.Fmy;
-      localObject1 = k.a(j.b.foc(), a.a(this.FqW), a.b(this.FqW));
+      Object localObject1 = com.tencent.mm.plugin.story.f.j.LGA;
+      localObject1 = k.a(j.b.gcw(), a.a(this.LKZ), a.b(this.LKZ));
       if (!((List)localObject1).isEmpty()) {
-        a.a(this.FqW, ((com.tencent.mm.plugin.story.i.j)kotlin.a.j.ku((List)localObject1)).field_storyID);
+        a.a(this.LKZ, ((com.tencent.mm.plugin.story.i.j)kotlin.a.j.lq((List)localObject1)).field_storyID);
       }
       ArrayList localArrayList2 = new ArrayList();
       Iterator localIterator = ((Iterable)localObject1).iterator();
       if (localIterator.hasNext())
       {
         com.tencent.mm.plugin.story.i.j localj = (com.tencent.mm.plugin.story.i.j)localIterator.next();
-        localObject1 = com.tencent.mm.plugin.story.f.j.Fmy;
-        localObject1 = j.b.foh();
-        Object localObject2 = com.tencent.mm.plugin.story.e.a.Flw;
-        localObject2 = ((com.tencent.mm.plugin.story.i.i)localObject1).aSy(com.tencent.mm.plugin.story.e.a.a.n(Integer.valueOf(localj.field_createTime)));
-        localObject1 = a.FqV;
+        localObject1 = com.tencent.mm.plugin.story.f.j.LGA;
+        localObject1 = j.b.gcB();
+        Object localObject2 = com.tencent.mm.plugin.story.e.a.LFy;
+        localObject2 = ((com.tencent.mm.plugin.story.i.i)localObject1).bdC(com.tencent.mm.plugin.story.e.a.a.v(Integer.valueOf(localj.field_createTime)));
+        localObject1 = a.LKY;
         String str = a.access$getTAG$cp();
         StringBuilder localStringBuilder = new StringBuilder("loadDBData rawLocalId=").append((int)localj.systemRowid).append(" rawStoryId=").append(localj.field_storyID).append(" date=");
         if (localObject2 != null)
         {
-          localObject1 = ((h)localObject2).frD();
+          localObject1 = ((com.tencent.mm.plugin.story.i.h)localObject2).gfZ();
           label190:
           localStringBuilder = localStringBuilder.append((String)localObject1).append(" count=");
           if (localObject2 == null) {
@@ -214,38 +212,38 @@ public final class a
           }
         }
         label317:
-        for (localObject1 = Integer.valueOf(((h)localObject2).field_count);; localObject1 = null)
+        for (localObject1 = Integer.valueOf(((com.tencent.mm.plugin.story.i.h)localObject2).field_count);; localObject1 = null)
         {
           Log.d(str, localObject1);
           if (localObject2 == null) {
             break;
           }
-          localObject1 = com.tencent.mm.plugin.story.f.j.Fmy;
-          localj = j.b.foc().aba((int)localj.systemRowid);
+          localObject1 = com.tencent.mm.plugin.story.f.j.LGA;
+          localj = j.b.gcw().aiv((int)localj.systemRowid);
           localObject1 = localj;
           if (localj == null) {
             localObject1 = new com.tencent.mm.plugin.story.i.j();
           }
-          p.h(localObject1, "<set-?>");
-          ((h)localObject2).Fqr = ((com.tencent.mm.plugin.story.i.j)localObject1);
-          if (localArrayList2.contains(((h)localObject2).frD())) {
+          p.k(localObject1, "<set-?>");
+          ((com.tencent.mm.plugin.story.i.h)localObject2).LKu = ((com.tencent.mm.plugin.story.i.j)localObject1);
+          if (localArrayList2.contains(((com.tencent.mm.plugin.story.i.h)localObject2).gfZ())) {
             break;
           }
           localArrayList1.add(localObject2);
-          localArrayList2.add(((h)localObject2).frD());
+          localArrayList2.add(((com.tencent.mm.plugin.story.i.h)localObject2).gfZ());
           break;
           localObject1 = null;
           break label190;
         }
       }
-      localObject1 = a.FqV;
-      Log.d(a.access$getTAG$cp(), "localCachedMinId=" + a.c(this.FqW) + " infos.size=" + localArrayList1.size() + " localMinId=" + a.b(this.FqW));
-      d.h((kotlin.g.a.a)new kotlin.g.b.q(a.a(this.FqW, (List)localArrayList1)) {});
+      localObject1 = a.LKY;
+      Log.d(a.access$getTAG$cp(), "localCachedMinId=" + a.c(this.LKZ) + " infos.size=" + localArrayList1.size() + " localMinId=" + a.b(this.LKZ));
+      d.uiThread((kotlin.g.a.a)new kotlin.g.b.q(a.a(this.LKZ, (List)localArrayList1)) {});
       AppMethodBeat.o(119141);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -254,21 +252,21 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(119142);
-      Object localObject = a.FqV;
-      Log.i(a.access$getTAG$cp(), "loadFpData username=" + a.a(this.FqW) + " maxId=" + a.d(this.FqW));
-      localObject = g.aAg();
-      p.g(localObject, "MMKernel.network()");
-      localObject = ((b)localObject).azz();
-      String str1 = a.a(this.FqW);
-      long l = a.d(this.FqW);
-      String str2 = a.a(this.FqW);
-      j.b localb = com.tencent.mm.plugin.story.f.j.Fmy;
-      ((t)localObject).b((com.tencent.mm.ak.q)new e(str1, l, Util.isEqual(str2, j.b.fau())));
+      Object localObject = a.LKY;
+      Log.i(a.access$getTAG$cp(), "loadFpData username=" + a.a(this.LKZ) + " maxId=" + a.d(this.LKZ));
+      localObject = com.tencent.mm.kernel.h.aHF();
+      p.j(localObject, "MMKernel.network()");
+      localObject = ((c)localObject).aGY();
+      String str1 = a.a(this.LKZ);
+      long l = a.d(this.LKZ);
+      String str2 = a.a(this.LKZ);
+      j.b localb = com.tencent.mm.plugin.story.f.j.LGA;
+      ((t)localObject).b((com.tencent.mm.an.q)new e(str1, l, Util.isEqual(str2, j.b.fOo())));
       AppMethodBeat.o(119142);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
@@ -277,26 +275,26 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(119143);
-      Object localObject = a.FqV;
-      Log.i(a.access$getTAG$cp(), "loadNpData username=" + a.a(this.FqW) + " maxId=" + a.d(this.FqW));
-      if ((a.e(this.FqW) == 0) && (!a.f(this.FqW)))
+      Object localObject = a.LKY;
+      Log.i(a.access$getTAG$cp(), "loadNpData username=" + a.a(this.LKZ) + " maxId=" + a.d(this.LKZ));
+      if ((a.e(this.LKZ) == 0) && (!a.f(this.LKZ)))
       {
-        localObject = this.FqW;
+        localObject = this.LKZ;
         a.a((a)localObject, a.e((a)localObject) + 1);
-        localObject = g.aAg();
-        p.g(localObject, "MMKernel.network()");
-        localObject = ((b)localObject).azz();
-        String str1 = a.a(this.FqW);
-        long l = a.d(this.FqW);
-        String str2 = a.a(this.FqW);
-        j.b localb = com.tencent.mm.plugin.story.f.j.Fmy;
-        ((t)localObject).b((com.tencent.mm.ak.q)new e(str1, l, Util.isEqual(str2, j.b.fau())));
+        localObject = com.tencent.mm.kernel.h.aHF();
+        p.j(localObject, "MMKernel.network()");
+        localObject = ((c)localObject).aGY();
+        String str1 = a.a(this.LKZ);
+        long l = a.d(this.LKZ);
+        String str2 = a.a(this.LKZ);
+        j.b localb = com.tencent.mm.plugin.story.f.j.LGA;
+        ((t)localObject).b((com.tencent.mm.an.q)new e(str1, l, Util.isEqual(str2, j.b.fOo())));
       }
       AppMethodBeat.o(119143);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class e
     implements Runnable
   {
@@ -305,13 +303,13 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(119144);
-      this.FqW.Km(a.c(this.FqW));
-      this.FqW.fnz();
+      this.LKZ.RG(a.c(this.LKZ));
+      this.LKZ.gbT();
       AppMethodBeat.o(119144);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class f
     implements Runnable
   {
@@ -320,8 +318,8 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(119145);
-      this.FqW.Km(a.c(this.FqW));
-      this.FqW.fnz();
+      this.LKZ.RG(a.c(this.LKZ));
+      this.LKZ.gbT();
       AppMethodBeat.o(119145);
     }
   }

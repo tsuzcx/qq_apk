@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.xb;
-import com.tencent.mm.protocal.protobuf.xc;
+import com.tencent.mm.protocal.protobuf.xh;
+import com.tencent.mm.protocal.protobuf.xi;
 import com.tencent.mm.sdk.platformtools.ChannelUtil;
 
 public final class b
@@ -24,19 +24,19 @@ public final class b
   {
     AppMethodBeat.i(97129);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new xb();
-    ((d.a)localObject).iLO = new xc();
+    ((d.a)localObject).lBU = new xh();
+    ((d.a)localObject).lBV = new xi();
     ((d.a)localObject).uri = "/cgi-bin/mmoc-bin/adplayinfo/channelpkginfo";
     ((d.a)localObject).funcId = 1210;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (xb)this.rr.iLK.iLR;
-    ((xb)localObject).Lih = paramString2;
-    ((xb)localObject).KFI = paramString1;
-    ((xb)localObject).Lii = ChannelUtil.isGPVersion();
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (xh)d.b.b(this.rr.lBR);
+    ((xh)localObject).Sjx = paramString2;
+    ((xh)localObject).RGZ = paramString1;
+    ((xh)localObject).Sjy = ChannelUtil.isGPVersion();
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      ((xb)localObject).Lij = i;
+      ((xh)localObject).Sjz = i;
       AppMethodBeat.o(97129);
       return;
     }

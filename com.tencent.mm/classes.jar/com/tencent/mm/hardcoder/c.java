@@ -1,54 +1,6 @@
 package com.tencent.mm.hardcoder;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-
-public final class c
-{
-  public static abstract interface a
-  {
-    public abstract void em(boolean paramBoolean);
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void onFuncRet(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte);
-  }
-  
-  public static final class c
-  {
-    public long hlf;
-    public int hlv;
-    public int hlw;
-    public int hlx;
-    public int[] hly;
-    public int scene;
-    
-    public c(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt)
-    {
-      AppMethodBeat.i(62457);
-      this.scene = paramInt1;
-      this.hlf = paramLong;
-      this.hlv = paramInt2;
-      this.hlw = paramInt3;
-      this.hlx = paramInt4;
-      this.hly = ((int[])paramArrayOfInt.clone());
-      AppMethodBeat.o(62457);
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(62458);
-      String str = "[RequestStatus, scene:" + this.scene + ", action:" + this.hlf + ", cpulevel:" + this.hlv + ", gpulevel:" + this.hlw + ", iolevel:" + this.hlx + ", bindtids size:" + this.hly.length + "]";
-      AppMethodBeat.o(62458);
-      return str;
-    }
-  }
-  
-  public static abstract interface d
-  {
-    public abstract void sceneReport(int paramInt, long paramLong);
-  }
-}
+public final class c {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

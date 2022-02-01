@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.au.d;
 
 public final class j
 {
@@ -16,7 +17,7 @@ public final class j
     {
       paramView = (LinearLayout)paramView;
       LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-      int i = paramContext.getResources().getDimensionPixelOffset(2131165868);
+      int i = paramContext.getResources().getDimensionPixelOffset(au.d.app_brand_recommend_item_card_padding);
       if (localLayoutParams != null)
       {
         localLayoutParams.rightMargin = i;
@@ -32,7 +33,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recommend.j
  * JD-Core Version:    0.7.0.1
  */

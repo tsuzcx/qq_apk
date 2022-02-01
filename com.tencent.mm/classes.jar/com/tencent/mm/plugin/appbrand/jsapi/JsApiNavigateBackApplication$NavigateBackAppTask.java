@@ -13,7 +13,7 @@ import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.h;
 import com.tencent.mm.pluginsdk.model.app.q;
-import com.tencent.mm.pluginsdk.ui.tools.n;
+import com.tencent.mm.pluginsdk.ui.tools.o;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -51,13 +51,13 @@ public final class JsApiNavigateBackApplication$NavigateBackAppTask
     paramBaseResp = new MMessageActV2.Args();
     paramBaseResp.targetPkgName = paramg.field_packageName;
     paramBaseResp.bundle = paramBundle;
-    q.bo(paramBundle);
-    q.bp(paramBundle);
+    q.bm(paramBundle);
+    q.bn(paramBundle);
     MMessageActV2.send(MMApplicationContext.getContext(), paramBaseResp);
     AppMethodBeat.o(45555);
   }
   
-  public final void bjj()
+  public final void RW()
   {
     AppMethodBeat.i(45554);
     g localg = h.o(this.appId, true, true);
@@ -89,7 +89,7 @@ public final class JsApiNavigateBackApplication$NavigateBackAppTask
     ((WXOpenBusinessView.Resp)localObject).openId = localg.field_openId;
     ((WXOpenBusinessView.Resp)localObject).errCode = this.errCode;
     ((WXOpenBusinessView.Resp)localObject).businessType = this.businessType;
-    ((WXOpenBusinessView.Resp)localObject).transaction = n.Kwp;
+    ((WXOpenBusinessView.Resp)localObject).transaction = o.RxF;
     a(localBundle, (BaseResp)localObject, localg);
     AppMethodBeat.o(45554);
   }
@@ -116,7 +116,7 @@ public final class JsApiNavigateBackApplication$NavigateBackAppTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.JsApiNavigateBackApplication.NavigateBackAppTask
  * JD-Core Version:    0.7.0.1
  */

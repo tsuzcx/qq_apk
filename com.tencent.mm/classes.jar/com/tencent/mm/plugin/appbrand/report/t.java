@@ -1,48 +1,76 @@
 package com.tencent.mm.plugin.appbrand.report;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.z.f;
-import com.tencent.mm.plugin.appbrand.jsapi.z.f.c;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import kotlin.g.b.p;
-import kotlin.l;
+import com.tencent.mm.compatible.util.q;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/report/ReportUtilKt;", "", "()V", "getNetworkTypeForReport", "", "context", "Landroid/content/Context;", "plugin-appbrand-integration_release"})
 public final class t
 {
-  public static final t nHN;
-  
-  static
+  private static String amF(String paramString)
   {
-    AppMethodBeat.i(51027);
-    nHN = new t();
-    AppMethodBeat.o(51027);
+    AppMethodBeat.i(48072);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(48072);
+      return "";
+    }
+    try
+    {
+      String str = Util.nullAsNil(q.aT(paramString));
+      AppMethodBeat.o(48072);
+      return str;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.AppBrand.ReportUtil", "safeEncode, given %s, e %s", new Object[] { paramString, localException });
+      AppMethodBeat.o(48072);
+    }
+    return "";
   }
   
-  public static final String el(Context paramContext)
+  public static Object[] j(Object... paramVarArgs)
   {
-    AppMethodBeat.i(51026);
-    Context localContext = paramContext;
-    if (paramContext == null) {
-      localContext = MMApplicationContext.getContext();
-    }
-    paramContext = f.dS(localContext);
-    switch (u.$EnumSwitchMapping$0[paramContext.ordinal()])
+    AppMethodBeat.i(48073);
+    if ((paramVarArgs == null) || (paramVarArgs.length <= 0))
     {
-    default: 
-      paramContext = paramContext.value;
-      p.g(paramContext, "type.value");
-      AppMethodBeat.o(51026);
-      return paramContext;
+      AppMethodBeat.o(48073);
+      return new Object[0];
     }
-    AppMethodBeat.o(51026);
-    return "offline";
+    Object[] arrayOfObject = new Object[paramVarArgs.length];
+    int k = paramVarArgs.length;
+    int j = 0;
+    int i = 0;
+    if (j < k)
+    {
+      Object localObject2 = paramVarArgs[j];
+      Object localObject1;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      for (;;)
+      {
+        arrayOfObject[i] = String.valueOf(localObject1);
+        j += 1;
+        i += 1;
+        break;
+        localObject1 = localObject2;
+        if ((localObject2 instanceof String))
+        {
+          localObject1 = localObject2;
+          if (((String)localObject2).contains(",")) {
+            localObject1 = amF((String)localObject2);
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(48073);
+    return arrayOfObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.t
  * JD-Core Version:    0.7.0.1
  */

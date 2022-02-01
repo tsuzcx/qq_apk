@@ -13,7 +13,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.luggage.i.a.a;
+import com.tencent.luggage.l.a.c;
+import com.tencent.luggage.l.a.d;
+import com.tencent.luggage.l.a.g;
+import com.tencent.luggage.l.a.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
@@ -22,20 +25,20 @@ import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 public class MMFormVerifyCodeInputView
   extends LinearLayout
 {
-  private View.OnFocusChangeListener heD;
-  private TextView jVO;
-  private Button klC;
+  private View.OnFocusChangeListener jQt;
   private int layout;
   private Context mContext;
-  private EditText nBD;
-  private TextView nBE;
-  private int nBF;
-  private int nBG;
-  private int nBH;
-  private int nBI;
-  private int nBJ;
-  private int[] nBK;
-  private View.OnClickListener nBL;
+  private TextView mNb;
+  private Button nds;
+  private EditText qDO;
+  private TextView qDP;
+  private int qDQ;
+  private int qDR;
+  private int qDS;
+  private int qDT;
+  private int qDU;
+  private int[] qDV;
+  private View.OnClickListener qDW;
   private MTimerHandler timerHandler;
   
   public MMFormVerifyCodeInputView(Context paramContext, AttributeSet paramAttributeSet)
@@ -49,19 +52,19 @@ public class MMFormVerifyCodeInputView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(169516);
     this.mContext = null;
-    this.nBF = -1;
-    this.nBG = -1;
-    this.nBH = -1;
+    this.qDQ = -1;
+    this.qDR = -1;
+    this.qDS = -1;
     this.layout = -1;
-    this.nBI = 60;
-    this.nBJ = this.nBI;
-    this.heD = null;
-    this.nBL = null;
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.FormItemView, paramInt, 0);
-    this.nBG = paramAttributeSet.getResourceId(1, -1);
-    this.nBF = paramAttributeSet.getResourceId(3, -1);
-    this.nBH = paramAttributeSet.getResourceId(0, -1);
-    this.layout = paramAttributeSet.getResourceId(2, this.layout);
+    this.qDT = 60;
+    this.qDU = this.qDT;
+    this.jQt = null;
+    this.qDW = null;
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.i.FormItemView, paramInt, 0);
+    this.qDR = paramAttributeSet.getResourceId(a.i.FormItemView_form_hint, -1);
+    this.qDQ = paramAttributeSet.getResourceId(a.i.FormItemView_form_title, -1);
+    this.qDS = paramAttributeSet.getResourceId(a.i.FormItemView_form_btn_title, -1);
+    this.layout = paramAttributeSet.getResourceId(a.i.FormItemView_form_layout, this.layout);
     paramAttributeSet.recycle();
     inflate(paramContext, this.layout, this);
     this.mContext = paramContext;
@@ -71,22 +74,22 @@ public class MMFormVerifyCodeInputView
   public final void addTextChangedListener(TextWatcher paramTextWatcher)
   {
     AppMethodBeat.i(169529);
-    if (this.nBD != null)
+    if (this.qDO != null)
     {
-      this.nBD.addTextChangedListener(paramTextWatcher);
+      this.qDO.addTextChangedListener(paramTextWatcher);
       AppMethodBeat.o(169529);
       return;
     }
-    Log.w("MicroMsg.MMFormVerifyCodeInputView", "watcher : %s, contentET : %s", new Object[] { paramTextWatcher, this.nBD });
+    Log.w("MicroMsg.MMFormVerifyCodeInputView", "watcher : %s, contentET : %s", new Object[] { paramTextWatcher, this.qDO });
     AppMethodBeat.o(169529);
   }
   
-  public final void bTu()
+  public final void cgz()
   {
     AppMethodBeat.i(169526);
-    this.klC.setVisibility(8);
-    this.nBE.setVisibility(0);
-    this.nBE.setText(getContext().getString(2131756116, new Object[] { Integer.valueOf(this.nBI) }));
+    this.nds.setVisibility(8);
+    this.qDP.setVisibility(0);
+    this.qDP.setText(getContext().getString(a.g.appbrand_mobile_input_send_sms_timer_title, new Object[] { Integer.valueOf(this.qDT) }));
     if (this.timerHandler != null)
     {
       this.timerHandler.stopTimer();
@@ -102,7 +105,7 @@ public class MMFormVerifyCodeInputView
         {
           AppMethodBeat.i(169515);
           MMFormVerifyCodeInputView.f(MMFormVerifyCodeInputView.this);
-          MMFormVerifyCodeInputView.h(MMFormVerifyCodeInputView.this).setText(MMFormVerifyCodeInputView.this.getContext().getString(2131756116, new Object[] { Integer.valueOf(MMFormVerifyCodeInputView.g(MMFormVerifyCodeInputView.this)) }));
+          MMFormVerifyCodeInputView.h(MMFormVerifyCodeInputView.this).setText(MMFormVerifyCodeInputView.this.getContext().getString(a.g.appbrand_mobile_input_send_sms_timer_title, new Object[] { Integer.valueOf(MMFormVerifyCodeInputView.g(MMFormVerifyCodeInputView.this)) }));
           if (MMFormVerifyCodeInputView.g(MMFormVerifyCodeInputView.this) == 0)
           {
             MMFormVerifyCodeInputView.i(MMFormVerifyCodeInputView.this).stopTimer();
@@ -126,15 +129,15 @@ public class MMFormVerifyCodeInputView
   
   public EditText getContentEditText()
   {
-    return this.nBD;
+    return this.qDO;
   }
   
   public Editable getText()
   {
     AppMethodBeat.i(169530);
-    if (this.nBD != null)
+    if (this.qDO != null)
     {
-      Editable localEditable = this.nBD.getText();
+      Editable localEditable = this.qDO.getText();
       AppMethodBeat.o(169530);
       return localEditable;
     }
@@ -145,23 +148,23 @@ public class MMFormVerifyCodeInputView
   
   public TextView getTitleTextView()
   {
-    return this.jVO;
+    return this.mNb;
   }
   
   public void onFinishInflate()
   {
     AppMethodBeat.i(169517);
     super.onFinishInflate();
-    this.jVO = ((TextView)findViewById(2131309195));
-    this.nBD = ((EditText)findViewById(2131299910));
-    this.nBE = ((TextView)findViewById(2131309125));
-    this.klC = ((Button)findViewById(2131307632));
-    if ((this.jVO == null) || (this.nBD == null) || (this.nBE == null) || (this.klC == null)) {
-      Log.w("MicroMsg.MMFormVerifyCodeInputView", "titleTV : %s, contentET : %s, timerTv: %s, sendSmsBtn: %s", new Object[] { this.jVO, this.nBD, this.nBE, this.klC });
+    this.mNb = ((TextView)findViewById(a.d.title));
+    this.qDO = ((EditText)findViewById(a.d.edittext));
+    this.qDP = ((TextView)findViewById(a.d.timer));
+    this.nds = ((Button)findViewById(a.d.send_verify_code_btn));
+    if ((this.mNb == null) || (this.qDO == null) || (this.qDP == null) || (this.nds == null)) {
+      Log.w("MicroMsg.MMFormVerifyCodeInputView", "titleTV : %s, contentET : %s, timerTv: %s, sendSmsBtn: %s", new Object[] { this.mNb, this.qDO, this.qDP, this.nds });
     }
     for (;;)
     {
-      if (this.nBD != null)
+      if (this.qDO != null)
       {
         View.OnFocusChangeListener local1 = new View.OnFocusChangeListener()
         {
@@ -172,9 +175,9 @@ public class MMFormVerifyCodeInputView
             {
               MMFormVerifyCodeInputView.b(MMFormVerifyCodeInputView.this);
               if (!paramAnonymousBoolean) {
-                break label73;
+                break label74;
               }
-              MMFormVerifyCodeInputView.this.setBackgroundResource(2131233162);
+              MMFormVerifyCodeInputView.this.setBackgroundResource(a.c.input_bar_bg_active);
             }
             for (;;)
             {
@@ -184,26 +187,26 @@ public class MMFormVerifyCodeInputView
               }
               AppMethodBeat.o(169513);
               return;
-              label73:
-              MMFormVerifyCodeInputView.this.setBackgroundResource(2131233163);
+              label74:
+              MMFormVerifyCodeInputView.this.setBackgroundResource(a.c.input_bar_bg_normal);
             }
           }
         };
-        this.nBD.setOnFocusChangeListener(local1);
+        this.qDO.setOnFocusChangeListener(local1);
       }
-      if (this.klC != null) {
-        this.klC.setOnClickListener(new MMFormVerifyCodeInputView.2(this));
+      if (this.nds != null) {
+        this.nds.setOnClickListener(new MMFormVerifyCodeInputView.2(this));
       }
       AppMethodBeat.o(169517);
       return;
-      if (this.nBF != -1) {
-        this.jVO.setText(this.nBF);
+      if (this.qDQ != -1) {
+        this.mNb.setText(this.qDQ);
       }
-      if (this.nBG != -1) {
-        this.nBD.setHint(this.nBG);
+      if (this.qDR != -1) {
+        this.qDO.setHint(this.qDR);
       }
-      if (this.nBH != -1) {
-        this.klC.setText(this.nBH);
+      if (this.qDS != -1) {
+        this.nds.setText(this.qDS);
       }
     }
   }
@@ -214,24 +217,24 @@ public class MMFormVerifyCodeInputView
     if (this.timerHandler != null) {
       this.timerHandler.stopTimer();
     }
-    this.nBD.setText("");
-    this.nBE.setVisibility(8);
-    this.nBJ = this.nBI;
-    this.klC.setVisibility(0);
+    this.qDO.setText("");
+    this.qDP.setVisibility(8);
+    this.qDU = this.qDT;
+    this.nds.setVisibility(0);
     AppMethodBeat.o(169527);
   }
   
   public void setFocusListener(View.OnFocusChangeListener paramOnFocusChangeListener)
   {
-    this.heD = paramOnFocusChangeListener;
+    this.jQt = paramOnFocusChangeListener;
   }
   
   public void setHint(int paramInt)
   {
     AppMethodBeat.i(169521);
-    if (this.nBD != null)
+    if (this.qDO != null)
     {
-      this.nBD.setHint(paramInt);
+      this.qDO.setHint(paramInt);
       AppMethodBeat.o(169521);
       return;
     }
@@ -242,9 +245,9 @@ public class MMFormVerifyCodeInputView
   public void setHint(String paramString)
   {
     AppMethodBeat.i(169519);
-    if (this.nBD != null)
+    if (this.qDO != null)
     {
-      this.nBD.setHint(paramString);
+      this.qDO.setHint(paramString);
       AppMethodBeat.o(169519);
       return;
     }
@@ -255,9 +258,9 @@ public class MMFormVerifyCodeInputView
   public void setImeOption(int paramInt)
   {
     AppMethodBeat.i(169523);
-    if (this.nBD != null)
+    if (this.qDO != null)
     {
-      this.nBD.setImeOptions(paramInt);
+      this.qDO.setImeOptions(paramInt);
       AppMethodBeat.o(169523);
       return;
     }
@@ -268,9 +271,9 @@ public class MMFormVerifyCodeInputView
   public void setInputType(int paramInt)
   {
     AppMethodBeat.i(169528);
-    if (this.nBD != null)
+    if (this.qDO != null)
     {
-      this.nBD.setInputType(paramInt);
+      this.qDO.setInputType(paramInt);
       AppMethodBeat.o(169528);
       return;
     }
@@ -280,15 +283,15 @@ public class MMFormVerifyCodeInputView
   
   public void setSendSmsBtnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.nBL = paramOnClickListener;
+    this.qDW = paramOnClickListener;
   }
   
   public void setSmsBtnText(int paramInt)
   {
     AppMethodBeat.i(169524);
-    if (this.klC != null)
+    if (this.nds != null)
     {
-      this.klC.setText(paramInt);
+      this.nds.setText(paramInt);
       AppMethodBeat.o(169524);
       return;
     }
@@ -299,9 +302,9 @@ public class MMFormVerifyCodeInputView
   public void setSmsBtnText(String paramString)
   {
     AppMethodBeat.i(169525);
-    if (this.klC != null)
+    if (this.nds != null)
     {
-      this.klC.setText(paramString);
+      this.nds.setText(paramString);
       AppMethodBeat.o(169525);
       return;
     }
@@ -312,9 +315,9 @@ public class MMFormVerifyCodeInputView
   public void setText(String paramString)
   {
     AppMethodBeat.i(169522);
-    if (this.nBD != null)
+    if (this.qDO != null)
     {
-      this.nBD.setText(paramString);
+      this.qDO.setText(paramString);
       AppMethodBeat.o(169522);
       return;
     }
@@ -325,9 +328,9 @@ public class MMFormVerifyCodeInputView
   public void setTitle(int paramInt)
   {
     AppMethodBeat.i(169520);
-    if (this.jVO != null)
+    if (this.mNb != null)
     {
-      this.jVO.setText(paramInt);
+      this.mNb.setText(paramInt);
       AppMethodBeat.o(169520);
       return;
     }
@@ -338,9 +341,9 @@ public class MMFormVerifyCodeInputView
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(169518);
-    if (this.jVO != null)
+    if (this.mNb != null)
     {
-      this.jVO.setText(paramString);
+      this.mNb.setText(paramString);
       AppMethodBeat.o(169518);
       return;
     }
@@ -350,7 +353,7 @@ public class MMFormVerifyCodeInputView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.widget.MMFormVerifyCodeInputView
  * JD-Core Version:    0.7.0.1
  */

@@ -10,21 +10,21 @@ import java.util.List;
 public final class g
   extends b
 {
-  private final f bDK;
-  private final m bDL;
-  private final e.a bDM;
-  private final a bDN;
-  private final List<d> bDO;
+  private final f bnl;
+  private final m bnm;
+  private final e.a bnn;
+  private final a bno;
+  private final List<d> bnp;
   
   public g()
   {
     super("WebvttDecoder");
     AppMethodBeat.i(92908);
-    this.bDK = new f();
-    this.bDL = new m();
-    this.bDM = new e.a();
-    this.bDN = new a();
-    this.bDO = new ArrayList();
+    this.bnl = new f();
+    this.bnm = new m();
+    this.bnn = new e.a();
+    this.bno = new a();
+    this.bnp = new ArrayList();
     AppMethodBeat.o(92908);
   }
   
@@ -61,7 +61,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.f.g.g
  * JD-Core Version:    0.7.0.1
  */

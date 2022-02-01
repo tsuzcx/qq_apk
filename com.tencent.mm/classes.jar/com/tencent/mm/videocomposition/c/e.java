@@ -8,7 +8,7 @@ public final class e
 {
   public static String stackTraceToString(Throwable paramThrowable)
   {
-    AppMethodBeat.i(216715);
+    AppMethodBeat.i(247841);
     try
     {
       ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
@@ -17,23 +17,23 @@ public final class e
       paramThrowable = localByteArrayOutputStream.toString();
       localPrintStream.close();
       localByteArrayOutputStream.close();
-      AppMethodBeat.o(216715);
+      AppMethodBeat.o(247841);
       return paramThrowable;
     }
     catch (Exception paramThrowable)
     {
-      AppMethodBeat.o(216715);
+      AppMethodBeat.o(247841);
     }
     return "";
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(216714);
+    AppMethodBeat.i(247840);
     Object localObject = new Throwable().getStackTrace();
     if ((localObject == null) || (localObject.length < 4))
     {
-      AppMethodBeat.o(216714);
+      AppMethodBeat.o(247840);
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -51,13 +51,13 @@ public final class e
       i += 1;
     }
     localObject = localStringBuilder.toString();
-    AppMethodBeat.o(216714);
+    AppMethodBeat.o(247840);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.videocomposition.c.e
  * JD-Core Version:    0.7.0.1
  */

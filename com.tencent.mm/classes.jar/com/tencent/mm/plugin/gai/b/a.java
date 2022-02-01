@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.gai.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bd;
+import com.tencent.mm.model.be;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class a
-  implements bd
+  implements be
 {
   public final void clearPluginData(int paramInt) {}
   

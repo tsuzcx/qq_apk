@@ -8,11 +8,11 @@ import java.util.Map;
 
 public final class m$f
 {
-  public String Dje;
+  public String JoK;
   public String nickName;
   public String userName;
   
-  public static f aNs(String paramString)
+  public static f aYb(String paramString)
   {
     AppMethodBeat.i(28346);
     Map localMap = XmlParser.parseXml(paramString, "bizprofile", null);
@@ -24,7 +24,7 @@ public final class m$f
         paramString = new f();
         paramString.nickName = Util.nullAsNil((String)localMap.get(".bizprofile.nickname"));
         paramString.userName = Util.nullAsNil((String)localMap.get(".bizprofile.username"));
-        paramString.Dje = Util.nullAsNil((String)localMap.get(".bizprofile.showchat"));
+        paramString.JoK = Util.nullAsNil((String)localMap.get(".bizprofile.showchat"));
         AppMethodBeat.o(28346);
         return paramString;
       }
@@ -40,7 +40,7 @@ public final class m$f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.d.a.m.f
  * JD-Core Version:    0.7.0.1
  */

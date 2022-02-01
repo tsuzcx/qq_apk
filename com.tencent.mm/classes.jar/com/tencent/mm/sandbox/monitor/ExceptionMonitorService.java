@@ -10,7 +10,7 @@ public class ExceptionMonitorService
   extends Service
   implements b.a
 {
-  b NEm = null;
+  b URK = null;
   
   public IBinder onBind(Intent paramIntent)
   {
@@ -22,8 +22,8 @@ public class ExceptionMonitorService
     AppMethodBeat.i(32607);
     super.onCreate();
     Log.i("MicroMsg.ExceptionMonitorService", "onCreate()");
-    this.NEm = new b();
-    this.NEm.a(this);
+    this.URK = new b();
+    this.URK.a(this);
     AppMethodBeat.o(32607);
   }
   
@@ -32,10 +32,10 @@ public class ExceptionMonitorService
     AppMethodBeat.i(32610);
     super.onDestroy();
     Log.i("MicroMsg.ExceptionMonitorService", "onDestroy()");
-    if (this.NEm != null)
+    if (this.URK != null)
     {
-      this.NEm.onDestroy();
-      this.NEm = null;
+      this.URK.onDestroy();
+      this.URK = null;
     }
     AppMethodBeat.o(32610);
   }
@@ -45,8 +45,8 @@ public class ExceptionMonitorService
     AppMethodBeat.i(32608);
     super.onStart(paramIntent, paramInt);
     Log.i("MicroMsg.ExceptionMonitorService", "onStart()");
-    if (this.NEm != null) {
-      this.NEm.o(paramIntent);
+    if (this.URK != null) {
+      this.URK.q(paramIntent);
     }
     AppMethodBeat.o(32608);
   }
@@ -55,8 +55,8 @@ public class ExceptionMonitorService
   {
     AppMethodBeat.i(32609);
     Log.i("MicroMsg.ExceptionMonitorService", "onStartCommand()");
-    if (this.NEm != null) {
-      this.NEm.o(paramIntent);
+    if (this.URK != null) {
+      this.URK.q(paramIntent);
     }
     AppMethodBeat.o(32609);
     return 1;
@@ -64,7 +64,7 @@ public class ExceptionMonitorService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sandbox.monitor.ExceptionMonitorService
  * JD-Core Version:    0.7.0.1
  */

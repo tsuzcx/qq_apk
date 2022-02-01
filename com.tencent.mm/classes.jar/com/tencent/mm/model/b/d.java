@@ -3,12 +3,12 @@ package com.tencent.mm.model.b;
 public final class d
   extends a
 {
-  protected final String[] aWU()
+  protected final String[] bgb()
   {
     return new String[] { "wording", "linkname", "linksrc" };
   }
   
-  public final String aWV()
+  public final String bgc()
   {
     return "ChattingSecurityBannerStorage_user_status_";
   }

@@ -1,101 +1,72 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
-public final class arg
-  extends dpc
+public class arg
+  extends com.tencent.mm.cd.a
 {
-  public FinderContact contact;
+  public String SEn;
+  public String session_id;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(168965);
+    AppMethodBeat.i(200890);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.ni(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+      if (this.SEn != null) {
+        paramVarArgs.f(1, this.SEn);
       }
-      if (this.contact != null)
-      {
-        paramVarArgs.ni(2, this.contact.computeSize());
-        this.contact.writeFields(paramVarArgs);
+      if (this.session_id != null) {
+        paramVarArgs.f(2, this.session_id);
       }
-      AppMethodBeat.o(168965);
+      AppMethodBeat.o(200890);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label466;
+      if (this.SEn == null) {
+        break label274;
       }
     }
-    label466:
-    for (paramInt = g.a.a.a.nh(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label274:
+    for (paramInt = g.a.a.b.b.a.g(1, this.SEn) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.contact != null) {
-        i = paramInt + g.a.a.a.nh(2, this.contact.computeSize());
+      if (this.session_id != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.session_id);
       }
-      AppMethodBeat.o(168965);
+      AppMethodBeat.o(200890);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dpc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dpc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(168965);
+        AppMethodBeat.o(200890);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         arg localarg = (arg)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(168965);
+          AppMethodBeat.o(200890);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localarg.BaseResponse = ((BaseResponse)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(168965);
+          localarg.SEn = locala.abFh.readString();
+          AppMethodBeat.o(200890);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new FinderContact();
-          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((FinderContact)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-          localarg.contact = ((FinderContact)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(168965);
+        localarg.session_id = locala.abFh.readString();
+        AppMethodBeat.o(200890);
         return 0;
       }
-      AppMethodBeat.o(168965);
+      AppMethodBeat.o(200890);
       return -1;
     }
   }

@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.AnimationDrawable;
-import android.support.constraint.ConstraintLayout;
-import android.support.constraint.ConstraintLayout.LayoutParams;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,33 +13,44 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewStub;
-import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintLayout.LayoutParams;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.ay.a.a.c.a;
+import com.tencent.mm.pluginsdk.model.w;
 import com.tencent.mm.pluginsdk.ui.applet.m.a;
 import com.tencent.mm.pluginsdk.ui.span.o;
-import com.tencent.mm.protocal.protobuf.acb;
-import com.tencent.mm.protocal.protobuf.cty;
-import com.tencent.mm.protocal.protobuf.dey;
-import com.tencent.mm.protocal.protobuf.ng;
-import com.tencent.mm.protocal.protobuf.nh;
-import com.tencent.mm.protocal.protobuf.ni;
-import com.tencent.mm.protocal.protobuf.ou;
-import com.tencent.mm.protocal.protobuf.ov;
-import com.tencent.mm.protocal.protobuf.qe;
+import com.tencent.mm.protocal.protobuf.acj;
+import com.tencent.mm.protocal.protobuf.dda;
+import com.tencent.mm.protocal.protobuf.dor;
+import com.tencent.mm.protocal.protobuf.mx;
+import com.tencent.mm.protocal.protobuf.my;
+import com.tencent.mm.protocal.protobuf.mz;
+import com.tencent.mm.protocal.protobuf.oo;
+import com.tencent.mm.protocal.protobuf.op;
+import com.tencent.mm.protocal.protobuf.qa;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ab;
 import com.tencent.mm.storage.as;
+import com.tencent.mm.ui.chatting.s;
 import com.tencent.mm.ui.chatting.viewitems.e.g;
 import com.tencent.mm.ui.chatting.viewitems.e.h;
-import com.tencent.mm.ui.e.b;
+import com.tencent.mm.ui.f.b;
 import com.tencent.mm.ui.widget.MMCollapsibleTextView;
 import com.tencent.mm.ui.widget.MMNeat7extView;
 import com.tencent.neattextview.textview.view.NeatTextView;
@@ -54,83 +63,195 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import kotlin.a.j;
-import kotlin.g.b.ae;
+import kotlin.g;
+import kotlin.g.b.af;
 import kotlin.g.b.p;
 import kotlin.t;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter;", "Landroid/widget/BaseAdapter;", "context", "Landroid/content/Context;", "addContactScene", "", "contact", "Lcom/tencent/mm/storage/Contact;", "enterTime", "", "(Landroid/content/Context;ILcom/tencent/mm/storage/Contact;J)V", "getAddContactScene", "()I", "brandService", "Lcom/tencent/mm/plugin/brandservice/api/IBrandService;", "kotlin.jvm.PlatformType", "getBrandService", "()Lcom/tencent/mm/plugin/brandservice/api/IBrandService;", "brandService$delegate", "Lkotlin/Lazy;", "changedPlayId", "", "getContact", "()Lcom/tencent/mm/storage/Contact;", "getContext", "()Landroid/content/Context;", "getEnterTime", "()J", "expandSet", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "getExpandSet", "()Ljava/util/HashSet;", "isBizPayOpen", "", "()Z", "messageHandler", "Lcom/tencent/mm/plugin/profile/ui/newbizinfo/model/BizMessageAdapter;", "onLoadMore", "Lkotlin/Function0;", "", "getOnLoadMore", "()Lkotlin/jvm/functions/Function0;", "setOnLoadMore", "(Lkotlin/jvm/functions/Function0;)V", "originalCount", "getOriginalCount", "setOriginalCount", "(I)V", "getCount", "getDateString", "position", "getFooterCount", "getItem", "", "getItemId", "getView", "Landroid/view/View;", "convertView", "parent", "Landroid/view/ViewGroup;", "onMusicStateChanged", "event", "Lcom/tencent/mm/autogen/events/MusicPlayerEvent;", "update", "msgList", "Lcom/tencent/mm/protocal/protobuf/BizMessageList;", "notifyInfo", "Lcom/tencent/mm/protocal/protobuf/ProfileNotifyInfo;", "BizMsgViewHolder", "CommonSlotViewModel", "Companion", "SlotType", "SlotViewModel", "TopSlotViewModel", "VideoChannelViewHolder", "ViewHolder", "app_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "context", "Landroid/content/Context;", "addContactScene", "", "contact", "Lcom/tencent/mm/storage/Contact;", "enterTime", "", "(Landroid/content/Context;ILcom/tencent/mm/storage/Contact;J)V", "getAddContactScene", "()I", "brandService", "Lcom/tencent/mm/plugin/brandservice/api/IBrandService;", "kotlin.jvm.PlatformType", "getBrandService", "()Lcom/tencent/mm/plugin/brandservice/api/IBrandService;", "brandService$delegate", "Lkotlin/Lazy;", "changedPlayId", "", "getContact", "()Lcom/tencent/mm/storage/Contact;", "getContext", "()Landroid/content/Context;", "getEnterTime", "()J", "expandSet", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "getExpandSet", "()Ljava/util/HashSet;", "isBizPayOpen", "", "()Z", "messageHandler", "Lcom/tencent/mm/plugin/profile/ui/newbizinfo/model/BizMessageAdapter;", "onLoadMore", "Lkotlin/Function0;", "", "getOnLoadMore", "()Lkotlin/jvm/functions/Function0;", "setOnLoadMore", "(Lkotlin/jvm/functions/Function0;)V", "originalCount", "getOriginalCount", "setOriginalCount", "(I)V", "getFooterCount", "getItemCount", "getItemId", "position", "getItemViewType", "getMsgPosition", "onBindViewHolder", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "onMusicStateChanged", "event", "Lcom/tencent/mm/autogen/events/MusicPlayerEvent;", "update", "msgList", "Lcom/tencent/mm/protocal/protobuf/BizMessageList;", "notifyInfo", "Lcom/tencent/mm/protocal/protobuf/ProfileNotifyInfo;", "BizDateViewHolder", "BizMsgViewHolder", "CommonSlotViewModel", "Companion", "LoadingViewHolder", "SlotType", "SlotViewModel", "TopSlotViewModel", "VideoChannelViewHolder", "ViewHolder", "newBizMsgViewHolder", "newVideoChannelViewHolder", "app_release"})
 public final class a
-  extends BaseAdapter
+  extends RecyclerView.a<RecyclerView.v>
 {
-  public static final a.c BmV;
+  public static final a.c Hhq;
   private static final String TAG = "MicroMsg.NewBizInfoAdapter";
-  private String Bkv;
-  private int Bkw;
-  private final kotlin.f Bkx;
-  final boolean Bky;
-  private final HashSet<Integer> Bkz;
-  private final com.tencent.mm.plugin.profile.ui.newbizinfo.b.a BmT;
-  kotlin.g.a.a<kotlin.x> BmU;
+  private String HeI;
+  private int HeJ;
+  private final kotlin.f HeK;
+  final boolean HeL;
+  private final HashSet<Integer> HeM;
+  private final com.tencent.mm.plugin.profile.ui.newbizinfo.b.a Hho;
+  kotlin.g.a.a<kotlin.x> Hhp;
   final as contact;
   final Context context;
   final long enterTime;
-  final int kgm;
+  final int mXL;
   
   static
   {
-    AppMethodBeat.i(230812);
-    BmV = new a.c((byte)0);
+    AppMethodBeat.i(264073);
+    Hhq = new a.c((byte)0);
     TAG = "MicroMsg.NewBizInfoAdapter";
-    AppMethodBeat.o(230812);
+    AppMethodBeat.o(264073);
   }
   
   public a(Context paramContext, as paramas, long paramLong)
   {
-    AppMethodBeat.i(230811);
+    AppMethodBeat.i(264072);
     this.context = paramContext;
-    this.kgm = 0;
+    this.mXL = 0;
     this.contact = paramas;
     this.enterTime = paramLong;
-    this.BmT = new com.tencent.mm.plugin.profile.ui.newbizinfo.b.a();
-    com.tencent.mm.plugin.brandservice.b.c.init();
-    this.Bkv = "none";
-    this.Bkx = kotlin.g.ah((kotlin.g.a.a)a.i.Bnk);
-    paramContext = com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.brandservice.a.b.class);
-    p.g(paramContext, "MMKernel.service(IBrandService::class.java)");
-    this.Bky = ((com.tencent.mm.plugin.brandservice.a.b)paramContext).cle();
-    this.Bkz = new HashSet();
-    AppMethodBeat.o(230811);
+    this.Hho = new com.tencent.mm.plugin.profile.ui.newbizinfo.b.a();
+    com.tencent.mm.plugin.brandservice.b.d.init();
+    this.HeI = "none";
+    this.HeK = g.ar((kotlin.g.a.a)a.h.HhC);
+    paramContext = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.brandservice.a.c.class);
+    p.j(paramContext, "MMKernel.service(IBrandService::class.java)");
+    this.HeL = ((com.tencent.mm.plugin.brandservice.a.c)paramContext).cyB();
+    this.HeM = new HashSet();
+    AppMethodBeat.o(264072);
   }
   
-  private final com.tencent.mm.plugin.brandservice.a.b eFj()
+  private int abJ(int paramInt)
   {
-    AppMethodBeat.i(230809);
-    com.tencent.mm.plugin.brandservice.a.b localb = (com.tencent.mm.plugin.brandservice.a.b)this.Bkx.getValue();
-    AppMethodBeat.o(230809);
-    return localb;
+    return paramInt - this.HeJ + 0;
   }
   
-  public final void d(ov paramov)
+  private final com.tencent.mm.plugin.brandservice.a.c fra()
   {
-    AppMethodBeat.i(230807);
-    p.h(paramov, "msgList");
-    this.BmT.b(paramov);
-    this.BmT.a(null);
+    AppMethodBeat.i(264068);
+    com.tencent.mm.plugin.brandservice.a.c localc = (com.tencent.mm.plugin.brandservice.a.c)this.HeK.getValue();
+    AppMethodBeat.o(264068);
+    return localc;
+  }
+  
+  public final RecyclerView.v b(ViewGroup paramViewGroup, int paramInt)
+  {
+    AppMethodBeat.i(264070);
+    p.k(paramViewGroup, "parent");
+    if (paramInt == com.tencent.mm.plugin.profile.ui.newbizinfo.b.a.b.HeE.ordinal())
+    {
+      paramViewGroup = LayoutInflater.from(this.context).inflate(R.i.efa, paramViewGroup, false);
+      p.j(paramViewGroup, "view");
+      paramViewGroup = (RecyclerView.v)new a.d(paramViewGroup);
+      AppMethodBeat.o(264070);
+      return paramViewGroup;
+    }
+    if (paramInt == com.tencent.mm.plugin.profile.ui.newbizinfo.b.a.b.HeD.ordinal())
+    {
+      paramViewGroup = LayoutInflater.from(this.context).inflate(R.i.eeX, paramViewGroup, false);
+      p.j(paramViewGroup, "view");
+      paramViewGroup = (RecyclerView.v)new i(paramViewGroup);
+      AppMethodBeat.o(264070);
+      return paramViewGroup;
+    }
+    if (paramInt == com.tencent.mm.plugin.profile.ui.newbizinfo.b.a.b.HeF.ordinal())
+    {
+      paramViewGroup = LayoutInflater.from(this.context).inflate(R.i.efh, paramViewGroup, false);
+      p.j(paramViewGroup, "view");
+      paramViewGroup = (RecyclerView.v)new j(paramViewGroup);
+      AppMethodBeat.o(264070);
+      return paramViewGroup;
+    }
+    paramViewGroup = LayoutInflater.from(this.context).inflate(R.i.eeZ, paramViewGroup, false);
+    p.j(paramViewGroup, "view");
+    paramViewGroup = (RecyclerView.v)new a.a(paramViewGroup);
+    AppMethodBeat.o(264070);
+    return paramViewGroup;
+  }
+  
+  public final void d(RecyclerView.v paramv, int paramInt)
+  {
+    AppMethodBeat.i(264071);
+    p.k(paramv, "holder");
+    if ((paramv instanceof a.d))
+    {
+      paramv = this.Hhp;
+      if (paramv != null)
+      {
+        paramv.invoke();
+        AppMethodBeat.o(264071);
+        return;
+      }
+      AppMethodBeat.o(264071);
+      return;
+    }
+    Object localObject1;
+    if ((paramv instanceof i))
+    {
+      paramInt = abJ(paramInt);
+      localObject1 = this.Hho.getItem(paramInt);
+      if (localObject1 == null)
+      {
+        paramv = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizMessage");
+        AppMethodBeat.o(264071);
+        throw paramv;
+      }
+      localObject1 = (oo)localObject1;
+      if ((((oo)localObject1).RWw.COi == 49) && (fra().Gw(16)))
+      {
+        com.tencent.mm.plugin.brandservice.a.c localc = fra();
+        Object localObject2 = ((oo)localObject1).RWB.RTM;
+        p.j(localObject2, "bizMessage.AppMsg.DetailInfo");
+        Object localObject3 = (Iterable)localObject2;
+        localObject2 = (Collection)new ArrayList(j.a((Iterable)localObject3, 10));
+        localObject3 = ((Iterable)localObject3).iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          my localmy = (my)((Iterator)localObject3).next();
+          ((Collection)localObject2).add(j.listOf(new String[] { localmy.RTk, String.valueOf(localmy.lpx) }));
+        }
+        localc.j((List)localObject2, 126);
+      }
+      ((i)paramv).a(this, (oo)localObject1, this.HeM, paramInt / 2);
+      AppMethodBeat.o(264071);
+      return;
+    }
+    if ((paramv instanceof j))
+    {
+      paramInt = abJ(paramInt);
+      paramv = (j)paramv;
+      localObject1 = this.Hho.getItem(paramInt);
+      if (localObject1 == null)
+      {
+        paramv = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.ProfileNotifyInfo");
+        AppMethodBeat.o(264071);
+        throw paramv;
+      }
+      localObject1 = (dor)localObject1;
+      p.k(this, "widget");
+      p.k(localObject1, "videoInfo");
+      paramv.HhD = this;
+      paramv.b((dor)localObject1);
+      AppMethodBeat.o(264071);
+      return;
+    }
+    if ((paramv instanceof a.a))
+    {
+      paramInt = abJ(paramInt);
+      paramv = ((a.a)paramv).Hhr;
+      p.j(paramv, "holder.dateTextView");
+      paramv.setText((CharSequence)this.Hho.abz(paramInt));
+    }
+    AppMethodBeat.o(264071);
+  }
+  
+  public final void d(op paramop)
+  {
+    AppMethodBeat.i(264066);
+    p.k(paramop, "msgList");
+    this.Hho.b(paramop);
+    this.Hho.a(null);
     notifyDataSetChanged();
-    AppMethodBeat.o(230807);
+    AppMethodBeat.o(264066);
   }
   
-  public final int getCount()
+  public final int getItemCount()
   {
-    AppMethodBeat.i(230808);
-    int i = this.BmT.getSize();
-    AppMethodBeat.o(230808);
+    AppMethodBeat.i(264067);
+    int i = this.Hho.getSize();
+    AppMethodBeat.o(264067);
     return i;
-  }
-  
-  public final Object getItem(int paramInt)
-  {
-    return null;
   }
   
   public final long getItemId(int paramInt)
@@ -138,788 +259,102 @@ public final class a
     return paramInt;
   }
   
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public final int getItemViewType(int paramInt)
   {
-    AppMethodBeat.i(230810);
-    paramInt = paramInt - this.Bkw + 0;
-    Object localObject1 = this.BmT.UU(paramInt);
-    Object localObject2;
-    switch (d.$EnumSwitchMapping$0[localObject1.ordinal()])
-    {
-    default: 
-      paramView = LayoutInflater.from(this.context).inflate(2131493730, paramViewGroup, false);
-      if (paramView == null)
-      {
-        paramView = new t("null cannot be cast to non-null type android.view.ViewGroup");
-        AppMethodBeat.o(230810);
-        throw paramView;
-      }
-      break;
-    case 1: 
-      paramView = LayoutInflater.from(this.context).inflate(2131493732, paramViewGroup, false);
-      paramViewGroup = this.BmU;
-      if (paramViewGroup != null) {
-        paramViewGroup.invoke();
-      }
-      AppMethodBeat.o(230810);
-      return paramView;
-    case 2: 
-      localObject1 = this.BmT.getItem(paramInt);
-      if (localObject1 == null)
-      {
-        paramView = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizMessage");
-        AppMethodBeat.o(230810);
-        throw paramView;
-      }
-      localObject1 = (ou)localObject1;
-      if ((((ou)localObject1).KVq.xKb == 49) && (eFj().CR(16)))
-      {
-        localObject2 = eFj();
-        Object localObject3 = ((ou)localObject1).KVv.KSK;
-        p.g(localObject3, "bizMessage.AppMsg.DetailInfo");
-        Object localObject4 = (Iterable)localObject3;
-        localObject3 = (Collection)new ArrayList(j.a((Iterable)localObject4, 10));
-        localObject4 = ((Iterable)localObject4).iterator();
-        while (((Iterator)localObject4).hasNext())
-        {
-          nh localnh = (nh)((Iterator)localObject4).next();
-          ((Collection)localObject3).add(j.listOf(new String[] { localnh.KSj, String.valueOf(localnh.iAb) }));
-        }
-        ((com.tencent.mm.plugin.brandservice.a.b)localObject2).j((List)localObject3, 126);
-      }
-      paramView = new a(this, paramView, paramViewGroup, (ou)localObject1, this.Bkz, paramInt / 2).view;
-      AppMethodBeat.o(230810);
-      return paramView;
-    case 3: 
-      localObject1 = this.context;
-      localObject2 = this.BmT.getItem(paramInt);
-      if (localObject2 == null)
-      {
-        paramView = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.ProfileNotifyInfo");
-        AppMethodBeat.o(230810);
-        throw paramView;
-      }
-      paramView = new g((Context)localObject1, this, paramView, paramViewGroup, (dey)localObject2).view;
-      AppMethodBeat.o(230810);
-      return paramView;
-    }
-    paramView = (ViewGroup)paramView;
-    paramViewGroup = (TextView)paramView.findViewById(2131297513);
-    if (paramViewGroup != null) {
-      paramViewGroup.setText((CharSequence)this.BmT.UT(paramInt));
-    }
-    paramView = (View)paramView;
-    AppMethodBeat.o(230810);
-    return paramView;
+    AppMethodBeat.i(264069);
+    paramInt = abJ(paramInt);
+    paramInt = this.Hho.abA(paramInt).ordinal();
+    AppMethodBeat.o(264069);
+    return paramInt;
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$BizMsgViewHolder;", "Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$ViewHolder;", "interpolator", "Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter;", "convertView", "Landroid/view/View;", "parent", "Landroid/view/ViewGroup;", "bizMsg", "Lcom/tencent/mm/protocal/protobuf/BizMessage;", "expandSet", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "position", "(Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter;Landroid/view/View;Landroid/view/ViewGroup;Lcom/tencent/mm/protocal/protobuf/BizMessage;Ljava/util/HashSet;I)V", "context", "Landroid/content/Context;", "isBizPayOpen", "", "()Z", "setBizPayOpen", "(Z)V", "view", "getView", "()Landroid/view/View;", "widget", "fillCommonSlot", "", "container", "detail", "Lcom/tencent/mm/protocal/protobuf/BizAppMsgDetailInfo;", "base", "Lcom/tencent/mm/protocal/protobuf/BizAppMsgBaseInfo;", "slotType", "Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotType;", "fillSingleText", "text", "Lcom/tencent/mm/protocal/protobuf/BizTextMsgInfo;", "Lcom/tencent/mm/protocal/protobuf/CommMsgBaseInfo;", "fillSlotTarget", "fillTopSlot", "commBase", "getPlayId", "", "isPlaying", "playId", "firstNotEmpty", "", "([Ljava/lang/String;)Ljava/lang/String;", "app_release"})
-  static final class a
-    extends a.h
-  {
-    private boolean Bky;
-    private HashSet<Integer> Bkz;
-    a BmW;
-    Context context;
-    final View view;
-    
-    public a(a parama, View paramView, ViewGroup paramViewGroup, ou paramou, HashSet<Integer> paramHashSet, int paramInt)
-    {
-      AppMethodBeat.i(230735);
-      this.Bky = true;
-      this.context = parama.context;
-      this.BmW = parama;
-      this.Bkz = paramHashSet;
-      this.Bky = parama.Bky;
-      if (paramView != null) {
-        paramHashSet = paramView.getTag();
-      }
-      Object localObject2;
-      Object localObject1;
-      int i;
-      while (p.j(paramHashSet, paramou))
-      {
-        localObject2 = paramou.KVv;
-        paramHashSet = this;
-        localObject1 = paramView;
-        if (localObject2 != null)
-        {
-          localObject2 = ((ni)localObject2).KSK;
-          paramHashSet = this;
-          localObject1 = paramView;
-          if (localObject2 != null)
-          {
-            i = 0;
-            paramHashSet = ((Iterable)localObject2).iterator();
-            for (;;)
-            {
-              if (paramHashSet.hasNext())
-              {
-                localObject1 = (nh)paramHashSet.next();
-                p.g(localObject1, "detail");
-                if (p.j(a((nh)localObject1), a.a(parama)))
-                {
-                  a.a(parama, "none");
-                  i = 1;
-                  continue;
-                  paramHashSet = null;
-                  break;
-                }
-              }
-            }
-            if (i == 1) {
-              break;
-            }
-            localObject1 = paramView;
-            paramHashSet = this;
-          }
-        }
-        paramHashSet.view = ((View)localObject1);
-        AppMethodBeat.o(230735);
-        return;
-      }
-      parama = LayoutInflater.from(this.context).inflate(2131493728, paramViewGroup, false);
-      if (parama == null)
-      {
-        parama = new t("null cannot be cast to non-null type android.view.ViewGroup");
-        AppMethodBeat.o(230735);
-        throw parama;
-      }
-      paramView = (ViewGroup)parama;
-      paramView.setTag(this);
-      switch (paramou.KVq.xKb)
-      {
-      }
-      int j;
-      label613:
-      label760:
-      do
-      {
-        do
-        {
-          for (;;)
-          {
-            localObject1 = (View)paramView;
-            paramHashSet = this;
-            break;
-            parama = paramou.KVr;
-            p.g(parama, "bizMsg.Text");
-            paramou = paramou.KVq;
-            p.g(paramou, "bizMsg.BaseInfo");
-            paramViewGroup = new a.f(10, a.d.Bnd, paramView);
-            paramInt = paramou.Brl;
-            paramou = this.Bkz;
-            parama = parama.iAc;
-            p.g(parama, "text.Content");
-            paramViewGroup.a(paramInt, paramou, parama);
-          }
-          j = paramou.KVv.KSK.size();
-          if (j <= 1) {
-            break label962;
-          }
-          parama = a.d.Bna;
-          if (paramou.KVv.KSJ.KSg == 0) {
-            break label1331;
-          }
-          paramViewGroup = paramou.KVv.KSK.get(0);
-          p.g(paramViewGroup, "bizMsg.AppMsg.DetailInfo[0]");
-          paramViewGroup = (nh)paramViewGroup;
-          paramHashSet = paramou.KVv.KSJ;
-          p.g(paramHashSet, "bizMsg.AppMsg.BaseInfo");
-          localObject2 = paramou.KVq;
-          p.g(localObject2, "bizMsg.BaseInfo");
-          localObject1 = a.BmV;
-          Log.v(a.access$getTAG$cp(), "fillTopSlot:" + paramViewGroup.KSj);
-          localObject1 = new a.f(paramViewGroup.iAb, parama, paramView);
-          if ((paramViewGroup.iAb != 8) && (paramViewGroup.iAb != 10))
-          {
-            ((a.f)localObject1).BkR = paramViewGroup.KSF;
-            ((a.f)localObject1).url = paramViewGroup.KSj;
-            String str = paramViewGroup.Title;
-            p.g(str, "detail.Title");
-            ((a.f)localObject1).setTitle(str);
-          }
-          if (parama == a.d.Bnd)
-          {
-            parama = (CharSequence)paramViewGroup.KSh;
-            if ((parama != null) && (!kotlin.n.n.aL(parama))) {
-              break label969;
-            }
-            i = 1;
-            if (i == 0) {
-              ((MMNeat7extView)((a.f)localObject1).Blx.getValue()).aw((CharSequence)paramViewGroup.KSh);
-            }
-          }
-          parama = (CharSequence)paramViewGroup.KSy;
-          if ((parama != null) && (!kotlin.n.n.aL(parama))) {
-            break label975;
-          }
-          i = 1;
-          if (i == 0)
-          {
-            parama = ((a.f)localObject1).eFn();
-            p.g(parama, "view.showDescTv");
-            parama.setText((CharSequence)paramViewGroup.KSy);
-          }
-          parama = ((a.f)localObject1).eFn();
-          if (parama != null)
-          {
-            if ((((a.f)localObject1).BkR != 1) || (this.Bky)) {
-              break label981;
-            }
-            i = 4;
-            parama.setVisibility(i);
-          }
-          switch (paramViewGroup.iAb)
-          {
-          case 6: 
-          default: 
-            switch (paramViewGroup.iAb)
-            {
-            case 8: 
-            case 9: 
-            default: 
-              switch (paramViewGroup.iAb)
-              {
-              default: 
-                parama = new String[2];
-                parama[0] = paramViewGroup.KSl;
-                parama[1] = paramViewGroup.KSn;
-                ((a.f)localObject1).setImageUrl(L(parama));
-                a((View)((a.f)localObject1).eFo(), paramViewGroup, paramHashSet, paramInt);
-              }
-              break;
-            }
-            break;
-          }
-        } while (j <= 1);
-        i = 1;
-      } while (i >= j);
-      label663:
-      label721:
-      label869:
-      label878:
-      parama = paramou.KVv.KSK.get(i);
-      label843:
-      p.g(parama, "bizMsg.AppMsg.DetailInfo[i]");
-      paramViewGroup = (nh)parama;
-      paramHashSet = paramou.KVv.KSJ;
-      p.g(paramHashSet, "bizMsg.AppMsg.BaseInfo");
-      if (i == j - 1) {}
-      for (parama = a.d.Bnc;; parama = a.d.Bnb)
-      {
-        a(paramView, paramViewGroup, paramHashSet, parama, paramInt);
-        i += 1;
-        break label878;
-        label962:
-        parama = a.d.Bnd;
-        break;
-        label969:
-        i = 0;
-        break label613;
-        label975:
-        i = 0;
-        break label663;
-        label981:
-        i = 0;
-        break label721;
-        parama = (TextView)((a.f)localObject1).Bls.getValue();
-        p.g(parama, "view.videoDurationTv");
-        parama.setText((CharSequence)com.tencent.mm.ag.m.rJ(paramViewGroup.KSx));
-        break label760;
-        parama = (TextView)((a.f)localObject1).Blt.getValue();
-        p.g(parama, "view.voiceDurationTv");
-        parama.setText((CharSequence)com.tencent.mm.ag.m.rJ(paramViewGroup.KSs));
-        break label760;
-        if (paramViewGroup.zbj <= 1) {
-          break label760;
-        }
-        parama = (TextView)((a.f)localObject1).BkO.getValue();
-        p.g(parama, "view.picCntTv");
-        parama.setText((CharSequence)String.valueOf(paramViewGroup.zbj));
-        break label760;
-        parama = (CharSequence)paramViewGroup.KSh;
-        label1131:
-        boolean bool;
-        if ((parama == null) || (kotlin.n.n.aL(parama)))
-        {
-          i = 1;
-          if (i != 0) {
-            break label1176;
-          }
-          bool = true;
-          label1139:
-          if (bool) {
-            break label1182;
-          }
-          ((a.f)localObject1).eFw().setPadding(0, 0, 0, ((a.e)localObject1).Bla);
-        }
-        for (;;)
-        {
-          ((a.f)localObject1).Blz = bool;
-          break;
-          i = 0;
-          break label1131;
-          label1176:
-          bool = false;
-          break label1139;
-          label1182:
-          ((a.f)localObject1).eFw().setPadding(((a.e)localObject1).Bld, ((a.e)localObject1).Blc, ((a.e)localObject1).Bld, ((a.e)localObject1).Bla);
-        }
-        i = ((acb)localObject2).Brl;
-        parama = this.Bkz;
-        localObject2 = paramViewGroup.Title;
-        p.g(localObject2, "detail.Title");
-        ((a.f)localObject1).a(i, parama, (String)localObject2);
-        parama = (CharSequence)paramViewGroup.KSy;
-        if ((parama == null) || (kotlin.n.n.aL(parama))) {}
-        for (i = 1; i == 0; i = 0)
-        {
-          parama = ((a.f)localObject1).eFn();
-          p.g(parama, "view.showDescTv");
-          parama.setText((CharSequence)paramViewGroup.KSy);
-          break;
-        }
-        parama = new String[2];
-        parama[0] = paramViewGroup.KSn;
-        parama[1] = paramViewGroup.KSl;
-        break label843;
-        label1331:
-        paramViewGroup = paramou.KVv.KSK.get(0);
-        p.g(paramViewGroup, "bizMsg.AppMsg.DetailInfo[0]");
-        paramViewGroup = (nh)paramViewGroup;
-        paramHashSet = paramou.KVv.KSJ;
-        p.g(paramHashSet, "bizMsg.AppMsg.BaseInfo");
-        a(paramView, paramViewGroup, paramHashSet, parama, paramInt);
-        break label869;
-      }
-    }
-    
-    private static String L(String[] paramArrayOfString)
-    {
-      AppMethodBeat.i(230730);
-      int i = 0;
-      Object localObject;
-      int j;
-      if (i < 2)
-      {
-        localObject = paramArrayOfString[i];
-        CharSequence localCharSequence = (CharSequence)localObject;
-        if ((localCharSequence == null) || (kotlin.n.n.aL(localCharSequence)))
-        {
-          j = 1;
-          label38:
-          if (j != 0) {
-            break label73;
-          }
-          j = 1;
-          label44:
-          if (j == 0) {
-            break label78;
-          }
-        }
-      }
-      for (paramArrayOfString = (String[])localObject;; paramArrayOfString = null)
-      {
-        localObject = paramArrayOfString;
-        if (paramArrayOfString == null) {
-          localObject = "";
-        }
-        AppMethodBeat.o(230730);
-        return localObject;
-        j = 0;
-        break label38;
-        label73:
-        j = 0;
-        break label44;
-        label78:
-        i += 1;
-        break;
-      }
-    }
-    
-    private static String a(nh paramnh)
-    {
-      AppMethodBeat.i(230733);
-      paramnh = paramnh.KSj;
-      p.g(paramnh, "detail.ContentUrl");
-      paramnh = com.tencent.mm.plugin.brandservice.ui.timeline.preload.c.ahX(paramnh);
-      AppMethodBeat.o(230733);
-      return paramnh;
-    }
-    
-    private final void a(final View paramView, final nh paramnh, final ng paramng, final int paramInt)
-    {
-      AppMethodBeat.i(230734);
-      ImageView localImageView;
-      b localb;
-      c localc;
-      final String str;
-      if (paramnh.iAb == 7)
-      {
-        localImageView = (ImageView)paramView.findViewById(2131297530);
-        if (localImageView != null)
-        {
-          localb = new b(localImageView);
-          localc = new c(localImageView);
-          str = a(paramnh);
-          if (!gO(str)) {
-            break label121;
-          }
-          localb.invoke();
-        }
-      }
-      for (;;)
-      {
-        localImageView.setOnClickListener((View.OnClickListener)new a(localb, str, this, paramnh));
-        paramView.setOnClickListener((View.OnClickListener)new d(this, paramnh, paramng, paramView, paramInt));
-        AppMethodBeat.o(230734);
-        return;
-        label121:
-        localc.invoke();
-      }
-    }
-    
-    private final void a(ViewGroup paramViewGroup, nh paramnh, ng paramng, a.d paramd, int paramInt)
-    {
-      AppMethodBeat.i(230731);
-      a.c localc = a.BmV;
-      Log.v(a.access$getTAG$cp(), "fillCommonSlot:" + paramnh.KSj);
-      paramd = new a.b(paramnh.iAb, paramd, paramViewGroup);
-      paramd.BkR = paramnh.KSF;
-      paramd.url = paramnh.KSj;
-      paramViewGroup = paramnh.Title;
-      p.g(paramViewGroup, "detail.Title");
-      paramd.setTitle(paramViewGroup);
-      paramViewGroup = (CharSequence)paramnh.KSy;
-      int i;
-      if ((paramViewGroup == null) || (kotlin.n.n.aL(paramViewGroup)))
-      {
-        i = 1;
-        if (i == 0)
-        {
-          paramViewGroup = paramd.eFn();
-          p.g(paramViewGroup, "view.showDescTv");
-          paramViewGroup.setText((CharSequence)paramnh.KSy);
-        }
-        paramViewGroup = paramd.eFn();
-        if (paramViewGroup != null)
-        {
-          if ((paramd.BkR != 1) || (this.Bky)) {
-            break label305;
-          }
-          i = 4;
-          label169:
-          paramViewGroup.setVisibility(i);
-        }
-        if ((paramnh.iAb == 8) && (paramnh.zbj > 1))
-        {
-          paramViewGroup = (TextView)paramd.BkO.getValue();
-          p.g(paramViewGroup, "view.picCntTv");
-          paramViewGroup.setText((CharSequence)String.valueOf(paramnh.zbj));
-        }
-        switch (paramnh.iAb)
-        {
-        default: 
-          paramViewGroup = new String[2];
-          paramViewGroup[0] = paramnh.KSm;
-          paramViewGroup[1] = paramnh.KSl;
-        }
-      }
-      for (;;)
-      {
-        paramd.setImageUrl(L(paramViewGroup));
-        a((View)paramd.eFo(), paramnh, paramng, paramInt);
-        AppMethodBeat.o(230731);
-        return;
-        i = 0;
-        break;
-        label305:
-        i = 0;
-        break label169;
-        paramViewGroup = new String[2];
-        paramViewGroup[0] = paramnh.KSl;
-        paramViewGroup[1] = paramnh.KSm;
-      }
-    }
-    
-    private static boolean gO(String paramString)
-    {
-      AppMethodBeat.i(230732);
-      com.tencent.mm.ay.f localf = com.tencent.mm.ay.a.bef();
-      if (localf != null)
-      {
-        if ((p.j(localf.jeV, paramString)) && (localf.jeT == 0) && (com.tencent.mm.ay.a.bec()))
-        {
-          AppMethodBeat.o(230732);
-          return true;
-        }
-        AppMethodBeat.o(230732);
-        return false;
-      }
-      AppMethodBeat.o(230732);
-      return false;
-    }
-    
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$BizMsgViewHolder$fillSlotTarget$1$3"})
-    static final class a
-      implements View.OnClickListener
-    {
-      a(a.a.b paramb, String paramString, a.a parama, nh paramnh) {}
-      
-      public final void onClick(View paramView)
-      {
-        AppMethodBeat.i(230724);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$BizMsgViewHolder$fillSlotTarget$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-        this.BmX.invoke();
-        localObject = new e.g();
-        e.h localh = new e.h();
-        localh.JwO = str;
-        localh.url = paramnh.KSj;
-        localh.title = paramnh.Title;
-        localh.iAA = "";
-        localh.playUrl = paramnh.KSt;
-        localh.coverUrl = paramnh.KSl;
-        ((e.g)localObject).PJr = localh;
-        paramView.setTag(localObject);
-        com.tencent.mm.ui.chatting.s.gA(paramView);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$BizMsgViewHolder$fillSlotTarget$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(230724);
-      }
-    }
-    
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"drawPlaying", "", "invoke"})
-    static final class b
-      extends kotlin.g.b.q
-      implements kotlin.g.a.a<kotlin.x>
-    {
-      b(ImageView paramImageView)
-      {
-        super();
-      }
-      
-      public final void invoke()
-      {
-        AppMethodBeat.i(230726);
-        this.tqC.setImageResource(2131231332);
-        Object localObject = this.tqC.getDrawable();
-        if (localObject == null)
-        {
-          localObject = new t("null cannot be cast to non-null type android.graphics.drawable.AnimationDrawable");
-          AppMethodBeat.o(230726);
-          throw ((Throwable)localObject);
-        }
-        localObject = (AnimationDrawable)localObject;
-        if (localObject != null)
-        {
-          ((AnimationDrawable)localObject).start();
-          AppMethodBeat.o(230726);
-          return;
-        }
-        AppMethodBeat.o(230726);
-      }
-    }
-    
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"drawPlay", "", "invoke"})
-    static final class c
-      extends kotlin.g.b.q
-      implements kotlin.g.a.a<kotlin.x>
-    {
-      c(ImageView paramImageView)
-      {
-        super();
-      }
-      
-      public final void invoke()
-      {
-        AppMethodBeat.i(230728);
-        this.tqC.setImageResource(2131231331);
-        AppMethodBeat.o(230728);
-      }
-    }
-    
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-    static final class d
-      implements View.OnClickListener
-    {
-      d(a.a parama, nh paramnh, ng paramng, View paramView, int paramInt) {}
-      
-      public final void onClick(View paramView)
-      {
-        AppMethodBeat.i(230729);
-        Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject1).bm(paramView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$BizMsgViewHolder$fillSlotTarget$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).axR());
-        paramView = a.BmV;
-        Log.i(a.access$getTAG$cp(), "onClick jump to url:%s", new Object[] { paramnh.KSj });
-        paramView = new Intent();
-        localObject1 = com.tencent.mm.ag.m.d(paramnh.KSj, 126, -1, 0);
-        paramView.putExtra("rawUrl", (String)localObject1);
-        paramView.putExtra("useJs", true);
-        paramView.putExtra("vertical_scroll", true);
-        paramView.putExtra("geta8key_scene", 3);
-        paramView.putExtra("geta8key_username", this.BmY.BmW.contact.getUsername());
-        Object localObject2 = paramView.getStringExtra("prePublishId");
-        if (!Util.isNullOrNil((String)localObject2))
-        {
-          paramView.putExtra("KPublisherId", (String)localObject2);
-          paramView.putExtra("prePublishId", (String)localObject2);
-          paramView.putExtra("preUsername", paramView.getStringExtra("preUsername"));
-          paramView.putExtra("preChatName", paramView.getStringExtra("preChatName"));
-          paramView.putExtra("preChatTYPE", paramView.getIntExtra("preChatTYPE", 0));
-          int i = paramView.getIntExtra("KOpenArticleSceneFromScene", 10000);
-          if (paramnh.iAb == 5)
-          {
-            localObject2 = com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.brandservice.a.b.class);
-            p.g(localObject2, "MMKernel.service(IBrandService::class.java)");
-            if (((com.tencent.mm.plugin.brandservice.a.b)localObject2).cld())
-            {
-              paramView.putExtra(e.b.OyQ, 126);
-              paramView.putExtra(e.b.OyR, i);
-              paramView.putExtra("biz_video_session_id", ab.getSessionId());
-              localObject2 = new com.tencent.mm.ag.x();
-              ((com.tencent.mm.ag.x)localObject2).iAh = paramView.getStringExtra("KPublisherId");
-              ((com.tencent.mm.ag.x)localObject2).dHc = this.BmY.BmW.contact.getUsername();
-              ((com.tencent.mm.ag.x)localObject2).iAg = this.BmY.BmW.contact.arI();
-              ((com.tencent.mm.ag.x)localObject2).iAi.url = ((String)localObject1);
-              ((com.tencent.mm.ag.x)localObject2).iAi.title = paramnh.Title;
-              ((com.tencent.mm.ag.x)localObject2).iAi.iAq = "detail.videoDigest";
-              ((com.tencent.mm.ag.x)localObject2).iAi.iAo = paramnh.KSl;
-              ((com.tencent.mm.ag.x)localObject2).iAi.type = paramnh.iAb;
-              ((com.tencent.mm.ag.x)localObject2).iAi.time = paramng.CreateTime;
-              ((com.tencent.mm.ag.x)localObject2).iAi.iAs = paramnh.KSx;
-              ((com.tencent.mm.ag.x)localObject2).iAi.videoWidth = paramnh.KSv;
-              ((com.tencent.mm.ag.x)localObject2).iAi.videoHeight = paramnh.KSw;
-              ((com.tencent.mm.ag.x)localObject2).iAi.vid = paramnh.KSu;
-              ((com.tencent.mm.ag.x)localObject2).t(paramView);
-              localObject2 = a.BmV;
-              Log.i(a.access$getTAG$cp(), "jump to native video");
-              localObject2 = new int[2];
-              ImageView localImageView = (ImageView)paramView.findViewById(2131297515);
-              if (localImageView != null)
-              {
-                int j = localImageView.getWidth();
-                int k = localImageView.getHeight();
-                localImageView.getLocationInWindow((int[])localObject2);
-                paramView.putExtra("img_gallery_width", j).putExtra("img_gallery_height", k).putExtra("img_gallery_left", localObject2[0]).putExtra("img_gallery_top", localObject2[1]);
-              }
-              paramView.addFlags(268435456);
-            }
-          }
-          if ((!((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.brandservice.a.b.class)).CR(6)) || (!((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.brandservice.a.b.class)).a(this.BmY.context, (String)localObject1, paramnh.iAb, 126, i, paramView))) {
-            break label787;
-          }
-          paramView = a.BmV;
-          Log.i(a.access$getTAG$cp(), "jump to TmplWebview");
-        }
-        for (;;)
-        {
-          paramView = com.tencent.mm.plugin.profile.ui.newbizinfo.c.d.BlR;
-          paramView = this.BmY.BmW.contact.getUsername();
-          p.g(paramView, "widget.contact.username");
-          com.tencent.mm.plugin.profile.ui.newbizinfo.c.d.b(paramView, this.BmY.BmW.enterTime, paramng.KSf, paramnh.KSi, paramnh.iAb, paramInt, paramng.CreateTime, this.BmY.BmW.kgm);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$BizMsgViewHolder$fillSlotTarget$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(230729);
-          return;
-          paramView.putExtra("prePublishId", "brand_profile");
-          paramView.putExtra("KPublisherId", "brand_profile");
-          break;
-          label787:
-          com.tencent.mm.br.c.b(this.BmY.context, "webview", ".ui.tools.WebViewUI", paramView);
-        }
-      }
-    }
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$CommonSlotViewModel;", "Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotViewModel;", "itemShowType", "", "slotType", "Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotType;", "container", "Landroid/view/ViewGroup;", "(ILcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotType;Landroid/view/ViewGroup;)V", "imageDefaultRes", "getImageDefaultRes", "()I", "imageRadiusPxArray", "", "getImageRadiusPxArray", "()[F", "isPayMsg", "setPayMsg", "(I)V", "picCntTv", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "getPicCntTv", "()Landroid/widget/TextView;", "picCntTv$delegate", "Lkotlin/Lazy;", "picInfo", "Landroid/support/constraint/ConstraintLayout;", "getPicInfo", "()Landroid/support/constraint/ConstraintLayout;", "picInfo$delegate", "showDescTv", "getShowDescTv", "showDescTv$delegate", "value", "", "title", "getTitle", "()Ljava/lang/String;", "setTitle", "(Ljava/lang/String;)V", "titleTv", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "getTitleTv", "()Lcom/tencent/mm/ui/widget/MMNeat7extView;", "titleTv$delegate", "url", "getUrl", "setUrl", "weakPicInfo", "Ljava/lang/ref/WeakReference;", "getWeakPicInfo", "()Ljava/lang/ref/WeakReference;", "fillBackground", "", "Landroid/view/View;", "selector", "", "inflate", "context", "Landroid/content/Context;", "onImageLoadFinish", "app_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$CommonSlotViewModel;", "Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotViewModel;", "itemShowType", "", "slotType", "Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotType;", "container", "Landroid/view/ViewGroup;", "(ILcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotType;Landroid/view/ViewGroup;)V", "imageDefaultRes", "getImageDefaultRes", "()I", "imageRadiusPxArray", "", "getImageRadiusPxArray", "()[F", "isPayMsg", "setPayMsg", "(I)V", "picCntTv", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "getPicCntTv", "()Landroid/widget/TextView;", "picCntTv$delegate", "Lkotlin/Lazy;", "picInfo", "Landroidx/constraintlayout/widget/ConstraintLayout;", "getPicInfo", "()Landroidx/constraintlayout/widget/ConstraintLayout;", "picInfo$delegate", "showDescTv", "getShowDescTv", "showDescTv$delegate", "value", "", "title", "getTitle", "()Ljava/lang/String;", "setTitle", "(Ljava/lang/String;)V", "titleTv", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "getTitleTv", "()Lcom/tencent/mm/ui/widget/MMNeat7extView;", "titleTv$delegate", "url", "getUrl", "setUrl", "weakPicInfo", "Ljava/lang/ref/WeakReference;", "getWeakPicInfo", "()Ljava/lang/ref/WeakReference;", "fillBackground", "", "Landroid/view/View;", "selector", "", "inflate", "context", "Landroid/content/Context;", "onImageLoadFinish", "app_release"})
   static final class b
-    extends a.e
+    extends a.f
   {
-    private final int BkL;
-    private final kotlin.f BkM;
-    private final WeakReference<ConstraintLayout> BkN;
-    final kotlin.f BkO;
-    private final kotlin.f BkP;
-    private final kotlin.f BkQ;
-    int BkR;
+    private final kotlin.f DHR;
+    private final int HeY;
+    private final kotlin.f HeZ;
+    private final WeakReference<ConstraintLayout> Hfa;
+    private final kotlin.f Hfb;
+    private final kotlin.f Hfc;
+    int Hfd;
     private String title;
     String url;
     
-    public b(int paramInt, a.d paramd, ViewGroup paramViewGroup)
+    public b(int paramInt, a.e parame, ViewGroup paramViewGroup)
     {
-      super(paramd, paramViewGroup);
-      AppMethodBeat.i(230747);
-      this.BkL = 2131234473;
-      this.BkM = kotlin.g.ah((kotlin.g.a.a)new b(this));
-      this.BkN = new WeakReference((ConstraintLayout)this.BkM.getValue());
-      this.BkO = kotlin.g.ah((kotlin.g.a.a)new a(this));
-      this.BkP = kotlin.g.ah((kotlin.g.a.a)new c(this));
-      this.BkQ = kotlin.g.ah((kotlin.g.a.a)new d(this));
+      super(parame, paramViewGroup);
+      AppMethodBeat.i(273478);
+      this.HeY = R.g.don;
+      this.HeZ = g.ar((kotlin.g.a.a)new b(this));
+      this.Hfa = new WeakReference((ConstraintLayout)this.HeZ.getValue());
+      this.Hfb = g.ar((kotlin.g.a.a)new a(this));
+      this.Hfc = g.ar((kotlin.g.a.a)new c(this));
+      this.DHR = g.ar((kotlin.g.a.a)new d(this));
       this.url = "";
       this.title = "";
-      AppMethodBeat.o(230747);
+      AppMethodBeat.o(273478);
     }
     
-    protected final void a(View paramView, a.d paramd, boolean paramBoolean)
+    protected final void a(View paramView, a.e parame, boolean paramBoolean)
     {
-      AppMethodBeat.i(230742);
-      p.h(paramView, "container");
-      p.h(paramd, "slotType");
-      switch (b.$EnumSwitchMapping$0[paramd.ordinal()])
+      AppMethodBeat.i(273471);
+      p.k(paramView, "container");
+      p.k(parame, "slotType");
+      switch (b.$EnumSwitchMapping$0[parame.ordinal()])
       {
       default: 
-        localObject = paramView.findViewById(2131297533);
-        p.g(localObject, "container.findViewById<F…id.biz_slot_voice_layout)");
+        localObject = paramView.findViewById(R.h.dum);
+        p.j(localObject, "container.findViewById<F…id.biz_slot_voice_layout)");
         ((FrameLayout)localObject).setVisibility(8);
-        switch (this.iwc)
+        switch (getItemShowType())
         {
         case 6: 
         case 9: 
         default: 
-          localObject = paramView.findViewById(2131297515);
-          p.g(localObject, "container.findViewById<I…iew>(R.id.biz_slot_image)");
+          localObject = paramView.findViewById(R.h.dtY);
+          p.j(localObject, "container.findViewById<I…iew>(R.id.biz_slot_image)");
           ((ImageView)localObject).setVisibility(0);
         }
         break;
       }
       for (;;)
       {
-        super.a(paramView, paramd, paramBoolean);
-        AppMethodBeat.o(230742);
+        super.a(paramView, parame, paramBoolean);
+        AppMethodBeat.o(273471);
         return;
-        localObject = paramView.findViewById(2131297510);
-        p.g(localObject, "container.findViewById<V…d.biz_slot_common_line_v)");
+        localObject = paramView.findViewById(R.h.dtV);
+        p.j(localObject, "container.findViewById<V…d.biz_slot_common_line_v)");
         ((View)localObject).setVisibility(0);
         break;
-        localObject = paramView.findViewById(2131297515);
-        p.g(localObject, "container.findViewById<I…iew>(R.id.biz_slot_image)");
+        localObject = paramView.findViewById(R.h.dtY);
+        p.j(localObject, "container.findViewById<I…iew>(R.id.biz_slot_image)");
         ((ImageView)localObject).setVisibility(0);
-        localObject = paramView.findViewById(2131297529);
-        p.g(localObject, "container.findViewById<I….biz_slot_video_play_img)");
+        localObject = paramView.findViewById(R.h.duj);
+        p.j(localObject, "container.findViewById<I….biz_slot_video_play_img)");
         ((ImageView)localObject).setVisibility(0);
         continue;
-        localObject = paramView.findViewById(2131297515);
-        p.g(localObject, "container.findViewById<I…iew>(R.id.biz_slot_image)");
+        localObject = paramView.findViewById(R.h.dtY);
+        p.j(localObject, "container.findViewById<I…iew>(R.id.biz_slot_image)");
         ((ImageView)localObject).setVisibility(0);
-        localObject = paramView.findViewById(2131297506);
-        p.g(localObject, "container.findViewById<C…slot_common_content_desc)");
+        localObject = paramView.findViewById(R.h.dtU);
+        p.j(localObject, "container.findViewById<C…slot_common_content_desc)");
         ((ConstraintLayout)localObject).setVisibility(0);
         continue;
-        localObject = paramView.findViewById(2131297533);
-        p.g(localObject, "container.findViewById<F…id.biz_slot_voice_layout)");
+        localObject = paramView.findViewById(R.h.dum);
+        p.j(localObject, "container.findViewById<F…id.biz_slot_voice_layout)");
         ((FrameLayout)localObject).setVisibility(0);
       }
-      MMNeat7extView localMMNeat7extView = (MMNeat7extView)paramView.findViewById(2131297524);
-      p.g(localMMNeat7extView, "tv");
+      MMNeat7extView localMMNeat7extView = (MMNeat7extView)paramView.findViewById(R.h.duf);
+      p.j(localMMNeat7extView, "tv");
       if ((localMMNeat7extView.getLayoutParams() instanceof ConstraintLayout.LayoutParams))
       {
         localObject = localMMNeat7extView.getLayoutParams();
         if (localObject == null)
         {
-          paramView = new t("null cannot be cast to non-null type android.support.constraint.ConstraintLayout.LayoutParams");
-          AppMethodBeat.o(230742);
+          paramView = new t("null cannot be cast to non-null type androidx.constraintlayout.widget.ConstraintLayout.LayoutParams");
+          AppMethodBeat.o(273471);
           throw paramView;
         }
       }
@@ -930,8 +365,8 @@ public final class a
           ((ViewGroup.MarginLayoutParams)localObject).setMarginEnd(0);
           localMMNeat7extView.setLayoutParams((ViewGroup.LayoutParams)localObject);
         }
-        localObject = paramView.findViewById(2131297515);
-        p.g(localObject, "container.findViewById<I…iew>(R.id.biz_slot_image)");
+        localObject = paramView.findViewById(R.h.dtY);
+        p.j(localObject, "container.findViewById<I…iew>(R.id.biz_slot_image)");
         ((ImageView)localObject).setVisibility(8);
         break;
         ViewGroup.LayoutParams localLayoutParams = localMMNeat7extView.getLayoutParams();
@@ -944,72 +379,80 @@ public final class a
     
     protected final ViewGroup c(Context paramContext, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(230741);
-      p.h(paramContext, "context");
-      p.h(paramViewGroup, "container");
-      paramContext = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131493729, paramViewGroup, false);
+      AppMethodBeat.i(273470);
+      p.k(paramContext, "context");
+      p.k(paramViewGroup, "container");
+      paramContext = LayoutInflater.from(paramViewGroup.getContext()).inflate(R.i.eeY, paramViewGroup, false);
       if (paramContext == null)
       {
         paramContext = new t("null cannot be cast to non-null type android.view.ViewGroup");
-        AppMethodBeat.o(230741);
+        AppMethodBeat.o(273470);
         throw paramContext;
       }
       paramContext = (ViewGroup)paramContext;
       paramViewGroup.addView((View)paramContext);
-      AppMethodBeat.o(230741);
+      AppMethodBeat.o(273470);
       return paramContext;
     }
     
-    protected final void eFk()
+    public final TextView frL()
     {
-      AppMethodBeat.i(230743);
-      if (this.BkN == null)
-      {
-        AppMethodBeat.o(230743);
-        return;
-      }
-      ConstraintLayout localConstraintLayout = (ConstraintLayout)this.BkN.get();
-      if (localConstraintLayout != null)
-      {
-        localConstraintLayout.setBackgroundResource(2131231265);
-        AppMethodBeat.o(230743);
-        return;
-      }
-      AppMethodBeat.o(230743);
+      AppMethodBeat.i(273474);
+      TextView localTextView = (TextView)this.Hfb.getValue();
+      AppMethodBeat.o(273474);
+      return localTextView;
     }
     
-    protected final float[] eFl()
+    protected final void frb()
     {
-      AppMethodBeat.i(230744);
-      float[] arrayOfFloat = kotlin.a.e.b(new Float[] { Float.valueOf(bJ(1.0F)), Float.valueOf(bJ(1.0F)), Float.valueOf(bJ(1.0F)), Float.valueOf(bJ(1.0F)) });
-      AppMethodBeat.o(230744);
+      AppMethodBeat.i(273472);
+      if (this.Hfa == null)
+      {
+        AppMethodBeat.o(273472);
+        return;
+      }
+      ConstraintLayout localConstraintLayout = (ConstraintLayout)this.Hfa.get();
+      if (localConstraintLayout != null)
+      {
+        localConstraintLayout.setBackgroundResource(R.g.biz_msg_cover_gradient_mask);
+        AppMethodBeat.o(273472);
+        return;
+      }
+      AppMethodBeat.o(273472);
+    }
+    
+    protected final float[] frc()
+    {
+      AppMethodBeat.i(273473);
+      float[] arrayOfFloat = kotlin.a.e.b(new Float[] { Float.valueOf(bP(1.0F)), Float.valueOf(bP(1.0F)), Float.valueOf(bP(1.0F)), Float.valueOf(bP(1.0F)) });
+      AppMethodBeat.o(273473);
       return arrayOfFloat;
     }
     
-    protected final int eFm()
+    protected final int frd()
     {
-      return this.BkL;
+      return this.HeY;
     }
     
-    public final TextView eFn()
+    public final TextView fre()
     {
-      AppMethodBeat.i(230745);
-      TextView localTextView = (TextView)this.BkP.getValue();
-      AppMethodBeat.o(230745);
+      AppMethodBeat.i(273475);
+      TextView localTextView = (TextView)this.Hfc.getValue();
+      AppMethodBeat.o(273475);
       return localTextView;
     }
     
     public final void setTitle(String paramString)
     {
-      AppMethodBeat.i(230746);
-      p.h(paramString, "value");
-      MMNeat7extView localMMNeat7extView = (MMNeat7extView)this.BkQ.getValue();
-      p.g(localMMNeat7extView, "titleTv");
-      a(localMMNeat7extView, paramString, this.BkR, this.url, 5);
-      AppMethodBeat.o(230746);
+      AppMethodBeat.i(273476);
+      p.k(paramString, "value");
+      MMNeat7extView localMMNeat7extView = (MMNeat7extView)this.DHR.getValue();
+      p.j(localMMNeat7extView, "titleTv");
+      a(localMMNeat7extView, paramString, this.Hfd, this.url, 5);
+      AppMethodBeat.o(273476);
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
     static final class a
       extends kotlin.g.b.q
       implements kotlin.g.a.a<TextView>
@@ -1020,7 +463,7 @@ public final class a
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/support/constraint/ConstraintLayout;", "kotlin.jvm.PlatformType", "invoke"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroidx/constraintlayout/widget/ConstraintLayout;", "kotlin.jvm.PlatformType", "invoke"})
     static final class b
       extends kotlin.g.b.q
       implements kotlin.g.a.a<ConstraintLayout>
@@ -1031,7 +474,7 @@ public final class a
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
     static final class c
       extends kotlin.g.b.q
       implements kotlin.g.a.a<TextView>
@@ -1042,7 +485,7 @@ public final class a
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "kotlin.jvm.PlatformType", "invoke"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "kotlin.jvm.PlatformType", "invoke"})
     static final class d
       extends kotlin.g.b.q
       implements kotlin.g.a.a<MMNeat7extView>
@@ -1054,109 +497,113 @@ public final class a
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotType;", "", "(Ljava/lang/String;I)V", "TOP", "COMMON", "BOTTOM", "SINGLE", "app_release"})
-  static enum d
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotType;", "", "(Ljava/lang/String;I)V", "TOP", "COMMON", "BOTTOM", "SINGLE", "app_release"})
+  static enum e
   {
     static
     {
-      AppMethodBeat.i(230748);
-      d locald1 = new d("TOP", 0);
-      Bna = locald1;
-      d locald2 = new d("COMMON", 1);
-      Bnb = locald2;
-      d locald3 = new d("BOTTOM", 2);
-      Bnc = locald3;
-      d locald4 = new d("SINGLE", 3);
-      Bnd = locald4;
-      Bne = new d[] { locald1, locald2, locald3, locald4 };
-      AppMethodBeat.o(230748);
+      AppMethodBeat.i(278094);
+      e locale1 = new e("TOP", 0);
+      Hht = locale1;
+      e locale2 = new e("COMMON", 1);
+      Hhu = locale2;
+      e locale3 = new e("BOTTOM", 2);
+      Hhv = locale3;
+      e locale4 = new e("SINGLE", 3);
+      Hhw = locale4;
+      Hhx = new e[] { locale1, locale2, locale3, locale4 };
+      AppMethodBeat.o(278094);
     }
     
-    private d() {}
+    private e() {}
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotViewModel;", "", "itemShowType", "", "slotType", "Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotType;", "container", "Landroid/view/ViewGroup;", "(ILcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotType;Landroid/view/ViewGroup;)V", "audioPadding", "getAudioPadding", "()I", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "getContext", "()Landroid/content/Context;", "context$delegate", "Lkotlin/Lazy;", "imageDefaultRes", "getImageDefaultRes", "imageIv", "Landroid/widget/ImageView;", "getImageIv", "()Landroid/widget/ImageView;", "imageIv$delegate", "imageRadiusPxArray", "", "getImageRadiusPxArray", "()[F", "value", "", "imageUrl", "getImageUrl", "()Ljava/lang/String;", "setImageUrl", "(Ljava/lang/String;)V", "item", "getItem", "()Landroid/view/ViewGroup;", "item$delegate", "getItemShowType", "largePading", "getLargePading", "listPadding", "getListPadding", "normalPading", "getNormalPading", "getSlotType", "()Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotType;", "smallPadding", "getSmallPadding", "dpToPixel", "", "getDpToPixel", "(F)F", "resFromRaw", "getResFromRaw", "(I)F", "resToPixel", "getResToPixel", "(I)I", "fillBackground", "", "Landroid/view/View;", "selector", "", "inflate", "onImageLoadFinish", "onImageLoadStart", "setNeatText", "neatText", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "text", "isPayMsg", "url", "scene", "app_release"})
-  static class e
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotViewModel;", "", "itemShowType", "", "slotType", "Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotType;", "container", "Landroid/view/ViewGroup;", "(ILcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotType;Landroid/view/ViewGroup;)V", "audioPadding", "getAudioPadding", "()I", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "getContext", "()Landroid/content/Context;", "context$delegate", "Lkotlin/Lazy;", "imageDefaultRes", "getImageDefaultRes", "imageIv", "Landroid/widget/ImageView;", "getImageIv", "()Landroid/widget/ImageView;", "imageIv$delegate", "imageRadiusPxArray", "", "getImageRadiusPxArray", "()[F", "value", "", "imageUrl", "getImageUrl", "()Ljava/lang/String;", "setImageUrl", "(Ljava/lang/String;)V", "item", "getItem", "()Landroid/view/ViewGroup;", "item$delegate", "getItemShowType", "largePading", "getLargePading", "listPadding", "getListPadding", "normalPading", "getNormalPading", "getSlotType", "()Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotType;", "smallPadding", "getSmallPadding", "dpToPixel", "", "getDpToPixel", "(F)F", "resFromRaw", "getResFromRaw", "(I)F", "resToPixel", "getResToPixel", "(I)I", "fillBackground", "", "Landroid/view/View;", "selector", "", "inflate", "onImageLoadFinish", "onImageLoadStart", "setNeatText", "neatText", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "text", "isPayMsg", "url", "scene", "app_release"})
+  static class f
   {
-    private final int BkL;
-    private final kotlin.f BkY;
-    private final kotlin.f BkZ;
-    final int Bla;
-    private final int Blb;
-    final int Blc;
-    final int Bld;
-    private final int Ble;
-    private final float[] Blf;
-    final a.d Bnf;
+    private final int HeY;
+    private final kotlin.f Hfk;
+    private final kotlin.f Hfl;
+    private final int Hfm;
+    private final int Hfn;
+    private final int Hfo;
+    private final int Hfp;
+    private final int Hfq;
+    private final float[] Hfr;
+    final a.e Hhy;
     String imageUrl;
-    final int iwc;
-    private final kotlin.f tMy;
+    private final int llp;
+    private final kotlin.f xwp;
     
-    public e(int paramInt, a.d paramd, final ViewGroup paramViewGroup)
+    public f(int paramInt, a.e parame, final ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(230767);
-      this.iwc = paramInt;
-      this.Bnf = paramd;
-      this.BkY = kotlin.g.ah((kotlin.g.a.a)new e(this, paramViewGroup));
-      this.BkZ = kotlin.g.ah((kotlin.g.a.a)new b(this));
-      this.tMy = kotlin.g.ah((kotlin.g.a.a)new a(this));
-      this.Bla = ((int)bJ(36.0F));
-      this.Blb = MMApplicationContext.getResources().getDimensionPixelSize(2131165507);
-      this.Blc = MMApplicationContext.getResources().getDimensionPixelSize(2131165534);
-      this.Bld = MMApplicationContext.getResources().getDimensionPixelSize(2131165498);
-      this.Ble = MMApplicationContext.getResources().getDimensionPixelSize(2131165586);
-      this.Blf = kotlin.a.e.b(new Float[] { Float.valueOf(0.0F), Float.valueOf(0.0F), Float.valueOf(0.0F), Float.valueOf(0.0F) });
-      this.BkL = 2131100173;
+      AppMethodBeat.i(273804);
+      this.llp = paramInt;
+      this.Hhy = parame;
+      this.Hfk = g.ar((kotlin.g.a.a)new e(this, paramViewGroup));
+      this.Hfl = g.ar((kotlin.g.a.a)new b(this));
+      this.xwp = g.ar((kotlin.g.a.a)new a(this));
+      this.Hfm = ((int)bP(36.0F));
+      paramInt = R.f.ListPadding;
+      this.Hfn = MMApplicationContext.getResources().getDimensionPixelSize(paramInt);
+      paramInt = R.f.NormalPadding;
+      this.Hfo = MMApplicationContext.getResources().getDimensionPixelSize(paramInt);
+      paramInt = R.f.LargePadding;
+      this.Hfp = MMApplicationContext.getResources().getDimensionPixelSize(paramInt);
+      paramInt = R.f.SmallPadding;
+      this.Hfq = MMApplicationContext.getResources().getDimensionPixelSize(paramInt);
+      this.Hfr = kotlin.a.e.b(new Float[] { Float.valueOf(0.0F), Float.valueOf(0.0F), Float.valueOf(0.0F), Float.valueOf(0.0F) });
+      this.HeY = R.e.chatting_item_biz_default_bg;
       this.imageUrl = "";
-      AppMethodBeat.o(230767);
+      AppMethodBeat.o(273804);
     }
     
-    protected static float bJ(float paramFloat)
+    protected static float bP(float paramFloat)
     {
-      AppMethodBeat.i(230766);
+      AppMethodBeat.i(273801);
       Resources localResources = MMApplicationContext.getResources();
-      p.g(localResources, "MMApplicationContext.getResources()");
+      p.j(localResources, "MMApplicationContext.getResources()");
       float f = localResources.getDisplayMetrics().density;
-      AppMethodBeat.o(230766);
+      AppMethodBeat.o(273801);
       return f * paramFloat + 0.5F;
     }
     
-    protected void a(View paramView, a.d paramd, boolean paramBoolean)
+    protected void a(View paramView, a.e parame, boolean paramBoolean)
     {
-      AppMethodBeat.i(230762);
-      p.h(paramView, "container");
-      p.h(paramd, "slotType");
+      AppMethodBeat.i(273795);
+      p.k(paramView, "container");
+      p.k(parame, "slotType");
       int i;
-      switch (c.$EnumSwitchMapping$0[paramd.ordinal()])
+      switch (c.$EnumSwitchMapping$0[parame.ordinal()])
       {
       default: 
-        AppMethodBeat.o(230762);
+        AppMethodBeat.o(273795);
         return;
       case 1: 
-        paramView.setPadding(this.Bld, this.Ble, this.Bld, 0);
+        paramView.setPadding(this.Hfp, this.Hfq, this.Hfp, 0);
         if (paramBoolean) {}
-        for (i = 2131231292;; i = 2131231290)
+        for (i = R.g.dmu;; i = R.g.dmt)
         {
           paramView.setBackgroundResource(i);
-          AppMethodBeat.o(230762);
+          AppMethodBeat.o(273795);
           return;
         }
       case 2: 
-        paramView.setPadding(this.Bld, this.Ble, this.Bld, 0);
-        i = 2131231286;
+        paramView.setPadding(this.Hfp, this.Hfq, this.Hfp, 0);
+        i = R.g.dmq;
       }
       for (;;)
       {
         paramView.setBackgroundResource(i);
         break;
-        paramView.setPadding(this.Bld, this.Ble, this.Bld, this.Bld);
-        i = 2131231285;
+        paramView.setPadding(this.Hfp, this.Hfq, this.Hfp, this.Hfp);
+        i = R.g.dmp;
         continue;
-        paramView.setPadding(this.Bld, this.Ble, this.Bld, this.Ble);
+        paramView.setPadding(this.Hfp, this.Hfq, this.Hfp, this.Hfq);
         if (paramBoolean) {
-          i = 2131231289;
+          i = R.g.dms;
         } else {
-          i = 2131231287;
+          i = R.g.dmr;
         }
       }
     }
@@ -1164,18 +611,18 @@ public final class a
     protected final void a(MMNeat7extView paramMMNeat7extView, String paramString1, int paramInt1, String paramString2, int paramInt2)
     {
       boolean bool = true;
-      AppMethodBeat.i(230764);
-      p.h(paramMMNeat7extView, "neatText");
-      p.h(paramString1, "text");
+      AppMethodBeat.i(273797);
+      p.k(paramMMNeat7extView, "neatText");
+      p.k(paramString1, "text");
       paramString1 = com.tencent.mm.pluginsdk.ui.span.l.c(paramMMNeat7extView.getContext(), (CharSequence)paramString1);
-      if ((this.iwc == 0) && (paramInt1 == 1)) {}
+      if ((this.llp == 0) && (paramInt1 == 1)) {}
       for (;;)
       {
-        com.tencent.mm.plugin.brandservice.b.a locala = com.tencent.mm.plugin.brandservice.b.a.pmT;
-        p.g(paramString1, "text");
-        locala.a((CharSequence)paramString1, paramMMNeat7extView, bool, paramString2, paramInt2);
+        com.tencent.mm.plugin.brandservice.b.b localb = com.tencent.mm.plugin.brandservice.b.b.svR;
+        p.j(paramString1, "text");
+        localb.a((CharSequence)paramString1, paramMMNeat7extView, bool, paramString2, paramInt2);
         paramMMNeat7extView.setOnTouchListener((View.OnTouchListener)new com.tencent.mm.pluginsdk.ui.span.h((NeatTextView)paramMMNeat7extView, (View.OnTouchListener)new o(paramMMNeat7extView.getContext())));
-        AppMethodBeat.o(230764);
+        AppMethodBeat.o(273797);
         return;
         bool = false;
       }
@@ -1183,249 +630,312 @@ public final class a
     
     protected ViewGroup c(Context paramContext, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(230760);
-      p.h(paramContext, "context");
-      p.h(paramViewGroup, "container");
+      AppMethodBeat.i(273793);
+      p.k(paramContext, "context");
+      p.k(paramViewGroup, "container");
       paramContext = (Throwable)new kotlin.n();
-      AppMethodBeat.o(230760);
+      AppMethodBeat.o(273793);
       throw paramContext;
     }
     
-    protected void eFk() {}
+    protected void frb() {}
     
-    protected float[] eFl()
+    protected float[] frc()
     {
-      return this.Blf;
+      return this.Hfr;
     }
     
-    protected int eFm()
+    protected int frd()
     {
-      return this.BkL;
+      return this.HeY;
     }
     
-    public final ViewGroup eFo()
+    public final ViewGroup frf()
     {
-      AppMethodBeat.i(230758);
-      ViewGroup localViewGroup = (ViewGroup)this.BkY.getValue();
-      AppMethodBeat.o(230758);
+      AppMethodBeat.i(273791);
+      ViewGroup localViewGroup = (ViewGroup)this.Hfk.getValue();
+      AppMethodBeat.o(273791);
       return localViewGroup;
     }
     
-    final ImageView eFp()
+    final ImageView frg()
     {
-      AppMethodBeat.i(230759);
-      ImageView localImageView = (ImageView)this.BkZ.getValue();
-      AppMethodBeat.o(230759);
+      AppMethodBeat.i(273792);
+      ImageView localImageView = (ImageView)this.Hfl.getValue();
+      AppMethodBeat.o(273792);
       return localImageView;
     }
     
-    protected void eFq() {}
+    protected final int frh()
+    {
+      return this.Hfm;
+    }
+    
+    protected final int fri()
+    {
+      return this.Hfo;
+    }
+    
+    protected final int frj()
+    {
+      return this.Hfp;
+    }
+    
+    protected void frk() {}
     
     protected final Context getContext()
     {
-      AppMethodBeat.i(230761);
-      Context localContext = (Context)this.tMy.getValue();
-      AppMethodBeat.o(230761);
+      AppMethodBeat.i(273794);
+      Context localContext = (Context)this.xwp.getValue();
+      AppMethodBeat.o(273794);
       return localContext;
     }
     
-    public final void setImageUrl(final String paramString)
+    public final int getItemShowType()
     {
-      AppMethodBeat.i(230765);
-      p.h(paramString, "value");
-      if (kotlin.n.n.aL((CharSequence)paramString)) {}
-      for (int i = 1; i != 0; i = 0)
-      {
-        AppMethodBeat.o(230765);
-        return;
-      }
-      paramString = com.tencent.mm.api.b.u(paramString, 2);
-      p.g(paramString, "BizImageStrategy.getUrl(…rategy.SCENE_BIZ_PROFILE)");
-      this.imageUrl = paramString;
-      paramString = a.BmV;
-      Log.v(a.access$getTAG$cp(), "imageUrl:" + this.imageUrl);
-      paramString = eFl();
-      final String str = this.imageUrl;
-      Object localObject1 = new c.a().bdp();
-      Object localObject2 = new StringBuilder("radius_");
-      Object localObject3 = Arrays.toString(paramString);
-      p.g(localObject3, "java.util.Arrays.toString(this)");
-      localObject1 = ((c.a)localObject1).OU((String)localObject3).tz(eFm()).a((com.tencent.mm.av.a.c.c)new com.tencent.mm.pluginsdk.ui.applet.n(3)).a((com.tencent.mm.av.a.c.a)new com.tencent.mm.pluginsdk.ui.applet.e(3)).OS(com.tencent.mm.pluginsdk.model.s.bdu(this.imageUrl)).bdv();
-      localObject2 = new d(this);
-      localObject3 = new com.tencent.mm.pluginsdk.ui.applet.m(3, -1, -1, paramString, (m.a)localObject2);
-      ((com.tencent.mm.pluginsdk.ui.applet.m)localObject3).aG((Runnable)new c(this, str, (com.tencent.mm.av.a.a.c)localObject1, paramString, (d)localObject2));
-      com.tencent.mm.av.q.bcV().a(str, eFp(), (com.tencent.mm.av.a.a.c)localObject1, (com.tencent.mm.av.a.c.h)localObject3);
-      AppMethodBeat.o(230765);
+      return this.llp;
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "invoke"})
+    public final void setImageUrl(String paramString)
+    {
+      AppMethodBeat.i(273799);
+      p.k(paramString, "value");
+      if (kotlin.n.n.ba((CharSequence)paramString)) {}
+      for (int i = 1; i != 0; i = 0)
+      {
+        AppMethodBeat.o(273799);
+        return;
+      }
+      paramString = com.tencent.mm.api.b.M(paramString, 2);
+      p.j(paramString, "BizImageStrategy.getUrl(…rategy.SCENE_BIZ_PROFILE)");
+      this.imageUrl = paramString;
+      paramString = a.Hhq;
+      Log.v(a.access$getTAG$cp(), "imageUrl:" + this.imageUrl);
+      paramString = frc();
+      String str = this.imageUrl;
+      Object localObject1 = new c.a().bmF();
+      Object localObject2 = new StringBuilder("radius_");
+      Object localObject3 = Arrays.toString(paramString);
+      p.j(localObject3, "java.util.Arrays.toString(this)");
+      localObject1 = ((c.a)localObject1).Ws((String)localObject3).wz(frd()).a((com.tencent.mm.ay.a.c.c)new com.tencent.mm.pluginsdk.ui.applet.n(3)).a((com.tencent.mm.ay.a.c.a)new com.tencent.mm.pluginsdk.ui.applet.e(3)).Wq(w.bpO(this.imageUrl)).bmL();
+      localObject2 = new d(this);
+      localObject3 = new com.tencent.mm.pluginsdk.ui.applet.m(3, -1, -1, paramString, (m.a)localObject2);
+      ((com.tencent.mm.pluginsdk.ui.applet.m)localObject3).aM((Runnable)new a.f.c(this, str, (com.tencent.mm.ay.a.a.c)localObject1, paramString, (d)localObject2));
+      com.tencent.mm.ay.q.bml().a(str, frg(), (com.tencent.mm.ay.a.a.c)localObject1, (com.tencent.mm.ay.a.c.h)localObject3);
+      AppMethodBeat.o(273799);
+    }
+    
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "invoke"})
     static final class a
       extends kotlin.g.b.q
       implements kotlin.g.a.a<Context>
     {
-      a(a.e parame)
+      a(a.f paramf)
       {
         super();
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
     static final class b
       extends kotlin.g.b.q
       implements kotlin.g.a.a<ImageView>
     {
-      b(a.e parame)
+      b(a.f paramf)
       {
         super();
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run", "com/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotViewModel$imageUrl$imageLoaderListener$1$1"})
-    static final class c
-      implements Runnable
-    {
-      c(a.e parame, String paramString, com.tencent.mm.av.a.a.c paramc, float[] paramArrayOfFloat, a.e.d paramd) {}
-      
-      public final void run()
-      {
-        AppMethodBeat.i(230754);
-        com.tencent.mm.av.a.a locala = com.tencent.mm.av.q.bcV();
-        String str = str;
-        ImageView localImageView1 = this.Bng.eFp();
-        com.tencent.mm.av.a.a.c localc = this.Bli;
-        ImageView localImageView2 = this.Bng.eFp();
-        p.g(localImageView2, "imageIv");
-        int i = localImageView2.getMeasuredWidth();
-        localImageView2 = this.Bng.eFp();
-        p.g(localImageView2, "imageIv");
-        locala.a(str, localImageView1, localc, (com.tencent.mm.av.a.c.h)new com.tencent.mm.pluginsdk.ui.applet.m(3, i, localImageView2.getMeasuredHeight(), paramString, (m.a)this.Bnh));
-        AppMethodBeat.o(230754);
-      }
-    }
-    
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotViewModel$imageUrl$imageLoaderCallback$1", "Lcom/tencent/mm/pluginsdk/ui/applet/ChattingBizImageDownloadListener$LoadTitleBitmapCallback;", "onFinish", "", "onStart", "app_release"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotViewModel$imageUrl$imageLoaderCallback$1", "Lcom/tencent/mm/pluginsdk/ui/applet/ChattingBizImageDownloadListener$LoadTitleBitmapCallback;", "onFinish", "", "onStart", "app_release"})
     public static final class d
       implements m.a
     {
       public final void onFinish()
       {
-        AppMethodBeat.i(230755);
-        a.c localc = a.BmV;
-        Log.v(a.access$getTAG$cp(), "imageUrl onFinish:" + this.Bng.imageUrl);
-        this.Bng.eFk();
-        AppMethodBeat.o(230755);
+        AppMethodBeat.i(271662);
+        a.c localc = a.Hhq;
+        Log.v(a.access$getTAG$cp(), "imageUrl onFinish:" + this.Hhz.imageUrl);
+        this.Hhz.frb();
+        AppMethodBeat.o(271662);
       }
       
       public final void onStart()
       {
-        AppMethodBeat.i(230756);
-        a.c localc = a.BmV;
-        Log.v(a.access$getTAG$cp(), "imageUrl onStart:" + this.Bng.imageUrl);
-        this.Bng.eFq();
-        AppMethodBeat.o(230756);
+        AppMethodBeat.i(271664);
+        a.c localc = a.Hhq;
+        Log.v(a.access$getTAG$cp(), "imageUrl onStart:" + this.Hhz.imageUrl);
+        this.Hhz.frk();
+        AppMethodBeat.o(271664);
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/ViewGroup;", "invoke"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/ViewGroup;", "invoke"})
     static final class e
       extends kotlin.g.b.q
       implements kotlin.g.a.a<ViewGroup>
     {
-      e(a.e parame, ViewGroup paramViewGroup)
+      e(a.f paramf, ViewGroup paramViewGroup)
       {
         super();
       }
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$TopSlotViewModel;", "Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotViewModel;", "itemShowType", "", "slotType", "Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotType;", "container", "Landroid/view/ViewGroup;", "(ILcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotType;Landroid/view/ViewGroup;)V", "collapseTextLayout", "Lcom/tencent/mm/ui/widget/MMCollapsibleTextView;", "kotlin.jvm.PlatformType", "getCollapseTextLayout", "()Lcom/tencent/mm/ui/widget/MMCollapsibleTextView;", "collapseTextLayout$delegate", "Lkotlin/Lazy;", "descMask", "Landroid/view/View;", "getDescMask", "()Landroid/view/View;", "descMask$delegate", "digestTv", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "getDigestTv", "()Lcom/tencent/mm/ui/widget/MMNeat7extView;", "digestTv$delegate", "value", "", "hasAudioDesc", "getHasAudioDesc", "()Z", "setHasAudioDesc", "(Z)V", "hasDesc", "setHasDesc", "hasSingleInfo", "hasTitle", "imageDefaultRes", "getImageDefaultRes", "()I", "imageRadiusPxArray", "", "getImageRadiusPxArray", "()[F", "isPayMsg", "setPayMsg", "(I)V", "isSingleImage", "picCntTv", "Landroid/widget/TextView;", "getPicCntTv", "()Landroid/widget/TextView;", "picCntTv$delegate", "showDescTv", "getShowDescTv", "showDescTv$delegate", "singleDescLayout", "getSingleDescLayout", "singleDescLayout$delegate", "singleTitleTv", "getSingleTitleTv", "singleTitleTv$delegate", "", "title", "getTitle", "()Ljava/lang/String;", "setTitle", "(Ljava/lang/String;)V", "titleDescViews", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "titleTv", "getTitleTv", "titleTv$delegate", "topMask", "Landroid/widget/ImageView;", "getTopMask", "()Landroid/widget/ImageView;", "topMask$delegate", "url", "getUrl", "setUrl", "videPlayImg", "getVidePlayImg", "videPlayImg$delegate", "videoDurationTv", "getVideoDurationTv", "videoDurationTv$delegate", "voiceDurationTv", "getVoiceDurationTv", "voiceDurationTv$delegate", "fillBackground", "", "selector", "inflate", "context", "Landroid/content/Context;", "onImageLoadFinish", "onImageLoadStart", "setText", "id", "expandSet", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "text", "setTitleDescTextColor", "color", "app_release"})
-  static final class f
-    extends a.e
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$TopSlotViewModel;", "Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotViewModel;", "itemShowType", "", "slotType", "Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotType;", "container", "Landroid/view/ViewGroup;", "(ILcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotType;Landroid/view/ViewGroup;)V", "collapseTextLayout", "Lcom/tencent/mm/ui/widget/MMCollapsibleTextView;", "kotlin.jvm.PlatformType", "getCollapseTextLayout", "()Lcom/tencent/mm/ui/widget/MMCollapsibleTextView;", "collapseTextLayout$delegate", "Lkotlin/Lazy;", "descMask", "Landroid/view/View;", "getDescMask", "()Landroid/view/View;", "descMask$delegate", "digestTv", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "getDigestTv", "()Lcom/tencent/mm/ui/widget/MMNeat7extView;", "digestTv$delegate", "value", "", "hasAudioDesc", "getHasAudioDesc", "()Z", "setHasAudioDesc", "(Z)V", "hasDesc", "setHasDesc", "hasSingleInfo", "hasTitle", "imageDefaultRes", "getImageDefaultRes", "()I", "imageRadiusPxArray", "", "getImageRadiusPxArray", "()[F", "isPayMsg", "setPayMsg", "(I)V", "isSingleImage", "picCntTv", "Landroid/widget/TextView;", "getPicCntTv", "()Landroid/widget/TextView;", "picCntTv$delegate", "showDescTv", "getShowDescTv", "showDescTv$delegate", "singleDescLayout", "getSingleDescLayout", "singleDescLayout$delegate", "singleTitleTv", "getSingleTitleTv", "singleTitleTv$delegate", "", "title", "getTitle", "()Ljava/lang/String;", "setTitle", "(Ljava/lang/String;)V", "titleDescViews", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "titleTv", "getTitleTv", "titleTv$delegate", "topMask", "Landroid/widget/ImageView;", "getTopMask", "()Landroid/widget/ImageView;", "topMask$delegate", "url", "getUrl", "setUrl", "videPlayImg", "getVidePlayImg", "videPlayImg$delegate", "videoDurationTv", "getVideoDurationTv", "videoDurationTv$delegate", "voiceDurationTv", "getVoiceDurationTv", "voiceDurationTv$delegate", "fillBackground", "", "selector", "inflate", "context", "Landroid/content/Context;", "onImageLoadFinish", "onImageLoadStart", "setText", "id", "expandSet", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "text", "setTitleDescTextColor", "color", "app_release"})
+  static final class g
+    extends a.f
   {
-    final kotlin.f BkO;
-    private final kotlin.f BkP;
-    private final kotlin.f BkQ;
-    int BkR;
-    private boolean Blm;
-    boolean Bln;
-    boolean Blo;
-    ArrayList<View> Blp;
-    private final kotlin.f Blq;
-    private final kotlin.f Blr;
-    final kotlin.f Bls;
-    final kotlin.f Blt;
-    private final kotlin.f Blu;
-    private final kotlin.f Blv;
-    private final kotlin.f Blw;
-    final kotlin.f Blx;
-    private final kotlin.f Bly;
-    boolean Blz;
+    private final kotlin.f DHR;
+    boolean HfA;
+    ArrayList<View> HfB;
+    private final kotlin.f HfC;
+    private final kotlin.f HfD;
+    final kotlin.f HfE;
+    final kotlin.f HfF;
+    private final kotlin.f HfG;
+    private final kotlin.f HfH;
+    private final kotlin.f HfI;
+    final kotlin.f HfJ;
+    private final kotlin.f HfK;
+    private boolean HfL;
+    final kotlin.f Hfb;
+    private final kotlin.f Hfc;
+    int Hfd;
+    private boolean Hfy;
+    boolean Hfz;
     private String title;
     String url;
     
-    public f(final int paramInt, a.d paramd, ViewGroup paramViewGroup)
+    public g(final int paramInt, a.e parame, ViewGroup paramViewGroup)
     {
-      super(paramd, paramViewGroup);
-      AppMethodBeat.i(230799);
+      super(parame, paramViewGroup);
+      AppMethodBeat.i(274019);
       this.url = "";
-      this.Blp = new ArrayList();
-      this.Blq = kotlin.g.ah((kotlin.g.a.a)new l(this));
-      this.Blr = kotlin.g.ah((kotlin.g.a.a)new b(this));
-      this.BkP = kotlin.g.ah((kotlin.g.a.a)new h(this));
-      this.Bls = kotlin.g.ah((kotlin.g.a.a)new n(this));
-      this.Blt = kotlin.g.ah((kotlin.g.a.a)new o(this));
-      this.BkO = kotlin.g.ah((kotlin.g.a.a)new e(this));
-      this.BkQ = kotlin.g.ah((kotlin.g.a.a)new k(this, paramInt));
-      this.Blu = kotlin.g.ah((kotlin.g.a.a)new m(this));
-      this.Blv = kotlin.g.ah((kotlin.g.a.a)new i(this));
-      this.Blw = kotlin.g.ah((kotlin.g.a.a)new j(this));
-      this.Blx = kotlin.g.ah((kotlin.g.a.a)new c(this));
-      this.Bly = kotlin.g.ah((kotlin.g.a.a)new a(this));
+      this.HfB = new ArrayList();
+      this.HfC = g.ar((kotlin.g.a.a)new l(this));
+      this.HfD = g.ar((kotlin.g.a.a)new b(this));
+      this.Hfc = g.ar((kotlin.g.a.a)new h(this));
+      this.HfE = g.ar((kotlin.g.a.a)new n(this));
+      this.HfF = g.ar((kotlin.g.a.a)new o(this));
+      this.Hfb = g.ar((kotlin.g.a.a)new e(this));
+      this.DHR = g.ar((kotlin.g.a.a)new k(this, paramInt));
+      this.HfG = g.ar((kotlin.g.a.a)new m(this));
+      this.HfH = g.ar((kotlin.g.a.a)new i(this));
+      this.HfI = g.ar((kotlin.g.a.a)new j(this));
+      this.HfJ = g.ar((kotlin.g.a.a)new c(this));
+      this.HfK = g.ar((kotlin.g.a.a)new a(this));
       this.title = "";
-      AppMethodBeat.o(230799);
+      AppMethodBeat.o(274019);
     }
     
-    private final boolean eFs()
+    private final boolean frm()
     {
-      return (this.Bnf == a.d.Bnd) && (!this.Blo);
+      return (this.Hhy == a.e.Hhw) && (!this.HfA);
     }
     
-    private final ImageView eFt()
+    private final ImageView frn()
     {
-      AppMethodBeat.i(230788);
-      ImageView localImageView = (ImageView)this.Blq.getValue();
-      AppMethodBeat.o(230788);
+      AppMethodBeat.i(274005);
+      ImageView localImageView = (ImageView)this.HfC.getValue();
+      AppMethodBeat.o(274005);
       return localImageView;
     }
     
-    private final MMNeat7extView eFu()
+    private final MMNeat7extView fro()
     {
-      AppMethodBeat.i(230790);
-      MMNeat7extView localMMNeat7extView = (MMNeat7extView)this.BkQ.getValue();
-      AppMethodBeat.o(230790);
+      AppMethodBeat.i(274007);
+      MMNeat7extView localMMNeat7extView = (MMNeat7extView)this.DHR.getValue();
+      AppMethodBeat.o(274007);
       return localMMNeat7extView;
     }
     
-    private final ImageView eFv()
+    private final ImageView frp()
     {
-      AppMethodBeat.i(230791);
-      ImageView localImageView = (ImageView)this.Blu.getValue();
-      AppMethodBeat.o(230791);
+      AppMethodBeat.i(274008);
+      ImageView localImageView = (ImageView)this.HfG.getValue();
+      AppMethodBeat.o(274008);
       return localImageView;
     }
     
-    private MMCollapsibleTextView eFx()
+    private MMCollapsibleTextView frr()
     {
-      AppMethodBeat.i(230793);
-      MMCollapsibleTextView localMMCollapsibleTextView = (MMCollapsibleTextView)this.Bly.getValue();
-      AppMethodBeat.o(230793);
+      AppMethodBeat.i(274012);
+      MMCollapsibleTextView localMMCollapsibleTextView = (MMCollapsibleTextView)this.HfK.getValue();
+      AppMethodBeat.o(274012);
       return localMMCollapsibleTextView;
     }
     
-    final void Va(int paramInt)
+    public final void a(int paramInt, HashSet<Integer> paramHashSet, String paramString)
     {
-      AppMethodBeat.i(230798);
-      Iterator localIterator = ((Iterable)this.Blp).iterator();
+      AppMethodBeat.i(274015);
+      p.k(paramHashSet, "expandSet");
+      p.k(paramString, "text");
+      MMCollapsibleTextView localMMCollapsibleTextView = frr();
+      p.j(localMMCollapsibleTextView, "collapseTextLayout");
+      paramString = com.tencent.mm.pluginsdk.ui.span.l.k(localMMCollapsibleTextView.getContext(), (CharSequence)paramString, (int)frr().getTextSize());
+      localMMCollapsibleTextView = frr();
+      if (!paramHashSet.contains(Integer.valueOf(paramInt))) {}
+      for (boolean bool = true;; bool = false)
+      {
+        localMMCollapsibleTextView.setCollapsed(bool);
+        localMMCollapsibleTextView = frr();
+        p.j(paramString, "text");
+        localMMCollapsibleTextView.setText((CharSequence)paramString);
+        if (!(frr().getContentText() instanceof MMNeat7extView)) {
+          break label194;
+        }
+        paramString = frr().getContentText();
+        if (paramString != null) {
+          break;
+        }
+        paramHashSet = new t("null cannot be cast to non-null type com.tencent.mm.ui.widget.MMNeat7extView");
+        AppMethodBeat.o(274015);
+        throw paramHashSet;
+      }
+      paramString = (MMNeat7extView)paramString;
+      frr().setOnTextTouchListener((View.OnTouchListener)new com.tencent.mm.pluginsdk.ui.span.h((NeatTextView)paramString, (View.OnTouchListener)new o(paramString.getContext())));
+      label194:
+      frr().setOnCollapse((kotlin.g.a.a)new a.g.f(paramHashSet, paramInt));
+      frr().setOnExpand((kotlin.g.a.a)new a.g.g(paramHashSet, paramInt));
+      AppMethodBeat.o(274015);
+    }
+    
+    protected final void a(View paramView, a.e parame, boolean paramBoolean)
+    {
+      AppMethodBeat.i(274001);
+      p.k(paramView, "container");
+      p.k(parame, "slotType");
+      switch (getItemShowType())
+      {
+      case 8: 
+      case 9: 
+      default: 
+        paramView.setPadding(0, 0, 0, 0);
+        paramView.setBackgroundResource(0);
+        AppMethodBeat.o(274001);
+        return;
+      case 6: 
+      case 7: 
+        if (parame == a.e.Hht)
+        {
+          View localView = paramView.findViewById(R.h.dug);
+          p.j(localView, "container.findViewById<V…R.id.biz_slot_top_line_v)");
+          localView.setVisibility(0);
+        }
+        super.a(paramView, parame, false);
+        paramView.setPadding(0, 0, 0, 0);
+        AppMethodBeat.o(274001);
+        return;
+      }
+      super.a(paramView, parame, false);
+      AppMethodBeat.o(274001);
+    }
+    
+    final void abG(int paramInt)
+    {
+      AppMethodBeat.i(274018);
+      Iterator localIterator = ((Iterable)this.HfB).iterator();
       while (localIterator.hasNext())
       {
         View localView = (View)localIterator.next();
@@ -1435,250 +945,186 @@ public final class a
           ((MMNeat7extView)localView).setTextColor(paramInt);
         }
       }
-      AppMethodBeat.o(230798);
-    }
-    
-    public final void a(final int paramInt, HashSet<Integer> paramHashSet, String paramString)
-    {
-      AppMethodBeat.i(230795);
-      p.h(paramHashSet, "expandSet");
-      p.h(paramString, "text");
-      MMCollapsibleTextView localMMCollapsibleTextView = eFx();
-      p.g(localMMCollapsibleTextView, "collapseTextLayout");
-      paramString = com.tencent.mm.pluginsdk.ui.span.l.j(localMMCollapsibleTextView.getContext(), (CharSequence)paramString, (int)eFx().getTextSize());
-      localMMCollapsibleTextView = eFx();
-      if (!paramHashSet.contains(Integer.valueOf(paramInt))) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localMMCollapsibleTextView.setCollapsed(bool);
-        localMMCollapsibleTextView = eFx();
-        p.g(paramString, "text");
-        localMMCollapsibleTextView.setText((CharSequence)paramString);
-        if (!(eFx().getContentText() instanceof MMNeat7extView)) {
-          break label194;
-        }
-        paramString = eFx().getContentText();
-        if (paramString != null) {
-          break;
-        }
-        paramHashSet = new t("null cannot be cast to non-null type com.tencent.mm.ui.widget.MMNeat7extView");
-        AppMethodBeat.o(230795);
-        throw paramHashSet;
-      }
-      paramString = (MMNeat7extView)paramString;
-      eFx().setOnTextTouchListener((View.OnTouchListener)new com.tencent.mm.pluginsdk.ui.span.h((NeatTextView)paramString, (View.OnTouchListener)new o(paramString.getContext())));
-      label194:
-      eFx().setOnCollapse((kotlin.g.a.a)new f(paramHashSet, paramInt));
-      eFx().setOnExpand((kotlin.g.a.a)new g(paramHashSet, paramInt));
-      AppMethodBeat.o(230795);
-    }
-    
-    protected final void a(View paramView, a.d paramd, boolean paramBoolean)
-    {
-      AppMethodBeat.i(230784);
-      p.h(paramView, "container");
-      p.h(paramd, "slotType");
-      switch (this.iwc)
-      {
-      case 8: 
-      case 9: 
-      default: 
-        paramView.setPadding(0, 0, 0, 0);
-        paramView.setBackgroundResource(0);
-        AppMethodBeat.o(230784);
-        return;
-      case 6: 
-      case 7: 
-        if (paramd == a.d.Bna)
-        {
-          View localView = paramView.findViewById(2131297526);
-          p.g(localView, "container.findViewById<V…R.id.biz_slot_top_line_v)");
-          localView.setVisibility(0);
-        }
-        super.a(paramView, paramd, false);
-        paramView.setPadding(0, 0, 0, 0);
-        AppMethodBeat.o(230784);
-        return;
-      }
-      super.a(paramView, paramd, false);
-      AppMethodBeat.o(230784);
+      AppMethodBeat.o(274018);
     }
     
     protected final ViewGroup c(Context paramContext, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(230783);
-      p.h(paramContext, "context");
-      p.h(paramViewGroup, "container");
-      paramContext = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131493733, paramViewGroup, false);
+      AppMethodBeat.i(274000);
+      p.k(paramContext, "context");
+      p.k(paramViewGroup, "container");
+      paramContext = LayoutInflater.from(paramViewGroup.getContext()).inflate(R.i.efb, paramViewGroup, false);
       if (paramContext == null)
       {
         paramContext = new t("null cannot be cast to non-null type android.view.ViewGroup");
-        AppMethodBeat.o(230783);
+        AppMethodBeat.o(274000);
         throw paramContext;
       }
       paramContext = (ViewGroup)paramContext;
       int i;
-      switch (this.iwc)
+      switch (getItemShowType())
       {
       case 9: 
       default: 
-        i = 2131299038;
+        i = R.h.dAO;
       }
       for (;;)
       {
         ((ViewStub)paramContext.findViewById(i)).inflate();
         paramViewGroup.addView((View)paramContext);
-        AppMethodBeat.o(230783);
+        AppMethodBeat.o(274000);
         return paramContext;
-        i = 2131299041;
+        i = R.h.dAR;
         continue;
-        eFr();
-        i = 2131299039;
+        i = R.h.dAP;
+        frl();
         continue;
-        i = 2131299040;
+        i = R.h.dAQ;
         continue;
-        i = 2131299037;
+        i = R.h.dAN;
       }
     }
     
-    protected final void eFk()
+    protected final void frb()
     {
-      AppMethodBeat.i(230797);
+      AppMethodBeat.i(274017);
       Object localObject = getContext();
-      p.g(localObject, "context");
-      Va(((Context)localObject).getResources().getColor(2131101427));
-      if (this.Blm)
+      p.j(localObject, "context");
+      abG(((Context)localObject).getResources().getColor(R.e.white_text_color));
+      if (this.Hfy)
       {
-        localObject = (View)this.Blr.getValue();
-        if (!eFs()) {
+        localObject = (View)this.HfD.getValue();
+        if (!frm()) {
           break label113;
         }
-        if (this.Bln)
+        if (this.Hfz)
         {
-          i = 2131234479;
+          i = R.g.dou;
           ((View)localObject).setBackgroundResource(i);
         }
       }
       else
       {
-        localObject = eFt();
-        if (this.Bnf != a.d.Bna) {
+        localObject = frn();
+        if (this.Hhy != a.e.Hht) {
           break label134;
         }
       }
       label134:
-      for (int i = 2131231301;; i = 2131231303)
+      for (int i = R.g.dmv;; i = R.g.dmw)
       {
         ((ImageView)localObject).setBackgroundResource(i);
-        AppMethodBeat.o(230797);
+        AppMethodBeat.o(274017);
         return;
-        i = 2131234478;
+        i = R.g.dos;
         break;
         label113:
-        if (this.Bln)
+        if (this.Hfz)
         {
-          i = 2131234477;
+          i = R.g.dor;
           break;
         }
-        i = 2131234476;
+        i = R.g.doq;
         break;
       }
     }
     
-    protected final float[] eFl()
+    protected final float[] frc()
     {
-      AppMethodBeat.i(230785);
-      if (eFs())
+      AppMethodBeat.i(274002);
+      if (frm())
       {
-        arrayOfFloat = kotlin.a.e.b(new Float[] { Float.valueOf(bJ(8.0F)), Float.valueOf(bJ(8.0F)), Float.valueOf(bJ(8.0F)), Float.valueOf(bJ(8.0F)) });
-        AppMethodBeat.o(230785);
+        arrayOfFloat = kotlin.a.e.b(new Float[] { Float.valueOf(bP(8.0F)), Float.valueOf(bP(8.0F)), Float.valueOf(bP(8.0F)), Float.valueOf(bP(8.0F)) });
+        AppMethodBeat.o(274002);
         return arrayOfFloat;
       }
-      float[] arrayOfFloat = kotlin.a.e.b(new Float[] { Float.valueOf(bJ(8.0F)), Float.valueOf(bJ(8.0F)), Float.valueOf(0.0F), Float.valueOf(0.0F) });
-      AppMethodBeat.o(230785);
+      float[] arrayOfFloat = kotlin.a.e.b(new Float[] { Float.valueOf(bP(8.0F)), Float.valueOf(bP(8.0F)), Float.valueOf(0.0F), Float.valueOf(0.0F) });
+      AppMethodBeat.o(274002);
       return arrayOfFloat;
     }
     
-    protected final int eFm()
+    protected final int frd()
     {
-      AppMethodBeat.i(230786);
-      if (eFs())
+      AppMethodBeat.i(274003);
+      if (frm())
       {
-        AppMethodBeat.o(230786);
-        return 2131234474;
+        i = R.g.doo;
+        AppMethodBeat.o(274003);
+        return i;
       }
-      AppMethodBeat.o(230786);
-      return 2131234475;
+      int i = R.g.dop;
+      AppMethodBeat.o(274003);
+      return i;
     }
     
-    public final TextView eFn()
+    public final TextView fre()
     {
-      AppMethodBeat.i(230789);
-      TextView localTextView = (TextView)this.BkP.getValue();
-      AppMethodBeat.o(230789);
+      AppMethodBeat.i(274006);
+      TextView localTextView = (TextView)this.Hfc.getValue();
+      AppMethodBeat.o(274006);
       return localTextView;
     }
     
-    protected final void eFq()
+    protected final void frk()
     {
-      AppMethodBeat.i(230796);
-      com.tencent.mm.ac.d.h((kotlin.g.a.a)new d(this));
-      AppMethodBeat.o(230796);
+      AppMethodBeat.i(274016);
+      com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new d(this));
+      AppMethodBeat.o(274016);
     }
     
-    final void eFr()
+    final void frl()
     {
-      AppMethodBeat.i(230787);
-      this.Blm = true;
-      if (this.iwc == 5)
+      AppMethodBeat.i(274004);
+      this.Hfy = true;
+      if (getItemShowType() == 5)
       {
-        Object localObject = eFv();
-        p.g(localObject, "videPlayImg");
+        Object localObject = frp();
+        p.j(localObject, "videPlayImg");
         localObject = ((ImageView)localObject).getLayoutParams();
         if (localObject == null)
         {
-          localObject = new t("null cannot be cast to non-null type android.support.constraint.ConstraintLayout.LayoutParams");
-          AppMethodBeat.o(230787);
+          localObject = new t("null cannot be cast to non-null type androidx.constraintlayout.widget.ConstraintLayout.LayoutParams");
+          AppMethodBeat.o(274004);
           throw ((Throwable)localObject);
         }
         localObject = (ConstraintLayout.LayoutParams)localObject;
-        if (((ConstraintLayout.LayoutParams)localObject).verticalBias != 0.56F)
+        if (((ConstraintLayout.LayoutParams)localObject).Fw != 0.56F)
         {
-          ((ConstraintLayout.LayoutParams)localObject).verticalBias = 0.56F;
-          ImageView localImageView = eFv();
-          p.g(localImageView, "videPlayImg");
+          ((ConstraintLayout.LayoutParams)localObject).Fw = 0.56F;
+          ImageView localImageView = frp();
+          p.j(localImageView, "videPlayImg");
           localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
         }
       }
-      AppMethodBeat.o(230787);
+      AppMethodBeat.o(274004);
     }
     
-    final View eFw()
+    final View frq()
     {
-      AppMethodBeat.i(230792);
-      View localView = (View)this.Blv.getValue();
-      AppMethodBeat.o(230792);
+      AppMethodBeat.i(274010);
+      View localView = (View)this.HfH.getValue();
+      AppMethodBeat.o(274010);
       return localView;
     }
     
     public final void setTitle(String paramString)
     {
       int i = 4;
-      AppMethodBeat.i(230794);
-      p.h(paramString, "value");
+      AppMethodBeat.i(274014);
+      p.k(paramString, "value");
       MMNeat7extView localMMNeat7extView;
       int j;
       String str;
-      switch (this.iwc)
+      switch (getItemShowType())
       {
       default: 
-        if (this.Bnf == a.d.Bnd)
+        if (this.Hhy == a.e.Hhw)
         {
-          localMMNeat7extView = (MMNeat7extView)this.Blw.getValue();
-          p.g(localMMNeat7extView, "if (slotType == SlotType…ingleTitleTv else titleTv");
-          j = this.BkR;
+          localMMNeat7extView = (MMNeat7extView)this.HfI.getValue();
+          p.j(localMMNeat7extView, "if (slotType == SlotType…ingleTitleTv else titleTv");
+          j = this.Hfd;
           str = this.url;
-          if (this.Bnf != a.d.Bnd) {
+          if (this.Hhy != a.e.Hhw) {
             break label188;
           }
         }
@@ -1687,369 +1133,1114 @@ public final class a
       for (;;)
       {
         a(localMMNeat7extView, paramString, j, str, i);
-        AppMethodBeat.o(230794);
+        AppMethodBeat.o(274014);
         return;
-        localMMNeat7extView = eFu();
-        p.g(localMMNeat7extView, "titleTv");
-        a(localMMNeat7extView, paramString, this.BkR, this.url, 4);
-        paramString = eFt();
-        if (this.Bnf == a.d.Bna) {}
-        for (i = 2131231303;; i = 2131231301)
+        localMMNeat7extView = fro();
+        p.j(localMMNeat7extView, "titleTv");
+        a(localMMNeat7extView, paramString, this.Hfd, this.url, 4);
+        paramString = frn();
+        if (this.Hhy == a.e.Hht) {}
+        for (i = R.g.dmw;; i = R.g.dmv)
         {
           paramString.setBackgroundResource(i);
-          AppMethodBeat.o(230794);
+          AppMethodBeat.o(274014);
           return;
         }
-        localMMNeat7extView = eFu();
+        localMMNeat7extView = fro();
         break;
         label188:
         i = 41;
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/ui/widget/MMCollapsibleTextView;", "kotlin.jvm.PlatformType", "invoke"})
+    public final void wg(boolean paramBoolean)
+    {
+      AppMethodBeat.i(274013);
+      if (!paramBoolean) {
+        frq().setPadding(0, 0, 0, frh());
+      }
+      for (;;)
+      {
+        this.HfL = paramBoolean;
+        AppMethodBeat.o(274013);
+        return;
+        frq().setPadding(frj(), fri(), frj(), frh());
+      }
+    }
+    
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ui/widget/MMCollapsibleTextView;", "kotlin.jvm.PlatformType", "invoke"})
     static final class a
       extends kotlin.g.b.q
       implements kotlin.g.a.a<MMCollapsibleTextView>
     {
-      a(a.f paramf)
+      a(a.g paramg)
       {
         super();
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
     static final class b
       extends kotlin.g.b.q
       implements kotlin.g.a.a<View>
     {
-      b(a.f paramf)
+      b(a.g paramg)
       {
         super();
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "kotlin.jvm.PlatformType", "invoke"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "kotlin.jvm.PlatformType", "invoke"})
     static final class c
       extends kotlin.g.b.q
       implements kotlin.g.a.a<MMNeat7extView>
     {
-      c(a.f paramf)
+      c(a.g paramg)
       {
         super();
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
     static final class d
       extends kotlin.g.b.q
       implements kotlin.g.a.a<kotlin.x>
     {
-      d(a.f paramf)
+      d(a.g paramg)
       {
         super();
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
     static final class e
       extends kotlin.g.b.q
       implements kotlin.g.a.a<TextView>
     {
-      e(a.f paramf)
+      e(a.g paramg)
       {
         super();
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
-    static final class f
-      extends kotlin.g.b.q
-      implements kotlin.g.a.a<kotlin.x>
-    {
-      f(HashSet paramHashSet, int paramInt)
-      {
-        super();
-      }
-    }
-    
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
-    static final class g
-      extends kotlin.g.b.q
-      implements kotlin.g.a.a<kotlin.x>
-    {
-      g(HashSet paramHashSet, int paramInt)
-      {
-        super();
-      }
-    }
-    
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
     static final class h
       extends kotlin.g.b.q
       implements kotlin.g.a.a<TextView>
     {
-      h(a.f paramf)
+      h(a.g paramg)
       {
         super();
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
     static final class i
       extends kotlin.g.b.q
       implements kotlin.g.a.a<View>
     {
-      i(a.f paramf)
+      i(a.g paramg)
       {
         super();
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "kotlin.jvm.PlatformType", "invoke"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "kotlin.jvm.PlatformType", "invoke"})
     static final class j
       extends kotlin.g.b.q
       implements kotlin.g.a.a<MMNeat7extView>
     {
-      j(a.f paramf)
+      j(a.g paramg)
       {
         super();
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "kotlin.jvm.PlatformType", "invoke"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "kotlin.jvm.PlatformType", "invoke"})
     static final class k
       extends kotlin.g.b.q
       implements kotlin.g.a.a<MMNeat7extView>
     {
-      k(a.f paramf, int paramInt)
+      k(a.g paramg, int paramInt)
       {
         super();
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
     static final class l
       extends kotlin.g.b.q
       implements kotlin.g.a.a<ImageView>
     {
-      l(a.f paramf)
+      l(a.g paramg)
       {
         super();
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
     static final class m
       extends kotlin.g.b.q
       implements kotlin.g.a.a<ImageView>
     {
-      m(a.f paramf)
+      m(a.g paramg)
       {
         super();
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
     static final class n
       extends kotlin.g.b.q
       implements kotlin.g.a.a<TextView>
     {
-      n(a.f paramf)
+      n(a.g paramg)
       {
         super();
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
     static final class o
       extends kotlin.g.b.q
       implements kotlin.g.a.a<TextView>
     {
-      o(a.f paramf)
+      o(a.g paramg)
       {
         super();
       }
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$VideoChannelViewHolder;", "Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$ViewHolder;", "context", "Landroid/content/Context;", "widget", "Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter;", "convertView", "Landroid/view/View;", "parent", "Landroid/view/ViewGroup;", "position", "", "videoInfo", "Lcom/tencent/mm/protocal/protobuf/ProfileNotifyInfo;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter;Landroid/view/View;Landroid/view/ViewGroup;ILcom/tencent/mm/protocal/protobuf/ProfileNotifyInfo;)V", "coverSize", "radius", "", "view", "getView", "()Landroid/view/View;", "fillVideoChannel", "", "fillVideoItem", "videoItem", "Lcom/tencent/mm/protocal/protobuf/NotifyVideoInfo;", "itemView", "getDurationText", "", "app_release"})
-  static final class g
-    extends a.h
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$newBizMsgViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "context", "Landroid/content/Context;", "expandSet", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "isBizPayOpen", "", "()Z", "setBizPayOpen", "(Z)V", "widget", "Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter;", "dealMsgData", "", "interpolator", "bizMsg", "Lcom/tencent/mm/protocal/protobuf/BizMessage;", "position", "fillCommonSlot", "container", "Landroid/view/ViewGroup;", "detail", "Lcom/tencent/mm/protocal/protobuf/BizAppMsgDetailInfo;", "base", "Lcom/tencent/mm/protocal/protobuf/BizAppMsgBaseInfo;", "slotType", "Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$SlotType;", "fillSingleText", "text", "Lcom/tencent/mm/protocal/protobuf/BizTextMsgInfo;", "Lcom/tencent/mm/protocal/protobuf/CommMsgBaseInfo;", "fillSlotTarget", "fillTopSlot", "commBase", "getPlayId", "", "isPlaying", "playId", "firstNotEmpty", "", "([Ljava/lang/String;)Ljava/lang/String;", "app_release"})
+  static final class i
+    extends RecyclerView.v
   {
-    private int BlD;
-    final a BmW;
-    final Context context;
-    private float radius;
-    final View view;
+    private boolean HeL;
+    private HashSet<Integer> HeM;
+    private a HhD;
+    private Context context;
     
-    public g(final Context paramContext, a parama, View paramView, ViewGroup paramViewGroup, final dey paramdey)
+    public i(View paramView)
     {
-      AppMethodBeat.i(230803);
-      this.radius = 2.0F;
-      this.context = paramContext;
-      this.BmW = parama;
-      this.BlD = com.tencent.mm.cb.a.fromDPToPix(paramContext, 64);
-      label76:
-      int i;
-      label114:
-      Object localObject1;
-      label128:
-      label179:
-      label193:
-      Object localObject2;
-      label261:
+      super();
+      AppMethodBeat.i(291952);
+      this.HeM = new HashSet();
+      this.HeL = true;
+      AppMethodBeat.o(291952);
+    }
+    
+    private static String M(String[] paramArrayOfString)
+    {
+      AppMethodBeat.i(291945);
+      int k = paramArrayOfString.length;
+      int i = 0;
+      Object localObject;
       int j;
-      int k;
-      if (paramView != null)
+      if (i < k)
       {
-        parama = paramView.getTag();
-        if (!p.j(parama, paramdey)) {
-          break label697;
-        }
-        this.view = paramView;
-        parama = (TextView)this.view.findViewById(2131309761);
-        paramContext = (CharSequence)paramdey.MJZ;
-        if ((paramContext != null) && (paramContext.length() != 0)) {
-          break label735;
-        }
-        i = 1;
-        if (i != 0) {
-          break label741;
-        }
-        paramContext = (CharSequence)paramdey.MJZ;
-        parama.setText(paramContext);
-        paramContext = com.tencent.mm.plugin.brandservice.ui.b.d.pMy;
-        com.tencent.mm.plugin.brandservice.ui.b.d.i(parama);
-        parama = (TextView)this.view.findViewById(2131309760);
-        paramContext = (CharSequence)paramdey.dQx;
-        if ((paramContext != null) && (paramContext.length() != 0)) {
-          break label769;
-        }
-        i = 1;
-        if (i != 0) {
-          break label775;
-        }
-        paramContext = (CharSequence)paramdey.dQx;
-        parama.setText(paramContext);
-        paramContext = paramdey.MJY;
-        parama = a.BmV;
-        Log.v(a.access$getTAG$cp(), "alvinluo fillVideoChannel size: %d", new Object[] { Integer.valueOf(paramContext.size()) });
-        parama = (LinearLayout)this.view.findViewById(2131309733);
-        parama.removeAllViews();
-        if (paramContext == null) {
-          break label848;
-        }
-        paramView = ((Iterable)paramContext).iterator();
-        do
+        localObject = paramArrayOfString[i];
+        CharSequence localCharSequence = (CharSequence)localObject;
+        if ((localCharSequence == null) || (kotlin.n.n.ba(localCharSequence)))
         {
-          if (!paramView.hasNext()) {
-            break;
+          j = 1;
+          label42:
+          if (j != 0) {
+            break label79;
           }
-          paramViewGroup = (cty)paramView.next();
-        } while (paramViewGroup == null);
-        paramContext = a.BmV;
-        Log.d(a.access$getTAG$cp(), "alvinluo videoItem url: %s, duration: %d", new Object[] { paramViewGroup.Mzi, Integer.valueOf(paramViewGroup.duration) });
-        localObject1 = LayoutInflater.from(this.context).inflate(2131493749, null, false);
-        parama.addView((View)localObject1);
-        p.g(localObject1, "itemView");
-        paramContext = ((View)localObject1).findViewById(2131309754);
-        p.g(paramContext, "itemView.findViewById<Te…iew>(R.id.video_duration)");
-        localObject2 = (TextView)paramContext;
-        i = paramViewGroup.duration / 3600;
-        j = (paramViewGroup.duration - i * 3600) / 60;
-        k = paramViewGroup.duration % 60;
-        paramContext = a.BmV;
-        Log.i(a.access$getTAG$cp(), "alvinluo getDurationText " + i + ':' + j + ':' + k);
-        if (i <= 0) {
-          break label803;
+          j = 1;
+          label48:
+          if (j == 0) {
+            break label84;
+          }
         }
-        paramContext = ae.SYK;
-        paramContext = String.format("%d:%02d:%02d", Arrays.copyOf(new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) }, 3));
-        p.g(paramContext, "java.lang.String.format(format, *args)");
+      }
+      for (paramArrayOfString = (String[])localObject;; paramArrayOfString = null)
+      {
+        localObject = paramArrayOfString;
+        if (paramArrayOfString == null) {
+          localObject = "";
+        }
+        AppMethodBeat.o(291945);
+        return localObject;
+        j = 0;
+        break label42;
+        label79:
+        j = 0;
+        break label48;
+        label84:
+        i += 1;
+        break;
+      }
+    }
+    
+    private static String a(my parammy)
+    {
+      AppMethodBeat.i(291950);
+      parammy = parammy.RTk;
+      p.j(parammy, "detail.ContentUrl");
+      parammy = com.tencent.mm.plugin.brandservice.ui.timeline.preload.c.apJ(parammy);
+      AppMethodBeat.o(291950);
+      return parammy;
+    }
+    
+    private final void a(final View paramView, final my parammy, final mx parammx, final int paramInt)
+    {
+      AppMethodBeat.i(291947);
+      Object localObject;
+      c localc;
+      if (parammy.lpx == 7)
+      {
+        localObject = (ImageView)paramView.findViewById(R.h.duk);
+        if (localObject != null)
+        {
+          b localb = new b((ImageView)localObject);
+          localc = new c((ImageView)localObject);
+          final String str = a(parammy);
+          if (!hA(str)) {
+            break label119;
+          }
+          localb.invoke();
+          ((ImageView)localObject).setOnClickListener((View.OnClickListener)new a(localb, str, this, parammy));
+        }
       }
       for (;;)
       {
-        ((TextView)localObject2).setText((CharSequence)paramContext);
-        paramContext = (ImageView)((View)localObject1).findViewById(2131309740);
-        paramViewGroup = com.tencent.mm.api.b.u(paramViewGroup.Mzi, 2);
-        localObject1 = new c.a().bdp().dr(this.BlD, this.BlD).OU("radius_" + this.radius).tz(2131234473).a((com.tencent.mm.av.a.c.c)new com.tencent.mm.pluginsdk.ui.applet.n(3)).a((com.tencent.mm.av.a.c.a)new com.tencent.mm.pluginsdk.ui.applet.e(3)).OS(com.tencent.mm.pluginsdk.model.s.bdu(paramViewGroup)).bdv();
-        localObject2 = new b(paramViewGroup, paramContext);
-        localObject2 = new com.tencent.mm.pluginsdk.ui.applet.m(3, this.BlD, this.BlD, true, true, this.radius, (m.a)localObject2);
-        com.tencent.mm.av.q.bcV().a(paramViewGroup, paramContext, (com.tencent.mm.av.a.a.c)localObject1, (com.tencent.mm.av.a.c.h)localObject2);
-        break label261;
-        parama = null;
-        break;
-        label697:
-        paramContext = LayoutInflater.from(paramContext).inflate(2131493748, paramViewGroup, false);
-        p.g(paramContext, "LayoutInflater.from(cont…o_channel, parent, false)");
-        this.view = paramContext;
-        this.view.setTag(paramdey);
-        break label76;
-        label735:
-        i = 0;
-        break label114;
-        label741:
-        paramContext = parama.getContext();
-        p.g(paramContext, "context");
-        paramContext = (CharSequence)paramContext.getResources().getString(2131756802);
-        break label128;
-        label769:
-        i = 0;
-        break label179;
-        label775:
-        paramContext = parama.getContext();
-        p.g(paramContext, "context");
-        paramContext = (CharSequence)paramContext.getResources().getString(2131756801);
-        break label193;
-        label803:
-        paramContext = ae.SYK;
-        paramContext = String.format("%02d:%02d", Arrays.copyOf(new Object[] { Integer.valueOf(j), Integer.valueOf(k) }, 2));
-        p.g(paramContext, "java.lang.String.format(format, *args)");
-      }
-      label848:
-      paramContext = this.view.findViewById(2131307165);
-      if (paramContext != null)
-      {
-        paramContext.setOnClickListener((View.OnClickListener)new a(this, paramdey));
-        AppMethodBeat.o(230803);
+        paramView.setOnClickListener((View.OnClickListener)new d(this, parammy, parammx, paramView, paramInt));
+        AppMethodBeat.o(291947);
         return;
+        label119:
+        localc.invoke();
+        break;
+        if (parammy.lpx == 5)
+        {
+          localObject = com.tencent.mm.plugin.brandservice.ui.timeline.preload.e.sKW;
+          com.tencent.mm.plugin.brandservice.ui.timeline.preload.e.G(parammy.RTk, parammy.lpx, "");
+        }
       }
-      AppMethodBeat.o(230803);
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    private final void a(ViewGroup paramViewGroup, my parammy, mx parammx, a.e parame, int paramInt)
+    {
+      AppMethodBeat.i(291944);
+      a.c localc = a.Hhq;
+      Log.v(a.access$getTAG$cp(), "fillCommonSlot:" + parammy.RTk);
+      paramViewGroup = new a.b(parammy.lpx, parame, paramViewGroup);
+      paramViewGroup.Hfd = parammy.RTG;
+      paramViewGroup.url = parammy.RTk;
+      parame = parammy.fwr;
+      p.j(parame, "detail.Title");
+      paramViewGroup.setTitle(parame);
+      parame = (CharSequence)parammy.RTz;
+      if ((parame == null) || (kotlin.n.n.ba(parame)))
+      {
+        i = 1;
+        if (i == 0)
+        {
+          parame = paramViewGroup.fre();
+          p.j(parame, "view.showDescTv");
+          parame.setText((CharSequence)parammy.RTz);
+        }
+        parame = paramViewGroup.fre();
+        if (parame != null) {
+          if ((paramViewGroup.Hfd != 1) || (this.HeL)) {
+            break label274;
+          }
+        }
+      }
+      label274:
+      for (int i = 4;; i = 0)
+      {
+        parame.setVisibility(i);
+        if ((parammy.lpx == 8) && (parammy.EFG > 1))
+        {
+          parame = paramViewGroup.frL();
+          p.j(parame, "view.picCntTv");
+          parame.setText((CharSequence)String.valueOf(parammy.EFG));
+        }
+        paramViewGroup.setImageUrl(M(new String[] { parammy.RTn, parammy.RTm }));
+        a((View)paramViewGroup.frf(), parammy, parammx, paramInt);
+        AppMethodBeat.o(291944);
+        return;
+        i = 0;
+        break;
+      }
+    }
+    
+    private static boolean hA(String paramString)
+    {
+      AppMethodBeat.i(291949);
+      com.tencent.mm.bb.f localf = com.tencent.mm.bb.a.bnA();
+      if (localf != null)
+      {
+        if ((p.h(localf.lVt, paramString)) && (localf.lVr == 0) && (com.tencent.mm.bb.a.bnx()))
+        {
+          AppMethodBeat.o(291949);
+          return true;
+        }
+        AppMethodBeat.o(291949);
+        return false;
+      }
+      AppMethodBeat.o(291949);
+      return false;
+    }
+    
+    public final void a(a parama, oo paramoo, HashSet<Integer> paramHashSet, int paramInt)
+    {
+      AppMethodBeat.i(291941);
+      p.k(parama, "interpolator");
+      p.k(paramoo, "bizMsg");
+      p.k(paramHashSet, "expandSet");
+      this.context = parama.context;
+      this.HhD = parama;
+      this.HeM = paramHashSet;
+      this.HeL = parama.HeL;
+      paramHashSet = this.amk;
+      if (paramHashSet != null) {
+        paramHashSet = paramHashSet.getTag();
+      }
+      int i;
+      while (p.h(paramHashSet, paramoo))
+      {
+        paramHashSet = paramoo.RWB;
+        if (paramHashSet != null)
+        {
+          paramHashSet = paramHashSet.RTM;
+          if (paramHashSet != null)
+          {
+            i = 0;
+            paramHashSet = ((Iterable)paramHashSet).iterator();
+            for (;;)
+            {
+              if (paramHashSet.hasNext())
+              {
+                localObject1 = (my)paramHashSet.next();
+                p.j(localObject1, "detail");
+                if (p.h(a((my)localObject1), a.a(parama)))
+                {
+                  a.a(parama, "none");
+                  i = 1;
+                  continue;
+                  paramHashSet = null;
+                  break;
+                }
+              }
+            }
+            if (i == 1) {
+              break;
+            }
+            AppMethodBeat.o(291941);
+            return;
+          }
+        }
+        AppMethodBeat.o(291941);
+        return;
+      }
+      parama = this.amk;
+      p.j(parama, "itemView");
+      parama.setTag(paramoo);
+      try
+      {
+        i = paramoo.RWw.COi;
+        switch (i)
+        {
+        default: 
+          AppMethodBeat.o(291941);
+          return;
+        }
+      }
+      catch (Exception parama)
+      {
+        paramoo = a.Hhq;
+        Log.printErrStackTrace(a.access$getTAG$cp(), (Throwable)parama, "", new Object[0]);
+      }
+      parama = this.amk;
+      if (parama == null)
+      {
+        parama = new t("null cannot be cast to non-null type android.view.ViewGroup");
+        AppMethodBeat.o(291941);
+        throw parama;
+        AppMethodBeat.o(291941);
+        return;
+      }
+      ((ViewGroup)parama).removeAllViews();
+      parama = this.amk;
+      if (parama == null)
+      {
+        parama = new t("null cannot be cast to non-null type android.view.ViewGroup");
+        AppMethodBeat.o(291941);
+        throw parama;
+      }
+      paramHashSet = (ViewGroup)parama;
+      parama = paramoo.RWx;
+      p.j(parama, "bizMsg.Text");
+      Object localObject1 = paramoo.RWw;
+      p.j(localObject1, "bizMsg.BaseInfo");
+      paramoo = new a.g(10, a.e.Hhw, paramHashSet);
+      paramInt = ((acj)localObject1).HlE;
+      paramHashSet = this.HeM;
+      parama = parama.lpy;
+      p.j(parama, "text.Content");
+      paramoo.a(paramInt, paramHashSet, parama);
+      AppMethodBeat.o(291941);
+      return;
+      parama = this.amk;
+      if (parama == null)
+      {
+        parama = new t("null cannot be cast to non-null type android.view.ViewGroup");
+        AppMethodBeat.o(291941);
+        throw parama;
+      }
+      ((ViewGroup)parama).removeAllViews();
+      int j = paramoo.RWB.RTM.size();
+      if (j > 1) {
+        parama = a.e.Hht;
+      }
+      Object localObject2;
+      label720:
+      label868:
+      boolean bool;
+      while (paramoo.RWB.RTK.RTh != 0)
+      {
+        paramHashSet = this.amk;
+        if (paramHashSet == null)
+        {
+          parama = new t("null cannot be cast to non-null type android.view.ViewGroup");
+          AppMethodBeat.o(291941);
+          throw parama;
+          parama = a.e.Hhw;
+        }
+        else
+        {
+          localObject2 = (ViewGroup)paramHashSet;
+          paramHashSet = paramoo.RWB.RTM.get(0);
+          p.j(paramHashSet, "bizMsg.AppMsg.DetailInfo[0]");
+          paramHashSet = (my)paramHashSet;
+          localObject1 = paramoo.RWB.RTK;
+          p.j(localObject1, "bizMsg.AppMsg.BaseInfo");
+          Object localObject3 = paramoo.RWw;
+          p.j(localObject3, "bizMsg.BaseInfo");
+          Object localObject4 = a.Hhq;
+          Log.v(a.access$getTAG$cp(), "fillTopSlot:" + paramHashSet.RTk);
+          localObject2 = new a.g(paramHashSet.lpx, parama, (ViewGroup)localObject2);
+          if ((paramHashSet.lpx != 8) && (paramHashSet.lpx != 10))
+          {
+            ((a.g)localObject2).Hfd = paramHashSet.RTG;
+            ((a.g)localObject2).url = paramHashSet.RTk;
+            localObject4 = paramHashSet.fwr;
+            p.j(localObject4, "detail.Title");
+            ((a.g)localObject2).setTitle((String)localObject4);
+          }
+          if (parama == a.e.Hhw)
+          {
+            parama = (CharSequence)paramHashSet.RTi;
+            if (parama == null) {
+              break label1477;
+            }
+            if (!kotlin.n.n.ba(parama)) {
+              break label1510;
+            }
+            break label1477;
+            if (i == 0) {
+              ((MMNeat7extView)((a.g)localObject2).HfJ.getValue()).aL((CharSequence)paramHashSet.RTi);
+            }
+          }
+          parama = (CharSequence)paramHashSet.RTz;
+          if (parama == null) {
+            break label1483;
+          }
+          if (!kotlin.n.n.ba(parama)) {
+            break label1516;
+          }
+          break label1483;
+          label770:
+          if (i == 0)
+          {
+            parama = ((a.g)localObject2).fre();
+            p.j(parama, "view.showDescTv");
+            parama.setText((CharSequence)paramHashSet.RTz);
+          }
+          parama = ((a.g)localObject2).fre();
+          if (parama != null)
+          {
+            if ((((a.g)localObject2).Hfd != 1) || (this.HeL)) {
+              break label1522;
+            }
+            i = 4;
+            label827:
+            parama.setVisibility(i);
+          }
+          switch (paramHashSet.lpx)
+          {
+          case 6: 
+            switch (paramHashSet.lpx)
+            {
+            case 8: 
+            case 9: 
+              switch (paramHashSet.lpx)
+              {
+              case 0: 
+                parama = new String[2];
+                parama[0] = paramHashSet.RTm;
+                parama[1] = paramHashSet.RTo;
+                ((a.g)localObject2).setImageUrl(M(parama));
+              }
+              break;
+            }
+          case 5: 
+          case 7: 
+          case 8: 
+            for (;;)
+            {
+              label912:
+              label936:
+              label955:
+              label964:
+              a((View)((a.g)localObject2).frf(), paramHashSet, (mx)localObject1, paramInt);
+              break label1498;
+              label984:
+              while (i < j)
+              {
+                parama = this.amk;
+                p.j(parama, "itemView");
+                paramHashSet = (ViewGroup)parama;
+                parama = paramoo.RWB.RTM.get(i);
+                p.j(parama, "bizMsg.AppMsg.DetailInfo[i]");
+                localObject1 = (my)parama;
+                localObject2 = paramoo.RWB.RTK;
+                p.j(localObject2, "bizMsg.AppMsg.BaseInfo");
+                if (i != j - 1) {
+                  break label1470;
+                }
+                parama = a.e.Hhv;
+                a(paramHashSet, (my)localObject1, (mx)localObject2, parama, paramInt);
+                i += 1;
+              }
+              label1063:
+              parama = (TextView)((a.g)localObject2).HfE.getValue();
+              p.j(parama, "view.videoDurationTv");
+              parama.setText((CharSequence)com.tencent.mm.aj.m.uD(paramHashSet.RTy));
+              break label868;
+              parama = (TextView)((a.g)localObject2).HfF.getValue();
+              p.j(parama, "view.voiceDurationTv");
+              parama.setText((CharSequence)com.tencent.mm.aj.m.uD(paramHashSet.RTt));
+              break label868;
+              if (paramHashSet.EFG <= 1) {
+                break label868;
+              }
+              parama = (TextView)((a.g)localObject2).Hfb.getValue();
+              p.j(parama, "view.picCntTv");
+              parama.setText((CharSequence)String.valueOf(paramHashSet.EFG));
+              break label868;
+              parama = (CharSequence)paramHashSet.RTi;
+              if (parama == null) {
+                break label1528;
+              }
+              if (!kotlin.n.n.ba(parama)) {
+                break label1542;
+              }
+              break label1528;
+              label1228:
+              ((a.g)localObject2).wg(bool);
+            }
+            i = ((acj)localObject3).HlE;
+            parama = this.HeM;
+            localObject3 = paramHashSet.fwr;
+            p.j(localObject3, "detail.Title");
+            ((a.g)localObject2).a(i, parama, (String)localObject3);
+            parama = (CharSequence)paramHashSet.RTz;
+            if (parama == null) {
+              break label1554;
+            }
+            if (!kotlin.n.n.ba(parama)) {
+              break label1560;
+            }
+            break label1554;
+          }
+        }
+      }
+      for (;;)
+      {
+        if (i != 0) {
+          break label964;
+        }
+        parama = ((a.g)localObject2).fre();
+        p.j(parama, "view.showDescTv");
+        parama.setText((CharSequence)paramHashSet.RTz);
+        break label964;
+        parama = new String[3];
+        parama[0] = paramHashSet.RTI;
+        parama[1] = paramHashSet.RTm;
+        parama[2] = paramHashSet.RTo;
+        break label955;
+        parama = new String[2];
+        parama[0] = paramHashSet.RTo;
+        parama[1] = paramHashSet.RTm;
+        break label955;
+        paramHashSet = this.amk;
+        if (paramHashSet == null)
+        {
+          parama = new t("null cannot be cast to non-null type android.view.ViewGroup");
+          AppMethodBeat.o(291941);
+          throw parama;
+        }
+        paramHashSet = (ViewGroup)paramHashSet;
+        localObject1 = paramoo.RWB.RTM.get(0);
+        p.j(localObject1, "bizMsg.AppMsg.DetailInfo[0]");
+        localObject1 = (my)localObject1;
+        localObject2 = paramoo.RWB.RTK;
+        p.j(localObject2, "bizMsg.AppMsg.BaseInfo");
+        a(paramHashSet, (my)localObject1, (mx)localObject2, parama, paramInt);
+        break label1498;
+        label1470:
+        parama = a.e.Hhu;
+        break label1063;
+        label1477:
+        i = 1;
+        break label720;
+        label1483:
+        i = 1;
+        break label770;
+        break label868;
+        break label912;
+        break label936;
+        label1498:
+        if (j <= 1) {
+          break;
+        }
+        i = 1;
+        break label984;
+        label1510:
+        i = 0;
+        break label720;
+        label1516:
+        i = 0;
+        break label770;
+        label1522:
+        i = 0;
+        break label827;
+        label1528:
+        for (i = 1;; i = 0)
+        {
+          if (i != 0) {
+            break label1548;
+          }
+          bool = true;
+          break;
+        }
+        label1542:
+        label1548:
+        bool = false;
+        break label1228;
+        label1554:
+        i = 1;
+        continue;
+        label1560:
+        i = 0;
+      }
+    }
+    
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$newBizMsgViewHolder$fillSlotTarget$1$3"})
     static final class a
       implements View.OnClickListener
     {
-      a(a.g paramg, dey paramdey) {}
+      a(a.i.b paramb, String paramString, a.i parami, my parammy) {}
       
       public final void onClick(View paramView)
       {
-        AppMethodBeat.i(230800);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$VideoChannelViewHolder$fillVideoChannel$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        paramView = (CharSequence)paramdey.pTL;
-        if ((paramView == null) || (paramView.length() == 0)) {}
+        AppMethodBeat.i(285844);
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$newBizMsgViewHolder$fillSlotTarget$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+        this.HhE.invoke();
+        localObject = new e.g();
+        e.h localh = new e.h();
+        localh.QuD = str;
+        localh.url = parammy.RTk;
+        localh.title = parammy.fwr;
+        localh.lpY = "";
+        localh.playUrl = parammy.RTu;
+        localh.coverUrl = parammy.RTm;
+        ((e.g)localObject).XeN = localh;
+        paramView.setTag(localObject);
+        s.hL(paramView);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$newBizMsgViewHolder$fillSlotTarget$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(285844);
+      }
+    }
+    
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"drawPlaying", "", "invoke"})
+    static final class b
+      extends kotlin.g.b.q
+      implements kotlin.g.a.a<kotlin.x>
+    {
+      b(ImageView paramImageView)
+      {
+        super();
+      }
+      
+      public final void invoke()
+      {
+        AppMethodBeat.i(283272);
+        this.wXn.setImageResource(R.g.dmz);
+        Object localObject = this.wXn.getDrawable();
+        if (localObject == null)
+        {
+          localObject = new t("null cannot be cast to non-null type android.graphics.drawable.AnimationDrawable");
+          AppMethodBeat.o(283272);
+          throw ((Throwable)localObject);
+        }
+        localObject = (AnimationDrawable)localObject;
+        if (localObject != null)
+        {
+          ((AnimationDrawable)localObject).start();
+          AppMethodBeat.o(283272);
+          return;
+        }
+        AppMethodBeat.o(283272);
+      }
+    }
+    
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"drawPlay", "", "invoke"})
+    static final class c
+      extends kotlin.g.b.q
+      implements kotlin.g.a.a<kotlin.x>
+    {
+      c(ImageView paramImageView)
+      {
+        super();
+      }
+      
+      public final void invoke()
+      {
+        AppMethodBeat.i(280206);
+        this.wXn.setImageResource(R.g.dmy);
+        AppMethodBeat.o(280206);
+      }
+    }
+    
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    static final class d
+      implements View.OnClickListener
+    {
+      d(a.i parami, my parammy, mx parammx, View paramView, int paramInt) {}
+      
+      public final void onClick(View paramView)
+      {
+        AppMethodBeat.i(197343);
+        Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject1).bn(paramView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$newBizMsgViewHolder$fillSlotTarget$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aFi());
+        paramView = a.Hhq;
+        Log.i(a.access$getTAG$cp(), "onClick jump to url:%s", new Object[] { parammy.RTk });
+        if (a.i.a(this.HhF) == null)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$newBizMsgViewHolder$fillSlotTarget$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(197343);
+          return;
+        }
+        paramView = new Intent();
+        localObject1 = com.tencent.mm.aj.m.e(parammy.RTk, 126, -1, 0);
+        paramView.putExtra("rawUrl", (String)localObject1);
+        paramView.putExtra("useJs", true);
+        paramView.putExtra("vertical_scroll", true);
+        paramView.putExtra("geta8key_scene", 3);
+        Object localObject2 = a.i.a(this.HhF);
+        if (localObject2 == null) {
+          p.iCn();
+        }
+        paramView.putExtra("geta8key_username", ((a)localObject2).contact.getUsername());
+        localObject2 = paramView.getStringExtra("prePublishId");
+        int i;
+        int j;
+        int k;
+        if (!Util.isNullOrNil((String)localObject2))
+        {
+          paramView.putExtra("KPublisherId", (String)localObject2);
+          paramView.putExtra("prePublishId", (String)localObject2);
+          paramView.putExtra("preUsername", paramView.getStringExtra("preUsername"));
+          paramView.putExtra("preChatName", paramView.getStringExtra("preChatName"));
+          paramView.putExtra("preChatTYPE", paramView.getIntExtra("preChatTYPE", 0));
+          i = paramView.getIntExtra("KOpenArticleSceneFromScene", 10000);
+          if (parammy.lpx == 5)
+          {
+            paramView.putExtra(f.b.VRT, 126);
+            paramView.putExtra(f.b.VRU, i);
+            paramView.putExtra("biz_video_session_id", ab.getSessionId());
+            localObject2 = new com.tencent.mm.aj.x();
+            ((com.tencent.mm.aj.x)localObject2).lpD = paramView.getStringExtra("KPublisherId");
+            Object localObject3 = a.i.a(this.HhF);
+            if (localObject3 == null) {
+              p.iCn();
+            }
+            ((com.tencent.mm.aj.x)localObject2).fzT = ((a)localObject3).contact.getUsername();
+            localObject3 = a.i.a(this.HhF);
+            if (localObject3 == null) {
+              p.iCn();
+            }
+            ((com.tencent.mm.aj.x)localObject2).lpC = ((a)localObject3).contact.ayr();
+            ((com.tencent.mm.aj.x)localObject2).lpE.url = ((String)localObject1);
+            ((com.tencent.mm.aj.x)localObject2).lpE.title = parammy.fwr;
+            ((com.tencent.mm.aj.x)localObject2).lpE.lpM = "detail.videoDigest";
+            ((com.tencent.mm.aj.x)localObject2).lpE.lpK = parammy.RTm;
+            ((com.tencent.mm.aj.x)localObject2).lpE.type = parammy.lpx;
+            ((com.tencent.mm.aj.x)localObject2).lpE.time = parammx.CreateTime;
+            ((com.tencent.mm.aj.x)localObject2).lpE.lpO = parammy.RTy;
+            ((com.tencent.mm.aj.x)localObject2).lpE.videoWidth = parammy.RTw;
+            ((com.tencent.mm.aj.x)localObject2).lpE.videoHeight = parammy.RTx;
+            ((com.tencent.mm.aj.x)localObject2).lpE.vid = parammy.RTv;
+            ((com.tencent.mm.aj.x)localObject2).v(paramView);
+            localObject2 = a.Hhq;
+            Log.i(a.access$getTAG$cp(), "jump to native video");
+            localObject2 = new int[2];
+            localObject3 = (ImageView)paramView.findViewById(R.h.dtY);
+            if (localObject3 != null)
+            {
+              j = ((ImageView)localObject3).getWidth();
+              k = ((ImageView)localObject3).getHeight();
+              ((ImageView)localObject3).getLocationInWindow((int[])localObject2);
+              paramView.putExtra("img_gallery_width", j).putExtra("img_gallery_height", k).putExtra("img_gallery_left", localObject2[0]).putExtra("img_gallery_top", localObject2[1]);
+            }
+            paramView.addFlags(268435456);
+          }
+          if ((!((com.tencent.mm.plugin.brandservice.a.c)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.brandservice.a.c.class)).Gw(6)) || (!((com.tencent.mm.plugin.brandservice.a.c)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.brandservice.a.c.class)).a(a.i.b(this.HhF), (String)localObject1, parammy.lpx, 126, i, paramView))) {
+            break label879;
+          }
+          paramView = a.Hhq;
+          Log.i(a.access$getTAG$cp(), "jump to TmplWebview");
+        }
+        for (;;)
+        {
+          paramView = com.tencent.mm.plugin.profile.ui.newbizinfo.c.d.Hgc;
+          paramView = a.i.a(this.HhF);
+          if (paramView == null) {
+            p.iCn();
+          }
+          paramView = paramView.contact.getUsername();
+          p.j(paramView, "widget!!.contact.username");
+          localObject1 = a.i.a(this.HhF);
+          if (localObject1 == null) {
+            p.iCn();
+          }
+          long l = ((a)localObject1).enterTime;
+          i = parammx.RTg;
+          j = parammy.RTj;
+          k = parammy.lpx;
+          int m = paramInt;
+          int n = parammx.CreateTime;
+          localObject1 = a.i.a(this.HhF);
+          if (localObject1 == null) {
+            p.iCn();
+          }
+          com.tencent.mm.plugin.profile.ui.newbizinfo.c.d.a(paramView, l, i, j, k, m, n, ((a)localObject1).mXL);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$newBizMsgViewHolder$fillSlotTarget$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(197343);
+          return;
+          paramView.putExtra("prePublishId", "brand_profile");
+          paramView.putExtra("KPublisherId", "brand_profile");
+          break;
+          label879:
+          com.tencent.mm.by.c.b(a.i.b(this.HhF), "webview", ".ui.tools.WebViewUI", paramView);
+        }
+      }
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$newVideoChannelViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "coverSize", "", "inflater", "Landroid/view/LayoutInflater;", "radius", "", "widget", "Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter;", "dealData", "", "videoInfo", "Lcom/tencent/mm/protocal/protobuf/ProfileNotifyInfo;", "fillVideoChannel", "fillVideoItem", "videoItem", "Lcom/tencent/mm/protocal/protobuf/NotifyVideoInfo;", "getDurationText", "", "app_release"})
+  public static final class j
+    extends RecyclerView.v
+  {
+    private int HfO;
+    a HhD;
+    private LayoutInflater mYa;
+    private float radius;
+    
+    public j(View paramView)
+    {
+      super();
+      AppMethodBeat.i(272596);
+      this.HfO = com.tencent.mm.ci.a.fromDPToPix(paramView.getContext(), 64);
+      this.radius = 2.0F;
+      paramView = LayoutInflater.from(paramView.getContext());
+      p.j(paramView, "LayoutInflater.from(itemView.context)");
+      this.mYa = paramView;
+      AppMethodBeat.o(272596);
+    }
+    
+    final void b(final dor paramdor)
+    {
+      AppMethodBeat.i(272595);
+      Object localObject2 = (TextView)this.amk.findViewById(R.h.dYO);
+      Object localObject1 = (CharSequence)paramdor.TVS;
+      int i;
+      label59:
+      label117:
+      Object localObject3;
+      label130:
+      label208:
+      Object localObject4;
+      Object localObject5;
+      int j;
+      int k;
+      if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0))
+      {
+        i = 1;
+        if (i != 0) {
+          break label651;
+        }
+        localObject1 = (CharSequence)paramdor.TVS;
+        ((TextView)localObject2).setText((CharSequence)localObject1);
+        localObject1 = com.tencent.mm.plugin.brandservice.ui.b.d.sTw;
+        com.tencent.mm.plugin.brandservice.ui.b.d.l((TextView)localObject2);
+        localObject2 = (TextView)this.amk.findViewById(R.h.dYN);
+        localObject1 = (CharSequence)paramdor.wording;
+        if ((localObject1 != null) && (((CharSequence)localObject1).length() != 0)) {
+          break label685;
+        }
+        i = 1;
+        if (i != 0) {
+          break label690;
+        }
+        localObject1 = (CharSequence)paramdor.wording;
+        ((TextView)localObject2).setText((CharSequence)localObject1);
+        localObject1 = paramdor.TVR;
+        localObject2 = a.Hhq;
+        Log.v(a.access$getTAG$cp(), "alvinluo fillVideoChannel size: %d", new Object[] { Integer.valueOf(((LinkedList)localObject1).size()) });
+        localObject2 = (LinearLayout)this.amk.findViewById(R.h.dYD);
+        ((LinearLayout)localObject2).removeAllViews();
+        if (localObject1 == null) {
+          break label771;
+        }
+        Iterator localIterator = ((Iterable)localObject1).iterator();
+        do
+        {
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localObject3 = (dda)localIterator.next();
+        } while (localObject3 == null);
+        localObject1 = a.Hhq;
+        Log.d(a.access$getTAG$cp(), "alvinluo videoItem url: %s, duration: %d", new Object[] { ((dda)localObject3).TKP, Integer.valueOf(((dda)localObject3).duration) });
+        localObject4 = this.mYa.inflate(R.i.efi, null, false);
+        ((LinearLayout)localObject2).addView((View)localObject4);
+        p.j(localObject4, "itemView");
+        localObject1 = ((View)localObject4).findViewById(R.h.video_duration);
+        p.j(localObject1, "itemView.findViewById<Te…iew>(R.id.video_duration)");
+        localObject5 = (TextView)localObject1;
+        i = ((dda)localObject3).duration / 3600;
+        j = (((dda)localObject3).duration - i * 3600) / 60;
+        k = ((dda)localObject3).duration % 60;
+        localObject1 = a.Hhq;
+        Log.i(a.access$getTAG$cp(), "alvinluo getDurationText " + i + ':' + j + ':' + k);
+        if (i <= 0) {
+          break label724;
+        }
+        localObject1 = af.aaBG;
+        localObject1 = String.format("%d:%02d:%02d", Arrays.copyOf(new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) }, 3));
+        p.j(localObject1, "java.lang.String.format(format, *args)");
+      }
+      for (;;)
+      {
+        ((TextView)localObject5).setText((CharSequence)localObject1);
+        localObject1 = (ImageView)((View)localObject4).findViewById(R.h.dYH);
+        localObject3 = com.tencent.mm.api.b.M(((dda)localObject3).TKP, 2);
+        localObject4 = new c.a().bmF().dO(this.HfO, this.HfO).Ws("radius_" + this.radius).wz(R.g.don).a((com.tencent.mm.ay.a.c.c)new com.tencent.mm.pluginsdk.ui.applet.n(3)).a((com.tencent.mm.ay.a.c.a)new com.tencent.mm.pluginsdk.ui.applet.e(3)).Wq(w.bpO((String)localObject3)).bmL();
+        localObject5 = new b((String)localObject3, (ImageView)localObject1);
+        localObject5 = new com.tencent.mm.pluginsdk.ui.applet.m(3, this.HfO, this.HfO, true, true, this.radius, (m.a)localObject5);
+        com.tencent.mm.ay.q.bml().a((String)localObject3, (ImageView)localObject1, (com.tencent.mm.ay.a.a.c)localObject4, (com.tencent.mm.ay.a.c.h)localObject5);
+        break label208;
+        i = 0;
+        break;
+        label651:
+        localObject1 = ((TextView)localObject2).getContext();
+        p.j(localObject1, "context");
+        localObject1 = (CharSequence)((Context)localObject1).getResources().getString(R.l.esW);
+        break label59;
+        label685:
+        i = 0;
+        break label117;
+        label690:
+        localObject1 = ((TextView)localObject2).getContext();
+        p.j(localObject1, "context");
+        localObject1 = (CharSequence)((Context)localObject1).getResources().getString(R.l.esV);
+        break label130;
+        label724:
+        localObject1 = af.aaBG;
+        localObject1 = String.format("%02d:%02d", Arrays.copyOf(new Object[] { Integer.valueOf(j), Integer.valueOf(k) }, 2));
+        p.j(localObject1, "java.lang.String.format(format, *args)");
+      }
+      label771:
+      localObject1 = this.amk.findViewById(R.h.root_layout);
+      if (localObject1 != null)
+      {
+        ((View)localObject1).setOnClickListener((View.OnClickListener)new a(this, paramdor));
+        AppMethodBeat.o(272595);
+        return;
+      }
+      AppMethodBeat.o(272595);
+    }
+    
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    static final class a
+      implements View.OnClickListener
+    {
+      a(a.j paramj, dor paramdor) {}
+      
+      public final void onClick(View paramView)
+      {
+        AppMethodBeat.i(284926);
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$newVideoChannelViewHolder$fillVideoChannel$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+        if (a.j.a(this.HhG) != null)
+        {
+          paramView = (CharSequence)paramdor.jump_url;
+          if ((paramView != null) && (paramView.length() != 0)) {
+            break label252;
+          }
+        }
+        label252:
         for (int i = 1;; i = 0)
         {
           if (i == 0)
           {
+            if (a.j.a(this.HhG) == null) {
+              p.iCn();
+            }
             paramView = new Intent();
-            paramView.putExtra("rawUrl", paramdey.pTL);
-            paramView.putExtra("geta8key_username", this.Bnj.BmW.contact.getUsername());
-            com.tencent.mm.br.c.b(this.Bnj.context, "webview", ".ui.tools.WebViewUI", paramView);
-            com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.c(this.Bnj.BmW.contact.getUsername(), 1402, this.Bnj.BmW.kgm, this.Bnj.BmW.enterTime);
+            paramView.putExtra("rawUrl", paramdor.jump_url);
+            localObject = a.j.a(this.HhG);
+            if (localObject == null) {
+              p.iCn();
+            }
+            paramView.putExtra("geta8key_username", ((a)localObject).contact.getUsername());
+            localObject = this.HhG.amk;
+            p.j(localObject, "itemView");
+            com.tencent.mm.by.c.b(((View)localObject).getContext(), "webview", ".ui.tools.WebViewUI", paramView);
+            paramView = a.j.a(this.HhG);
+            if (paramView == null) {
+              p.iCn();
+            }
+            paramView = paramView.contact.getUsername();
+            localObject = a.j.a(this.HhG);
+            if (localObject == null) {
+              p.iCn();
+            }
+            i = ((a)localObject).mXL;
+            localObject = a.j.a(this.HhG);
+            if (localObject == null) {
+              p.iCn();
+            }
+            com.tencent.mm.plugin.profile.ui.newbizinfo.c.c.c(paramView, 1402, i, ((a)localObject).enterTime);
           }
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$VideoChannelViewHolder$fillVideoChannel$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(230800);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$newVideoChannelViewHolder$fillVideoChannel$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(284926);
           return;
         }
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$VideoChannelViewHolder$fillVideoItem$imageLoaderCallback$1", "Lcom/tencent/mm/pluginsdk/ui/applet/ChattingBizImageDownloadListener$LoadTitleBitmapCallback;", "onFinish", "", "onStart", "app_release"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$newVideoChannelViewHolder$fillVideoItem$imageLoaderCallback$1", "Lcom/tencent/mm/pluginsdk/ui/applet/ChattingBizImageDownloadListener$LoadTitleBitmapCallback;", "onFinish", "", "onStart", "app_release"})
     public static final class b
       implements m.a
     {
@@ -2057,29 +2248,26 @@ public final class a
       
       public final void onFinish()
       {
-        AppMethodBeat.i(230801);
-        a.c localc = a.BmV;
-        Log.v(a.access$getTAG$cp(), "imageUrl onFinish:" + this.tra);
-        paramContext.setBackgroundResource(2131233974);
-        AppMethodBeat.o(230801);
+        AppMethodBeat.i(275788);
+        a.c localc = a.Hhq;
+        Log.v(a.access$getTAG$cp(), "imageUrl onFinish:" + this.wXO);
+        this.HfR.setBackgroundResource(R.g.mm_trans);
+        AppMethodBeat.o(275788);
       }
       
       public final void onStart()
       {
-        AppMethodBeat.i(230802);
-        a.c localc = a.BmV;
-        Log.v(a.access$getTAG$cp(), "imageUrl onStart:" + this.tra);
-        AppMethodBeat.o(230802);
+        AppMethodBeat.i(275789);
+        a.c localc = a.Hhq;
+        Log.v(a.access$getTAG$cp(), "imageUrl onStart:" + this.wXO);
+        AppMethodBeat.o(275789);
       }
     }
   }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/profile/ui/tab/list/BizProfileTabMsgAdapter$ViewHolder;", "", "()V", "view", "Landroid/view/View;", "getView", "()Landroid/view/View;", "app_release"})
-  static abstract class h {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.tab.list.a
  * JD-Core Version:    0.7.0.1
  */

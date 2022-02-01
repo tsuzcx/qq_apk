@@ -15,102 +15,102 @@ import java.util.Set;
 public class ArtistCacheManager
   extends BroadcastReceiver
 {
-  private static ArtistCacheManager gpq;
-  public static HashMap<String, a> gpr;
-  private static HashSet<com.tencent.mm.e.a> gps;
-  public String gpt;
+  private static HashSet<com.tencent.mm.e.a> iTA;
+  private static ArtistCacheManager iTy;
+  public static HashMap<String, a> iTz;
+  public String iTB;
   
   static
   {
     AppMethodBeat.i(9186);
-    gpr = new HashMap();
-    gps = new HashSet();
+    iTz = new HashMap();
+    iTA = new HashSet();
     AppMethodBeat.o(9186);
   }
   
-  public static ArtistCacheManager alA()
+  public static ArtistCacheManager arz()
   {
     AppMethodBeat.i(9181);
-    if (gpq == null) {
-      gpq = new ArtistCacheManager();
+    if (iTy == null) {
+      iTy = new ArtistCacheManager();
     }
-    ArtistCacheManager localArtistCacheManager = gpq;
+    ArtistCacheManager localArtistCacheManager = iTy;
     AppMethodBeat.o(9181);
     return localArtistCacheManager;
   }
   
-  public final void Dn(String paramString)
+  public final void Ke(String paramString)
   {
-    AppMethodBeat.i(204745);
-    this.gpt = paramString;
-    if (!gpr.containsKey(paramString)) {
-      gpr.put(paramString, new a());
+    AppMethodBeat.i(259890);
+    this.iTB = paramString;
+    if (!iTz.containsKey(paramString)) {
+      iTz.put(paramString, new a());
     }
-    AppMethodBeat.o(204745);
+    AppMethodBeat.o(259890);
   }
   
-  public final void Do(String paramString)
+  public final void Kf(String paramString)
   {
-    AppMethodBeat.i(204746);
-    this.gpt = null;
-    if (gpr.containsKey(paramString))
+    AppMethodBeat.i(259891);
+    this.iTB = null;
+    if (iTz.containsKey(paramString))
     {
-      ((a)gpr.get(paramString)).clearAll();
-      gpr.remove(paramString);
+      ((a)iTz.get(paramString)).clearAll();
+      iTz.remove(paramString);
     }
     ThreadPool.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(9176);
-        com.tencent.mm.cl.a.boE(com.tencent.mm.loader.j.b.aKS());
+        com.tencent.mm.cs.a.bBt(com.tencent.mm.loader.j.b.aSU());
         AppMethodBeat.o(9176);
       }
     }, "MicroMsg.ArtistCacheManager[clearAllCache]");
-    AppMethodBeat.o(204746);
+    AppMethodBeat.o(259891);
   }
   
   public final <T extends f> T a(com.tencent.mm.e.a parama)
   {
     AppMethodBeat.i(9182);
-    if (gpr.containsKey(this.gpt))
+    if (iTz.containsKey(this.iTB))
     {
-      parama = ((a)gpr.get(this.gpt)).c(parama);
+      parama = ((a)iTz.get(this.iTB)).c(parama);
       AppMethodBeat.o(9182);
       return parama;
     }
-    Log.e("MicroMsg.ArtistCacheManager", "[getArtistCache] id is not contains! %s", new Object[] { this.gpt });
+    Log.e("MicroMsg.ArtistCacheManager", "[getArtistCache] id is not contains! %s", new Object[] { this.iTB });
     AppMethodBeat.o(9182);
     return null;
   }
   
-  public final void alB()
+  public final void arA()
   {
     AppMethodBeat.i(9185);
     Log.i("MicroMsg.ArtistCacheManager", "[clearAllCache]");
-    Iterator localIterator = gpr.entrySet().iterator();
+    Iterator localIterator = iTz.entrySet().iterator();
     while (localIterator.hasNext()) {
       ((a)((Map.Entry)localIterator.next()).getValue()).clearAll();
     }
-    gps.clear();
-    gpq = null;
+    iTA.clear();
+    iTy = null;
     ThreadPool.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(9177);
-        com.tencent.mm.cl.a.boE(com.tencent.mm.loader.j.b.aKS());
+        com.tencent.mm.cs.a.bBt(com.tencent.mm.loader.j.b.aSU());
         AppMethodBeat.o(9177);
       }
     }, "MicroMsg.ArtistCacheManager[clearAllCache]");
-    c.alF().map.clear();
+    c.arE().map.clear();
     AppMethodBeat.o(9185);
   }
   
   public final boolean b(com.tencent.mm.e.a parama)
   {
     AppMethodBeat.i(9183);
-    if ((gpr.containsKey(this.gpt)) && (((a)gpr.get(this.gpt)).gpw.containsKey(parama)))
+    if ((iTz.containsKey(this.iTB)) && (((a)iTz.get(this.iTB)).iTE.containsKey(parama)))
     {
       AppMethodBeat.o(9183);
       return true;
@@ -125,27 +125,27 @@ public class ArtistCacheManager
     AppMethodBeat.i(9184);
     Log.i("MicroMsg.ArtistCacheManager", "[onReceive]");
     if ((paramIntent != null) && (paramIntent.getAction().equals("com.tencent.mm.plugin.photoedit.action.clear"))) {
-      alB();
+      arA();
     }
     AppMethodBeat.o(9184);
   }
   
   public final class a
   {
-    HashMap<com.tencent.mm.e.a, f> gpw;
+    HashMap<com.tencent.mm.e.a, f> iTE;
     
     a()
     {
       AppMethodBeat.i(9179);
-      this.gpw = new HashMap();
+      this.iTE = new HashMap();
       AppMethodBeat.o(9179);
     }
     
     private static f d(com.tencent.mm.e.a parama)
     {
-      AppMethodBeat.i(204744);
+      AppMethodBeat.i(260325);
       Object localObject = null;
-      switch (ArtistCacheManager.3.gpv[parama.ordinal()])
+      switch (ArtistCacheManager.3.iTD[parama.ordinal()])
       {
       default: 
         parama = localObject;
@@ -155,7 +155,7 @@ public class ArtistCacheManager
         if (parama != null) {
           parama.onCreate();
         }
-        AppMethodBeat.o(204744);
+        AppMethodBeat.o(260325);
         return parama;
         parama = new b();
         continue;
@@ -171,23 +171,23 @@ public class ArtistCacheManager
     
     public final f c(com.tencent.mm.e.a parama)
     {
-      AppMethodBeat.i(204743);
-      if (!this.gpw.containsKey(parama))
+      AppMethodBeat.i(260322);
+      if (!this.iTE.containsKey(parama))
       {
         f localf = d(parama);
-        if ((localf != null) && (!this.gpw.containsKey(parama))) {
-          this.gpw.put(parama, localf);
+        if ((localf != null) && (!this.iTE.containsKey(parama))) {
+          this.iTE.put(parama, localf);
         }
       }
-      parama = (f)this.gpw.get(parama);
-      AppMethodBeat.o(204743);
+      parama = (f)this.iTE.get(parama);
+      AppMethodBeat.o(260322);
       return parama;
     }
     
     public final void clearAll()
     {
       AppMethodBeat.i(9180);
-      Iterator localIterator = this.gpw.entrySet().iterator();
+      Iterator localIterator = this.iTE.entrySet().iterator();
       while (localIterator.hasNext()) {
         ((f)((Map.Entry)localIterator.next()).getValue()).onDestroy();
       }
@@ -197,7 +197,7 @@ public class ArtistCacheManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.cache.ArtistCacheManager
  * JD-Core Version:    0.7.0.1
  */

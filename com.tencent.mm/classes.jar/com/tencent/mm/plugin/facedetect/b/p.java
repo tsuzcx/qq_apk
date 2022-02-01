@@ -1,138 +1,143 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.r;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q.a;
+import com.tencent.mm.an.q.b;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.ac;
-import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.protobuf.ccb;
-import com.tencent.mm.protocal.protobuf.ctb;
-import com.tencent.mm.protocal.protobuf.ctc;
-import com.tencent.mm.protocal.protobuf.qy;
+import com.tencent.mm.protocal.protobuf.dcb;
+import com.tencent.mm.protocal.protobuf.dvw;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 
-public abstract class p
-  extends r
-  implements com.tencent.mm.network.m
+public final class p
+  extends q
+  implements f
 {
-  static String sQc = null;
-  protected i callback = null;
+  private final s lCW;
+  private boolean wvU;
+  private String wvZ;
   
-  public static void arz(String paramString)
+  public p(long paramLong, String paramString1, String paramString2)
   {
-    sQc = paramString;
+    AppMethodBeat.i(103613);
+    this.wvU = false;
+    this.wvZ = "";
+    this.lCW = new g();
+    k.a locala = (k.a)this.lCW.getReqObj();
+    locala.wvD.TbJ = bkW();
+    locala.wvD.TbM = paramLong;
+    locala.wvD.UbO = paramString1;
+    locala.wvD.UbP = paramString2;
+    AppMethodBeat.o(103613);
   }
   
-  protected static String bbG()
+  final void azz(String paramString)
   {
-    return sQc;
+    AppMethodBeat.i(103616);
+    ((k.a)this.lCW.getReqObj()).wvD.TbJ = paramString;
+    AppMethodBeat.o(103616);
   }
   
-  public final void a(final int paramInt1, int paramInt2, String paramString, s params)
+  public final void c(int paramInt1, int paramInt2, String paramString, s params)
   {
-    Log.i("MicroMsg.NetSceneFaceRsaBase", "hy: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if ((paramInt1 == 4) && (paramInt2 == -102))
-    {
-      paramInt1 = params.getReqObj().getRsaInfo().ver;
-      Log.d("MicroMsg.NetSceneFaceRsaBase", "hy: summerauth auth MM_ERR_CERT_EXPIRED  getcert now  old ver:%d", new Object[] { Integer.valueOf(paramInt1) });
-      com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
+    boolean bool2 = true;
+    AppMethodBeat.i(103615);
+    Log.d("MicroMsg.NetSceneFaceRegFaceRsa", "hy: onGYNetEnd  errType:" + paramInt1 + " errCode:" + paramInt2);
+    params = (k.b)params.getRespObj();
+    boolean bool1;
+    int i;
+    if ((paramInt1 == 0) && (paramInt2 == 0)) {
+      if (params.wvE.UbR == 0)
       {
-        public final void run()
-        {
-          AppMethodBeat.i(103619);
-          new com.tencent.mm.modelsimple.m().doScene(p.a(p.this), new i()
-          {
-            public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, q paramAnonymous2q)
-            {
-              AppMethodBeat.i(103618);
-              Log.d("MicroMsg.NetSceneFaceRsaBase", "hy: summerauth dkcert getcert type:%d ret [%d,%d]", new Object[] { Integer.valueOf(paramAnonymous2q.getType()), Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) });
-              if ((paramAnonymous2Int1 != 0) || (paramAnonymous2Int2 != 0))
-              {
-                Log.e("MicroMsg.NetSceneFaceRsaBase", "hy: do scene err in rsa when get cert. clear ticket");
-                p.cSQ();
-                p.this.ary(p.bbG());
-                p.this.callback.onSceneEnd(paramAnonymous2Int1, paramAnonymous2Int2, "", p.this);
-                AppMethodBeat.o(103618);
-                return;
-              }
-              p.this.f(p.b(p.this));
-              AppMethodBeat.o(103618);
-            }
-          });
-          AppMethodBeat.o(103619);
+        bool1 = true;
+        this.wvU = bool1;
+        this.wvZ = params.wvE.UbQ;
+        i = params.wvE.UbR;
+        boolean bool3 = this.wvU;
+        paramInt2 = params.wvE.UbR;
+        if (Util.isNullOrNil(this.wvZ)) {
+          break label189;
         }
-      });
-      return;
+        bool1 = bool2;
+        label129:
+        Log.i("MicroMsg.NetSceneFaceRegFaceRsa", "hy: is verify ok: %b, youtuRet; %d, has random pwd: %b", new Object[] { Boolean.valueOf(bool3), Integer.valueOf(paramInt2), Boolean.valueOf(bool1) });
+      }
     }
-    c(paramInt1, paramInt2, paramString, params);
-  }
-  
-  public final void aYP()
-  {
-    if (this.callback != null) {
-      this.callback.onSceneEnd(3, -1, "", this);
-    }
-  }
-  
-  public final i aYQ()
-  {
-    return this.callback;
-  }
-  
-  abstract void ary(String paramString);
-  
-  public final qy b(s params)
-  {
-    params = f(params);
-    if (params != null) {
-      return params.KQk;
-    }
-    return null;
-  }
-  
-  public final ctb c(s params)
-  {
-    params = f(params);
-    if (params != null) {
-      return params.KQl;
-    }
-    return null;
-  }
-  
-  abstract void c(int paramInt1, int paramInt2, String paramString, s params);
-  
-  public final ccb d(s params)
-  {
-    params = f(params);
-    if (params != null) {
-      return params.KQj;
-    }
-    return null;
-  }
-  
-  public int doScene(com.tencent.mm.network.g paramg, i parami)
-  {
-    this.callback = parami;
-    if (!Util.isNullOrNil(sQc))
+    for (;;)
     {
-      Log.i("MicroMsg.NetSceneFaceRsaBase", "hy: has ticket: %s", new Object[] { sQc });
-      ary(sQc);
-      return f(paramg);
+      this.callback.onSceneEnd(paramInt1, i, paramString, this);
+      AppMethodBeat.o(103615);
+      return;
+      bool1 = false;
+      break;
+      label189:
+      bool1 = false;
+      break label129;
+      i = paramInt2;
+      if (params != null)
+      {
+        i = paramInt2;
+        if (params.wvE != null)
+        {
+          i = paramInt2;
+          if (params.wvE.UbR != 0)
+          {
+            Log.i("MicroMsg.NetSceneFaceRegFaceRsa", "hy: has detail ret. use");
+            i = params.wvE.UbR;
+          }
+        }
+      }
     }
-    return getType();
   }
   
-  abstract int f(com.tencent.mm.network.g paramg);
+  public final boolean dhS()
+  {
+    return true;
+  }
   
-  protected abstract ctc f(s params);
+  public final String dhT()
+  {
+    return this.wvZ;
+  }
+  
+  final int f(com.tencent.mm.network.g paramg)
+  {
+    AppMethodBeat.i(103614);
+    this.lCW.getReqObj();
+    int i = dispatch(paramg, this.lCW, this);
+    AppMethodBeat.o(103614);
+    return i;
+  }
+  
+  protected final dcb g(s params)
+  {
+    AppMethodBeat.i(103617);
+    params = ((k.b)params.getRespObj()).wvE.TbO;
+    AppMethodBeat.o(103617);
+    return params;
+  }
+  
+  public final int getType()
+  {
+    return 930;
+  }
+  
+  public final int securityLimitCount()
+  {
+    return 3;
+  }
+  
+  public final q.b securityVerificationChecked(s params)
+  {
+    return q.b.lCx;
+  }
+  
+  public final void setSecurityCheckError(q.a parama) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.b.p
  * JD-Core Version:    0.7.0.1
  */

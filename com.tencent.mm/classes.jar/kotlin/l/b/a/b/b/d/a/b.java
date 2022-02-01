@@ -9,27 +9,27 @@ import kotlin.l.b.a.b.b.ao;
 public final class b
   implements an
 {
-  public final Annotation TmG;
+  public final Annotation aaPA;
   
   public b(Annotation paramAnnotation)
   {
     AppMethodBeat.i(57352);
-    this.TmG = paramAnnotation;
+    this.aaPA = paramAnnotation;
     AppMethodBeat.o(57352);
   }
   
-  public final ao hBu()
+  public final ao iFJ()
   {
     AppMethodBeat.i(57351);
-    ao localao = ao.ThL;
-    p.g(localao, "SourceFile.NO_SOURCE_FILE");
+    ao localao = ao.aaKF;
+    p.j(localao, "SourceFile.NO_SOURCE_FILE");
     AppMethodBeat.o(57351);
     return localao;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.d.a.b
  * JD-Core Version:    0.7.0.1
  */

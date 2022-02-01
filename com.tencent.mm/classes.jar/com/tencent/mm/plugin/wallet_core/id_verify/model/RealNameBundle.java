@@ -10,35 +10,35 @@ public class RealNameBundle
   implements Parcelable
 {
   public static final Parcelable.Creator<RealNameBundle> CREATOR;
-  public String HTZ;
-  public String HUA;
-  public String HUa;
-  public String HUb;
-  public int HUc;
-  public String HUd;
-  public Profession HUe;
-  public String HUf;
-  public String HUg;
-  public String HUh;
-  public String HUi;
-  public int HUj;
-  public String HUk;
-  public int HUl;
-  public int HUm;
-  public int HUn;
-  public String HUo;
-  public int HUp;
-  public int HUq;
-  public int HUr;
-  public String HUs;
-  public String HUt;
-  public String HUu;
-  public String HUv;
-  public String HUw;
-  public int HUx;
-  public int HUy;
-  public int HUz;
-  public int fuA;
+  public int OMA;
+  public String OMB;
+  public String OMa;
+  public String OMb;
+  public String OMc;
+  public int OMd;
+  public String OMe;
+  public Profession OMf;
+  public String OMg;
+  public String OMh;
+  public String OMi;
+  public String OMj;
+  public int OMk;
+  public String OMl;
+  public int OMm;
+  public int OMn;
+  public int OMo;
+  public String OMp;
+  public int OMq;
+  public int OMr;
+  public int OMs;
+  public String OMt;
+  public String OMu;
+  public String OMv;
+  public String OMw;
+  public String OMx;
+  public int OMy;
+  public int OMz;
+  public int sex;
   
   static
   {
@@ -52,56 +52,56 @@ public class RealNameBundle
   protected RealNameBundle(Parcel paramParcel)
   {
     AppMethodBeat.i(70165);
-    this.HTZ = paramParcel.readString();
-    this.HUa = paramParcel.readString();
-    this.HUb = paramParcel.readString();
-    this.HUc = paramParcel.readInt();
-    this.HUd = paramParcel.readString();
-    this.HUe = ((Profession)paramParcel.readParcelable(Profession.class.getClassLoader()));
-    this.HUf = paramParcel.readString();
-    this.HUg = paramParcel.readString();
-    this.HUh = paramParcel.readString();
-    this.HUi = paramParcel.readString();
-    this.HUj = paramParcel.readInt();
-    this.HUk = paramParcel.readString();
-    this.HUl = paramParcel.readInt();
-    this.HUm = paramParcel.readInt();
-    this.HUn = paramParcel.readInt();
-    this.HUo = paramParcel.readString();
-    this.HUp = paramParcel.readInt();
-    this.HUq = paramParcel.readInt();
-    this.HUr = paramParcel.readInt();
-    this.HUs = paramParcel.readString();
-    this.HUt = paramParcel.readString();
-    this.HUu = paramParcel.readString();
-    this.HUv = paramParcel.readString();
-    this.HUw = paramParcel.readString();
-    this.HUx = paramParcel.readInt();
-    this.HUy = paramParcel.readInt();
-    this.HUz = paramParcel.readInt();
-    this.HUA = paramParcel.readString();
-    this.fuA = paramParcel.readInt();
+    this.OMa = paramParcel.readString();
+    this.OMb = paramParcel.readString();
+    this.OMc = paramParcel.readString();
+    this.OMd = paramParcel.readInt();
+    this.OMe = paramParcel.readString();
+    this.OMf = ((Profession)paramParcel.readParcelable(Profession.class.getClassLoader()));
+    this.OMg = paramParcel.readString();
+    this.OMh = paramParcel.readString();
+    this.OMi = paramParcel.readString();
+    this.OMj = paramParcel.readString();
+    this.OMk = paramParcel.readInt();
+    this.OMl = paramParcel.readString();
+    this.OMm = paramParcel.readInt();
+    this.OMn = paramParcel.readInt();
+    this.OMo = paramParcel.readInt();
+    this.OMp = paramParcel.readString();
+    this.OMq = paramParcel.readInt();
+    this.OMr = paramParcel.readInt();
+    this.OMs = paramParcel.readInt();
+    this.OMt = paramParcel.readString();
+    this.OMu = paramParcel.readString();
+    this.OMv = paramParcel.readString();
+    this.OMw = paramParcel.readString();
+    this.OMx = paramParcel.readString();
+    this.OMy = paramParcel.readInt();
+    this.OMz = paramParcel.readInt();
+    this.OMA = paramParcel.readInt();
+    this.OMB = paramParcel.readString();
+    this.sex = paramParcel.readInt();
     AppMethodBeat.o(70165);
   }
   
-  public final void aY(Map<String, String> paramMap)
+  public final void aS(Map<String, String> paramMap)
   {
     AppMethodBeat.i(174505);
-    paramMap.put("detail_address", this.HUv);
-    paramMap.put("phone_no", this.HUA);
-    paramMap.put("sex", String.valueOf(this.fuA));
-    paramMap.put("nationality", this.HUs);
-    paramMap.put("birth_date", this.HUo);
-    if (this.HUe != null) {}
-    for (String str = this.HUe.HTX;; str = "")
+    paramMap.put("detail_address", this.OMw);
+    paramMap.put("phone_no", this.OMB);
+    paramMap.put("sex", String.valueOf(this.sex));
+    paramMap.put("nationality", this.OMt);
+    paramMap.put("birth_date", this.OMp);
+    if (this.OMf != null) {}
+    for (String str = this.OMf.OLY;; str = "")
     {
       paramMap.put("profession_name", str);
-      paramMap.put("user_country", this.HUf);
-      paramMap.put("user_province", this.HUg);
-      paramMap.put("user_city", this.HUh);
-      paramMap.put("cre_expire_date", this.HUk);
-      paramMap.put("creid_renewal", String.valueOf(this.HUj));
-      paramMap.put("cre_effect_date", this.HUw);
+      paramMap.put("user_country", this.OMg);
+      paramMap.put("user_province", this.OMh);
+      paramMap.put("user_city", this.OMi);
+      paramMap.put("cre_expire_date", this.OMl);
+      paramMap.put("creid_renewal", String.valueOf(this.OMk));
+      paramMap.put("cre_effect_date", this.OMx);
       AppMethodBeat.o(174505);
       return;
     }
@@ -115,35 +115,35 @@ public class RealNameBundle
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70166);
-    paramParcel.writeString(this.HTZ);
-    paramParcel.writeString(this.HUa);
-    paramParcel.writeString(this.HUb);
-    paramParcel.writeInt(this.HUc);
-    paramParcel.writeString(this.HUd);
-    paramParcel.writeParcelable(this.HUe, 1);
-    paramParcel.writeString(this.HUf);
-    paramParcel.writeString(this.HUg);
-    paramParcel.writeString(this.HUh);
-    paramParcel.writeString(this.HUi);
-    paramParcel.writeInt(this.HUj);
-    paramParcel.writeString(this.HUk);
-    paramParcel.writeInt(this.HUl);
-    paramParcel.writeInt(this.HUm);
-    paramParcel.writeInt(this.HUn);
-    paramParcel.writeString(this.HUo);
-    paramParcel.writeInt(this.HUp);
-    paramParcel.writeInt(this.HUq);
-    paramParcel.writeInt(this.HUr);
-    paramParcel.writeString(this.HUs);
-    paramParcel.writeString(this.HUt);
-    paramParcel.writeString(this.HUu);
-    paramParcel.writeString(this.HUv);
-    paramParcel.writeString(this.HUw);
-    paramParcel.writeInt(this.HUx);
-    paramParcel.writeInt(this.HUy);
-    paramParcel.writeInt(this.HUz);
-    paramParcel.writeString(this.HUA);
-    paramParcel.writeInt(this.fuA);
+    paramParcel.writeString(this.OMa);
+    paramParcel.writeString(this.OMb);
+    paramParcel.writeString(this.OMc);
+    paramParcel.writeInt(this.OMd);
+    paramParcel.writeString(this.OMe);
+    paramParcel.writeParcelable(this.OMf, 1);
+    paramParcel.writeString(this.OMg);
+    paramParcel.writeString(this.OMh);
+    paramParcel.writeString(this.OMi);
+    paramParcel.writeString(this.OMj);
+    paramParcel.writeInt(this.OMk);
+    paramParcel.writeString(this.OMl);
+    paramParcel.writeInt(this.OMm);
+    paramParcel.writeInt(this.OMn);
+    paramParcel.writeInt(this.OMo);
+    paramParcel.writeString(this.OMp);
+    paramParcel.writeInt(this.OMq);
+    paramParcel.writeInt(this.OMr);
+    paramParcel.writeInt(this.OMs);
+    paramParcel.writeString(this.OMt);
+    paramParcel.writeString(this.OMu);
+    paramParcel.writeString(this.OMv);
+    paramParcel.writeString(this.OMw);
+    paramParcel.writeString(this.OMx);
+    paramParcel.writeInt(this.OMy);
+    paramParcel.writeInt(this.OMz);
+    paramParcel.writeInt(this.OMA);
+    paramParcel.writeString(this.OMB);
+    paramParcel.writeInt(this.sex);
     AppMethodBeat.o(70166);
   }
 }

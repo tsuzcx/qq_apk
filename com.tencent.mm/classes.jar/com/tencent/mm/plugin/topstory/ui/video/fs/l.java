@@ -3,7 +3,9 @@ package com.tencent.mm.plugin.topstory.ui.video.fs;
 import android.content.Context;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.eiw;
+import com.tencent.mm.plugin.topstory.ui.c.d;
+import com.tencent.mm.plugin.topstory.ui.c.e;
+import com.tencent.mm.protocal.protobuf.esy;
 
 public final class l
   extends f
@@ -15,30 +17,30 @@ public final class l
   
   public final int getLayoutId()
   {
-    return 2131496734;
+    return c.e.top_story_fs_v_video_control_bar;
   }
   
   public final void init()
   {
     AppMethodBeat.i(126405);
     super.init();
-    findViewById(2131299682).setVisibility(8);
-    this.GoL.setVisibility(8);
-    this.GoK.setVisibility(8);
-    this.GoJ.setVisibility(8);
-    findViewById(2131308311).setVisibility(8);
+    findViewById(c.d.divider).setVisibility(8);
+    this.Nbx.setVisibility(8);
+    this.Nbw.setVisibility(8);
+    this.Nbv.setVisibility(8);
+    findViewById(c.d.source_root).setVisibility(8);
     AppMethodBeat.o(126405);
   }
   
-  public final void n(eiw parameiw)
+  public final void n(esy paramesy)
   {
     AppMethodBeat.i(126406);
-    super.n(parameiw);
-    findViewById(2131299682).setVisibility(8);
-    this.GoL.setVisibility(8);
-    this.GoK.setVisibility(8);
-    this.GoJ.setVisibility(8);
-    findViewById(2131308311).setVisibility(8);
+    super.n(paramesy);
+    findViewById(c.d.divider).setVisibility(8);
+    this.Nbx.setVisibility(8);
+    this.Nbw.setVisibility(8);
+    this.Nbv.setVisibility(8);
+    findViewById(c.d.source_root).setVisibility(8);
     AppMethodBeat.o(126406);
   }
   
@@ -46,7 +48,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.l
  * JD-Core Version:    0.7.0.1
  */

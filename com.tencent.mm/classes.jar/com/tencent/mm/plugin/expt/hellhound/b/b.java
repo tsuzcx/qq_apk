@@ -1,20 +1,22 @@
 package com.tencent.mm.plugin.expt.hellhound.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.expt.hellhound.a.f.f.l.a;
 import com.tencent.mm.plugin.expt.hellhound.core.a.a.c;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.ade;
-import com.tencent.mm.protocal.protobuf.boi;
-import com.tencent.mm.protocal.protobuf.boj;
-import com.tencent.mm.protocal.protobuf.cfi;
+import com.tencent.mm.protocal.protobuf.adl;
+import com.tencent.mm.protocal.protobuf.bvx;
+import com.tencent.mm.protocal.protobuf.bvy;
+import com.tencent.mm.protocal.protobuf.cof;
+import com.tencent.mm.protocal.protobuf.jh;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
@@ -27,181 +29,181 @@ import java.util.List;
 import kotlin.g.b.p;
 import kotlin.t;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/model/NetSceneGetHell;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "scene", "", "rversion", "", "buildTag", "(ILjava/lang/String;Ljava/lang/String;)V", "mCallback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "callback", "fillLocalIdList", "", "localIdInfos", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/ConfigId;", "getType", "noteGetHellTime", "currSvrTime", "onGYNetEnd", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "updateConfigTime", "currSvrSecond", "intervalSecond", "updateHell", "resp", "Lcom/tencent/mm/protocal/protobuf/GetHellResponse;", "Companion", "plugin-expt_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/model/NetSceneGetHell;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "scene", "", "rversion", "", "buildTag", "(ILjava/lang/String;Ljava/lang/String;)V", "mCallback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "callback", "fillLocalIdList", "", "localIdInfos", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/ConfigId;", "getType", "noteGetHellTime", "currSvrTime", "onGYNetEnd", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "updateConfigTime", "currSvrSecond", "intervalSecond", "updateHell", "resp", "Lcom/tencent/mm/protocal/protobuf/GetHellResponse;", "Companion", "plugin-expt_release"})
 public final class b
   extends q
   implements m
 {
-  public static final a sJK;
-  private i heq;
-  private final String sJI;
-  private final String sJJ;
+  public static final a wpI;
+  private i jQg;
   private final int scene;
+  private final String wpG;
+  private final String wpH;
   
   static
   {
-    AppMethodBeat.i(221163);
-    sJK = new a((byte)0);
-    AppMethodBeat.o(221163);
+    AppMethodBeat.i(255859);
+    wpI = new a((byte)0);
+    AppMethodBeat.o(255859);
   }
   
   public b(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(221162);
+    AppMethodBeat.i(255858);
     this.scene = paramInt;
-    this.sJI = paramString1;
-    this.sJJ = paramString2;
-    AppMethodBeat.o(221162);
+    this.wpG = paramString1;
+    this.wpH = paramString2;
+    AppMethodBeat.o(255858);
   }
   
-  private static void Hu(int paramInt)
+  private static void Le(int paramInt)
   {
-    AppMethodBeat.i(221161);
+    AppMethodBeat.i(255855);
     int i = (int)Util.nowSecond();
     if (i > paramInt)
     {
       Log.i("HABBYGE-MALI.NetSceneGetHell", "updateConfigTime yes");
-      locale = com.tencent.mm.kernel.g.aAh();
-      p.g(locale, "MMKernel.storage()");
-      locale.azQ().set(ar.a.OnL, Integer.valueOf(i));
-      AppMethodBeat.o(221161);
+      localf = h.aHG();
+      p.j(localf, "MMKernel.storage()");
+      localf.aHp().set(ar.a.VCZ, Integer.valueOf(i));
+      AppMethodBeat.o(255855);
       return;
     }
     Log.i("HABBYGE-MALI.NetSceneGetHell", "updateConfigTime no");
-    e locale = com.tencent.mm.kernel.g.aAh();
-    p.g(locale, "MMKernel.storage()");
-    locale.azQ().set(ar.a.OnL, Integer.valueOf(paramInt));
-    AppMethodBeat.o(221161);
+    f localf = h.aHG();
+    p.j(localf, "MMKernel.storage()");
+    localf.aHp().set(ar.a.VCZ, Integer.valueOf(paramInt));
+    AppMethodBeat.o(255855);
   }
   
-  private final void b(boj paramboj)
+  private final void b(bvy parambvy)
   {
-    cfi localcfi = null;
-    AppMethodBeat.i(221160);
-    if (paramboj == null)
+    cof localcof = null;
+    AppMethodBeat.i(255852);
+    if (parambvy == null)
     {
-      AppMethodBeat.o(221160);
+      AppMethodBeat.o(255852);
       return;
     }
-    if (paramboj.getBaseResponse() == null)
+    if (parambvy.getBaseResponse() == null)
     {
       Log.i("HABBYGE-MALI.NetSceneGetHell", "updateHell: baseResponse is NULL!!");
-      paramboj = com.tencent.mm.plugin.expt.hellhound.a.f.f.l.sIR;
-      l.a.Bt(121L);
-      AppMethodBeat.o(221160);
+      parambvy = com.tencent.mm.plugin.expt.hellhound.a.f.f.l.woO;
+      l.a.HG(121L);
+      AppMethodBeat.o(255852);
       return;
     }
-    Object localObject1 = paramboj.getBaseResponse();
-    if ((localObject1 == null) || (((BaseResponse)localObject1).Ret != 0))
+    Object localObject1 = parambvy.getBaseResponse();
+    if ((localObject1 == null) || (((jh)localObject1).CqV != 0))
     {
       Object localObject2 = new StringBuilder("updateHell, baseResp: [");
-      localObject1 = paramboj.getBaseResponse();
+      localObject1 = parambvy.getBaseResponse();
       if (localObject1 != null) {}
-      for (localObject1 = Integer.valueOf(((BaseResponse)localObject1).Ret);; localObject1 = null)
+      for (localObject1 = Integer.valueOf(((jh)localObject1).CqV);; localObject1 = null)
       {
         localObject1 = ((StringBuilder)localObject2).append(localObject1).append("] [");
-        localObject2 = paramboj.getBaseResponse();
-        paramboj = localcfi;
+        localObject2 = parambvy.getBaseResponse();
+        parambvy = localcof;
         if (localObject2 != null) {
-          paramboj = ((BaseResponse)localObject2).ErrMsg;
+          parambvy = ((jh)localObject2).Tef;
         }
-        Log.w("HABBYGE-MALI.NetSceneGetHell", paramboj + ']');
-        paramboj = com.tencent.mm.plugin.expt.hellhound.a.f.f.l.sIR;
-        l.a.Bt(120L);
-        AppMethodBeat.o(221160);
+        Log.w("HABBYGE-MALI.NetSceneGetHell", parambvy + ']');
+        parambvy = com.tencent.mm.plugin.expt.hellhound.a.f.f.l.woO;
+        l.a.HG(120L);
+        AppMethodBeat.o(255852);
         return;
       }
     }
-    Log.i("HABBYGE-MALI.NetSceneGetHell", "updateHell, resp:\nreq.rversion=" + this.sJI + '\n' + "req.buildTag=" + this.sJJ + '\n' + "currSvrSecond=" + paramboj.LWz + '\n' + "intervalSecond=" + paramboj.LWA + '\n' + "jsonPackages=" + paramboj.LWB.size());
-    localObject1 = paramboj.LWB.iterator();
+    Log.i("HABBYGE-MALI.NetSceneGetHell", "updateHell, resp:\nreq.rversion=" + this.wpG + '\n' + "req.buildTag=" + this.wpH + '\n' + "currSvrSecond=" + parambvy.TfG + '\n' + "intervalSecond=" + parambvy.TfH + '\n' + "jsonPackages=" + parambvy.TfI.size());
+    localObject1 = parambvy.TfI.iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localcfi = (cfi)((Iterator)localObject1).next();
-      Log.i("HABBYGE-MALI.NetSceneGetHell", "updateHell, resp: jsonPackage=" + localcfi.Mlu.id);
+      localcof = (cof)((Iterator)localObject1).next();
+      Log.i("HABBYGE-MALI.NetSceneGetHell", "updateHell, resp: jsonPackage=" + localcof.Twn.id);
     }
-    int i = paramboj.LWz;
-    int j = paramboj.LWA;
+    int i = parambvy.TfG;
+    int j = parambvy.TfH;
     Log.i("HABBYGE-MALI.NetSceneGetHell", "updateConfigTime");
-    Hu(i);
-    localObject1 = com.tencent.mm.kernel.g.aAh();
-    p.g(localObject1, "MMKernel.storage()");
-    ((e)localObject1).azQ().set(ar.a.OnK, Integer.valueOf(j));
-    c.cNJ().m(801, paramboj);
-    AppMethodBeat.o(221160);
+    Le(i);
+    localObject1 = h.aHG();
+    p.j(localObject1, "MMKernel.storage()");
+    ((f)localObject1).aHp().set(ar.a.VCY, Integer.valueOf(j));
+    c.dcB().p(801, parambvy);
+    AppMethodBeat.o(255852);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(221158);
-    this.heq = parami;
+    AppMethodBeat.i(255847);
+    this.jQg = parami;
     parami = new d.a();
-    parami.c((com.tencent.mm.bw.a)new boi());
-    parami.d((com.tencent.mm.bw.a)new boj());
-    parami.MB("/cgi-bin/mmfddataappsvr/getsessionconfig");
-    parami.sG(1021);
-    parami.sI(0);
-    parami.sJ(0);
-    d locald = parami.aXF();
-    p.g(locald, "rr");
-    parami = locald.aYJ();
+    parami.c((com.tencent.mm.cd.a)new bvx());
+    parami.d((com.tencent.mm.cd.a)new bvy());
+    parami.TW("/cgi-bin/mmfddataappsvr/getsessionconfig");
+    parami.vD(1021);
+    parami.vF(0);
+    parami.vG(0);
+    d locald = parami.bgN();
+    p.j(locald, "rr");
+    parami = locald.bhX();
     if (parami == null)
     {
       paramg = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetHellRequest");
-      AppMethodBeat.o(221158);
+      AppMethodBeat.o(255847);
       throw paramg;
     }
-    boi localboi = (boi)parami;
-    localboi.scene = this.scene;
-    parami = com.tencent.mm.kernel.g.aAh();
-    p.g(parami, "MMKernel.storage()");
-    parami = parami.azQ().get(ar.a.OnL, Integer.valueOf(0));
+    bvx localbvx = (bvx)parami;
+    localbvx.scene = this.scene;
+    parami = h.aHG();
+    p.j(parami, "MMKernel.storage()");
+    parami = parami.aHp().get(ar.a.VCZ, Integer.valueOf(0));
     if (parami == null)
     {
       paramg = new t("null cannot be cast to non-null type kotlin.Int");
-      AppMethodBeat.o(221158);
+      AppMethodBeat.o(255847);
       throw paramg;
     }
-    localboi.LWx = ((Integer)parami).intValue();
-    localboi.version = com.tencent.mm.loader.j.a.CLIENT_VERSION;
-    localboi.sJI = this.sJI;
-    localboi.sJJ = this.sJJ;
-    LinkedList localLinkedList = localboi.LWy;
-    p.g(localLinkedList, "req.localIdInfos");
-    parami = com.tencent.mm.plugin.expt.hellhound.b.a.b.sJM;
-    parami = com.tencent.mm.plugin.expt.hellhound.b.a.b.a.cRe();
+    localbvx.TfE = ((Integer)parami).intValue();
+    localbvx.version = com.tencent.mm.loader.j.a.CLIENT_VERSION;
+    localbvx.wpG = this.wpG;
+    localbvx.wpH = this.wpH;
+    LinkedList localLinkedList = localbvx.TfF;
+    p.j(localLinkedList, "req.localIdInfos");
+    parami = com.tencent.mm.plugin.expt.hellhound.b.a.b.wpK;
+    parami = com.tencent.mm.plugin.expt.hellhound.b.a.b.a.dfZ();
     if (parami == null) {}
     for (parami = null;; parami = null)
     {
       if (parami != null) {
         localLinkedList.addAll((Collection)parami);
       }
-      Log.i("HABBYGE-MALI.NetSceneGetHell", "NetSceneGetHell, req: scene=" + localboi.scene + '\n' + "lastGetSvrSecond=" + localboi.LWx + '\n' + "version=" + localboi.version + '\n' + "rversion=" + localboi.sJI + '\n' + "buildTag=" + localboi.sJJ + '\n' + "localIds=" + localboi.LWy.size());
-      parami = localboi.LWy.iterator();
+      Log.i("HABBYGE-MALI.NetSceneGetHell", "NetSceneGetHell, req: scene=" + localbvx.scene + '\n' + "lastGetSvrSecond=" + localbvx.TfE + '\n' + "version=" + localbvx.version + '\n' + "rversion=" + localbvx.wpG + '\n' + "buildTag=" + localbvx.wpH + '\n' + "localIds=" + localbvx.TfF.size());
+      parami = localbvx.TfF.iterator();
       while (parami.hasNext())
       {
-        localObject = (ade)parami.next();
-        Log.i("HABBYGE-MALI.NetSceneGetHell", "NetSceneGetHell, req: localId=" + ((ade)localObject).id + ", " + ((ade)localObject).timestamp);
+        localObject = (adl)parami.next();
+        Log.i("HABBYGE-MALI.NetSceneGetHell", "NetSceneGetHell, req: localId=" + ((adl)localObject).id + ", " + ((adl)localObject).timestamp);
       }
-      if (!parami.LWB.isEmpty()) {
+      if (!parami.TfI.isEmpty()) {
         break;
       }
     }
     Object localObject = (List)new ArrayList();
-    Iterator localIterator = parami.LWB.iterator();
+    Iterator localIterator = parami.TfI.iterator();
     for (;;)
     {
       parami = (i)localObject;
       if (!localIterator.hasNext()) {
         break;
       }
-      parami = ((cfi)localIterator.next()).Mlu;
-      p.g(parami, "jsonPackage.idInfo");
+      parami = ((cof)localIterator.next()).Twn;
+      p.j(parami, "jsonPackage.idInfo");
       ((List)localObject).add(parami);
     }
-    parami = com.tencent.mm.plugin.expt.hellhound.a.f.f.l.sIR;
-    l.a.Bt(119L);
+    parami = com.tencent.mm.plugin.expt.hellhound.a.f.f.l.woO;
+    l.a.HG(119L);
     int i = dispatch(paramg, (s)locald, (m)this);
-    AppMethodBeat.o(221158);
+    AppMethodBeat.o(255847);
     return i;
   }
   
@@ -212,48 +214,48 @@ public final class b
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(221159);
+    AppMethodBeat.i(255849);
     Log.i("HABBYGE-MALI.NetSceneGetHell", "onGYNetEnd, errType[" + paramInt2 + "] erroCode[" + paramInt3 + "] errMsg[" + paramString + ']');
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
       if (params == null)
       {
         paramString = new t("null cannot be cast to non-null type com.tencent.mm.modelbase.CommReqResp");
-        AppMethodBeat.o(221159);
+        AppMethodBeat.o(255849);
         throw paramString;
       }
-      params = ((d)params).aYK();
+      params = ((d)params).bhY();
       if (params == null)
       {
         paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetHellResponse");
-        AppMethodBeat.o(221159);
+        AppMethodBeat.o(255849);
         throw paramString;
       }
-      b((boj)params);
+      b((bvy)params);
     }
     for (;;)
     {
-      params = this.heq;
+      params = this.jQg;
       if (params == null) {
         break;
       }
       params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
-      AppMethodBeat.o(221159);
+      AppMethodBeat.o(255849);
       return;
-      params = com.tencent.mm.plugin.expt.hellhound.a.f.f.l.sIR;
-      l.a.Bt(120L);
+      params = com.tencent.mm.plugin.expt.hellhound.a.f.f.l.woO;
+      l.a.HG(120L);
       Log.w("HABBYGE-MALI.NetSceneGetHell", "onGYNetEnd, get hell error");
-      Hu((int)Util.nowSecond());
+      Le((int)Util.nowSecond());
     }
-    AppMethodBeat.o(221159);
+    AppMethodBeat.o(255849);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/model/NetSceneGetHell$Companion;", "", "()V", "TAG", "", "plugin-expt_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/model/NetSceneGetHell$Companion;", "", "()V", "TAG", "", "plugin-expt_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.b.b
  * JD-Core Version:    0.7.0.1
  */

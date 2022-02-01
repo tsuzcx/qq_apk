@@ -1,18 +1,21 @@
 package com.tencent.mm.plugin.priority;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.e.a;
-import com.tencent.mm.av.q;
-import com.tencent.mm.g.a.ol;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.ay.e;
+import com.tencent.mm.ay.e.a;
+import com.tencent.mm.f.a.pi;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.kernel.b.g;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.c;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.plugin.priority.model.a.a.a.a;
 import com.tencent.mm.plugin.priority.model.d.a;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -24,9 +27,7 @@ import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.storage.bv;
 import com.tencent.mm.storage.bw;
 import com.tencent.mm.storage.ca;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import com.tencent.wcdb.database.SQLiteDatabase;
 import com.tencent.wcdb.database.SQLiteStatement;
 import java.util.ArrayList;
@@ -37,75 +38,80 @@ public class PluginPriority
   extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.kernel.a.b.b, com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.plugin.priority.a.a
 {
-  private long AXP;
-  private com.tencent.mm.plugin.priority.model.b AXQ;
-  private com.tencent.mm.plugin.priority.model.a.c.c AXR;
-  private com.tencent.mm.plugin.priority.model.a.b.c AXS;
-  private com.tencent.mm.plugin.priority.model.a.c.d AXT;
-  private com.tencent.mm.plugin.priority.model.a.b.d AXU;
-  private com.tencent.mm.plugin.priority.model.a.a.c AXV;
-  private com.tencent.mm.plugin.priority.model.a.a.b AXW;
-  private com.tencent.mm.plugin.priority.model.d AXX;
-  private com.tencent.mm.plugin.priority.model.a.c.b AXY;
-  private com.tencent.mm.plugin.priority.model.a.b.b AXZ;
-  private com.tencent.mm.plugin.priority.model.a.a.a AYa;
-  private com.tencent.mm.plugin.priority.model.a.c.a AYb;
-  private com.tencent.mm.plugin.priority.model.a.b.a AYc;
-  private i.a AYd;
-  private IListener<ol> AYe;
-  private MStorageEx.IOnStorageChange wYb;
-  private MStorageEx.IOnStorageChange wYc;
+  private MStorageEx.IOnStorageChange BJX;
+  private MStorageEx.IOnStorageChange BJY;
+  private long GRN;
+  private com.tencent.mm.plugin.priority.model.b GRO;
+  private com.tencent.mm.plugin.priority.model.a.c.c GRP;
+  private com.tencent.mm.plugin.priority.model.a.b.c GRQ;
+  private com.tencent.mm.plugin.priority.model.a.c.d GRR;
+  private com.tencent.mm.plugin.priority.model.a.b.d GRS;
+  private com.tencent.mm.plugin.priority.model.a.a.c GRT;
+  private com.tencent.mm.plugin.priority.model.a.a.b GRU;
+  private com.tencent.mm.plugin.priority.model.d GRV;
+  private com.tencent.mm.plugin.priority.model.a.c.b GRW;
+  private com.tencent.mm.plugin.priority.model.a.b.b GRX;
+  private com.tencent.mm.plugin.priority.model.a.a.a GRY;
+  private com.tencent.mm.plugin.priority.model.a.c.a GRZ;
+  private com.tencent.mm.plugin.priority.model.a.b.a GSa;
+  private i.a GSb;
+  private IListener<pi> GSc;
   
   public PluginPriority()
   {
     AppMethodBeat.i(87770);
-    this.AYd = new i.a()
+    this.GSb = new i.a()
     {
-      public final void a(i paramAnonymousi, i.c paramAnonymousc)
+      public final void onNotifyChange(i paramAnonymousi, i.c paramAnonymousc)
       {
         AppMethodBeat.i(87765);
-        if (paramAnonymousc.zqn.equals("insert"))
+        if (CrashReportFactory.isBackupMerge())
+        {
+          AppMethodBeat.o(87765);
+          return;
+        }
+        if (paramAnonymousc.EVM.equals("insert"))
         {
           int i = 0;
-          if (i < paramAnonymousc.hIs.size())
+          if (i < paramAnonymousc.kvM.size())
           {
-            paramAnonymousi = (ca)paramAnonymousc.hIs.get(i);
-            label70:
+            paramAnonymousi = (ca)paramAnonymousc.kvM.get(i);
+            label82:
             com.tencent.mm.plugin.priority.model.a.a.a locala;
-            if ((paramAnonymousi.field_isSend == 0) && (paramAnonymousi.gAz()))
+            if ((paramAnonymousi.field_isSend == 0) && (paramAnonymousi.hwG()))
             {
-              ((com.tencent.mm.plugin.comm.a.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.comm.a.b.class)).at(paramAnonymousi);
+              ((com.tencent.mm.plugin.comm.a.b)h.ae(com.tencent.mm.plugin.comm.a.b.class)).aB(paramAnonymousi);
               if (PluginPriority.this.getC2CChatUsageLogic() != null)
               {
                 if (paramAnonymousi.field_isSend != 1) {
-                  break label165;
+                  break label177;
                 }
                 locala = PluginPriority.this.getC2CChatUsageLogic();
                 paramAnonymousi = paramAnonymousi.field_talker;
-                ((PluginPriority)com.tencent.mm.kernel.g.ah(PluginPriority.class)).getPriorityTaskRunner().a(new a.a(locala, paramAnonymousi, 1));
+                ((PluginPriority)h.ag(PluginPriority.class)).getPriorityTaskRunner().a(new a.a(locala, paramAnonymousi, 1));
               }
             }
             for (;;)
             {
               i += 1;
               break;
-              if ((paramAnonymousi.field_isSend != 0) || (!paramAnonymousi.dOQ())) {
-                break label70;
+              if ((paramAnonymousi.field_isSend != 0) || (!paramAnonymousi.erk())) {
+                break label82;
               }
-              ((com.tencent.mm.plugin.comm.a.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.comm.a.b.class)).au(paramAnonymousi);
-              break label70;
-              label165:
+              ((com.tencent.mm.plugin.comm.a.b)h.ae(com.tencent.mm.plugin.comm.a.b.class)).aC(paramAnonymousi);
+              break label82;
+              label177:
               locala = PluginPriority.this.getC2CChatUsageLogic();
               paramAnonymousi = paramAnonymousi.field_talker;
-              ((PluginPriority)com.tencent.mm.kernel.g.ah(PluginPriority.class)).getPriorityTaskRunner().a(new a.a(locala, paramAnonymousi, 3));
+              ((PluginPriority)h.ag(PluginPriority.class)).getPriorityTaskRunner().a(new a.a(locala, paramAnonymousi, 3));
             }
           }
         }
         AppMethodBeat.o(87765);
       }
     };
-    this.AYe = new IListener() {};
-    this.wYb = new MStorageEx.IOnStorageChange()
+    this.GSc = new IListener() {};
+    this.BJX = new MStorageEx.IOnStorageChange()
     {
       public final void onNotifyChange(int paramAnonymousInt, MStorageEx paramAnonymousMStorageEx, Object paramAnonymousObject)
       {
@@ -129,7 +135,7 @@ public class PluginPriority
         }
       }
     };
-    this.wYc = new MStorageEx.IOnStorageChange()
+    this.BJY = new MStorageEx.IOnStorageChange()
     {
       public final void onNotifyChange(int paramAnonymousInt, MStorageEx paramAnonymousMStorageEx, Object paramAnonymousObject)
       {
@@ -156,68 +162,68 @@ public class PluginPriority
     AppMethodBeat.o(87770);
   }
   
-  public void execute(com.tencent.mm.kernel.b.g paramg)
+  public void execute(g paramg)
   {
     AppMethodBeat.i(87773);
-    if (paramg.aBb()) {
-      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.comm.a.b.class, new a());
+    if (paramg.aIE()) {
+      h.b(com.tencent.mm.plugin.comm.a.b.class, new a());
     }
     AppMethodBeat.o(87773);
   }
   
   public com.tencent.mm.plugin.priority.model.a.a.a getC2CChatUsageLogic()
   {
-    return this.AYa;
+    return this.GRY;
   }
   
   public com.tencent.mm.plugin.priority.model.a.a.b getC2CChatUsageResultStorage()
   {
-    return this.AXW;
+    return this.GRU;
   }
   
   public com.tencent.mm.plugin.priority.model.a.a.c getC2CChatUsageStorage()
   {
-    return this.AXV;
+    return this.GRT;
   }
   
   public com.tencent.mm.plugin.priority.model.a.b.a getC2CFileAutoDownloader()
   {
-    return this.AYc;
+    return this.GSa;
   }
   
   public com.tencent.mm.plugin.priority.model.a.c.a getC2CImgAutoDownloader()
   {
-    return this.AYb;
+    return this.GRZ;
   }
   
   public com.tencent.mm.plugin.priority.model.a.b.b getC2CMsgAutoDownloadFileLogic()
   {
-    return this.AXZ;
+    return this.GRX;
   }
   
   public com.tencent.mm.plugin.priority.model.a.b.c getC2CMsgAutoDownloadFileStorage()
   {
-    return this.AXS;
+    return this.GRQ;
   }
   
   public com.tencent.mm.plugin.priority.model.a.c.b getC2CMsgAutoDownloadImgLogic()
   {
-    return this.AXY;
+    return this.GRW;
   }
   
   public com.tencent.mm.plugin.priority.model.a.c.c getC2CMsgAutoDownloadImgStorage()
   {
-    return this.AXR;
+    return this.GRP;
   }
   
   public com.tencent.mm.plugin.priority.model.a.b.d getC2CMsgFileUsageStorage()
   {
-    return this.AXU;
+    return this.GRS;
   }
   
   public com.tencent.mm.plugin.priority.model.a.c.d getC2CMsgImgUsageStorage()
   {
-    return this.AXT;
+    return this.GRR;
   }
   
   public float getFileBgBorderPriority()
@@ -225,7 +231,7 @@ public class PluginPriority
     AppMethodBeat.i(87776);
     try
     {
-      int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rRS, 5);
+      int i = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vyp, 5);
       float f = i / 100.0F;
       AppMethodBeat.o(87776);
       return f;
@@ -242,7 +248,7 @@ public class PluginPriority
     AppMethodBeat.i(87777);
     try
     {
-      int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rRT, 10);
+      int i = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vyq, 10);
       long l = i * 1024;
       AppMethodBeat.o(87777);
       return l * 1024L;
@@ -259,7 +265,7 @@ public class PluginPriority
     AppMethodBeat.i(87775);
     try
     {
-      int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rRO, 10);
+      int i = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vyl, 10);
       float f = i / 100.0F;
       AppMethodBeat.o(87775);
       return f;
@@ -276,7 +282,7 @@ public class PluginPriority
     AppMethodBeat.i(87774);
     try
     {
-      int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rRN, 30);
+      int i = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vyk, 30);
       float f = i / 100.0F;
       AppMethodBeat.o(87774);
       return f;
@@ -290,105 +296,119 @@ public class PluginPriority
   
   public long getInstallPriorityTime()
   {
-    return this.AXP;
+    return this.GRN;
   }
   
   public com.tencent.mm.plugin.priority.model.b getPriorityDB()
   {
-    return this.AXQ;
+    return this.GRO;
   }
   
   public com.tencent.mm.plugin.priority.model.d getPriorityTaskRunner()
   {
-    return this.AXX;
+    return this.GRV;
   }
   
-  public void onAccountInitialized(e.c paramc)
+  public void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(87771);
     ThreadPool.post(new a((byte)0), "Priority.InitPriorityTask");
     com.tencent.mm.pluginsdk.cmd.b.a(new com.tencent.mm.plugin.priority.model.a(), new String[] { "//priority" });
-    this.AYe.alive();
-    ((l)com.tencent.mm.kernel.g.af(l.class)).aST().add(this.wYb);
-    ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().add(this.wYc);
+    this.GSc.alive();
+    ((n)h.ae(n.class)).bbR().add(this.BJX);
+    ((n)h.ae(n.class)).bbL().add(this.BJY);
     AppMethodBeat.o(87771);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(87772);
-    this.AYe.dead();
-    ((l)com.tencent.mm.kernel.g.af(l.class)).aST().remove(this.wYb);
-    ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().remove(this.wYc);
-    ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().a(this.AYd);
+    this.GSc.dead();
+    ((n)h.ae(n.class)).bbR().remove(this.BJX);
+    ((n)h.ae(n.class)).bbL().remove(this.BJY);
+    ((n)h.ae(n.class)).eSe().a(this.GSb);
     Object localObject;
-    if (this.AYb != null)
+    if (this.GRZ != null)
     {
-      localObject = this.AYb;
-      ((com.tencent.mm.plugin.priority.model.a.c.a)localObject).AYM = 0L;
-      q.bcS().a((e.a)localObject);
-      ((com.tencent.mm.plugin.priority.model.a.c.a)localObject).iWS.dead();
-      this.AYb = null;
+      localObject = this.GRZ;
+      ((com.tencent.mm.plugin.priority.model.a.c.a)localObject).GSK = 0L;
+      com.tencent.mm.ay.q.bmi().a((e.a)localObject);
+      ((com.tencent.mm.plugin.priority.model.a.c.a)localObject).lNn.dead();
+      this.GRZ = null;
     }
-    if (this.AXY != null) {
-      this.AXY = null;
+    if (this.GRW != null) {
+      this.GRW = null;
     }
-    if (this.AXX != null)
+    if (this.GRV != null)
     {
-      localObject = this.AXX;
-      ((com.tencent.mm.plugin.priority.model.d)localObject).AYo.clear();
-      ((com.tencent.mm.plugin.priority.model.d)localObject).AYp.removeCallbacksAndMessages(null);
-      ((com.tencent.mm.plugin.priority.model.d)localObject).AYp.quit();
-      ((com.tencent.mm.plugin.priority.model.d)localObject).AYp = null;
-      this.AXX = null;
+      localObject = this.GRV;
+      ((com.tencent.mm.plugin.priority.model.d)localObject).GSm.clear();
+      ((com.tencent.mm.plugin.priority.model.d)localObject).GSn.removeCallbacksAndMessages(null);
+      ((com.tencent.mm.plugin.priority.model.d)localObject).GSn.quit();
+      ((com.tencent.mm.plugin.priority.model.d)localObject).GSn = null;
+      this.GRV = null;
     }
-    if (this.AXR != null)
+    if (this.GRP != null)
     {
-      localObject = this.AXR;
-      ((com.tencent.mm.plugin.priority.model.a.c.c)localObject).AYx.close();
-      ((com.tencent.mm.plugin.priority.model.a.c.c)localObject).AYG.close();
-      ((com.tencent.mm.plugin.priority.model.a.c.c)localObject).AYI.close();
-      ((com.tencent.mm.plugin.priority.model.a.c.c)localObject).AYJ.close();
-      ((com.tencent.mm.plugin.priority.model.a.c.c)localObject).AYK.close();
-      ((com.tencent.mm.plugin.priority.model.a.c.c)localObject).AYL.close();
-      ((com.tencent.mm.plugin.priority.model.a.c.c)localObject).AYH.close();
-      this.AXR = null;
+      localObject = this.GRP;
+      ((com.tencent.mm.plugin.priority.model.a.c.c)localObject).GSv.close();
+      ((com.tencent.mm.plugin.priority.model.a.c.c)localObject).GSE.close();
+      ((com.tencent.mm.plugin.priority.model.a.c.c)localObject).GSG.close();
+      ((com.tencent.mm.plugin.priority.model.a.c.c)localObject).GSH.close();
+      ((com.tencent.mm.plugin.priority.model.a.c.c)localObject).GSI.close();
+      ((com.tencent.mm.plugin.priority.model.a.c.c)localObject).GSJ.close();
+      ((com.tencent.mm.plugin.priority.model.a.c.c)localObject).GSF.close();
+      this.GRP = null;
     }
-    if (this.AXT != null)
+    if (this.GRR != null)
     {
-      localObject = this.AXT;
-      ((com.tencent.mm.plugin.priority.model.a.a)localObject).AYr.close();
-      ((com.tencent.mm.plugin.priority.model.a.a)localObject).AYs.close();
-      ((com.tencent.mm.plugin.priority.model.a.a)localObject).AYt.close();
+      localObject = this.GRR;
+      ((com.tencent.mm.plugin.priority.model.a.a)localObject).GSp.close();
+      ((com.tencent.mm.plugin.priority.model.a.a)localObject).GSq.close();
+      ((com.tencent.mm.plugin.priority.model.a.a)localObject).GSr.close();
     }
-    if (this.AXQ != null)
+    if (this.GRO != null)
     {
-      localObject = this.AXQ;
-      SQLiteDatabase localSQLiteDatabase = ((com.tencent.mm.plugin.priority.model.b)localObject).AYk;
-      if (((com.tencent.mm.plugin.priority.model.b)localObject).AYk == null) {}
-      for (boolean bool = false;; bool = ((com.tencent.mm.plugin.priority.model.b)localObject).AYk.isOpen())
+      localObject = this.GRO;
+      SQLiteDatabase localSQLiteDatabase = ((com.tencent.mm.plugin.priority.model.b)localObject).GSi;
+      if (((com.tencent.mm.plugin.priority.model.b)localObject).GSi == null) {}
+      for (boolean bool = false;; bool = ((com.tencent.mm.plugin.priority.model.b)localObject).GSi.isOpen())
       {
         Log.w("MicroMsg.Priority.PriorityDB", "close db:%s isOpen:%b ", new Object[] { localSQLiteDatabase, Boolean.valueOf(bool) });
-        if ((((com.tencent.mm.plugin.priority.model.b)localObject).AYk == null) || (!((com.tencent.mm.plugin.priority.model.b)localObject).AYk.isOpen())) {
+        if ((((com.tencent.mm.plugin.priority.model.b)localObject).GSi == null) || (!((com.tencent.mm.plugin.priority.model.b)localObject).GSi.isOpen())) {
           break label433;
         }
-        Log.w("MicroMsg.Priority.PriorityDB", "close in trans :%b ", new Object[] { Boolean.valueOf(((com.tencent.mm.plugin.priority.model.b)localObject).AYk.inTransaction()) });
-        while (((com.tencent.mm.plugin.priority.model.b)localObject).AYk.inTransaction()) {
-          ((com.tencent.mm.plugin.priority.model.b)localObject).AYk.endTransaction();
+        Log.w("MicroMsg.Priority.PriorityDB", "close in trans :%b ", new Object[] { Boolean.valueOf(((com.tencent.mm.plugin.priority.model.b)localObject).GSi.inTransaction()) });
+        while (((com.tencent.mm.plugin.priority.model.b)localObject).GSi.inTransaction()) {
+          ((com.tencent.mm.plugin.priority.model.b)localObject).GSi.endTransaction();
         }
       }
-      ((com.tencent.mm.plugin.priority.model.b)localObject).AYl.close();
-      ((com.tencent.mm.plugin.priority.model.b)localObject).AYm.close();
-      ((com.tencent.mm.plugin.priority.model.b)localObject).AYn.close();
-      ((com.tencent.mm.plugin.priority.model.b)localObject).AYk.close();
-      ((com.tencent.mm.plugin.priority.model.b)localObject).AYk = null;
+      ((com.tencent.mm.plugin.priority.model.b)localObject).GSj.close();
+      ((com.tencent.mm.plugin.priority.model.b)localObject).GSk.close();
+      ((com.tencent.mm.plugin.priority.model.b)localObject).GSl.close();
+      ((com.tencent.mm.plugin.priority.model.b)localObject).GSi.close();
+      ((com.tencent.mm.plugin.priority.model.b)localObject).GSi = null;
       label433:
-      this.AXQ = null;
+      this.GRO = null;
     }
     AppMethodBeat.o(87772);
   }
   
   public void parallelsDependency() {}
+  
+  public void registerMsgInfoStgNotify()
+  {
+    AppMethodBeat.i(235222);
+    ((n)h.ae(n.class)).eSe().a(this.GSb, null);
+    AppMethodBeat.o(235222);
+  }
+  
+  public void unregisterMsgInfoStgNotify()
+  {
+    AppMethodBeat.i(235223);
+    ((n)h.ae(n.class)).eSe().a(this.GSb);
+    AppMethodBeat.o(235223);
+  }
   
   final class a
     implements Runnable
@@ -399,56 +419,56 @@ public class PluginPriority
     {
       AppMethodBeat.i(87769);
       long l1 = System.currentTimeMillis();
-      int i = com.tencent.mm.kernel.g.aAh().azQ().getInt(ar.a.Oin, 0);
+      int i = h.aHG().aHp().getInt(ar.a.VwD, 0);
       if (i != 6)
       {
         Log.i("MicroMsg.Priority.PluginPriority", "New DB FILE %d %d", new Object[] { Integer.valueOf(i), Integer.valueOf(6) });
-        com.tencent.mm.kernel.g.aAi();
-        s.deleteFile(aa.z(new o(com.tencent.mm.kernel.g.aAh().cachePath, "MicroMsgPriority.db").her()));
-        com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.Oin, Integer.valueOf(6));
+        h.aHH();
+        u.deleteFile(new com.tencent.mm.vfs.q(h.aHG().cachePath, "MicroMsgPriority.db").bOF());
+        h.aHG().aHp().set(ar.a.VwD, Integer.valueOf(6));
       }
       Object localObject = PluginPriority.this;
-      com.tencent.mm.kernel.g.aAi();
-      PluginPriority.access$102((PluginPriority)localObject, new com.tencent.mm.plugin.priority.model.b(com.tencent.mm.kernel.g.aAh().cachePath));
-      PluginPriority.access$202(PluginPriority.this, PluginPriority.this.AXQ.ag(16777217L, 0L));
-      if (PluginPriority.this.AXP == 0L)
+      h.aHH();
+      PluginPriority.access$102((PluginPriority)localObject, new com.tencent.mm.plugin.priority.model.b(h.aHG().cachePath));
+      PluginPriority.access$202(PluginPriority.this, PluginPriority.this.GRO.ao(16777217L, 0L));
+      if (PluginPriority.this.GRN == 0L)
       {
         PluginPriority.access$202(PluginPriority.this, System.currentTimeMillis());
-        PluginPriority.this.AXQ.ah(16777217L, PluginPriority.this.AXP);
+        PluginPriority.this.GRO.ap(16777217L, PluginPriority.this.GRN);
       }
-      Log.i("MicroMsg.Priority.PluginPriority", "install priority time %s", new Object[] { com.tencent.mm.pluginsdk.i.f.formatTime("yyyy-MM-dd HH:mm:ss", PluginPriority.this.AXP / 1000L) });
-      PluginPriority.access$302(PluginPriority.this, new com.tencent.mm.plugin.priority.model.a.c.c(PluginPriority.this.AXQ));
-      PluginPriority.access$402(PluginPriority.this, new com.tencent.mm.plugin.priority.model.a.b.c(PluginPriority.this.AXQ));
-      PluginPriority.access$502(PluginPriority.this, new com.tencent.mm.plugin.priority.model.a.c.d(PluginPriority.this.AXQ));
-      PluginPriority.access$602(PluginPriority.this, new com.tencent.mm.plugin.priority.model.a.b.d(PluginPriority.this.AXQ));
-      PluginPriority.access$702(PluginPriority.this, new com.tencent.mm.plugin.priority.model.a.a.c(PluginPriority.this.AXQ));
-      PluginPriority.access$802(PluginPriority.this, new com.tencent.mm.plugin.priority.model.a.a.b(PluginPriority.this.AXQ));
+      Log.i("MicroMsg.Priority.PluginPriority", "install priority time %s", new Object[] { com.tencent.mm.pluginsdk.j.f.formatTime("yyyy-MM-dd HH:mm:ss", PluginPriority.this.GRN / 1000L) });
+      PluginPriority.access$302(PluginPriority.this, new com.tencent.mm.plugin.priority.model.a.c.c(PluginPriority.this.GRO));
+      PluginPriority.access$402(PluginPriority.this, new com.tencent.mm.plugin.priority.model.a.b.c(PluginPriority.this.GRO));
+      PluginPriority.access$502(PluginPriority.this, new com.tencent.mm.plugin.priority.model.a.c.d(PluginPriority.this.GRO));
+      PluginPriority.access$602(PluginPriority.this, new com.tencent.mm.plugin.priority.model.a.b.d(PluginPriority.this.GRO));
+      PluginPriority.access$702(PluginPriority.this, new com.tencent.mm.plugin.priority.model.a.a.c(PluginPriority.this.GRO));
+      PluginPriority.access$802(PluginPriority.this, new com.tencent.mm.plugin.priority.model.a.a.b(PluginPriority.this.GRO));
       PluginPriority.access$902(PluginPriority.this, new com.tencent.mm.plugin.priority.model.d());
       PluginPriority.access$1002(PluginPriority.this, new com.tencent.mm.plugin.priority.model.a.c.b());
       PluginPriority.access$1102(PluginPriority.this, new com.tencent.mm.plugin.priority.model.a.b.b());
       PluginPriority.access$1202(PluginPriority.this, new com.tencent.mm.plugin.priority.model.a.c.a());
       PluginPriority.access$1302(PluginPriority.this, new com.tencent.mm.plugin.priority.model.a.b.a());
       PluginPriority.access$1402(PluginPriority.this, new com.tencent.mm.plugin.priority.model.a.a.a());
-      localObject = PluginPriority.this.AXX;
+      localObject = PluginPriority.this.GRV;
       Log.i("MicroMsg.Priority.PriorityTaskRunner", "start tick");
-      ((com.tencent.mm.plugin.priority.model.d)localObject).HJ(0L);
-      long l3 = PluginPriority.this.AXQ.ag(16777218L, -1L);
+      ((com.tencent.mm.plugin.priority.model.d)localObject).Pd(0L);
+      long l3 = PluginPriority.this.GRO.ao(16777218L, -1L);
       long l2 = Calendar.getInstance().get(5);
       if (l2 != l3)
       {
-        l3 = Util.getInt(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getValue("ChatImgAutoDownloadMax"), 0);
-        localObject = String.format("%d,%d", new Object[] { Long.valueOf(Util.nullAs((Long)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.NTI, null), 0L)), Long.valueOf(l3) });
+        l3 = Util.getInt(((com.tencent.mm.plugin.zero.b.a)h.ae(com.tencent.mm.plugin.zero.b.a.class)).axc().getValue("ChatImgAutoDownloadMax"), 0);
+        localObject = String.format("%d,%d", new Object[] { Long.valueOf(Util.nullAs((Long)h.aHG().aHp().get(ar.a.VhI, null), 0L)), Long.valueOf(l3) });
         Log.i("MicroMsg.Priority.PriorityReportLogic", "report16341 %s", new Object[] { localObject });
-        com.tencent.mm.plugin.report.e.Cxv.kvStat(16341, (String)localObject);
-        PluginPriority.this.AXQ.ah(16777218L, l2);
+        com.tencent.mm.plugin.report.f.Iyx.kvStat(16341, (String)localObject);
+        PluginPriority.this.GRO.ap(16777218L, l2);
       }
-      ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().a(PluginPriority.this.AYd, null);
-      localObject = PluginPriority.this.AXR;
+      ((n)h.ae(n.class)).eSe().a(PluginPriority.this.GSb, null);
+      localObject = PluginPriority.this.GRP;
       l2 = System.currentTimeMillis();
       String str = String.format("DELETE FROM %s WHERE createtime < ?", new Object[] { "C2CMsgAutoDownloadRes" });
-      ((com.tencent.mm.plugin.priority.model.a.c.c)localObject).AXQ.execSQL(str, new String[] { String.valueOf(l2 - 7776000000L) });
+      ((com.tencent.mm.plugin.priority.model.a.c.c)localObject).GRO.execSQL(str, new String[] { String.valueOf(l2 - 7776000000L) });
       localObject = new com.tencent.mm.plugin.priority.model.b.c();
-      PluginPriority.this.AXX.a((com.tencent.mm.plugin.priority.model.b.a)localObject);
+      PluginPriority.this.GRV.a((com.tencent.mm.plugin.priority.model.b.a)localObject);
       Log.i("MicroMsg.Priority.PluginPriority", "Init Priority Use Time %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
       AppMethodBeat.o(87769);
     }
@@ -456,7 +476,7 @@ public class PluginPriority
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.priority.PluginPriority
  * JD-Core Version:    0.7.0.1
  */

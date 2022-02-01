@@ -9,12 +9,13 @@ import android.os.Bundle;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
-import com.tencent.liteav.basic.b.b;
-import com.tencent.liteav.basic.c.o;
+import com.tencent.liteav.basic.c.b;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.Monitor;
 import com.tencent.liteav.basic.module.TXCKeyPointReportProxy;
 import com.tencent.liteav.basic.module.a;
+import com.tencent.liteav.basic.opengl.g;
+import com.tencent.liteav.basic.opengl.p;
 import com.tencent.liteav.basic.structs.TXSVideoFrame;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -26,11 +27,13 @@ public class e
 {
   private static final float[] a = { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F };
   private long A;
-  private boolean B;
-  private boolean C;
+  private long B;
+  private long C;
   private boolean D;
   private boolean E;
-  private a F;
+  private boolean F;
+  private boolean G;
+  private a H;
   private SurfaceTexture b;
   private int c;
   protected TextureView d;
@@ -46,14 +49,14 @@ public class e
   protected int n;
   protected f o;
   WeakReference<b> p;
-  private com.tencent.liteav.basic.c.e q;
+  private g q;
   private h r;
   private Surface s;
   private int t;
   private int u;
-  private int[] v;
-  private int w;
-  private long x;
+  private int v;
+  private int[] w;
+  private int x;
   private long y;
   private long z;
   
@@ -71,17 +74,18 @@ public class e
     this.l = -1;
     this.m = 0;
     this.n = 0;
-    this.v = new int[5];
-    this.w = 500;
-    this.x = 0L;
+    this.w = new int[5];
+    this.x = 500;
     this.y = 0L;
     this.z = 0L;
     this.A = 0L;
-    this.B = false;
-    this.C = false;
-    this.E = false;
-    this.F = new a();
+    this.B = 0L;
+    this.C = 0L;
     this.D = false;
+    this.E = false;
+    this.G = false;
+    this.H = new a();
+    this.F = false;
     AppMethodBeat.o(16795);
   }
   
@@ -219,9 +223,14 @@ public class e
       i3 = this.m;
       i4 = this.n;
       if (this.u != 0) {
-        break label251;
+        break label267;
       }
       this.r.a(h.a);
+      label110:
+      if (this.v != 1) {
+        break label280;
+      }
+      this.r.a(true);
     }
     for (;;)
     {
@@ -246,100 +255,120 @@ public class e
       return new int[] { paramInt1, i3, i4 };
       this.r.a(a);
       break;
-      label251:
+      label267:
       this.r.a(h.b);
+      break label110;
+      label280:
+      this.r.a(false);
     }
   }
   
   private void b()
   {
     AppMethodBeat.i(16821);
-    if (!this.D)
+    if (!this.F)
     {
       localObject = new Bundle();
       ((Bundle)localObject).putString("EVT_USERID", getID());
       ((Bundle)localObject).putInt("EVT_ID", 2003);
       ((Bundle)localObject).putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
+      ((Bundle)localObject).putLong("EVT_UTC_TIME", TXCTimeUtil.getUtcTimeTick());
       ((Bundle)localObject).putCharSequence("EVT_MSG", "Render the first video frame(IDR)");
       ((Bundle)localObject).putInt("EVT_PARAM1", this.h);
       ((Bundle)localObject).putInt("EVT_PARAM2", this.i);
-      com.tencent.liteav.basic.util.f.a(this.p, 2003, (Bundle)localObject);
+      com.tencent.liteav.basic.util.h.a(this.p, 2003, (Bundle)localObject);
       setStatusValue(6001, this.j, Long.valueOf(TXCTimeUtil.getTimeTick()));
-      setStatusValue(6015, this.j, Integer.valueOf(this.h));
-      setStatusValue(6016, this.j, Integer.valueOf(this.i));
-      TXCLog.i("TXCVideoRender", "trtc_render render first frame " + getID() + ", " + this.j);
-      this.D = true;
+      setStatusValue(6010, this.j, Integer.valueOf(this.h));
+      setStatusValue(6011, this.j, Integer.valueOf(this.i));
+      TXCLog.i("TXCVideoRender", "[FirstFramePath][Video][Render] TXCVideoRender: render first video frame. instance:" + hashCode() + " id:" + getID() + " type:" + this.j);
+      this.F = true;
       Monitor.a(2, String.format("Remote-VideoRender[%d]: Render first frame [tinyID:%s][streamType:%d]", new Object[] { Integer.valueOf(hashCode()), getID(), Integer.valueOf(this.j) }), "streamType: 2-big, 3-small, 7-sub", 0);
       TXCKeyPointReportProxy.a(getID(), 40022, 0L, this.j);
     }
-    Object localObject = this.F;
-    ((a)localObject).c += 1L;
-    n();
-    if (this.F.d != 0L)
+    if (!this.H.o)
     {
-      this.F.j = a(this.F.d);
-      if (this.F.j > 200L)
+      AppMethodBeat.o(16821);
+      return;
+    }
+    Object localObject = this.H;
+    ((a)localObject).c += 1L;
+    o();
+    long l1 = a(this.H.n);
+    if (this.H.d != 0L)
+    {
+      this.H.j = a(this.H.d);
+      localObject = this.H;
+      ((a)localObject).k += this.H.j;
+      if (this.H.j > 200L)
       {
-        localObject = this.F;
+        localObject = this.H;
         ((a)localObject).e += 1L;
-        setStatusValue(6021, this.j, Long.valueOf(this.F.e));
+        setStatusValue(6009, this.j, Long.valueOf(this.H.e));
       }
-      if (this.F.j > this.w)
+      if (this.H.j > this.x)
       {
-        localObject = this.F;
+        localObject = this.H;
         ((a)localObject).f += 1L;
-        setStatusValue(6003, this.j, Long.valueOf(this.F.f));
-        if (this.F.j > this.F.i)
+        setStatusValue(6003, this.j, Long.valueOf(this.H.f));
+        if (this.H.j > this.H.i)
         {
-          this.F.i = this.F.j;
-          setStatusValue(6005, this.j, Long.valueOf(this.F.i));
+          this.H.i = this.H.j;
+          setStatusValue(6005, this.j, Long.valueOf(this.H.i));
         }
-        localObject = this.F;
-        ((a)localObject).h += this.F.j;
-        setStatusValue(6006, this.j, Long.valueOf(this.F.h));
-        TXCLog.w("TXCVideoRender", "render frame count:" + this.F.c + " block time:" + this.F.j + "> 500");
+        TXCLog.w("TXCVideoRender", "render frame count:" + this.H.c + " block time:" + this.H.j + "> 500");
       }
-      if (this.F.j > this.c)
+      if (this.H.j > this.c)
       {
-        this.x += 1L;
-        this.z += this.F.j;
-        TXCLog.w("TXCVideoRender", "render frame count:" + this.F.c + " block time:" + this.F.j + "> " + this.c);
-        com.tencent.liteav.basic.util.f.a(this.p, getID(), 2105, "Current video playback stuck for " + this.F.j + "ms");
+        this.z += this.H.j;
+        TXCLog.w("TXCVideoRender", "render frame count:" + this.H.c + " block time:" + this.H.j + "> " + this.c);
+        com.tencent.liteav.basic.util.h.a(this.p, getID(), 2105, "Current video block for " + this.H.j + "ms", this.H.j);
+        localObject = this.H;
+        ((a)localObject).h += this.H.j;
+        setStatusValue(6006, this.j, Long.valueOf(this.H.h));
       }
-      if (this.F.j > 1000L)
+      if (this.H.j > 1000L)
       {
-        localObject = this.F;
+        localObject = this.H;
         ((a)localObject).g += 1L;
-        setStatusValue(6004, this.j, Long.valueOf(this.F.g));
-        TXCLog.w("TXCVideoRender", "render frame count:" + this.F.c + " block time:" + this.F.j + "> 1000");
+        setStatusValue(6004, this.j, Long.valueOf(this.H.g));
+        TXCLog.w("TXCVideoRender", "render frame count:" + this.H.c + " block time:" + this.H.j + "> 1000");
       }
     }
-    long l1 = TXCTimeUtil.getTimeTick();
+    if ((this.H.n != 0L) && (l1 > this.c))
+    {
+      this.A += 1L;
+      this.B += l1;
+    }
+    l1 = TXCTimeUtil.getTimeTick();
     if (this.y == 0L) {
       this.y = l1;
     }
     for (;;)
     {
-      this.F.d = TXCTimeUtil.getTimeTick();
-      if (this.A == 0L) {
-        this.A = this.F.d;
+      this.H.d = TXCTimeUtil.getTimeTick();
+      this.H.n = this.H.d;
+      if (this.C == 0L) {
+        this.C = this.H.d;
       }
-      this.F.l = this.i;
-      this.F.k = this.h;
+      this.H.m = this.i;
+      this.H.l = this.h;
       AppMethodBeat.o(16821);
       return;
       if (l1 - this.y >= 2000L)
       {
-        setStatusValue(17015, this.j, Long.valueOf(this.x));
-        setStatusValue(17016, this.j, Long.valueOf(this.z));
-        if (this.A != 0L)
+        setStatusValue(17015, this.j, Long.valueOf(this.A));
+        setStatusValue(17016, this.j, Long.valueOf(this.B));
+        if (this.C != 0L)
         {
           TXCKeyPointReportProxy.a(getID(), 40005, (int)this.z, this.j);
+          TXCKeyPointReportProxy.a(getID(), 40065, (int)this.B, this.j);
           TXCKeyPointReportProxy.a(getID(), 40006, (int)(l1 - this.y), this.j);
+          setStatusValue(6012, this.j, Long.valueOf(this.H.k));
         }
-        this.x = 0L;
-        this.y = l1;
         this.z = 0L;
+        this.A = 0L;
+        this.B = 0L;
+        this.y = l1;
       }
     }
   }
@@ -428,9 +457,18 @@ public class e
           if ((Build.VERSION.SDK_INT >= 16) && (this.d.getSurfaceTexture() != this.b))
           {
             TXCLog.w("TXCVideoRender", "play:vrender: setSurfaceTexture " + this.d + ", surfaceTexture " + this.b);
-            this.d.setSurfaceTexture(this.b);
-            AppMethodBeat.o(16808);
-            return;
+            try
+            {
+              this.d.setSurfaceTexture(this.b);
+              AppMethodBeat.o(16808);
+              return;
+            }
+            catch (Exception paramTextureView)
+            {
+              TXCLog.e("TXCVideoRender", "setSurfaceTexture error ".concat(String.valueOf(paramTextureView)));
+              AppMethodBeat.o(16808);
+              return;
+            }
           }
           TXCLog.w("TXCVideoRender", "play:vrender: not setSurfaceTexture old surfaceTexture " + this.d.getSurfaceTexture() + ", new surfaceTexture " + this.b);
           AppMethodBeat.o(16808);
@@ -477,7 +515,7 @@ public class e
   
   protected void a(SurfaceTexture paramSurfaceTexture)
   {
-    this.B = true;
+    this.D = true;
   }
   
   public void a(Surface paramSurface)
@@ -496,14 +534,14 @@ public class e
   
   public void a(b paramb)
   {
-    AppMethodBeat.i(222334);
+    AppMethodBeat.i(220335);
     this.p = new WeakReference(paramb);
-    AppMethodBeat.o(222334);
+    AppMethodBeat.o(220335);
   }
   
-  public void a(final o paramo)
+  public void a(final p paramp)
   {
-    AppMethodBeat.i(222333);
+    AppMethodBeat.i(220323);
     final TextureView localTextureView = this.d;
     if (localTextureView != null) {
       try
@@ -535,14 +573,14 @@ public class e
                   TXCLog.w("TXCVideoRender", "takePhoto error ".concat(String.valueOf(localError)));
                 }
               }
-              if (paramo != null) {
-                paramo.onTakePhotoComplete(localObject);
+              if (paramp != null) {
+                paramp.onTakePhotoComplete(localObject);
               }
               AppMethodBeat.o(16755);
             }
           });
         }
-        AppMethodBeat.o(222333);
+        AppMethodBeat.o(220323);
         return;
       }
       catch (OutOfMemoryError localOutOfMemoryError)
@@ -561,18 +599,18 @@ public class e
         {
           AppMethodBeat.i(16920);
           if (e.a(e.this) != null) {
-            e.a(e.this).a(paramo);
+            e.a(e.this).a(paramp);
           }
           AppMethodBeat.o(16920);
         }
       });
-      AppMethodBeat.o(222333);
+      AppMethodBeat.o(220323);
       return;
     }
-    if (paramo != null) {
-      paramo.onTakePhotoComplete(null);
+    if (paramp != null) {
+      paramp.onTakePhotoComplete(null);
     }
-    AppMethodBeat.o(222333);
+    AppMethodBeat.o(220323);
   }
   
   public void a(TXSVideoFrame paramTXSVideoFrame, int paramInt1, int paramInt2, int paramInt3)
@@ -581,7 +619,7 @@ public class e
     if (paramInt3 != this.k)
     {
       this.k = paramInt3;
-      d(this.t);
+      e(this.t);
     }
     a(paramInt1, paramInt2);
     b();
@@ -595,18 +633,18 @@ public class e
   
   protected void a(Object paramObject, int paramInt, float[] paramArrayOfFloat, boolean paramBoolean)
   {
-    AppMethodBeat.i(222338);
+    AppMethodBeat.i(220423);
     if (this.l == 1)
     {
       paramArrayOfFloat = a(paramInt, this.h, this.i, paramArrayOfFloat, paramBoolean);
       paramInt = paramArrayOfFloat[0];
       int i1 = paramArrayOfFloat[1];
       int i2 = paramArrayOfFloat[2];
-      System.arraycopy(paramArrayOfFloat, 0, this.v, 0, 3);
+      System.arraycopy(paramArrayOfFloat, 0, this.w, 0, 3);
       if (paramBoolean)
       {
-        this.v[3] = 1;
-        this.v[4] = 180;
+        this.w[3] = 1;
+        this.w[4] = 180;
       }
       for (;;)
       {
@@ -627,7 +665,7 @@ public class e
             }
             if ((this.q == null) && (this.l == 1) && (paramArrayOfFloat.isValid()))
             {
-              this.q = new com.tencent.liteav.basic.c.e();
+              this.q = new g();
               TXCLog.i("TXCVideoRender", "surface-render: onDrawTextureToSurface start render thread " + this.q + "," + paramArrayOfFloat);
               this.q.a(paramObject, paramArrayOfFloat);
             }
@@ -640,8 +678,8 @@ public class e
             else
             {
               return;
-              this.v[3] = 0;
-              this.v[4] = 0;
+              this.w[3] = 0;
+              this.w[4] = 0;
               break;
             }
             this.q.a(paramInt, false, 0, this.m, this.n, i1, i2, false, false);
@@ -653,43 +691,44 @@ public class e
         }
         finally
         {
-          AppMethodBeat.o(222338);
+          AppMethodBeat.o(220423);
         }
         TXCLog.i("TXCVideoRender", "surface-render: onDrawTextureToSurface stop render thread " + this.q);
         this.q.a();
         this.q = null;
       }
     }
-    AppMethodBeat.o(222338);
+    AppMethodBeat.o(220423);
   }
   
   public void a(boolean paramBoolean)
   {
     AppMethodBeat.i(16802);
+    l();
     int i1;
     String str2;
     int i2;
-    if (this.C)
+    if (this.E)
     {
       i1 = hashCode();
       str2 = getID();
       i2 = this.j;
       if (!paramBoolean) {
-        break label181;
+        break label185;
       }
     }
     for (String str1 = "true";; str1 = "false")
     {
       Monitor.a(2, String.format("Remote-VideoRender[%d]: Stop [tinyID:%s][streamType:%d][stopRendThread:%s]", new Object[] { Integer.valueOf(i1), str2, Integer.valueOf(i2), str1 }), "streamType: 2-big, 3-small, 7-sub", 0);
-      this.C = false;
-      this.D = false;
       this.E = false;
+      this.F = false;
+      this.G = false;
       if ((!paramBoolean) || (this.l != 1)) {
         break;
       }
       this.l = -1;
       TXCLog.w("TXCVideoRender", "play:vrender: quit render thread when stop");
-      e();
+      d();
       try
       {
         if (this.q != null)
@@ -702,7 +741,7 @@ public class e
       }
       finally
       {
-        label181:
+        label185:
         AppMethodBeat.o(16802);
       }
     }
@@ -716,16 +755,14 @@ public class e
     }
   }
   
-  public void b(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(16803);
-    a(paramInt1, paramInt2);
-    AppMethodBeat.o(16803);
-  }
-  
   protected void b(SurfaceTexture paramSurfaceTexture)
   {
-    this.B = false;
+    this.D = false;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.H.o = paramBoolean;
   }
   
   public void c(int paramInt)
@@ -738,13 +775,41 @@ public class e
     AppMethodBeat.o(16804);
   }
   
-  public void c(final int paramInt1, final int paramInt2)
+  public void c(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(16817);
+    a(paramInt1, paramInt2);
+    AppMethodBeat.o(16817);
+  }
+  
+  public void c(Object paramObject) {}
+  
+  public void d() {}
+  
+  public void d(int paramInt)
+  {
+    AppMethodBeat.i(16805);
+    this.v = paramInt;
+    if (this.e != null)
+    {
+      if (paramInt == 2)
+      {
+        this.e.a(false);
+        AppMethodBeat.o(16805);
+        return;
+      }
+      this.e.a(true);
+    }
+    AppMethodBeat.o(16805);
+  }
+  
+  public void d(final int paramInt1, final int paramInt2)
+  {
+    AppMethodBeat.i(220428);
     TXCLog.i("TXCVideoRender", "surface-render: set setSurfaceSize " + paramInt1 + "*" + paramInt2);
     if ((paramInt1 != this.m) || (paramInt2 != this.n))
     {
-      if ((this.q != null) && (this.l == 1) && (this.v != null))
+      if ((this.q != null) && (this.l == 1) && (this.w != null))
       {
         this.q.a(new Runnable()
         {
@@ -753,11 +818,11 @@ public class e
             AppMethodBeat.i(182260);
             e.this.m = paramInt1;
             e.this.n = paramInt2;
-            com.tencent.liteav.basic.c.e locale;
+            g localg;
             int i;
             if (e.a(e.this) != null)
             {
-              locale = e.a(e.this);
+              localg = e.a(e.this);
               i = e.b(e.this)[0];
               if (e.b(e.this)[3] != 1) {
                 break label125;
@@ -766,113 +831,112 @@ public class e
             label125:
             for (boolean bool = true;; bool = false)
             {
-              locale.a(i, bool, e.b(e.this)[4], e.this.m, e.this.n, e.b(e.this)[1], e.b(e.this)[2], true, false);
+              localg.a(i, bool, e.b(e.this)[4], e.this.m, e.this.n, e.b(e.this)[1], e.b(e.this)[2], true, false);
               AppMethodBeat.o(182260);
               return;
             }
           }
         });
-        AppMethodBeat.o(16817);
+        AppMethodBeat.o(220428);
         return;
       }
       this.m = paramInt1;
       this.n = paramInt2;
     }
-    AppMethodBeat.o(16817);
+    AppMethodBeat.o(220428);
   }
   
-  public void c(Object paramObject) {}
-  
-  public void d(int paramInt)
+  public void e()
   {
-    AppMethodBeat.i(16805);
-    this.t = paramInt;
-    if (this.e != null) {
-      this.e.c((this.k + paramInt) % 360);
-    }
-    AppMethodBeat.o(16805);
-  }
-  
-  public void e() {}
-  
-  public void e(int paramInt)
-  {
-    this.w = paramInt;
-  }
-  
-  public void f()
-  {
-    AppMethodBeat.i(222335);
+    AppMethodBeat.i(220341);
     Monitor.a(2, String.format("Remote-VideoRender[%d]: Start [tinyID:%s] [streamType:%d]", new Object[] { Integer.valueOf(hashCode()), getID(), Integer.valueOf(this.j) }), "streamType: 2-big, 3-small, 7-sub", 0);
-    this.C = true;
+    this.E = true;
     if (Build.VERSION.SDK_INT >= 21) {}
-    for (this.E = true;; this.E = false)
+    for (this.G = true;; this.G = false)
     {
-      this.D = false;
-      m();
-      AppMethodBeat.o(222335);
+      this.F = false;
+      l();
+      AppMethodBeat.o(220341);
       return;
     }
   }
   
-  public int g()
+  public void e(int paramInt)
   {
-    AppMethodBeat.i(222336);
+    AppMethodBeat.i(220363);
+    this.t = paramInt;
+    if (this.e != null) {
+      this.e.c((this.k + paramInt) % 360);
+    }
+    AppMethodBeat.o(220363);
+  }
+  
+  public int f()
+  {
+    AppMethodBeat.i(220368);
     int i1;
     if (this.d != null)
     {
       i1 = this.d.getWidth();
-      AppMethodBeat.o(222336);
+      AppMethodBeat.o(220368);
       return i1;
     }
     if (this.s != null)
     {
       i1 = this.m;
-      AppMethodBeat.o(222336);
+      AppMethodBeat.o(220368);
       return i1;
     }
-    AppMethodBeat.o(222336);
+    AppMethodBeat.o(220368);
+    return 0;
+  }
+  
+  public void f(int paramInt)
+  {
+    this.x = paramInt;
+  }
+  
+  public int g()
+  {
+    AppMethodBeat.i(220370);
+    int i1;
+    if (this.d != null)
+    {
+      i1 = this.d.getHeight();
+      AppMethodBeat.o(220370);
+      return i1;
+    }
+    if (this.s != null)
+    {
+      i1 = this.n;
+      AppMethodBeat.o(220370);
+      return i1;
+    }
+    AppMethodBeat.o(220370);
     return 0;
   }
   
   public int h()
   {
     AppMethodBeat.i(16806);
-    int i1;
-    if (this.d != null)
-    {
-      i1 = this.d.getHeight();
-      AppMethodBeat.o(16806);
-      return i1;
-    }
-    if (this.s != null)
-    {
-      i1 = this.n;
-      AppMethodBeat.o(16806);
-      return i1;
-    }
+    int i1 = this.h;
     AppMethodBeat.o(16806);
-    return 0;
+    return i1;
   }
   
   public int i()
   {
     AppMethodBeat.i(16807);
-    int i1 = this.h;
+    int i1 = this.i;
     AppMethodBeat.o(16807);
     return i1;
   }
   
-  public int j()
-  {
-    return this.i;
-  }
+  protected void j() {}
   
-  protected void k() {}
-  
-  protected void l()
+  protected void k()
   {
-    AppMethodBeat.i(222337);
+    AppMethodBeat.i(220410);
     try
     {
       if (this.q != null)
@@ -886,59 +950,80 @@ public class e
         this.r.c();
         this.r = null;
       }
-      AppMethodBeat.o(222337);
+      AppMethodBeat.o(220410);
       return;
     }
     finally
     {
-      AppMethodBeat.o(222337);
+      AppMethodBeat.o(220410);
     }
+  }
+  
+  public void l()
+  {
+    AppMethodBeat.i(220442);
+    m();
+    this.H.b = 0L;
+    this.H.c = 0L;
+    this.H.e = 0L;
+    this.H.f = 0L;
+    this.H.g = 0L;
+    this.H.h = 0L;
+    this.H.i = 0L;
+    this.H.k = 0L;
+    this.C = 0L;
+    setStatusValue(6001, this.j, Long.valueOf(0L));
+    setStatusValue(6003, this.j, Long.valueOf(0L));
+    setStatusValue(6005, this.j, Long.valueOf(0L));
+    setStatusValue(6006, this.j, Long.valueOf(0L));
+    setStatusValue(6004, this.j, Long.valueOf(0L));
+    setStatusValue(6012, this.j, Long.valueOf(0L));
+    AppMethodBeat.o(220442);
   }
   
   public void m()
   {
     AppMethodBeat.i(16814);
-    this.F.a = 0L;
-    this.F.b = 0L;
-    this.F.c = 0L;
-    this.F.d = 0L;
-    this.F.e = 0L;
-    this.F.f = 0L;
-    this.F.g = 0L;
-    this.F.h = 0L;
-    this.F.i = 0L;
-    this.F.j = 0L;
-    this.F.k = 0;
-    this.F.l = 0;
-    setStatusValue(6001, this.j, Long.valueOf(0L));
-    setStatusValue(6002, this.j, Double.valueOf(0.0D));
-    setStatusValue(6003, this.j, Long.valueOf(0L));
-    setStatusValue(6005, this.j, Long.valueOf(0L));
-    setStatusValue(6006, this.j, Long.valueOf(0L));
-    setStatusValue(6004, this.j, Long.valueOf(0L));
+    n();
+    this.H.a = 0L;
+    this.H.d = 0L;
+    this.H.j = 0L;
+    this.z = 0L;
     AppMethodBeat.o(16814);
   }
   
   public void n()
   {
     AppMethodBeat.i(16818);
-    if (this.F.a == 0L)
+    this.H.n = 0L;
+    this.B = 0L;
+    this.A = 0L;
+    this.H.l = 0;
+    this.H.m = 0;
+    setStatusValue(6002, this.j, Double.valueOf(0.0D));
+    AppMethodBeat.o(16818);
+  }
+  
+  public void o()
+  {
+    AppMethodBeat.i(16820);
+    if (this.H.a == 0L)
     {
-      this.F.a = TXCTimeUtil.getTimeTick();
-      AppMethodBeat.o(16818);
+      this.H.a = TXCTimeUtil.getTimeTick();
+      AppMethodBeat.o(16820);
       return;
     }
-    long l1 = TXCTimeUtil.getTimeTick() - this.F.a;
-    if (l1 >= 1000L)
+    long l1 = TXCTimeUtil.getTimeTick() - this.H.a;
+    if (l1 >= 950L)
     {
-      double d1 = (this.F.c - this.F.b) * 1000.0D / l1;
+      double d1 = (this.H.c - this.H.b) * 1000.0D / l1;
       setStatusValue(6002, this.j, Double.valueOf(d1));
       TXCKeyPointReportProxy.a(getID(), 40001, (int)d1, this.j);
-      this.F.b = this.F.c;
-      a locala = this.F;
+      this.H.b = this.H.c;
+      a locala = this.H;
       locala.a = (l1 + locala.a);
     }
-    AppMethodBeat.o(16818);
+    AppMethodBeat.o(16820);
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
@@ -959,7 +1044,7 @@ public class e
     }
     for (;;)
     {
-      this.B = true;
+      this.D = true;
       AppMethodBeat.o(16810);
       return;
       a(paramSurfaceTexture);
@@ -971,16 +1056,16 @@ public class e
     AppMethodBeat.i(16812);
     try
     {
-      this.B = false;
-      TXCLog.w("TXCVideoRender", "play:vrender:  onSurfaceTextureDestroyed when need save texture : " + this.E + "id " + getID() + "_" + this.j);
-      if (this.E) {
+      this.D = false;
+      TXCLog.w("TXCVideoRender", "play:vrender:  onSurfaceTextureDestroyed when need save texture : " + this.G + "id " + getID() + "_" + this.j);
+      if (this.G) {
         this.b = paramSurfaceTexture;
       }
       while (this.b == null)
       {
         AppMethodBeat.o(16812);
         return true;
-        this.F.a = 0L;
+        this.H.a = 0L;
         b(paramSurfaceTexture);
         if (paramSurfaceTexture == this.b) {
           this.b = null;
@@ -1002,10 +1087,10 @@ public class e
   {
     AppMethodBeat.i(16811);
     TXCLog.w("TXCVideoRender", "play:vrender: texture size change new:" + paramInt1 + "," + paramInt2 + " old:" + this.f + "," + this.g);
-    if (!this.B)
+    if (!this.D)
     {
       TXCLog.w("TXCVideoRender", "play:vrender: onSurfaceCreate on onSurfaceTextureSizeChanged when onSurfaceTextureAvailable is not trigger");
-      this.B = true;
+      this.D = true;
       a(paramSurfaceTexture);
     }
     this.f = paramInt1;
@@ -1030,13 +1115,16 @@ public class e
     public long h;
     public long i;
     public long j;
-    public int k;
+    public long k;
     public int l;
+    public int m;
+    public long n;
+    public boolean o = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.renderer.e
  * JD-Core Version:    0.7.0.1
  */

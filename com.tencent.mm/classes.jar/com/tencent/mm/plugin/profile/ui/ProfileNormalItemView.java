@@ -7,26 +7,28 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.R.a;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.n;
 import com.tencent.mm.pluginsdk.ui.ProfileItemView;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public class ProfileNormalItemView
   extends ProfileItemView
 {
-  TextView Bau;
-  CharSequence Bic;
-  View.OnClickListener Bid;
-  View Bie;
-  private TextView mPa;
+  TextView GUs;
+  CharSequence HbS;
+  View.OnClickListener HbT;
+  private View HbU;
   String mTitle;
+  private TextView pPT;
   
   public ProfileNormalItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27381);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.a.ProfileNormalItemView);
-    this.mTitle = paramContext.getString(0);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.n.eWW);
+    this.mTitle = paramContext.getString(R.n.eWX);
     paramContext.recycle();
     AppMethodBeat.o(27381);
   }
@@ -36,7 +38,7 @@ public class ProfileNormalItemView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final ProfileNormalItemView UO(int paramInt)
+  public final ProfileNormalItemView abu(int paramInt)
   {
     AppMethodBeat.i(27383);
     this.mTitle = getContext().getString(paramInt);
@@ -44,50 +46,58 @@ public class ProfileNormalItemView
     return this;
   }
   
-  public final ProfileNormalItemView UP(int paramInt)
+  public final ProfileNormalItemView abv(int paramInt)
   {
     AppMethodBeat.i(27384);
-    this.Bic = getContext().getString(paramInt);
+    this.HbS = getContext().getString(paramInt);
     AppMethodBeat.o(27384);
     return this;
   }
   
-  public final ProfileNormalItemView UQ(int paramInt)
+  public final ProfileNormalItemView abw(int paramInt)
   {
     AppMethodBeat.i(27385);
-    this.Bau.setTextColor(paramInt);
+    this.GUs.setTextColor(paramInt);
     AppMethodBeat.o(27385);
     return this;
   }
   
-  public final boolean eEV()
+  public final ProfileNormalItemView fqJ()
+  {
+    AppMethodBeat.i(265882);
+    this.HbU.setVisibility(0);
+    AppMethodBeat.o(265882);
+    return this;
+  }
+  
+  public final boolean fqK()
   {
     AppMethodBeat.i(27386);
-    this.mPa.setText(this.mTitle);
-    if (Util.isNullOrNil(this.Bic))
+    this.pPT.setText(this.mTitle);
+    if (Util.isNullOrNil(this.HbS))
     {
       setVisibility(8);
       AppMethodBeat.o(27386);
       return false;
     }
     setVisibility(0);
-    this.Bau.setText(this.Bic);
-    setOnClickListener(this.Bid);
+    this.GUs.setText(this.HbS);
+    setOnClickListener(this.HbT);
     AppMethodBeat.o(27386);
     return true;
   }
   
   public int getLayout()
   {
-    return 2131495984;
+    return R.i.ekf;
   }
   
   public final void init()
   {
     AppMethodBeat.i(27382);
-    this.mPa = ((TextView)findViewById(2131299118));
-    this.Bau = ((TextView)findViewById(2131299117));
-    this.Bie = findViewById(2131307076);
+    this.pPT = ((TextView)findViewById(R.h.dBP));
+    this.GUs = ((TextView)findViewById(R.h.dBO));
+    this.HbU = findViewById(R.h.right_arrow);
     AppMethodBeat.o(27382);
   }
 }

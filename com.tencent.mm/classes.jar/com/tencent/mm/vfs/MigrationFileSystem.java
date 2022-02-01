@@ -7,13 +7,11 @@ import com.tencent.stubs.logger.Log;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.nio.channels.ReadableByteChannel;
-import java.nio.channels.WritableByteChannel;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -21,11 +19,11 @@ public class MigrationFileSystem
   extends AbstractFileSystem
 {
   public static final Parcelable.Creator<MigrationFileSystem> CREATOR;
-  protected final FileSystem[] Rbd;
-  protected final String Rcs;
-  protected final String Rct;
-  protected final String Rcu;
-  protected final String Rcv;
+  protected final FileSystem[] YBx;
+  protected final String YCV;
+  protected final String YCW;
+  protected final String YCX;
+  protected final String YCY;
   
   static
   {
@@ -37,9 +35,9 @@ public class MigrationFileSystem
   protected MigrationFileSystem(Parcel paramParcel)
   {
     AppMethodBeat.i(13131);
-    aa.a(paramParcel, MigrationFileSystem.class, 6);
+    ad.a(paramParcel, MigrationFileSystem.class, 6);
     int j = paramParcel.readInt();
-    this.Rbd = new FileSystem[j];
+    this.YBx = new FileSystem[j];
     int i = 0;
     while (i < j)
     {
@@ -50,14 +48,19 @@ public class MigrationFileSystem
         AppMethodBeat.o(13131);
         throw paramParcel;
       }
-      this.Rbd[i] = localFileSystem;
+      this.YBx[i] = localFileSystem;
       i += 1;
     }
-    this.Rcs = paramParcel.readString();
-    this.Rct = paramParcel.readString();
-    this.Rcu = paramParcel.readString();
-    this.Rcv = paramParcel.readString();
+    this.YCV = paramParcel.readString();
+    this.YCW = paramParcel.readString();
+    this.YCX = paramParcel.readString();
+    this.YCY = paramParcel.readString();
     AppMethodBeat.o(13131);
+  }
+  
+  public MigrationFileSystem(FileSystem paramFileSystem, FileSystem... paramVarArgs)
+  {
+    this(null, null, paramFileSystem, paramVarArgs);
   }
   
   public MigrationFileSystem(String paramString1, String paramString2, FileSystem paramFileSystem, FileSystem... paramVarArgs)
@@ -69,17 +72,17 @@ public class MigrationFileSystem
   
   public MigrationFileSystem(String paramString1, String paramString2, String paramString3, FileSystem paramFileSystem, FileSystem... paramVarArgs)
   {
-    AppMethodBeat.i(187678);
+    AppMethodBeat.i(236310);
     if (paramFileSystem == null)
     {
       paramString1 = new IllegalArgumentException("destination == null");
-      AppMethodBeat.o(187678);
+      AppMethodBeat.o(236310);
       throw paramString1;
     }
-    this.Rcs = paramString1;
-    this.Rct = paramString2;
-    this.Rcu = paramString3;
-    this.Rcv = null;
+    this.YCV = paramString1;
+    this.YCW = paramString2;
+    this.YCX = paramString3;
+    this.YCY = null;
     paramString1 = new FileSystem[paramVarArgs.length + 1];
     paramString1[0] = paramFileSystem;
     int i = 1;
@@ -103,36 +106,34 @@ public class MigrationFileSystem
       if (i == paramString1.length) {}
       for (;;)
       {
-        this.Rbd = paramString1;
-        AppMethodBeat.o(187678);
+        this.YBx = paramString1;
+        AppMethodBeat.o(236310);
         return;
         paramString1 = (FileSystem[])Arrays.copyOf(paramString1, i);
       }
     }
   }
   
-  public MigrationFileSystem(boolean paramBoolean1, boolean paramBoolean2, FileSystem paramFileSystem, FileSystem... paramVarArgs) {}
-  
-  public final FileSystem.b cj(Map<String, String> paramMap)
+  public final FileSystem.b cp(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(187679);
+    AppMethodBeat.i(236320);
     boolean bool1;
     int j;
     label32:
     int i;
-    if (aa.aa(this.Rcs, paramMap) != null)
+    if (ad.ad(this.YCV, paramMap) != null)
     {
       bool1 = true;
-      if (aa.aa(this.Rct, paramMap) == null) {
+      if (ad.ad(this.YCW, paramMap) == null) {
         break label107;
       }
       j = 1;
-      if (aa.aa(this.Rcu, paramMap) == null) {
+      if (ad.ad(this.YCX, paramMap) == null) {
         break label112;
       }
       i = 1;
       label45:
-      if (aa.aa(this.Rcv, paramMap) == null) {
+      if (ad.ad(this.YCY, paramMap) == null) {
         break label117;
       }
     }
@@ -141,12 +142,12 @@ public class MigrationFileSystem
     label117:
     for (boolean bool2 = true;; bool2 = false)
     {
-      localObject1 = this.Rbd;
+      localObject1 = this.YBx;
       int m = localObject1.length;
       int k = 0;
       while (k < m)
       {
-        localObject1[k].cj(paramMap);
+        localObject1[k].cp(paramMap);
         k += 1;
       }
       bool1 = false;
@@ -156,88 +157,77 @@ public class MigrationFileSystem
       i = 0;
       break label45;
     }
-    ArrayList localArrayList = new ArrayList(this.Rbd.length);
-    Object localObject3 = this.Rbd[0].cj(paramMap);
-    localArrayList.add(localObject3);
-    HashSet localHashSet = new HashSet();
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if ((this.Rbd[0] instanceof NativeFileSystem))
+    LinkedHashSet localLinkedHashSet = new LinkedHashSet();
+    Object localObject1 = this.YBx[0].cp(paramMap);
+    localLinkedHashSet.add(localObject1);
+    Object localObject2;
+    if ((localObject1 instanceof NativeFileSystem.c))
     {
-      localObject3 = ((NativeFileSystem.c)localObject3).heg();
-      localObject1 = localObject2;
-      if (localObject3 != null)
+      localObject1 = ((NativeFileSystem.c)localObject1).ifp();
+      if ((localObject1 != null) && (j != 0))
       {
-        if (j == 0) {
-          break label509;
-        }
-        localObject2 = new File((String)localObject3);
+        localObject2 = new File((String)localObject1);
         localObject1 = localObject2;
         if (!((File)localObject2).exists()) {}
       }
     }
-    label509:
     for (localObject1 = null;; localObject1 = null)
     {
-      localHashSet.add(localObject3);
       j = 1;
-      if (j < this.Rbd.length)
+      FileSystem.b localb;
+      boolean bool3;
+      if (j < this.YBx.length)
       {
-        if (!(this.Rbd[j] instanceof NativeFileSystem)) {
-          localArrayList.add(this.Rbd[j].cj(paramMap));
+        localb = this.YBx[j].cp(paramMap);
+        localObject2 = localObject1;
+        if (localb != NullFileSystem.ifq())
+        {
+          if (!(localb instanceof NativeFileSystem.c)) {
+            break label384;
+          }
+          localObject2 = ((NativeFileSystem.c)localb).ifp();
+          if (localObject2 == null) {
+            break label428;
+          }
+          localObject2 = new File((String)localObject2);
+          bool3 = ((File)localObject2).isDirectory();
+          if ((!bool3) || (localObject1 == null) || (!((File)localObject2).renameTo((File)localObject1))) {
+            break label435;
+          }
+          Log.i("VFS.MigrationFileSystem", "Fast moved '" + localObject2 + "' -> '" + localObject1 + "'");
+          bool3 = false;
+          localObject1 = null;
+        }
+      }
+      label384:
+      label428:
+      label435:
+      for (;;)
+      {
+        if (!bool3)
+        {
+          localObject2 = localObject1;
+          if (i == 0) {}
+        }
+        else
+        {
+          localLinkedHashSet.add(localb);
+          localObject2 = localObject1;
         }
         for (;;)
         {
           j += 1;
+          localObject1 = localObject2;
           break;
-          NativeFileSystem.c localc = (NativeFileSystem.c)this.Rbd[j].cj(paramMap);
-          String str = localc.heg();
-          localObject3 = localObject1;
-          if (str != null)
-          {
-            localObject3 = new File(str);
-            boolean bool3 = ((File)localObject3).isDirectory();
-            localObject2 = localObject1;
-            if (bool3)
-            {
-              localObject2 = localObject1;
-              if (localObject1 != null)
-              {
-                localObject2 = localObject1;
-                if (((File)localObject3).renameTo((File)localObject1))
-                {
-                  Log.i("VFS.MigrationFileSystem", "Fast moved '" + localObject3 + "' -> '" + localObject1 + "'");
-                  localObject1 = null;
-                  localObject2 = localObject1;
-                  if (i == 0)
-                  {
-                    localHashSet.add(str);
-                    localObject2 = localObject1;
-                  }
-                }
-              }
-            }
-            if (!bool3)
-            {
-              localObject3 = localObject2;
-              if (i == 0) {}
-            }
-            else
-            {
-              localObject3 = localObject2;
-              if (localHashSet.add(str))
-              {
-                localArrayList.add(localc);
-                localObject3 = localObject2;
-              }
-            }
-          }
-          localObject1 = localObject3;
+          localLinkedHashSet.add(localb);
+          localObject2 = localObject1;
+          continue;
+          paramMap = new a(new ArrayList(localLinkedHashSet), bool1, bool2);
+          AppMethodBeat.o(236320);
+          return paramMap;
+          localObject2 = localObject1;
         }
       }
-      paramMap = new a(localArrayList, bool1, bool2);
-      AppMethodBeat.o(187679);
-      return paramMap;
     }
   }
   
@@ -249,11 +239,11 @@ public class MigrationFileSystem
   public String toString()
   {
     AppMethodBeat.i(13139);
-    Object localObject = new StringBuilder("Migration [").append(this.Rbd[0].toString()).append(" <= ");
+    Object localObject = new StringBuilder("Migration [").append(this.YBx[0].toString()).append(" <= ");
     int i = 1;
-    while (i < this.Rbd.length)
+    while (i < this.YBx.length)
     {
-      ((StringBuilder)localObject).append(this.Rbd[i].toString()).append(", ");
+      ((StringBuilder)localObject).append(this.YBx[i].toString()).append(", ");
       i += 1;
     }
     ((StringBuilder)localObject).setLength(((StringBuilder)localObject).length() - 2);
@@ -265,9 +255,9 @@ public class MigrationFileSystem
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(13140);
-    aa.b(paramParcel, MigrationFileSystem.class, 6);
-    paramParcel.writeInt(this.Rbd.length);
-    FileSystem[] arrayOfFileSystem = this.Rbd;
+    ad.b(paramParcel, MigrationFileSystem.class, 6);
+    paramParcel.writeInt(this.YBx.length);
+    FileSystem[] arrayOfFileSystem = this.YBx;
     int j = arrayOfFileSystem.length;
     int i = 0;
     while (i < j)
@@ -275,1346 +265,40 @@ public class MigrationFileSystem
       paramParcel.writeParcelable(arrayOfFileSystem[i], paramInt);
       i += 1;
     }
-    paramParcel.writeString(this.Rcs);
-    paramParcel.writeString(this.Rct);
-    paramParcel.writeString(this.Rcu);
-    paramParcel.writeString(this.Rcv);
+    paramParcel.writeString(this.YCV);
+    paramParcel.writeString(this.YCW);
+    paramParcel.writeString(this.YCX);
+    paramParcel.writeString(this.YCY);
     AppMethodBeat.o(13140);
   }
   
   protected final class a
-    extends c
+    extends d
   {
-    protected final List<FileSystem.b> Rcw;
-    protected final boolean Rcx;
-    protected final boolean Rcy;
+    protected final List<FileSystem.b> YCZ;
+    protected final boolean YDa;
+    protected final boolean YDb;
     
     protected a(boolean paramBoolean1, boolean paramBoolean2)
     {
-      this.Rcw = paramBoolean1;
-      this.Rcx = paramBoolean2;
+      this.YCZ = paramBoolean1;
+      this.YDa = paramBoolean2;
       boolean bool;
-      this.Rcy = bool;
+      this.YDb = bool;
     }
     
-    private boolean boR(String paramString)
+    public final InputStream Tf(String paramString)
     {
-      AppMethodBeat.i(187669);
-      paramString = aa.bpg(paramString);
-      if (paramString == null)
-      {
-        AppMethodBeat.o(187669);
-        return false;
-      }
-      FileSystem.b localb = (FileSystem.b)this.Rcw.get(0);
-      if (localb.boL(paramString))
-      {
-        AppMethodBeat.o(187669);
-        return false;
-      }
-      int j = this.Rcw.size();
-      int i = 1;
-      while (i < j)
-      {
-        e locale = ((FileSystem.b)this.Rcw.get(i)).boM(paramString);
-        if ((locale != null) && (locale.RbJ))
-        {
-          boolean bool = localb.boN(paramString);
-          AppMethodBeat.o(187669);
-          return bool;
-        }
-        i += 1;
-      }
-      AppMethodBeat.o(187669);
-      return false;
-    }
-    
-    /* Error */
-    public final void a(android.os.CancellationSignal paramCancellationSignal)
-    {
-      // Byte code:
-      //   0: ldc 82
-      //   2: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   5: aload_0
-      //   6: getfield 26	com/tencent/mm/vfs/MigrationFileSystem$a:Rcx	Z
-      //   9: ifeq +2196 -> 2205
-      //   12: iconst_0
-      //   13: istore 13
-      //   15: iconst_0
-      //   16: istore 6
-      //   18: iconst_0
-      //   19: istore 14
-      //   21: iconst_0
-      //   22: istore 5
-      //   24: iconst_0
-      //   25: istore 18
-      //   27: iconst_0
-      //   28: istore_2
-      //   29: iconst_0
-      //   30: istore 7
-      //   32: iconst_0
-      //   33: istore 8
-      //   35: iconst_0
-      //   36: istore 19
-      //   38: iconst_0
-      //   39: istore_3
-      //   40: iconst_0
-      //   41: istore 20
-      //   43: iconst_0
-      //   44: istore 9
-      //   46: lconst_0
-      //   47: lstore 21
-      //   49: aload_0
-      //   50: getfield 24	com/tencent/mm/vfs/MigrationFileSystem$a:Rcw	Ljava/util/List;
-      //   53: astore 30
-      //   55: lload 21
-      //   57: lstore 23
-      //   59: iload 19
-      //   61: istore 10
-      //   63: iload 20
-      //   65: istore 15
-      //   67: iload 8
-      //   69: istore 16
-      //   71: iload 7
-      //   73: istore 11
-      //   75: iload 18
-      //   77: istore 12
-      //   79: iload 14
-      //   81: istore 4
-      //   83: iload 13
-      //   85: istore 17
-      //   87: aload 30
-      //   89: iconst_0
-      //   90: invokeinterface 55 2 0
-      //   95: checkcast 57	com/tencent/mm/vfs/FileSystem$b
-      //   98: astore 31
-      //   100: lload 21
-      //   102: lstore 23
-      //   104: iload 19
-      //   106: istore 10
-      //   108: iload 20
-      //   110: istore 15
-      //   112: iload 8
-      //   114: istore 16
-      //   116: iload 7
-      //   118: istore 11
-      //   120: iload 18
-      //   122: istore 12
-      //   124: iload 14
-      //   126: istore 4
-      //   128: iload 13
-      //   130: istore 17
-      //   132: new 84	java/util/HashSet
-      //   135: dup
-      //   136: invokespecial 85	java/util/HashSet:<init>	()V
-      //   139: astore 32
-      //   141: lload 21
-      //   143: lstore 23
-      //   145: iload 19
-      //   147: istore 10
-      //   149: iload 20
-      //   151: istore 15
-      //   153: iload 8
-      //   155: istore 16
-      //   157: iload 7
-      //   159: istore 11
-      //   161: iload 18
-      //   163: istore 12
-      //   165: iload 14
-      //   167: istore 4
-      //   169: iload 13
-      //   171: istore 17
-      //   173: aload_1
-      //   174: invokevirtual 90	android/os/CancellationSignal:throwIfCanceled	()V
-      //   177: lload 21
-      //   179: lstore 23
-      //   181: iload 19
-      //   183: istore 10
-      //   185: iload 20
-      //   187: istore 15
-      //   189: iload 8
-      //   191: istore 16
-      //   193: iload 7
-      //   195: istore 11
-      //   197: iload 18
-      //   199: istore 12
-      //   201: iload 14
-      //   203: istore 4
-      //   205: iload 13
-      //   207: istore 17
-      //   209: aload_0
-      //   210: getfield 19	com/tencent/mm/vfs/MigrationFileSystem$a:Rcz	Lcom/tencent/mm/vfs/MigrationFileSystem;
-      //   213: iconst_1
-      //   214: iconst_2
-      //   215: anewarray 92	java/lang/Object
-      //   218: dup
-      //   219: iconst_0
-      //   220: ldc 94
-      //   222: aastore
-      //   223: dup
-      //   224: iconst_1
-      //   225: aload 31
-      //   227: aastore
-      //   228: invokevirtual 98	com/tencent/mm/vfs/MigrationFileSystem:l	(I[Ljava/lang/Object;)V
-      //   231: lload 21
-      //   233: lstore 23
-      //   235: iload 19
-      //   237: istore 10
-      //   239: iload 20
-      //   241: istore 15
-      //   243: iload 8
-      //   245: istore 16
-      //   247: iload 7
-      //   249: istore 11
-      //   251: iload 18
-      //   253: istore 12
-      //   255: iload 14
-      //   257: istore 4
-      //   259: iload 13
-      //   261: istore 17
-      //   263: aload 30
-      //   265: invokeinterface 64 1 0
-      //   270: istore 19
-      //   272: iconst_1
-      //   273: istore 18
-      //   275: iconst_0
-      //   276: istore 8
-      //   278: iconst_0
-      //   279: istore 7
-      //   281: iload_3
-      //   282: istore 4
-      //   284: iload 8
-      //   286: istore_3
-      //   287: iload 18
-      //   289: iload 19
-      //   291: if_icmpge +1777 -> 2068
-      //   294: aload_1
-      //   295: invokevirtual 90	android/os/CancellationSignal:throwIfCanceled	()V
-      //   298: aload 30
-      //   300: iload 18
-      //   302: invokeinterface 55 2 0
-      //   307: checkcast 57	com/tencent/mm/vfs/FileSystem$b
-      //   310: astore 33
-      //   312: aload 33
-      //   314: ldc 100
-      //   316: iconst_1
-      //   317: invokeinterface 104 3 0
-      //   322: astore 29
-      //   324: aload 29
-      //   326: ifnull +1928 -> 2254
-      //   329: aload 33
-      //   331: invokeinterface 107 1 0
-      //   336: bipush 9
-      //   338: iand
-      //   339: bipush 9
-      //   341: if_icmpne +1916 -> 2257
-      //   344: new 109	java/util/TreeSet
-      //   347: dup
-      //   348: invokespecial 110	java/util/TreeSet:<init>	()V
-      //   351: astore 28
-      //   353: aload 29
-      //   355: invokeinterface 116 1 0
-      //   360: astore 34
-      //   362: iload_3
-      //   363: istore 8
-      //   365: iload 4
-      //   367: istore_3
-      //   368: lload 21
-      //   370: lstore 23
-      //   372: iload_3
-      //   373: istore 10
-      //   375: iload 9
-      //   377: istore 15
-      //   379: iload 8
-      //   381: istore 16
-      //   383: iload 7
-      //   385: istore 11
-      //   387: iload_2
-      //   388: istore 12
-      //   390: iload 5
-      //   392: istore 4
-      //   394: iload 6
-      //   396: istore 17
-      //   398: aload 34
-      //   400: invokeinterface 122 1 0
-      //   405: ifeq +1428 -> 1833
-      //   408: lload 21
-      //   410: lstore 23
-      //   412: iload_3
-      //   413: istore 10
-      //   415: iload 9
-      //   417: istore 15
-      //   419: iload 8
-      //   421: istore 16
-      //   423: iload 7
-      //   425: istore 11
-      //   427: iload_2
-      //   428: istore 12
-      //   430: iload 5
-      //   432: istore 4
-      //   434: iload 6
-      //   436: istore 17
-      //   438: aload 34
-      //   440: invokeinterface 126 1 0
-      //   445: checkcast 70	com/tencent/mm/vfs/e
-      //   448: astore 35
-      //   450: lload 21
-      //   452: lstore 23
-      //   454: iload_3
-      //   455: istore 10
-      //   457: iload 9
-      //   459: istore 15
-      //   461: iload 8
-      //   463: istore 16
-      //   465: iload 7
-      //   467: istore 11
-      //   469: iload_2
-      //   470: istore 12
-      //   472: iload 5
-      //   474: istore 4
-      //   476: iload 6
-      //   478: istore 17
-      //   480: aload_1
-      //   481: invokevirtual 90	android/os/CancellationSignal:throwIfCanceled	()V
-      //   484: lload 21
-      //   486: lstore 23
-      //   488: iload_3
-      //   489: istore 10
-      //   491: iload 9
-      //   493: istore 15
-      //   495: iload 8
-      //   497: istore 16
-      //   499: iload 7
-      //   501: istore 11
-      //   503: iload_2
-      //   504: istore 12
-      //   506: iload 5
-      //   508: istore 4
-      //   510: iload 6
-      //   512: istore 17
-      //   514: aload 35
-      //   516: getfield 73	com/tencent/mm/vfs/e:RbJ	Z
-      //   519: istore 27
-      //   521: iload 27
-      //   523: ifeq +454 -> 977
-      //   526: lload 21
-      //   528: lstore 23
-      //   530: iload_3
-      //   531: istore 10
-      //   533: iload 9
-      //   535: istore 15
-      //   537: iload 8
-      //   539: istore 16
-      //   541: iload 7
-      //   543: istore 11
-      //   545: iload_2
-      //   546: istore 12
-      //   548: iload 5
-      //   550: istore 4
-      //   552: iload 6
-      //   554: istore 17
-      //   556: aload 31
-      //   558: aload 35
-      //   560: getfield 130	com/tencent/mm/vfs/e:NGP	Ljava/lang/String;
-      //   563: aload 33
-      //   565: aload 35
-      //   567: getfield 130	com/tencent/mm/vfs/e:NGP	Ljava/lang/String;
-      //   570: invokeinterface 133 4 0
-      //   575: istore 27
-      //   577: iload 27
-      //   579: ifeq +53 -> 632
-      //   582: lload 21
-      //   584: lstore 23
-      //   586: iload_3
-      //   587: istore 10
-      //   589: iload 9
-      //   591: istore 15
-      //   593: iload 8
-      //   595: istore 16
-      //   597: iload 7
-      //   599: istore 11
-      //   601: iload_2
-      //   602: istore 12
-      //   604: iload 5
-      //   606: istore 4
-      //   608: iload 6
-      //   610: istore 17
-      //   612: aload 32
-      //   614: aload 35
-      //   616: getfield 130	com/tencent/mm/vfs/e:NGP	Ljava/lang/String;
-      //   619: invokevirtual 137	java/util/HashSet:add	(Ljava/lang/Object;)Z
-      //   622: pop
-      //   623: iload 6
-      //   625: iconst_1
-      //   626: iadd
-      //   627: istore 6
-      //   629: goto -261 -> 368
-      //   632: iload 5
-      //   634: istore 13
-      //   636: lload 21
-      //   638: lstore 23
-      //   640: iload_3
-      //   641: istore 10
-      //   643: iload 9
-      //   645: istore 15
-      //   647: iload 8
-      //   649: istore 16
-      //   651: iload 7
-      //   653: istore 11
-      //   655: iload_2
-      //   656: istore 12
-      //   658: iload 5
-      //   660: istore 4
-      //   662: iload 6
-      //   664: istore 17
-      //   666: aload 32
-      //   668: aload 35
-      //   670: getfield 130	com/tencent/mm/vfs/e:NGP	Ljava/lang/String;
-      //   673: invokevirtual 137	java/util/HashSet:add	(Ljava/lang/Object;)Z
-      //   676: ifeq +52 -> 728
-      //   679: lload 21
-      //   681: lstore 23
-      //   683: iload_3
-      //   684: istore 10
-      //   686: iload 9
-      //   688: istore 15
-      //   690: iload 8
-      //   692: istore 16
-      //   694: iload 7
-      //   696: istore 11
-      //   698: iload_2
-      //   699: istore 12
-      //   701: iload 5
-      //   703: istore 4
-      //   705: iload 6
-      //   707: istore 17
-      //   709: aload 31
-      //   711: aload 35
-      //   713: getfield 130	com/tencent/mm/vfs/e:NGP	Ljava/lang/String;
-      //   716: invokeinterface 76 2 0
-      //   721: pop
-      //   722: iload 5
-      //   724: iconst_1
-      //   725: iadd
-      //   726: istore 13
-      //   728: iload 13
-      //   730: istore 5
-      //   732: aload 28
-      //   734: ifnull -366 -> 368
-      //   737: lload 21
-      //   739: lstore 23
-      //   741: iload_3
-      //   742: istore 10
-      //   744: iload 9
-      //   746: istore 15
-      //   748: iload 8
-      //   750: istore 16
-      //   752: iload 7
-      //   754: istore 11
-      //   756: iload_2
-      //   757: istore 12
-      //   759: iload 13
-      //   761: istore 4
-      //   763: iload 6
-      //   765: istore 17
-      //   767: aload 28
-      //   769: aload 35
-      //   771: getfield 130	com/tencent/mm/vfs/e:NGP	Ljava/lang/String;
-      //   774: invokevirtual 138	java/util/TreeSet:add	(Ljava/lang/Object;)Z
-      //   777: pop
-      //   778: iload 13
-      //   780: istore 5
-      //   782: goto -414 -> 368
-      //   785: astore_1
-      //   786: iload 17
-      //   788: istore 6
-      //   790: iload 4
-      //   792: istore 5
-      //   794: iload 12
-      //   796: istore_2
-      //   797: iload 11
-      //   799: istore 7
-      //   801: iload 16
-      //   803: istore 8
-      //   805: iload 15
-      //   807: istore 9
-      //   809: iload 10
-      //   811: istore 4
-      //   813: lload 23
-      //   815: lstore 21
-      //   817: aload_1
-      //   818: instanceof 140
-      //   821: ifeq +1395 -> 2216
-      //   824: iconst_4
-      //   825: istore_3
-      //   826: aload_0
-      //   827: getfield 19	com/tencent/mm/vfs/MigrationFileSystem$a:Rcz	Lcom/tencent/mm/vfs/MigrationFileSystem;
-      //   830: iload_3
-      //   831: bipush 18
-      //   833: anewarray 92	java/lang/Object
-      //   836: dup
-      //   837: iconst_0
-      //   838: ldc 94
-      //   840: aastore
-      //   841: dup
-      //   842: iconst_1
-      //   843: aload 30
-      //   845: iconst_0
-      //   846: invokeinterface 55 2 0
-      //   851: aastore
-      //   852: dup
-      //   853: iconst_2
-      //   854: ldc 142
-      //   856: aastore
-      //   857: dup
-      //   858: iconst_3
-      //   859: iload 6
-      //   861: invokestatic 148	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   864: aastore
-      //   865: dup
-      //   866: iconst_4
-      //   867: ldc 150
-      //   869: aastore
-      //   870: dup
-      //   871: iconst_5
-      //   872: iload 5
-      //   874: invokestatic 148	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   877: aastore
-      //   878: dup
-      //   879: bipush 6
-      //   881: ldc 152
-      //   883: aastore
-      //   884: dup
-      //   885: bipush 7
-      //   887: iload_2
-      //   888: invokestatic 148	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   891: aastore
-      //   892: dup
-      //   893: bipush 8
-      //   895: ldc 154
-      //   897: aastore
-      //   898: dup
-      //   899: bipush 9
-      //   901: iload 7
-      //   903: invokestatic 148	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   906: aastore
-      //   907: dup
-      //   908: bipush 10
-      //   910: ldc 156
-      //   912: aastore
-      //   913: dup
-      //   914: bipush 11
-      //   916: iload 4
-      //   918: invokestatic 148	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   921: aastore
-      //   922: dup
-      //   923: bipush 12
-      //   925: ldc 158
-      //   927: aastore
-      //   928: dup
-      //   929: bipush 13
-      //   931: iload 8
-      //   933: invokestatic 148	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   936: aastore
-      //   937: dup
-      //   938: bipush 14
-      //   940: ldc 160
-      //   942: aastore
-      //   943: dup
-      //   944: bipush 15
-      //   946: iload 9
-      //   948: invokestatic 148	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   951: aastore
-      //   952: dup
-      //   953: bipush 16
-      //   955: ldc 162
-      //   957: aastore
-      //   958: dup
-      //   959: bipush 17
-      //   961: lload 21
-      //   963: invokestatic 167	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-      //   966: aastore
-      //   967: invokevirtual 98	com/tencent/mm/vfs/MigrationFileSystem:l	(I[Ljava/lang/Object;)V
-      //   970: ldc 82
-      //   972: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   975: aload_1
-      //   976: athrow
-      //   977: lload 21
-      //   979: lstore 23
-      //   981: iload_3
-      //   982: istore 10
-      //   984: iload 9
-      //   986: istore 15
-      //   988: iload 8
-      //   990: istore 16
-      //   992: iload 7
-      //   994: istore 11
-      //   996: iload_2
-      //   997: istore 12
-      //   999: iload 5
-      //   1001: istore 4
-      //   1003: iload 6
-      //   1005: istore 17
-      //   1007: aload 35
-      //   1009: getfield 130	com/tencent/mm/vfs/e:NGP	Ljava/lang/String;
-      //   1012: invokestatic 46	com/tencent/mm/vfs/aa:bpg	(Ljava/lang/String;)Ljava/lang/String;
-      //   1015: astore 29
-      //   1017: iload 5
-      //   1019: istore 13
-      //   1021: aload 29
-      //   1023: ifnull +144 -> 1167
-      //   1026: lload 21
-      //   1028: lstore 23
-      //   1030: iload_3
-      //   1031: istore 10
-      //   1033: iload 9
-      //   1035: istore 15
-      //   1037: iload 8
-      //   1039: istore 16
-      //   1041: iload 7
-      //   1043: istore 11
-      //   1045: iload_2
-      //   1046: istore 12
-      //   1048: iload 5
-      //   1050: istore 4
-      //   1052: iload 6
-      //   1054: istore 17
-      //   1056: iload 5
-      //   1058: istore 14
-      //   1060: aload 32
-      //   1062: aload 29
-      //   1064: invokevirtual 137	java/util/HashSet:add	(Ljava/lang/Object;)Z
-      //   1067: ifeq +49 -> 1116
-      //   1070: lload 21
-      //   1072: lstore 23
-      //   1074: iload_3
-      //   1075: istore 10
-      //   1077: iload 9
-      //   1079: istore 15
-      //   1081: iload 8
-      //   1083: istore 16
-      //   1085: iload 7
-      //   1087: istore 11
-      //   1089: iload_2
-      //   1090: istore 12
-      //   1092: iload 5
-      //   1094: istore 4
-      //   1096: iload 6
-      //   1098: istore 17
-      //   1100: aload 31
-      //   1102: aload 29
-      //   1104: invokeinterface 76 2 0
-      //   1109: pop
-      //   1110: iload 5
-      //   1112: iconst_1
-      //   1113: iadd
-      //   1114: istore 14
-      //   1116: iload 14
-      //   1118: istore 13
-      //   1120: aload 28
-      //   1122: ifnull +45 -> 1167
-      //   1125: lload 21
-      //   1127: lstore 23
-      //   1129: iload_3
-      //   1130: istore 10
-      //   1132: iload 9
-      //   1134: istore 15
-      //   1136: iload 8
-      //   1138: istore 16
-      //   1140: iload 7
-      //   1142: istore 11
-      //   1144: iload_2
-      //   1145: istore 12
-      //   1147: iload 14
-      //   1149: istore 4
-      //   1151: iload 6
-      //   1153: istore 17
-      //   1155: aload 28
-      //   1157: aload 29
-      //   1159: invokevirtual 138	java/util/TreeSet:add	(Ljava/lang/Object;)Z
-      //   1162: pop
-      //   1163: iload 14
-      //   1165: istore 13
-      //   1167: lload 21
-      //   1169: lstore 23
-      //   1171: iload_3
-      //   1172: istore 10
-      //   1174: iload 9
-      //   1176: istore 15
-      //   1178: iload 8
-      //   1180: istore 16
-      //   1182: iload 7
-      //   1184: istore 11
-      //   1186: iload_2
-      //   1187: istore 12
-      //   1189: iload 13
-      //   1191: istore 4
-      //   1193: iload 6
-      //   1195: istore 17
-      //   1197: aload 31
-      //   1199: aload 35
-      //   1201: getfield 130	com/tencent/mm/vfs/e:NGP	Ljava/lang/String;
-      //   1204: invokeinterface 60 2 0
-      //   1209: ifeq +151 -> 1360
-      //   1212: lload 21
-      //   1214: lstore 23
-      //   1216: iload_3
-      //   1217: istore 10
-      //   1219: iload 9
-      //   1221: istore 15
-      //   1223: iload 8
-      //   1225: istore 16
-      //   1227: iload 7
-      //   1229: istore 11
-      //   1231: iload_2
-      //   1232: istore 12
-      //   1234: iload 13
-      //   1236: istore 4
-      //   1238: iload 6
-      //   1240: istore 17
-      //   1242: aload_0
-      //   1243: getfield 28	com/tencent/mm/vfs/MigrationFileSystem$a:Rcy	Z
-      //   1246: ifne +1001 -> 2247
-      //   1249: lload 21
-      //   1251: lstore 23
-      //   1253: iload_3
-      //   1254: istore 10
-      //   1256: iload 9
-      //   1258: istore 15
-      //   1260: iload 8
-      //   1262: istore 16
-      //   1264: iload 7
-      //   1266: istore 11
-      //   1268: iload_2
-      //   1269: istore 12
-      //   1271: iload 13
-      //   1273: istore 4
-      //   1275: iload 6
-      //   1277: istore 17
-      //   1279: aload 33
-      //   1281: aload 35
-      //   1283: getfield 130	com/tencent/mm/vfs/e:NGP	Ljava/lang/String;
-      //   1286: invokeinterface 170 2 0
-      //   1291: pop
-      //   1292: iload 7
-      //   1294: iconst_1
-      //   1295: iadd
-      //   1296: istore 7
-      //   1298: lload 21
-      //   1300: lstore 23
-      //   1302: iload_3
-      //   1303: istore 10
-      //   1305: iload 9
-      //   1307: istore 15
-      //   1309: iload 8
-      //   1311: istore 16
-      //   1313: iload 7
-      //   1315: istore 11
-      //   1317: iload_2
-      //   1318: istore 12
-      //   1320: iload 13
-      //   1322: istore 4
-      //   1324: iload 6
-      //   1326: istore 17
-      //   1328: ldc 172
-      //   1330: new 174	java/lang/StringBuilder
-      //   1333: dup
-      //   1334: ldc 176
-      //   1336: invokespecial 179	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-      //   1339: aload 35
-      //   1341: getfield 130	com/tencent/mm/vfs/e:NGP	Ljava/lang/String;
-      //   1344: invokevirtual 183	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   1347: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   1350: invokestatic 193	com/tencent/stubs/logger/Log:v	(Ljava/lang/String;Ljava/lang/String;)V
-      //   1353: iload 13
-      //   1355: istore 5
-      //   1357: goto -989 -> 368
-      //   1360: lload 21
-      //   1362: lstore 23
-      //   1364: iload_3
-      //   1365: istore 10
-      //   1367: iload 9
-      //   1369: istore 15
-      //   1371: iload 8
-      //   1373: istore 16
-      //   1375: iload 7
-      //   1377: istore 11
-      //   1379: iload_2
-      //   1380: istore 12
-      //   1382: iload 13
-      //   1384: istore 4
-      //   1386: iload 6
-      //   1388: istore 17
-      //   1390: iload_3
-      //   1391: istore 5
-      //   1393: aload 31
-      //   1395: aload 35
-      //   1397: getfield 130	com/tencent/mm/vfs/e:NGP	Ljava/lang/String;
-      //   1400: aload 33
-      //   1402: aload 35
-      //   1404: getfield 130	com/tencent/mm/vfs/e:NGP	Ljava/lang/String;
-      //   1407: invokeinterface 133 4 0
-      //   1412: ifeq +74 -> 1486
-      //   1415: lload 21
-      //   1417: lstore 23
-      //   1419: iload_3
-      //   1420: istore 10
-      //   1422: iload 9
-      //   1424: istore 15
-      //   1426: iload 8
-      //   1428: istore 16
-      //   1430: iload 7
-      //   1432: istore 11
-      //   1434: iload_2
-      //   1435: istore 12
-      //   1437: iload 13
-      //   1439: istore 4
-      //   1441: iload 6
-      //   1443: istore 17
-      //   1445: iload_3
-      //   1446: istore 5
-      //   1448: ldc 172
-      //   1450: new 174	java/lang/StringBuilder
-      //   1453: dup
-      //   1454: ldc 195
-      //   1456: invokespecial 179	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-      //   1459: aload 35
-      //   1461: getfield 130	com/tencent/mm/vfs/e:NGP	Ljava/lang/String;
-      //   1464: invokevirtual 183	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   1467: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   1470: invokestatic 193	com/tencent/stubs/logger/Log:v	(Ljava/lang/String;Ljava/lang/String;)V
-      //   1473: iload 8
-      //   1475: iconst_1
-      //   1476: iadd
-      //   1477: istore 8
-      //   1479: iload 13
-      //   1481: istore 5
-      //   1483: goto -1115 -> 368
-      //   1486: lload 21
-      //   1488: lstore 23
-      //   1490: iload_3
-      //   1491: istore 10
-      //   1493: iload 9
-      //   1495: istore 15
-      //   1497: iload 8
-      //   1499: istore 16
-      //   1501: iload 7
-      //   1503: istore 11
-      //   1505: iload_2
-      //   1506: istore 12
-      //   1508: iload 13
-      //   1510: istore 4
-      //   1512: iload 6
-      //   1514: istore 17
-      //   1516: iload_3
-      //   1517: istore 5
-      //   1519: aload_0
-      //   1520: getfield 28	com/tencent/mm/vfs/MigrationFileSystem$a:Rcy	Z
-      //   1523: ifne +721 -> 2244
-      //   1526: lload 21
-      //   1528: lstore 23
-      //   1530: iload_3
-      //   1531: istore 10
-      //   1533: iload 9
-      //   1535: istore 15
-      //   1537: iload 8
-      //   1539: istore 16
-      //   1541: iload 7
-      //   1543: istore 11
-      //   1545: iload_2
-      //   1546: istore 12
-      //   1548: iload 13
-      //   1550: istore 4
-      //   1552: iload 6
-      //   1554: istore 17
-      //   1556: iload_3
-      //   1557: istore 5
-      //   1559: aload 31
-      //   1561: aload 35
-      //   1563: getfield 130	com/tencent/mm/vfs/e:NGP	Ljava/lang/String;
-      //   1566: aload 33
-      //   1568: aload 35
-      //   1570: getfield 130	com/tencent/mm/vfs/e:NGP	Ljava/lang/String;
-      //   1573: invokeinterface 199 4 0
-      //   1578: pop2
-      //   1579: lload 21
-      //   1581: lstore 23
-      //   1583: iload_3
-      //   1584: istore 10
-      //   1586: iload 9
-      //   1588: istore 15
-      //   1590: iload 8
-      //   1592: istore 16
-      //   1594: iload 7
-      //   1596: istore 11
-      //   1598: iload_2
-      //   1599: istore 12
-      //   1601: iload 13
-      //   1603: istore 4
-      //   1605: iload 6
-      //   1607: istore 17
-      //   1609: iload_3
-      //   1610: istore 5
-      //   1612: aload 33
-      //   1614: aload 35
-      //   1616: getfield 130	com/tencent/mm/vfs/e:NGP	Ljava/lang/String;
-      //   1619: invokeinterface 170 2 0
-      //   1624: pop
-      //   1625: lload 21
-      //   1627: lstore 23
-      //   1629: iload_3
-      //   1630: istore 10
-      //   1632: iload 9
-      //   1634: istore 15
-      //   1636: iload 8
-      //   1638: istore 16
-      //   1640: iload 7
-      //   1642: istore 11
-      //   1644: iload_2
-      //   1645: istore 12
-      //   1647: iload 13
-      //   1649: istore 4
-      //   1651: iload 6
-      //   1653: istore 17
-      //   1655: iload_3
-      //   1656: istore 5
-      //   1658: ldc 172
-      //   1660: new 174	java/lang/StringBuilder
-      //   1663: dup
-      //   1664: ldc 201
-      //   1666: invokespecial 179	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-      //   1669: aload 35
-      //   1671: getfield 130	com/tencent/mm/vfs/e:NGP	Ljava/lang/String;
-      //   1674: invokevirtual 183	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   1677: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   1680: invokestatic 193	com/tencent/stubs/logger/Log:v	(Ljava/lang/String;Ljava/lang/String;)V
-      //   1683: iload_3
-      //   1684: iconst_1
-      //   1685: iadd
-      //   1686: istore_3
-      //   1687: lload 21
-      //   1689: lstore 23
-      //   1691: iload_3
-      //   1692: istore 10
-      //   1694: iload 9
-      //   1696: istore 15
-      //   1698: iload 8
-      //   1700: istore 16
-      //   1702: iload 7
-      //   1704: istore 11
-      //   1706: iload_2
-      //   1707: istore 12
-      //   1709: iload 13
-      //   1711: istore 4
-      //   1713: iload 6
-      //   1715: istore 17
-      //   1717: iload_3
-      //   1718: istore 5
-      //   1720: aload 35
-      //   1722: getfield 205	com/tencent/mm/vfs/e:RbH	J
-      //   1725: lstore 25
-      //   1727: lload 25
-      //   1729: lload 21
-      //   1731: ladd
-      //   1732: lstore 21
-      //   1734: iload 13
-      //   1736: istore 5
-      //   1738: goto -1370 -> 368
-      //   1741: astore 36
-      //   1743: iload 9
-      //   1745: iconst_1
-      //   1746: iadd
-      //   1747: istore 4
-      //   1749: ldc 207
-      //   1751: new 174	java/lang/StringBuilder
-      //   1754: dup
-      //   1755: ldc 209
-      //   1757: invokespecial 179	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-      //   1760: aload 35
-      //   1762: getfield 130	com/tencent/mm/vfs/e:NGP	Ljava/lang/String;
-      //   1765: invokevirtual 183	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   1768: ldc 211
-      //   1770: invokevirtual 183	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   1773: aload_0
-      //   1774: invokevirtual 212	java/lang/Object:toString	()Ljava/lang/String;
-      //   1777: invokevirtual 183	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   1780: ldc 214
-      //   1782: invokevirtual 183	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   1785: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   1788: invokestatic 217	com/tencent/stubs/logger/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-      //   1791: aload 28
-      //   1793: ifnull +26 -> 1819
-      //   1796: aload 29
-      //   1798: ifnull +21 -> 1819
-      //   1801: aload 28
-      //   1803: aload 29
-      //   1805: invokevirtual 220	java/util/TreeSet:remove	(Ljava/lang/Object;)Z
-      //   1808: pop
-      //   1809: aload 29
-      //   1811: invokestatic 46	com/tencent/mm/vfs/aa:bpg	(Ljava/lang/String;)Ljava/lang/String;
-      //   1814: astore 29
-      //   1816: goto -20 -> 1796
-      //   1819: iload 5
-      //   1821: istore_3
-      //   1822: iload 4
-      //   1824: istore 9
-      //   1826: iload 13
-      //   1828: istore 5
-      //   1830: goto -1462 -> 368
-      //   1833: iload_2
-      //   1834: istore 13
-      //   1836: aload 28
-      //   1838: ifnull +212 -> 2050
-      //   1841: lload 21
-      //   1843: lstore 23
-      //   1845: iload_3
-      //   1846: istore 10
-      //   1848: iload 9
-      //   1850: istore 15
-      //   1852: iload 8
-      //   1854: istore 16
-      //   1856: iload 7
-      //   1858: istore 11
-      //   1860: iload_2
-      //   1861: istore 12
-      //   1863: iload 5
-      //   1865: istore 4
-      //   1867: iload 6
-      //   1869: istore 17
-      //   1871: aload 28
-      //   1873: invokevirtual 224	java/util/TreeSet:descendingSet	()Ljava/util/NavigableSet;
-      //   1876: invokeinterface 227 1 0
-      //   1881: astore 28
-      //   1883: lload 21
-      //   1885: lstore 23
-      //   1887: iload_3
-      //   1888: istore 10
-      //   1890: iload 9
-      //   1892: istore 15
-      //   1894: iload 8
-      //   1896: istore 16
-      //   1898: iload 7
-      //   1900: istore 11
-      //   1902: iload_2
-      //   1903: istore 12
-      //   1905: iload 5
-      //   1907: istore 4
-      //   1909: iload 6
-      //   1911: istore 17
-      //   1913: iload_2
-      //   1914: istore 13
-      //   1916: aload 28
-      //   1918: invokeinterface 122 1 0
-      //   1923: ifeq +127 -> 2050
-      //   1926: lload 21
-      //   1928: lstore 23
-      //   1930: iload_3
-      //   1931: istore 10
-      //   1933: iload 9
-      //   1935: istore 15
-      //   1937: iload 8
-      //   1939: istore 16
-      //   1941: iload 7
-      //   1943: istore 11
-      //   1945: iload_2
-      //   1946: istore 12
-      //   1948: iload 5
-      //   1950: istore 4
-      //   1952: iload 6
-      //   1954: istore 17
-      //   1956: aload 28
-      //   1958: invokeinterface 126 1 0
-      //   1963: checkcast 229	java/lang/String
-      //   1966: astore 29
-      //   1968: lload 21
-      //   1970: lstore 23
-      //   1972: iload_3
-      //   1973: istore 10
-      //   1975: iload 9
-      //   1977: istore 15
-      //   1979: iload 8
-      //   1981: istore 16
-      //   1983: iload 7
-      //   1985: istore 11
-      //   1987: iload_2
-      //   1988: istore 12
-      //   1990: iload 5
-      //   1992: istore 4
-      //   1994: iload 6
-      //   1996: istore 17
-      //   1998: aload_1
-      //   1999: invokevirtual 90	android/os/CancellationSignal:throwIfCanceled	()V
-      //   2002: lload 21
-      //   2004: lstore 23
-      //   2006: iload_3
-      //   2007: istore 10
-      //   2009: iload 9
-      //   2011: istore 15
-      //   2013: iload 8
-      //   2015: istore 16
-      //   2017: iload 7
-      //   2019: istore 11
-      //   2021: iload_2
-      //   2022: istore 12
-      //   2024: iload 5
-      //   2026: istore 4
-      //   2028: iload 6
-      //   2030: istore 17
-      //   2032: aload 33
-      //   2034: aload 29
-      //   2036: iconst_0
-      //   2037: invokeinterface 233 3 0
-      //   2042: pop
-      //   2043: iload_2
-      //   2044: iconst_1
-      //   2045: iadd
-      //   2046: istore_2
-      //   2047: goto -164 -> 1883
-      //   2050: iload 13
-      //   2052: istore_2
-      //   2053: iload_3
-      //   2054: istore 4
-      //   2056: iload 8
-      //   2058: istore_3
-      //   2059: iload 18
-      //   2061: iconst_1
-      //   2062: iadd
-      //   2063: istore 18
-      //   2065: goto -1778 -> 287
-      //   2068: aload_0
-      //   2069: getfield 19	com/tencent/mm/vfs/MigrationFileSystem$a:Rcz	Lcom/tencent/mm/vfs/MigrationFileSystem;
-      //   2072: iconst_3
-      //   2073: bipush 18
-      //   2075: anewarray 92	java/lang/Object
-      //   2078: dup
-      //   2079: iconst_0
-      //   2080: ldc 94
-      //   2082: aastore
-      //   2083: dup
-      //   2084: iconst_1
-      //   2085: aload 31
-      //   2087: aastore
-      //   2088: dup
-      //   2089: iconst_2
-      //   2090: ldc 142
-      //   2092: aastore
-      //   2093: dup
-      //   2094: iconst_3
-      //   2095: iload 6
-      //   2097: invokestatic 148	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   2100: aastore
-      //   2101: dup
-      //   2102: iconst_4
-      //   2103: ldc 150
-      //   2105: aastore
-      //   2106: dup
-      //   2107: iconst_5
-      //   2108: iload 5
-      //   2110: invokestatic 148	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   2113: aastore
-      //   2114: dup
-      //   2115: bipush 6
-      //   2117: ldc 152
-      //   2119: aastore
-      //   2120: dup
-      //   2121: bipush 7
-      //   2123: iload_2
-      //   2124: invokestatic 148	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   2127: aastore
-      //   2128: dup
-      //   2129: bipush 8
-      //   2131: ldc 154
-      //   2133: aastore
-      //   2134: dup
-      //   2135: bipush 9
-      //   2137: iload 7
-      //   2139: invokestatic 148	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   2142: aastore
-      //   2143: dup
-      //   2144: bipush 10
-      //   2146: ldc 156
-      //   2148: aastore
-      //   2149: dup
-      //   2150: bipush 11
-      //   2152: iload 4
-      //   2154: invokestatic 148	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   2157: aastore
-      //   2158: dup
-      //   2159: bipush 12
-      //   2161: ldc 158
-      //   2163: aastore
-      //   2164: dup
-      //   2165: bipush 13
-      //   2167: iload_3
-      //   2168: invokestatic 148	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   2171: aastore
-      //   2172: dup
-      //   2173: bipush 14
-      //   2175: ldc 160
-      //   2177: aastore
-      //   2178: dup
-      //   2179: bipush 15
-      //   2181: iload 9
-      //   2183: invokestatic 148	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   2186: aastore
-      //   2187: dup
-      //   2188: bipush 16
-      //   2190: ldc 162
-      //   2192: aastore
-      //   2193: dup
-      //   2194: bipush 17
-      //   2196: lload 21
-      //   2198: invokestatic 167	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-      //   2201: aastore
-      //   2202: invokevirtual 98	com/tencent/mm/vfs/MigrationFileSystem:l	(I[Ljava/lang/Object;)V
-      //   2205: aload_0
-      //   2206: aload_1
-      //   2207: invokespecial 235	com/tencent/mm/vfs/c:a	(Landroid/os/CancellationSignal;)V
-      //   2210: ldc 82
-      //   2212: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   2215: return
-      //   2216: iconst_5
-      //   2217: istore_3
-      //   2218: goto -1392 -> 826
-      //   2221: astore_1
-      //   2222: iload_3
-      //   2223: istore 8
-      //   2225: goto -1408 -> 817
-      //   2228: astore_1
-      //   2229: iload 4
-      //   2231: istore 9
-      //   2233: iload 5
-      //   2235: istore 4
-      //   2237: iload 13
-      //   2239: istore 5
-      //   2241: goto -1424 -> 817
-      //   2244: goto -510 -> 1734
-      //   2247: iload 9
-      //   2249: istore 4
-      //   2251: goto -429 -> 1822
-      //   2254: goto -195 -> 2059
-      //   2257: aconst_null
-      //   2258: astore 28
-      //   2260: goto -1907 -> 353
-      //   2263: astore 29
-      //   2265: iconst_0
-      //   2266: istore 27
-      //   2268: goto -1691 -> 577
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	2271	0	this	a
-      //   0	2271	1	paramCancellationSignal	android.os.CancellationSignal
-      //   28	2096	2	i	int
-      //   39	2184	3	j	int
-      //   81	2169	4	k	int
-      //   22	2218	5	m	int
-      //   16	2080	6	n	int
-      //   30	2108	7	i1	int
-      //   33	2191	8	i2	int
-      //   44	2204	9	i3	int
-      //   61	1947	10	i4	int
-      //   73	1947	11	i5	int
-      //   77	1946	12	i6	int
-      //   13	2225	13	i7	int
-      //   19	1145	14	i8	int
-      //   65	1947	15	i9	int
-      //   69	1947	16	i10	int
-      //   85	1946	17	i11	int
-      //   25	2039	18	i12	int
-      //   36	256	19	i13	int
-      //   41	199	20	i14	int
-      //   47	2150	21	l1	long
-      //   57	1948	23	l2	long
-      //   1725	3	25	l3	long
-      //   519	1748	27	bool	boolean
-      //   351	1908	28	localObject1	Object
-      //   322	1713	29	localObject2	Object
-      //   2263	1	29	localIOException1	java.io.IOException
-      //   53	791	30	localList	List
-      //   98	1988	31	localb1	FileSystem.b
-      //   139	922	32	localHashSet	HashSet
-      //   310	1723	33	localb2	FileSystem.b
-      //   360	79	34	localIterator	Iterator
-      //   448	1313	35	locale	e
-      //   1741	1	36	localIOException2	java.io.IOException
-      // Exception table:
-      //   from	to	target	type
-      //   87	100	785	java/lang/Exception
-      //   132	141	785	java/lang/Exception
-      //   173	177	785	java/lang/Exception
-      //   209	231	785	java/lang/Exception
-      //   263	272	785	java/lang/Exception
-      //   398	408	785	java/lang/Exception
-      //   438	450	785	java/lang/Exception
-      //   480	484	785	java/lang/Exception
-      //   514	521	785	java/lang/Exception
-      //   556	577	785	java/lang/Exception
-      //   612	623	785	java/lang/Exception
-      //   666	679	785	java/lang/Exception
-      //   709	722	785	java/lang/Exception
-      //   767	778	785	java/lang/Exception
-      //   1007	1017	785	java/lang/Exception
-      //   1060	1070	785	java/lang/Exception
-      //   1100	1110	785	java/lang/Exception
-      //   1155	1163	785	java/lang/Exception
-      //   1197	1212	785	java/lang/Exception
-      //   1242	1249	785	java/lang/Exception
-      //   1279	1292	785	java/lang/Exception
-      //   1328	1353	785	java/lang/Exception
-      //   1393	1415	785	java/lang/Exception
-      //   1448	1473	785	java/lang/Exception
-      //   1519	1526	785	java/lang/Exception
-      //   1559	1579	785	java/lang/Exception
-      //   1612	1625	785	java/lang/Exception
-      //   1658	1683	785	java/lang/Exception
-      //   1720	1727	785	java/lang/Exception
-      //   1871	1883	785	java/lang/Exception
-      //   1916	1926	785	java/lang/Exception
-      //   1956	1968	785	java/lang/Exception
-      //   1998	2002	785	java/lang/Exception
-      //   2032	2043	785	java/lang/Exception
-      //   1393	1415	1741	java/io/IOException
-      //   1448	1473	1741	java/io/IOException
-      //   1519	1526	1741	java/io/IOException
-      //   1559	1579	1741	java/io/IOException
-      //   1612	1625	1741	java/io/IOException
-      //   1658	1683	1741	java/io/IOException
-      //   1720	1727	1741	java/io/IOException
-      //   294	324	2221	java/lang/Exception
-      //   329	353	2221	java/lang/Exception
-      //   353	362	2221	java/lang/Exception
-      //   2068	2205	2221	java/lang/Exception
-      //   1749	1791	2228	java/lang/Exception
-      //   1801	1816	2228	java/lang/Exception
-      //   556	577	2263	java/io/IOException
-    }
-    
-    public final boolean a(String paramString1, FileSystem.b paramb, String paramString2)
-    {
-      AppMethodBeat.i(187674);
-      boolean bool = super.a(paramString1, paramb, paramString2);
-      if ((!bool) && (boR(paramString1)))
-      {
-        bool = super.a(paramString1, paramb, paramString2);
-        AppMethodBeat.o(187674);
-        return bool;
-      }
-      AppMethodBeat.o(187674);
-      return bool;
-    }
-    
-    public final ReadableByteChannel boI(String paramString)
-    {
-      AppMethodBeat.i(187668);
+      AppMethodBeat.i(236290);
       Object localObject1 = null;
-      Iterator localIterator = this.Rcw.iterator();
+      Iterator localIterator = this.YCZ.iterator();
       if (localIterator.hasNext())
       {
         Object localObject2 = (FileSystem.b)localIterator.next();
         try
         {
-          localObject2 = ((FileSystem.b)localObject2).boI(paramString);
-          AppMethodBeat.o(187668);
+          localObject2 = ((FileSystem.b)localObject2).Tf(paramString);
+          AppMethodBeat.o(236290);
           return localObject2;
         }
         catch (FileNotFoundException localFileNotFoundException)
@@ -1632,186 +316,1383 @@ public class MigrationFileSystem
         if (localObject1 != null) {}
         for (;;)
         {
-          AppMethodBeat.o(187668);
+          AppMethodBeat.o(236290);
           throw ((Throwable)localObject1);
           localObject1 = new FileNotFoundException(paramString + " not found on any file systems.");
         }
       }
     }
     
-    public final boolean boL(String paramString)
+    /* Error */
+    public final void a(android.os.CancellationSignal paramCancellationSignal)
     {
-      AppMethodBeat.i(187672);
-      Iterator localIterator = this.Rcw.iterator();
+      // Byte code:
+      //   0: ldc 87
+      //   2: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   5: aload_0
+      //   6: getfield 26	com/tencent/mm/vfs/MigrationFileSystem$a:YDa	Z
+      //   9: ifeq +2213 -> 2222
+      //   12: aload_0
+      //   13: getfield 24	com/tencent/mm/vfs/MigrationFileSystem$a:YCZ	Ljava/util/List;
+      //   16: iconst_0
+      //   17: invokeinterface 91 2 0
+      //   22: invokestatic 97	com/tencent/mm/vfs/NullFileSystem:ifq	()Lcom/tencent/mm/vfs/FileSystem$b;
+      //   25: if_acmpeq +2197 -> 2222
+      //   28: iconst_0
+      //   29: istore 13
+      //   31: iconst_0
+      //   32: istore 6
+      //   34: iconst_0
+      //   35: istore 14
+      //   37: iconst_0
+      //   38: istore 5
+      //   40: iconst_0
+      //   41: istore 18
+      //   43: iconst_0
+      //   44: istore_2
+      //   45: iconst_0
+      //   46: istore 7
+      //   48: iconst_0
+      //   49: istore 8
+      //   51: iconst_0
+      //   52: istore 19
+      //   54: iconst_0
+      //   55: istore_3
+      //   56: iconst_0
+      //   57: istore 20
+      //   59: iconst_0
+      //   60: istore 9
+      //   62: lconst_0
+      //   63: lstore 21
+      //   65: aload_0
+      //   66: getfield 24	com/tencent/mm/vfs/MigrationFileSystem$a:YCZ	Ljava/util/List;
+      //   69: astore 30
+      //   71: lload 21
+      //   73: lstore 23
+      //   75: iload 19
+      //   77: istore 10
+      //   79: iload 20
+      //   81: istore 15
+      //   83: iload 8
+      //   85: istore 16
+      //   87: iload 7
+      //   89: istore 11
+      //   91: iload 18
+      //   93: istore 12
+      //   95: iload 14
+      //   97: istore 4
+      //   99: iload 13
+      //   101: istore 17
+      //   103: aload 30
+      //   105: iconst_0
+      //   106: invokeinterface 91 2 0
+      //   111: checkcast 60	com/tencent/mm/vfs/FileSystem$b
+      //   114: astore 31
+      //   116: lload 21
+      //   118: lstore 23
+      //   120: iload 19
+      //   122: istore 10
+      //   124: iload 20
+      //   126: istore 15
+      //   128: iload 8
+      //   130: istore 16
+      //   132: iload 7
+      //   134: istore 11
+      //   136: iload 18
+      //   138: istore 12
+      //   140: iload 14
+      //   142: istore 4
+      //   144: iload 13
+      //   146: istore 17
+      //   148: new 99	java/util/HashSet
+      //   151: dup
+      //   152: invokespecial 100	java/util/HashSet:<init>	()V
+      //   155: astore 32
+      //   157: lload 21
+      //   159: lstore 23
+      //   161: iload 19
+      //   163: istore 10
+      //   165: iload 20
+      //   167: istore 15
+      //   169: iload 8
+      //   171: istore 16
+      //   173: iload 7
+      //   175: istore 11
+      //   177: iload 18
+      //   179: istore 12
+      //   181: iload 14
+      //   183: istore 4
+      //   185: iload 13
+      //   187: istore 17
+      //   189: aload_1
+      //   190: invokevirtual 105	android/os/CancellationSignal:throwIfCanceled	()V
+      //   193: lload 21
+      //   195: lstore 23
+      //   197: iload 19
+      //   199: istore 10
+      //   201: iload 20
+      //   203: istore 15
+      //   205: iload 8
+      //   207: istore 16
+      //   209: iload 7
+      //   211: istore 11
+      //   213: iload 18
+      //   215: istore 12
+      //   217: iload 14
+      //   219: istore 4
+      //   221: iload 13
+      //   223: istore 17
+      //   225: aload_0
+      //   226: getfield 19	com/tencent/mm/vfs/MigrationFileSystem$a:YDc	Lcom/tencent/mm/vfs/MigrationFileSystem;
+      //   229: iconst_1
+      //   230: iconst_2
+      //   231: anewarray 107	java/lang/Object
+      //   234: dup
+      //   235: iconst_0
+      //   236: ldc 109
+      //   238: aastore
+      //   239: dup
+      //   240: iconst_1
+      //   241: aload 31
+      //   243: aastore
+      //   244: invokevirtual 113	com/tencent/mm/vfs/MigrationFileSystem:k	(I[Ljava/lang/Object;)V
+      //   247: lload 21
+      //   249: lstore 23
+      //   251: iload 19
+      //   253: istore 10
+      //   255: iload 20
+      //   257: istore 15
+      //   259: iload 8
+      //   261: istore 16
+      //   263: iload 7
+      //   265: istore 11
+      //   267: iload 18
+      //   269: istore 12
+      //   271: iload 14
+      //   273: istore 4
+      //   275: iload 13
+      //   277: istore 17
+      //   279: aload 30
+      //   281: invokeinterface 117 1 0
+      //   286: istore 19
+      //   288: iconst_1
+      //   289: istore 18
+      //   291: iconst_0
+      //   292: istore 8
+      //   294: iconst_0
+      //   295: istore 7
+      //   297: iload_3
+      //   298: istore 4
+      //   300: iload 8
+      //   302: istore_3
+      //   303: iload 18
+      //   305: iload 19
+      //   307: if_icmpge +1778 -> 2085
+      //   310: aload_1
+      //   311: invokevirtual 105	android/os/CancellationSignal:throwIfCanceled	()V
+      //   314: aload 30
+      //   316: iload 18
+      //   318: invokeinterface 91 2 0
+      //   323: checkcast 60	com/tencent/mm/vfs/FileSystem$b
+      //   326: astore 33
+      //   328: aload 33
+      //   330: ldc 119
+      //   332: iconst_1
+      //   333: invokeinterface 123 3 0
+      //   338: astore 29
+      //   340: aload 29
+      //   342: ifnull +1929 -> 2271
+      //   345: aload 33
+      //   347: invokeinterface 126 1 0
+      //   352: bipush 9
+      //   354: iand
+      //   355: bipush 9
+      //   357: if_icmpne +1917 -> 2274
+      //   360: new 128	java/util/TreeSet
+      //   363: dup
+      //   364: invokespecial 129	java/util/TreeSet:<init>	()V
+      //   367: astore 28
+      //   369: aload 29
+      //   371: invokeinterface 132 1 0
+      //   376: astore 34
+      //   378: iload_3
+      //   379: istore 8
+      //   381: iload 4
+      //   383: istore_3
+      //   384: lload 21
+      //   386: lstore 23
+      //   388: iload_3
+      //   389: istore 10
+      //   391: iload 9
+      //   393: istore 15
+      //   395: iload 8
+      //   397: istore 16
+      //   399: iload 7
+      //   401: istore 11
+      //   403: iload_2
+      //   404: istore 12
+      //   406: iload 5
+      //   408: istore 4
+      //   410: iload 6
+      //   412: istore 17
+      //   414: aload 34
+      //   416: invokeinterface 54 1 0
+      //   421: ifeq +1429 -> 1850
+      //   424: lload 21
+      //   426: lstore 23
+      //   428: iload_3
+      //   429: istore 10
+      //   431: iload 9
+      //   433: istore 15
+      //   435: iload 8
+      //   437: istore 16
+      //   439: iload 7
+      //   441: istore 11
+      //   443: iload_2
+      //   444: istore 12
+      //   446: iload 5
+      //   448: istore 4
+      //   450: iload 6
+      //   452: istore 17
+      //   454: aload 34
+      //   456: invokeinterface 58 1 0
+      //   461: checkcast 134	com/tencent/mm/vfs/f
+      //   464: astore 35
+      //   466: lload 21
+      //   468: lstore 23
+      //   470: iload_3
+      //   471: istore 10
+      //   473: iload 9
+      //   475: istore 15
+      //   477: iload 8
+      //   479: istore 16
+      //   481: iload 7
+      //   483: istore 11
+      //   485: iload_2
+      //   486: istore 12
+      //   488: iload 5
+      //   490: istore 4
+      //   492: iload 6
+      //   494: istore 17
+      //   496: aload_1
+      //   497: invokevirtual 105	android/os/CancellationSignal:throwIfCanceled	()V
+      //   500: lload 21
+      //   502: lstore 23
+      //   504: iload_3
+      //   505: istore 10
+      //   507: iload 9
+      //   509: istore 15
+      //   511: iload 8
+      //   513: istore 16
+      //   515: iload 7
+      //   517: istore 11
+      //   519: iload_2
+      //   520: istore 12
+      //   522: iload 5
+      //   524: istore 4
+      //   526: iload 6
+      //   528: istore 17
+      //   530: aload 35
+      //   532: getfield 137	com/tencent/mm/vfs/f:YCj	Z
+      //   535: istore 27
+      //   537: iload 27
+      //   539: ifeq +454 -> 993
+      //   542: lload 21
+      //   544: lstore 23
+      //   546: iload_3
+      //   547: istore 10
+      //   549: iload 9
+      //   551: istore 15
+      //   553: iload 8
+      //   555: istore 16
+      //   557: iload 7
+      //   559: istore 11
+      //   561: iload_2
+      //   562: istore 12
+      //   564: iload 5
+      //   566: istore 4
+      //   568: iload 6
+      //   570: istore 17
+      //   572: aload 31
+      //   574: aload 35
+      //   576: getfield 141	com/tencent/mm/vfs/f:UUr	Ljava/lang/String;
+      //   579: aload 33
+      //   581: aload 35
+      //   583: getfield 141	com/tencent/mm/vfs/f:UUr	Ljava/lang/String;
+      //   586: invokeinterface 144 4 0
+      //   591: istore 27
+      //   593: iload 27
+      //   595: ifeq +53 -> 648
+      //   598: lload 21
+      //   600: lstore 23
+      //   602: iload_3
+      //   603: istore 10
+      //   605: iload 9
+      //   607: istore 15
+      //   609: iload 8
+      //   611: istore 16
+      //   613: iload 7
+      //   615: istore 11
+      //   617: iload_2
+      //   618: istore 12
+      //   620: iload 5
+      //   622: istore 4
+      //   624: iload 6
+      //   626: istore 17
+      //   628: aload 32
+      //   630: aload 35
+      //   632: getfield 141	com/tencent/mm/vfs/f:UUr	Ljava/lang/String;
+      //   635: invokevirtual 148	java/util/HashSet:add	(Ljava/lang/Object;)Z
+      //   638: pop
+      //   639: iload 6
+      //   641: iconst_1
+      //   642: iadd
+      //   643: istore 6
+      //   645: goto -261 -> 384
+      //   648: iload 5
+      //   650: istore 13
+      //   652: lload 21
+      //   654: lstore 23
+      //   656: iload_3
+      //   657: istore 10
+      //   659: iload 9
+      //   661: istore 15
+      //   663: iload 8
+      //   665: istore 16
+      //   667: iload 7
+      //   669: istore 11
+      //   671: iload_2
+      //   672: istore 12
+      //   674: iload 5
+      //   676: istore 4
+      //   678: iload 6
+      //   680: istore 17
+      //   682: aload 32
+      //   684: aload 35
+      //   686: getfield 141	com/tencent/mm/vfs/f:UUr	Ljava/lang/String;
+      //   689: invokevirtual 148	java/util/HashSet:add	(Ljava/lang/Object;)Z
+      //   692: ifeq +52 -> 744
+      //   695: lload 21
+      //   697: lstore 23
+      //   699: iload_3
+      //   700: istore 10
+      //   702: iload 9
+      //   704: istore 15
+      //   706: iload 8
+      //   708: istore 16
+      //   710: iload 7
+      //   712: istore 11
+      //   714: iload_2
+      //   715: istore 12
+      //   717: iload 5
+      //   719: istore 4
+      //   721: iload 6
+      //   723: istore 17
+      //   725: aload 31
+      //   727: aload 35
+      //   729: getfield 141	com/tencent/mm/vfs/f:UUr	Ljava/lang/String;
+      //   732: invokeinterface 152 2 0
+      //   737: pop
+      //   738: iload 5
+      //   740: iconst_1
+      //   741: iadd
+      //   742: istore 13
+      //   744: iload 13
+      //   746: istore 5
+      //   748: aload 28
+      //   750: ifnull -366 -> 384
+      //   753: lload 21
+      //   755: lstore 23
+      //   757: iload_3
+      //   758: istore 10
+      //   760: iload 9
+      //   762: istore 15
+      //   764: iload 8
+      //   766: istore 16
+      //   768: iload 7
+      //   770: istore 11
+      //   772: iload_2
+      //   773: istore 12
+      //   775: iload 13
+      //   777: istore 4
+      //   779: iload 6
+      //   781: istore 17
+      //   783: aload 28
+      //   785: aload 35
+      //   787: getfield 141	com/tencent/mm/vfs/f:UUr	Ljava/lang/String;
+      //   790: invokevirtual 153	java/util/TreeSet:add	(Ljava/lang/Object;)Z
+      //   793: pop
+      //   794: iload 13
+      //   796: istore 5
+      //   798: goto -414 -> 384
+      //   801: astore_1
+      //   802: iload 17
+      //   804: istore 6
+      //   806: iload 4
+      //   808: istore 5
+      //   810: iload 12
+      //   812: istore_2
+      //   813: iload 11
+      //   815: istore 7
+      //   817: iload 16
+      //   819: istore 8
+      //   821: iload 15
+      //   823: istore 9
+      //   825: iload 10
+      //   827: istore 4
+      //   829: lload 23
+      //   831: lstore 21
+      //   833: aload_1
+      //   834: instanceof 155
+      //   837: ifeq +1396 -> 2233
+      //   840: iconst_4
+      //   841: istore_3
+      //   842: aload_0
+      //   843: getfield 19	com/tencent/mm/vfs/MigrationFileSystem$a:YDc	Lcom/tencent/mm/vfs/MigrationFileSystem;
+      //   846: iload_3
+      //   847: bipush 18
+      //   849: anewarray 107	java/lang/Object
+      //   852: dup
+      //   853: iconst_0
+      //   854: ldc 109
+      //   856: aastore
+      //   857: dup
+      //   858: iconst_1
+      //   859: aload 30
+      //   861: iconst_0
+      //   862: invokeinterface 91 2 0
+      //   867: aastore
+      //   868: dup
+      //   869: iconst_2
+      //   870: ldc 157
+      //   872: aastore
+      //   873: dup
+      //   874: iconst_3
+      //   875: iload 6
+      //   877: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   880: aastore
+      //   881: dup
+      //   882: iconst_4
+      //   883: ldc 165
+      //   885: aastore
+      //   886: dup
+      //   887: iconst_5
+      //   888: iload 5
+      //   890: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   893: aastore
+      //   894: dup
+      //   895: bipush 6
+      //   897: ldc 167
+      //   899: aastore
+      //   900: dup
+      //   901: bipush 7
+      //   903: iload_2
+      //   904: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   907: aastore
+      //   908: dup
+      //   909: bipush 8
+      //   911: ldc 169
+      //   913: aastore
+      //   914: dup
+      //   915: bipush 9
+      //   917: iload 7
+      //   919: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   922: aastore
+      //   923: dup
+      //   924: bipush 10
+      //   926: ldc 171
+      //   928: aastore
+      //   929: dup
+      //   930: bipush 11
+      //   932: iload 4
+      //   934: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   937: aastore
+      //   938: dup
+      //   939: bipush 12
+      //   941: ldc 173
+      //   943: aastore
+      //   944: dup
+      //   945: bipush 13
+      //   947: iload 8
+      //   949: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   952: aastore
+      //   953: dup
+      //   954: bipush 14
+      //   956: ldc 175
+      //   958: aastore
+      //   959: dup
+      //   960: bipush 15
+      //   962: iload 9
+      //   964: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   967: aastore
+      //   968: dup
+      //   969: bipush 16
+      //   971: ldc 177
+      //   973: aastore
+      //   974: dup
+      //   975: bipush 17
+      //   977: lload 21
+      //   979: invokestatic 182	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+      //   982: aastore
+      //   983: invokevirtual 113	com/tencent/mm/vfs/MigrationFileSystem:k	(I[Ljava/lang/Object;)V
+      //   986: ldc 87
+      //   988: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   991: aload_1
+      //   992: athrow
+      //   993: lload 21
+      //   995: lstore 23
+      //   997: iload_3
+      //   998: istore 10
+      //   1000: iload 9
+      //   1002: istore 15
+      //   1004: iload 8
+      //   1006: istore 16
+      //   1008: iload 7
+      //   1010: istore 11
+      //   1012: iload_2
+      //   1013: istore 12
+      //   1015: iload 5
+      //   1017: istore 4
+      //   1019: iload 6
+      //   1021: istore 17
+      //   1023: aload 35
+      //   1025: getfield 141	com/tencent/mm/vfs/f:UUr	Ljava/lang/String;
+      //   1028: invokestatic 188	com/tencent/mm/vfs/ad:bCc	(Ljava/lang/String;)Ljava/lang/String;
+      //   1031: astore 29
+      //   1033: iload 5
+      //   1035: istore 13
+      //   1037: aload 29
+      //   1039: ifnull +144 -> 1183
+      //   1042: lload 21
+      //   1044: lstore 23
+      //   1046: iload_3
+      //   1047: istore 10
+      //   1049: iload 9
+      //   1051: istore 15
+      //   1053: iload 8
+      //   1055: istore 16
+      //   1057: iload 7
+      //   1059: istore 11
+      //   1061: iload_2
+      //   1062: istore 12
+      //   1064: iload 5
+      //   1066: istore 4
+      //   1068: iload 6
+      //   1070: istore 17
+      //   1072: iload 5
+      //   1074: istore 14
+      //   1076: aload 32
+      //   1078: aload 29
+      //   1080: invokevirtual 148	java/util/HashSet:add	(Ljava/lang/Object;)Z
+      //   1083: ifeq +49 -> 1132
+      //   1086: lload 21
+      //   1088: lstore 23
+      //   1090: iload_3
+      //   1091: istore 10
+      //   1093: iload 9
+      //   1095: istore 15
+      //   1097: iload 8
+      //   1099: istore 16
+      //   1101: iload 7
+      //   1103: istore 11
+      //   1105: iload_2
+      //   1106: istore 12
+      //   1108: iload 5
+      //   1110: istore 4
+      //   1112: iload 6
+      //   1114: istore 17
+      //   1116: aload 31
+      //   1118: aload 29
+      //   1120: invokeinterface 152 2 0
+      //   1125: pop
+      //   1126: iload 5
+      //   1128: iconst_1
+      //   1129: iadd
+      //   1130: istore 14
+      //   1132: iload 14
+      //   1134: istore 13
+      //   1136: aload 28
+      //   1138: ifnull +45 -> 1183
+      //   1141: lload 21
+      //   1143: lstore 23
+      //   1145: iload_3
+      //   1146: istore 10
+      //   1148: iload 9
+      //   1150: istore 15
+      //   1152: iload 8
+      //   1154: istore 16
+      //   1156: iload 7
+      //   1158: istore 11
+      //   1160: iload_2
+      //   1161: istore 12
+      //   1163: iload 14
+      //   1165: istore 4
+      //   1167: iload 6
+      //   1169: istore 17
+      //   1171: aload 28
+      //   1173: aload 29
+      //   1175: invokevirtual 153	java/util/TreeSet:add	(Ljava/lang/Object;)Z
+      //   1178: pop
+      //   1179: iload 14
+      //   1181: istore 13
+      //   1183: lload 21
+      //   1185: lstore 23
+      //   1187: iload_3
+      //   1188: istore 10
+      //   1190: iload 9
+      //   1192: istore 15
+      //   1194: iload 8
+      //   1196: istore 16
+      //   1198: iload 7
+      //   1200: istore 11
+      //   1202: iload_2
+      //   1203: istore 12
+      //   1205: iload 13
+      //   1207: istore 4
+      //   1209: iload 6
+      //   1211: istore 17
+      //   1213: aload 31
+      //   1215: aload 35
+      //   1217: getfield 141	com/tencent/mm/vfs/f:UUr	Ljava/lang/String;
+      //   1220: invokeinterface 191 2 0
+      //   1225: ifeq +151 -> 1376
+      //   1228: lload 21
+      //   1230: lstore 23
+      //   1232: iload_3
+      //   1233: istore 10
+      //   1235: iload 9
+      //   1237: istore 15
+      //   1239: iload 8
+      //   1241: istore 16
+      //   1243: iload 7
+      //   1245: istore 11
+      //   1247: iload_2
+      //   1248: istore 12
+      //   1250: iload 13
+      //   1252: istore 4
+      //   1254: iload 6
+      //   1256: istore 17
+      //   1258: aload_0
+      //   1259: getfield 28	com/tencent/mm/vfs/MigrationFileSystem$a:YDb	Z
+      //   1262: ifne +1002 -> 2264
+      //   1265: lload 21
+      //   1267: lstore 23
+      //   1269: iload_3
+      //   1270: istore 10
+      //   1272: iload 9
+      //   1274: istore 15
+      //   1276: iload 8
+      //   1278: istore 16
+      //   1280: iload 7
+      //   1282: istore 11
+      //   1284: iload_2
+      //   1285: istore 12
+      //   1287: iload 13
+      //   1289: istore 4
+      //   1291: iload 6
+      //   1293: istore 17
+      //   1295: aload 33
+      //   1297: aload 35
+      //   1299: getfield 141	com/tencent/mm/vfs/f:UUr	Ljava/lang/String;
+      //   1302: invokeinterface 194 2 0
+      //   1307: pop
+      //   1308: iload 7
+      //   1310: iconst_1
+      //   1311: iadd
+      //   1312: istore 7
+      //   1314: lload 21
+      //   1316: lstore 23
+      //   1318: iload_3
+      //   1319: istore 10
+      //   1321: iload 9
+      //   1323: istore 15
+      //   1325: iload 8
+      //   1327: istore 16
+      //   1329: iload 7
+      //   1331: istore 11
+      //   1333: iload_2
+      //   1334: istore 12
+      //   1336: iload 13
+      //   1338: istore 4
+      //   1340: iload 6
+      //   1342: istore 17
+      //   1344: ldc 196
+      //   1346: new 67	java/lang/StringBuilder
+      //   1349: dup
+      //   1350: ldc 198
+      //   1352: invokespecial 199	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   1355: aload 35
+      //   1357: getfield 141	com/tencent/mm/vfs/f:UUr	Ljava/lang/String;
+      //   1360: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   1363: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   1366: invokestatic 205	com/tencent/stubs/logger/Log:v	(Ljava/lang/String;Ljava/lang/String;)V
+      //   1369: iload 13
+      //   1371: istore 5
+      //   1373: goto -989 -> 384
+      //   1376: lload 21
+      //   1378: lstore 23
+      //   1380: iload_3
+      //   1381: istore 10
+      //   1383: iload 9
+      //   1385: istore 15
+      //   1387: iload 8
+      //   1389: istore 16
+      //   1391: iload 7
+      //   1393: istore 11
+      //   1395: iload_2
+      //   1396: istore 12
+      //   1398: iload 13
+      //   1400: istore 4
+      //   1402: iload 6
+      //   1404: istore 17
+      //   1406: iload_3
+      //   1407: istore 5
+      //   1409: aload 31
+      //   1411: aload 35
+      //   1413: getfield 141	com/tencent/mm/vfs/f:UUr	Ljava/lang/String;
+      //   1416: aload 33
+      //   1418: aload 35
+      //   1420: getfield 141	com/tencent/mm/vfs/f:UUr	Ljava/lang/String;
+      //   1423: invokeinterface 144 4 0
+      //   1428: ifeq +74 -> 1502
+      //   1431: lload 21
+      //   1433: lstore 23
+      //   1435: iload_3
+      //   1436: istore 10
+      //   1438: iload 9
+      //   1440: istore 15
+      //   1442: iload 8
+      //   1444: istore 16
+      //   1446: iload 7
+      //   1448: istore 11
+      //   1450: iload_2
+      //   1451: istore 12
+      //   1453: iload 13
+      //   1455: istore 4
+      //   1457: iload 6
+      //   1459: istore 17
+      //   1461: iload_3
+      //   1462: istore 5
+      //   1464: ldc 196
+      //   1466: new 67	java/lang/StringBuilder
+      //   1469: dup
+      //   1470: ldc 207
+      //   1472: invokespecial 199	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   1475: aload 35
+      //   1477: getfield 141	com/tencent/mm/vfs/f:UUr	Ljava/lang/String;
+      //   1480: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   1483: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   1486: invokestatic 205	com/tencent/stubs/logger/Log:v	(Ljava/lang/String;Ljava/lang/String;)V
+      //   1489: iload 8
+      //   1491: iconst_1
+      //   1492: iadd
+      //   1493: istore 8
+      //   1495: iload 13
+      //   1497: istore 5
+      //   1499: goto -1115 -> 384
+      //   1502: lload 21
+      //   1504: lstore 23
+      //   1506: iload_3
+      //   1507: istore 10
+      //   1509: iload 9
+      //   1511: istore 15
+      //   1513: iload 8
+      //   1515: istore 16
+      //   1517: iload 7
+      //   1519: istore 11
+      //   1521: iload_2
+      //   1522: istore 12
+      //   1524: iload 13
+      //   1526: istore 4
+      //   1528: iload 6
+      //   1530: istore 17
+      //   1532: iload_3
+      //   1533: istore 5
+      //   1535: aload_0
+      //   1536: getfield 28	com/tencent/mm/vfs/MigrationFileSystem$a:YDb	Z
+      //   1539: ifne +722 -> 2261
+      //   1542: lload 21
+      //   1544: lstore 23
+      //   1546: iload_3
+      //   1547: istore 10
+      //   1549: iload 9
+      //   1551: istore 15
+      //   1553: iload 8
+      //   1555: istore 16
+      //   1557: iload 7
+      //   1559: istore 11
+      //   1561: iload_2
+      //   1562: istore 12
+      //   1564: iload 13
+      //   1566: istore 4
+      //   1568: iload 6
+      //   1570: istore 17
+      //   1572: iload_3
+      //   1573: istore 5
+      //   1575: aload 31
+      //   1577: aload 35
+      //   1579: getfield 141	com/tencent/mm/vfs/f:UUr	Ljava/lang/String;
+      //   1582: aload 33
+      //   1584: aload 35
+      //   1586: getfield 141	com/tencent/mm/vfs/f:UUr	Ljava/lang/String;
+      //   1589: iconst_0
+      //   1590: invokeinterface 210 5 0
+      //   1595: pop2
+      //   1596: lload 21
+      //   1598: lstore 23
+      //   1600: iload_3
+      //   1601: istore 10
+      //   1603: iload 9
+      //   1605: istore 15
+      //   1607: iload 8
+      //   1609: istore 16
+      //   1611: iload 7
+      //   1613: istore 11
+      //   1615: iload_2
+      //   1616: istore 12
+      //   1618: iload 13
+      //   1620: istore 4
+      //   1622: iload 6
+      //   1624: istore 17
+      //   1626: iload_3
+      //   1627: istore 5
+      //   1629: aload 33
+      //   1631: aload 35
+      //   1633: getfield 141	com/tencent/mm/vfs/f:UUr	Ljava/lang/String;
+      //   1636: invokeinterface 194 2 0
+      //   1641: pop
+      //   1642: lload 21
+      //   1644: lstore 23
+      //   1646: iload_3
+      //   1647: istore 10
+      //   1649: iload 9
+      //   1651: istore 15
+      //   1653: iload 8
+      //   1655: istore 16
+      //   1657: iload 7
+      //   1659: istore 11
+      //   1661: iload_2
+      //   1662: istore 12
+      //   1664: iload 13
+      //   1666: istore 4
+      //   1668: iload 6
+      //   1670: istore 17
+      //   1672: iload_3
+      //   1673: istore 5
+      //   1675: ldc 196
+      //   1677: new 67	java/lang/StringBuilder
+      //   1680: dup
+      //   1681: ldc 212
+      //   1683: invokespecial 199	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   1686: aload 35
+      //   1688: getfield 141	com/tencent/mm/vfs/f:UUr	Ljava/lang/String;
+      //   1691: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   1694: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   1697: invokestatic 205	com/tencent/stubs/logger/Log:v	(Ljava/lang/String;Ljava/lang/String;)V
+      //   1700: iload_3
+      //   1701: iconst_1
+      //   1702: iadd
+      //   1703: istore_3
+      //   1704: lload 21
+      //   1706: lstore 23
+      //   1708: iload_3
+      //   1709: istore 10
+      //   1711: iload 9
+      //   1713: istore 15
+      //   1715: iload 8
+      //   1717: istore 16
+      //   1719: iload 7
+      //   1721: istore 11
+      //   1723: iload_2
+      //   1724: istore 12
+      //   1726: iload 13
+      //   1728: istore 4
+      //   1730: iload 6
+      //   1732: istore 17
+      //   1734: iload_3
+      //   1735: istore 5
+      //   1737: aload 35
+      //   1739: getfield 216	com/tencent/mm/vfs/f:YCh	J
+      //   1742: lstore 25
+      //   1744: lload 25
+      //   1746: lload 21
+      //   1748: ladd
+      //   1749: lstore 21
+      //   1751: iload 13
+      //   1753: istore 5
+      //   1755: goto -1371 -> 384
+      //   1758: astore 36
+      //   1760: iload 9
+      //   1762: iconst_1
+      //   1763: iadd
+      //   1764: istore 4
+      //   1766: ldc 218
+      //   1768: new 67	java/lang/StringBuilder
+      //   1771: dup
+      //   1772: ldc 220
+      //   1774: invokespecial 199	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   1777: aload 35
+      //   1779: getfield 141	com/tencent/mm/vfs/f:UUr	Ljava/lang/String;
+      //   1782: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   1785: ldc 222
+      //   1787: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   1790: aload_0
+      //   1791: invokevirtual 223	com/tencent/mm/vfs/MigrationFileSystem$a:toString	()Ljava/lang/String;
+      //   1794: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   1797: ldc 225
+      //   1799: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   1802: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   1805: invokestatic 228	com/tencent/stubs/logger/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   1808: aload 28
+      //   1810: ifnull +26 -> 1836
+      //   1813: aload 29
+      //   1815: ifnull +21 -> 1836
+      //   1818: aload 28
+      //   1820: aload 29
+      //   1822: invokevirtual 231	java/util/TreeSet:remove	(Ljava/lang/Object;)Z
+      //   1825: pop
+      //   1826: aload 29
+      //   1828: invokestatic 188	com/tencent/mm/vfs/ad:bCc	(Ljava/lang/String;)Ljava/lang/String;
+      //   1831: astore 29
+      //   1833: goto -20 -> 1813
+      //   1836: iload 5
+      //   1838: istore_3
+      //   1839: iload 4
+      //   1841: istore 9
+      //   1843: iload 13
+      //   1845: istore 5
+      //   1847: goto -1463 -> 384
+      //   1850: iload_2
+      //   1851: istore 13
+      //   1853: aload 28
+      //   1855: ifnull +212 -> 2067
+      //   1858: lload 21
+      //   1860: lstore 23
+      //   1862: iload_3
+      //   1863: istore 10
+      //   1865: iload 9
+      //   1867: istore 15
+      //   1869: iload 8
+      //   1871: istore 16
+      //   1873: iload 7
+      //   1875: istore 11
+      //   1877: iload_2
+      //   1878: istore 12
+      //   1880: iload 5
+      //   1882: istore 4
+      //   1884: iload 6
+      //   1886: istore 17
+      //   1888: aload 28
+      //   1890: invokevirtual 235	java/util/TreeSet:descendingSet	()Ljava/util/NavigableSet;
+      //   1893: invokeinterface 238 1 0
+      //   1898: astore 28
+      //   1900: lload 21
+      //   1902: lstore 23
+      //   1904: iload_3
+      //   1905: istore 10
+      //   1907: iload 9
+      //   1909: istore 15
+      //   1911: iload 8
+      //   1913: istore 16
+      //   1915: iload 7
+      //   1917: istore 11
+      //   1919: iload_2
+      //   1920: istore 12
+      //   1922: iload 5
+      //   1924: istore 4
+      //   1926: iload 6
+      //   1928: istore 17
+      //   1930: iload_2
+      //   1931: istore 13
+      //   1933: aload 28
+      //   1935: invokeinterface 54 1 0
+      //   1940: ifeq +127 -> 2067
+      //   1943: lload 21
+      //   1945: lstore 23
+      //   1947: iload_3
+      //   1948: istore 10
+      //   1950: iload 9
+      //   1952: istore 15
+      //   1954: iload 8
+      //   1956: istore 16
+      //   1958: iload 7
+      //   1960: istore 11
+      //   1962: iload_2
+      //   1963: istore 12
+      //   1965: iload 5
+      //   1967: istore 4
+      //   1969: iload 6
+      //   1971: istore 17
+      //   1973: aload 28
+      //   1975: invokeinterface 58 1 0
+      //   1980: checkcast 240	java/lang/String
+      //   1983: astore 29
+      //   1985: lload 21
+      //   1987: lstore 23
+      //   1989: iload_3
+      //   1990: istore 10
+      //   1992: iload 9
+      //   1994: istore 15
+      //   1996: iload 8
+      //   1998: istore 16
+      //   2000: iload 7
+      //   2002: istore 11
+      //   2004: iload_2
+      //   2005: istore 12
+      //   2007: iload 5
+      //   2009: istore 4
+      //   2011: iload 6
+      //   2013: istore 17
+      //   2015: aload_1
+      //   2016: invokevirtual 105	android/os/CancellationSignal:throwIfCanceled	()V
+      //   2019: lload 21
+      //   2021: lstore 23
+      //   2023: iload_3
+      //   2024: istore 10
+      //   2026: iload 9
+      //   2028: istore 15
+      //   2030: iload 8
+      //   2032: istore 16
+      //   2034: iload 7
+      //   2036: istore 11
+      //   2038: iload_2
+      //   2039: istore 12
+      //   2041: iload 5
+      //   2043: istore 4
+      //   2045: iload 6
+      //   2047: istore 17
+      //   2049: aload 33
+      //   2051: aload 29
+      //   2053: iconst_0
+      //   2054: invokeinterface 244 3 0
+      //   2059: pop
+      //   2060: iload_2
+      //   2061: iconst_1
+      //   2062: iadd
+      //   2063: istore_2
+      //   2064: goto -164 -> 1900
+      //   2067: iload 13
+      //   2069: istore_2
+      //   2070: iload_3
+      //   2071: istore 4
+      //   2073: iload 8
+      //   2075: istore_3
+      //   2076: iload 18
+      //   2078: iconst_1
+      //   2079: iadd
+      //   2080: istore 18
+      //   2082: goto -1779 -> 303
+      //   2085: aload_0
+      //   2086: getfield 19	com/tencent/mm/vfs/MigrationFileSystem$a:YDc	Lcom/tencent/mm/vfs/MigrationFileSystem;
+      //   2089: iconst_3
+      //   2090: bipush 18
+      //   2092: anewarray 107	java/lang/Object
+      //   2095: dup
+      //   2096: iconst_0
+      //   2097: ldc 109
+      //   2099: aastore
+      //   2100: dup
+      //   2101: iconst_1
+      //   2102: aload 31
+      //   2104: aastore
+      //   2105: dup
+      //   2106: iconst_2
+      //   2107: ldc 157
+      //   2109: aastore
+      //   2110: dup
+      //   2111: iconst_3
+      //   2112: iload 6
+      //   2114: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   2117: aastore
+      //   2118: dup
+      //   2119: iconst_4
+      //   2120: ldc 165
+      //   2122: aastore
+      //   2123: dup
+      //   2124: iconst_5
+      //   2125: iload 5
+      //   2127: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   2130: aastore
+      //   2131: dup
+      //   2132: bipush 6
+      //   2134: ldc 167
+      //   2136: aastore
+      //   2137: dup
+      //   2138: bipush 7
+      //   2140: iload_2
+      //   2141: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   2144: aastore
+      //   2145: dup
+      //   2146: bipush 8
+      //   2148: ldc 169
+      //   2150: aastore
+      //   2151: dup
+      //   2152: bipush 9
+      //   2154: iload 7
+      //   2156: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   2159: aastore
+      //   2160: dup
+      //   2161: bipush 10
+      //   2163: ldc 171
+      //   2165: aastore
+      //   2166: dup
+      //   2167: bipush 11
+      //   2169: iload 4
+      //   2171: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   2174: aastore
+      //   2175: dup
+      //   2176: bipush 12
+      //   2178: ldc 173
+      //   2180: aastore
+      //   2181: dup
+      //   2182: bipush 13
+      //   2184: iload_3
+      //   2185: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   2188: aastore
+      //   2189: dup
+      //   2190: bipush 14
+      //   2192: ldc 175
+      //   2194: aastore
+      //   2195: dup
+      //   2196: bipush 15
+      //   2198: iload 9
+      //   2200: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+      //   2203: aastore
+      //   2204: dup
+      //   2205: bipush 16
+      //   2207: ldc 177
+      //   2209: aastore
+      //   2210: dup
+      //   2211: bipush 17
+      //   2213: lload 21
+      //   2215: invokestatic 182	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+      //   2218: aastore
+      //   2219: invokevirtual 113	com/tencent/mm/vfs/MigrationFileSystem:k	(I[Ljava/lang/Object;)V
+      //   2222: aload_0
+      //   2223: aload_1
+      //   2224: invokespecial 246	com/tencent/mm/vfs/d:a	(Landroid/os/CancellationSignal;)V
+      //   2227: ldc 87
+      //   2229: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   2232: return
+      //   2233: iconst_5
+      //   2234: istore_3
+      //   2235: goto -1393 -> 842
+      //   2238: astore_1
+      //   2239: iload_3
+      //   2240: istore 8
+      //   2242: goto -1409 -> 833
+      //   2245: astore_1
+      //   2246: iload 4
+      //   2248: istore 9
+      //   2250: iload 5
+      //   2252: istore 4
+      //   2254: iload 13
+      //   2256: istore 5
+      //   2258: goto -1425 -> 833
+      //   2261: goto -510 -> 1751
+      //   2264: iload 9
+      //   2266: istore 4
+      //   2268: goto -429 -> 1839
+      //   2271: goto -195 -> 2076
+      //   2274: aconst_null
+      //   2275: astore 28
+      //   2277: goto -1908 -> 369
+      //   2280: astore 29
+      //   2282: iconst_0
+      //   2283: istore 27
+      //   2285: goto -1692 -> 593
+      // Local variable table:
+      //   start	length	slot	name	signature
+      //   0	2288	0	this	a
+      //   0	2288	1	paramCancellationSignal	android.os.CancellationSignal
+      //   44	2097	2	i	int
+      //   55	2185	3	j	int
+      //   97	2170	4	k	int
+      //   38	2219	5	m	int
+      //   32	2081	6	n	int
+      //   46	2109	7	i1	int
+      //   49	2192	8	i2	int
+      //   60	2205	9	i3	int
+      //   77	1948	10	i4	int
+      //   89	1948	11	i5	int
+      //   93	1947	12	i6	int
+      //   29	2226	13	i7	int
+      //   35	1145	14	i8	int
+      //   81	1948	15	i9	int
+      //   85	1948	16	i10	int
+      //   101	1947	17	i11	int
+      //   41	2040	18	i12	int
+      //   52	256	19	i13	int
+      //   57	199	20	i14	int
+      //   63	2151	21	l1	long
+      //   73	1949	23	l2	long
+      //   1742	3	25	l3	long
+      //   535	1749	27	bool	boolean
+      //   367	1909	28	localObject1	Object
+      //   338	1714	29	localObject2	Object
+      //   2280	1	29	localIOException1	java.io.IOException
+      //   69	791	30	localList	List
+      //   114	1989	31	localb1	FileSystem.b
+      //   155	922	32	localHashSet	java.util.HashSet
+      //   326	1724	33	localb2	FileSystem.b
+      //   376	79	34	localIterator	Iterator
+      //   464	1314	35	localf	f
+      //   1758	1	36	localIOException2	java.io.IOException
+      // Exception table:
+      //   from	to	target	type
+      //   103	116	801	java/lang/Exception
+      //   148	157	801	java/lang/Exception
+      //   189	193	801	java/lang/Exception
+      //   225	247	801	java/lang/Exception
+      //   279	288	801	java/lang/Exception
+      //   414	424	801	java/lang/Exception
+      //   454	466	801	java/lang/Exception
+      //   496	500	801	java/lang/Exception
+      //   530	537	801	java/lang/Exception
+      //   572	593	801	java/lang/Exception
+      //   628	639	801	java/lang/Exception
+      //   682	695	801	java/lang/Exception
+      //   725	738	801	java/lang/Exception
+      //   783	794	801	java/lang/Exception
+      //   1023	1033	801	java/lang/Exception
+      //   1076	1086	801	java/lang/Exception
+      //   1116	1126	801	java/lang/Exception
+      //   1171	1179	801	java/lang/Exception
+      //   1213	1228	801	java/lang/Exception
+      //   1258	1265	801	java/lang/Exception
+      //   1295	1308	801	java/lang/Exception
+      //   1344	1369	801	java/lang/Exception
+      //   1409	1431	801	java/lang/Exception
+      //   1464	1489	801	java/lang/Exception
+      //   1535	1542	801	java/lang/Exception
+      //   1575	1596	801	java/lang/Exception
+      //   1629	1642	801	java/lang/Exception
+      //   1675	1700	801	java/lang/Exception
+      //   1737	1744	801	java/lang/Exception
+      //   1888	1900	801	java/lang/Exception
+      //   1933	1943	801	java/lang/Exception
+      //   1973	1985	801	java/lang/Exception
+      //   2015	2019	801	java/lang/Exception
+      //   2049	2060	801	java/lang/Exception
+      //   1409	1431	1758	java/io/IOException
+      //   1464	1489	1758	java/io/IOException
+      //   1535	1542	1758	java/io/IOException
+      //   1575	1596	1758	java/io/IOException
+      //   1629	1642	1758	java/io/IOException
+      //   1675	1700	1758	java/io/IOException
+      //   1737	1744	1758	java/io/IOException
+      //   310	340	2238	java/lang/Exception
+      //   345	369	2238	java/lang/Exception
+      //   369	378	2238	java/lang/Exception
+      //   2085	2222	2238	java/lang/Exception
+      //   1766	1808	2245	java/lang/Exception
+      //   1818	1833	2245	java/lang/Exception
+      //   572	593	2280	java/io/IOException
+    }
+    
+    public final boolean bBB(String paramString)
+    {
+      AppMethodBeat.i(236292);
+      Iterator localIterator = this.YCZ.iterator();
       while (localIterator.hasNext()) {
-        if (((FileSystem.b)localIterator.next()).boL(paramString))
+        if (((FileSystem.b)localIterator.next()).bBB(paramString))
         {
-          AppMethodBeat.o(187672);
+          AppMethodBeat.o(236292);
           return true;
         }
       }
-      AppMethodBeat.o(187672);
+      AppMethodBeat.o(236292);
       return false;
     }
     
-    public final e boM(String paramString)
+    public final f bBC(String paramString)
     {
-      AppMethodBeat.i(187673);
-      Iterator localIterator = this.Rcw.iterator();
+      AppMethodBeat.i(236294);
+      Iterator localIterator = this.YCZ.iterator();
       while (localIterator.hasNext())
       {
-        e locale = ((FileSystem.b)localIterator.next()).boM(paramString);
-        if (locale != null)
+        f localf = ((FileSystem.b)localIterator.next()).bBC(paramString);
+        if (localf != null)
         {
-          AppMethodBeat.o(187673);
-          return locale;
+          AppMethodBeat.o(236294);
+          return localf;
         }
       }
-      AppMethodBeat.o(187673);
+      AppMethodBeat.o(236294);
       return null;
     }
     
-    public final long c(String paramString1, FileSystem.b paramb, String paramString2)
+    public final ReadableByteChannel bBy(String paramString)
     {
-      AppMethodBeat.i(187675);
-      try
-      {
-        l = super.c(paramString1, paramb, paramString2);
-        AppMethodBeat.o(187675);
-        return l;
-      }
-      catch (FileNotFoundException localFileNotFoundException)
-      {
-        long l;
-        if (boR(paramString1))
-        {
-          l = super.c(paramString1, paramb, paramString2);
-          AppMethodBeat.o(187675);
-          return l;
-        }
-        AppMethodBeat.o(187675);
-        throw localFileNotFoundException;
-      }
-    }
-    
-    public final WritableByteChannel dv(String paramString, boolean paramBoolean)
-    {
-      AppMethodBeat.i(187671);
-      FileSystem.b localb = (FileSystem.b)this.Rcw.get(0);
-      try
-      {
-        WritableByteChannel localWritableByteChannel = localb.dv(paramString, paramBoolean);
-        AppMethodBeat.o(187671);
-        return localWritableByteChannel;
-      }
-      catch (FileNotFoundException localFileNotFoundException)
-      {
-        if ((!paramBoolean) && (boR(paramString)))
-        {
-          paramString = localb.dv(paramString, false);
-          AppMethodBeat.o(187671);
-          return paramString;
-        }
-        AppMethodBeat.o(187671);
-        throw localFileNotFoundException;
-      }
-    }
-    
-    public final OutputStream dw(String paramString, boolean paramBoolean)
-    {
-      AppMethodBeat.i(187670);
-      FileSystem.b localb = (FileSystem.b)this.Rcw.get(0);
-      try
-      {
-        OutputStream localOutputStream = localb.dw(paramString, paramBoolean);
-        AppMethodBeat.o(187670);
-        return localOutputStream;
-      }
-      catch (FileNotFoundException localFileNotFoundException)
-      {
-        if ((!paramBoolean) && (boR(paramString)))
-        {
-          paramString = localb.dw(paramString, false);
-          AppMethodBeat.o(187670);
-          return paramString;
-        }
-        AppMethodBeat.o(187670);
-        throw localFileNotFoundException;
-      }
-    }
-    
-    public final FileSystem hdQ()
-    {
-      return MigrationFileSystem.this;
-    }
-    
-    public final List<FileSystem.b> hdS()
-    {
-      return this.Rcw;
-    }
-    
-    public final FileSystem.b ho(String paramString, int paramInt)
-    {
-      AppMethodBeat.i(187666);
-      List localList = this.Rcw;
-      if ((paramInt == 1) || (paramInt == 3))
-      {
-        Iterator localIterator = localList.iterator();
-        while (localIterator.hasNext())
-        {
-          FileSystem.b localb = (FileSystem.b)localIterator.next();
-          if (localb.boL(paramString))
-          {
-            AppMethodBeat.o(187666);
-            return localb;
-          }
-        }
-      }
-      paramString = (FileSystem.b)localList.get(0);
-      AppMethodBeat.o(187666);
-      return paramString;
-    }
-    
-    public final InputStream openRead(String paramString)
-    {
-      AppMethodBeat.i(187667);
+      AppMethodBeat.i(236291);
       Object localObject1 = null;
-      Iterator localIterator = this.Rcw.iterator();
+      Iterator localIterator = this.YCZ.iterator();
       if (localIterator.hasNext())
       {
         Object localObject2 = (FileSystem.b)localIterator.next();
         try
         {
-          localObject2 = ((FileSystem.b)localObject2).openRead(paramString);
-          AppMethodBeat.o(187667);
+          localObject2 = ((FileSystem.b)localObject2).bBy(paramString);
+          AppMethodBeat.o(236291);
           return localObject2;
         }
         catch (FileNotFoundException localFileNotFoundException)
         {
           if (localObject1 != null) {
-            break label108;
+            break label105;
           }
         }
         localObject1 = localFileNotFoundException;
       }
-      label108:
+      label105:
       for (;;)
       {
         break;
         if (localObject1 != null) {}
         for (;;)
         {
-          AppMethodBeat.o(187667);
+          AppMethodBeat.o(236291);
           throw ((Throwable)localObject1);
           localObject1 = new FileNotFoundException(paramString + " not found on any file systems.");
         }
       }
     }
+    
+    public final FileSystem.b hX(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(236286);
+      if ((paramInt == 1) || (paramInt == 3))
+      {
+        Iterator localIterator = this.YCZ.iterator();
+        while (localIterator.hasNext())
+        {
+          FileSystem.b localb = (FileSystem.b)localIterator.next();
+          if (localb.bBB(paramString))
+          {
+            AppMethodBeat.o(236286);
+            return localb;
+          }
+        }
+      }
+      paramString = (FileSystem.b)this.YCZ.get(0);
+      AppMethodBeat.o(236286);
+      return paramString;
+    }
+    
+    public final FileSystem ieX()
+    {
+      return MigrationFileSystem.this;
+    }
+    
+    public final List<FileSystem.b> ifa()
+    {
+      return this.YCZ;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vfs.MigrationFileSystem
  * JD-Core Version:    0.7.0.1
  */

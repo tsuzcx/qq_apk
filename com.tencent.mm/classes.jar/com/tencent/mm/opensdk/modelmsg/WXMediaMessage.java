@@ -35,9 +35,9 @@ public final class WXMediaMessage
   
   public WXMediaMessage(IMediaObject paramIMediaObject)
   {
-    AppMethodBeat.i(190415);
+    AppMethodBeat.i(255142);
     this.mediaObject = paramIMediaObject;
-    AppMethodBeat.o(190415);
+    AppMethodBeat.o(255142);
   }
   
   final boolean checkArgs()
@@ -158,6 +158,100 @@ public final class WXMediaMessage
     }
   }
   
+  public static class Builder
+  {
+    public static final String KEY_IDENTIFIER = "_wxobject_identifier_";
+    
+    public static WXMediaMessage fromBundle(Bundle paramBundle)
+    {
+      AppMethodBeat.i(4029);
+      WXMediaMessage localWXMediaMessage = new WXMediaMessage();
+      localWXMediaMessage.sdkVer = paramBundle.getInt("_wxobject_sdkVer");
+      localWXMediaMessage.title = paramBundle.getString("_wxobject_title");
+      localWXMediaMessage.description = paramBundle.getString("_wxobject_description");
+      localWXMediaMessage.thumbData = paramBundle.getByteArray("_wxobject_thumbdata");
+      localWXMediaMessage.mediaTagName = paramBundle.getString("_wxobject_mediatagname");
+      localWXMediaMessage.messageAction = paramBundle.getString("_wxobject_message_action");
+      localWXMediaMessage.messageExt = paramBundle.getString("_wxobject_message_ext");
+      String str = pathOldToNew(paramBundle.getString("_wxobject_identifier_"));
+      if ((str != null) && (str.length() > 0)) {
+        try
+        {
+          WXMediaMessage.IMediaObject localIMediaObject = (WXMediaMessage.IMediaObject)Class.forName(str).newInstance();
+          localWXMediaMessage.mediaObject = localIMediaObject;
+          localIMediaObject.unserialize(paramBundle);
+          AppMethodBeat.o(4029);
+          return localWXMediaMessage;
+        }
+        catch (Exception paramBundle)
+        {
+          Log.e("MicroMsg.SDK.WXMediaMessage", "get media object from bundle failed: unknown ident " + str + ", ex = " + paramBundle.getMessage());
+          AppMethodBeat.o(4029);
+          return localWXMediaMessage;
+        }
+      }
+      AppMethodBeat.o(4029);
+      return localWXMediaMessage;
+    }
+    
+    private static String pathNewToOld(String paramString)
+    {
+      AppMethodBeat.i(4030);
+      if ((paramString != null) && (paramString.length() != 0))
+      {
+        paramString = paramString.replace("com.tencent.mm.opensdk.modelmsg", "com.tencent.mm.sdk.openapi");
+        AppMethodBeat.o(4030);
+        return paramString;
+      }
+      Log.e("MicroMsg.SDK.WXMediaMessage", "pathNewToOld fail, newPath is null");
+      AppMethodBeat.o(4030);
+      return paramString;
+    }
+    
+    private static String pathOldToNew(String paramString)
+    {
+      AppMethodBeat.i(4031);
+      Log.i("MicroMsg.SDK.WXMediaMessage", "pathOldToNew, oldPath = ".concat(String.valueOf(paramString)));
+      if ((paramString != null) && (paramString.length() != 0))
+      {
+        int i = paramString.lastIndexOf('.');
+        if (i == -1)
+        {
+          Log.e("MicroMsg.SDK.WXMediaMessage", "pathOldToNew fail, invalid pos, oldPath = ".concat(String.valueOf(paramString)));
+          AppMethodBeat.o(4031);
+          return paramString;
+        }
+        paramString = "com.tencent.mm.opensdk.modelmsg" + paramString.substring(i);
+        AppMethodBeat.o(4031);
+        return paramString;
+      }
+      Log.e("MicroMsg.SDK.WXMediaMessage", "pathOldToNew fail, oldPath is null");
+      AppMethodBeat.o(4031);
+      return paramString;
+    }
+    
+    public static Bundle toBundle(WXMediaMessage paramWXMediaMessage)
+    {
+      AppMethodBeat.i(4028);
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("_wxobject_sdkVer", paramWXMediaMessage.sdkVer);
+      localBundle.putString("_wxobject_title", paramWXMediaMessage.title);
+      localBundle.putString("_wxobject_description", paramWXMediaMessage.description);
+      localBundle.putByteArray("_wxobject_thumbdata", paramWXMediaMessage.thumbData);
+      WXMediaMessage.IMediaObject localIMediaObject = paramWXMediaMessage.mediaObject;
+      if (localIMediaObject != null)
+      {
+        localBundle.putString("_wxobject_identifier_", pathNewToOld(localIMediaObject.getClass().getName()));
+        paramWXMediaMessage.mediaObject.serialize(localBundle);
+      }
+      localBundle.putString("_wxobject_mediatagname", paramWXMediaMessage.mediaTagName);
+      localBundle.putString("_wxobject_message_action", paramWXMediaMessage.messageAction);
+      localBundle.putString("_wxobject_message_ext", paramWXMediaMessage.messageExt);
+      AppMethodBeat.o(4028);
+      return localBundle;
+    }
+  }
+  
   public static abstract interface IMediaObject
   {
     public static final int TYPE_APPBRAND = 33;
@@ -172,6 +266,7 @@ public final class WXMediaMessage
     public static final int TYPE_EMOTICON_SHARED = 15;
     public static final int TYPE_EMOTIONLIST_SHARED = 26;
     public static final int TYPE_FILE = 6;
+    public static final int TYPE_GAME_LIVE = 70;
     public static final int TYPE_GAME_VIDEO_FILE = 39;
     public static final int TYPE_GIFTCARD = 34;
     public static final int TYPE_IMAGE = 2;

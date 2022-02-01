@@ -50,8 +50,6 @@ public abstract interface b
   
   public abstract void deselectTrack(int paramInt, long paramLong);
   
-  public abstract void g(String paramString1, String paramString2, List<TPOptionalParam> paramList);
-  
   public abstract long getCurrentPositionMs();
   
   public abstract long getDurationMs();
@@ -69,6 +67,8 @@ public abstract interface b
   public abstract int getVideoHeight();
   
   public abstract int getVideoWidth();
+  
+  public abstract void h(String paramString1, String paramString2, List<TPOptionalParam> paramList);
   
   public abstract void pause();
   

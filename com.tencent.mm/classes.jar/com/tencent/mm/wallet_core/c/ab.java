@@ -10,16 +10,16 @@ import java.util.Collection;
 
 public final class ab
 {
-  public static int IoV = 1;
-  public static int IoW = 2;
-  public static long Ruj = 0L;
+  public static int PhC = 1;
+  public static int PhD = 2;
+  public static long YVI = 0L;
   
   public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong, int paramInt5, String paramString)
   {
     AppMethodBeat.i(72810);
     int i;
     int j;
-    if ((mh(paramInt1, paramInt2)) || (mi(paramInt1, paramInt2)) || (mj(paramInt1, paramInt2)) || (aqi(paramInt1)) || (mk(paramInt1, paramInt2)))
+    if ((nz(paramInt1, paramInt2)) || (nA(paramInt1, paramInt2)) || (nB(paramInt1, paramInt2)) || (azG(paramInt1)) || (nC(paramInt1, paramInt2)))
     {
       Log.i("MicroMsg.WalletReportUtil", "reportIDKeyWalletPay the cmdType is for idkey report cmdType:" + paramInt1 + " cmdid:" + paramInt2);
       i = -1;
@@ -83,7 +83,7 @@ public final class ab
           ((IDKey)localObject1).SetKey(1);
           paramString.add(localObject1);
         }
-        h.CyF.b(paramString, true);
+        h.IzE.b(paramString, true);
         AppMethodBeat.o(72810);
         return;
       }
@@ -146,12 +146,12 @@ public final class ab
       i = 298;
       break;
       label582:
-      if (aqi(paramInt1))
+      if (azG(paramInt1))
       {
         j = 117;
         break label160;
       }
-      if (mk(paramInt1, paramInt2))
+      if (nC(paramInt1, paramInt2))
       {
         j = 145;
         break label160;
@@ -205,7 +205,7 @@ public final class ab
     Object localObject2;
     IDKey localIDKey1;
     IDKey localIDKey2;
-    if (mh(paramInt1, paramInt2))
+    if (nz(paramInt1, paramInt2))
     {
       paramString.SetKey(26);
       localObject1 = new ArrayList();
@@ -218,7 +218,7 @@ public final class ab
       localIDKey2 = new IDKey();
       localIDKey2.SetID(paramInt5);
       localIDKey2.SetValue((int)paramLong);
-      if (!mh(paramInt1, paramInt2)) {
+      if (!nz(paramInt1, paramInt2)) {
         break label1291;
       }
       ((IDKey)localObject2).SetKey(19);
@@ -231,7 +231,7 @@ public final class ab
       ((ArrayList)localObject1).add(localObject2);
       ((ArrayList)localObject1).add(localIDKey1);
       ((ArrayList)localObject1).add(localIDKey2);
-      h.CyF.b((ArrayList)localObject1, true);
+      h.IzE.b((ArrayList)localObject1, true);
       localObject1 = new ArrayList();
       if ((paramInt3 != 0) || (paramInt4 != 0))
       {
@@ -242,7 +242,7 @@ public final class ab
         localIDKey2 = new IDKey();
         localIDKey2.SetID(paramInt5);
         localIDKey2.SetValue(1L);
-        if (!mh(paramInt1, paramInt2)) {
+        if (!nz(paramInt1, paramInt2)) {
           break label1902;
         }
         localIDKey1.SetKey(27);
@@ -258,15 +258,15 @@ public final class ab
       ((ArrayList)localObject2).add(localIDKey2);
       ((ArrayList)localObject1).addAll((Collection)localObject2);
       ((ArrayList)localObject1).add(paramString);
-      h.CyF.b((ArrayList)localObject1, true);
+      h.IzE.b((ArrayList)localObject1, true);
       AppMethodBeat.o(72810);
       return;
-      if (mi(paramInt1, paramInt2))
+      if (nA(paramInt1, paramInt2))
       {
         paramString.SetKey(45);
         break;
       }
-      if (aqi(paramInt1))
+      if (azG(paramInt1))
       {
         if (paramInt1 == 1581)
         {
@@ -276,7 +276,7 @@ public final class ab
         paramString.SetKey(83);
         break;
       }
-      if (mk(paramInt1, paramInt2))
+      if (nC(paramInt1, paramInt2))
       {
         if (paramInt2 == 0)
         {
@@ -286,7 +286,7 @@ public final class ab
         paramString.SetKey(26);
         break;
       }
-      if (mj(paramInt1, paramInt2))
+      if (nB(paramInt1, paramInt2))
       {
         paramString.SetKey(7);
         break;
@@ -308,7 +308,7 @@ public final class ab
       localIDKey2.SetKey(25);
       break label911;
       label1291:
-      if (mi(paramInt1, paramInt2))
+      if (nA(paramInt1, paramInt2))
       {
         ((IDKey)localObject2).SetKey(38);
         if (paramLong <= 1000L)
@@ -443,7 +443,7 @@ public final class ab
         localIDKey2.SetKey(29);
         continue;
         label1902:
-        if (mi(paramInt1, paramInt2))
+        if (nA(paramInt1, paramInt2))
         {
           localIDKey1.SetKey(46);
           if (paramInt4 < 0) {
@@ -501,7 +501,7 @@ public final class ab
     }
   }
   
-  private static boolean aqi(int paramInt)
+  private static boolean azG(int paramInt)
   {
     return (paramInt == 1581) || (paramInt == 1685);
   }
@@ -542,7 +542,7 @@ public final class ab
         Log.e("MicroMsg.WalletReportUtil", "", new Object[] { localException1 });
         localObject5 = localObject4;
         localObject6 = paramString3;
-        h.CyF.a(10756, new Object[] { paramString1, paramString2, localObject5, localObject6, Integer.valueOf(paramInt), paramString4 });
+        h.IzE.a(10756, new Object[] { paramString1, paramString2, localObject5, localObject6, Integer.valueOf(paramInt), paramString4 });
         AppMethodBeat.o(72808);
         return;
       }
@@ -626,51 +626,51 @@ public final class ab
     }
   }
   
-  public static void hht()
+  public static void iiV()
   {
     AppMethodBeat.i(72806);
-    Ruj = System.currentTimeMillis();
+    YVI = System.currentTimeMillis();
     AppMethodBeat.o(72806);
   }
   
-  public static int hhu()
+  public static int iiW()
   {
     AppMethodBeat.i(72807);
-    int i = (int)((System.currentTimeMillis() - Ruj) / 1000L);
+    int i = (int)((System.currentTimeMillis() - YVI) / 1000L);
     AppMethodBeat.o(72807);
     return i;
   }
   
-  public static void mg(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(72809);
-    h.CyF.a(12097, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(System.currentTimeMillis()) });
-    AppMethodBeat.o(72809);
-  }
-  
-  private static boolean mh(int paramInt1, int paramInt2)
-  {
-    return (paramInt1 == 385) && (paramInt2 == 112);
-  }
-  
-  private static boolean mi(int paramInt1, int paramInt2)
+  private static boolean nA(int paramInt1, int paramInt2)
   {
     return (paramInt1 == 385) && ((paramInt2 == 0) || (paramInt2 == 1) || (paramInt2 == 16));
   }
   
-  private static boolean mj(int paramInt1, int paramInt2)
+  private static boolean nB(int paramInt1, int paramInt2)
   {
     return (paramInt1 == 398) || ((paramInt1 == 385) && ((paramInt2 == 74) || (paramInt2 == 75))) || (paramInt1 == 1544) || (paramInt1 == 1582) || (paramInt1 == 498) || (paramInt1 == 397) || (paramInt1 == 1575) || (paramInt1 == 1639) || (paramInt1 == 556) || (paramInt1 == 422);
   }
   
-  private static boolean mk(int paramInt1, int paramInt2)
+  private static boolean nC(int paramInt1, int paramInt2)
   {
     return (paramInt1 == 1558) && ((paramInt2 == 0) || (paramInt2 == 1));
+  }
+  
+  public static void ny(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(72809);
+    h.IzE.a(12097, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(System.currentTimeMillis()) });
+    AppMethodBeat.o(72809);
+  }
+  
+  private static boolean nz(int paramInt1, int paramInt2)
+  {
+    return (paramInt1 == 385) && (paramInt2 == 112);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.ab
  * JD-Core Version:    0.7.0.1
  */

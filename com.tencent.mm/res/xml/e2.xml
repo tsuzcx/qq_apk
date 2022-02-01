@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <Preference android:key="settings_keyboard" android:layout="@layout/b8j" android:title="@string/jfv" />
+    <Preference android:key="settings_safety" android:layout="@layout/b8j" android:title="@string/jg1" />
+    <Preference android:key="settings_clear_personal_dict" android:layout="@layout/b8j" android:title="@string/jfw" />
+</PreferenceScreen>

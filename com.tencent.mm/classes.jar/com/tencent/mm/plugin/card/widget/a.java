@@ -8,9 +8,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.mm.plugin.card.a.b;
+import com.tencent.mm.plugin.card.a.c;
+import com.tencent.mm.plugin.card.a.d;
+import com.tencent.mm.plugin.card.a.e;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.n;
-import com.tencent.mm.protocal.protobuf.uz;
+import com.tencent.mm.protocal.protobuf.vb;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
@@ -18,45 +22,45 @@ public abstract class a
   implements g
 {
   private final String TAG = "MicroMsg.CardWidgetCouponBase";
-  protected View.OnClickListener kuO;
   protected Context mContext;
   protected LayoutInflater mInflater;
-  protected TextView oeJ;
-  protected b pQV;
-  protected View qlr;
-  protected ImageView qls;
+  protected View.OnClickListener nmC;
+  protected TextView rgv;
+  protected View tHm;
+  protected ImageView tHn;
+  protected b tmU;
   
   public a(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
-  private void cxO()
+  private void cLq()
   {
     int i;
-    if (!Util.isNullOrNil(this.pQV.csQ().iwv))
+    if (!Util.isNullOrNil(this.tmU.cGs().llI))
     {
-      i = this.mContext.getResources().getDimensionPixelSize(2131165996);
-      if ((!this.pQV.csv()) || (!this.pQV.csy())) {
-        break label133;
+      i = this.mContext.getResources().getDimensionPixelSize(a.b.sZH);
+      if ((!this.tmU.cFW()) || (!this.tmU.cFZ())) {
+        break label136;
       }
-      i = this.mContext.getResources().getDimensionPixelSize(2131165994);
+      i = this.mContext.getResources().getDimensionPixelSize(a.b.sZF);
     }
     for (;;)
     {
       if (i > 0) {
-        n.a(this.qls, this.pQV.csQ().iwv, i, 2131234198, true);
+        n.a(this.tHn, this.tmU.cGs().llI, i, a.c.my_card_package_defaultlogo, true);
       }
-      if (!Util.isNullOrNil(this.pQV.csQ().gTG)) {
-        this.oeJ.setText(this.pQV.csQ().gTG);
+      if (!Util.isNullOrNil(this.tmU.cGs().jEi)) {
+        this.rgv.setText(this.tmU.cGs().jEi);
       }
       return;
-      label133:
-      if ((this.pQV.csv()) && (this.pQV.csx())) {
-        i = this.mContext.getResources().getDimensionPixelSize(2131166020);
-      } else if ((this.pQV.csv()) && (this.pQV.csz())) {
-        i = this.mContext.getResources().getDimensionPixelSize(2131166032);
-      } else if (this.pQV.csB()) {
+      label136:
+      if ((this.tmU.cFW()) && (this.tmU.cFY())) {
+        i = this.mContext.getResources().getDimensionPixelSize(a.b.sZU);
+      } else if ((this.tmU.cFW()) && (this.tmU.cGa())) {
+        i = this.mContext.getResources().getDimensionPixelSize(a.b.taa);
+      } else if (this.tmU.cGc()) {
         i = 0;
       }
     }
@@ -64,44 +68,39 @@ public abstract class a
   
   private void refreshView()
   {
-    if ((this.pQV == null) || (this.pQV.csQ() == null))
+    if ((this.tmU == null) || (this.tmU.cGs() == null))
     {
       Log.e("MicroMsg.CardWidgetCouponBase", "mCardInfo == null or mCardInfo.getCardTpInfo() == null");
       return;
     }
-    cxO();
-    cxN();
+    cLq();
+    cLp();
   }
   
-  public void EK(int paramInt) {}
+  public void Il(int paramInt) {}
   
-  public void H(boolean paramBoolean1, boolean paramBoolean2) {}
+  public void L(boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void a(ShapeDrawable paramShapeDrawable) {}
   
-  protected final View cxL()
+  protected final View cLn()
   {
-    return this.qlr;
+    return this.tHm;
   }
   
-  protected abstract void cxM();
+  protected abstract void cLo();
   
-  protected abstract void cxN();
+  protected abstract void cLp();
   
   public final void d(b paramb)
   {
-    this.pQV = paramb;
+    this.tmU = paramb;
     refreshView();
   }
   
-  public final void i(b paramb)
+  public final View eW()
   {
-    this.pQV = paramb;
-  }
-  
-  public final View jz()
-  {
-    if ((this.pQV == null) || (this.pQV.csQ() == null))
+    if ((this.tmU == null) || (this.tmU.cGs() == null))
     {
       Log.e("MicroMsg.CardWidgetCouponBase", "mCardInfo == null or mCardInfo.getCardTpInfo() == null");
       return null;
@@ -109,44 +108,49 @@ public abstract class a
     this.mInflater = ((LayoutInflater)this.mContext.getSystemService("layout_inflater"));
     LayoutInflater localLayoutInflater = this.mInflater;
     int i;
-    if (!this.pQV.csy()) {
-      if (this.pQV.csz()) {
-        i = 2131493450;
+    if (!this.tmU.cFZ()) {
+      if (this.tmU.cGa()) {
+        i = a.e.tjo;
       }
     }
     for (;;)
     {
-      this.qlr = localLayoutInflater.inflate(i, null);
-      this.qls = ((ImageView)this.qlr.findViewById(2131296952));
-      this.oeJ = ((TextView)this.qlr.findViewById(2131296958));
-      cxM();
+      this.tHm = localLayoutInflater.inflate(i, null);
+      this.tHn = ((ImageView)this.tHm.findViewById(a.d.taF));
+      this.rgv = ((TextView)this.tHm.findViewById(a.d.app_name));
+      cLo();
       refreshView();
-      return this.qlr;
-      if (this.pQV.csx()) {
-        i = 2131493412;
-      } else if (this.pQV.csA()) {
-        i = 2131493362;
-      } else if (this.pQV.csB()) {
-        i = 2131493401;
+      return this.tHm;
+      if (this.tmU.cFY()) {
+        i = a.e.tiT;
+      } else if (this.tmU.cGb()) {
+        i = a.e.tia;
+      } else if (this.tmU.cGc()) {
+        i = a.e.tiJ;
       } else {
-        i = 2131493353;
+        i = a.e.thV;
       }
     }
   }
   
-  public void kD(boolean paramBoolean) {}
+  public final void i(b paramb)
+  {
+    this.tmU = paramb;
+  }
   
-  public void kE(boolean paramBoolean) {}
+  public void lP(boolean paramBoolean) {}
+  
+  public void lQ(boolean paramBoolean) {}
   
   public final void release()
   {
-    this.kuO = null;
+    this.nmC = null;
     this.mContext = null;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.kuO = paramOnClickListener;
+    this.nmC = paramOnClickListener;
   }
 }
 

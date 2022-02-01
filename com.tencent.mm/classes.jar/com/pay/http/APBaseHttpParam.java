@@ -32,7 +32,7 @@ public class APBaseHttpParam
   
   public APBaseHttpParam()
   {
-    AppMethodBeat.i(193271);
+    AppMethodBeat.i(253623);
     this.reqType = "http://";
     this.sendType = "GET";
     this.defaultDomain = "";
@@ -48,12 +48,12 @@ public class APBaseHttpParam
     this.endTime = 0L;
     this.reqParam = new HashMap();
     this.domain = APMidasTools.getSysServerDomain();
-    AppMethodBeat.o(193271);
+    AppMethodBeat.o(253623);
   }
   
   public void constructParams()
   {
-    AppMethodBeat.i(193276);
+    AppMethodBeat.i(253637);
     StringBuilder localStringBuilder = new StringBuilder("");
     if (this.reqParam != null)
     {
@@ -73,24 +73,24 @@ public class APBaseHttpParam
       }
     }
     APLog.i("APBaseHttpReq", "urlParams=" + this.urlParams);
-    AppMethodBeat.o(193276);
+    AppMethodBeat.o(253637);
   }
   
   public void constructReTryUrl()
   {
-    AppMethodBeat.i(193277);
+    AppMethodBeat.i(253638);
     if (this.requestTimes < this.reTryTimes)
     {
       this.domain = this.defaultDomain;
       this.url = (this.reqType + APToolNetwork.joinDomainPort(this.domain, this.port) + this.urlName);
       this.requestTimes += 1;
     }
-    AppMethodBeat.o(193277);
+    AppMethodBeat.o(253638);
   }
   
   public void constructUrl()
   {
-    AppMethodBeat.i(193275);
+    AppMethodBeat.i(253633);
     constructParams();
     if (this.sendType.equals("GET"))
     {
@@ -102,12 +102,12 @@ public class APBaseHttpParam
       localStringBuffer.append(this.urlParams.toString());
       this.url = localStringBuffer.toString();
     }
-    AppMethodBeat.o(193275);
+    AppMethodBeat.o(253633);
   }
   
   public void setReportUrl(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(193273);
+    AppMethodBeat.i(253627);
     String str = APMidasPayAPI.env;
     if (str.equals("dev"))
     {
@@ -122,7 +122,7 @@ public class APBaseHttpParam
         break;
       }
       this.url = (this.reqType + APToolNetwork.joinDomainPort(this.domain, this.port) + this.urlName);
-      AppMethodBeat.o(193273);
+      AppMethodBeat.o(253627);
       return;
       if (str.equals("test"))
       {
@@ -143,19 +143,19 @@ public class APBaseHttpParam
     if (str.equals("test"))
     {
       this.url = (this.reqType + APToolNetwork.joinDomainPort(this.domain, this.port) + this.urlName);
-      AppMethodBeat.o(193273);
+      AppMethodBeat.o(253627);
       return;
     }
     if (str.equals("release"))
     {
       this.url = (this.reqType + APToolNetwork.joinDomainPort(this.domain, this.port) + this.urlName);
-      AppMethodBeat.o(193273);
+      AppMethodBeat.o(253627);
       return;
     }
     if (str.equals("testing")) {
       this.url = (this.reqType + APToolNetwork.joinDomainPort(this.domain, this.port) + this.urlName);
     }
-    AppMethodBeat.o(193273);
+    AppMethodBeat.o(253627);
   }
   
   public void setReqWithHttp()
@@ -180,14 +180,14 @@ public class APBaseHttpParam
   
   public void setUrl(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(193274);
+    AppMethodBeat.i(253630);
     paramString1 = APMidasPayAPI.env;
     if (paramString1.equals("dev"))
     {
       this.urlName = paramString2;
       this.defaultDomain = "dev.api.unipay.qq.com";
       this.url = (this.reqType + APToolNetwork.joinDomainPort(this.domain, this.port) + paramString2);
-      AppMethodBeat.o(193274);
+      AppMethodBeat.o(253630);
       return;
     }
     if (paramString1.equals("test"))
@@ -195,7 +195,7 @@ public class APBaseHttpParam
       this.urlName = paramString3;
       this.defaultDomain = "sandbox.api.unipay.qq.com";
       this.url = (this.reqType + APToolNetwork.joinDomainPort(this.domain, this.port) + paramString3);
-      AppMethodBeat.o(193274);
+      AppMethodBeat.o(253630);
       return;
     }
     if (paramString1.equals("testing"))
@@ -203,7 +203,7 @@ public class APBaseHttpParam
       this.urlName = paramString3;
       this.defaultDomain = "sandbox.api.unipay.qq.com";
       this.url = (this.reqType + APToolNetwork.joinDomainPort(this.domain, this.port) + paramString3);
-      AppMethodBeat.o(193274);
+      AppMethodBeat.o(253630);
       return;
     }
     if (paramString1.equals("release"))
@@ -212,26 +212,26 @@ public class APBaseHttpParam
       this.defaultDomain = "api.unipay.qq.com";
       this.url = (this.reqType + APToolNetwork.joinDomainPort(this.domain, this.port) + paramString4);
     }
-    AppMethodBeat.o(193274);
+    AppMethodBeat.o(253630);
   }
   
   public void setUrlNotMidas(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(193272);
+    AppMethodBeat.i(253626);
     paramString1 = APMidasPayAPI.env;
     this.defaultDomain = "";
     if (paramString1.equals("testing"))
     {
       this.urlName = paramString2;
       this.url = paramString2;
-      AppMethodBeat.o(193272);
+      AppMethodBeat.o(253626);
       return;
     }
     if (paramString1.equals("test"))
     {
       this.urlName = paramString3;
       this.url = paramString3;
-      AppMethodBeat.o(193272);
+      AppMethodBeat.o(253626);
       return;
     }
     if (paramString1.equals("release"))
@@ -239,12 +239,12 @@ public class APBaseHttpParam
       this.urlName = paramString4;
       this.url = paramString4;
     }
-    AppMethodBeat.o(193272);
+    AppMethodBeat.o(253626);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.pay.http.APBaseHttpParam
  * JD-Core Version:    0.7.0.1
  */

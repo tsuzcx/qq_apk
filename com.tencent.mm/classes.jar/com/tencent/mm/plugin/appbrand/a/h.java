@@ -6,8 +6,8 @@ import android.text.TextUtils;
 public abstract class h
   extends i
 {
-  private final String[] kRG = { "invokeEnterMethods", "invokeExitMethods", "handleMessage:", "quit" };
-  boolean kRH = false;
+  private final String[] nLO = { "invokeEnterMethods", "invokeExitMethods", "handleMessage:", "quit" };
+  private boolean nLP = false;
   
   public h(String paramString, Looper paramLooper)
   {
@@ -17,12 +17,17 @@ public abstract class h
   
   public abstract void a(g paramg);
   
+  protected final boolean bIp()
+  {
+    return this.nLP;
+  }
+  
   public void log(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    String[] arrayOfString = this.kRG;
+    String[] arrayOfString = this.nLO;
     int j = arrayOfString.length;
     int i = 0;
     label20:
@@ -37,12 +42,12 @@ public abstract class h
       for (;;)
       {
         if (paramString.startsWith("handleMessage: E")) {
-          this.kRH = true;
+          this.nLP = true;
         }
         if (!paramString.startsWith("handleMessage: X")) {
           break;
         }
-        this.kRH = false;
+        this.nLP = false;
         return;
         i += 1;
         break label20;
@@ -53,7 +58,7 @@ public abstract class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.a.h
  * JD-Core Version:    0.7.0.1
  */

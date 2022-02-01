@@ -19,7 +19,4 @@
         <TextView android:textSize="14.0dip" android:textColor="@color/ag2" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/j3y" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:layout_width="wrap_content" android:layout_height="@dimen/cl" android:minWidth="@dimen/bu" android:text="@string/db9" android:includeFontPadding="false" android:drawablePadding="4.0dip" android:drawableStart="@drawable/xz" />
     </LinearLayout>
     <com.tencent.mm.ui.widget.cropview.VideoTimeView android:textSize="@dimen/bd" android:layout_gravity="end|center|top" android:id="@id/j4l" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginEnd="20.0dip" />
-    <LinearLayout android:layout_gravity="end|bottom|center" android:id="@id/d43" android:background="@drawable/a4i" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cb" android:paddingStart="@dimen/cb" android:paddingEnd="@dimen/cb" android:layout_marginEnd="@dimen/cb">
-        <TextView android:textSize="14.0dip" android:textColor="@color/v8" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dbb" />
-    </LinearLayout>
 </com.tencent.mm.plugin.finder.video.FinderVideoLayout>

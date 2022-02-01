@@ -16,13 +16,13 @@ public class CollectSession
   implements Parcelable
 {
   public static final Parcelable.Creator<CollectSession> CREATOR;
-  public final Bundle dNV;
+  public final Bundle fHg;
   String groupId;
   String id;
-  TimePoint lbd;
-  TimePoint lbe;
-  final Map<String, TimePoint> lbf;
-  String lbg;
+  TimePoint nVm;
+  TimePoint nVn;
+  final Map<String, TimePoint> nVo;
+  String nVp;
   
   static
   {
@@ -34,49 +34,49 @@ public class CollectSession
   CollectSession()
   {
     AppMethodBeat.i(146079);
-    this.lbf = new HashMap();
-    this.dNV = new Bundle();
+    this.nVo = new HashMap();
+    this.fHg = new Bundle();
     AppMethodBeat.o(146079);
   }
   
   public CollectSession(String paramString)
   {
     AppMethodBeat.i(146080);
-    this.lbf = new HashMap();
-    this.dNV = new Bundle();
+    this.nVo = new HashMap();
+    this.fHg = new Bundle();
     this.id = paramString;
     AppMethodBeat.o(146080);
   }
   
-  public final void EL(String paramString)
+  public final void aet(String paramString)
   {
     AppMethodBeat.i(146081);
-    Assert.assertNull(this.lbd);
-    this.lbd = new TimePoint(paramString, System.nanoTime());
-    this.lbe = this.lbd;
-    this.lbd.lbo.set(1);
-    this.lbf.put(paramString, this.lbd);
+    Assert.assertNull(this.nVm);
+    this.nVm = new TimePoint(paramString, System.nanoTime());
+    this.nVn = this.nVm;
+    this.nVm.nVx.set(1);
+    this.nVo.put(paramString, this.nVm);
     AppMethodBeat.o(146081);
   }
   
-  public final void WI(String paramString)
+  public final void aeu(String paramString)
   {
     AppMethodBeat.i(146082);
-    Assert.assertNotNull(this.lbe);
+    Assert.assertNotNull(this.nVn);
     long l = System.nanoTime();
-    TimePoint localTimePoint = (TimePoint)this.lbf.get(paramString);
+    TimePoint localTimePoint = (TimePoint)this.nVo.get(paramString);
     if (localTimePoint == null)
     {
       localTimePoint = new TimePoint(paramString, l);
-      localTimePoint.lbo.set(1);
-      this.lbf.put(paramString, localTimePoint);
-      this.lbe.lbq.set(localTimePoint);
-      this.lbe = localTimePoint;
+      localTimePoint.nVx.set(1);
+      this.nVo.put(paramString, localTimePoint);
+      this.nVn.nVz.set(localTimePoint);
+      this.nVn = localTimePoint;
       AppMethodBeat.o(146082);
       return;
     }
-    localTimePoint.lbp.set((l + localTimePoint.lbp.get() * localTimePoint.lbo.get()) / (localTimePoint.lbo.get() + 1));
-    localTimePoint.lbo.incrementAndGet();
+    localTimePoint.nVy.set((l + localTimePoint.nVy.get() * localTimePoint.nVx.get()) / (localTimePoint.nVx.get() + 1));
+    localTimePoint.nVx.incrementAndGet();
     AppMethodBeat.o(146082);
   }
   
@@ -90,15 +90,15 @@ public class CollectSession
     AppMethodBeat.i(146083);
     paramParcel.writeString(this.groupId);
     paramParcel.writeString(this.id);
-    paramParcel.writeParcelable(this.lbd, paramInt);
-    paramParcel.writeString(this.lbg);
-    paramParcel.writeBundle(this.dNV);
+    paramParcel.writeParcelable(this.nVm, paramInt);
+    paramParcel.writeString(this.nVp);
+    paramParcel.writeBundle(this.fHg);
     AppMethodBeat.o(146083);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.collector.CollectSession
  * JD-Core Version:    0.7.0.1
  */

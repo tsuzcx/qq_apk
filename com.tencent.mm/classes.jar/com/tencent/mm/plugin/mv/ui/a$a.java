@@ -1,49 +1,44 @@
 package com.tencent.mm.plugin.mv.ui;
 
 import android.graphics.Bitmap;
-import android.widget.ImageView;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelappbrand.a.b.k;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ay.a.c.h;
+import com.tencent.mm.ay.a.d.b;
+import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/mv/ui/MvLogic$loadAppIcon$1", "Lcom/tencent/mm/modelappbrand/image/AppBrandSimpleImageLoader$ILoadTarget;", "beforeLoadBitmap", "", "key", "", "onBitmapLoaded", "bitmap", "Landroid/graphics/Bitmap;", "onLoadFailed", "plugin-mv_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/MvLogic$loadAlphaAppIcon$1", "Lcom/tencent/mm/modelimage/loader/listener/IImageLoadListener;", "onImageLoadFinish", "", "url", "", "view", "Landroid/view/View;", "imageData", "Lcom/tencent/mm/modelimage/loader/model/Response;", "onImageLoadStart", "onProcessBitmap", "Landroid/graphics/Bitmap;", "plugin-mv_release"})
 public final class a$a
-  implements b.k
+  implements h
 {
-  a$a(ImageView paramImageView, String paramString) {}
-  
-  public final void I(Bitmap paramBitmap)
+  public final Bitmap a(String paramString, View paramView, b paramb)
   {
-    AppMethodBeat.i(256948);
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
+    return null;
+  }
+  
+  public final void b(String paramString, View paramView) {}
+  
+  public final void b(String paramString, View paramView, b paramb)
+  {
+    paramView = null;
+    AppMethodBeat.i(230909);
+    p.k(paramString, "url");
+    if (paramb != null) {}
+    for (paramString = paramb.bitmap;; paramString = null)
     {
-      this.hYC.setImageBitmap(paramBitmap);
-      AppMethodBeat.o(256948);
+      if (paramString != null)
+      {
+        paramString = paramView;
+        if (paramb != null) {
+          paramString = paramb.bitmap;
+        }
+        p.j(paramString, "imageData?.bitmap");
+        paramString.isRecycled();
+      }
+      AppMethodBeat.o(230909);
       return;
     }
-    oD();
-    AppMethodBeat.o(256948);
-  }
-  
-  public final String Lb()
-  {
-    return this.ArC;
-  }
-  
-  public final void aYg()
-  {
-    AppMethodBeat.i(256947);
-    this.hYC.setImageResource(this.ArB);
-    AppMethodBeat.o(256947);
-  }
-  
-  public final void oD()
-  {
-    AppMethodBeat.i(256949);
-    Log.e("MicroMsg.Mv.MvLogic", "alvinluo loadAppIcon failed");
-    this.hYC.setImageResource(this.ArB);
-    AppMethodBeat.o(256949);
   }
 }
 

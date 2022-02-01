@@ -7,53 +7,53 @@ import kotlin.g.b.p;
 import kotlin.l;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/FlattenEyeBrowInfo;", "Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/BaseFlattenMakeupInfo;", "()V", "alpha", "", "getAlpha", "()F", "setAlpha", "(F)V", "faceModel", "", "getFaceModel", "()I", "setFaceModel", "(I)V", "isValid", "", "()Z", "leftEyeBrowPath", "", "getLeftEyeBrowPath", "()Ljava/lang/String;", "setLeftEyeBrowPath", "(Ljava/lang/String;)V", "rightEyeBrowPath", "getRightEyeBrowPath", "setRightEyeBrowPath", "fromJson", "Lcom/tencent/mm/sticker/BaseJsonObject;", "jsonObj", "Lorg/json/JSONObject;", "toJson", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/FlattenEyeBrowInfo;", "Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/BaseFlattenMakeupInfo;", "()V", "alpha", "", "getAlpha", "()F", "setAlpha", "(F)V", "faceModel", "", "getFaceModel", "()I", "setFaceModel", "(I)V", "isValid", "", "()Z", "leftEyeBrowPath", "", "getLeftEyeBrowPath", "()Ljava/lang/String;", "setLeftEyeBrowPath", "(Ljava/lang/String;)V", "rightEyeBrowPath", "getRightEyeBrowPath", "setRightEyeBrowPath", "fromJson", "Lcom/tencent/mm/sticker/BaseJsonObject;", "jsonObj", "Lorg/json/JSONObject;", "toJson", "plugin-appbrand-integration_release"})
 public final class d
   extends a
 {
   @SuppressLint({"Range"})
   float alpha = -1.0F;
-  int cGc;
-  String cGf = "";
-  String cGh = "";
+  int cGI;
+  String cGL = "";
+  String cGN = "";
   
-  public final com.tencent.mm.sticker.a au(JSONObject paramJSONObject)
+  public final com.tencent.mm.sticker.a ay(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(229715);
-    p.h(paramJSONObject, "jsonObj");
+    AppMethodBeat.i(278739);
+    p.k(paramJSONObject, "jsonObj");
     JSONObject localJSONObject = paramJSONObject.optJSONObject("params");
     if (localJSONObject == null)
     {
       Log.w("MicroMsg.FlattenEyeBrowInfo", "fromJson, paramsJsonObj is null");
-      paramJSONObject = super.au(paramJSONObject);
-      AppMethodBeat.o(229715);
+      paramJSONObject = super.ay(paramJSONObject);
+      AppMethodBeat.o(278739);
       return paramJSONObject;
     }
     this.alpha = ((float)localJSONObject.optDouble("alpha", -1.0D));
     String str = localJSONObject.optString("left_path", "");
-    p.g(str, "paramsJsonObj.optString(…Y_LEFT_EYE_BROW_PATH, \"\")");
-    this.cGf = str;
+    p.j(str, "paramsJsonObj.optString(…Y_LEFT_EYE_BROW_PATH, \"\")");
+    this.cGL = str;
     str = localJSONObject.optString("right_path", "");
-    p.g(str, "paramsJsonObj.optString(…_RIGHT_EYE_BROW_PATH, \"\")");
-    this.cGh = str;
-    this.cGc = localJSONObject.optInt("face_model", 0);
-    paramJSONObject = super.au(paramJSONObject);
-    AppMethodBeat.o(229715);
+    p.j(str, "paramsJsonObj.optString(…_RIGHT_EYE_BROW_PATH, \"\")");
+    this.cGN = str;
+    this.cGI = localJSONObject.optInt("face_model", 0);
+    paramJSONObject = super.ay(paramJSONObject);
+    AppMethodBeat.o(278739);
     return paramJSONObject;
   }
   
   public final boolean isValid()
   {
-    AppMethodBeat.i(229714);
+    AppMethodBeat.i(278738);
     if (-1.0F != this.alpha)
     {
-      if (((CharSequence)this.cGf).length() > 0)
+      if (((CharSequence)this.cGL).length() > 0)
       {
         i = 1;
         if (i == 0) {
           break label74;
         }
-        if (((CharSequence)this.cGh).length() <= 0) {
+        if (((CharSequence)this.cGN).length() <= 0) {
           break label69;
         }
       }
@@ -63,34 +63,34 @@ public final class d
         if (i == 0) {
           break label74;
         }
-        AppMethodBeat.o(229714);
+        AppMethodBeat.o(278738);
         return true;
         i = 0;
         break;
       }
     }
     label74:
-    AppMethodBeat.o(229714);
+    AppMethodBeat.o(278738);
     return false;
   }
   
   public final JSONObject toJson()
   {
-    AppMethodBeat.i(229716);
+    AppMethodBeat.i(278741);
     JSONObject localJSONObject1 = super.toJson();
     JSONObject localJSONObject2 = new JSONObject();
     localJSONObject2.put("alpha", Float.valueOf(this.alpha));
-    localJSONObject2.put("left_path", this.cGf);
-    localJSONObject2.put("right_path", this.cGh);
-    localJSONObject2.put("face_model", this.cGc);
+    localJSONObject2.put("left_path", this.cGL);
+    localJSONObject2.put("right_path", this.cGN);
+    localJSONObject2.put("face_model", this.cGI);
     localJSONObject1.put("params", localJSONObject2);
-    AppMethodBeat.o(229716);
+    AppMethodBeat.o(278741);
     return localJSONObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.xweb_ext.a.d
  * JD-Core Version:    0.7.0.1
  */

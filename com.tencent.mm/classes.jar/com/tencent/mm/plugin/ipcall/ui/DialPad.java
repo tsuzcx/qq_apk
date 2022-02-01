@@ -11,6 +11,10 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.ipcall.model.i;
 import com.tencent.mm.plugin.voip.video.c;
@@ -25,22 +29,22 @@ public class DialPad
   extends RelativeLayout
   implements View.OnClickListener, View.OnLongClickListener
 {
-  private static final String[] ysQ = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "*", "0", "#" };
-  private static final String[] ysR = { "", "ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ", "", "+", "" };
-  private boolean ysP;
-  private Map<Integer, DialNumberButton> ysS;
-  private Map<String, DialNumberButton> ysT;
-  private Map<Integer, View> ysU;
-  private a ysV;
+  private static final String[] DSU = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "*", "0", "#" };
+  private static final String[] DSV = { "", "ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ", "", "+", "" };
+  private boolean DST;
+  private Map<Integer, DialNumberButton> DSW;
+  private Map<String, DialNumberButton> DSX;
+  private Map<Integer, View> DSY;
+  private a DSZ;
   
   public DialPad(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(25575);
-    this.ysP = false;
-    this.ysS = new HashMap();
-    this.ysT = new HashMap();
-    this.ysU = new HashMap();
+    this.DST = false;
+    this.DSW = new HashMap();
+    this.DSX = new HashMap();
+    this.DSY = new HashMap();
     init();
     AppMethodBeat.o(25575);
   }
@@ -49,48 +53,48 @@ public class DialPad
   {
     AppMethodBeat.i(25577);
     DialNumberButton localDialNumberButton = (DialNumberButton)findViewById(paramInt);
-    localDialNumberButton.il(paramString1, paramString2);
-    localDialNumberButton.setNumberTextSize$255e752(paramFloat);
+    localDialNumberButton.iy(paramString1, paramString2);
+    localDialNumberButton.bs(paramFloat);
     localDialNumberButton.setOnClickListener(this);
     localDialNumberButton.setOnLongClickListener(this);
-    localDialNumberButton.setInTalkUIMode(this.ysP);
-    this.ysS.put(Integer.valueOf(paramInt), localDialNumberButton);
-    this.ysT.put(paramString1, localDialNumberButton);
+    localDialNumberButton.setInTalkUIMode(this.DST);
+    this.DSW.put(Integer.valueOf(paramInt), localDialNumberButton);
+    this.DSX.put(paramString1, localDialNumberButton);
     AppMethodBeat.o(25577);
   }
   
   private void init()
   {
     AppMethodBeat.i(25576);
-    LayoutInflater.from(getContext()).inflate(2131493841, this);
-    float f1 = getContext().getResources().getDimensionPixelSize(2131166538);
-    float f2 = getContext().getResources().getDimensionPixelSize(2131166542);
-    float f3 = getContext().getResources().getDimensionPixelSize(2131166541);
-    a(2131299626, ysQ[0], ysR[0], f1);
-    a(2131299632, ysQ[1], ysR[1], f1);
-    a(2131299631, ysQ[2], ysR[2], f1);
-    a(2131299624, ysQ[3], ysR[3], f1);
-    a(2131299623, ysQ[4], ysR[4], f1);
-    a(2131299629, ysQ[5], ysR[5], f1);
-    a(2131299627, ysQ[6], ysR[6], f1);
-    a(2131299622, ysQ[7], ysR[7], f1);
-    a(2131299625, ysQ[8], ysR[8], f1);
-    a(2131299630, ysQ[9], ysR[9], f3);
-    a(2131299633, ysQ[10], ysR[10], f1);
-    a(2131299628, ysQ[11], ysR[11], f2);
-    this.ysU.put(Integer.valueOf(2131299709), findViewById(2131299709));
-    this.ysU.put(Integer.valueOf(2131299714), findViewById(2131299714));
-    this.ysU.put(Integer.valueOf(2131299712), findViewById(2131299712));
-    this.ysU.put(Integer.valueOf(2131299705), findViewById(2131299705));
-    this.ysU.put(Integer.valueOf(2131299704), findViewById(2131299704));
-    Iterator localIterator = this.ysU.values().iterator();
+    LayoutInflater.from(getContext()).inflate(R.i.dEI, this);
+    float f1 = getContext().getResources().getDimensionPixelSize(R.f.dlr);
+    float f2 = getContext().getResources().getDimensionPixelSize(R.f.dlt);
+    float f3 = getContext().getResources().getDimensionPixelSize(R.f.dls);
+    a(R.h.dEA, DSU[0], DSV[0], f1);
+    a(R.h.dEG, DSU[1], DSV[1], f1);
+    a(R.h.dEF, DSU[2], DSV[2], f1);
+    a(R.h.dEy, DSU[3], DSV[3], f1);
+    a(R.h.dEx, DSU[4], DSV[4], f1);
+    a(R.h.dED, DSU[5], DSV[5], f1);
+    a(R.h.dEB, DSU[6], DSV[6], f1);
+    a(R.h.dEw, DSU[7], DSV[7], f1);
+    a(R.h.dEz, DSU[8], DSV[8], f1);
+    a(R.h.dEE, DSU[9], DSV[9], f3);
+    a(R.h.dEH, DSU[10], DSV[10], f1);
+    a(R.h.dEC, DSU[11], DSV[11], f2);
+    this.DSY.put(Integer.valueOf(R.h.dER), findViewById(R.h.dER));
+    this.DSY.put(Integer.valueOf(R.h.dET), findViewById(R.h.dET));
+    this.DSY.put(Integer.valueOf(R.h.dES), findViewById(R.h.dES));
+    this.DSY.put(Integer.valueOf(R.h.dEQ), findViewById(R.h.dEQ));
+    this.DSY.put(Integer.valueOf(R.h.dEP), findViewById(R.h.dEP));
+    Iterator localIterator = this.DSY.values().iterator();
     while (localIterator.hasNext())
     {
       View localView = (View)localIterator.next();
-      if (this.ysP) {
-        localView.setBackgroundDrawable(getResources().getDrawable(2131101245));
+      if (this.DST) {
+        localView.setBackgroundDrawable(getResources().getDrawable(R.e.dkL));
       } else {
-        localView.setBackgroundDrawable(getResources().getDrawable(2131100270));
+        localView.setBackgroundDrawable(getResources().getDrawable(R.e.dkn));
       }
     }
     setClipToPadding(false);
@@ -102,57 +106,57 @@ public class DialPad
   {
     AppMethodBeat.i(25579);
     Object localObject1 = new b();
-    ((b)localObject1).bm(???);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ipcall/ui/DialPad", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject1).axR());
+    ((b)localObject1).bn(???);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/ipcall/ui/DialPad", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject1).aFi());
     String str;
     c localc;
     int i;
     Object localObject3;
-    if (this.ysS.containsKey(Integer.valueOf(???.getId())))
+    if (this.DSW.containsKey(Integer.valueOf(???.getId())))
     {
-      ??? = (DialNumberButton)this.ysS.get(Integer.valueOf(???.getId()));
+      ??? = (DialNumberButton)this.DSW.get(Integer.valueOf(???.getId()));
       localObject1 = ???.getNumberText();
       str = ???.getOtherText();
-      localc = i.eaD();
-      i = c.aUD((String)localObject1);
-      if ((i != -1) && (c.fKK()))
+      localc = i.eJB();
+      i = c.bgl((String)localObject1);
+      if ((i != -1) && (c.gDk()))
       {
-        localObject3 = com.tencent.mm.plugin.audio.c.a.cea().audioManager;
+        localObject3 = com.tencent.mm.plugin.audio.c.a.crn().audioManager;
         ??? = (View)localObject3;
         if (localObject3 == null) {
           ??? = (AudioManager)c.mContext.getSystemService("audio");
         }
         int j = ???.getRingerMode();
         if ((j != 0) && (j != 1)) {
-          break label205;
+          break label213;
         }
       }
-      if (this.ysV != null)
+      if (this.DSZ != null)
       {
-        localObject3 = this.ysV;
+        localObject3 = this.DSZ;
         if (Util.isNullOrNil((String)localObject1)) {
-          break label257;
+          break label265;
         }
       }
     }
-    label257:
+    label265:
     for (??? = (View)localObject1;; ??? = str)
     {
       for (;;)
       {
-        ((a)localObject3).aCc(???);
+        ((a)localObject3).aMj(???);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ipcall/ui/DialPad", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(25579);
         return;
-        label205:
-        synchronized (localc.Hhv)
+        label213:
+        synchronized (localc.NYk)
         {
-          if (localc.Hhw != null) {
+          if (localc.NYl != null) {
             break;
           }
         }
       }
-      localc.Hhw.startTone(i, 250);
+      localc.NYl.startTone(i, 250);
       break;
     }
   }
@@ -161,20 +165,20 @@ public class DialPad
   {
     AppMethodBeat.i(25580);
     Object localObject = new b();
-    ((b)localObject).bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ipcall/ui/DialPad", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((b)localObject).axR());
-    if (this.ysS.containsKey(Integer.valueOf(paramView.getId())))
+    ((b)localObject).bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/ipcall/ui/DialPad", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((b)localObject).aFi());
+    if (this.DSW.containsKey(Integer.valueOf(paramView.getId())))
     {
-      paramView = (DialNumberButton)this.ysS.get(Integer.valueOf(paramView.getId()));
+      paramView = (DialNumberButton)this.DSW.get(Integer.valueOf(paramView.getId()));
       localObject = paramView.getNumberText();
       paramView = paramView.getOtherText();
-      if (this.ysV != null)
+      if (this.DSZ != null)
       {
-        a locala = this.ysV;
+        a locala = this.DSZ;
         if (!Util.isNullOrNil((String)localObject)) {
           paramView = (View)localObject;
         }
-        locala.aCd(paramView);
+        locala.aMk(paramView);
       }
       com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/ipcall/ui/DialPad", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
       AppMethodBeat.o(25580);
@@ -201,25 +205,25 @@ public class DialPad
   
   public void setDialButtonClickListener(a parama)
   {
-    this.ysV = parama;
+    this.DSZ = parama;
   }
   
   public void setTalkUIMode(boolean paramBoolean)
   {
     AppMethodBeat.i(25578);
-    this.ysP = paramBoolean;
-    Iterator localIterator = this.ysS.values().iterator();
+    this.DST = paramBoolean;
+    Iterator localIterator = this.DSW.values().iterator();
     while (localIterator.hasNext()) {
       ((DialNumberButton)localIterator.next()).setInTalkUIMode(paramBoolean);
     }
-    localIterator = this.ysU.values().iterator();
+    localIterator = this.DSY.values().iterator();
     while (localIterator.hasNext())
     {
       View localView = (View)localIterator.next();
-      if (this.ysP) {
-        localView.setBackgroundDrawable(getResources().getDrawable(2131101245));
+      if (this.DST) {
+        localView.setBackgroundDrawable(getResources().getDrawable(R.e.dkL));
       } else {
-        localView.setBackgroundDrawable(getResources().getDrawable(2131100270));
+        localView.setBackgroundDrawable(getResources().getDrawable(R.e.dkn));
       }
     }
     AppMethodBeat.o(25578);
@@ -227,14 +231,14 @@ public class DialPad
   
   public static abstract interface a
   {
-    public abstract void aCc(String paramString);
+    public abstract void aMj(String paramString);
     
-    public abstract void aCd(String paramString);
+    public abstract void aMk(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.DialPad
  * JD-Core Version:    0.7.0.1
  */

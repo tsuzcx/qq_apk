@@ -18,9 +18,9 @@ public class be
   public final void b(b<g>.a paramb)
   {
     AppMethodBeat.i(78624);
-    String str1 = paramb.ctb.csi.optString("title");
-    String str2 = paramb.ctb.csi.optString("icon_url");
-    String str3 = paramb.ctb.csi.optString("jump_url");
+    String str1 = paramb.crh.cqn.optString("title");
+    String str2 = paramb.crh.cqn.optString("icon_url");
+    String str3 = paramb.crh.cqn.optString("jump_url");
     y localy = new y();
     if (!Util.isNullOrNil(str1)) {
       localy.title = str1;
@@ -31,11 +31,11 @@ public class be
     if (!Util.isNullOrNil(str3)) {
       localy.jumpUrl = str3;
     }
-    paramb.c("", null);
+    paramb.a("", null);
     AppMethodBeat.o(78624);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

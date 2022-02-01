@@ -1,14 +1,6 @@
 package com.tencent.mm.plugin.wallet.wecoin.ui;
 
 import android.app.Activity;
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.LifecycleObserver;
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -16,8 +8,6 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
@@ -27,115 +17,131 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.r;
+import androidx.lifecycle.s;
+import androidx.lifecycle.y;
+import androidx.lifecycle.z;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
+import com.tencent.mm.ae.d;
+import com.tencent.mm.plugin.wallet.wecoin.a.e;
+import com.tencent.mm.plugin.wallet.wecoin.b.i;
 import com.tencent.mm.plugin.wallet.wecoin.c.c;
 import com.tencent.mm.plugin.wallet.wecoin.c.c.e;
-import com.tencent.mm.plugin.wallet.wecoin.model.WeCoinRechargeViewModel;
-import com.tencent.mm.plugin.wallet.wecoin.model.WeCoinRechargeViewModel.b;
-import com.tencent.mm.plugin.wallet.wecoin.model.WeCoinRechargeViewModel.c;
 import com.tencent.mm.plugin.wallet.wecoin.model.WecoinEncashKVData;
-import com.tencent.mm.plugin.wallet.wecoin.model.h.a;
+import com.tencent.mm.plugin.wallet.wecoin.model.k.a;
+import com.tencent.mm.plugin.wallet.wecoin.model.l.b;
+import com.tencent.mm.plugin.wallet.wecoin.model.l.c;
 import com.tencent.mm.plugin.wallet_core.ui.view.WcPayMoneyLoadingView;
-import com.tencent.mm.protocal.protobuf.abq;
-import com.tencent.mm.protocal.protobuf.byp;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.protocal.protobuf.abx;
+import com.tencent.mm.protocal.protobuf.cgj;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.e.p;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.f.r;
 import com.tencent.mm.ui.widget.a.g.a;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
-import kotlin.l;
 import kotlin.t;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "mBalanceView", "Lcom/tencent/mm/plugin/wallet_core/ui/view/WcPayMoneyLoadingView;", "mBannerView", "Landroid/view/View;", "mFaqTv", "Landroid/widget/TextView;", "mMoneyLoadingPb", "Landroid/widget/ProgressBar;", "mNoBalanceTipsTv", "mSwitchDeviceTipsView", "mTotalBalanceLl", "Landroid/widget/LinearLayout;", "mViewModel", "Lcom/tencent/mm/plugin/wallet/wecoin/model/WeCoinRechargeViewModel;", "mWeCoinBalanceView", "mWeCoinRechargeButton", "Landroid/widget/Button;", "bindData", "", "getLayoutId", "", "initView", "loadCacheData", "loadData", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "showDeviceSwitchTips", "hasShow", "", "(Ljava/lang/Boolean;)V", "showErrorMsg", "info", "Lcom/tencent/mm/plugin/wallet/wecoin/model/CgiRespInfo;", "showGridBottomSheet", "showTutorialDialog", "updateFaqView", "url", "", "updateIncomeBalance", "balance", "Lcom/tencent/mm/plugin/wallet/wecoin/model/UserIncomeDetailData;", "updateMainContentView", "updateRechargeButtonState", "midasInitialized", "updateRightOptionMenu", "updateTopBannerView", "bannerContent", "Lcom/tencent/mm/protocal/protobuf/CoinBanner;", "updateTotalBalance", "", "(Ljava/lang/Long;)V", "Companion", "plugin-wxpay_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "mBalanceView", "Lcom/tencent/mm/plugin/wallet_core/ui/view/WcPayMoneyLoadingView;", "mBannerView", "Landroid/view/View;", "mFaqLinearLayout", "Landroid/widget/LinearLayout;", "mFaqTv", "Landroid/widget/TextView;", "mMoneyLoadingPb", "Landroid/widget/ProgressBar;", "mNoBalanceTipsTv", "mSwitchDeviceTipsView", "mTotalBalanceLl", "mTutorialClickLl", "mTutorialClickTv", "mViewModel", "Lcom/tencent/mm/plugin/wallet/wecoin/model/WeCoinRechargeViewModel;", "mWeCoinBalanceView", "mWeCoinRechargeButton", "Landroid/widget/Button;", "bindData", "", "getLayoutId", "", "initView", "loadCacheData", "loadData", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onResume", "showDeviceSwitchTips", "hasShow", "", "(Ljava/lang/Boolean;)V", "showErrorMsg", "info", "Lcom/tencent/mm/plugin/wallet/wecoin/model/CgiRespInfo;", "showGridBottomSheet", "showTutorialDialog", "updateFaqView", "url", "", "updateIncomeBalance", "balance", "Lcom/tencent/mm/plugin/wallet/wecoin/model/UserIncomeDetailData;", "updateMainContentView", "updateRechargeButtonState", "midasInitialized", "updateRightOptionMenu", "updateTopBannerView", "bannerContent", "Lcom/tencent/mm/protocal/protobuf/CoinBanner;", "updateTotalBalance", "", "(Ljava/lang/Long;)V", "Companion", "plugin-wxpay_release"})
 public final class WeCoinRechargeView
   extends MMActivity
 {
-  public static final WeCoinRechargeView.a HPl;
-  private TextView HOY;
-  private WeCoinRechargeViewModel HPe;
-  private LinearLayout HPf;
-  private TextView HPg;
-  private View HPh;
-  private TextView HPi;
-  private Button HPj;
-  private TextView HPk;
-  private WcPayMoneyLoadingView Hwb;
-  private ProgressBar zmU;
+  public static final WeCoinRechargeView.a OHt;
+  private ProgressBar ESk;
+  private TextView OGV;
+  private com.tencent.mm.plugin.wallet.wecoin.model.l OHj;
+  private LinearLayout OHk;
+  private TextView OHl;
+  private View OHm;
+  private LinearLayout OHn;
+  private LinearLayout OHo;
+  private TextView OHp;
+  private TextView OHq;
+  private Button OHr;
+  private TextView OHs;
+  private WcPayMoneyLoadingView OnO;
   
   static
   {
-    AppMethodBeat.i(212901);
-    HPl = new WeCoinRechargeView.a((byte)0);
-    AppMethodBeat.o(212901);
+    AppMethodBeat.i(202627);
+    OHt = new WeCoinRechargeView.a((byte)0);
+    AppMethodBeat.o(202627);
   }
   
-  private final void o(Boolean paramBoolean)
+  private final void v(Boolean paramBoolean)
   {
-    AppMethodBeat.i(212900);
-    Button localButton = this.HPj;
+    AppMethodBeat.i(202625);
+    Button localButton = this.OHr;
     if (localButton == null) {
-      p.btv("mWeCoinRechargeButton");
+      p.bGy("mWeCoinRechargeButton");
     }
     localButton.setEnabled(false);
     if (paramBoolean != null)
     {
       if (paramBoolean.booleanValue())
       {
-        paramBoolean = this.HPj;
+        paramBoolean = this.OHr;
         if (paramBoolean == null) {
-          p.btv("mWeCoinRechargeButton");
+          p.bGy("mWeCoinRechargeButton");
         }
         paramBoolean.setEnabled(true);
-        paramBoolean = this.HPj;
+        paramBoolean = this.OHr;
         if (paramBoolean == null) {
-          p.btv("mWeCoinRechargeButton");
+          p.bGy("mWeCoinRechargeButton");
         }
-        paramBoolean.setOnClickListener((View.OnClickListener)new o(this));
+        paramBoolean.setOnClickListener((View.OnClickListener)new p(this));
       }
-      AppMethodBeat.o(212900);
+      AppMethodBeat.o(202625);
       return;
     }
-    AppMethodBeat.o(212900);
+    AppMethodBeat.o(202625);
   }
   
   public final int getLayoutId()
   {
-    return 2131492967;
+    return a.g.activity_we_coin_recharge_ui;
   }
   
   public final void initView()
   {
-    AppMethodBeat.i(212899);
+    AppMethodBeat.i(202621);
     setContentViewVisibility(0);
-    setActionbarColor(getResources().getColor(2131101421));
-    Object localObject1 = findViewById(2131310435);
-    p.g(localObject1, "findViewById(R.id.wecoin_balance_account_ll)");
-    this.HPf = ((LinearLayout)localObject1);
-    localObject1 = findViewById(2131310364);
-    p.g(localObject1, "findViewById(R.id.we_coin_no_balance_tips_tv)");
-    this.HPg = ((TextView)localObject1);
-    localObject1 = findViewById(2131310450);
-    p.g(localObject1, "findViewById(R.id.wecoin_recharge_banner_ll)");
-    this.HPh = ((View)localObject1);
-    localObject1 = findViewById(2131310362);
-    p.g(localObject1, "findViewById(R.id.we_coin_balance_tv)");
-    this.HPi = ((TextView)localObject1);
-    localObject1 = findViewById(2131310453);
-    p.g(localObject1, "findViewById(R.id.wecoin_switch_device_tips)");
-    this.HPk = ((TextView)localObject1);
-    localObject1 = com.tencent.mm.wallet_core.ui.f.aqk(0);
+    setActionbarColor(getResources().getColor(a.c.UN_Brand_BG_100));
+    Object localObject1 = findViewById(a.f.wecoin_balance_account_ll);
+    p.j(localObject1, "findViewById(R.id.wecoin_balance_account_ll)");
+    this.OHk = ((LinearLayout)localObject1);
+    localObject1 = findViewById(a.f.we_coin_no_balance_tips_tv);
+    p.j(localObject1, "findViewById(R.id.we_coin_no_balance_tips_tv)");
+    this.OHl = ((TextView)localObject1);
+    localObject1 = findViewById(a.f.wecoin_recharge_banner_ll);
+    p.j(localObject1, "findViewById(R.id.wecoin_recharge_banner_ll)");
+    this.OHm = ((View)localObject1);
+    localObject1 = findViewById(a.f.we_coin_balance_tv);
+    p.j(localObject1, "findViewById(R.id.we_coin_balance_tv)");
+    this.OHq = ((TextView)localObject1);
+    localObject1 = findViewById(a.f.wecoin_switch_device_tips);
+    p.j(localObject1, "findViewById(R.id.wecoin_switch_device_tips)");
+    this.OHs = ((TextView)localObject1);
+    localObject1 = com.tencent.mm.wallet_core.ui.g.azI(0);
     try
     {
-      localObject2 = this.HPi;
+      localObject2 = this.OHq;
       if (localObject2 == null) {
-        p.btv("mWeCoinBalanceView");
+        p.bGy("mWeCoinBalanceView");
       }
       AppCompatActivity localAppCompatActivity = getContext();
-      p.g(localAppCompatActivity, "context");
+      p.j(localAppCompatActivity, "context");
       ((TextView)localObject2).setTypeface(Typeface.createFromAsset(localAppCompatActivity.getAssets(), (String)localObject1));
     }
     catch (Exception localException)
@@ -146,195 +152,214 @@ public final class WeCoinRechargeView
         Log.e("MicroMsg.WeCoinRechargeView", "setTypeface() Exception:%s", new Object[] { localException.getMessage() });
       }
     }
-    localObject1 = findViewById(2131310126);
-    p.g(localObject1, "findViewById(R.id.wallet_balance_view)");
-    this.Hwb = ((WcPayMoneyLoadingView)localObject1);
-    localObject1 = findViewById(2131310218);
-    p.g(localObject1, "findViewById(R.id.wallet_money_load_pb)");
-    this.zmU = ((ProgressBar)localObject1);
-    localObject1 = this.Hwb;
+    localObject1 = findViewById(a.f.wallet_balance_view);
+    p.j(localObject1, "findViewById(R.id.wallet_balance_view)");
+    this.OnO = ((WcPayMoneyLoadingView)localObject1);
+    localObject1 = findViewById(a.f.wallet_money_load_pb);
+    p.j(localObject1, "findViewById(R.id.wallet_money_load_pb)");
+    this.ESk = ((ProgressBar)localObject1);
+    localObject1 = this.OnO;
     if (localObject1 == null) {
-      p.btv("mBalanceView");
+      p.bGy("mBalanceView");
     }
-    localObject2 = this.zmU;
+    localObject2 = this.ESk;
     if (localObject2 == null) {
-      p.btv("mMoneyLoadingPb");
+      p.bGy("mMoneyLoadingPb");
     }
     ((WcPayMoneyLoadingView)localObject1).setLoadingPb((ProgressBar)localObject2);
-    localObject1 = this.Hwb;
+    localObject1 = this.OnO;
     if (localObject1 == null) {
-      p.btv("mBalanceView");
+      p.bGy("mBalanceView");
     }
-    ((WcPayMoneyLoadingView)localObject1).setPrefixSymbol(getString(2131768266));
+    ((WcPayMoneyLoadingView)localObject1).setPrefixSymbol(getString(a.i.wallet_rmb_symbol));
     localObject1 = getLifecycle();
-    localObject2 = this.Hwb;
+    localObject2 = this.OnO;
     if (localObject2 == null) {
-      p.btv("mBalanceView");
+      p.bGy("mBalanceView");
     }
-    ((Lifecycle)localObject1).addObserver((LifecycleObserver)localObject2);
-    localObject1 = findViewById(2131310439);
-    p.g(localObject1, "findViewById(R.id.wecoin_detail_faq_link_tv)");
-    this.HOY = ((TextView)localObject1);
-    localObject1 = this.HOY;
+    ((androidx.lifecycle.h)localObject1).a((androidx.lifecycle.k)localObject2);
+    localObject1 = findViewById(a.f.wecoin_detail_faq_link_ll);
+    p.j(localObject1, "findViewById(R.id.wecoin_detail_faq_link_ll)");
+    this.OHn = ((LinearLayout)localObject1);
+    localObject1 = findViewById(a.f.wecoin_detail_faq_link_tv);
+    p.j(localObject1, "findViewById(R.id.wecoin_detail_faq_link_tv)");
+    this.OGV = ((TextView)localObject1);
+    localObject1 = this.OGV;
     if (localObject1 == null) {
-      p.btv("mFaqTv");
+      p.bGy("mFaqTv");
     }
-    com.tencent.mm.ui.ao.a((Paint)((TextView)localObject1).getPaint(), 0.8F);
+    ar.a((Paint)((TextView)localObject1).getPaint(), 0.8F);
+    localObject1 = findViewById(a.f.wecoin_detail_known_tutorial_LL);
+    p.j(localObject1, "findViewById(R.id.wecoin_detail_known_tutorial_LL)");
+    this.OHo = ((LinearLayout)localObject1);
+    localObject1 = findViewById(a.f.wecoin_detail_known_tutorial_tv);
+    p.j(localObject1, "findViewById(R.id.wecoin_detail_known_tutorial_tv)");
+    this.OHp = ((TextView)localObject1);
+    localObject1 = this.OHo;
+    if (localObject1 == null) {
+      p.bGy("mTutorialClickLl");
+    }
+    ((LinearLayout)localObject1).setOnClickListener((View.OnClickListener)new j(this));
+    localObject1 = this.OHp;
+    if (localObject1 == null) {
+      p.bGy("mTutorialClickTv");
+    }
+    ar.a((Paint)((TextView)localObject1).getPaint(), 0.8F);
     hideActionbarLine();
-    setBackBtn((MenuItem.OnMenuItemClickListener)new j(this));
+    setBackBtn((MenuItem.OnMenuItemClickListener)new k(this));
     setMMTitle("");
-    localObject1 = findViewById(2131310451);
-    p.g(localObject1, "findViewById(R.id.wecoin_recharge_btn)");
-    this.HPj = ((Button)localObject1);
+    localObject1 = findViewById(a.f.wecoin_recharge_btn);
+    p.j(localObject1, "findViewById(R.id.wecoin_recharge_btn)");
+    this.OHr = ((Button)localObject1);
     localObject1 = getWindow();
-    p.g(localObject1, "window");
-    ((Window)localObject1).getDecorView().post((Runnable)new k(this));
-    localObject1 = this.Hwb;
+    p.j(localObject1, "window");
+    ((Window)localObject1).getDecorView().post((Runnable)new l(this));
+    localObject1 = this.OnO;
     if (localObject1 == null) {
-      p.btv("mBalanceView");
+      p.bGy("mBalanceView");
     }
-    ((WcPayMoneyLoadingView)localObject1).cH("0", false);
-    o(Boolean.FALSE);
-    AppMethodBeat.o(212899);
+    ((WcPayMoneyLoadingView)localObject1).cV("0", false);
+    v(Boolean.FALSE);
+    AppMethodBeat.o(202621);
   }
   
   public final void onBackPressed()
   {
-    AppMethodBeat.i(212897);
-    if (this.HPe == null) {
-      p.btv("mViewModel");
+    AppMethodBeat.i(202610);
+    if (this.OHj == null) {
+      p.bGy("mViewModel");
     }
-    WeCoinRechargeViewModel.aeH(8);
+    com.tencent.mm.plugin.wallet.wecoin.model.l.amu(8);
     super.onBackPressed();
-    AppMethodBeat.o(212897);
+    AppMethodBeat.o(202610);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(212895);
+    AppMethodBeat.i(202604);
     super.onCreate(paramBundle);
     initView();
-    paramBundle = ViewModelProviders.of((FragmentActivity)this).get(WeCoinRechargeViewModel.class);
-    p.g(paramBundle, "ViewModelProviders.of(th…rgeViewModel::class.java)");
-    this.HPe = ((WeCoinRechargeViewModel)paramBundle);
-    paramBundle = this.HPe;
+    paramBundle = z.a((FragmentActivity)this).i(com.tencent.mm.plugin.wallet.wecoin.model.l.class);
+    p.j(paramBundle, "ViewModelProviders.of(th…rgeViewModel::class.java)");
+    this.OHj = ((com.tencent.mm.plugin.wallet.wecoin.model.l)paramBundle);
+    paramBundle = this.OHj;
     if (paramBundle == null) {
-      p.btv("mViewModel");
+      p.bGy("mViewModel");
     }
-    ((LiveData)paramBundle.HNS).observe((LifecycleOwner)this, (Observer)new b(this));
-    paramBundle = this.HPe;
+    ((LiveData)paramBundle.OFO).a((androidx.lifecycle.l)this, (s)new b(this));
+    paramBundle = this.OHj;
     if (paramBundle == null) {
-      p.btv("mViewModel");
+      p.bGy("mViewModel");
     }
-    ((LiveData)paramBundle.HNv).observe((LifecycleOwner)this, (Observer)new c(this));
-    paramBundle = this.HPe;
+    ((LiveData)paramBundle.OFr).a((androidx.lifecycle.l)this, (s)new c(this));
+    paramBundle = this.OHj;
     if (paramBundle == null) {
-      p.btv("mViewModel");
+      p.bGy("mViewModel");
     }
-    ((LiveData)paramBundle.HMR).observe((LifecycleOwner)this, (Observer)new d(this));
-    paramBundle = this.HPe;
+    ((LiveData)paramBundle.OEN).a((androidx.lifecycle.l)this, (s)new d(this));
+    paramBundle = this.OHj;
     if (paramBundle == null) {
-      p.btv("mViewModel");
+      p.bGy("mViewModel");
     }
-    ((LiveData)paramBundle.HNU).observe((LifecycleOwner)this, (Observer)new e(this));
-    paramBundle = this.HPe;
+    ((LiveData)paramBundle.OFQ).a((androidx.lifecycle.l)this, (s)new e(this));
+    paramBundle = this.OHj;
     if (paramBundle == null) {
-      p.btv("mViewModel");
+      p.bGy("mViewModel");
     }
-    ((LiveData)paramBundle.HNT).observe((LifecycleOwner)this, (Observer)new f(this));
-    paramBundle = this.HPe;
+    ((LiveData)paramBundle.OFP).a((androidx.lifecycle.l)this, (s)new f(this));
+    paramBundle = this.OHj;
     if (paramBundle == null) {
-      p.btv("mViewModel");
+      p.bGy("mViewModel");
     }
-    ((LiveData)paramBundle.HMQ).observe((LifecycleOwner)this, (Observer)new g(this));
-    paramBundle = this.HPe;
+    ((LiveData)paramBundle.OEM).a((androidx.lifecycle.l)this, (s)new g(this));
+    paramBundle = this.OHj;
     if (paramBundle == null) {
-      p.btv("mViewModel");
+      p.bGy("mViewModel");
     }
-    ((LiveData)paramBundle.HNx).observe((LifecycleOwner)this, (Observer)new h(this));
-    paramBundle = this.HPe;
+    ((LiveData)paramBundle.OFt).a((androidx.lifecycle.l)this, (s)new h(this));
+    paramBundle = this.OHj;
     if (paramBundle == null) {
-      p.btv("mViewModel");
+      p.bGy("mViewModel");
     }
-    ((LiveData)paramBundle.HNV).observe((LifecycleOwner)this, (Observer)new i(this));
-    paramBundle = this.HPe;
+    ((LiveData)paramBundle.OFR).a((androidx.lifecycle.l)this, (s)new i(this));
+    paramBundle = this.OHj;
     if (paramBundle == null) {
-      p.btv("mViewModel");
+      p.bGy("mViewModel");
     }
-    byp localbyp = c.fPL();
-    if (localbyp != null)
+    cgj localcgj = c.gIr();
+    if (localcgj != null)
     {
       Log.i("MicroMsg.WeCoinRechargeViewModel", "load wecoin page info snapshot");
-      c.d("MicroMsg.WeCoinRechargeViewModel", (com.tencent.mm.bw.a)localbyp);
-      paramBundle.HNv.postValue(new com.tencent.mm.plugin.wallet.wecoin.model.f(localbyp.MdX, localbyp.LWJ));
-      paramBundle.HMR.postValue(Long.valueOf(localbyp.LoC));
-      paramBundle.HNT.postValue(localbyp.LWL);
-      paramBundle.HNU.postValue(localbyp.MdW);
-      paramBundle.HNx.postValue(localbyp.LWM);
-      paramBundle.HNW = localbyp;
-      AppMethodBeat.o(212895);
+      c.d("MicroMsg.WeCoinRechargeViewModel", (com.tencent.mm.cd.a)localcgj);
+      paramBundle.OFr.L(new com.tencent.mm.plugin.wallet.wecoin.model.g(localcgj.Tnx, localcgj.Tgi));
+      paramBundle.OEN.L(Long.valueOf(localcgj.SpY));
+      paramBundle.OFP.L(localcgj.Tgk);
+      paramBundle.OFQ.L(localcgj.Tnw);
+      paramBundle.OFt.L(localcgj.Tgl);
+      paramBundle.OFS = localcgj;
+      AppMethodBeat.o(202604);
       return;
     }
-    AppMethodBeat.o(212895);
+    AppMethodBeat.o(202604);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(212898);
+    AppMethodBeat.i(202614);
     super.onDestroy();
-    Object localObject = this.HPe;
+    Object localObject = this.OHj;
     if (localObject == null) {
-      p.btv("mViewModel");
+      p.bGy("mViewModel");
     }
-    localObject = ((WeCoinRechargeViewModel)localObject).HNW;
+    localObject = ((com.tencent.mm.plugin.wallet.wecoin.model.l)localObject).OFS;
     if (localObject != null)
     {
-      p.h(localObject, "response");
+      p.k(localObject, "response");
       Log.d("MicroMsg.WeCoinUtils", "save WecoinPageInfoResponse snapshot");
-      d.i((kotlin.g.a.a)new c.e((byp)localObject));
-      AppMethodBeat.o(212898);
+      d.h((kotlin.g.a.a)new c.e((cgj)localObject));
+      AppMethodBeat.o(202614);
       return;
     }
-    AppMethodBeat.o(212898);
+    AppMethodBeat.o(202614);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(212896);
+    AppMethodBeat.i(202609);
     super.onResume();
-    Object localObject1 = this.HPe;
+    Object localObject1 = this.OHj;
     if (localObject1 == null) {
-      p.btv("mViewModel");
+      p.bGy("mViewModel");
     }
-    Object localObject2 = com.tencent.mm.kernel.g.aAh();
-    p.g(localObject2, "MMKernel.storage()");
-    localObject2 = ((com.tencent.mm.kernel.e)localObject2).azQ().get(ar.a.OhW, Boolean.FALSE);
+    Object localObject2 = com.tencent.mm.kernel.h.aHG();
+    p.j(localObject2, "MMKernel.storage()");
+    localObject2 = ((com.tencent.mm.kernel.f)localObject2).aHp().get(ar.a.Vwm, Boolean.FALSE);
     if (localObject2 == null)
     {
       localObject1 = new t("null cannot be cast to non-null type kotlin.Boolean");
-      AppMethodBeat.o(212896);
+      AppMethodBeat.o(202609);
       throw ((Throwable)localObject1);
     }
     boolean bool = ((Boolean)localObject2).booleanValue();
-    ((WeCoinRechargeViewModel)localObject1).HNV.postValue(Boolean.valueOf(bool));
-    localObject2 = this.HPe;
+    ((com.tencent.mm.plugin.wallet.wecoin.model.l)localObject1).OFR.L(Boolean.valueOf(bool));
+    localObject2 = this.OHj;
     if (localObject2 == null) {
-      p.btv("mViewModel");
+      p.bGy("mViewModel");
     }
     localObject1 = (Context)this;
-    p.h(localObject1, "activity");
-    localObject2 = new WeCoinRechargeViewModel.c((WeCoinRechargeViewModel)localObject2);
-    h.a locala = com.tencent.mm.plugin.wallet.wecoin.model.h.HNL;
-    com.tencent.mm.plugin.wallet.wecoin.model.h.fPG().b((Context)localObject1, (com.tencent.mm.plugin.wallet.wecoin.a.e)localObject2);
-    localObject1 = this.HPe;
+    p.k(localObject1, "activity");
+    localObject2 = new l.c((com.tencent.mm.plugin.wallet.wecoin.model.l)localObject2);
+    k.a locala = com.tencent.mm.plugin.wallet.wecoin.model.k.OFH;
+    com.tencent.mm.plugin.wallet.wecoin.model.k.gIk().b((Context)localObject1, (e)localObject2);
+    localObject1 = this.OHj;
     if (localObject1 == null) {
-      p.btv("mViewModel");
+      p.bGy("mViewModel");
     }
     localObject2 = (com.tencent.mm.vending.e.b)this;
-    p.h(localObject2, "keeper");
-    WeCoinRechargeViewModel.L(1, 0, "");
-    new com.tencent.mm.plugin.wallet.wecoin.b.h().aYI().b((com.tencent.mm.vending.c.a)new WeCoinRechargeViewModel.b((WeCoinRechargeViewModel)localObject1)).a((com.tencent.mm.vending.e.b)localObject2);
-    AppMethodBeat.o(212896);
+    p.k(localObject2, "keeper");
+    com.tencent.mm.plugin.wallet.wecoin.model.l.K(1, 0, "");
+    new i().bhW().b((com.tencent.mm.vending.c.a)new l.b((com.tencent.mm.plugin.wallet.wecoin.model.l)localObject1)).a((com.tencent.mm.vending.e.b)localObject2);
+    AppMethodBeat.o(202609);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -343,236 +368,254 @@ public final class WeCoinRechargeView
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "onChanged", "(Ljava/lang/Boolean;)V"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onChanged", "(Ljava/lang/Boolean;)V"})
   static final class b<T>
-    implements Observer<Boolean>
+    implements s<Boolean>
   {
     b(WeCoinRechargeView paramWeCoinRechargeView) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/wallet/wecoin/model/UserIncomeDetailData;", "onChanged"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/wallet/wecoin/model/UserIncomeDetailData;", "kotlin.jvm.PlatformType", "onChanged"})
   static final class c<T>
-    implements Observer<com.tencent.mm.plugin.wallet.wecoin.model.f>
+    implements s<com.tencent.mm.plugin.wallet.wecoin.model.g>
   {
     c(WeCoinRechargeView paramWeCoinRechargeView) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "onChanged", "(Ljava/lang/Long;)V"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onChanged", "(Ljava/lang/Long;)V"})
   static final class d<T>
-    implements Observer<Long>
+    implements s<Long>
   {
     d(WeCoinRechargeView paramWeCoinRechargeView) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "onChanged"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onChanged"})
   static final class e<T>
-    implements Observer<String>
+    implements s<String>
   {
     e(WeCoinRechargeView paramWeCoinRechargeView) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "onChanged"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onChanged"})
   static final class f<T>
-    implements Observer<String>
+    implements s<String>
   {
     f(WeCoinRechargeView paramWeCoinRechargeView) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/wallet/wecoin/model/CgiRespInfo;", "onChanged"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/wallet/wecoin/model/CgiRespInfo;", "kotlin.jvm.PlatformType", "onChanged"})
   static final class g<T>
-    implements Observer<com.tencent.mm.plugin.wallet.wecoin.model.a>
+    implements s<com.tencent.mm.plugin.wallet.wecoin.model.a>
   {
     g(WeCoinRechargeView paramWeCoinRechargeView) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/CoinBanner;", "onChanged"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/CoinBanner;", "kotlin.jvm.PlatformType", "onChanged"})
   static final class h<T>
-    implements Observer<abq>
+    implements s<abx>
   {
     h(WeCoinRechargeView paramWeCoinRechargeView) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "onChanged", "(Ljava/lang/Boolean;)V"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onChanged", "(Ljava/lang/Boolean;)V"})
   static final class i<T>
-    implements Observer<Boolean>
+    implements s<Boolean>
   {
     i(WeCoinRechargeView paramWeCoinRechargeView) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class j
-    implements MenuItem.OnMenuItemClickListener
+    implements View.OnClickListener
   {
     j(WeCoinRechargeView paramWeCoinRechargeView) {}
     
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(270474);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      WeCoinRechargeView.a(this.OHu, Boolean.FALSE);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(270474);
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  static final class k
+    implements MenuItem.OnMenuItemClickListener
+  {
+    k(WeCoinRechargeView paramWeCoinRechargeView) {}
+    
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(212886);
-      WeCoinRechargeView.a(this.HPm);
-      WeCoinRechargeViewModel.aeH(8);
-      this.HPm.finish();
-      AppMethodBeat.o(212886);
+      AppMethodBeat.i(271612);
+      WeCoinRechargeView.a(this.OHu);
+      com.tencent.mm.plugin.wallet.wecoin.model.l.amu(8);
+      this.OHu.finish();
+      AppMethodBeat.o(271612);
       return false;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-  static final class k
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  static final class l
     implements Runnable
   {
-    k(WeCoinRechargeView paramWeCoinRechargeView) {}
+    l(WeCoinRechargeView paramWeCoinRechargeView) {}
     
     public final void run()
     {
-      AppMethodBeat.i(212887);
-      WeCoinRechargeView.b(this.HPm);
-      AppMethodBeat.o(212887);
+      AppMethodBeat.i(228983);
+      WeCoinRechargeView.b(this.OHu);
+      AppMethodBeat.o(228983);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onClick", "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$showTutorialDialog$1$1"})
-  static final class l
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onClick", "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$showTutorialDialog$1$1"})
+  static final class m
     implements g.a
   {
-    l(com.tencent.mm.ui.widget.a.g paramg, WeCoinRechargeView paramWeCoinRechargeView) {}
+    m(com.tencent.mm.ui.widget.a.g paramg, WeCoinRechargeView paramWeCoinRechargeView) {}
     
     public final void onClick()
     {
-      AppMethodBeat.i(212888);
-      WeCoinRechargeView.a(this.HPm);
-      WeCoinRechargeViewModel.aeH(10);
-      this.HPn.bMo();
-      AppMethodBeat.o(212888);
+      AppMethodBeat.i(276985);
+      WeCoinRechargeView.a(this.OHu);
+      com.tencent.mm.plugin.wallet.wecoin.model.l.amu(10);
+      this.OHv.bYF();
+      AppMethodBeat.o(276985);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateFaqView$1$1"})
-  static final class m
-    implements View.OnClickListener
-  {
-    m(WeCoinRechargeView paramWeCoinRechargeView, String paramString) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(212889);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateFaqView$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      WeCoinRechargeView.a(this.HPm);
-      WeCoinRechargeViewModel.aeH(5);
-      paramView = new Intent();
-      paramView.putExtra("rawUrl", this.pFh);
-      paramView.putExtra("showShare", false);
-      paramView.putExtra(e.p.OzJ, true);
-      com.tencent.mm.wallet_core.ui.f.aA((Context)this.HPm.getContext(), paramView);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateFaqView$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(212889);
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateIncomeBalance$1$1"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateFaqView$1$1"})
   static final class n
     implements View.OnClickListener
   {
-    n(WeCoinRechargeView paramWeCoinRechargeView, LinearLayout paramLinearLayout) {}
+    n(WeCoinRechargeView paramWeCoinRechargeView, String paramString) {}
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(212890);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateIncomeBalance$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-      WeCoinRechargeView.a(this.HPm);
-      WeCoinRechargeViewModel.aeH(7);
-      localObject = new Intent((Context)this.HPm.getContext(), WeCoinIncomeDetailView.class);
-      ((Intent)localObject).putExtra("wecoin_enter_encash_business_kv_data", (Parcelable)new WecoinEncashKVData(2, "", ""));
-      paramView = this.HPm;
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateIncomeBalance$$inlined$apply$lambda$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramView, "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateIncomeBalance$$inlined$apply$lambda$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateIncomeBalance$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(212890);
+      AppMethodBeat.i(219638);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateFaqView$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      WeCoinRechargeView.a(this.OHu);
+      com.tencent.mm.plugin.wallet.wecoin.model.l.amu(5);
+      paramView = new Intent();
+      paramView.putExtra("rawUrl", this.sPR);
+      paramView.putExtra("showShare", false);
+      paramView.putExtra(f.r.VSX, true);
+      com.tencent.mm.wallet_core.ui.g.aJ((Context)this.OHu.getContext(), paramView);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateFaqView$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(219638);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateRechargeButtonState$1$1"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateIncomeBalance$1$1"})
   static final class o
     implements View.OnClickListener
   {
-    o(WeCoinRechargeView paramWeCoinRechargeView) {}
+    o(WeCoinRechargeView paramWeCoinRechargeView, LinearLayout paramLinearLayout) {}
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(212891);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateRechargeButtonState$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      if (!c.isFastClick())
-      {
-        WeCoinRechargeView.a(this.HPm);
-        WeCoinRechargeViewModel.aeH(4);
-        WeCoinRechargeView.c(this.HPm);
-      }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateRechargeButtonState$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(212891);
+      AppMethodBeat.i(214792);
+      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateIncomeBalance$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+      WeCoinRechargeView.a(this.OHu);
+      com.tencent.mm.plugin.wallet.wecoin.model.l.amu(7);
+      localObject = new Intent((Context)this.OHu.getContext(), WeCoinIncomeDetailView.class);
+      ((Intent)localObject).putExtra("wecoin_enter_encash_business_kv_data", (Parcelable)new WecoinEncashKVData(2, "", ""));
+      paramView = this.OHu;
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateIncomeBalance$$inlined$apply$lambda$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramView, "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateIncomeBalance$$inlined$apply$lambda$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateIncomeBalance$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(214792);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateRightOptionMenu$1$func$1"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateRechargeButtonState$1$1"})
   static final class p
+    implements View.OnClickListener
+  {
+    p(WeCoinRechargeView paramWeCoinRechargeView) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(277678);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateRechargeButtonState$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      if (!c.isFastClick())
+      {
+        WeCoinRechargeView.a(this.OHu);
+        com.tencent.mm.plugin.wallet.wecoin.model.l.amu(4);
+        WeCoinRechargeView.c(this.OHu);
+      }
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateRechargeButtonState$$inlined$let$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(277678);
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateRightOptionMenu$1$func$1"})
+  static final class q
     extends q
     implements kotlin.g.a.a<x>
   {
-    p(WeCoinRechargeView paramWeCoinRechargeView, String paramString)
+    q(WeCoinRechargeView paramWeCoinRechargeView, String paramString)
     {
       super();
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick", "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateRightOptionMenu$1$1"})
-  static final class q
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick", "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateRightOptionMenu$1$1"})
+  static final class r
     implements MenuItem.OnMenuItemClickListener
   {
-    q(kotlin.g.a.a parama, WeCoinRechargeView paramWeCoinRechargeView, String paramString) {}
+    r(kotlin.g.a.a parama, WeCoinRechargeView paramWeCoinRechargeView, String paramString) {}
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(212893);
-      WeCoinRechargeView.a(this.HPm);
-      WeCoinRechargeViewModel.aeH(1);
-      com.tencent.mm.plugin.report.service.h.CyF.a(21658, new Object[] { Integer.valueOf(1) });
-      this.qgW.invoke();
-      AppMethodBeat.o(212893);
+      AppMethodBeat.i(267746);
+      WeCoinRechargeView.a(this.OHu);
+      com.tencent.mm.plugin.wallet.wecoin.model.l.amu(1);
+      com.tencent.mm.plugin.report.service.h.IzE.a(21658, new Object[] { Integer.valueOf(1) });
+      this.tCS.invoke();
+      AppMethodBeat.o(267746);
       return true;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateTopBannerView$1$1"})
-  static final class r
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateTopBannerView$1$1"})
+  static final class s
     implements View.OnClickListener
   {
-    r(abq paramabq, WeCoinRechargeView paramWeCoinRechargeView) {}
+    s(abx paramabx, WeCoinRechargeView paramWeCoinRechargeView) {}
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(212894);
+      AppMethodBeat.i(274532);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateTopBannerView$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      WeCoinRechargeView.a(this.HPm);
-      WeCoinRechargeViewModel.aeH(3);
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateTopBannerView$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      WeCoinRechargeView.a(this.OHu);
+      com.tencent.mm.plugin.wallet.wecoin.model.l.amu(3);
       paramView = new Intent();
-      paramView.putExtra("rawUrl", this.HPd.url);
-      com.tencent.mm.wallet_core.ui.f.aA((Context)this.HPm, paramView);
+      paramView.putExtra("rawUrl", this.OHi.url);
+      com.tencent.mm.wallet_core.ui.g.aJ((Context)this.OHu, paramView);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/wecoin/ui/WeCoinRechargeView$updateTopBannerView$$inlined$apply$lambda$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(212894);
+      AppMethodBeat.o(274532);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.wecoin.ui.WeCoinRechargeView
  * JD-Core Version:    0.7.0.1
  */

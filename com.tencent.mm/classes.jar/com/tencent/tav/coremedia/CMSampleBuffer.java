@@ -11,12 +11,12 @@ public class CMSampleBuffer
   
   public CMSampleBuffer(CMSampleState paramCMSampleState)
   {
-    AppMethodBeat.i(199391);
+    AppMethodBeat.i(202874);
     this.state = paramCMSampleState;
     this.state.setNewFrame(false);
     this.texture = null;
     this.sampleByteBuffer = null;
-    AppMethodBeat.o(199391);
+    AppMethodBeat.o(202874);
   }
   
   public CMSampleBuffer(CMSampleState paramCMSampleState, TextureInfo paramTextureInfo)
@@ -28,12 +28,12 @@ public class CMSampleBuffer
   
   public CMSampleBuffer(CMSampleState paramCMSampleState, TextureInfo paramTextureInfo, boolean paramBoolean)
   {
-    AppMethodBeat.i(199392);
+    AppMethodBeat.i(202881);
     this.state = paramCMSampleState;
     this.state.setNewFrame(paramBoolean);
     this.texture = paramTextureInfo;
     this.sampleByteBuffer = null;
-    AppMethodBeat.o(199392);
+    AppMethodBeat.o(202881);
   }
   
   public CMSampleBuffer(CMSampleState paramCMSampleState, ByteBuffer paramByteBuffer)
@@ -45,47 +45,47 @@ public class CMSampleBuffer
   
   public CMSampleBuffer(CMSampleState paramCMSampleState, ByteBuffer paramByteBuffer, boolean paramBoolean)
   {
-    AppMethodBeat.i(199393);
+    AppMethodBeat.i(202886);
     this.state = paramCMSampleState;
     this.state.setNewFrame(paramBoolean);
     this.sampleByteBuffer = paramByteBuffer;
     this.texture = null;
-    AppMethodBeat.o(199393);
+    AppMethodBeat.o(202886);
   }
   
   public CMSampleBuffer(CMTime paramCMTime)
   {
     this(new CMSampleState(paramCMTime));
-    AppMethodBeat.i(199394);
-    AppMethodBeat.o(199394);
+    AppMethodBeat.i(202889);
+    AppMethodBeat.o(202889);
   }
   
   public CMSampleBuffer(CMTime paramCMTime, TextureInfo paramTextureInfo)
   {
     this(new CMSampleState(paramCMTime), paramTextureInfo);
-    AppMethodBeat.i(199395);
-    AppMethodBeat.o(199395);
+    AppMethodBeat.i(202890);
+    AppMethodBeat.o(202890);
   }
   
   public CMSampleBuffer(CMTime paramCMTime, TextureInfo paramTextureInfo, boolean paramBoolean)
   {
     this(new CMSampleState(paramCMTime), paramTextureInfo, paramBoolean);
-    AppMethodBeat.i(199396);
-    AppMethodBeat.o(199396);
+    AppMethodBeat.i(202891);
+    AppMethodBeat.o(202891);
   }
   
   public CMSampleBuffer(CMTime paramCMTime, ByteBuffer paramByteBuffer)
   {
     this(new CMSampleState(paramCMTime), paramByteBuffer);
-    AppMethodBeat.i(199397);
-    AppMethodBeat.o(199397);
+    AppMethodBeat.i(202894);
+    AppMethodBeat.o(202894);
   }
   
   public CMSampleBuffer(CMTime paramCMTime, ByteBuffer paramByteBuffer, boolean paramBoolean)
   {
     this(new CMSampleState(paramCMTime), paramByteBuffer, paramBoolean);
-    AppMethodBeat.i(199398);
-    AppMethodBeat.o(199398);
+    AppMethodBeat.i(202897);
+    AppMethodBeat.o(202897);
   }
   
   public ByteBuffer getSampleByteBuffer()
@@ -105,25 +105,25 @@ public class CMSampleBuffer
   
   public CMTime getTime()
   {
-    AppMethodBeat.i(199399);
+    AppMethodBeat.i(202900);
     CMTime localCMTime = this.state.getTime();
-    AppMethodBeat.o(199399);
+    AppMethodBeat.o(202900);
     return localCMTime;
   }
   
   public boolean isNewFrame()
   {
-    AppMethodBeat.i(199400);
+    AppMethodBeat.i(202903);
     boolean bool = this.state.isNewFrame();
-    AppMethodBeat.o(199400);
+    AppMethodBeat.o(202903);
     return bool;
   }
   
   public void setNewFrame(boolean paramBoolean)
   {
-    AppMethodBeat.i(199401);
+    AppMethodBeat.i(202904);
     this.state.setNewFrame(paramBoolean);
-    AppMethodBeat.o(199401);
+    AppMethodBeat.o(202904);
   }
   
   public void setSampleByteBuffer(ByteBuffer paramByteBuffer)
@@ -133,15 +133,15 @@ public class CMSampleBuffer
   
   public String toString()
   {
-    AppMethodBeat.i(199402);
+    AppMethodBeat.i(202905);
     String str = "CMSampleBuffer{, state=" + this.state + ", texture=" + this.texture + ", sampleByteBuffer=" + this.sampleByteBuffer + '}';
-    AppMethodBeat.o(199402);
+    AppMethodBeat.o(202905);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.coremedia.CMSampleBuffer
  * JD-Core Version:    0.7.0.1
  */

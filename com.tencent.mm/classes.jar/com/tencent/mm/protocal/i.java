@@ -11,21 +11,21 @@ public abstract interface i
 {
   public abstract boolean a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong);
   
-  public abstract byte[] aZa();
+  public abstract void ay(byte[] paramArrayOfByte);
   
-  public abstract byte[] aZc();
+  public abstract byte[] biI();
   
-  public abstract String aZd();
+  public abstract String biJ();
   
-  public abstract byte[] aZs();
+  public abstract String biK();
   
-  public abstract String aZt();
+  public abstract int biL();
   
-  public abstract String aZu();
+  public abstract byte[] bip();
   
-  public abstract int aZv();
+  public abstract byte[] bir();
   
-  public abstract void ao(byte[] paramArrayOfByte);
+  public abstract String bis();
   
   public abstract byte[] getAuthResponse();
   
@@ -39,7 +39,7 @@ public abstract interface i
   
   public abstract int getUin();
   
-  public abstract byte[] qe(int paramInt);
+  public abstract byte[] sE(int paramInt);
   
   public abstract void setErrMsg(String paramString);
   
@@ -54,7 +54,7 @@ public abstract interface i
       attachInterface(this, "com.tencent.mm.protocal.IMMBaseResp_AIDL");
     }
     
-    public static i K(IBinder paramIBinder)
+    public static i O(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -66,9 +66,9 @@ public abstract interface i
       return new a(paramIBinder);
     }
     
-    public static i gtK()
+    public static i hpa()
     {
-      return a.Kzl;
+      return a.RBb;
     }
     
     public IBinder asBinder()
@@ -97,7 +97,7 @@ public abstract interface i
         }
       case 2: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramParcel1 = aZa();
+        paramParcel1 = bip();
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
@@ -131,19 +131,19 @@ public abstract interface i
         return true;
       case 8: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramParcel1 = qe(paramParcel1.readInt());
+        paramParcel1 = sE(paramParcel1.readInt());
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
       case 9: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramParcel1 = aZs();
+        paramParcel1 = biI();
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
       case 10: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramParcel1 = aZc();
+        paramParcel1 = bir();
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
@@ -155,7 +155,7 @@ public abstract interface i
         return true;
       case 12: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramParcel1 = aZd();
+        paramParcel1 = bis();
         paramParcel2.writeNoException();
         paramParcel2.writeString(paramParcel1);
         return true;
@@ -167,19 +167,19 @@ public abstract interface i
         return true;
       case 14: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramParcel1 = aZt();
+        paramParcel1 = biJ();
         paramParcel2.writeNoException();
         paramParcel2.writeString(paramParcel1);
         return true;
       case 15: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramParcel1 = aZu();
+        paramParcel1 = biK();
         paramParcel2.writeNoException();
         paramParcel2.writeString(paramParcel1);
         return true;
       case 16: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramInt1 = aZv();
+        paramInt1 = biL();
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
@@ -191,7 +191,7 @@ public abstract interface i
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-      ao(paramParcel1.createByteArray());
+      ay(paramParcel1.createByteArray());
       paramParcel2.writeNoException();
       return true;
     }
@@ -199,7 +199,7 @@ public abstract interface i
     static final class a
       implements i
     {
-      public static i Kzl;
+      public static i RBb;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -242,9 +242,9 @@ public abstract interface i
         //   59: iconst_0
         //   60: invokeinterface 58 5 0
         //   65: ifne +42 -> 107
-        //   68: invokestatic 62	com/tencent/mm/protocal/i$a:gtK	()Lcom/tencent/mm/protocal/i;
+        //   68: invokestatic 62	com/tencent/mm/protocal/i$a:hpa	()Lcom/tencent/mm/protocal/i;
         //   71: ifnull +36 -> 107
-        //   74: invokestatic 62	com/tencent/mm/protocal/i$a:gtK	()Lcom/tencent/mm/protocal/i;
+        //   74: invokestatic 62	com/tencent/mm/protocal/i$a:hpa	()Lcom/tencent/mm/protocal/i;
         //   77: iload_1
         //   78: aload_2
         //   79: aload_3
@@ -302,82 +302,37 @@ public abstract interface i
         //   107	118	146	finally
       }
       
-      public final byte[] aZa()
+      public final IBinder asBinder()
       {
-        AppMethodBeat.i(133071);
+        return this.mRemote;
+      }
+      
+      public final void ay(byte[] paramArrayOfByte)
+      {
+        AppMethodBeat.i(194276);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (i.a.gtK() != null))
+          localParcel1.writeByteArray(paramArrayOfByte);
+          if ((!this.mRemote.transact(18, localParcel1, localParcel2, 0)) && (i.a.hpa() != null))
           {
-            arrayOfByte = i.a.gtK().aZa();
-            return arrayOfByte;
+            i.a.hpa().ay(paramArrayOfByte);
+            return;
           }
           localParcel2.readException();
-          byte[] arrayOfByte = localParcel2.createByteArray();
-          return arrayOfByte;
+          return;
         }
         finally
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(133071);
+          AppMethodBeat.o(194276);
         }
       }
       
-      public final byte[] aZc()
-      {
-        AppMethodBeat.i(133079);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-          if ((!this.mRemote.transact(10, localParcel1, localParcel2, 0)) && (i.a.gtK() != null))
-          {
-            arrayOfByte = i.a.gtK().aZc();
-            return arrayOfByte;
-          }
-          localParcel2.readException();
-          byte[] arrayOfByte = localParcel2.createByteArray();
-          return arrayOfByte;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(133079);
-        }
-      }
-      
-      public final String aZd()
-      {
-        AppMethodBeat.i(133081);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-          if ((!this.mRemote.transact(12, localParcel1, localParcel2, 0)) && (i.a.gtK() != null))
-          {
-            str = i.a.gtK().aZd();
-            return str;
-          }
-          localParcel2.readException();
-          String str = localParcel2.readString();
-          return str;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(133081);
-        }
-      }
-      
-      public final byte[] aZs()
+      public final byte[] biI()
       {
         AppMethodBeat.i(133078);
         Parcel localParcel1 = Parcel.obtain();
@@ -385,9 +340,9 @@ public abstract interface i
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-          if ((!this.mRemote.transact(9, localParcel1, localParcel2, 0)) && (i.a.gtK() != null))
+          if ((!this.mRemote.transact(9, localParcel1, localParcel2, 0)) && (i.a.hpa() != null))
           {
-            arrayOfByte = i.a.gtK().aZs();
+            arrayOfByte = i.a.hpa().biI();
             return arrayOfByte;
           }
           localParcel2.readException();
@@ -402,7 +357,7 @@ public abstract interface i
         }
       }
       
-      public final String aZt()
+      public final String biJ()
       {
         AppMethodBeat.i(133083);
         Parcel localParcel1 = Parcel.obtain();
@@ -410,9 +365,9 @@ public abstract interface i
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-          if ((!this.mRemote.transact(14, localParcel1, localParcel2, 0)) && (i.a.gtK() != null))
+          if ((!this.mRemote.transact(14, localParcel1, localParcel2, 0)) && (i.a.hpa() != null))
           {
-            str = i.a.gtK().aZt();
+            str = i.a.hpa().biJ();
             return str;
           }
           localParcel2.readException();
@@ -427,7 +382,7 @@ public abstract interface i
         }
       }
       
-      public final String aZu()
+      public final String biK()
       {
         AppMethodBeat.i(133084);
         Parcel localParcel1 = Parcel.obtain();
@@ -435,9 +390,9 @@ public abstract interface i
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-          if ((!this.mRemote.transact(15, localParcel1, localParcel2, 0)) && (i.a.gtK() != null))
+          if ((!this.mRemote.transact(15, localParcel1, localParcel2, 0)) && (i.a.hpa() != null))
           {
-            str = i.a.gtK().aZu();
+            str = i.a.hpa().biK();
             return str;
           }
           localParcel2.readException();
@@ -452,7 +407,7 @@ public abstract interface i
         }
       }
       
-      public final int aZv()
+      public final int biL()
       {
         AppMethodBeat.i(133085);
         Parcel localParcel1 = Parcel.obtain();
@@ -460,9 +415,9 @@ public abstract interface i
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-          if ((!this.mRemote.transact(16, localParcel1, localParcel2, 0)) && (i.a.gtK() != null))
+          if ((!this.mRemote.transact(16, localParcel1, localParcel2, 0)) && (i.a.hpa() != null))
           {
-            i = i.a.gtK().aZv();
+            i = i.a.hpa().biL();
             return i;
           }
           localParcel2.readException();
@@ -477,34 +432,79 @@ public abstract interface i
         }
       }
       
-      public final void ao(byte[] paramArrayOfByte)
+      public final byte[] bip()
       {
-        AppMethodBeat.i(197127);
+        AppMethodBeat.i(133071);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-          localParcel1.writeByteArray(paramArrayOfByte);
-          if ((!this.mRemote.transact(18, localParcel1, localParcel2, 0)) && (i.a.gtK() != null))
+          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (i.a.hpa() != null))
           {
-            i.a.gtK().ao(paramArrayOfByte);
-            return;
+            arrayOfByte = i.a.hpa().bip();
+            return arrayOfByte;
           }
           localParcel2.readException();
-          return;
+          byte[] arrayOfByte = localParcel2.createByteArray();
+          return arrayOfByte;
         }
         finally
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(197127);
+          AppMethodBeat.o(133071);
         }
       }
       
-      public final IBinder asBinder()
+      public final byte[] bir()
       {
-        return this.mRemote;
+        AppMethodBeat.i(133079);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+          if ((!this.mRemote.transact(10, localParcel1, localParcel2, 0)) && (i.a.hpa() != null))
+          {
+            arrayOfByte = i.a.hpa().bir();
+            return arrayOfByte;
+          }
+          localParcel2.readException();
+          byte[] arrayOfByte = localParcel2.createByteArray();
+          return arrayOfByte;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(133079);
+        }
+      }
+      
+      public final String bis()
+      {
+        AppMethodBeat.i(133081);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
+          if ((!this.mRemote.transact(12, localParcel1, localParcel2, 0)) && (i.a.hpa() != null))
+          {
+            str = i.a.hpa().bis();
+            return str;
+          }
+          localParcel2.readException();
+          String str = localParcel2.readString();
+          return str;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(133081);
+        }
       }
       
       public final byte[] getAuthResponse()
@@ -515,9 +515,9 @@ public abstract interface i
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-          if ((!this.mRemote.transact(17, localParcel1, localParcel2, 0)) && (i.a.gtK() != null))
+          if ((!this.mRemote.transact(17, localParcel1, localParcel2, 0)) && (i.a.hpa() != null))
           {
-            arrayOfByte = i.a.gtK().getAuthResponse();
+            arrayOfByte = i.a.hpa().getAuthResponse();
             return arrayOfByte;
           }
           localParcel2.readException();
@@ -540,9 +540,9 @@ public abstract interface i
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-          if ((!this.mRemote.transact(13, localParcel1, localParcel2, 0)) && (i.a.gtK() != null))
+          if ((!this.mRemote.transact(13, localParcel1, localParcel2, 0)) && (i.a.hpa() != null))
           {
-            i = i.a.gtK().getCmdId();
+            i = i.a.hpa().getCmdId();
             return i;
           }
           localParcel2.readException();
@@ -565,9 +565,9 @@ public abstract interface i
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-          if ((!this.mRemote.transact(6, localParcel1, localParcel2, 0)) && (i.a.gtK() != null))
+          if ((!this.mRemote.transact(6, localParcel1, localParcel2, 0)) && (i.a.hpa() != null))
           {
-            str = i.a.gtK().getErrMsg();
+            str = i.a.hpa().getErrMsg();
             return str;
           }
           localParcel2.readException();
@@ -590,9 +590,9 @@ public abstract interface i
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-          if ((!this.mRemote.transact(5, localParcel1, localParcel2, 0)) && (i.a.gtK() != null))
+          if ((!this.mRemote.transact(5, localParcel1, localParcel2, 0)) && (i.a.hpa() != null))
           {
-            i = i.a.gtK().getHeadExtFlags();
+            i = i.a.hpa().getHeadExtFlags();
             return i;
           }
           localParcel2.readException();
@@ -615,9 +615,9 @@ public abstract interface i
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-          if ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (i.a.gtK() != null))
+          if ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (i.a.hpa() != null))
           {
-            i = i.a.gtK().getRetCode();
+            i = i.a.hpa().getRetCode();
             return i;
           }
           localParcel2.readException();
@@ -640,9 +640,9 @@ public abstract interface i
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-          if ((!this.mRemote.transact(11, localParcel1, localParcel2, 0)) && (i.a.gtK() != null))
+          if ((!this.mRemote.transact(11, localParcel1, localParcel2, 0)) && (i.a.hpa() != null))
           {
-            i = i.a.gtK().getUin();
+            i = i.a.hpa().getUin();
             return i;
           }
           localParcel2.readException();
@@ -657,7 +657,7 @@ public abstract interface i
         }
       }
       
-      public final byte[] qe(int paramInt)
+      public final byte[] sE(int paramInt)
       {
         AppMethodBeat.i(133077);
         Parcel localParcel1 = Parcel.obtain();
@@ -666,9 +666,9 @@ public abstract interface i
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
           localParcel1.writeInt(paramInt);
-          if ((!this.mRemote.transact(8, localParcel1, localParcel2, 0)) && (i.a.gtK() != null))
+          if ((!this.mRemote.transact(8, localParcel1, localParcel2, 0)) && (i.a.hpa() != null))
           {
-            arrayOfByte = i.a.gtK().qe(paramInt);
+            arrayOfByte = i.a.hpa().sE(paramInt);
             return arrayOfByte;
           }
           localParcel2.readException();
@@ -692,9 +692,9 @@ public abstract interface i
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
           localParcel1.writeString(paramString);
-          if ((!this.mRemote.transact(7, localParcel1, localParcel2, 0)) && (i.a.gtK() != null))
+          if ((!this.mRemote.transact(7, localParcel1, localParcel2, 0)) && (i.a.hpa() != null))
           {
-            i.a.gtK().setErrMsg(paramString);
+            i.a.hpa().setErrMsg(paramString);
             return;
           }
           localParcel2.readException();
@@ -717,9 +717,9 @@ public abstract interface i
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseResp_AIDL");
           localParcel1.writeInt(paramInt);
-          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (i.a.gtK() != null))
+          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (i.a.hpa() != null))
           {
-            i.a.gtK().setRetCode(paramInt);
+            i.a.hpa().setRetCode(paramInt);
             return;
           }
           localParcel2.readException();
@@ -737,7 +737,7 @@ public abstract interface i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.i
  * JD-Core Version:    0.7.0.1
  */

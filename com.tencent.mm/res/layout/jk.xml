@@ -1,8 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/a9k" android:background="@color/fm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="200.0dip">
-        <ImageView android:id="@id/a9l" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
-        <ProgressBar android:layout_gravity="center" android:id="@id/j59" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a62" />
-    </FrameLayout>
-</FrameLayout>
+<com.tencent.mm.ui.widget.WXActionMenuView android:id="@id/d_o" android:layout_width="@dimen/b9" android:layout_height="@dimen/b9"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

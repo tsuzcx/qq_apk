@@ -188,35 +188,18 @@ public final class c
     //   44	49	226	java/lang/Exception
   }
   
-  public static boolean ak(File paramFile)
-  {
-    AppMethodBeat.i(219074);
-    try
-    {
-      deleteAll(paramFile);
-      AppMethodBeat.o(219074);
-      return true;
-    }
-    catch (Exception localException)
-    {
-      Log.i("FileUtils", String.format("safeDeleteAll all files.(%s)", new Object[] { paramFile.getAbsolutePath() }));
-      AppMethodBeat.o(219074);
-    }
-    return false;
-  }
-  
   /* Error */
-  public static boolean b(java.io.InputStream paramInputStream, File paramFile)
+  public static boolean a(java.io.InputStream paramInputStream, File paramFile)
   {
     // Byte code:
-    //   0: ldc 118
+    //   0: ldc 98
     //   2: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
     //   6: ifnonnull +17 -> 23
     //   9: ldc 26
-    //   11: ldc 120
+    //   11: ldc 100
     //   13: invokestatic 51	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   16: ldc 118
+    //   16: ldc 98
     //   18: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   21: iconst_0
     //   22: ireturn
@@ -246,7 +229,7 @@ public final class c
     //   63: astore_3
     //   64: aload_0
     //   65: aload_3
-    //   66: invokevirtual 123	java/io/InputStream:read	([B)I
+    //   66: invokevirtual 103	java/io/InputStream:read	([B)I
     //   69: istore_2
     //   70: iload_2
     //   71: iconst_m1
@@ -263,7 +246,7 @@ public final class c
     //   89: ldc 26
     //   91: new 28	java/lang/StringBuilder
     //   94: dup
-    //   95: ldc 125
+    //   95: ldc 105
     //   97: invokespecial 34	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   100: aload 4
     //   102: invokevirtual 38	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -274,7 +257,7 @@ public final class c
     //   115: invokestatic 91	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   118: aload_0
     //   119: invokestatic 91	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
-    //   122: ldc 118
+    //   122: ldc 98
     //   124: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   127: iconst_0
     //   128: ireturn
@@ -284,7 +267,7 @@ public final class c
     //   134: invokestatic 91	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   137: aload_0
     //   138: invokestatic 91	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
-    //   141: ldc 118
+    //   141: ldc 98
     //   143: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   146: iconst_1
     //   147: ireturn
@@ -293,7 +276,7 @@ public final class c
     //   150: invokestatic 91	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   153: aload_0
     //   154: invokestatic 91	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
-    //   157: ldc 118
+    //   157: ldc 98
     //   159: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   162: aload_1
     //   163: athrow
@@ -337,7 +320,24 @@ public final class c
     //   50	59	174	java/lang/Exception
   }
   
-  public static boolean bsB(String paramString)
+  public static boolean ae(File paramFile)
+  {
+    AppMethodBeat.i(196483);
+    try
+    {
+      deleteAll(paramFile);
+      AppMethodBeat.o(196483);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      Log.i("FileUtils", String.format("safeDeleteAll all files.(%s)", new Object[] { paramFile.getAbsolutePath() }));
+      AppMethodBeat.o(196483);
+    }
+    return false;
+  }
+  
+  public static boolean bFA(String paramString)
   {
     AppMethodBeat.i(156996);
     try
@@ -358,47 +358,47 @@ public final class c
   public static boolean copyFile(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: ldc 136
+    //   0: ldc 135
     //   2: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: new 77	java/io/FileInputStream
     //   8: dup
     //   9: aload_0
-    //   10: invokespecial 137	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   10: invokespecial 136	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   13: astore_2
     //   14: aload_2
-    //   15: invokevirtual 141	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   15: invokevirtual 140	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
     //   18: astore 6
     //   20: new 67	java/io/FileOutputStream
     //   23: dup
     //   24: aload_1
-    //   25: invokespecial 142	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   25: invokespecial 141	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   28: astore_3
     //   29: aload_3
-    //   30: invokevirtual 143	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   30: invokevirtual 142	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
     //   33: astore 4
     //   35: aload 4
     //   37: aload 6
     //   39: lconst_0
     //   40: aload 6
-    //   42: invokevirtual 149	java/nio/channels/FileChannel:size	()J
-    //   45: invokevirtual 153	java/nio/channels/FileChannel:transferFrom	(Ljava/nio/channels/ReadableByteChannel;JJ)J
+    //   42: invokevirtual 148	java/nio/channels/FileChannel:size	()J
+    //   45: invokevirtual 152	java/nio/channels/FileChannel:transferFrom	(Ljava/nio/channels/ReadableByteChannel;JJ)J
     //   48: pop2
     //   49: aload 4
     //   51: iconst_1
-    //   52: invokevirtual 157	java/nio/channels/FileChannel:force	(Z)V
+    //   52: invokevirtual 156	java/nio/channels/FileChannel:force	(Z)V
     //   55: aload_2
-    //   56: invokevirtual 158	java/io/FileInputStream:close	()V
+    //   56: invokevirtual 157	java/io/FileInputStream:close	()V
     //   59: aload_3
-    //   60: invokevirtual 159	java/io/FileOutputStream:close	()V
+    //   60: invokevirtual 158	java/io/FileOutputStream:close	()V
     //   63: aload 6
     //   65: ifnull +8 -> 73
     //   68: aload 6
-    //   70: invokevirtual 160	java/nio/channels/FileChannel:close	()V
+    //   70: invokevirtual 159	java/nio/channels/FileChannel:close	()V
     //   73: aload 4
     //   75: ifnull +8 -> 83
     //   78: aload 4
-    //   80: invokevirtual 160	java/nio/channels/FileChannel:close	()V
-    //   83: ldc 136
+    //   80: invokevirtual 159	java/nio/channels/FileChannel:close	()V
+    //   83: ldc 135
     //   85: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   88: iconst_1
     //   89: ireturn
@@ -412,14 +412,14 @@ public final class c
     //   99: aconst_null
     //   100: astore 6
     //   102: ldc 26
-    //   104: ldc 162
+    //   104: ldc 161
     //   106: iconst_4
     //   107: anewarray 4	java/lang/Object
     //   110: dup
     //   111: iconst_0
     //   112: aload 5
-    //   114: invokevirtual 166	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   117: invokevirtual 171	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   114: invokevirtual 165	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   117: invokevirtual 170	java/lang/Class:getSimpleName	()Ljava/lang/String;
     //   120: aastore
     //   121: dup
     //   122: iconst_1
@@ -434,25 +434,25 @@ public final class c
     //   134: iconst_3
     //   135: aload_1
     //   136: aastore
-    //   137: invokestatic 113	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   137: invokestatic 122	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   140: invokestatic 51	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   143: aload 4
     //   145: ifnull +8 -> 153
     //   148: aload 4
-    //   150: invokevirtual 158	java/io/FileInputStream:close	()V
+    //   150: invokevirtual 157	java/io/FileInputStream:close	()V
     //   153: aload_2
     //   154: ifnull +7 -> 161
     //   157: aload_2
-    //   158: invokevirtual 159	java/io/FileOutputStream:close	()V
+    //   158: invokevirtual 158	java/io/FileOutputStream:close	()V
     //   161: aload 6
     //   163: ifnull +8 -> 171
     //   166: aload 6
-    //   168: invokevirtual 160	java/nio/channels/FileChannel:close	()V
+    //   168: invokevirtual 159	java/nio/channels/FileChannel:close	()V
     //   171: aload_3
     //   172: ifnull +7 -> 179
     //   175: aload_3
-    //   176: invokevirtual 160	java/nio/channels/FileChannel:close	()V
-    //   179: ldc 136
+    //   176: invokevirtual 159	java/nio/channels/FileChannel:close	()V
+    //   179: ldc 135
     //   181: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   184: iconst_0
     //   185: ireturn
@@ -468,20 +468,20 @@ public final class c
     //   197: aload 4
     //   199: ifnull +8 -> 207
     //   202: aload 4
-    //   204: invokevirtual 158	java/io/FileInputStream:close	()V
+    //   204: invokevirtual 157	java/io/FileInputStream:close	()V
     //   207: aload_2
     //   208: ifnull +7 -> 215
     //   211: aload_2
-    //   212: invokevirtual 159	java/io/FileOutputStream:close	()V
+    //   212: invokevirtual 158	java/io/FileOutputStream:close	()V
     //   215: aload 6
     //   217: ifnull +8 -> 225
     //   220: aload 6
-    //   222: invokevirtual 160	java/nio/channels/FileChannel:close	()V
+    //   222: invokevirtual 159	java/nio/channels/FileChannel:close	()V
     //   225: aload_3
     //   226: ifnull +7 -> 233
     //   229: aload_3
-    //   230: invokevirtual 160	java/nio/channels/FileChannel:close	()V
-    //   233: ldc 136
+    //   230: invokevirtual 159	java/nio/channels/FileChannel:close	()V
+    //   233: ldc 135
     //   235: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   238: aload_0
     //   239: athrow
@@ -702,30 +702,30 @@ public final class c
   }
   
   /* Error */
-  public static boolean g(File paramFile1, File paramFile2)
+  private static boolean f(File paramFile1, File paramFile2)
   {
     // Byte code:
-    //   0: ldc 187
+    //   0: ldc 186
     //   2: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: new 77	java/io/FileInputStream
     //   8: dup
     //   9: aload_0
-    //   10: invokespecial 188	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   10: invokespecial 187	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   13: astore 5
-    //   15: new 190	java/io/BufferedInputStream
+    //   15: new 189	java/io/BufferedInputStream
     //   18: dup
     //   19: aload 5
-    //   21: invokespecial 193	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   21: invokespecial 192	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   24: astore 4
     //   26: new 67	java/io/FileOutputStream
     //   29: dup
     //   30: aload_1
     //   31: invokespecial 70	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   34: astore_3
-    //   35: new 195	java/io/BufferedOutputStream
+    //   35: new 194	java/io/BufferedOutputStream
     //   38: dup
     //   39: aload_3
-    //   40: invokespecial 198	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   40: invokespecial 197	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   43: astore_0
     //   44: aload_0
     //   45: astore 9
@@ -748,7 +748,7 @@ public final class c
     //   76: astore 6
     //   78: aload 4
     //   80: aload_1
-    //   81: invokevirtual 199	java/io/BufferedInputStream:read	([B)I
+    //   81: invokevirtual 198	java/io/BufferedInputStream:read	([B)I
     //   84: istore_2
     //   85: iload_2
     //   86: iconst_m1
@@ -765,7 +765,7 @@ public final class c
     //   105: aload_1
     //   106: iconst_0
     //   107: iload_2
-    //   108: invokevirtual 200	java/io/BufferedOutputStream:write	([BII)V
+    //   108: invokevirtual 199	java/io/BufferedOutputStream:write	([BII)V
     //   111: goto -47 -> 64
     //   114: astore_1
     //   115: aload_0
@@ -779,7 +779,7 @@ public final class c
     //   129: ldc 26
     //   131: new 28	java/lang/StringBuilder
     //   134: dup
-    //   135: ldc 202
+    //   135: ldc 201
     //   137: invokespecial 34	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   140: aload_1
     //   141: invokevirtual 38	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -794,7 +794,7 @@ public final class c
     //   164: invokestatic 91	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   167: aload_3
     //   168: invokestatic 91	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
-    //   171: ldc 187
+    //   171: ldc 186
     //   173: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   176: iconst_0
     //   177: ireturn
@@ -807,7 +807,7 @@ public final class c
     //   188: aload 5
     //   190: astore 6
     //   192: aload_0
-    //   193: invokevirtual 203	java/io/BufferedOutputStream:flush	()V
+    //   193: invokevirtual 202	java/io/BufferedOutputStream:flush	()V
     //   196: aload 4
     //   198: invokestatic 91	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   201: aload_0
@@ -816,7 +816,7 @@ public final class c
     //   207: invokestatic 91	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   210: aload_3
     //   211: invokestatic 91	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
-    //   214: ldc 187
+    //   214: ldc 186
     //   216: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   219: iconst_1
     //   220: ireturn
@@ -837,7 +837,7 @@ public final class c
     //   243: invokestatic 91	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   246: aload_3
     //   247: invokestatic 91	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
-    //   250: ldc 187
+    //   250: ldc 186
     //   252: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   255: aload_0
     //   256: athrow
@@ -930,7 +930,7 @@ public final class c
     //   35	44	333	java/lang/Exception
   }
   
-  public static boolean og(String paramString1, String paramString2)
+  public static boolean pc(String paramString1, String paramString2)
   {
     AppMethodBeat.i(156993);
     File localFile = new File(paramString2);
@@ -946,7 +946,7 @@ public final class c
     int i = 0;
     while (i < paramString1.length)
     {
-      if ((paramString1[i].isFile()) && (!g(paramString1[i], new File(new File(paramString2).getAbsolutePath() + File.separator + paramString1[i].getName()))))
+      if ((paramString1[i].isFile()) && (!f(paramString1[i], new File(new File(paramString2).getAbsolutePath() + File.separator + paramString1[i].getName()))))
       {
         AppMethodBeat.o(156993);
         return false;
@@ -958,7 +958,7 @@ public final class c
     return true;
   }
   
-  public static boolean oh(String paramString1, String paramString2)
+  public static boolean pd(String paramString1, String paramString2)
   {
     AppMethodBeat.i(156994);
     Object localObject = new File(paramString2);
@@ -974,12 +974,12 @@ public final class c
     int i = 0;
     while (i < localObject.length)
     {
-      if ((localObject[i].isFile()) && (!g(localObject[i], new File(new File(paramString2).getAbsolutePath() + File.separator + localObject[i].getName()))))
+      if ((localObject[i].isFile()) && (!f(localObject[i], new File(new File(paramString2).getAbsolutePath() + File.separator + localObject[i].getName()))))
       {
         AppMethodBeat.o(156994);
         return false;
       }
-      if ((localObject[i].isDirectory()) && (!oh(paramString1 + "/" + localObject[i].getName(), paramString2 + "/" + localObject[i].getName())))
+      if ((localObject[i].isDirectory()) && (!pd(paramString1 + "/" + localObject[i].getName(), paramString2 + "/" + localObject[i].getName())))
       {
         AppMethodBeat.o(156994);
         return false;
@@ -1013,7 +1013,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.util.c
  * JD-Core Version:    0.7.0.1
  */

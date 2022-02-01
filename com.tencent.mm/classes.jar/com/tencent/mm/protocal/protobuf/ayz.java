@@ -1,54 +1,108 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class ayz
-  extends com.tencent.mm.bw.a
+  extends dyy
 {
-  public int LIW;
+  public String SCJ;
+  public long SCK;
+  public String session_id;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(209605);
+    AppMethodBeat.i(230126);
     if (paramInt == 0)
     {
-      ((g.a.a.c.a)paramVarArgs[0]).aM(1, this.LIW);
-      AppMethodBeat.o(209605);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = g.a.a.b.b.a.bu(1, this.LIW);
-      AppMethodBeat.o(209605);
-      return paramInt + 0;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
-        }
-      }
-      AppMethodBeat.o(209605);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      ayz localayz = (ayz)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse != null)
       {
-      default: 
-        AppMethodBeat.o(209605);
-        return -1;
+        paramVarArgs.oE(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      localayz.LIW = locala.UbS.zi();
-      AppMethodBeat.o(209605);
+      if (this.SCJ != null) {
+        paramVarArgs.f(2, this.SCJ);
+      }
+      paramVarArgs.bm(3, this.SCK);
+      if (this.session_id != null) {
+        paramVarArgs.f(4, this.session_id);
+      }
+      AppMethodBeat.o(230126);
       return 0;
     }
-    AppMethodBeat.o(209605);
-    return -1;
+    if (paramInt == 1) {
+      if (this.BaseResponse == null) {
+        break label452;
+      }
+    }
+    label452:
+    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.SCJ != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.SCJ);
+      }
+      i += g.a.a.b.b.a.p(3, this.SCK);
+      paramInt = i;
+      if (this.session_id != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.session_id);
+      }
+      AppMethodBeat.o(230126);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
+        }
+        AppMethodBeat.o(230126);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        ayz localayz = (ayz)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(230126);
+          return -1;
+        case 1: 
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            jh localjh = new jh();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localjh.parseFrom((byte[])localObject);
+            }
+            localayz.BaseResponse = localjh;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(230126);
+          return 0;
+        case 2: 
+          localayz.SCJ = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(230126);
+          return 0;
+        case 3: 
+          localayz.SCK = ((g.a.a.a.a)localObject).abFh.AN();
+          AppMethodBeat.o(230126);
+          return 0;
+        }
+        localayz.session_id = ((g.a.a.a.a)localObject).abFh.readString();
+        AppMethodBeat.o(230126);
+        return 0;
+      }
+      AppMethodBeat.o(230126);
+      return -1;
+    }
   }
 }
 

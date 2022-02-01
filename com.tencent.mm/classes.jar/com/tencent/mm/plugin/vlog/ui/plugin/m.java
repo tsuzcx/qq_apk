@@ -1,105 +1,90 @@
 package com.tencent.mm.plugin.vlog.ui.plugin;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.f.b.a.lo;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.recordvideo.d.c;
+import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager;
+import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.a;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
-import com.tencent.mm.plugin.recordvideo.plugin.t;
-import com.tencent.mm.plugin.recordvideo.plugin.t.a;
-import com.tencent.mm.ui.ar;
-import kotlin.g.b.p;
+import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/plugin/MultiEditCropPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseIconPlugin;", "Landroid/view/View$OnClickListener;", "parent", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "iconView", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "getParent", "()Landroid/view/ViewGroup;", "setParent", "(Landroid/view/ViewGroup;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "onClick", "", "v", "Landroid/view/View;", "resetIconColor", "iconColor", "", "setVisibility", "visibility", "plugin-vlog_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/MultiEditFinishPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/AutoRegisterPlugin;", "Landroid/view/View$OnClickListener;", "view", "Landroid/view/View;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/View;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/view/View;", "setView", "(Landroid/view/View;)V", "onAttach", "", "onClick", "v", "onDetach", "resetStyle", "bgResId", "", "textColor", "text", "height", "(Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Integer;)V", "plugin-vlog_release"})
 public final class m
-  implements View.OnClickListener, t
+  extends com.tencent.mm.plugin.recordvideo.plugin.a
+  implements View.OnClickListener
 {
-  private ViewGroup parent;
-  private final ImageView vs;
-  private d wgr;
+  d APl;
+  public final String TAG;
+  public View view;
   
-  public m(ViewGroup paramViewGroup, d paramd)
+  public m(View paramView, d paramd)
   {
-    AppMethodBeat.i(191314);
-    this.parent = paramViewGroup;
-    this.wgr = paramd;
-    this.vs = ((ImageView)this.parent.findViewById(2131299879));
-    this.vs.setImageDrawable(ar.m(this.parent.getContext(), 2131690668, -1));
-    this.vs.setOnClickListener((View.OnClickListener)this);
-    AppMethodBeat.o(191314);
+    super(paramd, (byte)0);
+    AppMethodBeat.i(230362);
+    this.view = paramView;
+    this.APl = paramd;
+    this.TAG = "MicroMsg.EditFinishPlugin";
+    this.view.setOnClickListener((View.OnClickListener)this);
+    AppMethodBeat.o(230362);
   }
   
-  public final void VC(int paramInt)
+  public final void bbp()
   {
-    AppMethodBeat.i(191313);
-    this.vs.setImageDrawable(ar.m(this.parent.getContext(), 2131690668, paramInt));
-    AppMethodBeat.o(191313);
-  }
-  
-  public final void aSs() {}
-  
-  public final String name()
-  {
-    return null;
-  }
-  
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public final boolean onBackPress()
-  {
-    return false;
+    AppMethodBeat.i(230357);
+    super.bbp();
+    this.view.setVisibility(0);
+    AppMethodBeat.o(230357);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(191311);
+    AppMethodBeat.i(230356);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/vlog/ui/plugin/MultiEditCropPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    paramView = new Bundle();
-    this.wgr.a(d.c.BVn, paramView);
-    a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/MultiEditCropPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(191311);
+    localb.bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/vlog/ui/plugin/MultiEditFinishPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    Log.i(this.TAG, "on click edit finish");
+    paramView = c.HUw;
+    c.acq(12);
+    paramView = c.HUw;
+    c.fxq().vA(System.currentTimeMillis());
+    if (!CaptureDataManager.HKJ.a(this.view.getContext(), (CaptureDataManager.a)new a(this))) {
+      d.b.a(this.APl, d.c.HSj);
+    }
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/MultiEditFinishPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(230356);
   }
   
-  public final void onDetach() {}
-  
-  public final void onPause() {}
-  
-  public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public final void onDetach()
   {
-    AppMethodBeat.i(191315);
-    p.h(paramArrayOfString, "permissions");
-    p.h(paramArrayOfInt, "grantResults");
-    t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(191315);
+    AppMethodBeat.i(230358);
+    super.onDetach();
+    this.view.setVisibility(4);
+    AppMethodBeat.o(230358);
   }
   
-  public final void onResume() {}
-  
-  public final void release() {}
-  
-  public final void reset() {}
-  
-  public final void setVisibility(int paramInt)
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onRequestFinish"})
+  static final class a
+    implements CaptureDataManager.a
   {
-    AppMethodBeat.i(191312);
-    ImageView localImageView = this.vs;
-    p.g(localImageView, "iconView");
-    localImageView.setVisibility(paramInt);
-    AppMethodBeat.o(191312);
+    a(m paramm) {}
+    
+    public final void fvW()
+    {
+      AppMethodBeat.i(228048);
+      d.b.a(this.Nvk.APl, d.c.HSj);
+      AppMethodBeat.o(228048);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.m
  * JD-Core Version:    0.7.0.1
  */

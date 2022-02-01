@@ -4,15 +4,19 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.v;
 import com.tencent.mm.plugin.downloader.g.a;
+import com.tencent.mm.plugin.downloader.model.d;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.u;
 import org.json.JSONArray;
 import org.json.JSONException;
 
 public final class JsApiCancelDownloadTask
-  extends com.tencent.mm.plugin.appbrand.jsapi.d<com.tencent.mm.plugin.appbrand.s>
+  extends c<v>
 {
   public static final int CTRL_INDEX = 475;
   public static final String NAME = "cancelDownloadTask";
@@ -21,10 +25,10 @@ public final class JsApiCancelDownloadTask
     extends MainProcessTask
   {
     public static Parcelable.Creator<CancelDownloadTask> CREATOR;
-    private com.tencent.mm.plugin.appbrand.s kGT;
-    private JSONArray lDd;
-    private com.tencent.mm.plugin.appbrand.jsapi.d lDe;
-    private int lqe;
+    private v nAz;
+    private int okO;
+    private JSONArray oyF;
+    private c oyG;
     
     static
     {
@@ -40,50 +44,49 @@ public final class JsApiCancelDownloadTask
       AppMethodBeat.o(45775);
     }
     
-    public CancelDownloadTask(JSONArray paramJSONArray, com.tencent.mm.plugin.appbrand.jsapi.d paramd, com.tencent.mm.plugin.appbrand.s params, int paramInt)
+    public CancelDownloadTask(JSONArray paramJSONArray, c paramc, v paramv, int paramInt)
     {
       AppMethodBeat.i(45774);
-      bDJ();
-      this.lDd = paramJSONArray;
-      this.lDe = paramd;
-      this.kGT = params;
-      this.lqe = paramInt;
+      this.oyF = paramJSONArray;
+      this.oyG = paramc;
+      this.nAz = paramv;
+      this.okO = paramInt;
       AppMethodBeat.o(45774);
     }
     
-    public final void bjj()
+    public final void RW()
     {
       AppMethodBeat.i(45772);
-      if ((this.lDd != null) && (this.lDd.length() > 0))
+      if ((this.oyF != null) && (this.oyF.length() > 0))
       {
         int i = 0;
-        if (i < this.lDd.length())
+        if (i < this.oyF.length())
         {
-          long l = this.lDd.optLong(i);
-          a locala = com.tencent.mm.plugin.downloader.model.d.Cw(l);
+          long l = this.oyF.optLong(i);
+          a locala = d.IF(l);
           if ((locala != null) && (locala.field_status == 3))
           {
             Log.i("MicroMsg.JsApiCancelDownloadTask", "canceldownloadtask, path: %s", new Object[] { locala.field_filePath });
-            com.tencent.mm.vfs.s.deleteFile(locala.field_filePath);
-            com.tencent.mm.plugin.downloader.model.d.alc(locala.field_downloadUrl);
+            u.deleteFile(locala.field_filePath);
+            d.asV(locala.field_downloadUrl);
           }
           for (;;)
           {
             i += 1;
             break;
-            f.cBv().Cn(l);
+            f.cPZ().Iw(l);
           }
         }
       }
-      bDU();
+      bPt();
       AppMethodBeat.o(45772);
     }
     
-    public final void bjk()
+    public final void bsK()
     {
       AppMethodBeat.i(45773);
-      bDK();
-      this.kGT.i(this.lqe, this.lDe.h("ok", null));
+      bPk();
+      this.nAz.j(this.okO, this.oyG.h("ok", null));
       AppMethodBeat.o(45773);
     }
     
@@ -94,7 +97,7 @@ public final class JsApiCancelDownloadTask
       if (paramParcel != null) {
         try
         {
-          this.lDd = new JSONArray(paramParcel);
+          this.oyF = new JSONArray(paramParcel);
           AppMethodBeat.o(45776);
           return;
         }
@@ -109,8 +112,8 @@ public final class JsApiCancelDownloadTask
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45777);
-      if (this.lDd != null) {}
-      for (String str = this.lDd.toString();; str = null)
+      if (this.oyF != null) {}
+      for (String str = this.oyF.toString();; str = null)
       {
         paramParcel.writeString(str);
         AppMethodBeat.o(45777);

@@ -1,41 +1,36 @@
 package com.tencent.mm.appbrand.commonjni;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.appbrand.commonjni.a.a.a;
-import com.tencent.mm.appbrand.commonjni.a.a.b;
 import com.tencent.mm.appbrand.commonjni.a.b;
 import com.tencent.mm.appbrand.commonjni.a.c.c;
 import java.nio.ByteBuffer;
+import java.util.Objects;
 
 @Keep
 public class AppBrandCommonBindingJni
 {
   private static final String TAG = "MicroMsg.AppBrandRuntimeJni";
-  private a.b mAppBrandDelegate;
+  private a.a mAppBrandDelegate;
   private long mNativeHandle;
   
   static
   {
-    AppMethodBeat.i(201232);
+    AppMethodBeat.i(246811);
     b.loadLibrary("wxa-runtime-binding");
-    AppMethodBeat.o(201232);
+    AppMethodBeat.o(246811);
   }
   
-  public AppBrandCommonBindingJni(a.b paramb)
+  public AppBrandCommonBindingJni(a.a parama)
   {
-    AppMethodBeat.i(201218);
+    AppMethodBeat.i(246792);
     this.mNativeHandle = 0L;
-    this.mAppBrandDelegate = new a.a();
-    if (paramb != null)
-    {
-      this.mAppBrandDelegate = paramb;
-      AppMethodBeat.o(201218);
-      return;
-    }
-    c.c.w("MicroMsg.AppBrandRuntimeJni", "hy: not specify delegate, use default", new Object[0]);
-    AppMethodBeat.o(201218);
+    this.mAppBrandDelegate = ((a.a)Objects.requireNonNull(parama));
+    AppMethodBeat.o(246792);
   }
+  
+  private native void nativeBindTo(long paramLong1, long paramLong2, long paramLong3, long paramLong4);
   
   public static native boolean nativeBrotliDecompress(String paramString1, String paramString2);
   
@@ -56,124 +51,139 @@ public class AppBrandCommonBindingJni
   @Keep
   protected boolean doInnerLoopTask()
   {
-    AppMethodBeat.i(201230);
+    AppMethodBeat.i(246809);
     boolean bool = this.mAppBrandDelegate.doInnerLoopTask();
-    AppMethodBeat.o(201230);
+    AppMethodBeat.o(246809);
     return bool;
   }
   
   @Keep
   protected String[] getAsyncableJsApis()
   {
-    AppMethodBeat.i(201227);
+    AppMethodBeat.i(246806);
     String[] arrayOfString = this.mAppBrandDelegate.getAsyncableJsApis();
-    AppMethodBeat.o(201227);
+    AppMethodBeat.o(246806);
     return arrayOfString;
+  }
+  
+  public long getNativeHandle()
+  {
+    return this.mNativeHandle;
   }
   
   @Keep
   protected String nativeInvokeHandler(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(201226);
+    AppMethodBeat.i(246804);
     paramString1 = this.mAppBrandDelegate.nativeInvokeHandler(paramString1, paramString2, paramInt, paramBoolean);
-    AppMethodBeat.o(201226);
+    AppMethodBeat.o(246804);
     return paramString1;
+  }
+  
+  public void notifyBindTo(long paramLong1, long paramLong2, long paramLong3)
+  {
+    AppMethodBeat.i(246795);
+    if (this.mNativeHandle > 0L) {
+      nativeBindTo(this.mNativeHandle, paramLong1, paramLong2, paramLong3);
+    }
+    AppMethodBeat.o(246795);
   }
   
   public void notifyCreate(AppBrandCommonBindingJniParams paramAppBrandCommonBindingJniParams)
   {
-    AppMethodBeat.i(201219);
+    AppMethodBeat.i(246794);
     this.mNativeHandle = nativeCreate(paramAppBrandCommonBindingJniParams);
     c.c.i("MicroMsg.AppBrandRuntimeJni", "hy: created with %d", new Object[] { Long.valueOf(this.mNativeHandle) });
-    AppMethodBeat.o(201219);
+    AppMethodBeat.o(246794);
   }
   
   public void notifyDestroy()
   {
-    AppMethodBeat.i(201223);
+    AppMethodBeat.i(246799);
     if (this.mNativeHandle > 0L)
     {
       nativeDestroy(this.mNativeHandle);
       this.mNativeHandle = 0L;
+      this.mAppBrandDelegate = null;
     }
-    AppMethodBeat.o(201223);
+    AppMethodBeat.o(246799);
   }
   
   public void notifyPause()
   {
-    AppMethodBeat.i(201222);
+    AppMethodBeat.i(246798);
     if (this.mNativeHandle > 0L) {
       nativePause(this.mNativeHandle);
     }
-    AppMethodBeat.o(201222);
+    AppMethodBeat.o(246798);
   }
   
   public void notifyResume()
   {
-    AppMethodBeat.i(201221);
+    AppMethodBeat.i(246797);
     if (this.mNativeHandle > 0L) {
       nativeResume(this.mNativeHandle);
     }
-    AppMethodBeat.o(201221);
+    AppMethodBeat.o(246797);
   }
   
   public void notifyRuntimeReady(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(201220);
+    AppMethodBeat.i(246796);
     if (this.mNativeHandle > 0L) {
       nativeRuntimeReady(this.mNativeHandle, paramString1, paramString2);
     }
-    AppMethodBeat.o(201220);
+    AppMethodBeat.o(246796);
   }
   
   public void notifySuspend()
   {
-    AppMethodBeat.i(201224);
+    AppMethodBeat.i(246800);
     if (this.mNativeHandle > 0L) {
       nativeSuspend(this.mNativeHandle);
     }
-    AppMethodBeat.o(201224);
+    AppMethodBeat.o(246800);
   }
   
   @Keep
   ByteBuffer readWeAppFile(String paramString)
   {
-    AppMethodBeat.i(201228);
+    AppMethodBeat.i(246807);
     paramString = this.mAppBrandDelegate.readWeAppFile(paramString);
-    AppMethodBeat.o(201228);
+    AppMethodBeat.o(246807);
     return paramString;
   }
   
   public void requestV8GarbageCollectionForTest()
   {
-    AppMethodBeat.i(201225);
+    AppMethodBeat.i(246802);
     if (this.mNativeHandle > 0L) {
       nativeRequestV8GarbageCollectionForTest(this.mNativeHandle);
     }
-    AppMethodBeat.o(201225);
+    AppMethodBeat.o(246802);
   }
   
   @Keep
   protected void resumeLoopTasks()
   {
-    AppMethodBeat.i(201229);
+    AppMethodBeat.i(246808);
     this.mAppBrandDelegate.resumeLoopTasks();
-    AppMethodBeat.o(201229);
+    AppMethodBeat.o(246808);
   }
   
   @Keep
   protected boolean syncInitModule(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(201231);
+    AppMethodBeat.i(246810);
     c.c.i("MicroMsg.AppBrandRuntimeJni", "hy: request init %s with params %s", new Object[] { paramString1, paramString2 });
     boolean bool = this.mAppBrandDelegate.syncInitModule(paramString1, paramString2);
-    AppMethodBeat.o(201231);
+    AppMethodBeat.o(246810);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.appbrand.commonjni.AppBrandCommonBindingJni
  * JD-Core Version:    0.7.0.1
  */

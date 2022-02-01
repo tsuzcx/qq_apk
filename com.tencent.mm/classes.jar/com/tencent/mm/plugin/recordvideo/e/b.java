@@ -1,56 +1,67 @@
 package com.tencent.mm.plugin.recordvideo.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import kotlin.f;
+import kotlin.g;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/util/MediaDebugInfo;", "", "()V", "mediaNum", "", "getMediaNum", "()I", "setMediaNum", "(I)V", "useCpuCrop", "", "getUseCpuCrop", "()Z", "setUseCpuCrop", "(Z)V", "useDaemonRecord", "getUseDaemonRecord", "setUseDaemonRecord", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/util/EditorAudioRedDotUtil;", "", "()V", "enable", "", "value", "", "enterEditorAudioPanelCount", "getEnterEditorAudioPanelCount", "()I", "setEnterEditorAudioPanelCount", "(I)V", "enterSelectFinderVideoPanel", "getEnterSelectFinderVideoPanel", "()Z", "setEnterSelectFinderVideoPanel", "(Z)V", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "Lkotlin/Lazy;", "enableHelp", "", "getAccountKey", "", "key", "getAccountMMKV", "onEnterEditorAudioPanel", "onEnterSelectFinderVideoPanel", "shouldShowSelectFinderVideoTip", "Companion", "plugin-recordvideo_release"})
 public final class b
 {
-  private static boolean ChW;
-  private static int ChX;
-  public static final b ChY;
-  private static boolean ilO;
+  public static final a IeM;
+  public boolean enable;
+  private final f lrB;
   
   static
   {
-    AppMethodBeat.i(76177);
-    ChY = new b();
-    AppMethodBeat.o(76177);
+    AppMethodBeat.i(217308);
+    IeM = new a((byte)0);
+    AppMethodBeat.o(217308);
   }
   
-  public static void VW(int paramInt)
+  public b()
   {
-    ChX = paramInt;
+    AppMethodBeat.i(217307);
+    this.lrB = g.ar((a)new b(this));
+    AppMethodBeat.o(217307);
   }
   
-  public static boolean eME()
+  public final MultiProcessMMKV bcJ()
   {
-    return ilO;
+    AppMethodBeat.i(217305);
+    MultiProcessMMKV localMultiProcessMMKV = (MultiProcessMMKV)this.lrB.getValue();
+    AppMethodBeat.o(217305);
+    return localMultiProcessMMKV;
   }
   
-  public static boolean eMF()
+  public final int fzp()
   {
-    return ChW;
+    AppMethodBeat.i(217306);
+    int i = bcJ().decodeInt("enter_editor_audio_panel_count", 0);
+    AppMethodBeat.o(217306);
+    return i;
   }
   
-  public static int eMG()
-  {
-    return ChX;
-  }
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/util/EditorAudioRedDotUtil$Companion;", "", "()V", "EDITOR_AUDIO_MMKV", "", "KEY_ENTER_EDITOR_AUDIO_PANEL_COUNT", "KEY_ENTER_SELECT_FINDER_VIDEO_PANEL", "TAG", "plugin-recordvideo_release"})
+  public static final class a {}
   
-  public static void tF(boolean paramBoolean)
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
+  static final class b
+    extends q
+    implements a<MultiProcessMMKV>
   {
-    ilO = paramBoolean;
-  }
-  
-  public static void tG(boolean paramBoolean)
-  {
-    ChW = paramBoolean;
+    b(b paramb)
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.e.b
  * JD-Core Version:    0.7.0.1
  */

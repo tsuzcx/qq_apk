@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -14,13 +16,13 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class DomainMailListPreference
   extends Preference
 {
-  private String PVs;
-  private TextView PVt;
-  private TextView PVu;
-  private TextView PVv;
-  private boolean rFe;
+  private String Xsh;
+  private TextView Xsi;
+  private TextView Xsj;
+  private TextView Xsk;
   private String title;
   private TextView titleTv;
+  private boolean vkO;
   
   public DomainMailListPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,20 +42,20 @@ public class DomainMailListPreference
   
   private void init()
   {
-    this.rFe = false;
+    this.vkO = false;
     this.title = "";
-    this.PVs = "";
+    this.Xsh = "";
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(37819);
-    this.titleTv = ((TextView)paramView.findViewById(2131309195));
-    this.PVt = ((TextView)paramView.findViewById(2131301546));
-    this.PVu = ((TextView)paramView.findViewById(2131307434));
-    this.PVv = ((TextView)paramView.findViewById(2131309039));
-    this.rFe = true;
-    if (!this.rFe)
+    this.titleTv = ((TextView)paramView.findViewById(R.h.title));
+    this.Xsi = ((TextView)paramView.findViewById(R.h.dHb));
+    this.Xsj = ((TextView)paramView.findViewById(R.h.dTu));
+    this.Xsk = ((TextView)paramView.findViewById(R.h.dWz));
+    this.vkO = true;
+    if (!this.vkO)
     {
       Log.e("MicroMsg.DomainMailPreference", "initView : unbind view");
       super.onBindView(paramView);
@@ -61,40 +63,40 @@ public class DomainMailListPreference
       return;
     }
     this.titleTv.setText(Util.nullAsNil(this.title));
-    String[] arrayOfString = this.PVs.split(";");
-    if (Util.nullAsNil(this.PVs).length() <= 0)
+    String[] arrayOfString = this.Xsh.split(";");
+    if (Util.nullAsNil(this.Xsh).length() <= 0)
     {
-      this.PVt.setVisibility(8);
-      this.PVu.setVisibility(8);
+      this.Xsi.setVisibility(8);
+      this.Xsj.setVisibility(8);
     }
-    label259:
+    label263:
     for (;;)
     {
-      this.PVv.setVisibility(8);
+      this.Xsk.setVisibility(8);
       break;
       if (arrayOfString.length > 0)
       {
-        this.PVt.setVisibility(0);
-        this.PVt.setText(Util.nullAsNil(arrayOfString[0]));
-        label180:
+        this.Xsi.setVisibility(0);
+        this.Xsi.setText(Util.nullAsNil(arrayOfString[0]));
+        label184:
         if (arrayOfString.length <= 1) {
-          break label249;
+          break label253;
         }
-        this.PVu.setVisibility(0);
-        this.PVu.setText(Util.nullAsNil(arrayOfString[1]));
+        this.Xsj.setVisibility(0);
+        this.Xsj.setText(Util.nullAsNil(arrayOfString[1]));
       }
       for (;;)
       {
         if (arrayOfString.length <= 2) {
-          break label259;
+          break label263;
         }
-        this.PVv.setVisibility(0);
-        this.PVv.setText(Util.nullAsNil(arrayOfString[2]));
+        this.Xsk.setVisibility(0);
+        this.Xsk.setText(Util.nullAsNil(arrayOfString[2]));
         break;
-        this.PVt.setVisibility(8);
-        break label180;
-        label249:
-        this.PVu.setVisibility(8);
+        this.Xsi.setVisibility(8);
+        break label184;
+        label253:
+        this.Xsj.setVisibility(8);
       }
     }
   }
@@ -104,9 +106,9 @@ public class DomainMailListPreference
     AppMethodBeat.i(37818);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2131495560, localViewGroup);
+    localLayoutInflater.inflate(R.i.eiP, localViewGroup);
     AppMethodBeat.o(37818);
     return paramViewGroup;
   }

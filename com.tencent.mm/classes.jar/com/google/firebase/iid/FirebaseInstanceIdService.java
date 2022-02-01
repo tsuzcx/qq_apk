@@ -11,7 +11,7 @@ public class FirebaseInstanceIdService
   protected final Intent e(Intent paramIntent)
   {
     AppMethodBeat.i(4146);
-    paramIntent = (Intent)o.yr().bLO.poll();
+    paramIntent = (Intent)o.yL().bJt.poll();
     AppMethodBeat.o(4146);
     return paramIntent;
   }
@@ -35,14 +35,14 @@ public class FirebaseInstanceIdService
       }
       if (("RST".equals(str)) || ("RST_FULL".equals(str)))
       {
-        FirebaseInstanceId.yc().yh();
+        FirebaseInstanceId.yw().yB();
         AppMethodBeat.o(4147);
         return;
       }
       if ("SYNC".equals(str))
       {
-        paramIntent = FirebaseInstanceId.yc();
-        FirebaseInstanceId.bLg.bQ("");
+        paramIntent = FirebaseInstanceId.yw();
+        FirebaseInstanceId.bIL.cc("");
         paramIntent.startSync();
       }
     }
@@ -53,7 +53,7 @@ public class FirebaseInstanceIdService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.FirebaseInstanceIdService
  * JD-Core Version:    0.7.0.1
  */

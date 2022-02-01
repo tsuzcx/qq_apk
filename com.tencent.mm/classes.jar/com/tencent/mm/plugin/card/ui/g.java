@@ -7,6 +7,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.card.a.c;
 import com.tencent.mm.plugin.card.base.c;
 import com.tencent.mm.plugin.card.model.CardInfo;
 import java.util.ArrayList;
@@ -16,32 +17,32 @@ import java.util.List;
 public final class g
   extends BaseAdapter
 {
-  private View.OnClickListener kuO;
   Context mContext;
-  private boolean pTl;
-  c pXo;
-  List<CardInfo> pXz;
-  private boolean qcv;
-  List<Boolean> qcw;
-  a qcx;
+  private View.OnClickListener nmC;
+  private boolean tpm;
+  c ttl;
+  List<CardInfo> tup;
+  private boolean tys;
+  List<Boolean> tyt;
+  a tyu;
   
   public g(Context paramContext)
   {
     AppMethodBeat.i(113473);
-    this.pXz = new ArrayList();
-    this.qcv = false;
-    this.qcw = new ArrayList();
-    this.pTl = true;
-    this.kuO = new g.1(this);
-    this.pXo = new l(paramContext, this);
+    this.tup = new ArrayList();
+    this.tys = false;
+    this.tyt = new ArrayList();
+    this.tpm = true;
+    this.nmC = new g.1(this);
+    this.ttl = new l(paramContext, this);
     this.mContext = paramContext;
     AppMethodBeat.o(113473);
   }
   
-  public final CardInfo Ep(int paramInt)
+  public final CardInfo HQ(int paramInt)
   {
     AppMethodBeat.i(113475);
-    CardInfo localCardInfo = (CardInfo)this.pXz.get(paramInt);
+    CardInfo localCardInfo = (CardInfo)this.tup.get(paramInt);
     AppMethodBeat.o(113475);
     return localCardInfo;
   }
@@ -49,7 +50,7 @@ public final class g
   public final int getCount()
   {
     AppMethodBeat.i(113474);
-    int i = this.pXz.size();
+    int i = this.tup.size();
     AppMethodBeat.o(113474);
     return i;
   }
@@ -62,25 +63,25 @@ public final class g
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(113476);
-    paramViewGroup = Ep(paramInt);
-    paramViewGroup.pTl = this.pTl;
-    paramView = this.pXo.a(paramInt, paramView, paramViewGroup);
-    if ((this.qcv) && (paramViewGroup.csC()))
+    paramViewGroup = HQ(paramInt);
+    paramViewGroup.tpm = this.tpm;
+    paramView = this.ttl.a(paramInt, paramView, paramViewGroup);
+    if ((this.tys) && (paramViewGroup.cGd()))
     {
-      this.pXo.Z(paramView, 0);
-      if (((Boolean)this.qcw.get(paramInt)).booleanValue())
+      this.ttl.ab(paramView, 0);
+      if (((Boolean)this.tyt.get(paramInt)).booleanValue())
       {
-        this.pXo.Y(paramView, 2131231488);
-        this.pXo.a(paramView, paramInt, this.kuO);
+        this.ttl.aa(paramView, a.c.tab);
+        this.ttl.a(paramView, paramInt, this.nmC);
       }
     }
     for (;;)
     {
       AppMethodBeat.o(113476);
       return paramView;
-      this.pXo.Y(paramView, 2131231489);
+      this.ttl.aa(paramView, a.c.tac);
       break;
-      this.pXo.Z(paramView, 8);
+      this.ttl.ab(paramView, 8);
     }
   }
   

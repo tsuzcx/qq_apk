@@ -9,11 +9,6 @@ import com.tencent.mm.plugin.appbrand.f.a.c;
 public class c
   extends a
 {
-  public final String Lb()
-  {
-    return "NetworkImageReader";
-  }
-  
   public final void a(String paramString, a.c paramc) {}
   
   public Bitmap b(String paramString, Rect paramRect, a.b paramb)
@@ -21,7 +16,7 @@ public class c
     return null;
   }
   
-  public boolean match(String paramString)
+  public boolean dq(String paramString)
   {
     AppMethodBeat.i(140368);
     if ((paramString == null) || (paramString.length() == 0))
@@ -38,10 +33,15 @@ public class c
     AppMethodBeat.o(140368);
     return false;
   }
+  
+  public final String key()
+  {
+    return "NetworkImageReader";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.bridge.impl.a.c
  * JD-Core Version:    0.7.0.1
  */

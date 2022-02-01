@@ -1,88 +1,115 @@
 package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.d.c.a;
 import com.tencent.mm.plugin.webview.d.f;
+import com.tencent.mm.plugin.webview.d.h;
 import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.plugin.webview.stub.e;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.util.HashMap;
 import java.util.Map;
 import kotlin.g.b.p;
 import kotlin.l;
-import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleAdAction;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "ACTION_REPORT", "", "KEY_ACTION", "KEY_DATA", "TAG", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "doReport", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "data", "handleMsg", "plugin-webview_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiGetLocalImgData;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
 public final class k
   extends a
 {
-  private static final int CDJ = 367;
-  public static final k Jxm;
-  private static final String edq = "handleAdAction";
+  private static final int IIl = 249;
+  public static final k Qvd;
+  private static final String fXz = "getLocalImgData";
   
   static
   {
-    AppMethodBeat.i(182677);
-    Jxm = new k();
-    CDJ = 367;
-    edq = "handleAdAction";
-    AppMethodBeat.o(182677);
+    AppMethodBeat.i(264722);
+    Qvd = new k();
+    IIl = 249;
+    fXz = "getLocalImgData";
+    AppMethodBeat.o(264722);
   }
   
   public final boolean a(f paramf, n paramn)
   {
-    int j = 0;
-    AppMethodBeat.i(210598);
-    p.h(paramf, "env");
-    p.h(paramn, "msg");
-    Object localObject = (String)paramn.params.get("action");
-    Log.i("MicroMsg.JsApiHandleMPPageAction", "alvinfluo handleAdAction action: %s", new Object[] { localObject });
-    CharSequence localCharSequence = (CharSequence)localObject;
-    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
-    for (int i = 1; i != 0; i = 0)
+    AppMethodBeat.i(264721);
+    p.k(paramf, "env");
+    p.k(paramn, "msg");
+    Object localObject1 = (String)paramn.params.get("localId");
+    float f = Util.getFloat((String)paramn.params.get("compressionRatio"), 0.0F);
+    if (Util.isNullOrNil((String)localObject1))
     {
-      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":fail action is empty", null);
-      AppMethodBeat.o(210598);
-      return true;
+      paramf.PNo.h(paramn.POu, "getLocalImgData:fail_invaild_localid", null);
+      AppMethodBeat.o(264721);
+      return false;
     }
-    if (p.j(localObject, "report"))
+    label360:
+    for (;;)
     {
-      localObject = (String)paramn.params.get("data");
-      localCharSequence = (CharSequence)localObject;
-      if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
-      for (i = 1; i != 0; i = 0)
+      try
       {
-        paramf.IQZ.h(paramn.ISe, paramn.mhO + ":fail data is empty", null);
-        AppMethodBeat.o(210598);
-        return true;
+        Object localObject2 = paramf.pGC;
+        if (localObject2 != null)
+        {
+          localObject1 = ((e)localObject2).hc((String)localObject1, 2);
+          if (localObject1 != null)
+          {
+            localObject1 = BitmapUtil.decodeFile((String)localObject1);
+            if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled()))
+            {
+              localObject2 = new ByteArrayOutputStream();
+              double d = f;
+              if ((d < 0.1D) || (d > 0.99D)) {
+                break label360;
+              }
+              i = (int)(100.0F * f);
+              ((Bitmap)localObject1).compress(Bitmap.CompressFormat.JPEG, i, (OutputStream)localObject2);
+              Object localObject3 = ((ByteArrayOutputStream)localObject2).toByteArray();
+              localObject2 = Base64.encodeToString((byte[])localObject3, 0);
+              Log.i("MicroMsg.JsApiGetLocalImgData", "rawData lenght = %d, base64 lenght = %d compressionRatio=".concat(String.valueOf(f)), new Object[] { Integer.valueOf(localObject3.length), Integer.valueOf(((String)localObject2).length()) });
+              localObject3 = new HashMap();
+              Map localMap = (Map)localObject3;
+              p.j(localObject2, "base64Content");
+              localMap.put("localData", localObject2);
+              paramf.PNo.h(paramn.POu, "getLocalImgData:ok", (Map)localObject3);
+              Log.i("MicroMsg.JsApiGetLocalImgData", "bitmap recycle %s", new Object[] { ((Bitmap)localObject1).toString() });
+              ((Bitmap)localObject1).recycle();
+              AppMethodBeat.o(264721);
+              return true;
+            }
+          }
+        }
+        else
+        {
+          localObject1 = null;
+          continue;
+        }
+        int i = 90;
       }
-      localObject = new JSONObject((String)localObject);
-      int k = Util.safeParseInt(((JSONObject)localObject).optString("logid"));
-      localObject = ((JSONObject)localObject).optString("logstr");
-      Log.v("MicroMsg.JsApiHandleMPPageAction", "alvinluo handleAdAction doReport logId: %s, logStr: %s", new Object[] { Integer.valueOf(k), localObject });
-      p.g(localObject, "logStr");
-      i = j;
-      if (((CharSequence)localObject).length() > 0) {
-        i = 1;
+      catch (Exception localException)
+      {
+        Log.e("MicroMsg.JsApiGetLocalImgData", localException.getMessage());
+        paramf.PNo.h(paramn.POu, "getLocalImgData:fail", null);
+        AppMethodBeat.o(264721);
+        return false;
       }
-      if (i != 0) {
-        com.tencent.mm.plugin.report.service.h.CyF.kvStat(k, (String)localObject);
-      }
-      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":ok", null);
-      AppMethodBeat.o(210598);
-      return true;
     }
-    AppMethodBeat.o(210598);
-    return false;
   }
   
-  public final int ePA()
+  public final String fCm()
   {
-    return CDJ;
+    return fXz;
   }
   
-  public final String ePz()
+  public final int fCn()
   {
-    return edq;
+    return IIl;
   }
 }
 

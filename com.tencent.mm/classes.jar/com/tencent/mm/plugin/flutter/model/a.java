@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.flutter.model;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.c;
-import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.sdk.crash.CrashReportFactory;
 import com.tencent.mm.sdk.platformtools.Log;
 import io.flutter.embedding.engine.plugins.a.b;
@@ -16,15 +16,15 @@ import java.util.Map;
 public final class a
   implements io.flutter.embedding.engine.plugins.a, k.c
 {
-  private k wJr;
+  private k BCG;
   
   public final void a(a.b paramb)
   {
-    AppMethodBeat.i(240942);
+    AppMethodBeat.i(220848);
     Log.i("MicroMsg.Flutter.FlutterCrashReportPlugin", "onAttachedToEngine FlutterCrashReportPlugin CHANNEL%s", new Object[] { "com.tencent.mm.flutter.crashreport" });
-    this.wJr = new k(paramb.SOH, "com.tencent.mm.flutter.crashreport");
-    this.wJr.a(this);
-    AppMethodBeat.o(240942);
+    this.BCG = new k(paramb.aaqF, "com.tencent.mm.flutter.crashreport");
+    this.BCG.a(this);
+    AppMethodBeat.o(220848);
   }
   
   public final void a(j paramj, k.d paramd)
@@ -50,20 +50,20 @@ public final class a
       }
       i = 0;
       break;
-      paramd = (Map)paramj.btq("crashInfo");
-      String str = (String)paramj.btq("sessionId");
-      boolean bool = ((Boolean)paramj.btq("killSelf")).booleanValue();
+      paramd = (Map)paramj.bGt("crashInfo");
+      String str = (String)paramj.bGt("sessionId");
+      boolean bool = ((Boolean)paramj.bGt("killSelf")).booleanValue();
       paramj = new StringBuffer();
       paramj.append("\n#deviceParameters=" + paramd.get("deviceParameters"));
       paramj.append("\n#customParameters=" + paramd.get("customParameters"));
       paramj.append("\n#applicationParameters=" + paramd.get("applicationParameters"));
       paramj.append("\n#dateTime=" + paramd.get("dateTime"));
-      com.tencent.mm.plugin.flutter.c.a locala = com.tencent.mm.plugin.flutter.c.a.wJq;
+      com.tencent.mm.plugin.flutter.c.a locala = com.tencent.mm.plugin.flutter.c.a.BCF;
       com.tencent.mm.plugin.flutter.c.a.b(paramd, bool);
       long l = System.currentTimeMillis();
       Log.i("MicroMsg.Flutter.FlutterReportLogic", "reportFlutterActionAction %s %s", new Object[] { "FlutterCrash", str });
-      e.Cxv.a(17326, new Object[] { Long.valueOf(l), "FlutterCrash", str });
-      e.Cxv.idkeyStat(1053L, 2L, 1L, false);
+      f.Iyx.a(17326, new Object[] { Long.valueOf(l), "FlutterCrash", str });
+      f.Iyx.idkeyStat(1053L, 2L, 1L, false);
       CrashReportFactory.reportCrashMessage(paramj.toString(), "Flutter\n\tErrorMsg=" + paramd.get("error") + "\n" + paramd.get("stackTrace") + "\nkillSelf" + bool);
       Log.appenderFlushSync();
       if (bool)
@@ -71,28 +71,28 @@ public final class a
         Log.appenderClose();
         paramj = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
         paramd = new Object();
-        com.tencent.mm.hellhoundlib.a.a.a(paramd, paramj.axQ(), "com/tencent/mm/plugin/flutter/model/FlutterCrashReportPlugin", "onMethodCall", "(Lio/flutter/plugin/common/MethodCall;Lio/flutter/plugin/common/MethodChannel$Result;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-        Process.killProcess(((Integer)paramj.pG(0)).intValue());
-        com.tencent.mm.hellhoundlib.a.a.a(paramd, "com/tencent/mm/plugin/flutter/model/FlutterCrashReportPlugin", "onMethodCall", "(Lio/flutter/plugin/common/MethodCall;Lio/flutter/plugin/common/MethodChannel$Result;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+        com.tencent.mm.hellhoundlib.a.a.b(paramd, paramj.aFh(), "com/tencent/mm/plugin/flutter/model/FlutterCrashReportPlugin", "onMethodCall", "(Lio/flutter/plugin/common/MethodCall;Lio/flutter/plugin/common/MethodChannel$Result;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+        Process.killProcess(((Integer)paramj.sf(0)).intValue());
+        com.tencent.mm.hellhoundlib.a.a.c(paramd, "com/tencent/mm/plugin/flutter/model/FlutterCrashReportPlugin", "onMethodCall", "(Lio/flutter/plugin/common/MethodCall;Lio/flutter/plugin/common/MethodChannel$Result;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
         paramj = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
         paramd = new Object();
-        com.tencent.mm.hellhoundlib.a.a.a(paramd, paramj.axQ(), "com/tencent/mm/plugin/flutter/model/FlutterCrashReportPlugin", "onMethodCall", "(Lio/flutter/plugin/common/MethodCall;Lio/flutter/plugin/common/MethodChannel$Result;)V", "java/lang/System_EXEC_", "exit", "(I)V");
-        System.exit(((Integer)paramj.pG(0)).intValue());
-        com.tencent.mm.hellhoundlib.a.a.a(paramd, "com/tencent/mm/plugin/flutter/model/FlutterCrashReportPlugin", "onMethodCall", "(Lio/flutter/plugin/common/MethodCall;Lio/flutter/plugin/common/MethodChannel$Result;)V", "java/lang/System_EXEC_", "exit", "(I)V");
+        com.tencent.mm.hellhoundlib.a.a.b(paramd, paramj.aFh(), "com/tencent/mm/plugin/flutter/model/FlutterCrashReportPlugin", "onMethodCall", "(Lio/flutter/plugin/common/MethodCall;Lio/flutter/plugin/common/MethodChannel$Result;)V", "java/lang/System_EXEC_", "exit", "(I)V");
+        System.exit(((Integer)paramj.sf(0)).intValue());
+        com.tencent.mm.hellhoundlib.a.a.c(paramd, "com/tencent/mm/plugin/flutter/model/FlutterCrashReportPlugin", "onMethodCall", "(Lio/flutter/plugin/common/MethodCall;Lio/flutter/plugin/common/MethodChannel$Result;)V", "java/lang/System_EXEC_", "exit", "(I)V");
       }
     }
   }
   
   public final void b(a.b paramb)
   {
-    AppMethodBeat.i(240943);
-    this.wJr.a(null);
-    AppMethodBeat.o(240943);
+    AppMethodBeat.i(220851);
+    this.BCG.a(null);
+    AppMethodBeat.o(220851);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.model.a
  * JD-Core Version:    0.7.0.1
  */

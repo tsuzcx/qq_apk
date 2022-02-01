@@ -6,24 +6,25 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wxpay.a.c;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 public abstract class HoneyPayBaseUI
   extends WalletBaseUI
 {
+  protected int BkW = a.c.white;
   protected final String TAG = "MicroMsg." + getClass().getSimpleName();
-  protected int wwG = 2131101424;
   
-  protected void dYP()
+  protected void eHM()
   {
-    setActionbarColor(getResources().getColor(this.wwG));
+    setActionbarColor(getResources().getColor(this.BkW));
     hideActionbarLine();
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    dYP();
+    eHM();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)

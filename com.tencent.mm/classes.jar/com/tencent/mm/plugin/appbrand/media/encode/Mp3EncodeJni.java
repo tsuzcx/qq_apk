@@ -10,7 +10,7 @@ public class Mp3EncodeJni
   {
     AppMethodBeat.i(146314);
     Mp3EncodeJni.class.getClassLoader();
-    h.bPg().ef("mp3lame");
+    h.cbw().eG("mp3lame");
     AppMethodBeat.o(146314);
   }
   

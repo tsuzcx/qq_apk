@@ -7,15 +7,15 @@ import java.util.concurrent.Executor;
 
 public class b
 {
-  private static final LinkedList<a> dbM = new LinkedList();
-  public int dbL = 0;
+  private static final LinkedList<a> dfO = new LinkedList();
+  public int dfN = 0;
   private Executor executor;
   public final List<a> list = new LinkedList();
   public long time;
   
-  public void L(List<a> paramList) {}
+  public void J(List<a> paramList) {}
   
-  public int TD()
+  public int Yh()
   {
     return 0;
   }
@@ -32,21 +32,21 @@ public class b
   
   public static final class a
   {
-    public String dbP;
-    public long dbQ;
-    public long dbR;
-    public int dbS;
-    public long dbT;
-    public long dbU;
-    public long dbV;
-    public long dbW;
-    public boolean dbn;
+    public String dfR;
+    public long dfS;
+    public long dfT;
+    public int dfU;
+    public long dfV;
+    public long dfW;
+    public long dfX;
+    public long dfY;
+    public boolean dfp;
     
-    public static a TF()
+    public static a Yj()
     {
       synchronized ()
       {
-        a locala = (a)b.TE().poll();
+        a locala = (a)b.Yi().poll();
         ??? = locala;
         if (locala == null) {
           ??? = new a();
@@ -58,7 +58,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.trace.e.b
  * JD-Core Version:    0.7.0.1
  */

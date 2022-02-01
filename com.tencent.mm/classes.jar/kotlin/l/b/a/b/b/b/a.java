@@ -23,21 +23,21 @@ public abstract interface a
   public static final class a
     implements a
   {
-    public static final a TjP;
+    public static final a aaMJ;
     
     static
     {
       AppMethodBeat.i(56986);
-      TjP = new a();
+      aaMJ = new a();
       AppMethodBeat.o(56986);
     }
     
     public final Collection<am> a(f paramf, e parame)
     {
       AppMethodBeat.i(56983);
-      p.h(paramf, "name");
-      p.h(parame, "classDescriptor");
-      paramf = (Collection)v.SXr;
+      p.k(paramf, "name");
+      p.k(parame, "classDescriptor");
+      paramf = (Collection)v.aaAd;
       AppMethodBeat.o(56983);
       return paramf;
     }
@@ -45,8 +45,8 @@ public abstract interface a
     public final Collection<ab> l(e parame)
     {
       AppMethodBeat.i(56982);
-      p.h(parame, "classDescriptor");
-      parame = (Collection)v.SXr;
+      p.k(parame, "classDescriptor");
+      parame = (Collection)v.aaAd;
       AppMethodBeat.o(56982);
       return parame;
     }
@@ -54,8 +54,8 @@ public abstract interface a
     public final Collection<f> m(e parame)
     {
       AppMethodBeat.i(56984);
-      p.h(parame, "classDescriptor");
-      parame = (Collection)v.SXr;
+      p.k(parame, "classDescriptor");
+      parame = (Collection)v.aaAd;
       AppMethodBeat.o(56984);
       return parame;
     }
@@ -63,8 +63,8 @@ public abstract interface a
     public final Collection<d> o(e parame)
     {
       AppMethodBeat.i(56985);
-      p.h(parame, "classDescriptor");
-      parame = (Collection)v.SXr;
+      p.k(parame, "classDescriptor");
+      parame = (Collection)v.aaAd;
       AppMethodBeat.o(56985);
       return parame;
     }
@@ -72,7 +72,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.b.a
  * JD-Core Version:    0.7.0.1
  */

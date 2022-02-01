@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.downloader_app.api.a.c;
 import com.tencent.mm.plugin.downloader_app.api.c;
 import com.tencent.mm.plugin.game.luggage.g.i;
@@ -29,9 +29,9 @@ public class t
         localIntent.putExtra("appId", paramString);
         localIntent.putExtra("view_task", true);
         localIntent.addFlags(268435456);
-        ((c)g.af(c.class)).a(paramContext, localIntent, new a.c()
+        ((c)h.ae(c.class)).a(paramContext, localIntent, new a.c()
         {
-          public final void bEx()
+          public final void bPX()
           {
             AppMethodBeat.i(83075);
             parama.i(null, null);
@@ -56,7 +56,7 @@ public class t
   
   public final void b(b<i>.a paramb) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 2;
   }

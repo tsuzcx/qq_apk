@@ -6,7 +6,7 @@
     <TextView android:textSize="@dimen/l" android:textColor="@color/a2x" android:gravity="center_horizontal" android:id="@id/bep" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_below="@id/bfd" />
     <LinearLayout android:orientation="vertical" android:id="@id/dll" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cs" android:layout_below="@id/bfd">
         <ImageView android:id="@id/boz" style="@style/hx" />
-        <android.support.v7.widget.RecyclerView android:id="@id/ux" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/ux" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never" />
     </LinearLayout>
     <RelativeLayout android:gravity="bottom|center" android:id="@id/aau" android:paddingBottom="96.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
         <Button android:gravity="center" android:id="@id/d50" android:visibility="gone" android:layout_width="@dimen/c8" android:layout_height="@dimen/cl" android:text="@string/hu_" style="@style/ov" />

@@ -6,6 +6,7 @@ import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
 
 public class Apn
 {
@@ -101,7 +102,7 @@ public class Apn
     {
       try
       {
-        paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
+        paramContext = (WifiInfo)a.a((WifiManager)paramContext.getSystemService("wifi"), "com/tencent/smtt/utils/Apn", "getWifiSSID", "(Landroid/content/Context;)Ljava/lang/String;", "android/net/wifi/WifiManager", "getConnectionInfo", "()Landroid/net/wifi/WifiInfo;");
         if (paramContext != null)
         {
           paramContext = paramContext.getBSSID();
@@ -138,7 +139,7 @@ public class Apn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.utils.Apn
  * JD-Core Version:    0.7.0.1
  */

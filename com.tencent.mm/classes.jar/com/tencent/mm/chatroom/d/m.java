@@ -1,16 +1,16 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.blc;
-import com.tencent.mm.protocal.protobuf.bld;
+import com.tencent.mm.protocal.protobuf.bsl;
+import com.tencent.mm.protocal.protobuf.bsm;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class m
@@ -19,8 +19,8 @@ public final class m
 {
   private i callback;
   public String chatroomName;
-  public int gsf;
-  public int gsg;
+  public int iWq;
+  public int iWr;
   public String resultMsg;
   private final d rr;
   public int status;
@@ -30,15 +30,15 @@ public final class m
     AppMethodBeat.i(12473);
     this.callback = null;
     d.a locala = new d.a();
-    locala.iLN = new blc();
-    locala.iLO = new bld();
+    locala.lBU = new bsl();
+    locala.lBV = new bsm();
     locala.uri = "/cgi-bin/micromsg-bin/getchatroomupgradestatus";
     locala.funcId = 519;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
+    this.rr = locala.bgN();
     this.chatroomName = paramString;
-    ((blc)this.rr.iLK.iLR).KGO = paramString;
+    ((bsl)d.b.b(this.rr.lBR)).RIi = paramString;
     AppMethodBeat.o(12473);
   }
   
@@ -59,20 +59,20 @@ public final class m
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(12475);
-    params = (bld)this.rr.iLL.iLR;
+    params = (bsm)d.c.b(this.rr.lBS);
     Log.d("MicroMsg.NetSceneGetChatRoomUpgradeStatus", "NetSceneGetChatRoomUpgradeStatus onGYNetEnd errType:%d, errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.status = params.oTW;
-    this.resultMsg = params.LUf;
-    this.gsg = params.LUg;
-    this.resultMsg = params.LUf;
-    this.gsf = params.LUe;
+    this.status = params.rVU;
+    this.resultMsg = params.TcN;
+    this.iWr = params.TcO;
+    this.resultMsg = params.TcN;
+    this.iWq = params.TcM;
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(12475);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.chatroom.d.m
  * JD-Core Version:    0.7.0.1
  */

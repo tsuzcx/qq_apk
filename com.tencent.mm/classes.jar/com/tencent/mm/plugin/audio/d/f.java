@@ -1,115 +1,115 @@
 package com.tencent.mm.plugin.audio.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ae;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.compatible.deviceinfo.af;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/audio/util/XSettingWithAudioUtil;", "", "()V", "getForbidRefreshTime", "", "getForbidRequestTimes", "getForbidStrategy", "isAvailableToResponse", "", "plugin-audio_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/audio/util/XSettingWithAudioUtil;", "", "()V", "getForbidRefreshTime", "", "getForbidRequestTimes", "getForbidStrategy", "isAvailableToResponse", "", "plugin-audio_release"})
 public final class f
 {
-  public static final f oIs;
+  public static final f rKi;
   
   static
   {
-    AppMethodBeat.i(224039);
-    oIs = new f();
-    AppMethodBeat.o(224039);
+    AppMethodBeat.i(257801);
+    rKi = new f();
+    AppMethodBeat.o(257801);
   }
   
-  public static final boolean cew()
+  public static final boolean crJ()
   {
-    AppMethodBeat.i(224035);
+    AppMethodBeat.i(257790);
     if (BuildInfo.IS_FLAVOR_RED)
     {
-      AppMethodBeat.o(224035);
+      AppMethodBeat.o(257790);
       return true;
     }
     boolean bool;
-    switch (ae.gKu.gDT)
+    switch (af.juI.jod)
     {
     case 0: 
     default: 
-      bool = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.sjL, false);
-      AppMethodBeat.o(224035);
+      bool = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vUm, false);
+      AppMethodBeat.o(257790);
       return bool;
     case -1: 
-      bool = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.sjL, false);
-      AppMethodBeat.o(224035);
+      bool = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vUm, false);
+      AppMethodBeat.o(257790);
       return bool;
     case 2: 
-      AppMethodBeat.o(224035);
+      AppMethodBeat.o(257790);
       return false;
     }
-    AppMethodBeat.o(224035);
+    AppMethodBeat.o(257790);
     return true;
   }
   
-  public static final int cex()
+  public static final int crK()
   {
-    AppMethodBeat.i(224036);
+    AppMethodBeat.i(257792);
     if (BuildInfo.IS_FLAVOR_RED)
     {
-      AppMethodBeat.o(224036);
+      AppMethodBeat.o(257792);
       return 1;
     }
-    switch (ae.gKu.gDU)
+    switch (af.juI.joe)
     {
     default: 
-      i = ae.gKu.gDU;
-      AppMethodBeat.o(224036);
+      i = af.juI.joe;
+      AppMethodBeat.o(257792);
       return i;
     }
-    int i = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.sjM, 1);
-    AppMethodBeat.o(224036);
+    int i = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vUn, 1);
+    AppMethodBeat.o(257792);
     return i;
   }
   
-  public static final int cey()
+  public static final int crL()
   {
-    AppMethodBeat.i(224037);
+    AppMethodBeat.i(257795);
     if (BuildInfo.IS_FLAVOR_RED)
     {
-      AppMethodBeat.o(224037);
+      AppMethodBeat.o(257795);
       return 50;
     }
-    switch (ae.gKu.gDV)
+    switch (af.juI.jof)
     {
     default: 
-      i = ae.gKu.gDV;
-      AppMethodBeat.o(224037);
+      i = af.juI.jof;
+      AppMethodBeat.o(257795);
       return i;
     }
-    int i = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.sjN, 50);
-    AppMethodBeat.o(224037);
+    int i = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vUo, 50);
+    AppMethodBeat.o(257795);
     return i;
   }
   
-  public static final int cez()
+  public static final int crM()
   {
-    AppMethodBeat.i(224038);
+    AppMethodBeat.i(257797);
     if (BuildInfo.IS_FLAVOR_RED)
     {
-      AppMethodBeat.o(224038);
+      AppMethodBeat.o(257797);
       return 2;
     }
-    switch (ae.gKu.gDW)
+    switch (af.juI.jog)
     {
     default: 
-      i = ae.gKu.gDW;
-      AppMethodBeat.o(224038);
+      i = af.juI.jog;
+      AppMethodBeat.o(257797);
       return i;
     }
-    int i = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.sjO, 2);
-    AppMethodBeat.o(224038);
+    int i = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vUp, 2);
+    AppMethodBeat.o(257797);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.audio.d.f
  * JD-Core Version:    0.7.0.1
  */

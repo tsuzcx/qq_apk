@@ -1,43 +1,67 @@
 package com.tencent.mm.modelmulti;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.j;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.aa;
+import com.tencent.mm.an.aa.b;
+import com.tencent.mm.an.j;
+import com.tencent.mm.an.n;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Objects;
 
 public final class o
 {
-  private static c jdH = null;
+  private static c lUg = null;
   
-  public static e Pl(String paramString)
+  public static e WI(String paramString)
   {
-    AppMethodBeat.i(225966);
-    d locald = d.jdK;
+    AppMethodBeat.i(239005);
+    d locald = d.lUj;
     e locale = new e();
     locale.toUser = paramString;
-    locale.jec = locald;
-    AppMethodBeat.o(225966);
+    locale.lUB = locald;
+    AppMethodBeat.o(239005);
     return locale;
   }
   
   public static e a(d paramd)
   {
-    AppMethodBeat.i(225967);
+    AppMethodBeat.i(239007);
     e locale = new e();
-    locale.jec = paramd;
-    AppMethodBeat.o(225967);
+    locale.lUB = paramd;
+    AppMethodBeat.o(239007);
     return locale;
   }
   
   static void a(c paramc)
   {
-    jdH = paramc;
+    lUg = paramc;
   }
   
   public static final class a
   {
-    public q dGJ;
-    public long jdI;
+    public q fzz;
+    public long lUh;
+  }
+  
+  public static final class b<T extends q>
+  {
+    public long lUh;
+    public T lUi;
+    
+    public final boolean aEv()
+    {
+      AppMethodBeat.i(239472);
+      if (this.lUi == null) {
+        Log.e("SendMsgCgiFactory", "[execute] cgi is null. %s", new Object[] { Util.getStack() });
+      }
+      Objects.requireNonNull(this.lUi);
+      boolean bool = aa.lDv.aGZ().a(this.lUi, 0);
+      AppMethodBeat.o(239472);
+      return bool;
+    }
   }
   
   public static abstract interface c
@@ -49,14 +73,14 @@ public final class o
   {
     static
     {
-      AppMethodBeat.i(225964);
-      jdK = new d("TEXT", 0);
-      jdL = new d("IMAGE", 1);
-      jdM = new d("VIDEO", 2);
-      jdN = new d("CDN_IMAGE", 3);
-      jdO = new d("EMOJI", 4);
-      jdP = new d[] { jdK, jdL, jdM, jdN, jdO };
-      AppMethodBeat.o(225964);
+      AppMethodBeat.i(241232);
+      lUj = new d("TEXT", 0);
+      lUk = new d("IMAGE", 1);
+      lUl = new d("VIDEO", 2);
+      lUm = new d("CDN_IMAGE", 3);
+      lUn = new d("EMOJI", 4);
+      lUo = new d[] { lUj, lUk, lUl, lUm, lUn };
+      AppMethodBeat.o(241232);
     }
     
     private d() {}
@@ -64,66 +88,66 @@ public final class o
   
   public static class e
   {
-    public int cSx;
+    public int cUP;
     public String content;
-    public int dQd;
-    public String dRL;
-    public float dTj;
-    public int hmk;
-    public boolean hmr;
-    public int iXp;
-    public String iXy = "";
-    public String iZr;
-    public String iZt = "";
-    public Object jdQ;
-    public int jdR;
-    public j jdS;
-    public n jdT;
-    public int jdU;
-    public boolean jdV;
-    public long jdW;
-    public long jdX;
-    public String jdY;
-    public int jdZ;
-    public boolean jea;
-    public int jeb;
-    public o.d jec;
+    public int fJu;
+    public String fLi;
+    public int jXU;
+    public boolean jYb;
+    public int lNK;
+    public String lNS = "";
+    public String lPM;
+    public String lPO = "";
+    public int lUA;
+    public o.d lUB;
+    public Object lUp;
+    public int lUq;
+    public j lUr;
+    public n lUs;
+    public int lUt;
+    public boolean lUu;
+    public long lUv;
+    public long lUw;
+    public String lUx;
+    public int lUy;
+    public boolean lUz;
     public float latitude;
+    public float longitude;
     public long msgId;
     public String thumbPath = "";
     public String toUser;
     public int type;
     
-    public final <T extends q> o.b<T> bdQ()
+    public final <T extends q> o.b<T> bnl()
     {
-      AppMethodBeat.i(225965);
+      AppMethodBeat.i(241148);
       o.b localb = new o.b();
-      if (o.bdP() != null)
+      if (o.bnk() != null)
       {
-        o.a locala = o.bdP().a(this);
-        localb.jdJ = locala.dGJ;
-        localb.jdI = locala.jdI;
+        o.a locala = o.bnk().a(this);
+        localb.lUi = locala.fzz;
+        localb.lUh = locala.lUh;
       }
-      AppMethodBeat.o(225965);
+      AppMethodBeat.o(241148);
       return localb;
     }
     
-    public e tD(int paramInt)
+    public e wD(int paramInt)
     {
       this.type = paramInt;
       return this;
     }
     
-    public e tc(int paramInt)
+    public e wb(int paramInt)
     {
-      this.hmk = paramInt;
+      this.jXU = paramInt;
       return this;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelmulti.o
  * JD-Core Version:    0.7.0.1
  */

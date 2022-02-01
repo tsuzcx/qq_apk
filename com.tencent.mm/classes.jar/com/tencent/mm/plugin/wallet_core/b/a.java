@@ -12,6 +12,7 @@ import com.tencent.mm.plugin.wallet_core.ui.WalletOrderInfoUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletPwdConfirmUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletSetPasswordUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletVerifyCodeUI;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
@@ -23,12 +24,12 @@ public abstract class a
 {
   public int a(MMActivity paramMMActivity, int paramInt)
   {
-    return 2131767768;
+    return a.i.wallet_input_card_finish_confirm;
   }
   
   public d a(Activity paramActivity, Bundle paramBundle)
   {
-    K(new Object[] { "start", paramActivity, paramBundle });
+    L(new Object[] { "start", paramActivity, paramBundle });
     if (paramBundle != null) {
       paramBundle.putBoolean("key_is_bind_reg_process", true);
     }
@@ -38,7 +39,7 @@ public abstract class a
   
   public void a(Activity paramActivity, int paramInt, Bundle paramBundle)
   {
-    K(new Object[] { "forward", paramActivity, Integer.valueOf(paramInt), paramBundle });
+    L(new Object[] { "forward", paramActivity, Integer.valueOf(paramInt), paramBundle });
     if (((paramActivity instanceof WalletBankcardIdUI)) || ((paramActivity instanceof WalletConfirmCardIDUI))) {
       b(paramActivity, WalletCardElementUI.class, paramBundle);
     }
@@ -67,12 +68,12 @@ public abstract class a
       return false;
     }
     Log.i("MicroMsg.ProcessManager", "404 bind error, cancel bind!");
-    h.a(paramWalletBaseUI, paramString, null, paramWalletBaseUI.getString(2131767521), false, new DialogInterface.OnClickListener()
+    h.a(paramWalletBaseUI, paramString, null, paramWalletBaseUI.getString(a.i.wallet_cancel_bind), false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(69864);
-        a.this.b(paramWalletBaseUI, a.this.dQL);
+        a.this.b(paramWalletBaseUI, a.a(a.this));
         if (paramWalletBaseUI.isTransparent()) {
           paramWalletBaseUI.finish();
         }
@@ -88,15 +89,15 @@ public abstract class a
     return paramActivity instanceof WalletOrderInfoUI;
   }
   
-  public void g(Activity paramActivity, int paramInt)
+  public void h(Activity paramActivity, int paramInt)
   {
-    K(new Object[] { "back", paramActivity, Integer.valueOf(paramInt) });
+    L(new Object[] { "back", paramActivity, Integer.valueOf(paramInt) });
     if ((paramActivity instanceof WalletPwdConfirmUI))
     {
       a(paramActivity, WalletSetPasswordUI.class, paramInt);
       return;
     }
-    P(paramActivity);
+    Q(paramActivity);
   }
 }
 

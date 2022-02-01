@@ -2,7 +2,7 @@ package com.tencent.mm.msgsubscription.b.a;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/msgsubscription/model/biz_service/BrandSubscribeMsgServiceProxy$Companion;", "", "()V", "TAG", "", "plugin-comm_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/msgsubscription/model/biz_service/BrandSubscribeMsgServiceProxy$Companion;", "", "()V", "TAG", "", "plugin-comm_release"})
 public final class b$a {}
 
 

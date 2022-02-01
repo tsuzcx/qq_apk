@@ -4,21 +4,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/media/KV18589Report;", "", "()V", "OP_CANCEL", "", "OP_FAV", "OP_SEND_TO_FRIEND", "OP_SNS", "SCENE_CHAT", "SCENE_FAV", "SCENE_MP", "SCENE_SNS", "SHOW_MENU_FROM_JSAPI", "SHOW_MENU_FROM_JSAPI_SHARE", "SHOW_MENU_FROM_LONG_PRESS", "SHOW_MENU_FROM_MORE", "SHOW_MENU_FROM_SHARE", "TAG", "", "reportMenuClick", "", "opType", "from", "scene", "reportShowMenu", "plugin-webview_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/media/KV18589Report;", "", "()V", "OP_CANCEL", "", "OP_FAV", "OP_SEND_TO_FRIEND", "OP_SNS", "SCENE_CHAT", "SCENE_FAV", "SCENE_MP", "SCENE_SNS", "SHOW_MENU_FROM_JSAPI", "SHOW_MENU_FROM_JSAPI_SHARE", "SHOW_MENU_FROM_LONG_PRESS", "SHOW_MENU_FROM_MORE", "SHOW_MENU_FROM_SHARE", "TAG", "", "reportMenuClick", "", "opType", "from", "scene", "reportShowMenu", "plugin-webview_release"})
 public final class a
 {
-  public static final a JvG;
+  public static final a Qtn;
   private static final String TAG = "MicroMsg.KV18589Report";
   
   static
   {
     AppMethodBeat.i(82580);
-    JvG = new a();
+    Qtn = new a();
     TAG = "MicroMsg.KV18589Report";
     AppMethodBeat.o(82580);
   }
   
-  public static void aN(int paramInt1, int paramInt2, int paramInt3)
+  public static void aR(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(82579);
     h localh;
@@ -26,7 +26,7 @@ public final class a
     {
     case 3: 
     default: 
-      localh = h.CyF;
+      localh = h.IzE;
       switch (paramInt2)
       {
       case 4: 
@@ -40,7 +40,7 @@ public final class a
       localh.a(18589, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt3) });
       AppMethodBeat.o(82579);
       return;
-      localh = h.CyF;
+      localh = h.IzE;
       switch (paramInt2)
       {
       case 4: 
@@ -60,7 +60,7 @@ public final class a
         continue;
         paramInt1 = 19;
       }
-      localh = h.CyF;
+      localh = h.IzE;
       switch (paramInt2)
       {
       case 2: 
@@ -76,7 +76,7 @@ public final class a
         continue;
         paramInt1 = 4;
       }
-      localh = h.CyF;
+      localh = h.IzE;
       switch (paramInt2)
       {
       case 4: 
@@ -106,11 +106,11 @@ public final class a
     }
   }
   
-  public static void kr(int paramInt1, int paramInt2)
+  public static void lL(int paramInt1, int paramInt2)
   {
     int i = 2;
     AppMethodBeat.i(82578);
-    h localh = h.CyF;
+    h localh = h.IzE;
     switch (paramInt1)
     {
     }

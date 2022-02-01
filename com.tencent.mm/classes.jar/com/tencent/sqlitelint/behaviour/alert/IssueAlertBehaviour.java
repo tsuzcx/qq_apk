@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.sqlitelint.R.drawable;
 import com.tencent.sqlitelint.SQLiteLintIssue;
 import com.tencent.sqlitelint.behaviour.BaseBehaviour;
 import com.tencent.sqlitelint.behaviour.persistence.IssueStorage;
@@ -61,7 +62,7 @@ public class IssueAlertBehaviour
     Intent localIntent = new Intent("android.intent.action.MAIN");
     localIntent.setClassName(paramContext, CheckedDatabaseListActivity.class.getName());
     ((Intent)localObject).putExtra("android.intent.extra.shortcut.INTENT", localIntent);
-    ((Intent)localObject).putExtra("android.intent.extra.shortcut.ICON_RESOURCE", Intent.ShortcutIconResource.fromContext(paramContext, 2131235045));
+    ((Intent)localObject).putExtra("android.intent.extra.shortcut.ICON_RESOURCE", Intent.ShortcutIconResource.fromContext(paramContext, R.drawable.sqlite_lint_icon));
     paramContext.sendBroadcast((Intent)localObject);
     AppMethodBeat.o(52904);
   }
@@ -82,13 +83,31 @@ public class IssueAlertBehaviour
       return;
     }
     this.mLastInsertRowId = l;
-    sMainHandler.post(new IssueAlertBehaviour.1(this));
+    sMainHandler.post(new Runnable()
+    {
+      private byte _hellAccFlag_;
+      
+      public void run()
+      {
+        AppMethodBeat.i(52901);
+        Object localObject = new Intent();
+        ((Intent)localObject).setClass(IssueAlertBehaviour.this.mContext, CheckResultActivity.class);
+        ((Intent)localObject).addFlags(268435456);
+        ((Intent)localObject).putExtra("db_label", IssueAlertBehaviour.this.mConcernedDbPath);
+        Context localContext = IssueAlertBehaviour.this.mContext;
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+        com.tencent.mm.hellhoundlib.a.a.b(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/sqlitelint/behaviour/alert/IssueAlertBehaviour$1", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(localContext, "com/tencent/sqlitelint/behaviour/alert/IssueAlertBehaviour$1", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        AppMethodBeat.o(52901);
+      }
+    });
     AppMethodBeat.o(52903);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.sqlitelint.behaviour.alert.IssueAlertBehaviour
  * JD-Core Version:    0.7.0.1
  */

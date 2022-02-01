@@ -4,17 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.Serializable;
 import kotlin.g.b.p;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/Pair;", "A", "B", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "first", "second", "(Ljava/lang/Object;Ljava/lang/Object;)V", "getFirst", "()Ljava/lang/Object;", "Ljava/lang/Object;", "getSecond", "component1", "component2", "copy", "(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;", "equals", "", "other", "", "hashCode", "", "toString", "", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/Pair;", "A", "B", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "first", "second", "(Ljava/lang/Object;Ljava/lang/Object;)V", "getFirst", "()Ljava/lang/Object;", "Ljava/lang/Object;", "getSecond", "component1", "component2", "copy", "(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;", "equals", "", "other", "", "hashCode", "", "toString", "", "kotlin-stdlib"})
 public final class o<A, B>
   implements Serializable
 {
-  public final A first;
-  public final B second;
+  public final A Mx;
+  public final B My;
   
   public o(A paramA, B paramB)
   {
-    this.first = paramA;
-    this.second = paramB;
+    this.Mx = paramA;
+    this.My = paramB;
   }
   
   public final boolean equals(Object paramObject)
@@ -25,7 +25,7 @@ public final class o<A, B>
       if ((paramObject instanceof o))
       {
         paramObject = (o)paramObject;
-        if ((!p.j(this.first, paramObject.first)) || (!p.j(this.second, paramObject.second))) {}
+        if ((!p.h(this.Mx, paramObject.Mx)) || (!p.h(this.My, paramObject.My))) {}
       }
     }
     else
@@ -41,11 +41,11 @@ public final class o<A, B>
   {
     int j = 0;
     AppMethodBeat.i(129573);
-    Object localObject = this.first;
+    Object localObject = this.Mx;
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.second;
+      localObject = this.My;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -57,7 +57,7 @@ public final class o<A, B>
   public final String toString()
   {
     AppMethodBeat.i(129572);
-    String str = "(" + this.first + ", " + this.second + ')';
+    String str = "(" + this.Mx + ", " + this.My + ')';
     AppMethodBeat.o(129572);
     return str;
   }

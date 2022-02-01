@@ -9,14 +9,14 @@ public final class g
   
   static
   {
-    AppMethodBeat.i(219123);
+    AppMethodBeat.i(189578);
     AUTHORITY = WeChatAuthorities.AUTHORITIES_STORAGE_PROVIDER_EMOTION();
-    AppMethodBeat.o(219123);
+    AppMethodBeat.o(189578);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.api.g
  * JD-Core Version:    0.7.0.1
  */

@@ -10,30 +10,30 @@ import org.json.JSONObject;
 public final class t
   extends m
 {
-  public int HIA;
-  public int HIB;
-  public int HIC;
-  public String HIz;
-  public String dYK;
-  public String ega;
+  public String OAr;
+  public int OAs;
+  public int OAt;
+  public int OAu;
+  public String fSC;
+  public String gaq;
   public String packageName;
   public int scene;
   
   public t(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(69576);
-    this.HIB = -1;
+    this.OAt = -1;
     this.scene = -1;
     this.packageName = "";
-    this.HIC = -1;
-    this.dYK = "";
-    this.HIz = paramString1;
-    this.HIA = paramInt;
-    this.ega = paramString2;
+    this.OAu = -1;
+    this.fSC = "";
+    this.OAr = paramString1;
+    this.OAs = paramInt;
+    this.gaq = paramString2;
     HashMap localHashMap = new HashMap();
-    localHashMap.put("cre_id", q.encode(paramString1));
-    localHashMap.put("cre_type", q.encode(String.valueOf(paramInt)));
-    localHashMap.put("true_name", q.encode(paramString2));
+    localHashMap.put("cre_id", q.aT(paramString1));
+    localHashMap.put("cre_type", q.aT(String.valueOf(paramInt)));
+    localHashMap.put("true_name", q.aT(paramString2));
     localHashMap.put("verifyScene", "1");
     setRequestData(localHashMap);
     AppMethodBeat.o(69576);
@@ -62,11 +62,11 @@ public final class t
     {
       paramJSONObject.optString("retcode");
       paramJSONObject.optString("retmsg");
-      this.HIB = paramJSONObject.optInt("is_support_face", 0);
+      this.OAt = paramJSONObject.optInt("is_support_face", 0);
       this.scene = paramJSONObject.optInt("scene", 0);
       this.packageName = paramJSONObject.optString("package");
-      this.HIC = paramJSONObject.optInt("is_need_cert");
-      this.dYK = paramJSONObject.optString("packagesign");
+      this.OAu = paramJSONObject.optInt("is_need_cert");
+      this.fSC = paramJSONObject.optString("packagesign");
     }
     AppMethodBeat.o(69577);
   }

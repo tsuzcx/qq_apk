@@ -11,13 +11,13 @@ public abstract interface a
   
   public abstract void a(h paramh);
   
-  public abstract boolean a(Context paramContext, String paramString, HashMap<String, String> paramHashMap, ValueCallback<String> paramValueCallback);
-  
   public abstract boolean canOpenWebPlus(Context paramContext);
   
   public abstract void closeFileReader(Context paramContext);
   
   public abstract void disableAutoCreateX5Webview();
+  
+  public abstract void disableSensitiveApi();
   
   public abstract void forceSysWebView();
   
@@ -41,7 +41,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.x5.sdk.a
  * JD-Core Version:    0.7.0.1
  */

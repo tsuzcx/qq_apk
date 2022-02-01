@@ -7,34 +7,34 @@ import com.tencent.soter.core.c.c;
 
 public final class e
 {
-  public d RQZ;
-  public String RRa = "";
-  int[] RRb;
-  public c RRc;
-  public String RRd = "";
-  HandlerThread RRe;
+  public d ZtD;
+  public String ZtE = "";
+  int[] ZtF;
+  public c ZtG;
+  public String ZtH = "";
+  HandlerThread ZtI;
   
   public static final class a
   {
-    public e RRf;
+    public e ZtJ;
     
     public a()
     {
       AppMethodBeat.i(31);
-      this.RRf = new e((byte)0);
+      this.ZtJ = new e((byte)0);
       AppMethodBeat.o(31);
     }
     
-    public final a U(int... paramVarArgs)
+    public final a T(int... paramVarArgs)
     {
-      this.RRf.RRb = paramVarArgs;
+      this.ZtJ.ZtF = paramVarArgs;
       return this;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.soter.a.g.e
  * JD-Core Version:    0.7.0.1
  */

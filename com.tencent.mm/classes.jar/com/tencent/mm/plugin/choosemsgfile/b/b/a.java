@@ -1,58 +1,63 @@
 package com.tencent.mm.plugin.choosemsgfile.b.b;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
-import com.tencent.mm.g.c.eo;
+import androidx.recyclerview.widget.RecyclerView.v;
+import com.tencent.mm.f.c.et;
 import com.tencent.mm.plugin.choosemsgfile.b.c.g;
-import com.tencent.mm.plugin.choosemsgfile.ui.c;
+import com.tencent.mm.plugin.choosemsgfile.ui.e;
 import com.tencent.mm.storage.ca;
 
 public abstract class a<T extends RecyclerView.v>
 {
-  protected int aqi;
-  protected int fs;
-  g qnE;
-  protected int qnF = 0;
-  public ca qnv;
+  protected int sL;
+  public ca tMi;
+  private g tMr;
+  protected int tMs = 0;
+  protected int zP;
   
   public a(g paramg)
   {
-    this.qnE = paramg;
+    this.tMr = paramg;
   }
   
   public a(g paramg, ca paramca)
   {
-    this.qnE = paramg;
-    this.qnv = paramca;
+    this.tMr = paramg;
+    this.tMi = paramca;
   }
   
   public void V(T paramT) {}
   
-  public void a(T paramT, int paramInt, a parama) {}
-  
   public void a(View paramView, a parama) {}
+  
+  public void a(T paramT, int paramInt, a parama) {}
   
   public final void a(boolean paramBoolean, a parama, T paramT)
   {
-    this.qnE.a(paramBoolean, parama, paramT);
+    this.tMr.a(paramBoolean, parama, paramT);
   }
   
-  protected final com.tencent.mm.plugin.choosemsgfile.b.d.a cys()
+  public final g cMM()
   {
-    return this.qnE.cyC().cys();
+    return this.tMr;
   }
   
-  public int cyt()
+  protected final com.tencent.mm.plugin.choosemsgfile.b.d.a cMN()
+  {
+    return this.tMr.cMX().cMN();
+  }
+  
+  public int cMO()
   {
     return 0;
   }
   
-  public final void cyu()
+  public final void cMP()
   {
     try
     {
-      this.qnF = 1;
+      this.tMs = 1;
       return;
     }
     finally
@@ -62,11 +67,11 @@ public abstract class a<T extends RecyclerView.v>
     }
   }
   
-  public final void cyv()
+  public final void cMQ()
   {
     try
     {
-      this.qnF = 3;
+      this.tMs = 3;
       return;
     }
     finally
@@ -76,11 +81,11 @@ public abstract class a<T extends RecyclerView.v>
     }
   }
   
-  public final void cyw()
+  public final void cMR()
   {
     try
     {
-      this.qnF = 4;
+      this.tMs = 4;
       return;
     }
     finally
@@ -90,11 +95,11 @@ public abstract class a<T extends RecyclerView.v>
     }
   }
   
-  public final void cyx()
+  public final void cMS()
   {
     try
     {
-      this.qnF = 5;
+      this.tMs = 5;
       return;
     }
     finally
@@ -104,11 +109,11 @@ public abstract class a<T extends RecyclerView.v>
     }
   }
   
-  public final void cyy()
+  public final void cMT()
   {
     try
     {
-      this.qnF = 0;
+      this.tMs = 0;
       return;
     }
     finally
@@ -120,19 +125,19 @@ public abstract class a<T extends RecyclerView.v>
   
   public boolean equals(Object paramObject)
   {
-    if ((this.qnv != null) && ((paramObject instanceof ca)) && (paramObject != null)) {
-      return this.qnv.field_msgId == ((ca)paramObject).field_msgId;
+    if ((this.tMi != null) && ((paramObject instanceof ca)) && (paramObject != null)) {
+      return this.tMi.field_msgId == ((ca)paramObject).field_msgId;
     }
     return super.equals(paramObject);
   }
   
-  public final void fm(int paramInt1, int paramInt2)
+  public final void fJ(int paramInt1, int paramInt2)
   {
     try
     {
-      this.qnF = 2;
-      this.fs = paramInt1;
-      this.aqi = paramInt2;
+      this.tMs = 2;
+      this.zP = paramInt1;
+      this.sL = paramInt2;
       return;
     }
     finally
@@ -144,7 +149,7 @@ public abstract class a<T extends RecyclerView.v>
   
   protected final Context getContext()
   {
-    return this.qnE.cyC().getContext();
+    return this.tMr.cMX().getContext();
   }
   
   public String getFileExt()
@@ -159,29 +164,29 @@ public abstract class a<T extends RecyclerView.v>
   
   public long getTimeStamp()
   {
-    return this.qnv.field_createTime;
+    return this.tMi.field_createTime;
   }
   
   public abstract int getType();
   
   public final boolean isEnable()
   {
-    return (!this.qnE.cyC().cys().isInvalid()) || (this.qnE.cyC().cys().BY(this.qnv.field_msgId));
+    return (!this.tMr.cMX().cMN().isInvalid()) || (this.tMr.cMX().cMN().Ih(this.tMi.field_msgId));
   }
   
   public final boolean isInvalid()
   {
-    return (this.qnF == 4) || (this.qnF == 5);
+    return (this.tMs == 4) || (this.tMs == 5);
   }
   
   public String toString()
   {
-    return "MsgItem{msgInfo=" + this.qnv.field_msgId + '}';
+    return "MsgItem{msgInfo=" + this.tMi.field_msgId + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.a
  * JD-Core Version:    0.7.0.1
  */

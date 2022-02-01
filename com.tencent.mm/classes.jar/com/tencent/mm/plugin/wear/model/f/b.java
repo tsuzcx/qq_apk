@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.wear.model.f;
 
 import android.content.Context;
-import com.tencent.mm.g.c.eo;
+import com.tencent.mm.R.l;
+import com.tencent.mm.f.c.et;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bp;
+import com.tencent.mm.model.bq;
 import com.tencent.mm.plugin.wear.model.h;
-import com.tencent.mm.protocal.protobuf.eyz;
+import com.tencent.mm.protocal.protobuf.fjq;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.storage.ca;
 
@@ -14,20 +15,20 @@ public abstract class b
 {
   protected static String c(String paramString, ca paramca)
   {
-    if (ab.Eq(paramString))
+    if (ab.Lj(paramString))
     {
       paramString = d(paramString, paramca);
-      return String.format(MMApplicationContext.getContext().getString(2131763669), new Object[] { h.aWo(paramString), Character.valueOf('​'), h.aP(paramca).iAc });
+      return String.format(MMApplicationContext.getContext().getString(R.l.eNt), new Object[] { h.bhV(paramString), Character.valueOf('​'), h.bd(paramca).lpy });
     }
-    return String.format(MMApplicationContext.getContext().getString(2131763670), new Object[] { h.aP(paramca).iAc });
+    return String.format(MMApplicationContext.getContext().getString(R.l.eNu), new Object[] { h.bd(paramca).lpy });
   }
   
   protected static String d(String paramString, ca paramca)
   {
     Object localObject = paramString;
-    if (ab.Eq(paramString))
+    if (ab.Lj(paramString))
     {
-      int i = bp.Kp(paramca.field_content);
+      int i = bq.RI(paramca.field_content);
       localObject = paramString;
       if (i != -1)
       {
@@ -47,7 +48,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.b
  * JD-Core Version:    0.7.0.1
  */

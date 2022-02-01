@@ -7,82 +7,66 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
+import android.view.Window;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.an.q;
+import com.tencent.mm.plugin.wxpay.a.a;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView.a;
+import com.tencent.mm.wallet_core.ui.g;
 
 @com.tencent.mm.ui.base.a(3)
 public class WalletCheckPwdNewUI
   extends WalletBaseUI
 {
-  private EditHintPasswdView HKf;
-  private a Igd;
-  TextView Ige;
-  private TextView Igf;
-  private LinearLayout Igg;
-  private ImageView Igh;
-  private TextView Igi;
-  private LinearLayout Igj;
-  private LinearLayout Igk;
-  private TextView Igl;
-  private ScrollView Igm;
-  private ImageView avD;
+  private a OYs;
+  TextView Oug;
+  TextView Ouh;
+  private EditHintPasswdView Oui;
+  
+  public void finish()
+  {
+    AppMethodBeat.i(275884);
+    super.finish();
+    overridePendingTransition(a.a.sight_slide_bottom_in, a.a.sight_slide_bottom_out);
+    AppMethodBeat.o(275884);
+  }
   
   public int getLayoutId()
   {
-    return 2131496917;
+    return a.g.wallet_check_pwd;
   }
   
   public void initView()
   {
     AppMethodBeat.i(70889);
-    this.avD = ((ImageView)findViewById(2131298771));
-    this.Ige = ((TextView)findViewById(2131310286));
-    this.Igf = ((TextView)findViewById(2131310281));
-    this.Igg = ((LinearLayout)findViewById(2131310284));
-    this.HKf = ((EditHintPasswdView)findViewById(2131302674));
-    this.Igh = ((ImageView)findViewById(2131301522));
-    this.Igi = ((TextView)findViewById(2131301526));
-    this.Igj = ((LinearLayout)findViewById(2131301523));
-    this.Igk = ((LinearLayout)findViewById(2131310348));
-    this.Igl = ((TextView)findViewById(2131310347));
-    this.Igm = ((ScrollView)findViewById(2131310349));
-    this.avD.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(70885);
-        b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/WalletCheckPwdNewUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        WalletCheckPwdNewUI.a(WalletCheckPwdNewUI.this);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/ui/WalletCheckPwdNewUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(70885);
-      }
-    });
-    com.tencent.mm.wallet_core.ui.formview.a.a(this.HKf);
-    this.HKf.setOnInputValidListener(new EditHintPasswdView.a()
+    this.Oug = ((TextView)findViewById(a.f.wallet_pwd_title));
+    this.Ouh = ((TextView)findViewById(a.f.wallet_pwd_content));
+    this.Oui = ((EditHintPasswdView)findViewById(a.f.input_et));
+    g.N(this.Oug);
+    this.Oug.setTextSize(1, 22.0F);
+    this.Ouh.setTextSize(1, 17.0F);
+    hideKeyboardPushDownBtn();
+    com.tencent.mm.wallet_core.ui.formview.a.a(this.Oui);
+    this.Oui.setOnInputValidListener(new EditHintPasswdView.a()
     {
       public final void onInputValidChange(boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(70886);
+        AppMethodBeat.i(278133);
         Log.i("MicroMsg.WalletCheckPwdNewUI", "input isValid: %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
         if (paramAnonymousBoolean) {
-          WalletCheckPwdNewUI.c(WalletCheckPwdNewUI.this).aVF(WalletCheckPwdNewUI.b(WalletCheckPwdNewUI.this).getText());
+          WalletCheckPwdNewUI.c(WalletCheckPwdNewUI.this).bho(WalletCheckPwdNewUI.b(WalletCheckPwdNewUI.this).getText());
         }
-        AppMethodBeat.o(70886);
+        AppMethodBeat.o(278133);
       }
     });
-    setEditFocusListener(this.HKf, 0, false);
+    setEditFocusListener(this.Oui, 0, false);
     showTenpayKB();
     AppMethodBeat.o(70889);
   }
@@ -94,13 +78,13 @@ public class WalletCheckPwdNewUI
     int i = getIntent().getIntExtra("scene", -1);
     Log.i("MicroMsg.WalletCheckPwdNewUI", "scene: %s", new Object[] { Integer.valueOf(i) });
     if (i == 3) {}
-    for (this.Igd = new h(this);; this.Igd = new c(this))
+    for (this.OYs = new i(this);; this.OYs = new d(this))
     {
-      setActionbarColor(getResources().getColor(2131101424));
-      hideTitleView();
-      hideActionbarLine();
+      setActionbarColor(getResources().getColor(a.c.white));
+      setMMTitle("");
+      overridePendingTransition(a.a.sight_slide_bottom_in, a.a.sight_slide_bottom_out);
       initView();
-      this.Igd.onCreate();
+      this.OYs.onCreate();
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -111,6 +95,9 @@ public class WalletCheckPwdNewUI
           return false;
         }
       });
+      if (g.ijx()) {
+        getWindow().addFlags(8192);
+      }
       AppMethodBeat.o(70887);
       return;
     }
@@ -160,14 +147,14 @@ public class WalletCheckPwdNewUI
   
   public static abstract interface a
   {
-    public abstract void aVF(String paramString);
+    public abstract void bho(String paramString);
     
     public abstract void onCreate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdNewUI
  * JD-Core Version:    0.7.0.1
  */

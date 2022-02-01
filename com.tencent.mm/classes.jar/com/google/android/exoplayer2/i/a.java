@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static int bh(int paramInt1, int paramInt2)
+  public static int bp(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(93109);
     if ((paramInt1 < 0) || (paramInt1 >= paramInt2))
@@ -80,7 +80,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.i.a
  * JD-Core Version:    0.7.0.1
  */

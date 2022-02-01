@@ -4,8 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
-import com.tencent.mm.g.a.ag;
+import com.tencent.mm.by.c;
+import com.tencent.mm.f.a.ah;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 
@@ -27,8 +27,8 @@ public class BakOldUSBReceiver
       }
       if ("MMBakchatServiceStop".equalsIgnoreCase(str))
       {
-        paramIntent = new ag();
-        paramIntent.dDf.dDg = paramContext;
+        paramIntent = new ah();
+        paramIntent.fvL.fvM = paramContext;
         EventCenter.instance.publish(paramIntent);
         Log.d("MicroMsg.BakOldUSBReceiver", "STOP_ACTION onReceive stop end");
       }
@@ -44,7 +44,7 @@ public class BakOldUSBReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.BakOldUSBReceiver
  * JD-Core Version:    0.7.0.1
  */

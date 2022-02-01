@@ -14,13 +14,13 @@ import java.io.RandomAccessFile;
 public class k
   implements t
 {
-  private long bEJ;
+  private long bom;
   private RandomAccessFile file;
-  private final s mxN = null;
-  private long mxP = -1L;
-  private String mxw = "";
-  private String myk;
   private boolean opened;
+  private String pvQ = "";
+  private String pwE;
+  private final s pwh = null;
+  private long pwj = -1L;
   private Uri uri;
   
   public k()
@@ -32,7 +32,7 @@ public class k
   
   public final long a(g paramg)
   {
-    AppMethodBeat.i(234751);
+    AppMethodBeat.i(229137);
     for (;;)
     {
       try
@@ -40,60 +40,60 @@ public class k
         this.uri = paramg.uri;
         this.file = new RandomAccessFile(paramg.uri.getPath(), "r");
         this.file.seek(paramg.position);
-        if (paramg.length == -1L)
+        if (paramg.aFL == -1L)
         {
           l = this.file.length() - paramg.position;
-          this.bEJ = l;
-          this.mxP = (this.file.length() - paramg.position);
-          if (this.bEJ >= 0L) {
+          this.bom = l;
+          this.pwj = (this.file.length() - paramg.position);
+          if (this.bom >= 0L) {
             break;
           }
           paramg = new EOFException();
-          AppMethodBeat.o(234751);
+          AppMethodBeat.o(229137);
           throw paramg;
         }
       }
       catch (IOException paramg)
       {
         paramg = new a(paramg);
-        AppMethodBeat.o(234751);
+        AppMethodBeat.o(229137);
         throw paramg;
       }
-      l = paramg.length;
+      l = paramg.aFL;
     }
     this.opened = true;
-    if (this.mxN != null) {
-      this.mxN.onTransferStart();
+    if (this.pwh != null) {
+      this.pwh.onTransferStart();
     }
-    long l = this.bEJ;
-    AppMethodBeat.o(234751);
+    long l = this.bom;
+    AppMethodBeat.o(229137);
     return l;
   }
   
   public final long available()
   {
-    return this.mxP;
+    return this.pwj;
   }
   
-  public c bJP()
+  public c bVy()
   {
-    AppMethodBeat.i(234755);
-    Object localObject = a.bJK().appContext.getContentResolver().getType(this.uri);
+    AppMethodBeat.i(229148);
+    Object localObject = a.bVt().appContext.getContentResolver().getType(this.uri);
     if (localObject == null)
     {
-      localObject = c.myw;
-      AppMethodBeat.o(234755);
+      localObject = c.pwQ;
+      AppMethodBeat.o(229148);
       return localObject;
     }
-    localObject = c.abd((String)localObject);
-    AppMethodBeat.o(234755);
+    localObject = c.aiX((String)localObject);
+    AppMethodBeat.o(229148);
     return localObject;
   }
   
   public final void close()
   {
-    AppMethodBeat.i(234754);
-    this.myk = null;
+    AppMethodBeat.i(229145);
+    this.pwE = null;
     if (this.file != null) {
       try
       {
@@ -103,7 +103,7 @@ public class k
       catch (IOException localIOException)
       {
         a locala = new a(localIOException);
-        AppMethodBeat.o(234754);
+        AppMethodBeat.o(229145);
         throw locala;
       }
       finally
@@ -112,19 +112,19 @@ public class k
         if (this.opened)
         {
           this.opened = false;
-          if (this.mxN != null) {
-            this.mxN.onTransferEnd();
+          if (this.pwh != null) {
+            this.pwh.onTransferEnd();
           }
         }
-        AppMethodBeat.o(234754);
+        AppMethodBeat.o(229145);
       }
     }
-    AppMethodBeat.o(234754);
+    AppMethodBeat.o(229145);
   }
   
   public final long getTotalLength()
   {
-    AppMethodBeat.i(234756);
+    AppMethodBeat.i(229149);
     long l1 = 0L;
     try
     {
@@ -136,53 +136,53 @@ public class k
       label17:
       break label17;
     }
-    AppMethodBeat.o(234756);
+    AppMethodBeat.o(229149);
     return l1;
   }
   
   public final String getUri()
   {
-    AppMethodBeat.i(234753);
-    if ((TextUtils.isEmpty(this.myk)) && (this.uri != null)) {
-      this.myk = this.uri.toString();
+    AppMethodBeat.i(229143);
+    if ((TextUtils.isEmpty(this.pwE)) && (this.uri != null)) {
+      this.pwE = this.uri.toString();
     }
-    String str = this.myk;
-    AppMethodBeat.o(234753);
+    String str = this.pwE;
+    AppMethodBeat.o(229143);
     return str;
   }
   
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(234752);
-    if (this.bEJ == 0L)
+    AppMethodBeat.i(229141);
+    if (this.bom == 0L)
     {
-      AppMethodBeat.o(234752);
+      AppMethodBeat.o(229141);
       return -1;
     }
     try
     {
-      paramInt1 = this.file.read(paramArrayOfByte, paramInt1, (int)Math.min(this.bEJ, paramInt2));
+      paramInt1 = this.file.read(paramArrayOfByte, paramInt1, (int)Math.min(this.bom, paramInt2));
       if (paramInt1 > 0)
       {
-        this.bEJ -= paramInt1;
-        if (this.mxN != null) {
-          this.mxN.xx(paramInt1);
+        this.bom -= paramInt1;
+        if (this.pwh != null) {
+          this.pwh.AU(paramInt1);
         }
       }
-      AppMethodBeat.o(234752);
+      AppMethodBeat.o(229141);
       return paramInt1;
     }
     catch (IOException paramArrayOfByte)
     {
       paramArrayOfByte = new a(paramArrayOfByte);
-      AppMethodBeat.o(234752);
+      AppMethodBeat.o(229141);
       throw paramArrayOfByte;
     }
   }
   
   public final void setLogTag(String paramString)
   {
-    this.mxw = paramString;
+    this.pvQ = paramString;
   }
   
   public static final class a
@@ -196,7 +196,7 @@ public class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.b.k
  * JD-Core Version:    0.7.0.1
  */

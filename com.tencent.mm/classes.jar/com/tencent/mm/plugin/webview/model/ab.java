@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.drj;
-import com.tencent.mm.protocal.protobuf.drk;
+import com.tencent.mm.protocal.protobuf.ebf;
+import com.tencent.mm.protocal.protobuf.ebg;
 
 public final class ab
   extends q
   implements m
 {
-  private i heq;
+  private i jQg;
   public final d rr;
   
   public ab(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    AppMethodBeat.i(210977);
+    AppMethodBeat.i(241596);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new drj();
-    ((d.a)localObject).iLO = new drk();
+    ((d.a)localObject).lBU = new ebf();
+    ((d.a)localObject).lBV = new ebg();
     ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/sdk_oauth_authorize";
     ((d.a)localObject).funcId = 1388;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (drj)this.rr.iLK.iLR;
-    ((drj)localObject).dNI = paramString1;
-    ((drj)localObject).scope = paramString2;
-    ((drj)localObject).state = paramString3;
-    ((drj)localObject).MTR = paramString6;
-    ((drj)localObject).MTY = paramString4;
-    ((drj)localObject).MTZ = paramString5;
-    AppMethodBeat.o(210977);
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (ebf)d.b.b(this.rr.lBR);
+    ((ebf)localObject).appid = paramString1;
+    ((ebf)localObject).scope = paramString2;
+    ((ebf)localObject).state = paramString3;
+    ((ebf)localObject).Uga = paramString6;
+    ((ebf)localObject).Ugh = paramString4;
+    ((ebf)localObject).Ugi = paramString5;
+    AppMethodBeat.o(241596);
   }
   
   public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(78929);
-    this.heq = parami;
+    this.jQg = parami;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(78929);
     return i;
@@ -57,7 +57,7 @@ public final class ab
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(78928);
-    this.heq.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    this.jQg.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(78928);
   }
 }

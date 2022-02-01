@@ -9,8 +9,8 @@ import java.util.Map;
 public final class h
   extends m
 {
-  public MallOrderDetailObject AOR;
-  private int AOS;
+  public MallOrderDetailObject GIf;
+  private int GIg;
   
   public h(String paramString)
   {
@@ -25,15 +25,15 @@ public final class h
   public h(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(66689);
-    this.AOR = null;
-    this.AOS = -1;
+    this.GIf = null;
+    this.GIg = -1;
     HashMap localHashMap = new HashMap();
     localHashMap.put("trans_id", paramString1);
     if (!Util.isNullOrNil(paramString2)) {
       localHashMap.put("bill_id", paramString2);
     }
-    if (this.AOS >= 0) {
-      this.AOS = paramInt;
+    if (this.GIg >= 0) {
+      this.GIg = paramInt;
     }
     setRequestData(localHashMap);
     AppMethodBeat.o(66689);
@@ -56,16 +56,16 @@ public final class h
     //   10: new 66	com/tencent/mm/plugin/order/model/MallOrderDetailObject
     //   13: dup
     //   14: invokespecial 67	com/tencent/mm/plugin/order/model/MallOrderDetailObject:<init>	()V
-    //   17: putfield 27	com/tencent/mm/plugin/order/model/h:AOR	Lcom/tencent/mm/plugin/order/model/MallOrderDetailObject;
+    //   17: putfield 27	com/tencent/mm/plugin/order/model/h:GIf	Lcom/tencent/mm/plugin/order/model/MallOrderDetailObject;
     //   20: aload_0
-    //   21: getfield 27	com/tencent/mm/plugin/order/model/h:AOR	Lcom/tencent/mm/plugin/order/model/MallOrderDetailObject;
+    //   21: getfield 27	com/tencent/mm/plugin/order/model/h:GIf	Lcom/tencent/mm/plugin/order/model/MallOrderDetailObject;
     //   24: astore 7
     //   26: aload_3
     //   27: ifnull +361 -> 388
     //   30: aload 7
     //   32: aload_3
-    //   33: invokestatic 73	com/tencent/mm/plugin/order/model/MallTransactionObject:bh	(Lorg/json/JSONObject;)Lcom/tencent/mm/plugin/order/model/MallTransactionObject;
-    //   36: putfield 77	com/tencent/mm/plugin/order/model/MallOrderDetailObject:ANI	Lcom/tencent/mm/plugin/order/model/MallTransactionObject;
+    //   33: invokestatic 73	com/tencent/mm/plugin/order/model/MallTransactionObject:bo	(Lorg/json/JSONObject;)Lcom/tencent/mm/plugin/order/model/MallTransactionObject;
+    //   36: putfield 77	com/tencent/mm/plugin/order/model/MallOrderDetailObject:GGW	Lcom/tencent/mm/plugin/order/model/MallTransactionObject;
     //   39: aload_3
     //   40: ldc 79
     //   42: invokevirtual 85	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
@@ -80,53 +80,53 @@ public final class h
     //   61: aload 6
     //   63: ldc 90
     //   65: invokevirtual 94	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   68: putfield 98	com/tencent/mm/plugin/order/model/MallOrderDetailObject$b:ANR	Ljava/lang/String;
+    //   68: putfield 98	com/tencent/mm/plugin/order/model/MallOrderDetailObject$b:GHf	Ljava/lang/String;
     //   71: aload_2
     //   72: aload 6
     //   74: ldc 100
     //   76: invokevirtual 104	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   79: putfield 107	com/tencent/mm/plugin/order/model/MallOrderDetailObject$b:hXs	I
+    //   79: putfield 106	com/tencent/mm/plugin/order/model/MallOrderDetailObject$b:time	I
     //   82: aload_2
     //   83: aload 6
-    //   85: ldc 109
+    //   85: ldc 108
     //   87: invokevirtual 94	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   90: putfield 112	com/tencent/mm/plugin/order/model/MallOrderDetailObject$b:thumbUrl	Ljava/lang/String;
+    //   90: putfield 111	com/tencent/mm/plugin/order/model/MallOrderDetailObject$b:thumbUrl	Ljava/lang/String;
     //   93: aload_2
     //   94: aload 6
-    //   96: ldc 114
+    //   96: ldc 113
     //   98: invokevirtual 94	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   101: putfield 117	com/tencent/mm/plugin/order/model/MallOrderDetailObject$b:xIy	Ljava/lang/String;
+    //   101: putfield 116	com/tencent/mm/plugin/order/model/MallOrderDetailObject$b:CMD	Ljava/lang/String;
     //   104: aload_2
     //   105: aload 6
-    //   107: ldc 119
+    //   107: ldc 118
     //   109: invokevirtual 94	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   112: putfield 122	com/tencent/mm/plugin/order/model/MallOrderDetailObject$b:ANS	Ljava/lang/String;
+    //   112: putfield 121	com/tencent/mm/plugin/order/model/MallOrderDetailObject$b:GHg	Ljava/lang/String;
     //   115: aload 7
     //   117: aload_2
-    //   118: putfield 126	com/tencent/mm/plugin/order/model/MallOrderDetailObject:ANJ	Lcom/tencent/mm/plugin/order/model/MallOrderDetailObject$b;
+    //   118: putfield 125	com/tencent/mm/plugin/order/model/MallOrderDetailObject:GGX	Lcom/tencent/mm/plugin/order/model/MallOrderDetailObject$b;
     //   121: aload 7
     //   123: aload_3
-    //   124: invokestatic 130	com/tencent/mm/plugin/order/model/MallOrderDetailObject:bf	(Lorg/json/JSONObject;)Ljava/util/ArrayList;
-    //   127: putfield 134	com/tencent/mm/plugin/order/model/MallOrderDetailObject:ANK	Ljava/util/ArrayList;
+    //   124: invokestatic 129	com/tencent/mm/plugin/order/model/MallOrderDetailObject:bm	(Lorg/json/JSONObject;)Ljava/util/ArrayList;
+    //   127: putfield 133	com/tencent/mm/plugin/order/model/MallOrderDetailObject:GGY	Ljava/util/ArrayList;
     //   130: aload_3
-    //   131: ldc 136
-    //   133: invokevirtual 140	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   131: ldc 135
+    //   133: invokevirtual 139	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
     //   136: astore 6
     //   138: aload 6
     //   140: ifnull +558 -> 698
     //   143: aload 6
-    //   145: invokevirtual 145	org/json/JSONArray:length	()I
+    //   145: invokevirtual 144	org/json/JSONArray:length	()I
     //   148: ifne +347 -> 495
     //   151: goto +547 -> 698
     //   154: aload 7
     //   156: aload_2
-    //   157: putfield 149	com/tencent/mm/plugin/order/model/MallOrderDetailObject:ANL	Ljava/util/List;
+    //   157: putfield 148	com/tencent/mm/plugin/order/model/MallOrderDetailObject:GGZ	Ljava/util/List;
     //   160: aload 7
-    //   162: getfield 149	com/tencent/mm/plugin/order/model/MallOrderDetailObject:ANL	Ljava/util/List;
+    //   162: getfield 148	com/tencent/mm/plugin/order/model/MallOrderDetailObject:GGZ	Ljava/util/List;
     //   165: astore 6
     //   167: aload_3
-    //   168: ldc 151
-    //   170: invokevirtual 154	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   168: ldc 150
+    //   170: invokevirtual 153	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   173: astore 8
     //   175: aload 8
     //   177: ifnull +89 -> 266
@@ -134,149 +134,149 @@ public final class h
     //   182: astore_2
     //   183: aload 6
     //   185: ifnonnull +11 -> 196
-    //   188: new 156	java/util/ArrayList
+    //   188: new 155	java/util/ArrayList
     //   191: dup
-    //   192: invokespecial 157	java/util/ArrayList:<init>	()V
+    //   192: invokespecial 156	java/util/ArrayList:<init>	()V
     //   195: astore_2
-    //   196: new 159	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a
+    //   196: new 158	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a
     //   199: dup
-    //   200: invokespecial 160	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:<init>	()V
+    //   200: invokespecial 159	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:<init>	()V
     //   203: astore 6
     //   205: aload 8
-    //   207: ldc 162
-    //   209: invokevirtual 165	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   207: ldc 161
+    //   209: invokevirtual 164	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   212: ifeq +461 -> 673
     //   215: aload 6
     //   217: aload 8
-    //   219: ldc 162
+    //   219: ldc 161
     //   221: invokevirtual 94	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   224: putfield 167	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:value	Ljava/lang/String;
+    //   224: putfield 166	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:value	Ljava/lang/String;
     //   227: aload 6
     //   229: iconst_2
-    //   230: putfield 170	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:type	I
+    //   230: putfield 169	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:type	I
     //   233: aload 8
-    //   235: ldc 172
+    //   235: ldc 171
     //   237: iconst_0
-    //   238: invokevirtual 175	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   238: invokevirtual 174	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   241: istore_1
     //   242: iload_1
     //   243: iflt +23 -> 266
     //   246: iload_1
     //   247: aload 8
-    //   249: invokevirtual 176	org/json/JSONObject:length	()I
+    //   249: invokevirtual 175	org/json/JSONObject:length	()I
     //   252: iconst_1
     //   253: iadd
     //   254: if_icmpgt +12 -> 266
     //   257: aload_2
     //   258: iload_1
     //   259: aload 6
-    //   261: invokeinterface 182 3 0
+    //   261: invokeinterface 181 3 0
     //   266: aload 7
     //   268: aload_3
-    //   269: ldc 184
+    //   269: ldc 183
     //   271: invokevirtual 94	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   274: putfield 187	com/tencent/mm/plugin/order/model/MallOrderDetailObject:ANO	Ljava/lang/String;
+    //   274: putfield 186	com/tencent/mm/plugin/order/model/MallOrderDetailObject:GHc	Ljava/lang/String;
     //   277: aload 7
     //   279: aload_3
-    //   280: ldc 189
+    //   280: ldc 188
     //   282: invokevirtual 94	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   285: putfield 192	com/tencent/mm/plugin/order/model/MallOrderDetailObject:rJd	Ljava/lang/String;
+    //   285: putfield 191	com/tencent/mm/plugin/order/model/MallOrderDetailObject:voL	Ljava/lang/String;
     //   288: aload 7
     //   290: aload_3
-    //   291: ldc 194
+    //   291: ldc 193
     //   293: invokevirtual 104	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   296: putfield 197	com/tencent/mm/plugin/order/model/MallOrderDetailObject:ANQ	I
+    //   296: putfield 196	com/tencent/mm/plugin/order/model/MallOrderDetailObject:GHe	I
     //   299: aload 7
-    //   301: getfield 126	com/tencent/mm/plugin/order/model/MallOrderDetailObject:ANJ	Lcom/tencent/mm/plugin/order/model/MallOrderDetailObject$b;
+    //   301: getfield 125	com/tencent/mm/plugin/order/model/MallOrderDetailObject:GGX	Lcom/tencent/mm/plugin/order/model/MallOrderDetailObject$b;
     //   304: ifnull +24 -> 328
     //   307: aload 7
-    //   309: getfield 197	com/tencent/mm/plugin/order/model/MallOrderDetailObject:ANQ	I
+    //   309: getfield 196	com/tencent/mm/plugin/order/model/MallOrderDetailObject:GHe	I
     //   312: ifgt +16 -> 328
     //   315: aload 7
     //   317: aload 7
-    //   319: getfield 126	com/tencent/mm/plugin/order/model/MallOrderDetailObject:ANJ	Lcom/tencent/mm/plugin/order/model/MallOrderDetailObject$b;
-    //   322: getfield 107	com/tencent/mm/plugin/order/model/MallOrderDetailObject$b:hXs	I
-    //   325: putfield 197	com/tencent/mm/plugin/order/model/MallOrderDetailObject:ANQ	I
+    //   319: getfield 125	com/tencent/mm/plugin/order/model/MallOrderDetailObject:GGX	Lcom/tencent/mm/plugin/order/model/MallOrderDetailObject$b;
+    //   322: getfield 106	com/tencent/mm/plugin/order/model/MallOrderDetailObject$b:time	I
+    //   325: putfield 196	com/tencent/mm/plugin/order/model/MallOrderDetailObject:GHe	I
     //   328: aload 7
-    //   330: getfield 77	com/tencent/mm/plugin/order/model/MallOrderDetailObject:ANI	Lcom/tencent/mm/plugin/order/model/MallTransactionObject;
+    //   330: getfield 77	com/tencent/mm/plugin/order/model/MallOrderDetailObject:GGW	Lcom/tencent/mm/plugin/order/model/MallTransactionObject;
     //   333: ifnull +55 -> 388
     //   336: aload 7
     //   338: aload 7
-    //   340: getfield 77	com/tencent/mm/plugin/order/model/MallOrderDetailObject:ANI	Lcom/tencent/mm/plugin/order/model/MallTransactionObject;
-    //   343: getfield 200	com/tencent/mm/plugin/order/model/MallTransactionObject:ANP	Ljava/lang/String;
-    //   346: putfield 201	com/tencent/mm/plugin/order/model/MallOrderDetailObject:ANP	Ljava/lang/String;
+    //   340: getfield 77	com/tencent/mm/plugin/order/model/MallOrderDetailObject:GGW	Lcom/tencent/mm/plugin/order/model/MallTransactionObject;
+    //   343: getfield 199	com/tencent/mm/plugin/order/model/MallTransactionObject:GHd	Ljava/lang/String;
+    //   346: putfield 200	com/tencent/mm/plugin/order/model/MallOrderDetailObject:GHd	Ljava/lang/String;
     //   349: aload 7
     //   351: aload 7
-    //   353: getfield 77	com/tencent/mm/plugin/order/model/MallOrderDetailObject:ANI	Lcom/tencent/mm/plugin/order/model/MallTransactionObject;
-    //   356: getfield 204	com/tencent/mm/plugin/order/model/MallTransactionObject:dCu	Ljava/lang/String;
-    //   359: putfield 207	com/tencent/mm/plugin/order/model/MallOrderDetailObject:appUserName	Ljava/lang/String;
+    //   353: getfield 77	com/tencent/mm/plugin/order/model/MallOrderDetailObject:GGW	Lcom/tencent/mm/plugin/order/model/MallTransactionObject;
+    //   356: getfield 203	com/tencent/mm/plugin/order/model/MallTransactionObject:fvb	Ljava/lang/String;
+    //   359: putfield 206	com/tencent/mm/plugin/order/model/MallOrderDetailObject:appUserName	Ljava/lang/String;
     //   362: aload 7
     //   364: aload 7
-    //   366: getfield 77	com/tencent/mm/plugin/order/model/MallOrderDetailObject:ANI	Lcom/tencent/mm/plugin/order/model/MallTransactionObject;
-    //   369: getfield 210	com/tencent/mm/plugin/order/model/MallTransactionObject:ANN	I
-    //   372: putfield 211	com/tencent/mm/plugin/order/model/MallOrderDetailObject:ANN	I
+    //   366: getfield 77	com/tencent/mm/plugin/order/model/MallOrderDetailObject:GGW	Lcom/tencent/mm/plugin/order/model/MallTransactionObject;
+    //   369: getfield 209	com/tencent/mm/plugin/order/model/MallTransactionObject:GHb	I
+    //   372: putfield 210	com/tencent/mm/plugin/order/model/MallOrderDetailObject:GHb	I
     //   375: aload 7
     //   377: aload 7
-    //   379: getfield 77	com/tencent/mm/plugin/order/model/MallOrderDetailObject:ANI	Lcom/tencent/mm/plugin/order/model/MallTransactionObject;
-    //   382: getfield 214	com/tencent/mm/plugin/order/model/MallTransactionObject:ANM	Ljava/util/List;
-    //   385: putfield 215	com/tencent/mm/plugin/order/model/MallOrderDetailObject:ANM	Ljava/util/List;
+    //   379: getfield 77	com/tencent/mm/plugin/order/model/MallOrderDetailObject:GGW	Lcom/tencent/mm/plugin/order/model/MallTransactionObject;
+    //   382: getfield 213	com/tencent/mm/plugin/order/model/MallTransactionObject:GHa	Ljava/util/List;
+    //   385: putfield 214	com/tencent/mm/plugin/order/model/MallOrderDetailObject:GHa	Ljava/util/List;
     //   388: ldc 64
     //   390: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   393: return
     //   394: astore_2
-    //   395: ldc 217
+    //   395: ldc 216
     //   397: aload_2
-    //   398: ldc 219
+    //   398: ldc 218
     //   400: iconst_0
-    //   401: anewarray 221	java/lang/Object
-    //   404: invokestatic 227	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   401: anewarray 220	java/lang/Object
+    //   404: invokestatic 226	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   407: goto -368 -> 39
     //   410: astore_2
-    //   411: ldc 217
+    //   411: ldc 216
     //   413: aload_2
-    //   414: ldc 219
+    //   414: ldc 218
     //   416: iconst_0
-    //   417: anewarray 221	java/lang/Object
-    //   420: invokestatic 227	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   417: anewarray 220	java/lang/Object
+    //   420: invokestatic 226	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   423: goto -384 -> 39
     //   426: aconst_null
     //   427: astore_2
     //   428: goto -313 -> 115
     //   431: astore_2
-    //   432: ldc 217
+    //   432: ldc 216
     //   434: aload_2
-    //   435: ldc 219
+    //   435: ldc 218
     //   437: iconst_0
-    //   438: anewarray 221	java/lang/Object
-    //   441: invokestatic 227	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   438: anewarray 220	java/lang/Object
+    //   441: invokestatic 226	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   444: goto -323 -> 121
     //   447: astore_2
-    //   448: ldc 217
+    //   448: ldc 216
     //   450: aload_2
-    //   451: ldc 219
+    //   451: ldc 218
     //   453: iconst_0
-    //   454: anewarray 221	java/lang/Object
-    //   457: invokestatic 227	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   454: anewarray 220	java/lang/Object
+    //   457: invokestatic 226	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   460: goto -339 -> 121
     //   463: astore_2
-    //   464: ldc 217
+    //   464: ldc 216
     //   466: aload_2
-    //   467: ldc 219
+    //   467: ldc 218
     //   469: iconst_0
-    //   470: anewarray 221	java/lang/Object
-    //   473: invokestatic 227	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   470: anewarray 220	java/lang/Object
+    //   473: invokestatic 226	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   476: goto -346 -> 130
     //   479: astore_2
-    //   480: ldc 217
+    //   480: ldc 216
     //   482: aload_2
-    //   483: ldc 219
+    //   483: ldc 218
     //   485: iconst_0
-    //   486: anewarray 221	java/lang/Object
-    //   489: invokestatic 227	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   486: anewarray 220	java/lang/Object
+    //   489: invokestatic 226	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   492: goto -362 -> 130
-    //   495: new 156	java/util/ArrayList
+    //   495: new 155	java/util/ArrayList
     //   498: dup
-    //   499: invokespecial 157	java/util/ArrayList:<init>	()V
+    //   499: invokespecial 156	java/util/ArrayList:<init>	()V
     //   502: astore_2
     //   503: iconst_0
     //   504: istore_1
@@ -284,86 +284,86 @@ public final class h
     //   506: istore 4
     //   508: iload_1
     //   509: aload 6
-    //   511: invokevirtual 145	org/json/JSONArray:length	()I
+    //   511: invokevirtual 144	org/json/JSONArray:length	()I
     //   514: if_icmpge +156 -> 670
     //   517: aload 6
     //   519: iload_1
-    //   520: invokevirtual 230	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   520: invokevirtual 229	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
     //   523: astore 8
-    //   525: new 159	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a
+    //   525: new 158	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a
     //   528: dup
-    //   529: invokespecial 160	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:<init>	()V
+    //   529: invokespecial 159	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:<init>	()V
     //   532: astore 9
     //   534: aload 8
-    //   536: ldc 232
+    //   536: ldc 231
     //   538: invokevirtual 104	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   541: ifne +169 -> 710
     //   544: iconst_0
     //   545: istore 5
     //   547: aload 9
     //   549: iload 5
-    //   551: putfield 236	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:pSj	Z
+    //   551: putfield 235	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:toi	Z
     //   554: aload 9
     //   556: aload 8
-    //   558: ldc 238
+    //   558: ldc 237
     //   560: invokevirtual 94	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   563: putfield 240	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:name	Ljava/lang/String;
+    //   563: putfield 239	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:name	Ljava/lang/String;
     //   566: aload 9
-    //   568: getfield 240	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:name	Ljava/lang/String;
-    //   571: invokestatic 246	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   568: getfield 239	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:name	Ljava/lang/String;
+    //   571: invokestatic 245	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   574: ifeq +13 -> 587
     //   577: aload 9
-    //   579: getfield 236	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:pSj	Z
+    //   579: getfield 235	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:toi	Z
     //   582: istore 4
     //   584: goto +119 -> 703
     //   587: iload 4
     //   589: ifeq +10 -> 599
     //   592: aload 9
     //   594: iload 4
-    //   596: putfield 236	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:pSj	Z
+    //   596: putfield 235	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:toi	Z
     //   599: aload 9
-    //   601: getfield 236	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:pSj	Z
+    //   601: getfield 235	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:toi	Z
     //   604: istore 4
     //   606: aload 9
     //   608: aload 8
-    //   610: ldc 162
+    //   610: ldc 161
     //   612: invokevirtual 94	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   615: putfield 167	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:value	Ljava/lang/String;
+    //   615: putfield 166	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:value	Ljava/lang/String;
     //   618: aload 9
     //   620: aload 8
-    //   622: ldc 114
+    //   622: ldc 113
     //   624: invokevirtual 94	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   627: putfield 249	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:jumpUrl	Ljava/lang/String;
+    //   627: putfield 248	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:jumpUrl	Ljava/lang/String;
     //   630: aload 9
     //   632: aload 8
-    //   634: ldc 251
+    //   634: ldc 250
     //   636: invokevirtual 104	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   639: putfield 254	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:jumpType	I
+    //   639: putfield 253	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:jumpType	I
     //   642: aload_2
     //   643: aload 9
-    //   645: invokeinterface 257 2 0
+    //   645: invokeinterface 256 2 0
     //   650: pop
     //   651: goto +52 -> 703
     //   654: astore_2
-    //   655: ldc 217
+    //   655: ldc 216
     //   657: aload_2
-    //   658: ldc 219
+    //   658: ldc 218
     //   660: iconst_0
-    //   661: anewarray 221	java/lang/Object
-    //   664: invokestatic 227	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   661: anewarray 220	java/lang/Object
+    //   664: invokestatic 226	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   667: goto -401 -> 266
     //   670: goto -516 -> 154
     //   673: aload 6
     //   675: iconst_1
-    //   676: putfield 170	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:type	I
+    //   676: putfield 169	com/tencent/mm/plugin/order/model/MallOrderDetailObject$a:type	I
     //   679: goto -446 -> 233
     //   682: astore_2
-    //   683: ldc 217
+    //   683: ldc 216
     //   685: aload_2
-    //   686: ldc 219
+    //   686: ldc 218
     //   688: iconst_0
-    //   689: anewarray 221	java/lang/Object
-    //   692: invokestatic 227	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   689: anewarray 220	java/lang/Object
+    //   692: invokestatic 226	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   695: goto -429 -> 266
     //   698: aconst_null
     //   699: astore_2

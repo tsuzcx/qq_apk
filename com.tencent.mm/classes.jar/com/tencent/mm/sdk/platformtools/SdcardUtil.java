@@ -3,8 +3,8 @@ package com.tencent.mm.sdk.platformtools;
 import android.os.Environment;
 import android.os.StatFs;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -24,7 +24,7 @@ public class SdcardUtil
   
   private static void filterSpecialFileSystems(ArrayList<StatMountParse> paramArrayList)
   {
-    AppMethodBeat.i(230388);
+    AppMethodBeat.i(193393);
     int i = paramArrayList.size();
     List localList = Arrays.asList(excludeSpecialFileSystems);
     i -= 1;
@@ -35,12 +35,12 @@ public class SdcardUtil
       }
       i -= 1;
     }
-    AppMethodBeat.o(230388);
+    AppMethodBeat.o(193393);
   }
   
   private static void filterStatMountParseForStorage(ArrayList<StatMountParse> paramArrayList, boolean paramBoolean)
   {
-    AppMethodBeat.i(230390);
+    AppMethodBeat.i(193411);
     int i = paramArrayList.size();
     Object localObject1 = Arrays.asList(includeStorageFileSystems);
     Object localObject2 = Arrays.asList(excludeStorageMountDirs);
@@ -117,8 +117,8 @@ public class SdcardUtil
         if (i >= 0)
         {
           localObject1 = (StatMountParse)paramArrayList.get(i);
-          localObject2 = new o(((StatMountParse)localObject1).mountDir);
-          if ((!((o)localObject2).exists()) || (!((o)localObject2).isDirectory()))
+          localObject2 = new q(((StatMountParse)localObject1).mountDir);
+          if ((!((q)localObject2).ifE()) || (!((q)localObject2).isDirectory()))
           {
             Log.d("MicroMsg.SdcardUtil", "Directory verify failed: ".concat(String.valueOf(localObject1)));
             paramArrayList.remove(i);
@@ -192,7 +192,7 @@ public class SdcardUtil
             i -= 1;
           }
         }
-        AppMethodBeat.o(230390);
+        AppMethodBeat.o(193411);
         return;
       }
     }
@@ -200,7 +200,7 @@ public class SdcardUtil
   
   public static long getAvailableExternalMemorySize()
   {
-    AppMethodBeat.i(230398);
+    AppMethodBeat.i(193445);
     Iterator localIterator = getStoragesStatMountParse().iterator();
     StatMountParse localStatMountParse;
     long l2;
@@ -209,7 +209,7 @@ public class SdcardUtil
       localStatMountParse = (StatMountParse)localIterator.next();
       l2 = localStatMountParse.availableBlocks;
     }
-    AppMethodBeat.o(230398);
+    AppMethodBeat.o(193445);
     return l1;
   }
   
@@ -265,10 +265,10 @@ public class SdcardUtil
   
   public static StatMountParse getDataStatMountParse()
   {
-    AppMethodBeat.i(230392);
+    AppMethodBeat.i(193421);
     StatMountParse localStatMountParse = getDataDirectoryStatMountParse();
     postProcess(localStatMountParse, getWritableStatMountParseForStorage());
-    AppMethodBeat.o(230392);
+    AppMethodBeat.o(193421);
     return localStatMountParse;
   }
   
@@ -365,16 +365,16 @@ public class SdcardUtil
   
   public static ArrayList<StatMountParse> getStatMountParseExcludeSpecialFileSystems()
   {
-    AppMethodBeat.i(230389);
+    AppMethodBeat.i(193396);
     ArrayList localArrayList = parseProcMounts();
     filterSpecialFileSystems(localArrayList);
-    AppMethodBeat.o(230389);
+    AppMethodBeat.o(193396);
     return localArrayList;
   }
   
   public static ArrayList<String> getStorageDirectories()
   {
-    AppMethodBeat.i(230394);
+    AppMethodBeat.i(193430);
     Object localObject = parseProcMounts();
     filterStatMountParseForStorage((ArrayList)localObject, false);
     ArrayList localArrayList = new ArrayList();
@@ -382,23 +382,23 @@ public class SdcardUtil
     while (((Iterator)localObject).hasNext()) {
       localArrayList.add(((StatMountParse)((Iterator)localObject).next()).mountDir);
     }
-    AppMethodBeat.o(230394);
+    AppMethodBeat.o(193430);
     return localArrayList;
   }
   
   public static ArrayList<StatMountParse> getStoragesStatMountParse()
   {
-    AppMethodBeat.i(230393);
+    AppMethodBeat.i(193425);
     StatMountParse localStatMountParse = getDataDirectoryStatMountParse();
     ArrayList localArrayList = getWritableStatMountParseForStorage();
     postProcess(localStatMountParse, localArrayList);
-    AppMethodBeat.o(230393);
+    AppMethodBeat.o(193425);
     return localArrayList;
   }
   
   public static long getTotalExternalMemorySize()
   {
-    AppMethodBeat.i(230397);
+    AppMethodBeat.i(193442);
     Iterator localIterator = getStoragesStatMountParse().iterator();
     StatMountParse localStatMountParse;
     long l2;
@@ -407,17 +407,17 @@ public class SdcardUtil
       localStatMountParse = (StatMountParse)localIterator.next();
       l2 = localStatMountParse.totalBlocks;
     }
-    AppMethodBeat.o(230397);
+    AppMethodBeat.o(193442);
     return l1;
   }
   
   public static long getTotalInternalMemorySize()
   {
-    AppMethodBeat.i(230396);
+    AppMethodBeat.i(193438);
     StatMountParse localStatMountParse = getDataDirectoryStatMountParse();
     long l1 = localStatMountParse.totalBlocks;
     long l2 = localStatMountParse.blockSize;
-    AppMethodBeat.o(230396);
+    AppMethodBeat.o(193438);
     return l2 * l1;
   }
   
@@ -432,14 +432,14 @@ public class SdcardUtil
   
   public static ArrayList<String> getWritableStorageDirectories()
   {
-    AppMethodBeat.i(230395);
+    AppMethodBeat.i(193435);
     Object localObject = getWritableStatMountParseForStorage();
     ArrayList localArrayList = new ArrayList();
     localObject = ((ArrayList)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
       localArrayList.add(((StatMountParse)((Iterator)localObject).next()).mountDir);
     }
-    AppMethodBeat.o(230395);
+    AppMethodBeat.o(193435);
     return localArrayList;
   }
   
@@ -543,10 +543,10 @@ public class SdcardUtil
     //   13: astore_3
     //   14: new 406	java/io/BufferedReader
     //   17: dup
-    //   18: new 408	com/tencent/mm/vfs/u
+    //   18: new 408	com/tencent/mm/vfs/x
     //   21: dup
     //   22: ldc_w 410
-    //   25: invokespecial 411	com/tencent/mm/vfs/u:<init>	(Ljava/lang/String;)V
+    //   25: invokespecial 411	com/tencent/mm/vfs/x:<init>	(Ljava/lang/String;)V
     //   28: invokespecial 414	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   31: astore_1
     //   32: aload_1
@@ -726,7 +726,7 @@ public class SdcardUtil
   
   private static void postProcess(StatMountParse paramStatMountParse, ArrayList<StatMountParse> paramArrayList)
   {
-    AppMethodBeat.i(230391);
+    AppMethodBeat.i(193415);
     int i = paramArrayList.size() - 1;
     while (i >= 0)
     {
@@ -738,7 +738,7 @@ public class SdcardUtil
       }
       i -= 1;
     }
-    AppMethodBeat.o(230391);
+    AppMethodBeat.o(193415);
   }
   
   public static void statFsForStatMountParse(StatMountParse paramStatMountParse)
@@ -764,7 +764,7 @@ public class SdcardUtil
   private static boolean testPermissionForStatMountParse(StatMountParse paramStatMountParse)
   {
     AppMethodBeat.i(157815);
-    o localo = new o(paramStatMountParse.mountDir, "test_writable");
+    q localq = new q(paramStatMountParse.mountDir, "test_writable");
     Object localObject2 = null;
     OutputStream localOutputStream3 = null;
     localOutputStream2 = localOutputStream3;
@@ -773,10 +773,10 @@ public class SdcardUtil
     {
       try
       {
-        localo.createNewFile();
+        localq.ifM();
         localOutputStream2 = localOutputStream3;
         localObject1 = localObject2;
-        localOutputStream3 = s.ap(localo);
+        localOutputStream3 = u.an(localq);
         localOutputStream2 = localOutputStream3;
         localObject1 = localOutputStream3;
         localOutputStream3.write("test".getBytes());
@@ -788,7 +788,7 @@ public class SdcardUtil
         localOutputStream3.close();
         localOutputStream2 = localOutputStream3;
         localObject1 = localOutputStream3;
-        bool2 = localo.delete();
+        bool2 = localq.cFq();
         bool1 = bool2;
         if (localOutputStream3 == null) {}
       }
@@ -897,7 +897,7 @@ public class SdcardUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.SdcardUtil
  * JD-Core Version:    0.7.0.1
  */

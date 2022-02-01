@@ -20,5 +20,9 @@
         <FrameLayout android:id="@id/btn" android:background="@drawable/arg" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/cb" android:layout_marginRight="@dimen/c5" android:layout_toLeftOf="@id/dwc" android:layout_centerVertical="true">
             <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:src="@raw/icons_filled_download" android:elevation="@dimen/ani" app:iconColor="@color/am" />
         </FrameLayout>
+        <FrameLayout android:id="@id/dcs" android:background="@drawable/arg" android:visibility="visible" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/cb" android:layout_marginRight="@dimen/c5" android:layout_toLeftOf="@id/btn" android:layout_centerVertical="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:src="@raw/icons_filled_search_logo" app:iconColor="@color/am" />
+        </FrameLayout>
     </RelativeLayout>
+    <com.tencent.mm.plugin.scanner.MultiCodeMaskView android:id="@id/krr" android:background="#b3000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

@@ -1,78 +1,40 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.c;
-import com.google.a.a.e;
+import com.google.b.a.b;
+import com.google.b.a.e;
 
 public final class a$bf
   extends e
 {
-  private static volatile bf[] RGF;
-  public int RGG = 0;
-  public int RGH = 0;
-  public int RGI = 0;
-  public int qwL = 0;
-  public int rtt = 0;
+  public a.ao Zip = null;
+  public int type = 0;
   
   public a$bf()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public static bf[] hjn()
+  public final int JG()
   {
-    if (RGF == null) {}
-    synchronized (c.cbn)
-    {
-      if (RGF == null) {
-        RGF = new bf[0];
-      }
-      return RGF;
-    }
-  }
-  
-  public final int Ig()
-  {
-    int j = super.Ig();
+    int j = super.JG();
     int i = j;
-    if (this.qwL != 0) {
-      i = j + b.bu(1, this.qwL);
+    if (this.type != 0) {
+      i = j + b.bM(1, this.type);
     }
     j = i;
-    if (this.rtt != 0) {
-      j = i + b.bu(2, this.rtt);
+    if (this.Zip != null) {
+      j = i + b.b(2, this.Zip);
     }
-    i = j;
-    if (this.RGG != 0) {
-      i = j + b.bu(3, this.RGG);
-    }
-    j = i;
-    if (this.RGH != 0) {
-      j = i + b.bu(4, this.RGH);
-    }
-    i = j;
-    if (this.RGI != 0) {
-      i = j + b.bu(5, this.RGI);
-    }
-    return i;
+    return j;
   }
   
   public final void a(b paramb)
   {
-    if (this.qwL != 0) {
-      paramb.bs(1, this.qwL);
+    if (this.type != 0) {
+      paramb.bJ(1, this.type);
     }
-    if (this.rtt != 0) {
-      paramb.bs(2, this.rtt);
-    }
-    if (this.RGG != 0) {
-      paramb.bs(3, this.RGG);
-    }
-    if (this.RGH != 0) {
-      paramb.bs(4, this.RGH);
-    }
-    if (this.RGI != 0) {
-      paramb.bs(5, this.RGI);
+    if (this.Zip != null) {
+      paramb.a(2, this.Zip);
     }
     super.a(paramb);
   }

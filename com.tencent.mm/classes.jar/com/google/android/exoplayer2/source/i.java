@@ -10,135 +10,135 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class i
   implements k
 {
-  private final k bwq;
-  int bwr;
+  private final k bfS;
+  int bfT;
   final int loopCount;
   
   public i(k paramk)
   {
-    AppMethodBeat.i(196054);
+    AppMethodBeat.i(196347);
     com.google.android.exoplayer2.i.a.checkArgument(true);
-    this.bwq = paramk;
+    this.bfS = paramk;
     this.loopCount = 50;
-    AppMethodBeat.o(196054);
+    AppMethodBeat.o(196347);
   }
   
   public final j a(k.b paramb, b paramb1)
   {
-    AppMethodBeat.i(196057);
+    AppMethodBeat.i(196354);
     if (this.loopCount != 2147483647)
     {
-      paramb = this.bwq.a(new k.b(paramb.bwx % this.bwr), paramb1);
-      AppMethodBeat.o(196057);
+      paramb = this.bfS.a(new k.b(paramb.bfZ % this.bfT), paramb1);
+      AppMethodBeat.o(196354);
       return paramb;
     }
-    paramb = this.bwq.a(paramb, paramb1);
-    AppMethodBeat.o(196057);
+    paramb = this.bfS.a(paramb, paramb1);
+    AppMethodBeat.o(196354);
     return paramb;
   }
   
   public final void a(f paramf, final k.a parama)
   {
-    AppMethodBeat.i(196055);
-    this.bwq.a(paramf, new k.a()
+    AppMethodBeat.i(196350);
+    this.bfS.a(paramf, new k.a()
     {
       public final void a(w paramAnonymousw, Object paramAnonymousObject)
       {
-        AppMethodBeat.i(196044);
-        i.this.bwr = paramAnonymousw.tE();
+        AppMethodBeat.i(196295);
+        i.this.bfT = paramAnonymousw.rw();
         if (i.this.loopCount != 2147483647) {}
         for (paramAnonymousw = new i.b(paramAnonymousw, i.this.loopCount);; paramAnonymousw = new i.a(paramAnonymousw))
         {
           parama.a(paramAnonymousw, paramAnonymousObject);
-          AppMethodBeat.o(196044);
+          AppMethodBeat.o(196295);
           return;
         }
       }
     });
-    AppMethodBeat.o(196055);
+    AppMethodBeat.o(196350);
   }
   
   public final void b(j paramj)
   {
-    AppMethodBeat.i(196058);
-    this.bwq.b(paramj);
-    AppMethodBeat.o(196058);
+    AppMethodBeat.i(196356);
+    this.bfS.b(paramj);
+    AppMethodBeat.o(196356);
   }
   
-  public final void vt()
+  public final void tr()
   {
-    AppMethodBeat.i(196056);
-    this.bwq.vt();
-    AppMethodBeat.o(196056);
+    AppMethodBeat.i(196351);
+    this.bfS.tr();
+    AppMethodBeat.o(196351);
   }
   
-  public final void vu()
+  public final void ts()
   {
-    AppMethodBeat.i(196059);
-    this.bwq.vu();
-    AppMethodBeat.o(196059);
+    AppMethodBeat.i(196357);
+    this.bfS.ts();
+    AppMethodBeat.o(196357);
   }
   
   static final class a
     extends w
   {
-    private final w bwu;
+    private final w bfW;
     
     public a(w paramw)
     {
-      this.bwu = paramw;
+      this.bfW = paramw;
+    }
+    
+    public final int W(Object paramObject)
+    {
+      AppMethodBeat.i(196315);
+      int i = this.bfW.W(paramObject);
+      AppMethodBeat.o(196315);
+      return i;
     }
     
     public final w.a a(int paramInt, w.a parama, boolean paramBoolean)
     {
-      AppMethodBeat.i(196049);
-      parama = this.bwu.a(paramInt, parama, paramBoolean);
-      AppMethodBeat.o(196049);
+      AppMethodBeat.i(196312);
+      parama = this.bfW.a(paramInt, parama, paramBoolean);
+      AppMethodBeat.o(196312);
       return parama;
     }
     
     public final w.b a(int paramInt, w.b paramb, boolean paramBoolean, long paramLong)
     {
-      AppMethodBeat.i(196047);
-      paramb = this.bwu.a(paramInt, paramb, paramBoolean, paramLong);
-      AppMethodBeat.o(196047);
+      AppMethodBeat.i(196306);
+      paramb = this.bfW.a(paramInt, paramb, paramBoolean, paramLong);
+      AppMethodBeat.o(196306);
       return paramb;
     }
     
-    public final int aZ(int paramInt1, int paramInt2)
+    public final int bf(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(196046);
-      paramInt1 = this.bwu.aZ(paramInt1, paramInt2);
+      AppMethodBeat.i(196303);
+      paramInt1 = this.bfW.bf(paramInt1, paramInt2);
       if (paramInt1 == -1)
       {
-        AppMethodBeat.o(196046);
+        AppMethodBeat.o(196303);
         return 0;
       }
-      AppMethodBeat.o(196046);
+      AppMethodBeat.o(196303);
       return paramInt1;
     }
     
-    public final int ae(Object paramObject)
+    public final int rv()
     {
-      AppMethodBeat.i(196050);
-      int i = this.bwu.ae(paramObject);
-      AppMethodBeat.o(196050);
+      AppMethodBeat.i(196301);
+      int i = this.bfW.rv();
+      AppMethodBeat.o(196301);
       return i;
     }
     
-    public final int tD()
+    public final int rw()
     {
-      AppMethodBeat.i(196045);
-      int i = this.bwu.tD();
-      AppMethodBeat.o(196045);
-      return i;
-    }
-    
-    public final int tE()
-    {
-      AppMethodBeat.i(196048);
-      int i = this.bwu.tE();
-      AppMethodBeat.o(196048);
+      AppMethodBeat.i(196309);
+      int i = this.bfW.rw();
+      AppMethodBeat.o(196309);
       return i;
     }
   }
@@ -146,87 +146,87 @@ public final class i
   static final class b
     extends a
   {
-    private final int bwr;
-    private final w bwu;
-    private final int bwv;
+    private final int bfT;
+    private final w bfW;
+    private final int bfX;
     private final int loopCount;
     
     public b(w paramw, int paramInt)
     {
       super();
-      AppMethodBeat.i(196051);
-      this.bwu = paramw;
-      this.bwr = paramw.tE();
-      this.bwv = paramw.tD();
+      AppMethodBeat.i(196321);
+      this.bfW = paramw;
+      this.bfT = paramw.rw();
+      this.bfX = paramw.rv();
       this.loopCount = paramInt;
-      if (paramInt <= 2147483647 / this.bwr) {}
+      if (paramInt <= 2147483647 / this.bfT) {}
       for (boolean bool = true;; bool = false)
       {
         com.google.android.exoplayer2.i.a.checkState(bool, "LoopingMediaSource contains too many periods");
-        AppMethodBeat.o(196051);
+        AppMethodBeat.o(196321);
         return;
       }
     }
     
-    protected final int ag(Object paramObject)
+    protected final int Y(Object paramObject)
     {
-      AppMethodBeat.i(196052);
+      AppMethodBeat.i(196326);
       if (!(paramObject instanceof Integer))
       {
-        AppMethodBeat.o(196052);
+        AppMethodBeat.o(196326);
         return -1;
       }
       int i = ((Integer)paramObject).intValue();
-      AppMethodBeat.o(196052);
+      AppMethodBeat.o(196326);
       return i;
     }
     
-    protected final int ev(int paramInt)
+    protected final int eL(int paramInt)
     {
-      return paramInt / this.bwr;
+      return paramInt / this.bfT;
     }
     
-    protected final int ew(int paramInt)
+    protected final int eM(int paramInt)
     {
-      return paramInt / this.bwv;
+      return paramInt / this.bfX;
     }
     
-    protected final int ex(int paramInt)
+    protected final int eN(int paramInt)
     {
-      return this.bwr * paramInt;
+      return this.bfT * paramInt;
     }
     
-    protected final int ey(int paramInt)
+    protected final int eO(int paramInt)
     {
-      return this.bwv * paramInt;
+      return this.bfX * paramInt;
     }
     
-    protected final Object ez(int paramInt)
+    protected final Object eP(int paramInt)
     {
-      AppMethodBeat.i(196053);
-      AppMethodBeat.o(196053);
+      AppMethodBeat.i(196329);
+      AppMethodBeat.o(196329);
       return Integer.valueOf(paramInt);
     }
     
-    public final int tD()
+    public final int rv()
     {
-      return this.bwv * this.loopCount;
+      return this.bfX * this.loopCount;
     }
     
-    public final int tE()
+    public final int rw()
     {
-      return this.bwr * this.loopCount;
+      return this.bfT * this.loopCount;
     }
     
-    protected final w vk()
+    protected final w ti()
     {
-      return this.bwu;
+      return this.bfW;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.source.i
  * JD-Core Version:    0.7.0.1
  */

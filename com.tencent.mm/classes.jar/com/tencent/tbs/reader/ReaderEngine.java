@@ -55,7 +55,7 @@ public class ReaderEngine
   
   public boolean fileEnginePreLoad(Context paramContext, TBSOneCallback paramTBSOneCallback)
   {
-    AppMethodBeat.i(187965);
+    AppMethodBeat.i(186752);
     paramContext = TBSOneManager.getDefaultInstance(paramContext);
     paramContext.setPolicy(TBSOneManager.Policy.BUILTIN_FIRST);
     boolean bool1 = false;
@@ -75,7 +75,7 @@ public class ReaderEngine
       label48:
       break label48;
     }
-    AppMethodBeat.o(187965);
+    AppMethodBeat.o(186752);
     return bool1;
   }
   
@@ -217,33 +217,33 @@ public class ReaderEngine
   
   public void report(int paramInt, String paramString, Throwable paramThrowable)
   {
-    AppMethodBeat.i(187964);
+    AppMethodBeat.i(186745);
     try
     {
       StatisticReport localStatisticReport = StatisticReport.create("tbs_sdk_file_stat", paramInt);
       localStatisticReport.setDescription(paramString, paramThrowable);
       localStatisticReport.report();
-      AppMethodBeat.o(187964);
+      AppMethodBeat.o(186745);
       return;
     }
     catch (Throwable paramString)
     {
-      AppMethodBeat.o(187964);
+      AppMethodBeat.o(186745);
     }
   }
   
   public void setConfigSetting(Map paramMap)
   {
-    AppMethodBeat.i(187966);
+    AppMethodBeat.i(186755);
     if (this.a != null) {
       this.a.initSettings(paramMap);
     }
-    AppMethodBeat.o(187966);
+    AppMethodBeat.o(186755);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tbs.reader.ReaderEngine
  * JD-Core Version:    0.7.0.1
  */

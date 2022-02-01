@@ -1,86 +1,140 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class cib
-  extends com.tencent.mm.bw.a
+  extends dyl
 {
-  public String AesKey;
-  public int FileSize;
-  public String KMl;
+  public String RDy;
+  public int Tpc;
+  public eae Tpd;
+  public String scope;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(104821);
+    AppMethodBeat.i(265296);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.KMl != null) {
-        paramVarArgs.e(1, this.KMl);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.AesKey != null) {
-        paramVarArgs.e(2, this.AesKey);
+      paramVarArgs.aY(2, this.Tpc);
+      if (this.RDy != null) {
+        paramVarArgs.f(3, this.RDy);
       }
-      paramVarArgs.aM(3, this.FileSize);
-      AppMethodBeat.o(104821);
+      if (this.Tpd != null)
+      {
+        paramVarArgs.oE(4, this.Tpd.computeSize());
+        this.Tpd.writeFields(paramVarArgs);
+      }
+      if (this.scope != null) {
+        paramVarArgs.f(5, this.scope);
+      }
+      AppMethodBeat.o(265296);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.KMl == null) {
-        break label318;
+      if (this.BaseRequest == null) {
+        break label586;
       }
     }
-    label318:
-    for (paramInt = g.a.a.b.b.a.f(1, this.KMl) + 0;; paramInt = 0)
+    label586:
+    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.AesKey != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.AesKey);
+      int i = paramInt + g.a.a.b.b.a.bM(2, this.Tpc);
+      paramInt = i;
+      if (this.RDy != null) {
+        paramInt = i + g.a.a.b.b.a.g(3, this.RDy);
       }
-      paramInt = g.a.a.b.b.a.bu(3, this.FileSize);
-      AppMethodBeat.o(104821);
-      return i + paramInt;
+      i = paramInt;
+      if (this.Tpd != null) {
+        i = paramInt + g.a.a.a.oD(4, this.Tpd.computeSize());
+      }
+      paramInt = i;
+      if (this.scope != null) {
+        paramInt = i + g.a.a.b.b.a.g(5, this.scope);
+      }
+      AppMethodBeat.o(265296);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(104821);
+        AppMethodBeat.o(265296);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         cib localcib = (cib)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(104821);
+          AppMethodBeat.o(265296);
           return -1;
         case 1: 
-          localcib.KMl = locala.UbS.readString();
-          AppMethodBeat.o(104821);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new jg();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((jg)localObject2).parseFrom((byte[])localObject1);
+            }
+            localcib.BaseRequest = ((jg)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(265296);
           return 0;
         case 2: 
-          localcib.AesKey = locala.UbS.readString();
-          AppMethodBeat.o(104821);
+          localcib.Tpc = ((g.a.a.a.a)localObject1).abFh.AK();
+          AppMethodBeat.o(265296);
+          return 0;
+        case 3: 
+          localcib.RDy = ((g.a.a.a.a)localObject1).abFh.readString();
+          AppMethodBeat.o(265296);
+          return 0;
+        case 4: 
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new eae();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((eae)localObject2).dd((byte[])localObject1);
+            }
+            localcib.Tpd = ((eae)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(265296);
           return 0;
         }
-        localcib.FileSize = locala.UbS.zi();
-        AppMethodBeat.o(104821);
+        localcib.scope = ((g.a.a.a.a)localObject1).abFh.readString();
+        AppMethodBeat.o(265296);
         return 0;
       }
-      AppMethodBeat.o(104821);
+      AppMethodBeat.o(265296);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cib
  * JD-Core Version:    0.7.0.1
  */

@@ -13,8 +13,7 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -182,11 +181,11 @@ public class GlobalUtil
     AppMethodBeat.i(102499);
     if (getInstance().getContext() != null)
     {
-      paramString = o.X(getInstance().getContext().getDatabasePath(paramString));
-      if (paramString.exists() == true) {
+      paramString = q.Q(getInstance().getContext().getDatabasePath(paramString));
+      if (paramString.ifE() == true) {
         try
         {
-          paramString.delete();
+          paramString.cFq();
           TMLog.i("GlobalUtil", "deleteDB");
           AppMethodBeat.o(102499);
           return;
@@ -269,7 +268,7 @@ public class GlobalUtil
   public static boolean isDBExist(String paramString)
   {
     AppMethodBeat.i(102498);
-    if ((getInstance().getContext() != null) && (o.X(getInstance().getContext().getDatabasePath(paramString)).exists()))
+    if ((getInstance().getContext() != null) && (q.Q(getInstance().getContext().getDatabasePath(paramString)).ifE()))
     {
       AppMethodBeat.o(102498);
       return true;
@@ -281,13 +280,13 @@ public class GlobalUtil
   public static void updateFilePathAuthorized(String paramString)
   {
     AppMethodBeat.i(102497);
-    Object localObject = new o(paramString);
-    String str2 = ((o)localObject).getParent();
-    String str1 = new o(str2).getParent();
-    paramString = new o(str1).getParent();
+    Object localObject = new q(paramString);
+    String str2 = ((q)localObject).ifA();
+    String str1 = new q(str2).ifA();
+    paramString = new q(str1).ifA();
     try
     {
-      localObject = "chmod 777 " + aa.z(((o)localObject).her());
+      localObject = "chmod 777 " + ((q)localObject).bOF();
       Runtime.getRuntime().exec((String)localObject);
       str2 = "chmod 777 ".concat(String.valueOf(str2));
       Runtime.getRuntime().exec(str2);
@@ -514,7 +513,7 @@ public class GlobalUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tmassistantsdk.util.GlobalUtil
  * JD-Core Version:    0.7.0.1
  */

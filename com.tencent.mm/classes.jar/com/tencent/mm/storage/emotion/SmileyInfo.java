@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gf;
+import com.tencent.mm.f.c.gm;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public class SmileyInfo
-  extends gf
+  extends gm
   implements Parcelable
 {
   public static final Parcelable.Creator<SmileyInfo> CREATOR;

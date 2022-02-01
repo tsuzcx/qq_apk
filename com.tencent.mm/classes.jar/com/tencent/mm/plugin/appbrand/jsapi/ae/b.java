@@ -1,37 +1,48 @@
 package com.tencent.mm.plugin.appbrand.jsapi.ae;
 
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.Button;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.permission.c;
-import kotlin.l;
+import com.tencent.mm.sdk.platformtools.Util;
+import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/voip/JsApUpdateXWebCloudVoice;", "Lcom/tencent/mm/plugin/appbrand/jsapi/voip/AppBrandCloudVoiceJsApi;", "()V", "Companion", "plugin-appbrand-integration_release"})
 public final class b
-  extends a
 {
-  public static final int CTRL_INDEX = 935;
-  public static final String NAME = "updateXWebVoIPView";
-  public static final a mGc;
-  
-  static
+  public static void a(View paramView, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(228578);
-    mGc = new a((byte)0);
-    AppMethodBeat.o(228578);
+    AppMethodBeat.i(140677);
+    if ((paramView != null) && (paramJSONObject != null) && (paramJSONObject.has("accessibility")) && (paramJSONObject.optBoolean("accessibility", false))) {
+      paramView.setAccessibilityDelegate(new View.AccessibilityDelegate()
+      {
+        public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, AccessibilityNodeInfo paramAnonymousAccessibilityNodeInfo)
+        {
+          AppMethodBeat.i(140676);
+          super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousAccessibilityNodeInfo);
+          if (!Util.isNullOrNil(this.pEq)) {
+            paramAnonymousAccessibilityNodeInfo.setContentDescription(this.pEq);
+          }
+          if ((!Util.isNullOrNil(this.pEr)) && (this.pEr.equalsIgnoreCase("button")))
+          {
+            paramAnonymousAccessibilityNodeInfo.setClickable(true);
+            paramAnonymousAccessibilityNodeInfo.setClassName(Button.class.getName());
+            AppMethodBeat.o(140676);
+            return;
+          }
+          paramAnonymousAccessibilityNodeInfo.setClickable(false);
+          paramAnonymousAccessibilityNodeInfo.setClassName(TextView.class.getName());
+          AppMethodBeat.o(140676);
+        }
+      });
+    }
+    AppMethodBeat.o(140677);
   }
-  
-  public b()
-  {
-    AppMethodBeat.i(228577);
-    c.aem("updateXWebVoIPView");
-    AppMethodBeat.o(228577);
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/voip/JsApUpdateXWebCloudVoice$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ae.b
  * JD-Core Version:    0.7.0.1
  */

@@ -14,49 +14,49 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.ad.a.c;
 import com.tencent.mm.plugin.appbrand.ad.f.1;
 import com.tencent.mm.plugin.appbrand.ad.f.a;
-import com.tencent.mm.plugin.appbrand.h;
-import com.tencent.mm.plugin.appbrand.h.d;
-import com.tencent.mm.plugin.appbrand.page.ac;
-import com.tencent.mm.plugin.appbrand.page.ag;
-import com.tencent.mm.plugin.appbrand.page.w;
-import com.tencent.mm.plugin.appbrand.s;
-import com.tencent.mm.plugin.appbrand.ui.ah;
+import com.tencent.mm.plugin.appbrand.au.i;
+import com.tencent.mm.plugin.appbrand.b.b;
+import com.tencent.mm.plugin.appbrand.k;
+import com.tencent.mm.plugin.appbrand.k.d;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.page.y;
+import com.tencent.mm.plugin.appbrand.t;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMBaseActivity;
 import com.tencent.mm.ui.MMFragmentActivity.a;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class AppBrandAdUI
   extends MMBaseActivity
 {
-  private AppBrandRuntime kGM;
-  private com.tencent.mm.plugin.appbrand.ad.f kGV;
-  private FrameLayout kHl;
-  private a kHm;
-  private IListener<b> kHn;
+  private com.tencent.mm.plugin.appbrand.ad.f nAC;
+  private t nAH;
+  private FrameLayout nBf;
+  private a nBg;
+  private IListener<b> nBh;
   
   public AppBrandAdUI()
   {
     AppMethodBeat.i(44058);
-    this.kHn = new IListener() {};
+    this.nBh = new IListener() {};
     AppMethodBeat.o(44058);
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(226280);
+    AppMethodBeat.i(280524);
     super.onBackPressed();
     if (isFinishing()) {
-      overridePendingTransition(MMFragmentActivity.a.ogo, MMFragmentActivity.a.ogp);
+      overridePendingTransition(MMFragmentActivity.a.ria, MMFragmentActivity.a.rib);
     }
-    AppMethodBeat.o(226280);
+    AppMethodBeat.o(280524);
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
@@ -81,9 +81,9 @@ public class AppBrandAdUI
     {
       com.tencent.mm.ui.statusbar.d.e(getWindow());
       com.tencent.mm.ui.statusbar.d.d(getWindow(), true);
-      this.kHl = new FrameLayout(this);
-      this.kHl.setBackgroundColor(0);
-      setContentView(this.kHl);
+      this.nBf = new FrameLayout(this);
+      this.nBf.setBackgroundColor(0);
+      setContentView(this.nBf);
       paramBundle = getIntent().getStringExtra("appId");
       if (!Util.isNullOrNil(paramBundle)) {
         break;
@@ -94,141 +94,154 @@ public class AppBrandAdUI
       return;
       paramBundle.setSystemUiVisibility(1280);
     }
-    this.kGM = com.tencent.mm.plugin.appbrand.a.TQ(paramBundle);
-    if ((this.kGM == null) || (this.kGM.isDestroyed()))
+    this.nAH = com.tencent.mm.plugin.appbrand.d.abA(paramBundle);
+    if ((this.nAH == null) || (this.nAH.ntU.get()))
     {
       Log.e("MicroMsg.AppBrandAdUI[AppBrandSplashAd]", "onCreate, runtime is null");
       finish();
       AppMethodBeat.o(44060);
       return;
     }
-    if (this.kGM.NY() != null) {
-      this.kGM.NY().btf();
+    if (this.nAH.bDA() != null) {
+      this.nAH.bDA().bEU();
     }
-    this.kGV = new com.tencent.mm.plugin.appbrand.ad.f(this, this.kGM);
-    this.kGM.kAw = this.kGV;
-    this.kGV.btL();
-    this.kGV.setActionBarFullscreenMode(true);
-    paramBundle = this.kGV;
-    if (paramBundle.kGP != null) {
-      paramBundle.kGP.gx(true);
+    this.nAC = new com.tencent.mm.plugin.appbrand.ad.f(this, this.nAH);
+    this.nAH.ntF = this.nAC;
+    this.nAC.bEK();
+    this.nAC.setActionBarFullscreenMode(true);
+    paramBundle = this.nAC;
+    if (paramBundle.nAw != null) {
+      paramBundle.nAw.hi(true);
     }
-    this.kGV.btM();
-    paramBundle = this.kGV;
-    if (paramBundle.kGP != null) {
-      paramBundle.kGP.gy(true);
+    this.nAC.bEL();
+    paramBundle = this.nAC;
+    if (paramBundle.nAw != null) {
+      paramBundle.nAw.hj(true);
     }
-    this.kGV.setTitle(getResources().getString(2131755343));
-    if (ao.isDarkMode())
+    this.nAC.setTitle(getResources().getString(au.i.app_brand_ad_title));
+    if (ar.isDarkMode())
     {
-      this.kGV.setBackgroundColor(-16777216);
-      this.kGV.setForegroundStyle(false);
-      this.kGV.setBackButtonClickListener(new View.OnClickListener()
+      this.nAC.setBackgroundColor(-16777216);
+      this.nAC.setForegroundStyle(false);
+      this.nAC.setBackButtonClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(44053);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ad/ui/AppBrandAdUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/ad/ui/AppBrandAdUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           if (AppBrandAdUI.a(AppBrandAdUI.this) != null)
           {
             paramAnonymousView = new com.tencent.mm.plugin.appbrand.ad.a.b();
             paramAnonymousView.source = "menu";
             paramAnonymousView.type = "back";
-            paramAnonymousView.d(AppBrandAdUI.a(AppBrandAdUI.this).NY());
+            paramAnonymousView.a(AppBrandAdUI.a(AppBrandAdUI.this).bDA());
           }
           AppBrandAdUI.this.finish();
-          AppBrandAdUI.this.overridePendingTransition(MMFragmentActivity.a.ogo, MMFragmentActivity.a.ogp);
+          AppBrandAdUI.this.overridePendingTransition(MMFragmentActivity.a.ria, MMFragmentActivity.a.rib);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ad/ui/AppBrandAdUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(44053);
         }
       });
-      this.kGV.setCloseButtonClickListener(new View.OnClickListener()
+      this.nAC.setCloseButtonClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(44054);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ad/ui/AppBrandAdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/ad/ui/AppBrandAdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           if (AppBrandAdUI.a(AppBrandAdUI.this) != null)
           {
             paramAnonymousView = new com.tencent.mm.plugin.appbrand.ad.a.b();
             paramAnonymousView.source = "menu";
             paramAnonymousView.type = "close";
-            paramAnonymousView.d(AppBrandAdUI.a(AppBrandAdUI.this).NY());
-            h.a(AppBrandAdUI.a(AppBrandAdUI.this).mAppId, h.d.kzP);
+            paramAnonymousView.a(AppBrandAdUI.a(AppBrandAdUI.this).bDA());
+            k.a(AppBrandAdUI.a(AppBrandAdUI.this).mAppId, k.d.ntb);
             AppBrandAdUI.a(AppBrandAdUI.this).close();
-            paramAnonymousView = new c();
+            paramAnonymousView = new com.tencent.mm.plugin.appbrand.ad.a.c();
             paramAnonymousView.source = "menu";
-            paramAnonymousView.d(AppBrandAdUI.a(AppBrandAdUI.this).NY());
+            paramAnonymousView.a(AppBrandAdUI.a(AppBrandAdUI.this).bDA());
           }
           AppBrandAdUI.this.finish();
-          ((ah)com.tencent.luggage.a.e.M(ah.class)).m(AppBrandAdUI.this);
+          ((com.tencent.mm.plugin.appbrand.ui.ah)com.tencent.luggage.a.e.K(com.tencent.mm.plugin.appbrand.ui.ah.class)).k(AppBrandAdUI.this);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ad/ui/AppBrandAdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(44054);
         }
       });
-      this.kGV.setOptionButtonClickListener(new View.OnClickListener()
+      this.nAC.setOptionButtonClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(44055);
           Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ad/ui/AppBrandAdUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-          if ((AppBrandAdUI.a(AppBrandAdUI.this) != null) && (AppBrandAdUI.a(AppBrandAdUI.this).brh() != null) && (AppBrandAdUI.a(AppBrandAdUI.this).brh().getPageView() != null))
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/ad/ui/AppBrandAdUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+          if ((AppBrandAdUI.a(AppBrandAdUI.this) != null) && (AppBrandAdUI.a(AppBrandAdUI.this).bDz() != null) && (AppBrandAdUI.a(AppBrandAdUI.this).bDz().getPageView() != null))
           {
-            paramAnonymousView = AppBrandAdUI.a(AppBrandAdUI.this).brh().getPageView();
-            localObject = paramAnonymousView.bRh();
-            if ((localObject != null) && (!((List)localObject).isEmpty()) && ((paramAnonymousView instanceof ag)))
+            paramAnonymousView = AppBrandAdUI.a(AppBrandAdUI.this).bDz().getPageView();
+            localObject = paramAnonymousView.cdX();
+            if ((localObject != null) && (!((List)localObject).isEmpty()) && ((paramAnonymousView instanceof com.tencent.mm.plugin.appbrand.page.ah)))
             {
               AppBrandAdUI.a(AppBrandAdUI.this, new a(AppBrandAdUI.this, paramAnonymousView, (List)localObject));
-              AppBrandAdUI.b(AppBrandAdUI.this).btY();
+              AppBrandAdUI.b(AppBrandAdUI.this).bEY();
             }
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ad/ui/AppBrandAdUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(44055);
         }
       });
-      this.kGV.setOnHideListener(new f.a()
+      this.nAC.setOnHideListener(new f.a()
       {
-        public final void UB(String paramAnonymousString)
+        public final void acl(String paramAnonymousString)
         {
           AppMethodBeat.i(44056);
           if ((AppBrandAdUI.a(AppBrandAdUI.this) != null) && ("menu".equalsIgnoreCase(paramAnonymousString)))
           {
             Object localObject = new com.tencent.mm.plugin.appbrand.ad.a.d();
             ((com.tencent.mm.plugin.appbrand.ad.a.d)localObject).source = paramAnonymousString;
-            ((com.tencent.mm.plugin.appbrand.ad.a.d)localObject).d(AppBrandAdUI.a(AppBrandAdUI.this).NY());
-            localObject = new c();
-            ((c)localObject).source = paramAnonymousString;
-            ((c)localObject).d(AppBrandAdUI.a(AppBrandAdUI.this).NY());
+            ((com.tencent.mm.plugin.appbrand.ad.a.d)localObject).a(AppBrandAdUI.a(AppBrandAdUI.this).bDA());
+            localObject = new com.tencent.mm.plugin.appbrand.ad.a.c();
+            ((com.tencent.mm.plugin.appbrand.ad.a.c)localObject).source = paramAnonymousString;
+            ((com.tencent.mm.plugin.appbrand.ad.a.c)localObject).a(AppBrandAdUI.a(AppBrandAdUI.this).bDA());
           }
           AppMethodBeat.o(44056);
         }
       });
-      paramBundle = this.kGV;
+      paramBundle = this.nAC;
       if (!MMHandlerThread.isMainThread()) {
-        break label485;
+        break label481;
       }
-      paramBundle.btN();
+      paramBundle.bEM();
     }
     for (;;)
     {
-      this.kHl.addView(this.kGV, new ViewGroup.LayoutParams(-1, -1));
-      this.kHn.alive();
-      paramBundle = new com.tencent.mm.plugin.appbrand.ad.a.f();
-      paramBundle.source = "menu";
-      paramBundle.a(this.kGM.NY(), this);
-      overridePendingTransition(MMFragmentActivity.a.ogm, MMFragmentActivity.a.ogn);
+      this.nBf.addView(this.nAC, new ViewGroup.LayoutParams(-1, -1));
+      this.nBh.alive();
+      this.nAH.nwF.a(new b.b()
+      {
+        public final void a(com.tencent.mm.plugin.appbrand.m.o paramAnonymouso, kotlin.o<Long, Long> paramAnonymouso1)
+        {
+          AppMethodBeat.i(283332);
+          if (paramAnonymouso == null)
+          {
+            AppMethodBeat.o(283332);
+            return;
+          }
+          paramAnonymouso1 = new com.tencent.mm.plugin.appbrand.ad.a.f();
+          paramAnonymouso1.source = "menu";
+          paramAnonymouso1.a(AppBrandAdUI.a(AppBrandAdUI.this).bDA(), AppBrandAdUI.this, paramAnonymouso);
+          AppMethodBeat.o(283332);
+        }
+      });
+      overridePendingTransition(MMFragmentActivity.a.rhY, MMFragmentActivity.a.rhZ);
       AppMethodBeat.o(44060);
       return;
-      this.kGV.setBackgroundColor(-1);
-      this.kGV.setForegroundStyle(true);
+      this.nAC.setBackgroundColor(-1);
+      this.nAC.setForegroundStyle(true);
       break;
-      label485:
+      label481:
       MMHandlerThread.postToMainThread(new f.1(paramBundle));
     }
   }
@@ -238,27 +251,27 @@ public class AppBrandAdUI
     AppMethodBeat.i(44063);
     super.onDestroy();
     Log.i("MicroMsg.AppBrandAdUI[AppBrandSplashAd]", "onDestroy");
-    if (this.kHn != null)
+    if (this.nBh != null)
     {
-      this.kHn.dead();
-      this.kHn = null;
+      this.nBh.dead();
+      this.nBh = null;
     }
-    if (this.kHm != null) {
-      this.kHm.btZ();
+    if (this.nBg != null) {
+      this.nBg.bEZ();
     }
-    if (this.kGV != null)
+    if (this.nAC != null)
     {
-      this.kGV.k(false, "menu");
-      if ((this.kGV.getParent() instanceof ViewGroup)) {
-        ((ViewGroup)this.kGV.getParent()).removeView(this.kGV);
+      this.nAC.o(false, "menu");
+      if ((this.nAC.getParent() instanceof ViewGroup)) {
+        ((ViewGroup)this.nAC.getParent()).removeView(this.nAC);
       }
-      this.kGV = null;
+      this.nAC = null;
     }
-    if (this.kGM != null)
+    if (this.nAH != null)
     {
-      this.kGM.kAw = null;
-      if (this.kGM.NY() != null) {
-        this.kGM.NY().btf();
+      this.nAH.ntF = null;
+      if (this.nAH.bDA() != null) {
+        this.nAH.bDA().bEU();
       }
     }
     AppMethodBeat.o(44063);
@@ -269,14 +282,14 @@ public class AppBrandAdUI
     AppMethodBeat.i(44062);
     super.onPause();
     Log.i("MicroMsg.AppBrandAdUI[AppBrandSplashAd]", "onPause");
-    if (this.kHm != null) {
-      this.kHm.btZ();
+    if (this.nBg != null) {
+      this.nBg.bEZ();
     }
-    if (this.kGM != null)
+    if (this.nAH != null)
     {
       com.tencent.mm.plugin.appbrand.ad.a.d locald = new com.tencent.mm.plugin.appbrand.ad.a.d();
       locald.source = "menu";
-      locald.d(this.kGM.NY());
+      locald.a(this.nAH.bDA());
     }
     AppMethodBeat.o(44062);
   }
@@ -286,11 +299,11 @@ public class AppBrandAdUI
     AppMethodBeat.i(44061);
     super.onResume();
     Log.i("MicroMsg.AppBrandAdUI[AppBrandSplashAd]", "onResume");
-    if (this.kGM != null)
+    if (this.nAH != null)
     {
       com.tencent.mm.plugin.appbrand.ad.a.e locale = new com.tencent.mm.plugin.appbrand.ad.a.e();
       locale.source = "menu";
-      locale.d(this.kGM.NY());
+      locale.a(this.nAH.bDA());
     }
     AppMethodBeat.o(44061);
   }
@@ -303,7 +316,7 @@ public class AppBrandAdUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ad.ui.AppBrandAdUI
  * JD-Core Version:    0.7.0.1
  */

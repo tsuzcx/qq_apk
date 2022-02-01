@@ -6,16 +6,20 @@ import android.graphics.Paint.FontMetricsInt;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.text.style.ImageSpan;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class a
   extends ImageSpan
+  implements com.tencent.mm.ui.base.span.a
 {
-  public int QBM = 0;
+  public int Yal = 0;
+  public boolean isPressed = false;
   
-  public a(Drawable paramDrawable)
+  public a(Drawable paramDrawable, int paramInt)
   {
-    super(paramDrawable, 1);
+    super(paramDrawable, paramInt);
   }
   
   public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
@@ -58,10 +62,17 @@ public class a
     AppMethodBeat.o(143318);
     return paramInt1;
   }
+  
+  public void onClick(View paramView)
+  {
+    AppMethodBeat.i(203776);
+    Log.i("MicroMsg.FixImageSpan", "onClick view:%d", new Object[] { Integer.valueOf(paramView.hashCode()) });
+    AppMethodBeat.o(203776);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.a
  * JD-Core Version:    0.7.0.1
  */

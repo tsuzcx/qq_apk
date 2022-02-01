@@ -9,20 +9,20 @@ import com.tencent.mm.vending.e.b;
 public abstract class c
   implements com.tencent.mm.vending.e.a, Runnable
 {
-  private static long qnq = 2000L;
-  private int iKP;
+  private static long tMe = 2000L;
+  private int lAW;
   private int offset;
-  protected com.tencent.mm.plugin.choosemsgfile.b.b.a qno;
-  protected a qnp;
-  private boolean qnr = false;
-  private Runnable qns = new Runnable()
+  protected com.tencent.mm.plugin.choosemsgfile.b.b.a tMc;
+  protected a tMd;
+  private boolean tMf = false;
+  private Runnable tMg = new Runnable()
   {
     public final void run()
     {
       AppMethodBeat.i(123227);
       c.a(c.this);
-      if (c.this.qnp != null) {
-        c.this.qnp.fk(c.b(c.this), c.c(c.this));
+      if (c.this.tMd != null) {
+        c.this.tMd.fH(c.b(c.this), c.c(c.this));
       }
       AppMethodBeat.o(123227);
     }
@@ -30,8 +30,8 @@ public abstract class c
   
   public c(com.tencent.mm.plugin.choosemsgfile.b.b.a parama, a parama1, b paramb)
   {
-    this.qno = parama;
-    this.qnp = parama1;
+    this.tMc = parama;
+    this.tMd = parama1;
     if (paramb != null) {
       paramb.keep(this);
     }
@@ -42,10 +42,10 @@ public abstract class c
     try
     {
       Log.i("MicroMsg.MsgFileWorker_Base", "onDownloadSuccess msgFile:%s", new Object[] { paramMsgFile });
-      if (this.qnp != null)
+      if (this.tMd != null)
       {
-        this.qnp.a(paramMsgFile);
-        this.qnp = null;
+        this.tMd.a(paramMsgFile);
+        this.tMd = null;
       }
       return;
     }
@@ -56,21 +56,17 @@ public abstract class c
     }
   }
   
-  protected abstract void bPM();
+  protected abstract boolean cMI();
   
-  protected abstract boolean checkValid();
-  
-  protected abstract boolean cyn();
-  
-  protected final void cyo()
+  protected final void cMJ()
   {
     try
     {
       Log.i("MicroMsg.MsgFileWorker_Base", "onDownloadStop");
-      if (this.qnp != null)
+      if (this.tMd != null)
       {
-        this.qnp.cyl();
-        this.qnp = null;
+        this.tMd.cMG();
+        this.tMd = null;
       }
       return;
     }
@@ -81,15 +77,15 @@ public abstract class c
     }
   }
   
-  protected final void cyp()
+  protected final void cMK()
   {
     try
     {
       Log.i("MicroMsg.MsgFileWorker_Base", "onDownloadFail");
-      if (this.qnp != null)
+      if (this.tMd != null)
       {
-        this.qnp.cyk();
-        this.qnp = null;
+        this.tMd.cMF();
+        this.tMd = null;
       }
       return;
     }
@@ -100,17 +96,21 @@ public abstract class c
     }
   }
   
+  protected abstract void ccd();
+  
+  protected abstract boolean checkValid();
+  
   public void dead() {}
   
-  protected final void fl(int paramInt1, int paramInt2)
+  protected final void fI(int paramInt1, int paramInt2)
   {
     try
     {
       Log.v("MicroMsg.MsgFileWorker_Base", "onDownloadProgress offset:%d totalLen:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       this.offset = paramInt1;
-      this.iKP = paramInt2;
-      if ((this.qnr) && (this.qnp != null)) {
-        this.qnp.fk(paramInt1, paramInt2);
+      this.lAW = paramInt2;
+      if ((this.tMf) && (this.tMd != null)) {
+        this.tMd.fH(paramInt1, paramInt2);
       }
       return;
     }
@@ -123,18 +123,18 @@ public abstract class c
   
   public void run()
   {
-    MMHandlerThread.postToMainThreadDelayed(this.qns, qnq);
-    bPM();
+    MMHandlerThread.postToMainThreadDelayed(this.tMg, tMe);
+    ccd();
   }
   
   public String toString()
   {
-    return "MsgFileWorker_Base{mMsgItem=" + this.qno + '}';
+    return "MsgFileWorker_Base{mMsgItem=" + this.tMc + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.a.c
  * JD-Core Version:    0.7.0.1
  */

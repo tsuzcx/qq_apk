@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.text.TextUtils;
 import com.tencent.kinda.gen.KQRCodeView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.a.a;
+import com.tencent.mm.cf.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class KindaQRCodeViewImpl

@@ -7,36 +7,36 @@ import com.tencent.luggage.d.d;
 import com.tencent.luggage.d.p;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.fav.ui.e;
 import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.webview.c.h;
+import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.plugin.webview.luggage.FavUrlTask;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bb;
 import com.tencent.mm.plugin.webview.luggage.q.a;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.o;
 import com.tencent.mm.ui.widget.snackbar.a.b;
 import org.json.JSONObject;
 
 public final class f
   extends a
 {
-  private a.b xxK;
+  private a.b CBU;
   
   public f()
   {
     super(3);
     AppMethodBeat.i(78691);
-    this.xxK = new a.b()
+    this.CBU = new a.b()
     {
-      public final void bDZ()
+      public final void bPM()
       {
         AppMethodBeat.i(78690);
         FavUrlTask localFavUrlTask = new FavUrlTask();
         localFavUrlTask.actionType = 2;
-        AppBrandMainProcessService.a(localFavUrlTask);
+        localFavUrlTask.bsM();
         AppMethodBeat.o(78690);
       }
     };
@@ -53,7 +53,7 @@ public final class f
     localBundle.putString("news_svr_tweetid", paramg.mParams.getString("news_svr_tweetid"));
     localBundle.putInt("message_index", paramg.mParams.getInt("message_index", 0));
     Object localObject = paramg.getUrl();
-    String str = paramg.coX();
+    String str = paramg.cDu();
     localBundle.putString("rawUrl", str);
     if ((!Util.isNullOrNil(str)) && (str.endsWith("#rd")))
     {
@@ -69,16 +69,16 @@ public final class f
       localBundle.putString("preUsername", paramg.mParams.getString("preUsername"));
       localObject = new FavUrlTask();
       ((FavUrlTask)localObject).actionType = 1;
-      ((FavUrlTask)localObject).dQL = localBundle;
-      AppBrandMainProcessService.b((MainProcessTask)localObject);
-      if (!((FavUrlTask)localObject).ISL) {
+      ((FavUrlTask)localObject).fKb = localBundle;
+      ((FavUrlTask)localObject).bPu();
+      if (!((FavUrlTask)localObject).PPe) {
         break label367;
       }
-      bb.afY(1);
-      paramg.gbG().aYu("sendAppMessage");
-      paramg.ctS.a(new d()
+      bb.anM(1);
+      paramg.gUB().bkp("sendAppMessage");
+      paramg.crX.a(new d()
       {
-        public final JSONObject Ld()
+        public final JSONObject NU()
         {
           return null;
         }
@@ -91,7 +91,7 @@ public final class f
     }
     for (;;)
     {
-      h.CyF.dN(982, 2);
+      h.IzE.el(982, 2);
       AppMethodBeat.o(78693);
       return;
       if ((Util.isNullOrNil((String)localObject)) || (((String)localObject).startsWith(str))) {
@@ -102,15 +102,15 @@ public final class f
       localBundle.putString("sns_local_id", "");
       break;
       label367:
-      e.a(((FavUrlTask)localObject).ret, (Activity)paramContext, this.xxK);
+      e.a(((FavUrlTask)localObject).ret, (Activity)paramContext, this.CBU);
     }
   }
   
-  public final void a(Context paramContext, g paramg, m paramm)
+  public final void a(Context paramContext, g paramg, o paramo)
   {
     AppMethodBeat.i(78692);
     if (!paramg.mParams.getBoolean("is_favorite_item", false)) {
-      paramm.b(3, paramContext.getString(2131763947), 2131689821);
+      paramo.b(3, paramContext.getString(c.i.plugin_favorite_opt), c.h.bottomsheet_icon_fav);
     }
     AppMethodBeat.o(78692);
   }

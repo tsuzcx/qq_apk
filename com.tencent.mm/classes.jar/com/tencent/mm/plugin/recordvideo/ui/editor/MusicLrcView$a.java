@@ -7,19 +7,19 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.n.n;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/MusicLrcView$Companion;", "", "()V", "spanForQuery", "", "source", "", "hlString", "foregroundColor", "", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/MusicLrcView$Companion;", "", "()V", "spanForQuery", "", "source", "", "hlString", "foregroundColor", "", "plugin-recordvideo_release"})
 public final class MusicLrcView$a
 {
   public static CharSequence a(String paramString, CharSequence paramCharSequence, int paramInt)
   {
-    AppMethodBeat.i(237738);
-    p.h(paramString, "source");
+    AppMethodBeat.i(220825);
+    p.k(paramString, "source");
     SpannableString localSpannableString = new SpannableString((CharSequence)paramString);
     if ((paramCharSequence == null) || (paramCharSequence.length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
       paramString = (CharSequence)localSpannableString;
-      AppMethodBeat.o(237738);
+      AppMethodBeat.o(220825);
       return paramString;
     }
     int j = paramCharSequence.length();
@@ -35,7 +35,7 @@ public final class MusicLrcView$a
       if (k == -1)
       {
         paramString = (CharSequence)localSpannableString;
-        AppMethodBeat.o(237738);
+        AppMethodBeat.o(220825);
         return paramString;
       }
       break;
@@ -44,7 +44,7 @@ public final class MusicLrcView$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.MusicLrcView.a
  * JD-Core Version:    0.7.0.1
  */

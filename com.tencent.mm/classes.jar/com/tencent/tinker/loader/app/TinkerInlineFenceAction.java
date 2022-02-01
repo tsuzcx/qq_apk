@@ -24,79 +24,211 @@ public final class TinkerInlineFenceAction
   
   static AssetManager callGetAssets(Handler paramHandler, AssetManager paramAssetManager)
   {
-    paramAssetManager = Message.obtain(paramHandler, 9, paramAssetManager);
-    paramHandler.handleMessage(paramAssetManager);
-    return (AssetManager)paramAssetManager.obj;
+    AssetManager localAssetManager = null;
+    try
+    {
+      paramAssetManager = Message.obtain(paramHandler, 9, paramAssetManager);
+      localAssetManager = paramAssetManager;
+      paramHandler.handleMessage(paramAssetManager);
+      localAssetManager = paramAssetManager;
+      paramHandler = (AssetManager)paramAssetManager.obj;
+      return paramHandler;
+    }
+    finally
+    {
+      localAssetManager.recycle();
+    }
   }
   
   static Context callGetBaseContext(Handler paramHandler, Context paramContext)
   {
-    paramContext = Message.obtain(paramHandler, 8, paramContext);
-    paramHandler.handleMessage(paramContext);
-    return (Context)paramContext.obj;
+    Context localContext = null;
+    try
+    {
+      paramContext = Message.obtain(paramHandler, 8, paramContext);
+      localContext = paramContext;
+      paramHandler.handleMessage(paramContext);
+      localContext = paramContext;
+      paramHandler = (Context)paramContext.obj;
+      return paramHandler;
+    }
+    finally
+    {
+      localContext.recycle();
+    }
   }
   
   static ClassLoader callGetClassLoader(Handler paramHandler, ClassLoader paramClassLoader)
   {
-    paramClassLoader = Message.obtain(paramHandler, 7, paramClassLoader);
-    paramHandler.handleMessage(paramClassLoader);
-    return (ClassLoader)paramClassLoader.obj;
+    ClassLoader localClassLoader = null;
+    try
+    {
+      paramClassLoader = Message.obtain(paramHandler, 7, paramClassLoader);
+      localClassLoader = paramClassLoader;
+      paramHandler.handleMessage(paramClassLoader);
+      localClassLoader = paramClassLoader;
+      paramHandler = (ClassLoader)paramClassLoader.obj;
+      return paramHandler;
+    }
+    finally
+    {
+      localClassLoader.recycle();
+    }
   }
   
   static Resources callGetResources(Handler paramHandler, Resources paramResources)
   {
-    paramResources = Message.obtain(paramHandler, 10, paramResources);
-    paramHandler.handleMessage(paramResources);
-    return (Resources)paramResources.obj;
+    Resources localResources = null;
+    try
+    {
+      paramResources = Message.obtain(paramHandler, 10, paramResources);
+      localResources = paramResources;
+      paramHandler.handleMessage(paramResources);
+      localResources = paramResources;
+      paramHandler = (Resources)paramResources.obj;
+      return paramHandler;
+    }
+    finally
+    {
+      localResources.recycle();
+    }
   }
   
   static Object callGetSystemService(Handler paramHandler, String paramString, Object paramObject)
   {
-    paramString = Message.obtain(paramHandler, 11, new Object[] { paramString, paramObject });
-    paramHandler.handleMessage(paramString);
-    return paramString.obj;
+    String str = null;
+    try
+    {
+      paramString = Message.obtain(paramHandler, 11, new Object[] { paramString, paramObject });
+      str = paramString;
+      paramHandler.handleMessage(paramString);
+      str = paramString;
+      paramHandler = paramString.obj;
+      return paramHandler;
+    }
+    finally
+    {
+      str.recycle();
+    }
   }
   
   static int callMZNightModeUseOf(Handler paramHandler)
   {
-    Message localMessage = Message.obtain(paramHandler, 12);
-    paramHandler.handleMessage(localMessage);
-    return ((Integer)localMessage.obj).intValue();
+    Object localObject = null;
+    try
+    {
+      Message localMessage = Message.obtain(paramHandler, 12);
+      localObject = localMessage;
+      paramHandler.handleMessage(localMessage);
+      localObject = localMessage;
+      int i = ((Integer)localMessage.obj).intValue();
+      return i;
+    }
+    finally
+    {
+      localObject.recycle();
+    }
   }
   
   static void callOnBaseContextAttached(Handler paramHandler, Context paramContext)
   {
-    paramHandler.handleMessage(Message.obtain(paramHandler, 1, paramContext));
+    Context localContext = null;
+    try
+    {
+      paramContext = Message.obtain(paramHandler, 1, paramContext);
+      localContext = paramContext;
+      paramHandler.handleMessage(paramContext);
+      return;
+    }
+    finally
+    {
+      localContext.recycle();
+    }
   }
   
   static void callOnConfigurationChanged(Handler paramHandler, Configuration paramConfiguration)
   {
-    paramHandler.handleMessage(Message.obtain(paramHandler, 3, paramConfiguration));
+    Configuration localConfiguration = null;
+    try
+    {
+      paramConfiguration = Message.obtain(paramHandler, 3, paramConfiguration);
+      localConfiguration = paramConfiguration;
+      paramHandler.handleMessage(paramConfiguration);
+      return;
+    }
+    finally
+    {
+      localConfiguration.recycle();
+    }
   }
   
   static void callOnCreate(Handler paramHandler)
   {
-    paramHandler.handleMessage(Message.obtain(paramHandler, 2));
+    Object localObject = null;
+    try
+    {
+      Message localMessage = Message.obtain(paramHandler, 2);
+      localObject = localMessage;
+      paramHandler.handleMessage(localMessage);
+      return;
+    }
+    finally
+    {
+      localObject.recycle();
+    }
   }
   
   static void callOnLowMemory(Handler paramHandler)
   {
-    paramHandler.handleMessage(Message.obtain(paramHandler, 5));
+    Object localObject = null;
+    try
+    {
+      Message localMessage = Message.obtain(paramHandler, 5);
+      localObject = localMessage;
+      paramHandler.handleMessage(localMessage);
+      return;
+    }
+    finally
+    {
+      localObject.recycle();
+    }
   }
   
   static void callOnTerminate(Handler paramHandler)
   {
-    paramHandler.handleMessage(Message.obtain(paramHandler, 6));
+    Object localObject = null;
+    try
+    {
+      Message localMessage = Message.obtain(paramHandler, 6);
+      localObject = localMessage;
+      paramHandler.handleMessage(localMessage);
+      return;
+    }
+    finally
+    {
+      localObject.recycle();
+    }
   }
   
   static void callOnTrimMemory(Handler paramHandler, int paramInt)
   {
-    paramHandler.handleMessage(Message.obtain(paramHandler, 4, Integer.valueOf(paramInt)));
+    Object localObject = null;
+    try
+    {
+      Message localMessage = Message.obtain(paramHandler, 4, Integer.valueOf(paramInt));
+      localObject = localMessage;
+      paramHandler.handleMessage(localMessage);
+      return;
+    }
+    finally
+    {
+      localObject.recycle();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.loader.app.TinkerInlineFenceAction
  * JD-Core Version:    0.7.0.1
  */

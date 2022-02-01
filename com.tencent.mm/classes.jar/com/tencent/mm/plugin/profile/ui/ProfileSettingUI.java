@@ -6,9 +6,13 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
+import com.tencent.mm.R.l;
+import com.tencent.mm.R.o;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.f.c.ax;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.c;
 import com.tencent.mm.n.h;
 import com.tencent.mm.plugin.profile.a.b;
 import com.tencent.mm.pluginsdk.ui.span.l;
@@ -26,232 +30,232 @@ public class ProfileSettingUI
   extends MMPreference
   implements MStorageEx.IOnStorageChange
 {
-  private b Bif;
-  private as rjX;
+  private b HbV;
+  private as uNk;
   
   public int getResourceId()
   {
-    return 2132017248;
+    return R.o.eXL;
   }
   
   public void initView()
   {
     int j = 0;
-    AppMethodBeat.i(231895);
-    Preference localPreference = getPreferenceScreen().bmg("setting_remark");
-    label66:
+    AppMethodBeat.i(291425);
+    Preference localPreference = getPreferenceScreen().byG("setting_remark");
+    label67:
     int i;
-    if (!ab.Jv(this.rjX.field_username)) {
-      if (as.bjp(this.rjX.field_username))
+    if (!ab.QO(this.uNk.field_username)) {
+      if (as.bvK(this.uNk.field_username))
       {
-        localPreference.setTitle(2131758167);
-        localPreference.setSummary(l.c(this, this.rjX.field_conRemark));
-        localPreference = getPreferenceScreen().bmg("setting_permission");
-        if ((com.tencent.mm.contact.c.oR(this.rjX.field_type)) || (!getIntent().getBooleanExtra("User_Verify", false))) {
-          break label479;
+        localPreference.setTitle(R.l.eAq);
+        localPreference.aF(l.c(this, this.uNk.field_conRemark));
+        localPreference = getPreferenceScreen().byG("setting_permission");
+        if ((d.rk(this.uNk.field_type)) || (!getIntent().getBooleanExtra("User_Verify", false))) {
+          break label471;
         }
         i = 1;
-        label106:
+        label107:
         if (i == 0)
         {
-          if (as.bjp(this.rjX.field_username))
+          if (as.bvK(this.uNk.field_username))
           {
             i = j;
-            if (h.aqJ().getInt("SnsWxWorkPermissionEntrance", 0) == 1) {
+            if (h.axc().getInt("SnsWxWorkPermissionEntrance", 0) == 1) {
               i = 1;
             }
-            if ((i == 0) || (!as.bjp(this.rjX.field_username)) || (!"3552365301".equals(this.rjX.field_openImAppid))) {
-              break label493;
+            if ((i == 0) || (!as.bvK(this.uNk.field_username)) || (!"3552365301".equals(this.uNk.field_openImAppid))) {
+              break label486;
             }
           }
-          if ((ab.Jv(this.rjX.field_username)) || (!com.tencent.mm.contact.c.oR(this.rjX.field_type))) {
-            break label493;
+          if ((ab.QO(this.uNk.field_username)) || (!d.rk(this.uNk.field_type))) {
+            break label486;
           }
         }
-        if (!"3552365301".equals(this.rjX.field_openImAppid)) {
-          break label484;
+        if (!"3552365301".equals(this.uNk.field_openImAppid)) {
+          break label476;
         }
-        localPreference.setTitle(2131757985);
-        label219:
-        localPreference = getPreferenceScreen().bmg("setting_send_card");
-        if ((!com.tencent.mm.contact.c.oR(this.rjX.field_type)) || (ab.Jv(this.rjX.field_username))) {
-          break label526;
+        localPreference.setTitle(R.l.contact_info_op_sns_permission_openim);
+        label221:
+        localPreference = getPreferenceScreen().byG("setting_send_card");
+        if ((!d.rk(this.uNk.field_type)) || (ab.QO(this.uNk.field_username))) {
+          break label520;
         }
-        i = 2131758052;
-        if (this.rjX.fuA != 1) {
-          break label509;
+        i = R.l.ezl;
+        if (this.uNk.sex != 1) {
+          break label502;
         }
-        i = 2131758050;
-        label274:
+        i = R.l.ezj;
+        label278:
         localPreference.setTitle(i);
-        label279:
-        if ((com.tencent.mm.contact.c.oR(this.rjX.field_type)) && (!ab.Jv(this.rjX.field_username))) {
-          break label542;
+        label283:
+        if ((d.rk(this.uNk.field_type)) && (!ab.QO(this.uNk.field_username))) {
+          break label536;
         }
-        getPreferenceScreen().jdMethod_do("setting_star", true);
-        label318:
-        if (!ab.Jv(this.rjX.field_username)) {
-          break label569;
+        getPreferenceScreen().dz("setting_star", true);
+        label322:
+        if (!ab.QO(this.uNk.field_username)) {
+          break label563;
         }
-        getPreferenceScreen().jdMethod_do("setting_blacklist", true);
+        getPreferenceScreen().dz("setting_blacklist", true);
       }
     }
     for (;;)
     {
-      if ((ab.Jv(this.rjX.field_username)) || (!com.tencent.mm.contact.c.oR(this.rjX.field_type))) {
-        getPreferenceScreen().jdMethod_do("setting_report", true);
+      if (ab.QO(this.uNk.field_username)) {
+        getPreferenceScreen().dz("setting_report", true);
       }
-      if (!com.tencent.mm.contact.c.oR(this.rjX.field_type)) {
-        getPreferenceScreen().jdMethod_do("setting_shortcut", true);
+      if (!d.rk(this.uNk.field_type)) {
+        getPreferenceScreen().dz("setting_shortcut", true);
       }
-      if ((!com.tencent.mm.contact.c.oR(this.rjX.field_type)) || (ab.Jv(this.rjX.field_username))) {
-        getPreferenceScreen().jdMethod_do("setting_delete", true);
+      if ((!d.rk(this.uNk.field_type)) || (ab.QO(this.uNk.field_username))) {
+        getPreferenceScreen().dz("setting_delete", true);
       }
-      AppMethodBeat.o(231895);
+      AppMethodBeat.o(291425);
       return;
-      localPreference.setTitle(2131757968);
+      localPreference.setTitle(R.l.eyI);
       break;
-      getPreferenceScreen().jdMethod_do("setting_remark", true);
-      break label66;
-      label479:
+      getPreferenceScreen().dz("setting_remark", true);
+      break label67;
+      label471:
       i = 0;
-      break label106;
-      label484:
-      localPreference.setTitle(2131763884);
-      break label219;
-      label493:
-      getPreferenceScreen().jdMethod_do("setting_permission", true);
-      break label219;
-      label509:
-      if (this.rjX.fuA != 2) {
-        break label274;
+      break label107;
+      label476:
+      localPreference.setTitle(R.l.eOO);
+      break label221;
+      label486:
+      getPreferenceScreen().dz("setting_permission", true);
+      break label221;
+      label502:
+      if (this.uNk.sex != 2) {
+        break label278;
       }
-      i = 2131758051;
-      break label274;
-      label526:
-      getPreferenceScreen().jdMethod_do("setting_send_card", true);
-      break label279;
-      label542:
-      ((CheckBoxPreference)getPreferenceScreen().bmg("setting_star")).setChecked(this.rjX.arA());
-      break label318;
-      label569:
-      ((CheckBoxPreference)getPreferenceScreen().bmg("setting_blacklist")).setChecked(this.rjX.ary());
+      i = R.l.ezk;
+      break label278;
+      label520:
+      getPreferenceScreen().dz("setting_send_card", true);
+      break label283;
+      label536:
+      ((CheckBoxPreference)getPreferenceScreen().byG("setting_star")).setChecked(this.uNk.ayh());
+      break label322;
+      label563:
+      ((CheckBoxPreference)getPreferenceScreen().byG("setting_blacklist")).setChecked(this.uNk.ayc());
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(231894);
+    AppMethodBeat.i(291424);
     super.onCreate(paramBundle);
     paramBundle = Util.nullAsNil(getIntent().getStringExtra("Contact_User"));
     if (Util.isNullOrNil(paramBundle))
     {
       Log.e("MicroMsg.ProfileSettingUI", "username is null %s", new Object[] { paramBundle });
       finish();
-      AppMethodBeat.o(231894);
+      AppMethodBeat.o(291424);
       return;
     }
-    bg.aVF();
-    this.rjX = com.tencent.mm.model.c.aSN().Kn(paramBundle);
-    this.Bif = new b(this, this.rjX);
-    setMMTitle(2131764068);
+    bh.beI();
+    this.uNk = c.bbL().RG(paramBundle);
+    this.HbV = new b(this, this.uNk);
+    setMMTitle(R.l.ePV);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(231893);
+        AppMethodBeat.i(290095);
         ProfileSettingUI.this.finish();
-        AppMethodBeat.o(231893);
+        AppMethodBeat.o(290095);
         return true;
       }
     });
     initView();
-    bg.aVF();
-    com.tencent.mm.model.c.aSN().add(this);
-    AppMethodBeat.o(231894);
+    bh.beI();
+    c.bbL().add(this);
+    AppMethodBeat.o(291424);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(231896);
-    this.Bif.destroy();
-    bg.aVF();
-    com.tencent.mm.model.c.aSN().remove(this);
+    AppMethodBeat.i(291426);
+    this.HbV.destroy();
+    bh.beI();
+    c.bbL().remove(this);
     super.onDestroy();
-    AppMethodBeat.o(231896);
+    AppMethodBeat.o(291426);
   }
   
   public void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
   {
-    AppMethodBeat.i(231898);
-    if (((paramObject instanceof String)) && (this.rjX.field_username.equals((String)paramObject)))
+    AppMethodBeat.i(291428);
+    if (((paramObject instanceof String)) && (this.uNk.field_username.equals((String)paramObject)))
     {
-      bg.aVF();
-      this.rjX = com.tencent.mm.model.c.aSN().Kn((String)paramObject);
-      if (this.rjX != null)
+      bh.beI();
+      this.uNk = c.bbL().RG((String)paramObject);
+      if (this.uNk != null)
       {
-        this.Bif.rjX = this.rjX;
+        this.HbV.uNk = this.uNk;
         initView();
         getPreferenceScreen().notifyDataSetChanged();
       }
     }
-    AppMethodBeat.o(231898);
+    AppMethodBeat.o(291428);
   }
   
   public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
-    AppMethodBeat.i(231897);
+    AppMethodBeat.i(291427);
     paramf = paramPreference.mKey;
     Log.i("MicroMsg.ProfileSettingUI", paramf + " item has been clicked!");
     if (paramf.equals("setting_remark"))
     {
-      this.Bif.Lc(1);
-      AppMethodBeat.o(231897);
+      this.HbV.Si(1);
+      AppMethodBeat.o(291427);
       return true;
     }
     if (paramf.equals("setting_permission"))
     {
-      this.Bif.Lc(3);
-      AppMethodBeat.o(231897);
+      this.HbV.Si(3);
+      AppMethodBeat.o(291427);
       return true;
     }
     if (paramf.equals("setting_send_card"))
     {
-      this.Bif.Lc(4);
-      AppMethodBeat.o(231897);
+      this.HbV.Si(4);
+      AppMethodBeat.o(291427);
       return true;
     }
     if (paramf.equals("setting_shortcut"))
     {
-      this.Bif.Lc(7);
-      AppMethodBeat.o(231897);
+      this.HbV.Si(7);
+      AppMethodBeat.o(291427);
       return true;
     }
     if (paramf.equals("setting_star"))
     {
-      this.Bif.Lc(2);
-      AppMethodBeat.o(231897);
+      this.HbV.Si(2);
+      AppMethodBeat.o(291427);
       return true;
     }
     if (paramf.equals("setting_blacklist"))
     {
-      this.Bif.Lc(5);
-      AppMethodBeat.o(231897);
+      this.HbV.Si(5);
+      AppMethodBeat.o(291427);
       return true;
     }
     if (paramf.equals("setting_report"))
     {
-      this.Bif.Lc(9);
-      AppMethodBeat.o(231897);
+      this.HbV.Si(9);
+      AppMethodBeat.o(291427);
       return true;
     }
     if (paramf.equals("setting_delete"))
     {
-      this.Bif.Lc(6);
-      AppMethodBeat.o(231897);
+      this.HbV.Si(6);
+      AppMethodBeat.o(291427);
       return true;
     }
-    AppMethodBeat.o(231897);
+    AppMethodBeat.o(291427);
     return false;
   }
   

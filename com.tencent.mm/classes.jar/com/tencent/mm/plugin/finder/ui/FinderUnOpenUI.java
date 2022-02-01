@@ -3,19 +3,23 @@ package com.tencent.mm.plugin.finder.ui;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.widget.TextView;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.n.f;
 import com.tencent.mm.n.h;
+import com.tencent.mm.plugin.finder.b.c;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.b.j;
 import java.util.HashMap;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderUnOpenUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderUnOpenUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder_release"})
 public final class FinderUnOpenUI
   extends MMFinderUI
 {
@@ -23,16 +27,16 @@ public final class FinderUnOpenUI
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(252800);
+    AppMethodBeat.i(223126);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(252800);
+    AppMethodBeat.o(223126);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(252799);
+    AppMethodBeat.i(223123);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -43,28 +47,28 @@ public final class FinderUnOpenUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(252799);
+    AppMethodBeat.o(223123);
     return localView1;
   }
   
   public final int getLayoutId()
   {
-    return 2131494667;
+    return b.g.finder_unopen_ui;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(167681);
     super.onCreate(paramBundle);
-    setActionbarColor(getResources().getColor(2131101424));
+    setActionbarColor(getResources().getColor(b.c.white));
     setMMTitle("");
     setBackBtn((MenuItem.OnMenuItemClickListener)new a(this));
-    paramBundle = h.aqJ().getValue("FinderFunctionUnopenTip");
-    Object localObject = findViewById(2131309163);
-    p.g(localObject, "findViewById<TextView>(R.id.tip_tv)");
+    paramBundle = h.axc().getValue("FinderFunctionUnopenTip");
+    Object localObject = findViewById(b.f.tip_tv);
+    p.j(localObject, "findViewById<TextView>(R.id.tip_tv)");
     localObject = (TextView)localObject;
     if (paramBundle != null) {}
-    for (paramBundle = (CharSequence)paramBundle;; paramBundle = (CharSequence)getString(2131760657))
+    for (paramBundle = (CharSequence)paramBundle;; paramBundle = (CharSequence)getString(b.j.finder_unopen_tips))
     {
       ((TextView)localObject).setText(paramBundle);
       AppMethodBeat.o(167681);
@@ -78,7 +82,7 @@ public final class FinderUnOpenUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class a
     implements MenuItem.OnMenuItemClickListener
   {
@@ -87,7 +91,7 @@ public final class FinderUnOpenUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(167680);
-      this.vPR.finish();
+      this.AwT.finish();
       AppMethodBeat.o(167680);
       return false;
     }

@@ -5,7 +5,7 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class e
 {
-  public static String I(String paramString, long paramLong)
+  public static String E(String paramString, long paramLong)
   {
     AppMethodBeat.i(155998);
     if (paramLong == 0L)
@@ -19,7 +19,7 @@ public final class e
     return paramString;
   }
   
-  public static boolean Pv(String paramString)
+  public static boolean WS(String paramString)
   {
     AppMethodBeat.i(155997);
     if (paramString.lastIndexOf(";?enc=") > 0)
@@ -31,7 +31,7 @@ public final class e
     return false;
   }
   
-  public static String Pw(String paramString)
+  public static String WT(String paramString)
   {
     AppMethodBeat.i(155999);
     int i = paramString.lastIndexOf(";?enc=");
@@ -45,7 +45,7 @@ public final class e
     return paramString;
   }
   
-  public static long Px(String paramString)
+  public static long WU(String paramString)
   {
     AppMethodBeat.i(156000);
     int i = paramString.lastIndexOf(";?enc=");
@@ -61,7 +61,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsfs.e
  * JD-Core Version:    0.7.0.1
  */

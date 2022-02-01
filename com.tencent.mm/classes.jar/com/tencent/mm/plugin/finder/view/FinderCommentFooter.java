@@ -12,14 +12,12 @@ import android.text.Editable;
 import android.text.TextPaint;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLayoutChangeListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewPropertyAnimator;
 import android.view.animation.DecelerateInterpolator;
-import android.view.inputmethod.InputConnection;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -29,62 +27,67 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.api.SmileyPanel;
 import com.tencent.mm.api.ad;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.finder.api.c.a;
-import com.tencent.mm.plugin.finder.loader.m;
-import com.tencent.mm.plugin.finder.loader.m.a;
-import com.tencent.mm.plugin.finder.utils.y;
+import com.tencent.mm.plugin.finder.api.d.a;
+import com.tencent.mm.plugin.finder.api.i;
+import com.tencent.mm.plugin.finder.b.d;
+import com.tencent.mm.plugin.finder.b.e;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.loader.t.a;
+import com.tencent.mm.plugin.finder.utils.aj;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel.a;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.KeyBoardUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMFragmentActivity;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.at;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.tools.b.c;
+import com.tencent.mm.ui.tools.h;
 import com.tencent.mm.ui.widget.MMEditText;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
-import kotlin.n.n;
-import kotlin.t;
 import kotlin.x;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderCommentFooter;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/ui/tools/KeyboardHeightObserver;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "backClickListener", "Lkotlin/Function0;", "", "getBackClickListener", "()Lkotlin/jvm/functions/Function0;", "setBackClickListener", "(Lkotlin/jvm/functions/Function0;)V", "banSwitchScene", "", "getBanSwitchScene", "()Z", "setBanSwitchScene", "(Z)V", "commentEditTextLayout", "Landroid/view/View;", "getCommentEditTextLayout", "()Landroid/view/View;", "setCommentEditTextLayout", "(Landroid/view/View;)V", "commentTextLimit", "", "getCommentTextLimit", "()I", "setCommentTextLimit", "(I)V", "editText", "Lcom/tencent/mm/ui/widget/MMEditText;", "getEditText", "()Lcom/tencent/mm/ui/widget/MMEditText;", "setEditText", "(Lcom/tencent/mm/ui/widget/MMEditText;)V", "value", "footerMode", "getFooterMode", "setFooterMode", "isFrozen", "setFrozen", "isSelfProfile", "setSelfProfile", "isShowKeyboard", "lastActionStr", "", "getLastActionStr", "()Ljava/lang/String;", "setLastActionStr", "(Ljava/lang/String;)V", "lastFromName", "getLastFromName", "setLastFromName", "lastTag", "", "getLastTag", "()Ljava/lang/Object;", "setLastTag", "(Ljava/lang/Object;)V", "modeChangeCallback", "Lcom/tencent/mm/plugin/finder/view/FinderCommentFooter$IModeChangeCallback;", "getModeChangeCallback", "()Lcom/tencent/mm/plugin/finder/view/FinderCommentFooter$IModeChangeCallback;", "setModeChangeCallback", "(Lcom/tencent/mm/plugin/finder/view/FinderCommentFooter$IModeChangeCallback;)V", "replyBtn", "getReplyBtn", "setReplyBtn", "replyBtnWidth", "getReplyBtnWidth", "setReplyBtnWidth", "scene", "getScene", "setScene", "sendBtnEnabled", "getSendBtnEnabled", "setSendBtnEnabled", "smileyBtn", "Landroid/widget/ImageView;", "getSmileyBtn", "()Landroid/widget/ImageView;", "setSmileyBtn", "(Landroid/widget/ImageView;)V", "smileyPanel", "Lcom/tencent/mm/api/SmileyPanel;", "getSmileyPanel", "()Lcom/tencent/mm/api/SmileyPanel;", "setSmileyPanel", "(Lcom/tencent/mm/api/SmileyPanel;)V", "smileyPanelHeight", "", "switchSceneAvatar", "getSwitchSceneAvatar", "setSwitchSceneAvatar", "switchSceneListener", "getSwitchSceneListener", "setSwitchSceneListener", "switchSceneName", "Landroid/widget/TextView;", "getSwitchSceneName", "()Landroid/widget/TextView;", "setSwitchSceneName", "(Landroid/widget/TextView;)V", "switchSceneTip", "getSwitchSceneTip", "setSwitchSceneTip", "switchSceneTipTv", "getSwitchSceneTipTv", "setSwitchSceneTipTv", "targetAvatar", "getTargetAvatar", "setTargetAvatar", "canSwitchScene", "changeReplyTo", "fromName", "actionStr", "tag", "changeReplyToAndFocus", "commentObj", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "showRemark", "changeReplyToCommenter", "toName", "changeReplyToPoster", "changeSelfName", "selfName", "ellipseName", "name", "getAvatarView", "initSelectItem", "item1", "itemScene", "onItemSelect", "Lkotlin/Function1;", "onFinishInflate", "onHideKeyBoardOrSmileyPanel", "onHideSmileyPanel", "isMoveAnim", "onKeyboardHeightChanged", "height", "isResized", "onSceneSwitch", "onShowSmileyPanel", "onSmileyBtnClick", "isShowSmiley", "refreshCommentScene", "refreshSwitchSceneView", "showVKB", "isShow", "Companion", "IModeChangeCallback", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderCommentFooter;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/ui/tools/KeyboardHeightObserver;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "backClickListener", "Lkotlin/Function0;", "", "getBackClickListener", "()Lkotlin/jvm/functions/Function0;", "setBackClickListener", "(Lkotlin/jvm/functions/Function0;)V", "banSwitchScene", "", "getBanSwitchScene", "()Z", "setBanSwitchScene", "(Z)V", "commentEditTextLayout", "Landroid/view/View;", "getCommentEditTextLayout", "()Landroid/view/View;", "setCommentEditTextLayout", "(Landroid/view/View;)V", "commentTextLimit", "", "getCommentTextLimit", "()I", "setCommentTextLimit", "(I)V", "editText", "Lcom/tencent/mm/ui/widget/MMEditText;", "getEditText", "()Lcom/tencent/mm/ui/widget/MMEditText;", "setEditText", "(Lcom/tencent/mm/ui/widget/MMEditText;)V", "value", "footerMode", "getFooterMode", "setFooterMode", "isFrozen", "setFrozen", "isSelfProfile", "setSelfProfile", "isShowKeyboard", "lastActionStr", "", "getLastActionStr", "()Ljava/lang/String;", "setLastActionStr", "(Ljava/lang/String;)V", "lastFromName", "getLastFromName", "setLastFromName", "lastTag", "", "getLastTag", "()Ljava/lang/Object;", "setLastTag", "(Ljava/lang/Object;)V", "modeChangeCallback", "Lcom/tencent/mm/plugin/finder/view/FinderCommentFooter$IModeChangeCallback;", "getModeChangeCallback", "()Lcom/tencent/mm/plugin/finder/view/FinderCommentFooter$IModeChangeCallback;", "setModeChangeCallback", "(Lcom/tencent/mm/plugin/finder/view/FinderCommentFooter$IModeChangeCallback;)V", "replyBtn", "getReplyBtn", "setReplyBtn", "replyBtnWidth", "getReplyBtnWidth", "setReplyBtnWidth", "scene", "getScene", "setScene", "sendBtnEnabled", "getSendBtnEnabled", "setSendBtnEnabled", "smileyBtn", "Landroid/widget/ImageView;", "getSmileyBtn", "()Landroid/widget/ImageView;", "setSmileyBtn", "(Landroid/widget/ImageView;)V", "smileyPanel", "Lcom/tencent/mm/api/SmileyPanel;", "getSmileyPanel", "()Lcom/tencent/mm/api/SmileyPanel;", "setSmileyPanel", "(Lcom/tencent/mm/api/SmileyPanel;)V", "smileyPanelHeight", "", "switchSceneAvatar", "getSwitchSceneAvatar", "setSwitchSceneAvatar", "switchSceneListener", "getSwitchSceneListener", "setSwitchSceneListener", "switchSceneName", "Landroid/widget/TextView;", "getSwitchSceneName", "()Landroid/widget/TextView;", "setSwitchSceneName", "(Landroid/widget/TextView;)V", "switchSceneTip", "getSwitchSceneTip", "setSwitchSceneTip", "switchSceneTipTv", "getSwitchSceneTipTv", "setSwitchSceneTipTv", "targetAvatar", "getTargetAvatar", "setTargetAvatar", "canSwitchScene", "changeReplyTo", "fromName", "actionStr", "tag", "changeReplyToAndFocus", "commentObj", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "showRemark", "changeReplyToCommenter", "toName", "changeReplyToPoster", "changeSelfName", "selfName", "checkShowReplyBtn", "s", "Landroid/text/Editable;", "ellipseName", "name", "getAvatarView", "initSelectItem", "item1", "itemScene", "onItemSelect", "Lkotlin/Function1;", "onFinishInflate", "onHideKeyBoardOrSmileyPanel", "onHideSmileyPanel", "isMoveAnim", "onKeyboardHeightChanged", "height", "isResized", "onSceneSwitch", "onShowSmileyPanel", "onSmileyBtnClick", "isShowSmiley", "refreshCommentScene", "refreshSwitchSceneView", "showVKB", "isShow", "Companion", "IModeChangeCallback", "plugin-finder_release"})
 public final class FinderCommentFooter
   extends LinearLayout
-  implements com.tencent.mm.ui.tools.g
+  implements h
 {
-  public static final a wlh;
-  public SmileyPanel hQS;
-  private int hQT;
-  private boolean hQU;
+  public static final a AWc;
+  public ImageView AVI;
+  public TextView AVJ;
+  public View AVK;
+  public TextView AVL;
+  public ImageView AVM;
+  public MMEditText AVN;
+  public View AVO;
+  public View AVP;
+  public ImageView AVQ;
+  private int AVR;
+  private float AVS;
+  private boolean AVT;
+  private b AVU;
+  private kotlin.g.a.a<x> AVV;
+  private kotlin.g.a.a<x> AVW;
+  private boolean AVX;
+  public int AVY;
+  public String AVZ;
+  private String AWa;
+  private Object AWb;
+  public SmileyPanel kFp;
+  private int kFq;
+  private boolean kFr;
   private int scene;
-  private boolean uLZ;
-  private boolean uMD;
-  public ImageView wkN;
-  public TextView wkO;
-  public View wkP;
-  public TextView wkQ;
-  public ImageView wkR;
-  public MMEditText wkS;
-  public View wkT;
-  public View wkU;
-  public ImageView wkV;
-  private int wkW;
-  private float wkX;
-  private boolean wkY;
-  private b wkZ;
-  private kotlin.g.a.a<x> wla;
-  private kotlin.g.a.a<x> wlb;
-  private boolean wlc;
-  public int wld;
-  public String wle;
-  private String wlf;
-  private Object wlg;
+  private boolean zxL;
+  private boolean zyt;
   
   static
   {
     AppMethodBeat.i(168295);
-    wlh = new a((byte)0);
+    AWc = new a((byte)0);
     AppMethodBeat.o(168295);
   }
   
@@ -92,30 +95,30 @@ public final class FinderCommentFooter
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(168294);
-    this.wkX = KeyBoardUtil.getKeyBordHeightPx(getContext());
-    this.hQT = at.aH(getContext(), 2131165310);
+    this.AVS = KeyBoardUtil.getKeyBordHeightPx(getContext());
+    this.kFq = aw.aZ(getContext(), b.d.Edge_7A);
     this.scene = 2;
-    this.wle = "";
-    this.wlf = "";
+    this.AVZ = "";
+    this.AWa = "";
     AppMethodBeat.o(168294);
   }
   
-  private void awP(String paramString)
+  private void aGv(String paramString)
   {
-    AppMethodBeat.i(254755);
-    p.h(paramString, "selfName");
-    f(awQ(paramString), this.wlf, this.wlg);
-    AppMethodBeat.o(254755);
+    AppMethodBeat.i(269224);
+    p.k(paramString, "selfName");
+    f(aGw(paramString), this.AWa, this.AWb);
+    AppMethodBeat.o(269224);
   }
   
-  private final boolean dGz()
+  private final boolean eiz()
   {
     AppMethodBeat.i(178488);
-    Object localObject = com.tencent.mm.plugin.finder.storage.c.vCb;
-    if ((((Number)com.tencent.mm.plugin.finder.storage.c.dsP().value()).intValue() == 1) && (!this.uLZ))
+    Object localObject = com.tencent.mm.plugin.finder.storage.d.AjH;
+    if ((((Number)com.tencent.mm.plugin.finder.storage.d.dUh().aSr()).intValue() == 1) && (!this.zxL))
     {
-      localObject = y.vXH;
-      if ((y.dCB()) && (!this.wlc))
+      localObject = aj.AGc;
+      if ((aj.edY()) && (!this.AVX))
       {
         AppMethodBeat.o(178488);
         return true;
@@ -125,42 +128,96 @@ public final class FinderCommentFooter
     return false;
   }
   
-  public final String awQ(String paramString)
+  public final void A(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(254759);
-    Object localObject = com.tencent.mm.plugin.finder.convert.d.tyZ;
-    localObject = getContext();
-    p.g(localObject, "context");
-    com.tencent.mm.plugin.finder.storage.c localc = com.tencent.mm.plugin.finder.storage.c.vCb;
-    int i = com.tencent.mm.plugin.finder.convert.d.Z((Context)localObject, com.tencent.mm.plugin.finder.storage.c.drZ());
-    localObject = com.tencent.mm.plugin.finder.convert.d.tyZ;
-    localObject = getContext();
-    p.g(localObject, "context");
-    localc = com.tencent.mm.plugin.finder.storage.c.vCb;
-    int j = com.tencent.mm.plugin.finder.convert.d.Z((Context)localObject, com.tencent.mm.plugin.finder.storage.c.drZ() + 1);
-    localObject = com.tencent.mm.plugin.finder.convert.d.tyZ;
-    localObject = this.wkS;
+    AppMethodBeat.i(168288);
+    if (paramInt > 0) {}
+    for (paramBoolean = true; this.AVT; paramBoolean = false)
+    {
+      AppMethodBeat.o(168288);
+      return;
+    }
+    if ((paramInt > 0) && (paramInt != (int)this.AVS))
+    {
+      KeyBoardUtil.saveKeyBordHeightPx(getContext(), paramInt);
+      this.AVS = paramInt;
+      localObject = new LinearLayout.LayoutParams(-1, (int)this.AVS);
+      SmileyPanel localSmileyPanel = this.kFp;
+      if (localSmileyPanel == null) {
+        p.bGy("smileyPanel");
+      }
+      localSmileyPanel.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    if (this.zyt != paramBoolean)
+    {
+      this.zyt = paramBoolean;
+      if (!paramBoolean) {
+        break label191;
+      }
+      animate().setDuration(90L).translationY(0.0F).setListener((Animator.AnimatorListener)new m(this)).start();
+    }
+    for (;;)
+    {
+      localObject = com.tencent.mm.plugin.finder.storage.d.AjH;
+      if ((com.tencent.mm.plugin.finder.storage.d.dUk() <= 0) || (!eiz())) {
+        break;
+      }
+      localObject = this.AVK;
+      if (localObject == null) {
+        p.bGy("switchSceneTip");
+      }
+      ((View)localObject).setVisibility(0);
+      AppMethodBeat.o(168288);
+      return;
+      label191:
+      if ((this.AVY == 2) || (this.AVY == 0)) {
+        animate().setDuration(180L).translationY(this.AVS).setListener((Animator.AnimatorListener)new n(this)).start();
+      }
+    }
+    Object localObject = this.AVK;
     if (localObject == null) {
-      p.btv("editText");
+      p.bGy("switchSceneTip");
+    }
+    ((View)localObject).setVisibility(8);
+    AppMethodBeat.o(168288);
+  }
+  
+  public final String aGw(String paramString)
+  {
+    AppMethodBeat.i(269229);
+    Object localObject = com.tencent.mm.plugin.finder.convert.d.xgJ;
+    localObject = getContext();
+    p.j(localObject, "context");
+    com.tencent.mm.plugin.finder.storage.d locald = com.tencent.mm.plugin.finder.storage.d.AjH;
+    int i = com.tencent.mm.plugin.finder.convert.d.ae((Context)localObject, com.tencent.mm.plugin.finder.storage.d.dTn());
+    localObject = com.tencent.mm.plugin.finder.convert.d.xgJ;
+    localObject = getContext();
+    p.j(localObject, "context");
+    locald = com.tencent.mm.plugin.finder.storage.d.AjH;
+    int j = com.tencent.mm.plugin.finder.convert.d.ae((Context)localObject, com.tencent.mm.plugin.finder.storage.d.dTn() + 1);
+    localObject = com.tencent.mm.plugin.finder.convert.d.xgJ;
+    localObject = this.AVN;
+    if (localObject == null) {
+      p.bGy("editText");
     }
     localObject = ((MMEditText)localObject).getPaint();
-    p.g(localObject, "editText.paint");
+    p.j(localObject, "editText.paint");
     paramString = com.tencent.mm.plugin.finder.convert.d.a((TextPaint)localObject, paramString, i, j);
-    AppMethodBeat.o(254759);
+    AppMethodBeat.o(269229);
     return paramString;
   }
   
-  public final void cH(boolean paramBoolean)
+  public final void dd(boolean paramBoolean)
   {
     Context localContext = null;
     Object localObject = null;
     AppMethodBeat.i(168292);
-    if (this.wkY)
+    if (this.AVT)
     {
       AppMethodBeat.o(168292);
       return;
     }
-    if ((this.uMD) && (paramBoolean))
+    if ((this.zyt) && (paramBoolean))
     {
       AppMethodBeat.o(168292);
       return;
@@ -204,107 +261,116 @@ public final class FinderCommentFooter
     }
   }
   
-  public final void dGx()
+  public final void e(String paramString1, String paramString2, Object paramObject)
+  {
+    AppMethodBeat.i(178487);
+    p.k(paramString1, "fromName");
+    p.k(paramString2, "toName");
+    f(this.AVZ, " " + getResources().getString(b.j.comment_other_hint2, new Object[] { paramString2 }), paramObject);
+    AppMethodBeat.o(178487);
+  }
+  
+  public final void eix()
   {
     AppMethodBeat.i(178484);
-    Object localObject = this.wkP;
+    Object localObject = this.AVK;
     if (localObject == null) {
-      p.btv("switchSceneTip");
+      p.bGy("switchSceneTip");
     }
     ((View)localObject).setVisibility(8);
-    dGy();
-    localObject = findViewById(2131298963);
-    if (dGz())
+    eiy();
+    localObject = findViewById(b.f.comment_switch_scene_click_layout);
+    if (eiz())
     {
-      ((View)localObject).findViewById(2131298960).setVisibility(0);
-      ((View)localObject).setOnClickListener((View.OnClickListener)new m(this));
+      ((View)localObject).findViewById(b.f.comment_scene_btn).setVisibility(0);
+      ((View)localObject).setOnClickListener((View.OnClickListener)new q(this));
     }
     for (;;)
     {
-      localObject = com.tencent.mm.plugin.finder.storage.c.vCb;
-      if (com.tencent.mm.plugin.finder.storage.c.dsR() > 0)
+      localObject = com.tencent.mm.plugin.finder.storage.d.AjH;
+      if (com.tencent.mm.plugin.finder.storage.d.dUk() > 0)
       {
-        localObject = this.wkP;
+        localObject = this.AVK;
         if (localObject == null) {
-          p.btv("switchSceneTip");
+          p.bGy("switchSceneTip");
         }
         ((View)localObject).setVisibility(0);
       }
-      localObject = this.wkV;
+      localObject = this.AVQ;
       if (localObject == null) {
-        p.btv("targetAvatar");
+        p.bGy("targetAvatar");
       }
       ((ImageView)localObject).setVisibility(8);
-      localObject = this.wkS;
+      localObject = this.AVN;
       if (localObject == null) {
-        p.btv("editText");
+        p.bGy("editText");
       }
       Context localContext = ((MMEditText)localObject).getContext();
-      p.g(localContext, "this.context");
-      int i = (int)localContext.getResources().getDimension(2131165314);
+      p.j(localContext, "this.context");
+      int i = (int)localContext.getResources().getDimension(b.d.Edge_A);
       localContext = ((MMEditText)localObject).getContext();
-      p.g(localContext, "this.context");
-      ((MMEditText)localObject).setPadding(i, 0, (int)localContext.getResources().getDimension(2131165314), 0);
+      p.j(localContext, "this.context");
+      ((MMEditText)localObject).setPadding(i, 0, (int)localContext.getResources().getDimension(b.d.Edge_A), 0);
       AppMethodBeat.o(178484);
       return;
-      ((View)localObject).setOnClickListener((View.OnClickListener)FinderCommentFooter.n.wlp);
-      localObject = ((View)localObject).findViewById(2131298960);
-      p.g(localObject, "switchClickLayout.findVi…>(R.id.comment_scene_btn)");
+      ((View)localObject).setOnClickListener((View.OnClickListener)FinderCommentFooter.r.AWk);
+      localObject = ((View)localObject).findViewById(b.f.comment_scene_btn);
+      p.j(localObject, "switchClickLayout.findVi…>(R.id.comment_scene_btn)");
       ((View)localObject).setVisibility(8);
     }
   }
   
-  public final void dGy()
+  public final void eiy()
   {
     AppMethodBeat.i(178485);
     Object localObject1;
     if (this.scene == 2)
     {
-      localObject1 = this.wkN;
+      localObject1 = this.AVI;
       if (localObject1 == null) {
-        p.btv("switchSceneAvatar");
+        p.bGy("switchSceneAvatar");
       }
-      com.tencent.mm.ui.g.a.a.c((ImageView)localObject1, z.aTY());
-      localObject1 = this.wkQ;
+      com.tencent.mm.ui.h.a.a.c((ImageView)localObject1, z.bcZ());
+      localObject1 = this.AVL;
       if (localObject1 == null) {
-        p.btv("switchSceneTipTv");
+        p.bGy("switchSceneTipTv");
       }
-      ((TextView)localObject1).setText(2131760609);
+      ((TextView)localObject1).setText(b.j.finder_switch_scene_float_tips3);
     }
     for (;;)
     {
-      localObject1 = this.wkO;
+      localObject1 = this.AVJ;
       if (localObject1 == null) {
-        p.btv("switchSceneName");
+        p.bGy("switchSceneName");
       }
       Object localObject2 = getContext();
-      Object localObject3 = y.vXH;
-      ((TextView)localObject1).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject2, (CharSequence)y.LD(this.scene)));
-      localObject1 = y.vXH;
-      awP(y.LD(this.scene));
-      localObject1 = com.tencent.mm.plugin.finder.storage.c.vCb;
-      if (com.tencent.mm.plugin.finder.storage.c.dsR() <= 0)
+      Object localObject3 = aj.AGc;
+      ((TextView)localObject1).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject2, (CharSequence)aj.QR(this.scene)));
+      localObject1 = aj.AGc;
+      aGv(aj.QR(this.scene));
+      localObject1 = com.tencent.mm.plugin.finder.storage.d.AjH;
+      if (com.tencent.mm.plugin.finder.storage.d.dUk() <= 0)
       {
-        localObject1 = this.wkP;
+        localObject1 = this.AVK;
         if (localObject1 == null) {
-          p.btv("switchSceneTip");
+          p.bGy("switchSceneTip");
         }
         if (((View)localObject1).getVisibility() == 0)
         {
-          localObject1 = this.wkP;
+          localObject1 = this.AVK;
           if (localObject1 == null) {
-            p.btv("switchSceneTip");
+            p.bGy("switchSceneTip");
           }
           ((View)localObject1).setVisibility(8);
         }
       }
       AppMethodBeat.o(178485);
       return;
-      localObject1 = com.tencent.mm.plugin.finder.api.c.tsp;
-      localObject1 = c.a.asG(z.aUg());
+      localObject1 = com.tencent.mm.plugin.finder.api.d.wZQ;
+      localObject1 = d.a.aAK(z.bdh());
       if (localObject1 != null)
       {
-        localObject2 = ((com.tencent.mm.plugin.finder.api.g)localObject1).cXH();
+        localObject2 = ((i)localObject1).Mm();
         localObject1 = localObject2;
         if (localObject2 != null) {}
       }
@@ -312,65 +378,56 @@ public final class FinderCommentFooter
       {
         localObject1 = "";
       }
-      localObject2 = m.uJa;
-      localObject2 = m.dka();
-      localObject1 = new com.tencent.mm.plugin.finder.loader.a((String)localObject1);
-      localObject3 = this.wkN;
+      localObject2 = com.tencent.mm.plugin.finder.loader.t.ztT;
+      localObject2 = com.tencent.mm.plugin.finder.loader.t.dJh();
+      localObject1 = new com.tencent.mm.plugin.finder.loader.e((String)localObject1);
+      localObject3 = this.AVI;
       if (localObject3 == null) {
-        p.btv("switchSceneAvatar");
+        p.bGy("switchSceneAvatar");
       }
-      m localm = m.uJa;
-      ((com.tencent.mm.loader.d)localObject2).a(localObject1, (ImageView)localObject3, m.a(m.a.uJe));
-      localObject1 = this.wkQ;
+      com.tencent.mm.plugin.finder.loader.t localt = com.tencent.mm.plugin.finder.loader.t.ztT;
+      ((com.tencent.mm.loader.d)localObject2).a(localObject1, (ImageView)localObject3, com.tencent.mm.plugin.finder.loader.t.a(t.a.ztX));
+      localObject1 = this.AVL;
       if (localObject1 == null) {
-        p.btv("switchSceneTipTv");
+        p.bGy("switchSceneTipTv");
       }
-      ((TextView)localObject1).setText(2131760609);
+      ((TextView)localObject1).setText(b.j.finder_switch_scene_float_tips3);
     }
-  }
-  
-  public final void e(String paramString1, String paramString2, Object paramObject)
-  {
-    AppMethodBeat.i(178487);
-    p.h(paramString1, "fromName");
-    p.h(paramString2, "toName");
-    f(this.wle, " " + getResources().getString(2131757750, new Object[] { paramString2 }), paramObject);
-    AppMethodBeat.o(178487);
   }
   
   public final void f(String paramString1, String paramString2, Object paramObject)
   {
-    AppMethodBeat.i(254758);
+    AppMethodBeat.i(269228);
     if (paramString1 == null) {}
     for (String str = "";; str = paramString1)
     {
-      this.wle = str;
-      this.wlf = paramString2;
-      this.wlg = paramObject;
+      this.AVZ = str;
+      this.AWa = paramString2;
+      this.AWb = paramObject;
       paramString1 = p.I(paramString1, paramString2);
-      paramString2 = this.wkS;
+      paramString2 = this.AVN;
       if (paramString2 == null) {
-        p.btv("editText");
+        p.bGy("editText");
       }
       paramString2.setHint((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(getContext(), (CharSequence)paramString1));
-      paramString1 = this.wkS;
+      paramString1 = this.AVN;
       if (paramString1 == null) {
-        p.btv("editText");
+        p.bGy("editText");
       }
       paramString1.setTag(paramObject);
-      paramString1 = this.wkS;
+      paramString1 = this.AVN;
       if (paramString1 == null) {
-        p.btv("editText");
+        p.bGy("editText");
       }
       if (!paramString1.hasFocus())
       {
-        paramString1 = this.wkS;
+        paramString1 = this.AVN;
         if (paramString1 == null) {
-          p.btv("editText");
+          p.bGy("editText");
         }
         paramString1.requestFocus();
       }
-      AppMethodBeat.o(254758);
+      AppMethodBeat.o(269228);
       return;
     }
   }
@@ -378,9 +435,9 @@ public final class FinderCommentFooter
   public final ImageView getAvatarView()
   {
     AppMethodBeat.i(168293);
-    ImageView localImageView = this.wkV;
+    ImageView localImageView = this.AVQ;
     if (localImageView == null) {
-      p.btv("targetAvatar");
+      p.bGy("targetAvatar");
     }
     AppMethodBeat.o(168293);
     return localImageView;
@@ -388,20 +445,20 @@ public final class FinderCommentFooter
   
   public final kotlin.g.a.a<x> getBackClickListener()
   {
-    return this.wla;
+    return this.AVV;
   }
   
   public final boolean getBanSwitchScene()
   {
-    return this.wlc;
+    return this.AVX;
   }
   
   public final View getCommentEditTextLayout()
   {
     AppMethodBeat.i(168283);
-    View localView = this.wkU;
+    View localView = this.AVP;
     if (localView == null) {
-      p.btv("commentEditTextLayout");
+      p.bGy("commentEditTextLayout");
     }
     AppMethodBeat.o(168283);
     return localView;
@@ -409,15 +466,15 @@ public final class FinderCommentFooter
   
   public final int getCommentTextLimit()
   {
-    return this.wkW;
+    return this.AVR;
   }
   
   public final MMEditText getEditText()
   {
     AppMethodBeat.i(168279);
-    MMEditText localMMEditText = this.wkS;
+    MMEditText localMMEditText = this.AVN;
     if (localMMEditText == null) {
-      p.btv("editText");
+      p.bGy("editText");
     }
     AppMethodBeat.o(168279);
     return localMMEditText;
@@ -425,35 +482,35 @@ public final class FinderCommentFooter
   
   public final int getFooterMode()
   {
-    return this.wld;
+    return this.AVY;
   }
   
   public final String getLastActionStr()
   {
-    return this.wlf;
+    return this.AWa;
   }
   
   public final String getLastFromName()
   {
-    return this.wle;
+    return this.AVZ;
   }
   
   public final Object getLastTag()
   {
-    return this.wlg;
+    return this.AWb;
   }
   
   public final b getModeChangeCallback()
   {
-    return this.wkZ;
+    return this.AVU;
   }
   
   public final View getReplyBtn()
   {
     AppMethodBeat.i(168281);
-    View localView = this.wkT;
+    View localView = this.AVO;
     if (localView == null) {
-      p.btv("replyBtn");
+      p.bGy("replyBtn");
     }
     AppMethodBeat.o(168281);
     return localView;
@@ -461,7 +518,7 @@ public final class FinderCommentFooter
   
   public final int getReplyBtnWidth()
   {
-    return this.hQT;
+    return this.kFq;
   }
   
   public final int getScene()
@@ -471,15 +528,15 @@ public final class FinderCommentFooter
   
   public final boolean getSendBtnEnabled()
   {
-    return this.hQU;
+    return this.kFr;
   }
   
   public final ImageView getSmileyBtn()
   {
     AppMethodBeat.i(168277);
-    ImageView localImageView = this.wkR;
+    ImageView localImageView = this.AVM;
     if (localImageView == null) {
-      p.btv("smileyBtn");
+      p.bGy("smileyBtn");
     }
     AppMethodBeat.o(168277);
     return localImageView;
@@ -488,9 +545,9 @@ public final class FinderCommentFooter
   public final SmileyPanel getSmileyPanel()
   {
     AppMethodBeat.i(168275);
-    SmileyPanel localSmileyPanel = this.hQS;
+    SmileyPanel localSmileyPanel = this.kFp;
     if (localSmileyPanel == null) {
-      p.btv("smileyPanel");
+      p.bGy("smileyPanel");
     }
     AppMethodBeat.o(168275);
     return localSmileyPanel;
@@ -499,9 +556,9 @@ public final class FinderCommentFooter
   public final ImageView getSwitchSceneAvatar()
   {
     AppMethodBeat.i(178476);
-    ImageView localImageView = this.wkN;
+    ImageView localImageView = this.AVI;
     if (localImageView == null) {
-      p.btv("switchSceneAvatar");
+      p.bGy("switchSceneAvatar");
     }
     AppMethodBeat.o(178476);
     return localImageView;
@@ -509,15 +566,15 @@ public final class FinderCommentFooter
   
   public final kotlin.g.a.a<x> getSwitchSceneListener()
   {
-    return this.wlb;
+    return this.AVW;
   }
   
   public final TextView getSwitchSceneName()
   {
     AppMethodBeat.i(178478);
-    TextView localTextView = this.wkO;
+    TextView localTextView = this.AVJ;
     if (localTextView == null) {
-      p.btv("switchSceneName");
+      p.bGy("switchSceneName");
     }
     AppMethodBeat.o(178478);
     return localTextView;
@@ -526,9 +583,9 @@ public final class FinderCommentFooter
   public final View getSwitchSceneTip()
   {
     AppMethodBeat.i(178480);
-    View localView = this.wkP;
+    View localView = this.AVK;
     if (localView == null) {
-      p.btv("switchSceneTip");
+      p.bGy("switchSceneTip");
     }
     AppMethodBeat.o(178480);
     return localView;
@@ -537,9 +594,9 @@ public final class FinderCommentFooter
   public final TextView getSwitchSceneTipTv()
   {
     AppMethodBeat.i(178482);
-    TextView localTextView = this.wkQ;
+    TextView localTextView = this.AVL;
     if (localTextView == null) {
-      p.btv("switchSceneTipTv");
+      p.bGy("switchSceneTipTv");
     }
     AppMethodBeat.o(178482);
     return localTextView;
@@ -548,475 +605,515 @@ public final class FinderCommentFooter
   public final ImageView getTargetAvatar()
   {
     AppMethodBeat.i(168285);
-    ImageView localImageView = this.wkV;
+    ImageView localImageView = this.AVQ;
     if (localImageView == null) {
-      p.btv("targetAvatar");
+      p.bGy("targetAvatar");
     }
     AppMethodBeat.o(168285);
     return localImageView;
   }
   
-  public final void hk(String paramString1, String paramString2)
+  public final void hy(String paramString1, String paramString2)
   {
     AppMethodBeat.i(178486);
-    p.h(paramString1, "fromName");
-    p.h(paramString2, "toName");
-    f(this.wle, " " + getResources().getString(2131757753), null);
+    p.k(paramString1, "fromName");
+    p.k(paramString2, "toName");
+    f(this.AVZ, " " + getResources().getString(b.j.comment_ower_hint3), null);
     AppMethodBeat.o(178486);
-  }
-  
-  public final void oW(final boolean paramBoolean)
-  {
-    AppMethodBeat.i(168290);
-    if (this.wkY)
-    {
-      AppMethodBeat.o(168290);
-      return;
-    }
-    Object localObject = this.wkR;
-    if (localObject == null) {
-      p.btv("smileyBtn");
-    }
-    ((ImageView)localObject).setImageResource(2131231772);
-    localObject = this.wkR;
-    if (localObject == null) {
-      p.btv("smileyBtn");
-    }
-    ((ImageView)localObject).setTag(Boolean.FALSE);
-    if (paramBoolean)
-    {
-      animate().setInterpolator((TimeInterpolator)new DecelerateInterpolator()).setDuration(220L).translationY(this.wkX).setListener((Animator.AnimatorListener)new g(this, paramBoolean)).start();
-      AppMethodBeat.o(168290);
-      return;
-    }
-    localObject = this.hQS;
-    if (localObject == null) {
-      p.btv("smileyPanel");
-    }
-    ((SmileyPanel)localObject).animate().alpha(0.0F).setDuration(220L).setListener((Animator.AnimatorListener)new h(this)).start();
-    AppMethodBeat.o(168290);
   }
   
   protected final void onFinishInflate()
   {
     AppMethodBeat.i(168289);
     super.onFinishInflate();
-    Object localObject = findViewById(2131298959);
-    p.g(localObject, "findViewById(R.id.comment_scene_avatar)");
-    this.wkN = ((ImageView)localObject);
-    localObject = findViewById(2131298961);
-    p.g(localObject, "findViewById(R.id.comment_scene_name)");
-    this.wkO = ((TextView)localObject);
-    localObject = findViewById(2131298964);
-    p.g(localObject, "findViewById(R.id.comment_switch_scene_tip_layout)");
-    this.wkP = ((View)localObject);
-    localObject = findViewById(2131298965);
-    p.g(localObject, "findViewById(R.id.comment_switch_scene_tip_tv)");
-    this.wkQ = ((TextView)localObject);
-    localObject = findViewById(2131307949);
-    p.g(localObject, "findViewById(R.id.smiley_btn)");
-    this.wkR = ((ImageView)localObject);
-    localObject = findViewById(2131298939);
-    p.g(localObject, "findViewById(R.id.comment_et)");
-    this.wkS = ((MMEditText)localObject);
-    localObject = findViewById(2131298966);
-    p.g(localObject, "findViewById(R.id.comment_target_avatar)");
-    this.wkV = ((ImageView)localObject);
-    localObject = findViewById(2131306945);
-    p.g(localObject, "findViewById(R.id.reply_btn)");
-    this.wkT = ((View)localObject);
-    localObject = findViewById(2131298940);
-    p.g(localObject, "findViewById(R.id.comment_et_layout)");
-    this.wkU = ((View)localObject);
-    if (ao.isDarkMode())
+    Object localObject = findViewById(b.f.comment_scene_avatar);
+    p.j(localObject, "findViewById(R.id.comment_scene_avatar)");
+    this.AVI = ((ImageView)localObject);
+    localObject = findViewById(b.f.comment_scene_name);
+    p.j(localObject, "findViewById(R.id.comment_scene_name)");
+    this.AVJ = ((TextView)localObject);
+    localObject = findViewById(b.f.comment_switch_scene_tip_layout);
+    p.j(localObject, "findViewById(R.id.comment_switch_scene_tip_layout)");
+    this.AVK = ((View)localObject);
+    localObject = findViewById(b.f.comment_switch_scene_tip_tv);
+    p.j(localObject, "findViewById(R.id.comment_switch_scene_tip_tv)");
+    this.AVL = ((TextView)localObject);
+    localObject = findViewById(b.f.smiley_btn);
+    p.j(localObject, "findViewById(R.id.smiley_btn)");
+    this.AVM = ((ImageView)localObject);
+    localObject = findViewById(b.f.comment_et);
+    p.j(localObject, "findViewById(R.id.comment_et)");
+    this.AVN = ((MMEditText)localObject);
+    localObject = findViewById(b.f.comment_target_avatar);
+    p.j(localObject, "findViewById(R.id.comment_target_avatar)");
+    this.AVQ = ((ImageView)localObject);
+    localObject = findViewById(b.f.reply_btn);
+    p.j(localObject, "findViewById(R.id.reply_btn)");
+    this.AVO = ((View)localObject);
+    localObject = findViewById(b.f.comment_et_layout);
+    p.j(localObject, "findViewById(R.id.comment_et_layout)");
+    this.AVP = ((View)localObject);
+    if (ar.isDarkMode())
     {
-      localObject = this.wkP;
+      localObject = this.AVK;
       if (localObject == null) {
-        p.btv("switchSceneTip");
+        p.bGy("switchSceneTip");
       }
-      ((View)localObject).setBackgroundResource(2131232738);
+      ((View)localObject).setBackgroundResource(b.e.finder_switch_scene_tip_dark_bg2);
     }
     for (;;)
     {
-      localObject = this.wkR;
+      localObject = this.AVM;
       if (localObject == null) {
-        p.btv("smileyBtn");
+        p.bGy("smileyBtn");
       }
       ((ImageView)localObject).setTag(Boolean.FALSE);
-      localObject = ad.l(getContext(), false);
-      p.g(localObject, "SmileyPanelFactory.getSmileyPanel(context, false)");
-      this.hQS = ((SmileyPanel)localObject);
-      localObject = this.hQS;
+      localObject = ad.m(getContext(), false);
+      p.j(localObject, "SmileyPanelFactory.getSmileyPanel(context, false)");
+      this.kFp = ((SmileyPanel)localObject);
+      localObject = this.kFp;
       if (localObject == null) {
-        p.btv("smileyPanel");
+        p.bGy("smileyPanel");
       }
-      ((SmileyPanel)localObject).setEntranceScene(ChatFooterPanel.tvw);
-      localObject = this.hQS;
+      ((SmileyPanel)localObject).setEntranceScene(ChatFooterPanel.xde);
+      localObject = this.kFp;
       if (localObject == null) {
-        p.btv("smileyPanel");
+        p.bGy("smileyPanel");
       }
-      ((SmileyPanel)localObject).setBackgroundResource(2131232481);
-      localObject = this.hQS;
+      ((SmileyPanel)localObject).setBackgroundResource(b.e.finder_bottombar_bg);
+      localObject = this.kFp;
       if (localObject == null) {
-        p.btv("smileyPanel");
+        p.bGy("smileyPanel");
       }
-      ((SmileyPanel)localObject).goD();
-      localObject = this.hQS;
+      ((SmileyPanel)localObject).hjp();
+      localObject = this.kFp;
       if (localObject == null) {
-        p.btv("smileyPanel");
+        p.bGy("smileyPanel");
       }
-      ((SmileyPanel)localObject).goE();
-      localObject = this.hQS;
+      ((SmileyPanel)localObject).hjq();
+      localObject = this.kFp;
       if (localObject == null) {
-        p.btv("smileyPanel");
+        p.bGy("smileyPanel");
       }
-      ((SmileyPanel)localObject).zN(false);
-      localObject = this.hQS;
+      ((SmileyPanel)localObject).DS(false);
+      localObject = this.kFp;
       if (localObject == null) {
-        p.btv("smileyPanel");
+        p.bGy("smileyPanel");
       }
       ((SmileyPanel)localObject).setVisibility(4);
-      localObject = this.hQS;
+      localObject = this.kFp;
       if (localObject == null) {
-        p.btv("smileyPanel");
+        p.bGy("smileyPanel");
       }
       ((SmileyPanel)localObject).onResume();
-      localObject = this.hQS;
+      localObject = this.kFp;
       if (localObject == null) {
-        p.btv("smileyPanel");
+        p.bGy("smileyPanel");
       }
-      ((SmileyPanel)localObject).setOnTextOperationListener((ChatFooterPanel.a)new d(this));
-      localObject = new LinearLayout.LayoutParams(-1, (int)this.wkX);
-      SmileyPanel localSmileyPanel = this.hQS;
+      ((SmileyPanel)localObject).setOnTextOperationListener((ChatFooterPanel.a)new FinderCommentFooter.h(this));
+      localObject = new LinearLayout.LayoutParams(-1, (int)this.AVS);
+      SmileyPanel localSmileyPanel = this.kFp;
       if (localSmileyPanel == null) {
-        p.btv("smileyPanel");
+        p.bGy("smileyPanel");
       }
       localSmileyPanel.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localSmileyPanel = this.hQS;
+      localSmileyPanel = this.kFp;
       if (localSmileyPanel == null) {
-        p.btv("smileyPanel");
+        p.bGy("smileyPanel");
       }
       addView((View)localSmileyPanel, (ViewGroup.LayoutParams)localObject);
-      localObject = this.wkR;
+      localObject = this.AVM;
       if (localObject == null) {
-        p.btv("smileyBtn");
+        p.bGy("smileyBtn");
       }
-      ((ImageView)localObject).setOnClickListener((View.OnClickListener)new e(this));
-      setTranslationY(this.wkX);
-      localObject = com.tencent.mm.plugin.finder.storage.c.vCb;
-      this.wkW = (((Number)com.tencent.mm.plugin.finder.storage.c.dsz().value()).intValue() * 2);
-      localObject = this.wkT;
+      ((ImageView)localObject).setOnClickListener((View.OnClickListener)new i(this));
+      setTranslationY(this.AVS);
+      localObject = com.tencent.mm.plugin.finder.storage.d.AjH;
+      this.AVR = (((Number)com.tencent.mm.plugin.finder.storage.d.dTT().aSr()).intValue() * 2);
+      localObject = this.AVO;
       if (localObject == null) {
-        p.btv("replyBtn");
+        p.bGy("replyBtn");
       }
       ((View)localObject).setVisibility(8);
-      localObject = this.wkS;
+      localObject = this.AVN;
       if (localObject == null) {
-        p.btv("editText");
+        p.bGy("editText");
       }
-      ((MMEditText)localObject).addTextChangedListener((TextWatcher)new f(this));
-      localObject = this.wkS;
+      ((MMEditText)localObject).addTextChangedListener((TextWatcher)new j(this));
+      localObject = this.AVN;
       if (localObject == null) {
-        p.btv("editText");
+        p.bGy("editText");
       }
-      com.tencent.mm.ui.tools.b.c.f((EditText)localObject).lv(0, this.wkW).a(null);
-      dGx();
+      c.i((EditText)localObject).mM(0, this.AVR).a(null);
+      eix();
       AppMethodBeat.o(168289);
       return;
-      localObject = this.wkP;
+      localObject = this.AVK;
       if (localObject == null) {
-        p.btv("switchSceneTip");
+        p.bGy("switchSceneTip");
       }
-      ((View)localObject).setBackgroundResource(2131232736);
+      ((View)localObject).setBackgroundResource(b.e.finder_switch_scene_tip_bg2);
     }
+  }
+  
+  public final void rq(final boolean paramBoolean)
+  {
+    AppMethodBeat.i(168290);
+    if (this.AVT)
+    {
+      AppMethodBeat.o(168290);
+      return;
+    }
+    Object localObject = this.AVM;
+    if (localObject == null) {
+      p.bGy("smileyBtn");
+    }
+    ((ImageView)localObject).setImageResource(b.e.chatting_setmode_biaoqing_btn);
+    localObject = this.AVM;
+    if (localObject == null) {
+      p.bGy("smileyBtn");
+    }
+    ImageView localImageView = this.AVM;
+    if (localImageView == null) {
+      p.bGy("smileyBtn");
+    }
+    ((ImageView)localObject).setContentDescription((CharSequence)localImageView.getContext().getString(b.j.chat_footer_smiley_btn));
+    localObject = this.AVM;
+    if (localObject == null) {
+      p.bGy("smileyBtn");
+    }
+    ((ImageView)localObject).setTag(Boolean.FALSE);
+    if (paramBoolean)
+    {
+      animate().setInterpolator((TimeInterpolator)new DecelerateInterpolator()).setDuration(220L).translationY(this.AVS).setListener((Animator.AnimatorListener)new k(this, paramBoolean)).start();
+      AppMethodBeat.o(168290);
+      return;
+    }
+    localObject = this.kFp;
+    if (localObject == null) {
+      p.bGy("smileyPanel");
+    }
+    ((SmileyPanel)localObject).animate().alpha(0.0F).setDuration(220L).setListener((Animator.AnimatorListener)new l(this)).start();
+    AppMethodBeat.o(168290);
   }
   
   public final void setBackClickListener(kotlin.g.a.a<x> parama)
   {
-    this.wla = parama;
+    this.AVV = parama;
   }
   
   public final void setBanSwitchScene(boolean paramBoolean)
   {
-    this.wlc = paramBoolean;
+    this.AVX = paramBoolean;
   }
   
   public final void setCommentEditTextLayout(View paramView)
   {
     AppMethodBeat.i(168284);
-    p.h(paramView, "<set-?>");
-    this.wkU = paramView;
+    p.k(paramView, "<set-?>");
+    this.AVP = paramView;
     AppMethodBeat.o(168284);
   }
   
   public final void setCommentTextLimit(int paramInt)
   {
-    this.wkW = paramInt;
+    this.AVR = paramInt;
   }
   
   public final void setEditText(MMEditText paramMMEditText)
   {
     AppMethodBeat.i(168280);
-    p.h(paramMMEditText, "<set-?>");
-    this.wkS = paramMMEditText;
+    p.k(paramMMEditText, "<set-?>");
+    this.AVN = paramMMEditText;
     AppMethodBeat.o(168280);
   }
   
   public final void setFooterMode(int paramInt)
   {
     AppMethodBeat.i(168287);
-    b localb = this.wkZ;
+    b localb = this.AVU;
     if (localb != null) {
-      localb.onModeChange(this.wld, paramInt);
+      localb.gA(this.AVY, paramInt);
     }
-    this.wld = paramInt;
+    this.AVY = paramInt;
     AppMethodBeat.o(168287);
   }
   
   public final void setFrozen(boolean paramBoolean)
   {
-    this.wkY = paramBoolean;
+    this.AVT = paramBoolean;
   }
   
   public final void setLastActionStr(String paramString)
   {
-    AppMethodBeat.i(254757);
-    p.h(paramString, "<set-?>");
-    this.wlf = paramString;
-    AppMethodBeat.o(254757);
+    AppMethodBeat.i(269227);
+    p.k(paramString, "<set-?>");
+    this.AWa = paramString;
+    AppMethodBeat.o(269227);
   }
   
   public final void setLastFromName(String paramString)
   {
-    AppMethodBeat.i(254756);
-    p.h(paramString, "<set-?>");
-    this.wle = paramString;
-    AppMethodBeat.o(254756);
+    AppMethodBeat.i(269226);
+    p.k(paramString, "<set-?>");
+    this.AVZ = paramString;
+    AppMethodBeat.o(269226);
   }
   
   public final void setLastTag(Object paramObject)
   {
-    this.wlg = paramObject;
+    this.AWb = paramObject;
   }
   
   public final void setModeChangeCallback(b paramb)
   {
-    this.wkZ = paramb;
+    this.AVU = paramb;
   }
   
   public final void setReplyBtn(View paramView)
   {
     AppMethodBeat.i(168282);
-    p.h(paramView, "<set-?>");
-    this.wkT = paramView;
+    p.k(paramView, "<set-?>");
+    this.AVO = paramView;
     AppMethodBeat.o(168282);
   }
   
   public final void setReplyBtnWidth(int paramInt)
   {
-    this.hQT = paramInt;
+    this.kFq = paramInt;
   }
   
   public final void setScene(int paramInt)
   {
-    AppMethodBeat.i(254754);
+    AppMethodBeat.i(269219);
     if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED)) {
       Log.printInfoStack("Finder.FinderCommentFooter", "set footer scene:".concat(String.valueOf(paramInt)), new Object[0]);
     }
     this.scene = paramInt;
-    AppMethodBeat.o(254754);
+    AppMethodBeat.o(269219);
   }
   
   public final void setSelfProfile(boolean paramBoolean)
   {
-    this.uLZ = paramBoolean;
+    this.zxL = paramBoolean;
   }
   
   public final void setSendBtnEnabled(boolean paramBoolean)
   {
-    this.hQU = paramBoolean;
+    this.kFr = paramBoolean;
   }
   
   public final void setSmileyBtn(ImageView paramImageView)
   {
     AppMethodBeat.i(168278);
-    p.h(paramImageView, "<set-?>");
-    this.wkR = paramImageView;
+    p.k(paramImageView, "<set-?>");
+    this.AVM = paramImageView;
     AppMethodBeat.o(168278);
   }
   
   public final void setSmileyPanel(SmileyPanel paramSmileyPanel)
   {
     AppMethodBeat.i(168276);
-    p.h(paramSmileyPanel, "<set-?>");
-    this.hQS = paramSmileyPanel;
+    p.k(paramSmileyPanel, "<set-?>");
+    this.kFp = paramSmileyPanel;
     AppMethodBeat.o(168276);
   }
   
   public final void setSwitchSceneAvatar(ImageView paramImageView)
   {
     AppMethodBeat.i(178477);
-    p.h(paramImageView, "<set-?>");
-    this.wkN = paramImageView;
+    p.k(paramImageView, "<set-?>");
+    this.AVI = paramImageView;
     AppMethodBeat.o(178477);
   }
   
   public final void setSwitchSceneListener(kotlin.g.a.a<x> parama)
   {
-    this.wlb = parama;
+    this.AVW = parama;
   }
   
   public final void setSwitchSceneName(TextView paramTextView)
   {
     AppMethodBeat.i(178479);
-    p.h(paramTextView, "<set-?>");
-    this.wkO = paramTextView;
+    p.k(paramTextView, "<set-?>");
+    this.AVJ = paramTextView;
     AppMethodBeat.o(178479);
   }
   
   public final void setSwitchSceneTip(View paramView)
   {
     AppMethodBeat.i(178481);
-    p.h(paramView, "<set-?>");
-    this.wkP = paramView;
+    p.k(paramView, "<set-?>");
+    this.AVK = paramView;
     AppMethodBeat.o(178481);
   }
   
   public final void setSwitchSceneTipTv(TextView paramTextView)
   {
     AppMethodBeat.i(178483);
-    p.h(paramTextView, "<set-?>");
-    this.wkQ = paramTextView;
+    p.k(paramTextView, "<set-?>");
+    this.AVL = paramTextView;
     AppMethodBeat.o(178483);
   }
   
   public final void setTargetAvatar(ImageView paramImageView)
   {
     AppMethodBeat.i(168286);
-    p.h(paramImageView, "<set-?>");
-    this.wkV = paramImageView;
+    p.k(paramImageView, "<set-?>");
+    this.AVQ = paramImageView;
     AppMethodBeat.o(168286);
   }
   
-  public final void y(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(168288);
-    if (paramInt > 0) {}
-    for (paramBoolean = true; this.wkY; paramBoolean = false)
-    {
-      AppMethodBeat.o(168288);
-      return;
-    }
-    if ((paramInt > 0) && (paramInt != (int)this.wkX))
-    {
-      KeyBoardUtil.saveKeyBordHeightPx(getContext(), paramInt);
-      this.wkX = paramInt;
-      localObject = new LinearLayout.LayoutParams(-1, (int)this.wkX);
-      SmileyPanel localSmileyPanel = this.hQS;
-      if (localSmileyPanel == null) {
-        p.btv("smileyPanel");
-      }
-      localSmileyPanel.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    }
-    if (this.uMD != paramBoolean)
-    {
-      this.uMD = paramBoolean;
-      if (!paramBoolean) {
-        break label191;
-      }
-      animate().setDuration(90L).translationY(0.0F).setListener((Animator.AnimatorListener)new i(this)).start();
-    }
-    for (;;)
-    {
-      localObject = com.tencent.mm.plugin.finder.storage.c.vCb;
-      if ((com.tencent.mm.plugin.finder.storage.c.dsR() <= 0) || (!dGz())) {
-        break;
-      }
-      localObject = this.wkP;
-      if (localObject == null) {
-        p.btv("switchSceneTip");
-      }
-      ((View)localObject).setVisibility(0);
-      AppMethodBeat.o(168288);
-      return;
-      label191:
-      if ((this.wld == 2) || (this.wld == 0)) {
-        animate().setDuration(180L).translationY(this.wkX).setListener((Animator.AnimatorListener)new j(this)).start();
-      }
-    }
-    Object localObject = this.wkP;
-    if (localObject == null) {
-      p.btv("switchSceneTip");
-    }
-    ((View)localObject).setVisibility(8);
-    AppMethodBeat.o(168288);
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderCommentFooter$Companion;", "", "()V", "MODE_DEFAULT", "", "MODE_KEYBOARD", "MODE_SMILEY", "TAG", "", "plugin-finder_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderCommentFooter$Companion;", "", "()V", "MODE_DEFAULT", "", "MODE_KEYBOARD", "MODE_SMILEY", "TAG", "", "plugin-finder_release"})
   public static final class a {}
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderCommentFooter$IModeChangeCallback;", "", "onModeChange", "", "from", "", "to", "plugin-finder_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderCommentFooter$IModeChangeCallback;", "", "onModeChange", "", "from", "", "to", "plugin-finder_release"})
   public static abstract interface b
   {
-    public abstract void onModeChange(int paramInt1, int paramInt2);
+    public abstract void gA(int paramInt1, int paramInt2);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/view/FinderCommentFooter$onFinishInflate$1", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel$OnTextOperationListener;", "append", "", "text", "", "del", "onToSendTextEnable", "enable", "", "performSend", "plugin-finder_release"})
-  public static final class d
-    implements ChatFooterPanel.a
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+  static final class c
+    implements ValueAnimator.AnimatorUpdateListener
   {
-    public final void aHC()
+    c(FinderCommentFooter paramFinderCommentFooter) {}
+    
+    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
-      AppMethodBeat.i(168257);
-      if (this.wlk.getEditText().getInputConnection() != null)
+      AppMethodBeat.i(285967);
+      if (paramValueAnimator != null) {}
+      for (paramValueAnimator = paramValueAnimator.getAnimatedValue(); paramValueAnimator == null; paramValueAnimator = null)
       {
-        this.wlk.getEditText().getInputConnection().sendKeyEvent(new KeyEvent(0, 67));
-        this.wlk.getEditText().getInputConnection().sendKeyEvent(new KeyEvent(1, 67));
+        paramValueAnimator = new kotlin.t("null cannot be cast to non-null type kotlin.Int");
+        AppMethodBeat.o(285967);
+        throw paramValueAnimator;
       }
-      AppMethodBeat.o(168257);
+      float f = ((Integer)paramValueAnimator).intValue();
+      paramValueAnimator = this.AWd.getReplyBtn().getLayoutParams();
+      paramValueAnimator.width = kotlin.h.a.dm(f);
+      this.AWd.getReplyBtn().setLayoutParams(paramValueAnimator);
+      this.AWd.getReplyBtn().setAlpha(f / this.AWd.getReplyBtnWidth());
+      AppMethodBeat.o(285967);
     }
-    
-    public final void aHD() {}
-    
-    public final void append(String paramString)
-    {
-      AppMethodBeat.i(168256);
-      this.wlk.getEditText().bol(paramString);
-      AppMethodBeat.o(168256);
-    }
-    
-    public final void eP(boolean paramBoolean) {}
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/FinderCommentFooter$checkShowReplyBtn$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
+  public static final class d
+    implements Animator.AnimatorListener
+  {
+    public final void onAnimationCancel(Animator paramAnimator)
+    {
+      AppMethodBeat.i(279105);
+      paramAnimator = this.AWd.getReplyBtn().getLayoutParams();
+      paramAnimator.width = this.AWd.getReplyBtnWidth();
+      this.AWd.getReplyBtn().setLayoutParams(paramAnimator);
+      this.AWd.getReplyBtn().setAlpha(1.0F);
+      AppMethodBeat.o(279105);
+    }
+    
+    public final void onAnimationEnd(Animator paramAnimator)
+    {
+      AppMethodBeat.i(279104);
+      paramAnimator = this.AWd.getReplyBtn().getLayoutParams();
+      paramAnimator.width = this.AWd.getReplyBtnWidth();
+      this.AWd.getReplyBtn().setLayoutParams(paramAnimator);
+      this.AWd.getReplyBtn().setAlpha(1.0F);
+      AppMethodBeat.o(279104);
+    }
+    
+    public final void onAnimationRepeat(Animator paramAnimator) {}
+    
+    public final void onAnimationStart(Animator paramAnimator)
+    {
+      AppMethodBeat.i(279106);
+      this.AWd.getReplyBtn().setVisibility(0);
+      AppMethodBeat.o(279106);
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
   static final class e
-    implements View.OnClickListener
+    implements ValueAnimator.AnimatorUpdateListener
   {
     e(FinderCommentFooter paramFinderCommentFooter) {}
+    
+    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
+    {
+      AppMethodBeat.i(283864);
+      if (paramValueAnimator != null) {}
+      for (paramValueAnimator = paramValueAnimator.getAnimatedValue(); paramValueAnimator == null; paramValueAnimator = null)
+      {
+        paramValueAnimator = new kotlin.t("null cannot be cast to non-null type kotlin.Int");
+        AppMethodBeat.o(283864);
+        throw paramValueAnimator;
+      }
+      float f = ((Integer)paramValueAnimator).intValue();
+      paramValueAnimator = this.AWd.getReplyBtn().getLayoutParams();
+      paramValueAnimator.width = kotlin.h.a.dm(f);
+      this.AWd.getReplyBtn().setLayoutParams(paramValueAnimator);
+      this.AWd.getReplyBtn().setAlpha(f / this.AWd.getReplyBtnWidth());
+      AppMethodBeat.o(283864);
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/FinderCommentFooter$checkShowReplyBtn$4", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
+  public static final class f
+    implements Animator.AnimatorListener
+  {
+    public final void onAnimationCancel(Animator paramAnimator)
+    {
+      AppMethodBeat.i(277456);
+      this.AWd.getReplyBtn().setVisibility(8);
+      AppMethodBeat.o(277456);
+    }
+    
+    public final void onAnimationEnd(Animator paramAnimator)
+    {
+      AppMethodBeat.i(277455);
+      this.AWd.getReplyBtn().setVisibility(8);
+      AppMethodBeat.o(277455);
+    }
+    
+    public final void onAnimationRepeat(Animator paramAnimator) {}
+    
+    public final void onAnimationStart(Animator paramAnimator)
+    {
+      AppMethodBeat.i(277457);
+      this.AWd.getReplyBtn().setVisibility(0);
+      AppMethodBeat.o(277457);
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class i
+    implements View.OnClickListener
+  {
+    i(FinderCommentFooter paramFinderCommentFooter) {}
     
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(168258);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderCommentFooter$onFinishInflate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderCommentFooter$onFinishInflate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
       if (paramView == null)
       {
-        paramView = new t("null cannot be cast to non-null type android.widget.ImageView");
+        paramView = new kotlin.t("null cannot be cast to non-null type android.widget.ImageView");
         AppMethodBeat.o(168258);
         throw paramView;
       }
       paramView = ((ImageView)paramView).getTag();
       if (paramView == null)
       {
-        paramView = new t("null cannot be cast to non-null type kotlin.Boolean");
+        paramView = new kotlin.t("null cannot be cast to non-null type kotlin.Boolean");
         AppMethodBeat.o(168258);
         throw paramView;
       }
       if (!((Boolean)paramView).booleanValue()) {}
       for (boolean bool = true;; bool = false)
       {
-        FinderCommentFooter.a(this.wlk, bool);
+        FinderCommentFooter.a(this.AWd, bool);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/FinderCommentFooter$onFinishInflate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(168258);
         return;
@@ -1024,207 +1121,52 @@ public final class FinderCommentFooter
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/view/FinderCommentFooter$onFinishInflate$3", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-finder_release"})
-  public static final class f
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/FinderCommentFooter$onFinishInflate$3", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-finder_release"})
+  public static final class j
     implements TextWatcher
   {
     public final void afterTextChanged(Editable paramEditable)
     {
-      AppMethodBeat.i(254746);
-      int i;
-      if (paramEditable != null) {
-        if (((CharSequence)paramEditable).length() > 0) {
-          i = 1;
-        }
-      }
-      for (;;)
-      {
-        if (i != 0)
-        {
-          paramEditable = String.valueOf(paramEditable);
-          if (paramEditable == null)
-          {
-            paramEditable = new t("null cannot be cast to non-null type kotlin.CharSequence");
-            AppMethodBeat.o(254746);
-            throw paramEditable;
-            i = 0;
-            continue;
-            i = 0;
-          }
-          else if (((CharSequence)n.trim((CharSequence)paramEditable).toString()).length() > 0)
-          {
-            i = 1;
-            if (i == 0) {
-              break label114;
-            }
-          }
-        }
-      }
-      label114:
-      for (boolean bool = true;; bool = false)
-      {
-        if (bool != this.wlk.getSendBtnEnabled()) {
-          break label119;
-        }
-        AppMethodBeat.o(254746);
-        return;
-        i = 0;
-        break;
-      }
-      label119:
-      this.wlk.setSendBtnEnabled(bool);
-      if (this.wlk.getSendBtnEnabled())
-      {
-        paramEditable = new ValueAnimator();
-        paramEditable.setIntValues(new int[] { 0, this.wlk.getReplyBtnWidth() });
-        paramEditable.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new a(this));
-        paramEditable.setDuration(150L);
-        paramEditable.addListener((Animator.AnimatorListener)new b(this));
-        paramEditable.start();
-        AppMethodBeat.o(254746);
-        return;
-      }
-      paramEditable = new ValueAnimator();
-      paramEditable.setIntValues(new int[] { this.wlk.getReplyBtnWidth(), 0 });
-      paramEditable.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new c(this));
-      paramEditable.setDuration(150L);
-      paramEditable.addListener((Animator.AnimatorListener)new d(this));
-      paramEditable.start();
-      AppMethodBeat.o(254746);
+      AppMethodBeat.i(284932);
+      this.AWd.getEditText().postDelayed((Runnable)new a(this), 160L);
+      AppMethodBeat.o(284932);
     }
     
     public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
     
     public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
     static final class a
-      implements ValueAnimator.AnimatorUpdateListener
+      implements Runnable
     {
-      a(FinderCommentFooter.f paramf) {}
+      a(FinderCommentFooter.j paramj) {}
       
-      public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
+      public final void run()
       {
-        AppMethodBeat.i(254738);
-        if (paramValueAnimator != null) {}
-        for (paramValueAnimator = paramValueAnimator.getAnimatedValue(); paramValueAnimator == null; paramValueAnimator = null)
-        {
-          paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Int");
-          AppMethodBeat.o(254738);
-          throw paramValueAnimator;
-        }
-        float f = ((Integer)paramValueAnimator).intValue();
-        paramValueAnimator = this.wll.wlk.getReplyBtn().getLayoutParams();
-        paramValueAnimator.width = kotlin.h.a.cR(f);
-        this.wll.wlk.getReplyBtn().setLayoutParams(paramValueAnimator);
-        this.wll.wlk.getReplyBtn().setAlpha(f / this.wll.wlk.getReplyBtnWidth());
-        AppMethodBeat.o(254738);
-      }
-    }
-    
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/view/FinderCommentFooter$onFinishInflate$3$afterTextChanged$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
-    public static final class b
-      implements Animator.AnimatorListener
-    {
-      public final void onAnimationCancel(Animator paramAnimator)
-      {
-        AppMethodBeat.i(254740);
-        paramAnimator = this.wll.wlk.getReplyBtn().getLayoutParams();
-        paramAnimator.width = this.wll.wlk.getReplyBtnWidth();
-        this.wll.wlk.getReplyBtn().setLayoutParams(paramAnimator);
-        this.wll.wlk.getReplyBtn().setAlpha(1.0F);
-        AppMethodBeat.o(254740);
-      }
-      
-      public final void onAnimationEnd(Animator paramAnimator)
-      {
-        AppMethodBeat.i(254739);
-        paramAnimator = this.wll.wlk.getReplyBtn().getLayoutParams();
-        paramAnimator.width = this.wll.wlk.getReplyBtnWidth();
-        this.wll.wlk.getReplyBtn().setLayoutParams(paramAnimator);
-        this.wll.wlk.getReplyBtn().setAlpha(1.0F);
-        AppMethodBeat.o(254739);
-      }
-      
-      public final void onAnimationRepeat(Animator paramAnimator) {}
-      
-      public final void onAnimationStart(Animator paramAnimator)
-      {
-        AppMethodBeat.i(254741);
-        this.wll.wlk.getReplyBtn().setVisibility(0);
-        AppMethodBeat.o(254741);
-      }
-    }
-    
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
-    static final class c
-      implements ValueAnimator.AnimatorUpdateListener
-    {
-      c(FinderCommentFooter.f paramf) {}
-      
-      public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-      {
-        AppMethodBeat.i(254742);
-        if (paramValueAnimator != null) {}
-        for (paramValueAnimator = paramValueAnimator.getAnimatedValue(); paramValueAnimator == null; paramValueAnimator = null)
-        {
-          paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Int");
-          AppMethodBeat.o(254742);
-          throw paramValueAnimator;
-        }
-        float f = ((Integer)paramValueAnimator).intValue();
-        paramValueAnimator = this.wll.wlk.getReplyBtn().getLayoutParams();
-        paramValueAnimator.width = kotlin.h.a.cR(f);
-        this.wll.wlk.getReplyBtn().setLayoutParams(paramValueAnimator);
-        this.wll.wlk.getReplyBtn().setAlpha(f / this.wll.wlk.getReplyBtnWidth());
-        AppMethodBeat.o(254742);
-      }
-    }
-    
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/view/FinderCommentFooter$onFinishInflate$3$afterTextChanged$4", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
-    public static final class d
-      implements Animator.AnimatorListener
-    {
-      public final void onAnimationCancel(Animator paramAnimator)
-      {
-        AppMethodBeat.i(254744);
-        this.wll.wlk.getReplyBtn().setVisibility(8);
-        AppMethodBeat.o(254744);
-      }
-      
-      public final void onAnimationEnd(Animator paramAnimator)
-      {
-        AppMethodBeat.i(254743);
-        this.wll.wlk.getReplyBtn().setVisibility(8);
-        AppMethodBeat.o(254743);
-      }
-      
-      public final void onAnimationRepeat(Animator paramAnimator) {}
-      
-      public final void onAnimationStart(Animator paramAnimator)
-      {
-        AppMethodBeat.i(254745);
-        this.wll.wlk.getReplyBtn().setVisibility(0);
-        AppMethodBeat.o(254745);
+        AppMethodBeat.i(267742);
+        FinderCommentFooter.a(this.AWg.AWd, this.AWg.AWd.getEditText().getText());
+        AppMethodBeat.o(267742);
       }
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/view/FinderCommentFooter$onHideSmileyPanel$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
-  public static final class g
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/FinderCommentFooter$onHideSmileyPanel$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
+  public static final class k
     implements Animator.AnimatorListener
   {
-    g(boolean paramBoolean) {}
+    k(boolean paramBoolean) {}
     
     public final void onAnimationCancel(Animator paramAnimator) {}
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
       AppMethodBeat.i(168269);
-      this.wlk.getSmileyPanel().setVisibility(4);
-      this.wlk.getSmileyBtn().setImageResource(2131231772);
+      this.AWd.getSmileyPanel().setVisibility(4);
+      this.AWd.getSmileyBtn().setImageResource(b.e.chatting_setmode_biaoqing_btn);
+      this.AWd.getSmileyBtn().setContentDescription((CharSequence)this.AWd.getSmileyBtn().getContext().getString(b.j.chat_footer_smiley_btn));
       if (paramBoolean) {
-        this.wlk.setFooterMode(0);
+        this.AWd.setFooterMode(0);
       }
       AppMethodBeat.o(168269);
     }
@@ -1234,8 +1176,8 @@ public final class FinderCommentFooter
     public final void onAnimationStart(Animator paramAnimator) {}
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/view/FinderCommentFooter$onHideSmileyPanel$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
-  public static final class h
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/FinderCommentFooter$onHideSmileyPanel$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
+  public static final class l
     implements Animator.AnimatorListener
   {
     public final void onAnimationCancel(Animator paramAnimator) {}
@@ -1243,8 +1185,8 @@ public final class FinderCommentFooter
     public final void onAnimationEnd(Animator paramAnimator)
     {
       AppMethodBeat.i(168270);
-      this.wlk.getSmileyPanel().setAlpha(1.0F);
-      this.wlk.getSmileyPanel().setVisibility(4);
+      this.AWd.getSmileyPanel().setAlpha(1.0F);
+      this.AWd.getSmileyPanel().setVisibility(4);
       AppMethodBeat.o(168270);
     }
     
@@ -1253,17 +1195,17 @@ public final class FinderCommentFooter
     public final void onAnimationStart(Animator paramAnimator) {}
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/view/FinderCommentFooter$onKeyboardHeightChanged$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
-  public static final class i
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/FinderCommentFooter$onKeyboardHeightChanged$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
+  public static final class m
     implements Animator.AnimatorListener
   {
     public final void onAnimationCancel(Animator paramAnimator) {}
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(254747);
-      this.wlk.setFooterMode(2);
-      AppMethodBeat.o(254747);
+      AppMethodBeat.i(273377);
+      this.AWd.setFooterMode(2);
+      AppMethodBeat.o(273377);
     }
     
     public final void onAnimationRepeat(Animator paramAnimator) {}
@@ -1271,17 +1213,17 @@ public final class FinderCommentFooter
     public final void onAnimationStart(Animator paramAnimator) {}
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/view/FinderCommentFooter$onKeyboardHeightChanged$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
-  public static final class j
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/FinderCommentFooter$onKeyboardHeightChanged$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
+  public static final class n
     implements Animator.AnimatorListener
   {
     public final void onAnimationCancel(Animator paramAnimator) {}
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(254748);
-      this.wlk.setFooterMode(0);
-      AppMethodBeat.o(254748);
+      AppMethodBeat.i(288176);
+      this.AWd.setFooterMode(0);
+      AppMethodBeat.o(288176);
     }
     
     public final void onAnimationRepeat(Animator paramAnimator) {}
@@ -1289,89 +1231,89 @@ public final class FinderCommentFooter
     public final void onAnimationStart(Animator paramAnimator) {}
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/view/FinderCommentFooter$onShowSmileyPanel$1", "Landroid/view/View$OnLayoutChangeListener;", "onLayoutChange", "", "v", "Landroid/view/View;", "left", "", "top", "right", "bottom", "oldLeft", "oldTop", "oldRight", "oldBottom", "plugin-finder_release"})
-  public static final class k
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/view/FinderCommentFooter$onShowSmileyPanel$1", "Landroid/view/View$OnLayoutChangeListener;", "onLayoutChange", "", "v", "Landroid/view/View;", "left", "", "top", "right", "bottom", "oldLeft", "oldTop", "oldRight", "oldBottom", "plugin-finder_release"})
+  public static final class o
     implements View.OnLayoutChangeListener
   {
-    k(kotlin.g.a.a parama) {}
+    o(kotlin.g.a.a parama) {}
     
     public final void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
     {
       AppMethodBeat.i(168273);
-      this.wlk.getSmileyPanel().removeOnLayoutChangeListener((View.OnLayoutChangeListener)this);
-      this.wln.invoke();
+      this.AWd.getSmileyPanel().removeOnLayoutChangeListener((View.OnLayoutChangeListener)this);
+      this.AWi.invoke();
       AppMethodBeat.o(168273);
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
-  static final class l
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  static final class p
     extends q
     implements kotlin.g.a.a<x>
   {
-    l(FinderCommentFooter paramFinderCommentFooter)
+    p(FinderCommentFooter paramFinderCommentFooter)
     {
       super();
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class m
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class q
     implements View.OnClickListener
   {
-    m(FinderCommentFooter paramFinderCommentFooter) {}
+    q(FinderCommentFooter paramFinderCommentFooter) {}
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(254751);
+      AppMethodBeat.i(291248);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderCommentFooter$refreshSwitchSceneView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-      paramView = com.tencent.mm.plugin.finder.storage.c.vCb;
-      if (com.tencent.mm.plugin.finder.storage.c.dsR() > 0)
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderCommentFooter$refreshSwitchSceneView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+      paramView = com.tencent.mm.plugin.finder.storage.d.AjH;
+      if (com.tencent.mm.plugin.finder.storage.d.dUk() > 0)
       {
-        paramView = com.tencent.mm.plugin.finder.storage.c.vCb;
-        com.tencent.mm.plugin.finder.storage.c.KR(0);
-        this.wlk.getSwitchSceneTip().setVisibility(8);
-        paramView = new d(this.wlk.getContext());
-        paramView.Ml(2131494644);
-        ao.a((Paint)((TextView)paramView.lJI.findViewById(2131301359)).getPaint(), 0.8F);
-        localObject = paramView.lJI.findViewById(2131301357);
-        FinderCommentFooter localFinderCommentFooter = this.wlk;
-        p.g(localObject, "item1");
+        paramView = com.tencent.mm.plugin.finder.storage.d.AjH;
+        com.tencent.mm.plugin.finder.storage.d.Qc(0);
+        this.AWd.getSwitchSceneTip().setVisibility(8);
+        paramView = new e(this.AWd.getContext());
+        paramView.RB(b.g.finder_switch_scene_bottom_sheet_layout);
+        ar.a((Paint)((TextView)paramView.oFW.findViewById(b.f.finder_mm_bottom_sheet_title)).getPaint(), 0.8F);
+        localObject = paramView.oFW.findViewById(b.f.finder_mm_bottom_sheet_item1);
+        FinderCommentFooter localFinderCommentFooter = this.AWd;
+        p.j(localObject, "item1");
         FinderCommentFooter.a(localFinderCommentFooter, (View)localObject, 1, (kotlin.g.a.b)new a(paramView, this));
-        localObject = paramView.lJI.findViewById(2131301358);
-        localFinderCommentFooter = this.wlk;
-        p.g(localObject, "item2");
+        localObject = paramView.oFW.findViewById(b.f.finder_mm_bottom_sheet_item2);
+        localFinderCommentFooter = this.AWd;
+        p.j(localObject, "item2");
         FinderCommentFooter.a(localFinderCommentFooter, (View)localObject, 2, (kotlin.g.a.b)new b(paramView, this));
-        paramView.dGm();
+        paramView.eik();
       }
       for (;;)
       {
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/FinderCommentFooter$refreshSwitchSceneView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(254751);
+        AppMethodBeat.o(291248);
         return;
-        FinderCommentFooter.a(this.wlk);
+        FinderCommentFooter.a(this.AWd);
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "selectScene", "", "invoke", "com/tencent/mm/plugin/finder/view/FinderCommentFooter$refreshSwitchSceneView$2$1$1"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "selectScene", "", "invoke", "com/tencent/mm/plugin/finder/view/FinderCommentFooter$refreshSwitchSceneView$2$1$1"})
     static final class a
       extends q
       implements kotlin.g.a.b<Integer, x>
     {
-      a(d paramd, FinderCommentFooter.m paramm)
+      a(e parame, FinderCommentFooter.q paramq)
       {
         super();
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "selectScene", "", "invoke", "com/tencent/mm/plugin/finder/view/FinderCommentFooter$refreshSwitchSceneView$2$1$2"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "selectScene", "", "invoke", "com/tencent/mm/plugin/finder/view/FinderCommentFooter$refreshSwitchSceneView$2$1$2"})
     static final class b
       extends q
       implements kotlin.g.a.b<Integer, x>
     {
-      b(d paramd, FinderCommentFooter.m paramm)
+      b(e parame, FinderCommentFooter.q paramq)
       {
         super();
       }

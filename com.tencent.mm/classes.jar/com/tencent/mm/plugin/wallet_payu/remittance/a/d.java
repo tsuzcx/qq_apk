@@ -10,12 +10,12 @@ import org.json.JSONObject;
 public final class d
   extends a
 {
-  public String CpA;
-  public String Cpz;
+  public String ImO;
+  public String ImP;
+  public int dXr;
   public String desc;
-  public double qwJ;
-  public int qwL;
   public int scene;
+  public double tVK;
   public String username;
   
   public d(String paramString)
@@ -27,7 +27,7 @@ public final class d
     AppMethodBeat.o(72172);
   }
   
-  public final int fPU()
+  public final int gIA()
   {
     return 24;
   }
@@ -42,18 +42,18 @@ public final class d
       return;
     }
     this.username = paramJSONObject.optString("user_name");
-    this.Cpz = paramJSONObject.optString("true_name");
-    this.qwJ = (paramJSONObject.optDouble("fee") / 100.0D);
+    this.ImO = paramJSONObject.optString("true_name");
+    this.tVK = (paramJSONObject.optDouble("fee") / 100.0D);
     this.desc = paramJSONObject.optString("desc");
     this.scene = paramJSONObject.optInt("scene");
-    this.CpA = paramJSONObject.optString("transfer_qrcode_id");
-    this.qwL = paramJSONObject.optInt("time_stamp");
+    this.ImP = paramJSONObject.optString("transfer_qrcode_id");
+    this.dXr = paramJSONObject.optInt("time_stamp");
     AppMethodBeat.o(72173);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.remittance.a.d
  * JD-Core Version:    0.7.0.1
  */

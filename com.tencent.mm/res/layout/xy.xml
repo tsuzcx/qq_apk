@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@drawable/ai_" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mz"
+<LinearLayout android:orientation="horizontal" android:background="@drawable/ai_" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mz"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/e71" android:layout_width="fill_parent" android:layout_height="@dimen/k4">
+    <CheckBox android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/kko" android:background="@drawable/ahw" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="false" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" android:layout_marginEnd="@dimen/hs" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/e71" android:layout_width="wrap_content" android:layout_height="@dimen/k4" android:layout_weight="1.0">
         <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/e73" android:layout_width="wrap_content" android:layout_height="@dimen/k4" android:maxWidth="240.0dip" android:singleLine="true" />
         <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/e72" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/k4" android:singleLine="true" />
     </LinearLayout>
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/kkn" android:visibility="gone" android:layout_width="@dimen/ak4" android:layout_height="@dimen/ak1" android:layout_marginLeft="@dimen/ak2" android:layout_marginRight="@dimen/ak3" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
 </LinearLayout>

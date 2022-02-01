@@ -6,61 +6,61 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public enum o
 {
   public String mStartTag;
-  public String qTt;
-  public boolean qTu;
-  public String qTv;
-  public String qTw;
-  public boolean qTx;
-  public boolean qTy = false;
+  public boolean uvA;
+  public String uvB;
+  public String uvC;
+  public boolean uvD;
+  public boolean uvE = false;
+  public String uvz;
   
   static
   {
     AppMethodBeat.i(181956);
-    qTp = new o("NONE", 0, "", "", "", "", false);
-    qTq = new o("NOTEUL", 1, "<wx-ul>", "</wx-ul>", "<wx-li>", "</wx-li>", true);
-    qTr = new o("NOTEOL", 2, "<wx-ol>", "</wx-ol>", "<wx-li>", "</wx-li>", true);
-    qTs = new o("NOTETODO", 3, "", "", "<wn-todo checked=\"1\" >", "</wn-todo>", true);
-    qTz = new o[] { qTp, qTq, qTr, qTs };
+    uvv = new o("NONE", 0, "", "", "", "", false);
+    uvw = new o("NOTEUL", 1, "<wx-ul>", "</wx-ul>", "<wx-li>", "</wx-li>", true);
+    uvx = new o("NOTEOL", 2, "<wx-ol>", "</wx-ol>", "<wx-li>", "</wx-li>", true);
+    uvy = new o("NOTETODO", 3, "", "", "<wn-todo checked=\"1\" >", "</wn-todo>", true);
+    uvF = new o[] { uvv, uvw, uvx, uvy };
     AppMethodBeat.o(181956);
   }
   
-  private o(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, boolean paramBoolean2)
+  private o(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
   {
     this.mStartTag = paramString1;
-    this.qTt = paramString2;
-    this.qTv = paramString3;
-    this.qTw = paramString4;
-    this.qTu = false;
-    this.qTx = paramBoolean1;
+    this.uvz = paramString2;
+    this.uvB = paramString3;
+    this.uvC = paramString4;
+    this.uvA = false;
+    this.uvD = paramBoolean;
   }
   
   public static o a(ParagraphStyle paramParagraphStyle)
   {
     if ((paramParagraphStyle instanceof d)) {
-      return qTq;
+      return uvw;
     }
     if ((paramParagraphStyle instanceof k)) {
-      return qTr;
+      return uvx;
     }
     if ((paramParagraphStyle instanceof s)) {
-      return qTs;
+      return uvy;
     }
     return null;
   }
   
-  public final boolean cEw()
+  public final boolean cTc()
   {
-    return this == qTq;
+    return this == uvw;
   }
   
-  public final boolean cEx()
+  public final boolean cTd()
   {
-    return this == qTr;
+    return this == uvx;
   }
   
-  public final boolean cEy()
+  public final boolean cTe()
   {
-    return this == qTs;
+    return this == uvy;
   }
 }
 

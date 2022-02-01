@@ -1,156 +1,116 @@
 package com.tencent.mm.plugin.brandservice.b;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
+import android.os.Looper;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.g.a.ap;
-import com.tencent.mm.g.a.ap.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.brandservice.ui.BizSearchDetailPageUI;
-import com.tencent.mm.protocal.protobuf.chl;
-import com.tencent.mm.protocal.protobuf.ru;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.ao;
+import com.tencent.mm.api.c;
+import com.tencent.mm.ay.a.a;
+import com.tencent.mm.ay.a.a.c.a;
+import com.tencent.mm.ay.q;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.plugin.brandservice.d.d;
+import com.tencent.mm.pluginsdk.ui.a.b;
+import com.tencent.mm.protocal.protobuf.afa;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.as;
+import java.util.List;
 
 public final class e
 {
-  public static chl clJ()
+  private static MMHandler ljQ;
+  
+  static
   {
-    AppMethodBeat.i(5569);
-    try
-    {
-      g.aAi();
-      Object localObject = (String)g.aAh().azQ().get(67591, null);
-      if (localObject != null)
-      {
-        chl localchl = new chl();
-        localObject = ((String)localObject).split(",");
-        localchl.LuT = Integer.valueOf(localObject[0]).intValue();
-        localchl.LuW = Integer.valueOf(localObject[1]).intValue();
-        localchl.LbD = (Integer.valueOf(localObject[2]).intValue() / 1000000.0F);
-        localchl.LbC = (Integer.valueOf(localObject[3]).intValue() / 1000000.0F);
-        Log.i("MicroMsg.BrandService.BrandServiceLogic", "lbs location is not null, %f, %f", new Object[] { Float.valueOf(localchl.LbD), Float.valueOf(localchl.LbC) });
-        AppMethodBeat.o(5569);
-        return localchl;
-      }
-      Log.i("MicroMsg.BrandService.BrandServiceLogic", "lbs location is null, lbsContent is null!");
-      AppMethodBeat.o(5569);
-      return null;
-    }
-    catch (Exception localException)
-    {
-      Log.i("MicroMsg.BrandService.BrandServiceLogic", "lbs location is null, reason %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(5569);
-    }
-    return null;
+    AppMethodBeat.i(5566);
+    ljQ = new MMHandler(Looper.getMainLooper());
+    AppMethodBeat.o(5566);
   }
   
-  public static final class a
-    implements i
+  public static c a(c paramc, afa paramafa)
   {
-    private Context context;
-    private String dDv;
-    private long dDw;
-    private boolean dDx;
-    private int fromScene;
-    private int offset;
-    private ap pnn;
-    private String title;
-    
-    public a(Context paramContext, String paramString1, long paramLong, int paramInt1, int paramInt2, String paramString2, boolean paramBoolean, ap paramap)
+    if (paramafa != null)
     {
-      this.context = paramContext;
-      this.dDv = paramString1;
-      this.dDw = paramLong;
-      this.offset = paramInt1;
-      this.fromScene = paramInt2;
-      this.title = paramString2;
-      this.dDx = paramBoolean;
-      this.pnn = paramap;
+      paramc.field_brandFlag = paramafa.mVM;
+      paramc.field_brandIconURL = paramafa.mVP;
+      paramc.field_brandInfo = paramafa.mVO;
+      paramc.field_extInfo = paramafa.mVN;
     }
-    
-    private void kk(boolean paramBoolean)
+    return paramc;
+  }
+  
+  public static void a(ImageView paramImageView, as paramas, String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(5565);
+    if ((!paramBoolean) && (d.rk(paramas.field_type)))
     {
-      AppMethodBeat.i(5568);
-      g.azz().b(1071, this);
-      if ((this.pnn != null) && (this.pnn.dDt.dDy != null))
-      {
-        this.pnn.dDu.dDz = paramBoolean;
-        this.pnn.dDt.dDy.run();
-      }
-      AppMethodBeat.o(5568);
+      a.b.d(paramImageView, paramas.field_username);
+      AppMethodBeat.o(5565);
+      return;
     }
-    
-    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+    paramas = new c.a();
+    paramas.lRP = d.d.brand_default_head;
+    paramas.lRC = true;
+    paramas.kPz = true;
+    q.bml().a(paramString, paramImageView, paramas.bmL());
+    AppMethodBeat.o(5565);
+  }
+  
+  public static Spanned b(Context paramContext, String paramString, List<String> paramList)
+  {
+    AppMethodBeat.i(5563);
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.i(5567);
-      Log.i("MicroMsg.BrandService.BrandServiceLogic", "errType (%d) , errCode (%d) , errMsg (errMsg)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-      if ((paramInt1 != 0) || (paramInt2 != 0))
-      {
-        kk(false);
-        AppMethodBeat.o(5567);
-        return;
-      }
-      if (paramq == null)
-      {
-        Log.e("MicroMsg.BrandService.BrandServiceLogic", "scene is null.");
-        kk(false);
-        AppMethodBeat.o(5567);
-        return;
-      }
-      if (paramq.getType() != 1071)
-      {
-        Log.i("MicroMsg.BrandService.BrandServiceLogic", "The NetScene is not a instanceof BizSearchDetailPage.");
-        AppMethodBeat.o(5567);
-        return;
-      }
-      Log.i("MicroMsg.BrandService.BrandServiceLogic", "BizSearchDetailPage.");
-      paramString = ((l)paramq).clR();
-      if ((paramString == null) || (paramString.xKD == null))
-      {
-        Log.e("MicroMsg.BrandService.BrandServiceLogic", "response or BusinessContent or itemList is null.");
-        kk(false);
-        AppMethodBeat.o(5567);
-        return;
-      }
-      Log.d("MicroMsg.BrandService.BrandServiceLogic", "searchId : %s.", new Object[] { paramString.KZj });
-      paramq = new Intent(this.context, BizSearchDetailPageUI.class);
-      paramq.putExtra("addContactScene", 35);
-      paramq.putExtra("fromScene", this.fromScene);
-      paramq.putExtra("keyword", this.dDv);
-      paramq.putExtra("businessType", this.dDw);
-      paramq.putExtra("offset", this.offset);
-      paramq.putExtra("title", this.title);
-      paramq.putExtra("showEditText", this.dDx);
-      try
-      {
-        paramq.putExtra("result", paramString.toByteArray());
-        if (!(this.context instanceof Activity)) {
-          paramq.addFlags(268435456);
-        }
-        kk(true);
-        return;
-      }
-      catch (Exception paramString)
-      {
-        kk(false);
-        Log.printErrStackTrace("MicroMsg.BrandService.BrandServiceLogic", paramString, "", new Object[0]);
-        return;
-      }
-      finally
-      {
-        AppMethodBeat.o(5567);
-      }
+      AppMethodBeat.o(5563);
+      return null;
     }
+    if ((paramContext == null) || (paramList == null))
+    {
+      paramContext = new SpannableString(paramString);
+      AppMethodBeat.o(5563);
+      return paramContext;
+    }
+    paramContext = com.tencent.mm.plugin.fts.a.f.a(com.tencent.mm.plugin.fts.a.a.e.a(paramString, paramList));
+    if ((paramContext.BIp instanceof Spannable))
+    {
+      paramContext = (Spannable)paramContext.BIp;
+      AppMethodBeat.o(5563);
+      return paramContext;
+    }
+    paramContext = new SpannableString(paramContext.BIp);
+    AppMethodBeat.o(5563);
+    return paramContext;
+  }
+  
+  public static boolean c(TextView paramTextView, CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(5564);
+    if (paramTextView == null)
+    {
+      AppMethodBeat.o(5564);
+      return false;
+    }
+    if ((paramCharSequence == null) || (paramCharSequence.length() == 0))
+    {
+      paramTextView.setVisibility(8);
+      AppMethodBeat.o(5564);
+      return false;
+    }
+    paramTextView.setVisibility(0);
+    paramTextView.setText(paramCharSequence);
+    AppMethodBeat.o(5564);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.b.e
  * JD-Core Version:    0.7.0.1
  */

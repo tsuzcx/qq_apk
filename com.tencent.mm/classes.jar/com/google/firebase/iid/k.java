@@ -6,10 +6,10 @@ import com.google.android.gms.tasks.TaskCompletionSource;
 final class k
   implements l
 {
-  private final i bLB;
-  private final l bLC;
-  private final TaskCompletionSource bLD;
-  private final Pair bLE;
+  private final i bJg;
+  private final l bJh;
+  private final TaskCompletionSource bJi;
+  private final Pair bJj;
   
   k(i arg1, l arg2, TaskCompletionSource arg3, Pair arg4) {}
   
@@ -17,7 +17,7 @@ final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.k
  * JD-Core Version:    0.7.0.1
  */

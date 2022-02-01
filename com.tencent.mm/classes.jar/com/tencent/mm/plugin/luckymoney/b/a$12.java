@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.luckymoney.b;
 
-import com.tencent.mm.plugin.luckymoney.story.b.f;
+import com.tencent.mm.plugin.luckymoney.story.b.b;
 import com.tencent.mm.storagebase.h.b;
 
 final class a$12
@@ -8,12 +8,12 @@ final class a$12
 {
   public final String[] getSQLs()
   {
-    return f.SQL_CREATE;
+    return b.SQL_CREATE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.b.a.12
  * JD-Core Version:    0.7.0.1
  */

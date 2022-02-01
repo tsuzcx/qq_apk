@@ -1,97 +1,65 @@
 package com.tencent.mm.plugin.finder.storage.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.arb;
-import kotlin.g.b.p;
+import com.tencent.mm.plugin.finder.model.bu;
+import com.tencent.mm.plugin.finder.report.n;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.asm;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/data/PageCacheList;", "", "array", "", "Lcom/tencent/mm/plugin/finder/storage/data/CachePage;", "([Lcom/tencent/mm/plugin/finder/storage/data/CachePage;)V", "[Lcom/tencent/mm/plugin/finder/storage/data/CachePage;", "get", "typeFlag", "", "reset", "", "set", "page", "size", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/data/PageFinderItem;", "Lcom/tencent/mm/plugin/finder/storage/data/PageItem;", "source", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "(Lcom/tencent/mm/protocal/protobuf/FinderFPItem;)V", "type", "", "id", "", "finderObject", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "sourceFlag", "(IJLcom/tencent/mm/protocal/protobuf/FinderObject;I)V", "extract", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "targetDataType", "toRVFeed", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "plugin-finder_release"})
 public final class q
+  extends r
 {
-  final a[] vGC;
-  
-  public q(a[] paramArrayOfa)
+  public q(int paramInt1, long paramLong, FinderObject paramFinderObject, int paramInt2)
   {
-    AppMethodBeat.i(252037);
-    this.vGC = paramArrayOfa;
-    AppMethodBeat.o(252037);
+    AppMethodBeat.i(282582);
+    Object localObject = n.zWF;
+    n.l(paramFinderObject);
+    localObject = this.AnB;
+    ((asm)localObject).id = paramLong;
+    ((asm)localObject).type = paramInt1;
+    ((asm)localObject).SFP = paramFinderObject;
+    ((asm)localObject).SFQ = paramInt2;
+    paramFinderObject = h.Ang;
+    ((asm)localObject).dataType = 0;
+    AppMethodBeat.o(282582);
   }
   
-  public final a Lg(int paramInt)
+  public q(asm paramasm)
   {
-    AppMethodBeat.i(252034);
-    Object localObject2 = this.vGC;
-    int k = localObject2.length;
-    int i = 0;
-    Object localObject1;
-    int j;
-    if (i < k)
+    super(paramasm);
+    AppMethodBeat.i(282580);
+    AppMethodBeat.o(282580);
+  }
+  
+  public final bu dZA()
+  {
+    AppMethodBeat.i(282578);
+    int i = this.AnB.dataType;
+    Object localObject = h.Ang;
+    if (i == 0)
     {
-      localObject1 = localObject2[i];
-      if (localObject1.type == paramInt)
+      localObject = h.Ang;
+      localObject = h.a(this.AnB);
+      if (localObject != null)
       {
-        j = 1;
-        label41:
-        if (j == 0) {
-          break label89;
-        }
+        j localj = j.Ann;
+        localObject = j.p((FinderItem)localObject);
+        AppMethodBeat.o(282578);
+        return localObject;
       }
+      AppMethodBeat.o(282578);
+      return null;
     }
-    for (;;)
-    {
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = new a(10000, "default_v3", new arb(), (byte)0);
-      }
-      AppMethodBeat.o(252034);
-      return localObject2;
-      j = 0;
-      break label41;
-      label89:
-      i += 1;
-      break;
-      localObject1 = null;
-    }
-  }
-  
-  public final void a(int paramInt, a parama)
-  {
-    AppMethodBeat.i(252035);
-    p.h(parama, "page");
-    a[] arrayOfa = this.vGC;
-    int k = arrayOfa.length;
-    int j = 0;
-    int i = 0;
-    while (j < k)
-    {
-      if (paramInt == arrayOfa[j].type) {
-        this.vGC[i] = parama;
-      }
-      j += 1;
-      i += 1;
-    }
-    AppMethodBeat.o(252035);
-  }
-  
-  public final void reset()
-  {
-    AppMethodBeat.i(252036);
-    a[] arrayOfa = this.vGC;
-    int j = arrayOfa.length;
-    int i = 0;
-    while (i < j)
-    {
-      a locala = arrayOfa[i];
-      locala.lNl = false;
-      locala.a(new arb());
-      i += 1;
-    }
-    AppMethodBeat.o(252036);
+    AppMethodBeat.o(282578);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.data.q
  * JD-Core Version:    0.7.0.1
  */

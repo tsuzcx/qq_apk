@@ -14,9 +14,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   implements View.OnTouchListener
 {
-  private a Cqq;
+  private a.a InH;
   
-  public static a eNB()
+  public static a fAr()
   {
     AppMethodBeat.i(67915);
     a locala = new a();
@@ -27,8 +27,8 @@ public final class a
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(67916);
-    if (this.Cqq == null) {
-      this.Cqq = new a(paramView);
+    if (this.InH == null) {
+      this.InH = new a.a(paramView);
     }
     TextView localTextView = (TextView)paramView;
     localTextView.setMovementMethod(null);
@@ -49,53 +49,28 @@ public final class a
       if (paramMotionEvent.length != 0)
       {
         if (i == 0) {
-          paramView.postDelayed(this.Cqq, ViewConfiguration.getLongPressTimeout());
+          paramView.postDelayed(this.InH, ViewConfiguration.getLongPressTimeout());
         }
         for (;;)
         {
           AppMethodBeat.o(67916);
           return true;
-          paramView.removeCallbacks(this.Cqq);
+          paramView.removeCallbacks(this.InH);
           paramMotionEvent[0].onClick(localTextView);
         }
       }
     }
     else if (i == 3)
     {
-      paramView.removeCallbacks(this.Cqq);
+      paramView.removeCallbacks(this.InH);
     }
     AppMethodBeat.o(67916);
     return false;
   }
-  
-  static final class a
-    implements Runnable
-  {
-    private View view;
-    
-    a(View paramView)
-    {
-      this.view = paramView;
-    }
-    
-    public final void run()
-    {
-      AppMethodBeat.i(67914);
-      View localView = this.view;
-      for (boolean bool = localView.performLongClick(); !bool; bool = localView.performLongClick())
-      {
-        localView = (View)localView.getParent();
-        if (localView == null) {
-          break;
-        }
-      }
-      AppMethodBeat.o(67914);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.a
  * JD-Core Version:    0.7.0.1
  */

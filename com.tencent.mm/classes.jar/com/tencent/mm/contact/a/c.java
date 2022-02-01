@@ -2,120 +2,118 @@ package com.tencent.mm.contact.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.contact.a.a.b;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.aq;
+import com.tencent.mm.model.ar;
 import com.tencent.mm.openim.d.a;
 import com.tencent.mm.openim.d.f;
-import com.tencent.mm.openim.d.h;
 import com.tencent.mm.openim.d.k;
+import com.tencent.mm.openim.d.l;
 import com.tencent.mm.openim.d.m;
-import com.tencent.mm.openim.d.n;
 import com.tencent.mm.openim.d.o;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
-import com.tencent.mm.plugin.messenger.foundation.a.r;
+import com.tencent.mm.plugin.messenger.foundation.a.u;
 
 public final class c
-  implements r
+  implements u
 {
-  public final aq EA(String paramString)
+  public final void LA(String paramString)
   {
-    AppMethodBeat.i(257882);
+    AppMethodBeat.i(188796);
+    ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbK().d(new l(paramString, 1));
+    AppMethodBeat.o(188796);
+  }
+  
+  public final void LB(String paramString)
+  {
+    AppMethodBeat.i(188798);
+    ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbK().d(new l(paramString, 2));
+    AppMethodBeat.o(188798);
+  }
+  
+  public final void Lr(String paramString)
+  {
+    AppMethodBeat.i(188770);
+    if (ab.PQ(paramString))
+    {
+      ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbK().d(new f(paramString, 1));
+      AppMethodBeat.o(188770);
+      return;
+    }
+    ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbK().d(new o(paramString, 1));
+    AppMethodBeat.o(188770);
+  }
+  
+  public final void Ls(String paramString)
+  {
+    AppMethodBeat.i(188773);
+    if (ab.PQ(paramString))
+    {
+      ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbK().d(new f(paramString, 2));
+      AppMethodBeat.o(188773);
+      return;
+    }
+    ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbK().d(new o(paramString, 2));
+    AppMethodBeat.o(188773);
+  }
+  
+  public final ar Lt(String paramString)
+  {
+    AppMethodBeat.i(188775);
     b localb = new b(true);
-    localb.a(new n(paramString, 1));
-    AppMethodBeat.o(257882);
+    localb.a(new com.tencent.mm.openim.d.n(paramString, 1));
+    AppMethodBeat.o(188775);
     return localb;
   }
   
-  public final aq EB(String paramString)
+  public final ar Lu(String paramString)
   {
-    AppMethodBeat.i(257883);
+    AppMethodBeat.i(188777);
     b localb = new b(true);
-    localb.a(new n(paramString, 2));
-    AppMethodBeat.o(257883);
+    localb.a(new com.tencent.mm.openim.d.n(paramString, 2));
+    AppMethodBeat.o(188777);
     return localb;
   }
   
-  public final void EC(String paramString)
+  public final void Lv(String paramString)
   {
-    AppMethodBeat.i(257884);
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new m(paramString, 1));
-    AppMethodBeat.o(257884);
+    AppMethodBeat.i(188783);
+    ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbK().d(new m(paramString, 1));
+    AppMethodBeat.o(188783);
   }
   
-  public final void ED(String paramString)
+  public final void Lw(String paramString)
   {
-    AppMethodBeat.i(257885);
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new m(paramString, 2));
-    AppMethodBeat.o(257885);
+    AppMethodBeat.i(188784);
+    ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbK().d(new m(paramString, 2));
+    AppMethodBeat.o(188784);
   }
   
-  public final void EE(String paramString)
+  public final void Lx(String paramString)
   {
-    AppMethodBeat.i(257887);
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new h(paramString, 1));
-    AppMethodBeat.o(257887);
+    AppMethodBeat.i(188791);
+    ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbK().d(new com.tencent.mm.openim.d.h(paramString, 1));
+    AppMethodBeat.o(188791);
   }
   
-  public final void EF(String paramString)
+  public final void Ly(String paramString)
   {
-    AppMethodBeat.i(257888);
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new h(paramString, 2));
-    AppMethodBeat.o(257888);
+    AppMethodBeat.i(188793);
+    ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbK().d(new com.tencent.mm.openim.d.h(paramString, 2));
+    AppMethodBeat.o(188793);
   }
   
-  public final void EG(String paramString)
+  public final void Lz(String paramString)
   {
-    AppMethodBeat.i(257889);
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new a(paramString));
-    AppMethodBeat.o(257889);
+    AppMethodBeat.i(188795);
+    ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbK().d(new a(paramString));
+    AppMethodBeat.o(188795);
   }
   
-  public final void EH(String paramString)
+  public final void ar(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(257890);
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new com.tencent.mm.openim.d.l(paramString, 1));
-    AppMethodBeat.o(257890);
-  }
-  
-  public final void EI(String paramString)
-  {
-    AppMethodBeat.i(257891);
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new com.tencent.mm.openim.d.l(paramString, 2));
-    AppMethodBeat.o(257891);
-  }
-  
-  public final void Ey(String paramString)
-  {
-    AppMethodBeat.i(257880);
-    if (ab.Iy(paramString))
-    {
-      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new f(paramString, 1));
-      AppMethodBeat.o(257880);
-      return;
-    }
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new o(paramString, 1));
-    AppMethodBeat.o(257880);
-  }
-  
-  public final void Ez(String paramString)
-  {
-    AppMethodBeat.i(257881);
-    if (ab.Iy(paramString))
-    {
-      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new f(paramString, 2));
-      AppMethodBeat.o(257881);
-      return;
-    }
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new o(paramString, 2));
-    AppMethodBeat.o(257881);
-  }
-  
-  public final void am(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(257886);
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new k(paramString1, paramString2));
-    AppMethodBeat.o(257886);
+    AppMethodBeat.i(188787);
+    ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbK().d(new k(paramString1, paramString2));
+    AppMethodBeat.o(188787);
   }
 }
 

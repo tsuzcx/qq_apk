@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.app;
 
-import com.tencent.luggage.sdk.f.a.b;
+import com.tencent.luggage.sdk.g.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
@@ -12,23 +12,23 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/app/AppBrandUserInfoProvider;", "Lcom/tencent/luggage/sdk/userinfo/IWechatUserInfoProvider;", "()V", "getUserAvatarHDHeadImage", "", "callback", "Lcom/tencent/luggage/sdk/userinfo/IWechatUserInfoProvider$OnGetImagePathCallback;", "getUserDisplayNickName", "", "IPCGetHeadIconPath", "IPCGetUserDisplayNickName", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/app/AppBrandUserInfoProvider;", "Lcom/tencent/luggage/sdk/userinfo/IWechatUserInfoProvider;", "()V", "getUserAvatarHDHeadImage", "", "callback", "Lcom/tencent/luggage/sdk/userinfo/IWechatUserInfoProvider$OnGetImagePathCallback;", "getUserDisplayNickName", "", "IPCGetHeadIconPath", "IPCGetUserDisplayNickName", "plugin-appbrand-integration_release"})
 public final class g
-  implements com.tencent.luggage.sdk.f.a
+  implements com.tencent.luggage.sdk.g.a
 {
-  public static final g kIF;
+  public static final g nCu;
   
   static
   {
     AppMethodBeat.i(175112);
-    kIF = new g();
+    nCu = new g();
     AppMethodBeat.o(175112);
   }
   
-  public final String Pa()
+  public final String Sy()
   {
     AppMethodBeat.i(175111);
-    Object localObject = (IPCString)XIPCInvoker.a(MainProcessIPCService.dkO, IPCVoid.hnE, g.b.class);
+    Object localObject = (IPCString)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.jZu, g.b.class);
     if (localObject != null)
     {
       localObject = ((IPCString)localObject).value;
@@ -42,14 +42,14 @@ public final class g
   public final void a(a.b paramb)
   {
     AppMethodBeat.i(175110);
-    p.h(paramb, "callback");
-    XIPCInvoker.a(MainProcessIPCService.dkO, IPCVoid.hnE, g.a.class, (d)new c(paramb));
+    p.k(paramb, "callback");
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.jZu, g.a.class, (f)new c(paramb));
     AppMethodBeat.o(175110);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "path", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "path", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class c<T>
-    implements d<ResultType>
+    implements f<ResultType>
   {
     c(a.b paramb) {}
   }

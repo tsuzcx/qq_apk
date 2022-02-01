@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.j;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.plugin.appbrand.app.m;
 import com.tencent.mm.plugin.appbrand.appusage.AppBrandRecentTaskInfo;
 import com.tencent.mm.plugin.appbrand.appusage.x;
 import com.tencent.mm.plugin.appbrand.appusage.x.a;
@@ -17,25 +17,25 @@ import java.util.Locale;
 
  enum i
 {
-  private static final a lrg;
+  private static final a olQ;
   
   static
   {
     AppMethodBeat.i(45047);
-    lrh = new i[0];
-    lrg = new a();
+    olR = new i[0];
+    olQ = new a();
     AppMethodBeat.o(45047);
   }
   
-  static AppBrandRecentTaskInfo YG(String paramString)
+  static AppBrandRecentTaskInfo agu(String paramString)
   {
     AppMethodBeat.i(45044);
-    if (n.buJ() == null)
+    if (m.bFN() == null)
     {
       AppMethodBeat.o(45044);
       return null;
     }
-    Object localObject = n.buJ();
+    Object localObject = m.bFN();
     if (Util.isNullOrNil(paramString)) {
       paramString = null;
     }
@@ -43,7 +43,7 @@ import java.util.Locale;
     {
       AppMethodBeat.o(45044);
       return null;
-      localObject = ((x)localObject).kVs.query("AppBrandLauncherLayoutItem", null, String.format(Locale.US, "%s=? and %s=?", new Object[] { "scene", "recordId" }), new String[] { "2", paramString }, null, null, null);
+      localObject = ((x)localObject).nPF.query("AppBrandLauncherLayoutItem", null, String.format(Locale.US, "%s=? and %s=?", new Object[] { "scene", "recordId" }), new String[] { "2", paramString }, null, null, null);
       if (localObject == null)
       {
         paramString = null;
@@ -70,13 +70,13 @@ import java.util.Locale;
     }
   }
   
-  static List<AppBrandRecentTaskInfo> bCT()
+  static List<AppBrandRecentTaskInfo> bOo()
   {
     AppMethodBeat.i(45043);
     LinkedList localLinkedList = new LinkedList();
-    if (n.buJ() != null)
+    if (m.bFN() != null)
     {
-      ArrayList localArrayList = n.buJ().vZ(10000);
+      ArrayList localArrayList = m.bFN().zk(10000);
       if (!Util.isNullOrNil(localArrayList)) {
         localLinkedList.addAll(localArrayList);
       }
@@ -88,8 +88,8 @@ import java.util.Locale;
   static void c(MStorage.IOnStorageChange paramIOnStorageChange)
   {
     AppMethodBeat.i(45045);
-    if (n.buJ() != null) {
-      n.buJ().add(paramIOnStorageChange);
+    if (m.bFN() != null) {
+      m.bFN().add(paramIOnStorageChange);
     }
     AppMethodBeat.o(45045);
   }
@@ -97,8 +97,8 @@ import java.util.Locale;
   static void d(MStorage.IOnStorageChange paramIOnStorageChange)
   {
     AppMethodBeat.i(45046);
-    if (n.buJ() != null) {
-      n.buJ().remove(paramIOnStorageChange);
+    if (m.bFN() != null) {
+      m.bFN().remove(paramIOnStorageChange);
     }
     AppMethodBeat.o(45046);
   }
@@ -106,20 +106,20 @@ import java.util.Locale;
   static void onCreate()
   {
     AppMethodBeat.i(45041);
-    y.bAj().add(lrg);
+    y.bLB().add(olQ);
     AppMethodBeat.o(45041);
   }
   
   static void onDestroy()
   {
     AppMethodBeat.i(45042);
-    y.bAj().remove(lrg);
+    y.bLB().remove(olQ);
     AppMethodBeat.o(45042);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.j.i
  * JD-Core Version:    0.7.0.1
  */

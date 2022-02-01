@@ -2,9 +2,8 @@ package com.tencent.mm.plugin.multitalk.ui.widget.projector;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.multitalk.model.ac;
+import com.tencent.mm.plugin.multitalk.model.ad;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
-import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -15,28 +14,28 @@ import java.util.Set;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenProjectorTalkingUtil;", "", "statusManager", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;)V", "mCurrentSpeakerList", "Ljava/util/HashMap;", "", "", "getMCurrentSpeakerList", "()Ljava/util/HashMap;", "setMCurrentSpeakerList", "(Ljava/util/HashMap;)V", "remoteSpeakerSpeakerMuteChecker", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "getStatusManager", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;", "setStatusManager", "checkHistorySpeakerList", "", "checkRemoteSpeakerIsSpeaking", "", "startProjectorSpeakerChecker", "stopProjectorSpeakerChecker", "plugin-multitalk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenProjectorTalkingUtil;", "", "statusManager", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;)V", "mCurrentSpeakerList", "Ljava/util/HashMap;", "", "", "getMCurrentSpeakerList", "()Ljava/util/HashMap;", "setMCurrentSpeakerList", "(Ljava/util/HashMap;)V", "remoteSpeakerSpeakerMuteChecker", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "getStatusManager", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;", "setStatusManager", "checkHistorySpeakerList", "", "checkRemoteSpeakerIsSpeaking", "", "startProjectorSpeakerChecker", "stopProjectorSpeakerChecker", "plugin-multitalk_release"})
 public final class q
 {
-  MTimerHandler zMk;
-  private volatile HashMap<String, Integer> zMl;
-  private a zQD;
+  MTimerHandler FrD;
+  private volatile HashMap<String, Integer> FrE;
+  private a Fwg;
   
   public q(a parama)
   {
-    AppMethodBeat.i(240059);
-    this.zQD = parama;
-    this.zMl = new HashMap();
-    AppMethodBeat.o(240059);
+    AppMethodBeat.i(196209);
+    this.Fwg = parama;
+    this.FrE = new HashMap();
+    AppMethodBeat.o(196209);
   }
   
-  final void epJ()
+  final void eZx()
   {
     try
     {
-      AppMethodBeat.i(240058);
+      AppMethodBeat.i(196206);
       ArrayList localArrayList = new ArrayList();
-      localObject3 = ((Map)this.zMl).entrySet().iterator();
+      localObject3 = ((Map)this.FrE).entrySet().iterator();
       while (((Iterator)localObject3).hasNext()) {
         localArrayList.add((String)((Map.Entry)((Iterator)localObject3).next()).getKey());
       }
@@ -46,9 +45,9 @@ public final class q
     Object localObject2;
     HashMap localHashMap = new HashMap();
     Object localObject3 = new ArrayList();
-    Object localObject4 = ac.eom();
-    p.g(localObject4, "SubCoreMultiTalk.getMultiTalkManager()");
-    localObject4 = ((com.tencent.mm.plugin.multitalk.model.q)localObject4).elR();
+    Object localObject4 = ad.eYc();
+    p.j(localObject4, "SubCoreMultiTalk.getMultiTalkManager()");
+    localObject4 = ((com.tencent.mm.plugin.multitalk.model.q)localObject4).eVE();
     String str;
     int i;
     if (localObject4 != null)
@@ -60,7 +59,7 @@ public final class q
         if (!((List)localObject2).contains(str))
         {
           Map localMap = (Map)localHashMap;
-          p.g(str, "tempSpeaker");
+          p.j(str, "tempSpeaker");
           localMap.put(str, Integer.valueOf(0));
         }
       }
@@ -71,7 +70,7 @@ public final class q
         str = (String)localIterator.next();
         if (((List)localObject4).contains(str))
         {
-          localObject2 = (Integer)this.zMl.get(str);
+          localObject2 = (Integer)this.FrE.get(str);
           if (localObject2 != null) {
             break label404;
           }
@@ -90,45 +89,30 @@ public final class q
       }
       ((Map)localHashMap).put(str, Integer.valueOf(((Integer)localObject2).intValue() + 1));
       break;
-      if ((Integer)this.zMl.get(str) == null) {
+      if ((Integer)this.FrE.get(str) == null) {
         break;
       }
       ((Map)localHashMap).put(str, Integer.valueOf(0));
       break;
-      this.zMl = localHashMap;
-      if ((i != 0) && (!this.zQD.eph()))
+      this.FrE = localHashMap;
+      if ((i != 0) && (!this.Fwg.eYX()))
       {
         localObject2 = new Bundle();
         ((Bundle)localObject2).putStringArrayList("avatar_available_speaker", (ArrayList)localObject3);
-        this.zQD.a(a.c.zVs, (Bundle)localObject2);
+        this.Fwg.a(a.c.FBc, (Bundle)localObject2);
       }
-      AppMethodBeat.o(240058);
+      AppMethodBeat.o(196206);
       for (;;)
       {
         return;
-        AppMethodBeat.o(240058);
+        AppMethodBeat.o(196206);
       }
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onTimerExpired"})
-  static final class a
-    implements MTimerHandler.CallBack
-  {
-    a(q paramq) {}
-    
-    public final boolean onTimerExpired()
-    {
-      AppMethodBeat.i(240057);
-      this.zYb.epJ();
-      AppMethodBeat.o(240057);
-      return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.projector.q
  * JD-Core Version:    0.7.0.1
  */

@@ -6,4 +6,5 @@
         <include layout="@layout/ab3" />
     </LinearLayout>
     <com.tencent.mm.plugin.finder.view.FinderLiveOnliveWidget android:id="@id/cw_" android:paddingLeft="@dimen/bt" android:paddingRight="@dimen/bt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="18.0dip" android:layout_marginLeft="@dimen/bt" android:layout_marginTop="@dimen/bt" app:logo_mode="g42" app:logo_style="dup" />
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/cn2" />
 </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>

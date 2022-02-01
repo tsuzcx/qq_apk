@@ -4,29 +4,21 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
 {
-  public static void DX(String paramString)
+  public static void KP(String paramString)
   {
     AppMethodBeat.i(134216);
-    paramString = paramString + "," + Util.nowMilliSecond() + "," + bpZ();
-    e.Cxv.a(10645, paramString, true, true);
+    paramString = paramString + "," + Util.nowMilliSecond() + "," + bAt();
+    f.Iyx.b(10645, paramString, true, true);
     AppMethodBeat.o(134216);
   }
   
-  public static String bpZ()
-  {
-    AppMethodBeat.i(134213);
-    String str = MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).getString("reg_last_exit_ui", "");
-    AppMethodBeat.o(134213);
-    return str;
-  }
-  
-  private static String bqa()
+  private static String bAE()
   {
     AppMethodBeat.i(134215);
     String str = MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).getString("reg_next_enter_ui", "");
@@ -34,27 +26,35 @@ public final class a
     return str;
   }
   
-  public static void bwU(String paramString)
+  public static String bAt()
+  {
+    AppMethodBeat.i(134213);
+    String str = MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).getString("reg_last_exit_ui", "");
+    AppMethodBeat.o(134213);
+    return str;
+  }
+  
+  public static void bgi(String paramString)
   {
     AppMethodBeat.i(134212);
     MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).edit().putString("reg_last_exit_ui", paramString).commit();
     AppMethodBeat.o(134212);
   }
   
-  public static void bwV(String paramString)
+  public static void bkD(String paramString)
   {
     AppMethodBeat.i(134214);
     MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).edit().putString("reg_next_enter_ui", paramString).commit();
     AppMethodBeat.o(134214);
   }
   
-  public static void j(boolean paramBoolean, String paramString)
+  public static void m(boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(134217);
     if (paramBoolean) {}
-    for (paramString = paramString + "," + Util.nowMilliSecond() + "," + bpZ();; paramString = paramString + "," + Util.nowMilliSecond() + "," + bqa())
+    for (paramString = paramString + "," + Util.nowMilliSecond() + "," + bAt();; paramString = paramString + "," + Util.nowMilliSecond() + "," + bAE())
     {
-      e.Cxv.a(10645, paramString, true, true);
+      f.Iyx.b(10645, paramString, true, true);
       AppMethodBeat.o(134217);
       return;
     }

@@ -1,8 +1,6 @@
 package com.tencent.mm.media.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
 import java.util.Collection;
@@ -14,43 +12,43 @@ import kotlin.a.j;
 import kotlin.g.b.p;
 import kotlin.o;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/decoder/DecodeHelper;", "", "path", "", "outputFPS", "", "startTime", "", "enableHevc", "", "(Ljava/lang/String;IJZ)V", "copyPts", "Landroid/support/v4/util/ArrayMap;", "", "getEnableHevc", "()Z", "setEnableHevc", "(Z)V", "frameInterval", "getFrameInterval", "()J", "setFrameInterval", "(J)V", "frames", "", "inFPS", "lastPts", "maxFps", "", "minFps", "outFPS", "parents", "queue", "Ljava/util/PriorityQueue;", "Lkotlin/Pair;", "recentPts", "getStartTime", "vfrThreshold", "hasFrame", "initStrategy", "", "receiveFrame", "release", "sendPacket", "pts", "bufferIndex", "useStrategy", "strategy", "Lcom/tencent/mm/media/decoder/DecodeStrategy;", "Companion", "plugin-mediaeditor_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/decoder/DecodeHelper;", "", "path", "", "outputFPS", "", "startTime", "", "enableHevc", "", "(Ljava/lang/String;IJZ)V", "copyPts", "Landroidx/collection/ArrayMap;", "", "getEnableHevc", "()Z", "setEnableHevc", "(Z)V", "frameInterval", "getFrameInterval", "()J", "setFrameInterval", "(J)V", "frames", "", "inFPS", "lastPts", "maxFps", "", "minFps", "outFPS", "parents", "queue", "Ljava/util/PriorityQueue;", "Lkotlin/Pair;", "recentPts", "getStartTime", "vfrThreshold", "hasFrame", "initStrategy", "", "receiveFrame", "release", "sendPacket", "pts", "bufferIndex", "useStrategy", "strategy", "Lcom/tencent/mm/media/decoder/DecodeStrategy;", "Companion", "plugin-mediaeditor_release"})
 public final class b
 {
-  public static final b.a idZ;
-  private final List<Long> aEj;
-  final PriorityQueue<o<Long, Integer>> bHs;
-  long idQ;
-  long idR;
-  final android.support.v4.e.a<Long, Long> idS;
-  final android.support.v4.e.a<Long, List<Long>> idT;
-  private int idU;
-  private int idV;
-  private double idW;
-  private double idX;
-  private final int idY;
-  private boolean iiD;
-  private long ost;
+  public static final a kSK;
+  final androidx.b.a<Long, List<Long>> kSA;
+  final PriorityQueue<o<Long, Integer>> kSB;
+  private final List<Long> kSC;
+  private int kSD;
+  private int kSE;
+  private double kSF;
+  private double kSG;
+  private final int kSH;
+  private long kSI;
+  private boolean kSJ;
+  long kSx;
+  long kSy;
+  final androidx.b.a<Long, Long> kSz;
   private final long startTime;
   
   static
   {
     AppMethodBeat.i(93527);
-    idZ = new b.a((byte)0);
+    kSK = new a((byte)0);
     AppMethodBeat.o(93527);
   }
   
   public b(String paramString, int paramInt, long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(258660);
+    AppMethodBeat.i(258686);
     this.startTime = paramLong;
-    this.iiD = paramBoolean;
-    this.idQ = -1L;
-    this.idR = -1L;
-    this.idS = new android.support.v4.e.a();
-    this.idT = new android.support.v4.e.a();
-    this.idY = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.rYC, 10);
-    this.ost = 333L;
+    this.kSJ = paramBoolean;
+    this.kSx = -1L;
+    this.kSy = -1L;
+    this.kSz = new androidx.b.a();
+    this.kSA = new androidx.b.a();
+    this.kSH = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vFy, 10);
+    this.kSI = 333L;
     double[] arrayOfDouble = new double[3];
     double[] tmp92_90 = arrayOfDouble;
     tmp92_90[0] = 0.0D;
@@ -59,16 +57,16 @@ public final class b
     double[] tmp100_96 = tmp96_92;
     tmp100_96[2] = 0.0D;
     tmp100_96;
-    this.aEj = j.n((Iterable)com.tencent.mm.media.k.b.a(paramString, tmp92_90));
-    this.idU = ((int)tmp92_90[2]);
+    this.kSC = j.n((Iterable)com.tencent.mm.media.k.b.a(paramString, tmp92_90));
+    this.kSD = ((int)tmp92_90[2]);
     label192:
     int i;
     if (paramInt > 0)
     {
-      this.idV = paramInt;
-      h.CyF.F(986L, 114L);
-      h.CyF.n(986L, 115L, tmp92_90[2]);
-      h.CyF.n(986L, 116L, (tmp92_90[1] - tmp92_90[0]));
+      this.kSE = paramInt;
+      com.tencent.mm.plugin.report.service.h.IzE.F(986L, 114L);
+      com.tencent.mm.plugin.report.service.h.IzE.p(986L, 115L, tmp92_90[2]);
+      com.tencent.mm.plugin.report.service.h.IzE.p(986L, 116L, (tmp92_90[1] - tmp92_90[0]));
       paramInt = 0;
       if (paramInt >= 3) {
         break label518;
@@ -85,34 +83,34 @@ public final class b
       label216:
       if (paramInt != 0)
       {
-        if (((Collection)this.aEj).isEmpty()) {
+        if (((Collection)this.kSC).isEmpty()) {
           break label523;
         }
         paramInt = 1;
         label237:
         if (paramInt != 0) {
-          this.idR = ((Number)j.ku(this.aEj)).longValue();
+          this.kSy = ((Number)j.lq(this.kSC)).longValue();
         }
       }
-      this.idW = tmp92_90[0];
-      this.idX = tmp92_90[1];
-      this.bHs = new PriorityQueue(Math.max(this.aEj.size(), 11), (Comparator)b.1.iea);
-      paramBoolean = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.rYB, false);
+      this.kSF = tmp92_90[0];
+      this.kSG = tmp92_90[1];
+      this.kSB = new PriorityQueue(Math.max(this.kSC.size(), 11), (Comparator)1.kSL);
+      paramBoolean = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.vFx, false);
       if ((!WeChatEnvironment.hasDebugger()) && (!paramBoolean)) {
-        break label610;
+        break label650;
       }
-      if (this.idU > this.idV) {
+      if (this.kSD > this.kSE) {
         break label528;
       }
       Log.i("DecodeHelper", "use PassthroughDecodeStrategy");
-      a((c)new k());
+      a((c)new l());
     }
     for (;;)
     {
-      Log.i("DecodeHelper", "init decode helper, inFPS = " + this.idU + ", outFPS = " + this.idV + ", minFps:" + this.idW + ", maxFps:" + this.idX + ", vfrThreshold:" + this.idY + ", valid frames = " + this.idS.size() + ", lastPts:" + this.idR + ", frames.size:" + this.aEj.size());
-      AppMethodBeat.o(258660);
+      Log.i("DecodeHelper", "init decode helper, inFPS = " + this.kSD + ", outFPS = " + this.kSE + ", minFps:" + this.kSF + ", maxFps:" + this.kSG + ", vfrThreshold:" + this.kSH + ", valid frames = " + this.kSz.size() + ", lastPts:" + this.kSy + ", frames.size:" + this.kSC.size());
+      AppMethodBeat.o(258686);
       return;
-      paramInt = this.idU;
+      paramInt = this.kSD;
       break;
       label505:
       i = 0;
@@ -127,19 +125,25 @@ public final class b
       paramInt = 0;
       break label237;
       label528:
-      if ((this.aEj.size() > 2000) && (!com.tencent.mm.plugin.sight.base.b.eVr()) && (!com.tencent.mm.plugin.sight.base.b.aj(false, this.iiD)))
+      paramInt = com.tencent.mm.plugin.sight.base.c.fIt();
+      if ((this.kSC.size() > paramInt) && (!com.tencent.mm.plugin.sight.base.c.fIu()) && (!com.tencent.mm.plugin.sight.base.c.av(false, this.kSJ)))
       {
         Log.i("DecodeHelper", "use CfrDecodeStrategy");
         a((c)new a());
       }
-      else
+      else if (this.kSC.size() <= paramInt)
       {
         Log.i("DecodeHelper", "use VfrDecodeStrategy");
-        a((c)new l());
+        a((c)new n());
+      }
+      else
+      {
+        Log.i("DecodeHelper", "use SimpleVfrDecodeStrategy");
+        a((c)new m());
         continue;
-        label610:
+        label650:
         Log.i("DecodeHelper", "use PassthroughDecodeStrategy");
-        a((c)new k());
+        a((c)new l());
       }
     }
   }
@@ -147,37 +151,45 @@ public final class b
   private void a(c paramc)
   {
     AppMethodBeat.i(93525);
-    p.h(paramc, "strategy");
+    p.k(paramc, "strategy");
     long l = System.currentTimeMillis();
-    paramc.a(this.startTime, this.aEj, this.idU, this.idV, (Map)this.idS, (Map)this.idT);
+    paramc.a(this.startTime, this.kSC, this.kSD, this.kSE, (Map)this.kSz, (Map)this.kSA);
     l = System.currentTimeMillis() - l;
-    if ((paramc instanceof k))
+    if ((paramc instanceof l))
     {
-      h.CyF.F(986L, 105L);
-      h.CyF.n(986L, 108L, l);
+      com.tencent.mm.plugin.report.service.h.IzE.F(986L, 105L);
+      com.tencent.mm.plugin.report.service.h.IzE.p(986L, 108L, l);
     }
     for (;;)
     {
-      this.idQ = -1L;
+      this.kSx = -1L;
       AppMethodBeat.o(93525);
       return;
       if ((paramc instanceof a))
       {
-        h.CyF.F(986L, 107L);
-        h.CyF.n(986L, 112L, l);
-        this.ost = ((a)paramc).oss;
+        com.tencent.mm.plugin.report.service.h.IzE.F(986L, 107L);
+        com.tencent.mm.plugin.report.service.h.IzE.p(986L, 112L, l);
+        this.kSI = ((a)paramc).kSw;
       }
-      else if ((paramc instanceof l))
+      else if ((paramc instanceof n))
       {
-        h.CyF.F(986L, 106L);
-        h.CyF.n(986L, 110L, l);
+        com.tencent.mm.plugin.report.service.h.IzE.F(986L, 106L);
+        com.tencent.mm.plugin.report.service.h.IzE.p(986L, 110L, l);
+      }
+      else if ((paramc instanceof m))
+      {
+        com.tencent.mm.plugin.report.service.h.IzE.F(986L, 149L);
+        com.tencent.mm.plugin.report.service.h.IzE.p(986L, 150L, l);
       }
     }
   }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/decoder/DecodeHelper$Companion;", "", "()V", "DEFAULT_QUEUE_CAPACITY", "", "REPORT_ID_STORY_VIDEO", "", "REPORT_KEY_ENCODE_CFR_COUNT", "REPORT_KEY_ENCODE_CFR_INIT_TIME", "REPORT_KEY_ENCODE_COUNT", "REPORT_KEY_ENCODE_FRAME_RATE", "REPORT_KEY_ENCODE_FRAME_RATE_DIFF", "REPORT_KEY_ENCODE_ORIGINAL_COUNT", "REPORT_KEY_ENCODE_PASSTHROUGH_COUNT", "REPORT_KEY_ENCODE_PASSTHROUGH_INIT_TIME", "REPORT_KEY_ENCODE_SIMPLE_VFR_COUNT", "REPORT_KEY_ENCODE_SIMPLE_VFR_INIT_TIME", "REPORT_KEY_ENCODE_VFR_COUNT", "REPORT_KEY_ENCODE_VFR_INIT_TIME", "TAG", "", "plugin-mediaeditor_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.media.d.b
  * JD-Core Version:    0.7.0.1
  */

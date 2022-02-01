@@ -1,6 +1,6 @@
 package com.tencent.mm.ui.chatting.view;
 
-import com.tencent.mm.ui.chatting.k.c;
+import com.tencent.mm.ui.chatting.l.c;
 
 public abstract interface a<T extends c>
 {
@@ -8,7 +8,7 @@ public abstract interface a<T extends c>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.view.a
  * JD-Core Version:    0.7.0.1
  */

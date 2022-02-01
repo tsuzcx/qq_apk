@@ -5,11 +5,11 @@ import android.graphics.Bitmap;
 public abstract interface k
   extends j
 {
-  public abstract Bitmap PD();
+  public abstract Bitmap Td();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.k
  * JD-Core Version:    0.7.0.1
  */

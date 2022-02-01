@@ -1,30 +1,33 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.q;
+import com.tencent.mm.ui.base.MMPullDownView.c;
 
 final class ExdeviceProfileUI$5
-  implements DialogInterface.OnCancelListener
+  implements MMPullDownView.c
 {
   ExdeviceProfileUI$5(ExdeviceProfileUI paramExdeviceProfileUI) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final boolean cOL()
   {
-    AppMethodBeat.i(179604);
-    if (ExdeviceProfileUI.c(this.rJu) != null)
+    AppMethodBeat.i(24099);
+    View localView = ExdeviceProfileUI.u(this.vpc).getChildAt(ExdeviceProfileUI.u(this.vpc).getChildCount() - 1);
+    int i = ExdeviceProfileUI.u(this.vpc).getAdapter().getCount();
+    if ((i > 0) && (localView != null) && (localView.getBottom() <= ExdeviceProfileUI.u(this.vpc).getHeight()) && (ExdeviceProfileUI.u(this.vpc).getLastVisiblePosition() >= i - 1))
     {
-      ExdeviceProfileUI.c(this.rJu).dismiss();
-      ExdeviceProfileUI.t(this.rJu);
+      AppMethodBeat.o(24099);
+      return true;
     }
-    this.rJu.finish();
-    AppMethodBeat.o(179604);
+    AppMethodBeat.o(24099);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceProfileUI.5
  * JD-Core Version:    0.7.0.1
  */

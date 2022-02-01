@@ -8,47 +8,47 @@ import java.util.Iterator;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/widget/camera2/effect/result/WCCaptureResult;", "", "result", "Landroid/hardware/camera2/CaptureResult;", "mCameraId", "", "mWCEffectResultList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/media/widget/camera2/effect/result/WCCameraEffectResultTag;", "Lkotlin/collections/ArrayList;", "(Landroid/hardware/camera2/CaptureResult;Ljava/lang/String;Ljava/util/ArrayList;)V", "mCameraIDRef", "", "getMCameraIDRef", "()I", "setMCameraIDRef", "(I)V", "getMWCEffectResultList", "()Ljava/util/ArrayList;", "setMWCEffectResultList", "(Ljava/util/ArrayList;)V", "getResult", "()Landroid/hardware/camera2/CaptureResult;", "setResult", "(Landroid/hardware/camera2/CaptureResult;)V", "checkEffectSupported", "", "key", "stream", "getBooleanRet", "(Ljava/lang/String;)Ljava/lang/Boolean;", "getByteRet", "", "(Ljava/lang/String;)Ljava/lang/Byte;", "getIntRet", "(Ljava/lang/String;)Ljava/lang/Integer;", "getRetType", "getStringRet", "refKey", "Landroid/hardware/camera2/CaptureResult$Key;", "Companion", "plugin-mediaeditor_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/widget/camera2/effect/result/WCCaptureResult;", "", "result", "Landroid/hardware/camera2/CaptureResult;", "mCameraId", "", "mWCEffectResultList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/media/widget/camera2/effect/result/WCCameraEffectResultTag;", "Lkotlin/collections/ArrayList;", "(Landroid/hardware/camera2/CaptureResult;Ljava/lang/String;Ljava/util/ArrayList;)V", "mCameraIDRef", "", "getMCameraIDRef", "()I", "setMCameraIDRef", "(I)V", "getMWCEffectResultList", "()Ljava/util/ArrayList;", "setMWCEffectResultList", "(Ljava/util/ArrayList;)V", "getResult", "()Landroid/hardware/camera2/CaptureResult;", "setResult", "(Landroid/hardware/camera2/CaptureResult;)V", "checkEffectSupported", "", "key", "stream", "getBooleanRet", "(Ljava/lang/String;)Ljava/lang/Boolean;", "getByteRet", "", "(Ljava/lang/String;)Ljava/lang/Byte;", "getIntRet", "(Ljava/lang/String;)Ljava/lang/Integer;", "getRetType", "getStringRet", "refKey", "Landroid/hardware/camera2/CaptureResult$Key;", "Companion", "plugin-mediaeditor_release"})
 public final class b
 {
   private static final String TAG = "MicroMsg.WCCaptureResult";
-  private static final String ipi = "cameraeffect.result.hdrdetected";
-  public static final b.a ipj;
-  public int ioP;
-  public CaptureResult ipg;
-  public ArrayList<a> iph;
+  private static final String len = "cameraeffect.result.hdrdetected";
+  public static final b.a leo;
+  public int ldU;
+  public CaptureResult lel;
+  public ArrayList<a> lem;
   
   static
   {
     AppMethodBeat.i(94208);
-    ipj = new b.a((byte)0);
+    leo = new b.a((byte)0);
     TAG = "MicroMsg.WCCaptureResult";
-    ipi = "cameraeffect.result.hdrdetected";
+    len = "cameraeffect.result.hdrdetected";
     AppMethodBeat.o(94208);
   }
   
   public b(CaptureResult paramCaptureResult, String paramString, ArrayList<a> paramArrayList)
   {
     AppMethodBeat.i(94207);
-    this.ipg = paramCaptureResult;
-    this.iph = paramArrayList;
-    if (p.j(paramString, "0")) {
-      paramCaptureResult = com.tencent.mm.media.widget.b.a.b.iop;
+    this.lel = paramCaptureResult;
+    this.lem = paramArrayList;
+    if (p.h(paramString, "0")) {
+      paramCaptureResult = com.tencent.mm.media.widget.b.a.b.ldu;
     }
-    for (int i = com.tencent.mm.media.widget.b.a.b.aPT();; i = com.tencent.mm.media.widget.b.a.b.aPU())
+    for (int i = com.tencent.mm.media.widget.b.a.b.aYK();; i = com.tencent.mm.media.widget.b.a.b.aYL())
     {
-      this.ioP = i;
+      this.ldU = i;
       AppMethodBeat.o(94207);
       return;
-      paramCaptureResult = com.tencent.mm.media.widget.b.a.b.iop;
+      paramCaptureResult = com.tencent.mm.media.widget.b.a.b.ldu;
     }
   }
   
-  public final CaptureResult.Key<?> Hv(String paramString)
+  public final CaptureResult.Key<?> OI(String paramString)
   {
     AppMethodBeat.i(94206);
-    p.h(paramString, "key");
-    Object localObject1 = this.iph;
+    p.k(paramString, "key");
+    Object localObject1 = this.lem;
     int i;
     if (localObject1 != null)
     {
@@ -58,11 +58,11 @@ public final class b
       }
       localObject1 = localIterator.next();
       Object localObject2 = (a)localObject1;
-      if (!p.j(((a)localObject2).ioJ, paramString)) {
+      if (!p.h(((a)localObject2).ldO, paramString)) {
         break label116;
       }
-      localObject2 = ((a)localObject2).ioK;
-      if ((localObject2 != null) && ((((Integer)localObject2).intValue() & this.ioP) == 0)) {
+      localObject2 = ((a)localObject2).ldP;
+      if ((localObject2 != null) && ((((Integer)localObject2).intValue() & this.ldU) == 0)) {
         break label116;
       }
       i = 1;
@@ -87,7 +87,7 @@ public final class b
       break;
     }
     label126:
-    localObject1 = paramString.ipf;
+    localObject1 = paramString.lek;
     if (localObject1 == null) {}
     do
     {
@@ -106,33 +106,33 @@ public final class b
               }
             }
           } while (!((String)localObject1).equals("String"));
-          paramString = paramString.ioN;
+          paramString = paramString.ldS;
           if (paramString == null) {
-            p.hyc();
+            p.iCn();
           }
           paramString = c.e(paramString, String.class);
           AppMethodBeat.o(94206);
           return paramString;
         } while (!((String)localObject1).equals("Integer"));
-        paramString = paramString.ioN;
+        paramString = paramString.ldS;
         if (paramString == null) {
-          p.hyc();
+          p.iCn();
         }
         paramString = c.e(paramString, Integer.TYPE);
         AppMethodBeat.o(94206);
         return paramString;
       } while (!((String)localObject1).equals("Byte"));
-      paramString = paramString.ioN;
+      paramString = paramString.ldS;
       if (paramString == null) {
-        p.hyc();
+        p.iCn();
       }
       paramString = c.e(paramString, Byte.TYPE);
       AppMethodBeat.o(94206);
       return paramString;
     } while (!((String)localObject1).equals("Boolean"));
-    paramString = paramString.ioN;
+    paramString = paramString.ldS;
     if (paramString == null) {
-      p.hyc();
+      p.iCn();
     }
     paramString = c.e(paramString, Boolean.TYPE);
     AppMethodBeat.o(94206);
@@ -141,7 +141,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.media.widget.b.a.b.b
  * JD-Core Version:    0.7.0.1
  */

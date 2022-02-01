@@ -3,22 +3,22 @@ package com.tencent.magicbrush;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/magicbrush/MagicBrushBuilder;", "Lcom/tencent/magicbrush/MagicBrushConfig;", "dls", "Lkotlin/Function1;", "", "Lkotlin/ExtensionFunctionType;", "(Lkotlin/jvm/functions/Function1;)V", "()V", "build", "Lcom/tencent/magicbrush/MagicBrush;", "lib-magicbrush-nano_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/magicbrush/MagicBrushBuilder;", "Lcom/tencent/magicbrush/MagicBrushConfig;", "dls", "Lkotlin/Function1;", "", "Lkotlin/ExtensionFunctionType;", "(Lkotlin/jvm/functions/Function1;)V", "()V", "build", "Lcom/tencent/magicbrush/MagicBrush;", "lib-magicbrush-nano_release"})
 public final class f
   extends g
 {
-  public final e Rm()
+  public final e UW()
   {
-    AppMethodBeat.i(206822);
-    Object localObject = e.cLB;
+    AppMethodBeat.i(204017);
+    Object localObject = e.cMm;
     localObject = e.a.b(this);
-    AppMethodBeat.o(206822);
+    AppMethodBeat.o(204017);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.magicbrush.f
  * JD-Core Version:    0.7.0.1
  */

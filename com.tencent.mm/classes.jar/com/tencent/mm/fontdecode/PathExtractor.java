@@ -3,14 +3,14 @@ package com.tencent.mm.fontdecode;
 import android.graphics.Matrix;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class PathExtractor
 {
   private String filePath;
-  private long hgs;
+  private long jSm;
   
   static
   {
@@ -23,10 +23,10 @@ public class PathExtractor
   {
     AppMethodBeat.i(145544);
     this.filePath = paramString;
-    this.hgs = nInit(paramString);
-    if (this.hgs != 0L)
+    this.jSm = nInit(paramString);
+    if (this.jSm != 0L)
     {
-      Log.i("MicroMsg.PathExtractor", "create for %s, %d", new Object[] { paramString, Long.valueOf(this.hgs) });
+      Log.i("MicroMsg.PathExtractor", "create for %s, %d", new Object[] { paramString, Long.valueOf(this.jSm) });
       AppMethodBeat.o(145544);
       return;
     }
@@ -53,7 +53,7 @@ public class PathExtractor
       AppMethodBeat.o(145546);
       return;
     }
-    nGetMetrics(this.hgs, paramMetrics);
+    nGetMetrics(this.jSm, paramMetrics);
     paramMetrics.height *= 0.015625F;
     paramMetrics.ascender *= 0.015625F;
     paramMetrics.descender *= 0.015625F;
@@ -66,7 +66,7 @@ public class PathExtractor
     int[] arrayOfInt = new int[4];
     try
     {
-      bool = nExtractPath(this.hgs, paramChar, paramPath, arrayOfInt);
+      bool = nExtractPath(this.jSm, paramChar, paramPath, arrayOfInt);
       if (bool)
       {
         Matrix localMatrix = new Matrix();
@@ -96,7 +96,7 @@ public class PathExtractor
     AppMethodBeat.i(145548);
     try
     {
-      nFinalize(this.hgs);
+      nFinalize(this.jSm);
       return;
     }
     finally
@@ -108,14 +108,14 @@ public class PathExtractor
   
   public final boolean isValid()
   {
-    return this.hgs != 0L;
+    return this.jSm != 0L;
   }
   
   public final void setTextSize(int paramInt)
   {
     AppMethodBeat.i(145545);
-    Log.i("MicroMsg.PathExtractor", "set text size %d, %d", new Object[] { Long.valueOf(this.hgs), Integer.valueOf(paramInt) });
-    nSetTextSize(this.hgs, paramInt);
+    Log.i("MicroMsg.PathExtractor", "set text size %d, %d", new Object[] { Long.valueOf(this.jSm), Integer.valueOf(paramInt) });
+    nSetTextSize(this.jSm, paramInt);
     AppMethodBeat.o(145545);
   }
   
@@ -129,7 +129,7 @@ public class PathExtractor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.fontdecode.PathExtractor
  * JD-Core Version:    0.7.0.1
  */

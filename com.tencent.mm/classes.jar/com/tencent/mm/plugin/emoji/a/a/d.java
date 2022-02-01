@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.emoji.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.emoji.h.a;
-import com.tencent.mm.plugin.emoji.model.g;
-import com.tencent.mm.plugin.emoji.model.k;
-import com.tencent.mm.protocal.protobuf.EmotionSummary;
+import com.tencent.mm.plugin.emoji.i.a;
+import com.tencent.mm.plugin.emoji.model.l;
+import com.tencent.mm.plugin.emoji.model.p;
+import com.tencent.mm.protocal.protobuf.akh;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.bh;
 import com.tencent.mm.storage.bj;
@@ -19,12 +19,12 @@ public final class d
 {
   private final String TAG = "MicroMsg.emoji.EmojiListMineData";
   
-  public d(g paramg)
+  public d(l paraml)
   {
-    super(paramg);
+    super(paraml);
   }
   
-  public final void cFq() {}
+  public final void cTS() {}
   
   public final void clear()
   {
@@ -38,19 +38,19 @@ public final class d
     try
     {
       AppMethodBeat.i(108371);
-      Object localObject1 = k.getEmojiStorageMgr().OpO.gES();
-      boolean bool = a.cHz();
+      Object localObject1 = p.getEmojiStorageMgr().VFI.hBh();
+      boolean bool = a.cWg();
       this.mItemList = new ArrayList();
       Log.v("MicroMsg.emoji.EmojiListMineData", "============= refresh Data By DB");
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        EmotionSummary localEmotionSummary = ((EmojiGroupInfo)((Iterator)localObject1).next()).hRw();
-        f localf = new f(localEmotionSummary);
-        if ((a.g(localEmotionSummary)) && (bool))
+        akh localakh = ((EmojiGroupInfo)((Iterator)localObject1).next()).hBn();
+        f localf = new f(localakh);
+        if ((a.g(localakh)) && (bool))
         {
-          bh localbh = new bh(localEmotionSummary.ProductID);
-          this.qYh.put(localEmotionSummary.ProductID, localbh);
+          bh localbh = new bh(localakh.ProductID);
+          this.uAW.put(localakh.ProductID, localbh);
         }
         localf.setStatus(9);
         this.mItemList.add(localf);
@@ -62,7 +62,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.a.d
  * JD-Core Version:    0.7.0.1
  */

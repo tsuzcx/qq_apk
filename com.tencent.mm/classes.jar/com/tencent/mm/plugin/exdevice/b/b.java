@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.exdevice.b;
 
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 
 public abstract interface b<T extends q>
 {

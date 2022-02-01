@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.downloader.a;
 
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.j;
+import com.tencent.mm.ipcinvoker.m;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -16,32 +17,32 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class c
 {
-  private static final String[] qFB;
-  private static final Map<String, String> qFC;
+  private static final String[] ueD;
+  private static final Map<String, String> ueE;
   
   static
   {
     AppMethodBeat.i(123485);
-    qFB = new String[] { "dlied4.myapp.com", "dlied5.myapp.com" };
-    qFC = new ConcurrentHashMap();
+    ueD = new String[] { "dlied4.myapp.com", "dlied5.myapp.com" };
+    ueE = new ConcurrentHashMap();
     AppMethodBeat.o(123485);
   }
   
-  public static String akX(String paramString)
+  public static String asQ(String paramString)
   {
     AppMethodBeat.i(123483);
     if (Util.isNullOrNil(paramString)) {}
-    for (Object localObject = ""; (Util.isNullOrNil((String)localObject)) || (!Arrays.asList(qFB).contains(localObject)); localObject = Uri.parse(paramString).getHost())
+    for (Object localObject = ""; (Util.isNullOrNil((String)localObject)) || (!Arrays.asList(ueD).contains(localObject)); localObject = Uri.parse(paramString).getHost())
     {
       Log.i("MicroMsg.GameDownloadExtension", "domain is not dlied4/dlied5");
       AppMethodBeat.o(123483);
       return paramString;
     }
-    localObject = (IPCString)h.a(MainProcessIPCService.dkO, new IPCString(paramString), c.a.class);
+    localObject = (IPCString)j.a(MainProcessIPCService.PROCESS_NAME, new IPCString(paramString), a.class);
     if (localObject != null) {}
     for (localObject = ((IPCString)localObject).value;; localObject = "")
     {
-      paramString = fG(fG(paramString, String.format("openid=%s", new Object[] { localObject })), "p=wechat");
+      paramString = fU(fU(paramString, String.format("openid=%s", new Object[] { localObject })), "p=wechat");
       Log.i("MicroMsg.GameDownloadExtension", "after openid added, url: %s", new Object[] { paramString });
       AppMethodBeat.o(123483);
       return paramString;
@@ -51,11 +52,11 @@ public final class c
   public static void clearCache()
   {
     AppMethodBeat.i(123482);
-    qFC.clear();
+    ueE.clear();
     AppMethodBeat.o(123482);
   }
   
-  private static String fG(String paramString1, String paramString2)
+  private static String fU(String paramString1, String paramString2)
   {
     AppMethodBeat.i(123484);
     try
@@ -78,7 +79,7 @@ public final class c
     }
   }
   
-  public static void h(String paramString, String... paramVarArgs)
+  public static void g(String paramString, String... paramVarArgs)
   {
     for (;;)
     {
@@ -94,7 +95,7 @@ public final class c
             if (Util.isNullOrNil(paramVarArgs[i])) {
               break label62;
             }
-            qFC.put(paramVarArgs[i], paramString);
+            ueE.put(paramVarArgs[i], paramString);
             break label62;
           }
         }
@@ -107,7 +108,7 @@ public final class c
     }
   }
   
-  public static void w(String... paramVarArgs)
+  public static void v(String... paramVarArgs)
   {
     for (;;)
     {
@@ -119,7 +120,7 @@ public final class c
         if (i < 2)
         {
           if (!Util.isNullOrNil(paramVarArgs[i])) {
-            qFC.remove(paramVarArgs[i]);
+            ueE.remove(paramVarArgs[i]);
           }
         }
         else
@@ -132,10 +133,14 @@ public final class c
       i += 1;
     }
   }
+  
+  static class a
+    implements m<IPCString, IPCString>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.a.c
  * JD-Core Version:    0.7.0.1
  */

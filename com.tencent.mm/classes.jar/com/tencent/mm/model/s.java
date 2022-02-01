@@ -2,23 +2,23 @@ package com.tencent.mm.model;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.bw;
 
 public final class s
 {
-  public static int aTQ()
+  public static int bcR()
   {
     AppMethodBeat.i(20317);
-    if (!g.aAc())
+    if (!h.aHB())
     {
       Log.w("MicroMsg.BottleConversationLogic", "get Bottle Total Conversation Unread, but has not set uin");
       AppMethodBeat.o(20317);
       return 0;
     }
-    Cursor localCursor = ((l)g.af(l.class)).aST().gCA();
+    Cursor localCursor = ((n)h.ae(n.class)).bbR().hyN();
     if ((localCursor != null) && (localCursor.getCount() > 0)) {
       localCursor.moveToFirst();
     }
@@ -34,7 +34,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.s
  * JD-Core Version:    0.7.0.1
  */

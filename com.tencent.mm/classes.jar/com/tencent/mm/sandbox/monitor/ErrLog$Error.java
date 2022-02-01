@@ -11,7 +11,7 @@ class ErrLog$Error
   implements Parcelable
 {
   public static final Parcelable.Creator<Error> CREATOR;
-  public boolean NEd;
+  public boolean URA;
   public String msg;
   public final String platform;
   public String tag;
@@ -28,7 +28,7 @@ class ErrLog$Error
   protected ErrLog$Error(Parcel paramParcel)
   {
     AppMethodBeat.i(32587);
-    this.platform = (d.ics + "_" + d.KyO + "_" + Build.CPU_ABI);
+    this.platform = (d.kQZ + "_" + d.RAD + "_" + Build.CPU_ABI);
     this.username = paramParcel.readString();
     this.tag = paramParcel.readString();
     this.timestamp = paramParcel.readLong();
@@ -36,7 +36,7 @@ class ErrLog$Error
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.NEd = bool;
+      this.URA = bool;
       AppMethodBeat.o(32587);
       return;
     }
@@ -45,13 +45,13 @@ class ErrLog$Error
   public ErrLog$Error(String paramString1, String paramString2, long paramLong, String paramString3, boolean paramBoolean)
   {
     AppMethodBeat.i(32584);
-    this.platform = (d.ics + "_" + d.KyO + "_" + Build.CPU_ABI);
+    this.platform = (d.kQZ + "_" + d.RAD + "_" + Build.CPU_ABI);
     this.username = paramString1;
     this.tag = paramString2;
     this.timestamp = paramLong;
     this.msg = paramString3;
-    this.NEd = false;
-    this.NEd = paramBoolean;
+    this.URA = false;
+    this.URA = paramBoolean;
     AppMethodBeat.o(32584);
   }
   
@@ -75,7 +75,7 @@ class ErrLog$Error
     paramParcel.writeString(this.tag);
     paramParcel.writeLong(this.timestamp);
     paramParcel.writeString(this.msg);
-    if (this.NEd) {}
+    if (this.URA) {}
     for (byte b = 1;; b = 0)
     {
       paramParcel.writeByte(b);
@@ -86,7 +86,7 @@ class ErrLog$Error
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sandbox.monitor.ErrLog.Error
  * JD-Core Version:    0.7.0.1
  */

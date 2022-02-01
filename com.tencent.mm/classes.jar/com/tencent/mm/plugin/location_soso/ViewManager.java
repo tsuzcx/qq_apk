@@ -8,7 +8,7 @@ import com.tencent.mapsdk.raster.model.LatLng;
 import com.tencent.mapsdk.raster.model.Marker;
 import com.tencent.mapsdk.raster.model.MarkerOptions;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.k.e;
+import com.tencent.mm.plugin.q.e;
 import com.tencent.tencentmap.mapsdk.map.CameraUpdate;
 import com.tencent.tencentmap.mapsdk.map.TencentMap;
 import com.tencent.tencentmap.mapsdk.map.TencentMap.InfoWindowAdapter;
@@ -336,7 +336,7 @@ public class ViewManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.location_soso.ViewManager
  * JD-Core Version:    0.7.0.1
  */

@@ -17,29 +17,29 @@ import java.util.Set;
 
 public final class a
 {
-  public volatile boolean stopped;
-  Map<Integer, Boolean> yRA;
-  public SoundPool yRy;
-  Hashtable<String, Integer> yRz;
+  public SoundPool Evw;
+  Hashtable<String, Integer> Evx;
+  Map<Integer, Boolean> Evy;
+  public volatile boolean aFI;
   
   public a()
   {
     AppMethodBeat.i(65033);
-    this.stopped = false;
-    this.yRy = new SoundPool(2, 3, 0);
-    this.yRz = new Hashtable();
-    this.yRA = new HashMap();
+    this.aFI = false;
+    this.Evw = new SoundPool(2, 3, 0);
+    this.Evx = new Hashtable();
+    this.Evy = new HashMap();
     AppMethodBeat.o(65033);
   }
   
-  public final void Df(String paramString)
+  public final void JW(String paramString)
   {
     AppMethodBeat.i(65034);
-    if (this.yRz.containsKey(paramString))
+    if (this.Evx.containsKey(paramString))
     {
-      int i = ((Integer)this.yRz.get(paramString)).intValue();
-      if ((i >= 0) && (this.yRA.containsKey(Integer.valueOf(i))) && (((Boolean)this.yRA.get(Integer.valueOf(i))).booleanValue())) {
-        this.yRy.play(i, 1.0F, 1.0F, 0, 0, 1.0F);
+      int i = ((Integer)this.Evx.get(paramString)).intValue();
+      if ((i >= 0) && (this.Evy.containsKey(Integer.valueOf(i))) && (((Boolean)this.Evy.get(Integer.valueOf(i))).booleanValue())) {
+        this.Evw.play(i, 1.0F, 1.0F, 0, 0, 1.0F);
       }
     }
     AppMethodBeat.o(65034);
@@ -47,7 +47,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.f2f.a
  * JD-Core Version:    0.7.0.1
  */

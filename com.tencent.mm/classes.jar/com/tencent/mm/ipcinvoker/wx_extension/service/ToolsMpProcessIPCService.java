@@ -7,18 +7,18 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 public class ToolsMpProcessIPCService
   extends BaseIPCService
 {
-  public static final String dkO;
+  public static final String PROCESS_NAME;
   
   static
   {
-    AppMethodBeat.i(225239);
-    dkO = MMApplicationContext.getPackageName() + ":toolsmp";
-    AppMethodBeat.o(225239);
+    AppMethodBeat.i(205369);
+    PROCESS_NAME = MMApplicationContext.getPackageName() + ":toolsmp";
+    AppMethodBeat.o(205369);
   }
   
   public final String getProcessName()
   {
-    return dkO;
+    return PROCESS_NAME;
   }
 }
 

@@ -1,21 +1,12 @@
 package com.tencent.mm.plugin.finder.model;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/model/FinderFeedLiveMoreHeader;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "feedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "getItemType", "", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/model/FinderFeedLiveMoreHeader;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "feedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "getItemType", "", "plugin-finder_release"})
 public final class z
   extends BaseFinderFeed
 {
-  public z(FinderItem paramFinderItem)
-  {
-    super(paramFinderItem);
-    AppMethodBeat.i(248751);
-    AppMethodBeat.o(248751);
-  }
-  
-  public final int cxn()
+  public final int bAQ()
   {
     return -10;
   }

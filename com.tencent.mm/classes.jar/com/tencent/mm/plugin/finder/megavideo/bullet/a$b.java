@@ -5,50 +5,50 @@ import com.tencent.mm.danmaku.c.l.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/megavideo/bullet/MegaVideoBulletManager$Companion$1", "Lcom/tencent/mm/danmaku/inject/VideoDanmakuConfig$ILogger;", "d", "", "tag", "", "message", "e", "t", "", "i", "v", "w", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/megavideo/bullet/MegaVideoBulletManager$Companion$1", "Lcom/tencent/mm/danmaku/inject/VideoDanmakuConfig$ILogger;", "d", "", "tag", "", "message", "e", "t", "", "i", "v", "w", "plugin-finder_release"})
 public final class a$b
   implements l.a
 {
   public final void d(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(248251);
+    AppMethodBeat.i(277713);
     Log.d(paramString1, paramString2);
-    AppMethodBeat.o(248251);
+    AppMethodBeat.o(277713);
   }
   
   public final void e(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(248249);
+    AppMethodBeat.i(277709);
     Log.e(paramString1, paramString2);
-    AppMethodBeat.o(248249);
+    AppMethodBeat.o(277709);
   }
   
   public final void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    AppMethodBeat.i(248250);
+    AppMethodBeat.i(277711);
     Log.e(paramString1, paramString2, new Object[] { paramThrowable });
-    AppMethodBeat.o(248250);
+    AppMethodBeat.o(277711);
   }
   
   public final void i(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(248246);
+    AppMethodBeat.i(277704);
     Log.i(paramString1, paramString2);
-    AppMethodBeat.o(248246);
+    AppMethodBeat.o(277704);
   }
   
   public final void v(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(248248);
+    AppMethodBeat.i(277707);
     Log.v(paramString1, paramString2);
-    AppMethodBeat.o(248248);
+    AppMethodBeat.o(277707);
   }
   
   public final void w(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(248247);
+    AppMethodBeat.i(277705);
     Log.w(paramString1, paramString2);
-    AppMethodBeat.o(248247);
+    AppMethodBeat.o(277705);
   }
 }
 

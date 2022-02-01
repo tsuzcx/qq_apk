@@ -1,51 +1,50 @@
 package com.tencent.liteav.basic.util;
 
-import android.os.Handler;
-import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.CountDownLatch;
 
 public class e
-  extends Handler
 {
-  public e(Looper paramLooper)
+  public int a;
+  public int b;
+  
+  public e() {}
+  
+  public e(int paramInt1, int paramInt2)
   {
-    super(paramLooper);
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
-  public boolean a(final Runnable paramRunnable)
+  public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(222120);
-    final CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    boolean bool = post(new Runnable()
+    if (this == paramObject) {}
+    do
     {
-      public void run()
-      {
-        AppMethodBeat.i(14720);
-        paramRunnable.run();
-        localCountDownLatch.countDown();
-        AppMethodBeat.o(14720);
+      return true;
+      if (!(paramObject instanceof e)) {
+        return false;
       }
-    });
-    if (bool) {}
-    try
-    {
-      localCountDownLatch.await();
-      AppMethodBeat.o(222120);
-      return bool;
-    }
-    catch (InterruptedException paramRunnable)
-    {
-      for (;;)
-      {
-        Thread.currentThread().interrupt();
-      }
-    }
+      paramObject = (e)paramObject;
+    } while ((paramObject.a == this.a) && (paramObject.b == this.b));
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.a * 32713 + this.b;
+  }
+  
+  public String toString()
+  {
+    AppMethodBeat.i(239268);
+    String str = "Size(" + this.a + ", " + this.b + ")";
+    AppMethodBeat.o(239268);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.basic.util.e
  * JD-Core Version:    0.7.0.1
  */

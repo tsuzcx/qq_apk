@@ -23,7 +23,7 @@ public class RealSetFillStyleActionPatternArg
   extends RealSetFillStyleActionArg
 {
   public static final Parcelable.Creator<RealSetFillStyleActionPatternArg> CREATOR;
-  public String kZG;
+  public String nTR;
   public String path;
   
   static
@@ -48,17 +48,17 @@ public class RealSetFillStyleActionPatternArg
       AppMethodBeat.o(145064);
       return false;
     }
-    paramCanvas = paramd.kZm;
-    paramd = paramd.kZr.a(paramd, this.path);
+    paramCanvas = paramd.nTx;
+    paramd = paramd.nTC.a(paramd, this.path);
     Object localObject;
     int j;
     int k;
     int i;
     if ((paramd != null) && (!paramd.isRecycled()))
     {
-      localObject = this.kZG;
-      j = g.zD(paramd.getWidth());
-      k = g.zD(paramd.getHeight());
+      localObject = this.nTR;
+      j = g.Di(paramd.getWidth());
+      k = g.Di(paramd.getHeight());
       i = -1;
       switch (((String)localObject).hashCode())
       {
@@ -139,7 +139,7 @@ public class RealSetFillStyleActionPatternArg
       return false;
     }
     paramObject = (RealSetFillStyleActionPatternArg)paramObject;
-    if ((Objects.equals(this.path, paramObject.path)) && (Objects.equals(this.kZG, paramObject.kZG)))
+    if ((Objects.equals(this.path, paramObject.path)) && (Objects.equals(this.nTR, paramObject.nTR)))
     {
       AppMethodBeat.o(145065);
       return true;
@@ -153,14 +153,14 @@ public class RealSetFillStyleActionPatternArg
     AppMethodBeat.i(145069);
     super.f(paramJSONArray);
     this.path = paramJSONArray.optString(1);
-    this.kZG = paramJSONArray.optString(2);
+    this.nTR = paramJSONArray.optString(2);
     AppMethodBeat.o(145069);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145066);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.path, this.kZG });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.path, this.nTR });
     AppMethodBeat.o(145066);
     return i;
   }
@@ -170,7 +170,7 @@ public class RealSetFillStyleActionPatternArg
     AppMethodBeat.i(145067);
     super.i(paramParcel);
     this.path = paramParcel.readString();
-    this.kZG = paramParcel.readString();
+    this.nTR = paramParcel.readString();
     AppMethodBeat.o(145067);
   }
   
@@ -186,13 +186,13 @@ public class RealSetFillStyleActionPatternArg
     AppMethodBeat.i(145068);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeString(this.path);
-    paramParcel.writeString(this.kZG);
+    paramParcel.writeString(this.nTR);
     AppMethodBeat.o(145068);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetFillStyleActionPatternArg
  * JD-Core Version:    0.7.0.1
  */

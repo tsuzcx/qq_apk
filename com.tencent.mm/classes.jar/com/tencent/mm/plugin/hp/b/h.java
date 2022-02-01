@@ -1,29 +1,31 @@
 package com.tencent.mm.plugin.hp.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.c;
-import com.tencent.mm.model.cj.a;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.h.c;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.model.ck.a;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.protocal.protobuf.db;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tinkerboots.sdk.a;
 import java.util.Map;
 
 public final class h
-  implements cj.a
+  implements ck.a
 {
   public final void a(h.a parama)
   {
     AppMethodBeat.i(117441);
-    parama = parama.heO;
+    parama = parama.jQG;
     Object localObject;
-    if (parama.xKb == 10002)
+    if (parama.COi == 10002)
     {
-      parama = z.a(parama.KHn);
+      parama = z.a(parama.RIF);
       if (Util.isNullOrNil(parama))
       {
         Log.w("MicroMsg.Tinker.TinkerBootsSysCmdMsgListener", "msg content is null");
@@ -40,8 +42,8 @@ public final class h
           i = Util.safeParseInt((String)parama.get(".sysmsg.boots.ignorenetwork"));
           parama = Util.nullAs((String)parama.get(".sysmsg.boots.xmlkey"), "");
           Log.i("MicroMsg.Tinker.TinkerBootsSysCmdMsgListener", "ignore:%s md5 %s start checkout tinker update. try to do update.", new Object[] { Integer.valueOf(i), parama });
-          long l = com.tencent.mm.kernel.a.azs();
-          localObject = com.tinkerboots.sdk.a.hvX().ol("uin", String.valueOf(l & 0xFFFFFFFF));
+          long l = b.aGP();
+          localObject = a.izW().ph("uin", String.valueOf(l & 0xFFFFFFFF));
           if ((!NetStatusUtil.isWifi(MMApplicationContext.getContext())) && (i != 1)) {
             break label251;
           }
@@ -51,11 +53,11 @@ public final class h
     label251:
     for (int i = 3;; i = 2)
     {
-      ((com.tinkerboots.sdk.a)localObject).ol("network", String.valueOf(i));
+      ((a)localObject).ph("network", String.valueOf(i));
       if (!Util.isNullOrNil(parama)) {
-        com.tinkerboots.sdk.a.hvX().ol("xmlkey", parama);
+        a.izW().ph("xmlkey", parama);
       }
-      com.tinkerboots.sdk.a.hvX().Ey(true);
+      a.izW().Jb(true);
       AppMethodBeat.o(117441);
       return;
     }
@@ -65,7 +67,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.b.h
  * JD-Core Version:    0.7.0.1
  */

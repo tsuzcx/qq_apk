@@ -1,53 +1,22 @@
 package com.tencent.mm.ipcinvoker.h;
 
+import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.h.a.a;
 
 public final class b
+  implements a
 {
-  private static com.tencent.mm.ipcinvoker.h.a.a hnD;
-  
-  static
+  public final void printLog(int paramInt, String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(158839);
-    hnD = new a();
-    AppMethodBeat.o(158839);
-  }
-  
-  public static boolean b(com.tencent.mm.ipcinvoker.h.a.a parama)
-  {
-    if (parama == null) {
-      return false;
+    AppMethodBeat.i(158834);
+    if (paramInt < 4)
+    {
+      AppMethodBeat.o(158834);
+      return;
     }
-    hnD = parama;
-    return true;
-  }
-  
-  public static void d(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(158838);
-    hnD.printLog(3, paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(158838);
-  }
-  
-  public static void e(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(158836);
-    hnD.printLog(6, paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(158836);
-  }
-  
-  public static void i(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(158835);
-    hnD.printLog(4, paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(158835);
-  }
-  
-  public static void w(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(158837);
-    hnD.printLog(5, paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(158837);
+    Log.println(paramInt, paramString1, String.format(paramString2, paramVarArgs));
+    AppMethodBeat.o(158834);
   }
 }
 

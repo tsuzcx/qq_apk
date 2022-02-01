@@ -4,6 +4,7 @@ import com.tencent.tav.coremedia.CMSampleBuffer;
 import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
+import com.tencent.tav.report.AverageTimeReporter;
 import java.util.List;
 
 public abstract class AssetReaderOutput
@@ -41,6 +42,11 @@ public abstract class AssetReaderOutput
   long duration()
   {
     return 0L;
+  }
+  
+  AverageTimeReporter getDecodePerformance()
+  {
+    return null;
   }
   
   public int getMediaType()
@@ -85,7 +91,7 @@ public abstract class AssetReaderOutput
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.core.AssetReaderOutput
  * JD-Core Version:    0.7.0.1
  */

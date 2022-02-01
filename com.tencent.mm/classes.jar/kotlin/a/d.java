@@ -10,18 +10,18 @@ import kotlin.g.b.i;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/collections/ArrayAsCollection;", "T", "", "values", "", "isVarargs", "", "([Ljava/lang/Object;Z)V", "()Z", "size", "", "getSize", "()I", "getValues", "()[Ljava/lang/Object;", "[Ljava/lang/Object;", "contains", "element", "(Ljava/lang/Object;)Z", "containsAll", "elements", "isEmpty", "iterator", "", "toArray", "", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/collections/ArrayAsCollection;", "T", "", "values", "", "isVarargs", "", "([Ljava/lang/Object;Z)V", "()Z", "size", "", "getSize", "()I", "getValues", "()[Ljava/lang/Object;", "[Ljava/lang/Object;", "contains", "element", "(Ljava/lang/Object;)Z", "containsAll", "elements", "isEmpty", "iterator", "", "toArray", "", "kotlin-stdlib"})
 final class d<T>
   implements Collection<T>, a
 {
-  private final boolean SXj;
-  private final T[] apH;
+  private final T[] Zo;
+  private final boolean aazV;
   
   public d(T[] paramArrayOfT, boolean paramBoolean)
   {
     AppMethodBeat.i(129067);
-    this.apH = paramArrayOfT;
-    this.SXj = paramBoolean;
+    this.Zo = paramArrayOfT;
+    this.aazV = paramBoolean;
     AppMethodBeat.o(129067);
   }
   
@@ -52,7 +52,7 @@ final class d<T>
   public final boolean contains(Object paramObject)
   {
     AppMethodBeat.i(129063);
-    boolean bool = e.contains(this.apH, paramObject);
+    boolean bool = e.contains(this.Zo, paramObject);
     AppMethodBeat.o(129063);
     return bool;
   }
@@ -60,7 +60,7 @@ final class d<T>
   public final boolean containsAll(Collection<? extends Object> paramCollection)
   {
     AppMethodBeat.i(129064);
-    p.h(paramCollection, "elements");
+    p.k(paramCollection, "elements");
     paramCollection = (Iterable)paramCollection;
     if (!((Collection)paramCollection).isEmpty())
     {
@@ -79,13 +79,13 @@ final class d<T>
   
   public final boolean isEmpty()
   {
-    return this.apH.length == 0;
+    return this.Zo.length == 0;
   }
   
   public final Iterator<T> iterator()
   {
     AppMethodBeat.i(129065);
-    Iterator localIterator = b.af(this.apH);
+    Iterator localIterator = b.aj(this.Zo);
     AppMethodBeat.o(129065);
     return localIterator;
   }
@@ -117,16 +117,16 @@ final class d<T>
   public final Object[] toArray()
   {
     AppMethodBeat.i(129066);
-    Object[] arrayOfObject = this.apH;
-    boolean bool = this.SXj;
-    p.h(arrayOfObject, "$this$copyToArrayOfAny");
-    if ((bool) && (p.j(arrayOfObject.getClass(), [Ljava.lang.Object.class)))
+    Object[] arrayOfObject = this.Zo;
+    boolean bool = this.aazV;
+    p.k(arrayOfObject, "$this$copyToArrayOfAny");
+    if ((bool) && (p.h(arrayOfObject.getClass(), [Ljava.lang.Object.class)))
     {
       AppMethodBeat.o(129066);
       return arrayOfObject;
     }
     arrayOfObject = Arrays.copyOf(arrayOfObject, arrayOfObject.length, [Ljava.lang.Object.class);
-    p.g(arrayOfObject, "java.util.Arrays.copyOf(… Array<Any?>::class.java)");
+    p.j(arrayOfObject, "java.util.Arrays.copyOf(… Array<Any?>::class.java)");
     AppMethodBeat.o(129066);
     return arrayOfObject;
   }
@@ -134,7 +134,7 @@ final class d<T>
   public final <T> T[] toArray(T[] paramArrayOfT)
   {
     AppMethodBeat.i(129074);
-    paramArrayOfT = i.a(this, paramArrayOfT);
+    paramArrayOfT = i.b(this, paramArrayOfT);
     AppMethodBeat.o(129074);
     return paramArrayOfT;
   }

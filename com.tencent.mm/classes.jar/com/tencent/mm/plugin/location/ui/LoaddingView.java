@@ -11,25 +11,28 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.map.a.a;
+import com.tencent.mm.plugin.map.a.e;
+import com.tencent.mm.plugin.map.a.f;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public class LoaddingView
   extends LinearLayout
   implements c
 {
-  private Animation FN;
-  private TextView yHs;
-  private ProgressBar yHt;
-  private View yHu;
-  private boolean yHv;
-  private String yHw;
+  private TextView Ell;
+  private ProgressBar Elm;
+  private View Eln;
+  private boolean Elo;
+  private String Elp;
+  private Animation VT;
   
   public LoaddingView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(55802);
-    this.yHv = false;
-    this.yHw = "";
+    this.Elo = false;
+    this.Elp = "";
     init(paramContext);
     AppMethodBeat.o(55802);
   }
@@ -39,8 +42,8 @@ public class LoaddingView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(55801);
-    this.yHv = false;
-    this.yHw = "";
+    this.Elo = false;
+    this.Elp = "";
     init(paramContext);
     AppMethodBeat.o(55801);
   }
@@ -48,20 +51,20 @@ public class LoaddingView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(55803);
-    this.FN = AnimationUtils.loadAnimation(paramContext, 2130772192);
-    paramContext = LayoutInflater.from(paramContext).inflate(2131495311, this, true);
-    this.yHt = ((ProgressBar)paramContext.findViewById(2131303738));
-    this.yHs = ((TextView)paramContext.findViewById(2131303755));
-    this.yHu = paramContext.findViewById(2131303729);
-    this.yHs.setText("");
-    this.yHs.setVisibility(0);
-    this.yHt.setVisibility(0);
+    this.VT = AnimationUtils.loadAnimation(paramContext, a.a.translate_map);
+    paramContext = LayoutInflater.from(paramContext).inflate(a.f.location_view, this, true);
+    this.Elm = ((ProgressBar)paramContext.findViewById(a.e.location_load_progress));
+    this.Ell = ((TextView)paramContext.findViewById(a.e.location_tips));
+    this.Eln = paramContext.findViewById(a.e.location_here);
+    this.Ell.setText("");
+    this.Ell.setVisibility(0);
+    this.Elm.setVisibility(0);
     AppMethodBeat.o(55803);
   }
   
   public String getPreText()
   {
-    return this.yHw;
+    return this.Elp;
   }
   
   public void setPreText(String paramString)
@@ -72,44 +75,44 @@ public class LoaddingView
       AppMethodBeat.o(55806);
       return;
     }
-    this.yHw = (paramString + "\n");
+    this.Elp = (paramString + "\n");
     AppMethodBeat.o(55806);
   }
   
   public void setProgressAlwaysGone(boolean paramBoolean)
   {
     AppMethodBeat.i(55804);
-    this.yHv = paramBoolean;
-    this.yHt.setVisibility(8);
-    this.yHs.setVisibility(8);
+    this.Elo = paramBoolean;
+    this.Elm.setVisibility(8);
+    this.Ell.setVisibility(8);
     AppMethodBeat.o(55804);
   }
   
   public void setText(String paramString)
   {
     AppMethodBeat.i(55805);
-    if ((this.yHs == null) || (this.yHt == null) || (this.yHv))
+    if ((this.Ell == null) || (this.Elm == null) || (this.Elo))
     {
       AppMethodBeat.o(55805);
       return;
     }
     if (!Util.isNullOrNil(paramString))
     {
-      this.yHs.setText(String.valueOf(paramString));
-      this.yHt.setVisibility(8);
-      this.yHs.setVisibility(0);
+      this.Ell.setText(String.valueOf(paramString));
+      this.Elm.setVisibility(8);
+      this.Ell.setVisibility(0);
       AppMethodBeat.o(55805);
       return;
     }
-    this.yHs.setText("");
-    this.yHs.setVisibility(0);
-    this.yHt.setVisibility(0);
+    this.Ell.setText("");
+    this.Ell.setVisibility(0);
+    this.Elm.setVisibility(0);
     AppMethodBeat.o(55805);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.LoaddingView
  * JD-Core Version:    0.7.0.1
  */

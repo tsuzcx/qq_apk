@@ -8,7 +8,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver.OnDrawListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.c.h;
+import com.tencent.mm.ay.a.c.h;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.plugin.multitalk.d.c;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -17,30 +17,30 @@ import com.tencent.mm.ui.base.WxImageView;
 
 public final class d
 {
-  public View jBN;
+  public boolean Fxn;
+  public WxImageView Fxo;
+  public TextView Fxp;
+  public TextView Fxq;
+  public WxImageView Fxr;
+  boolean Fxs;
+  public ViewTreeObserver.OnDrawListener Fxt;
   public Context mContext;
-  public boolean zRI;
-  public WxImageView zRJ;
-  public TextView zRK;
-  public TextView zRL;
-  public WxImageView zRM;
-  boolean zRN;
-  public ViewTreeObserver.OnDrawListener zRO;
+  public View mrI;
   
   public d(Context paramContext)
   {
     AppMethodBeat.i(164062);
-    this.zRI = false;
-    this.zRN = false;
-    this.zRO = new ViewTreeObserver.OnDrawListener()
+    this.Fxn = false;
+    this.Fxs = false;
+    this.Fxt = new ViewTreeObserver.OnDrawListener()
     {
       public final void onDraw()
       {
         AppMethodBeat.i(164058);
-        if (!d.this.zRN)
+        if (!d.this.Fxs)
         {
-          d.this.zRN = true;
-          c.a(com.tencent.mm.plugin.multitalk.d.b.epW(), 0, 0, 0, 0, 0, 0, 0, 1, "", 0);
+          d.this.Fxs = true;
+          c.a(com.tencent.mm.plugin.multitalk.d.b.eZK(), 0, 0, 0, 0, 0, 0, 0, 1, "", 0);
         }
         AppMethodBeat.o(164058);
       }
@@ -51,7 +51,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.d
  * JD-Core Version:    0.7.0.1
  */

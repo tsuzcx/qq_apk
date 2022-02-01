@@ -6,42 +6,30 @@ import java.util.Arrays;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/magicbrush/MBExternalSurfaceTexture;", "Landroid/graphics/SurfaceTexture;", "texId", "", "runtime", "Lcom/tencent/magicbrush/MBRuntime;", "(ILcom/tencent/magicbrush/MBRuntime;)V", "matrix", "", "getTexId", "()I", "destroy", "", "getMatrix", "getTransformMatrix", "mtx", "Companion", "lib-magicbrush-nano_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/magicbrush/MBExternalSurfaceTexture;", "Landroid/graphics/SurfaceTexture;", "texId", "", "runtime", "Lcom/tencent/magicbrush/MBRuntime;", "(ILcom/tencent/magicbrush/MBRuntime;)V", "matrix", "", "getTexId", "()I", "destroy", "", "getMatrix", "getTransformMatrix", "mtx", "Companion", "lib-magicbrush-nano_release"})
 public final class c
   extends SurfaceTexture
 {
-  public static final a cKK;
-  private float[] cKH;
-  private final int cKI;
-  private final MBRuntime cKJ;
+  public static final a cLs;
   
   static
   {
-    AppMethodBeat.i(206819);
-    cKK = new a((byte)0);
-    AppMethodBeat.o(206819);
-  }
-  
-  public final void destroy()
-  {
-    AppMethodBeat.i(206818);
-    setOnFrameAvailableListener(null);
-    this.cKJ.nativeDestroyExternalTexture(this.cKJ.mNativeInst, this.cKI);
-    AppMethodBeat.o(206818);
+    AppMethodBeat.i(203985);
+    cLs = new a((byte)0);
+    AppMethodBeat.o(203985);
   }
   
   public final void getTransformMatrix(float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(206817);
-    p.h(paramArrayOfFloat, "mtx");
+    AppMethodBeat.i(203982);
+    p.k(paramArrayOfFloat, "mtx");
     super.getTransformMatrix(paramArrayOfFloat);
-    paramArrayOfFloat = Arrays.copyOf(paramArrayOfFloat, paramArrayOfFloat.length);
-    p.g(paramArrayOfFloat, "java.util.Arrays.copyOf(this, size)");
-    this.cKH = paramArrayOfFloat;
-    AppMethodBeat.o(206817);
+    p.j(Arrays.copyOf(paramArrayOfFloat, paramArrayOfFloat.length), "java.util.Arrays.copyOf(this, size)");
+    AppMethodBeat.o(203982);
+    throw null;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/magicbrush/MBExternalSurfaceTexture$Companion;", "", "()V", "TAG", "", "lib-magicbrush-nano_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/magicbrush/MBExternalSurfaceTexture$Companion;", "", "()V", "TAG", "", "lib-magicbrush-nano_release"})
   public static final class a {}
 }
 

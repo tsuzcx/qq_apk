@@ -1,60 +1,60 @@
 package com.tencent.mm.wallet_core.c;
 
-import android.arch.lifecycle.MutableLiveData;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import androidx.lifecycle.r;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.ak.c.a;
-import com.tencent.mm.co.f;
-import com.tencent.mm.protocal.protobuf.dpc;
+import com.tencent.mm.an.c;
+import com.tencent.mm.an.c.a;
+import com.tencent.mm.cw.f;
+import com.tencent.mm.protocal.protobuf.dyy;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.List;
 import junit.framework.Assert;
 
-public abstract class a<K extends dpc, P extends c<K>>
+public abstract class a<K extends dyy, P extends c<K>>
 {
-  protected MutableLiveData<K> Rtg = new MutableLiveData();
-  protected MutableLiveData<K> Rth = new MutableLiveData();
+  protected boolean EOP = false;
+  protected r<K> YUE = new r();
+  protected r<K> YUF = new r();
   protected List<a<K>> callbacks = new ArrayList();
-  protected P iLD;
-  protected boolean zjy = false;
+  protected P lBK;
   
   private void a(a<K> parama, boolean paramBoolean)
   {
-    dpc localdpc = efb();
-    if (localdpc != null) {}
+    dyy localdyy = eOw();
+    if (localdyy != null) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
         if (parama != null) {
-          parama.dx(localdpc);
+          parama.dA(localdyy);
         }
-        this.Rtg.postValue(localdpc);
+        this.YUE.L(localdyy);
       }
       if ((i == 0) || (paramBoolean))
       {
         if ((parama != null) && (!this.callbacks.contains(parama))) {
           this.callbacks.add(parama);
         }
-        hhi();
+        iiK();
       }
       return;
     }
   }
   
-  private void hhi()
+  private void iiK()
   {
-    Log.i("MicroMsg.AsyncCgiLoader", "trigger cgi: %s", new Object[] { Boolean.valueOf(this.zjy) });
-    if (this.zjy) {
+    Log.i("MicroMsg.AsyncCgiLoader", "trigger cgi: %s", new Object[] { Boolean.valueOf(this.EOP) });
+    if (this.EOP) {
       return;
     }
-    this.zjy = true;
-    c localc = this.iLD;
+    this.EOP = true;
+    c localc = this.lBK;
     Assert.assertNotNull("cgi must not be null", localc);
-    localc.aYI().h(new com.tencent.mm.vending.c.a() {}).b(new com.tencent.mm.vending.c.a() {});
+    localc.bhW().h(new com.tencent.mm.vending.c.a() {}).b(new com.tencent.mm.vending.c.a() {});
   }
   
   public final void a(final a<K> parama, long paramLong)
@@ -65,12 +65,12 @@ public abstract class a<K extends dpc, P extends c<K>>
       a(parama, true);
       return;
     }
-    h.RTc.o(new Runnable()
+    h.ZvG.o(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(163879);
-        a.a(a.this, parama, this.Rtj);
+        a.a(a.this, parama, this.YUH);
         AppMethodBeat.o(163879);
       }
     }, paramLong);
@@ -78,30 +78,30 @@ public abstract class a<K extends dpc, P extends c<K>>
   
   protected abstract void b(c.a<K> parama);
   
-  public final void b(P paramP)
-  {
-    this.iLD = paramP;
-  }
-  
   public final void cancel()
   {
-    if (this.iLD != null) {
-      this.iLD.cancel();
+    if (this.lBK != null) {
+      this.lBK.cancel();
     }
   }
   
-  protected abstract K efb();
+  public final void d(P paramP)
+  {
+    this.lBK = paramP;
+  }
+  
+  public abstract K eOw();
   
   public static abstract interface a<K>
   {
-    public abstract void dw(K paramK);
+    public abstract void c(K paramK, int paramInt1, int paramInt2);
     
-    public abstract void dx(K paramK);
+    public abstract void dA(K paramK);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,29 +4,30 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.RecyclerView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.conv.c;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.b.j;
 import com.tencent.mm.plugin.finder.conv.d;
-import com.tencent.mm.plugin.finder.conv.d.a;
-import com.tencent.mm.plugin.finder.conv.d.b;
-import com.tencent.mm.plugin.finder.conv.f.b;
-import com.tencent.mm.plugin.finder.conv.h;
-import com.tencent.mm.plugin.finder.report.ak;
-import com.tencent.mm.plugin.finder.report.al;
-import com.tencent.mm.plugin.finder.report.k;
-import com.tencent.mm.plugin.finder.report.z;
-import com.tencent.mm.plugin.finder.storage.logic.e.a;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
-import com.tencent.mm.protocal.protobuf.azp;
-import com.tencent.mm.protocal.protobuf.bbn;
+import com.tencent.mm.plugin.finder.conv.e.b;
+import com.tencent.mm.plugin.finder.conv.g;
+import com.tencent.mm.plugin.finder.conv.g.b;
+import com.tencent.mm.plugin.finder.conv.i;
+import com.tencent.mm.plugin.finder.report.ad;
+import com.tencent.mm.plugin.finder.report.ap;
+import com.tencent.mm.plugin.finder.report.n;
+import com.tencent.mm.plugin.finder.viewmodel.component.aj;
+import com.tencent.mm.plugin.finder.viewmodel.component.aj.a;
+import com.tencent.mm.protocal.protobuf.bfo;
+import com.tencent.mm.protocal.protobuf.bid;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -40,94 +41,94 @@ import kotlin.g.b.q;
 import kotlin.t;
 import kotlin.x;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationUI;", "Lcom/tencent/mm/plugin/finder/ui/FinderConversationParentUI;", "Lcom/tencent/mm/plugin/finder/conv/FinderConversationDataSource$onQueryBackListener;", "()V", "msgTypes", "", "requestScene", "", "scene", "scrollListener", "Lcom/tencent/mm/plugin/finder/report/SystemMsgScrollListener;", "sysMsgConversation", "Lcom/tencent/mm/plugin/finder/conv/FinderConversation;", "fakeData", "", "getLayoutId", "getSystemConversationInfo", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;", "mentionId", "", "limit", "getTitleResId", "initSystemMsgReporter", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "source", "onCreateAfter", "onDestroy", "onExitChattingUI", "onResume", "reportSystemMsg", "setTeamConversation", "updateSysConversation", "Companion", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationUI;", "Lcom/tencent/mm/plugin/finder/ui/FinderConversationParentUI;", "Lcom/tencent/mm/plugin/finder/conv/FinderConversationDataSource$onQueryBackListener;", "()V", "msgTypes", "", "requestScene", "", "scene", "scrollListener", "Lcom/tencent/mm/plugin/finder/report/SystemMsgScrollListener;", "sysMsgConversation", "Lcom/tencent/mm/plugin/finder/conv/FinderConversation;", "fakeData", "", "getLayoutId", "getSystemConversationInfo", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;", "mentionId", "", "limit", "getTitleResId", "", "initSystemMsgReporter", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "source", "onCreateAfter", "onDestroy", "onExitChattingUI", "onResume", "reportSystemMsg", "setTeamConversation", "updateSysConversation", "Companion", "plugin-finder_release"})
 public final class FinderConversationUI
   extends FinderConversationParentUI
-  implements f.b
+  implements g.b
 {
-  public static final a vHZ;
+  public static final a AoW;
+  private final d AoU;
+  public ap AoV;
   private HashMap _$_findViewCache;
   private final int scene;
-  private final int tvu;
-  private final int[] uYt;
-  private final c vHX;
-  public al vHY;
+  private final int xdc;
+  private final int[] zOH;
   
   static
   {
-    AppMethodBeat.i(252229);
-    vHZ = new a((byte)0);
-    AppMethodBeat.o(252229);
+    AppMethodBeat.i(280116);
+    AoW = new a((byte)0);
+    AppMethodBeat.o(280116);
   }
   
   public FinderConversationUI()
   {
-    AppMethodBeat.i(252228);
-    this.vHX = new c();
+    AppMethodBeat.i(280115);
+    this.AoU = new d();
     this.scene = 1;
-    this.tvu = 1;
-    this.uYt = new int[] { 4 };
-    AppMethodBeat.o(252228);
+    this.xdc = 1;
+    this.zOH = new int[] { 4 };
+    AppMethodBeat.o(280115);
   }
   
-  private final void dzd()
+  private final void dZU()
   {
-    AppMethodBeat.i(252226);
-    Object localObject = dze();
+    AppMethodBeat.i(280113);
+    Object localObject = dZV();
     if (!((Collection)localObject).isEmpty()) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        azp localazp = ((com.tencent.mm.plugin.finder.model.a)((ArrayList)localObject).get(0)).uNF.field_notify;
-        this.vHX.field_updateTime = (((com.tencent.mm.plugin.finder.model.a)((ArrayList)localObject).get(0)).uNF.field_createTime * 1000L);
-        this.vHX.field_digest = localazp.title;
+        bfo localbfo = ((com.tencent.mm.plugin.finder.model.a)((ArrayList)localObject).get(0)).zzT.field_notify;
+        this.AoU.field_updateTime = (((com.tencent.mm.plugin.finder.model.a)((ArrayList)localObject).get(0)).zzT.field_createTime * 1000L);
+        this.AoU.field_digest = localbfo.title;
       }
-      localObject = com.tencent.mm.kernel.g.aAh();
-      p.g(localObject, "MMKernel.storage()");
-      i = ((com.tencent.mm.kernel.e)localObject).azQ().getInt(ar.a.Oms, 0);
-      this.vHX.field_unReadCount = i;
-      this.vHX.field_readStatus = 0;
-      this.vHP.ci(0);
-      AppMethodBeat.o(252226);
+      localObject = com.tencent.mm.kernel.h.aHG();
+      p.j(localObject, "MMKernel.storage()");
+      i = ((com.tencent.mm.kernel.f)localObject).aHp().getInt(ar.a.VBp, 0);
+      this.AoU.field_unReadCount = i;
+      this.AoU.field_readStatus = 0;
+      this.AoM.cL(0);
+      AppMethodBeat.o(280113);
       return;
     }
   }
   
-  private final ArrayList<com.tencent.mm.plugin.finder.model.a> dze()
+  private final ArrayList<com.tencent.mm.plugin.finder.model.a> dZV()
   {
-    AppMethodBeat.i(252227);
+    AppMethodBeat.i(280114);
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = com.tencent.mm.plugin.finder.storage.logic.e.vGT;
-    Object localObject2 = (Iterable)e.a.a(9223372036854775807L, 1, this.uYt, this.scene);
+    Object localObject1 = com.tencent.mm.plugin.finder.storage.logic.e.AnP;
+    Object localObject2 = (Iterable)com.tencent.mm.plugin.finder.storage.logic.e.a.a(9223372036854775807L, 1, this.zOH, this.scene);
     localObject1 = (Collection)new ArrayList();
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())
     {
-      Object localObject3 = (com.tencent.mm.plugin.finder.storage.ao)((Iterator)localObject2).next();
-      e.a locala = com.tencent.mm.plugin.finder.storage.logic.e.vGT;
-      localObject3 = e.a.b((com.tencent.mm.plugin.finder.storage.ao)localObject3);
+      Object localObject3 = (com.tencent.mm.plugin.finder.storage.an)((Iterator)localObject2).next();
+      com.tencent.mm.plugin.finder.storage.logic.e.a locala = com.tencent.mm.plugin.finder.storage.logic.e.AnP;
+      localObject3 = com.tencent.mm.plugin.finder.storage.logic.e.a.b((com.tencent.mm.plugin.finder.storage.an)localObject3);
       if (localObject3 != null) {
         ((Collection)localObject1).add(localObject3);
       }
     }
     localArrayList.addAll((Collection)localObject1);
-    AppMethodBeat.o(252227);
+    AppMethodBeat.o(280114);
     return localArrayList;
   }
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(252232);
+    AppMethodBeat.i(280119);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(252232);
+    AppMethodBeat.o(280119);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(252231);
+    AppMethodBeat.i(280118);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -138,192 +139,194 @@ public final class FinderConversationUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(252231);
+    AppMethodBeat.o(280118);
     return localView1;
   }
   
   public final void a(Bundle paramBundle, int paramInt)
   {
-    AppMethodBeat.i(252220);
-    Object localObject = new com.tencent.mm.plugin.finder.conv.g();
-    ((com.tencent.mm.plugin.finder.conv.g)localObject).a((d.b)new h((kotlin.g.a.a)d.vIb));
-    ((com.tencent.mm.plugin.finder.conv.g)localObject).a((d.a)new com.tencent.mm.plugin.finder.conv.e((ReadyChattingCompatUI)this, (kotlin.g.a.b)new c(this)));
-    localObject = (d)localObject;
-    p.h(localObject, "<set-?>");
-    this.vHP = ((d)localObject);
-    if ((this.vHP instanceof com.tencent.mm.plugin.finder.conv.g))
+    AppMethodBeat.i(280107);
+    Object localObject = new com.tencent.mm.plugin.finder.conv.h();
+    ((com.tencent.mm.plugin.finder.conv.h)localObject).a((e.b)new i((kotlin.g.a.a)d.AoY));
+    ((com.tencent.mm.plugin.finder.conv.h)localObject).a((com.tencent.mm.plugin.finder.conv.e.a)new com.tencent.mm.plugin.finder.conv.f((ReadyChattingCompatUI)this, (kotlin.g.a.b)new c(this)));
+    localObject = (com.tencent.mm.plugin.finder.conv.e)localObject;
+    p.k(localObject, "<set-?>");
+    this.AoM = ((com.tencent.mm.plugin.finder.conv.e)localObject);
+    if ((this.AoM instanceof com.tencent.mm.plugin.finder.conv.h))
     {
-      c localc = this.vHX;
-      localc.nickname = getString(2131759618);
-      localc.field_sessionId = "finder_system_message";
+      d locald = this.AoU;
+      locald.nickname = getString(b.j.finder_conversation_finder_team);
+      locald.field_sessionId = "finder_system_message";
       Context localContext = MMApplicationContext.getContext();
-      localObject = localc.nickname;
+      localObject = locald.nickname;
       if (localObject != null) {}
       for (localObject = (CharSequence)localObject;; localObject = (CharSequence)"")
       {
-        localc.tyr = ((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(localContext, (CharSequence)localObject));
-        localObject = this.vHP;
+        locald.xgc = ((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c(localContext, (CharSequence)localObject));
+        localObject = this.AoM;
         if (localObject != null) {
           break;
         }
         paramBundle = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.conv.FinderConversationFirstFixAdapter");
-        AppMethodBeat.o(252220);
+        AppMethodBeat.o(280107);
         throw paramBundle;
       }
-      ((com.tencent.mm.plugin.finder.conv.g)localObject).tyI = this.vHX;
+      ((com.tencent.mm.plugin.finder.conv.h)localObject).xgu = this.AoU;
     }
     super.a(paramBundle, paramInt);
-    paramBundle = new al();
-    localObject = paramBundle.viV;
+    paramBundle = new ap();
+    localObject = paramBundle.zZO;
     if (localObject != null) {
-      ((com.tencent.mm.plugin.finder.report.a)localObject).vcM = ((z)new b(this));
+      ((com.tencent.mm.plugin.finder.report.a)localObject).zTD = ((ad)new b(this));
     }
-    localObject = (RecyclerView)_$_findCachedViewById(2131299243);
-    p.g(localObject, "conversationRecyclerView");
+    localObject = (RecyclerView)_$_findCachedViewById(b.f.conversationRecyclerView);
+    p.j(localObject, "conversationRecyclerView");
     paramBundle.b((RecyclerView)localObject, false);
-    this.vHY = paramBundle;
-    AppMethodBeat.o(252220);
+    this.AoV = paramBundle;
+    AppMethodBeat.o(280107);
   }
   
-  public final void anv()
+  public final void atw()
   {
-    AppMethodBeat.i(252221);
-    super.anv();
-    dzd();
-    AppMethodBeat.o(252221);
+    AppMethodBeat.i(280108);
+    super.atw();
+    dZU();
+    AppMethodBeat.o(280108);
   }
   
-  public final int dzb()
+  public final void dZT()
   {
-    return 2131759617;
-  }
-  
-  public final void dzc()
-  {
-    AppMethodBeat.i(252224);
-    Object localObject = com.tencent.mm.kernel.g.aAh();
-    p.g(localObject, "MMKernel.storage()");
-    int i = ((com.tencent.mm.kernel.e)localObject).azQ().getInt(ar.a.Oms, 0);
+    AppMethodBeat.i(280111);
+    Object localObject = com.tencent.mm.kernel.h.aHG();
+    p.j(localObject, "MMKernel.storage()");
+    int i = ((com.tencent.mm.kernel.f)localObject).aHp().getInt(ar.a.VBp, 0);
     if (i > 0)
     {
-      localObject = k.vfA;
-      k.ai(i, 1L);
-      localObject = k.vfA;
-      localObject = FinderReporterUIC.wzC;
+      localObject = n.zWF;
+      n.al(i, 1L);
+      localObject = n.zWF;
+      localObject = aj.Bnu;
       localObject = getContext();
-      p.g(localObject, "context");
-      localObject = FinderReporterUIC.a.fH((Context)localObject);
+      p.j(localObject, "context");
+      localObject = aj.a.fZ((Context)localObject);
       if (localObject != null) {}
-      for (localObject = ((FinderReporterUIC)localObject).dIx();; localObject = null)
+      for (localObject = ((aj)localObject).ekY();; localObject = null)
       {
-        k.a("11", 4, 1, 5, 0, i, null, null, 0L, (bbn)localObject, 0, 0, 3520);
-        AppMethodBeat.o(252224);
+        n.a("11", 4, 1, 5, 0, i, null, null, 0L, (bid)localObject, 0, 0, 3520);
+        AppMethodBeat.o(280111);
         return;
       }
     }
-    localObject = k.vfA;
-    k.ai(0, 1L);
-    AppMethodBeat.o(252224);
+    localObject = n.zWF;
+    n.al(0, 1L);
+    AppMethodBeat.o(280111);
+  }
+  
+  public final String duZ()
+  {
+    AppMethodBeat.i(280106);
+    String str = getString(b.j.finder_conversation_finder_message_title);
+    p.j(str, "this.getString(R.string.…ion_finder_message_title)");
+    AppMethodBeat.o(280106);
+    return str;
   }
   
   public final int getLayoutId()
   {
-    return 2131494231;
+    return b.g.finder_conversation_ui;
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(252225);
+    AppMethodBeat.i(280112);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if ((paramInt1 == 1) && (paramInt2 == 1))
     {
-      paramIntent = this.vHP;
-      p.h("findersayhisessionholder", "sessionId");
-      c localc = (c)paramIntent.tyt.get("findersayhisessionholder");
-      paramInt1 = j.a((List)paramIntent.ppH, localc);
-      if ((paramInt1 >= 0) && (paramInt1 < paramIntent.ppH.size()))
+      paramIntent = this.AoM;
+      p.k("findersayhisessionholder", "sessionId");
+      d locald = (d)paramIntent.xge.get("findersayhisessionholder");
+      paramInt1 = j.a((List)paramIntent.syG, locald);
+      if ((paramInt1 >= 0) && (paramInt1 < paramIntent.syG.size()))
       {
-        paramIntent.ppH.remove(paramInt1);
-        paramIntent.tyt.remove("findersayhisessionholder");
-        paramIntent.In(paramInt1);
+        paramIntent.syG.remove(paramInt1);
+        paramIntent.xge.remove("findersayhisessionholder");
+        paramIntent.LY(paramInt1);
       }
     }
-    AppMethodBeat.o(252225);
+    AppMethodBeat.o(280112);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(252223);
+    AppMethodBeat.i(280110);
     super.onDestroy();
-    Object localObject = com.tencent.mm.kernel.g.ah(PluginFinder.class);
-    p.g(localObject, "MMKernel.plugin(PluginFinder::class.java)");
-    ((PluginFinder)localObject).getRedDotManager().tJB.dat();
-    localObject = this.vHY;
+    Object localObject = com.tencent.mm.kernel.h.ag(PluginFinder.class);
+    p.j(localObject, "MMKernel.plugin(PluginFinder::class.java)");
+    ((PluginFinder)localObject).getRedDotManager().xsM.dqt();
+    localObject = this.AoV;
     if (localObject != null)
     {
-      ((al)localObject).doY();
-      AppMethodBeat.o(252223);
+      ((ap)localObject).dQB();
+      AppMethodBeat.o(280110);
       return;
     }
-    AppMethodBeat.o(252223);
+    AppMethodBeat.o(280110);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(252222);
+    AppMethodBeat.i(280109);
     super.onResume();
-    Object localObject1 = dyY();
-    int i = this.vHP.ppH.size();
-    Object localObject2 = ((com.tencent.mm.plugin.finder.conv.f)localObject1).tyE;
-    int j = ((com.tencent.mm.plugin.finder.conv.f)localObject1).scene;
-    localObject2 = ((com.tencent.mm.plugin.finder.storage.e)localObject2).a(0, i, new int[] { 1 }, j);
+    Object localObject2 = dZQ().gy(this.AoM.syG.size(), 1);
+    Object localObject1;
     long l;
-    label84:
-    c localc;
+    label57:
+    int i;
+    d locald;
     if (((List)localObject2).isEmpty())
     {
       localObject1 = "";
       if (!((List)localObject2).isEmpty()) {
-        break label305;
+        break label278;
       }
       l = 0L;
       Log.i("Finder.FinderConversationUI", "[onResume] digest:".concat(String.valueOf(localObject1)));
-      localObject2 = ((PluginFinder)com.tencent.mm.kernel.g.ah(PluginFinder.class)).getConversationStorage();
-      i = ((com.tencent.mm.plugin.finder.storage.e)localObject2).KX(2);
-      localc = ((com.tencent.mm.plugin.finder.storage.e)localObject2).avq("findersayhisessionholder");
-      if ((i <= 0) || (localc.systemRowid <= 0L) || ((!(p.j(localObject1, localc.field_digest) ^ true)) && (l == localc.field_updateTime))) {
-        break label323;
+      localObject2 = ((PluginFinder)com.tencent.mm.kernel.h.ag(PluginFinder.class)).getConversationStorage();
+      i = ((com.tencent.mm.plugin.finder.storage.f)localObject2).Qh(2);
+      locald = ((com.tencent.mm.plugin.finder.storage.f)localObject2).aEG("findersayhisessionholder");
+      if ((i <= 0) || (locald.systemRowid <= 0L) || ((!(p.h(localObject1, locald.field_digest) ^ true)) && (l == locald.field_updateTime))) {
+        break label296;
       }
-      localc.field_digest = ((String)localObject1);
-      localc.field_updateTime = l;
-      if (((com.tencent.mm.plugin.finder.storage.e)localObject2).update(localc.systemRowid, (IAutoDBItem)localc, false)) {
-        ((com.tencent.mm.plugin.finder.storage.e)localObject2).doNotify(localc.field_sessionId, 1, localc);
+      locald.field_digest = ((String)localObject1);
+      locald.field_updateTime = l;
+      if (((com.tencent.mm.plugin.finder.storage.f)localObject2).update(locald.systemRowid, (IAutoDBItem)locald, false)) {
+        ((com.tencent.mm.plugin.finder.storage.f)localObject2).doNotify(locald.field_sessionId, 1, locald);
       }
     }
     for (;;)
     {
-      dzd();
-      localObject1 = this.vHY;
+      dZU();
+      localObject1 = this.AoV;
       if (localObject1 == null) {
-        break label367;
+        break label340;
       }
-      if (((al)localObject1).doZ() == true) {
-        dzc();
+      if (((ap)localObject1).dQC() == true) {
+        dZT();
       }
-      AppMethodBeat.o(252222);
+      AppMethodBeat.o(280109);
       return;
-      localObject1 = ((c)((List)localObject2).get(0)).nickname + ':' + ((c)((List)localObject2).get(0)).field_digest;
+      localObject1 = ((d)((List)localObject2).get(0)).nickname + ':' + ((d)((List)localObject2).get(0)).field_digest;
       break;
-      label305:
-      l = ((c)((List)localObject2).get(0)).field_updateTime;
-      break label84;
-      label323:
-      if ((localc.systemRowid > 0L) && (i == 0) && (((com.tencent.mm.plugin.finder.storage.e)localObject2).delete(localc.systemRowid))) {
-        ((com.tencent.mm.plugin.finder.storage.e)localObject2).doNotify(localc.field_sessionId, 6, localc);
+      label278:
+      l = ((d)((List)localObject2).get(0)).field_updateTime;
+      break label57;
+      label296:
+      if ((locald.systemRowid > 0L) && (i == 0) && (((com.tencent.mm.plugin.finder.storage.f)localObject2).delete(locald.systemRowid))) {
+        ((com.tencent.mm.plugin.finder.storage.f)localObject2).doNotify(locald.field_sessionId, 6, locald);
       }
     }
-    label367:
-    AppMethodBeat.o(252222);
+    label340:
+    AppMethodBeat.o(280109);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -332,24 +335,24 @@ public final class FinderConversationUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationUI$Companion;", "", "()V", "REQUEST_CODE_HI_BOX", "", "RESULT_CODE_REMOVE_HI_BOX", "TAG", "", "plugin-finder_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationUI$Companion;", "", "()V", "REQUEST_CODE_HI_BOX", "", "RESULT_CODE_REMOVE_HI_BOX", "TAG", "", "plugin-finder_release"})
   public static final class a {}
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/ui/FinderConversationUI$initSystemMsgReporter$1$1", "Lcom/tencent/mm/plugin/finder/report/IDiffData;", "", "onDiffData", "", "diffData", "", "plugin-finder_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/ui/FinderConversationUI$initSystemMsgReporter$1$1", "Lcom/tencent/mm/plugin/finder/report/IDiffData;", "", "onDiffData", "", "diffData", "", "plugin-finder_release"})
   public static final class b
-    implements z<String>
+    implements ad<String>
   {
     b(FinderConversationUI paramFinderConversationUI) {}
     
-    public final void doO()
+    public final void dQw()
     {
-      AppMethodBeat.i(252217);
-      FinderConversationUI.a(this.vIa);
-      AppMethodBeat.o(252217);
+      AppMethodBeat.i(288638);
+      FinderConversationUI.a(this.AoX);
+      AppMethodBeat.o(288638);
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/conv/FinderConvItemUnselectedAnim;", "invoke", "com/tencent/mm/plugin/finder/ui/FinderConversationUI$onCreate$1$2"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/conv/FinderConvItemUnselectedAnim;", "invoke", "com/tencent/mm/plugin/finder/ui/FinderConversationUI$onCreate$1$2"})
   static final class c
     extends q
     implements kotlin.g.a.b<com.tencent.mm.plugin.finder.conv.b, x>
@@ -360,18 +363,18 @@ public final class FinderConversationUI
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class d
     extends q
     implements kotlin.g.a.a<x>
   {
-    public static final d vIb;
+    public static final d AoY;
     
     static
     {
-      AppMethodBeat.i(252219);
-      vIb = new d();
-      AppMethodBeat.o(252219);
+      AppMethodBeat.i(246667);
+      AoY = new d();
+      AppMethodBeat.o(246667);
     }
     
     d()

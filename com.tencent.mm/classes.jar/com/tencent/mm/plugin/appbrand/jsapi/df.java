@@ -1,73 +1,55 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.ac;
-import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.plugin.appbrand.appcache.predownload.c;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
 import kotlin.l;
+import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/WxaComponentAdapter;", "", "()V", "asPage", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "asService", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "luggage-wxa-app_release"})
-public final class df
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/TaskCallPredownload;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/jsapi/TaskParamsCallPredownload;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
+final class df
+  implements d<TaskParamsCallPredownload, IPCVoid>
 {
-  public static final df lCR;
-  
-  static
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  static final class a
+    extends q
+    implements a<x>
   {
-    AppMethodBeat.i(135576);
-    lCR = new df();
-    AppMethodBeat.o(135576);
+    public static final a oyn;
+    
+    static
+    {
+      AppMethodBeat.i(50420);
+      oyn = new a();
+      AppMethodBeat.o(50420);
+    }
+    
+    a()
+    {
+      super();
+    }
   }
   
-  public static final ac i(f paramf)
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  static final class b
+    implements Runnable
   {
-    AppMethodBeat.i(135574);
-    if (paramf == null)
+    b(String paramString1, String paramString2, int paramInt) {}
+    
+    public final void run()
     {
-      AppMethodBeat.o(135574);
-      return null;
+      AppMethodBeat.i(50421);
+      c.a(new c(this.kyF, this.oyo, this.$scene), true, 2);
+      AppMethodBeat.o(50421);
     }
-    if ((paramf instanceof ac))
-    {
-      paramf = (ac)paramf;
-      AppMethodBeat.o(135574);
-      return paramf;
-    }
-    if ((paramf instanceof s))
-    {
-      paramf = ((s)paramf).getCurrentPageView();
-      AppMethodBeat.o(135574);
-      return paramf;
-    }
-    AppMethodBeat.o(135574);
-    return null;
-  }
-  
-  public static final s j(f paramf)
-  {
-    AppMethodBeat.i(135575);
-    if (paramf == null)
-    {
-      AppMethodBeat.o(135575);
-      return null;
-    }
-    if ((paramf instanceof ac))
-    {
-      paramf = ((ac)paramf).NY();
-      AppMethodBeat.o(135575);
-      return paramf;
-    }
-    if ((paramf instanceof s))
-    {
-      paramf = (s)paramf;
-      AppMethodBeat.o(135575);
-      return paramf;
-    }
-    AppMethodBeat.o(135575);
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.df
  * JD-Core Version:    0.7.0.1
  */

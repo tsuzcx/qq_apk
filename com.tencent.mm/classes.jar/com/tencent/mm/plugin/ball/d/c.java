@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.ball.d;
 public abstract interface c
   extends b
 {
-  public abstract void cic();
+  public abstract void cvo();
   
-  public abstract void cid();
+  public abstract void cvp();
   
   public abstract void onOrientationChange(int paramInt);
 }

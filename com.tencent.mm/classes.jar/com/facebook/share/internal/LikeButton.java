@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
 import com.facebook.FacebookButtonBase;
+import com.facebook.common.R.drawable;
+import com.facebook.common.R.string;
+import com.facebook.common.R.style;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 @Deprecated
@@ -24,13 +27,13 @@ public class LikeButton
     AppMethodBeat.i(8111);
     if (isSelected())
     {
-      setCompoundDrawablesWithIntrinsicBounds(2131231881, 0, 0, 0);
-      setText(getResources().getString(2131757726));
+      setCompoundDrawablesWithIntrinsicBounds(R.drawable.com_facebook_button_like_icon_selected, 0, 0, 0);
+      setText(getResources().getString(R.string.com_facebook_like_button_liked));
       AppMethodBeat.o(8111);
       return;
     }
-    setCompoundDrawablesWithIntrinsicBounds(2131231877, 0, 0, 0);
-    setText(getResources().getString(2131757727));
+    setCompoundDrawablesWithIntrinsicBounds(R.drawable.com_facebook_button_icon, 0, 0, 0);
+    setText(getResources().getString(R.string.com_facebook_like_button_not_liked));
     AppMethodBeat.o(8111);
   }
   
@@ -49,7 +52,7 @@ public class LikeButton
   
   public int getDefaultStyleResource()
   {
-    return 2131821746;
+    return R.style.com_facebook_button_like;
   }
   
   @Deprecated
@@ -63,7 +66,7 @@ public class LikeButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.share.internal.LikeButton
  * JD-Core Version:    0.7.0.1
  */

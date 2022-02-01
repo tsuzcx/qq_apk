@@ -20,39 +20,47 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.R.a;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.f;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
+import com.tencent.mm.R.n;
+import com.tencent.mm.cr.a.b;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.at;
+import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.aw;
 
 public class AddrEditView
   extends RelativeLayout
   implements View.OnFocusChangeListener
 {
+  private boolean bCn;
   private int background;
-  private int gravity;
-  private int imeOptions;
+  private int editType;
+  private int ek;
   private int inputType;
-  private TextView jBS;
-  private boolean kK;
-  private AddrEditView.a ktI;
-  private b ktJ;
-  private View.OnFocusChangeListener ktK;
-  EditText ktL;
-  private ImageView ktM;
-  private String ktN;
-  private String ktO;
-  private int ktP;
-  private int ktQ;
-  public boolean ktR;
-  private int ktS;
-  private boolean ktT;
-  private int ktU;
-  private int ktV;
-  private View.OnClickListener ktW;
-  private String ktX;
+  private TextView mrN;
+  private ImageView nlA;
+  private String nlB;
+  private String nlC;
+  private int nlD;
+  private int nlE;
+  public boolean nlF;
+  private int nlG;
+  private boolean nlH;
+  private int nlI;
+  private int nlJ;
+  private View.OnClickListener nlK;
+  private String nlL;
+  private a nlw;
+  private b nlx;
+  private View.OnFocusChangeListener nly;
+  EditText nlz;
   
   public AddrEditView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -63,32 +71,32 @@ public class AddrEditView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(20850);
-    this.ktN = "";
-    this.ktO = "";
+    this.nlB = "";
+    this.nlC = "";
     this.inputType = 1;
-    this.gravity = 19;
-    this.ktP = -1;
+    this.ek = 19;
+    this.editType = -1;
     this.background = -1;
-    this.ktQ = -1;
-    this.ktR = true;
-    this.ktT = false;
-    this.ktU = 1;
-    this.ktV = 30;
-    this.kK = true;
-    this.ktW = new View.OnClickListener()
+    this.nlE = -1;
+    this.nlF = true;
+    this.nlH = false;
+    this.nlI = 1;
+    this.nlJ = 30;
+    this.bCn = true;
+    this.nlK = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(20849);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/address/ui/AddrEditView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/address/ui/AddrEditView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (AddrEditView.f(AddrEditView.this).getVisibility() == 0)
         {
-          if ((!AddrEditView.this.ktR) || (AddrEditView.d(AddrEditView.this) == 2) || (Util.isNullOrNil(AddrEditView.this.getText()))) {
+          if ((!AddrEditView.this.nlF) || (AddrEditView.d(AddrEditView.this) == 2) || (Util.isNullOrNil(AddrEditView.this.getText()))) {
             break label130;
           }
-          AddrEditView.this.ktL.setText("");
+          AddrEditView.this.nlz.setText("");
           AddrEditView.b(AddrEditView.this, AddrEditView.e(AddrEditView.this).isFocused());
         }
         for (;;)
@@ -103,37 +111,37 @@ public class AddrEditView
         }
       }
     };
-    this.ktX = null;
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.a.AddrEditView, paramInt, 0);
-    paramInt = paramAttributeSet.getResourceId(7, 0);
+    this.nlL = null;
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.n.eWk, paramInt, 0);
+    paramInt = paramAttributeSet.getResourceId(R.n.eWr, 0);
     if (paramInt != 0) {
-      this.ktN = paramContext.getString(paramInt);
+      this.nlB = paramContext.getString(paramInt);
     }
-    paramInt = paramAttributeSet.getResourceId(13, 0);
+    paramInt = paramAttributeSet.getResourceId(R.n.eWv, 0);
     if (paramInt != 0) {
-      this.ktO = paramContext.getString(paramInt);
+      this.nlC = paramContext.getString(paramInt);
     }
-    this.inputType = paramAttributeSet.getInteger(3, 1);
-    this.ktP = paramAttributeSet.getInteger(5, 0);
-    this.ktR = paramAttributeSet.getBoolean(6, true);
-    this.gravity = paramAttributeSet.getInt(0, 19);
-    this.imeOptions = paramAttributeSet.getInteger(4, 5);
-    this.background = paramAttributeSet.getResourceId(1, 2131235359);
-    this.ktS = paramAttributeSet.getResourceId(10, -1);
-    this.ktQ = paramAttributeSet.getResourceId(8, 2131235359);
-    this.kK = paramAttributeSet.getBoolean(12, true);
+    this.inputType = paramAttributeSet.getInteger(R.n.eWn, 1);
+    this.editType = paramAttributeSet.getInteger(R.n.eWp, 0);
+    this.nlF = paramAttributeSet.getBoolean(R.n.eWq, true);
+    this.ek = paramAttributeSet.getInt(R.n.eWl, 19);
+    this.nlD = paramAttributeSet.getInteger(R.n.eWo, 5);
+    this.background = paramAttributeSet.getResourceId(R.n.eWm, R.g.transparent_background);
+    this.nlG = paramAttributeSet.getResourceId(R.n.eWt, -1);
+    this.nlE = paramAttributeSet.getResourceId(R.n.eWs, R.g.transparent_background);
+    this.bCn = paramAttributeSet.getBoolean(R.n.eWu, true);
     paramAttributeSet.recycle();
-    paramAttributeSet = LayoutInflater.from(paramContext).inflate(2131492979, this, true);
-    this.ktL = ((EditText)paramAttributeSet.findViewById(2131302331));
-    this.ktL.setTextSize(0, com.tencent.mm.cb.a.aG(paramContext, 2131165535));
-    this.jBS = ((TextView)paramAttributeSet.findViewById(2131309163));
-    this.ktM = ((ImageView)paramAttributeSet.findViewById(2131302653));
-    this.ktM.setOnClickListener(this.ktW);
-    this.ktL.setImeOptions(this.imeOptions);
-    this.ktL.setInputType(this.inputType);
+    paramAttributeSet = LayoutInflater.from(paramContext).inflate(R.i.ebo, this, true);
+    this.nlz = ((EditText)paramAttributeSet.findViewById(R.h.hint_et));
+    this.nlz.setTextSize(0, com.tencent.mm.ci.a.aY(paramContext, R.f.NormalTextSize));
+    this.mrN = ((TextView)paramAttributeSet.findViewById(R.h.tip_tv));
+    this.nlA = ((ImageView)paramAttributeSet.findViewById(R.h.info_iv));
+    this.nlA.setOnClickListener(this.nlK);
+    this.nlz.setImeOptions(this.nlD);
+    this.nlz.setInputType(this.inputType);
     if (this.inputType == 2)
     {
-      this.ktL.setKeyListener(new NumberKeyListener()
+      this.nlz.setKeyListener(new NumberKeyListener()
       {
         protected final char[] getAcceptedChars()
         {
@@ -145,20 +153,20 @@ public class AddrEditView
           return 3;
         }
       });
-      gr(this.ktL.isFocused());
-      this.ktL.addTextChangedListener(new TextWatcher()
+      hd(this.nlz.isFocused());
+      this.nlz.addTextChangedListener(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable)
         {
           AppMethodBeat.i(20848);
-          boolean bool = AddrEditView.this.bql();
+          boolean bool = AddrEditView.this.bAz();
           if ((bool != AddrEditView.a(AddrEditView.this)) && (AddrEditView.b(AddrEditView.this) != null))
           {
             Log.d("MicroMsg.AddrEditView", "View:" + AddrEditView.c(AddrEditView.this) + ", editType:" + AddrEditView.d(AddrEditView.this) + " inputValid change to " + bool);
             AddrEditView.a(AddrEditView.this, bool);
             paramAnonymousEditable = AddrEditView.b(AddrEditView.this);
             AddrEditView.a(AddrEditView.this);
-            paramAnonymousEditable.bqh();
+            paramAnonymousEditable.bAv();
           }
           AddrEditView.b(AddrEditView.this, AddrEditView.e(AddrEditView.this).isFocused());
           AppMethodBeat.o(20848);
@@ -168,41 +176,40 @@ public class AddrEditView
         
         public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       });
-      this.ktL.setOnFocusChangeListener(this);
-      if (!Util.isNullOrNil(this.ktN)) {
-        this.ktL.setHint(this.ktN);
+      this.nlz.setOnFocusChangeListener(this);
+      if (!Util.isNullOrNil(this.nlB)) {
+        this.nlz.setHint(this.nlB);
       }
-      if (!Util.isNullOrNil(this.ktO)) {
-        this.jBS.setText(this.ktO);
+      if (!Util.isNullOrNil(this.nlC)) {
+        this.mrN.setText(this.nlC);
       }
       paramAttributeSet = new Rect();
-      d(this.ktL, paramAttributeSet);
-      if (this.ktR) {
-        break label663;
+      d(this.nlz, paramAttributeSet);
+      if (this.nlF) {
+        break label676;
       }
-      this.ktL.setEnabled(false);
-      this.ktL.setTextColor(getResources().getColor(2131099913));
-      this.ktL.setFocusable(false);
-      this.ktL.setClickable(false);
-      this.ktL.setBackgroundResource(2131235359);
-      setBackgroundResource(2131233952);
-      setPadding(com.tencent.mm.cb.a.fromDPToPix(getContext(), 8), getPaddingTop(), getPaddingRight(), getPaddingBottom());
+      this.nlz.setEnabled(false);
+      this.nlz.setFocusable(false);
+      this.nlz.setClickable(false);
+      this.nlz.setBackgroundResource(R.g.transparent_background);
+      setBackgroundResource(R.g.mm_listitem);
+      setPadding(com.tencent.mm.ci.a.fromDPToPix(getContext(), 8), getPaddingTop(), com.tencent.mm.ci.a.fromDPToPix(getContext(), 8), getPaddingBottom());
     }
     for (;;)
     {
-      e(this.ktL, paramAttributeSet);
-      this.ktL.setGravity(this.gravity);
-      if (this.ktS != -1) {
-        this.ktM.setImageDrawable(ar.m(paramContext, this.ktS, paramContext.getResources().getColor(2131099746)));
+      e(this.nlz, paramAttributeSet);
+      this.nlz.setGravity(this.ek);
+      if (this.nlG != -1) {
+        this.nlA.setImageDrawable(au.o(paramContext, this.nlG, paramContext.getResources().getColor(R.e.FG_0)));
       }
-      if (!this.kK) {
-        this.ktL.setSingleLine(false);
+      if (!this.bCn) {
+        this.nlz.setSingleLine(false);
       }
       AppMethodBeat.o(20850);
       return;
       if (this.inputType == 3)
       {
-        this.ktL.setKeyListener(new NumberKeyListener()
+        this.nlz.setKeyListener(new NumberKeyListener()
         {
           protected final char[] getAcceptedChars()
           {
@@ -216,16 +223,16 @@ public class AddrEditView
         });
         break;
       }
-      this.ktL.setInputType(this.inputType);
+      this.nlz.setInputType(this.inputType);
       break;
-      label663:
-      this.ktT = false;
-      this.ktL.setBackgroundResource(this.ktQ);
+      label676:
+      this.nlH = false;
+      this.nlz.setBackgroundResource(this.nlE);
       setBackgroundResource(this.background);
     }
   }
   
-  private static int TE(String paramString)
+  private static int abn(String paramString)
   {
     AppMethodBeat.i(20871);
     int j = 0;
@@ -267,7 +274,7 @@ public class AddrEditView
   {
     AppMethodBeat.i(20868);
     Rect localRect = new Rect();
-    this.ktM.getHitRect(localRect);
+    this.nlA.getHitRect(localRect);
     localRect.left -= 50;
     localRect.right += 50;
     localRect.top -= 25;
@@ -276,95 +283,107 @@ public class AddrEditView
     return localRect;
   }
   
-  private void gr(boolean paramBoolean)
+  private void hd(boolean paramBoolean)
   {
     AppMethodBeat.i(20857);
-    if ((this.ktR) && (!Util.isNullOrNil(getText())))
+    if ((this.nlF) && (!Util.isNullOrNil(getText())))
     {
-      this.ktM.setImageDrawable(at.aN(getContext(), 2130969010));
-      this.ktM.setContentDescription(getContext().getString(2131757636));
-      switch (this.ktP)
+      this.nlA.setImageDrawable(aw.bf(getContext(), a.b.et_clear_selector));
+      this.nlA.setContentDescription(getContext().getString(R.l.clear_btn));
+      switch (this.editType)
       {
       default: 
-        this.ktM.setVisibility(8);
+        this.nlA.setVisibility(8);
         AppMethodBeat.o(20857);
         return;
       case 0: 
       case 1: 
         if (paramBoolean)
         {
-          this.ktM.setVisibility(0);
+          this.nlA.setVisibility(0);
           AppMethodBeat.o(20857);
           return;
         }
-        this.ktM.setVisibility(8);
+        this.nlA.setVisibility(8);
         AppMethodBeat.o(20857);
         return;
       case 3: 
-        this.ktM.setVisibility(0);
-        this.ktM.setImageResource(2131690826);
-        this.ktM.setContentDescription(getContext().getString(2131755244));
+        this.nlA.setVisibility(0);
+        this.nlA.setImageResource(R.k.icons_outlined_location);
+        this.nlA.setContentDescription(getContext().getString(R.l.address_location));
         AppMethodBeat.o(20857);
         return;
       }
-      this.ktM.setVisibility(0);
-      this.ktM.setImageResource(2131690913);
-      this.ktM.setContentDescription(getContext().getString(2131755197));
+      this.nlA.setVisibility(0);
+      this.nlA.setImageResource(R.k.icons_outlined_subscriptions);
+      this.nlA.setContentDescription(getContext().getString(R.l.address_contact));
       AppMethodBeat.o(20857);
       return;
     }
-    switch (this.ktP)
+    switch (this.editType)
     {
     default: 
-      this.ktM.setVisibility(8);
+      this.nlA.setVisibility(8);
       AppMethodBeat.o(20857);
       return;
     case 0: 
     case 1: 
-      this.ktM.setVisibility(8);
+      this.nlA.setVisibility(8);
       AppMethodBeat.o(20857);
       return;
     case 3: 
-      this.ktM.setVisibility(0);
-      this.ktM.setImageResource(2131690826);
-      this.ktM.setContentDescription(getContext().getString(2131755244));
+      this.nlA.setVisibility(0);
+      this.nlA.setImageResource(R.k.icons_outlined_location);
+      this.nlA.setContentDescription(getContext().getString(R.l.address_location));
       AppMethodBeat.o(20857);
       return;
     }
-    this.ktM.setVisibility(0);
-    this.ktM.setImageResource(2131690913);
-    this.ktM.setContentDescription(getContext().getString(2131755197));
+    this.nlA.setVisibility(0);
+    this.nlA.setImageResource(R.k.icons_outlined_subscriptions);
+    this.nlA.setContentDescription(getContext().getString(R.l.address_contact));
     AppMethodBeat.o(20857);
   }
   
-  public final void bqk()
+  public final boolean bAA()
   {
-    AppMethodBeat.i(231574);
-    this.ktL.setHintTextColor(getContext().getResources().getColor(2131099834));
-    this.ktL.setTextColor(getContext().getResources().getColor(2131099836));
-    this.jBS.setTextColor(getContext().getResources().getColor(2131099836));
-    if (this.ktS != -1) {
-      this.ktM.setImageDrawable(ar.m(getContext(), this.ktS, getContext().getResources().getColor(2131099836)));
+    AppMethodBeat.i(20863);
+    if (getText().equals(Util.nullAsNil(this.nlL)))
+    {
+      AppMethodBeat.o(20863);
+      return false;
     }
-    AppMethodBeat.o(231574);
+    AppMethodBeat.o(20863);
+    return true;
   }
   
-  public final boolean bql()
+  public final void bAy()
+  {
+    AppMethodBeat.i(267732);
+    this.nlz.setHintTextColor(getContext().getResources().getColor(R.e.UN_BW_0_Alpha_0_3));
+    this.nlz.setTextColor(getContext().getResources().getColor(R.e.UN_BW_0_Alpha_0_9));
+    this.mrN.setTextColor(getContext().getResources().getColor(R.e.UN_BW_0_Alpha_0_9));
+    if (this.nlG != -1) {
+      this.nlA.setImageDrawable(au.o(getContext(), this.nlG, getContext().getResources().getColor(R.e.UN_BW_0_Alpha_0_9)));
+    }
+    AppMethodBeat.o(267732);
+  }
+  
+  public final boolean bAz()
   {
     AppMethodBeat.i(20856);
-    Object localObject = this.ktL.getText().toString();
-    switch (this.ktP)
+    Object localObject = this.nlz.getText().toString();
+    switch (this.editType)
     {
     case 0: 
     default: 
-      if (((String)localObject).length() >= this.ktU)
+      if (((String)localObject).length() >= this.nlI)
       {
         AppMethodBeat.o(20856);
         return true;
       }
       break;
     case 1: 
-      if ((((String)localObject).length() >= this.ktU) && (((String)localObject).length() <= this.ktV))
+      if ((((String)localObject).length() >= this.nlI) && (((String)localObject).length() <= this.nlJ))
       {
         if (localObject == null) {
           localObject = null;
@@ -383,7 +402,7 @@ public class AddrEditView
       AppMethodBeat.o(20856);
       return false;
     case 2: 
-      if ((((String)localObject).length() >= this.ktU) && (TE((String)localObject) <= 32))
+      if ((((String)localObject).length() >= this.nlI) && (abn((String)localObject) <= 32))
       {
         AppMethodBeat.o(20856);
         return true;
@@ -392,7 +411,7 @@ public class AddrEditView
       return false;
     case 3: 
     case 5: 
-      if ((((String)localObject).length() >= this.ktU) && (TE((String)localObject) <= 128))
+      if ((((String)localObject).length() >= this.nlI) && (abn((String)localObject) <= 128))
       {
         AppMethodBeat.o(20856);
         return true;
@@ -400,7 +419,7 @@ public class AddrEditView
       AppMethodBeat.o(20856);
       return false;
     case 4: 
-      if (((String)localObject).length() <= this.ktV)
+      if (((String)localObject).length() <= this.nlJ)
       {
         AppMethodBeat.o(20856);
         return true;
@@ -412,22 +431,10 @@ public class AddrEditView
     return false;
   }
   
-  public final boolean bqm()
-  {
-    AppMethodBeat.i(20863);
-    if (getText().equals(Util.nullAsNil(this.ktX)))
-    {
-      AppMethodBeat.o(20863);
-      return false;
-    }
-    AppMethodBeat.o(20863);
-    return true;
-  }
-  
   public String getText()
   {
     AppMethodBeat.i(20851);
-    String str = this.ktL.getText().toString();
+    String str = this.nlz.getText().toString();
     AppMethodBeat.o(20851);
     return str;
   }
@@ -435,36 +442,36 @@ public class AddrEditView
   public void onFocusChange(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(20859);
-    if (this.ktK != null) {
-      this.ktK.onFocusChange(this, paramBoolean);
+    if (this.nly != null) {
+      this.nly.onFocusChange(this, paramBoolean);
     }
-    Log.d("MicroMsg.AddrEditView", "View:" + this.ktO + ", editType:" + this.ktP + " onFocusChange to " + paramBoolean);
-    if (this.ktJ != null) {
-      this.ktJ.bqh();
+    Log.d("MicroMsg.AddrEditView", "View:" + this.nlC + ", editType:" + this.editType + " onFocusChange to " + paramBoolean);
+    if (this.nlx != null) {
+      this.nlx.bAv();
     }
-    if (!this.ktT)
+    if (!this.nlH)
     {
-      this.jBS.setEnabled(false);
-      if (paramView == this.ktL)
+      this.mrN.setEnabled(false);
+      if (paramView == this.nlz)
       {
         paramView = new Rect();
         d(this, paramView);
         if (!paramBoolean) {
           break label164;
         }
-        setBackgroundResource(2131233162);
+        setBackgroundResource(R.g.input_bar_bg_active);
       }
     }
     for (;;)
     {
       e(this, paramView);
-      gr(paramBoolean);
+      hd(paramBoolean);
       AppMethodBeat.o(20859);
       return;
-      this.jBS.setEnabled(true);
+      this.mrN.setEnabled(true);
       break;
       label164:
-      setBackgroundResource(2131233163);
+      setBackgroundResource(R.g.input_bar_bg_normal);
     }
   }
   
@@ -472,9 +479,9 @@ public class AddrEditView
   {
     AppMethodBeat.i(20854);
     int i;
-    if (!this.ktR)
+    if (!this.nlF)
     {
-      if (this.ktM.getVisibility() != 0) {
+      if (this.nlA.getVisibility() != 0) {
         break label63;
       }
       i = 1;
@@ -510,12 +517,12 @@ public class AddrEditView
   public void setEditBG(int paramInt)
   {
     AppMethodBeat.i(20864);
-    if (this.ktL != null)
+    if (this.nlz != null)
     {
       Rect localRect = new Rect();
-      d(this.ktL, localRect);
-      this.ktL.setBackgroundResource(paramInt);
-      e(this.ktL, localRect);
+      d(this.nlz, localRect);
+      this.nlz.setBackgroundResource(paramInt);
+      e(this.nlz, localRect);
     }
     AppMethodBeat.o(20864);
   }
@@ -523,7 +530,7 @@ public class AddrEditView
   public void setEllipsize(TextUtils.TruncateAt paramTruncateAt)
   {
     AppMethodBeat.i(20852);
-    this.ktL.setEllipsize(paramTruncateAt);
+    this.nlz.setEllipsize(paramTruncateAt);
     AppMethodBeat.o(20852);
   }
   
@@ -531,34 +538,34 @@ public class AddrEditView
   {
     AppMethodBeat.i(20853);
     super.setEnabled(paramBoolean);
-    this.ktR = paramBoolean;
-    this.ktM.setEnabled(true);
+    this.nlF = paramBoolean;
+    this.nlA.setEnabled(true);
     AppMethodBeat.o(20853);
   }
   
   public void setHintStr(String paramString)
   {
     AppMethodBeat.i(20860);
-    this.ktL.setHint(paramString);
+    this.nlz.setHint(paramString);
     AppMethodBeat.o(20860);
   }
   
   public void setImeOptions(int paramInt)
   {
     AppMethodBeat.i(20866);
-    this.ktL.setImeOptions(paramInt);
+    this.nlz.setImeOptions(paramInt);
     AppMethodBeat.o(20866);
   }
   
-  public void setInfoIvOnClickListener(AddrEditView.a parama)
+  public void setInfoIvOnClickListener(a parama)
   {
-    this.ktI = parama;
+    this.nlw = parama;
   }
   
   public void setInfoIvVisible(int paramInt)
   {
     AppMethodBeat.i(20867);
-    this.ktM.setVisibility(paramInt);
+    this.nlA.setVisibility(paramInt);
     AppMethodBeat.o(20867);
   }
   
@@ -573,27 +580,27 @@ public class AddrEditView
   {
     AppMethodBeat.i(20858);
     super.setOnFocusChangeListener(paramOnFocusChangeListener);
-    this.ktK = paramOnFocusChangeListener;
+    this.nly = paramOnFocusChangeListener;
     AppMethodBeat.o(20858);
   }
   
   public void setOnInputValidChangeListener(b paramb)
   {
-    this.ktJ = paramb;
+    this.nlx = paramb;
   }
   
   public void setTipStr(String paramString)
   {
     AppMethodBeat.i(20861);
-    this.jBS.setText(paramString);
+    this.mrN.setText(paramString);
     AppMethodBeat.o(20861);
   }
   
   public void setTipTextColor(int paramInt)
   {
     AppMethodBeat.i(20865);
-    if (this.jBS != null) {
-      this.jBS.setTextColor(paramInt);
+    if (this.mrN != null) {
+      this.mrN.setTextColor(paramInt);
     }
     AppMethodBeat.o(20865);
   }
@@ -601,20 +608,25 @@ public class AddrEditView
   public void setValStr(String paramString)
   {
     AppMethodBeat.i(20862);
-    this.ktL.setText(paramString);
-    this.ktL.setSelection(this.ktL.getText().length());
-    this.ktX = paramString;
+    this.nlz.setText(paramString);
+    this.nlz.setSelection(this.nlz.getText().length());
+    this.nlL = paramString;
     AppMethodBeat.o(20862);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void onClick();
   }
   
   public static abstract interface b
   {
-    public abstract void bqh();
+    public abstract void bAv();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.address.ui.AddrEditView
  * JD-Core Version:    0.7.0.1
  */

@@ -11,20 +11,22 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ck.a.a;
-import com.tencent.mm.ui.as;
+import com.tencent.mm.cr.a.e;
+import com.tencent.mm.cr.a.f;
+import com.tencent.mm.cr.a.k;
+import com.tencent.mm.ui.av;
 
 public class MMFormInputView
   extends LinearLayout
 {
-  private View.OnFocusChangeListener heD;
-  private TextView jVO;
+  private View.OnFocusChangeListener jQt;
   private int layout;
   private Context mContext;
-  private EditText nBD;
-  private int nBF;
-  private int nBG;
-  private int[] nBK;
+  private TextView mNb;
+  private EditText qDO;
+  private int qDQ;
+  private int qDR;
+  private int[] qDV;
   
   public MMFormInputView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,14 +38,14 @@ public class MMFormInputView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159168);
     this.mContext = null;
-    this.nBF = -1;
-    this.nBG = -1;
+    this.qDQ = -1;
+    this.qDR = -1;
     this.layout = -1;
-    this.heD = null;
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.FormItemView, paramInt, 0);
-    this.nBG = paramAttributeSet.getResourceId(1, -1);
-    this.nBF = paramAttributeSet.getResourceId(3, -1);
-    this.layout = paramAttributeSet.getResourceId(2, this.layout);
+    this.jQt = null;
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.k.FormItemView, paramInt, 0);
+    this.qDR = paramAttributeSet.getResourceId(a.k.FormItemView_form_hint, -1);
+    this.qDQ = paramAttributeSet.getResourceId(a.k.FormItemView_form_title, -1);
+    this.layout = paramAttributeSet.getResourceId(a.k.FormItemView_form_layout, this.layout);
     paramAttributeSet.recycle();
     inflate(paramContext, this.layout, this);
     this.mContext = paramContext;
@@ -53,51 +55,51 @@ public class MMFormInputView
   public final void addTextChangedListener(TextWatcher paramTextWatcher)
   {
     AppMethodBeat.i(159177);
-    if ((paramTextWatcher != null) && (this.nBD != null))
+    if ((paramTextWatcher != null) && (this.qDO != null))
     {
-      this.nBD.addTextChangedListener(paramTextWatcher);
+      this.qDO.addTextChangedListener(paramTextWatcher);
       AppMethodBeat.o(159177);
       return;
     }
-    as.w("MicroMsg.MMFormInputView", "watcher : %s, contentET : %s", new Object[] { paramTextWatcher, this.nBD });
+    av.w("MicroMsg.MMFormInputView", "watcher : %s, contentET : %s", new Object[] { paramTextWatcher, this.qDO });
     AppMethodBeat.o(159177);
   }
   
   public EditText getContentEditText()
   {
-    return this.nBD;
+    return this.qDO;
   }
   
   public Editable getText()
   {
     AppMethodBeat.i(159178);
-    if (this.nBD != null)
+    if (this.qDO != null)
     {
-      Editable localEditable = this.nBD.getText();
+      Editable localEditable = this.qDO.getText();
       AppMethodBeat.o(159178);
       return localEditable;
     }
-    as.e("MicroMsg.MMFormInputView", "contentET is null!", new Object[0]);
+    av.e("MicroMsg.MMFormInputView", "contentET is null!", new Object[0]);
     AppMethodBeat.o(159178);
     return null;
   }
   
   public TextView getTitleTextView()
   {
-    return this.jVO;
+    return this.mNb;
   }
   
   public void onFinishInflate()
   {
     AppMethodBeat.i(159169);
-    this.jVO = ((TextView)findViewById(2131309195));
-    this.nBD = ((EditText)findViewById(2131299910));
-    if ((this.jVO == null) || (this.nBD == null)) {
-      as.w("MicroMsg.MMFormInputView", "titleTV : %s, contentET : %s", new Object[] { this.jVO, this.nBD });
+    this.mNb = ((TextView)findViewById(a.f.title));
+    this.qDO = ((EditText)findViewById(a.f.edittext));
+    if ((this.mNb == null) || (this.qDO == null)) {
+      av.w("MicroMsg.MMFormInputView", "titleTV : %s, contentET : %s", new Object[] { this.mNb, this.qDO });
     }
     for (;;)
     {
-      if (this.nBD != null)
+      if (this.qDO != null)
       {
         View.OnFocusChangeListener local1 = new View.OnFocusChangeListener()
         {
@@ -108,9 +110,9 @@ public class MMFormInputView
             {
               MMFormInputView.b(MMFormInputView.this);
               if (!paramAnonymousBoolean) {
-                break label73;
+                break label74;
               }
-              MMFormInputView.this.setBackgroundResource(2131233162);
+              MMFormInputView.this.setBackgroundResource(a.e.input_bar_bg_active);
             }
             for (;;)
             {
@@ -120,123 +122,123 @@ public class MMFormInputView
               }
               AppMethodBeat.o(159167);
               return;
-              label73:
-              MMFormInputView.this.setBackgroundResource(2131233163);
+              label74:
+              MMFormInputView.this.setBackgroundResource(a.e.input_bar_bg_normal);
             }
           }
         };
-        this.nBD.setOnFocusChangeListener(local1);
+        this.qDO.setOnFocusChangeListener(local1);
       }
       AppMethodBeat.o(159169);
       return;
-      if (this.nBF != -1) {
-        this.jVO.setText(this.nBF);
+      if (this.qDQ != -1) {
+        this.mNb.setText(this.qDQ);
       }
-      if (this.nBG != -1) {
-        this.nBD.setHint(this.nBG);
+      if (this.qDR != -1) {
+        this.qDO.setHint(this.qDR);
       }
     }
   }
   
   public void setFocusListener(View.OnFocusChangeListener paramOnFocusChangeListener)
   {
-    this.heD = paramOnFocusChangeListener;
+    this.jQt = paramOnFocusChangeListener;
   }
   
   public void setHint(int paramInt)
   {
     AppMethodBeat.i(159173);
-    if (this.nBD != null)
+    if (this.qDO != null)
     {
-      this.nBD.setHint(paramInt);
+      this.qDO.setHint(paramInt);
       AppMethodBeat.o(159173);
       return;
     }
-    as.e("MicroMsg.MMFormInputView", "contentET is null!", new Object[0]);
+    av.e("MicroMsg.MMFormInputView", "contentET is null!", new Object[0]);
     AppMethodBeat.o(159173);
   }
   
   public void setHint(String paramString)
   {
     AppMethodBeat.i(159171);
-    if (this.nBD != null)
+    if (this.qDO != null)
     {
-      this.nBD.setHint(paramString);
+      this.qDO.setHint(paramString);
       AppMethodBeat.o(159171);
       return;
     }
-    as.e("MicroMsg.MMFormInputView", "contentET is null!", new Object[0]);
+    av.e("MicroMsg.MMFormInputView", "contentET is null!", new Object[0]);
     AppMethodBeat.o(159171);
   }
   
   public void setImeOption(int paramInt)
   {
     AppMethodBeat.i(159175);
-    if (this.nBD != null)
+    if (this.qDO != null)
     {
-      this.nBD.setImeOptions(paramInt);
+      this.qDO.setImeOptions(paramInt);
       AppMethodBeat.o(159175);
       return;
     }
-    as.e("MicroMsg.MMFormInputView", "contentET is null!", new Object[0]);
+    av.e("MicroMsg.MMFormInputView", "contentET is null!", new Object[0]);
     AppMethodBeat.o(159175);
   }
   
   public void setInputType(int paramInt)
   {
     AppMethodBeat.i(159176);
-    if (this.nBD != null)
+    if (this.qDO != null)
     {
-      this.nBD.setInputType(paramInt);
+      this.qDO.setInputType(paramInt);
       AppMethodBeat.o(159176);
       return;
     }
-    as.e("MicroMsg.MMFormInputView", "contentET is null!", new Object[0]);
+    av.e("MicroMsg.MMFormInputView", "contentET is null!", new Object[0]);
     AppMethodBeat.o(159176);
   }
   
   public void setText(String paramString)
   {
     AppMethodBeat.i(159174);
-    if (this.nBD != null)
+    if (this.qDO != null)
     {
-      this.nBD.setText(paramString);
+      this.qDO.setText(paramString);
       AppMethodBeat.o(159174);
       return;
     }
-    as.e("MicroMsg.MMFormInputView", "contentET is null!", new Object[0]);
+    av.e("MicroMsg.MMFormInputView", "contentET is null!", new Object[0]);
     AppMethodBeat.o(159174);
   }
   
   public void setTitle(int paramInt)
   {
     AppMethodBeat.i(159172);
-    if (this.jVO != null)
+    if (this.mNb != null)
     {
-      this.jVO.setText(paramInt);
+      this.mNb.setText(paramInt);
       AppMethodBeat.o(159172);
       return;
     }
-    as.e("MicroMsg.MMFormInputView", "titleTV is null!", new Object[0]);
+    av.e("MicroMsg.MMFormInputView", "titleTV is null!", new Object[0]);
     AppMethodBeat.o(159172);
   }
   
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(159170);
-    if (this.jVO != null)
+    if (this.mNb != null)
     {
-      this.jVO.setText(paramString);
+      this.mNb.setText(paramString);
       AppMethodBeat.o(159170);
       return;
     }
-    as.e("MicroMsg.MMFormInputView", "titleTV is null!", new Object[0]);
+    av.e("MicroMsg.MMFormInputView", "titleTV is null!", new Object[0]);
     AppMethodBeat.o(159170);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMFormInputView
  * JD-Core Version:    0.7.0.1
  */

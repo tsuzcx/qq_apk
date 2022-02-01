@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/ky7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/kxg" android:background="@drawable/a08" android:paddingTop="@dimen/ce" android:paddingBottom="@dimen/ce" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cb" android:weightSum="2.0" android:layout_alignParentBottom="true" android:paddingStart="@dimen/cb" android:paddingEnd="@dimen/cb" android:layout_marginStart="@dimen/ce" android:layout_marginEnd="@dimen/ce">
+        <RelativeLayout android:gravity="center_horizontal" android:id="@id/kxk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kxl" android:layout_width="@dimen/cf" android:layout_height="@dimen/cf" android:src="@raw/icon_finder_post_lucky_money" android:layout_centerHorizontal="true" app:iconColor="@color/ag2" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:gravity="center_horizontal" android:id="@id/kxm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:text="@string/k4h" android:layout_below="@id/kxl" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center_horizontal" android:id="@id/kxh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kxi" android:layout_width="@dimen/cf" android:layout_height="@dimen/cf" android:src="@raw/icons_filled_reward" android:layout_centerHorizontal="true" app:iconColor="@color/ag2" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:gravity="center_horizontal" android:id="@id/kxj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:text="@string/cun" android:layout_below="@id/kxi" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <ImageView style="@style/hx" />
-        <android.support.v7.widget.RecyclerView android:gravity="center" android:id="@id/gax" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="always" />
+        <androidx.recyclerview.widget.RecyclerView android:gravity="center" android:id="@id/gax" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="always" />
         <TextView android:textColor="@color/Link" android:gravity="center_vertical" android:id="@id/gao" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/a2h" />
         <ImageView android:id="@id/gaw" style="@style/hx" />
         <TextView android:textColor="@color/l4" android:gravity="center" android:id="@id/gap" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/a2i" />

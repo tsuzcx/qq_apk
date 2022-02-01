@@ -14,42 +14,42 @@ import java.util.Map;
 import org.json.JSONObject;
 
 public final class JsApiGetABTestConfig
-  extends ab<f>
+  extends aa<e>
 {
   public static final int CTRL_INDEX = 527;
   public static final String NAME = "getABTestConfig";
   
-  public final String a(f paramf, JSONObject paramJSONObject)
+  public final String a(e parame, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(45480);
     Log.i("MicroMsg.JsApiGetABTestConfig", "JSONObject = ".concat(String.valueOf(paramJSONObject)));
-    paramf = paramJSONObject.optString("experimentId");
+    parame = paramJSONObject.optString("experimentId");
     boolean bool = "Expt".equals(paramJSONObject.optString("experimentType"));
-    if (TextUtils.isEmpty(paramf))
+    if (TextUtils.isEmpty(parame))
     {
-      paramf = h("fail:experimentId is empty", null);
+      parame = h("fail:experimentId is empty", null);
       AppMethodBeat.o(45480);
-      return paramf;
+      return parame;
     }
     if (bool)
     {
       paramJSONObject = new HashMap();
-      paramJSONObject.put("testConfig", com.tencent.mm.plugin.expt.h.d.cRY().b(paramf, "", true, true));
-      paramf = n("ok", paramJSONObject);
+      paramJSONObject.put("testConfig", com.tencent.mm.plugin.expt.h.d.dgX().a(parame, "", true, true));
+      parame = m("ok", paramJSONObject);
       AppMethodBeat.o(45480);
-      return paramf;
+      return parame;
     }
-    paramJSONObject = a.a.hnM;
-    paramf = a.Fu(paramf);
+    paramJSONObject = a.a.jZD;
+    parame = a.Mu(parame);
     paramJSONObject = new HashMap();
-    if ((paramf != null) && (paramf.isValid())) {
-      paramJSONObject.put("testConfig", paramf.gzz());
+    if ((parame != null) && (parame.isValid())) {
+      paramJSONObject.put("testConfig", parame.hvz());
     }
     for (;;)
     {
-      paramf = n("ok", paramJSONObject);
+      parame = m("ok", paramJSONObject);
       AppMethodBeat.o(45480);
-      return paramf;
+      return parame;
       paramJSONObject.put("testConfig", new HashMap(0));
     }
   }
@@ -58,8 +58,8 @@ public final class JsApiGetABTestConfig
     extends MainProcessTask
   {
     public static final Parcelable.Creator<GetABTestConfigTask> CREATOR;
-    private String lzA;
-    private Map<String, String> lzB;
+    private String ouQ;
+    private Map<String, String> ouR;
     
     static
     {
@@ -71,39 +71,39 @@ public final class JsApiGetABTestConfig
     GetABTestConfigTask(Parcel paramParcel)
     {
       AppMethodBeat.i(45475);
-      this.lzB = new HashMap();
+      this.ouR = new HashMap();
       f(paramParcel);
       AppMethodBeat.o(45475);
     }
     
-    public final void bjj()
+    public final void RW()
     {
       AppMethodBeat.i(45476);
       Log.i("MicroMsg.JsApiGetABTestConfig", "runInMainProcess");
-      c localc = com.tencent.mm.model.c.d.aXu().Fu(this.lzA);
+      c localc = com.tencent.mm.model.c.d.bgB().Mu(this.ouQ);
       if (localc.isValid()) {
-        this.lzB.putAll(localc.gzz());
+        this.ouR.putAll(localc.hvz());
       }
-      bDU();
+      bPt();
       AppMethodBeat.o(45476);
     }
     
-    public final void bjk() {}
+    public final void bsK() {}
     
     public final void f(Parcel paramParcel)
     {
       AppMethodBeat.i(45477);
-      this.lzB.clear();
-      this.lzB.putAll(paramParcel.readHashMap(HashMap.class.getClassLoader()));
-      this.lzA = paramParcel.readString();
+      this.ouR.clear();
+      this.ouR.putAll(paramParcel.readHashMap(HashMap.class.getClassLoader()));
+      this.ouQ = paramParcel.readString();
       AppMethodBeat.o(45477);
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45478);
-      paramParcel.writeMap(this.lzB);
-      paramParcel.writeString(this.lzA);
+      paramParcel.writeMap(this.ouR);
+      paramParcel.writeString(this.ouQ);
       AppMethodBeat.o(45478);
     }
   }

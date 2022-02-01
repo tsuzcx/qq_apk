@@ -1,22 +1,19 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video;
 
-import com.google.android.exoplayer2.h.g.a;
 import com.tencent.luggage.a.b;
 
 public abstract interface g
   extends b
 {
-  public abstract g.a bJs();
+  public abstract int a(String paramString, c paramc);
   
-  public abstract long f(String paramString, long paramLong1, long paramLong2);
+  public abstract String aiM(String paramString);
   
-  public abstract String getProxyUrl(String paramString);
-  
-  public abstract void o(String paramString, long paramLong1, long paramLong2);
+  public abstract void report(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.g
  * JD-Core Version:    0.7.0.1
  */

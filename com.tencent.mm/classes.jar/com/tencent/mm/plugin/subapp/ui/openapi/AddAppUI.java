@@ -3,16 +3,18 @@ package com.tencent.mm.plugin.subapp.ui.openapi;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.br.c;
+import com.tencent.mm.R.l;
+import com.tencent.mm.R.o;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.by.c;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.pluginsdk.model.app.g;
@@ -28,19 +30,19 @@ public class AddAppUI
   extends MMPreference
   implements i
 {
-  private AppPreference FMl;
-  private AppPreference FMm;
+  private AppPreference Mgn;
+  private AppPreference Mgo;
   private f screen;
   
   public int getResourceId()
   {
-    return 2132017156;
+    return R.o.eXd;
   }
   
   public void initView()
   {
     AppMethodBeat.i(29118);
-    setMMTitle(2131755178);
+    setMMTitle(R.l.emN);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -53,57 +55,57 @@ public class AddAppUI
     });
     this.screen = getPreferenceScreen();
     this.screen.removeAll();
-    this.screen.addPreferencesFromResource(getResourceId());
-    this.FMl = ((AppPreference)this.screen.bmg("addapp_added"));
-    this.FMl.FMp = 1;
-    this.FMl.FMs = new AdapterView.OnItemClickListener()
+    this.screen.auC(getResourceId());
+    this.Mgn = ((AppPreference)this.screen.byG("addapp_added"));
+    this.Mgn.Mgr = 1;
+    this.Mgn.Mgu = new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(29112);
         b localb = new b();
-        localb.bm(paramAnonymousAdapterView);
-        localb.bm(paramAnonymousView);
-        localb.pH(paramAnonymousInt);
-        localb.zo(paramAnonymousLong);
-        a.b("com/tencent/mm/plugin/subapp/ui/openapi/AddAppUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
-        paramAnonymousAdapterView = AddAppUI.a(AddAppUI.this).abn(paramAnonymousInt);
+        localb.bn(paramAnonymousAdapterView);
+        localb.bn(paramAnonymousView);
+        localb.sg(paramAnonymousInt);
+        localb.Fs(paramAnonymousLong);
+        a.c("com/tencent/mm/plugin/subapp/ui/openapi/AddAppUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+        paramAnonymousAdapterView = AddAppUI.a(AddAppUI.this).aiJ(paramAnonymousInt);
         AddAppUI.a(AddAppUI.this, paramAnonymousAdapterView.field_appId);
         a.a(this, "com/tencent/mm/plugin/subapp/ui/openapi/AddAppUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(29112);
       }
     };
-    this.FMl.FMt = new AdapterView.OnItemClickListener()
+    this.Mgn.Mgv = new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(29113);
         b localb = new b();
-        localb.bm(paramAnonymousAdapterView);
-        localb.bm(paramAnonymousView);
-        localb.pH(paramAnonymousInt);
-        localb.zo(paramAnonymousLong);
-        a.b("com/tencent/mm/plugin/subapp/ui/openapi/AddAppUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
-        AddAppUI.h(AddAppUI.a(AddAppUI.this).abn(paramAnonymousInt));
+        localb.bn(paramAnonymousAdapterView);
+        localb.bn(paramAnonymousView);
+        localb.sg(paramAnonymousInt);
+        localb.Fs(paramAnonymousLong);
+        a.c("com/tencent/mm/plugin/subapp/ui/openapi/AddAppUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+        AddAppUI.h(AddAppUI.a(AddAppUI.this).aiJ(paramAnonymousInt));
         AddAppUI.this.initView();
         a.a(this, "com/tencent/mm/plugin/subapp/ui/openapi/AddAppUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(29113);
       }
     };
-    this.FMm = ((AppPreference)this.screen.bmg("addapp_available"));
-    this.FMm.FMp = 0;
-    this.FMm.FMs = new AdapterView.OnItemClickListener()
+    this.Mgo = ((AppPreference)this.screen.byG("addapp_available"));
+    this.Mgo.Mgr = 0;
+    this.Mgo.Mgu = new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(29114);
         b localb = new b();
-        localb.bm(paramAnonymousAdapterView);
-        localb.bm(paramAnonymousView);
-        localb.pH(paramAnonymousInt);
-        localb.zo(paramAnonymousLong);
-        a.b("com/tencent/mm/plugin/subapp/ui/openapi/AddAppUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
-        paramAnonymousAdapterView = AddAppUI.b(AddAppUI.this).abn(paramAnonymousInt);
+        localb.bn(paramAnonymousAdapterView);
+        localb.bn(paramAnonymousView);
+        localb.sg(paramAnonymousInt);
+        localb.Fs(paramAnonymousLong);
+        a.c("com/tencent/mm/plugin/subapp/ui/openapi/AddAppUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+        paramAnonymousAdapterView = AddAppUI.b(AddAppUI.this).aiJ(paramAnonymousInt);
         AddAppUI.a(AddAppUI.this, paramAnonymousAdapterView.field_appId);
         a.a(this, "com/tencent/mm/plugin/subapp/ui/openapi/AddAppUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(29114);
@@ -123,11 +125,11 @@ public class AddAppUI
   {
     AppMethodBeat.i(29117);
     super.onPause();
-    if (this.FMl != null) {
-      this.FMl.onPause();
+    if (this.Mgn != null) {
+      this.Mgn.onPause();
     }
-    if (this.FMm != null) {
-      this.FMm.onPause();
+    if (this.Mgo != null) {
+      this.Mgo.onPause();
     }
     AppMethodBeat.o(29117);
   }
@@ -138,7 +140,7 @@ public class AddAppUI
     if (paramPreference.mKey.equals("addapp_recommend"))
     {
       paramf = LocaleUtil.loadApplicationLanguage(getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0), getContext());
-      paramf = getString(2131755183, new Object[] { Integer.valueOf(d.KyO), paramf, LocaleUtil.getCurrentCountryCode() });
+      paramf = getString(R.l.emO, new Object[] { Integer.valueOf(d.RAD), paramf, LocaleUtil.getCurrentCountryCode() });
       paramPreference = new Intent();
       paramPreference.putExtra("rawUrl", paramf);
       c.b(this, "webview", ".ui.tools.WebViewUI", paramPreference);
@@ -154,11 +156,11 @@ public class AddAppUI
     AppMethodBeat.i(29116);
     super.onResume();
     initView();
-    if (this.FMl != null) {
-      this.FMl.onResume();
+    if (this.Mgn != null) {
+      this.Mgn.onResume();
     }
-    if (this.FMm != null) {
-      this.FMm.onResume();
+    if (this.Mgo != null) {
+      this.Mgo.onResume();
     }
     AppMethodBeat.o(29116);
   }
@@ -184,7 +186,7 @@ public class AddAppUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.openapi.AddAppUI
  * JD-Core Version:    0.7.0.1
  */

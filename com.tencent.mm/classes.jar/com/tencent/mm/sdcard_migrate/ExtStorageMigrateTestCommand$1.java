@@ -13,29 +13,29 @@ class ExtStorageMigrateTestCommand$1
   
   protected final void a(int paramInt, ExtStorageMigrateException paramExtStorageMigrateException)
   {
-    AppMethodBeat.i(204628);
+    AppMethodBeat.i(192302);
     Log.printErrStackTrace("MicroMsg.ExtStorageMigrateTestCommand", paramExtStorageMigrateException, "[-] Failure.", new Object[0]);
     Toast.makeText(this.val$context, "Failure, reason: ".concat(String.valueOf(paramInt)), 1).show();
-    AppMethodBeat.o(204628);
+    AppMethodBeat.o(192302);
   }
   
-  protected final void ajC(int paramInt)
+  protected final void arU(int paramInt)
   {
-    AppMethodBeat.i(204627);
+    AppMethodBeat.i(192300);
     Toast.makeText(this.val$context, "Cancelled, reason: ".concat(String.valueOf(paramInt)), 1).show();
-    AppMethodBeat.o(204627);
+    AppMethodBeat.o(192300);
   }
   
-  protected final void gwI()
+  protected final void hsH()
   {
-    AppMethodBeat.i(204629);
+    AppMethodBeat.i(192307);
     Toast.makeText(this.val$context, "Done.", 1).show();
-    AppMethodBeat.o(204629);
+    AppMethodBeat.o(192307);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdcard_migrate.ExtStorageMigrateTestCommand.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,12 +5,12 @@ import android.content.SharedPreferences;
 import android.os.Looper;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.sns.storage.l;
 import com.tencent.mm.plugin.sns.storage.m;
-import com.tencent.mm.pluginsdk.model.n;
+import com.tencent.mm.pluginsdk.model.r;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -19,29 +19,29 @@ import java.util.concurrent.ExecutorService;
 
 public final class ac
 {
-  public static char[] DJH;
-  public static boolean yHD;
-  public boolean DJE;
-  public long DJF;
-  private int DJG;
+  public static boolean Elw;
+  public static char[] JWJ;
+  public boolean JWG;
+  public long JWH;
+  private int JWI;
   private MMHandler handler;
   
   static
   {
     int i = 0;
-    yHD = false;
-    DJH = new char[36];
+    Elw = false;
+    JWJ = new char[36];
     int j = 48;
     while (j <= 57)
     {
-      DJH[i] = ((char)j);
+      JWJ[i] = ((char)j);
       j += 1;
       i += 1;
     }
     j = 97;
     while (j <= 122)
     {
-      DJH[i] = ((char)j);
+      JWJ[i] = ((char)j);
       j += 1;
       i += 1;
     }
@@ -50,9 +50,9 @@ public final class ac
   public ac()
   {
     AppMethodBeat.i(95695);
-    this.DJE = false;
-    this.DJF = 0L;
-    this.DJG = 0;
+    this.JWG = false;
+    this.JWH = 0L;
+    this.JWI = 0;
     this.handler = new MMHandler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
@@ -62,7 +62,7 @@ public final class ac
         if ((ac.a(ac.this) >= 5) || (System.currentTimeMillis() - ac.b(ac.this) > 300000L))
         {
           Log.d("MicroMsg.RemoveSnsTask", "cleanCount: " + ac.a(ac.this));
-          ac.yHD = false;
+          ac.Elw = false;
           AppMethodBeat.o(95689);
           return;
         }
@@ -71,7 +71,7 @@ public final class ac
           AppMethodBeat.o(95689);
           return;
         }
-        if (ac.yHD) {
+        if (ac.Elw) {
           new ac.a(ac.this).y(new String[] { "" });
         }
         AppMethodBeat.o(95689);
@@ -92,12 +92,12 @@ public final class ac
   }
   
   public final class a
-    extends n<String, String, Boolean>
+    extends r<String, String, Boolean>
   {
-    private String DJJ;
-    PInt DJK;
-    PInt DJL;
-    private String DJM;
+    private String JWL;
+    PInt JWM;
+    PInt JWN;
+    private String JWO;
     private String key;
     private SharedPreferences sp;
     private String username;
@@ -106,22 +106,22 @@ public final class ac
     {
       AppMethodBeat.i(95690);
       this.sp = null;
-      this.DJJ = "";
+      this.JWL = "";
       this.key = "";
-      this.DJK = new PInt();
-      this.DJL = new PInt();
+      this.JWM = new PInt();
+      this.JWN = new PInt();
       this.sp = MMApplicationContext.getContext().getSharedPreferences("preferences_remove_task", 0);
-      g.aAi();
-      if (!g.aAf().azp())
+      h.aHH();
+      if (!h.aHE().aGM())
       {
         AppMethodBeat.o(95690);
         return;
       }
-      this.username = z.aTY();
-      this.DJJ = ("remove_key_base" + this.username);
+      this.username = z.bcZ();
+      this.JWL = ("remove_key_base" + this.username);
       this.key = ("remove_key" + this.username);
-      g.aAi();
-      if (!g.aAf().azp())
+      h.aHH();
+      if (!h.aHE().aGM())
       {
         AppMethodBeat.o(95690);
         return;
@@ -136,25 +136,25 @@ public final class ac
         AppMethodBeat.o(95690);
         return;
       }
-      if (aj.faS() == null)
+      if (aj.fOM() == null)
       {
         AppMethodBeat.o(95690);
         return;
       }
-      l locall = aj.faS().aQr(this.username);
+      l locall = aj.fOM().bbr(this.username);
       if (locall != null) {
-        this.DJM = locall.field_bgId;
+        this.JWO = locall.field_bgId;
       }
-      Log.d("MicroMsg.RemoveSnsTask", "my bgid %s", new Object[] { this.DJM });
+      Log.d("MicroMsg.RemoveSnsTask", "my bgid %s", new Object[] { this.JWO });
       ac.a(ac.this, true);
       AppMethodBeat.o(95690);
     }
     
-    private Boolean fag()
+    private Boolean fOg()
     {
       AppMethodBeat.i(95691);
       Log.d("MicroMsg.RemoveSnsTask", "simpleCleans sns");
-      if (!ac.yHD)
+      if (!ac.Elw)
       {
         localObject = Boolean.FALSE;
         AppMethodBeat.o(95691);
@@ -168,24 +168,24 @@ public final class ac
       }
       if (aj.isInValid())
       {
-        ac.yHD = false;
+        ac.Elw = false;
         localObject = Boolean.FALSE;
         AppMethodBeat.o(95691);
         return localObject;
       }
-      this.DJK.value = this.sp.getInt(this.DJJ, 0);
-      this.DJL.value = this.sp.getInt(this.key, 0);
+      this.JWM.value = this.sp.getInt(this.JWL, 0);
+      this.JWN.value = this.sp.getInt(this.key, 0);
       Object localObject = aj.getAccSnsPath();
       try
       {
         long l = System.currentTimeMillis();
-        if (!ac.aM((String)localObject + ac.DJH[(this.DJK.value % 36)] + "/" + ac.DJH[(this.DJL.value % 36)], this.DJM, this.username))
+        if (!ac.aG((String)localObject + ac.JWJ[(this.JWM.value % 36)] + "/" + ac.JWJ[(this.JWN.value % 36)], this.JWO, this.username))
         {
           localObject = Boolean.FALSE;
           AppMethodBeat.o(95691);
           return localObject;
         }
-        Log.d("MicroMsg.RemoveSnsTask", "clean sns uses time : " + (System.currentTimeMillis() - l) + " " + this.DJK.value + " " + this.DJL.value);
+        Log.d("MicroMsg.RemoveSnsTask", "clean sns uses time : " + (System.currentTimeMillis() - l) + " " + this.JWM.value + " " + this.JWN.value);
       }
       catch (Exception localException)
       {
@@ -197,10 +197,10 @@ public final class ac
       return localObject;
     }
     
-    public final ExecutorService eGk()
+    public final ExecutorService fsl()
     {
       AppMethodBeat.i(179088);
-      ExecutorService localExecutorService = aj.faA();
+      ExecutorService localExecutorService = aj.fOu();
       AppMethodBeat.o(179088);
       return localExecutorService;
     }
@@ -208,7 +208,7 @@ public final class ac
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.ac
  * JD-Core Version:    0.7.0.1
  */

@@ -7,80 +7,80 @@ import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.textstatus.b.a;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.textstatus.b.j;
 
 public class MaxHeightLinearLayout
   extends LinearLayout
 {
-  private int GcG;
-  private int GcH;
+  private int MJE;
+  private int MJF;
   
   public MaxHeightLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(216014);
-    this.GcH = -1;
-    paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, b.a.MaxHeightLinearLayout, 0, 0);
+    AppMethodBeat.i(237141);
+    this.MJF = -1;
+    paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, b.j.Mzo, 0, 0);
     try
     {
-      this.GcG = paramContext.getInteger(0, -1);
-      fwj();
+      this.MJE = paramContext.getInteger(b.j.Mzp, -1);
+      gmv();
       return;
     }
     finally
     {
       paramContext.recycle();
-      AppMethodBeat.o(216014);
+      AppMethodBeat.o(237141);
     }
   }
   
   public MaxHeightLinearLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.GcH = -1;
+    this.MJF = -1;
   }
   
-  private void fwj()
+  private void gmv()
   {
-    AppMethodBeat.i(216015);
-    if (this.GcG != -1)
+    AppMethodBeat.i(237142);
+    if (this.MJE != -1)
     {
-      this.GcH = a.fromDPToPix(getContext(), this.GcG);
-      AppMethodBeat.o(216015);
+      this.MJF = a.fromDPToPix(getContext(), this.MJE);
+      AppMethodBeat.o(237142);
       return;
     }
-    this.GcH = -1;
-    AppMethodBeat.o(216015);
+    this.MJF = -1;
+    AppMethodBeat.o(237142);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(216016);
-    super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(this.GcH, -2147483648));
-    AppMethodBeat.o(216016);
+    AppMethodBeat.i(237144);
+    super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(this.MJF, -2147483648));
+    AppMethodBeat.o(237144);
   }
   
   public void setMaxHeightDp(int paramInt)
   {
-    AppMethodBeat.i(216017);
-    this.GcG = paramInt;
-    fwj();
+    AppMethodBeat.i(237146);
+    this.MJE = paramInt;
+    gmv();
     invalidate();
-    AppMethodBeat.o(216017);
+    AppMethodBeat.o(237146);
   }
   
   public void setMaxHeightPx(int paramInt)
   {
-    AppMethodBeat.i(216018);
-    this.GcH = paramInt;
+    AppMethodBeat.i(237148);
+    this.MJF = paramInt;
     invalidate();
-    AppMethodBeat.o(216018);
+    AppMethodBeat.o(237148);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.textstatus.ui.MaxHeightLinearLayout
  * JD-Core Version:    0.7.0.1
  */

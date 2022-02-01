@@ -4,7 +4,7 @@ import com.tencent.mm.modelcontrol.VideoTransPara;
 
 public abstract interface f
 {
-  public abstract int ab(long paramLong1, long paramLong2);
+  public abstract int aj(long paramLong1, long paramLong2);
   
   public abstract void b(String paramString1, String paramString2, VideoTransPara paramVideoTransPara);
   
@@ -12,7 +12,7 @@ public abstract interface f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.f
  * JD-Core Version:    0.7.0.1
  */

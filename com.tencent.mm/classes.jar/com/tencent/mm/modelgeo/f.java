@@ -1,56 +1,135 @@
 package com.tencent.mm.modelgeo;
 
-import com.tencent.map.geolocation.sapp.TencentLocation;
-import com.tencent.map.geolocation.sapp.TencentLocationListener;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.boj;
+import com.tencent.mm.protocal.protobuf.bok;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.sdk.platformtools.Util;
+import org.json.JSONObject;
 
-public abstract class f
-  implements TencentLocationListener
+public final class f
+  extends q
+  implements m
 {
-  private final Map<String, Integer> iVN = new HashMap();
+  private i callback;
+  private String fGM;
+  public final d rr;
   
-  public f()
+  public f(double paramDouble1, double paramDouble2)
   {
-    this.iVN.put("gps", Integer.valueOf(0));
-    this.iVN.put("network", Integer.valueOf(1));
+    AppMethodBeat.i(192131);
+    this.fGM = "";
+    Object localObject = new d.a();
+    ((d.a)localObject).lBU = new boj();
+    ((d.a)localObject).lBV = new bok();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/geocoderlocation";
+    ((d.a)localObject).funcId = 4005;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (boj)d.b.b(this.rr.lBR);
+    ((boj)localObject).RVz = paramDouble1;
+    ((boj)localObject).RVy = paramDouble2;
+    AppMethodBeat.o(192131);
   }
   
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2, int paramInt1, double paramDouble3, double paramDouble4, double paramDouble5, String paramString1, String paramString2, int paramInt2) {}
-  
-  public void onLocationChanged(TencentLocation paramTencentLocation, int paramInt, String paramString)
+  public final Addr blt()
   {
-    Log.i("MicroMsg.SLocationListener", "lat=%f, lng=%f, accuracy=%f errcode=%d, areastat=%d, speed=%f, bearing=%f, reason=%s, provider=%s", new Object[] { Double.valueOf(paramTencentLocation.getLatitude()), Double.valueOf(paramTencentLocation.getLongitude()), Float.valueOf(paramTencentLocation.getAccuracy()), Integer.valueOf(paramInt), paramTencentLocation.getAreaStat(), Float.valueOf(paramTencentLocation.getSpeed()), Float.valueOf(paramTencentLocation.getBearing()), paramString, paramTencentLocation.getProvider() });
-    if (paramInt == 0)
+    AppMethodBeat.i(192161);
+    if (Util.isNullOrNil(this.fGM))
     {
-      h.CyF.idkeyStat(584L, 1L, 1L, true);
-      a(true, paramTencentLocation.getLatitude(), paramTencentLocation.getLongitude(), ((Integer)this.iVN.get(paramTencentLocation.getProvider())).intValue(), paramTencentLocation.getSpeed(), paramTencentLocation.getAccuracy(), paramTencentLocation.getAltitude(), paramTencentLocation.getIndoorBuildingId(), paramTencentLocation.getIndoorBuildingFloor(), paramTencentLocation.getIndoorLocationType());
-      return;
+      AppMethodBeat.o(192161);
+      return null;
     }
-    h.CyF.idkeyStat(584L, 2L, 1L, true);
-    if (paramInt == 1) {
-      h.CyF.idkeyStat(584L, 3L, 1L, true);
-    }
-    for (;;)
+    Addr localAddr = new Addr();
+    try
     {
-      a(false, paramTencentLocation.getLatitude(), paramTencentLocation.getLongitude(), ((Integer)this.iVN.get(paramTencentLocation.getProvider())).intValue(), paramTencentLocation.getSpeed(), paramTencentLocation.getAccuracy(), paramTencentLocation.getAltitude(), paramTencentLocation.getIndoorBuildingId(), paramTencentLocation.getIndoorBuildingFloor(), paramTencentLocation.getIndoorLocationType());
-      return;
-      if (paramInt == 4) {
-        h.CyF.idkeyStat(584L, 4L, 1L, true);
+      Log.d("MicroMsg.NetSceneGetAddress", "tofutest retJson: %s", new Object[] { this.fGM });
+      JSONObject localJSONObject1 = new JSONObject(this.fGM);
+      localAddr.request_id = localJSONObject1.optString("request_id");
+      localJSONObject1 = localJSONObject1.getJSONObject("result");
+      localAddr.lLg = localJSONObject1.optString("address");
+      JSONObject localJSONObject2 = localJSONObject1.optJSONObject("address_component");
+      if (localJSONObject2 != null)
+      {
+        localAddr.lLh = localJSONObject2.optString("province");
+        localAddr.lLi = localJSONObject2.optString("city");
+        localAddr.lLk = localJSONObject2.optString("district");
+        localAddr.lLl = "";
+        localAddr.lLm = localJSONObject2.optString("street");
+        localAddr.lLn = localJSONObject2.optString("street_number");
       }
+      localJSONObject2 = localJSONObject1.optJSONObject("formatted_addresses");
+      if (localJSONObject2 != null)
+      {
+        localAddr.lLg = localJSONObject2.optString("recommend");
+        localAddr.lLp = localJSONObject2.optString("rough");
+      }
+      if (!Util.isNullOrNil(localAddr.lLn)) {
+        localAddr.lLm = "";
+      }
+      localJSONObject1 = localJSONObject1.optJSONObject("address_reference");
+      if (localJSONObject1 != null)
+      {
+        localJSONObject1 = localJSONObject1.optJSONObject("town");
+        if (localJSONObject1 != null) {
+          localAddr.lLo = localJSONObject1.optString("title");
+        }
+      }
+      AppMethodBeat.o(192161);
+      return localAddr;
     }
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(192161);
+    }
+    return null;
   }
   
-  public void onStatusUpdate(String paramString1, int paramInt, String paramString2)
+  public final int doScene(g paramg, i parami)
   {
-    Log.d("MicroMsg.SLocationListener", "onStatusUpdate, name=%s, status=%d, desc=%s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
+    AppMethodBeat.i(192138);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(192138);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 4005;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(192146);
+    Log.d("MicroMsg.NetSceneGetAddress", "onGYNetEnd errType %d errCode%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    if ((paramInt2 == 0) && (paramInt3 == 0))
+    {
+      this.fGM = ((bok)d.c.b(((d)params).lBS)).SZs;
+      Log.d("MicroMsg.NetSceneGetAddress", this.fGM);
+      if (this.callback != null) {
+        this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      }
+      AppMethodBeat.o(192146);
+      return;
+    }
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(192146);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.modelgeo.f
  * JD-Core Version:    0.7.0.1
  */

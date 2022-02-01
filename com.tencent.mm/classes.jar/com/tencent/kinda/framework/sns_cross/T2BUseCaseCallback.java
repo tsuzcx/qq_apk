@@ -34,7 +34,7 @@ public class T2BUseCaseCallback
       paramITransmitKvData = paramITransmitKvData.getString("transaction_id");
       if ((i == 1) && (this.mBean != null) && (this.mBean.getPayInfo() != null))
       {
-        Object localObject2 = this.mBean.getPayInfo().iqp;
+        Object localObject2 = this.mBean.getPayInfo().lfu;
         if (localObject2 != null)
         {
           localObject2 = ((Bundle)localObject2).getString("key_transfer_bill_id");
@@ -44,9 +44,9 @@ public class T2BUseCaseCallback
           ((Intent)localObject1).putExtra("key_enter_scene", 0);
           paramITransmitKvData = (BankRemitMoneyInputUI)localActivity;
           paramITransmitKvData.startActivityForResult((Intent)localObject1, 2);
-          paramITransmitKvData.aDI(((Intent)localObject1).getStringExtra("key_transfer_transaction_id"));
-          paramITransmitKvData.Cli = 1;
-          paramITransmitKvData.doSceneProgress(new n(paramITransmitKvData.CkH, paramITransmitKvData.zfX, 1), false);
+          paramITransmitKvData.aNS(((Intent)localObject1).getStringExtra("key_transfer_transaction_id"));
+          paramITransmitKvData.Iib = 1;
+          paramITransmitKvData.doSceneProgress(new n(paramITransmitKvData.IhA, paramITransmitKvData.ELa, 1), false);
         }
       }
     }
@@ -62,7 +62,7 @@ public class T2BUseCaseCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.kinda.framework.sns_cross.T2BUseCaseCallback
  * JD-Core Version:    0.7.0.1
  */

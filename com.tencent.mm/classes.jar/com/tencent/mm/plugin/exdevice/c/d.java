@@ -1,42 +1,42 @@
 package com.tencent.mm.plugin.exdevice.c;
 
-import com.tencent.mm.bw.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 
 public abstract class d
   extends c
 {
-  protected a rxA = null;
-  private short rxB = -1;
-  private short rxC = -1;
+  protected a vdg = null;
+  private short vdh = -1;
+  private short vdi = -1;
   
   public d(long paramLong, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
     Log.i("MicroMsg.exdevice.ExDeviceCmdBaseReqResp", "onDeviceRequest deviceId = " + paramLong + " seq = " + paramInt1 + " cmdId = " + paramInt2);
-    this.pkb = paramLong;
-    this.rxB = ((short)paramInt2);
-    this.rxC = ((short)paramInt1);
-    bu(paramArrayOfByte);
+    this.smk = paramLong;
+    this.vdh = ((short)paramInt2);
+    this.vdi = ((short)paramInt1);
+    bI(paramArrayOfByte);
   }
   
-  protected abstract a bu(byte[] paramArrayOfByte);
+  protected abstract a bI(byte[] paramArrayOfByte);
   
-  public final short cKg()
+  public final short cYQ()
   {
-    return this.rxB;
+    return this.vdh;
   }
   
-  public final short cKh()
+  public final short cYR()
   {
-    return this.rxC;
+    return this.vdi;
   }
   
-  public final byte[] cKi()
+  public final byte[] cYS()
   {
     try
     {
-      byte[] arrayOfByte = this.rxz.toByteArray();
+      byte[] arrayOfByte = this.vdf.toByteArray();
       return arrayOfByte;
     }
     catch (IOException localIOException)
@@ -47,14 +47,14 @@ public abstract class d
     return null;
   }
   
-  public final a cKj()
+  public final a cYT()
   {
-    return this.rxA;
+    return this.vdg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.c.d
  * JD-Core Version:    0.7.0.1
  */

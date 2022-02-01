@@ -24,13 +24,13 @@ public final class w
   public final ab b(y paramy)
   {
     AppMethodBeat.i(60117);
-    p.h(paramy, "module");
-    a locala = g.TcO.Tej;
-    p.g(locala, "KotlinBuiltIns.FQ_NAMES.uByte");
+    p.k(paramy, "module");
+    a locala = g.aaFI.aaHd;
+    p.j(locala, "KotlinBuiltIns.FQ_NAMES.uByte");
     paramy = s.b(paramy, locala);
     if (paramy != null)
     {
-      paramy = paramy.hAG();
+      paramy = paramy.iET();
       if (paramy != null)
       {
         paramy = (ab)paramy;
@@ -38,8 +38,8 @@ public final class w
         return paramy;
       }
     }
-    paramy = u.bun("Unsigned type UByte not found");
-    p.g(paramy, "ErrorUtils.createErrorTy…ed type UByte not found\")");
+    paramy = u.bHp("Unsigned type UByte not found");
+    p.j(paramy, "ErrorUtils.createErrorTy…ed type UByte not found\")");
     paramy = (ab)paramy;
     AppMethodBeat.o(60117);
     return paramy;
@@ -55,7 +55,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.j.b.w
  * JD-Core Version:    0.7.0.1
  */

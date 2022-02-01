@@ -12,9 +12,17 @@ import com.tencent.mm.ui.widget.cedit.edit.CustomTextView;
 public class b
   implements d
 {
+  private static int a(Spannable paramSpannable, KeyEvent paramKeyEvent)
+  {
+    AppMethodBeat.i(219164);
+    int i = KeyEvent.normalizeMetaState(MetaKeyKeyListener.getMetaState(paramSpannable, paramKeyEvent) & 0xFFFFF9FF);
+    AppMethodBeat.o(219164);
+    return i & 0xFFFFFF3E;
+  }
+  
   protected static boolean d(CustomTextView paramCustomTextView, int paramInt)
   {
-    AppMethodBeat.i(206088);
+    AppMethodBeat.i(219204);
     Layout localLayout = paramCustomTextView.getLayout();
     int k = paramCustomTextView.getScrollY();
     int j = localLayout.getLineForVertical(k);
@@ -26,24 +34,24 @@ public class b
     {
       paramInt = Math.max(i - paramInt + 1, 0);
       f.a(paramCustomTextView, localLayout, paramCustomTextView.getScrollX(), localLayout.getLineTop(paramInt));
-      AppMethodBeat.o(206088);
+      AppMethodBeat.o(219204);
       return true;
     }
-    AppMethodBeat.o(206088);
+    AppMethodBeat.o(219204);
     return false;
   }
   
-  static int e(CustomTextView paramCustomTextView)
+  private static int e(CustomTextView paramCustomTextView)
   {
-    AppMethodBeat.i(206079);
+    AppMethodBeat.i(219190);
     int i = paramCustomTextView.getLayout().getLineForVertical(paramCustomTextView.getScrollY());
-    AppMethodBeat.o(206079);
+    AppMethodBeat.o(219190);
     return i;
   }
   
   protected static boolean e(CustomTextView paramCustomTextView, int paramInt)
   {
-    AppMethodBeat.i(206089);
+    AppMethodBeat.i(219207);
     Layout localLayout = paramCustomTextView.getLayout();
     int k = h(paramCustomTextView);
     int m = paramCustomTextView.getScrollY() + k;
@@ -57,66 +65,58 @@ public class b
     {
       paramInt = Math.min(i + paramInt - 1, j);
       f.a(paramCustomTextView, localLayout, paramCustomTextView.getScrollX(), localLayout.getLineTop(paramInt + 1) - k);
-      AppMethodBeat.o(206089);
+      AppMethodBeat.o(219207);
       return true;
     }
-    AppMethodBeat.o(206089);
+    AppMethodBeat.o(219207);
     return false;
   }
   
-  static int f(CustomTextView paramCustomTextView)
+  private static int f(CustomTextView paramCustomTextView)
   {
-    AppMethodBeat.i(206080);
+    AppMethodBeat.i(219191);
     int i = paramCustomTextView.getLayout().getLineForVertical(paramCustomTextView.getScrollY() + h(paramCustomTextView));
-    AppMethodBeat.o(206080);
+    AppMethodBeat.o(219191);
     return i;
   }
   
-  static int g(CustomTextView paramCustomTextView)
+  private static int g(CustomTextView paramCustomTextView)
   {
-    AppMethodBeat.i(206081);
+    AppMethodBeat.i(219193);
     int i = paramCustomTextView.getWidth();
     int j = paramCustomTextView.getTotalPaddingLeft();
     int k = paramCustomTextView.getTotalPaddingRight();
-    AppMethodBeat.o(206081);
+    AppMethodBeat.o(219193);
     return i - j - k;
   }
   
-  private static int getMovementMetaState(Spannable paramSpannable, KeyEvent paramKeyEvent)
+  private static int h(CustomTextView paramCustomTextView)
   {
-    AppMethodBeat.i(206077);
-    int i = KeyEvent.normalizeMetaState(MetaKeyKeyListener.getMetaState(paramSpannable, paramKeyEvent) & 0xFFFFF9FF);
-    AppMethodBeat.o(206077);
-    return i & 0xFFFFFF3E;
-  }
-  
-  static int h(CustomTextView paramCustomTextView)
-  {
-    AppMethodBeat.i(206082);
+    AppMethodBeat.i(219194);
     int i = paramCustomTextView.getHeight();
     int j = paramCustomTextView.getTotalPaddingTop();
     int k = paramCustomTextView.getTotalPaddingBottom();
-    AppMethodBeat.o(206082);
+    AppMethodBeat.o(219194);
     return i - j - k;
   }
   
   private static int i(CustomTextView paramCustomTextView)
   {
-    AppMethodBeat.i(206083);
+    AppMethodBeat.i(219196);
     int i = (int)Math.ceil(paramCustomTextView.getPaint().getFontSpacing());
-    AppMethodBeat.o(206083);
+    AppMethodBeat.o(219196);
     return i;
   }
   
-  static int j(CustomTextView paramCustomTextView)
+  private static int j(CustomTextView paramCustomTextView)
   {
-    AppMethodBeat.i(206084);
+    AppMethodBeat.i(219197);
     Layout localLayout = paramCustomTextView.getLayout();
     int j = e(paramCustomTextView);
     int m = f(paramCustomTextView);
     if (j > m)
     {
-      AppMethodBeat.o(206084);
+      AppMethodBeat.o(219197);
       return 0;
     }
     int i = 2147483647;
@@ -133,20 +133,20 @@ public class b
     {
       j += 1;
       break;
-      AppMethodBeat.o(206084);
+      AppMethodBeat.o(219197);
       return i;
     }
   }
   
-  static int k(CustomTextView paramCustomTextView)
+  private static int k(CustomTextView paramCustomTextView)
   {
-    AppMethodBeat.i(206085);
+    AppMethodBeat.i(219199);
     Layout localLayout = paramCustomTextView.getLayout();
     int j = e(paramCustomTextView);
     int m = f(paramCustomTextView);
     if (j > m)
     {
-      AppMethodBeat.o(206085);
+      AppMethodBeat.o(219199);
       return 0;
     }
     int i = -2147483648;
@@ -163,9 +163,69 @@ public class b
     {
       j += 1;
       break;
-      AppMethodBeat.o(206085);
+      AppMethodBeat.o(219199);
       return i;
     }
+  }
+  
+  protected static boolean l(CustomTextView paramCustomTextView)
+  {
+    AppMethodBeat.i(219209);
+    Layout localLayout = paramCustomTextView.getLayout();
+    int i = localLayout.getLineForVertical(paramCustomTextView.getScrollY() - h(paramCustomTextView));
+    if (i >= 0)
+    {
+      f.a(paramCustomTextView, localLayout, paramCustomTextView.getScrollX(), localLayout.getLineTop(i));
+      AppMethodBeat.o(219209);
+      return true;
+    }
+    AppMethodBeat.o(219209);
+    return false;
+  }
+  
+  protected static boolean m(CustomTextView paramCustomTextView)
+  {
+    AppMethodBeat.i(219211);
+    Layout localLayout = paramCustomTextView.getLayout();
+    int i = h(paramCustomTextView);
+    int j = localLayout.getLineForVertical(paramCustomTextView.getScrollY() + i + i);
+    if (j <= localLayout.getLineCount() - 1)
+    {
+      f.a(paramCustomTextView, localLayout, paramCustomTextView.getScrollX(), localLayout.getLineTop(j + 1) - i);
+      AppMethodBeat.o(219211);
+      return true;
+    }
+    AppMethodBeat.o(219211);
+    return false;
+  }
+  
+  protected static boolean n(CustomTextView paramCustomTextView)
+  {
+    AppMethodBeat.i(219212);
+    Layout localLayout = paramCustomTextView.getLayout();
+    if (e(paramCustomTextView) >= 0)
+    {
+      f.a(paramCustomTextView, localLayout, paramCustomTextView.getScrollX(), localLayout.getLineTop(0));
+      AppMethodBeat.o(219212);
+      return true;
+    }
+    AppMethodBeat.o(219212);
+    return false;
+  }
+  
+  protected static boolean o(CustomTextView paramCustomTextView)
+  {
+    AppMethodBeat.i(219214);
+    Layout localLayout = paramCustomTextView.getLayout();
+    int i = localLayout.getLineCount();
+    if (f(paramCustomTextView) <= i - 1)
+    {
+      f.a(paramCustomTextView, localLayout, paramCustomTextView.getScrollX(), localLayout.getLineTop(i) - h(paramCustomTextView));
+      AppMethodBeat.o(219214);
+      return true;
+    }
+    AppMethodBeat.o(219214);
+    return false;
   }
   
   public void a(CustomTextView paramCustomTextView, Spannable paramSpannable, int paramInt) {}
@@ -177,7 +237,7 @@ public class b
   
   protected boolean a(CustomTextView paramCustomTextView, Spannable paramSpannable, int paramInt1, int paramInt2, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(206078);
+    AppMethodBeat.i(219179);
     switch (paramInt1)
     {
     }
@@ -197,117 +257,117 @@ public class b
                 {
                   do
                   {
-                    AppMethodBeat.o(206078);
+                    AppMethodBeat.o(219179);
                     return false;
                     if (KeyEvent.metaStateHasNoModifiers(paramInt2))
                     {
                       bool = a(paramCustomTextView, paramSpannable);
-                      AppMethodBeat.o(206078);
+                      AppMethodBeat.o(219179);
                       return bool;
                     }
                     if (KeyEvent.metaStateHasModifiers(paramInt2, 4096))
                     {
-                      AppMethodBeat.o(206078);
+                      AppMethodBeat.o(219179);
                       return false;
                     }
                   } while (!KeyEvent.metaStateHasModifiers(paramInt2, 2));
                   bool = i(paramCustomTextView, paramSpannable);
-                  AppMethodBeat.o(206078);
+                  AppMethodBeat.o(219179);
                   return bool;
                   if (KeyEvent.metaStateHasNoModifiers(paramInt2))
                   {
                     bool = b(paramCustomTextView, paramSpannable);
-                    AppMethodBeat.o(206078);
+                    AppMethodBeat.o(219179);
                     return bool;
                   }
                   if (KeyEvent.metaStateHasModifiers(paramInt2, 4096))
                   {
-                    AppMethodBeat.o(206078);
+                    AppMethodBeat.o(219179);
                     return false;
                   }
                 } while (!KeyEvent.metaStateHasModifiers(paramInt2, 2));
                 bool = j(paramCustomTextView, paramSpannable);
-                AppMethodBeat.o(206078);
+                AppMethodBeat.o(219179);
                 return bool;
                 if (KeyEvent.metaStateHasNoModifiers(paramInt2))
                 {
                   bool = c(paramCustomTextView, paramSpannable);
-                  AppMethodBeat.o(206078);
+                  AppMethodBeat.o(219179);
                   return bool;
                 }
               } while (!KeyEvent.metaStateHasModifiers(paramInt2, 2));
               bool = g(paramCustomTextView, paramSpannable);
-              AppMethodBeat.o(206078);
+              AppMethodBeat.o(219179);
               return bool;
               if (KeyEvent.metaStateHasNoModifiers(paramInt2))
               {
                 bool = d(paramCustomTextView, paramSpannable);
-                AppMethodBeat.o(206078);
+                AppMethodBeat.o(219179);
                 return bool;
               }
             } while (!KeyEvent.metaStateHasModifiers(paramInt2, 2));
             bool = h(paramCustomTextView, paramSpannable);
-            AppMethodBeat.o(206078);
+            AppMethodBeat.o(219179);
             return bool;
             if (KeyEvent.metaStateHasNoModifiers(paramInt2))
             {
               bool = e(paramCustomTextView, paramSpannable);
-              AppMethodBeat.o(206078);
+              AppMethodBeat.o(219179);
               return bool;
             }
           } while (!KeyEvent.metaStateHasModifiers(paramInt2, 2));
           bool = g(paramCustomTextView, paramSpannable);
-          AppMethodBeat.o(206078);
+          AppMethodBeat.o(219179);
           return bool;
           if (KeyEvent.metaStateHasNoModifiers(paramInt2))
           {
             bool = f(paramCustomTextView, paramSpannable);
-            AppMethodBeat.o(206078);
+            AppMethodBeat.o(219179);
             return bool;
           }
         } while (!KeyEvent.metaStateHasModifiers(paramInt2, 2));
         bool = h(paramCustomTextView, paramSpannable);
-        AppMethodBeat.o(206078);
+        AppMethodBeat.o(219179);
         return bool;
         if (KeyEvent.metaStateHasNoModifiers(paramInt2))
         {
           bool = k(paramCustomTextView, paramSpannable);
-          AppMethodBeat.o(206078);
+          AppMethodBeat.o(219179);
           return bool;
         }
       } while (!KeyEvent.metaStateHasModifiers(paramInt2, 4096));
       bool = g(paramCustomTextView, paramSpannable);
-      AppMethodBeat.o(206078);
+      AppMethodBeat.o(219179);
       return bool;
       if (KeyEvent.metaStateHasNoModifiers(paramInt2))
       {
         bool = l(paramCustomTextView, paramSpannable);
-        AppMethodBeat.o(206078);
+        AppMethodBeat.o(219179);
         return bool;
       }
     } while (!KeyEvent.metaStateHasModifiers(paramInt2, 4096));
     boolean bool = h(paramCustomTextView, paramSpannable);
-    AppMethodBeat.o(206078);
+    AppMethodBeat.o(219179);
     return bool;
   }
   
   public final boolean a(CustomTextView paramCustomTextView, Spannable paramSpannable, int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(206074);
-    boolean bool = a(paramCustomTextView, paramSpannable, paramInt, getMovementMetaState(paramSpannable, paramKeyEvent), paramKeyEvent);
+    AppMethodBeat.i(219154);
+    boolean bool = a(paramCustomTextView, paramSpannable, paramInt, a(paramSpannable, paramKeyEvent), paramKeyEvent);
     if (bool)
     {
       MetaKeyKeyListener.adjustMetaAfterKeypress(paramSpannable);
-      com.tencent.mm.ui.widget.cedit.util.d.resetLockedMeta(paramSpannable);
+      com.tencent.mm.ui.widget.cedit.util.d.k(paramSpannable);
     }
-    AppMethodBeat.o(206074);
+    AppMethodBeat.o(219154);
     return bool;
   }
   
   public final boolean a(CustomTextView paramCustomTextView, Spannable paramSpannable, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(206075);
-    int j = getMovementMetaState(paramSpannable, paramKeyEvent);
+    AppMethodBeat.i(219156);
+    int j = a(paramSpannable, paramKeyEvent);
     int k = paramKeyEvent.getKeyCode();
     if ((k != 0) && (paramKeyEvent.getAction() == 2))
     {
@@ -322,12 +382,12 @@ public class b
       if (bool)
       {
         MetaKeyKeyListener.adjustMetaAfterKeypress(paramSpannable);
-        com.tencent.mm.ui.widget.cedit.util.d.resetLockedMeta(paramSpannable);
+        com.tencent.mm.ui.widget.cedit.util.d.k(paramSpannable);
       }
-      AppMethodBeat.o(206075);
+      AppMethodBeat.o(219156);
       return bool;
     }
-    AppMethodBeat.o(206075);
+    AppMethodBeat.o(219156);
     return false;
   }
   
@@ -339,12 +399,12 @@ public class b
   public final boolean a(CustomTextView paramCustomTextView, MotionEvent paramMotionEvent)
   {
     boolean bool1 = false;
-    AppMethodBeat.i(206076);
+    AppMethodBeat.i(219163);
     if ((paramMotionEvent.getSource() & 0x2) != 0) {}
     switch (paramMotionEvent.getAction())
     {
     default: 
-      AppMethodBeat.o(206076);
+      AppMethodBeat.o(219163);
       return false;
     }
     float f2;
@@ -366,7 +426,7 @@ public class b
     }
     for (;;)
     {
-      AppMethodBeat.o(206076);
+      AppMethodBeat.o(219163);
       return bool2;
       f1 = -paramMotionEvent.getAxisValue(9);
       f2 = paramMotionEvent.getAxisValue(10);
@@ -387,16 +447,16 @@ public class b
   
   protected final boolean b(CustomTextView paramCustomTextView, int paramInt)
   {
-    AppMethodBeat.i(206086);
+    AppMethodBeat.i(219201);
     int i = j(paramCustomTextView);
     int j = paramCustomTextView.getScrollX();
     if (j > i)
     {
       paramCustomTextView.scrollTo(Math.max(j - i(paramCustomTextView) * paramInt, i), paramCustomTextView.getScrollY());
-      AppMethodBeat.o(206086);
+      AppMethodBeat.o(219201);
       return true;
     }
-    AppMethodBeat.o(206086);
+    AppMethodBeat.o(219201);
     return false;
   }
   
@@ -407,25 +467,20 @@ public class b
   
   protected final boolean c(CustomTextView paramCustomTextView, int paramInt)
   {
-    AppMethodBeat.i(206087);
+    AppMethodBeat.i(219202);
     int i = k(paramCustomTextView) - g(paramCustomTextView);
     int j = paramCustomTextView.getScrollX();
     if (j < i)
     {
       paramCustomTextView.scrollTo(Math.min(j + i(paramCustomTextView) * paramInt, i), paramCustomTextView.getScrollY());
-      AppMethodBeat.o(206087);
+      AppMethodBeat.o(219202);
       return true;
     }
-    AppMethodBeat.o(206087);
+    AppMethodBeat.o(219202);
     return false;
   }
   
   protected boolean c(CustomTextView paramCustomTextView, Spannable paramSpannable)
-  {
-    return false;
-  }
-  
-  public boolean canSelectArbitrarily()
   {
     return false;
   }
@@ -460,6 +515,11 @@ public class b
     return false;
   }
   
+  public boolean ibW()
+  {
+    return false;
+  }
+  
   public void j(Spannable paramSpannable) {}
   
   protected boolean j(CustomTextView paramCustomTextView, Spannable paramSpannable)
@@ -476,10 +536,38 @@ public class b
   {
     return false;
   }
+  
+  protected final boolean p(CustomTextView paramCustomTextView)
+  {
+    AppMethodBeat.i(219219);
+    int i = j(paramCustomTextView);
+    if (paramCustomTextView.getScrollX() > i)
+    {
+      paramCustomTextView.scrollTo(i, paramCustomTextView.getScrollY());
+      AppMethodBeat.o(219219);
+      return true;
+    }
+    AppMethodBeat.o(219219);
+    return false;
+  }
+  
+  protected final boolean q(CustomTextView paramCustomTextView)
+  {
+    AppMethodBeat.i(219220);
+    int i = k(paramCustomTextView) - g(paramCustomTextView);
+    if (paramCustomTextView.getScrollX() < i)
+    {
+      paramCustomTextView.scrollTo(i, paramCustomTextView.getScrollY());
+      AppMethodBeat.o(219220);
+      return true;
+    }
+    AppMethodBeat.o(219220);
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cedit.b.b
  * JD-Core Version:    0.7.0.1
  */

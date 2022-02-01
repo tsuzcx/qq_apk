@@ -245,16 +245,15 @@ public class c
         return;
       }
       super.a(paramInt1, paramInt2);
-      this.x = GLES20.glGetUniformLocation(p(), "smoothDegree");
-      this.y = GLES20.glGetUniformLocation(p(), "brightDegree");
-      this.z = GLES20.glGetUniformLocation(p(), "ruddyDegree");
+      this.x = GLES20.glGetUniformLocation(q(), "smoothDegree");
+      this.y = GLES20.glGetUniformLocation(q(), "brightDegree");
+      this.z = GLES20.glGetUniformLocation(q(), "ruddyDegree");
       AppMethodBeat.o(15067);
     }
     
     public boolean a()
     {
       AppMethodBeat.i(15066);
-      NativeLoad.getInstance();
       this.a = NativeLoad.nativeLoadGLProgram(1);
       if ((this.a != 0) && (b())) {}
       for (this.g = true;; this.g = false)
@@ -291,7 +290,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.c
  * JD-Core Version:    0.7.0.1
  */

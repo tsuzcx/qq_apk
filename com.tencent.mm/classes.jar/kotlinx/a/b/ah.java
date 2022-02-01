@@ -5,36 +5,36 @@ import kotlin.l;
 import kotlinx.a.s;
 import kotlinx.a.w.b;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/serialization/internal/ListLikeDescriptor;", "Lkotlinx/serialization/SerialDescriptor;", "elementDesc", "(Lkotlinx/serialization/SerialDescriptor;)V", "getElementDesc", "()Lkotlinx/serialization/SerialDescriptor;", "elementsCount", "", "getElementsCount", "()I", "kind", "Lkotlinx/serialization/SerialKind;", "getKind", "()Lkotlinx/serialization/SerialKind;", "equals", "", "other", "", "getElementAnnotations", "", "", "index", "getElementDescriptor", "getElementIndex", "name", "", "getElementName", "hashCode", "isElementOptional", "Lkotlinx/serialization/internal/PrimitiveArrayDescriptor;", "Lkotlinx/serialization/internal/ArrayClassDesc;", "Lkotlinx/serialization/internal/ArrayListClassDesc;", "Lkotlinx/serialization/internal/NamedListClassDescriptor;", "Lkotlinx/serialization/internal/LinkedHashSetClassDesc;", "Lkotlinx/serialization/internal/HashSetClassDesc;", "kotlinx-serialization-runtime"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/serialization/internal/ListLikeDescriptor;", "Lkotlinx/serialization/SerialDescriptor;", "elementDesc", "(Lkotlinx/serialization/SerialDescriptor;)V", "getElementDesc", "()Lkotlinx/serialization/SerialDescriptor;", "elementsCount", "", "getElementsCount", "()I", "kind", "Lkotlinx/serialization/SerialKind;", "getKind", "()Lkotlinx/serialization/SerialKind;", "equals", "", "other", "", "getElementAnnotations", "", "", "index", "getElementDescriptor", "getElementIndex", "name", "", "getElementName", "hashCode", "isElementOptional", "Lkotlinx/serialization/internal/PrimitiveArrayDescriptor;", "Lkotlinx/serialization/internal/ArrayClassDesc;", "Lkotlinx/serialization/internal/ArrayListClassDesc;", "Lkotlinx/serialization/internal/NamedListClassDescriptor;", "Lkotlinx/serialization/internal/LinkedHashSetClassDesc;", "Lkotlinx/serialization/internal/HashSetClassDesc;", "kotlinx-serialization-runtime"})
 public abstract class ah
   implements kotlinx.a.n
 {
-  private final int TXQ;
-  private final kotlinx.a.n TYw;
+  private final kotlinx.a.n abBL;
+  private final int abBf;
   
   private ah(kotlinx.a.n paramn)
   {
-    this.TYw = paramn;
-    this.TXQ = 1;
+    this.abBL = paramn;
+    this.abBf = 1;
   }
   
-  public final String awc(int paramInt)
+  public final String aFX(int paramInt)
   {
     return String.valueOf(paramInt);
   }
   
-  public final kotlinx.a.n awd(int paramInt)
+  public final kotlinx.a.n aFY(int paramInt)
   {
     if (paramInt != 0) {
       throw ((Throwable)new IndexOutOfBoundsException("List descriptor has only one child element, index: ".concat(String.valueOf(paramInt))));
     }
-    return this.TYw;
+    return this.abBL;
   }
   
-  public final int buF(String paramString)
+  public final int bHI(String paramString)
   {
-    p.h(paramString, "name");
-    Integer localInteger = kotlin.n.n.buA(paramString);
+    p.k(paramString, "name");
+    Integer localInteger = kotlin.n.n.bHC(paramString);
     if (localInteger != null) {
       return localInteger.intValue();
     }
@@ -49,32 +49,32 @@ public abstract class ah
     if (!(paramObject instanceof ah)) {
       return false;
     }
-    return (p.j(this.TYw, ((ah)paramObject).TYw)) && (p.j(hOz(), ((ah)paramObject).hOz()));
-  }
-  
-  public final s hOA()
-  {
-    return (s)w.b.TXT;
-  }
-  
-  public final boolean hOB()
-  {
-    return false;
-  }
-  
-  public final int hOC()
-  {
-    return this.TXQ;
+    return (p.h(this.abBL, ((ah)paramObject).abBL)) && (p.h(iTF(), ((ah)paramObject).iTF()));
   }
   
   public int hashCode()
   {
-    return this.TYw.hashCode() * 31 + hOz().hashCode();
+    return this.abBL.hashCode() * 31 + iTF().hashCode();
+  }
+  
+  public final s iTG()
+  {
+    return (s)w.b.abBi;
+  }
+  
+  public final boolean iTH()
+  {
+    return false;
+  }
+  
+  public final int iTI()
+  {
+    return this.abBf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlinx.a.b.ah
  * JD-Core Version:    0.7.0.1
  */

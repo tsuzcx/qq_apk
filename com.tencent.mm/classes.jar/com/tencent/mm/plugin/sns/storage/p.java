@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.sns.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.protocal.protobuf.cfy;
-import com.tencent.mm.protocal.protobuf.dzz;
+import com.tencent.mm.cd.b;
+import com.tencent.mm.protocal.protobuf.cou;
+import com.tencent.mm.protocal.protobuf.ejz;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 import com.tencent.mm.storagebase.h;
@@ -17,7 +17,7 @@ public final class p
   extends MAutoStorage<o>
 {
   public static final String[] SQL_CREATE;
-  public h iFy;
+  public h lvy;
   
   static
   {
@@ -29,69 +29,69 @@ public final class p
   public p(h paramh)
   {
     super(paramh, o.info, "SnsReportKv", o.INDEX_CREATE);
-    this.iFy = paramh;
+    this.lvy = paramh;
   }
   
-  private int a(dzz paramdzz, int paramInt)
+  private int a(ejz paramejz, int paramInt)
   {
     AppMethodBeat.i(97592);
     try
     {
-      paramdzz = paramdzz.toByteArray();
+      paramejz = paramejz.toByteArray();
       o localo = new o();
-      localo.field_value = paramdzz;
+      localo.field_value = paramejz;
       localo.field_logtime = System.currentTimeMillis();
       localo.field_logsize = paramInt;
       localo.field_offset = 0;
-      paramdzz = localo.convertTo();
-      paramInt = (int)this.iFy.insert("SnsReportKv", "", paramdzz);
+      paramejz = localo.convertTo();
+      paramInt = (int)this.lvy.insert("SnsReportKv", "", paramejz);
       Log.d("MicroMsg.SnsKvReportStg", "SnsKvReport Insert result ".concat(String.valueOf(paramInt)));
       AppMethodBeat.o(97592);
       return paramInt;
     }
-    catch (Exception paramdzz)
+    catch (Exception paramejz)
     {
       AppMethodBeat.o(97592);
     }
     return 0;
   }
   
-  public final int a(dzz paramdzz)
+  public final int a(ejz paramejz)
   {
     AppMethodBeat.i(97591);
-    dzz localdzz = new dzz();
+    ejz localejz = new ejz();
     int k = 0;
     int i = 0;
     int j = 0;
-    if (k < paramdzz.KGB.size())
+    if (k < paramejz.RHT.size())
     {
-      cfy localcfy = (cfy)paramdzz.KGB.get(k);
-      if (localcfy.MlG.zy.length + j > 51200)
+      cou localcou = (cou)paramejz.RHT.get(k);
+      if (localcou.Twz.UH.length + j > 51200)
       {
-        a(localdzz, j);
+        a(localejz, j);
         i += 1;
-        localdzz.KGB.clear();
+        localejz.RHT.clear();
         j = 0;
       }
       for (;;)
       {
         k += 1;
         break;
-        j += localcfy.MlG.zy.length;
-        localdzz.KGB.add(localcfy);
+        j += localcou.Twz.UH.length;
+        localejz.RHT.add(localcou);
       }
     }
     k = i;
-    if (localdzz.KGB.size() > 0)
+    if (localejz.RHT.size() > 0)
     {
       k = i + 1;
-      a(localdzz, j);
+      a(localejz, j);
     }
     AppMethodBeat.o(97591);
     return k;
   }
   
-  public final dzz iH(int paramInt1, int paramInt2)
+  public final ejz jQ(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(97593);
     Object localObject = "select rowid, *  from SnsReportKv";
@@ -99,8 +99,8 @@ public final class p
     if (paramInt2 > 0) {
       localObject = "select rowid, *  from SnsReportKv" + " where rowid <= " + paramInt2;
     }
-    Cursor localCursor = this.iFy.rawQuery((String)localObject, null);
-    dzz localdzz = new dzz();
+    Cursor localCursor = this.lvy.rawQuery((String)localObject, null);
+    ejz localejz = new ejz();
     ArrayList localArrayList = new ArrayList();
     localStringBuffer.append("target size " + paramInt1 + " current maxcolid " + paramInt2);
     if (localCursor.moveToFirst()) {
@@ -112,16 +112,16 @@ public final class p
       localo.convertFrom(localCursor);
       i = localo.field_offset;
       localStringBuffer.append("|offset: ".concat(String.valueOf(i)));
-      localObject = new dzz();
+      localObject = new ejz();
       for (;;)
       {
         try
         {
-          ((dzz)localObject).parseFrom(localo.field_value);
+          ((ejz)localObject).parseFrom(localo.field_value);
         }
         catch (Exception localException2)
         {
-          cfy localcfy;
+          cou localcou;
           continue;
           i = 0;
           continue;
@@ -130,20 +130,20 @@ public final class p
         }
         try
         {
-          if (i >= ((dzz)localObject).KGB.size()) {
+          if (i >= ((ejz)localObject).RHT.size()) {
             continue;
           }
-          localcfy = (cfy)((dzz)localObject).KGB.get(i);
-          if (localcfy.MlG.zy.length + paramInt2 > paramInt1)
+          localcou = (cou)((ejz)localObject).RHT.get(i);
+          if (localcou.Twz.UH.length + paramInt2 > paramInt1)
           {
             if (paramInt2 != 0) {
               continue;
             }
             localArrayList.add(Integer.valueOf(localo.localid));
-            Log.i("MicroMsg.SnsKvReportStg", "error by server for the mini size " + paramInt1 + " vlauesize " + localcfy.MlG.zy.length);
+            Log.i("MicroMsg.SnsKvReportStg", "error by server for the mini size " + paramInt1 + " vlauesize " + localcou.Twz.UH.length);
             continue;
             localStringBuffer.append("|read end on " + localo.localid + " and get size " + paramInt2);
-            if ((i != 0) && (localo.field_offset <= ((dzz)localObject).KGB.size()))
+            if ((i != 0) && (localo.field_offset <= ((ejz)localObject).RHT.size()))
             {
               update(localo.localid, localo);
               localStringBuffer.append("|update new offset " + localo.field_offset);
@@ -163,8 +163,8 @@ public final class p
           else
           {
             localo.field_offset = (i + 1);
-            localdzz.KGB.add(localcfy);
-            int j = paramInt2 + localcfy.MlG.zy.length;
+            localejz.RHT.add(localcou);
+            int j = paramInt2 + localcou.Twz.UH.length;
             i += 1;
             paramInt2 = j;
             continue;
@@ -189,12 +189,12 @@ public final class p
       break;
     }
     AppMethodBeat.o(97593);
-    return localdzz;
+    return localejz;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.p
  * JD-Core Version:    0.7.0.1
  */

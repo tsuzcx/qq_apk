@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.iw;
-import com.tencent.mm.g.a.iw.a;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.a.jm;
+import com.tencent.mm.f.a.jm.a;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.game.api.f;
-import com.tencent.mm.plugin.game.e.c;
+import com.tencent.mm.plugin.game.d.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONArray;
@@ -14,42 +14,42 @@ import org.json.JSONObject;
 
 public final class t
 {
-  public static void a(iw paramiw)
+  public static void a(jm paramjm)
   {
     AppMethodBeat.i(41500);
-    paramiw = paramiw.dNy.param;
-    Log.d("MicroMsg.GameJsapiProcessor", "writeMsg param=%s", new Object[] { paramiw });
-    if (paramiw != null)
+    paramjm = paramjm.fGK.param;
+    Log.d("MicroMsg.GameJsapiProcessor", "writeMsg param=%s", new Object[] { paramjm });
+    if (paramjm != null)
     {
       try
       {
-        paramiw = new JSONObject(paramiw);
-        if ((paramiw.isNull("type")) || (Util.getInt(paramiw.optString("type"), 0) == 0))
+        paramjm = new JSONObject(paramjm);
+        if ((paramjm.isNull("type")) || (Util.getInt(paramjm.optString("type"), 0) == 0))
         {
           new JSONArray();
-          paramiw = paramiw.getJSONArray("localIdList");
-          int j = paramiw.length();
+          paramjm = paramjm.getJSONArray("localIdList");
+          int j = paramjm.length();
           long[] arrayOfLong = new long[j];
           int i = 0;
           while (i < j)
           {
-            arrayOfLong[i] = paramiw.getLong(i);
+            arrayOfLong[i] = paramjm.getLong(i);
             i += 1;
           }
-          ((f)g.af(f.class)).dSK().c(arrayOfLong);
+          ((f)h.ae(f.class)).evo().c(arrayOfLong);
           AppMethodBeat.o(41500);
           return;
         }
-        if (Util.getInt(paramiw.optString("type"), 0) == 65536)
+        if (Util.getInt(paramjm.optString("type"), 0) == 65536)
         {
-          ((f)g.af(f.class)).dSK().execSQL("GameRawMessage", "update GameRawMessage set isRead=1 where 1=1");
+          ((f)h.ae(f.class)).evo().execSQL("GameRawMessage", "update GameRawMessage set isRead=1 where 1=1");
           AppMethodBeat.o(41500);
           return;
         }
       }
-      catch (JSONException paramiw)
+      catch (JSONException paramjm)
       {
-        Log.w("MicroMsg.GameJsapiProcessor", "JSONException : %s", new Object[] { paramiw.getMessage() });
+        Log.w("MicroMsg.GameJsapiProcessor", "JSONException : %s", new Object[] { paramjm.getMessage() });
         AppMethodBeat.o(41500);
         return;
       }
@@ -59,51 +59,51 @@ public final class t
     AppMethodBeat.o(41500);
   }
   
-  public static void b(iw paramiw)
+  public static void b(jm paramjm)
   {
-    AppMethodBeat.i(204172);
-    paramiw = paramiw.dNy.param;
-    Log.d("MicroMsg.GameJsapiProcessor", "deleteMessage param=%s", new Object[] { paramiw });
-    if (paramiw != null) {
+    AppMethodBeat.i(192532);
+    paramjm = paramjm.fGK.param;
+    Log.d("MicroMsg.GameJsapiProcessor", "deleteMessage param=%s", new Object[] { paramjm });
+    if (paramjm != null) {
       try
       {
-        paramiw = new JSONObject(paramiw);
-        if (paramiw.optBoolean("deleteAll", false))
+        paramjm = new JSONObject(paramjm);
+        if (paramjm.optBoolean("deleteAll", false))
         {
-          ((f)g.af(f.class)).dSK().dVA();
-          AppMethodBeat.o(204172);
+          ((f)h.ae(f.class)).evo().eyI();
+          AppMethodBeat.o(192532);
           return;
         }
-        paramiw = paramiw.optJSONArray("localIdList");
-        if (paramiw != null)
+        paramjm = paramjm.optJSONArray("localIdList");
+        if (paramjm != null)
         {
-          int j = paramiw.length();
+          int j = paramjm.length();
           long[] arrayOfLong = new long[j];
           int i = 0;
           while (i < j)
           {
-            arrayOfLong[i] = paramiw.getLong(i);
+            arrayOfLong[i] = paramjm.getLong(i);
             i += 1;
           }
-          ((f)g.af(f.class)).dSK().d(arrayOfLong);
+          ((f)h.ae(f.class)).evo().d(arrayOfLong);
         }
-        AppMethodBeat.o(204172);
+        AppMethodBeat.o(192532);
         return;
       }
-      catch (JSONException paramiw)
+      catch (JSONException paramjm)
       {
-        Log.w("MicroMsg.GameJsapiProcessor", "JSONException : %s", new Object[] { paramiw.getMessage() });
-        AppMethodBeat.o(204172);
+        Log.w("MicroMsg.GameJsapiProcessor", "JSONException : %s", new Object[] { paramjm.getMessage() });
+        AppMethodBeat.o(192532);
         return;
       }
     }
-    AppMethodBeat.o(204172);
+    AppMethodBeat.o(192532);
   }
   
-  public static void c(iw paramiw)
+  public static void c(jm paramjm)
   {
-    AppMethodBeat.i(204173);
-    Object localObject = paramiw.dNy.param;
+    AppMethodBeat.i(192537);
+    Object localObject = paramjm.fGK.param;
     if (localObject != null) {}
     for (;;)
     {
@@ -122,26 +122,26 @@ public final class t
             if (Util.isNullOrNil(str)) {
               break label172;
             }
-            o localo = ((f)g.af(f.class)).dSK().aAk(str);
+            o localo = ((f)h.ae(f.class)).evo().aJW(str);
             if (localo == null) {
               break label172;
             }
-            localo.dVl();
-            localJSONObject.put(str, c.aAN(localo.xFQ.xGN));
+            localo.eyt();
+            localJSONObject.put(str, c.aKz(localo.CJR.CKQ));
             break label172;
           }
-          paramiw.dNz.dNA = localJSONObject.toString();
+          paramjm.fGL.fGM = localJSONObject.toString();
         }
-        AppMethodBeat.o(204173);
+        AppMethodBeat.o(192537);
         return;
       }
-      catch (JSONException paramiw)
+      catch (JSONException paramjm)
       {
-        Log.w("MicroMsg.GameJsapiProcessor", "JSONException : %s", new Object[] { paramiw.getMessage() });
-        AppMethodBeat.o(204173);
+        Log.w("MicroMsg.GameJsapiProcessor", "JSONException : %s", new Object[] { paramjm.getMessage() });
+        AppMethodBeat.o(192537);
         return;
       }
-      AppMethodBeat.o(204173);
+      AppMethodBeat.o(192537);
       return;
       label172:
       i += 1;
@@ -150,7 +150,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.t
  * JD-Core Version:    0.7.0.1
  */

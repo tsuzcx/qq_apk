@@ -1,8 +1,10 @@
 package com.tencent.mm.plugin.sns.storage;
 
 import android.database.Cursor;
+import com.tencent.d.f.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem;
@@ -14,9 +16,9 @@ import com.tencent.mm.storage.ar.a;
 public final class k
   extends MAutoStorage<j>
 {
-  private static String Eml;
-  public static String Emm;
-  public static String Emn;
+  private static String Kzu;
+  public static String Kzv;
+  public static String Kzw;
   public static final String[] SQL_CREATE;
   public ISQLiteDatabase db;
   
@@ -24,9 +26,9 @@ public final class k
   {
     AppMethodBeat.i(176289);
     SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(j.info, "snsDraft") };
-    Eml = " (snsDraft.extFlag & 2 == 0 ) ";
-    Emm = " (snsDraft.extFlag & 2 != 0 ) ";
-    Emn = " order by snsDraft.timestamp desc";
+    Kzu = " (snsDraft.extFlag & 2 == 0 ) ";
+    Kzv = " (snsDraft.extFlag & 2 != 0 ) ";
+    Kzw = " order by snsDraft.timestamp desc";
     AppMethodBeat.o(176289);
   }
   
@@ -39,7 +41,25 @@ public final class k
     AppMethodBeat.o(176285);
   }
   
-  public final j aQn(String paramString)
+  public final void b(String paramString, byte[] paramArrayOfByte, int paramInt)
+  {
+    AppMethodBeat.i(176287);
+    if (paramArrayOfByte == null) {}
+    for (Object localObject = null;; localObject = Integer.valueOf(paramArrayOfByte.length))
+    {
+      Log.i("MicroMsg.SnsDraftStorage", "writeDraft: %s, %s", new Object[] { paramString, localObject });
+      localObject = new j();
+      ((j)localObject).field_key = paramString;
+      ((j)localObject).field_timestamp = System.currentTimeMillis();
+      ((j)localObject).field_draft = paramArrayOfByte;
+      ((j)localObject).field_extFlag = paramInt;
+      super.replace((IAutoDBItem)localObject);
+      AppMethodBeat.o(176287);
+      return;
+    }
+  }
+  
+  public final j bbm(String paramString)
   {
     Integer localInteger = null;
     AppMethodBeat.i(176288);
@@ -67,51 +87,33 @@ public final class k
     }
   }
   
-  public final void b(String paramString, byte[] paramArrayOfByte, int paramInt)
-  {
-    AppMethodBeat.i(176287);
-    if (paramArrayOfByte == null) {}
-    for (Object localObject = null;; localObject = Integer.valueOf(paramArrayOfByte.length))
-    {
-      Log.i("MicroMsg.SnsDraftStorage", "writeDraft: %s, %s", new Object[] { paramString, localObject });
-      localObject = new j();
-      ((j)localObject).field_key = paramString;
-      ((j)localObject).field_timestamp = System.currentTimeMillis();
-      ((j)localObject).field_draft = paramArrayOfByte;
-      ((j)localObject).field_extFlag = paramInt;
-      super.replace((IAutoDBItem)localObject);
-      AppMethodBeat.o(176287);
-      return;
-    }
-  }
-  
-  public final void vk(boolean paramBoolean)
+  public final void yO(boolean paramBoolean)
   {
     AppMethodBeat.i(176286);
     Object localObject;
     if (paramBoolean)
     {
-      g.aAi();
-      localObject = (String)g.aAh().azQ().get(ar.a.NUW, null);
+      h.aHH();
+      localObject = (String)h.aHG().aHp().get(ar.a.ViV, null);
     }
     while (!Util.isNullOrNil((String)localObject))
     {
-      localObject = com.tencent.e.f.e.bqe((String)localObject);
+      localObject = e.bCW((String)localObject);
       if (!Util.isNullOrNil((byte[])localObject)) {
         if (paramBoolean)
         {
-          g.aAi();
-          g.aAh().azQ().set(ar.a.NUW, "");
+          h.aHH();
+          h.aHG().aHp().set(ar.a.ViV, "");
           b("draft_text", (byte[])localObject, 0);
           AppMethodBeat.o(176286);
           return;
-          g.aAi();
-          localObject = (String)g.aAh().azQ().get(ar.a.NUV, null);
+          h.aHH();
+          localObject = (String)h.aHG().aHp().get(ar.a.ViU, null);
         }
         else
         {
-          g.aAi();
-          g.aAh().azQ().set(ar.a.NUV, "");
+          h.aHH();
+          h.aHG().aHp().set(ar.a.ViU, "");
           b("draft_normal", (byte[])localObject, 0);
         }
       }
@@ -121,7 +123,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.k
  * JD-Core Version:    0.7.0.1
  */

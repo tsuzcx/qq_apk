@@ -15,14 +15,14 @@ import java.util.WeakHashMap;
 
 public final class c
 {
-  private static final Map<View, Class<? extends IEvent>> AGe;
-  private static final Map<View, Boolean> AGf;
+  private static final Map<View, Class<? extends IEvent>> Gzn;
+  private static final Map<View, Boolean> Gzo;
   
   static
   {
     AppMethodBeat.i(149088);
-    AGe = new WeakHashMap();
-    AGf = new WeakHashMap();
+    Gzn = new WeakHashMap();
+    Gzo = new WeakHashMap();
     AppMethodBeat.o(149088);
   }
   
@@ -44,8 +44,8 @@ public final class c
     Object localObject2 = i.b(paramView, "getListenerInfo", null, new Object[0]);
     if (localObject2 != null)
     {
-      ??? = (View.OnTouchListener)i.d(localObject2, "mOnTouchListener");
-      localObject2 = (View.OnClickListener)i.d(localObject2, "mOnClickListener");
+      ??? = (View.OnTouchListener)i.g(localObject2, "mOnTouchListener");
+      localObject2 = (View.OnClickListener)i.g(localObject2, "mOnClickListener");
     }
     for (;;)
     {
@@ -57,11 +57,11 @@ public final class c
         if (localObject2 == null) {
           paramView.setOnClickListener(new a(null));
         }
-        synchronized (AGe)
+        synchronized (Gzn)
         {
           do
           {
-            AGe.put(paramView, paramClass);
+            Gzn.put(paramView, paramClass);
             AppMethodBeat.o(149087);
             return;
             if ((??? instanceof b)) {
@@ -73,33 +73,31 @@ public final class c
           paramView.setOnClickListener(new a((View.OnClickListener)localObject2));
         }
       }
-      localObject2 = null;
-      ??? = null;
     }
   }
   
   static final class a
     implements View.OnClickListener
   {
-    private final View.OnClickListener AGg;
+    private final View.OnClickListener Gzp;
     
     a(View.OnClickListener paramOnClickListener)
     {
-      this.AGg = paramOnClickListener;
+      this.Gzp = paramOnClickListener;
     }
     
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(149085);
       ??? = new b();
-      ((b)???).bm(paramView);
-      a.b("com/tencent/mm/plugin/normsg/utils/ClickBotCheckHelper$CheckerOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)???).axR());
-      synchronized (c.AGe)
+      ((b)???).bn(paramView);
+      a.c("com/tencent/mm/plugin/normsg/utils/ClickBotCheckHelper$CheckerOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)???).aFi());
+      synchronized (c.Gzn)
       {
-        if (!c.AGe.containsKey(paramView))
+        if (!c.Gzn.containsKey(paramView))
         {
-          if (this.AGg != null) {
-            this.AGg.onClick(paramView);
+          if (this.Gzp != null) {
+            this.Gzp.onClick(paramView);
           }
           a.a(this, "com/tencent/mm/plugin/normsg/utils/ClickBotCheckHelper$CheckerOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(149085);
@@ -108,13 +106,13 @@ public final class c
       }
       for (;;)
       {
-        synchronized (c.apb())
+        synchronized (c.avo())
         {
           for (;;)
           {
-            if (!c.apb().containsKey(paramView))
+            if (!c.avo().containsKey(paramView))
             {
-              Class localClass = (Class)c.AGe.get(paramView);
+              Class localClass = (Class)c.Gzn.get(paramView);
               if (localClass != null) {}
               try
               {
@@ -134,7 +132,7 @@ public final class c
             }
           }
         }
-        c.apb().remove(paramView);
+        c.avo().remove(paramView);
       }
     }
   }
@@ -142,11 +140,11 @@ public final class c
   static final class b
     implements View.OnTouchListener
   {
-    private final View.OnTouchListener AGh;
+    private final View.OnTouchListener Gzq;
     
     b(View.OnTouchListener paramOnTouchListener)
     {
-      this.AGh = paramOnTouchListener;
+      this.Gzq = paramOnTouchListener;
     }
     
     public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
@@ -154,21 +152,21 @@ public final class c
       AppMethodBeat.i(149086);
       for (;;)
       {
-        synchronized (c.AGe)
+        synchronized (c.Gzn)
         {
-          if (!c.AGe.containsKey(paramView))
+          if (!c.Gzn.containsKey(paramView))
           {
-            if (this.AGh == null) {
+            if (this.Gzq == null) {
               break;
             }
-            boolean bool = this.AGh.onTouch(paramView, paramMotionEvent);
+            boolean bool = this.Gzq.onTouch(paramView, paramMotionEvent);
             AppMethodBeat.o(149086);
             return bool;
           }
         }
-        synchronized (c.apb())
+        synchronized (c.avo())
         {
-          c.apb().put(paramView, Boolean.TRUE);
+          c.avo().put(paramView, Boolean.TRUE);
           continue;
           paramView = finally;
           AppMethodBeat.o(149086);

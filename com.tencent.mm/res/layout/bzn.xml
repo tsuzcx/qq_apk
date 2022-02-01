@@ -20,6 +20,6 @@
             </RelativeLayout>
             <FrameLayout android:id="@id/i88" android:layout_width="fill_parent" android:layout_height="wrap_content" />
         </LinearLayout>
-        <android.support.v7.widget.RecyclerView android:id="@id/i8g" android:paddingBottom="4.0dip" android:visibility="gone" android:fadingEdgeLength="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="80.0dip" android:layout_above="@id/i8d" android:requiresFadingEdge="vertical" android:layout_marginStart="32.0dip" android:layout_marginEnd="32.0dip" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/i8g" android:paddingBottom="4.0dip" android:visibility="gone" android:fadingEdgeLength="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="80.0dip" android:layout_above="@id/i8d" android:requiresFadingEdge="vertical" android:layout_marginStart="32.0dip" android:layout_marginEnd="32.0dip" />
     </RelativeLayout>
 </merge>

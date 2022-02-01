@@ -14,51 +14,53 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.plugin.webview.c.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.widget.c;
+import com.tencent.mm.ui.widget.e;
 
 public final class a
 {
-  static final int Jkp;
-  boolean AbM;
-  a Jkq;
-  final b Jkr;
-  boolean Jks;
-  PointF Jkt;
-  boolean Jku;
+  static final int QhH;
+  boolean FHz;
+  a QhI;
+  final b QhJ;
+  boolean QhK;
+  PointF QhL;
+  boolean QhM;
   boolean mIsShowing;
   int mScreenHeight;
   int mScreenWidth;
   
   static
   {
-    int i = b.JkC;
-    Jkp = i * i;
+    int i = b.QhU;
+    QhH = i * i;
   }
   
   public a(b paramb)
   {
     AppMethodBeat.i(80412);
-    this.Jkt = new PointF();
-    this.Jkr = paramb;
+    this.QhL = new PointF();
+    this.QhJ = paramb;
     paramb = (WindowManager)MMApplicationContext.getContext().getSystemService("window");
     WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
-    if (d.oD(26)) {}
+    if (d.qV(26)) {}
     for (localLayoutParams.type = 2038;; localLayoutParams.type = 2002)
     {
       localLayoutParams.format = 1;
       localLayoutParams.flags = 40;
       localLayoutParams.gravity = 85;
-      localLayoutParams.width = b.JkD;
-      localLayoutParams.height = b.JkD;
+      localLayoutParams.width = b.QhV;
+      localLayoutParams.height = b.QhV;
       localLayoutParams.x = 0;
       localLayoutParams.y = 0;
-      this.Jkq = new a(MMApplicationContext.getContext());
+      this.QhI = new a(MMApplicationContext.getContext());
       try
       {
-        this.Jkq.setVisibility(8);
-        paramb.addView(this.Jkq, localLayoutParams);
+        this.QhI.setVisibility(8);
+        paramb.addView(this.QhI, localLayoutParams);
         AppMethodBeat.o(80412);
         return;
       }
@@ -74,43 +76,43 @@ public final class a
     extends FrameLayout
   {
     View mContentView;
-    Vibrator ooM;
-    ImageView rIY;
+    Vibrator rqy;
+    ImageView voG;
     
     public a(Context paramContext)
     {
       super();
       AppMethodBeat.i(80409);
-      this.ooM = ((Vibrator)paramContext.getSystemService("vibrator"));
-      LayoutInflater.from(paramContext).inflate(2131497066, this);
-      this.rIY = ((ImageView)findViewById(2131297352));
-      paramContext = (RelativeLayout.LayoutParams)this.rIY.getLayoutParams();
-      paramContext.height = b.JkC;
-      paramContext.width = b.JkC;
-      this.rIY.setLayoutParams(paramContext);
-      this.mContentView = findViewById(2131299180);
+      this.rqy = ((Vibrator)paramContext.getSystemService("vibrator"));
+      LayoutInflater.from(paramContext).inflate(c.g.webview_bag_canceller, this);
+      this.voG = ((ImageView)findViewById(c.f.bg));
+      paramContext = (RelativeLayout.LayoutParams)this.voG.getLayoutParams();
+      paramContext.height = b.QhU;
+      paramContext.width = b.QhU;
+      this.voG.setLayoutParams(paramContext);
+      this.mContentView = findViewById(c.f.content);
       AppMethodBeat.o(80409);
     }
     
-    final void aq(float paramFloat1, float paramFloat2)
+    final void av(float paramFloat1, float paramFloat2)
     {
       AppMethodBeat.i(80410);
       ScaleAnimation localScaleAnimation = new ScaleAnimation(paramFloat1, paramFloat2, paramFloat1, paramFloat2, 1, 1.0F, 1, 1.0F);
       localScaleAnimation.setFillAfter(true);
       localScaleAnimation.setDuration(50L);
-      this.rIY.startAnimation(localScaleAnimation);
+      this.voG.startAnimation(localScaleAnimation);
       AppMethodBeat.o(80410);
     }
   }
   
   public static abstract interface b
   {
-    public abstract void ggn();
+    public abstract void gZA();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.bag.a
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ public final class b
     super(paramMMActivity);
   }
   
-  public final boolean cwL()
+  public final boolean cKo()
   {
     return true;
   }
   
-  public final boolean cwM()
+  public final boolean cKp()
   {
     return false;
   }

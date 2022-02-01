@@ -1,22 +1,23 @@
 package com.tencent.mm.plugin.sns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.b.q;
 
 public class p
-  implements com.tencent.mm.plugin.sns.b.p
+  implements q
 {
-  private static volatile p DqX = null;
+  private static volatile p JwC = null;
   
-  public static p eWt()
+  public static p fJw()
   {
     AppMethodBeat.i(94916);
-    if (DqX == null) {}
+    if (JwC == null) {}
     try
     {
-      if (DqX == null) {
-        DqX = new p();
+      if (JwC == null) {
+        JwC = new p();
       }
-      p localp = DqX;
+      p localp = JwC;
       AppMethodBeat.o(94916);
       return localp;
     }
@@ -28,7 +29,7 @@ public class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.p
  * JD-Core Version:    0.7.0.1
  */

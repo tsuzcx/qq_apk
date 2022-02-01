@@ -29,41 +29,41 @@ import java.util.List;
 public final class g
   implements e.b, j.a, com.google.android.exoplayer2.source.j
 {
-  private r bcq;
-  private final int bvE;
-  private final b bvH;
-  private com.google.android.exoplayer2.source.j.a bvs;
-  private final k bxx;
-  final e bxz;
-  private final d byk;
-  private final b.a byl;
-  private final IdentityHashMap<n, Integer> bym;
-  final Handler byn;
-  private int byo;
-  j[] byp;
-  private j[] byq;
-  private com.google.android.exoplayer2.source.f byr;
+  private r aLQ;
+  private com.google.android.exoplayer2.source.j.a beU;
+  private final int bfg;
+  private final b bfj;
+  private final k bgZ;
+  private final d bhM;
+  private final b.a bhN;
+  private final IdentityHashMap<n, Integer> bhO;
+  final Handler bhP;
+  private int bhQ;
+  j[] bhR;
+  private j[] bhS;
+  private com.google.android.exoplayer2.source.f bhT;
+  final e bhb;
   
   public g(e parame, d paramd, int paramInt, b.a parama, b paramb)
   {
     AppMethodBeat.i(62834);
-    this.bxz = parame;
-    this.byk = paramd;
-    this.bvE = paramInt;
-    this.byl = parama;
-    this.bvH = paramb;
-    this.bym = new IdentityHashMap();
-    this.bxx = new k();
-    this.byn = new Handler();
-    this.byp = new j[0];
-    this.byq = new j[0];
+    this.bhb = parame;
+    this.bhM = paramd;
+    this.bfg = paramInt;
+    this.bhN = parama;
+    this.bfj = paramb;
+    this.bhO = new IdentityHashMap();
+    this.bgZ = new k();
+    this.bhP = new Handler();
+    this.bhR = new j[0];
+    this.bhS = new j[0];
     AppMethodBeat.o(62834);
   }
   
   private j a(int paramInt, a.a[] paramArrayOfa, Format paramFormat, List<Format> paramList, long paramLong)
   {
     AppMethodBeat.i(62847);
-    paramArrayOfa = new j(paramInt, this, new c(this.bxz, paramArrayOfa, this.byk, this.bxx, paramList), this.bvH, paramLong, paramFormat, this.bvE, this.byl);
+    paramArrayOfa = new j(paramInt, this, new c(this.bhb, paramArrayOfa, this.bhM, this.bgZ, paramList), this.bfj, paramLong, paramFormat, this.bfg, this.bhN);
     AppMethodBeat.o(62847);
     return paramArrayOfa;
   }
@@ -71,7 +71,7 @@ public final class g
   private static boolean a(a.a parama, String paramString)
   {
     AppMethodBeat.i(62849);
-    parama = parama.bdF.bdn;
+    parama = parama.aNg.aMN;
     if (TextUtils.isEmpty(parama))
     {
       AppMethodBeat.o(62849);
@@ -93,40 +93,40 @@ public final class g
     return false;
   }
   
-  private void vS()
+  private void tQ()
   {
     AppMethodBeat.i(62848);
-    if (this.bcq != null)
+    if (this.aLQ != null)
     {
-      this.bvs.a(this);
+      this.beU.a(this);
       AppMethodBeat.o(62848);
       return;
     }
-    j[] arrayOfj = this.byp;
+    j[] arrayOfj = this.bhR;
     int j = arrayOfj.length;
     int i = 0;
     while (i < j)
     {
-      arrayOfj[i].vT();
+      arrayOfj[i].tR();
       i += 1;
     }
     AppMethodBeat.o(62848);
   }
   
-  public final void V(long paramLong)
+  public final void Y(long paramLong)
   {
     AppMethodBeat.i(62838);
-    j[] arrayOfj = this.byq;
+    j[] arrayOfj = this.bhS;
     int k = arrayOfj.length;
     int i = 0;
     while (i < k)
     {
       j localj = arrayOfj[i];
-      int m = localj.bvQ.length;
+      int m = localj.bfs.length;
       int j = 0;
       while (j < m)
       {
-        localj.bvQ[j].h(paramLong, localj.byF[j]);
+        localj.bfs[j].h(paramLong, localj.big[j]);
         j += 1;
       }
       i += 1;
@@ -134,32 +134,24 @@ public final class g
     AppMethodBeat.o(62838);
   }
   
-  public final long W(long paramLong)
+  public final long Z(long paramLong)
   {
     AppMethodBeat.i(62842);
-    if (this.byq.length > 0)
+    if (this.bhS.length > 0)
     {
-      boolean bool = this.byq[0].i(paramLong, false);
+      boolean bool = this.bhS[0].i(paramLong, false);
       int i = 1;
-      while (i < this.byq.length)
+      while (i < this.bhS.length)
       {
-        this.byq[i].i(paramLong, bool);
+        this.bhS[i].i(paramLong, bool);
         i += 1;
       }
       if (bool) {
-        this.bxx.byJ.clear();
+        this.bgZ.bik.clear();
       }
     }
     AppMethodBeat.o(62842);
     return paramLong;
-  }
-  
-  public final boolean X(long paramLong)
-  {
-    AppMethodBeat.i(62839);
-    boolean bool = this.byr.X(paramLong);
-    AppMethodBeat.o(62839);
-    return bool;
   }
   
   public final long a(com.google.android.exoplayer2.g.f[] paramArrayOff, boolean[] paramArrayOfBoolean1, n[] paramArrayOfn, boolean[] paramArrayOfBoolean2, long paramLong)
@@ -180,15 +172,15 @@ public final class g
         arrayOfInt2[i] = -1;
         if (paramArrayOff[i] != null)
         {
-          localObject1 = paramArrayOff[i].wy();
+          localObject1 = paramArrayOff[i].uz();
           j = 0;
         }
       }
       for (;;)
       {
-        if (j < this.byp.length)
+        if (j < this.bhR.length)
         {
-          if (this.byp[j].bcq.a((q)localObject1) != -1) {
+          if (this.bhR[j].aLQ.a((q)localObject1) != -1) {
             arrayOfInt2[i] = j;
           }
         }
@@ -196,19 +188,19 @@ public final class g
         {
           i += 1;
           break;
-          j = ((Integer)this.bym.get(paramArrayOfn[i])).intValue();
+          j = ((Integer)this.bhO.get(paramArrayOfn[i])).intValue();
           break label37;
         }
         j += 1;
       }
     }
     boolean bool1 = false;
-    this.bym.clear();
+    this.bhO.clear();
     n[] arrayOfn1 = new n[paramArrayOff.length];
     n[] arrayOfn2 = new n[paramArrayOff.length];
     com.google.android.exoplayer2.g.f[] arrayOff = new com.google.android.exoplayer2.g.f[paramArrayOff.length];
     int m = 0;
-    j[] arrayOfj = new j[this.byp.length];
+    j[] arrayOfj = new j[this.bhR.length];
     int k = 0;
     label230:
     j localj;
@@ -219,7 +211,7 @@ public final class g
     label409:
     Object localObject2;
     int n;
-    if (k < this.byp.length)
+    if (k < this.bhR.length)
     {
       i = 0;
       if (i < paramArrayOff.length)
@@ -241,22 +233,22 @@ public final class g
           break label230;
         }
       }
-      localj = this.byp[k];
-      com.google.android.exoplayer2.i.a.checkState(localj.bcY);
-      j = localj.bvV;
+      localj = this.bhR[k];
+      com.google.android.exoplayer2.i.a.checkState(localj.aMy);
+      j = localj.bfx;
       i = 0;
       while (i < arrayOff.length)
       {
         if ((arrayOfn2[i] != null) && ((arrayOff[i] == null) || (paramArrayOfBoolean1[i] == 0)))
         {
-          localj.p(((i)arrayOfn2[i]).byu, false);
+          localj.o(((i)arrayOfn2[i]).group, false);
           arrayOfn2[i] = null;
         }
         i += 1;
       }
       if (!bool1)
       {
-        if (localj.bvT) {
+        if (localj.bfv) {
           if (j != 0) {
             break label588;
           }
@@ -265,7 +257,7 @@ public final class g
       else
       {
         i = 1;
-        localf = localj.byx.bxJ;
+        localf = localj.bhY.bhl;
         j = 0;
         localObject1 = localf;
         if (j >= arrayOff.length) {
@@ -280,11 +272,11 @@ public final class g
           break label1167;
         }
         localObject2 = arrayOff[j];
-        n = localj.bcq.a(((com.google.android.exoplayer2.g.f)localObject2).wy());
-        localj.p(n, true);
-        if (n == localj.byD)
+        n = localj.aLQ.a(((com.google.android.exoplayer2.g.f)localObject2).uz());
+        localj.o(n, true);
+        if (n == localj.bie)
         {
-          localj.byx.bxJ = ((com.google.android.exoplayer2.g.f)localObject2);
+          localj.bhY.bhl = ((com.google.android.exoplayer2.g.f)localObject2);
           localObject1 = localObject2;
         }
         arrayOfn2[j] = new i(localj, n);
@@ -293,9 +285,9 @@ public final class g
         if (i != 0) {
           break label1167;
         }
-        localObject2 = localj.bvQ[n];
-        ((m)localObject2).rewind();
-        if ((((m)localObject2).f(paramLong, true)) || (((m)localObject2).bwO.vE() == 0)) {
+        localObject2 = localj.bfs[n];
+        ((m)localObject2).ax();
+        if ((((m)localObject2).f(paramLong, true)) || (((m)localObject2).bgq.tC() == 0)) {
           break label594;
         }
         i = 1;
@@ -305,7 +297,7 @@ public final class g
     {
       j += 1;
       break label409;
-      if (paramLong != localj.bwa) {
+      if (paramLong != localj.bfC) {
         break label389;
       }
       label588:
@@ -319,26 +311,26 @@ public final class g
       label693:
       label733:
       int i1;
-      if (localj.bvV == 0)
+      if (localj.bfx == 0)
       {
-        localj.byx.bxE = null;
-        localj.byB = null;
-        localj.byA.clear();
-        if (localj.bvK.isLoading())
+        localj.bhY.bhg = null;
+        localj.bic = null;
+        localj.bib.clear();
+        if (localj.bfm.isLoading())
         {
-          localObject1 = localj.bvQ;
+          localObject1 = localj.bfs;
           n = localObject1.length;
           j = 0;
           while (j < n)
           {
-            localObject1[j].vL();
+            localObject1[j].tJ();
             j += 1;
           }
-          localj.bvK.cancelLoading();
+          localj.bfm.cancelLoading();
         }
         for (j = i;; j = i)
         {
-          localj.bvT = true;
+          localj.bfv = true;
           n = 0;
           i = 0;
           for (;;)
@@ -356,20 +348,20 @@ public final class g
             com.google.android.exoplayer2.i.a.checkState(bool2);
             arrayOfn1[i] = arrayOfn2[i];
             i1 = 1;
-            this.bym.put(arrayOfn2[i], Integer.valueOf(k));
+            this.bhO.put(arrayOfn2[i], Integer.valueOf(k));
             label769:
             i += 1;
             n = i1;
           }
-          localj.vU();
+          localj.tS();
         }
       }
-      if ((!localj.byA.isEmpty()) && (!x.j(localObject1, localf))) {
-        if (!localj.bvT)
+      if ((!localj.bib.isEmpty()) && (!x.h(localObject1, localf))) {
+        if (!localj.bfv)
         {
-          ((com.google.android.exoplayer2.g.f)localObject1).af(0L);
-          j = localj.byx.bxA.j(((f)localj.byA.getLast()).bxk);
-          if (((com.google.android.exoplayer2.g.f)localObject1).wA() == j) {
+          ((com.google.android.exoplayer2.g.f)localObject1).ai(0L);
+          j = localj.bhY.bhc.j(((f)localj.bib.getLast()).bgM);
+          if (((com.google.android.exoplayer2.g.f)localObject1).uB() == j) {
             break label1161;
           }
           j = 1;
@@ -382,7 +374,7 @@ public final class g
         {
           bool2 = true;
           i = 1;
-          localj.byH = true;
+          localj.bii = true;
         }
         for (;;)
         {
@@ -429,11 +421,11 @@ public final class g
             if (m != 0) {
               break label1093;
             }
-            localj.aT(true);
-            if ((j == 0) && (this.byq.length != 0) && (localj == this.byq[0])) {
+            localj.aR(true);
+            if ((j == 0) && (this.bhS.length != 0) && (localj == this.bhS[0])) {
               break label1099;
             }
-            this.bxx.byJ.clear();
+            this.bgZ.bik.clear();
           }
           label1093:
           label1099:
@@ -443,11 +435,11 @@ public final class g
             m = i;
             bool1 = bool2;
             break;
-            localj.aT(false);
+            localj.aR(false);
           }
           System.arraycopy(arrayOfn1, 0, paramArrayOfn, 0, arrayOfn1.length);
-          this.byq = ((j[])Arrays.copyOf(arrayOfj, m));
-          this.byr = new com.google.android.exoplayer2.source.f(this.byq);
+          this.bhS = ((j[])Arrays.copyOf(arrayOfj, m));
+          this.bhT = new com.google.android.exoplayer2.source.f(this.bhS);
           AppMethodBeat.o(62837);
           return paramLong;
           bool2 = bool1;
@@ -463,17 +455,17 @@ public final class g
   public final void a(a.a parama)
   {
     AppMethodBeat.i(62844);
-    ((e.a)this.bxz.bzJ.get(parama)).vX();
+    ((e.a)this.bhb.bjk.get(parama)).tW();
     AppMethodBeat.o(62844);
   }
   
   public final void a(com.google.android.exoplayer2.source.j.a parama, long paramLong)
   {
     AppMethodBeat.i(62835);
-    this.bvs = parama;
-    this.bxz.listeners.add(this);
-    Object localObject2 = this.bxz.bxQ;
-    parama = new ArrayList(((com.google.android.exoplayer2.source.b.a.a)localObject2).byO);
+    this.beU = parama;
+    this.bhb.listeners.add(this);
+    Object localObject2 = this.bhb.bhs;
+    parama = new ArrayList(((com.google.android.exoplayer2.source.b.a.a)localObject2).bip);
     Object localObject1 = new ArrayList();
     Object localObject3 = new ArrayList();
     int i = 0;
@@ -481,7 +473,7 @@ public final class g
     if (i < parama.size())
     {
       localObject4 = (a.a)parama.get(i);
-      if ((((a.a)localObject4).bdF.height > 0) || (a((a.a)localObject4, "avc"))) {
+      if ((((a.a)localObject4).aNg.height > 0) || (a((a.a)localObject4, "avc"))) {
         ((ArrayList)localObject1).add(localObject4);
       }
       for (;;)
@@ -497,9 +489,9 @@ public final class g
     {
       parama = (com.google.android.exoplayer2.source.j.a)localObject1;
       localObject3 = ((com.google.android.exoplayer2.source.b.a.a)localObject2).audios;
-      localObject1 = ((com.google.android.exoplayer2.source.b.a.a)localObject2).byP;
-      this.byp = new j[((List)localObject3).size() + 1 + ((List)localObject1).size()];
-      this.byo = this.byp.length;
+      localObject1 = ((com.google.android.exoplayer2.source.b.a.a)localObject2).biq;
+      this.bhR = new j[((List)localObject3).size() + 1 + ((List)localObject1).size()];
+      this.bhQ = this.bhR.length;
       if (parama.isEmpty()) {
         break label390;
       }
@@ -510,10 +502,10 @@ public final class g
       com.google.android.exoplayer2.i.a.checkArgument(bool);
       localObject4 = new a.a[parama.size()];
       parama.toArray((Object[])localObject4);
-      parama = a(0, (a.a[])localObject4, ((com.google.android.exoplayer2.source.b.a.a)localObject2).byy, ((com.google.android.exoplayer2.source.b.a.a)localObject2).bxB, paramLong);
-      this.byp[0] = parama;
-      parama.aT(true);
-      parama.vT();
+      parama = a(0, (a.a[])localObject4, ((com.google.android.exoplayer2.source.b.a.a)localObject2).bhZ, ((com.google.android.exoplayer2.source.b.a.a)localObject2).bhd, paramLong);
+      this.bhR[0] = parama;
+      parama.aR(true);
+      parama.tR();
       i = 1;
       j = 0;
       while (j < ((List)localObject3).size())
@@ -521,8 +513,8 @@ public final class g
         parama = (a.a)((List)localObject3).get(j);
         localObject2 = Collections.emptyList();
         parama = a(1, new a.a[] { parama }, null, (List)localObject2, paramLong);
-        this.byp[i] = parama;
-        parama.vT();
+        this.bhR[i] = parama;
+        parama.tR();
         i += 1;
         j += 1;
       }
@@ -537,133 +529,141 @@ public final class g
       parama = (a.a)((List)localObject1).get(j);
       localObject2 = Collections.emptyList();
       localObject2 = a(3, new a.a[] { parama }, null, (List)localObject2, paramLong);
-      parama = parama.bdF;
-      ((j)localObject2).eG(0).f(parama);
-      ((j)localObject2).bvS = true;
-      ((j)localObject2).vV();
-      this.byp[i] = localObject2;
+      parama = parama.aNg;
+      ((j)localObject2).eW(0).f(parama);
+      ((j)localObject2).bfu = true;
+      ((j)localObject2).tT();
+      this.bhR[i] = localObject2;
       i += 1;
       j += 1;
     }
-    this.byq = this.byp;
+    this.bhS = this.bhR;
     AppMethodBeat.o(62835);
+  }
+  
+  public final boolean aa(long paramLong)
+  {
+    AppMethodBeat.i(62839);
+    boolean bool = this.bhT.aa(paramLong);
+    AppMethodBeat.o(62839);
+    return bool;
   }
   
   public final void b(a.a parama)
   {
     AppMethodBeat.i(62846);
-    j[] arrayOfj = this.byp;
+    j[] arrayOfj = this.bhR;
     int j = arrayOfj.length;
     int i = 0;
     while (i < j)
     {
-      c localc = arrayOfj[i].byx;
-      int k = localc.bxA.j(parama.bdF);
+      c localc = arrayOfj[i].bhY;
+      int k = localc.bhc.j(parama.aNg);
       if (k != -1)
       {
-        k = localc.bxJ.indexOf(k);
+        k = localc.bhl.fo(k);
         if (k != -1) {
-          localc.bxJ.k(k, 60000L);
+          localc.bhl.k(k, 60000L);
         }
       }
       i += 1;
     }
-    vS();
+    tQ();
     AppMethodBeat.o(62846);
   }
   
-  public final void tf()
+  public final void qX()
   {
     AppMethodBeat.i(62843);
-    int i = this.byo - 1;
-    this.byo = i;
+    int i = this.bhQ - 1;
+    this.bhQ = i;
     if (i > 0)
     {
       AppMethodBeat.o(62843);
       return;
     }
-    Object localObject = this.byp;
+    Object localObject = this.bhR;
     int k = localObject.length;
     i = 0;
     int j = 0;
     while (i < k)
     {
-      j += localObject[i].bcq.length;
+      j += localObject[i].aLQ.length;
       i += 1;
     }
     localObject = new q[j];
-    j[] arrayOfj = this.byp;
+    j[] arrayOfj = this.bhR;
     int m = arrayOfj.length;
     j = 0;
     i = 0;
     while (i < m)
     {
       j localj = arrayOfj[i];
-      int n = localj.bcq.length;
+      int n = localj.aLQ.length;
       k = 0;
       while (k < n)
       {
-        localObject[j] = localj.bcq.bxi[k];
+        localObject[j] = localj.aLQ.bgK[k];
         k += 1;
         j += 1;
       }
       i += 1;
     }
-    this.bcq = new r((q[])localObject);
-    this.bvs.a(this);
+    this.aLQ = new r((q[])localObject);
+    this.beU.a(this);
     AppMethodBeat.o(62843);
   }
   
-  public final void vR()
+  public final void tP()
   {
     AppMethodBeat.i(62845);
-    vS();
+    tQ();
     AppMethodBeat.o(62845);
   }
   
-  public final void vn()
+  public final void tl()
   {
     AppMethodBeat.i(62836);
-    j[] arrayOfj = this.byp;
+    j[] arrayOfj = this.bhR;
     int j = arrayOfj.length;
     int i = 0;
     while (i < j)
     {
-      arrayOfj[i].byx.vs();
+      arrayOfj[i].tq();
       i += 1;
     }
     AppMethodBeat.o(62836);
   }
   
-  public final r vo()
+  public final r tm()
   {
-    return this.bcq;
+    return this.aLQ;
   }
   
-  public final long vp()
+  public final long tn()
   {
     return -9223372036854775807L;
   }
   
-  public final long vq()
+  public final long to()
   {
     AppMethodBeat.i(62841);
-    long l = this.byr.vq();
+    long l = this.bhT.to();
     AppMethodBeat.o(62841);
     return l;
   }
   
-  public final long vr()
+  public final long tp()
   {
     AppMethodBeat.i(62840);
-    long l = this.byr.vr();
+    long l = this.bhT.tp();
     AppMethodBeat.o(62840);
     return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.source.b.g
  * JD-Core Version:    0.7.0.1
  */

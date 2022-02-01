@@ -2,45 +2,52 @@ package com.tencent.mm.model.gdpr;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.co.f;
-import com.tencent.mm.co.g;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.cw.f;
+import com.tencent.mm.cw.g;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.ipcinvoker.m;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.protocal.protobuf.bvj;
+import com.tencent.mm.protocal.protobuf.dyy;
+import com.tencent.mm.protocal.protobuf.fob;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class c
 {
-  public static void a(Context paramContext, final a parama, final String paramString, b paramb)
+  public static void a(Context paramContext, final a parama, final String paramString, final b paramb)
   {
     AppMethodBeat.i(40088);
     final Context localContext = paramContext;
     if (paramContext == null) {
       localContext = MMApplicationContext.getContext();
     }
-    if (aXj())
+    if (bgq())
     {
       if (Util.isNullOrNil(paramString))
       {
-        paramb.sx(1);
+        paramb.vu(1);
         AppMethodBeat.o(40088);
         return;
       }
-      g.hio().h(new c.2(parama, paramString, paramb)).g(new com.tencent.mm.vending.c.a() {});
+      g.ijP().h(new com.tencent.mm.vending.c.a() {}).g(new com.tencent.mm.vending.c.a() {});
       AppMethodBeat.o(40088);
       return;
     }
-    paramb.sx(0);
+    paramb.vu(0);
     AppMethodBeat.o(40088);
   }
   
-  public static boolean aXj()
+  public static boolean bgq()
   {
     AppMethodBeat.i(40087);
-    IPCBoolean localIPCBoolean = (IPCBoolean)XIPCInvoker.a(MainProcessIPCService.dkO, IPCVoid.hnE, a.class);
+    IPCBoolean localIPCBoolean = (IPCBoolean)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.jZu, a.class);
     if ((localIPCBoolean != null) && (localIPCBoolean.value))
     {
       AppMethodBeat.o(40087);
@@ -51,7 +58,7 @@ public final class c
   }
   
   static final class a
-    implements k<IPCVoid, IPCBoolean>
+    implements m<IPCVoid, IPCBoolean>
   {}
 }
 

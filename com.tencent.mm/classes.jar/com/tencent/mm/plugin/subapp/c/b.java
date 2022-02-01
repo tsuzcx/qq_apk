@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.subapp.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.b;
-import com.tencent.mm.ak.h.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.an.h;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.h.b;
+import com.tencent.mm.an.h.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.protocal.protobuf.db;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -27,58 +27,58 @@ import java.util.Set;
 public final class b
   implements h, i
 {
-  private Queue<a> FJJ = null;
-  private boolean FJK = false;
+  private Queue<a> MdG = null;
+  private boolean MdH = false;
   
-  private void fte()
+  private void ghD()
   {
     AppMethodBeat.i(28921);
-    if (this.FJK)
+    if (this.MdH)
     {
       AppMethodBeat.o(28921);
       return;
     }
-    if (this.FJJ.size() == 0)
+    if (this.MdG.size() == 0)
     {
       AppMethodBeat.o(28921);
       return;
     }
-    Object localObject = (a)this.FJJ.peek();
-    if (((a)localObject).FJL.size() == 0)
+    Object localObject = (a)this.MdG.peek();
+    if (((a)localObject).MdI.size() == 0)
     {
-      this.FJJ.poll();
-      bg.aVF();
-      c.azQ().set(8193, ((a)localObject).jVt);
-      bg.aVF();
-      c.azQ().set(8449, Long.valueOf(Util.nowSecond()));
+      this.MdG.poll();
+      bh.beI();
+      c.aHp().i(8193, ((a)localObject).mMG);
+      bh.beI();
+      c.aHp().i(8449, Long.valueOf(Util.nowSecond()));
       AppMethodBeat.o(28921);
       return;
     }
-    localObject = (String)((a)localObject).FJL.peek();
+    localObject = (String)((a)localObject).MdI.peek();
     if ((localObject == null) || (((String)localObject).length() <= 0))
     {
       AppMethodBeat.o(28921);
       return;
     }
-    this.FJK = true;
+    this.MdH = true;
     localObject = new a((String)localObject);
-    bg.azz().a(141, this);
-    bg.azz().a((q)localObject, 0);
+    bh.aGY().a(141, this);
+    bh.aGY().a((q)localObject, 0);
     AppMethodBeat.o(28921);
   }
   
   public final h.b b(h.a parama)
   {
     AppMethodBeat.i(28920);
-    parama = z.a(parama.heO.KHn);
-    if (this.FJJ == null) {
-      this.FJJ = new LinkedList();
+    parama = z.a(parama.jQG.RIF);
+    if (this.MdG == null) {
+      this.MdG = new LinkedList();
     }
     parama = new a(parama);
-    if (parama.jVt != null)
+    if (parama.mMG != null)
     {
-      this.FJJ.offer(parama);
-      fte();
+      this.MdG.offer(parama);
+      ghD();
     }
     AppMethodBeat.o(28920);
     return null;
@@ -91,63 +91,63 @@ public final class b
     AppMethodBeat.i(28922);
     if (paramq.getType() != 141)
     {
-      this.FJK = false;
+      this.MdH = false;
       AppMethodBeat.o(28922);
       return;
     }
-    bg.azz().b(141, this);
+    bh.aGY().b(141, this);
     paramString = ((a)paramq).url;
-    paramq = (a)this.FJJ.peek();
-    if ((paramq == null) || (paramq.FJL.size() == 0))
+    paramq = (a)this.MdG.peek();
+    if ((paramq == null) || (paramq.MdI.size() == 0))
     {
       Log.e("MicroMsg.PushMessageExtension", "getDoSceneQueue failed ! reset queue!");
-      this.FJJ = new LinkedList();
-      this.FJK = false;
+      this.MdG = new LinkedList();
+      this.MdH = false;
       AppMethodBeat.o(28922);
       return;
     }
-    if (paramq.FJL.size() == 0)
+    if (paramq.MdI.size() == 0)
     {
       Log.e("MicroMsg.PushMessageExtension", "get imgQueue failed ! ignore this message");
-      this.FJJ.poll();
-      this.FJK = false;
+      this.MdG.poll();
+      this.MdH = false;
       AppMethodBeat.o(28922);
       return;
     }
-    if (!((String)paramq.FJL.peek()).equals(paramString))
+    if (!((String)paramq.MdI.peek()).equals(paramString))
     {
       Log.e("MicroMsg.PushMessageExtension", "check img url failed ! ignore this message");
-      this.FJJ.poll();
-      this.FJK = false;
+      this.MdG.poll();
+      this.MdH = false;
       AppMethodBeat.o(28922);
       return;
     }
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
       Log.e("MicroMsg.PushMessageExtension", "down failed [" + paramInt1 + "," + paramInt2 + "] ignore this message : img:[" + paramString + "] ");
-      this.FJJ.poll();
-      this.FJK = false;
+      this.MdG.poll();
+      this.MdH = false;
       AppMethodBeat.o(28922);
       return;
     }
-    paramq.FJL.poll();
-    this.FJK = false;
-    fte();
+    paramq.MdI.poll();
+    this.MdH = false;
+    ghD();
     AppMethodBeat.o(28922);
   }
   
   static final class a
   {
-    public Queue<String> FJL;
-    public String jVt;
+    public Queue<String> MdI;
+    public String mMG;
     
     a(String paramString)
     {
       AppMethodBeat.i(28919);
-      this.jVt = paramString;
-      this.FJL = new LinkedList();
+      this.mMG = paramString;
+      this.MdI = new LinkedList();
       Log.d("MicroMsg.PushMessageExtension", "DoSceneStruct:".concat(String.valueOf(paramString)));
-      paramString = com.tencent.mm.pluginsdk.k.a.a.cm(MMApplicationContext.getContext(), paramString);
+      paramString = com.tencent.mm.pluginsdk.l.a.a.cy(MMApplicationContext.getContext(), paramString);
       if ((paramString == null) || (paramString.size() <= 0))
       {
         Log.e("MicroMsg.PushMessageExtension", "Parse Message Failed !");
@@ -157,12 +157,12 @@ public final class b
       int i = 0;
       while (i < paramString.size())
       {
-        Object localObject = ((com.tencent.mm.pluginsdk.k.a.a)paramString.get(i)).Kaz;
+        Object localObject = ((com.tencent.mm.pluginsdk.l.a.a)paramString.get(i)).Rbc;
         if (localObject != null)
         {
           localObject = ((Map)localObject).entrySet().iterator();
           while (((Iterator)localObject).hasNext()) {
-            this.FJL.offer(((Map.Entry)((Iterator)localObject).next()).getValue());
+            this.MdI.offer(((Map.Entry)((Iterator)localObject).next()).getValue());
           }
         }
         i += 1;
@@ -173,7 +173,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.c.b
  * JD-Core Version:    0.7.0.1
  */

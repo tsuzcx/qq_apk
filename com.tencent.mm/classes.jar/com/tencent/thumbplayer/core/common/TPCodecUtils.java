@@ -87,7 +87,7 @@ public class TPCodecUtils
   
   static
   {
-    AppMethodBeat.i(189731);
+    AppMethodBeat.i(222768);
     mHevcDeviceLevel = -1;
     mAvs3DeviceLevel = -1;
     mCodecCap = null;
@@ -148,12 +148,12 @@ public class TPCodecUtils
     mAVS3WMaxCapability = new TPCodecCapability.TPVCodecMaxCapability(0, 0, 0, 30);
     mMaxVCodecHwCapabilityMap = new HashMap();
     mMaxVCodecSwCapabilityMap = new HashMap();
-    AppMethodBeat.o(189731);
+    AppMethodBeat.o(222768);
   }
   
   private static void cacheCapList(String paramString, ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(189716);
+    AppMethodBeat.i(222709);
     if (mApplicationContext != null) {
       try
       {
@@ -161,7 +161,7 @@ public class TPCodecUtils
         if (localLocalCache != null) {
           localLocalCache.put(paramString, paramArrayList);
         }
-        AppMethodBeat.o(189716);
+        AppMethodBeat.o(222709);
         return;
       }
       catch (Throwable paramArrayList)
@@ -169,12 +169,12 @@ public class TPCodecUtils
         TPNativeLog.printLog(4, "TPCodecUtils", "cache " + paramString + "failed");
       }
     }
-    AppMethodBeat.o(189716);
+    AppMethodBeat.o(222709);
   }
   
   private static void cacheCapabilityMap(String paramString, HashMap<Integer, TPCodecCapability.TPVCodecMaxCapability> paramHashMap)
   {
-    AppMethodBeat.i(189717);
+    AppMethodBeat.i(222712);
     if (mApplicationContext != null) {
       try
       {
@@ -182,7 +182,7 @@ public class TPCodecUtils
         if (localLocalCache != null) {
           localLocalCache.put(paramString, paramHashMap);
         }
-        AppMethodBeat.o(189717);
+        AppMethodBeat.o(222712);
         return;
       }
       catch (Throwable paramHashMap)
@@ -190,12 +190,12 @@ public class TPCodecUtils
         TPNativeLog.printLog(4, "TPCodecUtils", "cache " + paramString + "failed");
       }
     }
-    AppMethodBeat.o(189717);
+    AppMethodBeat.o(222712);
   }
   
   private static void cacheStringInfo(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(189715);
+    AppMethodBeat.i(222707);
     if (mApplicationContext != null) {
       try
       {
@@ -203,7 +203,7 @@ public class TPCodecUtils
         if (localLocalCache != null) {
           localLocalCache.put(paramString1, paramString2);
         }
-        AppMethodBeat.o(189715);
+        AppMethodBeat.o(222707);
         return;
       }
       catch (Throwable paramString2)
@@ -211,16 +211,16 @@ public class TPCodecUtils
         TPNativeLog.printLog(4, "TPCodecUtils", "cache " + paramString1 + "failed");
       }
     }
-    AppMethodBeat.o(189715);
+    AppMethodBeat.o(222707);
   }
   
   public static boolean getAudioMediaCodecPassThroughCap(int paramInt1, int paramInt2, int paramInt3)
   {
     int j = 1;
-    AppMethodBeat.i(189730);
+    AppMethodBeat.i(222764);
     if (paramInt1 != 5004)
     {
-      AppMethodBeat.o(189730);
+      AppMethodBeat.o(222764);
       return false;
     }
     int i;
@@ -232,7 +232,7 @@ public class TPCodecUtils
     for (;;)
     {
       boolean bool = TPAudioPassThroughPluginDetector.isAudioPassThroughSupport(i, paramInt3);
-      AppMethodBeat.o(189730);
+      AppMethodBeat.o(222764);
       return bool;
       i = j;
       if (paramInt2 == 20)
@@ -263,7 +263,7 @@ public class TPCodecUtils
   
   public static int getAvs3SWDecodeLevel()
   {
-    AppMethodBeat.i(189698);
+    AppMethodBeat.i(222517);
     String str = TPSystemInfo.getCpuHarewareName();
     int i = TPSystemInfo.getCpuHWProducter(str);
     int j = TPSystemInfo.getCpuHWProductIndex(str);
@@ -271,7 +271,7 @@ public class TPCodecUtils
     if (-1 != mAvs3DeviceLevel)
     {
       i = mAvs3DeviceLevel;
-      AppMethodBeat.o(189698);
+      AppMethodBeat.o(222517);
       return i;
     }
     mAvs3DeviceLevel = 0;
@@ -283,7 +283,7 @@ public class TPCodecUtils
     for (;;)
     {
       i = mAvs3DeviceLevel;
-      AppMethodBeat.o(189698);
+      AppMethodBeat.o(222517);
       return i;
       if (j >= mFhdAvs3QualcommIndex)
       {
@@ -315,7 +315,7 @@ public class TPCodecUtils
   
   private static ArrayList<String> getCachedCapList(String paramString)
   {
-    AppMethodBeat.i(189719);
+    AppMethodBeat.i(222714);
     if (mApplicationContext != null) {
       try
       {
@@ -323,7 +323,7 @@ public class TPCodecUtils
         if (localObject != null)
         {
           localObject = (ArrayList)((LocalCache)localObject).getAsObject(paramString);
-          AppMethodBeat.o(189719);
+          AppMethodBeat.o(222714);
           return localObject;
         }
       }
@@ -332,13 +332,13 @@ public class TPCodecUtils
         TPNativeLog.printLog(4, "TPCodecUtils", "get " + paramString + "failed");
       }
     }
-    AppMethodBeat.o(189719);
+    AppMethodBeat.o(222714);
     return null;
   }
   
   private static HashMap<Integer, TPCodecCapability.TPVCodecMaxCapability> getCachedCapabilityMap(String paramString)
   {
-    AppMethodBeat.i(189720);
+    AppMethodBeat.i(222718);
     if (mApplicationContext != null) {
       try
       {
@@ -346,7 +346,7 @@ public class TPCodecUtils
         if (localObject != null)
         {
           localObject = (HashMap)((LocalCache)localObject).getAsObject(paramString);
-          AppMethodBeat.o(189720);
+          AppMethodBeat.o(222718);
           return localObject;
         }
       }
@@ -355,13 +355,13 @@ public class TPCodecUtils
         TPNativeLog.printLog(4, "TPCodecUtils", "get " + paramString + "failed");
       }
     }
-    AppMethodBeat.o(189720);
+    AppMethodBeat.o(222718);
     return null;
   }
   
   private static String getCachedStringInfo(String paramString)
   {
-    AppMethodBeat.i(189718);
+    AppMethodBeat.i(222713);
     if (mApplicationContext != null) {
       try
       {
@@ -369,7 +369,7 @@ public class TPCodecUtils
         if (localObject != null)
         {
           localObject = ((LocalCache)localObject).getAsString(paramString);
-          AppMethodBeat.o(189718);
+          AppMethodBeat.o(222713);
           return localObject;
         }
       }
@@ -378,20 +378,20 @@ public class TPCodecUtils
         TPNativeLog.printLog(4, "TPCodecUtils", "get " + paramString + "failed");
       }
     }
-    AppMethodBeat.o(189718);
+    AppMethodBeat.o(222713);
     return null;
   }
   
   private static int getDecodeLevelByCoresAndFreq()
   {
     int i = 21;
-    AppMethodBeat.i(189699);
+    AppMethodBeat.i(222527);
     if (TPSystemInfo.getNumCores() >= 8) {
       if (TPSystemInfo.getMaxCpuFreq() / 1000L < 1200L) {}
     }
     for (;;)
     {
-      AppMethodBeat.o(189699);
+      AppMethodBeat.o(222527);
       return i;
       i = 16;
       continue;
@@ -468,7 +468,7 @@ public class TPCodecUtils
   
   public static int getHevcSWDecodeLevel()
   {
-    AppMethodBeat.i(189697);
+    AppMethodBeat.i(222509);
     String str = TPSystemInfo.getCpuHarewareName();
     int i = TPSystemInfo.getCpuHWProducter(str);
     int j = TPSystemInfo.getCpuHWProductIndex(str);
@@ -476,7 +476,7 @@ public class TPCodecUtils
     if (-1 != mHevcDeviceLevel)
     {
       i = mHevcDeviceLevel;
-      AppMethodBeat.o(189697);
+      AppMethodBeat.o(222509);
       return i;
     }
     mHevcDeviceLevel = 0;
@@ -488,7 +488,7 @@ public class TPCodecUtils
     for (;;)
     {
       i = mHevcDeviceLevel;
-      AppMethodBeat.o(189697);
+      AppMethodBeat.o(222509);
       return i;
       if (j >= mShdHevcQualcommIndex)
       {
@@ -541,26 +541,26 @@ public class TPCodecUtils
   
   public static int getHwDolbyLevel()
   {
-    AppMethodBeat.i(189714);
+    AppMethodBeat.i(222704);
     if (sDolbyLevel == -1) {
       initDolbyInvariableParams();
     }
     int i = sDolbyLevel;
-    AppMethodBeat.o(189714);
+    AppMethodBeat.o(222704);
     return i;
   }
   
   public static int getMaxSupportedFrameRatesFor(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(189704);
+    AppMethodBeat.i(222612);
     if (Build.VERSION.SDK_INT < 21)
     {
-      AppMethodBeat.o(189704);
+      AppMethodBeat.o(222612);
       return 30;
     }
     if (paramInt1 == 101)
     {
-      AppMethodBeat.o(189704);
+      AppMethodBeat.o(222612);
       return 30;
     }
     try
@@ -586,7 +586,7 @@ public class TPCodecUtils
                 if (((Double)((Range)localObject).getUpper()).intValue() % 10 == 0) {}
                 for (paramInt1 = ((Double)((Range)localObject).getUpper()).intValue();; paramInt1 = ((Double)((Range)localObject).getUpper()).intValue() + 1)
                 {
-                  AppMethodBeat.o(189704);
+                  AppMethodBeat.o(222612);
                   return paramInt1;
                 }
               }
@@ -601,7 +601,7 @@ public class TPCodecUtils
                 }
                 for (;;)
                 {
-                  AppMethodBeat.o(189704);
+                  AppMethodBeat.o(222612);
                   return paramInt1;
                   paramInt1 = ((Double)((Range)localObject).getUpper()).intValue();
                   paramInt1 += 1;
@@ -618,7 +618,7 @@ public class TPCodecUtils
     catch (Throwable localThrowable)
     {
       TPNativeLog.printLog(4, "TPCodecUtils", "getSupportedFrameRatesFor func failed:" + localThrowable.toString());
-      AppMethodBeat.o(189704);
+      AppMethodBeat.o(222612);
     }
   }
   
@@ -2039,12 +2039,12 @@ public class TPCodecUtils
     {
       try
       {
-        AppMethodBeat.i(189706);
+        AppMethodBeat.i(222670);
         TPNativeLog.printLog(2, "TPCodecUtils", "getVCodecSWMaxCapabilityMap func in");
         if (mIsFFmpegCapGot)
         {
           localHashMap = mMaxVCodecSwCapabilityMap;
-          AppMethodBeat.o(189706);
+          AppMethodBeat.o(222670);
           return localHashMap;
         }
       }
@@ -2079,13 +2079,13 @@ public class TPCodecUtils
           TPNativeLog.printLog(2, "getVCodecSWMaxCapabilityMap success, maxHevcLumaSamples:" + j + " maxAvs3LumaSamples:" + m);
           mIsFFmpegCapGot = true;
           HashMap localHashMap = mMaxVCodecSwCapabilityMap;
-          AppMethodBeat.o(189706);
+          AppMethodBeat.o(222670);
         }
         catch (Exception localException)
         {
           TPNativeLog.printLog(4, "TPCodecUtils", "getVCodecSWMaxCapabilityMap exception");
           Object localObject2 = null;
-          AppMethodBeat.o(189706);
+          AppMethodBeat.o(222670);
         }
         localObject1 = finally;
       }
@@ -2169,44 +2169,44 @@ public class TPCodecUtils
   
   private static void initDolbyInvariableParams()
   {
-    AppMethodBeat.i(189713);
+    AppMethodBeat.i(222703);
     boolean bool1 = isHwDDPlusSupported_V2();
     boolean bool2 = isHwDolbyDSSupported();
     if ((!bool2) && (!bool1))
     {
       sDolbyLevel = 0;
-      AppMethodBeat.o(189713);
+      AppMethodBeat.o(222703);
       return;
     }
     if ((bool1) && (!bool2))
     {
       sDolbyLevel = 1;
-      AppMethodBeat.o(189713);
+      AppMethodBeat.o(222703);
       return;
     }
     if ((!bool1) && (bool2))
     {
       sDolbyLevel = 10;
-      AppMethodBeat.o(189713);
+      AppMethodBeat.o(222703);
       return;
     }
     if ((bool2) && (bool1)) {
       sDolbyLevel = 11;
     }
-    AppMethodBeat.o(189713);
+    AppMethodBeat.o(222703);
   }
   
   public static boolean isBlackListForHardwareDec(String paramString)
   {
-    AppMethodBeat.i(189709);
+    AppMethodBeat.i(222685);
     if (mIsInBlackListForHardwareDec != -1)
     {
       if (mIsInBlackListForHardwareDec == 0)
       {
-        AppMethodBeat.o(189709);
+        AppMethodBeat.o(222685);
         return false;
       }
-      AppMethodBeat.o(189709);
+      AppMethodBeat.o(222685);
       return true;
     }
     mIsInBlackListForHardwareDec = 0;
@@ -2222,7 +2222,7 @@ public class TPCodecUtils
           {
             TPNativeLog.printLog(2, "TPCodecUtils", "isBlackListForHardwareDec, deviceName: ".concat(String.valueOf(str)));
             mIsInBlackListForHardwareDec = 1;
-            AppMethodBeat.o(189709);
+            AppMethodBeat.o(222685);
             return true;
           }
           i += 1;
@@ -2231,21 +2231,21 @@ public class TPCodecUtils
       if ((!TextUtils.isEmpty(paramString)) && ("video/hevc".equals(paramString)) && (Build.VERSION.SDK_INT >= 14) && (!TextUtils.isEmpty(str)) && (("PRO 7 Plus".equals(str)) || ("PRO 7-H".equals(str)) || ("PRO+7+Plus".equals(str))))
       {
         mIsInBlackListForHardwareDec = 1;
-        AppMethodBeat.o(189709);
+        AppMethodBeat.o(222685);
         return true;
       }
     }
     catch (Exception paramString)
     {
       TPNativeLog.printLog(4, "TPCodecUtils", "isBlackListForHardwareDec exception");
-      AppMethodBeat.o(189709);
+      AppMethodBeat.o(222685);
     }
     return false;
   }
   
   public static boolean isBlackListForHdr10(String paramString)
   {
-    AppMethodBeat.i(189725);
+    AppMethodBeat.i(222754);
     try
     {
       if (!TextUtils.isEmpty(paramString))
@@ -2259,7 +2259,7 @@ public class TPCodecUtils
           boolean bool = str.equalsIgnoreCase(arrayOfString[i]);
           if (bool)
           {
-            AppMethodBeat.o(189725);
+            AppMethodBeat.o(222754);
             return true;
           }
           i += 1;
@@ -2270,13 +2270,13 @@ public class TPCodecUtils
     catch (Exception paramString)
     {
       TPNativeLog.printLog(4, "TPCodecUtils", "isBlackListForHdr10：" + paramString.toString());
-      AppMethodBeat.o(189725);
+      AppMethodBeat.o(222754);
     }
   }
   
   public static boolean isBlackListForHdr10Enhance(String paramString)
   {
-    AppMethodBeat.i(189728);
+    AppMethodBeat.i(222761);
     try
     {
       if (!TextUtils.isEmpty(paramString))
@@ -2290,7 +2290,7 @@ public class TPCodecUtils
           boolean bool = str.equalsIgnoreCase(arrayOfString[i]);
           if (bool)
           {
-            AppMethodBeat.o(189728);
+            AppMethodBeat.o(222761);
             return true;
           }
           i += 1;
@@ -2301,13 +2301,13 @@ public class TPCodecUtils
     catch (Exception paramString)
     {
       TPNativeLog.printLog(4, "TPCodecUtils", "isBlackListForHdr10：" + paramString.toString());
-      AppMethodBeat.o(189728);
+      AppMethodBeat.o(222761);
     }
   }
   
   public static boolean isBlackListForVidHdr10Enhance(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(189726);
+    AppMethodBeat.i(222756);
     try
     {
       if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
@@ -2320,7 +2320,7 @@ public class TPCodecUtils
           boolean bool = paramString1.equalsIgnoreCase(arrayOfString[i]);
           if (bool)
           {
-            AppMethodBeat.o(189726);
+            AppMethodBeat.o(222756);
             return true;
           }
           i += 1;
@@ -2331,16 +2331,16 @@ public class TPCodecUtils
     catch (Exception paramString1)
     {
       TPNativeLog.printLog(4, "TPCodecUtils", "isBlackListForHdr10：" + paramString1.getMessage());
-      AppMethodBeat.o(189726);
+      AppMethodBeat.o(222756);
     }
   }
   
   public static boolean isHDR10PLUSSupport()
   {
-    AppMethodBeat.i(189723);
+    AppMethodBeat.i(222741);
     if (Build.VERSION.SDK_INT < 29)
     {
-      AppMethodBeat.o(189723);
+      AppMethodBeat.o(222741);
       return false;
     }
     try
@@ -2367,7 +2367,7 @@ public class TPCodecUtils
                 if (arrayOfCodecProfileLevel[k].profile == 8192)
                 {
                   TPNativeLog.printLog(2, "TPCodecUtils", "isHDR10PLUSSupport support HDR10PLUS");
-                  AppMethodBeat.o(189723);
+                  AppMethodBeat.o(222741);
                   return true;
                 }
                 k += 1;
@@ -2383,19 +2383,19 @@ public class TPCodecUtils
     catch (Throwable localThrowable)
     {
       TPNativeLog.printLog(4, "TPCodecUtils", "isHDR10PLUSSupport " + localThrowable.toString());
-      AppMethodBeat.o(189723);
+      AppMethodBeat.o(222741);
       return false;
     }
-    AppMethodBeat.o(189723);
+    AppMethodBeat.o(222741);
     return false;
   }
   
   public static boolean isHDR10Support()
   {
-    AppMethodBeat.i(189722);
+    AppMethodBeat.i(222738);
     if (Build.VERSION.SDK_INT < 24)
     {
-      AppMethodBeat.o(189722);
+      AppMethodBeat.o(222738);
       return false;
     }
     try
@@ -2422,7 +2422,7 @@ public class TPCodecUtils
                 if (arrayOfCodecProfileLevel[k].profile == 4096)
                 {
                   TPNativeLog.printLog(2, "TPCodecUtils", "isHDR10Support support HDR10");
-                  AppMethodBeat.o(189722);
+                  AppMethodBeat.o(222738);
                   return true;
                 }
                 k += 1;
@@ -2438,19 +2438,19 @@ public class TPCodecUtils
     catch (Throwable localThrowable)
     {
       TPNativeLog.printLog(4, "TPCodecUtils", "isHDR10Support " + localThrowable.toString());
-      AppMethodBeat.o(189722);
+      AppMethodBeat.o(222738);
       return false;
     }
-    AppMethodBeat.o(189722);
+    AppMethodBeat.o(222738);
     return false;
   }
   
   public static boolean isHDRDolbyVisionSupport(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(189724);
+    AppMethodBeat.i(222748);
     if (Build.VERSION.SDK_INT < 24)
     {
-      AppMethodBeat.o(189724);
+      AppMethodBeat.o(222748);
       return false;
     }
     try
@@ -2478,7 +2478,7 @@ public class TPCodecUtils
                 if ((localCodecProfileLevel.profile > 0) && (localCodecProfileLevel.profile >= paramInt1) && (localCodecProfileLevel.level > 0) && (localCodecProfileLevel.level >= paramInt2))
                 {
                   TPNativeLog.printLog(2, "TPCodecUtils", "isHDRDolbyVisionSupport support dolbyvision");
-                  AppMethodBeat.o(189724);
+                  AppMethodBeat.o(222748);
                   return true;
                 }
                 k += 1;
@@ -2494,10 +2494,10 @@ public class TPCodecUtils
     catch (Throwable localThrowable)
     {
       TPNativeLog.printLog(4, "TPCodecUtils", "isHDRDolbyVisionSupport " + localThrowable.toString());
-      AppMethodBeat.o(189724);
+      AppMethodBeat.o(222748);
       return false;
     }
-    AppMethodBeat.o(189724);
+    AppMethodBeat.o(222748);
     return false;
   }
   
@@ -2508,7 +2508,7 @@ public class TPCodecUtils
   
   public static boolean isHDRsupport(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(189721);
+    AppMethodBeat.i(222735);
     boolean bool4 = false;
     boolean bool3 = false;
     boolean bool6 = false;
@@ -2518,31 +2518,31 @@ public class TPCodecUtils
     switch (paramInt1)
     {
     default: 
-      AppMethodBeat.o(189721);
+      AppMethodBeat.o(222735);
       return false;
     case 0: 
       if (Build.VERSION.SDK_INT < 24)
       {
-        AppMethodBeat.o(189721);
+        AppMethodBeat.o(222735);
         return false;
       }
       break;
     case 1: 
       if (Build.VERSION.SDK_INT < 29)
       {
-        AppMethodBeat.o(189721);
+        AppMethodBeat.o(222735);
         return false;
       }
       break;
     case 2: 
       if (Build.VERSION.SDK_INT < 24)
       {
-        AppMethodBeat.o(189721);
+        AppMethodBeat.o(222735);
         return false;
       }
       break;
     case 3: 
-      AppMethodBeat.o(189721);
+      AppMethodBeat.o(222735);
       return false;
     }
     Object localObject;
@@ -2569,7 +2569,7 @@ public class TPCodecUtils
             if (!bool7) {
               break;
             }
-            AppMethodBeat.o(189721);
+            AppMethodBeat.o(222735);
             return true;
             str = mHDR10CapabilityKey;
             continue;
@@ -2579,7 +2579,7 @@ public class TPCodecUtils
             continue;
             str = mHDRHLGCapabilityKey;
           }
-          AppMethodBeat.o(189721);
+          AppMethodBeat.o(222735);
           return false;
         }
       }
@@ -2691,7 +2691,7 @@ public class TPCodecUtils
           default: 
             bool1 = false;
           case 0: 
-            AppMethodBeat.o(189721);
+            AppMethodBeat.o(222735);
             return bool1;
           }
         }
@@ -2811,19 +2811,19 @@ public class TPCodecUtils
   
   public static boolean isHwDDPlusSupported()
   {
-    AppMethodBeat.i(189712);
+    AppMethodBeat.i(222701);
     boolean bool1;
     if (sIsDDPInit)
     {
       bool1 = sIsDDPSup;
-      AppMethodBeat.o(189712);
+      AppMethodBeat.o(222701);
       return bool1;
     }
     if (isBlackListForHardwareDec(null))
     {
       sIsDDPInit = true;
       sIsDDPSup = false;
-      AppMethodBeat.o(189712);
+      AppMethodBeat.o(222701);
       return false;
     }
     boolean bool2;
@@ -2892,7 +2892,7 @@ public class TPCodecUtils
       sIsDDPSup = bool2;
       sIsDDPInit = true;
       bool1 = sIsDDPSup;
-      AppMethodBeat.o(189712);
+      AppMethodBeat.o(222701);
       return bool1;
       label276:
       label279:
@@ -2903,11 +2903,11 @@ public class TPCodecUtils
   public static boolean isHwDDPlusSupported_V2()
   {
     boolean bool1 = false;
-    AppMethodBeat.i(189710);
+    AppMethodBeat.i(222686);
     if (isBlackListForHardwareDec(null))
     {
       sIsDDPSup = false;
-      AppMethodBeat.o(189710);
+      AppMethodBeat.o(222686);
       return false;
     }
     try
@@ -2921,13 +2921,13 @@ public class TPCodecUtils
       break label33;
     }
     sIsDDPSup = bool1;
-    AppMethodBeat.o(189710);
+    AppMethodBeat.o(222686);
     return bool1;
   }
   
   public static boolean isHwDolbyDSSupported()
   {
-    AppMethodBeat.i(189711);
+    AppMethodBeat.i(222694);
     boolean bool;
     if (sIsDDSInit)
     {
@@ -2935,7 +2935,7 @@ public class TPCodecUtils
         TPNativeLog.printLog(2, "TPCodecUtils", "dds ha suported " + sIsDDSSup);
       }
       bool = sIsDDSSup;
-      AppMethodBeat.o(189711);
+      AppMethodBeat.o(222694);
       return bool;
     }
     try
@@ -2951,7 +2951,7 @@ public class TPCodecUtils
           TPNativeLog.printLog(2, "TPCodecUtils", "dds ha suported " + sIsDDSSup);
         }
         bool = sIsDDSSup;
-        AppMethodBeat.o(189711);
+        AppMethodBeat.o(222694);
         return bool;
       }
     }
@@ -2969,25 +2969,25 @@ public class TPCodecUtils
   
   public static boolean isHwSupportDDPlus()
   {
-    AppMethodBeat.i(189707);
+    AppMethodBeat.i(222673);
     if ((mHWCodecCapList != null) && (mHWCodecCapList.size() > 0) && ((mHWCodecCapList.contains("audio/eac3")) || (mHWCodecCapList.contains("audio/ac3"))))
     {
-      AppMethodBeat.o(189707);
+      AppMethodBeat.o(222673);
       return true;
     }
     if ((mSoftCodecCapList != null) && (mSoftCodecCapList.size() > 0) && ((mSoftCodecCapList.contains("audio/eac3")) || (mSoftCodecCapList.contains("audio/ac3"))))
     {
-      AppMethodBeat.o(189707);
+      AppMethodBeat.o(222673);
       return true;
     }
-    AppMethodBeat.o(189707);
+    AppMethodBeat.o(222673);
     return false;
   }
   
   public static boolean isInMediaCodecWhiteList(String paramString, int paramInt1, int paramInt2)
   {
     boolean bool = true;
-    AppMethodBeat.i(189708);
+    AppMethodBeat.i(222680);
     Object localObject = Build.MODEL;
     if ((!TextUtils.isEmpty((CharSequence)localObject)) && (mCodecCap != null) && (mCodecCap.containsKey(localObject)))
     {
@@ -3000,7 +3000,7 @@ public class TPCodecUtils
     }
     for (;;)
     {
-      AppMethodBeat.o(189708);
+      AppMethodBeat.o(222680);
       return bool;
       bool = false;
       continue;
@@ -3022,7 +3022,7 @@ public class TPCodecUtils
         {
           bool = false;
           continue;
-          AppMethodBeat.o(189708);
+          AppMethodBeat.o(222680);
           return false;
         }
       }
@@ -3034,7 +3034,7 @@ public class TPCodecUtils
   
   public static boolean isWhiteListForHdr10(String paramString)
   {
-    AppMethodBeat.i(189727);
+    AppMethodBeat.i(222759);
     try
     {
       if (!TextUtils.isEmpty(paramString))
@@ -3048,7 +3048,7 @@ public class TPCodecUtils
           boolean bool = str.equalsIgnoreCase(arrayOfString[i]);
           if (bool)
           {
-            AppMethodBeat.o(189727);
+            AppMethodBeat.o(222759);
             return true;
           }
           i += 1;
@@ -3059,13 +3059,13 @@ public class TPCodecUtils
     catch (Exception paramString)
     {
       TPNativeLog.printLog(4, "TPCodecUtils", "isWhiteListForHdr10：" + paramString.toString());
-      AppMethodBeat.o(189727);
+      AppMethodBeat.o(222759);
     }
   }
   
   public static boolean isWhiteListForHdr10Enhance(String paramString)
   {
-    AppMethodBeat.i(189729);
+    AppMethodBeat.i(222763);
     try
     {
       if (!TextUtils.isEmpty(paramString))
@@ -3079,7 +3079,7 @@ public class TPCodecUtils
           boolean bool = str.equalsIgnoreCase(arrayOfString[i]);
           if (bool)
           {
-            AppMethodBeat.o(189729);
+            AppMethodBeat.o(222763);
             return true;
           }
           i += 1;
@@ -3090,13 +3090,13 @@ public class TPCodecUtils
     catch (Exception paramString)
     {
       TPNativeLog.printLog(4, "TPCodecUtils", "isWhiteListForHdr10：" + paramString.toString());
-      AppMethodBeat.o(189729);
+      AppMethodBeat.o(222763);
     }
   }
   
   private static int maxLumaSamplesForAVCProfileLevel(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(189701);
+    AppMethodBeat.i(222551);
     for (;;)
     {
       try
@@ -3146,7 +3146,7 @@ public class TPCodecUtils
         continue;
       }
       TPNativeLog.printLog(2, "AVC: maxprofile :" + paramInt1 + " , maxlevel :" + paramInt2 + " , maxSample : " + i);
-      AppMethodBeat.o(189701);
+      AppMethodBeat.o(222551);
       return i;
       if (paramInt2 == j)
       {
@@ -3216,7 +3216,7 @@ public class TPCodecUtils
   
   private static int maxLumaSamplesForHEVCProfileLevel(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(189702);
+    AppMethodBeat.i(222581);
     for (;;)
     {
       try
@@ -3285,7 +3285,7 @@ public class TPCodecUtils
         continue;
       }
       TPNativeLog.printLog(2, "HEVC: maxprofile :" + paramInt1 + " , maxlevel :" + paramInt2 + " , maxSample : " + i);
-      AppMethodBeat.o(189702);
+      AppMethodBeat.o(222581);
       return i;
       if ((paramInt2 == j) || (paramInt2 == i10))
       {
@@ -3343,7 +3343,7 @@ public class TPCodecUtils
   
   private static int maxLumaSamplesForVP9ProfileLevel(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(189703);
+    AppMethodBeat.i(222604);
     for (;;)
     {
       try
@@ -3389,7 +3389,7 @@ public class TPCodecUtils
         continue;
       }
       TPNativeLog.printLog(2, "VP9: maxprofile :" + paramInt1 + " , maxlevel :" + paramInt2 + " , maxSample : " + i);
-      AppMethodBeat.o(189703);
+      AppMethodBeat.o(222604);
       return i;
       if (paramInt2 == j)
       {
@@ -3451,21 +3451,21 @@ public class TPCodecUtils
   
   private static <K, T> void replace(K paramK, T paramT, HashMap<K, T> paramHashMap)
   {
-    AppMethodBeat.i(189700);
+    AppMethodBeat.i(222532);
     if (paramHashMap.containsKey(paramK))
     {
       paramHashMap.remove(paramK);
       paramHashMap.put(paramK, paramT);
-      AppMethodBeat.o(189700);
+      AppMethodBeat.o(222532);
       return;
     }
     paramHashMap.put(paramK, paramT);
-    AppMethodBeat.o(189700);
+    AppMethodBeat.o(222532);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPCodecUtils
  * JD-Core Version:    0.7.0.1
  */

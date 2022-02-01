@@ -8,66 +8,68 @@ import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.q;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.order.c.a;
 import com.tencent.mm.plugin.order.c.a.a;
 import com.tencent.mm.plugin.remittance.ui.RemittanceDetailUI;
 import com.tencent.mm.plugin.wallet_payu.remittance.a.b;
+import com.tencent.mm.plugin.wallet_payu.remittance.a.e;
+import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.mm.plugin.wxpay.a.h;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.storage.ao;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.wallet_core.ui.g;
 
 public class PayURemittanceDetailUI
   extends RemittanceDetailUI
 {
-  private int AOC;
-  private int AOD;
-  private int Cvz;
-  private String IuA;
-  private int IuB;
-  private int IuC;
-  private String Iuz;
+  private int GHQ;
+  private int GHR;
+  private int Ito;
+  private String Pnj;
+  private String Pnk;
+  private int Pnl;
   private String mReceiverName;
+  private int wZT;
   
-  public final void Wg(int paramInt)
-  {
-    AppMethodBeat.i(72195);
-    doSceneProgress(new com.tencent.mm.plugin.wallet_payu.remittance.a.e(this.Crw, this.Cvv, this.Cvs), true);
-    AppMethodBeat.o(72195);
-  }
-  
-  public final void Wh(int paramInt)
-  {
-    AppMethodBeat.i(72196);
-    doSceneProgress(new com.tencent.mm.plugin.wallet_payu.remittance.a.e(this.Crw, this.Cvv, this.Cvs, paramInt), true);
-    AppMethodBeat.o(72196);
-  }
-  
-  public final void aQ(Intent paramIntent)
+  public final void aP(Intent paramIntent)
   {
     AppMethodBeat.i(72197);
-    com.tencent.mm.br.c.b(this, "wallet_payu", ".remittance.ui.PayURemittanceResendMsgUI", paramIntent);
+    com.tencent.mm.by.c.b(this, "wallet_payu", ".remittance.ui.PayURemittanceResendMsgUI", paramIntent);
     AppMethodBeat.o(72197);
   }
   
-  public final void eOg()
+  public final void acV(int paramInt)
+  {
+    AppMethodBeat.i(72195);
+    doSceneProgress(new e(this.IoU, this.Itk, this.Ith), true);
+    AppMethodBeat.o(72195);
+  }
+  
+  public final void acW(int paramInt)
+  {
+    AppMethodBeat.i(72196);
+    doSceneProgress(new e(this.IoU, this.Itk, this.Ith, paramInt), true);
+    AppMethodBeat.o(72196);
+  }
+  
+  public final void fAV()
   {
     AppMethodBeat.i(72198);
-    doSceneProgress(new com.tencent.mm.plugin.wallet_payu.remittance.a.c(this.Crw, this.Cvz, this.Iuz, this.Cvv));
+    doSceneProgress(new com.tencent.mm.plugin.wallet_payu.remittance.a.c(this.IoU, this.Ito, this.Pnj, this.Itk));
     AppMethodBeat.o(72198);
   }
   
-  public final void eOh()
+  public final void fAW()
   {
     AppMethodBeat.i(72199);
-    doSceneProgress(new b(this.Crw, this.Cvz, this.Iuz, this.Cvv));
+    doSceneProgress(new b(this.IoU, this.Ito, this.Pnj, this.Itk));
     AppMethodBeat.o(72199);
   }
   
@@ -75,17 +77,17 @@ public class PayURemittanceDetailUI
   {
     AppMethodBeat.i(72194);
     super.onCreate(paramBundle);
-    this.Cvz = getIntent().getIntExtra("total_fee", 0);
-    this.Iuz = getIntent().getStringExtra("fee_type");
+    this.Ito = getIntent().getIntExtra("total_fee", 0);
+    this.Pnj = getIntent().getStringExtra("fee_type");
     if (getIntent().getBooleanExtra("is_sender", false))
     {
-      this.IuA = z.aTY();
-      this.mReceiverName = this.Cvv;
+      this.Pnk = z.bcZ();
+      this.mReceiverName = this.Itk;
       AppMethodBeat.o(72194);
       return;
     }
-    this.IuA = this.Cvv;
-    this.mReceiverName = z.aTY();
+    this.Pnk = this.Itk;
+    this.mReceiverName = z.bcZ();
     AppMethodBeat.o(72194);
   }
   
@@ -93,58 +95,56 @@ public class PayURemittanceDetailUI
   {
     boolean bool2 = false;
     AppMethodBeat.i(72200);
-    if ((paramq instanceof com.tencent.mm.plugin.wallet_payu.remittance.a.e))
+    if ((paramq instanceof e))
     {
-      paramString = (com.tencent.mm.plugin.wallet_payu.remittance.a.e)paramq;
+      paramString = (e)paramq;
       Object localObject1;
       Object localObject2;
       a locala;
-      if (paramString.dJY == 0)
+      if (paramString.fCN == 0)
       {
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          if ((this.Cvt == 1) && (!getIntent().getBooleanExtra("is_sender", false)))
+          if ((this.Iti == 1) && (!getIntent().getBooleanExtra("is_sender", false)))
           {
-            this.Cnb.setImageResource(2131235676);
-            this.CuH.setText(2131764539);
-            this.CuI.setText(com.tencent.mm.wallet_core.ui.f.d(paramString.qwJ, paramString.AOl));
-            this.CuL.setVisibility(0);
-            this.CuL.setOnClickListener(new PayURemittanceDetailUI.6(this));
-            paramq = getString(2131764543, new Object[] { Integer.valueOf(this.Cvx) });
-            localObject1 = getString(2131764531);
+            this.IjU.setImageResource(a.e.wallet_subject_receiving);
+            this.Isu.setText(a.i.remittance_detail_result_wait_receiver);
+            this.Isv.setText(g.d(paramString.tVK, paramString.GHz));
+            paramq = getString(a.i.remittance_detail_reveiver_tips_payu, new Object[] { Integer.valueOf(this.Itm) });
+            localObject1 = getString(a.i.remittance_detail_refuse_action);
             localObject2 = new SpannableString(paramq + (String)localObject1);
             locala = new a(this);
-            locala.AQT = new a.a()
+            locala.GKe = new a.a()
             {
               public final void onClick(View paramAnonymousView)
               {
-                AppMethodBeat.i(72192);
-                h.c(PayURemittanceDetailUI.this, PayURemittanceDetailUI.this.getString(2131764527, new Object[] { PayURemittanceDetailUI.aWe(PayURemittanceDetailUI.f(PayURemittanceDetailUI.this)) }), PayURemittanceDetailUI.this.getString(2131755962), PayURemittanceDetailUI.this.getString(2131764532), PayURemittanceDetailUI.this.getString(2131755761), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+                AppMethodBeat.i(72189);
+                com.tencent.mm.ui.base.h.c(PayURemittanceDetailUI.this, PayURemittanceDetailUI.this.getString(a.i.remittance_detail_refund_tips, new Object[] { PayURemittanceDetailUI.b(PayURemittanceDetailUI.this, PayURemittanceDetailUI.f(PayURemittanceDetailUI.this)) }), PayURemittanceDetailUI.this.getString(a.i.app_remind), PayURemittanceDetailUI.this.getString(a.i.remittance_detail_refuse_btn_text), PayURemittanceDetailUI.this.getString(a.i.app_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
                 {
                   public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                   {
-                    AppMethodBeat.i(72191);
-                    PayURemittanceDetailUI.this.eOh();
-                    AppMethodBeat.o(72191);
+                    AppMethodBeat.i(268173);
+                    PayURemittanceDetailUI.this.fAW();
+                    AppMethodBeat.o(268173);
                   }
                 }, new DialogInterface.OnClickListener()
                 {
                   public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {}
                 });
-                AppMethodBeat.o(72192);
+                AppMethodBeat.o(72189);
               }
             };
             ((SpannableString)localObject2).setSpan(locala, paramq.length(), paramq.length() + ((String)localObject1).length(), 33);
-            this.zcv.setMovementMethod(LinkMovementMethod.getInstance());
-            this.zcv.setText((CharSequence)localObject2);
-            this.CuJ.setText(getString(2131764548, new Object[] { com.tencent.mm.wallet_core.ui.f.rZ(paramString.CpR) }));
-            this.CuJ.setVisibility(0);
-            this.CuK.setVisibility(8);
+            this.Isy.setMovementMethod(LinkMovementMethod.getInstance());
+            this.Isy.setText((CharSequence)localObject2);
+            this.Isw.setText(getString(a.i.remittance_detail_transfer_time, new Object[] { g.uW(paramString.Ing) }));
+            this.Isw.setVisibility(0);
+            this.Isx.setVisibility(8);
           }
           AppMethodBeat.o(72200);
           return true;
         }
-        Wh(0);
+        acW(0);
         AppMethodBeat.o(72200);
         return true;
       }
@@ -154,19 +154,18 @@ public class PayURemittanceDetailUI
         bool1 = bool2;
         if (paramInt2 == 0)
         {
-          this.IuB = paramString.status;
-          this.IuC = paramString.CpR;
-          this.AOD = paramString.Iuv;
-          this.AOC = paramString.Iuw;
-          this.Cvz = ((int)(paramString.qwJ * 100.0D));
-          this.Iuz = paramString.AOl;
-          paramq = z.aTY();
+          this.Pnl = paramString.status;
+          this.wZT = paramString.Ing;
+          this.GHR = paramString.Pnf;
+          this.GHQ = paramString.Png;
+          this.Ito = ((int)(paramString.tVK * 100.0D));
+          this.Pnj = paramString.GHz;
+          paramq = z.bcZ();
           bool1 = this.mReceiverName.equals(paramq);
-          this.CuL.setVisibility(8);
-          this.CuI.setText(com.tencent.mm.wallet_core.ui.f.d(this.Cvz / 100.0D, this.Iuz));
-          this.CuM.setVisibility(0);
-          this.Cvi.setVisibility(8);
-          paramInt1 = this.IuB;
+          this.Isv.setText(g.d(this.Ito / 100.0D, this.Pnj));
+          this.IsB.setVisibility(0);
+          this.IsX.setVisibility(8);
+          paramInt1 = this.Pnl;
         }
       }
       switch (paramInt1)
@@ -174,23 +173,23 @@ public class PayURemittanceDetailUI
       default: 
         finish();
         bool1 = true;
-        if (paramString.cSx == 1)
+        if (paramString.cUP == 1)
         {
-          g.aAi();
-          if (!((String)g.aAh().azQ().get(327729, "0")).equals("0")) {
-            break label1562;
+          com.tencent.mm.kernel.h.aHH();
+          if (!((String)com.tencent.mm.kernel.h.aHG().aHp().b(327729, "0")).equals("0")) {
+            break label1518;
           }
-          h.a(getContext(), 2131757399, 2131768253, new DialogInterface.OnClickListener()
+          com.tencent.mm.ui.base.h.a(getContext(), a.i.chatting_item_appmsg_remittance_collect_tips_payu, a.i.wallet_remittance_collect_tips, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
-              AppMethodBeat.i(72193);
-              h.cD(PayURemittanceDetailUI.this.getContext(), PayURemittanceDetailUI.this.getString(2131764521));
-              AppMethodBeat.o(72193);
+              AppMethodBeat.i(266323);
+              com.tencent.mm.ui.base.h.cO(PayURemittanceDetailUI.this.getContext(), PayURemittanceDetailUI.this.getString(a.i.remittance_detail_msg_collect_suc));
+              AppMethodBeat.o(266323);
             }
           });
-          g.aAi();
-          g.aAh().azQ().set(327729, "1");
+          com.tencent.mm.kernel.h.aHH();
+          com.tencent.mm.kernel.h.aHG().aHp().i(327729, "1");
         }
         break;
       }
@@ -200,18 +199,18 @@ public class PayURemittanceDetailUI
         return bool1;
         if (!bool1)
         {
-          paramq = getString(2131764540, new Object[] { bZ(this.mReceiverName, true) });
-          this.CuH.setText(l.b(this, paramq, this.CuH.getTextSize()));
-          paramq = getString(2131764547, new Object[] { Integer.valueOf(this.Cvx) });
-          localObject1 = getString(2131764587);
+          paramq = getString(a.i.remittance_detail_result_wait_sender, new Object[] { cj(this.mReceiverName, true) });
+          this.Isu.setText(l.b(this, paramq, this.Isu.getTextSize()));
+          paramq = getString(a.i.remittance_detail_sender_tips_payu, new Object[] { Integer.valueOf(this.Itm) });
+          localObject1 = getString(a.i.remittance_resend_transfer_msg);
           localObject2 = new SpannableString(paramq + (String)localObject1);
           locala = new a(this);
-          locala.AQT = new a.a()
+          locala.GKe = new a.a()
           {
             public final void onClick(View paramAnonymousView)
             {
               AppMethodBeat.i(72184);
-              h.c(PayURemittanceDetailUI.this, PayURemittanceDetailUI.this.getString(2131764509), PayURemittanceDetailUI.this.getString(2131755962), PayURemittanceDetailUI.this.getString(2131764586), PayURemittanceDetailUI.this.getString(2131755761), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+              com.tencent.mm.ui.base.h.c(PayURemittanceDetailUI.this, PayURemittanceDetailUI.this.getString(a.i.remittance_confirm_resend_msg), PayURemittanceDetailUI.this.getString(a.i.app_remind), PayURemittanceDetailUI.this.getString(a.i.remittance_resend), PayURemittanceDetailUI.this.getString(a.i.app_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
               {
                 public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                 {
@@ -221,7 +220,7 @@ public class PayURemittanceDetailUI
                   paramAnonymous2DialogInterface.putExtra("receiver_name", PayURemittanceDetailUI.b(PayURemittanceDetailUI.this));
                   paramAnonymous2DialogInterface.putExtra("total_fee", PayURemittanceDetailUI.c(PayURemittanceDetailUI.this));
                   paramAnonymous2DialogInterface.putExtra("fee_type", PayURemittanceDetailUI.d(PayURemittanceDetailUI.this));
-                  PayURemittanceDetailUI.this.aQ(paramAnonymous2DialogInterface);
+                  PayURemittanceDetailUI.this.aP(paramAnonymous2DialogInterface);
                   AppMethodBeat.o(72183);
                 }
               }, new DialogInterface.OnClickListener()
@@ -232,129 +231,127 @@ public class PayURemittanceDetailUI
             }
           };
           ((SpannableString)localObject2).setSpan(locala, paramq.length(), paramq.length() + ((String)localObject1).length(), 33);
-          this.zcv.setMovementMethod(LinkMovementMethod.getInstance());
-          this.zcv.setText((CharSequence)localObject2);
+          this.Isy.setMovementMethod(LinkMovementMethod.getInstance());
+          this.Isy.setText((CharSequence)localObject2);
         }
         for (;;)
         {
-          this.Cnb.setImageResource(2131235676);
-          this.CuJ.setText(getString(2131764548, new Object[] { com.tencent.mm.wallet_core.ui.f.rZ(this.AOD) }));
-          this.CuJ.setVisibility(0);
-          this.CuK.setVisibility(8);
+          this.IjU.setImageResource(a.e.wallet_subject_receiving);
+          this.Isw.setText(getString(a.i.remittance_detail_transfer_time, new Object[] { g.uW(this.GHR) }));
+          this.Isw.setVisibility(0);
+          this.Isx.setVisibility(8);
           bool1 = true;
           break;
-          this.Cnb.setImageResource(2131235676);
-          this.CuL.setVisibility(0);
-          this.CuL.setOnClickListener(new PayURemittanceDetailUI.2(this));
-          paramq = getString(2131764543, new Object[] { Integer.valueOf(this.Cvx) });
-          localObject1 = getString(2131764531);
+          this.IjU.setImageResource(a.e.wallet_subject_receiving);
+          paramq = getString(a.i.remittance_detail_reveiver_tips_payu, new Object[] { Integer.valueOf(this.Itm) });
+          localObject1 = getString(a.i.remittance_detail_refuse_action);
           localObject2 = new SpannableString(paramq + (String)localObject1);
           locala = new a(this);
-          locala.AQT = new a.a()
+          locala.GKe = new a.a()
           {
             public final void onClick(View paramAnonymousView)
             {
-              AppMethodBeat.i(72187);
-              h.c(PayURemittanceDetailUI.this, PayURemittanceDetailUI.this.getString(2131764527, new Object[] { PayURemittanceDetailUI.aWd(PayURemittanceDetailUI.e(PayURemittanceDetailUI.this)) }), PayURemittanceDetailUI.this.getString(2131755962), PayURemittanceDetailUI.this.getString(2131764532), PayURemittanceDetailUI.this.getString(2131755761), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+              AppMethodBeat.i(72185);
+              com.tencent.mm.ui.base.h.c(PayURemittanceDetailUI.this, PayURemittanceDetailUI.this.getString(a.i.remittance_detail_refund_tips, new Object[] { PayURemittanceDetailUI.a(PayURemittanceDetailUI.this, PayURemittanceDetailUI.e(PayURemittanceDetailUI.this)) }), PayURemittanceDetailUI.this.getString(a.i.app_remind), PayURemittanceDetailUI.this.getString(a.i.remittance_detail_refuse_btn_text), PayURemittanceDetailUI.this.getString(a.i.app_cancel), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
               {
                 public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                 {
-                  AppMethodBeat.i(72186);
-                  PayURemittanceDetailUI.this.eOh();
-                  AppMethodBeat.o(72186);
+                  AppMethodBeat.i(217070);
+                  PayURemittanceDetailUI.this.fAW();
+                  AppMethodBeat.o(217070);
                 }
               }, new DialogInterface.OnClickListener()
               {
                 public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {}
               });
-              AppMethodBeat.o(72187);
+              AppMethodBeat.o(72185);
             }
           };
           ((SpannableString)localObject2).setSpan(locala, paramq.length(), paramq.length() + ((String)localObject1).length(), 33);
-          this.zcv.setMovementMethod(LinkMovementMethod.getInstance());
-          this.zcv.setText((CharSequence)localObject2);
+          this.Isy.setMovementMethod(LinkMovementMethod.getInstance());
+          this.Isy.setText((CharSequence)localObject2);
         }
-        this.Cnb.setImageResource(2131691397);
+        this.IjU.setImageResource(a.h.remittance_received);
         if (bool1)
         {
-          this.CuH.setText(2131764534);
-          paramq = getString(2131764515);
+          this.Isu.setText(a.i.remittance_detail_result_collected);
+          paramq = getString(a.i.remittance_detail_check_ballance);
           localObject1 = new SpannableString(paramq);
           localObject2 = new a(this);
-          ((a)localObject2).AQT = new a.a()
+          ((a)localObject2).GKe = new a.a()
+          {
+            public final void onClick(View paramAnonymousView)
+            {
+              AppMethodBeat.i(72187);
+              com.tencent.mm.pluginsdk.wallet.f.aX(PayURemittanceDetailUI.this, 0);
+              AppMethodBeat.o(72187);
+            }
+          };
+          ((SpannableString)localObject1).setSpan(localObject2, 0, paramq.length(), 33);
+          this.Isy.setMovementMethod(LinkMovementMethod.getInstance());
+          this.Isy.setText((CharSequence)localObject1);
+          this.Isy.setVisibility(0);
+        }
+        for (;;)
+        {
+          this.Isw.setText(getString(a.i.remittance_detail_transfer_time, new Object[] { g.uW(this.wZT) }));
+          this.Isw.setVisibility(0);
+          this.Isx.setText(getString(a.i.remittance_detail_receive_time, new Object[] { g.uW(this.GHQ) }));
+          this.Isx.setVisibility(0);
+          bool1 = true;
+          break;
+          paramq = cj(this.mReceiverName, true) + " " + getString(a.i.remittance_detail_result_collected);
+          this.Isu.setText(l.b(this, paramq, this.Isu.getTextSize()));
+          this.Isy.setVisibility(8);
+        }
+        if ((paramInt1 == 2003) && (!bool1))
+        {
+          this.IjU.setImageResource(a.h.remittance_timed_out);
+          this.Isu.setText(a.i.remittance_detail_result_timeout_refunded);
+          label1215:
+          if (bool1) {
+            break label1505;
+          }
+          paramq = getString(a.i.remittance_detail_refund_to_ballance);
+          localObject1 = getString(a.i.remittance_detail_check_ballance);
+          localObject2 = new SpannableString(paramq + (String)localObject1);
+          locala = new a(this);
+          locala.GKe = new a.a()
           {
             public final void onClick(View paramAnonymousView)
             {
               AppMethodBeat.i(72188);
-              com.tencent.mm.pluginsdk.wallet.f.aF(PayURemittanceDetailUI.this, 0);
+              com.tencent.mm.pluginsdk.wallet.f.aX(PayURemittanceDetailUI.this, 0);
               AppMethodBeat.o(72188);
             }
           };
-          ((SpannableString)localObject1).setSpan(localObject2, 0, paramq.length(), 33);
-          this.zcv.setMovementMethod(LinkMovementMethod.getInstance());
-          this.zcv.setText((CharSequence)localObject1);
-          this.zcv.setVisibility(0);
-        }
-        for (;;)
-        {
-          this.CuJ.setText(getString(2131764548, new Object[] { com.tencent.mm.wallet_core.ui.f.rZ(this.IuC) }));
-          this.CuJ.setVisibility(0);
-          this.CuK.setText(getString(2131764523, new Object[] { com.tencent.mm.wallet_core.ui.f.rZ(this.AOC) }));
-          this.CuK.setVisibility(0);
-          bool1 = true;
-          break;
-          paramq = bZ(this.mReceiverName, true) + " " + getString(2131764534);
-          this.CuH.setText(l.b(this, paramq, this.CuH.getTextSize()));
-          this.zcv.setVisibility(8);
-        }
-        if ((paramInt1 == 2003) && (!bool1))
-        {
-          this.Cnb.setImageResource(2131691399);
-          this.CuH.setText(2131764538);
-          label1260:
-          if (bool1) {
-            break label1549;
-          }
-          paramq = getString(2131764528);
-          localObject1 = getString(2131764515);
-          localObject2 = new SpannableString(paramq + (String)localObject1);
-          locala = new a(this);
-          locala.AQT = new a.a()
-          {
-            public final void onClick(View paramAnonymousView)
-            {
-              AppMethodBeat.i(72189);
-              com.tencent.mm.pluginsdk.wallet.f.aF(PayURemittanceDetailUI.this, 0);
-              AppMethodBeat.o(72189);
-            }
-          };
           ((SpannableString)localObject2).setSpan(locala, paramq.length(), paramq.length() + ((String)localObject1).length(), 33);
-          this.zcv.setMovementMethod(LinkMovementMethod.getInstance());
-          this.zcv.setText((CharSequence)localObject2);
+          this.Isy.setMovementMethod(LinkMovementMethod.getInstance());
+          this.Isy.setText((CharSequence)localObject2);
         }
         for (;;)
         {
-          this.zcv.setVisibility(0);
-          this.CuJ.setText(getString(2131764548, new Object[] { com.tencent.mm.wallet_core.ui.f.rZ(this.IuC) }));
-          this.CuJ.setVisibility(0);
-          this.CuK.setText(getString(2131764526, new Object[] { com.tencent.mm.wallet_core.ui.f.rZ(this.AOD) }));
-          this.CuK.setVisibility(0);
+          this.Isy.setVisibility(0);
+          this.Isw.setText(getString(a.i.remittance_detail_transfer_time, new Object[] { g.uW(this.wZT) }));
+          this.Isw.setVisibility(0);
+          this.Isx.setText(getString(a.i.remittance_detail_refund_time, new Object[] { g.uW(this.GHR) }));
+          this.Isx.setVisibility(0);
           bool1 = true;
           break;
-          this.Cnb.setImageResource(2131691398);
+          this.IjU.setImageResource(a.h.remittance_refunded);
           if (bool1)
           {
-            this.CuH.setText(2131764536);
-            break label1260;
+            this.Isu.setText(a.i.remittance_detail_result_refunded);
+            break label1215;
           }
-          paramq = bZ(this.mReceiverName, true) + getString(2131764536);
-          this.CuH.setText(l.b(this, paramq, this.CuH.getTextSize()));
-          break label1260;
-          label1549:
-          this.zcv.setText("");
+          paramq = cj(this.mReceiverName, true) + getString(a.i.remittance_detail_result_refunded);
+          this.Isu.setText(l.b(this, paramq, this.Isu.getTextSize()));
+          break label1215;
+          label1505:
+          this.Isy.setText("");
         }
-        label1562:
-        h.cD(getContext(), getString(2131764521));
+        label1518:
+        com.tencent.mm.ui.base.h.cO(getContext(), getString(a.i.remittance_detail_msg_collect_suc));
       }
     }
     if (((paramq instanceof com.tencent.mm.plugin.wallet_payu.remittance.a.c)) || ((paramq instanceof b)))
@@ -362,16 +359,16 @@ public class PayURemittanceDetailUI
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
         if ((paramq instanceof com.tencent.mm.plugin.wallet_payu.remittance.a.c)) {
-          Wh(1);
+          acW(1);
         }
         for (;;)
         {
           AppMethodBeat.o(72200);
           return true;
-          bY(0, getString(2131764522));
+          bW(0, getString(a.i.remittance_detail_msg_refuse_suc));
         }
       }
-      bY(paramInt2, paramString);
+      bW(paramInt2, paramString);
       AppMethodBeat.o(72200);
       return true;
     }

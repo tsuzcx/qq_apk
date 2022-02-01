@@ -3,14 +3,13 @@ package com.tencent.mm.plugin.webview.luggage;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.webkit.WebResourceResponse;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.luggage.webview.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.webview.model.ay;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.plugin.webview.model.az;
+import com.tencent.mm.vfs.u;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PipedInputStream;
@@ -19,12 +18,12 @@ import java.io.PipedOutputStream;
 public final class LuggageMMLocalResourceProvider
   implements c
 {
-  public final String Pl()
+  public final String SK()
   {
     return "weixin://resourceid/.*";
   }
   
-  public final WebResourceResponse cX(String paramString)
+  public final WebResourceResponse dx(String paramString)
   {
     AppMethodBeat.i(78221);
     final PipedOutputStream localPipedOutputStream = new PipedOutputStream();
@@ -32,14 +31,14 @@ public final class LuggageMMLocalResourceProvider
     {
       PipedInputStream localPipedInputStream = new PipedInputStream(localPipedOutputStream);
       final GetLocalResourceInfoTask localGetLocalResourceInfoTask = new GetLocalResourceInfoTask((byte)0);
-      localGetLocalResourceInfoTask.dJX = paramString;
+      localGetLocalResourceInfoTask.fCM = paramString;
       localGetLocalResourceInfoTask.infoType = 1;
-      localGetLocalResourceInfoTask.mpO = new Runnable()
+      localGetLocalResourceInfoTask.pnT = new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(78214);
-          h.RTc.aX(new Runnable()
+          h.ZvG.be(new Runnable()
           {
             public final void run()
             {
@@ -48,10 +47,10 @@ public final class LuggageMMLocalResourceProvider
               Object localObject1 = null;
               try
               {
-                InputStream localInputStream = s.openRead(LuggageMMLocalResourceProvider.1.this.ISY.path);
+                InputStream localInputStream = u.Tf(LuggageMMLocalResourceProvider.1.this.PPq.path);
                 localObject1 = localInputStream;
                 localObject3 = localInputStream;
-                PipedOutputStream localPipedOutputStream = LuggageMMLocalResourceProvider.1.this.ISZ;
+                PipedOutputStream localPipedOutputStream = LuggageMMLocalResourceProvider.1.this.PPr;
                 localObject1 = localInputStream;
                 localObject3 = localInputStream;
                 byte[] arrayOfByte = new byte[1024];
@@ -70,7 +69,7 @@ public final class LuggageMMLocalResourceProvider
                 try
                 {
                   localException3.close();
-                  LuggageMMLocalResourceProvider.1.this.ISZ.close();
+                  LuggageMMLocalResourceProvider.1.this.PPr.close();
                 }
                 catch (Exception localException4)
                 {
@@ -83,7 +82,7 @@ public final class LuggageMMLocalResourceProvider
                 try
                 {
                   localObject1.close();
-                  LuggageMMLocalResourceProvider.1.this.ISZ.close();
+                  LuggageMMLocalResourceProvider.1.this.PPr.close();
                   AppMethodBeat.o(78213);
                   return;
                 }
@@ -96,7 +95,7 @@ public final class LuggageMMLocalResourceProvider
                 try
                 {
                   localInputStream.close();
-                  LuggageMMLocalResourceProvider.1.this.ISZ.close();
+                  LuggageMMLocalResourceProvider.1.this.PPr.close();
                   AppMethodBeat.o(78213);
                   return;
                 }
@@ -118,7 +117,7 @@ public final class LuggageMMLocalResourceProvider
           AppMethodBeat.o(78214);
         }
       };
-      AppBrandMainProcessService.a(localGetLocalResourceInfoTask);
+      localGetLocalResourceInfoTask.bsM();
       paramString = new WebResourceResponse("image/*", "utf-8", localPipedInputStream);
       AppMethodBeat.o(78221);
       return paramString;
@@ -134,10 +133,10 @@ public final class LuggageMMLocalResourceProvider
     extends MainProcessTask
   {
     public static final Parcelable.Creator<GetLocalResourceInfoTask> CREATOR;
-    String dJX;
+    String fCM;
     int infoType;
-    Runnable mpO;
     String path;
+    Runnable pnT;
     
     static
     {
@@ -146,7 +145,7 @@ public final class LuggageMMLocalResourceProvider
       AppMethodBeat.o(78220);
     }
     
-    public final void bjj()
+    public final void RW()
     {
       AppMethodBeat.i(78216);
       switch (this.infoType)
@@ -154,20 +153,20 @@ public final class LuggageMMLocalResourceProvider
       }
       for (;;)
       {
-        bDU();
+        bPt();
         AppMethodBeat.o(78216);
         return;
-        this.path = ay.aYZ(this.dJX);
+        this.path = az.bkT(this.fCM);
         continue;
-        this.path = ay.aZa(this.dJX);
+        this.path = az.bkU(this.fCM);
       }
     }
     
-    public final void bjk()
+    public final void bsK()
     {
       AppMethodBeat.i(78217);
-      if (this.mpO != null) {
-        this.mpO.run();
+      if (this.pnT != null) {
+        this.pnT.run();
       }
       AppMethodBeat.o(78217);
     }
@@ -175,7 +174,7 @@ public final class LuggageMMLocalResourceProvider
     public final void f(Parcel paramParcel)
     {
       AppMethodBeat.i(78219);
-      this.dJX = paramParcel.readString();
+      this.fCM = paramParcel.readString();
       this.infoType = paramParcel.readInt();
       this.path = paramParcel.readString();
       AppMethodBeat.o(78219);
@@ -184,7 +183,7 @@ public final class LuggageMMLocalResourceProvider
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(78218);
-      paramParcel.writeString(this.dJX);
+      paramParcel.writeString(this.fCM);
       paramParcel.writeInt(this.infoType);
       paramParcel.writeString(this.path);
       AppMethodBeat.o(78218);
@@ -193,7 +192,7 @@ public final class LuggageMMLocalResourceProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.LuggageMMLocalResourceProvider
  * JD-Core Version:    0.7.0.1
  */

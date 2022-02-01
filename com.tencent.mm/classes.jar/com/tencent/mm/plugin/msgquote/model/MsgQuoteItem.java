@@ -9,14 +9,14 @@ public class MsgQuoteItem
   implements Parcelable
 {
   public static final Parcelable.Creator<MsgQuoteItem> CREATOR;
+  public long FkS;
+  public String FkT;
+  public String FkU;
+  public String FkV;
+  public String FkW;
   public String content;
-  public String fqK;
+  public String hxy;
   public int type;
-  public long zFI;
-  public String zFJ;
-  public String zFK;
-  public String zFL;
-  public String zFM;
   
   static
   {
@@ -31,13 +31,13 @@ public class MsgQuoteItem
   {
     AppMethodBeat.i(117602);
     this.type = paramParcel.readInt();
-    this.zFI = paramParcel.readLong();
-    this.zFJ = paramParcel.readString();
-    this.zFK = paramParcel.readString();
-    this.zFL = paramParcel.readString();
-    this.zFM = paramParcel.readString();
+    this.FkS = paramParcel.readLong();
+    this.FkT = paramParcel.readString();
+    this.FkU = paramParcel.readString();
+    this.FkV = paramParcel.readString();
+    this.FkW = paramParcel.readString();
     this.content = paramParcel.readString();
-    this.fqK = paramParcel.readString();
+    this.hxy = paramParcel.readString();
     AppMethodBeat.o(117602);
   }
   
@@ -49,7 +49,7 @@ public class MsgQuoteItem
   public String toString()
   {
     AppMethodBeat.i(117600);
-    String str = "MsgQuoteItem{type=" + this.type + ", svrid=" + this.zFI + ", fromusr='" + this.zFJ + '\'' + ", chatuser='" + this.zFK + '\'' + ", displayname='" + this.zFL + '\'' + ", msgsource='" + this.zFM + '\'' + ", content='" + this.content + '\'' + ", msgSource='" + this.fqK + '\'' + '}';
+    String str = "MsgQuoteItem{type=" + this.type + ", svrid=" + this.FkS + ", fromusr='" + this.FkT + '\'' + ", chatuser='" + this.FkU + '\'' + ", displayname='" + this.FkV + '\'' + ", msgsource='" + this.FkW + '\'' + ", content='" + this.content + '\'' + ", msgSource='" + this.hxy + '\'' + '}';
     AppMethodBeat.o(117600);
     return str;
   }
@@ -58,19 +58,19 @@ public class MsgQuoteItem
   {
     AppMethodBeat.i(117601);
     paramParcel.writeInt(this.type);
-    paramParcel.writeLong(this.zFI);
-    paramParcel.writeString(this.zFJ);
-    paramParcel.writeString(this.zFK);
-    paramParcel.writeString(this.zFL);
-    paramParcel.writeString(this.zFM);
+    paramParcel.writeLong(this.FkS);
+    paramParcel.writeString(this.FkT);
+    paramParcel.writeString(this.FkU);
+    paramParcel.writeString(this.FkV);
+    paramParcel.writeString(this.FkW);
     paramParcel.writeString(this.content);
-    paramParcel.writeString(this.fqK);
+    paramParcel.writeString(this.hxy);
     AppMethodBeat.o(117601);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.msgquote.model.MsgQuoteItem
  * JD-Core Version:    0.7.0.1
  */

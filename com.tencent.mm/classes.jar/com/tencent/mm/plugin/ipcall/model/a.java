@@ -19,18 +19,18 @@ import java.util.Map;
 
 public final class a
 {
-  private static a yot = null;
+  private static a DOv = null;
+  public ArrayList<a> DOu;
   private long endTime;
   MMHandler handler;
   private boolean isLoading;
   private long startTime;
-  public ArrayList<a> yos;
   
   private a()
   {
     AppMethodBeat.i(25329);
     this.isLoading = false;
-    this.yos = new ArrayList();
+    this.DOu = new ArrayList();
     this.startTime = -1L;
     this.endTime = -1L;
     this.handler = new MMHandler(Looper.getMainLooper())
@@ -39,7 +39,7 @@ public final class a
       {
         AppMethodBeat.i(25328);
         long l1 = System.currentTimeMillis();
-        Object localObject1 = i.eay();
+        Object localObject1 = i.eJw();
         Object localObject2 = (ArrayList)paramAnonymousMessage.obj;
         if ((localObject2 != null) && (((List)localObject2).size() > 0))
         {
@@ -68,7 +68,7 @@ public final class a
               ((d)localObject1).insert((IAutoDBItem)localObject3);
             }
           }
-          ((d)localObject1).GS(l2);
+          ((d)localObject1).Oh(l2);
         }
         Log.d("MicroMsg.IPCallAddressBookLoader", "batchInsert, used %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
         a.a(a.this, System.currentTimeMillis());
@@ -76,28 +76,28 @@ public final class a
         a.c(a.this);
         a.a(a.this, -1L);
         a.d(a.this);
-        paramAnonymousMessage = a.this.yos.iterator();
+        paramAnonymousMessage = a.this.DOu.iterator();
         while (paramAnonymousMessage.hasNext())
         {
           localObject1 = (a.a)paramAnonymousMessage.next();
           if (localObject1 != null) {
-            ((a.a)localObject1).eac();
+            ((a.a)localObject1).eJa();
           }
         }
-        a.this.yos.clear();
+        a.this.DOu.clear();
         AppMethodBeat.o(25328);
       }
     };
     AppMethodBeat.o(25329);
   }
   
-  public static a eab()
+  public static a eIZ()
   {
     AppMethodBeat.i(25330);
-    if (yot == null) {
-      yot = new a();
+    if (DOv == null) {
+      DOv = new a();
     }
-    a locala = yot;
+    a locala = DOv;
     AppMethodBeat.o(25330);
     return locala;
   }
@@ -106,7 +106,7 @@ public final class a
   {
     AppMethodBeat.i(25331);
     if (parama != null) {
-      this.yos.add(parama);
+      this.DOu.add(parama);
     }
     if (this.isLoading)
     {
@@ -115,12 +115,12 @@ public final class a
       return;
     }
     this.startTime = System.currentTimeMillis();
-    if ((b.eaW().size() == 0) || (!paramBoolean))
+    if ((b.eJU().size() == 0) || (!paramBoolean))
     {
       Log.d("MicroMsg.IPCallAddressBookLoader", "loadFromSystemAddressBook");
       long l = System.currentTimeMillis();
       new b();
-      parama = b.eaV();
+      parama = b.eJT();
       Log.d("MicroMsg.IPCallAddressBookLoader", "getAllAddressItemFromSystemPhoneBook, used %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
       Message localMessage = this.handler.obtainMessage();
       localMessage.obj = parama;
@@ -134,12 +134,12 @@ public final class a
   
   public static abstract interface a
   {
-    public abstract void eac();
+    public abstract void eJa();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.a
  * JD-Core Version:    0.7.0.1
  */

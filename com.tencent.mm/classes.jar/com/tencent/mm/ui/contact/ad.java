@@ -1,132 +1,413 @@
 package com.tencent.mm.ui.contact;
 
 import android.app.Activity;
+import android.content.res.Resources;
+import android.database.Cursor;
+import android.database.MergeCursor;
+import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.i;
-import com.tencent.mm.aj.j;
-import com.tencent.mm.aj.p;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.modelmulti.o;
-import com.tencent.mm.modelmulti.o.b;
-import com.tencent.mm.modelmulti.o.e;
-import com.tencent.mm.openim.a.a;
-import com.tencent.mm.openim.a.a.a;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.f.c.bb;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.selectcontact.a.g;
+import com.tencent.mm.plugin.selectcontact.a.h;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.as;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
+import com.tencent.mm.storage.az;
 import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.widget.snackbar.b;
-import java.util.Iterator;
+import com.tencent.mm.storage.bw;
+import com.tencent.mm.ui.contact.a.b;
+import com.tencent.mm.ui.contact.a.g;
+import com.tencent.mm.ui.contact.a.i;
+import com.tencent.mm.ui.contact.a.j;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public final class ad
+  extends r
+  implements MStorageEx.IOnStorageChange
 {
-  public static void a(Activity paramActivity, String paramString, List<String> paramList)
+  private int Isp;
+  private int Isr;
+  private Cursor Xvk;
+  private Cursor Xvl;
+  private List<String> Xvm;
+  private int Xvn;
+  private int Xvo;
+  private boolean Xvp;
+  private int Xvq;
+  private Map<String, Integer> Xvr;
+  private Map<String, Integer> Xvs;
+  public int Xvt;
+  public int aadi;
+  private Cursor mNt;
+  
+  public ad(MMBaseSelectContactUI paramMMBaseSelectContactUI, List<String> paramList)
   {
-    AppMethodBeat.i(38045);
-    Iterator localIterator = paramList.iterator();
-    if (localIterator.hasNext())
-    {
-      Object localObject = (String)localIterator.next();
-      String str = bnD((String)localObject);
-      o.e locale = o.Pl(paramString);
-      locale.toUser = paramString;
-      locale.content = str;
-      if (as.bjp((String)localObject)) {}
-      for (int i = 66;; i = 42)
-      {
-        localObject = locale.tD(i);
-        ((o.e)localObject).cSx = 0;
-        ((o.e)localObject).jdR = 4;
-        ((o.e)localObject).bdQ().execute();
-        break;
-      }
-    }
-    b.r(paramActivity, paramActivity.getString(2131761619));
-    h.CyF.a(11003, new Object[] { paramString, Integer.valueOf(3), Integer.valueOf(paramList.size()) });
-    paramActivity.setResult(-1);
-    MMHandlerThread.postToMainThreadDelayed(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(38043);
-        this.PZI.finish();
-        AppMethodBeat.o(38043);
-      }
-    }, 1800L);
-    AppMethodBeat.o(38045);
+    this(paramMMBaseSelectContactUI, paramList, true, false, false, 0);
   }
   
-  public static String bnD(String paramString)
+  public ad(MMBaseSelectContactUI paramMMBaseSelectContactUI, List<String> paramList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
   {
-    AppMethodBeat.i(38044);
-    Object localObject = p.aYB().Mx(paramString);
-    bg.aVF();
-    as localas = com.tencent.mm.model.c.aSN().Kn(paramString);
-    if (localas == null)
+    super(paramMMBaseSelectContactUI, paramList, paramBoolean1, paramBoolean2);
+    AppMethodBeat.i(102921);
+    this.Xvn = -1;
+    this.Isp = -1;
+    this.Xvq = 0;
+    this.Isr = 0;
+    this.Xvr = new HashMap();
+    this.Xvs = new HashMap();
+    this.Xvt = 0;
+    this.aadi = 0;
+    Log.i("MicroMsg.RecentConversationAdapter", "create!");
+    this.Xvp = paramBoolean3;
+    this.Xvq = paramInt;
+    ate();
+    ((n)com.tencent.mm.kernel.h.ae(n.class)).bbR().add(this);
+    AppMethodBeat.o(102921);
+  }
+  
+  private void hVm()
+  {
+    AppMethodBeat.i(186890);
+    if (this.Xvk != null)
     {
-      AppMethodBeat.o(38044);
-      return null;
+      this.Xvk.close();
+      this.Xvk = null;
     }
-    String str1;
-    String str2;
-    if (as.bjp(paramString))
+    if (this.Xvl != null)
     {
-      paramString = localas.field_openImAppid;
-      str1 = ((a)com.tencent.mm.kernel.g.af(a.class)).c(localas.field_openImAppid, "openim_desc_icon", a.a.jGT);
-      str2 = ((a)com.tencent.mm.kernel.g.af(a.class)).bN(localas.field_openImAppid, localas.field_descWordingId);
-      paramString = String.format(" <msg bigheadimgurl=\"%s\" smallheadimgurl=\"%s\" username=\"%s\" nickname=\"%s\" sex=\"%d\"  openimappid=\"%s\" openimdesc=\"%s\" openimdescicon=\"%s\"/>", new Object[] { Util.escapeStringForXml(((i)localObject).aYt()), Util.escapeStringForXml(((i)localObject).aYu()), Util.escapeStringForXml(localas.field_username), Util.escapeStringForXml(localas.arI()), Integer.valueOf(localas.fuA), paramString, Util.escapeStringForXml(str2), Util.escapeStringForXml(str1) });
-      AppMethodBeat.o(38044);
-      return paramString;
+      this.Xvl.close();
+      this.Xvl = null;
     }
-    int i = localas.fuz;
-    if (localObject != null) {
-      i = ((i)localObject).fuz;
-    }
-    String str3;
-    String str4;
-    String str5;
-    String str6;
-    String str7;
-    int j;
-    int k;
-    int m;
-    String str8;
-    if (localas.gBM())
+    if (this.mNt != null)
     {
-      paramString = com.tencent.mm.al.g.fJ(localas.field_username);
-      localObject = Util.escapeStringForXml(localas.field_username);
-      str1 = Util.escapeStringForXml(localas.arI());
-      str2 = Util.escapeStringForXml(localas.ajx());
-      str3 = Util.escapeStringForXml(localas.arI());
-      str4 = Util.escapeStringForXml(localas.ajz());
-      str5 = Util.escapeStringForXml(localas.getProvince());
-      str6 = Util.escapeStringForXml(localas.getCity());
-      str7 = Util.escapeStringForXml(localas.signature);
-      j = localas.fuI;
-      k = localas.fuA;
-      m = localas.field_verifyFlag;
-      str8 = Util.escapeStringForXml(localas.fuN);
-      if (paramString != null) {
-        break label472;
+      this.mNt.close();
+      this.mNt = null;
+    }
+    AppMethodBeat.o(186890);
+  }
+  
+  public final void ate()
+  {
+    AppMethodBeat.i(102922);
+    Log.i("MicroMsg.RecentConversationAdapter", "resetData");
+    hVm();
+    ArrayList localArrayList = new ArrayList();
+    this.aadi = 0;
+    List localList;
+    if (w.hasAttr(this.Xvq, 4))
+    {
+      if (h.iWB() != 1) {
+        break label592;
+      }
+      localList = h.hUD();
+      if (!Util.isNullOrNil(localList)) {
+        this.Xvl = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbR().a(localList, 3, csq(), com.tencent.mm.o.a.jxD, hVe(), "");
+      }
+      Log.i("MicroMsg.RecentConversationAdapter", "resetData: recent forward control switch on");
+    }
+    for (;;)
+    {
+      this.Xvk = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbR().a(3, csq(), com.tencent.mm.o.a.jxD, hVe(), "");
+      int i;
+      label148:
+      int j;
+      if (this.Xvp)
+      {
+        i = 2;
+        if (this.Xvm != null)
+        {
+          j = this.Xvm.size();
+          label165:
+          this.Xvo = j;
+          this.Isr = 0;
+          if (!Util.isNullOrNil(localList))
+          {
+            this.aadi = this.Xvl.getCount();
+            if (this.aadi > 0)
+            {
+              localArrayList.add(this.Xvl);
+              this.Xvn = (this.Xvo + i);
+              this.Isr += 1;
+            }
+          }
+          if (this.Xvk.getCount() <= 0) {
+            break label558;
+          }
+          this.Isr += 1;
+          if (this.Xvn != -1) {
+            break label540;
+          }
+          this.Isp = (i + this.Xvo);
+          label274:
+          localArrayList.add(this.Xvk);
+          this.mNt = new MergeCursor((Cursor[])localArrayList.toArray(new Cursor[0]));
+          clearCache();
+          AppMethodBeat.o(102922);
+          return;
+          if (w.hasAttr(this.Xvq, 16))
+          {
+            if (h.iWB() != 1) {
+              break label587;
+            }
+            localList = h.hUC();
+            if (!Util.isNullOrNil(localList)) {
+              this.Xvl = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbR().a(localList, 5, csq(), com.tencent.mm.o.a.jxD, hVe(), "");
+            }
+            Log.i("MicroMsg.RecentConversationAdapter", "resetData: recent forward control switch on");
+          }
+        }
+      }
+      for (;;)
+      {
+        this.Xvk = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbR().a(5, csq(), com.tencent.mm.o.a.jxD, hVe(), "");
+        break;
+        if (h.iWB() == 1)
+        {
+          localList = h.hUE();
+          if (!Util.isNullOrNil(localList)) {
+            this.Xvl = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbR().a(localList, 1, csq(), com.tencent.mm.o.a.jxD, hVe(), "");
+          }
+          Log.i("MicroMsg.RecentConversationAdapter", "resetData: recent forward control switch on");
+        }
+        for (;;)
+        {
+          this.Xvk = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbR().a(1, csq(), com.tencent.mm.o.a.jxD, hVe(), "");
+          break;
+          j = 0;
+          break label165;
+          label540:
+          this.Isp = (this.Xvn + this.aadi + 1);
+          break label274;
+          label558:
+          this.Isp = this.XsW.getContentLV().getHeaderViewsCount();
+          break label274;
+          i = 0;
+          break label148;
+          localList = null;
+        }
+        label587:
+        localList = null;
+      }
+      label592:
+      localList = null;
+    }
+  }
+  
+  public final boolean bAc(String paramString)
+  {
+    AppMethodBeat.i(186896);
+    if ((Util.isNullOrNil(paramString)) || (this.Xvr == null) || (this.Xvr.isEmpty()))
+    {
+      AppMethodBeat.o(186896);
+      return false;
+    }
+    boolean bool = this.Xvr.containsKey(paramString);
+    AppMethodBeat.o(186896);
+    return bool;
+  }
+  
+  public final boolean bAd(String paramString)
+  {
+    AppMethodBeat.i(186897);
+    if ((Util.isNullOrNil(paramString)) || (this.Xvs == null) || (this.Xvs.isEmpty()))
+    {
+      AppMethodBeat.o(186897);
+      return false;
+    }
+    boolean bool = this.Xvs.containsKey(paramString);
+    AppMethodBeat.o(186897);
+    return bool;
+  }
+  
+  public final int bIS(String paramString)
+  {
+    AppMethodBeat.i(293070);
+    if (!bAd(paramString))
+    {
+      AppMethodBeat.o(293070);
+      return 0;
+    }
+    int i = ((Integer)this.Xvs.get(paramString)).intValue();
+    AppMethodBeat.o(293070);
+    return i;
+  }
+  
+  public final int bIT(String paramString)
+  {
+    AppMethodBeat.i(293071);
+    if (!bAc(paramString))
+    {
+      AppMethodBeat.o(293071);
+      return 0;
+    }
+    int i = ((Integer)this.Xvr.get(paramString)).intValue();
+    AppMethodBeat.o(293071);
+    return i;
+  }
+  
+  public final void finish()
+  {
+    AppMethodBeat.i(102925);
+    super.finish();
+    Log.i("MicroMsg.RecentConversationAdapter", "finish!");
+    hVm();
+    ((n)com.tencent.mm.kernel.h.ae(n.class)).bbR().remove(this);
+    AppMethodBeat.o(102925);
+  }
+  
+  public final int getCount()
+  {
+    AppMethodBeat.i(102923);
+    if (this.mNt == null)
+    {
+      Log.e("MicroMsg.RecentConversationAdapter", "getCount: dataCursor == null ");
+      AppMethodBeat.o(102923);
+      return 0;
+    }
+    int i = this.mNt.getCount();
+    int j = this.Isr;
+    AppMethodBeat.o(102923);
+    return i + j;
+  }
+  
+  public final void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
+  {
+    AppMethodBeat.i(102926);
+    ate();
+    notifyDataSetChanged();
+    AppMethodBeat.o(102926);
+  }
+  
+  protected final com.tencent.mm.ui.contact.a.a ye(int paramInt)
+  {
+    AppMethodBeat.i(102924);
+    Object localObject2;
+    Object localObject1;
+    if (this.Isp > this.Xvo)
+    {
+      if (paramInt == this.Xvo) {
+        new j(paramInt).header = this.XsW.getActivity().getResources().getString(a.h.select_contact_official_accounts_title);
       }
     }
-    label472:
-    for (paramString = "";; paramString = Util.escapeStringForXml(paramString.field_brandIconURL))
+    else
     {
-      paramString = String.format("<msg username=\"%s\" nickname=\"%s\" alias=\"%s\" fullpy=\"%s\" shortpy=\"%s\" imagestatus=\"%d\" scene=\"17\" province=\"%s\" city=\"%s\" sign=\"%s\" percard=\"%d\" sex=\"%d\" certflag=\"%d\" certinfo=\"%s\" certinfoext=\"\" brandIconUrl=\"%s\" brandHomeUrl=\"\" brandSubscriptConfigUrl=\"\" brandFlags=\"\" regionCode=\"%s\"/>", new Object[] { localObject, str1, str2, str3, str4, Integer.valueOf(i), str5, str6, str7, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), str8, paramString, Util.escapeStringForXml(localas.fuO) });
-      AppMethodBeat.o(38044);
-      return paramString;
-      paramString = null;
+      if ((paramInt != this.Isp) && (paramInt != this.Xvn)) {
+        break label217;
+      }
+      localObject2 = new j(paramInt);
+      if (paramInt != this.Xvn) {
+        break label177;
+      }
+      ((j)localObject2).header = this.XsW.getActivity().getResources().getString(a.h.select_contact_recent_conversation_cur);
+      localObject1 = localObject2;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(102924);
+      return localObject1;
+      if (paramInt != this.Xvo + 1) {
+        break;
+      }
+      localObject1 = new b(paramInt);
+      localObject2 = this.XsW.getActivity().getResources().getString(a.h.select_contact_official_accounts_title);
+      ((b)localObject1).resId = a.g.default_servicebrand_contact;
+      ((b)localObject1).nickName = ((String)localObject2);
       break;
+      label177:
+      localObject1 = localObject2;
+      if (paramInt == this.Isp)
+      {
+        ((j)localObject2).header = this.XsW.getActivity().getResources().getString(a.h.select_contact_conversation_cur);
+        localObject1 = localObject2;
+        continue;
+        label217:
+        if (paramInt < this.Xvo)
+        {
+          if ((this.Xvm == null) || (paramInt < 0) || (paramInt >= this.Xvm.size()))
+          {
+            localObject1 = null;
+          }
+          else
+          {
+            localObject1 = new b(paramInt);
+            ((b)localObject1).username = ((String)this.Xvm.get(paramInt));
+          }
+        }
+        else
+        {
+          int i;
+          if (this.Isr == 2) {
+            if (paramInt > this.Isp) {
+              i = paramInt - 2;
+            }
+          }
+          for (;;)
+          {
+            if (this.mNt.moveToPosition(i))
+            {
+              localObject1 = new g(paramInt);
+              localObject2 = new az();
+              ((az)localObject2).convertFrom(this.mNt);
+              com.tencent.mm.kernel.h.aHH();
+              ((com.tencent.mm.ui.contact.a.a)localObject1).contact = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().bwc(((bb)localObject2).field_username);
+              if (((com.tencent.mm.ui.contact.a.a)localObject1).contact == null)
+              {
+                com.tencent.mm.kernel.h.aHH();
+                ((com.tencent.mm.ui.contact.a.a)localObject1).contact = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().bwh(((bb)localObject2).field_username);
+              }
+              ((com.tencent.mm.ui.contact.a.a)localObject1).XsX = fJk();
+              localObject2 = ((com.tencent.mm.ui.contact.a.a)localObject1).contact.field_username;
+              if (this.Isr == 2)
+              {
+                if (paramInt > this.Isp)
+                {
+                  this.Xvr.put(localObject2, Integer.valueOf(paramInt - this.Isp));
+                  if (!((n)com.tencent.mm.kernel.h.ae(n.class)).bbR().bwF((String)localObject2)) {
+                    break label634;
+                  }
+                  this.Xvt += 1;
+                  break;
+                  i = paramInt - 1;
+                  continue;
+                  if (this.Isr == 1)
+                  {
+                    i = paramInt - 1;
+                    continue;
+                  }
+                  Log.e("MicroMsg.RecentConversationAdapter", "Actually dead branch. position=%d", new Object[] { Integer.valueOf(paramInt) });
+                  i = paramInt;
+                  continue;
+                }
+                this.Xvs.put(localObject2, Integer.valueOf(paramInt - this.Xvn));
+                break;
+              }
+              if (this.Isr == 1)
+              {
+                this.Xvr.put(localObject2, Integer.valueOf(paramInt - this.Isp));
+                if (((n)com.tencent.mm.kernel.h.ae(n.class)).bbR().bwF((String)localObject2)) {
+                  this.Xvt += 1;
+                }
+              }
+              label634:
+              break;
+            }
+          }
+          localObject1 = new i(paramInt);
+          Log.e("MicroMsg.RecentConversationAdapter", "wrong case: %s, %s", new Object[] { Boolean.valueOf(this.mNt.isClosed()), Integer.valueOf(i) });
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.ad
  * JD-Core Version:    0.7.0.1
  */

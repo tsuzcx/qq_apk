@@ -1,83 +1,100 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
 import android.app.Activity;
-import android.arch.lifecycle.ViewModelProvider;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.l;
 import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
 import com.tencent.mm.plugin.finder.feed.b.b;
-import com.tencent.mm.plugin.finder.feed.m.a;
-import com.tencent.mm.plugin.finder.feed.m.b;
 import com.tencent.mm.plugin.finder.feed.model.FinderFeedRelTimelineLoader;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
-import com.tencent.mm.plugin.finder.feed.model.internal.h;
-import com.tencent.mm.plugin.finder.model.bo;
-import com.tencent.mm.plugin.finder.report.live.c;
-import com.tencent.mm.plugin.finder.report.live.k;
-import com.tencent.mm.plugin.finder.report.live.s.p;
+import com.tencent.mm.plugin.finder.feed.model.internal.j;
+import com.tencent.mm.plugin.finder.feed.n.a;
+import com.tencent.mm.plugin.finder.feed.n.b;
+import com.tencent.mm.plugin.finder.live.report.c;
+import com.tencent.mm.plugin.finder.live.report.k;
+import com.tencent.mm.plugin.finder.live.report.s.t;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.model.bu;
+import com.tencent.mm.plugin.finder.report.n;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.plugin.finder.view.manager.FinderLinearLayoutManager;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
+import com.tencent.mm.plugin.finder.viewmodel.component.aj;
+import com.tencent.mm.protocal.protobuf.FinderObject;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.component.g.a;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import kotlin.f;
 import kotlin.g.b.p;
-import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.t;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderLoaderFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/model/FinderFeedRelTimelineLoader;", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelatedTimelineContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelatedTimelineContract$Presenter;", "()V", "TAG", "", "autoRefresh", "", "emptyView", "Landroid/view/View;", "feedId", "", "feedLoader", "feedNonceId", "mOnHellScrollListener", "com/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI$mOnHellScrollListener$1", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI$mOnHellScrollListener$1;", "mPresenter", "mViewCallback", "relatedScene", "", "scene", "title", "getCommentScene", "getLayoutId", "getModel", "getPresenter", "getReportType", "getViewCallback", "initOnCreate", "", "onDestroy", "onPause", "onResume", "updateTitle", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderLoaderFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/model/FinderFeedRelTimelineLoader;", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelatedTimelineContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelatedTimelineContract$Presenter;", "()V", "TAG", "", "autoRefresh", "", "emptyView", "Landroid/view/View;", "feedId", "", "feedLoader", "feedNonceId", "mOnHellScrollListener", "com/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI$mOnHellScrollListener$1", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI$mOnHellScrollListener$1;", "mPresenter", "mViewCallback", "relatedScene", "", "getRelatedScene", "()I", "relatedScene$delegate", "Lkotlin/Lazy;", "scene", "title", "getCommentScene", "getLayoutId", "getModel", "getPresenter", "getReportType", "getViewCallback", "initOnCreate", "", "onDestroy", "onPause", "onResume", "updateTitle", "plugin-finder_release"})
 public final class FinderFeedRelatedTimelineUI
-  extends FinderLoaderFeedUI<FinderFeedRelTimelineLoader, m.b, m.a>
+  extends FinderLoaderFeedUI<FinderFeedRelTimelineLoader, n.b, n.a>
 {
   private final String TAG;
   private HashMap _$_findViewCache;
+  private boolean bFt;
   private long feedId;
-  private View poS;
   private final int scene;
-  private FinderFeedRelTimelineLoader tZW;
-  private m.a tZY;
-  private m.b tZZ;
+  private View sxR;
   private String title;
-  private boolean uW;
-  private String uaa;
-  private int uab;
-  private final d uac;
+  private FinderFeedRelTimelineLoader xMl;
+  private n.a xMn;
+  private n.b xMo;
+  private String xMp;
+  private final f xMq;
+  private final d xMr;
   
   public FinderFeedRelatedTimelineUI()
   {
-    AppMethodBeat.i(245183);
+    AppMethodBeat.i(285091);
     this.TAG = "Finder.FinderFeedReletedTimelineUI";
     this.scene = 2;
-    this.uaa = "";
+    this.xMp = "";
     this.title = "";
-    this.uac = new d(this);
-    AppMethodBeat.o(245183);
+    this.xMq = kotlin.g.ar((kotlin.g.a.a)new e(this));
+    this.xMr = new d(this);
+    AppMethodBeat.o(285091);
+  }
+  
+  private final int dva()
+  {
+    AppMethodBeat.i(285080);
+    int i = ((Number)this.xMq.getValue()).intValue();
+    AppMethodBeat.o(285080);
+    return i;
   }
   
   private final void updateTitle()
   {
-    AppMethodBeat.i(245176);
+    AppMethodBeat.i(285082);
     setMMTitle(this.title);
-    AppMethodBeat.o(245176);
+    AppMethodBeat.o(285082);
   }
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(245188);
+    AppMethodBeat.i(285098);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(245188);
+    AppMethodBeat.o(285098);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(245187);
+    AppMethodBeat.i(285097);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -88,136 +105,184 @@ public final class FinderFeedRelatedTimelineUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(245187);
+    AppMethodBeat.o(285097);
     return localView1;
   }
   
-  public final int ddN()
+  public final int duR()
   {
     return 2;
   }
   
   public final int getCommentScene()
   {
-    if (17 == this.uab) {
-      return 27;
+    AppMethodBeat.i(285086);
+    if (17 == dva())
+    {
+      AppMethodBeat.o(285086);
+      return 96;
     }
+    AppMethodBeat.o(285086);
     return 40;
   }
   
   public final int getLayoutId()
   {
-    return 2131494299;
+    return b.g.finder_feed_related_timeline_ui;
   }
   
   public final void initOnCreate()
   {
-    AppMethodBeat.i(245175);
+    AppMethodBeat.i(285081);
     this.feedId = getIntent().getLongExtra("FEED_ID", 0L);
     Object localObject2 = getIntent().getStringExtra("FEED_NONCE_ID");
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = "";
     }
-    this.uaa = ((String)localObject1);
+    this.xMp = ((String)localObject1);
     localObject2 = getIntent().getStringExtra("TITLE_WORDING");
     localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = "";
     }
     this.title = ((String)localObject1);
-    this.uW = getIntent().getBooleanExtra("AUTO_REFRESH", false);
-    this.uab = getIntent().getIntExtra("GET_REL_SCENE", 5);
-    localObject1 = com.tencent.mm.ui.component.a.PRN;
-    ((FinderReporterUIC)com.tencent.mm.ui.component.a.b((AppCompatActivity)this).get(FinderReporterUIC.class)).tCE = getCommentScene();
-    localObject1 = findViewById(2131300078);
-    p.g(localObject1, "findViewById(R.id.emptyView)");
-    this.poS = ((View)localObject1);
-    if (this.uW)
+    this.bFt = getIntent().getBooleanExtra("AUTO_REFRESH", false);
+    float f1 = getIntent().getFloatExtra("POI_LATITUDE", 0.0F);
+    float f2 = getIntent().getFloatExtra("POI_LONGITUDE", 0.0F);
+    localObject1 = findViewById(b.f.emptyView);
+    p.j(localObject1, "findViewById(R.id.emptyView)");
+    this.sxR = ((View)localObject1);
+    if (this.bFt)
     {
-      localObject1 = this.poS;
+      localObject1 = this.sxR;
       if (localObject1 == null) {
-        p.btv("emptyView");
+        p.bGy("emptyView");
       }
       ((View)localObject1).setVisibility(0);
     }
     updateTitle();
-    this.tZY = new m.a((MMActivity)this, this.scene, this.uW);
+    this.xMn = new n.a((MMActivity)this, this.scene, this.bFt);
     localObject1 = (MMActivity)this;
-    localObject2 = this.tZY;
+    localObject2 = this.xMn;
     if (localObject2 == null) {
-      p.btv("mPresenter");
+      p.bGy("mPresenter");
     }
-    this.tZZ = new m.b((MMActivity)localObject1, (m.a)localObject2, this.scene, getCommentScene());
+    this.xMo = new n.b((MMActivity)localObject1, (n.a)localObject2, this.scene, getCommentScene());
     long l = this.feedId;
-    localObject1 = this.uaa;
-    int i = this.uab;
-    localObject2 = com.tencent.mm.ui.component.a.PRN;
-    localObject1 = new FinderFeedRelTimelineLoader(l, (String)localObject1, 0, null, i, false, null, null, null, 0, ((FinderReporterUIC)com.tencent.mm.ui.component.a.b((AppCompatActivity)this).get(FinderReporterUIC.class)).dIx(), 4072);
-    if (!this.uW)
+    localObject1 = this.xMp;
+    int i = dva();
+    localObject2 = com.tencent.mm.ui.component.g.Xox;
+    FinderFeedRelTimelineLoader localFinderFeedRelTimelineLoader = new FinderFeedRelTimelineLoader(l, (String)localObject1, 0, null, i, false, null, null, null, 0, ((aj)com.tencent.mm.ui.component.g.b((AppCompatActivity)this).i(aj.class)).ekY(), f1, f2, 4072);
+    if (!this.bFt)
     {
-      localObject2 = getIntent();
-      p.g(localObject2, "intent");
-      ((FinderFeedRelTimelineLoader)localObject1).initFromCache((Intent)localObject2);
+      localObject1 = getIntent();
+      p.j(localObject1, "intent");
+      localFinderFeedRelTimelineLoader.initFromCache((Intent)localObject1);
+      if (17 == dva())
+      {
+        localObject1 = localFinderFeedRelTimelineLoader.getCache();
+        if (localObject1 != null)
+        {
+          localObject1 = ((com.tencent.mm.plugin.finder.feed.model.q)localObject1).mXB;
+          if (localObject1 != null)
+          {
+            if (((Collection)localObject1).isEmpty()) {
+              break label571;
+            }
+            i = 1;
+            if (i == 1)
+            {
+              localObject1 = localFinderFeedRelTimelineLoader.getCache();
+              if (localObject1 == null) {
+                break label576;
+              }
+              localObject1 = ((com.tencent.mm.plugin.finder.feed.model.q)localObject1).mXB;
+              if (localObject1 == null) {
+                break label576;
+              }
+            }
+          }
+        }
+      }
     }
-    ((FinderFeedRelTimelineLoader)localObject1).setInitDone((h)new a((FinderFeedRelTimelineLoader)localObject1, this));
-    ((FinderFeedRelTimelineLoader)localObject1).fetchEndCallback = ((kotlin.g.a.b)new b(this));
-    ((FinderFeedRelTimelineLoader)localObject1).tVa = ((kotlin.g.a.b)new c(this));
-    this.tZW = ((FinderFeedRelTimelineLoader)localObject1);
-    localObject1 = this.tZZ;
-    if (localObject1 == null) {
-      p.btv("mViewCallback");
+    label571:
+    label576:
+    for (localObject1 = (bu)((ArrayList)localObject1).get(0);; localObject1 = null)
+    {
+      localObject2 = localObject1;
+      if (!(localObject1 instanceof BaseFinderFeed)) {
+        localObject2 = null;
+      }
+      localObject1 = (BaseFinderFeed)localObject2;
+      if (localObject1 != null)
+      {
+        localObject1 = ((BaseFinderFeed)localObject1).feedObject.getFeedObject();
+        localObject2 = n.zWF;
+        n.a((FinderObject)localObject1, getCommentScene());
+      }
+      localFinderFeedRelTimelineLoader.setInitDone((j)new a(localFinderFeedRelTimelineLoader, this));
+      localFinderFeedRelTimelineLoader.fetchEndCallback = ((kotlin.g.a.b)new b(this));
+      localFinderFeedRelTimelineLoader.xGJ = ((kotlin.g.a.b)new c(this));
+      this.xMl = localFinderFeedRelTimelineLoader;
+      localObject1 = this.xMo;
+      if (localObject1 == null) {
+        p.bGy("mViewCallback");
+      }
+      ((b.b)localObject1).xvJ.getRecyclerView().a((RecyclerView.l)this.xMr);
+      AppMethodBeat.o(285081);
+      return;
+      i = 0;
+      break;
     }
-    ((b.b)localObject1).tLS.getRecyclerView().a((RecyclerView.l)this.uac);
-    AppMethodBeat.o(245175);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(245180);
-    m.b localb = this.tZZ;
+    AppMethodBeat.i(285088);
+    n.b localb = this.xMo;
     if (localb == null) {
-      p.btv("mViewCallback");
+      p.bGy("mViewCallback");
     }
-    localb.tLS.getRecyclerView().b((RecyclerView.l)this.uac);
+    localb.xvJ.getRecyclerView().b((RecyclerView.l)this.xMr);
     super.onDestroy();
-    AppMethodBeat.o(245180);
+    AppMethodBeat.o(285088);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(245182);
+    AppMethodBeat.i(285090);
     super.onPause();
-    if (17 == this.uab)
+    if (17 == dva())
     {
-      AppMethodBeat.o(245182);
+      AppMethodBeat.o(285090);
       return;
     }
-    Object localObject = k.vkd;
-    localObject = this.tZZ;
+    Object localObject = k.yBj;
+    localObject = this.xMo;
     if (localObject == null) {
-      p.btv("mViewCallback");
+      p.bGy("mViewCallback");
     }
-    k.b(((b.b)localObject).tLS.getRecyclerView(), s.p.voB, "40", c.vjg);
-    AppMethodBeat.o(245182);
+    k.b(((b.b)localObject).xvJ.getRecyclerView(), s.t.yGO, "40", c.yAj);
+    AppMethodBeat.o(285090);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(245181);
+    AppMethodBeat.i(285089);
     super.onResume();
-    if (17 == this.uab)
+    if (17 == dva())
     {
-      AppMethodBeat.o(245181);
+      AppMethodBeat.o(285089);
       return;
     }
-    Object localObject = k.vkd;
-    localObject = this.tZZ;
+    Object localObject = k.yBj;
+    localObject = this.xMo;
     if (localObject == null) {
-      p.btv("mViewCallback");
+      p.bGy("mViewCallback");
     }
-    k.b(((b.b)localObject).tLS.getRecyclerView(), s.p.voB, "40", c.vjf);
-    AppMethodBeat.o(245181);
+    k.b(((b.b)localObject).xvJ.getRecyclerView(), s.t.yGO, "40", c.yAi);
+    AppMethodBeat.o(285089);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -226,36 +291,36 @@ public final class FinderFeedRelatedTimelineUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI$initOnCreate$1$1", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;", "call", "", "incrementCount", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI$initOnCreate$1$2", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IInitDone;", "call", "", "incrementCount", "", "plugin-finder_release"})
   public static final class a
-    implements h
+    implements j
   {
     a(FinderFeedRelTimelineLoader paramFinderFeedRelTimelineLoader, FinderFeedRelatedTimelineUI paramFinderFeedRelatedTimelineUI) {}
     
     public final void call(int paramInt)
     {
-      AppMethodBeat.i(245170);
-      Object localObject = FinderFeedRelatedTimelineUI.a(jdField_this).tLS.getRecyclerView().getLayoutManager();
+      AppMethodBeat.i(226078);
+      Object localObject = FinderFeedRelatedTimelineUI.a(jdField_this).xvJ.getRecyclerView().getLayoutManager();
       if (localObject != null)
       {
         if (localObject == null)
         {
           localObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.view.manager.FinderLinearLayoutManager");
-          AppMethodBeat.o(245170);
+          AppMethodBeat.o(226078);
           throw ((Throwable)localObject);
         }
-        ((FinderLinearLayoutManager)localObject).ah(this.tZf.getInitPos(), 0);
-        AppMethodBeat.o(245170);
+        ((FinderLinearLayoutManager)localObject).au(this.xLu.getInitPos(), 0);
+        AppMethodBeat.o(226078);
         return;
       }
-      AppMethodBeat.o(245170);
+      AppMethodBeat.o(226078);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "invoke", "com/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI$initOnCreate$1$2"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "invoke", "com/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI$initOnCreate$1$3"})
   static final class b
-    extends q
-    implements kotlin.g.a.b<IResponse<bo>, x>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.b<IResponse<bu>, x>
   {
     b(FinderFeedRelatedTimelineUI paramFinderFeedRelatedTimelineUI)
     {
@@ -263,10 +328,10 @@ public final class FinderFeedRelatedTimelineUI
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "invoke", "com/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI$initOnCreate$1$3"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "invoke", "com/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI$initOnCreate$1$4"})
   static final class c
-    extends q
-    implements kotlin.g.a.b<IResponse<bo>, x>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.b<IResponse<bu>, x>
   {
     c(FinderFeedRelatedTimelineUI paramFinderFeedRelatedTimelineUI)
     {
@@ -274,42 +339,53 @@ public final class FinderFeedRelatedTimelineUI
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI$mOnHellScrollListener$1", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "onScrolled", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "dx", "", "dy", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI$mOnHellScrollListener$1", "Landroidx/recyclerview/widget/RecyclerView$OnScrollListener;", "onScrolled", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "dx", "", "dy", "plugin-finder_release"})
   public static final class d
     extends RecyclerView.l
   {
     public final void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
     {
-      AppMethodBeat.i(245174);
+      AppMethodBeat.i(256234);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramRecyclerView);
-      localb.pH(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI$mOnHellScrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.axR());
+      localb.bn(paramRecyclerView);
+      localb.sg(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI$mOnHellScrollListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
       super.onScrollStateChanged(paramRecyclerView, paramInt);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI$mOnHellScrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
-      AppMethodBeat.o(245174);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI$mOnHellScrollListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
+      AppMethodBeat.o(256234);
     }
     
     public final void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(245173);
+      AppMethodBeat.i(256230);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramRecyclerView);
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).pH(paramInt1);
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).pH(paramInt2);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI$mOnHellScrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-      p.h(paramRecyclerView, "recyclerView");
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramRecyclerView);
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).sg(paramInt1);
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).sg(paramInt2);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI$mOnHellScrollListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+      p.k(paramRecyclerView, "recyclerView");
       super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-      if (17 == FinderFeedRelatedTimelineUI.d(this.uad))
+      if (17 == FinderFeedRelatedTimelineUI.d(this.xMs))
       {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI$mOnHellScrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-        AppMethodBeat.o(245173);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI$mOnHellScrollListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
+        AppMethodBeat.o(256230);
         return;
       }
-      localObject = k.vkd;
-      k.b(paramRecyclerView, s.p.voB, "40", c.vje);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI$mOnHellScrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-      AppMethodBeat.o(245173);
+      localObject = k.yBj;
+      k.b(paramRecyclerView, s.t.yGO, "40", c.yAh);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/ui/FinderFeedRelatedTimelineUI$mOnHellScrollListener$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
+      AppMethodBeat.o(256230);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
+  static final class e
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<Integer>
+  {
+    e(FinderFeedRelatedTimelineUI paramFinderFeedRelatedTimelineUI)
+    {
+      super();
     }
   }
 }

@@ -1,32 +1,64 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.e;
+import com.google.b.a.b;
+import com.google.b.a.c;
+import com.google.b.a.e;
+import com.google.b.a.g;
+import java.util.Arrays;
 
 public final class a$aw
   extends e
 {
-  public int sceneType = 0;
+  private static volatile aw[] ZgY;
+  public int ZgZ = 0;
+  public int Zha = 0;
+  public byte[] Zhb = g.ccX;
   
   public a$aw()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public final int Ig()
+  public static aw[] ikT()
   {
-    int j = super.Ig();
+    if (ZgY == null) {}
+    synchronized (c.ccQ)
+    {
+      if (ZgY == null) {
+        ZgY = new aw[0];
+      }
+      return ZgY;
+    }
+  }
+  
+  public final int JG()
+  {
+    int j = super.JG();
     int i = j;
-    if (this.sceneType != 0) {
-      i = j + b.bu(1, this.sceneType);
+    if (this.ZgZ != 0) {
+      i = j + b.bM(1, this.ZgZ);
+    }
+    j = i;
+    if (this.Zha != 0) {
+      j = i + b.bM(2, this.Zha);
+    }
+    i = j;
+    if (!Arrays.equals(this.Zhb, g.ccX)) {
+      i = j + b.c(3, this.Zhb);
     }
     return i;
   }
   
   public final void a(b paramb)
   {
-    if (this.sceneType != 0) {
-      paramb.bs(1, this.sceneType);
+    if (this.ZgZ != 0) {
+      paramb.bJ(1, this.ZgZ);
+    }
+    if (this.Zha != 0) {
+      paramb.bJ(2, this.Zha);
+    }
+    if (!Arrays.equals(this.Zhb, g.ccX)) {
+      paramb.b(3, this.Zhb);
     }
     super.a(paramb);
   }

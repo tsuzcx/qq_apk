@@ -2,5 +2,5 @@
 <LinearLayout android:orientation="vertical" android:background="@drawable/b1g" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView android:textSize="@dimen/eo" android:layout_gravity="center_horizontal" android:id="@id/a6a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ce" android:layout_marginBottom="@dimen/cc" android:text="@string/ahl" />
-    <android.support.v7.widget.RecyclerView android:id="@id/a64" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/a64" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </LinearLayout>

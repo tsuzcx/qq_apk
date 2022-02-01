@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.emoji;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.plugin.emoji.model.k;
-import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.model.be;
+import com.tencent.mm.plugin.emoji.model.p;
+import com.tencent.mm.pluginsdk.c.d;
 import com.tencent.mm.pluginsdk.n;
 
 public class Plugin
@@ -17,22 +17,22 @@ public class Plugin
     return localc;
   }
   
-  public bd createSubCore()
+  public be createSubCore()
   {
     AppMethodBeat.i(108289);
-    k localk = new k();
+    p localp = new p();
     AppMethodBeat.o(108289);
-    return localk;
+    return localp;
   }
   
-  public com.tencent.mm.pluginsdk.b.c getContactWidgetFactory()
+  public com.tencent.mm.pluginsdk.c.c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.Plugin
  * JD-Core Version:    0.7.0.1
  */

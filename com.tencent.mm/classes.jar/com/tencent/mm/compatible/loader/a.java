@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static Object[] gKK = new Object[0];
-  private static Object[] gKL = new Object[73];
+  private static Object[] juY = new Object[0];
+  private static Object[] juZ = new Object[73];
   
   public static boolean contains(int[] paramArrayOfInt, int paramInt)
   {
@@ -54,30 +54,10 @@ public final class a
     AppMethodBeat.o(157476);
     return false;
   }
-  
-  public static int idealIntArraySize(int paramInt)
-  {
-    int j = paramInt * 4;
-    paramInt = 4;
-    for (;;)
-    {
-      int i = j;
-      if (paramInt < 32)
-      {
-        if (j <= (1 << paramInt) - 12) {
-          i = (1 << paramInt) - 12;
-        }
-      }
-      else {
-        return i / 4;
-      }
-      paramInt += 1;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.compatible.loader.a
  * JD-Core Version:    0.7.0.1
  */

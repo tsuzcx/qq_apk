@@ -7,7 +7,6 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.util.AttributeSet;
-import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
@@ -16,9 +15,13 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.dl;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.emoji.model.e;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.f.a.dq;
+import com.tencent.mm.plugin.emoji.i.b;
+import com.tencent.mm.plugin.emoji.i.c;
+import com.tencent.mm.plugin.emoji.i.e;
+import com.tencent.mm.plugin.emoji.i.h;
+import com.tencent.mm.plugin.emoji.model.j;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -27,41 +30,26 @@ import com.tencent.mm.ui.MMTabView;
 public class EmojiStoreV2TabView
   extends RelativeLayout
 {
-  private Matrix mMatrix;
-  private int rmI;
-  private int rmJ;
-  private Bitmap rmK;
-  private LinearLayout rmL;
-  private ImageView rmM;
-  private MMTabView rmN;
-  private MMTabView rmO;
-  private a rmP;
-  protected View.OnClickListener rmQ;
-  IListener<dl> rmR;
+  private Matrix aqj;
+  private int uPU;
+  private int uPV;
+  private Bitmap uPW;
+  private LinearLayout uPX;
+  private ImageView uPY;
+  private MMTabView uPZ;
+  private MMTabView uQa;
+  private EmojiStoreV2TabView.a uQb;
+  protected View.OnClickListener uQc;
+  IListener<dq> uQd;
   
   public EmojiStoreV2TabView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(109375);
-    this.rmJ = 0;
-    this.mMatrix = new Matrix();
-    this.rmQ = new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(109371);
-        b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2TabView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        int i = ((Integer)paramAnonymousView.getTag()).intValue();
-        if (EmojiStoreV2TabView.a(EmojiStoreV2TabView.this) != null) {
-          EmojiStoreV2TabView.a(EmojiStoreV2TabView.this).onTabClick(i);
-        }
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2TabView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(109371);
-      }
-    };
-    this.rmR = new IListener() {};
+    this.uPV = 0;
+    this.aqj = new Matrix();
+    this.uQc = new EmojiStoreV2TabView.1(this);
+    this.uQd = new IListener() {};
     init();
     AppMethodBeat.o(109375);
   }
@@ -70,117 +58,102 @@ public class EmojiStoreV2TabView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(109374);
-    this.rmJ = 0;
-    this.mMatrix = new Matrix();
-    this.rmQ = new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(109371);
-        b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2TabView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        int i = ((Integer)paramAnonymousView.getTag()).intValue();
-        if (EmojiStoreV2TabView.a(EmojiStoreV2TabView.this) != null) {
-          EmojiStoreV2TabView.a(EmojiStoreV2TabView.this).onTabClick(i);
-        }
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2TabView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(109371);
-      }
-    };
-    this.rmR = new IListener() {};
+    this.uPV = 0;
+    this.aqj = new Matrix();
+    this.uQc = new EmojiStoreV2TabView.1(this);
+    this.uQd = new IListener() {};
     init();
     AppMethodBeat.o(109374);
   }
   
-  private MMTabView Gd(int paramInt)
+  private MMTabView JK(int paramInt)
   {
     AppMethodBeat.i(109382);
     MMTabView localMMTabView = new MMTabView(getContext(), paramInt);
     localMMTabView.setTag(Integer.valueOf(paramInt));
-    localMMTabView.setOnClickListener(this.rmQ);
+    localMMTabView.setOnClickListener(this.uQc);
     AppMethodBeat.o(109382);
     return localMMTabView;
   }
   
-  private void cIm()
+  private void cWT()
   {
     AppMethodBeat.i(109378);
-    this.rmL = new LinearLayout(getContext());
-    this.rmL.setBackgroundResource(2131101424);
-    this.rmL.setId(2131300060);
-    this.rmL.setOrientation(0);
+    this.uPX = new LinearLayout(getContext());
+    this.uPX.setBackgroundResource(i.b.white);
+    this.uPX.setId(i.e.emoji_store_tab_container);
+    this.uPX.setOrientation(0);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    addView(this.rmL, localLayoutParams);
+    addView(this.uPX, localLayoutParams);
     AppMethodBeat.o(109378);
   }
   
-  private void cIn()
+  private void cWU()
   {
     AppMethodBeat.i(109379);
-    this.rmM = new ImageView(getContext());
-    this.rmM.setImageMatrix(this.mMatrix);
-    this.rmM.setScaleType(ImageView.ScaleType.MATRIX);
-    this.rmM.setId(2131300061);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, com.tencent.mm.cb.a.fromDPToPix(getContext(), 3));
-    localLayoutParams.addRule(8, 2131300060);
-    addView(this.rmM, localLayoutParams);
+    this.uPY = new ImageView(getContext());
+    this.uPY.setImageMatrix(this.aqj);
+    this.uPY.setScaleType(ImageView.ScaleType.MATRIX);
+    this.uPY.setId(i.e.emoji_store_tab_shape);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, a.fromDPToPix(getContext(), 3));
+    localLayoutParams.addRule(8, i.e.emoji_store_tab_container);
+    addView(this.uPY, localLayoutParams);
     AppMethodBeat.o(109379);
   }
   
-  private void cIo()
+  private void cWV()
   {
     AppMethodBeat.i(109380);
-    this.rmN = Gd(0);
-    if (!Util.isNullOrNil(e.cFX().rbo)) {
-      this.rmN.setText(e.cFX().rbo);
+    this.uPZ = JK(0);
+    if (!Util.isNullOrNil(j.cUG().uEs)) {
+      this.uPZ.setText(j.cUG().uEs);
     }
     for (;;)
     {
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131167063));
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(i.c.topTabbarHeight));
       localLayoutParams.weight = 1.0F;
-      this.rmL.addView(this.rmN, localLayoutParams);
+      this.uPX.addView(this.uPZ, localLayoutParams);
       AppMethodBeat.o(109380);
       return;
-      if (e.cFX().rbn) {
-        this.rmN.setText(2131758628);
+      if (j.cUG().uEr) {
+        this.uPZ.setText(i.h.emoji_store_main_tab_friends);
       } else {
-        this.rmN.setText(2131758627);
+        this.uPZ.setText(i.h.emoji_store_main_tab);
       }
     }
   }
   
-  private void cIp()
+  private void cWW()
   {
     AppMethodBeat.i(109381);
-    this.rmO = Gd(1);
-    this.rmO.setText(2131758635);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131167063));
+    this.uQa = JK(1);
+    this.uQa.setText(i.h.emoji_store_person_tab_more);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(i.c.topTabbarHeight));
     localLayoutParams.weight = 1.0F;
-    this.rmL.addView(this.rmO, localLayoutParams);
+    this.uPX.addView(this.uQa, localLayoutParams);
     AppMethodBeat.o(109381);
   }
   
   private void init()
   {
     AppMethodBeat.i(109377);
-    cIm();
-    cIn();
-    cIo();
-    cIp();
+    cWT();
+    cWU();
+    cWV();
+    cWW();
     AppMethodBeat.o(109377);
   }
   
   public int getCurentIndex()
   {
-    return this.rmJ;
+    return this.uPV;
   }
   
-  public final void lC(boolean paramBoolean)
+  public final void mN(boolean paramBoolean)
   {
     AppMethodBeat.i(109386);
-    if (this.rmO != null) {
-      this.rmO.Bk(paramBoolean);
+    if (this.uQa != null) {
+      this.uQa.FA(paramBoolean);
     }
     AppMethodBeat.o(109386);
   }
@@ -189,45 +162,45 @@ public class EmojiStoreV2TabView
   {
     AppMethodBeat.i(109376);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.rmI = ((paramInt3 - paramInt1) / 2);
-    paramInt2 = this.rmI;
-    if (((this.rmK == null) || (this.rmK.getWidth() != paramInt2)) && (paramInt2 > 0)) {
-      if (this.rmK != null) {
-        break label166;
+    this.uPU = ((paramInt3 - paramInt1) / 2);
+    paramInt2 = this.uPU;
+    if (((this.uPW == null) || (this.uPW.getWidth() != paramInt2)) && (paramInt2 > 0)) {
+      if (this.uPW != null) {
+        break label168;
       }
     }
-    label166:
-    for (paramInt1 = -1;; paramInt1 = this.rmK.getWidth())
+    label168:
+    for (paramInt1 = -1;; paramInt1 = this.uPW.getWidth())
     {
       Log.w("MicroMsg.emoji.EmojiStoreV2TabView", "sharp width changed, from %d to %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      this.rmK = Bitmap.createBitmap(paramInt2, com.tencent.mm.cb.a.fromDPToPix(getContext(), 3), Bitmap.Config.ARGB_8888);
-      new Canvas(this.rmK).drawColor(getResources().getColor(2131101414));
-      p(this.rmJ, 0.0F);
-      this.rmM.setImageBitmap(this.rmK);
-      setTo(this.rmJ);
+      this.uPW = Bitmap.createBitmap(paramInt2, a.fromDPToPix(getContext(), 3), Bitmap.Config.ARGB_8888);
+      new Canvas(this.uPW).drawColor(getResources().getColor(i.b.wechat_green));
+      q(this.uPV, 0.0F);
+      this.uPY.setImageBitmap(this.uPW);
+      setTo(this.uPV);
       AppMethodBeat.o(109376);
       return;
     }
   }
   
-  public final void p(int paramInt, float paramFloat)
+  public final void q(int paramInt, float paramFloat)
   {
     AppMethodBeat.i(109383);
-    this.mMatrix.setTranslate(this.rmI * (paramInt + paramFloat), 0.0F);
-    this.rmM.setImageMatrix(this.mMatrix);
+    this.aqj.setTranslate(this.uPU * (paramInt + paramFloat), 0.0F);
+    this.uPY.setImageMatrix(this.aqj);
     AppMethodBeat.o(109383);
   }
   
-  public void setOnTabClickListener(a parama)
+  public void setOnTabClickListener(EmojiStoreV2TabView.a parama)
   {
-    this.rmP = parama;
+    this.uQb = parama;
   }
   
   public void setPersonTabUnReadCount(String paramString)
   {
     AppMethodBeat.i(109385);
-    if (this.rmO != null) {
-      this.rmO.setUnread(paramString);
+    if (this.uQa != null) {
+      this.uQa.setUnread(paramString);
     }
     AppMethodBeat.o(109385);
   }
@@ -235,31 +208,26 @@ public class EmojiStoreV2TabView
   public void setTo(int paramInt)
   {
     AppMethodBeat.i(109384);
-    this.rmJ = paramInt;
-    MMTabView localMMTabView = this.rmN;
-    if (this.rmJ == 0)
+    this.uPV = paramInt;
+    MMTabView localMMTabView = this.uPZ;
+    if (this.uPV == 0)
     {
-      paramInt = getResources().getColor(2131101414);
+      paramInt = getResources().getColor(i.b.wechat_green);
       localMMTabView.setTextColor(paramInt);
-      localMMTabView = this.rmO;
-      if (this.rmJ != 1) {
+      localMMTabView = this.uQa;
+      if (this.uPV != 1) {
         break label92;
       }
     }
     label92:
-    for (paramInt = getResources().getColor(2131101414);; paramInt = getContext().getResources().getColor(2131099746))
+    for (paramInt = getResources().getColor(i.b.wechat_green);; paramInt = getContext().getResources().getColor(i.b.FG_0))
     {
       localMMTabView.setTextColor(paramInt);
       AppMethodBeat.o(109384);
       return;
-      paramInt = getContext().getResources().getColor(2131099746);
+      paramInt = getContext().getResources().getColor(i.b.FG_0);
       break;
     }
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void onTabClick(int paramInt);
   }
 }
 

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.base.preference.IconSwitchKeyValuePreference android:key="settings_account_info" android:layout="@layout/b8j" android:title="@string/gn2" />
-    <com.tencent.mm.ui.base.preference.IconSwitchKeyValuePreference android:key="settings_teen_mode" android:layout="@layout/b8j" android:title="@string/gv_" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:newtip="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.base.preference.IconSwitchKeyValuePreference newtip:key="settings_account_info" newtip:layout="@layout/b8j" newtip:title="@string/gn2" />
+    <com.tencent.mm.ui.base.preference.IconSwitchKeyValuePreference newtip:key="settings_teen_mode" newtip:layout="@layout/b8j" newtip:title="@string/gv_" />
     <PreferenceSmallCategory />
-    <Preference android:key="settings_notification_preference" android:layout="@layout/b8j" android:title="@string/gry" />
-    <Preference android:key="settings_active_time" android:layout="@layout/b8j" android:title="@string/gn5" />
-    <Preference android:key="settings_chatting" android:layout="@layout/b8j" android:title="@string/gnz" />
-    <IconPreference android:key="settings_about_privacy" android:layout="@layout/b8j" android:title="@string/gmz" />
-    <Preference android:key="settings_about_device" android:layout="@layout/b8j" android:title="@string/gmw" />
-    <IconPreference android:key="settings_about_system" android:layout="@layout/b8j" android:title="@string/gn1" />
+    <Preference newtip:key="settings_notification_preference" newtip:layout="@layout/b8j" newtip:title="@string/gry" />
+    <Preference newtip:key="settings_active_time" newtip:layout="@layout/b8j" newtip:title="@string/gn5" />
+    <Preference newtip:key="settings_chatting" newtip:layout="@layout/b8j" newtip:title="@string/gnz" />
+    <IconPreference newtip:key="settings_about_privacy" newtip:layout="@layout/b8j" newtip:title="@string/gmz" />
+    <Preference newtip:key="settings_about_device" newtip:layout="@layout/b8j" newtip:title="@string/gmw" />
+    <com.tencent.mm.plugin.newtips.NormalIconNewTipPreference newtip:key="settings_about_system" newtip:layout="@layout/b8j" newtip:path="general" newtip:title="@string/gn1" />
     <PreferenceSmallCategory />
-    <IconPreference android:key="settings_about_micromsg" android:title="@string/gmy" />
-    <Preference android:key="settings_feedback" android:layout="@layout/b8j" android:title="@string/got" />
+    <IconPreference newtip:key="settings_about_micromsg" newtip:title="@string/gmy" />
+    <Preference newtip:key="settings_feedback" newtip:layout="@layout/b8j" newtip:title="@string/got" />
     <PreferenceSmallCategory />
-    <IconPreference android:key="settings_welab" android:layout="@layout/b8j" android:title="@string/gwv" />
+    <com.tencent.mm.plugin.newtips.NormalIconNewTipPluginPreference newtip:key="settings_welab" newtip:layout="@layout/b8j" newtip:path="plugin" newtip:title="@string/gwv" />
     <PreferenceSmallCategory />
-    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/guu" android:key="settings_switch_account" android:title_color="@color/FG_0" />
+    <com.tencent.mm.ui.base.preference.ButtonPreference newtip:btn_title="@string/guu" newtip:key="settings_switch_account" newtip:title_color="@color/FG_0" />
     <PreferenceSmallCategory />
-    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/gpt" android:key="settings_logout" android:layout="@layout/b8j" />
+    <com.tencent.mm.ui.base.preference.ButtonPreference newtip:btn_title="@string/gpt" newtip:key="settings_logout" newtip:layout="@layout/b8j" />
     <PreferenceCategory />
 </PreferenceScreen>

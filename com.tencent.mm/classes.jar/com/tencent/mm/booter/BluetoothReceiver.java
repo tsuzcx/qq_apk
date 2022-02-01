@@ -5,9 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.k;
+import com.tencent.mm.kernel.m;
 
-@k
+@m
 @JgClassChecked(author=20, fComment="checked", lastDate="20140429", reviewer=20, vComment={com.jg.EType.RECEIVERCHECK})
 public class BluetoothReceiver
   extends BroadcastReceiver

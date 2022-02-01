@@ -1,16 +1,17 @@
 package com.tencent.liteav.videoencoder;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.c.h;
-import com.tencent.liteav.basic.c.h.a;
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.opengl.j;
+import com.tencent.liteav.basic.opengl.j.a;
+import com.tencent.liteav.basic.structs.TXSNALPacket;
+import com.tencent.liteav.basic.util.h;
 import com.tencent.liteav.beauty.b.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 
 public class TXCSWVideoEncoder
-  extends c
+  extends d
 {
   private static final boolean DEBUG = false;
   private static final String TAG;
@@ -19,15 +20,15 @@ public class TXCSWVideoEncoder
   private long mPTS = 0L;
   private int mPopIdx = 0;
   private int mPushIdx = 0;
-  private h mRawFrameFilter;
+  private j mRawFrameFilter;
   private int mRendIdx = 0;
-  private h mResizeFilter;
+  private j mResizeFilter;
   
   static
   {
     AppMethodBeat.i(14849);
     TAG = TXCSWVideoEncoder.class.getSimpleName();
-    f.f();
+    h.f();
     nativeClassInit();
     AppMethodBeat.o(14849);
   }
@@ -90,20 +91,30 @@ public class TXCSWVideoEncoder
   
   private static void onEncodeFinishedFromNative(WeakReference<TXCSWVideoEncoder> paramWeakReference, int paramInt, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(221369);
+    AppMethodBeat.i(229017);
     paramWeakReference = (TXCSWVideoEncoder)paramWeakReference.get();
     if (paramWeakReference != null) {
       paramWeakReference.onEncodeFinished(paramInt, paramLong1, paramLong2);
     }
-    AppMethodBeat.o(221369);
+    AppMethodBeat.o(229017);
   }
   
   private static void postEventFromNative(WeakReference<TXCSWVideoEncoder> paramWeakReference, byte[] paramArrayOfByte, int paramInt1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, int paramInt2)
   {
     AppMethodBeat.i(14844);
     paramWeakReference = (TXCSWVideoEncoder)paramWeakReference.get();
-    if (paramWeakReference != null) {
-      paramWeakReference.callDelegate(paramArrayOfByte, paramInt1, paramLong1, paramLong2, paramLong3, paramLong4, paramLong5, paramLong6, paramInt2, null, null);
+    if (paramWeakReference != null)
+    {
+      TXSNALPacket localTXSNALPacket = new TXSNALPacket();
+      localTXSNALPacket.nalData = paramArrayOfByte;
+      localTXSNALPacket.nalType = paramInt1;
+      localTXSNALPacket.gopIndex = paramLong1;
+      localTXSNALPacket.gopFrameIndex = paramLong2;
+      localTXSNALPacket.frameIndex = paramLong3;
+      localTXSNALPacket.refFremeIndex = paramLong4;
+      localTXSNALPacket.pts = paramLong5;
+      localTXSNALPacket.dts = paramLong6;
+      paramWeakReference.callDelegate(localTXSNALPacket, paramInt2);
     }
     AppMethodBeat.o(14844);
   }
@@ -112,7 +123,7 @@ public class TXCSWVideoEncoder
   {
     AppMethodBeat.i(14846);
     Object localObject2 = this.mResizeFilter;
-    h localh = this.mRawFrameFilter;
+    j localj = this.mRawFrameFilter;
     Object localObject1;
     if (this.mGLContextExternal != null)
     {
@@ -121,12 +132,12 @@ public class TXCSWVideoEncoder
       localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject1 = new h();
-        this.mResizeFilter = ((h)localObject1);
-        ((h)localObject1).a();
-        ((h)localObject1).a(true);
+        localObject1 = new j();
+        this.mResizeFilter = ((j)localObject1);
+        ((j)localObject1).a();
+        ((j)localObject1).a(true);
       }
-      ((h)localObject1).a(this.mOutputWidth, this.mOutputHeight);
+      ((j)localObject1).a(this.mOutputWidth, this.mOutputHeight);
       GLES20.glViewport(0, 0, this.mOutputWidth, this.mOutputHeight);
       int k;
       int i;
@@ -145,21 +156,21 @@ public class TXCSWVideoEncoder
       label284:
       for (int j = this.mOutputWidth;; j = this.mOutputHeight)
       {
-        ((h)localObject1).a(paramInt2, paramInt3, k, null, i / j, this.mEnableXMirror, false);
-        ((h)localObject1).b(paramInt1);
+        ((j)localObject1).a(paramInt2, paramInt3, k, null, i / j, this.mEnableXMirror, false);
+        ((j)localObject1).b(paramInt1);
         if (localObject1 != null) {
-          paramInt1 = ((h)localObject1).l();
+          paramInt1 = ((j)localObject1).l();
         }
         localObject2 = new int[1];
         this.mPTS = paramLong;
-        if (localh != null) {
+        if (localj != null) {
           break label379;
         }
         TXCLog.i(TAG, "pushVideoFrameInternal->create mRawFrameFilter");
         localObject1 = new o(1);
-        this.mRawFrameFilter = ((h)localObject1);
-        ((h)localObject1).a(true);
-        if (((h)localObject1).a()) {
+        this.mRawFrameFilter = ((j)localObject1);
+        ((j)localObject1).a(true);
+        if (((j)localObject1).a()) {
           break label293;
         }
         TXCLog.i(TAG, "pushVideoFrameInternal->destroy mRawFrameFilter, init failed!");
@@ -170,8 +181,8 @@ public class TXCSWVideoEncoder
         break;
       }
       label293:
-      ((h)localObject1).a(this.mOutputWidth, this.mOutputHeight);
-      ((h)localObject1).a(new h.a()
+      ((j)localObject1).a(this.mOutputWidth, this.mOutputHeight);
+      ((j)localObject1).a(new j.a()
       {
         public void a(int paramAnonymousInt)
         {
@@ -200,7 +211,7 @@ public class TXCSWVideoEncoder
         return 10000004L;
       }
       GLES20.glViewport(0, 0, this.mOutputWidth, this.mOutputHeight);
-      ((h)localObject1).b(paramInt1);
+      ((j)localObject1).b(paramInt1);
       paramInt1 = localObject2[0];
       if (paramInt1 != 0) {
         callDelegate(paramInt1);
@@ -208,7 +219,7 @@ public class TXCSWVideoEncoder
       AppMethodBeat.o(14846);
       return 0L;
       label379:
-      localObject1 = localh;
+      localObject1 = localj;
     }
   }
   
@@ -459,7 +470,7 @@ public class TXCSWVideoEncoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.videoencoder.TXCSWVideoEncoder
  * JD-Core Version:    0.7.0.1
  */

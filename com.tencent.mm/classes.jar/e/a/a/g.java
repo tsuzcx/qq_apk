@@ -3,11 +3,11 @@ package e.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String MFd;
-  public String MFe;
-  public int MFf;
+  public String TQP;
+  public String TQQ;
+  public int TQR;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -15,37 +15,37 @@ public final class g
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.MFd != null) {
-        paramVarArgs.e(1, this.MFd);
+      if (this.TQP != null) {
+        paramVarArgs.f(1, this.TQP);
       }
-      if (this.MFe != null) {
-        paramVarArgs.e(2, this.MFe);
+      if (this.TQQ != null) {
+        paramVarArgs.f(2, this.TQQ);
       }
-      paramVarArgs.aM(3, this.MFf);
+      paramVarArgs.aY(3, this.TQR);
       AppMethodBeat.o(91745);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.MFd == null) {
+      if (this.TQP == null) {
         break label318;
       }
     }
     label318:
-    for (paramInt = g.a.a.b.b.a.f(1, this.MFd) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.g(1, this.TQP) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.MFe != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.MFe);
+      if (this.TQQ != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.TQQ);
       }
-      paramInt = g.a.a.b.b.a.bu(3, this.MFf);
+      paramInt = g.a.a.b.b.a.bM(3, this.TQR);
       AppMethodBeat.o(91745);
       return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
         AppMethodBeat.o(91745);
@@ -61,15 +61,15 @@ public final class g
           AppMethodBeat.o(91745);
           return -1;
         case 1: 
-          localg.MFd = locala.UbS.readString();
+          localg.TQP = locala.abFh.readString();
           AppMethodBeat.o(91745);
           return 0;
         case 2: 
-          localg.MFe = locala.UbS.readString();
+          localg.TQQ = locala.abFh.readString();
           AppMethodBeat.o(91745);
           return 0;
         }
-        localg.MFf = locala.UbS.zi();
+        localg.TQR = locala.abFh.AK();
         AppMethodBeat.o(91745);
         return 0;
       }

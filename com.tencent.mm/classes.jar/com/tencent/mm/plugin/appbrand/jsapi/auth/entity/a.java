@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.appbrand.jsapi.auth.entity;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/IUserInfoListOperationController;", "", "deleteUser", "", "itemIndex", "", "callback", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/IUserInfoListOperationController$DeleteAvatarTaskCallback;", "goAddUserPage", "activity", "Landroid/app/Activity;", "appId", "", "onItemChecked", "item", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AuthorizeOptionalListAdapter$Item;", "onItemLongClick", "view", "Landroid/view/View;", "index", "touchX", "touchY", "DeleteAvatarTaskCallback", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/IUserInfoListOperationController;", "", "deleteUser", "", "itemIndex", "", "callback", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/entity/IUserInfoListOperationController$DeleteAvatarTaskCallback;", "goAddUserPage", "activity", "Landroid/app/Activity;", "appId", "", "onItemChecked", "item", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AuthorizeOptionalListAdapter$Item;", "onItemLongClick", "view", "Landroid/view/View;", "index", "touchX", "touchY", "DeleteAvatarTaskCallback", "plugin-appbrand-integration_release"})
 public abstract interface a {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.auth.entity.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.game.g.d;
+import com.tencent.mm.plugin.game.g.f;
 import com.tencent.mm.plugin.game.model.c;
 import com.tencent.mm.plugin.game.model.e;
 import com.tencent.mm.plugin.game.model.l;
@@ -23,7 +25,7 @@ public final class g
   public g(Context paramContext)
   {
     super(paramContext);
-    this.xTV = 2131494834;
+    this.CYg = g.f.CmH;
   }
   
   protected final void a(c paramc, m.b paramb) {}
@@ -31,54 +33,54 @@ public final class g
   protected final void a(c paramc, m.b paramb, int paramInt)
   {
     AppMethodBeat.i(41927);
-    paramb.xUg.setText(paramc.position);
-    Bitmap localBitmap = aAz(paramc.field_appId);
+    paramb.CYr.setText(paramc.position);
+    Bitmap localBitmap = aKl(paramc.field_appId);
     if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
-      paramb.xUh.setImageBitmap(localBitmap);
-      paramb.xTl.setText(paramc.field_appName);
-      if (!Util.isNullOrNil(paramc.xDV)) {
-        break label235;
+      paramb.CYs.setImageBitmap(localBitmap);
+      paramb.CXw.setText(paramc.field_appName);
+      if (!Util.isNullOrNil(paramc.CHW)) {
+        break label236;
       }
-      paramb.xUk.setVisibility(8);
+      paramb.CYv.setVisibility(8);
       label91:
-      if (Util.isNullOrNil(paramc.xEe)) {
-        break label257;
+      if (Util.isNullOrNil(paramc.CIf)) {
+        break label258;
       }
-      paramb.xUi.setVisibility(0);
-      paramb.xUi.setText((CharSequence)paramc.xEe.get(0));
+      paramb.CYt.setVisibility(0);
+      paramb.CYt.setText((CharSequence)paramc.CIf.get(0));
     }
     for (;;)
     {
-      paramb.xUm.setTextSize(this.xQD);
-      paramb.xUl.setOnClickListener(this.xRt);
-      paramb.xUm.setOnClickListener(this.xRt);
-      paramb.xUl.setTag(paramc);
-      paramb.xUm.setTag(paramc);
-      this.xQI.a(paramb.xUm, paramb.xUl, paramc, (l)this.xUa.get(paramc.field_appId));
-      paramb.xUn.setData(paramc.xEc);
+      paramb.CYx.setTextSize(this.CUN);
+      paramb.CYw.setOnClickListener(this.CVD);
+      paramb.CYx.setOnClickListener(this.CVD);
+      paramb.CYw.setTag(paramc);
+      paramb.CYx.setTag(paramc);
+      this.CUS.a(paramb.CYx, paramb.CYw, paramc, (l)this.CYl.get(paramc.field_appId));
+      paramb.CYy.setData(paramc.CId);
       AppMethodBeat.o(41927);
       return;
-      paramb.xUh.setImageResource(2131232887);
+      paramb.CYs.setImageResource(g.d.Chf);
       break;
-      label235:
-      paramb.xUk.setVisibility(0);
-      paramb.xUk.setText(paramc.xDV);
+      label236:
+      paramb.CYv.setVisibility(0);
+      paramb.CYv.setText(paramc.CHW);
       break label91;
-      label257:
-      if (!Util.isNullOrNil(paramc.xEh))
+      label258:
+      if (!Util.isNullOrNil(paramc.CIi))
       {
-        paramb.xUi.setVisibility(0);
-        paramb.xUi.setText(paramc.xEh);
+        paramb.CYt.setVisibility(0);
+        paramb.CYt.setText(paramc.CIi);
       }
       try
       {
-        paramb.xUi.setBackgroundDrawable(e.fi(Color.parseColor(paramc.xEi), a.fromDPToPix(this.mContext, 10)));
+        paramb.CYt.setBackgroundDrawable(e.fF(Color.parseColor(paramc.CIj), a.fromDPToPix(this.mContext, 10)));
       }
       catch (IllegalArgumentException localIllegalArgumentException)
       {
         Log.e("MicroMsg.GameCenterListAdapter", localIllegalArgumentException.getMessage());
-        paramb.xUi.setVisibility(8);
+        paramb.CYt.setVisibility(8);
       }
       catch (Exception localException)
       {
@@ -92,7 +94,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.g
  * JD-Core Version:    0.7.0.1
  */

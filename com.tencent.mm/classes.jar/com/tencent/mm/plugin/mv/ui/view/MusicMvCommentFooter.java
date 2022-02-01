@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.mv.ui.view;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
@@ -19,7 +18,12 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.mv.ui.uic.KeyboardProviderUIC;
+import com.tencent.mm.plugin.mv.b.b;
+import com.tencent.mm.plugin.mv.b.d;
+import com.tencent.mm.plugin.mv.b.e;
+import com.tencent.mm.plugin.mv.b.f;
+import com.tencent.mm.plugin.mv.b.g;
+import com.tencent.mm.plugin.mv.b.h;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel.a;
 import com.tencent.mm.pluginsdk.ui.chat.e;
@@ -28,157 +32,159 @@ import com.tencent.mm.sdk.platformtools.KeyBoardUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.component.g;
+import com.tencent.mm.ui.component.g.a;
 import com.tencent.mm.ui.tools.b.c;
 import com.tencent.mm.ui.tools.b.c.a;
-import com.tencent.mm.ui.tools.g;
+import com.tencent.mm.ui.tools.i;
 import com.tencent.mm.ui.widget.MMEditText;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.util.ArrayList;
 import java.util.Collection;
-import kotlin.g.b.af;
+import kotlin.g.b.ag;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentFooter;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/ui/tools/KeyboardHeightObserver;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "commentModeIv", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "curEditMode", "hasWindowFocus", "", "lastKeyboardShow", "moveHeight", "nextEditMode", "onCommentSend", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentFooter$IOnCommentSend;", "smilePanelHeight", "smileyPanel", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel;", "toSendET", "Lcom/tencent/mm/ui/widget/MMEditText;", "allGone", "", "getTrueHeight", "hideSmileyPanel", "init", "initEditText", "initEmojiBtn", "initSmilePanel", "onKeyboardHeightChanged", "height", "isResized", "onWindowFocusChanged", "onlyShowSmilePanel", "onlyShowVKB", "refreshBottomPanelHeight", "send", "setEditViewBackground", "id", "setOnCommentSendImp", "imp", "setVisibility", "visibility", "showSmileyPanel", "showState", "isShow", "Companion", "IOnCommentSend", "plugin-mv_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentFooter;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/ui/tools/KeyboardHeightObserver;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "commentModeIv", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "curEditMode", "hasWindowFocus", "", "lastKeyboardShow", "moveHeight", "nextEditMode", "onCommentSend", "Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentFooter$IOnCommentSend;", "smilePanelHeight", "smileyPanel", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel;", "toSendET", "Lcom/tencent/mm/ui/widget/MMEditText;", "allGone", "", "getTrueHeight", "hideSmileyPanel", "init", "initEditText", "initEmojiBtn", "initSmilePanel", "onKeyboardHeightChanged", "height", "isResized", "onWindowFocusChanged", "onlyShowSmilePanel", "onlyShowVKB", "refreshBottomPanelHeight", "send", "setEditViewBackground", "id", "setOnCommentSendImp", "imp", "setVisibility", "visibility", "showSmileyPanel", "showState", "isShow", "Companion", "IOnCommentSend", "plugin-mv_release"})
 public final class MusicMvCommentFooter
   extends LinearLayout
-  implements g
+  implements com.tencent.mm.ui.tools.h
 {
-  public static final a AxI;
-  private WeImageView AxC;
-  private int AxD;
-  private int AxE;
-  private boolean AxF;
-  private b AxG;
-  private boolean AxH;
-  private ChatFooterPanel rum;
-  private int wBU;
-  private int ygg;
-  private MMEditText ziR;
+  public static final a Gor;
+  private int BsC;
+  private int Dqi;
+  private MMEditText EOh;
+  private WeImageView Gol;
+  private int Gom;
+  private int Gon;
+  private boolean Goo;
+  private b Gop;
+  private boolean Goq;
+  private ChatFooterPanel jPN;
   
   static
   {
-    AppMethodBeat.i(257494);
-    AxI = new a((byte)0);
-    AppMethodBeat.o(257494);
+    AppMethodBeat.i(237470);
+    Gor = new a((byte)0);
+    AppMethodBeat.o(237470);
   }
   
   public MusicMvCommentFooter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(257492);
-    this.wBU = 200;
-    this.AxD = 200;
-    this.AxE = -1;
+    AppMethodBeat.i(237467);
+    this.BsC = 200;
+    this.Gom = 200;
+    this.Gon = -1;
     init();
-    AppMethodBeat.o(257492);
+    AppMethodBeat.o(237467);
   }
   
   public MusicMvCommentFooter(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(257493);
-    this.wBU = 200;
-    this.AxD = 200;
-    this.AxE = -1;
+    AppMethodBeat.i(237469);
+    this.BsC = 200;
+    this.Gom = 200;
+    this.Gon = -1;
     init();
-    AppMethodBeat.o(257493);
+    AppMethodBeat.o(237469);
   }
   
-  private final void cbM()
+  private final void aDL()
   {
-    AppMethodBeat.i(257489);
+    AppMethodBeat.i(237461);
     Log.i("Music.MusicMvCommentFooter", "hideSmileyPanel");
-    Object localObject = this.AxC;
+    Object localObject = this.Gol;
     if (localObject != null) {
-      ((WeImageView)localObject).setImageResource(2131690793);
+      ((WeImageView)localObject).setImageResource(b.g.icons_outlined_emoji);
     }
-    localObject = this.AxC;
+    localObject = this.Gol;
     if (localObject != null)
     {
       Context localContext = getContext();
-      p.g(localContext, "context");
-      ((WeImageView)localObject).setIconColor(localContext.getResources().getColor(2131099844));
+      p.j(localContext, "context");
+      ((WeImageView)localObject).setIconColor(localContext.getResources().getColor(b.b.White));
     }
-    localObject = this.rum;
+    localObject = this.jPN;
     if (localObject == null) {
-      p.btv("smileyPanel");
+      p.bGy("smileyPanel");
     }
     ((ChatFooterPanel)localObject).animate().cancel();
-    localObject = this.rum;
+    localObject = this.jPN;
     if (localObject == null) {
-      p.btv("smileyPanel");
+      p.bGy("smileyPanel");
     }
     if (((ChatFooterPanel)localObject).getVisibility() == 0)
     {
-      localObject = this.rum;
+      localObject = this.jPN;
       if (localObject == null) {
-        p.btv("smileyPanel");
+        p.bGy("smileyPanel");
       }
       ((ChatFooterPanel)localObject).onPause();
-      localObject = this.rum;
+      localObject = this.jPN;
       if (localObject == null) {
-        p.btv("smileyPanel");
+        p.bGy("smileyPanel");
       }
       ((ChatFooterPanel)localObject).animate().alpha(0.0F).setDuration(175L).withEndAction((Runnable)new c(this)).start();
     }
-    AppMethodBeat.o(257489);
+    AppMethodBeat.o(237461);
   }
   
-  private final void ewq()
+  private final void fhJ()
   {
-    AppMethodBeat.i(257487);
+    AppMethodBeat.i(237454);
     Log.i("Music.MusicMvCommentFooter", "onlyShowVKB");
-    this.AxD = 201;
+    this.Gom = 201;
     Object localObject = getContext();
     if (localObject == null)
     {
       localObject = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-      AppMethodBeat.o(257487);
+      AppMethodBeat.o(237454);
       throw ((Throwable)localObject);
     }
     ((MMActivity)localObject).showVKB();
-    AppMethodBeat.o(257487);
+    AppMethodBeat.o(237454);
   }
   
   private final void init()
   {
-    AppMethodBeat.i(257488);
-    View.inflate(getContext(), 2131495781, (ViewGroup)this);
-    this.AxC = ((WeImageView)findViewById(2131298956));
-    Object localObject1 = this.AxC;
+    AppMethodBeat.i(237459);
+    View.inflate(getContext(), b.f.FZs, (ViewGroup)this);
+    this.Gol = ((WeImageView)findViewById(b.e.FWR));
+    Object localObject1 = this.Gol;
     if (localObject1 != null) {
       ((WeImageView)localObject1).setOnClickListener((View.OnClickListener)new e(this));
     }
-    localObject1 = findViewById(2131298935);
+    localObject1 = findViewById(b.e.FWP);
     if (localObject1 == null)
     {
       localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.ui.widget.MMEditText");
-      AppMethodBeat.o(257488);
+      AppMethodBeat.o(237459);
       throw ((Throwable)localObject1);
     }
-    this.ziR = ((MMEditText)localObject1);
-    localObject1 = this.ziR;
+    this.EOh = ((MMEditText)localObject1);
+    localObject1 = this.EOh;
     if (localObject1 != null) {
       ((MMEditText)localObject1).setEnableSendBtn(true);
     }
-    if (ao.gJI())
+    if (ar.hIF())
     {
-      localObject1 = this.ziR;
+      localObject1 = this.EOh;
       if (localObject1 != null) {
         ((MMEditText)localObject1).setImeOptions(268435456);
       }
     }
-    localObject1 = this.ziR;
+    localObject1 = this.EOh;
     if (localObject1 != null) {
       ((MMEditText)localObject1).setImeOptions(4);
     }
-    Object localObject2 = this.ziR;
+    Object localObject2 = this.EOh;
     if (localObject2 != null)
     {
-      localObject1 = this.ziR;
+      localObject1 = this.EOh;
       if (localObject1 == null) {
         break label492;
       }
@@ -187,11 +193,11 @@ public final class MusicMvCommentFooter
     for (localObject1 = Integer.valueOf(((MMEditText)localObject1).getInputType() & 0xFFFFFFBF);; localObject1 = null)
     {
       if (localObject1 == null) {
-        p.hyc();
+        p.iCn();
       }
       ((MMEditText)localObject2).setInputType(((Integer)localObject1).intValue());
-      c.f((EditText)this.ziR).aoq(80).a(null);
-      localObject1 = this.ziR;
+      c.i((EditText)this.EOh).axx(80).a(null);
+      localObject1 = this.EOh;
       if (localObject1 != null)
       {
         localObject1 = ((MMEditText)localObject1).getInputExtras(true);
@@ -201,292 +207,292 @@ public final class MusicMvCommentFooter
       }
       if (Build.VERSION.SDK_INT == 28)
       {
-        localObject1 = this.ziR;
+        localObject1 = this.EOh;
         if (localObject1 != null) {
           ((MMEditText)localObject1).setBreakStrategy(1);
         }
       }
-      localObject1 = this.ziR;
+      localObject1 = this.EOh;
       if (localObject1 != null) {
         ((MMEditText)localObject1).setOnEditorActionListener((TextView.OnEditorActionListener)new d(this));
       }
-      localObject1 = (LinearLayout)findViewById(2131307165);
-      localObject2 = e.grv().eZ(getContext());
-      p.g(localObject2, "FooterFactory.getSmileyP…).getSmileyPanel(context)");
-      this.rum = ((ChatFooterPanel)localObject2);
-      localObject2 = this.rum;
+      localObject1 = (LinearLayout)findViewById(b.e.root_layout);
+      localObject2 = e.hmu().fd(getContext());
+      p.j(localObject2, "FooterFactory.getSmileyP…).getSmileyPanel(context)");
+      this.jPN = ((ChatFooterPanel)localObject2);
+      localObject2 = this.jPN;
       if (localObject2 == null) {
-        p.btv("smileyPanel");
+        p.bGy("smileyPanel");
       }
-      ((ChatFooterPanel)localObject2).setEntranceScene(ChatFooterPanel.KbP);
-      localObject2 = this.rum;
+      ((ChatFooterPanel)localObject2).setEntranceScene(ChatFooterPanel.Rcu);
+      localObject2 = this.jPN;
       if (localObject2 == null) {
-        p.btv("smileyPanel");
+        p.bGy("smileyPanel");
       }
-      ((ChatFooterPanel)localObject2).setBackgroundResource(2131231612);
-      localObject2 = this.rum;
+      ((ChatFooterPanel)localObject2).setBackgroundResource(b.d.chat_footer_bg);
+      localObject2 = this.jPN;
       if (localObject2 == null) {
-        p.btv("smileyPanel");
+        p.bGy("smileyPanel");
       }
-      ((ChatFooterPanel)localObject2).goD();
-      localObject2 = this.rum;
+      ((ChatFooterPanel)localObject2).hjp();
+      localObject2 = this.jPN;
       if (localObject2 == null) {
-        p.btv("smileyPanel");
+        p.bGy("smileyPanel");
       }
       ((ChatFooterPanel)localObject2).setShowSend(true);
-      localObject2 = this.rum;
+      localObject2 = this.jPN;
       if (localObject2 == null) {
-        p.btv("smileyPanel");
+        p.bGy("smileyPanel");
       }
       ((ChatFooterPanel)localObject2).setVisibility(4);
-      this.AxE = KeyBoardUtil.getKeyBordHeightPx(getContext());
-      localObject2 = this.rum;
+      this.Gon = KeyBoardUtil.getKeyBordHeightPx(getContext());
+      localObject2 = this.jPN;
       if (localObject2 == null) {
-        p.btv("smileyPanel");
+        p.bGy("smileyPanel");
       }
-      ((LinearLayout)localObject1).addView((View)localObject2, -1, this.AxE);
-      localObject1 = this.rum;
+      ((LinearLayout)localObject1).addView((View)localObject2, -1, this.Gon);
+      localObject1 = this.jPN;
       if (localObject1 == null) {
-        p.btv("smileyPanel");
+        p.bGy("smileyPanel");
       }
       ((ChatFooterPanel)localObject1).setOnTextOperationListener((ChatFooterPanel.a)new f(this));
-      AppMethodBeat.o(257488);
+      AppMethodBeat.o(237459);
       return;
     }
   }
   
-  public final int getTrueHeight()
+  public final void A(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(257485);
-    int i = this.AxE;
-    int j = com.tencent.mm.cb.a.fromDPToPix(getContext(), 48);
-    AppMethodBeat.o(257485);
-    return i + j;
-  }
-  
-  public final void onWindowFocusChanged(boolean paramBoolean)
-  {
-    AppMethodBeat.i(257490);
-    super.onWindowFocusChanged(paramBoolean);
-    Log.i("Music.MusicMvCommentFooter", "onWindowFocusChanged: ".concat(String.valueOf(paramBoolean)));
-    this.AxF = paramBoolean;
-    if ((getVisibility() == 0) && (paramBoolean) && (this.wBU == 201)) {
-      post((Runnable)new g(this));
-    }
-    AppMethodBeat.o(257490);
-  }
-  
-  public final void setEditViewBackground(int paramInt)
-  {
-    AppMethodBeat.i(257486);
-    MMEditText localMMEditText = this.ziR;
-    if (localMMEditText != null)
-    {
-      localMMEditText.setBackground(getContext().getDrawable(paramInt));
-      AppMethodBeat.o(257486);
-      return;
-    }
-    AppMethodBeat.o(257486);
-  }
-  
-  public final void setOnCommentSendImp(b paramb)
-  {
-    AppMethodBeat.i(257483);
-    p.h(paramb, "imp");
-    this.AxG = paramb;
-    AppMethodBeat.o(257483);
-  }
-  
-  public final void setVisibility(int paramInt)
-  {
-    AppMethodBeat.i(257484);
-    super.setVisibility(paramInt);
-    this.wBU = 200;
-    if (paramInt == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Log.i("Music.MusicMvCommentFooter", "setVisibility, cutEditMode:" + this.wBU + ", isShow:" + bool);
-      Log.i("Music.MusicMvCommentFooter", "showState ".concat(String.valueOf(bool)));
-      if (bool) {
-        break label170;
-      }
-      Log.i("Music.MusicMvCommentFooter", "allGone");
-      this.AxD = 200;
-      localObject = getContext();
-      if (localObject != null) {
-        break;
-      }
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-      AppMethodBeat.o(257484);
-      throw ((Throwable)localObject);
-    }
-    ((MMActivity)localObject).hideVKB();
-    Object localObject = this.rum;
-    if (localObject == null) {
-      p.btv("smileyPanel");
-    }
-    ((ChatFooterPanel)localObject).setAlpha(0.0F);
-    localObject = this.rum;
-    if (localObject == null) {
-      p.btv("smileyPanel");
-    }
-    ((ChatFooterPanel)localObject).setVisibility(4);
-    label170:
-    if (bool)
-    {
-      this.AxH = false;
-      this.AxF = true;
-      localObject = com.tencent.mm.ui.component.a.PRN;
-      localObject = getContext();
-      p.g(localObject, "context");
-      localObject = (KeyboardProviderUIC)com.tencent.mm.ui.component.a.ko((Context)localObject).get(KeyboardProviderUIC.class);
-      localg = (g)this;
-      ((KeyboardProviderUIC)localObject).AsQ.add(localg);
-      localObject = ((KeyboardProviderUIC)localObject).gyh;
-      if (localObject != null) {
-        ((com.tencent.mm.ui.tools.h)localObject).start();
-      }
-      localObject = this.ziR;
-      if (localObject != null) {
-        ((MMEditText)localObject).requestFocus();
-      }
-      ewq();
-      AppMethodBeat.o(257484);
-      return;
-    }
-    localObject = com.tencent.mm.ui.component.a.PRN;
-    localObject = getContext();
-    p.g(localObject, "context");
-    localObject = (KeyboardProviderUIC)com.tencent.mm.ui.component.a.ko((Context)localObject).get(KeyboardProviderUIC.class);
-    g localg = (g)this;
-    Collection localCollection = (Collection)((KeyboardProviderUIC)localObject).AsQ;
-    if (localCollection == null)
-    {
-      localObject = new t("null cannot be cast to non-null type kotlin.collections.MutableCollection<T>");
-      AppMethodBeat.o(257484);
-      throw ((Throwable)localObject);
-    }
-    af.eV(localCollection).remove(localg);
-    if (((KeyboardProviderUIC)localObject).AsQ.isEmpty())
-    {
-      localObject = ((KeyboardProviderUIC)localObject).gyh;
-      if (localObject != null)
-      {
-        ((com.tencent.mm.ui.tools.h)localObject).close();
-        AppMethodBeat.o(257484);
-        return;
-      }
-    }
-    AppMethodBeat.o(257484);
-  }
-  
-  public final void y(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(257491);
+    AppMethodBeat.i(237466);
     Log.i("Music.MusicMvCommentFooter", "onKeyboardHeightChanged: ".concat(String.valueOf(paramInt)));
-    if (!this.AxF)
+    if (!this.Goo)
     {
-      AppMethodBeat.o(257491);
+      AppMethodBeat.o(237466);
       return;
     }
     if (paramInt > 0) {}
-    for (paramBoolean = true; this.AxH == paramBoolean; paramBoolean = false)
+    for (paramBoolean = true; this.Goq == paramBoolean; paramBoolean = false)
     {
       Log.d("Music.MusicMvCommentFooter", "onKeyboardHeightChanged repeat");
-      AppMethodBeat.o(257491);
+      AppMethodBeat.o(237466);
       return;
     }
-    if (this.ygg == 0) {
-      this.ygg = paramInt;
+    if (this.Dqi == 0) {
+      this.Dqi = paramInt;
     }
     Object localObject1;
     Object localObject2;
-    if ((this.AxE != paramInt) && (paramInt != 0))
+    if ((this.Gon != paramInt) && (paramInt != 0))
     {
-      this.AxE = paramInt;
-      Log.i("Music.MusicMvCommentFooter", "refreshBottomPanelHeight, " + this.AxE);
-      if (this.AxE > 0)
+      this.Gon = paramInt;
+      Log.i("Music.MusicMvCommentFooter", "refreshBottomPanelHeight, " + this.Gon);
+      if (this.Gon > 0)
       {
-        KeyBoardUtil.saveKeyBordHeightPx(getContext(), this.AxE);
-        localObject1 = new LinearLayout.LayoutParams(-1, this.AxE);
-        localObject2 = this.rum;
+        KeyBoardUtil.saveKeyBordHeightPx(getContext(), this.Gon);
+        localObject1 = new LinearLayout.LayoutParams(-1, this.Gon);
+        localObject2 = this.jPN;
         if (localObject2 == null) {
-          p.btv("smileyPanel");
+          p.bGy("smileyPanel");
         }
         ((ChatFooterPanel)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
       }
     }
     if (paramBoolean)
     {
-      this.wBU = 201;
-      cbM();
-      this.AxD = 200;
-      this.AxH = paramBoolean;
-      AppMethodBeat.o(257491);
+      this.BsC = 201;
+      aDL();
+      this.Gom = 200;
+      this.Goq = paramBoolean;
+      AppMethodBeat.o(237466);
       return;
     }
-    if (this.AxD == 200)
+    if (this.Gom == 200)
     {
-      localObject1 = this.AxG;
+      localObject1 = this.Gop;
       if (localObject1 != null) {
-        ((b)localObject1).aIq(null);
+        ((b)localObject1).aSL(null);
       }
-      this.wBU = 200;
-      cbM();
+      this.BsC = 200;
+      aDL();
     }
     for (;;)
     {
-      this.AxD = 200;
+      this.Gom = 200;
       break;
-      if (this.AxD == 202)
+      if (this.Gom == 202)
       {
-        this.wBU = 202;
+        this.BsC = 202;
         Log.i("Music.MusicMvCommentFooter", "showSmileyPanel");
-        localObject1 = this.AxC;
+        localObject1 = this.Gol;
         if (localObject1 != null) {
-          ((WeImageView)localObject1).setImageResource(2131690821);
+          ((WeImageView)localObject1).setImageResource(b.g.icons_outlined_keyboard);
         }
-        localObject1 = this.AxC;
+        localObject1 = this.Gol;
         if (localObject1 != null)
         {
           localObject2 = getContext();
-          p.g(localObject2, "context");
-          ((WeImageView)localObject1).setIconColor(((Context)localObject2).getResources().getColor(2131099844));
+          p.j(localObject2, "context");
+          ((WeImageView)localObject1).setIconColor(((Context)localObject2).getResources().getColor(b.b.White));
         }
-        localObject1 = this.rum;
+        localObject1 = this.jPN;
         if (localObject1 == null) {
-          p.btv("smileyPanel");
+          p.bGy("smileyPanel");
         }
         ((ChatFooterPanel)localObject1).setVisibility(0);
-        localObject1 = this.rum;
+        localObject1 = this.jPN;
         if (localObject1 == null) {
-          p.btv("smileyPanel");
+          p.bGy("smileyPanel");
         }
         ((ChatFooterPanel)localObject1).onResume();
-        localObject1 = this.rum;
+        localObject1 = this.jPN;
         if (localObject1 == null) {
-          p.btv("smileyPanel");
+          p.bGy("smileyPanel");
         }
         ((ChatFooterPanel)localObject1).animate().cancel();
-        localObject1 = this.rum;
+        localObject1 = this.jPN;
         if (localObject1 == null) {
-          p.btv("smileyPanel");
+          p.bGy("smileyPanel");
         }
         ((ChatFooterPanel)localObject1).animate().alpha(1.0F).setDuration(175L).start();
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentFooter$Companion;", "", "()V", "DELAY_MILLISECOND", "", "EDIT_MODE_KEYBOARD", "", "EDIT_MODE_NONE", "EDIT_MODE_SMILE_PANEL", "NORMAL_ANIMATOR_DURATION", "TAG", "", "plugin-mv_release"})
-  public static final class a {}
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentFooter$IOnCommentSend;", "", "onCommentSend", "", "toSendText", "", "emojiMd5", "plugin-mv_release"})
-  public static abstract interface b
+  public final int getTrueHeight()
   {
-    public abstract void aIq(String paramString);
+    AppMethodBeat.i(237451);
+    int i = this.Gon;
+    int j = com.tencent.mm.ci.a.fromDPToPix(getContext(), 48);
+    AppMethodBeat.o(237451);
+    return i + j;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  public final void onWindowFocusChanged(boolean paramBoolean)
+  {
+    AppMethodBeat.i(237463);
+    super.onWindowFocusChanged(paramBoolean);
+    Log.i("Music.MusicMvCommentFooter", "onWindowFocusChanged: ".concat(String.valueOf(paramBoolean)));
+    this.Goo = paramBoolean;
+    if ((getVisibility() == 0) && (paramBoolean) && (this.BsC == 201)) {
+      post((Runnable)new g(this));
+    }
+    AppMethodBeat.o(237463);
+  }
+  
+  public final void setEditViewBackground(int paramInt)
+  {
+    AppMethodBeat.i(237452);
+    MMEditText localMMEditText = this.EOh;
+    if (localMMEditText != null)
+    {
+      localMMEditText.setBackground(getContext().getDrawable(paramInt));
+      AppMethodBeat.o(237452);
+      return;
+    }
+    AppMethodBeat.o(237452);
+  }
+  
+  public final void setOnCommentSendImp(b paramb)
+  {
+    AppMethodBeat.i(237444);
+    p.k(paramb, "imp");
+    this.Gop = paramb;
+    AppMethodBeat.o(237444);
+  }
+  
+  public final void setVisibility(int paramInt)
+  {
+    AppMethodBeat.i(237449);
+    super.setVisibility(paramInt);
+    this.BsC = 200;
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i("Music.MusicMvCommentFooter", "setVisibility, cutEditMode:" + this.BsC + ", isShow:" + bool);
+      Log.i("Music.MusicMvCommentFooter", "showState ".concat(String.valueOf(bool)));
+      if (bool) {
+        break label170;
+      }
+      Log.i("Music.MusicMvCommentFooter", "allGone");
+      this.Gom = 200;
+      localObject = getContext();
+      if (localObject != null) {
+        break;
+      }
+      localObject = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
+      AppMethodBeat.o(237449);
+      throw ((Throwable)localObject);
+    }
+    ((MMActivity)localObject).hideVKB();
+    Object localObject = this.jPN;
+    if (localObject == null) {
+      p.bGy("smileyPanel");
+    }
+    ((ChatFooterPanel)localObject).setAlpha(0.0F);
+    localObject = this.jPN;
+    if (localObject == null) {
+      p.bGy("smileyPanel");
+    }
+    ((ChatFooterPanel)localObject).setVisibility(4);
+    label170:
+    if (bool)
+    {
+      this.Goq = false;
+      this.Goo = true;
+      localObject = g.Xox;
+      localObject = getContext();
+      p.j(localObject, "context");
+      localObject = (com.tencent.mm.plugin.mv.ui.uic.a)g.lm((Context)localObject).i(com.tencent.mm.plugin.mv.ui.uic.a.class);
+      localh = (com.tencent.mm.ui.tools.h)this;
+      ((com.tencent.mm.plugin.mv.ui.uic.a)localObject).Gik.add(localh);
+      localObject = ((com.tencent.mm.plugin.mv.ui.uic.a)localObject).jij;
+      if (localObject != null) {
+        ((i)localObject).start();
+      }
+      localObject = this.EOh;
+      if (localObject != null) {
+        ((MMEditText)localObject).requestFocus();
+      }
+      fhJ();
+      AppMethodBeat.o(237449);
+      return;
+    }
+    localObject = g.Xox;
+    localObject = getContext();
+    p.j(localObject, "context");
+    localObject = (com.tencent.mm.plugin.mv.ui.uic.a)g.lm((Context)localObject).i(com.tencent.mm.plugin.mv.ui.uic.a.class);
+    com.tencent.mm.ui.tools.h localh = (com.tencent.mm.ui.tools.h)this;
+    Collection localCollection = (Collection)((com.tencent.mm.plugin.mv.ui.uic.a)localObject).Gik;
+    if (localCollection == null)
+    {
+      localObject = new t("null cannot be cast to non-null type kotlin.collections.MutableCollection<T>");
+      AppMethodBeat.o(237449);
+      throw ((Throwable)localObject);
+    }
+    ag.fc(localCollection).remove(localh);
+    if (((com.tencent.mm.plugin.mv.ui.uic.a)localObject).Gik.isEmpty())
+    {
+      localObject = ((com.tencent.mm.plugin.mv.ui.uic.a)localObject).jij;
+      if (localObject != null)
+      {
+        ((i)localObject).close();
+        AppMethodBeat.o(237449);
+        return;
+      }
+    }
+    AppMethodBeat.o(237449);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentFooter$Companion;", "", "()V", "DELAY_MILLISECOND", "", "EDIT_MODE_KEYBOARD", "", "EDIT_MODE_NONE", "EDIT_MODE_SMILE_PANEL", "NORMAL_ANIMATOR_DURATION", "TAG", "", "plugin-mv_release"})
+  public static final class a {}
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/mv/ui/view/MusicMvCommentFooter$IOnCommentSend;", "", "onCommentSend", "", "toSendText", "", "emojiMd5", "plugin-mv_release"})
+  public static abstract interface b
+  {
+    public abstract void aSL(String paramString);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -494,13 +500,13 @@ public final class MusicMvCommentFooter
     
     public final void run()
     {
-      AppMethodBeat.i(257473);
-      MusicMvCommentFooter.g(this.AxJ).setVisibility(4);
-      AppMethodBeat.o(257473);
+      AppMethodBeat.i(225636);
+      MusicMvCommentFooter.g(this.Gos).setVisibility(4);
+      AppMethodBeat.o(225636);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "actionId", "", "<anonymous parameter 2>", "Landroid/view/KeyEvent;", "onEditorAction"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "actionId", "", "<anonymous parameter 2>", "Landroid/view/KeyEvent;", "onEditorAction"})
   static final class d
     implements TextView.OnEditorActionListener
   {
@@ -508,19 +514,19 @@ public final class MusicMvCommentFooter
     
     public final boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
     {
-      AppMethodBeat.i(257474);
+      AppMethodBeat.i(231005);
       if (paramInt == 4)
       {
-        MusicMvCommentFooter.d(this.AxJ);
-        AppMethodBeat.o(257474);
+        MusicMvCommentFooter.d(this.Gos);
+        AppMethodBeat.o(231005);
         return true;
       }
-      AppMethodBeat.o(257474);
+      AppMethodBeat.o(231005);
       return false;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class e
     implements View.OnClickListener
   {
@@ -528,52 +534,34 @@ public final class MusicMvCommentFooter
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(257475);
+      AppMethodBeat.i(243243);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/mv/ui/view/MusicMvCommentFooter$initEmojiBtn$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      Log.i("Music.MusicMvCommentFooter", "commentModeIv clicked, curEditMode:" + MusicMvCommentFooter.a(this.AxJ));
-      paramView = this.AxJ;
-      if (MusicMvCommentFooter.a(this.AxJ) == 202) {
-        MusicMvCommentFooter.b(this.AxJ);
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/mv/ui/view/MusicMvCommentFooter$initEmojiBtn$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      Log.i("Music.MusicMvCommentFooter", "commentModeIv clicked, curEditMode:" + MusicMvCommentFooter.a(this.Gos));
+      paramView = this.Gos;
+      if (MusicMvCommentFooter.a(this.Gos) == 202) {
+        MusicMvCommentFooter.b(this.Gos);
       }
       for (int i = 201;; i = 202)
       {
         MusicMvCommentFooter.a(paramView, i);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mv/ui/view/MusicMvCommentFooter$initEmojiBtn$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(257475);
+        AppMethodBeat.o(243243);
         return;
-        MusicMvCommentFooter.c(this.AxJ);
+        MusicMvCommentFooter.c(this.Gos);
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/mv/ui/view/MusicMvCommentFooter$initSmilePanel$1", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel$OnTextOperationListener;", "append", "", "text", "", "del", "onToSendTextEnable", "enable", "", "performSend", "plugin-mv_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/view/MusicMvCommentFooter$initSmilePanel$1", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel$OnTextOperationListener;", "append", "", "text", "", "del", "onToSendTextEnable", "enable", "", "performSend", "plugin-mv_release"})
   public static final class f
     implements ChatFooterPanel.a
   {
-    public final void aHC()
+    public final void aDN()
     {
-      AppMethodBeat.i(257477);
-      Object localObject = MusicMvCommentFooter.f(this.AxJ);
-      if (localObject != null)
-      {
-        localObject = ((MMEditText)localObject).getInputConnection();
-        if (localObject != null)
-        {
-          ((InputConnection)localObject).sendKeyEvent(new KeyEvent(0, 67));
-          ((InputConnection)localObject).sendKeyEvent(new KeyEvent(1, 67));
-          AppMethodBeat.o(257477);
-          return;
-        }
-      }
-      AppMethodBeat.o(257477);
-    }
-    
-    public final void aHD()
-    {
-      AppMethodBeat.i(257478);
-      Object localObject = MusicMvCommentFooter.f(this.AxJ);
+      AppMethodBeat.i(238956);
+      Object localObject = MusicMvCommentFooter.f(this.Gos);
       if (localObject != null)
       {
         localObject = ((MMEditText)localObject).getText();
@@ -588,36 +576,54 @@ public final class MusicMvCommentFooter
         if (i == 0) {
           break label62;
         }
-        AppMethodBeat.o(257478);
+        AppMethodBeat.o(238956);
         return;
         localObject = null;
         break;
       }
       label62:
-      MusicMvCommentFooter.d(this.AxJ);
-      AppMethodBeat.o(257478);
+      MusicMvCommentFooter.d(this.Gos);
+      AppMethodBeat.o(238956);
+    }
+    
+    public final void aDO()
+    {
+      AppMethodBeat.i(238953);
+      Object localObject = MusicMvCommentFooter.f(this.Gos);
+      if (localObject != null)
+      {
+        localObject = ((MMEditText)localObject).getInputConnection();
+        if (localObject != null)
+        {
+          ((InputConnection)localObject).sendKeyEvent(new KeyEvent(0, 67));
+          ((InputConnection)localObject).sendKeyEvent(new KeyEvent(1, 67));
+          AppMethodBeat.o(238953);
+          return;
+        }
+      }
+      AppMethodBeat.o(238953);
     }
     
     public final void append(String paramString)
     {
-      AppMethodBeat.i(257476);
+      AppMethodBeat.i(238950);
       if (!Util.isNullOrNil(paramString))
       {
-        MMEditText localMMEditText = MusicMvCommentFooter.f(this.AxJ);
+        MMEditText localMMEditText = MusicMvCommentFooter.f(this.Gos);
         if (localMMEditText != null)
         {
-          localMMEditText.append(com.tencent.mm.ui.g.c.b.c(this.AxJ.getContext(), (CharSequence)paramString, localMMEditText.getTextSize()));
-          AppMethodBeat.o(257476);
+          localMMEditText.append(com.tencent.mm.ui.h.c.b.c(this.Gos.getContext(), (CharSequence)paramString, localMMEditText.getTextSize()));
+          AppMethodBeat.o(238950);
           return;
         }
       }
-      AppMethodBeat.o(257476);
+      AppMethodBeat.o(238950);
     }
     
-    public final void eP(boolean paramBoolean) {}
+    public final void eE(boolean paramBoolean) {}
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class g
     implements Runnable
   {
@@ -625,66 +631,66 @@ public final class MusicMvCommentFooter
     
     public final void run()
     {
-      AppMethodBeat.i(257479);
-      Object localObject = MusicMvCommentFooter.f(this.AxJ);
+      AppMethodBeat.i(228701);
+      Object localObject = MusicMvCommentFooter.f(this.Gos);
       if (localObject != null) {
         ((MMEditText)localObject).requestFocus();
       }
-      localObject = this.AxJ.getContext();
+      localObject = this.Gos.getContext();
       if (localObject == null)
       {
         localObject = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-        AppMethodBeat.o(257479);
+        AppMethodBeat.o(228701);
         throw ((Throwable)localObject);
       }
       ((MMActivity)localObject).showVKB();
-      AppMethodBeat.o(257479);
+      AppMethodBeat.o(228701);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/mv/ui/view/MusicMvCommentFooter$send$1", "Lcom/tencent/mm/ui/tools/legalchecker/InputTextBoundaryCheck$DoAfterCheck;", "doWhenLess", "", "text", "", "doWhenMore", "doWhenOK", "plugin-mv_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/mv/ui/view/MusicMvCommentFooter$send$1", "Lcom/tencent/mm/ui/tools/legalchecker/InputTextBoundaryCheck$DoAfterCheck;", "doWhenLess", "", "text", "", "doWhenMore", "doWhenOK", "plugin-mv_release"})
   public static final class h
     implements c.a
   {
-    public final void Tw(String paramString)
+    public final void abc(String paramString)
     {
-      AppMethodBeat.i(257480);
-      p.h(paramString, "text");
+      AppMethodBeat.i(225859);
+      p.k(paramString, "text");
       Log.i("Music.MusicMvCommentFooter", "InputTextBoundaryCheck ok, ready to send, text:".concat(String.valueOf(paramString)));
       if (!Util.isNullOrNil(paramString))
       {
-        MusicMvCommentFooter.b localb = MusicMvCommentFooter.e(this.AxJ);
+        MusicMvCommentFooter.b localb = MusicMvCommentFooter.e(this.Gos);
         if (localb != null) {
-          localb.aIq(paramString);
+          localb.aSL(paramString);
         }
       }
-      paramString = MusicMvCommentFooter.f(this.AxJ);
+      paramString = MusicMvCommentFooter.f(this.Gos);
       if (paramString == null) {
-        p.hyc();
+        p.iCn();
       }
       paramString.setText((CharSequence)"");
-      AppMethodBeat.o(257480);
+      AppMethodBeat.o(225859);
     }
     
-    public final void Tx(String paramString)
+    public final void abd(String paramString)
     {
-      AppMethodBeat.i(257481);
-      p.h(paramString, "text");
-      AppMethodBeat.o(257481);
+      AppMethodBeat.i(225862);
+      p.k(paramString, "text");
+      AppMethodBeat.o(225862);
     }
     
-    public final void dv(String paramString)
+    public final void dN(String paramString)
     {
-      AppMethodBeat.i(257482);
-      p.h(paramString, "text");
-      com.tencent.mm.ui.base.h.n(this.AxJ.getContext(), 2131766298, 2131766299);
-      AppMethodBeat.o(257482);
+      AppMethodBeat.i(225864);
+      p.k(paramString, "text");
+      com.tencent.mm.ui.base.h.p(this.Gos.getContext(), b.h.sns_upload_post_text_invalid_more, b.h.sns_upload_post_text_invalid_title);
+      AppMethodBeat.o(225864);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.ui.view.MusicMvCommentFooter
  * JD-Core Version:    0.7.0.1
  */

@@ -2,50 +2,48 @@ package com.tencent.mm.view;
 
 import android.content.Context;
 import android.graphics.Rect;
-import android.support.v4.b.a;
-import android.support.v4.view.n;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.widget.LinearLayout;
+import androidx.core.b.a;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 import kotlin.g.a.m;
-import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/view/HeadFooterLayout;", "Landroid/widget/LinearLayout;", "Landroid/support/v4/view/NestedScrollingParent2;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "decoratedBounds", "Landroid/graphics/Rect;", "extraOverScrollFooterDx", "getExtraOverScrollFooterDx", "()I", "setExtraOverScrollFooterDx", "(I)V", "footerViews", "Ljava/util/LinkedList;", "Landroid/view/View;", "getFooterViews", "()Ljava/util/LinkedList;", "footersHeight", "getFootersHeight", "setFootersHeight", "headerViews", "getHeaderViews", "headersHeight", "getHeadersHeight", "setHeadersHeight", "isConsumeOverScroll", "", "()Z", "setConsumeOverScroll", "(Z)V", "isDirtyLayout", "isEnableNestedScroll", "setEnableNestedScroll", "isSuperNestedScroll", "setSuperNestedScroll", "onTranslateYCallback", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "dx", "dy", "", "getOnTranslateYCallback", "()Lkotlin/jvm/functions/Function2;", "setOnTranslateYCallback", "(Lkotlin/jvm/functions/Function2;)V", "overCallback", "Lcom/tencent/mm/view/HeadFooterLayout$OverCallback;", "getOverCallback", "()Lcom/tencent/mm/view/HeadFooterLayout$OverCallback;", "setOverCallback", "(Lcom/tencent/mm/view/HeadFooterLayout$OverCallback;)V", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "getRecyclerView", "()Landroid/support/v7/widget/RecyclerView;", "setRecyclerView", "(Landroid/support/v7/widget/RecyclerView;)V", "addFooter", "view", "isDirty", "addHeader", "getFooter", "id", "getHeader", "isFirstItemReachTop", "target", "isLastItemBottomVisible", "isLastItemReachBottom", "offset", "isNestedScrollingEnabled", "onBindRecyclerView", "onFinishInflate", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "onNestedPreScroll", "consumed", "", "type", "onNestedScroll", "dxConsumed", "dyConsumed", "dxUnconsumed", "dyUnconsumed", "onNestedScrollAccepted", "p0", "p1", "p2", "p3", "onNotOverScroll", "onOverScroll", "parent", "dampingDy", "isEnd", "isVertical", "isTopOverScroll", "onStartNestedScroll", "child", "axes", "onStopNestedScroll", "onStopScroll", "onViewAdded", "print", "log", "", "isVerbose", "removeFooter", "removeHeader", "requestLayout", "resetChildren", "setTranslationY", "translationY", "", "Companion", "OverCallback", "libmmui_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/HeadFooterLayout;", "Landroid/widget/LinearLayout;", "Landroidx/core/view/NestedScrollingParent2;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "decoratedBounds", "Landroid/graphics/Rect;", "extraOverScrollFooterDx", "getExtraOverScrollFooterDx", "()I", "setExtraOverScrollFooterDx", "(I)V", "footerViews", "Ljava/util/LinkedList;", "Landroid/view/View;", "getFooterViews", "()Ljava/util/LinkedList;", "footersHeight", "getFootersHeight", "setFootersHeight", "headerViews", "getHeaderViews", "headersHeight", "getHeadersHeight", "setHeadersHeight", "isConsumeOverScroll", "", "()Z", "setConsumeOverScroll", "(Z)V", "isDirtyLayout", "isEnableNestedScroll", "setEnableNestedScroll", "isSuperNestedScroll", "setSuperNestedScroll", "onTranslateYCallback", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "dx", "dy", "", "getOnTranslateYCallback", "()Lkotlin/jvm/functions/Function2;", "setOnTranslateYCallback", "(Lkotlin/jvm/functions/Function2;)V", "overCallback", "Lcom/tencent/mm/view/HeadFooterLayout$OverCallback;", "getOverCallback", "()Lcom/tencent/mm/view/HeadFooterLayout$OverCallback;", "setOverCallback", "(Lcom/tencent/mm/view/HeadFooterLayout$OverCallback;)V", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "getRecyclerView", "()Landroidx/recyclerview/widget/RecyclerView;", "setRecyclerView", "(Landroidx/recyclerview/widget/RecyclerView;)V", "addFooter", "view", "isDirty", "addHeader", "getFooter", "id", "getHeader", "isFirstItemReachTop", "target", "isLastItemBottomVisible", "isLastItemReachBottom", "offset", "isNestedScrollingEnabled", "onBindRecyclerView", "onFinishInflate", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "onNestedPreScroll", "consumed", "", "type", "onNestedScroll", "dxConsumed", "dyConsumed", "dxUnconsumed", "dyUnconsumed", "onNestedScrollAccepted", "p0", "p1", "p2", "p3", "onNotOverScroll", "onOverScroll", "parent", "dampingDy", "isEnd", "isVertical", "isTopOverScroll", "onStartNestedScroll", "child", "axes", "onStopNestedScroll", "onStopScroll", "onViewAdded", "print", "log", "", "isVerbose", "removeFooter", "removeHeader", "requestLayout", "resetChildren", "setTranslationY", "translationY", "", "Companion", "OverCallback", "libmmui_release"})
 public class HeadFooterLayout
   extends LinearLayout
-  implements n
+  implements androidx.core.g.p
 {
-  public static final a RjA;
-  private b Rjo;
-  private boolean Rjp;
-  boolean Rjq;
-  boolean Rjr;
-  private m<? super Integer, ? super Integer, x> Rjs;
-  private final Rect Rjt;
-  private final LinkedList<View> Rju;
-  private final LinkedList<View> Rjv;
-  private int Rjw;
-  private int Rjx;
-  private boolean Rjy;
-  private int Rjz;
-  public RecyclerView hak;
+  public static final a YLl;
+  private b YKZ;
+  private boolean YLa;
+  private boolean YLb;
+  private boolean YLc;
+  private m<? super Integer, ? super Integer, x> YLd;
+  private final Rect YLe;
+  private final LinkedList<View> YLf;
+  private final LinkedList<View> YLg;
+  private int YLh;
+  private int YLi;
+  private boolean YLj;
+  private int YLk;
+  public RecyclerView jLl;
   
   static
   {
     AppMethodBeat.i(164536);
-    RjA = new a((byte)0);
+    YLl = new a((byte)0);
     AppMethodBeat.o(164536);
   }
   
@@ -53,10 +51,10 @@ public class HeadFooterLayout
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164534);
-    this.Rjq = true;
-    this.Rjt = new Rect();
-    this.Rju = new LinkedList();
-    this.Rjv = new LinkedList();
+    this.YLb = true;
+    this.YLe = new Rect();
+    this.YLf = new LinkedList();
+    this.YLg = new LinkedList();
     AppMethodBeat.o(164534);
   }
   
@@ -64,24 +62,24 @@ public class HeadFooterLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164535);
-    this.Rjq = true;
-    this.Rjt = new Rect();
-    this.Rju = new LinkedList();
-    this.Rjv = new LinkedList();
+    this.YLb = true;
+    this.YLe = new Rect();
+    this.YLf = new LinkedList();
+    this.YLg = new LinkedList();
     AppMethodBeat.o(164535);
   }
   
-  public static void dD(String paramString, boolean paramBoolean)
+  public static void bh(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(204956);
-    p.h(paramString, "log");
+    AppMethodBeat.i(219721);
+    kotlin.g.b.p.k(paramString, "log");
     if (!paramBoolean) {
       Log.i("HeadFooterLayout", paramString);
     }
-    AppMethodBeat.o(204956);
+    AppMethodBeat.o(219721);
   }
   
-  private void hfE()
+  private void ihc()
   {
     AppMethodBeat.i(164527);
     removeAllViews();
@@ -97,15 +95,15 @@ public class HeadFooterLayout
     AppMethodBeat.o(164527);
   }
   
-  public static boolean w(RecyclerView paramRecyclerView)
+  public static boolean x(RecyclerView paramRecyclerView)
   {
-    AppMethodBeat.i(164516);
-    p.h(paramRecyclerView, "target");
+    AppMethodBeat.i(219674);
+    kotlin.g.b.p.k(paramRecyclerView, "target");
     paramRecyclerView = paramRecyclerView.getLayoutManager();
     if ((paramRecyclerView instanceof StaggeredGridLayoutManager))
     {
-      int[] arrayOfInt = ((StaggeredGridLayoutManager)paramRecyclerView).n(null);
-      p.g(arrayOfInt, "firstVisibleInfo");
+      int[] arrayOfInt = ((StaggeredGridLayoutManager)paramRecyclerView).k(null);
+      kotlin.g.b.p.j(arrayOfInt, "firstVisibleInfo");
       int k = arrayOfInt.length;
       int i = 0;
       int j = 0;
@@ -123,10 +121,10 @@ public class HeadFooterLayout
         {
           if (paramRecyclerView.getTop() >= 0)
           {
-            AppMethodBeat.o(164516);
+            AppMethodBeat.o(219674);
             return true;
           }
-          AppMethodBeat.o(164516);
+          AppMethodBeat.o(219674);
           return false;
         }
       }
@@ -138,81 +136,364 @@ public class HeadFooterLayout
       {
         if (paramRecyclerView.getTop() >= 0)
         {
-          AppMethodBeat.o(164516);
+          AppMethodBeat.o(219674);
           return true;
         }
-        AppMethodBeat.o(164516);
+        AppMethodBeat.o(219674);
         return false;
       }
     }
-    AppMethodBeat.o(164516);
+    AppMethodBeat.o(219674);
     return false;
   }
   
-  public final void W(View paramView, boolean paramBoolean)
+  public final boolean B(RecyclerView paramRecyclerView)
   {
-    AppMethodBeat.i(164524);
-    p.h(paramView, "view");
-    getHeaderViews().add(paramView);
-    this.Rjy = paramBoolean;
-    requestLayout();
-    AppMethodBeat.o(164524);
-  }
-  
-  public final void X(View paramView, boolean paramBoolean)
-  {
-    AppMethodBeat.i(204953);
-    p.h(paramView, "view");
-    if (getHeaderViews().remove(paramView))
+    AppMethodBeat.i(219679);
+    kotlin.g.b.p.k(paramRecyclerView, "target");
+    Object localObject = paramRecyclerView.getLayoutManager();
+    int[] arrayOfInt;
+    int k;
+    int j;
+    int i;
+    if ((localObject instanceof StaggeredGridLayoutManager))
     {
-      removeView(paramView);
-      this.Rjy = paramBoolean;
-      requestLayout();
+      arrayOfInt = ((StaggeredGridLayoutManager)localObject).l(null);
+      kotlin.g.b.p.j(arrayOfInt, "lastVisibleInfo");
+      k = arrayOfInt.length;
+      j = 0;
+      i = 0;
+      if (j < k)
+      {
+        if (arrayOfInt[j] != ((StaggeredGridLayoutManager)localObject).getItemCount() - 1) {
+          break label341;
+        }
+        i = 1;
+      }
     }
-    AppMethodBeat.o(204953);
-  }
-  
-  public final void Y(View paramView, boolean paramBoolean)
-  {
-    AppMethodBeat.i(164525);
-    p.h(paramView, "view");
-    getFooterViews().add(paramView);
-    this.Rjy = paramBoolean;
-    requestLayout();
-    dD("[addFooter] view=" + paramView + " isDirty=" + paramBoolean + " hash=" + hashCode(), false);
-    AppMethodBeat.o(164525);
-  }
-  
-  public final void Z(View paramView, boolean paramBoolean)
-  {
-    AppMethodBeat.i(204955);
-    p.h(paramView, "view");
-    if (getFooterViews().remove(paramView))
+    label341:
+    for (;;)
     {
-      this.Rjy = paramBoolean;
-      removeView(paramView);
-      requestLayout();
-      dD("[removeFooter] view=" + paramView + " isDirty=" + paramBoolean + " hash=" + hashCode(), false);
+      j += 1;
+      break;
+      if (i != 0)
+      {
+        int m = arrayOfInt.length;
+        i = 0;
+        boolean bool1 = false;
+        j = 0;
+        if (i < m)
+        {
+          int n = arrayOfInt[i];
+          boolean bool2 = bool1;
+          k = j;
+          View localView;
+          if (n != -1)
+          {
+            localView = ((RecyclerView.LayoutManager)localObject).findViewByPosition(n);
+            bool2 = bool1;
+            k = j;
+            if (localView != null)
+            {
+              RecyclerView.getDecoratedBoundsWithMargins(localView, this.YLe);
+              n = this.YLe.bottom;
+              bool2 = bool1;
+              k = j;
+              if (localView.getBottom() > j) {
+                if ((n > paramRecyclerView.getHeight()) || (n < paramRecyclerView.getHeight() + 0)) {
+                  break label231;
+                }
+              }
+            }
+          }
+          label231:
+          for (bool1 = true;; bool1 = false)
+          {
+            k = localView.getBottom();
+            bool2 = bool1;
+            i += 1;
+            bool1 = bool2;
+            j = k;
+            break;
+          }
+        }
+        AppMethodBeat.o(219679);
+        return bool1;
+        if ((localObject instanceof LinearLayoutManager))
+        {
+          i = ((LinearLayoutManager)localObject).kL();
+          if (i == ((LinearLayoutManager)localObject).getItemCount() - 1)
+          {
+            localObject = ((RecyclerView.LayoutManager)localObject).findViewByPosition(i);
+            if (localObject != null)
+            {
+              RecyclerView.getDecoratedBoundsWithMargins((View)localObject, this.YLe);
+              i = this.YLe.bottom;
+              if ((i <= paramRecyclerView.getHeight()) && (i >= paramRecyclerView.getHeight() + 0))
+              {
+                AppMethodBeat.o(219679);
+                return true;
+              }
+            }
+          }
+        }
+      }
+      AppMethodBeat.o(219679);
+      return false;
     }
-    AppMethodBeat.o(204955);
+  }
+  
+  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    AppMethodBeat.i(164521);
+    kotlin.g.b.p.k(paramView, "target");
+    super.onNestedScroll(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
+    AppMethodBeat.o(164521);
+  }
+  
+  public void a(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt, int paramInt3)
+  {
+    AppMethodBeat.i(164514);
+    kotlin.g.b.p.k(paramView, "target");
+    kotlin.g.b.p.k(paramArrayOfInt, "consumed");
+    super.onNestedPreScroll(paramView, paramInt1, paramInt2, paramArrayOfInt);
+    int j = paramInt2 - paramArrayOfInt[1];
+    boolean bool1;
+    Object localObject1;
+    if (((paramView instanceof RecyclerView)) && (kotlin.g.b.p.h(paramView, getRecyclerView())))
+    {
+      bool1 = false;
+      if ((((RecyclerView)paramView).getLayoutManager() instanceof LinearLayoutManager))
+      {
+        localObject1 = ((RecyclerView)paramView).getLayoutManager();
+        if (localObject1 == null)
+        {
+          paramView = new t("null cannot be cast to non-null type androidx.recyclerview.widget.LinearLayoutManager");
+          AppMethodBeat.o(164514);
+          throw paramView;
+        }
+        if (((LinearLayoutManager)localObject1).getOrientation() == 1)
+        {
+          bool1 = true;
+          paramInt2 = 1;
+        }
+      }
+    }
+    for (;;)
+    {
+      localObject1 = getRecyclerView();
+      kotlin.g.b.p.k(localObject1, "target");
+      Object localObject2 = ((RecyclerView)localObject1).getLayoutManager();
+      int[] arrayOfInt;
+      int k;
+      int i;
+      if ((localObject2 instanceof StaggeredGridLayoutManager))
+      {
+        arrayOfInt = ((StaggeredGridLayoutManager)localObject2).l(null);
+        paramInt1 = 0;
+        kotlin.g.b.p.j(arrayOfInt, "lastVisibleInfo");
+        k = arrayOfInt.length;
+        i = 0;
+        label180:
+        if (i < k)
+        {
+          if (arrayOfInt[i] != ((StaggeredGridLayoutManager)localObject2).getItemCount() - 1) {
+            break label786;
+          }
+          paramInt1 = 1;
+        }
+      }
+      label786:
+      for (;;)
+      {
+        i += 1;
+        break label180;
+        bool1 = false;
+        break;
+        if (!(((RecyclerView)paramView).getLayoutManager() instanceof StaggeredGridLayoutManager)) {
+          break label789;
+        }
+        localObject1 = ((RecyclerView)paramView).getLayoutManager();
+        if (localObject1 == null)
+        {
+          paramView = new t("null cannot be cast to non-null type androidx.recyclerview.widget.StaggeredGridLayoutManager");
+          AppMethodBeat.o(164514);
+          throw paramView;
+        }
+        if (((StaggeredGridLayoutManager)localObject1).getOrientation() == 1) {}
+        for (bool1 = true;; bool1 = false)
+        {
+          paramInt2 = 0;
+          break;
+        }
+        boolean bool2;
+        if (paramInt1 != 0)
+        {
+          i = arrayOfInt.length;
+          paramInt1 = 0;
+          while (paramInt1 < i)
+          {
+            k = arrayOfInt[paramInt1];
+            if (k != -1)
+            {
+              View localView = ((RecyclerView.LayoutManager)localObject2).findViewByPosition(k);
+              if (localView != null)
+              {
+                RecyclerView.getDecoratedBoundsWithMargins(localView, this.YLe);
+                if (this.YLe.bottom > ((RecyclerView)localObject1).getHeight()) {
+                  break label681;
+                }
+              }
+            }
+            paramInt1 += 1;
+          }
+          paramInt1 = 1;
+          if (paramInt1 == 0) {
+            break label686;
+          }
+          localObject1 = ((RecyclerView)paramView).getLayoutManager();
+          if (localObject1 == null) {
+            kotlin.g.b.p.iCn();
+          }
+          kotlin.g.b.p.j(localObject1, "target.layoutManager!!");
+          if (((RecyclerView.LayoutManager)localObject1).getItemCount() == 0) {
+            break label686;
+          }
+          bool2 = true;
+          label410:
+          boolean bool3 = x(getRecyclerView());
+          if ((!bool2) && (!bool3)) {
+            break label716;
+          }
+          if (this.YKZ != null) {
+            break label692;
+          }
+          i = 1;
+          label439:
+          if (bool2)
+          {
+            if ((int)getTranslationY() == -getHeadersHeight())
+            {
+              localObject1 = this.YKZ;
+              if (localObject1 != null) {
+                ((b)localObject1).MB(j);
+              }
+            }
+            i = 1;
+          }
+          paramInt1 = i;
+          if (bool3)
+          {
+            if ((int)getTranslationY() == 0)
+            {
+              localObject1 = this.YKZ;
+              if (localObject1 != null)
+              {
+                paramInt1 = i;
+                if (((b)localObject1).v(j, paramInt3, this.YLa) == true) {
+                  break label532;
+                }
+              }
+            }
+            paramInt1 = 1;
+          }
+          label532:
+          if (paramInt1 == 0) {
+            break label698;
+          }
+          a(getRecyclerView(), this, j, j, bool2, bool1, paramArrayOfInt, paramInt3, bool3);
+        }
+        for (;;)
+        {
+          if (paramInt1 == 0) {
+            a(paramView, j, paramArrayOfInt);
+          }
+          AppMethodBeat.o(164514);
+          return;
+          if ((localObject2 instanceof LinearLayoutManager))
+          {
+            paramInt1 = ((LinearLayoutManager)localObject2).kL();
+            if (paramInt1 == ((LinearLayoutManager)localObject2).getItemCount() - 1)
+            {
+              localObject2 = ((RecyclerView.LayoutManager)localObject2).findViewByPosition(paramInt1);
+              if (localObject2 != null)
+              {
+                RecyclerView.getDecoratedBoundsWithMargins((View)localObject2, this.YLe);
+                if (this.YLe.bottom <= ((RecyclerView)localObject1).getHeight())
+                {
+                  ((View)localObject2).getHitRect(this.YLe);
+                  if (this.YLe.bottom <= ((RecyclerView)localObject1).getHeight())
+                  {
+                    paramInt1 = 1;
+                    break;
+                  }
+                  paramInt1 = 0;
+                  break;
+                }
+              }
+            }
+          }
+          label681:
+          paramInt1 = 0;
+          break;
+          label686:
+          bool2 = false;
+          break label410;
+          label692:
+          i = 0;
+          break label439;
+          label698:
+          if (paramInt2 != 0) {
+            paramArrayOfInt[1] = j;
+          }
+          this.YLa = true;
+          continue;
+          label716:
+          localObject1 = ((RecyclerView)paramView).getLayoutManager();
+          if (localObject1 == null) {
+            kotlin.g.b.p.iCn();
+          }
+          kotlin.g.b.p.j(localObject1, "target.layoutManager!!");
+          if (((RecyclerView.LayoutManager)localObject1).getItemCount() <= 0)
+          {
+            localObject1 = this.YKZ;
+            if (localObject1 != null) {
+              ((b)localObject1).v(j, paramInt3, this.YLa);
+            }
+            this.YLa = true;
+          }
+          paramInt1 = 0;
+        }
+      }
+      label789:
+      paramInt2 = 0;
+    }
+  }
+  
+  public void a(View paramView, int paramInt, int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(164515);
+    kotlin.g.b.p.k(paramView, "target");
+    kotlin.g.b.p.k(paramArrayOfInt, "consumed");
+    AppMethodBeat.o(164515);
   }
   
   public void a(RecyclerView paramRecyclerView, HeadFooterLayout paramHeadFooterLayout, int paramInt)
   {
-    AppMethodBeat.i(164532);
-    p.h(paramRecyclerView, "recyclerView");
-    p.h(paramHeadFooterLayout, "parent");
-    AppMethodBeat.o(164532);
+    AppMethodBeat.i(219722);
+    kotlin.g.b.p.k(paramRecyclerView, "recyclerView");
+    kotlin.g.b.p.k(paramHeadFooterLayout, "parent");
+    AppMethodBeat.o(219722);
   }
   
   public void a(RecyclerView paramRecyclerView, HeadFooterLayout paramHeadFooterLayout, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, int[] paramArrayOfInt, int paramInt3, boolean paramBoolean3)
   {
-    AppMethodBeat.i(164533);
-    p.h(paramRecyclerView, "recyclerView");
-    p.h(paramHeadFooterLayout, "parent");
-    p.h(paramArrayOfInt, "consumed");
+    AppMethodBeat.i(219730);
+    kotlin.g.b.p.k(paramRecyclerView, "recyclerView");
+    kotlin.g.b.p.k(paramHeadFooterLayout, "parent");
+    kotlin.g.b.p.k(paramArrayOfInt, "consumed");
     if ((paramBoolean1) && (paramBoolean3)) {
-      paramInt3 = a.clamp((int)getTranslationY() - paramInt2, -getHeadersHeight() - getFootersHeight() - this.Rjz, 0);
+      paramInt3 = a.clamp((int)getTranslationY() - paramInt2, -getHeadersHeight() - getFootersHeight() - this.YLk, 0);
     }
     for (;;)
     {
@@ -224,351 +505,174 @@ public class HeadFooterLayout
         setTranslationY(paramInt3);
         paramArrayOfInt[1] = paramInt1;
       }
-      dD("onOverScroll dy:" + paramInt1 + " dampingDy:" + paramInt2 + " isEnd:" + paramBoolean1 + " consumed[1]:" + paramArrayOfInt + "[1] translationY:" + getTranslationY() + " targetY:" + paramInt3 + " headersHeight:" + getHeadersHeight() + " footersHeight:" + getFootersHeight(), true);
-      AppMethodBeat.o(164533);
+      bh("onOverScroll dy:" + paramInt1 + " dampingDy:" + paramInt2 + " isEnd:" + paramBoolean1 + " consumed[1]:" + paramArrayOfInt + "[1] translationY:" + getTranslationY() + " targetY:" + paramInt3 + " headersHeight:" + getHeadersHeight() + " footersHeight:" + getFootersHeight(), true);
+      AppMethodBeat.o(219730);
       return;
       if (paramBoolean1) {
-        paramInt3 = a.clamp((int)getTranslationY() - paramInt2, -getHeadersHeight() - getFootersHeight() - this.Rjz, -getHeadersHeight());
+        paramInt3 = a.clamp((int)getTranslationY() - paramInt2, -getHeadersHeight() - getFootersHeight() - this.YLk, -getHeadersHeight());
       } else {
         paramInt3 = a.clamp((int)getTranslationY() - paramInt2, -getHeadersHeight(), 0);
       }
     }
   }
   
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    AppMethodBeat.i(164521);
-    p.h(paramView, "target");
-    super.onNestedScroll(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
-    AppMethodBeat.o(164521);
-  }
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt, int paramInt3)
-  {
-    AppMethodBeat.i(164514);
-    p.h(paramView, "target");
-    p.h(paramArrayOfInt, "consumed");
-    super.onNestedPreScroll(paramView, paramInt1, paramInt2, paramArrayOfInt);
-    boolean bool1;
-    Object localObject1;
-    int i;
-    if (((paramView instanceof RecyclerView)) && (p.j(paramView, getRecyclerView())))
-    {
-      bool1 = false;
-      if ((((RecyclerView)paramView).getLayoutManager() instanceof LinearLayoutManager))
-      {
-        localObject1 = ((RecyclerView)paramView).getLayoutManager();
-        if (localObject1 == null)
-        {
-          paramView = new t("null cannot be cast to non-null type android.support.v7.widget.LinearLayoutManager");
-          AppMethodBeat.o(164514);
-          throw paramView;
-        }
-        if (((LinearLayoutManager)localObject1).getOrientation() == 1)
-        {
-          bool1 = true;
-          i = 1;
-        }
-      }
-    }
-    for (;;)
-    {
-      localObject1 = getRecyclerView();
-      p.h(localObject1, "target");
-      Object localObject2 = ((RecyclerView)localObject1).getLayoutManager();
-      int[] arrayOfInt;
-      int k;
-      int j;
-      if ((localObject2 instanceof StaggeredGridLayoutManager))
-      {
-        arrayOfInt = ((StaggeredGridLayoutManager)localObject2).o(null);
-        paramInt1 = 0;
-        p.g(arrayOfInt, "lastVisibleInfo");
-        k = arrayOfInt.length;
-        j = 0;
-        label173:
-        if (j < k)
-        {
-          if (arrayOfInt[j] != ((StaggeredGridLayoutManager)localObject2).getItemCount() - 1) {
-            break label774;
-          }
-          paramInt1 = 1;
-        }
-      }
-      label774:
-      for (;;)
-      {
-        j += 1;
-        break label173;
-        bool1 = false;
-        break;
-        if (!(((RecyclerView)paramView).getLayoutManager() instanceof StaggeredGridLayoutManager)) {
-          break label777;
-        }
-        localObject1 = ((RecyclerView)paramView).getLayoutManager();
-        if (localObject1 == null)
-        {
-          paramView = new t("null cannot be cast to non-null type android.support.v7.widget.StaggeredGridLayoutManager");
-          AppMethodBeat.o(164514);
-          throw paramView;
-        }
-        if (((StaggeredGridLayoutManager)localObject1).getOrientation() == 1) {}
-        for (bool1 = true;; bool1 = false)
-        {
-          i = 0;
-          break;
-        }
-        boolean bool2;
-        if (paramInt1 != 0)
-        {
-          j = arrayOfInt.length;
-          paramInt1 = 0;
-          while (paramInt1 < j)
-          {
-            k = arrayOfInt[paramInt1];
-            if (k != -1)
-            {
-              View localView = ((RecyclerView.LayoutManager)localObject2).findViewByPosition(k);
-              if (localView != null)
-              {
-                RecyclerView.getDecoratedBoundsWithMargins(localView, this.Rjt);
-                if (this.Rjt.bottom > ((RecyclerView)localObject1).getHeight()) {
-                  break label670;
-                }
-              }
-            }
-            paramInt1 += 1;
-          }
-          paramInt1 = 1;
-          if (paramInt1 == 0) {
-            break label675;
-          }
-          localObject1 = ((RecyclerView)paramView).getLayoutManager();
-          if (localObject1 == null) {
-            p.hyc();
-          }
-          p.g(localObject1, "target.layoutManager!!");
-          if (((RecyclerView.LayoutManager)localObject1).getItemCount() == 0) {
-            break label675;
-          }
-          bool2 = true;
-          label404:
-          boolean bool3 = w(getRecyclerView());
-          if ((!bool2) && (!bool3)) {
-            break label705;
-          }
-          if (this.Rjo != null) {
-            break label681;
-          }
-          j = 1;
-          label433:
-          if (bool2)
-          {
-            if ((int)getTranslationY() == -getHeadersHeight())
-            {
-              localObject1 = this.Rjo;
-              if (localObject1 != null) {
-                ((b)localObject1).IJ(paramInt2);
-              }
-            }
-            j = 1;
-          }
-          paramInt1 = j;
-          if (bool3)
-          {
-            if ((int)getTranslationY() == 0)
-            {
-              localObject1 = this.Rjo;
-              if (localObject1 != null)
-              {
-                paramInt1 = j;
-                if (((b)localObject1).u(paramInt2, paramInt3, this.Rjp) == true) {
-                  break label524;
-                }
-              }
-            }
-            paramInt1 = 1;
-          }
-          label524:
-          if (paramInt1 == 0) {
-            break label687;
-          }
-          a(getRecyclerView(), this, paramInt2, paramInt2, bool2, bool1, paramArrayOfInt, paramInt3, bool3);
-        }
-        for (;;)
-        {
-          if (paramInt1 == 0) {
-            a(paramView, paramInt2, paramArrayOfInt);
-          }
-          AppMethodBeat.o(164514);
-          return;
-          if ((localObject2 instanceof LinearLayoutManager))
-          {
-            paramInt1 = ((LinearLayoutManager)localObject2).ku();
-            if (paramInt1 == ((LinearLayoutManager)localObject2).getItemCount() - 1)
-            {
-              localObject2 = ((RecyclerView.LayoutManager)localObject2).findViewByPosition(paramInt1);
-              if (localObject2 != null)
-              {
-                RecyclerView.getDecoratedBoundsWithMargins((View)localObject2, this.Rjt);
-                if (this.Rjt.bottom <= ((RecyclerView)localObject1).getHeight())
-                {
-                  ((View)localObject2).getHitRect(this.Rjt);
-                  if (this.Rjt.bottom <= ((RecyclerView)localObject1).getHeight())
-                  {
-                    paramInt1 = 1;
-                    break;
-                  }
-                  paramInt1 = 0;
-                  break;
-                }
-              }
-            }
-          }
-          label670:
-          paramInt1 = 0;
-          break;
-          label675:
-          bool2 = false;
-          break label404;
-          label681:
-          j = 0;
-          break label433;
-          label687:
-          if (i != 0) {
-            paramArrayOfInt[1] = paramInt2;
-          }
-          this.Rjp = true;
-          continue;
-          label705:
-          localObject1 = ((RecyclerView)paramView).getLayoutManager();
-          if (localObject1 == null) {
-            p.hyc();
-          }
-          p.g(localObject1, "target.layoutManager!!");
-          if (((RecyclerView.LayoutManager)localObject1).getItemCount() <= 0)
-          {
-            localObject1 = this.Rjo;
-            if (localObject1 != null) {
-              ((b)localObject1).u(paramInt2, paramInt3, this.Rjp);
-            }
-            this.Rjp = true;
-          }
-          paramInt1 = 0;
-        }
-      }
-      label777:
-      i = 0;
-    }
-  }
-  
-  public void a(View paramView, int paramInt, int[] paramArrayOfInt)
-  {
-    AppMethodBeat.i(164515);
-    p.h(paramView, "target");
-    p.h(paramArrayOfInt, "consumed");
-    AppMethodBeat.o(164515);
-  }
-  
   public boolean a(View paramView1, View paramView2, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(164519);
-    p.h(paramView1, "child");
-    p.h(paramView2, "target");
-    if (this.Rjr)
+    kotlin.g.b.p.k(paramView1, "child");
+    kotlin.g.b.p.k(paramView2, "target");
+    if (this.YLc)
     {
       bool = super.startNestedScroll(paramInt1);
       AppMethodBeat.o(164519);
       return bool;
     }
-    boolean bool = this.Rjq;
+    boolean bool = this.YLb;
     AppMethodBeat.o(164519);
     return bool;
   }
   
-  public void b(View paramView1, View paramView2, int paramInt1, int paramInt2)
+  public final void aa(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(164520);
-    p.h(paramView1, "p0");
-    p.h(paramView2, "p1");
-    AppMethodBeat.o(164520);
+    AppMethodBeat.i(164524);
+    kotlin.g.b.p.k(paramView, "view");
+    getHeaderViews().add(paramView);
+    this.YLj = paramBoolean;
+    requestLayout();
+    AppMethodBeat.o(164524);
   }
   
-  public final int getExtraOverScrollFooterDx()
+  public final void ab(View paramView, boolean paramBoolean)
   {
-    return this.Rjz;
+    AppMethodBeat.i(219691);
+    kotlin.g.b.p.k(paramView, "view");
+    if (getHeaderViews().remove(paramView))
+    {
+      removeView(paramView);
+      this.YLj = paramBoolean;
+      requestLayout();
+    }
+    AppMethodBeat.o(219691);
   }
   
-  public final View getFooter$7529eef0()
+  public final void ac(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(204954);
+    AppMethodBeat.i(164525);
+    kotlin.g.b.p.k(paramView, "view");
+    getFooterViews().add(paramView);
+    this.YLj = paramBoolean;
+    requestLayout();
+    bh("[addFooter] view=" + paramView + " isDirty=" + paramBoolean + " hash=" + hashCode(), false);
+    AppMethodBeat.o(164525);
+  }
+  
+  public final void ad(View paramView, boolean paramBoolean)
+  {
+    AppMethodBeat.i(219700);
+    kotlin.g.b.p.k(paramView, "view");
+    if (getFooterViews().remove(paramView))
+    {
+      this.YLj = paramBoolean;
+      removeView(paramView);
+      requestLayout();
+      bh("[removeFooter] view=" + paramView + " isDirty=" + paramBoolean + " hash=" + hashCode(), false);
+    }
+    AppMethodBeat.o(219700);
+  }
+  
+  public final View azn(int paramInt)
+  {
+    AppMethodBeat.i(219698);
     Iterator localIterator = ((Iterable)getFooterViews()).iterator();
     Object localObject;
     int i;
     if (localIterator.hasNext())
     {
       localObject = localIterator.next();
-      if (2131301136 == ((View)localObject).getId())
+      if (paramInt == ((View)localObject).getId())
       {
         i = 1;
-        label50:
+        label51:
         if (i == 0) {
-          break label70;
+          break label71;
         }
       }
     }
     for (;;)
     {
       localObject = (View)localObject;
-      AppMethodBeat.o(204954);
+      AppMethodBeat.o(219698);
       return localObject;
       i = 0;
-      break label50;
-      label70:
+      break label51;
+      label71:
       break;
       localObject = null;
     }
   }
   
+  public void b(View paramView1, View paramView2, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(164520);
+    kotlin.g.b.p.k(paramView1, "p0");
+    kotlin.g.b.p.k(paramView2, "p1");
+    AppMethodBeat.o(164520);
+  }
+  
+  public final boolean dwe()
+  {
+    return this.YLb;
+  }
+  
+  public final int getExtraOverScrollFooterDx()
+  {
+    return this.YLk;
+  }
+  
   public LinkedList<View> getFooterViews()
   {
-    return this.Rjv;
+    return this.YLg;
   }
   
   public int getFootersHeight()
   {
-    return this.Rjx;
+    return this.YLi;
   }
   
   public LinkedList<View> getHeaderViews()
   {
-    return this.Rju;
+    return this.YLf;
   }
   
   public int getHeadersHeight()
   {
-    return this.Rjw;
+    return this.YLh;
   }
   
   public final m<Integer, Integer, x> getOnTranslateYCallback()
   {
-    return this.Rjs;
+    return this.YLd;
   }
   
   public final b getOverCallback()
   {
-    return this.Rjo;
+    return this.YKZ;
   }
   
   public RecyclerView getRecyclerView()
   {
-    AppMethodBeat.i(164522);
-    RecyclerView localRecyclerView = this.hak;
+    AppMethodBeat.i(219685);
+    RecyclerView localRecyclerView = this.jLl;
     if (localRecyclerView == null) {
-      p.btv("recyclerView");
+      kotlin.g.b.p.bGy("recyclerView");
     }
-    AppMethodBeat.o(164522);
+    AppMethodBeat.o(219685);
     return localRecyclerView;
+  }
+  
+  public final boolean ihb()
+  {
+    return this.YLc;
   }
   
   public boolean isNestedScrollingEnabled()
@@ -576,22 +680,22 @@ public class HeadFooterLayout
     return true;
   }
   
-  public void k(View paramView, int paramInt)
+  public void l(View paramView, int paramInt)
   {
     AppMethodBeat.i(164518);
-    p.h(paramView, "target");
-    b localb = this.Rjo;
+    kotlin.g.b.p.k(paramView, "target");
+    b localb = this.YKZ;
     if (localb != null) {
-      localb.ddr();
+      localb.dtZ();
     }
-    this.Rjp = false;
-    if (((paramView instanceof RecyclerView)) && ((((RecyclerView)paramView).getLayoutManager() instanceof LinearLayoutManager)) && (p.j(paramView, getRecyclerView())))
+    this.YLa = false;
+    if (((paramView instanceof RecyclerView)) && ((((RecyclerView)paramView).getLayoutManager() instanceof LinearLayoutManager)) && (kotlin.g.b.p.h(paramView, getRecyclerView())))
     {
       a(getRecyclerView(), this, paramInt);
       AppMethodBeat.o(164518);
       return;
     }
-    if (((paramView instanceof RecyclerView)) && ((((RecyclerView)paramView).getLayoutManager() instanceof StaggeredGridLayoutManager)) && (p.j(paramView, getRecyclerView()))) {
+    if (((paramView instanceof RecyclerView)) && ((((RecyclerView)paramView).getLayoutManager() instanceof StaggeredGridLayoutManager)) && (kotlin.g.b.p.h(paramView, getRecyclerView()))) {
       a(getRecyclerView(), this, paramInt);
     }
     AppMethodBeat.o(164518);
@@ -601,7 +705,7 @@ public class HeadFooterLayout
   {
     AppMethodBeat.i(164528);
     super.onFinishInflate();
-    hfE();
+    ihc();
     AppMethodBeat.o(164528);
   }
   
@@ -625,7 +729,7 @@ public class HeadFooterLayout
       {
         localObject = getChildAt(j);
         int k = i;
-        if (!p.j(localObject, getRecyclerView()))
+        if (!kotlin.g.b.p.h(localObject, getRecyclerView()))
         {
           k = i;
           if (!getHeaderViews().contains(localObject)) {
@@ -686,188 +790,92 @@ public class HeadFooterLayout
   {
     AppMethodBeat.i(164526);
     super.requestLayout();
-    if (this.Rjy)
+    if (this.YLj)
     {
-      this.Rjy = false;
-      hfE();
+      this.YLj = false;
+      ihc();
     }
     AppMethodBeat.o(164526);
   }
   
   public final void setConsumeOverScroll(boolean paramBoolean)
   {
-    this.Rjp = paramBoolean;
+    this.YLa = paramBoolean;
   }
   
   public final void setEnableNestedScroll(boolean paramBoolean)
   {
-    this.Rjq = paramBoolean;
+    this.YLb = paramBoolean;
   }
   
   public final void setExtraOverScrollFooterDx(int paramInt)
   {
-    this.Rjz = paramInt;
+    this.YLk = paramInt;
   }
   
   public void setFootersHeight(int paramInt)
   {
-    this.Rjx = paramInt;
+    this.YLi = paramInt;
   }
   
   public void setHeadersHeight(int paramInt)
   {
-    this.Rjw = paramInt;
+    this.YLh = paramInt;
   }
   
   public final void setOnTranslateYCallback(m<? super Integer, ? super Integer, x> paramm)
   {
-    this.Rjs = paramm;
+    this.YLd = paramm;
   }
   
   public final void setOverCallback(b paramb)
   {
-    this.Rjo = paramb;
+    this.YKZ = paramb;
   }
   
   public void setRecyclerView(RecyclerView paramRecyclerView)
   {
-    AppMethodBeat.i(164523);
-    p.h(paramRecyclerView, "<set-?>");
-    this.hak = paramRecyclerView;
-    AppMethodBeat.o(164523);
+    AppMethodBeat.i(219687);
+    kotlin.g.b.p.k(paramRecyclerView, "<set-?>");
+    this.jLl = paramRecyclerView;
+    AppMethodBeat.o(219687);
   }
   
   public final void setSuperNestedScroll(boolean paramBoolean)
   {
-    this.Rjr = paramBoolean;
+    this.YLc = paramBoolean;
   }
   
   public void setTranslationY(float paramFloat)
   {
-    AppMethodBeat.i(204951);
+    AppMethodBeat.i(219653);
     super.setTranslationY(paramFloat);
-    m localm = this.Rjs;
+    m localm = this.YLd;
     if (localm != null)
     {
       localm.invoke(Integer.valueOf(0), Integer.valueOf((int)paramFloat));
-      AppMethodBeat.o(204951);
+      AppMethodBeat.o(219653);
       return;
     }
-    AppMethodBeat.o(204951);
+    AppMethodBeat.o(219653);
   }
   
-  public final boolean x(RecyclerView paramRecyclerView)
-  {
-    AppMethodBeat.i(204952);
-    p.h(paramRecyclerView, "target");
-    Object localObject = paramRecyclerView.getLayoutManager();
-    int[] arrayOfInt;
-    int k;
-    int j;
-    int i;
-    if ((localObject instanceof StaggeredGridLayoutManager))
-    {
-      arrayOfInt = ((StaggeredGridLayoutManager)localObject).o(null);
-      p.g(arrayOfInt, "lastVisibleInfo");
-      k = arrayOfInt.length;
-      j = 0;
-      i = 0;
-      if (j < k)
-      {
-        if (arrayOfInt[j] != ((StaggeredGridLayoutManager)localObject).getItemCount() - 1) {
-          break label341;
-        }
-        i = 1;
-      }
-    }
-    label341:
-    for (;;)
-    {
-      j += 1;
-      break;
-      if (i != 0)
-      {
-        int m = arrayOfInt.length;
-        i = 0;
-        boolean bool1 = false;
-        j = 0;
-        if (i < m)
-        {
-          int n = arrayOfInt[i];
-          boolean bool2 = bool1;
-          k = j;
-          View localView;
-          if (n != -1)
-          {
-            localView = ((RecyclerView.LayoutManager)localObject).findViewByPosition(n);
-            bool2 = bool1;
-            k = j;
-            if (localView != null)
-            {
-              RecyclerView.getDecoratedBoundsWithMargins(localView, this.Rjt);
-              n = this.Rjt.bottom;
-              bool2 = bool1;
-              k = j;
-              if (localView.getBottom() > j) {
-                if ((n > paramRecyclerView.getHeight()) || (n < paramRecyclerView.getHeight() + 0)) {
-                  break label231;
-                }
-              }
-            }
-          }
-          label231:
-          for (bool1 = true;; bool1 = false)
-          {
-            k = localView.getBottom();
-            bool2 = bool1;
-            i += 1;
-            bool1 = bool2;
-            j = k;
-            break;
-          }
-        }
-        AppMethodBeat.o(204952);
-        return bool1;
-        if ((localObject instanceof LinearLayoutManager))
-        {
-          i = ((LinearLayoutManager)localObject).ku();
-          if (i == ((LinearLayoutManager)localObject).getItemCount() - 1)
-          {
-            localObject = ((RecyclerView.LayoutManager)localObject).findViewByPosition(i);
-            if (localObject != null)
-            {
-              RecyclerView.getDecoratedBoundsWithMargins((View)localObject, this.Rjt);
-              i = this.Rjt.bottom;
-              if ((i <= paramRecyclerView.getHeight()) && (i >= paramRecyclerView.getHeight() + 0))
-              {
-                AppMethodBeat.o(204952);
-                return true;
-              }
-            }
-          }
-        }
-      }
-      AppMethodBeat.o(204952);
-      return false;
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/view/HeadFooterLayout$Companion;", "", "()V", "TAG", "", "isDebug", "", "libmmui_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/HeadFooterLayout$Companion;", "", "()V", "TAG", "", "isDebug", "", "libmmui_release"})
   public static final class a {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/view/HeadFooterLayout$OverCallback;", "", "onOverEnd", "", "dx", "", "dy", "type", "isComsumed", "isVertical", "onOverStart", "onOverStop", "", "libmmui_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/HeadFooterLayout$OverCallback;", "", "onOverEnd", "", "dx", "", "dy", "type", "isComsumed", "isVertical", "onOverStart", "onOverStop", "", "libmmui_release"})
   public static abstract interface b
   {
-    public abstract boolean IJ(int paramInt);
+    public abstract boolean MB(int paramInt);
     
-    public abstract void ddr();
+    public abstract void dtZ();
     
-    public abstract boolean u(int paramInt1, int paramInt2, boolean paramBoolean);
+    public abstract boolean v(int paramInt1, int paramInt2, boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.view.HeadFooterLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -14,15 +14,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.os.SystemClock;
-import android.support.v4.os.d;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.support.v4.view.ViewPager.d;
-import android.support.v4.view.a;
-import android.support.v4.view.a.e;
-import android.support.v4.view.q;
-import android.support.v4.view.u;
-import android.support.v4.view.v;
-import android.support.v4.widget.i;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.FocusFinder;
@@ -41,6 +32,13 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.animation.Interpolator;
 import android.widget.EdgeEffect;
 import android.widget.Scroller;
+import androidx.core.c.b;
+import androidx.core.c.c;
+import androidx.core.g.a.f;
+import androidx.core.g.w;
+import androidx.core.g.x;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
+import androidx.viewpager.widget.ViewPager.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -52,14 +50,14 @@ public class AdLandingViewPager
   extends ViewGroup
 {
   private static final Comparator<b> COMPARATOR;
-  private static final f EhX;
+  private static final f Kve;
   private static final int[] LAYOUT_ATTRS;
   private static final Interpolator sInterpolator;
-  private final b EhU;
-  private e EhV;
-  private d EhW;
+  private final b Kvb;
+  private e Kvc;
+  private d Kvd;
   int mActivePointerId;
-  private q mAdapter;
+  private androidx.viewpager.widget.a mAdapter;
   private int mBottomPageBounds;
   private boolean mCalledSuper;
   private int mChildHeightMeasureSpec;
@@ -68,7 +66,7 @@ public class AdLandingViewPager
   private int mCurItem;
   private int mDecorChildCount;
   private int mDefaultGutterSize;
-  int mDrawingOrder;
+  private int mDrawingOrder;
   private ArrayList<View> mDrawingOrderedChildren;
   private final Runnable mEndScrollRunnable;
   private int mExpectedAdapterCount;
@@ -88,7 +86,7 @@ public class AdLandingViewPager
   float mLastMotionX;
   private float mLastMotionY;
   private float mLastOffset;
-  private i mLeftEdge;
+  private androidx.core.widget.d mLeftEdge;
   private Drawable mMarginDrawable;
   int mMaximumVelocity;
   private int mMinimumVelocity;
@@ -96,12 +94,12 @@ public class AdLandingViewPager
   private int mOffscreenPageLimit;
   private ViewPager.OnPageChangeListener mOnPageChangeListener;
   private int mPageMargin;
-  ViewPager.d mPageTransformer;
+  private ViewPager.d mPageTransformer;
   boolean mPopulatePending;
   private Parcelable mRestoredAdapterState;
   private ClassLoader mRestoredClassLoader;
   private int mRestoredCurItem;
-  private i mRightEdge;
+  private androidx.core.widget.d mRightEdge;
   private int mScrollState;
   private Scroller mScroller;
   private boolean mScrollingCacheEnabled;
@@ -124,7 +122,7 @@ public class AdLandingViewPager
         return paramAnonymousFloat * (paramAnonymousFloat * paramAnonymousFloat * paramAnonymousFloat * paramAnonymousFloat) + 1.0F;
       }
     };
-    EhX = new f();
+    Kve = new f();
     AppMethodBeat.o(97050);
   }
   
@@ -133,7 +131,7 @@ public class AdLandingViewPager
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(96980);
     this.mItems = new ArrayList();
-    this.EhU = new b();
+    this.Kvb = new b();
     this.mTempRect = new Rect();
     this.mRestoredCurItem = -1;
     this.mRestoredAdapterState = null;
@@ -162,37 +160,19 @@ public class AdLandingViewPager
     this.mScroller = new Scroller(paramContext, sInterpolator);
     paramAttributeSet = ViewConfiguration.get(paramContext);
     float f = paramContext.getResources().getDisplayMetrics().density;
-    this.mTouchSlop = v.a(paramAttributeSet);
+    this.mTouchSlop = x.a(paramAttributeSet);
     this.mMinimumVelocity = ((int)(400.0F * f));
     this.mMaximumVelocity = paramAttributeSet.getScaledMaximumFlingVelocity();
-    this.mLeftEdge = new i(paramContext);
-    this.mRightEdge = new i(paramContext);
+    this.mLeftEdge = new androidx.core.widget.d(paramContext);
+    this.mRightEdge = new androidx.core.widget.d(paramContext);
     this.mFlingDistance = ((int)(25.0F * f));
     this.mCloseEnough = ((int)(2.0F * f));
     this.mDefaultGutterSize = ((int)(16.0F * f));
-    u.a(this, new c());
-    if (u.Y(this) == 0) {
-      u.p(this, 1);
+    w.a(this, new c());
+    if (w.H(this) == 0) {
+      w.p(this, 1);
     }
     AppMethodBeat.o(96980);
-  }
-  
-  private b Zg(int paramInt)
-  {
-    AppMethodBeat.i(97012);
-    int i = 0;
-    while (i < this.mItems.size())
-    {
-      b localb = (b)this.mItems.get(i);
-      if (localb.position == paramInt)
-      {
-        AppMethodBeat.o(97012);
-        return localb;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(97012);
-    return null;
   }
   
   private void a(b paramb1, int paramInt, b paramb2)
@@ -349,6 +329,24 @@ public class AdLandingViewPager
     AppMethodBeat.o(97005);
   }
   
+  private b agx(int paramInt)
+  {
+    AppMethodBeat.i(97012);
+    int i = 0;
+    while (i < this.mItems.size())
+    {
+      b localb = (b)this.mItems.get(i);
+      if (localb.position == paramInt)
+      {
+        AppMethodBeat.o(97012);
+        return localb;
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(97012);
+    return null;
+  }
+  
   private boolean arrowScroll(int paramInt)
   {
     AppMethodBeat.i(97037);
@@ -466,7 +464,7 @@ public class AdLandingViewPager
         i -= 1;
       }
     }
-    if ((paramBoolean) && (u.n(paramView, -paramInt1)))
+    if ((paramBoolean) && (w.n(paramView, -paramInt1)))
     {
       AppMethodBeat.o(97035);
       return true;
@@ -513,7 +511,7 @@ public class AdLandingViewPager
     {
       if (paramBoolean)
       {
-        u.b(this, this.mEndScrollRunnable);
+        w.a(this, this.mEndScrollRunnable);
         AppMethodBeat.o(97021);
         return;
       }
@@ -536,45 +534,6 @@ public class AdLandingViewPager
     int i = ((b)this.mItems.get(0)).position;
     AppMethodBeat.o(97027);
     return i;
-  }
-  
-  private b fl(View paramView)
-  {
-    AppMethodBeat.i(97010);
-    int i = 0;
-    while (i < this.mItems.size())
-    {
-      b localb = (b)this.mItems.get(i);
-      if (this.mAdapter.isViewFromObject(paramView, localb.object))
-      {
-        AppMethodBeat.o(97010);
-        return localb;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(97010);
-    return null;
-  }
-  
-  private b fm(View paramView)
-  {
-    AppMethodBeat.i(97011);
-    for (;;)
-    {
-      ViewParent localViewParent = paramView.getParent();
-      if (localViewParent == this) {
-        break;
-      }
-      if ((localViewParent == null) || (!(localViewParent instanceof View)))
-      {
-        AppMethodBeat.o(97011);
-        return null;
-      }
-      paramView = (View)localViewParent;
-    }
-    paramView = fl(paramView);
-    AppMethodBeat.o(97011);
-    return paramView;
   }
   
   private Rect getChildRectInPagerCoordinates(Rect paramRect, View paramView)
@@ -608,7 +567,46 @@ public class AdLandingViewPager
     }
   }
   
-  private void iC(int paramInt1, int paramInt2)
+  private b gs(View paramView)
+  {
+    AppMethodBeat.i(97010);
+    int i = 0;
+    while (i < this.mItems.size())
+    {
+      b localb = (b)this.mItems.get(i);
+      if (this.mAdapter.isViewFromObject(paramView, localb.object))
+      {
+        AppMethodBeat.o(97010);
+        return localb;
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(97010);
+    return null;
+  }
+  
+  private b gt(View paramView)
+  {
+    AppMethodBeat.i(97011);
+    for (;;)
+    {
+      ViewParent localViewParent = paramView.getParent();
+      if (localViewParent == this) {
+        break;
+      }
+      if ((localViewParent == null) || (!(localViewParent instanceof View)))
+      {
+        AppMethodBeat.o(97011);
+        return null;
+      }
+      paramView = (View)localViewParent;
+    }
+    paramView = gs(paramView);
+    AppMethodBeat.o(97011);
+    return paramView;
+  }
+  
+  private void jL(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(96999);
     if (getChildCount() == 0)
@@ -643,7 +641,7 @@ public class AdLandingViewPager
     {
       paramInt1 = Math.min(paramInt1, 600);
       this.mScroller.startScroll(i, j, k, m, paramInt1);
-      u.X(this);
+      w.G(this);
       AppMethodBeat.o(96999);
       return;
       f1 = paramInt1;
@@ -651,7 +649,7 @@ public class AdLandingViewPager
     }
   }
   
-  private b iD(int paramInt1, int paramInt2)
+  private b jM(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(97000);
     b localb = new b();
@@ -700,10 +698,10 @@ public class AdLandingViewPager
       {
         localView = getChildAt(m);
         LayoutParams localLayoutParams = (LayoutParams)localView.getLayoutParams();
-        if (!localLayoutParams.QY) {
+        if (!localLayoutParams.avM) {
           break label380;
         }
-        switch (localLayoutParams.gravity & 0x7)
+        switch (localLayoutParams.ek & 0x7)
         {
         case 2: 
         case 4: 
@@ -751,7 +749,7 @@ public class AdLandingViewPager
         while (paramInt1 < i)
         {
           localView = getChildAt(paramInt1);
-          if (!((LayoutParams)localView.getLayoutParams()).QY)
+          if (!((LayoutParams)localView.getLayoutParams()).avM)
           {
             paramFloat = (localView.getLeft() - paramInt2) / getClientWidth();
             this.mPageTransformer.o(localView, paramFloat);
@@ -795,7 +793,7 @@ public class AdLandingViewPager
     AppMethodBeat.i(97039);
     if (this.mCurItem > 0)
     {
-      setCurrentItem$2563266(this.mCurItem - 1);
+      agw(this.mCurItem - 1);
       AppMethodBeat.o(97039);
       return true;
     }
@@ -808,7 +806,7 @@ public class AdLandingViewPager
     AppMethodBeat.i(97040);
     if ((this.mAdapter != null) && (this.mCurItem < this.mAdapter.getCount() - 1))
     {
-      setCurrentItem$2563266(this.mCurItem + 1);
+      agw(this.mCurItem + 1);
       AppMethodBeat.o(97040);
       return true;
     }
@@ -832,7 +830,7 @@ public class AdLandingViewPager
       AppMethodBeat.o(97019);
       return false;
     }
-    Object localObject = fdV();
+    Object localObject = fRN();
     int j = getClientWidth();
     int k = this.mPageMargin;
     float f = this.mPageMargin / j;
@@ -885,7 +883,7 @@ public class AdLandingViewPager
           f1 = paramFloat;
           if (i != 0)
           {
-            bool1 = this.mLeftEdge.G(Math.abs(paramFloat - f2) / k);
+            bool1 = this.mLeftEdge.m(Math.abs(paramFloat - f2) / k);
             f1 = paramFloat;
           }
         }
@@ -900,7 +898,7 @@ public class AdLandingViewPager
           {
             bool1 = bool2;
             if (j != 0) {
-              bool1 = this.mRightEdge.G(Math.abs(f2 - f1) / k);
+              bool1 = this.mRightEdge.m(Math.abs(f2 - f1) / k);
             }
           }
           else
@@ -926,7 +924,7 @@ public class AdLandingViewPager
     label69:
     for (int i = 66;; i = 17)
     {
-      localObject3 = Zg(this.mCurItem);
+      localObject3 = agx(this.mCurItem);
       this.mCurItem = paramInt;
       j = i;
       if (this.mAdapter != null) {
@@ -988,7 +986,7 @@ public class AdLandingViewPager
       label411:
       label497:
       label1009:
-      for (Object localObject4 = iD(this.mCurItem, paramInt);; localObject4 = localObject2)
+      for (Object localObject4 = jM(this.mCurItem, paramInt);; localObject4 = localObject2)
       {
         float f1;
         int m;
@@ -1058,7 +1056,7 @@ public class AdLandingViewPager
           }
           else
           {
-            f1 += iD(k, paramInt + 1).widthFactor;
+            f1 += jM(k, paramInt + 1).widthFactor;
             i += 1;
             if (paramInt >= 0) {}
             for (localObject2 = (b)this.mItems.get(paramInt);; localObject2 = null) {
@@ -1135,7 +1133,7 @@ public class AdLandingViewPager
                 }
                 else
                 {
-                  localObject2 = iD(k, m);
+                  localObject2 = jM(k, m);
                   paramInt = m + 1;
                   f1 = f3 + ((b)localObject2).widthFactor;
                   if (paramInt < this.mItems.size()) {
@@ -1152,7 +1150,7 @@ public class AdLandingViewPager
             if (localObject4 != null) {}
             for (localObject2 = ((b)localObject4).object;; localObject2 = null)
             {
-              ((q)localObject3).setPrimaryItem(this, paramInt, localObject2);
+              ((androidx.viewpager.widget.a)localObject3).setPrimaryItem(this, paramInt, localObject2);
               this.mAdapter.finishUpdate(this);
               i = getChildCount();
               paramInt = 0;
@@ -1160,10 +1158,10 @@ public class AdLandingViewPager
               {
                 localObject3 = getChildAt(paramInt);
                 localObject2 = (LayoutParams)((View)localObject3).getLayoutParams();
-                ((LayoutParams)localObject2).Ra = paramInt;
-                if ((!((LayoutParams)localObject2).QY) && (((LayoutParams)localObject2).widthFactor == 0.0F))
+                ((LayoutParams)localObject2).avO = paramInt;
+                if ((!((LayoutParams)localObject2).avM) && (((LayoutParams)localObject2).widthFactor == 0.0F))
                 {
-                  localObject3 = fl((View)localObject3);
+                  localObject3 = gs((View)localObject3);
                   if (localObject3 != null)
                   {
                     ((LayoutParams)localObject2).widthFactor = ((b)localObject3).widthFactor;
@@ -1178,13 +1176,13 @@ public class AdLandingViewPager
             {
               localObject2 = findFocus();
               if (localObject2 != null) {}
-              for (localObject2 = fm((View)localObject2); (localObject2 == null) || (((b)localObject2).position != this.mCurItem); localObject2 = null)
+              for (localObject2 = gt((View)localObject2); (localObject2 == null) || (((b)localObject2).position != this.mCurItem); localObject2 = null)
               {
                 paramInt = 0;
                 while (paramInt < getChildCount())
                 {
                   localObject2 = getChildAt(paramInt);
-                  localObject3 = fl((View)localObject2);
+                  localObject3 = gs((View)localObject2);
                   if ((localObject3 != null) && (((b)localObject3).position == this.mCurItem) && (((View)localObject2).requestFocus(j))) {
                     break;
                   }
@@ -1224,13 +1222,13 @@ public class AdLandingViewPager
       {
         paramInt3 = this.mScroller.getDuration();
         paramInt4 = this.mScroller.timePassed();
-        localb = Zg(this.mCurItem);
+        localb = agx(this.mCurItem);
         this.mScroller.startScroll(paramInt2, 0, (int)(localb.offset * paramInt1), 0, paramInt3 - paramInt4);
       }
       AppMethodBeat.o(97016);
       return;
     }
-    b localb = Zg(this.mCurItem);
+    b localb = agx(this.mCurItem);
     if (localb != null) {}
     for (float f = Math.min(localb.offset, this.mLastOffset);; f = 0.0F)
     {
@@ -1248,7 +1246,7 @@ public class AdLandingViewPager
   private void scrollToItem(int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2)
   {
     AppMethodBeat.i(96989);
-    b localb = Zg(paramInt1);
+    b localb = agx(paramInt1);
     float f;
     if (localb != null) {
       f = getClientWidth();
@@ -1257,7 +1255,7 @@ public class AdLandingViewPager
     {
       if (paramBoolean1)
       {
-        iC(i, paramInt2);
+        jL(i, paramInt2);
         if ((paramBoolean2) && (this.mOnPageChangeListener != null)) {
           this.mOnPageChangeListener.onPageSelected(paramInt1);
         }
@@ -1318,9 +1316,35 @@ public class AdLandingViewPager
         }
         this.mDrawingOrderedChildren.clear();
       }
-      Collections.sort(this.mDrawingOrderedChildren, EhX);
+      Collections.sort(this.mDrawingOrderedChildren, Kve);
     }
     AppMethodBeat.o(97004);
+  }
+  
+  public final void a(ViewPager.d paramd)
+  {
+    int j = 0;
+    AppMethodBeat.i(199421);
+    if (Build.VERSION.SDK_INT >= 11) {
+      if (this.mPageTransformer == null) {
+        break label62;
+      }
+    }
+    label62:
+    for (int i = 1;; i = 0)
+    {
+      if (1 != i) {
+        j = 1;
+      }
+      this.mPageTransformer = paramd;
+      setChildrenDrawingOrderEnabledCompat(true);
+      this.mDrawingOrder = 1;
+      if (j != 0) {
+        populate();
+      }
+      AppMethodBeat.o(199421);
+      return;
+    }
   }
   
   public void addFocusables(ArrayList<View> paramArrayList, int paramInt1, int paramInt2)
@@ -1337,7 +1361,7 @@ public class AdLandingViewPager
         View localView = getChildAt(i);
         if (localView.getVisibility() == 0)
         {
-          b localb = fl(localView);
+          b localb = gs(localView);
           if ((localb != null) && (localb.position == this.mCurItem)) {
             localView.addFocusables(paramArrayList, paramInt1, paramInt2);
           }
@@ -1371,7 +1395,7 @@ public class AdLandingViewPager
       View localView = getChildAt(i);
       if (localView.getVisibility() == 0)
       {
-        b localb = fl(localView);
+        b localb = gs(localView);
         if ((localb != null) && (localb.position == this.mCurItem)) {
           localView.addTouchables(paramArrayList);
         }
@@ -1391,16 +1415,16 @@ public class AdLandingViewPager
     {
       Assert.assertNotNull(paramLayoutParams);
       LayoutParams localLayoutParams = (LayoutParams)paramLayoutParams;
-      localLayoutParams.QY |= paramView instanceof a;
+      localLayoutParams.avM |= paramView instanceof a;
       if (this.mInLayout)
       {
-        if ((localLayoutParams != null) && (localLayoutParams.QY))
+        if ((localLayoutParams != null) && (localLayoutParams.avM))
         {
           paramView = new IllegalStateException("Cannot add pager decor view during layout");
           AppMethodBeat.o(97008);
           throw paramView;
         }
-        localLayoutParams.QZ = true;
+        localLayoutParams.avN = true;
         addViewInLayout(paramView, paramInt, paramLayoutParams);
         AppMethodBeat.o(97008);
         return;
@@ -1409,6 +1433,14 @@ public class AdLandingViewPager
       AppMethodBeat.o(97008);
       return;
     }
+  }
+  
+  public final void agw(int paramInt)
+  {
+    AppMethodBeat.i(96986);
+    this.mPopulatePending = false;
+    setCurrentItemInternal(paramInt, true, false);
+    AppMethodBeat.o(96986);
   }
   
   public boolean canScrollHorizontally(int paramInt)
@@ -1475,7 +1507,7 @@ public class AdLandingViewPager
           scrollTo(0, m);
         }
       }
-      u.X(this);
+      w.G(this);
       AppMethodBeat.o(97018);
       return;
     }
@@ -1574,7 +1606,7 @@ public class AdLandingViewPager
           while (i < k)
           {
             localObject = (LayoutParams)getChildAt(i).getLayoutParams();
-            if (!((LayoutParams)localObject).QY) {
+            if (!((LayoutParams)localObject).avM) {
               ((LayoutParams)localObject).widthFactor = 0.0F;
             }
             i += 1;
@@ -1677,7 +1709,7 @@ public class AdLandingViewPager
       View localView = getChildAt(i);
       if (localView.getVisibility() == 0)
       {
-        b localb = fl(localView);
+        b localb = gs(localView);
         if ((localb != null) && (localb.position == this.mCurItem) && (localView.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent)))
         {
           AppMethodBeat.o(97044);
@@ -1696,12 +1728,12 @@ public class AdLandingViewPager
     super.draw(paramCanvas);
     int k = 0;
     int i = 0;
-    int m = u.S(this);
+    int m = w.z(this);
     boolean bool;
     if ((m == 0) || ((m == 1) && (this.mAdapter != null) && (this.mAdapter.getCount() > 1)))
     {
       int j;
-      if (!this.mLeftEdge.Uv.isFinished())
+      if (!this.mLeftEdge.Qf.isFinished())
       {
         k = paramCanvas.save();
         i = getHeight() - getPaddingTop() - getPaddingBottom();
@@ -1709,11 +1741,11 @@ public class AdLandingViewPager
         paramCanvas.rotate(270.0F);
         paramCanvas.translate(-i + getPaddingTop(), this.mFirstOffset * m);
         this.mLeftEdge.setSize(i, m);
-        j = this.mLeftEdge.draw(paramCanvas) | false;
+        j = this.mLeftEdge.a(paramCanvas) | false;
         paramCanvas.restoreToCount(k);
       }
       k = j;
-      if (!this.mRightEdge.Uv.isFinished())
+      if (!this.mRightEdge.Qf.isFinished())
       {
         m = paramCanvas.save();
         k = getWidth();
@@ -1723,19 +1755,19 @@ public class AdLandingViewPager
         paramCanvas.rotate(90.0F);
         paramCanvas.translate(-getPaddingTop(), -(this.mLastOffset + 1.0F) * k);
         this.mRightEdge.setSize(n - i1 - i2, k);
-        bool = j | this.mRightEdge.draw(paramCanvas);
+        bool = j | this.mRightEdge.a(paramCanvas);
         paramCanvas.restoreToCount(m);
       }
     }
     for (;;)
     {
       if (bool) {
-        u.X(this);
+        w.G(this);
       }
       AppMethodBeat.o(97029);
       return;
-      this.mLeftEdge.Uv.finish();
-      this.mRightEdge.Uv.finish();
+      this.mLeftEdge.Qf.finish();
+      this.mRightEdge.Qf.finish();
     }
   }
   
@@ -1761,6 +1793,79 @@ public class AdLandingViewPager
       this.mVelocityTracker = null;
     }
     AppMethodBeat.o(97033);
+  }
+  
+  final b fRN()
+  {
+    AppMethodBeat.i(97025);
+    int i = getClientWidth();
+    float f1;
+    float f2;
+    label42:
+    int k;
+    int j;
+    Object localObject;
+    float f3;
+    float f4;
+    label59:
+    b localb;
+    if (i > 0)
+    {
+      f1 = getScrollX() / i;
+      if (i <= 0) {
+        break label215;
+      }
+      f2 = this.mPageMargin / i;
+      k = -1;
+      j = 1;
+      i = 0;
+      localObject = null;
+      f3 = 0.0F;
+      f4 = 0.0F;
+      if (i >= this.mItems.size()) {
+        break label258;
+      }
+      localb = (b)this.mItems.get(i);
+      if ((j != 0) || (localb.position == k + 1)) {
+        break label267;
+      }
+      localb = this.Kvb;
+      localb.offset = (f4 + f3 + f2);
+      localb.position = (k + 1);
+      localb.widthFactor = this.mAdapter.getPageWidth(localb.position);
+      i -= 1;
+    }
+    label258:
+    label267:
+    for (;;)
+    {
+      f4 = localb.offset;
+      f3 = localb.widthFactor;
+      if ((j != 0) || (f1 >= f4))
+      {
+        if ((f1 >= f3 + f4 + f2) && (i != this.mItems.size() - 1)) {
+          break label229;
+        }
+        AppMethodBeat.o(97025);
+        return localb;
+        f1 = 0.0F;
+        break;
+        label215:
+        f2 = 0.0F;
+        break label42;
+      }
+      AppMethodBeat.o(97025);
+      return localObject;
+      label229:
+      k = localb.position;
+      f3 = localb.widthFactor;
+      i += 1;
+      j = 0;
+      localObject = localb;
+      break label59;
+      AppMethodBeat.o(97025);
+      return localObject;
+    }
   }
   
   public final void fakeDragBy(float paramFloat)
@@ -1809,79 +1914,6 @@ public class AdLandingViewPager
     }
   }
   
-  final b fdV()
-  {
-    AppMethodBeat.i(97025);
-    int i = getClientWidth();
-    float f1;
-    float f2;
-    label42:
-    int k;
-    int j;
-    Object localObject;
-    float f3;
-    float f4;
-    label59:
-    b localb;
-    if (i > 0)
-    {
-      f1 = getScrollX() / i;
-      if (i <= 0) {
-        break label215;
-      }
-      f2 = this.mPageMargin / i;
-      k = -1;
-      j = 1;
-      i = 0;
-      localObject = null;
-      f3 = 0.0F;
-      f4 = 0.0F;
-      if (i >= this.mItems.size()) {
-        break label258;
-      }
-      localb = (b)this.mItems.get(i);
-      if ((j != 0) || (localb.position == k + 1)) {
-        break label267;
-      }
-      localb = this.EhU;
-      localb.offset = (f4 + f3 + f2);
-      localb.position = (k + 1);
-      localb.widthFactor = this.mAdapter.getPageWidth(localb.position);
-      i -= 1;
-    }
-    label258:
-    label267:
-    for (;;)
-    {
-      f4 = localb.offset;
-      f3 = localb.widthFactor;
-      if ((j != 0) || (f1 >= f4))
-      {
-        if ((f1 >= f3 + f4 + f2) && (i != this.mItems.size() - 1)) {
-          break label229;
-        }
-        AppMethodBeat.o(97025);
-        return localb;
-        f1 = 0.0F;
-        break;
-        label215:
-        f2 = 0.0F;
-        break label42;
-      }
-      AppMethodBeat.o(97025);
-      return localObject;
-      label229:
-      k = localb.position;
-      f3 = localb.widthFactor;
-      i += 1;
-      j = 0;
-      localObject = localb;
-      break label59;
-      AppMethodBeat.o(97025);
-      return localObject;
-    }
-  }
-  
   protected ViewGroup.LayoutParams generateDefaultLayoutParams()
   {
     AppMethodBeat.i(97045);
@@ -1906,7 +1938,7 @@ public class AdLandingViewPager
     return paramLayoutParams;
   }
   
-  public q getAdapter()
+  public androidx.viewpager.widget.a getAdapter()
   {
     return this.mAdapter;
   }
@@ -1918,7 +1950,7 @@ public class AdLandingViewPager
     if (this.mDrawingOrder == 2) {
       i = paramInt1 - 1 - paramInt2;
     }
-    paramInt1 = ((LayoutParams)((View)this.mDrawingOrderedChildren.get(i)).getLayoutParams()).Ra;
+    paramInt1 = ((LayoutParams)((View)this.mDrawingOrderedChildren.get(i)).getLayoutParams()).avO;
     AppMethodBeat.o(96991);
     return paramInt1;
   }
@@ -2092,7 +2124,7 @@ public class AdLandingViewPager
         }
         while ((this.mIsBeingDragged) && (performDrag(f2)))
         {
-          u.X(this);
+          w.G(this);
           break;
           f1 = this.mInitialMotionX - this.mTouchSlop;
           break label392;
@@ -2152,11 +2184,11 @@ public class AdLandingViewPager
         break label650;
       }
       localLayoutParams = (LayoutParams)localView.getLayoutParams();
-      if (!localLayoutParams.QY) {
+      if (!localLayoutParams.avM) {
         break label650;
       }
-      paramInt4 = localLayoutParams.gravity;
-      n = localLayoutParams.gravity;
+      paramInt4 = localLayoutParams.ek;
+      n = localLayoutParams.ek;
       switch (paramInt4 & 0x7)
       {
       case 2: 
@@ -2222,16 +2254,16 @@ public class AdLandingViewPager
         if (localView.getVisibility() != 8)
         {
           localLayoutParams = (LayoutParams)localView.getLayoutParams();
-          if (!localLayoutParams.QY)
+          if (!localLayoutParams.avM)
           {
-            b localb = fl(localView);
+            b localb = gs(localView);
             if (localb != null)
             {
               float f = paramInt4;
               i = (int)(localb.offset * f) + paramInt1;
-              if (localLayoutParams.QZ)
+              if (localLayoutParams.avN)
               {
-                localLayoutParams.QZ = false;
+                localLayoutParams.avN = false;
                 f = paramInt4;
                 localView.measure(View.MeasureSpec.makeMeasureSpec((int)(localLayoutParams.widthFactor * f), 1073741824), View.MeasureSpec.makeMeasureSpec(i2 - paramInt2 - j, 1073741824));
               }
@@ -2290,10 +2322,10 @@ public class AdLandingViewPager
         {
           i = paramInt1;
           j = paramInt2;
-          if (localLayoutParams.QY)
+          if (localLayoutParams.avM)
           {
-            i = localLayoutParams.gravity & 0x7;
-            m = localLayoutParams.gravity & 0x70;
+            i = localLayoutParams.ek & 0x7;
+            m = localLayoutParams.ek & 0x70;
             i1 = -2147483648;
             j = -2147483648;
             if ((m != 48) && (m != 80)) {
@@ -2384,7 +2416,7 @@ public class AdLandingViewPager
           if (localView.getVisibility() != 8)
           {
             localLayoutParams = (LayoutParams)localView.getLayoutParams();
-            if (((localLayoutParams == null) || (!localLayoutParams.QY)) && (localLayoutParams != null))
+            if (((localLayoutParams == null) || (!localLayoutParams.avM)) && (localLayoutParams != null))
             {
               float f = paramInt1;
               localView.measure(View.MeasureSpec.makeMeasureSpec((int)(localLayoutParams.widthFactor * f), 1073741824), this.mChildHeightMeasureSpec);
@@ -2422,7 +2454,7 @@ public class AdLandingViewPager
       View localView = getChildAt(i);
       if (localView.getVisibility() == 0)
       {
-        b localb = fl(localView);
+        b localb = gs(localView);
         if ((localb != null) && (localb.position == this.mCurItem) && (localView.requestFocus(paramInt, paramRect)))
         {
           AppMethodBeat.o(97043);
@@ -2452,14 +2484,14 @@ public class AdLandingViewPager
     super.onRestoreInstanceState(paramParcelable.getSuperState());
     if (this.mAdapter != null)
     {
-      this.mAdapter.restoreState(paramParcelable.Rb, paramParcelable.Rc);
+      this.mAdapter.restoreState(paramParcelable.avP, paramParcelable.avQ);
       setCurrentItemInternal(paramParcelable.position, false, true);
       AppMethodBeat.o(97007);
       return;
     }
     this.mRestoredCurItem = paramParcelable.position;
-    this.mRestoredAdapterState = paramParcelable.Rb;
-    this.mRestoredClassLoader = paramParcelable.Rc;
+    this.mRestoredAdapterState = paramParcelable.avP;
+    this.mRestoredClassLoader = paramParcelable.avQ;
     AppMethodBeat.o(97007);
   }
   
@@ -2469,7 +2501,7 @@ public class AdLandingViewPager
     SavedState localSavedState = new SavedState(super.onSaveInstanceState());
     localSavedState.position = this.mCurItem;
     if (this.mAdapter != null) {
-      localSavedState.Rb = this.mAdapter.saveState();
+      localSavedState.avP = this.mAdapter.saveState();
     }
     AppMethodBeat.o(97006);
     return localSavedState;
@@ -2517,7 +2549,7 @@ public class AdLandingViewPager
     for (;;)
     {
       if (i != 0) {
-        u.X(this);
+        w.G(this);
       }
       AppMethodBeat.o(97023);
       return true;
@@ -2574,7 +2606,7 @@ public class AdLandingViewPager
         this.mPopulatePending = true;
         int j = getClientWidth();
         m = getScrollX();
-        localObject = fdV();
+        localObject = fRN();
         int i1 = ((b)localObject).position;
         f1 = (m / j - ((b)localObject).offset) / ((b)localObject).widthFactor;
         m = paramMotionEvent.findPointerIndex(this.mActivePointerId);
@@ -2585,8 +2617,8 @@ public class AdLandingViewPager
         setCurrentItemInternal(determineTargetPage(i1, f1, n, (int)(paramMotionEvent.getX(j) - this.mInitialMotionX)), true, true, n);
         this.mActivePointerId = -1;
         endDrag();
-        boolean bool3 = this.mLeftEdge.ga();
-        boolean bool2 = this.mRightEdge.ga() | bool3;
+        boolean bool3 = this.mLeftEdge.hD();
+        boolean bool2 = this.mRightEdge.hD() | bool3;
         continue;
         bool2 = m;
         if (this.mIsBeingDragged)
@@ -2594,8 +2626,8 @@ public class AdLandingViewPager
           scrollToItem(this.mCurItem, true, 0, false);
           this.mActivePointerId = -1;
           endDrag();
-          bool3 = this.mLeftEdge.ga();
-          bool2 = this.mRightEdge.ga() | bool3;
+          bool3 = this.mLeftEdge.hD();
+          bool2 = this.mRightEdge.hD() | bool3;
           continue;
           int k = paramMotionEvent.getActionIndex();
           this.mLastMotionX = paramMotionEvent.getX(k);
@@ -2630,12 +2662,12 @@ public class AdLandingViewPager
     AppMethodBeat.o(97009);
   }
   
-  public void setAdapter(q paramq)
+  public void setAdapter(androidx.viewpager.widget.a parama)
   {
-    AppMethodBeat.i(96983);
+    AppMethodBeat.i(199405);
     if (this.mAdapter != null)
     {
-      this.mAdapter.unregisterDataSetObserver(this.EhV);
+      this.mAdapter.unregisterDataSetObserver(this.Kvc);
       this.mAdapter.startUpdate(this);
       int i = 0;
       while (i < this.mItems.size())
@@ -2650,7 +2682,7 @@ public class AdLandingViewPager
       for (i = 0; i < getChildCount(); i = j + 1)
       {
         j = i;
-        if (!((LayoutParams)getChildAt(i).getLayoutParams()).QY)
+        if (!((LayoutParams)getChildAt(i).getLayoutParams()).avM)
         {
           removeViewAt(i);
           j = i - 1;
@@ -2659,14 +2691,14 @@ public class AdLandingViewPager
       this.mCurItem = 0;
       scrollTo(0, 0);
     }
-    this.mAdapter = paramq;
+    this.mAdapter = parama;
     this.mExpectedAdapterCount = 0;
     if (this.mAdapter != null)
     {
-      if (this.EhV == null) {
-        this.EhV = new e((byte)0);
+      if (this.Kvc == null) {
+        this.Kvc = new e((byte)0);
       }
-      this.mAdapter.registerDataSetObserver(this.EhV);
+      this.mAdapter.registerDataSetObserver(this.Kvc);
       this.mPopulatePending = false;
       boolean bool = this.mFirstLayout;
       this.mFirstLayout = true;
@@ -2678,18 +2710,18 @@ public class AdLandingViewPager
         this.mRestoredCurItem = -1;
         this.mRestoredAdapterState = null;
         this.mRestoredClassLoader = null;
-        AppMethodBeat.o(96983);
+        AppMethodBeat.o(199405);
         return;
       }
       if (!bool)
       {
         populate();
-        AppMethodBeat.o(96983);
+        AppMethodBeat.o(199405);
         return;
       }
       requestLayout();
     }
-    AppMethodBeat.o(96983);
+    AppMethodBeat.o(199405);
   }
   
   void setChildrenDrawingOrderEnabledCompat(boolean paramBoolean)
@@ -2729,14 +2761,6 @@ public class AdLandingViewPager
       AppMethodBeat.o(96985);
       return;
     }
-  }
-  
-  public final void setCurrentItem$2563266(int paramInt)
-  {
-    AppMethodBeat.i(96986);
-    this.mPopulatePending = false;
-    setCurrentItemInternal(paramInt, true, false);
-    AppMethodBeat.o(96986);
   }
   
   final void setCurrentItemInternal(int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
@@ -2817,7 +2841,7 @@ public class AdLandingViewPager
   
   void setOnAdapterChangeListener(d paramd)
   {
-    this.EhW = paramd;
+    this.Kvd = paramd;
   }
   
   public void setOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
@@ -2889,7 +2913,7 @@ public class AdLandingViewPager
       label82:
       for (int k = 2;; k = 0)
       {
-        u.q(getChildAt(j), k);
+        w.q(getChildAt(j), k);
         j += 1;
         break label47;
         i = 0;
@@ -2923,10 +2947,10 @@ public class AdLandingViewPager
   public static class LayoutParams
     extends ViewGroup.LayoutParams
   {
-    public boolean QY;
-    boolean QZ;
-    int Ra;
-    public int gravity;
+    public boolean avM;
+    boolean avN;
+    int avO;
+    public int ek;
     int position;
     float widthFactor;
     
@@ -2942,7 +2966,7 @@ public class AdLandingViewPager
       AppMethodBeat.i(96967);
       this.widthFactor = 0.0F;
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, AdLandingViewPager.LAYOUT_ATTRS);
-      this.gravity = paramContext.getInteger(0, 48);
+      this.ek = paramContext.getInteger(0, 48);
       paramContext.recycle();
       AppMethodBeat.o(96967);
     }
@@ -2952,14 +2976,14 @@ public class AdLandingViewPager
     extends View.BaseSavedState
   {
     public static final Parcelable.Creator<SavedState> CREATOR;
-    Parcelable Rb;
-    ClassLoader Rc;
+    Parcelable avP;
+    ClassLoader avQ;
     int position;
     
     static
     {
       AppMethodBeat.i(96978);
-      CREATOR = android.support.v4.os.c.a(new d() {});
+      CREATOR = b.a(new c() {});
       AppMethodBeat.o(96978);
     }
     
@@ -2972,8 +2996,8 @@ public class AdLandingViewPager
         localClassLoader = getClass().getClassLoader();
       }
       this.position = paramParcel.readInt();
-      this.Rb = paramParcel.readParcelable(localClassLoader);
-      this.Rc = localClassLoader;
+      this.avP = paramParcel.readParcelable(localClassLoader);
+      this.avQ = localClassLoader;
       AppMethodBeat.o(96977);
     }
     
@@ -2995,7 +3019,7 @@ public class AdLandingViewPager
       AppMethodBeat.i(96975);
       super.writeToParcel(paramParcel, paramInt);
       paramParcel.writeInt(this.position);
-      paramParcel.writeParcelable(this.Rb, paramInt);
+      paramParcel.writeParcelable(this.avP, paramInt);
       AppMethodBeat.o(96975);
     }
   }
@@ -3012,11 +3036,11 @@ public class AdLandingViewPager
   }
   
   final class c
-    extends a
+    extends androidx.core.g.a
   {
     c() {}
     
-    private boolean fG()
+    private boolean hE()
     {
       AppMethodBeat.i(96971);
       if ((AdLandingViewPager.b(AdLandingViewPager.this) != null) && (AdLandingViewPager.b(AdLandingViewPager.this).getCount() > 1))
@@ -3033,30 +3057,30 @@ public class AdLandingViewPager
       AppMethodBeat.i(96968);
       super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
       paramAccessibilityEvent.setClassName(AdLandingViewPager.class.getName());
-      paramView = e.fJ();
-      paramView.setScrollable(fG());
+      paramView = f.hw();
+      paramView.ab(hE());
       if ((paramAccessibilityEvent.getEventType() == 4096) && (AdLandingViewPager.b(AdLandingViewPager.this) != null))
       {
-        paramView.setItemCount(AdLandingViewPager.b(AdLandingViewPager.this).getCount());
-        paramView.setFromIndex(AdLandingViewPager.c(AdLandingViewPager.this));
-        paramView.setToIndex(AdLandingViewPager.c(AdLandingViewPager.this));
+        paramView.bE(AdLandingViewPager.b(AdLandingViewPager.this).getCount());
+        paramView.bF(AdLandingViewPager.c(AdLandingViewPager.this));
+        paramView.bG(AdLandingViewPager.c(AdLandingViewPager.this));
       }
       AppMethodBeat.o(96968);
     }
     
-    public final void onInitializeAccessibilityNodeInfo(View paramView, android.support.v4.view.a.c paramc)
+    public final void onInitializeAccessibilityNodeInfo(View paramView, androidx.core.g.a.d paramd)
     {
-      AppMethodBeat.i(96969);
-      super.onInitializeAccessibilityNodeInfo(paramView, paramc);
-      paramc.setClassName(AdLandingViewPager.class.getName());
-      paramc.setScrollable(fG());
+      AppMethodBeat.i(228456);
+      super.onInitializeAccessibilityNodeInfo(paramView, paramd);
+      paramd.t(AdLandingViewPager.class.getName());
+      paramd.ab(hE());
       if (AdLandingViewPager.this.canScrollHorizontally(1)) {
-        paramc.addAction(4096);
+        paramd.bA(4096);
       }
       if (AdLandingViewPager.this.canScrollHorizontally(-1)) {
-        paramc.addAction(8192);
+        paramd.bA(8192);
       }
-      AppMethodBeat.o(96969);
+      AppMethodBeat.o(228456);
     }
     
     public final boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
@@ -3121,7 +3145,7 @@ public class AdLandingViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.AdLandingViewPager
  * JD-Core Version:    0.7.0.1
  */

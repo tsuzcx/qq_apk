@@ -1,67 +1,64 @@
 package com.tencent.mm.plugin.game.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
 
 public final class cy
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String Desc;
-  public String Title;
-  public String xIx;
-  public String xMJ;
+  public String CMB;
+  public String CMD;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41812);
+    AppMethodBeat.i(41811);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.Title != null) {
-        paramVarArgs.e(1, this.Title);
+      if (this.CMB == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Desc");
+        AppMethodBeat.o(41811);
+        throw paramVarArgs;
       }
-      if (this.Desc != null) {
-        paramVarArgs.e(2, this.Desc);
+      if (this.CMB != null) {
+        paramVarArgs.f(1, this.CMB);
       }
-      if (this.xIx != null) {
-        paramVarArgs.e(3, this.xIx);
+      if (this.CMD != null) {
+        paramVarArgs.f(2, this.CMD);
       }
-      if (this.xMJ != null) {
-        paramVarArgs.e(4, this.xMJ);
-      }
-      AppMethodBeat.o(41812);
+      AppMethodBeat.o(41811);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Title == null) {
-        break label394;
+      if (this.CMB == null) {
+        break label322;
       }
     }
-    label394:
-    for (int i = g.a.a.b.b.a.f(1, this.Title) + 0;; i = 0)
+    label322:
+    for (paramInt = g.a.a.b.b.a.g(1, this.CMB) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.Desc != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.Desc);
+      int i = paramInt;
+      if (this.CMD != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.CMD);
       }
-      i = paramInt;
-      if (this.xIx != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.xIx);
-      }
-      paramInt = i;
-      if (this.xMJ != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.xMJ);
-      }
-      AppMethodBeat.o(41812);
-      return paramInt;
+      AppMethodBeat.o(41811);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(41812);
+        if (this.CMB == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: Desc");
+          AppMethodBeat.o(41811);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(41811);
         return 0;
       }
       if (paramInt == 3)
@@ -71,33 +68,25 @@ public final class cy
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(41812);
+          AppMethodBeat.o(41811);
           return -1;
         case 1: 
-          localcy.Title = locala.UbS.readString();
-          AppMethodBeat.o(41812);
-          return 0;
-        case 2: 
-          localcy.Desc = locala.UbS.readString();
-          AppMethodBeat.o(41812);
-          return 0;
-        case 3: 
-          localcy.xIx = locala.UbS.readString();
-          AppMethodBeat.o(41812);
+          localcy.CMB = locala.abFh.readString();
+          AppMethodBeat.o(41811);
           return 0;
         }
-        localcy.xMJ = locala.UbS.readString();
-        AppMethodBeat.o(41812);
+        localcy.CMD = locala.abFh.readString();
+        AppMethodBeat.o(41811);
         return 0;
       }
-      AppMethodBeat.o(41812);
+      AppMethodBeat.o(41811);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.protobuf.cy
  * JD-Core Version:    0.7.0.1
  */

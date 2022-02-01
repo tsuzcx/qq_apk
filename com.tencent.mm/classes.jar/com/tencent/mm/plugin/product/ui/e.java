@@ -5,19 +5,19 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
 {
-  int BaL;
-  int BaM;
+  int GUJ;
+  int GUK;
   
   public e(int paramInt1, int paramInt2)
   {
-    this.BaM = paramInt1;
-    this.BaL = paramInt2;
+    this.GUK = paramInt1;
+    this.GUJ = paramInt2;
   }
   
-  public final boolean eDA()
+  public final boolean fpt()
   {
     AppMethodBeat.i(66959);
-    if ((this.BaM & 0x1) > 0) {}
+    if ((this.GUK & 0x1) > 0) {}
     for (boolean bool = true;; bool = false)
     {
       Log.d("MicroMsg.MallProductConfig", "isFreePost, ret = ".concat(String.valueOf(bool)));
@@ -28,7 +28,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.e
  * JD-Core Version:    0.7.0.1
  */

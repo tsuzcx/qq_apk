@@ -13,27 +13,27 @@ import rx.j;
 public final class i
   implements j
 {
-  public List<j> UnA;
-  public volatile boolean UnB;
+  public List<j> abQO;
+  public volatile boolean abQP;
   
   public i() {}
   
   public i(j paramj)
   {
     AppMethodBeat.i(90120);
-    this.UnA = new LinkedList();
-    this.UnA.add(paramj);
+    this.abQO = new LinkedList();
+    this.abQO.add(paramj);
     AppMethodBeat.o(90120);
   }
   
   public i(j... paramVarArgs)
   {
     AppMethodBeat.i(90119);
-    this.UnA = new LinkedList(Arrays.asList(paramVarArgs));
+    this.abQO = new LinkedList(Arrays.asList(paramVarArgs));
     AppMethodBeat.o(90119);
   }
   
-  private static void C(Collection<j> paramCollection)
+  private static void A(Collection<j> paramCollection)
   {
     AppMethodBeat.i(90123);
     if (paramCollection == null)
@@ -52,7 +52,7 @@ public final class i
       localj = (j)localIterator.next();
       try
       {
-        localj.hQA();
+        localj.iVJ();
       }
       catch (Throwable localThrowable)
       {
@@ -68,7 +68,7 @@ public final class i
     {
       paramCollection.add(localThrowable);
       break;
-      b.kP(paramCollection);
+      b.lM(paramCollection);
       AppMethodBeat.o(90123);
       return;
     }
@@ -77,27 +77,27 @@ public final class i
   public final void b(j paramj)
   {
     AppMethodBeat.i(90121);
-    if (paramj.hQB())
+    if (paramj.iVK())
     {
       AppMethodBeat.o(90121);
       return;
     }
-    if (!this.UnB) {}
+    if (!this.abQP) {}
     try
     {
-      if (!this.UnB)
+      if (!this.abQP)
       {
-        List localList = this.UnA;
+        List localList = this.abQO;
         Object localObject = localList;
         if (localList == null)
         {
           localObject = new LinkedList();
-          this.UnA = ((List)localObject);
+          this.abQO = ((List)localObject);
         }
         ((List)localObject).add(paramj);
         return;
       }
-      paramj.hQA();
+      paramj.iVJ();
       AppMethodBeat.o(90121);
       return;
     }
@@ -107,19 +107,19 @@ public final class i
     }
   }
   
-  public final void hQA()
+  public final void iVJ()
   {
     AppMethodBeat.i(90122);
-    if (!this.UnB) {}
+    if (!this.abQP) {}
     try
     {
-      if (this.UnB) {
+      if (this.abQP) {
         return;
       }
-      this.UnB = true;
-      List localList = this.UnA;
-      this.UnA = null;
-      C(localList);
+      this.abQP = true;
+      List localList = this.abQO;
+      this.abQO = null;
+      A(localList);
       AppMethodBeat.o(90122);
       return;
     }
@@ -129,14 +129,14 @@ public final class i
     }
   }
   
-  public final boolean hQB()
+  public final boolean iVK()
   {
-    return this.UnB;
+    return this.abQP;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     rx.internal.util.i
  * JD-Core Version:    0.7.0.1
  */

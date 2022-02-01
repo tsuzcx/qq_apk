@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.finder.profile;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.ui.fragment.FinderHomeTabFragment;
-import com.tencent.mm.plugin.finder.ui.sample.FinderSampleTabUI.FinderSampleTabFragmentUIC;
+import com.tencent.mm.plugin.finder.ui.sample.FinderSampleTabUI.b;
 import com.tencent.mm.ui.component.UIComponent;
 import java.util.HashMap;
 import java.util.Set;
 import kotlin.a.ak;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/profile/FinderProfileLongFeedFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/profile/FinderProfileLongFeedFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "plugin-finder_release"})
 public final class FinderProfileLongFeedFragment
   extends FinderHomeTabFragment
 {
@@ -17,18 +17,18 @@ public final class FinderProfileLongFeedFragment
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(249978);
+    AppMethodBeat.i(272263);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(249978);
+    AppMethodBeat.o(272263);
   }
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(249977);
-    Set localSet = ak.setOf(FinderSampleTabUI.FinderSampleTabFragmentUIC.class);
-    AppMethodBeat.o(249977);
+    AppMethodBeat.i(272262);
+    Set localSet = ak.setOf(FinderSampleTabUI.b.class);
+    AppMethodBeat.o(272262);
     return localSet;
   }
 }

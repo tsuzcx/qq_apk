@@ -41,15 +41,15 @@ public abstract interface a
   {
     public abstract WebResourceResponse a(WebResourceRequest paramWebResourceRequest, Bundle paramBundle);
     
-    public abstract boolean cU(String paramString);
+    public abstract boolean du(String paramString);
     
-    public abstract void cV(String paramString);
+    public abstract void dv(String paramString);
     
-    public abstract void cW(String paramString);
+    public abstract void dw(String paramString);
     
-    public abstract WebResourceResponse cX(String paramString);
+    public abstract WebResourceResponse dx(String paramString);
     
-    public abstract String cY(String paramString);
+    public abstract String dy(String paramString);
   }
 }
 

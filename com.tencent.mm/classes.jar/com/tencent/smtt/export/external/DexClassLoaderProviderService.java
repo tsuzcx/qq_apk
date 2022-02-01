@@ -32,9 +32,9 @@ public class DexClassLoaderProviderService
     AppMethodBeat.i(53134);
     com.tencent.mm.hellhoundlib.b.a locala = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
     Object localObject = new Object();
-    com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.axQ(), "com/tencent/smtt/export/external/DexClassLoaderProviderService", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
-    System.exit(((Integer)locala.pG(0)).intValue());
-    com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/smtt/export/external/DexClassLoaderProviderService", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
+    com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aFh(), "com/tencent/smtt/export/external/DexClassLoaderProviderService", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
+    System.exit(((Integer)locala.sf(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/smtt/export/external/DexClassLoaderProviderService", "onDestroy", "()V", "java/lang/System_EXEC_", "exit", "(I)V");
     AppMethodBeat.o(53134);
   }
   
@@ -78,7 +78,7 @@ public class DexClassLoaderProviderService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.export.external.DexClassLoaderProviderService
  * JD-Core Version:    0.7.0.1
  */

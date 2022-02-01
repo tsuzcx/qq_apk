@@ -1,304 +1,404 @@
 package com.tencent.mm.media.d;
 
-import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
-import android.media.MediaCodec.Callback;
-import android.media.MediaCodec.CodecException;
-import android.media.MediaFormat;
-import android.os.Handler;
-import android.os.HandlerThread;
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.z;
-import com.tencent.mm.media.k.e;
+import com.tencent.mm.compatible.deviceinfo.aa;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.nio.ByteBuffer;
 import kotlin.g.a.b;
 import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.t;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/decoder/MediaCodecTransDecoderAsync;", "Lcom/tencent/mm/media/decoder/IMediaCodecTransDecoder;", "startTimeMs", "", "endTimeMs", "mediaExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "decodeSurface", "Landroid/view/Surface;", "outputFps", "", "enableHevc", "", "init", "Lkotlin/Function1;", "", "Lkotlin/ExtensionFunctionType;", "(JJLcom/tencent/mm/media/extractor/MediaExtractorWrapper;Landroid/view/Surface;IZLkotlin/jvm/functions/Function1;)V", "TAG", "", "codecCallback", "com/tencent/mm/media/decoder/MediaCodecTransDecoderAsync$codecCallback$1", "Lcom/tencent/mm/media/decoder/MediaCodecTransDecoderAsync$codecCallback$1;", "decoderThread", "Landroid/os/HandlerThread;", "kotlin.jvm.PlatformType", "isInvokeDecodeEnd", "sawInputEOS", "onDecodeEnd", "releaseDecoder", "startDecode", "plugin-mediaeditor_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/decoder/MediaCodecTransDecoder;", "Lcom/tencent/mm/media/decoder/IMediaCodecTransDecoder;", "startTimeMs", "", "endTimeMs", "mediaExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "decodeSurface", "Landroid/view/Surface;", "outputFps", "", "enableHevc", "", "init", "Lkotlin/Function1;", "", "Lkotlin/ExtensionFunctionType;", "(JJLcom/tencent/mm/media/extractor/MediaExtractorWrapper;Landroid/view/Surface;IZLkotlin/jvm/functions/Function1;)V", "TAG", "", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "sawInputEOS", "drainDecoder", "inputDecoder", "sendDecoderEOS", "startDecode", "Companion", "plugin-mediaeditor_release"})
 public final class j
   extends f
 {
-  final String TAG;
-  private HandlerThread decoderThread;
-  volatile boolean ieI;
-  private boolean ieQ;
-  private final a ieR;
+  public static final a kTD;
+  private final String TAG;
+  private MediaCodec.BufferInfo bufferInfo;
+  private volatile boolean kTv;
   
-  public j(long paramLong1, long paramLong2, final com.tencent.mm.media.f.a parama, Surface paramSurface, int paramInt, boolean paramBoolean, b<? super f, x> paramb)
+  static
+  {
+    AppMethodBeat.i(93548);
+    kTD = new a((byte)0);
+    AppMethodBeat.o(93548);
+  }
+  
+  public j(long paramLong1, long paramLong2, com.tencent.mm.media.f.a parama, Surface paramSurface, int paramInt, boolean paramBoolean, b<? super f, x> paramb)
   {
     super(paramLong1, paramLong2, parama, paramSurface, paramInt, paramBoolean);
-    AppMethodBeat.i(258662);
-    this.TAG = "MicroMsg.MediaCodecTransDecoderAsync";
-    this.decoderThread = com.tencent.f.c.d.hB("MediaCodecTransDecoderAsync_decodeThread", 5);
-    this.ieR = new a(this, parama);
+    AppMethodBeat.i(258990);
+    this.bufferInfo = new MediaCodec.BufferInfo();
+    this.TAG = "MicroMsg.MediaCodecTransDecoder";
     try
     {
-      this.mediaFormat = parama.igh;
-      this.iec = z.DZ(parama.aMs());
-      Log.i(this.TAG, "mediaExtractorWrapper.getVideoMIME() :" + parama.aMs());
-      if (com.tencent.mm.compatible.util.d.oD(23))
-      {
-        this.decoderThread.start();
-        parama = this.decoderThread;
-        p.g(parama, "decoderThread");
-        parama = new Handler(parama.getLooper());
-        z localz = this.iec;
-        if (localz == null) {
-          p.hyc();
-        }
-        localz.setCallback((MediaCodec.Callback)this.ieR, parama);
+      this.mediaFormat = parama.kUV;
+      this.kSN = aa.KR(parama.aUI());
+      parama = this.kSN;
+      if (parama == null) {
+        p.iCn();
       }
-      for (;;)
+      parama.a(this.mediaFormat, paramSurface, 0);
+      parama = this.kSN;
+      if (parama == null) {
+        p.iCn();
+      }
+      parama.start();
+      if (paramb != null)
       {
-        parama = this.iec;
-        if (parama == null) {
-          p.hyc();
-        }
-        parama.a(this.mediaFormat, paramSurface, 0);
-        if (paramb == null) {
-          break;
-        }
         paramb.invoke(this);
-        AppMethodBeat.o(258662);
+        AppMethodBeat.o(258990);
         return;
-        parama = this.iec;
-        if (parama == null) {
-          p.hyc();
-        }
-        parama.setCallback((MediaCodec.Callback)this.ieR);
       }
-      AppMethodBeat.o(258662);
     }
     catch (Exception parama)
     {
       Log.printErrStackTrace(this.TAG, (Throwable)parama, "create decoder error:" + parama.getMessage(), new Object[0]);
       parama = (Throwable)new IllegalStateException("init decoder error");
-      AppMethodBeat.o(258662);
+      AppMethodBeat.o(258990);
       throw parama;
     }
+    AppMethodBeat.o(258990);
   }
   
-  public final void releaseDecoder()
+  private final boolean aUu()
   {
-    AppMethodBeat.i(93554);
-    super.releaseDecoder();
+    AppMethodBeat.i(93545);
+    long l1;
+    Object localObject2;
     try
     {
-      this.decoderThread.quit();
-      AppMethodBeat.o(93554);
-      return;
+      synchronized (aUq())
+      {
+        if (this.isFinished) {
+          Log.i(this.TAG, "inputDecoder already finished");
+        }
+        x localx = x.aazN;
+        Log.i(this.TAG, "inputDecoder");
+        l1 = Util.currentTicks();
+        ??? = this.kSN;
+        if (??? == null) {
+          p.iCn();
+        }
+        ??? = ((aa)???).avj();
+        if (??? == null)
+        {
+          AppMethodBeat.o(93545);
+          return false;
+        }
+      }
+      localObject4 = this.kSN;
     }
     catch (Exception localException)
     {
-      Log.printErrStackTrace(this.TAG, (Throwable)localException, "releaseDecoder error:" + localException.getMessage(), new Object[0]);
-      AppMethodBeat.o(93554);
+      Log.printErrStackTrace(this.TAG, (Throwable)localException, "inputDecoder error", new Object[0]);
+      if (this.kTl)
+      {
+        localObject2 = com.tencent.mm.media.k.f.laB;
+        com.tencent.mm.media.k.f.aXo();
+      }
+      AppMethodBeat.o(93545);
+      return true;
+    }
+    Object localObject4;
+    if (localObject4 == null) {
+      p.iCn();
+    }
+    int i = ((aa)localObject4).EX(60000L);
+    int j = 0;
+    while ((i < 0) && (j < 15))
+    {
+      if (aUv())
+      {
+        AppMethodBeat.o(93545);
+        return true;
+      }
+      localObject4 = this.kSN;
+      if (localObject4 == null) {
+        p.iCn();
+      }
+      i = ((aa)localObject4).EX(60000L);
+      j += 1;
+    }
+    this.kTv = false;
+    long l2;
+    int k;
+    if (i >= 0)
+    {
+      localObject2 = localObject2[i];
+      ((ByteBuffer)localObject2).clear();
+      localObject4 = aUp();
+      if (localObject4 == null) {
+        p.iCn();
+      }
+      p.j(localObject2, "inputBuffer");
+      if (!com.tencent.mm.media.f.a.a((com.tencent.mm.media.f.a)localObject4, (ByteBuffer)localObject2))
+      {
+        Log.i(this.TAG, "read sample end");
+        AppMethodBeat.o(93545);
+        return true;
+      }
+      l2 = aUp().getSampleTime();
+      k = aUp().sampleSize;
+      ((ByteBuffer)localObject2).position(0);
+      Log.i(this.TAG, "sampleTime : " + l2 + " us");
+      if ((k < 0) || (l2 >= this.endTimeMs * 1000L))
+      {
+        this.kTv = true;
+        Log.i(this.TAG, "sawInputEOS");
+      }
+      localObject2 = this.kSN;
+      if (localObject2 == null) {
+        p.iCn();
+      }
+      if (!this.kTv) {
+        break label490;
+      }
+    }
+    label490:
+    for (j = 4;; j = 0)
+    {
+      ((aa)localObject2).a(i, k, l2, j);
+      for (;;)
+      {
+        bool = aUv();
+        Log.i(this.TAG, "inputDecoder cost " + Util.ticksToNow(l1));
+        if (!bool) {
+          break;
+        }
+        Log.i(this.TAG, "drainDecoder eos");
+        AppMethodBeat.o(93545);
+        return true;
+        Log.w(this.TAG, "input buffer not available");
+      }
+      boolean bool = this.kTv;
+      AppMethodBeat.o(93545);
+      return bool;
+    }
+  }
+  
+  private final boolean aUv()
+  {
+    AppMethodBeat.i(93546);
+    for (;;)
+    {
+      try
+      {
+        Log.i(this.TAG, "drainDecoder");
+        synchronized (aUq())
+        {
+          if (this.isFinished) {
+            Log.i(this.TAG, "drainDecoder already finished");
+          }
+          x localx = x.aazN;
+          ??? = this.kSN;
+          if (??? == null) {
+            p.iCn();
+          }
+          i = ((aa)???).a(this.bufferInfo, 100L);
+          if (i == -1)
+          {
+            Log.i(this.TAG, "no output from decoder available, break");
+            AppMethodBeat.o(93546);
+            return false;
+          }
+        }
+        if (i != -3) {
+          break label177;
+        }
+      }
+      catch (Exception localException1)
+      {
+        Log.printErrStackTrace(this.TAG, (Throwable)localException1, "drainDecoder error", new Object[0]);
+        if (this.kTl)
+        {
+          localObject2 = com.tencent.mm.media.k.f.laB;
+          com.tencent.mm.media.k.f.aXo();
+        }
+        AppMethodBeat.o(93546);
+        return false;
+      }
+      Log.i(this.TAG, "decoder output buffers changed");
+      continue;
+      label177:
+      if (i == -2)
+      {
+        localObject2 = this.kSN;
+        if (localObject2 == null) {
+          p.iCn();
+        }
+        this.mediaFormat = ((aa)localObject2).avi();
+        Log.i(this.TAG, "decoder output format changed: " + this.mediaFormat);
+        localObject2 = this.mediaFormat;
+        if (localObject2 != null)
+        {
+          b localb = this.kTe;
+          if (localb != null) {
+            localb.invoke(localObject2);
+          }
+        }
+      }
+      else if (i < 0)
+      {
+        Log.w(this.TAG, "unexpected result from decoder.dequeueOutputBuffer: ".concat(String.valueOf(i)));
+      }
+      else
+      {
+        long l = this.bufferInfo.presentationTimeUs;
+        Log.i(this.TAG, "presentationTimeUs : ".concat(String.valueOf(l)));
+        if ((l < this.startTimeMs * 1000L) && ((this.bufferInfo.flags & 0x4) == 0))
+        {
+          localObject2 = this.kSN;
+          if (localObject2 == null) {
+            p.iCn();
+          }
+          ((aa)localObject2).releaseOutputBuffer(i, false);
+          Log.i(this.TAG, "decoder pts: " + l + ", not reach start: " + this.startTimeMs * 1000L);
+          AppMethodBeat.o(93546);
+          return false;
+        }
+        if (this.bufferInfo.size != 0)
+        {
+          a(i, this.bufferInfo);
+          if ((this.endTimeMs * 1000L != 1L) && (l >= this.endTimeMs * 1000L))
+          {
+            Log.e(this.TAG, "exceed endTimeMs");
+            AppMethodBeat.o(93546);
+            return true;
+          }
+          i = this.bufferInfo.flags;
+          if ((i & 0x4) == 0) {}
+        }
+      }
+      try
+      {
+        localObject2 = this.kSN;
+        if (localObject2 == null) {
+          p.iCn();
+        }
+        ((aa)localObject2).stop();
+        localObject2 = this.kSN;
+        if (localObject2 == null) {
+          p.iCn();
+        }
+        ((aa)localObject2).release();
+      }
+      catch (Exception localException2)
+      {
+        label527:
+        int j;
+        break label527;
+      }
+      AppMethodBeat.o(93546);
+      return true;
+      AppMethodBeat.o(93546);
+      return false;
+      Object localObject2 = this.kSN;
+      if (localObject2 == null) {
+        p.iCn();
+      }
+      ((aa)localObject2).releaseOutputBuffer(i, false);
+      localObject2 = this.kSN;
+      if (localObject2 == null) {
+        p.iCn();
+      }
+      j = ((aa)localObject2).a(this.bufferInfo, 100L);
+      int i = j;
+      if (j >= 0) {}
     }
   }
   
   public final void startDecode()
   {
-    AppMethodBeat.i(93553);
+    AppMethodBeat.i(93544);
+    while (!aUu()) {}
+    Log.i(this.TAG, "inputDecoder end");
     try
     {
-      z localz = this.iec;
-      if (localz == null) {
-        p.hyc();
+      int i;
+      synchronized (aUq())
+      {
+        if (this.isFinished) {
+          Log.i(this.TAG, "drainDecoder already finished");
+        }
+        Object localObject3 = x.aazN;
+        Log.i(this.TAG, "sendDecoderEOS");
+        ??? = this.kSN;
+        if (??? == null) {
+          p.iCn();
+        }
+        ??? = ((aa)???).avj();
+        localObject3 = this.kSN;
+        if (localObject3 == null) {
+          p.iCn();
+        }
+        i = ((aa)localObject3).EX(60000L);
+        if (i < 0) {
+          if (!aUv())
+          {
+            localObject3 = this.kSN;
+            if (localObject3 == null) {
+              p.iCn();
+            }
+            i = ((aa)localObject3).EX(60000L);
+          }
+        }
       }
-      localz.start();
-      AppMethodBeat.o(93553);
+      Object localObject2;
+      com.tencent.mm.media.f.a locala;
+      long l;
       return;
     }
     catch (Exception localException)
     {
-      Log.printErrStackTrace(this.TAG, (Throwable)localException, "startDecode error", new Object[0]);
-      AppMethodBeat.o(93553);
+      Log.printErrStackTrace(this.TAG, (Throwable)localException, "sendDecoderEOS error", new Object[0]);
+      for (;;)
+      {
+        releaseDecoder();
+        localObject2 = this.kTd;
+        if (localObject2 == null) {
+          break;
+        }
+        ((kotlin.g.a.a)localObject2).invoke();
+        AppMethodBeat.o(93544);
+        return;
+        if (i >= 0)
+        {
+          localObject2 = localObject2[i];
+          ((ByteBuffer)localObject2).clear();
+          locala = aUp();
+          if (locala == null) {
+            p.iCn();
+          }
+          p.j(localObject2, "inputBuffer");
+          com.tencent.mm.media.f.a.a(locala, (ByteBuffer)localObject2);
+          l = aUp().getSampleTime();
+          ((ByteBuffer)localObject2).position(0);
+          if (i >= 0)
+          {
+            localObject2 = this.kSN;
+            if (localObject2 == null) {
+              p.iCn();
+            }
+            ((aa)localObject2).a(i, 0, l, 4);
+          }
+        }
+        aUv();
+      }
+      AppMethodBeat.o(93544);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/media/decoder/MediaCodecTransDecoderAsync$codecCallback$1", "Landroid/media/MediaCodec$Callback;", "onError", "", "codec", "Landroid/media/MediaCodec;", "e", "Landroid/media/MediaCodec$CodecException;", "onInputBufferAvailable", "index", "", "onOutputBufferAvailable", "decoderOutputBufferIndex", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "onOutputFormatChanged", "format", "Landroid/media/MediaFormat;", "plugin-mediaeditor_release"})
-  public static final class a
-    extends MediaCodec.Callback
-  {
-    a(com.tencent.mm.media.f.a parama) {}
-    
-    public final void onError(MediaCodec paramMediaCodec, MediaCodec.CodecException paramCodecException)
-    {
-      AppMethodBeat.i(93552);
-      p.h(paramMediaCodec, "codec");
-      p.h(paramCodecException, "e");
-      Log.e(this.ieS.TAG, "onError, codec:" + paramMediaCodec + ", " + paramCodecException.isRecoverable() + ' ' + paramCodecException.isTransient() + ' ' + paramCodecException.getDiagnosticInfo());
-      if (this.ieS.iex)
-      {
-        paramMediaCodec = e.ilC;
-        e.aOL();
-      }
-      if ((!paramCodecException.isRecoverable()) && (!paramCodecException.isTransient()))
-      {
-        paramMediaCodec = e.ilC;
-        e.aOM();
-        this.ieS.releaseDecoder();
-        paramMediaCodec = this.ieS.ier;
-        if (paramMediaCodec != null)
-        {
-          paramMediaCodec.invoke();
-          AppMethodBeat.o(93552);
-          return;
-        }
-      }
-      AppMethodBeat.o(93552);
-    }
-    
-    public final void onInputBufferAvailable(MediaCodec paramMediaCodec, int paramInt)
-    {
-      AppMethodBeat.i(93550);
-      p.h(paramMediaCodec, "codec");
-      Log.i(this.ieS.TAG, "onInputBufferAvailable, index:".concat(String.valueOf(paramInt)));
-      if (paramInt >= 0)
-      {
-        try
-        {
-          paramMediaCodec = paramMediaCodec.getInputBuffer(paramInt);
-          if (paramMediaCodec != null) {
-            break label105;
-          }
-          paramMediaCodec = new t("null cannot be cast to non-null type java.nio.ByteBuffer");
-          AppMethodBeat.o(93550);
-          throw paramMediaCodec;
-        }
-        catch (Exception paramMediaCodec)
-        {
-          Log.printErrStackTrace(this.ieS.TAG, (Throwable)paramMediaCodec, "onInputBufferAvailable error", new Object[0]);
-          if (this.ieS.iex)
-          {
-            paramMediaCodec = e.ilC;
-            e.aOK();
-          }
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(93550);
-        return;
-      }
-      label105:
-      paramMediaCodec.clear();
-      if (com.tencent.mm.media.f.a.a(parama, paramMediaCodec))
-      {
-        long l = parama.getSampleTime();
-        int i = parama.sampleSize;
-        Log.i(this.ieS.TAG, "input sampleTime:" + l + ", sampleSize:" + i);
-        paramMediaCodec.position(0);
-        paramMediaCodec = this.ieS.iec;
-        if (paramMediaCodec == null) {
-          p.hyc();
-        }
-        paramMediaCodec.a(paramInt, i, l, 0);
-        AppMethodBeat.o(93550);
-        return;
-      }
-      Log.i(this.ieS.TAG, "read sample end");
-      this.ieS.ieI = true;
-      paramMediaCodec = this.ieS.iec;
-      if (paramMediaCodec == null) {
-        p.hyc();
-      }
-      paramMediaCodec.a(paramInt, 0, 0L, 4);
-      AppMethodBeat.o(93550);
-    }
-    
-    public final void onOutputBufferAvailable(MediaCodec paramMediaCodec, int paramInt, MediaCodec.BufferInfo paramBufferInfo)
-    {
-      AppMethodBeat.i(93549);
-      p.h(paramMediaCodec, "codec");
-      p.h(paramBufferInfo, "bufferInfo");
-      Log.i(this.ieS.TAG, "onOutputBufferAvailable, index:" + paramInt + ", bufferInfo:" + paramBufferInfo + " size:" + paramBufferInfo.size + ", isFinished:" + this.ieS.isFinished);
-      if (paramInt >= 0)
-      {
-        do
-        {
-          try
-          {
-            long l = paramBufferInfo.presentationTimeUs;
-            Log.i(this.ieS.TAG, "presentationTimeUs : ".concat(String.valueOf(l)));
-            if ((l < this.ieS.startTimeMs * 1000L) && ((paramBufferInfo.flags & 0x4) == 0))
-            {
-              paramMediaCodec = this.ieS.iec;
-              if (paramMediaCodec == null) {
-                p.hyc();
-              }
-              paramMediaCodec.releaseOutputBuffer(paramInt, false);
-              Log.i(this.ieS.TAG, "decoder pts: " + l + ", not reach start: " + this.ieS.startTimeMs * 1000L);
-              AppMethodBeat.o(93549);
-              return;
-            }
-            this.ieS.a(paramInt, paramBufferInfo);
-            if ((this.ieS.endTimeMs * 1000L != 1L) && (l >= this.ieS.endTimeMs * 1000L))
-            {
-              Log.e(this.ieS.TAG, "exceed endTimeMs");
-              j.a(this.ieS);
-              this.ieS.releaseDecoder();
-              AppMethodBeat.o(93549);
-              return;
-            }
-          }
-          catch (Exception paramMediaCodec)
-          {
-            Log.printErrStackTrace(this.ieS.TAG, (Throwable)paramMediaCodec, "onOutputBufferAvailable error", new Object[0]);
-            if (this.ieS.iex)
-            {
-              paramMediaCodec = e.ilC;
-              e.aOK();
-            }
-            AppMethodBeat.o(93549);
-            return;
-          }
-        } while (((paramBufferInfo.flags & 0x4) == 0) && (!this.ieS.ieI));
-        Log.i(this.ieS.TAG, "receive eos!");
-        j.a(this.ieS);
-        this.ieS.releaseDecoder();
-        AppMethodBeat.o(93549);
-        return;
-      }
-      paramMediaCodec = this.ieS.iec;
-      if (paramMediaCodec == null) {
-        p.hyc();
-      }
-      paramMediaCodec.releaseOutputBuffer(paramInt, false);
-      AppMethodBeat.o(93549);
-    }
-    
-    public final void onOutputFormatChanged(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
-    {
-      AppMethodBeat.i(93551);
-      p.h(paramMediaCodec, "codec");
-      p.h(paramMediaFormat, "format");
-      this.ieS.mediaFormat = paramMediaFormat;
-      Log.i(this.ieS.TAG, "decoder output format changed: " + this.ieS.mediaFormat);
-      paramMediaCodec = this.ieS.mediaFormat;
-      if (paramMediaCodec != null)
-      {
-        paramMediaFormat = this.ieS.ieq;
-        if (paramMediaFormat != null)
-        {
-          paramMediaFormat.invoke(paramMediaCodec);
-          AppMethodBeat.o(93551);
-          return;
-        }
-        AppMethodBeat.o(93551);
-        return;
-      }
-      AppMethodBeat.o(93551);
-    }
-  }
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/decoder/MediaCodecTransDecoder$Companion;", "", "()V", "DECODE_TIMEOUT", "", "TIMEOUT", "plugin-mediaeditor_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.media.d.j
  * JD-Core Version:    0.7.0.1
  */

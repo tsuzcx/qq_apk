@@ -3,14 +3,20 @@ package com.tencent.mm.plugin.label.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.label.a.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -22,19 +28,36 @@ import com.tencent.mm.ui.MMActivity;
 public class ContactLabelMemberListUI
   extends MMActivity
 {
+  private MStorageEx.IOnStorageChange EdW;
+  private ListView Een;
+  private a Eeo;
+  private String Eep;
+  private String Eeq;
   private MMHandler mHandler;
-  private TextView oMM;
-  private MStorageEx.IOnStorageChange yCE;
-  private ListView yCT;
-  private a yCU;
-  private String yCV;
-  private String yCW;
+  private TextView rOI;
   
   public ContactLabelMemberListUI()
   {
     AppMethodBeat.i(26266);
-    this.mHandler = new ContactLabelMemberListUI.1(this);
-    this.yCE = new MStorageEx.IOnStorageChange()
+    this.mHandler = new MMHandler()
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(26261);
+        int i = paramAnonymousMessage.what;
+        Log.d("MicroMsg.Label.ContactLabelMemberListUI", "handleMessage:%d", new Object[] { Integer.valueOf(i) });
+        switch (i)
+        {
+        default: 
+          Log.w("MicroMsg.Label.ContactLabelMemberListUI", "[cpan] unknow msg.");
+          AppMethodBeat.o(26261);
+          return;
+        }
+        ContactLabelMemberListUI.a(ContactLabelMemberListUI.this);
+        AppMethodBeat.o(26261);
+      }
+    };
+    this.EdW = new MStorageEx.IOnStorageChange()
     {
       public final void onNotifyChange(int paramAnonymousInt, MStorageEx paramAnonymousMStorageEx, Object paramAnonymousObject)
       {
@@ -51,24 +74,24 @@ public class ContactLabelMemberListUI
     AppMethodBeat.o(26266);
   }
   
-  private void eco()
+  private void eLm()
   {
     AppMethodBeat.i(26272);
-    if (this.yCU != null)
+    if (this.Eeo != null)
     {
-      this.yCU.yCP = com.tencent.mm.plugin.label.a.a.ecg().aCK(this.yCV);
-      this.yCU.onNotifyChange(null, null);
+      this.Eeo.Eej = com.tencent.mm.plugin.label.a.a.eLe().aMR(this.Eep);
+      this.Eeo.onNotifyChange(null, null);
     }
-    this.yCW = com.tencent.mm.plugin.label.a.a.ecg().aCG(this.yCV);
-    if (!Util.isNullOrNil(this.yCW)) {
-      setMMTitle(this.yCW);
+    this.Eeq = com.tencent.mm.plugin.label.a.a.eLe().aMN(this.Eep);
+    if (!Util.isNullOrNil(this.Eeq)) {
+      setMMTitle(this.Eeq);
     }
     AppMethodBeat.o(26272);
   }
   
   public int getLayoutId()
   {
-    return 2131493780;
+    return R.i.efx;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -88,7 +111,7 @@ public class ContactLabelMemberListUI
       AppMethodBeat.o(26271);
       return;
     }
-    eco();
+    eLm();
     AppMethodBeat.o(26271);
   }
   
@@ -96,10 +119,19 @@ public class ContactLabelMemberListUI
   {
     AppMethodBeat.i(26267);
     super.onCreate(paramBundle);
-    this.yCV = getIntent().getStringExtra("label_id");
-    this.yCW = getIntent().getStringExtra("label_name");
-    setBackBtn(new ContactLabelMemberListUI.3(this));
-    addTextOptionMenu(0, getString(2131762120), new MenuItem.OnMenuItemClickListener()
+    this.Eep = getIntent().getStringExtra("label_id");
+    this.Eeq = getIntent().getStringExtra("label_name");
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(26263);
+        ContactLabelMemberListUI.this.finish();
+        AppMethodBeat.o(26263);
+        return false;
+      }
+    });
+    addTextOptionMenu(0, getString(R.l.eKA), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
@@ -113,28 +145,43 @@ public class ContactLabelMemberListUI
         return false;
       }
     });
-    setMMTitle(this.yCW);
-    this.yCT = ((ListView)findViewById(2131299108));
-    this.oMM = ((TextView)findViewById(2131300076));
-    if (Util.isNullOrNil(this.yCV))
+    setMMTitle(this.Eeq);
+    this.Een = ((ListView)findViewById(R.h.dBN));
+    this.rOI = ((TextView)findViewById(R.h.empty));
+    if (Util.isNullOrNil(this.Eep))
     {
       Log.e("MicroMsg.Label.ContactLabelMemberListUI", "[cpan] inite view");
       finish();
     }
-    this.yCU = new a(getContext());
-    this.yCT.setAdapter(this.yCU);
-    this.yCT.setOnItemClickListener(new ContactLabelMemberListUI.5(this));
-    this.yCT.setEmptyView(this.oMM);
+    this.Eeo = new a(getContext());
+    this.Een.setAdapter(this.Eeo);
+    this.Een.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    {
+      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(26265);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bn(paramAnonymousAdapterView);
+        localb.bn(paramAnonymousView);
+        localb.sg(paramAnonymousInt);
+        localb.Fs(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/label/ui/ContactLabelMemberListUI$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+        ContactLabelMemberListUI.a(ContactLabelMemberListUI.this, paramAnonymousInt);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/label/ui/ContactLabelMemberListUI$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+        AppMethodBeat.o(26265);
+      }
+    });
+    this.Een.setEmptyView(this.rOI);
     AppMethodBeat.o(26267);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(26270);
-    if (this.yCU != null)
+    if (this.Eeo != null)
     {
-      this.yCU.ebf();
-      this.yCU.gGV();
+      this.Eeo.eKd();
+      this.Eeo.hFC();
     }
     super.onDestroy();
     AppMethodBeat.o(26270);
@@ -143,8 +190,8 @@ public class ContactLabelMemberListUI
   public void onPause()
   {
     AppMethodBeat.i(26269);
-    bg.aVF();
-    c.aSN().remove(this.yCE);
+    bh.beI();
+    c.bbL().remove(this.EdW);
     super.onPause();
     AppMethodBeat.o(26269);
   }
@@ -152,10 +199,10 @@ public class ContactLabelMemberListUI
   public void onResume()
   {
     AppMethodBeat.i(26268);
-    bg.aVF();
-    c.aSN().add(this.yCE);
+    bh.beI();
+    c.bbL().add(this.EdW);
     super.onResume();
-    eco();
+    eLm();
     AppMethodBeat.o(26268);
   }
   
@@ -167,7 +214,7 @@ public class ContactLabelMemberListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.label.ui.ContactLabelMemberListUI
  * JD-Core Version:    0.7.0.1
  */

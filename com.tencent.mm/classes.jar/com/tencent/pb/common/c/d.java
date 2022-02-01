@@ -4,20 +4,20 @@ public abstract class d<T>
 {
   private T mInstance;
   
+  protected abstract T fjA();
+  
   public final T get()
   {
     try
     {
       if (this.mInstance == null) {
-        this.mInstance = oR();
+        this.mInstance = fjA();
       }
       Object localObject1 = this.mInstance;
       return localObject1;
     }
     finally {}
   }
-  
-  protected abstract T oR();
 }
 
 

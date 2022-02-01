@@ -1,108 +1,149 @@
 package com.tencent.mm.plugin.sns.ui.item;
 
-import android.support.constraint.Guideline;
-import android.text.TextUtils;
-import android.util.Pair;
+import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsns.n;
-import com.tencent.mm.plugin.i.a.aj;
-import com.tencent.mm.plugin.sns.ui.bk;
-import com.tencent.mm.plugin.sns.ui.bl;
-import com.tencent.mm.plugin.sns.ui.br;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.sns.i.c;
+import com.tencent.mm.plugin.sns.i.e;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.mm.plugin.sns.ui.AsyncTextView;
+import com.tencent.mm.plugin.sns.ui.PhotosContent;
+import com.tencent.mm.plugin.sns.ui.TagImageView;
+import com.tencent.mm.plugin.sns.ui.be;
+import com.tencent.mm.plugin.sns.ui.bg;
+import com.tencent.mm.plugin.sns.ui.bm;
+import com.tencent.mm.plugin.sns.ui.bn;
 import com.tencent.mm.plugin.sns.ui.d.c;
-import com.tencent.mm.plugin.sns.ui.view.ImageIndicatorView;
+import com.tencent.mm.protocal.protobuf.SnsObject;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.adp;
-import com.tencent.mm.protocal.protobuf.cok;
-import com.tencent.mm.protocal.protobuf.col;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.widget.b.a;
-import java.util.LinkedList;
+import com.tencent.mm.protocal.protobuf.cvu;
+import com.tencent.mm.protocal.protobuf.ekr;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.bp;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class i
   extends BaseTimeLineItem
 {
-  public final void a(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder, int paramInt1, bl parambl, TimeLineObject paramTimeLineObject, int paramInt2, bk parambk)
+  private int KPj = 103;
+  
+  public final void a(ViewStub paramViewStub, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
-    AppMethodBeat.i(203929);
-    if ((paramTimeLineObject != null) && (paramTimeLineObject.ContentObj != null) && (paramTimeLineObject.ContentObj.Lpd != null))
+    AppMethodBeat.i(199267);
+    paramBaseViewHolder.Lld.setImageResource(i.e.lucky_friendactivity_comment_icon);
+    paramBaseViewHolder.LkL.setTextColor(paramBaseViewHolder.LkL.getContext().getResources().getColor(i.c.red_text_color));
+    if (paramBaseViewHolder.LkR != null)
     {
-      paramBaseViewHolder = (a)paramBaseViewHolder;
-      parambl = paramTimeLineObject.ContentObj.Lpd;
-      if (!Util.isNullOrNil(parambl.mediaList))
-      {
-        parambl = (cok)parambl.mediaList.get(0);
-        if (parambl != null)
-        {
-          paramBaseViewHolder.EpU.setVisibility(0);
-          paramBaseViewHolder.EYx.setVisibility(8);
-          paramBaseViewHolder.EYw.setGuidelineEnd(0);
-          Pair localPair = n.a((int)parambl.width, (int)parambl.height, paramBaseViewHolder.EYm.getContext(), false);
-          paramInt1 = ((Integer)localPair.first).intValue();
-          paramInt2 = ((Integer)localPair.second).intValue();
-          paramBaseViewHolder.EYm.getLayoutParams().width = paramInt1;
-          paramBaseViewHolder.EYm.getLayoutParams().height = paramInt2;
-          paramBaseViewHolder.EYm.requestLayout();
-          if (TextUtils.isEmpty(parambl.coverUrl)) {
-            break label261;
-          }
-          ((aj)g.ah(aj.class)).loadImage(parambl.coverUrl, paramBaseViewHolder.tiQ);
-        }
+      paramBaseViewHolder.LkR.setLayoutResource(i.g.sns_hb_reward_item);
+      if (!paramBaseViewHolder.LkS) {
+        paramBaseViewHolder.Lll = ((PhotosContent)paramBaseViewHolder.LkR.inflate());
       }
     }
+    for (paramBaseViewHolder.LkS = true;; paramBaseViewHolder.LkS = true)
+    {
+      Log.i("MiroMsg.HBRewardTimeLineItem", "viewtype " + this.viewType);
+      paramViewStub = (TagImageView)paramBaseViewHolder.Lll.findViewById(bg.KUt[0]);
+      paramBaseViewHolder.Lll.a(paramViewStub);
+      paramViewStub.setOnClickListener(this.Kee.Kdz.KEA);
+      AppMethodBeat.o(199267);
+      return;
+      paramBaseViewHolder.Lll = ((PhotosContent)paramBaseViewHolder.convertView.findViewById(i.f.hb_content_rl));
+    }
+  }
+  
+  public final void a(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder, int paramInt1, bn parambn, TimeLineObject paramTimeLineObject, int paramInt2, bm parambm)
+  {
+    AppMethodBeat.i(100086);
+    Object localObject = parambn.KDB;
+    if (paramBaseViewHolder.LlP != null)
+    {
+      if ((!parambn.LbC) || (paramBaseViewHolder.snsobj.SnsRedEnvelops == null) || (paramBaseViewHolder.snsobj.SnsRedEnvelops.Umy <= 0)) {
+        break label248;
+      }
+      paramBaseViewHolder.LlP.setBackgroundResource(i.e.friendactivity_comment_detail_list_golden_myself);
+    }
+    int i;
+    boolean bool;
     for (;;)
     {
-      paramBaseViewHolder.EYm.setTag(paramTimeLineObject);
-      paramBaseViewHolder.EYm.setOnClickListener(parambk.EBo.ERd);
-      parambk.fiV().c(paramBaseViewHolder.EYm, parambk.DQs.FaN, parambk.DQs.Far);
-      AppMethodBeat.o(203929);
-      return;
-      label261:
-      ((aj)g.ah(aj.class)).loadImage(parambl.thumbUrl, paramBaseViewHolder.tiQ);
-    }
-  }
-  
-  public final void d(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
-  {
-    AppMethodBeat.i(203928);
-    paramBaseViewHolder = (a)paramBaseViewHolder;
-    if ((paramBaseViewHolder.EWD != null) && (paramBaseViewHolder.EWD.getParent() != null))
-    {
-      paramBaseViewHolder.EWD.setLayoutResource(2131496437);
-      if (!paramBaseViewHolder.EYl) {
-        paramBaseViewHolder.EYm = paramBaseViewHolder.EWD.inflate();
+      TagImageView localTagImageView = paramBaseViewHolder.Lll.agW(0);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(localTagImageView);
+      be localbe = new be();
+      localbe.fCM = ((String)localObject);
+      localbe.index = 0;
+      localbe.KRL = localArrayList;
+      localbe.KOn = this.KOn;
+      if (localTagImageView != null) {
+        localTagImageView.setTag(localbe);
       }
-    }
-    for (paramBaseViewHolder.EYl = true;; paramBaseViewHolder.EYl = true)
-    {
-      paramBaseViewHolder.EpU = ((ImageView)paramBaseViewHolder.EYm.findViewById(2131308126));
-      paramBaseViewHolder.EYx = ((ImageIndicatorView)paramBaseViewHolder.EYm.findViewById(2131308124));
-      paramBaseViewHolder.tiQ = ((ImageView)paramBaseViewHolder.EYm.findViewById(2131308127));
-      paramBaseViewHolder.EYw = ((Guideline)paramBaseViewHolder.EYm.findViewById(2131308125));
-      AppMethodBeat.o(203928);
+      localObject = parambn.Lcd;
+      paramBaseViewHolder.postInfo = ((cvu)localObject);
+      if (localObject == null) {
+        break label468;
+      }
+      if (!z.bcZ().equals(paramTimeLineObject.UserName)) {
+        break;
+      }
+      paramBaseViewHolder.Lll.setVisibility(0);
+      parambm = parambm.KOW;
+      paramBaseViewHolder = paramBaseViewHolder.Lll;
+      parambn = parambn.KDB;
+      i = this.mActivity.hashCode();
+      bool = this.KOn;
+      localObject = bp.hzh();
+      ((bp)localObject).time = paramTimeLineObject.CreateTime;
+      parambm.a(paramBaseViewHolder, paramTimeLineObject, parambn, i, paramInt2, paramInt1, bool, (bp)localObject, true);
+      AppMethodBeat.o(100086);
       return;
-      paramBaseViewHolder.EYm = paramBaseViewHolder.convertView.findViewById(2131308123);
+      label248:
+      paramBaseViewHolder.LlP.setBackgroundResource(i.e.friendactivity_comment_detail_list_golden_arror);
     }
-  }
-  
-  public static class a
-    extends BaseTimeLineItem.BaseViewHolder
-  {
-    boolean EYl = false;
-    View EYm;
-    Guideline EYw;
-    ImageIndicatorView EYx;
-    ImageView EpU;
-    ImageView tiQ;
+    if (parambn.LbF)
+    {
+      paramBaseViewHolder.Lll.setVisibility(0);
+      parambm = parambm.KOW;
+      paramBaseViewHolder = paramBaseViewHolder.Lll;
+      parambn = parambn.KDB;
+      i = this.mActivity.hashCode();
+      bool = this.KOn;
+      localObject = bp.hzh();
+      ((bp)localObject).time = paramTimeLineObject.CreateTime;
+      parambm.a(paramBaseViewHolder, paramTimeLineObject, parambn, i, paramInt2, paramInt1, bool, (bp)localObject, false);
+      AppMethodBeat.o(100086);
+      return;
+    }
+    if (((cvu)localObject).gbp == 0)
+    {
+      paramBaseViewHolder.Lll.setVisibility(0);
+      parambm = parambm.KOW;
+      paramBaseViewHolder = paramBaseViewHolder.Lll;
+      parambn = parambn.KDB;
+      i = this.mActivity.hashCode();
+      bool = this.KOn;
+      localObject = bp.hzh();
+      ((bp)localObject).time = paramTimeLineObject.CreateTime;
+      parambm.a(paramBaseViewHolder, paramTimeLineObject, parambn, i, paramInt2, paramInt1, bool, (bp)localObject, true);
+      AppMethodBeat.o(100086);
+      return;
+    }
+    Log.e("MiroMsg.HBRewardTimeLineItem", "mediaPostInfo.hbStatus is " + ((cvu)localObject).gbp);
+    AppMethodBeat.o(100086);
+    return;
+    label468:
+    Log.e("MiroMsg.HBRewardTimeLineItem", "mediaPostInfo is null " + parambn.KDB);
+    AppMethodBeat.o(100086);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.item.i
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.appbrand.u;
 
 import android.webkit.JavascriptInterface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.s;
 import com.tencent.mm.plugin.appbrand.u.a.b.a;
 import com.tencent.mm.plugin.appbrand.u.a.e.a;
+import com.tencent.mm.plugin.appbrand.v;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,10 +15,10 @@ import java.util.concurrent.ConcurrentHashMap;
 public class d
   implements b.a, e.a
 {
-  private final s kAr;
-  private final com.tencent.mm.plugin.appbrand.m.i lxm;
-  private final Map<Integer, Integer> njU;
-  private final e njV;
+  private final v ntA;
+  private final com.tencent.mm.plugin.appbrand.m.i orZ;
+  private final Map<Integer, Integer> qls;
+  private final e qlt;
   
   static
   {
@@ -32,21 +32,21 @@ public class d
     }
   }
   
-  public d(s params, com.tencent.mm.plugin.appbrand.m.i parami)
+  public d(v paramv, com.tencent.mm.plugin.appbrand.m.i parami)
   {
     AppMethodBeat.i(147370);
-    this.kAr = params;
-    this.lxm = parami;
+    this.ntA = paramv;
+    this.orZ = parami;
     parami = new e();
-    parami.a(new com.tencent.mm.plugin.appbrand.u.d.a(this, params));
-    parami.a(new com.tencent.mm.plugin.appbrand.u.d.c(this, params));
-    parami.a(new com.tencent.mm.plugin.appbrand.u.d.b(this, params));
-    this.njV = parami;
-    this.njU = new ConcurrentHashMap();
+    parami.a(new com.tencent.mm.plugin.appbrand.u.d.a(this, paramv));
+    parami.a(new com.tencent.mm.plugin.appbrand.u.d.c(this, paramv));
+    parami.a(new com.tencent.mm.plugin.appbrand.u.d.b(this, paramv));
+    this.qlt = parami;
+    this.qls = new ConcurrentHashMap();
     AppMethodBeat.o(147370);
   }
   
-  public final void ap(int paramInt, String paramString)
+  public final void ar(int paramInt, String paramString)
   {
     AppMethodBeat.i(147373);
     if (paramInt <= 0)
@@ -55,28 +55,28 @@ public class d
       return;
     }
     paramString = String.format("typeof gNodeController != 'undefined' && gNodeController.javaResp(%d, %s);", new Object[] { Integer.valueOf(paramInt), paramString });
-    this.lxm.evaluateJavascript(paramString, null);
+    this.orZ.evaluateJavascript(paramString, null);
     AppMethodBeat.o(147373);
   }
   
-  public final void bPS()
+  public final void ccA()
   {
     AppMethodBeat.i(147371);
     Log.i("MicroMsg.NodeJavaBroker", "shutdown");
-    Iterator localIterator = this.njU.entrySet().iterator();
+    Iterator localIterator = this.qls.entrySet().iterator();
     while (localIterator.hasNext()) {
       unListen(((Integer)((Map.Entry)localIterator.next()).getKey()).intValue());
     }
-    this.njU.clear();
+    this.qls.clear();
     AppMethodBeat.o(147371);
   }
   
-  public final void f(int paramInt, Map<String, Object> paramMap)
+  public final void e(int paramInt, Map<String, Object> paramMap)
   {
     AppMethodBeat.i(147377);
-    com.tencent.luggage.h.e.m(paramMap);
-    paramMap = String.format("typeof gNodeController != 'undefined' && gNodeController.javaOnTrigger(%d, %s);", new Object[] { Integer.valueOf(paramInt), new com.tencent.mm.ab.i(paramMap).toString() });
-    this.lxm.evaluateJavascript(paramMap, null);
+    com.tencent.luggage.k.e.e(paramMap);
+    paramMap = String.format("typeof gNodeController != 'undefined' && gNodeController.javaOnTrigger(%d, %s);", new Object[] { Integer.valueOf(paramInt), new com.tencent.mm.ad.i(paramMap).toString() });
+    this.orZ.evaluateJavascript(paramMap, null);
     AppMethodBeat.o(147377);
   }
   
@@ -84,15 +84,15 @@ public class d
   public void listen(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(147375);
-    com.tencent.mm.plugin.appbrand.u.a.e locale = this.njV.yG(paramInt1);
+    com.tencent.mm.plugin.appbrand.u.a.e locale = this.qlt.Cj(paramInt1);
     if (locale == null)
     {
       Log.e("MicroMsg.NodeJavaBroker", "listen listenerProxy null");
       AppMethodBeat.o(147375);
       return;
     }
-    locale.listen(paramInt2);
-    this.njU.put(Integer.valueOf(paramInt2), Integer.valueOf(paramInt1));
+    locale.Cl(paramInt2);
+    this.qls.put(Integer.valueOf(paramInt2), Integer.valueOf(paramInt1));
     AppMethodBeat.o(147375);
   }
   
@@ -101,7 +101,7 @@ public class d
   {
     AppMethodBeat.i(147372);
     Log.v("MicroMsg.NodeJavaBroker", "req: cmd:%d args:%s respId:%d", new Object[] { Integer.valueOf(paramInt1), paramString, Integer.valueOf(paramInt2) });
-    com.tencent.mm.plugin.appbrand.u.a.a locala = b.yF(paramInt1);
+    com.tencent.mm.plugin.appbrand.u.a.a locala = b.Ci(paramInt1);
     if ((!$assertionsDisabled) && (locala == null))
     {
       paramString = new AssertionError();
@@ -114,12 +114,12 @@ public class d
       AppMethodBeat.o(147372);
       throw paramString;
     }
-    paramString = new com.tencent.f.i.h()
+    paramString = new com.tencent.e.i.h()
     {
       public final String getKey()
       {
         AppMethodBeat.i(177511);
-        String str = "MicroMsg.NodeJavaBroker~CMD~" + this.njX.bPT();
+        String str = "MicroMsg.NodeJavaBroker~CMD~" + this.qlv.ccB();
         AppMethodBeat.o(177511);
         return str;
       }
@@ -128,11 +128,11 @@ public class d
       {
         AppMethodBeat.i(147369);
         com.tencent.mm.plugin.appbrand.u.a.c localc = new com.tencent.mm.plugin.appbrand.u.a.c(d.a(d.this), paramInt2, d.this);
-        this.njX.a(paramString, localc);
+        this.qlv.a(paramString, localc);
         AppMethodBeat.o(147369);
       }
     };
-    com.tencent.f.h.RTc.aX(paramString);
+    com.tencent.e.h.ZvG.be(paramString);
     AppMethodBeat.o(147372);
   }
   
@@ -141,7 +141,7 @@ public class d
   {
     AppMethodBeat.i(147374);
     Log.v("MicroMsg.NodeJavaBroker", "reqSync: cmd:%d args:%s", new Object[] { Integer.valueOf(paramInt), paramString });
-    com.tencent.mm.plugin.appbrand.u.a.a locala = b.yF(paramInt);
+    com.tencent.mm.plugin.appbrand.u.a.a locala = b.Ci(paramInt);
     if ((!$assertionsDisabled) && (locala == null))
     {
       paramString = new AssertionError();
@@ -154,7 +154,7 @@ public class d
       AppMethodBeat.o(147374);
       throw paramString;
     }
-    paramString = ((com.tencent.mm.plugin.appbrand.u.a.d)locala).a(paramString, new com.tencent.mm.plugin.appbrand.u.a.c(this.kAr));
+    paramString = ((com.tencent.mm.plugin.appbrand.u.a.d)locala).a(paramString, new com.tencent.mm.plugin.appbrand.u.a.c(this.ntA));
     AppMethodBeat.o(147374);
     return paramString;
   }
@@ -163,7 +163,7 @@ public class d
   public void unListen(int paramInt)
   {
     AppMethodBeat.i(147376);
-    Object localObject = (Integer)this.njU.get(Integer.valueOf(paramInt));
+    Object localObject = (Integer)this.qls.get(Integer.valueOf(paramInt));
     if (localObject == null)
     {
       AppMethodBeat.o(147376);
@@ -171,7 +171,7 @@ public class d
     }
     int i = ((Integer)localObject).intValue();
     Log.v("MicroMsg.NodeJavaBroker", "unListen: listenerType:%d listenerId:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
-    localObject = this.njV.yG(i);
+    localObject = this.qlt.Cj(i);
     if (localObject == null)
     {
       Log.e("MicroMsg.NodeJavaBroker", "unListen listenerProxy null");
@@ -179,13 +179,13 @@ public class d
       return;
     }
     ((com.tencent.mm.plugin.appbrand.u.a.e)localObject).unListen(paramInt);
-    this.njU.remove(Integer.valueOf(paramInt));
+    this.qls.remove(Integer.valueOf(paramInt));
     AppMethodBeat.o(147376);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.u.d
  * JD-Core Version:    0.7.0.1
  */

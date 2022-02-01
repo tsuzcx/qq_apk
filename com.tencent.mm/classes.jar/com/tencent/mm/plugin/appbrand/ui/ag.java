@@ -1,66 +1,31 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import com.tencent.luggage.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.c;
+import com.tencent.mm.ipcinvoker.type.IPCBoolean;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/IMenuButtonLayoutPropertiesProvider;", "Lcom/tencent/luggage/base/ICustomize;", "getExpectedPadding", "Lcom/tencent/mm/plugin/appbrand/ui/IMenuButtonLayoutPropertiesProvider$Padding;", "getExpectedSize", "Lcom/tencent/mm/plugin/appbrand/ui/IMenuButtonLayoutPropertiesProvider$Size;", "Padding", "Size", "luggage-wxa-app_release"})
-public abstract interface ag
-  extends b
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/IPCCheckIfStartLoginUITask;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeCallbackOnceTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "()V", "checkIfNeedManualLogin", "", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Companion", "plugin-appbrand-integration_release"})
+final class ag
+  implements c<IPCVoid, IPCBoolean>
 {
-  public abstract a No();
+  @Deprecated
+  public static final a raB;
   
-  public abstract ag.b bXN();
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/IMenuButtonLayoutPropertiesProvider$Padding;", "", "left", "", "top", "right", "bottom", "(IIII)V", "getBottom", "()I", "getLeft", "getRight", "getTop", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "toString", "", "luggage-wxa-app_release"})
-  public static final class a
+  static
   {
-    public final int bottom;
-    public final int left;
-    public final int right;
-    public final int top;
-    
-    public a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-    {
-      this.left = paramInt1;
-      this.top = paramInt2;
-      this.right = paramInt3;
-      this.bottom = paramInt4;
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      if (this != paramObject)
-      {
-        if ((paramObject instanceof a))
-        {
-          paramObject = (a)paramObject;
-          if ((this.left != paramObject.left) || (this.top != paramObject.top) || (this.right != paramObject.right) || (this.bottom != paramObject.bottom)) {}
-        }
-      }
-      else {
-        return true;
-      }
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      return ((this.left * 31 + this.top) * 31 + this.right) * 31 + this.bottom;
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(135603);
-      String str = "Padding(left=" + this.left + ", top=" + this.top + ", right=" + this.right + ", bottom=" + this.bottom + ")";
-      AppMethodBeat.o(135603);
-      return str;
-    }
+    AppMethodBeat.i(276031);
+    raB = new a((byte)0);
+    AppMethodBeat.o(276031);
   }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/IPCCheckIfStartLoginUITask$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.ag
  * JD-Core Version:    0.7.0.1
  */

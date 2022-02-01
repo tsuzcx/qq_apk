@@ -5,14 +5,13 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.plugin.webview.d.n;
 import com.tencent.mm.plugin.webview.d.n.a;
 import com.tencent.mm.plugin.webview.model.u;
@@ -22,17 +21,17 @@ import com.tencent.mm.plugin.webview.stub.WebViewStubTempUI;
 import com.tencent.mm.plugin.webview.stub.f;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
 import com.tencent.mm.protocal.c;
-import com.tencent.mm.protocal.protobuf.cdw;
-import com.tencent.mm.protocal.protobuf.cdx;
-import com.tencent.mm.protocal.protobuf.cdy;
-import com.tencent.mm.protocal.protobuf.cdz;
-import com.tencent.mm.protocal.protobuf.cef;
-import com.tencent.mm.protocal.protobuf.ceg;
-import com.tencent.mm.protocal.protobuf.cei;
-import com.tencent.mm.protocal.protobuf.cej;
-import com.tencent.mm.protocal.protobuf.cel;
-import com.tencent.mm.protocal.protobuf.cey;
-import com.tencent.mm.protocal.protobuf.epn;
+import com.tencent.mm.protocal.protobuf.cmq;
+import com.tencent.mm.protocal.protobuf.cmr;
+import com.tencent.mm.protocal.protobuf.cms;
+import com.tencent.mm.protocal.protobuf.cmt;
+import com.tencent.mm.protocal.protobuf.cmz;
+import com.tencent.mm.protocal.protobuf.cna;
+import com.tencent.mm.protocal.protobuf.cnc;
+import com.tencent.mm.protocal.protobuf.cnd;
+import com.tencent.mm.protocal.protobuf.cnf;
+import com.tencent.mm.protocal.protobuf.cns;
+import com.tencent.mm.protocal.protobuf.ezy;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
@@ -45,20 +44,20 @@ import org.json.JSONObject;
 public final class a
   implements i
 {
-  private f ISw;
-  private final HashMap<String, d> IVk;
-  final int IXV;
-  private final HashMap<String, cdw> Jsn;
-  private final HashMap<String, String> Jso;
+  private f POP;
+  private final HashMap<String, d> PRA;
+  final int PUm;
+  private final HashMap<String, cmq> QpK;
+  private final HashMap<String, String> QpL;
   private Context context;
   
   public a(int paramInt)
   {
     AppMethodBeat.i(81013);
-    this.Jsn = new HashMap();
-    this.Jso = new HashMap();
-    this.IVk = new HashMap();
-    this.IXV = paramInt;
+    this.QpK = new HashMap();
+    this.QpL = new HashMap();
+    this.PRA = new HashMap();
+    this.PUm = paramInt;
     AppMethodBeat.o(81013);
   }
   
@@ -73,11 +72,11 @@ public final class a
     }
     int j = 0;
     int i = j;
-    if (paramt.gcx() != null)
+    if (paramt.gVs() != null)
     {
       i = j;
-      if (paramt.gcx().Mjz != null) {
-        i = paramt.gcx().Mjz.dIZ;
+      if (paramt.gVs().Tun != null) {
+        i = paramt.gVs().Tun.fBP;
       }
     }
     if ((paramInt1 != 0) || (paramInt2 != 0))
@@ -85,104 +84,104 @@ public final class a
       Log.e("MicroMsg.webview.JSVerifyHelper", "dealJSAPIAuth netscene error, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       if (paramInt1 == 4)
       {
-        paramt.IXT.a(a.a.a.Jst, paramString, null, paramInt2, i);
+        paramt.PUk.a(a.a.a.QpQ, paramString, null, paramInt2, i);
         AppMethodBeat.o(81016);
         return;
       }
-      paramt.IXT.a(a.a.a.Jst, null, null, paramInt2, i);
+      paramt.PUk.a(a.a.a.QpQ, null, null, paramInt2, i);
       AppMethodBeat.o(81016);
       return;
     }
-    if (Util.isNullOrNil(paramt.IXU))
+    if (Util.isNullOrNil(paramt.PUl))
     {
       Log.e("MicroMsg.webview.JSVerifyHelper", "scene.jsapi is null or nil.");
-      paramt.IXT.a(a.a.a.Jst, null, null, paramInt2, i);
+      paramt.PUk.a(a.a.a.QpQ, null, null, paramInt2, i);
       AppMethodBeat.o(81016);
       return;
     }
-    paramString = paramt.gcx();
-    if ((paramString == null) || (paramString.Mjz == null))
+    paramString = paramt.gVs();
+    if ((paramString == null) || (paramString.Tun == null))
     {
       Log.e("MicroMsg.webview.JSVerifyHelper", "dealJSAPIAuth resp is null");
-      paramt.IXT.a(a.a.a.Jst, null, null, paramInt2, i);
+      paramt.PUk.a(a.a.a.QpQ, null, null, paramInt2, i);
       AppMethodBeat.o(81016);
       return;
     }
-    if (paramString.Mjz.dIZ != 0)
+    if (paramString.Tun.fBP != 0)
     {
-      Log.e("MicroMsg.webview.JSVerifyHelper", "auth jsapi_baseresponse %s, %s", new Object[] { Integer.valueOf(paramString.Mjz.dIZ), paramString.Mjz.dJa });
-      paramt.IXT.a(a.a.a.Jst, paramString.Mjz.dJa, null, paramInt2, i);
+      Log.e("MicroMsg.webview.JSVerifyHelper", "auth jsapi_baseresponse %s, %s", new Object[] { Integer.valueOf(paramString.Tun.fBP), paramString.Tun.errmsg });
+      paramt.PUk.a(a.a.a.QpQ, paramString.Tun.errmsg, null, paramInt2, i);
       AppMethodBeat.o(81016);
       return;
     }
-    if (paramt.gcw() == null) {}
-    for (paramInt1 = 0;; paramInt1 = paramt.gcw().Mjx)
+    if (paramt.gVr() == null) {}
+    for (paramInt1 = 0;; paramInt1 = paramt.gVr().Tuk)
     {
       Log.i("MicroMsg.webview.JSVerifyHelper", "signature flag : %d.", new Object[] { Integer.valueOf(paramInt1) });
       if (paramInt1 != 1) {
         break label560;
       }
-      if (paramString.MjC != null) {
+      if (paramString.Tuq != null) {
         break;
       }
       Log.e("MicroMsg.webview.JSVerifyHelper", "dealJSAPI scope_auth_info is null.");
-      paramt.IXT.a(a.a.a.Jst, null, null, paramInt2, i);
+      paramt.PUk.a(a.a.a.QpQ, null, null, paramInt2, i);
       AppMethodBeat.o(81016);
       return;
     }
-    paramString = paramString.MjC.iterator();
+    paramString = paramString.Tuq.iterator();
     Object localObject;
     while (paramString.hasNext())
     {
-      localObject = (cey)paramString.next();
-      if (((cey)localObject).Mkw == null)
+      localObject = (cns)paramString.next();
+      if (((cns)localObject).Tvo == null)
       {
         Log.e("MicroMsg.webview.JSVerifyHelper", "authInfo.apiname is null.");
       }
       else
       {
-        Iterator localIterator = ((cey)localObject).Mkw.iterator();
+        Iterator localIterator = ((cns)localObject).Tvo.iterator();
         while (localIterator.hasNext())
         {
           String str = (String)localIterator.next();
           if (!Util.isNullOrNil(str))
           {
-            cdw localcdw = new cdw();
-            localcdw.Mjs = str;
-            localcdw.KLv = ((cey)localObject).Mkv;
-            localcdw.Mjt = ((cey)localObject).CYp;
-            this.Jsn.put(localcdw.Mjs + paramt.url, localcdw);
+            cmq localcmq = new cmq();
+            localcmq.Tug = str;
+            localcmq.RMr = ((cns)localObject).Tvn;
+            localcmq.auth_desc = ((cns)localObject).JdV;
+            this.QpK.put(localcmq.Tug + paramt.url, localcmq);
           }
         }
       }
     }
     label560:
-    if (paramString.MjA == null)
+    if (paramString.Tuo == null)
     {
       Log.e("MicroMsg.webview.JSVerifyHelper", "dealJSAPIAuth auth_info is null");
-      paramt.IXT.a(a.a.a.Jst, "nullAuthInfo", null, paramInt2, i);
+      paramt.PUk.a(a.a.a.QpQ, "nullAuthInfo", null, paramInt2, i);
       AppMethodBeat.o(81016);
       return;
     }
-    paramString = paramString.MjA.iterator();
+    paramString = paramString.Tuo.iterator();
     while (paramString.hasNext())
     {
-      localObject = (cdw)paramString.next();
-      if (!Util.isNullOrNil(((cdw)localObject).Mjs)) {
-        this.Jsn.put(((cdw)localObject).Mjs + paramt.url, localObject);
+      localObject = (cmq)paramString.next();
+      if (!Util.isNullOrNil(((cmq)localObject).Tug)) {
+        this.QpK.put(((cmq)localObject).Tug + paramt.url, localObject);
       }
     }
-    paramString = (cdw)this.Jsn.get(paramt.IXU + paramt.url);
+    paramString = (cmq)this.QpK.get(paramt.PUl + paramt.url);
     if (paramString == null)
     {
-      Log.e("MicroMsg.webview.JSVerifyHelper", "The JSAPIAuthInfo is null. (jsapi : %s , url : %s)", new Object[] { paramt.IXU, paramt.url });
-      paramt.IXT.a(a.a.a.Jst, null, null, paramInt2, i);
+      Log.e("MicroMsg.webview.JSVerifyHelper", "The JSAPIAuthInfo is null. (jsapi : %s , url : %s)", new Object[] { paramt.PUl, paramt.url });
+      paramt.PUk.a(a.a.a.QpQ, null, null, paramInt2, i);
       AppMethodBeat.o(81016);
       return;
     }
-    if (paramString.KLv == 1)
+    if (paramString.RMr == 1)
     {
-      paramt.IXT.a(a.a.a.Jss, null, null, paramInt2, i);
+      paramt.PUk.a(a.a.a.QpP, null, null, paramInt2, i);
       AppMethodBeat.o(81016);
       return;
     }
@@ -193,13 +192,13 @@ public final class a
       AppMethodBeat.o(81016);
       return;
     }
-    WebViewStubTempUI.a(this.context, this.ISw, Util.nullAsNil(paramString.Mjt), "", this.context.getString(2131762027), this.context.getString(2131762026), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    WebViewStubTempUI.a(this.context, this.POP, Util.nullAsNil(paramString.auth_desc), "", this.context.getString(c.i.js_oauth_yes), this.context.getString(c.i.js_oauth_no), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(81006);
         Log.i("MicroMsg.webview.JSVerifyHelper", "showDlgForJSVerify click ok");
-        a.this.a(paramt, paramInt2, paramString);
+        a.a(a.this, paramt, paramInt2, paramString);
         AppMethodBeat.o(81006);
       }
     }, new DialogInterface.OnClickListener()
@@ -208,14 +207,64 @@ public final class a
       {
         AppMethodBeat.i(81007);
         Log.i("MicroMsg.webview.JSVerifyHelper", "showDlgForJSVerify click cancel");
-        paramt.IXT.a(a.a.a.Jsu, "cancel", null, paramInt2, paramt.gcx().Mjz.dIZ);
+        paramt.PUk.a(a.a.a.QpR, "cancel", null, paramInt2, paramt.gVs().Tun.fBP);
         AppMethodBeat.o(81007);
       }
     });
     AppMethodBeat.o(81016);
   }
   
-  private static String aYy(String paramString)
+  private void a(com.tencent.mm.plugin.webview.model.t paramt, int paramInt, cmq paramcmq)
+  {
+    AppMethodBeat.i(81017);
+    cmr localcmr = paramt.gVr();
+    Object localObject = paramt.gVs();
+    if (localcmr == null)
+    {
+      Log.e("MicroMsg.webview.JSVerifyHelper", "authReq is null");
+      paramt.PUk.a(a.a.a.QpQ, null, null, paramInt, paramt.gVs().Tun.fBP);
+      AppMethodBeat.o(81017);
+      return;
+    }
+    if (localObject == null)
+    {
+      Log.e("MicroMsg.webview.JSVerifyHelper", "authResp is null");
+      paramt.PUk.a(a.a.a.QpQ, null, null, paramInt, paramt.gVs().Tun.fBP);
+      AppMethodBeat.o(81017);
+      return;
+    }
+    com.tencent.mm.kernel.h.aGY().a(1096, this);
+    localObject = ((cms)localObject).Tuq;
+    if (localObject != null)
+    {
+      Iterator localIterator = ((LinkedList)localObject).iterator();
+      cns localcns;
+      while (localIterator.hasNext())
+      {
+        localcns = (cns)localIterator.next();
+        if (localcns != null)
+        {
+          Log.i("MicroMsg.webview.JSVerifyHelper", "apiname = %s, scope = %s, scope desc = %s, status = %d, now jsapi name = %s", new Object[] { localcns.Tvo, localcns.scope, localcns.JdV, Integer.valueOf(localcns.Tvn), localcmr.Tug });
+          localcns.Tvn = 1;
+        }
+      }
+      localIterator = ((LinkedList)localObject).iterator();
+      while (localIterator.hasNext())
+      {
+        localcns = (cns)localIterator.next();
+        if (localcns != null) {
+          Log.i("MicroMsg.webview.JSVerifyHelper", "apiname = %s, scope = %s, scope desc = %s, status = %d, now jsapi name = %s", new Object[] { localcns.Tvo, localcns.scope, localcns.JdV, Integer.valueOf(localcns.Tvn), localcmr.Tug });
+        }
+      }
+    }
+    int i = ((cmr)d.b.b(((d)paramt.getReqResp()).lBR)).Tum;
+    paramcmq = new w(paramcmq, localcmr.url, localcmr.Tul, localcmr.jUi, localcmr.Tug, localcmr.fdH, localcmr.Tuh, localcmr.signature, localcmr.Tui, localcmr.Tuj, localcmr.Tuk, (LinkedList)localObject, this.PUm, i);
+    com.tencent.mm.kernel.h.aGY().a(paramcmq, 0);
+    paramt.PUk.a(a.a.a.QpP, null, null, paramInt, paramt.gVs().Tun.fBP);
+    AppMethodBeat.o(81017);
+  }
+  
+  private static String bks(String paramString)
   {
     AppMethodBeat.i(81018);
     int i = paramString.indexOf("#");
@@ -232,148 +281,99 @@ public final class a
   final void a(Context paramContext, f paramf)
   {
     this.context = paramContext;
-    this.ISw = paramf;
+    this.POP = paramf;
   }
   
-  final void a(com.tencent.mm.plugin.webview.model.t paramt, int paramInt, cdw paramcdw)
+  public final void a(JsapiPermissionWrapper paramJsapiPermissionWrapper, String paramString1, String paramString2, int paramInt1, n paramn, int paramInt2, a parama)
   {
-    AppMethodBeat.i(81017);
-    cdx localcdx = paramt.gcw();
-    Object localObject = paramt.gcx();
-    if (localcdx == null)
-    {
-      Log.e("MicroMsg.webview.JSVerifyHelper", "authReq is null");
-      paramt.IXT.a(a.a.a.Jst, null, null, paramInt, paramt.gcx().Mjz.dIZ);
-      AppMethodBeat.o(81017);
-      return;
-    }
-    if (localObject == null)
-    {
-      Log.e("MicroMsg.webview.JSVerifyHelper", "authResp is null");
-      paramt.IXT.a(a.a.a.Jst, null, null, paramInt, paramt.gcx().Mjz.dIZ);
-      AppMethodBeat.o(81017);
-      return;
-    }
-    g.azz().a(1096, this);
-    localObject = ((cdy)localObject).MjC;
-    if (localObject != null)
-    {
-      Iterator localIterator = ((LinkedList)localObject).iterator();
-      cey localcey;
-      while (localIterator.hasNext())
-      {
-        localcey = (cey)localIterator.next();
-        if (localcey != null)
-        {
-          Log.i("MicroMsg.webview.JSVerifyHelper", "apiname = %s, scope = %s, scope desc = %s, status = %d, now jsapi name = %s", new Object[] { localcey.Mkw, localcey.scope, localcey.CYp, Integer.valueOf(localcey.Mkv), localcdx.Mjs });
-          localcey.Mkv = 1;
-        }
-      }
-      localIterator = ((LinkedList)localObject).iterator();
-      while (localIterator.hasNext())
-      {
-        localcey = (cey)localIterator.next();
-        if (localcey != null) {
-          Log.i("MicroMsg.webview.JSVerifyHelper", "apiname = %s, scope = %s, scope desc = %s, status = %d, now jsapi name = %s", new Object[] { localcey.Mkw, localcey.scope, localcey.CYp, Integer.valueOf(localcey.Mkv), localcdx.Mjs });
-        }
-      }
-    }
-    paramcdw = new w(paramcdw, localcdx.url, localcdx.Mjy, localcdx.hik, localcdx.Mjs, localcdx.dmc, localcdx.Mju, localcdx.signature, localcdx.Mjv, localcdx.Mjw, localcdx.Mjx, (LinkedList)localObject, this.IXV);
-    g.azz().a(paramcdw, 0);
-    paramt.IXT.a(a.a.a.Jss, null, null, paramInt, paramt.gcx().Mjz.dIZ);
-    AppMethodBeat.o(81017);
-  }
-  
-  public final void a(JsapiPermissionWrapper paramJsapiPermissionWrapper, String paramString1, String paramString2, int paramInt, n paramn, a parama)
-  {
-    AppMethodBeat.i(211343);
+    AppMethodBeat.i(227008);
     if (paramn != null) {}
-    for (String str2 = paramn.mhO;; str2 = "")
+    for (String str2 = paramn.function;; str2 = "")
     {
       if (Util.isNullOrNil(str2))
       {
         Log.e("MicroMsg.webview.JSVerifyHelper", "jsapi is null, %s", new Object[] { paramString1 });
-        parama.a(a.a.a.Jsv, null, null, 0, 0);
-        AppMethodBeat.o(211343);
+        parama.a(a.a.a.QpS, null, null, 0, 0);
+        AppMethodBeat.o(227008);
         return;
       }
-      if ((paramJsapiPermissionWrapper == null) || (Util.isNullOrNil(paramString1)) || (paramn == null) || (paramJsapiPermissionWrapper.Kzq == null))
+      if ((paramJsapiPermissionWrapper == null) || (Util.isNullOrNil(paramString1)) || (paramn == null) || (paramJsapiPermissionWrapper.RBg == null))
       {
         if (paramJsapiPermissionWrapper != null) {}
         for (boolean bool = true;; bool = false)
         {
           Log.e("MicroMsg.webview.JSVerifyHelper", "handleJSVerify invalid argument, currentUrl = %s, jsapi = %s, %s", new Object[] { paramString1, str2, Boolean.valueOf(bool) });
-          parama.a(a.a.a.Jst, "localParameters", null, 0, 0);
-          AppMethodBeat.o(211343);
+          parama.a(a.a.a.QpQ, "localParameters", null, 0, 0);
+          AppMethodBeat.o(227008);
           return;
         }
       }
-      int i = paramJsapiPermissionWrapper.aiW(paramInt);
-      Log.i("MicroMsg.webview.JSVerifyHelper", "handleJSVerify jsApi = %s, permission pos = %d, permission = %s currentUrl = %s", new Object[] { str2, Integer.valueOf(paramInt), Integer.valueOf(i), paramString1 });
-      paramJsapiPermissionWrapper = (String)this.Jso.get(paramString1);
+      int i = paramJsapiPermissionWrapper.arj(paramInt1);
+      Log.i("MicroMsg.webview.JSVerifyHelper", "handleJSVerify jsApi = %s, permission pos = %d, permission = %s currentUrl = %s", new Object[] { str2, Integer.valueOf(paramInt1), Integer.valueOf(i), paramString1 });
+      paramJsapiPermissionWrapper = (String)this.QpL.get(paramString1);
       if (Util.isNullOrNil(paramJsapiPermissionWrapper)) {
         paramJsapiPermissionWrapper = (String)paramn.params.get("verifyAppId");
       }
       for (;;)
       {
-        Object localObject1 = paramn.ISg;
+        Object localObject1 = paramn.POw;
         ((Map)localObject1).put("permissionValue", Integer.valueOf(i));
         ((Map)localObject1).put("appId", paramJsapiPermissionWrapper);
         Object localObject3 = paramString1;
         switch (i)
         {
         default: 
-          parama.a(a.a.a.Jst, "unkonwPermission_".concat(String.valueOf(i)), null, 0, 0);
+          parama.a(a.a.a.QpQ, "unkonwPermission_".concat(String.valueOf(i)), null, 0, 0);
           Log.e("MicroMsg.webview.JSVerifyHelper", "unknow permission");
-          AppMethodBeat.o(211343);
+          AppMethodBeat.o(227008);
           return;
         case 1: 
-          parama.a(a.a.a.Jss, null, null, 0, 0);
-          AppMethodBeat.o(211343);
+          parama.a(a.a.a.QpP, null, null, 0, 0);
+          AppMethodBeat.o(227008);
           return;
         case 2: 
           if (str2.equals("preVerifyJSAPI"))
           {
-            parama.a(a.a.a.Jss, null, null, 0, 0);
-            AppMethodBeat.o(211343);
+            parama.a(a.a.a.QpP, null, null, 0, 0);
+            AppMethodBeat.o(227008);
             return;
           }
-          parama.a(a.a.a.Jsv, null, null, 0, 0);
-          AppMethodBeat.o(211343);
+          parama.a(a.a.a.QpS, null, null, 0, 0);
+          AppMethodBeat.o(227008);
           return;
         case 0: 
-          parama.a(a.a.a.Jsv, null, null, 0, 0);
-          AppMethodBeat.o(211343);
+          parama.a(a.a.a.QpS, null, null, 0, 0);
+          AppMethodBeat.o(227008);
           return;
         case 4: 
           localObject2 = (String)paramn.params.get("url");
           localObject1 = paramString1;
           if (!Util.isEqual((String)localObject2, paramString1)) {
-            if (((b)g.af(b.class)).a(b.a.rSL, 1) != 1) {
+            if (((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vzj, 1) != 1) {
               break label616;
             }
           }
           label616:
-          for (paramInt = 1;; paramInt = 0)
+          for (paramInt1 = 1;; paramInt1 = 0)
           {
             localObject1 = paramString1;
-            if (paramInt != 0)
+            if (paramInt1 != 0)
             {
-              h.CyF.idkeyStat(1200L, 103L, 1L, false);
+              com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1200L, 103L, 1L, false);
               Log.i("MicroMsg.webview.JSVerifyHelper", "useWvUrl currentUrl %s, wvUrl %s", new Object[] { paramString1, localObject2 });
               localObject1 = localObject2;
             }
-            paramString1 = (cdw)this.Jsn.get(str2 + (String)localObject1);
+            paramString1 = (cmq)this.QpK.get(str2 + (String)localObject1);
             localObject3 = localObject1;
             if (paramString1 == null) {
               break;
             }
             localObject3 = localObject1;
-            if (paramString1.KLv != 1) {
+            if (paramString1.RMr != 1) {
               break;
             }
-            parama.a(a.a.a.Jss, null, null, 0, 0);
-            AppMethodBeat.o(211343);
+            parama.a(a.a.a.QpP, null, null, 0, 0);
+            AppMethodBeat.o(227008);
             return;
           }
         }
@@ -384,10 +384,10 @@ public final class a
         String str4 = (String)paramn.params.get("scope");
         String str3 = (String)paramn.params.get("addrSign");
         Log.i("MicroMsg.webview.JSVerifyHelper", "handleJSVerify addrSign = %s, signature = %s", new Object[] { str3, paramString1 });
-        paramInt = 0;
+        paramInt1 = 0;
         if ((Util.isNullOrNil(paramString1)) && (!Util.isNullOrNil(str3)))
         {
-          paramInt = 1;
+          paramInt1 = 1;
           paramJsapiPermissionWrapper = (String)paramn.params.get("appId");
           localObject2 = (String)paramn.params.get("addrSign");
           str1 = (String)paramn.params.get("signType");
@@ -397,21 +397,21 @@ public final class a
         for (;;)
         {
           str3 = null;
-          JSONObject localJSONObject = n.a.be(paramn.params);
+          JSONObject localJSONObject = n.a.aY(paramn.params);
           paramn = str3;
           if (localJSONObject != null) {
             paramn = localJSONObject.toString().getBytes();
           }
           if (i == 4)
           {
-            paramJsapiPermissionWrapper = new com.tencent.mm.plugin.webview.model.t(parama, (String)localObject3, paramString2, paramJsapiPermissionWrapper, str2, paramString1, (String)localObject1, (String)localObject2, str1, paramn, paramInt, str4, this.IXV);
-            g.azz().a(1095, this);
-            g.azz().a(paramJsapiPermissionWrapper, 0);
-            AppMethodBeat.o(211343);
+            paramJsapiPermissionWrapper = new com.tencent.mm.plugin.webview.model.t(parama, (String)localObject3, paramString2, paramJsapiPermissionWrapper, str2, paramString1, (String)localObject1, (String)localObject2, str1, paramn, paramInt1, str4, this.PUm, paramInt2);
+            com.tencent.mm.kernel.h.aGY().a(1095, this);
+            com.tencent.mm.kernel.h.aGY().a(paramJsapiPermissionWrapper, 0);
+            AppMethodBeat.o(227008);
             return;
             if (!Util.isNullOrNil(paramString1))
             {
-              paramInt = 2;
+              paramInt1 = 2;
               str3 = paramString1;
               paramString1 = (String)localObject2;
               localObject2 = str3;
@@ -422,10 +422,10 @@ public final class a
             if (i != 3) {
               break;
             }
-            paramJsapiPermissionWrapper = new v(parama, (String)localObject3, paramString2, paramJsapiPermissionWrapper, str2, paramString1, (String)localObject1, (String)localObject2, str1, paramn, this.IXV);
-            g.azz().a(1094, this);
-            g.azz().a(paramJsapiPermissionWrapper, 0);
-            AppMethodBeat.o(211343);
+            paramJsapiPermissionWrapper = new v(parama, (String)localObject3, paramString2, paramJsapiPermissionWrapper, str2, paramString1, (String)localObject1, (String)localObject2, str1, paramn, this.PUm, paramInt2);
+            com.tencent.mm.kernel.h.aGY().a(1094, this);
+            com.tencent.mm.kernel.h.aGY().a(paramJsapiPermissionWrapper, 0);
+            AppMethodBeat.o(227008);
             return;
           }
           str3 = paramString1;
@@ -436,7 +436,7 @@ public final class a
     }
   }
   
-  public final String baN(String paramString)
+  public final String bmL(String paramString)
   {
     AppMethodBeat.i(81011);
     if (paramString == null)
@@ -444,22 +444,22 @@ public final class a
       AppMethodBeat.o(81011);
       return null;
     }
-    String str2 = (String)this.Jso.get(paramString);
+    String str2 = (String)this.QpL.get(paramString);
     String str1 = str2;
     if (Util.isNullOrNil(str2))
     {
-      String str3 = aYy(paramString);
+      String str3 = bks(paramString);
       Log.i("MicroMsg.webview.JSVerifyHelper", "appid = %s, url = %s, drophash url = %s", new Object[] { str2, paramString, str3 });
       str1 = str2;
       if (!Util.isNullOrNil(str3)) {
-        str1 = (String)this.Jso.get(str3);
+        str1 = (String)this.QpL.get(str3);
       }
     }
     AppMethodBeat.o(81011);
     return str1;
   }
   
-  public final d baO(String paramString)
+  public final d bmM(String paramString)
   {
     AppMethodBeat.i(81012);
     if (TextUtils.isEmpty(paramString))
@@ -467,12 +467,12 @@ public final class a
       AppMethodBeat.o(81012);
       return null;
     }
-    d locald2 = (d)this.IVk.get(paramString);
+    d locald2 = (d)this.PRA.get(paramString);
     d locald1 = locald2;
     if (locald2 == null)
     {
-      paramString = aYy(paramString);
-      locald1 = (d)this.IVk.get(paramString);
+      paramString = bks(paramString);
+      locald1 = (d)this.PRA.get(paramString);
     }
     AppMethodBeat.o(81012);
     return locald1;
@@ -488,16 +488,16 @@ public final class a
       AppMethodBeat.o(81014);
       return;
     }
-    if (((b)paramq).fZu() != this.IXV)
+    if (((b)paramq).gSo() != this.PUm)
     {
-      Log.i("MicroMsg.webview.JSVerifyHelper", "JSVerifyHelper onSceneEnd: this.binderId = %d, incoming binderId = %d, not equal, return", new Object[] { Integer.valueOf(this.IXV), Integer.valueOf(((b)paramq).fZu()) });
+      Log.i("MicroMsg.webview.JSVerifyHelper", "JSVerifyHelper onSceneEnd: this.binderId = %d, incoming binderId = %d, not equal, return", new Object[] { Integer.valueOf(this.PUm), Integer.valueOf(((b)paramq).gSo()) });
       AppMethodBeat.o(81014);
       return;
     }
     int i = paramq.getType();
     if (i == 1093)
     {
-      g.azz().b(1093, this);
+      com.tencent.mm.kernel.h.aGY().b(1093, this);
       paramq = (u)paramq;
       if (paramq == null)
       {
@@ -505,7 +505,7 @@ public final class a
         AppMethodBeat.o(81014);
         return;
       }
-      if (paramq.IXT == null)
+      if (paramq.PUk == null)
       {
         Log.e("MicroMsg.webview.JSVerifyHelper", "dealJSAPIPreVerify, VerifyCallback is null");
         AppMethodBeat.o(81014);
@@ -513,40 +513,40 @@ public final class a
       }
       int j = 0;
       i = j;
-      if (paramq.gcy() != null)
+      if (paramq.gVt() != null)
       {
         i = j;
-        if (paramq.gcy().Mjz != null) {
-          i = paramq.gcy().Mjz.dIZ;
+        if (paramq.gVt().Tun != null) {
+          i = paramq.gVt().Tun.fBP;
         }
       }
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
         if (paramInt1 == 4)
         {
-          paramq.IXT.a(a.a.a.Jst, paramInt2 + "_" + paramString, null, paramInt2, i);
+          paramq.PUk.a(a.a.a.QpQ, paramInt2 + "_" + paramString, null, paramInt2, i);
           AppMethodBeat.o(81014);
           return;
         }
-        paramq.IXT.a(a.a.a.Jst, null, null, paramInt2, i);
+        paramq.PUk.a(a.a.a.QpQ, null, null, paramInt2, i);
         AppMethodBeat.o(81014);
         return;
       }
-      ceg localceg = paramq.gcy();
+      cna localcna = paramq.gVt();
       boolean bool1;
       label390:
       boolean bool3;
       if (paramq.rr == null)
       {
         paramString = null;
-        if ((localceg != null) && (!Util.isNullOrNil(paramq.nKc)) && (paramString != null) && (!Util.isNullOrNil(paramString.dNI))) {
+        if ((localcna != null) && (!Util.isNullOrNil(paramq.pHO)) && (paramString != null) && (!Util.isNullOrNil(paramString.appid))) {
           break label498;
         }
-        if (localceg != null) {
+        if (localcna != null) {
           break label486;
         }
         bool1 = true;
-        bool3 = Util.isNullOrNil(paramq.nKc);
+        bool3 = Util.isNullOrNil(paramq.pHO);
         if (paramString != null) {
           break label492;
         }
@@ -556,49 +556,49 @@ public final class a
       for (boolean bool2 = true;; bool2 = false)
       {
         Log.e("MicroMsg.webview.JSVerifyHelper", "something null %b, %b, %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool3), Boolean.valueOf(bool2) });
-        paramq.IXT.a(a.a.a.Jst, null, null, paramInt2, i);
+        paramq.PUk.a(a.a.a.QpQ, null, null, paramInt2, i);
         AppMethodBeat.o(81014);
         return;
-        paramString = (cef)paramq.rr.iLK.iLR;
+        paramString = (cmz)d.b.b(paramq.rr.lBR);
         break;
         bool1 = false;
         break label390;
       }
       label498:
-      if (localceg.Mjz == null)
+      if (localcna.Tun == null)
       {
         Log.e("MicroMsg.webview.JSVerifyHelper", "jsapi_baseresponse null");
-        paramq.IXT.a(a.a.a.Jst, null, null, paramInt2, i);
+        paramq.PUk.a(a.a.a.QpQ, null, null, paramInt2, i);
         AppMethodBeat.o(81014);
         return;
       }
-      if (localceg.Mjz.dIZ != 0)
+      if (localcna.Tun.fBP != 0)
       {
-        Log.e("MicroMsg.webview.JSVerifyHelper", "jsapi baseresponse errcode fail : %d, errmsg = %s", new Object[] { Integer.valueOf(localceg.Mjz.dIZ), localceg.Mjz.dJa });
-        paramq.IXT.a(a.a.a.Jst, localceg.Mjz.dJa, null, paramInt2, i);
+        Log.e("MicroMsg.webview.JSVerifyHelper", "jsapi baseresponse errcode fail : %d, errmsg = %s", new Object[] { Integer.valueOf(localcna.Tun.fBP), localcna.Tun.errmsg });
+        paramq.PUk.a(a.a.a.QpQ, localcna.Tun.errmsg, null, paramInt2, i);
         AppMethodBeat.o(81014);
         return;
       }
-      paramq.IXT.baP(localceg.MjR);
-      this.Jso.put(aYy(paramString.url), paramString.dNI);
-      d locald = new d(paramString.dNI, localceg);
-      this.IVk.put(aYy(paramString.url), locald);
-      this.IVk.put(aYy(paramString.Mjy), locald);
-      paramq.IXT.a(a.a.a.Jss, null, localceg.MjP, paramInt2, i);
+      paramq.PUk.bmN(localcna.TuH);
+      this.QpL.put(bks(paramString.url), paramString.appid);
+      d locald = new d(paramString.appid, localcna);
+      this.PRA.put(bks(paramString.url), locald);
+      this.PRA.put(bks(paramString.Tul), locald);
+      paramq.PUk.a(a.a.a.QpP, null, localcna.TuF, paramInt2, i);
       Log.d("MicroMsg.webview.JSVerifyHelper", "dealJSAPIPreVerify url is %s", new Object[] { paramString.url });
       AppMethodBeat.o(81014);
       return;
     }
     if (i == 1095)
     {
-      g.azz().b(1095, this);
+      com.tencent.mm.kernel.h.aGY().b(1095, this);
       a(paramInt1, paramInt2, paramString, (com.tencent.mm.plugin.webview.model.t)paramq);
       AppMethodBeat.o(81014);
       return;
     }
     if (i == 1094)
     {
-      g.azz().b(1094, this);
+      com.tencent.mm.kernel.h.aGY().b(1094, this);
       paramq = (v)paramq;
       if (paramq == null)
       {
@@ -606,67 +606,67 @@ public final class a
         AppMethodBeat.o(81014);
         return;
       }
-      h.CyF.idkeyStat(157L, 24L, 1L, false);
-      if ((paramq.gcz() == null) || (paramq.gcz().Mjz == null)) {
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(157L, 24L, 1L, false);
+      if ((paramq.gVu() == null) || (paramq.gVu().Tun == null)) {
         break label1476;
       }
     }
     label1476:
-    for (i = paramq.gcz().Mjz.dIZ;; i = 0)
+    for (i = paramq.gVu().Tun.fBP;; i = 0)
     {
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
         Log.e("MicroMsg.webview.JSVerifyHelper", "dealJSAPIRealtimeVerify netscene error", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-        h.CyF.idkeyStat(157L, 25L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(157L, 25L, 1L, false);
         if (paramInt1 == 4)
         {
-          paramq.IXT.a(a.a.a.Jst, paramInt2 + "_" + paramString, null, paramInt2, i);
+          paramq.PUk.a(a.a.a.QpQ, paramInt2 + "_" + paramString, null, paramInt2, i);
           AppMethodBeat.o(81014);
           return;
         }
-        paramq.IXT.a(a.a.a.Jst, null, null, paramInt2, i);
+        paramq.PUk.a(a.a.a.QpQ, null, null, paramInt2, i);
         AppMethodBeat.o(81014);
         return;
       }
-      paramString = paramq.gcz();
-      if ((paramString == null) || (paramString.Mjz == null))
+      paramString = paramq.gVu();
+      if ((paramString == null) || (paramString.Tun == null))
       {
         Log.e("MicroMsg.webview.JSVerifyHelper", "dealJSAPIRealtimeVerify resp is null");
-        paramq.IXT.a(a.a.a.Jst, null, null, paramInt2, i);
+        paramq.PUk.a(a.a.a.QpQ, null, null, paramInt2, i);
         AppMethodBeat.o(81014);
         return;
       }
-      if (paramString.Mjz.dIZ != 0)
+      if (paramString.Tun.fBP != 0)
       {
-        Log.e("MicroMsg.webview.JSVerifyHelper", "realtime jsapi_baseresponse %s, %s", new Object[] { Integer.valueOf(paramString.Mjz.dIZ), paramString.Mjz.dJa });
-        paramq.IXT.a(a.a.a.Jst, paramString.Mjz.dJa, null, paramInt2, i);
+        Log.e("MicroMsg.webview.JSVerifyHelper", "realtime jsapi_baseresponse %s, %s", new Object[] { Integer.valueOf(paramString.Tun.fBP), paramString.Tun.errmsg });
+        paramq.PUk.a(a.a.a.QpQ, paramString.Tun.errmsg, null, paramInt2, i);
         AppMethodBeat.o(81014);
         return;
       }
-      paramString = paramString.MjT;
+      paramString = paramString.TuJ;
       if (paramString == null)
       {
         Log.e("MicroMsg.webview.JSVerifyHelper", "realtime not ok, vInfo is null");
-        paramq.IXT.a(a.a.a.Jst, "verifyFail", null, paramInt2, i);
+        paramq.PUk.a(a.a.a.QpQ, "verifyFail", null, paramInt2, i);
         AppMethodBeat.o(81014);
         return;
       }
-      if (paramString.Nnk != 1)
+      if (paramString.UAb != 1)
       {
-        Log.e("MicroMsg.webview.JSVerifyHelper", "realtime not ok, %s", new Object[] { Integer.valueOf(paramString.Nnk) });
-        paramq.IXT.a(a.a.a.Jst, "verifyFail", null, paramInt2, i);
+        Log.e("MicroMsg.webview.JSVerifyHelper", "realtime not ok, %s", new Object[] { Integer.valueOf(paramString.UAb) });
+        paramq.PUk.a(a.a.a.QpQ, "verifyFail", null, paramInt2, i);
         AppMethodBeat.o(81014);
         return;
       }
-      paramq.IXT.a(a.a.a.Jss, null, null, paramInt2, i);
+      paramq.PUk.a(a.a.a.QpP, null, null, paramInt2, i);
       AppMethodBeat.o(81014);
       return;
       if (i == 1096)
       {
-        g.azz().b(1096, this);
+        com.tencent.mm.kernel.h.aGY().b(1096, this);
         paramString = (w)paramq;
         if (paramString.rr == null) {}
-        for (paramString = null; paramString == null; paramString = (cej)paramString.rr.iLK.iLR)
+        for (paramString = null; paramString == null; paramString = (cnd)d.b.b(paramString.rr.lBR))
         {
           Log.e("MicroMsg.webview.JSVerifyHelper", "JSAPISetOAuth, setAuthReq is null");
           AppMethodBeat.o(81014);
@@ -674,19 +674,19 @@ public final class a
         }
         if ((paramInt1 != 0) || (paramInt2 != 0))
         {
-          Log.e("MicroMsg.webview.JSVerifyHelper", "JSAPISetOAuth, errType[%s], errCode[%s], %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString.Mjs });
+          Log.e("MicroMsg.webview.JSVerifyHelper", "JSAPISetOAuth, errType[%s], errCode[%s], %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString.Tug });
           AppMethodBeat.o(81014);
           return;
         }
-        if (c.bgb(Util.nullAsNil(paramString.Mjs)) == null)
+        if (c.bst(Util.nullAsNil(paramString.Tug)) == null)
         {
           Log.e("MicroMsg.webview.JSVerifyHelper", "JSAPISetOAuth, errType[%s], errCode[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
           AppMethodBeat.o(81014);
           return;
         }
-        paramq = ((w)paramq).IXW;
-        paramq.KLv = 1;
-        this.Jsn.put(paramString.Mjs + paramString.url, paramq);
+        paramq = ((w)paramq).PUn;
+        paramq.RMr = 1;
+        this.QpK.put(paramString.Tug + paramString.url, paramq);
       }
       AppMethodBeat.o(81014);
       return;
@@ -695,9 +695,9 @@ public final class a
   
   public static abstract interface a
   {
-    public abstract void a(a parama, String paramString, LinkedList<epn> paramLinkedList, int paramInt1, int paramInt2);
+    public abstract void a(a parama, String paramString, LinkedList<ezy> paramLinkedList, int paramInt1, int paramInt2);
     
-    public abstract void baP(String paramString);
+    public abstract void bmN(String paramString);
     
     public static enum a
     {
@@ -706,11 +706,11 @@ public final class a
       static
       {
         AppMethodBeat.i(81010);
-        Jss = new a("RET_OK", 0, 0);
-        Jst = new a("RET_FAIL", 1, -1);
-        Jsu = new a("RET_REJECT", 2, -2);
-        Jsv = new a("RET_ACCESS_DENIED", 3, -3);
-        Jsw = new a[] { Jss, Jst, Jsu, Jsv };
+        QpP = new a("RET_OK", 0, 0);
+        QpQ = new a("RET_FAIL", 1, -1);
+        QpR = new a("RET_REJECT", 2, -2);
+        QpS = new a("RET_ACCESS_DENIED", 3, -3);
+        QpT = new a[] { QpP, QpQ, QpR, QpS };
         AppMethodBeat.o(81010);
       }
       
@@ -728,38 +728,38 @@ public final class a
   
   public static abstract interface b
   {
-    public abstract int fZu();
+    public abstract int gSo();
   }
   
   public static abstract class c
     implements a.a
   {
-    public boolean Jsx = true;
+    public boolean QpU = true;
     
-    public void baP(String paramString) {}
-    
-    public boolean ghm()
+    public final void Dl(boolean paramBoolean)
     {
-      return this.Jsx;
+      this.QpU = paramBoolean;
     }
     
-    public final void zn(boolean paramBoolean)
+    public void bmN(String paramString) {}
+    
+    public boolean haH()
     {
-      this.Jsx = paramBoolean;
+      return this.QpU;
     }
   }
   
   public static final class d
   {
-    public List<String> Jsy;
-    public List<cel> Jsz;
+    public List<String> QpV;
+    public List<cnf> QpW;
     public String appId;
     
-    public d(String paramString, ceg paramceg)
+    public d(String paramString, cna paramcna)
     {
       this.appId = paramString;
-      this.Jsy = paramceg.MjQ;
-      this.Jsz = paramceg.MjS;
+      this.QpV = paramcna.TuG;
+      this.QpW = paramcna.TuI;
     }
   }
 }

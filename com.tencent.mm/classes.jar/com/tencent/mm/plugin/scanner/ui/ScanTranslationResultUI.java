@@ -1,8 +1,6 @@
 package com.tencent.mm.plugin.scanner.ui;
 
-import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.app.Activity;
@@ -15,33 +13,38 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory.Options;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
-import android.widget.BaseAdapter;
-import android.widget.Gallery.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.SpinnerAdapter;
+import androidx.appcompat.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.compatible.util.Exif;
-import com.tencent.mm.g.b.a.go;
-import com.tencent.mm.g.c.fx;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.b.a.it;
+import com.tencent.mm.f.c.ge;
 import com.tencent.mm.model.z;
+import com.tencent.mm.platformtools.p.a;
+import com.tencent.mm.plugin.al.a.a;
+import com.tencent.mm.plugin.al.a.b;
+import com.tencent.mm.plugin.al.a.c;
+import com.tencent.mm.plugin.al.a.d;
+import com.tencent.mm.plugin.al.a.e;
+import com.tencent.mm.plugin.al.a.f;
+import com.tencent.mm.plugin.al.a.g;
+import com.tencent.mm.plugin.ball.f.f;
 import com.tencent.mm.plugin.scanner.PluginScanTranslation;
-import com.tencent.mm.plugin.scanner.model.ai;
-import com.tencent.mm.plugin.scanner.model.aj;
-import com.tencent.mm.plugin.scanner.model.m;
-import com.tencent.mm.plugin.scanner.util.k;
+import com.tencent.mm.plugin.scanner.g;
+import com.tencent.mm.plugin.scanner.model.ag;
+import com.tencent.mm.plugin.scanner.model.ah;
+import com.tencent.mm.plugin.scanner.util.k.a;
 import com.tencent.mm.plugin.scanner.util.k.b;
-import com.tencent.mm.plugin.scanner.util.p.b;
+import com.tencent.mm.plugin.scanner.util.l.b;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -49,67 +52,66 @@ import com.tencent.mm.sdk.platformtools.MD5Util;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.base.MultiTouchImageView;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.tools.MMGestureGallery;
+import com.tencent.mm.ui.w;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 import java.util.List;
-import kotlin.l;
+import kotlin.g.b.p;
 import kotlin.n.n;
 
 @com.tencent.mm.ui.base.a(3)
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/plugin/scanner/util/ScanTranslationRender$TranslationRenderCallback;", "()V", "bottomBgLayer", "Landroid/view/View;", "closeButton", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "curMediaId", "", "curSessionId", "", "curState", "gestureGallery", "Lcom/tencent/mm/ui/tools/MMGestureGallery;", "originalBitmap", "Landroid/graphics/Bitmap;", "originalPath", "reportData", "Lcom/tencent/mm/autogen/mmdata/rpt/OCRTranslateReportStruct;", "rootContainer", "rotateDegree", "saveContainer", "saveImgBtn", "scanLine", "Landroid/widget/ImageView;", "scanLineAnimator", "Landroid/animation/ValueAnimator;", "screenHeight", "source", "startTimeArray", "", "targetLang", "topBgLayer", "translateBitmap", "translateImageAdapter", "Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$TranslateImageAdapter;", "translationPath", "viewSourceBtn", "configNavigationBar", "", "doTranslation", "drawTranslationResult", "session", "newBitmap", "enterFullScreen", "enterPreviewStatus", "enterTranslateFinishStatus", "enterTranslateStatus", "finishActivity", "getLayoutId", "goBack", "init", "initData", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onKeyDown", "", "keyCode", "event", "Landroid/view/KeyEvent;", "onPause", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onStop", "resetTargetLang", "setPreviewBitmap", "bitmap", "startScanLineAnimation", "stopScanLineAnimation", "Companion", "TranslateImageAdapter", "scan-translation_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/plugin/scanner/util/ScanTranslationRender$TranslationRenderCallback;", "()V", "bottomBgLayer", "Landroid/view/View;", "closeButton", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "curMediaId", "", "curSessionId", "", "curState", "gestureGallery", "Lcom/tencent/mm/ui/tools/MMGestureGallery;", "originalBitmap", "Landroid/graphics/Bitmap;", "originalPath", "reportData", "Lcom/tencent/mm/autogen/mmdata/rpt/OCRTranslateReportStruct;", "rootContainer", "rotateDegree", "saveContainer", "saveImgBtn", "scanLine", "Landroid/widget/ImageView;", "scanLineAnimator", "Landroid/animation/ValueAnimator;", "screenHeight", "source", "startTimeArray", "", "targetLang", "topBgLayer", "translateBitmap", "translateImageAdapter", "Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$TranslateImageAdapter;", "translationPath", "viewSourceBtn", "configNavigationBar", "", "doTranslation", "drawTranslationResult", "session", "newBitmap", "enterFullScreen", "enterPreviewStatus", "enterTranslateFinishStatus", "enterTranslateStatus", "finishActivity", "getLayoutId", "goBack", "init", "initData", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onKeyDown", "", "keyCode", "event", "Landroid/view/KeyEvent;", "onPause", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onStop", "resetTargetLang", "setPreviewBitmap", "bitmap", "startScanLineAnimation", "stopScanLineAnimation", "Companion", "TranslateImageAdapter", "scan-translation_release"})
 public final class ScanTranslationResultUI
   extends MMActivity
-  implements i, k.b
+  implements i, l.b
 {
-  public static final ScanTranslationResultUI.a CNc;
-  private WeImageView AmD;
-  private View CMC;
-  private ImageView CMD;
-  private View CME;
-  private View CMF;
-  private View CMG;
-  private Bitmap CMI;
-  private Bitmap CMJ;
-  private String CMK;
-  private MMGestureGallery CMM;
-  private int CMO;
-  private String CMP;
-  private final go CMS;
-  private final long[] CMT;
-  private b CNb;
-  private int iOu;
-  private int ijt;
-  private View jWj;
-  private String jrK;
-  private int mEY;
+  public static final ScanTranslationResultUI.a ISD;
+  private String CGU;
+  private WeImageView FTK;
+  private ScanTranslationResultUI.b ISC;
+  private View ISc;
+  private ImageView ISd;
+  private View ISe;
+  private View ISf;
+  private View ISg;
+  private Bitmap ISi;
+  private Bitmap ISj;
+  private String ISk;
+  private MMGestureGallery ISm;
+  private int ISo;
+  private String ISp;
+  private final it ISs;
+  private final long[] ISt;
+  private int kYg;
+  private int lEK;
+  private View mNv;
+  private String mhn;
+  private int pEk;
   private int source;
-  private ImageView tgP;
-  private ValueAnimator tgS;
-  private String xCU;
+  private ImageView wNf;
+  private ValueAnimator wNi;
   
   static
   {
     AppMethodBeat.i(121001);
-    CNc = new ScanTranslationResultUI.a((byte)0);
+    ISD = new ScanTranslationResultUI.a((byte)0);
     AppMethodBeat.o(121001);
   }
   
   public ScanTranslationResultUI()
   {
     AppMethodBeat.i(121000);
-    this.tgS = new ValueAnimator();
-    this.iOu = -1;
-    this.CMS = new go();
-    this.CMT = new long[2];
+    this.wNi = new ValueAnimator();
+    this.lEK = -1;
+    this.ISs = new it();
+    this.ISt = new long[2];
     AppMethodBeat.o(121000);
   }
   
-  private final void an(Bitmap paramBitmap)
+  private final void ak(Bitmap paramBitmap)
   {
     AppMethodBeat.i(120997);
     if ((paramBitmap == null) || (paramBitmap.isRecycled()))
@@ -118,11 +120,11 @@ public final class ScanTranslationResultUI
       return;
     }
     Log.i("MicroMsg.ScanTranslationResultUI", "alvinluo setImageBitmap size: %s, %s", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()) });
-    b localb = this.CNb;
+    ScanTranslationResultUI.b localb = this.ISC;
     if (localb != null) {
       localb.setImageBitmap(paramBitmap);
     }
-    paramBitmap = this.CNb;
+    paramBitmap = this.ISC;
     if (paramBitmap != null)
     {
       paramBitmap.notifyDataSetChanged();
@@ -132,128 +134,128 @@ public final class ScanTranslationResultUI
     AppMethodBeat.o(120997);
   }
   
-  private final void cWg()
+  private final void dln()
   {
     AppMethodBeat.i(120992);
-    this.CMS.qz(2L);
-    this.CMO = ((int)(z.aTY().hashCode() + System.currentTimeMillis() & 0xFFFFFFFF));
-    this.iOu = 1;
-    eQP();
+    this.ISs.ug(2L);
+    this.ISo = ((int)(z.bcZ().hashCode() + System.currentTimeMillis() & 0xFFFFFFFF));
+    this.lEK = 1;
+    fDQ();
     Object localObject;
-    if (n.I(this.CMP, "zh_CN", true))
+    if (n.L(this.ISp, "zh_CN", true))
     {
-      localObject = this.CMD;
+      localObject = this.ISd;
       if (localObject == null) {
-        kotlin.g.b.p.btv("viewSourceBtn");
+        p.bGy("viewSourceBtn");
       }
-      ((ImageView)localObject).setImageResource(2131691667);
+      ((ImageView)localObject).setImageResource(a.f.translation_result_chinese);
     }
     for (;;)
     {
-      localObject = this.CMF;
+      localObject = this.ISf;
       if (localObject == null) {
-        kotlin.g.b.p.btv("topBgLayer");
+        p.bGy("topBgLayer");
       }
       ((View)localObject).setVisibility(0);
-      localObject = this.CMG;
+      localObject = this.ISg;
       if (localObject == null) {
-        kotlin.g.b.p.btv("bottomBgLayer");
+        p.bGy("bottomBgLayer");
       }
       ((View)localObject).setVisibility(0);
-      localObject = this.CMC;
+      localObject = this.ISc;
       if (localObject == null) {
-        kotlin.g.b.p.btv("saveContainer");
+        p.bGy("saveContainer");
       }
       ((View)localObject).setVisibility(8);
-      localObject = this.tgP;
+      localObject = this.wNf;
       if (localObject == null) {
-        kotlin.g.b.p.btv("scanLine");
+        p.bGy("scanLine");
       }
       ((ImageView)localObject).setVisibility(0);
-      localObject = this.CMM;
+      localObject = this.ISm;
       if (localObject == null) {
-        kotlin.g.b.p.btv("gestureGallery");
+        p.bGy("gestureGallery");
       }
       ((MMGestureGallery)localObject).setVisibility(0);
-      cWi();
-      eQW();
+      dlp();
+      fDW();
       AppMethodBeat.o(120992);
       return;
-      localObject = this.CMD;
+      localObject = this.ISd;
       if (localObject == null) {
-        kotlin.g.b.p.btv("viewSourceBtn");
+        p.bGy("viewSourceBtn");
       }
-      ((ImageView)localObject).setImageResource(2131691670);
+      ((ImageView)localObject).setImageResource(a.f.translation_result_english);
     }
   }
   
-  private final void cWi()
+  private final void dlp()
   {
     AppMethodBeat.i(120994);
-    this.tgS.setRepeatMode(1);
-    this.tgS.setRepeatCount(-1);
-    this.tgS.start();
+    this.wNi.setRepeatMode(1);
+    this.wNi.setRepeatCount(-1);
+    this.wNi.start();
     AppMethodBeat.o(120994);
   }
   
-  private final void cWj()
+  private final void dlq()
   {
     AppMethodBeat.i(120995);
-    this.tgS.setRepeatMode(1);
-    this.tgS.setRepeatCount(0);
-    this.tgS.end();
+    this.wNi.setRepeatMode(1);
+    this.wNi.setRepeatCount(0);
+    this.wNi.end();
     AppMethodBeat.o(120995);
   }
   
-  private final void eQP()
+  private final void fDQ()
   {
     AppMethodBeat.i(120984);
-    n.I(LocaleUtil.getApplicationLanguage(), "zh_CN", true);
-    this.CMP = LocaleUtil.getCurrentLanguage((Context)getContext());
-    Log.i("MicroMsg.ScanTranslationResultUI", "targetLang %s", new Object[] { this.CMP });
+    n.L(LocaleUtil.getApplicationLanguage(), "zh_CN", true);
+    this.ISp = LocaleUtil.getCurrentLanguage((Context)getContext());
+    Log.i("MicroMsg.ScanTranslationResultUI", "targetLang %s", new Object[] { this.ISp });
     AppMethodBeat.o(120984);
   }
   
-  private final void eQV()
+  private final void fDV()
   {
     AppMethodBeat.i(120993);
     Log.i("MicroMsg.ScanTranslationResultUI", "alvinluo enterTranslateFinishStatus");
-    this.iOu = 3;
-    Object localObject = this.CMC;
+    this.lEK = 3;
+    Object localObject = this.ISc;
     if (localObject == null) {
-      kotlin.g.b.p.btv("saveContainer");
+      p.bGy("saveContainer");
     }
     ((View)localObject).setVisibility(0);
-    if (n.I(this.CMP, "zh_CN", true))
+    if (n.L(this.ISp, "zh_CN", true))
     {
-      localObject = this.CMD;
+      localObject = this.ISd;
       if (localObject == null) {
-        kotlin.g.b.p.btv("viewSourceBtn");
+        p.bGy("viewSourceBtn");
       }
-      ((ImageView)localObject).setImageResource(2131235352);
+      ((ImageView)localObject).setImageResource(a.c.translate_chinese_view_source_btn);
     }
     for (;;)
     {
-      localObject = this.tgP;
+      localObject = this.wNf;
       if (localObject == null) {
-        kotlin.g.b.p.btv("scanLine");
+        p.bGy("scanLine");
       }
       ((ImageView)localObject).setVisibility(8);
-      cWj();
-      if ((this.source != 1) || (!Util.isNullOrNil(this.CMK))) {
+      dlq();
+      if ((this.source != 1) || (!Util.isNullOrNil(this.ISk))) {
         break label289;
       }
-      this.CMK = ((PluginScanTranslation)g.ah(PluginScanTranslation.class)).genTranslationResultImgPath("jpg");
+      this.ISk = ((PluginScanTranslation)com.tencent.mm.kernel.h.ag(PluginScanTranslation.class)).genTranslationResultImgPath("jpg");
       try
       {
-        BitmapUtil.saveBitmapToImage(this.CMJ, 80, Bitmap.CompressFormat.JPEG, this.CMK, false);
-        localObject = new aj();
-        ((aj)localObject).field_originMD5 = MD5Util.getMD5String(kotlin.g.b.p.I(this.jrK, Long.valueOf(s.boX(this.jrK))));
-        ((aj)localObject).field_resultFile = this.CMK;
-        Log.i("MicroMsg.ScanTranslationResultUI", "insert translate result %s", new Object[] { this.CMK });
-        com.tencent.mm.kernel.b.a locala = g.ah(PluginScanTranslation.class);
-        kotlin.g.b.p.g(locala, "MMKernel.plugin(PluginScanTranslation::class.java)");
-        ((PluginScanTranslation)locala).getTranslationResultStorage().a((aj)localObject);
+        BitmapUtil.saveBitmapToImage(this.ISj, 80, Bitmap.CompressFormat.JPEG, this.ISk, false);
+        localObject = new ah();
+        ((ah)localObject).field_originMD5 = MD5Util.getMD5String(p.I(this.mhn, Long.valueOf(u.bBR(this.mhn))));
+        ((ah)localObject).field_resultFile = this.ISk;
+        Log.i("MicroMsg.ScanTranslationResultUI", "insert translate result %s", new Object[] { this.ISk });
+        com.tencent.mm.kernel.b.a locala = com.tencent.mm.kernel.h.ag(PluginScanTranslation.class);
+        p.j(locala, "MMKernel.plugin(PluginScanTranslation::class.java)");
+        ((PluginScanTranslation)locala).getTranslationResultStorage().a((ah)localObject);
         AppMethodBeat.o(120993);
         return;
       }
@@ -261,60 +263,65 @@ public final class ScanTranslationResultUI
       {
         Log.printErrStackTrace("MicroMsg.ScanTranslationResultUI", (Throwable)localIOException, "save translate result file error", new Object[0]);
       }
-      localObject = this.CMD;
+      localObject = this.ISd;
       if (localObject == null) {
-        kotlin.g.b.p.btv("viewSourceBtn");
+        p.bGy("viewSourceBtn");
       }
-      ((ImageView)localObject).setImageResource(2131235354);
+      ((ImageView)localObject).setImageResource(a.c.translate_english_view_source_btn);
     }
     label289:
     AppMethodBeat.o(120993);
   }
   
-  private final void eQW()
+  private final void fDW()
   {
     AppMethodBeat.i(120987);
     for (;;)
     {
-      Object localObject3;
+      String str2;
       long l;
+      Object localObject2;
       try
       {
         Log.i("MicroMsg.ScanTranslationResultUI", "alvinluo doTranslation");
-        if ((!Util.isNullOrNil(this.jrK)) && (this.CMI != null))
+        if ((!Util.isNullOrNil(this.mhn)) && (this.ISi != null))
         {
-          this.xCU = com.tencent.mm.plugin.scanner.util.p.aMv(this.jrK);
-          localObject3 = this.jrK;
+          this.CGU = com.tencent.mm.plugin.scanner.util.k.aXA(this.mhn);
+          str2 = this.mhn;
           if (this.source == 0)
           {
             l = System.currentTimeMillis();
-            BitmapUtil.saveBitmapToImage(this.CMI, 80, Bitmap.CompressFormat.JPEG, this.jrK, false);
+            BitmapUtil.saveBitmapToImage(this.ISi, 80, Bitmap.CompressFormat.JPEG, this.mhn, false);
             Log.i("MicroMsg.ScanTranslationResultUI", "alvinluo doTranslation save img cost %d", new Object[] { Integer.valueOf((int)(System.currentTimeMillis() - l)) });
-            Log.i("MicroMsg.ScanTranslationResultUI", "alvinluo doTranslation fileSize %d", new Object[] { Long.valueOf(s.boW(this.jrK)) });
-            localObject1 = localObject3;
-            this.CMT[1] = System.currentTimeMillis();
-            localObject3 = g.ah(com.tencent.mm.plugin.scanner.f.class);
-            kotlin.g.b.p.g(localObject3, "MMKernel.plugin(IPluginScanner::class.java)");
-            ((com.tencent.mm.plugin.scanner.f)localObject3).getScanCdnService().a(this.xCU, (String)localObject1, com.tencent.mm.i.a.MediaType_IMAGE, (com.tencent.mm.plugin.scanner.util.p.a)new d(this, (String)localObject1));
+            Log.i("MicroMsg.ScanTranslationResultUI", "alvinluo doTranslation fileSize %d", new Object[] { Long.valueOf(u.bBQ(this.mhn)) });
+            localObject1 = str2;
+            this.ISt[1] = System.currentTimeMillis();
+            str2 = this.CGU;
+            if (str2 != null) {
+              break label450;
+            }
+            str2 = "";
+            break label450;
+            com.tencent.mm.plugin.scanner.util.k.a(str2, (String)localObject2, com.tencent.mm.i.a.MediaType_IMAGE, (k.a)new d(this, (String)localObject1));
             AppMethodBeat.o(120987);
             return;
           }
-          Object localObject1 = localObject3;
+          Object localObject1 = str2;
           if (this.source != 1) {
             continue;
           }
-          localObject1 = MD5Util.getMD5String(kotlin.g.b.p.I(this.jrK, Long.valueOf(s.boX(this.jrK))));
-          com.tencent.mm.kernel.b.a locala = g.ah(PluginScanTranslation.class);
-          kotlin.g.b.p.g(locala, "MMKernel.plugin(PluginScanTranslation::class.java)");
-          localObject1 = ((PluginScanTranslation)locala).getTranslationResultStorage().aMG((String)localObject1);
+          localObject1 = MD5Util.getMD5String(p.I(this.mhn, Long.valueOf(u.bBR(this.mhn))));
+          localObject2 = com.tencent.mm.kernel.h.ag(PluginScanTranslation.class);
+          p.j(localObject2, "MMKernel.plugin(PluginScanTranslation::class.java)");
+          localObject1 = ((PluginScanTranslation)localObject2).getTranslationResultStorage().aXn((String)localObject1);
           if (localObject1 == null) {
-            break label356;
+            break label348;
           }
           Log.i("MicroMsg.ScanTranslationResultUI", "alvinluo doTranslation already has translation result");
-          this.CMK = ((fx)localObject1).field_resultFile;
-          this.CMJ = BitmapUtil.decodeFile(this.CMK, new BitmapFactory.Options());
-          if (this.CMJ == null) {
-            break label348;
+          this.ISk = ((ge)localObject1).field_resultFile;
+          this.ISj = BitmapUtil.decodeFile(this.ISk, new BitmapFactory.Options());
+          if (this.ISj == null) {
+            break label340;
           }
           MMHandlerThread.postToMainThreadDelayed((Runnable)new c(this), 500L);
           AppMethodBeat.o(120987);
@@ -326,45 +333,54 @@ public final class ScanTranslationResultUI
         AppMethodBeat.o(120987);
         return;
       }
-      label348:
+      label340:
       Log.w("MicroMsg.ScanTranslationResultUI", "can not find old translation result!");
-      label356:
-      Object localObject2 = localObject3;
-      if (this.ijt != 0)
+      label348:
+      String str1 = str2;
+      if (this.kYg != 0)
       {
         l = System.currentTimeMillis();
-        localObject2 = ((com.tencent.mm.plugin.scanner.f)g.ah(com.tencent.mm.plugin.scanner.f.class)).genScanTmpImgPath("jpg");
-        BitmapUtil.saveBitmapToImage(this.CMI, 80, Bitmap.CompressFormat.JPEG, (String)localObject2, false);
+        str1 = ((g)com.tencent.mm.kernel.h.ag(g.class)).genScanTmpImgPath("jpg");
+        BitmapUtil.saveBitmapToImage(this.ISi, 80, Bitmap.CompressFormat.JPEG, str1, false);
         Log.i("MicroMsg.ScanTranslationResultUI", "alvinluo doTranslation save img cost %d", new Object[] { Integer.valueOf((int)(System.currentTimeMillis() - l)) });
-        Log.i("MicroMsg.ScanTranslationResultUI", "alvinluo doTranslation fileSize %d", new Object[] { Long.valueOf(s.boW((String)localObject2)) });
+        Log.i("MicroMsg.ScanTranslationResultUI", "alvinluo doTranslation fileSize %d", new Object[] { Long.valueOf(u.bBQ(str1)) });
+        continue;
+        label450:
+        do
+        {
+          localObject2 = str1;
+          break;
+        } while (str1 != null);
+        localObject2 = "";
       }
     }
   }
   
-  private final void eQX()
+  private final void fDX()
   {
     AppMethodBeat.i(120989);
     finish();
-    overridePendingTransition(2130771986, 2130771986);
+    int i = a.a.anim_not_change;
+    overridePendingTransition(i, i);
     AppMethodBeat.o(120989);
   }
   
   public final void d(int paramInt, Bitmap paramBitmap)
   {
     AppMethodBeat.i(120998);
-    if ((paramBitmap != null) && (paramInt == this.CMO))
+    if ((paramBitmap != null) && (paramInt == this.ISo))
     {
-      this.CMS.qC((int)(System.currentTimeMillis() - this.CMT[1]));
-      this.CMJ = paramBitmap;
-      eQV();
-      an(this.CMJ);
+      this.ISs.uj((int)(System.currentTimeMillis() - this.ISt[1]));
+      this.ISj = paramBitmap;
+      fDV();
+      ak(this.ISj);
     }
     AppMethodBeat.o(120998);
   }
   
   public final int getLayoutId()
   {
-    return 2131495192;
+    return a.e.layout_scan_translation_result;
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -373,23 +389,23 @@ public final class ScanTranslationResultUI
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if ((paramInt1 == 561) && (paramInt2 == -1))
     {
-      paramIntent = com.tencent.mm.ui.tools.a.i((Context)getContext(), paramIntent, com.tencent.mm.plugin.image.d.aSY());
+      paramIntent = com.tencent.mm.ui.tools.b.h((Context)getContext(), paramIntent, com.tencent.mm.plugin.image.d.bbW());
       Log.i("MicroMsg.ScanTranslationResultUI", "select: [%s]", new Object[] { paramIntent });
       if (!Util.isNullOrNil(paramIntent))
       {
-        this.jrK = paramIntent;
+        this.mhn = paramIntent;
         this.source = 1;
-        this.CMS.qx(2L);
+        this.ISs.ue(2L);
         Exif localExif = Exif.fromFile(paramIntent);
-        kotlin.g.b.p.g(localExif, "Exif.fromFile(filePath)");
-        this.ijt = localExif.getOrientationInDegree();
-        Log.i("MicroMsg.ScanTranslationResultUI", "degree %s", new Object[] { Integer.valueOf(this.ijt) });
+        p.j(localExif, "Exif.fromFile(filePath)");
+        this.kYg = localExif.getOrientationInDegree();
+        Log.i("MicroMsg.ScanTranslationResultUI", "degree %s", new Object[] { Integer.valueOf(this.kYg) });
         paramIntent = BitmapUtil.decodeFileWithSample(paramIntent);
         if (paramIntent != null)
         {
-          this.CMI = BitmapUtil.rotate(paramIntent, this.ijt);
-          cWg();
-          an(this.CMI);
+          this.ISi = BitmapUtil.rotate(paramIntent, this.kYg);
+          dln();
+          ak(this.ISi);
         }
       }
     }
@@ -400,75 +416,75 @@ public final class ScanTranslationResultUI
   {
     AppMethodBeat.i(120983);
     super.onCreate(paramBundle);
-    getController().setNavigationbarColor(getResources().getColor(2131099836));
-    paramBundle = findViewById(2131307160);
-    kotlin.g.b.p.g(paramBundle, "findViewById(R.id.root_container)");
-    this.jWj = paramBundle;
-    paramBundle = findViewById(2131309404);
-    kotlin.g.b.p.g(paramBundle, "findViewById(R.id.translate_gallery_view)");
-    this.CMM = ((MMGestureGallery)paramBundle);
-    this.CNb = new b();
-    paramBundle = this.CMM;
+    getController().setNavigationbarColor(getResources().getColor(a.b.UN_BW_0_Alpha_0_9));
+    paramBundle = findViewById(a.d.root_container);
+    p.j(paramBundle, "findViewById(R.id.root_container)");
+    this.mNv = paramBundle;
+    paramBundle = findViewById(a.d.translate_gallery_view);
+    p.j(paramBundle, "findViewById(R.id.translate_gallery_view)");
+    this.ISm = ((MMGestureGallery)paramBundle);
+    this.ISC = new ScanTranslationResultUI.b(this);
+    paramBundle = this.ISm;
     if (paramBundle == null) {
-      kotlin.g.b.p.btv("gestureGallery");
+      p.bGy("gestureGallery");
     }
-    paramBundle.setAdapter((SpinnerAdapter)this.CNb);
-    paramBundle = findViewById(2131307217);
-    kotlin.g.b.p.g(paramBundle, "findViewById(R.id.save_translate_container)");
-    this.CMC = paramBundle;
-    paramBundle = this.CMC;
+    paramBundle.setAdapter((SpinnerAdapter)this.ISC);
+    paramBundle = findViewById(a.d.save_translate_container);
+    p.j(paramBundle, "findViewById(R.id.save_translate_container)");
+    this.ISc = paramBundle;
+    paramBundle = this.ISc;
     if (paramBundle == null) {
-      kotlin.g.b.p.btv("saveContainer");
+      p.bGy("saveContainer");
     }
-    paramBundle = paramBundle.findViewById(2131309409);
-    kotlin.g.b.p.g(paramBundle, "saveContainer.findViewBy…ranslate_view_source_btn)");
-    this.CMD = ((ImageView)paramBundle);
-    paramBundle = this.CMD;
+    paramBundle = paramBundle.findViewById(a.d.translate_view_source_btn);
+    p.j(paramBundle, "saveContainer.findViewBy…ranslate_view_source_btn)");
+    this.ISd = ((ImageView)paramBundle);
+    paramBundle = this.ISd;
     if (paramBundle == null) {
-      kotlin.g.b.p.btv("viewSourceBtn");
+      p.bGy("viewSourceBtn");
     }
     paramBundle.setOnClickListener((View.OnClickListener)new e(this));
-    paramBundle = findViewById(2131309408);
-    kotlin.g.b.p.g(paramBundle, "findViewById(R.id.translate_top_bg)");
-    this.CMF = paramBundle;
-    paramBundle = findViewById(2131309401);
-    kotlin.g.b.p.g(paramBundle, "findViewById(R.id.translate_bottom_bg)");
-    this.CMG = paramBundle;
+    paramBundle = findViewById(a.d.translate_top_bg);
+    p.j(paramBundle, "findViewById(R.id.translate_top_bg)");
+    this.ISf = paramBundle;
+    paramBundle = findViewById(a.d.translate_bottom_bg);
+    p.j(paramBundle, "findViewById(R.id.translate_bottom_bg)");
+    this.ISg = paramBundle;
     hideTitleView();
     paramBundle = getSupportActionBar();
     if (paramBundle != null) {
       paramBundle.hide();
     }
-    paramBundle = findViewById(2131307243);
-    kotlin.g.b.p.g(paramBundle, "findViewById(R.id.scan_line)");
-    this.tgP = ((ImageView)paramBundle);
-    paramBundle = this.CMC;
+    paramBundle = findViewById(a.d.scan_line);
+    p.j(paramBundle, "findViewById(R.id.scan_line)");
+    this.wNf = ((ImageView)paramBundle);
+    paramBundle = this.ISc;
     if (paramBundle == null) {
-      kotlin.g.b.p.btv("saveContainer");
+      p.bGy("saveContainer");
     }
-    paramBundle = paramBundle.findViewById(2131309403);
-    kotlin.g.b.p.g(paramBundle, "saveContainer.findViewBy…d.translate_download_btn)");
-    this.CME = paramBundle;
-    paramBundle = this.CME;
+    paramBundle = paramBundle.findViewById(a.d.translate_download_btn);
+    p.j(paramBundle, "saveContainer.findViewBy…d.translate_download_btn)");
+    this.ISe = paramBundle;
+    paramBundle = this.ISe;
     if (paramBundle == null) {
-      kotlin.g.b.p.btv("saveImgBtn");
+      p.bGy("saveImgBtn");
     }
     paramBundle.setOnClickListener((View.OnClickListener)new f(this));
-    paramBundle = findViewById(2131298771);
-    kotlin.g.b.p.g(paramBundle, "findViewById(R.id.close_button)");
-    this.AmD = ((WeImageView)paramBundle);
-    paramBundle = this.AmD;
+    paramBundle = findViewById(a.d.close_button);
+    p.j(paramBundle, "findViewById(R.id.close_button)");
+    this.FTK = ((WeImageView)paramBundle);
+    paramBundle = this.FTK;
     if (paramBundle == null) {
-      kotlin.g.b.p.btv("closeButton");
+      p.bGy("closeButton");
     }
     paramBundle.setOnClickListener((View.OnClickListener)new ScanTranslationResultUI.g(this));
-    this.mEY = com.tencent.mm.cb.a.jo((Context)getContext());
-    this.tgS.setFloatValues(new float[] { 0.0F, 1.0F });
-    this.tgS.addListener((Animator.AnimatorListener)new h(this));
-    this.tgS.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new i(this));
-    paramBundle = this.CMC;
+    this.pEk = com.tencent.mm.ci.a.ks((Context)getContext());
+    this.wNi.setFloatValues(new float[] { 0.0F, 1.0F });
+    this.wNi.addListener((Animator.AnimatorListener)new ScanTranslationResultUI.h(this));
+    this.wNi.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new ScanTranslationResultUI.i(this));
+    paramBundle = this.ISc;
     if (paramBundle == null) {
-      kotlin.g.b.p.btv("saveContainer");
+      p.bGy("saveContainer");
     }
     paramBundle = paramBundle.getLayoutParams();
     if (paramBundle == null)
@@ -479,62 +495,62 @@ public final class ScanTranslationResultUI
     }
     paramBundle = (RelativeLayout.LayoutParams)paramBundle;
     int i = paramBundle.bottomMargin;
-    paramBundle.bottomMargin = (ao.aD((Context)getContext()) + i);
-    Object localObject = this.CMC;
+    paramBundle.bottomMargin = (ar.aB((Context)getContext()) + i);
+    Object localObject = this.ISc;
     if (localObject == null) {
-      kotlin.g.b.p.btv("saveContainer");
+      p.bGy("saveContainer");
     }
     ((View)localObject).setLayoutParams((ViewGroup.LayoutParams)paramBundle);
-    this.tgS.setDuration(5000L);
+    this.wNi.setDuration(5000L);
     com.tencent.mm.ui.base.b.a((Activity)this, null);
-    eQP();
+    fDQ();
     localObject = getIntent().getStringExtra("key_translation_origin_image_path");
     paramBundle = (Bundle)localObject;
     if (localObject == null) {
       paramBundle = "";
     }
-    this.jrK = paramBundle;
+    this.mhn = paramBundle;
     this.source = getIntent().getIntExtra("key_translation_source", 0);
     if (this.source == 0)
     {
-      this.CMS.qy(getIntent().getLongExtra("key_translation_capture_time", 0L));
-      this.CMS.qx(1L);
+      this.ISs.uf(getIntent().getLongExtra("key_translation_capture_time", 0L));
+      this.ISs.ue(1L);
     }
     for (;;)
     {
-      Log.i("MicroMsg.ScanTranslationResultUI", "alvinluo initData originPath: %s, source: %d", new Object[] { this.jrK, Integer.valueOf(this.source) });
-      paramBundle = this.jrK;
+      Log.i("MicroMsg.ScanTranslationResultUI", "alvinluo initData originPath: %s, source: %d", new Object[] { this.mhn, Integer.valueOf(this.source) });
+      paramBundle = this.mhn;
       if (paramBundle == null) {
-        kotlin.g.b.p.hyc();
+        p.iCn();
       }
-      this.CMI = ai.aMD(paramBundle);
-      if (this.CMI != null)
+      this.ISi = ag.aXk(paramBundle);
+      if (this.ISi != null)
       {
-        paramBundle = this.CMI;
+        paramBundle = this.ISi;
         if (paramBundle == null) {
-          kotlin.g.b.p.hyc();
+          p.iCn();
         }
         if (!paramBundle.isRecycled())
         {
-          paramBundle = this.CMI;
+          paramBundle = this.ISi;
           if (paramBundle == null) {
-            kotlin.g.b.p.hyc();
+            p.iCn();
           }
           i = paramBundle.getWidth();
-          paramBundle = this.CMI;
+          paramBundle = this.ISi;
           if (paramBundle == null) {
-            kotlin.g.b.p.hyc();
+            p.iCn();
           }
           Log.i("MicroMsg.ScanTranslationResultUI", "alvinluo initData bitmap width: %d, height: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramBundle.getHeight()) });
         }
       }
-      an(this.CMI);
+      ak(this.ISi);
       AppMethodBeat.o(120983);
       return;
       if (this.source == 1)
       {
-        this.CMS.qy(0L);
-        this.CMS.qx(2L);
+        this.ISs.uf(0L);
+        this.ISs.ue(2L);
       }
     }
   }
@@ -543,48 +559,48 @@ public final class ScanTranslationResultUI
   {
     AppMethodBeat.i(120991);
     super.onDestroy();
-    this.tgS.removeAllListeners();
-    this.tgS.removeAllUpdateListeners();
-    this.tgS.cancel();
-    ai.clear();
-    Object localObject = g.ah(PluginScanTranslation.class);
+    this.wNi.removeAllListeners();
+    this.wNi.removeAllUpdateListeners();
+    this.wNi.cancel();
+    ag.clear();
+    Object localObject = com.tencent.mm.kernel.h.ag(PluginScanTranslation.class);
     if (localObject == null)
     {
       localObject = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.scanner.PluginScanTranslation");
       AppMethodBeat.o(120991);
       throw ((Throwable)localObject);
     }
-    ((PluginScanTranslation)localObject).getTranslationRender().eRW();
+    ((PluginScanTranslation)localObject).getTranslationRender().fEV();
     AppMethodBeat.o(120991);
   }
   
   public final boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(120988);
-    kotlin.g.b.p.h(paramKeyEvent, "event");
+    p.k(paramKeyEvent, "event");
     if (paramInt == 4)
     {
-      paramKeyEvent = g.ah(PluginScanTranslation.class);
+      paramKeyEvent = com.tencent.mm.kernel.h.ag(PluginScanTranslation.class);
       if (paramKeyEvent == null)
       {
         paramKeyEvent = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.scanner.PluginScanTranslation");
         AppMethodBeat.o(120988);
         throw paramKeyEvent;
       }
-      ((PluginScanTranslation)paramKeyEvent).getTranslationRender().eRW();
-      if (this.iOu != 0)
+      ((PluginScanTranslation)paramKeyEvent).getTranslationRender().fEV();
+      if (this.lEK != 0)
       {
-        if ((this.iOu != 1) && (this.iOu != 2) && (this.iOu != 3)) {
+        if ((this.lEK != 1) && (this.lEK != 2) && (this.lEK != 3)) {
           break label141;
         }
-        if (this.iOu == 1) {
-          this.CMS.qC((int)(System.currentTimeMillis() - this.CMT[1]));
+        if (this.lEK == 1) {
+          this.ISs.uj((int)(System.currentTimeMillis() - this.ISt[1]));
         }
-        if (this.CMS.agO() != 0L) {
-          this.CMS.bfK();
+        if (this.ISs.alV() != 0L) {
+          this.ISs.bpa();
         }
       }
-      eQX();
+      fDX();
       label141:
       AppMethodBeat.o(120988);
       return true;
@@ -598,7 +614,7 @@ public final class ScanTranslationResultUI
   {
     AppMethodBeat.i(120986);
     super.onPause();
-    g.azz().b(294, (i)this);
+    com.tencent.mm.kernel.h.aGY().b(294, (i)this);
     AppMethodBeat.o(120986);
   }
   
@@ -610,21 +626,21 @@ public final class ScanTranslationResultUI
     if (localObject != null) {
       ((Window)localObject).addFlags(2097280);
     }
-    if (com.tencent.mm.compatible.util.d.oD(19)) {
+    if (com.tencent.mm.compatible.util.d.qV(19)) {
       getWindow().addFlags(67109888);
     }
     for (;;)
     {
       localObject = getWindow();
-      kotlin.g.b.p.g(localObject, "window");
+      p.j(localObject, "window");
       localObject = ((Window)localObject).getDecorView();
-      kotlin.g.b.p.g(localObject, "window.decorView");
+      p.j(localObject, "window.decorView");
       ((View)localObject).setSystemUiVisibility(1280);
-      com.tencent.mm.plugin.ball.f.f.cji();
-      g.azz().a(294, (i)this);
-      Log.i("MicroMsg.ScanTranslationResultUI", "alvinluo onResume curState: %d", new Object[] { Integer.valueOf(this.iOu) });
-      if (this.iOu == -1) {
-        cWg();
+      f.cwA();
+      com.tencent.mm.kernel.h.aGY().a(294, (i)this);
+      Log.i("MicroMsg.ScanTranslationResultUI", "alvinluo onResume curState: %d", new Object[] { Integer.valueOf(this.lEK) });
+      if (this.lEK == -1) {
+        dln();
       }
       AppMethodBeat.o(120985);
       return;
@@ -644,40 +660,40 @@ public final class ScanTranslationResultUI
         AppMethodBeat.o(120996);
         throw paramString;
       }
-      paramString = ((m)paramq).ePQ();
-      if ((paramString != null) && (((m)paramq).getSessionId() == this.CMO))
+      paramString = ((com.tencent.mm.plugin.scanner.model.k)paramq).fCL();
+      if ((paramString != null) && (((com.tencent.mm.plugin.scanner.model.k)paramq).getSessionId() == this.ISo))
       {
-        this.CMS.qB((int)(System.currentTimeMillis() - ((m)paramq).ePS()));
-        Log.i("MicroMsg.ScanTranslationResultUI", "alvinluo scanTranslate onSceneEnd angle %f, translationInfos length %d", new Object[] { Float.valueOf(((m)paramq).getAngle()), Integer.valueOf(paramString.size()) });
+        this.ISs.ui((int)(System.currentTimeMillis() - ((com.tencent.mm.plugin.scanner.model.k)paramq).fCN()));
+        Log.i("MicroMsg.ScanTranslationResultUI", "alvinluo scanTranslate onSceneEnd angle %f, translationInfos length %d", new Object[] { Float.valueOf(((com.tencent.mm.plugin.scanner.model.k)paramq).getAngle()), Integer.valueOf(paramString.size()) });
         if (paramString.size() > 0)
         {
-          this.CMS.qz(1L);
-          com.tencent.mm.kernel.b.a locala = g.ah(PluginScanTranslation.class);
-          kotlin.g.b.p.g(locala, "MMKernel.plugin(PluginScanTranslation::class.java)");
-          ((PluginScanTranslation)locala).getTranslationRender().a(this.CMO, paramString, ((m)paramq).getAngle(), this.CMI, (k.b)this);
-          if (!Util.isNullOrNil(((m)paramq).ePR()))
+          this.ISs.ug(1L);
+          com.tencent.mm.kernel.b.a locala = com.tencent.mm.kernel.h.ag(PluginScanTranslation.class);
+          p.j(locala, "MMKernel.plugin(PluginScanTranslation::class.java)");
+          ((PluginScanTranslation)locala).getTranslationRender().a(this.ISo, paramString, ((com.tencent.mm.plugin.scanner.model.k)paramq).getAngle(), this.ISi, (l.b)this);
+          if (!Util.isNullOrNil(((com.tencent.mm.plugin.scanner.model.k)paramq).fCM()))
           {
-            this.CMP = ((m)paramq).ePR();
+            this.ISp = ((com.tencent.mm.plugin.scanner.model.k)paramq).fCM();
             AppMethodBeat.o(120996);
           }
         }
         else
         {
-          this.CMS.qC((int)(System.currentTimeMillis() - this.CMT[1]));
-          paramString = getResources().getString(2131764991);
-          kotlin.g.b.p.g(paramString, "resources.getString(R.st…an_translating_no_result)");
-          h.a((Context)getContext(), paramString, "", false, (DialogInterface.OnClickListener)new ScanTranslationResultUI.j(this));
+          this.ISs.uj((int)(System.currentTimeMillis() - this.ISt[1]));
+          paramString = getResources().getString(a.g.scan_translating_no_result);
+          p.j(paramString, "resources.getString(R.st…an_translating_no_result)");
+          com.tencent.mm.ui.base.h.a((Context)getContext(), paramString, "", false, (DialogInterface.OnClickListener)new ScanTranslationResultUI.j(this));
           AppMethodBeat.o(120996);
         }
       }
     }
     else
     {
-      cWj();
-      this.CMS.qz(5L);
-      this.CMS.qC((int)(System.currentTimeMillis() - this.CMT[1]));
-      paramq = getResources().getString(2131764991);
-      kotlin.g.b.p.g(paramq, "resources.getString(R.st…an_translating_no_result)");
+      dlq();
+      this.ISs.ug(5L);
+      this.ISs.uj((int)(System.currentTimeMillis() - this.ISt[1]));
+      paramq = getResources().getString(a.g.scan_translating_no_result);
+      p.j(paramq, "resources.getString(R.st…an_translating_no_result)");
       if (Util.isNullOrNil(paramString)) {
         break label428;
       }
@@ -685,7 +701,7 @@ public final class ScanTranslationResultUI
     label428:
     for (paramString = String.valueOf(paramString);; paramString = paramq)
     {
-      h.a((Context)getContext(), paramString, "", false, (DialogInterface.OnClickListener)new ScanTranslationResultUI.k(this));
+      com.tencent.mm.ui.base.h.a((Context)getContext(), paramString, "", false, (DialogInterface.OnClickListener)new ScanTranslationResultUI.k(this));
       AppMethodBeat.o(120996);
       return;
     }
@@ -695,7 +711,7 @@ public final class ScanTranslationResultUI
   {
     AppMethodBeat.i(120990);
     super.onStop();
-    g.azz().b(294, (i)this);
+    com.tencent.mm.kernel.h.aGY().b(294, (i)this);
     AppMethodBeat.o(120990);
   }
   
@@ -705,70 +721,7 @@ public final class ScanTranslationResultUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$TranslateImageAdapter;", "Landroid/widget/BaseAdapter;", "(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;)V", "bitmap", "Landroid/graphics/Bitmap;", "getCount", "", "getItem", "", "i", "getItemId", "", "getView", "Landroid/view/View;", "view", "viewGroup", "Landroid/view/ViewGroup;", "setImageBitmap", "", "scan-translation_release"})
-  final class b
-    extends BaseAdapter
-  {
-    private Bitmap bitmap;
-    
-    public final int getCount()
-    {
-      return 1;
-    }
-    
-    public final Object getItem(int paramInt)
-    {
-      return null;
-    }
-    
-    public final long getItemId(int paramInt)
-    {
-      return paramInt;
-    }
-    
-    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-    {
-      AppMethodBeat.i(120968);
-      kotlin.g.b.p.h(paramViewGroup, "viewGroup");
-      if (paramView == null)
-      {
-        paramView = new MultiTouchImageView((Context)this.CNd.getContext(), 0, 0, (byte)0);
-        paramView.setLayoutParams((ViewGroup.LayoutParams)new Gallery.LayoutParams(-1, -1));
-      }
-      for (;;)
-      {
-        if (this.bitmap != null)
-        {
-          paramView.setImageBitmap(this.bitmap);
-          paramViewGroup = this.bitmap;
-          if (paramViewGroup == null) {
-            kotlin.g.b.p.hyc();
-          }
-          paramInt = paramViewGroup.getWidth();
-          paramViewGroup = this.bitmap;
-          if (paramViewGroup == null) {
-            kotlin.g.b.p.hyc();
-          }
-          paramView.cN(paramInt, paramViewGroup.getHeight());
-          paramView.gKy();
-        }
-        paramView = (View)paramView;
-        AppMethodBeat.o(120968);
-        return paramView;
-        paramView = (MultiTouchImageView)paramView;
-      }
-    }
-    
-    public final void setImageBitmap(Bitmap paramBitmap)
-    {
-      AppMethodBeat.i(120969);
-      kotlin.g.b.p.h(paramBitmap, "bitmap");
-      this.bitmap = paramBitmap;
-      AppMethodBeat.o(120969);
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -777,93 +730,132 @@ public final class ScanTranslationResultUI
     public final void run()
     {
       AppMethodBeat.i(120970);
-      ScanTranslationResultUI.m(this.CNd);
-      ScanTranslationResultUI.a(this.CNd, ScanTranslationResultUI.f(this.CNd));
+      ScanTranslationResultUI.m(this.ISE);
+      ScanTranslationResultUI.a(this.ISE, ScanTranslationResultUI.f(this.ISE));
       AppMethodBeat.o(120970);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "mediaId", "", "kotlin.jvm.PlatformType", "result", "Lcom/tencent/mm/plugin/scanner/util/ScannerCdnService$ScannerUploadCallbackResult;", "Lcom/tencent/mm/plugin/scanner/util/ScannerCdnService;", "onFinish"})
-  static final class d
-    implements com.tencent.mm.plugin.scanner.util.p.a
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$doTranslation$2", "Lcom/tencent/mm/plugin/scanner/util/ScanTranslateCdnService$ScanTranslateUploadCallback;", "onFinish", "", "mediaId", "", "result", "Lcom/tencent/mm/plugin/scanner/util/ScanTranslateCdnService$ScanTranslateUploadCallbackResult;", "scan-translation_release"})
+  public static final class d
+    implements k.a
   {
-    d(ScanTranslationResultUI paramScanTranslationResultUI, String paramString) {}
+    d(String paramString) {}
     
-    public final void a(String paramString, p.b paramb)
+    public final void a(String paramString, k.b paramb)
     {
-      AppMethodBeat.i(120975);
-      if ((!Util.isNullOrNil(paramString)) && (kotlin.g.b.p.j(paramString, ScanTranslationResultUI.n(this.CNd))))
+      AppMethodBeat.i(211796);
+      p.k(paramb, "result");
+      if ((!Util.isNullOrNil(paramString)) && (p.h(paramString, ScanTranslationResultUI.n(this.ISE))))
       {
-        ScanTranslationResultUI.e(this.CNd).qA((int)(System.currentTimeMillis() - ScanTranslationResultUI.o(this.CNd)[1]));
-        Log.i("MicroMsg.ScanTranslationResultUI", "alvinluo scanTranslate upload img cost %d, errCode: %d", new Object[] { Long.valueOf(ScanTranslationResultUI.e(this.CNd).agP()), Integer.valueOf(paramb.errCode) });
-        ScanTranslationResultUI.e(this.CNd).uq(paramb.fileId);
-        ScanTranslationResultUI.e(this.CNd).ur(paramb.aeskey);
+        ScanTranslationResultUI.e(this.ISE).uh((int)(System.currentTimeMillis() - ScanTranslationResultUI.o(this.ISE)[1]));
+        Log.i("MicroMsg.ScanTranslationResultUI", "alvinluo scanTranslate upload img cost %d, errCode: %d", new Object[] { Long.valueOf(ScanTranslationResultUI.e(this.ISE).alW()), Integer.valueOf(paramb.errCode) });
+        ScanTranslationResultUI.e(this.ISE).zP(paramb.fileId);
+        ScanTranslationResultUI.e(this.ISE).zQ(paramb.aeskey);
         switch (paramb.errCode)
         {
+        default: 
+          MMHandlerThread.postToMainThread((Runnable)new c(this));
+          ScanTranslationResultUI.e(this.ISE).ug(3L);
         }
       }
       for (;;)
       {
-        if ((ScanTranslationResultUI.a(this.CNd) == 1) && (ScanTranslationResultUI.r(this.CNd) != 0))
+        if ((ScanTranslationResultUI.a(this.ISE) == 1) && (ScanTranslationResultUI.r(this.ISE) != 0))
         {
-          Log.i("delete tmp path %s", this.CNe);
-          s.deleteFile(this.CNe);
+          Log.i("delete tmp path %s", this.ISF);
+          u.deleteFile(this.ISF);
         }
-        AppMethodBeat.o(120975);
+        AppMethodBeat.o(211796);
         return;
         if (!Util.isNullOrNil(new String[] { paramb.fileId, paramb.aeskey }))
         {
           Log.i("MicroMsg.ScanTranslationResultUI", "fileId %s", new Object[] { paramb.fileId });
-          paramString = new m(ScanTranslationResultUI.p(this.CNd), (int)s.boW(this.CNe), paramb.fileId, paramb.aeskey);
-          g.azz().b((q)paramString);
+          paramString = new com.tencent.mm.plugin.scanner.model.k(ScanTranslationResultUI.p(this.ISE), (int)u.bBQ(this.ISF), paramb.fileId, paramb.aeskey);
+          com.tencent.mm.kernel.h.aGY().b((q)paramString);
         }
         else
         {
-          MMHandlerThread.postToMainThread((Runnable)new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(120972);
-              ScanTranslationResultUI.q(this.CNf.CNd);
-              h.d((Context)this.CNf.CNd.getContext(), this.CNf.CNd.getResources().getString(2131764991), this.CNf.CNd.getResources().getString(2131755998), (DialogInterface.OnClickListener)new DialogInterface.OnClickListener()
-              {
-                public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
-                {
-                  AppMethodBeat.i(120971);
-                  ScanTranslationResultUI.j(this.CNg.CNf.CNd);
-                  AppMethodBeat.o(120971);
-                }
-              });
-              AppMethodBeat.o(120972);
-            }
-          });
-          ScanTranslationResultUI.e(this.CNd).qz(3L);
+          MMHandlerThread.postToMainThread((Runnable)new a(this));
+          ScanTranslationResultUI.e(this.ISE).ug(3L);
           continue;
-          MMHandlerThread.postToMainThread((Runnable)new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(120974);
-              ScanTranslationResultUI.q(this.CNf.CNd);
-              h.d((Context)this.CNf.CNd.getContext(), this.CNf.CNd.getResources().getString(2131759383), this.CNf.CNd.getResources().getString(2131755998), (DialogInterface.OnClickListener)new DialogInterface.OnClickListener()
-              {
-                public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
-                {
-                  AppMethodBeat.i(120973);
-                  ScanTranslationResultUI.j(this.CNh.CNf.CNd);
-                  AppMethodBeat.o(120973);
-                }
-              });
-              AppMethodBeat.o(120974);
-            }
-          });
-          ScanTranslationResultUI.e(this.CNd).qz(3L);
+          MMHandlerThread.postToMainThread((Runnable)new b(this));
+          ScanTranslationResultUI.e(this.ISE).ug(3L);
         }
+      }
+    }
+    
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+    static final class a
+      implements Runnable
+    {
+      a(ScanTranslationResultUI.d paramd) {}
+      
+      public final void run()
+      {
+        AppMethodBeat.i(211988);
+        ScanTranslationResultUI.q(this.ISG.ISE);
+        com.tencent.mm.ui.base.h.d((Context)this.ISG.ISE.getContext(), this.ISG.ISE.getResources().getString(a.g.scan_translating_no_result), this.ISG.ISE.getResources().getString(a.g.app_tip), (DialogInterface.OnClickListener)new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          {
+            AppMethodBeat.i(211878);
+            ScanTranslationResultUI.j(this.ISH.ISG.ISE);
+            AppMethodBeat.o(211878);
+          }
+        });
+        AppMethodBeat.o(211988);
+      }
+    }
+    
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+    static final class b
+      implements Runnable
+    {
+      b(ScanTranslationResultUI.d paramd) {}
+      
+      public final void run()
+      {
+        AppMethodBeat.i(211949);
+        ScanTranslationResultUI.q(this.ISG.ISE);
+        com.tencent.mm.ui.base.h.d((Context)this.ISG.ISE.getContext(), this.ISG.ISE.getResources().getString(a.g.file_explorer_cannot_open_file), this.ISG.ISE.getResources().getString(a.g.app_tip), (DialogInterface.OnClickListener)new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          {
+            AppMethodBeat.i(212040);
+            ScanTranslationResultUI.j(this.ISI.ISG.ISE);
+            AppMethodBeat.o(212040);
+          }
+        });
+        AppMethodBeat.o(211949);
+      }
+    }
+    
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+    static final class c
+      implements Runnable
+    {
+      c(ScanTranslationResultUI.d paramd) {}
+      
+      public final void run()
+      {
+        AppMethodBeat.i(211638);
+        ScanTranslationResultUI.q(this.ISG.ISE);
+        com.tencent.mm.ui.base.h.d((Context)this.ISG.ISE.getContext(), this.ISG.ISE.getResources().getString(a.g.file_explorer_cannot_open_file), this.ISG.ISE.getResources().getString(a.g.app_tip), (DialogInterface.OnClickListener)new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          {
+            AppMethodBeat.i(211557);
+            ScanTranslationResultUI.j(this.ISJ.ISG.ISE);
+            AppMethodBeat.o(211557);
+          }
+        });
+        AppMethodBeat.o(211638);
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class e
     implements View.OnClickListener
   {
@@ -873,47 +865,47 @@ public final class ScanTranslationResultUI
     {
       AppMethodBeat.i(120976);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      if (ScanTranslationResultUI.a(this.CNd) == 3)
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      if (ScanTranslationResultUI.a(this.ISE) == 3)
       {
-        if (ScanTranslationResultUI.b(this.CNd) != null) {
-          ScanTranslationResultUI.a(this.CNd, ScanTranslationResultUI.b(this.CNd));
+        if (ScanTranslationResultUI.b(this.ISE) != null) {
+          ScanTranslationResultUI.a(this.ISE, ScanTranslationResultUI.b(this.ISE));
         }
-        paramView = ScanTranslationResultUI.c(this.CNd);
-        if ((paramView != null) && (n.I(paramView, "zh_CN", false) == true))
+        paramView = ScanTranslationResultUI.c(this.ISE);
+        if ((paramView != null) && (n.L(paramView, "zh_CN", false) == true))
         {
-          ScanTranslationResultUI.d(this.CNd).setImageResource(2131691668);
-          ScanTranslationResultUI.a(this.CNd, 2);
-          ScanTranslationResultUI.e(this.CNd).qD(ScanTranslationResultUI.e(this.CNd).agQ() + 1L);
+          ScanTranslationResultUI.d(this.ISE).setImageResource(a.f.translation_result_chinese_highlighted);
+          ScanTranslationResultUI.a(this.ISE, 2);
+          ScanTranslationResultUI.e(this.ISE).uk(ScanTranslationResultUI.e(this.ISE).alX() + 1L);
         }
       }
-      while (ScanTranslationResultUI.a(this.CNd) != 2) {
+      while (ScanTranslationResultUI.a(this.ISE) != 2) {
         for (;;)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(120976);
           return;
-          ScanTranslationResultUI.d(this.CNd).setImageResource(2131691671);
+          ScanTranslationResultUI.d(this.ISE).setImageResource(a.f.translation_result_english_highlighted);
         }
       }
-      if (ScanTranslationResultUI.f(this.CNd) != null) {
-        ScanTranslationResultUI.a(this.CNd, ScanTranslationResultUI.f(this.CNd));
+      if (ScanTranslationResultUI.f(this.ISE) != null) {
+        ScanTranslationResultUI.a(this.ISE, ScanTranslationResultUI.f(this.ISE));
       }
-      paramView = ScanTranslationResultUI.c(this.CNd);
-      if ((paramView != null) && (n.I(paramView, "zh_CN", true) == true)) {
-        ScanTranslationResultUI.d(this.CNd).setImageResource(2131235352);
+      paramView = ScanTranslationResultUI.c(this.ISE);
+      if ((paramView != null) && (n.L(paramView, "zh_CN", true) == true)) {
+        ScanTranslationResultUI.d(this.ISE).setImageResource(a.c.translate_chinese_view_source_btn);
       }
       for (;;)
       {
-        ScanTranslationResultUI.a(this.CNd, 3);
+        ScanTranslationResultUI.a(this.ISE, 3);
         break;
-        ScanTranslationResultUI.d(this.CNd).setImageResource(2131235354);
+        ScanTranslationResultUI.d(this.ISE).setImageResource(a.c.translate_english_view_source_btn);
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class f
     implements View.OnClickListener
   {
@@ -931,34 +923,34 @@ public final class ScanTranslationResultUI
       //   12: astore_3
       //   13: aload_3
       //   14: aload_1
-      //   15: invokevirtual 54	com/tencent/mm/hellhoundlib/b/b:bm	(Ljava/lang/Object;)V
+      //   15: invokevirtual 54	com/tencent/mm/hellhoundlib/b/b:bn	(Ljava/lang/Object;)V
       //   18: ldc 56
       //   20: ldc 57
       //   22: ldc 58
       //   24: ldc 59
       //   26: aload_0
       //   27: aload_3
-      //   28: invokevirtual 63	com/tencent/mm/hellhoundlib/b/b:axR	()[Ljava/lang/Object;
-      //   31: invokestatic 69	com/tencent/mm/hellhoundlib/a/a:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
+      //   28: invokevirtual 63	com/tencent/mm/hellhoundlib/b/b:aFi	()[Ljava/lang/Object;
+      //   31: invokestatic 69	com/tencent/mm/hellhoundlib/a/a:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V
       //   34: aload_0
-      //   35: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:CNd	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
+      //   35: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:ISE	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
       //   38: invokestatic 73	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI:a	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;)I
       //   41: iconst_2
       //   42: if_icmpne +88 -> 130
       //   45: aload_0
-      //   46: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:CNd	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
-      //   49: invokestatic 77	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI:e	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;)Lcom/tencent/mm/g/b/a/go;
-      //   52: invokevirtual 83	com/tencent/mm/g/b/a/go:agS	()Lcom/tencent/mm/g/b/a/go;
+      //   46: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:ISE	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
+      //   49: invokestatic 77	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI:e	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;)Lcom/tencent/mm/f/b/a/it;
+      //   52: invokevirtual 83	com/tencent/mm/f/b/a/it:alZ	()Lcom/tencent/mm/f/b/a/it;
       //   55: pop
       //   56: aload_0
-      //   57: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:CNd	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
+      //   57: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:ISE	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
       //   60: invokestatic 87	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI:g	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;)Ljava/lang/String;
       //   63: astore_1
       //   64: aload_1
       //   65: ifnull +28 -> 93
       //   68: aload_0
-      //   69: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:CNd	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
-      //   72: invokevirtual 91	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI:getContext	()Landroid/support/v7/app/AppCompatActivity;
+      //   69: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:ISE	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
+      //   72: invokevirtual 91	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI:getContext	()Landroidx/appcompat/app/AppCompatActivity;
       //   75: checkcast 93	android/content/Context
       //   78: aload_1
       //   79: new 10	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f$a
@@ -986,49 +978,49 @@ public final class ScanTranslationResultUI
       //   124: invokestatic 121	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   127: goto -34 -> 93
       //   130: aload_0
-      //   131: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:CNd	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
+      //   131: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:ISE	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
       //   134: invokestatic 73	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI:a	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;)I
       //   137: iconst_3
       //   138: if_icmpne -45 -> 93
       //   141: aload_0
-      //   142: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:CNd	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
-      //   145: invokestatic 77	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI:e	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;)Lcom/tencent/mm/g/b/a/go;
-      //   148: invokevirtual 124	com/tencent/mm/g/b/a/go:agR	()Lcom/tencent/mm/g/b/a/go;
+      //   142: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:ISE	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
+      //   145: invokestatic 77	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI:e	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;)Lcom/tencent/mm/f/b/a/it;
+      //   148: invokevirtual 124	com/tencent/mm/f/b/a/it:alY	()Lcom/tencent/mm/f/b/a/it;
       //   151: pop
       //   152: aload_0
-      //   153: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:CNd	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
+      //   153: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:ISE	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
       //   156: invokestatic 127	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI:h	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;)I
       //   159: istore_2
       //   160: iload_2
       //   161: ifne +47 -> 208
       //   164: aload_0
-      //   165: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:CNd	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
+      //   165: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:ISE	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
       //   168: ldc 129
-      //   170: invokestatic 135	com/tencent/mm/kernel/g:ah	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
+      //   170: invokestatic 135	com/tencent/mm/kernel/h:ag	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
       //   173: checkcast 129	com/tencent/mm/plugin/scanner/PluginScanTranslation
       //   176: ldc 137
       //   178: invokevirtual 141	com/tencent/mm/plugin/scanner/PluginScanTranslation:genTranslationResultImgPath	(Ljava/lang/String;)Ljava/lang/String;
       //   181: invokestatic 144	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI:a	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;Ljava/lang/String;)V
       //   184: aload_0
-      //   185: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:CNd	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
+      //   185: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:ISE	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
       //   188: invokestatic 148	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI:f	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;)Landroid/graphics/Bitmap;
       //   191: bipush 80
       //   193: getstatic 154	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
       //   196: aload_0
-      //   197: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:CNd	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
+      //   197: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:ISE	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
       //   200: invokestatic 156	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI:i	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;)Ljava/lang/String;
       //   203: iconst_0
       //   204: invokestatic 162	com/tencent/mm/sdk/platformtools/BitmapUtil:saveBitmapToImage	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)Z
       //   207: pop
       //   208: aload_0
-      //   209: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:CNd	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
+      //   209: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:ISE	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
       //   212: invokestatic 156	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI:i	(Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;)Ljava/lang/String;
       //   215: astore_1
       //   216: aload_1
       //   217: ifnull -124 -> 93
       //   220: aload_0
-      //   221: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:CNd	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
-      //   224: invokevirtual 91	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI:getContext	()Landroid/support/v7/app/AppCompatActivity;
+      //   221: getfield 31	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f:ISE	Lcom/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI;
+      //   224: invokevirtual 91	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI:getContext	()Landroidx/appcompat/app/AppCompatActivity;
       //   227: checkcast 93	android/content/Context
       //   230: aload_1
       //   231: new 12	com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$f$b
@@ -1074,140 +1066,88 @@ public final class ScanTranslationResultUI
       //   164	208	267	java/io/IOException
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$init$2$1$1", "Lcom/tencent/mm/platformtools/ExportFileUtil$ExportResultCallback;", "onExportFail", "", "srcPath", "", "destPath", "onExportSuccess", "scan-translation_release"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$init$2$1$1", "Lcom/tencent/mm/platformtools/ExportFileUtil$ExportResultCallback;", "onExportFail", "", "srcPath", "", "destPath", "onExportSuccess", "scan-translation_release"})
     public static final class a
-      implements com.tencent.mm.platformtools.p.a
+      implements p.a
     {
       a(ScanTranslationResultUI.f paramf) {}
       
-      public final void bP(String paramString1, String paramString2)
+      public final void bT(String paramString1, String paramString2)
       {
-        AppMethodBeat.i(200126);
-        kotlin.g.b.p.h(paramString1, "srcPath");
-        kotlin.g.b.p.h(paramString2, "destPath");
-        paramString1 = this.CNi.CNd.getContext();
+        AppMethodBeat.i(211571);
+        p.k(paramString1, "srcPath");
+        p.k(paramString2, "destPath");
+        paramString1 = this.ISK.ISE.getContext();
         if (paramString1 == null)
         {
           paramString1 = new kotlin.t("null cannot be cast to non-null type android.app.Activity");
-          AppMethodBeat.o(200126);
+          AppMethodBeat.o(211571);
           throw paramString1;
         }
-        com.tencent.mm.ui.widget.snackbar.b.r((Activity)paramString1, this.CNi.CNd.getResources().getString(2131764994));
-        AppMethodBeat.o(200126);
+        com.tencent.mm.ui.widget.snackbar.b.r((Activity)paramString1, this.ISK.ISE.getResources().getString(a.g.scan_translation_save_to_gallery_success));
+        AppMethodBeat.o(211571);
       }
       
-      public final void bQ(String paramString1, String paramString2)
+      public final void bU(String paramString1, String paramString2)
       {
-        AppMethodBeat.i(200127);
-        kotlin.g.b.p.h(paramString1, "srcPath");
-        kotlin.g.b.p.h(paramString2, "destPath");
-        paramString1 = this.CNi.CNd.getContext();
+        AppMethodBeat.i(211573);
+        p.k(paramString1, "srcPath");
+        p.k(paramString2, "destPath");
+        paramString1 = this.ISK.ISE.getContext();
         if (paramString1 == null)
         {
           paramString1 = new kotlin.t("null cannot be cast to non-null type android.app.Activity");
-          AppMethodBeat.o(200127);
+          AppMethodBeat.o(211573);
           throw paramString1;
         }
-        com.tencent.mm.ui.widget.snackbar.b.r((Activity)paramString1, this.CNi.CNd.getResources().getString(2131764864));
-        AppMethodBeat.o(200127);
+        com.tencent.mm.ui.widget.snackbar.b.r((Activity)paramString1, this.ISK.ISE.getResources().getString(a.g.save_image_err));
+        AppMethodBeat.o(211573);
       }
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$init$2$2$1", "Lcom/tencent/mm/platformtools/ExportFileUtil$ExportResultCallback;", "onExportFail", "", "srcPath", "", "destPath", "onExportSuccess", "scan-translation_release"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$init$2$2$1", "Lcom/tencent/mm/platformtools/ExportFileUtil$ExportResultCallback;", "onExportFail", "", "srcPath", "", "destPath", "onExportSuccess", "scan-translation_release"})
     public static final class b
-      implements com.tencent.mm.platformtools.p.a
+      implements p.a
     {
       b(ScanTranslationResultUI.f paramf) {}
       
-      public final void bP(String paramString1, String paramString2)
+      public final void bT(String paramString1, String paramString2)
       {
-        AppMethodBeat.i(200128);
-        kotlin.g.b.p.h(paramString1, "srcPath");
-        kotlin.g.b.p.h(paramString2, "destPath");
-        paramString1 = this.CNi.CNd.getContext();
+        AppMethodBeat.i(211891);
+        p.k(paramString1, "srcPath");
+        p.k(paramString2, "destPath");
+        paramString1 = this.ISK.ISE.getContext();
         if (paramString1 == null)
         {
           paramString1 = new kotlin.t("null cannot be cast to non-null type android.app.Activity");
-          AppMethodBeat.o(200128);
+          AppMethodBeat.o(211891);
           throw paramString1;
         }
-        com.tencent.mm.ui.widget.snackbar.b.r((Activity)paramString1, this.CNi.CNd.getResources().getString(2131764994));
-        AppMethodBeat.o(200128);
+        com.tencent.mm.ui.widget.snackbar.b.r((Activity)paramString1, this.ISK.ISE.getResources().getString(a.g.scan_translation_save_to_gallery_success));
+        AppMethodBeat.o(211891);
       }
       
-      public final void bQ(String paramString1, String paramString2)
+      public final void bU(String paramString1, String paramString2)
       {
-        AppMethodBeat.i(200129);
-        kotlin.g.b.p.h(paramString1, "srcPath");
-        kotlin.g.b.p.h(paramString2, "destPath");
-        paramString1 = this.CNi.CNd.getContext();
+        AppMethodBeat.i(211892);
+        p.k(paramString1, "srcPath");
+        p.k(paramString2, "destPath");
+        paramString1 = this.ISK.ISE.getContext();
         if (paramString1 == null)
         {
           paramString1 = new kotlin.t("null cannot be cast to non-null type android.app.Activity");
-          AppMethodBeat.o(200129);
+          AppMethodBeat.o(211892);
           throw paramString1;
         }
-        com.tencent.mm.ui.widget.snackbar.b.r((Activity)paramString1, this.CNi.CNd.getResources().getString(2131764864));
-        AppMethodBeat.o(200129);
-      }
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/ui/ScanTranslationResultUI$init$4", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "onAnimationStart", "scan-translation_release"})
-  public static final class h
-    extends AnimatorListenerAdapter
-  {
-    public final void onAnimationEnd(Animator paramAnimator)
-    {
-      AppMethodBeat.i(162356);
-      ScanTranslationResultUI.k(this.CNd).setAlpha(0.0F);
-      AppMethodBeat.o(162356);
-    }
-    
-    public final void onAnimationStart(Animator paramAnimator)
-    {
-      AppMethodBeat.i(162355);
-      ScanTranslationResultUI.k(this.CNd).setAlpha(0.0F);
-      AppMethodBeat.o(162355);
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "valueAnimator", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
-  static final class i
-    implements ValueAnimator.AnimatorUpdateListener
-  {
-    i(ScanTranslationResultUI paramScanTranslationResultUI) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-    {
-      AppMethodBeat.i(162357);
-      kotlin.g.b.p.g(paramValueAnimator, "valueAnimator");
-      paramValueAnimator = paramValueAnimator.getAnimatedValue();
-      if (paramValueAnimator == null)
-      {
-        paramValueAnimator = new kotlin.t("null cannot be cast to non-null type kotlin.Float");
-        AppMethodBeat.o(162357);
-        throw paramValueAnimator;
-      }
-      float f = ((Float)paramValueAnimator).floatValue();
-      if (f <= 0.1F) {
-        ScanTranslationResultUI.k(this.CNd).setAlpha(f * 10.0F);
-      }
-      for (;;)
-      {
-        ScanTranslationResultUI.k(this.CNd).setTranslationY(f * (ScanTranslationResultUI.l(this.CNd) - ScanTranslationResultUI.k(this.CNd).getHeight()));
-        AppMethodBeat.o(162357);
-        return;
-        if (f >= 0.9F) {
-          ScanTranslationResultUI.k(this.CNd).setAlpha((1.0F - f) * 10.0F);
-        }
+        com.tencent.mm.ui.widget.snackbar.b.r((Activity)paramString1, this.ISK.ISE.getResources().getString(a.g.save_image_err));
+        AppMethodBeat.o(211892);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.ScanTranslationResultUI
  * JD-Core Version:    0.7.0.1
  */

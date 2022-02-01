@@ -13,22 +13,25 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.facedetect.a.b;
+import com.tencent.mm.plugin.facedetect.a.c;
+import com.tencent.mm.plugin.facedetect.a.d;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Timer;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
 
 public class FaceNumberItemView
   extends View
 {
-  static final long sWm = 29L;
-  Timer sWl;
-  private boolean sWn;
-  private Paint sWo;
-  private RectF sWp;
-  private Bitmap sWq;
-  private int sWr;
-  int sWs;
-  Runnable sWt;
+  static final long wCk = 29L;
+  MTimerHandler wCj;
+  private boolean wCl;
+  private Paint wCm;
+  private RectF wCn;
+  private Bitmap wCo;
+  private int wCp;
+  int wCq;
+  Runnable wCr;
   
   public FaceNumberItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,14 +42,14 @@ public class FaceNumberItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(104166);
-    this.sWl = null;
-    this.sWn = false;
-    this.sWo = null;
-    this.sWp = null;
-    this.sWq = null;
-    this.sWr = 17;
-    this.sWs = 0;
-    this.sWt = new Runnable()
+    this.wCj = null;
+    this.wCl = false;
+    this.wCm = null;
+    this.wCn = null;
+    this.wCo = null;
+    this.wCp = 17;
+    this.wCq = 0;
+    this.wCr = new Runnable()
     {
       public final void run()
       {
@@ -58,26 +61,22 @@ public class FaceNumberItemView
           AppMethodBeat.o(104163);
           return;
         }
-        FaceNumberItemView.this.cTT();
+        FaceNumberItemView.this.diZ();
         AppMethodBeat.o(104163);
       }
     };
     setLayerType(1, null);
-    this.sWo = new Paint();
-    this.sWo.setColor(paramContext.getResources().getColor(2131100366));
-    this.sWo.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
-    this.sWp = new RectF();
+    this.wCm = new Paint();
+    this.wCm.setColor(paramContext.getResources().getColor(a.b.face_number_shader_color));
+    this.wCm.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
+    this.wCn = new RectF();
     AppMethodBeat.o(104166);
   }
   
-  public final void cTT()
+  public final void diZ()
   {
     AppMethodBeat.i(104169);
-    if (this.sWl != null)
-    {
-      this.sWl.cancel();
-      this.sWl = null;
-    }
+    this.wCj.stopped();
     AppMethodBeat.o(104169);
   }
   
@@ -87,35 +86,35 @@ public class FaceNumberItemView
     super.onDraw(paramCanvas);
     float f2;
     float f1;
-    if (this.sWr == 17)
+    if (this.wCp == 17)
     {
-      f2 = getWidth() - this.sWq.getWidth() >> 1;
-      f1 = getHeight() - this.sWq.getHeight() >> 1;
+      f2 = getWidth() - this.wCo.getWidth() >> 1;
+      f1 = getHeight() - this.wCo.getHeight() >> 1;
     }
     for (;;)
     {
-      if (!this.sWn) {
-        paramCanvas.drawBitmap(this.sWq, f2, f1, null);
+      if (!this.wCl) {
+        paramCanvas.drawBitmap(this.wCo, f2, f1, null);
       }
-      this.sWp.set(f2, 0.0F, this.sWq.getWidth() * this.sWs / 30.0F + f2, getHeight());
-      paramCanvas.drawRect(this.sWp, this.sWo);
+      this.wCn.set(f2, 0.0F, this.wCo.getWidth() * this.wCq / 30.0F + f2, getHeight());
+      paramCanvas.drawRect(this.wCn, this.wCm);
       AppMethodBeat.o(104170);
       return;
-      if (this.sWr == 3)
+      if (this.wCp == 3)
       {
-        f1 = getHeight() - this.sWq.getHeight() >> 1;
+        f1 = getHeight() - this.wCo.getHeight() >> 1;
         f2 = 0.0F;
       }
-      else if (this.sWr == 5)
+      else if (this.wCp == 5)
       {
-        f2 = getWidth() - this.sWq.getWidth();
-        f1 = getHeight() - this.sWq.getHeight() >> 1;
+        f2 = getWidth() - this.wCo.getWidth();
+        f1 = getHeight() - this.wCo.getHeight() >> 1;
       }
       else
       {
         Log.e("MicroMsg.FaceNumberItemView", "hy: not support gravity! treat as center");
-        f2 = getWidth() - this.sWq.getWidth() >> 1;
-        f1 = getHeight() - this.sWq.getHeight() >> 1;
+        f2 = getWidth() - this.wCo.getWidth() >> 1;
+        f1 = getHeight() - this.wCo.getHeight() >> 1;
       }
     }
   }
@@ -124,7 +123,7 @@ public class FaceNumberItemView
   {
     AppMethodBeat.i(104168);
     Log.i("MicroMsg.FaceNumberItemView", "hy: setting gravity");
-    this.sWr = paramInt;
+    this.wCp = paramInt;
     AppMethodBeat.o(104168);
   }
   
@@ -132,24 +131,24 @@ public class FaceNumberItemView
   {
     AppMethodBeat.i(104167);
     Bitmap localBitmap1 = BitmapFactory.decodeResource(getResources(), paramInt);
-    if (paramInt == 2131232262)
+    if (paramInt == a.d.face_point)
     {
-      paramInt = (getResources().getDimensionPixelSize(2131166326) - a.fromDPToPix(getContext(), 8)) / 2;
+      paramInt = (getResources().getDimensionPixelSize(a.c.face_number_width) - a.fromDPToPix(getContext(), 8)) / 2;
       Bitmap localBitmap2 = Bitmap.createBitmap(localBitmap1.getWidth() + paramInt * 2, localBitmap1.getHeight() + 0, Bitmap.Config.ARGB_8888);
       Canvas localCanvas = new Canvas(localBitmap2);
       localCanvas.drawARGB(0, 255, 255, 255);
       localCanvas.drawBitmap(localBitmap1, paramInt, 0.0F, null);
-      this.sWq = localBitmap2;
+      this.wCo = localBitmap2;
       AppMethodBeat.o(104167);
       return;
     }
-    this.sWq = Bitmap.createScaledBitmap(localBitmap1, a.fromDPToPix(getContext(), 48), localBitmap1.getHeight(), false);
+    this.wCo = Bitmap.createScaledBitmap(localBitmap1, a.fromDPToPix(getContext(), 48), localBitmap1.getHeight(), false);
     AppMethodBeat.o(104167);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.views.FaceNumberItemView
  * JD-Core Version:    0.7.0.1
  */

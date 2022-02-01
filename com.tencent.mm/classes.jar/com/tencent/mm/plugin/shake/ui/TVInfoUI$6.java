@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.shake.ui;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cu;
-import com.tencent.mm.g.a.cu.a;
-import com.tencent.mm.g.a.cu.b;
+import com.tencent.mm.R.l;
+import com.tencent.mm.f.a.cy;
+import com.tencent.mm.f.a.cy.a;
+import com.tencent.mm.f.a.cy.b;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.h;
@@ -16,7 +17,7 @@ final class TVInfoUI$6
 {
   TVInfoUI$6(TVInfoUI paramTVInfoUI) {}
   
-  public final void cy(int paramInt1, int paramInt2)
+  public final void cS(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(28585);
     switch (paramInt2)
@@ -26,9 +27,9 @@ final class TVInfoUI$6
     {
       AppMethodBeat.o(28585);
       return;
-      h.a(this.DlH.getContext(), this.DlH.getContext().getString(2131755780), null, null, this.DlH.getContext().getString(2131755778), new h.e()
+      h.a(this.Jrj.getContext(), this.Jrj.getContext().getString(R.l.app_delete_tips), null, null, this.Jrj.getContext().getString(R.l.app_delete), new h.e()
       {
-        public final void cy(int paramAnonymousInt1, int paramAnonymousInt2)
+        public final void cS(int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(28584);
           switch (paramAnonymousInt2)
@@ -36,29 +37,29 @@ final class TVInfoUI$6
           default: 
             Log.d("MicroMsg.TVInfoUI", "do del cancel");
           }
-          cu localcu;
+          cy localcy;
           do
           {
             AppMethodBeat.o(28584);
             return;
-            localcu = new cu();
-            localcu.dFU.dFW = TVInfoUI.6.this.DlH.getIntent().getLongExtra("key_favorite_local_id", -1L);
-            EventCenter.instance.publish(localcu);
-            Log.d("MicroMsg.TVInfoUI", "do del fav tv, local id %d, result %B", new Object[] { Long.valueOf(localcu.dFU.dFW), Boolean.valueOf(localcu.dFV.dFE) });
-          } while (!localcu.dFV.dFE);
-          TVInfoUI.6.this.DlH.finish();
+            localcy = new cy();
+            localcy.fyC.fyE = TVInfoUI.6.this.Jrj.getIntent().getLongExtra("key_favorite_local_id", -1L);
+            EventCenter.instance.publish(localcy);
+            Log.d("MicroMsg.TVInfoUI", "do del fav tv, local id %d, result %B", new Object[] { Long.valueOf(localcy.fyC.fyE), Boolean.valueOf(localcy.fyD.fyl) });
+          } while (!localcy.fyD.fyl);
+          TVInfoUI.6.this.Jrj.finish();
           AppMethodBeat.o(28584);
         }
       });
       AppMethodBeat.o(28585);
       return;
-      TVInfoUI.b(this.DlH);
+      TVInfoUI.b(this.Jrj);
       AppMethodBeat.o(28585);
       return;
-      TVInfoUI.c(this.DlH);
+      TVInfoUI.c(this.Jrj);
       AppMethodBeat.o(28585);
       return;
-      TVInfoUI.d(this.DlH);
+      TVInfoUI.d(this.Jrj);
     }
   }
 }

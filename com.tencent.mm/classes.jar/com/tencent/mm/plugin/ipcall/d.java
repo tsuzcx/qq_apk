@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.ipcall;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.n.f;
 import com.tencent.mm.n.h;
@@ -10,20 +10,20 @@ import com.tencent.mm.storage.ar.a;
 
 public final class d
 {
-  public static boolean dZW()
+  public static boolean eIU()
   {
     AppMethodBeat.i(25325);
-    if (bg.aAc())
+    if (bh.aHB())
     {
-      if (h.aqJ().getInt("WCOEntranceSwitch", 0) > 0)
+      if (h.axc().getInt("WCOEntranceSwitch", 0) > 0)
       {
-        bg.aVF();
-        c.azQ().set(ar.a.NVr, Boolean.TRUE);
+        bh.beI();
+        c.aHp().set(ar.a.Vjr, Boolean.TRUE);
         AppMethodBeat.o(25325);
         return true;
       }
-      bg.aVF();
-      c.azQ().set(ar.a.NVr, Boolean.FALSE);
+      bh.beI();
+      c.aHp().set(ar.a.Vjr, Boolean.FALSE);
       AppMethodBeat.o(25325);
       return false;
     }
@@ -33,7 +33,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.d
  * JD-Core Version:    0.7.0.1
  */

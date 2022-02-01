@@ -1,95 +1,95 @@
 package com.tencent.magicbrush.utils;
 
-import android.os.Handler;
-import android.os.Looper;
+import com.tencent.magicbrush.a.c.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.Callable;
-import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.l;
-import kotlin.x;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/magicbrush/utils/ThreadUtil;", "", "()V", "uiHandler", "Landroid/os/Handler;", "getMainHandler", "isUiThread", "", "postOnUiThread", "r", "Lkotlin/Function0;", "", "run", "Ljava/lang/Runnable;", "delayMs", "", "runOnJsThreadIfAvailable", "runtime", "Lcom/tencent/magicbrush/MBRuntime;", "runnable", "runOnUiThread", "syncOnUiThread", "T", "cb", "(Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "callable", "Ljava/util/concurrent/Callable;", "(Ljava/util/concurrent/Callable;)Ljava/lang/Object;", "lib-magicbrush-nano_release"})
-public final class f
+public class f
+  implements Runnable
 {
-  private static final Handler cPw;
-  public static final f cPx;
+  public final FutureTask<?> cQn;
   
-  static
+  public f(Runnable paramRunnable)
   {
-    AppMethodBeat.i(140298);
-    cPx = new f();
-    cPw = new Handler(Looper.getMainLooper());
-    AppMethodBeat.o(140298);
+    AppMethodBeat.i(140070);
+    this.cQn = new FutureTask(paramRunnable, Integer.valueOf(0));
+    AppMethodBeat.o(140070);
   }
   
-  public static final Handler PA()
+  public <T> f(Callable<T> paramCallable)
   {
-    return cPw;
+    AppMethodBeat.i(140071);
+    this.cQn = new FutureTask(paramCallable);
+    AppMethodBeat.o(140071);
   }
   
-  public static final boolean RE()
+  public final boolean bi(long paramLong)
   {
-    AppMethodBeat.i(140294);
-    Thread localThread = Thread.currentThread();
-    Looper localLooper = Looper.getMainLooper();
-    p.g(localLooper, "Looper.getMainLooper()");
-    boolean bool = p.j(localThread, localLooper.getThread());
-    AppMethodBeat.o(140294);
-    return bool;
-  }
-  
-  public static void e(a<x> parama)
-  {
-    AppMethodBeat.i(140296);
-    p.h(parama, "run");
-    runOnUiThread((Runnable)new g(parama));
-    AppMethodBeat.o(140296);
-  }
-  
-  public static <T> T f(a<? extends T> parama)
-  {
-    AppMethodBeat.i(140297);
-    p.h(parama, "cb");
-    parama = new e((Callable)new a(parama));
-    runOnUiThread((Runnable)parama);
-    parama = parama.get();
-    AppMethodBeat.o(140297);
-    return parama;
-  }
-  
-  public static final void runOnUiThread(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(140295);
-    p.h(paramRunnable, "run");
-    if (RE())
+    AppMethodBeat.i(140072);
+    try
     {
-      paramRunnable.run();
-      AppMethodBeat.o(140295);
-      return;
+      this.cQn.get(paramLong, TimeUnit.MILLISECONDS);
+      AppMethodBeat.o(140072);
+      return true;
     }
-    cPw.post(paramRunnable);
-    AppMethodBeat.o(140295);
+    catch (InterruptedException localInterruptedException)
+    {
+      c.c.printStackTrace("MagicBrush.SyncTask", localInterruptedException, "await failed", new Object[0]);
+      AppMethodBeat.o(140072);
+      return false;
+    }
+    catch (ExecutionException localExecutionException)
+    {
+      c.c.printStackTrace("MagicBrush.SyncTask", localExecutionException, "execute failed", new Object[0]);
+      AppMethodBeat.o(140072);
+      return false;
+    }
+    catch (TimeoutException localTimeoutException)
+    {
+      c.c.printStackTrace("MagicBrush.SyncTask", localTimeoutException, "execute timeout", new Object[0]);
+      AppMethodBeat.o(140072);
+    }
+    return false;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "T", "call", "()Ljava/lang/Object;"})
-  static final class a<V>
-    implements Callable<T>
+  public final <T> T get()
   {
-    a(a parama) {}
-    
-    public final T call()
+    AppMethodBeat.i(140073);
+    try
     {
-      AppMethodBeat.i(140293);
-      Object localObject = this.cPy.invoke();
-      AppMethodBeat.o(140293);
+      Object localObject = this.cQn.get();
+      AppMethodBeat.o(140073);
       return localObject;
     }
+    catch (InterruptedException localInterruptedException)
+    {
+      c.c.printStackTrace("MagicBrush.SyncTask", localInterruptedException, "await failed", new Object[0]);
+      AppMethodBeat.o(140073);
+      return null;
+    }
+    catch (ExecutionException localExecutionException)
+    {
+      for (;;)
+      {
+        c.c.printStackTrace("MagicBrush.SyncTask", localExecutionException, "execute failed", new Object[0]);
+      }
+    }
+  }
+  
+  public void run()
+  {
+    AppMethodBeat.i(140074);
+    this.cQn.run();
+    AppMethodBeat.o(140074);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.magicbrush.utils.f
  * JD-Core Version:    0.7.0.1
  */

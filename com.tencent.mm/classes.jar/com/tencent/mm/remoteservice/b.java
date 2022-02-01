@@ -36,14 +36,14 @@ public abstract interface b
     
     public static b getDefaultImpl()
     {
-      return a.NCx;
+      return a.UPZ;
     }
     
     public static boolean setDefaultImpl(b paramb)
     {
-      if ((a.NCx == null) && (paramb != null))
+      if ((a.UPZ == null) && (paramb != null))
       {
-        a.NCx = paramb;
+        a.UPZ = paramb;
         return true;
       }
       return false;
@@ -96,7 +96,7 @@ public abstract interface b
     static final class a
       implements b
     {
-      public static b NCx;
+      public static b UPZ;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -163,7 +163,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.remoteservice.b
  * JD-Core Version:    0.7.0.1
  */

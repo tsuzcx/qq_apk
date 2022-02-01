@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.FitWindowsFrameLayout android:id="@id/cc" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<androidx.appcompat.widget.FitWindowsFrameLayout android:id="@id/cc" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <include layout="@layout/b1" />
-    <android.support.v7.widget.ViewStubCompat android:id="@id/d4" android:layout="@layout/al" android:inflatedId="@id/d3" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</android.support.v7.widget.FitWindowsFrameLayout>
+    <androidx.appcompat.widget.ViewStubCompat android:id="@id/d4" android:layout="@layout/al" android:inflatedId="@id/d3" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</androidx.appcompat.widget.FitWindowsFrameLayout>

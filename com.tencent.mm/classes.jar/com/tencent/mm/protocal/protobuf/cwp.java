@@ -1,123 +1,152 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
-import java.util.LinkedList;
 
 public final class cwp
-  extends dop
+  extends com.tencent.mm.cd.a
 {
-  public SKBuiltinBuffer_t MBy;
-  public int dML;
+  public String KFu;
+  public int KFw;
+  public String SOz;
+  public String city;
+  public String country;
+  public float latitude;
+  public float longitude;
+  public String poiName;
+  public String province;
+  public String region;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152655);
+    AppMethodBeat.i(208293);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.MBy == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: key_buf");
-        AppMethodBeat.o(152655);
-        throw paramVarArgs;
+      paramVarArgs.i(1, this.longitude);
+      paramVarArgs.i(2, this.latitude);
+      if (this.city != null) {
+        paramVarArgs.f(3, this.city);
       }
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      if (this.poiName != null) {
+        paramVarArgs.f(4, this.poiName);
       }
-      paramVarArgs.aM(2, this.dML);
-      if (this.MBy != null)
-      {
-        paramVarArgs.ni(3, this.MBy.computeSize());
-        this.MBy.writeFields(paramVarArgs);
+      if (this.KFu != null) {
+        paramVarArgs.f(5, this.KFu);
       }
-      AppMethodBeat.o(152655);
+      if (this.SOz != null) {
+        paramVarArgs.f(6, this.SOz);
+      }
+      paramVarArgs.aY(7, this.KFw);
+      if (this.province != null) {
+        paramVarArgs.f(8, this.province);
+      }
+      if (this.region != null) {
+        paramVarArgs.f(9, this.region);
+      }
+      if (this.country != null) {
+        paramVarArgs.f(10, this.country);
+      }
+      AppMethodBeat.o(208293);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label558;
-      }
-    }
-    label558:
-    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt + g.a.a.b.b.a.bu(2, this.dML);
+      int i = g.a.a.b.b.a.gL(1) + 4 + 0 + (g.a.a.b.b.a.gL(2) + 4);
       paramInt = i;
-      if (this.MBy != null) {
-        paramInt = i + g.a.a.a.nh(3, this.MBy.computeSize());
+      if (this.city != null) {
+        paramInt = i + g.a.a.b.b.a.g(3, this.city);
       }
-      AppMethodBeat.o(152655);
+      i = paramInt;
+      if (this.poiName != null) {
+        i = paramInt + g.a.a.b.b.a.g(4, this.poiName);
+      }
+      paramInt = i;
+      if (this.KFu != null) {
+        paramInt = i + g.a.a.b.b.a.g(5, this.KFu);
+      }
+      i = paramInt;
+      if (this.SOz != null) {
+        i = paramInt + g.a.a.b.b.a.g(6, this.SOz);
+      }
+      i += g.a.a.b.b.a.bM(7, this.KFw);
+      paramInt = i;
+      if (this.province != null) {
+        paramInt = i + g.a.a.b.b.a.g(8, this.province);
+      }
+      i = paramInt;
+      if (this.region != null) {
+        i = paramInt + g.a.a.b.b.a.g(9, this.region);
+      }
+      paramInt = i;
+      if (this.country != null) {
+        paramInt = i + g.a.a.b.b.a.g(10, this.country);
+      }
+      AppMethodBeat.o(208293);
       return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
-          }
-        }
-        if (this.MBy == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: key_buf");
-          AppMethodBeat.o(152655);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(152655);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
-        cwp localcwp = (cwp)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(152655);
-          return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localcwp.BaseRequest = ((jr)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(152655);
-          return 0;
-        case 2: 
-          localcwp.dML = ((g.a.a.a.a)localObject1).UbS.zi();
-          AppMethodBeat.o(152655);
-          return 0;
-        }
-        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new SKBuiltinBuffer_t();
-          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-          localcwp.MBy = ((SKBuiltinBuffer_t)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(152655);
-        return 0;
-      }
-      AppMethodBeat.o(152655);
-      return -1;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.iUs();
+        }
+      }
+      AppMethodBeat.o(208293);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      cwp localcwp = (cwp)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(208293);
+        return -1;
+      case 1: 
+        localcwp.longitude = Float.intBitsToFloat(locala.abFh.AO());
+        AppMethodBeat.o(208293);
+        return 0;
+      case 2: 
+        localcwp.latitude = Float.intBitsToFloat(locala.abFh.AO());
+        AppMethodBeat.o(208293);
+        return 0;
+      case 3: 
+        localcwp.city = locala.abFh.readString();
+        AppMethodBeat.o(208293);
+        return 0;
+      case 4: 
+        localcwp.poiName = locala.abFh.readString();
+        AppMethodBeat.o(208293);
+        return 0;
+      case 5: 
+        localcwp.KFu = locala.abFh.readString();
+        AppMethodBeat.o(208293);
+        return 0;
+      case 6: 
+        localcwp.SOz = locala.abFh.readString();
+        AppMethodBeat.o(208293);
+        return 0;
+      case 7: 
+        localcwp.KFw = locala.abFh.AK();
+        AppMethodBeat.o(208293);
+        return 0;
+      case 8: 
+        localcwp.province = locala.abFh.readString();
+        AppMethodBeat.o(208293);
+        return 0;
+      case 9: 
+        localcwp.region = locala.abFh.readString();
+        AppMethodBeat.o(208293);
+        return 0;
+      }
+      localcwp.country = locala.abFh.readString();
+      AppMethodBeat.o(208293);
+      return 0;
+    }
+    AppMethodBeat.o(208293);
+    return -1;
   }
 }
 

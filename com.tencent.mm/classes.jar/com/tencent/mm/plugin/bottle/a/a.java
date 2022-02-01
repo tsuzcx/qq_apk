@@ -4,36 +4,36 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  int bva;
-  private int cSx;
+  int beC;
+  private int cUP;
   String content;
   long createtime;
-  int iFr;
-  String iFt;
-  String iFu;
-  int iWj;
+  int lME;
+  int lvr;
+  String lvt;
+  String lvu;
   int msgType;
-  String pkQ;
-  String pkR;
-  int pkS;
-  int pkT;
+  String smZ;
+  String sna;
+  int snb;
+  int snc;
   
   public a()
   {
     AppMethodBeat.i(22643);
-    this.cSx = -1;
-    this.pkQ = "";
-    this.bva = 0;
-    this.pkR = "";
-    this.pkS = 0;
+    this.cUP = -1;
+    this.smZ = "";
+    this.beC = 0;
+    this.sna = "";
+    this.snb = 0;
     this.msgType = 0;
-    this.pkT = 0;
+    this.snc = 0;
     this.content = "";
     this.createtime = 0L;
-    this.iFr = 0;
-    this.iWj = 0;
-    this.iFt = "";
-    this.iFu = "";
+    this.lvr = 0;
+    this.lME = 0;
+    this.lvt = "";
+    this.lvu = "";
     AppMethodBeat.o(22643);
   }
   
@@ -47,7 +47,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.bottle.a.a
  * JD-Core Version:    0.7.0.1
  */

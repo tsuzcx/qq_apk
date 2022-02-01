@@ -1,42 +1,40 @@
 package com.tencent.mm.emoji.panel.layout;
 
 import android.content.Context;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.r;
-import android.support.v7.widget.RecyclerView.s;
-import android.support.v7.widget.ae;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.r;
+import androidx.recyclerview.widget.RecyclerView.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/panel/layout/EmojiPanelItemLayoutManager;", "Landroid/support/v7/widget/GridLayoutManager;", "context", "Landroid/content/Context;", "spanCount", "", "(Landroid/content/Context;I)V", "scrollToPosition", "", "position", "smoothScrollToPosition", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "Scroller", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/panel/layout/EmojiPanelItemLayoutManager;", "Landroidx/recyclerview/widget/GridLayoutManager;", "context", "Landroid/content/Context;", "spanCount", "", "(Landroid/content/Context;I)V", "scrollToPosition", "", "position", "smoothScrollToPosition", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "Scroller", "plugin-emojisdk_release"})
 public final class EmojiPanelItemLayoutManager
   extends GridLayoutManager
 {
   public final void scrollToPosition(int paramInt)
   {
     AppMethodBeat.i(105714);
-    super.ah(paramInt, 0);
+    super.au(paramInt, 0);
     AppMethodBeat.o(105714);
   }
   
   public final void smoothScrollToPosition(RecyclerView paramRecyclerView, RecyclerView.s params, int paramInt)
   {
-    AppMethodBeat.i(105713);
-    p.h(paramRecyclerView, "recyclerView");
-    p.h(params, "state");
+    AppMethodBeat.i(232370);
+    kotlin.g.b.p.k(paramRecyclerView, "recyclerView");
+    kotlin.g.b.p.k(params, "state");
     paramRecyclerView = paramRecyclerView.getContext();
-    p.g(paramRecyclerView, "recyclerView.context");
+    kotlin.g.b.p.j(paramRecyclerView, "recyclerView.context");
     paramRecyclerView = new a(paramRecyclerView);
-    paramRecyclerView.ct(paramInt);
+    paramRecyclerView.cV(paramInt);
     startSmoothScroll((RecyclerView.r)paramRecyclerView);
-    AppMethodBeat.o(105713);
+    AppMethodBeat.o(232370);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/panel/layout/EmojiPanelItemLayoutManager$Scroller;", "Landroid/support/v7/widget/LinearSmoothScroller;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getVerticalSnapPreference", "", "plugin-emojisdk_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/panel/layout/EmojiPanelItemLayoutManager$Scroller;", "Landroidx/recyclerview/widget/LinearSmoothScroller;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getVerticalSnapPreference", "", "plugin-emojisdk_release"})
   static final class a
-    extends ae
+    extends androidx.recyclerview.widget.p
   {
     public a(Context paramContext)
     {
@@ -45,7 +43,7 @@ public final class EmojiPanelItemLayoutManager
       AppMethodBeat.o(105712);
     }
     
-    public final int kA()
+    public final int kR()
     {
       return -1;
     }
@@ -53,7 +51,7 @@ public final class EmojiPanelItemLayoutManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.panel.layout.EmojiPanelItemLayoutManager
  * JD-Core Version:    0.7.0.1
  */

@@ -4,17 +4,19 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.d;
+import com.tencent.matrix.e.c;
 import com.tencent.mm.sdk.platformtools.IntentUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+@Deprecated
 public class MatrixReportBroadcast
   extends BroadcastReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     if (paramIntent == null) {
-      com.tencent.matrix.g.c.e("Matrix.ReportBroadcast", "MatrixReportBroadcast intent == null", new Object[0]);
+      c.e("Matrix.ReportBroadcast", "MatrixReportBroadcast intent == null", new Object[0]);
     }
     for (;;)
     {
@@ -24,19 +26,19 @@ public class MatrixReportBroadcast
       int i = IntentUtil.getIntExtra(paramIntent, "type", 0);
       String str2 = IntentUtil.getStringExtra(paramIntent, "value");
       paramContext = IntentUtil.getStringExtra(paramIntent, "filePath");
-      paramIntent = new c();
+      paramIntent = new f();
       paramIntent.tag = ((String)localObject);
       paramIntent.key = str1;
       paramIntent.type = i;
       try
       {
-        paramIntent.cWe = new JSONObject(str2);
+        paramIntent.cZZ = new JSONObject(str2);
         label93:
-        localObject = d.cPI.cPJ;
+        localObject = d.cQA.cQB;
         if (localObject == null) {
           continue;
         }
-        ((h)localObject).a(paramIntent, paramContext);
+        ((k)localObject).a(paramIntent, paramContext);
         return;
       }
       catch (JSONException localJSONException)
@@ -48,7 +50,7 @@ public class MatrixReportBroadcast
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.report.MatrixReportBroadcast
  * JD-Core Version:    0.7.0.1
  */

@@ -4,32 +4,34 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.f.a.c;
+import com.tencent.mm.plugin.appbrand.jsapi.media.e;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 import java.io.InputStream;
+import org.apache.commons.a.d;
 
 final class c$1
   implements a.c
 {
   c$1(c.a parama, String paramString1, String paramString2, MultiTouchImageView paramMultiTouchImageView, float paramFloat) {}
   
-  public final void C(InputStream paramInputStream)
+  public final void A(InputStream paramInputStream)
   {
-    AppMethodBeat.i(226735);
+    AppMethodBeat.i(280441);
     if (paramInputStream == null)
     {
-      if (this.lTj != null) {
-        this.lTj.dr(this.val$url, "null InputStream, finalUrl: " + this.iOH);
+      if (this.oPS != null) {
+        this.oPS.dA(this.val$url, "null InputStream, finalUrl: " + this.lEX);
       }
-      Log.e("MicroMsg.ImagePreviewerUtils", "openRead failed, url=%s", new Object[] { this.iOH });
-      AppMethodBeat.o(226735);
+      Log.e("MicroMsg.ImagePreviewerUtils", "openRead failed, url=%s", new Object[] { this.lEX });
+      AppMethodBeat.o(280441);
       return;
     }
-    paramInputStream = com.tencent.mm.plugin.appbrand.jsapi.ac.c.F(paramInputStream);
-    paramInputStream.mark(com.tencent.mm.plugin.appbrand.jsapi.ac.c.getCompatibleRewindBufferSize());
+    paramInputStream = com.tencent.mm.plugin.appbrand.jsapi.ae.c.D(paramInputStream);
+    paramInputStream.mark(com.tencent.mm.plugin.appbrand.jsapi.ae.c.getCompatibleRewindBufferSize());
     Object localObject = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-    c.bGk().b(paramInputStream, (BitmapFactory.Options)localObject);
+    c.bRU().b(paramInputStream, (BitmapFactory.Options)localObject);
     localObject = ((BitmapFactory.Options)localObject).outMimeType;
     int i = -1;
     switch (((String)localObject).hashCode())
@@ -43,36 +45,36 @@ final class c$1
         try
         {
           paramInputStream.reset();
-          localObject = c.bGk().decodeStream(paramInputStream);
-          org.apache.commons.a.e.W(paramInputStream);
+          localObject = c.bRU().decodeStream(paramInputStream);
+          d.T(paramInputStream);
           if ((localObject == null) || (((Bitmap)localObject).isRecycled())) {
             break label372;
           }
-          this.jUK.setImageBitmap((Bitmap)localObject);
-          this.jUK.cN(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
-          this.jUK.postDelayed(new Runnable()
+          this.mLX.setImageBitmap((Bitmap)localObject);
+          this.mLX.di(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+          this.mLX.postDelayed(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(226734);
-              if (c.1.this.dsJ >= 0.5F)
+              AppMethodBeat.i(265411);
+              if (c.1.this.val$scale >= 0.5F)
               {
-                c.1.this.jUK.cs(c.1.this.dsJ);
-                c.1.this.jUK.gKz();
+                c.1.this.mLX.cK(c.1.this.val$scale);
+                c.1.this.mLX.hJy();
               }
-              AppMethodBeat.o(226734);
+              AppMethodBeat.o(265411);
             }
           }, 100L);
-          AppMethodBeat.o(226735);
+          AppMethodBeat.o(280441);
           return;
         }
         catch (Throwable paramInputStream)
         {
-          if (this.lTj != null) {
-            this.lTj.dr(this.val$url, "exception found: " + paramInputStream.toString());
+          if (this.oPS != null) {
+            this.oPS.dA(this.val$url, "exception found: " + paramInputStream.toString());
           }
-          Log.e("MicroMsg.ImagePreviewerUtils", "setImageBitmap failed, url=%s", new Object[] { this.iOH });
-          AppMethodBeat.o(226735);
+          Log.e("MicroMsg.ImagePreviewerUtils", "setImageBitmap failed, url=%s", new Object[] { this.lEX });
+          AppMethodBeat.o(280441);
           return;
         }
         if (((String)localObject).equals("image/gif"))
@@ -86,22 +88,22 @@ final class c$1
         break;
       }
     }
-    if (this.lTj != null) {
-      this.lTj.dr(this.val$url, "not support gif");
+    if (this.oPS != null) {
+      this.oPS.dA(this.val$url, "not support gif");
     }
     Log.e("MicroMsg.ImagePreviewerUtils", "not support gift image");
-    AppMethodBeat.o(226735);
+    AppMethodBeat.o(280441);
     return;
     label372:
-    if (this.lTj != null) {
-      this.lTj.dr(this.val$url, "bmp is null or recycled");
+    if (this.oPS != null) {
+      this.oPS.dA(this.val$url, "bmp is null or recycled");
     }
-    AppMethodBeat.o(226735);
+    AppMethodBeat.o(280441);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.c.1
  * JD-Core Version:    0.7.0.1
  */

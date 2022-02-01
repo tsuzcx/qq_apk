@@ -7,12 +7,12 @@ import java.io.InputStream;
 public final class e
   implements c
 {
-  public static byte[] r(InputStream paramInputStream)
+  public static byte[] p(InputStream paramInputStream)
   {
-    return s(paramInputStream);
+    return q(paramInputStream);
   }
   
-  private static byte[] s(InputStream paramInputStream)
+  private static byte[] q(InputStream paramInputStream)
   {
     byte[] arrayOfByte = new byte[1024];
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();

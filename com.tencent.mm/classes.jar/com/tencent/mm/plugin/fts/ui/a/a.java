@@ -11,41 +11,45 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.e;
 import com.tencent.mm.plugin.fts.a.a.h;
 import com.tencent.mm.plugin.fts.ui.n;
+import com.tencent.mm.plugin.fts.ui.o.d;
+import com.tencent.mm.plugin.fts.ui.o.e;
+import com.tencent.mm.plugin.fts.ui.o.f;
+import com.tencent.mm.plugin.fts.ui.o.g;
 
 public final class a
   extends com.tencent.mm.plugin.fts.a.d.a.a
 {
-  public CharSequence xcp;
-  private b xcq;
-  private a xcr;
+  public CharSequence BOo;
+  private b BOp;
+  private a BOq;
   
   public a(int paramInt)
   {
     super(7, paramInt);
     AppMethodBeat.i(112054);
-    this.xcq = new b();
-    this.xcr = new a();
+    this.BOp = new b();
+    this.BOq = new a();
     AppMethodBeat.o(112054);
   }
   
   public final void a(Context paramContext, com.tencent.mm.plugin.fts.a.d.a.a.a parama, Object... paramVarArgs)
   {
     AppMethodBeat.i(112055);
-    this.xcp = com.tencent.mm.plugin.fts.a.f.a(paramContext.getResources().getString(2131760997), "", e.c(this.wWd.wWB, this.wWd.wWB)).wWu;
+    this.BOo = com.tencent.mm.plugin.fts.a.f.a(paramContext.getResources().getString(o.g.fts_find_comm_tip_prefix), "", e.c(this.BHY.BIw, this.BHY.BIw)).BIp;
     AppMethodBeat.o(112055);
   }
   
-  public final com.tencent.mm.plugin.fts.a.d.a.a.b axc()
+  public final com.tencent.mm.plugin.fts.a.d.a.a.b aEw()
   {
-    return this.xcq;
+    return this.BOp;
   }
   
   public final class a
     extends com.tencent.mm.plugin.fts.a.d.a.a.a
   {
     public View contentView;
-    public ImageView nnL;
-    public TextView xcs;
+    public ImageView qps;
+    public TextView yZg;
     
     public a()
     {
@@ -64,11 +68,11 @@ public final class a
     public final View a(Context paramContext, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(112052);
-      paramContext = LayoutInflater.from(paramContext).inflate(2131494774, paramViewGroup, false);
+      paramContext = LayoutInflater.from(paramContext).inflate(o.e.fts_search_contact_item, paramViewGroup, false);
       paramViewGroup = new a.a(a.this);
-      paramViewGroup.nnL = ((ImageView)paramContext.findViewById(2131302497));
-      paramViewGroup.xcs = ((TextView)paramContext.findViewById(2131309163));
-      paramViewGroup.contentView = paramContext.findViewById(2131307399);
+      paramViewGroup.qps = ((ImageView)paramContext.findViewById(o.d.icon_iv));
+      paramViewGroup.yZg = ((TextView)paramContext.findViewById(o.d.tip_tv));
+      paramViewGroup.contentView = paramContext.findViewById(o.d.search_item_content_layout);
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(112052);
       return paramContext;
@@ -78,9 +82,9 @@ public final class a
     {
       AppMethodBeat.i(112053);
       paramContext = (a.a)parama;
-      n.r(paramContext.contentView, a.this.wXK);
-      n.a(a.this.xcp, paramContext.xcs);
-      paramContext.nnL.setImageResource(2131691439);
+      n.r(paramContext.contentView, a.this.BJG);
+      n.a(a.this.BOo, paramContext.yZg);
+      paramContext.qps.setImageResource(o.f.search_add_icon_green);
       AppMethodBeat.o(112053);
     }
     
@@ -92,7 +96,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.a
  * JD-Core Version:    0.7.0.1
  */

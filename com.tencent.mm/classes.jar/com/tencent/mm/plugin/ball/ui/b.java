@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.ball.ui;
 
-import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ball.a.f;
 import com.tencent.mm.plugin.ball.a.f.a;
@@ -9,21 +8,20 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
-  public f oXA;
-  e oXB;
-  float oXQ;
+  public f rZC;
+  private e rZD;
   
   public b(f paramf, e parame)
   {
-    this.oXA = paramf;
-    this.oXB = parame;
+    this.rZC = paramf;
+    this.rZD = parame;
   }
   
   public final void stop()
   {
     AppMethodBeat.i(106281);
     Log.i("MicroMsg.FloatBallFadeInController", "stop FloatIndicatorController");
-    this.oXA.a(null);
+    this.rZC.a(null);
     AppMethodBeat.o(106281);
   }
 }

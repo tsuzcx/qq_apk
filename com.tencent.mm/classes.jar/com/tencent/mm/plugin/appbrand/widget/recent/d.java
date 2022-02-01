@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.appbrand.widget.recent;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.appusage.ag;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.appbrand.au.d;
 import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
@@ -13,96 +13,80 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
 {
-  private static int omD;
-  public static float omE;
-  public static int omF;
-  public static float omG;
-  public static int omH;
-  public static final int omI;
-  private static float omJ;
-  private static int omK;
-  private static int omL;
-  private static int omM;
+  private static int rpf;
+  public static float rpg;
+  public static int rph;
+  public static float rpi;
+  public static int rpj;
+  public static final int rpk;
+  private static float rpl;
+  private static int rpm;
+  private static int rpn;
+  private static int rpo;
   
   static
   {
-    AppMethodBeat.i(227784);
-    omD = 1;
-    omE = 4.5F;
-    omF = 4;
-    omG = 3.5F;
-    omH = 3;
-    omI = AppBrandGlobalSystemConfig.bzP().lcW;
-    omJ = omE;
-    omK = omF;
-    omL = 1;
-    omM = 0;
-    AppMethodBeat.o(227784);
+    AppMethodBeat.i(273286);
+    rpf = 1;
+    rpg = 4.5F;
+    rph = 4;
+    rpi = 3.5F;
+    rpj = 3;
+    rpk = AppBrandGlobalSystemConfig.bLe().nXf;
+    rpl = rpg;
+    rpm = rph;
+    rpn = 1;
+    rpo = 0;
+    AppMethodBeat.o(273286);
   }
   
-  public static int byo()
+  public static boolean cnk()
   {
-    AppMethodBeat.i(227782);
-    if (omM == 0) {
-      omM = ((ag)g.af(ag.class)).bxH();
-    }
-    int i = omM;
-    AppMethodBeat.o(227782);
-    return i;
+    return rpf == 2;
   }
   
-  public static boolean cak()
-  {
-    return omD == 2;
-  }
-  
-  public static boolean ccS()
+  public static boolean cqh()
   {
     return true;
   }
   
   public static int getCompletelyCountPerPage()
   {
-    return omK;
-  }
-  
-  public static float getShowCountPerPage()
-  {
-    return omJ;
+    return rpm;
   }
   
   public static void init(Context paramContext)
   {
-    AppMethodBeat.i(227783);
-    Log.i("MicroMsg.AppBrandRecentConfig", "alvinluo DesktopConfig init mCurrentType: %d", new Object[] { Integer.valueOf(omD) });
-    if (omD == 1)
+    AppMethodBeat.i(273284);
+    Log.i("MicroMsg.AppBrandRecentConfig", "alvinluo DesktopConfig init mCurrentType: %d", new Object[] { Integer.valueOf(rpf) });
+    if (rpf == 1)
     {
-      omE = 4.0F;
-      omF = 4;
-      omG = 3.0F;
-      omH = 3;
-      omJ = omE;
-      omK = omF;
+      rpg = 4.0F;
+      rph = 4;
+      rpi = 3.0F;
+      rpj = 3;
+      rpl = rpg;
+      rpm = rph;
     }
-    int j = f.c(paramContext, omJ);
+    int j = f.c(paramContext, rpl);
     int i = j;
-    if (omD == 1) {
-      i = (int)(j + paramContext.getResources().getDimensionPixelSize(2131165586) * 2 * f.ez(paramContext));
+    if (rpf == 1) {
+      i = (int)(j + paramContext.getResources().getDimensionPixelSize(au.d.SmallPadding) * 2 * f.ez(paramContext));
     }
     if (i <= a.fromDPToPix(paramContext, 10)) {
-      omJ = omG;
+      rpl = rpi;
     }
-    for (omK = omH;; omK = omF)
+    for (rpm = rpj;; rpm = rph)
     {
-      i = ((b)g.af(b.class)).a(b.a.shE, 1);
-      omL = i;
+      i = ((b)h.ae(b.class)).a(b.a.vRB, 1);
+      rpn = i;
       i = Math.max(i, 1);
-      omL = i;
-      omL = Math.min(i, 4);
-      Log.i("MicroMsg.AppBrandRecentConfig", "alvinluo DesktopConfig init showCountPerPage: %f, completelyShowCountPerPage: %d, mRecentAppBrandMaxShowLines: %d", new Object[] { Float.valueOf(omJ), Integer.valueOf(omK), Integer.valueOf(omL) });
-      AppMethodBeat.o(227783);
+      rpn = i;
+      rpn = Math.min(i, 4);
+      Log.i("MicroMsg.AppBrandRecentConfig", "alvinluo DesktopConfig init showCountPerPage: %f, completelyShowCountPerPage: %d, mRecentAppBrandMaxShowLines: %d", new Object[] { Float.valueOf(rpl), Integer.valueOf(rpm), Integer.valueOf(rpn) });
+      AppMethodBeat.o(273284);
       return;
-      omJ = omE;
+      rpl = rpg;
     }
   }
 }

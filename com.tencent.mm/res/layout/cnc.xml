@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/kw5" android:background="@drawable/d2v" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="end" android:orientation="horizontal" android:id="@id/kzh" android:background="@drawable/d2w" android:layout_width="171.0dip" android:layout_height="@dimen/cp" android:layout_marginTop="@dimen/c1">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:src="@raw/finder_left_arrows" android:layout_marginStart="@dimen/ct" android:layout_marginEnd="@dimen/bt" app:iconColor="@color/v9" />
+        <TextView android:textSize="@dimen/h_" android:textColor="@color/v9" android:ellipsize="end" android:gravity="center" android:id="@id/l0d" android:layout_width="75.0dip" android:layout_height="wrap_content" android:text="@string/k3x" android:maxLines="2" android:layout_marginEnd="@dimen/ct" />
+        <ImageView android:layout_gravity="end" android:id="@id/kyx" android:layout_width="@dimen/cm" android:layout_height="@dimen/cp" android:scaleType="centerCrop" android:contentDescription="封面缩略图" />
+    </LinearLayout>
+</FrameLayout>

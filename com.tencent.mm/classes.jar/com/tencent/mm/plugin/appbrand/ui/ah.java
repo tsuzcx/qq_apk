@@ -14,11 +14,11 @@ public abstract interface ah
   
   public abstract void a(AppBrandRuntime paramAppBrandRuntime1, Runnable paramRunnable, AppBrandRuntime paramAppBrandRuntime2);
   
-  public abstract void m(Activity paramActivity);
+  public abstract void k(Activity paramActivity);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.ah
  * JD-Core Version:    0.7.0.1
  */

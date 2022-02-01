@@ -15,22 +15,22 @@ import kotlin.l.b.a.b.f.f;
 public final class i
   implements ac
 {
-  private final List<ac> Tkw;
+  private final List<ac> aaNq;
   
   public i(List<? extends ac> paramList)
   {
     AppMethodBeat.i(57060);
-    this.Tkw = paramList;
+    this.aaNq = paramList;
     AppMethodBeat.o(57060);
   }
   
   public final Collection<kotlin.l.b.a.b.f.b> a(kotlin.l.b.a.b.f.b paramb, kotlin.g.a.b<? super f, Boolean> paramb1)
   {
     AppMethodBeat.i(57059);
-    p.h(paramb, "fqName");
-    p.h(paramb1, "nameFilter");
+    p.k(paramb, "fqName");
+    p.k(paramb1, "nameFilter");
     HashSet localHashSet = new HashSet();
-    Iterator localIterator = this.Tkw.iterator();
+    Iterator localIterator = this.aaNq.iterator();
     while (localIterator.hasNext()) {
       localHashSet.addAll(((ac)localIterator.next()).a(paramb, paramb1));
     }
@@ -42,9 +42,9 @@ public final class i
   public final List<ab> f(kotlin.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(57058);
-    p.h(paramb, "fqName");
+    p.k(paramb, "fqName");
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.Tkw.iterator();
+    Iterator localIterator = this.aaNq.iterator();
     while (localIterator.hasNext()) {
       localArrayList.addAll((Collection)((ac)localIterator.next()).f(paramb));
     }
@@ -55,7 +55,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.c.i
  * JD-Core Version:    0.7.0.1
  */

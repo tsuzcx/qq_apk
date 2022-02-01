@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.finder.presenter.contract;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.f;
-import android.support.v7.widget.v;
 import android.view.View;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.f;
+import androidx.recyclerview.widget.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.finder.b.f;
 import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
 import com.tencent.mm.plugin.finder.presenter.base.c;
 import com.tencent.mm.plugin.finder.view.animation.e;
@@ -18,59 +19,59 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/presenter/contract/BaseFinderLotteryContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/presenter/base/IViewCallback;", "Lcom/tencent/mm/plugin/finder/presenter/contract/BaseFinderLotteryContract$Presenter;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "presenter", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/presenter/contract/BaseFinderLotteryContract$Presenter;)V", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "getRlLayout", "()Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "setRlLayout", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout;)V", "getActivity", "getPresenter", "getRefreshLoadMoreLayout", "initView", "", "showEmptyView", "showProgress", "ifShow", "", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/presenter/contract/BaseFinderLotteryContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/presenter/base/IViewCallback;", "Lcom/tencent/mm/plugin/finder/presenter/contract/BaseFinderLotteryContract$Presenter;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "presenter", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/presenter/contract/BaseFinderLotteryContract$Presenter;)V", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "getRlLayout", "()Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "setRlLayout", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout;)V", "getActivity", "getPresenter", "getRefreshLoadMoreLayout", "initView", "", "showEmptyView", "showProgress", "ifShow", "", "plugin-finder_release"})
 public class BaseFinderLotteryContract$ViewCallback
   implements c<BaseFinderLotteryContract.Presenter>
 {
   final MMActivity activity;
-  public RefreshLoadMoreLayout tLS;
-  final BaseFinderLotteryContract.Presenter uWj;
+  public RefreshLoadMoreLayout xvJ;
+  final BaseFinderLotteryContract.Presenter zMz;
   
   public BaseFinderLotteryContract$ViewCallback(MMActivity paramMMActivity, BaseFinderLotteryContract.Presenter paramPresenter)
   {
-    AppMethodBeat.i(249679);
+    AppMethodBeat.i(287198);
     this.activity = paramMMActivity;
-    this.uWj = paramPresenter;
-    AppMethodBeat.o(249679);
+    this.zMz = paramPresenter;
+    AppMethodBeat.o(287198);
   }
   
-  public final RefreshLoadMoreLayout dcQ()
+  public final RefreshLoadMoreLayout dtq()
   {
-    AppMethodBeat.i(249677);
-    RefreshLoadMoreLayout localRefreshLoadMoreLayout = this.tLS;
+    AppMethodBeat.i(287196);
+    RefreshLoadMoreLayout localRefreshLoadMoreLayout = this.xvJ;
     if (localRefreshLoadMoreLayout == null) {
-      p.btv("rlLayout");
+      p.bGy("rlLayout");
     }
-    AppMethodBeat.o(249677);
+    AppMethodBeat.o(287196);
     return localRefreshLoadMoreLayout;
   }
   
   public final RefreshLoadMoreLayout getRlLayout()
   {
-    AppMethodBeat.i(249676);
-    RefreshLoadMoreLayout localRefreshLoadMoreLayout = this.tLS;
+    AppMethodBeat.i(287195);
+    RefreshLoadMoreLayout localRefreshLoadMoreLayout = this.xvJ;
     if (localRefreshLoadMoreLayout == null) {
-      p.btv("rlLayout");
+      p.bGy("rlLayout");
     }
-    AppMethodBeat.o(249676);
+    AppMethodBeat.o(287195);
     return localRefreshLoadMoreLayout;
   }
   
-  public final void nK(boolean paramBoolean)
+  public final void pW(boolean paramBoolean)
   {
-    AppMethodBeat.i(249678);
-    View localView = this.activity.findViewById(2131303853);
+    AppMethodBeat.i(287197);
+    View localView = this.activity.findViewById(b.f.lottery_history_progress);
     if (localView != null)
     {
       if (paramBoolean) {}
       for (int i = 0;; i = 8)
       {
         localView.setVisibility(i);
-        AppMethodBeat.o(249678);
+        AppMethodBeat.o(287197);
         return;
       }
     }
-    AppMethodBeat.o(249678);
+    AppMethodBeat.o(287197);
   }
 }
 

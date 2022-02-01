@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.thumbplayer.b;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/thumbplayer/cdn/StopPreloadDownloadCallback;", "", "onStop", "", "ret", "", "plugin-thumbplayer_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/thumbplayer/cdn/StopPreloadDownloadCallback;", "", "onStop", "", "ret", "", "plugin-thumbplayer_release"})
 public abstract interface f
 {
-  public abstract void JR(int paramInt);
+  public abstract void OS(int paramInt);
 }
 
 

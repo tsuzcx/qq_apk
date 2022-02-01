@@ -6,18 +6,18 @@ import java.util.List;
 
 final class b$f
 {
-  List<b.e> DoF;
+  List<b.e> Juk;
   
   private b$f()
   {
     AppMethodBeat.i(28674);
-    this.DoF = new LinkedList();
+    this.Juk = new LinkedList();
     AppMethodBeat.o(28674);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.draft.ui.b.f
  * JD-Core Version:    0.7.0.1
  */

@@ -17,29 +17,29 @@ import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.ui.ak;
-import com.tencent.mm.ui.al;
+import com.tencent.mm.ui.an;
+import com.tencent.mm.ui.ao;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class LargeTouchableAreasItemView
   extends LinearLayout
 {
-  private static final int gwi;
-  private final ArrayList<b> gwj;
-  private ak gwk;
-  private a gwl;
-  private int gwm;
-  private boolean gwn;
-  private int gwo;
-  private int gwp;
-  private ImageButton gwq;
+  private static final int jav;
+  private boolean jaA;
+  private int jaB;
+  private int jaC;
+  private ImageButton jaD;
+  private final ArrayList<b> jaw;
+  private an jax;
+  private a jay;
+  private int jaz;
   private final Paint mPaint;
   
   static
   {
     AppMethodBeat.i(12655);
-    gwi = Color.argb(0, 0, 0, 0);
+    jav = Color.argb(0, 0, 0, 0);
     AppMethodBeat.o(12655);
   }
   
@@ -47,28 +47,28 @@ public class LargeTouchableAreasItemView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(12650);
-    this.gwj = new ArrayList();
+    this.jaw = new ArrayList();
     this.mPaint = new Paint();
-    this.gwo = -1;
-    this.gwp = -1;
+    this.jaB = -1;
+    this.jaC = -1;
     setOrientation(0);
     setDescendantFocusability(393216);
-    this.gwk = new ak(this);
+    this.jax = new an(this);
     this.mPaint.setStyle(Paint.Style.FILL);
-    this.gwm = ((int)(paramContext.getResources().getDisplayMetrics().density * 66.0F + 0.5F));
-    LayoutInflater.from(paramContext).inflate(2131493641, this);
+    this.jaz = ((int)(paramContext.getResources().getDisplayMetrics().density * 66.0F + 0.5F));
+    LayoutInflater.from(paramContext).inflate(a.f.jeb, this);
     AppMethodBeat.o(12650);
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(12653);
-    Iterator localIterator = this.gwj.iterator();
+    Iterator localIterator = this.jaw.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
       this.mPaint.setColor(localb.color);
-      paramCanvas.drawRect(localb.rect, this.mPaint);
+      paramCanvas.drawRect(localb.byG, this.mPaint);
     }
     super.dispatchDraw(paramCanvas);
     AppMethodBeat.o(12653);
@@ -76,22 +76,22 @@ public class LargeTouchableAreasItemView
   
   public boolean getSelected()
   {
-    return this.gwn;
+    return this.jaA;
   }
   
   protected void onFinishInflate()
   {
     AppMethodBeat.i(12651);
     super.onFinishInflate();
-    this.gwq = ((ImageButton)findViewById(2131297845));
-    this.gwq.setOnClickListener(new View.OnClickListener()
+    this.jaD = ((ImageButton)findViewById(a.e.jcn));
+    this.jaD.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(12649);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/chatroom/ui/LargeTouchableAreasItemView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/chatroom/ui/LargeTouchableAreasItemView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         paramAnonymousView = LargeTouchableAreasItemView.this;
         if (!LargeTouchableAreasItemView.a(LargeTouchableAreasItemView.this)) {}
         for (boolean bool = true;; bool = false)
@@ -117,21 +117,21 @@ public class LargeTouchableAreasItemView
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = paramInt3 - paramInt1;
     paramInt2 = paramInt4 - paramInt2;
-    if ((paramInt1 != this.gwo) || (paramInt2 != this.gwp))
+    if ((paramInt1 != this.jaB) || (paramInt2 != this.jaC))
     {
-      this.gwo = paramInt1;
-      this.gwp = paramInt2;
-      Object localObject = this.gwk;
-      if (((ak)localObject).OLC != null) {
-        ((ak)localObject).OLC.clear();
+      this.jaB = paramInt1;
+      this.jaC = paramInt2;
+      Object localObject = this.jax;
+      if (((an)localObject).Wfb != null) {
+        ((an)localObject).Wfb.clear();
       }
-      ((ak)localObject).OLD = null;
-      localObject = new Rect(paramInt1 - this.gwq.getWidth() - this.gwm, 0, paramInt1, paramInt2);
-      paramInt1 = gwi;
-      ImageButton localImageButton = this.gwq;
-      this.gwk.a(new al((Rect)localObject, localImageButton));
-      this.gwj.add(new b((Rect)localObject, paramInt1));
-      setTouchDelegate(this.gwk);
+      ((an)localObject).Wfc = null;
+      localObject = new Rect(paramInt1 - this.jaD.getWidth() - this.jaz, 0, paramInt1, paramInt2);
+      paramInt1 = jav;
+      ImageButton localImageButton = this.jaD;
+      this.jax.a(new ao((Rect)localObject, localImageButton));
+      this.jaw.add(new b((Rect)localObject, paramInt1));
+      setTouchDelegate(this.jax);
     }
     AppMethodBeat.o(12652);
   }
@@ -140,16 +140,16 @@ public class LargeTouchableAreasItemView
   {
     AppMethodBeat.i(12654);
     ImageButton localImageButton;
-    if (this.gwn != paramBoolean)
+    if (this.jaA != paramBoolean)
     {
-      this.gwn = paramBoolean;
-      localImageButton = this.gwq;
-      if (!this.gwn) {
-        break label46;
+      this.jaA = paramBoolean;
+      localImageButton = this.jaD;
+      if (!this.jaA) {
+        break label47;
       }
     }
-    label46:
-    for (int i = 2131689951;; i = 2131231825)
+    label47:
+    for (int i = a.h.checkbox_selected;; i = a.d.checkbox_unselected)
     {
       localImageButton.setImageResource(i);
       AppMethodBeat.o(12654);
@@ -159,26 +159,26 @@ public class LargeTouchableAreasItemView
   
   public void setOnLargeTouchableAreasListener(a parama)
   {
-    this.gwl = parama;
+    this.jay = parama;
   }
   
   public static abstract interface a {}
   
   static final class b
   {
+    public Rect byG;
     public int color;
-    public Rect rect;
     
     public b(Rect paramRect, int paramInt)
     {
-      this.rect = paramRect;
+      this.byG = paramRect;
       this.color = paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.LargeTouchableAreasItemView
  * JD-Core Version:    0.7.0.1
  */

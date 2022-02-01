@@ -1,123 +1,148 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.ath;
-import com.tencent.mm.protocal.protobuf.ati;
-import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.cd.b;
+import com.tencent.mm.plugin.finder.utils.aj;
+import com.tencent.mm.plugin.findersdk.b.c;
+import com.tencent.mm.protocal.protobuf.avk;
+import com.tencent.mm.protocal.protobuf.avl;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.jh;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiGetMsgSessionId;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetMsgSessionIdResponse;", "scene", "", "username", "", "(ILjava/lang/String;)V", "toLotteryId", "toObjectId", "", "(ILjava/lang/String;Ljava/lang/String;J)V", "objectId", "commentId", "(ILjava/lang/String;JJ)V", "fansId", "(Ljava/lang/String;)V", "onCgiEnd", "", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiGetMsgSessionId;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetMsgSessionIdResponse;", "scene", "", "username", "", "(ILjava/lang/String;)V", "toLotteryId", "toObjectId", "", "sourceType", "(ILjava/lang/String;Ljava/lang/String;JLjava/lang/Integer;)V", "objectId", "commentId", "(ILjava/lang/String;JJ)V", "fansId", "(Ljava/lang/String;)V", "onCgiEnd", "", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
 public final class ai
-  extends an<ati>
+  extends c<avl>
 {
-  public static final a tuq;
+  private static b xbZ;
+  public static final a xca;
   
   static
   {
-    AppMethodBeat.i(242312);
-    tuq = new a((byte)0);
-    AppMethodBeat.o(242312);
+    AppMethodBeat.i(276160);
+    xca = new a((byte)0);
+    AppMethodBeat.o(276160);
   }
   
   public ai(int paramInt, String paramString)
   {
-    AppMethodBeat.i(242308);
+    AppMethodBeat.i(276156);
     d.a locala = new d.a();
-    Object localObject = new ath();
-    am localam = am.tuw;
-    ((ath)localObject).LBM = am.cXY();
-    ((ath)localObject).scene = paramInt;
-    ((ath)localObject).pPz = paramString;
-    locala.c((a)localObject);
-    localObject = new ati();
-    ((ati)localObject).setBaseResponse(new BaseResponse());
-    ((ati)localObject).getBaseResponse().ErrMsg = new dqi();
-    locala.d((a)localObject);
-    locala.MB("/cgi-bin/micromsg-bin/findergetmsgsessionid");
-    locala.sG(3828);
-    c(locala.aXF());
+    Object localObject1 = new avk();
+    Object localObject2 = ao.xcj;
+    ((avk)localObject1).RLM = ao.dnO();
+    ((avk)localObject1).SFD = paramInt;
+    ((avk)localObject1).sWA = paramString;
+    ((avk)localObject1).SFE = true;
+    ((avk)localObject1).SHN = xbZ;
+    localObject2 = aj.AGc;
+    ((avk)localObject1).SHO = aj.Rn(((avk)localObject1).SFD);
+    locala.c((a)localObject1);
+    localObject1 = new avl();
+    ((avl)localObject1).setBaseResponse(new jh());
+    ((avl)localObject1).getBaseResponse().Tef = new eaf();
+    locala.d((a)localObject1);
+    locala.TW("/cgi-bin/micromsg-bin/findergetmsgsessionid");
+    locala.vD(3828);
+    c(locala.bgN());
     Log.i("Finder.CgiGetMsgSessionId", "[CgiGetMsgSessionId] scene=" + paramInt + " username=" + paramString);
-    AppMethodBeat.o(242308);
+    AppMethodBeat.o(276156);
   }
   
   public ai(int paramInt, String paramString, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(242310);
+    AppMethodBeat.i(276158);
     d.a locala = new d.a();
-    Object localObject = new ath();
-    am localam = am.tuw;
-    ((ath)localObject).LBM = am.cXY();
-    ((ath)localObject).scene = paramInt;
-    ((ath)localObject).LEd = paramLong1;
-    ((ath)localObject).LEe = paramLong2;
-    ((ath)localObject).pPz = paramString;
-    locala.c((a)localObject);
-    localObject = new ati();
-    ((ati)localObject).setBaseResponse(new BaseResponse());
-    ((ati)localObject).getBaseResponse().ErrMsg = new dqi();
-    locala.d((a)localObject);
-    locala.MB("/cgi-bin/micromsg-bin/findergetmsgsessionid");
-    locala.sG(3828);
-    c(locala.aXF());
+    Object localObject1 = new avk();
+    Object localObject2 = ao.xcj;
+    ((avk)localObject1).RLM = ao.dnO();
+    ((avk)localObject1).SFD = paramInt;
+    ((avk)localObject1).SHJ = paramLong1;
+    ((avk)localObject1).SHK = paramLong2;
+    ((avk)localObject1).sWA = paramString;
+    ((avk)localObject1).SFE = true;
+    ((avk)localObject1).SHN = xbZ;
+    localObject2 = aj.AGc;
+    ((avk)localObject1).SHO = aj.Rn(((avk)localObject1).SFD);
+    locala.c((a)localObject1);
+    localObject1 = new avl();
+    ((avl)localObject1).setBaseResponse(new jh());
+    ((avl)localObject1).getBaseResponse().Tef = new eaf();
+    locala.d((a)localObject1);
+    locala.TW("/cgi-bin/micromsg-bin/findergetmsgsessionid");
+    locala.vD(3828);
+    c(locala.bgN());
     Log.i("Finder.CgiGetMsgSessionId", "[CgiGetMsgSessionId] scene=" + paramInt + " username=" + paramString + " objectId=" + paramLong1 + " commentId=" + paramLong2);
-    AppMethodBeat.o(242310);
+    AppMethodBeat.o(276158);
   }
   
-  public ai(int paramInt, String paramString1, String paramString2, long paramLong)
+  public ai(int paramInt, String paramString1, String paramString2, long paramLong, Integer paramInteger)
   {
-    AppMethodBeat.i(242309);
+    AppMethodBeat.i(276157);
     d.a locala = new d.a();
-    ath localath = new ath();
-    am localam = am.tuw;
-    localath.LBM = am.cXY();
-    localath.scene = paramInt;
-    localath.pPz = paramString1;
-    localath.LEf = paramString2;
-    localath.LEd = paramLong;
-    localath.LEg = 1;
-    locala.c((a)localath);
-    paramString2 = new ati();
-    paramString2.setBaseResponse(new BaseResponse());
-    paramString2.getBaseResponse().ErrMsg = new dqi();
-    locala.d((a)paramString2);
-    locala.MB("/cgi-bin/micromsg-bin/findergetmsgsessionid");
-    locala.sG(3828);
-    c(locala.aXF());
-    Log.i("Finder.CgiGetMsgSessionId", "[CgiGetMsgSessionId] scene=" + paramInt + " username=" + paramString1);
-    AppMethodBeat.o(242309);
+    avk localavk = new avk();
+    ao localao = ao.xcj;
+    localavk.RLM = ao.dnO();
+    localavk.SFD = paramInt;
+    localavk.sWA = paramString1;
+    localavk.SHL = paramString2;
+    localavk.SHJ = paramLong;
+    if (paramInteger != null) {}
+    for (int i = paramInteger.intValue();; i = 1)
+    {
+      localavk.SEl = i;
+      localavk.SFE = true;
+      localavk.SHN = xbZ;
+      paramString2 = aj.AGc;
+      localavk.SHO = aj.Rn(localavk.SFD);
+      locala.c((a)localavk);
+      paramString2 = new avl();
+      paramString2.setBaseResponse(new jh());
+      paramString2.getBaseResponse().Tef = new eaf();
+      locala.d((a)paramString2);
+      locala.TW("/cgi-bin/micromsg-bin/findergetmsgsessionid");
+      locala.vD(3828);
+      c(locala.bgN());
+      Log.i("Finder.CgiGetMsgSessionId", "[CgiGetMsgSessionId] scene=" + paramInt + " username=" + paramString1);
+      AppMethodBeat.o(276157);
+      return;
+    }
   }
   
   public ai(String paramString)
   {
-    AppMethodBeat.i(242311);
+    AppMethodBeat.i(276159);
     d.a locala = new d.a();
-    Object localObject = new ath();
-    am localam = am.tuw;
-    ((ath)localObject).LBM = am.cXY();
-    ((ath)localObject).scene = 1;
-    ((ath)localObject).LEc = paramString;
-    locala.c((a)localObject);
-    localObject = new ati();
-    ((ati)localObject).setBaseResponse(new BaseResponse());
-    ((ati)localObject).getBaseResponse().ErrMsg = new dqi();
-    locala.d((a)localObject);
-    locala.MB("/cgi-bin/micromsg-bin/findergetmsgsessionid");
-    locala.sG(3828);
-    c(locala.aXF());
+    Object localObject1 = new avk();
+    Object localObject2 = ao.xcj;
+    ((avk)localObject1).RLM = ao.dnO();
+    ((avk)localObject1).SFD = 1;
+    ((avk)localObject1).SHI = paramString;
+    ((avk)localObject1).SFE = true;
+    ((avk)localObject1).SHN = xbZ;
+    localObject2 = aj.AGc;
+    ((avk)localObject1).SHO = aj.Rn(((avk)localObject1).SFD);
+    locala.c((a)localObject1);
+    localObject1 = new avl();
+    ((avl)localObject1).setBaseResponse(new jh());
+    ((avl)localObject1).getBaseResponse().Tef = new eaf();
+    locala.d((a)localObject1);
+    locala.TW("/cgi-bin/micromsg-bin/findergetmsgsessionid");
+    locala.vD(3828);
+    c(locala.bgN());
     Log.i("Finder.CgiGetMsgSessionId", "[CgiGetMsgSessionId] fansId=".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(242311);
+    AppMethodBeat.o(276159);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiGetMsgSessionId$Companion;", "", "()V", "MSG_SCENE_FINDER", "", "MSG_SCENE_STRANGER", "MSG_SOURCE_TYPE_FINDER", "MSG_SOURCE_TYPE_FINDER_LIVE_LOTTERY", "TAG", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiGetMsgSessionId$Companion;", "", "()V", "FinderComment", "", "FinderCommon", "FinderFans", "FinderLike", "FinderLiveList", "FinderLotteryAudience", "MSG_SCENE_ALIAS", "MSG_SCENE_FINDER", "MSG_SCENE_STRANGER", "MSG_SOURCE_TYPE_FINDER", "MSG_SOURCE_TYPE_FINDER_LIVE_LOTTERY", "TAG", "", "finderLiveContactExtInfo", "Lcom/tencent/mm/protobuf/ByteString;", "getFinderLiveContactExtInfo", "()Lcom/tencent/mm/protobuf/ByteString;", "setFinderLiveContactExtInfo", "(Lcom/tencent/mm/protobuf/ByteString;)V", "plugin-finder_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.ai
  * JD-Core Version:    0.7.0.1
  */

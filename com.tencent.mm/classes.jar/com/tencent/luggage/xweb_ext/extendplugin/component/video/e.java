@@ -5,48 +5,48 @@ import android.view.View;
 import com.tencent.luggage.xweb_ext.extendplugin.component.i;
 import com.tencent.luggage.xweb_ext.extendplugin.component.t;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ag.e.j;
-import com.tencent.mm.plugin.appbrand.jsapi.s.g;
-import com.tencent.mm.plugin.appbrand.jsapi.s.h;
-import com.tencent.mm.plugin.appbrand.jsapi.s.h.a;
+import com.tencent.mm.plugin.appbrand.jsapi.ai.e.j;
+import com.tencent.mm.plugin.appbrand.jsapi.t.g;
+import com.tencent.mm.plugin.appbrand.jsapi.t.h;
+import com.tencent.mm.plugin.appbrand.jsapi.t.h.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 final class e
   extends com.tencent.luggage.xweb_ext.extendplugin.component.c<j, View>
 {
-  private h.a<j, View> cFR;
-  final c cJT;
-  private final d cJU;
+  private h.a<j, View> cGx;
+  final c cKw;
+  private final d cKx;
   
   public e(c paramc)
   {
     super(paramc);
-    AppMethodBeat.i(215747);
-    this.cFR = new h.a() {};
-    this.cJT = paramc;
-    this.cJU = new d(paramc);
-    AppMethodBeat.o(215747);
+    AppMethodBeat.i(225583);
+    this.cGx = new h.a() {};
+    this.cKw = paramc;
+    this.cKx = new d(paramc);
+    AppMethodBeat.o(225583);
   }
   
-  public final g PI()
+  public final g Th()
   {
-    return this.cJU.cFM;
+    return this.cKx.cGs;
   }
   
-  public final h.a<j, View> PJ()
+  public final h.a<j, View> Ti()
   {
-    return this.cFR;
+    return this.cGx;
   }
   
-  public final com.tencent.mm.plugin.appbrand.jsapi.s.c PK()
+  public final com.tencent.mm.plugin.appbrand.jsapi.t.c Tj()
   {
-    return d.cFL;
+    return d.cGr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.video.e
  * JD-Core Version:    0.7.0.1
  */

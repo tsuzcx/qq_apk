@@ -8,54 +8,56 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.scanner.l.f;
+import com.tencent.mm.plugin.scanner.l.g;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanDebugView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "debugInfo", "Landroid/widget/TextView;", "init", "", "onPreviewReady", "updateDebugView", "info", "Landroid/os/Bundle;", "Companion", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanDebugView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "debugInfo", "Landroid/widget/TextView;", "init", "", "onPreviewReady", "updateDebugView", "info", "Landroid/os/Bundle;", "Companion", "plugin-scan_release"})
 public final class ScanDebugView
   extends RelativeLayout
 {
-  public static final a CRR;
-  public TextView zUR;
+  public static final a IXj;
+  public TextView FAA;
   
   static
   {
-    AppMethodBeat.i(240642);
-    CRR = new a((byte)0);
-    AppMethodBeat.o(240642);
+    AppMethodBeat.i(223413);
+    IXj = new a((byte)0);
+    AppMethodBeat.o(223413);
   }
   
   public ScanDebugView(Context paramContext)
   {
     this(paramContext, null);
-    AppMethodBeat.i(240639);
-    AppMethodBeat.o(240639);
+    AppMethodBeat.i(223401);
+    AppMethodBeat.o(223401);
   }
   
   public ScanDebugView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(240640);
-    AppMethodBeat.o(240640);
+    AppMethodBeat.i(223404);
+    AppMethodBeat.o(223404);
   }
   
   public ScanDebugView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(240641);
-    paramContext = LayoutInflater.from(paramContext).inflate(2131495185, (ViewGroup)this).findViewById(2131307239);
-    p.g(paramContext, "view.findViewById(R.id.scan_debug_info)");
-    this.zUR = ((TextView)paramContext);
+    AppMethodBeat.i(223410);
+    paramContext = LayoutInflater.from(paramContext).inflate(l.g.IDU, (ViewGroup)this).findViewById(l.f.IDk);
+    p.j(paramContext, "view.findViewById(R.id.scan_debug_info)");
+    this.FAA = ((TextView)paramContext);
     setVisibility(8);
-    AppMethodBeat.o(240641);
+    AppMethodBeat.o(223410);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanDebugView$Companion;", "", "()V", "TAG", "", "plugin-scan_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanDebugView$Companion;", "", "()V", "TAG", "", "plugin-scan_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.widget.ScanDebugView
  * JD-Core Version:    0.7.0.1
  */

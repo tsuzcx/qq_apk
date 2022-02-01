@@ -6,7 +6,7 @@ import android.graphics.Point;
 import android.util.DisplayMetrics;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 
 public final class e
 {
@@ -17,7 +17,7 @@ public final class e
     int[] arrayOfInt2 = new int[2];
     paramView1.getLocationOnScreen(arrayOfInt2);
     int i = paramView1.getHeight();
-    int j = ao.az(paramContext).x;
+    int j = ar.au(paramContext).x;
     paramView2.measure(0, 0);
     int k = paramView2.getMeasuredHeight();
     int m = paramView2.getMeasuredWidth();
@@ -42,7 +42,7 @@ public final class e
     int[] arrayOfInt2 = new int[2];
     paramView1.getLocationInWindow(arrayOfInt2);
     int i = paramView1.getHeight();
-    int j = ao.az(paramContext).x;
+    int j = ar.au(paramContext).x;
     paramView2.measure(0, 0);
     int k = paramView2.getMeasuredHeight();
     int m = paramView2.getMeasuredWidth();
@@ -68,7 +68,7 @@ public final class e
     return i;
   }
   
-  public static int fX(View paramView)
+  public static int hg(View paramView)
   {
     AppMethodBeat.i(126648);
     int[] arrayOfInt = new int[2];
@@ -82,7 +82,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.widget.e
  * JD-Core Version:    0.7.0.1
  */

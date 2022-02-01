@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.appbrand.a;
 
-import android.support.v4.e.a;
+import androidx.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import java.util.Set;
@@ -8,40 +8,39 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class c
 {
-  final AppBrandRuntime kEc;
-  public final d kQM;
-  public final a<a, c> kQN;
+  public final d nKU;
+  public final a<a, c> nKV;
+  final AppBrandRuntime nxs;
   
   public c(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(134712);
-    this.kQN = new a();
-    this.kEc = paramAppBrandRuntime;
-    this.kQM = new d(paramAppBrandRuntime)
+    this.nKV = new a();
+    this.nxs = paramAppBrandRuntime;
+    this.nKU = new d(paramAppBrandRuntime)
     {
       final void a(b paramAnonymousb)
       {
         AppMethodBeat.i(134711);
         c localc = c.this;
-        synchronized (localc.kQN)
+        synchronized (localc.nKV)
         {
-          c.a[] arrayOfa = new c.a[localc.kQN.size()];
-          arrayOfa = (c.a[])localc.kQN.keySet().toArray(arrayOfa);
+          c.a[] arrayOfa = new c.a[localc.nKV.size()];
+          arrayOfa = (c.a[])localc.nKV.keySet().toArray(arrayOfa);
           int j = arrayOfa.length;
           int i = 0;
           if (i < j)
           {
-            arrayOfa[i].a(localc.kEc.mAppId, paramAnonymousb);
+            arrayOfa[i].a(localc.nxs.mAppId, paramAnonymousb);
             i += 1;
           }
         }
-        AppMethodBeat.o(134711);
       }
       
-      final void bwW()
+      final void bIe()
       {
         AppMethodBeat.i(134710);
-        c.this.kEc.finish();
+        c.this.nxs.finish();
         AppMethodBeat.o(134710);
       }
     };
@@ -51,14 +50,14 @@ public final class c
   public final void a(a parama)
   {
     AppMethodBeat.i(134713);
-    if ((parama == null) || (this.kQM.kQW.get()))
+    if ((parama == null) || (this.nKU.nLe.get()))
     {
       AppMethodBeat.o(134713);
       return;
     }
-    synchronized (this.kQN)
+    synchronized (this.nKV)
     {
-      this.kQN.put(parama, this);
+      this.nKV.put(parama, this);
       AppMethodBeat.o(134713);
       return;
     }
@@ -67,23 +66,23 @@ public final class c
   public final void b(a parama)
   {
     AppMethodBeat.i(134714);
-    if ((parama == null) || (b.kQK == this.kQM.bwY()))
+    if ((parama == null) || (b.nKS == this.nKU.bIg()))
     {
       AppMethodBeat.o(134714);
       return;
     }
-    synchronized (this.kQN)
+    synchronized (this.nKV)
     {
-      this.kQN.remove(parama);
+      this.nKV.remove(parama);
       AppMethodBeat.o(134714);
       return;
     }
   }
   
-  public final void gK(boolean paramBoolean)
+  public final void hv(boolean paramBoolean)
   {
     AppMethodBeat.i(162077);
-    this.kQM.gK(paramBoolean);
+    this.nKU.hv(paramBoolean);
     AppMethodBeat.o(162077);
   }
   
@@ -94,7 +93,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.a.c
  * JD-Core Version:    0.7.0.1
  */

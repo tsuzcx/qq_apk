@@ -1,153 +1,97 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.provider.Settings.SettingNotFoundException;
-import android.provider.Settings.System;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h;
-import com.tencent.mm.plugin.appbrand.jsapi.video.e.b.f;
-import com.tencent.mm.plugin.appbrand.jsapi.video.e.c;
+import com.tencent.mm.s.d;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.text.SimpleDateFormat;
-import java.util.TimeZone;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Map;
 
 public final class l
+  implements g
 {
-  public static String AF(long paramLong)
+  public final int a(String paramString, c paramc)
   {
-    AppMethodBeat.i(137850);
-    if (paramLong < 3600000L) {}
-    for (Object localObject = "mm:ss";; localObject = "HH:mm:ss")
+    int i = -1;
+    AppMethodBeat.i(46962);
+    Object localObject = AppBrandVideoDownLoadMgr.puf;
+    if ((paramString == null) || (Util.isNullOrNil(paramString)))
     {
-      localObject = new SimpleDateFormat((String)localObject);
-      ((SimpleDateFormat)localObject).setTimeZone(TimeZone.getTimeZone("GMT+0:00"));
-      localObject = ((SimpleDateFormat)localObject).format(Long.valueOf(paramLong));
-      AppMethodBeat.o(137850);
-      return localObject;
+      Log.i("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", "leonlad genPreLoad illegal url or preLoadCallback");
+      AppMethodBeat.o(46962);
+      return -1;
     }
-  }
-  
-  public static boolean aaW(String paramString)
-  {
-    AppMethodBeat.i(234647);
-    boolean bool = h.aaW(paramString);
-    AppMethodBeat.o(234647);
-    return bool;
-  }
-  
-  public static void b(Context paramContext, float paramFloat)
-  {
-    AppMethodBeat.i(234649);
-    if (!(paramContext instanceof Activity))
-    {
-      AppMethodBeat.o(234649);
-      return;
-    }
-    float f;
-    if (paramFloat < 0.01F) {
-      f = 0.01F;
+    a locala = new a();
+    locala.url = paramString;
+    locala.pub = paramc;
+    Log.i("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", "leonlad genPreLoad  videoUrl = %s, preLoadVideoStat = %s", new Object[] { paramString, locala.url });
+    paramString = ((AppBrandVideoDownLoadMgr)localObject).genAdFileExist("gamead", locala);
+    if (!Util.isNullOrNil(paramString)) {
+      if (!paramString.equalsIgnoreCase("downloading"))
+      {
+        AppBrandVideoDownLoadMgr.pue.put(locala.url, locala);
+        AppBrandVideoDownLoadMgr.av(locala.url, true);
+        locala.pub.dY(locala.url, paramString);
+      }
     }
     for (;;)
     {
-      paramContext = (Activity)paramContext;
-      WindowManager.LayoutParams localLayoutParams = paramContext.getWindow().getAttributes();
-      localLayoutParams.screenBrightness = f;
-      paramContext.getWindow().setAttributes(localLayoutParams);
-      AppMethodBeat.o(234649);
-      return;
-      f = paramFloat;
-      if (paramFloat > 1.0F) {
-        f = 1.0F;
+      AppMethodBeat.o(46962);
+      return 0;
+      AppMethodBeat.o(46962);
+      return -2;
+      paramString = ((AppBrandVideoDownLoadMgr)localObject).genAdFilePath("gamead", locala);
+      if (Util.isNullOrNil(paramString)) {
+        break;
       }
-    }
-  }
-  
-  private static int bIT()
-  {
-    AppMethodBeat.i(234648);
-    int k = 255;
-    j = k;
-    try
-    {
-      Resources localResources = Resources.getSystem();
-      j = k;
-      int m = localResources.getIdentifier("config_screenBrightnessSettingMaximum", "integer", "android");
-      i = k;
-      if (m != 0)
+      paramc = AppBrandVideoDownLoadMgr.pug;
+      localObject = locala.url;
+      if (d.jBw != null) {
+        i = d.jBw.a((String)localObject, paramString, paramc);
+      }
+      Log.i("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", "leonlad downloadVideo path=%s, ret=%d", new Object[] { paramString, Integer.valueOf(i) });
+      if (i != 0)
       {
-        j = k;
-        i = localResources.getInteger(m);
+        AppMethodBeat.o(46962);
+        return -3;
       }
-      j = i;
-      Log.d("MicroMsg.VideoPlayerUtils", "getMaxBrightness %d", new Object[] { Integer.valueOf(i) });
+      AppBrandVideoDownLoadMgr.pue.put(locala.url, locala);
     }
-    catch (Exception localException)
+    AppMethodBeat.o(46962);
+    return -4;
+  }
+  
+  public final String aiM(String paramString)
+  {
+    AppMethodBeat.i(46964);
+    AppBrandVideoDownLoadMgr localAppBrandVideoDownLoadMgr = AppBrandVideoDownLoadMgr.puf;
+    a locala = new a();
+    locala.url = paramString;
+    locala.pub = null;
+    paramString = localAppBrandVideoDownLoadMgr.genAdFileExist("gamead", locala);
+    if (!Util.isNullOrNil(paramString))
     {
-      for (;;)
+      if (!paramString.equalsIgnoreCase("downloading"))
       {
-        Log.i("MicroMsg.VideoPlayerUtils", "get max brightness fail, fallback to 255");
-        int i = j;
+        AppMethodBeat.o(46964);
+        return paramString;
       }
+      AppMethodBeat.o(46964);
+      return null;
     }
-    AppMethodBeat.o(234648);
-    return i;
+    AppMethodBeat.o(46964);
+    return null;
   }
   
-  private static float dT(Context paramContext)
+  public final void report(String paramString)
   {
-    AppMethodBeat.i(137848);
-    paramContext = paramContext.getContentResolver();
-    float f1 = 0.0F;
-    try
-    {
-      float f2 = Settings.System.getInt(paramContext, "screen_brightness");
-      f1 = f2;
-      int i = bIT();
-      f1 = f2 / i;
-    }
-    catch (Settings.SettingNotFoundException paramContext)
-    {
-      for (;;)
-      {
-        Log.printErrStackTrace("MicroMsg.VideoPlayerUtils", paramContext, "", new Object[0]);
-      }
-    }
-    AppMethodBeat.o(137848);
-    return f1;
-  }
-  
-  public static float dV(Context paramContext)
-  {
-    AppMethodBeat.i(137849);
-    if (!(paramContext instanceof Activity))
-    {
-      AppMethodBeat.o(137849);
-      return 1.0F;
-    }
-    WindowManager.LayoutParams localLayoutParams = ((Activity)paramContext).getWindow().getAttributes();
-    if (localLayoutParams.screenBrightness < 0.0F)
-    {
-      f = dT(paramContext);
-      AppMethodBeat.o(137849);
-      return f;
-    }
-    float f = localLayoutParams.screenBrightness;
-    AppMethodBeat.o(137849);
-    return f;
-  }
-  
-  public static boolean f(c paramc)
-  {
-    return paramc instanceof f;
+    AppMethodBeat.i(46963);
+    AppBrandVideoDownLoadMgr.puf.report(paramString);
+    AppMethodBeat.o(46963);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.l
  * JD-Core Version:    0.7.0.1
  */

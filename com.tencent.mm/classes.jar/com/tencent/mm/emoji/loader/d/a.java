@@ -2,7 +2,7 @@ package com.tencent.mm.emoji.loader.d;
 
 import android.graphics.drawable.Drawable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
+import com.tencent.mm.ae.d;
 import com.tencent.mm.emoji.view.BaseEmojiView;
 import com.tencent.mm.pluginsdk.ui.emoji.ChattingEmojiView;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -14,33 +14,33 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/loader/request/ChatEmojiViewRequest;", "Lcom/tencent/mm/emoji/loader/request/EmojiViewRequest;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "view", "Lcom/tencent/mm/pluginsdk/ui/emoji/ChattingEmojiView;", "cacheKey", "", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Lcom/tencent/mm/pluginsdk/ui/emoji/ChattingEmojiView;Ljava/lang/String;)V", "firstLoad", "", "onLoad", "", "success", "onSize", "width", "", "height", "start", "async", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/loader/request/ChatEmojiViewRequest;", "Lcom/tencent/mm/emoji/loader/request/EmojiViewRequest;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "view", "Lcom/tencent/mm/pluginsdk/ui/emoji/ChattingEmojiView;", "cacheKey", "", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Lcom/tencent/mm/pluginsdk/ui/emoji/ChattingEmojiView;Ljava/lang/String;)V", "firstLoad", "", "onLoad", "", "success", "onSize", "width", "", "height", "start", "async", "plugin-emojisdk_release"})
 public final class a
   extends f
 {
   private final String cacheKey;
-  private boolean gWt;
+  private boolean jHo;
   
   public a(EmojiInfo paramEmojiInfo, ChattingEmojiView paramChattingEmojiView, String paramString)
   {
     super(paramEmojiInfo, (BaseEmojiView)paramChattingEmojiView, (i.a)paramChattingEmojiView);
     AppMethodBeat.i(105451);
     this.cacheKey = paramString;
-    this.gWt = true;
+    this.jHo = true;
     AppMethodBeat.o(105451);
   }
   
-  public final void dR(final boolean paramBoolean)
+  public final void eq(final boolean paramBoolean)
   {
     final Drawable localDrawable = null;
     AppMethodBeat.i(105450);
     StringBuilder localStringBuilder = new StringBuilder("onLoad ").append(this).append(' ');
-    Object localObject = this.gWH;
+    Object localObject = this.jHE;
     if (localObject != null)
     {
       localObject = (BaseEmojiView)((WeakReference)localObject).get();
       Log.d("MicroMsg.ChatEmojiViewRequest", localObject + ' ' + paramBoolean);
-      localObject = this.gWH;
+      localObject = this.jHE;
       if (localObject == null) {
         break label145;
       }
@@ -49,12 +49,12 @@ public final class a
     for (localObject = (BaseEmojiView)((WeakReference)localObject).get();; localObject = null)
     {
       if (paramBoolean) {
-        localDrawable = new com.tencent.mm.emoji.loader.b.a().a(this.gWm, (m)new b(this));
+        localDrawable = new com.tencent.mm.emoji.loader.b.a().a(this.jHh, (m)new b(this));
       }
-      if ((localDrawable != null) || (!this.gWt)) {
+      if ((localDrawable != null) || (!this.jHo)) {
         break label150;
       }
-      this.gWt = false;
+      this.jHo = false;
       i.b(this);
       AppMethodBeat.o(105450);
       return;
@@ -62,17 +62,17 @@ public final class a
       break;
     }
     label150:
-    d.h((kotlin.g.a.a)new a(this, localDrawable, (BaseEmojiView)localObject, paramBoolean));
+    d.uiThread((kotlin.g.a.a)new a(this, localDrawable, (BaseEmojiView)localObject, paramBoolean));
     AppMethodBeat.o(105450);
   }
   
   public final void start(boolean paramBoolean)
   {
     AppMethodBeat.i(105449);
-    Object localObject1 = com.tencent.mm.emoji.loader.a.a.gVS;
-    Drawable localDrawable = com.tencent.mm.emoji.loader.a.a.EO(this.cacheKey);
+    Object localObject1 = com.tencent.mm.emoji.loader.a.a.jGO;
+    Drawable localDrawable = com.tencent.mm.emoji.loader.a.a.LH(this.cacheKey);
     Object localObject2 = new StringBuilder("start: ").append(localDrawable).append(' ');
-    localObject1 = this.gWH;
+    localObject1 = this.jHE;
     if (localObject1 != null)
     {
       localObject1 = (BaseEmojiView)((WeakReference)localObject1).get();
@@ -83,7 +83,7 @@ public final class a
       if (localDrawable.getCallback() != null)
       {
         localObject2 = localDrawable.getCallback();
-        localObject1 = this.gWH;
+        localObject1 = this.jHE;
         if (localObject1 == null) {
           break label201;
         }
@@ -92,9 +92,9 @@ public final class a
     }
     for (;;)
     {
-      if (p.j(localObject2, localObject1))
+      if (p.h(localObject2, localObject1))
       {
-        localObject1 = this.gWH;
+        localObject1 = this.jHE;
         if (localObject1 != null)
         {
           localObject1 = (BaseEmojiView)((WeakReference)localObject1).get();
@@ -102,7 +102,7 @@ public final class a
             ((BaseEmojiView)localObject1).setImageDrawable(localDrawable);
           }
         }
-        localObject1 = this.gWH;
+        localObject1 = this.jHE;
         if (localObject1 != null)
         {
           localObject1 = (BaseEmojiView)((WeakReference)localObject1).get();
@@ -110,10 +110,10 @@ public final class a
             ((BaseEmojiView)localObject1).resume();
           }
         }
-        localObject1 = this.gWA;
+        localObject1 = this.jHw;
         if (localObject1 != null)
         {
-          ((i.a)localObject1).dQ(true);
+          ((i.a)localObject1).ep(true);
           AppMethodBeat.o(105449);
           return;
           localObject1 = null;
@@ -127,9 +127,9 @@ public final class a
       }
     }
     label212:
-    if (this.gWm.hRx())
+    if (this.jHh.hBp())
     {
-      d.i((kotlin.g.a.a)new c(this));
+      d.h((kotlin.g.a.a)new c(this));
       AppMethodBeat.o(105449);
       return;
     }
@@ -137,7 +137,7 @@ public final class a
     AppMethodBeat.o(105449);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class a
     extends q
     implements kotlin.g.a.a<x>
@@ -148,7 +148,7 @@ public final class a
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "width", "", "height", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "width", "", "height", "invoke"})
   static final class b
     extends q
     implements m<Integer, Integer, x>
@@ -159,7 +159,7 @@ public final class a
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class c
     extends q
     implements kotlin.g.a.a<x>
@@ -172,7 +172,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.d.a
  * JD-Core Version:    0.7.0.1
  */

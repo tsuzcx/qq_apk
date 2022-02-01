@@ -3,7 +3,7 @@ package kotlin.m;
 import java.util.Iterator;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/sequences/Sequence;", "T", "", "iterator", "", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/sequences/Sequence;", "T", "", "iterator", "", "kotlin-stdlib"})
 public abstract interface h<T>
 {
   public abstract Iterator<T> iterator();

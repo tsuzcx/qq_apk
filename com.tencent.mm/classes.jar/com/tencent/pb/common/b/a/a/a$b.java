@@ -1,40 +1,40 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.e;
+import com.google.b.a.b;
+import com.google.b.a.e;
 
 public final class a$b
   extends e
 {
-  public String RDo = "";
-  public int bDZ = 0;
+  public String ZeQ = "";
+  public int bnA = 0;
   
   public a$b()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public final int Ig()
+  public final int JG()
   {
-    int j = super.Ig();
+    int j = super.JG();
     int i = j;
-    if (!this.RDo.equals("")) {
-      i = j + b.f(1, this.RDo);
+    if (!this.ZeQ.equals("")) {
+      i = j + b.g(1, this.ZeQ);
     }
     j = i;
-    if (this.bDZ != 0) {
-      j = i + b.bu(2, this.bDZ);
+    if (this.bnA != 0) {
+      j = i + b.bM(2, this.bnA);
     }
     return j;
   }
   
   public final void a(b paramb)
   {
-    if (!this.RDo.equals("")) {
-      paramb.e(1, this.RDo);
+    if (!this.ZeQ.equals("")) {
+      paramb.f(1, this.ZeQ);
     }
-    if (this.bDZ != 0) {
-      paramb.bs(2, this.bDZ);
+    if (this.bnA != 0) {
+      paramb.bJ(2, this.bnA);
     }
     super.a(paramb);
   }

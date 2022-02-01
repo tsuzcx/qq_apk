@@ -10,15 +10,15 @@ public abstract interface h
 {
   public static final String[] SQL_CREATE = { MAutoStorage.getCreateSQLs(k.info, "RecordMessageInfo") };
   
-  public abstract void Vu(int paramInt);
+  public abstract void acc(int paramInt);
   
-  public abstract k Vv(int paramInt);
+  public abstract k acd(int paramInt);
   
-  public abstract List<k> eIl();
+  public abstract List<k> fuq();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.record.a.h
  * JD-Core Version:    0.7.0.1
  */

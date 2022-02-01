@@ -3,13 +3,11 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.a;
 import android.content.Context;
 import android.view.View;
 import android.widget.ListView;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.brandservice.b.k;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.c;
 import com.tencent.mm.plugin.brandservice.ui.timeline.f;
 import com.tencent.mm.plugin.brandservice.ui.timeline.f.b;
 import com.tencent.mm.plugin.brandservice.ui.timeline.video.MPVideoPreviewMgr;
@@ -23,143 +21,133 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import kotlin.g.b.p;
-import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/model/BizTimeLineExposeHelper;", "", "context", "Landroid/content/Context;", "report", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineReport;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineReport;)V", "getContext", "()Landroid/content/Context;", "doingReport", "", "getDoingReport", "()Z", "setDoingReport", "(Z)V", "exposedMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "pendingMap", "renderMap", "getReport", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineReport;", "screenHeight", "", "getScreenHeight", "()I", "setScreenHeight", "(I)V", "sessionItemCache", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineReport$ReportBrandExposeItem;", "getSessionItemCache", "()Ljava/util/HashMap;", "setSessionItemCache", "(Ljava/util/HashMap;)V", "addToRenderMap", "", "id", "doUpdateReadStatus", "firstVisibleItem", "lastVisibleItem", "listView", "Landroid/widget/ListView;", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "putToSessionItemCache", "key", "item", "realExpose", "Landroid/view/View;", "removeFormRenderMap", "reportExpose", "keyWithExpandStatus", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "Companion", "plugin-brandservice_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/model/BizTimeLineExposeHelper;", "", "context", "Landroid/content/Context;", "report", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineReport;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineReport;)V", "getContext", "()Landroid/content/Context;", "doingReport", "", "getDoingReport", "()Z", "setDoingReport", "(Z)V", "exposedMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "pendingMap", "renderMap", "getReport", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineReport;", "screenHeight", "", "getScreenHeight", "()I", "setScreenHeight", "(I)V", "sessionItemCache", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineReport$ReportBrandExposeItem;", "getSessionItemCache", "()Ljava/util/HashMap;", "setSessionItemCache", "(Ljava/util/HashMap;)V", "addToRenderMap", "", "id", "doUpdateReadStatus", "firstVisibleItem", "lastVisibleItem", "listView", "Landroid/widget/ListView;", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "putToSessionItemCache", "key", "item", "realExpose", "Landroid/view/View;", "removeFormRenderMap", "reportExpose", "keyWithExpandStatus", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "Companion", "plugin-brandservice_release"})
 public final class b
 {
-  public static final b.a pyS;
+  public static final b.a sIB;
   public final Context context;
-  public int mEY;
-  final f pqZ;
-  public final HashMap<String, Boolean> pyN;
-  private final HashMap<String, Boolean> pyO;
-  private final HashMap<String, Boolean> pyP;
-  public HashMap<String, f.b> pyQ;
-  boolean pyR;
+  public int pEk;
+  boolean sIA;
+  public final HashMap<String, Boolean> sIw;
+  private final HashMap<String, Boolean> sIx;
+  private final HashMap<String, Boolean> sIy;
+  public HashMap<String, f.b> sIz;
+  final f szZ;
   
   static
   {
-    AppMethodBeat.i(195518);
-    pyS = new b.a((byte)0);
-    AppMethodBeat.o(195518);
+    AppMethodBeat.i(259245);
+    sIB = new b.a((byte)0);
+    AppMethodBeat.o(259245);
   }
   
   public b(Context paramContext, f paramf)
   {
-    AppMethodBeat.i(195517);
+    AppMethodBeat.i(259244);
     this.context = paramContext;
-    this.pqZ = paramf;
-    this.pyN = new HashMap();
-    this.pyO = new HashMap();
-    this.pyP = new HashMap();
-    this.pyQ = new HashMap();
-    this.mEY = com.tencent.mm.cb.a.jo(this.context);
-    this.pqZ.a(this);
-    AppMethodBeat.o(195517);
+    this.szZ = paramf;
+    this.sIw = new HashMap();
+    this.sIx = new HashMap();
+    this.sIy = new HashMap();
+    this.sIz = new HashMap();
+    this.pEk = com.tencent.mm.ci.a.ks(this.context);
+    this.szZ.a(this);
+    AppMethodBeat.o(259244);
   }
   
-  private final boolean dx(View paramView)
+  private final boolean dV(View paramView)
   {
-    AppMethodBeat.i(195515);
+    AppMethodBeat.i(259242);
     int j = paramView.getHeight();
     int i = j;
     if (paramView.getTop() < 0) {
       i = j + paramView.getTop();
     }
     j = i;
-    if (paramView.getBottom() > this.mEY) {
-      j = i - (paramView.getBottom() - this.mEY);
+    if (paramView.getBottom() > this.pEk) {
+      j = i - (paramView.getBottom() - this.pEk);
     }
     if (j / paramView.getHeight() > 0.5D)
     {
-      AppMethodBeat.o(195515);
+      AppMethodBeat.o(259242);
       return true;
     }
-    AppMethodBeat.o(195515);
+    AppMethodBeat.o(259242);
     return false;
   }
   
-  public static String n(z paramz)
+  public static String o(z paramz)
   {
-    AppMethodBeat.i(195513);
-    p.h(paramz, "$this$keyWithExpandStatus");
+    AppMethodBeat.i(259240);
+    p.k(paramz, "$this$keyWithExpandStatus");
     paramz = paramz.getId() + '-' + paramz.field_isExpand;
-    AppMethodBeat.o(195513);
+    AppMethodBeat.o(259240);
     return paramz;
   }
   
   public final void a(int paramInt1, int paramInt2, ListView paramListView, final f paramf)
   {
-    AppMethodBeat.i(195514);
-    p.h(paramListView, "listView");
-    p.h(paramf, "report");
+    AppMethodBeat.i(259241);
+    p.k(paramListView, "listView");
+    p.k(paramf, "report");
     int j = 0;
     if (paramInt1 <= paramInt2)
     {
       int i = paramInt1;
       paramInt1 = j;
-      if (i == 0) {
-        paramInt1 += 1;
+      final View localView;
+      if (i != 0)
+      {
+        localView = paramListView.getChildAt(paramInt1);
+        if (localView != null) {
+          break label68;
+        }
       }
       for (;;)
       {
         if (i == paramInt2) {
-          break label226;
+          break label206;
         }
         i += 1;
+        paramInt1 += 1;
         break;
-        j = paramInt1 + 1;
-        final View localView = paramListView.getChildAt(paramInt1);
-        if (localView == null)
-        {
-          paramInt1 = j;
+        label68:
+        Object localObject2 = localView.getTag();
+        Object localObject1 = localObject2;
+        if (!(localObject2 instanceof com.tencent.mm.plugin.brandservice.ui.timeline.item.a)) {
+          localObject1 = null;
         }
-        else
+        localObject1 = (com.tencent.mm.plugin.brandservice.ui.timeline.item.a)localObject1;
+        if (localObject1 != null)
         {
-          Object localObject2 = localView.getTag();
-          Object localObject1 = localObject2;
-          if (!(localObject2 instanceof com.tencent.mm.plugin.brandservice.ui.timeline.item.a)) {
-            localObject1 = null;
-          }
-          localObject1 = (com.tencent.mm.plugin.brandservice.ui.timeline.item.a)localObject1;
-          if (localObject1 != null)
+          localObject1 = ((com.tencent.mm.plugin.brandservice.ui.timeline.item.a)localObject1).sBt;
+          if ((localObject1 != null) && (this.sIw.containsKey(((z)localObject1).getId())) && (!this.sIx.containsKey(o((z)localObject1))) && (dV(localView)))
           {
-            localObject1 = ((com.tencent.mm.plugin.brandservice.ui.timeline.item.a)localObject1).psm;
-            if (localObject1 != null) {}
+            ((Map)this.sIx).put(o((z)localObject1), Boolean.TRUE);
+            com.tencent.e.h.ZvG.n((Runnable)new b(this, localView, (z)localObject1, paramf), 500L);
           }
-          else
-          {
-            AppMethodBeat.o(195514);
-            return;
-          }
-          if ((this.pyN.containsKey(((z)localObject1).getId())) && (!this.pyO.containsKey(n((z)localObject1))) && (dx(localView)))
-          {
-            ((Map)this.pyO).put(n((z)localObject1), Boolean.TRUE);
-            h.RTc.n((Runnable)new b(this, localView, (z)localObject1, paramf), 500L);
-          }
-          paramInt1 = j;
         }
       }
     }
-    label226:
-    AppMethodBeat.o(195514);
+    label206:
+    AppMethodBeat.o(259241);
   }
   
-  public final void cnl()
+  public final void cBa()
   {
-    AppMethodBeat.i(195516);
-    if (this.pyR)
+    AppMethodBeat.i(259243);
+    if (this.sIA)
     {
-      AppMethodBeat.o(195516);
+      AppMethodBeat.o(259243);
       return;
     }
-    this.pyR = true;
-    h.RTc.a((Runnable)new c(this), 1000L, "BizTimeLineExpose");
-    AppMethodBeat.o(195516);
+    this.sIA = true;
+    com.tencent.e.h.ZvG.a((Runnable)new c(this), 1000L, "BizTimeLineExpose");
+    AppMethodBeat.o(259243);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -167,7 +155,7 @@ public final class b
     
     public final void run()
     {
-      AppMethodBeat.i(195511);
+      AppMethodBeat.i(264380);
       Object localObject2 = localView.getTag();
       Object localObject1 = localObject2;
       if (!(localObject2 instanceof com.tencent.mm.plugin.brandservice.ui.timeline.item.a)) {
@@ -176,44 +164,44 @@ public final class b
       localObject2 = (com.tencent.mm.plugin.brandservice.ui.timeline.item.a)localObject1;
       if (localObject2 == null)
       {
-        AppMethodBeat.o(195511);
+        AppMethodBeat.o(264380);
         return;
       }
-      localObject1 = ((com.tencent.mm.plugin.brandservice.ui.timeline.item.a)localObject2).psm;
+      localObject1 = ((com.tencent.mm.plugin.brandservice.ui.timeline.item.a)localObject2).sBt;
       if (localObject1 == null)
       {
-        AppMethodBeat.o(195511);
+        AppMethodBeat.o(264380);
         return;
       }
       final int i = ((com.tencent.mm.plugin.brandservice.ui.timeline.item.a)localObject2).position;
-      if ((p.j(b.n((z)localObject1), b.n(this.prL))) && ((localView.isShown()) || (localView.isAttachedToWindow())))
+      if ((p.h(b.o((z)localObject1), b.o(this.sAV))) && ((localView.isShown()) || (localView.isAttachedToWindow())))
       {
-        b.b(this.pyT).remove(b.n(this.prL));
-        localObject2 = this.pyT;
-        String str = this.prL.getId();
-        p.g(str, "info.id");
-        p.h(str, "id");
-        ((b)localObject2).pyN.remove(str);
-        Log.v("MicroMsg.BizTimeLineExposeHelper", "doUpdateReadStatus on expose " + this.prL.getId());
-        if (!b.c(this.pyT).containsKey(b.n((z)localObject1))) {
-          this.pyT.cnl();
+        b.b(this.sIC).remove(b.o(this.sAV));
+        localObject2 = this.sIC;
+        String str = this.sAV.getId();
+        p.j(str, "info.id");
+        p.k(str, "id");
+        ((b)localObject2).sIw.remove(str);
+        Log.v("MicroMsg.BizTimeLineExposeHelper", "doUpdateReadStatus on expose " + this.sAV.getId());
+        if (!b.c(this.sIC).containsKey(b.o((z)localObject1))) {
+          this.sIC.cBa();
         }
-        ((Map)b.c(this.pyT)).put(b.n((z)localObject1), Boolean.TRUE);
-        h.RTc.b((Runnable)new Runnable()
+        ((Map)b.c(this.sIC)).put(b.o((z)localObject1), Boolean.TRUE);
+        com.tencent.e.h.ZvG.d((Runnable)new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(195510);
-            this.pyV.prI.c(this.pyV.prL, i);
-            AppMethodBeat.o(195510);
+            AppMethodBeat.i(265609);
+            this.sIE.sAQ.c(this.sIE.sAV, i);
+            AppMethodBeat.o(265609);
           }
         }, "BizTimeLineExpose");
       }
-      AppMethodBeat.o(195511);
+      AppMethodBeat.o(264380);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -221,11 +209,11 @@ public final class b
     
     public final void run()
     {
-      AppMethodBeat.i(195512);
-      this.pyT.pyR = false;
+      AppMethodBeat.i(265413);
+      this.sIC.sIA = false;
       try
       {
-        Object localObject1 = (Map)this.pyT.pyQ;
+        Object localObject1 = (Map)this.sIC.sIz;
         if (localObject1 != null)
         {
           boolean bool = ((Map)localObject1).isEmpty();
@@ -238,36 +226,36 @@ public final class b
           return;
         }
         localObject1 = new LinkedList();
-        localObject2 = this.pyT.pyQ.entrySet().iterator();
+        localObject2 = this.sIC.sIz.entrySet().iterator();
         while (((Iterator)localObject2).hasNext())
         {
           f.b localb = (f.b)((Map.Entry)((Iterator)localObject2).next()).getValue();
-          if (!Util.isNullOrNil(localb.psI))
+          if (!Util.isNullOrNil(localb.sBR))
           {
-            MPVideoPreviewMgr localMPVideoPreviewMgr = MPVideoPreviewMgr.pJz;
-            localb.KVl = MPVideoPreviewMgr.aiL(localb.psI);
-            localMPVideoPreviewMgr = MPVideoPreviewMgr.pJz;
-            localb.KVm = MPVideoPreviewMgr.aiM(localb.psI);
+            MPVideoPreviewMgr localMPVideoPreviewMgr = MPVideoPreviewMgr.sSn;
+            localb.RWq = MPVideoPreviewMgr.aqx(localb.sBR);
+            localMPVideoPreviewMgr = MPVideoPreviewMgr.sSn;
+            localb.RWr = MPVideoPreviewMgr.aqy(localb.sBR);
           }
           ((LinkedList)localObject1).add(localb);
         }
-        this.pyT.pyQ.clear();
+        this.sIC.sIz.clear();
       }
       finally
       {
-        AppMethodBeat.o(195512);
+        AppMethodBeat.o(265413);
       }
       Log.i("MicroMsg.BizTimeLineExposeHelper", "reportExpose size = " + localLinkedList.size());
-      Object localObject2 = g.aAg();
-      p.g(localObject2, "MMKernel.network()");
-      ((com.tencent.mm.kernel.b)localObject2).azz().b((q)new k(localLinkedList, this.pyT.pqZ.psq, this.pyT.pqZ.psr, this.pyT.pqZ.dEb, this.pyT.pqZ.pss, 1, 0));
-      AppMethodBeat.o(195512);
+      Object localObject2 = com.tencent.mm.kernel.h.aHF();
+      p.j(localObject2, "MMKernel.network()");
+      ((c)localObject2).aGY().b((q)new com.tencent.mm.plugin.brandservice.b.l(localLinkedList, this.sIC.szZ.sBx, this.sIC.szZ.sBy, this.sIC.szZ.fwM, this.sIC.szZ.sBz, 1, 0, this.sIC.szZ.sBA));
+      AppMethodBeat.o(265413);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cxf;
-import com.tencent.mm.protocal.protobuf.cxg;
+import com.tencent.mm.protocal.protobuf.dgp;
+import com.tencent.mm.protocal.protobuf.dgq;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
-  extends a<cxf, cxg>
+  extends a<dgp, dgq>
 {
   public b(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(64871);
-    cxf localcxf = new cxf();
-    localcxf.dNI = paramString1;
-    localcxf.MBB = paramString2;
-    localcxf.MBC = com.tencent.mm.bw.b.cD(paramArrayOfByte);
-    this.yPr = localcxf;
+    dgp localdgp = new dgp();
+    localdgp.appid = paramString1;
+    localdgp.TNi = paramString2;
+    localdgp.TNj = com.tencent.mm.cd.b.cU(paramArrayOfByte);
+    a(localdgp);
     AppMethodBeat.o(64871);
   }
   
-  protected final void eeD()
+  protected final void eNY()
   {
     AppMethodBeat.i(64872);
     Log.i("MicroMsg.CgiOpenWxaHB", "CgiOpenWxaHB.onCgiStart ");
     AppMethodBeat.o(64872);
   }
   
-  protected final void eeE()
+  protected final void eNZ()
   {
     AppMethodBeat.i(64873);
     Log.i("MicroMsg.CgiOpenWxaHB", "CgiOpenWxaHB.onCgiEnd ");

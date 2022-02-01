@@ -1,14 +1,15 @@
 package com.tencent.tmassistantsdk.network;
 
 import com.qq.taf.jce.JceStruct;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
+import com.tencent.mm.plugin.ar.a.a;
 import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import org.apache.http.client.methods.HttpPost;
 
 public abstract class PostHttpRequest
 {
-  static final String REQUEST_SERVER_URL = "http://" + WeChatHosts.domainString(2131761720) + "/";
+  static final String REQUEST_SERVER_URL = "http://" + WeChatHosts.domainString(a.a.host_masdk_3g_qq_com) + "/";
   static final String TAG = "BaseHttpRequest";
   HttpPost mHttpPost = null;
   
@@ -19,42 +20,42 @@ public abstract class PostHttpRequest
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 47	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
+    //   3: getfield 52	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
     //   6: ifnull +51 -> 57
     //   9: aload_0
-    //   10: getfield 47	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
-    //   13: invokevirtual 56	org/apache/http/client/methods/HttpPost:isAborted	()Z
+    //   10: getfield 52	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
+    //   13: invokevirtual 61	org/apache/http/client/methods/HttpPost:isAborted	()Z
     //   16: ifne +41 -> 57
     //   19: ldc 11
     //   21: new 17	java/lang/StringBuilder
     //   24: dup
-    //   25: ldc 58
+    //   25: ldc 63
     //   27: invokespecial 23	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   30: aload_0
-    //   31: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   34: ldc 63
-    //   36: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   42: invokestatic 69	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   31: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   34: ldc 68
+    //   36: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: invokevirtual 45	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   42: invokestatic 74	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   45: aload_0
-    //   46: getfield 47	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
-    //   49: invokevirtual 72	org/apache/http/client/methods/HttpPost:abort	()V
+    //   46: getfield 52	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
+    //   49: invokevirtual 77	org/apache/http/client/methods/HttpPost:abort	()V
     //   52: aload_0
     //   53: aconst_null
-    //   54: putfield 47	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
+    //   54: putfield 52	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
     //   57: aload_0
     //   58: monitorexit
     //   59: return
     //   60: astore_1
     //   61: ldc 11
     //   63: aload_1
-    //   64: ldc 74
+    //   64: ldc 79
     //   66: iconst_0
     //   67: anewarray 4	java/lang/Object
-    //   70: invokestatic 80	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   70: invokestatic 85	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   73: aload_0
     //   74: aconst_null
-    //   75: putfield 47	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
+    //   75: putfield 52	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
     //   78: goto -21 -> 57
     //   81: astore_1
     //   82: aload_0
@@ -64,7 +65,7 @@ public abstract class PostHttpRequest
     //   86: astore_1
     //   87: aload_0
     //   88: aconst_null
-    //   89: putfield 47	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
+    //   89: putfield 52	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
     //   92: aload_1
     //   93: athrow
     // Local variable table:
@@ -97,7 +98,7 @@ public abstract class PostHttpRequest
         if (this.mHttpPost != null) {
           continue;
         }
-        h.RTc.ba(new Runnable()
+        h.ZvG.bh(new Runnable()
         {
           /* Error */
           public void run()
@@ -544,7 +545,7 @@ public abstract class PostHttpRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tmassistantsdk.network.PostHttpRequest
  * JD-Core Version:    0.7.0.1
  */

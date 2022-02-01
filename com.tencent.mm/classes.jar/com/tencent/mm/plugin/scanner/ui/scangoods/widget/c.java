@@ -4,10 +4,10 @@ import android.graphics.Canvas;
 import com.tencent.mm.plugin.scanner.model.ScanPoint;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView;", "", "draw", "", "canvas", "Landroid/graphics/Canvas;", "isAnimating", "", "onViewSizeChanged", "width", "", "height", "release", "setAnimationDots", "points", "", "Lcom/tencent/mm/plugin/scanner/model/ScanPoint;", "pointCount", "([Lcom/tencent/mm/plugin/scanner/model/ScanPoint;I)V", "setDuration", "duration", "", "startAnimation", "listener", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView$AnimationListener;", "stopAnimation", "updateViewSize", "forceUpdateDotsCenter", "AnimationListener", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView;", "", "draw", "", "canvas", "Landroid/graphics/Canvas;", "isAnimating", "", "onViewSizeChanged", "width", "", "height", "release", "setAnimationDots", "points", "", "Lcom/tencent/mm/plugin/scanner/model/ScanPoint;", "pointCount", "([Lcom/tencent/mm/plugin/scanner/model/ScanPoint;I)V", "setDuration", "duration", "", "startAnimation", "listener", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView$AnimationListener;", "stopAnimation", "updateViewSize", "forceUpdateDotsCenter", "AnimationListener", "plugin-scan_release"})
 public abstract interface c
 {
-  public abstract void A(int paramInt1, int paramInt2, boolean paramBoolean);
+  public abstract void F(int paramInt1, int paramInt2, boolean paramBoolean);
   
   public abstract void a(a parama);
   
@@ -15,7 +15,7 @@ public abstract interface c
   
   public abstract void draw(Canvas paramCanvas);
   
-  public abstract boolean isAnimating();
+  public abstract boolean fEq();
   
   public abstract void release();
   
@@ -23,7 +23,7 @@ public abstract interface c
   
   public abstract void stopAnimation();
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView$AnimationListener;", "", "onAnimationEnd", "", "dotsGroupView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView;", "onAnimationStart", "plugin-scan_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView$AnimationListener;", "", "onAnimationEnd", "", "dotsGroupView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView;", "onAnimationStart", "plugin-scan_release"})
   public static abstract interface a
   {
     public abstract void a(c paramc);
@@ -31,7 +31,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.scangoods.widget.c
  * JD-Core Version:    0.7.0.1
  */

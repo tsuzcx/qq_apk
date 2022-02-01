@@ -5,20 +5,20 @@ import rx.e;
 
 public final class c<T>
 {
-  private static final Object UkA;
-  private static final Object UkB;
-  private static final c Ukz;
+  private static final c abNV;
+  private static final Object abNW;
+  private static final Object abNX;
   
   static
   {
     AppMethodBeat.i(90234);
-    Ukz = new c();
-    UkA = new c.1();
-    UkB = new c.2();
+    abNV = new c();
+    abNW = new c.1();
+    abNX = new c.2();
     AppMethodBeat.o(90234);
   }
   
-  public static Object P(Throwable paramThrowable)
+  public static Object T(Throwable paramThrowable)
   {
     AppMethodBeat.i(90232);
     paramThrowable = new c.a(paramThrowable);
@@ -29,15 +29,15 @@ public final class c<T>
   public static boolean a(e<? super T> parame, Object paramObject)
   {
     AppMethodBeat.i(90233);
-    if (paramObject == UkA)
+    if (paramObject == abNW)
     {
-      parame.hQw();
+      parame.fUB();
       AppMethodBeat.o(90233);
       return true;
     }
-    if (paramObject == UkB)
+    if (paramObject == abNX)
     {
-      parame.gL(null);
+      parame.he(null);
       AppMethodBeat.o(90233);
       return false;
     }
@@ -45,11 +45,11 @@ public final class c<T>
     {
       if (paramObject.getClass() == c.a.class)
       {
-        parame.onError(((c.a)paramObject).e);
+        parame.c(((c.a)paramObject).e);
         AppMethodBeat.o(90233);
         return true;
       }
-      parame.gL(paramObject);
+      parame.he(paramObject);
       AppMethodBeat.o(90233);
       return false;
     }
@@ -58,37 +58,37 @@ public final class c<T>
     throw parame;
   }
   
-  public static Object gN(T paramT)
-  {
-    Object localObject = paramT;
-    if (paramT == null) {
-      localObject = UkB;
-    }
-    return localObject;
-  }
-  
   public static T getValue(Object paramObject)
   {
     Object localObject = paramObject;
-    if (paramObject == UkB) {
+    if (paramObject == abNX) {
       localObject = null;
     }
     return localObject;
   }
   
-  public static <T> c<T> hQG()
+  public static Object hh(T paramT)
   {
-    return Ukz;
+    Object localObject = paramT;
+    if (paramT == null) {
+      localObject = abNX;
+    }
+    return localObject;
   }
   
-  public static Object hQH()
+  public static <T> c<T> iVP()
   {
-    return UkA;
+    return abNV;
+  }
+  
+  public static Object iVQ()
+  {
+    return abNW;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     rx.internal.a.c
  * JD-Core Version:    0.7.0.1
  */

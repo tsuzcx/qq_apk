@@ -1,12 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.service.c;
+import com.tencent.luggage.sdk.b.a.c.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.l;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiReturnCopyUrl;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/luggage/sdk/jsapi/component/service/AppBrandServiceLU;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-wechat-full-sdk_release"})
 public final class co
-  extends d<c>
+  extends c<d>
 {
-  private static final int CTRL_INDEX = -2;
-  private static final String NAME = "restart";
+  public static final int CTRL_INDEX = 755;
+  public static final String NAME = "returnCopyUrl";
+  public static final a owX;
+  
+  static
+  {
+    AppMethodBeat.i(169555);
+    owX = new a((byte)0);
+    AppMethodBeat.o(169555);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiReturnCopyUrl$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "luggage-wechat-full-sdk_release"})
+  public static final class a {}
 }
 
 

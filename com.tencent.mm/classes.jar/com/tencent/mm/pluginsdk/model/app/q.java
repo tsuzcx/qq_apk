@@ -3,22 +3,25 @@ package com.tencent.mm.pluginsdk.model.app;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ResolveInfo;
 import android.content.pm.Signature;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import android.widget.Toast;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.loader.c;
+import com.tencent.mm.plugin.ab.a.a;
+import com.tencent.mm.plugin.ab.a.a.a;
+import com.tencent.mm.plugin.comm.c.h;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.r.a.a;
-import com.tencent.mm.plugin.r.a.a.a;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -26,43 +29,20 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatHosts;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public final class q
 {
-  public static String R(Context paramContext, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(151762);
-    if ((paramString1 == null) || (paramString1.length() == 0) || (paramString2.length() == 0))
-    {
-      Log.e("MicroMsg.AppUtil", "buildUnistallUrl fail, invalid arguments");
-      AppMethodBeat.o(151762);
-      return null;
-    }
-    String str2 = LocaleUtil.loadApplicationLanguage(paramContext.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0), paramContext);
-    String str1;
-    if ((str2 == null) || (str2.length() == 0)) {
-      str1 = "zh_CN";
-    }
-    for (;;)
-    {
-      paramContext = paramContext.getString(2131763788, new Object[] { paramString1, Integer.valueOf(d.KyO), str1, d.ics, paramString2, Integer.valueOf(0) });
-      AppMethodBeat.o(151762);
-      return paramContext;
-      str1 = str2;
-      if (str2.equals("en")) {
-        str1 = "en_US";
-      }
-    }
-  }
-  
-  public static String R(String paramString1, String paramString2)
+  public static String V(String paramString1, String paramString2)
   {
     AppMethodBeat.i(151763);
-    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rSQ, 0) == 1) {}
+    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vzp, 0) == 1) {}
     for (int i = 1;; i = 0)
     {
       boolean bool = isMpUrl(paramString1);
@@ -161,10 +141,36 @@ public final class q
     }
   }
   
+  public static String Z(Context paramContext, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(151762);
+    if ((paramString1 == null) || (paramString1.length() == 0) || (paramString2.length() == 0))
+    {
+      Log.e("MicroMsg.AppUtil", "buildUnistallUrl fail, invalid arguments");
+      AppMethodBeat.o(151762);
+      return null;
+    }
+    String str2 = LocaleUtil.loadApplicationLanguage(paramContext.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0), paramContext);
+    String str1;
+    if ((str2 == null) || (str2.length() == 0)) {
+      str1 = "zh_CN";
+    }
+    for (;;)
+    {
+      paramContext = paramContext.getString(c.h.openapi_uninstall_url, new Object[] { paramString1, Integer.valueOf(d.RAD), str1, d.kQZ, paramString2, Integer.valueOf(0) });
+      AppMethodBeat.o(151762);
+      return paramContext;
+      str1 = str2;
+      if (str2.equals("en")) {
+        str1 = "en_US";
+      }
+    }
+  }
+  
   public static boolean a(Context paramContext, g paramg, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(151767);
-    a locala = a.a.eAZ();
+    a locala = a.a.fmG();
     if ((paramString == null) || (paramString.length() == 0))
     {
       Log.e("MicroMsg.AppUtil", "isAppValid, packageName is null");
@@ -192,7 +198,7 @@ public final class q
       AppMethodBeat.o(151767);
       return false;
     }
-    Signature[] arrayOfSignature = cj(paramContext, paramString);
+    Signature[] arrayOfSignature = cv(paramContext, paramString);
     if ((arrayOfSignature == null) || (arrayOfSignature.length == 0))
     {
       Log.e("MicroMsg.AppUtil", "isAppValid, apk signatures is null");
@@ -205,7 +211,15 @@ public final class q
       Log.e("MicroMsg.AppUtil", "isAppValid, packageName is diff, src:%s,local:%s", new Object[] { paramg.field_packageName, paramString });
       locala.e(paramg);
       if (paramBoolean) {
-        MMHandlerThread.postToMainThread(new q.1(paramContext));
+        MMHandlerThread.postToMainThread(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(151760);
+            Toast.makeText(this.val$context, this.val$context.getString(c.h.openapi_invalid_package), 1).show();
+            AppMethodBeat.o(151760);
+          }
+        });
       }
       AppMethodBeat.o(151767);
       return false;
@@ -215,7 +229,7 @@ public final class q
     int i = 0;
     while (i < j)
     {
-      paramString = r.bdM(com.tencent.mm.b.g.getMessageDigest(arrayOfSignature[i].toByteArray()));
+      paramString = r.bqi(com.tencent.mm.b.g.getMessageDigest(arrayOfSignature[i].toByteArray()));
       Log.i("MicroMsg.AppUtil", "local signatures:%s", new Object[] { paramString });
       if ((paramg.field_signature != null) && (paramg.field_signature.equals(paramString)))
       {
@@ -226,7 +240,15 @@ public final class q
       i += 1;
     }
     if (paramBoolean) {
-      MMHandlerThread.postToMainThread(new q.2(paramContext));
+      MMHandlerThread.postToMainThread(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(162008);
+          Toast.makeText(this.val$context, this.val$context.getString(c.h.openapi_invalid_signature), 1).show();
+          AppMethodBeat.o(162008);
+        }
+      });
     }
     Log.w("MicroMsg.AppUtil", "isAppValid, signature is diff");
     locala.e(paramg);
@@ -234,7 +256,7 @@ public final class q
     return false;
   }
   
-  public static String aV(Activity paramActivity)
+  public static String ba(Activity paramActivity)
   {
     AppMethodBeat.i(151776);
     Object localObject1 = "";
@@ -254,7 +276,7 @@ public final class q
     }
     try
     {
-      Object localObject4 = new c(paramActivity, "mReferrer", null).get();
+      Object localObject4 = new com.tencent.mm.compatible.loader.b(paramActivity, "mReferrer", null).get();
       localObject2 = localObject1;
       if (localObject4 != null)
       {
@@ -291,60 +313,25 @@ public final class q
     return localObject1;
   }
   
-  public static boolean b(Context paramContext, g paramg)
+  public static void bm(Bundle paramBundle)
   {
-    AppMethodBeat.i(151772);
-    Log.i("MicroMsg.AppUtil", "check the signature of the Application.");
-    if (paramContext == null)
-    {
-      Log.e("MicroMsg.AppUtil", "context is null.");
-      AppMethodBeat.o(151772);
-      return true;
+    AppMethodBeat.i(151768);
+    if (paramBundle != null) {
+      paramBundle.putString("wx_token_key", "com.tencent.mm.openapi.token");
     }
-    if (paramg == null)
-    {
-      Log.e("MicroMsg.AppUtil", "appInfo is null.");
-      AppMethodBeat.o(151772);
-      return true;
-    }
-    if (Util.isNullOrNil(paramg.field_packageName))
-    {
-      Log.e("MicroMsg.AppUtil", "packageName is null.");
-      AppMethodBeat.o(151772);
-      return true;
-    }
-    if (Util.isNullOrNil(paramg.field_signature))
-    {
-      Log.e("MicroMsg.AppUtil", "app.field_signature is null. app.field_packageName is %s", new Object[] { paramg.field_packageName });
-      AppMethodBeat.o(151772);
-      return true;
-    }
-    paramContext = cj(paramContext, paramg.field_packageName);
-    if ((paramContext == null) || (paramContext.length == 0))
-    {
-      Log.e("MicroMsg.AppUtil", "apk signatures is null");
-      AppMethodBeat.o(151772);
-      return false;
-    }
-    int j = paramContext.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = r.bdM(com.tencent.mm.b.g.getMessageDigest(paramContext[i].toByteArray()));
-      if (paramg.field_signature.equals(str))
-      {
-        Log.i("MicroMsg.AppUtil", "app_name : %s ,signature : %s", new Object[] { paramg.field_appName, paramg.field_signature });
-        AppMethodBeat.o(151772);
-        return true;
-      }
-      i += 1;
-    }
-    Log.w("MicroMsg.AppUtil", "signature is diff.(app_name:%s)", new Object[] { paramg.field_appName });
-    AppMethodBeat.o(151772);
-    return false;
+    AppMethodBeat.o(151768);
   }
   
-  public static void bdL(String paramString)
+  public static void bn(Bundle paramBundle)
+  {
+    AppMethodBeat.i(151769);
+    if (paramBundle != null) {
+      paramBundle.putString("platformId", "wechat");
+    }
+    AppMethodBeat.o(151769);
+  }
+  
+  public static void bqh(String paramString)
   {
     AppMethodBeat.i(151773);
     if (Util.isNullOrNil(paramString))
@@ -373,43 +360,78 @@ public final class q
     AppMethodBeat.o(151773);
   }
   
-  public static void bo(Bundle paramBundle)
+  public static boolean c(Context paramContext, g paramg)
   {
-    AppMethodBeat.i(151768);
-    if (paramBundle != null) {
-      paramBundle.putString("wx_token_key", "com.tencent.mm.openapi.token");
+    AppMethodBeat.i(151772);
+    Log.i("MicroMsg.AppUtil", "check the signature of the Application.");
+    if (paramContext == null)
+    {
+      Log.e("MicroMsg.AppUtil", "context is null.");
+      AppMethodBeat.o(151772);
+      return true;
     }
-    AppMethodBeat.o(151768);
+    if (paramg == null)
+    {
+      Log.e("MicroMsg.AppUtil", "appInfo is null.");
+      AppMethodBeat.o(151772);
+      return true;
+    }
+    if (Util.isNullOrNil(paramg.field_packageName))
+    {
+      Log.e("MicroMsg.AppUtil", "packageName is null.");
+      AppMethodBeat.o(151772);
+      return true;
+    }
+    if (Util.isNullOrNil(paramg.field_signature))
+    {
+      Log.e("MicroMsg.AppUtil", "app.field_signature is null. app.field_packageName is %s", new Object[] { paramg.field_packageName });
+      AppMethodBeat.o(151772);
+      return true;
+    }
+    paramContext = cv(paramContext, paramg.field_packageName);
+    if ((paramContext == null) || (paramContext.length == 0))
+    {
+      Log.e("MicroMsg.AppUtil", "apk signatures is null");
+      AppMethodBeat.o(151772);
+      return false;
+    }
+    int j = paramContext.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = r.bqi(com.tencent.mm.b.g.getMessageDigest(paramContext[i].toByteArray()));
+      if (paramg.field_signature.equals(str))
+      {
+        Log.i("MicroMsg.AppUtil", "app_name : %s ,signature : %s", new Object[] { paramg.field_appName, paramg.field_signature });
+        AppMethodBeat.o(151772);
+        return true;
+      }
+      i += 1;
+    }
+    Log.w("MicroMsg.AppUtil", "signature is diff.(app_name:%s)", new Object[] { paramg.field_appName });
+    AppMethodBeat.o(151772);
+    return false;
   }
   
-  public static void bp(Bundle paramBundle)
-  {
-    AppMethodBeat.i(151769);
-    if (paramBundle != null) {
-      paramBundle.putString("platformId", "wechat");
-    }
-    AppMethodBeat.o(151769);
-  }
-  
-  public static String ch(Context paramContext, String paramString)
+  public static String ct(Context paramContext, String paramString)
   {
     AppMethodBeat.i(151765);
-    paramContext = cj(paramContext, paramString);
+    paramContext = cv(paramContext, paramString);
     if ((paramContext == null) || (paramContext.length == 0))
     {
       Log.e("MicroMsg.AppUtil", "signs is null");
       AppMethodBeat.o(151765);
       return null;
     }
-    paramContext = r.bdM(com.tencent.mm.b.g.getMessageDigest(paramContext[0].toByteArray()));
+    paramContext = r.bqi(com.tencent.mm.b.g.getMessageDigest(paramContext[0].toByteArray()));
     AppMethodBeat.o(151765);
     return paramContext;
   }
   
-  public static String ci(Context paramContext, String paramString)
+  public static String cu(Context paramContext, String paramString)
   {
     AppMethodBeat.i(151766);
-    paramContext = cj(paramContext, paramString);
+    paramContext = cv(paramContext, paramString);
     if ((paramContext == null) || (paramContext.length == 0))
     {
       Log.e("MicroMsg.AppUtil", "signs is null");
@@ -421,7 +443,7 @@ public final class q
     return paramContext;
   }
   
-  public static Signature[] cj(Context paramContext, String paramString)
+  public static Signature[] cv(Context paramContext, String paramString)
   {
     AppMethodBeat.i(151771);
     if ((paramString == null) || (paramString.length() == 0))
@@ -474,7 +496,7 @@ public final class q
     }
     for (;;)
     {
-      paramContext = paramContext.getString(2131763787, new Object[] { paramString1, Integer.valueOf(d.KyO), str1, d.ics, paramString2 });
+      paramContext = paramContext.getString(c.h.openapi_source_url, new Object[] { paramString1, Integer.valueOf(d.RAD), str1, d.kQZ, paramString2 });
       AppMethodBeat.o(151761);
       return paramContext;
       str1 = str2;
@@ -484,13 +506,13 @@ public final class q
     }
   }
   
-  public static void gmZ()
+  public static void hhA()
   {
-    aq.JXv = null;
-    aq.JXw = -1L;
+    aq.QXR = null;
+    aq.QXS = -1L;
   }
   
-  public static void gna()
+  public static void hhB()
   {
     AppMethodBeat.i(151774);
     SharedPreferences localSharedPreferences = MMApplicationContext.getDefaultPreference();
@@ -502,22 +524,22 @@ public final class q
   
   private static boolean isMpUrl(String paramString)
   {
-    AppMethodBeat.i(223765);
+    AppMethodBeat.i(234514);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(223765);
+      AppMethodBeat.o(234514);
       return false;
     }
-    if ((paramString.startsWith("https://" + WeChatHosts.domainString(2131761726) + "/")) || (paramString.startsWith("http://" + WeChatHosts.domainString(2131761726) + "/")))
+    if ((paramString.startsWith("https://" + WeChatHosts.domainString(c.h.host_mp_weixin_qq_com) + "/")) || (paramString.startsWith("http://" + WeChatHosts.domainString(c.h.host_mp_weixin_qq_com) + "/")))
     {
-      AppMethodBeat.o(223765);
+      AppMethodBeat.o(234514);
       return true;
     }
-    AppMethodBeat.o(223765);
+    AppMethodBeat.o(234514);
     return false;
   }
   
-  public static void k(Bundle paramBundle, String paramString)
+  public static void l(Bundle paramBundle, String paramString)
   {
     AppMethodBeat.i(151770);
     paramBundle.putString("platformId", "wechat");
@@ -527,14 +549,95 @@ public final class q
     AppMethodBeat.o(151770);
   }
   
-  public static void n(Activity paramActivity, String paramString)
+  public static void n(Activity paramActivity, final String paramString)
   {
     AppMethodBeat.i(151775);
-    h.RTc.b(new q.3(paramActivity, paramString), "reportLaunchWechat");
+    com.tencent.e.h.ZvG.d(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(162009);
+        if ((this.val$activity == null) || (this.val$activity.isFinishing()))
+        {
+          AppMethodBeat.o(162009);
+          return;
+        }
+        Log.v("MicroMsg.AppUtil", "reportLaunchWechat");
+        try
+        {
+          String str2 = q.ba(this.val$activity);
+          boolean bool1;
+          if (Util.isNullOrNil(str2))
+          {
+            bool1 = Util.isNullOrNil(paramString);
+            if (bool1)
+            {
+              AppMethodBeat.o(162009);
+              return;
+            }
+          }
+          Object localObject1 = this.val$activity;
+          Object localObject2 = new Intent("android.intent.action.MAIN", null);
+          ((Intent)localObject2).addCategory("android.intent.category.HOME");
+          localObject1 = ((Activity)localObject1).getPackageManager().queryIntentActivities((Intent)localObject2, 0);
+          int i;
+          if (!Util.isNullOrNil((List)localObject1))
+          {
+            i = 0;
+            if (i < ((List)localObject1).size()) {
+              if (Util.isEqual(str2, ((ResolveInfo)((List)localObject1).get(i)).activityInfo.packageName))
+              {
+                bool1 = true;
+                label157:
+                boolean bool2 = Util.isNullOrNil(paramString);
+                if (bool2) {
+                  break label287;
+                }
+              }
+            }
+          }
+          for (;;)
+          {
+            try
+            {
+              localObject1 = URLEncoder.encode(paramString, "UTF-8");
+              localObject2 = com.tencent.mm.plugin.report.service.h.IzE;
+              if (!bool1) {
+                break label294;
+              }
+              i = 1;
+              ((com.tencent.mm.plugin.report.service.h)localObject2).a(17591, new Object[] { "", str2, localObject1, Integer.valueOf(i) });
+              Log.i("MicroMsg.AppUtil", "reportLaunchWechat callPackage=%s, isCategoryHome = %b, url=%s, isCategoryHome= %b", new Object[] { str2, Boolean.valueOf(bool1), localObject1, Boolean.valueOf(bool1) });
+              AppMethodBeat.o(162009);
+              return;
+            }
+            catch (UnsupportedEncodingException localUnsupportedEncodingException)
+            {
+              Log.e("MicroMsg.AppUtil", "reportLaunchWechat parse fail");
+            }
+            i += 1;
+            break;
+            bool1 = false;
+            break label157;
+            label287:
+            String str1 = "";
+            continue;
+            label294:
+            i = 0;
+          }
+          return;
+        }
+        catch (Exception localException)
+        {
+          Log.e("MicroMsg.AppUtil", "reportLaunchWechat ex:%s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(162009);
+        }
+      }
+    }, "reportLaunchWechat");
     AppMethodBeat.o(151775);
   }
   
-  public static boolean s(Context paramContext, String paramString)
+  public static boolean u(Context paramContext, String paramString)
   {
     AppMethodBeat.i(151764);
     if (com.tencent.mm.plugin.appbrand.ac.b.getPackageInfo(paramContext, paramString) != null)
@@ -548,7 +651,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.q
  * JD-Core Version:    0.7.0.1
  */

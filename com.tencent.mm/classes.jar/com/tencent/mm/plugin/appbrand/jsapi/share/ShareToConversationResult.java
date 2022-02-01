@@ -7,7 +7,7 @@ import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResu
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareToConversationResult;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessResult;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "result", "", "(I)V", "getResult", "()I", "describeContents", "readParcel", "", "in", "writeToParcel", "flags", "CREATOR", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareToConversationResult;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessResult;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "result", "", "(I)V", "getResult", "()I", "describeContents", "readParcel", "", "in", "writeToParcel", "flags", "CREATOR", "plugin-appbrand-integration_release"})
 public final class ShareToConversationResult
   extends AppBrandProxyUIProcessTask.ProcessResult
 {
@@ -16,9 +16,9 @@ public final class ShareToConversationResult
   
   static
   {
-    AppMethodBeat.i(228556);
+    AppMethodBeat.i(270254);
     CREATOR = new a((byte)0);
-    AppMethodBeat.o(228556);
+    AppMethodBeat.o(270254);
   }
   
   public ShareToConversationResult(int paramInt)
@@ -29,8 +29,8 @@ public final class ShareToConversationResult
   public ShareToConversationResult(Parcel paramParcel)
   {
     this(paramParcel.readInt());
-    AppMethodBeat.i(228555);
-    AppMethodBeat.o(228555);
+    AppMethodBeat.i(270253);
+    AppMethodBeat.o(270253);
   }
   
   public final int describeContents()
@@ -42,20 +42,20 @@ public final class ShareToConversationResult
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(228554);
-    p.h(paramParcel, "parcel");
+    AppMethodBeat.i(270251);
+    p.k(paramParcel, "parcel");
     paramParcel.writeInt(this.result);
-    AppMethodBeat.o(228554);
+    AppMethodBeat.o(270251);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareToConversationResult$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareToConversationResult;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareToConversationResult;", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareToConversationResult$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareToConversationResult;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/share/ShareToConversationResult;", "plugin-appbrand-integration_release"})
   public static final class a
     implements Parcelable.Creator<ShareToConversationResult>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.share.ShareToConversationResult
  * JD-Core Version:    0.7.0.1
  */

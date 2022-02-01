@@ -6,7 +6,7 @@ import android.text.SpannableStringBuilder;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.loader.c;
+import com.tencent.mm.compatible.loader.b;
 
 final class d
 {
@@ -20,7 +20,7 @@ final class d
     }
     try
     {
-      paramNumberPicker = (EditText)new c(paramNumberPicker, "mInputText", null).get();
+      paramNumberPicker = (EditText)new b(paramNumberPicker, "mInputText", null).get();
       if (paramNumberPicker != null) {
         paramNumberPicker.setEditableFactory(new Editable.Factory()
         {
@@ -60,7 +60,7 @@ final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,23 @@
 package com.tencent.mm.plugin.appbrand.jsapi.pay;
 
 import android.content.Intent;
-import com.tencent.luggage.h.f.c;
-import com.tencent.luggage.sdk.g.a;
+import com.tencent.luggage.k.f.c;
+import com.tencent.luggage.sdk.h.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.service.c;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class g
-  extends d<c>
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<com.tencent.mm.plugin.appbrand.service.c>
 {
   public static final int CTRL_INDEX = 714;
   public static final String NAME = "requestBizSplitBillPayment";
-  private final int mml;
+  private final int pkq;
   
   public g()
   {
     AppMethodBeat.i(174867);
-    this.mml = a.aK(this);
+    this.pkq = a.aI(this);
     AppMethodBeat.o(174867);
   }
 }

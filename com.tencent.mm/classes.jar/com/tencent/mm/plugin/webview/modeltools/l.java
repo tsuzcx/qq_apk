@@ -7,25 +7,33 @@ import java.util.HashSet;
 
 public final class l
 {
-  private HashSet<Integer> JbA;
-  public HashMap<String, b> JbB;
-  public HashMap<String, a> Jby;
-  public HashMap<String, a> Jbz;
+  public HashMap<String, a> PYe;
+  public HashMap<String, a> PYf;
+  private HashSet<Integer> PYg;
+  public HashMap<String, b> PYh;
   
   public l()
   {
     AppMethodBeat.i(79218);
-    this.Jby = new HashMap();
-    this.Jbz = new HashMap();
-    this.JbA = new HashSet();
-    this.JbB = new HashMap();
+    this.PYe = new HashMap();
+    this.PYf = new HashMap();
+    this.PYg = new HashSet();
+    this.PYh = new HashMap();
     AppMethodBeat.o(79218);
   }
   
-  public final boolean aZx(String paramString)
+  public final boolean anS(int paramInt)
+  {
+    AppMethodBeat.i(79222);
+    boolean bool = this.PYg.remove(Integer.valueOf(paramInt));
+    AppMethodBeat.o(79222);
+    return bool;
+  }
+  
+  public final boolean blq(String paramString)
   {
     AppMethodBeat.i(79219);
-    if ((this.JbB.containsKey(paramString)) && (this.JbB.get(paramString) != null))
+    if ((this.PYh.containsKey(paramString)) && (this.PYh.get(paramString) != null))
     {
       AppMethodBeat.o(79219);
       return true;
@@ -34,20 +42,12 @@ public final class l
     return false;
   }
   
-  public final b aZy(String paramString)
+  public final b blr(String paramString)
   {
     AppMethodBeat.i(79220);
-    paramString = (b)this.JbB.get(paramString);
+    paramString = (b)this.PYh.get(paramString);
     AppMethodBeat.o(79220);
     return paramString;
-  }
-  
-  public final boolean agd(int paramInt)
-  {
-    AppMethodBeat.i(79222);
-    boolean bool = this.JbA.remove(Integer.valueOf(paramInt));
-    AppMethodBeat.o(79222);
-    return bool;
   }
   
   public final void cW(int paramInt, String paramString)
@@ -55,11 +55,11 @@ public final class l
     AppMethodBeat.i(79221);
     if (Util.getBoolean(paramString, false))
     {
-      this.JbA.add(Integer.valueOf(paramInt));
+      this.PYg.add(Integer.valueOf(paramInt));
       AppMethodBeat.o(79221);
       return;
     }
-    this.JbA.remove(Integer.valueOf(paramInt));
+    this.PYg.remove(Integer.valueOf(paramInt));
     AppMethodBeat.o(79221);
   }
   
@@ -68,17 +68,17 @@ public final class l
     public String desc;
     public String link;
     public String title;
-    public String twt;
+    public String xei;
   }
   
   public static final class b
   {
-    public boolean JbC;
-    public boolean JbD;
+    public boolean PYi;
+    public boolean PYj;
     public int duration;
-    public String gCv;
-    public int iwc;
-    public int iwf;
+    public String jmB;
+    public int llp;
+    public int lls;
     public String userName;
     public String vid;
     public int videoHeight;

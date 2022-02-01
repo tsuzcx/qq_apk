@@ -7,13 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import com.tencent.mm.plugin.address.model.RcptItem;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class RcptPreference
   extends Preference
 {
-  RcptItem kuR;
+  RcptItem nmF;
   
   public RcptPreference(Context paramContext)
   {
@@ -29,7 +31,7 @@ public class RcptPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(20973);
-    setLayoutResource(2131495538);
+    setLayoutResource(R.i.mm_preference);
     AppMethodBeat.o(20973);
   }
   
@@ -37,25 +39,12 @@ public class RcptPreference
   {
     AppMethodBeat.i(20975);
     super.onBindView(paramView);
-    if (this.kuR == null)
+    if (this.nmF == null)
     {
       AppMethodBeat.o(20975);
       return;
     }
-    ((TextView)paramView.findViewById(2131310681)).setText(this.kuR.name);
-    paramView = paramView.findViewById(16908312);
-    if (paramView == null)
-    {
-      AppMethodBeat.o(20975);
-      return;
-    }
-    if (this.kuR.ksW)
-    {
-      paramView.setVisibility(0);
-      AppMethodBeat.o(20975);
-      return;
-    }
-    paramView.setVisibility(8);
+    ((TextView)paramView.findViewById(R.h.zonename)).setText(this.nmF.name);
     AppMethodBeat.o(20975);
   }
   
@@ -64,16 +53,16 @@ public class RcptPreference
     AppMethodBeat.i(20974);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2131495577, localViewGroup);
+    localLayoutInflater.inflate(R.i.eiW, localViewGroup);
     AppMethodBeat.o(20974);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.address.ui.RcptPreference
  * JD-Core Version:    0.7.0.1
  */

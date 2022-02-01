@@ -20,12 +20,12 @@ public final class ac
   
   public ac(ISQLiteDatabase paramISQLiteDatabase)
   {
-    this(paramISQLiteDatabase, ab.info, "UxCanvasInfo");
+    this(paramISQLiteDatabase, ab.info, "UxCanvasInfo", null);
   }
   
-  private ac(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString)
+  public ac(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, String[] paramArrayOfString)
   {
-    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, null);
+    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, paramArrayOfString);
   }
   
   public final void a(ab paramab)
@@ -45,7 +45,7 @@ public final class ac
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.ac
  * JD-Core Version:    0.7.0.1
  */

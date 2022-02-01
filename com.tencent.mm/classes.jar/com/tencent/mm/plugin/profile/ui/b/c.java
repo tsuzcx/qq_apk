@@ -7,7 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.platformtools.s;
 import com.tencent.mm.platformtools.s.a;
 import com.tencent.mm.platformtools.s.b;
@@ -34,10 +34,10 @@ public final class c
       public final Bitmap a(Bitmap paramAnonymousBitmap, s.a paramAnonymousa, String paramAnonymousString)
       {
         AppMethodBeat.i(27603);
-        if (s.a.jNh == paramAnonymousa) {}
+        if (s.a.mEp == paramAnonymousa) {}
         try
         {
-          BitmapUtil.saveBitmapToImage(paramAnonymousBitmap, 100, Bitmap.CompressFormat.PNG, blA(), false);
+          BitmapUtil.saveBitmapToImage(paramAnonymousBitmap, 100, Bitmap.CompressFormat.PNG, bvq(), false);
           Log.d("MicroMsg.UrlDrawable", "get bitmap, from %s", new Object[] { paramAnonymousa.toString() });
           AppMethodBeat.o(27603);
           return paramAnonymousBitmap;
@@ -52,21 +52,24 @@ public final class c
         }
       }
       
-      public final void a(s.a paramAnonymousa, String paramAnonymousString) {}
+      public final void a(s.a paramAnonymousa) {}
       
-      public final void ad(String paramAnonymousString, boolean paramAnonymousBoolean) {}
+      public final s.b bvp()
+      {
+        return null;
+      }
       
-      public final String blA()
+      public final String bvq()
       {
         AppMethodBeat.i(27604);
         Object localObject = new StringBuilder();
-        bg.aVF();
-        localObject = com.tencent.mm.model.c.aTh() + MD5Util.getMD5String(c.a(c.this));
+        bh.beI();
+        localObject = com.tencent.mm.model.c.bcf() + MD5Util.getMD5String(c.a(c.this));
         AppMethodBeat.o(27604);
         return localObject;
       }
       
-      public final String blB()
+      public final String bvr()
       {
         AppMethodBeat.i(27606);
         String str = c.a(c.this);
@@ -74,7 +77,7 @@ public final class c
         return str;
       }
       
-      public final String blC()
+      public final String bvs()
       {
         AppMethodBeat.i(27605);
         String str = c.a(c.this);
@@ -82,27 +85,19 @@ public final class c
         return str;
       }
       
-      public final boolean blD()
+      public final boolean bvt()
       {
         return false;
       }
       
-      public final boolean blE()
-      {
-        return false;
-      }
-      
-      public final Bitmap blF()
+      public final Bitmap bvu()
       {
         return null;
       }
       
-      public final void blG() {}
+      public final void bvv() {}
       
-      public final s.b blz()
-      {
-        return null;
-      }
+      public final void bvw() {}
       
       public final String getCacheKey()
       {

@@ -33,37 +33,11 @@ public final class d
     AppMethodBeat.o(70600);
   }
   
-  public final ArrayList<Bankcard> fRE()
-  {
-    ArrayList localArrayList = null;
-    AppMethodBeat.i(70601);
-    Object localObject = "select * from WalletBankcard where cardType <= 7 OR cardType & " + Bankcard.HVv + " != 0";
-    localObject = this.db.rawQuery((String)localObject, null, 2);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(70601);
-      return null;
-    }
-    if (((Cursor)localObject).moveToFirst())
-    {
-      localArrayList = new ArrayList();
-      do
-      {
-        Bankcard localBankcard = new Bankcard();
-        localBankcard.convertFrom((Cursor)localObject);
-        localArrayList.add(localBankcard);
-      } while (((Cursor)localObject).moveToNext());
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(70601);
-    return localArrayList;
-  }
-  
-  public final Bankcard fSo()
+  public final Bankcard gKT()
   {
     Bankcard localBankcard = null;
     AppMethodBeat.i(70602);
-    Object localObject = "select * from WalletBankcard where cardType & " + Bankcard.HVr + " != 0 ";
+    Object localObject = "select * from WalletBankcard where cardType & " + Bankcard.ONs + " != 0 ";
     localObject = this.db.rawQuery((String)localObject, null, 2);
     if (localObject == null)
     {
@@ -80,11 +54,11 @@ public final class d
     return localBankcard;
   }
   
-  public final Bankcard fSp()
+  public final Bankcard gKU()
   {
     Bankcard localBankcard = null;
     AppMethodBeat.i(70603);
-    Object localObject = "select * from WalletBankcard where cardType & " + Bankcard.HVu + " != 0 ";
+    Object localObject = "select * from WalletBankcard where cardType & " + Bankcard.ONv + " != 0 ";
     localObject = this.db.rawQuery((String)localObject, null, 2);
     if (localObject == null)
     {
@@ -101,11 +75,11 @@ public final class d
     return localBankcard;
   }
   
-  public final ArrayList<Bankcard> fSq()
+  public final ArrayList<Bankcard> gKV()
   {
     ArrayList localArrayList = null;
     AppMethodBeat.i(70604);
-    Object localObject = "select * from WalletBankcard where cardType & " + Bankcard.HVq + " != 0 ";
+    Object localObject = "select * from WalletBankcard where cardType & " + Bankcard.ONr + " != 0 ";
     localObject = this.db.rawQuery((String)localObject, null, 2);
     if (localObject == null)
     {
@@ -127,11 +101,11 @@ public final class d
     return localArrayList;
   }
   
-  public final Bankcard fSr()
+  public final Bankcard gKW()
   {
     Bankcard localBankcard = null;
     AppMethodBeat.i(70605);
-    Object localObject = "select * from WalletBankcard where cardType & " + Bankcard.HVs + " != 0 ";
+    Object localObject = "select * from WalletBankcard where cardType & " + Bankcard.ONt + " != 0 ";
     localObject = this.db.rawQuery((String)localObject, null, 2);
     if (localObject == null)
     {
@@ -148,7 +122,33 @@ public final class d
     return localBankcard;
   }
   
-  public final boolean g(Bankcard paramBankcard)
+  public final ArrayList<Bankcard> gKk()
+  {
+    ArrayList localArrayList = null;
+    AppMethodBeat.i(70601);
+    Object localObject = "select * from WalletBankcard where cardType <= 7 OR cardType & " + Bankcard.ONw + " != 0";
+    localObject = this.db.rawQuery((String)localObject, null, 2);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(70601);
+      return null;
+    }
+    if (((Cursor)localObject).moveToFirst())
+    {
+      localArrayList = new ArrayList();
+      do
+      {
+        Bankcard localBankcard = new Bankcard();
+        localBankcard.convertFrom((Cursor)localObject);
+        localArrayList.add(localBankcard);
+      } while (((Cursor)localObject).moveToNext());
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(70601);
+    return localArrayList;
+  }
+  
+  public final boolean h(Bankcard paramBankcard)
   {
     AppMethodBeat.i(70607);
     if (super.insert(paramBankcard))
@@ -164,7 +164,7 @@ public final class d
     return false;
   }
   
-  public final boolean ib(List<Bankcard> paramList)
+  public final boolean iR(List<Bankcard> paramList)
   {
     AppMethodBeat.i(70606);
     paramList = paramList.iterator();

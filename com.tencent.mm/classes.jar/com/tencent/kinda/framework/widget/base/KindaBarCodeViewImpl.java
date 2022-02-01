@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.text.TextUtils;
 import com.tencent.kinda.gen.KBarCodeView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.a.a;
+import com.tencent.mm.cf.a.a;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class KindaBarCodeViewImpl
@@ -20,7 +20,7 @@ public class KindaBarCodeViewImpl
       AppMethodBeat.o(18855);
       return null;
     }
-    paramString = a.b(this.mContext, paramString, 5, 0);
+    paramString = a.c(this.mContext, paramString, 5, 0);
     AppMethodBeat.o(18855);
     return paramString;
   }

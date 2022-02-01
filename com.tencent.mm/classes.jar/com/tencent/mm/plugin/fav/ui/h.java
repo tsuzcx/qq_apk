@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.fav.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.s;
-import com.tencent.mm.pluginsdk.ui.tools.k;
+import com.tencent.mm.pluginsdk.ui.tools.l;
 
 public final class h
-  extends k
+  extends l
 {
   public h(int paramInt)
   {
@@ -22,7 +22,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.h
  * JD-Core Version:    0.7.0.1
  */

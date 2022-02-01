@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.collect.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 
 final class a$2
@@ -16,8 +16,8 @@ final class a$2
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(63758);
-    g.aAi();
-    g.aAg().hqi.b(304, this);
+    h.aHH();
+    h.aHF().kcd.b(304, this);
     if ((paramInt1 != 0) || (paramInt2 != 0)) {
       Log.i("MicroMsg.SubCoreCollect", "set sound fail!");
     }

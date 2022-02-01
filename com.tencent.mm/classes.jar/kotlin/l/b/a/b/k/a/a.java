@@ -13,48 +13,63 @@ import kotlin.l.b.a.b.l.d;
 public abstract class a
   implements ac
 {
-  private final d<kotlin.l.b.a.b.f.b, ab> TKq;
-  protected final u TKr;
-  protected final kotlin.l.b.a.b.l.j TcN;
-  protected final y Tge;
-  protected l Tvt;
+  private final kotlin.l.b.a.b.l.j aaFH;
+  private final y aaIY;
+  protected l aaYm;
+  private final d<kotlin.l.b.a.b.f.b, ab> abmT;
+  private final u abmU;
   
   public a(kotlin.l.b.a.b.l.j paramj, u paramu, y paramy)
   {
-    this.TcN = paramj;
-    this.TKr = paramu;
-    this.Tge = paramy;
-    this.TKq = this.TcN.V((kotlin.g.a.b)new a(this));
+    this.aaFH = paramj;
+    this.abmU = paramu;
+    this.aaIY = paramy;
+    this.abmT = this.aaFH.al((kotlin.g.a.b)new a(this));
   }
   
   public final Collection<kotlin.l.b.a.b.f.b> a(kotlin.l.b.a.b.f.b paramb, kotlin.g.a.b<? super f, Boolean> paramb1)
   {
-    kotlin.g.b.p.h(paramb, "fqName");
-    kotlin.g.b.p.h(paramb1, "nameFilter");
-    return (Collection)x.SXt;
+    kotlin.g.b.p.k(paramb, "fqName");
+    kotlin.g.b.p.k(paramb1, "nameFilter");
+    return (Collection)x.aaAf;
   }
   
   protected final void a(l paraml)
   {
-    kotlin.g.b.p.h(paraml, "<set-?>");
-    this.Tvt = paraml;
+    kotlin.g.b.p.k(paraml, "<set-?>");
+    this.aaYm = paraml;
   }
   
   protected abstract p d(kotlin.l.b.a.b.f.b paramb);
   
   public final List<ab> f(kotlin.l.b.a.b.f.b paramb)
   {
-    kotlin.g.b.p.h(paramb, "fqName");
-    return kotlin.a.j.eR(this.TKq.invoke(paramb));
+    kotlin.g.b.p.k(paramb, "fqName");
+    return kotlin.a.j.eY(this.abmT.invoke(paramb));
   }
   
-  protected final l hEh()
+  protected final kotlin.l.b.a.b.l.j iEV()
   {
-    l locall = this.Tvt;
+    return this.aaFH;
+  }
+  
+  protected final l iIC()
+  {
+    l locall = this.aaYm;
     if (locall == null) {
-      kotlin.g.b.p.btv("components");
+      kotlin.g.b.p.bGy("components");
     }
     return locall;
+  }
+  
+  protected final u iPs()
+  {
+    return this.abmU;
+  }
+  
+  protected final y iPt()
+  {
+    return this.aaIY;
   }
   
   static final class a
@@ -69,7 +84,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.a
  * JD-Core Version:    0.7.0.1
  */

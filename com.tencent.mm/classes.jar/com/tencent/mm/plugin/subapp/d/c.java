@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.subapp.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import junit.framework.Assert;
@@ -18,15 +18,15 @@ public final class c
     this.fileName = paramString;
   }
   
-  public static int Qy(String paramString)
+  public static int XV(String paramString)
   {
     AppMethodBeat.i(28935);
     if (paramString.length() >= 0) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      paramString = new o(paramString);
-      if (paramString.exists()) {
+      paramString = new q(paramString);
+      if (paramString.ifE()) {
         break;
       }
       AppMethodBeat.o(28935);
@@ -42,7 +42,7 @@ public final class c
     return i;
   }
   
-  private boolean ftf()
+  private boolean ghE()
   {
     AppMethodBeat.i(169765);
     if (this.fileName.length() >= 0)
@@ -60,7 +60,7 @@ public final class c
       Log.d("MicroMsg.SpxFileOperator", "Open file:" + this.file + " forWrite:false");
       try
       {
-        this.file = s.dB(this.fileName, false);
+        this.file = u.dO(this.fileName, false);
         AppMethodBeat.o(169765);
         return true;
       }
@@ -76,7 +76,7 @@ public final class c
     return false;
   }
   
-  public final a abk(int paramInt)
+  public final a aiF(int paramInt)
   {
     AppMethodBeat.i(28938);
     a locala = new a();
@@ -86,7 +86,7 @@ public final class c
       AppMethodBeat.o(28938);
       return locala;
     }
-    if ((this.file == null) && (!ftf()))
+    if ((this.file == null) && (!ghE()))
     {
       locala.ret = -2;
       AppMethodBeat.o(28938);
@@ -103,8 +103,8 @@ public final class c
       if (j < 0) {
         i = 0;
       }
-      locala.dAc = i;
-      locala.jsR = (i + paramInt);
+      locala.fsR = i;
+      locala.miv = (i + paramInt);
       locala.ret = 0;
       AppMethodBeat.o(28938);
       return locala;
@@ -112,14 +112,14 @@ public final class c
     catch (Exception localException)
     {
       Log.e("MicroMsg.SpxFileOperator", "ERR: ReadFile[" + this.fileName + "] Offset:" + paramInt + "  failed:[" + localException.getMessage() + "] ");
-      bhP();
+      brn();
       locala.ret = -1;
       AppMethodBeat.o(28938);
     }
     return locala;
   }
   
-  public final void bhP()
+  public final void brn()
   {
     AppMethodBeat.i(28936);
     if (this.file != null) {
@@ -139,14 +139,14 @@ public final class c
   public static final class a
   {
     public byte[] buf = null;
-    public int dAc = 0;
-    public int jsR = 0;
+    public int fsR = 0;
+    public int miv = 0;
     public int ret = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.d.c
  * JD-Core Version:    0.7.0.1
  */

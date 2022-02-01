@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.account.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.lz;
+import com.tencent.mm.f.a.mq;
 import com.tencent.mm.sdk.event.IListener;
 
 final class MobileLoginOrForceReg$12
-  extends IListener<lz>
+  extends IListener<mq>
 {
   MobileLoginOrForceReg$12(MobileLoginOrForceReg paramMobileLoginOrForceReg)
   {
     AppMethodBeat.i(161705);
-    this.__eventId = lz.class.getName().hashCode();
+    this.__eventId = mq.class.getName().hashCode();
     AppMethodBeat.o(161705);
   }
 }

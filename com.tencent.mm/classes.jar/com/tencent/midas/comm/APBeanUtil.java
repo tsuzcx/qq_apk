@@ -10,22 +10,22 @@ public class APBeanUtil
 {
   public static void copyProperties(Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(193230);
+    AppMethodBeat.i(253573);
     try
     {
       copyPropertiesExclude(paramObject1, paramObject2, null, true);
-      AppMethodBeat.o(193230);
+      AppMethodBeat.o(253573);
       return;
     }
     catch (Exception paramObject1)
     {
-      AppMethodBeat.o(193230);
+      AppMethodBeat.o(253573);
     }
   }
   
   public static void copyPropertiesExclude(Object paramObject1, Object paramObject2, String[] paramArrayOfString, boolean paramBoolean)
   {
-    AppMethodBeat.i(193231);
+    AppMethodBeat.i(253574);
     if ((paramArrayOfString != null) && (paramArrayOfString.length > 0)) {}
     for (paramArrayOfString = Arrays.asList(paramArrayOfString);; paramArrayOfString = null)
     {
@@ -55,14 +55,14 @@ public class APBeanUtil
         }
         arrayOfMethod2 = paramObject1.getClass().getDeclaredMethods();
       }
-      AppMethodBeat.o(193231);
+      AppMethodBeat.o(253574);
       return;
     }
   }
   
   public static void copyPropertiesInclude(Object paramObject1, Object paramObject2, String[] paramArrayOfString, boolean paramBoolean)
   {
-    AppMethodBeat.i(193232);
+    AppMethodBeat.i(253575);
     List localList;
     Method[] arrayOfMethod;
     if ((paramArrayOfString != null) && (paramArrayOfString.length > 0))
@@ -97,29 +97,29 @@ public class APBeanUtil
         }
         i += 1;
       }
-      AppMethodBeat.o(193232);
+      AppMethodBeat.o(253575);
       return;
       label227:
       arrayOfMethod = paramObject1.getClass().getDeclaredMethods();
     }
-    AppMethodBeat.o(193232);
+    AppMethodBeat.o(253575);
   }
   
   public static Method findMethodByName(Method[] paramArrayOfMethod, String paramString)
   {
-    AppMethodBeat.i(193233);
+    AppMethodBeat.i(253576);
     int i = 0;
     while (i < paramArrayOfMethod.length)
     {
       if (paramArrayOfMethod[i].getName().equals(paramString))
       {
         paramArrayOfMethod = paramArrayOfMethod[i];
-        AppMethodBeat.o(193233);
+        AppMethodBeat.o(253576);
         return paramArrayOfMethod;
       }
       i += 1;
     }
-    AppMethodBeat.o(193233);
+    AppMethodBeat.o(253576);
     return null;
   }
 }

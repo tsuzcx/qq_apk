@@ -1,10 +1,8 @@
 package com.tencent.mm.plugin.appbrand.launching.f;
 
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.plugin.appbrand.app.m;
 import com.tencent.mm.plugin.appbrand.appusage.AppBrandRecentTaskInfo;
 import com.tencent.mm.plugin.appbrand.appusage.ag;
 import com.tencent.mm.plugin.appbrand.appusage.u;
@@ -24,24 +22,24 @@ import kotlin.l;
 import kotlin.t;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/launching/teenmode/AppBrandTeenModeReporter;", "", "()V", "REPORT_TEEN_MODE_TAG", "", "TAG", "collectionSet", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/appbrand/launching/teenmode/AppBrandTeenModeReporter$InfoWrapper;", "Lkotlin/collections/HashMap;", "addCollection", "", "username", "versionType", "", "checkRemovedCollection", "getAllCollectionList", "getKey", "getNicknameAsync", "callback", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes;", "init", "removeCollection", "reportRemoveCollection", "reportTeenModeToast", "runTask", "runnable", "Ljava/lang/Runnable;", "updateCollectionSet", "list", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandRecentTaskInfo;", "Lkotlin/collections/ArrayList;", "InfoWrapper", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/launching/teenmode/AppBrandTeenModeReporter;", "", "()V", "REPORT_TEEN_MODE_TAG", "", "TAG", "collectionSet", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/appbrand/launching/teenmode/AppBrandTeenModeReporter$InfoWrapper;", "Lkotlin/collections/HashMap;", "addCollection", "", "username", "versionType", "", "checkRemovedCollection", "getAllCollectionList", "getKey", "getNicknameAsync", "callback", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes;", "init", "removeCollection", "reportRemoveCollection", "reportTeenModeToast", "runTask", "runnable", "Ljava/lang/Runnable;", "updateCollectionSet", "list", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandRecentTaskInfo;", "Lkotlin/collections/ArrayList;", "InfoWrapper", "plugin-appbrand-integration_release"})
 public final class a
 {
-  private static HashMap<String, a> mZu;
-  public static final a mZv;
+  private static HashMap<String, a.a> pZS;
+  public static final a pZT;
   
   static
   {
-    AppMethodBeat.i(228787);
-    mZv = new a();
-    mZu = new HashMap();
-    AppMethodBeat.o(228787);
+    AppMethodBeat.i(266245);
+    pZT = new a();
+    pZS = new HashMap();
+    AppMethodBeat.o(266245);
   }
   
-  private static void I(ArrayList<AppBrandRecentTaskInfo> paramArrayList)
+  private static void J(ArrayList<AppBrandRecentTaskInfo> paramArrayList)
   {
-    AppMethodBeat.i(228780);
-    mZu.clear();
+    AppMethodBeat.i(266237);
+    pZS.clear();
     if (paramArrayList != null)
     {
       paramArrayList = ((Iterable)paramArrayList).iterator();
@@ -58,168 +56,134 @@ public final class a
             if (i != 0) {
               break label120;
             }
-            Log.i("MicroMsg.AppBrandTeenModeReporter", "getAllCollectionList info: %s, %d", new Object[] { localAppBrandRecentTaskInfo.username, Integer.valueOf(localAppBrandRecentTaskInfo.iOo) });
-            bX(localAppBrandRecentTaskInfo.username, localAppBrandRecentTaskInfo.iOo);
+            Log.i("MicroMsg.AppBrandTeenModeReporter", "getAllCollectionList info: %s, %d", new Object[] { localAppBrandRecentTaskInfo.username, Integer.valueOf(localAppBrandRecentTaskInfo.cBU) });
+            cv(localAppBrandRecentTaskInfo.username, localAppBrandRecentTaskInfo.cBU);
             break;
           }
         }
       }
-      AppMethodBeat.o(228780);
+      AppMethodBeat.o(266237);
       return;
     }
-    AppMethodBeat.o(228780);
+    AppMethodBeat.o(266237);
   }
   
-  private static final void acn(String paramString)
+  private static final void akh(String paramString)
   {
-    AppMethodBeat.i(228783);
+    AppMethodBeat.i(266241);
     Object localObject = (CharSequence)paramString;
     if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(228783);
+      AppMethodBeat.o(266241);
       return;
     }
-    localObject = g.af(com.tencent.mm.plugin.teenmode.a.b.class);
-    p.g(localObject, "MMKernel.service(ITeenModeService::class.java)");
-    if (!((com.tencent.mm.plugin.teenmode.a.b)localObject).Vt())
+    localObject = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.teenmode.a.b.class);
+    p.j(localObject, "MMKernel.service(ITeenModeService::class.java)");
+    if (!((com.tencent.mm.plugin.teenmode.a.b)localObject).ZM())
     {
-      AppMethodBeat.o(228783);
+      AppMethodBeat.o(266241);
       return;
     }
     e(paramString, (kotlin.g.a.b)new a.f(paramString));
-    AppMethodBeat.o(228783);
+    AppMethodBeat.o(266241);
   }
   
-  public static final void aco(String paramString)
+  public static final void aki(String paramString)
   {
-    AppMethodBeat.i(228784);
+    AppMethodBeat.i(266242);
     Object localObject = (CharSequence)paramString;
     if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(228784);
+      AppMethodBeat.o(266242);
       return;
     }
-    localObject = g.af(com.tencent.mm.plugin.teenmode.a.b.class);
-    p.g(localObject, "MMKernel.service(ITeenModeService::class.java)");
-    if (!((com.tencent.mm.plugin.teenmode.a.b)localObject).Vt())
+    localObject = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.teenmode.a.b.class);
+    p.j(localObject, "MMKernel.service(ITeenModeService::class.java)");
+    if (!((com.tencent.mm.plugin.teenmode.a.b)localObject).ZM())
     {
-      AppMethodBeat.o(228784);
+      AppMethodBeat.o(266242);
       return;
     }
     e(paramString, (kotlin.g.a.b)new a.g(paramString));
-    AppMethodBeat.o(228784);
+    AppMethodBeat.o(266242);
   }
   
-  private static void bX(String paramString, int paramInt)
+  private static void cv(String paramString, int paramInt)
   {
-    AppMethodBeat.i(228781);
+    AppMethodBeat.i(266238);
     Object localObject = (CharSequence)paramString;
     if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(228781);
+      AppMethodBeat.o(266238);
       return;
     }
-    localObject = (Map)mZu;
-    String str = bY(paramString, paramInt);
-    a locala = new a();
+    localObject = (Map)pZS;
+    String str = cw(paramString, paramInt);
+    a.a locala = new a.a();
     locala.setUsername(paramString);
-    locala.iOo = paramInt;
+    locala.cBU = paramInt;
     ((Map)localObject).put(str, locala);
-    Log.i("MicroMsg.AppBrandTeenModeReporter", "addCollection %s, %d, %d", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(mZu.size()) });
-    AppMethodBeat.o(228781);
+    Log.i("MicroMsg.AppBrandTeenModeReporter", "addCollection %s, %d, %d", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(pZS.size()) });
+    AppMethodBeat.o(266238);
   }
   
-  private static String bY(String paramString, int paramInt)
+  private static String cw(String paramString, int paramInt)
   {
-    AppMethodBeat.i(228782);
+    AppMethodBeat.i(266240);
     paramString = paramString + ',' + paramInt;
-    AppMethodBeat.o(228782);
+    AppMethodBeat.o(266240);
     return paramString;
   }
   
   private static void e(String paramString, kotlin.g.a.b<? super WxaAttributes, x> paramb)
   {
-    AppMethodBeat.i(228785);
-    ((q)g.af(q.class)).a(paramString, (q.a)new b(paramb));
-    AppMethodBeat.o(228785);
+    AppMethodBeat.i(266243);
+    ((q)com.tencent.mm.kernel.h.ae(q.class)).a(paramString, (q.a)new a.b(paramb));
+    AppMethodBeat.o(266243);
   }
   
   public static final void init()
   {
-    AppMethodBeat.i(228779);
-    Object localObject = (u)n.W(u.class);
+    AppMethodBeat.i(266236);
+    Object localObject = (u)m.W(u.class);
     if (localObject != null) {
-      ((u)localObject).add((MStorage.IOnStorageChange)c.mZw);
+      ((u)localObject).add((MStorage.IOnStorageChange)c.pZU);
     }
-    localObject = (ag)g.af(ag.class);
+    localObject = (ag)com.tencent.mm.kernel.h.ae(ag.class);
     if (localObject != null) {
-      ((ag)localObject).add((MStorage.IOnStorageChange)d.mZy);
+      ((ag)localObject).add((MStorage.IOnStorageChange)d.pZW);
     }
-    v((Runnable)e.mZA);
-    AppMethodBeat.o(228779);
+    u((Runnable)e.pZY);
+    AppMethodBeat.o(266236);
   }
   
-  private static void v(Runnable paramRunnable)
+  private static void u(Runnable paramRunnable)
   {
-    AppMethodBeat.i(228786);
-    h.RTc.e(paramRunnable, "AppBrandTeenModeReporter");
-    AppMethodBeat.o(228786);
+    AppMethodBeat.i(266244);
+    com.tencent.e.h.ZvG.g(paramRunnable, "AppBrandTeenModeReporter");
+    AppMethodBeat.o(266244);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/launching/teenmode/AppBrandTeenModeReporter$InfoWrapper;", "", "()V", "username", "", "getUsername", "()Ljava/lang/String;", "setUsername", "(Ljava/lang/String;)V", "versionType", "", "getVersionType", "()I", "setVersionType", "(I)V", "plugin-appbrand-integration_release"})
-  static final class a
-  {
-    int iOo;
-    String username = "";
-    
-    public final void setUsername(String paramString)
-    {
-      AppMethodBeat.i(228765);
-      p.h(paramString, "<set-?>");
-      this.username = paramString;
-      AppMethodBeat.o(228765);
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/launching/teenmode/AppBrandTeenModeReporter$getNicknameAsync$1", "Lcom/tencent/mm/plugin/appbrand/service/IWeAppInfoService$IGetWeAppInfoCallback;", "onGetWeAppInfo", "", "info", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes;", "plugin-appbrand-integration_release"})
-  public static final class b
-    implements q.a
-  {
-    b(kotlin.g.a.b paramb) {}
-    
-    public final void b(WxaAttributes paramWxaAttributes)
-    {
-      AppMethodBeat.i(228766);
-      if (paramWxaAttributes == null)
-      {
-        AppMethodBeat.o(228766);
-        return;
-      }
-      this.gWe.invoke(paramWxaAttributes);
-      AppMethodBeat.o(228766);
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "event", "", "kotlin.jvm.PlatformType", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "onNotifyChange"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "event", "", "kotlin.jvm.PlatformType", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "onNotifyChange"})
   static final class c
     implements MStorage.IOnStorageChange
   {
-    public static final c mZw;
+    public static final c pZU;
     
     static
     {
-      AppMethodBeat.i(228770);
-      mZw = new c();
-      AppMethodBeat.o(228770);
+      AppMethodBeat.i(283887);
+      pZU = new c();
+      AppMethodBeat.o(283887);
     }
     
     public final void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData)
     {
       Object localObject = null;
-      AppMethodBeat.i(228769);
+      AppMethodBeat.i(283886);
       if (paramMStorageEventData != null) {}
       for (Integer localInteger = Integer.valueOf(paramMStorageEventData.eventId);; localInteger = null)
       {
@@ -238,13 +202,13 @@ public final class a
           break;
         }
         paramString = new t("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.appusage.AppBrandStarAppStorage.AppBrandStarAppRecord");
-        AppMethodBeat.o(228769);
+        AppMethodBeat.o(283886);
         throw paramString;
       }
       paramString = (u.a)paramString;
-      paramMStorageEventData = a.mZv;
-      a.ac((Runnable)new a(paramString));
-      AppMethodBeat.o(228769);
+      paramMStorageEventData = a.pZT;
+      a.af((Runnable)new a(paramString));
+      AppMethodBeat.o(283886);
       return;
       label136:
       if (paramMStorageEventData != null)
@@ -256,23 +220,23 @@ public final class a
         if (paramString == null)
         {
           paramString = new t("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.appusage.AppBrandStarAppStorage.AppBrandStarAppRecord");
-          AppMethodBeat.o(228769);
+          AppMethodBeat.o(283886);
           throw paramString;
         }
       }
       else
       {
-        AppMethodBeat.o(228769);
+        AppMethodBeat.o(283886);
         return;
       }
       paramString = (u.a)paramString;
-      paramMStorageEventData = a.mZv;
-      a.ac((Runnable)new b(paramString));
+      paramMStorageEventData = a.pZT;
+      a.af((Runnable)new b(paramString));
       label213:
-      AppMethodBeat.o(228769);
+      AppMethodBeat.o(283886);
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -280,14 +244,14 @@ public final class a
       
       public final void run()
       {
-        AppMethodBeat.i(228767);
-        a locala = a.mZv;
-        a.bZ(this.mZx.field_username, this.mZx.field_versionType);
-        AppMethodBeat.o(228767);
+        AppMethodBeat.i(243630);
+        a locala = a.pZT;
+        a.cx(this.pZV.field_username, this.pZV.field_versionType);
+        AppMethodBeat.o(243630);
       }
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
     static final class b
       implements Runnable
     {
@@ -295,32 +259,32 @@ public final class a
       
       public final void run()
       {
-        AppMethodBeat.i(228768);
-        a locala = a.mZv;
-        a.ca(this.mZx.field_username, this.mZx.field_versionType);
-        a.acp(this.mZx.field_username);
-        AppMethodBeat.o(228768);
+        AppMethodBeat.i(267249);
+        a locala = a.pZT;
+        a.cy(this.pZV.field_username, this.pZV.field_versionType);
+        a.akj(this.pZV.field_username);
+        AppMethodBeat.o(267249);
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "event", "", "kotlin.jvm.PlatformType", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "onNotifyChange"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "event", "", "kotlin.jvm.PlatformType", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "onNotifyChange"})
   static final class d
     implements MStorage.IOnStorageChange
   {
-    public static final d mZy;
+    public static final d pZW;
     
     static
     {
-      AppMethodBeat.i(228774);
-      mZy = new d();
-      AppMethodBeat.o(228774);
+      AppMethodBeat.i(245999);
+      pZW = new d();
+      AppMethodBeat.o(245999);
     }
     
     public final void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData)
     {
       Object localObject = null;
-      AppMethodBeat.i(228773);
+      AppMethodBeat.i(245998);
       if (paramMStorageEventData != null) {}
       for (Integer localInteger = Integer.valueOf(paramMStorageEventData.eventId);; localInteger = null)
       {
@@ -331,43 +295,43 @@ public final class a
         if (paramMStorageEventData == null) {
           break;
         }
-        if ((paramMStorageEventData.eventId == 3) && (p.j(paramString, "batch")) && (paramMStorageEventData.obj == null))
+        if ((paramMStorageEventData.eventId == 3) && (p.h(paramString, "batch")) && (paramMStorageEventData.obj == null))
         {
-          paramString = a.mZv;
-          a.ac((Runnable)1.mZz);
+          paramString = a.pZT;
+          a.af((Runnable)1.pZX);
         }
-        AppMethodBeat.o(228773);
+        AppMethodBeat.o(245998);
         return;
       }
-      AppMethodBeat.o(228773);
+      AppMethodBeat.o(245998);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class e
     implements Runnable
   {
-    public static final e mZA;
+    public static final e pZY;
     
     static
     {
-      AppMethodBeat.i(228776);
-      mZA = new e();
-      AppMethodBeat.o(228776);
+      AppMethodBeat.i(280249);
+      pZY = new e();
+      AppMethodBeat.o(280249);
     }
     
     public final void run()
     {
-      AppMethodBeat.i(228775);
-      a locala = a.mZv;
-      a.bOm();
-      AppMethodBeat.o(228775);
+      AppMethodBeat.i(280247);
+      a locala = a.pZT;
+      a.caG();
+      AppMethodBeat.o(280247);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.f.a
  * JD-Core Version:    0.7.0.1
  */

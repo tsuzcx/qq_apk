@@ -11,25 +11,25 @@ import java.util.Properties;
 
 public final class c
 {
-  private static final l qHz;
-  Properties qHA;
-  byte[] qHB;
+  private static final l ugA;
+  Properties ugB;
+  byte[] ugC;
   
   static
   {
     AppMethodBeat.i(88868);
-    qHz = new l(38650);
+    ugA = new l(38650);
     AppMethodBeat.o(88868);
   }
   
   public c()
   {
     AppMethodBeat.i(88863);
-    this.qHA = new Properties();
+    this.ugB = new Properties();
     AppMethodBeat.o(88863);
   }
   
-  public final void W(byte[] paramArrayOfByte)
+  public final void ad(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(88865);
     if (paramArrayOfByte == null)
@@ -39,9 +39,10 @@ public final class c
       return;
     }
     ByteBuffer localByteBuffer = ByteBuffer.wrap(paramArrayOfByte);
+    ugA.getBytes();
     byte[] arrayOfByte = new byte[2];
     localByteBuffer.get(arrayOfByte);
-    if (!qHz.equals(new l(arrayOfByte))) {
+    if (!ugA.equals(new l(arrayOfByte))) {
       Log.e("MicroMsg.Channel.GameComment", "decode, unknow protocol");
     }
     if (paramArrayOfByte.length - 2 <= 2)
@@ -63,29 +64,29 @@ public final class c
     localByteBuffer.get(arrayOfByte);
     try
     {
-      this.qHA.load(new InputStreamReader(new ByteArrayInputStream(arrayOfByte), "UTF-8"));
-      label170:
+      this.ugB.load(new InputStreamReader(new ByteArrayInputStream(arrayOfByte), "UTF-8"));
+      label177:
       i = paramArrayOfByte.length - 2 - i - 2;
       if (i > 0)
       {
-        this.qHB = new byte[i];
-        localByteBuffer.get(this.qHB);
+        this.ugC = new byte[i];
+        localByteBuffer.get(this.ugC);
       }
       AppMethodBeat.o(88865);
       return;
     }
     catch (IOException localIOException)
     {
-      break label170;
+      break label177;
     }
   }
   
   public final String toString()
   {
     AppMethodBeat.i(88867);
-    StringBuilder localStringBuilder = new StringBuilder("GameComment [p=").append(this.qHA).append(", otherData=");
-    if (this.qHB == null) {}
-    for (String str = "";; str = new String(this.qHB))
+    StringBuilder localStringBuilder = new StringBuilder("GameComment [p=").append(this.ugB).append(", otherData=");
+    if (this.ugC == null) {}
+    for (String str = "";; str = new String(this.ugC))
     {
       str = str + "]";
       AppMethodBeat.o(88867);
@@ -95,7 +96,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.d.c
  * JD-Core Version:    0.7.0.1
  */

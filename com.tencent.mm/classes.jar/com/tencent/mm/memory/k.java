@@ -4,11 +4,11 @@ import android.graphics.Bitmap.Config;
 
 public final class k
 {
-  public static final Bitmap.Config itA = Bitmap.Config.ARGB_8888;
+  public static final Bitmap.Config liJ = Bitmap.Config.ARGB_8888;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.memory.k
  * JD-Core Version:    0.7.0.1
  */

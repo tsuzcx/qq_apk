@@ -1,180 +1,91 @@
 package com.tencent.mm.plugin.webview.k;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import androidx.lifecycle.r;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.stub.e;
+import com.tencent.mm.aq.b;
+import com.tencent.mm.aq.c;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.i.a;
+import com.tencent.mm.i.g;
+import com.tencent.mm.model.z;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class f
 {
-  public static int a(Context paramContext, e parame, String paramString)
+  private f.a QzQ;
+  Map<String, String> QzR;
+  public r<String> QzS;
+  public b QzT;
+  String appId;
+  public String pqt;
+  
+  public f()
   {
-    AppMethodBeat.i(82379);
-    try
-    {
-      localMultiProcessMMKV = MultiProcessMMKV.getMMKV("WebViewFontUtil", 2);
-      bool = localMultiProcessMMKV.getBoolean("webview_key_font_use_system", false);
-      Log.i("MicroMsg.WebViewFontUtil", "useSystemFont = %b", new Object[] { Boolean.valueOf(bool) });
-      if (bool)
-      {
-        i = id(paramContext);
-        AppMethodBeat.o(82379);
-        return i;
-      }
-      bool = localMultiProcessMMKV.getBoolean("webview_key_font_has_set", false);
-      if ((!Util.isNullOrNil(paramString)) && (com.tencent.mm.plugin.webview.a.IJn.matcher(paramString).matches()))
-      {
-        j = parame.kl(16388, 2);
-        if ((j == 2) && (!bool)) {
-          i = j;
-        }
-      }
-    }
-    catch (Exception paramContext)
-    {
-      MultiProcessMMKV localMultiProcessMMKV;
-      boolean bool;
-      int j;
-      int k;
-      i = 2;
-    }
-    try
-    {
-      j = id(paramContext);
-      AppMethodBeat.o(82379);
-      return j;
-    }
-    catch (Exception paramContext)
-    {
-      break label312;
-    }
-    int i = j;
-    bool = localMultiProcessMMKV.getBoolean("webview_key_has_transfer_mp", false);
-    if (bool)
-    {
-      AppMethodBeat.o(82379);
-      return j;
-    }
-    i = j;
-    k = ahm(j);
-    i = j;
-    localMultiProcessMMKV.putBoolean("webview_key_has_transfer_mp", true);
-    i = j;
-    parame.km(16388, k);
-    AppMethodBeat.o(82379);
-    return k;
-    j = parame.kl(16384, 2);
-    if ((j == 2) && (!bool))
-    {
-      i = j;
-      j = id(paramContext);
-      AppMethodBeat.o(82379);
-      return j;
-    }
-    i = j;
-    bool = localMultiProcessMMKV.getBoolean("webview_key_has_transfer_reader", false);
-    if (bool)
-    {
-      AppMethodBeat.o(82379);
-      return j;
-    }
-    i = j;
-    k = ahm(j);
-    i = j;
-    localMultiProcessMMKV.putBoolean("webview_key_has_transfer_reader", true);
-    i = j;
-    parame.km(16384, k);
-    AppMethodBeat.o(82379);
-    return k;
-    label312:
-    Log.e("MicroMsg.WebViewFontUtil", "onLoadJsApiFinished, ex = " + paramContext.getMessage());
-    AppMethodBeat.o(82379);
-    return i;
+    AppMethodBeat.i(82376);
+    this.QzQ = new f.a(this, (byte)0);
+    this.QzR = new HashMap();
+    this.QzS = new r();
+    this.QzT = b.QzV;
+    AppMethodBeat.o(82376);
   }
   
-  private static int ahm(int paramInt)
+  private void mO(String paramString1, String paramString2)
   {
-    if (paramInt == 1) {
-      return 1;
+    AppMethodBeat.i(82378);
+    g localg = new g();
+    localg.taskName = "task_VestImgUploadEngine";
+    localg.iUG = this.QzQ;
+    localg.field_mediaId = paramString2;
+    localg.field_fullpath = paramString1;
+    localg.field_fileType = a.iUg;
+    localg.field_priority = a.iTT;
+    localg.field_needStorage = true;
+    localg.field_isStreamMedia = false;
+    localg.field_appType = 200;
+    localg.field_bzScene = 2;
+    if (!com.tencent.mm.aq.f.bkg().f(localg))
+    {
+      Log.e("MicroMsg.VestImgUploadEngine", "hy: cdntra addSendTask failed. clientid:%s", new Object[] { paramString2 });
+      this.QzT = b.QzY;
     }
-    if (paramInt == 2) {
-      return 2;
-    }
-    if (paramInt == 3) {
-      return 4;
-    }
-    if (paramInt == 4) {
-      return 6;
-    }
-    return 2;
+    AppMethodBeat.o(82378);
   }
   
-  public static int id(Context paramContext)
+  public final void mN(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(82380);
-    float f = paramContext.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).getFloat("current_text_size_scale_key", 1.0F);
-    if (f == com.tencent.mm.cb.a.iW(paramContext))
-    {
-      AppMethodBeat.o(82380);
-      return 1;
-    }
-    if (f == com.tencent.mm.cb.a.iX(paramContext))
-    {
-      AppMethodBeat.o(82380);
-      return 2;
-    }
-    if (f == com.tencent.mm.cb.a.iY(paramContext))
-    {
-      AppMethodBeat.o(82380);
-      return 3;
-    }
-    if (f == com.tencent.mm.cb.a.iZ(paramContext))
-    {
-      AppMethodBeat.o(82380);
-      return 4;
-    }
-    if (f == com.tencent.mm.cb.a.ja(paramContext))
-    {
-      AppMethodBeat.o(82380);
-      return 5;
-    }
-    if (f == com.tencent.mm.cb.a.jb(paramContext))
-    {
-      AppMethodBeat.o(82380);
-      return 6;
-    }
-    if (f == com.tencent.mm.cb.a.jc(paramContext))
-    {
-      AppMethodBeat.o(82380);
-      return 7;
-    }
-    if (f == com.tencent.mm.cb.a.jd(paramContext))
-    {
-      AppMethodBeat.o(82380);
-      return 8;
-    }
-    AppMethodBeat.o(82380);
-    return 2;
+    AppMethodBeat.i(82377);
+    this.appId = paramString2;
+    this.pqt = paramString1;
+    this.QzT = b.QzW;
+    long l = System.currentTimeMillis();
+    paramString2 = c.a("vestacountavatar", l, z.bdN().field_username, String.valueOf(l));
+    this.QzR.put(Util.nullAsNil(paramString2), paramString1);
+    mO(paramString1, paramString2);
+    AppMethodBeat.o(82377);
   }
   
-  public static void zz(boolean paramBoolean)
+  public static enum b
   {
-    AppMethodBeat.i(160473);
-    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("WebViewFontUtil", 2);
-    localMultiProcessMMKV.putBoolean("webview_key_font_use_system", paramBoolean);
-    localMultiProcessMMKV.apply();
-    AppMethodBeat.o(160473);
+    static
+    {
+      AppMethodBeat.i(82375);
+      QzV = new b("NONE", 0);
+      QzW = new b("LOADING", 1);
+      QzX = new b("SUCCESS", 2);
+      QzY = new b("FAIL", 3);
+      QzZ = new b[] { QzV, QzW, QzX, QzY };
+      AppMethodBeat.o(82375);
+    }
+    
+    private b() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.k.f
  * JD-Core Version:    0.7.0.1
  */

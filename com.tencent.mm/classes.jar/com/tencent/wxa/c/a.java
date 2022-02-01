@@ -4,56 +4,56 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static a SxO;
-  private static a Sya;
+  private static a ZYS;
+  private static a ZZh;
   
   static
   {
-    AppMethodBeat.i(206333);
+    AppMethodBeat.i(224851);
     a.1 local1 = new a.1();
-    Sya = local1;
-    SxO = local1;
-    AppMethodBeat.o(206333);
+    ZZh = local1;
+    ZYS = local1;
+    AppMethodBeat.o(224851);
   }
   
   public static void b(a parama)
   {
-    SxO = parama;
+    ZYS = parama;
   }
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(206329);
-    SxO.d(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(206329);
+    AppMethodBeat.i(224845);
+    ZYS.d(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.o(224845);
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(206332);
-    SxO.e(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(206332);
+    AppMethodBeat.i(224849);
+    ZYS.e(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.o(224849);
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(206330);
-    SxO.i(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(206330);
+    AppMethodBeat.i(224846);
+    ZYS.i(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.o(224846);
   }
   
   public static void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(206328);
-    SxO.v(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(206328);
+    AppMethodBeat.i(224844);
+    ZYS.v(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.o(224844);
   }
   
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(206331);
-    SxO.w(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(206331);
+    AppMethodBeat.i(224847);
+    ZYS.w(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.o(224847);
   }
   
   public static abstract interface a

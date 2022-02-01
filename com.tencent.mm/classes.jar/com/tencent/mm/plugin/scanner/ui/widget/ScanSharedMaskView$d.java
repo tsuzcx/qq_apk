@@ -7,7 +7,7 @@ import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class ScanSharedMaskView$d
   implements View.OnClickListener
 {
@@ -17,9 +17,9 @@ final class ScanSharedMaskView$d
   {
     AppMethodBeat.i(52449);
     Object localObject = new b();
-    ((b)localObject).bm(paramView);
-    a.b("com/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
-    localObject = ScanSharedMaskView.a(this.CST);
+    ((b)localObject).bn(paramView);
+    a.c("com/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+    localObject = ScanSharedMaskView.a(this.IYl);
     if (localObject != null) {
       ((View.OnClickListener)localObject).onClick(paramView);
     }
@@ -29,7 +29,7 @@ final class ScanSharedMaskView$d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.widget.ScanSharedMaskView.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,59 @@
 package com.tencent.mm.plugin.vlog.ui.plugin;
 
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.plugin.vlog.a.f;
+import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/plugin/FinderVideoCropLocalConfig;", "", "()V", "TAG", "", "isEnable43RatioVideo", "", "()Z", "plugin-vlog_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/ui/plugin/MagicAddEffectItemViewHolder;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/MagicPanelViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "icon", "Landroid/widget/ImageView;", "getIcon", "()Landroid/widget/ImageView;", "order", "Landroid/widget/TextView;", "getOrder", "()Landroid/widget/TextView;", "onBind", "", "item", "Lcom/tencent/mm/plugin/vlog/model/effect/MagicListItem;", "plugin-vlog_release"})
 public final class f
+  extends i
 {
-  public static final f GHk;
+  private final TextView NuY;
+  private final ImageView bwJ;
   
-  static
+  public f(View paramView)
   {
-    AppMethodBeat.i(191277);
-    GHk = new f();
-    AppMethodBeat.o(191277);
+    super(paramView);
+    AppMethodBeat.i(225550);
+    View localView = paramView.findViewById(a.f.item_magic_panel_icon);
+    p.j(localView, "itemView.findViewById(R.id.item_magic_panel_icon)");
+    this.bwJ = ((ImageView)localView);
+    paramView = paramView.findViewById(a.f.item_magic_panel_order);
+    p.j(paramView, "itemView.findViewById(R.id.item_magic_panel_order)");
+    this.NuY = ((TextView)paramView);
+    AppMethodBeat.o(225550);
   }
   
-  public static boolean fDl()
+  public final void a(com.tencent.mm.plugin.vlog.model.effect.e parame)
   {
-    AppMethodBeat.i(191276);
-    int i = ((b)g.af(b.class)).a(b.a.smW, 0);
-    int j = MultiProcessMMKV.getMMKV("FINDER_CONFIG_USER_KEY").getInt("USERINFO_FINDER_VIDEO_RATIO_3_4_INT_SYNC", 0);
-    Log.i("MicroMsg.FinderVideoCropLocalConfig", "init, isEnable43RatioVideo:" + i + ", localConfig:" + j);
-    if (j != 0)
+    AppMethodBeat.i(225548);
+    p.k(parame, "item");
+    if (!(parame instanceof com.tencent.mm.plugin.vlog.model.effect.b)) {
+      parame = null;
+    }
+    for (;;)
     {
-      if (j == 1)
+      parame = (com.tencent.mm.plugin.vlog.model.effect.b)parame;
+      if (parame != null)
       {
-        AppMethodBeat.o(191276);
-        return true;
+        com.tencent.mm.loader.e locale = com.tencent.mm.loader.e.kMy;
+        com.tencent.mm.loader.e.aRs().Op(parame.NnS.icon).c(this.bwJ);
+        this.NuY.setText((CharSequence)String.valueOf(parame.order));
+        AppMethodBeat.o(225548);
+        return;
       }
-      AppMethodBeat.o(191276);
-      return false;
+      AppMethodBeat.o(225548);
+      return;
     }
-    if (i == 1)
-    {
-      AppMethodBeat.o(191276);
-      return true;
-    }
-    AppMethodBeat.o(191276);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.f
  * JD-Core Version:    0.7.0.1
  */

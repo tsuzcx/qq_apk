@@ -9,14 +9,19 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.aa.model.i;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.h;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.l;
-import com.tencent.mm.protocal.protobuf.m;
+import com.tencent.mm.protocal.protobuf.n;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.aa;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ad;
+import com.tencent.mm.ui.ar;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +30,7 @@ public final class b
   extends BaseAdapter
 {
   private Context context;
-  List<m> dataList;
+  List<n> dataList;
   int mode;
   
   public b(Context paramContext, int paramInt)
@@ -37,7 +42,7 @@ public final class b
     AppMethodBeat.o(63494);
   }
   
-  public final void bmv()
+  public final void bwD()
   {
     AppMethodBeat.i(63498);
     this.dataList.clear();
@@ -71,16 +76,16 @@ public final class b
     View localView = paramView;
     if (paramView == null)
     {
-      localView = aa.jQ(this.context).inflate(2131492901, paramViewGroup, false);
+      localView = ad.kS(this.context).inflate(a.g.aa_query_list_item, paramViewGroup, false);
       localView.setTag(new a(localView));
     }
     a locala = (a)localView.getTag();
-    m localm = (m)getItem(paramInt);
-    if (!Util.isNullOrNil(localm.KBt))
+    n localn = (n)getItem(paramInt);
+    if (!Util.isNullOrNil(localn.RDj))
     {
-      a.b.a(locala.gyr, localm.KBt, 0.1F, false);
-      locala.titleTv.setText(l.b(this.context, localm.title, locala.titleTv.getTextSize()));
-      paramViewGroup = ((com.tencent.mm.plugin.messenger.a.b)g.af(com.tencent.mm.plugin.messenger.a.b.class)).getDisplayName(localm.KBt);
+      a.b.a(locala.jiu, localn.RDj, 0.1F, false);
+      locala.titleTv.setText(l.b(this.context, localn.title, locala.titleTv.getTextSize()));
+      paramViewGroup = ((com.tencent.mm.plugin.messenger.a.b)h.ae(com.tencent.mm.plugin.messenger.a.b.class)).PJ(localn.RDj);
       if (!Util.isNullOrNil(paramViewGroup))
       {
         paramView = paramViewGroup;
@@ -88,85 +93,85 @@ public final class b
       }
       else
       {
-        paramView = this.context.getString(2131755028);
+        paramView = this.context.getString(a.i.aa_chatting_roominfo_noname);
       }
-      locala.jUN.setText(l.b(this.context, paramView, locala.jUN.getTextSize()));
+      locala.mMa.setText(l.b(this.context, paramView, locala.mMa.getTextSize()));
       if (this.mode != 2) {
-        break label354;
+        break label359;
       }
-      locala.jUO.setText(localm.KBI);
-      label210:
-      paramView = new BigDecimal(i.o(localm.eht)).setScale(2, 4).toString();
-      locala.jUP.setText(String.format("%s%s", new Object[] { this.context.getString(2131755084), paramView }));
-      ao.a(locala.jUP.getPaint(), 0.8F);
-      locala.gCd.setVisibility(0);
+      locala.mMb.setText(localn.RDz);
+      label212:
+      paramView = new BigDecimal(i.o(localn.gbJ)).setScale(2, 4).toString();
+      locala.mMc.setText(String.format("%s%s", new Object[] { this.context.getString(a.i.aa_yuan_new), paramView }));
+      ar.a(locala.mMc.getPaint(), 0.8F);
+      locala.jmj.setVisibility(0);
       if (this.mode != 2) {
-        break label436;
+        break label445;
       }
-      switch (localm.state)
+      switch (localn.state)
       {
       default: 
-        locala.gCd.setVisibility(4);
+        locala.jmj.setVisibility(4);
       }
     }
     for (;;)
     {
       AppMethodBeat.o(63497);
       return localView;
-      locala.gyr.setImageResource(2131689475);
+      locala.jiu.setImageResource(a.h.aa_record_default_icon);
       break;
-      label354:
-      locala.jUO.setText(localm.KBG);
-      break label210;
-      locala.gCd.setText(2131755049);
-      locala.gCd.setTextColor(this.context.getResources().getColor(2131099862));
+      label359:
+      locala.mMb.setText(localn.RDx);
+      break label212;
+      locala.jmj.setText(a.i.aa_list_record_status_unpaied);
+      locala.jmj.setTextColor(this.context.getResources().getColor(a.c.aa_query_list_hint_color));
       continue;
-      locala.gCd.setText(2131755047);
-      locala.gCd.setTextColor(this.context.getResources().getColor(2131099862));
+      locala.jmj.setText(a.i.aa_list_record_status_paied);
+      locala.jmj.setTextColor(this.context.getResources().getColor(a.c.aa_query_list_hint_color));
       continue;
-      label436:
-      switch (localm.state)
+      label445:
+      switch (localn.state)
       {
       default: 
-        locala.gCd.setVisibility(4);
+        locala.jmj.setVisibility(4);
         break;
       case 1: 
-        locala.gCd.setText(2131755048);
-        locala.gCd.setTextColor(this.context.getResources().getColor(2131099862));
+        locala.jmj.setText(a.i.aa_list_record_status_part);
+        locala.jmj.setTextColor(this.context.getResources().getColor(a.c.aa_query_list_hint_color));
         break;
       case 2: 
-        locala.gCd.setText(2131755046);
-        locala.gCd.setTextColor(this.context.getResources().getColor(2131099710));
+        locala.jmj.setText(a.i.aa_list_record_status_finish);
+        locala.jmj.setTextColor(this.context.getResources().getColor(a.c.Brand));
         break;
       case 3: 
-        locala.gCd.setText(2131755044);
-        locala.gCd.setTextColor(this.context.getResources().getColor(2131099819));
+        locala.jmj.setText(a.i.aa_list_record_status_close);
+        locala.jmj.setTextColor(this.context.getResources().getColor(a.c.Red_100));
         break;
       case 4: 
-        locala.gCd.setText(2131755045);
-        locala.gCd.setTextColor(this.context.getResources().getColor(2131099819));
+        locala.jmj.setText(a.i.aa_list_record_status_expire);
+        locala.jmj.setTextColor(this.context.getResources().getColor(a.c.Red_100));
       }
     }
   }
   
   final class a
   {
-    public TextView gCd;
-    public ImageView gyr;
-    public TextView jUN;
-    public TextView jUO;
-    public TextView jUP;
+    public ImageView jiu;
+    public TextView jmj;
+    public TextView mMa;
+    public TextView mMb;
+    public TextView mMc;
     public TextView titleTv;
     
     public a(View paramView)
     {
       AppMethodBeat.i(63493);
-      this.gyr = ((ImageView)paramView.findViewById(2131296296));
-      this.jUN = ((TextView)paramView.findViewById(2131296297));
-      this.titleTv = ((TextView)paramView.findViewById(2131296301));
-      this.jUO = ((TextView)paramView.findViewById(2131296298));
-      this.jUP = ((TextView)paramView.findViewById(2131296295));
-      this.gCd = ((TextView)paramView.findViewById(2131296300));
+      this.jiu = ((ImageView)paramView.findViewById(a.f.aa_query_list_item_avatar));
+      this.mMa = ((TextView)paramView.findViewById(a.f.aa_query_list_item_chatroom));
+      this.titleTv = ((TextView)paramView.findViewById(a.f.aa_query_list_item_title));
+      this.mMb = ((TextView)paramView.findViewById(a.f.aa_query_list_item_date));
+      this.mMc = ((TextView)paramView.findViewById(a.f.aa_query_list_item_amount));
+      this.jmj = ((TextView)paramView.findViewById(a.f.aa_query_list_item_status));
       AppMethodBeat.o(63493);
     }
   }

@@ -10,7 +10,7 @@ public final class a
   public static final <T> Collection<T> a(Collection<? extends T> paramCollection1, Collection<? extends T> paramCollection2)
   {
     AppMethodBeat.i(61341);
-    p.h(paramCollection2, "collection");
+    p.k(paramCollection2, "collection");
     if (paramCollection2.isEmpty())
     {
       AppMethodBeat.o(61341);
@@ -36,7 +36,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlin.l.b.a.b.n.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -9,11 +9,11 @@ public final class MediaSessionCompat$ResultReceiverWrapper
   implements Parcelable
 {
   public static final Parcelable.Creator<ResultReceiverWrapper> CREATOR = new Parcelable.Creator() {};
-  ResultReceiver MU;
+  ResultReceiver dK;
   
   MediaSessionCompat$ResultReceiverWrapper(Parcel paramParcel)
   {
-    this.MU = ((ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel));
+    this.dK = ((ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel));
   }
   
   public final int describeContents()
@@ -23,7 +23,7 @@ public final class MediaSessionCompat$ResultReceiverWrapper
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    this.MU.writeToParcel(paramParcel, paramInt);
+    this.dK.writeToParcel(paramParcel, paramInt);
   }
 }
 

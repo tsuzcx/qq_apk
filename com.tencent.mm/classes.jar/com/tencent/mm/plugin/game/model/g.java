@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.aaz;
+import com.tencent.mm.f.a.ach;
 import com.tencent.mm.plugin.downloader.g.a;
 import com.tencent.mm.plugin.downloader.model.d;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.game.api.e;
+import com.tencent.mm.plugin.game.commlib.b;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -22,11 +23,11 @@ import org.json.JSONObject;
 
 public final class g
 {
-  public static g xEA;
+  public static g CIB;
   
-  public static List<String> D(String paramString, Map<String, String> paramMap)
+  public static List<String> F(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(204157);
+    AppMethodBeat.i(210288);
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     if (i == 0) {}
@@ -46,35 +47,35 @@ public final class g
       break;
     }
     label122:
-    AppMethodBeat.o(204157);
+    AppMethodBeat.o(210288);
     return localArrayList;
   }
   
   public static void a(String paramString, Map<String, String> paramMap, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(204158);
+    AppMethodBeat.i(210290);
     String str = ".sysmsg.control_command.auto_run_switch.".concat(String.valueOf(paramString));
     if (!paramMap.containsKey(str))
     {
-      AppMethodBeat.o(204158);
+      AppMethodBeat.o(210290);
       return;
     }
     try
     {
       paramJSONObject.put(paramString, Util.getInt((String)paramMap.get(str), 0));
-      AppMethodBeat.o(204158);
+      AppMethodBeat.o(210290);
       return;
     }
     catch (JSONException paramString)
     {
-      AppMethodBeat.o(204158);
+      AppMethodBeat.o(210290);
     }
   }
   
-  public static void ak(Map<String, String> paramMap)
+  public static void ad(Map<String, String> paramMap)
   {
     int i = 1;
-    AppMethodBeat.i(204154);
+    AppMethodBeat.i(210279);
     String str;
     if (paramMap.get(".sysmsg.control_command.game_download") != null)
     {
@@ -87,7 +88,7 @@ public final class g
         if (i == 0) {
           break label135;
         }
-        paramMap = d.cBt();
+        paramMap = d.cPX();
         if (Util.isNullOrNil(paramMap)) {
           break;
         }
@@ -95,41 +96,41 @@ public final class g
         while (paramMap.hasNext())
         {
           localObject = (a)paramMap.next();
-          com.tencent.mm.plugin.downloader.model.f.cBv().Cn(((a)localObject).field_downloadId);
+          com.tencent.mm.plugin.downloader.model.f.cPZ().Iw(((a)localObject).field_downloadId);
         }
         i = 0;
       }
-      AppMethodBeat.o(204154);
+      AppMethodBeat.o(210279);
       return;
       label135:
       paramMap = null;
       if (Util.isNullOrNil((String)localObject)) {
         break label170;
       }
-      paramMap = d.alb((String)localObject);
+      paramMap = d.asU((String)localObject);
     }
     for (;;)
     {
       if (paramMap != null) {
-        com.tencent.mm.plugin.downloader.model.f.cBv().Cn(paramMap.field_downloadId);
+        com.tencent.mm.plugin.downloader.model.f.cPZ().Iw(paramMap.field_downloadId);
       }
-      AppMethodBeat.o(204154);
+      AppMethodBeat.o(210279);
       return;
       label170:
       if (!Util.isNullOrNil(str)) {
-        paramMap = d.ale(str);
+        paramMap = d.asX(str);
       }
     }
   }
   
-  public static List<g.a> dVg()
+  public static List<a> eyn()
   {
-    AppMethodBeat.i(204155);
-    Object localObject = Util.nullAsNil((String)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.Oda, ""));
+    AppMethodBeat.i(210282);
+    Object localObject = Util.nullAsNil((String)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.Vrh, ""));
     localArrayList = new ArrayList();
     if (Util.isNullOrNil((String)localObject))
     {
-      AppMethodBeat.o(204155);
+      AppMethodBeat.o(210282);
       return localArrayList;
     }
     try
@@ -138,32 +139,32 @@ public final class g
       int i = 0;
       while (i < ((JSONArray)localObject).length())
       {
-        localArrayList.add(g.a.aAj(((JSONArray)localObject).optString(i)));
+        localArrayList.add(a.aJU(((JSONArray)localObject).optString(i)));
         i += 1;
       }
       return localArrayList;
     }
     catch (JSONException localJSONException)
     {
-      AppMethodBeat.o(204155);
+      AppMethodBeat.o(210282);
     }
   }
   
-  public static void g(List<String> paramList, boolean paramBoolean)
+  public static void h(List<String> paramList, boolean paramBoolean)
   {
-    AppMethodBeat.i(204156);
+    AppMethodBeat.i(210285);
     if (Util.isNullOrNil(paramList))
     {
-      AppMethodBeat.o(204156);
+      AppMethodBeat.o(210285);
       return;
     }
-    Object localObject1 = Util.nullAsNil((String)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.OcY, ""));
+    Object localObject1 = Util.nullAsNil((String)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.Vrf, ""));
     try
     {
       if (!Util.isNullOrNil((String)localObject1)) {}
       for (localObject1 = new JSONArray((String)localObject1); localObject1 == null; localObject1 = new JSONArray())
       {
-        AppMethodBeat.o(204156);
+        AppMethodBeat.o(210285);
         return;
       }
     }
@@ -172,7 +173,7 @@ public final class g
       Object localObject2;
       for (;;)
       {
-        com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OcY, "");
+        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vrf, "");
         Log.printErrStackTrace("MicroMsg.GameControlCmdParser", localJSONException, "", new Object[0]);
         localObject2 = null;
       }
@@ -187,15 +188,15 @@ public final class g
           localObject2.remove(0);
         }
         localObject2.put(str);
-        ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.e.class)).dSJ();
-        paramList = r.dVp();
+        ((e)com.tencent.mm.kernel.h.ae(e.class)).evn();
+        paramList = r.eyx();
         if ((paramList != null) && (Util.nullAsNil(paramList.field_gameMsgId).equals(str))) {
-          com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NVL, Long.valueOf(0L));
+          com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VjL, Long.valueOf(0L));
         }
-        paramList = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSK().aAk(str);
+        paramList = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.game.api.f.class)).evo().aJW(str);
         if ((paramList != null) && (str.equals(paramList.field_gameMsgId)))
         {
-          ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSK().delete(paramList, new String[0]);
+          ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.game.api.f.class)).evo().delete(paramList, new String[0]);
           i = 1;
           if (i == 0) {
             break label376;
@@ -206,7 +207,7 @@ public final class g
           if (!paramBoolean) {
             break label380;
           }
-          com.tencent.mm.game.report.f.a(MMApplicationContext.getContext(), 0, 0, 0, 403, i, paramList.field_appId, 0, paramList.xFV, paramList.field_gameMsgId, paramList.xFW, com.tencent.mm.game.report.f.a("resource", String.valueOf(paramList.xFg.xGi), paramList.xFX, null));
+          com.tencent.mm.game.report.g.a(MMApplicationContext.getContext(), 0, 0, 0, 403, i, paramList.field_appId, 0, paramList.CJW, paramList.field_gameMsgId, paramList.CJX, com.tencent.mm.game.report.g.a("resource", String.valueOf(paramList.CJh.CKl), paramList.CJY, null));
           break;
           Log.i("MicroMsg.GameMessageService", "dont have msgId:%s for delete", new Object[] { str });
           paramList = new o();
@@ -215,15 +216,93 @@ public final class g
           break label274;
         }
       }
-      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OcY, localObject2.toString());
+      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.Vrf, localObject2.toString());
       Log.i("MicroMsg.GameControlCmdParser", "deleted msg list:%s", new Object[] { localObject2.toString() });
-      AppMethodBeat.o(204156);
+      AppMethodBeat.o(210285);
+    }
+  }
+  
+  public static final class a
+  {
+    public int CIG;
+    public List<String> CIH;
+    public long endTime;
+    public long startTime;
+    
+    public a()
+    {
+      AppMethodBeat.i(192816);
+      this.startTime = 0L;
+      this.endTime = 0L;
+      this.CIG = -10;
+      this.CIH = new ArrayList();
+      AppMethodBeat.o(192816);
+    }
+    
+    static a aJU(String paramString)
+    {
+      AppMethodBeat.i(192834);
+      locala = new a();
+      if (Util.isNullOrNil(paramString))
+      {
+        AppMethodBeat.o(192834);
+        return locala;
+      }
+      try
+      {
+        paramString = new JSONObject(paramString);
+        locala.startTime = paramString.optLong("startTime", 0L);
+        locala.endTime = paramString.optLong("endTime", 0L);
+        locala.CIG = paramString.optInt("basicType", -10);
+        paramString = paramString.optJSONArray("msgIdList");
+        if (paramString != null)
+        {
+          int i = 0;
+          while (i < paramString.length())
+          {
+            locala.CIH.add(paramString.optString(i));
+            i += 1;
+          }
+        }
+        return locala;
+      }
+      catch (JSONException paramString)
+      {
+        AppMethodBeat.o(192834);
+      }
+    }
+    
+    public final String toJson()
+    {
+      AppMethodBeat.i(192824);
+      Object localObject = new JSONObject();
+      try
+      {
+        ((JSONObject)localObject).put("startTime", this.startTime);
+        ((JSONObject)localObject).put("endTime", this.endTime);
+        ((JSONObject)localObject).put("basicType", this.CIG);
+        JSONArray localJSONArray = new JSONArray();
+        Iterator localIterator = this.CIH.iterator();
+        while (localIterator.hasNext())
+        {
+          localJSONArray.put((String)localIterator.next());
+          continue;
+          localObject = ((JSONObject)localObject).toString();
+        }
+      }
+      catch (JSONException localJSONException) {}
+      for (;;)
+      {
+        AppMethodBeat.o(192824);
+        return localObject;
+        ((JSONObject)localObject).put("msgIdList", localJSONException);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.g
  * JD-Core Version:    0.7.0.1
  */

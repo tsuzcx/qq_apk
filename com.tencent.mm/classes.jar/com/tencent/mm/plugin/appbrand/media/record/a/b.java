@@ -6,13 +6,13 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class b
 {
-  private static b nee = new b()
+  private static b qev = new b()
   {
-    public final d acK(String paramAnonymousString)
+    public final d akE(String paramAnonymousString)
     {
       AppMethodBeat.i(146341);
       Log.i("MicroMsg.Record.AudioEncodeFactory", "createEncodeByType:%s", new Object[] { paramAnonymousString });
-      if (!h.acH(paramAnonymousString))
+      if (!h.akB(paramAnonymousString))
       {
         AppMethodBeat.o(146341);
         return null;
@@ -46,12 +46,12 @@ public abstract class b
     }
   };
   
-  public static d acL(String paramString)
+  public static d akF(String paramString)
   {
-    return nee.acK(paramString);
+    return qev.akE(paramString);
   }
   
-  public abstract d acK(String paramString);
+  public abstract d akE(String paramString);
 }
 
 

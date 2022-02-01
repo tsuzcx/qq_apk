@@ -1,106 +1,75 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.network.m;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.rd;
-import com.tencent.mm.protocal.protobuf.re;
+import com.tencent.mm.pluginsdk.wallet.e;
+import com.tencent.mm.protocal.protobuf.xa;
+import com.tencent.mm.protocal.protobuf.xb;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.c.r;
 
 public final class g
-  extends q
-  implements m
+  extends r
 {
-  public int Cnj;
-  rd Cou;
-  public re Cov;
-  public c Cow;
-  public d Cox;
-  public boolean Coy;
-  public String Coz;
-  private i callback;
-  public boolean cancel;
-  private com.tencent.mm.ak.d hJu;
+  public xb Ilu;
+  private final String TAG;
   
-  public g(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt4, c paramc, d paramd)
+  public g(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(67843);
-    this.Coy = false;
-    this.Coz = "";
-    this.cancel = false;
-    this.Cnj = 0;
-    this.Coz = (System.currentTimeMillis() + paramInt1);
-    d.a locala = new d.a();
-    this.Cnj = paramInt1;
-    locala.iLN = new rd();
-    locala.iLO = new re();
-    locala.funcId = 2677;
-    locala.uri = "/cgi-bin/mmpay-bin/busif2fgetfavor";
-    locala.iLP = 0;
-    locala.respCmdId = 0;
-    this.hJu = locala.aXF();
-    this.Cou = ((rd)this.hJu.iLK.iLR);
-    this.Cou.yRL = paramInt1;
-    this.Cou.channel = paramInt2;
-    this.Cou.Coi = paramInt3;
-    this.Cou.KYc = paramString1;
-    this.Cou.CpG = paramString2;
-    this.Cou.Coj = paramString3;
-    this.Cou.CpJ = paramString4;
-    this.Cou.jTz = paramString5;
-    this.Cou.Cok = paramString6;
-    this.Cou.KYd = paramInt4;
-    this.Cow = paramc;
-    this.Cox = paramd;
-    paramString1 = new StringBuffer();
-    paramString1.append(String.format("request.amount %s", new Object[] { Integer.valueOf(this.Cou.yRL) }));
-    paramString1.append(String.format("request.channel %s", new Object[] { Integer.valueOf(this.Cou.channel) }));
-    paramString1.append(String.format("request.scan_scene %s", new Object[] { Integer.valueOf(this.Cou.Coi) }));
-    paramString1.append(String.format("request.receiver_desc %s", new Object[] { this.Cou.KYc }));
-    paramString1.append(String.format("request.mch_name %s", new Object[] { this.Cou.CpG }));
-    paramString1.append(String.format("request.favor_req_sign %s", new Object[] { this.Cou.Coj }));
-    paramString1.append(String.format("request.receiver_openid %s", new Object[] { this.Cou.CpJ }));
-    paramString1.append(String.format("request.receiver_username %s", new Object[] { this.Cou.jTz }));
-    paramString1.append(String.format("request.favor_req_extend %s", new Object[] { this.Cou.Cok }));
-    paramString1.append(String.format("request.fail_click_cell %s", new Object[] { Integer.valueOf(this.Cou.KYd) }));
-    Log.i("MicroMsg.NetSceneBusiF2fGetFavor", "NetSceneBusiF2fGetFavor req %s", new Object[] { paramString1.toString() });
-    AppMethodBeat.o(67843);
+    AppMethodBeat.i(229015);
+    this.TAG = "MicroMsg.NetSceneBeforeTransfer";
+    Object localObject = new d.a();
+    ((d.a)localObject).lBU = new xa();
+    ((d.a)localObject).lBV = new xb();
+    ((d.a)localObject).funcId = 2783;
+    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/beforetransfer";
+    ((d.a)localObject).lBW = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (xa)d.b.b(this.rr.lBR);
+    ((xa)localObject).llO = paramString1;
+    if (!e.hod()) {
+      ((xa)localObject).Sjh = e.hoe();
+    }
+    ((xa)localObject).Sji = paramString2;
+    Log.d("MicroMsg.NetSceneBeforeTransfer", "rcver name: %s", new Object[] { paramString1 });
+    AppMethodBeat.o(229015);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final void b(int paramInt1, int paramInt2, String paramString, s params)
   {
-    AppMethodBeat.i(67844);
-    this.callback = parami;
-    int i = dispatch(paramg, this.hJu, this);
-    AppMethodBeat.o(67844);
-    return i;
+    AppMethodBeat.i(67839);
+    Log.i("MicroMsg.NetSceneBeforeTransfer", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.Ilu = ((xb)d.c.b(((d)params).lBS));
+    Log.i("MicroMsg.NetSceneBeforeTransfer", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.Ilu.fwx), this.Ilu.tVo });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
+    }
+    AppMethodBeat.o(67839);
+  }
+  
+  public final void f(s params)
+  {
+    AppMethodBeat.i(229023);
+    params = (xb)d.c.b(((d)params).lBS);
+    this.YVy = params.fwx;
+    this.YVz = params.tVo;
+    AppMethodBeat.o(229023);
   }
   
   public final int getType()
   {
-    return 2677;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(67845);
-    Log.i("MicroMsg.NetSceneBusiF2fGetFavor", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.Cov = ((re)((com.tencent.mm.ak.d)params).iLL.iLR);
-    Log.i("MicroMsg.NetSceneBusiF2fGetFavor", "ret_code: %s, ret_msg: %s favor_comm_resp : %s", new Object[] { Integer.valueOf(this.Cov.pTZ), this.Cov.pUa, a.a(this.Cov.Com) });
-    if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
-    AppMethodBeat.o(67845);
+    return 2783;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.model.g
  * JD-Core Version:    0.7.0.1
  */

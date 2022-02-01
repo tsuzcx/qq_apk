@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.choosemsgfile.a.b;
 import com.tencent.mm.plugin.choosemsgfile.b.c.g;
 
 public final class i
@@ -19,14 +20,14 @@ public final class i
   {
     AppMethodBeat.i(162331);
     super.a(paraml, paramInt, parama);
-    paraml.jUO.setTextColor(getContext().getResources().getColor(2131100187));
-    paraml.qnZ.setBackgroundColor(getContext().getResources().getColor(2131100186));
+    paraml.mMb.setTextColor(getContext().getResources().getColor(a.b.choose_msg_file_date_tv_color));
+    paraml.tMH.setBackgroundColor(getContext().getResources().getColor(a.b.choose_msg_file_date_item_bg));
     AppMethodBeat.o(162331);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.i
  * JD-Core Version:    0.7.0.1
  */

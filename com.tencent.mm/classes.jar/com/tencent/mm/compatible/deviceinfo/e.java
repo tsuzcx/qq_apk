@@ -6,15 +6,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class e
   implements d.a
 {
-  public static d.a.a d(Looper paramLooper)
+  public static d.a.a e(Looper paramLooper)
   {
     AppMethodBeat.i(155648);
     d.a.a locala = new d.a.a();
     try
     {
-      locala.gGr = w.e(paramLooper);
-      locala.dYT = 0;
-      if (locala.gGr == null)
+      locala.jqD = x.f(paramLooper);
+      locala.fSM = 0;
+      if (locala.jqD == null)
       {
         AppMethodBeat.o(155648);
         return null;

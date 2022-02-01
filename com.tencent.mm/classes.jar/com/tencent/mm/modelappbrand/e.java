@@ -6,7 +6,7 @@ import java.util.Set;
 
 public abstract interface e
 {
-  public abstract Map<Object, Set<View>> aXG();
+  public abstract Map<Object, Set<View>> bgO();
   
   public abstract Set<View> ch(Object paramObject);
   
@@ -18,7 +18,7 @@ public abstract interface e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.e
  * JD-Core Version:    0.7.0.1
  */

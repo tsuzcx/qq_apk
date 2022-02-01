@@ -11,48 +11,48 @@ import java.util.BitSet;
 
 public final class q
 {
-  static BitSet gLC;
-  static String gLD;
+  static BitSet jvR;
+  static String jvS;
   
   static
   {
     AppMethodBeat.i(155915);
-    gLD = null;
-    gLC = new BitSet(256);
+    jvS = null;
+    jvR = new BitSet(256);
     int i = 97;
     while (i <= 122)
     {
-      gLC.set(i);
+      jvR.set(i);
       i += 1;
     }
     i = 65;
     while (i <= 90)
     {
-      gLC.set(i);
+      jvR.set(i);
       i += 1;
     }
     i = 48;
     while (i <= 57)
     {
-      gLC.set(i);
+      jvR.set(i);
       i += 1;
     }
-    gLC.set(45);
-    gLC.set(95);
-    gLC.set(46);
-    gLC.set(42);
-    gLD = (String)AccessController.doPrivileged(new h("file.encoding"));
+    jvR.set(45);
+    jvR.set(95);
+    jvR.set(46);
+    jvR.set(42);
+    jvS = (String)AccessController.doPrivileged(new h("file.encoding"));
     AppMethodBeat.o(155915);
   }
   
   @Deprecated
-  public static String encode(String paramString)
+  public static String aT(String paramString)
   {
     AppMethodBeat.i(155913);
     Object localObject = null;
     try
     {
-      paramString = encode(paramString, gLD);
+      paramString = an(paramString, jvS);
       AppMethodBeat.o(155913);
       return paramString;
     }
@@ -65,7 +65,7 @@ public final class q
     }
   }
   
-  public static String encode(String paramString1, String paramString2)
+  public static String an(String paramString1, String paramString2)
   {
     AppMethodBeat.i(155914);
     StringBuffer localStringBuffer = new StringBuffer(paramString1.length());
@@ -90,7 +90,7 @@ public final class q
           break;
         }
         k = paramString1.charAt(i);
-        if (gLC.get(k))
+        if (jvR.get(k))
         {
           if (k == 32) {
             j = 1;
@@ -144,7 +144,7 @@ public final class q
         if (k >= paramString1.length()) {
           break;
         }
-        paramString2 = gLC;
+        paramString2 = jvR;
         m = paramString1.charAt(k);
         j = m;
         i = k;
@@ -191,7 +191,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.compatible.util.q
  * JD-Core Version:    0.7.0.1
  */

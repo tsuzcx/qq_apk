@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.story.f.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/download/LoaderScene;", "", "(Ljava/lang/String;I)V", "COMMON_SCENE", "ALBUM_SCENE", "FAV_SCENE", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/model/download/LoaderScene;", "", "(Ljava/lang/String;I)V", "COMMON_SCENE", "ALBUM_SCENE", "FAV_SCENE", "plugin-story_release"})
 public enum a
 {
   static
   {
     AppMethodBeat.i(118888);
     a locala1 = new a("COMMON_SCENE", 0);
-    Fox = locala1;
+    LIz = locala1;
     a locala2 = new a("ALBUM_SCENE", 1);
-    Foy = locala2;
+    LIA = locala2;
     a locala3 = new a("FAV_SCENE", 2);
-    Foz = locala3;
-    FoA = new a[] { locala1, locala2, locala3 };
+    LIB = locala3;
+    LIC = new a[] { locala1, locala2, locala3 };
     AppMethodBeat.o(118888);
   }
   

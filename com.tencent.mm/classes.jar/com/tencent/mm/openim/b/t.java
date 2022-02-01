@@ -14,18 +14,18 @@ import android.text.style.TextAppearanceSpan;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.ay.a.a.c.a;
 import com.tencent.mm.openim.PluginOpenIM;
 import com.tencent.mm.openim.a.a.a;
 import com.tencent.mm.openim.e.d;
-import com.tencent.mm.openim.e.e;
-import com.tencent.mm.openim.e.f;
+import com.tencent.mm.plugin.comm.c.b;
+import com.tencent.mm.plugin.comm.c.g;
 import com.tencent.mm.pluginsdk.ui.span.MMTextAppearanceSpan;
 import com.tencent.mm.pluginsdk.ui.span.l;
-import com.tencent.mm.protocal.protobuf.bb;
-import com.tencent.mm.protocal.protobuf.cwr;
-import com.tencent.mm.protocal.protobuf.cws;
-import com.tencent.mm.protocal.protobuf.ez;
+import com.tencent.mm.protocal.protobuf.az;
+import com.tencent.mm.protocal.protobuf.dgb;
+import com.tencent.mm.protocal.protobuf.dgc;
+import com.tencent.mm.protocal.protobuf.ew;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -33,7 +33,7 @@ import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.IAutoDBItem;
 import com.tencent.mm.ui.base.EllipsizeTextView;
 import com.tencent.mm.ui.base.EllipsizeTextView.a;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -41,15 +41,15 @@ import java.util.LinkedList;
 public final class t
   implements com.tencent.mm.openim.a.a
 {
-  private HashMap<String, b> jHk;
-  private EllipsizeTextView.a jHl;
-  private EllipsizeTextView.a jHm;
+  private HashMap<String, b> myo;
+  private EllipsizeTextView.a myp;
+  private EllipsizeTextView.a myq;
   
   public t()
   {
     AppMethodBeat.i(151238);
-    this.jHk = new HashMap();
-    this.jHl = new EllipsizeTextView.a()
+    this.myo = new HashMap();
+    this.myp = new EllipsizeTextView.a()
     {
       public final CharSequence a(TextView paramAnonymousTextView, CharSequence paramAnonymousCharSequence, String paramAnonymousString, int paramAnonymousInt1, int paramAnonymousInt2)
       {
@@ -65,7 +65,7 @@ public final class t
         for (;;)
         {
           SpannableString localSpannableString = l.c(paramAnonymousTextView.getContext(), paramAnonymousCharSequence + " " + paramAnonymousString);
-          paramAnonymousTextView = com.tencent.mm.cb.a.m(paramAnonymousTextView.getContext(), paramAnonymousInt1);
+          paramAnonymousTextView = com.tencent.mm.ci.a.l(paramAnonymousTextView.getContext(), paramAnonymousInt1);
           localSpannableString.setSpan(new TextAppearanceSpan(null, 0, paramAnonymousInt2, paramAnonymousTextView, paramAnonymousTextView), paramAnonymousCharSequence.length() + 1, paramAnonymousCharSequence.length() + 1 + paramAnonymousString.length(), 33);
           AppMethodBeat.o(151234);
           return localSpannableString;
@@ -73,12 +73,12 @@ public final class t
         }
       }
     };
-    this.jHm = new EllipsizeTextView.a()
+    this.myq = new EllipsizeTextView.a()
     {
       public final CharSequence a(TextView paramAnonymousTextView, CharSequence paramAnonymousCharSequence, String paramAnonymousString, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(151235);
-        paramAnonymousString = paramAnonymousTextView.getContext().getResources().getDrawable(2131691298);
+        paramAnonymousString = paramAnonymousTextView.getContext().getResources().getDrawable(c.g.open_im_main_logo);
         paramAnonymousString.setBounds(0, 0, paramAnonymousString.getIntrinsicWidth(), paramAnonymousString.getIntrinsicHeight());
         float f1 = paramAnonymousString.getIntrinsicWidth();
         float f2 = paramAnonymousTextView.getPaint().measureText(" ");
@@ -90,25 +90,25 @@ public final class t
         return paramAnonymousCharSequence;
       }
     };
-    s.boN("wcf://openim/");
+    u.bBD("wcf://openim/");
     com.tencent.mm.openim.e.c localc = new com.tencent.mm.openim.e.c();
     localc.field_appid = "3552365301";
     localc.field_language = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
-    com.tencent.mm.kernel.g.aAi();
-    ((PluginOpenIM)com.tencent.mm.kernel.g.ah(PluginOpenIM.class)).getAppIdInfoStg().get(localc, new String[] { "appid", "language" });
+    com.tencent.mm.kernel.h.aHH();
+    ((PluginOpenIM)com.tencent.mm.kernel.h.ag(PluginOpenIM.class)).getAppIdInfoStg().get(localc, new String[] { "appid", "language" });
     if (localc.systemRowid == -1L)
     {
-      Sc("3552365301");
+      ZE("3552365301");
       AppMethodBeat.o(151238);
       return;
     }
     AppMethodBeat.o(151238);
   }
   
-  private void Sc(String paramString)
+  private void ZE(String paramString)
   {
     AppMethodBeat.i(151256);
-    bO(paramString, LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext()));
+    bS(paramString, LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext()));
     AppMethodBeat.o(151256);
   }
   
@@ -118,22 +118,22 @@ public final class t
     com.tencent.mm.openim.e.a locala = new com.tencent.mm.openim.e.a();
     locala.field_acctTypeId = paramString1;
     locala.field_language = paramString3;
-    com.tencent.mm.kernel.g.aAi();
-    ((PluginOpenIM)com.tencent.mm.kernel.g.ah(PluginOpenIM.class)).getAccTypeInfoStg().get(locala, new String[] { "acctTypeId", "language" });
+    com.tencent.mm.kernel.h.aHH();
+    ((PluginOpenIM)com.tencent.mm.kernel.h.ag(PluginOpenIM.class)).getAccTypeInfoStg().get(locala, new String[] { "acctTypeId", "language" });
     if (locala.systemRowid == -1L)
     {
       AppMethodBeat.o(151249);
       return null;
     }
-    if (parama == a.a.jGS)
+    if (parama == a.a.mxX)
     {
-      paramString1 = locala.field_accTypeRec.KEp.iterator();
+      paramString1 = locala.field_accTypeRec.RFH.iterator();
       while (paramString1.hasNext())
       {
-        parama = (cws)paramString1.next();
+        parama = (dgc)paramString1.next();
         if (paramString2.equals(parama.key))
         {
-          paramString1 = parama.dQx;
+          paramString1 = parama.wording;
           AppMethodBeat.o(151249);
           return paramString1;
         }
@@ -141,10 +141,10 @@ public final class t
       AppMethodBeat.o(151249);
       return null;
     }
-    paramString1 = locala.field_accTypeRec.duo.iterator();
+    paramString1 = locala.field_accTypeRec.fmW.iterator();
     while (paramString1.hasNext())
     {
-      parama = (cwr)paramString1.next();
+      parama = (dgb)paramString1.next();
       if (paramString2.equals(parama.key))
       {
         paramString1 = parama.url;
@@ -162,23 +162,23 @@ public final class t
     com.tencent.mm.openim.e.c localc = new com.tencent.mm.openim.e.c();
     localc.field_appid = paramString1;
     localc.field_language = paramString3;
-    com.tencent.mm.kernel.g.aAi();
-    ((PluginOpenIM)com.tencent.mm.kernel.g.ah(PluginOpenIM.class)).getAppIdInfoStg().get(localc, new String[] { "appid", "language" });
+    com.tencent.mm.kernel.h.aHH();
+    ((PluginOpenIM)com.tencent.mm.kernel.h.ag(PluginOpenIM.class)).getAppIdInfoStg().get(localc, new String[] { "appid", "language" });
     if (localc.systemRowid == -1L)
     {
-      bO(paramString1, paramString3);
+      bS(paramString1, paramString3);
       AppMethodBeat.o(151251);
       return null;
     }
-    if (parama == a.a.jGS)
+    if (parama == a.a.mxX)
     {
-      paramString1 = localc.field_appRec.KEp.iterator();
+      paramString1 = localc.field_appRec.RFH.iterator();
       while (paramString1.hasNext())
       {
-        parama = (cws)paramString1.next();
+        parama = (dgc)paramString1.next();
         if (paramString2.equals(parama.key))
         {
-          paramString1 = parama.dQx;
+          paramString1 = parama.wording;
           AppMethodBeat.o(151251);
           return paramString1;
         }
@@ -186,10 +186,10 @@ public final class t
       AppMethodBeat.o(151251);
       return null;
     }
-    paramString1 = localc.field_appRec.duo.iterator();
+    paramString1 = localc.field_appRec.fmW.iterator();
     while (paramString1.hasNext())
     {
-      parama = (cwr)paramString1.next();
+      parama = (dgb)paramString1.next();
       if (paramString2.equals(parama.key))
       {
         paramString1 = parama.url;
@@ -201,34 +201,34 @@ public final class t
     return null;
   }
   
-  private void bO(String paramString1, String paramString2)
+  private void bS(String paramString1, String paramString2)
   {
     AppMethodBeat.i(151257);
-    s(paramString1, paramString2, "");
+    v(paramString1, paramString2, "");
     AppMethodBeat.o(151257);
   }
   
-  private String t(String paramString1, String paramString2, String paramString3)
+  private String w(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(151255);
-    e locale = new e();
-    locale.field_appid = paramString1;
-    locale.field_language = paramString3;
-    locale.field_wordingId = paramString2;
-    com.tencent.mm.kernel.g.aAi();
-    ((PluginOpenIM)com.tencent.mm.kernel.g.ah(PluginOpenIM.class)).getWordingInfoStg().get(locale, new String[] { "appid", "language", "wordingId" });
-    if (locale.systemRowid == -1L)
+    com.tencent.mm.openim.e.g localg = new com.tencent.mm.openim.e.g();
+    localg.field_appid = paramString1;
+    localg.field_language = paramString3;
+    localg.field_wordingId = paramString2;
+    com.tencent.mm.kernel.h.aHH();
+    ((PluginOpenIM)com.tencent.mm.kernel.h.ag(PluginOpenIM.class)).getWordingInfoStg().get(localg, new String[] { "appid", "language", "wordingId" });
+    if (localg.systemRowid == -1L)
     {
-      s(paramString1, paramString3, paramString2);
+      v(paramString1, paramString3, paramString2);
       AppMethodBeat.o(151255);
       return null;
     }
-    paramString1 = locale.field_wording;
+    paramString1 = localg.field_wording;
     AppMethodBeat.o(151255);
     return paramString1;
   }
   
-  public final Bitmap RY(String paramString)
+  public final Bitmap ZA(String paramString)
   {
     AppMethodBeat.i(151245);
     final a locala = new a((byte)0);
@@ -238,19 +238,19 @@ public final class t
       return null;
     }
     Object localObject = new c.a();
-    ((c.a)localObject).jbf = true;
+    ((c.a)localObject).lRD = true;
     ((c.a)localObject).fullPath = ("wcf://openim/" + com.tencent.mm.b.g.getMessageDigest(paramString.getBytes()));
-    localObject = ((c.a)localObject).bdv();
-    com.tencent.mm.av.q.bcV().a(paramString, null, (com.tencent.mm.av.a.a.c)localObject, new com.tencent.mm.av.a.c.h()
+    localObject = ((c.a)localObject).bmL();
+    com.tencent.mm.ay.q.bml().a(paramString, null, (com.tencent.mm.ay.a.a.c)localObject, new com.tencent.mm.ay.a.c.h()
     {
-      public final Bitmap a(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.av.a.d.b paramAnonymousb)
+      public final Bitmap a(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.ay.a.d.b paramAnonymousb)
       {
         return null;
       }
       
       public final void b(String paramAnonymousString, View paramAnonymousView) {}
       
-      public final void b(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.av.a.d.b paramAnonymousb)
+      public final void b(String paramAnonymousString, View paramAnonymousView, com.tencent.mm.ay.a.d.b paramAnonymousb)
       {
         AppMethodBeat.i(151236);
         if ((paramAnonymousb.status == 0) && (paramAnonymousb.bitmap != null) && (!paramAnonymousb.bitmap.isRecycled())) {
@@ -264,22 +264,35 @@ public final class t
     return paramString;
   }
   
-  public final int RZ(String paramString)
+  public final int ZB(String paramString)
   {
     AppMethodBeat.i(151246);
     com.tencent.mm.openim.e.c localc = new com.tencent.mm.openim.e.c();
     localc.field_appid = paramString;
-    com.tencent.mm.kernel.g.aAi();
-    ((PluginOpenIM)com.tencent.mm.kernel.g.ah(PluginOpenIM.class)).getAppIdInfoStg().get(localc, new String[] { "appid" });
+    com.tencent.mm.kernel.h.aHH();
+    ((PluginOpenIM)com.tencent.mm.kernel.h.ag(PluginOpenIM.class)).getAppIdInfoStg().get(localc, new String[] { "appid" });
     if (localc.systemRowid == -1L)
     {
-      Sc(paramString);
+      ZE(paramString);
       AppMethodBeat.o(151246);
       return 0;
     }
-    int i = localc.field_appRec.KIp;
+    int i = localc.field_appRec.RJG;
     AppMethodBeat.o(151246);
     return i;
+  }
+  
+  public final TextAppearanceSpan a(Context paramContext, String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(195608);
+    MMTextAppearanceSpan localMMTextAppearanceSpan = null;
+    if ("3552365301".equals(paramString))
+    {
+      paramContext = com.tencent.mm.ci.a.l(paramContext, paramInt2);
+      localMMTextAppearanceSpan = new MMTextAppearanceSpan(paramInt1, paramContext, paramContext);
+    }
+    AppMethodBeat.o(195608);
+    return localMMTextAppearanceSpan;
   }
   
   public final CharSequence a(Context paramContext, CharSequence paramCharSequence)
@@ -291,7 +304,7 @@ public final class t
     }
     paramCharSequence = new SpannableStringBuilder((CharSequence)localObject);
     paramCharSequence.append(" ");
-    paramContext = paramContext.getResources().getDrawable(2131691298);
+    paramContext = paramContext.getResources().getDrawable(c.g.open_im_main_logo);
     paramContext.setBounds(0, 0, paramContext.getIntrinsicWidth(), paramContext.getIntrinsicHeight());
     paramCharSequence.setSpan(new ImageSpan(paramContext), ((CharSequence)localObject).length(), ((CharSequence)localObject).length() + 1, 33);
     AppMethodBeat.o(151240);
@@ -301,11 +314,11 @@ public final class t
   public final CharSequence a(Context paramContext, String paramString1, String paramString2, float paramFloat)
   {
     AppMethodBeat.i(151244);
-    paramString1 = RY(paramString1);
+    paramString1 = ZA(paramString1);
     if (paramString1 != null)
     {
       paramString2 = l.b(paramContext, "  ".concat(String.valueOf(paramString2)), paramFloat);
-      int i = (int)(com.tencent.mm.cb.a.fromDPToPix(paramContext, 2) + paramFloat);
+      int i = (int)(com.tencent.mm.ci.a.fromDPToPix(paramContext, 2) + paramFloat);
       paramContext = new ImageSpan(MMApplicationContext.getContext(), paramString1);
       paramContext.getDrawable().setBounds(0, 0, i, i);
       paramString2.setSpan(paramContext, 0, 1, 33);
@@ -321,11 +334,11 @@ public final class t
     AppMethodBeat.i(151247);
     com.tencent.mm.openim.e.c localc = new com.tencent.mm.openim.e.c();
     localc.field_appid = paramString1;
-    com.tencent.mm.kernel.g.aAi();
-    ((PluginOpenIM)com.tencent.mm.kernel.g.ah(PluginOpenIM.class)).getAppIdInfoStg().get(localc, new String[] { "appid" });
+    com.tencent.mm.kernel.h.aHH();
+    ((PluginOpenIM)com.tencent.mm.kernel.h.ag(PluginOpenIM.class)).getAppIdInfoStg().get(localc, new String[] { "appid" });
     if (localc.systemRowid == -1L)
     {
-      Sc(paramString1);
+      ZE(paramString1);
       AppMethodBeat.o(151247);
       return null;
     }
@@ -344,12 +357,12 @@ public final class t
     if ((paramTextView instanceof EllipsizeTextView))
     {
       paramContext = (EllipsizeTextView)paramTextView;
-      paramContext.setLayoutCallback(this.jHm);
+      paramContext.setLayoutCallback(this.myq);
       paramContext.a(paramCharSequence, " ", -1, (int)paramTextView.getTextSize());
       AppMethodBeat.o(151243);
       return;
     }
-    paramTextView.setText(((com.tencent.mm.openim.a.a)com.tencent.mm.kernel.g.af(com.tencent.mm.openim.a.a.class)).a(paramContext, paramCharSequence));
+    paramTextView.setText(((com.tencent.mm.openim.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.openim.a.a.class)).a(paramContext, paramCharSequence));
     AppMethodBeat.o(151243);
   }
   
@@ -359,7 +372,7 @@ public final class t
     if ((paramTextView instanceof EllipsizeTextView))
     {
       EllipsizeTextView localEllipsizeTextView = (EllipsizeTextView)paramTextView;
-      paramTextView = ((com.tencent.mm.openim.a.a)com.tencent.mm.kernel.g.af(com.tencent.mm.openim.a.a.class)).bN(paramString1, paramString2);
+      paramTextView = ((com.tencent.mm.openim.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.openim.a.a.class)).bR(paramString1, paramString2);
       if (!Util.isNullOrNil(paramTextView))
       {
         paramContext = paramTextView;
@@ -367,13 +380,13 @@ public final class t
       }
       for (paramContext = " @".concat(String.valueOf(paramTextView));; paramContext = "")
       {
-        localEllipsizeTextView.setLayoutCallback(this.jHl);
-        localEllipsizeTextView.a(paramCharSequence, paramContext, 2131100917, paramInt);
+        localEllipsizeTextView.setLayoutCallback(this.myp);
+        localEllipsizeTextView.a(paramCharSequence, paramContext, c.b.open_im_display_name_color, paramInt);
         AppMethodBeat.o(151242);
         return;
       }
     }
-    paramString2 = ((com.tencent.mm.openim.a.a)com.tencent.mm.kernel.g.af(com.tencent.mm.openim.a.a.class)).bN(paramString1, paramString2);
+    paramString2 = ((com.tencent.mm.openim.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.openim.a.a.class)).bR(paramString1, paramString2);
     if (!Util.isNullOrNil(paramString2)) {
       if (!"3552365301".equals(paramString1)) {
         break label252;
@@ -382,14 +395,14 @@ public final class t
     label252:
     for (paramString1 = " @".concat(String.valueOf(paramString2));; paramString1 = paramString2)
     {
-      paramString2 = l.e(paramContext, paramCharSequence, paramInt);
+      paramString2 = l.d(paramContext, paramCharSequence, paramInt);
       paramCharSequence = new SpannableStringBuilder();
       paramCharSequence.append(paramString2);
       paramString2 = new SpannableString(paramString1);
-      paramContext = com.tencent.mm.cb.a.m(paramContext, 2131100917);
+      paramContext = com.tencent.mm.ci.a.l(paramContext, c.b.open_im_display_name_color);
       paramString2.setSpan(new TextAppearanceSpan(null, 0, paramInt, paramContext, paramContext), 0, paramString1.length(), 33);
       paramCharSequence.append(paramString2);
-      for (paramContext = paramCharSequence;; paramContext = l.e(paramContext, paramCharSequence, paramInt))
+      for (paramContext = paramCharSequence;; paramContext = l.d(paramContext, paramCharSequence, paramInt))
       {
         paramTextView.setText(paramContext);
         AppMethodBeat.o(151242);
@@ -410,7 +423,7 @@ public final class t
     return str1;
   }
   
-  public final void bM(String paramString1, String paramString2)
+  public final void bQ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(151259);
     if (Util.isNullOrNil(paramString1))
@@ -422,8 +435,8 @@ public final class t
     Object localObject = new com.tencent.mm.openim.e.c();
     ((com.tencent.mm.openim.e.c)localObject).field_appid = paramString1;
     ((com.tencent.mm.openim.e.c)localObject).field_language = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
-    com.tencent.mm.kernel.g.aAi();
-    ((PluginOpenIM)com.tencent.mm.kernel.g.ah(PluginOpenIM.class)).getAppIdInfoStg().get((IAutoDBItem)localObject, new String[] { "appid", "language" });
+    com.tencent.mm.kernel.h.aHH();
+    ((PluginOpenIM)com.tencent.mm.kernel.h.ag(PluginOpenIM.class)).getAppIdInfoStg().get((IAutoDBItem)localObject, new String[] { "appid", "language" });
     localStringBuffer.append(String.format("openIMAppIdinfo.field_updateTime %s | ", new Object[] { Long.valueOf(((com.tencent.mm.openim.e.c)localObject).field_updateTime) }));
     if ((((com.tencent.mm.openim.e.c)localObject).systemRowid == -1L) || (Util.secondsToNow(((com.tencent.mm.openim.e.c)localObject).field_updateTime) > 172800L)) {}
     for (boolean bool1 = true;; bool1 = false)
@@ -434,13 +447,13 @@ public final class t
         bool2 = bool1;
         if (!Util.isNullOrNil(paramString2))
         {
-          localObject = new e();
-          ((e)localObject).field_appid = paramString1;
-          ((e)localObject).field_language = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
-          ((e)localObject).field_wordingId = paramString2;
-          com.tencent.mm.kernel.g.aAi();
-          ((PluginOpenIM)com.tencent.mm.kernel.g.ah(PluginOpenIM.class)).getWordingInfoStg().get((IAutoDBItem)localObject, new String[] { "appid", "language", "wordingId" });
-          if ((((e)localObject).systemRowid != -1L) && (Util.secondsToNow(((e)localObject).field_updateTime) <= 172800L)) {
+          localObject = new com.tencent.mm.openim.e.g();
+          ((com.tencent.mm.openim.e.g)localObject).field_appid = paramString1;
+          ((com.tencent.mm.openim.e.g)localObject).field_language = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
+          ((com.tencent.mm.openim.e.g)localObject).field_wordingId = paramString2;
+          com.tencent.mm.kernel.h.aHH();
+          ((PluginOpenIM)com.tencent.mm.kernel.h.ag(PluginOpenIM.class)).getWordingInfoStg().get((IAutoDBItem)localObject, new String[] { "appid", "language", "wordingId" });
+          if ((((com.tencent.mm.openim.e.g)localObject).systemRowid != -1L) && (Util.secondsToNow(((com.tencent.mm.openim.e.g)localObject).field_updateTime) <= 172800L)) {
             break label355;
           }
           bool1 = true;
@@ -449,11 +462,11 @@ public final class t
       label355:
       for (;;)
       {
-        localStringBuffer.append(String.format("wordingInfo.field_updateTime %s | ", new Object[] { Long.valueOf(((e)localObject).field_updateTime) }));
+        localStringBuffer.append(String.format("wordingInfo.field_updateTime %s | ", new Object[] { Long.valueOf(((com.tencent.mm.openim.e.g)localObject).field_updateTime) }));
         bool2 = bool1;
         Log.i("MicroMsg.Openim.OpenImResourceMgr", "checkRecUpdate openimAppId %s wordingId %s needUpdate %s logBuffer: %s", new Object[] { paramString1, paramString2, Boolean.valueOf(bool2), localStringBuffer.toString() });
         if (bool2) {
-          s(paramString1, LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext()), paramString2);
+          v(paramString1, LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext()), paramString2);
         }
         AppMethodBeat.o(151259);
         return;
@@ -461,24 +474,24 @@ public final class t
     }
   }
   
-  public final String bN(String paramString1, String paramString2)
+  public final String bR(String paramString1, String paramString2)
   {
     AppMethodBeat.i(151252);
-    String str2 = t(paramString1, paramString2, LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext()));
+    String str2 = w(paramString1, paramString2, LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext()));
     String str1 = str2;
     if (str2 == null) {
-      str1 = t(paramString1, paramString2, "en");
+      str1 = w(paramString1, paramString2, "en");
     }
     AppMethodBeat.o(151252);
     return str1;
   }
   
-  public final void bkB()
+  public final void bup()
   {
     AppMethodBeat.i(151253);
-    ((PluginOpenIM)com.tencent.mm.kernel.g.ah(PluginOpenIM.class)).getAppIdInfoStg().iFy.delete("OpenIMAppIdInfo", null, null);
-    ((PluginOpenIM)com.tencent.mm.kernel.g.ah(PluginOpenIM.class)).getAccTypeInfoStg().iFy.delete("OpenIMAccTypeInfo", null, null);
-    ((PluginOpenIM)com.tencent.mm.kernel.g.ah(PluginOpenIM.class)).getWordingInfoStg().iFy.delete("OpenIMWordingInfo", null, null);
+    ((PluginOpenIM)com.tencent.mm.kernel.h.ag(PluginOpenIM.class)).getAppIdInfoStg().lvy.delete("OpenIMAppIdInfo", null, null);
+    ((PluginOpenIM)com.tencent.mm.kernel.h.ag(PluginOpenIM.class)).getAccTypeInfoStg().lvy.delete("OpenIMAccTypeInfo", null, null);
+    ((PluginOpenIM)com.tencent.mm.kernel.h.ag(PluginOpenIM.class)).getWordingInfoStg().lvy.delete("OpenIMWordingInfo", null, null);
     AppMethodBeat.o(151253);
   }
   
@@ -497,25 +510,12 @@ public final class t
   public final SpannableString e(Context paramContext, String paramString, int paramInt)
   {
     AppMethodBeat.i(151241);
-    paramContext = l.e(paramContext, paramString, paramInt);
+    paramContext = l.d(paramContext, paramString, paramInt);
     AppMethodBeat.o(151241);
     return paramContext;
   }
   
-  public final TextAppearanceSpan f(Context paramContext, String paramString, int paramInt)
-  {
-    AppMethodBeat.i(151254);
-    MMTextAppearanceSpan localMMTextAppearanceSpan = null;
-    if ("3552365301".equals(paramString))
-    {
-      paramContext = com.tencent.mm.cb.a.m(paramContext, 2131099665);
-      localMMTextAppearanceSpan = new MMTextAppearanceSpan(paramInt, paramContext, paramContext);
-    }
-    AppMethodBeat.o(151254);
-    return localMMTextAppearanceSpan;
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
   {
     AppMethodBeat.i(151239);
     if (paramq.getType() != 453)
@@ -529,24 +529,24 @@ public final class t
       return;
     }
     paramString = (i)paramq;
-    paramq = (b)this.jHk.get(paramString.jHc + paramString.language);
+    paramq = (b)this.myo.get(paramString.myg + paramString.language);
     if (paramq != null)
     {
-      if (!paramq.jHp.isEmpty())
+      if (!paramq.myt.isEmpty())
       {
-        while ((paramq.jHq.size() < 10) && (!paramq.jHp.isEmpty())) {
-          paramq.jHq.add(paramq.jHp.removeFirst());
+        while ((paramq.myu.size() < 10) && (!paramq.myt.isEmpty())) {
+          paramq.myu.add(paramq.myt.removeFirst());
         }
-        com.tencent.mm.kernel.g.aAg().hqi.a(new i(paramString.jHc, paramString.language, paramq.jHq), 0);
+        com.tencent.mm.kernel.h.aHF().kcd.a(new i(paramString.myg, paramString.language, paramq.myu), 0);
         AppMethodBeat.o(151239);
         return;
       }
-      this.jHk.remove(paramString.jHc + paramString.language);
+      this.myo.remove(paramString.myg + paramString.language);
     }
     AppMethodBeat.o(151239);
   }
   
-  public final void s(String paramString1, String paramString2, String paramString3)
+  public final void v(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(151258);
     if (Util.isNullOrNil(paramString1))
@@ -555,27 +555,27 @@ public final class t
       return;
     }
     Log.i("MicroMsg.Openim.OpenImResourceMgr", "try checkDoSceneGetRec openimAppId %s language %s wordingid %s", new Object[] { paramString1, paramString2, paramString3 });
-    if (!this.jHk.containsKey(paramString1 + paramString2))
+    if (!this.myo.containsKey(paramString1 + paramString2))
     {
       b localb = new b((byte)0);
       if (!Util.isNullOrNil(paramString3)) {
-        localb.jHq.add(paramString3);
+        localb.myu.add(paramString3);
       }
-      this.jHk.put(paramString1 + paramString2, localb);
-      com.tencent.mm.kernel.g.aAg().hqi.a(new i(paramString1, paramString2, localb.jHq), 0);
+      this.myo.put(paramString1 + paramString2, localb);
+      com.tencent.mm.kernel.h.aHF().kcd.a(new i(paramString1, paramString2, localb.myu), 0);
     }
     if (Util.isNullOrNil(paramString3))
     {
       AppMethodBeat.o(151258);
       return;
     }
-    paramString1 = (b)this.jHk.get(paramString1 + paramString2);
-    if ((paramString1.jHp.contains(paramString3)) || (paramString1.jHq.contains(paramString3)))
+    paramString1 = (b)this.myo.get(paramString1 + paramString2);
+    if ((paramString1.myt.contains(paramString3)) || (paramString1.myu.contains(paramString3)))
     {
       AppMethodBeat.o(151258);
       return;
     }
-    paramString1.jHp.add(paramString3);
+    paramString1.myt.add(paramString3);
     AppMethodBeat.o(151258);
   }
   
@@ -588,21 +588,21 @@ public final class t
   
   final class b
   {
-    LinkedList<String> jHp;
-    LinkedList<String> jHq;
+    LinkedList<String> myt;
+    LinkedList<String> myu;
     
     private b()
     {
       AppMethodBeat.i(151237);
-      this.jHp = new LinkedList();
-      this.jHq = new LinkedList();
+      this.myt = new LinkedList();
+      this.myu = new LinkedList();
       AppMethodBeat.o(151237);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.openim.b.t
  * JD-Core Version:    0.7.0.1
  */

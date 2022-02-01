@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.talkroom.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bvz;
-import com.tencent.mm.protocal.protobuf.bwa;
-import com.tencent.mm.protocal.protobuf.egs;
+import com.tencent.mm.protocal.protobuf.cdr;
+import com.tencent.mm.protocal.protobuf.cds;
+import com.tencent.mm.protocal.protobuf.equ;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
@@ -19,12 +19,12 @@ import java.util.LinkedList;
 public final class c
   extends f
 {
-  public LinkedList<egs> FQR;
-  public int FQw;
+  private final String Enu;
+  public LinkedList<equ> MkS;
+  public int Mkx;
   private i callback;
   private final d rr;
   private int sceneType;
-  private final String yJB;
   
   public c(int paramInt1, long paramLong, String paramString, int paramInt2)
   {
@@ -32,31 +32,31 @@ public final class c
     this.sceneType = 0;
     this.sceneType = paramInt2;
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new bvz();
-    ((d.a)localObject).iLO = new bwa();
+    ((d.a)localObject).lBU = new cdr();
+    ((d.a)localObject).lBV = new cds();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/gettalkroommember";
     ((d.a)localObject).funcId = 336;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (bvz)this.rr.iLK.iLR;
-    ((bvz)localObject).LsZ = paramInt1;
-    ((bvz)localObject).Lta = paramLong;
-    this.yJB = paramString;
-    ((bvz)localObject).Scene = paramInt2;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (cdr)d.b.b(this.rr.lBR);
+    ((cdr)localObject).Svu = paramInt1;
+    ((cdr)localObject).Svv = paramLong;
+    this.Enu = paramString;
+    ((cdr)localObject).CPw = paramInt2;
     AppMethodBeat.o(29557);
   }
   
-  private static LinkedList<egs> bs(LinkedList<egs> paramLinkedList)
+  private static LinkedList<equ> bN(LinkedList<equ> paramLinkedList)
   {
     AppMethodBeat.i(29560);
     LinkedList localLinkedList = new LinkedList();
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext())
     {
-      egs localegs = (egs)paramLinkedList.next();
-      if (!Util.isNullOrNil(localegs.UserName)) {
-        localLinkedList.add(localegs);
+      equ localequ = (equ)paramLinkedList.next();
+      if (!Util.isNullOrNil(localequ.UserName)) {
+        localLinkedList.add(localequ);
       }
     }
     AppMethodBeat.o(29560);
@@ -73,19 +73,19 @@ public final class c
     return i;
   }
   
-  public final String fui()
-  {
-    return this.yJB;
-  }
-  
-  public final int fuj()
-  {
-    return this.sceneType;
-  }
-  
   public final int getType()
   {
     return 336;
+  }
+  
+  public final String giK()
+  {
+    return this.Enu;
+  }
+  
+  public final int giL()
+  {
+    return this.sceneType;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
@@ -98,10 +98,10 @@ public final class c
       AppMethodBeat.o(29559);
       return;
     }
-    params = (bwa)this.rr.iLL.iLR;
+    params = (cds)d.c.b(this.rr.lBS);
     Log.i("MicroMsg.NetSceneGetTalkRoomMember", "resp %s", new Object[] { params.toString() });
-    this.FQw = params.Ltb;
-    this.FQR = bs(params.KGQ);
+    this.Mkx = params.Svw;
+    this.MkS = bN(params.RIk);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(29559);
   }

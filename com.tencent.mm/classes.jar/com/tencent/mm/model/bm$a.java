@@ -5,21 +5,21 @@ import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.l;
 import com.tencent.mm.protocal.l.b;
 import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.eqi;
+import com.tencent.mm.protocal.protobuf.cfk;
+import com.tencent.mm.protocal.protobuf.eae;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class bm$a
   extends l.d
   implements l.b
 {
-  public eqi iDW;
+  public cfk ltV;
   
   public bm$a()
   {
-    AppMethodBeat.i(20369);
-    this.iDW = new eqi();
-    AppMethodBeat.o(20369);
+    AppMethodBeat.i(20365);
+    this.ltV = new cfk();
+    AppMethodBeat.o(20365);
   }
   
   public final int getCmdId()
@@ -29,23 +29,23 @@ public final class bm$a
   
   public final int getFuncId()
   {
-    return 617;
+    return 618;
   }
   
   public final byte[] toProtoBuf()
   {
-    AppMethodBeat.i(20370);
-    setRsaInfo(ac.gtR());
-    this.iDW.KPW = new SKBuiltinBuffer_t().setBuffer(Util.getUuidRandom());
-    this.iDW.setBaseRequest(l.a(this));
-    byte[] arrayOfByte = this.iDW.toByteArray();
-    AppMethodBeat.o(20370);
+    AppMethodBeat.i(20366);
+    setRsaInfo(ac.hph());
+    this.ltV.RQU = new eae().dc(Util.getUuidRandom());
+    this.ltV.setBaseRequest(l.a(this));
+    byte[] arrayOfByte = this.ltV.toByteArray();
+    AppMethodBeat.o(20366);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.model.bm.a
  * JD-Core Version:    0.7.0.1
  */

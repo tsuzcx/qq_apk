@@ -2,10 +2,8 @@ package com.tencent.mm.plugin.qqmail.d;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.plugin.qqmail.c.j;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
@@ -18,27 +16,27 @@ import java.util.List;
 
 public final class m
 {
-  n BrA;
-  private int BrB;
-  private int BrC;
-  int BrD;
-  private long Brz;
+  private long HlS;
+  n HlT;
+  private int HlU;
+  private int HlV;
+  int HlW;
   List<a> callbacks;
   int status;
   
   m(String paramString)
   {
     AppMethodBeat.i(122698);
-    this.BrB = 0;
-    this.BrC = 1;
-    this.BrD = 2;
-    this.status = this.BrB;
-    this.BrA = new n(paramString);
+    this.HlU = 0;
+    this.HlV = 1;
+    this.HlW = 2;
+    this.status = this.HlU;
+    this.HlT = new n(paramString);
     this.callbacks = new ArrayList();
     AppMethodBeat.o(122698);
   }
   
-  public static l aKE(String paramString)
+  public static l aVf(String paramString)
   {
     AppMethodBeat.i(122706);
     if (Util.isNullOrNil(paramString))
@@ -55,7 +53,7 @@ public final class m
     }
     l locall = new l();
     locall.name = paramString.substring(0, i);
-    locall.yFq = paramString.substring(i + 1);
+    locall.Ejj = paramString.substring(i + 1);
     AppMethodBeat.o(122706);
     return locall;
   }
@@ -75,16 +73,16 @@ public final class m
     AppMethodBeat.o(122702);
   }
   
-  public final List<l> aKD(String paramString)
+  public final List<l> aVe(String paramString)
   {
     AppMethodBeat.i(122700);
     Object localObject2 = new ArrayList();
-    Object localObject1 = this.BrA.blq();
+    Object localObject1 = this.HlT.bvg();
     if (localObject1 != null) {
       ((List)localObject2).addAll((Collection)localObject1);
     }
-    if (this.status == this.BrB) {
-      eGn();
+    if (this.status == this.HlU) {
+      fso();
     }
     Collections.sort((List)localObject2, new Comparator() {});
     if ((paramString == null) || (paramString.length() == 0))
@@ -97,7 +95,7 @@ public final class m
     while (((Iterator)localObject2).hasNext())
     {
       l locall = (l)((Iterator)localObject2).next();
-      if ((locall != null) && (((locall.name != null) && (locall.name.contains(paramString))) || ((locall.pinyin != null) && (locall.pinyin.contains(paramString))) || ((locall.yFq != null) && (locall.yFq.contains(paramString))))) {
+      if ((locall != null) && (((locall.name != null) && (locall.name.contains(paramString))) || ((locall.pinyin != null) && (locall.pinyin.contains(paramString))) || ((locall.Ejj != null) && (locall.Ejj.contains(paramString))))) {
         ((List)localObject1).add(locall);
       }
     }
@@ -122,15 +120,22 @@ public final class m
     AppMethodBeat.o(122703);
   }
   
-  public final void eGn()
+  protected final void finalize()
+  {
+    AppMethodBeat.i(122699);
+    this.callbacks.clear();
+    AppMethodBeat.o(122699);
+  }
+  
+  public final void fso()
   {
     AppMethodBeat.i(122701);
-    if (this.status == this.BrC)
+    if (this.status == this.HlV)
     {
       AppMethodBeat.o(122701);
       return;
     }
-    if (Util.nowMilliSecond() - this.Brz <= 600000L)
+    if (Util.nowMilliSecond() - this.HlS <= 600000L)
     {
       Iterator localIterator = this.callbacks.iterator();
       while (localIterator.hasNext()) {
@@ -139,16 +144,16 @@ public final class m
       AppMethodBeat.o(122701);
       return;
     }
-    this.status = this.BrC;
-    this.Brz = Util.nowMilliSecond();
-    h.a(MMApplicationContext.getPackageName(), new IPCVoid(), j.class, new d() {});
+    this.status = this.HlV;
+    this.HlS = Util.nowMilliSecond();
+    com.tencent.mm.ipcinvoker.j.a(MMApplicationContext.getPackageName(), new IPCVoid(), com.tencent.mm.plugin.qqmail.c.j.class, new f() {});
     AppMethodBeat.o(122701);
   }
   
-  public final void fU(List<l> paramList)
+  public final void gy(List<l> paramList)
   {
     AppMethodBeat.i(122704);
-    LinkedList localLinkedList = this.BrA.blq();
+    LinkedList localLinkedList = this.HlT.bvg();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
@@ -156,18 +161,11 @@ public final class m
       if (i != -1)
       {
         as localas = (as)localLinkedList.get(i);
-        localas.Bry += 1;
+        localas.HlR += 1;
       }
     }
-    this.BrA.r(localLinkedList);
+    this.HlT.r(localLinkedList);
     AppMethodBeat.o(122704);
-  }
-  
-  protected final void finalize()
-  {
-    AppMethodBeat.i(122699);
-    this.callbacks.clear();
-    AppMethodBeat.o(122699);
   }
   
   public static abstract class a
@@ -177,7 +175,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.d.m
  * JD-Core Version:    0.7.0.1
  */

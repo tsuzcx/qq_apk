@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.messenger.a;
 
 import android.view.View;
+import com.tencent.mm.pluginsdk.ui.applet.u;
 import com.tencent.mm.pluginsdk.ui.span.p;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -8,23 +9,23 @@ import com.tencent.mm.sdk.platformtools.Util;
 public abstract class a
   extends p
 {
-  private long yAz = -1L;
+  private long EbO = -1L;
   
-  public a()
+  public a(int paramInt, u paramu)
   {
-    super(1, null);
+    super(paramInt, null);
   }
   
   public void onClick(View paramView)
   {
-    if (Util.ticksToNow(this.yAz) > 1000L)
+    if (Util.ticksToNow(this.EbO) > 1000L)
     {
       super.onClick(paramView);
       onClickImp(paramView);
     }
     for (;;)
     {
-      this.yAz = Util.currentTicks();
+      this.EbO = Util.currentTicks();
       return;
       Log.w("MicroMsg.AvoidDuplicatedPressableSpan", "hy: too often click");
       setIsPressed(false);

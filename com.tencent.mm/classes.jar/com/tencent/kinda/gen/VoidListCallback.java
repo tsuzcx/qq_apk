@@ -16,28 +16,28 @@ public abstract class VoidListCallback
     
     static
     {
-      AppMethodBeat.i(207090);
+      AppMethodBeat.i(220484);
       if (!VoidListCallback.class.desiredAssertionStatus()) {}
       for (boolean bool = true;; bool = false)
       {
         $assertionsDisabled = bool;
-        AppMethodBeat.o(207090);
+        AppMethodBeat.o(220484);
         return;
       }
     }
     
     private CppProxy(long paramLong)
     {
-      AppMethodBeat.i(207086);
+      AppMethodBeat.i(220475);
       this.destroyed = new AtomicBoolean(false);
       if (paramLong == 0L)
       {
         RuntimeException localRuntimeException = new RuntimeException("nativeRef is zero");
-        AppMethodBeat.o(207086);
+        AppMethodBeat.o(220475);
         throw localRuntimeException;
       }
       this.nativeRef = paramLong;
-      AppMethodBeat.o(207086);
+      AppMethodBeat.o(220475);
     }
     
     private native void nativeDestroy(long paramLong);
@@ -46,32 +46,32 @@ public abstract class VoidListCallback
     
     public final void call(ArrayList<Integer> paramArrayList)
     {
-      AppMethodBeat.i(207089);
+      AppMethodBeat.i(220479);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         paramArrayList = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(207089);
+        AppMethodBeat.o(220479);
         throw paramArrayList;
       }
       native_call(this.nativeRef, paramArrayList);
-      AppMethodBeat.o(207089);
+      AppMethodBeat.o(220479);
     }
     
     public final void destroy()
     {
-      AppMethodBeat.i(207087);
+      AppMethodBeat.i(220476);
       if (!this.destroyed.getAndSet(true)) {
         nativeDestroy(this.nativeRef);
       }
-      AppMethodBeat.o(207087);
+      AppMethodBeat.o(220476);
     }
     
     protected final void finalize()
     {
-      AppMethodBeat.i(207088);
+      AppMethodBeat.i(220477);
       destroy();
       super.finalize();
-      AppMethodBeat.o(207088);
+      AppMethodBeat.o(220477);
     }
   }
 }

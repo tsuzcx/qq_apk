@@ -15,7 +15,7 @@ class LayoutWrapper
   public LayoutWrapper(Context paramContext, View paramView)
   {
     super(paramContext);
-    AppMethodBeat.i(214511);
+    AppMethodBeat.i(263940);
     setGravity(16);
     paramContext = new LinearLayout.LayoutParams(0, -2);
     paramContext.weight = 1.0F;
@@ -27,18 +27,18 @@ class LayoutWrapper
       @SuppressLint({"ClickableViewAccessibility"})
       public boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(214510);
+        AppMethodBeat.i(262918);
         jdField_this.onTouchEvent(paramAnonymousMotionEvent);
-        AppMethodBeat.o(214510);
+        AppMethodBeat.o(262918);
         return false;
       }
     });
-    AppMethodBeat.o(214511);
+    AppMethodBeat.o(263940);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.LayoutWrapper
  * JD-Core Version:    0.7.0.1
  */

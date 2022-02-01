@@ -31,19 +31,19 @@ public class VideoCompositor
   
   private boolean checkRequest(AsynchronousVideoCompositionRequest paramAsynchronousVideoCompositionRequest)
   {
-    AppMethodBeat.i(217953);
+    AppMethodBeat.i(189320);
     if ((paramAsynchronousVideoCompositionRequest.getRenderContext() != null) && (paramAsynchronousVideoCompositionRequest.getSourceTrackIDs() != null) && (!paramAsynchronousVideoCompositionRequest.getSourceTrackIDs().isEmpty()))
     {
-      AppMethodBeat.o(217953);
+      AppMethodBeat.o(189320);
       return true;
     }
-    AppMethodBeat.o(217953);
+    AppMethodBeat.o(189320);
     return false;
   }
   
   private void drawInstructionBuffer(AsynchronousVideoCompositionRequest paramAsynchronousVideoCompositionRequest, IVideoCompositionInstruction paramIVideoCompositionInstruction)
   {
-    AppMethodBeat.i(217956);
+    AppMethodBeat.i(189327);
     this.filter.clearBufferBuffer(paramIVideoCompositionInstruction.getBackgroundColor());
     Iterator localIterator = paramIVideoCompositionInstruction.getLayerInstructions().iterator();
     while (localIterator.hasNext())
@@ -64,12 +64,12 @@ public class VideoCompositor
         }
       }
     }
-    AppMethodBeat.o(217956);
+    AppMethodBeat.o(189327);
   }
   
   private void drawSrcBuffer(AsynchronousVideoCompositionRequest paramAsynchronousVideoCompositionRequest)
   {
-    AppMethodBeat.i(217955);
+    AppMethodBeat.i(189325);
     this.filter.clearBufferBuffer(-16777216);
     Iterator localIterator = paramAsynchronousVideoCompositionRequest.getSourceTrackIDs().iterator();
     while (localIterator.hasNext())
@@ -83,56 +83,56 @@ public class VideoCompositor
         this.filter.applyFilter(localCMSampleBuffer.getTextureInfo(), localMatrix, localTextureInfo.getTextureMatrix(), 1.0F, null);
       }
     }
-    AppMethodBeat.o(217955);
+    AppMethodBeat.o(189325);
   }
   
   private static CGRect getCropRectangleForTime(CMTime paramCMTime, VideoCompositionLayerInstruction.CropRectangleRamp paramCropRectangleRamp)
   {
-    AppMethodBeat.i(217959);
+    AppMethodBeat.i(189340);
     if ((paramCropRectangleRamp.startCropRectangle == null) || (paramCropRectangleRamp.endCropRectangle == null) || (!paramCropRectangleRamp.timeRange.containsTime(paramCMTime)))
     {
-      AppMethodBeat.o(217959);
+      AppMethodBeat.o(189340);
       return null;
     }
     long l = paramCropRectangleRamp.timeRange.getDurationUs();
     float f = (float)(paramCMTime.getTimeUs() - paramCropRectangleRamp.timeRange.getStartUs()) * 1.0F / (float)l;
     paramCMTime = new CGRect(interpolation(f, paramCropRectangleRamp.startCropRectangle.origin.x, paramCropRectangleRamp.endCropRectangle.origin.x), interpolation(f, paramCropRectangleRamp.startCropRectangle.origin.y, paramCropRectangleRamp.endCropRectangle.origin.y), interpolation(f, paramCropRectangleRamp.startCropRectangle.size.width, paramCropRectangleRamp.endCropRectangle.size.width), interpolation(f, paramCropRectangleRamp.startCropRectangle.size.height, paramCropRectangleRamp.endCropRectangle.size.height));
-    AppMethodBeat.o(217959);
+    AppMethodBeat.o(189340);
     return paramCMTime;
   }
   
   private static float getOpacityForTime(CMTime paramCMTime, VideoCompositionLayerInstruction.OpacityRamp paramOpacityRamp)
   {
-    AppMethodBeat.i(217958);
+    AppMethodBeat.i(189337);
     if (!paramOpacityRamp.timeRange.containsTime(paramCMTime))
     {
-      AppMethodBeat.o(217958);
+      AppMethodBeat.o(189337);
       return 1.0F;
     }
     long l = paramOpacityRamp.timeRange.getDurationUs();
     float f = interpolation(1.0F * (float)(paramCMTime.getTimeUs() - paramOpacityRamp.timeRange.getStartUs()) / (float)l, paramOpacityRamp.startOpacity, paramOpacityRamp.endOpacity);
-    AppMethodBeat.o(217958);
+    AppMethodBeat.o(189337);
     return f;
   }
   
   private static Transform getTransformForTime(CMTime paramCMTime, VideoCompositionLayerInstruction.TransformRamp paramTransformRamp)
   {
-    AppMethodBeat.i(217957);
+    AppMethodBeat.i(189333);
     if ((!paramTransformRamp.timeRange.containsTime(paramCMTime)) || (paramTransformRamp.startTransform == null) || (paramTransformRamp.endTransform == null))
     {
-      AppMethodBeat.o(217957);
+      AppMethodBeat.o(189333);
       return null;
     }
     long l = paramTransformRamp.timeRange.getDurationUs();
     float f = (float)(paramCMTime.getTimeUs() - paramTransformRamp.timeRange.getStartUs()) * 1.0F / (float)l;
     paramCMTime = new Transform(interpolation(f, paramTransformRamp.startTransform.scaleX, paramTransformRamp.endTransform.scaleX), interpolation(f, paramTransformRamp.startTransform.scaleY, paramTransformRamp.endTransform.scaleY), interpolation(f, paramTransformRamp.startTransform.translateX, paramTransformRamp.endTransform.translateX), interpolation(f, paramTransformRamp.startTransform.translateY, paramTransformRamp.endTransform.translateY), interpolation(f, paramTransformRamp.startTransform.degrees, paramTransformRamp.endTransform.degrees));
-    AppMethodBeat.o(217957);
+    AppMethodBeat.o(189333);
     return paramCMTime;
   }
   
   private void initFilter(AsynchronousVideoCompositionRequest paramAsynchronousVideoCompositionRequest)
   {
-    AppMethodBeat.i(217954);
+    AppMethodBeat.i(189322);
     if (this.filter == null)
     {
       paramAsynchronousVideoCompositionRequest = paramAsynchronousVideoCompositionRequest.getRenderContext().getSize();
@@ -143,7 +143,7 @@ public class VideoCompositor
       this.filter.setRendererHeight(j);
       this.filter.setRenderForScreen(false);
     }
-    AppMethodBeat.o(217954);
+    AppMethodBeat.o(189322);
   }
   
   private static float interpolation(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -163,13 +163,13 @@ public class VideoCompositor
   
   public void release()
   {
-    AppMethodBeat.i(217960);
+    AppMethodBeat.i(189345);
     if (this.filter != null)
     {
       this.filter.release();
       this.filter = null;
     }
-    AppMethodBeat.o(217960);
+    AppMethodBeat.o(189345);
   }
   
   public void renderContextChanged(VideoCompositionRenderContext paramVideoCompositionRenderContext) {}
@@ -186,10 +186,10 @@ public class VideoCompositor
   
   public void startVideoCompositionRequest(AsynchronousVideoCompositionRequest paramAsynchronousVideoCompositionRequest)
   {
-    AppMethodBeat.i(217952);
+    AppMethodBeat.i(189318);
     if (!checkRequest(paramAsynchronousVideoCompositionRequest))
     {
-      AppMethodBeat.o(217952);
+      AppMethodBeat.o(189318);
       return;
     }
     initFilter(paramAsynchronousVideoCompositionRequest);
@@ -197,7 +197,7 @@ public class VideoCompositor
     localObject = new CMSampleBuffer(paramAsynchronousVideoCompositionRequest.getCompositionTime(), (TextureInfo)localObject, false);
     if (((CMSampleBuffer)localObject).getTextureInfo() == null)
     {
-      AppMethodBeat.o(217952);
+      AppMethodBeat.o(189318);
       return;
     }
     this.filter.setDesTextureInfo(((CMSampleBuffer)localObject).getTextureInfo());
@@ -208,7 +208,7 @@ public class VideoCompositor
     for (;;)
     {
       paramAsynchronousVideoCompositionRequest.finishWithComposedVideoFrame(finishComposedVideoFrame(paramAsynchronousVideoCompositionRequest.getRenderContext().getRenderContext(), (CMSampleBuffer)localObject));
-      AppMethodBeat.o(217952);
+      AppMethodBeat.o(189318);
       return;
       drawInstructionBuffer(paramAsynchronousVideoCompositionRequest, localIVideoCompositionInstruction);
     }
@@ -216,7 +216,7 @@ public class VideoCompositor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.core.VideoCompositor
  * JD-Core Version:    0.7.0.1
  */

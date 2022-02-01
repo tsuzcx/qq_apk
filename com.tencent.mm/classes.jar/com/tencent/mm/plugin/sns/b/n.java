@@ -1,21 +1,18 @@
 package com.tencent.mm.plugin.sns.b;
 
-import android.widget.ImageView;
-import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 
 public abstract interface n
-  extends a
 {
-  public abstract boolean IM(long paramLong);
+  public abstract boolean a(WXMediaMessage paramWXMediaMessage, String paramString1, String paramString2, String paramString3, int paramInt);
   
-  public abstract TimeLineObject PM(String paramString);
+  public abstract void fNd();
   
-  public abstract void a(long paramLong, ImageView paramImageView, int paramInt);
+  public abstract boolean kq(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.b.n
  * JD-Core Version:    0.7.0.1
  */

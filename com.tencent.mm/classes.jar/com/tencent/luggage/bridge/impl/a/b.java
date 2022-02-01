@@ -16,12 +16,12 @@ import java.util.Map;
 public class b
   implements a
 {
-  private final List<a.a> csY;
+  private final List<a.a> cre;
   
   public b()
   {
     AppMethodBeat.i(140362);
-    this.csY = new LinkedList();
+    this.cre = new LinkedList();
     a(new c());
     AppMethodBeat.o(140362);
   }
@@ -34,11 +34,11 @@ public class b
       AppMethodBeat.o(140364);
       return null;
     }
-    Iterator localIterator = this.csY.iterator();
+    Iterator localIterator = this.cre.iterator();
     while (localIterator.hasNext())
     {
       a.a locala = (a.a)localIterator.next();
-      if (locala.match(paramString))
+      if (locala.dq(paramString))
       {
         paramString = locala.b(paramString, paramRect, paramb);
         AppMethodBeat.o(140364);
@@ -52,47 +52,47 @@ public class b
   protected final void a(a.a parama)
   {
     AppMethodBeat.i(140366);
-    this.csY.remove(parama);
-    this.csY.add(parama);
+    this.cre.remove(parama);
+    this.cre.add(parama);
     AppMethodBeat.o(140366);
   }
   
   public final void a(String paramString, a.c paramc)
   {
-    AppMethodBeat.i(221177);
+    AppMethodBeat.i(210569);
     a(paramString, null, paramc);
-    AppMethodBeat.o(221177);
+    AppMethodBeat.o(210569);
   }
   
   public final void a(String paramString, Map<String, String> paramMap, a.c paramc)
   {
-    AppMethodBeat.i(221178);
+    AppMethodBeat.i(210570);
     if (TextUtils.isEmpty(paramString))
     {
       if (paramc != null)
       {
-        paramc.C(null);
-        AppMethodBeat.o(221178);
+        paramc.A(null);
+        AppMethodBeat.o(210570);
       }
     }
     else
     {
-      Iterator localIterator = this.csY.iterator();
+      Iterator localIterator = this.cre.iterator();
       while (localIterator.hasNext())
       {
         a.a locala = (a.a)localIterator.next();
-        if (locala.match(paramString))
+        if (locala.dq(paramString))
         {
           locala.a(paramString, paramMap, paramc);
-          AppMethodBeat.o(221178);
+          AppMethodBeat.o(210570);
           return;
         }
       }
     }
-    AppMethodBeat.o(221178);
+    AppMethodBeat.o(210570);
   }
   
-  public final Bitmap cR(String paramString)
+  public final Bitmap dp(String paramString)
   {
     AppMethodBeat.i(140363);
     paramString = a(paramString, null, null);
@@ -102,7 +102,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.bridge.impl.a.b
  * JD-Core Version:    0.7.0.1
  */

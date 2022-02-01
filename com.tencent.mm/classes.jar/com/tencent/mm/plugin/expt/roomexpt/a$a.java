@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.expt.roomexpt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.modelmulti.r;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.protocal.protobuf.abn;
-import com.tencent.mm.protocal.protobuf.de;
-import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.report.f;
+import com.tencent.mm.protocal.protobuf.abu;
+import com.tencent.mm.protocal.protobuf.db;
+import com.tencent.mm.protocal.protobuf.eaf;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.bv;
 import java.io.IOException;
@@ -20,39 +20,39 @@ final class a$a
   implements Runnable
 {
   private String TAG;
-  private final r jda;
-  private final LinkedList<abn> sKS;
-  private int sKT;
+  private final r lTz;
+  private final LinkedList<abu> wqP;
+  private int wqQ;
   
-  public a$a(String paramString, r paramr, LinkedList<abn> paramLinkedList)
+  public a$a(String paramString, r paramr, LinkedList<abu> paramLinkedList)
   {
     this.TAG = paramString;
-    this.jda = paramr;
-    this.sKS = paramLinkedList;
+    this.lTz = paramr;
+    this.wqP = paramLinkedList;
   }
   
   public final void run()
   {
     AppMethodBeat.i(122399);
     int i;
-    if (this.jda != null)
+    if (this.lTz != null)
     {
-      i = this.jda.jeB;
-      if ((i == 3) || ((!this.jda.cQp) && ((i == 1) || (i == 2) || (i == 8))))
+      i = this.lTz.lVa;
+      if ((i == 3) || ((!this.lTz.dgo) && ((i == 1) || (i == 2) || (i == 8))))
       {
-        this.sKT = 0;
-        Iterator localIterator = this.sKS.iterator();
+        this.wqQ = 0;
+        Iterator localIterator = this.wqP.iterator();
         while (localIterator.hasNext())
         {
-          Object localObject1 = (abn)localIterator.next();
-          Object localObject2 = z.a(((abn)localObject1).Lmt);
-          if (((abn)localObject1).Lms == 5) {
+          Object localObject1 = (abu)localIterator.next();
+          Object localObject2 = z.a(((abu)localObject1).SnH);
+          if (((abu)localObject1).SnG == 5) {
             try
             {
-              localObject1 = ((de)new de().parseFrom((byte[])localObject2)).KHl.toString();
-              localObject2 = ((l)g.af(l.class)).aSN().Kn((String)localObject1);
-              if ((((String)localObject1).endsWith("@chatroom")) && (((ax)localObject2).fuH == 0)) {
-                this.sKT += 1;
+              localObject1 = ((db)new db().parseFrom((byte[])localObject2)).RID.toString();
+              localObject2 = ((n)h.ae(n.class)).bbL().RG((String)localObject1);
+              if ((((String)localObject1).endsWith("@chatroom")) && (((ax)localObject2).hDj == 0)) {
+                this.wqQ += 1;
               }
             }
             catch (IOException localIOException)
@@ -61,13 +61,13 @@ final class a$a
             }
           }
         }
-        if (this.sKT > 0)
+        if (this.wqQ > 0)
         {
-          if (this.sKT > 5) {
+          if (this.wqQ > 5) {
             break label330;
           }
-          e.Cxv.idkeyStat(202L, this.sKT, 1L, false);
-          Log.i(this.TAG, "muteroom idkeyStat:muteroomNotNotifyNum = " + this.sKT);
+          f.Iyx.idkeyStat(202L, this.wqQ, 1L, false);
+          Log.i(this.TAG, "muteroom idkeyStat:muteroomNotNotifyNum = " + this.wqQ);
           switch (i)
           {
           }
@@ -80,36 +80,36 @@ final class a$a
       AppMethodBeat.o(122399);
       return;
       label330:
-      if (this.sKT <= 10)
+      if (this.wqQ <= 10)
       {
-        e.Cxv.idkeyStat(202L, 6L, 1L, false);
+        f.Iyx.idkeyStat(202L, 6L, 1L, false);
         break;
       }
-      if (this.sKT <= 15)
+      if (this.wqQ <= 15)
       {
-        e.Cxv.idkeyStat(202L, 7L, 1L, false);
+        f.Iyx.idkeyStat(202L, 7L, 1L, false);
         break;
       }
-      if (this.sKT <= 20)
+      if (this.wqQ <= 20)
       {
-        e.Cxv.idkeyStat(202L, 8L, 1L, false);
+        f.Iyx.idkeyStat(202L, 8L, 1L, false);
         break;
       }
-      e.Cxv.idkeyStat(202L, 9L, 1L, false);
+      f.Iyx.idkeyStat(202L, 9L, 1L, false);
       break;
-      e.Cxv.idkeyStat(202L, 10L, 1L, false);
+      f.Iyx.idkeyStat(202L, 10L, 1L, false);
       continue;
-      e.Cxv.idkeyStat(202L, 11L, 1L, false);
+      f.Iyx.idkeyStat(202L, 11L, 1L, false);
       continue;
-      e.Cxv.idkeyStat(202L, 12L, 1L, false);
+      f.Iyx.idkeyStat(202L, 12L, 1L, false);
       continue;
-      e.Cxv.idkeyStat(202L, 13L, 1L, false);
+      f.Iyx.idkeyStat(202L, 13L, 1L, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.roomexpt.a.a
  * JD-Core Version:    0.7.0.1
  */

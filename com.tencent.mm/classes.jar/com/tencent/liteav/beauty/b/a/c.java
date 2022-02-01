@@ -1,16 +1,15 @@
 package com.tencent.liteav.beauty.b.a;
 
-import com.tencent.liteav.basic.c.h;
+import com.tencent.liteav.basic.opengl.j;
 import com.tencent.liteav.beauty.NativeLoad;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class c
-  extends h
+  extends j
 {
   public boolean a()
   {
     AppMethodBeat.i(15001);
-    NativeLoad.getInstance();
     this.a = NativeLoad.nativeLoadGLProgram(6);
     if ((this.a != 0) && (b())) {}
     for (this.g = true;; this.g = false)
@@ -24,7 +23,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.a.c
  * JD-Core Version:    0.7.0.1
  */

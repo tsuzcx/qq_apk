@@ -3,13 +3,14 @@ package com.tencent.mm.plugin.profile.ui.newbizinfo.b;
 import android.content.Context;
 import android.text.format.DateFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.brandservice.b.c;
-import com.tencent.mm.pluginsdk.i.f;
-import com.tencent.mm.protocal.protobuf.acb;
-import com.tencent.mm.protocal.protobuf.dey;
-import com.tencent.mm.protocal.protobuf.ou;
-import com.tencent.mm.protocal.protobuf.ov;
-import com.tencent.mm.protocal.protobuf.pf;
+import com.tencent.mm.R.l;
+import com.tencent.mm.plugin.brandservice.b.d;
+import com.tencent.mm.pluginsdk.j.f;
+import com.tencent.mm.protocal.protobuf.acj;
+import com.tencent.mm.protocal.protobuf.dor;
+import com.tencent.mm.protocal.protobuf.oo;
+import com.tencent.mm.protocal.protobuf.op;
+import com.tencent.mm.protocal.protobuf.pb;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.Calendar;
@@ -22,96 +23,60 @@ import kotlin.l;
 import kotlin.o;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/profile/ui/newbizinfo/model/BizMessageAdapter;", "", "()V", "headerList", "Ljava/util/LinkedList;", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/profile/ui/newbizinfo/model/BizMessageAdapter$ItemType;", "Lcom/tencent/mm/protocal/protobuf/ProfileNotifyInfo;", "list", "Lcom/tencent/mm/protocal/protobuf/BizMessage;", "now", "Ljava/util/Calendar;", "nowDay", "", "nowYear", "<set-?>", "size", "getSize", "()I", "getDateString", "", "position", "getHeaderItem", "getHeaderItemType", "getItem", "getItemType", "update", "", "msgList", "Lcom/tencent/mm/protocal/protobuf/BizMessageList;", "updateHeader", "notifyInfo", "Companion", "ItemType", "app_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/profile/ui/newbizinfo/model/BizMessageAdapter;", "", "()V", "headerList", "Ljava/util/LinkedList;", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/profile/ui/newbizinfo/model/BizMessageAdapter$ItemType;", "Lcom/tencent/mm/protocal/protobuf/ProfileNotifyInfo;", "list", "Lcom/tencent/mm/protocal/protobuf/BizMessage;", "now", "Ljava/util/Calendar;", "nowDay", "", "nowYear", "<set-?>", "size", "getSize", "()I", "getDateString", "", "position", "getHeaderItem", "getHeaderItemType", "getItem", "getItemType", "update", "", "msgList", "Lcom/tencent/mm/protocal/protobuf/BizMessageList;", "updateHeader", "notifyInfo", "Companion", "ItemType", "app_release"})
 public final class a
 {
-  public static final a.a Bke;
-  private final LinkedList<o<b, dey>> Bka;
-  private final Calendar Bkb;
-  private final int Bkc;
-  private final int Bkd;
-  private final LinkedList<o<b, ou>> gCs;
+  public static final a.a Hex;
+  private final LinkedList<o<b, dor>> Het;
+  private final Calendar Heu;
+  private final int Hev;
+  private final int Hew;
+  private final LinkedList<o<b, oo>> jmy;
   
   static
   {
     AppMethodBeat.i(169910);
-    Bke = new a.a((byte)0);
+    Hex = new a.a((byte)0);
     AppMethodBeat.o(169910);
   }
   
   public a()
   {
     AppMethodBeat.i(39633);
-    this.gCs = new LinkedList();
-    this.Bka = new LinkedList();
+    this.jmy = new LinkedList();
+    this.Het = new LinkedList();
     Calendar localCalendar = Calendar.getInstance();
     localCalendar.setTime(new Date());
-    p.g(localCalendar, "Calendar.getInstance().apply { time = Date() }");
-    this.Bkb = localCalendar;
-    this.Bkc = this.Bkb.get(6);
-    this.Bkd = this.Bkb.get(1);
+    p.j(localCalendar, "Calendar.getInstance().apply { time = Date() }");
+    this.Heu = localCalendar;
+    this.Hev = this.Heu.get(6);
+    this.Hew = this.Heu.get(1);
     AppMethodBeat.o(39633);
   }
   
-  private final b UV(int paramInt)
+  private final b abB(int paramInt)
   {
     AppMethodBeat.i(169907);
-    b localb = (b)((o)this.Bka.get(paramInt)).first;
+    b localb = (b)((o)this.Het.get(paramInt)).Mx;
     AppMethodBeat.o(169907);
     return localb;
   }
   
-  private final dey UW(int paramInt)
+  private final dor abC(int paramInt)
   {
     AppMethodBeat.i(169909);
-    dey localdey = (dey)((o)this.Bka.get(paramInt)).second;
+    dor localdor = (dor)((o)this.Het.get(paramInt)).My;
     AppMethodBeat.o(169909);
-    return localdey;
+    return localdor;
   }
   
-  public final String UT(int paramInt)
+  public final void a(dor paramdor)
   {
-    AppMethodBeat.i(230660);
-    Object localObject1 = MMApplicationContext.getContext();
-    UU(paramInt);
-    Object localObject2 = getItem(paramInt);
-    if (localObject2 == null)
+    AppMethodBeat.i(281124);
+    if ((paramdor != null) && (d.cyZ()))
     {
-      localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizMessage");
-      AppMethodBeat.o(230660);
-      throw ((Throwable)localObject1);
-    }
-    long l = ((ou)localObject2).KVq.LmE * 1000L;
-    localObject2 = Calendar.getInstance();
-    ((Calendar)localObject2).setTime(new Date(l));
-    p.g(localObject2, "Calendar.getInstance().apply { time = Date(date) }");
-    DateFormat.format((CharSequence)((Context)localObject1).getString(2131760843), l);
-    localObject1 = f.y((Context)localObject1, l).toString();
-    AppMethodBeat.o(230660);
-    return localObject1;
-  }
-  
-  public final b UU(int paramInt)
-  {
-    AppMethodBeat.i(39631);
-    if (paramInt < this.Bka.size())
-    {
-      localb = UV(paramInt);
-      AppMethodBeat.o(39631);
-      return localb;
-    }
-    b localb = (b)((o)this.gCs.get(paramInt - this.Bka.size())).first;
-    AppMethodBeat.o(39631);
-    return localb;
-  }
-  
-  public final void a(dey paramdey)
-  {
-    AppMethodBeat.i(230658);
-    if ((paramdey != null) && (c.clv()))
-    {
-      LinkedList localLinkedList = paramdey.MJY;
-      p.g(localLinkedList, "notifyInfo.notify_list");
+      LinkedList localLinkedList = paramdor.TVR;
+      p.j(localLinkedList, "notifyInfo.notify_list");
       if (((Collection)localLinkedList).isEmpty()) {
         break label83;
       }
@@ -122,88 +87,124 @@ public final class a
       if (i != 0)
       {
         Log.i("MicroMsg.BizMessageAdapter", "alvinluo updateHeader add video channel");
-        this.Bka.clear();
-        this.Bka.add(new o(b.Bkm, paramdey));
+        this.Het.clear();
+        this.Het.add(new o(b.HeF, paramdor));
       }
-      AppMethodBeat.o(230658);
+      AppMethodBeat.o(281124);
       return;
     }
   }
   
-  public final void b(ov paramov)
+  public final b abA(int paramInt)
   {
-    AppMethodBeat.i(230657);
-    p.h(paramov, "msgList");
-    this.gCs.clear();
-    p.g(Calendar.getInstance(), "Calendar.getInstance()");
+    AppMethodBeat.i(39631);
+    if (paramInt < this.Het.size())
+    {
+      localb = abB(paramInt);
+      AppMethodBeat.o(39631);
+      return localb;
+    }
+    b localb = (b)((o)this.jmy.get(paramInt - this.Het.size())).Mx;
+    AppMethodBeat.o(39631);
+    return localb;
+  }
+  
+  public final String abz(int paramInt)
+  {
+    AppMethodBeat.i(281127);
+    Object localObject1 = MMApplicationContext.getContext();
+    abA(paramInt);
+    Object localObject2 = getItem(paramInt);
+    if (localObject2 == null)
+    {
+      localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizMessage");
+      AppMethodBeat.o(281127);
+      throw ((Throwable)localObject1);
+    }
+    long l = ((oo)localObject2).RWw.SnX * 1000L;
+    localObject2 = Calendar.getInstance();
+    ((Calendar)localObject2).setTime(new Date(l));
+    p.j(localObject2, "Calendar.getInstance().apply { time = Date(date) }");
+    DateFormat.format((CharSequence)((Context)localObject1).getString(R.l.fmt_normal_time), l);
+    localObject1 = f.A((Context)localObject1, l).toString();
+    AppMethodBeat.o(281127);
+    return localObject1;
+  }
+  
+  public final void b(op paramop)
+  {
+    AppMethodBeat.i(281122);
+    p.k(paramop, "msgList");
+    this.jmy.clear();
+    p.j(Calendar.getInstance(), "Calendar.getInstance()");
     new Date();
-    Object localObject = paramov.KVw;
-    p.g(localObject, "msgList.Msg");
+    Object localObject = paramop.RWC;
+    p.j(localObject, "msgList.Msg");
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      ou localou = (ou)((Iterator)localObject).next();
-      this.gCs.add(new o(b.Bkj, localou));
-      this.gCs.add(new o(b.Bkk, localou));
+      oo localoo = (oo)((Iterator)localObject).next();
+      this.jmy.add(new o(b.HeC, localoo));
+      this.jmy.add(new o(b.HeD, localoo));
     }
-    paramov = paramov.KVx;
-    if (paramov != null)
+    paramop = paramop.RWD;
+    if (paramop != null)
     {
-      if (paramov.KWa == 0) {
-        this.gCs.add(new o(b.Bkl, new ou()));
+      if (paramop.RXo == 0) {
+        this.jmy.add(new o(b.HeE, new oo()));
       }
-      AppMethodBeat.o(230657);
+      AppMethodBeat.o(281122);
       return;
     }
-    AppMethodBeat.o(230657);
+    AppMethodBeat.o(281122);
   }
   
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(169908);
-    if (paramInt < this.Bka.size())
+    if (paramInt < this.Het.size())
     {
-      localObject = UW(paramInt);
+      localObject = abC(paramInt);
       AppMethodBeat.o(169908);
       return localObject;
     }
-    Object localObject = ((o)this.gCs.get(paramInt - this.Bka.size())).second;
+    Object localObject = ((o)this.jmy.get(paramInt - this.Het.size())).My;
     AppMethodBeat.o(169908);
     return localObject;
   }
   
   public final int getSize()
   {
-    AppMethodBeat.i(230659);
-    int i = this.gCs.size();
-    int j = this.Bka.size();
-    AppMethodBeat.o(230659);
+    AppMethodBeat.i(281125);
+    int i = this.jmy.size();
+    int j = this.Het.size();
+    AppMethodBeat.o(281125);
     return i + j;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/profile/ui/newbizinfo/model/BizMessageAdapter$ItemType;", "", "(Ljava/lang/String;I)V", "SectionToday", "SectionYesterday", "SectionThisWeek", "SectionThisYear", "SectionFullDate", "Message", "Loading", "VideoChannel", "app_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/profile/ui/newbizinfo/model/BizMessageAdapter$ItemType;", "", "(Ljava/lang/String;I)V", "SectionToday", "SectionYesterday", "SectionThisWeek", "SectionThisYear", "SectionFullDate", "Message", "Loading", "VideoChannel", "app_release"})
   public static enum b
   {
     static
     {
       AppMethodBeat.i(39628);
       b localb1 = new b("SectionToday", 0);
-      Bkf = localb1;
+      Hey = localb1;
       b localb2 = new b("SectionYesterday", 1);
-      Bkg = localb2;
+      Hez = localb2;
       b localb3 = new b("SectionThisWeek", 2);
-      Bkh = localb3;
+      HeA = localb3;
       b localb4 = new b("SectionThisYear", 3);
-      Bki = localb4;
+      HeB = localb4;
       b localb5 = new b("SectionFullDate", 4);
-      Bkj = localb5;
+      HeC = localb5;
       b localb6 = new b("Message", 5);
-      Bkk = localb6;
+      HeD = localb6;
       b localb7 = new b("Loading", 6);
-      Bkl = localb7;
+      HeE = localb7;
       b localb8 = new b("VideoChannel", 7);
-      Bkm = localb8;
-      Bkn = new b[] { localb1, localb2, localb3, localb4, localb5, localb6, localb7, localb8 };
+      HeF = localb8;
+      HeG = new b[] { localb1, localb2, localb3, localb4, localb5, localb6, localb7, localb8 };
       AppMethodBeat.o(39628);
     }
     
@@ -212,7 +213,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.newbizinfo.b.a
  * JD-Core Version:    0.7.0.1
  */

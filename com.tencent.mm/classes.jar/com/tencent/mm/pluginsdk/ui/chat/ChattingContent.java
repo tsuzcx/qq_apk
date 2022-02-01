@@ -10,8 +10,8 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class ChattingContent
   extends FrameLayout
 {
-  private int KmP = -1;
-  private int KmQ = 0;
+  private int RnB = -1;
+  private int RnC = 0;
   
   public ChattingContent(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -41,7 +41,7 @@ public class ChattingContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.ChattingContent
  * JD-Core Version:    0.7.0.1
  */

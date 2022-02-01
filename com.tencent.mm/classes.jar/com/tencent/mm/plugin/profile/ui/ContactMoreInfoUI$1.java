@@ -12,7 +12,7 @@ final class ContactMoreInfoUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(27026);
-    this.BeD.finish();
+    this.GYA.finish();
     AppMethodBeat.o(27026);
     return true;
   }

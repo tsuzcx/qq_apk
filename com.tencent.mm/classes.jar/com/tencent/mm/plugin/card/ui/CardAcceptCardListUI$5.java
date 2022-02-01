@@ -13,13 +13,13 @@ final class CardAcceptCardListUI$5
   {
     AppMethodBeat.i(113153);
     paramDialogInterface.dismiss();
-    CardAcceptCardListUI.a(this.pYO, 2);
+    CardAcceptCardListUI.a(this.tuK, 2);
     AppMethodBeat.o(113153);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardAcceptCardListUI.5
  * JD-Core Version:    0.7.0.1
  */

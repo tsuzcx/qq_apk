@@ -4,12 +4,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build.VERSION;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.b;
-import android.support.v7.widget.RecyclerView.v;
-import android.support.v7.widget.w;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,12 +15,22 @@ import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
+import androidx.recyclerview.widget.RecyclerView.v;
+import androidx.recyclerview.widget.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.d;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
+import com.tencent.mm.ah.a.l;
 import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.at;
-import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.aw;
+import com.tencent.mm.ui.base.o;
 import com.tencent.mm.ui.widget.cedit.edit.CustomTextView;
 import com.tencent.mm.ui.widget.cedit.edit.b.p;
 import com.tencent.mm.ui.widget.edittext.a.c;
@@ -44,59 +48,59 @@ import java.util.Set;
 
 public final class a
 {
-  CustomTextView QIo;
-  ImageView QLA;
-  public boolean QLB;
-  private Menu QLC;
-  Map<Integer, CharSequence> QLD;
-  private int[] QLE;
-  private b.p QLF;
-  Runnable QLG;
-  a QLy;
-  List<a.c> QLz;
+  CustomTextView Yhe;
+  a Ykq;
+  List<a.c> Ykr;
+  ImageView Yks;
+  public boolean Ykt;
+  private Menu Yku;
+  Map<Integer, CharSequence> Ykv;
+  private int[] Ykw;
+  private b.p Ykx;
+  Runnable Yky;
   View mContentView;
   Context mContext;
   private int mHeight;
   RecyclerView mRecyclerView;
   private int mWidth;
-  public PopupWindow qQv;
+  public PopupWindow usB;
   
   public a(CustomTextView paramCustomTextView)
   {
-    AppMethodBeat.i(206046);
-    this.QLB = false;
-    this.QLD = new HashMap();
-    this.QLE = new int[2];
-    this.QLF = new b.p()
+    AppMethodBeat.i(195427);
+    this.Ykt = false;
+    this.Ykv = new HashMap();
+    this.Ykw = new int[2];
+    this.Ykx = new b.p()
     {
-      public final void i(int paramAnonymousInt1, int paramAnonymousInt2, boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
+      public final void h(int paramAnonymousInt1, int paramAnonymousInt2, boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
       {
-        AppMethodBeat.i(206039);
-        a.this.qQv.dismiss();
+        AppMethodBeat.i(191418);
+        a.this.usB.dismiss();
         a locala = a.this;
-        locala.QIo.removeCallbacks(locala.QLG);
-        locala.QIo.postDelayed(locala.QLG, 100L);
-        AppMethodBeat.o(206039);
+        locala.Yhe.removeCallbacks(locala.Yky);
+        locala.Yhe.postDelayed(locala.Yky, 100L);
+        AppMethodBeat.o(191418);
       }
     };
-    this.QLG = new Runnable()
+    this.Yky = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(206040);
-        a.this.Dd(false);
-        AppMethodBeat.o(206040);
+        AppMethodBeat.i(204046);
+        a.this.Hz(false);
+        AppMethodBeat.o(204046);
       }
     };
-    this.QIo = paramCustomTextView;
+    this.Yhe = paramCustomTextView;
     this.mContext = paramCustomTextView.getContext();
-    this.mContentView = LayoutInflater.from(this.mContext).inflate(2131495181, null);
+    this.mContentView = LayoutInflater.from(this.mContext).inflate(a.h.layout_operate_windows, null);
     this.mContentView.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
     this.mWidth = this.mContentView.getMeasuredWidth();
     this.mHeight = this.mContentView.getMeasuredHeight();
-    this.qQv = new PopupWindow(this.mContentView, -2, -2, false);
-    this.qQv.setClippingEnabled(false);
-    this.mRecyclerView = ((RecyclerView)this.mContentView.findViewById(2131307200));
+    this.usB = new PopupWindow(this.mContentView, -2, -2, false);
+    this.usB.setClippingEnabled(false);
+    this.mRecyclerView = ((RecyclerView)this.mContentView.findViewById(a.g.rv_list));
     paramCustomTextView = new LinearLayoutManager(0, false);
     this.mRecyclerView.setLayoutManager(paramCustomTextView);
     paramCustomTextView = new LinkedList();
@@ -104,66 +108,66 @@ public final class a
     paramCustomTextView.add(new a.c(this.mContext.getResources().getString(17039363), 16908320, 9));
     paramCustomTextView.add(new a.c(this.mContext.getResources().getString(17039361), 16908321, 9));
     paramCustomTextView.add(new a.c(this.mContext.getResources().getString(17039371), 16908322));
-    this.QLz = paramCustomTextView;
-    this.QLy = new a(this.QLz, new a.e()
+    this.Ykr = paramCustomTextView;
+    this.Ykq = new a(this.Ykr, new a.e()
     {
-      public final void A(List<a.c> paramAnonymousList, int paramAnonymousInt) {}
+      public final void B(List<a.c> paramAnonymousList, int paramAnonymousInt) {}
       
       public final void a(View paramAnonymousView, a.c paramAnonymousc, String paramAnonymousString)
       {
-        AppMethodBeat.i(206038);
+        AppMethodBeat.i(195603);
         a locala = a.this;
         switch (paramAnonymousc.id)
         {
         }
         for (;;)
         {
-          if ((locala.QLD.containsKey(Integer.valueOf(paramAnonymousc.id))) && (locala.QIo.getAdaptText() != null)) {}
+          if ((locala.Ykv.containsKey(Integer.valueOf(paramAnonymousc.id))) && (locala.Yhe.getAdaptText() != null)) {}
           try
           {
-            locala.QIo.getAdaptText().onTextContextMenuItem(paramAnonymousc.id);
-            locala.QIo.gZE();
-            if (locala.QIo.getMenuCallback() != null) {
-              locala.QIo.getMenuCallback().a(paramAnonymousView, paramAnonymousc, paramAnonymousString);
+            locala.Yhe.getAdaptText().onTextContextMenuItem(paramAnonymousc.id);
+            locala.Yhe.iaB();
+            if (locala.Yhe.getMenuCallback() != null) {
+              locala.Yhe.getMenuCallback().a(paramAnonymousView, paramAnonymousc, paramAnonymousString);
             }
-            AppMethodBeat.o(206038);
+            AppMethodBeat.o(195603);
             return;
-            locala.QIo.gZJ();
+            locala.Yhe.iaG();
             continue;
-            locala.QIo.onTextContextMenuItem(16908320);
+            locala.Yhe.onTextContextMenuItem(16908320);
             continue;
-            locala.QIo.onTextContextMenuItem(16908321);
+            locala.Yhe.onTextContextMenuItem(16908321);
             continue;
-            locala.QIo.onTextContextMenuItem(16908322);
+            locala.Yhe.onTextContextMenuItem(16908322);
           }
           catch (Throwable localThrowable)
           {
             for (;;)
             {
               Log.printErrStackTrace("cmEdit.OperateWindow", localThrowable, "adaptText item err %s %s", new Object[] { paramAnonymousc.name, Integer.valueOf(paramAnonymousc.id) });
-              com.tencent.mm.ui.widget.cedit.api.b.aow(11);
+              com.tencent.mm.ui.widget.cedit.api.b.axG(11);
             }
           }
         }
       }
     });
-    this.mRecyclerView.setAdapter(this.QLy);
-    paramCustomTextView = new w(this.mContext, 0);
-    paramCustomTextView.setDrawable(new ColorDrawable(this.mContext.getResources().getColor(2131100649)));
+    this.mRecyclerView.setAdapter(this.Ykq);
+    paramCustomTextView = new i(this.mContext, 0);
+    paramCustomTextView.t(new ColorDrawable(this.mContext.getResources().getColor(a.d.input_menu_divider)));
     this.mRecyclerView.a(paramCustomTextView);
-    this.QLA = ((ImageView)this.mContentView.findViewById(2131299376));
-    this.qQv.setAnimationStyle(2131821236);
+    this.Yks = ((ImageView)this.mContentView.findViewById(a.g.cursor_iv));
+    this.usB.setAnimationStyle(a.l.OperateItemAnim);
     Log.i("cmEdit.OperateWindow", "new OpWindow @%s", new Object[] { Integer.valueOf(hashCode()) });
-    AppMethodBeat.o(206046);
+    AppMethodBeat.o(195427);
   }
   
   private static boolean a(TextView paramTextView, Menu paramMenu)
   {
-    AppMethodBeat.i(206049);
+    AppMethodBeat.i(195454);
     if (paramTextView == null)
     {
       Log.i("cmEdit.OperateWindow", "populateMenuItems fail null");
-      AppMethodBeat.o(206049);
+      AppMethodBeat.o(195454);
       return false;
     }
     try
@@ -173,7 +177,7 @@ public final class a
       Object localObject3 = ((Field)localObject1).get(paramTextView);
       Class localClass2 = Class.forName("android.widget.Editor");
       Class localClass1 = Class.forName("android.widget.Editor$TextActionModeCallback");
-      Object localObject2 = paramTextView.getTag(2131309018);
+      Object localObject2 = paramTextView.getTag(a.g.text_view_callback);
       localObject1 = localObject2;
       if (localObject2 == null)
       {
@@ -188,9 +192,9 @@ public final class a
         localObject2 = localClass1.getDeclaredMethod("populateMenuWithItems", new Class[] { Menu.class });
         ((Method)localObject2).setAccessible(true);
         ((Method)localObject2).invoke(localObject1, new Object[] { paramMenu });
-        paramTextView.setTag(2131309018, localObject1);
+        paramTextView.setTag(a.g.text_view_callback, localObject1);
         Log.i("cmEdit.OperateWindow", "populateMenuItems succ");
-        AppMethodBeat.o(206049);
+        AppMethodBeat.o(195454);
         return true;
         label195:
         localObject1 = localClass1.getDeclaredConstructor(new Class[] { localClass2, Boolean.TYPE });
@@ -201,38 +205,38 @@ public final class a
     catch (Throwable paramTextView)
     {
       Log.e("cmEdit.OperateWindow", "populateMenuItems err:%s", new Object[] { Util.stackTraceToString(paramTextView) });
-      com.tencent.mm.ui.widget.cedit.api.b.aow(5);
-      AppMethodBeat.o(206049);
+      com.tencent.mm.ui.widget.cedit.api.b.axG(5);
+      AppMethodBeat.o(195454);
     }
   }
   
-  private void g(Menu paramMenu)
+  private void h(Menu paramMenu)
   {
-    AppMethodBeat.i(206048);
-    if ((paramMenu != null) && (this.QIo.getReuseItems().size() > 0))
+    AppMethodBeat.i(195446);
+    if ((paramMenu != null) && (this.Yhe.getReuseItems().size() > 0))
     {
       int i = 0;
       while (i < paramMenu.size())
       {
         MenuItem localMenuItem = paramMenu.getItem(i);
         Log.d("cmEdit.OperateWindow", String.format("filterReuseMenus:%s", new Object[] { localMenuItem.getTitle() }));
-        if (this.QIo.getReuseItems().contains(localMenuItem.getTitle()))
+        if (this.Yhe.getReuseItems().contains(localMenuItem.getTitle()))
         {
           Log.d("cmEdit.OperateWindow", String.format("reuse bingo:%s", new Object[] { localMenuItem.getTitle() }));
-          this.QLD.put(Integer.valueOf(localMenuItem.getItemId()), localMenuItem.getTitle());
+          this.Ykv.put(Integer.valueOf(localMenuItem.getItemId()), localMenuItem.getTitle());
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(206048);
+    AppMethodBeat.o(195446);
   }
   
-  private void haW()
+  private void ibV()
   {
-    AppMethodBeat.i(206047);
-    int i = this.QIo.getText().length();
-    int j = this.QIo.getSelectionStart();
-    int k = this.QIo.getSelectionEnd();
+    AppMethodBeat.i(195440);
+    int i = this.Yhe.getText().length();
+    int j = this.Yhe.getSelectionStart();
+    int k = this.Yhe.getSelectionEnd();
     if ((i > 0) && (j == 0) && (k == i)) {
       i = 1;
     }
@@ -242,11 +246,11 @@ public final class a
     for (;;)
     {
       localLinkedList = new LinkedList();
-      localObject1 = this.QLz.iterator();
+      localObject1 = this.Ykr.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (a.c)((Iterator)localObject1).next();
-        if ((((a.c)localObject2).QPF & i) != 0) {
+        if ((((a.c)localObject2).Yoq & i) != 0) {
           localLinkedList.add(localObject2);
         }
       }
@@ -262,71 +266,71 @@ public final class a
         i = 8;
       }
     }
-    this.QLD.clear();
-    if (this.QIo.gZN())
+    this.Ykv.clear();
+    if (this.Yhe.iaK())
     {
       Log.i("cmEdit.OperateWindow", "tryGetMenus");
       long l1 = System.currentTimeMillis();
-      localObject1 = this.QIo;
-      if (this.QLC == null) {
-        this.QLC = new m(this.mContext);
+      localObject1 = this.Yhe;
+      if (this.Yku == null) {
+        this.Yku = new o(this.mContext);
       }
-      this.QLC.clear();
-      boolean bool = a(((CustomTextView)localObject1).getAdaptText(), this.QLC);
-      g(this.QLC);
+      this.Yku.clear();
+      boolean bool = a(((CustomTextView)localObject1).getAdaptText(), this.Yku);
+      h(this.Yku);
       long l2 = System.currentTimeMillis();
       Log.i("cmEdit.OperateWindow", String.format("startInsertionActionMode SDK_INT:%s, exemptRes:%s ,res:%s, duration:%s", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT), Boolean.TRUE, Boolean.valueOf(bool), Long.valueOf(l2 - l1) }));
     }
-    if (this.QLD.size() > 0)
+    if (this.Ykv.size() > 0)
     {
-      localObject1 = this.QLD.entrySet().iterator();
+      localObject1 = this.Ykv.entrySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (Map.Entry)((Iterator)localObject1).next();
         localLinkedList.add(new a.c(((CharSequence)((Map.Entry)localObject2).getValue()).toString(), ((Integer)((Map.Entry)localObject2).getKey()).intValue()));
       }
     }
-    if (this.QIo.getMenuCallback() != null) {
-      this.QIo.getMenuCallback().A(localLinkedList, i);
+    if (this.Yhe.getMenuCallback() != null) {
+      this.Yhe.getMenuCallback().B(localLinkedList, i);
     }
-    a.a(this.QLy, localLinkedList);
-    this.QLy.atj.notifyChanged();
-    AppMethodBeat.o(206047);
+    a.a(this.Ykq, localLinkedList);
+    this.Ykq.alc.notifyChanged();
+    AppMethodBeat.o(195440);
   }
   
-  final void Dd(boolean paramBoolean)
+  final void Hz(boolean paramBoolean)
   {
-    AppMethodBeat.i(206051);
+    AppMethodBeat.i(195467);
     if (paramBoolean)
     {
-      localObject = this.qQv.getContentView();
+      localObject = this.usB.getContentView();
       ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
       this.mWidth = ((View)localObject).getMeasuredWidth();
       this.mHeight = ((View)localObject).getMeasuredHeight();
     }
-    this.QIo.getLocationInWindow(this.QLE);
-    Object localObject = this.QIo.getLayout();
+    this.Yhe.getLocationInWindow(this.Ykw);
+    Object localObject = this.Yhe.getLayout();
     int i1 = com.tencent.mm.ui.widget.textview.b.getScreenWidth(this.mContext);
-    int m = at.fromDPToPix(this.mContext, 10);
+    int m = aw.fromDPToPix(this.mContext, 10);
     int i = i1 - m * 2;
     if (this.mWidth >= i) {
       this.mWidth = i;
     }
-    int j = this.QIo.getSelectionStart();
-    i = this.QIo.getSelectionEnd();
+    int j = this.Yhe.getSelectionStart();
+    i = this.Yhe.getSelectionEnd();
     int k = ((int)((Layout)localObject).getPrimaryHorizontal(j) + (int)((Layout)localObject).getPrimaryHorizontal(i)) / 2;
-    int n = this.QLE[0];
+    int n = this.Ykw[0];
     int i2 = this.mWidth / 2;
-    int i3 = this.QIo.getPaddingLeft();
+    int i3 = this.Yhe.getPaddingLeft();
     if ((j != i) && (((Layout)localObject).getLineForOffset(j) != ((Layout)localObject).getLineForOffset(i))) {}
-    for (i = this.QLE[0] + this.QIo.getWidth() / 2 - this.mWidth / 2;; i = k + n - i2 + i3)
+    for (i = this.Ykw[0] + this.Yhe.getWidth() / 2 - this.mWidth / 2;; i = k + n - i2 + i3)
     {
-      k = ((Layout)localObject).getLineTop(((Layout)localObject).getLineForOffset(j)) + this.QLE[1] - this.mHeight + this.QIo.getPaddingTop() - this.QIo.getScrollY() - at.fromDPToPix(this.mContext, 5);
-      n = this.QLE[1] - this.mHeight - at.fromDPToPix(this.mContext, 5);
-      i2 = this.QLE[1];
-      i3 = this.QIo.getHeight();
+      k = ((Layout)localObject).getLineTop(((Layout)localObject).getLineForOffset(j)) + this.Ykw[1] - this.mHeight + this.Yhe.getPaddingTop() - this.Yhe.getScrollY() - aw.fromDPToPix(this.mContext, 5);
+      n = this.Ykw[1] - this.mHeight - aw.fromDPToPix(this.mContext, 5);
+      i2 = this.Ykw[1];
+      i3 = this.Yhe.getHeight();
       int i4 = this.mHeight;
-      int i5 = at.fromDPToPix(this.mContext, 5);
+      int i5 = aw.fromDPToPix(this.mContext, 5);
       if (i <= m) {}
       for (j = m;; j = i)
       {
@@ -337,7 +341,7 @@ public final class a
         {
           if (k > i2 + i3 - i4 - i5)
           {
-            AppMethodBeat.o(206051);
+            AppMethodBeat.o(195467);
             return;
           }
           if (this.mWidth + j > i1) {
@@ -345,36 +349,36 @@ public final class a
           }
           for (;;)
           {
-            ((LinearLayout.LayoutParams)this.QLA.getLayoutParams()).leftMargin = (i - j);
+            ((LinearLayout.LayoutParams)this.Yks.getLayoutParams()).leftMargin = (i - j);
             if (Build.VERSION.SDK_INT >= 21) {
-              this.qQv.setElevation(8.0F);
+              this.usB.setElevation(8.0F);
             }
             localObject = this.mRecyclerView.getLayoutManager();
             if ((localObject instanceof LinearLayoutManager))
             {
               localObject = (LinearLayoutManager)localObject;
               com.tencent.mm.hellhoundlib.b.a locala = c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-              com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.axQ(), "com/tencent/mm/ui/widget/cedit/menu/OperateWindow", "positionView", "(Z)V", "Undefined", "scrollToPosition", "(I)V");
-              ((LinearLayoutManager)localObject).scrollToPosition(((Integer)locala.pG(0)).intValue());
-              com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/ui/widget/cedit/menu/OperateWindow", "positionView", "(Z)V", "Undefined", "scrollToPosition", "(I)V");
+              com.tencent.mm.hellhoundlib.a.a.b(localObject, locala.aFh(), "com/tencent/mm/ui/widget/cedit/menu/OperateWindow", "positionView", "(Z)V", "Undefined", "scrollToPosition", "(I)V");
+              ((LinearLayoutManager)localObject).scrollToPosition(((Integer)locala.sf(0)).intValue());
+              com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/ui/widget/cedit/menu/OperateWindow", "positionView", "(Z)V", "Undefined", "scrollToPosition", "(I)V");
             }
-            this.qQv.setWidth(this.mWidth);
+            this.usB.setWidth(this.mWidth);
             try
             {
-              if (this.qQv.isShowing())
+              if (this.usB.isShowing())
               {
-                this.qQv.update(j, k, this.qQv.getWidth(), this.qQv.getHeight());
-                AppMethodBeat.o(206051);
+                this.usB.update(j, k, this.usB.getWidth(), this.usB.getHeight());
+                AppMethodBeat.o(195467);
                 return;
               }
             }
             catch (Exception localException)
             {
-              AppMethodBeat.o(206051);
+              AppMethodBeat.o(195467);
               return;
             }
-            this.qQv.showAtLocation(this.QIo, 0, j, k);
-            AppMethodBeat.o(206051);
+            this.usB.showAtLocation(this.Yhe, 0, j, k);
+            AppMethodBeat.o(195467);
             return;
           }
         }
@@ -384,75 +388,75 @@ public final class a
   
   public final void dismiss()
   {
-    AppMethodBeat.i(206052);
+    AppMethodBeat.i(195469);
     try
     {
-      this.QIo.getEditor().b(this.QLF);
-      this.qQv.dismiss();
-      AppMethodBeat.o(206052);
+      this.Yhe.getEditor().b(this.Ykx);
+      this.usB.dismiss();
+      AppMethodBeat.o(195469);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(206052);
+      AppMethodBeat.o(195469);
     }
   }
   
   public final void show()
   {
-    AppMethodBeat.i(206050);
-    if (this.QLB)
+    AppMethodBeat.i(195457);
+    if (this.Ykt)
     {
       Log.i("cmEdit.OperateWindow", "show after destroy @", new Object[] { Integer.valueOf(hashCode()) });
-      this.qQv.setContentView(this.mContentView);
-      this.QLB = false;
+      this.usB.setContentView(this.mContentView);
+      this.Ykt = false;
     }
-    haW();
-    Dd(true);
-    this.QIo.getEditor().a(this.QLF);
-    AppMethodBeat.o(206050);
+    ibV();
+    Hz(true);
+    this.Yhe.getEditor().a(this.Ykx);
+    AppMethodBeat.o(195457);
   }
   
   public final class a
     extends RecyclerView.a<a>
   {
-    private a.e QLI;
-    private List<a.c> qXp;
+    private a.e YkA;
+    private List<a.c> uAd;
     
     a(a.e parame)
     {
-      this.qXp = parame;
+      this.uAd = parame;
       Object localObject;
-      this.QLI = localObject;
+      this.YkA = localObject;
     }
     
     public final int getItemCount()
     {
-      AppMethodBeat.i(206043);
-      int i = this.qXp.size();
-      AppMethodBeat.o(206043);
+      AppMethodBeat.i(216264);
+      int i = this.uAd.size();
+      AppMethodBeat.o(216264);
       return i;
     }
     
     final class a
       extends RecyclerView.v
     {
-      TextView vr;
+      TextView bFR;
       
       public a(View paramView)
       {
         super();
-        AppMethodBeat.i(206042);
-        this.vr = ((TextView)paramView.findViewById(2131304617));
-        this.vr.setTextSize(1, 14.0F);
-        AppMethodBeat.o(206042);
+        AppMethodBeat.i(195518);
+        this.bFR = ((TextView)paramView.findViewById(a.g.menu_item_tv));
+        this.bFR.setTextSize(1, 14.0F);
+        AppMethodBeat.o(195518);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cedit.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -5,21 +5,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  public static boolean gNA;
-  private static Application gNz;
+  private static Application jxU;
+  public static boolean jxV;
   
-  public static Application arU()
+  public static Application ayF()
   {
-    AppMethodBeat.i(241600);
-    if (gNz == null)
+    AppMethodBeat.i(290677);
+    if (jxU == null)
     {
       localObject = new RuntimeException("Danmaku not init, please call DanmakuConfig.init()");
-      AppMethodBeat.o(241600);
+      AppMethodBeat.o(290677);
       throw ((Throwable)localObject);
     }
-    Object localObject = gNz;
-    AppMethodBeat.o(241600);
+    Object localObject = jxU;
+    AppMethodBeat.o(290677);
     return localObject;
+  }
+  
+  public static void h(Application paramApplication)
+  {
+    jxU = paramApplication;
+    jxV = false;
   }
 }
 

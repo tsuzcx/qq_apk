@@ -3,124 +3,127 @@ package com.tencent.mm.plugin.flash.b;
 import android.content.Intent;
 import android.hardware.Camera.Parameters;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
 import com.tencent.mm.plugin.facedetect.e.a;
 import com.tencent.mm.plugin.facedetect.e.a.b;
 import com.tencent.mm.plugin.facedetect.service.FaceUploadVideoService;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 
 public final class d
 {
+  Intent BBG;
+  private boolean BBH = false;
+  private Camera.Parameters BBI;
+  protected boolean BBu = false;
   protected String mAppId;
   long startTimeMs = 0L;
   int type = -1;
-  protected boolean wIl = false;
-  Intent wIw;
-  private boolean wIx = false;
-  private Camera.Parameters wIy;
   
-  public final void GA(final long paramLong)
+  public final void ND(final long paramLong)
   {
-    AppMethodBeat.i(186645);
-    if ((this.wIl) && (a.cTF().isStarted())) {
-      a.cTF().a(new a.b()
+    AppMethodBeat.i(193677);
+    if ((this.BBu) && (a.diK().isStarted())) {
+      a.diK().a(new a.b()
       {
-        public final void arD(String paramAnonymousString)
+        public final void azE(String paramAnonymousString)
         {
-          AppMethodBeat.i(186641);
+          AppMethodBeat.i(194776);
           Log.i("MicroMsg.FaceFlashManagerRecorder", "hy: video release done. using: %d ms. file path: %s", new Object[] { Long.valueOf(Util.ticksToNow(d.this.startTimeMs)), paramAnonymousString });
-          if ((Util.isNullOrNil(paramAnonymousString)) && (s.YS(paramAnonymousString)))
+          if ((Util.isNullOrNil(paramAnonymousString)) && (u.agG(paramAnonymousString)))
           {
-            AppMethodBeat.o(186641);
+            AppMethodBeat.o(194776);
             return;
           }
-          d.this.wIw = new Intent(MMApplicationContext.getContext(), FaceUploadVideoService.class);
-          d.this.wIw.putExtra("key_video_file_name", paramAnonymousString);
-          d.this.wIw.putExtra("k_bio_id", paramLong);
-          d.this.wIw.putExtra("key_face_type", d.this.type);
-          d.this.wIw.putExtra("key_app_id", d.this.mAppId);
-          AppMethodBeat.o(186641);
+          d.this.BBG = new Intent(MMApplicationContext.getContext(), FaceUploadVideoService.class);
+          d.this.BBG.putExtra("key_video_file_name", paramAnonymousString);
+          d.this.BBG.putExtra("k_bio_id", paramLong);
+          d.this.BBG.putExtra("key_face_type", d.this.type);
+          d.this.BBG.putExtra("key_app_id", d.this.mAppId);
+          AppMethodBeat.o(194776);
         }
       });
     }
-    AppMethodBeat.o(186645);
+    AppMethodBeat.o(193677);
   }
   
-  public final void aQf()
+  public final void aYW()
   {
-    AppMethodBeat.i(186646);
-    if ((this.wIl) && (this.wIy != null))
+    AppMethodBeat.i(193678);
+    if ((this.BBu) && (this.BBI != null))
     {
       Log.i("MicroMsg.FaceFlashManagerRecorder", "resetRecord");
-      if ((this.wIl) && (a.cTF().isStarted())) {
-        a.cTF().cTH();
+      if ((this.BBu) && (a.diK().isStarted()))
+      {
+        Log.i("MicroMsg.FaceFlashManagerRecorder", "releaseRecord");
+        a.diK().diM();
       }
-      b(this.wIy);
+      e(this.BBI);
     }
-    AppMethodBeat.o(186646);
+    AppMethodBeat.o(193678);
   }
   
-  public final void b(Camera.Parameters paramParameters)
+  public final void bRC()
   {
-    AppMethodBeat.i(186643);
-    if (this.wIl) {
+    AppMethodBeat.i(193676);
+    if ((this.BBu) && (!a.diK().isStarted()))
+    {
+      Log.i("MicroMsg.FaceFlashManagerRecorder", "releaseRecord");
+      a.diK().aeU();
+      this.startTimeMs = Util.currentTicks();
+    }
+    AppMethodBeat.o(193676);
+  }
+  
+  public final void e(Camera.Parameters paramParameters)
+  {
+    AppMethodBeat.i(193673);
+    if (this.BBu) {
       try
       {
-        this.wIy = paramParameters;
+        this.BBI = paramParameters;
         int i = paramParameters.getInt("rotation");
         paramParameters = paramParameters.get("preview-size").split("x");
-        a.cTF().a(i, Integer.parseInt(paramParameters[0]), Integer.parseInt(paramParameters[1]), Integer.parseInt(paramParameters[0]), Integer.parseInt(paramParameters[1]), this.wIx);
-        AppMethodBeat.o(186643);
+        a.diK().a(i, Integer.parseInt(paramParameters[0]), Integer.parseInt(paramParameters[1]), Integer.parseInt(paramParameters[0]), Integer.parseInt(paramParameters[1]), this.BBH);
+        AppMethodBeat.o(193673);
         return;
       }
       catch (Exception paramParameters) {}
     }
-    AppMethodBeat.o(186643);
+    AppMethodBeat.o(193673);
   }
   
-  public final void bFT()
+  public final boolean epH()
   {
-    AppMethodBeat.i(186644);
-    if ((this.wIl) && (!a.cTF().isStarted()))
-    {
-      a.cTF().aai();
-      this.startTimeMs = Util.currentTicks();
-    }
-    AppMethodBeat.o(186644);
+    return this.BBu;
   }
   
-  public final boolean dLe()
+  public final void epI()
   {
-    return this.wIl;
-  }
-  
-  public final void dLf()
-  {
-    AppMethodBeat.i(186647);
-    if (this.wIw != null)
+    AppMethodBeat.i(193681);
+    if (this.BBG != null)
     {
       Log.i("MicroMsg.FaceFlashManagerRecorder", "sendRequestUploadVideo");
-      c.startService(this.wIw);
-      this.wIw = null;
+      c.startService(this.BBG);
+      this.BBG = null;
     }
-    AppMethodBeat.o(186647);
+    AppMethodBeat.o(193681);
   }
   
-  public final void e(Intent paramIntent, int paramInt)
+  public final void f(Intent paramIntent, int paramInt)
   {
-    AppMethodBeat.i(186642);
-    this.wIl = paramIntent.getBooleanExtra("needVideo", false);
-    a.cTF().sUx = this.wIl;
+    AppMethodBeat.i(193667);
+    this.BBu = paramIntent.getBooleanExtra("needVideo", false);
+    a.diK().wAu = this.BBu;
     this.mAppId = paramIntent.getStringExtra("appId");
     this.type = paramInt;
     if (paramInt == 0) {
-      this.wIx = true;
+      this.BBH = true;
     }
-    Log.i("MicroMsg.FaceFlashManagerRecorder", "needVideo %s,mAppId %s acceptVoiceFromOutSide:%s", new Object[] { Boolean.valueOf(this.wIl), this.mAppId, Boolean.valueOf(this.wIx) });
-    AppMethodBeat.o(186642);
+    Log.i("MicroMsg.FaceFlashManagerRecorder", "needVideo %s,mAppId %s acceptVoiceFromOutSide:%s", new Object[] { Boolean.valueOf(this.BBu), this.mAppId, Boolean.valueOf(this.BBH) });
+    AppMethodBeat.o(193667);
   }
 }
 

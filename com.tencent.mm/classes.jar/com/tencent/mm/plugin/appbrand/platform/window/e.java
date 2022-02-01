@@ -9,7 +9,7 @@ public abstract interface e
 {
   public abstract void a(b paramb, a parama);
   
-  public abstract b btm();
+  public abstract b cgS();
   
   public static abstract interface a
   {
@@ -18,36 +18,57 @@ public abstract interface e
   
   public static enum b
   {
-    public static final b[] nEs;
-    public final int nEr;
+    public static final b[] qGC;
+    public final int qGB;
     
     static
     {
       AppMethodBeat.i(176703);
-      nEl = new b("PORTRAIT", 0, 1);
-      nEm = new b("UNSPECIFIED", 1, -1);
-      nEn = new b("LANDSCAPE_SENSOR", 2, 6);
-      nEo = new b("LANDSCAPE_LOCKED", 3, 0);
-      nEp = new b("LANDSCAPE_LEFT", 4, 8);
-      nEq = new b("LANDSCAPE_RIGHT", 5, 0);
-      nEt = new b[] { nEl, nEm, nEn, nEo, nEp, nEq };
-      nEs = new b[] { nEp, nEq, nEo, nEn };
+      qGv = new b("PORTRAIT", 0, 1);
+      qGw = new b("UNSPECIFIED", 1, -1);
+      qGx = new b("LANDSCAPE_SENSOR", 2, 6);
+      qGy = new b("LANDSCAPE_LOCKED", 3, 0);
+      qGz = new b("LANDSCAPE_LEFT", 4, 8);
+      qGA = new b("LANDSCAPE_RIGHT", 5, 0);
+      qGD = new b[] { qGv, qGw, qGx, qGy, qGz, qGA };
+      qGC = new b[] { qGz, qGA, qGy, qGx };
       AppMethodBeat.o(176703);
     }
     
     private b(int paramInt)
     {
-      this.nEr = paramInt;
+      this.qGB = paramInt;
     }
     
-    public static b aeE(String paramString)
+    public static b CE(int paramInt)
+    {
+      AppMethodBeat.i(176700);
+      Object localObject = values();
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
+      {
+        b localb = localObject[i];
+        if (localb.qGB == paramInt)
+        {
+          AppMethodBeat.o(176700);
+          return localb;
+        }
+        i += 1;
+      }
+      localObject = qGw;
+      AppMethodBeat.o(176700);
+      return localObject;
+    }
+    
+    public static b amy(String paramString)
     {
       String str = null;
       AppMethodBeat.i(176701);
       Object localObject;
       if ("landscape".equals(paramString))
       {
-        localObject = nEn;
+        localObject = qGx;
         if (localObject != null) {
           break label191;
         }
@@ -59,29 +80,29 @@ public abstract interface e
       label186:
       label191:
       label200:
-      for (int i = -1;; i = ((b)localObject).nEr)
+      for (int i = -1;; i = ((b)localObject).qGB)
       {
         Log.i("Luggage.WXA.Window.Orientation", "parseOrientationString [%s]->[%s][%d]", new Object[] { paramString, str, Integer.valueOf(i) });
         AppMethodBeat.o(176701);
         return localObject;
         if ("portrait".equals(paramString))
         {
-          localObject = nEl;
+          localObject = qGv;
           break;
         }
         if ("landscapeLeft".equals(paramString))
         {
-          localObject = nEp;
+          localObject = qGz;
           break;
         }
         if ("landscapeRight".equals(paramString))
         {
-          localObject = nEq;
+          localObject = qGA;
           break;
         }
-        if (("auto".equals(paramString)) || (nEm.name().equalsIgnoreCase(paramString)))
+        if (("auto".equals(paramString)) || (qGw.name().equalsIgnoreCase(paramString)))
         {
-          localObject = nEm;
+          localObject = qGw;
           break;
         }
         b[] arrayOfb = values();
@@ -108,9 +129,9 @@ public abstract interface e
     
     public static boolean c(b paramb)
     {
-      AppMethodBeat.i(219573);
-      boolean bool = a.contains(nEs, paramb);
-      AppMethodBeat.o(219573);
+      AppMethodBeat.i(242926);
+      boolean bool = a.contains(qGC, paramb);
+      AppMethodBeat.o(242926);
       return bool;
     }
     
@@ -119,46 +140,25 @@ public abstract interface e
       AppMethodBeat.i(176702);
       b localb = null;
       if (paramAppBrandInitConfig != null) {
-        localb = aeE(paramAppBrandInitConfig.cBG);
+        localb = amy(paramAppBrandInitConfig.cCi);
       }
       paramAppBrandInitConfig = localb;
       if (localb == null) {
-        paramAppBrandInitConfig = nEl;
+        paramAppBrandInitConfig = qGv;
       }
       AppMethodBeat.o(176702);
       return paramAppBrandInitConfig;
     }
     
-    public static b yZ(int paramInt)
-    {
-      AppMethodBeat.i(176700);
-      Object localObject = values();
-      int j = localObject.length;
-      int i = 0;
-      while (i < j)
-      {
-        b localb = localObject[i];
-        if (localb.nEr == paramInt)
-        {
-          AppMethodBeat.o(176700);
-          return localb;
-        }
-        i += 1;
-      }
-      localObject = nEm;
-      AppMethodBeat.o(176700);
-      return localObject;
-    }
-    
     public final boolean b(b paramb)
     {
-      return (this == paramb) || ((this == nEn) && (paramb == nEo)) || ((this == nEo) && (paramb == nEn));
+      return (this == paramb) || ((this == qGx) && (paramb == qGy)) || ((this == qGy) && (paramb == qGx));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.platform.window.e
  * JD-Core Version:    0.7.0.1
  */

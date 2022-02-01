@@ -16,11 +16,11 @@ public class MMFalseProgressBar
   private MMHandler mHandler;
   private boolean mIsStart;
   private float mProgress;
-  private float olt;
-  private float olu;
-  private float olv;
-  private float olw;
-  private boolean olx;
+  private float rnQ;
+  private float rnR;
+  private float rnS;
+  private float rnT;
+  private boolean rnU;
   
   public MMFalseProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,7 +33,7 @@ public class MMFalseProgressBar
     AppMethodBeat.i(135398);
     this.mIsStart = false;
     this.mProgress = 0.0F;
-    this.olx = true;
+    this.rnU = true;
     this.mHandler = new MMHandler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
@@ -62,23 +62,23 @@ public class MMFalseProgressBar
     setMax(1000);
     if (NetStatusUtil.isWifiOr4G(MMApplicationContext.getContext()))
     {
-      this.olt = 4.0F;
-      this.olu = 1.0F;
-      this.olv = 0.3F;
-      this.olw = 50.0F;
+      this.rnQ = 4.0F;
+      this.rnR = 1.0F;
+      this.rnS = 0.3F;
+      this.rnT = 50.0F;
       AppMethodBeat.o(135398);
       return;
     }
-    this.olt = 2.0F;
-    this.olu = 0.5F;
-    this.olv = 0.15F;
-    this.olw = 50.0F;
+    this.rnQ = 2.0F;
+    this.rnR = 0.5F;
+    this.rnS = 0.15F;
+    this.rnT = 50.0F;
     AppMethodBeat.o(135398);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.MMFalseProgressBar
  * JD-Core Version:    0.7.0.1
  */

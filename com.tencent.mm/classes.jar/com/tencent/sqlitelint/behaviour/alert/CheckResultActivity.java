@@ -12,6 +12,9 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.sqlitelint.R.id;
+import com.tencent.sqlitelint.R.layout;
+import com.tencent.sqlitelint.R.string;
 import com.tencent.sqlitelint.SQLiteLintIssue;
 import com.tencent.sqlitelint.behaviour.persistence.IssueStorage;
 import com.tencent.sqlitelint.util.SLog;
@@ -30,10 +33,11 @@ public class CheckResultActivity
   private void initView()
   {
     AppMethodBeat.i(52889);
-    setTitle(getString(2131757560, new Object[] { SQLiteLintUtil.extractDbName(this.mDbLabel) }));
-    ListView localListView = (ListView)findViewById(2131303226);
+    Object localObject = SQLiteLintUtil.extractDbName(this.mDbLabel);
+    setTitle(getString(R.string.check_result_title, new Object[] { localObject }));
+    localObject = (ListView)findViewById(R.id.list);
     this.mAdapter = new CheckResultListAdapter();
-    localListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    ((ListView)localObject).setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       private byte _hellAccFlag_;
       
@@ -45,14 +49,14 @@ public class CheckResultActivity
         paramAnonymousAdapterView.putExtra("issue", paramAnonymousView);
         paramAnonymousAdapterView.setClass(CheckResultActivity.this.getBaseContext(), IssueDetailActivity.class);
         paramAnonymousView = CheckResultActivity.this;
-        paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().bl(paramAnonymousAdapterView);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.axQ(), "com/tencent/sqlitelint/behaviour/alert/CheckResultActivity$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/sqlitelint/behaviour/alert/CheckResultActivity$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().bm(paramAnonymousAdapterView);
+        com.tencent.mm.hellhoundlib.a.a.b(paramAnonymousView, paramAnonymousAdapterView.aFh(), "com/tencent/sqlitelint/behaviour/alert/CheckResultActivity$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramAnonymousView, "com/tencent/sqlitelint/behaviour/alert/CheckResultActivity$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(52880);
       }
     });
-    localListView.setAdapter(this.mAdapter);
+    ((ListView)localObject).setAdapter(this.mAdapter);
     this.mAdapter.notifyDataSetChanged();
     AppMethodBeat.o(52889);
   }
@@ -77,7 +81,7 @@ public class CheckResultActivity
   
   protected int getLayoutId()
   {
-    return 2131492952;
+    return R.layout.activity_check_result;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -147,11 +151,11 @@ public class CheckResultActivity
       AppMethodBeat.i(52884);
       if (paramView == null)
       {
-        paramView = this.mInflater.inflate(2131496812, paramViewGroup, false);
+        paramView = this.mInflater.inflate(R.layout.view_check_result_item, paramViewGroup, false);
         paramViewGroup = new CheckResultActivity.ViewHolder();
-        paramViewGroup.checkResultTv = ((TextView)paramView.findViewById(2131307040));
-        paramViewGroup.diagnosisLevelTv = ((TextView)paramView.findViewById(2131299614));
-        paramViewGroup.timeTv = ((TextView)paramView.findViewById(2131309101));
+        paramViewGroup.checkResultTv = ((TextView)paramView.findViewById(R.id.result_tv));
+        paramViewGroup.diagnosisLevelTv = ((TextView)paramView.findViewById(R.id.diagnosis_level_tv));
+        paramViewGroup.timeTv = ((TextView)paramView.findViewById(R.id.time_tv));
         paramView.setTag(paramViewGroup);
       }
       for (;;)
@@ -176,7 +180,7 @@ public class CheckResultActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.sqlitelint.behaviour.alert.CheckResultActivity
  * JD-Core Version:    0.7.0.1
  */

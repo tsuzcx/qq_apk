@@ -17,54 +17,54 @@ public final class a
   {
     super(paramj, null, paramBundle);
     AppMethodBeat.i(83116);
-    LK();
-    ((h)this.ITd).setShouldCleanPkgWhenDestroy(true);
+    OB();
+    ((h)this.PPv).setShouldCleanPkgWhenDestroy(true);
     this.mContentView.setTag("game_float_view_tag");
     AppMethodBeat.o(83116);
   }
   
-  public final void D(int paramInt, String paramString1, String paramString2)
+  public final void G(int paramInt, String paramString1, String paramString2)
   {
     AppMethodBeat.i(180135);
-    hb(false);
+    hS(false);
     AppMethodBeat.o(180135);
   }
   
-  public final View Lf()
+  public final View NW()
   {
     AppMethodBeat.i(83117);
-    View localView = super.Lf();
-    this.ITf.setBackgroundColor(0);
+    View localView = super.NW();
+    this.PPx.setBackgroundColor(0);
     AppMethodBeat.o(83117);
     return localView;
   }
   
-  public final void azH(String paramString)
+  public final void aJt(String paramString)
   {
     AppMethodBeat.i(83119);
-    this.ITe.setPullDownEnabled(false);
+    this.PPw.setPullDownEnabled(false);
     AppMethodBeat.o(83119);
   }
   
-  public final boolean cpz()
+  public final boolean cDX()
   {
     return false;
   }
   
-  public final void dTA() {}
+  public final void dwZ() {}
   
-  public final void ec(String paramString, int paramInt)
+  public final void eA(String paramString, int paramInt)
   {
     AppMethodBeat.i(83120);
-    super.ec("微信游戏", paramInt);
+    super.eA("微信游戏", paramInt);
     AppMethodBeat.o(83120);
   }
   
   public final boolean onBackPressed()
   {
-    AppMethodBeat.i(186932);
-    gbL();
-    AppMethodBeat.o(186932);
+    AppMethodBeat.i(232001);
+    gUG();
+    AppMethodBeat.o(232001);
     return true;
   }
   
@@ -73,20 +73,16 @@ public final class a
     AppMethodBeat.i(83118);
     Log.i("MicroMsg.GameFloatLayerWebPage", "onForeground");
     super.onForeground();
-    ec("微信游戏", 0);
-    l locall = this.ITe;
-    locall.setPullDownEnabled(false);
-    locall.IUf.setVisibility(8);
-    locall.IUe.setBackgroundColor(0);
-    locall.setBackgroundColor(0);
+    eA("微信游戏", 0);
+    this.PPw.gUR();
     AppMethodBeat.o(83118);
   }
   
-  public final void pJ(boolean paramBoolean)
+  public final void sg(boolean paramBoolean)
   {
-    AppMethodBeat.i(186931);
-    super.pJ(paramBoolean);
-    AppMethodBeat.o(186931);
+    AppMethodBeat.i(232000);
+    super.sg(paramBoolean);
+    AppMethodBeat.o(232000);
   }
 }
 

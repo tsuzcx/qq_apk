@@ -1,116 +1,170 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
 import java.util.LinkedList;
 
 public final class dwf
-  extends dpc
+  extends com.tencent.mm.cd.a
 {
-  public fda LWi;
+  public int Ucg;
+  public eae Uch;
+  public eae Uci;
+  public eae Ucj;
+  public eae Uck;
+  public long Ucl;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(40110);
+    AppMethodBeat.i(125760);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
+      paramVarArgs.aY(1, this.Ucg);
+      if (this.Uch != null)
       {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(40110);
-        throw paramVarArgs;
+        paramVarArgs.oE(2, this.Uch.computeSize());
+        this.Uch.writeFields(paramVarArgs);
       }
-      if (this.BaseResponse != null)
+      if (this.Uci != null)
       {
-        paramVarArgs.ni(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+        paramVarArgs.oE(3, this.Uci.computeSize());
+        this.Uci.writeFields(paramVarArgs);
       }
-      if (this.LWi != null)
+      if (this.Ucj != null)
       {
-        paramVarArgs.ni(2, this.LWi.computeSize());
-        this.LWi.writeFields(paramVarArgs);
+        paramVarArgs.oE(4, this.Ucj.computeSize());
+        this.Ucj.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(40110);
+      if (this.Uck != null)
+      {
+        paramVarArgs.oE(5, this.Uck.computeSize());
+        this.Uck.writeFields(paramVarArgs);
+      }
+      paramVarArgs.bm(6, this.Ucl);
+      AppMethodBeat.o(125760);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label514;
-      }
-    }
-    label514:
-    for (paramInt = g.a.a.a.nh(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    int i;
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.LWi != null) {
-        i = paramInt + g.a.a.a.nh(2, this.LWi.computeSize());
+      i = g.a.a.b.b.a.bM(1, this.Ucg) + 0;
+      paramInt = i;
+      if (this.Uch != null) {
+        paramInt = i + g.a.a.a.oD(2, this.Uch.computeSize());
       }
-      AppMethodBeat.o(40110);
-      return i;
-      if (paramInt == 2)
+      i = paramInt;
+      if (this.Uci != null) {
+        i = paramInt + g.a.a.a.oD(3, this.Uci.computeSize());
+      }
+      paramInt = i;
+      if (this.Ucj != null) {
+        paramInt = i + g.a.a.a.oD(4, this.Ucj.computeSize());
+      }
+      i = paramInt;
+      if (this.Uck != null) {
+        i = paramInt + g.a.a.a.oD(5, this.Uck.computeSize());
+      }
+      paramInt = g.a.a.b.b.a.p(6, this.Ucl);
+      AppMethodBeat.o(125760);
+      return i + paramInt;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.iUs();
+        }
+      }
+      AppMethodBeat.o(125760);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject = (g.a.a.a.a)paramVarArgs[0];
+      dwf localdwf = (dwf)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      eae localeae;
+      switch (paramInt)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dpc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dpc.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
-          }
-        }
-        if (this.BaseResponse == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(40110);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(40110);
+      default: 
+        AppMethodBeat.o(125760);
+        return -1;
+      case 1: 
+        localdwf.Ucg = ((g.a.a.a.a)localObject).abFh.AK();
+        AppMethodBeat.o(125760);
         return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
-        dwf localdwf = (dwf)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(40110);
-          return -1;
-        case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localdwf.BaseResponse = ((BaseResponse)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(40110);
-          return 0;
-        }
-        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+      case 2: 
+        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new fda();
-          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((fda)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-          localdwf.LWi = ((fda)localObject1);
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          localeae = new eae();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localeae.dd((byte[])localObject);
+          }
+          localdwf.Uch = localeae;
           paramInt += 1;
         }
-        AppMethodBeat.o(40110);
+        AppMethodBeat.o(125760);
+        return 0;
+      case 3: 
+        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          localeae = new eae();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localeae.dd((byte[])localObject);
+          }
+          localdwf.Uci = localeae;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(125760);
+        return 0;
+      case 4: 
+        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          localeae = new eae();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localeae.dd((byte[])localObject);
+          }
+          localdwf.Ucj = localeae;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(125760);
+        return 0;
+      case 5: 
+        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          localeae = new eae();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localeae.dd((byte[])localObject);
+          }
+          localdwf.Uck = localeae;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(125760);
         return 0;
       }
-      AppMethodBeat.o(40110);
-      return -1;
+      localdwf.Ucl = ((g.a.a.a.a)localObject).abFh.AN();
+      AppMethodBeat.o(125760);
+      return 0;
     }
+    AppMethodBeat.o(125760);
+    return -1;
   }
 }
 

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ComponentName;
 import android.content.Context;
@@ -14,21 +15,36 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ae;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bp;
-import com.tencent.mm.model.bp.a;
+import com.tencent.mm.compatible.deviceinfo.af;
+import com.tencent.mm.model.bq;
+import com.tencent.mm.model.bq.a;
+import com.tencent.mm.model.u;
 import com.tencent.mm.platformtools.ac;
 import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.newtips.NormalIconNewTipPreference;
+import com.tencent.mm.plugin.newtips.a.e;
+import com.tencent.mm.plugin.newtips.a.g;
+import com.tencent.mm.plugin.newtips.a.i;
+import com.tencent.mm.plugin.newtips.a.k;
+import com.tencent.mm.plugin.setting.b.b;
+import com.tencent.mm.plugin.setting.b.e;
+import com.tencent.mm.plugin.setting.b.f;
+import com.tencent.mm.plugin.setting.b.g;
+import com.tencent.mm.plugin.setting.b.h;
+import com.tencent.mm.plugin.setting.b.i;
+import com.tencent.mm.plugin.setting.b.k;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.protocal.protobuf.bmy;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.ChannelUtil;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
@@ -36,93 +52,101 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.storage.bw;
+import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.IconPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
+import com.tencent.mm.ui.base.w;
 import com.tencent.mm.ui.widget.a.d.a;
 import java.util.List;
 
 public class SettingsAboutSystemUI
   extends MMPreference
 {
-  private boolean DaE = false;
-  private int DaF = -1;
-  private int DaG = -1;
-  private boolean DaH = false;
-  private ProgressDialog Dav = null;
+  private ProgressDialog JfW = null;
+  private boolean Jgf = false;
+  private int Jgg = -1;
+  private int Jgh = -1;
+  private boolean Jgi = false;
   private boolean isDeleteCancel = false;
   private com.tencent.mm.ui.base.preference.f screen;
   
   private void a(LinearLayout paramLinearLayout, int paramInt1, int paramInt2, boolean paramBoolean, View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(74064);
-    TextView localTextView = (TextView)View.inflate(getContext(), 2131496016, null);
+    TextView localTextView = (TextView)View.inflate(getContext(), b.g.radio_btn_item, null);
     localTextView.setText(paramInt1);
     localTextView.setTag(Integer.valueOf(paramInt2));
     paramLinearLayout.addView(localTextView);
     localTextView.setOnClickListener(paramOnClickListener);
     if (paramBoolean) {
-      localTextView.setCompoundDrawablesWithIntrinsicBounds(2131691380, 0, 0, 0);
+      localTextView.setCompoundDrawablesWithIntrinsicBounds(b.h.radio_on, 0, 0, 0);
     }
     AppMethodBeat.o(74064);
   }
   
-  private void eSU()
+  private void fFY()
   {
-    int j = 0;
     AppMethodBeat.i(74059);
-    IconPreference localIconPreference = (IconPreference)this.screen.bmg("settings_plugins");
-    if (Util.nullAs((Boolean)g.aAh().azQ().get(-2046825377, null), false))
+    NormalIconNewTipPreference localNormalIconNewTipPreference = (NormalIconNewTipPreference)this.screen.byG("settings_plugins");
+    com.tencent.mm.plugin.newtips.a.fiO().h(localNormalIconNewTipPreference);
+    localNormalIconNewTipPreference.a(this.screen);
+    g.a(localNormalIconNewTipPreference);
+    boolean bool2 = Util.nullAs((Boolean)com.tencent.mm.kernel.h.aHG().aHp().b(-2046825377, null), false);
+    boolean bool3 = com.tencent.mm.aa.c.aFn().dk(262158, 266266);
+    com.tencent.mm.plugin.newtips.a.fiR();
+    boolean bool4 = e.aal(com.tencent.mm.plugin.newtips.a.d.Gwf);
+    if ((bool2) || (bool3) || (bool4)) {}
+    for (boolean bool1 = true; g.a(bool1, localNormalIconNewTipPreference); bool1 = false)
     {
-      localIconPreference.alD(0);
-      localIconPreference.gY(getString(2131755915), 2131234232);
-      if (!com.tencent.mm.y.c.axV().cP(262158, 266266)) {
-        break label132;
-      }
-      i = 0;
-      label76:
-      localIconPreference.alF(i);
-      com.tencent.mm.plugin.newtips.a.exo();
-      if (!com.tencent.mm.plugin.newtips.a.e.Ty(com.tencent.mm.plugin.newtips.a.d.ADb)) {
-        break label138;
-      }
+      AppMethodBeat.o(74059);
+      return;
     }
-    label132:
-    label138:
-    for (int i = j;; i = 8)
+    if (bool2)
     {
-      localIconPreference.alF(i);
+      localNormalIconNewTipPreference.abe(0);
+      localNormalIconNewTipPreference.fC(getString(b.i.app_new), b.e.new_tips_bg);
+      g.a(localNormalIconNewTipPreference, k.GwL, true);
+      AppMethodBeat.o(74059);
+      return;
+    }
+    localNormalIconNewTipPreference.abe(8);
+    localNormalIconNewTipPreference.fC("", -1);
+    if ((bool3) || (bool4))
+    {
+      localNormalIconNewTipPreference.aak(0);
+      g.a(localNormalIconNewTipPreference, k.GwK, true);
+    }
+    for (;;)
+    {
       this.screen.notifyDataSetChanged();
       AppMethodBeat.o(74059);
       return;
-      localIconPreference.alD(8);
-      localIconPreference.gY("", -1);
-      break;
-      i = 8;
-      break label76;
+      localNormalIconNewTipPreference.aak(8);
     }
   }
   
-  private boolean eSV()
+  private boolean fFZ()
   {
     AppMethodBeat.i(74060);
     Object localObject = new Intent(this, SettingsFontUI.class);
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goTosetTextSize", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goTosetTextSize", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+    com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goTosetTextSize", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goTosetTextSize", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(74060);
     return true;
   }
   
-  private void eSW()
+  private void fGa()
   {
     int j = 1;
     AppMethodBeat.i(74063);
-    if (Util.safeParseInt(com.tencent.mm.n.h.aqJ().getValue("SilentDownloadApkAtWiFi")) != 0) {}
+    if (Util.safeParseInt(com.tencent.mm.n.h.axc().getValue("SilentDownloadApkAtWiFi")) != 0) {}
     for (int i = 1;; i = 0)
     {
       if ((ChannelUtil.updateMode & 0x1) != 0)
@@ -133,24 +157,24 @@ public class SettingsAboutSystemUI
       if (i == 0) {
         break;
       }
-      this.screen.jdMethod_do("settings_silence_update_mode", true);
+      this.screen.dz("settings_silence_update_mode", true);
       AppMethodBeat.o(74063);
       return;
     }
-    this.screen.jdMethod_do("settings_silence_update_mode", false);
+    this.screen.dz("settings_silence_update_mode", false);
     Preference localPreference;
-    if ((((Integer)g.aAh().azQ().get(7, Integer.valueOf(0))).intValue() & 0x1000000) == 0)
+    if ((((Integer)com.tencent.mm.kernel.h.aHG().aHp().b(7, Integer.valueOf(0))).intValue() & 0x1000000) == 0)
     {
       i = j;
-      localPreference = this.screen.bmg("settings_silence_update_mode");
+      localPreference = this.screen.byG("settings_silence_update_mode");
       if (i == 0) {
-        break label166;
+        break label169;
       }
     }
-    label166:
-    for (i = 2131765594;; i = 2131765593)
+    label169:
+    for (i = b.i.settings_silence_update_mode_wifi;; i = b.i.settings_silence_update_mode_none)
     {
-      localPreference.setSummary(getString(i));
+      localPreference.aF(getString(i));
       this.screen.notifyDataSetChanged();
       AppMethodBeat.o(74063);
       return;
@@ -159,63 +183,63 @@ public class SettingsAboutSystemUI
     }
   }
   
-  private void eSX()
+  private void fGb()
   {
     AppMethodBeat.i(74065);
-    int i = Util.getInt(com.tencent.mm.n.h.aqJ().getValue("SIGHTAutoLoadNetwork"), 1);
-    int j = Util.nullAs((Integer)g.aAh().azQ().get(327686, null), i);
+    int i = Util.getInt(com.tencent.mm.n.h.axc().getValue("SIGHTAutoLoadNetwork"), 1);
+    int j = Util.nullAs((Integer)com.tencent.mm.kernel.h.aHG().aHp().b(327686, null), i);
     Log.i("MicroMsg.SettingsAboutSystemUI", "auto getSightViewSummary %d, %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-    if (this.DaF == -1) {
-      this.DaF = j;
+    if (this.Jgg == -1) {
+      this.Jgg = j;
     }
-    this.DaG = j;
+    this.Jgh = j;
     if (3 == j) {
-      i = 2131765607;
+      i = b.i.settings_sns_sight_auto_download_never;
     }
     for (;;)
     {
-      Preference localPreference = this.screen.bmg("settings_sns_sight_auto_download");
-      if (localPreference != null) {
-        localPreference.setSummary(getString(i));
+      Preference localPreference = this.screen.byG("settings_sns_sight_auto_download");
+      if ((localPreference != null) && (i != 0)) {
+        localPreference.aF(getString(i));
       }
       this.screen.notifyDataSetChanged();
       AppMethodBeat.o(74065);
       return;
       if (2 == j) {
-        i = 2131765609;
+        i = b.i.settings_sns_sight_auto_download_wifi;
       } else {
-        i = 2131765606;
+        i = b.i.settings_sns_sight_auto_download_always;
       }
     }
   }
   
-  public static boolean eSY()
+  public static boolean fGc()
   {
-    AppMethodBeat.i(256509);
-    boolean bool = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.smt, false);
-    AppMethodBeat.o(256509);
+    AppMethodBeat.i(264431);
+    boolean bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vXn, false);
+    AppMethodBeat.o(264431);
     return bool;
   }
   
-  private void st(boolean paramBoolean)
+  private void vH(boolean paramBoolean)
   {
     AppMethodBeat.i(74061);
     if (paramBoolean)
     {
       getPackageManager().setComponentEnabledSetting(new ComponentName(MMApplicationContext.getPackageName(), "com.tencent.mm.plugin.nfc_open.ui.NfcWebViewUI"), 1, 1);
-      g.aAh().azQ().set(ar.a.NUQ, Integer.valueOf(1));
+      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.ViP, Integer.valueOf(1));
       AppMethodBeat.o(74061);
       return;
     }
     getPackageManager().setComponentEnabledSetting(new ComponentName(MMApplicationContext.getPackageName(), "com.tencent.mm.plugin.nfc_open.ui.NfcWebViewUI"), 2, 1);
-    g.aAh().azQ().set(ar.a.NUQ, Integer.valueOf(2));
+    com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.ViP, Integer.valueOf(2));
     AppMethodBeat.o(74061);
   }
   
-  private void ur(boolean paramBoolean)
+  private void xP(boolean paramBoolean)
   {
     AppMethodBeat.i(74062);
-    CheckBoxPreference localCheckBoxPreference = (CheckBoxPreference)this.screen.bmg("settings_nfc_switch");
+    CheckBoxPreference localCheckBoxPreference = (CheckBoxPreference)this.screen.byG("settings_nfc_switch");
     MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).edit().putBoolean("settings_nfc_switch", paramBoolean).commit();
     localCheckBoxPreference.setChecked(paramBoolean);
     this.screen.notifyDataSetChanged();
@@ -224,60 +248,50 @@ public class SettingsAboutSystemUI
   
   public int getResourceId()
   {
-    return 2132017282;
+    return b.k.settings_pref_system;
   }
   
   public void initView()
   {
     AppMethodBeat.i(74055);
-    setMMTitle(2131765328);
+    setMMTitle(b.i.settings_about_system);
     this.screen = getPreferenceScreen();
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        AppMethodBeat.i(74039);
-        SettingsAboutSystemUI.this.hideVKB();
-        SettingsAboutSystemUI.this.finish();
-        AppMethodBeat.o(74039);
-        return true;
-      }
-    });
+    setBackBtn(new SettingsAboutSystemUI.1(this));
     com.tencent.mm.ui.base.preference.f localf = this.screen;
     boolean bool;
-    if (!com.tencent.mm.compatible.util.d.oD(19))
+    if (!com.tencent.mm.compatible.util.d.qV(19))
     {
       bool = true;
-      localf.jdMethod_do("settings_swipeback_mode", bool);
-      if (!com.tencent.mm.br.c.aZU("backup")) {
-        this.screen.jdMethod_do("settings_bak_chat", true);
+      localf.dz("settings_swipeback_mode", bool);
+      if (!com.tencent.mm.by.c.blP("backup")) {
+        this.screen.dz("settings_bak_chat", true);
       }
-      eSU();
-      this.screen.jdMethod_do("settings_traffic_statistic", com.tencent.mm.br.c.gsX());
-      if (!eSY()) {
+      fFY();
+      this.screen.dz("settings_traffic_statistic", com.tencent.mm.by.c.hok());
+      if (!fGc()) {
         break label225;
       }
-      if (this.screen.bmg("settings_take_photo") != null) {
-        this.screen.bmg("settings_take_photo").setTitle(2131765529);
+      if (this.screen.byG("settings_take_photo") != null) {
+        this.screen.byG("settings_take_photo").setTitle(b.i.settings_photo_video_new);
       }
     }
     for (;;)
     {
-      if (ac.jPB) {
-        this.screen.jdMethod_do("settings_take_photo", true);
+      if (ac.mGL) {
+        this.screen.dz("settings_take_photo", true);
       }
-      if ((com.tencent.mm.cc.c.gvD()) || ((!BuildInfo.IS_FLAVOR_RED) && (!BuildInfo.IS_FLAVOR_PURPLE) && (!com.tencent.mm.ui.ao.awO())))
+      if ((com.tencent.mm.cj.c.hrB()) || ((!BuildInfo.IS_FLAVOR_RED) && (!BuildInfo.IS_FLAVOR_PURPLE) && (!ar.aEg())))
       {
-        this.screen.jdMethod_do("settings_dark", true);
-        this.screen.jdMethod_do("small_divider", true);
+        this.screen.dz("settings_dark", true);
+        this.screen.dz("small_divider", true);
       }
       AppMethodBeat.o(74055);
       return;
       bool = false;
       break;
       label225:
-      if (this.screen.bmg("settings_take_photo") != null) {
-        this.screen.bmg("settings_take_photo").setTitle(2131765528);
+      if (this.screen.byG("settings_take_photo") != null) {
+        this.screen.byG("settings_take_photo").setTitle(b.i.settings_photo_video);
       }
     }
   }
@@ -286,7 +300,7 @@ public class SettingsAboutSystemUI
   {
     AppMethodBeat.i(74054);
     super.onCreate(paramBundle);
-    this.DaE = false;
+    this.Jgf = false;
     initView();
     AppMethodBeat.o(74054);
   }
@@ -298,17 +312,17 @@ public class SettingsAboutSystemUI
     super.onDestroy();
     int i;
     com.tencent.mm.plugin.report.service.h localh;
-    if (this.DaH)
+    if (this.Jgi)
     {
-      i = this.DaG;
-      if (this.DaF != this.DaG) {
+      i = this.Jgh;
+      if (this.Jgg != this.Jgh) {
         break label127;
       }
       bool1 = true;
       Log.i("MicroMsg.SettingsAboutSystemUI", "kvstat, autodownload sight change: %d, %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool1) });
-      localh = com.tencent.mm.plugin.report.service.h.CyF;
-      i = this.DaG;
-      if (this.DaF != this.DaG) {
+      localh = com.tencent.mm.plugin.report.service.h.IzE;
+      i = this.Jgh;
+      if (this.Jgg != this.Jgh) {
         break label132;
       }
     }
@@ -342,33 +356,21 @@ public class SettingsAboutSystemUI
         setRequestedOrientation(1);
       }
     }
-    final boolean bool1;
+    boolean bool1;
     if (paramf.equals("settings_voicerecorder_mode"))
     {
-      if (ae.gKu.gDI == 1) {}
+      if (af.juI.jnS == 1) {}
       for (bool1 = false;; bool1 = true)
       {
         if (!getDefaultSharedPreferences().getBoolean("settings_voicerecorder_mode", bool1)) {
-          com.tencent.mm.ui.base.h.a(getContext(), 2131765689, 2131755998, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-          {
-            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
-          }, new DialogInterface.OnClickListener()
-          {
-            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-            {
-              AppMethodBeat.i(74051);
-              SettingsAboutSystemUI.this.getDefaultSharedPreferences().edit().putBoolean("settings_voicerecorder_mode", true).commit();
-              ((CheckBoxPreference)SettingsAboutSystemUI.a(SettingsAboutSystemUI.this).bmg("settings_voicerecorder_mode")).setChecked(true);
-              SettingsAboutSystemUI.a(SettingsAboutSystemUI.this).notifyDataSetChanged();
-              AppMethodBeat.o(74051);
-            }
-          });
+          com.tencent.mm.ui.base.h.a(getContext(), b.i.settings_voicerecorder_mode_change_to_amr, b.i.app_tip, new SettingsAboutSystemUI.8(this), new SettingsAboutSystemUI.9(this));
         }
         AppMethodBeat.o(74058);
         return true;
       }
     }
-    int i;
+    final int i;
+    int j;
     if (paramf.equals("settings_nfc_switch"))
     {
       paramf = NfcAdapter.getDefaultAdapter(this);
@@ -379,44 +381,44 @@ public class SettingsAboutSystemUI
       {
         AppMethodBeat.o(74058);
         return true;
-        i = ((Integer)g.aAh().azQ().get(ar.a.NUQ, Integer.valueOf(0))).intValue();
-        int j = ((Integer)g.aAh().azQ().get(ar.a.NUR, Integer.valueOf(0))).intValue();
+        i = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.ViP, Integer.valueOf(0))).intValue();
+        j = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.ViQ, Integer.valueOf(0))).intValue();
         if (((i == 2) || ((i == 0) && (j != 1))) && (!paramf.isEnabled()) && (getDefaultSharedPreferences().getBoolean("settings_nfc_switch", false)))
         {
-          ur(false);
-          com.tencent.mm.ui.base.h.c(getContext(), getString(2131763564), "", getString(2131763565), getString(2131755761), new SettingsAboutSystemUI.6(this), new SettingsAboutSystemUI.7(this));
+          xP(false);
+          com.tencent.mm.ui.base.h.c(getContext(), getString(b.i.nfc_off_tips), "", getString(b.i.nfc_open_title), getString(b.i.app_cancel), new SettingsAboutSystemUI.6(this), new SettingsAboutSystemUI.7(this));
         }
         else
         {
-          st(getDefaultSharedPreferences().getBoolean("settings_nfc_switch", false));
+          vH(getDefaultSharedPreferences().getBoolean("settings_nfc_switch", false));
         }
       }
     }
     if (paramf.equals("settings_voice_play_mode"))
     {
-      boolean bool3 = ((Boolean)g.aAh().azQ().get(26, Boolean.FALSE)).booleanValue();
+      boolean bool3 = ((Boolean)com.tencent.mm.kernel.h.aHG().aHp().b(26, Boolean.FALSE)).booleanValue();
       if (!bool3) {}
       for (bool1 = true;; bool1 = false)
       {
         Log.d("MicroMsg.SettingsAboutSystemUI", "set voice mode from %B to %B", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool1) });
-        paramf = g.aAh().azQ();
+        paramf = com.tencent.mm.kernel.h.aHG().aHp();
         bool1 = bool2;
         if (!bool3) {
           bool1 = true;
         }
-        paramf.set(26, Boolean.valueOf(bool1));
+        paramf.i(26, Boolean.valueOf(bool1));
         AppMethodBeat.o(74058);
         return true;
       }
     }
     if (paramf.equals("settings_enter_button_send"))
     {
-      paramf = (CheckBoxPreference)this.screen.bmg("settings_enter_button_send");
+      paramf = (CheckBoxPreference)this.screen.byG("settings_enter_button_send");
       if (paramf != null)
       {
         bool1 = paramf.isChecked();
         Log.d("MicroMsg.SettingsAboutSystemUI", "set enter button send : %s", new Object[] { Boolean.valueOf(bool1) });
-        g.aAh().azQ().set(66832, Boolean.valueOf(bool1));
+        com.tencent.mm.kernel.h.aHG().aHp().i(66832, Boolean.valueOf(bool1));
       }
       AppMethodBeat.o(74058);
       return true;
@@ -426,68 +428,192 @@ public class SettingsAboutSystemUI
     if (paramf.equals("settings_sns_sight_auto_download"))
     {
       paramPreference = new d.a(getContext());
-      paramPreference.aoW(2131755761);
-      paramPreference.aoO(2131765608);
-      localView = View.inflate(getContext(), 2131495503, null);
-      paramf = (LinearLayout)localView.findViewById(2131308813);
-      i = Util.getInt(com.tencent.mm.n.h.aqJ().getValue("SIGHTAutoLoadNetwork"), 1);
-      i = Util.nullAs((Integer)g.aAh().azQ().get(327686, null), i);
-      localObject = new SettingsAboutSystemUI.2(this, paramf, i);
+      paramPreference.ayk(b.i.app_cancel);
+      paramPreference.ayc(b.i.settings_sns_sight_auto_download_tips);
+      localView = View.inflate(getContext(), b.g.mm_alert_switch, null);
+      paramf = (LinearLayout)localView.findViewById(b.f.switcher_container);
+      i = Util.getInt(com.tencent.mm.n.h.axc().getValue("SIGHTAutoLoadNetwork"), 1);
+      i = Util.nullAs((Integer)com.tencent.mm.kernel.h.aHG().aHp().b(327686, null), i);
+      localObject = new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(74041);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+          final int i = 0;
+          while (i < paramf.getChildCount())
+          {
+            localObject = (TextView)paramf.getChildAt(i);
+            if (b.f.tips_tv != ((TextView)localObject).getId()) {
+              ((TextView)localObject).setCompoundDrawablesWithIntrinsicBounds(b.h.radio_off, 0, 0, 0);
+            }
+            i += 1;
+          }
+          ((TextView)paramAnonymousView).setCompoundDrawablesWithIntrinsicBounds(b.h.radio_on, 0, 0, 0);
+          i = ((Integer)paramAnonymousView.getTag()).intValue();
+          Log.i("MicroMsg.SettingsAboutSystemUI", "choice: %d, %d", new Object[] { Integer.valueOf(i), Integer.valueOf(i) });
+          if (i == i)
+          {
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(74041);
+            return;
+          }
+          paramAnonymousView.post(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(74040);
+              ((Dialog)SettingsAboutSystemUI.2.this.Jgk.getTag()).dismiss();
+              com.tencent.mm.kernel.h.aHG().aHp().i(327686, Integer.valueOf(i));
+              com.tencent.mm.kernel.h.aHG().aHp().hxT();
+              SettingsAboutSystemUI.f(SettingsAboutSystemUI.this);
+              AppMethodBeat.o(74040);
+            }
+          });
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(74041);
+        }
+      };
+      j = b.i.settings_sns_sight_auto_download_always;
       if (1 == i)
       {
         bool1 = true;
-        a(paramf, 2131765606, 1, bool1, (View.OnClickListener)localObject);
+        a(paramf, j, 1, bool1, (View.OnClickListener)localObject);
+        j = b.i.settings_sns_sight_auto_download_wifi;
         if (2 != i) {
-          break label786;
+          break label798;
         }
         bool1 = true;
-        label707:
-        a(paramf, 2131765609, 2, bool1, (View.OnClickListener)localObject);
+        label716:
+        a(paramf, j, 2, bool1, (View.OnClickListener)localObject);
+        j = b.i.settings_sns_sight_auto_download_never;
         if (3 != i) {
-          break label792;
+          break label804;
         }
       }
-      label786:
-      label792:
+      label798:
+      label804:
       for (bool1 = true;; bool1 = false)
       {
-        a(paramf, 2131765607, 3, bool1, (View.OnClickListener)localObject);
-        paramPreference.hs(localView);
-        paramPreference = paramPreference.hbn();
+        a(paramf, j, 3, bool1, (View.OnClickListener)localObject);
+        paramPreference.iI(localView);
+        paramPreference = paramPreference.icu();
         paramf.setTag(paramPreference);
         paramPreference.show();
         addDialog(paramPreference);
-        this.DaH = true;
+        this.Jgi = true;
         AppMethodBeat.o(74058);
         return true;
         bool1 = false;
         break;
         bool1 = false;
-        break label707;
+        break label716;
       }
     }
     if (paramf.equals("settings_silence_update_mode"))
     {
       paramPreference = new d.a(getContext());
-      paramPreference.aoW(2131755761);
-      paramPreference.aoO(2131765592);
-      localView = View.inflate(getContext(), 2131495503, null);
-      paramf = (LinearLayout)localView.findViewById(2131308813);
-      localObject = new SettingsAboutSystemUI.10(this, paramf);
-      if ((((Integer)g.aAh().azQ().get(7, Integer.valueOf(0))).intValue() & 0x1000000) == 0)
+      paramPreference.ayk(b.i.app_cancel);
+      paramPreference.ayc(b.i.settings_silence_update_mode);
+      localView = View.inflate(getContext(), b.g.mm_alert_switch, null);
+      paramf = (LinearLayout)localView.findViewById(b.f.switcher_container);
+      localObject = new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          int k = 0;
+          AppMethodBeat.i(74053);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+          int i = 0;
+          while (i < paramf.getChildCount())
+          {
+            localObject = (TextView)paramf.getChildAt(i);
+            if (b.f.tips_tv != ((TextView)localObject).getId()) {
+              ((TextView)localObject).setCompoundDrawablesWithIntrinsicBounds(b.h.radio_off, 0, 0, 0);
+            }
+            i += 1;
+          }
+          ((TextView)paramAnonymousView).setCompoundDrawablesWithIntrinsicBounds(b.h.radio_on, 0, 0, 0);
+          int m = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().b(7, Integer.valueOf(0))).intValue();
+          int n = ((Integer)paramAnonymousView.getTag()).intValue();
+          Log.d("MicroMsg.SettingsAboutSystemUI", "settings_silence_update_mode choice: %d", new Object[] { Integer.valueOf(n) });
+          if (n == 0)
+          {
+            i = 1;
+            if ((m & 0x1000000) != 0) {
+              break label207;
+            }
+          }
+          label207:
+          for (int j = 1;; j = 0)
+          {
+            if (i != j) {
+              break label212;
+            }
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(74053);
+            return;
+            i = 0;
+            break;
+          }
+          label212:
+          i = k;
+          if (n == 0) {
+            i = 1;
+          }
+          if (i != 0)
+          {
+            j = 0xFEFFFFFF & m;
+            if (i != 0) {
+              break label352;
+            }
+          }
+          label352:
+          for (i = 1;; i = 2)
+          {
+            com.tencent.mm.kernel.h.aHG().aHp().i(7, Integer.valueOf(j));
+            localObject = new bmy();
+            ((bmy)localObject).SXP = 35;
+            ((bmy)localObject).HmX = i;
+            ((n)com.tencent.mm.kernel.h.ae(n.class)).bbK().d(new k.a(23, (com.tencent.mm.cd.a)localObject));
+            com.tencent.mm.plugin.setting.c.mIH.abC();
+            paramAnonymousView.post(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(74052);
+                ((Dialog)SettingsAboutSystemUI.10.this.Jgk.getTag()).dismiss();
+                SettingsAboutSystemUI.e(SettingsAboutSystemUI.this);
+                AppMethodBeat.o(74052);
+              }
+            });
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(74053);
+            return;
+            j = m | 0x1000000;
+            break;
+          }
+        }
+      };
+      if ((((Integer)com.tencent.mm.kernel.h.aHG().aHp().b(7, Integer.valueOf(0))).intValue() & 0x1000000) == 0)
       {
         bool1 = true;
-        a(paramf, 2131765594, 0, bool1, (View.OnClickListener)localObject);
+        a(paramf, b.i.settings_silence_update_mode_wifi, 0, bool1, (View.OnClickListener)localObject);
+        i = b.i.settings_silence_update_mode_none;
         if (bool1) {
-          break label977;
+          break label991;
         }
       }
-      label977:
+      label991:
       for (bool1 = true;; bool1 = false)
       {
-        a(paramf, 2131765593, 1, bool1, (View.OnClickListener)localObject);
-        paramPreference.hs(localView);
-        paramPreference = paramPreference.hbn();
+        a(paramf, i, 1, bool1, (View.OnClickListener)localObject);
+        paramPreference.iI(localView);
+        paramPreference = paramPreference.icu();
         paramf.setTag(paramPreference);
         paramPreference.show();
         addDialog(paramPreference);
@@ -500,16 +626,16 @@ public class SettingsAboutSystemUI
     if (paramf.equals("settings_language"))
     {
       paramf = new Intent(getContext(), SettingsLanguageUI.class);
-      paramf = new com.tencent.mm.hellhoundlib.b.a().bl(paramf);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goTosetLanguage", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramf.pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goTosetLanguage", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramf = new com.tencent.mm.hellhoundlib.b.a().bm(paramf);
+      com.tencent.mm.hellhoundlib.a.a.b(this, paramf.aFh(), "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goTosetLanguage", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goTosetLanguage", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(74058);
       return true;
     }
     if (paramf.equals("settings_text_size"))
     {
-      bool1 = eSV();
+      bool1 = fFZ();
       AppMethodBeat.o(74058);
       return bool1;
     }
@@ -518,10 +644,10 @@ public class SettingsAboutSystemUI
       paramPreference = new Intent();
       paramPreference.setClass(this, SettingsChattingBackgroundUI.class);
       paramf = getContext();
-      paramPreference = new com.tencent.mm.hellhoundlib.b.a().bl(paramPreference);
-      com.tencent.mm.hellhoundlib.a.a.a(paramf, paramPreference.axQ(), "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goTosetChattingBackground", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramf.startActivity((Intent)paramPreference.pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramf, "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goTosetChattingBackground", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramPreference = new com.tencent.mm.hellhoundlib.b.a().bm(paramPreference);
+      com.tencent.mm.hellhoundlib.a.a.b(paramf, paramPreference.aFh(), "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goTosetChattingBackground", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramf.startActivity((Intent)paramPreference.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramf, "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goTosetChattingBackground", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(74058);
       return true;
     }
@@ -529,29 +655,30 @@ public class SettingsAboutSystemUI
     {
       paramf = new Intent();
       paramf.setClass(this, SettingsManageFindMoreUI.class);
-      paramf = new com.tencent.mm.hellhoundlib.b.a().bl(paramf);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goToManageFindMoreUI", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramf.pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goToManageFindMoreUI", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramf = new com.tencent.mm.hellhoundlib.b.a().bm(paramf);
+      com.tencent.mm.hellhoundlib.a.a.b(this, paramf.aFh(), "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goToManageFindMoreUI", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goToManageFindMoreUI", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(74058);
       return true;
     }
     if (paramf.equals("settings_plugins"))
     {
-      g.aAh().azQ().set(-2046825377, Boolean.FALSE);
+      com.tencent.mm.plugin.newtips.a.fiO().aap(32);
+      com.tencent.mm.kernel.h.aHG().aHp().i(-2046825377, Boolean.FALSE);
       paramf = new Intent();
       paramf.setClass(this, SettingsPluginsUI.class);
-      paramf = new com.tencent.mm.hellhoundlib.b.a().bl(paramf);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goTosetPlugins", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramf.pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goTosetPlugins", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      com.tencent.mm.y.c.axV().cQ(262158, 266266);
+      paramf = new com.tencent.mm.hellhoundlib.b.a().bm(paramf);
+      com.tencent.mm.hellhoundlib.a.a.b(this, paramf.aFh(), "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goTosetPlugins", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goTosetPlugins", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      com.tencent.mm.aa.c.aFn().dl(262158, 266266);
       AppMethodBeat.o(74058);
       return true;
     }
     if (paramf.equals("settings_reset"))
     {
-      com.tencent.mm.ui.base.h.c(getContext(), getResources().getString(2131765566), "", getString(2131755764), getString(2131755761), new DialogInterface.OnClickListener()
+      com.tencent.mm.ui.base.h.c(getContext(), getResources().getString(b.i.settings_reset_warning), "", getString(b.i.app_clear), getString(b.i.app_cancel), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -560,8 +687,8 @@ public class SettingsAboutSystemUI
           SettingsAboutSystemUI.a(SettingsAboutSystemUI.this, false);
           paramAnonymousDialogInterface = SettingsAboutSystemUI.this;
           Object localObject = SettingsAboutSystemUI.this;
-          SettingsAboutSystemUI.this.getString(2131755998);
-          SettingsAboutSystemUI.a(paramAnonymousDialogInterface, com.tencent.mm.ui.base.h.a((Context)localObject, SettingsAboutSystemUI.this.getString(2131756029), true, new DialogInterface.OnCancelListener()
+          SettingsAboutSystemUI.this.getString(b.i.app_tip);
+          SettingsAboutSystemUI.a(paramAnonymousDialogInterface, com.tencent.mm.ui.base.h.a((Context)localObject, SettingsAboutSystemUI.this.getString(b.i.app_waiting), true, new DialogInterface.OnCancelListener()
           {
             public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
             {
@@ -570,23 +697,23 @@ public class SettingsAboutSystemUI
               AppMethodBeat.o(74045);
             }
           }));
-          paramAnonymousDialogInterface = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aST().gCw();
+          paramAnonymousDialogInterface = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbR().hyJ();
           if (paramAnonymousDialogInterface.size() > 0)
           {
-            localObject = com.tencent.mm.model.u.am(paramAnonymousDialogInterface);
+            localObject = u.ak(paramAnonymousDialogInterface);
             if (localObject != null) {
               while (paramAnonymousInt < ((List)localObject).size())
               {
                 if (((Boolean)((List)localObject).get(paramAnonymousInt)).booleanValue()) {
-                  com.tencent.mm.plugin.setting.c.jRu.gr((String)paramAnonymousDialogInterface.get(paramAnonymousInt));
+                  com.tencent.mm.plugin.setting.c.mIH.hb((String)paramAnonymousDialogInterface.get(paramAnonymousInt));
                 }
                 paramAnonymousInt += 1;
               }
             }
           }
-          bp.a(new bp.a()
+          bq.a(new bq.a()
           {
-            public final boolean amG()
+            public final boolean asH()
             {
               AppMethodBeat.i(74046);
               boolean bool = SettingsAboutSystemUI.b(SettingsAboutSystemUI.this);
@@ -594,7 +721,7 @@ public class SettingsAboutSystemUI
               return bool;
             }
             
-            public final void amH()
+            public final void asI()
             {
               AppMethodBeat.i(74047);
               if (SettingsAboutSystemUI.c(SettingsAboutSystemUI.this) != null)
@@ -615,55 +742,46 @@ public class SettingsAboutSystemUI
     {
       paramf = new Intent();
       paramf.putExtra("10931", 2);
-      com.tencent.mm.br.c.b(getContext(), "emoji", ".ui.EmojiMineUI", paramf);
+      com.tencent.mm.by.c.b(getContext(), "emoji", ".ui.EmojiMineUI", paramf);
       AppMethodBeat.o(74058);
       return true;
     }
     if (paramf.equals("settngs_clean"))
     {
-      if (!g.aAh().isSDCardAvailable())
+      if (!com.tencent.mm.kernel.h.aHG().isSDCardAvailable())
       {
-        com.tencent.mm.ui.base.u.g(getContext(), null);
+        w.g(getContext(), null);
         AppMethodBeat.o(74058);
         return true;
       }
-      com.tencent.mm.br.c.b(getContext(), "clean", ".ui.CleanUI", new Intent());
+      com.tencent.mm.by.c.b(getContext(), "clean", ".ui.CleanUI", new Intent());
       AppMethodBeat.o(74058);
       return true;
     }
     if (paramf.equals("settings_traffic_statistic"))
     {
       paramf = new Intent(this, SettingsNetStatUI.class);
-      paramf = new com.tencent.mm.hellhoundlib.b.a().bl(paramf);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goToSetTrafficStatistic", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramf.pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goToSetTrafficStatistic", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramf = new com.tencent.mm.hellhoundlib.b.a().bm(paramf);
+      com.tencent.mm.hellhoundlib.a.a.b(this, paramf.aFh(), "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goToSetTrafficStatistic", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goToSetTrafficStatistic", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(74058);
       return true;
     }
     if (paramf.equals("settings_text_size"))
     {
-      bool1 = eSV();
+      bool1 = fFZ();
       AppMethodBeat.o(74058);
       return bool1;
     }
     if (paramf.equals("settings_swipeback_mode"))
     {
       paramf = (CheckBoxPreference)paramPreference;
-      bool1 = com.tencent.mm.compatible.h.b.apl();
+      bool1 = com.tencent.mm.compatible.h.b.avx();
       if (!bool1) {}
-      for (i = 2131765620;; i = 2131765619)
+      for (i = b.i.settings_swipeback_mode_open_tips;; i = b.i.settings_swipeback_mode_close_tips)
       {
-        com.tencent.mm.ui.base.h.a(getContext(), getString(i), null, new SettingsAboutSystemUI.3(this), new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(74044);
-            paramf.setChecked(bool1);
-            SettingsAboutSystemUI.a(SettingsAboutSystemUI.this).notifyDataSetChanged();
-            AppMethodBeat.o(74044);
-          }
-        });
+        com.tencent.mm.ui.base.h.a(getContext(), getString(i), null, new SettingsAboutSystemUI.3(this), new SettingsAboutSystemUI.4(this, paramf, bool1));
         AppMethodBeat.o(74058);
         return true;
       }
@@ -671,10 +789,10 @@ public class SettingsAboutSystemUI
     if (paramf.equals("settings_take_photo"))
     {
       paramf = new Intent(this, SettingsAboutCamera.class);
-      paramf = new com.tencent.mm.hellhoundlib.b.a().bl(paramf);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramf.pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramf = new com.tencent.mm.hellhoundlib.b.a().bm(paramf);
+      com.tencent.mm.hellhoundlib.a.a.b(this, paramf.aFh(), "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     for (;;)
     {
@@ -682,7 +800,7 @@ public class SettingsAboutSystemUI
       return false;
       if (paramf.equalsIgnoreCase("settngs_matrix_trace"))
       {
-        if (!com.tencent.matrix.b.isInstalled())
+        if (!com.tencent.matrix.b.Vt())
         {
           Toast.makeText(this, "Matrix is never installed", 0).show();
           AppMethodBeat.o(74058);
@@ -691,19 +809,19 @@ public class SettingsAboutSystemUI
         paramf = new Intent();
         paramf.setClassName(MMApplicationContext.getContext(), "com.tencent.mm.ui.matrix.MatrixSettingUI");
         paramf.addFlags(67108864);
-        paramf = new com.tencent.mm.hellhoundlib.b.a().bl(paramf);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramf.pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramf = new com.tencent.mm.hellhoundlib.b.a().bm(paramf);
+        com.tencent.mm.hellhoundlib.a.a.b(this, paramf.aFh(), "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramf.sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
       else if (paramf.equals("settings_dark"))
       {
         MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).putBoolean("dark_mode_red_dot", false);
         paramf = new Intent(this, SettingDarkMode.class);
-        paramf = new com.tencent.mm.hellhoundlib.b.a().bl(paramf);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goTosetDarkMode", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramf.pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goTosetDarkMode", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramf = new com.tencent.mm.hellhoundlib.b.a().bm(paramf);
+        com.tencent.mm.hellhoundlib.a.a.b(this, paramf.aFh(), "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goTosetDarkMode", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramf.sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI", "goTosetDarkMode", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
     }
   }
@@ -712,89 +830,89 @@ public class SettingsAboutSystemUI
   {
     AppMethodBeat.i(74056);
     super.onResume();
-    Object localObject1 = (CheckBoxPreference)this.screen.bmg("settings_voice_play_mode");
+    Object localObject1 = (CheckBoxPreference)this.screen.byG("settings_voice_play_mode");
     if (localObject1 != null)
     {
-      ((CheckBoxPreference)localObject1).setChecked(((Boolean)g.aAh().azQ().get(26, Boolean.FALSE)).booleanValue());
-      ((Preference)localObject1).OZw = false;
+      ((CheckBoxPreference)localObject1).setChecked(((Boolean)com.tencent.mm.kernel.h.aHG().aHp().b(26, Boolean.FALSE)).booleanValue());
+      ((Preference)localObject1).WsF = false;
     }
-    localObject1 = (CheckBoxPreference)this.screen.bmg("settings_enter_button_send");
+    localObject1 = (CheckBoxPreference)this.screen.byG("settings_enter_button_send");
     if (localObject1 != null)
     {
-      ((CheckBoxPreference)localObject1).setChecked(((Boolean)g.aAh().azQ().get(66832, Boolean.FALSE)).booleanValue());
-      ((Preference)localObject1).OZw = false;
+      ((CheckBoxPreference)localObject1).setChecked(((Boolean)com.tencent.mm.kernel.h.aHG().aHp().b(66832, Boolean.FALSE)).booleanValue());
+      ((Preference)localObject1).WsF = false;
     }
-    localObject1 = (CheckBoxPreference)this.screen.bmg("settings_swipeback_mode");
+    localObject1 = (CheckBoxPreference)this.screen.byG("settings_swipeback_mode");
     if (localObject1 != null)
     {
-      ((CheckBoxPreference)localObject1).setChecked(com.tencent.mm.compatible.h.b.apl());
-      ((Preference)localObject1).OZw = false;
+      ((CheckBoxPreference)localObject1).setChecked(com.tencent.mm.compatible.h.b.avx());
+      ((Preference)localObject1).WsF = false;
     }
-    localObject1 = this.screen.bmg("settings_language");
+    localObject1 = this.screen.byG("settings_language");
     if (localObject1 != null) {
-      ((Preference)localObject1).setSummary(LocaleUtil.getLanguageName(getContext(), 2130903056, 2131755881));
+      ((Preference)localObject1).aF(LocaleUtil.getLanguageName(getContext(), b.b.language_setting, b.i.app_lang_sys));
     }
-    eSU();
-    eSX();
-    eSX();
-    eSW();
+    fFY();
+    fGb();
+    fGb();
+    fGa();
     localObject1 = NfcAdapter.getDefaultAdapter(this);
-    Object localObject2 = (CheckBoxPreference)this.screen.bmg("settings_nfc_switch");
+    Object localObject2 = (CheckBoxPreference)this.screen.byG("settings_nfc_switch");
     if (localObject1 == null)
     {
-      this.screen.jdMethod_do("settings_nfc_switch", true);
-      localObject2 = (IconPreference)this.screen.bmg("settings_dark");
-      if (com.tencent.mm.ui.ao.awN())
+      this.screen.dz("settings_nfc_switch", true);
+      localObject2 = (IconPreference)this.screen.byG("settings_dark");
+      if (ar.aEf())
       {
-        if (!com.tencent.mm.ui.ao.awS()) {
+        if (!ar.aEk()) {
           break label474;
         }
-        localObject1 = getString(2131755881);
+        localObject1 = getString(b.i.app_lang_sys);
       }
     }
     for (;;)
     {
-      ((IconPreference)localObject2).setSummary((CharSequence)localObject1);
-      com.tencent.mm.cc.c.gvE();
-      ((IconPreference)localObject2).alF(8);
-      this.screen.jdMethod_do("settngs_matrix_trace", true);
+      ((IconPreference)localObject2).aF((CharSequence)localObject1);
+      com.tencent.mm.cj.c.hrC();
+      ((IconPreference)localObject2).aak(8);
+      this.screen.dz("settngs_matrix_trace", true);
       AppMethodBeat.o(74056);
       return;
-      this.screen.jdMethod_do("settings_nfc_switch", false);
-      ((CheckBoxPreference)localObject2).setSummary(Util.nullAsNil((String)g.aAh().azQ().get(ar.a.NUU, null)));
-      if (this.DaE)
+      this.screen.dz("settings_nfc_switch", false);
+      ((CheckBoxPreference)localObject2).aF(Util.nullAsNil((String)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.ViT, null)));
+      if (this.Jgf)
       {
         Log.i("MicroMsg.SettingsAboutSystemUI", "lo-nfc-updateNfcOpenSwitch go setSystemNfc and back");
         if (((NfcAdapter)localObject1).isEnabled())
         {
-          st(true);
-          ur(true);
+          vH(true);
+          xP(true);
           break;
         }
       }
-      int i = ((Integer)g.aAh().azQ().get(ar.a.NUQ, Integer.valueOf(0))).intValue();
+      int i = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.ViP, Integer.valueOf(0))).intValue();
       if (i == 0) {
-        if (((Integer)g.aAh().azQ().get(ar.a.NUR, Integer.valueOf(0))).intValue() == 1) {
-          ur(true);
+        if (((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.ViQ, Integer.valueOf(0))).intValue() == 1) {
+          xP(true);
         }
       }
       for (;;)
       {
         this.screen.notifyDataSetChanged();
         break;
-        ur(false);
+        xP(false);
         continue;
         if (i == 1) {
-          ur(true);
+          xP(true);
         } else {
-          ur(false);
+          xP(false);
         }
       }
       label474:
-      if (com.tencent.mm.ui.ao.isDarkMode()) {
-        localObject1 = getString(2131765278);
+      if (ar.isDarkMode()) {
+        localObject1 = getString(b.i.setting_open);
       } else {
-        localObject1 = getString(2131765262);
+        localObject1 = getString(b.i.setting_close);
       }
     }
   }
@@ -807,7 +925,7 @@ public class SettingsAboutSystemUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsAboutSystemUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,79 +1,77 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.d.g;
-import com.tencent.mm.plugin.wallet_core.model.ad;
-import com.tencent.mm.plugin.wallet_core.model.t;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.drj;
+import com.tencent.mm.protocal.protobuf.drk;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import com.tencent.mm.wallet_core.tenpay.model.m;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public final class q
-  extends m
+  extends com.tencent.mm.an.q
+  implements m
 {
-  public q()
+  private drj OIc;
+  public drk OId;
+  private i callback;
+  private d kwO;
+  public String oym;
+  
+  public q(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(69926);
-    setRequestData(new HashMap());
-    AppMethodBeat.o(69926);
+    AppMethodBeat.i(69923);
+    d.a locala = new d.a();
+    locala.lBU = new drj();
+    locala.lBV = new drk();
+    locala.funcId = 2710;
+    locala.uri = "/cgi-bin/mmpay-bin/mktqueryawardstatus";
+    locala.lBW = 0;
+    locala.respCmdId = 0;
+    this.kwO = locala.bgN();
+    this.OIc = ((drj)d.b.b(this.kwO.lBR));
+    this.OIc.Pav = paramString1;
+    this.oym = paramString2;
+    Log.i("MicroMsg.NetSceneMtkQueryAwardStatus", "NetSceneMtkQueryAwardStatus, query_award_status_params: %s, activityId: %s", new Object[] { paramString1, paramString2 });
+    AppMethodBeat.o(69923);
   }
   
-  public final int getFuncId()
+  public final int doScene(g paramg, i parami)
   {
-    return 1631;
+    AppMethodBeat.i(69924);
+    this.callback = parami;
+    int i = dispatch(paramg, this.kwO, this);
+    AppMethodBeat.o(69924);
+    return i;
   }
   
-  public final int getTenpayCgicmd()
+  public final int getType()
   {
-    return 1631;
+    return 2710;
   }
   
-  public final String getUri()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    return "/cgi-bin/mmpay-bin/tenpay/queryuserwallet";
-  }
-  
-  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(69927);
-    Log.i("MicroMsg.NetSceneQueryUserWallet", "errCode is : ".concat(String.valueOf(paramInt)));
-    if (paramInt == 0)
-    {
-      t.fQL().db.execSQL("WalletKindInfo", "delete from WalletKindInfo");
-      if (paramJSONObject != null)
-      {
-        Log.i("MicroMsg.NetSceneQueryUserWallet", "resp json " + paramJSONObject.toString());
-        paramString = paramJSONObject.optJSONArray("UserWalletInfoList");
-        if (paramString != null)
-        {
-          int i = paramString.length();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            paramJSONObject = ad.bO(paramString.optJSONObject(paramInt));
-            if (paramJSONObject != null) {
-              t.fQL().insert(paramJSONObject);
-            }
-            paramInt += 1;
-          }
-          AppMethodBeat.o(69927);
-          return;
-        }
-        Log.e("MicroMsg.NetSceneQueryUserWallet", "wallet array is null");
-        AppMethodBeat.o(69927);
-        return;
-      }
-      Log.e("MicroMsg.NetSceneQueryUserWallet", "response json is null");
+    AppMethodBeat.i(69925);
+    Log.i("MicroMsg.NetSceneMtkQueryAwardStatus", "onGYNetEnd, netId: %s, errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.OId = ((drk)d.c.b(((d)params).lBS));
+    if ((paramInt2 == 0) || (paramInt3 == 0)) {
+      Log.i("MicroMsg.NetSceneMtkQueryAwardStatus", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.OId.tqa), this.OId.tqb });
     }
-    AppMethodBeat.o(69927);
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(69925);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.q
  * JD-Core Version:    0.7.0.1
  */

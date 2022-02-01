@@ -4,20 +4,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.a.f.c;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "", "kotlin.jvm.PlatformType", "onDialogClick"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "", "kotlin.jvm.PlatformType", "onDialogClick"})
 final class LiveAnchorPluginLayout$g
   implements f.c
 {
-  public static final g hWq;
+  public static final g kKS;
   
   static
   {
-    AppMethodBeat.i(208504);
-    hWq = new g();
-    AppMethodBeat.o(208504);
+    AppMethodBeat.i(196868);
+    kKS = new g();
+    AppMethodBeat.o(196868);
   }
   
-  public final void e(boolean paramBoolean, String paramString) {}
+  public final void g(boolean paramBoolean, String paramString) {}
 }
 
 

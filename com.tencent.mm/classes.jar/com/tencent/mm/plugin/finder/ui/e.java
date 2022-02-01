@@ -1,18 +1,19 @@
 package com.tencent.mm.plugin.finder.ui;
 
 import android.graphics.Rect;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.c;
-import android.support.v7.widget.RecyclerView.l;
-import android.support.v7.widget.RecyclerView.v;
-import android.support.v7.widget.aj;
-import android.support.v7.widget.ak;
 import android.view.View;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.c;
+import androidx.recyclerview.widget.RecyclerView.l;
+import androidx.recyclerview.widget.RecyclerView.v;
+import androidx.recyclerview.widget.u;
+import androidx.recyclerview.widget.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.finder.b.f;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashSet;
@@ -24,138 +25,187 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderFullPagerSnapHelper;", "Landroid/support/v7/widget/PagerSnapHelper;", "()V", "endRect", "", "firstRect", "horizontalHelper", "Landroid/support/v7/widget/OrientationHelper;", "kotlin.jvm.PlatformType", "getHorizontalHelper", "()Landroid/support/v7/widget/OrientationHelper;", "horizontalHelper$delegate", "Lkotlin/Lazy;", "layoutManager", "Landroid/support/v7/widget/LinearLayoutManager;", "rect", "Landroid/graphics/Rect;", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "specialIds", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "verticalHelper", "getVerticalHelper", "verticalHelper$delegate", "attachToRecyclerView", "", "view", "calculateDistanceToFinalSnap", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "targetView", "Landroid/view/View;", "checkMask", "isHardAlpha", "", "source", "", "distanceToTop", "helper", "findCenterView", "canScrollVertically", "findSnapView", "findTargetSnapPosition", "velocityX", "velocityY", "findVisiblePos", "findVisibleView", "isSpecialView", "print", "msg", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderFullPagerSnapHelper;", "Landroidx/recyclerview/widget/PagerSnapHelper;", "()V", "endRect", "", "firstRect", "forwardDirection", "", "horizontalHelper", "Landroidx/recyclerview/widget/OrientationHelper;", "kotlin.jvm.PlatformType", "getHorizontalHelper", "()Landroidx/recyclerview/widget/OrientationHelper;", "horizontalHelper$delegate", "Lkotlin/Lazy;", "ignoreIds", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "layoutManager", "Landroidx/recyclerview/widget/LinearLayoutManager;", "rect", "Landroid/graphics/Rect;", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "specialIds", "verticalHelper", "getVerticalHelper", "verticalHelper$delegate", "attachToRecyclerView", "", "view", "calculateDistanceToFinalSnap", "Landroidx/recyclerview/widget/RecyclerView$LayoutManager;", "targetView", "Landroid/view/View;", "checkMask", "isHardAlpha", "source", "", "distanceToTop", "helper", "findCenterView", "canScrollVertically", "findSnapView", "findTargetSnapPosition", "velocityX", "velocityY", "findVisiblePos", "findVisibleView", "isIgnoreView", "isSpecialView", "print", "msg", "Companion", "plugin-finder_release"})
 public final class e
-  extends ak
+  extends v
 {
-  private static final boolean cWq;
-  public static final e.a vKs;
-  private RecyclerView hak;
-  private final Rect rect;
-  private final int[] vKm;
-  private final int[] vKn;
-  private final HashSet<Integer> vKo;
-  private LinearLayoutManager vKp;
-  private final f vKq;
-  private final f vKr;
+  public static final a Ark;
+  private static final boolean dal;
+  private boolean AaR;
+  private final HashSet<Integer> AaU;
+  private final int[] Are;
+  private final int[] Arf;
+  private final HashSet<Integer> Arg;
+  private LinearLayoutManager Arh;
+  private final f Ari;
+  private final f Arj;
+  private final Rect byG;
+  private RecyclerView jLl;
   
   static
   {
     boolean bool = false;
-    AppMethodBeat.i(252419);
-    vKs = new e.a((byte)0);
+    AppMethodBeat.i(286863);
+    Ark = new a((byte)0);
     if (BuildInfo.DEBUG) {
       bool = true;
     }
-    cWq = bool;
-    AppMethodBeat.o(252419);
+    dal = bool;
+    AppMethodBeat.o(286863);
   }
   
   public e()
   {
-    AppMethodBeat.i(252418);
-    this.vKm = new int[2];
-    this.vKn = new int[2];
+    AppMethodBeat.i(286862);
+    this.Are = new int[2];
+    this.Arf = new int[2];
     HashSet localHashSet = new HashSet();
-    localHashSet.add(Integer.valueOf(2131302228));
-    this.vKo = localHashSet;
-    this.vKq = g.ah((kotlin.g.a.a)new e(this));
-    this.vKr = g.ah((kotlin.g.a.a)new d(this));
-    this.rect = new Rect();
-    AppMethodBeat.o(252418);
+    localHashSet.add(Integer.valueOf(b.f.guide_layout_parent));
+    this.Arg = localHashSet;
+    localHashSet = new HashSet();
+    localHashSet.add(Integer.valueOf(b.f.search_scroll_tips_root));
+    this.AaU = localHashSet;
+    this.Ari = g.ar((kotlin.g.a.a)new e(this));
+    this.Arj = g.ar((kotlin.g.a.a)new d(this));
+    this.byG = new Rect();
+    AppMethodBeat.o(286862);
   }
   
-  private static int a(View paramView, aj paramaj)
+  private static int a(View paramView, u paramu)
   {
-    AppMethodBeat.i(252416);
-    int i = paramaj.bo(paramView);
-    int j = paramaj.kH();
-    AppMethodBeat.o(252416);
+    AppMethodBeat.i(286860);
+    int i = paramu.aZ(paramView);
+    int j = paramu.kT();
+    aex("distanceToTop childTop:" + i + " containerTop:" + j + " targetViewHeight:" + paramView.getHeight() + " view:" + paramView);
+    AppMethodBeat.o(286860);
     return i - j;
   }
   
-  private final aj dzz()
+  private static void aex(String paramString)
   {
-    AppMethodBeat.i(252410);
-    aj localaj = (aj)this.vKq.getValue();
-    AppMethodBeat.o(252410);
-    return localaj;
+    AppMethodBeat.i(286861);
+    if (dal) {
+      Log.i("Finder.FullPagerSnapHelper", paramString);
+    }
+    AppMethodBeat.o(286861);
   }
   
-  private final boolean eb(View paramView)
+  private final boolean eG(View paramView)
   {
-    AppMethodBeat.i(252414);
+    AppMethodBeat.i(286857);
     if (paramView == null)
     {
-      AppMethodBeat.o(252414);
+      AppMethodBeat.o(286857);
       return false;
     }
-    Iterator localIterator = ((Iterable)this.vKo).iterator();
+    Iterator localIterator = ((Iterable)this.Arg).iterator();
     while (localIterator.hasNext())
     {
       View localView = paramView.findViewById(((Number)localIterator.next()).intValue());
       if ((localView != null) && (localView.getVisibility() == 0))
       {
-        AppMethodBeat.o(252414);
+        AppMethodBeat.o(286857);
         return true;
       }
     }
-    AppMethodBeat.o(252414);
+    AppMethodBeat.o(286857);
     return false;
   }
   
-  private static void print(String paramString)
+  private final boolean eH(View paramView)
   {
-    AppMethodBeat.i(252417);
-    if (cWq) {
-      Log.i("Finder.FullPagerSnapHelper", paramString);
+    AppMethodBeat.i(286858);
+    if (paramView == null)
+    {
+      AppMethodBeat.o(286858);
+      return false;
     }
-    AppMethodBeat.o(252417);
+    Iterator localIterator = ((Iterable)this.AaU).iterator();
+    while (localIterator.hasNext())
+    {
+      View localView = paramView.findViewById(((Number)localIterator.next()).intValue());
+      if ((localView != null) && (localView.getVisibility() == 0))
+      {
+        AppMethodBeat.o(286858);
+        return true;
+      }
+    }
+    AppMethodBeat.o(286858);
+    return false;
+  }
+  
+  private final u eat()
+  {
+    AppMethodBeat.i(286853);
+    u localu = (u)this.Ari.getValue();
+    AppMethodBeat.o(286853);
+    return localu;
   }
   
   public final int a(RecyclerView.LayoutManager paramLayoutManager, int paramInt1, int paramInt2)
   {
-    int i = -1;
-    AppMethodBeat.i(252412);
-    p.h(paramLayoutManager, "layoutManager");
-    int j = super.a(paramLayoutManager, paramInt1, paramInt2);
-    View localView = paramLayoutManager.findViewByPosition(j);
-    int k;
-    if ((localView == null) || (localView.getHeight() <= 0))
-    {
-      paramLayoutManager = this.vKp;
-      if (paramLayoutManager == null) {
-        p.btv("layoutManager");
-      }
-      k = paramLayoutManager.getChildCount();
-      paramInt1 = 0;
-      if (paramInt1 >= k) {
-        break label376;
-      }
-      paramLayoutManager = this.vKp;
-      if (paramLayoutManager == null) {
-        p.btv("layoutManager");
-      }
-      paramLayoutManager = paramLayoutManager.getChildAt(paramInt1);
-      if (paramLayoutManager == null) {}
-      do
+    boolean bool = true;
+    int j = 0;
+    AppMethodBeat.i(286855);
+    p.k(paramLayoutManager, "layoutManager");
+    int i = super.a(paramLayoutManager, paramInt1, paramInt2);
+    View localView;
+    if (paramLayoutManager.canScrollHorizontally()) {
+      if (paramInt1 > 0)
       {
-        paramInt1 += 1;
-        break;
-        p.g(paramLayoutManager, "layoutManager.getChildAt(i) ?: continue");
-      } while (!p.j(paramLayoutManager, localView));
+        this.AaR = bool;
+        localView = paramLayoutManager.findViewByPosition(i);
+        if (eH(localView)) {
+          break label415;
+        }
+        if ((localView != null) && (localView.getHeight() > 0)) {
+          break label399;
+        }
+        paramLayoutManager = this.Arh;
+        if (paramLayoutManager == null) {
+          p.bGy("layoutManager");
+        }
+        j = paramLayoutManager.getChildCount();
+        paramInt1 = 0;
+        label96:
+        if (paramInt1 >= j) {
+          break label534;
+        }
+        paramLayoutManager = this.Arh;
+        if (paramLayoutManager == null) {
+          p.bGy("layoutManager");
+        }
+        paramLayoutManager = paramLayoutManager.getChildAt(paramInt1);
+        if (paramLayoutManager != null) {
+          break label149;
+        }
+      }
     }
+    label149:
+    do
+    {
+      paramInt1 += 1;
+      break label96;
+      bool = false;
+      break;
+      if (paramInt2 > 0) {
+        break;
+      }
+      bool = false;
+      break;
+      p.j(paramLayoutManager, "layoutManager.getChildAt(i) ?: continue");
+    } while (!p.h(paramLayoutManager, localView));
     for (;;)
     {
-      if ((paramInt2 > 0) && (paramInt1 + 1 < k))
+      if ((paramInt2 > 0) && (paramInt1 + 1 < j))
       {
         paramInt1 += 1;
-        if (paramInt1 >= k) {
-          break label370;
+        if (paramInt1 >= j) {
+          break label399;
         }
-        paramLayoutManager = this.vKp;
+        paramLayoutManager = this.Arh;
         if (paramLayoutManager == null) {
-          p.btv("layoutManager");
+          p.bGy("layoutManager");
         }
         paramLayoutManager = paramLayoutManager.getChildAt(paramInt1);
         if (paramLayoutManager == null) {}
@@ -163,38 +213,37 @@ public final class e
         {
           paramInt1 += 1;
           break;
-          p.g(paramLayoutManager, "layoutManager.getChildAt(i) ?: continue");
+          p.j(paramLayoutManager, "layoutManager.getChildAt(i) ?: continue");
         } while (paramLayoutManager.getHeight() <= 0);
+        if (paramLayoutManager == null) {
+          break label410;
+        }
+        RecyclerView localRecyclerView = this.jLl;
+        if (localRecyclerView == null) {
+          p.bGy("recyclerView");
+        }
+        paramLayoutManager = localRecyclerView.bf(paramLayoutManager);
+        if (paramLayoutManager == null) {
+          break label405;
+        }
+        paramInt1 = paramLayoutManager.md();
       }
       for (;;)
       {
-        paramInt1 = i;
-        if (paramLayoutManager != null)
-        {
-          RecyclerView localRecyclerView = this.hak;
-          if (localRecyclerView == null) {
-            p.btv("recyclerView");
-          }
-          paramLayoutManager = localRecyclerView.bu(paramLayoutManager);
-          paramInt1 = i;
-          if (paramLayoutManager != null) {
-            paramInt1 = paramLayoutManager.lR();
-          }
+        aex("[findTargetSnapPosition] pos=" + i + " -> " + paramInt1);
+        if ((localView != null) && (eG(localView))) {
+          localView.setTag(b.f.finder_full_snap_ignore, Boolean.FALSE);
         }
-        print("[findTargetSnapPosition] pos=" + j + " -> " + paramInt1 + ", velocityY=" + paramInt2);
-        if ((localView != null) && (eb(localView))) {
-          localView.setTag(2131300846, Boolean.FALSE);
-        }
-        AppMethodBeat.o(252412);
+        AppMethodBeat.o(286855);
         return paramInt1;
         if ((paramInt2 < 0) && (paramInt1 - 1 >= 0))
         {
           paramInt1 -= 1;
           if (paramInt1 >= 0)
           {
-            paramLayoutManager = this.vKp;
+            paramLayoutManager = this.Arh;
             if (paramLayoutManager == null) {
-              p.btv("layoutManager");
+              p.bGy("layoutManager");
             }
             paramLayoutManager = paramLayoutManager.getChildAt(paramInt1);
             if (paramLayoutManager == null) {}
@@ -202,182 +251,278 @@ public final class e
             {
               paramInt1 -= 1;
               break;
-              p.g(paramLayoutManager, "layoutManager.getChildAt(i) ?: continue");
+              p.j(paramLayoutManager, "layoutManager.getChildAt(i) ?: continue");
             } while (paramLayoutManager.getHeight() <= 0);
-            continue;
+            break;
           }
         }
-        label370:
+        label399:
         paramLayoutManager = localView;
+        break;
+        label405:
+        paramInt1 = -1;
+        continue;
+        label410:
+        paramInt1 = -1;
       }
-      label376:
+      label415:
+      paramLayoutManager = this.jLl;
+      if (paramLayoutManager == null) {
+        p.bGy("recyclerView");
+      }
+      paramLayoutManager = paramLayoutManager.getAdapter();
+      paramInt1 = j;
+      if (paramLayoutManager != null) {
+        paramInt1 = paramLayoutManager.getItemCount();
+      }
+      if ((this.AaR) && (i + 1 < paramInt1)) {
+        paramInt1 = i + 1;
+      }
+      for (;;)
+      {
+        aex("[findTargetSnapPosition] isIgnoreView pos=" + i + " -> " + paramInt1);
+        AppMethodBeat.o(286855);
+        return paramInt1;
+        if ((!this.AaR) && (i - 1 >= 0)) {
+          paramInt1 = i - 1;
+        } else {
+          paramInt1 = i;
+        }
+      }
+      label534:
       paramInt1 = -1;
     }
   }
   
   public final View a(RecyclerView.LayoutManager paramLayoutManager)
   {
-    AppMethodBeat.i(252413);
-    p.h(paramLayoutManager, "layoutManager");
+    AppMethodBeat.i(286856);
+    p.k(paramLayoutManager, "layoutManager");
     boolean bool = paramLayoutManager.canScrollVertically();
-    int k = paramLayoutManager.getChildCount();
-    if (k == 0)
-    {
-      AppMethodBeat.o(252413);
-      return null;
+    int n = paramLayoutManager.getChildCount();
+    Object localObject1;
+    if (n == 0) {
+      localObject1 = null;
     }
-    float f1 = 0.0F;
-    int j = 0;
-    Object localObject1 = null;
-    if (j < k)
+    float f1;
+    int m;
+    Object localObject2;
+    View localView;
+    Object localObject3;
+    float f2;
+    for (;;)
     {
-      View localView = paramLayoutManager.getChildAt(j);
-      Object localObject2;
-      float f2;
-      if (localView == null)
+      aex("findSnapView() snapView:".concat(String.valueOf(localObject1)));
+      AppMethodBeat.o(286856);
+      return localObject1;
+      f1 = 0.0F;
+      m = 0;
+      localObject2 = null;
+      localObject1 = localObject2;
+      if (m < n)
       {
-        localObject2 = localObject1;
-        f2 = f1;
-      }
-      label113:
-      do
-      {
+        localView = paramLayoutManager.getChildAt(m);
+        if (localView == null)
+        {
+          localObject3 = localObject2;
+          f2 = f1;
+        }
+        label135:
         do
         {
-          j += 1;
-          f1 = f2;
-          localObject1 = localObject2;
-          break;
-          p.g(localView, "layoutManager.getChildAt(i) ?: continue");
-          if (!bool) {
-            break label113;
+          do
+          {
+            m += 1;
+            f1 = f2;
+            localObject2 = localObject3;
+            break;
+            p.j(localView, "layoutManager.getChildAt(i) ?: continue");
+            if (!bool) {
+              break label135;
+            }
+            f2 = f1;
+            localObject3 = localObject2;
+          } while (localView.getHeight() <= 0);
+          if (bool) {
+            break label154;
           }
           f2 = f1;
-          localObject2 = localObject1;
-        } while (localView.getHeight() <= 0);
-        if (bool) {
-          break label132;
-        }
-        f2 = f1;
-        localObject2 = localObject1;
-      } while (localView.getWidth() <= 0);
-      label132:
-      if ((eb(localView)) && (localView.getGlobalVisibleRect(this.rect)) && (this.rect.height() > 0))
-      {
-        paramLayoutManager = localView.getTag(2131300846);
-        print("[findSnapView] isSpecialView child=" + localView + " rect=" + this.rect + " tag=" + paramLayoutManager);
-        if ((paramLayoutManager == null) || (p.j(paramLayoutManager, Boolean.TRUE)))
-        {
-          AppMethodBeat.o(252413);
-          return localView;
-        }
-        localView.setTag(2131300846, Boolean.FALSE);
-        AppMethodBeat.o(252413);
-        return null;
-      }
-      if (localView.getGlobalVisibleRect(this.rect)) {
-        if (bool)
-        {
-          i = this.rect.height();
-          label284:
-          f2 = i;
-          if (!bool) {
-            break label350;
-          }
-        }
-      }
-      label350:
-      for (int i = localView.getHeight();; i = localView.getWidth())
-      {
-        float f3 = 1.0F * f2 / i;
-        f2 = f1;
-        localObject2 = localObject1;
-        if (f1 >= f3) {
+          localObject3 = localObject2;
+        } while (localView.getWidth() <= 0);
+        label154:
+        if ((!eG(localView)) || (!localView.getGlobalVisibleRect(this.byG)) || (this.byG.height() <= 0)) {
           break;
         }
-        f2 = f3;
-        localObject2 = localView;
-        break;
-        i = this.rect.width();
-        break label284;
-        i = 0;
-        break label284;
+        paramLayoutManager = localView.getTag(b.f.finder_full_snap_ignore);
+        aex("[findSnapView] isSpecialView child=" + localView + " rect=" + this.byG + " tag=" + paramLayoutManager);
+        if ((paramLayoutManager == null) || (p.h(paramLayoutManager, Boolean.TRUE)))
+        {
+          localObject1 = localView;
+        }
+        else
+        {
+          localView.setTag(b.f.finder_full_snap_ignore, Boolean.FALSE);
+          localObject1 = null;
+        }
       }
     }
-    AppMethodBeat.o(252413);
-    return localObject1;
-  }
-  
-  public final int[] a(RecyclerView.LayoutManager paramLayoutManager, View paramView)
-  {
-    AppMethodBeat.i(252415);
-    p.h(paramLayoutManager, "layoutManager");
-    p.h(paramView, "targetView");
-    int[] arrayOfInt = new int[2];
-    aj localaj;
-    if (eb(paramView))
-    {
-      paramLayoutManager = paramView.getTag(2131300846);
-      localaj = dzz();
-      p.g(localaj, "verticalHelper");
-      arrayOfInt[1] = a(paramView, localaj);
-      if ((paramLayoutManager == null) || (p.j(paramLayoutManager, Boolean.TRUE))) {
-        arrayOfInt[1] = 0;
+    int i;
+    label302:
+    int j;
+    label314:
+    label371:
+    int k;
+    if (localView.getGlobalVisibleRect(this.byG)) {
+      if (bool)
+      {
+        i = this.byG.height();
+        if (!bool) {
+          break label516;
+        }
+        j = localView.getHeight();
+        if ((!eH(localView)) || (!localView.getGlobalVisibleRect(this.byG)) || (this.byG.height() <= 0)) {
+          break label587;
+        }
+        if ((!this.AaR) || (m + 1 >= n)) {
+          break label526;
+        }
+        localObject1 = paramLayoutManager.getChildAt(m + 1);
+        if (localObject1 == null) {
+          break label587;
+        }
+        if (!((View)localObject1).getGlobalVisibleRect(this.byG)) {
+          break label571;
+        }
+        if (!bool) {
+          break label559;
+        }
+        k = this.byG.height();
+        label402:
+        k = i + k;
+        if (!bool) {
+          break label577;
+        }
+        i = ((View)localObject1).getHeight();
+        label421:
+        j += i;
+        aex("findSnapView ignoreChild:" + localView + " jumpIgnoreChild:" + localObject1);
+        i = k;
       }
-      paramView.setTag(2131300846, Boolean.FALSE);
     }
     for (;;)
     {
-      AppMethodBeat.o(252415);
-      return arrayOfInt;
-      if (paramLayoutManager.canScrollHorizontally())
-      {
-        localaj = (aj)this.vKr.getValue();
-        p.g(localaj, "horizontalHelper");
-        arrayOfInt[0] = a(paramView, localaj);
-      }
-      for (;;)
-      {
-        if (!paramLayoutManager.canScrollVertically()) {
-          break label173;
-        }
-        paramLayoutManager = dzz();
-        p.g(paramLayoutManager, "verticalHelper");
-        arrayOfInt[1] = a(paramView, paramLayoutManager);
+      float f3 = 1.0F * i / j;
+      f2 = f1;
+      localObject3 = localObject2;
+      if (f1 >= f3) {
         break;
-        arrayOfInt[0] = 0;
       }
-      label173:
-      arrayOfInt[1] = 0;
+      f2 = f3;
+      localObject3 = localObject1;
+      break;
+      i = this.byG.width();
+      break label302;
+      i = 0;
+      break label302;
+      label516:
+      j = localView.getWidth();
+      break label314;
+      label526:
+      if ((!this.AaR) && (m - 1 >= 0))
+      {
+        localObject1 = paramLayoutManager.getChildAt(m - 1);
+        break label371;
+      }
+      localObject1 = null;
+      break label371;
+      label559:
+      k = this.byG.width();
+      break label402;
+      label571:
+      k = 0;
+      break label402;
+      label577:
+      i = ((View)localObject1).getWidth();
+      break label421;
+      label587:
+      localObject1 = localView;
     }
   }
   
-  public final void f(final RecyclerView paramRecyclerView)
+  public final void a(final RecyclerView paramRecyclerView)
   {
-    AppMethodBeat.i(252411);
+    AppMethodBeat.i(286854);
     if (paramRecyclerView != null)
     {
       Object localObject = paramRecyclerView.getLayoutManager();
       if (localObject == null)
       {
-        paramRecyclerView = new t("null cannot be cast to non-null type android.support.v7.widget.LinearLayoutManager");
-        AppMethodBeat.o(252411);
+        paramRecyclerView = new t("null cannot be cast to non-null type androidx.recyclerview.widget.LinearLayoutManager");
+        AppMethodBeat.o(286854);
         throw paramRecyclerView;
       }
       localObject = (LinearLayoutManager)localObject;
-      this.hak = paramRecyclerView;
-      this.vKp = ((LinearLayoutManager)localObject);
+      this.jLl = paramRecyclerView;
+      this.Arh = ((LinearLayoutManager)localObject);
       paramRecyclerView.a((RecyclerView.l)new b((LinearLayoutManager)localObject, this, paramRecyclerView));
       RecyclerView.a locala = paramRecyclerView.getAdapter();
       if (locala != null) {
         locala.a((RecyclerView.c)new e.c(paramRecyclerView, (LinearLayoutManager)localObject, this, paramRecyclerView));
       }
     }
-    super.f(paramRecyclerView);
-    AppMethodBeat.o(252411);
+    super.a(paramRecyclerView);
+    AppMethodBeat.o(286854);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/ui/FinderFullPagerSnapHelper$attachToRecyclerView$1$1", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "onScrollStateChanged", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "newState", "", "onScrolled", "dx", "dy", "plugin-finder_release"})
+  public final int[] a(RecyclerView.LayoutManager paramLayoutManager, View paramView)
+  {
+    AppMethodBeat.i(286859);
+    p.k(paramLayoutManager, "layoutManager");
+    p.k(paramView, "targetView");
+    int[] arrayOfInt = new int[2];
+    u localu;
+    if (eG(paramView))
+    {
+      paramLayoutManager = paramView.getTag(b.f.finder_full_snap_ignore);
+      localu = eat();
+      p.j(localu, "verticalHelper");
+      arrayOfInt[1] = a(paramView, localu);
+      if ((paramLayoutManager == null) || (p.h(paramLayoutManager, Boolean.TRUE))) {
+        arrayOfInt[1] = 0;
+      }
+      paramView.setTag(b.f.finder_full_snap_ignore, Boolean.FALSE);
+    }
+    for (;;)
+    {
+      aex("calculateDistanceToFinalSnap x:" + arrayOfInt[0] + " y:" + arrayOfInt[1]);
+      AppMethodBeat.o(286859);
+      return arrayOfInt;
+      if (paramLayoutManager.canScrollHorizontally())
+      {
+        localu = (u)this.Arj.getValue();
+        p.j(localu, "horizontalHelper");
+        arrayOfInt[0] = a(paramView, localu);
+      }
+      for (;;)
+      {
+        if (!paramLayoutManager.canScrollVertically()) {
+          break label207;
+        }
+        paramLayoutManager = eat();
+        p.j(paramLayoutManager, "verticalHelper");
+        arrayOfInt[1] = a(paramView, paramLayoutManager);
+        break;
+        arrayOfInt[0] = 0;
+      }
+      label207:
+      arrayOfInt[1] = 0;
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderFullPagerSnapHelper$Companion;", "", "()V", "TAG", "", "isDebug", "", "()Z", "plugin-finder_release"})
+  public static final class a {}
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/ui/FinderFullPagerSnapHelper$attachToRecyclerView$1$1", "Landroidx/recyclerview/widget/RecyclerView$OnScrollListener;", "onScrollStateChanged", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "newState", "", "onScrolled", "dx", "dy", "plugin-finder_release"})
   public static final class b
     extends RecyclerView.l
   {
@@ -385,48 +530,48 @@ public final class e
     
     public final void onScrollStateChanged(final RecyclerView paramRecyclerView, int paramInt)
     {
-      AppMethodBeat.i(252398);
+      AppMethodBeat.i(285365);
       b localb = new b();
-      localb.bm(paramRecyclerView);
-      localb.pH(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderFullPagerSnapHelper$attachToRecyclerView$$inlined$let$lambda$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.axR());
-      p.h(paramRecyclerView, "recyclerView");
+      localb.bn(paramRecyclerView);
+      localb.sg(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FinderFullPagerSnapHelper$attachToRecyclerView$$inlined$let$lambda$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
+      p.k(paramRecyclerView, "recyclerView");
       super.onScrollStateChanged(paramRecyclerView, paramInt);
       if (paramInt == 0) {
         paramRecyclerView.post((Runnable)new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(252397);
-            e.a(this.vKv.vKt, paramRecyclerView, this.vKv.tSy, false);
-            AppMethodBeat.o(252397);
+            AppMethodBeat.i(279025);
+            e.a(this.Arn.Arl, paramRecyclerView, this.Arn.xDp, false);
+            AppMethodBeat.o(279025);
           }
         });
       }
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderFullPagerSnapHelper$attachToRecyclerView$$inlined$let$lambda$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
-      AppMethodBeat.o(252398);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderFullPagerSnapHelper$attachToRecyclerView$$inlined$let$lambda$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
+      AppMethodBeat.o(285365);
     }
     
     public final void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(252399);
+      AppMethodBeat.i(285366);
       b localb = new b();
-      localb.bm(paramRecyclerView);
-      localb.pH(paramInt1);
-      localb.pH(paramInt2);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderFullPagerSnapHelper$attachToRecyclerView$$inlined$let$lambda$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.axR());
-      p.h(paramRecyclerView, "recyclerView");
+      localb.bn(paramRecyclerView);
+      localb.sg(paramInt1);
+      localb.sg(paramInt2);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FinderFullPagerSnapHelper$attachToRecyclerView$$inlined$let$lambda$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aFi());
+      p.k(paramRecyclerView, "recyclerView");
       super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-      e.a(jdField_this, paramRecyclerView, this.tSy, false);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderFullPagerSnapHelper$attachToRecyclerView$$inlined$let$lambda$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-      AppMethodBeat.o(252399);
+      e.a(jdField_this, paramRecyclerView, this.xDp, false);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderFullPagerSnapHelper$attachToRecyclerView$$inlined$let$lambda$1", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
+      AppMethodBeat.o(285366);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/support/v7/widget/OrientationHelper;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroidx/recyclerview/widget/OrientationHelper;", "kotlin.jvm.PlatformType", "invoke"})
   static final class d
     extends q
-    implements kotlin.g.a.a<aj>
+    implements kotlin.g.a.a<u>
   {
     d(e parame)
     {
@@ -434,10 +579,10 @@ public final class e
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/support/v7/widget/OrientationHelper;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroidx/recyclerview/widget/OrientationHelper;", "kotlin.jvm.PlatformType", "invoke"})
   static final class e
     extends q
-    implements kotlin.g.a.a<aj>
+    implements kotlin.g.a.a<u>
   {
     e(e parame)
     {
@@ -447,7 +592,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.e
  * JD-Core Version:    0.7.0.1
  */

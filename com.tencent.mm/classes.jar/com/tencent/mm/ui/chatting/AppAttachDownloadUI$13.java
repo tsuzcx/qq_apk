@@ -2,36 +2,36 @@ package com.tencent.mm.ui.chatting;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.q.f;
 import java.util.List;
 
 final class AppAttachDownloadUI$13
-  implements o.f
+  implements q.f
 {
   AppAttachDownloadUI$13(AppAttachDownloadUI paramAppAttachDownloadUI, List paramList1, List paramList2) {}
   
-  public final void onCreateMMMenu(m paramm)
+  public final void onCreateMMMenu(o paramo)
   {
-    AppMethodBeat.i(232805);
-    if (!Util.isNullOrNil(this.dqb)) {
-      paramm.setHeaderTitle(this.dqb);
+    AppMethodBeat.i(278310);
+    if (!Util.isNullOrNil(this.cWz)) {
+      paramo.setHeaderTitle(this.cWz);
     }
     int i = 0;
-    while (i < this.Ere.size())
+    while (i < this.KEx.size())
     {
-      paramm.d(((Integer)this.EqA.get(i)).intValue(), (CharSequence)this.Ere.get(i));
+      paramo.d(((Integer)this.KDR.get(i)).intValue(), (CharSequence)this.KEx.get(i));
       i += 1;
     }
-    if (!Util.isNullOrNil(this.OPn)) {
-      paramm.d(-1, this.OPn);
+    if (!Util.isNullOrNil(this.Wiv)) {
+      paramo.d(-1, this.Wiv);
     }
-    AppMethodBeat.o(232805);
+    AppMethodBeat.o(278310);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.AppAttachDownloadUI.13
  * JD-Core Version:    0.7.0.1
  */

@@ -1,73 +1,101 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class apo
-  extends com.tencent.mm.bw.a
+  extends dyl
 {
-  public String LBw;
-  public long commentId;
-  public long hFK;
+  public String finderUsername;
+  public String fwt;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(209355);
+    AppMethodBeat.i(231019);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bb(1, this.hFK);
-      paramVarArgs.bb(2, this.commentId);
-      if (this.LBw != null) {
-        paramVarArgs.e(3, this.LBw);
-      }
-      AppMethodBeat.o(209355);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.r(1, this.hFK) + 0 + g.a.a.b.b.a.r(2, this.commentId);
-      paramInt = i;
-      if (this.LBw != null) {
-        paramInt = i + g.a.a.b.b.a.f(3, this.LBw);
-      }
-      AppMethodBeat.o(209355);
-      return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
-        }
-      }
-      AppMethodBeat.o(209355);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      apo localapo = (apo)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (this.BaseRequest != null)
       {
-      default: 
-        AppMethodBeat.o(209355);
-        return -1;
-      case 1: 
-        localapo.hFK = locala.UbS.zl();
-        AppMethodBeat.o(209355);
-        return 0;
-      case 2: 
-        localapo.commentId = locala.UbS.zl();
-        AppMethodBeat.o(209355);
-        return 0;
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      localapo.LBw = locala.UbS.readString();
-      AppMethodBeat.o(209355);
+      if (this.fwt != null) {
+        paramVarArgs.f(2, this.fwt);
+      }
+      if (this.finderUsername != null) {
+        paramVarArgs.f(3, this.finderUsername);
+      }
+      AppMethodBeat.o(231019);
       return 0;
     }
-    AppMethodBeat.o(209355);
-    return -1;
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label408;
+      }
+    }
+    label408:
+    for (int i = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    {
+      paramInt = i;
+      if (this.fwt != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.fwt);
+      }
+      i = paramInt;
+      if (this.finderUsername != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.finderUsername);
+      }
+      AppMethodBeat.o(231019);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
+        }
+        AppMethodBeat.o(231019);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        apo localapo = (apo)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(231019);
+          return -1;
+        case 1: 
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            jg localjg = new jg();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localjg.parseFrom((byte[])localObject);
+            }
+            localapo.BaseRequest = localjg;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(231019);
+          return 0;
+        case 2: 
+          localapo.fwt = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(231019);
+          return 0;
+        }
+        localapo.finderUsername = ((g.a.a.a.a)localObject).abFh.readString();
+        AppMethodBeat.o(231019);
+        return 0;
+      }
+      AppMethodBeat.o(231019);
+      return -1;
+    }
   }
 }
 

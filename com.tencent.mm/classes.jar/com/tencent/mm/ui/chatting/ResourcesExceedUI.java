@@ -11,13 +11,16 @@ import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.ui.MMActivity;
 
 public class ResourcesExceedUI
   extends MMActivity
 {
-  private TextView Pkf;
+  private TextView WDO;
   private int type = 0;
   
   public void finish()
@@ -30,7 +33,7 @@ public class ResourcesExceedUI
   
   public int getLayoutId()
   {
-    return 2131496118;
+    return R.i.eky;
   }
   
   public void initView()
@@ -38,7 +41,7 @@ public class ResourcesExceedUI
     AppMethodBeat.i(34870);
     hideTitleView();
     fullScreenNoTitleBar(true);
-    if (d.oD(19))
+    if (d.qV(19))
     {
       getWindow().setFlags(201327616, 201327616);
       setBackBtn(new MenuItem.OnMenuItemClickListener()
@@ -51,14 +54,14 @@ public class ResourcesExceedUI
           return true;
         }
       });
-      this.Pkf = ((TextView)findViewById(2131299762));
+      this.WDO = ((TextView)findViewById(R.h.dFd));
       switch (this.type)
       {
       }
     }
     for (;;)
     {
-      findViewById(2131307173).setOnTouchListener(new View.OnTouchListener()
+      findViewById(R.h.root_view).setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
@@ -72,11 +75,11 @@ public class ResourcesExceedUI
       return;
       getWindow().setFlags(1024, 1024);
       break;
-      this.Pkf.setText(2131767070);
+      this.WDO.setText(R.l.eUF);
       continue;
-      this.Pkf.setText(2131759394);
+      this.WDO.setText(R.l.eEK);
       continue;
-      this.Pkf.setText(2131761768);
+      this.WDO.setText(R.l.eHX);
     }
   }
   
@@ -108,7 +111,7 @@ public class ResourcesExceedUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ResourcesExceedUI
  * JD-Core Version:    0.7.0.1
  */

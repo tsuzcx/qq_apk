@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.wepkg.downloader;
 
-import com.tencent.f.b;
+import com.tencent.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
@@ -21,9 +21,9 @@ public final class h
     if ((paramRunnable instanceof e))
     {
       e locale = (e)paramRunnable;
-      if ((locale.JMw != null) && (locale.JMw.JLZ != null))
+      if ((locale.QLP != null) && (locale.QLP.QLs != null))
       {
-        d.gkL().bcv(locale.JMw.JLZ.JMx);
+        d.heC().bov(locale.QLP.QLs.QLQ);
         Log.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "remove download task");
       }
     }
@@ -40,6 +40,17 @@ public final class h
     AppMethodBeat.o(110622);
   }
   
+  public final void heE()
+  {
+    AppMethodBeat.i(110621);
+    d locald = d.heC();
+    if (locald.QLB != null) {
+      locald.QLB.clear();
+    }
+    super.heE();
+    AppMethodBeat.o(110621);
+  }
+  
   protected final <V> RunnableFuture<V> newTaskFor(Runnable paramRunnable, V paramV)
   {
     AppMethodBeat.i(110620);
@@ -53,21 +64,10 @@ public final class h
     AppMethodBeat.o(110620);
     return paramRunnable;
   }
-  
-  public final void terminated()
-  {
-    AppMethodBeat.i(110621);
-    d locald = d.gkL();
-    if (locald.JMi != null) {
-      locald.JMi.clear();
-    }
-    super.terminated();
-    AppMethodBeat.o(110621);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.downloader.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.appbrand.report.quality;
 
-import com.eclipsesource.v8.V8;
+import com.eclipsesource.mmv8.V8;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.appbrand.v8.m.c;
-import com.tencent.mm.g.b.a.mj;
-import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.f.b.a.ph;
 import com.tencent.mm.ipcinvoker.type.IPCInteger;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.g;
 import com.tencent.mm.plugin.appbrand.m.v;
-import com.tencent.mm.plugin.appbrand.page.ag;
-import com.tencent.mm.plugin.appbrand.page.am;
+import com.tencent.mm.plugin.appbrand.page.ah;
+import com.tencent.mm.plugin.appbrand.page.an;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -20,11 +20,10 @@ import kotlin.g.a.a;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
 import kotlin.l;
-import kotlin.m;
 import kotlin.x;
 import org.xwalk.core.XWalkEnvironment;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/report/quality/AppBrandQualitySystemKVProtocolKt;", "", "()V", "pagecontainerInitReport", "", "pagecontainer", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageContainerWC;", "report15815MainContextLibInject", "service", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "name", "", "sourceLength", "", "succeed", "", "startTimeMs", "", "endTimeMs", "extraParams", "reportAllProcessRuntimeDistribution", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "reportCgiSpeed", "appId", "userName", "weAppQualityCGISpeedStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/WeAppQualityCGISpeedStruct;", "servicePreload", "Lcom/tencent/mm/autogen/mmdata/rpt/WeAppQualityAppServiceUSageStruct;", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "staticWebViewKernelVersionForQualityReport", "webviewPreload", "Lcom/tencent/mm/autogen/mmdata/rpt/WeAppQualityWebviewUsageStruct;", "webviewTypeForQualityReport", "page", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "DEBUG_ASSERT", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime;", "message", "IPC_getProcessAliveRuntimeCount", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/report/quality/AppBrandQualitySystemKVProtocolKt;", "", "()V", "pagecontainerInitReport", "", "pagecontainer", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageContainerWC;", "report15815MainContextLibInject", "service", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "name", "", "sourceLength", "", "succeed", "", "startTimeMs", "", "endTimeMs", "extraParams", "reportAllProcessRuntimeDistribution", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "reportCgiSpeed", "appId", "userName", "weAppQualityCGISpeedStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/WeAppQualityCGISpeedStruct;", "servicePreload", "Lcom/tencent/mm/autogen/mmdata/rpt/WeAppQualityAppServiceUSageStruct;", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "staticWebViewKernelVersionForQualityReport", "webviewPreload", "Lcom/tencent/mm/autogen/mmdata/rpt/WeAppQualityWebviewUsageStruct;", "webviewTypeForQualityReport", "page", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "DEBUG_ASSERT", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime;", "message", "IPC_getProcessAliveRuntimeCount", "plugin-appbrand-integration_release"})
 public class d
 {
   public static void a(QualitySessionRuntime paramQualitySessionRuntime, String paramString)
@@ -42,11 +41,11 @@ public class d
   public static void a(com.tencent.mm.plugin.appbrand.service.c paramc, String paramString, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
     AppMethodBeat.i(175214);
-    p.h(paramc, "service");
-    Object localObject = paramc.bqZ();
+    p.k(paramc, "service");
+    Object localObject = paramc.bBP();
     if (localObject != null)
     {
-      localObject = ((ICommLibReader)localObject).bvb();
+      localObject = ((ICommLibReader)localObject).bGg();
       if (localObject != null) {}
     }
     else
@@ -55,7 +54,7 @@ public class d
     }
     for (;;)
     {
-      p.g(localObject, "service.libReader?.versionName() ?: \"invalid\"");
+      p.j(localObject, "service.libReader?.versionName() ?: \"invalid\"");
       if (!(paramObject instanceof m.c)) {
         paramObject = null;
       }
@@ -64,26 +63,26 @@ public class d
         paramObject = (m.c)paramObject;
         Log.i("MicroMsg.AppBrandQualitySystemKVProtocol", "Inject MainContextLibScript[" + paramString + "] Succeed wx.version = " + (String)localObject + ", appId = " + paramc.getAppId());
         long l;
-        if ((paramc.bsW()) || (paramc.isRunning()))
+        if ((paramc.bDU()) || (paramc.isRunning()))
         {
-          paramString = b.bUZ().l((com.tencent.mm.plugin.appbrand.d)paramc).zy(paramString).vZ(paramInt);
-          if ((paramObject == null) || (paramObject.codeCacheStatus < 0) || (paramObject.codeCacheStatus >= v.mNV.length)) {
+          paramString = b.cik().p((g)paramc).Ge(paramString).BU(paramInt);
+          if ((paramObject == null) || (paramObject.codeCacheStatus < 0) || (paramObject.codeCacheStatus >= v.pON.length)) {
             break label307;
           }
-          paramInt = v.mNV[paramObject.codeCacheStatus];
-          paramString = paramString.wa(paramInt);
-          if (!paramc.Mj()) {
+          paramInt = v.pON[paramObject.codeCacheStatus];
+          paramString = paramString.BV(paramInt);
+          if (!paramc.Pb()) {
             break label312;
           }
           l = 1L;
           label194:
-          paramc = paramString.wb(l);
+          paramc = paramString.BW(l);
           if (paramObject == null) {
             break label318;
           }
           l = paramObject.flatJSCompileCost;
           label213:
-          paramc = paramc.wc(l);
+          paramc = paramc.BX(l);
           if (paramObject == null) {
             break label324;
           }
@@ -92,20 +91,20 @@ public class d
         label312:
         label318:
         label324:
-        for (paramInt = paramObject.dqm;; paramInt = 0)
+        for (paramInt = paramObject.fiT;; paramInt = 0)
         {
-          paramc = paramc.wd(paramInt);
+          paramc = paramc.BY(paramInt);
           if (paramObject != null) {
-            paramLong1 = paramObject.dqk;
+            paramLong1 = paramObject.fiR;
           }
-          paramc.vX(paramLong1);
+          paramc.BS(paramLong1);
           if (paramObject != null) {
-            paramLong2 = paramObject.dql;
+            paramLong2 = paramObject.fiS;
           }
-          paramc.vY(paramLong2);
-          paramc.vW(paramc.aiW() - paramc.aiV());
-          paramc.zA(V8.getV8Version());
-          paramc.bfK();
+          paramc.BT(paramLong2);
+          paramc.BR(paramc.Su() - paramc.St());
+          paramc.Gg(V8.getV8Version());
+          paramc.bpa();
           AppMethodBeat.o(175214);
           return;
           paramInt = 4;
@@ -119,7 +118,7 @@ public class d
     }
   }
   
-  public static long bVa()
+  public static long cil()
   {
     AppMethodBeat.i(51045);
     for (;;)
@@ -134,10 +133,10 @@ public class d
           AppMethodBeat.o(51045);
           return l;
         }
-        switch (e.haE[localObject.ordinal()])
+        switch (e.jLJ[localObject.ordinal()])
         {
         case 2: 
-          localObject = new m();
+          localObject = new kotlin.m();
           AppMethodBeat.o(51045);
           throw ((Throwable)localObject);
         }
@@ -158,17 +157,17 @@ public class d
     }
   }
   
-  public static long z(ag paramag)
+  public static long x(ah paramah)
   {
     AppMethodBeat.i(51044);
     int i;
-    if (paramag != null)
+    if (paramah != null)
     {
-      paramag = paramag.bRI();
-      if (paramag == null) {
+      paramah = paramah.cez();
+      if (paramah == null) {
         break label68;
       }
-      if (!paramag.isSysKernel()) {
+      if (!paramah.isSysKernel()) {
         break label44;
       }
       i = 4;
@@ -178,12 +177,12 @@ public class d
       long l = i;
       AppMethodBeat.o(51044);
       return l;
-      paramag = null;
+      paramah = null;
       break;
       label44:
-      if (paramag.getIsX5Kernel()) {
+      if (paramah.getIsX5Kernel()) {
         i = 2;
-      } else if (paramag.isXWalkKernel()) {
+      } else if (paramah.isXWalkKernel()) {
         i = 3;
       } else {
         label68:
@@ -192,12 +191,12 @@ public class d
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/report/quality/AppBrandQualitySystemKVProtocolKt$IPC_getProcessAliveRuntimeCount;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "Lcom/tencent/mm/ipcinvoker/type/IPCInteger;", "()V", "invoke", "data", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/report/quality/AppBrandQualitySystemKVProtocolKt$IPC_getProcessAliveRuntimeCount;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "Lcom/tencent/mm/ipcinvoker/type/IPCInteger;", "()V", "invoke", "data", "plugin-appbrand-integration_release"})
   static final class a
-    implements k<IPCVoid, IPCInteger>
+    implements com.tencent.mm.ipcinvoker.m<IPCVoid, IPCInteger>
   {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   public static final class b
     extends q
     implements a<x>
@@ -210,7 +209,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.quality.d
  * JD-Core Version:    0.7.0.1
  */

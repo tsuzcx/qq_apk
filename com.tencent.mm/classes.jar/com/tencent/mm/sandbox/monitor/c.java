@@ -12,54 +12,54 @@ import java.io.File;
 public abstract class c
   implements com.tencent.mm.sandbox.b
 {
-  public static final String NEn = ;
-  protected int NEo;
-  public int NEp;
-  public int NEq;
-  public String NEr;
-  private boolean NEs = false;
+  public static final String URM = ;
+  protected int URN;
+  public int URO;
+  public int URP;
+  public String URQ;
+  private boolean URR = false;
   
   public c(int paramInt1, String paramString, int paramInt2, boolean paramBoolean)
   {
-    this.NEp = paramInt1;
-    this.NEr = paramString;
-    this.NEo = paramInt2;
-    this.NEs = paramBoolean;
-    this.NEq = d.bhI(bhO());
-    paramString = new File(NEn);
+    this.URO = paramInt1;
+    this.URQ = paramString;
+    this.URN = paramInt2;
+    this.URR = paramBoolean;
+    this.URP = d.bua(brm());
+    paramString = new File(URM);
     if (!paramString.exists()) {
       paramString.mkdirs();
     }
-    Log.d("MM.GetUpdatePack", "NetSceneGetUpdatePack : temp path = " + bhO() + " packOffset = " + this.NEq);
+    Log.d("MM.GetUpdatePack", "NetSceneGetUpdatePack : temp path = " + brm() + " packOffset = " + this.URP);
   }
   
-  public static String aFr(String paramString)
+  public static String aPB(String paramString)
   {
-    return df(paramString, false);
+    return dq(paramString, false);
   }
   
-  public static boolean bhG(String paramString)
+  public static boolean btY(String paramString)
   {
-    return d.YS(NEn + paramString + ".temp");
+    return d.agG(URM + paramString + ".temp");
   }
   
-  public static String bhH(String paramString)
+  public static String btZ(String paramString)
   {
-    paramString = NEn + paramString + ".apk";
-    if ((d.YS(paramString)) && (a.fP(paramString))) {
+    paramString = URM + paramString + ".apk";
+    if ((d.agG(paramString)) && (a.gz(paramString))) {
       return paramString;
     }
     return null;
   }
   
-  public static String df(String paramString, boolean paramBoolean)
+  public static String dq(String paramString, boolean paramBoolean)
   {
-    Object localObject1 = NEn + paramString + ".temp";
-    String str2 = NEn + paramString + ".apk";
+    Object localObject1 = URM + paramString + ".temp";
+    String str2 = URM + paramString + ".apk";
     Object localObject2;
-    if ((d.YS((String)localObject1)) && (!paramBoolean) && ((a.fP((String)localObject1)) || (paramString.equalsIgnoreCase(d.bhK((String)localObject1)))))
+    if ((d.agG((String)localObject1)) && (!paramBoolean) && ((a.gz((String)localObject1)) || (paramString.equalsIgnoreCase(d.buc((String)localObject1)))))
     {
-      localObject1 = NEn;
+      localObject1 = URM;
       localObject2 = paramString + ".temp";
       paramString = paramString + ".apk";
       if ((localObject1 == null) || (localObject2 == null) || (paramString == null)) {}
@@ -73,9 +73,9 @@ public abstract class c
         }
       }
     }
-    if (d.YS(str2))
+    if (d.agG(str2))
     {
-      if (a.fP(str2))
+      if (a.gz(str2))
       {
         Log.i("MM.GetUpdatePack", "summertoken getReadyPack checkApkMd5 update pack ok");
         return str2;
@@ -83,15 +83,15 @@ public abstract class c
       localObject1 = null;
       try
       {
-        String str1 = com.tencent.mm.d.c.B(new File(str2));
+        String str1 = com.tencent.mm.d.c.u(new File(str2));
         localObject2 = str1;
         localObject1 = str1;
         if (Util.isNullOrNil(str1))
         {
           localObject1 = str1;
-          h.CyF.idkeyStat(322L, 10L, 1L, false);
+          h.IzE.idkeyStat(322L, 10L, 1L, false);
           localObject1 = str1;
-          h.CyF.a(11098, new Object[] { Integer.valueOf(4010) });
+          h.IzE.a(11098, new Object[] { Integer.valueOf(4010) });
           localObject2 = str1;
         }
       }
@@ -101,11 +101,11 @@ public abstract class c
         for (;;)
         {
           Log.w("MM.GetUpdatePack", "summertoken getReadyPack getSecurityCode e:" + localException.getMessage());
-          h.CyF.idkeyStat(322L, 9L, 1L, false);
-          h.CyF.a(11098, new Object[] { Integer.valueOf(4009), localException.getMessage() });
+          h.IzE.idkeyStat(322L, 9L, 1L, false);
+          h.IzE.a(11098, new Object[] { Integer.valueOf(4009), localException.getMessage() });
           localObject3 = localObject1;
         }
-        paramString = j.gwm();
+        paramString = j.hsl();
         Log.i("MM.GetUpdatePack", "summertoken getReadyPack pkgsig[%s], downloadedSig[%s]", new Object[] { localObject3, paramString });
         if (!localObject3.equals(paramString)) {
           break label468;
@@ -113,15 +113,15 @@ public abstract class c
         Log.i("MM.GetUpdatePack", "summertoken getReadyPack pkgsig check update pack ok");
         return str2;
         Log.i("MM.GetUpdatePack", "summertoken getReadyPack pkgsig check invalid");
-        h.CyF.idkeyStat(322L, 11L, 1L, false);
-        h.CyF.a(11098, new Object[] { Integer.valueOf(4011), String.format("%s,%s", new Object[] { paramString, localObject3 }) });
+        h.IzE.idkeyStat(322L, 11L, 1L, false);
+        h.IzE.a(11098, new Object[] { Integer.valueOf(4011), String.format("%s,%s", new Object[] { paramString, localObject3 }) });
         Log.e("MM.GetUpdatePack", "summertoken getReadyPack: update pack MD5 not same");
         d.deleteFile(str2);
       }
       Log.i("MM.GetUpdatePack", "summertoken getReadyPack getSecurityCode pkgsig[%s]", new Object[] { localObject2 });
       if (Util.isNullOrNil((String)localObject2))
       {
-        if (!paramString.equalsIgnoreCase(d.bhK(str2))) {
+        if (!paramString.equalsIgnoreCase(d.buc(str2))) {
           break label531;
         }
         Log.i("MM.GetUpdatePack", "summertoken getReadyPack no pkgsig getMD5 update pack ok");
@@ -132,9 +132,9 @@ public abstract class c
     return null;
   }
   
-  public String bhO()
+  public String brm()
   {
-    return NEn + this.NEr + ".temp";
+    return URM + this.URQ + ".temp";
   }
   
   public final void deleteTempFile()
@@ -142,7 +142,7 @@ public abstract class c
     try
     {
       Log.d("MM.GetUpdatePack", "deleteTempFile");
-      File localFile = new File(bhO());
+      File localFile = new File(brm());
       if (localFile.exists()) {
         localFile.delete();
       }
@@ -154,16 +154,16 @@ public abstract class c
     }
   }
   
-  public String gvY()
+  public String hrX()
   {
-    return NEn + this.NEr + ".apk";
+    return URM + this.URQ + ".apk";
   }
   
-  public final boolean gvZ()
+  public final boolean hrY()
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.NEs)
+    if (this.URR)
     {
       bool1 = bool2;
       if (!NetStatusUtil.isWifi(MMApplicationContext.getContext())) {
@@ -175,7 +175,7 @@ public abstract class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sandbox.monitor.c
  * JD-Core Version:    0.7.0.1
  */

@@ -5,14 +5,13 @@ import android.graphics.BitmapFactory.Options;
 import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.appcache.bg;
-import com.tencent.mm.plugin.appbrand.appstorage.q;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.appbrand.appcache.bl;
+import com.tencent.mm.plugin.appbrand.appstorage.r;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
+import com.tencent.mm.plugin.appbrand.v;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
@@ -24,11 +23,11 @@ import java.util.LinkedList;
 import java.util.Map;
 
 public final class j
-  extends d<s>
+  extends c<v>
 {
   private static final int CTRL_INDEX = 120;
   private static final String NAME = "getImageInfo";
-  private static final Collection<b> mdL;
+  private static final Collection<b> pbD;
   
   static
   {
@@ -36,17 +35,17 @@ public final class j
     LinkedList localLinkedList = new LinkedList();
     localLinkedList.add(new a((byte)0));
     localLinkedList.add(new d((byte)0));
-    mdL = Collections.unmodifiableCollection(localLinkedList);
+    pbD = Collections.unmodifiableCollection(localLinkedList);
     AppMethodBeat.o(139879);
   }
   
   static final class a
     implements j.b
   {
-    public final com.tencent.mm.vending.j.a i(AppBrandRuntime paramAppBrandRuntime, String paramString)
+    public final com.tencent.mm.vending.j.a j(AppBrandRuntime paramAppBrandRuntime, String paramString)
     {
       AppMethodBeat.i(139873);
-      paramAppBrandRuntime = paramAppBrandRuntime.getFileSystem().VY(paramString);
+      paramAppBrandRuntime = paramAppBrandRuntime.getFileSystem().adL(paramString);
       if (paramAppBrandRuntime == null)
       {
         AppMethodBeat.o(139873);
@@ -54,16 +53,16 @@ public final class j
       }
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
       localOptions.inJustDecodeBounds = true;
-      BitmapFactory.decodeFile(aa.z(paramAppBrandRuntime.her()), localOptions);
+      BitmapFactory.decodeFile(paramAppBrandRuntime.bOF(), localOptions);
       paramString = new j.c((byte)0);
       paramString.width = localOptions.outWidth;
       paramString.height = localOptions.outHeight;
-      paramString.type = com.tencent.luggage.e.a.a.e(localOptions);
-      if (com.tencent.luggage.e.a.a.d(localOptions)) {}
-      for (paramAppBrandRuntime = com.tencent.luggage.e.a.a.hN(com.tencent.luggage.e.a.a.getExifOrientation(aa.z(paramAppBrandRuntime.her())));; paramAppBrandRuntime = "up")
+      paramString.type = com.tencent.luggage.e.a.a.b(localOptions);
+      if (com.tencent.luggage.e.a.a.a(localOptions)) {}
+      for (paramAppBrandRuntime = com.tencent.luggage.e.a.a.iN(com.tencent.luggage.e.a.a.getExifOrientation(paramAppBrandRuntime.bOF()));; paramAppBrandRuntime = "up")
       {
-        paramString.cBG = paramAppBrandRuntime;
-        paramAppBrandRuntime = com.tencent.mm.vending.j.a.Q(j.e.mdR, paramString);
+        paramString.cCi = paramAppBrandRuntime;
+        paramAppBrandRuntime = com.tencent.mm.vending.j.a.J(j.e.pbJ, paramString);
         AppMethodBeat.o(139873);
         return paramAppBrandRuntime;
       }
@@ -72,12 +71,12 @@ public final class j
   
   static abstract interface b
   {
-    public abstract com.tencent.mm.vending.j.a i(AppBrandRuntime paramAppBrandRuntime, String paramString);
+    public abstract com.tencent.mm.vending.j.a j(AppBrandRuntime paramAppBrandRuntime, String paramString);
   }
   
   static final class c
   {
-    public String cBG;
+    public String cCi;
     public int height;
     public String type;
     public int width;
@@ -86,10 +85,10 @@ public final class j
   static final class d
     implements j.b
   {
-    public final com.tencent.mm.vending.j.a i(AppBrandRuntime paramAppBrandRuntime, String paramString)
+    public final com.tencent.mm.vending.j.a j(AppBrandRuntime paramAppBrandRuntime, String paramString)
     {
       AppMethodBeat.i(139874);
-      paramString = bg.f(paramAppBrandRuntime, paramString);
+      paramString = bl.f(paramAppBrandRuntime, paramString);
       j.c localc;
       boolean bool;
       if (paramString != null)
@@ -101,23 +100,23 @@ public final class j
         localc = new j.c((byte)0);
         localc.width = paramAppBrandRuntime.outWidth;
         localc.height = paramAppBrandRuntime.outHeight;
-        localc.type = com.tencent.luggage.e.a.a.e(paramAppBrandRuntime);
-        bool = com.tencent.luggage.e.a.a.d(paramAppBrandRuntime);
+        localc.type = com.tencent.luggage.e.a.a.b(paramAppBrandRuntime);
+        bool = com.tencent.luggage.e.a.a.a(paramAppBrandRuntime);
       }
       try
       {
         paramString.reset();
         label92:
         if (bool) {}
-        for (paramAppBrandRuntime = com.tencent.luggage.e.a.a.hN(com.tencent.luggage.e.a.a.m(paramString));; paramAppBrandRuntime = "up")
+        for (paramAppBrandRuntime = com.tencent.luggage.e.a.a.iN(com.tencent.luggage.e.a.a.k(paramString));; paramAppBrandRuntime = "up")
         {
-          localc.cBG = paramAppBrandRuntime;
+          localc.cCi = paramAppBrandRuntime;
           Util.qualityClose(paramString);
-          paramAppBrandRuntime = com.tencent.mm.vending.j.a.Q(j.e.mdR, localc);
+          paramAppBrandRuntime = com.tencent.mm.vending.j.a.J(j.e.pbJ, localc);
           AppMethodBeat.o(139874);
           return paramAppBrandRuntime;
         }
-        paramAppBrandRuntime = com.tencent.mm.vending.j.a.ep(j.e.mdP);
+        paramAppBrandRuntime = com.tencent.mm.vending.j.a.ev(j.e.pbH);
         AppMethodBeat.o(139874);
         return paramAppBrandRuntime;
       }
@@ -133,10 +132,10 @@ public final class j
     static
     {
       AppMethodBeat.i(139877);
-      mdP = new e("FILE_NOT_FOUND", 0);
-      mdQ = new e("UNKNOWN_FAIL", 1);
-      mdR = new e("RESOLVED", 2);
-      mdS = new e[] { mdP, mdQ, mdR };
+      pbH = new e("FILE_NOT_FOUND", 0);
+      pbI = new e("UNKNOWN_FAIL", 1);
+      pbJ = new e("RESOLVED", 2);
+      pbK = new e[] { pbH, pbI, pbJ };
       AppMethodBeat.o(139877);
     }
     

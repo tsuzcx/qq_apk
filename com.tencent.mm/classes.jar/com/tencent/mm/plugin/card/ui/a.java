@@ -10,12 +10,17 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.card.a.b;
+import com.tencent.mm.plugin.card.a.c;
+import com.tencent.mm.plugin.card.a.d;
+import com.tencent.mm.plugin.card.a.e;
+import com.tencent.mm.plugin.card.a.g;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.d.n;
 import com.tencent.mm.plugin.card.model.CardInfo;
-import com.tencent.mm.protocal.protobuf.abz;
-import com.tencent.mm.protocal.protobuf.uz;
+import com.tencent.mm.protocal.protobuf.acg;
+import com.tencent.mm.protocal.protobuf.vb;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -25,22 +30,22 @@ public final class a
   extends BaseAdapter
 {
   Context mContext;
-  List<CardInfo> pXz;
-  HashMap<String, Integer> pYu;
+  List<CardInfo> tup;
+  HashMap<String, Integer> tuq;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(113145);
-    this.pXz = new ArrayList();
-    this.pYu = new HashMap();
+    this.tup = new ArrayList();
+    this.tuq = new HashMap();
     this.mContext = paramContext;
     AppMethodBeat.o(113145);
   }
   
-  public final CardInfo Ep(int paramInt)
+  public final CardInfo HQ(int paramInt)
   {
     AppMethodBeat.i(113147);
-    CardInfo localCardInfo = (CardInfo)this.pXz.get(paramInt);
+    CardInfo localCardInfo = (CardInfo)this.tup.get(paramInt);
     AppMethodBeat.o(113147);
     return localCardInfo;
   }
@@ -48,7 +53,7 @@ public final class a
   public final int getCount()
   {
     AppMethodBeat.i(113146);
-    int i = this.pXz.size();
+    int i = this.tup.size();
     AppMethodBeat.o(113146);
     return i;
   }
@@ -61,68 +66,68 @@ public final class a
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(113148);
-    CardInfo localCardInfo = Ep(paramInt);
+    CardInfo localCardInfo = HQ(paramInt);
     if (paramView == null)
     {
-      paramView = View.inflate(this.mContext, 2131493334, null);
+      paramView = View.inflate(this.mContext, a.e.thI, null);
       paramViewGroup = new a();
-      paramViewGroup.pYk = ((RelativeLayout)paramView.findViewById(2131298086));
-      paramViewGroup.pYv = ((LinearLayout)paramView.findViewById(2131298233));
-      paramViewGroup.pYl = ((ImageView)paramView.findViewById(2131298144));
-      paramViewGroup.pYm = ((TextView)paramView.findViewById(2131298056));
-      paramViewGroup.pYn = ((TextView)paramView.findViewById(2131298179));
-      paramViewGroup.pYo = ((TextView)paramView.findViewById(2131308746));
-      paramViewGroup.pYq = ((TextView)paramView.findViewById(2131298180));
-      paramViewGroup.pYw = ((ImageView)paramView.findViewById(2131298172));
-      paramViewGroup.pYx = ((TextView)paramView.findViewById(2131298088));
-      paramViewGroup.pYy = ((TextView)paramView.findViewById(2131298217));
+      paramViewGroup.tuf = ((RelativeLayout)paramView.findViewById(a.d.tbI));
+      paramViewGroup.tur = ((LinearLayout)paramView.findViewById(a.d.tdG));
+      paramViewGroup.tug = ((ImageView)paramView.findViewById(a.d.tcw));
+      paramViewGroup.tuh = ((TextView)paramView.findViewById(a.d.duY));
+      paramViewGroup.tui = ((TextView)paramView.findViewById(a.d.tcV));
+      paramViewGroup.tuj = ((TextView)paramView.findViewById(a.d.subtitle));
+      paramViewGroup.tul = ((TextView)paramView.findViewById(a.d.tcW));
+      paramViewGroup.tus = ((ImageView)paramView.findViewById(a.d.tcO));
+      paramViewGroup.tut = ((TextView)paramView.findViewById(a.d.tbJ));
+      paramViewGroup.tuu = ((TextView)paramView.findViewById(a.d.tdx));
       paramView.setTag(paramViewGroup);
-      if (!localCardInfo.csC()) {
-        break label959;
+      if (!localCardInfo.cGd()) {
+        break label979;
       }
-      paramViewGroup.pYl.setVisibility(0);
-      paramViewGroup.pYn.setVisibility(0);
-      paramViewGroup.pYo.setVisibility(0);
-      paramViewGroup.pYq.setVisibility(8);
-      paramViewGroup.pYm.setVisibility(0);
-      paramViewGroup.pYm.setText(localCardInfo.csQ().gTG);
-      if (!localCardInfo.csz()) {
-        break label726;
+      paramViewGroup.tug.setVisibility(0);
+      paramViewGroup.tui.setVisibility(0);
+      paramViewGroup.tuj.setVisibility(0);
+      paramViewGroup.tul.setVisibility(8);
+      paramViewGroup.tuh.setVisibility(0);
+      paramViewGroup.tuh.setText(localCardInfo.cGs().jEi);
+      if (!localCardInfo.cGa()) {
+        break label743;
       }
-      if ((localCardInfo.csQ().LeC == null) || (localCardInfo.csQ().LeC.size() != 1)) {
-        break label611;
+      if ((localCardInfo.cGs().SfP == null) || (localCardInfo.cGs().SfP.size() != 1)) {
+        break label628;
       }
-      paramViewGroup.pYn.setText(((abz)localCardInfo.csQ().LeC.get(0)).title);
-      label306:
-      if (localCardInfo.csQ().LeZ != 1) {
-        break label746;
+      paramViewGroup.tui.setText(((acg)localCardInfo.cGs().SfP.get(0)).title);
+      label317:
+      if (localCardInfo.cGs().Sgn != 1) {
+        break label763;
       }
-      paramViewGroup.pYw.setVisibility(0);
-      label328:
+      paramViewGroup.tus.setVisibility(0);
+      label339:
       long l = ((CardInfo)localCardInfo).field_begin_time;
       if ((localCardInfo.getEndTime() <= 0L) || (l <= 0L)) {
-        break label758;
+        break label775;
       }
-      paramViewGroup.pYo.setText(this.mContext.getString(2131757195, new Object[] { l.AF(l) + "  -  " + l.AF(localCardInfo.getEndTime()) }));
-      paramViewGroup.pYo.setVisibility(0);
-      label424:
-      paramInt = this.mContext.getResources().getDimensionPixelSize(2131166011);
-      n.a(paramViewGroup.pYl, localCardInfo.csQ().iwv, paramInt, 2131234198, true);
-      if (localCardInfo.csQ().LeX != 1) {
-        break label837;
+      paramViewGroup.tuj.setText(this.mContext.getString(a.g.tmh, new Object[] { l.GN(l) + "  -  " + l.GN(localCardInfo.getEndTime()) }));
+      paramViewGroup.tuj.setVisibility(0);
+      label436:
+      paramInt = this.mContext.getResources().getDimensionPixelSize(a.b.sZN);
+      n.a(paramViewGroup.tug, localCardInfo.cGs().llI, paramInt, a.c.my_card_package_defaultlogo, true);
+      if (localCardInfo.cGs().Sgl != 1) {
+        break label854;
       }
-      paramViewGroup.pYl.setAlpha(255);
-      paramViewGroup.pYy.setVisibility(8);
-      paramViewGroup.pYn.setTextColor(this.mContext.getResources().getColor(2131100116));
-      paramViewGroup.pYm.setTextColor(this.mContext.getResources().getColor(2131100116));
-      paramViewGroup.pYo.setTextColor(this.mContext.getResources().getColor(2131100571));
-      label548:
-      paramInt = ((Integer)this.pYu.get(localCardInfo.csV())).intValue();
+      paramViewGroup.tug.setAlpha(255);
+      paramViewGroup.tuu.setVisibility(8);
+      paramViewGroup.tui.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.card.a.a.sZt));
+      paramViewGroup.tuh.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.card.a.a.sZt));
+      paramViewGroup.tuj.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.card.a.a.grey_background_text_color));
+      label565:
+      paramInt = ((Integer)this.tuq.get(localCardInfo.cGx())).intValue();
       if (paramInt != 1) {
-        break label931;
+        break label951;
       }
-      paramViewGroup.pYx.setText("");
-      paramViewGroup.pYx.setVisibility(8);
+      paramViewGroup.tut.setText("");
+      paramViewGroup.tut.setVisibility(8);
     }
     for (;;)
     {
@@ -130,69 +135,69 @@ public final class a
       return paramView;
       paramViewGroup = (a)paramView.getTag();
       break;
-      label611:
-      if ((localCardInfo.csQ().LeC == null) || (localCardInfo.csQ().LeC.size() != 2)) {
-        break label306;
+      label628:
+      if ((localCardInfo.cGs().SfP == null) || (localCardInfo.cGs().SfP.size() != 2)) {
+        break label317;
       }
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(((abz)localCardInfo.csQ().LeC.get(0)).title);
+      localStringBuilder.append(((acg)localCardInfo.cGs().SfP.get(0)).title);
       localStringBuilder.append("-");
-      localStringBuilder.append(((abz)localCardInfo.csQ().LeC.get(1)).title);
-      paramViewGroup.pYn.setText(localStringBuilder.toString());
-      break label306;
-      label726:
-      paramViewGroup.pYn.setText(localCardInfo.csQ().title);
-      break label306;
-      label746:
-      paramViewGroup.pYw.setVisibility(8);
-      break label328;
-      label758:
+      localStringBuilder.append(((acg)localCardInfo.cGs().SfP.get(1)).title);
+      paramViewGroup.tui.setText(localStringBuilder.toString());
+      break label317;
+      label743:
+      paramViewGroup.tui.setText(localCardInfo.cGs().title);
+      break label317;
+      label763:
+      paramViewGroup.tus.setVisibility(8);
+      break label339;
+      label775:
       if (localCardInfo.getEndTime() > 0L)
       {
-        paramViewGroup.pYo.setText(this.mContext.getString(2131757194, new Object[] { l.AF(localCardInfo.getEndTime()) }));
-        paramViewGroup.pYo.setVisibility(0);
-        break label424;
+        paramViewGroup.tuj.setText(this.mContext.getString(a.g.card_validate_to, new Object[] { l.GN(localCardInfo.getEndTime()) }));
+        paramViewGroup.tuj.setVisibility(0);
+        break label436;
       }
-      paramViewGroup.pYo.setText("");
-      paramViewGroup.pYo.setVisibility(8);
-      break label424;
-      label837:
-      paramViewGroup.pYy.setText(localCardInfo.csQ().LeY);
-      paramViewGroup.pYl.setAlpha(90);
-      paramViewGroup.pYy.setVisibility(0);
-      paramViewGroup.pYn.setTextColor(this.mContext.getResources().getColor(2131100571));
-      paramViewGroup.pYm.setTextColor(this.mContext.getResources().getColor(2131100571));
-      paramViewGroup.pYo.setTextColor(this.mContext.getResources().getColor(2131100571));
-      break label548;
-      label931:
-      paramViewGroup.pYx.setText("x".concat(String.valueOf(paramInt)));
-      paramViewGroup.pYx.setVisibility(0);
+      paramViewGroup.tuj.setText("");
+      paramViewGroup.tuj.setVisibility(8);
+      break label436;
+      label854:
+      paramViewGroup.tuu.setText(localCardInfo.cGs().Sgm);
+      paramViewGroup.tug.setAlpha(90);
+      paramViewGroup.tuu.setVisibility(0);
+      paramViewGroup.tui.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.card.a.a.grey_background_text_color));
+      paramViewGroup.tuh.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.card.a.a.grey_background_text_color));
+      paramViewGroup.tuj.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.card.a.a.grey_background_text_color));
+      break label565;
+      label951:
+      paramViewGroup.tut.setText("x".concat(String.valueOf(paramInt)));
+      paramViewGroup.tut.setVisibility(0);
       continue;
-      label959:
-      paramViewGroup.pYl.setVisibility(8);
-      paramViewGroup.pYn.setVisibility(8);
-      paramViewGroup.pYm.setVisibility(8);
-      paramViewGroup.pYo.setVisibility(8);
-      paramViewGroup.pYy.setVisibility(8);
-      paramViewGroup.pYx.setVisibility(8);
-      paramViewGroup.pYq.setVisibility(0);
-      paramViewGroup.pYk.setBackgroundColor(this.mContext.getResources().getColor(2131100137));
-      paramViewGroup.pYq.setText(this.mContext.getResources().getString(2131757117));
+      label979:
+      paramViewGroup.tug.setVisibility(8);
+      paramViewGroup.tui.setVisibility(8);
+      paramViewGroup.tuh.setVisibility(8);
+      paramViewGroup.tuj.setVisibility(8);
+      paramViewGroup.tuu.setVisibility(8);
+      paramViewGroup.tut.setVisibility(8);
+      paramViewGroup.tul.setVisibility(0);
+      paramViewGroup.tuf.setBackgroundColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.card.a.a.sZx));
+      paramViewGroup.tul.setText(this.mContext.getResources().getString(a.g.card_not_support_card_type));
     }
   }
   
   public final class a
   {
-    public RelativeLayout pYk;
-    public ImageView pYl;
-    public TextView pYm;
-    public TextView pYn;
-    public TextView pYo;
-    public TextView pYq;
-    public LinearLayout pYv;
-    public ImageView pYw;
-    public TextView pYx;
-    public TextView pYy;
+    public RelativeLayout tuf;
+    public ImageView tug;
+    public TextView tuh;
+    public TextView tui;
+    public TextView tuj;
+    public TextView tul;
+    public LinearLayout tur;
+    public ImageView tus;
+    public TextView tut;
+    public TextView tuu;
     
     public a() {}
   }

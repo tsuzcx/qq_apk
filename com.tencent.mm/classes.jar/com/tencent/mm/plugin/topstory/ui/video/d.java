@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.aj;
 import android.view.View;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.u;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class d
@@ -27,7 +27,7 @@ public class d
     }
     else if (paramb.getLayoutManager().getClipToPadding())
     {
-      j = paramb.fyG().kH() + paramb.fyG().kJ() / 2;
+      j = paramb.gqD().kT() + paramb.gqD().kV() / 2;
       int i = 2147483647;
       k = 0;
       localObject = null;
@@ -36,7 +36,7 @@ public class d
         break label164;
       }
       View localView = paramb.getLayoutManager().getChildAt(k);
-      int m = Math.abs(paramb.fyG().bo(localView) + paramb.fyG().bs(localView) / 2 - j);
+      int m = Math.abs(paramb.gqD().aZ(localView) + paramb.gqD().bd(localView) / 2 - j);
       if (m >= i) {
         break label191;
       }
@@ -49,9 +49,9 @@ public class d
     {
       k += 1;
       break label79;
-      j = paramb.fyG().getEnd() / 2;
+      j = paramb.gqD().getEnd() / 2;
       break label71;
-      paramb = paramb.getRecyclerView().bi(localObject);
+      paramb = paramb.getRecyclerView().aQ(localObject);
       break;
       paramb = (h)paramb;
       AppMethodBeat.o(126068);
@@ -67,7 +67,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.d
  * JD-Core Version:    0.7.0.1
  */

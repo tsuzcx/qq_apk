@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.scanner.ui.scangoods.widget;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/BaseScanDotsAnimationController$Companion;", "", "()V", "RECYCLED_VIEW_MAX_SIZE", "", "TAG", "", "recycledViewList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView;", "Lkotlin/collections/ArrayList;", "obtain", "context", "Landroid/content/Context;", "duration", "", "scanAnimationDotsView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/BaseScanDotsAnimationController$Companion;", "", "()V", "RECYCLED_VIEW_MAX_SIZE", "", "TAG", "", "recycledViewList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsGroupView;", "Lkotlin/collections/ArrayList;", "obtain", "context", "Landroid/content/Context;", "duration", "", "scanAnimationDotsView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "plugin-scan_release"})
 public final class a$a {}
 
 

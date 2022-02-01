@@ -4,25 +4,26 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.wallet_core.model.v;
 import com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUPwdConfirmUI;
 import com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUSetPasswordUI;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.u;
 import com.tencent.mm.wallet_core.a;
+import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
 
 public abstract class e
   extends com.tencent.mm.wallet_core.d
 {
-  public com.tencent.mm.wallet_core.d.g a(MMActivity paramMMActivity, i parami)
+  public g a(MMActivity paramMMActivity, i parami)
   {
     if ((paramMMActivity instanceof WalletPayUPwdConfirmUI)) {
-      new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
+      new g(paramMMActivity, parami)
       {
         public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
         {
@@ -32,8 +33,8 @@ public abstract class e
             Log.d("MicroMsg.PayUBaseChangePwdProcess", "hy: forget pwd user success");
             if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
             {
-              e.this.dQL.putInt("key_errcode_payu", 0);
-              a.c(this.activity, e.this.dQL, 0);
+              e.a(e.this).putInt("key_errcode_payu", 0);
+              a.b(this.activity, e.this.fKb, 0);
               AppMethodBeat.o(72149);
               return true;
             }
@@ -45,10 +46,10 @@ public abstract class e
         public final boolean r(Object... paramAnonymousVarArgs)
         {
           AppMethodBeat.i(72150);
-          Object localObject = (v)paramAnonymousVarArgs[0];
-          paramAnonymousVarArgs = e.this.dQL.getString("payu_reference");
-          localObject = ((v)localObject).kdF;
-          this.Ruz.b(new d(paramAnonymousVarArgs, (String)localObject), true);
+          Object localObject = (com.tencent.mm.plugin.wallet_core.model.w)paramAnonymousVarArgs[0];
+          paramAnonymousVarArgs = e.b(e.this).getString("payu_reference");
+          localObject = ((com.tencent.mm.plugin.wallet_core.model.w)localObject).mVf;
+          this.YVX.b(new d(paramAnonymousVarArgs, (String)localObject), true);
           AppMethodBeat.o(72150);
           return true;
         }
@@ -66,21 +67,21 @@ public abstract class e
   
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
-    if (this.dQL.getInt("key_errcode_payu", -1) == 0) {
-      u.makeText(paramActivity, 2131768018, 0).show();
+    if (this.fKb.getInt("key_errcode_payu", -1) == 0) {
+      com.tencent.mm.ui.base.w.makeText(paramActivity, a.i.wallet_order_info_result_success, 0).show();
     }
     for (;;)
     {
-      boolean bool = ((b)com.tencent.mm.kernel.g.af(b.class)).a(b.a.sad, true);
+      boolean bool = ((b)h.ae(b.class)).a(b.a.vHh, true);
       Log.i("MicroMsg.PayUBaseChangePwdProcess", " walletMallV2 switch is ：%s", new Object[] { Boolean.valueOf(bool) });
       if (!bool) {
         break;
       }
-      e(paramActivity, "mall", ".ui.MallIndexUIv2");
+      h(paramActivity, "mall", ".ui.MallIndexUIv2");
       return;
-      u.makeText(paramActivity, 2131767695, 0).show();
+      com.tencent.mm.ui.base.w.makeText(paramActivity, a.i.wallet_err_wording_comm_failed, 0).show();
     }
-    e(paramActivity, "mall", ".ui.MallIndexUI");
+    h(paramActivity, "mall", ".ui.MallIndexUI");
   }
   
   public final boolean c(Activity paramActivity, Bundle paramBundle)
@@ -88,7 +89,7 @@ public abstract class e
     return false;
   }
   
-  public final void g(Activity paramActivity, int paramInt)
+  public final void h(Activity paramActivity, int paramInt)
   {
     if ((paramActivity instanceof WalletPayUPwdConfirmUI)) {
       a(paramActivity, WalletPayUSetPasswordUI.class, paramInt);
@@ -97,7 +98,7 @@ public abstract class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.pwd.a.e
  * JD-Core Version:    0.7.0.1
  */

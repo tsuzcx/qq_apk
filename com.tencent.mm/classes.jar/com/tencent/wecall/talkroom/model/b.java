@@ -7,29 +7,29 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class b
 {
-  talk Suj;
+  talk ZVf;
   
   public b()
   {
     AppMethodBeat.i(62557);
-    this.Suj = new talk();
-    com.tencent.pb.common.c.b.i("simon:TalkRoomContext", new Object[] { "construct engine:", this.Suj });
+    this.ZVf = new talk();
+    com.tencent.pb.common.c.b.i("simon:TalkRoomContext", new Object[] { "construct engine:", this.ZVf });
     AppMethodBeat.o(62557);
   }
   
   public final int Close()
   {
     AppMethodBeat.i(62559);
-    if (!a.RCk)
+    if (!a.ZdM)
     {
       AppMethodBeat.o(62559);
       return 0;
     }
     try
     {
-      if (this.Suj != null)
+      if (this.ZVf != null)
       {
-        i = this.Suj.close();
+        i = this.ZVf.close();
         com.tencent.pb.common.c.b.i("simon:TalkRoomContext", new Object[] { "Close ret: ", Integer.valueOf(i) });
         AppMethodBeat.o(62559);
         return i;
@@ -48,39 +48,39 @@ public final class b
   public final void OnMembersChanged(int[] paramArrayOfInt)
   {
     AppMethodBeat.i(62560);
-    if ((!a.RCk) || (this.Suj == null))
+    if ((!a.ZdM) || (this.ZVf == null))
     {
       AppMethodBeat.o(62560);
       return;
     }
-    this.Suj.OnMembersChanged(paramArrayOfInt);
+    this.ZVf.OnMembersChanged(paramArrayOfInt);
     AppMethodBeat.o(62560);
   }
   
-  public final byte[] hqV()
+  public final byte[] iuF()
   {
-    if ((!a.RCk) || (this.Suj == null)) {
+    if ((!a.ZdM) || (this.ZVf == null)) {
       return new byte[0];
     }
-    return this.Suj.field_capInfo;
+    return this.ZVf.field_capInfo;
   }
   
-  public final void hqW()
+  public final void iuG()
   {
-    if ((!a.RCk) || (this.Suj == null)) {
+    if ((!a.ZdM) || (this.ZVf == null)) {
       return;
     }
-    this.Suj.field_capInfo = null;
+    this.ZVf.field_capInfo = null;
   }
   
-  public final int hqX()
+  public final int iuH()
   {
     AppMethodBeat.i(62561);
     try
     {
-      if (a.RCk)
+      if (a.ZdM)
       {
-        localObject = this.Suj;
+        localObject = this.ZVf;
         if (localObject != null) {}
       }
       else
@@ -90,7 +90,7 @@ public final class b
       }
       Object localObject = new AtomicInteger();
       AtomicInteger localAtomicInteger = new AtomicInteger();
-      this.Suj.getChannelBytes((AtomicInteger)localObject, localAtomicInteger);
+      this.ZVf.getChannelBytes((AtomicInteger)localObject, localAtomicInteger);
       int i = localAtomicInteger.get();
       AppMethodBeat.o(62561);
       return i;
@@ -106,16 +106,16 @@ public final class b
   public final int uninitLive()
   {
     AppMethodBeat.i(62558);
-    if (!a.RCk)
+    if (!a.ZdM)
     {
       AppMethodBeat.o(62558);
       return 0;
     }
     try
     {
-      if (this.Suj != null)
+      if (this.ZVf != null)
       {
-        i = this.Suj.uninit();
+        i = this.ZVf.uninit();
         com.tencent.pb.common.c.b.i("simon:TalkRoomContext", new Object[] { "uninitLive ret: ", Integer.valueOf(i) });
         AppMethodBeat.o(62558);
         return i;

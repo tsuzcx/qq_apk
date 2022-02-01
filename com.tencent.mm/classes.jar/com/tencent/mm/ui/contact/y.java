@@ -1,145 +1,87 @@
 package com.tencent.mm.ui.contact;
 
-import android.content.Context;
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.c;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.at;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public final class y
-  extends LinearLayout
 {
-  private List<String> PVy;
-  private a PYg;
-  private b PYh;
-  private Context context;
-  private LinearLayout tmh;
+  static int Xux;
+  private static List<String> Xuy;
+  private static List<String> Xuz;
   
-  public y(Context paramContext, a parama)
+  public static void kG(List<String> paramList)
   {
-    super(paramContext);
-    AppMethodBeat.i(37926);
-    this.tmh = null;
-    this.context = paramContext;
-    this.PYg = parama;
-    h.RTc.aX(new Runnable()
+    AppMethodBeat.i(102917);
+    LinkedList localLinkedList = new LinkedList();
+    Xuy = localLinkedList;
+    localLinkedList.addAll(paramList);
+    Log.d("MicroMsg.NewGroupRecommendDetailReporter", "preCommend: %s", new Object[] { Xuy });
+    AppMethodBeat.o(102917);
+  }
+  
+  public static void kH(List<String> paramList)
+  {
+    AppMethodBeat.i(102918);
+    Xuz = paramList;
+    Log.d("MicroMsg.NewGroupRecommendDetailReporter", "recommend: %s", new Object[] { Xuz });
+    AppMethodBeat.o(102918);
+  }
+  
+  public static void kI(List<String> paramList)
+  {
+    AppMethodBeat.i(102919);
+    if ((Xuy != null) && (Xuz != null) && (Xuz.size() > 0) && (paramList != null) && (paramList.size() > 0))
     {
-      public final void run()
+      LinkedList localLinkedList1 = new LinkedList();
+      LinkedList localLinkedList2 = new LinkedList();
+      LinkedList localLinkedList3 = new LinkedList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        AppMethodBeat.i(234015);
-        y localy = y.this;
-        bg.aVF();
-        y.a(localy, c.aSN().gBY());
-        y.this.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(234014);
-            if ((y.a(y.this) == null) || (y.a(y.this).size() <= 0))
-            {
-              Log.i("MicroMsg.OpenIMListHeaderView", "openimIdList is null");
-              AppMethodBeat.o(234014);
-              return;
-            }
-            y.a(y.this).remove("wework");
-            Log.i("MicroMsg.OpenIMListHeaderView", "openim list size = %s", new Object[] { Integer.valueOf(y.a(y.this).size()) });
-            if (y.b(y.this) == null)
-            {
-              View.inflate(y.this.getContext(), 2131495891, y.this);
-              y.a(y.this, (LinearLayout)y.this.findViewById(2131299174));
-            }
-            y.b(y.this).removeAllViews();
-            int i = 0;
-            if (i < y.a(y.this).size())
-            {
-              Object localObject = (String)y.a(y.this).get(i);
-              localObject = new z(y.this.getContext(), (String)localObject);
-              y.b(y.this).addView((View)localObject);
-              if (i == y.a(y.this).size() - 1)
-              {
-                localObject = ((z)localObject).findViewById(2131300138);
-                int j = ((View)localObject).getPaddingLeft();
-                ((View)localObject).setBackground(at.aN(y.c(y.this), 2130969285));
-                ((View)localObject).findViewById(2131300140).setBackground(null);
-                ((View)localObject).setPadding(j, 0, 0, 0);
-              }
-              for (;;)
-              {
-                i += 1;
-                break;
-                ((z)localObject).findViewById(2131300138).setBackground(null);
-                ((z)localObject).findViewById(2131300138).findViewById(2131300140).setBackground(at.aN(y.c(y.this), 2130969285));
-              }
-            }
-            y.d(y.this).anE(y.a(y.this).size());
-            AppMethodBeat.o(234014);
+        String str = (String)paramList.next();
+        if (!Xuy.contains(str)) {
+          if (Xuz.contains(str)) {
+            localLinkedList1.add(str);
+          } else {
+            localLinkedList2.add(str);
           }
-        });
-        AppMethodBeat.o(234015);
+        }
       }
-    });
-    AppMethodBeat.o(37926);
-  }
-  
-  public final int getOpenIMCount()
-  {
-    AppMethodBeat.i(37927);
-    if (this.PVy == null)
-    {
-      AppMethodBeat.o(37927);
-      return 0;
-    }
-    int i = this.PVy.size();
-    AppMethodBeat.o(37927);
-    return i;
-  }
-  
-  public final void setOnVisibilityChangeListener(b paramb)
-  {
-    this.PYh = paramb;
-  }
-  
-  public final void setVisibility(int paramInt)
-  {
-    AppMethodBeat.i(37929);
-    b localb;
-    if ((this.PYh != null) && (paramInt != getVisibility()))
-    {
-      localb = this.PYh;
-      if (paramInt != 0) {
-        break label49;
+      int i = 0;
+      while (i < Xuz.size())
+      {
+        if (localLinkedList1.contains(Xuz.get(i))) {
+          localLinkedList3.add(String.valueOf(i));
+        }
+        i += 1;
+      }
+      if ((localLinkedList1.size() > 0) || (localLinkedList2.size() > 0))
+      {
+        h.IzE.a(18637, new Object[] { Integer.valueOf(Xux), TextUtils.join(";", Xuy), TextUtils.join(";", Xuz), TextUtils.join(";", localLinkedList1), TextUtils.join(";", localLinkedList2), TextUtils.join(";", localLinkedList3) });
+        Log.d("MicroMsg.NewGroupRecommendDetailReporter", "report, selectFromRecommend: %s, selectNotFromRecommendList: %s", new Object[] { localLinkedList1, localLinkedList2 });
       }
     }
-    label49:
-    for (boolean bool = true;; bool = false)
-    {
-      localb.Cm(bool);
-      super.setVisibility(paramInt);
-      AppMethodBeat.o(37929);
-      return;
-    }
+    reset();
+    AppMethodBeat.o(102919);
   }
   
-  public static abstract interface a
+  public static void reset()
   {
-    public abstract void anE(int paramInt);
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void Cm(boolean paramBoolean);
+    AppMethodBeat.i(102920);
+    Xuy = null;
+    Xuz = null;
+    Log.d("MicroMsg.NewGroupRecommendDetailReporter", "reset");
+    AppMethodBeat.o(102920);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.y
  * JD-Core Version:    0.7.0.1
  */

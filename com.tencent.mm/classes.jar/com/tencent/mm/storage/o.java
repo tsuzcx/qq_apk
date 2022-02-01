@@ -2,7 +2,7 @@ package com.tencent.mm.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.im;
+import com.tencent.mm.protocal.protobuf.ib;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
@@ -78,7 +78,7 @@ public final class o
             }
             for (;;)
             {
-              if ((paramLinkedList1 != null) && (paramLinkedList1.size() > 0) && (l2 >= ((im)paramLinkedList1.getFirst()).startTime) && (l1 <= ((im)paramLinkedList1.getLast()).endTime)) {
+              if ((paramLinkedList1 != null) && (paramLinkedList1.size() > 0) && (l2 >= ((ib)paramLinkedList1.getFirst()).startTime) && (l1 <= ((ib)paramLinkedList1.getLast()).endTime)) {
                 break label363;
               }
               paramLinkedList3.add(str);
@@ -89,30 +89,30 @@ public final class o
               {
                 n localn = new n();
                 localn.convertFrom((Cursor)localObject);
-                im localim = new im();
-                localim.startTime = localn.field_startTime;
-                localim.endTime = localn.field_endTime;
-                paramLinkedList1.add(localim);
+                ib localib = new ib();
+                localib.startTime = localn.field_startTime;
+                localib.endTime = localn.field_endTime;
+                paramLinkedList1.add(localib);
               }
               ((Cursor)localObject).close();
             }
             j = 0;
             if ((j >= paramLinkedList1.size()) || (l1 > l2)) {
-              break label602;
+              break label634;
             }
-            localObject = (im)paramLinkedList1.get(j);
+            localObject = (ib)paramLinkedList1.get(j);
             k = i;
             l3 = l1;
-            if (l1 <= ((im)localObject).endTime) {
-              if (l1 < ((im)localObject).startTime)
+            if (l1 <= ((ib)localObject).endTime) {
+              if (l1 < ((ib)localObject).startTime)
               {
                 i = 1;
                 paramLinkedList3.add(str);
                 paramLinkedList4.add(Long.valueOf(l1));
-                if (l2 < ((im)localObject).startTime)
+                if (l2 < ((ib)localObject).startTime)
                 {
                   paramLinkedList4.add(Long.valueOf(l2));
-                  l1 = ((im)localObject).startTime;
+                  l1 = ((ib)localObject).startTime;
                   i = 1;
                 }
               }
@@ -121,7 +121,7 @@ public final class o
         }
       }
     }
-    label602:
+    label634:
     for (;;)
     {
       if (l1 <= l2)
@@ -138,19 +138,20 @@ public final class o
       paramLinkedList4.add(Long.valueOf(l1));
       paramLinkedList4.add(Long.valueOf(l2));
       break;
-      paramLinkedList4.add(Long.valueOf(((im)localObject).startTime));
-      l3 = ((im)localObject).endTime;
+      paramLinkedList4.add(Long.valueOf(((ib)localObject).startTime));
+      l3 = ((ib)localObject).endTime;
       k = i;
       j += 1;
       i = k;
       l1 = l3;
       break label366;
+      Log.i("MicroMsg.BackupTempMoveTimeStorage", "getSessionRequestTimeInteval, resultSession size:%s, resultTimeInterval:%s", new Object[] { Integer.valueOf(paramLinkedList3.size()), Integer.valueOf(paramLinkedList4.size()) });
       AppMethodBeat.o(32835);
       return;
     }
   }
   
-  public final boolean aHo()
+  public final boolean aPo()
   {
     AppMethodBeat.i(32836);
     boolean bool = this.db.execSQL("BackupTempMoveTime", "delete from BackupTempMoveTime");
@@ -159,7 +160,7 @@ public final class o
     return bool;
   }
   
-  public final LinkedList<n> gzF()
+  public final LinkedList<n> hvF()
   {
     AppMethodBeat.i(32834);
     LinkedList localLinkedList = new LinkedList();
@@ -183,7 +184,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.o
  * JD-Core Version:    0.7.0.1
  */

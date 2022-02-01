@@ -1,78 +1,92 @@
 package com.tencent.mm.plugin.game.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
 
 public final class eb
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String xJt;
-  public int xJv;
-  public int xNu;
+  public String CqK;
+  public String lVG;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(256652);
+    AppMethodBeat.i(207260);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.xNu);
-      paramVarArgs.aM(2, this.xJv);
-      if (this.xJt != null) {
-        paramVarArgs.e(3, this.xJt);
-      }
-      AppMethodBeat.o(256652);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.bu(1, this.xNu) + 0 + g.a.a.b.b.a.bu(2, this.xJv);
-      paramInt = i;
-      if (this.xJt != null) {
-        paramInt = i + g.a.a.b.b.a.f(3, this.xJt);
-      }
-      AppMethodBeat.o(256652);
-      return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
-        }
-      }
-      AppMethodBeat.o(256652);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      eb localeb = (eb)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (this.lVG == null)
       {
-      default: 
-        AppMethodBeat.o(256652);
-        return -1;
-      case 1: 
-        localeb.xNu = locala.UbS.zi();
-        AppMethodBeat.o(256652);
-        return 0;
-      case 2: 
-        localeb.xJv = locala.UbS.zi();
-        AppMethodBeat.o(256652);
-        return 0;
+        paramVarArgs = new b("Not all required fields were included: AppId");
+        AppMethodBeat.o(207260);
+        throw paramVarArgs;
       }
-      localeb.xJt = locala.UbS.readString();
-      AppMethodBeat.o(256652);
+      if (this.lVG != null) {
+        paramVarArgs.f(1, this.lVG);
+      }
+      if (this.CqK != null) {
+        paramVarArgs.f(2, this.CqK);
+      }
+      AppMethodBeat.o(207260);
       return 0;
     }
-    AppMethodBeat.o(256652);
-    return -1;
+    if (paramInt == 1) {
+      if (this.lVG == null) {
+        break label322;
+      }
+    }
+    label322:
+    for (paramInt = g.a.a.b.b.a.g(1, this.lVG) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.CqK != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.CqK);
+      }
+      AppMethodBeat.o(207260);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
+        }
+        if (this.lVG == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: AppId");
+          AppMethodBeat.o(207260);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(207260);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        eb localeb = (eb)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(207260);
+          return -1;
+        case 1: 
+          localeb.lVG = locala.abFh.readString();
+          AppMethodBeat.o(207260);
+          return 0;
+        }
+        localeb.CqK = locala.abFh.readString();
+        AppMethodBeat.o(207260);
+        return 0;
+      }
+      AppMethodBeat.o(207260);
+      return -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.protobuf.eb
  * JD-Core Version:    0.7.0.1
  */

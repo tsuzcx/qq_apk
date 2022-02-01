@@ -8,27 +8,27 @@ import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 
 public final class d
 {
-  public int JcF = 0;
-  public int JcG = 0;
-  public int JcH = 0;
+  public int PZp = 0;
+  public int PZq = 0;
+  public int PZr = 0;
   public long endTime;
-  public int gVP = 0;
+  public int jGL = 0;
   public int scene;
   public long startTime;
   
-  public final void agj(int paramInt)
+  public final void anY(int paramInt)
   {
-    this.JcH += paramInt;
+    this.PZr += paramInt;
   }
   
-  public final void gdK()
+  public final void gWL()
   {
-    this.JcF += 1;
+    this.PZp += 1;
   }
   
-  public final void gdL()
+  public final void gWM()
   {
-    this.JcG += 1;
+    this.PZq += 1;
   }
   
   public final void report()
@@ -41,8 +41,8 @@ public final class d
     }
     for (;;)
     {
-      Log.d("MicroMsg.Preload.Kv15871", "scene:%d, requestCount:%d, responseContentUpdateCount:%d, responseContentNotUpdateCount:%d, costTime:%d responseContentTotalSize:%d, netWorkType:%s", new Object[] { Integer.valueOf(this.scene), Integer.valueOf(this.gVP), Integer.valueOf(this.JcF), Integer.valueOf(this.JcG), Long.valueOf(l), Integer.valueOf(this.JcH), str });
-      h.CyF.a(15871, new Object[] { Integer.valueOf(this.scene), Integer.valueOf(this.gVP), Integer.valueOf(this.JcF), Integer.valueOf(this.JcG), Long.valueOf(l), Integer.valueOf(this.JcH), str });
+      Log.d("MicroMsg.Preload.Kv15871", "scene:%d, requestCount:%d, responseContentUpdateCount:%d, responseContentNotUpdateCount:%d, costTime:%d responseContentTotalSize:%d, netWorkType:%s", new Object[] { Integer.valueOf(this.scene), Integer.valueOf(this.jGL), Integer.valueOf(this.PZp), Integer.valueOf(this.PZq), Long.valueOf(l), Integer.valueOf(this.PZr), str });
+      h.IzE.a(15871, new Object[] { Integer.valueOf(this.scene), Integer.valueOf(this.jGL), Integer.valueOf(this.PZp), Integer.valueOf(this.PZq), Long.valueOf(l), Integer.valueOf(this.PZr), str });
       AppMethodBeat.o(103135);
       return;
       if (NetStatusUtil.is5G(MMApplicationContext.getContext())) {
@@ -61,7 +61,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.h.d
  * JD-Core Version:    0.7.0.1
  */

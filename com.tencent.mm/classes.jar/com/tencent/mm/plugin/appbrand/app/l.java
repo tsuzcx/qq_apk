@@ -1,198 +1,165 @@
 package com.tencent.mm.plugin.appbrand.app;
 
-import android.text.TextUtils;
+import android.annotation.SuppressLint;
+import android.os.Parcel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.plugin.appbrand.appcache.as;
-import com.tencent.mm.plugin.appbrand.appcache.at;
-import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
-import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
-import com.tencent.mm.plugin.appbrand.config.aa;
-import com.tencent.mm.plugin.appbrand.config.o.a;
+import com.tencent.mm.cw.g;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.m;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.plugin.appbrand.jsapi.h5_interact.SendDataToMiniProgramFromH5Event;
-import com.tencent.mm.plugin.appbrand.jsapi.op_report.AppBrandOpReportLogic.AppBrandOnOpReportStartEvent;
-import com.tencent.mm.plugin.appbrand.jsapi.op_report.c;
-import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
-import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.ByRuntimeQrcodeResult;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.j;
-import com.tencent.mm.plugin.appbrand.service.z;
-import com.tencent.mm.plugin.appbrand.task.h;
-import com.tencent.mm.plugin.appbrand.task.p;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.vending.g.d.b;
+import com.tencent.mm.plugin.appbrand.jsapi.webview.c;
+import com.tencent.mm.plugin.appbrand.jsapi.webview.g.c;
+import com.tencent.mm.vending.c.a;
+import com.tencent.mm.vending.g.e;
 import java.util.List;
+import kotlin.g.b.p;
+import org.json.JSONObject;
 
-class l
-  implements j
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/app/ServiceForWebViewAnyProcess;", "Lcom/tencent/mm/plugin/appbrand/app/ServiceForWebView;", "()V", "batchSyncWxaAttr", "", "usernameList", "", "", "html_bridge_invokeMiniProgramAPI", "binderID", "", "name", "args", "", "preloadEnv", "appId", "privateOpenWeappFunctionalPage", "uuid", "transferJson", "reportMiniProgramPageData", "Lcom/tencent/mm/vending/pipeline/Pipeline;", "sendDataToMiniProgram", "data", "webviewId", "BatchSyncWxaAttr", "PreloadCdnEnv", "PrivateOpenFunctionalPage", "SendDataToMiniProgram", "plugin-appbrand-integration_release"})
+public final class l
+  extends k
 {
-  public com.tencent.mm.vending.g.e<Integer> UK(final String paramString)
+  public final void a(int paramInt, String paramString, Object paramObject)
   {
-    AppMethodBeat.i(44171);
-    paramString = com.tencent.mm.co.g.hio().b(new com.tencent.mm.vending.c.a()
+    AppMethodBeat.i(175113);
+    Object localObject = c.pGg;
+    localObject = c.Bj(paramInt);
+    if (localObject != null)
     {
-      private Integer buv()
-      {
-        AppMethodBeat.i(44166);
-        if (!com.tencent.mm.kernel.g.aAf().azp())
-        {
-          com.tencent.mm.vending.g.g.hdx().ej(new com.tencent.mm.model.b());
-          AppMethodBeat.o(44166);
-          return null;
-        }
-        AppBrandOpReportLogic.AppBrandOnOpReportStartEvent.aaA(paramString);
-        final com.tencent.mm.vending.g.b localb = com.tencent.mm.vending.g.g.hdH();
-        com.tencent.mm.kernel.g.aAg().hqi.a(1345, new com.tencent.mm.ak.i()
-        {
-          public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, q paramAnonymous2q)
-          {
-            AppMethodBeat.i(44165);
-            if (c.b(paramAnonymous2q, l.1.this.val$appId))
-            {
-              com.tencent.mm.kernel.g.aAg().hqi.b(1345, this);
-              try
-              {
-                localb.G(new Object[] { Integer.valueOf(c.e(paramAnonymous2q)) });
-                AppMethodBeat.o(44165);
-                return;
-              }
-              catch (Exception paramAnonymous2String)
-              {
-                localb.ej(paramAnonymous2String);
-              }
-            }
-            AppMethodBeat.o(44165);
-          }
-        });
-        AppMethodBeat.o(44166);
-        return null;
-      }
-    });
-    AppMethodBeat.o(44171);
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("name", paramString);
+      localJSONObject.put("arg", paramObject);
+      ((g.c)localObject).al(localJSONObject);
+      AppMethodBeat.o(175113);
+      return;
+    }
+    AppMethodBeat.o(175113);
+  }
+  
+  public final e<Integer> acu(String paramString)
+  {
+    AppMethodBeat.i(50172);
+    paramString = g.ijP().b((a)f.nCM);
+    p.j(paramString, "pipelineExt().`$ui` {\n  …turn@`$ui` null\n        }");
+    paramString = (e)paramString;
+    AppMethodBeat.o(50172);
     return paramString;
   }
   
-  public void UL(String paramString)
+  public final void acv(String paramString)
   {
-    AppMethodBeat.i(44172);
-    h.bWb().a(com.tencent.mm.plugin.appbrand.task.g.nPD, z.nMF);
-    AppMethodBeat.o(44172);
+    AppMethodBeat.i(50173);
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCString(paramString), b.class, null);
+    AppMethodBeat.o(50173);
   }
   
-  public void a(int paramInt, String paramString, Object paramObject) {}
-  
-  public void bc(List<String> paramList)
+  @SuppressLint({"Recycle"})
+  public final void ba(List<String> paramList)
   {
-    AppMethodBeat.i(44174);
-    aa.a(paramList, o.a.leX, null).a(new d.b() {});
-    AppMethodBeat.o(44174);
-  }
-  
-  public final int buu()
-  {
-    AppMethodBeat.i(44175);
-    ICommLibReader localICommLibReader2 = at.bvT();
-    ICommLibReader localICommLibReader1 = localICommLibReader2;
-    if (localICommLibReader2 == null) {}
-    try
+    AppMethodBeat.i(50175);
+    if (paramList == null)
     {
-      as.bvS();
-      localICommLibReader1 = at.bvT();
-      if (localICommLibReader1 == null)
-      {
-        AppMethodBeat.o(44175);
-        return -1;
-      }
-    }
-    catch (com.tencent.mm.model.b localb)
-    {
-      AppMethodBeat.o(44175);
-      return -1;
-    }
-    int i = localb.bvd();
-    AppMethodBeat.o(44175);
-    return i;
-  }
-  
-  public void cr(final String paramString1, final String paramString2)
-  {
-    AppMethodBeat.i(44176);
-    if (TextUtils.isEmpty(paramString1))
-    {
-      Log.e("MicroMsg.AppBrand.ServiceForWebView", "privateOpenWeappFunctionalPage invalid uuid");
-      AppMethodBeat.o(44176);
+      AppMethodBeat.o(50175);
       return;
     }
-    com.tencent.mm.co.g.hio().h(new com.tencent.mm.vending.c.a()
-    {
-      private Void buw()
-      {
-        AppMethodBeat.i(226330);
-        com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.b.act(paramString1).aYI();
-        try
-        {
-          Object localObject3 = new com.tencent.mm.ab.i(paramString2);
-          Object localObject2 = new com.tencent.mm.ab.i(((com.tencent.mm.ab.i)localObject3).optString("invokeData"));
-          localObject1 = ((com.tencent.mm.ab.i)localObject2).optString("miniprogramAppID");
-          if (TextUtils.isEmpty((CharSequence)localObject1))
-          {
-            Log.e("MicroMsg.AppBrand.ServiceForWebView", "privateOpenWeappFunctionalPage, invalid miniprogramAppId");
-            com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.b.acs(paramString1).aYI();
-            localObject1 = QZL;
-            AppMethodBeat.o(226330);
-            return localObject1;
-          }
-          String str1 = ((com.tencent.mm.ab.i)localObject2).optString("path", "__wx__/open-api-redirecting-page");
-          Object localObject4 = ((com.tencent.mm.ab.i)localObject2).optString("name");
-          String str2 = ((com.tencent.mm.ab.i)localObject3).optString("runtimeAppid");
-          localObject3 = new AppBrandStatObject();
-          ((AppBrandStatObject)localObject3).scene = 1111;
-          ((AppBrandStatObject)localObject3).dCw = (str2 + ":" + (String)localObject4);
-          localObject4 = new AppBrandLaunchReferrer();
-          ((AppBrandLaunchReferrer)localObject4).leo = 7;
-          ((AppBrandLaunchReferrer)localObject4).appId = null;
-          ((AppBrandLaunchReferrer)localObject4).ler = ((com.tencent.mm.ab.i)localObject2).toString();
-          localObject2 = new LaunchParcel();
-          ((LaunchParcel)localObject2).appId = ((String)localObject1);
-          ((LaunchParcel)localObject2).kHw = str1;
-          ((LaunchParcel)localObject2).mYK = ((AppBrandStatObject)localObject3);
-          ((LaunchParcel)localObject2).cys = ((AppBrandLaunchReferrer)localObject4);
-          ((LaunchParcel)localObject2).mYN = new com.tencent.luggage.sdk.launching.a() {};
-          com.tencent.mm.plugin.appbrand.launching.e.f.mZp.a(MMApplicationContext.getContext(), (LaunchParcel)localObject2);
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            Object localObject1;
-            Log.e("MicroMsg.AppBrand.ServiceForWebView", "privateOpenWeappFunctionalPage, parse failed e = %s, uuid = %s, json = %s", new Object[] { localException, paramString1, paramString2 });
-            com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.b.acs(paramString1).aYI();
-          }
-        }
-        localObject1 = QZL;
-        AppMethodBeat.o(226330);
-        return localObject1;
-      }
-    }).hdy();
-    AppMethodBeat.o(44176);
+    Parcel localParcel = Parcel.obtain();
+    localParcel.setDataPosition(0);
+    localParcel.writeStringList(paramList);
+    localParcel.setDataPosition(0);
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, localParcel, a.class, (com.tencent.mm.ipcinvoker.f)new e(localParcel));
+    AppMethodBeat.o(50175);
   }
   
-  public void p(String paramString1, String paramString2, int paramInt)
+  public final void cw(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(44173);
+    AppMethodBeat.i(50176);
+    if (paramString2 == null)
+    {
+      AppMethodBeat.o(50176);
+      return;
+    }
+    if (paramString1 == null)
+    {
+      AppMethodBeat.o(50176);
+      return;
+    }
+    Parcel localParcel = Parcel.obtain();
+    localParcel.setDataPosition(0);
+    localParcel.writeString(paramString1);
+    localParcel.writeString(paramString2);
+    localParcel.setDataPosition(0);
+    try
+    {
+      XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, localParcel, c.class);
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+      AppMethodBeat.o(50176);
+    }
+  }
+  
+  public final void r(String paramString1, String paramString2, int paramInt)
+  {
+    AppMethodBeat.i(50174);
+    String str = MainProcessIPCService.PROCESS_NAME;
     SendDataToMiniProgramFromH5Event localSendDataToMiniProgramFromH5Event = new SendDataToMiniProgramFromH5Event();
-    localSendDataToMiniProgramFromH5Event.lWe = paramString1;
+    localSendDataToMiniProgramFromH5Event.oTP = paramString1;
     localSendDataToMiniProgramFromH5Event.data = paramString2;
-    localSendDataToMiniProgramFromH5Event.lWf = paramInt;
-    com.tencent.mm.plugin.appbrand.ipc.e.b(paramString1, localSendDataToMiniProgramFromH5Event);
-    AppMethodBeat.o(44173);
+    localSendDataToMiniProgramFromH5Event.oTQ = paramInt;
+    XIPCInvoker.a(str, localSendDataToMiniProgramFromH5Event, d.class, null);
+    AppMethodBeat.o(50174);
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/app/ServiceForWebViewAnyProcess$BatchSyncWxaAttr;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Landroid/os/Parcel;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
+  static final class a
+    implements d<Parcel, IPCVoid>
+  {}
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/app/ServiceForWebViewAnyProcess$PreloadCdnEnv;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
+  static final class b
+    implements d<IPCString, IPCVoid>
+  {}
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/app/ServiceForWebViewAnyProcess$PrivateOpenFunctionalPage;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Landroid/os/Parcel;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "data", "plugin-appbrand-integration_release"})
+  static final class c
+    implements m<Parcel, IPCVoid>
+  {}
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/app/ServiceForWebViewAnyProcess$SendDataToMiniProgram;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/jsapi/h5_interact/SendDataToMiniProgramFromH5Event;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
+  static final class d
+    implements d<SendDataToMiniProgramFromH5Event, IPCVoid>
+  {}
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  static final class e<T>
+    implements com.tencent.mm.ipcinvoker.f<ResultType>
+  {
+    e(Parcel paramParcel) {}
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
+  static final class f<_Ret, _Var>
+    implements a<_Ret, _Var>
+  {
+    public static final f nCM;
+    
+    static
+    {
+      AppMethodBeat.i(50171);
+      nCM = new f();
+      AppMethodBeat.o(50171);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.l
  * JD-Core Version:    0.7.0.1
  */

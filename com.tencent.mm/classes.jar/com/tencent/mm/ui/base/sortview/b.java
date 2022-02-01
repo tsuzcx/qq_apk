@@ -10,14 +10,15 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import junit.framework.Assert;
 
 public abstract class b
   extends BaseAdapter
   implements AbsListView.OnScrollListener, AdapterView.OnItemClickListener
 {
-  protected SparseArray<a> OZO;
-  protected Runnable OZP;
+  private SparseArray<a> Wtb;
+  private Runnable Wtc;
   protected Context mContext;
   
   public b(Context paramContext)
@@ -26,8 +27,8 @@ public abstract class b
       throw new NullPointerException("context is null.");
     }
     this.mContext = paramContext;
-    this.OZO = new SparseArray();
-    this.OZP = new Runnable()
+    this.Wtb = new SparseArray();
+    this.Wtc = new Runnable()
     {
       public final void run()
       {
@@ -38,11 +39,11 @@ public abstract class b
     };
   }
   
-  protected abstract a CY(int paramInt);
+  protected abstract a GE(int paramInt);
   
-  protected abstract Object[] CZ(int paramInt);
+  protected abstract Object[] GF(int paramInt);
   
-  public a Dc(int paramInt)
+  public a GI(int paramInt)
   {
     if ((paramInt < 0) || (paramInt > getCount()))
     {
@@ -53,17 +54,28 @@ public abstract class b
     do
     {
       return localObject;
-      locala = (a)this.OZO.get(paramInt);
+      locala = (a)this.Wtb.get(paramInt);
       localObject = locala;
     } while (locala != null);
-    Object localObject = CY(paramInt);
-    this.OZO.put(paramInt, localObject);
+    Object localObject = GE(paramInt);
+    this.Wtb.put(paramInt, localObject);
     return localObject;
+  }
+  
+  public final void bfU()
+  {
+    MMHandlerThread.postToMainThread(this.Wtc);
+  }
+  
+  public final void clearData()
+  {
+    this.Wtb.clear();
+    MMHandlerThread.postToMainThread(this.Wtc);
   }
   
   public int getCount()
   {
-    return this.OZO.size();
+    return this.Wtb.size();
   }
   
   public long getItemId(int paramInt)
@@ -73,12 +85,12 @@ public abstract class b
   
   public int getItemViewType(int paramInt)
   {
-    if (Dc(paramInt) != null)
+    if (GI(paramInt) != null)
     {
-      if (Dc(paramInt) == null) {
+      if (GI(paramInt) == null) {
         return 0;
       }
-      return Dc(paramInt).type;
+      return GI(paramInt).type;
     }
     Log.d("MicroMsg.BaseMutilDataItemAdapter", "getItemViewType: get data item fail, return unkown Type, totalCount(%d) , position(%d)", new Object[] { Integer.valueOf(getCount()), Integer.valueOf(paramInt) });
     return 0;
@@ -87,14 +99,14 @@ public abstract class b
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     long l1 = System.currentTimeMillis();
-    a locala = Dc(paramInt);
+    a locala = GI(paramInt);
     if (locala == null)
     {
       Log.e("MicroMsg.BaseMutilDataItemAdapter", "DataItem is null.");
       return paramView;
     }
     long l2 = System.currentTimeMillis();
-    a.b localb = locala.clS();
+    a.b localb = locala.czw();
     if (localb == null)
     {
       Log.e("MicroMsg.BaseMutilDataItemAdapter", "ViewItem is null.");
@@ -103,15 +115,15 @@ public abstract class b
     if (paramView == null)
     {
       paramView = localb.c(this.mContext, paramView);
-      paramViewGroup = locala.clT();
+      paramViewGroup = locala.czx();
       localb.a(paramView, paramViewGroup);
       paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      Object[] arrayOfObject = CZ(paramInt);
+      Object[] arrayOfObject = GF(paramInt);
       Assert.assertNotNull(paramViewGroup);
-      if (!locala.gLT()) {
+      if (!locala.hLb()) {
         locala.a(this.mContext, paramViewGroup, arrayOfObject);
       }
       long l3 = System.currentTimeMillis();
@@ -130,24 +142,24 @@ public abstract class b
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bm(paramAdapterView);
-    localb.bm(paramView);
-    localb.pH(paramInt);
-    localb.zo(paramLong);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/sortview/BaseMultiDataItemAdapter", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
-    paramAdapterView = Dc(paramInt);
+    localb.bn(paramAdapterView);
+    localb.bn(paramView);
+    localb.sg(paramInt);
+    localb.Fs(paramLong);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/base/sortview/BaseMultiDataItemAdapter", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+    paramAdapterView = GI(paramInt);
     if (paramAdapterView == null)
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/base/sortview/BaseMultiDataItemAdapter", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
       return;
     }
-    paramView = paramAdapterView.clS();
+    paramView = paramAdapterView.czw();
     if (paramView == null)
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/base/sortview/BaseMultiDataItemAdapter", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
       return;
     }
-    if (paramView.a(this.mContext, paramAdapterView, CZ(paramInt)))
+    if (paramView.a(this.mContext, paramAdapterView, GF(paramInt)))
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/base/sortview/BaseMultiDataItemAdapter", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
       return;
@@ -157,7 +169,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.base.sortview.b
  * JD-Core Version:    0.7.0.1
  */

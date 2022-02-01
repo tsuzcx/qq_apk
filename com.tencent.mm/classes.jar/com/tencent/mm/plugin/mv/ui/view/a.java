@@ -12,17 +12,17 @@ import java.lang.ref.WeakReference;
 public final class a
   extends ImageSpan
 {
-  private WeakReference<Drawable> qTG;
+  private WeakReference<Drawable> uvM;
   
   public a(Drawable paramDrawable)
   {
     super(paramDrawable);
   }
   
-  private Drawable ewj()
+  private Drawable fhz()
   {
-    AppMethodBeat.i(256705);
-    Object localObject = this.qTG;
+    AppMethodBeat.i(232531);
+    Object localObject = this.uvM;
     Drawable localDrawable = null;
     if (localObject != null) {
       localDrawable = (Drawable)((WeakReference)localObject).get();
@@ -31,27 +31,27 @@ public final class a
     if (localDrawable == null)
     {
       localObject = getDrawable();
-      this.qTG = new WeakReference(localObject);
+      this.uvM = new WeakReference(localObject);
     }
-    AppMethodBeat.o(256705);
+    AppMethodBeat.o(232531);
     return localObject;
   }
   
   public final void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
-    AppMethodBeat.i(256704);
-    paramCharSequence = ewj();
+    AppMethodBeat.i(232528);
+    paramCharSequence = fhz();
     paramCanvas.save();
     paramCanvas.translate(paramFloat, paramInt5 - paramCharSequence.getBounds().bottom - paramPaint.getFontMetricsInt().descent / 2);
     paramCharSequence.draw(paramCanvas);
     paramCanvas.restore();
-    AppMethodBeat.o(256704);
+    AppMethodBeat.o(232528);
   }
   
   public final int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
   {
-    AppMethodBeat.i(256703);
-    paramCharSequence = ewj().getBounds();
+    AppMethodBeat.i(232525);
+    paramCharSequence = fhz().getBounds();
     if (paramFontMetricsInt != null)
     {
       paramPaint = paramPaint.getFontMetricsInt();
@@ -61,13 +61,13 @@ public final class a
       paramFontMetricsInt.bottom = paramPaint.bottom;
     }
     paramInt1 = paramCharSequence.right;
-    AppMethodBeat.o(256703);
+    AppMethodBeat.o(232525);
     return paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.ui.view.a
  * JD-Core Version:    0.7.0.1
  */

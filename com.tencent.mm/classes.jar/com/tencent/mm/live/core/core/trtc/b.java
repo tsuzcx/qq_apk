@@ -6,78 +6,78 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/core/trtc/WXTRTCCloudImpl;", "Lcom/tencent/liteav/trtc/impl/TRTCCloudImpl;", "var0", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getDownloadStreamInfo", "", "sdkuid", "", "getUploadState", "Companion", "plugin-core_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/trtc/WXTRTCCloudImpl;", "Lcom/tencent/liteav/trtc/impl/TRTCCloudImpl;", "var0", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getDownloadStreamInfo", "", "sdkuid", "", "getUploadState", "Companion", "plugin-core_release"})
 public final class b
   extends TRTCCloudImpl
 {
-  private static b hAO;
-  public static final a hAP;
+  private static b kov;
+  public static final a kow;
   
   static
   {
-    AppMethodBeat.i(196512);
-    hAP = new a((byte)0);
-    AppMethodBeat.o(196512);
+    AppMethodBeat.i(198178);
+    kow = new a((byte)0);
+    AppMethodBeat.o(198178);
   }
   
   public b(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(196511);
-    AppMethodBeat.o(196511);
+    AppMethodBeat.i(198176);
+    AppMethodBeat.o(198176);
   }
   
-  public static CharSequence Gq(String paramString)
+  public static CharSequence Ny(String paramString)
   {
-    AppMethodBeat.i(196510);
-    p.h(paramString, "sdkuid");
-    AppMethodBeat.o(196510);
+    AppMethodBeat.i(198174);
+    p.k(paramString, "sdkuid");
+    AppMethodBeat.o(198174);
     return null;
   }
   
-  public final CharSequence aDA()
+  public final CharSequence aLG()
   {
-    AppMethodBeat.i(196509);
+    AppMethodBeat.i(198171);
     CharSequence localCharSequence = getUploadStreamInfo();
-    p.g(localCharSequence, "uploadStreamInfo");
-    AppMethodBeat.o(196509);
+    p.j(localCharSequence, "uploadStreamInfo");
+    AppMethodBeat.o(198171);
     return localCharSequence;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/core/trtc/WXTRTCCloudImpl$Companion;", "", "()V", "sInstance", "Lcom/tencent/mm/live/core/core/trtc/WXTRTCCloudImpl;", "destroySharedInstance", "", "getInstance", "Lcom/tencent/trtc/TRTCCloud;", "var0", "Landroid/content/Context;", "plugin-core_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/core/trtc/WXTRTCCloudImpl$Companion;", "", "()V", "sInstance", "Lcom/tencent/mm/live/core/core/trtc/WXTRTCCloudImpl;", "destroySharedInstance", "", "getInstance", "Lcom/tencent/trtc/TRTCCloud;", "var0", "Landroid/content/Context;", "plugin-core_release"})
   public static final class a
   {
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
-      public static final a hAQ;
+      public static final a kox;
       
       static
       {
-        AppMethodBeat.i(196508);
-        hAQ = new a();
-        AppMethodBeat.o(196508);
+        AppMethodBeat.i(200623);
+        kox = new a();
+        AppMethodBeat.o(200623);
       }
       
       public final void run()
       {
-        AppMethodBeat.i(196507);
-        b localb = b.aDB();
+        AppMethodBeat.i(200621);
+        b localb = b.aLH();
         if (localb != null)
         {
           localb.finalize();
-          AppMethodBeat.o(196507);
+          AppMethodBeat.o(200621);
           return;
         }
-        AppMethodBeat.o(196507);
+        AppMethodBeat.o(200621);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.core.core.trtc.b
  * JD-Core Version:    0.7.0.1
  */

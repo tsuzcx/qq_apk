@@ -12,13 +12,13 @@ final class TalkRoomUI$7
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(29595);
-    this.FRv.finish();
+    this.Mlw.finish();
     AppMethodBeat.o(29595);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.ui.TalkRoomUI.7
  * JD-Core Version:    0.7.0.1
  */

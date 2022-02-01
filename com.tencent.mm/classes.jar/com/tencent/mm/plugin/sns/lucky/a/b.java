@@ -5,16 +5,16 @@ import com.tencent.mm.plugin.report.service.h;
 
 public final class b
 {
-  public static void pl(int paramInt)
+  public static void rE(int paramInt)
   {
     AppMethodBeat.i(95176);
-    h.CyF.idkeyStat(270L, paramInt, 1L, true);
+    h.IzE.idkeyStat(270L, paramInt, 1L, true);
     AppMethodBeat.o(95176);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.lucky.a.b
  * JD-Core Version:    0.7.0.1
  */

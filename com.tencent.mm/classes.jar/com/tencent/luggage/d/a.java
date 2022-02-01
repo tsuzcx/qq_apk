@@ -5,7 +5,7 @@ import android.content.Context;
 public abstract interface a
   extends c
 {
-  public abstract n Lc();
+  public abstract n NS();
   
   public abstract Context getContext();
 }

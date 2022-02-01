@@ -3,7 +3,7 @@ package com.tencent.luggage.game.c;
 import android.content.Context;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.k;
+import com.tencent.mm.plugin.appbrand.jsapi.j;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
@@ -16,11 +16,11 @@ import org.json.JSONObject;
 
 public final class e
 {
-  public com.tencent.magicbrush.e cuW;
-  public d cvg;
-  public volatile b cvh;
-  public final Queue<String> cvi;
-  public e cvj;
+  public com.tencent.magicbrush.e ctk;
+  public d ctu;
+  public volatile b ctv;
+  public final Queue<String> ctw;
+  public e.e cty;
   public Context mContext;
   public volatile int mState;
   
@@ -28,12 +28,12 @@ public final class e
   {
     AppMethodBeat.i(130524);
     this.mState = 0;
-    this.cvi = new LinkedList();
-    this.cvj = new e((byte)0);
+    this.ctw = new LinkedList();
+    this.cty = new e.e((byte)0);
     AppMethodBeat.o(130524);
   }
   
-  private void h(int paramInt, String paramString)
+  private void i(int paramInt, String paramString)
   {
     AppMethodBeat.i(130527);
     JSONObject localJSONObject = new JSONObject();
@@ -43,7 +43,7 @@ public final class e
       JSONArray localJSONArray = new JSONArray();
       localJSONArray.put("wxClient: ".concat(String.valueOf(paramString)));
       localJSONObject.put("logs", localJSONArray);
-      dq(localJSONObject.toString());
+      dH(localJSONObject.toString());
       AppMethodBeat.o(130527);
       return;
     }
@@ -65,14 +65,14 @@ public final class e
       return;
     }
     int i = j;
-    switch (3.cvl[parama.ordinal()])
+    switch (3.ctA[parama.ordinal()])
     {
     default: 
       i = j;
     }
     for (;;)
     {
-      h(i, paramString);
+      i(i, paramString);
       AppMethodBeat.o(130526);
       return;
       i = 1;
@@ -83,31 +83,31 @@ public final class e
     }
   }
   
-  public final void dq(final String paramString)
+  public final void dH(final String paramString)
   {
     AppMethodBeat.i(130525);
     Log.i("MicroMsg.GameInspector", "hy: on js logged : %s", new Object[] { paramString });
-    synchronized (this.cvi)
+    synchronized (this.ctw)
     {
       if (this.mState != 1)
       {
-        this.cvi.add(paramString);
+        this.ctw.add(paramString);
         AppMethodBeat.o(130525);
         return;
       }
-      if (this.cvh == null)
+      if (this.ctv == null)
       {
         AppMethodBeat.o(130525);
         return;
       }
     }
-    this.cvh.post(new Runnable()
+    this.ctv.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(130517);
-        if (e.this.cvh != null) {
-          e.this.cvh.log(paramString);
+        if (e.this.ctv != null) {
+          e.this.ctv.log(paramString);
         }
         AppMethodBeat.o(130517);
       }
@@ -120,11 +120,11 @@ public final class e
     static
     {
       AppMethodBeat.i(130521);
-      cvm = new a("DEBUG", 0);
-      cvn = new a("INFO", 1);
-      cvo = new a("WARNING", 2);
-      cvp = new a("ERROR", 3);
-      cvq = new a[] { cvm, cvn, cvo, cvp };
+      ctB = new a("DEBUG", 0);
+      ctC = new a("INFO", 1);
+      ctD = new a("WARNING", 2);
+      ctE = new a("ERROR", 3);
+      ctF = new a[] { ctB, ctC, ctD, ctE };
       AppMethodBeat.o(130521);
     }
     
@@ -133,47 +133,22 @@ public final class e
   
   public static final class b
   {
-    public k cuQ;
-    public com.tencent.magicbrush.e cvr;
-    public FrameLayout cvs;
-    public boolean cvt;
-    public boolean cvu;
-    public e.c cvv = null;
+    public com.tencent.magicbrush.e ctG;
+    public FrameLayout ctH;
+    public boolean ctI;
+    public boolean ctJ;
+    public e.c ctK = null;
+    public j cte;
   }
   
   public static abstract interface c
   {
-    public abstract void F(List<f> paramList);
+    public abstract void C(List<f> paramList);
   }
-  
-  static final class d
-    implements Runnable
-  {
-    private d cvg;
-    private e.e cvj;
-    
-    public final void run()
-    {
-      AppMethodBeat.i(130522);
-      if (this.cvg == null)
-      {
-        AppMethodBeat.o(130522);
-        return;
-      }
-      if (this.cvj != null) {
-        this.cvj.release(this);
-      }
-      AppMethodBeat.o(130522);
-    }
-  }
-  
-  static final class e
-    extends com.tencent.luggage.game.g.b<e.d>
-  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.game.c.e
  * JD-Core Version:    0.7.0.1
  */

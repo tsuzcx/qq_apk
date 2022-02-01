@@ -1,62 +1,62 @@
 package com.tencent.mm.storage;
 
-import com.tencent.mm.model.bp.b;
+import com.tencent.mm.model.bq.b;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.c;
-import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.messenger.foundation.a.p;
 import com.tencent.mm.storagebase.h;
 
 public abstract class e
 {
-  public static n NOM;
-  protected i NOL;
+  public static p Vcv;
+  protected i Vcu;
   
   public e(i parami)
   {
-    this.NOL = parami;
+    this.Vcu = parami;
   }
   
   protected final void a(i.b paramb)
   {
-    this.NOL.a(paramb);
+    this.Vcu.a(paramb);
   }
   
   protected final void a(i.c paramc)
   {
-    this.NOL.a(paramc);
+    this.Vcu.a(paramc);
   }
   
-  protected boolean a(ca paramca, bp.b paramb)
+  protected boolean a(ca paramca, bq.b paramb)
   {
     return true;
   }
   
-  protected final String aEO(String paramString)
-  {
-    return this.NOL.aEO(paramString);
-  }
+  public abstract String aEK(String paramString);
   
-  public abstract String avu(String paramString);
+  protected final String aOY(String paramString)
+  {
+    return this.Vcu.aOY(paramString);
+  }
   
   protected final void e(h paramh, String paramString)
   {
-    this.NOL.e(paramh, paramString);
+    this.Vcu.e(paramh, paramString);
   }
   
   public final h getDB()
   {
-    return this.NOL.getDB();
+    return this.Vcu.getDB();
   }
   
-  protected final void mO(String paramString1, String paramString2)
+  protected final void nF(String paramString1, String paramString2)
   {
-    this.NOL.c(paramString1, paramString2, null);
+    this.Vcu.d(paramString1, paramString2, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.e
  * JD-Core Version:    0.7.0.1
  */

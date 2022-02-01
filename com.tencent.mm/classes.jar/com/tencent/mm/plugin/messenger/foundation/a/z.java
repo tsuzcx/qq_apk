@@ -1,16 +1,19 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
+import android.app.Activity;
+
 public abstract interface z
 {
-  public abstract void aQ(Object paramObject);
+  public abstract void a(Activity paramActivity, String paramString1, String paramString2, a parama);
   
-  public abstract void aR(Object paramObject);
-  
-  public abstract void aS(Object paramObject);
+  public static abstract interface a
+  {
+    public abstract void ub(boolean paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.a.z
  * JD-Core Version:    0.7.0.1
  */

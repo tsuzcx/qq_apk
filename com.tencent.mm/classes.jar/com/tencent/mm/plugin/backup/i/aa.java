@@ -4,12 +4,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import g.a.a.b;
 
 public final class aa
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String oTx;
-  public long oUG;
-  public long oUH;
-  public String oUI;
+  public String rVv;
+  public long rWF;
+  public long rWG;
+  public String rWH;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -17,59 +17,59 @@ public final class aa
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.oTx == null)
+      if (this.rVv == null)
       {
         paramVarArgs = new b("Not all required fields were included: BakChatName");
         AppMethodBeat.o(22133);
         throw paramVarArgs;
       }
-      if (this.oUI == null)
+      if (this.rWH == null)
       {
         paramVarArgs = new b("Not all required fields were included: MsgDataID");
         AppMethodBeat.o(22133);
         throw paramVarArgs;
       }
-      if (this.oTx != null) {
-        paramVarArgs.e(1, this.oTx);
+      if (this.rVv != null) {
+        paramVarArgs.f(1, this.rVv);
       }
-      paramVarArgs.bb(2, this.oUG);
-      paramVarArgs.bb(3, this.oUH);
-      if (this.oUI != null) {
-        paramVarArgs.e(4, this.oUI);
+      paramVarArgs.bm(2, this.rWF);
+      paramVarArgs.bm(3, this.rWG);
+      if (this.rWH != null) {
+        paramVarArgs.f(4, this.rWH);
       }
       AppMethodBeat.o(22133);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.oTx == null) {
+      if (this.rVv == null) {
         break label472;
       }
     }
     label472:
-    for (paramInt = g.a.a.b.b.a.f(1, this.oTx) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.g(1, this.rVv) + 0;; paramInt = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.r(2, this.oUG) + g.a.a.b.b.a.r(3, this.oUH);
+      int i = paramInt + g.a.a.b.b.a.p(2, this.rWF) + g.a.a.b.b.a.p(3, this.rWG);
       paramInt = i;
-      if (this.oUI != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.oUI);
+      if (this.rWH != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.rWH);
       }
       AppMethodBeat.o(22133);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.oTx == null)
+        if (this.rVv == null)
         {
           paramVarArgs = new b("Not all required fields were included: BakChatName");
           AppMethodBeat.o(22133);
           throw paramVarArgs;
         }
-        if (this.oUI == null)
+        if (this.rWH == null)
         {
           paramVarArgs = new b("Not all required fields were included: MsgDataID");
           AppMethodBeat.o(22133);
@@ -88,19 +88,19 @@ public final class aa
           AppMethodBeat.o(22133);
           return -1;
         case 1: 
-          localaa.oTx = locala.UbS.readString();
+          localaa.rVv = locala.abFh.readString();
           AppMethodBeat.o(22133);
           return 0;
         case 2: 
-          localaa.oUG = locala.UbS.zl();
+          localaa.rWF = locala.abFh.AN();
           AppMethodBeat.o(22133);
           return 0;
         case 3: 
-          localaa.oUH = locala.UbS.zl();
+          localaa.rWG = locala.abFh.AN();
           AppMethodBeat.o(22133);
           return 0;
         }
-        localaa.oUI = locala.UbS.readString();
+        localaa.rWH = locala.abFh.readString();
         AppMethodBeat.o(22133);
         return 0;
       }
@@ -111,7 +111,7 @@ public final class aa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.i.aa
  * JD-Core Version:    0.7.0.1
  */

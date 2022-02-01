@@ -2,8 +2,8 @@ package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pointers.PByteArray;
-import com.tencent.mm.protocal.protobuf.cgg;
-import com.tencent.mm.protocal.protobuf.efv;
+import com.tencent.mm.protocal.protobuf.cpc;
+import com.tencent.mm.protocal.protobuf.epx;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
@@ -14,7 +14,7 @@ import java.util.Set;
 
 public final class ad
 {
-  private static Map<Integer, Long> cJ(byte[] paramArrayOfByte)
+  private static Map<Integer, Long> da(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(133139);
     if (Util.isNullOrNil(paramArrayOfByte))
@@ -24,7 +24,7 @@ public final class ad
     }
     try
     {
-      paramArrayOfByte = (efv)new efv().parseFrom(paramArrayOfByte);
+      paramArrayOfByte = (epx)new epx().parseFrom(paramArrayOfByte);
       if (paramArrayOfByte == null)
       {
         AppMethodBeat.o(133139);
@@ -36,21 +36,21 @@ public final class ad
       AppMethodBeat.o(133139);
       return null;
     }
-    Log.d("MicroMsg.SyncKeyUtil", "dkpush : keyCount:" + paramArrayOfByte.MXU);
-    LinkedList localLinkedList = paramArrayOfByte.MXV;
-    if (localLinkedList.size() != paramArrayOfByte.MXU)
+    Log.d("MicroMsg.SyncKeyUtil", "dkpush : keyCount:" + paramArrayOfByte.Ukp);
+    LinkedList localLinkedList = paramArrayOfByte.Ukq;
+    if (localLinkedList.size() != paramArrayOfByte.Ukp)
     {
       AppMethodBeat.o(133139);
       return null;
     }
     HashMap localHashMap = new HashMap();
     int i = 0;
-    while (i < paramArrayOfByte.MXU)
+    while (i < paramArrayOfByte.Ukp)
     {
-      localHashMap.put(Integer.valueOf(((cgg)localLinkedList.get(i)).Cya), Long.valueOf(0xFFFFFFFF & ((cgg)localLinkedList.get(i)).MlT));
+      localHashMap.put(Integer.valueOf(((cpc)localLinkedList.get(i)).IyZ), Long.valueOf(0xFFFFFFFF & ((cpc)localLinkedList.get(i)).TwN));
       i += 1;
     }
-    if (localHashMap.size() != paramArrayOfByte.MXU)
+    if (localHashMap.size() != paramArrayOfByte.Ukp)
     {
       AppMethodBeat.o(133139);
       return null;
@@ -59,7 +59,7 @@ public final class ad
     return localHashMap;
   }
   
-  public static String cK(byte[] paramArrayOfByte)
+  public static String db(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(133140);
     if (Util.isNullOrNil(paramArrayOfByte))
@@ -67,7 +67,7 @@ public final class ad
       AppMethodBeat.o(133140);
       return "";
     }
-    paramArrayOfByte = cJ(paramArrayOfByte);
+    paramArrayOfByte = da(paramArrayOfByte);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.size() <= 0))
     {
       AppMethodBeat.o(133140);
@@ -85,7 +85,7 @@ public final class ad
     return paramArrayOfByte;
   }
   
-  public static byte[] l(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public static byte[] n(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
     AppMethodBeat.i(133138);
     if ((paramArrayOfByte1 == null) || (paramArrayOfByte1.length <= 0))
@@ -122,17 +122,17 @@ public final class ad
     return paramArrayOfByte1;
   }
   
-  public static boolean m(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public static boolean o(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
     AppMethodBeat.i(133141);
-    paramArrayOfByte1 = cJ(paramArrayOfByte1);
+    paramArrayOfByte1 = da(paramArrayOfByte1);
     if (paramArrayOfByte1 == null)
     {
       Log.d("MicroMsg.SyncKeyUtil", "dkpush local sync key failed");
       AppMethodBeat.o(133141);
       return true;
     }
-    paramArrayOfByte2 = cJ(paramArrayOfByte2);
+    paramArrayOfByte2 = da(paramArrayOfByte2);
     if (paramArrayOfByte2 == null)
     {
       Log.e("MicroMsg.SyncKeyUtil", "dkpush svr sync key failed");
@@ -165,7 +165,7 @@ public final class ad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.ad
  * JD-Core Version:    0.7.0.1
  */

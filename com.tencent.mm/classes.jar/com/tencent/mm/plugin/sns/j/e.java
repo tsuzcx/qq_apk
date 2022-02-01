@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.sns.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dzj;
+import com.tencent.mm.protocal.protobuf.ejj;
 import g.a.a.b;
 import java.util.LinkedList;
 
 public final class e
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public dzj DIb;
-  public String DRR;
-  public int DRS;
-  public String DRT;
+  public ejj JVa;
+  public String KeY;
+  public int KeZ;
+  public String Kfa;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -19,67 +19,67 @@ public final class e
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.DRR == null)
+      if (this.KeY == null)
       {
         paramVarArgs = new b("Not all required fields were included: clientID");
         AppMethodBeat.o(96156);
         throw paramVarArgs;
       }
-      if (this.DIb == null)
+      if (this.JVa == null)
       {
         paramVarArgs = new b("Not all required fields were included: actionGroup");
         AppMethodBeat.o(96156);
         throw paramVarArgs;
       }
-      if (this.DRR != null) {
-        paramVarArgs.e(1, this.DRR);
+      if (this.KeY != null) {
+        paramVarArgs.f(1, this.KeY);
       }
-      if (this.DIb != null)
+      if (this.JVa != null)
       {
-        paramVarArgs.ni(2, this.DIb.computeSize());
-        this.DIb.writeFields(paramVarArgs);
+        paramVarArgs.oE(2, this.JVa.computeSize());
+        this.JVa.writeFields(paramVarArgs);
       }
-      paramVarArgs.aM(3, this.DRS);
-      if (this.DRT != null) {
-        paramVarArgs.e(4, this.DRT);
+      paramVarArgs.aY(3, this.KeZ);
+      if (this.Kfa != null) {
+        paramVarArgs.f(4, this.Kfa);
       }
       AppMethodBeat.o(96156);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.DRR == null) {
-        break label570;
+      if (this.KeY == null) {
+        break label548;
       }
     }
-    label570:
-    for (paramInt = g.a.a.b.b.a.f(1, this.DRR) + 0;; paramInt = 0)
+    label548:
+    for (paramInt = g.a.a.b.b.a.g(1, this.KeY) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.DIb != null) {
-        i = paramInt + g.a.a.a.nh(2, this.DIb.computeSize());
+      if (this.JVa != null) {
+        i = paramInt + g.a.a.a.oD(2, this.JVa.computeSize());
       }
-      i += g.a.a.b.b.a.bu(3, this.DRS);
+      i += g.a.a.b.b.a.bM(3, this.KeZ);
       paramInt = i;
-      if (this.DRT != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.DRT);
+      if (this.Kfa != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.Kfa);
       }
       AppMethodBeat.o(96156);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.DRR == null)
+        if (this.KeY == null)
         {
           paramVarArgs = new b("Not all required fields were included: clientID");
           AppMethodBeat.o(96156);
           throw paramVarArgs;
         }
-        if (this.DIb == null)
+        if (this.JVa == null)
         {
           paramVarArgs = new b("Not all required fields were included: actionGroup");
           AppMethodBeat.o(96156);
@@ -90,7 +90,7 @@ public final class e
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         e locale = (e)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
@@ -99,30 +99,31 @@ public final class e
           AppMethodBeat.o(96156);
           return -1;
         case 1: 
-          locale.DRR = ((g.a.a.a.a)localObject1).UbS.readString();
+          locale.KeY = ((g.a.a.a.a)localObject).abFh.readString();
           AppMethodBeat.o(96156);
           return 0;
         case 2: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new dzj();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((dzj)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            locale.DIb = ((dzj)localObject1);
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            ejj localejj = new ejj();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localejj.parseFrom((byte[])localObject);
+            }
+            locale.JVa = localejj;
             paramInt += 1;
           }
           AppMethodBeat.o(96156);
           return 0;
         case 3: 
-          locale.DRS = ((g.a.a.a.a)localObject1).UbS.zi();
+          locale.KeZ = ((g.a.a.a.a)localObject).abFh.AK();
           AppMethodBeat.o(96156);
           return 0;
         }
-        locale.DRT = ((g.a.a.a.a)localObject1).UbS.readString();
+        locale.Kfa = ((g.a.a.a.a)localObject).abFh.readString();
         AppMethodBeat.o(96156);
         return 0;
       }
@@ -133,7 +134,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.j.e
  * JD-Core Version:    0.7.0.1
  */

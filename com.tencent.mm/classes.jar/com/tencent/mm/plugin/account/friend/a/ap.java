@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 
-public final class ap
+public class ap
   extends MAutoStorage<r>
 {
   public static final String[] SQL_CREATE;
@@ -25,7 +25,7 @@ public final class ap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.ap
  * JD-Core Version:    0.7.0.1
  */

@@ -16,24 +16,24 @@ import java.util.Set;
 public abstract class a
   implements i
 {
-  private volatile boolean dbG;
-  private SQLiteStatement wUA;
-  protected SQLiteStatement wUB;
-  private f<String, String> wUs;
-  public volatile h wUt;
-  protected SQLiteStatement wUu;
-  private SQLiteStatement wUv;
-  private SQLiteStatement wUw;
-  private SQLiteStatement wUx;
-  private SQLiteStatement wUy;
-  public SQLiteStatement wUz;
+  private f<String, String> BGo;
+  public volatile h BGp;
+  private SQLiteStatement BGq;
+  private SQLiteStatement BGr;
+  private SQLiteStatement BGs;
+  private SQLiteStatement BGt;
+  private SQLiteStatement BGu;
+  public SQLiteStatement BGv;
+  private SQLiteStatement BGw;
+  private SQLiteStatement BGx;
+  private volatile boolean dfI;
   
   public a()
   {
     Log.i("MicroMsg.FTS.BaseFTS5NativeStorage", "Create %s", new Object[] { getName() });
   }
   
-  private static String dW(String paramString, int paramInt)
+  private static String et(String paramString, int paramInt)
   {
     return paramString + "​" + paramInt;
   }
@@ -41,32 +41,32 @@ public abstract class a
   public final void B(int[] paramArrayOfInt)
   {
     ArrayList localArrayList = new ArrayList(2048);
-    paramArrayOfInt = String.format("SELECT docid FROM %s WHERE type IN " + d.C(paramArrayOfInt) + ";", new Object[] { dOt() });
-    paramArrayOfInt = this.wUt.rawQuery(paramArrayOfInt, null);
+    paramArrayOfInt = String.format("SELECT docid FROM %s WHERE type IN " + d.C(paramArrayOfInt) + ";", new Object[] { eqI() });
+    paramArrayOfInt = this.BGp.rawQuery(paramArrayOfInt, null);
     while (paramArrayOfInt.moveToNext()) {
       localArrayList.add(Long.valueOf(paramArrayOfInt.getLong(0)));
     }
     paramArrayOfInt.close();
-    eN(localArrayList);
+    fd(localArrayList);
   }
   
-  public final void GC(long paramLong)
+  public final void NE(long paramLong)
   {
-    boolean bool = this.wUt.inTransaction();
+    boolean bool = this.BGp.inTransaction();
     if (!bool) {
-      this.wUt.beginTransaction();
+      this.BGp.beginTransaction();
     }
-    this.wUw.bindLong(1, paramLong);
+    this.BGs.bindLong(1, paramLong);
     try
     {
-      this.wUw.execute();
-      this.wUx.bindLong(1, paramLong);
+      this.BGs.execute();
+      this.BGt.bindLong(1, paramLong);
     }
     catch (Exception localException1)
     {
       try
       {
-        this.wUx.execute();
+        this.BGt.execute();
         if (!bool) {
           commit();
         }
@@ -84,20 +84,15 @@ public abstract class a
     }
   }
   
-  public final void W(long paramLong1, long paramLong2)
-  {
-    this.wUt.W(paramLong1, paramLong2);
-  }
-  
   public final Cursor a(com.tencent.mm.plugin.fts.a.a.h paramh, int[] paramArrayOfInt1, int[] paramArrayOfInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    String str2 = paramh.dOz();
+    String str2 = paramh.eqQ();
     label72:
     label101:
     StringBuilder localStringBuilder;
     if (paramBoolean1)
     {
-      paramh = String.format(", MMHighlight(%s, %d, type, subtype)", new Object[] { dOu(), Integer.valueOf(paramh.wWF.size()) });
+      paramh = String.format(", MMHighlight(%s, %d, type, subtype)", new Object[] { eqJ(), Integer.valueOf(paramh.BIA.size()) });
       if ((paramArrayOfInt2 == null) || (paramArrayOfInt2.length <= 0)) {
         break label238;
       }
@@ -116,8 +111,8 @@ public abstract class a
     label250:
     for (String str1 = ", content";; str1 = "")
     {
-      paramh = String.format(str1 + paramh + " FROM %s NOT INDEXED JOIN %s ON (%s.docid = %s.rowid) WHERE %s MATCH '%s'" + paramArrayOfInt1 + "" + " AND status >= 0" + paramArrayOfInt2 + ";", new Object[] { dOt(), dOt(), dOu(), dOt(), dOu(), dOu(), str2 });
-      return this.wUt.rawQuery(paramh, null);
+      paramh = String.format(str1 + paramh + " FROM %s NOT INDEXED JOIN %s ON (%s.docid = %s.rowid) WHERE %s MATCH '%s'" + paramArrayOfInt1 + "" + " AND status >= 0" + paramArrayOfInt2 + ";", new Object[] { eqI(), eqI(), eqJ(), eqI(), eqJ(), eqJ(), str2 });
+      return this.BGp.rawQuery(paramh, null);
       paramh = "";
       break;
       paramArrayOfInt2 = "";
@@ -130,10 +125,10 @@ public abstract class a
   public final Cursor a(int[] paramArrayOfInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5)
   {
     if ((!paramBoolean1) && (!paramBoolean2) && (!paramBoolean3) && (!paramBoolean4) && (!paramBoolean5)) {
-      return com.tencent.mm.storagebase.d.gFu();
+      return com.tencent.mm.storagebase.d.hBM();
     }
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
-      return com.tencent.mm.storagebase.d.gFu();
+      return com.tencent.mm.storagebase.d.hBM();
     }
     Object localObject = new StringBuilder(64);
     if (paramBoolean1) {
@@ -153,44 +148,44 @@ public abstract class a
     }
     ((StringBuilder)localObject).setLength(((StringBuilder)localObject).length() - 1);
     localObject = ((StringBuilder)localObject).toString();
-    paramArrayOfInt = String.format("SELECT %s FROM %s WHERE type IN " + d.C(paramArrayOfInt) + ";", new Object[] { localObject, dOt() });
-    return this.wUt.rawQuery(paramArrayOfInt, null);
+    paramArrayOfInt = String.format("SELECT %s FROM %s WHERE type IN " + d.C(paramArrayOfInt) + ";", new Object[] { localObject, eqI() });
+    return this.BGp.rawQuery(paramArrayOfInt, null);
   }
   
   public final void a(int paramInt1, int paramInt2, long paramLong1, String paramString1, long paramLong2, String paramString2)
   {
-    paramString2 = d.ayp(paramString2);
+    paramString2 = d.aHI(paramString2);
     if (Util.isNullOrNil(paramString2)) {}
     for (;;)
     {
       return;
-      boolean bool = this.wUt.inTransaction();
+      boolean bool = this.BGp.inTransaction();
       if (!bool) {
-        this.wUt.beginTransaction();
+        this.BGp.beginTransaction();
       }
       try
       {
-        this.wUu.bindString(1, paramString2);
-        this.wUu.execute();
-        this.wUv.bindLong(1, paramInt1);
-        this.wUv.bindLong(2, paramInt2);
-        this.wUv.bindLong(3, paramLong1);
-        this.wUv.bindString(4, paramString1);
-        this.wUv.bindLong(5, paramLong2);
-        this.wUv.execute();
+        this.BGq.bindString(1, paramString2);
+        this.BGq.execute();
+        this.BGr.bindLong(1, paramInt1);
+        this.BGr.bindLong(2, paramInt2);
+        this.BGr.bindLong(3, paramLong1);
+        this.BGr.bindString(4, paramString1);
+        this.BGr.bindLong(5, paramLong2);
+        this.BGr.execute();
         if (!bool) {
-          this.wUt.commit();
+          this.BGp.commit();
         }
-        if (!dOv()) {
+        if (!eqM()) {
           continue;
         }
-        this.wUs.put(dW(paramString1, paramInt2), paramString2);
+        this.BGo.put(et(paramString1, paramInt2), paramString2);
         return;
       }
       catch (SQLiteException paramString2)
       {
         Log.e("MicroMsg.FTS.BaseFTS5NativeStorage", String.format("Failed inserting index: 0x%x, %d, %d, %s, %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong1), paramString1, Long.valueOf(paramLong2) }));
-        paramString1 = this.wUB.simpleQueryForString();
+        paramString1 = this.BGx.simpleQueryForString();
         if ((paramString1 != null) && (paramString1.length() > 0)) {
           Log.e("MicroMsg.FTS.BaseFTS5NativeStorage", ">> ".concat(String.valueOf(paramString1)));
         }
@@ -202,60 +197,53 @@ public abstract class a
   public final void a(int[] paramArrayOfInt, String paramString)
   {
     ArrayList localArrayList = new ArrayList(16);
-    paramArrayOfInt = String.format("SELECT docid FROM %s WHERE type IN " + d.C(paramArrayOfInt) + " AND aux_index=?;", new Object[] { dOt() });
-    paramArrayOfInt = this.wUt.rawQuery(paramArrayOfInt, new String[] { paramString });
+    paramArrayOfInt = String.format("SELECT docid FROM %s WHERE type IN " + d.C(paramArrayOfInt) + " AND aux_index=?;", new Object[] { eqI() });
+    paramArrayOfInt = this.BGp.rawQuery(paramArrayOfInt, new String[] { paramString });
     while (paramArrayOfInt.moveToNext()) {
       localArrayList.add(Long.valueOf(paramArrayOfInt.getLong(0)));
     }
     paramArrayOfInt.close();
-    eN(localArrayList);
+    fd(localArrayList);
   }
   
-  public final void av(String paramString, long paramLong)
-  {
-    this.wUA.bindLong(1, paramLong);
-    this.wUA.bindString(2, paramString);
-    this.wUA.execute();
-  }
+  protected abstract void aEr();
   
-  protected abstract void awY();
-  
-  protected boolean awZ()
+  protected boolean aEs()
   {
     return false;
   }
   
-  protected boolean axa()
+  protected boolean aEt()
   {
-    if (this.wUu != null) {
-      this.wUu.close();
+    if (this.BGq != null) {
+      this.BGq.close();
     }
-    if (this.wUv != null) {
-      this.wUv.close();
+    if (this.BGr != null) {
+      this.BGr.close();
     }
-    if (this.wUw != null) {
-      this.wUw.close();
+    if (this.BGs != null) {
+      this.BGs.close();
     }
-    if (this.wUx != null) {
-      this.wUx.close();
+    if (this.BGt != null) {
+      this.BGt.close();
     }
-    if (this.wUy != null) {
-      this.wUy.close();
+    if (this.BGu != null) {
+      this.BGu.close();
     }
-    if (this.wUB != null) {
-      this.wUB.close();
+    if (this.BGx != null) {
+      this.BGx.close();
     }
-    if (this.wUs != null) {
-      this.wUs.clear();
+    if (this.BGo != null) {
+      this.BGo.clear();
     }
-    this.wUt = null;
+    this.BGp = null;
     return true;
   }
   
-  public final void ayn(String paramString)
+  public final void aHG(String paramString)
   {
     Object localObject = new HashSet();
-    Iterator localIterator = this.wUs.keySet().iterator();
+    Iterator localIterator = this.BGo.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
@@ -267,48 +255,55 @@ public abstract class a
     while (paramString.hasNext())
     {
       localObject = (String)paramString.next();
-      this.wUs.remove(localObject);
+      this.BGo.remove(localObject);
     }
+  }
+  
+  public final void ad(long paramLong1, long paramLong2)
+  {
+    this.BGp.ad(paramLong1, paramLong2);
+  }
+  
+  public final void av(String paramString, long paramLong)
+  {
+    this.BGw.bindLong(1, paramLong);
+    this.BGw.bindString(2, paramString);
+    this.BGw.execute();
   }
   
   public final List<Long> b(int[] paramArrayOfInt, String paramString)
   {
-    paramArrayOfInt = String.format("SELECT docid FROM %s WHERE aux_index=? AND type IN " + d.C(paramArrayOfInt) + ";", new Object[] { dOt() });
-    paramArrayOfInt = this.wUt.rawQuery(paramArrayOfInt, new String[] { paramString });
+    paramArrayOfInt = String.format("SELECT docid FROM %s WHERE aux_index=? AND type IN " + d.C(paramArrayOfInt) + ";", new Object[] { eqI() });
+    paramArrayOfInt = this.BGp.rawQuery(paramArrayOfInt, new String[] { paramString });
     paramString = new ArrayList();
     while (paramArrayOfInt.moveToNext()) {
       paramString.add(Long.valueOf(paramArrayOfInt.getLong(0)));
     }
     paramArrayOfInt.close();
-    v(paramString, 1);
+    u(paramString, 1);
     return paramString;
   }
   
   public final void beginTransaction()
   {
-    this.wUt.beginTransaction();
+    this.BGp.beginTransaction();
   }
   
   public final void c(int[] paramArrayOfInt, long paramLong)
   {
     ArrayList localArrayList = new ArrayList(16);
-    paramArrayOfInt = String.format("SELECT docid FROM %s WHERE type IN " + d.C(paramArrayOfInt) + " AND entity_id=?;", new Object[] { dOt() });
-    paramArrayOfInt = this.wUt.rawQuery(paramArrayOfInt, new String[] { Long.toString(paramLong) });
+    paramArrayOfInt = String.format("SELECT docid FROM %s WHERE type IN " + d.C(paramArrayOfInt) + " AND entity_id=?;", new Object[] { eqI() });
+    paramArrayOfInt = this.BGp.rawQuery(paramArrayOfInt, new String[] { Long.toString(paramLong) });
     while (paramArrayOfInt.moveToNext()) {
       localArrayList.add(Long.valueOf(paramArrayOfInt.getLong(0)));
     }
     paramArrayOfInt.close();
-    eN(localArrayList);
-  }
-  
-  protected String cVp()
-  {
-    return String.format("CREATE TABLE IF NOT EXISTS %s (docid INTEGER PRIMARY KEY, type INT, subtype INT DEFAULT 0, entity_id INTEGER, aux_index TEXT, timestamp INTEGER, status INT DEFAULT 0);", new Object[] { dOt() });
+    fd(localArrayList);
   }
   
   public final void commit()
   {
-    this.wUt.commit();
+    this.BGp.commit();
   }
   
   /* Error */
@@ -318,7 +313,7 @@ public abstract class a
     //   0: aload_0
     //   1: monitorenter
     //   2: ldc 28
-    //   4: ldc_w 361
+    //   4: ldc_w 358
     //   7: iconst_2
     //   8: anewarray 4	java/lang/Object
     //   11: dup
@@ -329,51 +324,51 @@ public abstract class a
     //   18: dup
     //   19: iconst_1
     //   20: aload_0
-    //   21: getfield 363	com/tencent/mm/plugin/fts/a/a:dbG	Z
-    //   24: invokestatic 368	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   21: getfield 360	com/tencent/mm/plugin/fts/a/a:dfI	Z
+    //   24: invokestatic 365	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   27: aastore
     //   28: invokestatic 40	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   31: aload_0
-    //   32: getfield 363	com/tencent/mm/plugin/fts/a/a:dbG	Z
+    //   32: getfield 360	com/tencent/mm/plugin/fts/a/a:dfI	Z
     //   35: ifne +47 -> 82
-    //   38: ldc_w 370
-    //   41: invokestatic 376	com/tencent/mm/kernel/g:ah	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
-    //   44: checkcast 370	com/tencent/mm/plugin/fts/a/n
-    //   47: invokeinterface 379 1 0
+    //   38: ldc_w 367
+    //   41: invokestatic 373	com/tencent/mm/kernel/h:ag	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
+    //   44: checkcast 367	com/tencent/mm/plugin/fts/a/n
+    //   47: invokeinterface 376 1 0
     //   52: ifne +33 -> 85
     //   55: ldc 28
-    //   57: ldc_w 381
-    //   60: invokestatic 383	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   57: ldc_w 378
+    //   60: invokestatic 380	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   63: iconst_0
     //   64: istore_1
     //   65: iload_1
     //   66: ifeq +16 -> 82
     //   69: ldc 28
-    //   71: ldc_w 385
-    //   74: invokestatic 383	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   71: ldc_w 382
+    //   74: invokestatic 380	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   77: aload_0
     //   78: iconst_1
-    //   79: putfield 363	com/tencent/mm/plugin/fts/a/a:dbG	Z
+    //   79: putfield 360	com/tencent/mm/plugin/fts/a/a:dfI	Z
     //   82: aload_0
     //   83: monitorexit
     //   84: return
     //   85: aload_0
-    //   86: ldc_w 370
-    //   89: invokestatic 376	com/tencent/mm/kernel/g:ah	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
-    //   92: checkcast 370	com/tencent/mm/plugin/fts/a/n
-    //   95: invokeinterface 389 1 0
-    //   100: putfield 89	com/tencent/mm/plugin/fts/a/a:wUt	Lcom/tencent/mm/plugin/fts/a/h;
+    //   86: ldc_w 367
+    //   89: invokestatic 373	com/tencent/mm/kernel/h:ag	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
+    //   92: checkcast 367	com/tencent/mm/plugin/fts/a/n
+    //   95: invokeinterface 386 1 0
+    //   100: putfield 89	com/tencent/mm/plugin/fts/a/a:BGp	Lcom/tencent/mm/plugin/fts/a/h;
     //   103: ldc 28
-    //   105: ldc_w 391
-    //   108: invokestatic 383	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   105: ldc_w 388
+    //   108: invokestatic 380	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   111: aload_0
-    //   112: invokevirtual 172	com/tencent/mm/plugin/fts/a/a:dOu	()Ljava/lang/String;
+    //   112: invokevirtual 168	com/tencent/mm/plugin/fts/a/a:eqJ	()Ljava/lang/String;
     //   115: astore_3
     //   116: aload_0
-    //   117: invokevirtual 81	com/tencent/mm/plugin/fts/a/a:dOt	()Ljava/lang/String;
+    //   117: invokevirtual 81	com/tencent/mm/plugin/fts/a/a:eqI	()Ljava/lang/String;
     //   120: astore_2
     //   121: ldc 28
-    //   123: ldc_w 393
+    //   123: ldc_w 390
     //   126: iconst_3
     //   127: anewarray 4	java/lang/Object
     //   130: dup
@@ -387,26 +382,26 @@ public abstract class a
     //   138: dup
     //   139: iconst_2
     //   140: aload_0
-    //   141: invokevirtual 396	com/tencent/mm/plugin/fts/a/a:getTableName	()Ljava/lang/String;
+    //   141: invokevirtual 393	com/tencent/mm/plugin/fts/a/a:getTableName	()Ljava/lang/String;
     //   144: aastore
     //   145: invokestatic 40	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   148: aload_0
-    //   149: getfield 89	com/tencent/mm/plugin/fts/a/a:wUt	Lcom/tencent/mm/plugin/fts/a/h;
+    //   149: getfield 89	com/tencent/mm/plugin/fts/a/a:BGp	Lcom/tencent/mm/plugin/fts/a/h;
     //   152: aload_3
-    //   153: invokeinterface 399 2 0
+    //   153: invokeinterface 396 2 0
     //   158: ifeq +276 -> 434
     //   161: aload_0
-    //   162: getfield 89	com/tencent/mm/plugin/fts/a/a:wUt	Lcom/tencent/mm/plugin/fts/a/h;
+    //   162: getfield 89	com/tencent/mm/plugin/fts/a/a:BGp	Lcom/tencent/mm/plugin/fts/a/h;
     //   165: aload_2
-    //   166: invokeinterface 399 2 0
+    //   166: invokeinterface 396 2 0
     //   171: ifeq +263 -> 434
     //   174: aload_0
-    //   175: invokevirtual 401	com/tencent/mm/plugin/fts/a/a:awZ	()Z
+    //   175: invokevirtual 398	com/tencent/mm/plugin/fts/a/a:aEs	()Z
     //   178: ifne +256 -> 434
     //   181: ldc 28
-    //   183: ldc_w 403
-    //   186: invokestatic 383	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   189: ldc_w 405
+    //   183: ldc_w 400
+    //   186: invokestatic 380	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   189: ldc_w 402
     //   192: iconst_1
     //   193: anewarray 4	java/lang/Object
     //   196: dup
@@ -417,11 +412,11 @@ public abstract class a
     //   203: astore 4
     //   205: aload_0
     //   206: aload_0
-    //   207: getfield 89	com/tencent/mm/plugin/fts/a/a:wUt	Lcom/tencent/mm/plugin/fts/a/h;
+    //   207: getfield 89	com/tencent/mm/plugin/fts/a/a:BGp	Lcom/tencent/mm/plugin/fts/a/h;
     //   210: aload 4
-    //   212: invokeinterface 409 2 0
-    //   217: putfield 242	com/tencent/mm/plugin/fts/a/a:wUu	Lcom/tencent/wcdb/database/SQLiteStatement;
-    //   220: ldc_w 411
+    //   212: invokeinterface 406 2 0
+    //   217: putfield 238	com/tencent/mm/plugin/fts/a/a:BGq	Lcom/tencent/wcdb/database/SQLiteStatement;
+    //   220: ldc_w 408
     //   223: iconst_1
     //   224: anewarray 4	java/lang/Object
     //   227: dup
@@ -432,11 +427,11 @@ public abstract class a
     //   234: astore 4
     //   236: aload_0
     //   237: aload_0
-    //   238: getfield 89	com/tencent/mm/plugin/fts/a/a:wUt	Lcom/tencent/mm/plugin/fts/a/h;
+    //   238: getfield 89	com/tencent/mm/plugin/fts/a/a:BGp	Lcom/tencent/mm/plugin/fts/a/h;
     //   241: aload 4
-    //   243: invokeinterface 409 2 0
-    //   248: putfield 248	com/tencent/mm/plugin/fts/a/a:wUv	Lcom/tencent/wcdb/database/SQLiteStatement;
-    //   251: ldc_w 413
+    //   243: invokeinterface 406 2 0
+    //   248: putfield 244	com/tencent/mm/plugin/fts/a/a:BGr	Lcom/tencent/wcdb/database/SQLiteStatement;
+    //   251: ldc_w 410
     //   254: iconst_1
     //   255: anewarray 4	java/lang/Object
     //   258: dup
@@ -447,11 +442,11 @@ public abstract class a
     //   265: astore_3
     //   266: aload_0
     //   267: aload_0
-    //   268: getfield 89	com/tencent/mm/plugin/fts/a/a:wUt	Lcom/tencent/mm/plugin/fts/a/h;
+    //   268: getfield 89	com/tencent/mm/plugin/fts/a/a:BGp	Lcom/tencent/mm/plugin/fts/a/h;
     //   271: aload_3
-    //   272: invokeinterface 409 2 0
-    //   277: putfield 134	com/tencent/mm/plugin/fts/a/a:wUw	Lcom/tencent/wcdb/database/SQLiteStatement;
-    //   280: ldc_w 415
+    //   272: invokeinterface 406 2 0
+    //   277: putfield 134	com/tencent/mm/plugin/fts/a/a:BGs	Lcom/tencent/wcdb/database/SQLiteStatement;
+    //   280: ldc_w 412
     //   283: iconst_1
     //   284: anewarray 4	java/lang/Object
     //   287: dup
@@ -462,11 +457,11 @@ public abstract class a
     //   294: astore_3
     //   295: aload_0
     //   296: aload_0
-    //   297: getfield 89	com/tencent/mm/plugin/fts/a/a:wUt	Lcom/tencent/mm/plugin/fts/a/h;
+    //   297: getfield 89	com/tencent/mm/plugin/fts/a/a:BGp	Lcom/tencent/mm/plugin/fts/a/h;
     //   300: aload_3
-    //   301: invokeinterface 409 2 0
-    //   306: putfield 145	com/tencent/mm/plugin/fts/a/a:wUx	Lcom/tencent/wcdb/database/SQLiteStatement;
-    //   309: ldc_w 417
+    //   301: invokeinterface 406 2 0
+    //   306: putfield 145	com/tencent/mm/plugin/fts/a/a:BGt	Lcom/tencent/wcdb/database/SQLiteStatement;
+    //   309: ldc_w 414
     //   312: iconst_1
     //   313: anewarray 4	java/lang/Object
     //   316: dup
@@ -477,11 +472,11 @@ public abstract class a
     //   323: astore_3
     //   324: aload_0
     //   325: aload_0
-    //   326: getfield 89	com/tencent/mm/plugin/fts/a/a:wUt	Lcom/tencent/mm/plugin/fts/a/h;
+    //   326: getfield 89	com/tencent/mm/plugin/fts/a/a:BGp	Lcom/tencent/mm/plugin/fts/a/h;
     //   329: aload_3
-    //   330: invokeinterface 409 2 0
-    //   335: putfield 295	com/tencent/mm/plugin/fts/a/a:wUy	Lcom/tencent/wcdb/database/SQLiteStatement;
-    //   338: ldc_w 419
+    //   330: invokeinterface 406 2 0
+    //   335: putfield 287	com/tencent/mm/plugin/fts/a/a:BGu	Lcom/tencent/wcdb/database/SQLiteStatement;
+    //   338: ldc_w 416
     //   341: iconst_1
     //   342: anewarray 4	java/lang/Object
     //   345: dup
@@ -492,11 +487,11 @@ public abstract class a
     //   352: astore_3
     //   353: aload_0
     //   354: aload_0
-    //   355: getfield 89	com/tencent/mm/plugin/fts/a/a:wUt	Lcom/tencent/mm/plugin/fts/a/h;
+    //   355: getfield 89	com/tencent/mm/plugin/fts/a/a:BGp	Lcom/tencent/mm/plugin/fts/a/h;
     //   358: aload_3
-    //   359: invokeinterface 409 2 0
-    //   364: putfield 421	com/tencent/mm/plugin/fts/a/a:wUz	Lcom/tencent/wcdb/database/SQLiteStatement;
-    //   367: ldc_w 423
+    //   359: invokeinterface 406 2 0
+    //   364: putfield 418	com/tencent/mm/plugin/fts/a/a:BGv	Lcom/tencent/wcdb/database/SQLiteStatement;
+    //   367: ldc_w 420
     //   370: iconst_1
     //   371: anewarray 4	java/lang/Object
     //   374: dup
@@ -507,31 +502,31 @@ public abstract class a
     //   381: astore_2
     //   382: aload_0
     //   383: aload_0
-    //   384: getfield 89	com/tencent/mm/plugin/fts/a/a:wUt	Lcom/tencent/mm/plugin/fts/a/h;
+    //   384: getfield 89	com/tencent/mm/plugin/fts/a/a:BGp	Lcom/tencent/mm/plugin/fts/a/h;
     //   387: aload_2
-    //   388: invokeinterface 409 2 0
-    //   393: putfield 289	com/tencent/mm/plugin/fts/a/a:wUA	Lcom/tencent/wcdb/database/SQLiteStatement;
+    //   388: invokeinterface 406 2 0
+    //   393: putfield 330	com/tencent/mm/plugin/fts/a/a:BGw	Lcom/tencent/wcdb/database/SQLiteStatement;
     //   396: aload_0
     //   397: aload_0
-    //   398: getfield 89	com/tencent/mm/plugin/fts/a/a:wUt	Lcom/tencent/mm/plugin/fts/a/h;
-    //   401: ldc_w 425
-    //   404: invokeinterface 409 2 0
-    //   409: putfield 270	com/tencent/mm/plugin/fts/a/a:wUB	Lcom/tencent/wcdb/database/SQLiteStatement;
+    //   398: getfield 89	com/tencent/mm/plugin/fts/a/a:BGp	Lcom/tencent/mm/plugin/fts/a/h;
+    //   401: ldc_w 422
+    //   404: invokeinterface 406 2 0
+    //   409: putfield 266	com/tencent/mm/plugin/fts/a/a:BGx	Lcom/tencent/wcdb/database/SQLiteStatement;
     //   412: aload_0
-    //   413: new 427	com/tencent/mm/b/h
+    //   413: new 424	com/tencent/mm/b/h
     //   416: dup
     //   417: bipush 100
-    //   419: invokespecial 428	com/tencent/mm/b/h:<init>	(I)V
-    //   422: putfield 254	com/tencent/mm/plugin/fts/a/a:wUs	Lcom/tencent/mm/b/f;
+    //   419: invokespecial 425	com/tencent/mm/b/h:<init>	(I)V
+    //   422: putfield 250	com/tencent/mm/plugin/fts/a/a:BGo	Lcom/tencent/mm/b/f;
     //   425: aload_0
-    //   426: invokevirtual 430	com/tencent/mm/plugin/fts/a/a:awY	()V
+    //   426: invokevirtual 427	com/tencent/mm/plugin/fts/a/a:aEr	()V
     //   429: iconst_1
     //   430: istore_1
     //   431: goto -366 -> 65
     //   434: ldc 28
-    //   436: ldc_w 432
-    //   439: invokestatic 383	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   442: ldc_w 434
+    //   436: ldc_w 429
+    //   439: invokestatic 380	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   442: ldc_w 431
     //   445: iconst_1
     //   446: anewarray 4	java/lang/Object
     //   449: dup
@@ -540,7 +535,7 @@ public abstract class a
     //   452: aastore
     //   453: invokestatic 87	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   456: astore 4
-    //   458: ldc_w 434
+    //   458: ldc_w 431
     //   461: iconst_1
     //   462: anewarray 4	java/lang/Object
     //   465: dup
@@ -550,35 +545,35 @@ public abstract class a
     //   469: invokestatic 87	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   472: astore 5
     //   474: aload_0
-    //   475: getfield 89	com/tencent/mm/plugin/fts/a/a:wUt	Lcom/tencent/mm/plugin/fts/a/h;
+    //   475: getfield 89	com/tencent/mm/plugin/fts/a/a:BGp	Lcom/tencent/mm/plugin/fts/a/h;
     //   478: aload 4
-    //   480: invokeinterface 437 2 0
+    //   480: invokeinterface 434 2 0
     //   485: aload_0
-    //   486: getfield 89	com/tencent/mm/plugin/fts/a/a:wUt	Lcom/tencent/mm/plugin/fts/a/h;
+    //   486: getfield 89	com/tencent/mm/plugin/fts/a/a:BGp	Lcom/tencent/mm/plugin/fts/a/h;
     //   489: aload 5
-    //   491: invokeinterface 437 2 0
-    //   496: ldc_w 439
+    //   491: invokeinterface 434 2 0
+    //   496: ldc_w 436
     //   499: iconst_1
     //   500: anewarray 4	java/lang/Object
     //   503: dup
     //   504: iconst_0
     //   505: aload_0
-    //   506: invokevirtual 172	com/tencent/mm/plugin/fts/a/a:dOu	()Ljava/lang/String;
+    //   506: invokevirtual 168	com/tencent/mm/plugin/fts/a/a:eqJ	()Ljava/lang/String;
     //   509: aastore
     //   510: invokestatic 87	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   513: astore 4
     //   515: aload_0
-    //   516: getfield 89	com/tencent/mm/plugin/fts/a/a:wUt	Lcom/tencent/mm/plugin/fts/a/h;
+    //   516: getfield 89	com/tencent/mm/plugin/fts/a/a:BGp	Lcom/tencent/mm/plugin/fts/a/h;
     //   519: aload 4
-    //   521: invokeinterface 437 2 0
+    //   521: invokeinterface 434 2 0
     //   526: aload_0
-    //   527: invokevirtual 441	com/tencent/mm/plugin/fts/a/a:cVp	()Ljava/lang/String;
+    //   527: invokevirtual 439	com/tencent/mm/plugin/fts/a/a:dkv	()Ljava/lang/String;
     //   530: astore 4
     //   532: aload_0
-    //   533: getfield 89	com/tencent/mm/plugin/fts/a/a:wUt	Lcom/tencent/mm/plugin/fts/a/h;
+    //   533: getfield 89	com/tencent/mm/plugin/fts/a/a:BGp	Lcom/tencent/mm/plugin/fts/a/h;
     //   536: aload 4
-    //   538: invokeinterface 437 2 0
-    //   543: ldc_w 443
+    //   538: invokeinterface 434 2 0
+    //   543: ldc_w 441
     //   546: iconst_2
     //   547: anewarray 4	java/lang/Object
     //   550: dup
@@ -592,10 +587,10 @@ public abstract class a
     //   558: invokestatic 87	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   561: astore 4
     //   563: aload_0
-    //   564: getfield 89	com/tencent/mm/plugin/fts/a/a:wUt	Lcom/tencent/mm/plugin/fts/a/h;
+    //   564: getfield 89	com/tencent/mm/plugin/fts/a/a:BGp	Lcom/tencent/mm/plugin/fts/a/h;
     //   567: aload 4
-    //   569: invokeinterface 437 2 0
-    //   574: ldc_w 445
+    //   569: invokeinterface 434 2 0
+    //   574: ldc_w 443
     //   577: iconst_2
     //   578: anewarray 4	java/lang/Object
     //   581: dup
@@ -609,10 +604,10 @@ public abstract class a
     //   589: invokestatic 87	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   592: astore 4
     //   594: aload_0
-    //   595: getfield 89	com/tencent/mm/plugin/fts/a/a:wUt	Lcom/tencent/mm/plugin/fts/a/h;
+    //   595: getfield 89	com/tencent/mm/plugin/fts/a/a:BGp	Lcom/tencent/mm/plugin/fts/a/h;
     //   598: aload 4
-    //   600: invokeinterface 437 2 0
-    //   605: ldc_w 447
+    //   600: invokeinterface 434 2 0
+    //   605: ldc_w 445
     //   608: iconst_2
     //   609: anewarray 4	java/lang/Object
     //   612: dup
@@ -626,10 +621,10 @@ public abstract class a
     //   620: invokestatic 87	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   623: astore 4
     //   625: aload_0
-    //   626: getfield 89	com/tencent/mm/plugin/fts/a/a:wUt	Lcom/tencent/mm/plugin/fts/a/h;
+    //   626: getfield 89	com/tencent/mm/plugin/fts/a/a:BGp	Lcom/tencent/mm/plugin/fts/a/h;
     //   629: aload 4
-    //   631: invokeinterface 437 2 0
-    //   636: ldc_w 449
+    //   631: invokeinterface 434 2 0
+    //   636: ldc_w 447
     //   639: iconst_2
     //   640: anewarray 4	java/lang/Object
     //   643: dup
@@ -643,9 +638,9 @@ public abstract class a
     //   651: invokestatic 87	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   654: astore 4
     //   656: aload_0
-    //   657: getfield 89	com/tencent/mm/plugin/fts/a/a:wUt	Lcom/tencent/mm/plugin/fts/a/h;
+    //   657: getfield 89	com/tencent/mm/plugin/fts/a/a:BGp	Lcom/tencent/mm/plugin/fts/a/h;
     //   660: aload 4
-    //   662: invokeinterface 437 2 0
+    //   662: invokeinterface 434 2 0
     //   667: goto -478 -> 189
     //   670: astore_2
     //   671: aload_0
@@ -670,34 +665,59 @@ public abstract class a
     //   434	667	670	finally
   }
   
-  public final String dOt()
+  public final void destroy()
+  {
+    Log.i("MicroMsg.FTS.BaseFTS5NativeStorage", "OnDestroy %s | isCreated %b", new Object[] { getName(), Boolean.valueOf(this.dfI) });
+    if ((this.dfI) && (aEt()))
+    {
+      Log.i("MicroMsg.FTS.BaseFTS5NativeStorage", "SetDestroyed");
+      this.dfI = false;
+    }
+  }
+  
+  protected String dkv()
+  {
+    return String.format("CREATE TABLE IF NOT EXISTS %s (docid INTEGER PRIMARY KEY, type INT, subtype INT DEFAULT 0, entity_id INTEGER, aux_index TEXT, timestamp INTEGER, status INT DEFAULT 0);", new Object[] { eqI() });
+  }
+  
+  public final String eqI()
   {
     return "FTS5Meta" + getTableName();
   }
   
-  public final String dOu()
+  public final String eqJ()
   {
     return "FTS5Index" + getTableName();
   }
   
-  protected boolean dOv()
+  protected final SQLiteStatement eqK()
+  {
+    return this.BGx;
+  }
+  
+  public final SQLiteStatement eqL()
+  {
+    return this.BGq;
+  }
+  
+  protected boolean eqM()
   {
     return false;
   }
   
-  public final String dX(String paramString, int paramInt)
+  public final String eu(String paramString, int paramInt)
   {
-    if (dOv())
+    if (eqM())
     {
-      localObject = dW(paramString, paramInt);
-      if (this.wUs.check(localObject))
+      localObject = et(paramString, paramInt);
+      if (this.BGo.check(localObject))
       {
         Log.i("MicroMsg.FTS.BaseFTS5NativeStorage", "hit lru insert content map");
-        return (String)this.wUs.get(localObject);
+        return (String)this.BGo.get(localObject);
       }
     }
-    Object localObject = String.format("SELECT content FROM %s JOIN %s ON (%s.docid = %s.rowid) WHERE aux_index=? AND subtype=?", new Object[] { dOt(), dOu(), dOt(), dOu() });
-    localObject = this.wUt.rawQuery((String)localObject, new String[] { paramString, String.valueOf(paramInt) });
+    Object localObject = String.format("SELECT content FROM %s JOIN %s ON (%s.docid = %s.rowid) WHERE aux_index=? AND subtype=?", new Object[] { eqI(), eqJ(), eqI(), eqJ() });
+    localObject = this.BGp.rawQuery((String)localObject, new String[] { paramString, String.valueOf(paramInt) });
     paramString = null;
     if (((Cursor)localObject).moveToFirst()) {
       paramString = ((Cursor)localObject).getString(0);
@@ -706,31 +726,21 @@ public abstract class a
     return paramString;
   }
   
-  public final void destroy()
+  public final void fd(List<Long> paramList)
   {
-    Log.i("MicroMsg.FTS.BaseFTS5NativeStorage", "OnDestroy %s | isCreated %b", new Object[] { getName(), Boolean.valueOf(this.dbG) });
-    if ((this.dbG) && (axa()))
-    {
-      Log.i("MicroMsg.FTS.BaseFTS5NativeStorage", "SetDestroyed");
-      this.dbG = false;
-    }
-  }
-  
-  public final void eN(List<Long> paramList)
-  {
-    boolean bool = this.wUt.inTransaction();
+    boolean bool = this.BGp.inTransaction();
     if (!bool) {
-      this.wUt.beginTransaction();
+      this.BGp.beginTransaction();
     }
     Iterator localIterator = paramList.iterator();
     long l;
     while (localIterator.hasNext())
     {
       l = ((Long)localIterator.next()).longValue();
-      this.wUw.bindLong(1, l);
+      this.BGs.bindLong(1, l);
       try
       {
-        this.wUw.execute();
+        this.BGs.execute();
       }
       catch (Exception localException2)
       {
@@ -743,8 +753,8 @@ public abstract class a
       l = ((Long)paramList.next()).longValue();
       try
       {
-        this.wUx.bindLong(1, l);
-        this.wUx.execute();
+        this.BGt.bindLong(1, l);
+        this.BGt.execute();
       }
       catch (Exception localException1)
       {
@@ -756,56 +766,56 @@ public abstract class a
     }
   }
   
-  public final boolean gD(int paramInt1, int paramInt2)
-  {
-    return this.wUt.gD(paramInt1, paramInt2);
-  }
-  
   protected String getTableName()
   {
     return "Common";
   }
   
+  public final boolean hw(int paramInt1, int paramInt2)
+  {
+    return this.BGp.hw(paramInt1, paramInt2);
+  }
+  
   public final List<b> j(int[] paramArrayOfInt, int paramInt)
   {
-    paramArrayOfInt = String.format("SELECT docid, type, subtype, aux_index FROM %s WHERE type IN " + d.C(paramArrayOfInt) + ";", new Object[] { dOt() });
-    paramArrayOfInt = this.wUt.rawQuery(paramArrayOfInt, null);
+    paramArrayOfInt = String.format("SELECT docid, type, subtype, aux_index FROM %s WHERE type IN " + d.C(paramArrayOfInt) + ";", new Object[] { eqI() });
+    paramArrayOfInt = this.BGp.rawQuery(paramArrayOfInt, null);
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     while (paramArrayOfInt.moveToNext())
     {
       b localb = new b();
-      localb.f(paramArrayOfInt);
+      localb.h(paramArrayOfInt);
       localArrayList1.add(localb);
-      localArrayList2.add(Long.valueOf(localb.wVV));
+      localArrayList2.add(Long.valueOf(localb.BHQ));
     }
     paramArrayOfInt.close();
-    v(localArrayList2, paramInt);
+    u(localArrayList2, paramInt);
     return localArrayList1;
   }
   
-  public final void v(List<Long> paramList, int paramInt)
+  public final void u(List<Long> paramList, int paramInt)
   {
-    boolean bool = this.wUt.inTransaction();
+    boolean bool = this.BGp.inTransaction();
     if (!bool) {
-      this.wUt.beginTransaction();
+      this.BGp.beginTransaction();
     }
-    this.wUy.bindLong(1, paramInt);
+    this.BGu.bindLong(1, paramInt);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       long l = ((Long)paramList.next()).longValue();
-      this.wUy.bindLong(2, l);
-      this.wUy.execute();
+      this.BGu.bindLong(2, l);
+      this.BGu.execute();
     }
     if (!bool) {
-      this.wUt.commit();
+      this.BGp.commit();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.a
  * JD-Core Version:    0.7.0.1
  */

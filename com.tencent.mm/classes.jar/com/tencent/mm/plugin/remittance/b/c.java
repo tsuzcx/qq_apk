@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.remittance.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fs;
+import com.tencent.mm.f.c.fz;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class c
-  extends fs
+  extends fz
 {
   public static IAutoDBItem.MAutoDBInfo info;
   
@@ -15,8 +15,8 @@ public final class c
   {
     AppMethodBeat.i(67619);
     IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[6];
-    localMAutoDBInfo.columns = new String[7];
+    localMAutoDBInfo.fields = new Field[8];
+    localMAutoDBInfo.columns = new String[9];
     StringBuilder localStringBuilder = new StringBuilder();
     localMAutoDBInfo.columns[0] = "transferId";
     localMAutoDBInfo.colsMap.put("transferId", "TEXT PRIMARY KEY ");
@@ -42,7 +42,15 @@ public final class c
     localMAutoDBInfo.columns[5] = "invalidtime";
     localMAutoDBInfo.colsMap.put("invalidtime", "LONG");
     localStringBuilder.append(" invalidtime LONG");
-    localMAutoDBInfo.columns[6] = "rowid";
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[6] = "receiverName";
+    localMAutoDBInfo.colsMap.put("receiverName", "TEXT");
+    localStringBuilder.append(" receiverName TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[7] = "hasClicked";
+    localMAutoDBInfo.colsMap.put("hasClicked", "INTEGER");
+    localStringBuilder.append(" hasClicked INTEGER");
+    localMAutoDBInfo.columns[8] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
     info = localMAutoDBInfo;
     AppMethodBeat.o(67619);
@@ -55,7 +63,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.b.c
  * JD-Core Version:    0.7.0.1
  */

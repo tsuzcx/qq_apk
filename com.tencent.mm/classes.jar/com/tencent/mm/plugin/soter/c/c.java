@@ -14,22 +14,24 @@ import java.lang.ref.WeakReference;
 
 public abstract class c
 {
-  protected j FhN = null;
-  protected k FhO = null;
-  public e FhP = null;
-  public e FhQ = null;
-  public a FhR = null;
+  protected j Lws = null;
+  protected k Lwt = null;
+  public e Lwu = null;
+  public e Lwv = null;
+  public a Lww = null;
   protected Handler handler = null;
   public int mScene = -1;
-  protected WeakReference<Activity> nhy = null;
+  protected WeakReference<Activity> qHe = null;
   
   public c(WeakReference<Activity> paramWeakReference, j paramj, k paramk, Handler paramHandler)
   {
-    this.FhN = paramj;
-    this.FhO = paramk;
-    this.nhy = paramWeakReference;
+    this.Lws = paramj;
+    this.Lwt = paramk;
+    this.qHe = paramWeakReference;
     this.handler = paramHandler;
   }
+  
+  public abstract void aI();
   
   protected final void b(d paramd)
   {
@@ -40,14 +42,14 @@ public abstract class c
     }
     if (this.handler != null)
     {
-      flE();
+      gaa();
       this.handler.obtainMessage(6, paramd).sendToTarget();
       return;
     }
     Log.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
   }
   
-  protected final void flD()
+  protected final void fZZ()
   {
     if (this.handler != null)
     {
@@ -57,7 +59,7 @@ public abstract class c
     Log.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
   }
   
-  protected final void flE()
+  protected final void gaa()
   {
     if (this.handler != null)
     {
@@ -67,40 +69,38 @@ public abstract class c
     Log.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
   }
   
-  protected final void flF()
+  protected final void gab()
   {
     if (this.handler != null)
     {
-      flE();
-      this.handler.obtainMessage(0, this.FhO).sendToTarget();
+      gaa();
+      this.handler.obtainMessage(0, this.Lwt).sendToTarget();
       return;
     }
     Log.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
   }
   
-  protected final void flG()
+  protected final void gac()
   {
     if (this.handler != null)
     {
-      flE();
-      this.handler.obtainMessage(1, this.FhO).sendToTarget();
+      gaa();
+      this.handler.obtainMessage(1, this.Lwt).sendToTarget();
       return;
     }
     Log.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
   }
   
-  protected final void flH()
+  protected final void gad()
   {
     if (this.handler != null)
     {
-      flE();
-      this.handler.obtainMessage(2, this.FhO).sendToTarget();
+      gaa();
+      this.handler.obtainMessage(2, this.Lwt).sendToTarget();
       return;
     }
     Log.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
   }
-  
-  public abstract void gA();
   
   public abstract void onPause();
   
@@ -130,7 +130,7 @@ public abstract class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.c.c
  * JD-Core Version:    0.7.0.1
  */

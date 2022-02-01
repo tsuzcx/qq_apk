@@ -16,7 +16,7 @@ public final class j
     AppMethodBeat.i(66298);
     HashMap localHashMap = new HashMap();
     localHashMap.put("passwd", paramString);
-    localHashMap.put("device_id", q.aoG());
+    localHashMap.put("device_id", q.auM());
     setRequestData(localHashMap);
     AppMethodBeat.o(66298);
   }
@@ -47,7 +47,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.a.j
  * JD-Core Version:    0.7.0.1
  */

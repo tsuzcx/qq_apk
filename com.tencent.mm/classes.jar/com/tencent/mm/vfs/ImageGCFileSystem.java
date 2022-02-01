@@ -5,7 +5,6 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -20,290 +19,396 @@ public class ImageGCFileSystem
   extends AbstractFileSystem
 {
   public static final Parcelable.Creator<ImageGCFileSystem> CREATOR;
-  protected final FileSystem Rbo;
+  protected final FileSystem YBI;
   
   static
   {
-    AppMethodBeat.i(197228);
+    AppMethodBeat.i(210438);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(197228);
+    AppMethodBeat.o(210438);
   }
   
   protected ImageGCFileSystem(Parcel paramParcel)
   {
-    AppMethodBeat.i(197220);
-    aa.a(paramParcel, ImageGCFileSystem.class, 1);
-    this.Rbo = ((FileSystem)paramParcel.readParcelable(ImageGCFileSystem.class.getClassLoader()));
-    AppMethodBeat.o(197220);
+    AppMethodBeat.i(210421);
+    ad.a(paramParcel, ImageGCFileSystem.class, 1);
+    this.YBI = ((FileSystem)paramParcel.readParcelable(ImageGCFileSystem.class.getClassLoader()));
+    AppMethodBeat.o(210421);
   }
   
   public ImageGCFileSystem(FileSystem paramFileSystem)
   {
-    this.Rbo = paramFileSystem;
+    this.YBI = paramFileSystem;
   }
   
   /* Error */
-  private static List<String> hef()
+  private static List<String> b(CancellationSignal paramCancellationSignal)
   {
     // Byte code:
-    //   0: ldc 129
+    //   0: ldc 124
     //   2: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 135	com/tencent/mm/kernel/g:aAh	()Lcom/tencent/mm/kernel/e;
-    //   8: getfield 141	com/tencent/mm/kernel/e:hqK	Lcom/tencent/mm/storagebase/h;
-    //   11: invokevirtual 147	com/tencent/mm/storagebase/h:gFH	()Lcom/tencent/wcdb/database/SQLiteDatabase;
-    //   14: astore_2
-    //   15: ldc 149
-    //   17: invokestatic 155	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
-    //   20: astore_1
-    //   21: ldc 157
-    //   23: invokestatic 155	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
-    //   26: astore_3
-    //   27: ldc 159
-    //   29: invokestatic 155	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
-    //   32: astore 4
-    //   34: new 161	java/util/ArrayList
-    //   37: dup
-    //   38: invokespecial 162	java/util/ArrayList:<init>	()V
-    //   41: astore_0
-    //   42: aload_2
-    //   43: getstatic 168	com/tencent/wcdb/database/SQLiteDirectCursor:FACTORY	Lcom/tencent/wcdb/database/SQLiteDatabase$CursorFactory;
-    //   46: ldc 170
-    //   48: aconst_null
-    //   49: ldc 172
-    //   51: invokevirtual 178	com/tencent/wcdb/database/SQLiteDatabase:rawQueryWithFactory	(Lcom/tencent/wcdb/database/SQLiteDatabase$CursorFactory;Ljava/lang/String;[Ljava/lang/Object;Ljava/lang/String;)Lcom/tencent/wcdb/Cursor;
-    //   54: astore_2
-    //   55: aload_2
-    //   56: invokeinterface 183 1 0
-    //   61: ifeq +189 -> 250
-    //   64: aload_2
-    //   65: iconst_0
-    //   66: invokeinterface 187 2 0
-    //   71: astore 5
-    //   73: aload_2
-    //   74: iconst_1
-    //   75: invokeinterface 187 2 0
-    //   80: astore 6
-    //   82: aload_1
-    //   83: aload 6
-    //   85: invokevirtual 191	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
-    //   88: invokevirtual 196	java/util/regex/Matcher:matches	()Z
-    //   91: ifeq +100 -> 191
-    //   94: aload_0
-    //   95: aload 6
-    //   97: bipush 23
-    //   99: invokevirtual 199	java/lang/String:substring	(I)Ljava/lang/String;
-    //   102: invokeinterface 202 2 0
-    //   107: pop
+    //   5: invokestatic 130	com/tencent/mm/kernel/h:aHG	()Lcom/tencent/mm/kernel/f;
+    //   8: getfield 136	com/tencent/mm/kernel/f:kcF	Lcom/tencent/mm/storagebase/h;
+    //   11: invokevirtual 142	com/tencent/mm/storagebase/h:hBZ	()Lcom/tencent/wcdb/database/SQLiteDatabase;
+    //   14: astore 6
+    //   16: ldc 144
+    //   18: invokestatic 150	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
+    //   21: astore 5
+    //   23: ldc 152
+    //   25: invokestatic 150	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
+    //   28: astore 7
+    //   30: ldc 154
+    //   32: invokestatic 150	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
+    //   35: astore 8
+    //   37: new 156	java/util/ArrayList
+    //   40: dup
+    //   41: invokespecial 157	java/util/ArrayList:<init>	()V
+    //   44: astore 4
+    //   46: aload 6
+    //   48: getstatic 163	com/tencent/wcdb/database/SQLiteDirectCursor:FACTORY	Lcom/tencent/wcdb/database/SQLiteDatabase$CursorFactory;
+    //   51: ldc 165
+    //   53: aconst_null
+    //   54: ldc 167
+    //   56: invokevirtual 173	com/tencent/wcdb/database/SQLiteDatabase:rawQueryWithFactory	(Lcom/tencent/wcdb/database/SQLiteDatabase$CursorFactory;Ljava/lang/String;[Ljava/lang/Object;Ljava/lang/String;)Lcom/tencent/wcdb/Cursor;
+    //   59: astore_3
+    //   60: aconst_null
+    //   61: astore_2
+    //   62: aload_3
+    //   63: invokeinterface 178 1 0
+    //   68: ifeq +203 -> 271
+    //   71: aload_0
+    //   72: invokevirtual 183	android/os/CancellationSignal:throwIfCanceled	()V
+    //   75: aload_3
+    //   76: iconst_0
+    //   77: invokeinterface 187 2 0
+    //   82: astore 9
+    //   84: aload_3
+    //   85: iconst_1
+    //   86: invokeinterface 187 2 0
+    //   91: astore 10
+    //   93: iconst_0
+    //   94: istore_1
+    //   95: aload 5
+    //   97: aload 10
+    //   99: invokevirtual 191	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+    //   102: invokevirtual 196	java/util/regex/Matcher:matches	()Z
+    //   105: ifeq +20 -> 125
     //   108: aload 4
-    //   110: aload 5
-    //   112: invokevirtual 191	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
-    //   115: astore 5
-    //   117: aload 5
-    //   119: invokevirtual 196	java/util/regex/Matcher:matches	()Z
-    //   122: ifeq -67 -> 55
-    //   125: aload_0
-    //   126: aload 5
-    //   128: iconst_1
-    //   129: invokevirtual 205	java/util/regex/Matcher:group	(I)Ljava/lang/String;
-    //   132: invokeinterface 202 2 0
-    //   137: pop
-    //   138: goto -83 -> 55
-    //   141: astore_1
-    //   142: ldc 129
-    //   144: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   147: aload_1
-    //   148: athrow
-    //   149: astore_0
-    //   150: aload_2
-    //   151: ifnull +13 -> 164
-    //   154: aload_1
-    //   155: ifnull +195 -> 350
-    //   158: aload_2
-    //   159: invokeinterface 208 1 0
-    //   164: ldc 129
-    //   166: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   169: aload_0
-    //   170: athrow
-    //   171: astore_0
-    //   172: ldc 210
-    //   174: aload_0
-    //   175: ldc 212
-    //   177: iconst_0
-    //   178: anewarray 214	java/lang/Object
-    //   181: invokestatic 220	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   184: ldc 129
-    //   186: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   189: aconst_null
-    //   190: areturn
-    //   191: aload_3
-    //   192: aload 5
-    //   194: invokevirtual 191	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
-    //   197: invokevirtual 196	java/util/regex/Matcher:matches	()Z
-    //   200: ifeq +26 -> 226
-    //   203: aload_0
-    //   204: aload 5
-    //   206: iconst_0
-    //   207: aload 5
-    //   209: invokevirtual 69	java/lang/String:length	()I
-    //   212: iconst_4
-    //   213: isub
-    //   214: invokevirtual 223	java/lang/String:substring	(II)Ljava/lang/String;
-    //   217: invokeinterface 202 2 0
-    //   222: pop
-    //   223: goto -168 -> 55
-    //   226: ldc 210
-    //   228: ldc 225
-    //   230: iconst_2
-    //   231: anewarray 214	java/lang/Object
-    //   234: dup
-    //   235: iconst_0
-    //   236: aload 6
-    //   238: aastore
-    //   239: dup
-    //   240: iconst_1
-    //   241: aload 5
-    //   243: aastore
-    //   244: invokestatic 229	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   247: goto -192 -> 55
-    //   250: aload_0
-    //   251: invokestatic 233	java/util/Collections:sort	(Ljava/util/List;)V
-    //   254: new 161	java/util/ArrayList
-    //   257: dup
-    //   258: aload_0
-    //   259: invokeinterface 236 1 0
-    //   264: invokespecial 238	java/util/ArrayList:<init>	(I)V
-    //   267: astore_3
-    //   268: aload_0
-    //   269: invokeinterface 242 1 0
-    //   274: astore 4
-    //   276: aconst_null
-    //   277: astore_0
-    //   278: aload 4
-    //   280: invokeinterface 247 1 0
-    //   285: ifeq +39 -> 324
-    //   288: aload 4
-    //   290: invokeinterface 251 1 0
-    //   295: checkcast 65	java/lang/String
-    //   298: astore_1
-    //   299: aload_1
-    //   300: ifnull +59 -> 359
-    //   303: aload_1
-    //   304: aload_0
-    //   305: invokevirtual 124	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   308: ifne +51 -> 359
-    //   311: aload_3
-    //   312: aload_1
-    //   313: invokeinterface 202 2 0
-    //   318: pop
-    //   319: aload_1
-    //   320: astore_0
-    //   321: goto -43 -> 278
-    //   324: aload_2
-    //   325: ifnull +9 -> 334
-    //   328: aload_2
-    //   329: invokeinterface 208 1 0
-    //   334: ldc 129
-    //   336: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   339: aload_3
-    //   340: areturn
-    //   341: astore_2
-    //   342: aload_1
-    //   343: aload_2
-    //   344: invokevirtual 255	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   347: goto -183 -> 164
-    //   350: aload_2
-    //   351: invokeinterface 208 1 0
-    //   356: goto -192 -> 164
-    //   359: goto -38 -> 321
-    //   362: astore_0
-    //   363: aconst_null
-    //   364: astore_1
-    //   365: goto -215 -> 150
+    //   110: aload 10
+    //   112: bipush 23
+    //   114: invokevirtual 199	java/lang/String:substring	(I)Ljava/lang/String;
+    //   117: invokeinterface 202 2 0
+    //   122: pop
+    //   123: iconst_1
+    //   124: istore_1
+    //   125: aload 8
+    //   127: aload 9
+    //   129: invokevirtual 191	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+    //   132: astore 11
+    //   134: aload 11
+    //   136: invokevirtual 196	java/util/regex/Matcher:matches	()Z
+    //   139: ifeq +97 -> 236
+    //   142: aload 4
+    //   144: aload 11
+    //   146: iconst_1
+    //   147: invokevirtual 205	java/util/regex/Matcher:group	(I)Ljava/lang/String;
+    //   150: invokeinterface 202 2 0
+    //   155: pop
+    //   156: iconst_1
+    //   157: istore_1
+    //   158: iload_1
+    //   159: ifne -97 -> 62
+    //   162: ldc 207
+    //   164: ldc 209
+    //   166: iconst_2
+    //   167: anewarray 211	java/lang/Object
+    //   170: dup
+    //   171: iconst_0
+    //   172: aload 10
+    //   174: aastore
+    //   175: dup
+    //   176: iconst_1
+    //   177: aload 9
+    //   179: aastore
+    //   180: invokestatic 217	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   183: goto -121 -> 62
+    //   186: astore_2
+    //   187: ldc 124
+    //   189: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   192: aload_2
+    //   193: athrow
+    //   194: astore_0
+    //   195: aload_3
+    //   196: ifnull +13 -> 209
+    //   199: aload_2
+    //   200: ifnull +209 -> 409
+    //   203: aload_3
+    //   204: invokeinterface 220 1 0
+    //   209: ldc 124
+    //   211: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   214: aload_0
+    //   215: athrow
+    //   216: astore_0
+    //   217: ldc 207
+    //   219: aload_0
+    //   220: ldc 222
+    //   222: iconst_0
+    //   223: anewarray 211	java/lang/Object
+    //   226: invokestatic 226	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   229: ldc 124
+    //   231: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   234: aconst_null
+    //   235: areturn
+    //   236: aload 7
+    //   238: aload 9
+    //   240: invokevirtual 191	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+    //   243: astore 11
+    //   245: aload 11
+    //   247: invokevirtual 229	java/util/regex/Matcher:find	()Z
+    //   250: ifeq -92 -> 158
+    //   253: aload 4
+    //   255: aload 11
+    //   257: invokevirtual 232	java/util/regex/Matcher:group	()Ljava/lang/String;
+    //   260: invokeinterface 202 2 0
+    //   265: pop
+    //   266: iconst_1
+    //   267: istore_1
+    //   268: goto -110 -> 158
+    //   271: aload_3
+    //   272: ifnull +9 -> 281
+    //   275: aload_3
+    //   276: invokeinterface 220 1 0
+    //   281: aload 6
+    //   283: getstatic 163	com/tencent/wcdb/database/SQLiteDirectCursor:FACTORY	Lcom/tencent/wcdb/database/SQLiteDatabase$CursorFactory;
+    //   286: ldc 234
+    //   288: aconst_null
+    //   289: ldc 236
+    //   291: invokevirtual 173	com/tencent/wcdb/database/SQLiteDatabase:rawQueryWithFactory	(Lcom/tencent/wcdb/database/SQLiteDatabase$CursorFactory;Ljava/lang/String;[Ljava/lang/Object;Ljava/lang/String;)Lcom/tencent/wcdb/Cursor;
+    //   294: astore_3
+    //   295: aconst_null
+    //   296: astore_2
+    //   297: aload_3
+    //   298: invokeinterface 178 1 0
+    //   303: ifeq +138 -> 441
+    //   306: aload_0
+    //   307: invokevirtual 183	android/os/CancellationSignal:throwIfCanceled	()V
+    //   310: aload_3
+    //   311: iconst_0
+    //   312: invokeinterface 187 2 0
+    //   317: astore 6
+    //   319: aload 5
+    //   321: aload 6
+    //   323: invokevirtual 191	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+    //   326: invokevirtual 196	java/util/regex/Matcher:matches	()Z
+    //   329: ifeq +89 -> 418
+    //   332: aload 4
+    //   334: aload 6
+    //   336: bipush 23
+    //   338: invokevirtual 199	java/lang/String:substring	(I)Ljava/lang/String;
+    //   341: invokeinterface 202 2 0
+    //   346: pop
+    //   347: goto -50 -> 297
+    //   350: astore_2
+    //   351: ldc 124
+    //   353: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   356: aload_2
+    //   357: athrow
+    //   358: astore_0
+    //   359: aload_3
+    //   360: ifnull +13 -> 373
+    //   363: aload_2
+    //   364: ifnull +173 -> 537
+    //   367: aload_3
+    //   368: invokeinterface 220 1 0
+    //   373: ldc 124
+    //   375: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   378: aload_0
+    //   379: athrow
+    //   380: astore_0
+    //   381: ldc 207
+    //   383: aload_0
+    //   384: ldc 222
+    //   386: iconst_0
+    //   387: anewarray 211	java/lang/Object
+    //   390: invokestatic 226	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   393: ldc 124
+    //   395: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   398: aconst_null
+    //   399: areturn
+    //   400: astore_3
+    //   401: aload_2
+    //   402: aload_3
+    //   403: invokevirtual 240	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   406: goto -197 -> 209
+    //   409: aload_3
+    //   410: invokeinterface 220 1 0
+    //   415: goto -206 -> 209
+    //   418: ldc 207
+    //   420: ldc 242
+    //   422: iconst_1
+    //   423: anewarray 211	java/lang/Object
+    //   426: dup
+    //   427: iconst_0
+    //   428: aload 6
+    //   430: aastore
+    //   431: invokestatic 217	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   434: goto -137 -> 297
+    //   437: astore_0
+    //   438: goto -79 -> 359
+    //   441: aload_3
+    //   442: ifnull +9 -> 451
+    //   445: aload_3
+    //   446: invokeinterface 220 1 0
+    //   451: aload 4
+    //   453: invokestatic 246	java/util/Collections:sort	(Ljava/util/List;)V
+    //   456: new 156	java/util/ArrayList
+    //   459: dup
+    //   460: aload 4
+    //   462: invokeinterface 249 1 0
+    //   467: invokespecial 251	java/util/ArrayList:<init>	(I)V
+    //   470: astore_3
+    //   471: aconst_null
+    //   472: astore_0
+    //   473: aload 4
+    //   475: invokeinterface 255 1 0
+    //   480: astore 4
+    //   482: aload 4
+    //   484: invokeinterface 260 1 0
+    //   489: ifeq +57 -> 546
+    //   492: aload 4
+    //   494: invokeinterface 264 1 0
+    //   499: checkcast 65	java/lang/String
+    //   502: astore_2
+    //   503: aload_2
+    //   504: ifnull +53 -> 557
+    //   507: aload_2
+    //   508: aload_0
+    //   509: invokevirtual 118	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   512: ifne +45 -> 557
+    //   515: aload_3
+    //   516: aload_2
+    //   517: invokeinterface 202 2 0
+    //   522: pop
+    //   523: aload_2
+    //   524: astore_0
+    //   525: goto -43 -> 482
+    //   528: astore_3
+    //   529: aload_2
+    //   530: aload_3
+    //   531: invokevirtual 240	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   534: goto -161 -> 373
+    //   537: aload_3
+    //   538: invokeinterface 220 1 0
+    //   543: goto -170 -> 373
+    //   546: ldc 124
+    //   548: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   551: aload_3
+    //   552: areturn
+    //   553: astore_0
+    //   554: goto -359 -> 195
+    //   557: goto -32 -> 525
     // Local variable table:
     //   start	length	slot	name	signature
-    //   41	85	0	localArrayList	ArrayList
-    //   149	21	0	localObject1	Object
-    //   171	98	0	localException	java.lang.Exception
-    //   277	44	0	localObject2	Object
-    //   362	1	0	localObject3	Object
-    //   20	63	1	localPattern	Pattern
-    //   141	14	1	localThrowable1	java.lang.Throwable
-    //   298	67	1	str1	String
-    //   14	315	2	localObject4	Object
-    //   341	10	2	localThrowable2	java.lang.Throwable
-    //   26	314	3	localObject5	Object
-    //   32	257	4	localObject6	Object
-    //   71	171	5	localObject7	Object
-    //   80	157	6	str2	String
+    //   0	560	0	paramCancellationSignal	CancellationSignal
+    //   94	174	1	i	int
+    //   61	1	2	localObject1	Object
+    //   186	14	2	localThrowable1	java.lang.Throwable
+    //   296	1	2	localObject2	Object
+    //   350	52	2	localThrowable2	java.lang.Throwable
+    //   502	28	2	str1	String
+    //   59	309	3	localCursor	com.tencent.wcdb.Cursor
+    //   400	46	3	localThrowable3	java.lang.Throwable
+    //   470	46	3	localArrayList	ArrayList
+    //   528	24	3	localThrowable4	java.lang.Throwable
+    //   44	449	4	localObject3	Object
+    //   21	299	5	localPattern1	Pattern
+    //   14	415	6	localObject4	Object
+    //   28	209	7	localPattern2	Pattern
+    //   35	91	8	localPattern3	Pattern
+    //   82	157	9	str2	String
+    //   91	82	10	str3	String
+    //   132	124	11	localMatcher	Matcher
     // Exception table:
     //   from	to	target	type
-    //   55	138	141	java/lang/Throwable
-    //   191	223	141	java/lang/Throwable
-    //   226	247	141	java/lang/Throwable
-    //   250	276	141	java/lang/Throwable
-    //   278	299	141	java/lang/Throwable
-    //   303	319	141	java/lang/Throwable
-    //   142	149	149	finally
-    //   42	55	171	java/lang/Exception
-    //   158	164	171	java/lang/Exception
-    //   164	171	171	java/lang/Exception
-    //   328	334	171	java/lang/Exception
-    //   342	347	171	java/lang/Exception
-    //   350	356	171	java/lang/Exception
-    //   158	164	341	java/lang/Throwable
-    //   55	138	362	finally
-    //   191	223	362	finally
-    //   226	247	362	finally
-    //   250	276	362	finally
-    //   278	299	362	finally
-    //   303	319	362	finally
+    //   62	93	186	java/lang/Throwable
+    //   95	123	186	java/lang/Throwable
+    //   125	156	186	java/lang/Throwable
+    //   162	183	186	java/lang/Throwable
+    //   236	245	186	java/lang/Throwable
+    //   245	266	186	java/lang/Throwable
+    //   187	194	194	finally
+    //   46	60	216	java/lang/Exception
+    //   203	209	216	java/lang/Exception
+    //   209	216	216	java/lang/Exception
+    //   275	281	216	java/lang/Exception
+    //   401	406	216	java/lang/Exception
+    //   409	415	216	java/lang/Exception
+    //   297	347	350	java/lang/Throwable
+    //   418	434	350	java/lang/Throwable
+    //   351	358	358	finally
+    //   281	295	380	java/lang/Exception
+    //   367	373	380	java/lang/Exception
+    //   373	380	380	java/lang/Exception
+    //   445	451	380	java/lang/Exception
+    //   529	534	380	java/lang/Exception
+    //   537	543	380	java/lang/Exception
+    //   203	209	400	java/lang/Throwable
+    //   297	347	437	finally
+    //   418	434	437	finally
+    //   367	373	528	java/lang/Throwable
+    //   62	93	553	finally
+    //   95	123	553	finally
+    //   125	156	553	finally
+    //   162	183	553	finally
+    //   236	245	553	finally
+    //   245	266	553	finally
   }
   
   public String toString()
   {
-    AppMethodBeat.i(197222);
-    String str = "ImageGC [" + this.Rbo.toString() + ']';
-    AppMethodBeat.o(197222);
+    AppMethodBeat.i(210423);
+    String str = "ImageGC [" + this.YBI.toString() + ']';
+    AppMethodBeat.o(210423);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(197221);
-    aa.b(paramParcel, ImageGCFileSystem.class, 1);
-    paramParcel.writeParcelable(this.Rbo, paramInt);
-    AppMethodBeat.o(197221);
+    AppMethodBeat.i(210422);
+    ad.b(paramParcel, ImageGCFileSystem.class, 1);
+    paramParcel.writeParcelable(this.YBI, paramInt);
+    AppMethodBeat.o(210422);
   }
   
   public static final class a
-    implements n.a
+    implements o.a
   {
     public final void a(String paramString, FileSystem paramFileSystem, int paramInt, Map<String, Object> paramMap)
     {
-      AppMethodBeat.i(197217);
-      com.tencent.mm.plugin.report.e.Cxv.a(22046, new Object[] { paramString, paramMap.get("deletedFiles"), paramMap.get("deletedSize"), paramMap.get("keptFiles"), paramMap.get("keptSize"), paramMap.get("illegalFiles"), paramMap.get("illegalSize"), paramMap.get("wildFiles"), paramMap.get("wildSize"), paramMap.get("tempFiles"), paramMap.get("tempSize") });
-      AppMethodBeat.o(197217);
+      AppMethodBeat.i(197948);
+      com.tencent.mm.plugin.report.f.Iyx.a(22046, new Object[] { paramString, paramMap.get("deletedFiles"), paramMap.get("deletedSize"), paramMap.get("keptFiles"), paramMap.get("keptSize"), paramMap.get("illegalFiles"), paramMap.get("illegalSize"), paramMap.get("wildFiles"), paramMap.get("wildSize"), paramMap.get("tempFiles"), paramMap.get("tempSize"), paramMap.get("customFiles"), paramMap.get("customSize") });
+      AppMethodBeat.o(197948);
     }
   }
   
   protected final class b
-    extends c
+    extends d
   {
-    protected final List<FileSystem.b> RbF;
-    protected final FileSystem.b Rbp;
+    protected final FileSystem.b YBJ;
+    protected final List<FileSystem.b> YCf;
     
     protected b(FileSystem.b paramb)
     {
-      AppMethodBeat.i(197218);
-      this.Rbp = paramb;
-      this.RbF = Collections.singletonList(paramb);
-      AppMethodBeat.o(197218);
+      AppMethodBeat.i(193805);
+      this.YBJ = paramb;
+      this.YCf = Collections.singletonList(paramb);
+      AppMethodBeat.o(193805);
     }
     
     public final void a(CancellationSignal paramCancellationSignal)
     {
-      AppMethodBeat.i(197219);
-      long l1 = aa.bpi("image-clean");
+      AppMethodBeat.i(193809);
+      long l1 = ad.bCe("image-clean");
       if (!ImageGCFileSystem.access$200()) {
         Log.i("VFS.ImageGCFileSystem", "X Switch disabled, skip cleanup.");
       }
@@ -311,39 +416,35 @@ public class ImageGCFileSystem
       {
         paramCancellationSignal.throwIfCanceled();
         super.a(paramCancellationSignal);
-        AppMethodBeat.o(197219);
+        AppMethodBeat.o(193809);
         return;
-        if (l1 >= 2592000000L) {
+        if (l1 >= 1209600000L) {
           break;
         }
-        Log.i("VFS.ImageGCFileSystem", "Image cleanup interval not match, skip cleanup. %d / %d", new Object[] { Long.valueOf(l1), Long.valueOf(2592000000L) });
+        Log.i("VFS.ImageGCFileSystem", "Image cleanup interval not match, skip cleanup. %d / %d", new Object[] { Long.valueOf(l1), Long.valueOf(1209600000L) });
       }
-      int i7 = 0;
-      int n = 0;
-      int i6 = 0;
-      int i1 = 0;
       int i5 = 0;
-      int i2 = 0;
-      int i4 = 0;
       int m = 0;
+      int i4 = 0;
+      int n = 0;
       int i3 = 0;
+      int i1 = 0;
+      int i2 = 0;
       int k = 0;
       int i = 0;
       int j = 0;
+      long l3 = 0L;
       long l4 = 0L;
       long l5 = 0L;
-      long l6 = 0L;
       long l2 = 0L;
       l1 = 0L;
-      long l3 = 0L;
-      Object localObject3 = ImageGCFileSystem.access$000();
+      Object localObject3 = ImageGCFileSystem.c(paramCancellationSignal);
       paramCancellationSignal.throwIfCanceled();
-      long l7 = l3;
-      long l8 = l1;
-      long l9 = l2;
-      long l10 = l6;
-      long l11 = l5;
-      long l12 = l4;
+      long l6 = l1;
+      long l7 = l2;
+      long l8 = l5;
+      long l9 = l4;
+      long l10 = l3;
       Object localObject2;
       Object localObject1;
       ArrayList localArrayList;
@@ -352,49 +453,47 @@ public class ImageGCFileSystem
       Pattern localPattern3;
       if (localObject3 != null)
       {
-        localObject2 = dx("", true);
+        localObject2 = dJ("", true);
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = Collections.emptyList();
         }
-        i3 = 0;
+        i2 = 0;
         localArrayList = new ArrayList();
         localObject2 = new HashSet();
         localPattern1 = Pattern.compile("[0-9a-f]{32}");
-        localPattern2 = Pattern.compile("[A-Za-z0-9_@]+_[A-Za-z0-9_@]+_[0-9]+_backup");
-        localPattern3 = Pattern.compile("(?:th_(?:photoEdited|capture)_)?(1[3-7][0-9]{11})");
-        l11 = System.currentTimeMillis();
+        localPattern2 = Pattern.compile("[A-Za-z0-9_@\\-]+_[A-Za-z0-9_@\\-]+_[0-9]+_backup");
+        localPattern3 = Pattern.compile("(?:th_(?:photoEdited|capture)_)?(1[3-7][0-9]{11,})");
+        l9 = System.currentTimeMillis();
         Iterator localIterator = ((Iterable)localObject1).iterator();
-        label249:
+        label237:
         if (localIterator.hasNext())
         {
-          localObject1 = (e)localIterator.next();
-          if (i3 < 10) {
-            break label1252;
+          localObject1 = (f)localIterator.next();
+          if (i2 < 10) {
+            break label1159;
           }
-          i3 = 0;
+          i2 = 0;
           paramCancellationSignal.throwIfCanceled();
         }
       }
       for (;;)
       {
-        if (((e)localObject1).RbJ)
+        if (((f)localObject1).YCj)
         {
-          l7 = l3;
-          l8 = l1;
-          l9 = l2;
-          l10 = l6;
+          l6 = l1;
+          l7 = l2;
+          l8 = l5;
           i = j;
-          i4 = k;
-          i5 = m;
-          i6 = i2;
-          if (ImageGCFileSystem.P(((e)localObject1).NGP, (List)localObject3)) {
-            break label426;
+          i3 = k;
+          i4 = i1;
+          if (ImageGCFileSystem.P(((f)localObject1).UUr, (List)localObject3)) {
+            break label398;
           }
-          localArrayList.add(((e)localObject1).NGP);
-          break label249;
+          localArrayList.add(((f)localObject1).UUr);
+          break label237;
         }
-        if (l11 - ((e)localObject1).RbI < 43200000L) {
+        if (l9 - ((f)localObject1).YCi < 43200000L) {
           i = 0;
         }
         for (;;)
@@ -402,25 +501,21 @@ public class ImageGCFileSystem
           switch (i)
           {
           default: 
-            i6 = i2;
-            i5 = m;
-            i4 = k;
+            i4 = i1;
+            i3 = k;
             i = j;
-            l10 = l6;
-            l9 = l2;
-            l8 = l1;
-            l7 = l3;
-            label426:
-            l3 = l7;
-            l1 = l8;
-            l2 = l9;
-            l6 = l10;
+            l8 = l5;
+            l7 = l2;
+            l6 = l1;
+            label398:
+            l1 = l6;
+            l2 = l7;
+            l5 = l8;
             j = i;
-            k = i4;
-            m = i5;
-            i2 = i6;
-            break label249;
-            Matcher localMatcher = localPattern1.matcher(((e)localObject1).name);
+            k = i3;
+            i1 = i4;
+            break label237;
+            Matcher localMatcher = localPattern1.matcher(((f)localObject1).name);
             if (localMatcher.find())
             {
               if (Collections.binarySearch((List)localObject3, localMatcher.group()) >= 0)
@@ -430,13 +525,13 @@ public class ImageGCFileSystem
               else
               {
                 i = 1;
-                m += 1;
-                l2 += ((e)localObject1).RbH;
+                k += 1;
+                l2 += ((f)localObject1).YCh;
               }
             }
             else
             {
-              localMatcher = localPattern2.matcher(((e)localObject1).name);
+              localMatcher = localPattern2.matcher(((f)localObject1).name);
               if (localMatcher.find())
               {
                 if (Collections.binarySearch((List)localObject3, localMatcher.group()) >= 0)
@@ -446,61 +541,46 @@ public class ImageGCFileSystem
                 else
                 {
                   i = 1;
-                  m += 1;
-                  l2 += ((e)localObject1).RbH;
+                  k += 1;
+                  l2 += ((f)localObject1).YCh;
                 }
+              }
+              else if (localPattern3.matcher(((f)localObject1).name).matches())
+              {
+                i = 1;
+                j += 1;
+                l1 += ((f)localObject1).YCh;
+              }
+              else if (((f)localObject1).name.equals(".nomedia"))
+              {
+                i = 1;
               }
               else
               {
-                localMatcher = localPattern3.matcher(((e)localObject1).name);
-                if (localMatcher.matches())
-                {
-                  if (Util.safeParseLong(localMatcher.group(1)) > 1388534400000L)
-                  {
-                    i = 1;
-                    k += 1;
-                    l1 += ((e)localObject1).RbH;
-                  }
-                  else
-                  {
-                    i = 2;
-                  }
-                }
-                else if (((e)localObject1).name.equals(".nomedia"))
-                {
-                  i = 1;
-                  j += 1;
-                  l3 += ((e)localObject1).RbH;
-                }
-                else
-                {
-                  i = 2;
-                }
+                i = 2;
               }
             }
             break;
           }
         }
-        i1 += 1;
-        l5 += ((e)localObject1).RbH;
-        break label249;
         n += 1;
-        l4 += ((e)localObject1).RbH;
-        ((e)localObject1).hdW();
-        break label249;
-        Log.w("VFS.ImageGCFileSystem", "Illegal file found: " + ((e)localObject1).NGP);
-        i2 += 1;
-        l6 += ((e)localObject1).RbH;
-        for (localObject1 = aa.bpg(((e)localObject1).NGP);; localObject1 = aa.bpg((String)localObject1))
+        l4 += ((f)localObject1).YCh;
+        break label237;
+        m += 1;
+        l3 += ((f)localObject1).YCh;
+        ((f)localObject1).cFq();
+        break label237;
+        Log.w("VFS.ImageGCFileSystem", "Illegal file found: " + ((f)localObject1).UUr);
+        i1 += 1;
+        l5 += ((f)localObject1).YCh;
+        for (localObject1 = ad.bCc(((f)localObject1).UUr);; localObject1 = ad.bCc((String)localObject1))
         {
-          l7 = l3;
-          l8 = l1;
-          l9 = l2;
-          l10 = l6;
+          l6 = l1;
+          l7 = l2;
+          l8 = l5;
           i = j;
-          i4 = k;
-          i5 = m;
-          i6 = i2;
+          i3 = k;
+          i4 = i1;
           if (localObject1 == null) {
             break;
           }
@@ -510,54 +590,53 @@ public class ImageGCFileSystem
         localObject1 = localArrayList.listIterator(localArrayList.size());
         for (;;)
         {
-          l7 = l3;
-          l8 = l1;
-          l9 = l2;
-          l10 = l6;
-          l11 = l5;
-          l12 = l4;
+          l6 = l1;
+          l7 = l2;
+          l8 = l5;
+          l9 = l4;
+          l10 = l3;
           i = j;
-          i3 = k;
-          i4 = m;
-          i5 = i2;
-          i6 = i1;
-          i7 = n;
+          i2 = k;
+          i3 = i1;
+          i4 = n;
+          i5 = m;
           if (!((ListIterator)localObject1).hasPrevious()) {
             break;
           }
           paramCancellationSignal.throwIfCanceled();
           localObject3 = (String)((ListIterator)localObject1).previous();
           if (!((HashSet)localObject2).contains(localObject3)) {
-            dy((String)localObject3, false);
+            dK((String)localObject3, false);
           }
         }
-        Log.i("VFS.ImageGCFileSystem", " > deletedFiles: %d, deletedSize: %d\n > keptFiles: %d, keptSize: %d\n > illegalFiles: %d, illegalSize: %d\n > wildFiles: %d, wildSize: %d\n > tempFiles: %d, tempSize: %d\n > noMediaFiles: %d, noMediaSize: %d", new Object[] { Integer.valueOf(i7), Long.valueOf(l12), Integer.valueOf(i6), Long.valueOf(l11), Integer.valueOf(i5), Long.valueOf(l10), Integer.valueOf(i4), Long.valueOf(l9), Integer.valueOf(i3), Long.valueOf(l8), Integer.valueOf(i), Long.valueOf(l7) });
-        ImageGCFileSystem.this.l(2, new Object[] { "deletedFiles", Integer.valueOf(i7), "deletedSize", Long.valueOf(l12), "keptFiles", Integer.valueOf(i6), "keptSize", Long.valueOf(l11), "illegalFiles", Integer.valueOf(i5), "illegalSize", Long.valueOf(l10), "wildFiles", Integer.valueOf(i4), "wildSize", Long.valueOf(l9), "tempFiles", Integer.valueOf(i3), "tempSize", Long.valueOf(l8), "nomediaFiles", Integer.valueOf(i), "nomediaSize", Long.valueOf(l7) });
+        Log.i("VFS.ImageGCFileSystem", " > deletedFiles: %d, deletedSize: %d\n > keptFiles: %d, keptSize: %d\n > illegalFiles: %d, illegalSize: %d\n > wildFiles: %d, wildSize: %d\n > tempFiles: %d, tempSize: %d\n > noMediaFiles: %d, noMediaSize: %d", new Object[] { Integer.valueOf(i5), Long.valueOf(l10), Integer.valueOf(i4), Long.valueOf(l9), Integer.valueOf(i3), Long.valueOf(l8), Integer.valueOf(i2), Long.valueOf(l7), Integer.valueOf(i), Long.valueOf(l6), Integer.valueOf(0), Long.valueOf(0L) });
+        ImageGCFileSystem.this.k(2, new Object[] { "deletedFiles", Integer.valueOf(i5), "deletedSize", Long.valueOf(l10), "keptFiles", Integer.valueOf(i4), "keptSize", Long.valueOf(l9), "illegalFiles", Integer.valueOf(i3), "illegalSize", Long.valueOf(l8), "wildFiles", Integer.valueOf(i2), "wildSize", Long.valueOf(l7), "tempFiles", Integer.valueOf(i), "tempSize", Long.valueOf(l6), "customFiles", Integer.valueOf(0), "customSize", Long.valueOf(0L) });
+        ad.bCd("image-clean");
         break;
-        label1252:
-        i3 += 1;
+        label1159:
+        i2 += 1;
       }
     }
     
-    public final FileSystem hdQ()
+    public final FileSystem.b hX(String paramString, int paramInt)
+    {
+      return this.YBJ;
+    }
+    
+    public final FileSystem ieX()
     {
       return ImageGCFileSystem.this;
     }
     
-    public final List<FileSystem.b> hdS()
+    public final List<FileSystem.b> ifa()
     {
-      return this.RbF;
-    }
-    
-    public final FileSystem.b ho(String paramString, int paramInt)
-    {
-      return this.Rbp;
+      return this.YCf;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vfs.ImageGCFileSystem
  * JD-Core Version:    0.7.0.1
  */

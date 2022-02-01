@@ -3,7 +3,6 @@ package com.tencent.mm.plugin.webview.ui.tools;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v4.view.u;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.MotionEvent;
@@ -14,49 +13,49 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import androidx.core.g.w;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.c.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.xweb.WebView;
 
 public class LogoWebViewWrapper
   extends LinearLayout
 {
-  FrameLayout Jea;
-  private boolean Jeb;
-  private c Jec;
-  boolean Jed;
-  private boolean Jee;
-  private int Jef;
-  a Jeg;
-  b Jeh;
-  private boolean Jei;
-  private boolean Jej;
-  private boolean Jek;
-  private int Jel;
-  private Context context;
-  WebView gxL;
+  private int AOM;
+  FrameLayout Qba;
+  private boolean Qbb;
+  private c Qbc;
+  boolean Qbd;
+  private boolean Qbe;
+  private int Qbf;
+  a Qbg;
+  b Qbh;
+  private boolean Qbi;
+  private boolean Qbj;
+  private boolean Qbk;
+  private boolean Qbl;
+  private int Qbm;
+  WebView jhN;
   private int mTouchSlop;
-  private boolean pOn;
-  private int startY;
+  private int vsl;
   private int waitTimes;
-  private int wcr;
-  private int wqz;
+  private int zDE;
   
   public LogoWebViewWrapper(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(79590);
-    this.Jeb = false;
+    this.Qbb = false;
     this.waitTimes = 0;
-    this.Jed = false;
-    this.Jee = false;
-    this.Jef = 0;
-    this.Jei = false;
-    this.Jej = false;
-    this.pOn = false;
-    this.Jek = false;
-    this.Jel = -1;
-    this.context = paramContext;
+    this.Qbd = false;
+    this.Qbe = false;
+    this.Qbf = 0;
+    this.Qbi = false;
+    this.Qbj = false;
+    this.Qbk = false;
+    this.Qbl = false;
+    this.Qbm = -1;
     init();
     AppMethodBeat.o(79590);
   }
@@ -66,17 +65,16 @@ public class LogoWebViewWrapper
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(79591);
-    this.Jeb = false;
+    this.Qbb = false;
     this.waitTimes = 0;
-    this.Jed = false;
-    this.Jee = false;
-    this.Jef = 0;
-    this.Jei = false;
-    this.Jej = false;
-    this.pOn = false;
-    this.Jek = false;
-    this.Jel = -1;
-    this.context = paramContext;
+    this.Qbd = false;
+    this.Qbe = false;
+    this.Qbf = 0;
+    this.Qbi = false;
+    this.Qbj = false;
+    this.Qbk = false;
+    this.Qbl = false;
+    this.Qbm = -1;
     init();
     AppMethodBeat.o(79591);
   }
@@ -84,15 +82,15 @@ public class LogoWebViewWrapper
   private int getLogoHeight()
   {
     AppMethodBeat.i(79597);
-    if (this.Jel < 0) {
-      if (!this.Jek) {
+    if (this.Qbm < 0) {
+      if (!this.Qbl) {
         break label39;
       }
     }
     label39:
-    for (this.Jel = getHeight();; this.Jel = ((int)TypedValue.applyDimension(1, 60.0F, this.context.getResources().getDisplayMetrics())))
+    for (this.Qbm = getHeight();; this.Qbm = ((int)TypedValue.applyDimension(1, 60.0F, getContext().getResources().getDisplayMetrics())))
     {
-      int i = this.Jel;
+      int i = this.Qbm;
       AppMethodBeat.o(79597);
       return i;
     }
@@ -110,7 +108,7 @@ public class LogoWebViewWrapper
   {
     AppMethodBeat.i(79596);
     long l1 = Math.abs(getScrollY());
-    long l2 = Math.abs(l1 - Math.abs(this.Jef));
+    long l2 = Math.abs(l1 - Math.abs(this.Qbf));
     if (l2 >= l1)
     {
       AppMethodBeat.o(79596);
@@ -125,11 +123,21 @@ public class LogoWebViewWrapper
   {
     AppMethodBeat.i(79592);
     setOrientation(1);
-    this.mTouchSlop = ViewConfiguration.get(this.context).getScaledTouchSlop();
+    this.mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
     AppMethodBeat.o(79592);
   }
   
-  public final void agB(int paramInt)
+  public final void Dc(boolean paramBoolean)
+  {
+    this.Qbd = paramBoolean;
+    if (this.Qbd)
+    {
+      this.Qbb = false;
+      this.waitTimes = 0;
+    }
+  }
+  
+  public final void aoq(int paramInt)
   {
     AppMethodBeat.i(79600);
     int i = getOverScrollDistance();
@@ -139,7 +147,7 @@ public class LogoWebViewWrapper
   
   public WebView getWebView()
   {
-    return this.gxL;
+    return this.jhN;
   }
   
   public FrameLayout getWebViewContainer()
@@ -147,7 +155,7 @@ public class LogoWebViewWrapper
     AppMethodBeat.i(79593);
     int j;
     int i;
-    if (this.Jea == null)
+    if (this.Qba == null)
     {
       j = getChildCount();
       i = 0;
@@ -158,13 +166,13 @@ public class LogoWebViewWrapper
       if (i < j)
       {
         localObject = getChildAt(i);
-        if (((localObject instanceof FrameLayout)) && (((View)localObject).getId() == 2131303820)) {
-          this.Jea = ((FrameLayout)localObject);
+        if (((localObject instanceof FrameLayout)) && (((View)localObject).getId() == c.f.logo_wv_container)) {
+          this.Qba = ((FrameLayout)localObject);
         }
       }
       else
       {
-        localObject = this.Jea;
+        localObject = this.Qba;
         AppMethodBeat.o(79593);
         return localObject;
       }
@@ -175,7 +183,7 @@ public class LogoWebViewWrapper
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(79594);
-    if ((this.Jed) && (!this.Jei))
+    if ((this.Qbd) && (!this.Qbi))
     {
       AppMethodBeat.o(79594);
       return false;
@@ -183,13 +191,13 @@ public class LogoWebViewWrapper
     int i = paramMotionEvent.getAction();
     if ((i == 3) || (i == 1))
     {
-      this.Jeb = false;
+      this.Qbb = false;
       this.waitTimes = 0;
-      this.Jej = false;
+      this.Qbj = false;
       AppMethodBeat.o(79594);
       return false;
     }
-    if ((i == 2) && (this.Jeb))
+    if ((i == 2) && (this.Qbb))
     {
       AppMethodBeat.o(79594);
       return true;
@@ -199,49 +207,49 @@ public class LogoWebViewWrapper
     }
     for (;;)
     {
-      boolean bool = this.Jeb;
+      boolean bool = this.Qbb;
       AppMethodBeat.o(79594);
       return bool;
-      if (this.gxL.isOverScrollStart())
+      if (this.jhN.isOverScrollStart())
       {
-        this.wqz = ((int)paramMotionEvent.getY());
-        this.startY = ((int)paramMotionEvent.getY());
-        this.wcr = ((int)paramMotionEvent.getX());
-        this.Jeb = false;
+        this.zDE = ((int)paramMotionEvent.getY());
+        this.vsl = ((int)paramMotionEvent.getY());
+        this.AOM = ((int)paramMotionEvent.getX());
+        this.Qbb = false;
         this.waitTimes = 0;
-        this.Jei = true;
-        this.Jej = true;
+        this.Qbi = true;
+        this.Qbj = true;
         continue;
-        if (this.gxL.isOverScrollStart())
+        if (this.jhN.isOverScrollStart())
         {
-          if (!this.Jej)
+          if (!this.Qbj)
           {
-            this.wqz = ((int)paramMotionEvent.getY());
-            this.startY = ((int)paramMotionEvent.getY());
-            this.wcr = ((int)paramMotionEvent.getX());
-            this.Jeb = false;
+            this.zDE = ((int)paramMotionEvent.getY());
+            this.vsl = ((int)paramMotionEvent.getY());
+            this.AOM = ((int)paramMotionEvent.getX());
+            this.Qbb = false;
             this.waitTimes = 0;
-            this.Jei = true;
-            this.Jej = true;
-            bool = this.Jeb;
+            this.Qbi = true;
+            this.Qbj = true;
+            bool = this.Qbb;
             AppMethodBeat.o(79594);
             return bool;
           }
           i = (int)paramMotionEvent.getY();
           int j = (int)paramMotionEvent.getX();
-          int k = i - this.wqz;
-          int m = this.wcr;
+          int k = i - this.zDE;
+          int m = this.AOM;
           if ((Math.abs(k) > this.mTouchSlop) && (Math.abs(k) > Math.abs(j - m)) && (k > 0))
           {
-            this.wqz = i;
-            this.wcr = j;
+            this.zDE = i;
+            this.AOM = j;
             if (this.waitTimes == 1)
             {
-              this.Jeb = true;
-              this.Jej = false;
+              this.Qbb = true;
+              this.Qbj = false;
               Log.i("MicroMsg.LogoWebViewWrapper", "Competitor wins in onTouchEvent");
-              if (this.Jeg != null) {
-                this.Jeg.geq();
+              if (this.Qbg != null) {
+                this.Qbg.gXs();
               }
             }
             else
@@ -257,7 +265,7 @@ public class LogoWebViewWrapper
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(79595);
-    if ((this.Jed) && (!this.Jei))
+    if ((this.Qbd) && (!this.Qbi))
     {
       AppMethodBeat.o(79595);
       return false;
@@ -278,27 +286,27 @@ public class LogoWebViewWrapper
         {
           AppMethodBeat.o(79595);
           return false;
-          this.Jei = true;
-        } while (!this.gxL.isOverScrollStart());
-        this.wqz = ((int)paramMotionEvent.getY());
-        this.startY = ((int)paramMotionEvent.getY());
-        this.wcr = ((int)paramMotionEvent.getX());
-        this.pOn = true;
+          this.Qbi = true;
+        } while (!this.jhN.isOverScrollStart());
+        this.zDE = ((int)paramMotionEvent.getY());
+        this.vsl = ((int)paramMotionEvent.getY());
+        this.AOM = ((int)paramMotionEvent.getX());
+        this.Qbk = true;
         AppMethodBeat.o(79595);
         return true;
-      } while (!this.Jeb);
-      if (!this.pOn)
+      } while (!this.Qbb);
+      if (!this.Qbk)
       {
-        this.wqz = ((int)paramMotionEvent.getY());
-        this.startY = ((int)paramMotionEvent.getY());
-        this.wcr = ((int)paramMotionEvent.getX());
-        this.pOn = true;
+        this.zDE = ((int)paramMotionEvent.getY());
+        this.vsl = ((int)paramMotionEvent.getY());
+        this.AOM = ((int)paramMotionEvent.getX());
+        this.Qbk = true;
         AppMethodBeat.o(79595);
         return true;
       }
-      this.wqz = ((int)paramMotionEvent.getY());
-      this.wcr = ((int)paramMotionEvent.getX());
-      int j = Math.min(this.startY - this.wqz, 0) >> 1;
+      this.zDE = ((int)paramMotionEvent.getY());
+      this.AOM = ((int)paramMotionEvent.getX());
+      int j = Math.min(this.vsl - this.zDE, 0) >> 1;
       int k = getOverScrollDistance();
       int i = (int)Math.sqrt((getLogoHeight() >> 1) * Math.abs(j)) << 1;
       if (i > Math.abs(j))
@@ -308,16 +316,16 @@ public class LogoWebViewWrapper
       }
       for (i = -k;; i = -i)
       {
-        agB(i);
-        if (this.Jeh != null) {
-          this.Jeh.aa(i, true);
+        aoq(i);
+        if (this.Qbh != null) {
+          this.Qbh.bE(i, true);
         }
         AppMethodBeat.o(79595);
         return true;
       }
-      this.pOn = false;
-    } while ((!this.Jeb) && (!this.Jei));
-    this.Jeb = false;
+      this.Qbk = false;
+    } while ((!this.Qbb) && (!this.Qbi));
+    this.Qbb = false;
     post(new Runnable()
     {
       public final void run()
@@ -327,7 +335,7 @@ public class LogoWebViewWrapper
         AppMethodBeat.o(79586);
       }
     });
-    s(-this.Jef, getScrollBackDuration());
+    s(-this.Qbf, getScrollBackDuration());
     AppMethodBeat.o(79595);
     return true;
   }
@@ -335,87 +343,77 @@ public class LogoWebViewWrapper
   public final void s(int paramInt, long paramLong)
   {
     AppMethodBeat.i(79601);
-    if (this.Jec != null) {
-      this.Jec.stop();
+    if (this.Qbc != null) {
+      this.Qbc.stop();
     }
     int i = getScrollY();
     Log.i("MicroMsg.LogoWebViewWrapper", "smoothScrollTo oldScrollValue = %s, newScrollValue = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
     if (i != paramInt)
     {
-      this.Jec = new c(i, paramInt, paramLong);
-      post(this.Jec);
+      this.Qbc = new c(i, paramInt, paramLong);
+      post(this.Qbc);
     }
     AppMethodBeat.o(79601);
   }
   
   public void setEasyMod(boolean paramBoolean)
   {
-    this.Jek = paramBoolean;
+    this.Qbl = paramBoolean;
   }
   
   public void setFastScrollBack(boolean paramBoolean)
   {
-    this.Jee = paramBoolean;
+    this.Qbe = paramBoolean;
   }
   
   public void setMMOverScrollListener(a parama)
   {
-    this.Jeg = parama;
+    this.Qbg = parama;
   }
   
   public void setMMOverScrollOffsetListener(b paramb)
   {
-    this.Jeh = paramb;
+    this.Qbh = paramb;
   }
   
   public void setReleaseTargetHeight(int paramInt)
   {
-    this.Jef = paramInt;
-  }
-  
-  public final void zh(boolean paramBoolean)
-  {
-    this.Jed = paramBoolean;
-    if (this.Jed)
-    {
-      this.Jeb = false;
-      this.waitTimes = 0;
-    }
+    this.Qbf = paramInt;
   }
   
   public static abstract interface a
   {
-    public abstract void geq();
+    public abstract void gXs();
   }
   
   public static abstract interface b
   {
-    public abstract void aa(int paramInt, boolean paramBoolean);
+    public abstract void bE(int paramInt, boolean paramBoolean);
   }
   
   final class c
     implements Runnable
   {
-    private final Interpolator Jen;
-    private final int Jeo;
-    private final int Jep;
-    private boolean Jeq;
+    private final Interpolator Qbo;
+    private final int Qbp;
+    private final int Qbq;
+    private boolean Qbr;
+    private int Qbs;
     private final long duration;
-    private int pKQ;
     private long startTime;
     
     public c(int paramInt1, int paramInt2, long paramLong)
     {
       AppMethodBeat.i(79587);
-      this.Jeq = true;
+      this.Qbr = true;
       this.startTime = -1L;
-      this.pKQ = -1;
-      this.Jep = paramInt1;
-      this.Jeo = paramInt2;
+      this.Qbs = -1;
+      this.Qbq = paramInt1;
+      this.Qbp = paramInt2;
       if (LogoWebViewWrapper.b(LogoWebViewWrapper.this)) {}
       for (this$1 = new AccelerateInterpolator();; this$1 = new DecelerateInterpolator())
       {
-        this.Jen = LogoWebViewWrapper.this;
+        this.Qbo = LogoWebViewWrapper.this;
         this.duration = paramLong;
         AppMethodBeat.o(79587);
         return;
@@ -430,8 +428,8 @@ public class LogoWebViewWrapper
       }
       for (;;)
       {
-        if ((this.Jeq) && (this.Jeo != this.pKQ)) {
-          u.b(LogoWebViewWrapper.this, this);
+        if ((this.Qbr) && (this.Qbp != this.Qbs)) {
+          w.a(LogoWebViewWrapper.this, this);
         }
         AppMethodBeat.o(79588);
         return;
@@ -439,12 +437,12 @@ public class LogoWebViewWrapper
         if (this.duration > 0L) {
           l = Math.max(Math.min((System.currentTimeMillis() - this.startTime) * 1000L / this.duration, 1000L), 0L);
         }
-        float f = this.Jep - this.Jeo;
-        int i = Math.round(this.Jen.getInterpolation((float)l / 1000.0F) * f);
-        this.pKQ = (this.Jep - i);
-        LogoWebViewWrapper.this.agB(this.pKQ);
+        float f = this.Qbq - this.Qbp;
+        int i = Math.round(this.Qbo.getInterpolation((float)l / 1000.0F) * f);
+        this.Qbs = (this.Qbq - i);
+        LogoWebViewWrapper.this.aoq(this.Qbs);
         if (LogoWebViewWrapper.c(LogoWebViewWrapper.this) != null) {
-          LogoWebViewWrapper.c(LogoWebViewWrapper.this).aa(this.pKQ, false);
+          LogoWebViewWrapper.c(LogoWebViewWrapper.this).bE(this.Qbs, false);
         }
       }
     }
@@ -452,7 +450,7 @@ public class LogoWebViewWrapper
     public final void stop()
     {
       AppMethodBeat.i(79589);
-      this.Jeq = false;
+      this.Qbr = false;
       LogoWebViewWrapper.this.removeCallbacks(this);
       AppMethodBeat.o(79589);
     }

@@ -6,11 +6,13 @@ import android.view.View;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.loader.j.b;
+import com.tencent.mm.pluginsdk.ui.tools.ab;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.xweb.WebView;
+import com.tencent.xweb.aa;
+import com.tencent.xweb.c;
 import java.io.File;
 import java.lang.reflect.Field;
 
@@ -22,56 +24,56 @@ public class OpenMaterialWebView
   public OpenMaterialWebView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(227259);
+    AppMethodBeat.i(271950);
     this.context = paramContext;
     init();
-    AppMethodBeat.o(227259);
+    AppMethodBeat.o(271950);
   }
   
   public OpenMaterialWebView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(227260);
+    AppMethodBeat.i(271951);
     this.context = paramContext;
     init();
-    AppMethodBeat.o(227260);
+    AppMethodBeat.o(271951);
   }
   
   public OpenMaterialWebView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(227261);
+    AppMethodBeat.i(271952);
     this.context = paramContext;
     init();
-    AppMethodBeat.o(227261);
+    AppMethodBeat.o(271952);
   }
   
-  private void bQp()
+  private void cdf()
   {
-    AppMethodBeat.i(227263);
+    AppMethodBeat.i(271954);
     if (getIsX5Kernel())
     {
-      AppMethodBeat.o(227263);
+      AppMethodBeat.o(271954);
       return;
     }
-    if (d.oD(19))
+    if (d.qV(19))
     {
-      AppMethodBeat.o(227263);
+      AppMethodBeat.o(271954);
       return;
     }
     try
     {
-      Object localObject = new com.tencent.mm.compatible.loader.c(this, "mSysWebView", null).get();
+      Object localObject = new com.tencent.mm.compatible.loader.b(this, "mSysWebView", null).get();
       Log.d("MicroMsg.AppBrand.OpenMaterialWebView", "tryInterruptAwaitingWebCoreThread, mSysWebView = %s", new Object[] { localObject });
-      localObject = new com.tencent.mm.compatible.loader.c(localObject, "mProvider", null).get();
+      localObject = new com.tencent.mm.compatible.loader.b(localObject, "mProvider", null).get();
       Log.d("MicroMsg.AppBrand.OpenMaterialWebView", "tryInterruptAwaitingWebCoreThread, mWebViewClassic = %s", new Object[] { localObject });
-      localObject = new com.tencent.mm.compatible.loader.c(localObject, "mWebViewCore", null).get();
+      localObject = new com.tencent.mm.compatible.loader.b(localObject, "mWebViewCore", null).get();
       Log.d("MicroMsg.AppBrand.OpenMaterialWebView", "tryInterruptAwaitingWebCoreThread, mWebViewCore = %s", new Object[] { localObject });
-      localObject = new com.tencent.mm.compatible.loader.c(localObject, "sWebCoreHandler", null).get();
+      localObject = new com.tencent.mm.compatible.loader.b(localObject, "sWebCoreHandler", null).get();
       Log.d("MicroMsg.AppBrand.OpenMaterialWebView", "tryInterruptAwaitingWebCoreThread, sWebCoreHandler = %s", new Object[] { localObject });
-      localObject = new com.tencent.mm.compatible.loader.c(localObject, "mLooper", null).get();
+      localObject = new com.tencent.mm.compatible.loader.b(localObject, "mLooper", null).get();
       Log.d("MicroMsg.AppBrand.OpenMaterialWebView", "tryInterruptAwaitingWebCoreThread, mLooper = %s", new Object[] { localObject });
-      localObject = new com.tencent.mm.compatible.loader.c(localObject, "mThread", null).get();
+      localObject = new com.tencent.mm.compatible.loader.b(localObject, "mThread", null).get();
       Log.d("MicroMsg.AppBrand.OpenMaterialWebView", "tryInterruptAwaitingWebCoreThread, mThread = %s", new Object[] { localObject });
       if ((localObject instanceof Thread))
       {
@@ -81,50 +83,50 @@ public class OpenMaterialWebView
           ((Thread)localObject).interrupt();
         }
       }
-      AppMethodBeat.o(227263);
+      AppMethodBeat.o(271954);
       return;
     }
     catch (Exception localException)
     {
       Log.e("MicroMsg.AppBrand.OpenMaterialWebView", "tryInterruptAwaitingWebCoreThread, exception = %s", new Object[] { localException });
-      AppMethodBeat.o(227263);
+      AppMethodBeat.o(271954);
     }
   }
   
   private void init()
   {
-    AppMethodBeat.i(227262);
+    AppMethodBeat.i(271953);
     Log.printInfoStack("MicroMsg.AppBrand.OpenMaterialWebView", "init OpenMaterialWebView", new Object[0]);
-    this.gKM = true;
-    kI(this.context);
-    bQp();
-    AppMethodBeat.o(227262);
+    this.jvb = true;
+    lF(this.context);
+    cdf();
+    AppMethodBeat.o(271953);
   }
   
-  public final void bQq()
+  public final void cdg()
   {
-    AppMethodBeat.i(227264);
-    getSettings().hsU();
+    AppMethodBeat.i(271955);
+    getSettings().iwC();
     getSettings().setJavaScriptEnabled(true);
     getSettings().setPluginsEnabled(true);
     getSettings().setBuiltInZoomControls(false);
     getSettings().setMediaPlaybackRequiresUserGesture(true);
-    getSettings().hsW();
-    getSettings().setUserAgentString(com.tencent.mm.pluginsdk.ui.tools.z.cr(getContext(), getSettings().getUserAgentString()));
+    getSettings().iwE();
+    getSettings().setUserAgentString(ab.cC(getContext(), getSettings().getUserAgentString()));
     getSettings().setUseWideViewPort(true);
     getSettings().setLoadWithOverviewMode(true);
-    getSettings().hsN();
-    getSettings().hsM();
+    getSettings().iwx();
+    getSettings().iww();
     getSettings().setGeolocationEnabled(true);
     getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-    getSettings().hsW();
-    getSettings().hsS();
+    getSettings().iwE();
+    getSettings().iwA();
     getSettings().setAppCachePath(this.context.getDir("webviewcache", 0).getAbsolutePath());
-    getSettings().hsR();
-    getSettings().hsT();
-    getSettings().setDatabasePath(b.aKA() + "databases/");
-    com.tencent.xweb.c.hsp().hsq();
-    com.tencent.xweb.c.hsp().e(this);
+    getSettings().iwz();
+    getSettings().iwB();
+    getSettings().setDatabasePath(com.tencent.mm.loader.j.b.aSC() + "databases/");
+    c.ivX().ivY();
+    c.ivX().f(this);
     getView().setHorizontalScrollBarEnabled(false);
     getView().setVerticalScrollBarEnabled(true);
     setConfigCallback((WindowManager)MMApplicationContext.getContext().getSystemService("window"));
@@ -132,23 +134,23 @@ public class OpenMaterialWebView
     super.setWebViewClient(null);
     Log.i("MicroMsg.AppBrand.OpenMaterialWebView", "Is the current broswer kernel X5, " + getIsX5Kernel());
     setBackgroundColor(-1);
-    gYW();
-    AppMethodBeat.o(227264);
+    hZN();
+    AppMethodBeat.o(271955);
   }
   
   public void destroy()
   {
-    AppMethodBeat.i(227265);
+    AppMethodBeat.i(271956);
     this.context = null;
     super.setWebChromeClient(null);
     super.setWebViewClient(null);
     super.destroy();
-    AppMethodBeat.o(227265);
+    AppMethodBeat.o(271956);
   }
   
   public void setConfigCallback(WindowManager paramWindowManager)
   {
-    AppMethodBeat.i(227266);
+    AppMethodBeat.i(271958);
     try
     {
       Field localField = WebView.class.getDeclaredField("mWebViewCore").getType().getDeclaredField("mBrowserFrame").getType().getDeclaredField("sConfigCallback");
@@ -156,18 +158,18 @@ public class OpenMaterialWebView
       Object localObject = localField.get(null);
       if (localObject == null)
       {
-        AppMethodBeat.o(227266);
+        AppMethodBeat.o(271958);
         return;
       }
       localField = localField.getType().getDeclaredField("mWindowManager");
       localField.setAccessible(true);
       localField.set(localObject, paramWindowManager);
-      AppMethodBeat.o(227266);
+      AppMethodBeat.o(271958);
       return;
     }
     catch (Exception paramWindowManager)
     {
-      AppMethodBeat.o(227266);
+      AppMethodBeat.o(271958);
     }
   }
 }

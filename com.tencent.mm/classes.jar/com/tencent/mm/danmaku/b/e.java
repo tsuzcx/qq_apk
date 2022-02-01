@@ -9,8 +9,8 @@ import com.tencent.mm.danmaku.render.h.a;
 public class e
   extends d
 {
-  public h.a gPk;
-  public boolean gPl = false;
+  public h.a jzD;
+  public boolean jzE = false;
   
   public e(a parama)
   {
@@ -19,24 +19,24 @@ public class e
   
   public com.tencent.mm.danmaku.d.b b(h paramh)
   {
-    AppMethodBeat.i(241680);
-    if (this.gPk != null)
+    AppMethodBeat.i(289823);
+    if (this.jzD != null)
     {
-      final View localView = this.gPk.c(paramh);
+      final View localView = this.jzD.c(paramh);
       if (localView != null) {
         com.tencent.mm.danmaku.f.b.post(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(241678);
+            AppMethodBeat.i(267564);
             localView.performClick();
-            AppMethodBeat.o(241678);
+            AppMethodBeat.o(267564);
           }
         });
       }
     }
     paramh = super.b(paramh);
-    AppMethodBeat.o(241680);
+    AppMethodBeat.o(289823);
     return paramh;
   }
   
@@ -47,15 +47,15 @@ public class e
   
   public final void reset()
   {
-    AppMethodBeat.i(241679);
+    AppMethodBeat.i(289822);
     super.reset();
-    this.gPl = false;
-    AppMethodBeat.o(241679);
+    this.jzE = false;
+    AppMethodBeat.o(289822);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.danmaku.b.e
  * JD-Core Version:    0.7.0.1
  */

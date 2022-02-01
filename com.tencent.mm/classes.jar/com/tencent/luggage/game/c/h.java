@@ -15,20 +15,20 @@ import java.util.Set;
 
 public enum h
 {
-  private static String[] cvA;
+  private static String[] ctQ;
   
   static
   {
     AppMethodBeat.i(130532);
-    cvz = new h("INST");
-    cvB = new h[] { cvz };
-    cvA = new String[] { "summary.native-heap", "summary.graphics" };
+    ctP = new h("INST");
+    ctR = new h[] { ctP };
+    ctQ = new String[] { "summary.native-heap", "summary.graphics" };
     AppMethodBeat.o(130532);
   }
   
   private h() {}
   
-  public static a Md()
+  public static a OV()
   {
     AppMethodBeat.i(130531);
     int i = Process.myPid();
@@ -43,18 +43,18 @@ public enum h
     }
     while (localObject != null)
     {
-      locala.cvD = (((Debug.MemoryInfo)localObject).getTotalPss() / 1024);
-      locala.cvE = (((Debug.MemoryInfo)localObject).nativePss / 1024);
-      locala.cvF = (((Debug.MemoryInfo)localObject).dalvikPss / 1024);
+      locala.ctT = (((Debug.MemoryInfo)localObject).getTotalPss() / 1024);
+      locala.ctU = (((Debug.MemoryInfo)localObject).nativePss / 1024);
+      locala.ctV = (((Debug.MemoryInfo)localObject).dalvikPss / 1024);
       if (Build.VERSION.SDK_INT >= 23)
       {
-        locala.cvG = (Util.safeParseInt(((Debug.MemoryInfo)localObject).getMemoryStat("summary.graphics")) / 1024);
-        locala.cvH = (Util.safeParseInt(((Debug.MemoryInfo)localObject).getMemoryStat("summary.system")) / 1024);
-        locala.cvI = (Util.safeParseInt(((Debug.MemoryInfo)localObject).getMemoryStat("summary.total-swap")) / 1024);
-        locala.cvJ = (Util.safeParseInt(((Debug.MemoryInfo)localObject).getMemoryStat("summary.java-heap")) / 1024);
-        locala.cvK = (Util.safeParseInt(((Debug.MemoryInfo)localObject).getMemoryStat("summary.private-other")) / 1024);
-        locala.cvL = (Util.safeParseInt(((Debug.MemoryInfo)localObject).getMemoryStat("summary.code")) / 1024);
-        locala.cvM = (Util.safeParseInt(((Debug.MemoryInfo)localObject).getMemoryStat("summary.stack")) / 1024);
+        locala.ctW = (Util.safeParseInt(((Debug.MemoryInfo)localObject).getMemoryStat("summary.graphics")) / 1024);
+        locala.ctX = (Util.safeParseInt(((Debug.MemoryInfo)localObject).getMemoryStat("summary.system")) / 1024);
+        locala.ctY = (Util.safeParseInt(((Debug.MemoryInfo)localObject).getMemoryStat("summary.total-swap")) / 1024);
+        locala.ctZ = (Util.safeParseInt(((Debug.MemoryInfo)localObject).getMemoryStat("summary.java-heap")) / 1024);
+        locala.cua = (Util.safeParseInt(((Debug.MemoryInfo)localObject).getMemoryStat("summary.private-other")) / 1024);
+        locala.cub = (Util.safeParseInt(((Debug.MemoryInfo)localObject).getMemoryStat("summary.code")) / 1024);
+        locala.cuc = (Util.safeParseInt(((Debug.MemoryInfo)localObject).getMemoryStat("summary.stack")) / 1024);
         StringBuilder localStringBuilder = new StringBuilder(100);
         localObject = ((Debug.MemoryInfo)localObject).getMemoryStats();
         Iterator localIterator = ((Map)localObject).keySet().iterator();
@@ -63,7 +63,7 @@ public enum h
           if (localIterator.hasNext())
           {
             String str = (String)localIterator.next();
-            if ((!Util.isNullOrNil(str)) && (com.tencent.mm.compatible.loader.a.contains(cvA, str)))
+            if ((!Util.isNullOrNil(str)) && (com.tencent.mm.compatible.loader.a.contains(ctQ, str)))
             {
               localStringBuilder.append(str).append(":").append(Util.safeParseInt((String)Objects.requireNonNull(((Map)localObject).get(str))) / 1024).append("m ").append(System.getProperty("line.separator"));
               continue;
@@ -72,7 +72,7 @@ public enum h
             }
           }
         }
-        locala.cvN = localStringBuilder.toString();
+        locala.cud = localStringBuilder.toString();
       }
     }
     AppMethodBeat.o(130531);
@@ -81,22 +81,22 @@ public enum h
   
   public static final class a
   {
-    public int cvD;
-    public int cvE;
-    public int cvF;
-    public int cvG;
-    public int cvH;
-    public int cvI;
-    public int cvJ;
-    public int cvK;
-    public int cvL;
-    public int cvM;
-    public String cvN;
+    public int ctT;
+    public int ctU;
+    public int ctV;
+    public int ctW;
+    public int ctX;
+    public int ctY;
+    public int ctZ;
+    public int cua;
+    public int cub;
+    public int cuc;
+    public String cud;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.game.c.h
  * JD-Core Version:    0.7.0.1
  */

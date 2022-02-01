@@ -1,33 +1,32 @@
 package com.tencent.mm.plugin.appbrand.config;
 
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
 
 public class l
-  implements m
+  implements com.tencent.mm.plugin.appbrand.jsapi.l
 {
   public String appId = "appId";
-  public String brandName = "appName";
-  public String jyi = "";
-  public boolean leA;
-  public boolean leB;
-  public int leC = 5;
-  public int leD = 60;
-  public volatile WxaPkgWrappingInfo leE = null;
-  public int leF = 1;
-  public boolean leG = false;
-  public int lex = 5;
-  public boolean ley;
-  public boolean lez;
+  public String fzM = "appName";
+  public String mnM = "";
+  public int nYK = 5;
+  public boolean nYL;
+  public boolean nYM;
+  public boolean nYN;
+  public boolean nYO;
+  public int nYP = 5;
+  public int nYQ = 60;
+  public volatile WxaPkgWrappingInfo nYR = null;
+  public int nYS = 1;
+  public boolean nYT = false;
   
-  public final int bAb()
+  public final int bLq()
   {
-    return this.leE.kNW;
+    return this.nYR.nHY;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.l
  * JD-Core Version:    0.7.0.1
  */

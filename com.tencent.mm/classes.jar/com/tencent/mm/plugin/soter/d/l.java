@@ -13,8 +13,8 @@ public enum l
   static
   {
     AppMethodBeat.i(130853);
-    FhY = new l("INSTANCE");
-    FhZ = new l[] { FhY };
+    LwD = new l("INSTANCE");
+    LwE = new l[] { LwD };
     AppMethodBeat.o(130853);
   }
   
@@ -42,7 +42,7 @@ public enum l
     {
       Log.i("MicroMsg.SoterReportManager", "functionNameCode: %d", new Object[] { Integer.valueOf(i) });
       if (i != -1) {
-        h.CyF.a(13711, new Object[] { Integer.valueOf(i), paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+        h.IzE.a(13711, new Object[] { Integer.valueOf(i), paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       }
       AppMethodBeat.o(130852);
       return;

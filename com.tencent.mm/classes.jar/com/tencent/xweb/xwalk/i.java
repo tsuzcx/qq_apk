@@ -9,34 +9,34 @@ import org.xwalk.core.XWalkV8;
 public final class i
   implements IJsRuntime
 {
-  XWalkV8 SHa;
-  private HandlerThread SHb;
-  private Handler SHc;
+  XWalkV8 aaiq;
+  private HandlerThread aair;
+  private Handler aais;
   
   public i()
   {
     AppMethodBeat.i(154293);
-    this.SHb = new HandlerThread("j2v8");
-    this.SHb.start();
-    this.SHc = new Handler(this.SHb.getLooper());
+    this.aair = new HandlerThread("j2v8");
+    this.aair.start();
+    this.aais = new Handler(this.aair.getLooper());
     AppMethodBeat.o(154293);
   }
   
   public final void init(final int paramInt)
   {
     AppMethodBeat.i(154294);
-    this.SHc.post(new Runnable()
+    this.aais.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(154292);
-        if (i.this.SHa != null)
+        if (i.this.aaiq != null)
         {
           AppMethodBeat.o(154292);
           return;
         }
-        i.this.SHa = new XWalkV8();
-        i.this.SHa.init(paramInt);
+        i.this.aaiq = new XWalkV8();
+        i.this.aaiq.init(paramInt);
         AppMethodBeat.o(154292);
       }
     });
@@ -45,7 +45,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.xwalk.i
  * JD-Core Version:    0.7.0.1
  */

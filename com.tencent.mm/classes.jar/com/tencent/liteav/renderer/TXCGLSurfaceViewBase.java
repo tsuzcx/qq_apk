@@ -923,7 +923,7 @@ public class TXCGLSurfaceViewBase
       //   197: getfield 104	com/tencent/liteav/renderer/TXCGLSurfaceViewBase$i:d	Z
       //   200: aload_0
       //   201: getfield 106	com/tencent/liteav/renderer/TXCGLSurfaceViewBase$i:c	Z
-      //   204: if_icmpeq +982 -> 1186
+      //   204: if_icmpeq +976 -> 1180
       //   207: aload_0
       //   208: getfield 106	com/tencent/liteav/renderer/TXCGLSurfaceViewBase$i:c	Z
       //   211: istore 19
@@ -1104,7 +1104,7 @@ public class TXCGLSurfaceViewBase
       //   566: ifeq +197 -> 763
       //   569: aload_0
       //   570: getfield 50	com/tencent/liteav/renderer/TXCGLSurfaceViewBase$i:r	Z
-      //   573: ifeq +594 -> 1167
+      //   573: ifeq +588 -> 1161
       //   576: iconst_1
       //   577: istore 5
       //   579: aload_0
@@ -1241,7 +1241,7 @@ public class TXCGLSurfaceViewBase
       //   842: iconst_0
       //   843: istore 9
       //   845: iload 6
-      //   847: ifeq +317 -> 1164
+      //   847: ifeq +311 -> 1158
       //   850: aload_0
       //   851: getfield 76	com/tencent/liteav/renderer/TXCGLSurfaceViewBase$i:s	Lcom/tencent/liteav/renderer/TXCGLSurfaceViewBase$h;
       //   854: invokevirtual 166	com/tencent/liteav/renderer/TXCGLSurfaceViewBase$h:e	()Ljavax/microedition/khronos/opengles/GL;
@@ -1262,7 +1262,7 @@ public class TXCGLSurfaceViewBase
       //   887: checkcast 6	com/tencent/liteav/renderer/TXCGLSurfaceViewBase
       //   890: astore 23
       //   892: aload 23
-      //   894: ifnull +311 -> 1205
+      //   894: ifnull +305 -> 1199
       //   897: aload 23
       //   899: invokestatic 174	com/tencent/liteav/renderer/TXCGLSurfaceViewBase:b	(Lcom/tencent/liteav/renderer/TXCGLSurfaceViewBase;)Landroid/opengl/GLSurfaceView$Renderer;
       //   902: aload 21
@@ -1270,7 +1270,7 @@ public class TXCGLSurfaceViewBase
       //   905: getfield 76	com/tencent/liteav/renderer/TXCGLSurfaceViewBase$i:s	Lcom/tencent/liteav/renderer/TXCGLSurfaceViewBase$h;
       //   908: getfield 177	com/tencent/liteav/renderer/TXCGLSurfaceViewBase$h:d	Ljavax/microedition/khronos/egl/EGLConfig;
       //   911: invokeinterface 183 3 0
-      //   916: goto +289 -> 1205
+      //   916: goto +283 -> 1199
       //   919: iload 5
       //   921: istore_3
       //   922: iload 5
@@ -1281,21 +1281,21 @@ public class TXCGLSurfaceViewBase
       //   934: checkcast 6	com/tencent/liteav/renderer/TXCGLSurfaceViewBase
       //   937: astore 23
       //   939: aload 23
-      //   941: ifnull +270 -> 1211
+      //   941: ifnull +264 -> 1205
       //   944: aload 23
       //   946: invokestatic 174	com/tencent/liteav/renderer/TXCGLSurfaceViewBase:b	(Lcom/tencent/liteav/renderer/TXCGLSurfaceViewBase;)Landroid/opengl/GLSurfaceView$Renderer;
       //   949: aload 21
       //   951: iload 13
       //   953: iload 10
       //   955: invokeinterface 187 4 0
-      //   960: goto +251 -> 1211
+      //   960: goto +245 -> 1205
       //   963: aload_0
       //   964: getfield 60	com/tencent/liteav/renderer/TXCGLSurfaceViewBase$i:t	Ljava/lang/ref/WeakReference;
       //   967: invokevirtual 119	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
       //   970: checkcast 6	com/tencent/liteav/renderer/TXCGLSurfaceViewBase
       //   973: astore 23
       //   975: aload 23
-      //   977: ifnull +221 -> 1198
+      //   977: ifnull +215 -> 1192
       //   980: aload 23
       //   982: invokestatic 174	com/tencent/liteav/renderer/TXCGLSurfaceViewBase:b	(Lcom/tencent/liteav/renderer/TXCGLSurfaceViewBase;)Landroid/opengl/GLSurfaceView$Renderer;
       //   985: aload 21
@@ -1303,7 +1303,7 @@ public class TXCGLSurfaceViewBase
       //   992: aload 23
       //   994: invokevirtual 193	com/tencent/liteav/renderer/TXCGLSurfaceViewBase:c	()I
       //   997: istore_1
-      //   998: goto +218 -> 1216
+      //   998: goto +212 -> 1210
       //   1001: ldc 195
       //   1003: ldc 197
       //   1005: iload_1
@@ -1322,7 +1322,7 @@ public class TXCGLSurfaceViewBase
       //   1031: iload_2
       //   1032: istore 11
       //   1034: iload 8
-      //   1036: ifeq +156 -> 1192
+      //   1036: ifeq +150 -> 1186
       //   1039: iconst_1
       //   1040: istore_1
       //   1041: iload 9
@@ -1371,93 +1371,91 @@ public class TXCGLSurfaceViewBase
       //   1124: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   1127: aload 21
       //   1129: athrow
-      //   1130: iconst_1
-      //   1131: istore 11
-      //   1133: goto -99 -> 1034
-      //   1136: astore 21
-      //   1138: aload 23
-      //   1140: monitorexit
-      //   1141: sipush 16828
-      //   1144: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   1147: aload 21
-      //   1149: athrow
-      //   1150: astore 22
-      //   1152: aload 21
-      //   1154: monitorexit
-      //   1155: sipush 16828
-      //   1158: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   1161: aload 22
-      //   1163: athrow
-      //   1164: goto -291 -> 873
-      //   1167: iload 10
-      //   1169: istore 4
-      //   1171: iload 8
-      //   1173: istore 6
-      //   1175: iload 13
-      //   1177: istore 8
-      //   1179: iload 7
-      //   1181: istore 5
-      //   1183: goto -581 -> 602
-      //   1186: iconst_0
-      //   1187: istore 19
-      //   1189: goto -962 -> 227
-      //   1192: iload 4
-      //   1194: istore_1
-      //   1195: goto -154 -> 1041
-      //   1198: sipush 12288
-      //   1201: istore_1
-      //   1202: goto +14 -> 1216
+      //   1130: astore 21
+      //   1132: aload 23
+      //   1134: monitorexit
+      //   1135: sipush 16828
+      //   1138: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   1141: aload 21
+      //   1143: athrow
+      //   1144: astore 22
+      //   1146: aload 21
+      //   1148: monitorexit
+      //   1149: sipush 16828
+      //   1152: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   1155: aload 22
+      //   1157: athrow
+      //   1158: goto -285 -> 873
+      //   1161: iload 10
+      //   1163: istore 4
+      //   1165: iload 8
+      //   1167: istore 6
+      //   1169: iload 13
+      //   1171: istore 8
+      //   1173: iload 7
+      //   1175: istore 5
+      //   1177: goto -575 -> 602
+      //   1180: iconst_0
+      //   1181: istore 19
+      //   1183: goto -956 -> 227
+      //   1186: iload 4
+      //   1188: istore_1
+      //   1189: goto -148 -> 1041
+      //   1192: sipush 12288
+      //   1195: istore_1
+      //   1196: goto +14 -> 1210
+      //   1199: iconst_0
+      //   1200: istore 7
+      //   1202: goto -283 -> 919
       //   1205: iconst_0
-      //   1206: istore 7
-      //   1208: goto -289 -> 919
-      //   1211: iconst_0
-      //   1212: istore_3
-      //   1213: goto -250 -> 963
-      //   1216: iload_2
-      //   1217: istore 11
-      //   1219: iload_1
-      //   1220: lookupswitch	default:+28->1248, 12288:+-186->1034, 12302:+-90->1130
-      //   1249: impdep2
-      //   1250: lconst_0
+      //   1206: istore_3
+      //   1207: goto -244 -> 963
+      //   1210: iload_2
+      //   1211: istore 11
+      //   1213: iload_1
+      //   1214: lookupswitch	default:+26->1240, 12288:+-180->1034, 12302:+29->1243
+      //   1241: impdep2
+      //   1242: sipush 1078
+      //   1245: fconst_0
+      //   1246: goto -212 -> 1034
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	1251	0	this	i
-      //   48	1172	1	i1	int
-      //   40	1177	2	i2	int
-      //   32	1181	3	i3	int
-      //   34	1159	4	i4	int
-      //   42	1140	5	i5	int
-      //   37	1137	6	i6	int
-      //   74	1133	7	i7	int
-      //   45	1133	8	i8	int
+      //   0	1249	0	this	i
+      //   48	1166	1	i1	int
+      //   40	1171	2	i2	int
+      //   32	1175	3	i3	int
+      //   34	1153	4	i4	int
+      //   42	1134	5	i5	int
+      //   37	1131	6	i6	int
+      //   74	1127	7	i7	int
+      //   45	1127	8	i8	int
       //   53	1059	9	i9	int
-      //   56	1112	10	i10	int
-      //   251	967	11	i11	int
+      //   56	1106	10	i10	int
+      //   251	994	11	i11	int
       //   50	720	12	i12	int
-      //   155	1021	13	i13	int
+      //   155	1015	13	i13	int
       //   455	322	14	i14	int
       //   463	329	15	i15	int
       //   466	330	16	i16	int
       //   459	326	17	i17	int
       //   451	322	18	i18	int
-      //   211	977	19	bool1	boolean
+      //   211	971	19	bool1	boolean
       //   314	335	20	bool2	boolean
       //   62	53	21	localj	TXCGLSurfaceViewBase.j
       //   698	12	21	localObject1	Object
       //   1061	12	21	localObject3	Object
       //   1116	12	21	localObject4	Object
-      //   1136	17	21	localObject5	Object
+      //   1130	17	21	localObject5	Object
       //   59	1	22	localObject6	Object
       //   112	12	22	localObject7	Object
       //   147	34	22	localRunnable	Runnable
       //   712	28	22	localObject8	Object
-      //   1150	12	22	localObject9	Object
+      //   1144	12	22	localObject9	Object
       //   306	338	24	localTXCGLSurfaceViewBase	TXCGLSurfaceViewBase
       //   742	14	24	localRuntimeException	RuntimeException
       // Exception table:
       //   from	to	target	type
       //   94	105	112	finally
-      //   114	117	112	finally
       //   76	86	698	finally
       //   126	149	698	finally
       //   164	167	698	finally
@@ -1486,12 +1484,11 @@ public class TXCGLSurfaceViewBase
       //   672	679	698	finally
       //   679	684	698	finally
       //   686	692	698	finally
-      //   700	703	698	finally
       //   744	760	698	finally
       //   763	769	698	finally
       //   64	72	712	finally
       //   172	179	712	finally
-      //   703	712	712	finally
+      //   700	712	712	finally
       //   810	828	712	finally
       //   850	870	712	finally
       //   880	892	712	finally
@@ -1501,19 +1498,15 @@ public class TXCGLSurfaceViewBase
       //   963	975	712	finally
       //   980	998	712	finally
       //   1001	1017	712	finally
-      //   1066	1075	712	finally
+      //   1063	1075	712	finally
       //   1075	1083	712	finally
-      //   1121	1130	712	finally
-      //   1141	1150	712	finally
+      //   1118	1130	712	finally
+      //   1132	1144	712	finally
       //   672	679	742	java/lang/RuntimeException
       //   828	842	1061	finally
-      //   1063	1066	1061	finally
       //   1083	1102	1116	finally
-      //   1118	1121	1116	finally
-      //   1017	1031	1136	finally
-      //   1138	1141	1136	finally
-      //   722	733	1150	finally
-      //   1152	1155	1150	finally
+      //   1017	1031	1130	finally
+      //   722	733	1144	finally
     }
     
     private void k()
@@ -2014,7 +2007,7 @@ public class TXCGLSurfaceViewBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.liteav.renderer.TXCGLSurfaceViewBase
  * JD-Core Version:    0.7.0.1
  */

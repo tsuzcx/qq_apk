@@ -8,14 +8,17 @@ import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.game.report.f;
+import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.plugin.webview.c.h;
+import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.plugin.webview.luggage.w;
 import com.tencent.mm.plugin.webview.luggage.y;
+import com.tencent.mm.plugin.webview.model.au.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.o;
 import java.net.URI;
 import java.net.URISyntaxException;
 import org.json.JSONObject;
@@ -28,7 +31,7 @@ public final class b
     super(29);
   }
   
-  private static String aYz(String paramString)
+  private static String bkt(String paramString)
   {
     AppMethodBeat.i(78682);
     Uri localUri = Uri.parse(paramString);
@@ -61,15 +64,15 @@ public final class b
     }
   }
   
-  public final void a(final Context paramContext, final g paramg)
+  public final void a(final Context paramContext, final com.tencent.mm.plugin.webview.luggage.g paramg)
   {
     AppMethodBeat.i(78681);
     Bundle localBundle = new Bundle();
-    y localy = paramg.ITH;
+    y localy = paramg.PPZ;
     String str2;
     if (Util.isNullOrNil(localy.iconUrl))
     {
-      str2 = paramg.ITw.getIcon();
+      str2 = paramg.PPO.getIcon();
       if (Util.isNullOrNil(str2))
       {
         AppMethodBeat.o(78681);
@@ -89,7 +92,7 @@ public final class b
       localBundle.putString("icon_url", str1);
       if (Util.isNullOrNil(localy.jumpUrl))
       {
-        localBundle.putString("page_url", aYz(paramg.coX()));
+        localBundle.putString("page_url", bkt(paramg.cDu()));
         label153:
         if (!Util.isNullOrNil(localy.title)) {
           break label264;
@@ -98,9 +101,9 @@ public final class b
       }
       for (;;)
       {
-        com.tencent.mm.ipcinvoker.h.a(MainProcessIPCService.dkO, localBundle, b.a.class, new com.tencent.mm.ipcinvoker.d() {});
-        com.tencent.mm.plugin.report.service.h.CyF.dN(982, 12);
-        f.a(paramContext, 34, 3401, 1, 2, 0, f.aq("url", paramg.coX()));
+        j.a(MainProcessIPCService.PROCESS_NAME, localBundle, a.class, new f() {});
+        com.tencent.mm.plugin.report.service.h.IzE.el(982, 12);
+        com.tencent.mm.game.report.g.a(paramContext, 34, 3401, 1, 2, 0, com.tencent.mm.game.report.g.au("url", paramg.cDu()));
         AppMethodBeat.o(78681);
         return;
         localBundle.putString("icon_url", localy.iconUrl);
@@ -112,26 +115,26 @@ public final class b
     }
   }
   
-  public final void a(Context paramContext, g paramg, m paramm)
+  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, o paramo)
   {
     AppMethodBeat.i(78680);
     boolean bool = paramg.mParams.getBoolean("from_shortcut", false);
-    Object localObject = paramg.ITH;
+    Object localObject = paramg.PPZ;
     String str;
     if (Util.isNullOrNil(((y)localObject).title))
     {
       str = paramg.getTitle();
       if (!Util.isNullOrNil(((y)localObject).iconUrl)) {
-        break label143;
+        break label145;
       }
     }
-    label143:
-    for (localObject = paramg.ITw.getIcon();; localObject = ((y)localObject).iconUrl)
+    label145:
+    for (localObject = paramg.PPO.getIcon();; localObject = ((y)localObject).iconUrl)
     {
-      if ((!bool) && (!Util.isNullOrNil(str)) && (!Util.isNullOrNil((String)localObject)) && (paramg.Oc(255)))
+      if ((!bool) && (!Util.isNullOrNil(str)) && (!Util.isNullOrNil((String)localObject)) && (paramg.Tv(255)))
       {
-        paramm.b(29, paramContext.getString(2131764182), 2131691769);
-        f.a(paramContext, 34, 3401, 1, 1, 0, f.aq("url", paramg.coX()));
+        paramo.b(29, paramContext.getString(c.i.readerapp_add_shortcut), c.h.webview_add_shortcut);
+        com.tencent.mm.game.report.g.a(paramContext, 34, 3401, 1, 1, 0, com.tencent.mm.game.report.g.au("url", paramg.cDu()));
       }
       AppMethodBeat.o(78680);
       return;
@@ -139,6 +142,10 @@ public final class b
       break;
     }
   }
+  
+  static class a
+    implements com.tencent.mm.ipcinvoker.d<Bundle, Bundle>
+  {}
 }
 
 

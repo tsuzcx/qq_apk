@@ -35,7 +35,7 @@ public abstract class g<T>
       if (localg != null) {
         paramObject = localg.getValue();
       }
-      return p.j(localObject2, paramObject);
+      return p.h(localObject2, paramObject);
     }
   }
   
@@ -60,7 +60,7 @@ public abstract class g<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.j.b.g
  * JD-Core Version:    0.7.0.1
  */

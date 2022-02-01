@@ -2,7 +2,7 @@ package com.tencent.mm.danmaku.c;
 
 public abstract interface g
 {
-  public abstract int asU();
+  public abstract int azI();
 }
 
 

@@ -20,7 +20,7 @@ import java.util.List;
 
 @Deprecated
 public class LikeDialog
-  extends FacebookDialogBase<LikeContent, Result>
+  extends FacebookDialogBase<LikeContent, LikeDialog.Result>
 {
   private static final int DEFAULT_REQUEST_CODE;
   private static final String TAG = "LikeDialog";
@@ -47,11 +47,11 @@ public class LikeDialog
   }
   
   @Deprecated
-  public LikeDialog(android.support.v4.app.Fragment paramFragment)
+  public LikeDialog(androidx.fragment.app.Fragment paramFragment)
   {
     this(new FragmentWrapper(paramFragment));
-    AppMethodBeat.i(8133);
-    AppMethodBeat.o(8133);
+    AppMethodBeat.i(224667);
+    AppMethodBeat.o(224667);
   }
   
   @Deprecated
@@ -95,7 +95,7 @@ public class LikeDialog
     return localAppCall;
   }
   
-  public List<FacebookDialogBase<LikeContent, Result>.ModeHandler> getOrderedModeHandlers()
+  public List<FacebookDialogBase<LikeContent, LikeDialog.Result>.ModeHandler> getOrderedModeHandlers()
   {
     AppMethodBeat.i(8136);
     ArrayList localArrayList = new ArrayList();
@@ -105,7 +105,7 @@ public class LikeDialog
     return localArrayList;
   }
   
-  public void registerCallbackImpl(CallbackManagerImpl paramCallbackManagerImpl, final FacebookCallback<Result> paramFacebookCallback)
+  public void registerCallbackImpl(CallbackManagerImpl paramCallbackManagerImpl, final FacebookCallback<LikeDialog.Result> paramFacebookCallback)
   {
     AppMethodBeat.i(8137);
     if (paramFacebookCallback == null) {}
@@ -178,22 +178,6 @@ public class LikeDialog
     }
   }
   
-  @Deprecated
-  public static final class Result
-  {
-    private final Bundle bundle;
-    
-    public Result(Bundle paramBundle)
-    {
-      this.bundle = paramBundle;
-    }
-    
-    public final Bundle getData()
-    {
-      return this.bundle;
-    }
-  }
-  
   class WebFallbackHandler
     extends FacebookDialogBase<LikeContent, LikeDialog.Result>.ModeHandler
   {
@@ -219,7 +203,7 @@ public class LikeDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.share.internal.LikeDialog
  * JD-Core Version:    0.7.0.1
  */

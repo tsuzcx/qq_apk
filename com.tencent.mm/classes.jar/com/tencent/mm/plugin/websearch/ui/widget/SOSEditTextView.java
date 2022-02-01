@@ -8,17 +8,20 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.websearch.a.a;
+import com.tencent.mm.plugin.websearch.a.d;
+import com.tencent.mm.plugin.websearch.a.e;
 import com.tencent.mm.plugin.websearch.api.c;
 import com.tencent.mm.ui.search.FTSEditTextView;
 
 public class SOSEditTextView
   extends FTSEditTextView
 {
-  private View IHa;
-  private View IHb;
-  private View IHc;
-  private int IHd = 100;
+  private View PBo;
+  private View PBp;
+  private View PBq;
+  private int PBr = 100;
   
   public SOSEditTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,24 +33,24 @@ public class SOSEditTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void fYP()
+  public final void gRA()
   {
     AppMethodBeat.i(116571);
-    getEditText().setOnFocusChangeListener(this.heD);
+    getEditText().setOnFocusChangeListener(this.jQt);
     AppMethodBeat.o(116571);
   }
   
   public int getLayoutById()
   {
-    return 2131496531;
+    return a.e.sos_edittext_view;
   }
   
   public int getLimitInputLength()
   {
-    AppMethodBeat.i(201778);
-    int i = ((c)g.ah(c.class)).getSosLimitLength();
-    i = Math.max(this.IHd, i);
-    AppMethodBeat.o(201778);
+    AppMethodBeat.i(256006);
+    int i = ((c)h.ag(c.class)).getSosLimitLength();
+    i = Math.max(this.PBr, i);
+    AppMethodBeat.o(256006);
     return i;
   }
   
@@ -56,20 +59,20 @@ public class SOSEditTextView
   {
     AppMethodBeat.i(116570);
     super.init();
-    this.IHa = findViewById(2131309942);
-    this.IHb = findViewById(2131308988);
-    this.IHc = findViewById(2131307357);
+    this.PBo = findViewById(a.d.voice_btn_container);
+    this.PBp = findViewById(a.d.text_cancel);
+    this.PBq = findViewById(a.d.search_bar_cancel_text_container);
     getEditText().setOnFocusChangeListener(null);
-    getEditText().setHintTextColor(getResources().getColor(2131100676));
-    getEditText().setTextColor(getResources().getColor(2131100904));
+    getEditText().setHintTextColor(getResources().getColor(a.a.light_bg_hint_color));
+    getEditText().setTextColor(getResources().getColor(a.a.normal_text_color));
     AppMethodBeat.o(116570);
   }
   
   public void setCancelTextViewClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(116576);
-    if (this.IHb != null) {
-      this.IHb.setOnClickListener(paramOnClickListener);
+    if (this.PBp != null) {
+      this.PBp.setOnClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(116576);
   }
@@ -77,8 +80,8 @@ public class SOSEditTextView
   public void setCancelTextViewVisibile(int paramInt)
   {
     AppMethodBeat.i(116575);
-    if (this.IHb != null) {
-      this.IHb.setVisibility(paramInt);
+    if (this.PBp != null) {
+      this.PBp.setVisibility(paramInt);
     }
     AppMethodBeat.o(116575);
   }
@@ -86,8 +89,8 @@ public class SOSEditTextView
   public void setSearchBarCancelTextContainerVisibile(int paramInt)
   {
     AppMethodBeat.i(116572);
-    if (this.IHc != null) {
-      this.IHc.setVisibility(paramInt);
+    if (this.PBq != null) {
+      this.PBq.setVisibility(paramInt);
     }
     AppMethodBeat.o(116572);
   }
@@ -95,8 +98,8 @@ public class SOSEditTextView
   public void setVoiceBtnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(116574);
-    if (this.IHa != null) {
-      this.IHa.setOnClickListener(paramOnClickListener);
+    if (this.PBo != null) {
+      this.PBo.setOnClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(116574);
   }
@@ -104,15 +107,15 @@ public class SOSEditTextView
   public void setVoiceImageButtonVisibile(int paramInt)
   {
     AppMethodBeat.i(116573);
-    if (this.IHa != null) {
-      this.IHa.setVisibility(paramInt);
+    if (this.PBo != null) {
+      this.PBo.setVisibility(paramInt);
     }
     AppMethodBeat.o(116573);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.ui.widget.SOSEditTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -10,13 +10,16 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.ag;
+import com.tencent.mm.ao.af;
+import com.tencent.mm.plugin.brandservice.d.b;
+import com.tencent.mm.plugin.brandservice.d.e;
+import com.tencent.mm.plugin.brandservice.d.f;
 import com.tencent.mm.plugin.brandservice.ui.timeline.f;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.ale;
-import com.tencent.mm.protocal.protobuf.ege;
-import com.tencent.mm.protocal.protobuf.pi;
-import com.tencent.mm.protocal.protobuf.pj;
+import com.tencent.mm.protocal.protobuf.amf;
+import com.tencent.mm.protocal.protobuf.eqg;
+import com.tencent.mm.protocal.protobuf.pe;
+import com.tencent.mm.protocal.protobuf.pf;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.aa;
 import com.tencent.mm.storage.ab;
@@ -32,132 +35,133 @@ import java.util.List;
 import kotlin.a.j;
 import kotlin.g.b.p;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardUnfollowNegativeDialog;", "Lcom/tencent/mm/ui/widget/happybubble/BubbleDialog;", "Landroid/view/View$OnClickListener;", "context", "Landroid/content/Context;", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "adapter", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "bizInfo", "Lcom/tencent/mm/protocal/protobuf/BizRecArtCardBizInfo;", "showPos", "", "(Landroid/content/Context;Lcom/tencent/mm/storage/BizTimeLineInfo;Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;Lcom/tencent/mm/protocal/protobuf/BizRecArtCardBizInfo;I)V", "getAdapter", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "getBizInfo", "()Lcom/tencent/mm/protocal/protobuf/BizRecArtCardBizInfo;", "getInfo", "()Lcom/tencent/mm/storage/BizTimeLineInfo;", "mViewHolder", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardUnfollowNegativeDialog$ViewHolder;", "getShowPos", "()I", "initTag", "", "onClick", "v", "Landroid/view/View;", "setRootViewWidth", "rootView", "ViewHolder", "plugin-brandservice_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardUnfollowNegativeDialog;", "Lcom/tencent/mm/ui/widget/happybubble/BubbleDialog;", "Landroid/view/View$OnClickListener;", "context", "Landroid/content/Context;", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "adapter", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "bizInfo", "Lcom/tencent/mm/protocal/protobuf/BizRecArtCardBizInfo;", "showPos", "", "(Landroid/content/Context;Lcom/tencent/mm/storage/BizTimeLineInfo;Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;Lcom/tencent/mm/protocal/protobuf/BizRecArtCardBizInfo;I)V", "getAdapter", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "getBizInfo", "()Lcom/tencent/mm/protocal/protobuf/BizRecArtCardBizInfo;", "getInfo", "()Lcom/tencent/mm/storage/BizTimeLineInfo;", "mViewHolder", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardUnfollowNegativeDialog$ViewHolder;", "getShowPos", "()I", "initTag", "", "onClick", "v", "Landroid/view/View;", "setRootViewWidth", "rootView", "ViewHolder", "plugin-brandservice_release"})
 public final class e
   extends com.tencent.mm.ui.widget.happybubble.b
   implements View.OnClickListener
 {
-  private final com.tencent.mm.plugin.brandservice.ui.timeline.b psQ;
-  private final z psm;
-  private final a ptL;
-  private final pj ptM;
-  private final int ptN;
+  private final z sBt;
+  private final a sCY;
+  private final pf sCZ;
+  private final com.tencent.mm.plugin.brandservice.ui.timeline.b sCg;
+  private final int sDa;
   
-  public e(Context paramContext, z paramz, com.tencent.mm.plugin.brandservice.ui.timeline.b paramb, pj parampj, int paramInt)
+  public e(Context paramContext, z paramz, com.tencent.mm.plugin.brandservice.ui.timeline.b paramb, pf parampf, int paramInt)
   {
     super(paramContext);
-    AppMethodBeat.i(195270);
-    this.psm = paramz;
-    this.psQ = paramb;
-    this.ptM = parampj;
-    this.ptN = paramInt;
-    a(new b.a[] { b.a.QQh, b.a.QQf });
+    AppMethodBeat.i(265540);
+    this.sBt = paramz;
+    this.sCg = paramb;
+    this.sCZ = parampf;
+    this.sDa = paramInt;
+    a(new b.a[] { b.a.YoS, b.a.YoQ });
     paramz = new BubbleLayout(paramContext);
-    paramz.setBubbleColor(paramContext.getResources().getColor(2131099672));
-    paramz.setBubbleRadius(com.tencent.mm.cb.a.fromDPToPix(paramContext, 8));
+    paramz.setBubbleColor(paramContext.getResources().getColor(d.b.BW_100));
+    paramz.setBubbleRadius(com.tencent.mm.ci.a.fromDPToPix(paramContext, 8));
     paramz.setShadowColor(0);
-    paramz.setLookWidth(com.tencent.mm.cb.a.fromDPToPix(paramContext, 14));
-    paramz.setLookLength(com.tencent.mm.cb.a.fromDPToPix(paramContext, 7));
+    paramz.setLookWidth(com.tencent.mm.ci.a.fromDPToPix(paramContext, 14));
+    paramz.setLookLength(com.tencent.mm.ci.a.fromDPToPix(paramContext, 7));
     a(paramz);
-    paramb = LayoutInflater.from(paramContext).inflate(2131493277, null);
-    p.g(paramb, "rootView");
-    this.ptL = new a(paramb);
-    paramz = paramb.findViewById(2131299215);
-    p.g(paramz, "rootView.findViewById(R.id.content_root_layout)");
-    paramInt = com.tencent.mm.cb.a.jn(paramContext);
-    int i = com.tencent.mm.cb.a.jo(paramContext);
-    parampj = paramz.getLayoutParams();
+    paramb = LayoutInflater.from(paramContext).inflate(d.f.stV, null);
+    p.j(paramb, "rootView");
+    this.sCY = new a(paramb);
+    paramz = paramb.findViewById(d.e.srK);
+    p.j(paramz, "rootView.findViewById(R.id.content_root_layout)");
+    parampf = com.tencent.mm.plugin.bizui.a.a.shG;
+    paramInt = com.tencent.mm.plugin.bizui.a.a.eO(paramContext);
+    int i = com.tencent.mm.ci.a.ks(paramContext);
+    parampf = paramz.getLayoutParams();
     if (paramInt < i) {}
     for (;;)
     {
-      parampj.width = (paramInt - com.tencent.mm.cb.a.fromDPToPix(paramContext, 82));
-      paramz.setLayoutParams(parampj);
+      parampf.width = (paramInt - com.tencent.mm.ci.a.fromDPToPix(paramContext, 82));
+      paramz.setLayoutParams(parampf);
       paramContext = new LinkedList();
-      switch (this.psm.gAD().style)
+      switch (this.sBt.hwL().style)
       {
       default: 
-        paramz = this.ptM;
+        paramz = this.sCZ;
         if (paramz == null) {
-          break label437;
+          break label446;
         }
-        paramz = paramz.KWr;
+        paramz = paramz.RXF;
         if (paramz == null) {
-          break label437;
+          break label446;
         }
         paramz = (Iterable)paramz;
         paramInt = 0;
         paramz = paramz.iterator();
         while (paramz.hasNext())
         {
-          parampj = paramz.next();
+          parampf = paramz.next();
           if (paramInt < 0) {
-            j.hxH();
+            j.iBO();
           }
-          paramContext.add(new c((String)parampj, paramInt));
+          paramContext.add(new c((String)parampf, paramInt));
           paramInt += 1;
         }
         paramInt = i;
       }
     }
-    paramz = this.psm.gAD().Nga.KWr;
-    p.g(paramz, "info.tlRecCardWrapper.ex…fo.NegativeFeedbackReason");
+    paramz = this.sBt.hwL().UsF.RXF;
+    p.j(paramz, "info.tlRecCardWrapper.ex…fo.NegativeFeedbackReason");
     paramz = (Iterable)paramz;
     paramInt = 0;
     paramz = paramz.iterator();
     while (paramz.hasNext())
     {
-      parampj = paramz.next();
+      parampf = paramz.next();
       if (paramInt < 0) {
-        j.hxH();
+        j.iBO();
       }
-      paramContext.add(new c((String)parampj, paramInt));
+      paramContext.add(new c((String)parampf, paramInt));
       paramInt += 1;
     }
-    label437:
-    this.ptL.ptA.a((List)paramContext, (LabelsView.a)b.ptO);
-    this.ptL.ptA.hbO();
-    this.ptL.ptA.setOnLabelClickListener((LabelsView.b)new c(this));
-    parampj = ((Iterable)paramContext).iterator();
+    label446:
+    this.sCY.sCN.a((List)paramContext, (LabelsView.a)b.sDb);
+    this.sCY.sCN.icV();
+    this.sCY.sCN.setOnLabelClickListener((LabelsView.b)new c(this));
+    parampf = ((Iterable)paramContext).iterator();
     c localc;
-    for (paramContext = ""; parampj.hasNext(); paramContext = paramz + localc.getName())
+    for (paramContext = ""; parampf.hasNext(); paramContext = paramz + localc.getName())
     {
-      localc = (c)parampj.next();
+      localc = (c)parampf.next();
       paramz = paramContext;
       if (!Util.isNullOrNil(paramContext)) {
         paramz = paramContext + "#";
       }
     }
-    parampj = h.CyF;
-    paramz = this.ptM;
+    parampf = h.IzE;
+    paramz = this.sCZ;
     if (paramz != null) {}
     for (paramz = paramz.UserName;; paramz = null)
     {
-      parampj.a(18644, new Object[] { paramz, Long.valueOf(this.psm.gAD().MOC), paramContext, Integer.valueOf(ab.getSessionId()), Integer.valueOf(this.ptN) });
-      hx(paramb);
-      this.ptL.hPX.setOnClickListener((View.OnClickListener)this);
-      AppMethodBeat.o(195270);
+      parampf.a(18644, new Object[] { paramz, Long.valueOf(this.sBt.hwL().Uaw), paramContext, Integer.valueOf(ab.getSessionId()), Integer.valueOf(this.sDa) });
+      iN(paramb);
+      this.sCY.kEt.setOnClickListener((View.OnClickListener)this);
+      AppMethodBeat.o(265540);
       return;
     }
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(195269);
+    AppMethodBeat.i(265539);
     Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject1).bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardUnfollowNegativeDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).axR());
-    p.h(paramView, "v");
+    ((com.tencent.mm.hellhoundlib.b.b)localObject1).bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardUnfollowNegativeDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aFi());
+    p.k(paramView, "v");
     LinkedList localLinkedList;
     Object localObject3;
-    ege localege;
+    eqg localeqg;
     label253:
     int j;
     label265:
     int i;
-    if (paramView.getId() == 2131305592)
+    if (paramView.getId() == d.e.ok_btn)
     {
       localLinkedList = new LinkedList();
-      localObject1 = this.ptL.ptA.getSelectLabelDatas();
+      localObject1 = this.sCY.sCN.getSelectLabelDatas();
       paramView = "";
       if (localObject1 == null) {
         break label543;
@@ -171,25 +175,25 @@ public final class e
           localObject1 = paramView + "#";
         }
         paramView = new StringBuilder().append((String)localObject1);
-        p.g(localObject3, "tag");
+        p.j(localObject3, "tag");
         paramView = ((c)localObject3).getName();
         localLinkedList.add(((c)localObject3).getName());
       }
-      localege = this.psm.gAD();
-      localObject3 = localege.Nga;
-      localObject1 = this.ptM;
+      localeqg = this.sBt.hwL();
+      localObject3 = localeqg.UsF;
+      localObject1 = this.sCZ;
       if (localObject1 == null) {
         break label550;
       }
-      localObject1 = ((pj)localObject1).KWy;
+      localObject1 = ((pf)localObject1).RXM;
       if (localObject1 == null) {
         break label550;
       }
-      localObject1 = (pi)((LinkedList)localObject1).get(0);
+      localObject1 = (pe)((LinkedList)localObject1).get(0);
       if (localObject1 == null) {
         break label556;
       }
-      localObject2 = ((pi)localObject1).KSj;
+      localObject2 = ((pe)localObject1).RTk;
       j = 0;
       i = 0;
       l2 = 0L;
@@ -225,23 +229,23 @@ public final class e
         l1 = l2;
       }
     }
-    localf = this.psQ.pqZ;
-    Object localObject2 = this.ptM;
+    localf = this.sCg.szZ;
+    Object localObject2 = this.sCZ;
     if (localObject2 != null)
     {
-      localObject2 = ((pj)localObject2).UserName;
-      l2 = localege.MOC;
-      str1 = ((ale)localObject3).KUo;
-      str2 = localege.event;
-      str3 = ((ale)localObject3).KUk;
+      localObject2 = ((pf)localObject2).UserName;
+      l2 = localeqg.Uaw;
+      str1 = ((amf)localObject3).RVm;
+      str2 = localeqg.event;
+      str3 = ((amf)localObject3).RVi;
       if (localObject1 == null) {
         break label568;
       }
-      j = ((pi)localObject1).KWv;
-      k = localege.style;
+      j = ((pe)localObject1).RXJ;
+      k = localeqg.style;
       if (localObject1 != null)
       {
-        localObject3 = ((pi)localObject1).KWw;
+        localObject3 = ((pe)localObject1).RXK;
         localObject1 = localObject3;
         if (localObject3 != null) {}
       }
@@ -250,19 +254,19 @@ public final class e
         localObject1 = "";
       }
       localf.a((String)localObject2, l1, i, 17, l2, paramView, 0, str1, str2, str3, j, k, (String)localObject1);
-      switch (this.psm.gAD().style)
+      switch (this.sBt.hwL().style)
       {
       default: 
-        p.g(localege, "wrapper");
-        l.a(1, localege, (List)localLinkedList, this.psm);
+        p.j(localeqg, "wrapper");
+        l.a(1, localeqg, (List)localLinkedList, this.sBt);
       }
     }
     for (;;)
     {
-      ag.ban().MX(this.psm.field_msgId);
+      af.bjB().UI(this.sBt.field_msgId);
       dismiss();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardUnfollowNegativeDialog", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(195269);
+      AppMethodBeat.o(265539);
       return;
       paramView = "";
       break;
@@ -274,66 +278,66 @@ public final class e
       break label353;
       j = 0;
       break label392;
-      p.g(localege, "wrapper");
-      l.a(3, localege, (List)localLinkedList, this.psm);
+      p.j(localeqg, "wrapper");
+      l.a(3, localeqg, (List)localLinkedList, this.sBt);
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardUnfollowNegativeDialog$ViewHolder;", "", "rootView", "Landroid/view/View;", "(Landroid/view/View;)V", "labelsView", "Lcom/tencent/mm/ui/widget/happybubble/LabelsView;", "getLabelsView", "()Lcom/tencent/mm/ui/widget/happybubble/LabelsView;", "setLabelsView", "(Lcom/tencent/mm/ui/widget/happybubble/LabelsView;)V", "okBtn", "Landroid/widget/Button;", "getOkBtn", "()Landroid/widget/Button;", "setOkBtn", "(Landroid/widget/Button;)V", "unLikeTv", "Landroid/widget/TextView;", "getUnLikeTv", "()Landroid/widget/TextView;", "setUnLikeTv", "(Landroid/widget/TextView;)V", "plugin-brandservice_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardUnfollowNegativeDialog$ViewHolder;", "", "rootView", "Landroid/view/View;", "(Landroid/view/View;)V", "labelsView", "Lcom/tencent/mm/ui/widget/happybubble/LabelsView;", "getLabelsView", "()Lcom/tencent/mm/ui/widget/happybubble/LabelsView;", "setLabelsView", "(Lcom/tencent/mm/ui/widget/happybubble/LabelsView;)V", "okBtn", "Landroid/widget/Button;", "getOkBtn", "()Landroid/widget/Button;", "setOkBtn", "(Landroid/widget/Button;)V", "unLikeTv", "Landroid/widget/TextView;", "getUnLikeTv", "()Landroid/widget/TextView;", "setUnLikeTv", "(Landroid/widget/TextView;)V", "plugin-brandservice_release"})
   static final class a
   {
-    Button hPX;
-    LabelsView ptA;
-    private TextView ptB;
+    Button kEt;
+    LabelsView sCN;
+    private TextView sCO;
     
     public a(View paramView)
     {
-      AppMethodBeat.i(195265);
-      View localView = paramView.findViewById(2131305592);
-      p.g(localView, "rootView.findViewById(R.id.ok_btn)");
-      this.hPX = ((Button)localView);
-      localView = paramView.findViewById(2131308869);
-      p.g(localView, "rootView.findViewById(R.id.tag_layout)");
-      this.ptA = ((LabelsView)localView);
-      paramView = paramView.findViewById(2131297499);
-      p.g(paramView, "rootView.findViewById(R.id.biz_rec_card_reason_tv)");
-      this.ptB = ((TextView)paramView);
-      paramView = this.ptB.getPaint();
-      p.g(paramView, "unLikeTv.paint");
+      AppMethodBeat.i(259283);
+      View localView = paramView.findViewById(d.e.ok_btn);
+      p.j(localView, "rootView.findViewById(R.id.ok_btn)");
+      this.kEt = ((Button)localView);
+      localView = paramView.findViewById(d.e.std);
+      p.j(localView, "rootView.findViewById(R.id.tag_layout)");
+      this.sCN = ((LabelsView)localView);
+      paramView = paramView.findViewById(d.e.sqi);
+      p.j(paramView, "rootView.findViewById(R.id.biz_rec_card_reason_tv)");
+      this.sCO = ((TextView)paramView);
+      paramView = this.sCO.getPaint();
+      p.j(paramView, "unLikeTv.paint");
       paramView.setFakeBoldText(true);
-      AppMethodBeat.o(195265);
+      AppMethodBeat.o(259283);
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "kotlin.jvm.PlatformType", "label", "Landroid/widget/TextView;", "position", "", "data", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardTag;", "getLabelText"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "kotlin.jvm.PlatformType", "label", "Landroid/widget/TextView;", "position", "", "data", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardTag;", "getLabelText"})
   static final class b<T>
     implements LabelsView.a<c>
   {
-    public static final b ptO;
+    public static final b sDb;
     
     static
     {
-      AppMethodBeat.i(195267);
-      ptO = new b();
-      AppMethodBeat.o(195267);
+      AppMethodBeat.i(265855);
+      sDb = new b();
+      AppMethodBeat.o(265855);
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "label", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "data", "", "position", "", "onLabelClick"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "label", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "data", "", "position", "", "onLabelClick"})
   static final class c
     implements LabelsView.b
   {
     c(e parame) {}
     
-    public final void j(Object paramObject, int paramInt)
+    public final void n(Object paramObject, int paramInt)
     {
-      AppMethodBeat.i(195268);
-      paramObject = e.a(this.ptP).hPX;
-      if (e.a(this.ptP).ptA.getSelectLabels().size() > 0) {}
+      AppMethodBeat.i(265768);
+      paramObject = e.a(this.sDc).kEt;
+      if (e.a(this.sDc).sCN.getSelectLabels().size() > 0) {}
       for (boolean bool = true;; bool = false)
       {
         paramObject.setEnabled(bool);
-        AppMethodBeat.o(195268);
+        AppMethodBeat.o(265768);
         return;
       }
     }
@@ -341,7 +345,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.item.e
  * JD-Core Version:    0.7.0.1
  */

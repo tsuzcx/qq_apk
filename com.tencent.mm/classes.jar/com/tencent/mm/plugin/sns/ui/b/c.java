@@ -17,8 +17,8 @@ public final class c
   {
     super(paramActivity, paramView, paramBoolean);
     AppMethodBeat.i(99895);
-    this.yTl = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-    this.yTl.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.Exi = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
+    this.Exi.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -29,34 +29,34 @@ public final class c
         if (f != 1.0F)
         {
           paramAnonymousValueAnimator = (FrameLayout.LayoutParams)c.this.view.getLayoutParams();
-          paramAnonymousValueAnimator.leftMargin = ((int)(c.this.ETJ * f));
-          paramAnonymousValueAnimator.topMargin = ((int)(c.this.ETK * f));
+          paramAnonymousValueAnimator.leftMargin = ((int)(c.this.LhL * f));
+          paramAnonymousValueAnimator.topMargin = ((int)(c.this.LhM * f));
           localViewGroup = (ViewGroup)c.this.view.getParent();
           if (!paramBoolean) {
             break label212;
           }
-          paramAnonymousValueAnimator.rightMargin = ((int)(localViewGroup.getWidth() - (c.this.targetWidth - c.this.ETO * f) - paramAnonymousValueAnimator.leftMargin));
+          paramAnonymousValueAnimator.rightMargin = ((int)(localViewGroup.getWidth() - (c.this.targetWidth - c.this.LhQ * f) - paramAnonymousValueAnimator.leftMargin));
         }
-        for (paramAnonymousValueAnimator.bottomMargin = ((int)(localViewGroup.getHeight() - (c.this.targetHeight - c.this.ETN * f) - paramAnonymousValueAnimator.topMargin));; paramAnonymousValueAnimator.bottomMargin = ((int)(localViewGroup.getHeight() * f - c.this.ETM * f - paramAnonymousValueAnimator.topMargin)))
+        for (paramAnonymousValueAnimator.bottomMargin = ((int)(localViewGroup.getHeight() - (c.this.targetHeight - c.this.LhP * f) - paramAnonymousValueAnimator.topMargin));; paramAnonymousValueAnimator.bottomMargin = ((int)(localViewGroup.getHeight() * f - c.this.LhO * f - paramAnonymousValueAnimator.topMargin)))
         {
           c.this.view.setLayoutParams(paramAnonymousValueAnimator);
-          if (c.this.ETI != null) {
-            c.this.ETI.bX(f);
+          if (c.this.LhK != null) {
+            c.this.LhK.ca(f);
           }
           AppMethodBeat.o(99892);
           return;
           label212:
-          paramAnonymousValueAnimator.rightMargin = ((int)(localViewGroup.getWidth() * f - c.this.ETL * f - paramAnonymousValueAnimator.leftMargin));
+          paramAnonymousValueAnimator.rightMargin = ((int)(localViewGroup.getWidth() * f - c.this.LhN * f - paramAnonymousValueAnimator.leftMargin));
         }
       }
     });
-    this.yTl.addListener(new AnimatorListenerAdapter()
+    this.Exi.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(99894);
-        if (c.this.ETI != null) {
-          c.this.ETI.onAnimationEnd();
+        if (c.this.LhK != null) {
+          c.this.LhK.onAnimationEnd();
         }
         if (!paramBoolean) {
           c.this.view.setVisibility(8);
@@ -68,32 +68,32 @@ public final class c
       {
         AppMethodBeat.i(99893);
         paramAnonymousAnimator = (FrameLayout.LayoutParams)c.this.view.getLayoutParams();
-        paramAnonymousAnimator.leftMargin = c.this.ETJ;
-        paramAnonymousAnimator.topMargin = c.this.ETK;
+        paramAnonymousAnimator.leftMargin = c.this.LhL;
+        paramAnonymousAnimator.topMargin = c.this.LhM;
         ViewGroup localViewGroup = (ViewGroup)c.this.view.getParent();
         if (paramBoolean) {
-          paramAnonymousAnimator.rightMargin = (localViewGroup.getWidth() - (c.this.targetWidth - c.this.ETO) - paramAnonymousAnimator.leftMargin);
+          paramAnonymousAnimator.rightMargin = (localViewGroup.getWidth() - (c.this.targetWidth - c.this.LhQ) - paramAnonymousAnimator.leftMargin);
         }
-        for (paramAnonymousAnimator.bottomMargin = (localViewGroup.getHeight() - (c.this.targetHeight - c.this.ETN) - paramAnonymousAnimator.topMargin);; paramAnonymousAnimator.bottomMargin = (localViewGroup.getHeight() - c.this.ETM - paramAnonymousAnimator.topMargin))
+        for (paramAnonymousAnimator.bottomMargin = (localViewGroup.getHeight() - (c.this.targetHeight - c.this.LhP) - paramAnonymousAnimator.topMargin);; paramAnonymousAnimator.bottomMargin = (localViewGroup.getHeight() - c.this.LhO - paramAnonymousAnimator.topMargin))
         {
           c.this.view.setLayoutParams(paramAnonymousAnimator);
           c.this.view.setVisibility(0);
-          if (c.this.ETI != null) {
-            c.this.ETI.onAnimationStart();
+          if (c.this.LhK != null) {
+            c.this.LhK.onAnimationStart();
           }
           AppMethodBeat.o(99893);
           return;
-          paramAnonymousAnimator.rightMargin = (localViewGroup.getWidth() - c.this.ETL - paramAnonymousAnimator.leftMargin);
+          paramAnonymousAnimator.rightMargin = (localViewGroup.getWidth() - c.this.LhN - paramAnonymousAnimator.leftMargin);
         }
       }
     });
-    this.yTl.setDuration(400L);
+    this.Exi.setDuration(400L);
     AppMethodBeat.o(99895);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.b.c
  * JD-Core Version:    0.7.0.1
  */

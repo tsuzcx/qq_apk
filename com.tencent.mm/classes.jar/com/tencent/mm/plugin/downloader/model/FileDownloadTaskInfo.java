@@ -10,16 +10,16 @@ public class FileDownloadTaskInfo
 {
   public static Parcelable.Creator<FileDownloadTaskInfo> CREATOR;
   public String appId;
-  public int dNv;
+  public int fGH;
   public long id;
   public String md5;
-  public long oJj;
   public String path;
-  public long qJe;
-  public boolean qJf;
-  public boolean qJg;
-  public boolean qJh;
+  public long rKZ;
   public int status;
+  public long uih;
+  public boolean uii;
+  public boolean uij;
+  public boolean uik;
   public String url;
   
   static
@@ -37,12 +37,12 @@ public class FileDownloadTaskInfo
     this.path = "";
     this.md5 = "";
     this.appId = "";
-    this.qJe = 0L;
-    this.oJj = 0L;
-    this.qJf = false;
-    this.dNv = 2;
-    this.qJg = false;
-    this.qJh = false;
+    this.uih = 0L;
+    this.rKZ = 0L;
+    this.uii = false;
+    this.fGH = 2;
+    this.uij = false;
+    this.uik = false;
   }
   
   private FileDownloadTaskInfo(Parcel paramParcel)
@@ -54,31 +54,31 @@ public class FileDownloadTaskInfo
     this.path = "";
     this.md5 = "";
     this.appId = "";
-    this.qJe = 0L;
-    this.oJj = 0L;
-    this.qJf = false;
-    this.dNv = 2;
-    this.qJg = false;
-    this.qJh = false;
+    this.uih = 0L;
+    this.rKZ = 0L;
+    this.uii = false;
+    this.fGH = 2;
+    this.uij = false;
+    this.uik = false;
     this.id = paramParcel.readLong();
     this.url = paramParcel.readString();
     this.status = paramParcel.readInt();
     this.path = paramParcel.readString();
     this.md5 = paramParcel.readString();
     this.appId = paramParcel.readString();
-    this.qJe = paramParcel.readLong();
-    this.oJj = paramParcel.readLong();
+    this.uih = paramParcel.readLong();
+    this.rKZ = paramParcel.readLong();
     if (paramParcel.readByte() == 1)
     {
       bool1 = true;
-      this.qJf = bool1;
-      this.dNv = paramParcel.readInt();
+      this.uii = bool1;
+      this.fGH = paramParcel.readInt();
       if (paramParcel.readByte() != 1) {
         break label205;
       }
       bool1 = true;
       label174:
-      this.qJg = bool1;
+      this.uij = bool1;
       if (paramParcel.readByte() != 1) {
         break label210;
       }
@@ -87,7 +87,7 @@ public class FileDownloadTaskInfo
     label210:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.qJh = bool1;
+      this.uik = bool1;
       AppMethodBeat.o(89013);
       return;
       bool1 = false;
@@ -112,20 +112,20 @@ public class FileDownloadTaskInfo
     paramParcel.writeString(this.path);
     paramParcel.writeString(this.md5);
     paramParcel.writeString(this.appId);
-    paramParcel.writeLong(this.qJe);
-    paramParcel.writeLong(this.oJj);
-    if (this.qJf)
+    paramParcel.writeLong(this.uih);
+    paramParcel.writeLong(this.rKZ);
+    if (this.uii)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeInt(this.dNv);
-      if (!this.qJg) {
+      paramParcel.writeInt(this.fGH);
+      if (!this.uij) {
         break label135;
       }
       paramInt = 1;
       label103:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.qJh) {
+      if (!this.uik) {
         break label140;
       }
     }

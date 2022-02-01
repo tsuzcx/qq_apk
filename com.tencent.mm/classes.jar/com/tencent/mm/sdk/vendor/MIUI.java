@@ -3,7 +3,7 @@ package com.tencent.mm.sdk.vendor;
 import android.os.Build;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.af;
+import com.tencent.mm.compatible.deviceinfo.ag;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
@@ -209,12 +209,12 @@ public class MIUI
   public static boolean ifLessThanVersinCode(String paramString)
   {
     boolean bool = true;
-    AppMethodBeat.i(214374);
+    AppMethodBeat.i(210069);
     String str = getSystemProperty("ro.miui.version.code_time");
     if (Util.isNullOrNil(paramString)) {}
     for (;;)
     {
-      AppMethodBeat.o(214374);
+      AppMethodBeat.o(210069);
       return bool;
       if (Long.valueOf(str).longValue() >= Long.valueOf(paramString).longValue()) {
         bool = false;
@@ -285,12 +285,12 @@ public class MIUI
     //   12: astore_2
     //   13: aconst_null
     //   14: astore_1
-    //   15: new 204	com/tencent/mm/vfs/o
+    //   15: new 204	com/tencent/mm/vfs/q
     //   18: dup
     //   19: invokestatic 210	android/os/Environment:getRootDirectory	()Ljava/io/File;
     //   22: ldc 212
-    //   24: invokespecial 215	com/tencent/mm/vfs/o:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   27: invokestatic 221	com/tencent/mm/vfs/s:ao	(Lcom/tencent/mm/vfs/o;)Ljava/io/InputStream;
+    //   24: invokespecial 215	com/tencent/mm/vfs/q:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   27: invokestatic 221	com/tencent/mm/vfs/u:al	(Lcom/tencent/mm/vfs/q;)Ljava/io/InputStream;
     //   30: astore_3
     //   31: aload_3
     //   32: astore_1
@@ -402,7 +402,7 @@ public class MIUI
       if ((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase("Xiaomi"))) {
         break label88;
       }
-      if (!Util.isEqual(af.get("ro.miui.ui.version.code"), "8")) {
+      if (!Util.isEqual(ag.get("ro.miui.ui.version.code"), "8")) {
         break label79;
       }
       isMIUIV10 = Boolean.TRUE;
@@ -432,12 +432,12 @@ public class MIUI
     //   12: astore_2
     //   13: aconst_null
     //   14: astore_1
-    //   15: new 204	com/tencent/mm/vfs/o
+    //   15: new 204	com/tencent/mm/vfs/q
     //   18: dup
     //   19: invokestatic 210	android/os/Environment:getRootDirectory	()Ljava/io/File;
     //   22: ldc 212
-    //   24: invokespecial 215	com/tencent/mm/vfs/o:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   27: invokestatic 221	com/tencent/mm/vfs/s:ao	(Lcom/tencent/mm/vfs/o;)Ljava/io/InputStream;
+    //   24: invokespecial 215	com/tencent/mm/vfs/q:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   27: invokestatic 221	com/tencent/mm/vfs/u:al	(Lcom/tencent/mm/vfs/q;)Ljava/io/InputStream;
     //   30: astore_3
     //   31: aload_3
     //   32: astore_1
@@ -559,10 +559,27 @@ public class MIUI
     //   110	114	185	java/lang/Exception
     //   174	178	189	java/lang/Exception
   }
+  
+  public static boolean isXiaoMi()
+  {
+    AppMethodBeat.i(210067);
+    boolean bool2 = false;
+    String str = Build.BRAND;
+    boolean bool1 = bool2;
+    if (!Util.isNullOrNil(str))
+    {
+      bool1 = bool2;
+      if (str.toLowerCase().contains("xiaomi")) {
+        bool1 = true;
+      }
+    }
+    AppMethodBeat.o(210067);
+    return bool1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.vendor.MIUI
  * JD-Core Version:    0.7.0.1
  */

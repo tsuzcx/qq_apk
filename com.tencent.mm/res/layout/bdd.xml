@@ -4,7 +4,7 @@
     <RelativeLayout android:id="@id/g8b" android:background="@color/l0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <LinearLayout android:orientation="vertical" android:id="@id/wv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
     </RelativeLayout>
-    <android.support.v7.widget.RecyclerView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/hsr" android:background="@color/l0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/g8b" android:layout_marginEnd="@dimen/cb" />
+    <androidx.recyclerview.widget.RecyclerView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/hsr" android:background="@color/l0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/g8b" android:layout_marginEnd="@dimen/cb" />
     <ListView android:id="@id/hhi" android:background="@color/l0" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ac_" android:dividerHeight="0.0px" android:layout_below="@id/hsr" />
     <com.tencent.mm.pluginsdk.ui.MultiSelectContactView android:id="@id/bcg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/hsr" />
     <ImageView android:id="@id/hn9" android:background="@drawable/c5t" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/bcg" />

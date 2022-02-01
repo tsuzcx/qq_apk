@@ -11,16 +11,16 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class d
 {
-  private static boolean bHV()
+  private static boolean bTE()
   {
     return Build.VERSION.SDK_INT >= 21;
   }
   
   @TargetApi(21)
-  public static boolean bHW()
+  public static boolean bTF()
   {
     AppMethodBeat.i(136185);
-    if (bHV())
+    if (bTE())
     {
       boolean bool = MMApplicationContext.getContext().getPackageManager().hasSystemFeature("android.hardware.nfc.hce");
       AppMethodBeat.o(136185);
@@ -30,7 +30,7 @@ public final class d
     return false;
   }
   
-  public static boolean bHX()
+  public static boolean bTG()
   {
     AppMethodBeat.i(136186);
     Context localContext = MMApplicationContext.getContext();
@@ -48,7 +48,7 @@ public final class d
     return true;
   }
   
-  public static boolean bHY()
+  public static boolean bTH()
   {
     AppMethodBeat.i(136187);
     NfcAdapter localNfcAdapter = NfcAdapter.getDefaultAdapter(MMApplicationContext.getContext());

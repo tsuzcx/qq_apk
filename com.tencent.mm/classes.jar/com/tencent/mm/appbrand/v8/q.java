@@ -1,8 +1,8 @@
 package com.tencent.mm.appbrand.v8;
 
-import com.eclipsesource.v8.JavaVoidCallback;
-import com.eclipsesource.v8.V8Array;
-import com.eclipsesource.v8.V8Object;
+import com.eclipsesource.mmv8.JavaVoidCallback;
+import com.eclipsesource.mmv8.V8Array;
+import com.eclipsesource.mmv8.V8Object;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.m.z;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -10,14 +10,14 @@ import com.tencent.mm.sdk.platformtools.Log;
 final class q
   extends o
 {
-  z dqt;
-  private final JavaVoidCallback dqu;
+  z fja;
+  private final JavaVoidCallback fjb;
   
   public q()
   {
     super("console");
     AppMethodBeat.i(144082);
-    this.dqu = new JavaVoidCallback()
+    this.fjb = new JavaVoidCallback()
     {
       public final void invoke(V8Object paramAnonymousV8Object, V8Array paramAnonymousV8Array) {}
     };
@@ -61,8 +61,8 @@ final class q
         AppMethodBeat.i(144080);
         paramAnonymousV8Object = paramAnonymousV8Array.toString();
         Log.e("MicroMsg.J2V8_Console", paramAnonymousV8Object);
-        if (q.this.dqt != null) {
-          q.this.dqt.onError(paramAnonymousV8Object);
+        if (q.this.fja != null) {
+          q.this.fja.onError(paramAnonymousV8Object);
         }
         AppMethodBeat.o(144080);
       }
@@ -76,33 +76,33 @@ final class q
         AppMethodBeat.o(144081);
       }
     }, "debug");
-    paramV8Object.registerJavaMethod(this.dqu, "assert");
-    paramV8Object.registerJavaMethod(this.dqu, "count");
-    paramV8Object.registerJavaMethod(this.dqu, "profile");
-    paramV8Object.registerJavaMethod(this.dqu, "profileEnd");
-    paramV8Object.registerJavaMethod(this.dqu, "time");
-    paramV8Object.registerJavaMethod(this.dqu, "timeEnd");
-    paramV8Object.registerJavaMethod(this.dqu, "timeStamp");
-    paramV8Object.registerJavaMethod(this.dqu, "takeHeapSnapshot");
-    paramV8Object.registerJavaMethod(this.dqu, "group");
-    paramV8Object.registerJavaMethod(this.dqu, "groupCollapsed");
-    paramV8Object.registerJavaMethod(this.dqu, "groupEnd");
-    paramV8Object.registerJavaMethod(this.dqu, "clear");
-    paramV8Object.registerJavaMethod(this.dqu, "dir");
-    paramV8Object.registerJavaMethod(this.dqu, "dirxml");
-    paramV8Object.registerJavaMethod(this.dqu, "table");
-    paramV8Object.registerJavaMethod(this.dqu, "trace");
+    paramV8Object.registerJavaMethod(this.fjb, "assert");
+    paramV8Object.registerJavaMethod(this.fjb, "count");
+    paramV8Object.registerJavaMethod(this.fjb, "profile");
+    paramV8Object.registerJavaMethod(this.fjb, "profileEnd");
+    paramV8Object.registerJavaMethod(this.fjb, "time");
+    paramV8Object.registerJavaMethod(this.fjb, "timeEnd");
+    paramV8Object.registerJavaMethod(this.fjb, "timeStamp");
+    paramV8Object.registerJavaMethod(this.fjb, "takeHeapSnapshot");
+    paramV8Object.registerJavaMethod(this.fjb, "group");
+    paramV8Object.registerJavaMethod(this.fjb, "groupCollapsed");
+    paramV8Object.registerJavaMethod(this.fjb, "groupEnd");
+    paramV8Object.registerJavaMethod(this.fjb, "clear");
+    paramV8Object.registerJavaMethod(this.fjb, "dir");
+    paramV8Object.registerJavaMethod(this.fjb, "dirxml");
+    paramV8Object.registerJavaMethod(this.fjb, "table");
+    paramV8Object.registerJavaMethod(this.fjb, "trace");
     AppMethodBeat.o(144083);
   }
   
   public final void cleanup()
   {
-    this.dqt = null;
+    this.fja = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.q
  * JD-Core Version:    0.7.0.1
  */

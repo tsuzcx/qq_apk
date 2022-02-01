@@ -1,24 +1,36 @@
 package com.tencent.mm.plugin.wallet_core.id_verify;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.plugin.wallet_core.ui.u;
-import com.tencent.mm.plugin.wallet_core.ui.u.a;
-import com.tencent.mm.protocal.protobuf.btr;
+import com.tencent.mm.an.q;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.wallet_core.ui.v;
+import com.tencent.mm.plugin.wallet_core.ui.v.a;
+import com.tencent.mm.plugin.wallet_core.ui.v.b;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.protocal.protobuf.cbj;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.ui.x;
+import com.tencent.mm.ui.aa;
+import com.tencent.mm.wallet_core.c.g;
 import com.tencent.mm.wallet_core.c.m;
+import com.tencent.mm.wallet_core.d;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import java.io.IOException;
 import org.apache.commons.a.a;
@@ -28,25 +40,25 @@ import org.json.JSONObject;
 public class WcPayRealnameVerifyMainUI
   extends WalletBaseUI
 {
-  private boolean HPI;
-  private TextView HTt;
-  private ViewGroup HTu;
-  private u HTv;
-  private TextView jVn;
-  private Button wEz;
+  private Button Bxw;
+  private boolean OHR;
+  private TextView OLA;
+  private ViewGroup OLB;
+  private v OLC;
+  private TextView mMA;
   
   public WcPayRealnameVerifyMainUI()
   {
     AppMethodBeat.i(70125);
-    this.HTv = new u();
+    this.OLC = new v();
     AppMethodBeat.o(70125);
   }
   
-  private static JSONObject fPW()
+  private static JSONObject gIC()
   {
     AppMethodBeat.i(70131);
-    com.tencent.mm.kernel.g.aAi();
-    Object localObject = com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.NXq, "");
+    h.aHH();
+    Object localObject = h.aHG().aHp().get(ar.a.Vlq, "");
     if (localObject != null)
     {
       localObject = (String)localObject;
@@ -83,39 +95,39 @@ public class WcPayRealnameVerifyMainUI
   
   public int getLayoutId()
   {
-    return 2131497047;
+    return a.g.wc_pay_realname_verify_main_ui;
   }
   
   public void initView()
   {
     AppMethodBeat.i(70127);
-    this.wEz = ((Button)findViewById(2131310620));
-    this.jVn = ((TextView)findViewById(2131310617));
-    this.HTt = ((TextView)findViewById(2131310619));
-    this.HTu = ((ViewGroup)findViewById(2131310618));
-    this.wEz.setOnClickListener(new x()
+    this.Bxw = ((Button)findViewById(a.f.wprv_verify_btn));
+    this.mMA = ((TextView)findViewById(a.f.wprv_desc_tv));
+    this.OLA = ((TextView)findViewById(a.f.wprv_security_tv));
+    this.OLB = ((ViewGroup)findViewById(a.f.wprv_security_layout));
+    this.Bxw.setOnClickListener(new aa()
     {
-      public final void czW()
+      public final void cOw()
       {
         AppMethodBeat.i(70123);
         Log.d("MicroMsg.WcPayRealnameVerifyMainUI", "click verify btn");
-        WcPayRealnameVerifyMainUI.b(WcPayRealnameVerifyMainUI.this).a(new u.a()
+        WcPayRealnameVerifyMainUI.b(WcPayRealnameVerifyMainUI.this).a(new v.a()
         {
           public final void cancel()
           {
             AppMethodBeat.i(70121);
-            WcPayRealnameVerifyMainUI.b(WcPayRealnameVerifyMainUI.this).dEF = false;
+            WcPayRealnameVerifyMainUI.b(WcPayRealnameVerifyMainUI.this).fxt = false;
             AppMethodBeat.o(70121);
           }
           
-          public final void ehm()
+          public final void eQT()
           {
             AppMethodBeat.i(70120);
             WcPayRealnameVerifyMainUI.a(WcPayRealnameVerifyMainUI.this);
             AppMethodBeat.o(70120);
           }
           
-          public final void ehn()
+          public final void eQU()
           {
             AppMethodBeat.i(70122);
             WcPayRealnameVerifyMainUI.a(WcPayRealnameVerifyMainUI.this);
@@ -125,20 +137,20 @@ public class WcPayRealnameVerifyMainUI
         AppMethodBeat.o(70123);
       }
     });
-    JSONObject localJSONObject = fPW();
+    JSONObject localJSONObject = gIC();
     if (localJSONObject != null)
     {
-      String str = Util.nullAs(localJSONObject.optString("cache_header_titles", getString(2131766590)), getString(2131766590));
-      this.jVn.setText(str);
+      String str = Util.nullAs(localJSONObject.optString("cache_header_titles", getString(a.i.switch_realname_default_tip)), getString(a.i.switch_realname_default_tip));
+      this.mMA.setText(str);
       if (localJSONObject.optBoolean("isShowCapitalSecurity", false))
       {
-        this.HTt.setText(2131767981);
-        this.HTt.setOnClickListener(new WcPayRealnameVerifyMainUI.4(this));
-        this.HTu.setVisibility(0);
+        this.OLA.setText(a.i.wallet_offline_un_open_tip);
+        this.OLA.setOnClickListener(new WcPayRealnameVerifyMainUI.4(this));
+        this.OLB.setVisibility(0);
         AppMethodBeat.o(70127);
         return;
       }
-      this.HTu.setVisibility(8);
+      this.OLB.setVisibility(8);
     }
     AppMethodBeat.o(70127);
   }
@@ -149,17 +161,17 @@ public class WcPayRealnameVerifyMainUI
     if (paramInt1 == 1)
     {
       if (paramInt2 != -1) {
-        break label35;
+        break label37;
       }
-      this.HTv.ehm();
+      this.OLC.eQT();
     }
     for (;;)
     {
       super.onActivityResult(paramInt1, paramInt2, paramIntent);
       AppMethodBeat.o(70130);
       return;
-      label35:
-      this.HTv.cancel();
+      label37:
+      this.OLC.cancel();
     }
   }
   
@@ -167,22 +179,52 @@ public class WcPayRealnameVerifyMainUI
   {
     AppMethodBeat.i(70126);
     super.onCreate(paramBundle);
-    setActionbarColor(getResources().getColor(2131099653));
+    setActionbarColor(getResources().getColor(a.c.BG_5));
     hideActionbarLine();
     setMMTitle("");
-    this.HTv.IkQ = new WcPayRealnameVerifyMainUI.1(this);
-    setBackBtn(new WcPayRealnameVerifyMainUI.2(this));
+    this.OLC.Pdi = new v.b()
+    {
+      public final int eQV()
+      {
+        return 1;
+      }
+      
+      public final Context getContext()
+      {
+        AppMethodBeat.i(70118);
+        AppCompatActivity localAppCompatActivity = WcPayRealnameVerifyMainUI.this.getContext();
+        AppMethodBeat.o(70118);
+        return localAppCompatActivity;
+      }
+    };
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(70119);
+        paramAnonymousMenuItem = WcPayRealnameVerifyMainUI.this.getProcess();
+        if (paramAnonymousMenuItem != null)
+        {
+          paramAnonymousMenuItem.h(WcPayRealnameVerifyMainUI.this.getContext(), 0);
+          AppMethodBeat.o(70119);
+          return true;
+        }
+        WcPayRealnameVerifyMainUI.this.finish();
+        AppMethodBeat.o(70119);
+        return false;
+      }
+    });
     paramBundle = getInput().getString("realname_verify_process_get_wording_cache");
     try
     {
       if (!Util.isNullOrNil(paramBundle))
       {
-        paramBundle = (btr)new btr().parseFrom(paramBundle.getBytes(a.ISO_8859_1));
-        this.HPI = paramBundle.HPI;
-        if (paramBundle.Maw != null) {
-          m.a(paramBundle.Maw).a(this, new com.tencent.mm.wallet_core.c.g()
+        paramBundle = (cbj)new cbj().parseFrom(paramBundle.getBytes(a.ISO_8859_1));
+        this.OHR = paramBundle.OHR;
+        if (paramBundle.TjP != null) {
+          m.a(paramBundle.TjP).a(this, new g()
           {
-            public final void eeY() {}
+            public final void eOt() {}
           });
         }
       }
@@ -203,7 +245,7 @@ public class WcPayRealnameVerifyMainUI
   {
     AppMethodBeat.i(70129);
     super.onPause();
-    this.HTv.onPause();
+    this.OLC.onPause();
     AppMethodBeat.o(70129);
   }
   
@@ -211,7 +253,7 @@ public class WcPayRealnameVerifyMainUI
   {
     AppMethodBeat.i(70128);
     super.onResume();
-    this.HTv.onResume();
+    this.OLC.onResume();
     AppMethodBeat.o(70128);
   }
   

@@ -3,89 +3,49 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class eio
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String NhJ;
-  public String NhK;
-  public String appId;
-  public String desc;
-  public String ecK;
-  public String title;
-  public String uNR;
+  public String GIM;
+  public String ThumbUrl;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(153000);
+    AppMethodBeat.i(91692);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.title != null) {
-        paramVarArgs.e(1, this.title);
+      if (this.ThumbUrl != null) {
+        paramVarArgs.f(1, this.ThumbUrl);
       }
-      if (this.desc != null) {
-        paramVarArgs.e(2, this.desc);
+      if (this.GIM != null) {
+        paramVarArgs.f(2, this.GIM);
       }
-      if (this.ecK != null) {
-        paramVarArgs.e(3, this.ecK);
-      }
-      if (this.NhJ != null) {
-        paramVarArgs.e(4, this.NhJ);
-      }
-      if (this.NhK != null) {
-        paramVarArgs.e(5, this.NhK);
-      }
-      if (this.appId != null) {
-        paramVarArgs.e(6, this.appId);
-      }
-      if (this.uNR != null) {
-        paramVarArgs.e(7, this.uNR);
-      }
-      AppMethodBeat.o(153000);
+      AppMethodBeat.o(91692);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.title == null) {
-        break label578;
+      if (this.ThumbUrl == null) {
+        break label274;
       }
     }
-    label578:
-    for (int i = g.a.a.b.b.a.f(1, this.title) + 0;; i = 0)
+    label274:
+    for (paramInt = g.a.a.b.b.a.g(1, this.ThumbUrl) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.desc != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.desc);
+      int i = paramInt;
+      if (this.GIM != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.GIM);
       }
-      i = paramInt;
-      if (this.ecK != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.ecK);
-      }
-      paramInt = i;
-      if (this.NhJ != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.NhJ);
-      }
-      i = paramInt;
-      if (this.NhK != null) {
-        i = paramInt + g.a.a.b.b.a.f(5, this.NhK);
-      }
-      paramInt = i;
-      if (this.appId != null) {
-        paramInt = i + g.a.a.b.b.a.f(6, this.appId);
-      }
-      i = paramInt;
-      if (this.uNR != null) {
-        i = paramInt + g.a.a.b.b.a.f(7, this.uNR);
-      }
-      AppMethodBeat.o(153000);
+      AppMethodBeat.o(91692);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(153000);
+        AppMethodBeat.o(91692);
         return 0;
       }
       if (paramInt == 3)
@@ -95,45 +55,25 @@ public final class eio
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(153000);
+          AppMethodBeat.o(91692);
           return -1;
         case 1: 
-          localeio.title = locala.UbS.readString();
-          AppMethodBeat.o(153000);
-          return 0;
-        case 2: 
-          localeio.desc = locala.UbS.readString();
-          AppMethodBeat.o(153000);
-          return 0;
-        case 3: 
-          localeio.ecK = locala.UbS.readString();
-          AppMethodBeat.o(153000);
-          return 0;
-        case 4: 
-          localeio.NhJ = locala.UbS.readString();
-          AppMethodBeat.o(153000);
-          return 0;
-        case 5: 
-          localeio.NhK = locala.UbS.readString();
-          AppMethodBeat.o(153000);
-          return 0;
-        case 6: 
-          localeio.appId = locala.UbS.readString();
-          AppMethodBeat.o(153000);
+          localeio.ThumbUrl = locala.abFh.readString();
+          AppMethodBeat.o(91692);
           return 0;
         }
-        localeio.uNR = locala.UbS.readString();
-        AppMethodBeat.o(153000);
+        localeio.GIM = locala.abFh.readString();
+        AppMethodBeat.o(91692);
         return 0;
       }
-      AppMethodBeat.o(153000);
+      AppMethodBeat.o(91692);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.eio
  * JD-Core Version:    0.7.0.1
  */

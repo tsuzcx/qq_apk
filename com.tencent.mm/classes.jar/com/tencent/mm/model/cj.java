@@ -1,359 +1,443 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.b;
-import com.tencent.mm.ak.h.c;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.messenger.foundation.a.p;
-import com.tencent.mm.plugin.messenger.foundation.a.q;
-import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.protocal.protobuf.de;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.SemiXml;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.XmlParser;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import junit.framework.Assert;
 
 public final class cj
-  implements h
 {
-  private Map<String, List<a>> iFV;
-  private Map<String, List<a>> iFW;
-  private Map<String, List<q>> iFX;
-  private Map<String, p> iFY;
+  private a lvS;
+  private long lvT;
+  private long lvU;
+  private String lvV;
+  private int lvW;
   
-  public cj()
+  public cj(a parama)
   {
-    AppMethodBeat.i(42988);
-    this.iFV = new HashMap();
-    this.iFW = new HashMap();
-    this.iFX = new HashMap();
-    this.iFY = new ConcurrentHashMap();
-    AppMethodBeat.o(42988);
+    AppMethodBeat.i(132274);
+    this.lvS = null;
+    this.lvT = 0L;
+    this.lvU = 0L;
+    this.lvV = "";
+    this.lvW = 1;
+    Assert.assertTrue(true);
+    this.lvS = parama;
+    bfu();
+    AppMethodBeat.o(132274);
   }
   
-  @Deprecated
-  private void a(String paramString, h.a parama, boolean paramBoolean)
+  private void bfu()
   {
-    AppMethodBeat.i(42996);
-    if (paramBoolean) {}
-    synchronized (this.iFW)
+    this.lvW = 1;
+    this.lvT = 0L;
+    this.lvU = 0L;
+    this.lvV = "";
+  }
+  
+  private void bfy()
+  {
+    try
     {
-      paramString = (List)???.get(paramString);
-      if ((paramString == null) || (paramString.isEmpty()))
-      {
-        Log.w("MicroMsg.SysCmdMsgExtension", "listener list is empty, return now");
-        AppMethodBeat.o(42996);
-        return;
-        ??? = this.iFV;
+      AppMethodBeat.i(132278);
+      if ((this.lvW != 1) && (this.lvT + this.lvU < Util.nowMilliSecond())) {
+        bfw();
       }
-    }
-    Log.i("MicroMsg.SysCmdMsgExtension", "listener list size is %d", new Object[] { Integer.valueOf(paramString.size()) });
-    paramString = paramString.iterator();
-    while (paramString.hasNext()) {
-      ((a)paramString.next()).a(parama);
-    }
-    AppMethodBeat.o(42996);
-  }
-  
-  @Deprecated
-  public final void a(String paramString, a parama, boolean paramBoolean)
-  {
-    AppMethodBeat.i(42989);
-    if ((Util.isNullOrNil(paramString)) || (parama == null))
-    {
-      AppMethodBeat.o(42989);
+      AppMethodBeat.o(132278);
       return;
     }
-    if (paramBoolean) {}
-    for (;;)
-    {
-      Object localObject;
-      synchronized (this.iFW)
-      {
-        localObject = (List)???.get(paramString);
-        if (localObject == null)
-        {
-          localObject = new LinkedList();
-          ???.put(paramString, localObject);
-          paramString = (String)localObject;
-          try
-          {
-            if (!paramString.contains(parama)) {
-              paramString.add(parama);
-            }
-            return;
-          }
-          finally
-          {
-            AppMethodBeat.o(42989);
-          }
-          ??? = this.iFV;
-        }
-      }
-      paramString = (String)localObject;
-    }
+    finally {}
   }
   
-  public final void a(String paramString, p paramp)
+  /* Error */
+  public final boolean bfA()
   {
-    AppMethodBeat.i(42993);
-    if ((Util.isNullOrNil(paramString)) || (paramp == null))
-    {
-      AppMethodBeat.o(42993);
-      return;
-    }
-    if (this.iFY.containsKey(paramString)) {
-      Log.w("MicroMsg.SysCmdMsgExtension", "NewXmlConsumer for %s has exist! %s", new Object[] { paramString, Util.getStack() });
-    }
-    this.iFY.put(paramString, paramp);
-    AppMethodBeat.o(42993);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 67
+    //   4: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: invokespecial 69	com/tencent/mm/model/cj:bfy	()V
+    //   11: aload_0
+    //   12: getfield 40	com/tencent/mm/model/cj:lvW	I
+    //   15: iconst_3
+    //   16: if_icmpne +14 -> 30
+    //   19: iconst_1
+    //   20: istore_1
+    //   21: ldc 67
+    //   23: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   26: aload_0
+    //   27: monitorexit
+    //   28: iload_1
+    //   29: ireturn
+    //   30: iconst_0
+    //   31: istore_1
+    //   32: ldc 67
+    //   34: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   37: goto -11 -> 26
+    //   40: astore_2
+    //   41: aload_0
+    //   42: monitorexit
+    //   43: aload_2
+    //   44: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	45	0	this	cj
+    //   20	12	1	bool	boolean
+    //   40	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	19	40	finally
+    //   21	26	40	finally
+    //   32	37	40	finally
   }
   
-  public final void a(String paramString, q paramq)
+  /* Error */
+  public final boolean bfv()
   {
-    AppMethodBeat.i(42991);
-    if ((Util.isNullOrNil(paramString)) || (paramq == null))
-    {
-      AppMethodBeat.o(42991);
-      return;
-    }
-    for (;;)
-    {
-      Object localObject;
-      synchronized (this.iFX)
-      {
-        localObject = (List)this.iFX.get(paramString);
-        if (localObject == null)
-        {
-          localObject = new LinkedList();
-          this.iFX.put(paramString, localObject);
-          paramString = (String)localObject;
-        }
-      }
-      paramString = (String)localObject;
-    }
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore_1
+    //   2: aload_0
+    //   3: monitorenter
+    //   4: ldc 71
+    //   6: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: invokestatic 61	com/tencent/mm/sdk/platformtools/Util:nowMilliSecond	()J
+    //   12: lstore 4
+    //   14: aload_0
+    //   15: invokestatic 75	com/tencent/mm/sdk/platformtools/Util:getStack	()Lcom/tencent/mm/sdk/platformtools/MMStack;
+    //   18: invokevirtual 81	com/tencent/mm/sdk/platformtools/MMStack:toString	()Ljava/lang/String;
+    //   21: putfield 38	com/tencent/mm/model/cj:lvV	Ljava/lang/String;
+    //   24: aload_0
+    //   25: getfield 40	com/tencent/mm/model/cj:lvW	I
+    //   28: iconst_1
+    //   29: if_icmpne +73 -> 102
+    //   32: aload_0
+    //   33: lload 4
+    //   35: putfield 34	com/tencent/mm/model/cj:lvU	J
+    //   38: aload_0
+    //   39: ldc2_w 82
+    //   42: putfield 32	com/tencent/mm/model/cj:lvT	J
+    //   45: ldc 85
+    //   47: ldc 87
+    //   49: iconst_2
+    //   50: anewarray 4	java/lang/Object
+    //   53: dup
+    //   54: iconst_0
+    //   55: ldc2_w 82
+    //   58: invokestatic 93	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   61: aastore
+    //   62: dup
+    //   63: iconst_1
+    //   64: aload_0
+    //   65: getfield 38	com/tencent/mm/model/cj:lvV	Ljava/lang/String;
+    //   68: aastore
+    //   69: invokestatic 98	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   72: aload_0
+    //   73: iconst_2
+    //   74: putfield 40	com/tencent/mm/model/cj:lvW	I
+    //   77: aload_0
+    //   78: getfield 30	com/tencent/mm/model/cj:lvS	Lcom/tencent/mm/model/cj$a;
+    //   81: invokeinterface 101 1 0
+    //   86: ifeq +7 -> 93
+    //   89: aload_0
+    //   90: invokevirtual 104	com/tencent/mm/model/cj:bfx	()V
+    //   93: ldc 71
+    //   95: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   98: aload_0
+    //   99: monitorexit
+    //   100: iload_1
+    //   101: ireturn
+    //   102: aload_0
+    //   103: getfield 34	com/tencent/mm/model/cj:lvU	J
+    //   106: aload_0
+    //   107: getfield 32	com/tencent/mm/model/cj:lvT	J
+    //   110: ladd
+    //   111: lstore_2
+    //   112: lload 4
+    //   114: ldc2_w 82
+    //   117: ladd
+    //   118: lstore 4
+    //   120: lload 4
+    //   122: lload_2
+    //   123: lcmp
+    //   124: ifle +16 -> 140
+    //   127: aload_0
+    //   128: aload_0
+    //   129: getfield 32	com/tencent/mm/model/cj:lvT	J
+    //   132: lload 4
+    //   134: lload_2
+    //   135: lsub
+    //   136: ladd
+    //   137: putfield 32	com/tencent/mm/model/cj:lvT	J
+    //   140: ldc 85
+    //   142: ldc 106
+    //   144: iconst_5
+    //   145: anewarray 4	java/lang/Object
+    //   148: dup
+    //   149: iconst_0
+    //   150: aload_0
+    //   151: getfield 40	com/tencent/mm/model/cj:lvW	I
+    //   154: invokestatic 111	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   157: aastore
+    //   158: dup
+    //   159: iconst_1
+    //   160: ldc2_w 82
+    //   163: invokestatic 93	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   166: aastore
+    //   167: dup
+    //   168: iconst_2
+    //   169: lload 4
+    //   171: lload_2
+    //   172: lsub
+    //   173: invokestatic 93	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   176: aastore
+    //   177: dup
+    //   178: iconst_3
+    //   179: aload_0
+    //   180: getfield 32	com/tencent/mm/model/cj:lvT	J
+    //   183: invokestatic 93	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   186: aastore
+    //   187: dup
+    //   188: iconst_4
+    //   189: aload_0
+    //   190: getfield 38	com/tencent/mm/model/cj:lvV	Ljava/lang/String;
+    //   193: aastore
+    //   194: invokestatic 98	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   197: ldc 71
+    //   199: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   202: iconst_0
+    //   203: istore_1
+    //   204: goto -106 -> 98
+    //   207: astore 6
+    //   209: aload_0
+    //   210: monitorexit
+    //   211: aload 6
+    //   213: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	214	0	this	cj
+    //   1	203	1	bool	boolean
+    //   111	61	2	l1	long
+    //   12	158	4	l2	long
+    //   207	5	6	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   4	93	207	finally
+    //   93	98	207	finally
+    //   102	112	207	finally
+    //   127	140	207	finally
+    //   140	202	207	finally
   }
   
-  public final h.b b(h.a parama)
+  /* Error */
+  public final void bfw()
   {
-    AppMethodBeat.i(42995);
-    Object localObject1 = parama.heO;
-    switch (((de)localObject1).xKb)
-    {
-    default: 
-      Log.w("MicroMsg.SysCmdMsgExtension", "cmdAM msgType is %d, ignore, return now", new Object[] { Integer.valueOf(((de)localObject1).xKb) });
-      AppMethodBeat.o(42995);
-      return null;
-    case 10001: 
-      a(z.a(((de)localObject1).KHl), parama, false);
-      e.Cxv.kvStat(10395, String.valueOf(((de)localObject1).Brn));
-      AppMethodBeat.o(42995);
-      return null;
-    }
-    Object localObject2 = z.a(((de)localObject1).KHn);
-    if (Util.isNullOrNil((String)localObject2))
-    {
-      Log.e("MicroMsg.SysCmdMsgExtension", "null msg content");
-      AppMethodBeat.o(42995);
-      return null;
-    }
-    String str;
-    if (((String)localObject2).startsWith("~SEMI_XML~"))
-    {
-      localObject1 = SemiXml.decode((String)localObject2);
-      if (localObject1 == null)
-      {
-        Log.e("MicroMsg.SysCmdMsgExtension", "SemiXml values is null, msgContent %s", new Object[] { localObject2 });
-        AppMethodBeat.o(42995);
-        return null;
-      }
-      str = "brand_service";
-      Log.d("MicroMsg.SysCmdMsgExtension", "recieve a syscmd_newxml %s subType %s", new Object[] { localObject2, str });
-      if (str != null) {
-        a(str, parama, true);
-      }
-    }
-    else
-    {
-      for (;;)
-      {
-        synchronized (this.iFX)
-        {
-          localObject2 = (List)this.iFX.get(str);
-          if ((localObject2 == null) || (((List)localObject2).isEmpty()))
-          {
-            Log.w("MicroMsg.SysCmdMsgExtension", "listener list is empty, return now");
-            localObject2 = (p)this.iFY.get(str);
-            if (localObject2 == null) {
-              break label603;
-            }
-            parama = ((p)localObject2).a(str, (Map)localObject1, parama);
-            AppMethodBeat.o(42995);
-            return parama;
-            int i = ((String)localObject2).indexOf("<sysmsg");
-            if (i != -1)
-            {
-              localObject1 = ((String)localObject2).substring(i);
-              Log.d("MicroMsg.SysCmdMsgExtension", "oneliang, msg content:%s,sub content:%s", new Object[] { localObject2, localObject1 });
-              localObject1 = XmlParser.parseXml((String)localObject1, "sysmsg", null);
-              if (localObject1 == null)
-              {
-                Log.e("MicroMsg.SysCmdMsgExtension", "XmlParser values is null, msgContent %s", new Object[] { localObject2 });
-                AppMethodBeat.o(42995);
-                return null;
-              }
-              str = (String)((Map)localObject1).get(".sysmsg.$type");
-              break;
-            }
-            i = ((String)localObject2).indexOf("<appmsg");
-            if (i != -1)
-            {
-              Log.i("MicroMsg.SysCmdMsgExtension", "msgContent start with <appmsg");
-              localObject1 = ((String)localObject2).substring(i);
-              Log.d("MicroMsg.SysCmdMsgExtension", "oneliang, msg content:%s,sub content:%s", new Object[] { localObject2, localObject1 });
-              localObject1 = XmlParser.parseXml((String)localObject1, "appmsg", null);
-              if (localObject1 == null)
-              {
-                Log.e("MicroMsg.SysCmdMsgExtension", "XmlParser values is null, msgContent %s", new Object[] { localObject2 });
-                AppMethodBeat.o(42995);
-                return null;
-              }
-              str = (String)((Map)localObject1).get(".appmsg.title");
-              break;
-            }
-            Log.e("MicroMsg.SysCmdMsgExtension", "msgContent not start with <sysmsg or <appmsg");
-            AppMethodBeat.o(42995);
-            return null;
-          }
-        }
-        Log.i("MicroMsg.SysCmdMsgExtension", "listener list size is %d", new Object[] { Integer.valueOf(((List)localObject2).size()) });
-        try
-        {
-          ??? = ((List)localObject2).iterator();
-          while (((Iterator)???).hasNext()) {
-            ((q)((Iterator)???).next()).onNewXmlReceived(str, (Map)localObject1, parama);
-          }
-        }
-        finally
-        {
-          AppMethodBeat.o(42995);
-        }
-      }
-      label603:
-      Log.e("MicroMsg.SysCmdMsgExtension", "no NewXmlConsumer to consume cmd %s!!", new Object[] { str });
-    }
-    AppMethodBeat.o(42995);
-    return null;
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 112
+    //   4: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: ldc 85
+    //   9: ldc 114
+    //   11: iconst_2
+    //   12: anewarray 4	java/lang/Object
+    //   15: dup
+    //   16: iconst_0
+    //   17: aload_0
+    //   18: getfield 40	com/tencent/mm/model/cj:lvW	I
+    //   21: invokestatic 111	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   24: aastore
+    //   25: dup
+    //   26: iconst_1
+    //   27: invokestatic 75	com/tencent/mm/sdk/platformtools/Util:getStack	()Lcom/tencent/mm/sdk/platformtools/MMStack;
+    //   30: aastore
+    //   31: invokestatic 117	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   34: aload_0
+    //   35: getfield 40	com/tencent/mm/model/cj:lvW	I
+    //   38: iconst_1
+    //   39: if_icmpne +28 -> 67
+    //   42: ldc 85
+    //   44: ldc 119
+    //   46: iconst_1
+    //   47: anewarray 4	java/lang/Object
+    //   50: dup
+    //   51: iconst_0
+    //   52: invokestatic 75	com/tencent/mm/sdk/platformtools/Util:getStack	()Lcom/tencent/mm/sdk/platformtools/MMStack;
+    //   55: aastore
+    //   56: invokestatic 117	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   59: ldc 112
+    //   61: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   64: aload_0
+    //   65: monitorexit
+    //   66: return
+    //   67: aload_0
+    //   68: invokespecial 49	com/tencent/mm/model/cj:bfu	()V
+    //   71: new 121	com/tencent/mm/f/a/yr
+    //   74: dup
+    //   75: invokespecial 122	com/tencent/mm/f/a/yr:<init>	()V
+    //   78: astore_1
+    //   79: aload_1
+    //   80: getfield 126	com/tencent/mm/f/a/yr:fXR	Lcom/tencent/mm/f/a/yr$a;
+    //   83: iconst_1
+    //   84: putfield 131	com/tencent/mm/f/a/yr$a:status	I
+    //   87: getstatic 137	com/tencent/mm/sdk/event/EventCenter:instance	Lcom/tencent/mm/sdk/event/EventCenter;
+    //   90: aload_1
+    //   91: invokevirtual 141	com/tencent/mm/sdk/event/EventCenter:publish	(Lcom/tencent/mm/sdk/event/IEvent;)Z
+    //   94: pop
+    //   95: ldc 112
+    //   97: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   100: goto -36 -> 64
+    //   103: astore_1
+    //   104: aload_0
+    //   105: monitorexit
+    //   106: aload_1
+    //   107: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	108	0	this	cj
+    //   78	13	1	localyr	com.tencent.mm.f.a.yr
+    //   103	4	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	64	103	finally
+    //   67	100	103	finally
   }
   
-  public final void b(h.c paramc)
+  /* Error */
+  public final void bfx()
   {
-    AppMethodBeat.i(42997);
-    if ((paramc == null) || (paramc.iMe == null))
-    {
-      AppMethodBeat.o(42997);
-      return;
-    }
-    Log.i("MicroMsg.SysCmdMsgExtension", "delete subType:%s, msgId:%s", new Object[] { paramc.iMe, paramc.iMf });
-    Object localObject2 = paramc.iMe;
-    synchronized (this.iFW)
-    {
-      localObject2 = (List)((Map)???).get(localObject2);
-      if ((localObject2 == null) || (((List)localObject2).isEmpty()))
-      {
-        Log.w("MicroMsg.SysCmdMsgExtension", "listener list is empty, return now");
-        AppMethodBeat.o(42997);
-        return;
-      }
-    }
-    Log.i("MicroMsg.SysCmdMsgExtension", "listener list size is %d", new Object[] { Integer.valueOf(((List)localObject2).size()) });
-    ??? = ((List)localObject2).iterator();
-    while (((Iterator)???).hasNext()) {
-      ((a)((Iterator)???).next()).a(paramc);
-    }
-    AppMethodBeat.o(42997);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 142
+    //   4: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: getfield 40	com/tencent/mm/model/cj:lvW	I
+    //   11: iconst_2
+    //   12: if_icmpeq +38 -> 50
+    //   15: ldc 85
+    //   17: ldc 144
+    //   19: iconst_2
+    //   20: anewarray 4	java/lang/Object
+    //   23: dup
+    //   24: iconst_0
+    //   25: aload_0
+    //   26: getfield 40	com/tencent/mm/model/cj:lvW	I
+    //   29: invokestatic 111	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   32: aastore
+    //   33: dup
+    //   34: iconst_1
+    //   35: invokestatic 75	com/tencent/mm/sdk/platformtools/Util:getStack	()Lcom/tencent/mm/sdk/platformtools/MMStack;
+    //   38: aastore
+    //   39: invokestatic 147	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   42: ldc 142
+    //   44: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   47: aload_0
+    //   48: monitorexit
+    //   49: return
+    //   50: ldc 85
+    //   52: ldc 149
+    //   54: iconst_2
+    //   55: anewarray 4	java/lang/Object
+    //   58: dup
+    //   59: iconst_0
+    //   60: aload_0
+    //   61: getfield 34	com/tencent/mm/model/cj:lvU	J
+    //   64: invokestatic 153	com/tencent/mm/sdk/platformtools/Util:milliSecondsToNow	(J)J
+    //   67: invokestatic 93	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   70: aastore
+    //   71: dup
+    //   72: iconst_1
+    //   73: invokestatic 75	com/tencent/mm/sdk/platformtools/Util:getStack	()Lcom/tencent/mm/sdk/platformtools/MMStack;
+    //   76: aastore
+    //   77: invokestatic 117	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   80: aload_0
+    //   81: iconst_3
+    //   82: putfield 40	com/tencent/mm/model/cj:lvW	I
+    //   85: new 121	com/tencent/mm/f/a/yr
+    //   88: dup
+    //   89: invokespecial 122	com/tencent/mm/f/a/yr:<init>	()V
+    //   92: astore_1
+    //   93: aload_1
+    //   94: getfield 126	com/tencent/mm/f/a/yr:fXR	Lcom/tencent/mm/f/a/yr$a;
+    //   97: iconst_3
+    //   98: putfield 131	com/tencent/mm/f/a/yr$a:status	I
+    //   101: getstatic 137	com/tencent/mm/sdk/event/EventCenter:instance	Lcom/tencent/mm/sdk/event/EventCenter;
+    //   104: aload_1
+    //   105: invokevirtual 141	com/tencent/mm/sdk/event/EventCenter:publish	(Lcom/tencent/mm/sdk/event/IEvent;)Z
+    //   108: pop
+    //   109: ldc 142
+    //   111: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   114: goto -67 -> 47
+    //   117: astore_1
+    //   118: aload_0
+    //   119: monitorexit
+    //   120: aload_1
+    //   121: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	122	0	this	cj
+    //   92	13	1	localyr	com.tencent.mm.f.a.yr
+    //   117	4	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	47	117	finally
+    //   50	114	117	finally
   }
   
-  @Deprecated
-  public final void b(String paramString, a parama, boolean paramBoolean)
+  /* Error */
+  public final boolean bfz()
   {
-    AppMethodBeat.i(42990);
-    if ((Util.isNullOrNil(paramString)) || (parama == null))
-    {
-      AppMethodBeat.o(42990);
-      return;
-    }
-    if (paramBoolean) {}
-    synchronized (this.iFW)
-    {
-      paramString = (List)???.get(paramString);
-      if (paramString != null)
-      {
-        try
-        {
-          paramString.remove(parama);
-          return;
-        }
-        finally
-        {
-          AppMethodBeat.o(42990);
-        }
-        ??? = this.iFV;
-      }
-    }
-    AppMethodBeat.o(42990);
-  }
-  
-  public final void b(String paramString, p arg2)
-  {
-    AppMethodBeat.i(42994);
-    if ((Util.isNullOrNil(paramString)) || (??? == null))
-    {
-      AppMethodBeat.o(42994);
-      return;
-    }
-    synchronized (this.iFY)
-    {
-      this.iFY.remove(paramString);
-      AppMethodBeat.o(42994);
-      return;
-    }
-  }
-  
-  public final void b(String paramString, q paramq)
-  {
-    AppMethodBeat.i(42992);
-    if ((Util.isNullOrNil(paramString)) || (paramq == null))
-    {
-      AppMethodBeat.o(42992);
-      return;
-    }
-    synchronized (this.iFX)
-    {
-      paramString = (List)this.iFX.get(paramString);
-      if (paramString == null) {}
-    }
-    AppMethodBeat.o(42992);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 155
+    //   4: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: invokespecial 69	com/tencent/mm/model/cj:bfy	()V
+    //   11: aload_0
+    //   12: getfield 40	com/tencent/mm/model/cj:lvW	I
+    //   15: iconst_2
+    //   16: if_icmpne +14 -> 30
+    //   19: iconst_1
+    //   20: istore_1
+    //   21: ldc 155
+    //   23: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   26: aload_0
+    //   27: monitorexit
+    //   28: iload_1
+    //   29: ireturn
+    //   30: iconst_0
+    //   31: istore_1
+    //   32: ldc 155
+    //   34: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   37: goto -11 -> 26
+    //   40: astore_2
+    //   41: aload_0
+    //   42: monitorexit
+    //   43: aload_2
+    //   44: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	45	0	this	cj
+    //   20	12	1	bool	boolean
+    //   40	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	19	40	finally
+    //   21	26	40	finally
+    //   32	37	40	finally
   }
   
   public static abstract interface a
   {
-    public abstract void a(h.a parama);
-    
-    public abstract void a(h.c paramc);
+    public abstract boolean bfB();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.model.cj
  * JD-Core Version:    0.7.0.1
  */

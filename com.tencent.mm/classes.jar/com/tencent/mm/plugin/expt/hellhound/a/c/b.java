@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 
 public final class b
 {
-  public static void Hj(int paramInt)
+  public static void KT(int paramInt)
   {
     AppMethodBeat.i(122030);
     if (!TextUtils.isEmpty("page_hell_seq_mmkv_key")) {
@@ -17,7 +17,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.c.b
  * JD-Core Version:    0.7.0.1
  */

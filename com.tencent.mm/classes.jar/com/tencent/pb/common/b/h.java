@@ -8,17 +8,17 @@ import com.tencent.pb.common.c.c;
 
 public final class h
 {
-  public static boolean RDd = true;
-  private static long RDe = -1L;
-  public static h.a RDf = h.a.RDh;
-  private static h.a RDg = h.a.RDh;
+  public static boolean ZeF = true;
+  private static long ZeG = -1L;
+  public static h.a ZeH = h.a.ZeJ;
+  private static h.a ZeI = h.a.ZeJ;
   
-  private static NetworkInfo hja()
+  private static NetworkInfo ikK()
   {
     NetworkInfo localNetworkInfo;
     try
     {
-      ConnectivityManager localConnectivityManager = (ConnectivityManager)c.Hhs.getSystemService("connectivity");
+      ConnectivityManager localConnectivityManager = (ConnectivityManager)c.NYh.getSystemService("connectivity");
       if (localConnectivityManager == null)
       {
         b.w("getSystemService(Context.CONNECTIVITY_SERVICE) null", new Object[0]);
@@ -51,7 +51,7 @@ public final class h
   {
     try
     {
-      NetworkInfo localNetworkInfo = hja();
+      NetworkInfo localNetworkInfo = ikK();
       if (localNetworkInfo == null) {
         return false;
       }
@@ -64,7 +64,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.pb.common.b.h
  * JD-Core Version:    0.7.0.1
  */

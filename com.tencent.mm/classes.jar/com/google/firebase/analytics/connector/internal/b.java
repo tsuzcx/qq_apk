@@ -10,20 +10,20 @@ import java.util.List;
 
 public final class b
 {
-  private static final List<String> bKE;
-  private static final List<String> bKF;
-  private static final List<String> bKG;
-  private static final List<String> bKH;
-  private static final List<String> bKI;
+  private static final List<String> bIj;
+  private static final List<String> bIk;
+  private static final List<String> bIl;
+  private static final List<String> bIm;
+  private static final List<String> bIn;
   
   static
   {
     AppMethodBeat.i(116777);
-    bKE = Arrays.asList(new String[] { "_e", "_f", "_iap", "_s", "_au", "_ui", "_cd", "app_open" });
-    bKF = Arrays.asList(new String[] { "auto", "app", "am" });
-    bKG = Arrays.asList(new String[] { "_r", "_dbg" });
-    bKH = Arrays.asList((String[])ArrayUtils.concat(new String[][] { AppMeasurement.UserProperty.zzadb, AppMeasurement.UserProperty.zzadc }));
-    bKI = Arrays.asList(new String[] { "^_ltv_[A-Z]{3}$", "^_cc[1-5]{1}$" });
+    bIj = Arrays.asList(new String[] { "_e", "_f", "_iap", "_s", "_au", "_ui", "_cd", "app_open" });
+    bIk = Arrays.asList(new String[] { "auto", "app", "am" });
+    bIl = Arrays.asList(new String[] { "_r", "_dbg" });
+    bIm = Arrays.asList((String[])ArrayUtils.concat(new String[][] { AppMeasurement.UserProperty.zzadb, AppMeasurement.UserProperty.zzadc }));
+    bIn = Arrays.asList(new String[] { "^_ltv_[A-Z]{3}$", "^_cc[1-5]{1}$" });
     AppMethodBeat.o(116777);
   }
   
@@ -35,7 +35,7 @@ public final class b
       AppMethodBeat.o(116776);
       return true;
     }
-    if (!bM(paramString1))
+    if (!bY(paramString1))
     {
       AppMethodBeat.o(116776);
       return false;
@@ -45,7 +45,7 @@ public final class b
       AppMethodBeat.o(116776);
       return false;
     }
-    paramString2 = bKG.iterator();
+    paramString2 = bIl.iterator();
     while (paramString2.hasNext()) {
       if (paramBundle.containsKey((String)paramString2.next()))
       {
@@ -83,10 +83,10 @@ public final class b
     return true;
   }
   
-  public static boolean bM(String paramString)
+  public static boolean bY(String paramString)
   {
     AppMethodBeat.i(116773);
-    if (!bKF.contains(paramString))
+    if (!bIk.contains(paramString))
     {
       AppMethodBeat.o(116773);
       return true;
@@ -95,15 +95,15 @@ public final class b
     return false;
   }
   
-  public static boolean bN(String paramString)
+  public static boolean bZ(String paramString)
   {
     AppMethodBeat.i(116775);
-    if (bKH.contains(paramString))
+    if (bIm.contains(paramString))
     {
       AppMethodBeat.o(116775);
       return false;
     }
-    Iterator localIterator = bKI.iterator();
+    Iterator localIterator = bIn.iterator();
     while (localIterator.hasNext()) {
       if (paramString.matches((String)localIterator.next()))
       {
@@ -115,17 +115,17 @@ public final class b
     return true;
   }
   
-  public static boolean e(String paramString, Bundle paramBundle)
+  public static boolean j(String paramString, Bundle paramBundle)
   {
     AppMethodBeat.i(116774);
-    if (bKE.contains(paramString))
+    if (bIj.contains(paramString))
     {
       AppMethodBeat.o(116774);
       return false;
     }
     if (paramBundle != null)
     {
-      paramString = bKG.iterator();
+      paramString = bIl.iterator();
       while (paramString.hasNext()) {
         if (paramBundle.containsKey((String)paramString.next()))
         {
@@ -140,7 +140,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.firebase.analytics.connector.internal.b
  * JD-Core Version:    0.7.0.1
  */

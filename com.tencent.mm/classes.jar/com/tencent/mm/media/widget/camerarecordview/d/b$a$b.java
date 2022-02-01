@@ -5,50 +5,50 @@ import java.util.ArrayList;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/widget/camerarecordview/process/ICommonCameraContainer$CameraDeviceConfig$FocusConfigItem;", "", "focusPriority", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "(Ljava/util/ArrayList;)V", "getFocusPriority", "()Ljava/util/ArrayList;", "setFocusPriority", "component1", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-mediaeditor_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/widget/camerarecordview/process/ICommonCameraContainer$CameraDeviceConfig$FocusConfigItem;", "", "focusPriority", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "(Ljava/util/ArrayList;)V", "getFocusPriority", "()Ljava/util/ArrayList;", "setFocusPriority", "component1", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-mediaeditor_release"})
 public final class b$a$b
 {
-  public ArrayList<String> irf = null;
+  public ArrayList<String> lgk = null;
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(218895);
+    AppMethodBeat.i(258122);
     if (this != paramObject)
     {
       if ((paramObject instanceof b))
       {
         paramObject = (b)paramObject;
-        if (!p.j(this.irf, paramObject.irf)) {}
+        if (!p.h(this.lgk, paramObject.lgk)) {}
       }
     }
     else
     {
-      AppMethodBeat.o(218895);
+      AppMethodBeat.o(258122);
       return true;
     }
-    AppMethodBeat.o(218895);
+    AppMethodBeat.o(258122);
     return false;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(218894);
-    ArrayList localArrayList = this.irf;
+    AppMethodBeat.i(258121);
+    ArrayList localArrayList = this.lgk;
     if (localArrayList != null)
     {
       int i = localArrayList.hashCode();
-      AppMethodBeat.o(218894);
+      AppMethodBeat.o(258121);
       return i;
     }
-    AppMethodBeat.o(218894);
+    AppMethodBeat.o(258121);
     return 0;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(218893);
-    String str = "FocusConfigItem(focusPriority=" + this.irf + ")";
-    AppMethodBeat.o(218893);
+    AppMethodBeat.i(258119);
+    String str = "FocusConfigItem(focusPriority=" + this.lgk + ")";
+    AppMethodBeat.o(258119);
     return str;
   }
 }

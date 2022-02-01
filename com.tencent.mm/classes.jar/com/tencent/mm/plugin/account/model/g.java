@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.account.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.yc;
-import com.tencent.mm.protocal.protobuf.yd;
+import com.tencent.mm.protocal.protobuf.yi;
+import com.tencent.mm.protocal.protobuf.yj;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class g
@@ -16,26 +16,26 @@ public final class g
   implements m
 {
   private i callback;
-  public d iUB;
+  public d lKU;
   
   public g()
   {
-    AppMethodBeat.i(196849);
+    AppMethodBeat.i(213692);
     d.a locala = new d.a();
-    locala.iLN = new yc();
-    locala.iLO = new yd();
+    locala.lBU = new yi();
+    locala.lBV = new yj();
     locala.uri = "/cgi-bin/micromsg-bin/checkcansetalias";
     locala.funcId = getType();
-    this.iUB = locala.aXF();
-    AppMethodBeat.o(196849);
+    this.lKU = locala.bgN();
+    AppMethodBeat.o(213692);
   }
   
   public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
-    AppMethodBeat.i(196850);
+    AppMethodBeat.i(213695);
     this.callback = parami;
-    int i = dispatch(paramg, this.iUB, this);
-    AppMethodBeat.o(196850);
+    int i = dispatch(paramg, this.lKU, this);
+    AppMethodBeat.o(213695);
     return i;
   }
   
@@ -46,10 +46,10 @@ public final class g
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(196851);
+    AppMethodBeat.i(213698);
     Log.i("MicroMsg.NetSceneCheckModifyAlias", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(196851);
+    AppMethodBeat.o(213698);
   }
 }
 

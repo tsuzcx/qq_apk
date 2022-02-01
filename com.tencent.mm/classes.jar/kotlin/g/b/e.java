@@ -1,44 +1,43 @@
 package kotlin.g.b;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 import kotlin.g.b;
 import kotlin.l.a;
 import kotlin.l.d;
-import kotlin.l.j;
+import kotlin.l.m;
 
 public abstract class e
   implements Serializable, a
 {
-  public static final Object SYm = ;
-  private transient a SYk;
-  protected final Object SYl;
+  public static final Object aaAY = ;
+  private transient a aaAW;
+  protected final Object aaAX;
   
   public e()
   {
-    this(SYm);
+    this(aaAY);
   }
   
   protected e(Object paramObject)
   {
-    this.SYl = paramObject;
+    this.aaAX = paramObject;
   }
   
-  public d Rs()
+  public d Vc()
   {
     throw new AbstractMethodError();
   }
   
-  public final Object ag(Object... paramVarArgs)
+  public final Object ak(Object... paramVarArgs)
   {
-    return hxS().ag(paramVarArgs);
+    return iCa().ak(paramVarArgs);
   }
   
-  public final Object cx(Map paramMap)
+  public final Object cE(Map paramMap)
   {
-    return hxS().cx(paramMap);
+    return iCa().cE(paramMap);
   }
   
   public String getName()
@@ -46,65 +45,47 @@ public abstract class e
     throw new AbstractMethodError();
   }
   
-  public final List<j> getParameters()
-  {
-    return hxS().getParameters();
-  }
-  
   public String getSignature()
   {
     throw new AbstractMethodError();
   }
   
-  protected abstract a hxP();
+  protected abstract a iBX();
   
-  public final Object hxQ()
+  public final Object iBY()
   {
-    return this.SYl;
+    return this.aaAX;
   }
   
-  public final a hxR()
+  public final a iBZ()
   {
-    a locala2 = this.SYk;
+    a locala2 = this.aaAW;
     a locala1 = locala2;
     if (locala2 == null)
     {
-      locala1 = hxP();
-      this.SYk = locala1;
+      locala1 = iBX();
+      this.aaAW = locala1;
     }
     return locala1;
   }
   
-  protected a hxS()
+  protected a iCa()
   {
-    a locala = hxR();
+    a locala = iBZ();
     if (locala == this) {
       throw new b();
     }
     return locala;
   }
   
-  static final class a
-    implements Serializable
+  public final List<m> iCb()
   {
-    private static final a SYn;
-    
-    static
-    {
-      AppMethodBeat.i(128955);
-      SYn = new a();
-      AppMethodBeat.o(128955);
-    }
-    
-    private Object readResolve()
-    {
-      return SYn;
-    }
+    return iCa().iCb();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.g.b.e
  * JD-Core Version:    0.7.0.1
  */

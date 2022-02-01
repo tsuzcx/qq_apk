@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.fingerprint.d;
 
 import android.content.Context;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 
 public abstract interface d
 {

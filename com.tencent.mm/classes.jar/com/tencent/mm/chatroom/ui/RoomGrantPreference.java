@@ -11,13 +11,13 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class RoomGrantPreference
   extends Preference
 {
-  TextView gyt;
+  TextView jiw;
   String num;
   
   public RoomGrantPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.gyt = null;
+    this.jiw = null;
     this.num = "";
   }
   
@@ -25,20 +25,20 @@ public class RoomGrantPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(12731);
-    this.gyt = null;
+    this.jiw = null;
     this.num = "";
-    setLayoutResource(2131495538);
-    setWidgetLayoutResource(2131495622);
+    setLayoutResource(a.f.mm_preference);
+    auN(a.f.mm_preference_submenu);
     AppMethodBeat.o(12731);
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(12733);
-    if (this.gyt == null) {
-      this.gyt = ((TextView)paramView.findViewById(2131299223));
+    if (this.jiw == null) {
+      this.jiw = ((TextView)paramView.findViewById(a.e.content_tv));
     }
-    this.gyt.setText(this.num);
+    this.jiw.setText(this.num);
     super.onBindView(paramView);
     AppMethodBeat.o(12733);
   }
@@ -47,9 +47,9 @@ public class RoomGrantPreference
   {
     AppMethodBeat.i(12732);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.e.content);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2131495580, localViewGroup);
+    View.inflate(this.mContext, a.f.jee, localViewGroup);
     AppMethodBeat.o(12732);
     return paramViewGroup;
   }

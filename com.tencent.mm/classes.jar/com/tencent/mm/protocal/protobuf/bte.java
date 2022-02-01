@@ -4,85 +4,93 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class bte
-  extends dop
+  extends dyl
 {
-  public int LPy;
-  public int him;
+  public long Tdn;
+  public long Tdo;
+  public int scene;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(155412);
+    AppMethodBeat.i(245722);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aM(2, this.him);
-      paramVarArgs.aM(3, this.LPy);
-      AppMethodBeat.o(155412);
+      paramVarArgs.bm(2, this.Tdn);
+      paramVarArgs.bm(3, this.Tdo);
+      paramVarArgs.aY(4, this.scene);
+      AppMethodBeat.o(245722);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label402;
+        break label424;
       }
     }
-    label402:
-    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label424:
+    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bu(2, this.him);
-      int j = g.a.a.b.b.a.bu(3, this.LPy);
-      AppMethodBeat.o(155412);
-      return paramInt + i + j;
+      int i = g.a.a.b.b.a.p(2, this.Tdn);
+      int j = g.a.a.b.b.a.p(3, this.Tdo);
+      int k = g.a.a.b.b.a.bM(4, this.scene);
+      AppMethodBeat.o(245722);
+      return paramInt + i + j + k;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(155412);
+        AppMethodBeat.o(245722);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         bte localbte = (bte)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(155412);
+          AppMethodBeat.o(245722);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localbte.BaseRequest = ((jr)localObject1);
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            jg localjg = new jg();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localjg.parseFrom((byte[])localObject);
+            }
+            localbte.BaseRequest = localjg;
             paramInt += 1;
           }
-          AppMethodBeat.o(155412);
+          AppMethodBeat.o(245722);
           return 0;
         case 2: 
-          localbte.him = ((g.a.a.a.a)localObject1).UbS.zi();
-          AppMethodBeat.o(155412);
+          localbte.Tdn = ((g.a.a.a.a)localObject).abFh.AN();
+          AppMethodBeat.o(245722);
+          return 0;
+        case 3: 
+          localbte.Tdo = ((g.a.a.a.a)localObject).abFh.AN();
+          AppMethodBeat.o(245722);
           return 0;
         }
-        localbte.LPy = ((g.a.a.a.a)localObject1).UbS.zi();
-        AppMethodBeat.o(155412);
+        localbte.scene = ((g.a.a.a.a)localObject).abFh.AK();
+        AppMethodBeat.o(245722);
         return 0;
       }
-      AppMethodBeat.o(155412);
+      AppMethodBeat.o(245722);
       return -1;
     }
   }

@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.account.security.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.emd;
-import com.tencent.mm.protocal.protobuf.eme;
+import com.tencent.mm.protocal.protobuf.ewj;
+import com.tencent.mm.protocal.protobuf.ewk;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
@@ -19,36 +19,36 @@ public final class c
   implements m
 {
   private i callback;
-  public String dGL;
-  public String dGP;
   public String deviceName;
+  public String fzB;
+  public String fzF;
   private d rr;
   
   public c(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(125516);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new emd();
-    ((d.a)localObject).iLO = new eme();
+    ((d.a)localObject).lBU = new ewj();
+    ((d.a)localObject).lBV = new ewk();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/updatesafedevice";
     ((d.a)localObject).funcId = 361;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    this.dGL = paramString1;
+    this.rr = ((d.a)localObject).bgN();
+    this.fzB = paramString1;
     this.deviceName = paramString2;
-    this.dGP = paramString3;
-    localObject = (emd)this.rr.iLK.iLR;
-    ((emd)localObject).Lke = paramString1;
-    ((emd)localObject).Name = paramString2;
-    ((emd)localObject).KLO = paramString3;
+    this.fzF = paramString3;
+    localObject = (ewj)d.b.b(this.rr.lBR);
+    ((ewj)localObject).Sll = paramString1;
+    ((ewj)localObject).CMP = paramString2;
+    ((ewj)localObject).RMK = paramString3;
     AppMethodBeat.o(125516);
   }
   
   public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(125518);
-    if ((Util.isNullOrNil(this.dGL)) || (Util.isNullOrNil(this.deviceName)) || (Util.isNullOrNil(this.dGP)))
+    if ((Util.isNullOrNil(this.fzB)) || (Util.isNullOrNil(this.deviceName)) || (Util.isNullOrNil(this.fzF)))
     {
       Log.e("MicroMsg.NetscenUpdateSafeDevice", "null device is or device name or device type");
       AppMethodBeat.o(125518);

@@ -1,245 +1,257 @@
 package com.tencent.mm.ui.tools;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.ContentResolver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.text.format.DateFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.ag;
-import com.tencent.mm.al.f;
-import com.tencent.mm.ba.d;
-import com.tencent.mm.g.a.an;
-import com.tencent.mm.g.a.fm;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.model.ap;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.bp;
-import com.tencent.mm.model.bp.a;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.ah.a.k;
+import com.tencent.mm.b.g;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storage.aa;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.bw;
-import com.tencent.mm.storage.u;
-import com.tencent.mm.ui.LauncherUI;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.base.h;
-import java.lang.ref.WeakReference;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 public final class b
 {
-  private static boolean isDeleteCancel = false;
-  
-  public static void a(com.tencent.mm.api.c paramc, Activity paramActivity, as paramas, int paramInt)
+  public static void a(Activity paramActivity, Intent paramIntent1, Intent paramIntent2, String paramString, int paramInt)
   {
-    AppMethodBeat.i(38982);
-    a(paramc, paramActivity, paramas, false, null, paramInt);
-    AppMethodBeat.o(38982);
+    AppMethodBeat.i(143034);
+    b(paramActivity, paramIntent1, paramIntent2, paramString, paramInt, null);
+    AppMethodBeat.o(143034);
   }
   
-  public static void a(com.tencent.mm.api.c paramc, Activity paramActivity, as paramas, boolean paramBoolean, int paramInt)
+  public static void b(final Activity paramActivity, Intent paramIntent1, final Intent paramIntent2, final String paramString, final int paramInt, final a parama)
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(38985);
-    if ((paramc == null) || (paramActivity == null) || (paramas == null))
+    AppMethodBeat.i(143035);
+    if ((paramIntent1 == null) || (paramIntent1.getData() == null))
     {
-      boolean bool1;
-      if (paramc == null)
+      if (paramIntent1 == null) {}
+      for (boolean bool = true;; bool = false)
       {
-        paramBoolean = true;
-        if (paramActivity != null) {
-          break label82;
-        }
-        bool1 = true;
-        label33:
-        if (paramas != null) {
-          break label88;
-        }
-      }
-      for (;;)
-      {
-        Log.e("MicroMsg.BizContactDeleteUtil", "error args, %b, %b, %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-        AppMethodBeat.o(38985);
+        Log.e("MicroMsg.AsyncObtainImage", "param error, %b", new Object[] { Boolean.valueOf(bool) });
+        AppMethodBeat.o(143035);
         return;
-        paramBoolean = false;
-        break;
-        label82:
-        bool1 = false;
-        break label33;
-        label88:
-        bool2 = false;
       }
     }
-    final String str = paramas.field_username;
-    paramas.aqR();
-    bg.aVF();
-    com.tencent.mm.model.c.aSM().d(new d(str, paramInt));
-    if (ab.IQ(str))
+    if (!paramIntent1.getData().toString().startsWith("content://com.google.android.gallery3d"))
     {
-      ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().aNa(str);
-      bg.aVF();
-      com.tencent.mm.model.c.aSX().Kj(str);
-      if (com.tencent.mm.app.plugin.a.a.d(paramc))
+      paramIntent1 = h(paramActivity, paramIntent1, paramString);
+      Log.i("MicroMsg.AsyncObtainImage", "resolvePhotoFromIntent, filePath:%s", new Object[] { paramIntent1 });
+      if (!Util.isNullOrNil(paramIntent1))
       {
-        paramc = new fm();
-        paramc.dIM.brandName = str;
-        EventCenter.instance.publish(paramc);
-      }
-      ag.bag().No(str);
-      ag.ban().aEn(str);
-      ag.bap().aEn(str);
-      if (paramBoolean)
-      {
-        paramInt = paramActivity.getIntent().getIntExtra("Kdel_from", -1);
-        if (paramInt != 0) {
-          break label484;
+        if (parama != null) {
+          paramIntent2.putExtra("CropImage_OutputPath", parama.bbX(paramIntent1));
         }
-        paramc = new Intent(paramActivity, LauncherUI.class);
-        paramc.addFlags(67108864);
-        paramc = new com.tencent.mm.hellhoundlib.b.a().bl(paramc);
-        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramc.axQ(), "com/tencent/mm/ui/tools/BizContactDeleteUtil", "dealDelContactEvent", "(Lcom/tencent/mm/api/BizInfo;Landroid/app/Activity;Lcom/tencent/mm/storage/Contact;ZI)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramActivity.startActivity((Intent)paramc.pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/ui/tools/BizContactDeleteUtil", "dealDelContactEvent", "(Lcom/tencent/mm/api/BizInfo;Landroid/app/Activity;Lcom/tencent/mm/storage/Contact;ZI)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramIntent2.putExtra("CropImage_ImgPath", paramIntent1);
+        paramActivity.startActivityForResult(paramIntent2, paramInt);
       }
+      AppMethodBeat.o(143035);
+      return;
     }
+    new AsyncTask()
+    {
+      private ProgressDialog XNt;
+      private boolean XNu;
+      private String filePath;
+      private Uri uri;
+      
+      private Integer hYk()
+      {
+        AppMethodBeat.i(143031);
+        try
+        {
+          Object localObject = this.uri;
+          if (localObject == null)
+          {
+            AppMethodBeat.o(143031);
+            return null;
+          }
+          localObject = BitmapUtil.getBitmapNative(this.uri);
+          this.filePath = b.x(paramString, (Bitmap)localObject);
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            Log.printErrStackTrace("MicroMsg.AsyncObtainImage", localException, "doInBackground", new Object[0]);
+          }
+        }
+        AppMethodBeat.o(143031);
+        return null;
+      }
+      
+      protected final void onPreExecute()
+      {
+        AppMethodBeat.i(143030);
+        try
+        {
+          this.uri = this.val$data.getData();
+          this.XNu = false;
+          Activity localActivity = paramActivity;
+          paramActivity.getString(a.k.app_tip);
+          this.XNt = h.a(localActivity, paramActivity.getString(a.k.app_getting_img), true, new DialogInterface.OnCancelListener()
+          {
+            public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
+            {
+              AppMethodBeat.i(143029);
+              b.2.a(b.2.this);
+              AppMethodBeat.o(143029);
+            }
+          });
+          AppMethodBeat.o(143030);
+          return;
+        }
+        catch (Exception localException)
+        {
+          Log.printErrStackTrace("MicroMsg.AsyncObtainImage", localException, "onPreExecute", new Object[0]);
+          AppMethodBeat.o(143030);
+        }
+      }
+    }.execute(new Integer[] { Integer.valueOf(0) });
+    AppMethodBeat.o(143035);
+  }
+  
+  public static String h(Context paramContext, Intent paramIntent, String paramString)
+  {
+    Object localObject1 = null;
+    Object localObject2 = null;
+    AppMethodBeat.i(143036);
+    if ((paramContext == null) || (paramIntent == null) || (paramString == null))
+    {
+      Log.e("MicroMsg.AsyncObtainImage", "resolvePhotoFromIntent fail, invalid argument");
+      AppMethodBeat.o(143036);
+      return null;
+    }
+    Uri localUri = Uri.parse(paramIntent.toURI());
+    Cursor localCursor = paramContext.getContentResolver().query(localUri, null, null, null, null);
+    if ((localCursor != null) && (localCursor.getCount() > 0))
+    {
+      Log.i("MicroMsg.AsyncObtainImage", "resolve photo from cursor");
+      paramContext = localObject2;
+    }
+    label393:
+    label396:
     for (;;)
     {
-      paramActivity.finish();
-      AppMethodBeat.o(38985);
-      return;
-      isDeleteCancel = false;
-      paramActivity.getString(2131755998);
-      bp.a local3 = new bp.a()
+      try
       {
-        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-        {
-          AppMethodBeat.i(38979);
-          b.TT();
-          AppMethodBeat.o(38979);
+        if (!localUri.toString().startsWith("content://com.google.android.gallery3d")) {
+          continue;
         }
+        paramContext = localObject2;
+        paramIntent = x(paramString, BitmapUtil.getBitmapNative(paramIntent.getData()));
+        paramContext = paramIntent;
       }
+      catch (Exception paramIntent)
       {
-        public final boolean amG()
+        Log.printErrStackTrace("MicroMsg.AsyncObtainImage", paramIntent, "resolve photo error.", new Object[0]);
+        continue;
+      }
+      if (localCursor != null) {
+        localCursor.close();
+      }
+      AppMethodBeat.o(143036);
+      return paramContext;
+      paramContext = localObject2;
+      localCursor.moveToFirst();
+      paramContext = localObject2;
+      paramIntent = localCursor.getString(localCursor.getColumnIndex("_data"));
+      paramContext = paramIntent;
+      Log.i("MicroMsg.AsyncObtainImage", "photo from resolver, path:".concat(String.valueOf(paramIntent)));
+      paramContext = paramIntent;
+      continue;
+      if (paramIntent.getData() != null)
+      {
+        paramString = paramIntent.getData().getPath();
+        paramContext = paramString;
+        if (!Util.isNullOrNil(paramString))
         {
-          AppMethodBeat.i(38980);
-          boolean bool = b.isDeleteCancel;
-          AppMethodBeat.o(38980);
-          return bool;
-        }
-        
-        public final void amH()
-        {
-          AppMethodBeat.i(38981);
-          if (this.Qpo.UD())
-          {
-            com.tencent.mm.kernel.g.af(com.tencent.mm.al.q.class);
-            u.biP(str);
-            an localan = new an();
-            localan.dDr.userName = str;
-            EventCenter.instance.publish(localan);
+          paramContext = paramString;
+          if (!new q(paramString).ifE()) {
+            paramContext = null;
           }
-          ag.bah().delete(str);
-          if (this.Qps.get() != null) {
-            ((com.tencent.mm.ui.base.q)this.Qps.get()).dismiss();
-          }
-          AppMethodBeat.o(38981);
         }
-      };
-      ag.bau();
-      com.tencent.mm.al.a.ML(str);
-      ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().c(str, paramas);
-      if (paramc.UF()) {
-        com.tencent.mm.al.g.Nj(paramc.field_username);
+        Log.i("MicroMsg.AsyncObtainImage", "photo file from data, path:".concat(String.valueOf(paramContext)));
+        if (!Util.isNullOrNil(paramContext)) {
+          break label396;
+        }
+        paramContext = paramIntent.getData().getHost();
+        if ((Util.isNullOrNil(paramContext)) || (new q(paramContext).ifE())) {
+          break label393;
+        }
+        paramContext = localObject1;
       }
       for (;;)
       {
-        if ((paramActivity == null) || (!paramBoolean)) {
-          break label482;
-        }
-        paramActivity.setResult(-1, paramActivity.getIntent().putExtra("_delete_ok_", true));
+        Log.i("MicroMsg.AsyncObtainImage", "photo file from data, host:".concat(String.valueOf(paramContext)));
         break;
-        bp.a(str, local3);
-        bg.aVF();
-        com.tencent.mm.model.c.aST().bjW(str);
-      }
-      label482:
-      break;
-      label484:
-      if (paramInt == 2)
-      {
-        paramc = new Intent();
-        paramc.addFlags(67108864);
-        com.tencent.mm.br.c.b(paramActivity, "brandservice", ".ui.BrandServiceIndexUI", paramc);
-      }
-    }
-  }
-  
-  public static void a(com.tencent.mm.api.c paramc, final Activity paramActivity, final as paramas, final boolean paramBoolean, final Runnable paramRunnable, final int paramInt)
-  {
-    AppMethodBeat.i(38983);
-    if ((paramc == null) || (paramActivity == null) || (paramas == null))
-    {
-      boolean bool1;
-      if (paramc == null)
-      {
-        paramBoolean = true;
-        if (paramActivity != null) {
-          break label85;
-        }
-        bool1 = true;
-        label31:
-        if (paramas != null) {
-          break label91;
-        }
-      }
-      label85:
-      label91:
-      for (boolean bool2 = true;; bool2 = false)
-      {
-        Log.e("MicroMsg.BizContactDeleteUtil", "bizInfo null : %s, context null : %s, ct null : %s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-        AppMethodBeat.o(38983);
-        return;
-        paramBoolean = false;
-        break;
-        bool1 = false;
-        break label31;
-      }
-    }
-    if (paramc.UG()) {}
-    for (String str = paramActivity.getString(2131756901);; str = paramActivity.getString(2131756902, new Object[] { paramas.arJ() }))
-    {
-      h.a(paramActivity, str, "", paramActivity.getString(2131758037), paramActivity.getString(2131758036), new DialogInterface.OnClickListener()
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        if ((paramIntent.getAction() != null) && (paramIntent.getAction().equals("inline-data")))
         {
-          AppMethodBeat.i(38978);
-          b.a(this.Qpo, paramActivity, paramas, paramBoolean, paramInt);
-          ((com.tencent.mm.api.q)com.tencent.mm.kernel.g.af(com.tencent.mm.api.q.class)).c(this.Qpo);
-          if (paramRunnable != null) {
-            paramRunnable.run();
-          }
-          AppMethodBeat.o(38978);
+          paramContext = x(paramString, (Bitmap)paramIntent.getExtras().get("data"));
+          Log.i("MicroMsg.AsyncObtainImage", "resolve photo from action-inline-data:%s", new Object[] { paramContext });
+          break;
         }
-      }, null, 2131100994);
-      AppMethodBeat.o(38983);
-      return;
+        if (localCursor != null) {
+          localCursor.close();
+        }
+        Log.e("MicroMsg.AsyncObtainImage", "resolve photo from intent failed");
+        AppMethodBeat.o(143036);
+        return null;
+      }
     }
   }
   
-  public static void c(com.tencent.mm.api.c paramc, Activity paramActivity, as paramas)
+  public static String x(String paramString, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(38984);
-    a(paramc, paramActivity, paramas, false, 0);
-    AppMethodBeat.o(38984);
+    AppMethodBeat.i(143037);
+    try
+    {
+      Object localObject = g.getMessageDigest(DateFormat.format("yyyy-MM-dd-HH-mm-ss", System.currentTimeMillis()).toString().getBytes()) + ".jpg";
+      paramString = paramString + (String)localObject;
+      localObject = new q(paramString);
+      if (!((q)localObject).ifE()) {
+        ((q)localObject).ifM();
+      }
+      localObject = new BufferedOutputStream(u.an((q)localObject));
+      paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject);
+      ((BufferedOutputStream)localObject).close();
+      Log.i("MicroMsg.AsyncObtainImage", "photo image from data, path:".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(143037);
+      return paramString;
+    }
+    catch (IOException paramString)
+    {
+      Log.printErrStackTrace("MicroMsg.AsyncObtainImage", paramString, "saveBmp Error.", new Object[0]);
+      AppMethodBeat.o(143037);
+    }
+    return null;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract String bbX(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.tools.b
  * JD-Core Version:    0.7.0.1
  */

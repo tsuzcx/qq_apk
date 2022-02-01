@@ -1,129 +1,97 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Parcelable;
 import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.d.a;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.plugin.game.luggage.g.i;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
-import com.tencent.mm.plugin.webview.luggage.w;
-import com.tencent.mm.plugin.wepkg.e;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bs;
+import com.tencent.mm.plugin.webview.ui.tools.game.e;
+import com.tencent.mm.plugin.webview.ui.tools.game.e.b;
+import com.tencent.mm.plugin.webview.ui.tools.game.g;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.WeChatHosts;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 import org.json.JSONObject;
 
 public class ah
-  extends br<a>
+  extends bs<i>
 {
   public final void a(Context paramContext, String paramString, br.a parama) {}
   
-  public final void b(final com.tencent.luggage.d.b<a>.a paramb)
+  public final void b(b<i>.a paramb)
   {
-    AppMethodBeat.i(83092);
-    Log.i("MicroMsg.JsApiSetGameData", "invokeInOwn");
-    Object localObject2 = paramb.ctb.csi;
-    if (localObject2 == null)
+    AppMethodBeat.i(83089);
+    Object localObject1 = new TreeMap(new Comparator() {});
+    Object localObject3 = paramb.crh.cqn;
+    Object localObject2 = ((JSONObject)localObject3).optString("type");
+    boolean bool = "1".equals(((JSONObject)localObject3).optString("isReportNow"));
+    localObject3 = ((JSONObject)localObject3).optJSONObject("data");
+    if (localObject3 == null)
     {
-      Log.e("MicroMsg.JsApiSetGameData", "data is null");
-      paramb.c("null_data", null);
-      AppMethodBeat.o(83092);
+      Log.i("MicroMsg.JsApiReportGameWeb", "data is null or not json");
+      paramb.a("data_is_null", null);
+      AppMethodBeat.o(83089);
       return;
     }
-    a locala = (a)paramb.cta;
-    if ((locala instanceof i))
+    Integer localInteger;
+    if ("1".equals(localObject2))
     {
-      str1 = ((i)locala).ITw.getAppId();
-      localObject1 = str1;
-      if (!Util.isNullOrNil(str1)) {
-        break label152;
-      }
-      localObject1 = Uri.parse(Util.nullAsNil(((i)locala).coX()));
-      if ((((Uri)localObject1).getHost() == null) || (!((Uri)localObject1).getHost().equals(WeChatHosts.domainString(2131761707))))
+      Log.i("MicroMsg.JsApiReportGameWeb", "report web performance, url:%s", new Object[] { ((i)paramb.crg).cDu() });
+      ((Map)localObject1).put(Integer.valueOf(e.b.QnU), Boolean.valueOf(bool));
+      localObject2 = g.cn((JSONObject)localObject3);
+      localObject3 = ((Map)localObject2).keySet().iterator();
+      while (((Iterator)localObject3).hasNext())
       {
-        Log.i("MicroMsg.JsApiSetGameData", "appId is null");
-        paramb.c("appid_null", null);
-        AppMethodBeat.o(83092);
-        return;
+        localInteger = (Integer)((Iterator)localObject3).next();
+        if (!((Map)localObject1).containsKey(localInteger)) {
+          ((Map)localObject1).put(localInteger, ((Map)localObject2).get(localInteger));
+        }
       }
-    }
-    Object localObject1 = "wx62d9035fd4fd2059";
-    label152:
-    String str1 = ((JSONObject)localObject2).optString("key");
-    final String str2 = ((JSONObject)localObject2).optString("value");
-    String str3 = ((JSONObject)localObject2).optString("weight", "1");
-    String str4 = ((JSONObject)localObject2).optString("expireTime");
-    boolean bool1 = ((JSONObject)localObject2).optBoolean("autoClean", true);
-    boolean bool2 = ((JSONObject)localObject2).optBoolean("pageCache", false);
-    if ((Util.isNullOrNil(str1)) || (Util.isNullOrNil(str2)) || (str1.length() > 80))
-    {
-      Log.i("MicroMsg.JsApiSetGameData", "key or value is invalid");
-      paramb.c("null_key", null);
-      AppMethodBeat.o(83092);
+      g.S(((i)paramb.crg).ewX(), (Map)localObject1);
+      paramb.a("", null);
+      AppMethodBeat.o(83089);
       return;
     }
-    localObject2 = new Bundle();
-    ((Bundle)localObject2).putString("appId", (String)localObject1);
-    ((Bundle)localObject2).putString("key", str1);
-    ((Bundle)localObject2).putString("weight", str3);
-    ((Bundle)localObject2).putString("expireTime", str4);
-    ((Bundle)localObject2).putBoolean("autoClean", bool1);
-    com.tencent.mm.plugin.webview.b.b.gam();
-    long l = com.tencent.mm.plugin.webview.b.b.lM(str1, str2);
-    ((Bundle)localObject2).putLong("storeSize", l);
-    if ((l <= 204800L) && (!bool2)) {
-      ((Bundle)localObject2).putString("value", str2);
-    }
-    if (bool2) {
-      if ((locala instanceof i))
+    if ("2".equals(localObject2))
+    {
+      ((Map)localObject1).putAll(((i)paramb.crg).ewY());
+      localObject2 = g.cn((JSONObject)localObject3);
+      localObject3 = ((Map)localObject2).keySet().iterator();
+      while (((Iterator)localObject3).hasNext())
       {
-        if (((com.tencent.mm.game.report.a.b)com.tencent.mm.kernel.g.af(com.tencent.mm.game.report.a.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.rOO, 0) == 1) {}
-        for (bool1 = true;; bool1 = false)
-        {
-          bool2 = ((i)locala).dTP().JLM;
-          Log.i("MicroMsg.JsApiSetGameData", "isOpenPageCache:%b, allowSetPageCache:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-          if (bool1) {
-            break;
-          }
-          paramb.c("close_page_cache", null);
-          AppMethodBeat.o(83092);
-          return;
-        }
-        if (!bool2)
-        {
-          paramb.c("ban_set_page_cache", null);
-          AppMethodBeat.o(83092);
+        localInteger = (Integer)((Iterator)localObject3).next();
+        if (!((Map)localObject1).containsKey(localInteger)) {
+          ((Map)localObject1).put(localInteger, ((Map)localObject2).get(localInteger));
         }
       }
-      else
-      {
-        paramb.c("ban_set_page_cache", null);
-      }
+      localObject1 = e.bW((Map)localObject1);
+      Log.i("MicroMsg.JsApiReportGameWeb", "report web runtime. isReportNow:%b, reportData: [%s]", new Object[] { Boolean.valueOf(bool), localObject1 });
+      h.IzE.b(16145, (String)localObject1, bool, false);
+      paramb.a("", null);
+      AppMethodBeat.o(83089);
+      return;
     }
-    h.a(MainProcessIPCService.dkO, (Parcelable)localObject2, a.class, new d() {});
-    AppMethodBeat.o(83092);
+    Log.i("MicroMsg.JsApiReportGameWeb", "type is error. type:%s", new Object[] { localObject2 });
+    paramb.a("type_not_right", null);
+    AppMethodBeat.o(83089);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "setGameData";
+    return "reportGameWeb";
   }
-  
-  static class a
-    implements com.tencent.mm.ipcinvoker.b<Bundle, Bundle>
-  {}
 }
 
 

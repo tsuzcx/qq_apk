@@ -5,27 +5,39 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.wallet_core.d;
-import com.tencent.mm.wallet_core.d.g;
+import com.tencent.mm.wallet_core.d.f;
 import com.tencent.mm.wallet_core.d.i;
 
-@a(3)
+@com.tencent.mm.ui.base.a(3)
 public abstract class WalletPreferenceUI
   extends MMPreference
-  implements com.tencent.mm.wallet_core.d.f
+  implements f
 {
-  protected g mNetController = null;
-  protected i mNetSceneMgr = null;
-  protected d mProcess = null;
+  private com.tencent.mm.wallet_core.d.g mNetController = null;
+  private i mNetSceneMgr = null;
+  private d mProcess = null;
   
-  public abstract boolean e(int paramInt1, int paramInt2, String paramString, q paramq);
+  public abstract boolean f(int paramInt1, int paramInt2, String paramString, q paramq);
   
-  public final i hhW()
+  public final com.tencent.mm.wallet_core.d.g getNetController()
+  {
+    if (this.mNetController == null)
+    {
+      if (this.mProcess == null) {
+        this.mProcess = com.tencent.mm.wallet_core.a.bF(this);
+      }
+      this.mNetController = this.mProcess.a(this, this.mNetSceneMgr);
+    }
+    return this.mNetController;
+  }
+  
+  public final i ijz()
   {
     if (this.mNetSceneMgr == null) {
       this.mNetSceneMgr = new i(this, this);
@@ -42,7 +54,7 @@ public abstract class WalletPreferenceUI
     this.mNetSceneMgr.addSceneEndListener(385);
     this.mNetSceneMgr.addSceneEndListener(1518);
     if (getLayoutId() > 0) {
-      f.hhT();
+      g.iju();
     }
   }
   
@@ -56,11 +68,11 @@ public abstract class WalletPreferenceUI
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq, boolean paramBoolean)
   {
-    if ((!e(paramInt1, paramInt2, paramString, paramq)) && (paramInt2 != 0))
+    if ((!f(paramInt1, paramInt2, paramString, paramq)) && (paramInt2 != 0))
     {
       paramq = paramString;
       if (Util.isNullOrNil(paramString)) {
-        paramq = getString(2131767667);
+        paramq = getString(a.i.wallet_data_err);
       }
       h.a(this, paramq, null, false, new DialogInterface.OnClickListener()
       {

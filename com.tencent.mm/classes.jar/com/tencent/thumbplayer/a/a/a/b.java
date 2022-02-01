@@ -20,91 +20,91 @@ public final class b
 {
   protected final void finalize()
   {
-    AppMethodBeat.i(188748);
+    AppMethodBeat.i(218925);
     try
     {
       super.finalize();
-      AppMethodBeat.o(188748);
+      AppMethodBeat.o(218925);
       return;
     }
     catch (Exception localException)
     {
       g.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
-      AppMethodBeat.o(188748);
+      AppMethodBeat.o(218925);
     }
   }
   
   public final int getCurrentPosition()
   {
-    AppMethodBeat.i(188759);
+    AppMethodBeat.i(218939);
     try
     {
       int i = super.getCurrentPosition();
-      AppMethodBeat.o(188759);
+      AppMethodBeat.o(218939);
       return i;
     }
     catch (Exception localException)
     {
       g.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
-      AppMethodBeat.o(188759);
+      AppMethodBeat.o(218939);
     }
     return 0;
   }
   
   public final int getDuration()
   {
-    AppMethodBeat.i(188760);
+    AppMethodBeat.i(218940);
     try
     {
       int i = super.getDuration();
-      AppMethodBeat.o(188760);
+      AppMethodBeat.o(218940);
       return i;
     }
     catch (Exception localException)
     {
       g.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
-      AppMethodBeat.o(188760);
+      AppMethodBeat.o(218940);
     }
     return 0;
   }
   
   public final int getSelectedTrack(int paramInt)
   {
-    AppMethodBeat.i(188761);
+    AppMethodBeat.i(218941);
     try
     {
       paramInt = super.getSelectedTrack(paramInt);
-      AppMethodBeat.o(188761);
+      AppMethodBeat.o(218941);
       return paramInt;
     }
     catch (Exception localException)
     {
       g.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
-      AppMethodBeat.o(188761);
+      AppMethodBeat.o(218941);
     }
     return 0;
   }
   
   public final MediaPlayer.TrackInfo[] getTrackInfo()
   {
-    AppMethodBeat.i(188762);
+    AppMethodBeat.i(218942);
     try
     {
       MediaPlayer.TrackInfo[] arrayOfTrackInfo = super.getTrackInfo();
-      AppMethodBeat.o(188762);
+      AppMethodBeat.o(218942);
       return arrayOfTrackInfo;
     }
     catch (Exception localException)
     {
       g.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
-      AppMethodBeat.o(188762);
+      AppMethodBeat.o(218942);
     }
     return new MediaPlayer.TrackInfo[0];
   }
   
   public final int getVideoHeight()
   {
-    AppMethodBeat.i(188752);
+    AppMethodBeat.i(218931);
     int i = 0;
     try
     {
@@ -118,13 +118,13 @@ public final class b
         g.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
       }
     }
-    AppMethodBeat.o(188752);
+    AppMethodBeat.o(218931);
     return i;
   }
   
   public final int getVideoWidth()
   {
-    AppMethodBeat.i(188751);
+    AppMethodBeat.i(218929);
     int i = 0;
     try
     {
@@ -138,29 +138,29 @@ public final class b
         g.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
       }
     }
-    AppMethodBeat.o(188751);
+    AppMethodBeat.o(218929);
     return i;
   }
   
   public final void prepare()
   {
-    AppMethodBeat.i(188756);
+    AppMethodBeat.i(218936);
     try
     {
       super.prepare();
-      AppMethodBeat.o(188756);
+      AppMethodBeat.o(218936);
       return;
     }
     catch (Exception localException)
     {
       g.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
-      AppMethodBeat.o(188756);
+      AppMethodBeat.o(218936);
     }
   }
   
   public final void release()
   {
-    AppMethodBeat.i(188749);
+    AppMethodBeat.i(218927);
     try
     {
       if (("N1W".equalsIgnoreCase(Build.MODEL)) || ("X909T".equalsIgnoreCase(Build.MODEL)) || ("X909".equalsIgnoreCase(Build.MODEL)) || ("N1T".equalsIgnoreCase(Build.MODEL)))
@@ -183,13 +183,13 @@ public final class b
         try
         {
           super.release();
-          AppMethodBeat.o(188749);
+          AppMethodBeat.o(218927);
           return;
         }
         catch (Exception localException)
         {
           g.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
-          AppMethodBeat.o(188749);
+          AppMethodBeat.o(218927);
         }
         localNoSuchFieldException = localNoSuchFieldException;
         g.e("TPThumbPlayer[TPMediaPlayer.java]", localNoSuchFieldException);
@@ -206,167 +206,167 @@ public final class b
   
   public final void reset()
   {
-    AppMethodBeat.i(188754);
+    AppMethodBeat.i(218934);
     try
     {
       super.reset();
-      AppMethodBeat.o(188754);
+      AppMethodBeat.o(218934);
       return;
     }
     catch (Exception localException)
     {
       g.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
-      AppMethodBeat.o(188754);
+      AppMethodBeat.o(218934);
     }
   }
   
   public final void setDataSource(Context paramContext, Uri paramUri)
   {
-    AppMethodBeat.i(188757);
+    AppMethodBeat.i(218937);
     try
     {
       super.setDataSource(paramContext, paramUri);
-      AppMethodBeat.o(188757);
+      AppMethodBeat.o(218937);
       return;
     }
     catch (Exception paramContext)
     {
       g.e("TPThumbPlayer[TPMediaPlayer.java]", paramContext);
-      AppMethodBeat.o(188757);
+      AppMethodBeat.o(218937);
     }
   }
   
   public final void setDataSource(Context paramContext, Uri paramUri, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(188763);
+    AppMethodBeat.i(218943);
     try
     {
       super.setDataSource(paramContext, paramUri, paramMap);
-      AppMethodBeat.o(188763);
+      AppMethodBeat.o(218943);
       return;
     }
     catch (Exception paramContext)
     {
       g.e("TPThumbPlayer[TPMediaPlayer.java]", paramContext);
-      AppMethodBeat.o(188763);
+      AppMethodBeat.o(218943);
     }
   }
   
   public final void setDataSource(FileDescriptor paramFileDescriptor)
   {
-    AppMethodBeat.i(188758);
+    AppMethodBeat.i(218938);
     try
     {
       super.setDataSource(paramFileDescriptor);
-      AppMethodBeat.o(188758);
+      AppMethodBeat.o(218938);
       return;
     }
     catch (Exception paramFileDescriptor)
     {
       g.e("TPThumbPlayer[TPMediaPlayer.java]", paramFileDescriptor);
-      AppMethodBeat.o(188758);
+      AppMethodBeat.o(218938);
     }
   }
   
   public final void setDisplay(SurfaceHolder paramSurfaceHolder)
   {
-    AppMethodBeat.i(188750);
+    AppMethodBeat.i(218928);
     try
     {
       super.setDisplay(paramSurfaceHolder);
-      AppMethodBeat.o(188750);
+      AppMethodBeat.o(218928);
       return;
     }
     catch (Exception paramSurfaceHolder)
     {
       g.e("TPThumbPlayer[TPMediaPlayer.java]", paramSurfaceHolder);
-      AppMethodBeat.o(188750);
+      AppMethodBeat.o(218928);
     }
   }
   
   public final void setLooping(boolean paramBoolean)
   {
-    AppMethodBeat.i(188764);
+    AppMethodBeat.i(218944);
     try
     {
       super.setLooping(paramBoolean);
-      AppMethodBeat.o(188764);
+      AppMethodBeat.o(218944);
       return;
     }
     catch (Exception localException)
     {
       g.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
-      AppMethodBeat.o(188764);
+      AppMethodBeat.o(218944);
     }
   }
   
   public final void setPlaybackParams(PlaybackParams paramPlaybackParams)
   {
-    AppMethodBeat.i(188765);
+    AppMethodBeat.i(218946);
     try
     {
       super.setPlaybackParams(paramPlaybackParams);
-      AppMethodBeat.o(188765);
+      AppMethodBeat.o(218946);
       return;
     }
     catch (Exception paramPlaybackParams)
     {
       g.e("TPThumbPlayer[TPMediaPlayer.java]", paramPlaybackParams);
-      AppMethodBeat.o(188765);
+      AppMethodBeat.o(218946);
     }
   }
   
   public final void setSurface(Surface paramSurface)
   {
-    AppMethodBeat.i(188753);
+    AppMethodBeat.i(218933);
     try
     {
       super.setSurface(paramSurface);
-      AppMethodBeat.o(188753);
+      AppMethodBeat.o(218933);
       return;
     }
     catch (Exception paramSurface)
     {
       g.e("TPThumbPlayer[TPMediaPlayer.java]", paramSurface);
-      AppMethodBeat.o(188753);
+      AppMethodBeat.o(218933);
     }
   }
   
   public final void setVolume(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(188766);
+    AppMethodBeat.i(218947);
     try
     {
       super.setVolume(paramFloat1, paramFloat2);
-      AppMethodBeat.o(188766);
+      AppMethodBeat.o(218947);
       return;
     }
     catch (Exception localException)
     {
       g.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
-      AppMethodBeat.o(188766);
+      AppMethodBeat.o(218947);
     }
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(188755);
+    AppMethodBeat.i(218935);
     try
     {
       super.stop();
-      AppMethodBeat.o(188755);
+      AppMethodBeat.o(218935);
       return;
     }
     catch (Exception localException)
     {
       g.e("TPThumbPlayer[TPMediaPlayer.java]", localException);
-      AppMethodBeat.o(188755);
+      AppMethodBeat.o(218935);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.thumbplayer.a.a.a.b
  * JD-Core Version:    0.7.0.1
  */

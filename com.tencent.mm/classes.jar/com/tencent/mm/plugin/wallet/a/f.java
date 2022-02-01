@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.wallet.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String HEn;
-  public String HEo;
-  public String HEp;
+  public String Owg;
+  public String Owh;
+  public String Owi;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -15,42 +15,42 @@ public final class f
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.HEn != null) {
-        paramVarArgs.e(1, this.HEn);
+      if (this.Owg != null) {
+        paramVarArgs.f(1, this.Owg);
       }
-      if (this.HEo != null) {
-        paramVarArgs.e(2, this.HEo);
+      if (this.Owh != null) {
+        paramVarArgs.f(2, this.Owh);
       }
-      if (this.HEp != null) {
-        paramVarArgs.e(3, this.HEp);
+      if (this.Owi != null) {
+        paramVarArgs.f(3, this.Owi);
       }
       AppMethodBeat.o(91290);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.HEn == null) {
+      if (this.Owg == null) {
         break label334;
       }
     }
     label334:
-    for (int i = g.a.a.b.b.a.f(1, this.HEn) + 0;; i = 0)
+    for (int i = g.a.a.b.b.a.g(1, this.Owg) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.HEo != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.HEo);
+      if (this.Owh != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.Owh);
       }
       i = paramInt;
-      if (this.HEp != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.HEp);
+      if (this.Owi != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.Owi);
       }
       AppMethodBeat.o(91290);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
         AppMethodBeat.o(91290);
@@ -66,15 +66,15 @@ public final class f
           AppMethodBeat.o(91290);
           return -1;
         case 1: 
-          localf.HEn = locala.UbS.readString();
+          localf.Owg = locala.abFh.readString();
           AppMethodBeat.o(91290);
           return 0;
         case 2: 
-          localf.HEo = locala.UbS.readString();
+          localf.Owh = locala.abFh.readString();
           AppMethodBeat.o(91290);
           return 0;
         }
-        localf.HEp = locala.UbS.readString();
+        localf.Owi = locala.abFh.readString();
         AppMethodBeat.o(91290);
         return 0;
       }

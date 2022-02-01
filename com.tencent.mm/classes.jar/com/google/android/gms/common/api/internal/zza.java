@@ -98,10 +98,8 @@ public final class zza
         Object localObject1 = this.zzdt;
         this.zzdt = new ArrayList();
         localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext()) {
-          ((Runnable)((Iterator)localObject1).next()).run();
-        }
-        AppMethodBeat.o(11162);
+        if (((Iterator)localObject1).hasNext()) {}
+        return;
       }
       finally
       {
@@ -112,7 +110,7 @@ public final class zza
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.zza
  * JD-Core Version:    0.7.0.1
  */

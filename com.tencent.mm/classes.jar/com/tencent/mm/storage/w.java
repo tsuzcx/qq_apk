@@ -8,28 +8,28 @@ import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
 import junit.framework.Assert;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/storage/BizMsgResortTest;", "", "()V", "TAG", "", "resortTestOpen", "", "getResortTestOpen", "()I", "setResortTestOpen", "(I)V", "checkReqData", "", "item", "Lcom/tencent/mm/protocal/protobuf/BizMsgItem;", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "beginTime", "", "checkReqLimit", "reqLimit", "itemSize", "checkRespData", "isResortTestOpen", "", "onCheckFail", "errMsg", "plugin-biz_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/storage/BizMsgResortTest;", "", "()V", "TAG", "", "resortTestOpen", "", "getResortTestOpen", "()I", "setResortTestOpen", "(I)V", "checkReqData", "", "item", "Lcom/tencent/mm/protocal/protobuf/BizMsgItem;", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "beginTime", "", "checkReqLimit", "reqLimit", "itemSize", "checkRespData", "isResortTestOpen", "", "onCheckFail", "errMsg", "plugin-biz_release"})
 public final class w
 {
-  private static int NPJ;
-  public static final w NPK;
+  private static int VdB;
+  public static final w VdC;
   
   static
   {
-    AppMethodBeat.i(212571);
-    NPK = new w();
-    NPJ = -1;
-    AppMethodBeat.o(212571);
+    AppMethodBeat.i(205221);
+    VdC = new w();
+    VdB = -1;
+    AppMethodBeat.o(205221);
   }
   
-  public static void ajS(int paramInt)
+  public static void asn(int paramInt)
   {
-    NPJ = paramInt;
+    VdB = paramInt;
   }
   
-  static void biV(String paramString)
+  static void bvr(String paramString)
   {
-    AppMethodBeat.i(212570);
+    AppMethodBeat.i(205219);
     Log.e("MicroMsg.BizMsgResortTest", "onCheckFail ".concat(String.valueOf(paramString)));
     if ((BuildInfo.DEBUG) || (Log.getLogLevel() <= 1))
     {
@@ -41,28 +41,28 @@ public final class w
         Assert.assertTrue("onCheckFail ".concat(String.valueOf(paramString)), false);
       }
     }
-    AppMethodBeat.o(212570);
+    AppMethodBeat.o(205219);
   }
   
-  static boolean gAk()
+  static boolean hwr()
   {
-    AppMethodBeat.i(212569);
-    if (NPJ != -1)
+    AppMethodBeat.i(205218);
+    if (VdB != -1)
     {
-      if (NPJ == 1)
+      if (VdB == 1)
       {
-        AppMethodBeat.o(212569);
+        AppMethodBeat.o(205218);
         return true;
       }
-      AppMethodBeat.o(212569);
+      AppMethodBeat.o(205218);
       return false;
     }
     if (((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (WeChatEnvironment.hasDebugger())) && (Log.getLogLevel() < 2))
     {
-      AppMethodBeat.o(212569);
+      AppMethodBeat.o(205218);
       return true;
     }
-    AppMethodBeat.o(212569);
+    AppMethodBeat.o(205218);
     return false;
   }
 }

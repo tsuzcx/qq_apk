@@ -2,13 +2,11 @@ package com.tencent.mm.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.f.c.au;
 import com.tencent.mm.k.a.a.a;
-import com.tencent.mm.k.a.a.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.chatroom.a.c;
-import com.tencent.mm.protocal.protobuf.xh;
+import com.tencent.mm.protocal.protobuf.xn;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
@@ -25,17 +23,17 @@ public final class ah
   extends au
 {
   protected static IAutoDBItem.MAutoDBInfo info;
-  private a NRC;
-  public a NRD;
-  private List<String> NRE;
-  private Map<String, b> iPG;
+  public a VfA;
+  private List<String> VfB;
+  private a Vfz;
+  private Map<String, com.tencent.mm.k.a.a.b> lFW;
   
   static
   {
     AppMethodBeat.i(43163);
     IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[27];
-    localMAutoDBInfo.columns = new String[28];
+    localMAutoDBInfo.fields = new Field[28];
+    localMAutoDBInfo.columns = new String[29];
     StringBuilder localStringBuilder = new StringBuilder();
     localMAutoDBInfo.columns[0] = "chatroomname";
     localMAutoDBInfo.colsMap.put("chatroomname", "TEXT default ''  PRIMARY KEY ");
@@ -106,46 +104,50 @@ public final class ah
     localMAutoDBInfo.colsMap.put("chatroomnoticePublishTime", "LONG");
     localStringBuilder.append(" chatroomnoticePublishTime LONG");
     localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[17] = "chatroomLocalVersion";
+    localMAutoDBInfo.columns[17] = "chatroomNoticeNew";
+    localMAutoDBInfo.colsMap.put("chatroomNoticeNew", "INTEGER");
+    localStringBuilder.append(" chatroomNoticeNew INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[18] = "chatroomLocalVersion";
     localMAutoDBInfo.colsMap.put("chatroomLocalVersion", "LONG");
     localStringBuilder.append(" chatroomLocalVersion LONG");
     localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[18] = "chatroomStatus";
+    localMAutoDBInfo.columns[19] = "chatroomStatus";
     localMAutoDBInfo.colsMap.put("chatroomStatus", "INTEGER default '0' ");
     localStringBuilder.append(" chatroomStatus INTEGER default '0' ");
     localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[19] = "memberCount";
+    localMAutoDBInfo.columns[20] = "memberCount";
     localMAutoDBInfo.colsMap.put("memberCount", "INTEGER default '-1' ");
     localStringBuilder.append(" memberCount INTEGER default '-1' ");
     localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[20] = "chatroomfamilystatusmodifytime";
+    localMAutoDBInfo.columns[21] = "chatroomfamilystatusmodifytime";
     localMAutoDBInfo.colsMap.put("chatroomfamilystatusmodifytime", "LONG default '0' ");
     localStringBuilder.append(" chatroomfamilystatusmodifytime LONG default '0' ");
     localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[21] = "associateOpenIMRoomName";
+    localMAutoDBInfo.columns[22] = "associateOpenIMRoomName";
     localMAutoDBInfo.colsMap.put("associateOpenIMRoomName", "TEXT");
     localStringBuilder.append(" associateOpenIMRoomName TEXT");
     localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[22] = "openIMRoomMigrateStatus";
+    localMAutoDBInfo.columns[23] = "openIMRoomMigrateStatus";
     localMAutoDBInfo.colsMap.put("openIMRoomMigrateStatus", "INTEGER default '0' ");
     localStringBuilder.append(" openIMRoomMigrateStatus INTEGER default '0' ");
     localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[23] = "saveByteVersion";
+    localMAutoDBInfo.columns[24] = "saveByteVersion";
     localMAutoDBInfo.colsMap.put("saveByteVersion", "TEXT");
     localStringBuilder.append(" saveByteVersion TEXT");
     localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[24] = "handleByteVersion";
+    localMAutoDBInfo.columns[25] = "handleByteVersion";
     localMAutoDBInfo.colsMap.put("handleByteVersion", "TEXT");
     localStringBuilder.append(" handleByteVersion TEXT");
     localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[25] = "roomInfoDetailResByte";
+    localMAutoDBInfo.columns[26] = "roomInfoDetailResByte";
     localMAutoDBInfo.colsMap.put("roomInfoDetailResByte", "BLOB");
     localStringBuilder.append(" roomInfoDetailResByte BLOB");
     localStringBuilder.append(", ");
-    localMAutoDBInfo.columns[26] = "oldChatroomVersion";
+    localMAutoDBInfo.columns[27] = "oldChatroomVersion";
     localMAutoDBInfo.colsMap.put("oldChatroomVersion", "INTEGER");
     localStringBuilder.append(" oldChatroomVersion INTEGER");
-    localMAutoDBInfo.columns[27] = "rowid";
+    localMAutoDBInfo.columns[28] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
     info = localMAutoDBInfo;
     AppMethodBeat.o(43163);
@@ -154,10 +156,10 @@ public final class ah
   public ah()
   {
     AppMethodBeat.i(43135);
-    this.NRC = new a();
-    this.NRD = this.NRC;
-    this.NRE = new LinkedList();
-    this.iPG = new ConcurrentHashMap();
+    this.Vfz = new a();
+    this.VfA = this.Vfz;
+    this.VfB = new LinkedList();
+    this.lFW = new ConcurrentHashMap();
     AppMethodBeat.o(43135);
   }
   
@@ -167,18 +169,18 @@ public final class ah
     if (this.field_roomdata == null) {
       parama = new a();
     }
-    parama = parama.gCs.iterator();
+    parama = parama.jmy.iterator();
     while (parama.hasNext())
     {
-      b localb = (b)parama.next();
+      com.tencent.mm.k.a.a.b localb = (com.tencent.mm.k.a.a.b)parama.next();
       if ((localb != null) && (localb.userName != null)) {
-        this.iPG.put(localb.userName, localb);
+        this.lFW.put(localb.userName, localb);
       }
     }
     AppMethodBeat.o(43138);
   }
   
-  private static int aPN(String paramString)
+  private static int baK(String paramString)
   {
     int j = 0;
     AppMethodBeat.i(43151);
@@ -202,7 +204,7 @@ public final class ah
     }
   }
   
-  private static a bjh(String paramString)
+  private static a bvB(String paramString)
   {
     AppMethodBeat.i(43152);
     a locala = new a();
@@ -228,7 +230,7 @@ public final class ah
     {
       try
       {
-        b localb = new b();
+        com.tencent.mm.k.a.a.b localb = new com.tencent.mm.k.a.a.b();
         if (i == 0)
         {
           str2 = ".RoomData.Member.$UserName";
@@ -238,9 +240,9 @@ public final class ah
           if (!Util.isNullOrNil(str2))
           {
             localb.userName = str2;
-            localb.gCv = Util.nullAs((String)localMap.get(str1), "");
-            localb.gCw = aPN((String)localMap.get(paramString));
-            locala.gCs.add(localb);
+            localb.jmB = Util.nullAs((String)localMap.get(str1), "");
+            localb.jmC = baK((String)localMap.get(paramString));
+            locala.jmy.add(localb);
             i += 1;
           }
         }
@@ -254,10 +256,10 @@ public final class ah
           paramString = ".RoomData.Member" + i + ".Flag";
           continue;
         }
-        locala.type = aPN((String)localMap.get(".RoomData.Type"));
-        locala.status = aPN((String)localMap.get(".RoomData.Status"));
-        locala.maxCount = aPN((String)localMap.get(".RoomData.MaxCount"));
-        locala.gCt = Util.nullAs((String)localMap.get(".RoomData.ExtInfo.Upgrader"), "");
+        locala.type = baK((String)localMap.get(".RoomData.Type"));
+        locala.status = baK((String)localMap.get(".RoomData.Status"));
+        locala.iWH = baK((String)localMap.get(".RoomData.MaxCount"));
+        locala.jmz = Util.nullAs((String)localMap.get(".RoomData.ExtInfo.Upgrader"), "");
         AppMethodBeat.o(43152);
         return locala;
       }
@@ -273,7 +275,7 @@ public final class ah
     }
   }
   
-  public static List<String> bji(String paramString)
+  public static List<String> bvC(String paramString)
   {
     AppMethodBeat.i(43154);
     LinkedList localLinkedList = new LinkedList();
@@ -293,7 +295,7 @@ public final class ah
     return localLinkedList;
   }
   
-  private static String gP(List<String> paramList)
+  private static String hy(List<String> paramList)
   {
     AppMethodBeat.i(43153);
     if ((paramList == null) || (paramList.size() == 0))
@@ -316,7 +318,7 @@ public final class ah
     return localObject;
   }
   
-  public final ah AL(boolean paramBoolean)
+  public final ah ET(boolean paramBoolean)
   {
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
@@ -326,37 +328,51 @@ public final class ah
     }
   }
   
-  public final void I(String paramString, List<xh> paramList)
+  public final void H(String paramString, List<xn> paramList)
   {
     AppMethodBeat.i(43159);
-    if (b(this.NRD)) {
-      gBs();
+    if (b(this.VfA)) {
+      hxD();
     }
     paramList = paramList.iterator();
     Object localObject;
     while (paramList.hasNext())
     {
-      localObject = (xh)paramList.next();
-      if (this.iPG.containsKey(((xh)localObject).UserName))
+      localObject = (xn)paramList.next();
+      if (this.lFW.containsKey(((xn)localObject).UserName))
       {
-        b localb = (b)this.iPG.get(((xh)localObject).UserName);
-        localb.gCv = ((xh)localObject).Liq;
-        localb.gCw = ((xh)localObject).Lit;
-        localb.gCx = ((xh)localObject).Liu;
+        com.tencent.mm.k.a.a.b localb = (com.tencent.mm.k.a.a.b)this.lFW.get(((xn)localObject).UserName);
+        localb.jmB = ((xn)localObject).SjH;
+        localb.jmC = ((xn)localObject).SjK;
+        localb.jmD = ((xn)localObject).SjL;
       }
     }
-    this.NRD.gCs.clear();
-    paramList = this.iPG.keySet().iterator();
+    this.VfA.jmy.clear();
+    paramList = this.lFW.keySet().iterator();
     while (paramList.hasNext())
     {
       localObject = (String)paramList.next();
-      this.NRD.gCs.add(this.iPG.get(localObject));
+      this.VfA.jmy.add(this.lFW.get(localObject));
     }
-    a(paramString, this.NRD, false);
+    a(paramString, this.VfA, false);
     AppMethodBeat.o(43159);
   }
   
-  public final boolean JO(String paramString)
+  public final String PJ(String paramString)
+  {
+    AppMethodBeat.i(43150);
+    paramString = bvz(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(43150);
+      return "";
+    }
+    paramString = Util.nullAs(paramString.jmB, "");
+    AppMethodBeat.o(43150);
+    return paramString;
+  }
+  
+  public final boolean Rh(String paramString)
   {
     AppMethodBeat.i(43162);
     if ((!Util.isNullOrNil(this.field_roomowner)) && (this.field_roomowner.equals(paramString)))
@@ -376,10 +392,10 @@ public final class ah
     if (!paramBoolean)
     {
       localObject = null;
-      Iterator localIterator = parama.gCs.iterator();
+      Iterator localIterator = parama.jmy.iterator();
       if (localIterator.hasNext())
       {
-        b localb = (b)localIterator.next();
+        com.tencent.mm.k.a.a.b localb = (com.tencent.mm.k.a.a.b)localIterator.next();
         if ((localb.userName == null) || (!localb.userName.equals(paramString))) {
           break label228;
         }
@@ -392,18 +408,18 @@ public final class ah
       break;
       if (localObject != null)
       {
-        this.field_selfDisplayName = localObject.gCv;
-        this.field_isShowname = (localObject.gCw & 0x1);
+        this.field_selfDisplayName = localObject.jmB;
+        this.field_isShowname = (localObject.jmC & 0x1);
       }
-      for (int i = localObject.gCw;; i = 0)
+      for (int i = localObject.jmC;; i = 0)
       {
         Log.d("MicroMsg.ChatRoomMember", "displayName[%s] roomFlag[%d] flag[%d]", new Object[] { this.field_selfDisplayName, Integer.valueOf(this.field_chatroomdataflag), Integer.valueOf(i) });
-        parama.cSx = (i & 0x2 | parama.cSx & 0xFFFFFFFD);
-        this.field_chatroomdataflag = parama.cSx;
+        parama.cUP = (i & 0x2 | parama.cUP & 0xFFFFFFFD);
+        this.field_chatroomdataflag = parama.cUP;
         try
         {
           this.field_roomdata = parama.toByteArray();
-          this.NRD = parama;
+          this.VfA = parama;
           a(parama);
           AppMethodBeat.o(43158);
           return this;
@@ -419,16 +435,16 @@ public final class ah
     }
   }
   
-  public final void akd(int paramInt)
+  public final void asA(int paramInt)
   {
     AppMethodBeat.i(43143);
-    if (b(this.NRD)) {
-      gBs();
+    if (b(this.VfA)) {
+      hxD();
     }
-    this.NRD.dTg = paramInt;
+    this.VfA.fMC = paramInt;
     try
     {
-      this.field_roomdata = this.NRD.toByteArray();
+      this.field_roomdata = this.VfA.toByteArray();
       AppMethodBeat.o(43143);
       return;
     }
@@ -439,7 +455,7 @@ public final class ah
     }
   }
   
-  public final boolean amD()
+  public final boolean asE()
   {
     AppMethodBeat.i(43161);
     if (Util.isNullOrNil(this.field_roomowner))
@@ -447,14 +463,14 @@ public final class ah
       AppMethodBeat.o(43161);
       return false;
     }
-    String str = z.aTY();
-    if ((c)g.af(c.class) == null)
+    String str = z.bcZ();
+    if ((com.tencent.mm.plugin.chatroom.a.b)h.ae(com.tencent.mm.plugin.chatroom.a.b.class) == null)
     {
       Log.e("MicroMsg.ChatRoomMember", "service is null");
       AppMethodBeat.o(43161);
       return false;
     }
-    if ((((c)g.af(c.class)).akx(this.field_chatroomname)) && (bjf(str))) {}
+    if ((((com.tencent.mm.plugin.chatroom.a.b)h.ae(com.tencent.mm.plugin.chatroom.a.b.class)).asl(this.field_chatroomname)) && (bvA(str))) {}
     for (int i = 1;; i = 0)
     {
       boolean bool = this.field_roomowner.equals(str);
@@ -471,7 +487,7 @@ public final class ah
   public final boolean b(a parama)
   {
     AppMethodBeat.i(43140);
-    if (this.NRC.computeSize() == parama.computeSize())
+    if (this.Vfz.computeSize() == parama.computeSize())
     {
       AppMethodBeat.o(43140);
       return true;
@@ -480,44 +496,27 @@ public final class ah
     return false;
   }
   
-  public final List<String> bax()
+  public final List<String> bjL()
   {
     AppMethodBeat.i(43137);
-    if ((this.NRE == null) || (this.NRE.size() == 0)) {
-      this.NRE = bji(this.field_memberlist);
+    if ((this.VfB == null) || (this.VfB.size() == 0)) {
+      this.VfB = bvC(this.field_memberlist);
     }
-    List localList = this.NRE;
+    List localList = this.VfB;
     AppMethodBeat.o(43137);
     return localList;
   }
   
-  public final b bje(String paramString)
-  {
-    AppMethodBeat.i(43141);
-    if (this.iPG == null)
-    {
-      Log.e("MicroMsg.ChatRoomMember", "getChatroomData hashMap is null!");
-      AppMethodBeat.o(43141);
-      return null;
-    }
-    if (this.iPG.size() <= 0) {
-      gBs();
-    }
-    paramString = (b)this.iPG.get(paramString);
-    AppMethodBeat.o(43141);
-    return paramString;
-  }
-  
-  public final boolean bjf(String paramString)
+  public final boolean bvA(String paramString)
   {
     AppMethodBeat.i(43147);
-    paramString = bje(paramString);
+    paramString = bvz(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(43147);
       return false;
     }
-    if ((paramString.gCw & 0x800) != 0)
+    if ((paramString.jmC & 0x800) != 0)
     {
       AppMethodBeat.o(43147);
       return true;
@@ -526,17 +525,20 @@ public final class ah
     return false;
   }
   
-  public final String bjg(String paramString)
+  public final com.tencent.mm.k.a.a.b bvz(String paramString)
   {
-    AppMethodBeat.i(43149);
-    paramString = bje(paramString);
-    if (paramString == null)
+    AppMethodBeat.i(43141);
+    if (this.lFW == null)
     {
-      AppMethodBeat.o(43149);
-      return "";
+      Log.e("MicroMsg.ChatRoomMember", "getChatroomData hashMap is null!");
+      AppMethodBeat.o(43141);
+      return null;
     }
-    paramString = Util.nullAs(paramString.gCx, "");
-    AppMethodBeat.o(43149);
+    if (this.lFW.size() <= 0) {
+      hxD();
+    }
+    paramString = (com.tencent.mm.k.a.a.b)this.lFW.get(paramString);
+    AppMethodBeat.o(43141);
     return paramString;
   }
   
@@ -558,41 +560,31 @@ public final class ah
   
   public final void convertFrom(Cursor paramCursor)
   {
-    AppMethodBeat.i(225980);
+    AppMethodBeat.i(240934);
     super.convertFrom(paramCursor);
     if ((this.field_roomInfoDetailResByte != null) && (this.field_roomInfoDetailResByte.length > 0)) {
       Log.i("MicroMsg.ChatRoomMember", "handleGetRoomInfoResUnKnownField saveByteVersion:%s handleByteVersion:%s byte:%s", new Object[] { this.field_saveByteVersion, this.field_handleByteVersion, Integer.valueOf(this.field_roomInfoDetailResByte.length) });
     }
-    AppMethodBeat.o(225980);
+    AppMethodBeat.o(240934);
   }
   
-  public final boolean gBA()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    return this.field_openIMRoomMigrateStatus == 1;
+    return info;
   }
   
-  public final boolean gBB()
-  {
-    return this.field_openIMRoomMigrateStatus == 2;
-  }
-  
-  public final boolean gBC()
-  {
-    return (this.field_openIMRoomMigrateStatus == 3) || (this.field_openIMRoomMigrateStatus == 4);
-  }
-  
-  public final a gBr()
+  public final a hxC()
   {
     AppMethodBeat.i(43136);
-    if (b(this.NRD)) {
-      gBs();
+    if (b(this.VfA)) {
+      hxD();
     }
-    a locala = this.NRD;
+    a locala = this.VfA;
     AppMethodBeat.o(43136);
     return locala;
   }
   
-  public final void gBs()
+  public final void hxD()
   {
     AppMethodBeat.i(43139);
     if (Util.isNullOrNil(this.field_roomdata))
@@ -602,8 +594,8 @@ public final class ah
     }
     try
     {
-      this.NRD = ((a)new a().parseFrom(this.field_roomdata));
-      a(this.NRD);
+      this.VfA = ((a)new a().parseFrom(this.field_roomdata));
+      a(this.VfA);
       AppMethodBeat.o(43139);
       return;
     }
@@ -611,29 +603,29 @@ public final class ah
     {
       for (;;)
       {
-        this.NRD = new a();
+        this.VfA = new a();
       }
     }
   }
   
-  public final int gBt()
+  public final int hxE()
   {
     AppMethodBeat.i(43142);
-    if (b(this.NRD)) {
-      gBs();
+    if (b(this.VfA)) {
+      hxD();
     }
-    int i = this.NRD.dTg;
+    int i = this.VfA.fMC;
     AppMethodBeat.o(43142);
     return i;
   }
   
-  public final boolean gBu()
+  public final boolean hxF()
   {
     AppMethodBeat.i(43144);
-    if (b(this.NRD)) {
-      gBs();
+    if (b(this.VfA)) {
+      hxD();
     }
-    if (this.NRD.dTg < this.NRD.gCu)
+    if (this.VfA.fMC < this.VfA.jmA)
     {
       AppMethodBeat.o(43144);
       return true;
@@ -642,104 +634,100 @@ public final class ah
     return false;
   }
   
-  public final int gBv()
+  public final int hxG()
   {
     AppMethodBeat.i(43146);
-    if (b(this.NRD)) {
-      gBs();
+    if (b(this.VfA)) {
+      hxD();
     }
-    int i = this.NRD.type;
+    int i = this.VfA.type;
     AppMethodBeat.o(43146);
     return i;
   }
   
-  public final int gBw()
+  public final int hxH()
   {
     AppMethodBeat.i(43148);
-    if (b(this.NRD)) {
-      gBs();
+    if (b(this.VfA)) {
+      hxD();
     }
-    int i = this.NRD.maxCount;
+    int i = this.VfA.iWH;
     AppMethodBeat.o(43148);
     return i;
   }
   
-  public final boolean gBx()
+  public final boolean hxI()
   {
     return this.field_isShowname > 0;
   }
   
-  public final a gBy()
+  public final a hxJ()
   {
     AppMethodBeat.i(43160);
-    if (b(this.NRD)) {
-      gBs();
+    if (b(this.VfA)) {
+      hxD();
     }
-    a locala = this.NRD;
+    a locala = this.VfA;
     AppMethodBeat.o(43160);
     return locala;
   }
   
-  public final boolean gBz()
+  public final boolean hxK()
   {
-    AppMethodBeat.i(225981);
+    AppMethodBeat.i(240952);
     if (((this.field_chatroomStatus & 0x200000) == 2097152L) && (Util.isNullOrNil(this.field_associateOpenIMRoomName)))
     {
-      AppMethodBeat.o(225981);
+      AppMethodBeat.o(240952);
       return true;
     }
-    AppMethodBeat.o(225981);
+    AppMethodBeat.o(240952);
     return false;
   }
   
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  public final boolean hxL()
   {
-    return info;
+    return this.field_openIMRoomMigrateStatus == 1;
   }
   
-  public final String getDisplayName(String paramString)
+  public final boolean hxM()
   {
-    AppMethodBeat.i(43150);
-    paramString = bje(paramString);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(43150);
-      return "";
-    }
-    paramString = Util.nullAs(paramString.gCv, "");
-    AppMethodBeat.o(43150);
-    return paramString;
+    return this.field_openIMRoomMigrateStatus == 2;
   }
   
-  public final ah iE(List<String> paramList)
+  public final boolean hxN()
+  {
+    return (this.field_openIMRoomMigrateStatus == 3) || (this.field_openIMRoomMigrateStatus == 4);
+  }
+  
+  public final ah jw(List<String> paramList)
   {
     AppMethodBeat.i(43155);
-    this.field_memberlist = gP(paramList);
+    this.field_memberlist = hy(paramList);
     AppMethodBeat.o(43155);
     return this;
   }
   
-  public final ah mQ(String paramString1, String paramString2)
+  public final ah nH(String paramString1, String paramString2)
   {
     AppMethodBeat.i(43157);
-    paramString1 = a(paramString1, bjh(paramString2), false);
+    paramString1 = a(paramString1, bvB(paramString2), false);
     AppMethodBeat.o(43157);
     return paramString1;
   }
   
-  public final void oS(int paramInt)
+  public final void rl(int paramInt)
   {
     AppMethodBeat.i(43145);
-    if (b(this.NRD)) {
-      gBs();
+    if (b(this.VfA)) {
+      hxD();
     }
-    this.field_chatroomdataflag = (this.NRD.cSx & 0xFFFFFFFD | paramInt & 0x2);
+    this.field_chatroomdataflag = (this.VfA.cUP & 0xFFFFFFFD | paramInt & 0x2);
     AppMethodBeat.o(43145);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.storage.ah
  * JD-Core Version:    0.7.0.1
  */

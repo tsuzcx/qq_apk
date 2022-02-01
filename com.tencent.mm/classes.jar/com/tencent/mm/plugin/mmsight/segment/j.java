@@ -9,9 +9,8 @@ import android.media.MediaCodecInfo;
 import android.media.MediaCodecInfo.CodecCapabilities;
 import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.z;
+import com.tencent.mm.compatible.deviceinfo.aa;
 import com.tencent.mm.compatible.i.c;
-import com.tencent.mm.plugin.mmsight.model.a.k;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.nio.ByteBuffer;
@@ -40,7 +39,7 @@ public final class j
     paramImage = paramImage.getPlanes();
     int k = i3 * i4 * ImageFormat.getBitsPerPixel(j) / 8;
     Log.i(TAG, "planes len %d, datalen: %s width %d height %d format %d", new Object[] { Integer.valueOf(paramImage.length), Integer.valueOf(k), Integer.valueOf(i3), Integer.valueOf(i4), Integer.valueOf(j) });
-    byte[] arrayOfByte1 = k.zwi.h(Integer.valueOf(k));
+    byte[] arrayOfByte1 = com.tencent.mm.plugin.mmsight.model.a.j.FbH.k(Integer.valueOf(k));
     k = 0;
     while (k < paramImage.length)
     {
@@ -61,7 +60,7 @@ public final class j
       for (int n = i4;; n = i4 / 2)
       {
         Log.v(TAG, "row planes rowStride %d w %d h %d pixelStride %d", new Object[] { Integer.valueOf(i5), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i6) });
-        arrayOfByte2 = k.zwi.h(Integer.valueOf(i5));
+        arrayOfByte2 = com.tencent.mm.plugin.mmsight.model.a.j.FbH.k(Integer.valueOf(i5));
         i1 = 0;
         for (;;)
         {
@@ -103,23 +102,23 @@ public final class j
         localByteBuffer.get(arrayOfByte2, 0, i5);
       }
       label384:
-      k.zwi.k(arrayOfByte2);
+      com.tencent.mm.plugin.mmsight.model.a.j.FbH.as(arrayOfByte2);
       k += 1;
     }
     AppMethodBeat.o(107679);
     return arrayOfByte1;
   }
   
-  protected final boolean aMg()
+  protected final boolean aUv()
   {
     AppMethodBeat.i(107678);
-    if (this.iec == null)
+    if (this.kSN == null)
     {
       Log.e(TAG, "drainDecoder, decoder is null");
       AppMethodBeat.o(107678);
       return true;
     }
-    int i = this.iec.dequeueOutputBuffer(this.bufferInfo, 60000L);
+    int i = this.kSN.a(this.bufferInfo, 60000L);
     Log.i(TAG, "outputBufferIndex-->".concat(String.valueOf(i)));
     if (i == -1)
     {
@@ -133,7 +132,7 @@ public final class j
     }
     for (;;)
     {
-      int j = this.iec.dequeueOutputBuffer(this.bufferInfo, 60000L);
+      int j = this.kSN.a(this.bufferInfo, 60000L);
       i = j;
       if (j >= 0) {
         break;
@@ -141,8 +140,8 @@ public final class j
       break label70;
       if (i == -2)
       {
-        this.jtq = this.iec.getOutputFormat();
-        Log.i(TAG, "decoder output format changed: " + this.jtq);
+        this.miU = this.kSN.avi();
+        Log.i(TAG, "decoder output format changed: " + this.miU);
       }
       else if (i < 0)
       {
@@ -152,7 +151,7 @@ public final class j
       {
         Log.v(TAG, "perform decoding");
         long l = Util.currentTicks();
-        byte[] arrayOfByte = b(this.iec.getOutputImage(i));
+        byte[] arrayOfByte = b(this.kSN.qQ(i));
         Log.v(TAG, "perform decoding costImage %s", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
         if (arrayOfByte == null) {
           break label70;
@@ -165,7 +164,7 @@ public final class j
           }
           for (;;)
           {
-            this.iec.releaseOutputBuffer(i, false);
+            this.kSN.releaseOutputBuffer(i, false);
             l = this.bufferInfo.presentationTimeUs;
             if ((this.endTimeMs == 1L) || (l < this.endTimeMs * 1000L)) {
               break;
@@ -174,9 +173,9 @@ public final class j
             AppMethodBeat.o(107678);
             return true;
             Log.i(TAG, "processDecodeOutputBuffer, byteBuffer: %s, bufferInfo: %s, size: %d", new Object[] { arrayOfByte, localBufferInfo, Integer.valueOf(localBufferInfo.size) });
-            this.jtq = this.iec.getOutputFormat();
-            if (this.zxX != null) {
-              this.zxX.bJ(arrayOfByte);
+            this.miU = this.kSN.avi();
+            if (this.Fdr != null) {
+              this.Fdr.bZ(arrayOfByte);
             }
           }
           if ((this.bufferInfo.flags & 0x4) != 0)
@@ -184,9 +183,9 @@ public final class j
             Log.i(TAG, "receive end of stream");
             try
             {
-              this.iec.stop();
-              this.iec.release();
-              this.iec = null;
+              this.kSN.stop();
+              this.kSN.release();
+              this.kSN = null;
               AppMethodBeat.o(107678);
               return true;
             }
@@ -201,12 +200,12 @@ public final class j
           AppMethodBeat.o(107678);
           return false;
         }
-        this.iec.releaseOutputBuffer(i, false);
+        this.kSN.releaseOutputBuffer(i, false);
       }
     }
   }
   
-  public final int bhK()
+  public final int brh()
   {
     return 2;
   }
@@ -256,7 +255,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.j
  * JD-Core Version:    0.7.0.1
  */

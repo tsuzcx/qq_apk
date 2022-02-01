@@ -6,22 +6,22 @@ import java.util.Stack;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/audio/util/EarPieceUtil;", "", "()V", "TAG", "", "releaseEarPieceResource", "", "mDeviceQueue", "Ljava/util/Stack;", "", "requestEarPieceResource", "", "plugin-audio_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/audio/util/EarPieceUtil;", "", "()V", "TAG", "", "releaseEarPieceResource", "", "mDeviceQueue", "Ljava/util/Stack;", "", "requestEarPieceResource", "", "plugin-audio_release"})
 public final class c
 {
-  public static final c oIp;
+  public static final c rKf;
   
   static
   {
-    AppMethodBeat.i(224025);
-    oIp = new c();
-    AppMethodBeat.o(224025);
+    AppMethodBeat.i(257578);
+    rKf = new c();
+    AppMethodBeat.o(257578);
   }
   
   public static final boolean c(Stack<Integer> paramStack)
   {
-    AppMethodBeat.i(224024);
-    p.h(paramStack, "mDeviceQueue");
+    AppMethodBeat.i(257577);
+    p.k(paramStack, "mDeviceQueue");
     Log.i("MicroMsg.EarPieceUtil", " request the earpiece resource");
     Integer localInteger;
     if (!paramStack.isEmpty())
@@ -38,16 +38,16 @@ public final class c
         paramStack.removeElement(Integer.valueOf(2));
       }
       paramStack.push(Integer.valueOf(2));
-      AppMethodBeat.o(224024);
+      AppMethodBeat.o(257577);
       return true;
     }
-    AppMethodBeat.o(224024);
+    AppMethodBeat.o(257577);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.audio.d.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.finder.ui;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.c;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/ui/FinderFullPagerSnapHelper$attachToRecyclerView$1$2", "Landroid/support/v7/widget/RecyclerView$AdapterDataObserver;", "onChanged", "", "onItemRangeChanged", "positionStart", "", "itemCount", "payload", "", "onItemRangeInserted", "onItemRangeRemoved", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/ui/FinderFullPagerSnapHelper$attachToRecyclerView$1$2", "Landroidx/recyclerview/widget/RecyclerView$AdapterDataObserver;", "onChanged", "", "onItemRangeChanged", "positionStart", "", "itemCount", "payload", "", "onItemRangeInserted", "onItemRangeRemoved", "plugin-finder_release"})
 public final class e$c
   extends RecyclerView.c
 {
@@ -14,66 +14,66 @@ public final class e$c
   
   public final void onChanged()
   {
-    AppMethodBeat.i(252404);
+    AppMethodBeat.i(276014);
     super.onChanged();
-    this.uMW.postDelayed((Runnable)new Runnable()
+    this.xMC.postDelayed((Runnable)new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(252400);
-        e.a(this.vKw.vKt, this.vKw.uMW, this.vKw.tSy, true);
-        AppMethodBeat.o(252400);
+        AppMethodBeat.i(276007);
+        e.a(this.Aro.Arl, this.Aro.xMC, this.Aro.xDp, true);
+        AppMethodBeat.o(276007);
       }
     }, 600L);
-    AppMethodBeat.o(252404);
+    AppMethodBeat.o(276014);
   }
   
   public final void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
   {
-    AppMethodBeat.i(252405);
+    AppMethodBeat.i(276015);
     super.onItemRangeChanged(paramInt1, paramInt2, paramObject);
-    this.uMW.postDelayed((Runnable)new Runnable()
+    this.xMC.postDelayed((Runnable)new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(252401);
-        e.a(this.vKw.vKt, this.vKw.uMW, this.vKw.tSy, true);
-        AppMethodBeat.o(252401);
+        AppMethodBeat.i(228145);
+        e.a(this.Aro.Arl, this.Aro.xMC, this.Aro.xDp, true);
+        AppMethodBeat.o(228145);
       }
     }, 600L);
-    AppMethodBeat.o(252405);
+    AppMethodBeat.o(276015);
   }
   
   public final void onItemRangeInserted(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(252406);
+    AppMethodBeat.i(276016);
     super.onItemRangeInserted(paramInt1, paramInt2);
-    this.uMW.postDelayed((Runnable)new Runnable()
+    this.xMC.postDelayed((Runnable)new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(252402);
-        e.a(this.vKw.vKt, this.vKw.uMW, this.vKw.tSy, true);
-        AppMethodBeat.o(252402);
+        AppMethodBeat.i(290704);
+        e.a(this.Aro.Arl, this.Aro.xMC, this.Aro.xDp, true);
+        AppMethodBeat.o(290704);
       }
     }, 600L);
-    AppMethodBeat.o(252406);
+    AppMethodBeat.o(276016);
   }
   
   public final void onItemRangeRemoved(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(252407);
+    AppMethodBeat.i(276017);
     super.onItemRangeRemoved(paramInt1, paramInt2);
-    this.uMW.postDelayed((Runnable)new Runnable()
+    this.xMC.postDelayed((Runnable)new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(252403);
-        e.a(this.vKw.vKt, this.vKw.uMW, this.vKw.tSy, true);
-        AppMethodBeat.o(252403);
+        AppMethodBeat.i(287558);
+        e.a(this.Aro.Arl, this.Aro.xMC, this.Aro.xDp, true);
+        AppMethodBeat.o(287558);
       }
     }, 600L);
-    AppMethodBeat.o(252407);
+    AppMethodBeat.o(276017);
   }
 }
 

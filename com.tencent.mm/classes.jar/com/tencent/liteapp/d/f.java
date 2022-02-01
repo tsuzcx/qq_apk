@@ -4,24 +4,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  public static int cL(String paramString)
+  public static int df(String paramString)
   {
-    AppMethodBeat.i(197813);
+    AppMethodBeat.i(258869);
     if (paramString != null) {}
     try
     {
       if (paramString.length() <= 0)
       {
-        AppMethodBeat.o(197813);
+        AppMethodBeat.o(258869);
         return 0;
       }
       int i = Integer.decode(paramString).intValue();
-      AppMethodBeat.o(197813);
+      AppMethodBeat.o(258869);
       return i;
     }
     catch (NumberFormatException paramString)
     {
-      AppMethodBeat.o(197813);
+      AppMethodBeat.o(258869);
     }
     return 0;
   }

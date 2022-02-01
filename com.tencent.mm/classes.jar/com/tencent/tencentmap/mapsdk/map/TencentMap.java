@@ -43,7 +43,7 @@ public abstract interface TencentMap
   
   public abstract Marker addMarker(MarkerOptions paramMarkerOptions);
   
-  public abstract void addOnInfoWindowClickListener(TencentMap.OnInfoWindowClickListener paramOnInfoWindowClickListener);
+  public abstract void addOnInfoWindowClickListener(OnInfoWindowClickListener paramOnInfoWindowClickListener);
   
   public abstract void addOnMapCameraChangeListener(OnMapCameraChangeListener paramOnMapCameraChangeListener);
   
@@ -53,7 +53,7 @@ public abstract interface TencentMap
   
   public abstract void addOnMapLongClickListener(OnMapLongClickListener paramOnMapLongClickListener);
   
-  public abstract void addOnMarkerClickListener(TencentMap.OnMarkerClickListener paramOnMarkerClickListener);
+  public abstract void addOnMarkerClickListener(OnMarkerClickListener paramOnMarkerClickListener);
   
   public abstract void addOnMarkerDraggedListener(OnMarkerDraggedListener paramOnMarkerDraggedListener);
   
@@ -111,7 +111,7 @@ public abstract interface TencentMap
   
   public abstract void moveCamera(CameraUpdate paramCameraUpdate);
   
-  public abstract void remmoveOnInfoWindowClickListener(TencentMap.OnInfoWindowClickListener paramOnInfoWindowClickListener);
+  public abstract void remmoveOnInfoWindowClickListener(OnInfoWindowClickListener paramOnInfoWindowClickListener);
   
   public abstract void removeInfoWindowAdapter(InfoWindowAdapter paramInfoWindowAdapter);
   
@@ -123,7 +123,7 @@ public abstract interface TencentMap
   
   public abstract void removeOnMapLongClickListener(OnMapLongClickListener paramOnMapLongClickListener);
   
-  public abstract void removeOnMarkerClickListener(TencentMap.OnMarkerClickListener paramOnMarkerClickListener);
+  public abstract void removeOnMarkerClickListener(OnMarkerClickListener paramOnMarkerClickListener);
   
   public abstract void removeOnMarkerDraggedListener(OnMarkerDraggedListener paramOnMarkerDraggedListener);
   
@@ -165,7 +165,7 @@ public abstract interface TencentMap
   
   public abstract void setOnIndoorStateChangeListener(OnIndoorStateChangeListener paramOnIndoorStateChangeListener);
   
-  public abstract void setOnInfoWindowClickListener(TencentMap.OnInfoWindowClickListener paramOnInfoWindowClickListener);
+  public abstract void setOnInfoWindowClickListener(OnInfoWindowClickListener paramOnInfoWindowClickListener);
   
   public abstract void setOnMapCameraChangeListener(OnMapCameraChangeListener paramOnMapCameraChangeListener);
   
@@ -177,7 +177,7 @@ public abstract interface TencentMap
   
   public abstract void setOnMapPoiClickListener(OnMapPoiClickListener paramOnMapPoiClickListener);
   
-  public abstract void setOnMarkerClickListener(TencentMap.OnMarkerClickListener paramOnMarkerClickListener);
+  public abstract void setOnMarkerClickListener(OnMarkerClickListener paramOnMarkerClickListener);
   
   public abstract void setOnMarkerDraggedListener(OnMarkerDraggedListener paramOnMarkerDraggedListener);
   
@@ -221,6 +221,11 @@ public abstract interface TencentMap
     public abstract boolean onIndoorLevelActivated(IndoorBuilding paramIndoorBuilding);
   }
   
+  public static abstract interface OnInfoWindowClickListener
+  {
+    public abstract void onInfoWindowClick(Marker paramMarker);
+  }
+  
   public static abstract interface OnMapCameraChangeListener
   {
     public abstract void onCameraChange(CameraPosition paramCameraPosition);
@@ -246,6 +251,11 @@ public abstract interface TencentMap
   public static abstract interface OnMapPoiClickListener
   {
     public abstract void onClicked(MapPoi paramMapPoi);
+  }
+  
+  public static abstract interface OnMarkerClickListener
+  {
+    public abstract boolean onMarkerClick(Marker paramMarker);
   }
   
   public static abstract interface OnMarkerDraggedListener
@@ -283,7 +293,7 @@ public abstract interface TencentMap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.map.TencentMap
  * JD-Core Version:    0.7.0.1
  */

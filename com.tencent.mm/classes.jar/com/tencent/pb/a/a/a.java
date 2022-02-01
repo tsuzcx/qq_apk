@@ -4,35 +4,35 @@ import com.tencent.pb.common.c.f;
 
 public final class a
 {
-  private static int RGW = 0;
-  private static String RGX = "";
   private static String TAG = "AccountEngine";
+  private static int ZiC = 0;
+  private static String ZiD = "";
   
-  public static void aqu(int paramInt)
+  public static void aAf(int paramInt)
   {
-    RGW = paramInt;
+    ZiC = paramInt;
   }
   
-  public static void bpL(String paramString)
+  public static void bCI(String paramString)
   {
     String str = paramString;
     if (paramString == null) {
       str = "";
     }
-    RGX = str;
+    ZiD = str;
   }
   
-  public static String hjq()
+  public static String ila()
   {
-    return RGX;
+    return ZiD;
   }
   
-  public static boolean hjr()
+  public static boolean ilb()
   {
-    return !f.eP(RGX);
+    return !f.fK(ZiD);
   }
   
-  public static boolean hjs()
+  public static boolean ilc()
   {
     return true;
   }

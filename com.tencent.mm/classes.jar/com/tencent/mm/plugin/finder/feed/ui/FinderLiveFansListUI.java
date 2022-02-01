@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.RecyclerView.v;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
@@ -17,96 +15,102 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.finder.cgi.bg;
-import com.tencent.mm.plugin.finder.loader.m;
-import com.tencent.mm.plugin.finder.loader.m.a;
+import com.tencent.mm.an.i;
+import com.tencent.mm.cd.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.cgi.bj;
+import com.tencent.mm.plugin.finder.loader.e;
+import com.tencent.mm.plugin.finder.loader.t.a;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
-import com.tencent.mm.plugin.finder.utils.y;
+import com.tencent.mm.plugin.finder.utils.aj;
 import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.aqr;
+import com.tencent.mm.protocal.protobuf.asn;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.HashMap;
+import kotlin.g.a.a;
 import kotlin.g.b.p;
 import kotlin.x;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveFansListUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "TAG", "", "contactList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderFansContact;", "Lkotlin/collections/ArrayList;", "emptyTip", "Landroid/widget/TextView;", "hasMore", "", "lastBuf", "Lcom/tencent/mm/protobuf/ByteString;", "listAdapter", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveFansListUI$FinderLiveFansAdapter;", "listView", "Landroid/widget/ListView;", "liveId", "", "doGetFansScene", "", "getLayoutId", "", "initIntent", "initView", "merge", "contacts", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "updateTitle", "FinderLiveFansAdapter", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveFansListUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "TAG", "", "contactList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderFansContact;", "Lkotlin/collections/ArrayList;", "emptyTip", "Landroid/widget/TextView;", "hasMore", "", "lastBuf", "Lcom/tencent/mm/protobuf/ByteString;", "listAdapter", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveFansListUI$FinderLiveFansAdapter;", "listView", "Landroid/widget/ListView;", "liveId", "", "doGetFansScene", "", "getLayoutId", "", "initIntent", "initView", "merge", "contacts", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "updateTitle", "FinderLiveFansAdapter", "plugin-finder-live_release"})
 public final class FinderLiveFansListUI
   extends MMFinderUI
   implements i
 {
   private final String TAG;
   private HashMap _$_findViewCache;
-  private TextView hRM;
   private boolean hasMore;
-  private ListView krb;
+  private TextView kGj;
   private long liveId;
-  private b tsO;
-  private final ArrayList<aqr> uae;
-  private final a ubr;
+  private ListView niO;
+  private final ArrayList<asn> xMG;
+  private final a xPl;
+  private b xaw;
   
   public FinderLiveFansListUI()
   {
-    AppMethodBeat.i(245363);
+    AppMethodBeat.i(232942);
     this.TAG = "Finder.LiveFansListUI";
-    this.ubr = new a();
-    this.uae = new ArrayList();
-    AppMethodBeat.o(245363);
+    this.xPl = new a();
+    this.xMG = new ArrayList();
+    AppMethodBeat.o(232942);
   }
   
-  private final void dea()
+  private final void dvp()
   {
-    AppMethodBeat.i(245360);
-    bg localbg = new bg(this.tsO, this.liveId, 1);
-    g.azz().b((com.tencent.mm.ak.q)localbg);
-    AppMethodBeat.o(245360);
+    AppMethodBeat.i(232933);
+    bj localbj = new bj(this.xaw, this.liveId, 1);
+    h.aGY().b((com.tencent.mm.an.q)localbj);
+    AppMethodBeat.o(232933);
   }
   
   private final void updateTitle()
   {
-    AppMethodBeat.i(245359);
-    int i = this.uae.size();
+    AppMethodBeat.i(232931);
+    int i = this.xMG.size();
     Log.i(this.TAG, "update title fans count %s", new Object[] { Integer.valueOf(i) });
-    setMMTitle(getString(2131759856, new Object[] { Integer.valueOf(this.uae.size()) }));
+    setMMTitle(getString(b.j.finder_live_add_fans, new Object[] { Integer.valueOf(this.xMG.size()) }));
     if (i == 0)
     {
-      localTextView = this.hRM;
+      localTextView = this.kGj;
       if (localTextView == null) {
-        p.btv("emptyTip");
+        p.bGy("emptyTip");
       }
       localTextView.setVisibility(0);
-      localTextView = this.hRM;
+      localTextView = this.kGj;
       if (localTextView == null) {
-        p.btv("emptyTip");
+        p.bGy("emptyTip");
       }
-      localTextView.setText((CharSequence)getString(2131759857));
-      AppMethodBeat.o(245359);
+      localTextView.setText((CharSequence)getString(b.j.finder_live_add_fans_empty));
+      AppMethodBeat.o(232931);
       return;
     }
-    TextView localTextView = this.hRM;
+    TextView localTextView = this.kGj;
     if (localTextView == null) {
-      p.btv("emptyTip");
+      p.bGy("emptyTip");
     }
     localTextView.setVisibility(8);
-    AppMethodBeat.o(245359);
+    AppMethodBeat.o(232931);
   }
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(245368);
+    AppMethodBeat.i(232951);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(245368);
+    AppMethodBeat.o(232951);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(245367);
+    AppMethodBeat.i(232948);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -117,83 +121,83 @@ public final class FinderLiveFansListUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(245367);
+    AppMethodBeat.o(232948);
     return localView1;
   }
   
   public final int getLayoutId()
   {
-    return 2131494228;
+    return b.g.finder_contact_sort_list_ui;
   }
   
   public final void initView()
   {
-    AppMethodBeat.i(245358);
-    Object localObject = findViewById(2131299111);
-    p.g(localObject, "findViewById<ListView>(R.id.contact_list)");
-    this.krb = ((ListView)localObject);
-    localObject = findViewById(2131300101);
-    p.g(localObject, "findViewById<TextView>(R.id.empty_tip)");
-    this.hRM = ((TextView)localObject);
+    AppMethodBeat.i(232930);
+    Object localObject = findViewById(b.f.contact_list);
+    p.j(localObject, "findViewById<ListView>(R.id.contact_list)");
+    this.niO = ((ListView)localObject);
+    localObject = findViewById(b.f.empty_tip);
+    p.j(localObject, "findViewById<TextView>(R.id.empty_tip)");
+    this.kGj = ((TextView)localObject);
     updateTitle();
     setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
-    localObject = this.krb;
+    localObject = this.niO;
     if (localObject == null) {
-      p.btv("listView");
+      p.bGy("listView");
     }
-    ((ListView)localObject).setAdapter((ListAdapter)this.ubr);
-    localObject = this.krb;
+    ((ListView)localObject).setAdapter((ListAdapter)this.xPl);
+    localObject = this.niO;
     if (localObject == null) {
-      p.btv("listView");
+      p.bGy("listView");
     }
     ((ListView)localObject).setOnScrollListener((AbsListView.OnScrollListener)new c(this));
-    AppMethodBeat.o(245358);
+    AppMethodBeat.o(232930);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(245357);
+    AppMethodBeat.i(232925);
     super.onCreate(paramBundle);
-    g.azz().a(3531, (i)this);
+    h.aGY().a(3531, (i)this);
     this.liveId = getIntent().getLongExtra("PARAM_FINDER_LIVE_ID", 0L);
     Log.i(this.TAG, "init intent liveId:" + this.liveId);
     initView();
-    dea();
-    AppMethodBeat.o(245357);
+    dvp();
+    AppMethodBeat.o(232925);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(245361);
+    AppMethodBeat.i(232935);
     super.onDestroy();
-    g.azz().b(3531, (i)this);
-    AppMethodBeat.o(245361);
+    h.aGY().b(3531, (i)this);
+    AppMethodBeat.o(232935);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final com.tencent.mm.ak.q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final com.tencent.mm.an.q paramq)
   {
-    AppMethodBeat.i(245362);
+    AppMethodBeat.i(232940);
     Log.i(this.TAG, "errType " + paramInt1 + ", errCode " + paramInt2 + ", errMsg " + paramString);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       if (paramq == null)
       {
         paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderGetFansList");
-        AppMethodBeat.o(245362);
+        AppMethodBeat.o(232940);
         throw paramString;
       }
-      paramString = ((bg)paramq).cYn();
-      if ((p.j(this.tsO, paramString) ^ true))
+      paramString = ((bj)paramq).dob();
+      if ((p.h(this.xaw, paramString) ^ true))
       {
         Log.i(this.TAG, "not my buf, ignore!");
-        AppMethodBeat.o(245362);
+        AppMethodBeat.o(232940);
         return;
       }
-      this.hasMore = ((bg)paramq).cYp();
-      this.tsO = ((bg)paramq).cYm();
-      com.tencent.mm.ac.d.h((kotlin.g.a.a)new d(this, paramq));
+      this.hasMore = ((bj)paramq).dod();
+      this.xaw = ((bj)paramq).doa();
+      com.tencent.mm.ae.d.uiThread((a)new d(this, paramq));
     }
-    AppMethodBeat.o(245362);
+    AppMethodBeat.o(232940);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -202,42 +206,42 @@ public final class FinderLiveFansListUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveFansListUI$FinderLiveFansAdapter;", "Landroid/widget/BaseAdapter;", "()V", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderFansContact;", "Lkotlin/collections/ArrayList;", "getCount", "", "getItem", "position", "getItemId", "", "getView", "Landroid/view/View;", "convertView", "parent", "Landroid/view/ViewGroup;", "setContactList", "", "FansViewHolder", "plugin-finder_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveFansListUI$FinderLiveFansAdapter;", "Landroid/widget/BaseAdapter;", "()V", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderFansContact;", "Lkotlin/collections/ArrayList;", "getCount", "", "getItem", "position", "getItemId", "", "getView", "Landroid/view/View;", "convertView", "parent", "Landroid/view/ViewGroup;", "setContactList", "", "FansViewHolder", "plugin-finder-live_release"})
   public static final class a
     extends BaseAdapter
   {
-    ArrayList<aqr> kgc;
+    ArrayList<asn> mXB;
     
     public a()
     {
-      AppMethodBeat.i(245353);
-      this.kgc = new ArrayList();
-      AppMethodBeat.o(245353);
+      AppMethodBeat.i(233257);
+      this.mXB = new ArrayList();
+      AppMethodBeat.o(233257);
     }
     
-    private aqr IR(int paramInt)
+    private asn MK(int paramInt)
     {
-      AppMethodBeat.i(245350);
-      int i = this.kgc.size();
+      AppMethodBeat.i(233253);
+      int i = this.mXB.size();
       if (paramInt < 0) {}
       while (i <= paramInt)
       {
-        localObject = new aqr();
-        AppMethodBeat.o(245350);
+        localObject = new asn();
+        AppMethodBeat.o(233253);
         return localObject;
       }
-      Object localObject = this.kgc.get(paramInt);
-      p.g(localObject, "dataList[position]");
-      localObject = (aqr)localObject;
-      AppMethodBeat.o(245350);
+      Object localObject = this.mXB.get(paramInt);
+      p.j(localObject, "dataList[position]");
+      localObject = (asn)localObject;
+      AppMethodBeat.o(233253);
       return localObject;
     }
     
     public final int getCount()
     {
-      AppMethodBeat.i(245352);
-      int i = this.kgc.size();
-      AppMethodBeat.o(245352);
+      AppMethodBeat.i(233256);
+      int i = this.mXB.size();
+      AppMethodBeat.o(233256);
       return i;
     }
     
@@ -249,13 +253,13 @@ public final class FinderLiveFansListUI
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       Object localObject1 = null;
-      AppMethodBeat.i(245349);
-      p.h(paramViewGroup, "parent");
+      AppMethodBeat.i(233252);
+      p.k(paramViewGroup, "parent");
       View localView = paramView;
       if (paramView == null)
       {
-        localView = View.inflate(paramViewGroup.getContext(), 2131494394, null);
-        p.g(localView, "itemView");
+        localView = View.inflate(paramViewGroup.getContext(), b.g.finder_live_fans_list_item, null);
+        p.j(localView, "itemView");
         localView.setTag(new a(localView));
       }
       paramViewGroup = localView.getTag();
@@ -268,10 +272,10 @@ public final class FinderLiveFansListUI
       Object localObject4;
       if (localObject3 != null)
       {
-        localObject2 = IR(paramInt);
-        paramView = m.uJa;
-        localObject4 = m.dkb();
-        paramView = ((aqr)localObject2).contact;
+        localObject2 = MK(paramInt);
+        paramView = com.tencent.mm.plugin.finder.loader.t.ztT;
+        localObject4 = com.tencent.mm.plugin.finder.loader.t.dJi();
+        paramView = ((asn)localObject2).contact;
         if (paramView != null)
         {
           paramViewGroup = paramView.headUrl;
@@ -282,55 +286,55 @@ public final class FinderLiveFansListUI
         {
           paramView = "";
         }
-        paramView = new com.tencent.mm.plugin.finder.loader.a(paramView);
-        paramViewGroup = ((a)localObject3).keC;
-        m localm = m.uJa;
-        ((com.tencent.mm.loader.d)localObject4).a(paramView, paramViewGroup, m.a(m.a.uJg));
-        localObject4 = ((a)localObject3).qbF;
-        localObject3 = ((a)localObject3).qbF.getContext();
-        paramView = y.vXH;
-        paramView = ((aqr)localObject2).contact;
+        paramView = new e(paramView);
+        paramViewGroup = ((a)localObject3).mWb;
+        com.tencent.mm.plugin.finder.loader.t localt = com.tencent.mm.plugin.finder.loader.t.ztT;
+        ((com.tencent.mm.loader.d)localObject4).a(paramView, paramViewGroup, com.tencent.mm.plugin.finder.loader.t.a(t.a.ztZ));
+        localObject4 = ((a)localObject3).txD;
+        localObject3 = ((a)localObject3).txD.getContext();
+        paramView = aj.AGc;
+        paramView = ((asn)localObject2).contact;
         if (paramView == null) {
-          break label242;
+          break label243;
         }
       }
-      label242:
+      label243:
       for (paramView = paramView.username;; paramView = null)
       {
-        localObject2 = ((aqr)localObject2).contact;
+        localObject2 = ((asn)localObject2).contact;
         paramViewGroup = localObject1;
         if (localObject2 != null) {
           paramViewGroup = ((FinderContact)localObject2).nickname;
         }
-        ((TextView)localObject4).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject3, (CharSequence)y.hf(paramView, paramViewGroup)));
-        AppMethodBeat.o(245349);
+        ((TextView)localObject4).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject3, (CharSequence)aj.ht(paramView, paramViewGroup)));
+        AppMethodBeat.o(233252);
         return localView;
       }
     }
     
-    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveFansListUI$FinderLiveFansAdapter$FansViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveFansListUI$FinderLiveFansAdapter;Landroid/view/View;)V", "avatar", "Landroid/widget/ImageView;", "getAvatar", "()Landroid/widget/ImageView;", "setAvatar", "(Landroid/widget/ImageView;)V", "nickName", "Landroid/widget/TextView;", "getNickName", "()Landroid/widget/TextView;", "setNickName", "(Landroid/widget/TextView;)V", "plugin-finder_release"})
+    @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveFansListUI$FinderLiveFansAdapter$FansViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveFansListUI$FinderLiveFansAdapter;Landroid/view/View;)V", "avatar", "Landroid/widget/ImageView;", "getAvatar", "()Landroid/widget/ImageView;", "setAvatar", "(Landroid/widget/ImageView;)V", "nickName", "Landroid/widget/TextView;", "getNickName", "()Landroid/widget/TextView;", "setNickName", "(Landroid/widget/TextView;)V", "plugin-finder-live_release"})
     public final class a
       extends RecyclerView.v
     {
-      ImageView keC;
-      TextView qbF;
+      ImageView mWb;
+      TextView txD;
       
       public a()
       {
         super();
-        AppMethodBeat.i(245348);
-        this$1 = localObject.findViewById(2131297134);
-        p.g(FinderLiveFansListUI.a.this, "itemView.findViewById<ImageView>(R.id.avatar_iv)");
-        this.keC = ((ImageView)FinderLiveFansListUI.a.this);
-        this$1 = localObject.findViewById(2131305440);
-        p.g(FinderLiveFansListUI.a.this, "itemView.findViewById<TextView>(R.id.nickname_tv)");
-        this.qbF = ((TextView)FinderLiveFansListUI.a.this);
-        AppMethodBeat.o(245348);
+        AppMethodBeat.i(232507);
+        this$1 = localObject.findViewById(b.f.avatar_iv);
+        p.j(FinderLiveFansListUI.a.this, "itemView.findViewById<ImageView>(R.id.avatar_iv)");
+        this.mWb = ((ImageView)FinderLiveFansListUI.a.this);
+        this$1 = localObject.findViewById(b.f.nickname_tv);
+        p.j(FinderLiveFansListUI.a.this, "itemView.findViewById<TextView>(R.id.nickname_tv)");
+        this.txD = ((TextView)FinderLiveFansListUI.a.this);
+        AppMethodBeat.o(232507);
       }
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class b
     implements MenuItem.OnMenuItemClickListener
   {
@@ -338,14 +342,14 @@ public final class FinderLiveFansListUI
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(245354);
-      this.ubt.finish();
-      AppMethodBeat.o(245354);
+      AppMethodBeat.i(233930);
+      this.xPn.finish();
+      AppMethodBeat.o(233930);
       return true;
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/feed/ui/FinderLiveFansListUI$initView$2", "Landroid/widget/AbsListView$OnScrollListener;", "onScroll", "", "view", "Landroid/widget/AbsListView;", "firstVisibleItem", "", "visibleItemCount", "totalItemCount", "onScrollStateChanged", "scrollState", "plugin-finder_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/ui/FinderLiveFansListUI$initView$2", "Landroid/widget/AbsListView$OnScrollListener;", "onScroll", "", "view", "Landroid/widget/AbsListView;", "firstVisibleItem", "", "visibleItemCount", "totalItemCount", "onScrollStateChanged", "scrollState", "plugin-finder-live_release"})
   public static final class c
     implements AbsListView.OnScrollListener
   {
@@ -353,29 +357,29 @@ public final class FinderLiveFansListUI
     
     public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
     {
-      AppMethodBeat.i(245355);
+      AppMethodBeat.i(232902);
       if ((paramInt == 0) && (paramAbsListView != null) && (!paramAbsListView.canScrollVertically(1)))
       {
-        if (FinderLiveFansListUI.a(this.ubt))
+        if (FinderLiveFansListUI.a(this.xPn))
         {
-          FinderLiveFansListUI.b(this.ubt);
-          AppMethodBeat.o(245355);
+          FinderLiveFansListUI.b(this.xPn);
+          AppMethodBeat.o(232902);
           return;
         }
-        if (FinderLiveFansListUI.c(this.ubt).getFooterViewsCount() == 0) {
-          FinderLiveFansListUI.c(this.ubt).addFooterView(View.inflate((Context)this.ubt, 2131494490, null));
+        if (FinderLiveFansListUI.c(this.xPn).getFooterViewsCount() == 0) {
+          FinderLiveFansListUI.c(this.xPn).addFooterView(View.inflate((Context)this.xPn, b.g.finder_load_no_more_footer, null));
         }
       }
-      AppMethodBeat.o(245355);
+      AppMethodBeat.o(232902);
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class d
     extends kotlin.g.b.q
-    implements kotlin.g.a.a<x>
+    implements a<x>
   {
-    d(FinderLiveFansListUI paramFinderLiveFansListUI, com.tencent.mm.ak.q paramq)
+    d(FinderLiveFansListUI paramFinderLiveFansListUI, com.tencent.mm.an.q paramq)
     {
       super();
     }

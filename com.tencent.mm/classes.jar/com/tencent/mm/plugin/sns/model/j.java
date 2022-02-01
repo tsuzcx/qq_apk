@@ -1,18 +1,20 @@
 package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cuf;
-import com.tencent.mm.protocal.protobuf.cug;
+import com.tencent.mm.protocal.protobuf.ddh;
+import com.tencent.mm.protocal.protobuf.ddi;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
@@ -22,29 +24,29 @@ public final class j
   implements m
 {
   public i callback;
-  private final int ixX;
+  private final int lnn;
   private d rr;
   
   public j()
   {
     AppMethodBeat.i(95561);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new cuf();
-    ((d.a)localObject).iLO = new cug();
+    ((d.a)localObject).lBU = new ddh();
+    ((d.a)localObject).lBV = new ddi();
     ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/oauth_checkgrant";
     ((d.a)localObject).funcId = 2842;
-    this.ixX = -1216949095;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (cuf)this.rr.iLK.iLR;
-    com.tencent.mm.kernel.g.aAi();
-    com.tencent.mm.kernel.g.aAf();
-    ((cuf)localObject).Mzz = a.getUin();
-    ((cuf)localObject).Mzl = -1216949095;
-    Log.i("MicroMsg.NetSceneOauthCheckGrant", "init useruin:%d, bizuin:%d", new Object[] { Integer.valueOf(((cuf)localObject).Mzz), Integer.valueOf(((cuf)localObject).Mzl) });
+    this.lnn = -1216949095;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (ddh)d.b.b(this.rr.lBR);
+    h.aHH();
+    h.aHE();
+    ((ddh)localObject).TLf = b.getUin();
+    ((ddh)localObject).SnQ = -1216949095;
+    Log.i("MicroMsg.NetSceneOauthCheckGrant", "init useruin:%d, bizuin:%d", new Object[] { Integer.valueOf(((ddh)localObject).TLf), Integer.valueOf(((ddh)localObject).SnQ) });
     AppMethodBeat.o(95561);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(95562);
     this.callback = parami;
@@ -65,13 +67,13 @@ public final class j
     ar.a locala;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = (cug)((d)params).iLL.iLR;
-      Log.i("MicroMsg.NetSceneOauthCheckGrant", "onGYNetEnd bizUin:%d, status:%d", new Object[] { Integer.valueOf(this.ixX), Integer.valueOf(params.status) });
-      if (this.ixX == -1216949095)
+      params = (ddi)d.c.b(((d)params).lBS);
+      Log.i("MicroMsg.NetSceneOauthCheckGrant", "onGYNetEnd bizUin:%d, status:%d", new Object[] { Integer.valueOf(this.lnn), Integer.valueOf(params.status) });
+      if (this.lnn == -1216949095)
       {
-        com.tencent.mm.kernel.g.aAi();
-        paramArrayOfByte = com.tencent.mm.kernel.g.aAh().azQ();
-        locala = ar.a.NUZ;
+        h.aHH();
+        paramArrayOfByte = h.aHG().aHp();
+        locala = ar.a.ViY;
         if (params.status != 1) {
           break label180;
         }

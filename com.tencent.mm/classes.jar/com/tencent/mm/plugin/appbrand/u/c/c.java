@@ -1,38 +1,50 @@
 package com.tencent.mm.plugin.appbrand.u.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.i;
-import com.tencent.mm.plugin.appbrand.s.j;
-import com.tencent.mm.plugin.appbrand.u.a.d;
+import com.tencent.mm.ad.i;
+import com.tencent.mm.plugin.appbrand.appstorage.r;
+import com.tencent.mm.plugin.appbrand.appstorage.t;
+import com.tencent.mm.plugin.appbrand.u.a.b;
+import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class c
-  extends d
+  extends b
 {
-  public final String b(i parami, com.tencent.mm.plugin.appbrand.u.a.c paramc)
+  public final void a(i parami, com.tencent.mm.plugin.appbrand.u.a.c paramc)
   {
-    AppMethodBeat.i(147394);
-    parami = (String)j.adc(parami.optString("url")).get("host");
+    AppMethodBeat.i(237917);
+    Log.i("GetFileSysFolderSizeAsync", "[execute] reqArgs:".concat(String.valueOf(parami)));
+    String str = parami.optString("dirPath", "");
+    parami = parami.optString("filePath", "");
     HashMap localHashMap = new HashMap();
-    if (j.adf(parami) == 2) {}
-    for (boolean bool = true;; bool = false)
+    Object localObject = paramc.czP.getFileSystem();
+    if (localObject != null)
     {
-      localHashMap.put("isLANIp", Boolean.valueOf(bool));
-      parami = paramc.Y(localHashMap);
-      AppMethodBeat.o(147394);
-      return parami;
+      localObject = ((r)localObject).bIH();
+      if (localObject != null)
+      {
+        localHashMap.put("size", Long.valueOf(((t)localObject).cO(str, parami)));
+        paramc.R(localHashMap);
+        AppMethodBeat.o(237917);
+        return;
+      }
     }
+    localHashMap.put("size", Integer.valueOf(-1));
+    paramc.R(localHashMap);
+    AppMethodBeat.o(237917);
   }
   
-  public final int bPT()
+  public final int ccB()
   {
-    return 6;
+    return 10;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.u.c.c
  * JD-Core Version:    0.7.0.1
  */

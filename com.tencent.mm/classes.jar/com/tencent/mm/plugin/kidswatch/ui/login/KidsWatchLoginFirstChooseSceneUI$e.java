@@ -8,7 +8,7 @@ import com.tencent.mm.hellhoundlib.b.b;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class KidsWatchLoginFirstChooseSceneUI$e
   implements View.OnClickListener
 {
@@ -16,18 +16,18 @@ final class KidsWatchLoginFirstChooseSceneUI$e
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(256271);
+    AppMethodBeat.i(251406);
     Object localObject = new b();
-    ((b)localObject).bm(paramView);
-    a.b("com/tencent/mm/plugin/kidswatch/ui/login/KidsWatchLoginFirstChooseSceneUI$initView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
-    paramView = this.yBs;
-    localObject = KidsWatchLoginFirstChooseSceneUI.c(this.yBs);
+    ((b)localObject).bn(paramView);
+    a.c("com/tencent/mm/plugin/kidswatch/ui/login/KidsWatchLoginFirstChooseSceneUI$initView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+    paramView = this.EcI;
+    localObject = KidsWatchLoginFirstChooseSceneUI.c(this.EcI);
     if (localObject == null) {
-      p.hyc();
+      p.iCn();
     }
-    KidsWatchLoginFirstChooseSceneUI.a(paramView, (String)localObject, KidsWatchLoginFirstChooseSceneUI.d(this.yBs), KidsWatchLoginFirstChooseSceneUI.a(this.yBs));
+    KidsWatchLoginFirstChooseSceneUI.a(paramView, (String)localObject, KidsWatchLoginFirstChooseSceneUI.d(this.EcI), KidsWatchLoginFirstChooseSceneUI.a(this.EcI));
     a.a(this, "com/tencent/mm/plugin/kidswatch/ui/login/KidsWatchLoginFirstChooseSceneUI$initView$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(256271);
+    AppMethodBeat.o(251406);
   }
 }
 

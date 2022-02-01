@@ -1,87 +1,91 @@
 package com.tencent.mm.plugin.mmsight.model.a;
 
-import android.app.ActivityManager;
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.memory.a;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.modelcontrol.VideoTransPara;
+import com.tencent.mm.plugin.mmsight.SightParams;
+import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
+import com.tencent.mm.plugin.mmsight.model.j;
+import com.tencent.mm.plugin.mmsight.model.o;
+import com.tencent.mm.storage.ar.a;
 
 public final class k
-  extends a<byte[]>
 {
-  private static int jtg;
-  public static final k zwi;
+  private static k FbI;
+  public SightParams FbJ;
   
   static
   {
-    AppMethodBeat.i(148835);
-    zwi = new k();
-    jtg = 0;
-    AppMethodBeat.o(148835);
+    AppMethodBeat.i(89505);
+    FbI = new k();
+    AppMethodBeat.o(89505);
   }
   
-  public final long aRP()
+  public static boolean No()
   {
-    AppMethodBeat.i(148828);
-    if (jtg <= 0) {
-      jtg = ((ActivityManager)MMApplicationContext.getContext().getSystemService("activity")).getLargeMemoryClass();
-    }
-    if (jtg >= 512)
+    AppMethodBeat.i(89504);
+    if (CaptureMMProxy.getInstance().getInt(ar.a.VmY, 0) == 1)
     {
-      AppMethodBeat.o(148828);
-      return 41943040L;
+      AppMethodBeat.o(89504);
+      return true;
     }
-    AppMethodBeat.o(148828);
-    return 20971520L;
+    AppMethodBeat.o(89504);
+    return false;
   }
   
-  public final long aRQ()
+  public static k eTI()
   {
-    return 10485760L;
+    return FbI;
   }
   
-  public final void aRR()
+  public static int eTK()
   {
-    AppMethodBeat.i(148829);
-    super.aRR();
-    AppMethodBeat.o(148829);
+    return j.EZX.videoBitrate;
   }
   
-  public final byte[] h(Integer paramInteger)
+  public static int eTL()
   {
-    try
+    return j.EZX.laT;
+  }
+  
+  public static String eTM()
+  {
+    switch (j.EZX.jth)
     {
-      AppMethodBeat.i(148827);
-      byte[] arrayOfByte2 = (byte[])super.e(paramInteger);
-      byte[] arrayOfByte1 = arrayOfByte2;
-      if (arrayOfByte2 == null) {
-        arrayOfByte1 = new byte[paramInteger.intValue()];
-      }
-      AppMethodBeat.o(148827);
-      return arrayOfByte1;
+    default: 
+      return "";
+    case 2: 
+      return "ENCODER_MEDIACODEC";
     }
-    finally {}
+    return "RECORDER_TYPE_FFMPEG";
   }
   
-  public final void k(byte[] paramArrayOfByte)
+  public static d q(VideoTransPara paramVideoTransPara)
   {
-    try
+    AppMethodBeat.i(89503);
+    Object localObject = null;
+    switch (j.EZX.jth)
     {
-      AppMethodBeat.i(148826);
-      super.bU(paramArrayOfByte);
-      AppMethodBeat.o(148826);
-      return;
+    default: 
+      paramVideoTransPara = localObject;
     }
-    finally
+    for (;;)
     {
-      paramArrayOfByte = finally;
-      throw paramArrayOfByte;
+      AppMethodBeat.o(89503);
+      return paramVideoTransPara;
+      paramVideoTransPara = new n(paramVideoTransPara);
+      continue;
+      paramVideoTransPara = new l(paramVideoTransPara);
     }
+  }
+  
+  public final SightParams eTJ()
+  {
+    return this.FbJ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.a.k
  * JD-Core Version:    0.7.0.1
  */

@@ -4,9 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.q;
 import com.tencent.mm.plugin.remittance.ui.RemittanceResendMsgUI;
 import com.tencent.mm.plugin.wallet_payu.remittance.a.f;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.base.h;
 
@@ -14,7 +15,7 @@ import com.tencent.mm.ui.base.h;
 public class PayURemittanceResendMsgUI
   extends RemittanceResendMsgUI
 {
-  public final void f(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  public final void g(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(72204);
     doSceneProgress(new f(paramString1, getIntent().getIntExtra("total_fee", 0), getIntent().getStringExtra("fee_type"), paramString3, paramInt1));
@@ -35,12 +36,12 @@ public class PayURemittanceResendMsgUI
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        h.cD(this, getString(2131764588));
+        h.cO(this, getString(a.i.remittance_resended));
         finish();
         AppMethodBeat.o(72205);
         return true;
       }
-      h.cD(this, paramString);
+      h.cO(this, paramString);
       finish();
       AppMethodBeat.o(72205);
       return true;

@@ -4,16 +4,16 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.j;
-import android.support.v7.widget.RecyclerView.n;
-import android.support.v7.widget.RecyclerView.s;
-import android.support.v7.widget.RecyclerView.v;
 import android.util.SparseBooleanArray;
 import android.view.View;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
+import androidx.recyclerview.widget.RecyclerView.LayoutParams;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.j;
+import androidx.recyclerview.widget.RecyclerView.n;
+import androidx.recyclerview.widget.RecyclerView.s;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -25,217 +25,227 @@ import java.util.List;
 public class CardLayoutManager
   extends RecyclerView.LayoutManager
 {
-  int DBe;
-  int DBf;
-  int DBg;
-  int DBh;
-  int DBi;
-  private int DBj;
-  int DBk;
-  private int DBl;
-  private float DBm;
-  boolean DBn;
-  public a DBo;
-  int DBp;
-  private d DBq;
-  private final e DBr;
-  public c DBs;
-  boolean DBt;
-  private boolean DBu;
-  int DBv;
+  int JMP;
+  int JMQ;
+  int JMR;
+  int JMS;
+  int JMT;
+  private int JMU;
+  int JMV;
+  private int JMW;
+  private float JMX;
+  boolean JMY;
+  a JMZ;
+  int JNa;
+  private CardLayoutManager.d JNb;
+  private final e JNc;
+  public c JNd;
+  boolean JNe;
+  private boolean JNf;
+  int JNg;
   final RecyclerView mRecyclerView;
+  public int source;
   
   public CardLayoutManager(RecyclerView paramRecyclerView)
   {
-    AppMethodBeat.i(202465);
-    this.DBf = -1;
-    this.DBg = -1;
-    this.DBh = 3;
-    this.DBj = -2147483648;
-    this.DBk = -2147483648;
-    this.DBl = 0;
-    this.DBm = 0.0F;
-    this.DBn = true;
-    this.DBp = 0;
-    this.DBt = false;
-    this.DBu = false;
-    this.DBv = 0;
-    this.DBr = new e();
+    AppMethodBeat.i(194255);
+    this.JMQ = -1;
+    this.JMR = -1;
+    this.JMS = 3;
+    this.JMU = -2147483648;
+    this.JMV = -2147483648;
+    this.JMW = 0;
+    this.JMX = 0.0F;
+    this.JMY = true;
+    this.JNa = 0;
+    this.JNe = false;
+    this.JNf = false;
+    this.JNg = 0;
+    this.JNc = new e();
     this.mRecyclerView = paramRecyclerView;
     if (this.mRecyclerView != null)
     {
       this.mRecyclerView.setOnFlingListener(new b());
-      this.DBo = new a(this.mRecyclerView.getContext(), this);
-      AppMethodBeat.o(202465);
+      this.JMZ = new a(this.mRecyclerView.getContext(), this);
+      Log.i("SnsAd.CardLayoutManager", "new CardLayoutManager, and recyclerView hashCode is " + this.mRecyclerView.hashCode());
+      AppMethodBeat.o(194255);
       return;
     }
     Log.e("SnsAd.CardLayoutManager", "the layout manager will not work properly, because of null recycler view!!!");
-    AppMethodBeat.o(202465);
+    AppMethodBeat.o(194255);
   }
   
-  private void Ya(int paramInt)
+  private void afp(int paramInt)
   {
-    if (this.DBk != paramInt)
+    if (this.JMV != paramInt)
     {
-      this.DBj = this.DBk;
-      this.DBk = paramInt;
-      this.DBu = true;
+      this.JMU = this.JMV;
+      this.JMV = paramInt;
+      this.JNf = true;
     }
   }
   
-  private int Yb(int paramInt)
+  private int afq(int paramInt)
   {
-    if (this.DBi == 0) {}
+    if (this.JMT == 0) {}
     do
     {
       return 0;
       if (paramInt >= 0) {
-        return paramInt % this.DBi;
+        return paramInt % this.JMT;
       }
-    } while (paramInt % this.DBi == 0);
-    int i = this.DBi;
+    } while (paramInt % this.JMT == 0);
+    int i = this.JMT;
     return i + paramInt % i;
   }
   
-  private int Yc(int paramInt)
+  private int afr(int paramInt)
   {
-    AppMethodBeat.i(202483);
-    int i = this.DBp;
-    this.DBp = 0;
+    AppMethodBeat.i(194303);
+    int i = this.JNa;
+    this.JNa = 0;
     if (i == 2)
     {
-      AppMethodBeat.o(202483);
+      AppMethodBeat.o(194303);
       return paramInt + 1;
     }
     if (i == 1)
     {
-      AppMethodBeat.o(202483);
+      AppMethodBeat.o(194303);
       return paramInt;
     }
-    if (eYG() < 0.5F)
+    if (fMr() < 0.5F)
     {
-      AppMethodBeat.o(202483);
+      AppMethodBeat.o(194303);
       return paramInt;
     }
-    AppMethodBeat.o(202483);
+    AppMethodBeat.o(194303);
     return paramInt + 1;
   }
   
-  private void Yd(int paramInt)
+  private void afs(int paramInt)
   {
-    AppMethodBeat.i(202484);
-    int i = this.DBf;
-    this.mRecyclerView.a(i * paramInt - this.DBe, 0, null);
-    AppMethodBeat.o(202484);
+    AppMethodBeat.i(194304);
+    int i = this.JMQ;
+    this.mRecyclerView.a(i * paramInt - this.JMP, 0, null);
+    AppMethodBeat.o(194304);
   }
   
   private void c(RecyclerView.n paramn, int paramInt)
   {
     float f1 = 0.5F;
-    AppMethodBeat.i(202480);
-    if ((this.DBi == 0) || (this.DBf <= 0) || (this.DBg <= 0) || (this.DBq == null))
+    AppMethodBeat.i(194293);
+    if ((this.JMT == 0) || (this.JMQ <= 0) || (this.JMR <= 0) || (this.JNb == null))
     {
-      AppMethodBeat.o(202480);
+      AppMethodBeat.o(194293);
       return;
     }
-    int j = eYE();
-    int k = eYF();
-    float f2 = eYG();
-    if ((this.DBm > 0.5F) && (f2 < 0.5F) && (paramInt < 0)) {}
+    int j = fMp();
+    int k = fMq();
+    float f2 = fMr();
+    if ((this.JMX > 0.5F) && (f2 < 0.5F) && (paramInt < 0)) {}
     for (;;)
     {
       int i = j;
       while (i <= k)
       {
-        int m = Yb(i);
-        if ((m >= 0) && (m < this.DBi))
+        int m = afq(i);
+        if ((m >= 0) && (m < this.JMT))
         {
-          View localView = paramn.cp(m);
-          this.DBq.fe(localView);
-          if ((localView != null) && (this.DBr != null))
+          View localView = paramn.cR(m);
+          this.JNb.gl(localView);
+          if ((localView != null) && (this.JNc != null))
           {
             addView(localView, 0);
             measureChildWithMargins(localView, 0, 0);
-            this.DBq.a(this.DBe, f1, localView, i - j, paramInt);
-            this.DBr.Yg(m);
+            this.JNb.a(this.JMP, f1, localView, i - j, paramInt);
+            this.JNc.afv(m);
           }
         }
         i += 1;
       }
-      this.DBm = f1;
-      Ya(j);
-      AppMethodBeat.o(202480);
+      this.JMX = f1;
+      afp(j);
+      AppMethodBeat.o(194293);
       return;
       f1 = f2;
     }
   }
   
-  private int eYE()
+  private int fMp()
   {
-    AppMethodBeat.i(202481);
-    if ((this.DBf <= 0) || (this.DBg <= 0))
+    AppMethodBeat.i(194296);
+    if ((this.JMQ <= 0) || (this.JMR <= 0))
     {
-      AppMethodBeat.o(202481);
+      AppMethodBeat.o(194296);
       return 0;
     }
-    int i = (int)Math.floor(this.DBe * 1.0D / this.DBf);
-    AppMethodBeat.o(202481);
+    int i = (int)Math.floor(this.JMP * 1.0D / this.JMQ);
+    AppMethodBeat.o(194296);
     return i;
   }
   
-  private int eYF()
+  private int fMq()
   {
-    AppMethodBeat.i(202482);
-    int i = eYE();
-    int j = this.DBh;
-    AppMethodBeat.o(202482);
+    AppMethodBeat.i(194297);
+    int i = fMp();
+    int j = this.JMS;
+    AppMethodBeat.o(194297);
     return i + j;
   }
   
-  private float eYG()
+  private float fMr()
   {
-    if ((this.DBf <= 0) || (this.DBg <= 0)) {}
+    if ((this.JMQ <= 0) || (this.JMR <= 0)) {}
     do
     {
       return 0.0F;
-      if (this.DBe >= 0) {
-        return this.DBe % this.DBf * 1.0F / this.DBf;
+      if (this.JMP >= 0) {
+        return this.JMP % this.JMQ * 1.0F / this.JMQ;
       }
-    } while (this.DBe % this.DBf == 0);
-    return this.DBe % this.DBf * 1.0F / this.DBf + 1.0F;
+    } while (this.JMP % this.JMQ == 0);
+    return this.JMP % this.JMQ * 1.0F / this.JMQ + 1.0F;
   }
   
-  private void eYH()
+  private void fMs()
   {
-    AppMethodBeat.i(202485);
-    Yd(Yc(eYE()));
-    AppMethodBeat.o(202485);
+    AppMethodBeat.i(194306);
+    afs(afr(fMp()));
+    AppMethodBeat.o(194306);
   }
   
-  private void ip(int paramInt1, int paramInt2)
+  private void jy(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(202473);
-    Log.d("SnsAd.CardLayoutManager", "firstVirtualPosition is " + paramInt1 + ", lastVirtualPosition " + paramInt2 + ", should notify " + this.DBu);
-    c localc = this.DBs;
-    if ((this.DBu) && (localc != null) && (paramInt1 != -2147483648))
+    AppMethodBeat.i(194270);
+    Log.d("SnsAd.CardLayoutManager", "firstVirtualPosition is " + paramInt1 + ", lastVirtualPosition " + paramInt2 + ", should notify " + this.JNf);
+    c localc = this.JNd;
+    if ((this.JNf) && (localc != null) && (paramInt1 != -2147483648))
     {
-      int i = Yb(paramInt1);
+      int i = afq(paramInt1);
       paramInt1 = -1;
       if (paramInt2 != -2147483648) {
-        paramInt1 = Yb(paramInt2);
+        paramInt1 = afq(paramInt2);
       }
       localc.a(this, i, paramInt1);
     }
-    this.DBu = false;
-    AppMethodBeat.o(202473);
+    this.JNf = false;
+    AppMethodBeat.o(194270);
   }
   
-  public final RecyclerView.v XZ(int paramInt)
+  public final void a(CardLayoutManager.d paramd)
   {
-    AppMethodBeat.i(202470);
+    this.JNb = paramd;
+    if (this.JNb != null) {
+      this.JNb.JNk = this;
+    }
+  }
+  
+  public final RecyclerView.v afo(int paramInt)
+  {
+    AppMethodBeat.i(194265);
     if (this.mRecyclerView == null)
     {
-      AppMethodBeat.o(202470);
+      AppMethodBeat.o(194265);
       return null;
     }
     try
@@ -244,10 +254,10 @@ public class CardLayoutManager
       while (i >= 0)
       {
         Object localObject = this.mRecyclerView.getChildAt(i);
-        if (RecyclerView.bw((View)localObject) == paramInt)
+        if (RecyclerView.bh((View)localObject) == paramInt)
         {
-          localObject = this.mRecyclerView.bi((View)localObject);
-          AppMethodBeat.o(202470);
+          localObject = this.mRecyclerView.aQ((View)localObject);
+          AppMethodBeat.o(194265);
           return localObject;
         }
         i -= 1;
@@ -256,246 +266,259 @@ public class CardLayoutManager
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(202470);
+      AppMethodBeat.o(194265);
     }
   }
   
-  public final void a(d paramd)
+  public boolean canScrollHorizontally()
   {
-    this.DBq = paramd;
-    if (this.DBq != null) {
-      this.DBq.DBz = this;
-    }
+    return (this.JMQ > 0) && (this.JMR > 0);
   }
   
-  public final RecyclerView.a cWP()
+  public final RecyclerView.a dlX()
   {
-    AppMethodBeat.i(202468);
+    AppMethodBeat.i(194260);
     try
     {
       if (this.mRecyclerView != null)
       {
         RecyclerView.a locala = this.mRecyclerView.getAdapter();
-        AppMethodBeat.o(202468);
+        AppMethodBeat.o(194260);
         return locala;
       }
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(202468);
+      AppMethodBeat.o(194260);
     }
     return null;
   }
   
-  public boolean canScrollHorizontally()
+  public final void fMl()
   {
-    return (this.DBf > 0) && (this.DBg > 0);
-  }
-  
-  public final void eYB()
-  {
-    AppMethodBeat.i(202466);
+    AppMethodBeat.i(194257);
     try
     {
-      if ((this.DBo != null) && (3000L > 0L)) {
-        this.DBo.eYI();
+      if (this.JMZ != null) {
+        this.JMZ.fMt();
       }
-      AppMethodBeat.o(202466);
+      AppMethodBeat.o(194257);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(202466);
+      AppMethodBeat.o(194257);
     }
   }
   
-  public final void eYC()
+  public final void fMm()
   {
-    AppMethodBeat.i(202467);
+    AppMethodBeat.i(194258);
     try
     {
-      if (this.DBo != null) {
-        this.DBo.cancel();
+      if ((this.JMZ != null) && (3000L > 0L)) {
+        this.JMZ.fMu();
       }
-      AppMethodBeat.o(202467);
+      AppMethodBeat.o(194258);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(202467);
+      AppMethodBeat.o(194258);
     }
   }
   
-  public final int eYD()
+  public final void fMn()
   {
-    AppMethodBeat.i(202469);
+    AppMethodBeat.i(194259);
     try
     {
-      if (this.DBt)
+      if (this.JMZ != null) {
+        this.JMZ.cancel();
+      }
+      AppMethodBeat.o(194259);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(194259);
+    }
+  }
+  
+  public final int fMo()
+  {
+    AppMethodBeat.i(194263);
+    try
+    {
+      if (this.JNe)
       {
-        int i = Yb(this.DBk);
-        AppMethodBeat.o(202469);
+        int i = afq(this.JMV);
+        AppMethodBeat.o(194263);
         return i;
       }
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(202469);
+      AppMethodBeat.o(194263);
     }
     return -1;
   }
   
   public RecyclerView.LayoutParams generateDefaultLayoutParams()
   {
-    AppMethodBeat.i(202471);
+    AppMethodBeat.i(194266);
     RecyclerView.LayoutParams localLayoutParams = new RecyclerView.LayoutParams(-2, -2);
-    AppMethodBeat.o(202471);
+    AppMethodBeat.o(194266);
     return localLayoutParams;
   }
   
   public void onDetachedFromWindow(RecyclerView paramRecyclerView, RecyclerView.n paramn)
   {
-    AppMethodBeat.i(202475);
+    AppMethodBeat.i(194273);
     super.onDetachedFromWindow(paramRecyclerView, paramn);
-    this.DBe = 0;
-    AppMethodBeat.o(202475);
+    if (this.source == 0)
+    {
+      this.JMP = 0;
+      this.JMV = -2147483648;
+    }
+    AppMethodBeat.o(194273);
   }
   
   public void onLayoutChildren(RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(202476);
-    this.DBt = false;
+    AppMethodBeat.i(194278);
+    this.JNe = false;
     if ((params == null) || (paramn == null))
     {
       Log.e("SnsAd.CardLayoutManager", "the state or recycler is null!!! Right?");
-      AppMethodBeat.o(202476);
+      AppMethodBeat.o(194278);
       return;
     }
     try
     {
-      this.DBi = params.getItemCount();
-      if ((this.DBi == 0) || (params.aue))
+      this.JMT = params.getItemCount();
+      if ((this.JMT == 0) || (params.alW))
       {
         Log.d("SnsAd.CardLayoutManager", "there is no item or is pre layout remove all cached view!!");
         removeAndRecycleAllViews(paramn);
-        AppMethodBeat.o(202476);
+        AppMethodBeat.o(194278);
         return;
       }
-      if ((this.DBf == -1) || (this.DBg == -1))
+      if ((this.JMQ == -1) || (this.JMR == -1))
       {
-        params = this.DBq;
+        params = this.JNb;
         if (params != null)
         {
-          View localView = paramn.cp(0);
-          params.fe(localView);
+          View localView = paramn.cR(0);
+          params.gl(localView);
           addView(localView);
           measureChildWithMargins(localView, 0, 0);
-          this.DBf = getDecoratedMeasuredWidth(localView);
-          this.DBg = getDecoratedMeasuredHeight(localView);
-          params.Ye(this.DBh);
-          params.iq(this.DBf, this.DBg);
+          this.JMQ = getDecoratedMeasuredWidth(localView);
+          this.JMR = getDecoratedMeasuredHeight(localView);
+          params.aft(this.JMS);
+          params.jz(this.JMQ, this.JMR);
         }
       }
       detachAndScrapAttachedViews(paramn);
       c(paramn, 0);
-      AppMethodBeat.o(202476);
+      AppMethodBeat.o(194278);
       return;
     }
     catch (Throwable paramn)
     {
-      AppMethodBeat.o(202476);
+      AppMethodBeat.o(194278);
     }
   }
   
   public void onLayoutCompleted(RecyclerView.s params)
   {
-    AppMethodBeat.i(202477);
+    AppMethodBeat.i(194281);
     try
     {
       super.onLayoutCompleted(params);
-      if (!this.DBt) {
-        ip(this.DBk, this.DBj);
+      if (!this.JNe) {
+        jy(this.JMV, this.JMU);
       }
-      this.DBt = true;
-      AppMethodBeat.o(202477);
+      this.JNe = true;
+      AppMethodBeat.o(194281);
       return;
     }
     catch (Throwable params)
     {
-      AppMethodBeat.o(202477);
+      AppMethodBeat.o(194281);
     }
   }
   
   public void onMeasure(RecyclerView.n paramn, RecyclerView.s params, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(202474);
+    AppMethodBeat.i(194271);
     try
     {
-      d locald = this.DBq;
-      if ((locald == null) || (!locald.Yf(paramInt1))) {
+      CardLayoutManager.d locald = this.JNb;
+      if ((locald == null) || (!locald.afu(paramInt1))) {
         super.onMeasure(paramn, params, paramInt1, paramInt2);
       }
-      AppMethodBeat.o(202474);
+      AppMethodBeat.o(194271);
       return;
     }
     catch (Throwable paramn)
     {
-      AppMethodBeat.o(202474);
+      AppMethodBeat.o(194271);
     }
   }
   
   public void onScrollStateChanged(int paramInt)
   {
-    AppMethodBeat.i(202472);
+    AppMethodBeat.i(194269);
     try
     {
       super.onScrollStateChanged(paramInt);
       Log.d("SnsAd.CardLayoutManager", "the onScrollStateChanged is called, state = ".concat(String.valueOf(paramInt)));
-      if (this.DBs != null) {
-        this.DBs.a(this, paramInt);
+      if (this.JNd != null) {
+        this.JNd.a(this, paramInt);
       }
       if (paramInt == 0)
       {
-        Log.d("SnsAd.CardLayoutManager", "the onScrollStateChanged is called, mScrollFixed = " + this.DBn);
-        if (!this.DBn)
+        Log.d("SnsAd.CardLayoutManager", "the onScrollStateChanged is called, mScrollFixed = " + this.JMY);
+        if (!this.JMY)
         {
-          eYH();
-          this.DBn = true;
-          AppMethodBeat.o(202472);
+          fMs();
+          this.JMY = true;
+          AppMethodBeat.o(194269);
           return;
         }
-        ip(this.DBk, this.DBj);
-        AppMethodBeat.o(202472);
+        jy(this.JMV, this.JMU);
+        AppMethodBeat.o(194269);
         return;
       }
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(202472);
+      AppMethodBeat.o(194269);
       return;
     }
     if (paramInt == 1)
     {
-      this.DBn = false;
-      d locald = this.DBq;
-      if ((this.DBv == 1) && (locald != null) && (eYG() > 0.5F))
+      this.JMY = false;
+      CardLayoutManager.d locald = this.JNb;
+      if ((this.JNg == 1) && (locald != null) && (fMr() > 0.5F))
       {
-        this.DBu = true;
-        this.DBv = 0;
+        this.JNf = true;
+        this.JNg = 0;
       }
     }
-    AppMethodBeat.o(202472);
+    AppMethodBeat.o(194269);
   }
   
   public int scrollHorizontallyBy(int paramInt, RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(202478);
+    AppMethodBeat.i(194287);
     for (;;)
     {
       int i;
       try
       {
-        params = this.DBr.DBB;
+        params = this.JNc.JNm;
         if (params != null)
         {
           i = 0;
@@ -506,12 +529,12 @@ public class CardLayoutManager
             continue;
           }
         }
-        this.DBe += paramInt;
+        this.JMP += paramInt;
         detachAndScrapAttachedViews(paramn);
         c(paramn, paramInt);
-        Object localObject1 = this.DBr;
-        params = ((e)localObject1).DBB;
-        Object localObject2 = ((e)localObject1).DBC;
+        Object localObject1 = this.JNc;
+        params = ((e)localObject1).JNm;
+        Object localObject2 = ((e)localObject1).JNn;
         if (params != null)
         {
           i = params.size();
@@ -519,7 +542,7 @@ public class CardLayoutManager
         }
         else
         {
-          AppMethodBeat.o(202478);
+          AppMethodBeat.o(194287);
           return paramInt;
         }
         ((List)localObject2).clear();
@@ -528,12 +551,12 @@ public class CardLayoutManager
         {
           int j = params.keyAt(i);
           boolean bool = params.get(j);
-          if ((j < 0) || (j >= ((e)localObject1).DBw.DBi) || (bool)) {
+          if ((j < 0) || (j >= ((e)localObject1).JNh.JMT) || (bool)) {
             break label309;
           }
-          View localView = paramn.cp(j);
+          View localView = paramn.cR(j);
           Log.d("SnsAd.CardLayoutManager", "pos is " + j + ", recycle view " + localView);
-          ((e)localObject1).DBw.removeAndRecycleView(localView, paramn);
+          ((e)localObject1).JNh.removeAndRecycleView(localView, paramn);
           ((List)localObject2).add(Integer.valueOf(j));
           break label309;
         }
@@ -551,7 +574,7 @@ public class CardLayoutManager
       }
       catch (Throwable paramn)
       {
-        AppMethodBeat.o(202478);
+        AppMethodBeat.o(194287);
         return 0;
       }
       continue;
@@ -562,10 +585,10 @@ public class CardLayoutManager
   
   public void smoothScrollToPosition(RecyclerView paramRecyclerView, RecyclerView.s params, int paramInt)
   {
-    AppMethodBeat.i(202479);
-    if ((params == null) || (this.DBf == 0) || (this.DBg == 0))
+    AppMethodBeat.i(194288);
+    if ((params == null) || (this.JMQ == 0) || (this.JMR == 0))
     {
-      AppMethodBeat.o(202479);
+      AppMethodBeat.o(194288);
       return;
     }
     try
@@ -573,90 +596,105 @@ public class CardLayoutManager
       if (params.getItemCount() == 0)
       {
         Log.d("SnsAd.CardLayoutManager", "the item is 0, can't smooth scroll.");
-        AppMethodBeat.o(202479);
+        AppMethodBeat.o(194288);
         return;
       }
       Log.d("SnsAd.CardLayoutManager", "smoothScrollToPosition the position is ".concat(String.valueOf(paramInt)));
-      paramRecyclerView.a(this.DBf * paramInt - this.DBe, 0, null);
-      AppMethodBeat.o(202479);
+      paramRecyclerView.a(this.JMQ * paramInt - this.JMP, 0, null);
+      AppMethodBeat.o(194288);
       return;
     }
     catch (Throwable paramRecyclerView)
     {
-      AppMethodBeat.o(202479);
+      AppMethodBeat.o(194288);
     }
   }
   
-  public static final class a
+  static final class a
     implements Handler.Callback
   {
-    public final Handler sCt;
-    private final WeakReference<CardLayoutManager> vjn;
+    private final Handler mUiHandler;
+    private final WeakReference<CardLayoutManager> yAq;
     
     a(Context paramContext, CardLayoutManager paramCardLayoutManager)
     {
-      AppMethodBeat.i(202458);
-      this.sCt = new Handler(paramContext.getMainLooper(), this);
-      this.vjn = new WeakReference(paramCardLayoutManager);
-      AppMethodBeat.o(202458);
+      AppMethodBeat.i(250399);
+      this.mUiHandler = new Handler(paramContext.getMainLooper(), this);
+      this.yAq = new WeakReference(paramCardLayoutManager);
+      AppMethodBeat.o(250399);
     }
     
-    public final void cancel()
+    final void cancel()
     {
-      AppMethodBeat.i(202460);
-      if (this.sCt != null) {
-        this.sCt.removeMessages(0);
+      AppMethodBeat.i(250406);
+      if (this.mUiHandler != null) {
+        this.mUiHandler.removeMessages(0);
       }
-      AppMethodBeat.o(202460);
+      AppMethodBeat.o(250406);
     }
     
-    final void eYI()
+    final void fMt()
     {
-      AppMethodBeat.i(202459);
-      if (this.sCt != null)
+      AppMethodBeat.i(250402);
+      if (this.mUiHandler != null)
       {
         cancel();
-        this.sCt.sendEmptyMessageDelayed(0, 3000L);
+        this.mUiHandler.sendEmptyMessage(0);
       }
-      AppMethodBeat.o(202459);
+      AppMethodBeat.o(250402);
+    }
+    
+    final void fMu()
+    {
+      AppMethodBeat.i(250404);
+      if (this.mUiHandler != null)
+      {
+        cancel();
+        this.mUiHandler.sendEmptyMessageDelayed(0, 3000L);
+      }
+      AppMethodBeat.o(250404);
     }
     
     public final boolean handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(202461);
+      AppMethodBeat.i(250409);
       if (paramMessage == null)
       {
-        AppMethodBeat.o(202461);
+        AppMethodBeat.o(250409);
         return false;
       }
       if (paramMessage.what == 0) {
         try
         {
-          if (this.vjn != null)
+          if (this.yAq != null)
           {
-            paramMessage = (CardLayoutManager)this.vjn.get();
+            paramMessage = (CardLayoutManager)this.yAq.get();
             if (paramMessage != null)
             {
-              if ((paramMessage.DBt) && (paramMessage.mRecyclerView != null) && (paramMessage.mRecyclerView.isAttachedToWindow()))
-              {
-                int i = paramMessage.DBk;
-                paramMessage.DBv = 1;
-                paramMessage = paramMessage.mRecyclerView;
-                com.tencent.mm.hellhoundlib.b.a locala = c.a(i + 1, new com.tencent.mm.hellhoundlib.b.a());
-                com.tencent.mm.hellhoundlib.a.a.a(paramMessage, locala.axQ(), "com/tencent/mm/plugin/sns/ad/widget/recyclerview/CardLayoutManager", "smoothScrollToNextItem", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
-                paramMessage.smoothScrollToPosition(((Integer)locala.pG(0)).intValue());
-                com.tencent.mm.hellhoundlib.a.a.a(paramMessage, "com/tencent/mm/plugin/sns/ad/widget/recyclerview/CardLayoutManager", "smoothScrollToNextItem", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
+              Object localObject = paramMessage.JNd;
+              if (localObject != null) {
+                ((CardLayoutManager.c)localObject).afa((paramMessage.fMo() + 1) % paramMessage.getItemCount());
               }
-              AppMethodBeat.o(202461);
+              if ((paramMessage.JNe) && (paramMessage.mRecyclerView != null) && (paramMessage.mRecyclerView.isAttachedToWindow()))
+              {
+                int i = paramMessage.JMV;
+                paramMessage.JNg = 1;
+                paramMessage = paramMessage.mRecyclerView;
+                localObject = c.a(i + 1, new com.tencent.mm.hellhoundlib.b.a());
+                com.tencent.mm.hellhoundlib.a.a.b(paramMessage, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/sns/ad/widget/recyclerview/CardLayoutManager", "smoothScrollToNextItem", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
+                paramMessage.smoothScrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0)).intValue());
+                com.tencent.mm.hellhoundlib.a.a.c(paramMessage, "com/tencent/mm/plugin/sns/ad/widget/recyclerview/CardLayoutManager", "smoothScrollToNextItem", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
+              }
+              AppMethodBeat.o(250409);
               return true;
             }
           }
-          AppMethodBeat.o(202461);
+          AppMethodBeat.o(250409);
           return false;
         }
         catch (Throwable paramMessage) {}
       }
-      AppMethodBeat.o(202461);
+      AppMethodBeat.o(250409);
       return false;
     }
   }
@@ -666,9 +704,9 @@ public class CardLayoutManager
   {
     b() {}
     
-    public final boolean av(int paramInt1, int paramInt2)
+    public final boolean aI(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(202462);
+      AppMethodBeat.i(264521);
       for (;;)
       {
         try
@@ -677,9 +715,9 @@ public class CardLayoutManager
           if (paramInt1 <= CardLayoutManager.c(CardLayoutManager.this)) {
             continue;
           }
-          CardLayoutManager.this.DBp = 2;
-          if (CardLayoutManager.this.DBp != 0) {
-            CardLayoutManager.this.DBn = true;
+          CardLayoutManager.this.JNa = 2;
+          if (CardLayoutManager.this.JNa != 0) {
+            CardLayoutManager.this.JMY = true;
           }
           CardLayoutManager.d(CardLayoutManager.this);
         }
@@ -687,10 +725,10 @@ public class CardLayoutManager
         {
           continue;
         }
-        AppMethodBeat.o(202462);
+        AppMethodBeat.o(264521);
         return true;
         if (paramInt1 < -CardLayoutManager.c(CardLayoutManager.this)) {
-          CardLayoutManager.this.DBp = 1;
+          CardLayoutManager.this.JNa = 1;
         }
       }
     }
@@ -701,69 +739,37 @@ public class CardLayoutManager
     public abstract void a(CardLayoutManager paramCardLayoutManager, int paramInt);
     
     public abstract void a(CardLayoutManager paramCardLayoutManager, int paramInt1, int paramInt2);
-  }
-  
-  public static abstract class d
-  {
-    protected int DBA;
-    protected int DBx;
-    protected int DBy;
-    CardLayoutManager DBz;
     
-    public final void Ye(int paramInt)
-    {
-      this.DBA = paramInt;
-    }
-    
-    public boolean Yf(int paramInt)
-    {
-      return false;
-    }
-    
-    public abstract void a(int paramInt1, float paramFloat, View paramView, int paramInt2, int paramInt3);
-    
-    public void fe(View paramView) {}
-    
-    public final void iq(int paramInt1, int paramInt2)
-    {
-      this.DBx = paramInt1;
-      this.DBy = paramInt2;
-    }
+    public abstract void afa(int paramInt);
   }
   
   final class e
   {
-    SparseBooleanArray DBB;
-    List<Integer> DBC;
+    SparseBooleanArray JNm;
+    List<Integer> JNn;
     
     e()
     {
-      AppMethodBeat.i(202463);
-      this.DBB = new SparseBooleanArray();
-      this.DBC = new LinkedList();
-      AppMethodBeat.o(202463);
+      AppMethodBeat.i(227286);
+      this.JNm = new SparseBooleanArray();
+      this.JNn = new LinkedList();
+      AppMethodBeat.o(227286);
     }
     
-    final void Yg(int paramInt)
+    final void afv(int paramInt)
     {
-      AppMethodBeat.i(202464);
-      SparseBooleanArray localSparseBooleanArray = this.DBB;
+      AppMethodBeat.i(227289);
+      SparseBooleanArray localSparseBooleanArray = this.JNm;
       if (localSparseBooleanArray != null) {
         localSparseBooleanArray.append(paramInt, true);
       }
-      AppMethodBeat.o(202464);
+      AppMethodBeat.o(227289);
     }
-  }
-  
-  public static final class f
-  {
-    int height;
-    int width;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.widget.recyclerview.CardLayoutManager
  * JD-Core Version:    0.7.0.1
  */

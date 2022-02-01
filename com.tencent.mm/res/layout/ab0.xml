@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/aay" />
     <include android:layout_gravity="left" android:orientation="horizontal" android:id="@id/cf6" android:layout_width="wrap_content" android:layout_height="@dimen/cl" android:layout_marginTop="@dimen/bt" layout="@layout/a8p" />
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/aa1" />
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/cga" />
     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cf0" android:background="@drawable/wc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/cj" android:layout_marginTop="@dimen/cb">
         <TextView android:textColor="@color/FG_1" android:id="@id/cf1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:text="@string/b8t" />
     </LinearLayout>

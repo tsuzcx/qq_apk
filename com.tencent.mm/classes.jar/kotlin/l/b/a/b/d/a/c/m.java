@@ -12,19 +12,19 @@ public abstract interface m
   public static final class a
     implements m
   {
-    public static final a TrF;
+    public static final a aaUz;
     
     static
     {
       AppMethodBeat.i(57771);
-      TrF = new a();
+      aaUz = new a();
       AppMethodBeat.o(57771);
     }
     
     public final as a(w paramw)
     {
       AppMethodBeat.i(57770);
-      p.h(paramw, "javaTypeParameter");
+      p.k(paramw, "javaTypeParameter");
       AppMethodBeat.o(57770);
       return null;
     }
@@ -32,7 +32,7 @@ public abstract interface m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.c.m
  * JD-Core Version:    0.7.0.1
  */

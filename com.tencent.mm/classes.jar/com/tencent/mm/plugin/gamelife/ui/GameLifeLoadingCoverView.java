@@ -11,17 +11,20 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.ui.aa;
+import com.tencent.mm.plugin.gamelife.d.a;
+import com.tencent.mm.plugin.gamelife.d.c;
+import com.tencent.mm.plugin.gamelife.d.d;
+import com.tencent.mm.ui.ad;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/ui/GameLifeLoadingCoverView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "loadingFailView", "Landroid/view/View;", "kotlin.jvm.PlatformType", "loadingView", "hideLoading", "", "loadFailed", "setOnClickListener", "callback", "Lkotlin/Function0;", "plugin-gamelife_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/ui/GameLifeLoadingCoverView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "loadingFailView", "Landroid/view/View;", "kotlin.jvm.PlatformType", "loadingView", "hideLoading", "", "loadFailed", "setOnClickListener", "callback", "Lkotlin/Function0;", "plugin-gamelife_release"})
 public final class GameLifeLoadingCoverView
   extends FrameLayout
 {
-  final View hSw;
-  final View ydq;
+  final View DiU;
+  final View kGT;
   
   public GameLifeLoadingCoverView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,26 +34,26 @@ public final class GameLifeLoadingCoverView
   public GameLifeLoadingCoverView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(241526);
-    setBackgroundResource(2131099650);
-    paramContext = aa.jQ(paramContext).inflate(2131494978, (ViewGroup)this, false);
+    AppMethodBeat.i(203580);
+    setBackgroundResource(d.a.BG_2);
+    paramContext = ad.kS(paramContext).inflate(d.d.Dgi, (ViewGroup)this, false);
     paramAttributeSet = new FrameLayout.LayoutParams(-1, -2);
     paramAttributeSet.gravity = 17;
     addView(paramContext, (ViewGroup.LayoutParams)paramAttributeSet);
-    this.hSw = findViewById(2131303690);
-    this.ydq = findViewById(2131303701);
-    AppMethodBeat.o(241526);
+    this.kGT = findViewById(d.c.loading);
+    this.DiU = findViewById(d.c.DfV);
+    AppMethodBeat.o(203580);
   }
   
   public final void setOnClickListener(final kotlin.g.a.a<x> parama)
   {
-    AppMethodBeat.i(241525);
-    p.h(parama, "callback");
-    this.ydq.setOnClickListener((View.OnClickListener)new a(this, parama));
-    AppMethodBeat.o(241525);
+    AppMethodBeat.i(203577);
+    p.k(parama, "callback");
+    this.DiU.setOnClickListener((View.OnClickListener)new a(this, parama));
+    AppMethodBeat.o(203577);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class a
     implements View.OnClickListener
   {
@@ -58,25 +61,25 @@ public final class GameLifeLoadingCoverView
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(241524);
+      AppMethodBeat.i(203269);
       b localb = new b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gamelife/ui/GameLifeLoadingCoverView$setOnClickListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      paramView = GameLifeLoadingCoverView.a(this.ydr);
-      p.g(paramView, "loadingFailView");
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/gamelife/ui/GameLifeLoadingCoverView$setOnClickListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      paramView = GameLifeLoadingCoverView.a(this.DiV);
+      p.j(paramView, "loadingFailView");
       paramView.setVisibility(8);
-      paramView = GameLifeLoadingCoverView.b(this.ydr);
-      p.g(paramView, "loadingView");
+      paramView = GameLifeLoadingCoverView.b(this.DiV);
+      p.j(paramView, "loadingView");
       paramView.setVisibility(0);
       parama.invoke();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gamelife/ui/GameLifeLoadingCoverView$setOnClickListener$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(241524);
+      AppMethodBeat.o(203269);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.ui.GameLifeLoadingCoverView
  * JD-Core Version:    0.7.0.1
  */

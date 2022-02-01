@@ -5,10 +5,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.view.View;
+import com.tencent.luggage.l.a.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dul;
-import com.tencent.mm.protocal.protobuf.eml;
-import com.tencent.mm.protocal.protobuf.zz;
+import com.tencent.mm.plugin.appbrand.utils.n;
+import com.tencent.mm.protocal.protobuf.aad;
+import com.tencent.mm.protocal.protobuf.eep;
+import com.tencent.mm.protocal.protobuf.ewr;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import kotlin.g.a.a;
@@ -16,21 +18,21 @@ import kotlin.g.b.p;
 import kotlin.g.b.q;
 import kotlin.x;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberAddLogic;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddLogic;", "mContext", "Landroid/content/Context;", "mAppId", "", "onDone", "Lkotlin/Function0;", "", "(Landroid/content/Context;Ljava/lang/String;Lkotlin/jvm/functions/Function0;)V", "mPhoneNumberAddView", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddView;", "getView", "Landroid/view/View;", "init", "sendSms", "mobile", "sendSmsInner", "showErrorTips", "errMsg", "uninit", "verifyCode", "isCheck", "", "code", "Companion", "luggage-wechat-full-sdk_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberAddLogic;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddLogic;", "mContext", "Landroid/content/Context;", "mAppId", "", "onDone", "Lkotlin/Function0;", "", "(Landroid/content/Context;Ljava/lang/String;Lkotlin/jvm/functions/Function0;)V", "mPhoneNumberAddView", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddView;", "getView", "Landroid/view/View;", "init", "sendSms", "mobile", "sendSmsInner", "showErrorTips", "errMsg", "uninit", "verifyCode", "isCheck", "", "code", "Companion", "luggage-wechat-full-sdk_release"})
 public final class s
   implements l
 {
   private static final String TAG = "PhoneNumberAddLogic";
-  public static final s.a nzF;
+  public static final s.a qBQ;
   private final String mAppId;
   private final Context mContext;
-  private m nzD;
-  private final a<x> nzE;
+  private m qBO;
+  private final a<x> qBP;
   
   static
   {
     AppMethodBeat.i(148104);
-    nzF = new s.a((byte)0);
+    qBQ = new s.a((byte)0);
     TAG = "PhoneNumberAddLogic";
     AppMethodBeat.o(148104);
   }
@@ -40,52 +42,52 @@ public final class s
     AppMethodBeat.i(148103);
     this.mContext = paramContext;
     this.mAppId = paramString;
-    this.nzE = parama;
+    this.qBP = parama;
     AppMethodBeat.o(148103);
   }
   
-  private final void aeu(String paramString)
+  private final void amo(String paramString)
   {
-    AppMethodBeat.i(230147);
-    com.tencent.mm.plugin.appbrand.utils.l.b(this.mContext, paramString, this.mContext.getString(2131755480), (DialogInterface.OnClickListener)s.e.nzM);
-    AppMethodBeat.o(230147);
+    AppMethodBeat.i(246775);
+    n.b(this.mContext, paramString, this.mContext.getString(a.g.app_brand_get_phone_number_ok), (DialogInterface.OnClickListener)s.e.qBX);
+    AppMethodBeat.o(246775);
   }
   
-  public final void aes(final String paramString)
+  public final void amm(final String paramString)
   {
     AppMethodBeat.i(148100);
-    p.h(paramString, "mobile");
+    p.k(paramString, "mobile");
     if (!Util.isNullOrNil(paramString))
     {
-      com.tencent.mm.plugin.appbrand.utils.l.a(this.mContext, this.mContext.getString(2131755492) + paramString, this.mContext.getString(2131755491), this.mContext.getString(2131756151), this.mContext.getString(2131756152), (DialogInterface.OnClickListener)new b(this, paramString), (DialogInterface.OnClickListener)s.c.nzI);
+      n.a(this.mContext, this.mContext.getString(a.g.app_brand_get_phone_number_verify_sms_msg) + paramString, this.mContext.getString(a.g.app_brand_get_phone_number_verify_sms_confirm_phone), this.mContext.getString(a.g.appbrand_request_accept), this.mContext.getString(a.g.appbrand_request_reject), (DialogInterface.OnClickListener)new b(this, paramString), (DialogInterface.OnClickListener)s.c.qBT);
       AppMethodBeat.o(148100);
       return;
     }
-    paramString = this.mContext.getString(2131756136);
-    p.g(paramString, "mContext.getString(R.str…_number_format_err_title)");
-    aeu(paramString);
+    paramString = this.mContext.getString(a.g.appbrand_phone_number_format_err_title);
+    p.j(paramString, "mContext.getString(R.str…_number_format_err_title)");
+    amo(paramString);
     AppMethodBeat.o(148100);
   }
   
-  public final void b(final boolean paramBoolean, final String paramString1, String paramString2)
+  public final void c(final boolean paramBoolean, final String paramString1, String paramString2)
   {
     y localy2 = null;
     y localy1 = null;
     AppMethodBeat.i(148101);
-    p.h(paramString1, "mobile");
-    p.h(paramString2, "code");
-    y localy3 = z.nBg.aex(this.mAppId);
+    p.k(paramString1, "mobile");
+    p.k(paramString2, "code");
+    y localy3 = z.qDr.amr(this.mAppId);
     Object localObject;
     if (localy3 != null)
     {
-      localObject = z.nBg.aex(this.mAppId);
+      localObject = z.qDr.amr(this.mAppId);
       if (localObject != null)
       {
-        localObject = Long.valueOf(((y)localObject).nAS);
+        localObject = Long.valueOf(((y)localObject).qDd);
         if (localObject == null) {
-          p.hyc();
+          p.iCn();
         }
-        localy3.nAS = (((Long)localObject).longValue() + 1L);
+        localy3.qDd = (((Long)localObject).longValue() + 1L);
       }
     }
     else
@@ -93,42 +95,42 @@ public final class s
       if (!paramBoolean) {
         break label272;
       }
-      localy2 = z.nBg.aex(this.mAppId);
+      localy2 = z.qDr.amr(this.mAppId);
       if (localy2 != null)
       {
-        localy3 = z.nBg.aex(this.mAppId);
+        localy3 = z.qDr.amr(this.mAppId);
         localObject = localy1;
         if (localy3 != null) {
-          localObject = Long.valueOf(localy3.nAV);
+          localObject = Long.valueOf(localy3.qDg);
         }
         if (localObject == null) {
-          p.hyc();
+          p.iCn();
         }
-        localy2.nAV = (((Long)localObject).longValue() + 1L);
+        localy2.qDg = (((Long)localObject).longValue() + 1L);
       }
     }
     for (;;)
     {
       Log.i(TAG, "verifyCode mAppId:" + this.mAppId + ", mobile:" + paramString1 + " code:" + paramString2);
-      localObject = com.tencent.mm.plugin.appbrand.utils.l.b(this.mContext, (CharSequence)this.mContext.getString(2131756148));
+      localObject = n.b(this.mContext, (CharSequence)this.mContext.getString(a.g.appbrand_phone_number_verify_code_verifying));
       new b(this.mAppId, paramString1, paramString2).y((kotlin.g.a.b)new f(this, paramBoolean, paramString1, (ProgressDialog)localObject));
       AppMethodBeat.o(148101);
       return;
       localObject = null;
       break;
       label272:
-      localy1 = z.nBg.aex(this.mAppId);
+      localy1 = z.qDr.amr(this.mAppId);
       if (localy1 != null)
       {
-        localy3 = z.nBg.aex(this.mAppId);
+        localy3 = z.qDr.amr(this.mAppId);
         localObject = localy2;
         if (localy3 != null) {
-          localObject = Long.valueOf(localy3.nAW);
+          localObject = Long.valueOf(localy3.qDh);
         }
         if (localObject == null) {
-          p.hyc();
+          p.iCn();
         }
-        localy1.nAW = (((Long)localObject).longValue() + 1L);
+        localy1.qDh = (((Long)localObject).longValue() + 1L);
       }
     }
   }
@@ -136,7 +138,7 @@ public final class s
   public final View getView()
   {
     AppMethodBeat.i(148099);
-    Object localObject = this.nzD;
+    Object localObject = this.qBO;
     if (localObject != null)
     {
       localObject = ((m)localObject).getView();
@@ -150,23 +152,23 @@ public final class s
   public final void init()
   {
     AppMethodBeat.i(148098);
-    this.nzD = ((m)new t(this.mContext, (l)this));
-    z.nBg.aew(this.mAppId);
+    this.qBO = ((m)new t(this.mContext, (l)this));
+    z.qDr.amq(this.mAppId);
     AppMethodBeat.o(148098);
   }
   
   public final void uninit()
   {
     AppMethodBeat.i(148102);
-    m localm = this.nzD;
+    m localm = this.qBO;
     if (localm != null) {
       localm.reset();
     }
-    z.nBg.aev(this.mAppId);
+    z.qDr.amp(this.mAppId);
     AppMethodBeat.o(148102);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
   static final class b
     implements DialogInterface.OnClickListener
   {
@@ -175,15 +177,15 @@ public final class s
     public final void onClick(DialogInterface paramDialogInterface, int paramInt)
     {
       AppMethodBeat.i(148085);
-      s.a(this.nzG, paramString);
+      s.a(this.qBR, paramString);
       AppMethodBeat.o(148085);
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/SendVerifyCodeResp;", "invoke"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/SendVerifyCodeResp;", "invoke"})
   static final class d
     extends q
-    implements kotlin.g.a.b<dul, x>
+    implements kotlin.g.a.b<eep, x>
   {
     d(s params, ProgressDialog paramProgressDialog)
     {
@@ -191,10 +193,10 @@ public final class s
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/CheckVerifyCodeResp;", "invoke"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/CheckVerifyCodeResp;", "invoke"})
   static final class f
     extends q
-    implements kotlin.g.a.b<zz, x>
+    implements kotlin.g.a.b<aad, x>
   {
     f(s params, boolean paramBoolean, String paramString, ProgressDialog paramProgressDialog)
     {

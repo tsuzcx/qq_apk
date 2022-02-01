@@ -1,42 +1,52 @@
 package com.tencent.mm.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.Log;
+import android.content.Context;
+import android.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.g.b.p;
+import kotlin.l;
 
-public abstract class x
-  implements View.OnClickListener
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/MMContextThemeWrapper;", "Landroid/view/ContextThemeWrapper;", "base", "Landroid/content/Context;", "themeResId", "", "(Landroid/content/Context;I)V", "inflater", "Landroid/view/LayoutInflater;", "getSystemService", "", "name", "", "libmmui_release"})
+public final class x
+  extends ContextThemeWrapper
 {
-  private long Dqp = -1L;
+  private LayoutInflater mYa;
   
-  public abstract void czW();
-  
-  public void onClick(View paramView)
+  public x(Context paramContext, int paramInt)
   {
-    b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/ui/MMCustomClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    Log.i("MicroMsg.MMCustomClickListener", "button onclick");
-    if (this.Dqp != -1L)
+    super(paramContext, paramInt);
+    AppMethodBeat.i(213449);
+    AppMethodBeat.o(213449);
+  }
+  
+  public final Object getSystemService(String paramString)
+  {
+    AppMethodBeat.i(213448);
+    p.k(paramString, "name");
+    if (p.h("layout_inflater", paramString))
     {
-      long l = (System.nanoTime() - this.Dqp) / 1000000L;
-      if (l < 3000L)
+      if (this.mYa == null)
       {
-        Log.i("MicroMsg.MMCustomClickListener", "click time limited limitetime:%d, delaytime:%d", new Object[] { Long.valueOf(l), Long.valueOf(3000L) });
-        a.a(this, "com/tencent/mm/ui/MMCustomClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        return;
+        Object localObject = super.getSystemService(paramString);
+        paramString = localObject;
+        if (!(localObject instanceof LayoutInflater)) {
+          paramString = null;
+        }
+        this.mYa = ad.b((LayoutInflater)paramString);
       }
+      paramString = this.mYa;
+      AppMethodBeat.o(213448);
+      return paramString;
     }
-    this.Dqp = System.nanoTime();
-    czW();
-    a.a(this, "com/tencent/mm/ui/MMCustomClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    paramString = super.getSystemService(paramString);
+    AppMethodBeat.o(213448);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.x
  * JD-Core Version:    0.7.0.1
  */

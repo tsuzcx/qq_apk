@@ -19,8 +19,11 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.base.MMPullDownView;
 import com.tencent.mm.ui.base.MMPullDownView.c;
 import com.tencent.mm.ui.base.MMPullDownView.d;
@@ -32,23 +35,23 @@ public class MMChattingListView
   extends MMPullDownView
   implements MMPullDownView.c, MMPullDownView.d, MMPullDownView.e, MMPullDownView.g
 {
-  private Bundle PFm;
-  private BaseAdapter PGo;
-  private Rect PGp;
-  private Paint PGq;
-  private boolean PGr;
-  private boolean PGs;
-  private boolean PGt;
-  private int PGu;
-  private com.tencent.mm.ui.chatting.n.a.a PlQ;
+  private com.tencent.mm.ui.chatting.o.a.a WFB;
+  private Bundle WZZ;
+  private BaseAdapter XbE;
+  private Rect XbF;
+  private Paint XbG;
+  private boolean XbH;
+  private boolean XbI;
+  private boolean XbJ;
+  private int XbK;
   private ListView mListView;
   
   public MMChattingListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(36708);
-    this.PGp = new Rect();
-    this.PGt = false;
+    this.XbF = new Rect();
+    this.XbJ = false;
     init(paramContext);
     AppMethodBeat.o(36708);
   }
@@ -57,8 +60,8 @@ public class MMChattingListView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(36709);
-    this.PGp = new Rect();
-    this.PGt = false;
+    this.XbF = new Rect();
+    this.XbJ = false;
     init(paramContext);
     AppMethodBeat.o(36709);
   }
@@ -66,8 +69,8 @@ public class MMChattingListView
   private void init(final Context paramContext)
   {
     AppMethodBeat.i(36710);
-    this.PGq = new Paint();
-    this.PGq.setColor(-16777216);
+    this.XbG = new Paint();
+    this.XbG.setColor(-16777216);
     this.mListView = new ListView(paramContext)
     {
       public final void onDrawForeground(Canvas paramAnonymousCanvas)
@@ -96,27 +99,27 @@ public class MMChattingListView
           return;
         }
         if (MMChattingListView.e(MMChattingListView.this)) {}
-        for (localRect2.top = (MMChattingListView.a(MMChattingListView.this).top + com.tencent.mm.cb.a.fromDPToPix(paramContext, 35));; localRect2.top = MMChattingListView.a(MMChattingListView.this).top)
+        for (localRect2.top = (MMChattingListView.a(MMChattingListView.this).top + com.tencent.mm.ci.a.fromDPToPix(paramContext, 35));; localRect2.top = MMChattingListView.a(MMChattingListView.this).top)
         {
-          localRect2.bottom = (MMChattingListView.a(MMChattingListView.this).bottom + com.tencent.mm.cb.a.fromDPToPix(paramContext, 1));
+          localRect2.bottom = (MMChattingListView.a(MMChattingListView.this).bottom + com.tencent.mm.ci.a.fromDPToPix(paramContext, 1));
           paramAnonymousCanvas.drawRect(localRect2, MMChattingListView.d(MMChattingListView.this));
           break;
         }
       }
     };
     this.mListView.setBackgroundDrawable(null);
-    this.mListView.setSelector(2131233926);
+    this.mListView.setSelector(R.g.mm_chat_listitem);
     this.mListView.setCacheColorHint(0);
     this.mListView.setDivider(null);
-    this.mListView.setPadding(0, 0, 0, com.tencent.mm.cb.a.fromDPToPix(paramContext, 6));
+    this.mListView.setPadding(0, 0, 0, com.tencent.mm.ci.a.fromDPToPix(paramContext, 6));
     this.mListView.setClipToPadding(false);
     this.mListView.setScrollBarStyle(33554432);
-    this.mListView.setId(2131298500);
+    this.mListView.setId(R.h.dyv);
     setOverScrollMode(2);
     addView(this.mListView, new FrameLayout.LayoutParams(-1, -1));
     setCanOverScrool(false);
-    Bx(false);
-    By(false);
+    FP(false);
+    FQ(false);
     setTopViewVisible(true);
     setOnBottomLoadDataListener(this);
     setOnTopLoadDataListener(this);
@@ -125,24 +128,25 @@ public class MMChattingListView
     setIsBottomShowAll(true);
     setIsTopShowAll(false);
     setBottomViewVisible(true);
-    this.PGs = false;
+    setNestedOverScrollEnabled(true);
+    this.XbI = false;
     AppMethodBeat.o(36710);
   }
   
-  public final void Bx(boolean paramBoolean)
+  public final void am(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(36715);
-    Log.i("MicroMsg.MMChattingListView", "[forceTopLoadData] start:" + paramBoolean + " isForceTopLoadDataForPosition:" + this.PGt);
-    if (this.PGt)
+    AppMethodBeat.i(293294);
+    Log.i("MicroMsg.MMChattingListView", "[forceTopLoadData] start:" + paramBoolean + " isForceTopLoadDataForPosition:" + this.XbJ);
+    if (this.XbJ)
     {
-      AppMethodBeat.o(36715);
+      AppMethodBeat.o(293294);
       return;
     }
-    super.Bx(paramBoolean);
-    AppMethodBeat.o(36715);
+    super.am(paramBoolean, paramInt);
+    AppMethodBeat.o(293294);
   }
   
-  public final void bs(Bundle paramBundle)
+  public final void bp(Bundle paramBundle)
   {
     AppMethodBeat.i(36716);
     StringBuilder localStringBuilder = new StringBuilder("[forceTopLoadData] sourceArgs:");
@@ -150,8 +154,8 @@ public class MMChattingListView
     for (String str = "";; str = paramBundle.toString())
     {
       Log.i("MicroMsg.MMChattingListView", str);
-      this.PFm = paramBundle;
-      super.By(true);
+      this.WZZ = paramBundle;
+      super.FQ(true);
       AppMethodBeat.o(36716);
       return;
     }
@@ -165,30 +169,30 @@ public class MMChattingListView
     for (Object localObject = "null";; localObject = paramBundle)
     {
       Log.i("MicroMsg.MMChattingListView", localObject);
-      this.PGt = paramBoolean;
-      this.PFm = paramBundle;
-      super.Bx(paramBoolean);
+      this.XbJ = paramBoolean;
+      this.WZZ = paramBundle;
+      super.FP(paramBoolean);
       AppMethodBeat.o(36714);
       return;
     }
   }
   
-  public final boolean cAj()
+  public final boolean cOJ()
   {
     AppMethodBeat.i(36718);
-    this.PGu = getCurCount();
-    Log.i("MicroMsg.MMChattingListView", "[onBottomLoadData] mPreCount:" + this.PGu);
-    if (this.PlQ != null)
+    this.XbK = getCurCount();
+    Log.i("MicroMsg.MMChattingListView", "[onBottomLoadData] mPreCount:" + this.XbK);
+    if (this.WFB != null)
     {
-      this.PlQ.a(d.a.PDE, false, this.PFm);
-      this.PFm = null;
-      this.PGt = false;
+      this.WFB.a(d.a.WYr, false, this.WZZ);
+      this.WZZ = null;
+      this.XbJ = false;
     }
     AppMethodBeat.o(36718);
     return false;
   }
   
-  public final boolean cAk()
+  public final boolean cOK()
   {
     AppMethodBeat.i(36717);
     View localView = getListView().getChildAt(getListView().getFirstVisiblePosition());
@@ -201,7 +205,7 @@ public class MMChattingListView
     return false;
   }
   
-  public final boolean cAl()
+  public final boolean cOL()
   {
     AppMethodBeat.i(36712);
     View localView = getListView().getChildAt(getListView().getChildCount() - 1);
@@ -219,28 +223,28 @@ public class MMChattingListView
     return false;
   }
   
-  public final boolean cAm()
+  public final boolean cOM()
   {
     AppMethodBeat.i(36719);
-    this.PGu = getCurCount();
-    Log.i("MicroMsg.MMChattingListView", "[onTopLoadData] mPreCount:" + this.PGu + " isForceTopLoadDataForPosition:" + this.PGt);
-    com.tencent.mm.ui.chatting.n.a.a locala1;
-    if (this.PlQ != null)
+    this.XbK = getCurCount();
+    Log.i("MicroMsg.MMChattingListView", "[onTopLoadData] mPreCount:" + this.XbK + " isForceTopLoadDataForPosition:" + this.XbJ);
+    com.tencent.mm.ui.chatting.o.a.a locala1;
+    if (this.WFB != null)
     {
-      if ((this.PGt) && (this.PFm != null)) {
-        this.PFm.putInt("SCENE", 2);
+      if ((this.XbJ) && (this.WZZ != null)) {
+        this.WZZ.putInt("SCENE", 2);
       }
-      locala1 = this.PlQ;
-      if (!this.PGt) {
+      locala1 = this.WFB;
+      if (!this.XbJ) {
         break label127;
       }
     }
     label127:
-    for (d.a locala = d.a.PDH;; locala = d.a.PDD)
+    for (d.a locala = d.a.WYu;; locala = d.a.WYq)
     {
-      locala1.a(locala, false, this.PFm);
-      this.PFm = null;
-      this.PGt = false;
+      locala1.a(locala, false, this.WZZ);
+      this.WZZ = null;
+      this.XbJ = false;
       AppMethodBeat.o(36719);
       return false;
     }
@@ -248,7 +252,7 @@ public class MMChattingListView
   
   public BaseAdapter getBaseAdapter()
   {
-    return this.PGo;
+    return this.XbE;
   }
   
   public int getBottomSpace()
@@ -272,12 +276,12 @@ public class MMChattingListView
   public int getCurCount()
   {
     AppMethodBeat.i(36720);
-    if (this.PGo == null)
+    if (this.XbE == null)
     {
       AppMethodBeat.o(36720);
       return 0;
     }
-    int i = this.PGo.getCount();
+    int i = this.XbE.getCount();
     AppMethodBeat.o(36720);
     return i;
   }
@@ -289,14 +293,14 @@ public class MMChattingListView
   
   public int getPreCount()
   {
-    return this.PGu;
+    return this.XbK;
   }
   
   public void setAdapter(BaseAdapter paramBaseAdapter)
   {
     AppMethodBeat.i(36711);
-    this.PGo = paramBaseAdapter;
-    getListView().setAdapter(this.PGo);
+    this.XbE = paramBaseAdapter;
+    getListView().setAdapter(this.XbE);
     AppMethodBeat.o(36711);
   }
   
@@ -336,9 +340,9 @@ public class MMChattingListView
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
         AppMethodBeat.i(36706);
-        this.PGw.getGlobalVisibleRect(MMChattingListView.a(MMChattingListView.this));
-        MMChattingListView.a(MMChattingListView.this).top = this.PGw.getTop();
-        MMChattingListView.a(MMChattingListView.this).bottom = this.PGw.getBottom();
+        this.XbM.getGlobalVisibleRect(MMChattingListView.a(MMChattingListView.this));
+        MMChattingListView.a(MMChattingListView.this).top = this.XbM.getTop();
+        MMChattingListView.a(MMChattingListView.this).bottom = this.XbM.getBottom();
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue("alpha")).floatValue();
         MMChattingListView.d(MMChattingListView.this).setAlpha((int)(f * 255.0F));
         MMChattingListView.b(MMChattingListView.this).postInvalidate();
@@ -362,28 +366,28 @@ public class MMChattingListView
   
   public void setHighLightChildNew(int paramInt)
   {
-    AppMethodBeat.i(233538);
-    this.PGs = true;
-    if (ao.isDarkMode()) {
-      this.PGq.setColor(getResources().getColor(2131099844));
+    AppMethodBeat.i(276945);
+    this.XbI = true;
+    if (ar.isDarkMode()) {
+      this.XbG.setColor(getResources().getColor(R.e.White));
     }
     for (;;)
     {
-      Log.i("MicroMsg.MMChattingListView", "[newStyle] setfalse" + this.PGs);
+      Log.i("MicroMsg.MMChattingListView", "[newStyle] setfalse" + this.XbI);
       paramInt = Math.max(1, paramInt);
       if (this.mListView != null) {
         break;
       }
       Log.e("MicroMsg.MMChattingListView", "null == listView index:%s", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(233538);
+      AppMethodBeat.o(276945);
       return;
-      this.PGq.setColor(getResources().getColor(2131100042));
+      this.XbG.setColor(getResources().getColor(R.e.black));
     }
     Object localObject1 = this.mListView.getChildAt(paramInt);
     if (localObject1 == null)
     {
       Log.e("MicroMsg.MMChattingListView", "null == view index:%s", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(233538);
+      AppMethodBeat.o(276945);
       return;
     }
     if (((View)localObject1).getBottom() - ((View)localObject1).getTop() <= 0)
@@ -396,51 +400,51 @@ public class MMChattingListView
       if (localObject1 == null)
       {
         Log.e("MicroMsg.MMChattingListView", "null == view index:%s", new Object[] { Integer.valueOf(paramInt + this.mListView.getHeaderViewsCount()) });
-        AppMethodBeat.o(233538);
+        AppMethodBeat.o(276945);
         return;
       }
       Log.i("MicroMsg.MMChattingListView", "[setHighLightChild] index:%s view rect:%s headerCount:%s", new Object[] { Integer.valueOf(paramInt), new Rect(((View)localObject1).getLeft(), ((View)localObject1).getTop(), ((View)localObject1).getRight(), ((View)localObject1).getBottom()), Integer.valueOf(this.mListView.getHeaderViewsCount()) });
       Object localObject2;
-      if (ao.isDarkMode())
+      if (ar.isDarkMode())
       {
         localObject2 = PropertyValuesHolder.ofFloat("alpha", new float[] { 0.0F, 0.08F, 0.08F, 0.08F, 0.08F, 0.08F, 0.0F });
         localObject2 = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { localObject2 });
-        TextView localTextView = (TextView)((View)localObject1).findViewById(2131298558);
+        TextView localTextView = (TextView)((View)localObject1).findViewById(R.h.dzs);
         if ((localTextView == null) || (localTextView.getVisibility() != 0)) {
           break label476;
         }
       }
       label476:
-      for (this.PGr = true;; this.PGr = false)
+      for (this.XbH = true;; this.XbH = false)
       {
         ((ValueAnimator)localObject2).addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
         {
           public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
           {
-            AppMethodBeat.i(233536);
-            this.PGw.getGlobalVisibleRect(MMChattingListView.a(MMChattingListView.this));
-            MMChattingListView.a(MMChattingListView.this).top = this.PGw.getTop();
-            MMChattingListView.a(MMChattingListView.this).bottom = this.PGw.getBottom();
+            AppMethodBeat.i(271538);
+            this.XbM.getGlobalVisibleRect(MMChattingListView.a(MMChattingListView.this));
+            MMChattingListView.a(MMChattingListView.this).top = this.XbM.getTop();
+            MMChattingListView.a(MMChattingListView.this).bottom = this.XbM.getBottom();
             float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue("alpha")).floatValue();
             MMChattingListView.d(MMChattingListView.this).setAlpha((int)(f * 255.0F));
             MMChattingListView.b(MMChattingListView.this).postInvalidate();
-            AppMethodBeat.o(233536);
+            AppMethodBeat.o(271538);
           }
         });
         ((ValueAnimator)localObject2).addListener(new AnimatorListenerAdapter()
         {
           public final void onAnimationEnd(Animator paramAnonymousAnimator)
           {
-            AppMethodBeat.i(233537);
+            AppMethodBeat.i(289316);
             super.onAnimationEnd(paramAnonymousAnimator);
             MMChattingListView.a(MMChattingListView.this).setEmpty();
             MMChattingListView.f(MMChattingListView.this);
-            AppMethodBeat.o(233537);
+            AppMethodBeat.o(289316);
           }
         });
         ((ValueAnimator)localObject2).setDuration(1150L);
         ((ValueAnimator)localObject2).start();
-        AppMethodBeat.o(233538);
+        AppMethodBeat.o(276945);
         return;
         localObject2 = PropertyValuesHolder.ofFloat("alpha", new float[] { 0.0F, 0.1F, 0.1F, 0.1F, 0.1F, 0.1F, 0.0F });
         break;
@@ -448,14 +452,14 @@ public class MMChattingListView
     }
   }
   
-  public void setLoadExecutor(com.tencent.mm.ui.chatting.n.a.a parama)
+  public void setLoadExecutor(com.tencent.mm.ui.chatting.o.a.a parama)
   {
-    this.PlQ = parama;
+    this.WFB = parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.view.MMChattingListView
  * JD-Core Version:    0.7.0.1
  */

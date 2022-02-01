@@ -33,18 +33,22 @@ public final class BitmapDescriptor
   
   public static abstract interface BitmapFormator
   {
+    public abstract int activeSize();
+    
     public abstract Bitmap getBitmap(Context paramContext);
     
     public abstract String getBitmapId();
     
     public abstract int getFormateType();
     
+    public abstract int nextActiveIndex();
+    
     public abstract void setScale(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.BitmapDescriptor
  * JD-Core Version:    0.7.0.1
  */

@@ -10,23 +10,23 @@ public class AudioExportSession
   
   public static IAudioExportTask generateAudioAssetExportTask(Asset paramAsset, String paramString)
   {
-    AppMethodBeat.i(217981);
+    AppMethodBeat.i(189443);
     paramAsset = new AudioExportTask(new AudioSourceComposition(paramAsset), paramString);
-    AppMethodBeat.o(217981);
+    AppMethodBeat.o(189443);
     return paramAsset;
   }
   
   public static IAudioExportTask generateAudioTrackExportTask(AssetTrack paramAssetTrack, String paramString)
   {
-    AppMethodBeat.i(217982);
+    AppMethodBeat.i(189444);
     paramAssetTrack = new AudioExportTask(new AudioSourceTrack(paramAssetTrack), paramString);
-    AppMethodBeat.o(217982);
+    AppMethodBeat.o(189444);
     return paramAssetTrack;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.core.audio.AudioExportSession
  * JD-Core Version:    0.7.0.1
  */

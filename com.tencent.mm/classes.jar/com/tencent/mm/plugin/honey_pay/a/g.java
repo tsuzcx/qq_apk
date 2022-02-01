@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.honey_pay.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bqb;
-import com.tencent.mm.protocal.protobuf.bqc;
+import com.tencent.mm.protocal.protobuf.bxv;
+import com.tencent.mm.protocal.protobuf.bxw;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.c.r;
 
 public final class g
   extends r
 {
+  public bxw DJF;
   private final String TAG;
-  public bqc yjD;
   
   public g(String paramString, long paramLong)
   {
     AppMethodBeat.i(64624);
     this.TAG = "MicroMsg.NetSceneMCreditLineTokenSign";
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new bqb();
-    ((d.a)localObject).iLO = new bqc();
+    ((d.a)localObject).lBU = new bxv();
+    ((d.a)localObject).lBV = new bxw();
     ((d.a)localObject).funcId = getType();
     ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/gmcreditlinetoken";
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (bqb)this.rr.iLK.iLR;
-    ((bqb)localObject).LWD = paramString;
-    ((bqb)localObject).LpD = paramLong;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (bxv)d.b.b(this.rr.lBR);
+    ((bxv)localObject).TfK = paramString;
+    ((bxv)localObject).SqZ = paramLong;
     Log.i("MicroMsg.NetSceneMCreditLineTokenSign", "card_no: %s, credit_line: %s", new Object[] { paramString, Long.valueOf(paramLong) });
     AppMethodBeat.o(64624);
   }
@@ -41,19 +41,21 @@ public final class g
   {
     AppMethodBeat.i(64625);
     Log.i("MicroMsg.NetSceneMCreditLineTokenSign", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.yjD = ((bqc)((d)params).iLL.iLR);
-    Log.i("MicroMsg.NetSceneMCreditLineTokenSign", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.yjD.pTZ), this.yjD.pUa });
+    this.DJF = ((bxw)d.c.b(((d)params).lBS));
+    Log.i("MicroMsg.NetSceneMCreditLineTokenSign", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.DJF.tqa), this.DJF.tqb });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
     AppMethodBeat.o(64625);
   }
   
-  public final void e(s params)
+  public final void f(s params)
   {
-    params = (bqc)((d)params).iLL.iLR;
-    this.RtZ = params.pTZ;
-    this.Rua = params.pUa;
+    AppMethodBeat.i(274314);
+    params = (bxw)d.c.b(((d)params).lBS);
+    this.YVy = params.tqa;
+    this.YVz = params.tqb;
+    AppMethodBeat.o(274314);
   }
   
   public final int getType()

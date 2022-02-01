@@ -1,194 +1,126 @@
 package com.tencent.mm.plugin.finder.storage;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.hu;
-import com.tencent.mm.model.cl;
-import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.storage.logic.b;
-import com.tencent.mm.protocal.protobuf.FinderMedia;
+import com.tencent.mm.f.c.ch;
 import com.tencent.mm.protocal.protobuf.FinderObject;
 import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
-import com.tencent.mm.protocal.protobuf.anv;
-import com.tencent.mm.protocal.protobuf.aud;
-import com.tencent.mm.protocal.protobuf.cjh;
-import com.tencent.mm.protocal.protobuf.csp;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IEvent;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.storage.ISQLiteDatabase;
-import java.util.ArrayList;
-import java.util.Collection;
+import com.tencent.mm.protocal.protobuf.awh;
+import com.tencent.mm.protocal.protobuf.csc;
+import com.tencent.mm.protocal.protobuf.csg;
+import com.tencent.mm.protocal.protobuf.dbo;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.a.j;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderDraftLogic;", "", "()V", "DRAFT_OP_ADD", "", "getDRAFT_OP_ADD", "()I", "setDRAFT_OP_ADD", "(I)V", "DRAFT_OP_DEL", "getDRAFT_OP_DEL", "setDRAFT_OP_DEL", "TAG", "", "deleteDraft", "", "localId", "", "getAllDrafts", "", "Lcom/tencent/mm/plugin/finder/storage/FinderDraftItem;", "isLocalSenderFeedExists", "", "notifyDeleteDraft", "notifyDraftEvent", "opCode", "notifySaveDraft", "replace", "draftItem", "saveDraftItem", "mvData", "Lcom/tencent/mm/protocal/protobuf/MusicMvData;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderDraftItem;", "Lcom/tencent/mm/autogen/table/BaseFinderDraftItem;", "()V", "_finderItem", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "value", "", "createTime", "getCreateTime", "()I", "setCreateTime", "(I)V", "finderItem", "getFinderItem", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "localFlag", "getLocalFlag", "setLocalFlag", "", "localId", "getLocalId", "()J", "setLocalId", "(J)V", "objectType", "getObjectType", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "info", "", "isFinderFeed", "", "isMvFeed", "Companion", "plugin-finder_release"})
 public final class h
+  extends ch
 {
-  private static final String TAG = "Finder.FinderDraftLogic";
-  public static int vDn;
-  private static int vDo;
-  public static final h vDp;
+  public static final a AkG;
+  private static final IAutoDBItem.MAutoDBInfo info;
+  private FinderItem AkF;
   
   static
   {
-    AppMethodBeat.i(251720);
-    vDp = new h();
-    TAG = "Finder.FinderDraftLogic";
-    vDn = 100;
-    vDo = 110;
-    AppMethodBeat.o(251720);
+    AppMethodBeat.i(287311);
+    AkG = new a((byte)0);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = ch.aoY();
+    p.j(localMAutoDBInfo, "initAutoDBInfo(FinderDraftItem::class.java)");
+    info = localMAutoDBInfo;
+    AppMethodBeat.o(287311);
   }
   
-  public static void Fx(long paramLong)
+  public final FinderItem dYm()
   {
-    AppMethodBeat.i(251716);
-    Log.i(TAG, "deleteDraft localId:".concat(String.valueOf(paramLong)));
-    b.a(((PluginFinder)com.tencent.mm.kernel.g.ah(PluginFinder.class)).getDraftStorage(), paramLong);
-    aj(vDo, paramLong);
-    AppMethodBeat.o(251716);
-  }
-  
-  public static void aj(int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(251719);
-    hu localhu = new hu();
-    localhu.dMq.dJY = paramInt;
-    localhu.dMq.localId = paramLong;
-    EventCenter.instance.publish((IEvent)localhu);
-    AppMethodBeat.o(251719);
-  }
-  
-  public static int dxo()
-  {
-    return vDn;
-  }
-  
-  public static int dxp()
-  {
-    return vDo;
-  }
-  
-  public static List<g> dxq()
-  {
-    AppMethodBeat.i(251718);
-    Object localObject2 = ((PluginFinder)com.tencent.mm.kernel.g.ah(PluginFinder.class)).getDraftStorage();
-    Object localObject1 = new ArrayList();
-    Object localObject3 = "SELECT * FROM FinderDraftItem  WHERE " + ((b)localObject2).vGK + " ORDER BY " + ((b)localObject2).TABLE + ".localId DESC";
-    localObject2 = ((b)localObject2).db.rawQuery((String)localObject3, null, 2);
-    while (((Cursor)localObject2).moveToNext())
+    AppMethodBeat.i(287310);
+    FinderItem localFinderItem = this.AkF;
+    Object localObject = localFinderItem;
+    if (localFinderItem == null)
     {
-      localObject3 = new g();
-      ((g)localObject3).convertFrom((Cursor)localObject2);
-      ((ArrayList)localObject1).add(localObject3);
+      localObject = FinderItem.Companion;
+      localObject = this.field_finderItem;
+      p.j(localObject, "field_finderItem");
+      localObject = FinderItem.a.a((awh)localObject, this.field_localId);
+      this.AkF = ((FinderItem)localObject);
     }
-    ((Cursor)localObject2).close();
-    localObject1 = (List)localObject1;
-    AppMethodBeat.o(251718);
-    return localObject1;
+    AppMethodBeat.o(287310);
+    return localObject;
   }
   
-  public final g a(csp paramcsp)
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    AppMethodBeat.i(251717);
-    p.h(paramcsp, "mvData");
-    if (paramcsp.localId > 0L) {
-      Fx(paramcsp.localId);
-    }
-    g localg = new g();
-    localg.field_createTime = cl.aWB();
-    localg.field_localFlag = 1;
-    aud localaud = new aud();
-    localaud.tuO = paramcsp.MxE;
-    Object localObject1 = localaud.tuO;
-    if (localObject1 != null)
+    return info;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderDraftItem$Companion;", "", "()V", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "createDraftItem", "Lcom/tencent/mm/plugin/finder/storage/FinderDraftItem;", "finderItem", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "createFinderItem", "draftItem", "createMvData", "Lcom/tencent/mm/protocal/protobuf/MusicMvData;", "plugin-finder_release"})
+  public static final class a
+  {
+    public static dbo a(h paramh)
     {
-      localObject1 = ((FinderObject)localObject1).objectDesc;
+      AppMethodBeat.i(265369);
+      p.k(paramh, "draftItem");
+      dbo localdbo = new dbo();
+      FinderItem localFinderItem = paramh.dYm();
+      Object localObject1 = (csg)j.lp((List)localFinderItem.getMediaList());
+      Object localObject2;
       if (localObject1 != null)
       {
-        localObject1 = ((FinderObjectDesc)localObject1).media;
+        localObject2 = ((csg)localObject1).url;
+        localObject1 = localObject2;
+        if (localObject2 != null) {}
+      }
+      else
+      {
+        localObject1 = "";
+      }
+      localdbo.TIW = ((String)localObject1);
+      localdbo.TIV = localFinderItem.getFeedObject();
+      localObject1 = localdbo.TIV;
+      if (localObject1 != null)
+      {
+        localObject1 = ((FinderObject)localObject1).objectDesc;
         if (localObject1 != null) {
-          ((LinkedList)localObject1).clear();
+          ((FinderObjectDesc)localObject1).media = new LinkedList();
         }
       }
-    }
-    localObject1 = (CharSequence)paramcsp.MxF;
-    Object localObject2;
-    if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0))
-    {
-      i = 1;
-      if (i == 0)
+      localdbo.TIX = paramh.field_originMvInfo;
+      localObject1 = localFinderItem.field_clipList;
+      if (localObject1 != null)
       {
-        localObject1 = new FinderMedia();
-        ((FinderMedia)localObject1).url = paramcsp.MxF;
-        ((FinderMedia)localObject1).thumbUrl = paramcsp.MxF;
-        ((FinderMedia)localObject1).mediaType = 2;
-        localObject2 = localaud.tuO;
-        if (localObject2 != null)
+        localObject1 = ((csc)localObject1).TzN;
+        if (localObject1 != null)
         {
-          localObject2 = ((FinderObject)localObject2).objectDesc;
-          if (localObject2 != null)
+          localObject1 = ((Iterable)localObject1).iterator();
+          while (((Iterator)localObject1).hasNext())
           {
-            localObject2 = ((FinderObjectDesc)localObject2).media;
-            if (localObject2 != null) {
-              ((LinkedList)localObject2).add(localObject1);
-            }
+            localObject2 = (awh)((Iterator)localObject1).next();
+            localdbo.SGC.add(((awh)localObject2).xcx);
           }
         }
       }
-      localaud.LEP = new anv();
-      localObject1 = (Collection)paramcsp.LDi;
-      if ((localObject1 != null) && (!((Collection)localObject1).isEmpty())) {
-        break label395;
-      }
+      localdbo.localId = paramh.field_localId;
+      AppMethodBeat.o(265369);
+      return localdbo;
     }
-    label395:
-    for (int i = 1;; i = 0)
+    
+    public static h k(FinderItem paramFinderItem)
     {
-      if (i != 0) {
-        break label400;
-      }
-      localObject1 = localaud.LEP;
-      if (localObject1 != null) {
-        ((anv)localObject1).LzB = new cjh();
-      }
-      localObject1 = paramcsp.LDi;
-      if (localObject1 == null) {
-        break label400;
-      }
-      localObject1 = ((Iterable)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject3 = (FinderObject)((Iterator)localObject1).next();
-        localObject2 = new aud();
-        ((aud)localObject2).tuO = ((FinderObject)localObject3);
-        localObject3 = localaud.LEP;
-        if (localObject3 != null)
-        {
-          localObject3 = ((anv)localObject3).LzB;
-          if (localObject3 != null)
-          {
-            localObject3 = ((cjh)localObject3).MoH;
-            if (localObject3 != null) {
-              ((LinkedList)localObject3).add(localObject2);
-            }
-          }
-        }
-      }
-      i = 0;
-      break;
+      AppMethodBeat.i(265367);
+      p.k(paramFinderItem, "finderItem");
+      h localh = new h();
+      localh.field_createTime = paramFinderItem.getCreateTime();
+      localh.field_localFlag = 1;
+      FinderItem.a locala = FinderItem.Companion;
+      localh.field_finderItem = FinderItem.a.m(paramFinderItem);
+      localh.field_objectType = 0;
+      localh.field_localId = paramFinderItem.getLocalId();
+      AppMethodBeat.o(265367);
+      return localh;
     }
-    label400:
-    localg.field_finderItem = localaud;
-    localg.field_originMvInfo = paramcsp.MxG;
-    localg.field_objectType = 2;
-    long l = ((PluginFinder)com.tencent.mm.kernel.g.ah(PluginFinder.class)).getDraftStorage().b(localg);
-    aj(vDn, l);
-    AppMethodBeat.o(251717);
-    return localg;
   }
 }
 

@@ -12,7 +12,7 @@ public class PluginFingerprint
   public void configure(g paramg)
   {
     AppMethodBeat.i(148768);
-    paramg.aBb();
+    paramg.aIE();
     AppMethodBeat.o(148768);
   }
   
@@ -21,7 +21,7 @@ public class PluginFingerprint
   public void execute(g paramg)
   {
     AppMethodBeat.i(148769);
-    paramg.aBb();
+    paramg.aIE();
     AppMethodBeat.o(148769);
   }
   

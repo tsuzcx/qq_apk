@@ -10,7 +10,7 @@ import java.util.HashMap;
 public final class al
   implements e
 {
-  HashMap<String, l> cache;
+  private HashMap<String, l> cache;
   
   public al()
   {
@@ -27,12 +27,12 @@ public final class al
       AppMethodBeat.o(95852);
       return false;
     }
-    aj.eJP().post(new Runnable()
+    aj.fwa().post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(95847);
-        al.this.cache.put(paraml.field_userName, paraml);
+        al.a(al.this).put(paraml.field_userName, paraml);
         AppMethodBeat.o(95847);
       }
     });
@@ -40,7 +40,7 @@ public final class al
     return true;
   }
   
-  public final l aPj(String paramString)
+  public final l bae(String paramString)
   {
     AppMethodBeat.i(95849);
     paramString = (l)this.cache.get(paramString);
@@ -48,15 +48,15 @@ public final class al
     return paramString;
   }
   
-  public final boolean fbm()
+  public final boolean fPg()
   {
     AppMethodBeat.i(95850);
-    aj.eJP().post(new Runnable()
+    aj.fwa().post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(95845);
-        if (al.this.cache.size() > 50) {
+        if (al.a(al.this).size() > 50) {
           al.a(al.this, 10);
         }
         AppMethodBeat.o(95845);
@@ -66,15 +66,15 @@ public final class al
     return true;
   }
   
-  public final boolean fbn()
+  public final boolean fPh()
   {
     AppMethodBeat.i(95851);
-    aj.eJP().post(new Runnable()
+    aj.fwa().post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(95846);
-        al.a(al.this, al.this.cache.size());
+        al.a(al.this, al.a(al.this).size());
         AppMethodBeat.o(95846);
       }
     });
@@ -84,7 +84,7 @@ public final class al
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.al
  * JD-Core Version:    0.7.0.1
  */

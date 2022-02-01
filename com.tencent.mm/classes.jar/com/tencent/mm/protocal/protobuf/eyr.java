@@ -1,80 +1,91 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
+import com.tencent.mm.cd.b;
 
 public final class eyr
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String KWF;
-  public int xNF;
+  public int Height;
+  public b UyT;
+  public int UyU;
+  public long UyV;
+  public int Width;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32530);
+    AppMethodBeat.i(117938);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.KWF == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: Data");
-        AppMethodBeat.o(32530);
-        throw paramVarArgs;
+      if (this.UyT != null) {
+        paramVarArgs.c(1, this.UyT);
       }
-      paramVarArgs.aM(1, this.xNF);
-      if (this.KWF != null) {
-        paramVarArgs.e(2, this.KWF);
-      }
-      AppMethodBeat.o(32530);
+      paramVarArgs.aY(2, this.UyU);
+      paramVarArgs.bm(3, this.UyV);
+      paramVarArgs.aY(4, this.Width);
+      paramVarArgs.aY(5, this.Height);
+      AppMethodBeat.o(117938);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      int i = g.a.a.b.b.a.bu(1, this.xNF) + 0;
-      paramInt = i;
-      if (this.KWF != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.KWF);
+    if (paramInt == 1) {
+      if (this.UyT == null) {
+        break label398;
       }
-      AppMethodBeat.o(32530);
-      return paramInt;
     }
-    if (paramInt == 2)
+    label398:
+    for (paramInt = g.a.a.b.b.a.b(1, this.UyT) + 0;; paramInt = 0)
     {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+      int i = g.a.a.b.b.a.bM(2, this.UyU);
+      int j = g.a.a.b.b.a.p(3, this.UyV);
+      int k = g.a.a.b.b.a.bM(4, this.Width);
+      int m = g.a.a.b.b.a.bM(5, this.Height);
+      AppMethodBeat.o(117938);
+      return paramInt + i + j + k + m;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
         }
-      }
-      if (this.KWF == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: Data");
-        AppMethodBeat.o(32530);
-        throw paramVarArgs;
-      }
-      AppMethodBeat.o(32530);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      eyr localeyr = (eyr)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
-      {
-      default: 
-        AppMethodBeat.o(32530);
-        return -1;
-      case 1: 
-        localeyr.xNF = locala.UbS.zi();
-        AppMethodBeat.o(32530);
+        AppMethodBeat.o(117938);
         return 0;
       }
-      localeyr.KWF = locala.UbS.readString();
-      AppMethodBeat.o(32530);
-      return 0;
+      if (paramInt == 3)
+      {
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        eyr localeyr = (eyr)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(117938);
+          return -1;
+        case 1: 
+          localeyr.UyT = locala.abFh.iUw();
+          AppMethodBeat.o(117938);
+          return 0;
+        case 2: 
+          localeyr.UyU = locala.abFh.AK();
+          AppMethodBeat.o(117938);
+          return 0;
+        case 3: 
+          localeyr.UyV = locala.abFh.AN();
+          AppMethodBeat.o(117938);
+          return 0;
+        case 4: 
+          localeyr.Width = locala.abFh.AK();
+          AppMethodBeat.o(117938);
+          return 0;
+        }
+        localeyr.Height = locala.abFh.AK();
+        AppMethodBeat.o(117938);
+        return 0;
+      }
+      AppMethodBeat.o(117938);
+      return -1;
     }
-    AppMethodBeat.o(32530);
-    return -1;
   }
 }
 

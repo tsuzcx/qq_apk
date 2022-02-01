@@ -4,23 +4,23 @@ import com.tencent.mm.compatible.util.b.a;
 
 public abstract interface d
 {
-  public abstract boolean Qt();
-  
-  public abstract double ZY();
+  public abstract boolean TV();
   
   public abstract void a(a parama);
   
   public abstract void a(b paramb);
   
-  public abstract void bhQ();
+  public abstract double aeI();
+  
+  public abstract void bro();
   
   public abstract void c(b.a parama);
   
-  public abstract boolean c(String paramString, boolean paramBoolean, int paramInt);
+  public abstract boolean d(String paramString, boolean paramBoolean, int paramInt);
   
-  public abstract void cU(boolean paramBoolean);
+  public abstract boolean dA(boolean paramBoolean);
   
-  public abstract boolean da(boolean paramBoolean);
+  public abstract void dr(boolean paramBoolean);
   
   public abstract int getStatus();
   
@@ -40,7 +40,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.modelvoice.d
  * JD-Core Version:    0.7.0.1
  */

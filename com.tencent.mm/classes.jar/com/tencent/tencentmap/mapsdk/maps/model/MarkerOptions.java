@@ -2,40 +2,88 @@ package com.tencent.tencentmap.mapsdk.maps.model;
 
 import android.os.Parcel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tencentmap.mapsdk.maps.interfaces.Collision;
 
 public class MarkerOptions
 {
-  private boolean bFlat = false;
+  private boolean bFlat;
   private BitmapDescriptor bitmapDesctor;
   private boolean boDragable;
-  private boolean boInfoWindowEnable = true;
-  private boolean boVisible = true;
+  private boolean boInfoWindowEnable;
+  private boolean boVisible;
   private String contentDescription;
-  private float fAlpha = 1.0F;
-  private float fAngle = 0.0F;
-  private float fanchorU = 0.5F;
-  private float fanchorV = 0.5F;
-  private int iLevel = OverlayLevel.OverlayLevelAboveLabels;
-  private boolean mClockwise = true;
+  private float fAlpha;
+  private float fAngle;
+  private float fanchorU;
+  private float fanchorV;
+  private int iLevel;
+  private boolean mClockwise;
+  private Collision[] mCollisions;
+  private int mIconLooperDuration;
+  private boolean mIconLooperEnable;
   private IndoorInfo mIndoorInfo;
-  private float mInfowindowAnchorU = 0.5F;
-  private float mInfowindowAnchorV = 1.0F;
-  private int mInfowindowOffsetX = 0;
-  private int mInfowindowOffsetY = 0;
-  private boolean mIsFastLoad = true;
-  private boolean mIsViewInfowindow = false;
+  private float mInfowindowAnchorU;
+  private float mInfowindowAnchorV;
+  private int mInfowindowOffsetX;
+  private int mInfowindowOffsetY;
+  private boolean mIsFastLoad;
+  private boolean mIsViewInfowindow;
   private Object mTag;
   private LatLng mlatlng;
   private String strSnippet;
-  private String strtitle = "";
-  private float zIndex = 0.0F;
+  private String strtitle;
+  private float zIndex;
   
   @Deprecated
-  public MarkerOptions() {}
+  public MarkerOptions()
+  {
+    AppMethodBeat.i(237751);
+    this.strtitle = "";
+    this.fAngle = 0.0F;
+    this.fAlpha = 1.0F;
+    this.zIndex = 0.0F;
+    this.boInfoWindowEnable = true;
+    this.bFlat = false;
+    this.mClockwise = true;
+    this.mInfowindowAnchorU = 0.5F;
+    this.mInfowindowAnchorV = 1.0F;
+    this.mInfowindowOffsetX = 0;
+    this.mInfowindowOffsetY = 0;
+    this.mIsFastLoad = true;
+    this.mIsViewInfowindow = false;
+    this.iLevel = OverlayLevel.OverlayLevelAboveLabels;
+    this.mIconLooperDuration = 500;
+    this.mCollisions = new Collision[0];
+    this.fanchorU = 0.5F;
+    this.fanchorV = 0.5F;
+    this.boVisible = true;
+    AppMethodBeat.o(237751);
+  }
   
   public MarkerOptions(LatLng paramLatLng)
   {
+    AppMethodBeat.i(237750);
+    this.strtitle = "";
+    this.fAngle = 0.0F;
+    this.fAlpha = 1.0F;
+    this.zIndex = 0.0F;
+    this.boInfoWindowEnable = true;
+    this.bFlat = false;
+    this.mClockwise = true;
+    this.mInfowindowAnchorU = 0.5F;
+    this.mInfowindowAnchorV = 1.0F;
+    this.mInfowindowOffsetX = 0;
+    this.mInfowindowOffsetY = 0;
+    this.mIsFastLoad = true;
+    this.mIsViewInfowindow = false;
+    this.iLevel = OverlayLevel.OverlayLevelAboveLabels;
+    this.mIconLooperDuration = 500;
+    this.mCollisions = new Collision[0];
+    this.fanchorU = 0.5F;
+    this.fanchorV = 0.5F;
+    this.boVisible = true;
     this.mlatlng = paramLatLng;
+    AppMethodBeat.o(237750);
   }
   
   public MarkerOptions alpha(float paramFloat)
@@ -54,6 +102,12 @@ public class MarkerOptions
   public MarkerOptions clockwise(boolean paramBoolean)
   {
     this.mClockwise = paramBoolean;
+    return this;
+  }
+  
+  public MarkerOptions collisionBy(MarkerCollisionItem... paramVarArgs)
+  {
+    this.mCollisions = paramVarArgs;
     return this;
   }
   
@@ -96,6 +150,11 @@ public class MarkerOptions
     return this.fanchorV;
   }
   
+  public Collision[] getCollisions()
+  {
+    return this.mCollisions;
+  }
+  
   public String getContentDescription()
   {
     return this.contentDescription;
@@ -107,6 +166,11 @@ public class MarkerOptions
     BitmapDescriptor localBitmapDescriptor = this.bitmapDesctor;
     AppMethodBeat.o(173263);
     return localBitmapDescriptor;
+  }
+  
+  public int getIconLooperDuration()
+  {
+    return this.mIconLooperDuration;
   }
   
   public IndoorInfo getIndoorInfo()
@@ -175,6 +239,19 @@ public class MarkerOptions
     return this;
   }
   
+  public MarkerOptions iconLooper(boolean paramBoolean)
+  {
+    this.mIconLooperEnable = paramBoolean;
+    return this;
+  }
+  
+  public MarkerOptions iconLooper(boolean paramBoolean, int paramInt)
+  {
+    this.mIconLooperEnable = paramBoolean;
+    this.mIconLooperDuration = paramInt;
+    return this;
+  }
+  
   public MarkerOptions indoorInfo(IndoorInfo paramIndoorInfo)
   {
     this.mIndoorInfo = paramIndoorInfo;
@@ -201,11 +278,6 @@ public class MarkerOptions
     return this;
   }
   
-  public boolean isAvoidAnnocation()
-  {
-    return false;
-  }
-  
   public boolean isClockwise()
   {
     return this.mClockwise;
@@ -224,6 +296,11 @@ public class MarkerOptions
   public boolean isFlat()
   {
     return this.bFlat;
+  }
+  
+  public boolean isIconLooperEnable()
+  {
+    return this.mIconLooperEnable;
   }
   
   public boolean isInfoWindowEnable()
@@ -314,7 +391,7 @@ public class MarkerOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.MarkerOptions
  * JD-Core Version:    0.7.0.1
  */

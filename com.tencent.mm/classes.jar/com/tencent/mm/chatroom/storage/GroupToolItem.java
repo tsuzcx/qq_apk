@@ -10,7 +10,7 @@ public class GroupToolItem
   implements Parcelable
 {
   public static final Parcelable.Creator<GroupToolItem> CREATOR;
-  public long crj;
+  public long coZ;
   public String path;
   public String username;
   
@@ -25,7 +25,7 @@ public class GroupToolItem
   {
     this.username = "";
     this.path = "";
-    this.crj = 0L;
+    this.coZ = 0L;
   }
   
   protected GroupToolItem(Parcel paramParcel)
@@ -33,10 +33,10 @@ public class GroupToolItem
     AppMethodBeat.i(182152);
     this.username = "";
     this.path = "";
-    this.crj = 0L;
+    this.coZ = 0L;
     this.username = paramParcel.readString();
     this.path = paramParcel.readString();
-    this.crj = paramParcel.readLong();
+    this.coZ = paramParcel.readLong();
     AppMethodBeat.o(182152);
   }
   
@@ -44,7 +44,7 @@ public class GroupToolItem
   {
     this.username = "";
     this.path = "";
-    this.crj = 0L;
+    this.coZ = 0L;
     this.username = paramString1;
     this.path = paramString2;
   }
@@ -53,13 +53,13 @@ public class GroupToolItem
   {
     this.username = "";
     this.path = "";
-    this.crj = 0L;
+    this.coZ = 0L;
     this.username = paramString1;
     this.path = paramString2;
-    this.crj = paramLong;
+    this.coZ = paramLong;
   }
   
-  public final boolean amm()
+  public final boolean asn()
   {
     AppMethodBeat.i(182150);
     boolean bool = Util.isEqual(this.username, "roomaa@app.origin");
@@ -67,11 +67,11 @@ public class GroupToolItem
     return bool;
   }
   
-  public final boolean amn()
+  public final boolean aso()
   {
-    AppMethodBeat.i(194059);
+    AppMethodBeat.i(191089);
     boolean bool = Util.isEqual(this.username, "roomlive@app.origin");
-    AppMethodBeat.o(194059);
+    AppMethodBeat.o(191089);
     return bool;
   }
   
@@ -100,7 +100,7 @@ public class GroupToolItem
   public String toString()
   {
     AppMethodBeat.i(182148);
-    String str = "GroupToolItem{username='" + this.username + '\'' + ", path='" + this.path + '\'' + ", updateTime=" + this.crj + '}';
+    String str = "GroupToolItem{username='" + this.username + '\'' + ", path='" + this.path + '\'' + ", updateTime=" + this.coZ + '}';
     AppMethodBeat.o(182148);
     return str;
   }
@@ -110,13 +110,13 @@ public class GroupToolItem
     AppMethodBeat.i(182151);
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.path);
-    paramParcel.writeLong(this.crj);
+    paramParcel.writeLong(this.coZ);
     AppMethodBeat.o(182151);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.chatroom.storage.GroupToolItem
  * JD-Core Version:    0.7.0.1
  */

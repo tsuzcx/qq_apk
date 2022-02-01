@@ -45,6 +45,8 @@ public class SmcLogic
   
   public static native void SetMonitorId(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
   
+  public static native void flushAllReportData();
+  
   private static String getKVCommPath()
   {
     if (callBack == null) {
@@ -148,7 +150,7 @@ public class SmcLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mars.smc.SmcLogic
  * JD-Core Version:    0.7.0.1
  */

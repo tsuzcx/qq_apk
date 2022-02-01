@@ -4,56 +4,56 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/view/adapter/CommentData;", "", "identityId", "", "headImageUrl", "content", "", "msgType", "", "time", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/CharSequence;II)V", "getContent", "()Ljava/lang/CharSequence;", "setContent", "(Ljava/lang/CharSequence;)V", "getHeadImageUrl", "()Ljava/lang/String;", "setHeadImageUrl", "(Ljava/lang/String;)V", "getIdentityId", "setIdentityId", "getMsgType", "()I", "setMsgType", "(I)V", "getTime", "setTime", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "hashCode", "toString", "plugin-logic_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/view/adapter/CommentData;", "", "identityId", "", "headImageUrl", "content", "", "msgType", "", "time", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/CharSequence;II)V", "getContent", "()Ljava/lang/CharSequence;", "setContent", "(Ljava/lang/CharSequence;)V", "getHeadImageUrl", "()Ljava/lang/String;", "setHeadImageUrl", "(Ljava/lang/String;)V", "getIdentityId", "setIdentityId", "getMsgType", "()I", "setMsgType", "(I)V", "getTime", "setTime", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "hashCode", "toString", "plugin-logic_release"})
 public final class a
 {
-  public String hXp;
-  String hXq;
-  public CharSequence hXr;
-  public int hXs;
+  public String kLV;
+  String kLW;
+  public CharSequence kLX;
   public int msgType;
+  public int time;
   
   public a(String paramString1, String paramString2, CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(208648);
-    this.hXp = paramString1;
-    this.hXq = paramString2;
-    this.hXr = paramCharSequence;
+    AppMethodBeat.i(193452);
+    this.kLV = paramString1;
+    this.kLW = paramString2;
+    this.kLX = paramCharSequence;
     this.msgType = paramInt1;
-    this.hXs = paramInt2;
-    AppMethodBeat.o(208648);
+    this.time = paramInt2;
+    AppMethodBeat.o(193452);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(208652);
+    AppMethodBeat.i(193457);
     if (this != paramObject)
     {
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((!p.j(this.hXp, paramObject.hXp)) || (!p.j(this.hXq, paramObject.hXq)) || (!p.j(this.hXr, paramObject.hXr)) || (this.msgType != paramObject.msgType) || (this.hXs != paramObject.hXs)) {}
+        if ((!p.h(this.kLV, paramObject.kLV)) || (!p.h(this.kLW, paramObject.kLW)) || (!p.h(this.kLX, paramObject.kLX)) || (this.msgType != paramObject.msgType) || (this.time != paramObject.time)) {}
       }
     }
     else
     {
-      AppMethodBeat.o(208652);
+      AppMethodBeat.o(193457);
       return true;
     }
-    AppMethodBeat.o(208652);
+    AppMethodBeat.o(193457);
     return false;
   }
   
   public final int hashCode()
   {
     int k = 0;
-    AppMethodBeat.i(208651);
-    Object localObject = this.hXp;
+    AppMethodBeat.i(193456);
+    Object localObject = this.kLV;
     int i;
     if (localObject != null)
     {
       i = localObject.hashCode();
-      localObject = this.hXq;
+      localObject = this.kLW;
       if (localObject == null) {
         break label104;
       }
@@ -61,13 +61,13 @@ public final class a
     label104:
     for (int j = localObject.hashCode();; j = 0)
     {
-      localObject = this.hXr;
+      localObject = this.kLX;
       if (localObject != null) {
         k = localObject.hashCode();
       }
       int m = this.msgType;
-      int n = this.hXs;
-      AppMethodBeat.o(208651);
+      int n = this.time;
+      AppMethodBeat.o(193456);
       return (((j + i * 31) * 31 + k) * 31 + m) * 31 + n;
       i = 0;
       break;
@@ -76,9 +76,9 @@ public final class a
   
   public final String toString()
   {
-    AppMethodBeat.i(208650);
-    String str = "CommentData(identityId=" + this.hXp + ", headImageUrl=" + this.hXq + ", content=" + this.hXr + ", msgType=" + this.msgType + ", time=" + this.hXs + ")";
-    AppMethodBeat.o(208650);
+    AppMethodBeat.i(193455);
+    String str = "CommentData(identityId=" + this.kLV + ", headImageUrl=" + this.kLW + ", content=" + this.kLX + ", msgType=" + this.msgType + ", time=" + this.time + ")";
+    AppMethodBeat.o(193455);
     return str;
   }
 }

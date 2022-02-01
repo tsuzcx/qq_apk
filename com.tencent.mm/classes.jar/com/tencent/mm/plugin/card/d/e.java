@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.card.d;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.security.SecureRandom;
 import javax.crypto.Cipher;
@@ -14,7 +14,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public final class e
 {
-  private static byte[] ajV(String paramString)
+  private static byte[] arI(String paramString)
   {
     AppMethodBeat.i(113775);
     int j = paramString.length() / 2;
@@ -29,7 +29,7 @@ public final class e
     return arrayOfByte;
   }
   
-  private static String bd(byte[] paramArrayOfByte)
+  private static String bq(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(113774);
     if (paramArrayOfByte == null)
@@ -49,7 +49,7 @@ public final class e
     return paramArrayOfByte;
   }
   
-  private static byte[] be(byte[] paramArrayOfByte)
+  private static byte[] br(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(113776);
     KeyGenerator localKeyGenerator = KeyGenerator.getInstance("AES");
@@ -61,7 +61,109 @@ public final class e
     return paramArrayOfByte;
   }
   
-  private static String fA(String paramString1, String paramString2)
+  public static String fL(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(113772);
+    if ((paramString2 == null) || (paramString2.length() <= 0))
+    {
+      AppMethodBeat.o(113772);
+      return null;
+    }
+    h.aHE();
+    int i = b.getUin();
+    paramString1 = "CbW9HMPiil38ldOjZp5WkwlIfzvLwiX6_" + i + "_" + paramString1;
+    try
+    {
+      Object localObject = br(paramString1.getBytes());
+      paramString1 = arI(paramString2);
+      paramString2 = new SecretKeySpec((byte[])localObject, "AES");
+      localObject = Cipher.getInstance("AES");
+      ((Cipher)localObject).init(2, paramString2);
+      paramString1 = new String(((Cipher)localObject).doFinal(paramString1));
+      AppMethodBeat.o(113772);
+      return paramString1;
+    }
+    catch (Exception paramString1)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.CardDymanicQrcodeOfflineHelper", paramString1, "", new Object[0]);
+        paramString1 = null;
+      }
+    }
+  }
+  
+  public static String fM(String paramString1, String paramString2)
+  {
+    Object localObject1 = null;
+    AppMethodBeat.i(113773);
+    if ((paramString2 == null) || (paramString2.length() <= 0))
+    {
+      AppMethodBeat.o(113773);
+      return null;
+    }
+    h.aHE();
+    int i = b.getUin();
+    paramString1 = "CbW9HMPiil38ldOjZp5WkwlIfzvLwiX6_" + i + "_" + paramString1;
+    try
+    {
+      Object localObject2 = br(paramString1.getBytes());
+      paramString1 = paramString2.getBytes();
+      paramString2 = new SecretKeySpec((byte[])localObject2, "AES");
+      localObject2 = Cipher.getInstance("AES");
+      ((Cipher)localObject2).init(1, paramString2);
+      paramString1 = bq(((Cipher)localObject2).doFinal(paramString1));
+      AppMethodBeat.o(113773);
+      return paramString1;
+    }
+    catch (Exception paramString1)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.CardDymanicQrcodeOfflineHelper", paramString1, "", new Object[0]);
+        paramString1 = localObject1;
+      }
+    }
+  }
+  
+  public static String fN(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(113777);
+    if ((paramString1 == null) || (paramString1.length() <= 0))
+    {
+      AppMethodBeat.o(113777);
+      return null;
+    }
+    long l = System.currentTimeMillis() / 1000L;
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder2.append(paramString1);
+    localStringBuilder2.append("&");
+    localStringBuilder2.append(l);
+    localStringBuilder2.append("&");
+    localStringBuilder2.append(paramString2);
+    try
+    {
+      paramString2 = fO(localStringBuilder2.toString(), paramString2);
+      localStringBuilder1.append(paramString1);
+      localStringBuilder1.append("&");
+      localStringBuilder1.append(l);
+      localStringBuilder1.append("&");
+      localStringBuilder1.append(paramString2);
+      paramString1 = localStringBuilder1.toString();
+      AppMethodBeat.o(113777);
+      return paramString1;
+    }
+    catch (Exception paramString1)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.CardDymanicQrcodeOfflineHelper", paramString1, "", new Object[0]);
+      }
+    }
+  }
+  
+  private static String fO(String paramString1, String paramString2)
   {
     AppMethodBeat.i(113778);
     try
@@ -80,112 +182,10 @@ public final class e
     }
     return "";
   }
-  
-  public static String fx(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(113772);
-    if ((paramString2 == null) || (paramString2.length() <= 0))
-    {
-      AppMethodBeat.o(113772);
-      return null;
-    }
-    g.aAf();
-    int i = a.getUin();
-    paramString1 = "CbW9HMPiil38ldOjZp5WkwlIfzvLwiX6_" + i + "_" + paramString1;
-    try
-    {
-      Object localObject = be(paramString1.getBytes());
-      paramString1 = ajV(paramString2);
-      paramString2 = new SecretKeySpec((byte[])localObject, "AES");
-      localObject = Cipher.getInstance("AES");
-      ((Cipher)localObject).init(2, paramString2);
-      paramString1 = new String(((Cipher)localObject).doFinal(paramString1));
-      AppMethodBeat.o(113772);
-      return paramString1;
-    }
-    catch (Exception paramString1)
-    {
-      for (;;)
-      {
-        Log.printErrStackTrace("MicroMsg.CardDymanicQrcodeOfflineHelper", paramString1, "", new Object[0]);
-        paramString1 = null;
-      }
-    }
-  }
-  
-  public static String fy(String paramString1, String paramString2)
-  {
-    Object localObject1 = null;
-    AppMethodBeat.i(113773);
-    if ((paramString2 == null) || (paramString2.length() <= 0))
-    {
-      AppMethodBeat.o(113773);
-      return null;
-    }
-    g.aAf();
-    int i = a.getUin();
-    paramString1 = "CbW9HMPiil38ldOjZp5WkwlIfzvLwiX6_" + i + "_" + paramString1;
-    try
-    {
-      Object localObject2 = be(paramString1.getBytes());
-      paramString1 = paramString2.getBytes();
-      paramString2 = new SecretKeySpec((byte[])localObject2, "AES");
-      localObject2 = Cipher.getInstance("AES");
-      ((Cipher)localObject2).init(1, paramString2);
-      paramString1 = bd(((Cipher)localObject2).doFinal(paramString1));
-      AppMethodBeat.o(113773);
-      return paramString1;
-    }
-    catch (Exception paramString1)
-    {
-      for (;;)
-      {
-        Log.printErrStackTrace("MicroMsg.CardDymanicQrcodeOfflineHelper", paramString1, "", new Object[0]);
-        paramString1 = localObject1;
-      }
-    }
-  }
-  
-  public static String fz(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(113777);
-    if ((paramString1 == null) || (paramString1.length() <= 0))
-    {
-      AppMethodBeat.o(113777);
-      return null;
-    }
-    long l = System.currentTimeMillis() / 1000L;
-    StringBuilder localStringBuilder2 = new StringBuilder();
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    localStringBuilder2.append(paramString1);
-    localStringBuilder2.append("&");
-    localStringBuilder2.append(l);
-    localStringBuilder2.append("&");
-    localStringBuilder2.append(paramString2);
-    try
-    {
-      paramString2 = fA(localStringBuilder2.toString(), paramString2);
-      localStringBuilder1.append(paramString1);
-      localStringBuilder1.append("&");
-      localStringBuilder1.append(l);
-      localStringBuilder1.append("&");
-      localStringBuilder1.append(paramString2);
-      paramString1 = localStringBuilder1.toString();
-      AppMethodBeat.o(113777);
-      return paramString1;
-    }
-    catch (Exception paramString1)
-    {
-      for (;;)
-      {
-        Log.printErrStackTrace("MicroMsg.CardDymanicQrcodeOfflineHelper", paramString1, "", new Object[0]);
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.card.d.e
  * JD-Core Version:    0.7.0.1
  */

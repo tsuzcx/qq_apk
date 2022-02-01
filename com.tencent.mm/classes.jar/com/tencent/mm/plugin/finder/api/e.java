@@ -1,47 +1,83 @@
 package com.tencent.mm.plugin.finder.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.ui.MMFinderUI;
-import kotlin.l;
-import kotlin.o;
+import com.tencent.mm.aj.f;
+import com.tencent.mm.aj.k.b;
+import com.tencent.mm.i.d;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Map;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/api/IFinderSyncExtension;", "", "addSyncHandler", "", "cmdId", "", "handler", "Lcom/tencent/mm/plugin/finder/api/IFinderSyncHandler;", "doSync", "selector", "scene", "register", "activity", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "removeSyncHandler", "unregister", "Companion", "plugin-finder_release"})
-public abstract interface e
+public class e
+  extends f
 {
-  public static final a tss = a.tsu;
+  public String appid;
+  public String desc;
+  public int scene;
+  public String title;
+  public String wZW;
   
-  public abstract void a(int paramInt, f paramf);
-  
-  public abstract void a(MMFinderUI paramMMFinderUI);
-  
-  public abstract void b(int paramInt, f paramf);
-  
-  public abstract void b(MMFinderUI paramMMFinderUI);
-  
-  public abstract void fX(int paramInt1, int paramInt2);
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/api/IFinderSyncExtension$Companion;", "", "()V", "CmdId_GetFansCount", "", "CmdId_GetFollowCount", "CmdId_GetFollower", "CmdId_GetMention", "CmdId_GetMentionCount", "CmdId_GetMyAcct", "CmdId_GetNotInterestedConfig", "CmdId_GetRedDot", "CmdId_GetSpamObject", "CmdId_GetWxMentionCount", "CmdId_ObjectWordingConfig", "CmdId_PRE_FETCH", "CmdId_REVOKE_TAB_TIPS", "CmdId_ReInit", "CmdId_RevokeRedDot", "CmdId_TAB_TIPS", "MMFinder_Sync_Selctor_HotTabTitle", "SELECTOR_ALL", "SELECTOR_ALL_MSG", "SELECTOR_ARRAY", "", "Lkotlin/Pair;", "", "getSELECTOR_ARRAY", "()[Lkotlin/Pair;", "[Lkotlin/Pair;", "SELECTOR_FANS_COUNT", "SELECTOR_FOLLOWER", "SELECTOR_FOLLOW_COUNT", "SELECTOR_MENTION_COUNT", "SELECTOR_NOT_INTERESTED_CONFIG", "SELECTOR_OTHERS", "SELECTOR_PRE_FETCH", "SELECTOR_REDDOT", "SELECTOR_REINT", "SELECTOR_SPAM_OBJECT", "SELECTOR_TAB_REVOKE_TAB_TIPS", "SELECTOR_TAB_TIPS", "SELECTOR_TAB_TIPS_HOT", "SELECTOR_WX_MENTION_COUNT", "SYNC_SCENE_FROM_ENTER_TL", "SYNC_SCENE_FROM_EXPIRED_CHECK", "SYNC_SCENE_FROM_INIT", "SYNC_SCENE_FROM_LOOP", "SYNC_SCENE_FROM_MIN_SYNC", "SYNC_SCENE_FROM_MIN_SYNC_2", "SYNC_SCENE_FROM_START", "SYNC_SCENE_FROM_UI_PROFILE", "plugin-finder_release"})
-  public static final class a
+  public final void a(StringBuilder paramStringBuilder, k.b paramb, String paramString, d paramd, int paramInt1, int paramInt2)
   {
-    private static final o<Integer, String>[] tst;
-    
-    static
+    AppMethodBeat.i(168706);
+    paramStringBuilder.append("<finderGuarantee>");
+    if (!Util.isNullOrNil(this.title))
     {
-      AppMethodBeat.i(165146);
-      tsu = new a();
-      tst = new o[] { new o(Integer.valueOf(1), "MENTION_COUNT"), new o(Integer.valueOf(4), "FOLLOWER"), new o(Integer.valueOf(8), "REDDOT"), new o(Integer.valueOf(16), "FOLLOW_COUNT"), new o(Integer.valueOf(32), "FANS_COUNT"), new o(Integer.valueOf(64), "SPAM_OBJECT"), new o(Integer.valueOf(128), "WX_MENTION_COUNT"), new o(Integer.valueOf(256), "NOT_INTERESTED_CONFIG"), new o(Integer.valueOf(2048), "SELECTOR_PRE_FETCH"), new o(Integer.valueOf(4096), "SELECTOR_TAB_TIPS"), new o(Integer.valueOf(32768), "SELECTOR_TAB_TIPS_HOT") };
-      AppMethodBeat.o(165146);
+      paramStringBuilder.append("<title>");
+      paramStringBuilder.append(k.b.OR(this.title));
+      paramStringBuilder.append("</title>");
     }
-    
-    public static o<Integer, String>[] cXG()
+    if (!Util.isNullOrNil(this.desc))
     {
-      return tst;
+      paramStringBuilder.append("<desc>");
+      paramStringBuilder.append(k.b.OR(this.desc));
+      paramStringBuilder.append("</desc>");
     }
+    if (!Util.isNullOrNil(this.wZW))
+    {
+      paramStringBuilder.append("<relativePath>");
+      paramStringBuilder.append(k.b.OR(this.wZW));
+      paramStringBuilder.append("</relativePath>");
+    }
+    if (!Util.isNullOrNil(this.appid))
+    {
+      paramStringBuilder.append("<appid>");
+      paramStringBuilder.append(k.b.OR(this.appid));
+      paramStringBuilder.append("</appid>");
+    }
+    paramStringBuilder.append("<scene>");
+    paramStringBuilder.append(k.b.OR(String.valueOf(this.scene)));
+    paramStringBuilder.append("</scene>");
+    paramStringBuilder.append("</finderGuarantee>");
+    AppMethodBeat.o(168706);
+  }
+  
+  public final void a(Map<String, String> paramMap, k.b paramb)
+  {
+    AppMethodBeat.i(168707);
+    this.title = ((String)paramMap.get(".msg.appmsg.finderGuarantee.title"));
+    this.desc = ((String)paramMap.get(".msg.appmsg.finderGuarantee.desc"));
+    this.wZW = ((String)paramMap.get(".msg.appmsg.finderGuarantee.relativePath"));
+    this.appid = ((String)paramMap.get(".msg.appmsg.finderGuarantee.appid"));
+    this.scene = Util.getInt((String)paramMap.get(".msg.appmsg.finderGuarantee.scene"), 0);
+    AppMethodBeat.o(168707);
+  }
+  
+  public final f aPj()
+  {
+    AppMethodBeat.i(168705);
+    e locale = new e();
+    locale.title = this.title;
+    locale.desc = this.desc;
+    locale.wZW = this.wZW;
+    locale.scene = this.scene;
+    locale.appid = this.appid;
+    AppMethodBeat.o(168705);
+    return locale;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.api.e
  * JD-Core Version:    0.7.0.1
  */

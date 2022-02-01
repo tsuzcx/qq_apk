@@ -72,15 +72,15 @@ public class ProxyWebViewSuperWrapper
   
   public int getHostByName(String paramString, List<String> paramList)
   {
-    AppMethodBeat.i(207239);
+    AppMethodBeat.i(206445);
     if (X5WebFactory.getInstance().getExtensionCallback() != null)
     {
       i = X5WebFactory.getInstance().getExtensionCallback().getHostByName(paramString, paramList);
-      AppMethodBeat.o(207239);
+      AppMethodBeat.o(206445);
       return i;
     }
     int i = super.getHostByName(paramString, paramList);
-    AppMethodBeat.o(207239);
+    AppMethodBeat.o(206445);
     return i;
   }
   
@@ -745,7 +745,7 @@ public class ProxyWebViewSuperWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.xweb.x5.sdk.ProxyWebViewSuperWrapper
  * JD-Core Version:    0.7.0.1
  */

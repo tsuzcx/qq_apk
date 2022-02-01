@@ -14,13 +14,13 @@ public final class g
   implements s
 {
   private int height;
-  private String tev;
   private String url;
+  private String wKH;
   private int width;
   
   public g(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    this.tev = paramString1;
+    this.wKH = paramString1;
     this.url = paramString2;
     this.width = paramInt1;
     this.height = paramInt2;
@@ -34,7 +34,7 @@ public final class g
     //   2: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
     //   6: astore_3
-    //   7: getstatic 45	com/tencent/mm/platformtools/s$a:jNh	Lcom/tencent/mm/platformtools/s$a;
+    //   7: getstatic 45	com/tencent/mm/platformtools/s$a:mEp	Lcom/tencent/mm/platformtools/s$a;
     //   10: aload_2
     //   11: if_acmpne +172 -> 183
     //   14: aload_1
@@ -51,20 +51,20 @@ public final class g
     //   31: invokestatic 55	com/tencent/mm/sdk/platformtools/Log:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   34: aload_1
     //   35: astore_3
-    //   36: new 57	com/tencent/mm/vfs/o
+    //   36: new 57	com/tencent/mm/vfs/q
     //   39: dup
-    //   40: invokestatic 63	com/tencent/mm/plugin/fav/a/b:cUf	()Ljava/lang/String;
-    //   43: invokespecial 66	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   40: invokestatic 63	com/tencent/mm/plugin/fav/a/b:djl	()Ljava/lang/String;
+    //   43: invokespecial 66	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
     //   46: astore_2
     //   47: aload_1
     //   48: astore_3
     //   49: aload_2
-    //   50: invokevirtual 70	com/tencent/mm/vfs/o:exists	()Z
+    //   50: invokevirtual 70	com/tencent/mm/vfs/q:ifE	()Z
     //   53: ifne +10 -> 63
     //   56: aload_1
     //   57: astore_3
     //   58: aload_2
-    //   59: invokevirtual 73	com/tencent/mm/vfs/o:mkdirs	()Z
+    //   59: invokevirtual 73	com/tencent/mm/vfs/q:ifL	()Z
     //   62: pop
     //   63: aload_1
     //   64: astore_2
@@ -92,23 +92,23 @@ public final class g
     //   100: astore_2
     //   101: aload_2
     //   102: astore_3
-    //   103: new 57	com/tencent/mm/vfs/o
+    //   103: new 57	com/tencent/mm/vfs/q
     //   106: dup
     //   107: aload_0
-    //   108: invokevirtual 82	com/tencent/mm/plugin/fav/ui/g:blA	()Ljava/lang/String;
-    //   111: invokespecial 66	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   108: invokevirtual 82	com/tencent/mm/plugin/fav/ui/g:bvq	()Ljava/lang/String;
+    //   111: invokespecial 66	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
     //   114: astore 5
     //   116: aload_2
     //   117: astore_3
     //   118: aload 5
-    //   120: invokevirtual 85	com/tencent/mm/vfs/o:createNewFile	()Z
+    //   120: invokevirtual 85	com/tencent/mm/vfs/q:ifM	()Z
     //   123: pop
     //   124: aconst_null
     //   125: astore 4
     //   127: aconst_null
     //   128: astore_1
     //   129: aload 5
-    //   131: invokestatic 91	com/tencent/mm/vfs/s:ap	(Lcom/tencent/mm/vfs/o;)Ljava/io/OutputStream;
+    //   131: invokestatic 91	com/tencent/mm/vfs/u:an	(Lcom/tencent/mm/vfs/q;)Ljava/io/OutputStream;
     //   134: astore 5
     //   136: aload 5
     //   138: astore_1
@@ -216,56 +216,51 @@ public final class g
     //   194	206	239	finally
   }
   
-  public final void a(s.a parama, String paramString) {}
+  public final void a(s.a parama) {}
   
-  public final void ad(String paramString, boolean paramBoolean) {}
-  
-  public final String blA()
-  {
-    AppMethodBeat.i(106733);
-    String str = b.cUf() + com.tencent.mm.b.g.getMessageDigest(this.url.getBytes());
-    AppMethodBeat.o(106733);
-    return str;
-  }
-  
-  public final String blB()
-  {
-    return this.url;
-  }
-  
-  public final String blC()
-  {
-    return this.tev;
-  }
-  
-  public final boolean blD()
-  {
-    return true;
-  }
-  
-  public final boolean blE()
-  {
-    return false;
-  }
-  
-  public final Bitmap blF()
-  {
-    AppMethodBeat.i(106734);
-    Bitmap localBitmap = BitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), 2131234281);
-    AppMethodBeat.o(106734);
-    return localBitmap;
-  }
-  
-  public final void blG() {}
-  
-  public final s.b blz()
+  public final s.b bvp()
   {
     return null;
   }
   
+  public final String bvq()
+  {
+    AppMethodBeat.i(106733);
+    String str = b.djl() + com.tencent.mm.b.g.getMessageDigest(this.url.getBytes());
+    AppMethodBeat.o(106733);
+    return str;
+  }
+  
+  public final String bvr()
+  {
+    return this.url;
+  }
+  
+  public final String bvs()
+  {
+    return this.wKH;
+  }
+  
+  public final boolean bvt()
+  {
+    return true;
+  }
+  
+  public final Bitmap bvu()
+  {
+    AppMethodBeat.i(106734);
+    Bitmap localBitmap = BitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), s.d.nosdcard_headimg);
+    AppMethodBeat.o(106734);
+    return localBitmap;
+  }
+  
+  public final void bvv() {}
+  
+  public final void bvw() {}
+  
   public final String getCacheKey()
   {
-    return this.tev;
+    return this.wKH;
   }
 }
 

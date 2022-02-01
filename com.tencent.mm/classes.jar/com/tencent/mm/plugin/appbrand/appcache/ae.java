@@ -1,93 +1,103 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.a.a;
-import com.tencent.mm.pluginsdk.j.a.c.m;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.mm.compatible.loader.a;
+import com.tencent.mm.plugin.appbrand.appstorage.o;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class ae
 {
-  private static final Set<b> kLQ;
+  private static final String[] nFI = { "__APP__", "__WITHOUT_PLUGINCODE__", "__WITHOUT_MULTI_PLUGINCODE__", "__PLUGINCODE__" };
+  private final String appId;
+  private final String cAy;
+  private volatile String nFH;
   
-  static
+  public ae(String paramString)
   {
-    AppMethodBeat.i(90557);
-    kLQ = new HashSet();
-    AppMethodBeat.o(90557);
+    this.appId = paramString;
+    this.cAy = null;
   }
   
-  public static void a(b paramb)
+  public ae(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(90555);
-    synchronized (kLQ)
+    AppMethodBeat.i(146000);
+    this.appId = paramString1;
+    this.cAy = acO(paramString2);
+    AppMethodBeat.o(146000);
+  }
+  
+  public ae(String paramString1, String paramString2, int paramInt)
+  {
+    AppMethodBeat.i(146002);
+    switch (paramInt)
     {
-      kLQ.add(paramb);
-      AppMethodBeat.o(90555);
-      return;
+    default: 
+      this.cAy = acO(paramString2);
     }
-  }
-  
-  static a b(a parama)
-  {
-    AppMethodBeat.i(90556);
     for (;;)
     {
-      int i;
-      synchronized (kLQ)
-      {
-        Object[] arrayOfObject = kLQ.toArray();
-        int j = arrayOfObject.length;
-        i = 0;
-        if (i >= j) {
-          break;
-        }
-        ??? = ((b)arrayOfObject[i]).b(parama);
-        if (??? != null)
-        {
-          AppMethodBeat.o(90556);
-          return ???;
-        }
-      }
-      i += 1;
+      this.appId = paramString1;
+      AppMethodBeat.o(146002);
+      return;
+      this.cAy = "";
+      continue;
+      this.cAy = (acO(paramString2) + '$' + "__WITHOUT_PLUGINCODE__");
+      continue;
+      this.cAy = (acO(paramString2) + '$' + "__WITHOUT_MULTI_PLUGINCODE__");
+      continue;
+      this.cAy = "__PLUGINCODE__";
+      continue;
+      this.cAy = "__WITHOUT_PLUGINCODE__";
+      continue;
+      this.cAy = "__WITHOUT_MULTI_PLUGINCODE__";
     }
-    AppMethodBeat.o(90556);
-    return null;
   }
   
-  public static abstract interface a
+  private static String acO(String paramString)
   {
-    public abstract void a(m paramm);
-    
-    public abstract void bvj();
-    
-    public abstract void bvk();
-    
-    public abstract void bvl();
-    
-    public abstract void bvm();
-    
-    public abstract void bvn();
-    
-    public abstract void bvo();
-    
-    public abstract void bvp();
-    
-    public abstract void gE(boolean paramBoolean);
-    
-    public abstract void gF(boolean paramBoolean);
-    
-    public abstract void vQ(int paramInt);
+    AppMethodBeat.i(146001);
+    if ((Util.isNullOrNil(paramString)) || (a.contains(nFI, paramString)))
+    {
+      AppMethodBeat.o(146001);
+      return paramString;
+    }
+    paramString = o.adS(paramString);
+    AppMethodBeat.o(146001);
+    return paramString;
   }
   
-  public static abstract interface b
+  public final boolean bGV()
   {
-    public abstract ae.a b(a parama);
+    AppMethodBeat.i(232510);
+    boolean bool = toString().endsWith("$__PLUGINCODE__");
+    AppMethodBeat.o(232510);
+    return bool;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(146003);
+    StringBuilder localStringBuilder;
+    if (Util.isNullOrNil(this.nFH))
+    {
+      localStringBuilder = new StringBuilder().append(this.appId);
+      if (!Util.isNullOrNil(this.cAy)) {
+        break label67;
+      }
+    }
+    label67:
+    for (String str = "";; str = "$" + this.cAy)
+    {
+      this.nFH = str;
+      str = this.nFH;
+      AppMethodBeat.o(146003);
+      return str;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ae
  * JD-Core Version:    0.7.0.1
  */

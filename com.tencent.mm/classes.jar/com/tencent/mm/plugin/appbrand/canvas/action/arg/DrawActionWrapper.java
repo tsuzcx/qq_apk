@@ -15,8 +15,8 @@ public class DrawActionWrapper
   implements Parcelable
 {
   public static final Parcelable.Creator<DrawActionWrapper> CREATOR;
-  public BaseDrawActionArg kZv;
-  public JSONObject kZw;
+  public BaseDrawActionArg nTG;
+  public JSONObject nTH;
   public int type;
   
   static
@@ -42,7 +42,7 @@ public class DrawActionWrapper
       paramParcel = paramParcel.readString();
       try
       {
-        this.kZw = new JSONObject(paramParcel);
+        this.nTH = new JSONObject(paramParcel);
         AppMethodBeat.o(145002);
         return;
       }
@@ -52,7 +52,7 @@ public class DrawActionWrapper
         AppMethodBeat.o(145002);
         return;
       }
-      this.kZv = ((BaseDrawActionArg)paramParcel.readParcelable(DrawActionWrapper.class.getClassLoader()));
+      this.nTG = ((BaseDrawActionArg)paramParcel.readParcelable(DrawActionWrapper.class.getClassLoader()));
     }
   }
   
@@ -70,11 +70,11 @@ public class DrawActionWrapper
       AppMethodBeat.o(145004);
       return "";
     case 1: 
-      str = this.kZw.optString("method");
+      str = this.nTH.optString("method");
       AppMethodBeat.o(145004);
       return str;
     }
-    String str = this.kZv.method;
+    String str = this.nTG.method;
     AppMethodBeat.o(145004);
     return str;
   }
@@ -82,12 +82,12 @@ public class DrawActionWrapper
   public final void reset()
   {
     AppMethodBeat.i(145003);
-    if (this.kZv != null)
+    if (this.nTG != null)
     {
-      this.kZv.reset();
-      c.bzn().a(this.kZv);
+      this.nTG.reset();
+      c.bKC().a(this.nTG);
     }
-    d.bzo().lab.release(this);
+    d.bKD().nUm.release(this);
     AppMethodBeat.o(145003);
   }
   
@@ -110,16 +110,16 @@ public class DrawActionWrapper
     {
       AppMethodBeat.o(145006);
       return;
-      paramParcel.writeString(this.kZw.toString());
+      paramParcel.writeString(this.nTH.toString());
       AppMethodBeat.o(145006);
       return;
-      paramParcel.writeParcelable(this.kZv, paramInt);
+      paramParcel.writeParcelable(this.nTG, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionWrapper
  * JD-Core Version:    0.7.0.1
  */

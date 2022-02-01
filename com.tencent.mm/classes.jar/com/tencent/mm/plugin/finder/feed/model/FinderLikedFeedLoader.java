@@ -3,22 +3,20 @@ package com.tencent.mm.plugin.finder.feed.model;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
-import com.tencent.mm.plugin.finder.cgi.bm;
+import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.cgi.bp;
 import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader.a;
 import com.tencent.mm.plugin.finder.feed.model.internal.DataBuffer;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
-import com.tencent.mm.plugin.finder.feed.model.internal.e;
 import com.tencent.mm.plugin.finder.feed.model.internal.g;
-import com.tencent.mm.plugin.finder.feed.model.internal.n;
+import com.tencent.mm.plugin.finder.feed.model.internal.i;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.bo;
+import com.tencent.mm.plugin.finder.model.bu;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.logic.c;
 import com.tencent.mm.plugin.finder.storage.logic.c.a;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.bbn;
+import com.tencent.mm.protocal.protobuf.bid;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.view.RefreshLoadMoreLayout.c;
@@ -27,45 +25,47 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import kotlin.a.j;
+import kotlin.g.a.a;
+import kotlin.g.a.b;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/FinderLikedFeedLoader;", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "isTimeLine", "", "scene", "Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(ZLcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "fetchEndCallback", "Lkotlin/Function0;", "", "getFetchEndCallback", "()Lkotlin/jvm/functions/Function0;", "setFetchEndCallback", "(Lkotlin/jvm/functions/Function0;)V", "fetchRefreshCallback", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/finder/feed/model/FinderLikedFeedLoader$LikedTimelineResponse;", "getFetchRefreshCallback", "()Lkotlin/jvm/functions/Function1;", "setFetchRefreshCallback", "(Lkotlin/jvm/functions/Function1;)V", "hasMore", "getHasMore", "()Z", "setHasMore", "(Z)V", "getScene", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;", "totalCount", "", "getTotalCount", "()I", "setTotalCount", "(I)V", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "createDataMerger", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "getPageName", "onFetchDone", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "onFetchRefreshDone", "LikedDataFetcher", "LikedTimelineResponse", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/FinderLikedFeedLoader;", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "isTimeLine", "", "scene", "Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(ZLcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "fetchEndCallback", "Lkotlin/Function0;", "", "getFetchEndCallback", "()Lkotlin/jvm/functions/Function0;", "setFetchEndCallback", "(Lkotlin/jvm/functions/Function0;)V", "fetchRefreshCallback", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/finder/feed/model/FinderLikedFeedLoader$LikedTimelineResponse;", "getFetchRefreshCallback", "()Lkotlin/jvm/functions/Function1;", "setFetchRefreshCallback", "(Lkotlin/jvm/functions/Function1;)V", "hasMore", "getHasMore", "()Z", "setHasMore", "(Z)V", "getScene", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/FinderLoaderScene;", "totalCount", "", "getTotalCount", "()I", "setTotalCount", "(I)V", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "createDataMerger", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataMerger;", "getPageName", "onFetchDone", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "onFetchRefreshDone", "LikedDataFetcher", "LikedTimelineResponse", "plugin-finder_release"})
 public final class FinderLikedFeedLoader
   extends BaseFinderFeedLoader
 {
-  public int gAZ;
   public boolean hasMore;
-  final boolean jqK;
-  public kotlin.g.a.a<x> tTS;
-  public kotlin.g.a.b<? super b, x> tVS;
-  private final e tVT;
+  public int jlf;
+  final boolean mgl;
+  public a<x> xEI;
+  public b<? super b, x> xHK;
+  private final g xHL;
   
-  public FinderLikedFeedLoader(boolean paramBoolean, e parame, bbn parambbn)
+  public FinderLikedFeedLoader(boolean paramBoolean, g paramg, bid parambid)
   {
-    super(parambbn);
-    AppMethodBeat.i(244693);
-    this.jqK = paramBoolean;
-    this.tVT = parame;
+    super(parambid);
+    AppMethodBeat.i(289393);
+    this.mgl = paramBoolean;
+    this.xHL = paramg;
     this.hasMore = true;
-    AppMethodBeat.o(244693);
+    AppMethodBeat.o(289393);
   }
   
-  public final g<bo> createDataFetch()
+  public final i<bu> createDataFetch()
   {
-    AppMethodBeat.i(244690);
-    g localg = (g)new a();
-    AppMethodBeat.o(244690);
-    return localg;
+    AppMethodBeat.i(289387);
+    i locali = (i)new a();
+    AppMethodBeat.o(289387);
+    return locali;
   }
   
-  public final com.tencent.mm.plugin.finder.feed.model.internal.b<bo> createDataMerger()
+  public final com.tencent.mm.plugin.finder.feed.model.internal.d<bu> createDataMerger()
   {
-    AppMethodBeat.i(244691);
-    com.tencent.mm.plugin.finder.feed.model.internal.b localb = (com.tencent.mm.plugin.finder.feed.model.internal.b)new c(this);
-    AppMethodBeat.o(244691);
-    return localb;
+    AppMethodBeat.i(289388);
+    com.tencent.mm.plugin.finder.feed.model.internal.d locald = (com.tencent.mm.plugin.finder.feed.model.internal.d)new c(this);
+    AppMethodBeat.o(289388);
+    return locald;
   }
   
   public final int getPageName()
@@ -73,10 +73,10 @@ public final class FinderLikedFeedLoader
     return 2;
   }
   
-  public final void onFetchDone(IResponse<bo> paramIResponse)
+  public final void onFetchDone(IResponse<bu> paramIResponse)
   {
     AppMethodBeat.i(166040);
-    p.h(paramIResponse, "response");
+    p.k(paramIResponse, "response");
     super.onFetchDone(paramIResponse);
     if (isInitOperation(paramIResponse))
     {
@@ -87,7 +87,7 @@ public final class FinderLikedFeedLoader
     if (2 == paramIResponse.getPullType()) {}
     for (int i = 1; (i != 0) && (!paramIResponse.getHasMore()); i = 0)
     {
-      paramIResponse = this.tTS;
+      paramIResponse = this.xEI;
       if (paramIResponse == null) {
         break;
       }
@@ -98,40 +98,40 @@ public final class FinderLikedFeedLoader
     AppMethodBeat.o(166040);
   }
   
-  public final void onFetchRefreshDone(IResponse<bo> paramIResponse)
+  public final void onFetchRefreshDone(IResponse<bu> paramIResponse)
   {
-    AppMethodBeat.i(244692);
-    p.h(paramIResponse, "response");
+    AppMethodBeat.i(289391);
+    p.k(paramIResponse, "response");
     super.onFetchRefreshDone(paramIResponse);
     if ((paramIResponse instanceof b))
     {
-      this.gAZ = ((b)paramIResponse).gAZ;
-      kotlin.g.a.b localb = this.tVS;
+      this.jlf = ((b)paramIResponse).jlf;
+      b localb = this.xHK;
       if (localb != null)
       {
         localb.invoke(paramIResponse);
-        AppMethodBeat.o(244692);
+        AppMethodBeat.o(289391);
         return;
       }
     }
-    AppMethodBeat.o(244692);
+    AppMethodBeat.o(289391);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/FinderLikedFeedLoader$LikedDataFetcher;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataFetchNetscene;", "(Lcom/tencent/mm/plugin/finder/feed/model/FinderLikedFeedLoader;)V", "callInit", "Lcom/tencent/mm/plugin/finder/feed/model/FinderLikedFeedLoader$LikedTimelineResponse;", "dealOnSceneEnd", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "genLoadMoreNetScene", "genRefreshNetScene", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderGetLikedList;", "getCmdIds", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/FinderLikedFeedLoader$LikedDataFetcher;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataFetchNetscene;", "(Lcom/tencent/mm/plugin/finder/feed/model/FinderLikedFeedLoader;)V", "callInit", "Lcom/tencent/mm/plugin/finder/feed/model/FinderLikedFeedLoader$LikedTimelineResponse;", "dealOnSceneEnd", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "genLoadMoreNetScene", "genRefreshNetScene", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderGetLikedList;", "getCmdIds", "", "plugin-finder_release"})
   public final class a
-    extends com.tencent.mm.plugin.finder.feed.model.internal.a
+    extends com.tencent.mm.plugin.finder.feed.model.internal.c
   {
-    public final IResponse<bo> dealOnSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+    public final IResponse<bu> dealOnSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
     {
-      AppMethodBeat.i(244686);
-      p.h(paramq, "scene");
-      paramq = (bm)paramq;
-      if ((paramInt1 == 0) && (paramInt2 == 0) && (paramq.cYA() != 1)) {}
+      AppMethodBeat.i(275128);
+      p.k(paramq, "scene");
+      paramq = (bp)paramq;
+      if ((paramInt1 == 0) && (paramInt2 == 0) && (paramq.doo() != 1)) {}
       FinderLikedFeedLoader.b localb;
       for (boolean bool = false;; bool = true)
       {
         localb = new FinderLikedFeedLoader.b(paramInt1, paramInt2, paramString, (byte)0);
-        paramString = paramq.tvo;
+        paramString = paramq.xcV;
         if (paramString == null) {
           break label214;
         }
@@ -141,8 +141,8 @@ public final class FinderLikedFeedLoader
         while (((Iterator)localObject).hasNext())
         {
           FinderItem localFinderItem = (FinderItem)((Iterator)localObject).next();
-          c.a locala = c.vGN;
-          paramString.add(c.a.s(localFinderItem));
+          c.a locala = com.tencent.mm.plugin.finder.storage.logic.c.AnK;
+          paramString.add(c.a.a(localFinderItem));
         }
       }
       label214:
@@ -150,20 +150,20 @@ public final class FinderLikedFeedLoader
       {
         localb.setIncrementList(paramString);
         localb.setPullType(paramq.pullType);
-        localb.setLastBuffer(paramq.cYz());
+        localb.setLastBuffer(paramq.don());
         localb.setHasMore(bool);
-        localb.gAZ = paramq.getCount();
-        localb.tUU = paramq.cYy();
+        localb.jlf = paramq.getCount();
+        localb.xGy = paramq.dom();
         paramString = (IResponse)localb;
-        AppMethodBeat.o(244686);
+        AppMethodBeat.o(275128);
         return paramString;
       }
     }
     
-    public final com.tencent.mm.ak.q genLoadMoreNetScene()
+    public final com.tencent.mm.an.q genLoadMoreNetScene()
     {
-      AppMethodBeat.i(244685);
-      Object localObject = (BaseFinderFeed)this.tVU.getLastItemOfType(BaseFinderFeed.class);
+      AppMethodBeat.i(275127);
+      Object localObject = (BaseFinderFeed)this.xHM.getLastItemOfType(BaseFinderFeed.class);
       if (localObject != null)
       {
         localObject = ((BaseFinderFeed)localObject).feedObject;
@@ -175,27 +175,27 @@ public final class FinderLikedFeedLoader
       }
       for (long l = ((FinderObject)localObject).displayId;; l = 0L)
       {
-        localObject = (com.tencent.mm.ak.q)new bm(l, this.tVU.getLastBuffer(), 2, null, this.tVU.getContextObj(), 0, false, 104);
-        AppMethodBeat.o(244685);
+        localObject = (com.tencent.mm.an.q)new bp(l, this.xHM.getLastBuffer(), 2, null, this.xHM.getContextObj(), 0, false, 104);
+        AppMethodBeat.o(275127);
         return localObject;
       }
     }
     
     public final List<Integer> getCmdIds()
     {
-      AppMethodBeat.i(244683);
+      AppMethodBeat.i(275125);
       List localList = j.listOf(Integer.valueOf(3965));
-      AppMethodBeat.o(244683);
+      AppMethodBeat.o(275125);
       return localList;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/FinderLikedFeedLoader$LikedTimelineResponse;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "totalCount", "megaVideoCount", "(IILjava/lang/String;II)V", "getMegaVideoCount", "()I", "setMegaVideoCount", "(I)V", "getTotalCount", "setTotalCount", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/FinderLikedFeedLoader$LikedTimelineResponse;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "totalCount", "megaVideoCount", "(IILjava/lang/String;II)V", "getMegaVideoCount", "()I", "setMegaVideoCount", "(I)V", "getTotalCount", "setTotalCount", "plugin-finder_release"})
   public static final class b
-    extends IResponse<bo>
+    extends IResponse<bu>
   {
-    public int gAZ = 0;
-    public int tUU = 0;
+    public int jlf = 0;
+    public int xGy = 0;
     
     private b(int paramInt1, int paramInt2, String paramString)
     {
@@ -203,71 +203,71 @@ public final class FinderLikedFeedLoader
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/feed/model/FinderLikedFeedLoader$createDataMerger$1", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader$DefaultDataMerger;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "mergeRefresh", "", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "next", "Lkotlin/Function1;", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/feed/model/FinderLikedFeedLoader$createDataMerger$1", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader$DefaultDataMerger;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "mergeRefresh", "", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "next", "Lkotlin/Function1;", "plugin-finder_release"})
   public static final class c
-    extends BaseFeedLoader<bo>.a
+    extends BaseFeedLoader<bu>.a
   {
     c()
     {
       super();
     }
     
-    public final void mergeRefresh(final IResponse<bo> paramIResponse, final kotlin.g.a.b<? super IResponse<bo>, x> paramb)
+    public final void mergeRefresh(final IResponse<bu> paramIResponse, final b<? super IResponse<bu>, x> paramb)
     {
       int i = 0;
-      AppMethodBeat.i(244689);
-      p.h(paramIResponse, "response");
+      AppMethodBeat.i(285452);
+      p.k(paramIResponse, "response");
       final RefreshLoadMoreLayout.c localc = new RefreshLoadMoreLayout.c(paramIResponse.getPullType());
       Object localObject;
       boolean bool;
       if ((paramIResponse.getErrType() == 0) && (paramIResponse.getErrCode() == 0))
       {
         localObject = MMApplicationContext.getContext();
-        p.g(localObject, "MMApplicationContext.getContext()");
-        localc.Rmi = ((CharSequence)((Context)localObject).getResources().getString(2131760628));
-        localc.Rmh = 1;
+        p.j(localObject, "MMApplicationContext.getContext()");
+        localc.YNE = ((CharSequence)((Context)localObject).getResources().getString(b.j.finder_timeline_refresh_nothing_tip));
+        localc.YND = 1;
         if (paramIResponse.getPullType() == 0) {
-          break label291;
+          break label293;
         }
         bool = true;
-        label86:
-        localc.jLE = bool;
-        localc.Rmj = paramIResponse.getHasMore();
-        if (((localc.actionType == 0) || (localc.actionType == 4)) && (localc.Rmk > 0)) {
-          localc.Rmi = null;
+        label87:
+        localc.mCI = bool;
+        localc.YNF = paramIResponse.getHasMore();
+        if (((localc.actionType == 0) || (localc.actionType == 4)) && (localc.YNG > 0)) {
+          localc.YNE = null;
         }
-        localc.iMa = Integer.valueOf(((FinderLikedFeedLoader.b)paramIResponse).gAZ);
-        Log.i(this.tVU.getTAG(), "[onFetchRefreshDone]  reason=".concat(String.valueOf(localc)));
+        localc.lCh = Integer.valueOf(((FinderLikedFeedLoader.b)paramIResponse).jlf);
+        Log.i(this.xHM.getTAG(), "[onFetchRefreshDone]  reason=".concat(String.valueOf(localc)));
         localObject = paramIResponse.getIncrementList();
         if (localObject != null) {
           i = ((List)localObject).size();
         }
         if (!paramIResponse.getHasMore()) {
-          break label302;
+          break label304;
         }
-        if (i <= this.tVU.getDataList().size()) {
-          break label297;
+        if (i <= this.xHM.getDataList().size()) {
+          break label299;
         }
         i = 4;
       }
       for (;;)
       {
-        d.h((kotlin.g.a.a)new a(this, new n(i, paramIResponse.getIncrementList(), paramIResponse.isNeedClear(), 8), localc, paramb, paramIResponse));
-        AppMethodBeat.o(244689);
+        com.tencent.mm.ae.d.uiThread((a)new a(this, new com.tencent.mm.plugin.finder.feed.model.internal.q(i, paramIResponse.getIncrementList(), paramIResponse.isNeedClear(), 8), localc, paramb, paramIResponse));
+        AppMethodBeat.o(285452);
         return;
         localObject = MMApplicationContext.getContext();
-        p.g(localObject, "MMApplicationContext.getContext()");
-        localc.Rmi = ((CharSequence)((Context)localObject).getResources().getString(2131760645));
-        localc.Rmh = -1;
+        p.j(localObject, "MMApplicationContext.getContext()");
+        localc.YNE = ((CharSequence)((Context)localObject).getResources().getString(b.j.finder_touch_to_retry));
+        localc.YND = -1;
         break;
-        label291:
+        label293:
         bool = false;
-        break label86;
-        label297:
+        break label87;
+        label299:
         i = 2;
         continue;
-        label302:
-        if ((this.tVU.getDataList().size() != 0) && (i != 0) && (this.tVU.getDataList().size() > i)) {
+        label304:
+        if ((this.xHM.getDataList().size() != 0) && (i != 0) && (this.xHM.getDataList().size() > i)) {
           i = 4;
         } else {
           i = 6;
@@ -275,12 +275,12 @@ public final class FinderLikedFeedLoader
       }
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
     static final class a
       extends kotlin.g.b.q
-      implements kotlin.g.a.a<x>
+      implements a<x>
     {
-      a(FinderLikedFeedLoader.c paramc, n paramn, RefreshLoadMoreLayout.c paramc1, kotlin.g.a.b paramb, IResponse paramIResponse)
+      a(FinderLikedFeedLoader.c paramc, com.tencent.mm.plugin.finder.feed.model.internal.q paramq, RefreshLoadMoreLayout.c paramc1, b paramb, IResponse paramIResponse)
       {
         super();
       }

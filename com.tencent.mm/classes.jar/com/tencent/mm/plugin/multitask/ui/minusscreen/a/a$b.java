@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.multitask.ui.minusscreen.a;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitask/ui/minusscreen/animation/MinusAnimator$Companion;", "", "()V", "DEBUG", "", "sDefaultInterpolator", "Landroid/animation/TimeInterpolator;", "ui-multitask_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/ui/minusscreen/animation/MinusAnimator$Companion;", "", "()V", "DEBUG", "", "sDefaultInterpolator", "Landroid/animation/TimeInterpolator;", "ui-multitask_release"})
 public final class a$b {}
 
 

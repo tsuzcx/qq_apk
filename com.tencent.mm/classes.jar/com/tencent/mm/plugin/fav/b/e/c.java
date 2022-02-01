@@ -2,18 +2,20 @@ package com.tencent.mm.plugin.fav.b.e;
 
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.plugin.fav.a.af;
-import com.tencent.mm.plugin.fav.a.am;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.plugin.fav.a.ag;
+import com.tencent.mm.plugin.fav.a.an;
 import com.tencent.mm.plugin.fav.a.f;
-import com.tencent.mm.plugin.fav.a.h;
+import com.tencent.mm.plugin.fav.a.g;
 import com.tencent.mm.plugin.fav.a.u;
-import com.tencent.mm.plugin.fav.a.x;
-import com.tencent.mm.protocal.protobuf.amp;
-import com.tencent.mm.protocal.protobuf.ano;
-import com.tencent.mm.protocal.protobuf.cps;
-import com.tencent.mm.protocal.protobuf.cpv;
+import com.tencent.mm.plugin.fav.a.v;
+import com.tencent.mm.plugin.fav.a.y;
+import com.tencent.mm.protocal.protobuf.anq;
+import com.tencent.mm.protocal.protobuf.aop;
+import com.tencent.mm.protocal.protobuf.cyi;
+import com.tencent.mm.protocal.protobuf.cyl;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -23,21 +25,21 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public final class c
-  implements i, u
+public class c
+  implements i, v
 {
-  public Map<String, a> tco;
+  public Map<String, a> wIt;
   
   public c()
   {
     AppMethodBeat.i(101626);
-    this.tco = new HashMap();
-    com.tencent.mm.kernel.g.azz().a(426, this);
-    com.tencent.mm.kernel.g.azz().a(401, this);
+    this.wIt = new HashMap();
+    com.tencent.mm.kernel.h.aGY().a(426, this);
+    com.tencent.mm.kernel.h.aGY().a(401, this);
     AppMethodBeat.o(101626);
   }
   
-  public static String D(long paramLong, int paramInt)
+  public static String F(long paramLong, int paramInt)
   {
     AppMethodBeat.i(101629);
     String str = paramLong + "&&" + paramInt;
@@ -45,38 +47,38 @@ public final class c
     return str;
   }
   
-  public final void a(long paramLong, LinkedList<cps> paramLinkedList, LinkedList<cpv> paramLinkedList1, int paramInt)
+  public final void a(long paramLong, LinkedList<cyi> paramLinkedList, LinkedList<cyl> paramLinkedList1, int paramInt)
   {
     AppMethodBeat.i(101630);
     Log.i("MicroMsg.Fav.FavEditService", "addTag %d", new Object[] { Long.valueOf(paramLong) });
-    f localf = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavEditInfoStorage().DX(paramLong);
+    f localf = ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavEditInfoStorage().Kl(paramLong);
     if (localf == null) {
       localf = new f();
     }
     for (int i = 1;; i = 0)
     {
       localf.field_localId = paramLong;
-      amp localamp = new amp();
-      localamp.tbE = paramLinkedList;
-      localamp.LxK = paramLinkedList1;
-      localf.field_modItem = localamp;
+      anq localanq = new anq();
+      localanq.wHJ = paramLinkedList;
+      localanq.SAl = paramLinkedList1;
+      localf.field_modItem = localanq;
       localf.field_time = Util.nowMilliSecond();
       localf.field_type = 0;
       localf.field_scene = paramInt;
       if (i != 0) {
-        ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavEditInfoStorage().a(localf);
+        ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavEditInfoStorage().a(localf);
       }
       for (;;)
       {
         run();
         AppMethodBeat.o(101630);
         return;
-        ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavEditInfoStorage().a(localf, new String[] { "localId" });
+        ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavEditInfoStorage().a(localf, new String[] { "localId" });
       }
     }
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, final String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, q paramq)
   {
     AppMethodBeat.i(101627);
     if (paramq == null)
@@ -92,44 +94,44 @@ public final class c
       AppMethodBeat.o(101627);
       return;
     }
-    paramString = (am)paramq;
+    paramString = (an)paramq;
     if (paramString.type != 0)
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramq = D(paramString.cVe(), paramString.cVf());
+        paramq = F(paramString.dkk(), paramString.dkl());
         Log.i("MicroMsg.Fav.FavEditService", "clear job, key %s", new Object[] { paramq });
-        this.tco.remove(paramq);
-        ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavEditInfoStorage().y(paramString.cVe(), paramString.cVf());
-        paramq = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DY(paramString.cVe());
+        this.wIt.remove(paramq);
+        ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavEditInfoStorage().A(paramString.dkk(), paramString.dkl());
+        paramq = ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavItemInfoStorage().Km(paramString.dkk());
         if (paramq != null)
         {
           l = paramq.field_id;
-          paramInt2 = paramq.field_tagProto.Lyo.size();
-          if (paramString.tbC != null) {
+          paramInt2 = paramq.field_tagProto.SAP.size();
+          if (paramString.wHH != null) {
             break label245;
           }
         }
         label245:
-        for (paramInt1 = 1;; paramInt1 = paramString.tbC.field_scene)
+        for (paramInt1 = 1;; paramInt1 = paramString.wHH.field_scene)
         {
-          h.i(l, paramInt2, paramInt1);
+          com.tencent.mm.plugin.fav.a.h.i(l, paramInt2, paramInt1);
           AppMethodBeat.o(101627);
           return;
         }
       }
-      long l = paramString.cVe();
-      paramInt1 = paramString.cVf();
-      paramString = D(l, paramInt1);
+      long l = paramString.dkk();
+      paramInt1 = paramString.dkl();
+      paramString = F(l, paramInt1);
       Log.i("MicroMsg.Fav.FavEditService", "retry job, key %s", new Object[] { paramString });
-      paramString = (a)this.tco.get(paramString);
+      paramString = (a)this.wIt.get(paramString);
       if (paramString == null)
       {
         Log.w("MicroMsg.Fav.FavEditService", "want to retry mod item, localid %d, type %d", new Object[] { Long.valueOf(l), Integer.valueOf(paramInt1) });
         AppMethodBeat.o(101627);
         return;
       }
-      com.tencent.mm.kernel.g.aAk().postToWorkerDelayed(new Runnable()
+      com.tencent.mm.kernel.h.aHJ().postToWorkerDelayed(new Runnable()
       {
         public final void run()
         {
@@ -153,12 +155,12 @@ public final class c
   public final void run()
   {
     AppMethodBeat.i(101628);
-    com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
+    com.tencent.mm.kernel.h.aHJ().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(101622);
-        Object localObject = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavEditInfoStorage().cUO();
+        Object localObject = ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavEditInfoStorage().djU();
         if (localObject == null)
         {
           AppMethodBeat.o(101622);
@@ -169,16 +171,16 @@ public final class c
         while (((Iterator)localObject).hasNext())
         {
           f localf = (f)((Iterator)localObject).next();
-          String str = c.D(localf.field_localId, localf.field_type);
-          c.a locala = (c.a)c.this.tco.get(str);
+          String str = c.F(localf.field_localId, localf.field_type);
+          c.a locala = (c.a)c.a(c.this).get(str);
           if (locala == null)
           {
             Log.i("MicroMsg.Fav.FavEditService", "not match key %s", new Object[] { str });
             locala = new c.a((byte)0);
-            locala.tbC = localf;
+            locala.wHH = localf;
             locala.retryCount = 3;
             locala.time = SystemClock.elapsedRealtime();
-            c.this.tco.put(str, locala);
+            c.a(c.this).put(str, locala);
             c.a(locala, true);
           }
           else
@@ -204,14 +206,14 @@ public final class c
   static final class a
   {
     int retryCount;
-    int tbB;
-    f tbC;
     long time;
+    int wHG;
+    f wHH;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.b.e.c
  * JD-Core Version:    0.7.0.1
  */

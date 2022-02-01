@@ -2,7 +2,7 @@ package com.tencent.mm.msgsubscription.b;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/msgsubscription/model/SubscribeStatusUpdateManager$Companion;", "", "()V", "DEFAULT_MAX_CACHE_AGE_FOR_TEST_IN_SEC", "", "DEFAULT_MAX_CACHE_AGE_IN_SEC", "TAG", "", "plugin-comm_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/msgsubscription/model/SubscribeStatusUpdateManager$Companion;", "", "()V", "DEFAULT_MAX_CACHE_AGE_FOR_TEST_IN_SEC", "", "DEFAULT_MAX_CACHE_AGE_IN_SEC", "TAG", "", "plugin-comm_release"})
 public final class c$a {}
 
 

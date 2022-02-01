@@ -13,20 +13,20 @@ public final class b
   protected b(Object paramObject)
   {
     super(paramObject);
-    qCR = "mHandler";
+    ubS = "mHandler";
   }
   
   public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
     AppMethodBeat.i(145632);
-    if (this.qCQ != null)
+    if (this.ubR != null)
     {
       if ((paramMethod.getName().equals("enqueueToast")) && (paramArrayOfObject[1].getClass().getName().equals("android.widget.Toast$TN"))) {}
       try
       {
-        paramObject = paramArrayOfObject[1].getClass().getDeclaredField(qCR);
+        paramObject = paramArrayOfObject[1].getClass().getDeclaredField(ubS);
         paramObject.setAccessible(true);
-        com.tencent.mm.plugin.crashfix.c.a.c(paramObject);
+        com.tencent.mm.plugin.crashfix.c.a.e(paramObject);
         final Handler localHandler = (Handler)paramObject.get(paramArrayOfObject[1]);
         paramObject.set(paramArrayOfObject[1], new Handler()
         {
@@ -48,7 +48,7 @@ public final class b
           }
         });
         Log.i("MicroMsg.INotificationManagerInvocationHandler", "replace Toast.TN.mShow succ");
-        paramObject = paramMethod.invoke(this.qCQ, paramArrayOfObject);
+        paramObject = paramMethod.invoke(this.ubR, paramArrayOfObject);
         AppMethodBeat.o(145632);
         return paramObject;
       }
@@ -66,7 +66,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.crashfix.d.d.b
  * JD-Core Version:    0.7.0.1
  */

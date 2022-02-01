@@ -15,7 +15,7 @@ public class MobileRemittanceCaseCallBack
   
   public void call(ITransmitKvData paramITransmitKvData)
   {
-    AppMethodBeat.i(214457);
+    AppMethodBeat.i(263130);
     Object localObject = this.mBean.getContext();
     if ((localObject instanceof MobileRemittanceUI))
     {
@@ -23,7 +23,7 @@ public class MobileRemittanceCaseCallBack
       if (paramITransmitKvData.getString("closeLoading").equals("1"))
       {
         ((MobileRemittanceUI)localObject).hideProgress();
-        AppMethodBeat.o(214457);
+        AppMethodBeat.o(263130);
         return;
       }
       if (paramITransmitKvData.getInt("retcode") != 1) {
@@ -38,22 +38,22 @@ public class MobileRemittanceCaseCallBack
       Log.i("MicroMsg.mobileRemit.MobileRemittanceUI", "resultCode :%s", new Object[] { Integer.valueOf(i) });
       if (i == -1)
       {
-        paramITransmitKvData = ((MobileRemittanceUI)localObject).CnQ;
-        paramITransmitKvData = new com.tencent.mm.hellhoundlib.b.a().bl(paramITransmitKvData);
-        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramITransmitKvData.axQ(), "com/tencent/mm/plugin/remittance/mobile/ui/MobileRemittanceUI", "onMobileRemittanceResult", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        ((MobileRemittanceUI)localObject).startActivity((Intent)paramITransmitKvData.pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/remittance/mobile/ui/MobileRemittanceUI", "onMobileRemittanceResult", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramITransmitKvData = ((MobileRemittanceUI)localObject).IkJ;
+        paramITransmitKvData = new com.tencent.mm.hellhoundlib.b.a().bm(paramITransmitKvData);
+        com.tencent.mm.hellhoundlib.a.a.b(localObject, paramITransmitKvData.aFh(), "com/tencent/mm/plugin/remittance/mobile/ui/MobileRemittanceUI", "onMobileRemittanceResult", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        ((MobileRemittanceUI)localObject).startActivity((Intent)paramITransmitKvData.sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(localObject, "com/tencent/mm/plugin/remittance/mobile/ui/MobileRemittanceUI", "onMobileRemittanceResult", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
-      AppMethodBeat.o(214457);
+      AppMethodBeat.o(263130);
       return;
     }
   }
   
   public void setData(Context paramContext, PayInfo paramPayInfo)
   {
-    AppMethodBeat.i(214456);
+    AppMethodBeat.i(263129);
     this.mBean = new SnsServiceBean(paramContext, paramPayInfo);
-    AppMethodBeat.o(214456);
+    AppMethodBeat.o(263129);
   }
 }
 

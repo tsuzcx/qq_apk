@@ -6,12 +6,12 @@ import java.util.LinkedList;
 
 public final class a
 {
-  private static LinkedList<h> xtW;
+  private static LinkedList<h> Cqn;
   
   static
   {
     AppMethodBeat.i(89655);
-    xtW = new LinkedList();
+    Cqn = new LinkedList();
     AppMethodBeat.o(89655);
   }
   
@@ -19,7 +19,7 @@ public final class a
   {
     AppMethodBeat.i(89651);
     if (paramh != null) {
-      xtW.add(paramh);
+      Cqn.add(paramh);
     }
     AppMethodBeat.o(89651);
   }
@@ -28,37 +28,37 @@ public final class a
   {
     AppMethodBeat.i(89652);
     if (paramh != null) {
-      xtW.remove(paramh);
+      Cqn.remove(paramh);
     }
     AppMethodBeat.o(89652);
   }
   
-  public static void e(String paramString, float paramFloat)
-  {
-    AppMethodBeat.i(89654);
-    Iterator localIterator = xtW.iterator();
-    while (localIterator.hasNext())
-    {
-      h localh = (h)localIterator.next();
-      if (localh != null) {
-        localh.f(paramString, paramFloat);
-      }
-    }
-    AppMethodBeat.o(89654);
-  }
-  
-  public static void ea(String paramString, int paramInt)
+  public static void ex(String paramString, int paramInt)
   {
     AppMethodBeat.i(89653);
-    Iterator localIterator = xtW.iterator();
+    Iterator localIterator = Cqn.iterator();
     while (localIterator.hasNext())
     {
       h localh = (h)localIterator.next();
       if (localh != null) {
-        localh.eb(paramString, paramInt);
+        localh.ey(paramString, paramInt);
       }
     }
     AppMethodBeat.o(89653);
+  }
+  
+  public static void f(String paramString, float paramFloat)
+  {
+    AppMethodBeat.i(89654);
+    Iterator localIterator = Cqn.iterator();
+    while (localIterator.hasNext())
+    {
+      h localh = (h)localIterator.next();
+      if (localh != null) {
+        localh.g(paramString, paramFloat);
+      }
+    }
+    AppMethodBeat.o(89654);
   }
 }
 

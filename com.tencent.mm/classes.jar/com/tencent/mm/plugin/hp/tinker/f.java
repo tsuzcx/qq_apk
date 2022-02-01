@@ -20,7 +20,7 @@ public final class f
   {
     AppMethodBeat.i(117493);
     super.a(paramFile, paramSharePatchInfo, paramString);
-    com.tencent.mm.plugin.hp.b.b.dYX();
+    com.tencent.mm.plugin.hp.b.b.eHU();
     AppMethodBeat.o(117493);
   }
   
@@ -28,7 +28,7 @@ public final class f
   {
     AppMethodBeat.i(117492);
     super.a(paramFile1, paramFile2, paramString, paramInt);
-    com.tencent.mm.plugin.hp.b.b.OT(paramInt);
+    com.tencent.mm.plugin.hp.b.b.Vb(paramInt);
     AppMethodBeat.o(117492);
   }
   
@@ -58,11 +58,11 @@ public final class f
     AppMethodBeat.o(117491);
   }
   
-  public final void aE(Intent paramIntent)
+  public final void aC(Intent paramIntent)
   {
     AppMethodBeat.i(117486);
-    super.aE(paramIntent);
-    com.tencent.mm.plugin.hp.b.b.aD(paramIntent);
+    super.aC(paramIntent);
+    com.tencent.mm.plugin.hp.b.b.aB(paramIntent);
     AppMethodBeat.o(117486);
   }
   
@@ -70,21 +70,21 @@ public final class f
   {
     AppMethodBeat.i(117489);
     super.b(paramFile, paramString1, paramString2);
-    com.tencent.mm.plugin.hp.b.b.dYW();
+    com.tencent.mm.plugin.hp.b.b.eHT();
     AppMethodBeat.o(117489);
   }
   
-  public final void e(File paramFile, int paramInt)
+  public final void g(File paramFile, int paramInt)
   {
     AppMethodBeat.i(117490);
-    super.e(paramFile, paramInt);
-    com.tencent.mm.plugin.hp.b.b.OS(paramInt);
+    super.g(paramFile, paramInt);
+    com.tencent.mm.plugin.hp.b.b.Va(paramInt);
     AppMethodBeat.o(117490);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.tinker.f
  * JD-Core Version:    0.7.0.1
  */

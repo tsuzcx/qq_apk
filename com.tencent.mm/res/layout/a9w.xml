@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/k6" android:textColor="@color/uj" android:layout_gravity="center_horizontal" android:id="@id/ckq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="64.0dip" android:text="@string/cjb" />
     <com.tencent.mm.ui.widget.MMProcessBar android:layout_gravity="center_horizontal" android:id="@id/b96" android:background="@drawable/ady" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="90.0dip" />
     <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:layout_gravity="center_horizontal" android:id="@id/fzn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="90.0dip" android:text="@string/cjo" />
     <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/h5s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="90.0dip">

@@ -2,15 +2,13 @@ package com.tencent.mm.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.c.aw;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.pointers.PLong;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,21 +16,21 @@ import java.util.List;
 public final class am
   extends MAutoStorage<aw>
 {
-  private static am NRH;
   public static final String[] SQL_CREATE;
+  private static am VfE;
   public ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(197174);
+    AppMethodBeat.i(212578);
     SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(al.info, "CleanDeleteItem") };
-    AppMethodBeat.o(197174);
+    AppMethodBeat.o(212578);
   }
   
-  private am(h paramh)
+  public am(com.tencent.mm.storagebase.h paramh)
   {
     super(paramh, al.info, "CleanDeleteItem", null);
-    AppMethodBeat.i(197170);
+    AppMethodBeat.i(212567);
     this.db = paramh;
     long l1 = System.currentTimeMillis();
     long l2 = paramh.beginTransaction(Thread.currentThread().getId());
@@ -48,31 +46,31 @@ public final class am
     Log.d("MicroMsg.CleanDeleteItemStorage", "build new index last time[%d]", new Object[] { Long.valueOf(System.currentTimeMillis() - l3) });
     paramh.endTransaction(l2);
     Log.i("MicroMsg.CleanDeleteItemStorage", "executeInitSQL last time[%d]", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
-    AppMethodBeat.o(197170);
+    AppMethodBeat.o(212567);
   }
   
-  public static am gBD()
+  public static am hxO()
   {
-    AppMethodBeat.i(197171);
-    g.aAi();
-    g.aAf().azk();
-    if (NRH == null) {
-      NRH = new am(g.aAh().hqK);
+    AppMethodBeat.i(212569);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHE().aGH();
+    if (VfE == null) {
+      VfE = new am(com.tencent.mm.kernel.h.aHG().kcF);
     }
-    am localam = NRH;
-    AppMethodBeat.o(197171);
+    am localam = VfE;
+    AppMethodBeat.o(212569);
     return localam;
   }
   
   public final void a(long paramLong, PLong paramPLong1, PLong paramPLong2)
   {
-    AppMethodBeat.i(197172);
+    AppMethodBeat.i(212572);
     Object localObject = String.format("SELECT * FROM %s", new Object[] { "CleanDeleteItem" });
     Log.i("MicroMsg.CleanDeleteItemStorage", "calculateFreeSpaceSize, sql = ".concat(String.valueOf(localObject)));
     localObject = rawQuery((String)localObject, new String[0]);
     if (localObject == null)
     {
-      AppMethodBeat.o(197172);
+      AppMethodBeat.o(212572);
       return;
     }
     while (((Cursor)localObject).moveToNext())
@@ -85,12 +83,12 @@ public final class am
       paramPLong1.value += localal.field_size;
     }
     ((Cursor)localObject).close();
-    AppMethodBeat.o(197172);
+    AppMethodBeat.o(212572);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.am
  * JD-Core Version:    0.7.0.1
  */

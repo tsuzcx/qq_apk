@@ -600,7 +600,11 @@ public final class DataHolder
       boolean bool = this.mClosed;
       return bool;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public final void logCursorMetadataForDebugging()
@@ -939,7 +943,7 @@ public final class DataHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.gms.common.data.DataHolder
  * JD-Core Version:    0.7.0.1
  */

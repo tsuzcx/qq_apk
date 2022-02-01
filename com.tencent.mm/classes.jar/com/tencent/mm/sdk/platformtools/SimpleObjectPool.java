@@ -53,10 +53,10 @@ public class SimpleObjectPool<T>
   
   protected void put(T paramT)
   {
-    AppMethodBeat.i(230399);
+    AppMethodBeat.i(189293);
     if (this.mPool == null)
     {
-      AppMethodBeat.o(230399);
+      AppMethodBeat.o(189293);
       return;
     }
     if ((!isInPool(paramT)) && (this.mPoolSize < this.mPool.length))
@@ -64,7 +64,7 @@ public class SimpleObjectPool<T>
       this.mPool[this.mPoolSize] = paramT;
       this.mPoolSize += 1;
     }
-    AppMethodBeat.o(230399);
+    AppMethodBeat.o(189293);
   }
   
   public void putWithoutCheck(T paramT)

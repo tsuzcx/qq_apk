@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.RegionCodeDecoder.Region;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -15,12 +19,12 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class ZoneRecommandPreference
   extends Preference
 {
-  private ImageView QxA;
-  RegionCodeDecoder.Region Qxw;
-  RegionCodeDecoder.Region Qxx;
-  RegionCodeDecoder.Region Qxy;
-  private TextView Qxz;
-  private TextView gCd;
+  RegionCodeDecoder.Region XVC;
+  RegionCodeDecoder.Region XVD;
+  RegionCodeDecoder.Region XVE;
+  private TextView XVF;
+  private ImageView XVG;
+  private TextView jmj;
   int status;
   
   public ZoneRecommandPreference(Context paramContext)
@@ -38,14 +42,14 @@ public class ZoneRecommandPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(39211);
     this.status = 0;
-    setLayoutResource(2131495538);
+    setLayoutResource(R.i.mm_preference);
     AppMethodBeat.o(39211);
   }
   
-  final void gYa()
+  final void hYL()
   {
     AppMethodBeat.i(39214);
-    if ((this.Qxz == null) || (this.gCd == null))
+    if ((this.XVF == null) || (this.jmj == null))
     {
       AppMethodBeat.o(39214);
       return;
@@ -57,61 +61,61 @@ public class ZoneRecommandPreference
     {
       AppMethodBeat.o(39214);
       return;
-      this.Qxz.setVisibility(8);
-      this.gCd.setVisibility(0);
-      this.gCd.setText(2131765315);
-      this.QxA.setImageResource(2131690390);
+      this.XVF.setVisibility(8);
+      this.jmj.setVisibility(0);
+      this.jmj.setText(R.l.setting_zone_getting_location);
+      this.XVG.setImageResource(R.k.get_location_icon);
       setEnabled(false);
-      setSelectable(false);
+      FV(false);
       AppMethodBeat.o(39214);
       return;
-      this.Qxz.setVisibility(8);
-      this.gCd.setVisibility(0);
-      this.gCd.setText(2131765312);
-      this.QxA.setImageResource(2131690389);
+      this.XVF.setVisibility(8);
+      this.jmj.setVisibility(0);
+      this.jmj.setText(R.l.setting_zone_cannot_get_location);
+      this.XVG.setImageResource(R.k.get_location_failed_icon);
       setEnabled(false);
-      setSelectable(false);
+      FV(false);
       AppMethodBeat.o(39214);
       return;
-      this.Qxz.setVisibility(0);
-      this.gCd.setVisibility(8);
-      this.QxA.setImageResource(2131690390);
+      this.XVF.setVisibility(0);
+      this.jmj.setVisibility(8);
+      this.XVG.setImageResource(R.k.get_location_icon);
       Object localObject2 = "";
       Object localObject1 = localObject2;
-      if (this.Qxw != null)
+      if (this.XVC != null)
       {
         localObject1 = localObject2;
-        if (!Util.isNullOrNil(this.Qxw.getName())) {
-          localObject1 = "" + this.Qxw.getName();
+        if (!Util.isNullOrNil(this.XVC.getName())) {
+          localObject1 = "" + this.XVC.getName();
         }
       }
       localObject2 = localObject1;
-      if (this.Qxx != null)
+      if (this.XVD != null)
       {
         localObject2 = localObject1;
-        if (!Util.isNullOrNil(this.Qxx.getName())) {
-          localObject2 = (String)localObject1 + " " + this.Qxx.getName();
+        if (!Util.isNullOrNil(this.XVD.getName())) {
+          localObject2 = (String)localObject1 + " " + this.XVD.getName();
         }
       }
       localObject1 = localObject2;
-      if (this.Qxy != null)
+      if (this.XVE != null)
       {
         localObject1 = localObject2;
-        if (!Util.isNullOrNil(this.Qxy.getName())) {
-          localObject1 = (String)localObject2 + " " + this.Qxy.getName();
+        if (!Util.isNullOrNil(this.XVE.getName())) {
+          localObject1 = (String)localObject2 + " " + this.XVE.getName();
         }
       }
-      this.Qxz.setText((CharSequence)localObject1);
+      this.XVF.setText((CharSequence)localObject1);
       setEnabled(true);
-      setSelectable(true);
+      FV(true);
     }
   }
   
-  public final void gYb()
+  public final void hYM()
   {
     AppMethodBeat.i(39215);
     this.status = 2;
-    gYa();
+    hYL();
     AppMethodBeat.o(39215);
   }
   
@@ -119,7 +123,7 @@ public class ZoneRecommandPreference
   {
     AppMethodBeat.i(39213);
     super.onBindView(paramView);
-    gYa();
+    hYL();
     AppMethodBeat.o(39213);
   }
   
@@ -128,19 +132,19 @@ public class ZoneRecommandPreference
     AppMethodBeat.i(39212);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2131495585, localViewGroup);
-    this.Qxz = ((TextView)paramViewGroup.findViewById(2131310681));
-    this.gCd = ((TextView)paramViewGroup.findViewById(2131308389));
-    this.QxA = ((ImageView)paramViewGroup.findViewById(2131308399));
+    localLayoutInflater.inflate(R.i.ejb, localViewGroup);
+    this.XVF = ((TextView)paramViewGroup.findViewById(R.h.zonename));
+    this.jmj = ((TextView)paramViewGroup.findViewById(R.h.status));
+    this.XVG = ((ImageView)paramViewGroup.findViewById(R.h.dVG));
     AppMethodBeat.o(39212);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.tools.ZoneRecommandPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.expt.roomexpt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.modelmulti.k;
 import com.tencent.mm.modelmulti.r;
-import com.tencent.mm.plugin.messenger.foundation.a.z;
-import com.tencent.mm.protocal.protobuf.abo;
-import com.tencent.mm.protocal.protobuf.cts;
+import com.tencent.mm.plugin.messenger.foundation.a.ad;
+import com.tencent.mm.protocal.protobuf.abv;
+import com.tencent.mm.protocal.protobuf.dcr;
 import com.tencent.mm.protocal.v.b;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 final class a$5
-  implements z
+  implements ad
 {
   a$5(a parama) {}
   
-  public final void aQ(Object paramObject) {}
+  public final void aU(Object paramObject) {}
   
-  public final void aR(Object paramObject)
+  public final void aV(Object paramObject)
   {
     AppMethodBeat.i(122398);
     MMHandlerThread localMMHandlerThread;
@@ -25,16 +25,16 @@ final class a$5
     r localr;
     if ((paramObject instanceof k))
     {
-      localMMHandlerThread = g.aAk();
+      localMMHandlerThread = h.aHJ();
       str = ((k)paramObject).TAG;
-      localr = ((k)paramObject).jda;
+      localr = ((k)paramObject).lTz;
       paramObject = (k)paramObject;
-      if ((paramObject.jdi != null) && (paramObject.jdi.KAh.Ley != null)) {
+      if ((paramObject.lTH != null) && (paramObject.lTH.RBX.SfL != null)) {
         break label82;
       }
     }
     label82:
-    for (paramObject = null;; paramObject = paramObject.jdi.KAh.Ley.oTA)
+    for (paramObject = null;; paramObject = paramObject.lTH.RBX.SfL.rVy)
     {
       localMMHandlerThread.postToWorker(new a.a(str, localr, paramObject));
       AppMethodBeat.o(122398);
@@ -42,11 +42,11 @@ final class a$5
     }
   }
   
-  public final void aS(Object paramObject) {}
+  public final void aW(Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.roomexpt.a.5
  * JD-Core Version:    0.7.0.1
  */

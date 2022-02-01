@@ -1,28 +1,28 @@
 package com.tencent.mm.ui.matrix;
 
-import android.animation.Keyframe;
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Process;
-import android.support.v4.e.k;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.matrix.a.b.a.c.b;
-import com.tencent.matrix.a.b.a.d.d;
-import com.tencent.matrix.a.b.a.g.a.c.b;
-import com.tencent.matrix.a.c.h.b;
+import com.tencent.matrix.a.a.a.d.b;
+import com.tencent.matrix.a.a.a.f;
+import com.tencent.matrix.a.a.a.f.d;
+import com.tencent.matrix.a.a.a.j.a.c.b;
+import com.tencent.matrix.a.b.k.c;
+import com.tencent.matrix.a.b.k.c.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.plugin.performance.diagnostic.c.a;
+import com.tencent.mm.plugin.setting.b.c;
+import com.tencent.mm.plugin.setting.b.d;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.ChannelUtil;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -35,7 +35,7 @@ import java.util.Locale;
 public class MatrixSettingHeaderPreference
   extends Preference
 {
-  a QmP;
+  a XKO;
   
   public MatrixSettingHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -51,131 +51,121 @@ public class MatrixSettingHeaderPreference
   {
     AppMethodBeat.i(38882);
     super.onBindView(paramView);
-    TextView localTextView = (TextView)paramView.findViewById(2131304538);
-    final ImageView localImageView = (ImageView)paramView.findViewById(2131304537);
+    TextView localTextView = (TextView)paramView.findViewById(R.h.dMr);
+    ImageView localImageView = (ImageView)paramView.findViewById(R.h.dMq);
     localTextView.setText(BuildInfo.MATRIX_VERSION);
-    paramView.setOnLongClickListener(new View.OnLongClickListener()
-    {
-      int clickCount = 3;
-      Toast xfv;
-      
-      public final boolean onLongClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(38881);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/matrix/MatrixSettingHeaderPreference$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
-        if (MatrixSettingHeaderPreference.a(MatrixSettingHeaderPreference.this) == null)
-        {
-          com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/matrix/MatrixSettingHeaderPreference$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-          AppMethodBeat.o(38881);
-          return true;
-        }
-        this.clickCount -= 1;
-        if (this.xfv == null) {
-          this.xfv = Toast.makeText(MatrixSettingHeaderPreference.this.mContext, MatrixSettingHeaderPreference.this.mContext.getResources().getString(2131762977, new Object[] { Integer.valueOf(this.clickCount) }), 1);
-        }
-        if (this.clickCount <= 0) {
-          this.xfv.setText(MatrixSettingHeaderPreference.this.mContext.getResources().getString(2131762976));
-        }
-        for (;;)
-        {
-          ObjectAnimator.ofPropertyValuesHolder(localImageView, new PropertyValuesHolder[] { PropertyValuesHolder.ofKeyframe(View.SCALE_X, new Keyframe[] { Keyframe.ofFloat(0.0F, 1.0F), Keyframe.ofFloat(0.1F, 0.9F), Keyframe.ofFloat(0.2F, 0.9F), Keyframe.ofFloat(0.3F, 1.1F), Keyframe.ofFloat(0.4F, 1.1F), Keyframe.ofFloat(0.5F, 1.1F), Keyframe.ofFloat(0.6F, 1.1F), Keyframe.ofFloat(0.7F, 1.1F), Keyframe.ofFloat(0.8F, 1.1F), Keyframe.ofFloat(0.9F, 1.1F), Keyframe.ofFloat(1.0F, 1.0F) }), PropertyValuesHolder.ofKeyframe(View.SCALE_Y, new Keyframe[] { Keyframe.ofFloat(0.0F, 1.0F), Keyframe.ofFloat(0.1F, 0.9F), Keyframe.ofFloat(0.2F, 0.9F), Keyframe.ofFloat(0.3F, 1.1F), Keyframe.ofFloat(0.4F, 1.1F), Keyframe.ofFloat(0.5F, 1.1F), Keyframe.ofFloat(0.6F, 1.1F), Keyframe.ofFloat(0.7F, 1.1F), Keyframe.ofFloat(0.8F, 1.1F), Keyframe.ofFloat(0.9F, 1.1F), Keyframe.ofFloat(1.0F, 1.0F) }), PropertyValuesHolder.ofKeyframe(View.ROTATION, new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.1F, -3.0F), Keyframe.ofFloat(0.2F, -3.0F), Keyframe.ofFloat(0.3F, 3.0F), Keyframe.ofFloat(0.4F, -3.0F), Keyframe.ofFloat(0.5F, 3.0F), Keyframe.ofFloat(0.6F, -3.0F), Keyframe.ofFloat(0.7F, 3.0F), Keyframe.ofFloat(0.8F, -3.0F), Keyframe.ofFloat(0.9F, 3.0F), Keyframe.ofFloat(1.0F, 0.0F) }) }).setDuration(1000L).start();
-          this.xfv.show();
-          if ((this.clickCount == 0) && (MatrixSettingHeaderPreference.a(MatrixSettingHeaderPreference.this) != null)) {
-            MatrixSettingHeaderPreference.a(MatrixSettingHeaderPreference.this).gWW();
-          }
-          com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/matrix/MatrixSettingHeaderPreference$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-          AppMethodBeat.o(38881);
-          return true;
-          this.xfv.setText(MatrixSettingHeaderPreference.this.mContext.getResources().getString(2131762977, new Object[] { Integer.valueOf(this.clickCount) }));
-        }
-      }
-    });
+    paramView.setOnLongClickListener(new MatrixSettingHeaderPreference.1(this, localImageView));
     paramView.setOnClickListener(new View.OnClickListener()
     {
-      private long Dal = 0L;
+      private long JfM = 0L;
       
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(234460);
+        AppMethodBeat.i(267655);
         Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject1).bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/matrix/MatrixSettingHeaderPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).axR());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject1).bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/matrix/MatrixSettingHeaderPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).aFi());
         long l = Util.nowMilliSecond();
-        if ((this.Dal > l) || (l - this.Dal > 300L))
+        if ((this.JfM > l) || (l - this.JfM > 300L))
         {
-          this.Dal = l;
+          this.JfM = l;
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/matrix/MatrixSettingHeaderPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(234460);
+          AppMethodBeat.o(267655);
           return;
         }
-        this.Dal = l;
-        paramAnonymousView = paramAnonymousView.getContext();
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("[ver  ] ").append(String.format(Locale.ENGLISH, "%s %08X", new Object[] { ChannelUtil.formatVersion(paramAnonymousView, com.tencent.mm.protocal.d.KyO, true), Integer.valueOf(com.tencent.mm.protocal.d.KyO) })).append("\n");
-        ((StringBuilder)localObject1).append(BuildInfo.info());
-        Object localObject2 = (com.tencent.matrix.a.b)com.tencent.matrix.b.RG().Y(com.tencent.matrix.a.b.class);
-        if (localObject2 != null)
+        this.JfM = l;
+        localObject1 = paramAnonymousView.getContext();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[ver  ] ").append(String.format(Locale.ENGLISH, "%s %08X", new Object[] { ChannelUtil.formatVersion((Context)localObject1, com.tencent.mm.protocal.d.RAD, true), Integer.valueOf(com.tencent.mm.protocal.d.RAD) })).append("\n");
+        if (BuildInfo.IS_ARM64) {}
+        Object localObject2;
+        for (paramAnonymousView = "arm64-v8a";; paramAnonymousView = "armeabi-v7a")
         {
-          Object localObject3 = (com.tencent.matrix.a.b.a.c)((com.tencent.matrix.a.b)localObject2).cQh.aa(com.tencent.matrix.a.b.a.c.class);
-          if (localObject3 != null)
+          localStringBuilder.append(String.format("[eabi ] %s\n", new Object[] { paramAnonymousView }));
+          int j = 0;
+          paramAnonymousView = (com.tencent.mm.plugin.performance.diagnostic.c)com.tencent.mm.plugin.performance.a.a.GLp.bn(com.tencent.mm.plugin.performance.diagnostic.b.b.class);
+          i = j;
+          if (paramAnonymousView != null)
           {
-            Object localObject4 = new StringBuilder(String.valueOf(Process.myPid()));
-            Object localObject5 = (ActivityManager)MatrixSettingHeaderPreference.this.mContext.getSystemService("activity");
-            if (localObject5 != null)
-            {
-              localObject5 = ((ActivityManager)localObject5).getRunningAppProcesses().iterator();
-              while (((Iterator)localObject5).hasNext())
-              {
-                ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject5).next();
-                if ((localRunningAppProcessInfo.processName.contains(MatrixSettingHeaderPreference.this.mContext.getPackageName())) && (!((StringBuilder)localObject4).toString().contains(String.valueOf(localRunningAppProcessInfo.pid)))) {
-                  ((StringBuilder)localObject4).append("|").append(localRunningAppProcessInfo.pid);
-                }
-              }
-            }
-            ((StringBuilder)localObject1).append("[bat.pids  ] ").append(((StringBuilder)localObject4).toString()).append("\n");
-            localObject4 = ((com.tencent.matrix.a.b.a.c)localObject3).bb(0L);
-            localObject5 = ((StringBuilder)localObject1).append("[bat.dice  ] ");
-            if (com.tencent.matrix.c.a.SA()) {}
-            for (i = 1;; i = 0)
-            {
-              ((StringBuilder)localObject5).append(i).append("\n");
-              ((StringBuilder)localObject1).append("[bat.uptime] ").append(((c.b)localObject4).cSM.cTz).append("\n");
-              ((StringBuilder)localObject1).append("[bat.fg    ] ").append(((c.b)localObject4).cSN.cTz).append("\n");
-              ((StringBuilder)localObject1).append("[bat.bg    ] ").append(((c.b)localObject4).cSO.cTz).append("\n");
-              ((StringBuilder)localObject1).append("[bat.fgSrv ] ").append(((c.b)localObject4).cSP.cTz).append("\n");
-              localObject3 = ((com.tencent.matrix.a.b.a.c)localObject3).bc(0L);
-              localObject3 = ((h.b)localObject3).cUx.subList(0, Math.min(((h.b)localObject3).cUx.size(), 3));
-              i = 0;
-              while (i < ((List)localObject3).size())
-              {
-                localObject4 = (k)((List)localObject3).get(i);
-                ((StringBuilder)localObject1).append("[bat.uiTop").append(i + 1).append("] ").append((String)((k)localObject4).first).append("/").append(((k)localObject4).second).append("\n");
-                i += 1;
-              }
+            i = j;
+            if (paramAnonymousView.fnt().fnB()) {
+              i = 1;
             }
           }
-          localObject2 = (com.tencent.matrix.a.b.a.d)((com.tencent.matrix.a.b)localObject2).cQh.aa(com.tencent.matrix.a.b.a.d.class);
-          if (localObject2 != null)
+          paramAnonymousView = (com.tencent.mm.plugin.performance.diagnostic.c)com.tencent.mm.plugin.performance.a.a.GLp.bn(com.tencent.mm.plugin.performance.diagnostic.c.b.class);
+          j = i;
+          if (paramAnonymousView != null)
           {
-            localObject2 = ((com.tencent.matrix.a.b.a.d)localObject2).bd(0L);
-            ((StringBuilder)localObject1).append("[bat.charge] ").append(((d.d)localObject2).cTb.cTz).append("\n");
-            ((StringBuilder)localObject1).append("[bat.dim   ] ").append(((d.d)localObject2).cTc.cTz).append("\n");
+            j = i;
+            if (paramAnonymousView.fnt().fnB()) {
+              j = i | 0x2;
+            }
+          }
+          localStringBuilder.append("[diag ] ").append(j).append("\n");
+          paramAnonymousView = (com.tencent.matrix.a.c)com.tencent.matrix.b.Vu().Y(com.tencent.matrix.a.c.class);
+          if (paramAnonymousView == null) {
+            break label797;
+          }
+          localObject2 = (com.tencent.matrix.a.a.a.d)paramAnonymousView.cSM.Z(com.tencent.matrix.a.a.a.d.class);
+          if (localObject2 == null) {
+            break label725;
+          }
+          localObject3 = new StringBuilder(String.valueOf(Process.myPid()));
+          localObject4 = (ActivityManager)MatrixSettingHeaderPreference.this.mContext.getSystemService("activity");
+          if (localObject4 == null) {
+            break;
+          }
+          localObject4 = ((ActivityManager)localObject4).getRunningAppProcesses().iterator();
+          while (((Iterator)localObject4).hasNext())
+          {
+            ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject4).next();
+            if ((localRunningAppProcessInfo.processName.contains(MatrixSettingHeaderPreference.this.mContext.getPackageName())) && (!((StringBuilder)localObject3).toString().contains(String.valueOf(localRunningAppProcessInfo.pid)))) {
+              ((StringBuilder)localObject3).append("|").append(localRunningAppProcessInfo.pid);
+            }
           }
         }
-        localObject2 = new TextView(paramAnonymousView);
-        ((TextView)localObject2).setText((CharSequence)localObject1);
-        ((TextView)localObject2).setGravity(19);
-        ((TextView)localObject2).setTextSize(1, 10.0F);
-        ((TextView)localObject2).setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-        ((TextView)localObject2).setTextColor(MatrixSettingHeaderPreference.this.mContext.getResources().getColor(2131099746));
-        ((TextView)localObject2).setTypeface(Typeface.MONOSPACE);
-        int i = paramAnonymousView.getResources().getDimensionPixelSize(2131165498);
-        ((TextView)localObject2).setPadding(i, i, i, i);
-        h.a(paramAnonymousView, null, (View)localObject2, null);
+        localStringBuilder.append("[bat.pids  ] ").append(((StringBuilder)localObject3).toString()).append("\n");
+        Object localObject3 = ((com.tencent.matrix.a.a.a.d)localObject2).bn(0L);
+        Object localObject4 = localStringBuilder.append("[bat.dice  ] ");
+        if (com.tencent.matrix.c.a.WU()) {}
+        for (int i = 1;; i = 0)
+        {
+          ((StringBuilder)localObject4).append(i).append("\n");
+          localStringBuilder.append("[bat.uptime] ").append(((d.b)localObject3).cVh.cWu).append("\n");
+          localStringBuilder.append("[bat.fg    ] ").append(((d.b)localObject3).cVi.cWu).append("\n");
+          localStringBuilder.append("[bat.bg    ] ").append(((d.b)localObject3).cVj.cWu).append("\n");
+          localStringBuilder.append("[bat.fgSrv ] ").append(((d.b)localObject3).cVk.cWu).append("\n");
+          localObject2 = ((com.tencent.matrix.a.a.a.d)localObject2).bo(0L);
+          localObject2 = ((k.c)localObject2).cXX.subList(0, Math.min(((k.c)localObject2).cXX.size(), 3));
+          i = 0;
+          while (i < ((List)localObject2).size())
+          {
+            localObject3 = (k.c.a)((List)localObject2).get(i);
+            localStringBuilder.append("[bat.uiTop").append(i + 1).append("] ").append(((k.c.a)localObject3).key).append("/").append(((k.c.a)localObject3).ratio).append("\n");
+            i += 1;
+          }
+        }
+        label725:
+        paramAnonymousView = (f)paramAnonymousView.cSM.Z(f.class);
+        if (paramAnonymousView != null)
+        {
+          paramAnonymousView = paramAnonymousView.bp(0L);
+          localStringBuilder.append("[bat.charge] ").append(paramAnonymousView.cVH.cWu).append("\n");
+          localStringBuilder.append("[bat.dim   ] ").append(paramAnonymousView.cVJ.cWu).append("\n");
+        }
+        label797:
+        paramAnonymousView = new TextView((Context)localObject1);
+        paramAnonymousView.setText(localStringBuilder);
+        paramAnonymousView.setGravity(19);
+        paramAnonymousView.setTextSize(1, 10.0F);
+        paramAnonymousView.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
+        paramAnonymousView.setTextColor(MatrixSettingHeaderPreference.this.mContext.getResources().getColor(b.c.FG_0));
+        paramAnonymousView.setTypeface(Typeface.MONOSPACE);
+        i = ((Context)localObject1).getResources().getDimensionPixelSize(b.d.LargePadding);
+        paramAnonymousView.setPadding(i, i, i, i);
+        h.a((Context)localObject1, null, paramAnonymousView, null);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/matrix/MatrixSettingHeaderPreference$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(234460);
+        AppMethodBeat.o(267655);
       }
     });
     AppMethodBeat.o(38882);
@@ -183,12 +173,12 @@ public class MatrixSettingHeaderPreference
   
   static abstract interface a
   {
-    public abstract void gWW();
+    public abstract void hXz();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.matrix.MatrixSettingHeaderPreference
  * JD-Core Version:    0.7.0.1
  */

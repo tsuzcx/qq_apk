@@ -16,7 +16,7 @@ final class b$b<T extends b.a>
   public final void onChildrenLoaded(String paramString, List<MediaBrowser.MediaItem> paramList, Bundle paramBundle)
   {
     MediaSessionCompat.d(paramBundle);
-    ((b.a)this.Lv).k(paramList);
+    ((b.a)this.cX).e(paramList);
   }
   
   public final void onError(String paramString, Bundle paramBundle)
@@ -26,7 +26,7 @@ final class b$b<T extends b.a>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v4.media.b.b
  * JD-Core Version:    0.7.0.1
  */

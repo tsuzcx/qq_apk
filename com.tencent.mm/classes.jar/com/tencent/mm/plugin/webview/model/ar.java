@@ -7,11 +7,13 @@ import android.content.pm.ApplicationInfo;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.net.Uri;
-import android.os.Bundle;
-import com.tencent.luggage.h.h;
+import com.tencent.luggage.k.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.c.b;
+import com.tencent.mm.plugin.report.f;
+import com.tencent.mm.plugin.webview.luggage.c.c;
+import com.tencent.mm.plugin.webview.stub.e;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.InetUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MD5Util;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -31,152 +33,60 @@ import java.util.concurrent.TimeUnit;
 
 public class ar
 {
-  private int IZm;
-  private ArrayList<String> IZn;
-  private ArrayList<String> IZo;
-  public List<Integer> IZp;
-  private final Map<String, Boolean> IZq;
-  private final Set<String> IZr;
-  private String IZs;
-  private Context mContext;
+  private List<Integer> PVE;
+  private final Map<String, Boolean> PVF;
+  private final Set<String> PVG;
+  private String PVH;
   
-  public ar(Context paramContext)
+  public ar()
   {
-    AppMethodBeat.i(79032);
-    this.IZm = -1;
-    this.IZs = null;
-    this.mContext = paramContext;
-    this.IZp = new ArrayList();
-    this.IZq = new HashMap();
-    this.IZr = new HashSet();
-    this.IZn = new ArrayList();
-    this.IZo = new ArrayList();
-    AppMethodBeat.o(79032);
+    AppMethodBeat.i(251622);
+    this.PVH = null;
+    this.PVE = new ArrayList();
+    this.PVF = new HashMap();
+    this.PVG = new HashSet();
+    AppMethodBeat.o(251622);
   }
   
-  private boolean a(String paramString, com.tencent.mm.plugin.webview.stub.e parame)
+  private boolean bkK(String paramString)
   {
-    AppMethodBeat.i(79035);
-    Iterator localIterator;
-    if (this.IZm == -1) {
-      try
-      {
-        parame = parame.j(31, null);
-        if (parame != null)
-        {
-          this.IZm = parame.getInt("webview_ad_intercept_control_flag");
-          this.IZn = parame.getStringArrayList("webview_ad_intercept_whitelist_domins");
-          this.IZo = parame.getStringArrayList("webview_ad_intercept_blacklist_domins");
-          parame = new StringBuilder();
-          parame.append("white domain list :\n");
-          localIterator = this.IZn.iterator();
-          while (localIterator.hasNext()) {
-            parame.append((String)localIterator.next()).append("\n");
-          }
-        }
-        if (this.IZm != 0) {
-          break label213;
-        }
-      }
-      catch (Exception parame)
-      {
-        Log.e("MicroMsg.WebViewResourceInterrupter", "get ad domain failed : %s", new Object[] { parame.getMessage() });
-        this.IZm = 0;
-      }
-    }
-    for (;;)
+    AppMethodBeat.i(251626);
+    try
     {
-      AppMethodBeat.o(79035);
-      return false;
-      parame.append("black list domain list : \n");
-      localIterator = this.IZo.iterator();
-      while (localIterator.hasNext()) {
-        parame.append((String)localIterator.next()).append("\n");
+      String str = Uri.parse(paramString).getHost();
+      if ((InetUtil.isIPv4Address(str)) || (InetUtil.isIPv6Address(str)))
+      {
+        if (this.PVH == null) {
+          this.PVH = h.SH();
+        }
+        boolean bool = paramString.contains(this.PVH);
+        AppMethodBeat.o(251626);
+        return bool;
       }
-      Log.i("MicroMsg.WebViewResourceInterrupter", parame.toString());
-    }
-    label213:
-    parame = Uri.parse(paramString).getHost();
-    Log.d("MicroMsg.WebViewResourceInterrupter", "check has verified this domain : %s, is in black list = %b", new Object[] { parame, this.IZq.get(parame) });
-    if (Util.isNullOrNil(parame))
-    {
-      AppMethodBeat.o(79035);
+      AppMethodBeat.o(251626);
       return false;
     }
-    if (this.IZq.containsKey(parame))
+    catch (Exception paramString)
     {
-      boolean bool = ((Boolean)this.IZq.get(parame)).booleanValue();
-      AppMethodBeat.o(79035);
-      return bool;
+      AppMethodBeat.o(251626);
     }
-    String str;
-    if ((this.IZn != null) && (this.IZn.size() > 0))
-    {
-      localIterator = this.IZn.iterator();
-      while (localIterator.hasNext())
-      {
-        str = (String)localIterator.next();
-        if ((!Util.isNullOrNil(str)) && (parame.contains(str)))
-        {
-          this.IZq.put(parame, Boolean.FALSE);
-          Log.i("MicroMsg.WebViewResourceInterrupter", "white list, ignore check the url");
-          AppMethodBeat.o(79035);
-          return false;
-        }
-      }
-    }
-    if ((this.IZo != null) && (this.IZo.size() > 0))
-    {
-      localIterator = this.IZo.iterator();
-      while (localIterator.hasNext())
-      {
-        str = (String)localIterator.next();
-        if ((!Util.isNullOrNil(str)) && (parame.contains(str)))
-        {
-          if (this.IZm == 1)
-          {
-            this.IZq.put(parame, Boolean.TRUE);
-            Log.e("MicroMsg.WebViewResourceInterrupter", "black list, should stop the request, domain = %s, url = %s", new Object[] { str, paramString });
-            AppMethodBeat.o(79035);
-            return true;
-          }
-          if (this.IZm == 2)
-          {
-            Log.i("MicroMsg.WebViewResourceInterrupter", "black list, just get html content and report, domain = %s, url = %s", new Object[] { str, paramString });
-            this.IZr.add(parame);
-            this.IZq.put(parame, Boolean.FALSE);
-            AppMethodBeat.o(79035);
-            return false;
-          }
-        }
-      }
-    }
-    this.IZq.put(parame, Boolean.FALSE);
-    AppMethodBeat.o(79035);
     return false;
   }
   
-  private boolean aYQ(String paramString)
+  private boolean bkL(String paramString)
   {
     AppMethodBeat.i(79034);
-    if ((Util.isNullOrNil(paramString)) || (!b.afC(paramString)))
+    if ((Util.isNullOrNil(paramString)) || (!c.ane(paramString)))
     {
       AppMethodBeat.o(79034);
       return false;
     }
     paramString = paramString.toLowerCase();
-    if ((!paramString.contains("localhost")) && (!paramString.contains("127.0.0.1")) && (!paramString.contains("::1")))
+    if ((paramString.contains("localhost")) || (paramString.contains("127.0.0.1")) || (paramString.contains("::1")) || (bkK(paramString)))
     {
-      if (this.IZs == null) {
-        this.IZs = h.Ph();
-      }
-      if (!paramString.contains(this.IZs)) {}
-    }
-    else
-    {
-      if ((this.IZp != null) && (this.IZp.size() > 0))
+      if ((this.PVE != null) && (this.PVE.size() > 0))
       {
-        Iterator localIterator = this.IZp.iterator();
+        Iterator localIterator = this.PVE.iterator();
         while (localIterator.hasNext())
         {
           int i = ((Integer)localIterator.next()).intValue();
@@ -196,7 +106,7 @@ public class ar
     return false;
   }
   
-  public WebResourceResponse a(String paramString, WebResourceRequest paramWebResourceRequest, boolean paramBoolean, com.tencent.mm.plugin.webview.stub.e parame)
+  public WebResourceResponse a(String paramString, WebResourceRequest paramWebResourceRequest, boolean paramBoolean, e parame)
   {
     AppMethodBeat.i(79033);
     if (paramWebResourceRequest != null) {}
@@ -211,7 +121,7 @@ public class ar
       Log.i("MicroMsg.WebViewResourceInterrupter", "it is wechat resource is, should intercept");
       try
       {
-        paramString = BitmapUtil.decodeFile(parame.gu(paramString, 2));
+        paramString = BitmapUtil.decodeFile(parame.hc(paramString, 2));
         paramWebResourceRequest = new ByteArrayOutputStream();
         paramString.compress(Bitmap.CompressFormat.JPEG, 90, paramWebResourceRequest);
         paramString = new WebResourceResponse("image/*", "utf-8", new ByteArrayInputStream(paramWebResourceRequest.toByteArray()));
@@ -225,21 +135,14 @@ public class ar
         return null;
       }
     }
-    if ((paramBoolean) && (aYQ(paramString)))
+    if ((paramBoolean) && (bkL(paramString)))
     {
       Log.f("MicroMsg.WebViewResourceInterrupter", "local url, interrupt request : %s", new Object[] { paramString });
       paramString = new WebResourceResponse("image/*", "utf-8", new ByteArrayInputStream(new byte[0]));
       AppMethodBeat.o(79033);
       return paramString;
     }
-    if (a(paramString, parame))
-    {
-      Log.e("MicroMsg.WebViewResourceInterrupter", "this is a ad request, interrupt request : %s", new Object[] { paramString });
-      paramString = new WebResourceResponse("image/*", "utf-8", new ByteArrayInputStream(new byte[0]));
-      AppMethodBeat.o(79033);
-      return paramString;
-    }
-    label613:
+    label539:
     for (;;)
     {
       try
@@ -248,10 +151,10 @@ public class ar
         long l2;
         if (com.tencent.mm.plugin.webview.ui.tools.d.isEnabled())
         {
-          paramWebResourceRequest = com.tencent.mm.plugin.webview.ui.tools.d.geu();
+          paramWebResourceRequest = com.tencent.mm.plugin.webview.ui.tools.d.gXv();
           parame = Uri.parse(paramString);
           String str = parame.getHost();
-          if ((paramWebResourceRequest != null) && (str != null) && (paramWebResourceRequest.equals(MD5Util.getMD5String(str + com.tencent.mm.plugin.normsg.a.d.AEF.aIJ("\003&+21")))))
+          if ((paramWebResourceRequest != null) && (str != null) && (paramWebResourceRequest.equals(MD5Util.getMD5String(str + com.tencent.mm.plugin.normsg.a.d.GxJ.aTf("\003&+21")))))
           {
             paramWebResourceRequest = parame.getQueryParameterNames();
             if ((paramWebResourceRequest != null) && (paramWebResourceRequest.contains(ApplicationInfo.class.getSimpleName().substring(2, 3))))
@@ -268,7 +171,7 @@ public class ar
               }
               Log.w("MicroMsg.WebViewResourceInterrupter", "[tomys] wv, block is enabled.");
               if (!Util.isNullOrNil(paramString)) {
-                break label613;
+                break label539;
               }
               Log.w("MicroMsg.WebViewReporter", "p1 is null, skip rest logit.");
               paramString = new WebResourceResponse("text/plain", "UTF-8", new ByteArrayInputStream(new byte[0]));
@@ -285,8 +188,8 @@ public class ar
                 continue;
               }
               paramWebResourceRequest.edit().putLong(parame, l2).commit();
-              com.tencent.mm.plugin.report.e.Cxv.a(16195, paramString.replace(",", "%2C"), false, true);
-              com.tencent.mm.plugin.report.e.Cxv.idkeyStat(943L, 0L, 1L, false);
+              f.Iyx.b(16195, paramString.replace(",", "%2C"), false, true);
+              f.Iyx.idkeyStat(943L, 0L, 1L, false);
             }
             catch (Throwable paramWebResourceRequest)
             {
@@ -304,7 +207,7 @@ public class ar
           if (l2 - l1 > TimeUnit.HOURS.toMillis(24L))
           {
             paramWebResourceRequest.edit().putLong(paramString, l2).commit();
-            com.tencent.mm.plugin.report.e.Cxv.idkeyStat(943L, 1L, 1L, false);
+            f.Iyx.idkeyStat(943L, 1L, 1L, false);
           }
         }
         catch (Throwable paramString)
@@ -320,22 +223,34 @@ public class ar
     }
   }
   
-  public final boolean aYR(String paramString)
+  public final void anR(int paramInt)
   {
-    AppMethodBeat.i(211002);
+    AppMethodBeat.i(251623);
+    if ((paramInt <= 0) || (paramInt > 65535)) {
+      Log.e("MicroMsg.WebViewResourceInterrupter", "err port = %d", new Object[] { Integer.valueOf(paramInt) });
+    }
+    if (!this.PVE.contains(Integer.valueOf(paramInt))) {
+      this.PVE.add(Integer.valueOf(paramInt));
+    }
+    AppMethodBeat.o(251623);
+  }
+  
+  public final boolean bkM(String paramString)
+  {
+    AppMethodBeat.i(251630);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(211002);
+      AppMethodBeat.o(251630);
       return false;
     }
     paramString = Uri.parse(paramString).getHost();
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(211002);
+      AppMethodBeat.o(251630);
       return false;
     }
-    boolean bool = this.IZr.remove(paramString);
-    AppMethodBeat.o(211002);
+    boolean bool = this.PVG.remove(paramString);
+    AppMethodBeat.o(251630);
     return bool;
   }
 }

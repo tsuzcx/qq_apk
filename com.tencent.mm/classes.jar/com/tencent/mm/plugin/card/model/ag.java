@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ddq;
-import com.tencent.mm.protocal.protobuf.ddr;
+import com.tencent.mm.protocal.protobuf.dng;
+import com.tencent.mm.protocal.protobuf.dnh;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class ag
@@ -20,33 +20,33 @@ public final class ag
 {
   private i callback;
   public String content;
-  public String dYs;
-  public String lco;
-  public String pUs;
-  public String pUt;
-  public boolean pUu;
-  public String pUv;
-  public String pUw;
-  public String pUx;
-  public String pUy;
+  public String fSj;
+  public String nWx;
   private final d rr;
   public int status;
+  public String tqt;
+  public String tqu;
+  public boolean tqv;
+  public String tqw;
+  public String tqx;
+  public String tqy;
+  public String tqz;
   
   public ag(int paramInt, String paramString1, String paramString2)
   {
     AppMethodBeat.i(112855);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new ddq();
-    ((d.a)localObject).iLO = new ddr();
+    ((d.a)localObject).lBU = new dng();
+    ((d.a)localObject).lBV = new dnh();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/preacceptgiftcard";
     ((d.a)localObject).funcId = 1171;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (ddq)this.rr.iLK.iLR;
-    ((ddq)localObject).KDl = paramInt;
-    ((ddq)localObject).KDm = paramString1;
-    ((ddq)localObject).KDn = paramString2;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (dng)d.b.b(this.rr.lBR);
+    ((dng)localObject).REC = paramInt;
+    ((dng)localObject).REE = paramString1;
+    ((dng)localObject).chatroom_name = paramString2;
     AppMethodBeat.o(112855);
   }
   
@@ -70,19 +70,19 @@ public final class ag
     Log.i("MicroMsg.NetScenePreAcceptGiftCard", "onGYNetEnd, errType = %d, errCode = %d ,errMsg:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = (ddr)this.rr.iLL.iLR;
-      this.dYs = params.KDq;
-      this.pUs = params.KDr;
+      params = (dnh)d.c.b(this.rr.lBS);
+      this.fSj = params.REI;
+      this.tqt = params.REJ;
       this.status = params.status;
       this.content = params.content;
-      this.pUt = params.pTK;
-      this.lco = params.LFY;
-      this.pUu = params.pUu;
-      this.pUv = params.MIE;
-      this.pUw = params.MIF;
-      this.pUx = params.MIG;
-      this.pUy = params.MIH;
-      Log.d("MicroMsg.NetScenePreAcceptGiftCard", "fromUserName:%s, fromUserHeadImgUrl:%s, status:%d, content:%s,buttonWording:%s, backgroundColor:%s, ignore:%b", new Object[] { this.dYs, this.pUs, Integer.valueOf(this.status), this.content, this.pUt, this.lco, Boolean.valueOf(this.pUu) });
+      this.tqu = params.tpM;
+      this.nWx = params.background_color;
+      this.tqv = params.tqv;
+      this.tqw = params.TUt;
+      this.tqx = params.TUu;
+      this.tqy = params.TUv;
+      this.tqz = params.TUw;
+      Log.d("MicroMsg.NetScenePreAcceptGiftCard", "fromUserName:%s, fromUserHeadImgUrl:%s, status:%d, content:%s,buttonWording:%s, backgroundColor:%s, ignore:%b", new Object[] { this.fSj, this.tqt, Integer.valueOf(this.status), this.content, this.tqu, this.nWx, Boolean.valueOf(this.tqv) });
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(112856);
@@ -90,7 +90,7 @@ public final class ag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.ag
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <!-- <html data-theme="dark"> -->
 <html>
-
 <head>
     <script type="text/javascript">
         var points = [];
@@ -14,12 +13,21 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="color-scheme" content="light dark">
     <meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <link rel="stylesheet" type="text/css" href="dist/style.css?t=1610093694572"/>
+    <link rel="stylesheet" type="text/css" href="dist/style.css?t=1623748321619"/>
+    <link rel="preconnect" href="https://wxa.weixin.qq.com" crossorigin/>
 </head>
 
 <body id="body" ontouchstart="">
     <canvas id="canvas" style="display:none;"></canvas>
     <div id="app" class="app" :class="[view,platform,isIOS8]" ontouchstart="">
+        <!-- 加载中 -->
+        <div class="loading-page" v-show="loading" v-cloak>
+            <div  class="loading-wrp">
+                <ui-loading-animation :width="48" :height="48" />
+            </div>
+            <div v-if="loadingText" class="loading-word" v-cloak>{{loadingText}}</div>
+        </div>
+        
 
         <custom-dialog></custom-dialog>
         <toast></toast>
@@ -36,10 +44,9 @@
     <script type="text/javascript">
         points[1] = Date.now()
     </script>
-    <script src="dist/build.js?t=1610093694572"></script>
+    <script src="dist/build.js?t=1623748321619"></script>
     <script type="text/javascript">
         points[3] = Date.now()
     </script>
 </body>
-
 </html>

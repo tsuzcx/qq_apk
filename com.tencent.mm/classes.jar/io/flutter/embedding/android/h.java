@@ -8,49 +8,49 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public final class h
 {
-  private static h SNM;
-  public final LongSparseArray<MotionEvent> SNK;
-  public final PriorityQueue<Long> SNL;
+  private static h aapK;
+  public final LongSparseArray<MotionEvent> aapI;
+  public final PriorityQueue<Long> aapJ;
   
   private h()
   {
-    AppMethodBeat.i(215119);
-    this.SNK = new LongSparseArray();
-    this.SNL = new PriorityQueue();
-    AppMethodBeat.o(215119);
+    AppMethodBeat.i(254327);
+    this.aapI = new LongSparseArray();
+    this.aapJ = new PriorityQueue();
+    AppMethodBeat.o(254327);
   }
   
-  public static h hwD()
+  public static h iAH()
   {
-    AppMethodBeat.i(215118);
-    if (SNM == null) {
-      SNM = new h();
+    AppMethodBeat.i(254326);
+    if (aapK == null) {
+      aapK = new h();
     }
-    h localh = SNM;
-    AppMethodBeat.o(215118);
+    h localh = aapK;
+    AppMethodBeat.o(254326);
     return localh;
   }
   
-  public final a aD(MotionEvent paramMotionEvent)
+  public final a aL(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(215120);
-    a locala = a.hwE();
-    this.SNK.put(a.a(locala), MotionEvent.obtain(paramMotionEvent));
-    this.SNL.add(Long.valueOf(a.a(locala)));
-    AppMethodBeat.o(215120);
+    AppMethodBeat.i(254328);
+    a locala = a.iAI();
+    this.aapI.put(a.a(locala), MotionEvent.obtain(paramMotionEvent));
+    this.aapJ.add(Long.valueOf(a.a(locala)));
+    AppMethodBeat.o(254328);
     return locala;
   }
   
   public static final class a
   {
-    private static final AtomicLong SNN;
+    private static final AtomicLong aapL;
     final long id;
     
     static
     {
-      AppMethodBeat.i(215098);
-      SNN = new AtomicLong(0L);
-      AppMethodBeat.o(215098);
+      AppMethodBeat.i(255722);
+      aapL = new AtomicLong(0L);
+      AppMethodBeat.o(255722);
     }
     
     private a(long paramLong)
@@ -58,19 +58,19 @@ public final class h
       this.id = paramLong;
     }
     
-    public static a Pa(long paramLong)
+    public static a Xq(long paramLong)
     {
-      AppMethodBeat.i(215096);
+      AppMethodBeat.i(255719);
       a locala = new a(paramLong);
-      AppMethodBeat.o(215096);
+      AppMethodBeat.o(255719);
       return locala;
     }
     
-    public static a hwE()
+    public static a iAI()
     {
-      AppMethodBeat.i(215097);
-      a locala = Pa(SNN.incrementAndGet());
-      AppMethodBeat.o(215097);
+      AppMethodBeat.i(255720);
+      a locala = Xq(aapL.incrementAndGet());
+      AppMethodBeat.o(255720);
       return locala;
     }
   }

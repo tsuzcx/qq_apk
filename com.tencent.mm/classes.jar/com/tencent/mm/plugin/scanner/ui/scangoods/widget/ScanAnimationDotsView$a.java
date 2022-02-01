@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.scanner.ui.scangoods.widget;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationDotsView$Companion;", "", "()V", "DEFAULT_SIZE_ANIMATION_DURATION", "", "DOTS_ANIMATION_PERIOD_IN_MS", "TAG", "", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationDotsView$Companion;", "", "()V", "DEFAULT_SIZE_ANIMATION_DURATION", "", "DOTS_ANIMATION_PERIOD_IN_MS", "TAG", "", "plugin-scan_release"})
 public final class ScanAnimationDotsView$a {}
 
 

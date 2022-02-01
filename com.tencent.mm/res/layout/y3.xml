@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj"
+<LinearLayout android:orientation="vertical" android:id="@id/kqz" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.base.MMTagPanelScrollView android:id="@id/e7d" android:background="@drawable/b9x" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fadeScrollbars="true">
-        <com.tencent.mm.plugin.label.ui.widget.MMLabelPanel android:id="@id/e7c" android:paddingTop="@dimen/k5" android:paddingBottom="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/k5" flowlayout:verticalSpacing="@dimen/g" />
+    <com.tencent.mm.ui.base.MMTagPanelScrollView android:id="@id/e7d" android:background="@drawable/b9x" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fadeScrollbars="true">
+        <com.tencent.mm.plugin.label.ui.widget.MMLabelPanel android:id="@id/e7c" android:paddingTop="@dimen/k" android:paddingBottom="@dimen/k" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/k5" flowlayout:verticalSpacing="@dimen/k5" />
     </com.tencent.mm.ui.base.MMTagPanelScrollView>
-    <TextView android:textSize="@dimen/hc" android:textColor="@color/a5c" android:gravity="center" android:id="@id/e7f" android:padding="@dimen/g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/ebt" />
-    <ScrollView android:id="@id/e7h" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content">
+    <TextView android:textSize="@dimen/hc" android:textColor="@color/a5c" android:gravity="center" android:id="@id/e7f" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/ebt" />
+    <ScrollView android:id="@id/e7h" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <LinearLayout android:orientation="vertical" android:id="@id/e7b" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <LinearLayout android:orientation="vertical" android:id="@id/e7_" android:layout_width="fill_parent" android:layout_height="wrap_content">
                 <include android:id="@id/e7a" layout="@layout/xx" />
-                <com.tencent.mm.plugin.label.ui.widget.MMLabelPanel android:id="@id/e79" android:paddingTop="@dimen/k5" android:paddingBottom="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/k5" flowlayout:verticalSpacing="@dimen/g" />
+                <com.tencent.mm.plugin.label.ui.widget.MMLabelPanel android:id="@id/e79" android:paddingTop="@dimen/k5" android:paddingBottom="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/k5" flowlayout:verticalSpacing="@dimen/k5" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-    <ListView android:id="@id/e7e" android:background="@color/afz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/np" />
+    <ListView android:id="@id/e7e" android:background="@color/afz" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/np" />
 </LinearLayout>

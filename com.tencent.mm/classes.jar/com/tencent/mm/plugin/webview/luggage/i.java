@@ -7,25 +7,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.WebResourceRequest;
 import com.tencent.xweb.WebResourceResponse;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.ac;
+import com.tencent.xweb.ad;
 import com.tencent.xweb.r;
 
 public class i
-  extends ac
+  extends ad
 {
-  private ac Ban;
+  private ad GUl;
   
   public i()
   {
     AppMethodBeat.i(78342);
-    this.Ban = new ac();
+    this.GUl = new ad();
     AppMethodBeat.o(78342);
   }
   
   public WebResourceResponse a(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
     AppMethodBeat.i(78349);
-    paramWebView = this.Ban.a(paramWebView, paramWebResourceRequest);
+    paramWebView = this.GUl.a(paramWebView, paramWebResourceRequest);
     AppMethodBeat.o(78349);
     return paramWebView;
   }
@@ -33,7 +33,7 @@ public class i
   public WebResourceResponse a(WebView paramWebView, WebResourceRequest paramWebResourceRequest, Bundle paramBundle)
   {
     AppMethodBeat.i(78350);
-    paramWebView = this.Ban.a(paramWebView, paramWebResourceRequest, paramBundle);
+    paramWebView = this.GUl.a(paramWebView, paramWebResourceRequest, paramBundle);
     AppMethodBeat.o(78350);
     return paramWebView;
   }
@@ -41,42 +41,42 @@ public class i
   public final void a(WebView paramWebView, float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(78353);
-    this.Ban.a(paramWebView, paramFloat1, paramFloat2);
+    this.GUl.a(paramWebView, paramFloat1, paramFloat2);
     AppMethodBeat.o(78353);
   }
   
   public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
     AppMethodBeat.i(78346);
-    this.Ban.a(paramWebView, paramInt, paramString1, paramString2);
+    this.GUl.a(paramWebView, paramInt, paramString1, paramString2);
     AppMethodBeat.o(78346);
   }
   
   public void a(WebView paramWebView, WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse)
   {
     AppMethodBeat.i(78354);
-    this.Ban.a(paramWebView, paramWebResourceRequest, paramWebResourceResponse);
+    this.GUl.a(paramWebView, paramWebResourceRequest, paramWebResourceResponse);
     AppMethodBeat.o(78354);
   }
   
   public void a(WebView paramWebView, r paramr, SslError paramSslError)
   {
     AppMethodBeat.i(78352);
-    this.Ban.a(paramWebView, paramr, paramSslError);
+    this.GUl.a(paramWebView, paramr, paramSslError);
     AppMethodBeat.o(78352);
   }
   
-  public final void a(ac paramac)
+  public final void a(ad paramad)
   {
-    if (paramac != null) {
-      this.Ban = paramac;
+    if (paramad != null) {
+      this.GUl = paramad;
     }
   }
   
   public boolean a(WebView paramWebView, String paramString)
   {
     AppMethodBeat.i(78347);
-    boolean bool = this.Ban.a(paramWebView, paramString);
+    boolean bool = this.GUl.a(paramWebView, paramString);
     AppMethodBeat.o(78347);
     return bool;
   }
@@ -84,44 +84,44 @@ public class i
   public void b(WebView paramWebView, String paramString)
   {
     AppMethodBeat.i(78345);
-    this.Ban.b(paramWebView, paramString);
+    this.GUl.b(paramWebView, paramString);
     AppMethodBeat.o(78345);
   }
   
   public void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(78344);
-    this.Ban.b(paramWebView, paramString, paramBitmap);
+    this.GUl.b(paramWebView, paramString, paramBitmap);
     AppMethodBeat.o(78344);
   }
   
   public final void b(WebView paramWebView, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(78351);
-    this.Ban.b(paramWebView, paramString, paramBoolean);
+    this.GUl.b(paramWebView, paramString, paramBoolean);
     AppMethodBeat.o(78351);
   }
   
   public WebResourceResponse c(WebView paramWebView, String paramString)
   {
     AppMethodBeat.i(78348);
-    paramWebView = this.Ban.c(paramWebView, paramString);
+    paramWebView = this.GUl.c(paramWebView, paramString);
     AppMethodBeat.o(78348);
     return paramWebView;
   }
   
   public final boolean e(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
-    AppMethodBeat.i(210916);
-    boolean bool = this.Ban.e(paramWebView, paramWebResourceRequest);
-    AppMethodBeat.o(210916);
+    AppMethodBeat.i(218689);
+    boolean bool = this.GUl.e(paramWebView, paramWebResourceRequest);
+    AppMethodBeat.o(218689);
     return bool;
   }
   
-  public void h(WebView paramWebView, String paramString)
+  public void i(WebView paramWebView, String paramString)
   {
     AppMethodBeat.i(78343);
-    this.Ban.h(paramWebView, paramString);
+    this.GUl.i(paramWebView, paramString);
     AppMethodBeat.o(78343);
   }
 }

@@ -44,17 +44,17 @@ public class BuildInfo
   {
     AppMethodBeat.i(125204);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(String.format("[b.ver] %s\n", new Object[] { StringUtil.diffStr(CLIENT_VERSION, a.CLIENT_VERSION) }));
-    localStringBuilder.append(String.format("[tag  ] %s\n", new Object[] { StringUtil.diffStr(BUILD_TAG, a.BUILD_TAG) }));
-    localStringBuilder.append(String.format("[by   ] %s\n", new Object[] { StringUtil.diffStr(OWNER, a.OWNER) }));
-    localStringBuilder.append(String.format("[host ] %s\n", new Object[] { StringUtil.diffStr(HOSTNAME, a.HOSTNAME) }));
-    localStringBuilder.append(String.format("[time ] %s\n", new Object[] { StringUtil.diffStr(TIME, a.TIME) }));
-    localStringBuilder.append(String.format("[cmd  ] %s\n", new Object[] { StringUtil.diffStr(COMMAND, a.COMMAND) }));
-    localStringBuilder.append(String.format("[path ] %s\n", new Object[] { StringUtil.diffStr(StringUtil.stringFrom(SVNPATH, "MicroMsg_proj"), StringUtil.stringFrom(a.SVNPATH, "MicroMsg_proj")) }));
-    localStringBuilder.append(String.format("[rev  ] %s\n", new Object[] { StringUtil.diffStr(REV, a.REV) }));
-    if (a.aKy())
+    localStringBuilder.append(String.format("[b.ver] %s\n", new Object[] { BuildInfo.StringUtil.diffStr(CLIENT_VERSION, a.CLIENT_VERSION) }));
+    localStringBuilder.append(String.format("[tag  ] %s\n", new Object[] { BuildInfo.StringUtil.diffStr(BUILD_TAG, a.BUILD_TAG) }));
+    localStringBuilder.append(String.format("[by   ] %s\n", new Object[] { BuildInfo.StringUtil.diffStr(OWNER, a.OWNER) }));
+    localStringBuilder.append(String.format("[host ] %s\n", new Object[] { BuildInfo.StringUtil.diffStr(HOSTNAME, a.HOSTNAME) }));
+    localStringBuilder.append(String.format("[time ] %s\n", new Object[] { BuildInfo.StringUtil.diffStr(TIME, a.TIME) }));
+    localStringBuilder.append(String.format("[cmd  ] %s\n", new Object[] { BuildInfo.StringUtil.diffStr(COMMAND, a.COMMAND) }));
+    localStringBuilder.append(String.format("[path ] %s\n", new Object[] { BuildInfo.StringUtil.diffStr(BuildInfo.StringUtil.stringFrom(SVNPATH, "MicroMsg_proj"), BuildInfo.StringUtil.stringFrom(a.SVNPATH, "MicroMsg_proj")) }));
+    localStringBuilder.append(String.format("[rev  ] %s\n", new Object[] { BuildInfo.StringUtil.diffStr(REV, a.REV) }));
+    if (a.aSA())
     {
-      str = a.aKv();
+      str = a.aSx();
       localStringBuilder.append(String.format("[p.rev] %s\n", new Object[] { str }));
       if (!IS_ARM64) {
         break label329;
@@ -72,68 +72,10 @@ public class BuildInfo
       break;
     }
   }
-  
-  public static abstract interface Developer
-  {
-    public static final int alexanderlu = 31;
-    public static final int ashukang = 12;
-    public static final int cpan = 99;
-    public static final int dkyang = 20;
-    public static final int edwardgu = 30;
-    public static final int hakonzhao = 32;
-    public static final int jiaminchen = 100;
-    public static final int justinliu = 0;
-    public static final int kirozhao = 1;
-    public static final int klemlin = 11;
-    public static final int pandyduan = 50;
-    public static final int smoothieli = 10000;
-    public static final int williamlin = 40;
-    public static final int yihengliu = 10;
-  }
-  
-  static class StringUtil
-  {
-    public static String diffStr(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(125203);
-      if (paramString1 == null)
-      {
-        AppMethodBeat.o(125203);
-        return null;
-      }
-      if (paramString1.equals(paramString2))
-      {
-        AppMethodBeat.o(125203);
-        return paramString1;
-      }
-      paramString1 = String.format("%s(%s)", new Object[] { paramString1, paramString2 });
-      AppMethodBeat.o(125203);
-      return paramString1;
-    }
-    
-    public static String stringFrom(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(125202);
-      if (paramString1 == null)
-      {
-        AppMethodBeat.o(125202);
-        return null;
-      }
-      int i = paramString1.indexOf(paramString2);
-      if (i < 0)
-      {
-        AppMethodBeat.o(125202);
-        return paramString1;
-      }
-      paramString1 = paramString1.substring(i);
-      AppMethodBeat.o(125202);
-      return paramString1;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.BuildInfo
  * JD-Core Version:    0.7.0.1
  */

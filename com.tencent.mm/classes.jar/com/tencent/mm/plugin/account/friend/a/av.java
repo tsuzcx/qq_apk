@@ -8,64 +8,67 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.g.a.re;
-import com.tencent.mm.g.b.a.ns;
-import com.tencent.mm.g.c.ax;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.by.c;
+import com.tencent.mm.f.a.se;
+import com.tencent.mm.f.b.a.qt;
+import com.tencent.mm.f.c.ax;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.z;
 import com.tencent.mm.platformtools.f;
+import com.tencent.mm.plugin.account.friend.a.g;
 import com.tencent.mm.plugin.account.friend.widget.RecoverFriendSortView;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.protocal.protobuf.bre;
-import com.tencent.mm.protocal.protobuf.brf;
-import com.tencent.mm.protocal.protobuf.cut;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.protocal.protobuf.bza;
+import com.tencent.mm.protocal.protobuf.bzb;
+import com.tencent.mm.protocal.protobuf.deb;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.e.d;
+import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.f.d;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public final class av
-  extends IListener<re>
-  implements com.tencent.mm.ak.i
+  extends IListener<se>
+  implements com.tencent.mm.an.i
 {
   public Activity activity;
-  private com.tencent.mm.ui.base.q gut;
-  public RecoverFriendSortView kga;
-  public String kgb;
-  private ArrayList<com.tencent.mm.ui.base.sortview.d> kgc;
-  private int kgd;
-  private boolean kge;
-  private AtomicInteger kgf;
+  private s iYE;
+  public String mXA;
+  private ArrayList<com.tencent.mm.ui.base.sortview.d> mXB;
+  private int mXC;
+  private boolean mXD;
+  private AtomicInteger mXE;
+  public RecoverFriendSortView mXz;
   public String sessionId;
   
   public av(Activity paramActivity)
   {
     AppMethodBeat.i(184440);
-    this.kgc = new ArrayList();
-    this.kgd = 65;
-    this.kgf = new AtomicInteger();
+    this.mXB = new ArrayList();
+    this.mXC = 65;
+    this.mXE = new AtomicInteger();
     this.activity = paramActivity;
-    this.__eventId = re.class.getName().hashCode();
+    this.__eventId = se.class.getName().hashCode();
     AppMethodBeat.o(184440);
   }
   
-  private void boD()
+  private void byM()
   {
     AppMethodBeat.i(184442);
-    int i = au.Th(this.kgb);
+    int i = au.aaN(this.mXA);
     Log.i("MicroMsg.RecoverFriendPresenter", "totalCount %d", new Object[] { Integer.valueOf(i) });
-    if ((this.kgd == 65) && (i < 20))
+    if ((this.mXC == 65) && (i < 20))
     {
-      Object localObject = au.aH(this.kgb, -1);
+      Object localObject = au.ba(this.mXA, -1);
       if (!((List)localObject).isEmpty())
       {
         localObject = ((List)localObject).iterator();
@@ -73,35 +76,35 @@ public final class av
         {
           au.a locala = (au.a)((Iterator)localObject).next();
           com.tencent.mm.ui.base.sortview.d locald = new com.tencent.mm.ui.base.sortview.d();
-          locald.data = locala;
-          i = locala.kfY.field_showHead;
+          locald.bnW = locala;
+          i = locala.mXx.field_showHead;
           if ((i >= 65) && (i <= 90)) {}
-          for (locald.Pae = ((char)i);; locald.Pae = "#")
+          for (locald.Wtr = ((char)i);; locald.Wtr = "#")
           {
-            this.kgc.add(locald);
+            this.mXB.add(locald);
             break;
           }
         }
-        this.kga.hy(this.kgc);
+        this.mXz.ig(this.mXB);
       }
-      this.kgd = 92;
+      this.mXC = 92;
       AppMethodBeat.o(184442);
       return;
     }
     do
     {
-      boE();
-    } while ((this.kgc.size() < 20) && (this.kgd <= 91));
+      byN();
+    } while ((this.mXB.size() < 20) && (this.mXC <= 91));
     AppMethodBeat.o(184442);
   }
   
-  private void boE()
+  private void byN()
   {
     AppMethodBeat.i(184443);
-    while (this.kgd <= 91)
+    while (this.mXC <= 91)
     {
-      Object localObject = au.aH(this.kgb, this.kgd);
-      this.kgd += 1;
+      Object localObject = au.ba(this.mXA, this.mXC);
+      this.mXC += 1;
       if (!((List)localObject).isEmpty())
       {
         localObject = ((List)localObject).iterator();
@@ -109,16 +112,16 @@ public final class av
         {
           au.a locala = (au.a)((Iterator)localObject).next();
           com.tencent.mm.ui.base.sortview.d locald = new com.tencent.mm.ui.base.sortview.d();
-          locald.data = locala;
-          int i = locala.kfY.field_showHead;
+          locald.bnW = locala;
+          int i = locala.mXx.field_showHead;
           if ((i >= 65) && (i <= 90)) {}
-          for (locald.Pae = ((char)i);; locald.Pae = "#")
+          for (locald.Wtr = ((char)i);; locald.Wtr = "#")
           {
-            this.kgc.add(locald);
+            this.mXB.add(locald);
             break;
           }
         }
-        this.kga.hy(this.kgc);
+        this.mXz.ig(this.mXB);
         AppMethodBeat.o(184443);
         return;
       }
@@ -126,33 +129,33 @@ public final class av
     AppMethodBeat.o(184443);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.ak.q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, final String paramString, q paramq)
   {
     AppMethodBeat.i(184444);
     Log.i("MicroMsg.RecoverFriendPresenter", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      this.kge = ((brf)((ae)paramq).hJu.iLL.iLR).LYI;
-      paramString = ((ae)paramq).boo();
-      final String str = ((bre)((ae)paramq).hJu.iLK.iLR).UserName;
-      Log.i("MicroMsg.RecoverFriendPresenter", "hasContinue %s, oldAccount friend %d", new Object[] { Boolean.valueOf(this.kge), Integer.valueOf(paramString.size()) });
-      if (!this.kgb.equals(str))
+      this.mXD = ((bzb)d.c.b(((ae)paramq).kwO.lBS)).Tic;
+      paramString = ((ae)paramq).byx();
+      final String str = ((bza)d.b.b(((ae)paramq).kwO.lBR)).UserName;
+      Log.i("MicroMsg.RecoverFriendPresenter", "hasContinue %s, oldAccount friend %d", new Object[] { Boolean.valueOf(this.mXD), Integer.valueOf(paramString.size()) });
+      if (!this.mXA.equals(str))
       {
-        Log.w("MicroMsg.RecoverFriendPresenter", "(%s,%s), not my old username, ignore", new Object[] { this.kgb, str });
+        Log.w("MicroMsg.RecoverFriendPresenter", "(%s,%s), not my old username, ignore", new Object[] { this.mXA, str });
         AppMethodBeat.o(184444);
         return;
       }
-      this.kgf.getAndIncrement();
-      com.tencent.f.h.RTc.b(new com.tencent.f.i.i()
+      this.mXE.getAndIncrement();
+      com.tencent.e.h.ZvG.d(new com.tencent.e.i.i()
       {
-        public final void boF()
+        public final void byO()
         {
           AppMethodBeat.i(184437);
           String str1 = str;
           List localList = paramString;
           Iterator localIterator = localList.iterator();
           int i = 0;
-          cut localcut;
+          deb localdeb;
           r localr;
           label87:
           int j;
@@ -160,18 +163,18 @@ public final class av
           boolean bool;
           if (localIterator.hasNext())
           {
-            localcut = (cut)localIterator.next();
-            if (Util.isNullOrNil(localcut.dRe)) {
+            localdeb = (deb)localIterator.next();
+            if (Util.isNullOrNil(localdeb.fKu)) {
               break label423;
             }
-            localr = au.ca(str1, localcut.dRe);
+            localr = au.cg(str1, localdeb.fKu);
             if (localr != null) {
               break label420;
             }
             localr = new r();
-            localr.field_encryptUsername = localcut.dRe;
-            localr.field_nickname = localcut.oUJ;
-            localr.field_pinyinName = Util.nullAsNil(f.Sh(localcut.oUJ)).toUpperCase();
+            localr.field_encryptUsername = localdeb.fKu;
+            localr.field_nickname = localdeb.rWI;
+            localr.field_pinyinName = Util.nullAsNil(f.ZJ(localdeb.rWI)).toUpperCase();
             String str2 = localr.field_pinyinName;
             if (!Util.isNullOrNil(str2))
             {
@@ -179,15 +182,15 @@ public final class av
               if ((j >= 65) && (j <= 90))
               {
                 localr.field_showHead = j;
-                localr.field_ticket = localcut.Bri;
-                localr.field_username = localcut.UserName;
+                localr.field_ticket = localdeb.HlB;
+                localr.field_username = localdeb.UserName;
                 localr.field_oldUsername = str1;
-                localr.field_seq = localcut.KXP;
+                localr.field_seq = localdeb.RYY;
                 if (localr.systemRowid != -1L) {
                   break label288;
                 }
-                bool = ((ap)((com.tencent.mm.plugin.account.a.a.a)g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getOldAccountFriendStorage()).insert(localr);
-                Log.i("MicroMsg.RecoverFriendLogic", "insert local old friend (%s,%s), success %s", new Object[] { localcut.dRe, localcut.oUJ, Boolean.valueOf(bool) });
+                bool = ((ap)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getOldAccountFriendStorage()).insert(localr);
+                Log.i("MicroMsg.RecoverFriendLogic", "insert local old friend (%s,%s), success %s", new Object[] { localdeb.fKu, localdeb.rWI, Boolean.valueOf(bool) });
               }
             }
           }
@@ -203,8 +206,8 @@ public final class av
               j = 91;
               break label160;
               label288:
-              bool = ((ap)((com.tencent.mm.plugin.account.a.a.a)g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getOldAccountFriendStorage()).replace(localr);
-              Log.i("MicroMsg.RecoverFriendLogic", "replace local old friend (%s,%s), success %s", new Object[] { localcut.dRe, localcut.oUJ, Boolean.valueOf(bool) });
+              bool = ((ap)((com.tencent.mm.plugin.account.sdk.a.a)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.account.sdk.a.a.class)).getOldAccountFriendStorage()).replace(localr);
+              Log.i("MicroMsg.RecoverFriendLogic", "replace local old friend (%s,%s), success %s", new Object[] { localdeb.fKu, localdeb.rWI, Boolean.valueOf(bool) });
               break label271;
               Log.i("MicroMsg.RecoverFriendLogic", "insert local old %d, success %d", new Object[] { Integer.valueOf(localList.size()), Integer.valueOf(i) });
               Log.i("MicroMsg.RecoverFriendPresenter", "insert old account friend %d, success %d", new Object[] { Integer.valueOf(paramString.size()), Integer.valueOf(i) });
@@ -218,50 +221,50 @@ public final class av
           }
         }
       }, "Insert_Old_Account_Friend");
-      if (this.kge)
+      if (this.mXD)
       {
-        vk(((ae)paramq).kfo);
+        yo(((ae)paramq).mWN);
         AppMethodBeat.o(184444);
         return;
       }
-      if (this.kgf.get() == 0)
+      if (this.mXE.get() == 0)
       {
         Log.i("MicroMsg.RecoverFriendPresenter", "all insert tasks are finished!");
-        if (this.gut != null) {
-          this.gut.dismiss();
+        if (this.iYE != null) {
+          this.iYE.dismiss();
         }
-        boD();
+        byM();
       }
       AppMethodBeat.o(184444);
       return;
     }
-    boD();
-    if (this.gut != null) {
-      this.gut.dismiss();
+    byM();
+    if (this.iYE != null) {
+      this.iYE.dismiss();
     }
     paramq = paramString;
     if (Util.isNullOrNil(paramString)) {
-      paramq = this.activity.getString(2131755804);
+      paramq = this.activity.getString(a.g.app_err_system_busy_tip);
     }
-    com.tencent.mm.ui.base.h.cD(this.activity, paramq);
+    com.tencent.mm.ui.base.h.cO(this.activity, paramq);
     AppMethodBeat.o(184444);
   }
   
-  public final void vk(int paramInt)
+  public final void yo(int paramInt)
   {
     AppMethodBeat.i(184441);
-    Log.i("MicroMsg.RecoverFriendPresenter", "do next scene, oldWx %s,seq %d", new Object[] { this.kgb, Integer.valueOf(paramInt) });
-    ae localae = new ae(this.kgb, paramInt, this.sessionId);
-    g.azz().a(localae, 0);
-    if (this.gut == null) {
-      this.gut = com.tencent.mm.ui.base.h.a(this.activity, this.activity.getString(2131755887), false, null);
+    Log.i("MicroMsg.RecoverFriendPresenter", "do next scene, oldWx %s,seq %d", new Object[] { this.mXA, Integer.valueOf(paramInt) });
+    ae localae = new ae(this.mXA, paramInt, this.sessionId);
+    com.tencent.mm.kernel.h.aGY().a(localae, 0);
+    if (this.iYE == null) {
+      this.iYE = com.tencent.mm.ui.base.h.a(this.activity, this.activity.getString(a.g.app_loading_data), false, null);
     }
     AppMethodBeat.o(184441);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.av
  * JD-Core Version:    0.7.0.1
  */

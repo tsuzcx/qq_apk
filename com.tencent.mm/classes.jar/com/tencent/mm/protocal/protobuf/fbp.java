@@ -1,127 +1,139 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class fbp
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String IconUrl;
-  public int KSa;
-  public String MEq;
-  public String NxL;
-  public String UserName;
-  public String hik;
-  public String oUJ;
+  public String UBI;
+  public String UBN;
+  public LinkedList<dhw> UiG;
+  public int action;
+  public String axB;
+  public int type;
+  public String viewId;
+  
+  public fbp()
+  {
+    AppMethodBeat.i(252380);
+    this.UiG = new LinkedList();
+    AppMethodBeat.o(252380);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117957);
+    AppMethodBeat.i(252381);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.MEq != null) {
-        paramVarArgs.e(1, this.MEq);
+      if (this.viewId != null) {
+        paramVarArgs.f(1, this.viewId);
       }
-      if (this.UserName != null) {
-        paramVarArgs.e(2, this.UserName);
+      paramVarArgs.aY(2, this.type);
+      if (this.axB != null) {
+        paramVarArgs.f(3, this.axB);
       }
-      if (this.oUJ != null) {
-        paramVarArgs.e(3, this.oUJ);
+      paramVarArgs.aY(4, this.action);
+      paramVarArgs.e(5, 8, this.UiG);
+      if (this.UBI != null) {
+        paramVarArgs.f(6, this.UBI);
       }
-      if (this.hik != null) {
-        paramVarArgs.e(4, this.hik);
+      if (this.UBN != null) {
+        paramVarArgs.f(7, this.UBN);
       }
-      paramVarArgs.aM(5, this.KSa);
-      if (this.NxL != null) {
-        paramVarArgs.e(6, this.NxL);
-      }
-      if (this.IconUrl != null) {
-        paramVarArgs.e(7, this.IconUrl);
-      }
-      AppMethodBeat.o(117957);
+      AppMethodBeat.o(252381);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.MEq == null) {
-        break label562;
+      if (this.viewId == null) {
+        break label604;
       }
     }
-    label562:
-    for (int i = g.a.a.b.b.a.f(1, this.MEq) + 0;; i = 0)
+    label604:
+    for (paramInt = g.a.a.b.b.a.g(1, this.viewId) + 0;; paramInt = 0)
     {
+      int i = paramInt + g.a.a.b.b.a.bM(2, this.type);
       paramInt = i;
-      if (this.UserName != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.UserName);
+      if (this.axB != null) {
+        paramInt = i + g.a.a.b.b.a.g(3, this.axB);
+      }
+      i = paramInt + g.a.a.b.b.a.bM(4, this.action) + g.a.a.a.c(5, 8, this.UiG);
+      paramInt = i;
+      if (this.UBI != null) {
+        paramInt = i + g.a.a.b.b.a.g(6, this.UBI);
       }
       i = paramInt;
-      if (this.oUJ != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.oUJ);
+      if (this.UBN != null) {
+        i = paramInt + g.a.a.b.b.a.g(7, this.UBN);
       }
-      paramInt = i;
-      if (this.hik != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.hik);
-      }
-      i = paramInt + g.a.a.b.b.a.bu(5, this.KSa);
-      paramInt = i;
-      if (this.NxL != null) {
-        paramInt = i + g.a.a.b.b.a.f(6, this.NxL);
-      }
-      i = paramInt;
-      if (this.IconUrl != null) {
-        i = paramInt + g.a.a.b.b.a.f(7, this.IconUrl);
-      }
-      AppMethodBeat.o(117957);
+      AppMethodBeat.o(252381);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.UiG.clear();
+        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(117957);
+        AppMethodBeat.o(252381);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         fbp localfbp = (fbp)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(117957);
+          AppMethodBeat.o(252381);
           return -1;
         case 1: 
-          localfbp.MEq = locala.UbS.readString();
-          AppMethodBeat.o(117957);
+          localfbp.viewId = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(252381);
           return 0;
         case 2: 
-          localfbp.UserName = locala.UbS.readString();
-          AppMethodBeat.o(117957);
+          localfbp.type = ((g.a.a.a.a)localObject).abFh.AK();
+          AppMethodBeat.o(252381);
           return 0;
         case 3: 
-          localfbp.oUJ = locala.UbS.readString();
-          AppMethodBeat.o(117957);
+          localfbp.axB = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(252381);
           return 0;
         case 4: 
-          localfbp.hik = locala.UbS.readString();
-          AppMethodBeat.o(117957);
+          localfbp.action = ((g.a.a.a.a)localObject).abFh.AK();
+          AppMethodBeat.o(252381);
           return 0;
         case 5: 
-          localfbp.KSa = locala.UbS.zi();
-          AppMethodBeat.o(117957);
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            dhw localdhw = new dhw();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localdhw.parseFrom((byte[])localObject);
+            }
+            localfbp.UiG.add(localdhw);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(252381);
           return 0;
         case 6: 
-          localfbp.NxL = locala.UbS.readString();
-          AppMethodBeat.o(117957);
+          localfbp.UBI = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(252381);
           return 0;
         }
-        localfbp.IconUrl = locala.UbS.readString();
-        AppMethodBeat.o(117957);
+        localfbp.UBN = ((g.a.a.a.a)localObject).abFh.readString();
+        AppMethodBeat.o(252381);
         return 0;
       }
-      AppMethodBeat.o(117957);
+      AppMethodBeat.o(252381);
       return -1;
     }
   }

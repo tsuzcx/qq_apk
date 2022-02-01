@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.sns.ad.widget.b;
 
 public abstract interface b
 {
-  public abstract String eXB();
+  public abstract String fLe();
   
-  public abstract String eXC();
+  public abstract String fLf();
   
-  public abstract String eXD();
+  public abstract String fLg();
   
-  public abstract String eXE();
+  public abstract String fLh();
   
-  public abstract String eXF();
+  public abstract String fLi();
   
-  public abstract a eXG();
+  public abstract a fLj();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.widget.b.b
  * JD-Core Version:    0.7.0.1
  */

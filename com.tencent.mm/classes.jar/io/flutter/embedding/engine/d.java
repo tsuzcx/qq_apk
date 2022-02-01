@@ -10,25 +10,25 @@ import java.util.Set;
 
 public final class d
 {
-  private Set<String> SOF;
+  private Set<String> aaqD;
   
   private d(List<String> paramList)
   {
     AppMethodBeat.i(10183);
-    this.SOF = new HashSet(paramList);
+    this.aaqD = new HashSet(paramList);
     AppMethodBeat.o(10183);
   }
   
   public d(String[] paramArrayOfString)
   {
     AppMethodBeat.i(10182);
-    this.SOF = new HashSet(Arrays.asList(paramArrayOfString));
+    this.aaqD = new HashSet(Arrays.asList(paramArrayOfString));
     AppMethodBeat.o(10182);
   }
   
-  public static d bO(Intent paramIntent)
+  public static d bT(Intent paramIntent)
   {
-    AppMethodBeat.i(214940);
+    AppMethodBeat.i(255086);
     ArrayList localArrayList = new ArrayList();
     if (paramIntent.getBooleanExtra("trace-startup", false)) {
       localArrayList.add("--trace-startup");
@@ -70,6 +70,9 @@ public final class d
     if (paramIntent.getBooleanExtra("cache-sksl", false)) {
       localArrayList.add("--cache-sksl");
     }
+    if (paramIntent.getBooleanExtra("purge-persistent-cache", false)) {
+      localArrayList.add("--purge-persistent-cache");
+    }
     if (paramIntent.getBooleanExtra("verbose-logging", false)) {
       localArrayList.add("--verbose-logging");
     }
@@ -77,15 +80,15 @@ public final class d
       localArrayList.add("--dart-flags=" + paramIntent.getStringExtra("dart-flags"));
     }
     paramIntent = new d(localArrayList);
-    AppMethodBeat.o(214940);
+    AppMethodBeat.o(255086);
     return paramIntent;
   }
   
   public final String[] toArray()
   {
     AppMethodBeat.i(10184);
-    String[] arrayOfString = new String[this.SOF.size()];
-    arrayOfString = (String[])this.SOF.toArray(arrayOfString);
+    String[] arrayOfString = new String[this.aaqD.size()];
+    arrayOfString = (String[])this.aaqD.toArray(arrayOfString);
     AppMethodBeat.o(10184);
     return arrayOfString;
   }

@@ -7,20 +7,21 @@ import android.hardware.Camera.AutoFocusCallback;
 import android.hardware.Camera.Parameters;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.scanlib.b;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public final class a
+public class a
   extends com.tencent.scanlib.a.a
 {
-  private boolean ePF()
+  private boolean fCs()
   {
     AppMethodBeat.i(91047);
-    if ((this.gII != null) && (dEO())) {}
+    if ((this.jta != null) && (egx())) {}
     try
     {
-      List localList = this.gII.getParameters().getSupportedFlashModes();
+      List localList = this.jta.getParameters().getSupportedFlashModes();
       if (localList != null)
       {
         boolean bool = localList.contains("torch");
@@ -52,7 +53,7 @@ public final class a
     {
       Log.i("MicroMsg.WxScanCamera", String.format("fx %f, fy %f, x %d, y %d", new Object[] { Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(i), Integer.valueOf(j) }));
       Object localObject1 = new Rect();
-      if (hkT())
+      if (ior())
       {
         ((Rect)localObject1).left = (j - 1000 - 250);
         ((Rect)localObject1).right = (j - 1000 + 250);
@@ -60,7 +61,7 @@ public final class a
       }
       for (((Rect)localObject1).bottom = (2000 - i - 1000 + 250);; ((Rect)localObject1).bottom = (j - 1000 + 250))
       {
-        Camera.Parameters localParameters = this.gII.getParameters();
+        Camera.Parameters localParameters = this.jta.getParameters();
         if (((Rect)localObject1).left < -1000) {
           ((Rect)localObject1).left = -1000;
         }
@@ -87,16 +88,16 @@ public final class a
         localObject2 = new ArrayList();
         ((ArrayList)localObject2).add(new Camera.Area((Rect)localObject1, 1000));
         localParameters.setFocusAreas((List)localObject2);
-        this.gII.cancelAutoFocus();
-        if ((this.gII != null) && (this.sRE))
+        this.jta.cancelAutoFocus();
+        if ((this.jta != null) && (this.wxA))
         {
           localObject1 = localParameters.getSupportedFocusModes();
-          if ((localObject1 != null) && (((List)localObject1).contains("auto")) && (!com.tencent.scanlib.a.isNullOrNil(localParameters.getFocusMode())) && (!localParameters.getFocusMode().equals("auto"))) {
+          if ((localObject1 != null) && (((List)localObject1).contains("auto")) && (!b.isNullOrNil(localParameters.getFocusMode())) && (!localParameters.getFocusMode().equals("auto"))) {
             localParameters.setFocusMode("auto");
           }
         }
-        this.gII.setParameters(localParameters);
-        this.gII.autoFocus(paramAutoFocusCallback);
+        this.jta.setParameters(localParameters);
+        this.jta.autoFocus(paramAutoFocusCallback);
         AppMethodBeat.o(91044);
         return;
         ((Rect)localObject1).left = (i - 1000 - 250);
@@ -118,156 +119,20 @@ public final class a
     AppMethodBeat.o(91044);
   }
   
-  public final void ePB()
-  {
-    AppMethodBeat.i(91043);
-    List localList;
-    try
-    {
-      Log.i("MicroMsg.WxScanCamera", "set picture focus");
-      Camera.Parameters localParameters = this.gII.getParameters();
-      if (localParameters == null)
-      {
-        Log.w("MicroMsg.WxScanCamera", "camera parameters is null");
-        AppMethodBeat.o(91043);
-        return;
-      }
-      localList = localParameters.getSupportedFocusModes();
-      if (localList == null) {
-        break label170;
-      }
-      Log.d("MicroMsg.WxScanCamera", "supported focus modes size = " + localList.size());
-      Iterator localIterator = localList.iterator();
-      while (localIterator.hasNext()) {
-        Log.d("MicroMsg.WxScanCamera", "supported focus modes : ".concat(String.valueOf((String)localIterator.next())));
-      }
-      if (!localList.contains("continuous-picture")) {
-        break label176;
-      }
-    }
-    catch (Exception localException)
-    {
-      Log.e("MicroMsg.WxScanCamera", "setPictureFocus error: %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(91043);
-      return;
-    }
-    Log.d("MicroMsg.WxScanCamera", "camera support continuous picture focus");
-    localException.setFocusMode("continuous-picture");
-    for (;;)
-    {
-      this.gII.setParameters(localException);
-      label170:
-      AppMethodBeat.o(91043);
-      return;
-      label176:
-      if (localList.contains("continuous-video"))
-      {
-        Log.d("MicroMsg.WxScanCamera", "camera support continuous video focus");
-        localException.setFocusMode("continuous-video");
-      }
-      else if (localList.contains("auto"))
-      {
-        Log.d("MicroMsg.WxScanCamera", "camera support auto focus");
-        localException.setFocusMode("auto");
-      }
-    }
-  }
-  
-  public final void ePC()
-  {
-    AppMethodBeat.i(91045);
-    try
-    {
-      Object localObject;
-      if (this.gII != null)
-      {
-        localObject = this.gII.getParameters();
-        String str = ((Camera.Parameters)localObject).get("zoom-supported");
-        if ((com.tencent.scanlib.a.isNullOrNil(str)) || (!Boolean.parseBoolean(str)))
-        {
-          Log.i("MicroMsg.WxScanCamera", "not support zoom");
-          AppMethodBeat.o(91045);
-          return;
-        }
-        localObject = ((Camera.Parameters)localObject).getZoomRatios();
-        if (localObject != null)
-        {
-          int i = ((List)localObject).size();
-          if (i > 0) {}
-        }
-        else
-        {
-          AppMethodBeat.o(91045);
-          return;
-        }
-        this.ROl = 0;
-        this.mMaxZoom = ((int)(((List)localObject).size() / 1.5D));
-        Log.d("MicroMsg.WxScanCamera", "divideRatio: %f,max zoom: %d", new Object[] { Double.valueOf(1.5D), Integer.valueOf(this.mMaxZoom) });
-        if (this.mMaxZoom >= this.ROl) {
-          break label217;
-        }
-        this.mMaxZoom = this.ROl;
-      }
-      for (;;)
-      {
-        Log.i("MicroMsg.WxScanCamera", "default zoom:%d,default ratio:%d,max zoom:%d,max ratio:%d", new Object[] { Integer.valueOf(this.ROl), ((List)localObject).get(this.ROl), Integer.valueOf(this.mMaxZoom), ((List)localObject).get(this.mMaxZoom) });
-        AppMethodBeat.o(91045);
-        return;
-        label217:
-        if (((Integer)((List)localObject).get(this.mMaxZoom)).intValue() > 400) {
-          this.mMaxZoom = J((List)localObject, 400);
-        }
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      Log.e("MicroMsg.WxScanCamera", "init zoom exception! " + localException.getMessage());
-      AppMethodBeat.o(91045);
-    }
-  }
-  
-  public final boolean ePD()
-  {
-    return this.ztW;
-  }
-  
-  public final boolean ePE()
-  {
-    AppMethodBeat.i(91046);
-    if (this.ROj < 0) {
-      if (!ePF()) {
-        break label43;
-      }
-    }
-    label43:
-    for (int i = 1;; i = 0)
-    {
-      this.ROj = i;
-      if (this.ROj != 1) {
-        break;
-      }
-      AppMethodBeat.o(91046);
-      return true;
-    }
-    AppMethodBeat.o(91046);
-    return false;
-  }
-  
-  public final void ejE()
+  public final void eTl()
   {
     AppMethodBeat.i(91048);
-    Log.i("MicroMsg.WxScanCamera", String.format("openFlash, camera: %s, isPreviewing: %s", new Object[] { this.gII, Boolean.valueOf(dEO()) }));
-    if ((this.gII != null) && (dEO())) {
+    Log.i("MicroMsg.WxScanCamera", String.format("openFlash, camera: %s, isPreviewing: %s", new Object[] { this.jta, Boolean.valueOf(egx()) }));
+    if ((this.jta != null) && (egx())) {
       try
       {
-        this.ztW = true;
-        Camera.Parameters localParameters = this.gII.getParameters();
+        this.EZx = true;
+        Camera.Parameters localParameters = this.jta.getParameters();
         List localList = localParameters.getSupportedFlashModes();
         if ((localList != null) && (localList.contains("torch")))
         {
           localParameters.setFlashMode("torch");
-          this.gII.setParameters(localParameters);
+          this.jta.setParameters(localParameters);
           Log.i("MicroMsg.WxScanCamera", "open flash");
           AppMethodBeat.o(91048);
           return;
@@ -284,20 +149,20 @@ public final class a
     AppMethodBeat.o(91048);
   }
   
-  public final void ejF()
+  public final void eTm()
   {
     AppMethodBeat.i(91049);
-    Log.i("MicroMsg.WxScanCamera", String.format("closeFlash, camera: %s, isPreviewing: %s", new Object[] { this.gII, Boolean.valueOf(dEO()) }));
-    if ((this.gII != null) && (dEO())) {
+    Log.i("MicroMsg.WxScanCamera", String.format("closeFlash, camera: %s, isPreviewing: %s", new Object[] { this.jta, Boolean.valueOf(egx()) }));
+    if ((this.jta != null) && (egx())) {
       try
       {
-        this.ztW = false;
-        Camera.Parameters localParameters = this.gII.getParameters();
+        this.EZx = false;
+        Camera.Parameters localParameters = this.jta.getParameters();
         List localList = localParameters.getSupportedFlashModes();
         if ((localList != null) && (localList.contains("off")))
         {
           localParameters.setFlashMode("off");
-          this.gII.setParameters(localParameters);
+          this.jta.setParameters(localParameters);
           Log.i("MicroMsg.WxScanCamera", "close flash");
           AppMethodBeat.o(91049);
           return;
@@ -314,17 +179,153 @@ public final class a
     AppMethodBeat.o(91049);
   }
   
-  public final int getPreviewFormat()
+  public final void fCo()
+  {
+    AppMethodBeat.i(91043);
+    List localList;
+    try
+    {
+      Log.i("MicroMsg.WxScanCamera", "set picture focus");
+      Camera.Parameters localParameters = this.jta.getParameters();
+      if (localParameters == null)
+      {
+        Log.w("MicroMsg.WxScanCamera", "camera parameters is null");
+        AppMethodBeat.o(91043);
+        return;
+      }
+      localList = localParameters.getSupportedFocusModes();
+      if (localList == null) {
+        break label175;
+      }
+      Log.d("MicroMsg.WxScanCamera", "supported focus modes size = " + localList.size());
+      Iterator localIterator = localList.iterator();
+      while (localIterator.hasNext()) {
+        Log.d("MicroMsg.WxScanCamera", "supported focus modes : ".concat(String.valueOf((String)localIterator.next())));
+      }
+      if (!localList.contains("continuous-picture")) {
+        break label181;
+      }
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.WxScanCamera", "setPictureFocus error: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(91043);
+      return;
+    }
+    Log.d("MicroMsg.WxScanCamera", "camera support continuous picture focus");
+    localException.setFocusMode("continuous-picture");
+    for (;;)
+    {
+      this.jta.setParameters(localException);
+      label175:
+      AppMethodBeat.o(91043);
+      return;
+      label181:
+      if (localList.contains("continuous-video"))
+      {
+        Log.d("MicroMsg.WxScanCamera", "camera support continuous video focus");
+        localException.setFocusMode("continuous-video");
+      }
+      else if (localList.contains("auto"))
+      {
+        Log.d("MicroMsg.WxScanCamera", "camera support auto focus");
+        localException.setFocusMode("auto");
+      }
+    }
+  }
+  
+  public final void fCp()
+  {
+    AppMethodBeat.i(91045);
+    try
+    {
+      Object localObject;
+      if (this.jta != null)
+      {
+        localObject = this.jta.getParameters();
+        String str = ((Camera.Parameters)localObject).get("zoom-supported");
+        if ((b.isNullOrNil(str)) || (!Boolean.parseBoolean(str)))
+        {
+          Log.i("MicroMsg.WxScanCamera", "not support zoom");
+          AppMethodBeat.o(91045);
+          return;
+        }
+        localObject = ((Camera.Parameters)localObject).getZoomRatios();
+        if (localObject != null)
+        {
+          int i = ((List)localObject).size();
+          if (i > 0) {}
+        }
+        else
+        {
+          AppMethodBeat.o(91045);
+          return;
+        }
+        this.ZqR = 0;
+        this.mMaxZoom = ((int)(((List)localObject).size() / 1.5D));
+        Log.d("MicroMsg.WxScanCamera", "divideRatio: %f,max zoom: %d", new Object[] { Double.valueOf(1.5D), Integer.valueOf(this.mMaxZoom) });
+        if (this.mMaxZoom >= this.ZqR) {
+          break label221;
+        }
+        this.mMaxZoom = this.ZqR;
+      }
+      for (;;)
+      {
+        Log.i("MicroMsg.WxScanCamera", "default zoom:%d,default ratio:%d,max zoom:%d,max ratio:%d", new Object[] { Integer.valueOf(this.ZqR), ((List)localObject).get(this.ZqR), Integer.valueOf(this.mMaxZoom), ((List)localObject).get(this.mMaxZoom) });
+        AppMethodBeat.o(91045);
+        return;
+        label221:
+        if (((Integer)((List)localObject).get(this.mMaxZoom)).intValue() > 400) {
+          this.mMaxZoom = K((List)localObject, 400);
+        }
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.WxScanCamera", "init zoom exception! " + localException.getMessage());
+      AppMethodBeat.o(91045);
+    }
+  }
+  
+  public final boolean fCq()
+  {
+    return this.EZx;
+  }
+  
+  public final boolean fCr()
+  {
+    AppMethodBeat.i(91046);
+    if (this.ZqP < 0) {
+      if (!fCs()) {
+        break label43;
+      }
+    }
+    label43:
+    for (int i = 1;; i = 0)
+    {
+      this.ZqP = i;
+      if (this.ZqP != 1) {
+        break;
+      }
+      AppMethodBeat.o(91046);
+      return true;
+    }
+    AppMethodBeat.o(91046);
+    return false;
+  }
+  
+  public final int fCt()
   {
     AppMethodBeat.i(91050);
-    int i = this.gII.getParameters().getPreviewFormat();
+    int i = this.jta.getParameters().getPreviewFormat();
     AppMethodBeat.o(91050);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.a.a
  * JD-Core Version:    0.7.0.1
  */

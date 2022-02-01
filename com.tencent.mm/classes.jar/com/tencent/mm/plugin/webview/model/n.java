@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bjd;
-import com.tencent.mm.protocal.protobuf.bje;
-import com.tencent.mm.protocal.protobuf.ccm;
+import com.tencent.mm.protocal.protobuf.bqm;
+import com.tencent.mm.protocal.protobuf.bqn;
+import com.tencent.mm.protocal.protobuf.ckp;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,23 +21,23 @@ public final class n
   implements m
 {
   private i callback;
-  public final d iUB;
+  public final d lKU;
   
-  public n(List<ccm> paramList, String paramString)
+  public n(List<ckp> paramList, String paramString)
   {
     AppMethodBeat.i(78879);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new bjd();
-    ((d.a)localObject).iLO = new bje();
+    ((d.a)localObject).lBU = new bqm();
+    ((d.a)localObject).lBV = new bqn();
     ((d.a)localObject).uri = "/cgi-bin/mmo2o-bin/getbeaconsingroup";
     ((d.a)localObject).funcId = 1704;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.iUB = ((d.a)localObject).aXF();
-    localObject = (bjd)this.iUB.iLK.iLR;
-    ((bjd)localObject).LSR.addAll(paramList);
-    ((bjd)localObject).dNI = paramString;
-    Log.i("MicroMsg.NetSceneGetBeaconSinGroup", "[oneliang]getBeaconsInGroupRequest.beacons.size:%d", new Object[] { Integer.valueOf(((bjd)localObject).LSR.size()) });
+    this.lKU = ((d.a)localObject).bgN();
+    localObject = (bqm)d.b.b(this.lKU.lBR);
+    ((bqm)localObject).TbC.addAll(paramList);
+    ((bqm)localObject).appid = paramString;
+    Log.i("MicroMsg.NetSceneGetBeaconSinGroup", "[oneliang]getBeaconsInGroupRequest.beacons.size:%d", new Object[] { Integer.valueOf(((bqm)localObject).TbC.size()) });
     AppMethodBeat.o(78879);
   }
   
@@ -45,7 +45,7 @@ public final class n
   {
     AppMethodBeat.i(78880);
     this.callback = parami;
-    int i = dispatch(paramg, this.iUB, this);
+    int i = dispatch(paramg, this.lKU, this);
     AppMethodBeat.o(78880);
     return i;
   }

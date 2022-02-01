@@ -9,37 +9,47 @@ public abstract class a
   extends BaseAdapter
   implements d
 {
-  private int Fby = 0;
-  HashMap<Object, Integer> Fbz = new HashMap();
+  private int LpW = 0;
+  private HashMap<Object, Integer> LpX = new HashMap();
   
-  protected final void dT(Object paramObject)
+  protected final void dW(Object paramObject)
   {
-    HashMap localHashMap = this.Fbz;
-    int i = this.Fby;
-    this.Fby = (i + 1);
+    HashMap localHashMap = this.LpX;
+    int i = this.LpW;
+    this.LpW = (i + 1);
     localHashMap.put(paramObject, Integer.valueOf(i));
+  }
+  
+  protected final void dX(Object paramObject)
+  {
+    this.LpX.remove(paramObject);
+  }
+  
+  protected final void fYE()
+  {
+    this.LpX.clear();
   }
   
   public final long getItemId(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.Fbz.size())) {
+    if ((paramInt < 0) || (paramInt >= this.LpX.size())) {
       return -1L;
     }
     Object localObject = getItem(paramInt);
-    return ((Integer)this.Fbz.get(localObject)).intValue();
+    return ((Integer)this.LpX.get(localObject)).intValue();
+  }
+  
+  protected final void hT(List<?> paramList)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      dW(paramList.next());
+    }
   }
   
   public final boolean hasStableIds()
   {
     return true;
-  }
-  
-  protected final void hk(List<?> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      dT(paramList.next());
-    }
   }
 }
 

@@ -1,6 +1,6 @@
 package com.google.android.gms.common.internal;
 
-import android.support.v4.e.h;
+import androidx.b.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -12,7 +12,7 @@ public class ExpirableLruCache<K, V>
 {
   public static int TIME_UNSET = -1;
   private final Object mLock;
-  private final h<K, V> zzsn;
+  private final e<K, V> zzsn;
   private final long zzso;
   private final long zzsp;
   private HashMap<K, Long> zzsq;
@@ -158,7 +158,7 @@ public class ExpirableLruCache<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.common.internal.ExpirableLruCache
  * JD-Core Version:    0.7.0.1
  */

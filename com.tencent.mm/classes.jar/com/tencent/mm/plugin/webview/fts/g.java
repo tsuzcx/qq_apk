@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.webview.fts;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.websearch.api.ai;
 import com.tencent.mm.plugin.websearch.api.v;
-import com.tencent.mm.protocal.protobuf.fap;
-import com.tencent.mm.protocal.protobuf.fau;
-import com.tencent.mm.protocal.protobuf.fav;
-import com.tencent.mm.protocal.protobuf.fel;
+import com.tencent.mm.protocal.protobuf.fli;
+import com.tencent.mm.protocal.protobuf.fln;
+import com.tencent.mm.protocal.protobuf.flo;
+import com.tencent.mm.protocal.protobuf.fpm;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.io.IOException;
@@ -25,25 +25,25 @@ public final class g
   extends com.tencent.mm.plugin.websearch.api.b
   implements m
 {
-  private fav IDA;
-  private v IDt;
+  private v PxJ;
+  private flo PxQ;
   private i callback;
-  private d iUB;
+  private d lKU;
   
   public g(v paramv)
   {
     AppMethodBeat.i(77934);
-    this.IDt = paramv;
-    this.Nv = paramv.dDv;
+    this.PxJ = paramv;
+    this.Ln = paramv.fwe;
     this.mScene = paramv.scene;
-    this.IDq = paramv.dVL;
+    this.PxG = paramv.fPp;
     Object localObject;
     int i;
-    if (!Util.isNullOrNil(paramv.dDv))
+    if (!Util.isNullOrNil(paramv.fwe))
     {
-      Log.i("MicroMsg.WebSearch.NetSceneWebSuggest", "Constructors: query=%s", new Object[] { paramv.dDv });
+      Log.i("MicroMsg.WebSearch.NetSceneWebSuggest", "Constructors: query=%s", new Object[] { paramv.fwe });
       localObject = new d.a();
-      if ((paramv.scene == 201) || (paramv.IDQ == 1)) {
+      if ((paramv.scene == 201) || (paramv.Pyg == 1)) {
         i = 1;
       }
     }
@@ -54,38 +54,38 @@ public final class g
         ((d.a)localObject).funcId = 1747;
         ((d.a)localObject).uri = "/cgi-bin/mmux-bin/wxaapp/mmuxwxa_weappsuggestion";
         label114:
-        ((d.a)localObject).iLN = new fau();
-        ((d.a)localObject).iLO = new fav();
-        this.iUB = ((d.a)localObject).aXF();
-        localObject = (fau)this.iUB.iLK.iLR;
-        ((fau)localObject).LPT = paramv.dDv;
-        ((fau)localObject).KZg = paramv.businessType;
-        ((fau)localObject).NwV = ai.aft(0);
-        ((fau)localObject).MRb = paramv.IDE;
-        ((fau)localObject).MlQ = ai.clJ();
-        ((fau)localObject).Scene = paramv.scene;
-        ((fau)localObject).NwH = paramv.sessionId;
-        ((fau)localObject).MlR = ai.fYd();
-        if (paramv.IDS == null) {}
+        ((d.a)localObject).lBU = new fln();
+        ((d.a)localObject).lBV = new flo();
+        this.lKU = ((d.a)localObject).bgN();
+        localObject = (fln)d.b.b(this.lKU.lBR);
+        ((fln)localObject).SYn = paramv.fwe;
+        ((fln)localObject).Sap = paramv.businessType;
+        ((fln)localObject).UKl = ai.anh(0);
+        ((fln)localObject).Udh = paramv.PxU;
+        ((fln)localObject).TwK = ai.czn();
+        ((fln)localObject).CPw = paramv.scene;
+        ((fln)localObject).UJX = paramv.sessionId;
+        ((fln)localObject).TwL = ai.gQO();
+        if (paramv.Pyi == null) {}
       }
       try
       {
-        ((fau)localObject).Nxc = new com.tencent.mm.bw.b(paramv.IDS.toByteArray());
+        ((fln)localObject).UKs = new com.tencent.mm.cd.b(paramv.Pyi.toByteArray());
         label259:
-        if (paramv.IDR != null) {}
+        if (paramv.Pyh != null) {}
         try
         {
-          ((fau)localObject).Nxb = new com.tencent.mm.bw.b(paramv.IDR.toByteArray());
+          ((fln)localObject).UKr = new com.tencent.mm.cd.b(paramv.Pyh.toByteArray());
           try
           {
             label285:
-            JSONArray localJSONArray = new JSONArray(paramv.IDJ);
-            ((fau)localObject).NwZ = new LinkedList();
+            JSONArray localJSONArray = new JSONArray(paramv.PxZ);
+            ((fln)localObject).UKp = new LinkedList();
             i = 0;
             while (i < localJSONArray.length())
             {
               String str = URLDecoder.decode(localJSONArray.getString(i), "UTF-8");
-              ((fau)localObject).NwZ.add(str);
+              ((fln)localObject).UKp.add(str);
               i += 1;
             }
             i = 0;
@@ -94,7 +94,7 @@ public final class g
           {
             Log.printErrStackTrace("MicroMsg.WebSearch.NetSceneWebSuggest", localException1, "decode json error", new Object[0]);
             i = paramv.businessType;
-            if (((fau)localObject).MlQ == null) {
+            if (((fln)localObject).TwK == null) {
               break label477;
             }
           }
@@ -104,7 +104,7 @@ public final class g
           label477:
           for (boolean bool = true;; bool = false)
           {
-            Log.i("MicroMsg.WebSearch.NetSceneWebSuggest", "businessTypeList is %d | contains location = %b | scene=%d | businessType=%d | isHomePage=%b | webViewId=%d", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), Integer.valueOf(paramv.scene), Integer.valueOf(paramv.businessType), Integer.valueOf(paramv.IDE), Integer.valueOf(paramv.dVL) });
+            Log.i("MicroMsg.WebSearch.NetSceneWebSuggest", "businessTypeList is %d | contains location = %b | scene=%d | businessType=%d | isHomePage=%b | webViewId=%d", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), Integer.valueOf(paramv.scene), Integer.valueOf(paramv.businessType), Integer.valueOf(paramv.PxU), Integer.valueOf(paramv.fPp) });
             AppMethodBeat.o(77934);
             return;
           }
@@ -128,15 +128,15 @@ public final class g
   {
     AppMethodBeat.i(77936);
     this.callback = parami;
-    int i = dispatch(paramg, this.iUB, this);
+    int i = dispatch(paramg, this.lKU, this);
     AppMethodBeat.o(77936);
     return i;
   }
   
-  public final String fXC()
+  public final String gQp()
   {
-    if (this.IDA != null) {
-      return this.IDA.MaZ;
+    if (this.PxQ != null) {
+      return this.PxQ.Tkw;
     }
     return "";
   }
@@ -156,9 +156,9 @@ public final class g
       AppMethodBeat.o(77935);
       return;
     }
-    this.IDA = ((fav)this.iUB.iLL.iLR);
-    if (this.IDA != null) {
-      Log.v("MicroMsg.WebSearch.NetSceneWebSuggest", "return data\n%s", new Object[] { this.IDA.MaZ });
+    this.PxQ = ((flo)d.c.b(this.lKU.lBS));
+    if (this.PxQ != null) {
+      Log.v("MicroMsg.WebSearch.NetSceneWebSuggest", "return data\n%s", new Object[] { this.PxQ.Tkw });
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(77935);
@@ -166,7 +166,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.g
  * JD-Core Version:    0.7.0.1
  */

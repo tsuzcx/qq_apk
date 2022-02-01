@@ -1,88 +1,86 @@
 package com.tencent.mm.modelvoiceaddr;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.compatible.deviceinfo.ae;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.t;
+import com.tencent.mm.compatible.deviceinfo.af;
 import com.tencent.mm.compatible.deviceinfo.k;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.thread.ThreadPool;
 import com.tencent.mm.storage.ar;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.util.List;
 import java.util.Map;
 
 public final class g
   implements i, b
 {
-  private static int dAR;
-  private static final String jwd;
-  public static int jwp;
-  public static int jwq;
-  public static int jwr;
-  public static int jws;
-  public static int jwt;
-  public static int jwu;
-  public static int jwv;
-  public static int jww;
-  public static int jwx;
-  public static int jwy;
-  private com.tencent.mm.audio.b.c dyI;
-  private com.tencent.mm.audio.b.c.a dzv;
-  private int jvS;
-  private g.b jwA;
-  private com.tencent.mm.modelvoiceaddr.a.c jwB;
-  private com.tencent.mm.modelvoiceaddr.a.c.a jwC;
-  private int jwf;
-  private int jwg;
-  private boolean jwh;
-  private com.tencent.mm.audio.e.a jwl;
-  private a jwn;
-  private boolean jwz;
+  private static int ftG;
+  private static final String mlG;
+  public static int mlS;
+  public static int mlT;
+  public static int mlU;
+  public static int mlV;
+  public static int mlW;
+  public static int mlX;
+  public static int mlY;
+  public static int mlZ;
+  public static int mma;
+  public static int mmb;
+  private com.tencent.mm.audio.b.c frx;
+  private com.tencent.mm.audio.b.c.a fsk;
+  private int mlI;
+  private int mlJ;
+  private boolean mlK;
+  private com.tencent.mm.audio.e.a mlO;
+  private a mlQ;
+  private int mlv;
+  private boolean mmc;
+  private g.b mmd;
+  private com.tencent.mm.modelvoiceaddr.a.c mme;
+  private com.tencent.mm.modelvoiceaddr.a.c.a mmf;
   private int scene;
   
   static
   {
     AppMethodBeat.i(148563);
-    jwp = 0;
-    jwq = 1;
-    jwr = 2;
-    jws = 4;
-    jwt = 8;
-    jwu = 16;
-    jwv = 32;
-    jww = 64;
-    jwx = 128;
-    jwy = 256;
-    jwd = ar.NSe + "voice_temp.silk";
-    dAR = 5000;
+    mlS = 0;
+    mlT = 1;
+    mlU = 2;
+    mlV = 4;
+    mlW = 8;
+    mlX = 16;
+    mlY = 32;
+    mlZ = 64;
+    mma = 128;
+    mmb = 256;
+    mlG = ar.Vgb + "voice_temp.silk";
+    ftG = 5000;
     AppMethodBeat.o(148563);
   }
   
   public g()
   {
     AppMethodBeat.i(148554);
-    this.jwf = 0;
-    this.jwg = 0;
-    this.jwh = false;
-    this.jwz = false;
+    this.mlI = 0;
+    this.mlJ = 0;
+    this.mlK = false;
+    this.mmc = false;
     this.scene = 0;
-    this.jvS = jwq;
-    this.jwA = null;
-    this.jwn = null;
-    this.dzv = new com.tencent.mm.audio.b.c.a()
+    this.mlv = mlT;
+    this.mmd = null;
+    this.mlQ = null;
+    this.fsk = new com.tencent.mm.audio.b.c.a()
     {
-      short[] jwD;
+      short[] mmg;
       
-      public final void cj(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void cC(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(148547);
         Log.e("MicroMsg.SceneVoiceInputAddr", "onRecError state = %s detailState = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-        g.this.dD(10, -1);
+        g.this.eb(10, -1);
         AppMethodBeat.o(148547);
       }
       
@@ -92,38 +90,38 @@ public final class g
         AppMethodBeat.i(148546);
         Log.d("MicroMsg.SceneVoiceInputAddr", "OnRecPcmDataReady len: %s time: %s", new Object[] { Integer.valueOf(paramAnonymousInt), Long.valueOf(System.currentTimeMillis()) });
         int i;
-        if (this.jwD != null)
+        if (this.mmg != null)
         {
           i = j;
-          if (this.jwD.length >= paramAnonymousInt / 2) {}
+          if (this.mmg.length >= paramAnonymousInt / 2) {}
         }
         else
         {
-          this.jwD = new short[paramAnonymousInt / 2];
+          this.mmg = new short[paramAnonymousInt / 2];
           i = j;
         }
         while (i < paramAnonymousInt / 2)
         {
-          this.jwD[i] = ((short)(paramAnonymousArrayOfByte[(i * 2)] & 0xFF | paramAnonymousArrayOfByte[(i * 2 + 1)] << 8));
+          this.mmg[i] = ((short)(paramAnonymousArrayOfByte[(i * 2)] & 0xFF | paramAnonymousArrayOfByte[(i * 2 + 1)] << 8));
           i += 1;
         }
-        g.a(g.this, this.jwD, paramAnonymousInt / 2);
+        g.a(g.this, this.mmg, paramAnonymousInt / 2);
         if (g.d(g.this) != null)
         {
-          g.d(g.this).e(this.jwD, paramAnonymousInt / 2);
+          g.d(g.this).e(this.mmg, paramAnonymousInt / 2);
           AppMethodBeat.o(148546);
           return;
         }
-        g.this.dD(9, -1);
+        g.this.eb(9, -1);
         Log.e("MicroMsg.SceneVoiceInputAddr", "mVoiceSilentDetectAPI is null");
         AppMethodBeat.o(148546);
       }
     };
-    this.jwC = new com.tencent.mm.modelvoiceaddr.a.c.a()
+    this.mmf = new com.tencent.mm.modelvoiceaddr.a.c.a()
     {
-      byte[] jwF;
+      byte[] mmi;
       
-      public final void Yh()
+      public final void acN()
       {
         AppMethodBeat.i(148552);
         Log.i("MicroMsg.SceneVoiceInputAddr", "Silent enough to finish time %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
@@ -139,22 +137,22 @@ public final class g
           AppMethodBeat.o(148549);
           return;
         }
-        if ((this.jwF == null) || (this.jwF.length < paramAnonymousInt * 2)) {
-          this.jwF = new byte[paramAnonymousInt * 2];
+        if ((this.mmi == null) || (this.mmi.length < paramAnonymousInt * 2)) {
+          this.mmi = new byte[paramAnonymousInt * 2];
         }
         int i = 0;
         while (i < paramAnonymousInt)
         {
-          this.jwF[(i * 2)] = ((byte)(paramAnonymousArrayOfShort[i] & 0xFF));
-          this.jwF[(i * 2 + 1)] = ((byte)((paramAnonymousArrayOfShort[i] & 0xFF00) >> 8));
+          this.mmi[(i * 2)] = ((byte)(paramAnonymousArrayOfShort[i] & 0xFF));
+          this.mmi[(i * 2 + 1)] = ((byte)((paramAnonymousArrayOfShort[i] & 0xFF00) >> 8));
           i += 1;
         }
         if (g.b(g.this) != null) {}
-        for (paramAnonymousInt = g.b(g.this).a(new com.tencent.mm.audio.b.g.a(this.jwF, paramAnonymousInt * 2), 0, true);; paramAnonymousInt = -1)
+        for (paramAnonymousInt = g.b(g.this).a(new com.tencent.mm.audio.b.g.a(this.mmi, paramAnonymousInt * 2), 0, true);; paramAnonymousInt = -1)
         {
           if (-1 == paramAnonymousInt)
           {
-            g.this.dD(4, -1);
+            g.this.eb(4, -1);
             Log.e("MicroMsg.SceneVoiceInputAddr", "write to file failed");
             AppMethodBeat.o(148549);
             return;
@@ -162,7 +160,7 @@ public final class g
           g.a(g.this, paramAnonymousInt + g.h(g.this));
           if ((!g.i(g.this)) && (g.h(g.this) > 200) && (!g.j(g.this)))
           {
-            com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
+            com.tencent.mm.kernel.h.aHJ().postToWorker(new Runnable()
             {
               public final void run()
               {
@@ -174,9 +172,9 @@ public final class g
                   AppMethodBeat.o(148548);
                   return;
                 }
-                com.tencent.mm.kernel.g.azz().a(235, g.this);
-                if ((!((c)g.k(g.this)).bir()) || (!com.tencent.mm.kernel.g.azz().a(g.k(g.this), 0))) {
-                  g.this.dD(13, 131);
+                com.tencent.mm.kernel.h.aGY().a(235, g.this);
+                if ((!((c)g.k(g.this)).brP()) || (!com.tencent.mm.kernel.h.aGY().a(g.k(g.this), 0))) {
+                  g.this.eb(13, 131);
                 }
                 AppMethodBeat.o(148548);
               }
@@ -188,39 +186,39 @@ public final class g
         }
       }
       
-      public final void bix()
+      public final void brV()
       {
         AppMethodBeat.i(148550);
         Log.i("MicroMsg.SceneVoiceInputAddr", "onSpeakToSilent");
         if ((g.k(g.this) instanceof c))
         {
-          int i = (int)s.boW(g.biw());
+          int i = (int)u.bBQ(g.brU());
           try
           {
-            ((c)g.k(g.this)).ul(i);
+            ((c)g.k(g.this)).xl(i);
             AppMethodBeat.o(148550);
             return;
           }
           catch (Exception localException)
           {
             Log.printErrStackTrace("MicroMsg.SceneVoiceInputAddr", localException, "cutShortSentence error", new Object[0]);
-            g.this.dD(6, -1);
+            g.this.eb(6, -1);
           }
         }
         AppMethodBeat.o(148550);
       }
       
-      public final void biy()
+      public final void brW()
       {
         AppMethodBeat.i(148551);
         Log.i("MicroMsg.SceneVoiceInputAddr", "onSilentToSpeak");
         if ((g.k(g.this) instanceof c)) {
           try
           {
-            ((c)g.k(g.this)).jvN.biC();
-            if (!g.b(g.this).abQ())
+            ((c)g.k(g.this)).mlq.bsa();
+            if (!g.b(g.this).agD())
             {
-              g.this.dD(5, -1);
+              g.this.eb(5, -1);
               AppMethodBeat.o(148551);
               return;
             }
@@ -230,7 +228,7 @@ public final class g
           catch (Exception localException)
           {
             Log.printErrStackTrace("MicroMsg.SceneVoiceInputAddr", localException, "createShortSentence error", new Object[0]);
-            g.this.dD(6, -1);
+            g.this.eb(6, -1);
           }
         }
         AppMethodBeat.o(148551);
@@ -242,23 +240,23 @@ public final class g
   public g(int paramInt1, int paramInt2, g.b paramb)
   {
     AppMethodBeat.i(148555);
-    this.jwf = 0;
-    this.jwg = 0;
-    this.jwh = false;
-    this.jwz = false;
+    this.mlI = 0;
+    this.mlJ = 0;
+    this.mlK = false;
+    this.mmc = false;
     this.scene = 0;
-    this.jvS = jwq;
-    this.jwA = null;
-    this.jwn = null;
-    this.dzv = new com.tencent.mm.audio.b.c.a()
+    this.mlv = mlT;
+    this.mmd = null;
+    this.mlQ = null;
+    this.fsk = new com.tencent.mm.audio.b.c.a()
     {
-      short[] jwD;
+      short[] mmg;
       
-      public final void cj(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void cC(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(148547);
         Log.e("MicroMsg.SceneVoiceInputAddr", "onRecError state = %s detailState = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-        g.this.dD(10, -1);
+        g.this.eb(10, -1);
         AppMethodBeat.o(148547);
       }
       
@@ -268,38 +266,38 @@ public final class g
         AppMethodBeat.i(148546);
         Log.d("MicroMsg.SceneVoiceInputAddr", "OnRecPcmDataReady len: %s time: %s", new Object[] { Integer.valueOf(paramAnonymousInt), Long.valueOf(System.currentTimeMillis()) });
         int i;
-        if (this.jwD != null)
+        if (this.mmg != null)
         {
           i = j;
-          if (this.jwD.length >= paramAnonymousInt / 2) {}
+          if (this.mmg.length >= paramAnonymousInt / 2) {}
         }
         else
         {
-          this.jwD = new short[paramAnonymousInt / 2];
+          this.mmg = new short[paramAnonymousInt / 2];
           i = j;
         }
         while (i < paramAnonymousInt / 2)
         {
-          this.jwD[i] = ((short)(paramAnonymousArrayOfByte[(i * 2)] & 0xFF | paramAnonymousArrayOfByte[(i * 2 + 1)] << 8));
+          this.mmg[i] = ((short)(paramAnonymousArrayOfByte[(i * 2)] & 0xFF | paramAnonymousArrayOfByte[(i * 2 + 1)] << 8));
           i += 1;
         }
-        g.a(g.this, this.jwD, paramAnonymousInt / 2);
+        g.a(g.this, this.mmg, paramAnonymousInt / 2);
         if (g.d(g.this) != null)
         {
-          g.d(g.this).e(this.jwD, paramAnonymousInt / 2);
+          g.d(g.this).e(this.mmg, paramAnonymousInt / 2);
           AppMethodBeat.o(148546);
           return;
         }
-        g.this.dD(9, -1);
+        g.this.eb(9, -1);
         Log.e("MicroMsg.SceneVoiceInputAddr", "mVoiceSilentDetectAPI is null");
         AppMethodBeat.o(148546);
       }
     };
-    this.jwC = new com.tencent.mm.modelvoiceaddr.a.c.a()
+    this.mmf = new com.tencent.mm.modelvoiceaddr.a.c.a()
     {
-      byte[] jwF;
+      byte[] mmi;
       
-      public final void Yh()
+      public final void acN()
       {
         AppMethodBeat.i(148552);
         Log.i("MicroMsg.SceneVoiceInputAddr", "Silent enough to finish time %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
@@ -315,22 +313,22 @@ public final class g
           AppMethodBeat.o(148549);
           return;
         }
-        if ((this.jwF == null) || (this.jwF.length < paramAnonymousInt * 2)) {
-          this.jwF = new byte[paramAnonymousInt * 2];
+        if ((this.mmi == null) || (this.mmi.length < paramAnonymousInt * 2)) {
+          this.mmi = new byte[paramAnonymousInt * 2];
         }
         int i = 0;
         while (i < paramAnonymousInt)
         {
-          this.jwF[(i * 2)] = ((byte)(paramAnonymousArrayOfShort[i] & 0xFF));
-          this.jwF[(i * 2 + 1)] = ((byte)((paramAnonymousArrayOfShort[i] & 0xFF00) >> 8));
+          this.mmi[(i * 2)] = ((byte)(paramAnonymousArrayOfShort[i] & 0xFF));
+          this.mmi[(i * 2 + 1)] = ((byte)((paramAnonymousArrayOfShort[i] & 0xFF00) >> 8));
           i += 1;
         }
         if (g.b(g.this) != null) {}
-        for (paramAnonymousInt = g.b(g.this).a(new com.tencent.mm.audio.b.g.a(this.jwF, paramAnonymousInt * 2), 0, true);; paramAnonymousInt = -1)
+        for (paramAnonymousInt = g.b(g.this).a(new com.tencent.mm.audio.b.g.a(this.mmi, paramAnonymousInt * 2), 0, true);; paramAnonymousInt = -1)
         {
           if (-1 == paramAnonymousInt)
           {
-            g.this.dD(4, -1);
+            g.this.eb(4, -1);
             Log.e("MicroMsg.SceneVoiceInputAddr", "write to file failed");
             AppMethodBeat.o(148549);
             return;
@@ -338,7 +336,7 @@ public final class g
           g.a(g.this, paramAnonymousInt + g.h(g.this));
           if ((!g.i(g.this)) && (g.h(g.this) > 200) && (!g.j(g.this)))
           {
-            com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
+            com.tencent.mm.kernel.h.aHJ().postToWorker(new Runnable()
             {
               public final void run()
               {
@@ -350,9 +348,9 @@ public final class g
                   AppMethodBeat.o(148548);
                   return;
                 }
-                com.tencent.mm.kernel.g.azz().a(235, g.this);
-                if ((!((c)g.k(g.this)).bir()) || (!com.tencent.mm.kernel.g.azz().a(g.k(g.this), 0))) {
-                  g.this.dD(13, 131);
+                com.tencent.mm.kernel.h.aGY().a(235, g.this);
+                if ((!((c)g.k(g.this)).brP()) || (!com.tencent.mm.kernel.h.aGY().a(g.k(g.this), 0))) {
+                  g.this.eb(13, 131);
                 }
                 AppMethodBeat.o(148548);
               }
@@ -364,39 +362,39 @@ public final class g
         }
       }
       
-      public final void bix()
+      public final void brV()
       {
         AppMethodBeat.i(148550);
         Log.i("MicroMsg.SceneVoiceInputAddr", "onSpeakToSilent");
         if ((g.k(g.this) instanceof c))
         {
-          int i = (int)s.boW(g.biw());
+          int i = (int)u.bBQ(g.brU());
           try
           {
-            ((c)g.k(g.this)).ul(i);
+            ((c)g.k(g.this)).xl(i);
             AppMethodBeat.o(148550);
             return;
           }
           catch (Exception localException)
           {
             Log.printErrStackTrace("MicroMsg.SceneVoiceInputAddr", localException, "cutShortSentence error", new Object[0]);
-            g.this.dD(6, -1);
+            g.this.eb(6, -1);
           }
         }
         AppMethodBeat.o(148550);
       }
       
-      public final void biy()
+      public final void brW()
       {
         AppMethodBeat.i(148551);
         Log.i("MicroMsg.SceneVoiceInputAddr", "onSilentToSpeak");
         if ((g.k(g.this) instanceof c)) {
           try
           {
-            ((c)g.k(g.this)).jvN.biC();
-            if (!g.b(g.this).abQ())
+            ((c)g.k(g.this)).mlq.bsa();
+            if (!g.b(g.this).agD())
             {
-              g.this.dD(5, -1);
+              g.this.eb(5, -1);
               AppMethodBeat.o(148551);
               return;
             }
@@ -406,20 +404,20 @@ public final class g
           catch (Exception localException)
           {
             Log.printErrStackTrace("MicroMsg.SceneVoiceInputAddr", localException, "createShortSentence error", new Object[0]);
-            g.this.dD(6, -1);
+            g.this.eb(6, -1);
           }
         }
         AppMethodBeat.o(148551);
       }
     };
-    this.jvS = paramInt1;
-    this.jwA = paramb;
+    this.mlv = paramInt1;
+    this.mmd = paramb;
     this.scene = paramInt2;
     AppMethodBeat.o(148555);
   }
   
   /* Error */
-  private void n(boolean paramBoolean1, boolean paramBoolean2)
+  private void r(boolean paramBoolean1, boolean paramBoolean2)
   {
     // Byte code:
     //   0: ldc 192
@@ -443,65 +441,65 @@ public final class g
     //   31: monitorenter
     //   32: aload_0
     //   33: iconst_1
-    //   34: putfield 121	com/tencent/mm/modelvoiceaddr/g:jwz	Z
+    //   34: putfield 121	com/tencent/mm/modelvoiceaddr/g:mmc	Z
     //   37: aload_0
-    //   38: getfield 143	com/tencent/mm/modelvoiceaddr/g:dyI	Lcom/tencent/mm/audio/b/c;
+    //   38: getfield 143	com/tencent/mm/modelvoiceaddr/g:frx	Lcom/tencent/mm/audio/b/c;
     //   41: ifnull +16 -> 57
     //   44: aload_0
-    //   45: getfield 143	com/tencent/mm/modelvoiceaddr/g:dyI	Lcom/tencent/mm/audio/b/c;
-    //   48: invokevirtual 207	com/tencent/mm/audio/b/c:ZZ	()Z
+    //   45: getfield 143	com/tencent/mm/modelvoiceaddr/g:frx	Lcom/tencent/mm/audio/b/c;
+    //   48: invokevirtual 207	com/tencent/mm/audio/b/c:aeJ	()Z
     //   51: pop
     //   52: aload_0
     //   53: aconst_null
-    //   54: putfield 143	com/tencent/mm/modelvoiceaddr/g:dyI	Lcom/tencent/mm/audio/b/c;
+    //   54: putfield 143	com/tencent/mm/modelvoiceaddr/g:frx	Lcom/tencent/mm/audio/b/c;
     //   57: aload_0
-    //   58: getfield 147	com/tencent/mm/modelvoiceaddr/g:jwl	Lcom/tencent/mm/audio/e/a;
+    //   58: getfield 147	com/tencent/mm/modelvoiceaddr/g:mlO	Lcom/tencent/mm/audio/e/a;
     //   61: ifnull +17 -> 78
     //   64: aload_0
-    //   65: getfield 147	com/tencent/mm/modelvoiceaddr/g:jwl	Lcom/tencent/mm/audio/e/a;
+    //   65: getfield 147	com/tencent/mm/modelvoiceaddr/g:mlO	Lcom/tencent/mm/audio/e/a;
     //   68: invokeinterface 212 1 0
     //   73: aload_0
     //   74: aconst_null
-    //   75: putfield 147	com/tencent/mm/modelvoiceaddr/g:jwl	Lcom/tencent/mm/audio/e/a;
+    //   75: putfield 147	com/tencent/mm/modelvoiceaddr/g:mlO	Lcom/tencent/mm/audio/e/a;
     //   78: aload_0
-    //   79: getfield 150	com/tencent/mm/modelvoiceaddr/g:jwB	Lcom/tencent/mm/modelvoiceaddr/a/c;
+    //   79: getfield 150	com/tencent/mm/modelvoiceaddr/g:mme	Lcom/tencent/mm/modelvoiceaddr/a/c;
     //   82: astore 6
     //   84: aload 6
     //   86: ifnull +15 -> 101
     //   89: aload_0
-    //   90: getfield 150	com/tencent/mm/modelvoiceaddr/g:jwB	Lcom/tencent/mm/modelvoiceaddr/a/c;
+    //   90: getfield 150	com/tencent/mm/modelvoiceaddr/g:mme	Lcom/tencent/mm/modelvoiceaddr/a/c;
     //   93: invokevirtual 217	com/tencent/mm/modelvoiceaddr/a/c:release	()V
     //   96: aload_0
     //   97: aconst_null
-    //   98: putfield 150	com/tencent/mm/modelvoiceaddr/g:jwB	Lcom/tencent/mm/modelvoiceaddr/a/c;
+    //   98: putfield 150	com/tencent/mm/modelvoiceaddr/g:mme	Lcom/tencent/mm/modelvoiceaddr/a/c;
     //   101: aload_0
     //   102: iconst_0
-    //   103: putfield 117	com/tencent/mm/modelvoiceaddr/g:jwg	I
+    //   103: putfield 117	com/tencent/mm/modelvoiceaddr/g:mlJ	I
     //   106: aload_0
-    //   107: getfield 129	com/tencent/mm/modelvoiceaddr/g:jwn	Lcom/tencent/mm/modelvoiceaddr/a;
+    //   107: getfield 129	com/tencent/mm/modelvoiceaddr/g:mlQ	Lcom/tencent/mm/modelvoiceaddr/a;
     //   110: ifnull +43 -> 153
     //   113: aload_0
-    //   114: getfield 129	com/tencent/mm/modelvoiceaddr/g:jwn	Lcom/tencent/mm/modelvoiceaddr/a;
+    //   114: getfield 129	com/tencent/mm/modelvoiceaddr/g:mlQ	Lcom/tencent/mm/modelvoiceaddr/a;
     //   117: instanceof 219
     //   120: ifeq +33 -> 153
     //   123: aload_0
-    //   124: getfield 129	com/tencent/mm/modelvoiceaddr/g:jwn	Lcom/tencent/mm/modelvoiceaddr/a;
-    //   127: invokevirtual 224	com/tencent/mm/modelvoiceaddr/a:bim	()V
-    //   130: getstatic 105	com/tencent/mm/modelvoiceaddr/g:jwd	Ljava/lang/String;
-    //   133: invokestatic 230	com/tencent/mm/vfs/s:boW	(Ljava/lang/String;)J
+    //   124: getfield 129	com/tencent/mm/modelvoiceaddr/g:mlQ	Lcom/tencent/mm/modelvoiceaddr/a;
+    //   127: invokevirtual 224	com/tencent/mm/modelvoiceaddr/a:brK	()V
+    //   130: getstatic 105	com/tencent/mm/modelvoiceaddr/g:mlG	Ljava/lang/String;
+    //   133: invokestatic 230	com/tencent/mm/vfs/u:bBQ	(Ljava/lang/String;)J
     //   136: lstore 4
     //   138: lload 4
     //   140: l2i
     //   141: istore_3
     //   142: aload_0
-    //   143: getfield 129	com/tencent/mm/modelvoiceaddr/g:jwn	Lcom/tencent/mm/modelvoiceaddr/a;
+    //   143: getfield 129	com/tencent/mm/modelvoiceaddr/g:mlQ	Lcom/tencent/mm/modelvoiceaddr/a;
     //   146: checkcast 219	com/tencent/mm/modelvoiceaddr/c
     //   149: iload_3
-    //   150: invokevirtual 233	com/tencent/mm/modelvoiceaddr/c:ul	(I)V
+    //   150: invokevirtual 233	com/tencent/mm/modelvoiceaddr/c:xl	(I)V
     //   153: iload_1
     //   154: ifne +10 -> 164
     //   157: aload_0
-    //   158: getfield 119	com/tencent/mm/modelvoiceaddr/g:jwh	Z
+    //   158: getfield 119	com/tencent/mm/modelvoiceaddr/g:mlK	Z
     //   161: ifne +66 -> 227
     //   164: aload_0
     //   165: monitorexit
@@ -533,13 +531,13 @@ public final class g
     //   217: aload_0
     //   218: bipush 6
     //   220: iconst_m1
-    //   221: invokevirtual 245	com/tencent/mm/modelvoiceaddr/g:dD	(II)V
+    //   221: invokevirtual 245	com/tencent/mm/modelvoiceaddr/g:eb	(II)V
     //   224: goto -71 -> 153
     //   227: aload_0
-    //   228: getfield 129	com/tencent/mm/modelvoiceaddr/g:jwn	Lcom/tencent/mm/modelvoiceaddr/a;
+    //   228: getfield 129	com/tencent/mm/modelvoiceaddr/g:mlQ	Lcom/tencent/mm/modelvoiceaddr/a;
     //   231: ifnull +55 -> 286
     //   234: aload_0
-    //   235: getfield 129	com/tencent/mm/modelvoiceaddr/g:jwn	Lcom/tencent/mm/modelvoiceaddr/a;
+    //   235: getfield 129	com/tencent/mm/modelvoiceaddr/g:mlQ	Lcom/tencent/mm/modelvoiceaddr/a;
     //   238: instanceof 219
     //   241: ifeq +45 -> 286
     //   244: ldc 155
@@ -555,19 +553,19 @@ public final class g
     //   262: iload_2
     //   263: ifeq +13 -> 276
     //   266: aload_0
-    //   267: getfield 129	com/tencent/mm/modelvoiceaddr/g:jwn	Lcom/tencent/mm/modelvoiceaddr/a;
+    //   267: getfield 129	com/tencent/mm/modelvoiceaddr/g:mlQ	Lcom/tencent/mm/modelvoiceaddr/a;
     //   270: checkcast 219	com/tencent/mm/modelvoiceaddr/c
-    //   273: invokevirtual 250	com/tencent/mm/modelvoiceaddr/c:bis	()V
-    //   276: invokestatic 256	com/tencent/mm/kernel/g:azz	()Lcom/tencent/mm/ak/t;
+    //   273: invokevirtual 250	com/tencent/mm/modelvoiceaddr/c:brQ	()V
+    //   276: invokestatic 256	com/tencent/mm/kernel/h:aGY	()Lcom/tencent/mm/an/t;
     //   279: sipush 235
     //   282: aload_0
-    //   283: invokevirtual 261	com/tencent/mm/ak/t:b	(ILcom/tencent/mm/ak/i;)V
+    //   283: invokevirtual 261	com/tencent/mm/an/t:b	(ILcom/tencent/mm/an/i;)V
     //   286: aload_0
     //   287: aconst_null
-    //   288: putfield 129	com/tencent/mm/modelvoiceaddr/g:jwn	Lcom/tencent/mm/modelvoiceaddr/a;
+    //   288: putfield 129	com/tencent/mm/modelvoiceaddr/g:mlQ	Lcom/tencent/mm/modelvoiceaddr/a;
     //   291: aload_0
     //   292: iconst_0
-    //   293: putfield 119	com/tencent/mm/modelvoiceaddr/g:jwh	Z
+    //   293: putfield 119	com/tencent/mm/modelvoiceaddr/g:mlK	Z
     //   296: aload_0
     //   297: monitorexit
     //   298: ldc 192
@@ -596,7 +594,6 @@ public final class g
     //   157	164	190	finally
     //   164	166	190	finally
     //   174	187	190	finally
-    //   192	194	190	finally
     //   204	224	190	finally
     //   227	262	190	finally
     //   266	276	190	finally
@@ -609,44 +606,45 @@ public final class g
   {
     AppMethodBeat.i(148560);
     Log.i("MicroMsg.SceneVoiceInputAddr", "cancel fromUI = %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.jwA = null;
-    n(false, paramBoolean);
+    this.mmd = null;
+    r(false, paramBoolean);
     AppMethodBeat.o(148560);
   }
   
-  public final void dD(int paramInt1, int paramInt2)
+  public final void eb(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(148558);
     Log.i("MicroMsg.SceneVoiceInputAddr", "error localCode = %s,errType = %s,errCode = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(-1) });
-    if (this.jwA != null) {
-      this.jwA.c(paramInt1, paramInt2, -1, -1L);
+    if (this.mmd != null) {
+      this.mmd.c(paramInt1, paramInt2, -1, -1L);
     }
-    n(false, true);
+    r(false, true);
     AppMethodBeat.o(148558);
   }
   
   public final int getMaxAmplitudeRate()
   {
-    int i = this.jwf;
-    this.jwf = 0;
-    if (i > dAR) {
-      dAR = i;
+    int i = this.mlI;
+    this.mlI = 0;
+    if (i > ftG) {
+      ftG = i;
     }
-    return i * 100 / dAR;
+    return i * 100 / ftG;
   }
   
   public final void init(int paramInt1, int paramInt2, g.b paramb)
   {
-    this.jvS = paramInt1;
-    this.jwA = paramb;
+    this.mlv = paramInt1;
+    this.mmd = paramb;
     this.scene = paramInt2;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
   {
     AppMethodBeat.i(148557);
-    String[] arrayOfString = ((a)paramq).bin();
-    List localList = ((a)paramq).biq();
+    String[] arrayOfString = ((a)paramq).brL();
+    ((a)paramq).brM();
+    List localList = ((a)paramq).brO();
     long l = System.currentTimeMillis();
     int i;
     int k;
@@ -654,16 +652,16 @@ public final class g
     {
       i = -1;
       k = paramq.hashCode();
-      if (this.jwn != null) {
-        break label160;
+      if (this.mlQ != null) {
+        break label169;
       }
     }
-    label160:
-    for (int j = -1;; j = this.jwn.hashCode())
+    label169:
+    for (int j = -1;; j = this.mlQ.hashCode())
     {
       Log.d("MicroMsg.SceneVoiceInputAddr", "onSceneEnd time %s errType:%s errCode:%s list:%s scene.hashCode():%s,this.hashCode():%s", new Object[] { Long.valueOf(l), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j) });
-      if ((this.jwn != null) && (paramq.hashCode() == this.jwn.hashCode())) {
-        break label172;
+      if ((this.mlQ != null) && (paramq.hashCode() == this.mlQ.hashCode())) {
+        break label181;
       }
       Log.d("MicroMsg.SceneVoiceInputAddr", "onSceneEnd scene.hashCode() != mVoiceRecogScene.hashCode()");
       AppMethodBeat.o(148557);
@@ -671,13 +669,13 @@ public final class g
       i = arrayOfString.length;
       break;
     }
-    label172:
-    if (this.jwA != null)
+    label181:
+    if (this.mmd != null)
     {
       if ((paramInt2 != 0) || (paramInt1 != 0))
       {
         if ((paramString != null) && (paramString.equalsIgnoreCase("SecurityCheckError"))) {
-          this.jwA.c(13, 132, -1, -1L);
+          this.mmd.c(13, 132, -1, -1L);
         }
         for (;;)
         {
@@ -685,16 +683,16 @@ public final class g
           AppMethodBeat.o(148557);
           return;
           if ((paramString != null) && (paramString.equalsIgnoreCase("ReadFileLengthError"))) {
-            this.jwA.c(13, 133, -1, -1L);
+            this.mmd.c(13, 133, -1, -1L);
           } else {
-            this.jwA.c(11, paramInt1, paramInt2, ((a)paramq).bip());
+            this.mmd.c(11, paramInt1, paramInt2, ((a)paramq).brN());
           }
         }
       }
-      this.jwA.b(arrayOfString, localList);
-      if (((paramq instanceof c)) && (this.jwg == 0) && (((c)paramq).jvN.biB()))
+      this.mmd.b(arrayOfString, localList);
+      if (((paramq instanceof c)) && (this.mlJ == 0) && (((c)paramq).mlq.brZ()))
       {
-        this.jwA.biz();
+        this.mmd.brX();
         cancel(false);
       }
     }
@@ -713,10 +711,10 @@ public final class g
   {
     AppMethodBeat.i(148559);
     Log.i("MicroMsg.SceneVoiceInputAddr", "stop fromUI = %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    if ((!paramBoolean) && (this.jwA != null)) {
-      this.jwA.biv();
+    if ((!paramBoolean) && (this.mmd != null)) {
+      this.mmd.brT();
     }
-    n(true, true);
+    r(true, true);
     AppMethodBeat.o(148559);
   }
   
@@ -739,15 +737,15 @@ public final class g
         }
         try
         {
-          o localo = new o(g.jwd);
-          if (!localo.exists()) {
-            localo.mkdirs();
+          com.tencent.mm.vfs.q localq = new com.tencent.mm.vfs.q(g.mlG);
+          if (!localq.ifE()) {
+            localq.ifK();
           }
-          localo = new o(g.biw());
-          if (!localo.exists()) {
-            localo.createNewFile();
+          localq = new com.tencent.mm.vfs.q(g.brU());
+          if (!localq.ifE()) {
+            localq.ifM();
           }
-          localo.delete();
+          localq.cFq();
         }
         catch (Exception localException)
         {
@@ -757,51 +755,51 @@ public final class g
           }
         }
         g.a(g.this, new com.tencent.mm.audio.b.c(16000, 1, 3));
-        g.a(g.this).dzk = -19;
-        g.a(g.this).dc(false);
+        g.a(g.this).frZ = -19;
+        g.a(g.this).dC(false);
         g.a(g.this, new com.tencent.mm.audio.e.c(16000, 23900));
-        if (!g.b(g.this).hz(g.biw()))
+        if (!g.b(g.this).in(g.brU()))
         {
           Log.e("MicroMsg.SceneVoiceInputAddr", "init speex writer failed");
-          g.b(g.this).abP();
+          g.b(g.this).agC();
           g.a(g.this, null);
-          g.this.dD(5, -1);
+          g.this.eb(5, -1);
           AppMethodBeat.o(148553);
           return;
         }
       }
-      if (ae.gKE.gGG > 0)
+      if (af.juS.jqS > 0)
       {
-        g.a(g.this).x(ae.gKE.gGG, true);
+        g.a(g.this).z(af.juS.jqS, true);
         label302:
-        g.a(g.this).jk(50);
-        g.a(g.this).dd(false);
+        g.a(g.this).kD(50);
+        g.a(g.this).dD(false);
       }
       for (;;)
       {
         try
         {
           g.a(g.this, new com.tencent.mm.modelvoiceaddr.a.c(true, true));
-          g.d(g.this).jxj = g.c(g.this);
-          com.tencent.mm.storage.c localc = com.tencent.mm.model.c.d.aXu().Fu("100235");
+          g.d(g.this).mmM = g.c(g.this);
+          com.tencent.mm.storage.c localc = com.tencent.mm.model.c.d.bgB().Mu("100235");
           if (!localc.isValid()) {
             break label532;
           }
-          i = Util.getInt((String)localc.gzz().get("MMVoipVadOn"), 0);
-          g.a(g.this, new c(g.biw(), String.valueOf(l1), String.valueOf(i), g.e(g.this), g.f(g.this)));
-          g.a(g.this).dzv = g.g(g.this);
-          if (g.a(g.this).aai()) {
+          i = Util.getInt((String)localc.hvz().get("MMVoipVadOn"), 0);
+          g.a(g.this, new c(g.brU(), String.valueOf(l1), String.valueOf(i), g.e(g.this), g.f(g.this)));
+          g.a(g.this).fsk = g.g(g.this);
+          if (g.a(g.this).aeU()) {
             break;
           }
           Log.e("MicroMsg.SceneVoiceInputAddr", "start record failed");
-          g.this.dD(8, -1);
+          g.this.eb(8, -1);
         }
         catch (Throwable localThrowable)
         {
           Log.printErrStackTrace("MicroMsg.SceneVoiceInputAddr", localThrowable, "init VoiceDetectAPI failed", new Object[0]);
-          g.this.dD(7, -1);
+          g.this.eb(7, -1);
         }
-        g.a(g.this).x(5, false);
+        g.a(g.this).z(5, false);
         break label302;
         break;
         label532:
@@ -812,7 +810,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.modelvoiceaddr.g
  * JD-Core Version:    0.7.0.1
  */

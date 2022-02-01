@@ -3,23 +3,23 @@ package com.tencent.mm.plugin.wallet.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class q
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String HER;
-  public String HES;
-  public String HET = "0";
-  public String HEU = "0";
-  public int HEV = 0;
-  public int HEW;
-  public String HEX;
-  public String HEm;
+  public String OwK;
+  public String OwL;
+  public String OwM = "0";
+  public String OwN = "0";
+  public int OwO = 0;
+  public int OwP;
+  public String OwQ;
+  public String Owf;
   public String desc;
   public String id;
+  public String lpQ;
   public String name;
   public int status;
   public int type;
   public String url;
-  public String weappPath;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -28,41 +28,41 @@ public final class q
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.id != null) {
-        paramVarArgs.e(1, this.id);
+        paramVarArgs.f(1, this.id);
       }
       if (this.name != null) {
-        paramVarArgs.e(2, this.name);
+        paramVarArgs.f(2, this.name);
       }
       if (this.desc != null) {
-        paramVarArgs.e(3, this.desc);
+        paramVarArgs.f(3, this.desc);
       }
-      paramVarArgs.aM(4, this.status);
+      paramVarArgs.aY(4, this.status);
       if (this.url != null) {
-        paramVarArgs.e(5, this.url);
+        paramVarArgs.f(5, this.url);
       }
-      paramVarArgs.aM(6, this.type);
-      if (this.HER != null) {
-        paramVarArgs.e(7, this.HER);
+      paramVarArgs.aY(6, this.type);
+      if (this.OwK != null) {
+        paramVarArgs.f(7, this.OwK);
       }
-      if (this.HES != null) {
-        paramVarArgs.e(8, this.HES);
+      if (this.OwL != null) {
+        paramVarArgs.f(8, this.OwL);
       }
-      if (this.HET != null) {
-        paramVarArgs.e(9, this.HET);
+      if (this.OwM != null) {
+        paramVarArgs.f(9, this.OwM);
       }
-      if (this.HEU != null) {
-        paramVarArgs.e(10, this.HEU);
+      if (this.OwN != null) {
+        paramVarArgs.f(10, this.OwN);
       }
-      paramVarArgs.aM(11, this.HEV);
-      if (this.HEm != null) {
-        paramVarArgs.e(12, this.HEm);
+      paramVarArgs.aY(11, this.OwO);
+      if (this.Owf != null) {
+        paramVarArgs.f(12, this.Owf);
       }
-      if (this.weappPath != null) {
-        paramVarArgs.e(13, this.weappPath);
+      if (this.lpQ != null) {
+        paramVarArgs.f(13, this.lpQ);
       }
-      paramVarArgs.aM(14, this.HEW);
-      if (this.HEX != null) {
-        paramVarArgs.e(15, this.HEX);
+      paramVarArgs.aY(14, this.OwP);
+      if (this.OwQ != null) {
+        paramVarArgs.f(15, this.OwQ);
       }
       AppMethodBeat.o(91303);
       return 0;
@@ -73,60 +73,60 @@ public final class q
       }
     }
     label1010:
-    for (int i = g.a.a.b.b.a.f(1, this.id) + 0;; i = 0)
+    for (int i = g.a.a.b.b.a.g(1, this.id) + 0;; i = 0)
     {
       paramInt = i;
       if (this.name != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.name);
+        paramInt = i + g.a.a.b.b.a.g(2, this.name);
       }
       i = paramInt;
       if (this.desc != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.desc);
+        i = paramInt + g.a.a.b.b.a.g(3, this.desc);
       }
-      i += g.a.a.b.b.a.bu(4, this.status);
+      i += g.a.a.b.b.a.bM(4, this.status);
       paramInt = i;
       if (this.url != null) {
-        paramInt = i + g.a.a.b.b.a.f(5, this.url);
+        paramInt = i + g.a.a.b.b.a.g(5, this.url);
       }
-      i = paramInt + g.a.a.b.b.a.bu(6, this.type);
+      i = paramInt + g.a.a.b.b.a.bM(6, this.type);
       paramInt = i;
-      if (this.HER != null) {
-        paramInt = i + g.a.a.b.b.a.f(7, this.HER);
+      if (this.OwK != null) {
+        paramInt = i + g.a.a.b.b.a.g(7, this.OwK);
       }
       i = paramInt;
-      if (this.HES != null) {
-        i = paramInt + g.a.a.b.b.a.f(8, this.HES);
+      if (this.OwL != null) {
+        i = paramInt + g.a.a.b.b.a.g(8, this.OwL);
       }
       paramInt = i;
-      if (this.HET != null) {
-        paramInt = i + g.a.a.b.b.a.f(9, this.HET);
+      if (this.OwM != null) {
+        paramInt = i + g.a.a.b.b.a.g(9, this.OwM);
       }
       i = paramInt;
-      if (this.HEU != null) {
-        i = paramInt + g.a.a.b.b.a.f(10, this.HEU);
+      if (this.OwN != null) {
+        i = paramInt + g.a.a.b.b.a.g(10, this.OwN);
       }
-      i += g.a.a.b.b.a.bu(11, this.HEV);
+      i += g.a.a.b.b.a.bM(11, this.OwO);
       paramInt = i;
-      if (this.HEm != null) {
-        paramInt = i + g.a.a.b.b.a.f(12, this.HEm);
+      if (this.Owf != null) {
+        paramInt = i + g.a.a.b.b.a.g(12, this.Owf);
       }
       i = paramInt;
-      if (this.weappPath != null) {
-        i = paramInt + g.a.a.b.b.a.f(13, this.weappPath);
+      if (this.lpQ != null) {
+        i = paramInt + g.a.a.b.b.a.g(13, this.lpQ);
       }
-      i += g.a.a.b.b.a.bu(14, this.HEW);
+      i += g.a.a.b.b.a.bM(14, this.OwP);
       paramInt = i;
-      if (this.HEX != null) {
-        paramInt = i + g.a.a.b.b.a.f(15, this.HEX);
+      if (this.OwQ != null) {
+        paramInt = i + g.a.a.b.b.a.g(15, this.OwQ);
       }
       AppMethodBeat.o(91303);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
         AppMethodBeat.o(91303);
@@ -142,63 +142,63 @@ public final class q
           AppMethodBeat.o(91303);
           return -1;
         case 1: 
-          localq.id = locala.UbS.readString();
+          localq.id = locala.abFh.readString();
           AppMethodBeat.o(91303);
           return 0;
         case 2: 
-          localq.name = locala.UbS.readString();
+          localq.name = locala.abFh.readString();
           AppMethodBeat.o(91303);
           return 0;
         case 3: 
-          localq.desc = locala.UbS.readString();
+          localq.desc = locala.abFh.readString();
           AppMethodBeat.o(91303);
           return 0;
         case 4: 
-          localq.status = locala.UbS.zi();
+          localq.status = locala.abFh.AK();
           AppMethodBeat.o(91303);
           return 0;
         case 5: 
-          localq.url = locala.UbS.readString();
+          localq.url = locala.abFh.readString();
           AppMethodBeat.o(91303);
           return 0;
         case 6: 
-          localq.type = locala.UbS.zi();
+          localq.type = locala.abFh.AK();
           AppMethodBeat.o(91303);
           return 0;
         case 7: 
-          localq.HER = locala.UbS.readString();
+          localq.OwK = locala.abFh.readString();
           AppMethodBeat.o(91303);
           return 0;
         case 8: 
-          localq.HES = locala.UbS.readString();
+          localq.OwL = locala.abFh.readString();
           AppMethodBeat.o(91303);
           return 0;
         case 9: 
-          localq.HET = locala.UbS.readString();
+          localq.OwM = locala.abFh.readString();
           AppMethodBeat.o(91303);
           return 0;
         case 10: 
-          localq.HEU = locala.UbS.readString();
+          localq.OwN = locala.abFh.readString();
           AppMethodBeat.o(91303);
           return 0;
         case 11: 
-          localq.HEV = locala.UbS.zi();
+          localq.OwO = locala.abFh.AK();
           AppMethodBeat.o(91303);
           return 0;
         case 12: 
-          localq.HEm = locala.UbS.readString();
+          localq.Owf = locala.abFh.readString();
           AppMethodBeat.o(91303);
           return 0;
         case 13: 
-          localq.weappPath = locala.UbS.readString();
+          localq.lpQ = locala.abFh.readString();
           AppMethodBeat.o(91303);
           return 0;
         case 14: 
-          localq.HEW = locala.UbS.zi();
+          localq.OwP = locala.abFh.AK();
           AppMethodBeat.o(91303);
           return 0;
         }
-        localq.HEX = locala.UbS.readString();
+        localq.OwQ = locala.abFh.readString();
         AppMethodBeat.o(91303);
         return 0;
       }
@@ -209,7 +209,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.a.q
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.music.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.e;
+import com.tencent.mm.al.e;
 import com.tencent.qqmusic.mediaplayer.upstream.IDataSource;
 import com.tencent.qqmusic.mediaplayer.upstream.IDataSourceFactory;
 import com.tencent.qqmusic.mediaplayer.upstream.INativeDataSource;
@@ -11,11 +11,11 @@ public final class c
   implements IDataSourceFactory
 {
   public ByteBuffer buffer;
-  public e iJR;
+  public e lzV;
   
   public c(e parame)
   {
-    this.iJR = parame;
+    this.lzV = parame;
   }
   
   public c(ByteBuffer paramByteBuffer)
@@ -32,7 +32,7 @@ public final class c
       AppMethodBeat.o(137426);
       return localObject;
     }
-    Object localObject = new b(this.iJR);
+    Object localObject = new b(this.lzV);
     AppMethodBeat.o(137426);
     return localObject;
   }
@@ -44,7 +44,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.g.c
  * JD-Core Version:    0.7.0.1
  */

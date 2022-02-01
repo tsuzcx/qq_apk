@@ -17,7 +17,7 @@ public final class a
     //   5: invokestatic 13	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: aload_1
-    //   10: invokestatic 17	com/tencent/tbs/a/a/a:nJ	(Ljava/lang/String;Ljava/lang/String;)[B
+    //   10: invokestatic 17	com/tencent/tbs/a/a/a:oG	(Ljava/lang/String;Ljava/lang/String;)[B
     //   13: astore 5
     //   15: aload 5
     //   17: ifnull +77 -> 94
@@ -101,7 +101,7 @@ public final class a
     //   94	104	107	finally
   }
   
-  private static byte[] nJ(String paramString1, String paramString2)
+  private static byte[] oG(String paramString1, String paramString2)
   {
     AppMethodBeat.i(174274);
     try
@@ -120,7 +120,7 @@ public final class a
     return null;
   }
   
-  private static byte[] nK(String paramString1, String paramString2)
+  private static byte[] oH(String paramString1, String paramString2)
   {
     AppMethodBeat.i(174275);
     try
@@ -139,12 +139,12 @@ public final class a
     return null;
   }
   
-  public static byte[] nL(String paramString1, String paramString2)
+  public static byte[] pK(String paramString1, String paramString2)
   {
     AppMethodBeat.i(174276);
     try
     {
-      paramString1 = nK(paramString1, paramString2);
+      paramString1 = oH(paramString1, paramString2);
       if (paramString1 == null)
       {
         AppMethodBeat.o(174276);
@@ -168,7 +168,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tbs.a.a.a
  * JD-Core Version:    0.7.0.1
  */

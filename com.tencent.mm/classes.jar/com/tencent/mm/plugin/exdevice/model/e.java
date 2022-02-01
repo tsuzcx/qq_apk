@@ -7,52 +7,52 @@ import android.os.Build.VERSION;
 import android.os.Looper;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
 import com.tencent.mm.api.c.b;
 import com.tencent.mm.api.c.b.b;
-import com.tencent.mm.g.a.ds;
-import com.tencent.mm.g.a.du;
-import com.tencent.mm.g.a.dw;
-import com.tencent.mm.g.a.eb;
-import com.tencent.mm.g.a.eb.a;
-import com.tencent.mm.g.a.ec;
-import com.tencent.mm.g.a.ec.a;
-import com.tencent.mm.g.a.ed;
-import com.tencent.mm.g.a.ee;
-import com.tencent.mm.g.a.ee.a;
-import com.tencent.mm.g.a.ef;
-import com.tencent.mm.g.a.en;
-import com.tencent.mm.g.a.ep;
-import com.tencent.mm.g.a.eq;
-import com.tencent.mm.g.a.er;
-import com.tencent.mm.g.a.et;
-import com.tencent.mm.g.a.eu;
-import com.tencent.mm.g.a.eu.a;
-import com.tencent.mm.g.a.ew;
-import com.tencent.mm.g.a.ew.a;
-import com.tencent.mm.g.a.ey;
-import com.tencent.mm.g.a.fb;
-import com.tencent.mm.g.a.fc;
-import com.tencent.mm.g.a.fd;
-import com.tencent.mm.g.a.fe;
-import com.tencent.mm.g.a.fg;
-import com.tencent.mm.g.a.fh;
-import com.tencent.mm.g.a.fi;
-import com.tencent.mm.g.a.fj;
-import com.tencent.mm.g.a.fl;
-import com.tencent.mm.g.a.fm;
-import com.tencent.mm.g.a.kf;
-import com.tencent.mm.g.a.kf.b;
-import com.tencent.mm.g.a.mc;
-import com.tencent.mm.g.a.md;
-import com.tencent.mm.g.a.or;
-import com.tencent.mm.g.a.xa;
-import com.tencent.mm.g.a.xj;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.g.c.do;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.f.a.dz;
+import com.tencent.mm.f.a.eb;
+import com.tencent.mm.f.a.ed;
+import com.tencent.mm.f.a.eg;
+import com.tencent.mm.f.a.ei;
+import com.tencent.mm.f.a.ei.a;
+import com.tencent.mm.f.a.ej;
+import com.tencent.mm.f.a.ej.a;
+import com.tencent.mm.f.a.ek;
+import com.tencent.mm.f.a.el;
+import com.tencent.mm.f.a.el.a;
+import com.tencent.mm.f.a.ew;
+import com.tencent.mm.f.a.ex;
+import com.tencent.mm.f.a.ey;
+import com.tencent.mm.f.a.ez;
+import com.tencent.mm.f.a.ez.a;
+import com.tencent.mm.f.a.fa;
+import com.tencent.mm.f.a.fb;
+import com.tencent.mm.f.a.fb.a;
+import com.tencent.mm.f.a.fd;
+import com.tencent.mm.f.a.fd.a;
+import com.tencent.mm.f.a.ff;
+import com.tencent.mm.f.a.fi;
+import com.tencent.mm.f.a.fj;
+import com.tencent.mm.f.a.fk;
+import com.tencent.mm.f.a.fl;
+import com.tencent.mm.f.a.fn;
+import com.tencent.mm.f.a.fo;
+import com.tencent.mm.f.a.fp;
+import com.tencent.mm.f.a.fq;
+import com.tencent.mm.f.a.fs;
+import com.tencent.mm.f.a.ft;
+import com.tencent.mm.f.a.kv;
+import com.tencent.mm.f.a.kv.b;
+import com.tencent.mm.f.a.mt;
+import com.tencent.mm.f.a.mu;
+import com.tencent.mm.f.a.po;
+import com.tencent.mm.f.a.yg;
+import com.tencent.mm.f.a.yh;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.f.c.ds;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.plugin.exdevice.j.j;
 import com.tencent.mm.plugin.exdevice.j.k;
 import com.tencent.mm.plugin.exdevice.service.ExDeviceService;
@@ -60,14 +60,16 @@ import com.tencent.mm.plugin.exdevice.service.f.a;
 import com.tencent.mm.plugin.exdevice.service.m;
 import com.tencent.mm.plugin.exdevice.service.t.a;
 import com.tencent.mm.plugin.exdevice.service.u;
+import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.pluginsdk.o.c.a;
 import com.tencent.mm.pluginsdk.o.e;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.adp;
-import com.tencent.mm.protocal.protobuf.boc;
-import com.tencent.mm.protocal.protobuf.cat;
+import com.tencent.mm.protocal.protobuf.adw;
+import com.tencent.mm.protocal.protobuf.bvr;
+import com.tencent.mm.protocal.protobuf.ciu;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.event.ILifecycleEventObserver;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -77,7 +79,6 @@ import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -89,102 +90,157 @@ import org.json.JSONObject;
 
 public final class e
 {
-  private final long cZY;
+  private final long deq;
   MMHandler mHandler;
-  public IListener oVj;
-  public IListener ryA;
-  public IListener ryB;
-  public IListener ryC;
-  public IListener ryD;
-  public IListener ryE;
-  public IListener ryF;
-  public IListener ryG;
-  public IListener ryH;
-  public IListener ryI;
-  public IListener ryJ;
-  public IListener ryK;
-  public IListener ryL;
-  public IListener ryM;
-  public IListener ryN;
-  public IListener ryO;
-  public IListener ryP;
-  public IListener ryQ;
-  public IListener ryR;
-  public IListener ryS;
-  public IListener ryT;
-  public IListener ryU;
-  public IListener ryV;
-  public IListener ryW;
-  public IListener ryX;
-  public IListener ryY;
-  public IListener ryZ;
-  List<b> ryr;
-  Map<String, b> rys;
-  public IListener ryt;
-  public IListener ryu;
-  public IListener ryv;
-  public IListener ryw;
-  public IListener ryx;
-  public IListener ryy;
-  public IListener ryz;
-  public IListener rza;
-  public IListener rzb;
-  public IListener rzc;
-  public IListener rzd;
-  public IListener rze;
-  public IListener rzf;
-  ExdeviceWCLanSDKUtil rzg;
-  g rzh;
-  private boolean rzi;
-  private c rzj;
+  public IListener rXi;
+  List<b> vdX;
+  Map<String, b> vdY;
+  public IListener vdZ;
+  public IListener veA;
+  public IListener veB;
+  public IListener veC;
+  public IListener veD;
+  public IListener veE;
+  public IListener veF;
+  public IListener veG;
+  public IListener veH;
+  public IListener veI;
+  public IListener veJ;
+  public IListener veK;
+  public IListener veL;
+  public IListener veM;
+  ExdeviceWCLanSDKUtil veN;
+  g veO;
+  private boolean veP;
+  private c veQ;
+  public IListener vea;
+  public IListener veb;
+  public IListener vec;
+  public IListener ved;
+  public IListener vee;
+  public IListener vef;
+  public ILifecycleEventObserver<Object> veg;
+  public IListener veh;
+  public IListener vei;
+  public IListener vej;
+  public IListener vek;
+  public IListener vel;
+  public IListener vem;
+  public IListener ven;
+  public IListener veo;
+  public IListener vep;
+  public IListener veq;
+  public IListener ves;
+  public IListener vet;
+  public IListener veu;
+  public IListener vev;
+  public IListener vew;
+  public IListener vex;
+  public IListener vey;
+  public IListener vez;
   
   public e()
   {
     AppMethodBeat.i(23284);
-    this.ryt = new IListener() {};
-    this.ryu = new IListener() {};
-    this.ryv = new e.23(this);
-    this.ryw = new e.34(this);
-    this.ryx = new IListener() {};
-    this.ryy = new e.43(this);
-    this.ryz = new IListener() {};
-    this.ryA = new IListener() {};
-    this.ryB = new e.46(this);
-    this.ryC = new e.2(this);
-    this.ryD = new e.3(this);
-    this.ryE = new e.4(this);
-    this.ryF = new IListener() {};
-    this.ryG = new e.6(this);
-    this.ryH = new e.7(this);
-    this.ryI = new IListener() {};
-    this.ryJ = new e.9(this);
-    this.ryK = new e.10(this);
-    this.ryL = new IListener() {};
-    this.ryM = new IListener() {};
-    this.ryN = new IListener() {};
-    this.ryO = new IListener() {};
-    this.ryP = new IListener() {};
-    this.ryQ = new e.17(this);
-    this.ryR = new IListener() {};
-    this.ryS = new e.19(this);
-    this.ryT = new e.20(this);
-    this.oVj = new e.21(this);
-    this.ryU = new e.22(this);
-    this.ryV = new IListener() {};
-    this.ryW = new IListener() {};
-    this.ryX = new IListener() {};
-    this.ryY = new IListener() {};
-    this.ryZ = new IListener() {};
-    this.rza = new IListener() {};
-    this.rzb = new IListener() {};
-    this.rzc = new e.31(this);
-    this.rzd = new e.32(this);
-    this.rze = new e.33(this);
-    this.rzf = new e.35(this);
-    this.cZY = 300000L;
-    this.rzi = false;
-    this.ryr = new LinkedList();
-    this.rys = new HashMap();
+    this.vdZ = new IListener() {};
+    this.vea = new IListener() {};
+    this.veb = new IListener() {};
+    this.vec = new e.34(this);
+    this.ved = new IListener() {};
+    this.vee = new IListener() {};
+    this.vef = new IListener() {};
+    this.veg = new ILifecycleEventObserver()
+    {
+      public final void onEventHappen(Object paramAnonymousObject)
+      {
+        AppMethodBeat.i(277024);
+        paramAnonymousObject = e.this;
+        Log.i("MicroMsg.exdevice.ExdeviceEventManager", "receive SyncExdeviceDataEvent");
+        int i = bh.aGY().bih();
+        if ((i != 4) && (i != 6))
+        {
+          Log.i("MicroMsg.exdevice.ExdeviceEventManager", "net work state is not connected, now state is %d", new Object[] { Integer.valueOf(i) });
+          AppMethodBeat.o(277024);
+          return;
+        }
+        String str = com.tencent.mm.n.h.axc().getValue("DeviceAutoSyncClose");
+        Log.i("MicroMsg.exdevice.Util", "handleSyncExdeviceDataEvent, auto sync has close : %s", new Object[] { str });
+        if ((!Util.isNullOrNil(str)) && (str.equalsIgnoreCase("1"))) {
+          Log.i("MicroMsg.exdevice.Util", "auto sync has closed, ignore this sync request");
+        }
+        for (i = 0; i == 0; i = 1)
+        {
+          Log.i("MicroMsg.exdevice.ExdeviceEventManager", "not allowed to sync exdevice data");
+          AppMethodBeat.o(277024);
+          return;
+        }
+        if (!com.tencent.mm.plugin.f.a.e.a.eP(MMApplicationContext.getContext()))
+        {
+          Log.i("MicroMsg.exdevice.ExdeviceEventManager", "now sdk version not support ble device : %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
+          AppMethodBeat.o(277024);
+          return;
+        }
+        if (!com.tencent.mm.plugin.f.a.e.a.cyk())
+        {
+          Log.i("MicroMsg.exdevice.ExdeviceEventManager", "Bluetooth is not open, Just leave");
+          AppMethodBeat.o(277024);
+          return;
+        }
+        ae.cZF();
+        if (d.cZd() == 1)
+        {
+          Log.i("MicroMsg.exdevice.ExdeviceEventManager", "it is in brand");
+          AppMethodBeat.o(277024);
+          return;
+        }
+        if (i.vfP.nb(false))
+        {
+          Log.i("MicroMsg.exdevice.ExdeviceEventManager", "now need to get bound harddevices");
+          i.vfP.a(null, new e.38(paramAnonymousObject));
+          AppMethodBeat.o(277024);
+          return;
+        }
+        Log.i("MicroMsg.exdevice.ExdeviceEventManager", "now do not need to get bound device, do sync directly");
+        e.cZg();
+        AppMethodBeat.o(277024);
+      }
+    };
+    this.veh = new IListener() {};
+    this.vei = new e.2(this);
+    this.vej = new e.3(this);
+    this.vek = new e.4(this);
+    this.vel = new IListener() {};
+    this.vem = new e.6(this);
+    this.ven = new e.7(this);
+    this.veo = new e.8(this);
+    this.vep = new e.9(this);
+    this.veq = new e.10(this);
+    this.ves = new IListener() {};
+    this.vet = new IListener() {};
+    this.veu = new IListener() {};
+    this.vev = new IListener() {};
+    this.vew = new IListener() {};
+    this.vex = new e.17(this);
+    this.vey = new IListener() {};
+    this.vez = new e.19(this);
+    this.veA = new e.20(this);
+    this.rXi = new IListener() {};
+    this.veB = new e.22(this);
+    this.veC = new e.24(this);
+    this.veD = new IListener() {};
+    this.veE = new IListener() {};
+    this.veF = new IListener() {};
+    this.veG = new IListener() {};
+    this.veH = new IListener() {};
+    this.veI = new IListener() {};
+    this.veJ = new e.31(this);
+    this.veK = new e.32(this);
+    this.veL = new e.33(this);
+    this.veM = new e.35(this);
+    this.deq = 300000L;
+    this.veP = false;
+    this.vdX = new LinkedList();
+    this.vdY = new HashMap();
     this.mHandler = new MMHandler("wifi_device_heart_beat");
     AppMethodBeat.o(23284);
   }
@@ -209,7 +265,7 @@ public final class e
   private b a(String paramString, b paramb)
   {
     AppMethodBeat.i(23312);
-    paramString = (b)this.rys.put(paramString, paramb);
+    paramString = (b)this.vdY.put(paramString, paramb);
     AppMethodBeat.o(23312);
     return paramString;
   }
@@ -225,51 +281,51 @@ public final class e
       return false;
     }
     String str = paramb.field_brandName;
-    f.a locala = u.cLx().CY(paramb.field_mac);
+    f.a locala = u.dak().Jm(paramb.field_mac);
     if (locala == null)
     {
       Log.i("MicroMsg.exdevice.ExdeviceEventManager", "can not find the hardevice connect state");
       AppMethodBeat.o(23294);
       return false;
     }
-    if (locala.dHO == 2)
+    if (locala.fAF == 2)
     {
       Log.i("MicroMsg.exdevice.ExdeviceEventManager", "notify the connect device %s", new Object[] { str });
       localObject = new j(paramInt1, paramInt2, paramb.field_mac);
-      u.cLy().a((ae)localObject);
+      u.dal().a((af)localObject);
     }
-    Object localObject = ad.cKS();
+    Object localObject = ae.cZF();
     if (paramInt1 == 1) {}
     for (paramInt2 = 1;; paramInt2 = 0)
     {
-      ((d)localObject).Gw(paramInt2);
+      ((d)localObject).Kd(paramInt2);
       if (paramInt1 != 2) {
         break;
       }
       Log.i("MicroMsg.exdevice.ExdeviceEventManager", "now exit chattingui, do not notify change the subtitle");
-      localObject = ad.cKS();
+      localObject = ae.cZF();
       long l = paramb.field_mac;
-      localObject = (MTimerHandler)((d)localObject).rya.remove(Long.valueOf(l));
+      localObject = (MTimerHandler)((d)localObject).vdG.remove(Long.valueOf(l));
       if (localObject != null) {
         ((MTimerHandler)localObject).stopTimer();
       }
       Log.i("MicroMsg.exdevice.ExdeviceEventManager", "Device close strategy(%d)", new Object[] { Integer.valueOf(paramb.field_closeStrategy) });
-      if (((paramb.field_closeStrategy & 0x1) != 0) || (!u.cLx().Dc(locala.rDD)) || ((2 != locala.dHO) && (locala.dHO != 0)))
+      if (((paramb.field_closeStrategy & 0x1) != 0) || (!u.dak().Jq(locala.vjn)) || ((2 != locala.fAF) && (locala.fAF != 0)))
       {
-        Log.i("MicroMsg.exdevice.ExdeviceEventManager", "now the device is not auth or not connect  or closeStrategy is to close after exit, try to stop connetct, connet state is %d, device is %s", new Object[] { Integer.valueOf(locala.dHO), str });
-        if (u.cLy().rxT != null) {
-          u.cLy().rxT.De(locala.rDD);
+        Log.i("MicroMsg.exdevice.ExdeviceEventManager", "now the device is not auth or not connect  or closeStrategy is to close after exit, try to stop connetct, connet state is %d, device is %s", new Object[] { Integer.valueOf(locala.fAF), str });
+        if (u.dal().vdz != null) {
+          u.dal().vdz.Js(locala.vjn);
         }
       }
       if (f.b(paramb))
       {
         Log.i("MicroMsg.exdevice.ExdeviceEventManager", "try to disconnect simpleBTDevice(%s).", new Object[] { Long.valueOf(paramb.field_mac) });
-        ant(com.tencent.mm.plugin.exdevice.k.b.Dj(paramb.field_mac));
+        avs(com.tencent.mm.plugin.exdevice.k.b.Jx(paramb.field_mac));
       }
       AppMethodBeat.o(23294);
       return true;
     }
-    if ((2 != locala.dHO) && (o.e.JSY != null) && (o.e.JSY.fVV()))
+    if ((2 != locala.fAF) && (o.e.QSd != null) && (o.e.QSd.gOF()))
     {
       Log.i("MicroMsg.exdevice.ExdeviceEventManager", "getWearCommand is null or wear has connected in the brandName.");
       AppMethodBeat.o(23294);
@@ -279,29 +335,29 @@ public final class e
     return true;
   }
   
-  public static void aQ(String paramString, boolean paramBoolean)
+  public static void aT(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(23309);
     Log.i("MicroMsg.exdevice.ExdeviceEventManager", "notifyOnDeviceBindStateChange. deviceId=%s, isBound=%s", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
-    ep localep = new ep();
-    localep.dHX.dGL = paramString;
-    localep.dHX.dGT = paramBoolean;
-    EventCenter.instance.asyncPublish(localep, Looper.getMainLooper());
+    ew localew = new ew();
+    localew.fAO.fzB = paramString;
+    localew.fAO.fzJ = paramBoolean;
+    EventCenter.instance.asyncPublish(localew, Looper.getMainLooper());
     AppMethodBeat.o(23309);
   }
   
-  static boolean ans(String paramString)
+  static boolean avr(String paramString)
   {
     AppMethodBeat.i(23293);
-    paramString = com.tencent.mm.al.g.fJ(paramString);
+    paramString = com.tencent.mm.ao.g.gu(paramString);
     if (paramString == null)
     {
       Log.e("MicroMsg.exdevice.ExdeviceEventManager", "bizInfo is null");
       AppMethodBeat.o(23293);
       return false;
     }
-    paramString = paramString.cG(false);
-    if ((paramString == null) || (paramString.UZ() == null) || (!paramString.UZ().Vi()))
+    paramString = paramString.dc(false);
+    if ((paramString == null) || (paramString.Zr() == null) || (!paramString.Zr().ZA()))
     {
       Log.e("MicroMsg.exdevice.ExdeviceEventManager", "this is not hardware biz");
       AppMethodBeat.o(23293);
@@ -311,11 +367,11 @@ public final class e
     return true;
   }
   
-  public static boolean ant(String paramString)
+  public static boolean avs(String paramString)
   {
     AppMethodBeat.i(23301);
     Log.d("MicroMsg.exdevice.ExdeviceEventManager", "handleExDeviceSimpleBTDisconnectDevice, mac(%s).", new Object[] { paramString });
-    if (!cKx())
+    if (!cZi())
     {
       Log.e("MicroMsg.exdevice.ExdeviceEventManager", "isBTOpenAndBLESupported return false");
       AppMethodBeat.o(23301);
@@ -327,8 +383,8 @@ public final class e
       AppMethodBeat.o(23301);
       return false;
     }
-    ad.cKX();
-    h.CM(com.tencent.mm.plugin.exdevice.k.b.anY(paramString));
+    ae.cZK();
+    h.IW(com.tencent.mm.plugin.exdevice.k.b.avW(paramString));
     AppMethodBeat.o(23301);
     return true;
   }
@@ -373,8 +429,8 @@ public final class e
     for (int i = 0;; i = paramArrayOfByte.length)
     {
       Log.d("MicroMsg.exdevice.ExdeviceEventManager", "handleExDeviceSimpleBTUploadDataToServer. mac = %s, brandName = %s, dataLen = %d", new Object[] { localObject, str, Integer.valueOf(i) });
-      long l = com.tencent.mm.plugin.exdevice.k.b.anY(paramString1);
-      localObject = ad.cKL().Di(l);
+      long l = com.tencent.mm.plugin.exdevice.k.b.avW(paramString1);
+      localObject = ae.cZx().Jw(l);
       if (localObject != null) {
         break label238;
       }
@@ -387,21 +443,21 @@ public final class e
       break label131;
     }
     label238:
-    paramString1 = com.tencent.mm.plugin.d.a.b.a.a.aX(paramArrayOfByte);
-    if (1L != paramString1.phx)
+    paramString1 = com.tencent.mm.plugin.f.a.b.a.a.bk(paramArrayOfByte);
+    if (1L != paramString1.sjI)
     {
-      Log.e("MicroMsg.exdevice.ExdeviceEventManager", "not step profile type %d != %d", new Object[] { Long.valueOf(1L), Long.valueOf(paramString1.phx) });
+      Log.e("MicroMsg.exdevice.ExdeviceEventManager", "not step profile type %d != %d", new Object[] { Long.valueOf(1L), Long.valueOf(paramString1.sjI) });
       AppMethodBeat.o(23304);
       return false;
     }
-    paramString1 = (com.tencent.mm.plugin.d.a.b.a.f)paramString1;
+    paramString1 = (com.tencent.mm.plugin.f.a.b.a.f)paramString1;
     paramString2 = Calendar.getInstance();
     paramString2.set(11, 0);
     paramString2.set(12, 0);
     paramString2.set(13, 0);
     i = (int)(paramString2.getTimeInMillis() / 1000L);
     int j = (int)(System.currentTimeMillis() / 1000L);
-    ((com.tencent.mm.plugin.sport.a.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.sport.a.b.class)).b(((com.tencent.mm.plugin.exdevice.i.b)localObject).field_deviceID, ((com.tencent.mm.plugin.exdevice.i.b)localObject).field_deviceType, i, j, paramString1.pjj, "");
+    ((com.tencent.mm.plugin.sport.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.sport.a.b.class)).b(((com.tencent.mm.plugin.exdevice.i.b)localObject).field_deviceID, ((com.tencent.mm.plugin.exdevice.i.b)localObject).field_deviceType, i, j, paramString1.sls, "");
     AppMethodBeat.o(23304);
     return true;
   }
@@ -410,20 +466,20 @@ public final class e
   {
     AppMethodBeat.i(23308);
     Log.i("MicroMsg.exdevice.ExdeviceEventManager", "notifyOnRecvDataFromDevice. deviceId=%s, brandName=%s", new Object[] { paramString1, paramString2 });
-    eq localeq = new eq();
-    localeq.dHY.dGL = paramString1;
-    localeq.dHY.brandName = paramString2;
-    localeq.dHY.data = paramArrayOfByte;
-    EventCenter.instance.asyncPublish(localeq, Looper.getMainLooper());
+    ex localex = new ex();
+    localex.fAP.fzB = paramString1;
+    localex.fAP.fzM = paramString2;
+    localex.fAP.data = paramArrayOfByte;
+    EventCenter.instance.asyncPublish(localex, Looper.getMainLooper());
     AppMethodBeat.o(23308);
   }
   
   static boolean c(IEvent paramIEvent)
   {
     AppMethodBeat.i(23288);
-    paramIEvent = (eb)paramIEvent;
-    Log.i("MicroMsg.exdevice.ExdeviceEventManager", "handleGetDeviceInfosEvent: brandName=%s, context=%s", new Object[] { paramIEvent.dHi.brandName, paramIEvent.dHi.context });
-    LinkedList localLinkedList = ad.cKL().anL(paramIEvent.dHi.brandName);
+    paramIEvent = (ei)paramIEvent;
+    Log.i("MicroMsg.exdevice.ExdeviceEventManager", "handleGetDeviceInfosEvent: brandName=%s, context=%s", new Object[] { paramIEvent.fzZ.fzM, paramIEvent.fzZ.context });
+    LinkedList localLinkedList = ae.cZx().avK(paramIEvent.fzZ.fzM);
     JSONArray localJSONArray = new JSONArray();
     label222:
     for (;;)
@@ -440,7 +496,7 @@ public final class e
           }
           localJSONObject = new JSONObject();
           localJSONObject.put("deviceId", localb.field_deviceID);
-          if (!u.cLx().CW(localb.field_mac)) {
+          if (!u.dak().Jk(localb.field_mac)) {
             break label222;
           }
           localJSONObject.put("state", "connected");
@@ -451,8 +507,8 @@ public final class e
       catch (Exception localException)
       {
         Log.e("MicroMsg.exdevice.ExdeviceEventManager", "Ex in handleGetDeviceInfosEvent, %s", new Object[] { localException.getMessage() });
-        paramIEvent.dHj.dHk = localJSONArray;
-        paramIEvent.dHj.dGX = true;
+        paramIEvent.fAa.fAb = localJSONArray;
+        paramIEvent.fAa.fzO = true;
         Log.i("MicroMsg.exdevice.ExdeviceEventManager", "GetDeviceInfos: %s", new Object[] { localJSONArray.toString() });
         AppMethodBeat.o(23288);
         return true;
@@ -460,24 +516,24 @@ public final class e
     }
   }
   
-  static boolean cKv()
+  static boolean cZg()
   {
     AppMethodBeat.i(23296);
-    Object localObject = ad.cKL().cLC();
+    Object localObject = ae.cZx().dap();
     if (((LinkedList)localObject).isEmpty())
     {
       Log.i("MicroMsg.exdevice.ExdeviceEventManager", "get harddevice info is null or empty");
       AppMethodBeat.o(23296);
       return false;
     }
-    ad.cKS().Gw(2);
+    ae.cZF().Kd(2);
     localObject = ((LinkedList)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
       com.tencent.mm.plugin.exdevice.i.b localb = (com.tencent.mm.plugin.exdevice.i.b)((Iterator)localObject).next();
-      bg.aVF();
-      as localas = com.tencent.mm.model.c.aSN().Kn(localb.field_brandName);
-      if ((localas == null) || (!com.tencent.mm.contact.c.oR(localas.field_type)))
+      bh.beI();
+      as localas = com.tencent.mm.model.c.bbL().RG(localb.field_brandName);
+      if ((localas == null) || (!com.tencent.mm.contact.d.rk(localas.field_type)))
       {
         Log.e("MicroMsg.exdevice.ExdeviceEventManager", "%s is not my contact now, may be has been deleted", new Object[] { localb.field_brandName });
       }
@@ -488,34 +544,34 @@ public final class e
       else
       {
         Log.i("MicroMsg.exdevice.ExdeviceEventManager", "now try to connect %s", new Object[] { localb.field_brandName });
-        ad.cKS().a(localb.field_brandName, localb.field_mac, 0, true);
+        ae.cZF().a(localb.field_brandName, localb.field_mac, 0, true);
       }
     }
     AppMethodBeat.o(23296);
     return true;
   }
   
-  static boolean cKw()
+  static boolean cZh()
   {
     AppMethodBeat.i(23297);
     Log.i("MicroMsg.exdevice.ExdeviceEventManager", "receive StopAllChannelEvent");
-    ad.cKS();
-    d.lO(false);
-    ad.cKS().cKu();
+    ae.cZF();
+    d.mZ(false);
+    ae.cZF().cZe();
     AppMethodBeat.o(23297);
     return true;
   }
   
-  private static boolean cKx()
+  private static boolean cZi()
   {
     AppMethodBeat.i(23299);
-    if (!com.tencent.mm.plugin.d.a.e.a.eL(MMApplicationContext.getContext()))
+    if (!com.tencent.mm.plugin.f.a.e.a.eP(MMApplicationContext.getContext()))
     {
       Log.e("MicroMsg.exdevice.ExdeviceEventManager", "now sdk version not support ble device : %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
       AppMethodBeat.o(23299);
       return false;
     }
-    if (!com.tencent.mm.plugin.d.a.e.a.ckP())
+    if (!com.tencent.mm.plugin.f.a.e.a.cyk())
     {
       Log.e("MicroMsg.exdevice.ExdeviceEventManager", "Bluetooth is not open, Just leave");
       AppMethodBeat.o(23299);
@@ -525,30 +581,30 @@ public final class e
     return true;
   }
   
-  public static boolean cKy()
+  public static boolean cZj()
   {
     AppMethodBeat.i(23300);
     Log.d("MicroMsg.exdevice.ExdeviceEventManager", "handleExDeviceSimpleBTScanDevice");
-    if (!cKx())
+    if (!cZi())
     {
       Log.e("MicroMsg.exdevice.ExdeviceEventManager", "isBTOpenAndBLESupported return false");
       AppMethodBeat.o(23300);
       return false;
     }
-    ad.cKX().cKB();
+    ae.cZK().cZm();
     AppMethodBeat.o(23300);
     return true;
   }
   
-  static boolean cKz()
+  static boolean cZk()
   {
     AppMethodBeat.i(23313);
     Log.i("MicroMsg.exdevice.ExdeviceEventManager", "Wechat exit, stop ExDeviceService.");
     Context localContext = MMApplicationContext.getContext();
     try
     {
-      ad.cKS().cKu();
-      com.tencent.mm.br.c.o(new Intent(localContext, ExDeviceService.class), "exdevice");
+      ae.cZF().cZe();
+      com.tencent.mm.by.c.n(new Intent(localContext, ExDeviceService.class), "exdevice");
       AppMethodBeat.o(23313);
       return true;
     }
@@ -565,67 +621,67 @@ public final class e
   public static void d(String paramString1, String paramString2, int paramInt, String paramString3)
   {
     AppMethodBeat.i(23306);
-    or localor = new or();
-    localor.dUI.op = 2;
-    localor.dUI.dRD = paramString1;
-    localor.dUI.dHO = paramInt;
-    localor.dUI.url = paramString2;
-    localor.dUI.dGL = paramString3;
-    EventCenter.instance.asyncPublish(localor, Looper.getMainLooper());
+    po localpo = new po();
+    localpo.fOk.op = 2;
+    localpo.fOk.fKT = paramString1;
+    localpo.fOk.fAF = paramInt;
+    localpo.fOk.url = paramString2;
+    localpo.fOk.fzB = paramString3;
+    EventCenter.instance.asyncPublish(localpo, Looper.getMainLooper());
     AppMethodBeat.o(23306);
   }
   
   static boolean d(IEvent paramIEvent)
   {
     AppMethodBeat.i(23289);
-    paramIEvent = (ew)paramIEvent;
-    Log.i("MicroMsg.exdevice.ExdeviceEventManager", "handleSendDataToDeviceEvent: brandName=%s, deviceId=%s", new Object[] { paramIEvent.dIh.brandName, paramIEvent.dIh.dGL });
-    if (Util.isNullOrNil(paramIEvent.dIh.data))
+    paramIEvent = (fd)paramIEvent;
+    Log.i("MicroMsg.exdevice.ExdeviceEventManager", "handleSendDataToDeviceEvent: brandName=%s, deviceId=%s", new Object[] { paramIEvent.fAY.fzM, paramIEvent.fAY.fzB });
+    if (Util.isNullOrNil(paramIEvent.fAY.data))
     {
-      paramIEvent.dIi.dGX = false;
+      paramIEvent.fAZ.fzO = false;
       AppMethodBeat.o(23289);
       return false;
     }
-    Object localObject = ad.cKL().anJ(paramIEvent.dIh.dGL);
+    Object localObject = ae.cZx().avI(paramIEvent.fAY.fzB);
     if (localObject == null)
     {
       Log.e("MicroMsg.exdevice.ExdeviceEventManager", "hdInfo error");
-      paramIEvent.dIi.dGX = false;
+      paramIEvent.fAZ.fzO = false;
       AppMethodBeat.o(23289);
       return false;
     }
-    if (!u.cLx().CW(((com.tencent.mm.plugin.exdevice.i.b)localObject).field_mac))
+    if (!u.dak().Jk(((com.tencent.mm.plugin.exdevice.i.b)localObject).field_mac))
     {
       Log.e("MicroMsg.exdevice.ExdeviceEventManager", "haven't connect");
-      paramIEvent.dIi.dGX = false;
+      paramIEvent.fAZ.fzO = false;
       AppMethodBeat.o(23289);
       return false;
     }
-    if (!u.cLx().Dc(((com.tencent.mm.plugin.exdevice.i.b)localObject).field_mac))
+    if (!u.dak().Jq(((com.tencent.mm.plugin.exdevice.i.b)localObject).field_mac))
     {
       Log.e("MicroMsg.exdevice.ExdeviceEventManager", "haven't authed");
-      paramIEvent.dIi.dGX = false;
+      paramIEvent.fAZ.fzO = false;
       AppMethodBeat.o(23289);
       return false;
     }
-    if (aa.cKI().rzT) {
-      aa.cKI().Gy(a((com.tencent.mm.plugin.exdevice.i.b)localObject));
+    if (ab.cZu().vfA) {
+      ab.cZu().Kf(a((com.tencent.mm.plugin.exdevice.i.b)localObject));
     }
-    localObject = new com.tencent.mm.plugin.exdevice.j.g(paramIEvent.dIh.data, 10001, ((com.tencent.mm.plugin.exdevice.i.b)localObject).field_mac);
-    u.cLy().a((ae)localObject);
-    paramIEvent.dIi.dGX = true;
+    localObject = new com.tencent.mm.plugin.exdevice.j.g(paramIEvent.fAY.data, 10001, ((com.tencent.mm.plugin.exdevice.i.b)localObject).field_mac);
+    u.dal().a((af)localObject);
+    paramIEvent.fAZ.fzO = true;
     AppMethodBeat.o(23289);
     return true;
   }
   
-  public static void dh(String paramString, int paramInt)
+  public static void dC(String paramString, int paramInt)
   {
     AppMethodBeat.i(23307);
-    or localor = new or();
-    localor.dUI.op = 1;
-    localor.dUI.dRD = paramString;
-    localor.dUI.bDZ = paramInt;
-    EventCenter.instance.asyncPublish(localor, Looper.getMainLooper());
+    po localpo = new po();
+    localpo.fOk.op = 1;
+    localpo.fOk.fKT = paramString;
+    localpo.fOk.bnA = paramInt;
+    EventCenter.instance.asyncPublish(localpo, Looper.getMainLooper());
     AppMethodBeat.o(23307);
   }
   
@@ -644,8 +700,8 @@ public final class e
       if (localIterator.hasNext())
       {
         Object localObject = (com.tencent.mm.plugin.exdevice.i.b)localIterator.next();
-        paramList = ((do)localObject).fMh;
-        localObject = ((do)localObject).fMi;
+        paramList = ((ds)localObject).idZ;
+        localObject = ((ds)localObject).iea;
         if ((localObject == null) || (((String)localObject).length() <= 0) || (paramList == null) || (!paramList.contains("wxmsg_url"))) {
           continue;
         }
@@ -700,11 +756,11 @@ public final class e
       AppMethodBeat.o(23287);
       return false;
     }
-    Object localObject = new kf();
-    ((kf)localObject).dPf.dHp = paramString;
+    Object localObject = new kv();
+    ((kv)localObject).fIq.fAg = paramString;
     EventCenter.instance.publish((IEvent)localObject);
-    localObject = ((kf)localObject).dPg.dPh;
-    int i = ((TimeLineObject)localObject).ContentObj.LoU;
+    localObject = ((kv)localObject).fIr.fIs;
+    int i = ((TimeLineObject)localObject).ContentObj.Sqq;
     boolean bool;
     if (i == 1)
     {
@@ -712,7 +768,7 @@ public final class e
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
-        localObject = ((com.tencent.mm.plugin.exdevice.i.b)paramList.next()).fMh;
+        localObject = ((com.tencent.mm.plugin.exdevice.i.b)paramList.next()).idZ;
         if ((localObject != null) && (((String)localObject).contains("wxmsg_image"))) {
           bool = true;
         }
@@ -733,7 +789,7 @@ public final class e
         {
           if (paramList.hasNext())
           {
-            localObject = ((com.tencent.mm.plugin.exdevice.i.b)paramList.next()).fMh;
+            localObject = ((com.tencent.mm.plugin.exdevice.i.b)paramList.next()).idZ;
             if ((localObject != null) && (((String)localObject).contains("wxmsg_music")))
             {
               bool = true;
@@ -751,7 +807,7 @@ public final class e
         {
           if (paramList.hasNext())
           {
-            localObject = ((com.tencent.mm.plugin.exdevice.i.b)paramList.next()).fMh;
+            localObject = ((com.tencent.mm.plugin.exdevice.i.b)paramList.next()).idZ;
             if ((localObject != null) && (((String)localObject).contains("wxmsg_video")))
             {
               bool = true;
@@ -775,33 +831,33 @@ public final class e
   public final boolean a(b paramb)
   {
     AppMethodBeat.i(23310);
-    if (this.ryr.contains(paramb))
+    if (this.vdX.contains(paramb))
     {
       AppMethodBeat.o(23310);
       return false;
     }
-    boolean bool = this.ryr.add(paramb);
+    boolean bool = this.vdX.add(paramb);
     AppMethodBeat.o(23310);
     return bool;
   }
   
-  final boolean aR(int paramInt, String paramString)
+  final boolean aQ(int paramInt, String paramString)
   {
     AppMethodBeat.i(23298);
     Log.v("MicroMsg.exdevice.ExdeviceEventManager", "handleInChattingUI.");
-    Object localObject1 = com.tencent.mm.al.g.fJ(paramString);
+    Object localObject1 = com.tencent.mm.ao.g.gu(paramString);
     if (localObject1 == null)
     {
       Log.e("MicroMsg.exdevice.ExdeviceEventManager", "bizInfo is null");
       AppMethodBeat.o(23298);
       return false;
     }
-    localObject1 = ((com.tencent.mm.api.c)localObject1).cG(false);
+    localObject1 = ((com.tencent.mm.api.c)localObject1).dc(false);
     Object localObject2;
     if (localObject1 != null)
     {
-      localObject2 = ((c.b)localObject1).UZ();
-      if ((localObject2 != null) && (((c.b.b)localObject2).Vi())) {}
+      localObject2 = ((c.b)localObject1).Zr();
+      if ((localObject2 != null) && (((c.b.b)localObject2).ZA())) {}
     }
     else
     {
@@ -809,19 +865,19 @@ public final class e
       AppMethodBeat.o(23298);
       return false;
     }
-    localObject1 = ad.cKL().anL(paramString);
+    localObject1 = ae.cZx().avK(paramString);
     Object localObject3;
-    if (((c.b.b)localObject2).dih == 1)
+    if (((c.b.b)localObject2).eZO == 1)
     {
-      localObject2 = ad.cKL().cLC();
+      localObject2 = ae.cZx().dap();
       if (((List)localObject2).size() != 0)
       {
         localObject2 = ((List)localObject2).iterator();
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (com.tencent.mm.plugin.exdevice.i.b)((Iterator)localObject2).next();
-          Log.i("MicroMsg.exdevice.ExdeviceEventManager", "BLE hard device info, mac(%s), deviceId(%s), deviceType(%s), SimpleProtol(%d)", new Object[] { Long.valueOf(((com.tencent.mm.plugin.exdevice.i.b)localObject3).field_mac), ((com.tencent.mm.plugin.exdevice.i.b)localObject3).field_deviceID, ((com.tencent.mm.plugin.exdevice.i.b)localObject3).field_deviceType, Long.valueOf(((do)localObject3).fMg) });
-          if (0L != (((do)localObject3).fMg & 1L)) {
+          Log.i("MicroMsg.exdevice.ExdeviceEventManager", "BLE hard device info, mac(%s), deviceId(%s), deviceType(%s), SimpleProtol(%d)", new Object[] { Long.valueOf(((com.tencent.mm.plugin.exdevice.i.b)localObject3).field_mac), ((com.tencent.mm.plugin.exdevice.i.b)localObject3).field_deviceID, ((com.tencent.mm.plugin.exdevice.i.b)localObject3).field_deviceType, Long.valueOf(((ds)localObject3).idY) });
+          if (0L != (((ds)localObject3).idY & 1L)) {
             ((List)localObject1).add(localObject3);
           }
         }
@@ -864,7 +920,7 @@ public final class e
         else if (Util.nullAsNil(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_connProto).contains("1"))
         {
           k = j + 1;
-          if (!com.tencent.mm.plugin.d.a.e.a.ckN())
+          if (!com.tencent.mm.plugin.f.a.e.a.cyi())
           {
             Log.e("MicroMsg.exdevice.ExdeviceEventManager", "%s, device is BC, but you phone not support BC.", new Object[] { ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_brandName });
             j = k;
@@ -883,13 +939,13 @@ public final class e
       Log.i("MicroMsg.exdevice.ExdeviceEventManager", "receive ExDeviceOpInChattingUIEventListener, op(%d), brandName(%s), connProto(%s),", new Object[] { Integer.valueOf(paramInt), ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_brandName, ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_connProto });
       if (paramInt == 0)
       {
-        localObject3 = ad.cKS();
+        localObject3 = ae.cZF();
         long l = ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac;
         Log.i("MicroMsg.exdevice.ExdeviceConnectManager", "StopSyncTimer, device Id = %d", new Object[] { Long.valueOf(l) });
-        if (((d)localObject3).ryb.containsKey(Long.valueOf(l)))
+        if (((d)localObject3).vdH.containsKey(Long.valueOf(l)))
         {
           Log.i("MicroMsg.exdevice.ExdeviceConnectManager", "Switch from main view to chatting view before exdevice sync timeout, just stop MTimerHandler");
-          localObject3 = (MTimerHandler)((d)localObject3).ryb.remove(Long.valueOf(l));
+          localObject3 = (MTimerHandler)((d)localObject3).vdH.remove(Long.valueOf(l));
           if (localObject3 == null) {
             break label780;
           }
@@ -897,10 +953,10 @@ public final class e
         }
         for (;;)
         {
-          if (u.cLx().CW(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac))
+          if (u.dak().Jk(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac))
           {
             Log.i("MicroMsg.exdevice.ExdeviceEventManager", "Enter chatting ui, find this deivce has been connected aready, device name = %s, device id = %d", new Object[] { ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_brandName, Long.valueOf(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac) });
-            if (u.cLx().Dc(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac))
+            if (u.dak().Jq(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac))
             {
               Log.i("MicroMsg.exdevice.ExdeviceEventManager", "This device is auth aready");
               d(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_brandName, ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_url, 2, ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_deviceID);
@@ -909,10 +965,10 @@ public final class e
               j = k;
               break;
               if (!Util.nullAsNil(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_connProto).contains("3")) {
-                break label1357;
+                break label1413;
               }
               i += 1;
-              if (!com.tencent.mm.plugin.d.a.e.a.eL(MMApplicationContext.getContext()))
+              if (!com.tencent.mm.plugin.f.a.e.a.eP(MMApplicationContext.getContext()))
               {
                 Log.e("MicroMsg.exdevice.ExdeviceEventManager", "device is BLE, but you phone not support BLE.");
                 break;
@@ -933,7 +989,15 @@ public final class e
             break;
           }
         }
-        if (!com.tencent.mm.plugin.exdevice.service.d.fd(MMApplicationContext.getContext()))
+        if (((((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vty, 0) == 1) || (com.tencent.mm.protocal.d.RAG)) && (!com.tencent.mm.plugin.f.a.e.a.cyk()))
+        {
+          Log.e("MicroMsg.exdevice.ExdeviceEventManager", "System bluetooth is close!!!");
+          k = i;
+          i = j;
+          j = k;
+          break;
+        }
+        if (!com.tencent.mm.plugin.exdevice.service.d.fh(MMApplicationContext.getContext()))
         {
           Log.e("MicroMsg.exdevice.ExdeviceEventManager", "service not running");
           k = i;
@@ -943,18 +1007,18 @@ public final class e
         }
         if (f.b((com.tencent.mm.plugin.exdevice.i.b)localObject2))
         {
-          Log.i("MicroMsg.exdevice.ExdeviceEventManager", "Connect simple device, mac(%s), brandName(%s)", new Object[] { com.tencent.mm.plugin.exdevice.k.b.Dj(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac), ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_brandName });
-          a(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_brandName + ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac, new a(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_brandName, com.tencent.mm.plugin.exdevice.k.b.Dj(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac), ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_url, ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_deviceID));
-          anu(com.tencent.mm.plugin.exdevice.k.b.Dj(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac));
+          Log.i("MicroMsg.exdevice.ExdeviceEventManager", "Connect simple device, mac(%s), brandName(%s)", new Object[] { com.tencent.mm.plugin.exdevice.k.b.Jx(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac), ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_brandName });
+          a(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_brandName + ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac, new a(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_brandName, com.tencent.mm.plugin.exdevice.k.b.Jx(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac), ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_url, ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_deviceID));
+          avt(com.tencent.mm.plugin.exdevice.k.b.Jx(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac));
           k = i;
           i = j;
           j = k;
           break;
         }
-        Log.i("MicroMsg.exdevice.ExdeviceEventManager", "Connect AirSync device, mac(%s), brandName(%s)", new Object[] { com.tencent.mm.plugin.exdevice.k.b.Dj(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac), ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_brandName });
-        ad.cKS().Gw(1);
-        ad.cKS().a(Long.valueOf(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac), ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_connStrategy);
-        ad.cKS().b(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_brandName, ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac, k);
+        Log.i("MicroMsg.exdevice.ExdeviceEventManager", "Connect AirSync device, mac(%s), brandName(%s)", new Object[] { com.tencent.mm.plugin.exdevice.k.b.Jx(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac), ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_brandName });
+        ae.cZF().Kd(1);
+        ae.cZF().a(Long.valueOf(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac), ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_connStrategy);
+        ae.cZF().b(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_brandName, ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac, k);
         k = i;
         i = j;
         j = k;
@@ -964,15 +1028,15 @@ public final class e
       {
         if (f.b((com.tencent.mm.plugin.exdevice.i.b)localObject2))
         {
-          a(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_brandName + ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac, new a(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_brandName, com.tencent.mm.plugin.exdevice.k.b.Dj(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac), ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_url, ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_deviceID));
-          anu(com.tencent.mm.plugin.exdevice.k.b.Dj(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac));
+          a(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_brandName + ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac, new a(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_brandName, com.tencent.mm.plugin.exdevice.k.b.Jx(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac), ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_url, ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_deviceID));
+          avt(com.tencent.mm.plugin.exdevice.k.b.Jx(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac));
           k = i;
           i = j;
           j = k;
           break;
         }
-        ad.cKS().a(Long.valueOf(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac), ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_connStrategy);
-        ad.cKS().b(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_brandName, ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac, k);
+        ae.cZF().a(Long.valueOf(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac), ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_connStrategy);
+        ae.cZF().b(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_brandName, ((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac, k);
         k = i;
         i = j;
         j = k;
@@ -982,38 +1046,38 @@ public final class e
       {
         if (f.b((com.tencent.mm.plugin.exdevice.i.b)localObject2))
         {
-          ant(com.tencent.mm.plugin.exdevice.k.b.Dj(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac));
+          avs(com.tencent.mm.plugin.exdevice.k.b.Jx(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac));
           k = i;
           i = j;
           j = k;
           break;
         }
-        ad.cKS();
-        d.CM(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac);
+        ae.cZF();
+        d.IW(((com.tencent.mm.plugin.exdevice.i.b)localObject2).field_mac);
       }
       k = i;
       i = j;
       j = k;
       break;
       if (j + i > 0) {
-        if (!com.tencent.mm.plugin.d.a.e.a.ckP())
+        if (!com.tencent.mm.plugin.f.a.e.a.cyk())
         {
           Log.w("MicroMsg.exdevice.ExdeviceEventManager", "System bluetooth is close");
-          dh(paramString, 0);
+          dC(paramString, 0);
         }
       }
       for (;;)
       {
         AppMethodBeat.o(23298);
         return true;
-        if ((i > 0) && (j == 0) && (!com.tencent.mm.plugin.d.a.e.a.eL(MMApplicationContext.getContext())))
+        if ((i > 0) && (j == 0) && (!com.tencent.mm.plugin.f.a.e.a.eP(MMApplicationContext.getContext())))
         {
-          dh(paramString, 1);
+          dC(paramString, 1);
           continue;
-          dh(paramString, -1);
+          dC(paramString, -1);
         }
       }
-      label1357:
+      label1413:
       k = -1;
       m = j;
       j = i;
@@ -1021,11 +1085,11 @@ public final class e
     }
   }
   
-  public final boolean anu(String paramString)
+  public final boolean avt(String paramString)
   {
     AppMethodBeat.i(23302);
     Log.d("MicroMsg.exdevice.ExdeviceEventManager", "handleExDeviceSimpleBTConnectDevice");
-    if (!cKx())
+    if (!cZi())
     {
       Log.e("MicroMsg.exdevice.ExdeviceEventManager", "isBTOpenAndBLESupported return false");
       AppMethodBeat.o(23302);
@@ -1037,32 +1101,30 @@ public final class e
       AppMethodBeat.o(23302);
       return false;
     }
-    ad.cKX().a(com.tencent.mm.plugin.exdevice.k.b.anY(paramString), new h.a()
+    ae.cZK().a(com.tencent.mm.plugin.exdevice.k.b.avW(paramString), new h.a()
     {
       public final void a(long paramAnonymousLong1, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, long paramAnonymousLong2)
       {
         AppMethodBeat.i(23272);
         Log.d("MicroMsg.exdevice.ExdeviceEventManager", "mac=%d, oldState=%d, newState=%d, errCode=%d, profileType=%d", new Object[] { Long.valueOf(paramAnonymousLong1), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3), Long.valueOf(paramAnonymousLong2) });
         Object localObject1 = e.this;
-        String str1 = com.tencent.mm.plugin.exdevice.k.b.Dj(paramAnonymousLong1);
+        String str1 = com.tencent.mm.plugin.exdevice.k.b.Jx(paramAnonymousLong1);
         LinkedList localLinkedList;
-        synchronized (((e)localObject1).ryr)
+        synchronized (((e)localObject1).vdX)
         {
-          localLinkedList = new LinkedList(((e)localObject1).ryr);
+          localLinkedList = new LinkedList(((e)localObject1).vdX);
           ??? = localLinkedList.iterator();
           if (((Iterator)???).hasNext()) {
-            ((e.b)((Iterator)???).next()).c(str1, paramAnonymousInt2, paramAnonymousLong2);
+            ((e.b)((Iterator)???).next()).d(str1, paramAnonymousInt2, paramAnonymousLong2);
           }
         }
-        localLinkedList.clear();
-        localObject1 = ((e)localObject1).rys.values().iterator();
         while (((Iterator)localObject1).hasNext()) {
-          ((e.b)((Iterator)localObject1).next()).c(str2, paramAnonymousInt2, paramAnonymousLong2);
+          ((e.b)((Iterator)localObject1).next()).d(str2, paramAnonymousInt2, paramAnonymousLong2);
         }
-        localObject1 = new fe();
-        ((fe)localObject1).dIB.mac = str2;
-        ((fe)localObject1).dIB.dHO = paramAnonymousInt2;
-        ((fe)localObject1).dIB.dIy = paramAnonymousLong2;
+        localObject1 = new fl();
+        ((fl)localObject1).fBs.mac = str2;
+        ((fl)localObject1).fBs.fAF = paramAnonymousInt2;
+        ((fl)localObject1).fBs.fBp = paramAnonymousLong2;
         EventCenter.instance.asyncPublish((IEvent)localObject1, Looper.getMainLooper());
         AppMethodBeat.o(23272);
       }
@@ -1074,7 +1136,7 @@ public final class e
   public final boolean b(b paramb)
   {
     AppMethodBeat.i(23311);
-    if (this.ryr.remove(paramb))
+    if (this.vdX.remove(paramb))
     {
       AppMethodBeat.o(23311);
       return true;
@@ -1086,16 +1148,16 @@ public final class e
   final boolean b(IEvent paramIEvent)
   {
     AppMethodBeat.i(23285);
-    paramIEvent = (ec)paramIEvent;
-    Log.i("MicroMsg.exdevice.ExdeviceEventManager", "ExDeviceGetLanDeviceInfosEvent: brandName=%s, context=%s", new Object[] { paramIEvent.dHl.brandName, paramIEvent.dHl.context });
-    if (!ans(paramIEvent.dHl.brandName))
+    paramIEvent = (ej)paramIEvent;
+    Log.i("MicroMsg.exdevice.ExdeviceEventManager", "ExDeviceGetLanDeviceInfosEvent: brandName=%s, context=%s", new Object[] { paramIEvent.fAc.fzM, paramIEvent.fAc.context });
+    if (!avr(paramIEvent.fAc.fzM))
     {
-      paramIEvent.dHm.dHk = null;
-      paramIEvent.dHm.dGX = false;
+      paramIEvent.fAd.fAb = null;
+      paramIEvent.fAd.fzO = false;
       AppMethodBeat.o(23285);
       return true;
     }
-    LinkedList localLinkedList = ad.cKL().anL(paramIEvent.dHl.brandName);
+    LinkedList localLinkedList = ae.cZx().avK(paramIEvent.fAc.fzM);
     JSONArray localJSONArray = new JSONArray();
     label280:
     for (;;)
@@ -1112,7 +1174,7 @@ public final class e
           }
           localJSONObject = new JSONObject();
           localJSONObject.put("deviceId", localb.field_deviceID);
-          if (!this.rzg.anw(localb.field_deviceID)) {
+          if (!this.veN.avv(localb.field_deviceID)) {
             break label280;
           }
           localJSONObject.put("state", "connected");
@@ -1123,8 +1185,8 @@ public final class e
       catch (Exception localException)
       {
         Log.e("MicroMsg.exdevice.ExdeviceEventManager", "Ex in handleGetDeviceInfosEvent, %s", new Object[] { localException.getMessage() });
-        paramIEvent.dHm.dHk = localJSONArray;
-        paramIEvent.dHm.dGX = true;
+        paramIEvent.fAd.fAb = localJSONArray;
+        paramIEvent.fAd.fzO = true;
         Log.i("MicroMsg.exdevice.ExdeviceEventManager", "GetDeviceInfos: %s", new Object[] { localJSONArray.toString() });
         AppMethodBeat.o(23285);
         return true;
@@ -1135,25 +1197,25 @@ public final class e
   final boolean e(IEvent paramIEvent)
   {
     AppMethodBeat.i(23291);
-    paramIEvent = (ee)paramIEvent;
-    Log.i("MicroMsg.exdevice.ExdeviceEventManager", "handleGetTicketEvent: brandName=%s, deviceId=%s, type=%d", new Object[] { paramIEvent.dHt.brandName, paramIEvent.dHt.dGL, Integer.valueOf(paramIEvent.dHt.type) });
-    Object localObject2 = new boc();
-    ((boc)localObject2).LWr = paramIEvent.dHt.type;
-    ((boc)localObject2).LWs = 0;
-    ((boc)localObject2).KOZ = new cat();
-    ((boc)localObject2).KOZ.oTH = paramIEvent.dHt.dGL;
-    ((boc)localObject2).KOZ.KLO = paramIEvent.dHt.brandName;
+    paramIEvent = (el)paramIEvent;
+    Log.i("MicroMsg.exdevice.ExdeviceEventManager", "handleGetTicketEvent: brandName=%s, deviceId=%s, type=%d", new Object[] { paramIEvent.fAk.fzM, paramIEvent.fAk.fzB, Integer.valueOf(paramIEvent.fAk.type) });
+    Object localObject2 = new bvr();
+    ((bvr)localObject2).Tfy = paramIEvent.fAk.type;
+    ((bvr)localObject2).Tfz = 0;
+    ((bvr)localObject2).RPX = new ciu();
+    ((bvr)localObject2).RPX.rVF = paramIEvent.fAk.fzB;
+    ((bvr)localObject2).RPX.RMK = paramIEvent.fAk.fzM;
     Object localObject1 = new LinkedList();
     ((LinkedList)localObject1).add(localObject2);
     localObject2 = new e.36(this, paramIEvent);
-    localObject1 = new z((LinkedList)localObject1, paramIEvent.dHt.brandName, paramIEvent.dHt.dHv);
-    bg.azz().a(543, (i)localObject2);
-    if (!bg.azz().a((q)localObject1, 0))
+    localObject1 = new aa((LinkedList)localObject1, paramIEvent.fAk.fzM, paramIEvent.fAk.fAm);
+    bh.aGY().a(543, (com.tencent.mm.an.i)localObject2);
+    if (!bh.aGY().a((q)localObject1, 0))
     {
       Log.e("MicroMsg.exdevice.ExdeviceEventManager", "MMCore.getNetSceneQueue().doScene failed!!!");
-      bg.azz().b(543, (i)localObject2);
-      paramIEvent.dHu.dHw = true;
-      paramIEvent.dHu.dHx = null;
+      bh.aGY().b(543, (com.tencent.mm.an.i)localObject2);
+      paramIEvent.fAl.fAn = true;
+      paramIEvent.fAl.fAo = null;
       if (paramIEvent.callback != null) {
         paramIEvent.callback.run();
       }
@@ -1167,29 +1229,29 @@ public final class e
   final boolean f(IEvent paramIEvent)
   {
     AppMethodBeat.i(23292);
-    paramIEvent = (eu)paramIEvent;
-    Log.i("MicroMsg.exdevice.ExdeviceEventManager", "handleScanDeviceEvent: brandName=%s, op=%s, btVersion=%s", new Object[] { paramIEvent.dIc.brandName, Boolean.valueOf(paramIEvent.dIc.dGW), Integer.valueOf(paramIEvent.dIc.dIe) });
-    int j = paramIEvent.dIc.dIe;
+    paramIEvent = (fb)paramIEvent;
+    Log.i("MicroMsg.exdevice.ExdeviceEventManager", "handleScanDeviceEvent: brandName=%s, op=%s, btVersion=%s", new Object[] { paramIEvent.fAT.fzM, Boolean.valueOf(paramIEvent.fAT.fzN), Integer.valueOf(paramIEvent.fAT.fAV) });
+    int j = paramIEvent.fAT.fAV;
     int i = j;
     if (j != 0)
     {
       i = j;
       if (j != 1)
       {
-        if (!com.tencent.mm.plugin.d.a.e.a.eL(MMApplicationContext.getContext())) {
+        if (!com.tencent.mm.plugin.f.a.e.a.eP(MMApplicationContext.getContext())) {
           break label197;
         }
         Log.w("MicroMsg.exdevice.ExdeviceEventManager", "invalid btVersion %s, use defalut BLE", new Object[] { Integer.valueOf(j) });
         i = 0;
       }
     }
-    aa localaa;
+    ab localab;
     Object localObject2;
-    if (paramIEvent.dIc.dGW)
+    if (paramIEvent.fAT.fzN)
     {
-      localaa = aa.cKI();
-      ??? = paramIEvent.dIc.brandName;
-      localObject2 = new aa.a()
+      localab = ab.cZu();
+      ??? = paramIEvent.fAT.fzM;
+      localObject2 = new ab.a()
       {
         public final void a(String paramAnonymousString, byte[] paramAnonymousArrayOfByte, boolean paramAnonymousBoolean)
         {
@@ -1200,11 +1262,11 @@ public final class e
           }
           for (;;)
           {
-            er localer = new er();
-            localer.dHZ.dHR = paramAnonymousArrayOfByte;
-            localer.dHZ.dGL = paramAnonymousString;
-            localer.dHZ.brW = paramAnonymousBoolean;
-            EventCenter.instance.asyncPublish(localer, Looper.getMainLooper());
+            ey localey = new ey();
+            localey.fAQ.fAI = paramAnonymousArrayOfByte;
+            localey.fAQ.fzB = paramAnonymousString;
+            localey.fAQ.bby = paramAnonymousBoolean;
+            EventCenter.instance.asyncPublish(localey, Looper.getMainLooper());
             AppMethodBeat.o(23269);
             return;
             Log.i("MicroMsg.exdevice.ExdeviceEventManager", "notifyOnScanDeviceResult. deviceId=%s, base64(broadcastData)=%s, isCompleted=%s", new Object[] { paramAnonymousString, Base64.encodeToString(paramAnonymousArrayOfByte, 0), Boolean.valueOf(paramAnonymousBoolean) });
@@ -1218,45 +1280,111 @@ public final class e
     }
     for (;;)
     {
-      paramIEvent.dId.dGX = true;
+      paramIEvent.fAU.fzO = true;
       AppMethodBeat.o(23292);
       return true;
       label197:
       Log.e("MicroMsg.exdevice.ExdeviceEventManager", "invalid btVersion %s, return fail", new Object[] { Integer.valueOf(j) });
-      paramIEvent.dId.dGX = false;
+      paramIEvent.fAU.fzO = false;
       AppMethodBeat.o(23292);
       return false;
-      localaa.rzn = ((String)???);
-      localaa.rAF = ((aa.a)localObject2);
-      localaa.rAG.clear();
-      ??? = localaa.rAH.iterator();
+      localab.veU = ((String)???);
+      localab.vgm = ((ab.a)localObject2);
+      localab.vgn.clear();
+      ??? = localab.vgo.iterator();
       while (((Iterator)???).hasNext())
       {
         localObject2 = (q)((Iterator)???).next();
         if (localObject2 != null) {
-          bg.azz().a((q)localObject2);
+          bh.aGY().a((q)localObject2);
         }
       }
-      localaa.rAH.clear();
-      synchronized (aa.duI)
+      localab.vgo.clear();
+      synchronized (ab.fnq)
       {
-        aa.rAI.clear();
-        if (!localaa.rzT)
+        ab.vgp.clear();
+        if (!localab.vfA)
         {
-          localaa.rzT = true;
-          bg.azz().a(542, localaa);
-          ad.cKS().a(i, localaa);
+          localab.vfA = true;
+          bh.aGY().a(542, localab);
+          ae.cZF().a(i, localab);
           Log.i("MicroMsg.exdevice.ScanDeviceLogic", "should start scan, startTimer");
-          localaa.klF.startTimer(12000L);
+          localab.ndv.startTimer(12000L);
         }
       }
-      Log.w("MicroMsg.exdevice.ScanDeviceLogic", "still scanning. just change brand name and callback");
-      continue;
-      aa.cKI().Gy(i);
+      ab.cZu().Kf(i);
     }
   }
   
-  public final boolean n(String paramString, byte[] paramArrayOfByte)
+  final boolean o(List<com.tencent.mm.plugin.exdevice.i.b> paramList, int paramInt)
+  {
+    AppMethodBeat.i(23295);
+    Log.i("MicroMsg.exdevice.ExdeviceEventManager", "handleWifiDeviceSwitchViewEvent");
+    if (paramList.size() == 0)
+    {
+      Log.i("MicroMsg.exdevice.ExdeviceEventManager", "HardDeviceInfo is null or nil.");
+      AppMethodBeat.o(23295);
+      return false;
+    }
+    int i = -1;
+    switch (paramInt)
+    {
+    default: 
+      paramInt = i;
+    }
+    for (;;)
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        Object localObject = (com.tencent.mm.plugin.exdevice.i.b)paramList.next();
+        localObject = new k(((com.tencent.mm.plugin.exdevice.i.b)localObject).field_brandName, ((com.tencent.mm.plugin.exdevice.i.b)localObject).field_deviceType, ((com.tencent.mm.plugin.exdevice.i.b)localObject).field_deviceID, paramInt);
+        u.dal().a((af)localObject);
+      }
+      if (this.veP) {
+        this.mHandler.removeCallbacks(this.veQ);
+      }
+      this.veQ = new c(paramList);
+      this.mHandler.postDelayed(this.veQ, 300000L);
+      this.veP = true;
+      paramInt = 2;
+      continue;
+      if (this.veP)
+      {
+        this.mHandler.removeCallbacks(this.veQ);
+        this.veP = false;
+      }
+      paramInt = 0;
+    }
+    AppMethodBeat.o(23295);
+    return true;
+  }
+  
+  public final void p(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    AppMethodBeat.i(23305);
+    LinkedList localLinkedList;
+    synchronized (this.vdX)
+    {
+      localLinkedList = new LinkedList(this.vdX);
+      ??? = localLinkedList.iterator();
+      if (((Iterator)???).hasNext()) {
+        ((b)((Iterator)???).next()).q(paramString1, paramString2, paramBoolean);
+      }
+    }
+    while (((Iterator)???).hasNext()) {
+      ((b)((Iterator)???).next()).q(paramString1, paramString2, paramBoolean);
+    }
+    Log.d("MicroMsg.exdevice.ExdeviceEventManager", "simple BT on scan result: broadcastName=" + paramString1 + ", mac=" + paramString2 + ", isCompleted=" + paramBoolean);
+    ??? = new fn();
+    ((fn)???).fBu.fBo = paramString1;
+    ((fn)???).fBu.mac = paramString2;
+    ((fn)???).fBu.bby = paramBoolean;
+    EventCenter.instance.asyncPublish((IEvent)???, Looper.getMainLooper());
+    AppMethodBeat.o(23305);
+  }
+  
+  public final boolean q(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23303);
     if ((Util.isNullOrNil(paramString)) || (Util.isNullOrNil(paramArrayOfByte)))
@@ -1291,8 +1419,8 @@ public final class e
     for (int i = 0;; i = paramArrayOfByte.length)
     {
       Log.e("MicroMsg.exdevice.ExdeviceEventManager", "handleExDeviceSimpleBTSendDataToDevice. mac = %s, dataLen = %d", new Object[] { str, Integer.valueOf(i) });
-      l = com.tencent.mm.plugin.exdevice.k.b.anY(paramString);
-      paramString = ad.cKX().rzU.CZ(l);
+      l = com.tencent.mm.plugin.exdevice.k.b.avW(paramString);
+      paramString = ae.cZK().vfB.Jn(l);
       if (paramString != null) {
         break label182;
       }
@@ -1303,13 +1431,13 @@ public final class e
       break;
     }
     label182:
-    if (paramString.dHO != 2)
+    if (paramString.fAF != 2)
     {
       Log.e("MicroMsg.exdevice.ExdeviceEventManager", "device is not connected.");
       AppMethodBeat.o(23303);
       return false;
     }
-    ad.cKX();
+    ae.cZK();
     boolean bool = h.a(l, paramArrayOfByte, new t.a()
     {
       public final void b(long paramAnonymousLong, int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString)
@@ -1321,21 +1449,21 @@ public final class e
         }
         Log.d("MicroMsg.exdevice.ExdeviceEventManager", "onSendEnd. mac=%d, errType=%d, errCode=%d, errMsg=%s", new Object[] { Long.valueOf(paramAnonymousLong), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), localObject1 });
         localObject1 = e.this;
-        paramAnonymousString = com.tencent.mm.plugin.exdevice.k.b.Dj(paramAnonymousLong);
+        paramAnonymousString = com.tencent.mm.plugin.exdevice.k.b.Jx(paramAnonymousLong);
         boolean bool;
         if (paramAnonymousInt2 == 0) {
           bool = true;
         }
-        LinkedList localLinkedList;
         for (;;)
         {
           Log.d("MicroMsg.exdevice.ExdeviceEventManager", "notifySimpleBTOnSend, mac : %s, isSucc : %s", new Object[] { paramAnonymousString, Boolean.valueOf(bool) });
           if (bool) {
-            break label250;
+            break;
           }
-          synchronized (((e)localObject1).ryr)
+          LinkedList localLinkedList;
+          synchronized (((e)localObject1).vdX)
           {
-            localLinkedList = new LinkedList(((e)localObject1).ryr);
+            localLinkedList = new LinkedList(((e)localObject1).vdX);
             ??? = localLinkedList.iterator();
             while (((Iterator)???).hasNext())
             {
@@ -1345,12 +1473,9 @@ public final class e
             }
           }
         }
-        localLinkedList.clear();
-        localObject1 = ((e)localObject1).rys.values().iterator();
         while (((Iterator)localObject1).hasNext()) {
           ((e.b)((Iterator)localObject1).next()).b(paramAnonymousString, null, false);
         }
-        label250:
         AppMethodBeat.o(23273);
       }
     });
@@ -1358,91 +1483,21 @@ public final class e
     return bool;
   }
   
-  public final void o(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    AppMethodBeat.i(23305);
-    LinkedList localLinkedList;
-    synchronized (this.ryr)
-    {
-      localLinkedList = new LinkedList(this.ryr);
-      ??? = localLinkedList.iterator();
-      if (((Iterator)???).hasNext()) {
-        ((b)((Iterator)???).next()).p(paramString1, paramString2, paramBoolean);
-      }
-    }
-    localLinkedList.clear();
-    ??? = this.rys.values().iterator();
-    while (((Iterator)???).hasNext()) {
-      ((b)((Iterator)???).next()).p(paramString1, paramString2, paramBoolean);
-    }
-    Log.d("MicroMsg.exdevice.ExdeviceEventManager", "simple BT on scan result: broadcastName=" + paramString1 + ", mac=" + paramString2 + ", isCompleted=" + paramBoolean);
-    ??? = new fg();
-    ((fg)???).dID.dIx = paramString1;
-    ((fg)???).dID.mac = paramString2;
-    ((fg)???).dID.brW = paramBoolean;
-    EventCenter.instance.asyncPublish((IEvent)???, Looper.getMainLooper());
-    AppMethodBeat.o(23305);
-  }
-  
-  final boolean o(List<com.tencent.mm.plugin.exdevice.i.b> paramList, int paramInt)
-  {
-    AppMethodBeat.i(23295);
-    Log.i("MicroMsg.exdevice.ExdeviceEventManager", "handleWifiDeviceSwitchViewEvent");
-    if (paramList.size() == 0)
-    {
-      Log.i("MicroMsg.exdevice.ExdeviceEventManager", "HardDeviceInfo is null or nil.");
-      AppMethodBeat.o(23295);
-      return false;
-    }
-    int i = -1;
-    switch (paramInt)
-    {
-    default: 
-      paramInt = i;
-    }
-    for (;;)
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        Object localObject = (com.tencent.mm.plugin.exdevice.i.b)paramList.next();
-        localObject = new k(((com.tencent.mm.plugin.exdevice.i.b)localObject).field_brandName, ((com.tencent.mm.plugin.exdevice.i.b)localObject).field_deviceType, ((com.tencent.mm.plugin.exdevice.i.b)localObject).field_deviceID, paramInt);
-        u.cLy().a((ae)localObject);
-      }
-      if (this.rzi) {
-        this.mHandler.removeCallbacks(this.rzj);
-      }
-      this.rzj = new c(paramList);
-      this.mHandler.postDelayed(this.rzj, 300000L);
-      this.rzi = true;
-      paramInt = 2;
-      continue;
-      if (this.rzi)
-      {
-        this.mHandler.removeCallbacks(this.rzj);
-        this.rzi = false;
-      }
-      paramInt = 0;
-    }
-    AppMethodBeat.o(23295);
-    return true;
-  }
-  
   public final class a
     implements e.b
   {
-    private String dfJ;
     private String mURL;
-    private String rzn;
-    private String rzo;
+    private String shW;
+    private String veU;
+    private String veV;
     
     public a(String paramString1, String paramString2, String paramString3, String paramString4)
     {
       AppMethodBeat.i(23279);
-      this.rzn = paramString1;
-      this.dfJ = paramString2;
+      this.veU = paramString1;
+      this.shW = paramString2;
       this.mURL = paramString3;
-      this.rzo = paramString4;
+      this.veV = paramString4;
       Log.d("MicroMsg.exdevice.ExdeviceEventManager", "brandName : %s, mac : %s.", new Object[] { paramString1, paramString2 });
       AppMethodBeat.o(23279);
     }
@@ -1450,17 +1505,17 @@ public final class e
     public final void b(String paramString, byte[] paramArrayOfByte, boolean paramBoolean)
     {
       AppMethodBeat.i(23281);
-      if ((this.dfJ == null) || (!this.dfJ.equals(paramString)))
+      if ((this.shW == null) || (!this.shW.equals(paramString)))
       {
-        Log.i("MicroMsg.exdevice.ExdeviceEventManager", "onRecvFromDevice, mac(%s) is null or not correct.(mac : %s, succ : %s)", new Object[] { this.dfJ, paramString, Boolean.valueOf(paramBoolean) });
+        Log.i("MicroMsg.exdevice.ExdeviceEventManager", "onRecvFromDevice, mac(%s) is null or not correct.(mac : %s, succ : %s)", new Object[] { this.shW, paramString, Boolean.valueOf(paramBoolean) });
         AppMethodBeat.o(23281);
         return;
       }
       if ((paramBoolean) && (paramArrayOfByte != null)) {
         try
         {
-          ad.cKW();
-          if (!e.b(this.dfJ, this.rzn, paramArrayOfByte))
+          ae.cZJ();
+          if (!e.b(this.shW, this.veU, paramArrayOfByte))
           {
             Log.w("MicroMsg.exdevice.ExdeviceEventManager", "The parser isn't a correct type.");
             AppMethodBeat.o(23281);
@@ -1477,12 +1532,12 @@ public final class e
       AppMethodBeat.o(23281);
     }
     
-    public final void c(String paramString, int paramInt, long paramLong)
+    public final void d(String paramString, int paramInt, long paramLong)
     {
       AppMethodBeat.i(23282);
-      if ((this.dfJ == null) || (!this.dfJ.equals(paramString)))
+      if ((this.shW == null) || (!this.shW.equals(paramString)))
       {
-        Log.i("MicroMsg.exdevice.ExdeviceEventManager", "onConnectStateChanged, mac(%s) is null or not correct.(mac : %s, state : %s, type : %s)", new Object[] { this.dfJ, paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+        Log.i("MicroMsg.exdevice.ExdeviceEventManager", "onConnectStateChanged, mac(%s) is null or not correct.(mac : %s, state : %s, type : %s)", new Object[] { this.shW, paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
         AppMethodBeat.o(23282);
         return;
       }
@@ -1492,40 +1547,40 @@ public final class e
       case 3: 
       default: 
         Log.d("MicroMsg.exdevice.ExdeviceEventManager", "onConnectStateChanged, out of range(mac : %s, state : %s, type : %s).", new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
-        e.d(this.rzn, this.mURL, -1, this.rzo);
+        e.d(this.veU, this.mURL, -1, this.veV);
         AppMethodBeat.o(23282);
         return;
       case 2: 
         Log.i("MicroMsg.exdevice.ExdeviceEventManager", "onConnectStateChanged, device connected now start send data to it.(mac : %s)", new Object[] { paramString });
-        e.d(this.rzn, this.mURL, 2, this.rzo);
-        paramString = new com.tencent.mm.plugin.d.a.b.a.f();
-        paramString.pie = com.tencent.mm.plugin.d.a.b.a.f.pjh;
-        paramString.pif = 2;
-        ad.cKW().n(this.dfJ, com.tencent.mm.plugin.exdevice.k.b.de(paramString));
+        e.d(this.veU, this.mURL, 2, this.veV);
+        paramString = new com.tencent.mm.plugin.f.a.b.a.f();
+        paramString.sko = com.tencent.mm.plugin.f.a.b.a.f.slq;
+        paramString.skp = 2;
+        ae.cZJ().q(this.shW, com.tencent.mm.plugin.exdevice.k.b.db(paramString));
         AppMethodBeat.o(23282);
         return;
       case 1: 
         Log.i("MicroMsg.exdevice.ExdeviceEventManager", "onConnectStateChanged, device is connectiong.(mac: %s)", new Object[] { paramString });
-        e.d(this.rzn, this.mURL, 1, this.rzo);
+        e.d(this.veU, this.mURL, 1, this.veV);
         AppMethodBeat.o(23282);
         return;
       case 4: 
-        e.d(this.rzn, this.mURL, 4, this.rzo);
+        e.d(this.veU, this.mURL, 4, this.veV);
         Log.i("MicroMsg.exdevice.ExdeviceEventManager", "onConnectStateChanged, device disconnected.(mac : %s)", new Object[] { paramString });
         AppMethodBeat.o(23282);
         return;
       }
-      e.d(this.rzn, this.mURL, 0, this.rzo);
+      e.d(this.veU, this.mURL, 0, this.veV);
       Log.i("MicroMsg.exdevice.ExdeviceEventManager", "onConnectStateChanged, device state none.(mac : %s)", new Object[] { paramString });
       AppMethodBeat.o(23282);
     }
     
-    public final void p(String paramString1, String paramString2, boolean paramBoolean)
+    public final void q(String paramString1, String paramString2, boolean paramBoolean)
     {
       AppMethodBeat.i(23280);
-      if ((this.dfJ == null) || (!this.dfJ.equals(paramString2)))
+      if ((this.shW == null) || (!this.shW.equals(paramString2)))
       {
-        Log.d("MicroMsg.exdevice.ExdeviceEventManager", "onScanResult, mac(%s) is null or not correct.(mac : %s, isCompleted : %s)", new Object[] { this.dfJ, paramString2, Boolean.valueOf(paramBoolean) });
+        Log.d("MicroMsg.exdevice.ExdeviceEventManager", "onScanResult, mac(%s) is null or not correct.(mac : %s, isCompleted : %s)", new Object[] { this.shW, paramString2, Boolean.valueOf(paramBoolean) });
         AppMethodBeat.o(23280);
         return;
       }
@@ -1537,34 +1592,34 @@ public final class e
   {
     public abstract void b(String paramString, byte[] paramArrayOfByte, boolean paramBoolean);
     
-    public abstract void c(String paramString, int paramInt, long paramLong);
+    public abstract void d(String paramString, int paramInt, long paramLong);
     
-    public abstract void p(String paramString1, String paramString2, boolean paramBoolean);
+    public abstract void q(String paramString1, String paramString2, boolean paramBoolean);
   }
   
   final class c
     implements Runnable
   {
-    List<com.tencent.mm.plugin.exdevice.i.b> iHg;
+    List<com.tencent.mm.plugin.exdevice.i.b> lxi;
     
     public c()
     {
       Object localObject;
-      this.iHg = localObject;
+      this.lxi = localObject;
     }
     
     public final void run()
     {
       AppMethodBeat.i(23283);
       Log.i("MicroMsg.exdevice.ExdeviceEventManager", "Wifi device heart beat");
-      if ((this.iHg != null) && (this.iHg.size() > 0))
+      if ((this.lxi != null) && (this.lxi.size() > 0))
       {
-        Iterator localIterator = this.iHg.iterator();
+        Iterator localIterator = this.lxi.iterator();
         while (localIterator.hasNext())
         {
           Object localObject = (com.tencent.mm.plugin.exdevice.i.b)localIterator.next();
           localObject = new k(((com.tencent.mm.plugin.exdevice.i.b)localObject).field_brandName, ((com.tencent.mm.plugin.exdevice.i.b)localObject).field_deviceType, ((com.tencent.mm.plugin.exdevice.i.b)localObject).field_deviceID, 1);
-          u.cLy().a((ae)localObject);
+          u.dal().a((af)localObject);
         }
         e.this.mHandler.postDelayed(this, 300000L);
       }
@@ -1574,7 +1629,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,518 +1,446 @@
 package com.tencent.mm.ui.chatting.d;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnScrollChangedListener;
-import android.widget.FrameLayout;
+import android.content.res.Configuration;
+import android.view.MenuItem;
+import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
-import com.tencent.mm.emoji.a.b.b;
-import com.tencent.mm.emoji.a.e;
-import com.tencent.mm.emoji.a.e.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.c;
+import com.tencent.mm.aj.k.b;
+import com.tencent.mm.api.ad;
+import com.tencent.mm.bd.f;
+import com.tencent.mm.emoji.e.c.a;
+import com.tencent.mm.f.a.v;
+import com.tencent.mm.f.a.v.a;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.bq;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
+import com.tencent.mm.protocal.protobuf.dig;
+import com.tencent.mm.protocal.protobuf.dih;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.search.data.SimilarEmojiQueryModel;
+import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.ca;
-import com.tencent.mm.ui.chatting.aa;
-import com.tencent.mm.ui.chatting.af;
-import com.tencent.mm.ui.chatting.d.b.ae;
+import com.tencent.mm.storage.emotion.EmojiInfo;
+import com.tencent.mm.ui.MMFragment;
+import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
+import com.tencent.mm.ui.chatting.ak;
+import com.tencent.mm.ui.chatting.an;
 import com.tencent.mm.ui.chatting.d.b.k;
-import com.tencent.mm.ui.chatting.d.b.r;
-import com.tencent.mm.ui.chatting.view.MMChattingListView;
-import com.tencent.mm.ui.l.a.c;
-import com.tencent.mm.ui.widget.MMNeat7extView;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import com.tencent.mm.ui.chatting.d.b.q;
+import com.tencent.mm.ui.chatting.viewitems.m.b;
+import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
-import kotlin.a.j;
-import kotlin.g.b.p;
-import kotlin.g.b.q;
-import kotlin.x;
 
-@com.tencent.mm.ui.chatting.d.a.a(gRF=r.class)
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/chatting/component/EmojiEggComponent;", "Lcom/tencent/mm/ui/chatting/component/AbstractChattingComponent;", "Lcom/tencent/mm/ui/chatting/component/api/IEmojiEggComponent;", "Lcom/tencent/mm/plugin/messenger/foundation/api/storage/IMsgInfoStorage$IOnMsgChange;", "()V", "TAG", "", "checkKeywordTask", "Ljava/lang/Runnable;", "dynamicController", "Lcom/tencent/mm/emoji/egg/EmojiDynamicController;", "eggMgr", "Lcom/tencent/mm/ui/chatting/EggMgr;", "eggMsgFilter", "Lkotlin/Function1;", "Lcom/tencent/mm/storage/MsgInfo;", "", "isChatEnter", "isPaused", "onScrollListener", "Landroid/view/ViewTreeObserver$OnScrollChangedListener;", "uncheckMsg", "viewProvider", "Lcom/tencent/mm/emoji/egg/ChattingViewProvider;", "checkEggKeyword", "", "msgInfoList", "", "isUnread", "checkKeyword", "text", "checkUnreadMsg", "getMagicEmojiHolder", "Landroid/widget/FrameLayout;", "onActivityResult", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onChatContentScroll", "translateY", "", "finished", "onChattingEnterAnimEnd", "onChattingExitAnimStart", "onChattingPause", "onChattingResume", "onComponentUnInstall", "onNotifyChange", "msgStorage", "Lcom/tencent/mm/plugin/messenger/foundation/api/storage/IMsgInfoStorage;", "notifyInfo", "Lcom/tencent/mm/plugin/messenger/foundation/api/storage/IMsgInfoStorage$NotifyInfo;", "release", "updateView", "app_release"})
-public final class u
+@com.tencent.mm.ui.chatting.d.a.a(hRc=q.class)
+public class u
   extends a
-  implements i.a, r
+  implements q
 {
-  private boolean Ppi;
-  private ca Ppj;
-  private final aa Ppk;
-  private final e Ppl;
-  private final kotlin.g.a.b<ca, Boolean> Ppm;
-  private Runnable Ppn;
-  private final ViewTreeObserver.OnScrollChangedListener Ppo;
-  private final com.tencent.mm.emoji.a.a Ppp;
-  private final String TAG;
-  private boolean isPaused;
+  private com.tencent.mm.search.d.b UXl;
+  private IListener WJs;
   
   public u()
   {
-    AppMethodBeat.i(231210);
-    this.TAG = "MicroMsg.EmojiEggComponent";
-    this.Ppk = new aa();
-    this.Ppl = new e();
-    this.Ppm = ((kotlin.g.a.b)new c(this));
-    this.Ppn = ((Runnable)u.b.Ppt);
-    this.Ppo = ((ViewTreeObserver.OnScrollChangedListener)new f(this));
-    this.Ppp = ((com.tencent.mm.emoji.a.a)new h(this));
-    AppMethodBeat.o(231210);
+    AppMethodBeat.i(35286);
+    this.WJs = new IListener() {};
+    AppMethodBeat.o(35286);
   }
   
-  private void jq(List<? extends ca> paramList)
+  private void a(ca paramca, com.tencent.mm.ui.chatting.e.a parama)
   {
-    AppMethodBeat.i(231208);
-    p.h(paramList, "msgInfoList");
-    z(paramList, false);
-    AppMethodBeat.o(231208);
-  }
-  
-  private final void release()
-  {
-    AppMethodBeat.i(231203);
-    d.C(this.Ppn);
-    this.Ppn = ((Runnable)u.g.Ppv);
-    Object localObject = this.dom;
-    p.g(localObject, "mChattingContext");
-    localObject = ((com.tencent.mm.ui.chatting.e.a)localObject).gRQ();
-    p.g(localObject, "mChattingContext.pullDownViewCallback");
-    localObject = ((af)localObject).gOd();
-    p.g(localObject, "mChattingContext.pullDow…Callback.chattingListView");
-    ((MMChattingListView)localObject).getViewTreeObserver().removeOnScrollChangedListener(this.Ppo);
-    this.Ppk.onPause();
-    this.Ppk.gOi();
-    this.Ppl.onStop();
-    localObject = g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-    p.g(localObject, "MMKernel.service(IMessengerStorage::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).eiy().a((i.a)this);
-    AppMethodBeat.o(231203);
-  }
-  
-  private final void updateView()
-  {
-    AppMethodBeat.i(231205);
-    this.Ppl.a(this.Ppp);
-    AppMethodBeat.o(231205);
-  }
-  
-  private final void z(final List<? extends ca> paramList, final boolean paramBoolean)
-  {
-    AppMethodBeat.i(231204);
-    this.Ppn = ((Runnable)new a(this, paramBoolean, paramList));
-    d.B(this.Ppn);
-    AppMethodBeat.o(231204);
-  }
-  
-  public final void a(i parami, i.c paramc)
-  {
-    AppMethodBeat.i(231209);
-    p.h(parami, "msgStorage");
-    p.h(paramc, "notifyInfo");
-    Object localObject1;
-    Object localObject2;
-    if (this.isPaused)
+    AppMethodBeat.i(35294);
+    if ((!paramca.hzB()) && (!paramca.hzC()))
     {
-      if (Util.isEqual("insert", paramc.zqn))
-      {
-        parami = paramc.hIs;
-        p.g(parami, "notifyInfo.msgList");
-        localObject1 = (Iterable)parami;
-        parami = this.Ppm;
-        paramc = (Collection)new ArrayList();
-        localObject1 = ((Iterable)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = ((Iterator)localObject1).next();
-          if (((Boolean)parami.invoke(localObject2)).booleanValue()) {
-            paramc.add(localObject2);
-          }
-        }
-        localObject1 = ((Iterable)paramc).iterator();
-        if (((Iterator)localObject1).hasNext()) {
-          break label172;
-        }
-        parami = null;
-      }
-      label172:
-      do
-      {
-        this.Ppj = ((ca)parami);
-        AppMethodBeat.o(231209);
-        return;
-        parami = ((Iterator)localObject1).next();
-      } while (!((Iterator)localObject1).hasNext());
-      paramc = (ca)parami;
-      p.g(paramc, "it");
-      long l1 = paramc.ajL();
-      label211:
-      paramc = ((Iterator)localObject1).next();
-      localObject2 = (ca)paramc;
-      p.g(localObject2, "it");
-      long l2 = ((ca)localObject2).ajL();
-      if (l1 >= l2) {
-        break label537;
-      }
-      l1 = l2;
-      parami = paramc;
+      AppMethodBeat.o(35294);
+      return;
     }
-    label537:
-    for (;;)
+    Object localObject2 = cw(paramca);
+    if (localObject2 == null)
     {
-      if (!((Iterator)localObject1).hasNext())
+      AppMethodBeat.o(35294);
+      return;
+    }
+    paramca = com.tencent.mm.search.c.b.UWY;
+    com.tencent.mm.search.c.b.F((EmojiInfo)localObject2);
+    paramca = ((com.tencent.mm.ui.chatting.d.b.u)parama.bC(com.tencent.mm.ui.chatting.d.b.u.class)).hPj();
+    int j = paramca.getCurrentScrollHeight();
+    paramca.aqC(ad.bC(parama.WQv.getContext()));
+    Object localObject3 = (k)parama.bC(k.class);
+    int i = ((k)localObject3).getCount() - 1;
+    Object localObject1 = new dih();
+    Object localObject4;
+    Object localObject5;
+    while ((i >= 0) && (((dih)localObject1).TPC.size() <= 20))
+    {
+      localObject4 = new dig();
+      localObject5 = ((k)localObject3).avt(i);
+      ((dig)localObject4).TPw = ((ca)localObject5).getType();
+      ((dig)localObject4).TPx = com.tencent.mm.aj.l.v((ca)localObject5);
+      ((dig)localObject4).TPy = com.tencent.mm.aj.l.w((ca)localObject5);
+      ((dig)localObject4).TPz = ((et)localObject5).field_createTime;
+      ((dig)localObject4).TPA = ((et)localObject5).field_isSend;
+      if (((ca)localObject5).hzB())
       {
-        break;
-        if (Util.isEqual("insert", paramc.zqn))
+        localObject5 = cw((ca)localObject5);
+        if (localObject5 != null)
         {
-          parami = paramc.hIs;
-          p.g(parami, "notifyInfo.msgList");
-          localObject1 = (Iterable)parami;
-          parami = this.Ppm;
-          paramc = (Collection)new ArrayList();
-          localObject1 = ((Iterable)localObject1).iterator();
-          while (((Iterator)localObject1).hasNext())
+          ((dig)localObject4).CSe = ((EmojiInfo)localObject5).field_md5;
+          if (((EmojiInfo)localObject5).field_md5.equals(((EmojiInfo)localObject2).field_md5))
           {
-            localObject2 = ((Iterator)localObject1).next();
-            if (((Boolean)parami.invoke(localObject2)).booleanValue()) {
-              paramc.add(localObject2);
-            }
+            ((dig)localObject4).TPB = 1;
+            ((dig)localObject4).LensId = ((EmojiInfo)localObject5).field_lensId;
           }
-          jq((List)paramc);
-          AppMethodBeat.o(231209);
+        }
+      }
+      i -= 1;
+      ((dih)localObject1).TPC.add(localObject4);
+    }
+    Log.i("MicroMsg.ChattingUI.EmojiComponent", " add ctxs size:%d", new Object[] { Integer.valueOf(((dih)localObject1).TPC.size()) });
+    localObject3 = new com.tencent.mm.ui.chatting.w(parama, parama.NKq, parama.getTalkerUserName());
+    for (boolean bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vDV, true);; bool = false) {
+      try
+      {
+        localObject2 = ((EmojiInfo)localObject2).field_md5;
+        localObject4 = parama.getTalkerUserName();
+        localObject5 = com.tencent.mm.search.c.b.UWY;
+        localObject1 = new SimilarEmojiQueryModel("", (String)localObject2, (String)localObject4, com.tencent.mm.search.c.b.getTimestamp(), 3, parama.getTalkerUserName(), com.tencent.mm.cd.b.cU(((dih)localObject1).toByteArray()), bool, (com.tencent.mm.pluginsdk.ui.chat.j)localObject3);
+        if (paramca.jJL == 1)
+        {
+          bool = true;
+          if (bool)
+          {
+            paramca.setIgnoreScroll(Boolean.TRUE);
+            paramca.hideVKB();
+          }
+          this.UXl = null;
+          this.UXl = new com.tencent.mm.search.d.b(parama.WQv.getContext(), (SimilarEmojiQueryModel)localObject1, new u.3(this, bool, paramca, j));
+          paramca = this.UXl.getWindow();
+          if (paramca != null)
+          {
+            paramca.setDimAmount(0.0F);
+            paramca.setFlags(131072, 131072);
+            paramca.setSoftInputMode(48);
+          }
+          this.UXl.show();
+          AppMethodBeat.o(35294);
           return;
         }
-        if (Util.isEqual("update", paramc.zqn))
-        {
-          parami = paramc.hIs;
-          p.g(parami, "notifyInfo.msgList");
-          paramc = (Iterable)parami;
-          parami = (Collection)new ArrayList();
-          paramc = paramc.iterator();
-          label507:
-          while (paramc.hasNext())
-          {
-            localObject1 = paramc.next();
-            localObject2 = (ca)localObject1;
-            p.g(localObject2, "it");
-            if ((((ca)localObject2).gDG() == 4) || (((ca)localObject2).getType() == 10000)) {}
-            for (int i = 1;; i = 0)
-            {
-              if (i == 0) {
-                break label507;
-              }
-              parami.add(localObject1);
-              break;
-            }
-          }
-          d.h((kotlin.g.a.a)new e(this, (List)parami));
-        }
-        AppMethodBeat.o(231209);
+      }
+      catch (IOException paramca)
+      {
+        Log.i("MicroMsg.ChattingUI.EmojiComponent", "SimilarEmojiQueryModel make error");
+        AppMethodBeat.o(35294);
         return;
       }
-      break label211;
     }
   }
   
-  public final void bmJ(String paramString)
+  private void cd(ca paramca)
   {
-    AppMethodBeat.i(231207);
-    Object localObject = (CharSequence)paramString;
-    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
-    for (int i = 1; i != 0; i = 0)
+    AppMethodBeat.i(35293);
+    Log.d("MicroMsg.ChattingUI.EmojiComponent", "resendAppMsgEmoji");
+    if (!this.fgR.getTalkerUserName().equals("medianote"))
     {
-      AppMethodBeat.o(231207);
+      bh.beI();
+      com.tencent.mm.model.c.bbK().d(new f(paramca.field_talker, paramca.field_msgSvrId));
+    }
+    ak.cd(paramca);
+    this.fgR.Gi(true);
+    AppMethodBeat.o(35293);
+  }
+  
+  private void cv(ca paramca)
+  {
+    AppMethodBeat.i(35292);
+    bh.beI();
+    if (!com.tencent.mm.model.c.isSDCardAvailable())
+    {
+      com.tencent.mm.ui.base.w.g(this.fgR.WQv.getContext(), this.fgR.WQv.getContentView());
+      AppMethodBeat.o(35292);
       return;
     }
-    localObject = new ca();
-    ((ca)localObject).setContent(paramString);
-    ((ca)localObject).nv(1);
-    jq(j.listOf(localObject));
-    AppMethodBeat.o(231207);
+    Log.d("MicroMsg.ChattingUI.EmojiComponent", "resendEmoji");
+    if (!this.fgR.getTalkerUserName().equals("medianote"))
+    {
+      bh.beI();
+      com.tencent.mm.model.c.bbK().d(new f(paramca.field_talker, paramca.field_msgSvrId));
+    }
+    ak.cc(paramca);
+    AppMethodBeat.o(35292);
   }
   
-  public final void cFx()
+  private static EmojiInfo cw(ca paramca)
   {
-    AppMethodBeat.i(231197);
-    super.cFx();
-    if (this.Ppl.gUY == null)
+    AppMethodBeat.i(35295);
+    if (paramca.hzB())
     {
-      localObject = this.Ppl;
-      com.tencent.mm.ui.chatting.e.a locala = this.dom;
-      p.g(locala, "mChattingContext");
-      ((e)localObject).gUY = ((FrameLayout)locala.getContext().findViewById(2131298428));
+      paramca = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().aud(paramca.field_imgPath);
+      AppMethodBeat.o(35295);
+      return paramca;
     }
-    this.isPaused = false;
-    Object localObject = this.Ppj;
-    if (localObject != null) {
-      z(j.listOf(localObject), true);
-    }
-    this.Ppj = null;
-    AppMethodBeat.o(231197);
-  }
-  
-  public final void cFy()
-  {
-    AppMethodBeat.i(231198);
-    this.isPaused = true;
-    super.cFy();
-    this.Ppk.onPause();
-    this.Ppk.gOi();
-    this.Ppl.onStop();
-    AppMethodBeat.o(231198);
-  }
-  
-  public final void gIm()
-  {
-    AppMethodBeat.i(231199);
-    super.gIm();
-    Object localObject1 = this.dom;
-    p.g(localObject1, "mChattingContext");
-    localObject1 = ((com.tencent.mm.ui.chatting.e.a)localObject1).gRQ();
-    p.g(localObject1, "mChattingContext.pullDownViewCallback");
-    localObject1 = ((af)localObject1).gOd();
-    p.g(localObject1, "mChattingContext.pullDow…Callback.chattingListView");
-    ((MMChattingListView)localObject1).getViewTreeObserver().addOnScrollChangedListener(this.Ppo);
-    localObject1 = this.Ppk;
-    Object localObject2 = this.dom;
-    p.g(localObject2, "mChattingContext");
-    boolean bool = ((com.tencent.mm.ui.chatting.e.a)localObject2).gRM();
-    localObject2 = this.dom;
-    p.g(localObject2, "mChattingContext");
-    ((aa)localObject1).P(bool, ((com.tencent.mm.ui.chatting.e.a)localObject2).getTalkerUserName());
-    this.Ppk.onResume();
-    localObject1 = g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-    p.g(localObject1, "MMKernel.service(IMessengerStorage::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject1).eiy().a((i.a)this, null);
-    localObject1 = this.dom.bh(ae.class);
-    p.g(localObject1, "mChattingContext.compone…BoxComponent::class.java)");
-    localObject2 = ((ae)localObject1).gQL();
-    String str = this.TAG;
-    StringBuilder localStringBuilder = new StringBuilder("checkUnreadMsg: ");
-    if (localObject2 != null)
+    be localbe = be.bwQ(paramca.field_content);
+    paramca = k.b.aG(paramca.field_content, paramca.field_reserved);
+    if (paramca == null)
     {
-      localObject1 = Integer.valueOf(((List)localObject2).size());
-      Log.i(str, localObject1);
-      localObject1 = (Collection)localObject2;
-      if ((localObject1 != null) && (!((Collection)localObject1).isEmpty())) {
-        break label360;
-      }
+      paramca = new k.b();
+      paramca.llZ = localbe.md5;
     }
-    label360:
-    for (int i = 1;; i = 0)
+    for (;;)
     {
-      if (i == 0) {
-        z((List)localObject2, true);
-      }
-      if (this.Ppl.gUY == null)
+      if ((Util.isNullOrNil(paramca.llZ)) || (paramca.llZ.equals("-1")))
       {
-        localObject1 = this.Ppl;
-        localObject2 = this.dom;
-        p.g(localObject2, "mChattingContext");
-        ((e)localObject1).gUY = ((FrameLayout)((com.tencent.mm.ui.chatting.e.a)localObject2).getContext().findViewById(2131298428));
+        AppMethodBeat.o(35295);
+        return null;
       }
-      localObject1 = this.Ppl;
-      localObject2 = this.dom;
-      p.g(localObject2, "mChattingContext");
-      ((e)localObject1).gVs = ((com.tencent.mm.ui.chatting.e.a)localObject2).getTalkerUserName();
-      this.Ppl.gVt = ((e.b)new d(this));
-      this.Ppi = true;
-      AppMethodBeat.o(231199);
-      return;
-      localObject1 = null;
+      paramca = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().aud(paramca.llZ);
       break;
     }
   }
   
-  public final void gIn()
+  public final boolean a(MenuItem paramMenuItem, final com.tencent.mm.ui.chatting.e.a parama, ca paramca)
   {
-    AppMethodBeat.i(231200);
-    this.Ppi = false;
-    super.gIn();
-    release();
-    AppMethodBeat.o(231200);
-  }
-  
-  public final void gOK()
-  {
-    AppMethodBeat.i(231201);
-    super.gOK();
-    release();
-    AppMethodBeat.o(231201);
-  }
-  
-  public final void gru()
-  {
-    AppMethodBeat.i(231206);
-    updateView();
-    AppMethodBeat.o(231206);
-  }
-  
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    AppMethodBeat.i(231202);
-    super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    switch (paramInt1)
+    AppMethodBeat.i(35287);
+    Object localObject1;
+    switch (paramMenuItem.getItemId())
     {
+    default: 
+      AppMethodBeat.o(35287);
+      return false;
+    case 104: 
+      if ((paramca.hzB()) || (paramca.hzC()))
+      {
+        localObject1 = cw(paramca);
+        if (localObject1 != null)
+        {
+          paramMenuItem = paramca.field_talker;
+          if (!ab.Lj(paramMenuItem)) {
+            break label1130;
+          }
+          paramMenuItem = bq.RL(paramca.field_content);
+        }
+      }
+      break;
     }
+    label515:
+    label580:
+    label710:
+    label716:
+    label987:
+    label1130:
     for (;;)
     {
-      AppMethodBeat.o(231202);
-      return;
-      aa.amp(paramInt1);
-    }
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-  static final class a
-    implements Runnable
-  {
-    a(u paramu, boolean paramBoolean, List paramList) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(231187);
-      Object localObject1;
-      Object localObject2;
-      if (!paramBoolean)
+      com.tencent.mm.plugin.report.service.h.IzE.a(12789, new Object[] { Integer.valueOf(3), ((EmojiInfo)localObject1).getMd5(), Integer.valueOf(0), ((EmojiInfo)localObject1).field_designerID, ((EmojiInfo)localObject1).field_groupId, "", "", "", "", "", ((EmojiInfo)localObject1).field_activityid });
+      ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().a(parama.WQv.getContext(), (EmojiInfo)localObject1, 0, paramMenuItem);
+      AppMethodBeat.o(35287);
+      return true;
+      boolean bool = cu(paramca);
+      AppMethodBeat.o(35287);
+      return bool;
+      if ((paramca.hzB()) || (paramca.hzC()))
       {
-        localObject1 = ((Iterable)paramList).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (ca)((Iterator)localObject1).next();
-          u.c(this.Ppq).q((ca)localObject2);
-        }
+        an.d(paramca, parama.WQv.getContext());
+        AppMethodBeat.o(35287);
+        return true;
       }
-      Iterator localIterator = ((Iterable)paramList).iterator();
-      if (!localIterator.hasNext()) {
+      AppMethodBeat.o(35287);
+      return false;
+      if ((paramca.hzB()) || (paramca.hzC()))
+      {
         localObject1 = null;
+        if (!paramca.hzB()) {
+          break label515;
+        }
+        localObject1 = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().aud(paramca.field_imgPath);
+        paramMenuItem = new c.a()
+        {
+          public final void ep(boolean paramAnonymousBoolean)
+          {
+            AppMethodBeat.i(269335);
+            LinkedList localLinkedList;
+            if (paramAnonymousBoolean)
+            {
+              localLinkedList = new LinkedList();
+              localLinkedList.add(this.lrk);
+              if ((!((com.tencent.mm.ui.chatting.d.b.d)parama.bC(com.tencent.mm.ui.chatting.d.b.d.class)).hOf()) && (!parama.hRh())) {
+                break label90;
+              }
+            }
+            label90:
+            for (paramAnonymousBoolean = true;; paramAnonymousBoolean = false)
+            {
+              com.tencent.mm.ui.chatting.l.a(parama.WQv.getContext(), localLinkedList, paramAnonymousBoolean, parama.getTalkerUserName(), null);
+              AppMethodBeat.o(269335);
+              return;
+            }
+          }
+        };
+        if (localObject1 == null) {
+          break label716;
+        }
+        new com.tencent.mm.emoji.e.c(parama.WQv.getContext(), (EmojiInfo)localObject1, true, paramMenuItem);
+        parama = parama.getTalkerUserName();
+        paramMenuItem = parama;
+        if (ab.Lj(parama)) {
+          paramMenuItem = bq.RL(paramca.field_content);
+        }
+        com.tencent.mm.plugin.report.service.h.IzE.a(12789, new Object[] { Integer.valueOf(1), ((EmojiInfo)localObject1).getMd5(), Integer.valueOf(0), ((EmojiInfo)localObject1).field_designerID, ((EmojiInfo)localObject1).field_groupId, paramMenuItem, "", "", "", ((EmojiInfo)localObject1).field_activityid });
       }
-      label257:
       for (;;)
       {
-        localObject1 = (ca)localObject1;
-        if (localObject1 != null) {
-          u.c(this.Ppq).q((ca)localObject1);
-        }
-        u.c(this.Ppq).a(u.d(this.Ppq));
-        localObject1 = u.e(this.Ppq);
-        localObject2 = this.Ppq.dom;
-        p.g(localObject2, "mChattingContext");
-        ((aa)localObject1).a(((com.tencent.mm.ui.chatting.e.a)localObject2).getContext(), paramList);
-        AppMethodBeat.o(231187);
-        return;
-        localObject1 = localIterator.next();
-        if (localIterator.hasNext())
+        AppMethodBeat.o(35287);
+        return true;
+        Object localObject2 = paramca.field_content;
+        paramMenuItem = (MenuItem)localObject1;
+        if (localObject2 != null)
         {
-          long l1 = ((ca)localObject1).ajL();
-          localObject2 = localIterator.next();
-          long l2 = ((ca)localObject2).ajL();
-          if (l1 < l2)
-          {
-            l1 = l2;
-            localObject1 = localObject2;
+          localObject2 = k.b.aG((String)localObject2, paramca.field_reserved);
+          paramMenuItem = (MenuItem)localObject1;
+          if (localObject2 != null) {
+            paramMenuItem = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().aud(((k.b)localObject2).llZ);
           }
-          for (;;)
-          {
-            if (!localIterator.hasNext()) {
-              break label257;
-            }
+        }
+        if (paramMenuItem != null)
+        {
+          bool = true;
+          Log.i("MicroMsg.ChattingUI.EmojiComponent", "longCLickRetransmitEmoji: emoji from xml %s", new Object[] { Boolean.valueOf(bool) });
+          localObject1 = paramMenuItem;
+          if (paramMenuItem != null) {
             break;
           }
+          localObject2 = be.bwQ(paramca.field_content);
+          localObject1 = paramMenuItem;
+          if (!Util.isNullOrNil(((be)localObject2).md5))
+          {
+            localObject1 = paramMenuItem;
+            if (!((be)localObject2).md5.equals("-1")) {
+              localObject1 = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().aud(((be)localObject2).md5);
+            }
+          }
+          if (localObject1 == null) {
+            break label710;
+          }
+        }
+        for (bool = true;; bool = false)
+        {
+          Log.i("MicroMsg.ChattingUI.EmojiComponent", "longCLickRetransmitEmoji: emoji from content %s", new Object[] { Boolean.valueOf(bool) });
+          break;
+          bool = false;
+          break label580;
+        }
+        if (paramca.hzC()) {
+          paramMenuItem.ep(true);
         }
       }
+      if (paramca.hzB())
+      {
+        paramMenuItem = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().aud(paramca.field_imgPath);
+        if (paramMenuItem != null) {
+          com.tencent.mm.plugin.report.service.h.IzE.a(12789, new Object[] { Integer.valueOf(2), paramMenuItem.getMd5(), Integer.valueOf(0), paramMenuItem.field_designerID, paramMenuItem.field_groupId, "", "", "", "", "", paramMenuItem.field_activityid });
+        }
+        if (paramMenuItem != null) {
+          break label987;
+        }
+      }
+      for (paramMenuItem = "";; paramMenuItem = paramMenuItem.field_groupId)
+      {
+        if (!Util.isNullOrNil(paramMenuItem))
+        {
+          paramca = new Intent();
+          paramca.putExtra("preceding_scence", 3);
+          paramca.putExtra("download_entrance_scene", 16);
+          paramca.putExtra("extra_id", paramMenuItem);
+          com.tencent.mm.by.c.b(parama.WQv.getContext(), "emoji", ".ui.EmojiStoreDetailUI", paramca);
+        }
+        do
+        {
+          AppMethodBeat.o(35287);
+          return true;
+          paramMenuItem = be.bwQ(paramca.field_content);
+        } while ((Util.isNullOrNil(paramMenuItem.md5)) || (paramMenuItem.md5.equals("-1")));
+        paramMenuItem = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.h.ag(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().aud(paramMenuItem.md5);
+        break;
+      }
+      paramMenuItem = cw(paramca);
+      if (paramMenuItem != null)
+      {
+        com.tencent.mm.plugin.report.service.h.IzE.a(12789, new Object[] { Integer.valueOf(5), paramMenuItem.getMd5(), Integer.valueOf(0), paramMenuItem.field_designerID, paramMenuItem.field_groupId, "", "", "", "", "", paramMenuItem.field_activityid });
+        com.tencent.mm.plugin.emojicapture.api.b.z(parama.WQv.getContext(), paramMenuItem.getMd5(), parama.getTalkerUserName());
+      }
+      AppMethodBeat.o(35287);
+      return true;
+      a(paramca, parama);
+      AppMethodBeat.o(35287);
+      return true;
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/storage/MsgInfo;", "invoke"})
-  static final class c
-    extends q
-    implements kotlin.g.a.b<ca, Boolean>
+  public final boolean cu(ca paramca)
   {
-    c(u paramu)
+    AppMethodBeat.i(35291);
+    Log.i("MicroMsg.ChattingUI.EmojiComponent", "[resendEmoji] %d", new Object[] { Long.valueOf(paramca.field_msgId) });
+    if (paramca.hzB())
     {
-      super();
+      cv(paramca);
+      AppMethodBeat.o(35291);
+      return true;
     }
+    if (paramca.hzC())
+    {
+      cd(paramca);
+      AppMethodBeat.o(35291);
+      return true;
+    }
+    AppMethodBeat.o(35291);
+    return false;
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/ui/chatting/component/EmojiEggComponent$onChattingEnterAnimEnd$1", "Lcom/tencent/mm/emoji/egg/EmojiDynamicController$StateCallback;", "onEnd", "", "onPlayScreenEffect", "msgId", "", "effect", "Lcom/tencent/mm/emoji/egg/EmojiAnimConfig$EmojiAnimScreenEffect;", "onScreenEffect", "onStart", "app_release"})
-  public static final class d
-    implements e.b
+  public final void hGW()
   {
-    public final void a(long paramLong, b.b paramb)
-    {
-      AppMethodBeat.i(231191);
-      p.h(paramb, "effect");
-      Log.i(u.a(this.Ppq), "onPlayScreenEffect: msg:" + paramLong + ", " + paramb.delay + ", " + paramb.effectId);
-      paramb = new c(this.Ppq.dom, u.b(this.Ppq), paramLong, System.currentTimeMillis());
-      com.tencent.mm.ui.l.a.b.Qlr.c(paramb);
-      AppMethodBeat.o(231191);
-    }
-    
-    public final void a(b.b paramb)
-    {
-      AppMethodBeat.i(231190);
-      p.h(paramb, "effect");
-      Log.i(u.a(this.Ppq), "onScreenEffect: msg:" + paramb.delay + ", " + paramb.effectId);
-      com.tencent.mm.ui.l.a.b.Qlr.f(u.b(this.Ppq));
-      AppMethodBeat.o(231190);
-    }
+    AppMethodBeat.i(35288);
+    Log.i("MicroMsg.ChattingUI.EmojiComponent", "[onChattingEnterAnimEnd]");
+    EventCenter.instance.addListener(this.WJs);
+    AppMethodBeat.o(35288);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
-  static final class e
-    extends q
-    implements kotlin.g.a.a<x>
+  public final void hGZ()
   {
-    e(u paramu, List paramList)
-    {
-      super();
-    }
+    AppMethodBeat.i(35289);
+    Log.i("MicroMsg.ChattingUI.EmojiComponent", "[onChattingExitAnimStart]");
+    EventCenter.instance.removeListener(this.WJs);
+    AppMethodBeat.o(35289);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onScrollChanged"})
-  static final class f
-    implements ViewTreeObserver.OnScrollChangedListener
+  public final void hNZ()
   {
-    f(u paramu) {}
-    
-    public final void onScrollChanged()
-    {
-      AppMethodBeat.i(231193);
-      u.f(this.Ppq);
-      AppMethodBeat.o(231193);
-    }
+    AppMethodBeat.i(35290);
+    super.hNZ();
+    Log.i("MicroMsg.ChattingUI.EmojiComponent", "[onComponentUnInstall]");
+    EventCenter.instance.removeListener(this.WJs);
+    AppMethodBeat.o(35290);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/ui/chatting/component/EmojiEggComponent$viewProvider$1", "Lcom/tencent/mm/emoji/egg/ChattingViewProvider;", "getItemTextView", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "itemView", "Landroid/view/View;", "getParentView", "getViewByMsgId", "msgId", "", "app_release"})
-  public static final class h
-    implements com.tencent.mm.emoji.a.a
+  public final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    public final MMNeat7extView ck(View paramView)
+    AppMethodBeat.i(35296);
+    super.onConfigurationChanged(paramConfiguration);
+    if ((this.UXl != null) && (this.UXl.isShowing()))
     {
-      AppMethodBeat.i(231196);
-      p.h(paramView, "itemView");
-      paramView = (MMNeat7extView)paramView.findViewById(2131298416);
-      AppMethodBeat.o(231196);
-      return paramView;
+      this.UXl.dismiss();
+      this.UXl = null;
     }
-    
-    public final View zh(long paramLong)
-    {
-      AppMethodBeat.i(231195);
-      View localView = ((k)this.Ppq.dom.bh(k.class)).zh(paramLong);
-      AppMethodBeat.o(231195);
-      return localView;
-    }
+    AppMethodBeat.o(35296);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.u
  * JD-Core Version:    0.7.0.1
  */

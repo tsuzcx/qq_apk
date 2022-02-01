@@ -14,17 +14,54 @@ import java.util.List;
 public class g
 {
   private static final String TAG;
-  private static List<NetworkInterface> lkZ;
+  private static List<NetworkInterface> ofL;
   
   static
   {
     AppMethodBeat.i(158991);
     TAG = g.class.getSimpleName();
-    lkZ = new ArrayList();
+    ofL = new ArrayList();
     AppMethodBeat.o(158991);
   }
   
-  public static String bBA()
+  public static List<NetworkInterface> bMV()
+  {
+    AppMethodBeat.i(158988);
+    ofL.clear();
+    for (;;)
+    {
+      try
+      {
+        localObject = NetworkInterface.getNetworkInterfaces();
+        if (localObject != null) {
+          continue;
+        }
+      }
+      catch (SocketException localSocketException)
+      {
+        Object localObject;
+        NetworkInterface localNetworkInterface;
+        Iterator localIterator;
+        continue;
+      }
+      localObject = ofL;
+      AppMethodBeat.o(158988);
+      return localObject;
+      localObject = Collections.list((Enumeration)localObject).iterator();
+      if (((Iterator)localObject).hasNext())
+      {
+        localNetworkInterface = (NetworkInterface)((Iterator)localObject).next();
+        localIterator = Collections.list(localNetworkInterface.getInetAddresses()).iterator();
+        if (localIterator.hasNext()) {
+          if (((InetAddress)localIterator.next()).getHostAddress().startsWith("192.168")) {
+            ofL.add(localNetworkInterface);
+          }
+        }
+      }
+    }
+  }
+  
+  public static String bMW()
   {
     AppMethodBeat.i(158989);
     Object localObject1 = null;
@@ -74,44 +111,7 @@ public class g
     }
   }
   
-  public static List<NetworkInterface> bBz()
-  {
-    AppMethodBeat.i(158988);
-    lkZ.clear();
-    for (;;)
-    {
-      try
-      {
-        localObject = NetworkInterface.getNetworkInterfaces();
-        if (localObject != null) {
-          continue;
-        }
-      }
-      catch (SocketException localSocketException)
-      {
-        Object localObject;
-        NetworkInterface localNetworkInterface;
-        Iterator localIterator;
-        continue;
-      }
-      localObject = lkZ;
-      AppMethodBeat.o(158988);
-      return localObject;
-      localObject = Collections.list((Enumeration)localObject).iterator();
-      if (((Iterator)localObject).hasNext())
-      {
-        localNetworkInterface = (NetworkInterface)((Iterator)localObject).next();
-        localIterator = Collections.list(localNetworkInterface.getInetAddresses()).iterator();
-        if (localIterator.hasNext()) {
-          if (((InetAddress)localIterator.next()).getHostAddress().startsWith("192.168")) {
-            lkZ.add(localNetworkInterface);
-          }
-        }
-      }
-    }
-  }
-  
-  public static String u(String paramString1, int paramInt, String paramString2)
+  public static String v(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(158990);
     if (paramString2.startsWith("/"))
@@ -127,7 +127,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.c.g
  * JD-Core Version:    0.7.0.1
  */

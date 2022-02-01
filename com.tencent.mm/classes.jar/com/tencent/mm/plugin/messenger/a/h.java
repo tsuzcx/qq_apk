@@ -9,19 +9,19 @@ import java.util.regex.Pattern;
 
 public final class h
 {
-  private static final Pattern lnT;
+  private static final Pattern oiE;
   
   static
   {
-    AppMethodBeat.i(194477);
-    lnT = Pattern.compile("(\\$\\{[^\\}]+\\})");
-    AppMethodBeat.o(194477);
+    AppMethodBeat.i(213190);
+    oiE = Pattern.compile("(\\$\\{[^\\}]+\\})");
+    AppMethodBeat.o(213190);
   }
   
-  public static List<a> aDX(String paramString)
+  public static List<a> aOh(String paramString)
   {
-    AppMethodBeat.i(194476);
-    Matcher localMatcher = lnT.matcher(paramString);
+    AppMethodBeat.i(213187);
+    Matcher localMatcher = oiE.matcher(paramString);
     paramString = new ArrayList();
     try
     {
@@ -37,7 +37,7 @@ public final class h
     catch (Exception localException)
     {
       Log.printErrStackTrace("MicroMsg.SysMsgTemplateHelper", localException, "parseParams error!", new Object[0]);
-      AppMethodBeat.o(194476);
+      AppMethodBeat.o(213187);
     }
   }
   
@@ -54,9 +54,9 @@ public final class h
     
     public final String toString()
     {
-      AppMethodBeat.i(194475);
+      AppMethodBeat.i(213042);
       String str = "group:" + this.group + ",value:" + this.value;
-      AppMethodBeat.o(194475);
+      AppMethodBeat.o(213042);
       return str;
     }
   }

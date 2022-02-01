@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.clean.ui.fileindexui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.http.HttpWrapperBase.Response;
@@ -21,21 +21,21 @@ final class CleanNewUI$9
   
   public final void onComplete()
   {
-    AppMethodBeat.i(231669);
+    AppMethodBeat.i(245430);
     Log.d("MicroMsg.CleanNewUI", "request onComplete:%s", new Object[] { this.content });
     try
     {
       new JSONObject(this.content);
-      bg.aVF();
-      c.azQ().set(ar.a.NWy, this.content);
-      AppMethodBeat.o(231669);
+      bh.beI();
+      c.aHp().set(ar.a.Vky, this.content);
+      AppMethodBeat.o(245430);
       return;
     }
     catch (JSONException localJSONException)
     {
       Log.printErrStackTrace("MicroMsg.CleanNewUI", localJSONException, "", new Object[0]);
-      h.CyF.idkeyStat(714L, 6L, 1L, false);
-      AppMethodBeat.o(231669);
+      h.IzE.idkeyStat(714L, 6L, 1L, false);
+      AppMethodBeat.o(245430);
     }
   }
 }

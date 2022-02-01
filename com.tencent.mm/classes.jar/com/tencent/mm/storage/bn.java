@@ -1,7 +1,7 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bu;
+import com.tencent.mm.f.c.bu;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -55,19 +55,19 @@ public final class bn
     AppMethodBeat.o(43198);
   }
   
-  public final boolean gCT()
-  {
-    return this.field_isSend % 2 == 0;
-  }
-  
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
+  
+  public final boolean hzg()
+  {
+    return this.field_isSend % 2 == 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.bn
  * JD-Core Version:    0.7.0.1
  */

@@ -4,69 +4,60 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class dvd
-  extends com.tencent.mm.bw.a
+  extends dyl
 {
-  public String MWb;
-  public LinkedList<dvc> MWj;
-  public String dMl;
-  public String sGF;
+  public int Ubk;
+  public int Ubl;
+  public LinkedList<dvc> jmy;
   
   public dvd()
   {
-    AppMethodBeat.i(122532);
-    this.MWj = new LinkedList();
-    AppMethodBeat.o(122532);
+    AppMethodBeat.i(210550);
+    this.jmy = new LinkedList();
+    AppMethodBeat.o(210550);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(122533);
+    AppMethodBeat.i(210554);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.sGF != null) {
-        paramVarArgs.e(1, this.sGF);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.MWb != null) {
-        paramVarArgs.e(2, this.MWb);
-      }
-      if (this.dMl != null) {
-        paramVarArgs.e(3, this.dMl);
-      }
-      paramVarArgs.e(4, 8, this.MWj);
-      AppMethodBeat.o(122533);
+      paramVarArgs.e(2, 8, this.jmy);
+      paramVarArgs.aY(3, this.Ubk);
+      paramVarArgs.aY(4, this.Ubl);
+      AppMethodBeat.o(210554);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.sGF == null) {
-        break label478;
+      if (this.BaseRequest == null) {
+        break label498;
       }
     }
-    label478:
-    for (int i = g.a.a.b.b.a.f(1, this.sGF) + 0;; i = 0)
+    label498:
+    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.MWb != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.MWb);
-      }
-      i = paramInt;
-      if (this.dMl != null) {
-        i = paramInt + g.a.a.b.b.a.f(3, this.dMl);
-      }
-      paramInt = g.a.a.a.c(4, 8, this.MWj);
-      AppMethodBeat.o(122533);
-      return i + paramInt;
+      int i = g.a.a.a.c(2, 8, this.jmy);
+      int j = g.a.a.b.b.a.bM(3, this.Ubk);
+      int k = g.a.a.b.b.a.bM(4, this.Ubl);
+      AppMethodBeat.o(210554);
+      return paramInt + i + j + k;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.MWj.clear();
+        this.jmy.clear();
         paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(122533);
+        AppMethodBeat.o(210554);
         return 0;
       }
       if (paramInt == 3)
@@ -74,47 +65,61 @@ public final class dvd
         Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         dvd localdvd = (dvd)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(122533);
+          AppMethodBeat.o(210554);
           return -1;
         case 1: 
-          localdvd.sGF = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(122533);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new jg();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((jg)localObject2).parseFrom((byte[])localObject1);
+            }
+            localdvd.BaseRequest = ((jg)localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(210554);
           return 0;
         case 2: 
-          localdvd.MWb = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(122533);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new dvc();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((dvc)localObject2).parseFrom((byte[])localObject1);
+            }
+            localdvd.jmy.add(localObject2);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(210554);
           return 0;
         case 3: 
-          localdvd.dMl = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(122533);
+          localdvd.Ubk = ((g.a.a.a.a)localObject1).abFh.AK();
+          AppMethodBeat.o(210554);
           return 0;
         }
-        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new dvc();
-          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((dvc)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-          localdvd.MWj.add(localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(122533);
+        localdvd.Ubl = ((g.a.a.a.a)localObject1).abFh.AK();
+        AppMethodBeat.o(210554);
         return 0;
       }
-      AppMethodBeat.o(122533);
+      AppMethodBeat.o(210554);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dvd
  * JD-Core Version:    0.7.0.1
  */

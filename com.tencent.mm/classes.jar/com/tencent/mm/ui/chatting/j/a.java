@@ -1,112 +1,128 @@
 package com.tencent.mm.ui.chatting.j;
 
+import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.c;
-import com.tencent.mm.model.cl;
-import com.tencent.mm.modelsimple.w;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.plugin.multitask.a.b;
+import com.tencent.mm.plugin.multitask.f.c;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.thread.ThreadPool;
-import com.tencent.mm.storage.ca;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Set;
+import java.io.File;
 
 public final class a
-  extends com.tencent.mm.az.a
+  extends b
 {
-  public String PEb;
-  public long PEc = 0L;
-  public String PEd;
-  public int mType;
+  private boolean WYK = false;
+  private boolean WYL = false;
+  private String id;
   
-  public a(Map<String, String> paramMap, ca paramca)
+  public a(Activity paramActivity)
   {
-    super(paramMap, paramca);
+    super(paramActivity);
   }
   
-  public final boolean aTA()
+  public final void d(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    AppMethodBeat.i(36444);
-    if (this.values == null)
+    this.WYK = paramBoolean1;
+    this.WYL = paramBoolean2;
+    this.id = paramString;
+  }
+  
+  public final Bitmap getBitmap()
+  {
+    AppMethodBeat.i(286415);
+    Object localObject = c.FNB;
+    if (c.YO(4))
     {
-      Log.e("MicroMsg.InvokeMessageNewXmlMsg", "[parseXml] values == null ");
-      AppMethodBeat.o(36444);
-      return false;
+      AppMethodBeat.o(286415);
+      return null;
     }
-    if (this.values.containsKey(".sysmsg.invokeMessage.preContent")) {
-      this.PEb = ((String)this.values.get(".sysmsg.invokeMessage.preContent"));
-    }
-    if (this.values.containsKey(".sysmsg.invokeMessage.msgSource")) {
-      this.PEd = ((String)this.values.get(".sysmsg.invokeMessage.msgSource"));
-    }
-    if (this.values.containsKey(".sysmsg.invokeMessage.timestamp")) {
-      this.PEc = Util.safeParseLong((String)this.values.get(".sysmsg.invokeMessage.timestamp"));
-    }
-    if (this.values.containsKey(".sysmsg.invokeMessage.type")) {
-      this.mType = Util.safeParseInt((String)this.values.get(".sysmsg.invokeMessage.type"));
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.values.keySet().iterator();
-    int i = 0;
-    while (localIterator.hasNext())
+    if (this.WYK)
     {
-      String str = (String)localIterator.next();
-      if (str.startsWith(".sysmsg.invokeMessage.text"))
+      localObject = MMApplicationContext.getContext().getExternalCacheDir().getAbsolutePath() + "//" + this.id;
+      com.tencent.mm.plugin.multitask.f.a locala = com.tencent.mm.plugin.multitask.f.a.FNz;
+      localObject = com.tencent.mm.plugin.multitask.f.a.aRg((String)localObject);
+      AppMethodBeat.o(286415);
+      return localObject;
+    }
+    if (this.WYL)
+    {
+      localObject = super.getBitmap();
+      AppMethodBeat.o(286415);
+      return localObject;
+    }
+    AppMethodBeat.o(286415);
+    return null;
+  }
+  
+  public final View getContentView()
+  {
+    AppMethodBeat.i(286416);
+    Object localObject = super.getContentView();
+    int i;
+    if (localObject == null)
+    {
+      ViewGroup localViewGroup = cuR();
+      localObject = null;
+      i = 0;
+      int k = 1;
+      int j = 1;
+      if (i < localViewGroup.getChildCount())
       {
-        if (localStringBuilder.length() > 0) {
-          localStringBuilder.insert(0, (String)this.values.get(str));
-        } else {
-          localStringBuilder.append((String)this.values.get(str));
+        View localView = localViewGroup.getChildAt(i);
+        if ((localView == null) || (localView.getHeight() * localView.getWidth() <= k * j)) {
+          break label109;
         }
-      }
-      else
-      {
-        if ((!str.startsWith(".sysmsg.invokeMessage.link.text")) || (Util.isNullOrNil((String)this.values.get(str)))) {
-          break label423;
-        }
-        str = (String)this.values.get(str);
-        localStringBuilder.append(str);
-        this.jfI.add(str);
-        i = str.length();
+        k = localView.getWidth();
+        j = localView.getHeight();
+        localObject = localView;
       }
     }
-    label423:
+    label109:
     for (;;)
     {
+      i += 1;
       break;
-      this.jfJ.addFirst(Integer.valueOf(localStringBuilder.length() - i));
-      this.jfK.add(Integer.valueOf(localStringBuilder.length()));
-      this.jfG = localStringBuilder.toString();
-      if ((cl.aWz() - this.PEc >= 300000L) && (!Util.isNullOrNil(this.PEb))) {
-        ThreadPool.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(36443);
-            a.this.dTX.setType(10002);
-            w.a(MMApplicationContext.getContext().getString(2131757506), "", a.this.dTX, "");
-            bg.aVF();
-            c.aSQ().a(a.this.dTX.field_msgId, a.this.dTX);
-            Log.i("MicroMsg.InvokeMessageNewXmlMsg", "checkExpired:%s", new Object[] { Long.valueOf(a.this.dTX.field_msgId) });
-            AppMethodBeat.o(36443);
-          }
-        }, "[checkExpired]");
+      AppMethodBeat.o(286416);
+      return localObject;
+      AppMethodBeat.o(286416);
+      return localObject;
+    }
+  }
+  
+  public final View getMaskView()
+  {
+    AppMethodBeat.i(286417);
+    ViewGroup localViewGroup = cuR();
+    Object localObject = null;
+    int i = 0;
+    int k = 1;
+    int j = 1;
+    if (i < localViewGroup.getChildCount())
+    {
+      View localView = localViewGroup.getChildAt(i);
+      if ((localView == null) || (localView.getHeight() * localView.getWidth() <= k * j)) {
+        break label90;
       }
-      AppMethodBeat.o(36444);
-      return true;
+      k = localView.getWidth();
+      j = localView.getHeight();
+      localObject = localView;
+    }
+    label90:
+    for (;;)
+    {
+      i += 1;
+      break;
+      AppMethodBeat.o(286417);
+      return localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.j.a
  * JD-Core Version:    0.7.0.1
  */

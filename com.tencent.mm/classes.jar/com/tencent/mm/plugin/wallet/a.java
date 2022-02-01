@@ -7,16 +7,16 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
 {
-  public String HsN;
-  public StringBuffer HsO;
+  public String Oky;
+  public StringBuffer Okz;
   public int index;
   
   public a()
   {
     AppMethodBeat.i(117554);
-    this.HsN = "";
+    this.Oky = "";
     this.index = 0;
-    this.HsO = new StringBuffer();
+    this.Okz = new StringBuffer();
     AppMethodBeat.o(117554);
   }
   
@@ -29,8 +29,8 @@ public final class a
       return false;
     }
     paramIntent.putExtra("WECHAT_PAY_LOG_REPORT_INDEX", parama.index);
-    paramIntent.putExtra("WECHAT_PAY_LOG_REPORT_DATA", parama.HsO.toString());
-    paramIntent.putExtra("WECHAT_PAY_LOG_REPORT_BASEIFO", parama.HsN);
+    paramIntent.putExtra("WECHAT_PAY_LOG_REPORT_DATA", parama.Okz.toString());
+    paramIntent.putExtra("WECHAT_PAY_LOG_REPORT_BASEIFO", parama.Oky);
     AppMethodBeat.o(117559);
     return true;
   }
@@ -46,17 +46,17 @@ public final class a
     }
     a locala = new a();
     locala.index = i;
-    locala.HsO = new StringBuffer(Util.nullAs(paramIntent.getStringExtra("WECHAT_PAY_LOG_REPORT_DATA"), ""));
-    locala.HsN = Util.nullAs(paramIntent.getStringExtra("WECHAT_PAY_LOG_REPORT_BASEIFO"), "");
+    locala.Okz = new StringBuffer(Util.nullAs(paramIntent.getStringExtra("WECHAT_PAY_LOG_REPORT_DATA"), ""));
+    locala.Oky = Util.nullAs(paramIntent.getStringExtra("WECHAT_PAY_LOG_REPORT_BASEIFO"), "");
     AppMethodBeat.o(117560);
     return locala;
   }
   
-  public static a fV(String paramString, int paramInt)
+  public static a gE(String paramString, int paramInt)
   {
     AppMethodBeat.i(117555);
     a locala = new a();
-    locala.HsN = (paramString + "," + paramInt);
+    locala.Oky = (paramString + "," + paramInt);
     AppMethodBeat.o(117555);
     return locala;
   }
@@ -84,26 +84,26 @@ public final class a
     }
   }
   
-  public final void cG(int paramInt, String paramString)
+  public final void cH(int paramInt, String paramString)
   {
     AppMethodBeat.i(117558);
     paramString = String.format("{%d, %s, %d, %s},", new Object[] { Integer.valueOf(this.index), Long.valueOf(System.currentTimeMillis()), Integer.valueOf(paramInt), paramString });
     this.index += 1;
     Log.i("MicroMsg.PayLogReport", "test for log ".concat(String.valueOf(paramString)));
-    this.HsO.append(paramString);
+    this.Okz.append(paramString);
     AppMethodBeat.o(117558);
   }
   
-  public final void k(int paramInt, Object... paramVarArgs)
+  public final void j(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(117556);
-    cG(paramInt, u(paramVarArgs));
+    cH(paramInt, u(paramVarArgs));
     AppMethodBeat.o(117556);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
-import com.tencent.mm.protocal.protobuf.ckb;
-import com.tencent.mm.protocal.protobuf.ckc;
+import com.tencent.mm.protocal.protobuf.csv;
+import com.tencent.mm.protocal.protobuf.csw;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class s
@@ -23,14 +23,14 @@ public final class s
   {
     AppMethodBeat.i(150937);
     d.a locala = new d.a();
-    locala.iLN = new ckb();
-    locala.iLO = new ckc();
+    locala.lBU = new csv();
+    locala.lBV = new csw();
     locala.uri = "/cgi-bin/micromsg-bin/logout";
     locala.funcId = 282;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    ((ckb)this.rr.iLK.iLR).Scene = 0;
+    this.rr = locala.bgN();
+    ((csv)d.b.b(this.rr.lBR)).CPw = 0;
     AppMethodBeat.o(150937);
   }
   

@@ -16,12 +16,12 @@ final class k
     super(paramc);
   }
   
-  public final int Cn(long paramLong)
+  public final int Iw(long paramLong)
   {
     return 1;
   }
   
-  public final FileDownloadTaskInfo Co(long paramLong)
+  public final FileDownloadTaskInfo Ix(long paramLong)
   {
     AppMethodBeat.i(89032);
     FileDownloadTaskInfo localFileDownloadTaskInfo = new FileDownloadTaskInfo();
@@ -31,12 +31,12 @@ final class k
     return localFileDownloadTaskInfo;
   }
   
-  public final boolean Cp(long paramLong)
+  public final boolean Iy(long paramLong)
   {
     return false;
   }
   
-  public final boolean Cq(long paramLong)
+  public final boolean Iz(long paramLong)
   {
     return false;
   }
@@ -49,20 +49,20 @@ final class k
   public final long a(g paramg)
   {
     AppMethodBeat.i(89031);
-    if (Util.isNullOrNil(paramg.kMX))
+    if (Util.isNullOrNil(paramg.nGR))
     {
       AppMethodBeat.o(89031);
       return -1L;
     }
-    Object localObject = new Intent("android.intent.action.VIEW", Uri.parse(paramg.kMX));
+    Object localObject = new Intent("android.intent.action.VIEW", Uri.parse(paramg.nGR));
     ((Intent)localObject).addFlags(268435456);
     try
     {
       paramg = MMApplicationContext.getContext();
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramg, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/downloader/model/FileDownloaderImplNormal", "addDownloadTask", "(Lcom/tencent/mm/plugin/downloader/model/FileDownloadRequest;)J", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramg.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramg, "com/tencent/mm/plugin/downloader/model/FileDownloaderImplNormal", "addDownloadTask", "(Lcom/tencent/mm/plugin/downloader/model/FileDownloadRequest;)J", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(paramg, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/downloader/model/FileDownloaderImplNormal", "addDownloadTask", "(Lcom/tencent/mm/plugin/downloader/model/FileDownloadRequest;)J", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramg.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(paramg, "com/tencent/mm/plugin/downloader/model/FileDownloaderImplNormal", "addDownloadTask", "(Lcom/tencent/mm/plugin/downloader/model/FileDownloadRequest;)J", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(89031);
       return 0L;
     }

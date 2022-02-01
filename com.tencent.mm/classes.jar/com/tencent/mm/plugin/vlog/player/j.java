@@ -6,50 +6,50 @@ import com.tencent.mm.media.g.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/player/VLogScriptTexCache;", "", "()V", "externalTexIndex", "", "externalTexsPool", "", "Lcom/tencent/mm/media/globject/GLTextureObject;", "[Lcom/tencent/mm/media/globject/GLTextureObject;", "normalTexIndex", "normalTexsPool", "clearCache", "", "initCache", "releaseExternalTex", "tex", "releaseNormalTex", "requestExternalTex", "requestNormalTex", "Companion", "plugin-vlog_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/player/VLogScriptTexCache;", "", "()V", "externalTexIndex", "", "externalTexsPool", "", "Lcom/tencent/mm/media/globject/GLTextureObject;", "[Lcom/tencent/mm/media/globject/GLTextureObject;", "normalTexIndex", "normalTexsPool", "clearCache", "", "initCache", "releaseExternalTex", "tex", "releaseNormalTex", "requestExternalTex", "requestNormalTex", "Companion", "plugin-vlog_release"})
 public final class j
 {
-  public static final a GCf;
-  final d[] GCb;
-  final d[] GCc;
-  int GCd;
-  int GCe;
+  public static final a NpQ;
+  final d[] NpM;
+  final d[] NpN;
+  int NpO;
+  int NpP;
   
   static
   {
-    AppMethodBeat.i(190886);
-    GCf = new a((byte)0);
-    AppMethodBeat.o(190886);
+    AppMethodBeat.i(224506);
+    NpQ = new a((byte)0);
+    AppMethodBeat.o(224506);
   }
   
   public j()
   {
-    AppMethodBeat.i(190885);
-    this.GCb = new d[2];
-    this.GCc = new d[2];
-    AppMethodBeat.o(190885);
+    AppMethodBeat.i(224503);
+    this.NpM = new d[2];
+    this.NpN = new d[2];
+    AppMethodBeat.o(224503);
   }
   
-  public final void fCp()
+  public final void guo()
   {
-    AppMethodBeat.i(190884);
+    AppMethodBeat.i(224501);
     Log.i("MicroMsg.VLogScriptTexCache", "init cache, cacheTexsNum:2");
     int i = 0;
     while (i < 2)
     {
-      this.GCb[i] = c.a(false, 11L);
-      this.GCc[i] = c.a(true, 11L);
+      this.NpM[i] = c.a(false, 11L);
+      this.NpN[i] = c.a(true, 11L);
       i += 1;
     }
-    AppMethodBeat.o(190884);
+    AppMethodBeat.o(224501);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/player/VLogScriptTexCache$Companion;", "", "()V", "TAG", "", "cacheTexsNum", "", "plugin-vlog_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/player/VLogScriptTexCache$Companion;", "", "()V", "TAG", "", "cacheTexsNum", "", "plugin-vlog_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.player.j
  * JD-Core Version:    0.7.0.1
  */

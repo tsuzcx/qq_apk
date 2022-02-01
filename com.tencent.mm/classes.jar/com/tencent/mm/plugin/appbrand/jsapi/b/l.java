@@ -10,7 +10,7 @@ public final class l
   public static final int CTRL_INDEX = 83;
   public static final String NAME = "updateCanvas";
   
-  public final int H(JSONObject paramJSONObject)
+  public final int K(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(145543);
     int i = paramJSONObject.optInt("canvasId");
@@ -18,14 +18,14 @@ public final class l
     return i;
   }
   
-  public final boolean bEW()
+  public final boolean bQA()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.b.l
  * JD-Core Version:    0.7.0.1
  */

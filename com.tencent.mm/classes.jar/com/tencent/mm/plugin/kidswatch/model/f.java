@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.kidswatch.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cgp;
-import com.tencent.mm.protocal.protobuf.cgq;
+import com.tencent.mm.protocal.protobuf.cpl;
+import com.tencent.mm.protocal.protobuf.cpm;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class f
@@ -18,39 +18,42 @@ public final class f
   implements m
 {
   private i callback;
-  private final d iUB;
+  private final d lKU;
   
   public f(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(256401);
+    AppMethodBeat.i(252071);
     d.a locala = new d.a();
-    cgp localcgp = new cgp();
-    cgq localcgq = new cgq();
-    locala.iLN = localcgp;
-    locala.iLO = localcgq;
+    cpl localcpl = new cpl();
+    cpm localcpm = new cpm();
+    locala.lBU = localcpl;
+    locala.lBV = localcpm;
     locala.uri = "/cgi-bin/micromsg-bin/kidswatchloginconfirmget";
     locala.funcId = 5218;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.iUB = locala.aXF();
-    localcgp.LtA = paramString1;
-    localcgp.oTI = paramString2;
+    this.lKU = locala.bgN();
+    localcpl.SvX = paramString1;
+    localcpl.rVG = paramString2;
     Log.d("MicroMsg.NetSceneKidsWatchLoginConfirmGet", "[NetSceneKidsWatchLoginConfirmGet]loginUrl:%s, deviceName:%s", new Object[] { paramString1, paramString2 });
-    AppMethodBeat.o(256401);
+    AppMethodBeat.o(252071);
   }
   
   public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(256402);
+    AppMethodBeat.i(252073);
     this.callback = parami;
-    int i = dispatch(paramg, this.iUB, this);
-    AppMethodBeat.o(256402);
+    int i = dispatch(paramg, this.lKU, this);
+    AppMethodBeat.o(252073);
     return i;
   }
   
-  public final cgq ebU()
+  public final cpm eKS()
   {
-    return (cgq)this.iUB.iLL.iLR;
+    AppMethodBeat.i(252077);
+    cpm localcpm = (cpm)d.c.b(this.lKU.lBS);
+    AppMethodBeat.o(252077);
+    return localcpm;
   }
   
   public final int getType()
@@ -60,15 +63,15 @@ public final class f
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(256403);
+    AppMethodBeat.i(252075);
     Log.d("MicroMsg.NetSceneKidsWatchLoginConfirmGet", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + " errMsg:" + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(256403);
+    AppMethodBeat.o(252075);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.kidswatch.model.f
  * JD-Core Version:    0.7.0.1
  */

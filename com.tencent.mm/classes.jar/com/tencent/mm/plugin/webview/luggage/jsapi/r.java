@@ -7,7 +7,8 @@ import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
+import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.luggage.w;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -27,9 +28,9 @@ public class r
   {
     AppMethodBeat.i(175742);
     Intent localIntent = new Intent();
-    String str3 = ((g)paramb.cta).getUrl();
+    String str3 = ((g)paramb.crg).getUrl();
     localIntent.putExtra("req_url", str3);
-    String str2 = ((g)paramb.cta).ITw.getAppId();
+    String str2 = ((g)paramb.crg).PPO.getAppId();
     String str1 = str2;
     if (Util.isNullOrNil(str2))
     {
@@ -37,21 +38,21 @@ public class r
       if (!Util.isNullOrNil(str3))
       {
         str1 = str2;
-        if (Uri.parse(str3).getHost().equals(WeChatHosts.domainString(2131761707))) {
+        if (Uri.parse(str3).getHost().equals(WeChatHosts.domainString(c.i.host_game_weixin_qq_com))) {
           str1 = "wx62d9035fd4fd2059";
         }
       }
     }
     localIntent.putExtra("req_app_id", str1);
     localIntent.putExtra("launch_from_webview", true);
-    ((MMActivity)((g)paramb.cta).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
+    ((MMActivity)((g)paramb.crg).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
     {
       public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(175741);
         if (paramAnonymousInt1 == (r.this.hashCode() & 0xFFFF))
         {
-          ((MMActivity)((g)paramb.cta).mContext).mmSetOnActivityResultCallback(null);
+          ((MMActivity)((g)paramb.crg).mContext).mmSetOnActivityResultCallback(null);
           if ((paramAnonymousInt2 == -1) && (paramAnonymousIntent != null))
           {
             String str1 = Util.nullAs(paramAnonymousIntent.getStringExtra("nationalCode"), "");
@@ -66,7 +67,7 @@ public class r
             if (!Util.isNullOrNil(str2))
             {
               HashMap localHashMap = new HashMap();
-              localHashMap.put("nationalCode", str1);
+              localHashMap.put("nationalCode", r.bIG(str1));
               localHashMap.put("userName", str2);
               localHashMap.put("telNumber", str3);
               localHashMap.put("addressPostalCode", str4);
@@ -74,27 +75,27 @@ public class r
               localHashMap.put("addressCitySecondStageName", str6);
               localHashMap.put("addressCountiesThirdStageName", str7);
               localHashMap.put("addressDetailInfo", paramAnonymousIntent);
-              paramb.e("", localHashMap);
+              paramb.d("", localHashMap);
               AppMethodBeat.o(175741);
               return;
             }
           }
           if (paramAnonymousInt2 == 0)
           {
-            paramb.c("cancel", null);
+            paramb.a("cancel", null);
             AppMethodBeat.o(175741);
             return;
           }
-          paramb.c("fail", null);
+          paramb.a("fail", null);
         }
         AppMethodBeat.o(175741);
       }
     });
-    c.a(((g)paramb.cta).mContext, "address", ".ui.WalletSelectAddrUI", localIntent, hashCode() & 0xFFFF, false);
+    c.a(((g)paramb.crg).mContext, "address", ".ui.WalletSelectAddrUI", localIntent, hashCode() & 0xFFFF, false);
     AppMethodBeat.o(175742);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

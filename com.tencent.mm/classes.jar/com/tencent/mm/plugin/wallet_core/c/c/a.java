@@ -17,14 +17,14 @@ import org.xwalk.core.Log;
 public final class a
   extends m
 {
-  private int HQK;
-  public Orders HQL;
+  private int OIS;
+  public Orders OIT;
   
   public a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt, String paramString6, String paramString7)
   {
     AppMethodBeat.i(69979);
     Log.i("MicroMsg.NetSceneGetPaidOrderDetail", "do NetSceneGetPaidOrderDetail");
-    this.HQK = paramInt;
+    this.OIS = paramInt;
     HashMap localHashMap = new HashMap();
     if (Util.isNullOrNil(paramString1))
     {
@@ -49,7 +49,7 @@ public final class a
       }
       label113:
       localHashMap.put("reqKey", paramString5);
-      localHashMap.put("payScene", q.encode(String.valueOf(paramInt)));
+      localHashMap.put("payScene", q.aT(String.valueOf(paramInt)));
       if (!Util.isNullOrNil(paramString6)) {
         break label239;
       }
@@ -65,33 +65,33 @@ public final class a
       setRequestData(localHashMap);
       AppMethodBeat.o(69979);
       return;
-      paramString1 = q.encode(paramString1);
+      paramString1 = q.aT(paramString1);
       break;
       label203:
-      paramString2 = q.encode(paramString2);
+      paramString2 = q.aT(paramString2);
       break label56;
       label211:
-      paramString3 = q.encode(paramString3);
+      paramString3 = q.aT(paramString3);
       break label74;
       label219:
-      paramString4 = q.encode(paramString4);
+      paramString4 = q.aT(paramString4);
       break label93;
       label229:
-      paramString5 = q.encode(paramString5);
+      paramString5 = q.aT(paramString5);
       break label113;
       label239:
-      paramString6 = q.encode(paramString6);
+      paramString6 = q.aT(paramString6);
       break label151;
       label249:
-      paramString7 = q.encode(paramString7);
+      paramString7 = q.aT(paramString7);
     }
   }
   
-  private Orders by(JSONObject paramJSONObject)
+  private Orders bJ(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(69981);
-    if (this.HQL == null) {
-      this.HQL = new Orders();
+    if (this.OIT == null) {
+      this.OIT = new Orders();
     }
     try
     {
@@ -101,19 +101,19 @@ public final class a
       {
         JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
         Orders.Commodity localCommodity = new Orders.Commodity();
-        localCommodity.dDM = localJSONObject.getString("transaction_id");
-        localCommodity.AOa = localJSONObject.optString("sp_name");
-        if (Util.isNullOrNil(this.HQL.AOl)) {
-          this.HQL.AOl = localJSONObject.optString("fee_type");
+        localCommodity.fww = localJSONObject.getString("transaction_id");
+        localCommodity.GHo = localJSONObject.optString("sp_name");
+        if (Util.isNullOrNil(this.OIT.GHz)) {
+          this.OIT.GHz = localJSONObject.optString("fee_type");
         }
-        this.HQL.HZd.add(localCommodity);
+        this.OIT.ORd.add(localCommodity);
         i += 1;
       }
       return paramJSONObject;
     }
     catch (JSONException paramJSONObject)
     {
-      paramJSONObject = this.HQL;
+      paramJSONObject = this.OIT;
       AppMethodBeat.o(69981);
     }
   }
@@ -121,7 +121,7 @@ public final class a
   public final int getFuncId()
   {
     int i = 2570;
-    if (this.HQK == 2) {
+    if (this.OIS == 2) {
       i = 2516;
     }
     return i;
@@ -130,7 +130,7 @@ public final class a
   public final int getTenpayCgicmd()
   {
     int i = 2570;
-    if (this.HQK == 2) {
+    if (this.OIS == 2) {
       i = 2516;
     }
     return i;
@@ -139,7 +139,7 @@ public final class a
   public final String getUri()
   {
     String str = "/cgi-bin/mmpay-bin/tenpay/getpaidorderdetail";
-    if (this.HQK == 2) {
+    if (this.OIS == 2) {
       str = "/cgi-bin/mmpay-bin/tenpay/offlinegetpaidorderdetail";
     }
     return str;
@@ -151,8 +151,8 @@ public final class a
     Log.i("MicroMsg.NetSceneGetPaidOrderDetail", "errCode: " + paramInt + " errMsg: " + paramString);
     if ((paramJSONObject != null) && (isPayEnd()))
     {
-      this.HQL = by(paramJSONObject);
-      this.HQL = Orders.a(paramJSONObject, this.HQL);
+      this.OIT = bJ(paramJSONObject);
+      this.OIT = Orders.a(paramJSONObject, this.OIT);
     }
     AppMethodBeat.o(69980);
   }

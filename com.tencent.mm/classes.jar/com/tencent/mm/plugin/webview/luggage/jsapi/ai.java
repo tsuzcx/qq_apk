@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.s;
@@ -18,20 +18,20 @@ public class ai
   public final void b(final b.a parama)
   {
     AppMethodBeat.i(78579);
-    parama = parama.ctb.csi;
-    h.RTc.aX(new Runnable()
+    parama = parama.crh.cqn;
+    h.ZvG.be(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(210947);
+        AppMethodBeat.i(242118);
         Log.i("MicroMsg.JsApiLog", "jslog : " + parama.optString("msg"));
-        AppMethodBeat.o(210947);
+        AppMethodBeat.o(242118);
       }
     });
     AppMethodBeat.o(78579);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

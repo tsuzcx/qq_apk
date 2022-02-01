@@ -7,22 +7,18 @@ import android.view.inputmethod.InputConnection;
 import android.webkit.ValueCallback;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ac.g;
 import com.tencent.mm.plugin.appbrand.jsapi.af;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.plugin.appbrand.jsapi.s;
-import com.tencent.mm.plugin.appbrand.page.ac;
-import com.tencent.mm.plugin.appbrand.page.au;
-import com.tencent.mm.plugin.appbrand.widget.input.d.b;
+import com.tencent.mm.plugin.appbrand.jsapi.g;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.page.aw;
+import com.tencent.mm.plugin.appbrand.widget.input.aa;
+import com.tencent.mm.plugin.appbrand.widget.input.aa.c;
+import com.tencent.mm.plugin.appbrand.widget.input.aa.d;
+import com.tencent.mm.plugin.appbrand.widget.input.e.b;
 import com.tencent.mm.plugin.appbrand.widget.input.n;
 import com.tencent.mm.plugin.appbrand.widget.input.u;
 import com.tencent.mm.plugin.appbrand.widget.input.u.c;
-import com.tencent.mm.plugin.appbrand.widget.input.w;
-import com.tencent.mm.plugin.appbrand.widget.input.w.c;
-import com.tencent.mm.plugin.appbrand.widget.input.w.d;
 import com.tencent.mm.sdk.platformtools.Log;
-import kotlin.g.b.p;
 import org.json.JSONObject;
 import org.xwalk.core.XWalkExtendTextAreaClient;
 import org.xwalk.core.XWalkView;
@@ -31,188 +27,221 @@ public final class a
   extends XWalkExtendTextAreaClient
 {
   private final String TAG;
-  public au cKd;
-  private u cKe;
-  private w cKf;
-  private EditText cKg;
-  private int cKh;
-  private int cKi;
-  private boolean cKj;
-  private final u.c cKk;
+  public aw cKG;
+  private u cKH;
+  private aa cKI;
+  private EditText cKJ;
+  private int cKK;
+  private int cKL;
+  private boolean cKM;
+  private aa.d cKN;
+  private final u.c cKO;
+  private int cpD;
+  private final af czp;
+  private boolean czr;
   
   public a(XWalkView paramXWalkView)
   {
     super(paramXWalkView);
     AppMethodBeat.i(139367);
     this.TAG = "WebViewExtendTextAreaClient";
-    this.cKh = 0;
-    this.cKi = 0;
-    this.cKj = false;
-    this.cKk = new u.c()
+    this.cKK = 0;
+    this.cpD = 0;
+    this.czr = false;
+    this.cKL = 0;
+    this.cKM = false;
+    this.czp = new af();
+    this.cKN = new aa.d()
     {
-      private final af cAj;
-      private int crC;
-      
-      public final void bQ(boolean paramAnonymousBoolean)
+      public final EditText getEditText()
       {
-        AppMethodBeat.i(215754);
-        Object localObject = a.e(a.this).bRH();
-        f localf = a.e(a.this).bxr();
+        AppMethodBeat.i(222403);
+        EditText localEditText = a.d(a.this);
+        AppMethodBeat.o(222403);
+        return localEditText;
+      }
+      
+      public final void jj(int paramAnonymousInt)
+      {
+        boolean bool = true;
+        AppMethodBeat.i(222402);
+        if (a.a(a.this) == null)
+        {
+          AppMethodBeat.o(222402);
+          return;
+        }
+        int i = a.a(a.this).getMinimumHeight();
+        int j = paramAnonymousInt - i;
+        Log.i("WebViewExtendTextAreaClient", "OnHeightChangedListener, totalHeight: %d, lateSavedKeyboardPanelHeight: %d, currentKeyboardPanelHeight: %d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(a.b(a.this)), Integer.valueOf(i) });
+        a locala;
+        if (a.b(a.this) != i)
+        {
+          a.a(a.this, i);
+          locala = a.this;
+          if (j <= 0) {
+            break label129;
+          }
+        }
+        for (;;)
+        {
+          locala.onKeyboardHeightChanged(bool, j, false);
+          a.c(a.this);
+          AppMethodBeat.o(222402);
+          return;
+          label129:
+          bool = false;
+        }
+      }
+    };
+    this.cKO = new u.c()
+    {
+      public final void ca(boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(223057);
+        Object localObject = a.f(a.this);
         if (localObject != null)
         {
-          af localaf = this.cAj;
-          if (paramAnonymousBoolean)
+          if (a.d(a.this) != null)
           {
-            i = a.this.getToolBarHeight(this.crC);
-            p.h(localf, "service");
-            p.h(localObject, "page");
-            localaf.p("height", Integer.valueOf(g.zB(i)));
-            localaf.g(localf).bEo();
-            localaf.g((f)localObject).bEo();
+            if (paramAnonymousBoolean) {
+              ((aa)localObject).rwP = a.d(a.this);
+            }
+          }
+          else
+          {
+            if (!paramAnonymousBoolean) {
+              break label111;
+            }
+            i = a.e(a.this);
+            label54:
+            ((aa)localObject).iF(i);
           }
         }
         else
         {
-          localObject = a.d(a.this);
-          if (localObject != null)
-          {
-            if (a.c(a.this) != null)
-            {
-              if (!paramAnonymousBoolean) {
-                break label184;
-              }
-              ((w)localObject).oum = a.c(a.this);
-            }
-            label138:
-            if (!paramAnonymousBoolean) {
-              break label199;
-            }
-            i = this.crC;
-            label147:
-            ((w)localObject).hF(i);
-          }
           localObject = a.this;
           if (!paramAnonymousBoolean) {
-            break label204;
+            break label116;
           }
         }
-        label184:
-        label199:
-        label204:
-        for (int i = this.crC;; i = 0)
+        label111:
+        label116:
+        for (int i = a.e(a.this);; i = 0)
         {
           ((a)localObject).onKeyboardHeightChanged(paramAnonymousBoolean, i, false);
-          AppMethodBeat.o(215754);
+          a.c(a.this);
+          AppMethodBeat.o(223057);
           return;
-          i = 0;
+          ((aa)localObject).b(a.d(a.this));
           break;
-          ((w)localObject).b(a.c(a.this));
-          break label138;
           i = 0;
-          break label147;
+          break label54;
         }
       }
       
       public final int getHeight()
       {
-        return this.crC;
+        AppMethodBeat.i(223059);
+        int i = a.e(a.this);
+        AppMethodBeat.o(223059);
+        return i;
       }
       
-      public final void hF(int paramAnonymousInt)
+      public final void iF(int paramAnonymousInt)
       {
-        AppMethodBeat.i(215753);
-        this.crC = paramAnonymousInt;
-        w localw = a.d(a.this);
-        if (localw != null) {
-          localw.hF(paramAnonymousInt);
+        int j = 0;
+        AppMethodBeat.i(223051);
+        int i = j;
+        Object localObject;
+        if (paramAnonymousInt != 0)
+        {
+          i = j;
+          if (a.e(a.this) != 0)
+          {
+            i = j;
+            if (paramAnonymousInt != a.e(a.this))
+            {
+              localObject = a.this;
+              if (paramAnonymousInt <= 0) {
+                break label108;
+              }
+            }
+          }
         }
-        AppMethodBeat.o(215753);
+        label108:
+        for (boolean bool = true;; bool = false)
+        {
+          ((a)localObject).onKeyboardHeightChanged(bool, paramAnonymousInt, false);
+          i = 1;
+          a.b(a.this, paramAnonymousInt);
+          if (i != 0) {
+            a.c(a.this);
+          }
+          localObject = a.f(a.this);
+          if (localObject != null) {
+            ((aa)localObject).iF(paramAnonymousInt);
+          }
+          AppMethodBeat.o(223051);
+          return;
+        }
       }
     };
     AppMethodBeat.o(139367);
   }
   
-  private w QN()
+  private aa Uu()
   {
-    Object localObject2 = null;
+    Object localObject3 = null;
     AppMethodBeat.i(139368);
-    Object localObject1;
-    if (this.cKf != null)
+    try
     {
-      localObject1 = this.cKf;
-      AppMethodBeat.o(139368);
-      return localObject1;
-    }
-    if ((this.cKd != null) && (this.cKd.bRH() != null))
-    {
-      View localView = this.cKd.bRH().getContentView();
-      localObject1 = localObject2;
-      if (this.cKd.bRH() != null)
+      Object localObject1;
+      if (this.cKI != null)
       {
-        localObject1 = localObject2;
-        if ((this.cKd.bRH() instanceof ac)) {
-          localObject1 = ((ac)this.cKd.bRH()).bRo();
-        }
+        localObject1 = this.cKI;
+        return localObject1;
       }
-      this.cKf = w.b(localView, (com.tencent.mm.plugin.appbrand.n.a)localObject1);
-      if (this.cKf != null)
+      if (!this.czr) {
+        return null;
+      }
+      if ((this.cKG != null) && (this.cKG.cey() != null))
       {
-        this.cKg = new EditText(this.cKf.getContext());
-        this.cKf.a(new w.d()
+        View localView = this.cKG.cey().getContentView();
+        localObject1 = localObject3;
+        if (this.cKG.cey() != null)
         {
-          public final EditText getEditText()
-          {
-            AppMethodBeat.i(215751);
-            EditText localEditText = a.c(a.this);
-            AppMethodBeat.o(215751);
-            return localEditText;
+          localObject1 = localObject3;
+          if ((this.cKG.cey() instanceof ad)) {
+            localObject1 = ((ad)this.cKG.cey()).cef();
           }
-          
-          public final void ig(int paramAnonymousInt)
-          {
-            boolean bool = true;
-            AppMethodBeat.i(215750);
-            int i = a.a(a.this).getMinimumHeight();
-            int j = paramAnonymousInt - i;
-            Log.i("WebViewExtendTextAreaClient", "OnHeightChangedListener, totalHeight: %d, lateSavedKeyboardPanelHeight: %d, currentKeyboardPanelHeight: %d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(a.b(a.this)), Integer.valueOf(i) });
-            a locala;
-            if (a.b(a.this) != i)
-            {
-              a.a(a.this, i);
-              locala = a.this;
-              if (j <= 0) {
-                break label106;
-              }
-            }
-            for (;;)
-            {
-              locala.onKeyboardHeightChanged(bool, j, false);
-              AppMethodBeat.o(215750);
-              return;
-              label106:
-              bool = false;
-            }
-          }
-        });
+        }
+        this.cKI = aa.b(localView, (com.tencent.mm.plugin.appbrand.n.a)localObject1);
+        if (this.cKI != null)
+        {
+          this.cKJ = new EditText(this.cKI.getContext());
+          this.cKI.a(this.cKN);
+        }
+        localObject1 = this.cKI;
+        return localObject1;
       }
-      localObject1 = this.cKf;
-      AppMethodBeat.o(139368);
-      return localObject1;
+      return null;
     }
-    AppMethodBeat.o(139368);
-    return null;
+    finally
+    {
+      AppMethodBeat.o(139368);
+    }
   }
   
-  private void cl(boolean paramBoolean)
+  private void cy(boolean paramBoolean)
   {
-    AppMethodBeat.i(215758);
+    AppMethodBeat.i(228262);
     StringBuilder localStringBuilder = new StringBuilder("(function(){    var focusElement = document.activeElement;    if(focusElement){        if(focusElement.onkeyboardconfirm){            focusElement.onkeyboardconfirm();        }");
     if (!paramBoolean) {}
     for (String str = "        focusElement.blur();";; str = "")
     {
       str = str + "    }})();";
       getXWalkView().evaluateJavascript(str, new ValueCallback() {});
-      AppMethodBeat.o(215758);
+      AppMethodBeat.o(228262);
       return;
     }
   }
@@ -220,99 +249,128 @@ public final class a
   public final int getToolBarHeight(int paramInt)
   {
     AppMethodBeat.i(139371);
-    w localw = QN();
-    if (localw != null)
+    aa localaa = Uu();
+    if (localaa != null)
     {
-      this.cKh = localw.getMinimumHeight();
-      int i = this.cKh;
+      this.cKK = localaa.getMinimumHeight();
+      int i = this.cKK;
       AppMethodBeat.o(139371);
-      return paramInt + i;
+      return i + paramInt;
     }
     AppMethodBeat.o(139371);
-    return paramInt;
+    return 0;
   }
   
   public final boolean onHideKeyboard(String paramString, InputConnection paramInputConnection)
   {
     AppMethodBeat.i(139370);
-    if (this.cKd != null)
+    if (this.cKG != null)
     {
-      paramString = QN();
+      paramString = Uu();
       if (paramString != null) {
-        paramString.bQ(false);
+        paramString.ca(false);
       }
     }
-    if (this.cKe != null) {
-      this.cKe.b(this.cKk);
+    if (this.cKH != null) {
+      this.cKH.b(this.cKO);
     }
+    this.czr = false;
+    if (this.cKI != null) {
+      this.cKI.b(this.cKN);
+    }
+    this.cKI = null;
     AppMethodBeat.o(139370);
     return false;
   }
   
-  public final boolean onShowKeyboard(String paramString, InputConnection paramInputConnection, ResultReceiver paramResultReceiver)
+  public final boolean onShowKeyboard(final String paramString, final InputConnection paramInputConnection, ResultReceiver paramResultReceiver)
   {
+    boolean bool = true;
     AppMethodBeat.i(139369);
-    if (this.cKe == null) {
-      this.cKe = n.cY(this.cKd.bRH().getContentView());
+    this.czr = true;
+    if (this.cKH == null) {
+      this.cKH = n.dr(this.cKG.cey().getContentView());
     }
-    if (this.cKe != null) {
-      this.cKe.a(this.cKk);
+    if (this.cKH != null) {
+      this.cKH.a(this.cKO);
     }
     paramString = new a(paramString);
-    this.cKj = paramString.cKt;
-    if (this.cKd != null)
+    this.cKM = paramString.cKZ;
+    if (this.cKG != null)
     {
-      paramInputConnection = QN();
-      if (paramInputConnection != null) {
-        if (paramString.cKq)
-        {
-          paramInputConnection.setComponentView(paramString.cKs);
-          paramInputConnection.cbN();
-          if ((paramString.cKr) || (!"emoji".equals(paramString.cKo))) {
-            break label165;
-          }
+      paramInputConnection = Uu();
+      if ((paramInputConnection != null) && (paramString.cKW))
+      {
+        paramInputConnection.setComponentView(paramString.cKY);
+        paramInputConnection.coX();
+        if ((paramString.cKX) || (!"emoji".equals(paramString.cKU))) {
+          break label181;
         }
       }
     }
-    label165:
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
       paramInputConnection.setCanSmileyInput(bool);
-      paramInputConnection.setShowDoneButton(paramString.cKq);
-      paramInputConnection.setOnDoneListener(new w.c()
+      paramInputConnection.setShowDoneButton(paramString.cKW);
+      paramInputConnection.setOnDoneListener(new aa.c()
       {
-        public final void cm(boolean paramAnonymousBoolean)
+        public final void cz(boolean paramAnonymousBoolean)
         {
-          AppMethodBeat.i(215755);
-          Log.i("WebViewExtendTextAreaClient", "onInputDone#onShowKeyboard, fromDoneButton: %b, confirmHold: %b", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Boolean.valueOf(a.f(a.this)) });
-          a.g(a.this);
-          AppMethodBeat.o(215755);
+          AppMethodBeat.i(223119);
+          Log.i("WebViewExtendTextAreaClient", "onInputDone#onShowKeyboard, fromDoneButton: %b, confirmHold: %b", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Boolean.valueOf(a.g(a.this)) });
+          a.h(a.this);
+          AppMethodBeat.o(223119);
         }
       });
-      paramInputConnection.bQ(paramString.cKq);
+      paramInputConnection.postDelayed(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(222179);
+          a locala;
+          if (a.i(a.this))
+          {
+            paramInputConnection.ca(paramString.cKW);
+            locala = a.this;
+            if (!a.i(a.this)) {
+              break label72;
+            }
+          }
+          label72:
+          for (int i = a.e(a.this);; i = 0)
+          {
+            locala.onKeyboardHeightChanged(true, i, false);
+            a.c(a.this);
+            AppMethodBeat.o(222179);
+            return;
+          }
+        }
+      }, 200L);
       AppMethodBeat.o(139369);
       return false;
+      label181:
+      bool = false;
     }
   }
   
   public final boolean onShowKeyboardConfig(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4, EditorInfo paramEditorInfo)
   {
     Object localObject = null;
-    AppMethodBeat.i(215756);
+    AppMethodBeat.i(228257);
     Log.d("WebViewExtendTextAreaClient", "onShowKeyboardConfig");
     try
     {
-      paramString = b.aga(new JSONObject(paramString).optString("confirm-type", null));
+      paramString = b.anD(new JSONObject(paramString).optString("confirm-type", null));
       if (paramString != null)
       {
         Log.i("WebViewExtendTextAreaClient", "onShowKeyboardConfig, confirmType: ".concat(String.valueOf(paramString)));
-        if (b.oxz != paramString) {
+        if (b.rzX != paramString) {
           paramEditorInfo.imeOptions &= 0xBFFFFFFF;
         }
-        paramEditorInfo.imeOptions |= paramString.oxA;
-        this.cKi = paramString.oxA;
+        paramEditorInfo.imeOptions |= paramString.rzY;
+        this.cKL = paramString.rzY;
       }
-      AppMethodBeat.o(215756);
+      AppMethodBeat.o(228257);
       return false;
     }
     catch (Exception paramString)
@@ -327,29 +385,29 @@ public final class a
   
   public final boolean performEditorAction(int paramInt)
   {
-    AppMethodBeat.i(215757);
+    AppMethodBeat.i(228258);
     Log.d("WebViewExtendTextAreaClient", "performEditorAction, actionCode: ".concat(String.valueOf(paramInt)));
-    if ((paramInt != 0) && (paramInt == this.cKi))
+    if ((paramInt != 0) && (paramInt == this.cKL))
     {
-      Log.i("WebViewExtendTextAreaClient", "performEditorAction, confirmHold: " + this.cKj);
-      cl(this.cKj);
-      AppMethodBeat.o(215757);
+      Log.i("WebViewExtendTextAreaClient", "performEditorAction, confirmHold: " + this.cKM);
+      cy(this.cKM);
+      AppMethodBeat.o(228258);
       return false;
     }
-    AppMethodBeat.o(215757);
+    AppMethodBeat.o(228258);
     return true;
   }
   
   public final class a
   {
-    public String cKm;
-    public String cKn;
-    public String cKo;
-    public Integer cKp;
-    public boolean cKq;
-    public boolean cKr;
-    public boolean cKs;
-    public boolean cKt;
+    public String cKS;
+    public String cKT;
+    public String cKU;
+    public Integer cKV;
+    public boolean cKW;
+    public boolean cKX;
+    public boolean cKY;
+    public boolean cKZ;
     
     /* Error */
     public a(String paramString)
@@ -357,35 +415,35 @@ public final class a
       // Byte code:
       //   0: aload_0
       //   1: aload_1
-      //   2: putfield 30	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKl	Lcom/tencent/luggage/xweb_ext/extendplugin/c/a;
+      //   2: putfield 30	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKP	Lcom/tencent/luggage/xweb_ext/extendplugin/c/a;
       //   5: aload_0
       //   6: invokespecial 33	java/lang/Object:<init>	()V
       //   9: ldc 34
       //   11: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   14: aload_0
       //   15: ldc 42
-      //   17: putfield 44	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKm	Ljava/lang/String;
+      //   17: putfield 44	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKS	Ljava/lang/String;
       //   20: aload_0
       //   21: ldc 42
-      //   23: putfield 46	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKn	Ljava/lang/String;
+      //   23: putfield 46	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKT	Ljava/lang/String;
       //   26: aload_0
       //   27: ldc 42
-      //   29: putfield 48	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKo	Ljava/lang/String;
+      //   29: putfield 48	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKU	Ljava/lang/String;
       //   32: aload_0
       //   33: aconst_null
-      //   34: putfield 50	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKp	Ljava/lang/Integer;
+      //   34: putfield 50	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKV	Ljava/lang/Integer;
       //   37: aload_0
       //   38: iconst_0
-      //   39: putfield 52	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKq	Z
+      //   39: putfield 52	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKW	Z
       //   42: aload_0
       //   43: iconst_0
-      //   44: putfield 54	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKr	Z
+      //   44: putfield 54	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKX	Z
       //   47: aload_0
       //   48: iconst_0
-      //   49: putfield 56	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKs	Z
+      //   49: putfield 56	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKY	Z
       //   52: aload_0
       //   53: iconst_0
-      //   54: putfield 58	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKt	Z
+      //   54: putfield 58	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKZ	Z
       //   57: ldc 60
       //   59: ldc 62
       //   61: aload_2
@@ -394,7 +452,7 @@ public final class a
       //   68: invokestatic 77	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
       //   71: aload_0
       //   72: aload_2
-      //   73: putfield 44	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKm	Ljava/lang/String;
+      //   73: putfield 44	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKS	Ljava/lang/String;
       //   76: new 79	org/json/JSONObject
       //   79: dup
       //   80: aload_2
@@ -408,7 +466,7 @@ public final class a
       //   95: aload_1
       //   96: ldc 84
       //   98: invokevirtual 91	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-      //   101: putfield 46	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKn	Ljava/lang/String;
+      //   101: putfield 46	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKT	Ljava/lang/String;
       //   104: aload_1
       //   105: ldc 93
       //   107: invokevirtual 88	org/json/JSONObject:has	(Ljava/lang/String;)Z
@@ -417,7 +475,7 @@ public final class a
       //   114: aload_1
       //   115: ldc 93
       //   117: invokevirtual 91	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-      //   120: putfield 48	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKo	Ljava/lang/String;
+      //   120: putfield 48	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKU	Ljava/lang/String;
       //   123: aload_1
       //   124: ldc 95
       //   126: invokevirtual 88	org/json/JSONObject:has	(Ljava/lang/String;)Z
@@ -429,7 +487,7 @@ public final class a
       //   139: iconst_0
       //   140: invokestatic 101	com/tencent/mm/sdk/platformtools/Util:getInt	(Ljava/lang/String;I)I
       //   143: invokestatic 106	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-      //   146: putfield 50	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKp	Ljava/lang/Integer;
+      //   146: putfield 50	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKV	Ljava/lang/Integer;
       //   149: aload_1
       //   150: ldc 108
       //   152: invokevirtual 88	org/json/JSONObject:has	(Ljava/lang/String;)Z
@@ -440,7 +498,7 @@ public final class a
       //   162: invokevirtual 91	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
       //   165: iconst_0
       //   166: invokestatic 112	com/tencent/mm/sdk/platformtools/Util:getBoolean	(Ljava/lang/String;Z)Z
-      //   169: putfield 52	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKq	Z
+      //   169: putfield 52	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKW	Z
       //   172: aload_1
       //   173: ldc 114
       //   175: invokevirtual 88	org/json/JSONObject:has	(Ljava/lang/String;)Z
@@ -451,7 +509,7 @@ public final class a
       //   185: invokevirtual 91	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
       //   188: iconst_0
       //   189: invokestatic 112	com/tencent/mm/sdk/platformtools/Util:getBoolean	(Ljava/lang/String;Z)Z
-      //   192: putfield 54	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKr	Z
+      //   192: putfield 54	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKX	Z
       //   195: aload_1
       //   196: ldc 116
       //   198: invokevirtual 88	org/json/JSONObject:has	(Ljava/lang/String;)Z
@@ -462,7 +520,7 @@ public final class a
       //   208: invokevirtual 91	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
       //   211: iconst_0
       //   212: invokestatic 112	com/tencent/mm/sdk/platformtools/Util:getBoolean	(Ljava/lang/String;Z)Z
-      //   215: putfield 56	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKs	Z
+      //   215: putfield 56	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKY	Z
       //   218: aload_1
       //   219: ldc 118
       //   221: invokevirtual 88	org/json/JSONObject:has	(Ljava/lang/String;)Z
@@ -473,7 +531,7 @@ public final class a
       //   231: invokevirtual 91	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
       //   234: iconst_0
       //   235: invokestatic 112	com/tencent/mm/sdk/platformtools/Util:getBoolean	(Ljava/lang/String;Z)Z
-      //   238: putfield 58	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKt	Z
+      //   238: putfield 58	com/tencent/luggage/xweb_ext/extendplugin/c/a$a:cKZ	Z
       //   241: ldc 34
       //   243: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   246: return
@@ -581,7 +639,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.c.a
  * JD-Core Version:    0.7.0.1
  */

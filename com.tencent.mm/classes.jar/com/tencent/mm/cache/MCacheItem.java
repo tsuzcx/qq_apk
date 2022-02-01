@@ -16,7 +16,7 @@ public class MCacheItem
   implements Parcelable
 {
   public static final Parcelable.Creator<MCacheItem> CREATOR;
-  private IAutoDBItem gpG;
+  private IAutoDBItem iTO;
   
   static
   {
@@ -28,13 +28,13 @@ public class MCacheItem
   public MCacheItem(Parcel paramParcel)
   {
     AppMethodBeat.i(131966);
-    this.gpG = c(paramParcel);
+    this.iTO = c(paramParcel);
     AppMethodBeat.o(131966);
   }
   
   public MCacheItem(IAutoDBItem paramIAutoDBItem)
   {
-    this.gpG = paramIAutoDBItem;
+    this.iTO = paramIAutoDBItem;
   }
   
   /* Error */
@@ -51,7 +51,7 @@ public class MCacheItem
     //   15: aload 4
     //   17: invokevirtual 63	java/lang/Class:newInstance	()Ljava/lang/Object;
     //   20: checkcast 65	com/tencent/mm/sdk/storage/IAutoDBItem
-    //   23: putfield 43	com/tencent/mm/cache/MCacheItem:gpG	Lcom/tencent/mm/sdk/storage/IAutoDBItem;
+    //   23: putfield 43	com/tencent/mm/cache/MCacheItem:iTO	Lcom/tencent/mm/sdk/storage/IAutoDBItem;
     //   26: aload 4
     //   28: invokestatic 69	com/tencent/mm/sdk/storage/IAutoDBItem:getValidFields	(Ljava/lang/Class;)[Ljava/lang/reflect/Field;
     //   31: astore 4
@@ -90,7 +90,7 @@ public class MCacheItem
     //   89: dup
     //   90: iconst_2
     //   91: aload_0
-    //   92: getfield 43	com/tencent/mm/cache/MCacheItem:gpG	Lcom/tencent/mm/sdk/storage/IAutoDBItem;
+    //   92: getfield 43	com/tencent/mm/cache/MCacheItem:iTO	Lcom/tencent/mm/sdk/storage/IAutoDBItem;
     //   95: aastore
     //   96: invokevirtual 91	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   99: pop
@@ -127,7 +127,7 @@ public class MCacheItem
     //   155: aconst_null
     //   156: areturn
     //   157: aload_0
-    //   158: getfield 43	com/tencent/mm/cache/MCacheItem:gpG	Lcom/tencent/mm/sdk/storage/IAutoDBItem;
+    //   158: getfield 43	com/tencent/mm/cache/MCacheItem:iTO	Lcom/tencent/mm/sdk/storage/IAutoDBItem;
     //   161: astore_1
     //   162: ldc 47
     //   164: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -165,8 +165,8 @@ public class MCacheItem
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(131968);
-    paramParcel.writeString(this.gpG.getClass().getName());
-    Field[] arrayOfField = IAutoDBItem.getValidFields(this.gpG.getClass());
+    paramParcel.writeString(this.iTO.getClass().getName());
+    Field[] arrayOfField = IAutoDBItem.getValidFields(this.iTO.getClass());
     int i = arrayOfField.length;
     paramInt = 0;
     for (;;)
@@ -178,7 +178,7 @@ public class MCacheItem
         if (localMethod != null) {}
         try
         {
-          localMethod.invoke(null, new Object[] { paramParcel, localField, this.gpG });
+          localMethod.invoke(null, new Object[] { paramParcel, localField, this.iTO });
           paramInt += 1;
         }
         catch (Exception localException)
@@ -512,7 +512,7 @@ public class MCacheItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.cache.MCacheItem
  * JD-Core Version:    0.7.0.1
  */

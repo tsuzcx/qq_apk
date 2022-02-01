@@ -6,14 +6,16 @@ import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.annotation.Keep;
 import android.view.Display;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.accessibility.AccessibilityEvent;
 import android.widget.FrameLayout;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import io.flutter.view.AccessibilityViewEmbedder;
 
 @TargetApi(17)
 @Keep
@@ -25,7 +27,7 @@ class SingleViewPresentation
   private Object createParams;
   private final View.OnFocusChangeListener focusChangeListener;
   private final Context outerContext;
-  private SingleViewPresentation.a rootView;
+  private a rootView;
   private boolean startFocused;
   private e state;
   private final d viewFactory;
@@ -77,10 +79,15 @@ class SingleViewPresentation
   
   public c getView()
   {
-    if (this.state.STF == null) {
+    AppMethodBeat.i(255611);
+    if (e.c(this.state) == null)
+    {
+      AppMethodBeat.o(255611);
       return null;
     }
-    return this.state.STF;
+    c localc = e.c(this.state);
+    AppMethodBeat.o(255611);
+    return localc;
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -88,24 +95,24 @@ class SingleViewPresentation
     AppMethodBeat.i(9920);
     super.onCreate(paramBundle);
     getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    if (this.state.STG == null) {
-      this.state.STG = new SingleViewPresentation.b(getContext());
+    if (e.a(this.state) == null) {
+      e.a(this.state, new SingleViewPresentation.b(getContext()));
     }
-    if (this.state.STD == null)
+    if (e.b(this.state) == null)
     {
       paramBundle = (WindowManager)getContext().getSystemService("window");
-      this.state.STD = new SingleViewPresentation.f(paramBundle, this.state.STG);
+      e.a(this.state, new SingleViewPresentation.f(paramBundle, e.a(this.state)));
     }
     this.container = new FrameLayout(getContext());
-    paramBundle = new SingleViewPresentation.d(getContext(), this.state.STD, this.outerContext);
-    if (this.state.STF == null) {
-      this.state.STF = this.viewFactory.a(paramBundle, this.viewId, this.createParams);
+    new SingleViewPresentation.d(getContext(), e.b(this.state), this.outerContext);
+    if (e.c(this.state) == null) {
+      e.a(this.state, this.viewFactory.iBt());
     }
-    paramBundle = this.state.STF.getView();
+    paramBundle = e.c(this.state).getView();
     this.container.addView(paramBundle);
-    this.rootView = new SingleViewPresentation.a(getContext(), this.accessibilityEventsDelegate, paramBundle);
+    this.rootView = new a(getContext(), this.accessibilityEventsDelegate, paramBundle);
     this.rootView.addView(this.container);
-    this.rootView.addView(this.state.STG);
+    this.rootView.addView(e.a(this.state));
     paramBundle.setOnFocusChangeListener(this.focusChangeListener);
     this.rootView.setFocusableInTouchMode(true);
     if (this.startFocused) {
@@ -120,11 +127,67 @@ class SingleViewPresentation
     }
   }
   
-  static final class e
+  static class a
+    extends FrameLayout
   {
-    SingleViewPresentation.f STD;
-    c STF;
-    SingleViewPresentation.b STG;
+    private final View aawn;
+    private final a accessibilityEventsDelegate;
+    
+    public a(Context paramContext, a parama, View paramView)
+    {
+      super();
+      this.accessibilityEventsDelegate = parama;
+      this.aawn = paramView;
+    }
+    
+    public boolean requestSendAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
+    {
+      AppMethodBeat.i(9888);
+      Object localObject = this.accessibilityEventsDelegate;
+      View localView = this.aawn;
+      if (((a)localObject).aapq == null)
+      {
+        AppMethodBeat.o(9888);
+        return false;
+      }
+      localObject = ((a)localObject).aapq;
+      if (!((io.flutter.view.a)localObject).aawF.requestSendAccessibilityEvent(localView, paramView, paramAccessibilityEvent))
+      {
+        AppMethodBeat.o(9888);
+        return false;
+      }
+      paramView = ((io.flutter.view.a)localObject).aawF.getRecordFlutterId(localView, paramAccessibilityEvent);
+      if (paramView == null)
+      {
+        AppMethodBeat.o(9888);
+        return false;
+      }
+      switch (paramAccessibilityEvent.getEventType())
+      {
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(9888);
+        return true;
+        ((io.flutter.view.a)localObject).aawQ = null;
+        continue;
+        ((io.flutter.view.a)localObject).aawL = paramView;
+        ((io.flutter.view.a)localObject).aawK = null;
+        continue;
+        ((io.flutter.view.a)localObject).aawM = null;
+        ((io.flutter.view.a)localObject).aawL = null;
+        continue;
+        ((io.flutter.view.a)localObject).aawM = paramView;
+        ((io.flutter.view.a)localObject).aawO = null;
+      }
+    }
+  }
+  
+  static class e
+  {
+    private SingleViewPresentation.f aawp;
+    private c aawr;
+    private SingleViewPresentation.b aaws;
   }
 }
 

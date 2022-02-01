@@ -1,73 +1,50 @@
 package com.tencent.mm.plugin.appbrand.u.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.i;
-import com.tencent.mm.plugin.appbrand.permission.a.a;
-import com.tencent.mm.plugin.appbrand.permission.a.a.c;
-import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.ad.i;
 import com.tencent.mm.plugin.appbrand.u.a.b;
+import com.tencent.mm.plugin.appbrand.u.a.c;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.HashMap;
-import java.util.Map;
 
 public final class g
   extends b
 {
-  static void a(com.tencent.mm.plugin.appbrand.u.a.c paramc, int paramInt)
-  {
-    AppMethodBeat.i(147402);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("result", Integer.valueOf(paramInt));
-    paramc.Y(localHashMap);
-    AppMethodBeat.o(147402);
-  }
+  public static g.a qlG;
   
-  public final void a(final i parami, final com.tencent.mm.plugin.appbrand.u.a.c paramc)
+  public final void a(i parami, c paramc)
   {
-    AppMethodBeat.i(147401);
-    parami = parami.optString("apiName");
-    s locals = paramc.cAJ;
-    if (a.eG(locals.getAppId(), parami))
+    AppMethodBeat.i(147395);
+    if (qlG == null)
     {
-      a(paramc, 1);
-      AppMethodBeat.o(147401);
+      Log.d("MicroMsg.NodeReportIDKey", "sDelegate null");
+      AppMethodBeat.o(147395);
       return;
     }
-    a.a(new com.tencent.mm.plugin.appbrand.permission.a.c(locals, parami, (byte)0), new a.c()
+    try
     {
-      public final void acx(String paramAnonymousString)
-      {
-        AppMethodBeat.i(147399);
-        Log.e("Luggage.NodeJS.RequireUserAuth", "onDeny apiName[%s], reason[%s]", new Object[] { parami, paramAnonymousString });
-        g.a(paramc, 2);
-        AppMethodBeat.o(147399);
-      }
-      
-      public final void bOI()
-      {
-        AppMethodBeat.i(147398);
-        g.a(paramc, 1);
-        AppMethodBeat.o(147398);
-      }
-      
-      public final void onCancel()
-      {
-        AppMethodBeat.i(147400);
-        g.a(paramc, 3);
-        AppMethodBeat.o(147400);
-      }
-    });
-    AppMethodBeat.o(147401);
+      int i = parami.getInt("id");
+      int j = parami.getInt("key");
+      int k = parami.optInt("val", 1);
+      qlG.S(i, j, k);
+      AppMethodBeat.o(147395);
+      return;
+    }
+    catch (com.tencent.mm.ad.g parami)
+    {
+      Log.e("MicroMsg.NodeReportIDKey", "execute exception : %s", new Object[] { parami });
+      paramc.Ck(2);
+      AppMethodBeat.o(147395);
+    }
   }
   
-  public final int bPT()
+  public final int ccB()
   {
-    return 1;
+    return 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.u.c.g
  * JD-Core Version:    0.7.0.1
  */

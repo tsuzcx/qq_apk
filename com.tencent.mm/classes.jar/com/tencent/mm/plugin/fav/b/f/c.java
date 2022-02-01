@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.fav.b.f;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.f;
-import com.tencent.mm.plugin.fav.a.t;
+import com.tencent.mm.plugin.fav.a.u;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
@@ -12,7 +12,7 @@ import java.util.List;
 
 public final class c
   extends MAutoStorage<f>
-  implements t
+  implements u
 {
   private ISQLiteDatabase db;
   
@@ -25,7 +25,14 @@ public final class c
     AppMethodBeat.o(101685);
   }
   
-  public final f DX(long paramLong)
+  public final void A(long paramLong, int paramInt)
+  {
+    AppMethodBeat.i(101687);
+    this.db.delete("FavEditInfo", "localId=? and type=?", new String[] { String.valueOf(paramLong), String.valueOf(paramInt) });
+    AppMethodBeat.o(101687);
+  }
+  
+  public final f Kl(long paramLong)
   {
     f localf = null;
     AppMethodBeat.i(101686);
@@ -45,7 +52,7 @@ public final class c
     return localf;
   }
   
-  public final List<f> cUO()
+  public final List<f> djU()
   {
     AppMethodBeat.i(101688);
     Cursor localCursor = this.db.rawQuery("select count(*) from FavEditInfo", null, 2);
@@ -101,17 +108,10 @@ public final class c
     }
     return null;
   }
-  
-  public final void y(long paramLong, int paramInt)
-  {
-    AppMethodBeat.i(101687);
-    this.db.delete("FavEditInfo", "localId=? and type=?", new String[] { String.valueOf(paramLong), String.valueOf(paramInt) });
-    AppMethodBeat.o(101687);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.b.f.c
  * JD-Core Version:    0.7.0.1
  */

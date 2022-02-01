@@ -5,40 +5,44 @@ import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.ui.n;
+import com.tencent.mm.plugin.selectcontact.a.e;
+import com.tencent.mm.plugin.selectcontact.a.f;
 
 public final class j
   extends a
 {
-  a.a QaJ;
-  private b QaL;
-  public int resId;
-  public boolean wke;
+  private b Xyd;
+  a Xye;
+  public String header;
   
   public j(int paramInt)
   {
-    super(1, paramInt);
-    AppMethodBeat.i(102967);
-    this.QaL = new b();
-    this.QaJ = new a();
-    AppMethodBeat.o(102967);
+    super(0, paramInt);
+    AppMethodBeat.i(102960);
+    this.Xyd = new b();
+    this.Xye = new a();
+    AppMethodBeat.o(102960);
   }
   
   public final void a(Context paramContext, a.a parama) {}
   
-  public final a.b bmx()
+  public final a.b bwF()
   {
-    return this.QaL;
+    return this.Xyd;
+  }
+  
+  public final a.a bwG()
+  {
+    return this.Xye;
   }
   
   public final class a
     extends a.a
   {
-    public TextView vui;
-    public ImageView xcA;
+    public TextView tOY;
     
     public a()
     {
@@ -56,35 +60,32 @@ public final class j
     
     public final View a(Context paramContext, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(102965);
-      paramContext = LayoutInflater.from(paramContext).inflate(2131496225, paramViewGroup, false);
-      paramViewGroup = (j.a)j.this.QaJ;
-      paramViewGroup.vui = ((TextView)paramContext.findViewById(2131304908));
-      paramViewGroup.xcA = ((ImageView)paramContext.findViewById(2131304861));
+      AppMethodBeat.i(102958);
+      paramContext = LayoutInflater.from(paramContext).inflate(a.f.select_ui_listheaderitem, paramViewGroup, false);
+      paramViewGroup = (j.a)j.this.Xye;
+      paramViewGroup.tOY = ((TextView)paramContext.findViewById(a.e.header_tv));
       paramContext.setTag(paramViewGroup);
-      AppMethodBeat.o(102965);
+      if (j.this.xUe)
+      {
+        View localView = paramContext.findViewById(a.e.header_tv_root);
+        if (localView != null) {
+          localView.setBackgroundResource(com.tencent.mm.plugin.selectcontact.a.b.Dark_0);
+        }
+        paramViewGroup.tOY.setTextColor(paramViewGroup.tOY.getContext().getResources().getColor(com.tencent.mm.plugin.selectcontact.a.b.BW_100_Alpha_0_5));
+      }
+      AppMethodBeat.o(102958);
       return paramContext;
     }
     
     public final void a(Context paramContext, a.a parama, a parama1, boolean paramBoolean1, boolean paramBoolean2)
     {
-      AppMethodBeat.i(102966);
-      parama = (j.a)parama;
-      parama1 = (j)parama1;
-      paramContext = paramContext.getResources();
-      if (j.this.wke)
-      {
-        n.b(paramContext.getString(2131765094, new Object[] { paramContext.getString(parama1.resId) }), parama.vui);
-        parama.xcA.setRotation(0.0F);
-        AppMethodBeat.o(102966);
-        return;
-      }
-      n.b(paramContext.getString(2131765095), parama.vui);
-      parama.xcA.setRotation(180.0F);
-      AppMethodBeat.o(102966);
+      AppMethodBeat.i(102959);
+      paramContext = (j.a)parama;
+      n.a(((j)parama1).header, paramContext.tOY);
+      AppMethodBeat.o(102959);
     }
     
-    public final boolean bmy()
+    public final boolean a(Context paramContext, View paramView, a parama)
     {
       return false;
     }
@@ -92,7 +93,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.a.j
  * JD-Core Version:    0.7.0.1
  */

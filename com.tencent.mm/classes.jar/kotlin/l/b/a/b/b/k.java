@@ -9,19 +9,19 @@ public abstract interface k
 {
   public abstract k b(ba paramba);
   
-  public abstract i hAR();
+  public abstract List<as> iEG();
   
-  public abstract e hAS();
+  public abstract ab iEH();
   
-  public abstract List<as> hAt();
+  public abstract i iFe();
   
-  public abstract ab hAu();
+  public abstract e iFf();
   
-  public abstract boolean isPrimary();
+  public abstract boolean iFg();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.k
  * JD-Core Version:    0.7.0.1
  */

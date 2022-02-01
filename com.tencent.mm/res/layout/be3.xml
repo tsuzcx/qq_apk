@@ -3,10 +3,10 @@
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <RelativeLayout android:id="@id/doo" android:paddingLeft="@dimen/cb" android:layout_width="fill_parent" android:layout_height="@dimen/cp">
         <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/b46" android:background="@drawable/alh" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@drawable/byr" android:layout_centerVertical="true" android:rotation="90.0" app:iconColor="@color/am" />
-        <android.support.design.widget.TabLayout android:id="@id/iqx" android:background="@color/ac_" android:layout_width="wrap_content" android:layout_height="@dimen/ci" android:layout_toRightOf="@id/b46" android:layout_centerVertical="true" app:tabBackground="@color/ac_" app:tabGravity="aq3" app:tabIndicator="@color/BW_100_Alpha_0_9" app:tabIndicatorColor="@color/BW_100_Alpha_0_9" app:tabIndicatorFullWidth="true" app:tabIndicatorHeight="2.0dip" app:tabMode="d5n" app:tabPadding="0.0dip" app:tabRippleColor="@color/ac_" app:tabSelectedTextColor="@color/BW_100_Alpha_0_9" app:tabTextAppearance="@style/ri" app:tabTextColor="@color/BW_100_Alpha_0_5" />
+        <com.google.android.material.tabs.TabLayout android:id="@id/iqx" android:background="@color/ac_" android:layout_width="wrap_content" android:layout_height="@dimen/ci" android:layout_toRightOf="@id/b46" android:layout_centerVertical="true" app:tabBackground="@color/ac_" app:tabGravity="aq3" app:tabIndicator="@color/BW_100_Alpha_0_9" app:tabIndicatorColor="@color/BW_100_Alpha_0_9" app:tabIndicatorFullWidth="true" app:tabIndicatorHeight="2.0dip" app:tabMode="d5n" app:tabPadding="0.0dip" app:tabRippleColor="@color/ac_" app:tabSelectedTextColor="@color/BW_100_Alpha_0_9" app:tabTextAppearance="@style/ri" app:tabTextColor="@color/BW_100_Alpha_0_5" />
         <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hd9" android:padding="@dimen/cb" android:visibility="invisible" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:src="@raw/icons_outlined_search" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/am" />
     </RelativeLayout>
-    <android.support.v7.widget.RecyclerView android:id="@id/j4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/doo" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/j4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/doo" />
     <RelativeLayout android:orientation="vertical" android:id="@id/ckp" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/doo">
         <RelativeLayout android:id="@id/d01" android:layout_width="fill_parent" android:layout_height="fill_parent">
             <LinearLayout android:orientation="horizontal" android:id="@id/ckj" android:paddingLeft="14.0dip" android:paddingRight="14.0dip" android:paddingBottom="@dimen/c5" android:layout_width="fill_parent" android:layout_height="@dimen/ci">
@@ -38,7 +38,7 @@
                 <com.tencent.mm.plugin.mv.ui.view.MusicMvTabSearchFragment android:id="@id/g8k" android:layout_width="fill_parent" android:layout_height="fill_parent" />
                 <TextView android:textColor="@color/BW_100_Alpha_0_3" android:gravity="center" android:id="@id/g01" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip" android:text="@string/ggx" style="@style/zy" />
                 <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/epl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip">
-                    <ProgressBar android:background="@color/ac_" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:indeterminateDrawable="@drawable/apb" />
+                    <ProgressBar android:background="@color/ac_" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:indeterminateDrawable="@drawable/bxo" />
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>

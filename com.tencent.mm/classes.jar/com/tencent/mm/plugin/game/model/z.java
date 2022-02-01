@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.game.api.f;
-import com.tencent.mm.plugin.game.e.d;
-import com.tencent.mm.plugin.game.protobuf.bk;
-import com.tencent.mm.plugin.game.protobuf.cc;
-import com.tencent.mm.plugin.game.protobuf.ce;
+import com.tencent.mm.plugin.game.d.d;
+import com.tencent.mm.plugin.game.protobuf.bl;
+import com.tencent.mm.plugin.game.protobuf.cd;
 import com.tencent.mm.plugin.game.protobuf.cf;
-import com.tencent.mm.plugin.game.protobuf.ch;
+import com.tencent.mm.plugin.game.protobuf.cg;
 import com.tencent.mm.plugin.game.protobuf.ci;
-import com.tencent.mm.plugin.game.protobuf.cm;
-import com.tencent.mm.plugin.game.protobuf.cs;
-import com.tencent.mm.plugin.game.protobuf.da;
-import com.tencent.mm.plugin.game.protobuf.dm;
+import com.tencent.mm.plugin.game.protobuf.cj;
+import com.tencent.mm.plugin.game.protobuf.cn;
+import com.tencent.mm.plugin.game.protobuf.ct;
+import com.tencent.mm.plugin.game.protobuf.db;
+import com.tencent.mm.plugin.game.protobuf.dn;
 import com.tencent.mm.plugin.game.ui.GameMediaList.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
@@ -24,30 +24,30 @@ import java.util.LinkedList;
 public final class z
   extends x
 {
-  private boolean xAG;
-  public bk xGX;
-  public c xGY;
-  public aa xGZ;
+  private boolean CEH;
+  public bl CLa;
+  public c CLb;
+  public aa CLc;
   
   public z(a parama)
   {
     AppMethodBeat.i(41525);
     if (parama == null)
     {
-      this.xGX = new bk();
+      this.CLa = new bl();
       AppMethodBeat.o(41525);
       return;
     }
-    this.xGX = ((bk)parama);
-    this.xAG = false;
-    amZ();
+    this.CLa = ((bl)parama);
+    this.CEH = false;
+    ata();
     AppMethodBeat.o(41525);
   }
   
   public z(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(41526);
-    this.xGX = new bk();
+    this.CLa = new bl();
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
       AppMethodBeat.o(41526);
@@ -55,9 +55,9 @@ public final class z
     }
     try
     {
-      this.xGX.parseFrom(paramArrayOfByte);
-      this.xAG = true;
-      amZ();
+      this.CLa.parseFrom(paramArrayOfByte);
+      this.CEH = true;
+      ata();
       AppMethodBeat.o(41526);
       return;
     }
@@ -70,88 +70,88 @@ public final class z
     }
   }
   
-  private void amZ()
+  private void ata()
   {
     AppMethodBeat.i(41527);
-    this.xGY = dVD();
-    if (this.xAG)
+    this.CLb = eyL();
+    if (this.CEH)
     {
-      this.xGZ = new aa(this.xGY.field_appId);
-      if (!this.xAG)
+      this.CLc = new aa(this.CLb.field_appId);
+      if (!this.CEH)
       {
-        d.c(this.xGY);
-        ((f)g.af(f.class)).dSL().b(this.xGY.field_appId, this.xGX);
+        d.c(this.CLb);
+        ((f)h.ae(f.class)).evp().b(this.CLb.field_appId, this.CLa);
       }
       AppMethodBeat.o(41527);
       return;
     }
-    String str = this.xGY.field_appId;
-    if (this.xGX.xLw != null) {}
-    for (LinkedList localLinkedList = this.xGX.xLw.xMZ;; localLinkedList = null)
+    String str = this.CLb.field_appId;
+    if (this.CLa.CPF != null) {}
+    for (LinkedList localLinkedList = this.CLa.CPF.CRi;; localLinkedList = null)
     {
-      this.xGZ = new aa(str, localLinkedList);
+      this.CLc = new aa(str, localLinkedList);
       break;
     }
   }
   
-  private c dVD()
+  private c eyL()
   {
     AppMethodBeat.i(41528);
-    c localc = a(this.xGX.xIz);
+    c localc = a(this.CLa.CME);
     if (localc != null)
     {
       localc.scene = 12;
-      localc.dYu = 1201;
+      localc.fSl = 1201;
     }
     AppMethodBeat.o(41528);
     return localc;
   }
   
-  public final String dVE()
+  public final String eyM()
   {
-    if (this.xGX.xLA != null) {
-      return this.xGX.xLA.title;
+    if (this.CLa.CPJ != null) {
+      return this.CLa.CPJ.title;
     }
-    if (this.xGX.xLv != null) {
-      return this.xGX.xLv.Title;
+    if (this.CLa.CPE != null) {
+      return this.CLa.CPE.fwr;
     }
     return null;
   }
   
-  public final LinkedList<b> dVF()
+  public final LinkedList<b> eyN()
   {
     AppMethodBeat.i(41529);
     LinkedList localLinkedList;
     Iterator localIterator;
     Object localObject;
     b localb;
-    if ((this.xGX.xLA != null) && (this.xGX.xLA.pWe != null))
+    if ((this.CLa.CPJ != null) && (this.CLa.CPJ.tse != null))
     {
       localLinkedList = new LinkedList();
-      localIterator = this.xGX.xLA.pWe.iterator();
+      localIterator = this.CLa.CPJ.tse.iterator();
       while (localIterator.hasNext())
       {
-        localObject = (cm)localIterator.next();
+        localObject = (cn)localIterator.next();
         localb = new b();
-        localb.icon = ((cm)localObject).icon;
-        localb.desc = ((cm)localObject).desc;
+        localb.icon = ((cn)localObject).icon;
+        localb.desc = ((cn)localObject).desc;
         localLinkedList.add(localb);
       }
       AppMethodBeat.o(41529);
       return localLinkedList;
     }
-    if ((this.xGX.xLv != null) && (this.xGX.xLv.xMi != null))
+    if ((this.CLa.CPE != null) && (this.CLa.CPE.CQr != null))
     {
       localLinkedList = new LinkedList();
-      localIterator = this.xGX.xLv.xMi.iterator();
+      localIterator = this.CLa.CPE.CQr.iterator();
       while (localIterator.hasNext())
       {
-        localObject = (cf)localIterator.next();
+        localObject = (cg)localIterator.next();
         localb = new b();
-        localb.icon = ((cf)localObject).xMl;
-        localb.title = ((cf)localObject).Title;
-        localb.desc = ((cf)localObject).xKd;
-        localb.url = ((cf)localObject).xIB;
+        localb.icon = ((cg)localObject).CQu;
+        localb.title = ((cg)localObject).fwr;
+        localb.desc = ((cg)localObject).COk;
+        localb.url = ((cg)localObject).CMG;
         localLinkedList.add(localb);
       }
       AppMethodBeat.o(41529);
@@ -161,63 +161,63 @@ public final class z
     return null;
   }
   
-  public final int dVG()
+  public final int eyO()
   {
-    if (this.xGX.xLA != null) {
+    if (this.CLa.CPJ != null) {
       return 2;
     }
     return 1;
   }
   
-  public final String dVH()
+  public final String eyP()
   {
-    if ((this.xGX.xLt == null) || (this.xGX.xLt.Title == null)) {
+    if ((this.CLa.CPC == null) || (this.CLa.CPC.fwr == null)) {
       return null;
     }
-    return this.xGX.xLt.Title;
+    return this.CLa.CPC.fwr;
   }
   
-  public final String dVI()
+  public final String eyQ()
   {
-    if ((this.xGX.xLt == null) || (this.xGX.xLt.xKd == null)) {
+    if ((this.CLa.CPC == null) || (this.CLa.CPC.COk == null)) {
       return null;
     }
-    return this.xGX.xLt.xKd;
+    return this.CLa.CPC.COk;
   }
   
-  public final String dVJ()
+  public final String eyR()
   {
-    if (this.xGX.xLu == null) {
+    if (this.CLa.CPD == null) {
       return null;
     }
-    return this.xGX.xLu.Title;
+    return this.CLa.CPD.fwr;
   }
   
-  public final LinkedList<ci> dVK()
+  public final LinkedList<cj> eyS()
   {
-    if (this.xGX.xLu == null) {
+    if (this.CLa.CPD == null) {
       return null;
     }
-    return this.xGX.xLu.xMn;
+    return this.CLa.CPD.CQw;
   }
   
   public final LinkedList<GameMediaList.a> getMediaList()
   {
     AppMethodBeat.i(41530);
     LinkedList localLinkedList = new LinkedList();
-    if ((this.xGX.xLt == null) || (this.xGX.xLt.xuZ == null))
+    if ((this.CLa.CPC == null) || (this.CLa.CPC.Crs == null))
     {
       AppMethodBeat.o(41530);
       return localLinkedList;
     }
-    Iterator localIterator = this.xGX.xLt.xuZ.iterator();
+    Iterator localIterator = this.CLa.CPC.Crs.iterator();
     while (localIterator.hasNext())
     {
-      da localda = (da)localIterator.next();
+      db localdb = (db)localIterator.next();
       GameMediaList.a locala = new GameMediaList.a();
-      locala.type = localda.xuT;
-      locala.dkZ = localda.xMK;
-      locala.url = localda.xML;
+      locala.type = localdb.Crm;
+      locala.fcF = localdb.CQT;
+      locala.url = localdb.CQU;
       localLinkedList.add(locala);
     }
     AppMethodBeat.o(41530);
@@ -241,7 +241,7 @@ public final class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.z
  * JD-Core Version:    0.7.0.1
  */

@@ -10,42 +10,35 @@ public enum c
 {
   private c() {}
   
-  private static d.a a(EnumSet<c> paramEnumSet, int paramInt, String paramString)
+  public static d.a n(int paramInt, String paramString)
   {
-    d.b localb = new d.b();
-    paramEnumSet = paramEnumSet.iterator();
-    while (paramEnumSet.hasNext())
+    Object localObject1 = EnumSet.allOf(c.class);
+    d.b localb1 = new d.b();
+    localObject1 = ((EnumSet)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      c localc = (c)paramEnumSet.next();
-      if (localc.n(paramInt, paramString))
+      Object localObject2 = (c)((Iterator)localObject1).next();
+      if (((c)localObject2).o(paramInt, paramString))
       {
-        localc.a(localb);
-        ((d.b)localb).eN(localc.name());
+        ((c)localObject2).a(localb1);
+        d.b localb2 = (d.b)localb1;
+        localObject2 = ((c)localObject2).name();
+        localb2.dbS.name = ((String)localObject2);
       }
     }
-    return localb;
-  }
-  
-  public static d.a l(int paramInt, String paramString)
-  {
-    return a(EnumSet.of(cXI, cXJ, cXK, cXL), paramInt, paramString);
-  }
-  
-  public static d.a m(int paramInt, String paramString)
-  {
-    return a(EnumSet.allOf(c.class), paramInt, paramString);
+    return localb1;
   }
   
   abstract void a(d.a parama);
   
-  boolean n(int paramInt, String paramString)
+  boolean o(int paramInt, String paramString)
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.matrix.resource.analyzer.model.c
  * JD-Core Version:    0.7.0.1
  */

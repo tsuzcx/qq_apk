@@ -3,29 +3,28 @@ package com.tencent.mm.plugin.appbrand.jsapi.audio;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.c.b;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.v;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class JsApiStopPlayVoice
-  extends d<s>
+  extends c<v>
 {
   public static final int CTRL_INDEX = 35;
   public static final String NAME = "stopVoice";
   
-  public static void bED()
+  public static void bQd()
   {
     AppMethodBeat.i(45997);
-    if (Util.isNullOrNil(JsApiStartPlayVoice.lEP))
+    if (Util.isNullOrNil(JsApiStartPlayVoice.oAq))
     {
       AppMethodBeat.o(45997);
       return;
     }
-    AppBrandMainProcessService.a(new StopPlayVoice((byte)0));
-    JsApiStartPlayVoice.lEP = null;
+    new StopPlayVoice((byte)0).bsM();
+    JsApiStartPlayVoice.oAq = null;
     AppMethodBeat.o(45997);
   }
   
@@ -41,7 +40,7 @@ public final class JsApiStopPlayVoice
       AppMethodBeat.o(45996);
     }
     
-    public final void bjj()
+    public final void RW()
     {
       AppMethodBeat.i(45995);
       MMHandlerThread.postToMainThread(new Runnable()
@@ -49,7 +48,7 @@ public final class JsApiStopPlayVoice
         public final void run()
         {
           AppMethodBeat.i(45993);
-          b localb = b.lbt;
+          b localb = b.nVC;
           b.stop();
           AppMethodBeat.o(45993);
         }
@@ -60,7 +59,7 @@ public final class JsApiStopPlayVoice
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.audio.JsApiStopPlayVoice
  * JD-Core Version:    0.7.0.1
  */

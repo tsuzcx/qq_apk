@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.sns.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.r;
+import com.tencent.mm.plugin.sns.data.t;
 import com.tencent.mm.plugin.sns.model.aj;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -18,10 +18,10 @@ public final class h
     super(parama, parama1);
   }
   
-  public final boolean K(InputStream paramInputStream)
+  public final boolean H(InputStream paramInputStream)
   {
     AppMethodBeat.i(96073);
-    Log.i("MicroMsg.SnsDownloadSightForAdShort", "download sight. %s ", new Object[] { this.DPt.getPath() + this.DPt.fbV() });
+    Log.i("MicroMsg.SnsDownloadSightForAdShort", "download sight. %s ", new Object[] { this.KcA.getPath() + this.KcA.fPO() });
     Object localObject2 = null;
     OutputStream localOutputStream2 = null;
     OutputStream localOutputStream1 = localOutputStream2;
@@ -31,13 +31,13 @@ public final class h
       byte[] arrayOfByte = new byte[1024];
       localOutputStream1 = localOutputStream2;
       localObject1 = localObject2;
-      localOutputStream2 = s.dw(this.DPt.getPath() + this.DPt.fbV(), false);
+      localOutputStream2 = u.Te(this.KcA.getPath() + this.KcA.fPO());
       localOutputStream1 = localOutputStream2;
       localObject1 = localOutputStream2;
       long l = System.currentTimeMillis();
       localOutputStream1 = localOutputStream2;
       localObject1 = localOutputStream2;
-      this.DPE.value = "";
+      this.KcL.value = "";
       int i = 0;
       for (;;)
       {
@@ -49,26 +49,26 @@ public final class h
         }
         localOutputStream1 = localOutputStream2;
         localObject1 = localOutputStream2;
-        if (j > this.DPF)
+        if (j > this.KcM)
         {
           localOutputStream1 = localOutputStream2;
           localObject1 = localOutputStream2;
-          this.DPF = j;
+          this.KcM = j;
           localOutputStream1 = localOutputStream2;
           localObject1 = localOutputStream2;
-          this.DPG = Util.nowSecond();
+          this.KcN = Util.nowSecond();
         }
         localOutputStream1 = localOutputStream2;
         localObject1 = localOutputStream2;
-        if (this.DPH == 0L)
+        if (this.KcO == 0L)
         {
           localOutputStream1 = localOutputStream2;
           localObject1 = localOutputStream2;
-          this.DPH = Util.milliSecondsToNow(this.DPI);
+          this.KcO = Util.milliSecondsToNow(this.KcP);
         }
         localOutputStream1 = localOutputStream2;
         localObject1 = localOutputStream2;
-        if (!r.aOt(aj.getAccPath()))
+        if (!t.aZp(aj.getAccPath()))
         {
           localOutputStream1 = localOutputStream2;
           localObject1 = localOutputStream2;
@@ -96,11 +96,11 @@ public final class h
         localOutputStream2.write(arrayOfByte, 0, j);
         localOutputStream1 = localOutputStream2;
         localObject1 = localOutputStream2;
-        this.DPM += j;
+        this.KcT += j;
         i = 1;
         localOutputStream1 = localOutputStream2;
         localObject1 = localOutputStream2;
-        if (a(this.DPM, l, this.DPE))
+        if (a(this.KcT, l, this.KcL))
         {
           localOutputStream1 = localOutputStream2;
           localObject1 = localOutputStream2;
@@ -114,7 +114,7 @@ public final class h
       localObject1 = null;
       localOutputStream1 = null;
       if (i != 0) {
-        a(this.DPM, 0L, this.DPE);
+        a(this.KcT, 0L, this.KcL);
       }
       AppMethodBeat.o(96073);
       return true;
@@ -159,16 +159,16 @@ public final class h
     }
   }
   
-  public final String aPI(String paramString)
+  public final String baE(String paramString)
   {
     return paramString;
   }
   
-  public final boolean fbX()
+  public final boolean fPQ()
   {
     AppMethodBeat.i(96074);
-    String str = r.j(this.ebR);
-    s.bo(this.DPt.getPath(), this.DPt.fbV(), str);
+    String str = t.i(this.fVT);
+    u.bj(this.KcA.getPath(), this.KcA.fPO(), str);
     AppMethodBeat.o(96074);
     return true;
   }
@@ -180,7 +180,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.a.h
  * JD-Core Version:    0.7.0.1
  */

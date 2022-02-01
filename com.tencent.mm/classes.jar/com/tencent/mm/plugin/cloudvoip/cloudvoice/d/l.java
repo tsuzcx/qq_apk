@@ -14,14 +14,14 @@ import java.util.Iterator;
 
 final class l
 {
-  private IConfCallBack qsy;
-  final SparseArray<HashSet<a>> qsz;
+  private IConfCallBack tRj;
+  final SparseArray<HashSet<a>> tRk;
   
   l()
   {
     AppMethodBeat.i(90820);
-    this.qsy = null;
-    this.qsz = new SparseArray(5);
+    this.tRj = null;
+    this.tRk = new SparseArray(5);
     AppMethodBeat.o(90820);
   }
   
@@ -34,13 +34,13 @@ final class l
     {
       try
       {
-        HashSet localHashSet = (HashSet)this.qsz.get(paramInt);
+        HashSet localHashSet = (HashSet)this.tRk.get(paramInt);
         if (localHashSet == null)
         {
           localHashSet = new HashSet(1);
           localHashSet.add(parama);
           if (i != 0) {
-            this.qsz.append(paramInt, localHashSet);
+            this.tRk.append(paramInt, localHashSet);
           }
           return;
         }
@@ -58,7 +58,7 @@ final class l
     AppMethodBeat.i(90823);
     try
     {
-      HashSet localHashSet = (HashSet)this.qsz.get(paramInt);
+      HashSet localHashSet = (HashSet)this.tRk.get(paramInt);
       if (localHashSet != null) {
         localHashSet.remove(parama);
       }
@@ -70,7 +70,7 @@ final class l
     }
   }
   
-  final IConfCallBack kK(boolean paramBoolean)
+  final IConfCallBack lW(boolean paramBoolean)
   {
     AppMethodBeat.i(90821);
     Log.i("MicroMsg.OpenVoice.OpenVoiceNativeCallbackMgr", "hy: trigger validate callback %b", new Object[] { Boolean.valueOf(paramBoolean) });
@@ -79,13 +79,13 @@ final class l
     {
       try
       {
-        this.qsy = new IConfCallBack()
+        this.tRj = new IConfCallBack()
         {
           public final byte[] callBackFromConf(int paramAnonymousInt1, int paramAnonymousInt2, byte[] paramAnonymousArrayOfByte)
           {
             AppMethodBeat.i(90818);
             Log.i("MicroMsg.OpenVoice.OpenVoiceNativeCallbackMgr", "hy: triggered native callback: %d, %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-            HashSet localHashSet = (HashSet)l.this.qsz.get(paramAnonymousInt1);
+            HashSet localHashSet = (HashSet)l.this.tRk.get(paramAnonymousInt1);
             if ((localHashSet != null) && (localHashSet.size() > 0))
             {
               ArrayList localArrayList = new ArrayList(1);
@@ -96,13 +96,13 @@ final class l
                 l.a locala = (l.a)localIterator.next();
                 if (locala != null)
                 {
-                  Object localObject3 = locala.l(paramAnonymousInt2, locala.bf(paramAnonymousArrayOfByte));
+                  Object localObject3 = locala.o(paramAnonymousInt2, locala.bu(paramAnonymousArrayOfByte));
                   Object localObject2 = localObject1;
                   if (localObject3 != null) {
-                    localObject2 = locala.db(localObject3);
+                    localObject2 = locala.cY(localObject3);
                   }
                   localObject1 = localObject2;
-                  if (!locala.czb())
+                  if (!locala.cNB())
                   {
                     localArrayList.add(locala);
                     localObject1 = localObject2;
@@ -129,38 +129,38 @@ final class l
           public final void callbackWriteLog(int paramAnonymousInt1, String paramAnonymousString1, String paramAnonymousString2, int paramAnonymousInt2, String paramAnonymousString3, String paramAnonymousString4, int paramAnonymousInt3)
           {
             AppMethodBeat.i(90819);
-            if (paramAnonymousInt1 >= c.cyW()) {
+            if (paramAnonymousInt1 >= c.cNs()) {
               Xlog.logWrite2(paramAnonymousInt1, "CloudVoIPNative:".concat(String.valueOf(paramAnonymousString1)), paramAnonymousString2, paramAnonymousString3, Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramAnonymousString4);
             }
             AppMethodBeat.o(90819);
           }
         };
-        this.qsz.clear();
-        IConfCallBack localIConfCallBack = this.qsy;
+        this.tRk.clear();
+        IConfCallBack localIConfCallBack = this.tRj;
         return localIConfCallBack;
       }
       finally
       {
         AppMethodBeat.o(90821);
       }
-      this.qsy = null;
+      this.tRj = null;
     }
   }
   
   static abstract interface a<InParamType, OutParamType>
   {
-    public abstract InParamType bf(byte[] paramArrayOfByte);
+    public abstract InParamType bu(byte[] paramArrayOfByte);
     
-    public abstract boolean czb();
+    public abstract boolean cNB();
     
-    public abstract byte[] db(OutParamType paramOutParamType);
+    public abstract byte[] cY(OutParamType paramOutParamType);
     
-    public abstract OutParamType l(int paramInt, InParamType paramInParamType);
+    public abstract OutParamType o(int paramInt, InParamType paramInParamType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.cloudvoip.cloudvoice.d.l
  * JD-Core Version:    0.7.0.1
  */

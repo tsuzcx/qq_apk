@@ -11,10 +11,10 @@ public class TopStoryMultiTaskListVideoUI
 {
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(236403);
+    AppMethodBeat.i(206259);
     super.onCreate(paramBundle);
     overridePendingTransition(0, 0);
-    AppMethodBeat.o(236403);
+    AppMethodBeat.o(206259);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -25,7 +25,7 @@ public class TopStoryMultiTaskListVideoUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.list.TopStoryMultiTaskListVideoUI
  * JD-Core Version:    0.7.0.1
  */

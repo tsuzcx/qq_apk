@@ -7,17 +7,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.e;
-import com.tencent.mm.aj.p;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.am.f;
+import com.tencent.mm.am.q;
+import com.tencent.mm.contact.d;
 import com.tencent.mm.model.aa;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.z;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.MMBaseActivity;
-import com.tencent.mm.ui.contact.u;
+import com.tencent.mm.ui.contact.w;
 import java.util.List;
 
 public class QLauncherCreateShortcutUI
@@ -43,10 +46,10 @@ public class QLauncherCreateShortcutUI
       AppMethodBeat.o(24568);
       return;
     } while (paramIntent == null);
-    if (!bg.aAc())
+    if (!bh.aHB())
     {
       Log.e("MicroMsg.extqlauncher.QLauncherCreateShortcutUI", "account not ready");
-      Toast.makeText(this, 2131758979, 0).show();
+      Toast.makeText(this, R.l.eEt, 0).show();
       finish();
       AppMethodBeat.o(24568);
       return;
@@ -63,23 +66,23 @@ public class QLauncherCreateShortcutUI
           break;
         }
         Log.d("MicroMsg.extqlauncher.QLauncherCreateShortcutUI", "userNames count " + paramIntent.size());
-        String str1 = z.aTY();
+        String str1 = z.bcZ();
         try
         {
           ContentValues[] arrayOfContentValues = new ContentValues[paramIntent.size()];
           paramInt1 = 0;
           while (paramInt1 < paramIntent.size())
           {
-            bg.aVF();
-            Object localObject = com.tencent.mm.model.c.aSN().Kn((String)paramIntent.get(paramInt1));
-            if ((localObject == null) || ((int)((com.tencent.mm.contact.c)localObject).gMZ <= 0))
+            bh.beI();
+            Object localObject = com.tencent.mm.model.c.bbL().RG((String)paramIntent.get(paramInt1));
+            if ((localObject == null) || ((int)((d)localObject).jxt <= 0))
             {
               Log.e("MicroMsg.extqlauncher.QLauncherCreateShortcutUI", "no such user");
               finish();
               AppMethodBeat.o(24568);
               return;
             }
-            String str2 = com.tencent.mm.plugin.base.model.b.agZ((String)paramIntent.get(paramInt1));
+            String str2 = com.tencent.mm.plugin.base.model.b.aoF((String)paramIntent.get(paramInt1));
             if (Util.isNullOrNil(str2))
             {
               Log.e("MicroMsg.extqlauncher.QLauncherCreateShortcutUI", "null encryptShortcutUser");
@@ -89,13 +92,13 @@ public class QLauncherCreateShortcutUI
             }
             ContentValues localContentValues = new ContentValues();
             localContentValues.put("source_key", com.tencent.mm.plugin.base.model.b.SOURCE_KEY);
-            localContentValues.put("owner_id", com.tencent.mm.plugin.base.model.b.agZ(str1));
+            localContentValues.put("owner_id", com.tencent.mm.plugin.base.model.b.aoF(str1));
             localContentValues.put("unique_id", str2);
             localContentValues.put("container", Integer.valueOf(1));
-            localContentValues.put("item_type", Integer.valueOf(com.tencent.mm.plugin.base.model.b.Q((as)localObject)));
+            localContentValues.put("item_type", Integer.valueOf(com.tencent.mm.plugin.base.model.b.X((as)localObject)));
             localContentValues.put("name", aa.b((as)localObject, (String)paramIntent.get(paramInt1)));
-            p.aYn();
-            localContentValues.put("icon_path", e.M((String)paramIntent.get(paramInt1), false));
+            q.bhz();
+            localContentValues.put("icon_path", f.O((String)paramIntent.get(paramInt1), false));
             localObject = new Intent("com.tencent.mm.action.BIZSHORTCUT");
             ((Intent)localObject).putExtra("LauncherUI.Shortcut.Username", str2);
             ((Intent)localObject).putExtra("LauncherUI.From.Biz.Shortcut", true);
@@ -104,15 +107,15 @@ public class QLauncherCreateShortcutUI
             arrayOfContentValues[paramInt1] = localContentValues;
             paramInt1 += 1;
           }
-          getContentResolver().bulkInsert(a.sPa, arrayOfContentValues);
-          Toast.makeText(this, 2131758980, 0).show();
-          com.tencent.mm.plugin.extqlauncher.b.cSI().cSJ();
+          getContentResolver().bulkInsert(a.wuV, arrayOfContentValues);
+          Toast.makeText(this, R.l.eEu, 0).show();
+          com.tencent.mm.plugin.extqlauncher.b.dhK().dhL();
         }
         catch (Exception paramIntent)
         {
           Log.d("MicroMsg.extqlauncher.QLauncherCreateShortcutUI", "bulkInsert shortcut failed, %s", new Object[] { paramIntent.getMessage() });
           Log.printErrStackTrace("MicroMsg.extqlauncher.QLauncherCreateShortcutUI", paramIntent, "", new Object[0]);
-          Toast.makeText(this, 2131758979, 0).show();
+          Toast.makeText(this, R.l.eEt, 0).show();
         }
       }
       break;
@@ -125,16 +128,16 @@ public class QLauncherCreateShortcutUI
     super.onCreate(paramBundle);
     Log.d("MicroMsg.extqlauncher.QLauncherCreateShortcutUI", "onCreate");
     requestWindowFeature(1);
-    setContentView(2131493805);
+    setContentView(R.i.efO);
     paramBundle = new Intent();
-    int i = u.Q(new int[] { u.PWR, 64, 16384 });
-    u.ll(i, 1);
+    int i = w.P(new int[] { w.XtJ, 64, 16384 });
+    w.mC(i, 1);
     paramBundle.putExtra("list_attr", i);
     paramBundle.putExtra("list_type", 12);
     paramBundle.putExtra("stay_in_wechat", false);
-    paramBundle.putExtra("titile", getString(2131755268));
-    paramBundle.putExtra("block_contact", z.aTY());
-    com.tencent.mm.br.c.c(this, ".ui.contact.SelectContactUI", paramBundle, 1);
+    paramBundle.putExtra("titile", getString(R.l.address_title_select_contact));
+    paramBundle.putExtra("block_contact", z.bcZ());
+    com.tencent.mm.by.c.d(this, ".ui.contact.SelectContactUI", paramBundle, 1);
     AppMethodBeat.o(24567);
   }
   
@@ -146,7 +149,7 @@ public class QLauncherCreateShortcutUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.extqlauncher.ui.QLauncherCreateShortcutUI
  * JD-Core Version:    0.7.0.1
  */

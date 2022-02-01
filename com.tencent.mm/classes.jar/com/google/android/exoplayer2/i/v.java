@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class v
 {
-  public static void beginSection(String paramString)
+  public static void D(String paramString)
   {
     AppMethodBeat.i(93210);
     if (x.SDK_INT >= 18) {
@@ -14,7 +14,7 @@ public final class v
     AppMethodBeat.o(93210);
   }
   
-  public static void endSection()
+  public static void gH()
   {
     AppMethodBeat.i(93211);
     if (x.SDK_INT >= 18) {
@@ -25,7 +25,7 @@ public final class v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.i.v
  * JD-Core Version:    0.7.0.1
  */

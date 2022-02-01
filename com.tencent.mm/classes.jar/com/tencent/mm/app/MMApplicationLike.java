@@ -17,7 +17,11 @@ import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.ImmutableBundle;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMStack;
+import com.tencent.mm.sdk.platformtools.PatronsWrapper;
+import com.tencent.mm.sdk.platformtools.ThreadStackShinkerWrapper;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WVReservedSpaceShinkerWrapper;
+import com.tencent.tinker.anno.Keep;
 import com.tencent.tinker.entry.ApplicationLifeCycle;
 import com.tencent.tinker.entry.ApplicationLike;
 import com.tencent.tinker.entry.DefaultApplicationLike;
@@ -28,8 +32,10 @@ import com.tencent.tinker.loader.shareutil.ShareTinkerInternals;
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.Properties;
 
+@Keep
 public class MMApplicationLike
   extends DefaultApplicationLike
 {
@@ -39,6 +45,7 @@ public class MMApplicationLike
   private s mMMApplicationLikeImpl;
   private ApplicationLifeCycle wrapper;
   
+  @Keep
   public MMApplicationLike(Application paramApplication, int paramInt, boolean paramBoolean, long paramLong1, long paramLong2, Intent paramIntent)
   {
     super(paramApplication, paramInt, paramBoolean, paramLong1, paramLong2, paramIntent);
@@ -75,26 +82,26 @@ public class MMApplicationLike
     }
     ApplicationGlobal.attach(getApplication());
     MMApplicationContext.setApplicationId(paramContext.getPackageName());
-    Object localObject1 = ac.bO(paramContext);
+    Object localObject1 = ad.bO(paramContext);
     if (localObject1 == null) {
       com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.SetupBaseBuildInfo", "meta bundle is null!!!!");
     }
     for (;;)
     {
       BuildInfo.DEBUG = false;
-      BuildInfo.BUILD_TAG = "Android_Wechat_RELEASE #6690";
+      BuildInfo.BUILD_TAG = "Android_Wechat_RELEASE #8780";
       BuildInfo.OWNER = "amm_code_helper";
-      BuildInfo.HOSTNAME = "VM_53_123_centos";
-      BuildInfo.TIME = "2021-01-25 16:04:57";
+      BuildInfo.HOSTNAME = "VM_68_37_centos";
+      BuildInfo.TIME = "2021-07-02 19:00:26";
       BuildInfo.COMMAND = "null";
-      BuildInfo.REV = "9871b1464e5d9adcf899ba99a4f9d24ddd0efc29";
-      BuildInfo.SVNPATH = "RB-2021-JAN@git";
+      BuildInfo.REV = "999a31602a87e54588225e7c692eb761d9753386";
+      BuildInfo.SVNPATH = "RB-2021-JUN@git";
       int i;
       label207:
       Object localObject3;
       if (com.tencent.mm.loader.j.a.IS_ARM64)
       {
-        localObject1 = "0x28000037";
+        localObject1 = "0x28000737";
         BuildInfo.CLIENT_VERSION = (String)localObject1;
         BuildInfo.CLIENT_VERSION_INT = Integer.decode((String)localObject1).intValue();
         BuildInfo.ENABLE_FPS_ANALYSE = false;
@@ -106,10 +113,10 @@ public class MMApplicationLike
         BuildInfo.IS_FLAVOR_RED = false;
         BuildInfo.IS_FLAVOR_PURPLE = false;
         BuildInfo.IS_FLAVOR_BLUE = false;
-        BuildInfo.MATRIX_VERSION = "0.7.8.28-109";
+        BuildInfo.MATRIX_VERSION = "2.0.0-344";
         BuildInfo.IS_ARM64 = com.tencent.mm.loader.j.a.IS_ARM64;
         BuildInfo.KINDA_DEFAULT = "default";
-        BuildInfo.TINKER_VERSION = "1.9.14.10";
+        BuildInfo.TINKER_VERSION = "1.9.14.17";
         BuildInfo.IS_UAT = false;
         BuildInfo.ENABLE_PAYTEST = false;
         BuildInfo.OVERRIDE_VERSION_NAME = "";
@@ -129,9 +136,9 @@ public class MMApplicationLike
           ((ArrayMap)localObject1).put(localObject3.getName(), localObject3.get(null));
           i += 1;
           break label207;
-          com.tencent.mm.loader.j.a.y((Bundle)localObject1);
+          com.tencent.mm.loader.j.a.F((Bundle)localObject1);
           continue;
-          localObject1 = "0x28000036";
+          localObject1 = "0x28000736";
         }
         catch (IllegalAccessException localIllegalAccessException)
         {
@@ -144,11 +151,11 @@ public class MMApplicationLike
     }
     BuildInfo.ext.putAll((ArrayMap)localObject1);
     BuildInfo.ext.markImmutable();
-    com.tencent.stubs.logger.Log.setLogger(m.Wp());
+    com.tencent.stubs.logger.Log.setLogger(m.aaK());
     super.onBaseContextAttached(paramContext);
     Object localObject2 = Util.getProcessNameByPid(paramContext, Process.myPid());
-    d.cQi = (String)localObject2;
-    if (aa.bN(paramContext))
+    d.cQP = (String)localObject2;
+    if (ab.bN(paramContext))
     {
       AppMethodBeat.o(123468);
       return;
@@ -157,14 +164,14 @@ public class MMApplicationLike
     if (!BuildInfo.DEBUG)
     {
       com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.MMApplicationLikeImpl", "befrore initCrash()");
-      l.f(s.dks.getApplication());
+      l.g(s.fcb.getApplication());
     }
     if (!MMApplicationContext.isToolsIsolatedProcess())
     {
-      ag.a.dmC.b(s.dks);
-      ag.a.dmC.WL();
+      ai.a.feP.b(s.fcb);
+      ai.a.feP.abn();
     }
-    localObject1 = s.dks;
+    localObject1 = s.fcb;
     if ((localObject1 == null) || (((ApplicationLike)localObject1).getApplication() == null))
     {
       paramContext = new TinkerRuntimeException("tinkerApplication is null");
@@ -172,59 +179,62 @@ public class MMApplicationLike
       throw paramContext;
     }
     Object localObject5;
-    if ((ShareTinkerInternals.isTinkerEnabledForNativeLib(((ApplicationLike)localObject1).getTinkerFlags())) && (com.tencent.tinker.lib.e.b.c(s.dks)))
+    if ((ShareTinkerInternals.isTinkerEnabledForNativeLib(((ApplicationLike)localObject1).getTinkerFlags())) && (com.tencent.tinker.lib.e.b.c(s.fcb)))
     {
       if (com.tencent.mm.loader.j.a.IS_ARM64)
       {
-        localObject1 = s.gd("arm64-v8a");
+        localObject1 = s.gN("arm64-v8a");
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          j.Ec((String)localObject1);
+          j.KV((String)localObject1);
         }
-        com.tencent.tinker.lib.a.a.a(s.dks, "arm64-v8a");
+        com.tencent.tinker.lib.a.a.a(s.fcb, "arm64-v8a");
       }
     }
     else
     {
-      d.dkt = s.dks.getApplicationStartMillisTime();
-      s.a(s.dks);
-      s.dlj = s.dlj + "/" + localObject4.hashCode();
+      d.fcc = s.fcb.getApplicationStartMillisTime();
+      s.a(s.fcb);
+      s.fcP = s.fcP + "/" + localObject4.hashCode();
       MMApplicationContext.setAppHasInitFlag(false);
-      MMApplicationContext.setContext(s.dks.getApplication());
+      MMApplicationContext.setContext(s.fcb.getApplication());
       com.tencent.mm.sdk.platformtools.Log.setLevel(0, false);
       long l1 = System.currentTimeMillis();
-      localObject5 = new r(com.tencent.mm.loader.j.b.aKB() + "NowRev.ini");
+      localObject5 = new r(com.tencent.mm.loader.j.b.aSD() + "NowRev.ini");
       if ((((r)localObject5).propertie == null) || (!((r)localObject5).propertie.containsKey("NowRev"))) {
-        break label1470;
+        break label1482;
       }
       localObject1 = ((r)localObject5).propertie.getProperty("NowRev");
       label638:
-      ((s)localObject4).dlk = ((String)localObject1);
-      ((s)localObject4).dll = BuildInfo.CLIENT_VERSION;
+      ((s)localObject4).fcQ = ((String)localObject1);
+      ((s)localObject4).fcR = BuildInfo.CLIENT_VERSION;
       long l2 = System.currentTimeMillis();
-      ((s)localObject4).dlm = (l2 - l1);
-      ((s)localObject4).dln = 0L;
-      if (!((s)localObject4).dll.equals(((s)localObject4).dlk))
+      ((s)localObject4).fcS = (l2 - l1);
+      ((s)localObject4).fcT = 0L;
+      if (!((s)localObject4).fcR.equals(((s)localObject4).fcQ))
       {
         MMApplicationContext.sIsRevChange = true;
-        s.D(s.dks.getApplication().getDir("lib", 0));
-        s.D(s.dks.getApplication().getDir("dex", 0));
-        s.D(s.dks.getApplication().getDir("cache", 0));
-        s.D(s.dks.getApplication().getDir("recover_lib", 0));
+        s.w(s.fcb.getApplication().getDir("lib", 0));
+        s.w(s.fcb.getApplication().getDir("dex", 0));
+        s.w(s.fcb.getApplication().getDir("cache", 0));
+        s.w(s.fcb.getApplication().getDir("recover_lib", 0));
         if (com.tencent.mm.loader.j.a.CLIENT_VERSION.equals(BuildInfo.CLIENT_VERSION))
         {
-          com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.MMApplicationLikeImpl", "[tomys] clean patch since base apk is upgraded, prev_clientversion: %s, curr_clientversion: %s, curr_base_clientversion: %s", new Object[] { ((s)localObject4).dlk, ((s)localObject4).dll, com.tencent.mm.loader.j.a.CLIENT_VERSION });
-          com.tencent.tinker.lib.e.b.e(s.dks);
+          com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.MMApplicationLikeImpl", "[tomys] clean patch since base apk is upgraded, prev_clientversion: %s, curr_clientversion: %s, curr_base_clientversion: %s", new Object[] { ((s)localObject4).fcQ, ((s)localObject4).fcR, com.tencent.mm.loader.j.a.CLIENT_VERSION });
+          com.tencent.tinker.lib.e.b.e(s.fcb);
         }
-        ((r)localObject5).saveValue("NowRev", ((s)localObject4).dll);
-        ((s)localObject4).dln = (System.currentTimeMillis() - l2);
-        com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.MMApplicationLikeImpl", "application hash:%s, %s", new Object[] { s.dlj, Util.getStack().toString() });
+        ((r)localObject5).saveValue("NowRev", ((s)localObject4).fcR);
+        ((s)localObject4).fcT = (System.currentTimeMillis() - l2);
+        com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.MMApplicationLikeImpl", "application hash:%s, %s", new Object[] { s.fcP, Util.getStack().toString() });
       }
-      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.MMApplicationLikeImpl", "clearOldDirIfNewVersion oldversion:%s, newversion:%s, gettime:%d, settime:%d", new Object[] { ((s)localObject4).dlk, ((s)localObject4).dll, Long.valueOf(((s)localObject4).dlm), Long.valueOf(((s)localObject4).dln) });
+      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.MMApplicationLikeImpl", "clearOldDirIfNewVersion oldversion:%s, newversion:%s, gettime:%d, settime:%d", new Object[] { ((s)localObject4).fcQ, ((s)localObject4).fcR, Long.valueOf(((s)localObject4).fcS), Long.valueOf(((s)localObject4).fcT) });
       if ((BuildInfo.DEBUG) || (BuildInfo.PRE_RELEASE))
       {
         com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.MMApplicationLikeImpl", "after initCrash()");
-        l.f(s.dks.getApplication());
+        l.g(s.fcb.getApplication());
       }
+      ThreadStackShinkerWrapper.tryToInstall(paramContext);
+      WVReservedSpaceShinkerWrapper.tryToInstall(paramContext);
+      PatronsWrapper.tryToInstall(paramContext);
       if (((String)localObject2).equals(paramContext.getPackageName())) {
         x.a("MicroMsg.MMApplication", "** Hit main process condition.", new Object[0]);
       }
@@ -261,32 +271,32 @@ public class MMApplicationLike
         ShareTinkerInternals.killProcessExceptMain(paramContext);
         x.a("MicroMsg.MMApplication", "** Other processes were killed.", new Object[0]);
       }
-      catch (Throwable localThrowable)
+      catch (Throwable localThrowable1)
       {
         File localFile2;
-        label1470:
-        x.a("MicroMsg.MMApplication", localThrowable, "** Exception occurred.", new Object[0]);
+        label1482:
+        x.a("MicroMsg.MMApplication", localThrowable1, "** Exception occurred.", new Object[0]);
         continue;
         x.a("MicroMsg.MMApplication", "** Status is ok, do not needs to do fix.", new Object[0]);
         continue;
         x.a("MicroMsg.MMApplication", "** Patch is not loaded, do not needs to do fix.", new Object[0]);
         continue;
       }
-      if (!k.e(getApplication())) {
-        break label1552;
+      if (!k.f(getApplication())) {
+        break label1564;
       }
       AppMethodBeat.o(123468);
       return;
-      localObject1 = s.gd("armeabi-v7a");
+      localObject1 = s.gN("armeabi-v7a");
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        j.Ec((String)localObject1);
+        j.KV((String)localObject1);
       }
-      localObject1 = s.gd("armeabi");
+      localObject1 = s.gN("armeabi");
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        j.Ec((String)localObject1);
+        j.KV((String)localObject1);
       }
-      com.tencent.tinker.lib.a.a.a(s.dks, "armeabi-v7a");
-      com.tencent.tinker.lib.a.a.a(s.dks, "armeabi");
+      com.tencent.tinker.lib.a.a.a(s.fcb, "armeabi-v7a");
+      com.tencent.tinker.lib.a.a.a(s.fcb, "armeabi");
       break;
       localObject1 = null;
       break label638;
@@ -294,38 +304,56 @@ public class MMApplicationLike
         ((SharePatchInfo)localObject5).oatDir = "interpet";
       }
     }
-    for (;;)
+    try
     {
-      try
+      label1564:
+      Method localMethod = Class.forName("com.tencent.mm.app.StartupCostReporter").getDeclaredMethod("install", new Class[] { Application.class });
+      localMethod.setAccessible(true);
+      localMethod.invoke(null, new Object[] { getApplication() });
+    }
+    catch (Throwable localThrowable2)
+    {
+      for (;;)
       {
-        label1552:
-        if (MMApplicationContext.isToolsIsolatedProcess())
+        try
         {
-          this.wrapper = ((ApplicationLifeCycle)Class.forName(MMApplicationContext.getSourcePackageName() + ".app.MMIsolatedApplicationWrapper").getConstructor(new Class[] { ApplicationLike.class, String.class }).newInstance(new Object[] { this, localObject2 }));
-          this.wrapper.onBaseContextAttached(paramContext);
+          if (MMApplicationContext.isToolsIsolatedProcess())
+          {
+            this.wrapper = ((ApplicationLifeCycle)Class.forName(MMApplicationContext.getSourcePackageName() + ".app.MMIsolatedApplicationWrapper").getConstructor(new Class[] { ApplicationLike.class, String.class }).newInstance(new Object[] { this, localObject2 }));
+            this.wrapper.onBaseContextAttached(paramContext);
+            AppMethodBeat.o(123468);
+            return;
+            localThrowable2 = localThrowable2;
+            x.a("MicroMsg.MMApplication", localThrowable2, "Fail to install StartupCostReporter.", new Object[0]);
+            continue;
+          }
+          if (MMApplicationContext.isNoSpaceProcess())
+          {
+            this.wrapper = ((ApplicationLifeCycle)Class.forName(MMApplicationContext.getSourcePackageName() + ".app.MMCleanApplicationWrapper").getConstructor(new Class[] { ApplicationLike.class, String.class }).newInstance(new Object[] { this, localObject2 }));
+            continue;
+          }
+          if (!MMApplicationContext.isHotpotDotDotProcess()) {
+            break label1905;
+          }
+        }
+        catch (Exception paramContext)
+        {
+          com.tencent.mm.sdk.platformtools.Log.printErrStackTrace("MicroMsg.MMApplication", paramContext, "failed to create application wrapper class", new Object[0]);
+          paramContext = new RuntimeException("failed to create application wrapper class", paramContext);
           AppMethodBeat.o(123468);
-          return;
+          throw paramContext;
         }
-        if (MMApplicationContext.isNoSpaceProcess())
-        {
-          this.wrapper = ((ApplicationLifeCycle)Class.forName(MMApplicationContext.getSourcePackageName() + ".app.MMCleanApplicationWrapper").getConstructor(new Class[] { ApplicationLike.class, String.class }).newInstance(new Object[] { this, localObject2 }));
-          continue;
-        }
-        if (!MMApplicationContext.isHotpotDotDotProcess()) {
-          break label1826;
+        this.wrapper = ((ApplicationLifeCycle)Class.forName(MMApplicationContext.getSourcePackageName() + ".app.MMHotpotDotDotWrapper").getConstructor(new Class[] { ApplicationLike.class, String.class }).newInstance(new Object[] { this, localObject2 }));
+        continue;
+        label1905:
+        if (MMApplicationContext.isBacktraceProcess()) {
+          this.wrapper = ((ApplicationLifeCycle)Class.forName(MMApplicationContext.getSourcePackageName() + ".app.MMWeChatBacktraceWrapper").getConstructor(new Class[] { ApplicationLike.class, String.class }).newInstance(new Object[] { this, localObject2 }));
+        } else if (MMApplicationContext.isImeProcess()) {
+          this.wrapper = ((ApplicationLifeCycle)Class.forName(MMApplicationContext.getSourcePackageName() + ".app.MMHldApplicationWrapper").getConstructor(new Class[] { ApplicationLike.class, String.class }).newInstance(new Object[] { this, localObject2 }));
+        } else {
+          this.wrapper = ((ApplicationLifeCycle)Class.forName(MMApplicationContext.getSourcePackageName() + ".app.MMApplicationWrapper").getConstructor(new Class[] { ApplicationLike.class, String.class }).newInstance(new Object[] { this, localObject2 }));
         }
       }
-      catch (Exception paramContext)
-      {
-        com.tencent.mm.sdk.platformtools.Log.printErrStackTrace("MicroMsg.MMApplication", paramContext, "failed to create application wrapper class", new Object[0]);
-        paramContext = new RuntimeException("failed to create application wrapper class", paramContext);
-        AppMethodBeat.o(123468);
-        throw paramContext;
-      }
-      this.wrapper = ((ApplicationLifeCycle)Class.forName(MMApplicationContext.getSourcePackageName() + ".app.MMHotpotDotDotWrapper").getConstructor(new Class[] { ApplicationLike.class, String.class }).newInstance(new Object[] { this, localObject2 }));
-      continue;
-      label1826:
-      this.wrapper = ((ApplicationLifeCycle)Class.forName(MMApplicationContext.getSourcePackageName() + ".app.MMApplicationWrapper").getConstructor(new Class[] { ApplicationLike.class, String.class }).newInstance(new Object[] { this, localObject2 }));
     }
   }
   
@@ -343,10 +371,24 @@ public class MMApplicationLike
   public void onCreate()
   {
     AppMethodBeat.i(123469);
-    if (this.wrapper != null) {
-      this.wrapper.onCreate();
+    try
+    {
+      Method localMethod = Class.forName("com.tencent.mm.app.StartupCostReporter").getDeclaredMethod("checkColdStartup", new Class[0]);
+      localMethod.setAccessible(true);
+      localMethod.invoke(null, new Object[0]);
+      if (this.wrapper != null) {
+        this.wrapper.onCreate();
+      }
+      AppMethodBeat.o(123469);
+      return;
     }
-    AppMethodBeat.o(123469);
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        x.a("MicroMsg.MMApplication", localThrowable, "Fail to checkColdStartup.", new Object[0]);
+      }
+    }
   }
   
   public void onLowMemory()
@@ -398,7 +440,7 @@ public class MMApplicationLike
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.app.MMApplicationLike
  * JD-Core Version:    0.7.0.1
  */

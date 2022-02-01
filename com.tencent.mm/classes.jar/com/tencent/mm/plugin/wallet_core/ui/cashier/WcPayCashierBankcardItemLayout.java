@@ -8,16 +8,18 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.ui.view.FavourLayout;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 
 public class WcPayCashierBankcardItemLayout
   extends LinearLayout
 {
-  public FavourLayout Iga;
-  public TextView Ild;
-  public TextView Ile;
-  public RadioButton Ilf;
-  public CdnImageView qgQ;
+  public FavourLayout OYp;
+  public TextView Pdv;
+  public TextView Pdw;
+  public RadioButton Pdx;
+  public CdnImageView tCM;
   
   public WcPayCashierBankcardItemLayout(Context paramContext)
   {
@@ -46,12 +48,12 @@ public class WcPayCashierBankcardItemLayout
   private void init()
   {
     AppMethodBeat.i(71323);
-    View.inflate(getContext(), 2131497033, this);
-    this.qgQ = ((CdnImageView)findViewById(2131310545));
-    this.Ild = ((TextView)findViewById(2131310547));
-    this.Ile = ((TextView)findViewById(2131310548));
-    this.Ilf = ((RadioButton)findViewById(2131310552));
-    this.Iga = ((FavourLayout)findViewById(2131310550));
+    View.inflate(getContext(), a.g.wc_pay_cashier_bankcard_item, this);
+    this.tCM = ((CdnImageView)findViewById(a.f.wpcb_bank_logo_iv));
+    this.Pdv = ((TextView)findViewById(a.f.wpcb_bankname_tv));
+    this.Pdw = ((TextView)findViewById(a.f.wpcb_bottom_tips_tv));
+    this.Pdx = ((RadioButton)findViewById(a.f.wpcb_rb));
+    this.OYp = ((FavourLayout)findViewById(a.f.wpcb_favour_layout));
     AppMethodBeat.o(71323);
   }
 }

@@ -14,13 +14,13 @@ final class LaunchAAUI$35
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(213063);
+    AppMethodBeat.i(268662);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/aa/ui/LaunchAAUI$40", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    this.gwC.bMo();
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/aa/ui/LaunchAAUI$40", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    this.jaP.bYF();
     a.a(this, "com/tencent/mm/plugin/aa/ui/LaunchAAUI$40", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(213063);
+    AppMethodBeat.o(268662);
   }
 }
 

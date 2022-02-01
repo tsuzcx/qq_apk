@@ -9,32 +9,41 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.messenger.a.b;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.d;
+import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.h;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.contact.a.a.a;
 import java.util.regex.Pattern;
 
 public final class c
   extends com.tencent.mm.ui.contact.a.a
 {
-  private static final Pattern jVK;
-  public CharSequence hXr;
-  public CharSequence jVL;
-  private b jVM;
-  a jVN;
+  private static final Pattern mMX;
+  public CharSequence kLX;
+  public CharSequence mMY;
+  private b mMZ;
+  a mNa;
   public String username;
   
   static
   {
     AppMethodBeat.i(63528);
-    jVK = Pattern.compile(",");
+    mMX = Pattern.compile(",");
     AppMethodBeat.o(63528);
   }
   
@@ -42,8 +51,8 @@ public final class c
   {
     super(2, paramInt);
     AppMethodBeat.i(63526);
-    this.jVM = new b();
-    this.jVN = new a();
+    this.mMZ = new b();
+    this.mNa = new a();
     AppMethodBeat.o(63526);
   }
   
@@ -57,33 +66,38 @@ public final class c
       return;
     }
     this.username = this.contact.field_username;
-    if (Util.isNullOrNil(this.dFl)) {}
-    for (parama = ((b)g.af(b.class)).b(this.contact);; parama = ((b)g.af(b.class)).getDisplayName(this.contact.field_username, this.dFl))
+    if (Util.isNullOrNil(this.fxT)) {}
+    for (parama = ((b)h.ae(b.class)).b(this.contact);; parama = ((b)h.ae(b.class)).aL(this.contact.field_username, this.fxT))
     {
       Object localObject = parama;
-      if (z.aTY().equals(this.username)) {
-        localObject = parama + paramContext.getString(2131755064);
+      if (z.bcZ().equals(this.username)) {
+        localObject = parama + paramContext.getString(a.i.aa_myself_note);
       }
-      this.jVL = com.tencent.mm.pluginsdk.ui.span.l.e(paramContext, (CharSequence)localObject, com.tencent.mm.cb.a.aG(paramContext, 2131165535));
+      this.mMY = l.d(paramContext, (CharSequence)localObject, com.tencent.mm.ci.a.aY(paramContext, a.d.NormalTextSize));
       AppMethodBeat.o(63527);
       return;
     }
   }
   
-  public final com.tencent.mm.ui.contact.a.a.b bmx()
+  public final com.tencent.mm.ui.contact.a.a.b bwF()
   {
-    return this.jVM;
+    return this.mMZ;
+  }
+  
+  public final a.a bwG()
+  {
+    return this.mNa;
   }
   
   public final class a
     extends a.a
   {
     public View contentView;
-    public ImageView gvv;
-    public TextView jBR;
-    public TextView jVO;
-    public TextView jVP;
-    public CheckBox jVQ;
+    public ImageView iZG;
+    public TextView mNb;
+    public TextView mNc;
+    public CheckBox mNd;
+    public TextView mrM;
     
     public a()
     {
@@ -102,16 +116,16 @@ public final class c
     public final View a(Context paramContext, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(63524);
-      if (com.tencent.mm.cb.a.jk(paramContext)) {}
-      for (paramContext = LayoutInflater.from(paramContext).inflate(2131496221, paramViewGroup, false);; paramContext = LayoutInflater.from(paramContext).inflate(2131496220, paramViewGroup, false))
+      if (com.tencent.mm.ci.a.ko(paramContext)) {}
+      for (paramContext = LayoutInflater.from(paramContext).inflate(a.g.select_ui_listcontactitem_large, paramViewGroup, false);; paramContext = LayoutInflater.from(paramContext).inflate(a.g.select_ui_listcontactitem, paramViewGroup, false))
       {
-        paramViewGroup = (c.a)c.this.jVN;
-        paramViewGroup.gvv = ((ImageView)paramContext.findViewById(2131297134));
-        paramViewGroup.jVO = ((TextView)paramContext.findViewById(2131309249));
-        paramViewGroup.jBR = ((TextView)paramContext.findViewById(2131299510));
-        paramViewGroup.contentView = paramContext.findViewById(2131307533);
-        paramViewGroup.jVQ = ((CheckBox)paramContext.findViewById(2131307508));
-        paramViewGroup.jVP = ((TextView)paramContext.findViewById(2131309163));
+        paramViewGroup = (c.a)c.this.mNa;
+        paramViewGroup.iZG = ((ImageView)paramContext.findViewById(a.f.avatar_iv));
+        paramViewGroup.mNb = ((TextView)paramContext.findViewById(a.f.title_tv));
+        paramViewGroup.mrM = ((TextView)paramContext.findViewById(a.f.desc_tv));
+        paramViewGroup.contentView = paramContext.findViewById(a.f.select_item_content_layout);
+        paramViewGroup.mNd = ((CheckBox)paramContext.findViewById(a.f.select_cb));
+        paramViewGroup.mNc = ((TextView)paramContext.findViewById(a.f.tip_tv));
         paramContext.setTag(paramViewGroup);
         AppMethodBeat.o(63524);
         return paramContext;
@@ -123,128 +137,129 @@ public final class c
       AppMethodBeat.i(63525);
       parama = (c.a)parama;
       parama1 = (c)parama1;
-      label75:
-      label104:
+      label83:
+      label112:
       Object localObject;
       int i;
       if ((parama1.username != null) && (parama1.username.length() > 0))
       {
-        com.tencent.mm.pluginsdk.ui.a.b.a(parama.gvv, parama1.username, 0.1F, false);
-        if (Util.isNullOrNil(parama1.jVL)) {
-          break label405;
+        com.tencent.mm.pluginsdk.ui.a.b.a(parama.iZG, parama1.username, 0.1F, false);
+        if (Util.isNullOrNil(parama1.mMY)) {
+          break label421;
         }
-        parama.jVO.setText(parama1.jVL);
-        parama.jVO.setVisibility(0);
-        if (Util.isNullOrNil(parama1.hXr)) {
-          break label417;
+        parama.mNb.setText(parama1.mMY);
+        parama.mNb.setVisibility(0);
+        parama.mNb.setSingleLine(false);
+        if (Util.isNullOrNil(parama1.kLX)) {
+          break label433;
         }
-        parama.jBR.setText(parama1.hXr);
-        parama.jBR.setVisibility(0);
-        if (!c.this.PWh) {
-          break label457;
+        parama.mrM.setText(parama1.kLX);
+        parama.mrM.setVisibility(0);
+        if (!c.this.XsX) {
+          break label473;
         }
         if (!paramBoolean1) {
-          break label437;
+          break label453;
         }
-        parama.jVQ.setChecked(true);
-        parama.jVQ.setEnabled(false);
-        localObject = parama.jVQ;
-        if (!ao.isDarkMode()) {
-          break label429;
+        parama.mNd.setChecked(true);
+        parama.mNd.setEnabled(false);
+        localObject = parama.mNd;
+        if (!ar.isDarkMode()) {
+          break label445;
         }
-        i = 2131689955;
-        label151:
+        i = a.h.checkbox_selected_grey_dark;
+        label160:
         ((CheckBox)localObject).setBackgroundResource(i);
-        label158:
-        parama.jVQ.setVisibility(0);
-        label166:
-        if (!c.this.poB) {
-          break label469;
+        label167:
+        parama.mNd.setVisibility(0);
+        label175:
+        if (!c.this.sxA) {
+          break label485;
         }
-        parama.contentView.setBackgroundResource(2131231901);
+        parama.contentView.setBackgroundResource(a.e.comm_list_item_selector_no_divider);
       }
       for (;;)
       {
         if (parama1.contact.field_deleteFlag == 1)
         {
-          parama.jBR.setVisibility(0);
-          parama.jBR.setText(paramContext.getString(2131755021));
+          parama.mrM.setVisibility(0);
+          parama.mrM.setText(paramContext.getString(a.i.aa_address_account_deleted));
         }
-        if (!as.bjp(parama1.username)) {
-          break label482;
+        if (!as.bvK(parama1.username)) {
+          break label498;
         }
-        parama.jVO.setAlpha(0.3F);
-        parama.jBR.setAlpha(0.3F);
-        parama.jVQ.setChecked(false);
-        parama.jVQ.setEnabled(false);
-        parama.jVQ.setOnClickListener(null);
-        parama.jVQ.setOnTouchListener(null);
-        parama.gvv.setAlpha(0.3F);
-        localObject = com.tencent.mm.openim.room.a.a.O(((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn(parama1.username));
-        parama.jVP.setVisibility(0);
-        parama.jVP.setText((CharSequence)localObject);
-        parama.jVP.setTextSize(12.0F);
-        parama.jVP.setTextColor(paramContext.getResources().getColor(2131100919));
-        parama.jVP.setAlpha(0.3F);
+        parama.mNb.setAlpha(0.3F);
+        parama.mrM.setAlpha(0.3F);
+        parama.mNd.setChecked(false);
+        parama.mNd.setEnabled(false);
+        parama.mNd.setOnClickListener(null);
+        parama.mNd.setOnTouchListener(null);
+        parama.iZG.setAlpha(0.3F);
+        localObject = com.tencent.mm.openim.room.a.a.V(((n)h.ae(n.class)).bbL().RG(parama1.username));
+        parama.mNc.setVisibility(0);
+        parama.mNc.setText((CharSequence)localObject);
+        parama.mNc.setTextSize(12.0F);
+        parama.mNc.setTextColor(paramContext.getResources().getColor(a.c.orange_100));
+        parama.mNc.setAlpha(0.3F);
         Log.i("MicroMsg.ContactDataItem", "data.username：%s,subName:%s", new Object[] { parama1.username, localObject });
         AppMethodBeat.o(63525);
         return;
-        parama.gvv.setImageResource(2131231957);
+        parama.iZG.setImageResource(a.e.default_avatar);
         break;
-        label405:
-        parama.jVO.setVisibility(8);
-        break label75;
-        label417:
-        parama.jBR.setVisibility(8);
-        break label104;
-        label429:
-        i = 2131689954;
-        break label151;
-        label437:
-        parama.jVQ.setChecked(paramBoolean2);
-        parama.jVQ.setEnabled(true);
-        break label158;
-        label457:
-        parama.jVQ.setVisibility(8);
-        break label166;
-        label469:
-        parama.contentView.setBackgroundResource(2131230751);
+        label421:
+        parama.mNb.setVisibility(8);
+        break label83;
+        label433:
+        parama.mrM.setVisibility(8);
+        break label112;
+        label445:
+        i = a.h.checkbox_selected_grey;
+        break label160;
+        label453:
+        parama.mNd.setChecked(paramBoolean2);
+        parama.mNd.setEnabled(true);
+        break label167;
+        label473:
+        parama.mNd.setVisibility(8);
+        break label175;
+        label485:
+        parama.contentView.setBackgroundResource(a.e.aa_seletct_contact_ui_item_selector);
       }
-      label482:
-      parama.jVO.setAlpha(1.0F);
-      parama.jBR.setAlpha(1.0F);
-      if (c.this.PWh) {
+      label498:
+      parama.mNb.setAlpha(1.0F);
+      parama.mrM.setAlpha(1.0F);
+      if (c.this.XsX) {
         if (paramBoolean1)
         {
-          parama.jVQ.setChecked(true);
-          parama.jVQ.setEnabled(false);
-          paramContext = parama.jVQ;
-          if (ao.isDarkMode())
+          parama.mNd.setChecked(true);
+          parama.mNd.setEnabled(false);
+          paramContext = parama.mNd;
+          if (ar.isDarkMode())
           {
-            i = 2131689955;
+            i = a.h.checkbox_selected_grey_dark;
             paramContext.setBackgroundResource(i);
-            label550:
-            parama.jVQ.setVisibility(0);
+            label567:
+            parama.mNd.setVisibility(0);
           }
         }
       }
       for (;;)
       {
-        parama.gvv.setAlpha(1.0F);
-        parama.jVP.setVisibility(4);
+        parama.iZG.setAlpha(1.0F);
+        parama.mNc.setVisibility(4);
         Log.i("MicroMsg.ContactDataItem", "data.username：%s", new Object[] { parama1.username });
         AppMethodBeat.o(63525);
         return;
-        i = 2131689954;
+        i = a.h.checkbox_selected_grey;
         break;
-        parama.jVQ.setChecked(paramBoolean2);
-        parama.jVQ.setEnabled(true);
-        break label550;
-        parama.jVQ.setVisibility(8);
+        parama.mNd.setChecked(paramBoolean2);
+        parama.mNd.setEnabled(true);
+        break label567;
+        parama.mNd.setVisibility(8);
       }
     }
     
-    public final boolean bmy()
+    public final boolean a(Context paramContext, View paramView, com.tencent.mm.ui.contact.a.a parama)
     {
       return false;
     }
@@ -252,7 +267,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.c
  * JD-Core Version:    0.7.0.1
  */

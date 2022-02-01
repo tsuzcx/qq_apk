@@ -19,23 +19,23 @@ public final class b
     super(paramContext, paramView1, paramView2, paramView3, paramView4, paramView5, paramView6, paramView7, paramView8);
   }
   
-  private void ghc()
+  private void hav()
   {
     AppMethodBeat.i(80750);
-    this.JoN.setPadding(this.JoM, 0, 0, 0);
-    int i = this.zSm;
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.JoN.getLayoutParams();
-    localLayoutParams.leftMargin = (this.zSm - i);
-    localLayoutParams.rightMargin = (this.zSm - i);
-    localLayoutParams.width = (i * 2 + (int)this.JoU[2][0]);
-    this.JoN.setLayoutParams(localLayoutParams);
-    this.JoN.post(new Runnable()
+    this.Qmh.setPadding(this.Qmg, 0, 0, 0);
+    int i = this.FxO;
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.Qmh.getLayoutParams();
+    localLayoutParams.leftMargin = (this.FxO - i);
+    localLayoutParams.rightMargin = (this.FxO - i);
+    localLayoutParams.width = (i * 2 + (int)this.Qmo[2][0]);
+    this.Qmh.setLayoutParams(localLayoutParams);
+    this.Qmh.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(80743);
-        b.this.JoN.setY(b.this.JoU[0][1]);
-        b.this.JoN.setX(b.this.JoU[1][1]);
+        b.this.Qmh.setY(b.this.Qmo[0][1]);
+        b.this.Qmh.setX(b.this.Qmo[1][1]);
         AppMethodBeat.o(80743);
       }
     });
@@ -45,28 +45,28 @@ public final class b
   public final void a(a.b paramb, boolean paramBoolean)
   {
     AppMethodBeat.i(80748);
-    if (paramb == this.JoW)
+    if (paramb == this.Qmq)
     {
       AppMethodBeat.o(80748);
       return;
     }
-    switch (4.Jpg[paramb.ordinal()])
+    switch (4.QmA[paramb.ordinal()])
     {
     }
     for (;;)
     {
       AppMethodBeat.o(80748);
       return;
-      gha();
+      hat();
       AppMethodBeat.o(80748);
       return;
       if (paramBoolean)
       {
-        ghb();
+        hau();
         AppMethodBeat.o(80748);
         return;
       }
-      ghc();
+      hav();
     }
   }
   
@@ -77,16 +77,16 @@ public final class b
     AppMethodBeat.o(80747);
   }
   
-  protected final void gha()
+  protected final void hat()
   {
     AppMethodBeat.i(80749);
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    if (this.JoU[0][0] - this.JoK >= 0.0F) {
-      localValueAnimator.addUpdateListener(this.Jpa);
+    if (this.Qmo[0][0] - this.Qme >= 0.0F) {
+      localValueAnimator.addUpdateListener(this.Qmu);
     }
     for (;;)
     {
-      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.JoT, "alpha", new float[] { 0.0F, 1.0F });
+      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.Qmn, "alpha", new float[] { 0.0F, 1.0F });
       AnimatorSet localAnimatorSet = new AnimatorSet();
       localAnimatorSet.playTogether(new Animator[] { localValueAnimator, localObjectAnimator });
       localAnimatorSet.setInterpolator(new DecelerateInterpolator());
@@ -102,8 +102,8 @@ public final class b
         {
           AppMethodBeat.i(80742);
           b.this.isAnimating = false;
-          if (b.this.JoX != null) {
-            b.this.JoX.onAnimationEnd();
+          if (b.this.Qmr != null) {
+            b.this.Qmr.onAnimationEnd();
           }
           AppMethodBeat.o(80742);
         }
@@ -114,8 +114,8 @@ public final class b
         {
           AppMethodBeat.i(80741);
           b.this.isAnimating = true;
-          if (b.this.JoX != null) {
-            b.this.JoX.onAnimationStart();
+          if (b.this.Qmr != null) {
+            b.this.Qmr.onAnimationStart();
           }
           AppMethodBeat.o(80741);
         }
@@ -123,20 +123,20 @@ public final class b
       localAnimatorSet.start();
       AppMethodBeat.o(80749);
       return;
-      localValueAnimator.addUpdateListener(this.Jpb);
+      localValueAnimator.addUpdateListener(this.Qmv);
     }
   }
   
-  protected final void ghb()
+  protected final void hau()
   {
     AppMethodBeat.i(80751);
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    if (this.JoU[0][0] - this.JoK >= 0.0F) {
-      localValueAnimator.addUpdateListener(this.JoY);
+    if (this.Qmo[0][0] - this.Qme >= 0.0F) {
+      localValueAnimator.addUpdateListener(this.Qms);
     }
     for (;;)
     {
-      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.JoT, "alpha", new float[] { 1.0F, 0.0F });
+      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.Qmn, "alpha", new float[] { 1.0F, 0.0F });
       AnimatorSet localAnimatorSet = new AnimatorSet();
       localAnimatorSet.playTogether(new Animator[] { localValueAnimator, localObjectAnimator });
       localAnimatorSet.setInterpolator(new DecelerateInterpolator());
@@ -152,8 +152,8 @@ public final class b
         {
           AppMethodBeat.i(80745);
           b.this.isAnimating = false;
-          if (b.this.JoX != null) {
-            b.this.JoX.onAnimationEnd();
+          if (b.this.Qmr != null) {
+            b.this.Qmr.onAnimationEnd();
           }
           AppMethodBeat.o(80745);
         }
@@ -164,8 +164,8 @@ public final class b
         {
           AppMethodBeat.i(80744);
           b.this.isAnimating = true;
-          if (b.this.JoX != null) {
-            b.this.JoX.onAnimationStart();
+          if (b.this.Qmr != null) {
+            b.this.Qmr.onAnimationStart();
           }
           AppMethodBeat.o(80744);
         }
@@ -173,7 +173,7 @@ public final class b
       localAnimatorSet.start();
       AppMethodBeat.o(80751);
       return;
-      localValueAnimator.addUpdateListener(this.JoZ);
+      localValueAnimator.addUpdateListener(this.Qmt);
     }
   }
 }

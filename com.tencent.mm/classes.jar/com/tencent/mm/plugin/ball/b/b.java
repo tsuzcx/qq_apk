@@ -12,27 +12,27 @@ import java.util.Vector;
 
 public final class b
 {
-  private Animator oWg;
-  private Animator oWh;
-  public Vector<Runnable> oWi;
-  protected View targetView;
+  protected View kJL;
+  private Animator rYg;
+  private Animator rYh;
+  public Vector<Runnable> rYi;
   
   public b(View paramView)
   {
     AppMethodBeat.i(106042);
-    this.oWi = new Vector();
-    this.targetView = paramView;
+    this.rYi = new Vector();
+    this.kJL = paramView;
     AppMethodBeat.o(106042);
   }
   
   private Animator a(boolean paramBoolean1, int paramInt, boolean paramBoolean2, AnimatorListenerAdapter paramAnimatorListenerAdapter)
   {
-    AppMethodBeat.i(216969);
+    AppMethodBeat.i(187805);
     AnimatorSet localAnimatorSet = new AnimatorSet();
     ObjectAnimator localObjectAnimator;
     if (paramBoolean1) {
       if (paramBoolean2) {
-        localObjectAnimator = ObjectAnimator.ofFloat(this.targetView, "translationX", new float[] { -paramInt, 0.0F });
+        localObjectAnimator = ObjectAnimator.ofFloat(this.kJL, "translationX", new float[] { -paramInt, 0.0F });
       }
     }
     for (;;)
@@ -40,135 +40,135 @@ public final class b
       localObjectAnimator.setDuration(300L);
       localAnimatorSet.playTogether(new Animator[] { localObjectAnimator });
       localAnimatorSet.addListener(paramAnimatorListenerAdapter);
-      AppMethodBeat.o(216969);
+      AppMethodBeat.o(187805);
       return localAnimatorSet;
-      localObjectAnimator = ObjectAnimator.ofFloat(this.targetView, "translationX", new float[] { paramInt, 0.0F });
+      localObjectAnimator = ObjectAnimator.ofFloat(this.kJL, "translationX", new float[] { paramInt, 0.0F });
       continue;
       if (paramBoolean2) {
-        localObjectAnimator = ObjectAnimator.ofFloat(this.targetView, "translationX", new float[] { 0.0F, -paramInt });
+        localObjectAnimator = ObjectAnimator.ofFloat(this.kJL, "translationX", new float[] { 0.0F, -paramInt });
       } else {
-        localObjectAnimator = ObjectAnimator.ofFloat(this.targetView, "translationX", new float[] { 0.0F, paramInt });
+        localObjectAnimator = ObjectAnimator.ofFloat(this.kJL, "translationX", new float[] { 0.0F, paramInt });
       }
     }
   }
   
   public final void a(int paramInt, boolean paramBoolean, AnimatorListenerAdapter paramAnimatorListenerAdapter)
   {
-    AppMethodBeat.i(216967);
-    if (this.targetView == null)
+    AppMethodBeat.i(187799);
+    if (this.kJL == null)
     {
-      AppMethodBeat.o(216967);
+      AppMethodBeat.o(187799);
       return;
     }
-    if (chI())
+    if (cuT())
     {
       Log.i("MicroMsg.FloatBallViewAnimationHandler", "isAnimatingShow");
-      AppMethodBeat.o(216967);
+      AppMethodBeat.o(187799);
       return;
     }
-    if (chJ())
+    if (cuU())
     {
       Log.i("MicroMsg.FloatBallViewAnimationHandler", "cancel hide animator");
-      this.oWh.cancel();
+      this.rYh.cancel();
     }
-    Log.v("MicroMsg.FloatBallViewAnimationHandler", "playShowTranslateAnimation, view:%s, width: %d, isDockLeft: %b", new Object[] { this.targetView, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
-    this.oWg = a(true, paramInt, paramBoolean, new b(this.targetView, paramAnimatorListenerAdapter));
-    this.oWg.start();
-    this.targetView.setAlpha(1.0F);
-    this.targetView.setVisibility(0);
-    AppMethodBeat.o(216967);
+    Log.v("MicroMsg.FloatBallViewAnimationHandler", "playShowTranslateAnimation, view:%s, width: %d, isDockLeft: %b", new Object[] { this.kJL, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    this.rYg = a(true, paramInt, paramBoolean, new b(this.kJL, paramAnimatorListenerAdapter));
+    this.rYg.start();
+    this.kJL.setAlpha(1.0F);
+    this.kJL.setVisibility(0);
+    AppMethodBeat.o(187799);
   }
   
   public final void a(AnimatorListenerAdapter paramAnimatorListenerAdapter)
   {
     AppMethodBeat.i(184558);
-    if (this.targetView == null)
+    if (this.kJL == null)
     {
       AppMethodBeat.o(184558);
       return;
     }
-    if (chI())
+    if (cuT())
     {
       Log.i("MicroMsg.FloatBallViewAnimationHandler", "isAnimatingShow");
       AppMethodBeat.o(184558);
       return;
     }
-    if (chJ())
+    if (cuU())
     {
       Log.i("MicroMsg.FloatBallViewAnimationHandler", "cancel hide animator");
-      this.oWh.cancel();
+      this.rYh.cancel();
     }
-    paramAnimatorListenerAdapter = new b(this.targetView, paramAnimatorListenerAdapter);
+    paramAnimatorListenerAdapter = new b(this.kJL, paramAnimatorListenerAdapter);
     AnimatorSet localAnimatorSet = new AnimatorSet();
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.targetView, "alpha", new float[] { 0.0F, 1.0F });
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.kJL, "alpha", new float[] { 0.0F, 1.0F });
     localObjectAnimator.setDuration(200L);
     localAnimatorSet.playTogether(new Animator[] { localObjectAnimator });
     localAnimatorSet.addListener(paramAnimatorListenerAdapter);
-    this.oWg = localAnimatorSet;
-    this.oWg.start();
-    this.targetView.setVisibility(0);
+    this.rYg = localAnimatorSet;
+    this.rYg.start();
+    this.kJL.setVisibility(0);
     AppMethodBeat.o(184558);
   }
   
   public final void b(int paramInt, boolean paramBoolean, AnimatorListenerAdapter paramAnimatorListenerAdapter)
   {
-    AppMethodBeat.i(216968);
-    if (this.targetView == null)
+    AppMethodBeat.i(187802);
+    if (this.kJL == null)
     {
-      AppMethodBeat.o(216968);
+      AppMethodBeat.o(187802);
       return;
     }
-    if (chJ())
+    if (cuU())
     {
       Log.i("MicroMsg.FloatBallViewAnimationHandler", "isAnimatingHide");
-      AppMethodBeat.o(216968);
+      AppMethodBeat.o(187802);
       return;
     }
-    if (chI())
+    if (cuT())
     {
       Log.i("MicroMsg.FloatBallViewAnimationHandler", "cancel show animator");
-      this.oWg.cancel();
+      this.rYg.cancel();
     }
-    Log.v("MicroMsg.FloatBallViewAnimationHandler", "playHideTranslateAnimation, view:%s, width: %d, isDockLeft: %b", new Object[] { this.targetView, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
-    this.oWh = a(false, paramInt, paramBoolean, new a(this.targetView, paramAnimatorListenerAdapter));
-    this.oWh.start();
-    AppMethodBeat.o(216968);
+    Log.v("MicroMsg.FloatBallViewAnimationHandler", "playHideTranslateAnimation, view:%s, width: %d, isDockLeft: %b", new Object[] { this.kJL, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    this.rYh = a(false, paramInt, paramBoolean, new a(this.kJL, paramAnimatorListenerAdapter));
+    this.rYh.start();
+    AppMethodBeat.o(187802);
   }
   
   public final void b(AnimatorListenerAdapter paramAnimatorListenerAdapter)
   {
     AppMethodBeat.i(184559);
-    if (this.targetView == null)
+    if (this.kJL == null)
     {
       AppMethodBeat.o(184559);
       return;
     }
-    if (chJ())
+    if (cuU())
     {
       Log.i("MicroMsg.FloatBallViewAnimationHandler", "isAnimatingHide");
       AppMethodBeat.o(184559);
       return;
     }
-    if (chI())
+    if (cuT())
     {
       Log.i("MicroMsg.FloatBallViewAnimationHandler", "cancel show animator");
-      this.oWg.cancel();
+      this.rYg.cancel();
     }
-    paramAnimatorListenerAdapter = new a(this.targetView, paramAnimatorListenerAdapter);
+    paramAnimatorListenerAdapter = new a(this.kJL, paramAnimatorListenerAdapter);
     AnimatorSet localAnimatorSet = new AnimatorSet();
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.targetView, "alpha", new float[] { 1.0F, 0.0F });
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.kJL, "alpha", new float[] { 1.0F, 0.0F });
     localObjectAnimator.setDuration(100L);
     localAnimatorSet.playTogether(new Animator[] { localObjectAnimator });
     localAnimatorSet.addListener(paramAnimatorListenerAdapter);
-    this.oWh = localAnimatorSet;
-    this.oWh.start();
+    this.rYh = localAnimatorSet;
+    this.rYh.start();
     AppMethodBeat.o(184559);
   }
   
-  public final boolean chI()
+  public final boolean cuT()
   {
     AppMethodBeat.i(106043);
-    if ((this.oWg != null) && (this.oWg.isRunning()))
+    if ((this.rYg != null) && (this.rYg.isRunning()))
     {
       AppMethodBeat.o(106043);
       return true;
@@ -177,10 +177,10 @@ public final class b
     return false;
   }
   
-  public final boolean chJ()
+  public final boolean cuU()
   {
     AppMethodBeat.i(106044);
-    if ((this.oWh != null) && (this.oWh.isRunning()))
+    if ((this.rYh != null) && (this.rYh.isRunning()))
     {
       AppMethodBeat.o(106044);
       return true;
@@ -189,17 +189,17 @@ public final class b
     return false;
   }
   
-  public final void chK()
+  public final void cuV()
   {
     AppMethodBeat.i(106045);
-    if (!this.oWi.isEmpty())
+    if (!this.rYi.isEmpty())
     {
-      Log.i("MicroMsg.FloatBallViewAnimationHandler", "firePendingTasks, size:%s", new Object[] { Integer.valueOf(this.oWi.size()) });
-      Iterator localIterator = this.oWi.iterator();
+      Log.i("MicroMsg.FloatBallViewAnimationHandler", "firePendingTasks, size:%s", new Object[] { Integer.valueOf(this.rYi.size()) });
+      Iterator localIterator = this.rYi.iterator();
       while (localIterator.hasNext()) {
         ((Runnable)localIterator.next()).run();
       }
-      this.oWi.clear();
+      this.rYi.clear();
     }
     AppMethodBeat.o(106045);
   }
@@ -207,26 +207,26 @@ public final class b
   public final class a
     extends AnimatorListenerAdapter
   {
-    private AnimatorListenerAdapter oWj;
-    private View targetView;
+    private View kJL;
+    private AnimatorListenerAdapter rYj;
     
     public a(View paramView, AnimatorListenerAdapter paramAnimatorListenerAdapter)
     {
-      this.targetView = paramView;
-      this.oWj = paramAnimatorListenerAdapter;
+      this.kJL = paramView;
+      this.rYj = paramAnimatorListenerAdapter;
     }
     
     public final void onAnimationCancel(Animator paramAnimator)
     {
       AppMethodBeat.i(106030);
       super.onAnimationCancel(paramAnimator);
-      if (this.targetView != null) {
-        this.targetView.setVisibility(8);
+      if (this.kJL != null) {
+        this.kJL.setVisibility(8);
       }
-      if (this.oWj != null) {
-        this.oWj.onAnimationCancel(paramAnimator);
+      if (this.rYj != null) {
+        this.rYj.onAnimationCancel(paramAnimator);
       }
-      b.this.chK();
+      b.this.cuV();
       AppMethodBeat.o(106030);
     }
     
@@ -234,13 +234,13 @@ public final class b
     {
       AppMethodBeat.i(106031);
       super.onAnimationEnd(paramAnimator);
-      if (this.targetView != null) {
-        this.targetView.setVisibility(8);
+      if (this.kJL != null) {
+        this.kJL.setVisibility(8);
       }
-      if (this.oWj != null) {
-        this.oWj.onAnimationEnd(paramAnimator);
+      if (this.rYj != null) {
+        this.rYj.onAnimationEnd(paramAnimator);
       }
-      b.this.chK();
+      b.this.cuV();
       AppMethodBeat.o(106031);
     }
     
@@ -248,8 +248,8 @@ public final class b
     {
       AppMethodBeat.i(106034);
       super.onAnimationPause(paramAnimator);
-      if (this.oWj != null) {
-        this.oWj.onAnimationPause(paramAnimator);
+      if (this.rYj != null) {
+        this.rYj.onAnimationPause(paramAnimator);
       }
       AppMethodBeat.o(106034);
     }
@@ -258,8 +258,8 @@ public final class b
     {
       AppMethodBeat.i(106032);
       super.onAnimationRepeat(paramAnimator);
-      if (this.oWj != null) {
-        this.oWj.onAnimationRepeat(paramAnimator);
+      if (this.rYj != null) {
+        this.rYj.onAnimationRepeat(paramAnimator);
       }
       AppMethodBeat.o(106032);
     }
@@ -268,8 +268,8 @@ public final class b
     {
       AppMethodBeat.i(106035);
       super.onAnimationResume(paramAnimator);
-      if (this.oWj != null) {
-        this.oWj.onAnimationResume(paramAnimator);
+      if (this.rYj != null) {
+        this.rYj.onAnimationResume(paramAnimator);
       }
       AppMethodBeat.o(106035);
     }
@@ -278,8 +278,8 @@ public final class b
     {
       AppMethodBeat.i(106033);
       super.onAnimationStart(paramAnimator);
-      if (this.oWj != null) {
-        this.oWj.onAnimationStart(paramAnimator);
+      if (this.rYj != null) {
+        this.rYj.onAnimationStart(paramAnimator);
       }
       AppMethodBeat.o(106033);
     }
@@ -288,26 +288,26 @@ public final class b
   public final class b
     extends AnimatorListenerAdapter
   {
-    private AnimatorListenerAdapter oWj;
-    private View targetView;
+    private View kJL;
+    private AnimatorListenerAdapter rYj;
     
     public b(View paramView, AnimatorListenerAdapter paramAnimatorListenerAdapter)
     {
-      this.targetView = paramView;
-      this.oWj = paramAnimatorListenerAdapter;
+      this.kJL = paramView;
+      this.rYj = paramAnimatorListenerAdapter;
     }
     
     public final void onAnimationCancel(Animator paramAnimator)
     {
       AppMethodBeat.i(106036);
       super.onAnimationCancel(paramAnimator);
-      if (this.targetView != null) {
-        this.targetView.setVisibility(0);
+      if (this.kJL != null) {
+        this.kJL.setVisibility(0);
       }
-      if (this.oWj != null) {
-        this.oWj.onAnimationCancel(paramAnimator);
+      if (this.rYj != null) {
+        this.rYj.onAnimationCancel(paramAnimator);
       }
-      b.this.chK();
+      b.this.cuV();
       AppMethodBeat.o(106036);
     }
     
@@ -315,13 +315,13 @@ public final class b
     {
       AppMethodBeat.i(106037);
       super.onAnimationEnd(paramAnimator);
-      if (this.targetView != null) {
-        this.targetView.setVisibility(0);
+      if (this.kJL != null) {
+        this.kJL.setVisibility(0);
       }
-      if (this.oWj != null) {
-        this.oWj.onAnimationEnd(paramAnimator);
+      if (this.rYj != null) {
+        this.rYj.onAnimationEnd(paramAnimator);
       }
-      b.this.chK();
+      b.this.cuV();
       AppMethodBeat.o(106037);
     }
     
@@ -329,8 +329,8 @@ public final class b
     {
       AppMethodBeat.i(106040);
       super.onAnimationPause(paramAnimator);
-      if (this.oWj != null) {
-        this.oWj.onAnimationPause(paramAnimator);
+      if (this.rYj != null) {
+        this.rYj.onAnimationPause(paramAnimator);
       }
       AppMethodBeat.o(106040);
     }
@@ -339,8 +339,8 @@ public final class b
     {
       AppMethodBeat.i(106038);
       super.onAnimationRepeat(paramAnimator);
-      if (this.oWj != null) {
-        this.oWj.onAnimationRepeat(paramAnimator);
+      if (this.rYj != null) {
+        this.rYj.onAnimationRepeat(paramAnimator);
       }
       AppMethodBeat.o(106038);
     }
@@ -349,8 +349,8 @@ public final class b
     {
       AppMethodBeat.i(106041);
       super.onAnimationResume(paramAnimator);
-      if (this.oWj != null) {
-        this.oWj.onAnimationResume(paramAnimator);
+      if (this.rYj != null) {
+        this.rYj.onAnimationResume(paramAnimator);
       }
       AppMethodBeat.o(106041);
     }
@@ -359,8 +359,8 @@ public final class b
     {
       AppMethodBeat.i(106039);
       super.onAnimationStart(paramAnimator);
-      if (this.oWj != null) {
-        this.oWj.onAnimationStart(paramAnimator);
+      if (this.rYj != null) {
+        this.rYj.onAnimationStart(paramAnimator);
       }
       AppMethodBeat.o(106039);
     }
@@ -368,7 +368,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,67 +1,34 @@
 package com.tencent.mm.co;
 
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vending.b.b;
-import com.tencent.mm.vending.h.d;
-import com.tencent.mm.vending.h.f;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
-public class a<_Callback>
-  extends com.tencent.mm.vending.b.a<_Callback>
+public final class a
 {
-  public a()
+  public static boolean post(Runnable paramRunnable)
   {
-    super(new e());
-    AppMethodBeat.i(158413);
-    AppMethodBeat.o(158413);
+    AppMethodBeat.i(156366);
+    h.ZvG.be(paramRunnable);
+    AppMethodBeat.o(156366);
+    return true;
   }
   
-  public a(d paramd)
+  public static boolean x(Runnable paramRunnable)
   {
-    super(paramd);
+    AppMethodBeat.i(156367);
+    h.ZvG.o(paramRunnable, 1000L);
+    AppMethodBeat.o(156367);
+    return true;
   }
   
-  public final void a(final a<_Callback> parama)
+  public static boolean y(Runnable paramRunnable)
   {
-    AppMethodBeat.i(158414);
-    Iterator localIterator = getQueue().iterator();
-    while (localIterator.hasNext())
-    {
-      final b localb = (b)localIterator.next();
-      if (localb != null) {
-        if (localb.mScheduler != null)
-        {
-          this.mSchedulerInvoker.c(localb.mScheduler);
-          this.mSchedulerInvoker.a(new com.tencent.mm.vending.c.a() {}, com.tencent.mm.vending.c.a.QZL, true);
-        }
-        else
-        {
-          parama.bw(localb.QZG);
-        }
-      }
-    }
-    AppMethodBeat.o(158414);
-  }
-  
-  public b<_Callback> add(_Callback param_Callback)
-  {
-    AppMethodBeat.i(158415);
-    param_Callback = super.add(new b(param_Callback, this));
-    AppMethodBeat.o(158415);
-    return param_Callback;
-  }
-  
-  public final void remove(_Callback param_Callback)
-  {
-    AppMethodBeat.i(158416);
-    super.remove(new b(param_Callback, this));
-    AppMethodBeat.o(158416);
-  }
-  
-  public static abstract interface a<_Callback>
-  {
-    public abstract void bw(_Callback param_Callback);
+    AppMethodBeat.i(182045);
+    MMHandlerThread.postToMainThread(paramRunnable);
+    AppMethodBeat.o(182045);
+    return true;
   }
 }
 

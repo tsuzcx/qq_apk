@@ -4,45 +4,45 @@ public abstract interface c
 {
   public static abstract class a
   {
-    public long UhH;
-    public long UhI;
+    public long abLc;
+    public long abLd;
   }
   
   public static abstract class b
   {
-    public boolean UhJ;
-    public long UhK;
-    public long UhL;
-    public int UhM;
-    public int UhN;
-    public int UhO;
-    public int UhP;
-    public int UhQ;
+    public boolean abLe;
+    public long abLf;
+    public long abLg;
+    public int abLh;
+    public int abLi;
+    public int abLj;
+    public int abLk;
+    public int abLl;
     public int type;
     
-    public abstract c.c Pv(long paramLong);
+    public abstract c.c XL(long paramLong);
     
-    public abstract c.a aw(long paramLong, int paramInt);
+    public abstract c.a aF(long paramLong, int paramInt);
     
-    public abstract c.d hPS();
+    public abstract c.d iVb();
   }
   
   public static abstract class c
   {
-    public long UhR;
-    public long UhS;
-    public long dDw;
+    public long abLm;
+    public long abLn;
+    public long fwf;
     public long offset;
   }
   
   public static abstract class d
   {
-    public long UhT;
+    public long abLo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     org.extra.a.a.c
  * JD-Core Version:    0.7.0.1
  */

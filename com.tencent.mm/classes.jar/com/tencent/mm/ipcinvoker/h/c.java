@@ -1,26 +1,61 @@
 package com.tencent.mm.ipcinvoker.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.h.a.a;
 
 public final class c
 {
-  public static final String ar(String paramString1, String paramString2)
+  private static a jZs;
+  
+  static
   {
-    AppMethodBeat.i(158840);
-    if ((!paramString1.contains(":")) && (paramString1.length() > 0))
-    {
-      AppMethodBeat.o(158840);
-      return paramString1;
+    AppMethodBeat.i(158839);
+    jZs = new b();
+    AppMethodBeat.o(158839);
+  }
+  
+  public static boolean b(a parama)
+  {
+    if (parama == null) {
+      return false;
     }
-    paramString1 = paramString1.split(":");
-    if ((paramString1[0] != null) && (paramString1[0].length() > 0))
-    {
-      paramString1 = paramString1[0];
-      AppMethodBeat.o(158840);
-      return paramString1;
-    }
-    AppMethodBeat.o(158840);
-    return paramString2;
+    jZs = parama;
+    return true;
+  }
+  
+  public static void d(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(158838);
+    jZs.printLog(3, paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.o(158838);
+  }
+  
+  public static void e(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(158836);
+    jZs.printLog(6, paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.o(158836);
+  }
+  
+  public static void i(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(158835);
+    jZs.printLog(4, paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.o(158835);
+  }
+  
+  public static void v(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(214454);
+    jZs.printLog(2, paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.o(214454);
+  }
+  
+  public static void w(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(158837);
+    jZs.printLog(5, paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.o(158837);
   }
 }
 

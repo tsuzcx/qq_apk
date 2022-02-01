@@ -7,9 +7,9 @@ public enum FaceNumberView$a
   static
   {
     AppMethodBeat.i(104174);
-    sWD = new a("Normal", 0);
-    sWE = new a("Shine", 1);
-    sWF = new a[] { sWD, sWE };
+    wCB = new a("Normal", 0);
+    wCC = new a("Shine", 1);
+    wCD = new a[] { wCB, wCC };
     AppMethodBeat.o(104174);
   }
   

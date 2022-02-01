@@ -9,7 +9,7 @@ import org.xwalk.core.Log;
 public final class f
   implements IJsRuntime
 {
-  private X5JsCore SFa;
+  private X5JsCore aagk;
   private Context mContext;
   
   public f(Context paramContext)
@@ -23,13 +23,13 @@ public final class f
   public final void init(int paramInt)
   {
     AppMethodBeat.i(153844);
-    this.SFa = new X5JsCore(this.mContext);
+    this.aagk = new X5JsCore(this.mContext);
     AppMethodBeat.o(153844);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.x5.f
  * JD-Core Version:    0.7.0.1
  */

@@ -43,6 +43,7 @@ public class XWalkSettings
   private LazyReflectMethod getFixedFontFamilyMethod;
   private LazyReflectMethod getForceDarkBehaviorMethod;
   private LazyReflectMethod getForceDarkModeMethod;
+  private LazyReflectMethod getJavaScriptCanAccessClipboardMethod;
   private LazyReflectMethod getJavaScriptCanOpenWindowsAutomaticallyMethod;
   private LazyReflectMethod getJavaScriptEnabledMethod;
   private LazyReflectMethod getLayoutAlgorithmMethod;
@@ -87,6 +88,7 @@ public class XWalkSettings
   private LazyReflectMethod setForceDarkBehaviorintMethod;
   private LazyReflectMethod setForceDarkModeintMethod;
   private LazyReflectMethod setInitialPageScalefloatMethod;
+  private LazyReflectMethod setJavaScriptCanAccessClipboardbooleanMethod;
   private LazyReflectMethod setJavaScriptCanOpenWindowsAutomaticallybooleanMethod;
   private LazyReflectMethod setJavaScriptEnabledbooleanMethod;
   private LazyReflectMethod setLayoutAlgorithmLayoutAlgorithmInternalMethod;
@@ -156,6 +158,8 @@ public class XWalkSettings
     this.getAllowFileAccessFromFileURLsMethod = new LazyReflectMethod(null, "getAllowFileAccessFromFileURLs", new Class[0]);
     this.setJavaScriptCanOpenWindowsAutomaticallybooleanMethod = new LazyReflectMethod(null, "setJavaScriptCanOpenWindowsAutomatically", new Class[0]);
     this.getJavaScriptCanOpenWindowsAutomaticallyMethod = new LazyReflectMethod(null, "getJavaScriptCanOpenWindowsAutomatically", new Class[0]);
+    this.setJavaScriptCanAccessClipboardbooleanMethod = new LazyReflectMethod(null, "setJavaScriptCanAccessClipboard", new Class[0]);
+    this.getJavaScriptCanAccessClipboardMethod = new LazyReflectMethod(null, "getJavaScriptCanAccessClipboard", new Class[0]);
     this.setSupportMultipleWindowsbooleanMethod = new LazyReflectMethod(null, "setSupportMultipleWindows", new Class[0]);
     this.supportMultipleWindowsMethod = new LazyReflectMethod(null, "supportMultipleWindows", new Class[0]);
     this.setUseWideViewPortbooleanMethod = new LazyReflectMethod(null, "setUseWideViewPort", new Class[0]);
@@ -299,11 +303,11 @@ public class XWalkSettings
   
   public void disableCustomizedLongPressTimeout()
   {
-    AppMethodBeat.i(207388);
+    AppMethodBeat.i(209700);
     try
     {
       this.disableCustomizedLongPressTimeoutVoidMethod.invoke(new Object[0]);
-      AppMethodBeat.o(207388);
+      AppMethodBeat.o(209700);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -312,21 +316,21 @@ public class XWalkSettings
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(207388);
+        AppMethodBeat.o(209700);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(207388);
+      AppMethodBeat.o(209700);
     }
   }
   
   public void enableCustomizedLongPressTimeout(int paramInt)
   {
-    AppMethodBeat.i(207387);
+    AppMethodBeat.i(209697);
     try
     {
       this.enableCustomizedLongPressTimeoutIntMethod.invoke(new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(207387);
+      AppMethodBeat.o(209697);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -335,11 +339,11 @@ public class XWalkSettings
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(207387);
+        AppMethodBeat.o(209697);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(207387);
+      AppMethodBeat.o(209697);
     }
   }
   
@@ -465,11 +469,11 @@ public class XWalkSettings
   
   public Map<String, String> getAppBrandInfo()
   {
-    AppMethodBeat.i(207390);
+    AppMethodBeat.i(209756);
     try
     {
       Map localMap = (Map)this.getAppBrandInfoMethod.invoke(new Object[0]);
-      AppMethodBeat.o(207390);
+      AppMethodBeat.o(209756);
       return localMap;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -478,11 +482,11 @@ public class XWalkSettings
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(207390);
+        AppMethodBeat.o(209756);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(207390);
+      AppMethodBeat.o(209756);
     }
     return null;
   }
@@ -513,11 +517,11 @@ public class XWalkSettings
   
   public boolean getBackgroundAudioPause()
   {
-    AppMethodBeat.i(207392);
+    AppMethodBeat.i(209760);
     try
     {
       boolean bool = ((Boolean)this.getBackgroundAudioPauseMethod.invoke(new Object[0])).booleanValue();
-      AppMethodBeat.o(207392);
+      AppMethodBeat.o(209760);
       return bool;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -526,11 +530,11 @@ public class XWalkSettings
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(207392);
+        AppMethodBeat.o(209760);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(207392);
+      AppMethodBeat.o(209760);
     }
     return false;
   }
@@ -850,6 +854,30 @@ public class XWalkSettings
       AppMethodBeat.o(154867);
     }
     return 0;
+  }
+  
+  public boolean getJavaScriptCanAccessClipboard()
+  {
+    AppMethodBeat.i(209683);
+    try
+    {
+      boolean bool = ((Boolean)this.getJavaScriptCanAccessClipboardMethod.invoke(new Object[0])).booleanValue();
+      AppMethodBeat.o(209683);
+      return bool;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      RuntimeException localRuntimeException;
+      if (this.coreWrapper == null)
+      {
+        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
+        AppMethodBeat.o(209683);
+        throw localRuntimeException;
+      }
+      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
+      AppMethodBeat.o(209683);
+    }
+    return true;
   }
   
   public boolean getJavaScriptCanOpenWindowsAutomatically()
@@ -1344,6 +1372,8 @@ public class XWalkSettings
     this.getAllowFileAccessFromFileURLsMethod.init(this.bridge, null, "getAllowFileAccessFromFileURLsSuper", new Class[0]);
     this.setJavaScriptCanOpenWindowsAutomaticallybooleanMethod.init(this.bridge, null, "setJavaScriptCanOpenWindowsAutomaticallySuper", new Class[] { Boolean.TYPE });
     this.getJavaScriptCanOpenWindowsAutomaticallyMethod.init(this.bridge, null, "getJavaScriptCanOpenWindowsAutomaticallySuper", new Class[0]);
+    this.setJavaScriptCanAccessClipboardbooleanMethod.init(this.bridge, null, "setJavaScriptCanAccessClipboardSuper", new Class[] { Boolean.TYPE });
+    this.getJavaScriptCanAccessClipboardMethod.init(this.bridge, null, "getJavaScriptCanAccessClipboardSuper", new Class[0]);
     this.setSupportMultipleWindowsbooleanMethod.init(this.bridge, null, "setSupportMultipleWindowsSuper", new Class[] { Boolean.TYPE });
     this.supportMultipleWindowsMethod.init(this.bridge, null, "supportMultipleWindowsSuper", new Class[0]);
     this.setUseWideViewPortbooleanMethod.init(this.bridge, null, "setUseWideViewPortSuper", new Class[] { Boolean.TYPE });
@@ -1532,11 +1562,11 @@ public class XWalkSettings
   
   public void setAppBrandInfo(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(207389);
+    AppMethodBeat.i(209754);
     try
     {
       this.setAppBrandInfoMethod.invoke(new Object[] { paramMap });
-      AppMethodBeat.o(207389);
+      AppMethodBeat.o(209754);
       return;
     }
     catch (UnsupportedOperationException paramMap)
@@ -1544,11 +1574,11 @@ public class XWalkSettings
       if (this.coreWrapper == null)
       {
         paramMap = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(207389);
+        AppMethodBeat.o(209754);
         throw paramMap;
       }
       XWalkCoreWrapper.handleRuntimeError(paramMap);
-      AppMethodBeat.o(207389);
+      AppMethodBeat.o(209754);
     }
   }
   
@@ -1622,11 +1652,11 @@ public class XWalkSettings
   
   public void setBackgroundAudioPause(boolean paramBoolean)
   {
-    AppMethodBeat.i(207391);
+    AppMethodBeat.i(209758);
     try
     {
       this.setBackgroundAudioPauseMethod.invoke(new Object[] { Boolean.valueOf(paramBoolean) });
-      AppMethodBeat.o(207391);
+      AppMethodBeat.o(209758);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -1635,11 +1665,11 @@ public class XWalkSettings
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(207391);
+        AppMethodBeat.o(209758);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(207391);
+      AppMethodBeat.o(209758);
     }
   }
   
@@ -1959,6 +1989,29 @@ public class XWalkSettings
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
       AppMethodBeat.o(154926);
+    }
+  }
+  
+  public void setJavaScriptCanAccessClipboard(boolean paramBoolean)
+  {
+    AppMethodBeat.i(209682);
+    try
+    {
+      this.setJavaScriptCanAccessClipboardbooleanMethod.invoke(new Object[] { Boolean.valueOf(paramBoolean) });
+      AppMethodBeat.o(209682);
+      return;
+    }
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      RuntimeException localRuntimeException;
+      if (this.coreWrapper == null)
+      {
+        localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
+        AppMethodBeat.o(209682);
+        throw localRuntimeException;
+      }
+      XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
+      AppMethodBeat.o(209682);
     }
   }
   
@@ -2514,7 +2567,7 @@ public class XWalkSettings
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.XWalkSettings
  * JD-Core Version:    0.7.0.1
  */

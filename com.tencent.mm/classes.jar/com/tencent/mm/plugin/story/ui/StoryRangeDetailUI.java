@@ -18,9 +18,15 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.by.c;
+import com.tencent.mm.contact.d;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.model.ab;
+import com.tencent.mm.plugin.story.a.a;
+import com.tencent.mm.plugin.story.a.d;
+import com.tencent.mm.plugin.story.a.e;
+import com.tencent.mm.plugin.story.a.g;
 import com.tencent.mm.plugin.story.f.j.b;
 import com.tencent.mm.plugin.story.i.a.f;
 import com.tencent.mm.plugin.story.i.k;
@@ -35,25 +41,25 @@ import java.util.List;
 import kotlin.g.b.p;
 import kotlin.t;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/StoryRangeDetailUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "adapter", "Lcom/tencent/mm/plugin/story/ui/StoryRangeDetailUI$ContactsAdapter;", "blackList", "Ljava/util/ArrayList;", "", "contactLV", "Landroid/widget/ListView;", "groupList", "localId", "", "storyInfo", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "titile", "userNames", "getLayoutId", "initView", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onResume", "prepareData", "Companion", "ContactsAdapter", "ViewHolder", "plugin-story_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/StoryRangeDetailUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "adapter", "Lcom/tencent/mm/plugin/story/ui/StoryRangeDetailUI$ContactsAdapter;", "blackList", "Ljava/util/ArrayList;", "", "contactLV", "Landroid/widget/ListView;", "groupList", "localId", "", "storyInfo", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "titile", "userNames", "getLayoutId", "initView", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onResume", "prepareData", "Companion", "ContactsAdapter", "ViewHolder", "plugin-story_release"})
 public final class StoryRangeDetailUI
   extends MMActivity
 {
-  public static final a Fxl;
+  public static final a LRn;
   private static final String TAG = "MicroMsg.StoryRangeDetailUI";
-  private com.tencent.mm.plugin.story.i.j Fqr;
-  private b Fxj;
-  private String Fxk;
-  private int ecf;
-  private final ArrayList<String> gCp;
-  private final ArrayList<String> haH;
-  private final ArrayList<String> ldu;
-  private ListView yCT;
+  private ListView Een;
+  private com.tencent.mm.plugin.story.i.j LKu;
+  private b LRl;
+  private String LRm;
+  private int fWh;
+  private final ArrayList<String> jLM;
+  private final ArrayList<String> jmv;
+  private final ArrayList<String> nXH;
   
   static
   {
     AppMethodBeat.i(119657);
-    Fxl = new a((byte)0);
+    LRn = new a((byte)0);
     TAG = "MicroMsg.StoryRangeDetailUI";
     AppMethodBeat.o(119657);
   }
@@ -61,34 +67,34 @@ public final class StoryRangeDetailUI
   public StoryRangeDetailUI()
   {
     AppMethodBeat.i(119656);
-    this.gCp = new ArrayList();
-    this.haH = new ArrayList();
-    this.ldu = new ArrayList();
+    this.jmv = new ArrayList();
+    this.jLM = new ArrayList();
+    this.nXH = new ArrayList();
     AppMethodBeat.o(119656);
   }
   
   public final int getLayoutId()
   {
-    return 2131496622;
+    return a.e.LDn;
   }
   
   public final void initView()
   {
     AppMethodBeat.i(119654);
-    setMMTitle(this.Fxk);
-    Object localObject = findViewById(2131296545);
+    setMMTitle(this.LRm);
+    Object localObject = findViewById(a.d.address_contactlist);
     if (localObject == null)
     {
       localObject = new t("null cannot be cast to non-null type android.widget.ListView");
       AppMethodBeat.o(119654);
       throw ((Throwable)localObject);
     }
-    this.yCT = ((ListView)localObject);
-    localObject = this.yCT;
+    this.Een = ((ListView)localObject);
+    localObject = this.Een;
     if (localObject != null) {
-      ((ListView)localObject).setBackgroundColor(getResources().getColor(2131101424));
+      ((ListView)localObject).setBackgroundColor(getResources().getColor(a.a.white));
     }
-    localObject = this.yCT;
+    localObject = this.Een;
     if (localObject != null) {}
     for (localObject = ((ListView)localObject).getParent(); localObject == null; localObject = null)
     {
@@ -96,21 +102,21 @@ public final class StoryRangeDetailUI
       AppMethodBeat.o(119654);
       throw ((Throwable)localObject);
     }
-    ((View)localObject).setBackgroundColor(getResources().getColor(2131101424));
+    ((View)localObject).setBackgroundColor(getResources().getColor(a.a.white));
     setBackBtn((MenuItem.OnMenuItemClickListener)new d(this));
     showOptionMenu(false);
-    if ((this.gCp != null) && (this.gCp.size() != 0))
+    if ((this.jmv != null) && (this.jmv.size() != 0))
     {
-      this.Fxj = new b((Context)this, (List)this.gCp);
-      localObject = this.yCT;
+      this.LRl = new b((Context)this, (List)this.jmv);
+      localObject = this.Een;
       if (localObject != null) {
-        ((ListView)localObject).setAdapter((ListAdapter)this.Fxj);
+        ((ListView)localObject).setAdapter((ListAdapter)this.LRl);
       }
-      localObject = this.yCT;
+      localObject = this.Een;
       if (localObject != null) {
         ((ListView)localObject).setVisibility(0);
       }
-      localObject = this.yCT;
+      localObject = this.Een;
       if (localObject != null)
       {
         ((ListView)localObject).setOnItemClickListener((AdapterView.OnItemClickListener)new e(this));
@@ -126,27 +132,27 @@ public final class StoryRangeDetailUI
     AppMethodBeat.i(119653);
     super.onCreate(paramBundle);
     paramBundle = getIntent();
-    Object localObject = a.f.FvQ;
-    this.ecf = paramBundle.getIntExtra(a.f.frr(), -1);
-    paramBundle = com.tencent.mm.plugin.story.f.j.Fmy;
-    this.Fqr = j.b.foc().aba(this.ecf);
-    localObject = this.haH;
-    paramBundle = this.Fqr;
+    Object localObject = a.f.LPT;
+    this.fWh = paramBundle.getIntExtra(a.f.gfN(), -1);
+    paramBundle = com.tencent.mm.plugin.story.f.j.LGA;
+    this.LKu = j.b.gcw().aiv(this.fWh);
+    localObject = this.jLM;
+    paramBundle = this.LKu;
     if (paramBundle != null)
     {
-      paramBundle = (Collection)paramBundle.avv();
+      paramBundle = (Collection)paramBundle.aCq();
       ((ArrayList)localObject).addAll(paramBundle);
-      localObject = this.ldu;
-      paramBundle = this.Fqr;
+      localObject = this.nXH;
+      paramBundle = this.LKu;
       if (paramBundle == null) {
         break label191;
       }
-      paramBundle = (Collection)paramBundle.frE();
+      paramBundle = (Collection)paramBundle.gga();
       label99:
       ((ArrayList)localObject).addAll(paramBundle);
-      if (this.ecf != -1)
+      if (this.fWh != -1)
       {
-        paramBundle = (Collection)this.haH;
+        paramBundle = (Collection)this.jLM;
         if ((paramBundle != null) && (!paramBundle.isEmpty())) {
           break label205;
         }
@@ -155,7 +161,7 @@ public final class StoryRangeDetailUI
         if (i == 0) {
           break label215;
         }
-        paramBundle = (Collection)this.ldu;
+        paramBundle = (Collection)this.nXH;
         if ((paramBundle != null) && (!paramBundle.isEmpty())) {
           break label210;
         }
@@ -180,15 +186,15 @@ public final class StoryRangeDetailUI
       break label136;
     }
     label215:
-    paramBundle = (Collection)this.ldu;
+    paramBundle = (Collection)this.nXH;
     if ((paramBundle == null) || (paramBundle.isEmpty()))
     {
       i = 1;
       if (i != 0) {
         break label283;
       }
-      this.Fxk = getString(2131766541);
-      this.gCp.addAll((Collection)this.ldu);
+      this.LRm = getString(a.g.LEh);
+      this.jmv.addAll((Collection)this.nXH);
     }
     label283:
     label342:
@@ -199,15 +205,15 @@ public final class StoryRangeDetailUI
       return;
       i = 0;
       break;
-      paramBundle = (Collection)this.haH;
+      paramBundle = (Collection)this.jLM;
       if ((paramBundle == null) || (paramBundle.isEmpty())) {}
       for (i = 1;; i = 0)
       {
         if (i != 0) {
           break label342;
         }
-        this.Fxk = getString(2131766542);
-        this.gCp.addAll((Collection)this.haH);
+        this.LRm = getString(a.g.LEi);
+        this.jmv.addAll((Collection)this.jLM);
         break;
       }
     }
@@ -217,9 +223,9 @@ public final class StoryRangeDetailUI
   {
     AppMethodBeat.i(119655);
     super.onResume();
-    if (this.Fxj != null)
+    if (this.LRl != null)
     {
-      b localb = this.Fxj;
+      b localb = this.LRl;
       if (localb != null)
       {
         localb.notifyDataSetChanged();
@@ -236,17 +242,17 @@ public final class StoryRangeDetailUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/StoryRangeDetailUI$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/StoryRangeDetailUI$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
   public static final class a {}
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/StoryRangeDetailUI$ContactsAdapter;", "Landroid/widget/BaseAdapter;", "context", "Landroid/content/Context;", "userNames", "", "", "(Landroid/content/Context;Ljava/util/List;)V", "cstg", "Lcom/tencent/mm/storage/IContactStorage;", "list", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/contact/RContact;", "normal", "Landroid/content/res/ColorStateList;", "spuser", "getCount", "getItem", "", "position", "getItemId", "", "getView", "Landroid/view/View;", "convertView", "parent", "Landroid/view/ViewGroup;", "plugin-story_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/StoryRangeDetailUI$ContactsAdapter;", "Landroid/widget/BaseAdapter;", "context", "Landroid/content/Context;", "userNames", "", "", "(Landroid/content/Context;Ljava/util/List;)V", "cstg", "Lcom/tencent/mm/storage/IContactStorage;", "list", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/contact/RContact;", "normal", "Landroid/content/res/ColorStateList;", "spuser", "getCount", "getItem", "", "position", "getItemId", "", "getView", "Landroid/view/View;", "convertView", "parent", "Landroid/view/ViewGroup;", "plugin-story_release"})
   static final class b
     extends BaseAdapter
   {
-    private bv EBg;
-    private final HashMap<Integer, com.tencent.mm.contact.c> Fxm;
-    private ColorStateList Fxn;
-    private ColorStateList Fxo;
+    private bv KOY;
+    private final HashMap<Integer, d> LRo;
+    private ColorStateList LRp;
+    private ColorStateList LRq;
     private Context context;
     
     /* Error */
@@ -257,10 +263,10 @@ public final class StoryRangeDetailUI
       //   1: istore_3
       //   2: aload_1
       //   3: ldc 51
-      //   5: invokestatic 57	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+      //   5: invokestatic 57	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
       //   8: aload_2
       //   9: ldc 58
-      //   11: invokestatic 57	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+      //   11: invokestatic 57	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
       //   14: aload_0
       //   15: invokespecial 61	android/widget/BaseAdapter:<init>	()V
       //   18: ldc 62
@@ -272,21 +278,21 @@ public final class StoryRangeDetailUI
       //   29: new 72	java/util/HashMap
       //   32: dup
       //   33: invokespecial 73	java/util/HashMap:<init>	()V
-      //   36: putfield 75	com/tencent/mm/plugin/story/ui/StoryRangeDetailUI$b:Fxm	Ljava/util/HashMap;
+      //   36: putfield 75	com/tencent/mm/plugin/story/ui/StoryRangeDetailUI$b:LRo	Ljava/util/HashMap;
       //   39: aload_0
-      //   40: getfield 75	com/tencent/mm/plugin/story/ui/StoryRangeDetailUI$b:Fxm	Ljava/util/HashMap;
+      //   40: getfield 75	com/tencent/mm/plugin/story/ui/StoryRangeDetailUI$b:LRo	Ljava/util/HashMap;
       //   43: invokevirtual 78	java/util/HashMap:clear	()V
       //   46: ldc 80
-      //   48: invokestatic 86	com/tencent/mm/kernel/g:af	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+      //   48: invokestatic 86	com/tencent/mm/kernel/h:ae	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
       //   51: astore 5
       //   53: aload 5
       //   55: ldc 88
-      //   57: invokestatic 91	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+      //   57: invokestatic 91	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
       //   60: aload_0
       //   61: aload 5
-      //   63: checkcast 80	com/tencent/mm/plugin/messenger/foundation/a/l
+      //   63: checkcast 80	com/tencent/mm/plugin/messenger/foundation/a/n
       //   66: invokeinterface 95 1 0
-      //   71: putfield 97	com/tencent/mm/plugin/story/ui/StoryRangeDetailUI$b:EBg	Lcom/tencent/mm/storage/bv;
+      //   71: putfield 97	com/tencent/mm/plugin/story/ui/StoryRangeDetailUI$b:KOY	Lcom/tencent/mm/storage/bv;
       //   74: aload_2
       //   75: invokeinterface 103 1 0
       //   80: astore_2
@@ -298,11 +304,11 @@ public final class StoryRangeDetailUI
       //   96: checkcast 115	java/lang/String
       //   99: astore 5
       //   101: aload_0
-      //   102: getfield 97	com/tencent/mm/plugin/story/ui/StoryRangeDetailUI$b:EBg	Lcom/tencent/mm/storage/bv;
+      //   102: getfield 97	com/tencent/mm/plugin/story/ui/StoryRangeDetailUI$b:KOY	Lcom/tencent/mm/storage/bv;
       //   105: astore 6
       //   107: aload 6
       //   109: ifnonnull +6 -> 115
-      //   112: invokestatic 118	kotlin/g/b/p:hyc	()V
+      //   112: invokestatic 118	kotlin/g/b/p:iCn	()V
       //   115: aload 6
       //   117: aload 5
       //   119: invokeinterface 124 2 0
@@ -314,15 +320,15 @@ public final class StoryRangeDetailUI
       //   134: iload_3
       //   135: istore 4
       //   137: aload 6
-      //   139: invokevirtual 129	com/tencent/mm/storage/as:arv	()Z
+      //   139: invokevirtual 129	com/tencent/mm/storage/as:axZ	()Z
       //   142: ifeq +42 -> 184
       //   145: iload_3
       //   146: istore 4
       //   148: aload 5
-      //   150: invokestatic 135	com/tencent/mm/model/z:Im	(Ljava/lang/String;)Z
+      //   150: invokestatic 135	com/tencent/mm/model/z:PD	(Ljava/lang/String;)Z
       //   153: ifne +31 -> 184
       //   156: aload_0
-      //   157: getfield 75	com/tencent/mm/plugin/story/ui/StoryRangeDetailUI$b:Fxm	Ljava/util/HashMap;
+      //   157: getfield 75	com/tencent/mm/plugin/story/ui/StoryRangeDetailUI$b:LRo	Ljava/util/HashMap;
       //   160: checkcast 137	java/util/Map
       //   163: astore 5
       //   165: iload_3
@@ -340,179 +346,179 @@ public final class StoryRangeDetailUI
       //   187: goto -106 -> 81
       //   190: aload_1
       //   191: invokevirtual 153	android/content/Context:getResources	()Landroid/content/res/Resources;
-      //   194: ldc 154
-      //   196: invokevirtual 160	android/content/res/Resources:getXml	(I)Landroid/content/res/XmlResourceParser;
-      //   199: astore_2
-      //   200: aload_1
-      //   201: invokevirtual 153	android/content/Context:getResources	()Landroid/content/res/Resources;
-      //   204: ldc 161
-      //   206: invokevirtual 160	android/content/res/Resources:getXml	(I)Landroid/content/res/XmlResourceParser;
-      //   209: astore 7
-      //   211: aload_2
-      //   212: astore 6
-      //   214: aload 7
-      //   216: astore 5
-      //   218: aload_0
-      //   219: aload_1
-      //   220: invokevirtual 153	android/content/Context:getResources	()Landroid/content/res/Resources;
-      //   223: aload_2
-      //   224: checkcast 163	org/xmlpull/v1/XmlPullParser
-      //   227: invokestatic 169	android/content/res/ColorStateList:createFromXml	(Landroid/content/res/Resources;Lorg/xmlpull/v1/XmlPullParser;)Landroid/content/res/ColorStateList;
-      //   230: putfield 171	com/tencent/mm/plugin/story/ui/StoryRangeDetailUI$b:Fxn	Landroid/content/res/ColorStateList;
-      //   233: aload_2
-      //   234: astore 6
-      //   236: aload 7
-      //   238: astore 5
-      //   240: aload_0
-      //   241: aload_1
-      //   242: invokevirtual 153	android/content/Context:getResources	()Landroid/content/res/Resources;
-      //   245: aload 7
-      //   247: checkcast 163	org/xmlpull/v1/XmlPullParser
-      //   250: invokestatic 169	android/content/res/ColorStateList:createFromXml	(Landroid/content/res/Resources;Lorg/xmlpull/v1/XmlPullParser;)Landroid/content/res/ColorStateList;
-      //   253: putfield 173	com/tencent/mm/plugin/story/ui/StoryRangeDetailUI$b:Fxo	Landroid/content/res/ColorStateList;
-      //   256: aload_2
-      //   257: ifnull +9 -> 266
-      //   260: aload_2
-      //   261: invokeinterface 178 1 0
-      //   266: aload 7
-      //   268: ifnull +16 -> 284
-      //   271: aload 7
-      //   273: invokeinterface 178 1 0
-      //   278: ldc 62
-      //   280: invokestatic 181	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   283: return
-      //   284: ldc 62
-      //   286: invokestatic 181	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   289: return
-      //   290: astore_1
-      //   291: aconst_null
-      //   292: astore 7
-      //   294: aconst_null
-      //   295: astore_2
-      //   296: aload_2
-      //   297: astore 6
-      //   299: aload 7
-      //   301: astore 5
-      //   303: invokestatic 185	com/tencent/mm/plugin/story/ui/StoryRangeDetailUI:access$getTAG$cp	()Ljava/lang/String;
-      //   306: aload_1
-      //   307: checkcast 187	java/lang/Throwable
-      //   310: ldc 188
-      //   312: iconst_0
-      //   313: anewarray 190	java/lang/Object
-      //   316: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   319: aload_2
-      //   320: ifnull +9 -> 329
-      //   323: aload_2
-      //   324: invokeinterface 178 1 0
-      //   329: aload 7
-      //   331: ifnull +16 -> 347
-      //   334: aload 7
-      //   336: invokeinterface 178 1 0
-      //   341: ldc 62
-      //   343: invokestatic 181	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   346: return
-      //   347: ldc 62
-      //   349: invokestatic 181	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   352: return
-      //   353: astore_1
-      //   354: aconst_null
-      //   355: astore 7
-      //   357: aconst_null
-      //   358: astore_2
-      //   359: aload_2
-      //   360: astore 6
-      //   362: aload 7
-      //   364: astore 5
-      //   366: invokestatic 185	com/tencent/mm/plugin/story/ui/StoryRangeDetailUI:access$getTAG$cp	()Ljava/lang/String;
-      //   369: aload_1
-      //   370: checkcast 187	java/lang/Throwable
-      //   373: ldc 188
-      //   375: iconst_0
-      //   376: anewarray 190	java/lang/Object
-      //   379: invokestatic 196	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   382: aload_2
-      //   383: ifnull +9 -> 392
-      //   386: aload_2
-      //   387: invokeinterface 178 1 0
-      //   392: aload 7
-      //   394: ifnull +16 -> 410
-      //   397: aload 7
-      //   399: invokeinterface 178 1 0
-      //   404: ldc 62
-      //   406: invokestatic 181	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   409: return
-      //   410: ldc 62
-      //   412: invokestatic 181	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   415: return
-      //   416: astore_1
-      //   417: aconst_null
-      //   418: astore 5
-      //   420: aconst_null
-      //   421: astore_2
-      //   422: aload_2
-      //   423: ifnull +9 -> 432
-      //   426: aload_2
-      //   427: invokeinterface 178 1 0
-      //   432: aload 5
-      //   434: ifnull +10 -> 444
-      //   437: aload 5
-      //   439: invokeinterface 178 1 0
-      //   444: ldc 62
-      //   446: invokestatic 181	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   449: aload_1
-      //   450: athrow
-      //   451: astore_1
-      //   452: aconst_null
-      //   453: astore 5
-      //   455: goto -33 -> 422
-      //   458: astore_1
-      //   459: aload 6
-      //   461: astore_2
-      //   462: goto -40 -> 422
-      //   465: astore_1
-      //   466: aconst_null
-      //   467: astore 7
-      //   469: goto -110 -> 359
-      //   472: astore_1
-      //   473: goto -114 -> 359
-      //   476: astore_1
-      //   477: aconst_null
-      //   478: astore 7
-      //   480: goto -184 -> 296
-      //   483: astore_1
-      //   484: goto -188 -> 296
+      //   194: getstatic 159	com/tencent/mm/plugin/story/a$a:mm_list_textcolor_one	I
+      //   197: invokevirtual 165	android/content/res/Resources:getXml	(I)Landroid/content/res/XmlResourceParser;
+      //   200: astore_2
+      //   201: aload_1
+      //   202: invokevirtual 153	android/content/Context:getResources	()Landroid/content/res/Resources;
+      //   205: getstatic 168	com/tencent/mm/plugin/story/a$a:mm_list_textcolor_spuser	I
+      //   208: invokevirtual 165	android/content/res/Resources:getXml	(I)Landroid/content/res/XmlResourceParser;
+      //   211: astore 7
+      //   213: aload_2
+      //   214: astore 6
+      //   216: aload 7
+      //   218: astore 5
+      //   220: aload_0
+      //   221: aload_1
+      //   222: invokevirtual 153	android/content/Context:getResources	()Landroid/content/res/Resources;
+      //   225: aload_2
+      //   226: checkcast 170	org/xmlpull/v1/XmlPullParser
+      //   229: invokestatic 176	android/content/res/ColorStateList:createFromXml	(Landroid/content/res/Resources;Lorg/xmlpull/v1/XmlPullParser;)Landroid/content/res/ColorStateList;
+      //   232: putfield 178	com/tencent/mm/plugin/story/ui/StoryRangeDetailUI$b:LRp	Landroid/content/res/ColorStateList;
+      //   235: aload_2
+      //   236: astore 6
+      //   238: aload 7
+      //   240: astore 5
+      //   242: aload_0
+      //   243: aload_1
+      //   244: invokevirtual 153	android/content/Context:getResources	()Landroid/content/res/Resources;
+      //   247: aload 7
+      //   249: checkcast 170	org/xmlpull/v1/XmlPullParser
+      //   252: invokestatic 176	android/content/res/ColorStateList:createFromXml	(Landroid/content/res/Resources;Lorg/xmlpull/v1/XmlPullParser;)Landroid/content/res/ColorStateList;
+      //   255: putfield 180	com/tencent/mm/plugin/story/ui/StoryRangeDetailUI$b:LRq	Landroid/content/res/ColorStateList;
+      //   258: aload_2
+      //   259: ifnull +9 -> 268
+      //   262: aload_2
+      //   263: invokeinterface 185 1 0
+      //   268: aload 7
+      //   270: ifnull +16 -> 286
+      //   273: aload 7
+      //   275: invokeinterface 185 1 0
+      //   280: ldc 62
+      //   282: invokestatic 188	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   285: return
+      //   286: ldc 62
+      //   288: invokestatic 188	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   291: return
+      //   292: astore_1
+      //   293: aconst_null
+      //   294: astore 7
+      //   296: aconst_null
+      //   297: astore_2
+      //   298: aload_2
+      //   299: astore 6
+      //   301: aload 7
+      //   303: astore 5
+      //   305: invokestatic 192	com/tencent/mm/plugin/story/ui/StoryRangeDetailUI:access$getTAG$cp	()Ljava/lang/String;
+      //   308: aload_1
+      //   309: checkcast 194	java/lang/Throwable
+      //   312: ldc 195
+      //   314: iconst_0
+      //   315: anewarray 197	java/lang/Object
+      //   318: invokestatic 203	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   321: aload_2
+      //   322: ifnull +9 -> 331
+      //   325: aload_2
+      //   326: invokeinterface 185 1 0
+      //   331: aload 7
+      //   333: ifnull +16 -> 349
+      //   336: aload 7
+      //   338: invokeinterface 185 1 0
+      //   343: ldc 62
+      //   345: invokestatic 188	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   348: return
+      //   349: ldc 62
+      //   351: invokestatic 188	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   354: return
+      //   355: astore_1
+      //   356: aconst_null
+      //   357: astore 7
+      //   359: aconst_null
+      //   360: astore_2
+      //   361: aload_2
+      //   362: astore 6
+      //   364: aload 7
+      //   366: astore 5
+      //   368: invokestatic 192	com/tencent/mm/plugin/story/ui/StoryRangeDetailUI:access$getTAG$cp	()Ljava/lang/String;
+      //   371: aload_1
+      //   372: checkcast 194	java/lang/Throwable
+      //   375: ldc 195
+      //   377: iconst_0
+      //   378: anewarray 197	java/lang/Object
+      //   381: invokestatic 203	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   384: aload_2
+      //   385: ifnull +9 -> 394
+      //   388: aload_2
+      //   389: invokeinterface 185 1 0
+      //   394: aload 7
+      //   396: ifnull +16 -> 412
+      //   399: aload 7
+      //   401: invokeinterface 185 1 0
+      //   406: ldc 62
+      //   408: invokestatic 188	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   411: return
+      //   412: ldc 62
+      //   414: invokestatic 188	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   417: return
+      //   418: astore_1
+      //   419: aconst_null
+      //   420: astore 5
+      //   422: aconst_null
+      //   423: astore_2
+      //   424: aload_2
+      //   425: ifnull +9 -> 434
+      //   428: aload_2
+      //   429: invokeinterface 185 1 0
+      //   434: aload 5
+      //   436: ifnull +10 -> 446
+      //   439: aload 5
+      //   441: invokeinterface 185 1 0
+      //   446: ldc 62
+      //   448: invokestatic 188	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   451: aload_1
+      //   452: athrow
+      //   453: astore_1
+      //   454: aconst_null
+      //   455: astore 5
+      //   457: goto -33 -> 424
+      //   460: astore_1
+      //   461: aload 6
+      //   463: astore_2
+      //   464: goto -40 -> 424
+      //   467: astore_1
+      //   468: aconst_null
+      //   469: astore 7
+      //   471: goto -110 -> 361
+      //   474: astore_1
+      //   475: goto -114 -> 361
+      //   478: astore_1
+      //   479: aconst_null
+      //   480: astore 7
+      //   482: goto -184 -> 298
+      //   485: astore_1
+      //   486: goto -188 -> 298
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	487	0	this	b
-      //   0	487	1	paramContext	Context
-      //   0	487	2	paramList	List<String>
+      //   0	489	0	this	b
+      //   0	489	1	paramContext	Context
+      //   0	489	2	paramList	List<String>
       //   1	186	3	i	int
       //   127	58	4	j	int
-      //   51	403	5	localObject1	Object
-      //   105	355	6	localObject2	Object
-      //   209	270	7	localXmlResourceParser	android.content.res.XmlResourceParser
+      //   51	405	5	localObject1	Object
+      //   105	357	6	localObject2	Object
+      //   211	270	7	localXmlResourceParser	android.content.res.XmlResourceParser
       // Exception table:
       //   from	to	target	type
-      //   190	200	290	org/xmlpull/v1/XmlPullParserException
-      //   190	200	353	java/io/IOException
-      //   190	200	416	finally
-      //   200	211	451	finally
-      //   218	233	458	finally
-      //   240	256	458	finally
-      //   303	319	458	finally
-      //   366	382	458	finally
-      //   200	211	465	java/io/IOException
-      //   218	233	472	java/io/IOException
-      //   240	256	472	java/io/IOException
-      //   200	211	476	org/xmlpull/v1/XmlPullParserException
-      //   218	233	483	org/xmlpull/v1/XmlPullParserException
-      //   240	256	483	org/xmlpull/v1/XmlPullParserException
+      //   190	201	292	org/xmlpull/v1/XmlPullParserException
+      //   190	201	355	java/io/IOException
+      //   190	201	418	finally
+      //   201	213	453	finally
+      //   220	235	460	finally
+      //   242	258	460	finally
+      //   305	321	460	finally
+      //   368	384	460	finally
+      //   201	213	467	java/io/IOException
+      //   220	235	474	java/io/IOException
+      //   242	258	474	java/io/IOException
+      //   201	213	478	org/xmlpull/v1/XmlPullParserException
+      //   220	235	485	org/xmlpull/v1/XmlPullParserException
+      //   242	258	485	org/xmlpull/v1/XmlPullParserException
     }
     
     public final int getCount()
     {
       AppMethodBeat.i(119647);
-      int i = this.Fxm.size();
+      int i = this.LRo.size();
       AppMethodBeat.o(119647);
       return i;
     }
@@ -525,9 +531,9 @@ public final class StoryRangeDetailUI
         AppMethodBeat.o(119648);
         return null;
       }
-      com.tencent.mm.contact.c localc = (com.tencent.mm.contact.c)this.Fxm.get(Integer.valueOf(paramInt));
+      d locald = (d)this.LRo.get(Integer.valueOf(paramInt));
       AppMethodBeat.o(119648);
-      return localc;
+      return locald;
     }
     
     public final long getItemId(int paramInt)
@@ -538,76 +544,76 @@ public final class StoryRangeDetailUI
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(119649);
-      p.h(paramViewGroup, "parent");
+      p.k(paramViewGroup, "parent");
       if (paramView == null)
       {
-        paramView = View.inflate(this.context, 2131496621, null);
+        paramView = View.inflate(this.context, a.e.LDm, null);
         paramViewGroup = new StoryRangeDetailUI.c();
         if (paramView == null) {
-          p.hyc();
+          p.iCn();
         }
-        localObject1 = paramView.findViewById(2131299162);
+        localObject1 = paramView.findViewById(a.d.dCx);
         if (localObject1 == null)
         {
           paramView = new t("null cannot be cast to non-null type android.widget.TextView");
           AppMethodBeat.o(119649);
           throw paramView;
         }
-        paramViewGroup.yuS = ((TextView)localObject1);
-        localObject1 = paramView.findViewById(2131299159);
+        paramViewGroup.DUW = ((TextView)localObject1);
+        localObject1 = paramView.findViewById(a.d.dCv);
         if (localObject1 == null)
         {
           paramView = new t("null cannot be cast to non-null type com.tencent.mm.ui.base.MaskLayout");
           AppMethodBeat.o(119649);
           throw paramView;
         }
-        paramViewGroup.gAN = ((MaskLayout)localObject1);
-        localObject1 = paramView.findViewById(2131299167);
+        paramViewGroup.jkT = ((MaskLayout)localObject1);
+        localObject1 = paramView.findViewById(a.d.dCB);
         if (localObject1 == null)
         {
           paramView = new t("null cannot be cast to non-null type android.widget.TextView");
           AppMethodBeat.o(119649);
           throw paramView;
         }
-        paramViewGroup.gwR = ((TextView)localObject1);
-        localObject1 = paramView.findViewById(2131299157);
+        paramViewGroup.jbe = ((TextView)localObject1);
+        localObject1 = paramView.findViewById(a.d.dCt);
         if (localObject1 == null)
         {
           paramView = new t("null cannot be cast to non-null type android.widget.TextView");
           AppMethodBeat.o(119649);
           throw paramView;
         }
-        paramViewGroup.Fxp = ((TextView)localObject1);
+        paramViewGroup.LRr = ((TextView)localObject1);
         paramView.setTag(paramViewGroup);
         getItem(paramInt);
-        localObject2 = (com.tencent.mm.contact.c)getItem(paramInt);
-        localObject1 = paramViewGroup.yuS;
+        localObject2 = (d)getItem(paramInt);
+        localObject1 = paramViewGroup.DUW;
         if (localObject1 == null) {
-          p.hyc();
+          p.iCn();
         }
         ((TextView)localObject1).setVisibility(8);
-        localObject3 = paramViewGroup.gwR;
+        localObject3 = paramViewGroup.jbe;
         if (localObject3 == null) {
-          p.hyc();
+          p.iCn();
         }
         if (localObject2 == null) {
-          p.hyc();
+          p.iCn();
         }
-        if (ab.JE(((com.tencent.mm.contact.c)localObject2).getUsername())) {
-          break label365;
+        if (ab.QX(((d)localObject2).getUsername())) {
+          break label370;
         }
       }
-      label365:
-      for (Object localObject1 = this.Fxn;; localObject1 = this.Fxo)
+      label370:
+      for (Object localObject1 = this.LRp;; localObject1 = this.LRq)
       {
         ((TextView)localObject3).setTextColor((ColorStateList)localObject1);
-        localObject1 = paramViewGroup.gAN;
+        localObject1 = paramViewGroup.jkT;
         if (localObject1 == null) {
-          p.hyc();
+          p.iCn();
         }
         localObject1 = ((MaskLayout)localObject1).getContentView();
         if (localObject1 != null) {
-          break label374;
+          break label379;
         }
         paramView = new t("null cannot be cast to non-null type android.widget.ImageView");
         AppMethodBeat.o(119649);
@@ -622,32 +628,32 @@ public final class StoryRangeDetailUI
         paramViewGroup = (StoryRangeDetailUI.c)paramViewGroup;
         break;
       }
-      label374:
-      a.b.A((ImageView)localObject1, ((com.tencent.mm.contact.c)localObject2).getUsername());
-      localObject1 = paramViewGroup.Fxp;
+      label379:
+      a.b.C((ImageView)localObject1, ((d)localObject2).getUsername());
+      localObject1 = paramViewGroup.LRr;
       if (localObject1 == null) {
-        p.hyc();
+        p.iCn();
       }
       ((TextView)localObject1).setVisibility(8);
-      localObject1 = paramViewGroup.gAN;
+      localObject1 = paramViewGroup.jkT;
       if (localObject1 == null) {
-        p.hyc();
+        p.iCn();
       }
       ((MaskLayout)localObject1).setVisibility(0);
-      localObject1 = paramViewGroup.gwR;
+      localObject1 = paramViewGroup.jbe;
       if (localObject1 == null) {
-        p.hyc();
+        p.iCn();
       }
       Object localObject3 = this.context;
-      Object localObject2 = (CharSequence)((com.tencent.mm.contact.c)localObject2).arJ();
-      TextView localTextView = paramViewGroup.gwR;
+      Object localObject2 = (CharSequence)((d)localObject2).ays();
+      TextView localTextView = paramViewGroup.jbe;
       if (localTextView == null) {
-        p.hyc();
+        p.iCn();
       }
       ((TextView)localObject1).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.b((Context)localObject3, (CharSequence)localObject2, localTextView.getTextSize()));
-      paramViewGroup = paramViewGroup.gwR;
+      paramViewGroup = paramViewGroup.jbe;
       if (paramViewGroup == null) {
-        p.hyc();
+        p.iCn();
       }
       paramViewGroup.setVisibility(0);
       AppMethodBeat.o(119649);
@@ -655,16 +661,16 @@ public final class StoryRangeDetailUI
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/StoryRangeDetailUI$ViewHolder;", "", "()V", "avatarIV", "Lcom/tencent/mm/ui/base/MaskLayout;", "getAvatarIV$plugin_story_release", "()Lcom/tencent/mm/ui/base/MaskLayout;", "setAvatarIV$plugin_story_release", "(Lcom/tencent/mm/ui/base/MaskLayout;)V", "catalog", "Landroid/widget/TextView;", "getCatalog$plugin_story_release", "()Landroid/widget/TextView;", "setCatalog$plugin_story_release", "(Landroid/widget/TextView;)V", "nickTV", "getNickTV$plugin_story_release", "setNickTV$plugin_story_release", "weixinTV", "getWeixinTV$plugin_story_release", "setWeixinTV$plugin_story_release", "plugin-story_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/StoryRangeDetailUI$ViewHolder;", "", "()V", "avatarIV", "Lcom/tencent/mm/ui/base/MaskLayout;", "getAvatarIV$plugin_story_release", "()Lcom/tencent/mm/ui/base/MaskLayout;", "setAvatarIV$plugin_story_release", "(Lcom/tencent/mm/ui/base/MaskLayout;)V", "catalog", "Landroid/widget/TextView;", "getCatalog$plugin_story_release", "()Landroid/widget/TextView;", "setCatalog$plugin_story_release", "(Landroid/widget/TextView;)V", "nickTV", "getNickTV$plugin_story_release", "setNickTV$plugin_story_release", "weixinTV", "getWeixinTV$plugin_story_release", "setWeixinTV$plugin_story_release", "plugin-story_release"})
   static final class c
   {
-    TextView Fxp;
-    MaskLayout gAN;
-    TextView gwR;
-    TextView yuS;
+    TextView DUW;
+    TextView LRr;
+    TextView jbe;
+    MaskLayout jkT;
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class d
     implements MenuItem.OnMenuItemClickListener
   {
@@ -673,13 +679,13 @@ public final class StoryRangeDetailUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(119651);
-      this.Fxq.finish();
+      this.LRs.finish();
       AppMethodBeat.o(119651);
       return true;
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "parent", "Landroid/widget/AdapterView;", "kotlin.jvm.PlatformType", "view", "Landroid/view/View;", "position", "", "id", "", "onItemClick"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "parent", "Landroid/widget/AdapterView;", "kotlin.jvm.PlatformType", "view", "Landroid/view/View;", "position", "", "id", "", "onItemClick"})
   static final class e
     implements AdapterView.OnItemClickListener
   {
@@ -689,12 +695,12 @@ public final class StoryRangeDetailUI
     {
       AppMethodBeat.i(119652);
       b localb = new b();
-      localb.bm(paramAdapterView);
-      localb.bm(paramView);
-      localb.pH(paramInt);
-      localb.zo(paramLong);
-      a.b("com/tencent/mm/plugin/story/ui/StoryRangeDetailUI$initView$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
-      paramAdapterView = StoryRangeDetailUI.a(this.Fxq);
+      localb.bn(paramAdapterView);
+      localb.bn(paramView);
+      localb.sg(paramInt);
+      localb.Fs(paramLong);
+      a.c("com/tencent/mm/plugin/story/ui/StoryRangeDetailUI$initView$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+      paramAdapterView = StoryRangeDetailUI.a(this.LRs);
       if (paramAdapterView != null) {}
       for (paramAdapterView = paramAdapterView.getItem(paramInt); paramAdapterView == null; paramAdapterView = null)
       {
@@ -702,11 +708,11 @@ public final class StoryRangeDetailUI
         AppMethodBeat.o(119652);
         throw paramAdapterView;
       }
-      paramAdapterView = (com.tencent.mm.contact.c)paramAdapterView;
+      paramAdapterView = (d)paramAdapterView;
       paramView = new Intent();
       paramView.putExtra("Contact_User", paramAdapterView.getUsername());
       paramView.putExtra("CONTACT_INFO_UI_SOURCE", 12);
-      com.tencent.mm.br.c.b((Context)this.Fxq.getContext(), "profile", ".ui.ContactInfoUI", paramView);
+      c.b((Context)this.LRs.getContext(), "profile", ".ui.ContactInfoUI", paramView);
       a.a(this, "com/tencent/mm/plugin/story/ui/StoryRangeDetailUI$initView$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
       AppMethodBeat.o(119652);
     }

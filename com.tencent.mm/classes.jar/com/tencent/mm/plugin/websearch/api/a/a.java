@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.websearch.api.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.plugin.report.f;
 
 public final class a
 {
-  public static int ID = 791;
+  public static int ffF = 791;
   
-  public static void pl(int paramInt)
+  public static void rE(int paramInt)
   {
     AppMethodBeat.i(117834);
-    e.Cxv.idkeyStat(ID, paramInt, 1L, false);
+    f.Iyx.idkeyStat(ffF, paramInt, 1L, false);
     AppMethodBeat.o(117834);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.a.a
  * JD-Core Version:    0.7.0.1
  */

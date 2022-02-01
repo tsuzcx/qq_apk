@@ -5,7 +5,7 @@ import android.nfc.NdefRecord;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ac.d;
-import com.tencent.mm.plugin.appbrand.utils.x;
+import com.tencent.mm.plugin.appbrand.utils.z;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
@@ -24,24 +24,24 @@ import kotlin.o<+Ljava.util.Map<Ljava.lang.String;+Ljava.lang.Object;>;+Ljava.ni
 import kotlin.s;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/model/NdefMessageConverter;", "", "()V", "MAP_KEY_MESSAGES", "", "MAP_KEY_RECORDS", "NDEF_RECORD_FIELD_ID", "NDEF_RECORD_FIELD_PAYLOAD", "NDEF_RECORD_FIELD_TNF", "NDEF_RECORD_FIELD_TYPE", "PARAM_LANGUAGE", "PARAM_TEXT", "TAG", "map2Message", "Landroid/nfc/NdefMessage;", "messageMap", "", "message2MessageMap", "Lkotlin/Pair;", "", "Ljava/nio/ByteBuffer;", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/model/MessageMap;", "message", "messages2Map", "messages", "record2RecordMap", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/model/RecordMap;", "record", "Landroid/nfc/NdefRecord;", "recordMap2Record", "recordMap", "texts2Message", "textAndLanguages", "uris2Message", "uris", "luggage-commons-jsapi-nfc-ext_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/model/NdefMessageConverter;", "", "()V", "MAP_KEY_MESSAGES", "", "MAP_KEY_RECORDS", "NDEF_RECORD_FIELD_ID", "NDEF_RECORD_FIELD_PAYLOAD", "NDEF_RECORD_FIELD_TNF", "NDEF_RECORD_FIELD_TYPE", "PARAM_LANGUAGE", "PARAM_TEXT", "TAG", "map2Message", "Landroid/nfc/NdefMessage;", "messageMap", "", "message2MessageMap", "Lkotlin/Pair;", "", "Ljava/nio/ByteBuffer;", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/model/MessageMap;", "message", "messages2Map", "messages", "record2RecordMap", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/model/RecordMap;", "record", "Landroid/nfc/NdefRecord;", "recordMap2Record", "recordMap", "texts2Message", "textAndLanguages", "uris2Message", "uris", "luggage-commons-jsapi-nfc-ext_release"})
 public final class c
 {
-  public static final c mju;
+  public static final c phw;
   
   static
   {
     AppMethodBeat.i(183705);
-    mju = new c();
+    phw = new c();
     AppMethodBeat.o(183705);
   }
   
-  public static NdefMessage Q(Map<String, ? extends Object> paramMap)
+  public static NdefMessage J(Map<String, ? extends Object> paramMap)
   {
     int i = 0;
     Object localObject2 = null;
     AppMethodBeat.i(183700);
-    p.h(paramMap, "messageMap");
+    p.k(paramMap, "messageMap");
     Log.d("MicroMsg.AppBrand.NdefMessageConverter", "map2Message, messageMap: ".concat(String.valueOf(paramMap)));
     Object localObject3 = paramMap.get("records");
     Object localObject1 = localObject3;
@@ -61,7 +61,7 @@ public final class c
     {
       localObject1 = localIterator.next();
       if (i < 0) {
-        j.hxH();
+        j.iBO();
       }
       Map localMap = (Map)localObject1;
       Log.d("MicroMsg.AppBrand.NdefMessageConverter", "map2Message, index: " + i + ", map: " + localMap);
@@ -77,7 +77,7 @@ public final class c
         return null;
       }
       Log.d("MicroMsg.AppBrand.NdefMessageConverter", "map2Message, byteBuffer: ".concat(String.valueOf(localObject1)));
-      localCollection.add(a(s.U(localMap, localObject1)));
+      localCollection.add(a(s.M(localMap, localObject1)));
       i += 1;
     }
     paramMap = (List)localCollection;
@@ -110,8 +110,8 @@ public final class c
     Object localObject2 = null;
     AppMethodBeat.i(183704);
     Log.d("MicroMsg.AppBrand.NdefMessageConverter", "recordMap2Record, recordMap: ".concat(String.valueOf(paramo)));
-    Object localObject3 = (Map)paramo.first;
-    ByteBuffer localByteBuffer = (ByteBuffer)paramo.second;
+    Object localObject3 = (Map)paramo.Mx;
+    ByteBuffer localByteBuffer = (ByteBuffer)paramo.My;
     Object localObject1 = ((Map)localObject3).get("tnf");
     paramo = (o<? extends Map<String, ? extends Object>, ? extends ByteBuffer>)localObject1;
     if (!(localObject1 instanceof Integer)) {
@@ -148,7 +148,7 @@ public final class c
       {
         for (;;)
         {
-          paramo = new NdefRecord((short)i, paramo, (byte[])localObject1, d.p(localByteBuffer));
+          paramo = new NdefRecord((short)i, paramo, (byte[])localObject1, d.m(localByteBuffer));
           AppMethodBeat.o(183704);
           return paramo;
           AppMethodBeat.o(183704);
@@ -175,28 +175,28 @@ public final class c
     AppMethodBeat.i(183703);
     Log.d("MicroMsg.AppBrand.NdefMessageConverter", "message2MessageMap, message: ".concat(String.valueOf(paramNdefMessage)));
     paramNdefMessage = paramNdefMessage.getRecords();
-    p.g(paramNdefMessage, "message.records");
+    p.j(paramNdefMessage, "message.records");
     Object localObject1 = (Collection)new ArrayList(paramNdefMessage.length);
     int j = paramNdefMessage.length;
     int i = 0;
     while (i < j)
     {
       localObject2 = paramNdefMessage[i];
-      p.g(localObject2, "it");
+      p.j(localObject2, "it");
       Log.d("MicroMsg.AppBrand.NdefMessageConverter", "record2RecordMap, record: ".concat(String.valueOf(localObject2)));
-      Object localObject3 = s.U("tnf", Short.valueOf(((NdefRecord)localObject2).getTnf()));
+      Object localObject3 = s.M("tnf", Short.valueOf(((NdefRecord)localObject2).getTnf()));
       Object localObject4 = Base64.encode(((NdefRecord)localObject2).getType(), 2);
-      p.g(localObject4, "Base64.encode(record.type, Base64.NO_WRAP)");
+      p.j(localObject4, "Base64.encode(record.type, Base64.NO_WRAP)");
       Object localObject5 = StandardCharsets.UTF_8;
-      p.g(localObject5, "StandardCharsets.UTF_8");
-      localObject4 = s.U("type", new String((byte[])localObject4, (Charset)localObject5));
+      p.j(localObject5, "StandardCharsets.UTF_8");
+      localObject4 = s.M("type", new String((byte[])localObject4, (Charset)localObject5));
       localObject5 = Base64.encode(((NdefRecord)localObject2).getId(), 2);
-      p.g(localObject5, "Base64.encode(record.id, Base64.NO_WRAP)");
+      p.j(localObject5, "Base64.encode(record.id, Base64.NO_WRAP)");
       Charset localCharset = StandardCharsets.UTF_8;
-      p.g(localCharset, "StandardCharsets.UTF_8");
-      localObject3 = ae.e(new o[] { localObject3, localObject4, s.U("id", new String((byte[])localObject5, localCharset)) });
+      p.j(localCharset, "StandardCharsets.UTF_8");
+      localObject3 = ae.e(new o[] { localObject3, localObject4, s.M("id", new String((byte[])localObject5, localCharset)) });
       Log.d("MicroMsg.AppBrand.NdefMessageConverter", "record2RecordMap, map: ".concat(String.valueOf(localObject3)));
-      ((Collection)localObject1).add(s.U(localObject3, x.aP(((NdefRecord)localObject2).getPayload())));
+      ((Collection)localObject1).add(s.M(localObject3, z.bc(((NdefRecord)localObject2).getPayload())));
       i += 1;
     }
     paramNdefMessage = (List)localObject1;
@@ -204,25 +204,25 @@ public final class c
     localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
-      ((Collection)localObject1).add((Map)((o)((Iterator)localObject2).next()).first);
+      ((Collection)localObject1).add((Map)((o)((Iterator)localObject2).next()).Mx);
     }
     localObject1 = (List)localObject1;
     localObject2 = (Iterable)paramNdefMessage;
     paramNdefMessage = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
-      paramNdefMessage.add((ByteBuffer)((o)((Iterator)localObject2).next()).second);
+      paramNdefMessage.add((ByteBuffer)((o)((Iterator)localObject2).next()).My);
     }
-    paramNdefMessage = s.U(localObject1, (List)paramNdefMessage);
+    paramNdefMessage = s.M(localObject1, (List)paramNdefMessage);
     Log.d("MicroMsg.AppBrand.NdefMessageConverter", "message2MessageMap, messageMap: ".concat(String.valueOf(paramNdefMessage)));
     AppMethodBeat.o(183703);
     return paramNdefMessage;
   }
   
-  public static Map<String, Object> bE(List<NdefMessage> paramList)
+  public static Map<String, Object> bD(List<NdefMessage> paramList)
   {
     AppMethodBeat.i(183699);
-    p.h(paramList, "messages");
+    p.k(paramList, "messages");
     Log.d("MicroMsg.AppBrand.NdefMessageConverter", "messages2Map, messages: ".concat(String.valueOf(paramList)));
     Object localObject1 = (Iterable)paramList;
     paramList = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
@@ -235,24 +235,24 @@ public final class c
     paramList = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
-      paramList.add((List)((o)((Iterator)localObject2).next()).first);
+      paramList.add((List)((o)((Iterator)localObject2).next()).Mx);
     }
-    paramList = ae.f(new o[] { s.U("messages", (List)paramList) });
+    paramList = ae.f(new o[] { s.M("messages", (List)paramList) });
     localObject1 = ((Iterable)localObject1).iterator();
     int i = 0;
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = ((Iterator)localObject1).next();
       if (i < 0) {
-        j.hxH();
+        j.iBO();
       }
-      localObject2 = ((Iterable)((o)localObject2).second).iterator();
+      localObject2 = ((Iterable)((o)localObject2).My).iterator();
       int j = 0;
       while (((Iterator)localObject2).hasNext())
       {
         Object localObject3 = ((Iterator)localObject2).next();
         if (j < 0) {
-          j.hxH();
+          j.iBO();
         }
         localObject3 = (ByteBuffer)localObject3;
         paramList.put("payload-" + i + '-' + j, localObject3);
@@ -265,10 +265,10 @@ public final class c
     return paramList;
   }
   
-  public static NdefMessage bF(List<String> paramList)
+  public static NdefMessage bE(List<String> paramList)
   {
     AppMethodBeat.i(183701);
-    p.h(paramList, "uris");
+    p.k(paramList, "uris");
     Object localObject1 = (Iterable)paramList;
     paramList = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
     localObject1 = ((Iterable)localObject1).iterator();
@@ -311,10 +311,10 @@ public final class c
     }
   }
   
-  public static NdefMessage bG(List<? extends Map<String, String>> paramList)
+  public static NdefMessage bF(List<? extends Map<String, String>> paramList)
   {
     AppMethodBeat.i(183702);
-    p.h(paramList, "textAndLanguages");
+    p.k(paramList, "textAndLanguages");
     Object localObject1 = (Iterable)paramList;
     paramList = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
     localObject1 = ((Iterable)localObject1).iterator();
@@ -371,7 +371,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.rw.a.c
  * JD-Core Version:    0.7.0.1
  */

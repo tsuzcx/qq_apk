@@ -3,14 +3,16 @@ package com.tencent.mm.plugin.webview.core;
 import android.content.Intent;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/core/IWebViewUI;", "Lcom/tencent/mm/plugin/webview/core/IJsApiControl;", "currentURL", "", "getCurrentURL", "()Ljava/lang/String;", "intent", "Landroid/content/Intent;", "getIntent", "()Landroid/content/Intent;", "rawUrl", "getRawUrl", "getCachedAppId", "url", "webview-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/core/IWebViewUI;", "", "currentURL", "", "getCurrentURL", "()Ljava/lang/String;", "intent", "Landroid/content/Intent;", "getIntent", "()Landroid/content/Intent;", "rawUrl", "getRawUrl", "getCachedAppId", "url", "getTransText", "", "content", "webview-sdk_release"})
 public abstract interface b
 {
-  public abstract String aXD(String paramString);
+  public abstract String bju(String paramString);
   
-  public abstract String coX();
+  public abstract void bjx(String paramString);
   
-  public abstract String fZM();
+  public abstract String cDu();
+  
+  public abstract String elY();
   
   public abstract Intent getIntent();
 }

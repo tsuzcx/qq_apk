@@ -4,7 +4,7 @@ import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
 import com.tencent.mm.plugin.appbrand.service.z;
-import com.tencent.mm.protocal.protobuf.def;
+import com.tencent.mm.protocal.protobuf.dnv;
 import com.tencent.mm.vending.g.e;
 import java.io.IOException;
 import java.util.List;
@@ -14,20 +14,20 @@ public abstract interface a
 {
   public abstract e<List<a>> a(String paramString1, String paramString2, z paramz);
   
-  public abstract void a(String paramString, android.arch.a.c.a<WxaAttributes, Void> parama);
+  public abstract void a(String paramString, androidx.a.a.c.a<WxaAttributes, Void> parama);
   
-  public abstract void bO(List<Pair<a, String>> paramList);
+  public abstract void bN(List<Pair<a, String>> paramList);
   
-  public abstract void ek(String paramString1, String paramString2);
+  public abstract void ey(String paramString1, String paramString2);
   
   public static final class a
-    extends def
+    extends dnv
   {
-    public String mYc;
-    public String mYd;
-    public long mYe;
+    public String pYB;
+    public String pYC;
+    public long pYD;
     
-    public final void aO(byte[] paramArrayOfByte)
+    public final void ba(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(153226);
       if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
@@ -40,7 +40,7 @@ public abstract interface a
       AppMethodBeat.o(153226);
     }
     
-    public final byte[] bNX()
+    public final byte[] car()
     {
       AppMethodBeat.i(153225);
       byte[] arrayOfByte = super.toByteArray();
@@ -51,7 +51,7 @@ public abstract interface a
     public final String toString()
     {
       AppMethodBeat.i(153227);
-      String str = "PrefetchPkgDownloadInfo{packageMD5='" + this.mYc + '\'' + ", packageURL='" + this.mYd + '\'' + ", urlLifespan=" + this.mYe + ", appId='" + this.appId + '\'' + ", packageKey='" + this.MJn + '\'' + ", packageType=" + this.packageType + ", packageVersion=" + this.MJo + '}';
+      String str = "PrefetchPkgDownloadInfo{packageMD5='" + this.pYB + '\'' + ", packageURL='" + this.pYC + '\'' + ", urlLifespan=" + this.pYD + ", appId='" + this.appId + '\'' + ", packageKey='" + this.TVc + '\'' + ", packageType=" + this.fyH + ", packageVersion=" + this.TVd + '}';
       AppMethodBeat.o(153227);
       return str;
     }
@@ -59,7 +59,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.b.a.a
  * JD-Core Version:    0.7.0.1
  */

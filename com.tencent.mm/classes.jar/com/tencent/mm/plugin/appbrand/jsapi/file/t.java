@@ -1,10 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.q;
-import com.tencent.mm.plugin.appbrand.appstorage.q.a;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.appstorage.r;
+import com.tencent.mm.plugin.appbrand.appstorage.r.a;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -15,37 +14,37 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class t
-  extends d
+  extends c
 {
   private static final int CTRL_INDEX = 115;
   private static final String NAME = "getSavedFileList";
   
-  public final void a(final f paramf, JSONObject paramJSONObject, final int paramInt)
+  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.e parame, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(128881);
-    e.lUJ.execute(new Runnable()
+    e.oRI.execute(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(128880);
-        if (!paramf.isRunning())
+        if (!parame.isRunning())
         {
           AppMethodBeat.o(128880);
           return;
         }
-        Object localObject = paramf.getFileSystem().bxs();
+        Object localObject = parame.getFileSystem().bIG();
         JSONArray localJSONArray = new JSONArray();
         if ((localObject != null) && (((List)localObject).size() > 0))
         {
           localObject = ((List)localObject).iterator();
           while (((Iterator)localObject).hasNext())
           {
-            q.a locala = (q.a)((Iterator)localObject).next();
+            r.a locala = (r.a)((Iterator)localObject).next();
             try
             {
               JSONObject localJSONObject = new JSONObject();
               localJSONObject.put("filePath", locala.getFileName());
-              localJSONObject.put("size", locala.bxm());
+              localJSONObject.put("size", locala.bIw());
               localJSONObject.put("createTime", TimeUnit.MILLISECONDS.toSeconds(locala.lastModified()));
               localJSONArray.put(localJSONObject);
             }
@@ -54,21 +53,21 @@ public final class t
         }
         localObject = new HashMap(1);
         ((Map)localObject).put("fileList", localJSONArray);
-        paramf.i(paramInt, t.this.n("ok", (Map)localObject));
+        parame.j(paramInt, t.this.m("ok", (Map)localObject));
         AppMethodBeat.o(128880);
       }
     });
     AppMethodBeat.o(128881);
   }
   
-  public final boolean bEa()
+  public final boolean bPy()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.t
  * JD-Core Version:    0.7.0.1
  */

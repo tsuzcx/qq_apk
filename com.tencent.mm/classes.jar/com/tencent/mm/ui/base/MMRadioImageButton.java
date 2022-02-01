@@ -10,11 +10,11 @@ public class MMRadioImageButton
   extends ImageButton
   implements Checkable
 {
-  private boolean OSK;
-  private boolean OSL = true;
-  private boolean OSM;
-  private a OSN;
-  private a OSO;
+  private boolean WlX;
+  private boolean WlY = true;
+  private boolean WlZ;
+  private a Wma;
+  private a Wmb;
   
   public MMRadioImageButton(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,7 +28,7 @@ public class MMRadioImageButton
   
   public boolean isChecked()
   {
-    return this.OSM;
+    return this.WlZ;
   }
   
   public boolean performClick()
@@ -41,52 +41,52 @@ public class MMRadioImageButton
   
   public void setCheckable(boolean paramBoolean)
   {
-    this.OSL = paramBoolean;
+    this.WlY = paramBoolean;
   }
   
   public void setChecked(boolean paramBoolean)
   {
     AppMethodBeat.i(142118);
-    if (this.OSM != paramBoolean)
+    if (this.WlZ != paramBoolean)
     {
-      this.OSM = paramBoolean;
-      setSelected(this.OSM);
+      this.WlZ = paramBoolean;
+      setSelected(this.WlZ);
       refreshDrawableState();
-      if (this.OSK)
+      if (this.WlX)
       {
         AppMethodBeat.o(142118);
         return;
       }
-      this.OSK = true;
-      if (this.OSN != null) {
-        this.OSN.a(this);
+      this.WlX = true;
+      if (this.Wma != null) {
+        this.Wma.a(this);
       }
-      if (this.OSO != null) {
-        this.OSO.a(this);
+      if (this.Wmb != null) {
+        this.Wmb.a(this);
       }
-      this.OSK = false;
+      this.WlX = false;
     }
     AppMethodBeat.o(142118);
   }
   
   public void setOnMMRadioButtonCheckedChangeListener(a parama)
   {
-    this.OSN = parama;
+    this.Wma = parama;
   }
   
   public void setOnOtherMMRadioButtonCheckedChangeListener(a parama)
   {
-    this.OSO = parama;
+    this.Wmb = parama;
   }
   
   public void toggle()
   {
     AppMethodBeat.i(142116);
-    if (this.OSL)
+    if (this.WlY)
     {
       if (!isChecked())
       {
-        if (!this.OSM) {}
+        if (!this.WlZ) {}
         for (boolean bool = true;; bool = false)
         {
           setChecked(bool);
@@ -97,11 +97,11 @@ public class MMRadioImageButton
     }
     else
     {
-      if (this.OSN != null) {
-        this.OSN.b(this);
+      if (this.Wma != null) {
+        this.Wma.b(this);
       }
-      if (this.OSO != null) {
-        this.OSO.b(this);
+      if (this.Wmb != null) {
+        this.Wmb.b(this);
       }
     }
     AppMethodBeat.o(142116);
@@ -116,7 +116,7 @@ public class MMRadioImageButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMRadioImageButton
  * JD-Core Version:    0.7.0.1
  */

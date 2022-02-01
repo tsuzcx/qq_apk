@@ -2,7 +2,6 @@ package com.tencent.mm.plugin.mmsight.ui.cameraglview;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;
-import android.opengl.GLSurfaceView.EGLConfigChooser;
 import android.opengl.GLSurfaceView.EGLContextFactory;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
@@ -16,26 +15,26 @@ import javax.microedition.khronos.egl.EGLDisplay;
 public class MMSightCameraGLSurfaceView
   extends GLSurfaceView
 {
-  int iqx;
-  int kxW;
-  int kxX;
-  private int kyh;
-  b zEc;
+  b Fjb;
+  int lfC;
+  int nqW;
+  int nqX;
+  private int nrh;
   
   public MMSightCameraGLSurfaceView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(94779);
-    this.zEc = null;
-    this.kyh = 0;
+    this.Fjb = null;
+    this.nrh = 0;
     getHolder().addCallback(this);
     try
     {
       getHolder().setType(2);
       setEGLContextFactory(new b());
-      setEGLConfigChooser(new a());
-      this.zEc = new b();
-      setRenderer(this.zEc);
+      setEGLConfigChooser(new MMSightCameraGLSurfaceView.a(this));
+      this.Fjb = new b();
+      setRenderer(this.Fjb);
       setRenderMode(0);
       AppMethodBeat.o(94779);
       return;
@@ -60,33 +59,33 @@ public class MMSightCameraGLSurfaceView
     }
   }
   
-  public final void aEy()
+  public final void aMN()
   {
     AppMethodBeat.i(94782);
-    if (this.zEc != null)
+    if (this.Fjb != null)
     {
-      this.zEc.kyc = true;
+      this.Fjb.nrc = true;
       requestRender();
     }
     AppMethodBeat.o(94782);
   }
   
-  public final void aq(int paramInt1, int paramInt2, int paramInt3)
+  public final void av(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(94780);
     Log.i("MicroMsg.MMSightCameraGLSurfaceView", "setFrameInfo, width: %s, height: %s, rotate: %s this: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), this });
-    this.kxW = paramInt1;
-    this.kxX = paramInt2;
-    this.iqx = paramInt3;
+    this.nqW = paramInt1;
+    this.nqX = paramInt2;
+    this.lfC = paramInt3;
     AppMethodBeat.o(94780);
   }
   
   public final void e(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(94781);
-    if ((paramArrayOfByte != null) && (this.zEc != null) && (!this.zEc.kxV))
+    if ((paramArrayOfByte != null) && (this.Fjb != null) && (!this.Fjb.nqV))
     {
-      this.zEc.b(paramArrayOfByte, this.kxW, this.kxX, paramInt, paramBoolean);
+      this.Fjb.b(paramArrayOfByte, this.nqW, this.nqX, paramInt, paramBoolean);
       requestRender();
       AppMethodBeat.o(94781);
       return;
@@ -97,22 +96,22 @@ public class MMSightCameraGLSurfaceView
   
   public int getFrameHeight()
   {
-    return this.kxX;
+    return this.nqX;
   }
   
   public int getFrameRotate()
   {
-    return this.iqx;
+    return this.lfC;
   }
   
   public int getFrameWidth()
   {
-    return this.kxW;
+    return this.nqW;
   }
   
   public b getRenderer()
   {
-    return this.zEc;
+    return this.Fjb;
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
@@ -139,122 +138,10 @@ public class MMSightCameraGLSurfaceView
     AppMethodBeat.o(94784);
   }
   
-  final class a
-    implements GLSurfaceView.EGLConfigChooser
-  {
-    private int EGL_OPENGL_ES2_BIT;
-    private int[] gSm;
-    protected int gSn;
-    protected int gSo;
-    protected int gSp;
-    protected int gSq;
-    protected int gSr;
-    protected int gSs;
-    private int[] ijB;
-    
-    public a()
-    {
-      AppMethodBeat.i(94772);
-      this.EGL_OPENGL_ES2_BIT = 4;
-      this.ijB = new int[] { 12324, 4, 12323, 4, 12322, 4, 12352, this.EGL_OPENGL_ES2_BIT, 12344 };
-      this.gSm = new int[1];
-      this.gSn = 5;
-      this.gSo = 6;
-      this.gSp = 5;
-      this.gSq = 0;
-      this.gSr = 0;
-      this.gSs = 0;
-      AppMethodBeat.o(94772);
-    }
-    
-    private int a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt)
-    {
-      AppMethodBeat.i(94775);
-      if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt, this.gSm))
-      {
-        paramInt = this.gSm[0];
-        AppMethodBeat.o(94775);
-        return paramInt;
-      }
-      AppMethodBeat.o(94775);
-      return 0;
-    }
-    
-    private EGLConfig b(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig)
-    {
-      AppMethodBeat.i(94774);
-      int j = paramArrayOfEGLConfig.length;
-      int i = 0;
-      while (i < j)
-      {
-        EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
-        int k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12325);
-        int m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12326);
-        if ((k >= this.gSr) && (m >= this.gSs))
-        {
-          k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12324);
-          m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12323);
-          int n = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12322);
-          int i1 = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12321);
-          if ((k == this.gSn) && (m == this.gSo) && (n == this.gSp) && (i1 == this.gSq))
-          {
-            AppMethodBeat.o(94774);
-            return localEGLConfig;
-          }
-        }
-        i += 1;
-      }
-      AppMethodBeat.o(94774);
-      return null;
-    }
-    
-    private static void c(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig)
-    {
-      AppMethodBeat.i(94776);
-      int k = paramArrayOfEGLConfig.length;
-      Log.i("GLConfigChooser", String.format("%d configurations", new Object[] { Integer.valueOf(k) }));
-      int i = 0;
-      while (i < k)
-      {
-        Log.i("GLConfigChooser", String.format("Configuration %d:\n", new Object[] { Integer.valueOf(i) }));
-        EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
-        int[] arrayOfInt = new int[1];
-        int j = 0;
-        while (j < 33)
-        {
-          paramEGL10.eglGetConfigAttrib(paramEGLDisplay, localEGLConfig, new int[] { 12320, 12321, 12322, 12323, 12324, 12325, 12326, 12327, 12328, 12329, 12330, 12331, 12332, 12333, 12334, 12335, 12336, 12337, 12338, 12339, 12340, 12343, 12342, 12341, 12345, 12346, 12347, 12348, 12349, 12350, 12351, 12352, 12354 }[j], arrayOfInt);
-          j += 1;
-        }
-        i += 1;
-      }
-      AppMethodBeat.o(94776);
-    }
-    
-    public final EGLConfig chooseConfig(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
-    {
-      AppMethodBeat.i(94773);
-      int[] arrayOfInt = new int[1];
-      paramEGL10.eglChooseConfig(paramEGLDisplay, this.ijB, null, 0, arrayOfInt);
-      int i = arrayOfInt[0];
-      if (i <= 0)
-      {
-        paramEGL10 = new IllegalArgumentException("No configs match configSpec");
-        AppMethodBeat.o(94773);
-        throw paramEGL10;
-      }
-      EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
-      paramEGL10.eglChooseConfig(paramEGLDisplay, this.ijB, arrayOfEGLConfig, i, arrayOfInt);
-      c(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
-      paramEGL10 = b(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
-      AppMethodBeat.o(94773);
-      return paramEGL10;
-    }
-  }
-  
   final class b
     implements GLSurfaceView.EGLContextFactory
   {
-    private int EGL_CONTEXT_CLIENT_VERSION = 12440;
+    private int jCT = 12440;
     
     b() {}
     
@@ -262,7 +149,7 @@ public class MMSightCameraGLSurfaceView
     {
       AppMethodBeat.i(94777);
       Log.w("MicroMsg.MMSightCameraGLSurfaceView", "creating OpenGL ES 2.0 context");
-      int i = this.EGL_CONTEXT_CLIENT_VERSION;
+      int i = this.jCT;
       paramEGL10 = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
       AppMethodBeat.o(94777);
       return paramEGL10;
@@ -278,7 +165,7 @@ public class MMSightCameraGLSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.cameraglview.MMSightCameraGLSurfaceView
  * JD-Core Version:    0.7.0.1
  */

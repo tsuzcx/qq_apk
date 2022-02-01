@@ -7,12 +7,10 @@ import com.tencent.luggage.d.d;
 import com.tencent.luggage.d.p;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.fav.ui.e;
 import com.tencent.mm.plugin.webview.luggage.FavUrlTask;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bb;
-import com.tencent.mm.protocal.protobuf.coq;
+import com.tencent.mm.protocal.protobuf.cxc;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.snackbar.a.b;
 import org.json.JSONObject;
@@ -20,64 +18,64 @@ import org.json.JSONObject;
 public final class g
   extends a
 {
-  private a.b xxK;
+  private a.b CBU;
   
   public g()
   {
     super(4);
     AppMethodBeat.i(83111);
-    this.xxK = new a.b()
+    this.CBU = new a.b()
     {
-      public final void bDZ()
+      public final void bPM()
       {
         AppMethodBeat.i(83110);
         FavUrlTask localFavUrlTask = new FavUrlTask();
         localFavUrlTask.actionType = 2;
-        AppBrandMainProcessService.a(localFavUrlTask);
+        localFavUrlTask.bsM();
         AppMethodBeat.o(83110);
       }
     };
     AppMethodBeat.o(83111);
   }
   
-  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, coq paramcoq)
+  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, cxc paramcxc)
   {
     AppMethodBeat.i(83112);
-    paramcoq = new Bundle();
-    paramcoq.putLong("msg_id", paramg.mParams.getLong("msg_id", -9223372036854775808L));
-    paramcoq.putString("sns_local_id", paramg.mParams.getString("sns_local_id"));
-    paramcoq.putInt("news_svr_id", paramg.mParams.getInt("news_svr_id", 0));
-    paramcoq.putString("news_svr_tweetid", paramg.mParams.getString("news_svr_tweetid"));
-    paramcoq.putInt("message_index", paramg.mParams.getInt("message_index", 0));
+    paramcxc = new Bundle();
+    paramcxc.putLong("msg_id", paramg.mParams.getLong("msg_id", -9223372036854775808L));
+    paramcxc.putString("sns_local_id", paramg.mParams.getString("sns_local_id"));
+    paramcxc.putInt("news_svr_id", paramg.mParams.getInt("news_svr_id", 0));
+    paramcxc.putString("news_svr_tweetid", paramg.mParams.getString("news_svr_tweetid"));
+    paramcxc.putInt("message_index", paramg.mParams.getInt("message_index", 0));
     Object localObject = paramg.getUrl();
-    String str = paramg.coX();
-    paramcoq.putString("rawUrl", str);
+    String str = paramg.cDu();
+    paramcxc.putString("rawUrl", str);
     if ((!Util.isNullOrNil(str)) && (str.endsWith("#rd")))
     {
       str = str.substring(0, str.length() - 3);
       if ((!Util.isNullOrNil((String)localObject)) && (!((String)localObject).startsWith(str)))
       {
-        paramcoq.putString("rawUrl", (String)localObject);
-        paramcoq.putLong("msg_id", -9223372036854775808L);
+        paramcxc.putString("rawUrl", (String)localObject);
+        paramcxc.putLong("msg_id", -9223372036854775808L);
       }
     }
     for (;;)
     {
-      paramcoq.putString("preChatName", paramg.mParams.getString("preChatName"));
-      paramcoq.putInt("preMsgIndex", paramg.mParams.getInt("preMsgIndex", 0));
-      paramcoq.putString("prePublishId", paramg.mParams.getString("prePublishId"));
-      paramcoq.putString("preUsername", paramg.mParams.getString("preUsername"));
+      paramcxc.putString("preChatName", paramg.mParams.getString("preChatName"));
+      paramcxc.putInt("preMsgIndex", paramg.mParams.getInt("preMsgIndex", 0));
+      paramcxc.putString("prePublishId", paramg.mParams.getString("prePublishId"));
+      paramcxc.putString("preUsername", paramg.mParams.getString("preUsername"));
       localObject = new FavUrlTask();
       ((FavUrlTask)localObject).actionType = 1;
-      ((FavUrlTask)localObject).dQL = paramcoq;
-      AppBrandMainProcessService.b((MainProcessTask)localObject);
-      if (!((FavUrlTask)localObject).ISL) {
+      ((FavUrlTask)localObject).fKb = paramcxc;
+      ((FavUrlTask)localObject).bPu();
+      if (!((FavUrlTask)localObject).PPe) {
         break;
       }
-      bb.afY(1);
-      paramg.ctS.a(new d()
+      bb.anM(1);
+      paramg.crX.a(new d()
       {
-        public final JSONObject Ld()
+        public final JSONObject NU()
         {
           return null;
         }
@@ -91,12 +89,12 @@ public final class g
       return;
       if ((!Util.isNullOrNil((String)localObject)) && (!((String)localObject).startsWith(str)))
       {
-        paramcoq.putString("rawUrl", (String)localObject);
-        paramcoq.putLong("msg_id", -9223372036854775808L);
-        paramcoq.putString("sns_local_id", "");
+        paramcxc.putString("rawUrl", (String)localObject);
+        paramcxc.putLong("msg_id", -9223372036854775808L);
+        paramcxc.putString("sns_local_id", "");
       }
     }
-    e.a(((FavUrlTask)localObject).ret, (Activity)paramContext, this.xxK);
+    e.a(((FavUrlTask)localObject).ret, (Activity)paramContext, this.CBU);
     AppMethodBeat.o(83112);
   }
 }

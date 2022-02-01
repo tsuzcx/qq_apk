@@ -6,18 +6,25 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.appcompat.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.bp;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.bq;
 import com.tencent.mm.plugin.backup.b.b.c;
+import com.tencent.mm.plugin.backup.b.g;
 import com.tencent.mm.plugin.backup.backuppcmodel.d;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -30,45 +37,45 @@ import java.util.Set;
 public class BackupPcUI
   extends MMWizardActivity
 {
-  private static boolean jZU = false;
-  private TextView hOu;
-  private TextView oNi;
-  private TextView oNj;
-  private TextView oNk;
-  private TextView oNl;
-  private ImageView oNm;
-  public b.c oOY;
+  private static boolean mRn = false;
+  private TextView kCQ;
+  private TextView rPe;
+  private TextView rPf;
+  private TextView rPg;
+  private TextView rPh;
+  private ImageView rPi;
+  public b.c rQV;
   
   public BackupPcUI()
   {
     AppMethodBeat.i(21676);
-    this.oOY = new b.c()
+    this.rQV = new b.c()
     {
-      private void Bl(int paramAnonymousInt)
+      private void EM(int paramAnonymousInt)
       {
         AppMethodBeat.i(21673);
         if ((2 == paramAnonymousInt) || (4 == paramAnonymousInt))
         {
-          BackupPcUI.b(BackupPcUI.this).setImageResource(2131231143);
+          BackupPcUI.b(BackupPcUI.this).setImageResource(R.g.backup_pc_recover_error);
           AppMethodBeat.o(21673);
           return;
         }
-        BackupPcUI.b(BackupPcUI.this).setImageResource(2131231140);
+        BackupPcUI.b(BackupPcUI.this).setImageResource(R.g.backup_pc_error);
         AppMethodBeat.o(21673);
       }
       
-      private void cgo()
+      private void ctA()
       {
         AppMethodBeat.i(21674);
-        BackupPcUI.h(BackupPcUI.this).setText(2131756229);
+        BackupPcUI.h(BackupPcUI.this).setText(R.l.epo);
         BackupPcUI.h(BackupPcUI.this).setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymous2View)
           {
             AppMethodBeat.i(21659);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bm(paramAnonymous2View);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+            localb.bn(paramAnonymous2View);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
             BackupPcUI.n(BackupPcUI.this);
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(21659);
@@ -77,18 +84,18 @@ public class BackupPcUI
         AppMethodBeat.o(21674);
       }
       
-      private void cgp()
+      private void ctB()
       {
         AppMethodBeat.i(21675);
-        BackupPcUI.h(BackupPcUI.this).setText(2131756231);
+        BackupPcUI.h(BackupPcUI.this).setText(R.l.epq);
         BackupPcUI.h(BackupPcUI.this).setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymous2View)
           {
             AppMethodBeat.i(21660);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bm(paramAnonymous2View);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+            localb.bn(paramAnonymous2View);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
             BackupPcUI.o(BackupPcUI.this);
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(21660);
@@ -97,12 +104,12 @@ public class BackupPcUI
         AppMethodBeat.o(21675);
       }
       
-      public final void Ba(int paramAnonymousInt)
+      public final void EB(int paramAnonymousInt)
       {
         AppMethodBeat.i(21672);
-        int i = com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb().oOk;
+        int i = com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn().rQh;
         Log.i("MicroMsg.BackupPcUI", "onUpdateUIProgress backupPcState:%d, commandMode:%d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i) });
-        Object localObject = com.tencent.mm.plugin.backup.backuppcmodel.b.cga().ceM();
+        Object localObject = com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().crZ();
         switch (paramAnonymousInt)
         {
         }
@@ -113,65 +120,65 @@ public class BackupPcUI
           BackupPcUI.a(BackupPcUI.this);
           AppMethodBeat.o(21672);
           return;
-          BackupPcUI.b(BackupPcUI.this).setImageResource(2131231142);
-          BackupPcUI.c(BackupPcUI.this).setText(2131756323);
+          BackupPcUI.b(BackupPcUI.this).setImageResource(R.g.backup_pc_icon);
+          BackupPcUI.c(BackupPcUI.this).setText(R.l.eqR);
           BackupPcUI.d(BackupPcUI.this).setVisibility(4);
           BackupPcUI.e(BackupPcUI.this).setVisibility(4);
           BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-          cgo();
+          ctA();
           AppMethodBeat.o(21672);
           return;
-          BackupPcUI.b(BackupPcUI.this).setImageResource(2131231142);
-          BackupPcUI.c(BackupPcUI.this).setText(2131756378);
-          BackupPcUI.d(BackupPcUI.this).setText(2131756377);
-          BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(2131100016));
-          BackupPcUI.e(BackupPcUI.this).setText(2131756375);
-          BackupPcUI.f(BackupPcUI.this).setText(2131756376);
+          BackupPcUI.b(BackupPcUI.this).setImageResource(R.g.backup_pc_icon);
+          BackupPcUI.c(BackupPcUI.this).setText(R.l.erJ);
+          BackupPcUI.d(BackupPcUI.this).setText(R.l.erI);
+          BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(R.e.dkg));
+          BackupPcUI.e(BackupPcUI.this).setText(R.l.erG);
+          BackupPcUI.f(BackupPcUI.this).setText(R.l.erH);
           BackupPcUI.d(BackupPcUI.this).setVisibility(0);
           BackupPcUI.e(BackupPcUI.this).setVisibility(0);
           BackupPcUI.f(BackupPcUI.this).setVisibility(0);
-          cgo();
+          ctA();
           BackupPcUI.e(BackupPcUI.this).setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymous2View)
             {
               AppMethodBeat.i(21650);
               com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-              localb.bm(paramAnonymous2View);
-              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-              bg.aVF();
-              boolean bool = ((Boolean)com.tencent.mm.model.c.azQ().get(ar.a.NZI, Boolean.FALSE)).booleanValue();
+              localb.bn(paramAnonymous2View);
+              com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+              bh.beI();
+              boolean bool = ((Boolean)com.tencent.mm.model.c.aHp().get(ar.a.VnI, Boolean.FALSE)).booleanValue();
               Log.i("MicroMsg.BackupPcUI", "onBackupPcUpdateUICallback onUpdateUIProgress startbackup all, hasMove:%s", new Object[] { Boolean.valueOf(bool) });
               if (bool) {
-                com.tencent.mm.ui.base.h.a(BackupPcUI.this, 2131756350, 0, 2131756404, 0, false, new DialogInterface.OnClickListener()
+                com.tencent.mm.ui.base.h.a(BackupPcUI.this, R.l.erm, 0, R.l.erY, 0, false, new DialogInterface.OnClickListener()
                 {
                   public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                   {
                     AppMethodBeat.i(21649);
-                    com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb().Bj(2);
-                    com.tencent.mm.plugin.backup.backuppcmodel.b.cga().ceM().oJc = 12;
-                    BackupPcUI.3.this.Ba(12);
-                    com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cge().cfZ();
-                    com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cge().jD(true);
-                    com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(400L, 7L, 1L, false);
-                    com.tencent.mm.plugin.report.service.h.CyF.a(13735, new Object[] { Integer.valueOf(9), Integer.valueOf(com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb().oOq) });
+                    com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn().EK(2);
+                    com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().crZ().rKS = 12;
+                    BackupPcUI.3.this.EB(12);
+                    com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctq().ctl();
+                    com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctq().kO(true);
+                    com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(400L, 7L, 1L, false);
+                    com.tencent.mm.plugin.report.service.h.IzE.a(13735, new Object[] { Integer.valueOf(9), Integer.valueOf(com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn().rQn) });
                     AppMethodBeat.o(21649);
                   }
-                }, null, 2131100014);
+                }, null, R.e.dke);
               }
               for (;;)
               {
                 com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                 AppMethodBeat.o(21650);
                 return;
-                com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb().Bj(2);
-                com.tencent.mm.plugin.backup.backuppcmodel.b.cga().ceM().oJc = 12;
-                BackupPcUI.3.this.Ba(12);
-                com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cge().cancel();
-                com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cge().cfZ();
-                com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cge().jD(true);
-                com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(400L, 7L, 1L, false);
-                com.tencent.mm.plugin.report.service.h.CyF.a(13735, new Object[] { Integer.valueOf(9), Integer.valueOf(com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb().oOq) });
+                com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn().EK(2);
+                com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().crZ().rKS = 12;
+                BackupPcUI.3.this.EB(12);
+                com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctq().cancel();
+                com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctq().ctl();
+                com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctq().kO(true);
+                com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(400L, 7L, 1L, false);
+                com.tencent.mm.plugin.report.service.h.IzE.a(13735, new Object[] { Integer.valueOf(9), Integer.valueOf(com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn().rQn) });
               }
             }
           });
@@ -181,49 +188,50 @@ public class BackupPcUI
             {
               AppMethodBeat.i(21661);
               com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-              localb.bm(paramAnonymous2View);
-              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+              localb.bn(paramAnonymous2View);
+              com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
               paramAnonymous2View = new Intent(BackupPcUI.this, BackupPcChooseUI.class);
-              MMWizardActivity.ay(BackupPcUI.this, paramAnonymous2View);
-              com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cge().cancel();
-              com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cge().cfZ();
-              com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cge().jD(false);
+              MMWizardActivity.aH(BackupPcUI.this, paramAnonymous2View);
+              com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctq().cancel();
+              com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctq().ctl();
+              com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctq().kO(false);
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(21661);
             }
           });
           AppMethodBeat.o(21672);
           return;
-          BackupPcUI.b(BackupPcUI.this).setImageResource(2131231142);
-          BackupPcUI.c(BackupPcUI.this).setText(2131756354);
-          BackupPcUI.d(BackupPcUI.this).setText(2131756355);
-          BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(2131100016));
+          BackupPcUI.b(BackupPcUI.this).setImageResource(R.g.backup_pc_icon);
+          BackupPcUI.c(BackupPcUI.this).setText(R.l.erp);
+          BackupPcUI.d(BackupPcUI.this).setText(R.l.erq);
+          BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(R.e.dkg));
           BackupPcUI.d(BackupPcUI.this).setVisibility(0);
           BackupPcUI.e(BackupPcUI.this).setVisibility(4);
           BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-          cgp();
+          ctB();
           AppMethodBeat.o(21672);
           return;
-          BackupPcUI.b(BackupPcUI.this).setImageResource(2131231142);
+          BackupPcUI.b(BackupPcUI.this).setImageResource(R.g.backup_pc_icon);
           TextView localTextView = BackupPcUI.c(BackupPcUI.this);
           BackupPcUI localBackupPcUI = BackupPcUI.this;
-          paramAnonymousInt = ((com.tencent.mm.plugin.backup.b.e)localObject).oJd;
-          i = ((com.tencent.mm.plugin.backup.b.e)localObject).oJe;
-          com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb();
-          localTextView.setText(localBackupPcUI.getString(2131756383, new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.cgg() }));
-          BackupPcUI.d(BackupPcUI.this).setText(2131756355);
-          BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(2131100016));
+          paramAnonymousInt = R.l.erN;
+          i = ((com.tencent.mm.plugin.backup.b.e)localObject).rKT;
+          int j = ((com.tencent.mm.plugin.backup.b.e)localObject).rKU;
+          com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn();
+          localTextView.setText(localBackupPcUI.getString(paramAnonymousInt, new Object[] { Integer.valueOf(i), Integer.valueOf(j), com.tencent.mm.plugin.backup.backuppcmodel.c.cts() }));
+          BackupPcUI.d(BackupPcUI.this).setText(R.l.erq);
+          BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(R.e.dkg));
           BackupPcUI.d(BackupPcUI.this).setVisibility(0);
           BackupPcUI.e(BackupPcUI.this).setVisibility(4);
           BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-          cgp();
+          ctB();
           AppMethodBeat.o(21672);
           return;
-          BackupPcUI.b(BackupPcUI.this).setImageResource(2131231141);
-          BackupPcUI.c(BackupPcUI.this).setText(2131756314);
-          BackupPcUI.d(BackupPcUI.this).setText(BackupPcUI.this.getString(2131756315, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).oJd), Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).oJe) }));
-          BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(2131100016));
-          BackupPcUI.e(BackupPcUI.this).setText(2131756230);
+          BackupPcUI.b(BackupPcUI.this).setImageResource(R.g.backup_pc_finished);
+          BackupPcUI.c(BackupPcUI.this).setText(R.l.eqK);
+          BackupPcUI.d(BackupPcUI.this).setText(BackupPcUI.this.getString(R.l.eqL, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).rKT), Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).rKU) }));
+          BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(R.e.dkg));
+          BackupPcUI.e(BackupPcUI.this).setText(R.l.epp);
           BackupPcUI.d(BackupPcUI.this).setVisibility(0);
           BackupPcUI.e(BackupPcUI.this).setVisibility(0);
           BackupPcUI.f(BackupPcUI.this).setVisibility(4);
@@ -233,22 +241,22 @@ public class BackupPcUI
             {
               AppMethodBeat.i(21662);
               com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-              localb.bm(paramAnonymous2View);
-              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-              com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cfw().stop();
-              com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgc().cancel(true);
-              com.tencent.mm.plugin.backup.backuppcmodel.b.cga().ceM().oJc = -100;
+              localb.bn(paramAnonymous2View);
+              com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+              com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().csJ().stop();
+              com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().cto().cancel(true);
+              com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().crZ().rKS = -100;
               BackupPcUI.g(BackupPcUI.this);
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(21662);
             }
           });
-          cgo();
+          ctA();
           AppMethodBeat.o(21672);
           return;
-          BackupPcUI.b(BackupPcUI.this).setImageResource(2131231145);
-          BackupPcUI.c(BackupPcUI.this).setText(2131756364);
-          BackupPcUI.e(BackupPcUI.this).setText(2131756363);
+          BackupPcUI.b(BackupPcUI.this).setImageResource(R.g.backup_pc_recover_icon);
+          BackupPcUI.c(BackupPcUI.this).setText(R.l.erx);
+          BackupPcUI.e(BackupPcUI.this).setText(R.l.erw);
           BackupPcUI.d(BackupPcUI.this).setVisibility(4);
           BackupPcUI.e(BackupPcUI.this).setVisibility(0);
           BackupPcUI.f(BackupPcUI.this).setVisibility(4);
@@ -258,59 +266,60 @@ public class BackupPcUI
             {
               AppMethodBeat.i(21663);
               com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-              localb.bm(paramAnonymous2View);
-              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-              com.tencent.mm.plugin.report.service.h.CyF.a(13735, new Object[] { Integer.valueOf(23), Integer.valueOf(com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb().oOq) });
-              com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb().Bj(4);
-              com.tencent.mm.plugin.backup.backuppcmodel.b.cga().ceM().oJc = 22;
-              BackupPcUI.3.this.Ba(22);
-              com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(400L, 16L, 1L, false);
+              localb.bn(paramAnonymous2View);
+              com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+              com.tencent.mm.plugin.report.service.h.IzE.a(13735, new Object[] { Integer.valueOf(23), Integer.valueOf(com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn().rQn) });
+              com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn().EK(4);
+              com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().crZ().rKS = 22;
+              BackupPcUI.3.this.EB(22);
+              com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(400L, 16L, 1L, false);
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(21663);
             }
           });
-          cgo();
+          ctA();
           AppMethodBeat.o(21672);
           return;
-          BackupPcUI.b(BackupPcUI.this).setImageResource(2131231145);
-          BackupPcUI.c(BackupPcUI.this).setText(2131756354);
-          BackupPcUI.d(BackupPcUI.this).setText(2131756355);
-          BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(2131100016));
+          BackupPcUI.b(BackupPcUI.this).setImageResource(R.g.backup_pc_recover_icon);
+          BackupPcUI.c(BackupPcUI.this).setText(R.l.erp);
+          BackupPcUI.d(BackupPcUI.this).setText(R.l.erq);
+          BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(R.e.dkg));
           BackupPcUI.d(BackupPcUI.this).setVisibility(0);
           BackupPcUI.e(BackupPcUI.this).setVisibility(4);
           BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-          cgp();
+          ctB();
           AppMethodBeat.o(21672);
           return;
-          BackupPcUI.b(BackupPcUI.this).setImageResource(2131231145);
+          BackupPcUI.b(BackupPcUI.this).setImageResource(R.g.backup_pc_recover_icon);
           localTextView = BackupPcUI.c(BackupPcUI.this);
           localBackupPcUI = BackupPcUI.this;
-          paramAnonymousInt = ((com.tencent.mm.plugin.backup.b.e)localObject).oJd;
-          i = ((com.tencent.mm.plugin.backup.b.e)localObject).oJe;
-          com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb();
-          localTextView.setText(localBackupPcUI.getString(2131756366, new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.cgg() }));
-          BackupPcUI.d(BackupPcUI.this).setText(2131756355);
-          BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(2131100016));
+          paramAnonymousInt = R.l.erz;
+          i = ((com.tencent.mm.plugin.backup.b.e)localObject).rKT;
+          j = ((com.tencent.mm.plugin.backup.b.e)localObject).rKU;
+          com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn();
+          localTextView.setText(localBackupPcUI.getString(paramAnonymousInt, new Object[] { Integer.valueOf(i), Integer.valueOf(j), com.tencent.mm.plugin.backup.backuppcmodel.c.cts() }));
+          BackupPcUI.d(BackupPcUI.this).setText(R.l.erq);
+          BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(R.e.dkg));
           BackupPcUI.d(BackupPcUI.this).setVisibility(0);
           BackupPcUI.e(BackupPcUI.this).setVisibility(4);
           BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-          cgp();
+          ctB();
           AppMethodBeat.o(21672);
           return;
           if (Util.isTopActivity(BackupPcUI.this))
           {
-            com.tencent.mm.plugin.backup.backuppcmodel.b.cga().ceM().oJc = 24;
+            com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().crZ().rKS = 24;
             paramAnonymousInt = 24;
             break;
-            if (BackupPcUI.cgn())
+            if (BackupPcUI.ctz())
             {
-              BackupPcUI.b(BackupPcUI.this).setImageResource(2131231145);
-              BackupPcUI.c(BackupPcUI.this).setText(2131756367);
-              BackupPcUI.d(BackupPcUI.this).setText(2131756369);
-              BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(2131100016));
-              BackupPcUI.e(BackupPcUI.this).setText(2131756362);
-              BackupPcUI.f(BackupPcUI.this).setText(2131756365);
-              BackupPcUI.h(BackupPcUI.this).setText(2131756387);
+              BackupPcUI.b(BackupPcUI.this).setImageResource(R.g.backup_pc_recover_icon);
+              BackupPcUI.c(BackupPcUI.this).setText(R.l.erA);
+              BackupPcUI.d(BackupPcUI.this).setText(R.l.erC);
+              BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(R.e.dkg));
+              BackupPcUI.e(BackupPcUI.this).setText(R.l.erv);
+              BackupPcUI.f(BackupPcUI.this).setText(R.l.ery);
+              BackupPcUI.h(BackupPcUI.this).setText(R.l.erR);
               BackupPcUI.d(BackupPcUI.this).setVisibility(0);
               BackupPcUI.e(BackupPcUI.this).setVisibility(0);
               BackupPcUI.f(BackupPcUI.this).setVisibility(0);
@@ -320,25 +329,25 @@ public class BackupPcUI
                 {
                   AppMethodBeat.i(21664);
                   com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-                  localb.bm(paramAnonymous2View);
-                  com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+                  localb.bn(paramAnonymous2View);
+                  com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
                   Log.i("MicroMsg.BackupPcUI", "onUpdateUIProgress user click start merge.");
-                  com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgd();
-                  if (!d.cfA())
+                  com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctp();
+                  if (!d.csN())
                   {
-                    com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgd();
-                    if (!d.cfA())
+                    com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctp();
+                    if (!d.csN())
                     {
-                      com.tencent.mm.plugin.backup.backuppcmodel.b.cga().ceM().oJc = -22;
-                      BackupPcUI.3.this.Ba(-22);
-                      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(400L, 64L, 1L, false);
+                      com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().crZ().rKS = -22;
+                      BackupPcUI.3.this.EB(-22);
+                      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(400L, 64L, 1L, false);
                       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                       AppMethodBeat.o(21664);
                       return;
                     }
                   }
-                  com.tencent.mm.plugin.report.service.h.CyF.a(13735, new Object[] { Integer.valueOf(27), Integer.valueOf(com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb().oOq) });
-                  com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgd().cgk();
+                  com.tencent.mm.plugin.report.service.h.IzE.a(13735, new Object[] { Integer.valueOf(27), Integer.valueOf(com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn().rQn) });
+                  com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctp().ctw();
                   com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                   AppMethodBeat.o(21664);
                 }
@@ -349,20 +358,20 @@ public class BackupPcUI
                 {
                   AppMethodBeat.i(21666);
                   com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-                  localb.bm(paramAnonymous2View);
-                  com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-                  com.tencent.mm.ui.base.h.a(BackupPcUI.this, 2131756329, 2131756328, 2131756380, 2131756224, false, new DialogInterface.OnClickListener()
+                  localb.bn(paramAnonymous2View);
+                  com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+                  com.tencent.mm.ui.base.h.a(BackupPcUI.this, R.l.eqW, R.l.eqV, R.l.erL, R.l.epl, false, new DialogInterface.OnClickListener()
                   {
                     public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                     {
                       AppMethodBeat.i(21665);
                       Log.i("MicroMsg.BackupPcUI", "user click close. stop recover merge.");
-                      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(400L, 26L, 1L, false);
-                      com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cfw().stop();
-                      com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgd().a(true, true, -100);
+                      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(400L, 26L, 1L, false);
+                      com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().csJ().stop();
+                      com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctp().a(true, true, -100);
                       AppMethodBeat.o(21665);
                     }
-                  }, null, 2131100015);
+                  }, null, R.e.dkf);
                   com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                   AppMethodBeat.o(21666);
                 }
@@ -373,9 +382,9 @@ public class BackupPcUI
                 {
                   AppMethodBeat.i(21667);
                   com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-                  localb.bm(paramAnonymous2View);
-                  com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-                  com.tencent.mm.plugin.backup.backuppcmodel.b.cga().ceM().oJc = 25;
+                  localb.bn(paramAnonymous2View);
+                  com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+                  com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().crZ().rKS = 25;
                   BackupPcUI.i(BackupPcUI.this);
                   com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                   AppMethodBeat.o(21667);
@@ -386,44 +395,44 @@ public class BackupPcUI
             }
             if (Util.isTopActivity(BackupPcUI.this))
             {
-              com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgd();
-              if (!d.cfA())
+              com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctp();
+              if (!d.csN())
               {
-                com.tencent.mm.plugin.backup.backuppcmodel.b.cga().ceM().oJc = -22;
-                Ba(-22);
-                com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(400L, 64L, 1L, false);
+                com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().crZ().rKS = -22;
+                EB(-22);
+                com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(400L, 64L, 1L, false);
                 AppMethodBeat.o(21672);
                 return;
               }
-              com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgd().cgk();
+              com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctp().ctw();
               AppMethodBeat.o(21672);
               return;
-              BackupPcUI.b(BackupPcUI.this).setImageResource(2131231145);
-              BackupPcUI.c(BackupPcUI.this).setText(BackupPcUI.this.getString(2131756361, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).oJf) }));
-              BackupPcUI.d(BackupPcUI.this).setText(2131756360);
-              BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(2131100016));
-              BackupPcUI.h(BackupPcUI.this).setText(2131756365);
+              BackupPcUI.b(BackupPcUI.this).setImageResource(R.g.backup_pc_recover_icon);
+              BackupPcUI.c(BackupPcUI.this).setText(BackupPcUI.this.getString(R.l.eru, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).rKV) }));
+              BackupPcUI.d(BackupPcUI.this).setText(R.l.ert);
+              BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(R.e.dkg));
+              BackupPcUI.h(BackupPcUI.this).setText(R.l.ery);
               BackupPcUI.d(BackupPcUI.this).setVisibility(0);
               BackupPcUI.e(BackupPcUI.this).setVisibility(4);
               BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-              cgo();
+              ctA();
               AppMethodBeat.o(21672);
               return;
-              BackupPcUI.b(BackupPcUI.this).setImageResource(2131689744);
-              BackupPcUI.c(BackupPcUI.this).setText(2131756386);
-              BackupPcUI.d(BackupPcUI.this).setText(2131756287);
-              BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(2131100016));
+              BackupPcUI.b(BackupPcUI.this).setImageResource(R.k.backup_move_recover);
+              BackupPcUI.c(BackupPcUI.this).setText(R.l.erQ);
+              BackupPcUI.d(BackupPcUI.this).setText(R.l.eqp);
+              BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(R.e.dkg));
               BackupPcUI.d(BackupPcUI.this).setVisibility(0);
               BackupPcUI.e(BackupPcUI.this).setVisibility(4);
               BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-              cgo();
+              ctA();
               AppMethodBeat.o(21672);
               return;
-              BackupPcUI.b(BackupPcUI.this).setImageResource(2131231144);
-              BackupPcUI.c(BackupPcUI.this).setText(2131756358);
-              BackupPcUI.d(BackupPcUI.this).setText(BackupPcUI.this.getString(2131756359, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).oJd), Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).oJe) }));
-              BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(2131100016));
-              BackupPcUI.e(BackupPcUI.this).setText(2131756230);
+              BackupPcUI.b(BackupPcUI.this).setImageResource(R.g.backup_pc_recover_finished);
+              BackupPcUI.c(BackupPcUI.this).setText(R.l.err);
+              BackupPcUI.d(BackupPcUI.this).setText(BackupPcUI.this.getString(R.l.ers, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).rKT), Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).rKU) }));
+              BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(R.e.dkg));
+              BackupPcUI.e(BackupPcUI.this).setText(R.l.epp);
               BackupPcUI.d(BackupPcUI.this).setVisibility(0);
               BackupPcUI.e(BackupPcUI.this).setVisibility(0);
               BackupPcUI.f(BackupPcUI.this).setVisibility(4);
@@ -433,16 +442,16 @@ public class BackupPcUI
                 {
                   AppMethodBeat.i(21668);
                   com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-                  localb.bm(paramAnonymous2View);
-                  com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-                  com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cfw().stop();
-                  com.tencent.mm.plugin.backup.backuppcmodel.b.cga().ceM().oJc = -100;
+                  localb.bn(paramAnonymous2View);
+                  com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+                  com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().csJ().stop();
+                  com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().crZ().rKS = -100;
                   BackupPcUI.j(BackupPcUI.this);
                   com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                   AppMethodBeat.o(21668);
                 }
               });
-              cgo();
+              ctA();
               AppMethodBeat.o(21672);
               return;
               switch (i)
@@ -450,108 +459,112 @@ public class BackupPcUI
               }
               for (;;)
               {
-                BackupPcUI.d(BackupPcUI.this).setText(2131756385);
-                BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(2131100015));
+                BackupPcUI.d(BackupPcUI.this).setText(R.l.erP);
+                BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(R.e.dkf));
                 BackupPcUI.d(BackupPcUI.this).setVisibility(0);
                 BackupPcUI.e(BackupPcUI.this).setVisibility(4);
                 BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-                cgp();
+                ctB();
                 AppMethodBeat.o(21672);
                 return;
-                BackupPcUI.b(BackupPcUI.this).setImageResource(2131231142);
+                BackupPcUI.b(BackupPcUI.this).setImageResource(R.g.backup_pc_icon);
                 localTextView = BackupPcUI.c(BackupPcUI.this);
                 localBackupPcUI = BackupPcUI.this;
-                paramAnonymousInt = ((com.tencent.mm.plugin.backup.b.e)localObject).oJd;
-                i = ((com.tencent.mm.plugin.backup.b.e)localObject).oJe;
-                com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb();
-                localTextView.setText(localBackupPcUI.getString(2131756383, new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.cgg() }));
+                paramAnonymousInt = R.l.erN;
+                i = ((com.tencent.mm.plugin.backup.b.e)localObject).rKT;
+                j = ((com.tencent.mm.plugin.backup.b.e)localObject).rKU;
+                com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn();
+                localTextView.setText(localBackupPcUI.getString(paramAnonymousInt, new Object[] { Integer.valueOf(i), Integer.valueOf(j), com.tencent.mm.plugin.backup.backuppcmodel.c.cts() }));
                 continue;
-                BackupPcUI.b(BackupPcUI.this).setImageResource(2131231145);
+                BackupPcUI.b(BackupPcUI.this).setImageResource(R.g.backup_pc_recover_icon);
                 localTextView = BackupPcUI.c(BackupPcUI.this);
                 localBackupPcUI = BackupPcUI.this;
-                paramAnonymousInt = ((com.tencent.mm.plugin.backup.b.e)localObject).oJd;
-                i = ((com.tencent.mm.plugin.backup.b.e)localObject).oJe;
-                com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb();
-                localTextView.setText(localBackupPcUI.getString(2131756366, new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.cgg() }));
+                paramAnonymousInt = R.l.erz;
+                i = ((com.tencent.mm.plugin.backup.b.e)localObject).rKT;
+                j = ((com.tencent.mm.plugin.backup.b.e)localObject).rKU;
+                com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn();
+                localTextView.setText(localBackupPcUI.getString(paramAnonymousInt, new Object[] { Integer.valueOf(i), Integer.valueOf(j), com.tencent.mm.plugin.backup.backuppcmodel.c.cts() }));
               }
               switch (i)
               {
               }
               for (;;)
               {
-                BackupPcUI.d(BackupPcUI.this).setText(2131756384);
-                BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(2131100015));
+                BackupPcUI.d(BackupPcUI.this).setText(R.l.erO);
+                BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(R.e.dkf));
                 BackupPcUI.d(BackupPcUI.this).setVisibility(0);
                 BackupPcUI.e(BackupPcUI.this).setVisibility(4);
                 BackupPcUI.f(BackupPcUI.this).setVisibility(0);
-                cgp();
+                ctB();
                 AppMethodBeat.o(21672);
                 return;
-                BackupPcUI.b(BackupPcUI.this).setImageResource(2131231142);
+                BackupPcUI.b(BackupPcUI.this).setImageResource(R.g.backup_pc_icon);
                 localTextView = BackupPcUI.c(BackupPcUI.this);
                 localBackupPcUI = BackupPcUI.this;
-                paramAnonymousInt = ((com.tencent.mm.plugin.backup.b.e)localObject).oJd;
-                i = ((com.tencent.mm.plugin.backup.b.e)localObject).oJe;
-                com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb();
-                localTextView.setText(localBackupPcUI.getString(2131756383, new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.cgg() }));
-                BackupPcUI.f(BackupPcUI.this).setText(2131756379);
+                paramAnonymousInt = R.l.erN;
+                i = ((com.tencent.mm.plugin.backup.b.e)localObject).rKT;
+                j = ((com.tencent.mm.plugin.backup.b.e)localObject).rKU;
+                com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn();
+                localTextView.setText(localBackupPcUI.getString(paramAnonymousInt, new Object[] { Integer.valueOf(i), Integer.valueOf(j), com.tencent.mm.plugin.backup.backuppcmodel.c.cts() }));
+                BackupPcUI.f(BackupPcUI.this).setText(R.l.erK);
                 BackupPcUI.f(BackupPcUI.this).setOnClickListener(new View.OnClickListener()
                 {
                   public final void onClick(View paramAnonymous2View)
                   {
                     AppMethodBeat.i(21670);
                     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-                    localb.bm(paramAnonymous2View);
-                    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-                    com.tencent.mm.ui.base.h.a(BackupPcUI.this, 2131756327, 2131756326, 2131756379, 2131756224, false, new DialogInterface.OnClickListener()
+                    localb.bn(paramAnonymous2View);
+                    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+                    com.tencent.mm.ui.base.h.a(BackupPcUI.this, R.l.eqU, R.l.eqT, R.l.erK, R.l.epl, false, new DialogInterface.OnClickListener()
                     {
                       public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                       {
                         AppMethodBeat.i(21669);
                         Log.i("MicroMsg.BackupPcUI", "user click close. stop backup.");
-                        com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cfw().stop();
-                        com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgc().cancel(true);
-                        com.tencent.mm.plugin.backup.backuppcmodel.b.cga().ceM().oJc = -100;
-                        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(400L, 52L, 1L, false);
-                        com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgc().Bk(4);
+                        com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().csJ().stop();
+                        com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().cto().cancel(true);
+                        com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().crZ().rKS = -100;
+                        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(400L, 52L, 1L, false);
+                        com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().cto().EL(4);
                         BackupPcUI.k(BackupPcUI.this);
                         AppMethodBeat.o(21669);
                       }
-                    }, null, 2131100015);
+                    }, null, R.e.dkf);
                     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                     AppMethodBeat.o(21670);
                   }
                 });
                 continue;
-                BackupPcUI.b(BackupPcUI.this).setImageResource(2131231145);
+                BackupPcUI.b(BackupPcUI.this).setImageResource(R.g.backup_pc_recover_icon);
                 localTextView = BackupPcUI.c(BackupPcUI.this);
                 localBackupPcUI = BackupPcUI.this;
-                paramAnonymousInt = ((com.tencent.mm.plugin.backup.b.e)localObject).oJd;
-                i = ((com.tencent.mm.plugin.backup.b.e)localObject).oJe;
-                com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb();
-                localTextView.setText(localBackupPcUI.getString(2131756366, new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), com.tencent.mm.plugin.backup.backuppcmodel.c.cgg() }));
-                BackupPcUI.f(BackupPcUI.this).setText(2131756381);
+                paramAnonymousInt = R.l.erz;
+                i = ((com.tencent.mm.plugin.backup.b.e)localObject).rKT;
+                j = ((com.tencent.mm.plugin.backup.b.e)localObject).rKU;
+                com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn();
+                localTextView.setText(localBackupPcUI.getString(paramAnonymousInt, new Object[] { Integer.valueOf(i), Integer.valueOf(j), com.tencent.mm.plugin.backup.backuppcmodel.c.cts() }));
+                BackupPcUI.f(BackupPcUI.this).setText(R.l.erM);
                 BackupPcUI.f(BackupPcUI.this).setOnClickListener(new View.OnClickListener()
                 {
                   public final void onClick(View paramAnonymous2View)
                   {
                     AppMethodBeat.i(21652);
                     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-                    localb.bm(paramAnonymous2View);
-                    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-                    com.tencent.mm.ui.base.h.a(BackupPcUI.this, 2131756329, 2131756328, 2131756380, 2131756224, false, new DialogInterface.OnClickListener()
+                    localb.bn(paramAnonymous2View);
+                    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+                    com.tencent.mm.ui.base.h.a(BackupPcUI.this, R.l.eqW, R.l.eqV, R.l.erL, R.l.epl, false, new DialogInterface.OnClickListener()
                     {
                       public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                       {
                         AppMethodBeat.i(21651);
                         Log.i("MicroMsg.BackupPcUI", "user click close. stop recover.");
-                        com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cfw().stop();
-                        com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgd().a(true, true, -100);
-                        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(400L, 52L, 1L, false);
-                        com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgd().Bk(4);
+                        com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().csJ().stop();
+                        com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctp().a(true, true, -100);
+                        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(400L, 52L, 1L, false);
+                        com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctp().EL(4);
                         AppMethodBeat.o(21651);
                       }
-                    }, null, 2131100015);
+                    }, null, R.e.dkf);
                     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                     AppMethodBeat.o(21652);
                   }
@@ -559,33 +572,33 @@ public class BackupPcUI
               }
               if ((1 == i) || (3 == i))
               {
-                BackupPcUI.b(BackupPcUI.this).setImageResource(2131231140);
-                BackupPcUI.c(BackupPcUI.this).setText(BackupPcUI.this.getString(2131756383, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).oJd), Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).oJe), "0M" }));
-                BackupPcUI.d(BackupPcUI.this).setText(2131756338);
-                BackupPcUI.f(BackupPcUI.this).setText(2131756379);
+                BackupPcUI.b(BackupPcUI.this).setImageResource(R.g.backup_pc_error);
+                BackupPcUI.c(BackupPcUI.this).setText(BackupPcUI.this.getString(R.l.erN, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).rKT), Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).rKU), "0M" }));
+                BackupPcUI.d(BackupPcUI.this).setText(R.l.erf);
+                BackupPcUI.f(BackupPcUI.this).setText(R.l.erK);
                 BackupPcUI.f(BackupPcUI.this).setOnClickListener(new View.OnClickListener()
                 {
                   public final void onClick(View paramAnonymous2View)
                   {
                     AppMethodBeat.i(21654);
                     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-                    localb.bm(paramAnonymous2View);
-                    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-                    com.tencent.mm.ui.base.h.a(BackupPcUI.this, 2131756327, 2131756326, 2131756379, 2131756224, false, new DialogInterface.OnClickListener()
+                    localb.bn(paramAnonymous2View);
+                    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+                    com.tencent.mm.ui.base.h.a(BackupPcUI.this, R.l.eqU, R.l.eqT, R.l.erK, R.l.epl, false, new DialogInterface.OnClickListener()
                     {
                       public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                       {
                         AppMethodBeat.i(21653);
                         Log.i("MicroMsg.BackupPcUI", "user click close. stop backup.");
-                        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(400L, 10L, 1L, false);
-                        com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgc().Bk(4);
-                        com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cfw().stop();
-                        com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgc().cancel(true);
-                        com.tencent.mm.plugin.backup.backuppcmodel.b.cga().ceM().oJc = -100;
+                        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(400L, 10L, 1L, false);
+                        com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().cto().EL(4);
+                        com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().csJ().stop();
+                        com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().cto().cancel(true);
+                        com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().crZ().rKS = -100;
                         BackupPcUI.l(BackupPcUI.this);
                         AppMethodBeat.o(21653);
                       }
-                    }, null, 2131100015);
+                    }, null, R.e.dkf);
                     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                     AppMethodBeat.o(21654);
                   }
@@ -593,56 +606,56 @@ public class BackupPcUI
               }
               for (;;)
               {
-                BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(2131100015));
+                BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(R.e.dkf));
                 BackupPcUI.d(BackupPcUI.this).setVisibility(0);
                 BackupPcUI.e(BackupPcUI.this).setVisibility(4);
                 BackupPcUI.f(BackupPcUI.this).setVisibility(0);
-                cgp();
+                ctB();
                 AppMethodBeat.o(21672);
                 return;
                 if ((2 == i) || (4 == i))
                 {
-                  BackupPcUI.b(BackupPcUI.this).setImageResource(2131231143);
-                  BackupPcUI.c(BackupPcUI.this).setText(BackupPcUI.this.getString(2131756366, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).oJd), Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).oJe), "0M" }));
-                  BackupPcUI.d(BackupPcUI.this).setText(2131756346);
-                  BackupPcUI.f(BackupPcUI.this).setText(2131756381);
+                  BackupPcUI.b(BackupPcUI.this).setImageResource(R.g.backup_pc_recover_error);
+                  BackupPcUI.c(BackupPcUI.this).setText(BackupPcUI.this.getString(R.l.erz, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).rKT), Integer.valueOf(((com.tencent.mm.plugin.backup.b.e)localObject).rKU), "0M" }));
+                  BackupPcUI.d(BackupPcUI.this).setText(R.l.erk);
+                  BackupPcUI.f(BackupPcUI.this).setText(R.l.erM);
                   BackupPcUI.f(BackupPcUI.this).setOnClickListener(new View.OnClickListener()
                   {
                     public final void onClick(View paramAnonymous2View)
                     {
                       AppMethodBeat.i(21656);
                       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-                      localb.bm(paramAnonymous2View);
-                      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-                      com.tencent.mm.ui.base.h.a(BackupPcUI.this, 2131756329, 2131756328, 2131756380, 2131756224, false, new DialogInterface.OnClickListener()
+                      localb.bn(paramAnonymous2View);
+                      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+                      com.tencent.mm.ui.base.h.a(BackupPcUI.this, R.l.eqW, R.l.eqV, R.l.erL, R.l.epl, false, new DialogInterface.OnClickListener()
                       {
                         public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                         {
                           AppMethodBeat.i(21655);
                           Log.i("MicroMsg.BackupPcUI", "user click close. stop recover.");
-                          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(400L, 18L, 1L, false);
-                          com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgd().Bk(4);
-                          com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cfw().stop();
-                          com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgd().a(true, true, -100);
+                          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(400L, 18L, 1L, false);
+                          com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctp().EL(4);
+                          com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().csJ().stop();
+                          com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctp().a(true, true, -100);
                           AppMethodBeat.o(21655);
                         }
-                      }, null, 2131100015);
+                      }, null, R.e.dkf);
                       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                       AppMethodBeat.o(21656);
                     }
                   });
                 }
               }
-              Bl(i);
-              BackupPcUI.c(BackupPcUI.this).setText(2131756343);
-              localObject = com.tencent.mm.plugin.backup.b.g.eE(BackupPcUI.this);
+              EM(i);
+              BackupPcUI.c(BackupPcUI.this).setText(R.l.erh);
+              localObject = g.eH(BackupPcUI.this);
               if ((localObject == null) || (((String)localObject).equals(""))) {
-                BackupPcUI.d(BackupPcUI.this).setText(BackupPcUI.this.getString(2131756344, new Object[] { com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb().oOl, "移动网络" }));
+                BackupPcUI.d(BackupPcUI.this).setText(BackupPcUI.this.getString(R.l.eri, new Object[] { com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn().rQi, "移动网络" }));
               }
               for (;;)
               {
-                BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(2131100015));
-                BackupPcUI.f(BackupPcUI.this).setText(2131756348);
+                BackupPcUI.d(BackupPcUI.this).setTextColor(BackupPcUI.this.getResources().getColor(R.e.dkf));
+                BackupPcUI.f(BackupPcUI.this).setText(R.l.erl);
                 BackupPcUI.d(BackupPcUI.this).setVisibility(0);
                 BackupPcUI.e(BackupPcUI.this).setVisibility(4);
                 BackupPcUI.f(BackupPcUI.this).setVisibility(0);
@@ -652,21 +665,21 @@ public class BackupPcUI
                   {
                     AppMethodBeat.i(21657);
                     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-                    localb.bm(paramAnonymous2View);
-                    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+                    localb.bn(paramAnonymous2View);
+                    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
                     BackupPcUI.m(BackupPcUI.this);
                     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                     AppMethodBeat.o(21657);
                   }
                 });
-                cgo();
+                ctA();
                 AppMethodBeat.o(21672);
                 return;
-                BackupPcUI.d(BackupPcUI.this).setText(BackupPcUI.this.getString(2131756344, new Object[] { com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb().oOl, localObject }));
+                BackupPcUI.d(BackupPcUI.this).setText(BackupPcUI.this.getString(R.l.eri, new Object[] { com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn().rQi, localObject }));
               }
-              Bl(i);
-              BackupPcUI.c(BackupPcUI.this).setText(2131756332);
-              BackupPcUI.f(BackupPcUI.this).setText(2131756348);
+              EM(i);
+              BackupPcUI.c(BackupPcUI.this).setText(R.l.eqZ);
+              BackupPcUI.f(BackupPcUI.this).setText(R.l.erl);
               BackupPcUI.d(BackupPcUI.this).setVisibility(4);
               BackupPcUI.e(BackupPcUI.this).setVisibility(4);
               BackupPcUI.f(BackupPcUI.this).setVisibility(0);
@@ -676,65 +689,65 @@ public class BackupPcUI
                 {
                   AppMethodBeat.i(21658);
                   com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-                  localb.bm(paramAnonymous2View);
-                  com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+                  localb.bn(paramAnonymous2View);
+                  com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
                   BackupPcUI.m(BackupPcUI.this);
                   com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backuppcui/BackupPcUI$3$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                   AppMethodBeat.o(21658);
                 }
               });
-              cgo();
+              ctA();
               AppMethodBeat.o(21672);
               return;
-              Bl(i);
-              BackupPcUI.c(BackupPcUI.this).setText(2131756333);
+              EM(i);
+              BackupPcUI.c(BackupPcUI.this).setText(R.l.era);
               BackupPcUI.d(BackupPcUI.this).setVisibility(4);
               BackupPcUI.e(BackupPcUI.this).setVisibility(4);
               BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-              cgo();
+              ctA();
               AppMethodBeat.o(21672);
               return;
-              Bl(i);
-              BackupPcUI.c(BackupPcUI.this).setText(2131756345);
+              EM(i);
+              BackupPcUI.c(BackupPcUI.this).setText(R.l.erj);
               BackupPcUI.d(BackupPcUI.this).setVisibility(4);
               BackupPcUI.e(BackupPcUI.this).setVisibility(4);
               BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-              cgo();
+              ctA();
               AppMethodBeat.o(21672);
               return;
-              Bl(i);
-              BackupPcUI.c(BackupPcUI.this).setText(2131756342);
-              com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cfw().stop();
+              EM(i);
+              BackupPcUI.c(BackupPcUI.this).setText(R.l.erg);
+              com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().csJ().stop();
               BackupPcUI.d(BackupPcUI.this).setVisibility(4);
               BackupPcUI.e(BackupPcUI.this).setVisibility(4);
               BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-              cgo();
+              ctA();
               AppMethodBeat.o(21672);
               return;
-              Bl(i);
-              BackupPcUI.c(BackupPcUI.this).setText(2131756337);
-              com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cfw().stop();
+              EM(i);
+              BackupPcUI.c(BackupPcUI.this).setText(R.l.ere);
+              com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().csJ().stop();
               BackupPcUI.d(BackupPcUI.this).setVisibility(4);
               BackupPcUI.e(BackupPcUI.this).setVisibility(4);
               BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-              cgo();
+              ctA();
               AppMethodBeat.o(21672);
               return;
-              Bl(i);
-              BackupPcUI.c(BackupPcUI.this).setText(2131756334);
+              EM(i);
+              BackupPcUI.c(BackupPcUI.this).setText(R.l.erb);
               BackupPcUI.d(BackupPcUI.this).setVisibility(4);
               BackupPcUI.e(BackupPcUI.this).setVisibility(4);
               BackupPcUI.f(BackupPcUI.this).setVisibility(4);
-              cgo();
+              ctA();
             }
           }
         }
       }
       
-      public final void ceK()
+      public final void crX()
       {
         AppMethodBeat.i(21671);
-        int i = com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb().oOk;
+        int i = com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn().rQh;
         Log.i("MicroMsg.BackupPcUI", "onBackupPcUpdateUICallback onBackupPcStart, commandMode[%d]", new Object[] { Integer.valueOf(i) });
         switch (i)
         {
@@ -743,33 +756,33 @@ public class BackupPcUI
         {
           AppMethodBeat.o(21671);
           return;
-          com.tencent.mm.plugin.backup.backuppcmodel.b.cga().ceM().oJc = 11;
-          Ba(11);
+          com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().crZ().rKS = 11;
+          EB(11);
           AppMethodBeat.o(21671);
           return;
-          com.tencent.mm.plugin.backup.backuppcmodel.b.cga().ceM().oJc = 21;
-          Ba(21);
+          com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().crZ().rKS = 21;
+          EB(21);
           AppMethodBeat.o(21671);
           return;
-          com.tencent.mm.plugin.backup.backuppcmodel.b.cga().ceM().oJc = 12;
-          Ba(12);
+          com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().crZ().rKS = 12;
+          EB(12);
           AppMethodBeat.o(21671);
           return;
-          com.tencent.mm.plugin.backup.backuppcmodel.b.cga().ceM().oJc = 22;
-          Ba(22);
+          com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().crZ().rKS = 22;
+          EB(22);
         }
       }
       
-      public final void ceL() {}
+      public final void crY() {}
     };
     AppMethodBeat.o(21676);
   }
   
-  private void cfT()
+  private void ctg()
   {
     AppMethodBeat.i(21684);
-    int i = com.tencent.mm.plugin.backup.backuppcmodel.b.cga().ceM().oJc;
-    int j = com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb().oOk;
+    int i = com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().crZ().rKS;
+    int j = com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn().rQh;
     Log.i("MicroMsg.BackupPcUI", "closeImpl, backupPcState:%d, commandMode:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
     switch (i)
     {
@@ -789,88 +802,90 @@ public class BackupPcUI
     case 24: 
       for (;;)
       {
-        ala(1);
+        atX(1);
         AppMethodBeat.o(21684);
         return;
         Log.i("MicroMsg.BackupPcUI", "closeImpl backup finish, user click close.");
-        cgm();
+        cty();
         AppMethodBeat.o(21684);
         return;
         if ((1 == j) || (3 == j))
         {
-          com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgc().cancel(false);
-          com.tencent.mm.plugin.backup.backuppcmodel.b.cga().ceM().oJc = -100;
+          com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().cto().cancel(false);
+          com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().crZ().rKS = -100;
         }
         else
         {
           if ((2 == j) || (4 == j))
           {
-            com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgd().a(false, false, -100);
+            com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctp().a(false, false, -100);
             AppMethodBeat.o(21684);
             return;
           }
-          com.tencent.mm.plugin.backup.backuppcmodel.b.cga().ceM().oJc = -100;
+          com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().crZ().rKS = -100;
           continue;
           Log.i("MicroMsg.BackupPcUI", "closeImpl recover finish, user click close.");
-          cgm();
+          cty();
           AppMethodBeat.o(21684);
           return;
-          com.tencent.mm.plugin.backup.backuppcmodel.b.cga().ceM().oJc = 25;
+          com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().crZ().rKS = 25;
         }
       }
     }
-    com.tencent.mm.ui.base.h.a(this, 2131756329, 2131756328, 2131756380, 2131756224, false, new DialogInterface.OnClickListener()
+    com.tencent.mm.ui.base.h.a(this, R.l.eqW, R.l.eqV, R.l.erL, R.l.epl, false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(21648);
         Log.i("MicroMsg.BackupPcUI", "closeImpl merging user click close. stop recover merge.");
-        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(400L, 26L, 1L, false);
-        com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cfw().stop();
-        com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgd().a(true, true, -100);
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(400L, 26L, 1L, false);
+        bh.beI();
+        com.tencent.mm.model.c.aHp().set(ar.a.VnE, Boolean.FALSE);
+        com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().csJ().stop();
+        com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctp().a(true, true, -100);
         AppMethodBeat.o(21648);
       }
-    }, null, 2131100015);
+    }, null, R.e.dkf);
     AppMethodBeat.o(21684);
   }
   
-  private void cgm()
+  private void cty()
   {
     AppMethodBeat.i(21685);
     Log.i("MicroMsg.BackupPcUI", "exitBackupPc.");
-    if ((1 == com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb().oOk) || (3 == com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb().oOk))
+    if ((1 == com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn().rQh) || (3 == com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn().rQh))
     {
-      com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cge().cancel();
-      com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cge().cfZ();
-      com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgc().cancel(true);
-      com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cfw().stop();
-      com.tencent.mm.plugin.backup.backuppcmodel.b.cga().ceM().oJc = -100;
-      ala(1);
+      com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctq().cancel();
+      com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctq().ctl();
+      com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().cto().cancel(true);
+      com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().csJ().stop();
+      com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().crZ().rKS = -100;
+      atX(1);
       AppMethodBeat.o(21685);
       return;
     }
-    if ((2 == com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb().oOk) || (4 == com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb().oOk))
+    if ((2 == com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn().rQh) || (4 == com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn().rQh))
     {
-      com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgd().a(true, true, -100);
-      com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cfw().stop();
+      com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctp().a(true, true, -100);
+      com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().csJ().stop();
     }
     AppMethodBeat.o(21685);
   }
   
   public int getLayoutId()
   {
-    return 2131493174;
+    return R.i.ebQ;
   }
   
   public void initView()
   {
     AppMethodBeat.i(21681);
-    this.hOu = ((TextView)findViewById(2131297199));
-    this.oNm = ((ImageView)findViewById(2131297200));
-    this.oNk = ((TextView)findViewById(2131297209));
-    this.oNl = ((TextView)findViewById(2131297208));
-    this.oNi = ((TextView)findViewById(2131297180));
-    this.oNj = ((TextView)findViewById(2131297179));
+    this.kCQ = ((TextView)findViewById(R.h.dsE));
+    this.rPi = ((ImageView)findViewById(R.h.dsF));
+    this.rPg = ((TextView)findViewById(R.h.dsM));
+    this.rPh = ((TextView)findViewById(R.h.dkg));
+    this.rPe = ((TextView)findViewById(R.h.dsk));
+    this.rPf = ((TextView)findViewById(R.h.dsj));
     AppMethodBeat.o(21681);
   }
   
@@ -885,17 +900,17 @@ public class BackupPcUI
     }
     Log.i("MicroMsg.BackupPcUI", "onCreate.");
     getSupportActionBar().hide();
-    com.tencent.mm.plugin.backup.a.jRt.Xc();
+    com.tencent.mm.plugin.backup.a.mIG.abF();
     initView();
-    if (com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb().oOr)
+    if (com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn().rQo)
     {
-      com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb().oOr = false;
-      final int i = com.tencent.mm.plugin.backup.b.g.cfc();
+      com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn().rQo = false;
+      final int i = g.csp();
       if (i < 50)
       {
-        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(400L, 4L, 1L, false);
-        com.tencent.mm.plugin.report.service.h.CyF.a(13736, new Object[] { Integer.valueOf(4), com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb().oOl, com.tencent.mm.plugin.backup.b.g.eE(this), Integer.valueOf(0), Integer.valueOf(com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgb().oOq) });
-        com.tencent.mm.ui.base.h.a(this, 2131756336, 2131756335, 2131756404, 0, false, new DialogInterface.OnClickListener()
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(400L, 4L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.IzE.a(13736, new Object[] { Integer.valueOf(4), com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn().rQi, g.eH(this), Integer.valueOf(0), Integer.valueOf(com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctn().rQn) });
+        com.tencent.mm.ui.base.h.a(this, R.l.erd, R.l.erc, R.l.erY, 0, false, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -903,11 +918,11 @@ public class BackupPcUI
             Log.i("MicroMsg.BackupPcUI", "low battery, user click sure. battery:%d", new Object[] { Integer.valueOf(i) });
             AppMethodBeat.o(21647);
           }
-        }, null, 2131100014);
+        }, null, R.e.dke);
       }
     }
-    if (((l)com.tencent.mm.kernel.g.af(l.class)).aTq().eiC()) {
-      bp.aVQ();
+    if (((n)com.tencent.mm.kernel.h.ae(n.class)).bco().eSi()) {
+      bq.beT();
     }
     AppMethodBeat.o(21677);
   }
@@ -925,7 +940,7 @@ public class BackupPcUI
     AppMethodBeat.i(21683);
     if (paramInt == 4)
     {
-      cfT();
+      ctg();
       AppMethodBeat.o(21683);
       return true;
     }
@@ -939,17 +954,17 @@ public class BackupPcUI
     AppMethodBeat.i(21679);
     super.onPause();
     Log.i("MicroMsg.BackupPcUI", "onPause.");
-    Object localObject1 = com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgc();
-    b.c localc = this.oOY;
-    synchronized (((com.tencent.mm.plugin.backup.backuppcmodel.e)localObject1).oOw)
+    Object localObject1 = com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().cto();
+    b.c localc = this.rQV;
+    synchronized (((com.tencent.mm.plugin.backup.backuppcmodel.e)localObject1).rQu)
     {
-      ((com.tencent.mm.plugin.backup.backuppcmodel.e)localObject1).oOw.remove(localc);
-      localObject1 = com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgd();
-      localc = this.oOY;
+      ((com.tencent.mm.plugin.backup.backuppcmodel.e)localObject1).rQu.remove(localc);
+      localObject1 = com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctp();
+      localc = this.rQV;
     }
-    synchronized (((d)localObject1).oOw)
+    synchronized (((d)localObject1).rQu)
     {
-      ((d)localObject1).oOw.remove(localc);
+      ((d)localObject1).rQu.remove(localc);
       AppMethodBeat.o(21679);
       return;
       localObject2 = finally;
@@ -963,19 +978,19 @@ public class BackupPcUI
     AppMethodBeat.i(21680);
     super.onResume();
     Log.i("MicroMsg.BackupPcUI", "onResume.");
-    Object localObject1 = com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgc();
-    b.c localc = this.oOY;
-    synchronized (((com.tencent.mm.plugin.backup.backuppcmodel.e)localObject1).oOw)
+    Object localObject1 = com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().cto();
+    b.c localc = this.rQV;
+    synchronized (((com.tencent.mm.plugin.backup.backuppcmodel.e)localObject1).rQu)
     {
-      ((com.tencent.mm.plugin.backup.backuppcmodel.e)localObject1).oOw.add(localc);
-      localObject1 = com.tencent.mm.plugin.backup.backuppcmodel.b.cga().cgd();
-      localc = this.oOY;
+      ((com.tencent.mm.plugin.backup.backuppcmodel.e)localObject1).rQu.add(localc);
+      localObject1 = com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().ctp();
+      localc = this.rQV;
     }
-    synchronized (((d)localObject1).oOw)
+    synchronized (((d)localObject1).rQu)
     {
-      ((d)localObject1).oOw.add(localc);
-      int i = com.tencent.mm.plugin.backup.backuppcmodel.b.cga().ceM().oJc;
-      this.oOY.Ba(i);
+      ((d)localObject1).rQu.add(localc);
+      int i = com.tencent.mm.plugin.backup.backuppcmodel.b.ctm().crZ().rKS;
+      this.rQV.EB(i);
       AppMethodBeat.o(21680);
       return;
       localObject2 = finally;
@@ -989,7 +1004,7 @@ public class BackupPcUI
     AppMethodBeat.i(21678);
     super.onStart();
     Log.i("MicroMsg.BackupPcUI", "onStart.");
-    jZU = getIntent().getBooleanExtra("isRecoverTransferFinishFromBanner", false);
+    mRn = getIntent().getBooleanExtra("isRecoverTransferFinishFromBanner", false);
     AppMethodBeat.o(21678);
   }
   
@@ -1001,7 +1016,7 @@ public class BackupPcUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.backuppcui.BackupPcUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,224 +1,220 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.teenmode.a.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/model/BizTeenModeService;", "Lcom/tencent/mm/api/IBizTeenModeService;", "()V", "BIZ_TEEN_MODE_ACCT_OPTION", "", "BIZ_TEEN_MODE_MMKV_KEY_SUFFIX", "BIZ_TEEN_MODE_NO_ACCESS_URL", "IS_TEEN_MODE", "TAG", "bizTeenModeAcctOption", "", "isInit", "", "isTeenMode", "mTeenModeDataChangedListener", "Lcom/tencent/mm/plugin/teenmode/api/TeenModeDataChangedListener;", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "checkInit", "", "init", "isBizTeenModeAllowAll", "isBizTeenModeDenyAll", "release", "reportRemoveBizContact", "bizInfo", "Lcom/tencent/mm/api/BizInfo;", "reportTeenModeToast", "scene", "username", "nickname", "updateTeenModeData", "plugin-biz_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/model/BizTeenModeService;", "Lcom/tencent/mm/api/IBizTeenModeService;", "()V", "BIZ_TEEN_MODE_ACCT_OPTION", "", "BIZ_TEEN_MODE_MMKV_KEY_SUFFIX", "BIZ_TEEN_MODE_NO_ACCESS_URL", "IS_TEEN_MODE", "TAG", "bizTeenModeAcctOption", "", "isInit", "", "isTeenMode", "mTeenModeDataChangedListener", "Lcom/tencent/mm/plugin/teenmode/api/TeenModeDataChangedListener;", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "checkInit", "", "init", "isBizTeenModeAllowAll", "isBizTeenModeDenyAll", "release", "reportRemoveBizContact", "bizInfo", "Lcom/tencent/mm/api/BizInfo;", "reportTeenModeToast", "scene", "username", "nickname", "updateTeenModeData", "plugin-biz_release"})
 public final class q
   implements com.tencent.mm.api.q
 {
-  private static MultiProcessMMKV cQe;
-  private static boolean iCn;
-  private static int iCo;
-  private static com.tencent.mm.plugin.teenmode.a.c iCp;
-  public static final q iCq;
+  private static MultiProcessMMKV cQO;
   private static boolean isInit;
+  private static boolean lsi;
+  private static int lsj;
+  private static com.tencent.mm.plugin.teenmode.a.c lsk;
+  public static final q lsl;
   
   static
   {
-    AppMethodBeat.i(212413);
-    iCq = new q();
-    iCp = (com.tencent.mm.plugin.teenmode.a.c)a.iCr;
-    AppMethodBeat.o(212413);
+    AppMethodBeat.i(206714);
+    lsl = new q();
+    lsk = (com.tencent.mm.plugin.teenmode.a.c)a.lsm;
+    AppMethodBeat.o(206714);
   }
   
-  private static void aTL()
+  private static void bcM()
   {
-    AppMethodBeat.i(212404);
+    AppMethodBeat.i(206700);
     if (!isInit)
     {
       init();
       isInit = true;
     }
-    AppMethodBeat.o(212404);
+    AppMethodBeat.o(206700);
   }
   
-  private static void aTM()
+  private static void bcN()
   {
-    AppMethodBeat.i(212412);
-    Log.v("MicroMsg.BizTeenModeService", "alvinluo updateTeenModeData isTeenMode: %s, bizTeenModeOption: %s", new Object[] { Boolean.valueOf(iCn), Integer.valueOf(iCo) });
-    MultiProcessMMKV localMultiProcessMMKV = cQe;
+    AppMethodBeat.i(206712);
+    Log.v("MicroMsg.BizTeenModeService", "alvinluo updateTeenModeData isTeenMode: %s, bizTeenModeOption: %s", new Object[] { Boolean.valueOf(lsi), Integer.valueOf(lsj) });
+    MultiProcessMMKV localMultiProcessMMKV = cQO;
     if (localMultiProcessMMKV != null) {
-      localMultiProcessMMKV.putBoolean("is_teen_mode", iCn);
+      localMultiProcessMMKV.putBoolean("is_teen_mode", lsi);
     }
-    localMultiProcessMMKV = cQe;
+    localMultiProcessMMKV = cQO;
     if (localMultiProcessMMKV != null) {
-      localMultiProcessMMKV.putInt("biz_teen_mode_acct_option", iCo);
+      localMultiProcessMMKV.putInt("biz_teen_mode_acct_option", lsj);
     }
-    localMultiProcessMMKV = cQe;
+    localMultiProcessMMKV = cQO;
     if (localMultiProcessMMKV != null)
     {
       localMultiProcessMMKV.apply();
-      AppMethodBeat.o(212412);
+      AppMethodBeat.o(206712);
       return;
     }
-    AppMethodBeat.o(212412);
+    AppMethodBeat.o(206712);
   }
   
   public static void init()
   {
-    AppMethodBeat.i(212403);
-    if ((b)g.af(b.class) == null)
+    AppMethodBeat.i(206699);
+    if ((com.tencent.mm.plugin.teenmode.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.teenmode.a.b.class) == null)
     {
       Log.e("MicroMsg.BizTeenModeService", "alvinluo initBizTeenModeService service null and ignore");
-      AppMethodBeat.o(212403);
+      AppMethodBeat.o(206699);
       return;
     }
-    ((b)g.af(b.class)).a(iCp);
-    Object localObject = g.af(b.class);
-    p.g(localObject, "MMKernel.service(ITeenModeService::class.java)");
-    iCn = ((b)localObject).Vt();
-    localObject = g.af(b.class);
-    p.g(localObject, "MMKernel.service(ITeenModeService::class.java)");
-    iCo = ((b)localObject).fvo();
-    int i = a.azs();
+    ((com.tencent.mm.plugin.teenmode.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).a(lsk);
+    Object localObject = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.teenmode.a.b.class);
+    p.j(localObject, "MMKernel.service(ITeenModeService::class.java)");
+    lsi = ((com.tencent.mm.plugin.teenmode.a.b)localObject).ZM();
+    localObject = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.teenmode.a.b.class);
+    p.j(localObject, "MMKernel.service(ITeenModeService::class.java)");
+    lsj = ((com.tencent.mm.plugin.teenmode.a.b)localObject).gkr();
+    int i = com.tencent.mm.kernel.b.aGP();
     if (i == 0)
     {
       Log.e("MicroMsg.BizTeenModeService", "alvinluo initBizTeenModeService invalid account");
-      cQe = null;
-      AppMethodBeat.o(212403);
+      cQO = null;
+      AppMethodBeat.o(206699);
       return;
     }
     localObject = i + "_biz_teen_mode_mmkv";
-    cQe = MultiProcessMMKV.getMMKV((String)localObject, 2);
-    aTM();
+    cQO = MultiProcessMMKV.getMMKV((String)localObject, 2);
+    bcN();
     isInit = true;
-    Log.i("MicroMsg.BizTeenModeService", "alvinluo initBizTeenModeService key: %s, isTeenMode: %b, bizAcctOption: %d", new Object[] { localObject, Boolean.valueOf(iCn), Integer.valueOf(iCo) });
-    AppMethodBeat.o(212403);
+    Log.i("MicroMsg.BizTeenModeService", "alvinluo initBizTeenModeService key: %s, isTeenMode: %b, bizAcctOption: %d", new Object[] { localObject, Boolean.valueOf(lsi), Integer.valueOf(lsj) });
+    AppMethodBeat.o(206699);
   }
   
   public static void release()
   {
-    AppMethodBeat.i(212405);
-    b localb = (b)g.af(b.class);
+    AppMethodBeat.i(206701);
+    com.tencent.mm.plugin.teenmode.a.b localb = (com.tencent.mm.plugin.teenmode.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.teenmode.a.b.class);
     if (localb != null)
     {
-      localb.b(iCp);
-      AppMethodBeat.o(212405);
+      localb.b(lsk);
+      AppMethodBeat.o(206701);
       return;
     }
-    AppMethodBeat.o(212405);
+    AppMethodBeat.o(206701);
   }
   
-  public final boolean Vt()
+  public final boolean ZM()
   {
-    AppMethodBeat.i(212406);
-    aTL();
-    boolean bool = iCn;
-    AppMethodBeat.o(212406);
+    AppMethodBeat.i(206703);
+    bcM();
+    boolean bool = lsi;
+    AppMethodBeat.o(206703);
     return bool;
   }
   
-  public final boolean Vu()
+  public final boolean ZN()
   {
-    AppMethodBeat.i(212407);
-    aTL();
-    if ((!iCn) || (iCo == 1))
+    AppMethodBeat.i(206704);
+    bcM();
+    if ((!lsi) || (lsj == 1))
     {
-      AppMethodBeat.o(212407);
+      AppMethodBeat.o(206704);
       return true;
     }
-    AppMethodBeat.o(212407);
+    AppMethodBeat.o(206704);
     return false;
   }
   
-  public final boolean Vv()
+  public final boolean ZO()
   {
-    AppMethodBeat.i(212408);
-    aTL();
-    if ((iCn) && (iCo == 2))
+    AppMethodBeat.i(206705);
+    bcM();
+    if ((lsi) && (lsj == 2))
     {
-      AppMethodBeat.o(212408);
+      AppMethodBeat.o(206705);
       return true;
     }
-    AppMethodBeat.o(212408);
+    AppMethodBeat.o(206705);
     return false;
   }
   
   public final void c(com.tencent.mm.api.c paramc)
   {
-    AppMethodBeat.i(212409);
+    AppMethodBeat.i(206707);
     if (paramc == null)
     {
-      AppMethodBeat.o(212409);
+      AppMethodBeat.o(206707);
       return;
     }
-    if (iCn)
+    if (lsi)
     {
       paramc = paramc.field_username;
-      String str = aa.getDisplayName(paramc);
+      String str = aa.PJ(paramc);
       Log.d("MicroMsg.BizTeenModeService", "reportRemoveBizContact username: %s, nickname: %s", new Object[] { paramc, str });
-      h.CyF.a(20911, new Object[] { Integer.valueOf(1), paramc, str });
+      com.tencent.mm.plugin.report.service.h.IzE.a(20911, new Object[] { Integer.valueOf(1), paramc, str });
     }
-    AppMethodBeat.o(212409);
+    AppMethodBeat.o(206707);
   }
   
   public final void d(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(212411);
+    AppMethodBeat.i(206709);
     if (paramString1 == null)
     {
-      AppMethodBeat.o(212411);
+      AppMethodBeat.o(206709);
       return;
     }
     if (paramString2 == null)
     {
-      AppMethodBeat.o(212411);
+      AppMethodBeat.o(206709);
       return;
     }
     Log.d("MicroMsg.BizTeenModeService", "reportTeenModeToast username: %s, nickname: %s, scene: %d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
-    h.CyF.a(20912, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt), paramString1, paramString2 });
-    AppMethodBeat.o(212411);
+    com.tencent.mm.plugin.report.service.h.IzE.a(20912, new Object[] { Integer.valueOf(1), Integer.valueOf(paramInt), paramString1, paramString2 });
+    AppMethodBeat.o(206709);
   }
   
-  public final void o(int paramInt, String paramString)
+  public final void p(int paramInt, String paramString)
   {
-    AppMethodBeat.i(212410);
+    AppMethodBeat.i(206708);
     if (paramString == null)
     {
-      AppMethodBeat.o(212410);
+      AppMethodBeat.o(206708);
       return;
     }
-    if (iCn) {
-      d(paramInt, paramString, aa.getDisplayName(paramString));
+    if (lsi) {
+      d(paramInt, paramString, aa.PJ(paramString));
     }
-    AppMethodBeat.o(212410);
+    AppMethodBeat.o(206708);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onDataChanged"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onDataChanged"})
   static final class a
     implements com.tencent.mm.plugin.teenmode.a.c
   {
-    public static final a iCr;
+    public static final a lsm;
     
     static
     {
-      AppMethodBeat.i(212402);
-      iCr = new a();
-      AppMethodBeat.o(212402);
+      AppMethodBeat.i(205230);
+      lsm = new a();
+      AppMethodBeat.o(205230);
     }
     
     public final void onDataChanged()
     {
-      AppMethodBeat.i(212401);
-      Object localObject = g.af(b.class);
-      p.g(localObject, "MMKernel.service(ITeenModeService::class.java)");
-      boolean bool2 = ((b)localObject).Vt();
-      localObject = g.af(b.class);
-      p.g(localObject, "MMKernel.service(ITeenModeService::class.java)");
-      int i = ((b)localObject).fvo();
-      localObject = q.iCq;
-      if (bool2 == q.aTN())
+      AppMethodBeat.i(205228);
+      Object localObject = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.teenmode.a.b.class);
+      p.j(localObject, "MMKernel.service(ITeenModeService::class.java)");
+      boolean bool2 = ((com.tencent.mm.plugin.teenmode.a.b)localObject).ZM();
+      localObject = com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.teenmode.a.b.class);
+      p.j(localObject, "MMKernel.service(ITeenModeService::class.java)");
+      int i = ((com.tencent.mm.plugin.teenmode.a.b)localObject).gkr();
+      localObject = q.lsl;
+      if (bool2 == q.bcO())
       {
-        localObject = q.iCq;
-        if (i == q.aTO()) {
+        localObject = q.lsl;
+        if (i == q.bcP()) {
           break label149;
         }
       }
@@ -228,14 +224,14 @@ public final class q
         Log.i("MicroMsg.BizTeenModeService", "alvinluo onTeenModeDataChanged isTeenMode: %b, bizAcctOption: %d, isChanged: %b", new Object[] { Boolean.valueOf(bool2), Integer.valueOf(i), Boolean.valueOf(bool1) });
         if (bool1)
         {
-          localObject = q.iCq;
-          q.fq(bool2);
-          localObject = q.iCq;
-          q.rM(i);
-          localObject = q.iCq;
-          q.aTP();
+          localObject = q.lsl;
+          q.ga(bool2);
+          localObject = q.lsl;
+          q.uG(i);
+          localObject = q.lsl;
+          q.bcQ();
         }
-        AppMethodBeat.o(212401);
+        AppMethodBeat.o(205228);
         return;
       }
     }
@@ -243,7 +239,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.q
  * JD-Core Version:    0.7.0.1
  */

@@ -5,22 +5,23 @@ import android.view.View;
 import android.view.ViewStub;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.card.a.d;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.ui.n;
-import com.tencent.mm.protocal.protobuf.uo;
-import com.tencent.mm.protocal.protobuf.uz;
+import com.tencent.mm.protocal.protobuf.uq;
+import com.tencent.mm.protocal.protobuf.vb;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
   extends i
 {
-  private View qjP;
+  private View tFL;
   
-  public final void cxw()
+  public final void cKY()
   {
     AppMethodBeat.i(113670);
-    if (this.qjP != null) {
-      this.qjP.setVisibility(8);
+    if (this.tFL != null) {
+      this.tFL.setVisibility(8);
     }
     AppMethodBeat.o(113670);
   }
@@ -30,26 +31,26 @@ public final class e
   public final void update()
   {
     AppMethodBeat.i(113669);
-    b localb = this.qjX.cvq();
-    uo localuo = localb.csQ().LeO;
-    if (localuo != null)
+    b localb = this.tFT.cIS();
+    uq localuq = localb.cGs().Sgc;
+    if (localuq != null)
     {
-      Log.i("MicroMsg.CardAnnoucementView", "card tp annoucement  endtime: " + localuo.DhD);
-      Log.i("MicroMsg.CardAnnoucementView", "card tp annoucement  text: " + localuo.text);
-      Log.i("MicroMsg.CardAnnoucementView", "card tp annoucement  thumb_url: " + localuo.gTB);
+      Log.i("MicroMsg.CardAnnoucementView", "card tp annoucement  endtime: " + localuq.Jnj);
+      Log.i("MicroMsg.CardAnnoucementView", "card tp annoucement  text: " + localuq.text);
+      Log.i("MicroMsg.CardAnnoucementView", "card tp annoucement  thumb_url: " + localuq.jEd);
     }
-    if ((localuo != null) && (!TextUtils.isEmpty(localuo.text)) && (localb.csO()))
+    if ((localuq != null) && (!TextUtils.isEmpty(localuq.text)) && (localb.cGq()))
     {
-      if (this.qjP == null) {
-        this.qjP = ((ViewStub)findViewById(2131298035)).inflate();
+      if (this.tFL == null) {
+        this.tFL = ((ViewStub)findViewById(a.d.tbf)).inflate();
       }
-      ((TextView)this.qjP.findViewById(2131306312)).setText(localuo.text);
-      this.qjP.setOnClickListener(this.qjX.cvu());
+      ((TextView)this.tFL.findViewById(a.d.tgv)).setText(localuq.text);
+      this.tFL.setOnClickListener(this.tFT.cIW());
       AppMethodBeat.o(113669);
       return;
     }
-    if (this.qjP != null) {
-      this.qjP.setVisibility(8);
+    if (this.tFL != null) {
+      this.tFL.setVisibility(8);
     }
     AppMethodBeat.o(113669);
   }

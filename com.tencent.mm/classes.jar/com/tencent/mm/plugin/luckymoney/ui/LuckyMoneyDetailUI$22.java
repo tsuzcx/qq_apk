@@ -1,40 +1,32 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.app.Dialog;
-import android.widget.Toast;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vending.g.d.a;
 
 final class LuckyMoneyDetailUI$22
-  implements d.a
+  implements View.OnClickListener
 {
-  LuckyMoneyDetailUI$22(LuckyMoneyDetailUI paramLuckyMoneyDetailUI, Dialog paramDialog) {}
+  LuckyMoneyDetailUI$22(LuckyMoneyDetailUI paramLuckyMoneyDetailUI) {}
   
-  public final void cn(Object paramObject)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(213375);
-    if (this.tcT != null) {
-      this.tcT.dismiss();
-    }
-    Log.i("MicroMsg.LuckyMoneyDetailUI", "fetch detail failed: %s", new Object[] { paramObject });
-    if (paramObject != null) {
-      if (!(paramObject instanceof String)) {
-        break label71;
-      }
-    }
-    label71:
-    for (paramObject = paramObject.toString();; paramObject = this.zee.getString(2131767869))
-    {
-      Toast.makeText(this.zee.getContext(), paramObject, 1).show();
-      AppMethodBeat.o(213375);
-      return;
-    }
+    AppMethodBeat.i(252328);
+    b localb = new b();
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyDetailUI$29", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    Log.d("MicroMsg.LuckyMoneyDetailUI", "click tips icon");
+    LuckyMoneyDetailUI.U(this.EIF);
+    a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyDetailUI$29", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(252328);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyDetailUI.22
  * JD-Core Version:    0.7.0.1
  */

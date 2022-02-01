@@ -5,23 +5,24 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.mq.a;
+import com.tencent.mm.f.b.a.pp.a;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.ad.ui.AppBrandAdUI;
 import com.tencent.mm.plugin.appbrand.ad.ui.AppBrandAdUI1;
 import com.tencent.mm.plugin.appbrand.ad.ui.AppBrandAdUI2;
 import com.tencent.mm.plugin.appbrand.ad.ui.AppBrandAdUI3;
 import com.tencent.mm.plugin.appbrand.ad.ui.AppBrandAdUI4;
-import com.tencent.mm.plugin.appbrand.appstorage.z;
+import com.tencent.mm.plugin.appbrand.appstorage.ab;
+import com.tencent.mm.plugin.appbrand.appstorage.r;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.jsapi.file.at;
-import com.tencent.mm.plugin.appbrand.p;
-import com.tencent.mm.plugin.appbrand.page.ac;
+import com.tencent.mm.plugin.appbrand.m.o;
+import com.tencent.mm.plugin.appbrand.page.ad;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
-import com.tencent.mm.plugin.appbrand.task.e.c;
-import com.tencent.mm.plugin.appbrand.task.g;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.appbrand.t;
+import com.tencent.mm.plugin.appbrand.task.h.c;
+import com.tencent.mm.plugin.appbrand.task.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -33,8 +34,8 @@ import java.util.Set;
 
 public final class e
 {
-  private static final Map<String, Class<? extends AppBrandAdUI>> kGI;
-  private static Set<String> kGJ;
+  private static final Map<String, Class<? extends AppBrandAdUI>> nAp;
+  private static Set<String> nAq;
   
   static
   {
@@ -45,66 +46,66 @@ public final class e
     ((Map)localObject).put(":appbrand2", AppBrandAdUI2.class);
     ((Map)localObject).put(":appbrand3", AppBrandAdUI3.class);
     ((Map)localObject).put(":appbrand4", AppBrandAdUI4.class);
-    kGI = Collections.unmodifiableMap((Map)localObject);
+    nAp = Collections.unmodifiableMap((Map)localObject);
     localObject = new HashSet();
-    kGJ = (Set)localObject;
+    nAq = (Set)localObject;
     ((Set)localObject).add("shouldShowSplashAd");
-    kGJ.add("onSplashAdShow");
-    kGJ.add("onSplashAdHide");
-    kGJ.add("onSplashAdClose");
-    kGJ.add("onSplashAdButtonClicked");
-    kGJ.add("onTouchStart");
-    kGJ.add("onTouchEnd");
-    kGJ.add("onTouchCancel");
-    kGJ.add("onTouchMove");
-    kGJ.add("onLongPress");
+    nAq.add("onSplashAdShow");
+    nAq.add("onSplashAdHide");
+    nAq.add("onSplashAdClose");
+    nAq.add("onSplashAdButtonClicked");
+    nAq.add("onTouchStart");
+    nAq.add("onTouchEnd");
+    nAq.add("onTouchCancel");
+    nAq.add("onTouchMove");
+    nAq.add("onLongPress");
     AppMethodBeat.o(44039);
   }
   
-  public static boolean H(AppBrandRuntime paramAppBrandRuntime)
+  public static boolean I(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(44026);
-    if (!b.btF())
+    if (!b.bED())
     {
       Log.i("MicroMsg.AppBrandAdUtils[AppBrandSplashAd]", "checkCanShowAd, showad experiment closed");
       AppMethodBeat.o(44026);
       return false;
     }
-    if (!(paramAppBrandRuntime instanceof com.tencent.mm.plugin.appbrand.q))
+    if (!(paramAppBrandRuntime instanceof t))
     {
       Log.i("MicroMsg.AppBrandAdUtils[AppBrandSplashAd]", "checkCanShowAd, wrong runtime");
       AppMethodBeat.o(44026);
       return false;
     }
-    paramAppBrandRuntime = (com.tencent.mm.plugin.appbrand.q)paramAppBrandRuntime;
-    if (com.tencent.mm.plugin.appbrand.q.bsK() <= 0)
+    paramAppBrandRuntime = (t)paramAppBrandRuntime;
+    if (t.bDH() <= 0)
     {
       Log.i("MicroMsg.AppBrandAdUtils[AppBrandSplashAd]", "checkCanShowAd, timeThreshold invalid");
       AppMethodBeat.o(44026);
       return false;
     }
-    if (com.tencent.mm.plugin.appbrand.task.e.j(g.iD(paramAppBrandRuntime.bsC().NA())) != null) {}
+    if (com.tencent.mm.plugin.appbrand.task.h.i(n.jA(paramAppBrandRuntime.bDy().Qv())) != null) {}
     for (int i = 1; i == 0; i = 0)
     {
       Log.i("MicroMsg.AppBrandAdUtils[AppBrandSplashAd]", "checkCanShowAd, process not preloaded");
       AppMethodBeat.o(44026);
       return false;
     }
-    if (paramAppBrandRuntime.bsr())
+    if (paramAppBrandRuntime.bDl())
     {
       Log.i("MicroMsg.AppBrandAdUtils[AppBrandSplashAd]", "checkCanShowAd, ignore plugin app, appId:%s", new Object[] { paramAppBrandRuntime.mAppId });
       AppMethodBeat.o(44026);
       return false;
     }
-    i = paramAppBrandRuntime.ON().cyA.scene;
-    if (!b.vL(i))
+    i = paramAppBrandRuntime.Sk().cxf.scene;
+    if (!b.yW(i))
     {
       Log.i("MicroMsg.AppBrandAdUtils[AppBrandSplashAd]", "checkCanShowAd, scene not fit:%s", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(44026);
       return false;
     }
     boolean bool;
-    if (!b.btF())
+    if (!b.bED())
     {
       Log.i("MicroMsg.AppBrandAdUtils[AppBrandSplashAd]", "isAdContact, showad experiment closed");
       bool = false;
@@ -114,15 +115,15 @@ public final class e
       Log.i("MicroMsg.AppBrandAdUtils[AppBrandSplashAd]", "checkCanShowAd, not ad contact, appId:%s", new Object[] { paramAppBrandRuntime.mAppId });
       AppMethodBeat.o(44026);
       return false;
-      if ((paramAppBrandRuntime == null) || (!(paramAppBrandRuntime.OU() instanceof AppBrandInitConfigWC)))
+      if ((paramAppBrandRuntime == null) || (!(paramAppBrandRuntime.Sq() instanceof AppBrandInitConfigWC)))
       {
         Log.i("MicroMsg.AppBrandAdUtils[AppBrandSplashAd]", "isAdContact, null runtime or wrong initConfig");
         bool = false;
       }
       else
       {
-        bool = ((AppBrandInitConfigWC)paramAppBrandRuntime.OU()).ldY;
-        if (b.btH())
+        bool = ((AppBrandInitConfigWC)paramAppBrandRuntime.Sq()).nYm;
+        if (b.bEF())
         {
           Log.i("MicroMsg.AppBrandAdUtils[AppBrandSplashAd]", "isAdContact, set to all show ad");
           bool = true;
@@ -134,103 +135,80 @@ public final class e
     return true;
   }
   
-  public static void I(AppBrandRuntime paramAppBrandRuntime)
+  public static void J(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(44030);
-    if (paramAppBrandRuntime == null)
+    if (!(paramAppBrandRuntime instanceof t))
     {
       AppMethodBeat.o(44030);
       return;
     }
-    if (paramAppBrandRuntime.brM())
+    com.tencent.mm.plugin.appbrand.service.c localc = ((t)paramAppBrandRuntime).bDA();
+    if ((paramAppBrandRuntime.bCB()) && (localc != null))
     {
-      com.tencent.mm.plugin.appbrand.ad.a.e locale = new com.tencent.mm.plugin.appbrand.ad.a.e();
-      locale.source = "launch";
-      locale.d(paramAppBrandRuntime.NY());
+      paramAppBrandRuntime = new com.tencent.mm.plugin.appbrand.ad.a.e();
+      paramAppBrandRuntime.source = "launch";
+      paramAppBrandRuntime.a(localc);
     }
     AppMethodBeat.o(44030);
   }
   
-  public static void J(AppBrandRuntime paramAppBrandRuntime)
+  public static void K(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(44031);
-    if (paramAppBrandRuntime == null)
+    if (!(paramAppBrandRuntime instanceof t))
     {
       AppMethodBeat.o(44031);
       return;
     }
-    if (paramAppBrandRuntime.brM())
+    if (paramAppBrandRuntime.bCB())
     {
       com.tencent.mm.plugin.appbrand.ad.a.d locald = new com.tencent.mm.plugin.appbrand.ad.a.d();
       locald.source = "launch";
-      locald.d(paramAppBrandRuntime.NY());
+      locald.a(((t)paramAppBrandRuntime).bDA());
     }
     AppMethodBeat.o(44031);
   }
   
   public static void M(String paramString, long paramLong)
   {
-    AppMethodBeat.i(226259);
-    if (p.Um(paramString).kCO.kGE == 0L) {
-      p.Un(paramString).kCO.kGE = paramLong;
+    AppMethodBeat.i(283855);
+    if (s.abV(paramString).nvY.nAl == 0L) {
+      s.abW(paramString).nvY.nAl = paramLong;
     }
-    AppMethodBeat.o(226259);
+    AppMethodBeat.o(283855);
   }
   
   public static void N(String paramString, long paramLong)
   {
-    AppMethodBeat.i(226260);
-    if (p.Um(paramString).kCO.kGF == 0L) {
-      p.Un(paramString).kCO.kGF = paramLong;
+    AppMethodBeat.i(283856);
+    if (s.abV(paramString).nvY.nAm == 0L) {
+      s.abW(paramString).nvY.nAm = paramLong;
     }
-    AppMethodBeat.o(226260);
+    AppMethodBeat.o(283856);
   }
   
-  public static boolean Ux(String paramString)
-  {
-    AppMethodBeat.i(44025);
-    boolean bool = kGJ.contains(paramString);
-    AppMethodBeat.o(44025);
-    return bool;
-  }
-  
-  public static String Uy(String paramString)
-  {
-    AppMethodBeat.i(44035);
-    paramString = p.Um(paramString).kCO.name;
-    AppMethodBeat.o(44035);
-    return paramString;
-  }
-  
-  public static String Uz(String paramString)
-  {
-    AppMethodBeat.i(44037);
-    paramString = p.Um(paramString).kCO.icon;
-    AppMethodBeat.o(44037);
-    return paramString;
-  }
-  
-  public static void a(com.tencent.mm.plugin.appbrand.q paramq, e.c paramc, boolean paramBoolean)
+  public static void a(t paramt, h.c paramc, boolean paramBoolean)
   {
     int j = 1;
-    AppMethodBeat.i(226258);
+    AppMethodBeat.i(283852);
     int i;
     String str;
     int k;
-    mq.a locala;
+    pp.a locala;
     int m;
     int n;
-    switch (1.kGK[paramc.ordinal()])
+    switch (1.nAr[paramc.ordinal()])
     {
     default: 
       i = 1;
-      paramq = new QualitySession("", paramq.bsC(), paramq.ON().cyA);
-      paramc = h.CyF;
-      str = paramq.appId;
-      k = paramq.nLk;
-      locala = mq.a.mB(paramq.nJE);
-      m = paramq.apptype;
-      n = paramq.scene;
+      paramt = new QualitySession("", paramt.bDy(), paramt.Sk().cxf);
+      paramc = com.tencent.mm.plugin.report.service.h.IzE;
+      str = paramt.appId;
+      k = paramt.qNx;
+      locala = pp.a.oM(paramt.qLQ);
+      m = paramt.apptype;
+      n = paramt.scene;
       if (!paramBoolean) {
         break;
       }
@@ -238,7 +216,7 @@ public final class e
     for (;;)
     {
       paramc.a(21052, new Object[] { str, Integer.valueOf(k), locala, Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i), Integer.valueOf(j) });
-      AppMethodBeat.o(226258);
+      AppMethodBeat.o(283852);
       return;
       i = 1;
       break;
@@ -250,70 +228,104 @@ public final class e
     }
   }
   
-  public static void af(String paramString, boolean paramBoolean)
+  public static boolean a(o paramo)
+  {
+    return paramo instanceof com.tencent.mm.plugin.appbrand.c;
+  }
+  
+  public static boolean ach(String paramString)
+  {
+    AppMethodBeat.i(44025);
+    boolean bool = nAq.contains(paramString);
+    AppMethodBeat.o(44025);
+    return bool;
+  }
+  
+  public static String aci(String paramString)
+  {
+    AppMethodBeat.i(44035);
+    paramString = s.abV(paramString).nvY.name;
+    AppMethodBeat.o(44035);
+    return paramString;
+  }
+  
+  public static String acj(String paramString)
+  {
+    AppMethodBeat.i(44037);
+    paramString = s.abV(paramString).nvY.icon;
+    AppMethodBeat.o(44037);
+    return paramString;
+  }
+  
+  public static void ag(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(44034);
-    p.Un(paramString).kCO.kGr = paramBoolean;
+    s.abW(paramString).nvY.nzY = paramBoolean;
     AppMethodBeat.o(44034);
   }
   
-  public static com.tencent.mm.plugin.appbrand.appstorage.q btJ()
+  public static r bEH()
   {
     AppMethodBeat.i(174694);
-    z localz = a.btK();
+    ab localab = e.a.bEJ();
     AppMethodBeat.o(174694);
-    return localz;
+    return localab;
   }
   
-  public static void c(ac paramac)
+  public static boolean bEI()
+  {
+    return true;
+  }
+  
+  public static void c(ad paramad)
   {
     AppMethodBeat.i(44028);
-    if (paramac != null) {}
+    if (paramad != null) {}
     try
     {
-      if (paramac.getContext() != null) {}
-      for (Context localContext = paramac.getContext();; localContext = MMApplicationContext.getContext())
+      if (paramad.getContext() != null) {}
+      for (Context localContext = paramad.getContext();; localContext = MMApplicationContext.getContext())
       {
         String str1 = MMApplicationContext.getProcessName();
         String str2 = MMApplicationContext.getPackageName();
-        paramac = new Intent(localContext, (Class)kGI.get(str1.replaceFirst(str2, ""))).putExtra("appId", paramac.getAppId());
+        paramad = new Intent(localContext, (Class)nAp.get(str1.replaceFirst(str2, ""))).putExtra("appId", paramad.getAppId());
         if (!(localContext instanceof Activity)) {
-          paramac.addFlags(268435456);
+          paramad.addFlags(268435456);
         }
-        paramac = new com.tencent.mm.hellhoundlib.b.a().bl(paramac);
-        com.tencent.mm.hellhoundlib.a.a.a(localContext, paramac.axQ(), "com/tencent/mm/plugin/appbrand/ad/AppBrandAdUtils", "openAdUIFromMenu", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        localContext.startActivity((Intent)paramac.pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/mm/plugin/appbrand/ad/AppBrandAdUtils", "openAdUIFromMenu", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramad = new com.tencent.mm.hellhoundlib.b.a().bm(paramad);
+        com.tencent.mm.hellhoundlib.a.a.b(localContext, paramad.aFh(), "com/tencent/mm/plugin/appbrand/ad/AppBrandAdUtils", "openAdUIFromMenu", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localContext.startActivity((Intent)paramad.sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(localContext, "com/tencent/mm/plugin/appbrand/ad/AppBrandAdUtils", "openAdUIFromMenu", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(44028);
         return;
       }
       return;
     }
-    catch (Exception paramac)
+    catch (Exception paramad)
     {
-      Log.printErrStackTrace("MicroMsg.AppBrandAdUtils[AppBrandSplashAd]", paramac, "openAdUIFromMenu fail", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.AppBrandAdUtils[AppBrandSplashAd]", paramad, "openAdUIFromMenu fail", new Object[0]);
       AppMethodBeat.o(44028);
     }
   }
   
-  public static void cm(String paramString1, String paramString2)
+  public static void cr(String paramString1, String paramString2)
   {
     AppMethodBeat.i(44036);
-    p.Un(paramString1).kCO.name = paramString2;
+    s.abW(paramString1).nvY.name = paramString2;
     AppMethodBeat.o(44036);
   }
   
-  public static void cn(String paramString1, String paramString2)
+  public static void cs(String paramString1, String paramString2)
   {
     AppMethodBeat.i(44038);
-    p.Un(paramString1).kCO.icon = paramString2;
+    s.abW(paramString1).nvY.icon = paramString2;
     AppMethodBeat.o(44038);
   }
   
-  public static boolean d(ac paramac)
+  public static boolean d(ad paramad)
   {
     AppMethodBeat.i(44032);
-    if ((p.Um(paramac.getAppId()).kCO.kGr) && (!Util.isNullOrNil(Uy(paramac.getAppId()))))
+    if ((s.abV(paramad.getAppId()).nvY.nzY) && (!Util.isNullOrNil(aci(paramad.getAppId()))))
     {
       AppMethodBeat.o(44032);
       return true;
@@ -322,28 +334,14 @@ public final class e
     return false;
   }
   
-  public static boolean dE(Context paramContext)
+  public static boolean dD(Context paramContext)
   {
     return paramContext instanceof AppBrandAdUI;
-  }
-  
-  static final class a
-  {
-    private static final z kGL;
-    
-    static
-    {
-      AppMethodBeat.i(174693);
-      z localz = new z(at.o(new String[] { "__ad" }), "wxfile://ad");
-      kGL = localz;
-      localz.kTk = 104857600L;
-      AppMethodBeat.o(174693);
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ad.e
  * JD-Core Version:    0.7.0.1
  */

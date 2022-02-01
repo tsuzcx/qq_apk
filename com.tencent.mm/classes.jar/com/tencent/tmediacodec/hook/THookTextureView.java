@@ -11,9 +11,9 @@ import com.tencent.tmediacodec.g.b;
 public class THookTextureView
   extends TextureView
 {
-  private static a Smn;
-  private TextureView.SurfaceTextureListener Smo;
-  private TextureView.SurfaceTextureListener Smp;
+  private static a ZOY;
+  private TextureView.SurfaceTextureListener ZOZ;
+  private TextureView.SurfaceTextureListener ZPa;
   
   public THookTextureView(Context paramContext)
   {
@@ -28,38 +28,38 @@ public class THookTextureView
   public THookTextureView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(190143);
-    this.Smp = new TextureView.SurfaceTextureListener()
+    AppMethodBeat.i(224460);
+    this.ZPa = new TextureView.SurfaceTextureListener()
     {
       public final void onSurfaceTextureAvailable(SurfaceTexture paramAnonymousSurfaceTexture, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(190142);
+        AppMethodBeat.i(224454);
         if (THookTextureView.a(THookTextureView.this) != null) {
           THookTextureView.a(THookTextureView.this).onSurfaceTextureAvailable(paramAnonymousSurfaceTexture, paramAnonymousInt1, paramAnonymousInt2);
         }
-        AppMethodBeat.o(190142);
+        AppMethodBeat.o(224454);
       }
       
       public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramAnonymousSurfaceTexture)
       {
         boolean bool2 = true;
-        AppMethodBeat.i(190141);
+        AppMethodBeat.i(224453);
         boolean bool1;
         if ((THookTextureView.a(THookTextureView.this) == null) || (THookTextureView.a(THookTextureView.this).onSurfaceTextureDestroyed(paramAnonymousSurfaceTexture)))
         {
           bool1 = true;
-          if (THookTextureView.hpA() == null) {
+          if (THookTextureView.itg() == null) {
             break label118;
           }
-          if ((!bool1) || (!THookTextureView.hpA().u(paramAnonymousSurfaceTexture))) {
+          if ((!bool1) || (!THookTextureView.itg().x(paramAnonymousSurfaceTexture))) {
             break label113;
           }
         }
         for (;;)
         {
           new StringBuilder().append(this).append("onSurfaceTextureDestroyed surfaceTexture:").append(paramAnonymousSurfaceTexture).append(" hookResult:").append(bool2).append("result:").append(bool1);
-          b.bqQ("THookTextureView");
-          AppMethodBeat.o(190141);
+          b.bDP("THookTextureView");
+          AppMethodBeat.o(224453);
           return bool2;
           bool1 = false;
           break;
@@ -68,54 +68,54 @@ public class THookTextureView
         }
         label118:
         new StringBuilder().append(this).append(", onSurfaceTextureDestroyed surfaceTexture:").append(paramAnonymousSurfaceTexture).append(" result:").append(bool1);
-        b.bqQ("THookTextureView");
-        AppMethodBeat.o(190141);
+        b.bDP("THookTextureView");
+        AppMethodBeat.o(224453);
         return bool1;
       }
       
       public final void onSurfaceTextureSizeChanged(SurfaceTexture paramAnonymousSurfaceTexture, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(190139);
+        AppMethodBeat.i(224445);
         if (THookTextureView.a(THookTextureView.this) != null) {
           THookTextureView.a(THookTextureView.this).onSurfaceTextureSizeChanged(paramAnonymousSurfaceTexture, paramAnonymousInt1, paramAnonymousInt2);
         }
-        AppMethodBeat.o(190139);
+        AppMethodBeat.o(224445);
       }
       
       public final void onSurfaceTextureUpdated(SurfaceTexture paramAnonymousSurfaceTexture)
       {
-        AppMethodBeat.i(190140);
+        AppMethodBeat.i(224446);
         if (THookTextureView.a(THookTextureView.this) != null) {
           THookTextureView.a(THookTextureView.this).onSurfaceTextureUpdated(paramAnonymousSurfaceTexture);
         }
-        AppMethodBeat.o(190140);
+        AppMethodBeat.o(224446);
       }
     };
     setSurfaceTextureListener(null);
-    AppMethodBeat.o(190143);
+    AppMethodBeat.o(224460);
   }
   
   public static void setHookCallback(a parama)
   {
-    Smn = parama;
+    ZOY = parama;
   }
   
   public final void setSurfaceTextureListener(TextureView.SurfaceTextureListener paramSurfaceTextureListener)
   {
-    AppMethodBeat.i(190144);
-    this.Smo = paramSurfaceTextureListener;
-    super.setSurfaceTextureListener(this.Smp);
-    AppMethodBeat.o(190144);
+    AppMethodBeat.i(224462);
+    this.ZOZ = paramSurfaceTextureListener;
+    super.setSurfaceTextureListener(this.ZPa);
+    AppMethodBeat.o(224462);
   }
   
   public static abstract interface a
   {
-    public abstract boolean u(SurfaceTexture paramSurfaceTexture);
+    public abstract boolean x(SurfaceTexture paramSurfaceTexture);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmediacodec.hook.THookTextureView
  * JD-Core Version:    0.7.0.1
  */

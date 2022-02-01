@@ -5,28 +5,28 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.TextUtils.TruncateAt;
 
-public final class f
+public class f
 {
-  public int breakStrategy = -1;
-  public int gravity;
-  public boolean huF = true;
-  CharSequence huG;
-  public StaticLayout huH;
-  public Layout.Alignment huw;
-  public TextUtils.TruncateAt hux;
-  public TextPaint iW;
+  CharSequence LV;
+  public TextPaint bzo;
+  public int ek;
+  public boolean kgB = true;
+  CharSequence kgC;
+  public StaticLayout kgD;
+  public Layout.Alignment kgr;
+  public TextUtils.TruncateAt kgs;
+  public int kgy = -1;
   public int maxLength;
   public int maxLines;
-  CharSequence text;
   
   public f(StaticLayout paramStaticLayout)
   {
-    this.huH = paramStaticLayout;
+    this.kgD = paramStaticLayout;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.f
  * JD-Core Version:    0.7.0.1
  */

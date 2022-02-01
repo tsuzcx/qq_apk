@@ -9,11 +9,11 @@ public abstract interface b
   
   public abstract void destroy();
   
-  public abstract Bitmap.Config gMq();
+  public abstract Bitmap.Config hLx();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.blur.b
  * JD-Core Version:    0.7.0.1
  */

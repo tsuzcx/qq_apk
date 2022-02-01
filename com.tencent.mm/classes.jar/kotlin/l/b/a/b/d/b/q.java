@@ -10,20 +10,20 @@ import kotlin.l.b.a.b.d.a.c.a.h;
 public final class q
   implements an
 {
-  private final h TrO;
+  private final h aaUI;
   
   public q(h paramh)
   {
     AppMethodBeat.i(58227);
-    this.TrO = paramh;
+    this.aaUI = paramh;
     AppMethodBeat.o(58227);
   }
   
-  public final ao hBu()
+  public final ao iFJ()
   {
     AppMethodBeat.i(58226);
-    ao localao = ao.ThL;
-    p.g(localao, "SourceFile.NO_SOURCE_FILE");
+    ao localao = ao.aaKF;
+    p.j(localao, "SourceFile.NO_SOURCE_FILE");
     AppMethodBeat.o(58226);
     return localao;
   }
@@ -31,14 +31,14 @@ public final class q
   public final String toString()
   {
     AppMethodBeat.i(58225);
-    String str = this.TrO + ": " + this.TrO.hDT().keySet();
+    String str = this.aaUI + ": " + this.aaUI.iIm().keySet();
     AppMethodBeat.o(58225);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.b.q
  * JD-Core Version:    0.7.0.1
  */

@@ -1,87 +1,87 @@
 package com.tencent.mm.plugin.card.base;
 
-import com.tencent.mm.protocal.protobuf.dxr;
-import com.tencent.mm.protocal.protobuf.ty;
-import com.tencent.mm.protocal.protobuf.us;
-import com.tencent.mm.protocal.protobuf.uz;
+import com.tencent.mm.protocal.protobuf.ehs;
+import com.tencent.mm.protocal.protobuf.ua;
+import com.tencent.mm.protocal.protobuf.uu;
+import com.tencent.mm.protocal.protobuf.vb;
 
 public abstract interface b
 {
-  public abstract String Ee(int paramInt);
+  public abstract String HF(int paramInt);
   
-  public abstract void a(ty paramty);
+  public abstract void a(ua paramua);
   
-  public abstract void a(us paramus);
+  public abstract void a(uu paramuu);
   
-  public abstract void aiY(String paramString);
+  public abstract void aqL(String paramString);
   
-  public abstract boolean csA();
+  public abstract boolean cFW();
   
-  public abstract boolean csB();
+  public abstract boolean cFX();
   
-  public abstract boolean csC();
+  public abstract boolean cFY();
   
-  public abstract boolean csD();
+  public abstract boolean cFZ();
   
-  public abstract boolean csE();
+  public abstract String cGA();
   
-  public abstract boolean csF();
+  public abstract int cGB();
   
-  public abstract boolean csG();
+  public abstract String cGC();
   
-  public abstract boolean csH();
+  public abstract boolean cGa();
   
-  public abstract boolean csI();
+  public abstract boolean cGb();
   
-  public abstract boolean csJ();
+  public abstract boolean cGc();
   
-  public abstract boolean csK();
+  public abstract boolean cGd();
   
-  public abstract boolean csL();
+  public abstract boolean cGe();
   
-  public abstract boolean csM();
+  public abstract boolean cGf();
   
-  public abstract boolean csN();
+  public abstract boolean cGg();
   
-  public abstract boolean csO();
+  public abstract boolean cGh();
   
-  public abstract boolean csP();
+  public abstract boolean cGi();
   
-  public abstract uz csQ();
+  public abstract boolean cGj();
   
-  public abstract ty csR();
+  public abstract boolean cGk();
   
-  public abstract dxr csS();
+  public abstract boolean cGl();
   
-  public abstract us csT();
+  public abstract boolean cGm();
   
-  public abstract String csU();
+  public abstract boolean cGn();
   
-  public abstract String csV();
+  public abstract boolean cGo();
   
-  public abstract String csW();
+  public abstract boolean cGp();
   
-  public abstract long csX();
+  public abstract boolean cGq();
   
-  public abstract String csY();
+  public abstract boolean cGr();
   
-  public abstract int csZ();
+  public abstract vb cGs();
   
-  public abstract boolean csv();
+  public abstract ua cGt();
   
-  public abstract boolean csw();
+  public abstract ehs cGu();
   
-  public abstract boolean csx();
+  public abstract uu cGv();
   
-  public abstract boolean csy();
+  public abstract String cGw();
   
-  public abstract boolean csz();
+  public abstract String cGx();
   
-  public abstract String cta();
+  public abstract String cGy();
+  
+  public abstract long cGz();
   
   public abstract long getEndTime();
-  
-  public abstract boolean isAcceptable();
 }
 
 

@@ -10,14 +10,14 @@ import java.util.Arrays;
 @TargetApi(21)
 public final class c
 {
-  public static final c beN;
+  public static final c aOo;
   private final int maxChannelCount;
   final int[] supportedEncodings;
   
   static
   {
     AppMethodBeat.i(91761);
-    beN = new c(new int[] { 2 }, 2);
+    aOo = new c(new int[] { 2 }, 2);
     AppMethodBeat.o(91761);
   }
   
@@ -38,13 +38,13 @@ public final class c
     }
   }
   
-  public static c aj(Context paramContext)
+  public static c ab(Context paramContext)
   {
     AppMethodBeat.i(91756);
     paramContext = paramContext.registerReceiver(null, new IntentFilter("android.media.action.HDMI_AUDIO_PLUG"));
     if ((paramContext == null) || (paramContext.getIntExtra("android.media.extra.AUDIO_PLUG_STATE", 0) == 0))
     {
-      paramContext = beN;
+      paramContext = aOo;
       AppMethodBeat.o(91756);
       return paramContext;
     }
@@ -95,7 +95,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.a.c
  * JD-Core Version:    0.7.0.1
  */

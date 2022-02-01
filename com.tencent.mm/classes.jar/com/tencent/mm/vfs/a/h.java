@@ -6,31 +6,31 @@ import java.util.Iterator;
 public final class h<T>
   implements Iterable<T>
 {
-  private final Iterable<? extends T> ReP;
-  private final a<T> ReZ;
+  private final Iterable<? extends T> YFJ;
+  private final a YFT;
   
-  public h(Iterable<? extends T> paramIterable, a<T> parama)
+  public h(Iterable<? extends T> paramIterable, a parama)
   {
-    this.ReP = paramIterable;
-    this.ReZ = parama;
+    this.YFJ = paramIterable;
+    this.YFT = parama;
   }
   
   public final Iterator<T> iterator()
   {
-    AppMethodBeat.i(187782);
-    i locali = new i(this.ReP.iterator(), this.ReZ);
-    AppMethodBeat.o(187782);
+    AppMethodBeat.i(237109);
+    i locali = new i(this.YFJ.iterator(), this.YFT);
+    AppMethodBeat.o(237109);
     return locali;
   }
   
-  public static abstract interface a<T>
+  public static abstract interface a
   {
-    public abstract void hen();
+    public abstract void ifx();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vfs.a.h
  * JD-Core Version:    0.7.0.1
  */

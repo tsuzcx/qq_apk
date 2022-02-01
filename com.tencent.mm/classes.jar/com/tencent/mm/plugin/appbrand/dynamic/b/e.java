@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class e
 {
-  private static volatile e lmX;
+  private static volatile e ohJ;
   private Map<String, SoftReference<WxaPkgWrappingInfo>> mMap;
   
   private e()
@@ -18,7 +18,7 @@ public class e
     AppMethodBeat.o(121271);
   }
   
-  public static WxaPkgWrappingInfo Yu(String paramString)
+  public static WxaPkgWrappingInfo agi(String paramString)
   {
     AppMethodBeat.i(121273);
     if ((paramString == null) || (paramString.length() == 0))
@@ -26,7 +26,7 @@ public class e
       AppMethodBeat.o(121273);
       return null;
     }
-    paramString = (SoftReference)bBY().mMap.get(paramString);
+    paramString = (SoftReference)bNu().mMap.get(paramString);
     if (paramString != null)
     {
       paramString = (WxaPkgWrappingInfo)paramString.get();
@@ -45,21 +45,21 @@ public class e
       AppMethodBeat.o(121272);
       return false;
     }
-    bBY().mMap.put(paramString, new SoftReference(paramWxaPkgWrappingInfo));
+    bNu().mMap.put(paramString, new SoftReference(paramWxaPkgWrappingInfo));
     AppMethodBeat.o(121272);
     return true;
   }
   
-  private static e bBY()
+  private static e bNu()
   {
     AppMethodBeat.i(121270);
-    if (lmX == null) {}
+    if (ohJ == null) {}
     try
     {
-      if (lmX == null) {
-        lmX = new e();
+      if (ohJ == null) {
+        ohJ = new e();
       }
-      e locale = lmX;
+      e locale = ohJ;
       AppMethodBeat.o(121270);
       return locale;
     }
@@ -72,13 +72,13 @@ public class e
   public static void removeAll()
   {
     AppMethodBeat.i(121274);
-    bBY().mMap.clear();
+    bNu().mMap.clear();
     AppMethodBeat.o(121274);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.b.e
  * JD-Core Version:    0.7.0.1
  */

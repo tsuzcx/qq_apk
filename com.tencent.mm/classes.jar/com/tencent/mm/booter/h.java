@@ -5,14 +5,14 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.h.a;
-import com.tencent.mm.bb.j;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.be.k;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
-import com.tencent.mm.modelvideo.o;
-import com.tencent.mm.modelvideo.t;
+import com.tencent.mm.modelvideo.s;
+import com.tencent.mm.modelvideo.x;
 import com.tencent.mm.n.f;
 import com.tencent.mm.plugin.webwx.a.a;
+import com.tencent.mm.plugin.webwx.a.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -29,17 +29,17 @@ public final class h
     Object localObject1 = MMApplicationContext.getContext();
     h.a local1 = new h.a()
     {
-      public final void iN(int paramAnonymousInt)
+      public final void kb(int paramAnonymousInt)
       {
         AppMethodBeat.i(19884);
         Log.i("MicroMsg.PostTaskLightweightJob", "CrashStatus report: key %s ", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(25L, paramAnonymousInt, 1L, false);
+        com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(25L, paramAnonymousInt, 1L, false);
         AppMethodBeat.o(19884);
       }
     };
     if (localObject1 != null) {}
-    label1224:
-    label1229:
+    label1175:
+    label1180:
     for (;;)
     {
       try
@@ -72,56 +72,47 @@ public final class h
         }
         catch (Throwable localThrowable2) {}
         continue;
-        i = 0;
-        continue;
         if (!bool) {
           continue;
         }
-        bg.aVF();
-        c.azQ().set(233475, Boolean.FALSE);
+        bh.beI();
+        c.aHp().i(233475, Boolean.FALSE);
         continue;
       }
       localObject1 = MMApplicationContext.getContext();
-      int i = com.tencent.mm.n.h.aqJ().getInt("AndroidGooglePlayCrashUploadSizeLimit", 8192);
+      int i = com.tencent.mm.n.h.axc().getInt("AndroidGooglePlayCrashUploadSizeLimit", 8192);
       if ((localObject1 == null) || (i <= 0))
       {
-        bg.aVF();
-        if (Util.milliSecondsToNow(Util.nullAs((Long)c.azQ().get(ar.a.NSi, null), 0L)) > 21600000L)
+        bh.beI();
+        if (Util.milliSecondsToNow(Util.nullAs((Long)c.aHp().get(ar.a.Vgg, null), 0L)) > 21600000L)
         {
-          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(279L, com.tencent.mm.n.h.aqJ().getInt("AndroidDynamicConfigVer", 0) % 16, 1L, false);
-          bg.aVF();
-          c.azQ().set(ar.a.NSi, Long.valueOf(Util.nowMilliSecond()));
+          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(279L, com.tencent.mm.n.h.axc().getInt("AndroidDynamicConfigVer", 0) % 16, 1L, false);
+          bh.beI();
+          c.aHp().set(ar.a.Vgg, Long.valueOf(Util.nowMilliSecond()));
         }
-        bg.aVF();
-        if (Util.milliSecondsToNow(Util.nullAs((Long)c.azQ().get(ar.a.NSj, null), 0L)) > 21600000L)
+        bh.beI();
+        if (Util.milliSecondsToNow(Util.nullAs((Long)c.aHp().get(ar.a.Vgh, null), 0L)) > 21600000L)
         {
-          bg.aVF();
-          c.azQ().set(ar.a.NSj, Long.valueOf(Util.nowMilliSecond()));
-          o.bhj().bhE();
+          bh.beI();
+          c.aHp().set(ar.a.Vgh, Long.valueOf(Util.nowMilliSecond()));
+          s.bqB().bra();
         }
-        l = Util.nullAs((Long)com.tencent.mm.kernel.g.aAh().azQ().get(81939, null), 0L);
-        if (Util.nowMilliSecond() - l <= 86400000L) {
-          continue;
-        }
-        i = 1;
-        if (i != 0) {
-          new j();
-        }
+        k.update();
         l = System.currentTimeMillis();
-        bg.aVF();
-        bool = ((Boolean)c.azQ().get(233475, Boolean.FALSE)).booleanValue();
-        bg.aVF();
-        if (c.aSN().gCe() > 0) {
+        bh.beI();
+        bool = ((Boolean)c.aHp().b(233475, Boolean.FALSE)).booleanValue();
+        bh.beI();
+        if (c.bbL().hyq() > 0) {
           continue;
         }
         if (!bool)
         {
-          bg.aVF();
-          c.aST().bjW("officialaccounts");
-          bg.aVF();
-          c.azQ().set(233475, Boolean.TRUE);
+          bh.beI();
+          c.bbR().bwv("officialaccounts");
+          bh.beI();
+          c.aHp().i(233475, Boolean.TRUE);
         }
-        com.tencent.mm.plugin.webwx.a.g.gjb().gjd().gja();
+        g.hcM().hcO().hcL();
         Log.i("MicroMsg.PostTaskLightweightJob", "use time %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
         AppMethodBeat.o(19885);
         return;
@@ -130,18 +121,18 @@ public final class h
         ((SharedPreferences.Editor)localObject1).commit();
         i = 0;
         if (i >= arrayOfString.length) {
-          break label1229;
+          break label1180;
         }
         if (arrayOfString[i] == null)
         {
           localObject1 = null;
           if ((localObject1 == null) || (localObject1.length < 2)) {
-            break label1224;
+            break label1175;
           }
           if (localObject1[1].equals("anr"))
           {
-            local1.iN(10);
-            break label1224;
+            local1.kb(10);
+            break label1175;
           }
         }
         else
@@ -149,68 +140,68 @@ public final class h
           localObject1 = arrayOfString[i].split(",");
           continue;
         }
-        local1.iN(11);
+        local1.kb(11);
         if (MMApplicationContext.getApplicationId().equals(localObject1[0])) {
-          local1.iN(14);
+          local1.kb(14);
         }
         if ((MMApplicationContext.getApplicationId() + ":push").equals(localObject1[0])) {
-          local1.iN(17);
+          local1.kb(17);
         }
         if ((MMApplicationContext.getApplicationId() + ":tools").equals(localObject1[0])) {
-          local1.iN(20);
+          local1.kb(20);
         }
         if ((MMApplicationContext.getApplicationId() + ":toolsmp").equals(localObject1[0])) {
-          local1.iN(20);
+          local1.kb(20);
         }
         if (localObject1[1].equals("java"))
         {
-          local1.iN(12);
+          local1.kb(12);
           if (MMApplicationContext.getApplicationId().equals(localObject1[0])) {
-            local1.iN(15);
+            local1.kb(15);
           }
           if ((MMApplicationContext.getApplicationId() + ":push").equals(localObject1[0])) {
-            local1.iN(18);
+            local1.kb(18);
           }
           if ((MMApplicationContext.getApplicationId() + ":tools").equals(localObject1[0])) {
-            local1.iN(21);
+            local1.kb(21);
           }
           if ((MMApplicationContext.getApplicationId() + ":toolsmp").equals(localObject1[0])) {
-            local1.iN(21);
+            local1.kb(21);
           }
         }
         if (localObject1[1].equals("jni"))
         {
-          local1.iN(13);
+          local1.kb(13);
           if (MMApplicationContext.getApplicationId().equals(localObject1[0])) {
-            local1.iN(16);
+            local1.kb(16);
           }
           if ((MMApplicationContext.getApplicationId() + ":push").equals(localObject1[0])) {
-            local1.iN(19);
+            local1.kb(19);
           }
           if ((MMApplicationContext.getApplicationId() + ":tools").equals(localObject1[0])) {
-            local1.iN(22);
+            local1.kb(22);
           }
           if ((MMApplicationContext.getApplicationId() + ":toolsmp").equals(localObject1[0])) {
-            local1.iN(22);
+            local1.kb(22);
           }
         }
         if (!localObject1[1].equals("first")) {
-          break label1224;
+          break label1175;
         }
         if (MMApplicationContext.getApplicationId().equals(localObject1[0])) {
-          local1.iN(23);
+          local1.kb(23);
         }
         if ((MMApplicationContext.getApplicationId() + ":push").equals(localObject1[0])) {
-          local1.iN(24);
+          local1.kb(24);
         }
         if ((MMApplicationContext.getApplicationId() + ":tools").equals(localObject1[0])) {
-          local1.iN(25);
+          local1.kb(25);
         }
         if (!(MMApplicationContext.getApplicationId() + ":toolsmp").equals(localObject1[0])) {
-          break label1224;
+          break label1175;
         }
-        local1.iN(25);
-        break label1224;
+        local1.kb(25);
+        break label1175;
       }
       i += 1;
     }

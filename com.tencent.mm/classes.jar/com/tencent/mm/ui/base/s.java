@@ -1,248 +1,181 @@
 package com.tencent.mm.ui.base;
 
-import android.annotation.TargetApi;
-import android.app.ActivityManager;
 import android.content.Context;
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.os.Environment;
-import android.os.StatFs;
-import android.util.Base64;
-import android.util.StringBuilderPrinter;
+import android.content.DialogInterface.OnCancelListener;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.Window;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.crash.CrashReportFactory;
-import com.tencent.mm.sdk.platformtools.BuildInfo;
-import com.tencent.mm.sdk.platformtools.ChannelUtil;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
+import com.tencent.mm.ah.a.l;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import java.io.File;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import com.tencent.mm.ui.ad;
 
-@TargetApi(16)
-final class s
-  extends SurfaceTexture
+public class s
+  extends t
 {
-  public SurfaceTexture mSurfaceTexture = null;
+  private TextView UWd;
+  private View mContentView;
+  public ProgressBar ros;
+  private int style;
   
-  public s()
+  protected s(Context paramContext, int paramInt1, int paramInt2)
   {
-    super(0);
-  }
-  
-  private static String aXy()
-  {
-    AppMethodBeat.i(142160);
-    StringBuilder localStringBuilder = new StringBuilder(256);
-    StringBuilderPrinter localStringBuilderPrinter = new StringBuilderPrinter(localStringBuilder);
-    Object localObject2 = MMApplicationContext.getContext();
-    localStringBuilderPrinter.println("#accinfo.revision=" + BuildInfo.REV);
-    localStringBuilderPrinter.println("#accinfo.build=" + BuildInfo.TIME + ":" + BuildInfo.HOSTNAME + ":" + ChannelUtil.channelId);
-    Object localObject3 = new StringBuilder("#accinfo.env=");
-    Object localObject1;
-    if (CrashReportFactory.foreground) {
-      localObject1 = "f";
+    super(paramContext, paramInt1);
+    AppMethodBeat.i(142066);
+    this.style = paramInt2;
+    switch (this.style)
+    {
+    default: 
+      paramInt1 = a.h.mm_progress_dialog;
     }
     for (;;)
     {
-      localStringBuilderPrinter.println((String)localObject1 + ":" + Thread.currentThread().getName() + ":" + CrashReportFactory.currentActivity);
-      try
-      {
-        localObject1 = new StatFs(Environment.getDataDirectory().getPath());
-        localObject3 = new StatFs(b.aKD());
-        localObject1 = String.format("%dMB %s:%d:%d:%d %s:%d:%d:%d", new Object[] { Integer.valueOf(((ActivityManager)((Context)localObject2).getSystemService("activity")).getMemoryClass()), Environment.getDataDirectory().getAbsolutePath(), Integer.valueOf(((StatFs)localObject1).getBlockSize()), Integer.valueOf(((StatFs)localObject1).getBlockCount()), Integer.valueOf(((StatFs)localObject1).getAvailableBlocks()), b.aKD(), Integer.valueOf(((StatFs)localObject3).getBlockSize()), Integer.valueOf(((StatFs)localObject3).getBlockCount()), Integer.valueOf(((StatFs)localObject3).getAvailableBlocks()) });
-        localStringBuilderPrinter.println("#accinfo.data=".concat(String.valueOf(localObject1)));
-        localObject1 = new Date();
-        localObject2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ", Locale.getDefault());
-        localStringBuilderPrinter.println("#accinfo.crashTime=" + ((SimpleDateFormat)localObject2).format((Date)localObject1));
-        localStringBuilderPrinter.println("#crashContent=");
-        localObject1 = localStringBuilder.toString();
-        AppMethodBeat.o(142160);
-        return localObject1;
-        localObject1 = "b";
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          Log.e("MicroMsg.MMSurfaceTextureWrap", "check data size failed :%s", new Object[] { localException.getMessage() });
-          String str = "";
-        }
-      }
+      this.mContentView = ad.kS(getContext()).inflate(paramInt1, null);
+      this.UWd = ((TextView)this.mContentView.findViewById(a.g.mm_progress_dialog_msg));
+      this.UWd.getViewTreeObserver().addOnGlobalLayoutListener(new s.1(this));
+      this.ros = ((ProgressBar)this.mContentView.findViewById(a.g.mm_progress_dialog_icon));
+      setCanceledOnTouchOutside(true);
+      AppMethodBeat.o(142066);
+      return;
+      paramInt1 = a.h.mm_progress_dialog;
+      continue;
+      paramInt1 = a.h.mm_progress_dialog_with_bg;
+      continue;
+      paramInt1 = a.h.mm_progress_dialog;
+      continue;
+      paramInt1 = a.h.mm_progress_dialog;
     }
   }
   
-  public final void attachToGLContext(int paramInt)
+  public static s a(Context paramContext, CharSequence paramCharSequence, boolean paramBoolean)
   {
-    AppMethodBeat.i(142161);
-    Log.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, attachToGLContext");
-    this.mSurfaceTexture.attachToGLContext(paramInt);
-    AppMethodBeat.o(142161);
+    AppMethodBeat.i(142070);
+    paramContext = a(paramContext, paramCharSequence, paramBoolean, 0, -1, null);
+    AppMethodBeat.o(142070);
+    return paramContext;
   }
   
-  public final void detachFromGLContext()
+  private static s a(Context paramContext, CharSequence paramCharSequence, boolean paramBoolean, int paramInt1, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppMethodBeat.i(142159);
-    Log.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, detachFromGLContext");
+    AppMethodBeat.i(142071);
+    int i = paramInt2;
+    if (paramInt2 <= 0) {
+      switch (paramInt1)
+      {
+      default: 
+        i = a.l.mmtipsdialog;
+      }
+    }
+    for (;;)
+    {
+      paramContext = new s(paramContext, i, paramInt1);
+      paramContext.setMessage(paramCharSequence);
+      paramContext.setCancelable(paramBoolean);
+      paramContext.setOnCancelListener(paramOnCancelListener);
+      paramContext.setCanceledOnTouchOutside(false);
+      AppMethodBeat.o(142071);
+      return paramContext;
+      i = a.l.mmalertdialog;
+      continue;
+      i = a.l.mmalertdialog;
+      continue;
+      i = a.l.mmalertdialog;
+      continue;
+      i = a.l.mmtipsdialog;
+    }
+  }
+  
+  public static s a(Context paramContext, CharSequence paramCharSequence, boolean paramBoolean, int paramInt, DialogInterface.OnCancelListener paramOnCancelListener)
+  {
+    AppMethodBeat.i(142072);
+    paramContext = b(paramContext, paramCharSequence, paramBoolean, paramInt, -1, paramOnCancelListener);
+    AppMethodBeat.o(142072);
+    return paramContext;
+  }
+  
+  public static s b(Context paramContext, CharSequence paramCharSequence, boolean paramBoolean, int paramInt1, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
+  {
+    AppMethodBeat.i(142073);
+    paramContext = a(paramContext, paramCharSequence, paramBoolean, paramInt1, paramInt2, paramOnCancelListener);
+    paramContext.show();
+    AppMethodBeat.o(142073);
+    return paramContext;
+  }
+  
+  public void dismiss()
+  {
+    AppMethodBeat.i(142075);
     try
     {
-      this.mSurfaceTexture.detachFromGLContext();
-      bool = false;
+      super.dismiss();
+      AppMethodBeat.o(142075);
+      return;
     }
-    catch (Exception localException1)
+    catch (Exception localException)
     {
-      for (;;)
-      {
-        try
-        {
-          Object localObject1 = SurfaceTexture.class.getDeclaredMethod("nativeDetachFromGLContext", new Class[0]);
-          ((Method)localObject1).setAccessible(true);
-          int i = ((Integer)((Method)localObject1).invoke(this.mSurfaceTexture, new Object[0])).intValue();
-          localObject1 = aXy() + " detect texture problem error code = " + i + ", detach = true, and error = " + bool;
-          CrashReportFactory.reportRawMessage(Base64.encodeToString(((String)localObject1).getBytes(), 2), "DetachFromGLContext");
-          Log.w("MicroMsg.MMSurfaceTextureWrap", (String)localObject1);
-          Log.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, err %s hasDetach %s hasError %s", new Object[] { Integer.valueOf(i), Boolean.TRUE, Boolean.valueOf(bool) });
-          AppMethodBeat.o(142159);
-          return;
-        }
-        catch (IllegalArgumentException localIllegalArgumentException)
-        {
-          Log.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localIllegalArgumentException, "%s", new Object[] { "detect texture problem, IllegalArgumentException" });
-          String str1;
-          return;
-        }
-        catch (IllegalAccessException localIllegalAccessException)
-        {
-          Log.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localIllegalAccessException, "%s", new Object[] { "detect texture problem, IllegalAccessException" });
-          String str2;
-          return;
-        }
-        catch (InvocationTargetException localInvocationTargetException)
-        {
-          Log.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localInvocationTargetException, "%s", new Object[] { "detect texture problem, InvocationTargetException" });
-          String str3;
-          return;
-        }
-        catch (NoSuchMethodException localNoSuchMethodException)
-        {
-          Log.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localNoSuchMethodException, "%s", new Object[] { "detect texture problem, NoSuchMethodException" });
-          String str4;
-          return;
-        }
-        catch (Exception localException2)
-        {
-          Log.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localException2, "%s", new Object[] { "detect texture problem, Exception" });
-          String str5;
-          return;
-        }
-        finally
-        {
-          boolean bool;
-          String str6 = aXy() + " detect texture problem error code = 0, detach = false, and error = " + bool;
-          CrashReportFactory.reportRawMessage(Base64.encodeToString(str6.getBytes(), 2), "DetachFromGLContext");
-          Log.w("MicroMsg.MMSurfaceTextureWrap", str6);
-          Log.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, err %s hasDetach %s hasError %s", new Object[] { Integer.valueOf(0), Boolean.FALSE, Boolean.valueOf(bool) });
-          AppMethodBeat.o(142159);
-        }
-        localException1 = localException1;
-        Log.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localException1, "%s", new Object[] { "detect texture problem, RuntimeException detachFromGLContext" });
-        bool = true;
-      }
+      Log.e("MicroMsg.MMProgressDialog", "dismiss exception, e = " + localException.getMessage());
+      AppMethodBeat.o(142075);
     }
-    if (bool) {}
-    AppMethodBeat.o(142159);
   }
   
-  public final boolean equals(Object paramObject)
+  protected void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(142165);
-    boolean bool = this.mSurfaceTexture.equals(paramObject);
-    AppMethodBeat.o(142165);
-    return bool;
+    AppMethodBeat.i(142067);
+    super.onCreate(paramBundle);
+    setContentView(this.mContentView, new LinearLayout.LayoutParams(-1, -1));
+    paramBundle = getWindow().getAttributes();
+    paramBundle.width = -2;
+    paramBundle.height = -2;
+    if (this.style == 2)
+    {
+      getWindow().addFlags(2);
+      paramBundle.dimAmount = 0.65F;
+    }
+    onWindowAttributesChanged(paramBundle);
+    AppMethodBeat.o(142067);
   }
   
-  public final long getTimestamp()
+  public void setCancelable(boolean paramBoolean)
   {
-    AppMethodBeat.i(142163);
-    Log.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, getTimestamp");
-    long l = this.mSurfaceTexture.getTimestamp();
-    AppMethodBeat.o(142163);
-    return l;
+    AppMethodBeat.i(142068);
+    super.setCancelable(paramBoolean);
+    setCanceledOnTouchOutside(paramBoolean);
+    AppMethodBeat.o(142068);
   }
   
-  public final void getTransformMatrix(float[] paramArrayOfFloat)
+  public void setMessage(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(142162);
-    Log.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, getTransformMatrix");
-    this.mSurfaceTexture.getTransformMatrix(paramArrayOfFloat);
-    AppMethodBeat.o(142162);
+    AppMethodBeat.i(142069);
+    this.UWd.setText(paramCharSequence);
+    AppMethodBeat.o(142069);
   }
   
-  public final int hashCode()
+  public void show()
   {
-    AppMethodBeat.i(142166);
-    int i = this.mSurfaceTexture.hashCode();
-    AppMethodBeat.o(142166);
-    return i;
-  }
-  
-  public final void release()
-  {
-    AppMethodBeat.i(142164);
-    super.release();
-    Log.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, release");
-    this.mSurfaceTexture.release();
-    AppMethodBeat.o(142164);
-  }
-  
-  @TargetApi(19)
-  public final void releaseTexImage()
-  {
-    AppMethodBeat.i(142168);
-    Log.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, releaseTexImage");
-    this.mSurfaceTexture.releaseTexImage();
-    AppMethodBeat.o(142168);
-  }
-  
-  public final void setDefaultBufferSize(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(142157);
-    Log.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, setDefaultBufferSize");
-    this.mSurfaceTexture.setDefaultBufferSize(paramInt1, paramInt2);
-    AppMethodBeat.o(142157);
-  }
-  
-  public final void setOnFrameAvailableListener(SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener)
-  {
-    AppMethodBeat.i(142156);
-    Log.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, setOnFrameAvailableListener");
-    this.mSurfaceTexture.setOnFrameAvailableListener(paramOnFrameAvailableListener);
-    AppMethodBeat.o(142156);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(142167);
-    String str = this.mSurfaceTexture.toString();
-    AppMethodBeat.o(142167);
-    return str;
-  }
-  
-  public final void updateTexImage()
-  {
-    AppMethodBeat.i(142158);
-    Log.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, updateTexImage");
-    this.mSurfaceTexture.updateTexImage();
-    AppMethodBeat.o(142158);
+    AppMethodBeat.i(142074);
+    try
+    {
+      super.show();
+      AppMethodBeat.o(142074);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.printErrStackTrace("MicroMsg.MMProgressDialog", localException, "", new Object[0]);
+      AppMethodBeat.o(142074);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.base.s
  * JD-Core Version:    0.7.0.1
  */

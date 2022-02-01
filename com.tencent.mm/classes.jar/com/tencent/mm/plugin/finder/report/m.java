@@ -1,53 +1,96 @@
 package com.tencent.mm.plugin.finder.report;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.bbn;
+import com.tencent.mm.f.b.a.qs;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.cm;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.expt.b.c;
+import com.tencent.mm.plugin.finder.viewmodel.component.aj;
+import com.tencent.mm.plugin.finder.viewmodel.component.aj.a;
+import com.tencent.mm.protocal.protobuf.bid;
 import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/report/FinderShareReporter;", "", "()V", "report21673", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "eventCode", "", "eventTime", "", "index", "report21856", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/report/FinderReport21874;", "", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "setContext", "pageInTimeStampMs", "", "actionPageIn", "", "commentScene", "", "clickTabContextId", "", "udfKv", "actionPageOut", "report", "eventCode", "stayTime", "Companion", "plugin-finder_release"})
 public final class m
 {
-  private static final m vfC;
-  public static final a vfD;
+  public static final a zWz;
+  private Context context;
+  private long zWy;
   
   static
   {
-    AppMethodBeat.i(250712);
-    vfD = new a((byte)0);
-    vfC = new m();
-    AppMethodBeat.o(250712);
+    AppMethodBeat.i(287039);
+    zWz = new a((byte)0);
+    AppMethodBeat.o(287039);
   }
   
-  public static void a(bbn parambbn, int paramInt, long paramLong)
+  public m(Context paramContext)
   {
-    AppMethodBeat.i(250711);
-    if (parambbn != null)
-    {
-      Log.i("Finder.FinderShareReporter", "FinderShareReporter.report21856, sessionId = " + parambbn.sessionId + ", clickTabContextId = " + parambbn.sGE + ", contextId = " + parambbn.sGQ + ", commentScene = " + parambbn.tCE + ", eventCode = " + paramInt + ", eventTime = " + paramLong);
-      h.CyF.a(21856, new Object[] { parambbn.sessionId, parambbn.sGE, parambbn.sGQ, Integer.valueOf(parambbn.tCE), Integer.valueOf(paramInt), Long.valueOf(paramLong) });
-    }
-    AppMethodBeat.o(250711);
+    AppMethodBeat.i(287038);
+    this.context = paramContext;
+    AppMethodBeat.o(287038);
   }
   
-  public static void a(bbn parambbn, int paramInt1, long paramLong, int paramInt2)
+  private void a(int paramInt1, int paramInt2, long paramLong, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(250710);
-    if (parambbn != null)
+    AppMethodBeat.i(287037);
+    p.k(paramString1, "clickTabContextId");
+    qs localqs = new qs();
+    localqs.HC(((c)h.ae(c.class)).dbr());
+    localqs.HE(String.valueOf(paramInt1));
+    localqs.pk(paramInt2);
+    localqs.HF(String.valueOf(System.currentTimeMillis()));
+    localqs.HG(z.bdh());
+    localqs.Es(paramLong);
+    localqs.HI(paramString1);
+    localqs.HH(paramString2);
+    paramString1 = aj.Bnu;
+    paramString1 = aj.a.fZ(this.context);
+    if (paramString1 != null)
     {
-      Log.i("Finder.FinderShareReporter", "FinderShareReporter.report21673, sessionId = " + parambbn.sessionId + ", clickTabContextId = " + parambbn.sGE + ", contextId = " + parambbn.sGQ + ", commentScene = " + parambbn.tCE + ", eventCode = " + paramInt1 + ", eventTime = " + paramLong + ", index = " + paramInt2);
-      h.CyF.a(21673, new Object[] { parambbn.sessionId, parambbn.sGE, parambbn.sGQ, Integer.valueOf(parambbn.tCE), Integer.valueOf(paramInt1), Long.valueOf(paramLong), Integer.valueOf(paramInt2) });
+      paramString1 = paramString1.ekY();
+      if (paramString1 != null) {
+        localqs.HD(paramString1.wmL);
+      }
     }
-    AppMethodBeat.o(250710);
+    localqs.bpa();
+    Log.i("Finder.Report21874", String.valueOf(localqs.agI()));
+    AppMethodBeat.o(287037);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/report/FinderShareReporter$Companion;", "", "()V", "EVENT_CODE_CLICK", "", "EVENT_CODE_SHOW", "EVENT_EXPOSE_ANIMATION", "EVENT_EXPOSE_STATIC", "INSTANCE", "Lcom/tencent/mm/plugin/finder/report/FinderShareReporter;", "getINSTANCE", "()Lcom/tencent/mm/plugin/finder/report/FinderShareReporter;", "TAG", "", "plugin-finder_release"})
+  public final void A(int paramInt, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(287033);
+    p.k(paramString1, "clickTabContextId");
+    this.zWy = cm.bfE();
+    a(paramInt, 0, 0L, paramString1, paramString2);
+    AppMethodBeat.o(287033);
+  }
+  
+  public final void B(int paramInt, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(287035);
+    p.k(paramString1, "clickTabContextId");
+    if (this.zWy <= 0L)
+    {
+      AppMethodBeat.o(287035);
+      return;
+    }
+    a(paramInt, 1, cm.bfE() - this.zWy, paramString1, paramString2);
+    this.zWy = 0L;
+    AppMethodBeat.o(287035);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/report/FinderReport21874$Companion;", "", "()V", "FinderBackStep", "", "FinderDefaultStep", "FinderNextStep", "FinderPageIn", "FinderPageOut", "TAG", "", "FinderActionCode", "FinderEventCode", "plugin-finder_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.report.m
  * JD-Core Version:    0.7.0.1
  */

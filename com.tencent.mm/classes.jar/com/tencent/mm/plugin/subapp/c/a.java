@@ -1,20 +1,22 @@
 package com.tencent.mm.plugin.subapp.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.q.b;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.q.b;
+import com.tencent.mm.cd.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bry;
-import com.tencent.mm.protocal.protobuf.brz;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.bzu;
+import com.tencent.mm.protocal.protobuf.bzv;
+import com.tencent.mm.protocal.protobuf.eae;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
@@ -22,18 +24,18 @@ public final class a
   extends q
   implements m
 {
-  private int FJI;
+  private int MdF;
   private i callback;
   private RandomAccessFile file;
   private String filePath;
-  private int iKP;
+  private int lAW;
   String url;
   
   public a(String paramString)
   {
     this.url = paramString;
-    this.FJI = 0;
-    this.iKP = 0;
+    this.MdF = 0;
+    this.lAW = 0;
     this.filePath = null;
     this.file = null;
   }
@@ -49,7 +51,7 @@ public final class a
         AppMethodBeat.o(28918);
         return false;
       }
-      this.filePath = com.tencent.mm.pluginsdk.k.a.a.bek(paramString);
+      this.filePath = com.tencent.mm.pluginsdk.l.a.a.bqG(paramString);
       if (this.filePath == null)
       {
         Log.e("MicroMsg.NetSceneGetPSMImg", "writeFile getPath From url failed:[" + paramString + "]");
@@ -59,7 +61,7 @@ public final class a
     }
     try
     {
-      this.file = com.tencent.mm.vfs.s.dB(this.filePath, true);
+      this.file = u.dO(this.filePath, true);
       return false;
     }
     catch (Exception paramString)
@@ -88,17 +90,17 @@ public final class a
     AppMethodBeat.i(28915);
     this.callback = parami;
     parami = new d.a();
-    parami.iLN = new bry();
-    parami.iLO = new brz();
+    parami.lBU = new bzu();
+    parami.lBV = new bzv();
     parami.uri = "/cgi-bin/micromsg-bin/getpsmimg";
     parami.funcId = 141;
-    parami.iLP = 29;
+    parami.lBW = 29;
     parami.respCmdId = 1000000029;
-    parami = parami.aXF();
-    bry localbry = (bry)parami.iLK.iLR;
-    localbry.URL = this.url;
-    localbry.KZk = this.FJI;
-    Log.v("MicroMsg.NetSceneGetPSMImg", "doscene url:[" + this.url + "] + offset:" + this.FJI + " totallen:" + this.iKP);
+    parami = parami.bgN();
+    bzu localbzu = (bzu)d.b.b(parami.lBR);
+    localbzu.URL = this.url;
+    localbzu.Sat = this.MdF;
+    Log.v("MicroMsg.NetSceneGetPSMImg", "doscene url:[" + this.url + "] + offset:" + this.MdF + " totallen:" + this.lAW);
     int i = dispatch(paramg, parami, this);
     AppMethodBeat.o(28915);
     return i;
@@ -109,7 +111,7 @@ public final class a
     return 141;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(28917);
     if ((paramInt2 != 0) || (paramInt3 != 0))
@@ -119,22 +121,22 @@ public final class a
       AppMethodBeat.o(28917);
       return;
     }
-    params = (brz)((d)params).iLL.iLR;
-    Log.d("MicroMsg.NetSceneGetPSMImg", "onGYNetEnd url:[" + this.url + "] + offset:" + this.FJI + " Resp[ totallen:" + params.LZd + " bufSize:" + params.BsI.getILen() + " ]");
-    if (params.LZd > 0) {
-      this.iKP = params.LZd;
+    params = (bzv)d.c.b(((d)params).lBS);
+    Log.d("MicroMsg.NetSceneGetPSMImg", "onGYNetEnd url:[" + this.url + "] + offset:" + this.MdF + " Resp[ totallen:" + params.Tix + " bufSize:" + params.Hnc.Ufv + " ]");
+    if (params.Tix > 0) {
+      this.lAW = params.Tix;
     }
-    if (!c(this.url, params.BsI.getBuffer().zy, this.FJI))
+    if (!c(this.url, params.Hnc.Tkb.UH, this.MdF))
     {
       this.callback.onSceneEnd(3, -1, paramString, this);
       AppMethodBeat.o(28917);
       return;
     }
-    paramInt1 = this.FJI;
-    this.FJI = (params.BsI.getILen() + paramInt1);
-    if (this.iKP <= this.FJI)
+    paramInt1 = this.MdF;
+    this.MdF = (params.Hnc.Ufv + paramInt1);
+    if (this.lAW <= this.MdF)
     {
-      Log.d("MicroMsg.NetSceneGetPSMImg", "down url:[" + this.url + "] final size: " + this.iKP);
+      Log.d("MicroMsg.NetSceneGetPSMImg", "down url:[" + this.url + "] final size: " + this.lAW);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(28917);
       return;
@@ -150,10 +152,10 @@ public final class a
     return 10;
   }
   
-  public final q.b securityVerificationChecked(com.tencent.mm.network.s params)
+  public final q.b securityVerificationChecked(s params)
   {
     AppMethodBeat.i(28916);
-    params = ((bry)((d)params).iLK.iLR).URL;
+    params = ((bzu)d.b.b(((d)params).lBR)).URL;
     int i;
     if (params == null) {
       i = 0;
@@ -161,7 +163,7 @@ public final class a
     while (i == 0)
     {
       Log.e("MicroMsg.NetSceneGetPSMImg", "security checked failed : url invalid:" + this.url);
-      params = q.b.iMr;
+      params = q.b.lCy;
       AppMethodBeat.o(28916);
       return params;
       if (params.indexOf("weixin://") != 0) {
@@ -170,31 +172,31 @@ public final class a
         i = 1;
       }
     }
-    if ((this.FJI < 0) || (this.iKP < 0))
+    if ((this.MdF < 0) || (this.lAW < 0))
     {
-      Log.e("MicroMsg.NetSceneGetPSMImg", "security checked failed : offset:" + this.FJI + " total:" + this.iKP);
-      params = q.b.iMr;
+      Log.e("MicroMsg.NetSceneGetPSMImg", "security checked failed : offset:" + this.MdF + " total:" + this.lAW);
+      params = q.b.lCy;
       AppMethodBeat.o(28916);
       return params;
     }
-    if (this.FJI == 0)
+    if (this.MdF == 0)
     {
-      if (this.iKP != 0)
+      if (this.lAW != 0)
       {
-        Log.e("MicroMsg.NetSceneGetPSMImg", "security checked failed : offset:" + this.FJI + " total:" + this.iKP);
-        params = q.b.iMr;
+        Log.e("MicroMsg.NetSceneGetPSMImg", "security checked failed : offset:" + this.MdF + " total:" + this.lAW);
+        params = q.b.lCy;
         AppMethodBeat.o(28916);
         return params;
       }
     }
-    else if (this.FJI >= this.iKP)
+    else if (this.MdF >= this.lAW)
     {
-      Log.e("MicroMsg.NetSceneGetPSMImg", "security checked failed : offset:" + this.FJI + " total:" + this.iKP);
-      params = q.b.iMr;
+      Log.e("MicroMsg.NetSceneGetPSMImg", "security checked failed : offset:" + this.MdF + " total:" + this.lAW);
+      params = q.b.lCy;
       AppMethodBeat.o(28916);
       return params;
     }
-    params = q.b.iMq;
+    params = q.b.lCx;
     AppMethodBeat.o(28916);
     return params;
   }

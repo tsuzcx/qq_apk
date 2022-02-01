@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.story.f.a;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/cgi/StoryFavoriteOpItem;", "Lcom/tencent/mm/plugin/story/model/cgi/BaseStoryOpItem;", "storyId", "", "type", "", "favorite", "(JII)V", "getFavorite", "()I", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/model/cgi/StoryFavoriteOpItem;", "Lcom/tencent/mm/plugin/story/model/cgi/BaseStoryOpItem;", "storyId", "", "type", "", "favorite", "(JII)V", "getFavorite", "()I", "plugin-story_release"})
 public final class k
   extends a
 {
-  public final int FnT;
+  public final int favorite;
   
   public k(long paramLong, int paramInt1, int paramInt2)
   {
     super(paramLong, paramInt1);
-    this.FnT = paramInt2;
+    this.favorite = paramInt2;
   }
 }
 

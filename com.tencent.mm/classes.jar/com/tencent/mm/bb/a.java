@@ -1,108 +1,244 @@
 package com.tencent.mm.bb;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.f.a.nn;
+import com.tencent.mm.f.a.nn.b;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import java.util.List;
 
 public final class a
 {
-  int cSx;
-  private String iKR;
-  private String iKS;
-  private int iKT;
-  private int iKU;
-  public int jgE;
-  private String path;
-  public String username;
-  
-  public a()
+  public static final void a(f paramf)
   {
-    AppMethodBeat.i(150784);
-    this.cSx = -1;
-    this.username = "";
-    this.jgE = 0;
-    this.path = "";
-    this.iKR = "";
-    this.iKS = "";
-    this.iKT = 0;
-    this.iKU = 0;
-    AppMethodBeat.o(150784);
-  }
-  
-  public final void convertFrom(Cursor paramCursor)
-  {
-    AppMethodBeat.i(150785);
-    this.username = paramCursor.getString(0);
-    this.jgE = paramCursor.getInt(1);
-    this.path = paramCursor.getString(2);
-    this.iKR = paramCursor.getString(3);
-    this.iKS = paramCursor.getString(4);
-    this.iKT = paramCursor.getInt(5);
-    this.iKU = paramCursor.getInt(6);
-    AppMethodBeat.o(150785);
-  }
-  
-  public final ContentValues convertTo()
-  {
-    AppMethodBeat.i(150786);
-    ContentValues localContentValues = new ContentValues();
-    if ((this.cSx & 0x1) != 0) {
-      localContentValues.put("username", getUsername());
-    }
-    if ((this.cSx & 0x2) != 0) {
-      localContentValues.put("bgflag", Integer.valueOf(this.jgE));
-    }
-    if ((this.cSx & 0x4) != 0)
+    AppMethodBeat.i(136995);
+    MMHandlerThread.postToMainThread(new Runnable()
     {
-      if (this.path == null)
+      public final void run()
       {
-        str = "";
-        localContentValues.put("path", str);
+        AppMethodBeat.i(136988);
+        nn localnn = new nn();
+        localnn.fLT.action = 6;
+        localnn.fLT.fLV = this.lVl;
+        EventCenter.instance.publish(localnn);
+        AppMethodBeat.o(136988);
       }
-    }
-    else
-    {
-      if ((this.cSx & 0x8) != 0)
-      {
-        if (this.iKR != null) {
-          break label195;
-        }
-        str = "";
-        label100:
-        localContentValues.put("reserved1", str);
-      }
-      if ((this.cSx & 0x10) != 0) {
-        if (this.iKS != null) {
-          break label203;
-        }
-      }
-    }
-    label195:
-    label203:
-    for (String str = "";; str = this.iKS)
-    {
-      localContentValues.put("reserved2", str);
-      if ((this.cSx & 0x20) != 0) {
-        localContentValues.put("reserved3", Integer.valueOf(this.iKT));
-      }
-      if ((this.cSx & 0x40) != 0) {
-        localContentValues.put("reserved4", Integer.valueOf(this.iKU));
-      }
-      AppMethodBeat.o(150786);
-      return localContentValues;
-      str = this.path;
-      break;
-      str = this.iKR;
-      break label100;
-    }
+    });
+    AppMethodBeat.o(136995);
   }
   
-  public final String getUsername()
+  public static void b(f paramf)
   {
-    if (this.username == null) {
-      return "";
+    AppMethodBeat.i(257263);
+    nn localnn = new nn();
+    localnn.fLT.action = 16;
+    localnn.fLT.fLV = paramf;
+    EventCenter.instance.publish(localnn);
+    AppMethodBeat.o(257263);
+  }
+  
+  public static f bnA()
+  {
+    AppMethodBeat.i(136999);
+    Object localObject = new nn();
+    ((nn)localObject).fLT.action = -2;
+    EventCenter.instance.publish((IEvent)localObject);
+    localObject = ((nn)localObject).fLU.fLV;
+    AppMethodBeat.o(136999);
+    return localObject;
+  }
+  
+  public static c bnB()
+  {
+    AppMethodBeat.i(137003);
+    Object localObject = new nn();
+    ((nn)localObject).fLT.action = 8;
+    EventCenter.instance.publish((IEvent)localObject);
+    localObject = ((nn)localObject).fLU.fLZ;
+    AppMethodBeat.o(137003);
+    return localObject;
+  }
+  
+  public static final void bnt()
+  {
+    AppMethodBeat.i(136991);
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(136981);
+        nn localnn = new nn();
+        localnn.fLT.action = 1;
+        EventCenter.instance.publish(localnn);
+        AppMethodBeat.o(136981);
+      }
+    });
+    AppMethodBeat.o(136991);
+  }
+  
+  public static final void bnu()
+  {
+    AppMethodBeat.i(136992);
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(136983);
+        nn localnn = new nn();
+        localnn.fLT.action = 2;
+        EventCenter.instance.publish(localnn);
+        AppMethodBeat.o(136983);
+      }
+    });
+    AppMethodBeat.o(136992);
+  }
+  
+  public static final void bnv()
+  {
+    AppMethodBeat.i(136993);
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(136984);
+        nn localnn = new nn();
+        localnn.fLT.action = -1;
+        EventCenter.instance.publish(localnn);
+        AppMethodBeat.o(136984);
+      }
+    });
+    AppMethodBeat.o(136993);
+  }
+  
+  public static final void bnw()
+  {
+    AppMethodBeat.i(136994);
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(136987);
+        nn localnn = new nn();
+        localnn.fLT.action = 11;
+        EventCenter.instance.publish(localnn);
+        AppMethodBeat.o(136987);
+      }
+    });
+    AppMethodBeat.o(136994);
+  }
+  
+  public static boolean bnx()
+  {
+    AppMethodBeat.i(136996);
+    nn localnn = new nn();
+    localnn.fLT.action = -3;
+    EventCenter.instance.publish(localnn);
+    boolean bool = localnn.fLU.result;
+    AppMethodBeat.o(136996);
+    return bool;
+  }
+  
+  public static boolean bny()
+  {
+    AppMethodBeat.i(136997);
+    nn localnn = new nn();
+    localnn.fLT.action = 10;
+    EventCenter.instance.publish(localnn);
+    boolean bool = localnn.fLU.result;
+    AppMethodBeat.o(136997);
+    return bool;
+  }
+  
+  public static boolean bnz()
+  {
+    AppMethodBeat.i(136998);
+    nn localnn = new nn();
+    localnn.fLT.action = 9;
+    EventCenter.instance.publish(localnn);
+    boolean bool = localnn.fLU.result;
+    AppMethodBeat.o(136998);
+    return bool;
+  }
+  
+  public static void c(f paramf)
+  {
+    AppMethodBeat.i(137000);
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(136989);
+        nn localnn = new nn();
+        localnn.fLT.action = 0;
+        localnn.fLT.fLV = this.lVh;
+        EventCenter.instance.publish(localnn);
+        AppMethodBeat.o(136989);
+      }
+    });
+    AppMethodBeat.o(137000);
+  }
+  
+  public static void d(f paramf)
+  {
+    AppMethodBeat.i(137001);
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(136982);
+        nn localnn = new nn();
+        localnn.fLT.action = 3;
+        localnn.fLT.fLV = this.lVh;
+        EventCenter.instance.publish(localnn);
+        AppMethodBeat.o(136982);
+      }
+    });
+    AppMethodBeat.o(137001);
+  }
+  
+  public static boolean e(f paramf)
+  {
+    if (paramf == null) {
+      return false;
     }
-    return this.username;
+    switch (paramf.lVr)
+    {
+    default: 
+      return false;
+    }
+    return true;
+  }
+  
+  public static void f(List<f> paramList, final int paramInt)
+  {
+    AppMethodBeat.i(182547);
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(136990);
+        nn localnn = new nn();
+        localnn.fLT.action = 4;
+        localnn.fLT.fEp = this.lVm;
+        localnn.fLT.fLW = paramInt;
+        EventCenter.instance.publish(localnn);
+        AppMethodBeat.o(136990);
+      }
+    });
+    AppMethodBeat.o(182547);
+  }
+  
+  public static boolean wG(int paramInt)
+  {
+    AppMethodBeat.i(137002);
+    nn localnn = new nn();
+    localnn.fLT.action = 7;
+    localnn.fLT.position = paramInt;
+    EventCenter.instance.publish(localnn);
+    boolean bool = localnn.fLU.result;
+    AppMethodBeat.o(137002);
+    return bool;
   }
 }
 

@@ -2,12 +2,13 @@ package com.tencent.mm.plugin.product.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.akg;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.protocal.protobuf.alj;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class b
 {
-  public static String C(int paramInt1, int paramInt2, String paramString)
+  public static String E(int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(66854);
     if (paramInt1 == paramInt2)
@@ -21,16 +22,16 @@ public final class b
     return paramString;
   }
   
-  public static String a(Context paramContext, akg paramakg)
+  public static String a(Context paramContext, alj paramalj)
   {
     AppMethodBeat.i(66856);
-    if (paramakg.KZx > 0)
+    if (paramalj.SaG > 0)
     {
-      paramContext = paramakg.Name + " " + c(paramakg.KZx, paramakg.PriceType);
+      paramContext = paramalj.CMP + " " + c(paramalj.SaG, paramalj.SuH);
       AppMethodBeat.o(66856);
       return paramContext;
     }
-    paramContext = paramContext.getString(2131762934);
+    paramContext = paramContext.getString(a.i.mall_product_submit_price_express_free);
     AppMethodBeat.o(66856);
     return paramContext;
   }
@@ -51,7 +52,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.product.b.b
  * JD-Core Version:    0.7.0.1
  */

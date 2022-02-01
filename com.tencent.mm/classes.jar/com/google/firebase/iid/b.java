@@ -16,7 +16,7 @@ public final class b
     AppMethodBeat.i(4150);
     if (paramBundle.getBoolean("ack", false))
     {
-      p(null);
+      P(null);
       AppMethodBeat.o(4150);
       return;
     }
@@ -31,7 +31,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.b
  * JD-Core Version:    0.7.0.1
  */

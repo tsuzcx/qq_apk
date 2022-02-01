@@ -3,7 +3,7 @@ package com.tencent.tmassistantsdk.downloadservice;
 import android.os.Looper;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.p;
+import com.tencent.mm.ipcinvoker.s;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.tmassistantsdk.protocol.jce.DownloadChunkLogInfo;
 import com.tencent.tmassistantsdk.storage.TMAssistantFile;
@@ -1028,7 +1028,7 @@ public class DownloadTask
     TMLog.i("_DownloadTask", "DownloadTask::cancel url: " + this.mDownloadInfo.mURL);
     if (Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId())
     {
-      p.post(new Runnable()
+      s.post(new Runnable()
       {
         public void run()
         {
@@ -1105,7 +1105,7 @@ public class DownloadTask
     //   116: aload_0
     //   117: getfield 47	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
     //   120: getfield 674	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mSecondaryUrl	Ljava/lang/String;
-    //   123: invokestatic 679	com/tencent/mm/plugin/downloader/a/c:akX	(Ljava/lang/String;)Ljava/lang/String;
+    //   123: invokestatic 679	com/tencent/mm/plugin/downloader/a/c:asQ	(Ljava/lang/String;)Ljava/lang/String;
     //   126: astore_1
     //   127: aload_0
     //   128: aload_1
@@ -1274,7 +1274,7 @@ public class DownloadTask
     //   499: aload_0
     //   500: getfield 47	com/tencent/tmassistantsdk/downloadservice/DownloadTask:mDownloadInfo	Lcom/tencent/tmassistantsdk/downloadservice/DownloadInfo;
     //   503: getfield 463	com/tencent/tmassistantsdk/downloadservice/DownloadInfo:mRequestURL	Ljava/lang/String;
-    //   506: invokestatic 679	com/tencent/mm/plugin/downloader/a/c:akX	(Ljava/lang/String;)Ljava/lang/String;
+    //   506: invokestatic 679	com/tencent/mm/plugin/downloader/a/c:asQ	(Ljava/lang/String;)Ljava/lang/String;
     //   509: astore_1
     //   510: goto -383 -> 127
     //   513: aload_0
@@ -2180,7 +2180,7 @@ public class DownloadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadservice.DownloadTask
  * JD-Core Version:    0.7.0.1
  */

@@ -4,22 +4,22 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.emoji.PluginEmoji;
 import com.tencent.mm.plugin.gif.MMAnimateView;
-import com.tencent.mm.pluginsdk.a.e;
+import com.tencent.mm.pluginsdk.b.e;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/view/BaseEmojiView;", "Lcom/tencent/mm/plugin/gif/MMAnimateView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "value", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "emojiInfo", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "setEmojiInfo", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "isHevc", "", "setImageBitmap", "", "bm", "Landroid/graphics/Bitmap;", "setMMGIFFileByteArray", "bytes", "", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/view/BaseEmojiView;", "Lcom/tencent/mm/plugin/gif/MMAnimateView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "value", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "emojiInfo", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "setEmojiInfo", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "isHevc", "", "setImageBitmap", "", "bm", "Landroid/graphics/Bitmap;", "setMMGIFFileByteArray", "bytes", "", "plugin-emojisdk_release"})
 public class BaseEmojiView
   extends MMAnimateView
 {
   private final String TAG = "MicroMsg.BaseEmojiView";
-  private EmojiInfo gWm;
   public boolean isHevc;
+  private EmojiInfo jHh;
   
   public BaseEmojiView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -44,18 +44,18 @@ public class BaseEmojiView
     //   13: invokestatic 74	com/tencent/mm/sdk/platformtools/ImgUtil:isWXGF	([B)Z
     //   16: ifeq +80 -> 96
     //   19: ldc 76
-    //   21: invokestatic 82	com/tencent/mm/kernel/g:ah	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
+    //   21: invokestatic 82	com/tencent/mm/kernel/h:ag	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
     //   24: astore_2
     //   25: aload_2
     //   26: ldc 84
-    //   28: invokestatic 90	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   28: invokestatic 90	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
     //   31: aload_2
     //   32: checkcast 76	com/tencent/mm/plugin/emoji/PluginEmoji
-    //   35: invokevirtual 94	com/tencent/mm/plugin/emoji/PluginEmoji:getProvider	()Lcom/tencent/mm/pluginsdk/a/e;
+    //   35: invokevirtual 94	com/tencent/mm/plugin/emoji/PluginEmoji:getProvider	()Lcom/tencent/mm/pluginsdk/b/e;
     //   38: astore_2
     //   39: aload_2
     //   40: ldc 96
-    //   42: invokestatic 90	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   42: invokestatic 90	kotlin/g/b/p:j	(Ljava/lang/Object;Ljava/lang/String;)V
     //   45: aload_2
     //   46: invokeinterface 102 1 0
     //   51: ifeq +45 -> 96
@@ -134,7 +134,7 @@ public class BaseEmojiView
     //   196: aload_1
     //   197: ifnull +7 -> 204
     //   200: aload_1
-    //   201: invokevirtual 188	com/tencent/mm/storage/emotion/EmojiInfo:hRy	()V
+    //   201: invokevirtual 188	com/tencent/mm/storage/emotion/EmojiInfo:hBq	()V
     //   204: aload_0
     //   205: invokevirtual 191	com/tencent/mm/emoji/view/BaseEmojiView:init	()V
     //   208: ldc 57
@@ -157,7 +157,7 @@ public class BaseEmojiView
     //   239: aload_1
     //   240: ifnull +7 -> 247
     //   243: aload_1
-    //   244: invokevirtual 188	com/tencent/mm/storage/emotion/EmojiInfo:hRy	()V
+    //   244: invokevirtual 188	com/tencent/mm/storage/emotion/EmojiInfo:hBq	()V
     //   247: aload_0
     //   248: invokevirtual 191	com/tencent/mm/emoji/view/BaseEmojiView:init	()V
     //   251: ldc 57
@@ -214,34 +214,34 @@ public class BaseEmojiView
   
   public EmojiInfo getEmojiInfo()
   {
-    return this.gWm;
+    return this.jHh;
   }
   
   public void setEmojiInfo(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(105785);
-    if (p.j(this.gWm, paramEmojiInfo))
+    if (p.h(this.jHh, paramEmojiInfo))
     {
       AppMethodBeat.o(105785);
       return;
     }
-    this.gWm = paramEmojiInfo;
+    this.jHh = paramEmojiInfo;
     if (paramEmojiInfo != null)
     {
-      if ((paramEmojiInfo.getGroup() == EmojiGroupInfo.Uun) || (paramEmojiInfo.getGroup() == EmojiInfo.Uuu) || (paramEmojiInfo.getGroup() == EmojiInfo.Uut))
+      if ((paramEmojiInfo.hBy() == EmojiGroupInfo.YCv) || (paramEmojiInfo.hBy() == EmojiInfo.YCC) || (paramEmojiInfo.hBy() == EmojiInfo.YCB))
       {
-        setImageBitmap(paramEmojiInfo.A(getContext(), 300));
+        setImageBitmap(paramEmojiInfo.C(getContext(), 300));
         AppMethodBeat.o(105785);
         return;
       }
-      if (paramEmojiInfo.hRB())
+      if (paramEmojiInfo.hBu())
       {
-        c(EmojiInfo.bD(getContext(), paramEmojiInfo.getName()), "");
+        c(EmojiInfo.cH(getContext(), paramEmojiInfo.getName()), "");
         AppMethodBeat.o(105785);
         return;
       }
-      paramEmojiInfo = g.ah(PluginEmoji.class);
-      p.g(paramEmojiInfo, "MMKernel.plugin(PluginEmoji::class.java)");
+      paramEmojiInfo = h.ag(PluginEmoji.class);
+      p.j(paramEmojiInfo, "MMKernel.plugin(PluginEmoji::class.java)");
       setMMGIFFileByteArray(((PluginEmoji)paramEmojiInfo).getProvider().a(getEmojiInfo()));
     }
     AppMethodBeat.o(105785);
@@ -259,7 +259,7 @@ public class BaseEmojiView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.view.BaseEmojiView
  * JD-Core Version:    0.7.0.1
  */

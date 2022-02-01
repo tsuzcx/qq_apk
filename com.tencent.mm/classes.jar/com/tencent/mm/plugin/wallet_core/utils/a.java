@@ -9,22 +9,23 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.g.a.aj;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.f.a.ak;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.z;
-import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.wallet_core.c.f;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.e;
-import com.tencent.mm.plugin.wallet_core.ui.view.c;
+import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vending.g.g;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -35,27 +36,27 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public final class a
 {
-  ArrayList<b> Iou;
-  private IListener Iov;
-  public LinkedList<String> Iow;
-  public LinkedList<Bankcard> hhn;
+  ArrayList<b> PgM;
+  private IListener PgN;
+  public LinkedList<String> PgO;
+  public LinkedList<Bankcard> jTl;
   ReentrantLock mLock;
   
   public a()
   {
     AppMethodBeat.i(71627);
-    this.Iou = new ArrayList();
+    this.PgM = new ArrayList();
     this.mLock = new ReentrantLock();
-    this.Iov = new IListener() {};
-    EventCenter.instance.addListener(this.Iov);
+    this.PgN = new IListener() {};
+    EventCenter.instance.addListener(this.PgN);
     AppMethodBeat.o(71627);
   }
   
   private void a(Context paramContext, Bankcard paramBankcard)
   {
     AppMethodBeat.i(71633);
-    if (z.aUo()) {}
-    for (String str = paramBankcard.field_bankName; (this.Iow != null) && (this.Iow.contains(str)); str = paramBankcard.field_bankcardType)
+    if (z.bdq()) {}
+    for (String str = paramBankcard.field_bankName; (this.PgO != null) && (this.PgO.contains(str)); str = paramBankcard.field_bankcardType)
     {
       Log.i("MicroMsg.BankcardLogoHelper", "waiting resp:".concat(String.valueOf(str)));
       AppMethodBeat.o(71633);
@@ -63,19 +64,19 @@ public final class a
     }
     if (!b(paramContext, paramBankcard))
     {
-      if (this.hhn == null) {
-        this.hhn = new LinkedList();
+      if (this.jTl == null) {
+        this.jTl = new LinkedList();
       }
-      this.hhn.add(paramBankcard);
-      if (this.Iow == null)
+      this.jTl.add(paramBankcard);
+      if (this.PgO == null)
       {
-        b(paramContext, this.hhn);
+        b(paramContext, this.jTl);
         AppMethodBeat.o(71633);
       }
     }
     else
     {
-      paramContext = new aj();
+      paramContext = new ak();
       EventCenter.instance.publish(paramContext);
     }
     AppMethodBeat.o(71633);
@@ -84,8 +85,8 @@ public final class a
   private static boolean b(Context paramContext, Bankcard paramBankcard)
   {
     AppMethodBeat.i(71634);
-    if (z.aUo()) {}
-    for (paramContext = com.tencent.mm.plugin.wallet_core.d.b.j(paramContext, paramBankcard.field_bankName, false); (paramContext == null) || (paramContext.needUpdate); paramContext = com.tencent.mm.plugin.wallet_core.d.b.j(paramContext, paramBankcard.field_bankcardType, paramBankcard.fQa()))
+    if (z.bdq()) {}
+    for (paramContext = com.tencent.mm.plugin.wallet_core.d.b.j(paramContext, paramBankcard.field_bankName, false); (paramContext == null) || (paramContext.needUpdate); paramContext = com.tencent.mm.plugin.wallet_core.d.b.j(paramContext, paramBankcard.field_bankcardType, paramBankcard.gIG()))
     {
       AppMethodBeat.o(71634);
       return false;
@@ -94,13 +95,13 @@ public final class a
     return true;
   }
   
-  public static void m(ImageView paramImageView)
+  public static void n(ImageView paramImageView)
   {
     AppMethodBeat.i(71629);
     if (paramImageView != null)
     {
-      paramImageView.setTag(2131310182, null);
-      paramImageView.setImageResource(2131235574);
+      paramImageView.setTag(a.f.wallet_core_bankcard_logo_helper_tag, null);
+      paramImageView.setImageResource(a.e.wallet_balance_manager_logo_small);
     }
     AppMethodBeat.o(71629);
   }
@@ -116,23 +117,23 @@ public final class a
   {
     AppMethodBeat.i(71631);
     b localb = new b();
-    localb.IoJ = false;
-    localb.Hww = paramBankcard;
+    localb.Phb = false;
+    localb.Ooj = paramBankcard;
     if (paramImageView1 != null)
     {
-      paramImageView1.setTag(2131310182, paramBankcard.field_bankcardType);
-      localb.IoF = new WeakReference(paramImageView1);
+      paramImageView1.setTag(a.f.wallet_core_bankcard_logo_helper_tag, paramBankcard.field_bankcardType);
+      localb.PgX = new WeakReference(paramImageView1);
     }
     if (paramView != null) {
-      localb.IoG = new WeakReference(paramView);
+      localb.PgY = new WeakReference(paramView);
     }
     if (paramImageView2 != null) {
-      localb.IoH = new WeakReference(paramImageView2);
+      localb.PgZ = new WeakReference(paramImageView2);
     }
     if (paramTextView != null) {
-      localb.IoI = new WeakReference(paramTextView);
+      localb.Pha = new WeakReference(paramTextView);
     }
-    this.Iou.add(localb);
+    this.PgM.add(localb);
     a(paramContext, paramBankcard);
     AppMethodBeat.o(71631);
   }
@@ -141,37 +142,37 @@ public final class a
   {
     AppMethodBeat.i(71630);
     b localb = new b();
-    localb.Hww = paramBankcard;
+    localb.Ooj = paramBankcard;
     if (paramImageView != null)
     {
-      paramImageView.setTag(2131310182, paramBankcard.field_bankcardType);
-      localb.IoF = new WeakReference(paramImageView);
+      paramImageView.setTag(a.f.wallet_core_bankcard_logo_helper_tag, paramBankcard.field_bankcardType);
+      localb.PgX = new WeakReference(paramImageView);
     }
-    paramImageView = paramBankcard.HVM;
-    if ((paramImageView != null) && (localb.IoF != null) && (localb.IoF.get() != null))
+    paramImageView = paramBankcard.ONN;
+    if ((paramImageView != null) && (localb.PgX != null) && (localb.PgX.get() != null))
     {
-      Log.d("MicroMsg.BankcardLogoHelper", "bankLogoUrl = " + paramImageView.AAU);
-      paramBankcard = (ImageView)localb.IoF.get();
-      if (!Util.isNullOrNil(paramImageView.AAU))
+      Log.d("MicroMsg.BankcardLogoHelper", "bankLogoUrl = " + paramImageView.GtW);
+      paramBankcard = (ImageView)localb.PgX.get();
+      if (!Util.isNullOrNil(paramImageView.GtW))
       {
-        localb.Ijw = paramImageView.AAU;
-        localb.IoJ = true;
-        paramImageView = u.a(new c(paramImageView.AAU));
+        localb.PbN = paramImageView.GtW;
+        localb.Phb = true;
+        paramImageView = com.tencent.mm.platformtools.u.a(new com.tencent.mm.plugin.wallet_core.ui.view.c(paramImageView.GtW));
         if (paramImageView != null) {
           paramBankcard.setImageBitmap(paramImageView);
         }
-        u.a(localb);
+        com.tencent.mm.platformtools.u.a(localb);
         AppMethodBeat.o(71630);
         return;
       }
-      if (paramImageView.HWf > 0)
+      if (paramImageView.OOf > 0)
       {
         paramBankcard.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(71618);
-            paramBankcard.setImageResource(paramImageView.HWf);
+            paramBankcard.setImageResource(paramImageView.OOf);
             AppMethodBeat.o(71618);
           }
         });
@@ -192,12 +193,12 @@ public final class a
     if ((paramList != null) && (paramList.size() > 0))
     {
       int j = paramList.size();
-      this.Iow = new LinkedList();
+      this.PgO = new LinkedList();
       int i = 0;
       if (i < j)
       {
         Bankcard localBankcard = (Bankcard)paramList.get(i);
-        if (localBankcard.fQb()) {
+        if (localBankcard.gIH()) {
           Log.i("MicroMsg.BankcardLogoHelper", "ignore balance");
         }
         for (;;)
@@ -207,38 +208,38 @@ public final class a
           if (!b(paramContext, localBankcard))
           {
             Log.i("MicroMsg.BankcardLogoHelper", localBankcard.field_bankcardType + "'s url is null or need update");
-            this.Iow.add(localBankcard.field_bankcardType);
+            this.PgO.add(localBankcard.field_bankcardType);
           }
         }
       }
-      if (this.Iow.size() > 0)
+      if (this.PgO.size() > 0)
       {
         Log.i("MicroMsg.BankcardLogoHelper", "doScene to get bankcard logo");
-        paramList = new f(this.Iow);
-        com.tencent.mm.kernel.g.aAi();
-        com.tencent.mm.kernel.g.aAg().hqi.a(1650, new i()
+        paramList = new f(this.PgO);
+        h.aHH();
+        h.aHF().kcd.a(1650, new i()
         {
           public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
           {
             AppMethodBeat.i(71619);
-            com.tencent.mm.kernel.g.aAi();
-            com.tencent.mm.kernel.g.aAg().hqi.b(1650, this);
-            a.this.Iow = null;
-            if (a.this.hhn != null)
+            h.aHH();
+            h.aHF().kcd.b(1650, this);
+            a.this.PgO = null;
+            if (a.this.jTl != null)
             {
-              a.this.b(paramContext, a.this.hhn);
-              a.this.hhn = null;
+              a.this.b(paramContext, a.this.jTl);
+              a.this.jTl = null;
             }
             AppMethodBeat.o(71619);
           }
         });
-        com.tencent.mm.kernel.g.aAi();
-        com.tencent.mm.kernel.g.aAg().hqi.a(paramList, 0);
+        h.aHH();
+        h.aHF().kcd.a(paramList, 0);
         AppMethodBeat.o(71635);
         return;
       }
       Log.i("MicroMsg.BankcardLogoHelper", "use cache bankcard logo data");
-      paramContext = new aj();
+      paramContext = new ak();
       EventCenter.instance.publish(paramContext);
     }
     AppMethodBeat.o(71635);
@@ -247,30 +248,30 @@ public final class a
   public final void destory()
   {
     AppMethodBeat.i(71632);
-    EventCenter.instance.removeListener(this.Iov);
-    if (this.Iou != null)
+    EventCenter.instance.removeListener(this.PgN);
+    if (this.PgM != null)
     {
-      this.Iou.clear();
-      this.Iou = null;
+      this.PgM.clear();
+      this.PgM = null;
     }
     AppMethodBeat.o(71632);
   }
   
   public static abstract interface a
   {
-    public abstract void bc(Map<String, e> paramMap);
+    public abstract void aW(Map<String, e> paramMap);
   }
   
   static final class b
     implements u.a
   {
-    Bankcard Hww;
-    String Ijw;
-    WeakReference<ImageView> IoF;
-    WeakReference<View> IoG = null;
-    WeakReference<ImageView> IoH = null;
-    WeakReference<TextView> IoI = null;
-    boolean IoJ = false;
+    Bankcard Ooj;
+    String PbN;
+    WeakReference<ImageView> PgX;
+    WeakReference<View> PgY = null;
+    WeakReference<ImageView> PgZ = null;
+    WeakReference<TextView> Pha = null;
+    boolean Phb = false;
     
     public final void k(String paramString, final Bitmap paramBitmap)
     {
@@ -281,43 +282,43 @@ public final class a
       for (boolean bool1 = true;; bool1 = false)
       {
         Log.d("MicroMsg.BankcardLogoHelper", bool1);
-        if (!TextUtils.isEmpty(this.Ijw)) {
+        if (!TextUtils.isEmpty(this.PbN)) {
           break;
         }
         Log.e("MicroMsg.BankcardLogoHelper", "mBankcardLogoUrl is empty");
         AppMethodBeat.o(71626);
         return;
       }
-      if (this.IoF != null)
+      if (this.PgX != null)
       {
-        final ImageView localImageView = (ImageView)this.IoF.get();
+        final ImageView localImageView = (ImageView)this.PgX.get();
         if (paramBitmap == null)
         {
           bool1 = true;
           if (localImageView != null) {
-            break label290;
+            break label293;
           }
           label106:
           if (localImageView != null) {
-            break label296;
+            break label299;
           }
         }
-        label290:
-        label296:
+        label293:
+        label299:
         for (localObject = "";; localObject = localImageView.getTag())
         {
-          Log.d("MicroMsg.BankcardLogoHelper", "onGetPictureFinish done notifyKey %s  bitmap is null? %s iv is null? %s iv tag: %s mBankcardLogoUrl %s, checkTagType: %s", new Object[] { paramString, Boolean.valueOf(bool1), Boolean.valueOf(bool2), localObject, this.Ijw, Boolean.valueOf(this.IoJ) });
-          if ((localImageView == null) || (paramString == null) || (!paramString.equals(this.Ijw))) {
-            break label331;
+          Log.d("MicroMsg.BankcardLogoHelper", "onGetPictureFinish done notifyKey %s  bitmap is null? %s iv is null? %s iv tag: %s mBankcardLogoUrl %s, checkTagType: %s", new Object[] { paramString, Boolean.valueOf(bool1), Boolean.valueOf(bool2), localObject, this.PbN, Boolean.valueOf(this.Phb) });
+          if ((localImageView == null) || (paramString == null) || (!paramString.equals(this.PbN))) {
+            break label335;
           }
-          if (!this.IoJ) {
-            break label306;
+          if (!this.Phb) {
+            break label309;
           }
-          if ((localImageView.getTag(2131310182) == null) || (this.Hww == null) || (this.Hww.field_bankcardType == null)) {
-            break label331;
+          if ((localImageView.getTag(a.f.wallet_core_bankcard_logo_helper_tag) == null) || (this.Ooj == null) || (this.Ooj.field_bankcardType == null)) {
+            break label335;
           }
-          paramString = (String)localImageView.getTag(2131310182);
-          if ((!Util.isNullOrNil(paramString)) && (paramString.equals(this.Hww.field_bankcardType)))
+          paramString = (String)localImageView.getTag(a.f.wallet_core_bankcard_logo_helper_tag);
+          if ((!Util.isNullOrNil(paramString)) && (paramString.equals(this.Ooj.field_bankcardType)))
           {
             localImageView.post(new Runnable()
             {
@@ -328,7 +329,7 @@ public final class a
                 AppMethodBeat.o(71624);
               }
             });
-            localImageView.setTag(2131310182, null);
+            localImageView.setTag(a.f.wallet_core_bankcard_logo_helper_tag, null);
           }
           AppMethodBeat.o(71626);
           return;
@@ -337,7 +338,7 @@ public final class a
           bool2 = false;
           break label106;
         }
-        label306:
+        label309:
         localImageView.post(new Runnable()
         {
           public final void run()
@@ -347,9 +348,9 @@ public final class a
             AppMethodBeat.o(71625);
           }
         });
-        localImageView.setTag(2131310182, null);
+        localImageView.setTag(a.f.wallet_core_bankcard_logo_helper_tag, null);
       }
-      label331:
+      label335:
       AppMethodBeat.o(71626);
     }
   }

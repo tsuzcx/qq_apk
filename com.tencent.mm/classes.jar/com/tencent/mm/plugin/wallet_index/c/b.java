@@ -6,47 +6,47 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.plugin.wxpay.a.j;
 import com.tencent.mm.plugin.wxpay.a.a;
-import com.tencent.mm.protocal.protobuf.daj;
+import com.tencent.mm.protocal.protobuf.djx;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.c.aa;
-import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.g;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 public final class b
   implements i
 {
-  public boolean IqH = false;
-  public q IqI;
-  public Dialog jUC = null;
+  public boolean Pjq = false;
+  public q Pjr;
   public Context mContext;
+  public Dialog mLP = null;
   
-  public static daj fUn()
+  public static djx gMT()
   {
-    AppMethodBeat.i(214267);
+    AppMethodBeat.i(191788);
     Log.d("MicroMsg.HKOfflineLogic", "OfflineH5 getConfig");
-    daj localdaj = new daj();
-    String str = (String)((a)g.ah(a.class)).getWalletCacheStg().get(ar.a.OnN, null);
+    djx localdjx = new djx();
+    String str = (String)((a)com.tencent.mm.kernel.h.ag(a.class)).getWalletCacheStg().get(ar.a.VDb, null);
     if (Util.isNullOrNil(str)) {
       Log.i("MicroMsg.HKOfflineLogic", "OfflineH5 get PayIBGQuickGetOverseaWalletConfig failed");
     }
     for (;;)
     {
-      AppMethodBeat.o(214267);
-      return localdaj;
+      AppMethodBeat.o(191788);
+      return localdjx;
       try
       {
-        localdaj.parseFrom(str.getBytes(StandardCharsets.ISO_8859_1));
+        localdjx.parseFrom(str.getBytes(StandardCharsets.ISO_8859_1));
         Log.d("MicroMsg.HKOfflineLogic", "OfflineH5 getConfig success");
       }
       catch (Exception localException)
@@ -56,47 +56,70 @@ public final class b
     }
   }
   
-  private boolean fUo()
+  private boolean gMU()
   {
-    AppMethodBeat.i(214269);
+    AppMethodBeat.i(191805);
     String str = Util.getTopActivityName2(this.mContext);
     if ((!Util.isNullOrNil(str)) && (str.equals("LauncherUI")))
     {
       Log.d("MicroMsg.HKOfflineLogic", "LauncherUI is on ActivityTask Top ");
-      AppMethodBeat.o(214269);
+      AppMethodBeat.o(191805);
       return true;
     }
     Log.d("MicroMsg.HKOfflineLogic", "LauncherUI is not on ActivityTask Top：%s", new Object[] { str });
-    AppMethodBeat.o(214269);
+    AppMethodBeat.o(191805);
     return false;
+  }
+  
+  public final void Cu(boolean paramBoolean)
+  {
+    AppMethodBeat.i(191782);
+    if ((!paramBoolean) && (this.mLP == null)) {
+      this.mLP = com.tencent.mm.ui.base.h.a(this.mContext, 3, a.j.LuckyMoneyNoAnimDialog, this.mContext.getString(a.i.loading_tips), true, new DialogInterface.OnCancelListener()
+      {
+        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+        {
+          AppMethodBeat.i(275632);
+          if ((b.a(b.this) != null) && (b.a(b.this).isShowing())) {
+            b.a(b.this).dismiss();
+          }
+          AppMethodBeat.o(275632);
+        }
+      });
+    }
+    com.tencent.mm.kernel.h.aHH();
+    this.Pjr = new com.tencent.mm.plugin.wallet_index.c.a.b(((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VlG, Integer.valueOf(0))).intValue());
+    com.tencent.mm.kernel.h.aGY().a(this.Pjr, 0);
+    this.Pjq = paramBoolean;
+    AppMethodBeat.o(191782);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
-    AppMethodBeat.i(214268);
+    AppMethodBeat.i(191800);
     Log.i("MicroMsg.HKOfflineLogic", "on Scene End：errType %s , errCode：%s，errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if ((this.jUC != null) && (this.jUC.isShowing()))
+    if ((this.mLP != null) && (this.mLP.isShowing()))
     {
-      this.jUC.dismiss();
-      this.jUC = null;
+      this.mLP.dismiss();
+      this.mLP = null;
     }
-    if (((paramq instanceof com.tencent.mm.plugin.wallet_index.c.a.b)) && (paramq.equals(this.IqI)))
+    if (((paramq instanceof com.tencent.mm.plugin.wallet_index.c.a.b)) && (paramq.equals(this.Pjr)))
     {
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
-        break label374;
+        break label382;
       }
-      paramq = ((com.tencent.mm.plugin.wallet_index.c.a.b)paramq).fUq();
-      if (paramq.dOK != 0) {
-        break label315;
+      paramq = ((com.tencent.mm.plugin.wallet_index.c.a.b)paramq).gMW();
+      if (paramq.fHV != 0) {
+        break label322;
       }
-      Log.i("MicroMsg.HKOfflineLogic", "NetScenePayIBGQuickGetOverseaWallet on SceneEnd ok，pay_wallet_wxapp_h5_url：%s, cache_time：%s", new Object[] { paramq.MFD, Integer.valueOf(paramq.MFE) });
-      if ((!this.IqH) && (fUo()))
+      Log.i("MicroMsg.HKOfflineLogic", "NetScenePayIBGQuickGetOverseaWallet on SceneEnd ok，pay_wallet_wxapp_h5_url：%s, cache_time：%s", new Object[] { paramq.TRp, Integer.valueOf(paramq.TRq) });
+      if ((!this.Pjq) && (gMU()))
       {
         Log.d("MicroMsg.HKOfflineLogic", "on Scene End jump h5 ");
-        f.o(this.mContext, paramq.MFD, false);
+        g.o(this.mContext, paramq.TRp, false);
       }
-      paramq.MFF = System.currentTimeMillis();
-      Log.d("MicroMsg.HKOfflineLogic", "on Scene End currentTime ：%s ", new Object[] { Long.valueOf(paramq.MFF) });
+      paramq.TRr = System.currentTimeMillis();
+      Log.d("MicroMsg.HKOfflineLogic", "on Scene End currentTime ：%s ", new Object[] { Long.valueOf(paramq.TRr) });
       Log.d("MicroMsg.HKOfflineLogic", "OfflineH5 setConfig");
       paramString = " ";
       if (paramq == null) {}
@@ -113,78 +136,55 @@ public final class b
         try
         {
           Log.d("MicroMsg.HKOfflineLogic", "OfflineH5 setConfig success");
-          ((a)g.ah(a.class)).getWalletCacheStg().set(ar.a.OnN, paramString);
-          g.azz().b(2540, this);
-          this.IqI = null;
-          AppMethodBeat.o(214268);
+          ((a)com.tencent.mm.kernel.h.ag(a.class)).getWalletCacheStg().set(ar.a.VDb, paramString);
+          com.tencent.mm.kernel.h.aGY().b(2540, this);
+          this.Pjr = null;
+          AppMethodBeat.o(191800);
           return;
         }
         catch (IOException paramq)
         {
-          break label287;
+          break label293;
         }
         paramq = paramq;
         paramString = " ";
       }
-      label287:
+      label293:
       continue;
-      label315:
+      label322:
       Log.i("MicroMsg.HKOfflineLogic", "NetScenePayIBGQuickGetOverseaWallet on SceneEnd failed show dialog ");
-      if ((!this.IqH) && (fUo()))
+      if ((!this.Pjq) && (gMU()))
       {
-        h.a(this.mContext, paramq.dOL, "", this.mContext.getString(2131768713), false, new DialogInterface.OnClickListener()
+        com.tencent.mm.ui.base.h.a(this.mContext, paramq.fHW, "", this.mContext.getString(a.i.welcome_i_know), false, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
-            AppMethodBeat.i(214264);
+            AppMethodBeat.i(266013);
             Log.d("MicroMsg.HKOfflineLogic", "onDialogClick() ");
-            AppMethodBeat.o(214264);
+            AppMethodBeat.o(266013);
           }
         });
         continue;
-        label374:
+        label382:
         Log.i("MicroMsg.HKOfflineLogic", "NetScenePayIBGQuickGetOverseaWallet on SceneEnd faile show error dialog ");
-        if ((!this.IqH) && (fUo())) {
-          h.a(this.mContext, paramString, "", this.mContext.getString(2131768713), false, new DialogInterface.OnClickListener()
+        if ((!this.Pjq) && (gMU())) {
+          com.tencent.mm.ui.base.h.a(this.mContext, paramString, "", this.mContext.getString(a.i.welcome_i_know), false, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
-              AppMethodBeat.i(214265);
+              AppMethodBeat.i(277557);
               Log.d("MicroMsg.HKOfflineLogic", "onDialogClick() ");
-              AppMethodBeat.o(214265);
+              AppMethodBeat.o(277557);
             }
           });
         }
       }
     }
   }
-  
-  public final void yz(boolean paramBoolean)
-  {
-    AppMethodBeat.i(214266);
-    if ((!paramBoolean) && (this.jUC == null)) {
-      this.jUC = h.a(this.mContext, 3, 2131821007, this.mContext.getString(2131762446), true, new DialogInterface.OnCancelListener()
-      {
-        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-        {
-          AppMethodBeat.i(214263);
-          if ((b.this.jUC != null) && (b.this.jUC.isShowing())) {
-            b.this.jUC.dismiss();
-          }
-          AppMethodBeat.o(214263);
-        }
-      });
-    }
-    g.aAi();
-    this.IqI = new com.tencent.mm.plugin.wallet_index.c.a.b(((Integer)g.aAh().azQ().get(ar.a.NXG, Integer.valueOf(0))).intValue());
-    g.azz().a(this.IqI, 0);
-    this.IqH = paramBoolean;
-    AppMethodBeat.o(214266);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.c.b
  * JD-Core Version:    0.7.0.1
  */

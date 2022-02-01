@@ -12,14 +12,14 @@ final class af
     AppMethodBeat.o(60780);
   }
   
-  public final boolean hEa()
+  public final boolean iIu()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.af
  * JD-Core Version:    0.7.0.1
  */

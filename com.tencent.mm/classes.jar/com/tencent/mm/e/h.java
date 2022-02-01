@@ -8,59 +8,59 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ab.e;
+import com.tencent.mm.ab.e.a;
+import com.tencent.mm.ab.e.b;
 import com.tencent.mm.cache.c;
 import com.tencent.mm.cache.i;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.z.e;
-import com.tencent.mm.z.e.a;
-import com.tencent.mm.z.e.b;
 import java.util.LinkedList;
 
 public final class h
   extends b<i>
 {
-  private float ayd;
-  private float aye;
-  private boolean dsX;
-  private boolean dsY;
-  private float dsy;
-  private float dsz;
-  private Bitmap dtw;
-  private LinkedList<e.b> dtx;
-  public e.a dty;
-  private Path xT;
+  private Path auD;
+  private boolean flI;
+  private boolean flJ;
+  private float flk;
+  private float fll;
+  private Bitmap fme;
+  private LinkedList<e.b> fmf;
+  public e.a fmg;
+  private float vX;
+  private float vY;
   
   public h()
   {
     AppMethodBeat.i(9168);
-    this.dsX = true;
-    this.dsY = false;
-    this.xT = new Path();
-    this.dtx = new LinkedList();
-    this.dty = e.a.hoC;
+    this.flI = true;
+    this.flJ = false;
+    this.auD = new Path();
+    this.fmf = new LinkedList();
+    this.fmg = e.a.kat;
     AppMethodBeat.o(9168);
   }
   
-  public final a XS()
+  public final a acy()
   {
-    return a.drM;
+    return a.fky;
   }
   
-  public final void XT()
+  public final void acz()
   {
     AppMethodBeat.i(9174);
-    if ((XY() != null) && (!XY().isRecycled())) {
-      XY().recycle();
+    if ((acE() != null) && (!acE().isRecycled())) {
+      acE().recycle();
     }
-    t(((i)super.XU()).alK());
+    o(((i)super.acA()).arJ());
     AppMethodBeat.o(9174);
   }
   
-  public final void cT(boolean paramBoolean)
+  public final void dq(boolean paramBoolean)
   {
     AppMethodBeat.i(9173);
-    super.cT(paramBoolean);
-    ((i)super.XU()).u(XY());
+    super.dq(paramBoolean);
+    ((i)super.acA()).p(acE());
     AppMethodBeat.o(9173);
   }
   
@@ -68,21 +68,21 @@ public final class h
   {
     AppMethodBeat.i(9169);
     super.onAlive();
-    if ((i)super.XU() != null) {
-      t(((i)super.XU()).alK());
+    if ((i)super.acA() != null) {
+      o(((i)super.acA()).arJ());
     }
-    Bitmap localBitmap2 = this.drS.gtm();
+    Bitmap localBitmap2 = this.fkE.hoy();
     if (localBitmap2 == null)
     {
       Log.e("MicroMsg.MosaicArtist", "[generateMosaicImage] bitmap is null");
       localBitmap1 = null;
-      this.dtw = localBitmap1;
+      this.fme = localBitmap1;
       AppMethodBeat.o(9169);
       return;
     }
     int n = localBitmap2.getWidth();
     int i1 = localBitmap2.getHeight();
-    int i3 = com.tencent.mm.cl.a.ao(6.0F);
+    int i3 = com.tencent.mm.cs.a.an(6.0F);
     Bitmap localBitmap1 = Bitmap.createBitmap(n, i1, Bitmap.Config.RGB_565);
     Canvas localCanvas = new Canvas(localBitmap1);
     int i4 = (int)Math.ceil(n / i3);
@@ -134,8 +134,8 @@ public final class h
   {
     AppMethodBeat.i(9170);
     super.onDestroy();
-    if ((this.dtw != null) && (!this.dtw.isRecycled())) {
-      this.dtw.recycle();
+    if ((this.fme != null) && (!this.fme.isRecycled())) {
+      this.fme.recycle();
     }
     AppMethodBeat.o(9170);
   }
@@ -144,21 +144,21 @@ public final class h
   {
     AppMethodBeat.i(9171);
     paramCanvas.save();
-    paramCanvas.clipRect(this.drU);
-    if (this.dty == e.a.hoC)
+    paramCanvas.clipRect(getAliveRect());
+    if (this.fmg == e.a.kat)
     {
-      d(paramCanvas);
-      new e(this.dty, this.xT, 1.0F / getScale(), this.dtw).draw(paramCanvas);
+      e(paramCanvas);
+      new e(this.fmg, this.auD, 1.0F / getScale(), this.fme).draw(paramCanvas);
     }
     for (;;)
     {
       paramCanvas.restore();
       AppMethodBeat.o(9171);
       return;
-      if (this.dty == e.a.hoD)
+      if (this.fmg == e.a.kau)
       {
-        new e(this.dty, new LinkedList(this.dtx), 1.0F / getScale()).draw(new Canvas(XY()));
-        d(paramCanvas);
+        new e(this.fmg, new LinkedList(this.fmf), 1.0F / getScale()).draw(new Canvas(acE()));
+        e(paramCanvas);
       }
     }
   }
@@ -167,83 +167,83 @@ public final class h
   {
     int j = 0;
     AppMethodBeat.i(9172);
-    if (!XZ())
+    if (!acF())
     {
       AppMethodBeat.o(9172);
       return false;
     }
-    if (this.dsb != null) {
-      this.dsb.q(paramMotionEvent);
+    if (this.fkO != null) {
+      this.fkO.q(paramMotionEvent);
     }
-    Object localObject = v(paramMotionEvent.getX(), paramMotionEvent.getY());
+    Object localObject = x(paramMotionEvent.getX(), paramMotionEvent.getY());
     switch (paramMotionEvent.getActionMasked())
     {
     }
     for (;;)
     {
-      boolean bool = this.dsX;
+      boolean bool = this.flI;
       AppMethodBeat.o(9172);
       return bool;
       float f1;
-      if (this.drU.contains((int)localObject[0], (int)localObject[1]))
+      if (getAliveRect().contains((int)localObject[0], (int)localObject[1]))
       {
         f1 = localObject[0];
-        this.dsy = f1;
-        this.ayd = f1;
+        this.flk = f1;
+        this.vX = f1;
         f1 = localObject[1];
-        this.dsz = f1;
-        this.aye = f1;
+        this.fll = f1;
+        this.vY = f1;
       }
-      for (this.dsX = true;; this.dsX = false)
+      for (this.flI = true;; this.flI = false)
       {
-        this.dsY = false;
+        this.flJ = false;
         break;
       }
-      if ((this.dsX) && (this.dsY))
+      if ((this.flI) && (this.flJ))
       {
-        if ((i)super.XU() == null)
+        if ((i)super.acA() == null)
         {
           Log.e("MicroMsg.MosaicArtist", "getCache is null???");
           AppMethodBeat.o(9172);
           return true;
         }
-        if (this.dty != e.a.hoC) {
+        if (this.fmg != e.a.kat) {
           break label329;
         }
-        ((i)super.XU()).a(new e(this.dty, new Path(this.xT), 1.0F / getScale(), this.dtw));
-        cT(false);
+        ((i)super.acA()).a(new e(this.fmg, new Path(this.auD), 1.0F / getScale(), this.fme));
+        dq(false);
       }
       for (;;)
       {
-        c.alF().b(com.tencent.mm.api.h.diK);
-        Yc();
-        this.dtx.clear();
-        this.xT.reset();
-        this.dsY = false;
-        this.dsX = false;
+        c.arE().b(com.tencent.mm.api.h.faq);
+        acI();
+        this.fmf.clear();
+        this.auD.reset();
+        this.flJ = false;
+        this.flI = false;
         break;
         label329:
-        if (this.dty == e.a.hoD)
+        if (this.fmg == e.a.kau)
         {
-          ((i)super.XU()).a(new e(this.dty, new LinkedList(this.dtx), 1.0F / getScale()));
-          cT(false);
+          ((i)super.acA()).a(new e(this.fmg, new LinkedList(this.fmf), 1.0F / getScale()));
+          dq(false);
         }
       }
-      if ((this.dsX) && (this.dsY))
+      if ((this.flI) && (this.flJ))
       {
-        this.dsy = this.ayd;
-        this.dsz = this.aye;
-        this.ayd = localObject[0];
-        this.aye = localObject[1];
-        if (this.dty == e.a.hoC) {
-          this.xT.quadTo(this.dsy, this.dsz, (this.ayd + this.dsy) / 2.0F, (this.aye + this.dsz) / 2.0F);
+        this.flk = this.vX;
+        this.fll = this.vY;
+        this.vX = localObject[0];
+        this.vY = localObject[1];
+        if (this.fmg == e.a.kat) {
+          this.auD.quadTo(this.flk, this.fll, (this.vX + this.flk) / 2.0F, (this.vY + this.fll) / 2.0F);
         }
-        while (this.dty != e.a.hoD)
+        while (this.fmg != e.a.kau)
         {
-          Yb();
+          acH();
           break;
         }
-        double d = Math.toDegrees(Math.atan((this.ayd - this.dsy) / (this.aye - this.dsz)));
+        double d = Math.toDegrees(Math.atan((this.vX - this.flk) / (this.vY - this.fll)));
         label538:
         float f2;
         float f3;
@@ -252,11 +252,11 @@ public final class h
         {
           i = 180;
           f1 = (float)(i + d);
-          paramMotionEvent = this.dtx;
+          paramMotionEvent = this.fmf;
           f2 = 1.0F / getScale();
-          f3 = this.ayd;
-          f4 = this.aye;
-          localObject = this.drS.gtm();
+          f3 = this.vX;
+          f4 = this.vY;
+          localObject = this.fkE.hoy();
           if ((localObject != null) && (f3 < ((Bitmap)localObject).getWidth()) && (f4 < ((Bitmap)localObject).getHeight()) && (f3 > 0.0F) && (f4 > 0.0F)) {
             break label696;
           }
@@ -265,25 +265,25 @@ public final class h
         label696:
         for (int i = j;; i = ((Bitmap)localObject).getPixel((int)f3, (int)f4))
         {
-          paramMotionEvent.add(new e.b(f2, i, f1 % 360.0F, this.ayd, this.aye));
+          paramMotionEvent.add(new e.b(f2, i, f1 % 360.0F, this.vX, this.vY));
           break;
           i = 0;
           break label538;
         }
       }
-      if ((this.dsX) && (!this.dsY))
+      if ((this.flI) && (!this.flJ))
       {
-        if (this.dty == e.a.hoC) {
-          this.xT.moveTo(localObject[0], localObject[1]);
+        if (this.fmg == e.a.kat) {
+          this.auD.moveTo(localObject[0], localObject[1]);
         }
-        this.dsY = true;
+        this.flJ = true;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.e.h
  * JD-Core Version:    0.7.0.1
  */

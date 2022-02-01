@@ -11,74 +11,72 @@ import android.os.Build.VERSION;
 import android.view.View;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.ac;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.ac;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.h.a;
+import com.tencent.mm.kernel.b;
 import com.tencent.mm.modelsimple.ad;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.ept;
+import com.tencent.mm.plugin.account.bind.a.e;
+import com.tencent.mm.plugin.account.bind.a.f;
+import com.tencent.mm.plugin.account.bind.a.i;
+import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.fae;
 import com.tencent.mm.ui.applet.SecurityImage;
 import com.tencent.mm.ui.applet.SecurityImage.a;
 import com.tencent.mm.ui.applet.SecurityImage.b;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.s;
 
 public final class f
   implements i
 {
-  Context context;
-  private View kdm;
-  com.tencent.mm.ui.base.q kdn;
-  com.tencent.mm.ui.widget.a.d kdo;
-  SecurityImage kdp;
-  String kdq;
-  private byte[] kdr;
-  private String kds;
-  private String kdt;
-  private a kdu;
+  private Context context;
+  private View mUM;
+  private s mUN;
+  com.tencent.mm.ui.widget.a.d mUO;
+  private SecurityImage mUP;
+  private String mUQ;
+  private byte[] mUR;
+  private String mUS;
+  private String mUT;
+  private a mUU;
   
   public f(Context paramContext, a parama)
   {
     this.context = paramContext;
-    this.kdm = null;
-    this.kdn = null;
-    this.kdo = null;
-    this.kdq = "";
-    this.kdp = null;
-    this.kdr = null;
-    this.kds = "";
-    this.kdu = parama;
+    this.mUM = null;
+    this.mUN = null;
+    this.mUO = null;
+    this.mUQ = "";
+    this.mUP = null;
+    this.mUR = null;
+    this.mUS = "";
+    this.mUU = parama;
   }
   
-  public final void aSs()
+  public final void bbp()
   {
     AppMethodBeat.i(110182);
-    g.azz().a(384, this);
+    com.tencent.mm.kernel.h.aGY().a(384, this);
     AppMethodBeat.o(110182);
   }
   
-  public final void bnG()
+  public final void bxP()
   {
     AppMethodBeat.i(110184);
-    this.kdm = View.inflate(this.context, 2131496231, null);
-    Object localObject = (EditText)this.kdm.findViewById(2131307635);
-    ((EditText)localObject).setHint(2131756683);
+    this.mUM = View.inflate(this.context, a.f.sendqqpwd_dialog, null);
+    Object localObject = (EditText)this.mUM.findViewById(a.e.sendqqpwd_content);
+    ((EditText)localObject).setHint(a.i.bind_qq_verify_textview_pwd);
     localObject = new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(110175);
-        f.this.kdo = null;
-        paramAnonymousDialogInterface = f.this;
-        Object localObject = this.kdv.getText().toString().trim();
-        paramAnonymousDialogInterface.aSs();
-        paramAnonymousDialogInterface.kdq = ((String)localObject);
-        localObject = paramAnonymousDialogInterface.context;
-        paramAnonymousDialogInterface.context.getString(2131755998);
-        paramAnonymousDialogInterface.kdn = h.a((Context)localObject, paramAnonymousDialogInterface.context.getString(2131765237), true, new f.3(paramAnonymousDialogInterface));
-        g.azz().a(new ad(5, paramAnonymousDialogInterface.kdq, "", "", "", false, 1), 0);
+        f.this.mUO = null;
+        f.a(f.this, this.mUV.getText().toString().trim());
         AppMethodBeat.o(110175);
       }
     };
@@ -87,27 +85,27 @@ public final class f
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(110176);
-        f.this.kdo = null;
+        f.this.mUO = null;
         f.this.onDetach();
         AppMethodBeat.o(110176);
       }
     };
-    this.kdo = h.a(this.context, this.context.getString(2131756678), this.kdm, (DialogInterface.OnClickListener)localObject, local2);
+    this.mUO = com.tencent.mm.ui.base.h.a(this.context, this.context.getString(a.i.bind_qq_verify_alert_pwd), this.mUM, (DialogInterface.OnClickListener)localObject, local2);
     AppMethodBeat.o(110184);
   }
   
   public final void onDetach()
   {
     AppMethodBeat.i(110183);
-    g.azz().b(384, this);
-    if (this.kdu != null) {
-      this.kdu.bnF();
+    com.tencent.mm.kernel.h.aGY().b(384, this);
+    if (this.mUU != null) {
+      this.mUU.bxO();
     }
     AppMethodBeat.o(110183);
   }
   
   @TargetApi(17)
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(110185);
     onDetach();
@@ -116,18 +114,18 @@ public final class f
       AppMethodBeat.o(110185);
       return;
     }
-    if (this.kdn != null)
+    if (this.mUN != null)
     {
-      this.kdn.dismiss();
-      this.kdn = null;
+      this.mUN.dismiss();
+      this.mUN = null;
     }
-    this.kds = z.a(((ept)((ad)paramq).rr.iLL.iLR).Mdj);
+    this.mUS = z.a(((fae)d.c.b(((ad)paramq).rr.lBS)).TmK);
     paramq = (ad)paramq;
-    if ((((ept)paramq.rr.iLL.iLR).KLb != null) && (((ept)paramq.rr.iLL.iLR).KLb.getILen() > 0)) {}
-    for (paramq = g.aAf().azh().Ai(paramq.jkB);; paramq = z.a(((ept)paramq.rr.iLL.iLR).KHp))
+    if ((((fae)d.c.b(paramq.rr.lBS)).RLX != null) && (((fae)d.c.b(paramq.rr.lBS)).RLX.Ufv > 0)) {}
+    for (paramq = com.tencent.mm.kernel.h.aHE().aGC().Gq(paramq.maC);; paramq = z.a(((fae)d.c.b(paramq.rr.lBS)).RIH))
     {
-      this.kdr = paramq;
-      if ((this.kdu == null) || (!this.kdu.dI(paramInt1, paramInt2))) {
+      this.mUR = paramq;
+      if ((this.mUU == null) || (!this.mUU.eg(paramInt1, paramInt2))) {
         break;
       }
       AppMethodBeat.o(110185);
@@ -147,7 +145,7 @@ public final class f
       switch (paramInt2)
       {
       default: 
-        paramString = com.tencent.mm.h.a.Dk(paramString);
+        paramString = a.Kb(paramString);
         if (paramString != null)
         {
           paramString.a(this.context, null, null);
@@ -158,44 +156,46 @@ public final class f
       case -311: 
       case -310: 
       case -6: 
-        if (g.aAc())
+        if (com.tencent.mm.kernel.h.aHB())
         {
-          if (this.kdp == null)
+          if (this.mUP == null)
           {
-            this.kdp = SecurityImage.a.a(this.context, 0, this.kdr, this.kds, this.kdt, new DialogInterface.OnClickListener()
+            this.mUP = SecurityImage.a.a(this.context, a.i.regbyqq_secimg_title, 0, this.mUR, this.mUS, this.mUT, new DialogInterface.OnClickListener()
             {
               public final void onClick(final DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
                 AppMethodBeat.i(110180);
-                paramAnonymousDialogInterface = new ad(5, f.this.kdq, f.this.kdp.getSecImgSid(), f.this.kdp.getSecImgCode(), f.this.kdp.getSecImgEncryptKey(), true, 1);
-                f.this.aSs();
-                g.azz().a(paramAnonymousDialogInterface, 0);
+                paramAnonymousDialogInterface = new ad(5, f.a(f.this), f.b(f.this).getSecImgSid(), f.b(f.this).getSecImgCode(), f.b(f.this).getSecImgEncryptKey(), true, 1);
+                f.this.bbp();
+                com.tencent.mm.kernel.h.aGY().a(paramAnonymousDialogInterface, 0);
                 f localf = f.this;
-                Context localContext = f.this.context;
-                f.this.context.getString(2131755998);
-                localf.kdn = h.a(localContext, f.this.context.getString(2131762532), true, new DialogInterface.OnCancelListener()
+                Context localContext = f.c(f.this);
+                f.c(f.this).getString(a.i.app_tip);
+                f.a(localf, com.tencent.mm.ui.base.h.a(localContext, f.c(f.this).getString(a.i.login_logining), true, new DialogInterface.OnCancelListener()
                 {
                   public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
                   {
                     AppMethodBeat.i(110179);
                     f.this.onDetach();
-                    g.azz().a(paramAnonymousDialogInterface);
+                    com.tencent.mm.kernel.h.aGY().a(paramAnonymousDialogInterface);
                     AppMethodBeat.o(110179);
                   }
-                });
+                }));
                 AppMethodBeat.o(110180);
               }
             }, null, new DialogInterface.OnDismissListener()new b
             {
               public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
               {
-                f.this.kdp = null;
+                AppMethodBeat.i(241773);
+                f.d(f.this);
+                AppMethodBeat.o(241773);
               }
             }, new b());
             AppMethodBeat.o(110185);
             return;
           }
-          this.kdp.b(0, this.kdr, this.kds, this.kdt);
+          this.mUP.b(0, this.mUR, this.mUS, this.mUT);
         }
         AppMethodBeat.o(110185);
         return;
@@ -205,28 +205,28 @@ public final class f
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(110178);
-            f.this.kdo = null;
+            f.this.mUO = null;
             f.this.onDetach();
-            f.this.bnG();
+            f.this.bxP();
             AppMethodBeat.o(110178);
           }
         };
-        this.kdo = h.a(this.context, this.context.getString(2131756682), this.context.getString(2131755998), paramString, null);
+        this.mUO = com.tencent.mm.ui.base.h.a(this.context, this.context.getString(a.i.bind_qq_verify_alert_wrong), this.context.getString(a.i.app_tip), paramString, null);
         AppMethodBeat.o(110185);
         return;
       case -72: 
-        this.kdo = h.n(this.context, 2131757471, 2131755998);
+        this.mUO = com.tencent.mm.ui.base.h.p(this.context, a.i.chatting_niceqq_expired_tip, a.i.app_tip);
         AppMethodBeat.o(110185);
         return;
       case -34: 
-        this.kdo = h.c(this.context, this.context.getString(2131756675), this.context.getString(2131755998), true);
+        this.mUO = com.tencent.mm.ui.base.h.c(this.context, this.context.getString(a.i.bind_qq_verify_alert_failed_freq_limit), this.context.getString(a.i.app_tip), true);
         AppMethodBeat.o(110185);
         return;
       }
       AppMethodBeat.o(110185);
       return;
     }
-    paramString = com.tencent.mm.h.a.Dk(paramString);
+    paramString = a.Kb(paramString);
     if (paramString != null)
     {
       paramString.a(this.context, null, null);
@@ -238,9 +238,9 @@ public final class f
   
   public static abstract interface a
   {
-    public abstract void bnF();
+    public abstract void bxO();
     
-    public abstract boolean dI(int paramInt1, int paramInt2);
+    public abstract boolean eg(int paramInt1, int paramInt2);
   }
   
   final class b
@@ -248,19 +248,19 @@ public final class f
   {
     b() {}
     
-    public final void bnH()
+    public final void bxQ()
     {
       AppMethodBeat.i(110181);
-      f.this.aSs();
-      ad localad = new ad(5, f.this.kdq, f.this.kdp.getSecImgSid(), f.this.kdp.getSecImgCode(), f.this.kdp.getSecImgEncryptKey(), true, 1);
-      g.azz().a(localad, 0);
+      f.this.bbp();
+      ad localad = new ad(5, f.a(f.this), f.b(f.this).getSecImgSid(), f.b(f.this).getSecImgCode(), f.b(f.this).getSecImgEncryptKey(), true, 1);
+      com.tencent.mm.kernel.h.aGY().a(localad, 0);
       AppMethodBeat.o(110181);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.f
  * JD-Core Version:    0.7.0.1
  */

@@ -31,8 +31,8 @@ public class NativeFileSystem
   extends AbstractFileSystem
 {
   public static final Parcelable.Creator<NativeFileSystem> CREATOR;
-  protected final String RcA;
-  private final c RcB;
+  protected final String YDd;
+  private final c YDe;
   
   static
   {
@@ -44,54 +44,54 @@ public class NativeFileSystem
   protected NativeFileSystem(Parcel paramParcel)
   {
     AppMethodBeat.i(13157);
-    aa.a(paramParcel, NativeFileSystem.class, 2);
+    ad.a(paramParcel, NativeFileSystem.class, 2);
     paramParcel = paramParcel.readString();
     if (paramParcel == null) {}
-    for (paramParcel = "";; paramParcel = aa.q(paramParcel, true, false))
+    for (paramParcel = "";; paramParcel = ad.r(paramParcel, true, false))
     {
-      this.RcA = paramParcel;
-      if (!this.RcA.isEmpty()) {
+      this.YDd = paramParcel;
+      if (!this.YDd.isEmpty()) {
         break;
       }
-      this.RcB = new c(this.RcA);
+      this.YDe = new c(this.YDd);
       AppMethodBeat.o(13157);
       return;
     }
-    paramParcel = aa.aa(this.RcA, g.hRR().Uvh.hej());
+    paramParcel = ad.ad(this.YDd, h.iWH().abSS.ift());
     if (paramParcel != null)
     {
-      this.RcB = new c(paramParcel);
+      this.YDe = new c(paramParcel);
       AppMethodBeat.o(13157);
       return;
     }
-    this.RcB = null;
+    this.YDe = null;
     AppMethodBeat.o(13157);
   }
   
   public NativeFileSystem(String paramString)
   {
     AppMethodBeat.i(13156);
-    this.RcA = aa.q(paramString, true, false);
-    if (this.RcA.isEmpty())
+    this.YDd = ad.r(paramString, true, false);
+    if (this.YDd.isEmpty())
     {
-      this.RcB = new c(this.RcA);
+      this.YDe = new c(this.YDd);
       AppMethodBeat.o(13156);
       return;
     }
-    paramString = aa.aa(this.RcA, g.hRR().Uvh.hej());
+    paramString = ad.ad(this.YDd, h.iWH().abSS.ift());
     if (paramString != null)
     {
-      this.RcB = new c(paramString);
+      this.YDe = new c(paramString);
       AppMethodBeat.o(13156);
       return;
     }
-    this.RcB = null;
+    this.YDe = null;
     AppMethodBeat.o(13156);
   }
   
-  private static boolean G(File paramFile)
+  private static boolean N(File paramFile)
   {
-    AppMethodBeat.i(187704);
+    AppMethodBeat.i(236398);
     boolean bool2 = true;
     boolean bool1 = true;
     File[] arrayOfFile = paramFile.listFiles();
@@ -104,7 +104,7 @@ public class NativeFileSystem
       {
         File localFile = arrayOfFile[i];
         if (localFile.isDirectory()) {
-          bool1 &= G(localFile);
+          bool1 &= N(localFile);
         }
         for (;;)
         {
@@ -115,135 +115,59 @@ public class NativeFileSystem
       }
     }
     boolean bool3 = paramFile.delete();
-    AppMethodBeat.o(187704);
+    AppMethodBeat.o(236398);
     return bool2 & bool3;
   }
   
-  /* Error */
-  private static long e(String paramString1, FileSystem.b paramb, String paramString2)
+  public final FileSystem.b cp(Map<String, String> paramMap)
   {
-    // Byte code:
-    //   0: ldc 154
-    //   2: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_1
-    //   6: aload_2
-    //   7: invokeinterface 160 2 0
-    //   12: astore_2
-    //   13: new 162	java/io/FileOutputStream
-    //   16: dup
-    //   17: aload_0
-    //   18: invokespecial 163	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   21: invokevirtual 167	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
-    //   24: astore_1
-    //   25: getstatic 173	android/os/Build$VERSION:SDK_INT	I
-    //   28: bipush 23
-    //   30: if_icmple +28 -> 58
-    //   33: aload_1
-    //   34: aload_2
-    //   35: lconst_0
-    //   36: ldc2_w 174
-    //   39: invokevirtual 181	java/nio/channels/FileChannel:transferFrom	(Ljava/nio/channels/ReadableByteChannel;JJ)J
-    //   42: lstore_3
-    //   43: aload_1
-    //   44: invokestatic 185	com/tencent/mm/vfs/aa:closeQuietly	(Ljava/io/Closeable;)V
-    //   47: aload_2
-    //   48: invokestatic 185	com/tencent/mm/vfs/aa:closeQuietly	(Ljava/io/Closeable;)V
-    //   51: ldc 154
-    //   53: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   56: lload_3
-    //   57: lreturn
-    //   58: sipush 8192
-    //   61: invokestatic 191	java/nio/ByteBuffer:allocateDirect	(I)Ljava/nio/ByteBuffer;
-    //   64: astore_0
-    //   65: lconst_0
-    //   66: lstore_3
-    //   67: aload_2
-    //   68: aload_0
-    //   69: invokeinterface 197 2 0
-    //   74: iflt +41 -> 115
-    //   77: aload_0
-    //   78: invokevirtual 201	java/nio/ByteBuffer:flip	()Ljava/nio/Buffer;
-    //   81: pop
-    //   82: lload_3
-    //   83: aload_1
-    //   84: aload_0
-    //   85: invokevirtual 204	java/nio/channels/FileChannel:write	(Ljava/nio/ByteBuffer;)I
-    //   88: i2l
-    //   89: ladd
-    //   90: lstore_3
-    //   91: aload_0
-    //   92: invokevirtual 207	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
-    //   95: pop
-    //   96: goto -29 -> 67
-    //   99: astore_0
-    //   100: aload_1
-    //   101: invokestatic 185	com/tencent/mm/vfs/aa:closeQuietly	(Ljava/io/Closeable;)V
-    //   104: aload_2
-    //   105: invokestatic 185	com/tencent/mm/vfs/aa:closeQuietly	(Ljava/io/Closeable;)V
-    //   108: ldc 154
-    //   110: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   113: aload_0
-    //   114: athrow
-    //   115: aload_1
-    //   116: invokestatic 185	com/tencent/mm/vfs/aa:closeQuietly	(Ljava/io/Closeable;)V
-    //   119: aload_2
-    //   120: invokestatic 185	com/tencent/mm/vfs/aa:closeQuietly	(Ljava/io/Closeable;)V
-    //   123: ldc 154
-    //   125: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   128: lload_3
-    //   129: lreturn
-    //   130: astore_0
-    //   131: aconst_null
-    //   132: astore_2
-    //   133: aconst_null
-    //   134: astore_1
-    //   135: goto -35 -> 100
-    //   138: astore_0
-    //   139: aconst_null
-    //   140: astore_1
-    //   141: goto -41 -> 100
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	144	0	paramString1	String
-    //   0	144	1	paramb	FileSystem.b
-    //   0	144	2	paramString2	String
-    //   42	87	3	l	long
-    // Exception table:
-    //   from	to	target	type
-    //   25	43	99	finally
-    //   58	65	99	finally
-    //   67	96	99	finally
-    //   5	13	130	finally
-    //   13	25	138	finally
-  }
-  
-  public final FileSystem.b cj(Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(187703);
-    if (this.RcB != null)
+    AppMethodBeat.i(236397);
+    if (this.YDe != null)
     {
-      paramMap = this.RcB;
-      AppMethodBeat.o(187703);
+      paramMap = this.YDe;
+      AppMethodBeat.o(236397);
       return paramMap;
     }
-    paramMap = aa.aa(this.RcA, paramMap);
-    Log.i("VFS.NativeFileSystem", "Real path resolved: " + this.RcA + " => " + paramMap);
+    paramMap = ad.ad(this.YDd, paramMap);
+    Log.i("VFS.NativeFileSystem", "Real path resolved: " + this.YDd + " => " + paramMap);
+    if (paramMap == null)
+    {
+      paramMap = NullFileSystem.ifq();
+      AppMethodBeat.o(236397);
+      return paramMap;
+    }
     paramMap = new c(paramMap);
-    AppMethodBeat.o(187703);
+    AppMethodBeat.o(236397);
     return paramMap;
   }
   
-  public int describeContents()
+  public boolean equals(Object paramObject)
   {
-    return 0;
+    AppMethodBeat.i(236395);
+    if (((paramObject instanceof NativeFileSystem)) && (this.YDd.equals(((NativeFileSystem)paramObject).YDd)))
+    {
+      AppMethodBeat.o(236395);
+      return true;
+    }
+    AppMethodBeat.o(236395);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    AppMethodBeat.i(236394);
+    int i = NativeFileSystem.class.hashCode();
+    int j = this.YDd.hashCode();
+    AppMethodBeat.o(236394);
+    return i ^ j;
   }
   
   public String toString()
   {
     AppMethodBeat.i(13181);
     StringBuilder localStringBuilder = new StringBuilder("Native [");
-    if (this.RcB == null) {}
-    for (String str = this.RcA;; str = this.RcB.heg())
+    if (this.YDe == null) {}
+    for (String str = this.YDd;; str = this.YDe.ifp())
     {
       str = str + "]";
       AppMethodBeat.o(13181);
@@ -254,37 +178,37 @@ public class NativeFileSystem
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(13180);
-    aa.b(paramParcel, NativeFileSystem.class, 2);
-    paramParcel.writeString(this.RcA);
+    ad.b(paramParcel, NativeFileSystem.class, 2);
+    paramParcel.writeString(this.YDd);
     AppMethodBeat.o(13180);
   }
   
   static final class a
   {
-    static e a(File paramFile, FileSystem.b paramb, String paramString1, String paramString2)
+    static f a(File paramFile, FileSystem.b paramb, String paramString1, String paramString2)
     {
-      AppMethodBeat.i(187681);
+      AppMethodBeat.i(236330);
       try
       {
         paramFile = Os.stat(paramFile.getPath());
         if (paramFile == null)
         {
-          AppMethodBeat.o(187681);
+          AppMethodBeat.o(236330);
           return null;
         }
         boolean bool = OsConstants.S_ISDIR(paramFile.st_mode);
-        paramFile = new e(paramb, paramString1, paramString2, paramFile.st_size, paramFile.st_blocks * 512L, 1000L * paramFile.st_mtime, bool);
-        AppMethodBeat.o(187681);
+        paramFile = new f(paramb, paramString1, paramString2, paramFile.st_size, paramFile.st_blocks * 512L, 1000L * paramFile.st_mtime, bool);
+        AppMethodBeat.o(236330);
         return paramFile;
       }
       catch (ErrnoException paramFile)
       {
-        AppMethodBeat.o(187681);
+        AppMethodBeat.o(236330);
       }
       return null;
     }
     
-    static boolean nu(String paramString1, String paramString2)
+    static boolean ok(String paramString1, String paramString2)
     {
       AppMethodBeat.i(13147);
       try
@@ -353,28 +277,35 @@ public class NativeFileSystem
     }
   }
   
-  protected final class c
+  protected class c
     extends a
   {
-    protected final String RcC;
-    private boolean RcD;
+    protected final String YDf;
+    private boolean YDg;
     
     c(String paramString)
     {
-      AppMethodBeat.i(187683);
-      if ((paramString == null) || (paramString.isEmpty()))
+      AppMethodBeat.i(236352);
+      if (paramString.isEmpty()) {}
+      for (this$1 = "";; this$1 = ad.bCb(paramString))
       {
-        this.RcC = paramString;
-        this.RcD = true;
-        AppMethodBeat.o(187683);
+        paramString = NativeFileSystem.this;
+        if (NativeFileSystem.this.equals("/")) {
+          paramString = "";
+        }
+        this.YDf = paramString;
+        if (!this.YDf.isEmpty()) {
+          break;
+        }
+        this.YDg = true;
+        AppMethodBeat.o(236352);
         return;
       }
-      this.RcC = aa.bpf(paramString);
-      this$1 = new File(this.RcC);
+      this$1 = new File(this.YDf);
       if (NativeFileSystem.this.isDirectory())
       {
-        this.RcD = true;
-        AppMethodBeat.o(187683);
+        this.YDg = true;
+        AppMethodBeat.o(236352);
         return;
       }
       if (NativeFileSystem.this.exists())
@@ -382,18 +313,18 @@ public class NativeFileSystem
         Log.e("VFS.NativeFileSystem", "Base directory exists but is not a directory, delete and proceed.Base path: " + NativeFileSystem.this.getPath());
         NativeFileSystem.this.delete();
       }
-      this.RcD = false;
-      AppMethodBeat.o(187683);
+      this.YDg = false;
+      AppMethodBeat.o(236352);
     }
     
-    private e W(File paramFile)
+    private f P(File paramFile)
     {
-      AppMethodBeat.i(187695);
-      String str1 = this.RcC;
+      AppMethodBeat.i(236381);
+      String str1 = this.YDf;
       if (!paramFile.getPath().startsWith(str1))
       {
         paramFile = new RuntimeException("Illegal file: " + paramFile + " (base: " + str1 + ")");
-        AppMethodBeat.o(187695);
+        AppMethodBeat.o(236381);
         throw paramFile;
       }
       if (paramFile.getPath().length() == str1.length()) {}
@@ -406,100 +337,94 @@ public class NativeFileSystem
           break;
         }
         paramFile = NativeFileSystem.a.a(paramFile, this, str1, str2);
-        AppMethodBeat.o(187695);
+        AppMethodBeat.o(236381);
         return paramFile;
         i = str1.length();
       }
       if (!paramFile.exists())
       {
-        AppMethodBeat.o(187695);
+        AppMethodBeat.o(236381);
         return null;
       }
       boolean bool = paramFile.isDirectory();
       long l = paramFile.length();
-      paramFile = new e(this, str1, str2, l, 0xFFFFF000 & 4096L + l - 1L, paramFile.lastModified(), bool);
-      AppMethodBeat.o(187695);
+      paramFile = new f(this, str1, str2, l, 0xFFFFF000 & 4096L + l - 1L, paramFile.lastModified(), bool);
+      AppMethodBeat.o(236381);
       return paramFile;
+    }
+    
+    public final InputStream Tf(String paramString)
+    {
+      AppMethodBeat.i(236361);
+      String str = dL(paramString, false);
+      if (str == null)
+      {
+        paramString = new FileNotFoundException("Invalid path: ".concat(String.valueOf(paramString)));
+        AppMethodBeat.o(236361);
+        throw paramString;
+      }
+      try
+      {
+        paramString = new NativeFileSystem.b(str);
+        AppMethodBeat.o(236361);
+        return paramString;
+      }
+      catch (Exception paramString)
+      {
+        paramString = NativeFileSystem.m(paramString);
+        AppMethodBeat.o(236361);
+        throw paramString;
+      }
     }
     
     protected final boolean b(String paramString1, FileSystem.b paramb, String paramString2)
     {
-      AppMethodBeat.i(187699);
-      if ((paramb.hdR() & 0x2) != 0)
+      AppMethodBeat.i(236387);
+      if ((paramb.ieY() & 0x2) != 0)
       {
-        paramb = paramb.dz(paramString2, false);
-        paramString1 = dz(paramString1, true);
+        paramb = paramb.dL(paramString2, false);
+        paramString1 = dL(paramString1, true);
         if ((paramb != null) && (paramString1 != null))
         {
           if (Build.VERSION.SDK_INT >= 21)
           {
-            bool = NativeFileSystem.a.nu(paramb, paramString1);
-            AppMethodBeat.o(187699);
+            bool = NativeFileSystem.a.ok(paramb, paramString1);
+            AppMethodBeat.o(236387);
             return bool;
           }
           boolean bool = new File(paramb).renameTo(new File(paramString1));
-          AppMethodBeat.o(187699);
+          AppMethodBeat.o(236387);
           return bool;
         }
       }
-      AppMethodBeat.o(187699);
+      AppMethodBeat.o(236387);
       return false;
     }
     
-    public final ReadableByteChannel boI(String paramString)
+    public final FileSystem.a bBA(String paramString)
     {
-      AppMethodBeat.i(187686);
-      String str = dz(paramString, false);
-      if (str == null)
-      {
-        paramString = new FileNotFoundException("Invalid path: ".concat(String.valueOf(paramString)));
-        AppMethodBeat.o(187686);
-        throw paramString;
-      }
-      paramString = new FileInputStream(str).getChannel();
-      AppMethodBeat.o(187686);
-      return paramString;
-    }
-    
-    public final ByteChannel boJ(String paramString)
-    {
-      AppMethodBeat.i(187689);
-      String str = dz(paramString, true);
-      if (str == null)
-      {
-        paramString = new FileNotFoundException("Invalid path: ".concat(String.valueOf(paramString)));
-        AppMethodBeat.o(187689);
-        throw paramString;
-      }
-      paramString = new RandomAccessFile(str, "rw").getChannel();
-      AppMethodBeat.o(187689);
-      return paramString;
-    }
-    
-    public final FileSystem.a boK(String paramString)
-    {
-      AppMethodBeat.i(187684);
+      AppMethodBeat.i(236359);
       for (;;)
       {
         FileSystem.a locala;
         try
         {
-          paramString = new StatFs(dz(paramString, false));
+          paramString = new StatFs(dL(paramString, false));
           locala = new FileSystem.a();
           if (Build.VERSION.SDK_INT >= 18)
           {
             locala.blockSize = paramString.getBlockSizeLong();
             locala.availableBlocks = paramString.getAvailableBlocksLong();
             locala.totalBlocks = paramString.getBlockCountLong();
-            locala.RbL = (locala.availableBlocks * locala.blockSize);
-            locala.bGI = (locala.totalBlocks * locala.blockSize);
-            AppMethodBeat.o(187684);
+            locala.YCl = (locala.availableBlocks * locala.blockSize);
+            locala.bqr = (locala.totalBlocks * locala.blockSize);
+            AppMethodBeat.o(236359);
             return locala;
           }
         }
         catch (RuntimeException paramString)
         {
-          AppMethodBeat.o(187684);
+          AppMethodBeat.o(236359);
           return null;
         }
         locala.blockSize = paramString.getBlockSize();
@@ -508,133 +433,184 @@ public class NativeFileSystem
       }
     }
     
-    public final boolean boL(String paramString)
+    public final boolean bBB(String paramString)
     {
-      AppMethodBeat.i(187691);
-      paramString = dz(paramString, false);
+      AppMethodBeat.i(236374);
+      paramString = dL(paramString, false);
       if ((paramString != null) && (new File(paramString).exists()))
       {
-        AppMethodBeat.o(187691);
+        AppMethodBeat.o(236374);
         return true;
       }
-      AppMethodBeat.o(187691);
+      AppMethodBeat.o(236374);
       return false;
     }
     
-    public final e boM(String paramString)
+    public final f bBC(String paramString)
     {
-      AppMethodBeat.i(187692);
-      paramString = dz(paramString, false);
+      AppMethodBeat.i(236376);
+      paramString = dL(paramString, false);
       if (paramString == null)
       {
-        AppMethodBeat.o(187692);
+        AppMethodBeat.o(236376);
         return null;
       }
-      paramString = W(new File(paramString));
-      AppMethodBeat.o(187692);
+      paramString = P(new File(paramString));
+      AppMethodBeat.o(236376);
       return paramString;
     }
     
-    public final boolean boN(String paramString)
+    public final boolean bBD(String paramString)
     {
-      AppMethodBeat.i(187697);
-      paramString = dz(paramString, true);
+      AppMethodBeat.i(236383);
+      paramString = dL(paramString, true);
       if (paramString == null)
       {
-        AppMethodBeat.o(187697);
+        AppMethodBeat.o(236383);
         return false;
       }
       boolean bool = new File(paramString).mkdirs();
-      AppMethodBeat.o(187697);
+      AppMethodBeat.o(236383);
       return bool;
     }
     
-    public final boolean ck(String paramString, long paramLong)
+    public final ReadableByteChannel bBy(String paramString)
     {
-      AppMethodBeat.i(187693);
-      paramString = dz(paramString, true);
+      AppMethodBeat.i(236363);
+      String str = dL(paramString, false);
+      if (str == null)
+      {
+        paramString = new FileNotFoundException("Invalid path: ".concat(String.valueOf(paramString)));
+        AppMethodBeat.o(236363);
+        throw paramString;
+      }
+      try
+      {
+        paramString = new FileInputStream(str).getChannel();
+        AppMethodBeat.o(236363);
+        return paramString;
+      }
+      catch (Exception paramString)
+      {
+        paramString = NativeFileSystem.m(paramString);
+        AppMethodBeat.o(236363);
+        throw paramString;
+      }
+    }
+    
+    public final ByteChannel bBz(String paramString)
+    {
+      AppMethodBeat.i(236370);
+      String str = dL(paramString, true);
+      if (str == null)
+      {
+        paramString = new FileNotFoundException("Invalid path: ".concat(String.valueOf(paramString)));
+        AppMethodBeat.o(236370);
+        throw paramString;
+      }
+      try
+      {
+        paramString = new RandomAccessFile(str, "rw").getChannel();
+        AppMethodBeat.o(236370);
+        return paramString;
+      }
+      catch (Exception paramString)
+      {
+        paramString = NativeFileSystem.m(paramString);
+        AppMethodBeat.o(236370);
+        throw paramString;
+      }
+    }
+    
+    public final boolean ct(String paramString, long paramLong)
+    {
+      AppMethodBeat.i(236378);
+      paramString = dL(paramString, true);
       if (paramString == null)
       {
-        AppMethodBeat.o(187693);
+        AppMethodBeat.o(236378);
         return false;
       }
       boolean bool = new File(paramString).setLastModified(paramLong);
-      AppMethodBeat.o(187693);
+      AppMethodBeat.o(236378);
       return bool;
     }
     
-    protected final long d(String paramString1, FileSystem.b paramb, String paramString2)
+    public final WritableByteChannel dH(String paramString, boolean paramBoolean)
     {
-      AppMethodBeat.i(187700);
-      String str = dz(paramString1, true);
-      if (str == null)
-      {
-        paramString1 = new IOException("Invalid path: ".concat(String.valueOf(paramString1)));
-        AppMethodBeat.o(187700);
-        throw paramString1;
-      }
-      long l = NativeFileSystem.f(str, paramb, paramString2);
-      AppMethodBeat.o(187700);
-      return l;
-    }
-    
-    public final WritableByteChannel dv(String paramString, boolean paramBoolean)
-    {
-      AppMethodBeat.i(187688);
-      String str = dz(paramString, true);
+      AppMethodBeat.i(236368);
+      String str = dL(paramString, true);
       if (str == null)
       {
         paramString = new FileNotFoundException("Invalid path: ".concat(String.valueOf(paramString)));
-        AppMethodBeat.o(187688);
+        AppMethodBeat.o(236368);
         throw paramString;
       }
-      paramString = new FileOutputStream(str, paramBoolean).getChannel();
-      AppMethodBeat.o(187688);
-      return paramString;
+      try
+      {
+        paramString = new FileOutputStream(str, paramBoolean).getChannel();
+        AppMethodBeat.o(236368);
+        return paramString;
+      }
+      catch (Exception paramString)
+      {
+        paramString = NativeFileSystem.m(paramString);
+        AppMethodBeat.o(236368);
+        throw paramString;
+      }
     }
     
-    public final OutputStream dw(String paramString, boolean paramBoolean)
+    public final OutputStream dI(String paramString, boolean paramBoolean)
     {
-      AppMethodBeat.i(187687);
-      String str = dz(paramString, true);
+      AppMethodBeat.i(236366);
+      String str = dL(paramString, true);
       if (str == null)
       {
         paramString = new FileNotFoundException("Invalid path: ".concat(String.valueOf(paramString)));
-        AppMethodBeat.o(187687);
+        AppMethodBeat.o(236366);
         throw paramString;
       }
-      paramString = new FileOutputStream(str, paramBoolean);
-      AppMethodBeat.o(187687);
-      return paramString;
+      try
+      {
+        paramString = new FileOutputStream(str, paramBoolean);
+        AppMethodBeat.o(236366);
+        return paramString;
+      }
+      catch (Exception paramString)
+      {
+        paramString = NativeFileSystem.m(paramString);
+        AppMethodBeat.o(236366);
+        throw paramString;
+      }
     }
     
-    public final Iterable<e> dx(String paramString, boolean paramBoolean)
+    public final Iterable<f> dJ(String paramString, boolean paramBoolean)
     {
-      AppMethodBeat.i(187694);
-      paramString = dz(paramString, false);
+      AppMethodBeat.i(236380);
+      paramString = dL(paramString, false);
       if (paramString == null)
       {
-        AppMethodBeat.o(187694);
+        AppMethodBeat.o(236380);
         return null;
       }
       paramString = new File(paramString).listFiles();
       if (paramString == null)
       {
-        AppMethodBeat.o(187694);
+        AppMethodBeat.o(236380);
         return null;
       }
       paramString = new com.tencent.mm.vfs.a.a(Arrays.asList(paramString), new a(paramBoolean));
-      AppMethodBeat.o(187694);
+      AppMethodBeat.o(236380);
       return paramString;
     }
     
-    public final boolean dy(String paramString, boolean paramBoolean)
+    public final boolean dK(String paramString, boolean paramBoolean)
     {
-      AppMethodBeat.i(187698);
-      String str = dz(paramString, false);
+      AppMethodBeat.i(236384);
+      String str = dL(paramString, false);
       if (str == null)
       {
-        AppMethodBeat.o(187698);
+        AppMethodBeat.o(236384);
         return false;
       }
       if ((paramString.isEmpty()) || (paramString.equals("/"))) {}
@@ -644,121 +620,136 @@ public class NativeFileSystem
         if (paramString.isDirectory()) {
           break;
         }
-        AppMethodBeat.o(187698);
+        AppMethodBeat.o(236384);
         return false;
       }
       if (paramBoolean) {}
-      for (paramBoolean = NativeFileSystem.V(paramString);; paramBoolean = paramString.delete())
+      for (paramBoolean = NativeFileSystem.O(paramString);; paramBoolean = paramString.delete())
       {
         if ((i != 0) && (paramBoolean)) {
-          this.RcD = false;
+          this.YDg = false;
         }
-        AppMethodBeat.o(187698);
+        AppMethodBeat.o(236384);
         return paramBoolean;
       }
     }
     
-    public final String dz(String paramString, boolean paramBoolean)
+    public final String dL(String paramString, boolean paramBoolean)
     {
-      AppMethodBeat.i(187701);
-      String str = this.RcC;
-      if (str == null)
+      AppMethodBeat.i(236388);
+      if (this.YDf == null)
       {
-        paramString = new IllegalStateException("Base path cannot be resolved: " + NativeFileSystem.this.RcA);
-        AppMethodBeat.o(187701);
+        paramString = new IllegalStateException("Base path cannot be resolved: " + NativeFileSystem.this.YDd);
+        AppMethodBeat.o(236388);
         throw paramString;
       }
-      if ((paramBoolean) && (!this.RcD))
+      if ((paramBoolean) && (!this.YDg))
       {
-        new File(this.RcC).mkdirs();
-        this.RcD = true;
+        new File(this.YDf).mkdirs();
+        this.YDg = true;
       }
       if (paramString.isEmpty())
       {
-        AppMethodBeat.o(187701);
-        return str;
+        paramString = this.YDf;
+        AppMethodBeat.o(236388);
+        return paramString;
       }
-      paramString = str + '/' + paramString;
-      AppMethodBeat.o(187701);
+      paramString = this.YDf + '/' + paramString;
+      AppMethodBeat.o(236388);
       return paramString;
     }
     
-    public final boolean gC(String paramString)
+    public boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(187696);
-      paramString = dz(paramString, false);
+      AppMethodBeat.i(236390);
+      if (((paramObject instanceof c)) && (this.YDf.equals(((c)paramObject).YDf)))
+      {
+        AppMethodBeat.o(236390);
+        return true;
+      }
+      AppMethodBeat.o(236390);
+      return false;
+    }
+    
+    public int hashCode()
+    {
+      AppMethodBeat.i(236389);
+      int i = c.class.hashCode();
+      int j = this.YDf.hashCode();
+      AppMethodBeat.o(236389);
+      return i ^ j;
+    }
+    
+    public final boolean ho(String paramString)
+    {
+      AppMethodBeat.i(236382);
+      paramString = dL(paramString, false);
       if (paramString == null)
       {
-        AppMethodBeat.o(187696);
+        AppMethodBeat.o(236382);
         return false;
       }
       boolean bool = new File(paramString).delete();
-      AppMethodBeat.o(187696);
+      AppMethodBeat.o(236382);
       return bool;
     }
     
-    public final FileSystem hdQ()
+    public final FileSystem ieX()
     {
       return NativeFileSystem.this;
     }
     
-    public final int hdR()
+    public final int ieY()
     {
       return 31;
     }
     
-    public final String heg()
+    public final String ifp()
     {
-      return this.RcC;
+      return this.YDf;
     }
     
-    public final ParcelFileDescriptor nr(String paramString1, String paramString2)
+    public final ParcelFileDescriptor oh(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(187690);
-      String str = dz(paramString1, true);
+      AppMethodBeat.i(236372);
+      String str = dL(paramString1, true);
       if (str == null)
       {
         paramString1 = new FileNotFoundException("Invalid path: ".concat(String.valueOf(paramString1)));
-        AppMethodBeat.o(187690);
+        AppMethodBeat.o(236372);
         throw paramString1;
       }
-      paramString1 = ParcelFileDescriptor.open(new File(str), NativeFileSystem.boS(paramString2));
-      AppMethodBeat.o(187690);
-      return paramString1;
-    }
-    
-    public final InputStream openRead(String paramString)
-    {
-      AppMethodBeat.i(187685);
-      String str = dz(paramString, false);
-      if (str == null)
+      try
       {
-        paramString = new FileNotFoundException("Invalid path: ".concat(String.valueOf(paramString)));
-        AppMethodBeat.o(187685);
-        throw paramString;
+        paramString1 = ParcelFileDescriptor.open(new File(str), NativeFileSystem.bBI(paramString2));
+        AppMethodBeat.o(236372);
+        return paramString1;
       }
-      paramString = new NativeFileSystem.b(str);
-      AppMethodBeat.o(187685);
-      return paramString;
+      catch (Exception paramString1)
+      {
+        paramString1 = NativeFileSystem.m(paramString1);
+        AppMethodBeat.o(236372);
+        throw paramString1;
+      }
     }
     
     final class a
-      implements a.a<File, e>
+      implements a.a<File, f>
     {
-      private final boolean FT;
-      private final boolean RcF;
+      private final boolean Wa;
+      private final boolean YDi;
       
       a(boolean paramBoolean)
       {
-        this.FT = paramBoolean;
-        this.RcF = false;
+        this.Wa = paramBoolean;
+        this.YDi = false;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vfs.NativeFileSystem
  * JD-Core Version:    0.7.0.1
  */

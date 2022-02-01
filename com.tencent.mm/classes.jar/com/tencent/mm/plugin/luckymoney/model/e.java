@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.protocal.protobuf.bwd;
-import com.tencent.mm.protocal.protobuf.bwe;
+import com.tencent.mm.an.c;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.protocal.protobuf.cdt;
+import com.tencent.mm.protocal.protobuf.cdu;
 
 public final class e
-  extends c<bwe>
+  extends c<cdu>
 {
   public e(String paramString)
   {
-    AppMethodBeat.i(213302);
-    bwd localbwd = new bwd();
+    AppMethodBeat.i(226501);
+    cdt localcdt = new cdt();
     d.a locala = new d.a();
-    locala.iLN = localbwd;
-    locala.iLO = new bwe();
+    locala.lBU = localcdt;
+    locala.lBV = new cdu();
     locala.funcId = 5952;
     locala.uri = "/cgi-bin/micromsg-bin/gettimelimitpromo";
-    localbwd.iwu = paramString;
-    c(locala.aXF());
-    AppMethodBeat.o(213302);
+    localcdt.llH = paramString;
+    c(locala.bgN());
+    AppMethodBeat.o(226501);
   }
 }
 

@@ -16,7 +16,7 @@ import org.b.b.b;
 public final class c
 {
   private static String CHARSET;
-  private static final Map<String, String> UiM;
+  private static final Map<String, String> abMh;
   
   static
   {
@@ -26,39 +26,21 @@ public final class c
     localHashMap.put("*", "%2A");
     localHashMap.put("+", "%20");
     localHashMap.put("%7E", "~");
-    UiM = Collections.unmodifiableMap(localHashMap);
+    abMh = Collections.unmodifiableMap(localHashMap);
     AppMethodBeat.o(40580);
   }
   
-  public static String decode(String paramString)
-  {
-    AppMethodBeat.i(40582);
-    d.j(paramString, "Cannot decode null object");
-    try
-    {
-      paramString = URLDecoder.decode(paramString, CHARSET);
-      AppMethodBeat.o(40582);
-      return paramString;
-    }
-    catch (UnsupportedEncodingException paramString)
-    {
-      paramString = new b("Charset not found while decoding string: " + CHARSET, paramString);
-      AppMethodBeat.o(40582);
-      throw paramString;
-    }
-  }
-  
-  public static String encode(String paramString)
+  public static String aT(String paramString)
   {
     AppMethodBeat.i(40581);
-    d.j(paramString, "Cannot encode null object");
+    d.n(paramString, "Cannot encode null object");
     for (;;)
     {
       Iterator localIterator;
       try
       {
         paramString = URLEncoder.encode(paramString, CHARSET);
-        localIterator = UiM.entrySet().iterator();
+        localIterator = abMh.entrySet().iterator();
         if (!localIterator.hasNext())
         {
           AppMethodBeat.o(40581);
@@ -77,10 +59,28 @@ public final class c
       paramString = paramString.replaceAll(Pattern.quote(str), (String)localObject);
     }
   }
+  
+  public static String aU(String paramString)
+  {
+    AppMethodBeat.i(40582);
+    d.n(paramString, "Cannot decode null object");
+    try
+    {
+      paramString = URLDecoder.decode(paramString, CHARSET);
+      AppMethodBeat.o(40582);
+      return paramString;
+    }
+    catch (UnsupportedEncodingException paramString)
+    {
+      paramString = new b("Charset not found while decoding string: " + CHARSET, paramString);
+      AppMethodBeat.o(40582);
+      throw paramString;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     org.b.g.c
  * JD-Core Version:    0.7.0.1
  */

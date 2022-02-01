@@ -15,8 +15,8 @@ public final class s
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, int paramInt)
   {
     AppMethodBeat.i(144923);
-    paramd.kZm.setTextSize(paramInt);
-    paramd.kZl.setTextSize(paramInt);
+    paramd.nTx.setTextSize(paramInt);
+    paramd.nTw.setTextSize(paramInt);
     AppMethodBeat.o(144923);
     return true;
   }
@@ -48,7 +48,7 @@ public final class s
     return bool;
   }
   
-  public final BaseDrawActionArg bzj()
+  public final BaseDrawActionArg bKy()
   {
     AppMethodBeat.i(144921);
     SetFontSizeActionArg localSetFontSizeActionArg = new SetFontSizeActionArg();
@@ -63,7 +63,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.s
  * JD-Core Version:    0.7.0.1
  */

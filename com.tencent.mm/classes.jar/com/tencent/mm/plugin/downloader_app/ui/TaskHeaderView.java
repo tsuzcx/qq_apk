@@ -8,13 +8,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader_app.a.i;
+import com.tencent.mm.plugin.downloader_app.e.b;
+import com.tencent.mm.plugin.downloader_app.e.e;
+import com.tencent.mm.plugin.downloader_app.e.h;
 
 public class TaskHeaderView
   extends LinearLayout
 {
-  private TextView qMD;
-  private TextView qME;
-  private View qMF;
+  private TextView unP;
+  private TextView unQ;
+  private View unR;
   
   public TaskHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,41 +29,41 @@ public class TaskHeaderView
     AppMethodBeat.i(9023);
     if (parami.type == 1)
     {
-      this.qMD.setText(getResources().getString(2131758394));
-      this.qME.setVisibility(8);
+      this.unP.setText(getResources().getString(e.h.ukU));
+      this.unQ.setVisibility(8);
       if (!paramBoolean) {
-        break label194;
+        break label199;
       }
-      this.qMF.setVisibility(0);
+      this.unR.setVisibility(0);
     }
     for (;;)
     {
-      if (!parami.pSk) {
-        break label206;
+      if (!parami.toj) {
+        break label211;
       }
-      this.qMD.setTextColor(getContext().getResources().getColor(2131100284));
-      this.qME.setVisibility(8);
+      this.unP.setTextColor(getContext().getResources().getColor(e.b.ujC));
+      this.unQ.setVisibility(8);
       AppMethodBeat.o(9023);
       return;
       if (parami.type == 3)
       {
-        this.qMD.setText(getResources().getString(2131766932));
-        this.qME.setText(getResources().getString(2131766931, new Object[] { Integer.valueOf(parami.qLh) }));
-        this.qME.setVisibility(0);
+        this.unP.setText(getResources().getString(e.h.ulx));
+        this.unQ.setText(getResources().getString(e.h.ulw, new Object[] { Integer.valueOf(parami.umt) }));
+        this.unQ.setVisibility(0);
         break;
       }
       if (parami.type != 5) {
         break;
       }
-      this.qMD.setText(getResources().getString(2131758376));
-      this.qME.setVisibility(8);
+      this.unP.setText(getResources().getString(e.h.ukR));
+      this.unQ.setVisibility(8);
       break;
-      label194:
-      this.qMF.setVisibility(8);
+      label199:
+      this.unR.setVisibility(8);
     }
-    label206:
-    this.qMD.setTextColor(getContext().getResources().getColor(2131100660));
-    this.qME.setVisibility(0);
+    label211:
+    this.unP.setTextColor(getContext().getResources().getColor(e.b.ujF));
+    this.unQ.setVisibility(0);
     AppMethodBeat.o(9023);
   }
   
@@ -68,15 +71,15 @@ public class TaskHeaderView
   {
     AppMethodBeat.i(9022);
     super.onFinishInflate();
-    this.qMF = findViewById(2131299681);
-    this.qMD = ((TextView)findViewById(2131303147));
-    this.qME = ((TextView)findViewById(2131307114));
+    this.unR = findViewById(e.e.ujW);
+    this.unP = ((TextView)findViewById(e.e.dLe));
+    this.unQ = ((TextView)findViewById(e.e.dSW));
     AppMethodBeat.o(9022);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.ui.TaskHeaderView
  * JD-Core Version:    0.7.0.1
  */

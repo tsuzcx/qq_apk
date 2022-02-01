@@ -3,7 +3,7 @@ package com.tencent.luggage.xweb_ext.extendplugin.component;
 public abstract interface l
   extends j
 {
-  public abstract String PE();
+  public abstract String Te();
   
   public abstract String getTitle();
 }

@@ -10,27 +10,27 @@ import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 public final class a
   implements m
 {
-  public final void Bd(long paramLong)
+  public final void Hp(long paramLong)
   {
     AppMethodBeat.i(45729);
-    com.tencent.mm.plugin.downloader.g.a locala = d.Cw(paramLong);
+    com.tencent.mm.plugin.downloader.g.a locala = d.IF(paramLong);
     if (locala != null)
     {
       Log.i("MicroMsg.AppbrandFileDownloadCallback", "onTaskRemoved, appId: " + locala.field_appId);
       AppbrandDownloadState localAppbrandDownloadState = new AppbrandDownloadState();
       localAppbrandDownloadState.state = "download_removed";
-      localAppbrandDownloadState.dCa = locala.field_downloadId;
+      localAppbrandDownloadState.fuD = locala.field_downloadId;
       localAppbrandDownloadState.appId = locala.field_appId;
-      localAppbrandDownloadState.lCS = locala.field_totalSize;
+      localAppbrandDownloadState.oyu = locala.field_totalSize;
       b.a(localAppbrandDownloadState);
     }
     AppMethodBeat.o(45729);
   }
   
-  public final void Be(long paramLong)
+  public final void Hq(long paramLong)
   {
     AppMethodBeat.i(45730);
-    com.tencent.mm.plugin.downloader.g.a locala = d.Cw(paramLong);
+    com.tencent.mm.plugin.downloader.g.a locala = d.IF(paramLong);
     AppbrandDownloadState localAppbrandDownloadState;
     if (locala != null)
     {
@@ -43,13 +43,13 @@ public final class a
     label156:
     for (localAppbrandDownloadState.state = "download_wait_wifi";; localAppbrandDownloadState.state = "download_paused")
     {
-      localAppbrandDownloadState.dCa = locala.field_downloadId;
+      localAppbrandDownloadState.fuD = locala.field_downloadId;
       localAppbrandDownloadState.appId = locala.field_appId;
-      localAppbrandDownloadState.lCS = locala.field_totalSize;
+      localAppbrandDownloadState.oyu = locala.field_totalSize;
       if (locala.field_totalSize != 0L)
       {
         localAppbrandDownloadState.progress = (((float)locala.field_downloadedSize / (float)locala.field_totalSize * 100.0F));
-        localAppbrandDownloadState.lCT = ((float)locala.field_downloadedSize * 100.0F / (float)locala.field_totalSize);
+        localAppbrandDownloadState.oyv = ((float)locala.field_downloadedSize * 100.0F / (float)locala.field_totalSize);
       }
       b.a(localAppbrandDownloadState);
       AppMethodBeat.o(45730);
@@ -57,34 +57,34 @@ public final class a
     }
   }
   
-  public final void Bf(long paramLong) {}
+  public final void Hr(long paramLong) {}
   
   public final void a(long paramLong1, String paramString, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(226685);
-    paramString = d.Cw(paramLong1);
+    AppMethodBeat.i(281126);
+    paramString = d.IF(paramLong1);
     if (paramString != null)
     {
       AppbrandDownloadState localAppbrandDownloadState = new AppbrandDownloadState();
       localAppbrandDownloadState.state = "download_progress_changed";
-      localAppbrandDownloadState.dCa = paramString.field_downloadId;
+      localAppbrandDownloadState.fuD = paramString.field_downloadId;
       localAppbrandDownloadState.appId = paramString.field_appId;
       if (paramString.field_totalSize != 0L)
       {
         localAppbrandDownloadState.progress = (((float)paramString.field_downloadedSize / (float)paramString.field_totalSize * 100.0F));
-        localAppbrandDownloadState.lCT = ((float)paramString.field_downloadedSize * 100.0F / (float)paramString.field_totalSize);
+        localAppbrandDownloadState.oyv = ((float)paramString.field_downloadedSize * 100.0F / (float)paramString.field_totalSize);
       }
       Log.i("MicroMsg.AppbrandFileDownloadCallback", "onTaskProgressChanged, appId: %s, progress: %d", new Object[] { paramString.field_appId, Long.valueOf(localAppbrandDownloadState.progress) });
-      localAppbrandDownloadState.lCS = paramString.field_totalSize;
+      localAppbrandDownloadState.oyu = paramString.field_totalSize;
       b.a(localAppbrandDownloadState);
     }
-    AppMethodBeat.o(226685);
+    AppMethodBeat.o(281126);
   }
   
   public final void b(long paramLong, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(45728);
-    com.tencent.mm.plugin.downloader.g.a locala = d.Cw(paramLong);
+    com.tencent.mm.plugin.downloader.g.a locala = d.IF(paramLong);
     AppbrandDownloadState localAppbrandDownloadState;
     if (locala != null)
     {
@@ -97,9 +97,9 @@ public final class a
     label132:
     for (localAppbrandDownloadState.state = "download_wait_wifi";; localAppbrandDownloadState.state = "download_failed")
     {
-      localAppbrandDownloadState.dCa = locala.field_downloadId;
+      localAppbrandDownloadState.fuD = locala.field_downloadId;
       localAppbrandDownloadState.appId = locala.field_appId;
-      localAppbrandDownloadState.lCS = locala.field_totalSize;
+      localAppbrandDownloadState.oyu = locala.field_totalSize;
       b.a(localAppbrandDownloadState);
       AppMethodBeat.o(45728);
       return;
@@ -109,7 +109,7 @@ public final class a
   public final void b(long paramLong, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(45727);
-    paramString = d.Cw(paramLong);
+    paramString = d.IF(paramLong);
     if (paramString != null)
     {
       Log.i("MicroMsg.AppbrandFileDownloadCallback", "onTaskFinished, appId: " + paramString.field_appId);
@@ -120,38 +120,38 @@ public final class a
       }
       AppbrandDownloadState localAppbrandDownloadState = new AppbrandDownloadState();
       localAppbrandDownloadState.state = "download_succ";
-      localAppbrandDownloadState.dCa = paramString.field_downloadId;
+      localAppbrandDownloadState.fuD = paramString.field_downloadId;
       localAppbrandDownloadState.appId = paramString.field_appId;
       localAppbrandDownloadState.progress = 100L;
-      localAppbrandDownloadState.lCS = paramString.field_totalSize;
+      localAppbrandDownloadState.oyu = paramString.field_totalSize;
       b.a(localAppbrandDownloadState);
     }
     AppMethodBeat.o(45727);
   }
   
-  public final void k(long paramLong, String paramString)
+  public final void m(long paramLong, String paramString)
   {
     AppMethodBeat.i(45726);
-    paramString = d.Cw(paramLong);
+    paramString = d.IF(paramLong);
     if (paramString != null)
     {
       Log.i("MicroMsg.AppbrandFileDownloadCallback", "onTaskStarted, appId: " + paramString.field_appId);
       AppbrandDownloadState localAppbrandDownloadState = new AppbrandDownloadState();
       localAppbrandDownloadState.state = "download_started";
-      localAppbrandDownloadState.dCa = paramString.field_downloadId;
+      localAppbrandDownloadState.fuD = paramString.field_downloadId;
       localAppbrandDownloadState.appId = paramString.field_appId;
       if (paramString.field_totalSize != 0L)
       {
         localAppbrandDownloadState.progress = (((float)paramString.field_downloadedSize / (float)paramString.field_totalSize * 100.0F));
-        localAppbrandDownloadState.lCT = ((float)paramString.field_downloadedSize * 100.0F / (float)paramString.field_totalSize);
+        localAppbrandDownloadState.oyv = ((float)paramString.field_downloadedSize * 100.0F / (float)paramString.field_totalSize);
       }
-      localAppbrandDownloadState.lCS = paramString.field_totalSize;
+      localAppbrandDownloadState.oyu = paramString.field_totalSize;
       b.a(localAppbrandDownloadState);
     }
     AppMethodBeat.o(45726);
   }
   
-  public final void l(long paramLong, String paramString) {}
+  public final void n(long paramLong, String paramString) {}
 }
 
 

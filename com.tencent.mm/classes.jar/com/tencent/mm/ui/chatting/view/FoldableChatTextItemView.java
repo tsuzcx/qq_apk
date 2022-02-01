@@ -1,18 +1,19 @@
 package com.tencent.mm.ui.chatting.view;
 
 import android.content.Context;
-import android.support.v4.view.c;
 import android.util.AttributeSet;
 import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
+import androidx.core.g.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
 
 public class FoldableChatTextItemView
   extends LinearLayout
 {
-  private a PGk;
-  private c aAy;
+  private a XbA;
+  private d aim;
   private int maxHeight;
   
   public FoldableChatTextItemView(Context paramContext, AttributeSet paramAttributeSet)
@@ -28,7 +29,9 @@ public class FoldableChatTextItemView
   private void setTagObject(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(36700);
-    setTag(2131309367, new int[] { (int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY() });
+    int i = (int)paramMotionEvent.getRawX();
+    int j = (int)paramMotionEvent.getRawY();
+    setTag(R.h.touch_loc, new int[] { i, j });
     AppMethodBeat.o(36700);
   }
   
@@ -43,8 +46,8 @@ public class FoldableChatTextItemView
   {
     AppMethodBeat.i(36699);
     setTagObject(paramMotionEvent);
-    if (this.aAy != null) {
-      this.aAy.onTouchEvent(paramMotionEvent);
+    if (this.aim != null) {
+      this.aim.onTouchEvent(paramMotionEvent);
     }
     boolean bool = super.onTouchEvent(paramMotionEvent);
     AppMethodBeat.o(36699);
@@ -53,7 +56,7 @@ public class FoldableChatTextItemView
   
   public void setFoldTextListener(a parama)
   {
-    this.PGk = parama;
+    this.XbA = parama;
   }
   
   public void setMaxHeight(int paramInt)
@@ -64,7 +67,7 @@ public class FoldableChatTextItemView
   public void setOnGestureListener(GestureDetector.OnGestureListener paramOnGestureListener)
   {
     AppMethodBeat.i(36701);
-    this.aAy = new c(getContext(), paramOnGestureListener);
+    this.aim = new d(getContext(), paramOnGestureListener);
     AppMethodBeat.o(36701);
   }
   

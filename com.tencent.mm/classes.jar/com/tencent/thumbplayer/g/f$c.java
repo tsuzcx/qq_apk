@@ -2,9 +2,9 @@ package com.tencent.thumbplayer.g;
 
 final class f$c
 {
-  boolean RVI;
-  long SbA = -1L;
-  long Sbz = 0L;
+  long ZEk = 0L;
+  long ZEl = -1L;
+  boolean Zys;
 }
 
 

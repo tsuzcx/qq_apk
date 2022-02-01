@@ -3,43 +3,43 @@ package com.tencent.mm.plugin.gamelife.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class m
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int ybm;
-  public String ybn;
+  public String extern_info;
+  public int msg_type;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(225900);
+    AppMethodBeat.i(203924);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.ybm);
-      if (this.ybn != null) {
-        paramVarArgs.e(2, this.ybn);
+      paramVarArgs.aY(1, this.msg_type);
+      if (this.extern_info != null) {
+        paramVarArgs.f(2, this.extern_info);
       }
-      AppMethodBeat.o(225900);
+      AppMethodBeat.o(203924);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bu(1, this.ybm) + 0;
+      int i = g.a.a.b.b.a.bM(1, this.msg_type) + 0;
       paramInt = i;
-      if (this.ybn != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.ybn);
+      if (this.extern_info != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.extern_info);
       }
-      AppMethodBeat.o(225900);
+      AppMethodBeat.o(203924);
       return paramInt;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      AppMethodBeat.o(225900);
+      AppMethodBeat.o(203924);
       return 0;
     }
     if (paramInt == 3)
@@ -49,18 +49,18 @@ public final class m
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(225900);
+        AppMethodBeat.o(203924);
         return -1;
       case 1: 
-        localm.ybm = locala.UbS.zi();
-        AppMethodBeat.o(225900);
+        localm.msg_type = locala.abFh.AK();
+        AppMethodBeat.o(203924);
         return 0;
       }
-      localm.ybn = locala.UbS.readString();
-      AppMethodBeat.o(225900);
+      localm.extern_info = locala.abFh.readString();
+      AppMethodBeat.o(203924);
       return 0;
     }
-    AppMethodBeat.o(225900);
+    AppMethodBeat.o(203924);
     return -1;
   }
 }

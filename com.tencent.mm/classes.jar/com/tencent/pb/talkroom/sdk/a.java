@@ -1,13 +1,15 @@
 package com.tencent.pb.talkroom.sdk;
 
-import com.tencent.pb.common.b.a.a.a.as;
+import com.tencent.pb.common.b.a.a.a.ar;
 import java.util.List;
 
 public abstract interface a
 {
-  public abstract void Rd(int paramInt);
+  public abstract void Xr(int paramInt);
   
-  public abstract void Ri(int paramInt);
+  public abstract void Xw(int paramInt);
+  
+  public abstract void ay(String paramString, int paramInt1, int paramInt2);
   
   public abstract void b(MultiTalkGroup paramMultiTalkGroup);
   
@@ -17,23 +19,23 @@ public abstract interface a
   
   public abstract void e(MultiTalkGroup paramMultiTalkGroup);
   
-  public abstract void enE();
+  public abstract void eXu();
   
-  public abstract void enF();
+  public abstract void eXv();
   
-  public abstract void enG();
+  public abstract void eXw();
   
-  public abstract void enH();
+  public abstract void eXx();
   
-  public abstract void enI();
+  public abstract void eXy();
   
   public abstract void f(MultiTalkGroup paramMultiTalkGroup);
   
-  public abstract void fz(List<a.as> paramList);
+  public abstract void gb(List<a.ar> paramList);
   
-  public abstract void n(int paramInt, Object paramObject);
+  public abstract void r(int paramInt, Object paramObject);
   
-  public abstract void rv(boolean paramBoolean);
+  public abstract void uy(boolean paramBoolean);
 }
 
 

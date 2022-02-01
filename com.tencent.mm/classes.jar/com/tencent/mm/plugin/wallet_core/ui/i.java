@@ -1,37 +1,45 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.content.Context;
 import android.content.Intent;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.xweb.WebView;
-import com.tencent.xweb.ac;
+import com.tencent.mm.sdk.platformtools.Util;
 
-public final class i
-  extends ac
+final class i
+  extends d
 {
-  private Context context;
-  
-  public i(Context paramContext)
+  public i(WalletCheckPwdNewUI paramWalletCheckPwdNewUI)
   {
-    this.context = paramContext;
+    super(paramWalletCheckPwdNewUI);
   }
   
-  public final boolean a(WebView paramWebView, String paramString)
+  public final void bho(String paramString)
   {
-    AppMethodBeat.i(70681);
-    paramWebView = new Intent();
-    paramWebView.putExtra("rawUrl", paramString);
-    Log.d("MicroMsg.ProtoColWebViewClient", "raw url: %s", new Object[] { paramWebView.getStringExtra("rawUrl") });
-    c.b(this.context, "webview", ".ui.tools.WebViewUI", paramWebView);
-    AppMethodBeat.o(70681);
-    return true;
+    AppMethodBeat.i(70680);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("encrypt_pwd", paramString);
+    this.OVe.setResult(-1, localIntent);
+    this.OVe.finish();
+    AppMethodBeat.o(70680);
+  }
+  
+  public final void onCreate()
+  {
+    AppMethodBeat.i(70679);
+    String str = this.OVe.getIntent().getStringExtra("title");
+    if (!Util.isNullOrNil(str)) {
+      this.OVe.Oug.setText(str);
+    }
+    str = this.OVe.getIntent().getStringExtra("subtitle");
+    if (!Util.isNullOrNil(str)) {
+      this.OVe.Ouh.setText(str);
+    }
+    AppMethodBeat.o(70679);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.i
  * JD-Core Version:    0.7.0.1
  */

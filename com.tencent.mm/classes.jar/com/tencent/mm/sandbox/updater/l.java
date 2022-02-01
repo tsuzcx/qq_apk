@@ -2,9 +2,9 @@ package com.tencent.mm.sandbox.updater;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cr.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.xwebutil.c;
 import com.tencent.xweb.downloader.WXFileDownloaderBridge;
 import com.tencent.xweb.w;
 import java.util.HashMap;
@@ -15,12 +15,12 @@ public final class l
   private l()
   {
     AppMethodBeat.i(32813);
-    d.kT(MMApplicationContext.getContext());
-    WXFileDownloaderBridge.a(com.tencent.mm.plugin.cdndownloader.i.a.cyj());
+    c.lQ(MMApplicationContext.getContext());
+    WXFileDownloaderBridge.a(com.tencent.mm.plugin.cdndownloader.i.a.cME());
     AppMethodBeat.o(32813);
   }
   
-  public final void Ay(boolean paramBoolean) {}
+  public final void EF(boolean paramBoolean) {}
   
   public final boolean bu(Intent paramIntent)
   {
@@ -58,19 +58,19 @@ public final class l
   
   public static final class a
   {
-    public static final l NGg;
+    public static final l UTG;
     
     static
     {
       AppMethodBeat.i(32810);
-      NGg = new l((byte)0);
+      UTG = new l((byte)0);
       AppMethodBeat.o(32810);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.sandbox.updater.l
  * JD-Core Version:    0.7.0.1
  */

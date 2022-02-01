@@ -9,15 +9,15 @@ public abstract interface h
   
   public abstract void c(long paramLong, boolean paramBoolean);
   
+  public abstract void sF();
+  
+  public abstract void sG();
+  
   public abstract void t(m paramm);
-  
-  public abstract void uK();
-  
-  public abstract void uL();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.c.f.h
  * JD-Core Version:    0.7.0.1
  */

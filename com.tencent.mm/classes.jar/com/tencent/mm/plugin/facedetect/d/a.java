@@ -4,57 +4,57 @@ import android.content.SharedPreferences;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.b.g.a;
 import com.tencent.mm.audio.e.d;
-import com.tencent.mm.compatible.deviceinfo.ae;
+import com.tencent.mm.compatible.deviceinfo.af;
 import com.tencent.mm.compatible.deviceinfo.k;
 import com.tencent.mm.compatible.util.g;
 import com.tencent.mm.plugin.facedetect.model.p;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.thread.ThreadPool;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class a
 {
-  private static final String sRP;
-  public static final String sRT;
-  private com.tencent.mm.audio.b.c dyI;
-  private com.tencent.mm.audio.b.c.a dzv;
-  private final ArrayList<com.tencent.mm.audio.b.c.a> eN;
-  private com.tencent.mm.modelvoiceaddr.a.c jwB;
-  private com.tencent.mm.modelvoiceaddr.a.c.a jwC;
-  private int jwf;
-  private int jwg;
-  private com.tencent.mm.audio.e.a jwl;
-  private boolean jxb;
-  b sRQ;
-  private boolean sRR;
-  private String sRS;
-  public com.tencent.mm.audio.b.c.a sRU;
+  private static final String wxL;
+  public static final String wxP;
+  private final ArrayList<com.tencent.mm.audio.b.c.a> aeb;
+  private com.tencent.mm.audio.b.c frx;
+  private com.tencent.mm.audio.b.c.a fsk;
+  private int mlI;
+  private int mlJ;
+  private com.tencent.mm.audio.e.a mlO;
+  private boolean mmE;
+  private com.tencent.mm.modelvoiceaddr.a.c mme;
+  private com.tencent.mm.modelvoiceaddr.a.c.a mmf;
+  b wxM;
+  private boolean wxN;
+  private String wxO;
+  public com.tencent.mm.audio.b.c.a wxQ;
   
   static
   {
     AppMethodBeat.i(103814);
-    sRP = p.cTh() + "/fdv_v_";
-    sRT = g.getExternalStorageDirectory().getAbsolutePath() + "/temp_debug_raw.spx";
+    wxL = p.dim() + "/fdv_v_";
+    wxP = g.avF().getAbsolutePath() + "/temp_debug_raw.spx";
     AppMethodBeat.o(103814);
   }
   
   public a()
   {
     AppMethodBeat.i(103811);
-    this.sRQ = null;
-    this.jxb = true;
-    this.sRR = false;
-    this.sRS = "";
-    this.eN = new ArrayList(5);
-    this.jwg = 0;
-    this.jwf = 0;
-    this.sRU = new com.tencent.mm.audio.b.c.a()
+    this.wxM = null;
+    this.mmE = true;
+    this.wxN = false;
+    this.wxO = "";
+    this.aeb = new ArrayList(5);
+    this.mlJ = 0;
+    this.mlI = 0;
+    this.wxQ = new com.tencent.mm.audio.b.c.a()
     {
-      public final void cj(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void cC(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(103803);
         synchronized (a.i(a.this))
@@ -64,7 +64,7 @@ public final class a
           {
             com.tencent.mm.audio.b.c.a locala = (com.tencent.mm.audio.b.c.a)localIterator.next();
             if (locala != null) {
-              locala.cj(paramAnonymousInt1, paramAnonymousInt2);
+              locala.cC(paramAnonymousInt1, paramAnonymousInt2);
             }
           }
         }
@@ -88,17 +88,17 @@ public final class a
         AppMethodBeat.o(103802);
       }
     };
-    this.dzv = new com.tencent.mm.audio.b.c.a()
+    this.fsk = new com.tencent.mm.audio.b.c.a()
     {
-      short[] jwD;
+      short[] mmg;
       
-      public final void cj(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void cC(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(103805);
         Log.e("MicroMsg.FaceVoiceRecordLogic", "onRecError state = " + paramAnonymousInt1 + " detailState = " + paramAnonymousInt2);
         a.this.clearDiskCache();
         if (a.e(a.this) != null) {
-          a.e(a.this).onError(2);
+          a.e(a.this).kv(2);
         }
         AppMethodBeat.o(103805);
       }
@@ -109,25 +109,25 @@ public final class a
         AppMethodBeat.i(103804);
         Log.d("MicroMsg.FaceVoiceRecordLogic", "OnRecPcmDataReady len: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         int i;
-        if (this.jwD != null)
+        if (this.mmg != null)
         {
           i = j;
-          if (this.jwD.length >= paramAnonymousInt / 2) {}
+          if (this.mmg.length >= paramAnonymousInt / 2) {}
         }
         else
         {
-          this.jwD = new short[paramAnonymousInt / 2];
+          this.mmg = new short[paramAnonymousInt / 2];
           i = j;
         }
         while (i < paramAnonymousInt / 2)
         {
-          this.jwD[i] = ((short)(paramAnonymousArrayOfByte[(i * 2)] & 0xFF | paramAnonymousArrayOfByte[(i * 2 + 1)] << 8));
+          this.mmg[i] = ((short)(paramAnonymousArrayOfByte[(i * 2)] & 0xFF | paramAnonymousArrayOfByte[(i * 2 + 1)] << 8));
           i += 1;
         }
-        a.a(a.this, this.jwD, paramAnonymousInt / 2);
+        a.a(a.this, this.mmg, paramAnonymousInt / 2);
         if (a.g(a.this) != null)
         {
-          a.g(a.this).e(this.jwD, paramAnonymousInt / 2);
+          a.g(a.this).e(this.mmg, paramAnonymousInt / 2);
           if (a.d(a.this) == null) {
             break label270;
           }
@@ -137,7 +137,7 @@ public final class a
         {
           if ((-1 == paramAnonymousInt) && (a.e(a.this) != null))
           {
-            a.e(a.this).onError(3);
+            a.e(a.this).kv(3);
             a.this.clearDiskCache();
             Log.e("MicroMsg.FaceVoiceRecordLogic", "write to file failed");
             AppMethodBeat.o(103804);
@@ -147,7 +147,7 @@ public final class a
           return;
           if (a.e(a.this) != null)
           {
-            a.e(a.this).onError(1);
+            a.e(a.this).kv(1);
             a.this.clearDiskCache();
           }
           Log.e("MicroMsg.FaceVoiceRecordLogic", "mVoiceSilentDetectAPI is null");
@@ -156,14 +156,14 @@ public final class a
         }
       }
     };
-    this.jwC = new com.tencent.mm.modelvoiceaddr.a.c.a()
+    this.mmf = new com.tencent.mm.modelvoiceaddr.a.c.a()
     {
-      public final void Yh()
+      public final void acN()
       {
         AppMethodBeat.i(103809);
         Log.d("MicroMsg.FaceVoiceRecordLogic", "Silent enough to finish");
         if (a.e(a.this) != null) {
-          a.e(a.this).onError(11);
+          a.e(a.this).kv(11);
         }
         AppMethodBeat.o(103809);
       }
@@ -175,19 +175,19 @@ public final class a
         AppMethodBeat.o(103806);
       }
       
-      public final void bix()
+      public final void brV()
       {
         AppMethodBeat.i(103807);
         Log.d("MicroMsg.FaceVoiceRecordLogic", "hy: onSpeakToSilent");
         AppMethodBeat.o(103807);
       }
       
-      public final void biy()
+      public final void brW()
       {
         AppMethodBeat.i(103808);
         Log.d("MicroMsg.FaceVoiceRecordLogic", "hy: onSilentToSpeak");
         if (a.e(a.this) != null) {
-          a.e(a.this).cTp();
+          a.e(a.this).diu();
         }
         AppMethodBeat.o(103808);
       }
@@ -195,20 +195,20 @@ public final class a
     AppMethodBeat.o(103811);
   }
   
-  public final void ap(Runnable paramRunnable)
+  public final void au(Runnable paramRunnable)
   {
-    AppMethodBeat.i(186371);
+    AppMethodBeat.i(191434);
     Log.i("MicroMsg.FaceVoiceRecordLogic", "start record");
     ThreadPool.post(new a(paramRunnable, (byte)0), "FaceVoice_record", 10);
-    AppMethodBeat.o(186371);
+    AppMethodBeat.o(191434);
   }
   
   public final void b(com.tencent.mm.audio.b.c.a parama)
   {
     AppMethodBeat.i(103813);
-    synchronized (this.eN)
+    synchronized (this.aeb)
     {
-      this.eN.add(parama);
+      this.aeb.add(parama);
       AppMethodBeat.o(103813);
       return;
     }
@@ -216,36 +216,36 @@ public final class a
   
   public final void c(com.tencent.mm.audio.b.c.a parama)
   {
-    AppMethodBeat.i(186374);
-    synchronized (this.eN)
+    AppMethodBeat.i(191447);
+    synchronized (this.aeb)
     {
-      this.eN.remove(parama);
-      AppMethodBeat.o(186374);
+      this.aeb.remove(parama);
+      AppMethodBeat.o(191447);
       return;
     }
-  }
-  
-  public final byte[] cTo()
-  {
-    AppMethodBeat.i(186373);
-    byte[] arrayOfByte = s.aW(this.sRS, -1, -1);
-    AppMethodBeat.o(186373);
-    return arrayOfByte;
   }
   
   public final void clearDiskCache()
   {
     AppMethodBeat.i(103812);
-    s.deleteFile(this.sRS);
+    u.deleteFile(this.wxO);
     AppMethodBeat.o(103812);
+  }
+  
+  public final byte[] dit()
+  {
+    AppMethodBeat.i(191443);
+    byte[] arrayOfByte = u.aY(this.wxO, -1, -1);
+    AppMethodBeat.o(191443);
+    return arrayOfByte;
   }
   
   public final void recycle()
   {
-    AppMethodBeat.i(186370);
+    AppMethodBeat.i(191432);
     Log.i("MicroMsg.FaceVoiceRecordLogic", "hy: recycling voice.");
-    this.sRQ = null;
-    AppMethodBeat.o(186370);
+    this.wxM = null;
+    AppMethodBeat.o(191432);
   }
   
   /* Error */
@@ -256,48 +256,48 @@ public final class a
     //   2: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
     //   6: iconst_1
-    //   7: putfield 100	com/tencent/mm/plugin/facedetect/d/a:sRR	Z
+    //   7: putfield 100	com/tencent/mm/plugin/facedetect/d/a:wxN	Z
     //   10: ldc 157
     //   12: ldc 210
     //   14: invokestatic 164	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   17: aload_0
     //   18: monitorenter
     //   19: aload_0
-    //   20: getfield 128	com/tencent/mm/plugin/facedetect/d/a:dyI	Lcom/tencent/mm/audio/b/c;
+    //   20: getfield 128	com/tencent/mm/plugin/facedetect/d/a:frx	Lcom/tencent/mm/audio/b/c;
     //   23: ifnull +16 -> 39
     //   26: aload_0
-    //   27: getfield 128	com/tencent/mm/plugin/facedetect/d/a:dyI	Lcom/tencent/mm/audio/b/c;
-    //   30: invokevirtual 216	com/tencent/mm/audio/b/c:ZZ	()Z
+    //   27: getfield 128	com/tencent/mm/plugin/facedetect/d/a:frx	Lcom/tencent/mm/audio/b/c;
+    //   30: invokevirtual 216	com/tencent/mm/audio/b/c:aeJ	()Z
     //   33: pop
     //   34: aload_0
     //   35: aconst_null
-    //   36: putfield 128	com/tencent/mm/plugin/facedetect/d/a:dyI	Lcom/tencent/mm/audio/b/c;
+    //   36: putfield 128	com/tencent/mm/plugin/facedetect/d/a:frx	Lcom/tencent/mm/audio/b/c;
     //   39: aload_0
-    //   40: getfield 131	com/tencent/mm/plugin/facedetect/d/a:jwl	Lcom/tencent/mm/audio/e/a;
+    //   40: getfield 131	com/tencent/mm/plugin/facedetect/d/a:mlO	Lcom/tencent/mm/audio/e/a;
     //   43: ifnull +17 -> 60
     //   46: aload_0
-    //   47: getfield 131	com/tencent/mm/plugin/facedetect/d/a:jwl	Lcom/tencent/mm/audio/e/a;
+    //   47: getfield 131	com/tencent/mm/plugin/facedetect/d/a:mlO	Lcom/tencent/mm/audio/e/a;
     //   50: invokeinterface 221 1 0
     //   55: aload_0
     //   56: aconst_null
-    //   57: putfield 131	com/tencent/mm/plugin/facedetect/d/a:jwl	Lcom/tencent/mm/audio/e/a;
+    //   57: putfield 131	com/tencent/mm/plugin/facedetect/d/a:mlO	Lcom/tencent/mm/audio/e/a;
     //   60: aload_0
-    //   61: getfield 134	com/tencent/mm/plugin/facedetect/d/a:jwB	Lcom/tencent/mm/modelvoiceaddr/a/c;
+    //   61: getfield 134	com/tencent/mm/plugin/facedetect/d/a:mme	Lcom/tencent/mm/modelvoiceaddr/a/c;
     //   64: astore_1
     //   65: aload_1
     //   66: ifnull +20 -> 86
     //   69: aload_0
-    //   70: getfield 134	com/tencent/mm/plugin/facedetect/d/a:jwB	Lcom/tencent/mm/modelvoiceaddr/a/c;
+    //   70: getfield 134	com/tencent/mm/plugin/facedetect/d/a:mme	Lcom/tencent/mm/modelvoiceaddr/a/c;
     //   73: invokevirtual 226	com/tencent/mm/modelvoiceaddr/a/c:release	()V
     //   76: aload_0
     //   77: aconst_null
-    //   78: putfield 134	com/tencent/mm/plugin/facedetect/d/a:jwB	Lcom/tencent/mm/modelvoiceaddr/a/c;
+    //   78: putfield 134	com/tencent/mm/plugin/facedetect/d/a:mme	Lcom/tencent/mm/modelvoiceaddr/a/c;
     //   81: aload_0
     //   82: iconst_1
-    //   83: putfield 98	com/tencent/mm/plugin/facedetect/d/a:jxb	Z
+    //   83: putfield 98	com/tencent/mm/plugin/facedetect/d/a:mmE	Z
     //   86: aload_0
     //   87: iconst_0
-    //   88: putfield 112	com/tencent/mm/plugin/facedetect/d/a:jwg	I
+    //   88: putfield 112	com/tencent/mm/plugin/facedetect/d/a:mlJ	I
     //   91: aload_0
     //   92: monitorexit
     //   93: ldc 208
@@ -333,17 +333,16 @@ public final class a
     //   69	86	115	finally
     //   86	93	115	finally
     //   100	112	115	finally
-    //   116	118	115	finally
   }
   
   final class a
     implements Runnable
   {
-    private Runnable sRW = null;
+    private Runnable wxS = null;
     
     private a(Runnable paramRunnable)
     {
-      this.sRW = paramRunnable;
+      this.wxS = paramRunnable;
     }
     
     public final void run()
@@ -357,22 +356,22 @@ public final class a
             break label572;
           }
           Log.i("MicroMsg.FaceVoiceRecordLogic", "hy: initDeviceInLock");
-          a.a(a.this, a.sRP + Util.currentTicks() + ".spx");
+          a.a(a.this, a.wxL + Util.currentTicks() + ".spx");
           Log.i("MicroMsg.FaceVoiceRecordLogic", "generateVoiceFilePath: %s", new Object[] { a.a(a.this) });
           try
           {
-            s.deleteFile(a.a(a.this));
+            u.deleteFile(a.a(a.this));
             a.a(a.this, new com.tencent.mm.audio.b.c(16000, 1, 3));
-            a.c(a.this).dzk = -19;
-            a.c(a.this).dc(false);
+            a.c(a.this).frZ = -19;
+            a.c(a.this).dC(false);
             a.a(a.this, new d());
-            if (!a.d(a.this).hz(a.a(a.this)))
+            if (!a.d(a.this).in(a.a(a.this)))
             {
               Log.e("MicroMsg.FaceVoiceRecordLogic", "hy: init speex writer failed");
-              a.d(a.this).abP();
+              a.d(a.this).agC();
               a.a(a.this, null);
               if (a.e(a.this) != null) {
-                a.e(a.this).onError(5);
+                a.e(a.this).kv(5);
               }
               AppMethodBeat.o(103810);
               return;
@@ -384,27 +383,27 @@ public final class a
             continue;
           }
         }
-        if (ae.gKE.gGG > 0)
+        if (af.juS.jqS > 0)
         {
-          a.c(a.this).x(ae.gKE.gGG, true);
-          a.c(a.this).jk(50);
-          a.c(a.this).dd(false);
+          a.c(a.this).z(af.juS.jqS, true);
+          a.c(a.this).kD(50);
+          a.c(a.this).dD(false);
         }
         try
         {
           a.a(a.this, new com.tencent.mm.modelvoiceaddr.a.c(5000, com.tencent.mm.modelvoiceaddr.a.c.sp.getInt("sil_time", 200), com.tencent.mm.modelvoiceaddr.a.c.sp.getFloat("s_n_ration", 2.5F), com.tencent.mm.modelvoiceaddr.a.c.sp.getInt("s_window", 50), com.tencent.mm.modelvoiceaddr.a.c.sp.getInt("s_length", 35), com.tencent.mm.modelvoiceaddr.a.c.sp.getInt("s_delay_time", 20), false, false));
-          a.g(a.this).jxj = a.f(a.this);
-          a.c(a.this).dzv = a.this.sRU;
+          a.g(a.this).mmM = a.f(a.this);
+          a.c(a.this).fsk = a.this.wxQ;
           a.this.b(a.h(a.this));
-          if (!a.c(a.this).aai())
+          if (!a.c(a.this).aeU())
           {
             Log.e("MicroMsg.FaceVoiceRecordLogic", "hy: start record failed");
             if (a.e(a.this) == null) {
               continue;
             }
-            a.e(a.this).onError(7);
+            a.e(a.this).kv(7);
             continue;
-            a.c(a.this).x(5, false);
+            a.c(a.this).z(5, false);
           }
         }
         catch (Throwable localThrowable)
@@ -413,13 +412,13 @@ public final class a
           {
             Log.e("MicroMsg.FaceVoiceRecordLogic", "hy: init VoiceDetectAPI failed :" + localThrowable.getMessage());
             if (a.e(a.this) != null) {
-              a.e(a.this).onError(6);
+              a.e(a.this).kv(6);
             }
           }
         }
-        if (this.sRW != null)
+        if (this.wxS != null)
         {
-          this.sRW.run();
+          this.wxS.run();
           continue;
           label572:
           Log.w("MicroMsg.FaceVoiceRecordLogic", "hy: already called stop. should not start record");
@@ -430,14 +429,14 @@ public final class a
   
   public static abstract interface b
   {
-    public abstract void cTp();
+    public abstract void diu();
     
-    public abstract void onError(int paramInt);
+    public abstract void kv(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.d.a
  * JD-Core Version:    0.7.0.1
  */

@@ -25,12 +25,15 @@ import com.tencent.smtt.sandbox.SandboxListener;
 import com.tencent.smtt.sdk.b.d;
 import com.tencent.smtt.utils.TbsLog;
 import com.tencent.smtt.utils.TbsLogClient;
+import com.tencent.smtt.utils.a;
 import com.tencent.smtt.utils.b;
 import com.tencent.smtt.utils.f;
-import com.tencent.smtt.utils.m;
+import com.tencent.smtt.utils.r;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @SuppressLint({"NewApi"})
 public class QbSdk
@@ -345,7 +348,7 @@ public class QbSdk
     TbsLog.d("QbSdk", "QbSdk-init currentThreadName=" + Thread.currentThread().getName());
     if (!sIsVersionPrinted)
     {
-      TbsLog.i("QbSdk", "svn revision: jnizz; SDK_VERSION_CODE: 43809; SDK_VERSION_NAME: 4.4.0.0006");
+      TbsLog.i("QbSdk", "svn revision: jnizz; SDK_VERSION_CODE: 44052; SDK_VERSION_NAME: 4.4.0.0052");
       sIsVersionPrinted = true;
     }
     if ((a) && (!paramBoolean))
@@ -1037,7 +1040,7 @@ public class QbSdk
       AppMethodBeat.o(55404);
       return;
     }
-    if (!m.b(paramContext))
+    if (!com.tencent.smtt.utils.n.b(paramContext))
     {
       TbsLog.e("QbSdk", "sys WebView: SysWebViewForcedBy checkTbsValidity");
       TbsCoreLoadStat.getInstance().setLoadErrorCode(paramContext, 419);
@@ -1300,12 +1303,12 @@ public class QbSdk
   
   public static void disableSensitiveApi()
   {
-    AppMethodBeat.i(188320);
+    AppMethodBeat.i(194719);
     m = false;
     HashMap localHashMap = new HashMap();
     localHashMap.put("no_sensitive_api", Boolean.TRUE);
     initTbsSettings(localHashMap);
-    AppMethodBeat.o(188320);
+    AppMethodBeat.o(194719);
   }
   
   public static void fileInfoDetect(Context paramContext, String paramString, android.webkit.ValueCallback<String> paramValueCallback)
@@ -1561,7 +1564,7 @@ public class QbSdk
   
   public static int getTbsSdkVersion()
   {
-    return 43809;
+    return 44052;
   }
   
   public static int getTbsVersion(Context paramContext)
@@ -1897,18 +1900,50 @@ public class QbSdk
   
   public static void resetDecoupleCore(Context paramContext)
   {
+    int i1 = 0;
     AppMethodBeat.i(55418);
     TbsLog.e("QbSdk", "QbSdk resetDecoupleCore!", true);
-    try
+    for (;;)
     {
-      f.b(q.a().q(paramContext));
-      AppMethodBeat.o(55418);
-      return;
-    }
-    catch (Throwable paramContext)
-    {
-      TbsLog.e("QbSdk", "QbSdk resetDecoupleCore exception:" + Log.getStackTraceString(paramContext));
-      AppMethodBeat.o(55418);
+      try
+      {
+        if (r.b(paramContext))
+        {
+          paramContext = new File(f.a(TbsShareManager.getPackageContext(paramContext, "com.tencent.mm", false), 4));
+          File[] arrayOfFile = paramContext.listFiles();
+          Pattern localPattern = Pattern.compile(a.a(false));
+          int i2 = arrayOfFile.length;
+          if (i1 < i2)
+          {
+            File localFile = arrayOfFile[i1];
+            if ((localPattern.matcher(localFile.getName()).find()) && (localFile.isFile()) && (localFile.exists()))
+            {
+              TbsLog.i("TbsDownload", "QbSdk resetDecoupleCore file is " + localFile.getAbsolutePath(), true);
+              localFile.delete();
+            }
+          }
+          else
+          {
+            paramContext = new File(paramContext, TbsDownloader.getBackupFileName(false));
+            TbsLog.i("TbsDownload", "QbSdk resetDecoupleCore file is " + paramContext.getAbsolutePath(), true);
+            paramContext.delete();
+            AppMethodBeat.o(55418);
+          }
+        }
+        else
+        {
+          f.b(q.a().q(paramContext));
+          AppMethodBeat.o(55418);
+          return;
+        }
+      }
+      catch (Throwable paramContext)
+      {
+        TbsLog.e("QbSdk", "QbSdk resetDecoupleCore exception:" + Log.getStackTraceString(paramContext));
+        AppMethodBeat.o(55418);
+        return;
+      }
+      i1 += 1;
     }
   }
   
@@ -1956,7 +1991,7 @@ public class QbSdk
   
   public static void setNewDnsHostList(String paramString)
   {
-    AppMethodBeat.i(188319);
+    AppMethodBeat.i(194716);
     Object localObject = x.a();
     if ((localObject != null) && (((x)localObject).b()))
     {
@@ -1964,16 +1999,16 @@ public class QbSdk
       try
       {
         ((DexLoader)localObject).invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "setNewDnsHostList", new Class[] { String.class }, new Object[] { paramString });
-        AppMethodBeat.o(188319);
+        AppMethodBeat.o(194716);
         return;
       }
       catch (Exception paramString)
       {
-        AppMethodBeat.o(188319);
+        AppMethodBeat.o(194716);
         return;
       }
     }
-    AppMethodBeat.o(188319);
+    AppMethodBeat.o(194716);
   }
   
   public static void setOnlyDownload(boolean paramBoolean)
@@ -2210,7 +2245,7 @@ public class QbSdk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.sdk.QbSdk
  * JD-Core Version:    0.7.0.1
  */

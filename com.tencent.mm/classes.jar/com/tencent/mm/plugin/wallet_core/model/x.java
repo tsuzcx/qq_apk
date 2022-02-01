@@ -1,97 +1,48 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
-import android.content.Context;
-import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.id_verify.model.a;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.wxpay.a.a;
 import com.tencent.mm.sdk.platformtools.Util;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.wallet_core.c.aa;
+import java.util.Map;
 
 public final class x
 {
-  public List<ElementQuery> HQe = null;
-  public SparseArray<String> Ibf = null;
-  public List<a> Ibg;
+  public String OTl;
+  public int OTm;
+  public String OTn;
+  public String OTo;
+  public String OTp;
+  public String bgColor;
+  public String wording;
   
-  public final ElementQuery aVi(String paramString)
+  public static x aU(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(70412);
-    if ((this.HQe != null) && (this.HQe.size() != 0))
+    AppMethodBeat.i(70408);
+    if (paramMap == null)
     {
-      Iterator localIterator = this.HQe.iterator();
-      while (localIterator.hasNext())
-      {
-        ElementQuery localElementQuery = (ElementQuery)localIterator.next();
-        if ((localElementQuery.dDj != null) && (localElementQuery.dDj.equals(paramString)))
-        {
-          AppMethodBeat.o(70412);
-          return localElementQuery;
-        }
-      }
-      Log.w("MicroMsg.WalletBankElementManager", "hy: not found given banktype: %s", new Object[] { paramString });
-      AppMethodBeat.o(70412);
+      AppMethodBeat.o(70408);
       return null;
     }
-    Log.w("MicroMsg.WalletBankElementManager", "hy: no element from given banktype");
-    AppMethodBeat.o(70412);
-    return null;
+    x localx = new x();
+    localx.wording = ((String)paramMap.get(".sysmsg.paymsg.BalanceNotice.wording"));
+    localx.OTl = ((String)paramMap.get(".sysmsg.paymsg.BalanceNotice.wording_color"));
+    localx.bgColor = ((String)paramMap.get(".sysmsg.paymsg.BalanceNotice.bg_color"));
+    localx.OTn = ((String)paramMap.get(".sysmsg.paymsg.BalanceNotice.route_url"));
+    localx.OTo = ((String)paramMap.get(".sysmsg.paymsg.BalanceNotice.left_icon"));
+    localx.OTp = ((String)paramMap.get(".sysmsg.paymsg.BalanceNotice.right_icon"));
+    localx.OTm = Util.getInt((String)paramMap.get(".sysmsg.paymsg.BalanceNotice.wording_size"), 14);
+    AppMethodBeat.o(70408);
+    return localx;
   }
   
-  public final ElementQuery aVj(String paramString)
+  public static void bgQ(String paramString)
   {
-    AppMethodBeat.i(70413);
-    if (Util.isNullOrNil(paramString))
-    {
-      Log.w("MicroMsg.WalletBankElementManager", "hy: bindSerail given is null");
-      AppMethodBeat.o(70413);
-      return null;
-    }
-    if ((this.HQe != null) && (this.HQe.size() != 0))
-    {
-      Iterator localIterator = this.HQe.iterator();
-      while (localIterator.hasNext())
-      {
-        ElementQuery localElementQuery = (ElementQuery)localIterator.next();
-        if (paramString.equals(localElementQuery.ANo))
-        {
-          AppMethodBeat.o(70413);
-          return localElementQuery;
-        }
-      }
-      Log.w("MicroMsg.WalletBankElementManager", "hy: not found given element query");
-      AppMethodBeat.o(70413);
-      return null;
-    }
-    Log.w("MicroMsg.WalletBankElementManager", "hy: element list is null. get element failed");
-    AppMethodBeat.o(70413);
-    return null;
-  }
-  
-  public final String av(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(70411);
-    if (this.Ibf != null)
-    {
-      String str = (String)this.Ibf.get(paramInt);
-      if (!Util.isNullOrNil(str))
-      {
-        AppMethodBeat.o(70411);
-        return str;
-      }
-    }
-    paramContext = paramContext.getString(2131767548);
-    AppMethodBeat.o(70411);
-    return paramContext;
-  }
-  
-  public final String hM(Context paramContext)
-  {
-    AppMethodBeat.i(70410);
-    paramContext = av(paramContext, t.fQI().fRu());
-    AppMethodBeat.o(70410);
-    return paramContext;
+    AppMethodBeat.i(70409);
+    ((a)h.ag(a.class)).getWalletCacheStg().set(ar.a.VtK, paramString);
+    AppMethodBeat.o(70409);
   }
 }
 

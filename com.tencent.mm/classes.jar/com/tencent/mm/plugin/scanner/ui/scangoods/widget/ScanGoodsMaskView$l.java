@@ -5,7 +5,7 @@ import kotlin.g.a.b;
 import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "roundBitmap", "Landroid/graphics/Bitmap;", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "roundBitmap", "Landroid/graphics/Bitmap;", "invoke"})
 final class ScanGoodsMaskView$l
   extends q
   implements b<Bitmap, Boolean>
@@ -17,7 +17,7 @@ final class ScanGoodsMaskView$l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.scangoods.widget.ScanGoodsMaskView.l
  * JD-Core Version:    0.7.0.1
  */

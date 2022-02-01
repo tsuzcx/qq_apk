@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import kotlin.g.b.p;
+import kotlin.g.b.q;
 import kotlin.l.b.a.b.b.ah;
 import kotlin.l.b.a.b.b.am;
 import kotlin.l.b.a.b.b.l;
@@ -17,19 +18,19 @@ import kotlin.t;
 public final class m
   extends a
 {
-  public static final a TKi;
-  private final b TKh;
+  public static final a abmK;
+  private final b abmJ;
   
   static
   {
     AppMethodBeat.i(60247);
-    TKi = new a((byte)0);
+    abmK = new a((byte)0);
     AppMethodBeat.o(60247);
   }
   
   private m(b paramb)
   {
-    this.TKh = paramb;
+    this.abmJ = paramb;
   }
   
   public static final h c(String paramString, Collection<? extends ab> paramCollection)
@@ -43,9 +44,9 @@ public final class m
   public final Collection<ah> a(f paramf, kotlin.l.b.a.b.c.a.a parama)
   {
     AppMethodBeat.i(60245);
-    p.h(paramf, "name");
-    p.h(parama, "location");
-    paramf = kotlin.l.b.a.b.j.j.b(super.a(paramf, parama), (kotlin.g.a.b)m.d.TKl);
+    p.k(paramf, "name");
+    p.k(parama, "location");
+    paramf = kotlin.l.b.a.b.j.j.b(super.a(paramf, parama), (kotlin.g.a.b)d.abmN);
     AppMethodBeat.o(60245);
     return paramf;
   }
@@ -53,8 +54,8 @@ public final class m
   public final Collection<l> a(d paramd, kotlin.g.a.b<? super f, Boolean> paramb)
   {
     AppMethodBeat.i(60246);
-    p.h(paramd, "kindFilter");
-    p.h(paramb, "nameFilter");
+    p.k(paramd, "kindFilter");
+    p.k(paramb, "nameFilter");
     Object localObject1 = (Iterable)super.a(paramd, paramb);
     paramd = new ArrayList();
     paramb = new ArrayList();
@@ -69,15 +70,15 @@ public final class m
       }
     }
     paramb = new o(paramd, paramb);
-    paramd = (List)paramb.first;
-    paramb = (List)paramb.second;
+    paramd = (List)paramb.Mx;
+    paramb = (List)paramb.My;
     if (paramd == null)
     {
       paramd = new t("null cannot be cast to non-null type kotlin.collections.Collection<org.jetbrains.kotlin.descriptors.CallableDescriptor>");
       AppMethodBeat.o(60246);
       throw paramd;
     }
-    paramd = (Collection)kotlin.a.j.b(kotlin.l.b.a.b.j.j.b((Collection)paramd, (kotlin.g.a.b)m.b.TKj), (Iterable)paramb);
+    paramd = (Collection)kotlin.a.j.b(kotlin.l.b.a.b.j.j.b((Collection)paramd, (kotlin.g.a.b)b.abmL), (Iterable)paramb);
     AppMethodBeat.o(60246);
     return paramd;
   }
@@ -85,9 +86,9 @@ public final class m
   public final Collection<am> b(f paramf, kotlin.l.b.a.b.c.a.a parama)
   {
     AppMethodBeat.i(60244);
-    p.h(paramf, "name");
-    p.h(parama, "location");
-    paramf = kotlin.l.b.a.b.j.j.b(super.b(paramf, parama), (kotlin.g.a.b)m.c.TKk);
+    p.k(paramf, "name");
+    p.k(parama, "location");
+    paramf = kotlin.l.b.a.b.j.j.b(super.b(paramf, parama), (kotlin.g.a.b)c.abmM);
     AppMethodBeat.o(60244);
     return paramf;
   }
@@ -97,13 +98,13 @@ public final class m
     public static h c(String paramString, Collection<? extends ab> paramCollection)
     {
       AppMethodBeat.i(60237);
-      p.h(paramString, "message");
-      p.h(paramCollection, "types");
+      p.k(paramString, "message");
+      p.k(paramCollection, "types");
       Object localObject = (Iterable)paramCollection;
       Collection localCollection = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject, 10));
       localObject = ((Iterable)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        localCollection.add(((ab)((Iterator)localObject).next()).hAp());
+        localCollection.add(((ab)((Iterator)localObject).next()).iEC());
       }
       paramString = new b(paramString, (List)localCollection);
       if (paramCollection.size() <= 1)
@@ -117,10 +118,67 @@ public final class m
       return paramString;
     }
   }
+  
+  static final class b
+    extends q
+    implements kotlin.g.a.b<kotlin.l.b.a.b.b.a, kotlin.l.b.a.b.b.a>
+  {
+    public static final b abmL;
+    
+    static
+    {
+      AppMethodBeat.i(60239);
+      abmL = new b();
+      AppMethodBeat.o(60239);
+    }
+    
+    b()
+    {
+      super();
+    }
+  }
+  
+  static final class c
+    extends q
+    implements kotlin.g.a.b<am, am>
+  {
+    public static final c abmM;
+    
+    static
+    {
+      AppMethodBeat.i(60241);
+      abmM = new c();
+      AppMethodBeat.o(60241);
+    }
+    
+    c()
+    {
+      super();
+    }
+  }
+  
+  static final class d
+    extends q
+    implements kotlin.g.a.b<ah, ah>
+  {
+    public static final d abmN;
+    
+    static
+    {
+      AppMethodBeat.i(60243);
+      abmN = new d();
+      AppMethodBeat.o(60243);
+    }
+    
+    d()
+    {
+      super();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.j.f.m
  * JD-Core Version:    0.7.0.1
  */

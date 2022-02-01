@@ -7,14 +7,12 @@ import com.tencent.magicbrush.MBRuntime;
 import com.tencent.magicbrush.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.appbrand.v8.m;
-import com.tencent.mm.appbrand.v8.v;
-import com.tencent.mm.appbrand.v8.v.5;
+import com.tencent.mm.appbrand.v8.v.7;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.ab;
 import com.tencent.mm.plugin.appbrand.m.o;
 import com.tencent.mm.plugin.appbrand.menu.a.b;
-import com.tencent.mm.plugin.appbrand.page.ag;
-import com.tencent.mm.plugin.appbrand.s;
-import com.tencent.mm.plugin.appbrand.x;
+import com.tencent.mm.plugin.appbrand.page.ah;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,46 +21,46 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class g
-  implements b<ag>
+  implements b<ah>
 {
-  boolean nfS = false;
+  boolean qgC = false;
   
   private void a(o paramo, MBRuntime paramMBRuntime, Context paramContext)
   {
-    AppMethodBeat.i(227184);
+    AppMethodBeat.i(282372);
     paramo.evaluateJavascript(";var __debug_v8_cpu_profiler = (function(profiler) {if (typeof profiler === 'undefined') { profiler = new NativeGlobal.CpuProfiler();} profiler.startProfiling(); return profiler;})(__debug_v8_cpu_profiler);", new g.1(this, paramContext));
     if (paramMBRuntime != null) {
-      paramMBRuntime.cn(true);
+      paramMBRuntime.cA(true);
     }
-    AppMethodBeat.o(227184);
+    AppMethodBeat.o(282372);
   }
   
   private void a(o paramo, MBRuntime paramMBRuntime, Context paramContext, String paramString)
   {
-    AppMethodBeat.i(227185);
+    AppMethodBeat.i(282374);
     paramo.evaluateJavascript(";(function(profiler) {return JSON.stringify(profiler.stopProfiling());})(__debug_v8_cpu_profiler);", new g.2(this, paramString, paramContext));
     if (paramMBRuntime != null) {
-      paramMBRuntime.cn(false);
+      paramMBRuntime.cA(false);
     }
-    AppMethodBeat.o(227185);
+    AppMethodBeat.o(282374);
   }
   
   private static List<o> aa(AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(227183);
-    if (paramAppBrandRuntime.NY() == null)
+    AppMethodBeat.i(282371);
+    if (paramAppBrandRuntime.QW() == null)
     {
       Log.e("MiroMsg.GameCpuProfile", "hy: service released. abort walking through workers");
-      AppMethodBeat.o(227183);
+      AppMethodBeat.o(282371);
       return null;
     }
-    paramAppBrandRuntime = paramAppBrandRuntime.NY().btd();
+    paramAppBrandRuntime = paramAppBrandRuntime.QW().bEb();
     if (paramAppBrandRuntime != null)
     {
-      ConcurrentHashMap localConcurrentHashMap = paramAppBrandRuntime.kEz.dqZ;
+      ConcurrentHashMap localConcurrentHashMap = paramAppBrandRuntime.nxS.fjG;
       if ((localConcurrentHashMap == null) || (localConcurrentHashMap.size() <= 0))
       {
-        AppMethodBeat.o(227183);
+        AppMethodBeat.o(282371);
         return null;
       }
       ArrayList localArrayList = new ArrayList(5);
@@ -70,38 +68,38 @@ public final class g
       while (localIterator.hasNext())
       {
         m localm = (m)localConcurrentHashMap.get((Integer)localIterator.next());
-        localArrayList.add(new v.5(paramAppBrandRuntime.kEz, localm));
+        localArrayList.add(new v.7(paramAppBrandRuntime.nxS, localm));
       }
-      AppMethodBeat.o(227183);
+      AppMethodBeat.o(282371);
       return localArrayList;
     }
-    AppMethodBeat.o(227183);
+    AppMethodBeat.o(282371);
     return null;
   }
   
   private static e d(d paramd)
   {
-    AppMethodBeat.i(227182);
-    paramd = (c)paramd.S(c.class);
+    AppMethodBeat.i(282369);
+    paramd = (c)paramd.R(c.class);
     if (paramd != null)
     {
       paramd = paramd.getMagicBrush();
-      AppMethodBeat.o(227182);
+      AppMethodBeat.o(282369);
       return paramd;
     }
-    AppMethodBeat.o(227182);
+    AppMethodBeat.o(282369);
     return null;
   }
   
   /* Error */
-  static boolean eu(String paramString1, String paramString2)
+  static boolean eI(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: iconst_0
     //   1: istore_3
     //   2: ldc 164
     //   4: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: invokestatic 169	com/tencent/mm/compatible/util/e:apn	()Z
+    //   7: invokestatic 169	com/tencent/mm/compatible/util/e:avA	()Z
     //   10: ifne +17 -> 27
     //   13: ldc 67
     //   15: ldc 171
@@ -116,47 +114,47 @@ public final class g
     //   31: astore 5
     //   33: aload 6
     //   35: astore 4
-    //   37: new 173	com/tencent/mm/vfs/o
+    //   37: new 173	com/tencent/mm/vfs/q
     //   40: dup
     //   41: new 175	java/lang/StringBuilder
     //   44: dup
     //   45: invokespecial 176	java/lang/StringBuilder:<init>	()V
-    //   48: invokestatic 182	com/tencent/mm/loader/j/b:aKJ	()Ljava/lang/String;
+    //   48: invokestatic 182	com/tencent/mm/loader/j/b:aSL	()Ljava/lang/String;
     //   51: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   54: ldc 188
     //   56: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   59: invokevirtual 191	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   62: invokespecial 194	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   62: invokespecial 194	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
     //   65: astore 7
     //   67: aload 6
     //   69: astore 4
     //   71: aload 7
-    //   73: invokevirtual 197	com/tencent/mm/vfs/o:exists	()Z
+    //   73: invokevirtual 197	com/tencent/mm/vfs/q:ifE	()Z
     //   76: ifne +13 -> 89
     //   79: aload 6
     //   81: astore 4
     //   83: aload 7
-    //   85: invokevirtual 200	com/tencent/mm/vfs/o:mkdirs	()Z
+    //   85: invokevirtual 200	com/tencent/mm/vfs/q:ifL	()Z
     //   88: pop
     //   89: aload 6
     //   91: astore 4
-    //   93: new 202	com/tencent/mm/vfs/v
+    //   93: new 202	com/tencent/mm/vfs/y
     //   96: dup
-    //   97: new 173	com/tencent/mm/vfs/o
+    //   97: new 173	com/tencent/mm/vfs/q
     //   100: dup
     //   101: aload 7
     //   103: aload_0
-    //   104: invokespecial 205	com/tencent/mm/vfs/o:<init>	(Lcom/tencent/mm/vfs/o;Ljava/lang/String;)V
+    //   104: invokespecial 205	com/tencent/mm/vfs/q:<init>	(Lcom/tencent/mm/vfs/q;Ljava/lang/String;)V
     //   107: iconst_0
-    //   108: invokespecial 208	com/tencent/mm/vfs/v:<init>	(Lcom/tencent/mm/vfs/o;Z)V
+    //   108: invokespecial 208	com/tencent/mm/vfs/y:<init>	(Lcom/tencent/mm/vfs/q;Z)V
     //   111: astore_0
     //   112: aload_0
     //   113: aload_1
-    //   114: invokevirtual 211	com/tencent/mm/vfs/v:write	(Ljava/lang/String;)V
+    //   114: invokevirtual 211	com/tencent/mm/vfs/y:write	(Ljava/lang/String;)V
     //   117: iconst_1
     //   118: istore_2
     //   119: aload_0
-    //   120: invokevirtual 214	com/tencent/mm/vfs/v:close	()V
+    //   120: invokevirtual 214	com/tencent/mm/vfs/y:close	()V
     //   123: ldc 164
     //   125: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   128: iload_2
@@ -185,7 +183,7 @@ public final class g
     //   171: aload_0
     //   172: ifnull -49 -> 123
     //   175: aload_0
-    //   176: invokevirtual 214	com/tencent/mm/vfs/v:close	()V
+    //   176: invokevirtual 214	com/tencent/mm/vfs/y:close	()V
     //   179: iload_3
     //   180: istore_2
     //   181: goto -58 -> 123
@@ -203,7 +201,7 @@ public final class g
     //   205: aload 4
     //   207: ifnull +8 -> 215
     //   210: aload 4
-    //   212: invokevirtual 214	com/tencent/mm/vfs/v:close	()V
+    //   212: invokevirtual 214	com/tencent/mm/vfs/y:close	()V
     //   215: ldc 164
     //   217: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   220: aload_0
@@ -233,7 +231,7 @@ public final class g
     //   35	208	4	localObject1	Object
     //   31	119	5	localObject2	Object
     //   28	62	6	localObject3	Object
-    //   65	37	7	localo	com.tencent.mm.vfs.o
+    //   65	37	7	localq	com.tencent.mm.vfs.q
     // Exception table:
     //   from	to	target	type
     //   119	123	130	java/lang/Exception
@@ -254,7 +252,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.b.g
  * JD-Core Version:    0.7.0.1
  */

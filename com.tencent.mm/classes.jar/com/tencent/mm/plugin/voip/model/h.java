@@ -1,24 +1,27 @@
 package com.tencent.mm.plugin.voip.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.q.b;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.model.bp;
-import com.tencent.mm.model.br;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.q.b;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.model.bq;
+import com.tencent.mm.model.bs;
 import com.tencent.mm.model.x;
 import com.tencent.mm.model.z;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.protocal.protobuf.cot;
-import com.tencent.mm.protocal.protobuf.cou;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.protocal.protobuf.dtt;
-import com.tencent.mm.protocal.protobuf.dtu;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.messenger.foundation.a.v;
+import com.tencent.mm.protocal.protobuf.cxi;
+import com.tencent.mm.protocal.protobuf.cxj;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.edv;
+import com.tencent.mm.protocal.protobuf.edw;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.bv;
@@ -35,25 +38,25 @@ public final class h
   extends q
   implements m
 {
-  private static final Set<Long> GTU;
-  private static final List<Object> jcO;
-  private com.tencent.mm.ak.i callback;
-  private final List<ca> jcP;
+  private static final Set<Long> NKg;
+  private static final List<Object> lTn;
+  private com.tencent.mm.an.i callback;
+  private final List<ca> lTo;
   private long msgId;
   private d rr;
   
   static
   {
     AppMethodBeat.i(114860);
-    jcO = new ArrayList();
-    GTU = new HashSet();
+    lTn = new ArrayList();
+    NKg = new HashSet();
     AppMethodBeat.o(114860);
   }
   
   public h()
   {
     AppMethodBeat.i(114854);
-    this.jcP = new LinkedList();
+    this.lTo = new LinkedList();
     Log.d("MicroMsg.NetSceneSendMsg", "dktext :" + Util.getStack());
     Log.i("MicroMsg.NetSceneSendMsg", "empty msg sender created");
     AppMethodBeat.o(114854);
@@ -62,18 +65,18 @@ public final class h
   public h(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(114853);
-    this.jcP = new LinkedList();
+    this.lTo = new LinkedList();
     Log.d("MicroMsg.NetSceneSendMsg", "dktext :" + Util.getStack());
     if (!Util.isNullOrNil(paramString1))
     {
       ca localca = new ca();
       localca.setStatus(1);
-      localca.Cy(paramString1);
-      localca.setCreateTime(bp.Kw(paramString1));
-      localca.nv(1);
+      localca.Jm(paramString1);
+      localca.setCreateTime(bq.RP(paramString1));
+      localca.pJ(1);
       localca.setContent(paramString2);
       localca.setType(paramInt);
-      this.msgId = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().aC(localca);
+      this.msgId = ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().aM(localca);
       if (this.msgId == -1L) {
         break label171;
       }
@@ -88,77 +91,77 @@ public final class h
     }
   }
   
-  private void bdK()
+  private void bnf()
   {
     AppMethodBeat.i(114858);
     int i = 0;
-    while (i < this.jcP.size())
+    while (i < this.lTo.size())
     {
-      tC(i);
+      wC(i);
       i += 1;
     }
     AppMethodBeat.o(114858);
   }
   
-  private void tC(int paramInt)
+  private void wC(int paramInt)
   {
     AppMethodBeat.i(114859);
-    Object localObject = (ca)this.jcP.get(paramInt);
+    Object localObject = (ca)this.lTo.get(paramInt);
     ((ca)localObject).setStatus(5);
-    ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().a(((eo)localObject).field_msgId, (ca)localObject);
-    localObject = jcO.iterator();
+    ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().a(((et)localObject).field_msgId, (ca)localObject);
+    localObject = lTn.iterator();
     while (((Iterator)localObject).hasNext()) {
       ((Iterator)localObject).next();
     }
     AppMethodBeat.o(114859);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, com.tencent.mm.ak.i parami)
+  public final int doScene(g paramg, com.tencent.mm.an.i parami)
   {
     AppMethodBeat.i(114856);
     this.callback = parami;
     parami = new d.a();
-    parami.iLN = new dtt();
-    parami.iLO = new dtu();
+    parami.lBU = new edv();
+    parami.lBV = new edw();
     parami.uri = "/cgi-bin/micromsg-bin/newsendmsg";
     parami.funcId = 522;
-    parami.iLP = 237;
+    parami.lBW = 237;
     parami.respCmdId = 1000000237;
-    this.rr = parami.aXF();
-    parami = (dtt)this.rr.iLK.iLR;
-    List localList = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().eiL();
+    this.rr = parami.bgN();
+    parami = (edv)d.b.b(this.rr.lBR);
+    List localList = ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().eSr();
     if ((localList == null) || (localList.size() == 0))
     {
       Log.i("MicroMsg.NetSceneSendMsg", "no sending message");
       AppMethodBeat.o(114856);
       return -2;
     }
-    this.jcP.clear();
+    this.lTo.clear();
     int i = 0;
     while (i < localList.size())
     {
       ca localca = (ca)localList.get(i);
       if (localca.field_isSend == 1)
       {
-        cot localcot = new cot();
-        localcot.KHm = new dqi().bhy(localca.field_talker);
-        localcot.CreateTime = ((int)(localca.field_createTime / 1000L));
-        localcot.oUv = localca.getType();
-        localcot.iAc = localca.field_content;
-        localcot.MuU = x.x(z.aTY(), localca.field_createTime).hashCode();
-        localcot.KHq = br.aVW();
-        if (((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class)).ifAddTicketByActionFlag(localca.field_talker)) {
-          localcot.LbN = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().bjT(localca.field_talker);
+        cxi localcxi = new cxi();
+        localcxi.RIE = new eaf().btQ(localca.field_talker);
+        localcxi.CreateTime = ((int)(localca.field_createTime / 1000L));
+        localcxi.rWu = localca.getType();
+        localcxi.lpy = localca.field_content;
+        localcxi.TFR = x.u(z.bcZ(), localca.field_createTime).hashCode();
+        localcxi.RII = bs.beZ();
+        if (((v)com.tencent.mm.kernel.h.ag(v.class)).ifAddTicketByActionFlag(localca.field_talker)) {
+          localcxi.ScZ = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().bws(localca.field_talker);
         }
-        parami.oTA.add(localcot);
-        parami.oTz = parami.oTA.size();
-        this.jcP.add(localca);
+        parami.rVy.add(localcxi);
+        parami.rVx = parami.rVy.size();
+        this.lTo.add(localca);
       }
       i += 1;
     }
     i = dispatch(paramg, this.rr, this);
     if (i < 0) {
-      bdK();
+      bnf();
     }
     AppMethodBeat.o(114856);
     return i;
@@ -169,42 +172,42 @@ public final class h
     return 522;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(114857);
     Log.i("MicroMsg.NetSceneSendMsg", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3);
-    params = (dtu)this.rr.iLL.iLR;
+    params = (edw)d.c.b(this.rr.lBS);
     if ((params != null) && ((paramInt2 == 4) || ((paramInt2 == 0) && (paramInt3 == 0)))) {
-      ((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class)).setEnSendMsgActionFlag(params.LbO);
+      ((v)com.tencent.mm.kernel.h.ag(v.class)).setEnSendMsgActionFlag(params.Sda);
     }
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      bdK();
+      bnf();
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(114857);
       return;
     }
-    params = params.oTA;
-    if (this.jcP.size() == params.size())
+    params = params.rVy;
+    if (this.lTo.size() == params.size())
     {
       paramInt1 = 0;
       while (paramInt1 < params.size())
       {
-        paramArrayOfByte = (cou)params.get(paramInt1);
-        if (paramArrayOfByte.Ret != 0)
+        paramArrayOfByte = (cxj)params.get(paramInt1);
+        if (paramArrayOfByte.CqV != 0)
         {
-          Log.e("MicroMsg.NetSceneSendMsg", "send msg failed: item ret code=" + paramArrayOfByte.Ret);
-          tC(paramInt1);
-          this.callback.onSceneEnd(4, paramArrayOfByte.Ret, paramString, this);
+          Log.e("MicroMsg.NetSceneSendMsg", "send msg failed: item ret code=" + paramArrayOfByte.CqV);
+          wC(paramInt1);
+          this.callback.onSceneEnd(4, paramArrayOfByte.CqV, paramString, this);
           AppMethodBeat.o(114857);
           return;
         }
-        long l = ((ca)this.jcP.get(paramInt1)).field_msgId;
-        Log.i("MicroMsg.NetSceneSendMsg", "msg local id = " + l + ", SvrId = " + paramArrayOfByte.Brn + " sent successfully!");
-        ca localca = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().Hb(l);
-        localca.yF(paramArrayOfByte.Brn);
+        long l = ((ca)this.lTo.get(paramInt1)).field_msgId;
+        Log.i("MicroMsg.NetSceneSendMsg", "msg local id = " + l + ", SvrId = " + paramArrayOfByte.HlH + " sent successfully!");
+        ca localca = ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().Oq(l);
+        localca.EG(paramArrayOfByte.HlH);
         localca.setStatus(2);
-        ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().a(l, localca);
+        ((n)com.tencent.mm.kernel.h.ae(n.class)).eSe().a(l, localca);
         paramInt1 += 1;
       }
       Log.i("MicroMsg.NetSceneSendMsg", "total " + paramInt1 + " msgs sent successfully");
@@ -227,23 +230,23 @@ public final class h
     return 10;
   }
   
-  public final q.b securityVerificationChecked(com.tencent.mm.network.s params)
+  public final q.b securityVerificationChecked(s params)
   {
     AppMethodBeat.i(114855);
-    if (this.jcP.size() > 0)
+    if (this.lTo.size() > 0)
     {
-      params = q.b.iMq;
+      params = q.b.lCx;
       AppMethodBeat.o(114855);
       return params;
     }
-    params = q.b.iMr;
+    params = q.b.lCy;
     AppMethodBeat.o(114855);
     return params;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.h
  * JD-Core Version:    0.7.0.1
  */

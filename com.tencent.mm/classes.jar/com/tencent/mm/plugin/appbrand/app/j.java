@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.appbrand.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.d;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.e.f;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.g.f;
 
 public final class j
 {
-  private static boolean kII = false;
+  private static boolean nCx = false;
   
   /* Error */
-  public static com.tencent.mm.kernel.b.f UJ(java.lang.String paramString)
+  public static com.tencent.mm.kernel.b.f act(java.lang.String paramString)
   {
     // Byte code:
     //   0: ldc 18
@@ -31,9 +31,9 @@ public final class j
     //   30: ifeq +93 -> 123
     //   33: aload_3
     //   34: monitorenter
-    //   35: invokestatic 51	com/tencent/mm/kernel/g:aAd	()Lcom/tencent/mm/kernel/c;
+    //   35: invokestatic 51	com/tencent/mm/kernel/h:aHC	()Lcom/tencent/mm/kernel/d;
     //   38: aload_3
-    //   39: invokevirtual 57	com/tencent/mm/kernel/c:ah	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
+    //   39: invokevirtual 57	com/tencent/mm/kernel/d:ag	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
     //   42: checkcast 41	com/tencent/mm/kernel/b/f
     //   45: astore_2
     //   46: aload_2
@@ -41,15 +41,15 @@ public final class j
     //   50: aload_2
     //   51: astore_1
     //   52: aload_2
-    //   53: invokestatic 63	com/tencent/mm/kernel/f:bx	(Ljava/lang/Object;)Z
+    //   53: invokestatic 63	com/tencent/mm/kernel/g:bx	(Ljava/lang/Object;)Z
     //   56: ifeq +21 -> 77
-    //   59: invokestatic 51	com/tencent/mm/kernel/g:aAd	()Lcom/tencent/mm/kernel/c;
+    //   59: invokestatic 51	com/tencent/mm/kernel/h:aHC	()Lcom/tencent/mm/kernel/d;
     //   62: aload_3
-    //   63: invokevirtual 67	com/tencent/mm/kernel/c:ad	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/f;
+    //   63: invokevirtual 67	com/tencent/mm/kernel/d:ac	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/f;
     //   66: astore_1
     //   67: aload_1
-    //   68: invokestatic 71	com/tencent/mm/kernel/g:aAe	()Lcom/tencent/mm/kernel/d;
-    //   71: invokevirtual 77	com/tencent/mm/kernel/d:azG	()Lcom/tencent/mm/kernel/b/g;
+    //   68: invokestatic 71	com/tencent/mm/kernel/h:aHD	()Lcom/tencent/mm/kernel/e;
+    //   71: invokevirtual 77	com/tencent/mm/kernel/e:aHf	()Lcom/tencent/mm/kernel/b/g;
     //   74: invokevirtual 81	com/tencent/mm/kernel/b/f:execute	(Lcom/tencent/mm/kernel/b/g;)V
     //   77: aload_3
     //   78: monitorexit
@@ -109,24 +109,23 @@ public final class j
     //   52	59	86	finally
     //   59	77	86	finally
     //   77	79	86	finally
-    //   87	89	86	finally
     //   19	35	96	java/lang/ClassNotFoundException
-    //   89	96	96	java/lang/ClassNotFoundException
+    //   87	96	96	java/lang/ClassNotFoundException
     //   123	138	96	java/lang/ClassNotFoundException
     //   19	35	141	java/lang/ClassCastException
-    //   89	96	141	java/lang/ClassCastException
+    //   87	96	141	java/lang/ClassCastException
     //   123	138	141	java/lang/ClassCastException
   }
   
-  public static void bur()
+  public static void bFt()
   {
     AppMethodBeat.i(44133);
     try
     {
-      if (!kII)
+      if (!nCx)
       {
-        new f().execute(g.aAe().azG());
-        kII = true;
+        new f().execute(h.aHD().aHf());
+        nCx = true;
       }
       return;
     }
@@ -138,7 +137,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.j
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.emoji.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.enw;
-import com.tencent.mm.protocal.protobuf.enx;
+import com.tencent.mm.protocal.protobuf.eye;
+import com.tencent.mm.protocal.protobuf.eyf;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
@@ -27,36 +27,36 @@ public final class t
   implements m
 {
   private i callback;
-  private int kfa;
-  private List<String> rdn;
+  private int mWz;
   private final d rr;
+  private List<String> uGt;
   
   public t(List<String> paramList, int paramInt)
   {
     AppMethodBeat.i(108726);
-    this.rdn = new ArrayList();
+    this.uGt = new ArrayList();
     d.a locala = new d.a();
-    locala.iLN = new enw();
-    locala.iLO = new enx();
+    locala.lBU = new eye();
+    locala.lBV = new eyf();
     locala.uri = "/cgi-bin/micromsg-bin/mmuploadmypanellist";
     locala.funcId = 717;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    this.rdn = paramList;
-    this.kfa = paramInt;
+    this.rr = locala.bgN();
+    this.uGt = paramList;
+    this.mWz = paramInt;
     AppMethodBeat.o(108726);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(108728);
     this.callback = parami;
-    enw localenw = (enw)this.rr.iLK.iLR;
-    localenw.OpCode = this.kfa;
-    if (this.rdn != null)
+    eye localeye = (eye)d.b.b(this.rr.lBR);
+    localeye.RLe = this.mWz;
+    if (this.uGt != null)
     {
-      Iterator localIterator = this.rdn.iterator();
+      Iterator localIterator = this.uGt.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
@@ -64,14 +64,14 @@ public final class t
         if (!Util.isNullOrNil(str))
         {
           parami = str;
-          if (str.equals(String.valueOf(EmojiGroupInfo.Uum))) {
+          if (str.equals(String.valueOf(EmojiGroupInfo.YCu))) {
             parami = "com.tencent.xin.emoticon.tusiji";
           }
         }
-        localenw.NlK.add(parami);
+        localeye.Uyv.add(parami);
         Log.d("MicroMsg.emoji.NetSceneUploadMyPanelList", "product id is:%s", new Object[] { parami });
       }
-      Log.i("MicroMsg.emoji.NetSceneUploadMyPanelList", "opcode is:%d mProductIdList size:%s", new Object[] { Integer.valueOf(this.kfa), Integer.valueOf(this.rdn.size()) });
+      Log.i("MicroMsg.emoji.NetSceneUploadMyPanelList", "opcode is:%d mProductIdList size:%s", new Object[] { Integer.valueOf(this.mWz), Integer.valueOf(this.uGt.size()) });
     }
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(108728);
@@ -89,17 +89,17 @@ public final class t
     Log.i("MicroMsg.emoji.NetSceneUploadMyPanelList", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NSI, Long.valueOf(System.currentTimeMillis()));
-      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NSL, Boolean.TRUE);
-      h.CyF.idkeyStat(165L, 0L, 1L, false);
+      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VgG, Long.valueOf(System.currentTimeMillis()));
+      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VgJ, Boolean.TRUE);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(165L, 0L, 1L, false);
     }
     for (;;)
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(108727);
       return;
-      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NSI, Long.valueOf(System.currentTimeMillis() - 86400000L + 3600000L));
-      h.CyF.idkeyStat(165L, 1L, 1L, false);
+      com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VgG, Long.valueOf(System.currentTimeMillis() - 86400000L + 3600000L));
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(165L, 1L, 1L, false);
     }
   }
 }

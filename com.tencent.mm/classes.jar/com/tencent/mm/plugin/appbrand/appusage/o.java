@@ -1,21 +1,19 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import android.os.Bundle;
-import android.os.DeadObjectException;
 import android.os.Looper;
 import android.os.Parcel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.ipcinvoker.m;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.MStorage;
 import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
-import com.tencent.mm.sdk.storage.MStorageEventData;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -25,13 +23,32 @@ public final class o
   extends MStorage
   implements ah
 {
-  private final Set<MStorage.IOnStorageChange> kUO;
+  private final Set<MStorage.IOnStorageChange> nPb;
   
   public o()
   {
     AppMethodBeat.i(44521);
-    this.kUO = new HashSet();
+    this.nPb = new HashSet();
     AppMethodBeat.o(44521);
+  }
+  
+  private static List<LocalUsageInfo> g(int paramInt1, int paramInt2, long paramLong)
+  {
+    AppMethodBeat.i(269763);
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putInt("count", paramInt1);
+    ((Bundle)localObject).putInt("versionType", paramInt2);
+    ((Bundle)localObject).putLong("maxUpdateTime", paramLong);
+    localObject = (Parcel)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, localObject, a.class);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(269763);
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList(paramInt1);
+    ((Parcel)localObject).readTypedList(localArrayList, LocalUsageInfo.CREATOR);
+    AppMethodBeat.o(269763);
+    return localArrayList;
   }
   
   public final void add(MStorage.IOnStorageChange paramIOnStorageChange)
@@ -51,13 +68,13 @@ public final class o
       return;
     }
     super.add(paramIOnStorageChange, ???);
-    synchronized (this.kUO)
+    synchronized (this.nPb)
     {
-      this.kUO.add(paramIOnStorageChange);
-      if (this.kUO.size() == 1)
+      this.nPb.add(paramIOnStorageChange);
+      if (this.nPb.size() == 1)
       {
         if (i != 0) {
-          XIPCInvoker.a(MainProcessIPCService.dkO, IPCVoid.hnE, b.class, new d() {});
+          XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, IPCVoid.jZu, o.b.class, new f() {});
         }
         AppMethodBeat.o(44526);
         return;
@@ -66,10 +83,10 @@ public final class o
     }
   }
   
-  public final boolean bi(String paramString, int paramInt)
+  public final boolean bB(String paramString, int paramInt)
   {
     AppMethodBeat.i(44522);
-    paramString = (IPCBoolean)XIPCInvoker.a(MainProcessIPCService.dkO, new AppIdentity(paramString, paramInt), c.class);
+    paramString = (IPCBoolean)XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new AppIdentity(paramString, paramInt), c.class);
     if (paramString == null)
     {
       AppMethodBeat.o(44522);
@@ -80,22 +97,20 @@ public final class o
     return bool;
   }
   
-  public final List<LocalUsageInfo> dP(int paramInt1, int paramInt2)
+  public final List<LocalUsageInfo> en(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(44524);
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putInt("count", paramInt1);
-    ((Bundle)localObject).putInt("versionType", paramInt2);
-    localObject = (Parcel)XIPCInvoker.a(MainProcessIPCService.dkO, localObject, a.class);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(44524);
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList(paramInt1);
-    ((Parcel)localObject).readTypedList(localArrayList, LocalUsageInfo.CREATOR);
+    List localList = g(paramInt1, paramInt2, 9223372036854775807L);
     AppMethodBeat.o(44524);
-    return localArrayList;
+    return localList;
+  }
+  
+  public final List<LocalUsageInfo> i(long paramLong, int paramInt)
+  {
+    AppMethodBeat.i(269762);
+    List localList = g(paramInt, 2147483647, paramLong);
+    AppMethodBeat.o(269762);
+    return localList;
   }
   
   public final void remove(MStorage.IOnStorageChange paramIOnStorageChange)
@@ -107,66 +122,68 @@ public final class o
       return;
     }
     super.remove(paramIOnStorageChange);
-    synchronized (this.kUO)
+    synchronized (this.nPb)
     {
-      this.kUO.remove(paramIOnStorageChange);
+      this.nPb.remove(paramIOnStorageChange);
       AppMethodBeat.o(44527);
       return;
     }
   }
   
-  public final List<LocalUsageInfo> vW(int paramInt)
+  public final List<LocalUsageInfo> zh(int paramInt)
   {
     AppMethodBeat.i(44523);
-    List localList = dP(paramInt, 2147483647);
+    List localList = en(paramInt, 2147483647);
     AppMethodBeat.o(44523);
     return localList;
   }
   
   static final class a
-    implements k<Bundle, Parcel>
+    implements m<Bundle, Parcel>
   {
-    private static Parcel G(Bundle paramBundle)
+    private static Parcel M(Bundle paramBundle)
     {
       AppMethodBeat.i(44513);
       int i = paramBundle.getInt("count");
       int j = paramBundle.getInt("versionType", 2147483647);
+      long l = paramBundle.getLong("maxUpdateTime", 9223372036854775807L);
       paramBundle = Parcel.obtain();
-      try
+      if (l != 9223372036854775807L) {}
+      for (;;)
       {
-        paramBundle.writeTypedList(((ah)g.af(ah.class)).dP(i, j));
-        AppMethodBeat.o(44513);
-        return paramBundle;
-      }
-      catch (Exception localException)
-      {
-        paramBundle.setDataPosition(0);
-        paramBundle.writeTypedList(null);
-        AppMethodBeat.o(44513);
+        try
+        {
+          paramBundle.writeTypedList(((ah)h.ae(ah.class)).i(l, i));
+          AppMethodBeat.o(44513);
+          return paramBundle;
+        }
+        catch (Exception localException)
+        {
+          paramBundle.setDataPosition(0);
+          paramBundle.writeTypedList(null);
+          AppMethodBeat.o(44513);
+        }
+        paramBundle.writeTypedList(((ah)h.ae(ah.class)).en(i, j));
       }
       return paramBundle;
     }
   }
   
-  static final class b
-    implements com.tencent.mm.ipcinvoker.b<IPCVoid, Parcel>
-  {}
-  
   static final class c
-    implements k<AppIdentity, IPCBoolean>
+    implements m<AppIdentity, IPCBoolean>
   {
     private static IPCBoolean c(AppIdentity paramAppIdentity)
     {
       AppMethodBeat.i(44519);
       try
       {
-        paramAppIdentity = new IPCBoolean(((ah)g.af(ah.class)).bi(paramAppIdentity.username, paramAppIdentity.iOo));
+        paramAppIdentity = new IPCBoolean(((ah)h.ae(ah.class)).bB(paramAppIdentity.username, paramAppIdentity.cBU));
         AppMethodBeat.o(44519);
         return paramAppIdentity;
       }
       catch (Exception paramAppIdentity)
       {
-        com.tencent.mm.sdk.platformtools.Log.printErrStackTrace("MicroMsg.AppBrandLocalUsageStorageIPCImpl", paramAppIdentity, "ipc removeUsage", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.AppBrandLocalUsageStorageIPCImpl", paramAppIdentity, "ipc removeUsage", new Object[0]);
         paramAppIdentity = new IPCBoolean(false);
         AppMethodBeat.o(44519);
       }
@@ -176,7 +193,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.o
  * JD-Core Version:    0.7.0.1
  */

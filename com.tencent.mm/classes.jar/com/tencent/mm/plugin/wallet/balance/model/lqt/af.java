@@ -1,126 +1,208 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
+import android.content.Intent;
+import com.tencent.kinda.gen.ITransmitKvData;
+import com.tencent.kinda.gen.UseCaseCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.c.ad;
+import com.tencent.mm.an.c.a;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtSaveFetchUI;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.protocal.protobuf.dhj;
-import com.tencent.mm.protocal.protobuf.dlv;
-import com.tencent.mm.protocal.protobuf.ja;
-import com.tencent.mm.vending.c.b;
+import com.tencent.mm.protocal.protobuf.ctc;
+import com.tencent.mm.protocal.protobuf.ded;
+import com.tencent.mm.protocal.protobuf.deh;
+import com.tencent.mm.protocal.protobuf.dns;
+import com.tencent.mm.protocal.protobuf.dpu;
+import com.tencent.mm.protocal.protobuf.dpw;
+import com.tencent.mm.protocal.protobuf.dre;
+import com.tencent.mm.protocal.protobuf.dvn;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.vending.c.a;
+import com.tencent.mm.vending.g.b;
+import com.tencent.mm.vending.g.c;
+import com.tencent.mm.vending.g.d.a;
 import com.tencent.mm.vending.g.g;
-import com.tencent.mm.vending.j.d;
+import com.tencent.mm.wallet_core.ui.WalletBaseUI;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class af
-  implements b<ae>
 {
-  protected ae HuL;
-  public final d HuM;
-  public final a HuN;
-  public final b HuO;
-  public final e HuP;
-  public final c HuQ;
+  public static int Omg = 123;
+  public static int Omh = 456;
+  public static String Omi = "key_bind_serial";
+  private ad Omj;
+  public ae Omk;
+  public WalletBaseUI Oml;
+  public String Omm;
+  int Omn;
+  public int Omo;
+  public String Omp;
+  public int Omq;
+  public Bankcard Omr;
+  public int Oms;
+  public Map<String, String> Omt;
+  public String fww;
+  public b mJv;
+  public int mode;
   
   public af()
   {
-    this(new ae());
-    AppMethodBeat.i(68545);
-    AppMethodBeat.o(68545);
+    AppMethodBeat.i(68535);
+    this.Omj = null;
+    this.Omk = null;
+    this.Oml = null;
+    this.Omt = new HashMap();
+    AppMethodBeat.o(68535);
   }
   
-  public af(ae paramae)
+  public af(ad paramad, ae paramae, WalletBaseUI paramWalletBaseUI)
   {
-    AppMethodBeat.i(68546);
-    this.HuM = new d();
-    this.HuN = new a();
-    this.HuO = new b();
-    this.HuP = new e();
-    this.HuQ = new c();
-    this.HuL = paramae;
-    AppMethodBeat.o(68546);
+    AppMethodBeat.i(68536);
+    this.Omj = null;
+    this.Omk = null;
+    this.Oml = null;
+    this.Omt = new HashMap();
+    this.Omj = paramad;
+    this.Omk = paramae;
+    this.Oml = paramWalletBaseUI;
+    this.mode = 1;
+    AppMethodBeat.o(68536);
   }
   
-  public final class a
-    implements com.tencent.mm.vending.h.e<dlv, com.tencent.mm.vending.j.e<Integer, Integer, Integer, ja>>
+  public final void aM(int paramInt1, int paramInt2, int paramInt3)
   {
-    public a() {}
-    
-    public final com.tencent.mm.vending.g.c<dlv> a(int paramInt1, int paramInt2, int paramInt3, ja paramja)
+    AppMethodBeat.i(68537);
+    Log.i("MicroMsg.LqtSaveFetchLogic", "updateBindBankcard, mode: %s, accountType: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.mJv = g.ieE();
+    this.mJv.ieD();
+    if (paramInt1 == 1)
     {
-      AppMethodBeat.i(213866);
-      paramja = g.a(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramja).c(this);
-      AppMethodBeat.o(213866);
-      return paramja;
+      new i(paramInt2, paramInt3).bhW().b(new a()
+      {
+        private Void a(c.a<ded> paramAnonymousa)
+        {
+          AppMethodBeat.i(273805);
+          Log.i("MicroMsg.LqtSaveFetchLogic", "CgiLqtOnClickPurchase end, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramAnonymousa.errType), Integer.valueOf(paramAnonymousa.errCode) });
+          if ((paramAnonymousa.errType == 0) && (paramAnonymousa.errCode == 0))
+          {
+            ah.bgp(((ded)paramAnonymousa.lBJ).OmF);
+            v.Oly.a(((ded)paramAnonymousa.lBJ).TLK, true, false);
+            v.Oly.a((ded)paramAnonymousa.lBJ);
+          }
+          if (af.d(af.this) != null) {
+            af.d(af.this).resume();
+          }
+          paramAnonymousa = YAb;
+          AppMethodBeat.o(273805);
+          return paramAnonymousa;
+        }
+      });
+      AppMethodBeat.o(68537);
+      return;
     }
-    
-    public final String akn()
+    new j(paramInt2).bhW().b(new a()
     {
-      return "Vending.UI";
+      private Void a(c.a<deh> paramAnonymousa)
+      {
+        AppMethodBeat.i(206345);
+        Log.i("MicroMsg.LqtSaveFetchLogic", "CgiLqtOnClickRedeem end, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramAnonymousa.errType), Integer.valueOf(paramAnonymousa.errCode) });
+        if ((paramAnonymousa.errType == 0) && (paramAnonymousa.errCode == 0))
+        {
+          ah.bgp(((deh)paramAnonymousa.lBJ).OmF);
+          y.gFD().a((deh)paramAnonymousa.lBJ);
+          v.Oly.a(((deh)paramAnonymousa.lBJ).TLK, false, false);
+        }
+        if (af.d(af.this) != null) {
+          af.d(af.this).resume();
+        }
+        paramAnonymousa = YAb;
+        AppMethodBeat.o(206345);
+        return paramAnonymousa;
+      }
+    });
+    AppMethodBeat.o(68537);
+  }
+  
+  public final void bgo(String paramString)
+  {
+    boolean bool2 = false;
+    AppMethodBeat.i(68538);
+    boolean bool1;
+    if (this.mode == 1)
+    {
+      h.aHH();
+      h.aHG().aHp().set(ar.a.Vuf, paramString);
+      paramString = v.Oly;
+      if (this.mode != 1) {
+        break label147;
+      }
+      bool1 = true;
+      label47:
+      paramString.BC(bool1);
+      if (!bool1) {
+        break label152;
+      }
+    }
+    label147:
+    label152:
+    for (paramString = paramString.Oli;; paramString = paramString.Olj)
+    {
+      bool1 = bool2;
+      if (paramString != null)
+      {
+        Log.i("MicroMsg.LqtBindQueryInfoCache", "isReqAgainAfterDeal: %s", new Object[] { Boolean.valueOf(paramString.TAN) });
+        bool1 = paramString.TAN;
+      }
+      if (bool1)
+      {
+        Log.i("MicroMsg.LqtSaveFetchLogic", "saveOrfetchDone, req again after deal");
+        aM(this.mode, this.Omq, 1);
+      }
+      AppMethodBeat.o(68538);
+      return;
+      h.aHH();
+      h.aHG().aHp().set(ar.a.Vug, paramString);
+      break;
+      bool1 = false;
+      break label47;
     }
   }
   
-  public final class b
-    implements com.tencent.mm.vending.h.e<ad, Integer>
+  public final void gF(final String paramString, int paramInt)
   {
-    public b() {}
-    
-    public final String akn()
+    AppMethodBeat.i(191875);
+    Log.i("MicroMsg.LqtSaveFetchLogic", "doQueryPurchaseResult");
+    this.Oml.showLoading(false);
+    String str = this.Oml.getIntent().getStringExtra("operate_id");
+    this.Omk.Omc.a(this.Omm, this.fww, this.Omn, this.Omq, str, this.Oms, paramInt).f(new a() {}).a(new d.a()
     {
-      return "Vending.UI";
-    }
-  }
-  
-  public final class c
-    implements com.tencent.mm.vending.h.e<Void, com.tencent.mm.vending.j.c<Integer, Integer>>
-  {
-    public c() {}
-    
-    public final String akn()
-    {
-      return "Vending.UI";
-    }
-    
-    public final com.tencent.mm.vending.g.c<Void> jP(int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(213867);
-      com.tencent.mm.vending.g.c localc = g.O(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2)).c(this);
-      AppMethodBeat.o(213867);
-      return localc;
-    }
-  }
-  
-  public final class d
-    implements com.tencent.mm.vending.h.e<dhj, d<Integer, Integer, Bankcard>>
-  {
-    public d() {}
-    
-    public final String akn()
-    {
-      return "Vending.UI";
-    }
-  }
-  
-  public final class e
-    implements com.tencent.mm.vending.h.e<Void, d<Integer, Integer, Integer>>
-  {
-    public e() {}
-    
-    public final String akn()
-    {
-      return "Vending.UI";
-    }
-    
-    public final com.tencent.mm.vending.g.c<Void> jQ(int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(68543);
-      com.tencent.mm.vending.g.c localc = g.h(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(1)).c(this);
-      AppMethodBeat.o(68543);
-      return localc;
-    }
+      public final void cm(Object paramAnonymousObject)
+      {
+        AppMethodBeat.i(68531);
+        Log.i("MicroMsg.LqtSaveFetchLogic", "doQueryPurchaseResult interrupt: %s", new Object[] { paramAnonymousObject });
+        af.a(af.this).hideLoading();
+        if ((af.a(af.this) instanceof WalletLqtSaveFetchUI))
+        {
+          ((WalletLqtSaveFetchUI)af.a(af.this)).BK(false);
+          MMHandlerThread.postToMainThreadDelayed(((WalletLqtSaveFetchUI)af.a(af.this)).mMK, 300L);
+        }
+        if (af.d(af.this) != null) {
+          af.d(af.this).eo(paramAnonymousObject);
+        }
+        AppMethodBeat.o(68531);
+      }
+    });
+    AppMethodBeat.o(191875);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.model.lqt.af
  * JD-Core Version:    0.7.0.1
  */

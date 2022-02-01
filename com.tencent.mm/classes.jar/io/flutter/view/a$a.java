@@ -9,10 +9,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(9824);
-    SUm = new a("ACCESSIBLE_NAVIGATION", 0, 1);
-    SUn = new a("INVERT_COLORS", 1, 2);
-    SUo = new a("DISABLE_ANIMATIONS", 2, 4);
-    SUp = new a[] { SUm, SUn, SUo };
+    aaxa = new a("ACCESSIBLE_NAVIGATION", 0, 1);
+    aaxb = new a("INVERT_COLORS", 1, 2);
+    aaxc = new a("DISABLE_ANIMATIONS", 2, 4);
+    aaxd = new a[] { aaxa, aaxb, aaxc };
     AppMethodBeat.o(9824);
   }
   
@@ -23,7 +23,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     io.flutter.view.a.a
  * JD-Core Version:    0.7.0.1
  */

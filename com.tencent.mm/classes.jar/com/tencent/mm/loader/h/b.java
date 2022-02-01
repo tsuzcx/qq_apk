@@ -8,13 +8,13 @@ public final class b
   extends f<byte[]>
 {
   public String contentType;
-  private f.a ibT;
+  private f.a kQz;
   
   private b(byte[] paramArrayOfByte, String paramString, f.a<byte[]> parama)
   {
     super(paramArrayOfByte);
     this.contentType = paramString;
-    this.ibT = parama;
+    this.kQz = parama;
   }
   
   public static b d(byte[] paramArrayOfByte, String paramString)
@@ -22,15 +22,17 @@ public final class b
     new b(paramArrayOfByte, paramString, new f.a() {});
   }
   
-  public final a aKi()
+  public final a aSj()
   {
-    return this.ibT.aKj();
+    f.a locala = this.kQz;
+    aSr();
+    return locala.aSk();
   }
   
   public final void b(OutputStream paramOutputStream)
   {
-    c localc = c.hYJ;
-    c.a((byte[])this.data, paramOutputStream);
+    c localc = c.kNn;
+    c.a((byte[])aSr(), paramOutputStream);
   }
 }
 

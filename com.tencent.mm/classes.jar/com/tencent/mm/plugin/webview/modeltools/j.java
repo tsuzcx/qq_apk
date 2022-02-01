@@ -8,21 +8,21 @@ import android.os.Bundle;
 import android.os.RemoteException;
 import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cf;
+import com.tencent.mm.b.g;
+import com.tencent.mm.f.a.cj;
 import com.tencent.mm.graphics.MMBitmapFactory;
 import com.tencent.mm.model.ad;
 import com.tencent.mm.model.ad.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.webview.stub.e;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.ax;
 import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import com.tencent.xweb.WebView.c;
 import com.tencent.xweb.i;
 import java.util.HashMap;
@@ -31,27 +31,27 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class j
 {
-  private static long Jbq;
-  private static int Jbr;
-  private static int Jbs;
-  private static boolean Jbt;
-  private static Map<String, String> Jbu;
+  private static long PXW;
+  private static int PXX;
+  private static int PXY;
+  private static boolean PXZ;
+  private static Map<String, String> PYa;
   
   static
   {
     AppMethodBeat.i(79211);
-    Jbq = 0L;
-    Jbr = -1;
-    Jbs = -1;
-    Jbt = false;
-    Jbu = new HashMap();
+    PXW = 0L;
+    PXX = -1;
+    PXY = -1;
+    PXZ = false;
+    PYa = new HashMap();
     AppMethodBeat.o(79211);
   }
   
   public static void a(Bundle paramBundle1, MMWebView paramMMWebView, Bundle paramBundle2, boolean paramBoolean)
   {
     AppMethodBeat.i(182699);
-    if (System.currentTimeMillis() - Jbq < 1000L)
+    if (System.currentTimeMillis() - PXW < 1000L)
     {
       AppMethodBeat.o(182699);
       return;
@@ -92,7 +92,7 @@ public final class j
         Object localObject4 = paramMMWebView.getUrl();
         bool2 = bool3;
         localObject1 = localObject2;
-        String str2 = com.tencent.xweb.c.hsp().getCookie((String)localObject4);
+        String str2 = com.tencent.xweb.c.ivX().getCookie((String)localObject4);
         bool2 = bool3;
         localObject1 = localObject2;
         Log.i("MicroMsg.WebViewPreviewImgHelper", "url = %s, cookie = %s", new Object[] { localObject4, str2 });
@@ -104,14 +104,14 @@ public final class j
         ((Bundle)localObject4).putString("cookie", str2);
         bool2 = bool3;
         localObject1 = localObject2;
-        float f2 = com.tencent.mm.cc.a.gvp();
+        float f2 = com.tencent.mm.cj.a.hrl();
         f1 = f2;
         if (paramMMWebView != null)
         {
           f1 = f2;
           bool2 = bool3;
           localObject1 = localObject2;
-          if (paramMMWebView.getWebCoreType() == WebView.c.SAt)
+          if (paramMMWebView.getWebCoreType() == WebView.c.aabm)
           {
             f1 = f2;
             bool2 = bool3;
@@ -158,28 +158,28 @@ public final class j
           i = paramBundle2.getInt("getA8KeyScene");
           bool2 = bool3;
           localObject1 = paramMMWebView;
-          paramBundle2 = ad.JX("ImgPreview");
+          paramBundle2 = ad.Rp("ImgPreview");
           bool2 = bool3;
           localObject1 = paramMMWebView;
-          localObject2 = ad.aVe().G(paramBundle2, true);
+          localObject2 = ad.beh().I(paramBundle2, true);
           bool2 = bool3;
           localObject1 = paramMMWebView;
-          ((ad.b)localObject2).l("preUsername", str2);
+          ((ad.b)localObject2).k("preUsername", str2);
           bool2 = bool3;
           localObject1 = paramMMWebView;
-          ((ad.b)localObject2).l("preChatName", localObject4);
+          ((ad.b)localObject2).k("preChatName", localObject4);
           bool2 = bool3;
           localObject1 = paramMMWebView;
-          ((ad.b)localObject2).l("url", paramMMWebView);
+          ((ad.b)localObject2).k("url", paramMMWebView);
           bool2 = bool3;
           localObject1 = paramMMWebView;
-          ((ad.b)localObject2).l("Contact_Sub_Scene", Integer.valueOf(6));
+          ((ad.b)localObject2).k("Contact_Sub_Scene", Integer.valueOf(6));
           bool2 = bool3;
           localObject1 = paramMMWebView;
-          ((ad.b)localObject2).l("Contact_Scene_Note", str1);
+          ((ad.b)localObject2).k("Contact_Scene_Note", str1);
           bool2 = bool3;
           localObject1 = paramMMWebView;
-          ((ad.b)localObject2).l("rawUrl", str3);
+          ((ad.b)localObject2).k("rawUrl", str3);
           if (i != 53)
           {
             bool1 = bool4;
@@ -220,10 +220,10 @@ public final class j
       paramMMWebView.putString("stat_url", (String)localObject1);
       ((Intent)localObject3).putExtra("_stat_obj", paramMMWebView);
       paramMMWebView = MMApplicationContext.getContext();
-      if (gdD())
+      if (gWC())
       {
-        i = au.eu(paramMMWebView);
-        n = au.ay(paramMMWebView);
+        i = ax.ew(paramMMWebView);
+        n = ax.at(paramMMWebView);
         j = (int)paramBundle1.getFloat("width");
         k = (int)paramBundle1.getFloat("height");
         m = (int)paramBundle1.getFloat("left");
@@ -233,14 +233,14 @@ public final class j
         }
         i = 0;
         i = (int)(i + f1);
-        n = com.tencent.mm.cb.a.jo(paramMMWebView);
+        n = com.tencent.mm.ci.a.ks(paramMMWebView);
         Log.d("MicroMsg.WebViewPreviewImgHelper", "doPreviewImg left %d, top %d, w %d, h %d", new Object[] { Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
         ((Intent)localObject3).putExtra("img_gallery_width", j).putExtra("img_gallery_height", k).putExtra("img_gallery_left", m).putExtra("img_gallery_top", i);
         if ((j > 0) && (k > 0) && (k < n)) {
           ((Intent)localObject3).putExtra("shouldRunDragAnimation", true);
         }
       }
-      com.tencent.mm.br.c.b(MMApplicationContext.getContext(), "subapp", ".ui.gallery.GestureGalleryUI", (Intent)localObject3);
+      com.tencent.mm.by.c.b(MMApplicationContext.getContext(), "subapp", ".ui.gallery.GestureGalleryUI", (Intent)localObject3);
       AppMethodBeat.o(182699);
       return;
       Log.i("MicroMsg.WebViewPreviewImgHelper", "decode fail %s", new Object[] { localObject1 });
@@ -258,12 +258,12 @@ public final class j
       AppMethodBeat.o(79208);
       return;
     }
-    if (Jbs == -1)
+    if (PXY == -1)
     {
-      Jbs = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rSR, 1);
-      Log.i("MicroMsg.WebViewPreviewImgHelper", "openXWebUrlToPath %d", new Object[] { Integer.valueOf(Jbs) });
+      PXY = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vzq, 1);
+      Log.i("MicroMsg.WebViewPreviewImgHelper", "openXWebUrlToPath %d", new Object[] { Integer.valueOf(PXY) });
     }
-    if (Jbs == 1) {}
+    if (PXY == 1) {}
     for (int i = 1; i == 0; i = 0)
     {
       AppMethodBeat.o(79208);
@@ -276,25 +276,25 @@ public final class j
       return;
     }
     Log.d("MicroMsg.WebViewPreviewImgHelper", "start getImageBitmapToFile");
-    String str = com.tencent.mm.loader.l.b.aLN() + "/reader_" + com.tencent.mm.b.g.getMessageDigest(paramMap.getBytes()) + ".jpg";
-    if (s.YS(str))
+    String str = com.tencent.mm.loader.l.b.aTT() + "/reader_" + g.getMessageDigest(paramMap.getBytes()) + ".jpg";
+    if (u.agG(str))
     {
       Log.i("MicroMsg.WebViewPreviewImgHelper", "getImageBitmapToFile savePath exist");
-      Jbu.put(paramMap, str);
-      Jbt = true;
+      PYa.put(paramMap, str);
+      PXZ = true;
       AppMethodBeat.o(79208);
       return;
     }
-    Jbt = paramMMWebView.getImageBitmapToFile(paramMap, str, "", new i()
+    PXZ = paramMMWebView.getImageBitmapToFile(paramMap, str, "", new i()
     {
       public final void cV(int paramAnonymousInt, String paramAnonymousString)
       {
         AppMethodBeat.i(79203);
         Log.i("MicroMsg.WebViewPreviewImgHelper", "onFinishImageBitmapToFile result %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        h localh;
-        if (j.Jbt)
+        com.tencent.mm.plugin.report.service.h localh;
+        if (j.PXZ)
         {
-          localh = h.CyF;
+          localh = com.tencent.mm.plugin.report.service.h.IzE;
           if (paramAnonymousInt != 0) {
             break label61;
           }
@@ -309,14 +309,14 @@ public final class j
           AppMethodBeat.o(79203);
           return;
         }
-        j.apb().put(this.IJE, paramAnonymousString);
+        j.avo().put(this.PFy, paramAnonymousString);
         AppMethodBeat.o(79203);
       }
     });
     AppMethodBeat.o(79208);
   }
   
-  public static String aZt(String paramString)
+  public static String blm(String paramString)
   {
     AppMethodBeat.i(79209);
     if (Util.isNullOrNil(paramString))
@@ -324,27 +324,27 @@ public final class j
       AppMethodBeat.o(79209);
       return null;
     }
-    if (!Jbt)
+    if (!PXZ)
     {
       AppMethodBeat.o(79209);
       return null;
     }
-    paramString = (String)Jbu.get(paramString);
+    paramString = (String)PYa.get(paramString);
     if (!Util.isNullOrNil(paramString)) {
-      h.CyF.idkeyStat(1059L, 2L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1059L, 2L, 1L, false);
     }
     for (;;)
     {
       AppMethodBeat.o(79209);
       return paramString;
-      h.CyF.idkeyStat(1059L, 5L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1059L, 5L, 1L, false);
     }
   }
   
-  public static boolean aZu(String paramString)
+  public static boolean bln(String paramString)
   {
     AppMethodBeat.i(79210);
-    if ((Util.isNullOrNil(paramString)) || (!s.YS(paramString)))
+    if ((Util.isNullOrNil(paramString)) || (!u.agG(paramString)))
     {
       Log.i("MicroMsg.WebViewPreviewImgHelper", "checkCurrentPath path is null");
       AppMethodBeat.o(79210);
@@ -356,11 +356,11 @@ public final class j
     if ((localOptions.outWidth <= 1) || (localOptions.outHeight <= 1))
     {
       Log.i("MicroMsg.WebViewPreviewImgHelper", "checkCurrentPath file path invalid: %s", new Object[] { paramString });
-      h.CyF.idkeyStat(1059L, 4L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1059L, 4L, 1L, false);
       AppMethodBeat.o(79210);
       return false;
     }
-    h.CyF.idkeyStat(1059L, 3L, 1L, false);
+    com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(1059L, 3L, 1L, false);
     Log.i("MicroMsg.WebViewPreviewImgHelper", "checkCurrentPath path: %s", new Object[] { paramString });
     AppMethodBeat.o(79210);
     return true;
@@ -376,7 +376,7 @@ public final class j
     }
     try
     {
-      parame.j(108, new Bundle());
+      parame.l(108, new Bundle());
       AppMethodBeat.o(79206);
       return;
     }
@@ -386,30 +386,30 @@ public final class j
     }
   }
   
-  public static void gdB()
+  public static void gWA()
   {
     AppMethodBeat.i(79204);
-    Jbq = System.currentTimeMillis();
+    PXW = System.currentTimeMillis();
     AppMethodBeat.o(79204);
   }
   
-  public static void gdC()
+  public static void gWB()
   {
     AppMethodBeat.i(182700);
-    cf localcf = new cf();
-    EventCenter.instance.publish(localcf);
+    cj localcj = new cj();
+    EventCenter.instance.publish(localcj);
     AppMethodBeat.o(182700);
   }
   
-  public static boolean gdD()
+  public static boolean gWC()
   {
     AppMethodBeat.i(79207);
-    if (Jbr == -1)
+    if (PXX == -1)
     {
-      Jbr = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rSA, 1);
-      Log.i("MicroMsg.WebViewPreviewImgHelper", "shouldShowAnimation %d", new Object[] { Integer.valueOf(Jbr) });
+      PXX = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vyZ, 1);
+      Log.i("MicroMsg.WebViewPreviewImgHelper", "shouldShowAnimation %d", new Object[] { Integer.valueOf(PXX) });
     }
-    if (Jbr == 1)
+    if (PXX == 1)
     {
       AppMethodBeat.o(79207);
       return true;

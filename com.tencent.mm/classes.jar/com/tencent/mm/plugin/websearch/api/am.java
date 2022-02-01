@@ -5,13 +5,13 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.b;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.az.b;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.model.z;
-import com.tencent.mm.protocal.protobuf.crg;
-import com.tencent.mm.protocal.protobuf.crh;
+import com.tencent.mm.protocal.protobuf.czx;
+import com.tencent.mm.protocal.protobuf.czy;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -23,36 +23,44 @@ import java.util.LinkedList;
 
 public final class am
 {
-  public static crh IEW;
+  public static czy Pzo;
   
-  public static void aXh(String paramString)
+  public static String bVR()
+  {
+    AppMethodBeat.i(117731);
+    String str = "key_pb_most_search_biz_list" + z.bcZ();
+    AppMethodBeat.o(117731);
+    return str;
+  }
+  
+  public static void biS(String paramString)
   {
     AppMethodBeat.i(117732);
-    if (b.Pi((String)g.aAh().azQ().get(274436, null)))
+    if (b.WF((String)h.aHG().aHp().b(274436, null)))
     {
       AppMethodBeat.o(117732);
       return;
     }
-    if (!ab.IT(paramString))
+    if (!ab.Qm(paramString))
     {
       AppMethodBeat.o(117732);
       return;
     }
-    if (IEW == null) {
-      fYi();
+    if (Pzo == null) {
+      gQT();
     }
     long l1 = System.currentTimeMillis();
     Object localObject1 = null;
     int i = 0;
     Object localObject2;
-    if (i < IEW.oTA.size())
+    if (i < Pzo.rVy.size())
     {
-      localObject2 = (crg)IEW.oTA.get(i);
-      long l2 = (l1 - ((crg)localObject2).Mwx) / 86400000L;
-      ((crg)localObject2).Mww *= Math.pow(0.98D, l2);
-      ((crg)localObject2).Mwx = (l2 * 86400000L + ((crg)localObject2).Mwx);
-      Log.d("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "after update: %.2f %d %s", new Object[] { Double.valueOf(((crg)localObject2).Mww), Long.valueOf(((crg)localObject2).Mwx), ((crg)localObject2).Username });
-      if (!((crg)localObject2).Username.equals(paramString)) {
+      localObject2 = (czx)Pzo.rVy.get(i);
+      long l2 = (l1 - ((czx)localObject2).THv) / 86400000L;
+      ((czx)localObject2).THu *= Math.pow(0.98D, l2);
+      ((czx)localObject2).THv = (l2 * 86400000L + ((czx)localObject2).THv);
+      Log.d("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "after update: %.2f %d %s", new Object[] { Double.valueOf(((czx)localObject2).THu), Long.valueOf(((czx)localObject2).THv), ((czx)localObject2).Username });
+      if (!((czx)localObject2).Username.equals(paramString)) {
         break label479;
       }
       localObject1 = localObject2;
@@ -64,32 +72,32 @@ public final class am
       break;
       if (localObject1 == null)
       {
-        localObject1 = new crg();
-        ((crg)localObject1).Mww = 1.0D;
-        ((crg)localObject1).Mwx = l1;
-        ((crg)localObject1).Username = paramString;
-        IEW.oTA.add(localObject1);
+        localObject1 = new czx();
+        ((czx)localObject1).THu = 1.0D;
+        ((czx)localObject1).THv = l1;
+        ((czx)localObject1).Username = paramString;
+        Pzo.rVy.add(localObject1);
         Log.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "add new use %s", new Object[] { paramString });
       }
       for (;;)
       {
-        Collections.sort(IEW.oTA, new Comparator() {});
-        i = IEW.oTA.size() - 1;
-        while ((i < IEW.oTA.size()) && (IEW.oTA.size() > 8))
+        Collections.sort(Pzo.rVy, new Comparator() {});
+        i = Pzo.rVy.size() - 1;
+        while ((i < Pzo.rVy.size()) && (Pzo.rVy.size() > 8))
         {
-          if (((crg)IEW.oTA.get(i)).Mww < 0.5D) {
-            IEW.oTA.remove(i);
+          if (((czx)Pzo.rVy.get(i)).THu < 0.5D) {
+            Pzo.rVy.remove(i);
           }
           i += 1;
         }
-        ((crg)localObject1).Mww += 1.0D;
-        Log.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "update use %s %.2f", new Object[] { paramString, Double.valueOf(((crg)localObject1).Mww) });
+        ((czx)localObject1).THu += 1.0D;
+        Log.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "update use %s %.2f", new Object[] { paramString, Double.valueOf(((czx)localObject1).THu) });
       }
       paramString = MMApplicationContext.getContext().getSharedPreferences("fts_recent_biz_sp", 0);
       try
       {
-        localObject1 = bKh();
-        localObject2 = Base64.encodeToString(IEW.toByteArray(), 0);
+        localObject1 = bVR();
+        localObject2 = Base64.encodeToString(Pzo.toByteArray(), 0);
         paramString.edit().putString((String)localObject1, (String)localObject2).commit();
         Log.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "useBiz pbListString %s", new Object[] { localObject2 });
         AppMethodBeat.o(117732);
@@ -103,22 +111,14 @@ public final class am
     }
   }
   
-  public static String bKh()
-  {
-    AppMethodBeat.i(117731);
-    String str = "key_pb_most_search_biz_list" + z.aTY();
-    AppMethodBeat.o(117731);
-    return str;
-  }
-  
-  public static crh fYi()
+  public static czy gQT()
   {
     AppMethodBeat.i(117730);
     Object localObject;
-    if (IEW == null)
+    if (Pzo == null)
     {
-      localObject = bKh();
-      IEW = new crh();
+      localObject = bVR();
+      Pzo = new czy();
     }
     try
     {
@@ -126,13 +126,13 @@ public final class am
       if (!Util.isNullOrNil((String)localObject))
       {
         localObject = Base64.decode(((String)localObject).getBytes(), 0);
-        IEW.parseFrom((byte[])localObject);
+        Pzo.parseFrom((byte[])localObject);
       }
       label67:
-      if (b.Pi((String)g.aAh().azQ().get(274436, null))) {
-        IEW.oTA.clear();
+      if (b.WF((String)h.aHG().aHp().b(274436, null))) {
+        Pzo.rVy.clear();
       }
-      localObject = IEW;
+      localObject = Pzo;
       AppMethodBeat.o(117730);
       return localObject;
     }
@@ -144,7 +144,7 @@ public final class am
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.am
  * JD-Core Version:    0.7.0.1
  */

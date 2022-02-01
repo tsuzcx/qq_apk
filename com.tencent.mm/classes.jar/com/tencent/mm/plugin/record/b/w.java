@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.record.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.cd.b;
 
 public final class w
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public b AqP;
-  public String BHr;
+  public b GdC;
+  public String HDx;
   public String brand;
-  public int eeA;
+  public int fYP;
   public int id;
   public int status;
   
@@ -19,46 +19,46 @@ public final class w
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.id);
-      paramVarArgs.aM(2, this.status);
-      if (this.BHr != null) {
-        paramVarArgs.e(3, this.BHr);
+      paramVarArgs.aY(1, this.id);
+      paramVarArgs.aY(2, this.status);
+      if (this.HDx != null) {
+        paramVarArgs.f(3, this.HDx);
       }
       if (this.brand != null) {
-        paramVarArgs.e(4, this.brand);
+        paramVarArgs.f(4, this.brand);
       }
-      if (this.AqP != null) {
-        paramVarArgs.c(5, this.AqP);
+      if (this.GdC != null) {
+        paramVarArgs.c(5, this.GdC);
       }
-      paramVarArgs.aM(6, this.eeA);
+      paramVarArgs.aY(6, this.fYP);
       AppMethodBeat.o(27828);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bu(1, this.id) + 0 + g.a.a.b.b.a.bu(2, this.status);
+      int i = g.a.a.b.b.a.bM(1, this.id) + 0 + g.a.a.b.b.a.bM(2, this.status);
       paramInt = i;
-      if (this.BHr != null) {
-        paramInt = i + g.a.a.b.b.a.f(3, this.BHr);
+      if (this.HDx != null) {
+        paramInt = i + g.a.a.b.b.a.g(3, this.HDx);
       }
       i = paramInt;
       if (this.brand != null) {
-        i = paramInt + g.a.a.b.b.a.f(4, this.brand);
+        i = paramInt + g.a.a.b.b.a.g(4, this.brand);
       }
       paramInt = i;
-      if (this.AqP != null) {
-        paramInt = i + g.a.a.b.b.a.b(5, this.AqP);
+      if (this.GdC != null) {
+        paramInt = i + g.a.a.b.b.a.b(5, this.GdC);
       }
-      i = g.a.a.b.b.a.bu(6, this.eeA);
+      i = g.a.a.b.b.a.bM(6, this.fYP);
       AppMethodBeat.o(27828);
       return paramInt + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
       AppMethodBeat.o(27828);
@@ -74,27 +74,27 @@ public final class w
         AppMethodBeat.o(27828);
         return -1;
       case 1: 
-        localw.id = locala.UbS.zi();
+        localw.id = locala.abFh.AK();
         AppMethodBeat.o(27828);
         return 0;
       case 2: 
-        localw.status = locala.UbS.zi();
+        localw.status = locala.abFh.AK();
         AppMethodBeat.o(27828);
         return 0;
       case 3: 
-        localw.BHr = locala.UbS.readString();
+        localw.HDx = locala.abFh.readString();
         AppMethodBeat.o(27828);
         return 0;
       case 4: 
-        localw.brand = locala.UbS.readString();
+        localw.brand = locala.abFh.readString();
         AppMethodBeat.o(27828);
         return 0;
       case 5: 
-        localw.AqP = locala.UbS.hPo();
+        localw.GdC = locala.abFh.iUw();
         AppMethodBeat.o(27828);
         return 0;
       }
-      localw.eeA = locala.UbS.zi();
+      localw.fYP = locala.abFh.AK();
       AppMethodBeat.o(27828);
       return 0;
     }
@@ -104,7 +104,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.record.b.w
  * JD-Core Version:    0.7.0.1
  */

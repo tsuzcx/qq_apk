@@ -2,288 +2,319 @@ package com.tencent.mm.plugin.multitalk.ui.widget;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.RelativeLayout.LayoutParams;
-import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.multitalk.model.ac;
-import com.tencent.mm.plugin.multitalk.model.af;
+import com.tencent.mm.plugin.multitalk.a.e;
+import com.tencent.mm.plugin.multitalk.model.ad;
+import com.tencent.mm.plugin.multitalk.model.ag;
 import com.tencent.mm.plugin.multitalk.model.q;
 import com.tencent.mm.plugin.multitalk.ui.MultiTalkMainUI;
-import com.tencent.mm.plugin.multitalk.ui.widget.projector.d;
 import com.tencent.mm.plugin.multitalk.ui.widget.projector.f;
-import com.tencent.mm.sdk.platformtools.BitmapUtil;
-import com.tencent.mm.sdk.system.AndroidMediaUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.ax;
 import com.tencent.pb.talkroom.sdk.MultiTalkGroup;
 import kotlin.l;
+import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/ui/widget/MultiTalkScreenProjectUILogic;", "", "mainUI", "Lcom/tencent/mm/plugin/multitalk/ui/MultiTalkMainUI;", "(Lcom/tencent/mm/plugin/multitalk/ui/MultiTalkMainUI;)V", "blackBoardProjector", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenBlackBoardProjector;", "fileProjector", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenFileProjector;", "isOnline", "", "()Z", "setOnline", "(Z)V", "mCurrentAngle", "", "getMCurrentAngle", "()I", "setMCurrentAngle", "(I)V", "value", "Landroid/os/Bundle;", "mParams", "setMParams", "(Landroid/os/Bundle;)V", "getMainUI", "()Lcom/tencent/mm/plugin/multitalk/ui/MultiTalkMainUI;", "setMainUI", "applyBottomOrLeftMargin", "", "checkOrientationChange", "context", "Landroid/content/Context;", "doFav", "path", "", "doSendTOFriend", "imgPath", "exitProjectScreen", "initView", "type", "inputScreenProjectInfo", "params", "pageIndex", "isShown", "onBack", "onResume", "onScreenOnline", "onTimeSecondCallback", "onVideoGroupMemberChange", "refreshView", "stopScreenProjectSend", "isMini", "Companion", "plugin-multitalk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/MultiTalkScreenProjectUILogic;", "", "mainUI", "Lcom/tencent/mm/plugin/multitalk/ui/MultiTalkMainUI;", "(Lcom/tencent/mm/plugin/multitalk/ui/MultiTalkMainUI;)V", "blackBoardProjector", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenBlackBoardProjector;", "fileProjector", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenFileProjector;", "isOnline", "", "()Z", "setOnline", "(Z)V", "mCurrentAngle", "", "getMCurrentAngle", "()I", "setMCurrentAngle", "(I)V", "value", "Landroid/os/Bundle;", "mParams", "setMParams", "(Landroid/os/Bundle;)V", "getMainUI", "()Lcom/tencent/mm/plugin/multitalk/ui/MultiTalkMainUI;", "setMainUI", "applyBottomOrLeftMargin", "", "checkOrientationChange", "context", "Landroid/content/Context;", "doFav", "path", "", "doSendTOFriend", "imgPath", "exitProjectScreen", "getCurrentFile", "initView", "type", "inputScreenProjectInfo", "params", "pageIndex", "isShown", "onBack", "onResume", "onScreenOnline", "onTimeSecondCallback", "refreshView", "stopScreenProjectSend", "isMini", "Companion", "plugin-multitalk_release"})
 public final class k
 {
-  public static final k.a zTz;
+  public static final a Fzb;
+  public f FyY;
+  public com.tencent.mm.plugin.multitalk.ui.widget.projector.d FyZ;
+  public MultiTalkMainUI Fyj;
+  public int Fza;
   private boolean isOnline;
   private Bundle mParams;
-  public MultiTalkMainUI zSH;
-  public f zTw;
-  public d zTx;
-  public int zTy;
   
   static
   {
-    AppMethodBeat.i(239823);
-    zTz = new k.a((byte)0);
-    AppMethodBeat.o(239823);
+    AppMethodBeat.i(198687);
+    Fzb = new a((byte)0);
+    AppMethodBeat.o(198687);
   }
   
   public k(MultiTalkMainUI paramMultiTalkMainUI)
   {
-    AppMethodBeat.i(239822);
-    this.zSH = paramMultiTalkMainUI;
-    this.zTy = -1;
-    AppMethodBeat.o(239822);
+    AppMethodBeat.i(198685);
+    this.Fyj = paramMultiTalkMainUI;
+    this.Fza = -1;
+    AppMethodBeat.o(198685);
   }
   
-  private final void ap(Bundle paramBundle)
+  private final void aj(Bundle paramBundle)
   {
-    AppMethodBeat.i(239815);
+    AppMethodBeat.i(198652);
     this.mParams = paramBundle;
-    ac.eom().zMB = paramBundle;
-    AppMethodBeat.o(239815);
+    ad.eYc().FrU = paramBundle;
+    AppMethodBeat.o(198652);
   }
   
-  private final void eoI()
+  private final void eYA()
   {
-    AppMethodBeat.i(239817);
+    AppMethodBeat.i(198664);
     RelativeLayout.LayoutParams localLayoutParams;
-    if ((this.zSH.chG() != null) && (this.zSH.chG().findViewById(2131307175) != null))
+    if ((this.Fyj.cuR() != null) && (this.Fyj.cuR().findViewById(a.e.rootview) != null))
     {
       localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      this.zTy = k.a.gE((Context)this.zSH);
-      if ((this.zTy != 0) && (this.zTy != 180)) {
-        break label129;
+      this.Fza = a.hB((Context)this.Fyj);
+      if ((this.Fza != 0) && (this.Fza != 180)) {
+        break label131;
       }
-      k.a.c((Activity)this.zSH, true);
-      localLayoutParams.bottomMargin = k.a.gF((Context)this.zSH);
+      a.d((Activity)this.Fyj, true);
+      localLayoutParams.bottomMargin = a.hC((Context)this.Fyj);
     }
     for (;;)
     {
-      View localView = this.zSH.chG().findViewById(2131307175);
-      kotlin.g.b.p.g(localView, "mainUI.rootView.findViewById<View>(R.id.rootview)");
+      View localView = this.Fyj.cuR().findViewById(a.e.rootview);
+      kotlin.g.b.p.j(localView, "mainUI.rootView.findViewById<View>(R.id.rootview)");
       localView.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams);
-      AppMethodBeat.o(239817);
+      AppMethodBeat.o(198664);
       return;
-      label129:
-      if (this.zTy == 270)
+      label131:
+      if (this.Fza == 270)
       {
-        k.a.c((Activity)this.zSH, false);
-        localLayoutParams.leftMargin = k.a.gF((Context)this.zSH);
+        a.d((Activity)this.Fyj, false);
+        localLayoutParams.leftMargin = a.hC((Context)this.Fyj);
       }
-      else if (this.zTy == 90)
+      else if (this.Fza == 90)
       {
-        k.a.c((Activity)this.zSH, false);
-        localLayoutParams.rightMargin = k.a.gF((Context)this.zSH);
+        a.d((Activity)this.Fyj, false);
+        localLayoutParams.rightMargin = a.hC((Context)this.Fyj);
       }
     }
   }
   
-  public final void Rs(int paramInt)
+  public final void ak(Bundle paramBundle)
   {
-    AppMethodBeat.i(239816);
-    ViewGroup localViewGroup = this.zSH.chG();
-    if (localViewGroup != null)
-    {
-      Object localObject;
-      if (paramInt == 2)
-      {
-        localObject = localViewGroup.getContext();
-        kotlin.g.b.p.g(localObject, "it.context");
-        this.zTw = new f((Context)localObject);
-        localObject = this.zTw;
-        if (localObject != null) {
-          ((f)localObject).setVisibility(0);
-        }
-        localViewGroup.addView((View)this.zTw);
-      }
-      for (;;)
-      {
-        eoI();
-        AppMethodBeat.o(239816);
-        return;
-        localObject = localViewGroup.getContext();
-        kotlin.g.b.p.g(localObject, "it.context");
-        this.zTx = new d((Context)localObject);
-        localObject = this.zTx;
-        if (localObject != null) {
-          ((d)localObject).setVisibility(0);
-        }
-        localViewGroup.addView((View)this.zTx);
-      }
-    }
-    AppMethodBeat.o(239816);
-  }
-  
-  public final void aq(Bundle paramBundle)
-  {
-    AppMethodBeat.i(239820);
-    kotlin.g.b.p.h(paramBundle, "params");
-    ap(paramBundle);
+    AppMethodBeat.i(198677);
+    kotlin.g.b.p.k(paramBundle, "params");
+    aj(paramBundle);
     this.isOnline = true;
-    f localf = this.zTw;
+    f localf = this.FyY;
     if (localf != null)
     {
-      localf.aq(paramBundle);
-      AppMethodBeat.o(239820);
+      localf.ak(paramBundle);
+      AppMethodBeat.o(198677);
       return;
     }
-    AppMethodBeat.o(239820);
+    AppMethodBeat.o(198677);
   }
   
-  public final void emx()
+  public final void eWl()
   {
-    AppMethodBeat.i(239821);
+    AppMethodBeat.i(198683);
     this.isOnline = false;
-    Object localObject = this.zSH.chG();
+    Object localObject = this.Fyj.cuR();
     if (localObject != null) {
-      ((ViewGroup)localObject).removeView((View)this.zTw);
+      ((ViewGroup)localObject).removeView((View)this.FyY);
     }
-    localObject = this.zSH.chG();
+    localObject = this.Fyj.cuR();
     if (localObject != null) {
-      ((ViewGroup)localObject).removeView((View)this.zTx);
+      ((ViewGroup)localObject).removeView((View)this.FyZ);
     }
-    localObject = this.zTw;
+    localObject = this.FyY;
     if (localObject != null) {
-      ((f)localObject).epp();
+      ((f)localObject).eZf();
     }
-    localObject = this.zTx;
+    localObject = this.FyZ;
     if (localObject != null) {
-      ((d)localObject).epp();
+      ((com.tencent.mm.plugin.multitalk.ui.widget.projector.d)localObject).eZf();
     }
-    this.zTw = null;
-    this.zTx = null;
-    ac.eom().yon = false;
-    ap(null);
-    AppMethodBeat.o(239821);
+    this.FyY = null;
+    this.FyZ = null;
+    ad.eYc().DOp = false;
+    aj(null);
+    AppMethodBeat.o(198683);
+  }
+  
+  public final void eYz()
+  {
+    AppMethodBeat.i(198656);
+    ViewGroup localViewGroup = this.Fyj.cuR();
+    if (localViewGroup != null)
+    {
+      Object localObject = localViewGroup.getContext();
+      kotlin.g.b.p.j(localObject, "it.context");
+      this.FyY = new f((Context)localObject);
+      localObject = this.FyY;
+      if (localObject != null) {
+        ((f)localObject).setVisibility(0);
+      }
+      localViewGroup.addView((View)this.FyY);
+      eYA();
+      AppMethodBeat.o(198656);
+      return;
+    }
+    AppMethodBeat.o(198656);
   }
   
   public final boolean isShown()
   {
-    AppMethodBeat.i(239819);
+    AppMethodBeat.i(198674);
     boolean bool;
-    if (this.zTw != null)
+    if (this.FyY != null)
     {
-      localObject = this.zTw;
+      localObject = this.FyY;
       if (localObject != null)
       {
-        bool = ((f)localObject).bJw();
-        AppMethodBeat.o(239819);
+        bool = ((f)localObject).bVd();
+        AppMethodBeat.o(198674);
         return bool;
       }
-      AppMethodBeat.o(239819);
+      AppMethodBeat.o(198674);
       return false;
     }
-    Object localObject = this.zTx;
+    Object localObject = this.FyZ;
     if (localObject != null)
     {
-      bool = ((d)localObject).isShown();
-      AppMethodBeat.o(239819);
+      bool = ((com.tencent.mm.plugin.multitalk.ui.widget.projector.d)localObject).isShown();
+      AppMethodBeat.o(198674);
       return bool;
     }
-    AppMethodBeat.o(239819);
+    AppMethodBeat.o(198674);
     return false;
   }
   
   public final void refreshView()
   {
-    AppMethodBeat.i(239818);
-    if (this.zSH.chG() != null)
+    AppMethodBeat.i(198670);
+    if (this.Fyj.cuR() != null)
     {
-      Object localObject = this.zTw;
+      Object localObject = this.FyY;
       if (localObject != null) {
         ((f)localObject).refreshView();
       }
-      eoI();
-      localObject = ac.eom();
-      kotlin.g.b.p.g(localObject, "SubCoreMultiTalk.getMultiTalkManager()");
-      ((q)localObject).enx().onOrientationChange(k.a.gE((Context)this.zSH));
-      if ((k.a.gE((Context)this.zSH) == 90) || (k.a.gE((Context)this.zSH) == 270))
+      eYA();
+      localObject = ad.eYc();
+      kotlin.g.b.p.j(localObject, "SubCoreMultiTalk.getMultiTalkManager()");
+      ((q)localObject).eXn().onOrientationChange(a.hB((Context)this.Fyj));
+      if ((a.hB((Context)this.Fyj) == 90) || (a.hB((Context)this.Fyj) == 270))
       {
-        if (this.zTw != null)
+        if (this.FyY != null)
         {
-          localObject = ac.eom();
-          kotlin.g.b.p.g(localObject, "SubCoreMultiTalk.getMultiTalkManager()");
-          com.tencent.mm.plugin.multitalk.model.p.n(((q)localObject).enn().zHD, 1, 3, 1);
+          localObject = ad.eYc();
+          kotlin.g.b.p.j(localObject, "SubCoreMultiTalk.getMultiTalkManager()");
+          com.tencent.mm.plugin.multitalk.model.p.q(((q)localObject).eXb().FmO, 1, 3, 1);
         }
-        if (this.zTx != null)
+        if (this.FyZ != null)
         {
-          localObject = ac.eom();
-          kotlin.g.b.p.g(localObject, "SubCoreMultiTalk.getMultiTalkManager()");
-          com.tencent.mm.plugin.multitalk.model.p.n(((q)localObject).enn().zHD, 2, 3, 1);
+          localObject = ad.eYc();
+          kotlin.g.b.p.j(localObject, "SubCoreMultiTalk.getMultiTalkManager()");
+          com.tencent.mm.plugin.multitalk.model.p.q(((q)localObject).eXb().FmO, 2, 3, 1);
         }
       }
     }
-    AppMethodBeat.o(239818);
+    AppMethodBeat.o(198670);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-  public static final class a$c
-    implements Runnable
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/MultiTalkScreenProjectUILogic$Companion;", "", "()V", "SCREEN_PROJECT_TYPE_BLACK_BOARD", "", "SCREEN_PROJECT_TYPE_FILE", "TAG", "", "checkOrientation", "context", "Landroid/content/Context;", "doExport", "", "bitmap", "Landroid/graphics/Bitmap;", "doFavExport", "doScreenSharingSecurityCheck", "fileMd5", "fileId", "doSendToFriendExport", "fillEventInfo", "", "favEvent", "Lcom/tencent/mm/autogen/events/DoFavoriteEvent;", "sourceType", "imagePath", "getNavigationBarMargin", "showSystemStatusBar", "activity", "Landroid/app/Activity;", "show", "plugin-multitalk_release"})
+  public static final class a
   {
-    public a$c(Bitmap paramBitmap, Context paramContext) {}
-    
-    public final void run()
+    public static void aQK(String paramString)
     {
-      AppMethodBeat.i(239808);
-      String str = AndroidMediaUtil.getExportImagePath("jpg");
-      boolean bool = BitmapUtil.saveBitmapToImage(this.cKG, 100, Bitmap.CompressFormat.JPEG, str, true);
-      if (!bool)
+      AppMethodBeat.i(201740);
+      kotlin.g.b.p.k(paramString, "fileMd5");
+      Object localObject = ad.eYc();
+      kotlin.g.b.p.j(localObject, "SubCoreMultiTalk.getMultiTalkManager()");
+      boolean bool = ((q)localObject).eXg();
+      Log.i("MicroMsg.MultiTalkScreenProjectUILogic", "getMultiTalkSDKMode sdk mode:%s", new Object[] { Boolean.valueOf(bool) });
+      if (bool) {
+        com.tencent.mm.plugin.multitalk.b.o.Fne.aPK(paramString);
+      }
+      for (;;)
       {
-        Toast.makeText(this.$context, (CharSequence)this.$context.getString(2131764864), 1).show();
-        AppMethodBeat.o(239808);
+        ad.eYc().aQr(paramString);
+        AppMethodBeat.o(201740);
         return;
+        localObject = ad.eYb();
+        kotlin.g.b.p.j(localObject, "SubCoreMultiTalk.getMultiEngine()");
+        ((com.tencent.mm.plugin.multitalk.model.o)localObject).eWv().bCL(paramString);
       }
-      if (bool)
-      {
-        AndroidMediaUtil.refreshMediaScannerAsync(str, this.$context);
-        ac.eom().aFS(str);
-      }
-      AppMethodBeat.o(239808);
     }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-  public static final class a$e
-    implements Runnable
-  {
-    public a$e(Bitmap paramBitmap, Context paramContext) {}
     
-    public final void run()
+    public static void d(Activity paramActivity, boolean paramBoolean)
     {
-      AppMethodBeat.i(239810);
-      String str = AndroidMediaUtil.getExportImagePath("jpg");
-      boolean bool = BitmapUtil.saveBitmapToImage(this.cKG, 100, Bitmap.CompressFormat.JPEG, str, true);
-      if (!bool)
+      AppMethodBeat.i(201737);
+      kotlin.g.b.p.k(paramActivity, "activity");
+      if (!paramBoolean)
       {
-        Toast.makeText(this.$context, (CharSequence)this.$context.getString(2131764864), 1).show();
-        AppMethodBeat.o(239810);
+        paramActivity.getWindow().setFlags(1024, 1024);
+        paramActivity.getWindow().clearFlags(134217728);
+        AppMethodBeat.o(201737);
         return;
       }
-      if (bool)
+      paramActivity.getWindow().clearFlags(1024);
+      paramActivity.getWindow().addFlags(134217728);
+      AppMethodBeat.o(201737);
+    }
+    
+    public static int hB(Context paramContext)
+    {
+      AppMethodBeat.i(201732);
+      kotlin.g.b.p.k(paramContext, "context");
+      paramContext = paramContext.getSystemService("window");
+      if (paramContext == null)
       {
-        AndroidMediaUtil.refreshMediaScannerAsync(str, this.$context);
-        ac.eom().aFY(str);
+        paramContext = new t("null cannot be cast to non-null type android.view.WindowManager");
+        AppMethodBeat.o(201732);
+        throw paramContext;
       }
-      AppMethodBeat.o(239810);
+      paramContext = ((WindowManager)paramContext).getDefaultDisplay();
+      kotlin.g.b.p.j(paramContext, "(context.getSystemServic…owManager).defaultDisplay");
+      switch (paramContext.getRotation())
+      {
+      default: 
+        AppMethodBeat.o(201732);
+        return 0;
+      case 0: 
+        AppMethodBeat.o(201732);
+        return 0;
+      case 1: 
+        AppMethodBeat.o(201732);
+        return 90;
+      case 2: 
+        AppMethodBeat.o(201732);
+        return 180;
+      }
+      AppMethodBeat.o(201732);
+      return 270;
+    }
+    
+    public static int hC(Context paramContext)
+    {
+      AppMethodBeat.i(201735);
+      kotlin.g.b.p.k(paramContext, "context");
+      int i = 0;
+      int j = Resources.getSystem().getIdentifier("navigation_bar_height", "dimen", "android");
+      if (j > 0) {
+        i = Resources.getSystem().getDimensionPixelSize(j);
+      }
+      int k = ax.az(paramContext);
+      j = i;
+      if (k != 0)
+      {
+        j = i;
+        if (k < i) {
+          j = k;
+        }
+      }
+      AppMethodBeat.o(201735);
+      return j;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.k
  * JD-Core Version:    0.7.0.1
  */

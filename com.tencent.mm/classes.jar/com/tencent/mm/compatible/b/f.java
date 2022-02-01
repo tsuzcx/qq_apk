@@ -9,29 +9,29 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class f
   implements h.a
 {
-  private AcousticEchoCanceler gCS;
+  private AcousticEchoCanceler jmY;
   
   @TargetApi(16)
   public f(AudioRecord paramAudioRecord)
   {
     AppMethodBeat.i(155557);
-    this.gCS = null;
+    this.jmY = null;
     boolean bool = AcousticEchoCanceler.isAvailable();
     Log.d("MicroMsg.MMAcousticEchoCanceler", "available  ".concat(String.valueOf(bool)));
     if (bool) {
-      this.gCS = AcousticEchoCanceler.create(paramAudioRecord.getAudioSessionId());
+      this.jmY = AcousticEchoCanceler.create(paramAudioRecord.getAudioSessionId());
     }
     AppMethodBeat.o(155557);
   }
   
   @TargetApi(16)
-  public final boolean anE()
+  public final boolean atG()
   {
     AppMethodBeat.i(155559);
-    if (this.gCS != null) {}
+    if (this.jmY != null) {}
     try
     {
-      int i = this.gCS.setEnabled(true);
+      int i = this.jmY.setEnabled(true);
       if (i == 0)
       {
         AppMethodBeat.o(155559);
@@ -61,7 +61,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.compatible.b.f
  * JD-Core Version:    0.7.0.1
  */

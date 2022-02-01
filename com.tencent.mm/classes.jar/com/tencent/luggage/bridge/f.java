@@ -5,47 +5,47 @@ import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public final class f
+final class f
 {
-  private s csr;
-  private LinkedList<e> css;
-  private boolean cst;
+  private s cqw;
+  private LinkedList<e> cqx;
+  private boolean cqy;
   
   f(s params)
   {
     AppMethodBeat.i(140319);
-    this.csr = params;
-    this.css = new LinkedList();
-    this.cst = false;
+    this.cqw = params;
+    this.cqx = new LinkedList();
+    this.cqy = false;
     AppMethodBeat.o(140319);
   }
   
   private void b(e parame)
   {
     AppMethodBeat.i(140321);
-    this.csr.evaluateJavascript(String.format("if(typeof luggageBridge !== 'undefined') luggageBridge._processMessageFromJava(%s);", new Object[] { parame.toString() }), null);
+    this.cqw.evaluateJavascript(String.format("if(typeof luggageBridge !== 'undefined') luggageBridge._processMessageFromJava(%s);", new Object[] { parame.toString() }), null);
     AppMethodBeat.o(140321);
   }
   
-  final void KY()
+  final void NO()
   {
     try
     {
       AppMethodBeat.i(140322);
       Log.i("Java2JsMessageQueue", "ready");
-      this.cst = true;
-      Iterator localIterator = this.css.iterator();
+      this.cqy = true;
+      Iterator localIterator = this.cqx.iterator();
       while (localIterator.hasNext()) {
         b((e)localIterator.next());
       }
-      this.css.clear();
+      this.cqx.clear();
     }
     finally {}
     AppMethodBeat.o(140322);
   }
   
   /* Error */
-  public final void a(e parame)
+  final void a(e parame)
   {
     // Byte code:
     //   0: aload_0
@@ -53,7 +53,7 @@ public final class f
     //   2: ldc 91
     //   4: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 32	com/tencent/luggage/bridge/f:cst	Z
+    //   8: getfield 32	com/tencent/luggage/bridge/f:cqy	Z
     //   11: ifeq +16 -> 27
     //   14: aload_0
     //   15: aload_1
@@ -64,7 +64,7 @@ public final class f
     //   25: monitorexit
     //   26: return
     //   27: aload_0
-    //   28: getfield 30	com/tencent/luggage/bridge/f:css	Ljava/util/LinkedList;
+    //   28: getfield 30	com/tencent/luggage/bridge/f:cqx	Ljava/util/LinkedList;
     //   31: aload_1
     //   32: invokevirtual 95	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   35: pop

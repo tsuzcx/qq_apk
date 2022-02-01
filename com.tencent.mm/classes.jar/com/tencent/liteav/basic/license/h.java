@@ -14,31 +14,31 @@ public class h
   
   static
   {
-    AppMethodBeat.i(222178);
+    AppMethodBeat.i(241771);
     a = "#PART#".getBytes();
-    AppMethodBeat.o(222178);
+    AppMethodBeat.o(241771);
   }
   
   public static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    AppMethodBeat.i(222176);
+    AppMethodBeat.i(241765);
     paramArrayOfByte2 = new PKCS8EncodedKeySpec(paramArrayOfByte2);
     paramArrayOfByte2 = KeyFactory.getInstance("RSA").generatePrivate(paramArrayOfByte2);
     Cipher localCipher = Cipher.getInstance("RSA/None/PKCS1Padding");
     localCipher.init(2, paramArrayOfByte2);
     paramArrayOfByte1 = localCipher.doFinal(paramArrayOfByte1);
-    AppMethodBeat.o(222176);
+    AppMethodBeat.o(241765);
     return paramArrayOfByte1;
   }
   
   public static byte[] b(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    AppMethodBeat.i(222177);
+    AppMethodBeat.i(241770);
     int i3 = a.length;
     if (i3 <= 0)
     {
       paramArrayOfByte1 = a(paramArrayOfByte1, paramArrayOfByte2);
-      AppMethodBeat.o(222177);
+      AppMethodBeat.o(241770);
       return paramArrayOfByte1;
     }
     int i4 = paramArrayOfByte1.length;
@@ -136,7 +136,7 @@ public class h
           paramArrayOfByte1[i] = ((Byte)paramArrayOfByte2.next()).byteValue();
           i += 1;
         }
-        AppMethodBeat.o(222177);
+        AppMethodBeat.o(241770);
         return paramArrayOfByte1;
         i = m;
         k = n;
@@ -150,7 +150,7 @@ public class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.basic.license.h
  * JD-Core Version:    0.7.0.1
  */

@@ -5,27 +5,27 @@ import java.io.OutputStream;
 
 public abstract class f<T>
 {
-  T data;
+  private T bnW;
   
   f() {}
   
   public f(T paramT)
   {
-    this.data = paramT;
+    this.bnW = paramT;
   }
   
-  public abstract a aKi();
+  public abstract a aSj();
+  
+  public final T aSr()
+  {
+    return this.bnW;
+  }
   
   public abstract void b(OutputStream paramOutputStream);
   
-  public final T value()
-  {
-    return this.data;
-  }
-  
   public static abstract interface a<T>
   {
-    public abstract a aKj();
+    public abstract a aSk();
   }
 }
 

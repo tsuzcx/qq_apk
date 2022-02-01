@@ -1,7 +1,7 @@
 package com.tencent.mm.openim.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,16 +11,16 @@ import org.json.JSONObject;
 
 public final class b
 {
-  public List<a> jGV;
+  public List<a> mxJ;
   
   public b()
   {
     AppMethodBeat.i(120689);
-    this.jGV = new LinkedList();
+    this.mxJ = new LinkedList();
     AppMethodBeat.o(120689);
   }
   
-  public final b Sa(String paramString)
+  public final b ZC(String paramString)
   {
     AppMethodBeat.i(120690);
     try
@@ -36,7 +36,7 @@ public final class b
       {
         JSONObject localJSONObject = paramString.getJSONObject(i);
         a locala = new a();
-        this.jGV.add(locala.z(localJSONObject));
+        this.mxJ.add(locala.B(localJSONObject));
         i += 1;
       }
       return this;
@@ -50,18 +50,18 @@ public final class b
   
   public static final class a
   {
-    public List<b.b> jGW;
+    public List<b.b> mya;
     public String title;
     
     public a()
     {
       AppMethodBeat.i(120686);
       this.title = "";
-      this.jGW = new LinkedList();
+      this.mya = new LinkedList();
       AppMethodBeat.o(120686);
     }
     
-    final a z(JSONObject paramJSONObject)
+    final a B(JSONObject paramJSONObject)
     {
       AppMethodBeat.i(120687);
       this.title = paramJSONObject.optString("title", "");
@@ -76,12 +76,12 @@ public final class b
       {
         JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
         b.b localb = new b.b();
-        List localList = this.jGW;
+        List localList = this.mya;
         localb.icon = localJSONObject.optString("icon");
         localb.desc = localJSONObject.optString("desc");
-        localb.jGX = localJSONObject.optInt("desc_type");
+        localb.myb = localJSONObject.optInt("desc_type");
         localb.action = localJSONObject.optInt("action");
-        localb.jGY = localJSONObject.optString("action_param");
+        localb.myc = localJSONObject.optString("action_param");
         localList.add(localb);
         i += 1;
       }
@@ -95,15 +95,15 @@ public final class b
     public int action;
     String desc;
     public String icon;
-    public int jGX;
-    public String jGY;
+    public int myb;
+    public String myc;
     
-    public final String Sb(String paramString)
+    public final String ZD(String paramString)
     {
       AppMethodBeat.i(120688);
-      if (this.jGX == 1)
+      if (this.myb == 1)
       {
-        paramString = ((a)g.af(a.class)).bN(paramString, this.desc);
+        paramString = ((a)h.ae(a.class)).bR(paramString, this.desc);
         AppMethodBeat.o(120688);
         return paramString;
       }

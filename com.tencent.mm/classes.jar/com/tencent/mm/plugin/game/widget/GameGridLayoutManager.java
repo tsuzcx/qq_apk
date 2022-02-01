@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.game.widget;
 
 import android.content.Context;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView.n;
-import android.support.v7.widget.RecyclerView.s;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView.n;
+import androidx.recyclerview.widget.RecyclerView.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 
@@ -22,23 +22,23 @@ public class GameGridLayoutManager
   
   public void onLayoutChildren(RecyclerView.n paramn, RecyclerView.s params)
   {
-    AppMethodBeat.i(42619);
+    AppMethodBeat.i(190863);
     try
     {
       super.onLayoutChildren(paramn, params);
-      AppMethodBeat.o(42619);
+      AppMethodBeat.o(190863);
       return;
     }
     catch (IndexOutOfBoundsException paramn)
     {
       Log.e("MicroMsg.GameGridLayoutManager", "meet a IOOBE in RecyclerView");
-      AppMethodBeat.o(42619);
+      AppMethodBeat.o(190863);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.GameGridLayoutManager
  * JD-Core Version:    0.7.0.1
  */

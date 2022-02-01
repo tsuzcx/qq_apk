@@ -8,36 +8,36 @@ import org.json.JSONObject;
 public final class a
   extends com.tencent.mm.wallet_core.e.a.a
 {
-  public String IsA;
-  public String Isr;
-  public String Isx;
-  public String Isy;
-  public double ItP;
-  public String ItQ;
-  public double ItR;
-  public String ItS;
-  public boolean ItT;
-  public boolean ItU;
-  public String ItV;
-  public String ItW;
-  public String ItX;
-  public String dDL;
-  public String dQl;
-  public String dQm;
-  public String pin;
-  public String qvD;
-  public int qwL;
+  public String Pla;
+  public String Plb;
+  public String Plh;
+  public String Pli;
+  public String Plk;
+  public String PmA;
+  public double PmB;
+  public String PmC;
+  public boolean PmD;
+  public boolean PmE;
+  public String PmF;
+  public String PmG;
+  public String PmH;
+  public double Pmz;
+  public int dXr;
+  public String fJC;
+  public String fJD;
+  public String fwv;
+  public String tUC;
   
   public a(String paramString1, double paramDouble, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
     AppMethodBeat.i(72081);
-    this.dDL = paramString1;
-    this.ItP = paramDouble;
-    this.ItQ = paramString2;
-    this.dQl = paramString3;
-    this.dQm = paramString4;
-    this.Isr = paramString5;
-    this.pin = paramString6;
+    this.fwv = paramString1;
+    this.Pmz = paramDouble;
+    this.PmA = paramString2;
+    this.fJC = paramString3;
+    this.fJD = paramString4;
+    this.Plb = paramString5;
+    this.Pla = paramString6;
     HashMap localHashMap = new HashMap();
     localHashMap.put("req_key", paramString1);
     localHashMap.put("total_fee", Math.round(100.0D * paramDouble));
@@ -52,7 +52,7 @@ public final class a
     AppMethodBeat.o(72081);
   }
   
-  public final int fPU()
+  public final int gIA()
   {
     return 9;
   }
@@ -60,7 +60,7 @@ public final class a
   public final boolean isSuccess()
   {
     AppMethodBeat.i(72082);
-    boolean bool = this.ItV.equals("1");
+    boolean bool = this.PmF.equals("1");
     AppMethodBeat.o(72082);
     return bool;
   }
@@ -70,18 +70,18 @@ public final class a
     AppMethodBeat.i(72083);
     if (paramJSONObject != null)
     {
-      this.qvD = paramJSONObject.optString("trans_id");
-      this.ItR = (paramJSONObject.optDouble("total_fee") / 100.0D);
-      this.ItS = paramJSONObject.optString("fee_type");
-      this.ItT = paramJSONObject.optBoolean("redirect");
-      this.Isx = paramJSONObject.optString("gateway_reference");
-      this.Isy = paramJSONObject.optString("gateway_code");
-      this.ItV = paramJSONObject.optString("pay_status");
-      this.qwL = paramJSONObject.optInt("timestamp");
-      this.ItW = paramJSONObject.optString("pay_status_name");
-      this.ItX = paramJSONObject.optString("bank_type");
-      this.ItU = paramJSONObject.optBoolean("is_force_adjust");
-      this.IsA = paramJSONObject.optString("force_adjust_code");
+      this.tUC = paramJSONObject.optString("trans_id");
+      this.PmB = (paramJSONObject.optDouble("total_fee") / 100.0D);
+      this.PmC = paramJSONObject.optString("fee_type");
+      this.PmD = paramJSONObject.optBoolean("redirect");
+      this.Plh = paramJSONObject.optString("gateway_reference");
+      this.Pli = paramJSONObject.optString("gateway_code");
+      this.PmF = paramJSONObject.optString("pay_status");
+      this.dXr = paramJSONObject.optInt("timestamp");
+      this.PmG = paramJSONObject.optString("pay_status_name");
+      this.PmH = paramJSONObject.optString("bank_type");
+      this.PmE = paramJSONObject.optBoolean("is_force_adjust");
+      this.Plk = paramJSONObject.optString("force_adjust_code");
     }
     AppMethodBeat.o(72083);
   }

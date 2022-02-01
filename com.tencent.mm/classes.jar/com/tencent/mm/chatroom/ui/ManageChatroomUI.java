@@ -7,72 +7,66 @@ import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.chatroom.ui.preference.RoomManagerPreference;
-import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.ap;
+import com.tencent.mm.model.aq;
 import com.tencent.mm.model.v;
 import com.tencent.mm.model.z;
 import com.tencent.mm.openim.d.p;
+import com.tencent.mm.plugin.chatroom.a.b;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
-import com.tencent.mm.plugin.messenger.foundation.a.c.b;
-import com.tencent.mm.plugin.messenger.foundation.a.c.c;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.plugin.newtips.NewTipPreference;
 import com.tencent.mm.plugin.newtips.a.i;
-import com.tencent.mm.protocal.protobuf.cpf;
-import com.tencent.mm.protocal.protobuf.dpr;
-import com.tencent.mm.protocal.protobuf.dps;
+import com.tencent.mm.protocal.protobuf.cxv;
+import com.tencent.mm.protocal.protobuf.dzn;
+import com.tencent.mm.protocal.protobuf.dzo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ah;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.o.f;
-import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.base.o;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.ui.base.q.f;
 import com.tencent.mm.ui.widget.a.f.a;
 import java.util.LinkedList;
 
 public class ManageChatroomUI
   extends MMPreference
 {
-  CheckBoxPreference gws;
-  RoomManagerPreference gwt;
-  Preference gwu;
-  NewTipPreference gwv;
-  private dps gww = null;
-  private String gwx;
-  private String gwy;
-  private com.tencent.mm.ui.widget.a.g gwz = null;
+  CheckBoxPreference jaF;
+  RoomManagerPreference jaG;
+  Preference jaH;
+  NewTipPreference jaI;
+  private dzo jaJ = null;
+  private String jaK;
+  private String jaL;
+  private com.tencent.mm.ui.widget.a.g jaM = null;
   private com.tencent.mm.ui.base.preference.f screen;
   private SharedPreferences sp = null;
   
-  private dpr amM()
+  private dzn asN()
   {
-    AppMethodBeat.i(194134);
-    if ((this.gww != null) && (!Util.isNullOrNil(this.gww.MSS)))
+    AppMethodBeat.i(193378);
+    if ((this.jaJ != null) && (!Util.isNullOrNil(this.jaJ.Ufa)))
     {
-      dpr localdpr = (dpr)this.gww.MSS.getFirst();
-      AppMethodBeat.o(194134);
-      return localdpr;
+      dzn localdzn = (dzn)this.jaJ.Ufa.getFirst();
+      AppMethodBeat.o(193378);
+      return localdzn;
     }
-    AppMethodBeat.o(194134);
+    AppMethodBeat.o(193378);
     return null;
   }
   
   public int getResourceId()
   {
-    return 2132017235;
+    return a.k.jhF;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -92,12 +86,12 @@ public class ManageChatroomUI
         return;
       }
       paramInt1 = paramIntent.getIntExtra("into_room_type", -1);
-      Log.i("MicroMsg.ManageChatroomUI", "[openVerify] roomId:%s, type:%s", new Object[] { this.gwx, Integer.valueOf(paramInt1) });
-      paramIntent = new cpf();
-      paramIntent.KGO = Util.nullAsNil(this.gwx);
-      paramIntent.Cyb = paramInt1;
+      Log.i("MicroMsg.ManageChatroomUI", "[openVerify] roomId:%s, type:%s", new Object[] { this.jaK, Integer.valueOf(paramInt1) });
+      paramIntent = new cxv();
+      paramIntent.RIi = Util.nullAsNil(this.jaK);
+      paramIntent.Iza = paramInt1;
       paramIntent = new k.a(66, paramIntent);
-      ((l)com.tencent.mm.kernel.g.af(l.class)).aSM().d(paramIntent);
+      ((n)com.tencent.mm.kernel.h.ae(n.class)).bbK().d(paramIntent);
       AppMethodBeat.o(12662);
       return;
       Log.i("MicroMsg.ManageChatroomUI", "[onActivityResult] requestCode:%s", new Object[] { Integer.valueOf(2) });
@@ -109,8 +103,8 @@ public class ManageChatroomUI
     AppMethodBeat.i(12658);
     super.onCreate(paramBundle);
     Log.i("MicroMsg.ManageChatroomUI", "[onCreate]");
-    this.gwx = getIntent().getStringExtra("RoomInfo_Id");
-    this.gwy = getIntent().getStringExtra("room_owner_name");
+    this.jaK = getIntent().getStringExtra("RoomInfo_Id");
+    this.jaL = getIntent().getStringExtra("room_owner_name");
     AppMethodBeat.o(12658);
   }
   
@@ -121,7 +115,7 @@ public class ManageChatroomUI
     AppMethodBeat.o(12660);
   }
   
-  public boolean onPreferenceTreeClick(final com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
     int i = 1;
     AppMethodBeat.i(12661);
@@ -129,20 +123,20 @@ public class ManageChatroomUI
     Log.d("MicroMsg.ManageChatroomUI", "[onPreferenceTreeClick] key:%s", new Object[] { paramf });
     if (paramf.equals("room_transfer_room_ower"))
     {
-      Log.i("MicroMsg.ManageChatroomUI", "[selectNewRoomOwner] roomId:%s", new Object[] { this.gwx });
-      paramf = Util.listToString(v.Ic(this.gwx), ",");
+      Log.i("MicroMsg.ManageChatroomUI", "[selectNewRoomOwner] roomId:%s", new Object[] { this.jaK });
+      paramf = Util.listToString(v.Ps(this.jaK), ",");
       paramPreference = new Intent();
-      paramPreference.putExtra("Block_list", z.aTY());
+      paramPreference.putExtra("Block_list", z.bcZ());
       paramPreference.putExtra("Chatroom_member_list", paramf);
       paramPreference.putExtra("from_scene", 2);
-      paramPreference.putExtra("RoomInfo_Id", this.gwx);
+      paramPreference.putExtra("RoomInfo_Id", this.jaK);
       paramPreference.putExtra("is_show_owner", false);
-      paramPreference.putExtra("title", getString(2131764783));
+      paramPreference.putExtra("title", getString(a.i.jgE));
       paramPreference.setClass(this, TransferRoomOwnerUI.class);
-      paramf = new com.tencent.mm.hellhoundlib.b.a().bl(paramPreference);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/chatroom/ui/ManageChatroomUI", "enterSelectNewRoomOwnerUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramf.pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/chatroom/ui/ManageChatroomUI", "enterSelectNewRoomOwnerUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramf = new com.tencent.mm.hellhoundlib.b.a().bm(paramPreference);
+      com.tencent.mm.hellhoundlib.a.a.b(this, paramf.aFh(), "com/tencent/mm/chatroom/ui/ManageChatroomUI", "enterSelectNewRoomOwnerUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/chatroom/ui/ManageChatroomUI", "enterSelectNewRoomOwnerUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     for (;;)
     {
@@ -150,40 +144,40 @@ public class ManageChatroomUI
       return false;
       if (paramf.equals("allow_by_identity"))
       {
-        boolean bool = this.gws.isChecked();
-        paramf = amM();
+        boolean bool = this.jaF.isChecked();
+        paramf = asN();
         if ((paramf != null) && (bool))
         {
-          this.gws.setChecked(false);
-          paramf = new f.a(getContext()).aC(getString(2131757238)).bow(Util.safeFormatString(getString(2131757237), new Object[] { paramf.xMq })).apa(2131755873);
-          paramf.JnN = true;
+          this.jaF.setChecked(false);
+          paramf = new f.a(getContext()).aR(getString(a.i.jeQ)).bBl(Util.safeFormatString(getString(a.i.jeP), new Object[] { paramf.CQz })).ayp(a.i.app_i_know);
+          paramf.Qlf = true;
           paramf.show();
         }
         else
         {
-          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(219L, 22L, 1L, true);
-          Log.i("MicroMsg.ManageChatroomUI", "[selectAllowByIdentity] roomId:%s isOpen:%s", new Object[] { this.gwx, Boolean.valueOf(bool) });
-          if (ab.Iy(this.gwx))
+          com.tencent.mm.plugin.report.service.h.IzE.idkeyStat(219L, 22L, 1L, true);
+          Log.i("MicroMsg.ManageChatroomUI", "[selectAllowByIdentity] roomId:%s isOpen:%s", new Object[] { this.jaK, Boolean.valueOf(bool) });
+          if (ab.PQ(this.jaK))
           {
-            paramf = ((l)com.tencent.mm.kernel.g.af(l.class)).aSM();
-            paramPreference = Util.nullAsNil(this.gwx);
+            paramf = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbK();
+            paramPreference = Util.nullAsNil(this.jaK);
             if (bool == true) {}
             for (;;)
             {
               paramf.d(new p(paramPreference, i));
-              this.gws.OZw = false;
+              this.jaF.WsF = false;
               break;
               i = 0;
             }
           }
-          paramf = new cpf();
-          paramf.KGO = Util.nullAsNil(this.gwx);
+          paramf = new cxv();
+          paramf.RIi = Util.nullAsNil(this.jaK);
           if (bool == true) {}
           for (i = 2;; i = 0)
           {
-            paramf.Cyb = i;
+            paramf.Iza = i;
             paramf = new k.a(66, paramf);
-            ((l)com.tencent.mm.kernel.g.af(l.class)).aSM().d(paramf);
+            ((n)com.tencent.mm.kernel.h.ae(n.class)).bbK().d(paramf);
             break;
           }
         }
@@ -192,19 +186,19 @@ public class ManageChatroomUI
       {
         if (paramf.equals("room_manager"))
         {
-          Log.i("MicroMsg.ManageChatroomUI", "[selectRoomManager] roomId:%s", new Object[] { this.gwx });
-          paramf = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().Kd(this.gwx);
+          Log.i("MicroMsg.ManageChatroomUI", "[selectRoomManager] roomId:%s", new Object[] { this.jaK });
+          paramf = ((b)com.tencent.mm.kernel.h.ae(b.class)).bbV().Rw(this.jaK);
           paramPreference = new Intent();
-          if (paramf.bjf(z.aTY())) {
+          if (paramf.bvA(z.bcZ())) {
             paramPreference.setClass(this, SeeRoomOwnerManagerUI.class);
           }
           for (;;)
           {
-            paramPreference.putExtra("RoomInfo_Id", this.gwx);
-            paramf = new com.tencent.mm.hellhoundlib.b.a().bl(paramPreference);
-            com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/chatroom/ui/ManageChatroomUI", "enterSeeRoomManagerUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            startActivity((Intent)paramf.pG(0));
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/chatroom/ui/ManageChatroomUI", "enterSeeRoomManagerUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramPreference.putExtra("RoomInfo_Id", this.jaK);
+            paramf = new com.tencent.mm.hellhoundlib.b.a().bm(paramPreference);
+            com.tencent.mm.hellhoundlib.a.a.b(this, paramf.aFh(), "com/tencent/mm/chatroom/ui/ManageChatroomUI", "enterSeeRoomManagerUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            startActivity((Intent)paramf.sf(0));
+            com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/chatroom/ui/ManageChatroomUI", "enterSeeRoomManagerUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             break;
             paramPreference.setClass(this, SeeRoomManagerUI.class);
           }
@@ -212,23 +206,23 @@ public class ManageChatroomUI
         if (!paramf.equals("use_wework_manager_room")) {
           break label1017;
         }
-        Log.i("MicroMsg.ManageChatroomUI", "[useWeworkManagerRoom] roomId:%s", new Object[] { this.gwx });
-        paramf = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().Kd(this.gwx);
+        Log.i("MicroMsg.ManageChatroomUI", "[useWeworkManagerRoom] roomId:%s", new Object[] { this.jaK });
+        paramf = ((b)com.tencent.mm.kernel.h.ae(b.class)).bbV().Rw(this.jaK);
         if (paramf != null) {
           break;
         }
         Log.e("MicroMsg.ManageChatroomUI", "enterUseWeworkManagerRoomUI member is null");
       }
     }
-    if (paramf.field_memberCount >= v.aTT())
+    if (paramf.field_memberCount >= v.bcU())
     {
       i = 1;
       label776:
-      if (paramf.JO(z.aTY())) {
+      if (paramf.Rh(z.bcZ())) {
         break label845;
       }
       Log.i("MicroMsg.ManageChatroomUI", "enterUseWeworkManagerRoomUI：no owner");
-      com.tencent.mm.ui.base.h.a(getContext(), getString(2131757314), "", getString(2131755873), false, null);
+      com.tencent.mm.ui.base.h.a(getContext(), getString(a.i.chatroom_sys_msg_room_upgrade_to_wework_no_owner), "", getString(a.i.app_i_know), false, null);
       if (i == 0) {
         break label1230;
       }
@@ -237,59 +231,46 @@ public class ManageChatroomUI
     label1230:
     for (i = 3;; i = 1)
     {
-      ManagerRoomByWeworkUI.c(this.gwx, 1, 2, i);
+      ManagerRoomByWeworkUI.d(this.jaK, 1, 2, i);
       break;
       i = 0;
       break label776;
       if (i != 0)
       {
         Log.e("MicroMsg.ManageChatroomUI", "enterUseWeworkManagerRoomUI：exceed maxnum");
-        com.tencent.mm.ui.base.h.a(getContext(), getString(2131757312), "", getString(2131755873), false, null);
-        ManagerRoomByWeworkUI.c(this.gwx, 1, 2, 2);
+        com.tencent.mm.ui.base.h.a(getContext(), getString(a.i.chatroom_sys_msg_room_upgrade_to_wework_exceed_max_num), "", getString(a.i.app_i_know), false, null);
+        ManagerRoomByWeworkUI.d(this.jaK, 1, 2, 2);
         break;
       }
-      com.tencent.mm.plugin.newtips.a.exl().TC(27);
+      com.tencent.mm.plugin.newtips.a.fiO().aap(27);
       paramf = new Intent();
       paramf.setClass(this, ManagerRoomByWeworkUI.class);
-      paramf.putExtra("RoomInfo_Id", this.gwx);
+      paramf.putExtra("RoomInfo_Id", this.jaK);
       paramf.putExtra("upgrade_openim_room_from_scene", 1);
-      paramf = new com.tencent.mm.hellhoundlib.b.a().bl(paramf);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/chatroom/ui/ManageChatroomUI", "enterUseWeworkManagerRoomUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramf.pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/chatroom/ui/ManageChatroomUI", "enterUseWeworkManagerRoomUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramf = new com.tencent.mm.hellhoundlib.b.a().bm(paramf);
+      com.tencent.mm.hellhoundlib.a.a.b(this, paramf.aFh(), "com/tencent/mm/chatroom/ui/ManageChatroomUI", "enterUseWeworkManagerRoomUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/chatroom/ui/ManageChatroomUI", "enterUseWeworkManagerRoomUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       break;
       label1017:
       if (!paramf.equals("room_bind_app_info")) {
         break;
       }
-      paramf = amM();
-      if ((paramf == null) || ((this.gwz != null) && (this.gwz.isShowing()))) {
+      paramf = asN();
+      if ((paramf == null) || ((this.jaM != null) && (this.jaM.isShowing()))) {
         break;
       }
-      this.gwz = new com.tencent.mm.ui.widget.a.g(getContext(), 0, 3);
-      paramPreference = LayoutInflater.from(getContext()).inflate(2131493846, null, false);
-      Object localObject = (ImageView)paramPreference.findViewById(2131302875);
-      com.tencent.mm.av.a.a.bdb().loadImage(paramf.KFs, (ImageView)localObject);
-      ((TextView)paramPreference.findViewById(2131309453)).setText(paramf.xMq);
-      ((TextView)paramPreference.findViewById(2131309455)).setText(Util.safeFormatString(getString(2131757233), new Object[] { paramf.xMq }));
-      localObject = (TextView)paramPreference.findViewById(2131309543);
-      ((TextView)localObject).setText(Util.safeFormatString(getString(2131757242), new Object[] { paramf.xMq }));
-      ((TextView)localObject).setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(194130);
-          b localb = new b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/chatroom/ui/ManageChatroomUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          ManageChatroomUI.b(ManageChatroomUI.this).bMo();
-          ManageChatroomUI.a(ManageChatroomUI.this, paramf);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/chatroom/ui/ManageChatroomUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(194130);
-        }
-      });
-      this.gwz.setCustomView(paramPreference);
-      this.gwz.dGm();
+      this.jaM = new com.tencent.mm.ui.widget.a.g(getContext(), 0, 3);
+      paramPreference = LayoutInflater.from(getContext()).inflate(a.f.jec, null, false);
+      Object localObject = (ImageView)paramPreference.findViewById(a.e.jcP);
+      com.tencent.mm.ay.a.a.bms().loadImage(paramf.RGJ, (ImageView)localObject);
+      ((TextView)paramPreference.findViewById(a.e.jdA)).setText(paramf.CQz);
+      ((TextView)paramPreference.findViewById(a.e.jdC)).setText(Util.safeFormatString(getString(a.i.jeN), new Object[] { paramf.CQz }));
+      localObject = (TextView)paramPreference.findViewById(a.e.jdG);
+      ((TextView)localObject).setText(Util.safeFormatString(getString(a.i.jeS), new Object[] { paramf.CQz }));
+      ((TextView)localObject).setOnClickListener(new ManageChatroomUI.4(this, paramf));
+      this.jaM.setCustomView(paramPreference);
+      this.jaM.eik();
       break;
     }
   }
@@ -297,12 +278,12 @@ public class ManageChatroomUI
   public void onResume()
   {
     AppMethodBeat.i(12659);
-    Object localObject1 = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().Kd(this.gwx);
+    Object localObject1 = ((b)com.tencent.mm.kernel.h.ae(b.class)).bbV().Rw(this.jaK);
     if ((localObject1 != null) && (this.sp == null))
     {
       this.sp = getSharedPreferences(getPackageName() + "_preferences", 0);
       localObject2 = this.sp.edit();
-      if (((ah)localObject1).gBv() == 2)
+      if (((ah)localObject1).hxG() == 2)
       {
         bool = true;
         ((SharedPreferences.Editor)localObject2).putBoolean("allow_by_identity", bool).commit();
@@ -314,45 +295,45 @@ public class ManageChatroomUI
       this.screen = getPreferenceScreen();
       if (this.screen != null)
       {
-        setMMTitle(2131762955);
-        this.gws = ((CheckBoxPreference)this.screen.bmg("allow_by_identity"));
-        this.gwt = ((RoomManagerPreference)this.screen.bmg("room_manager"));
-        this.gwu = this.screen.bmg("room_bind_app_info");
-        if ((!ab.IB(this.gwx)) || ((z.aUT() & 0x10) != 0))
+        setMMTitle(a.i.jft);
+        this.jaF = ((CheckBoxPreference)this.screen.byG("allow_by_identity"));
+        this.jaG = ((RoomManagerPreference)this.screen.byG("room_manager"));
+        this.jaH = this.screen.byG("room_bind_app_info");
+        if ((!ab.PT(this.jaK)) || ((z.bdV() & 0x10) != 0))
         {
           localObject1 = this.screen;
-          if (((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.chatroom.a.c.class)).akx(this.gwx)) {
+          if (((b)com.tencent.mm.kernel.h.ae(b.class)).asl(this.jaK)) {
             break label644;
           }
           bool = true;
           label235:
-          ((com.tencent.mm.ui.base.preference.f)localObject1).jdMethod_do("room_manager", bool);
+          ((com.tencent.mm.ui.base.preference.f)localObject1).dz("room_manager", bool);
         }
-        this.screen.jdMethod_do("select_enable_qrcode", true);
-        this.screen.jdMethod_do("select_into_room_type", true);
-        this.screen.jdMethod_do("use_wework_manager_room", true);
-        this.screen.jdMethod_do("room_bind_app_info", true);
-        bool = z.aTY().equals(this.gwy);
+        this.screen.dz("select_enable_qrcode", true);
+        this.screen.dz("select_into_room_type", true);
+        this.screen.dz("use_wework_manager_room", true);
+        this.screen.dz("room_bind_app_info", true);
+        bool = z.bcZ().equals(this.jaL);
         if (!bool) {
-          this.screen.jdMethod_do("room_transfer_room_ower", true);
+          this.screen.dz("room_transfer_room_ower", true);
         }
         if (bool) {
-          com.tencent.mm.co.g.ey(this.gwx).h(new ManageChatroomUI.2(this)).b(new com.tencent.mm.vending.c.a() {});
+          com.tencent.mm.cw.g.eE(this.jaK).h(new ManageChatroomUI.2(this)).b(new ManageChatroomUI.1(this));
         }
-        localObject1 = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().Kd(this.gwx);
+        localObject1 = ((b)com.tencent.mm.kernel.h.ae(b.class)).bbV().Rw(this.jaK);
         if (localObject1 != null)
         {
-          if (!ab.Iy(this.gwx)) {
+          if (!ab.PQ(this.jaK)) {
             break label659;
           }
-          if (((ah)localObject1).gBv() != 1) {
+          if (((ah)localObject1).hxG() != 1) {
             break label649;
           }
           bool = true;
           label412:
           Log.i("MicroMsg.ManageChatroomUI", "isChecked = %s", new Object[] { Boolean.valueOf(bool) });
-          localObject2 = this.gws;
-          if ((((ah)localObject1).gBv() & 0x1) != 1) {
+          localObject2 = this.jaF;
+          if ((((ah)localObject1).hxG() & 0x1) != 1) {
             break label654;
           }
         }
@@ -364,16 +345,16 @@ public class ManageChatroomUI
     for (boolean bool = true;; bool = false)
     {
       ((CheckBoxPreference)localObject2).setChecked(bool);
-      Log.d("MicroMsg.ManageChatroomUI", "mRoomId:%s chatroomstatus:%s", new Object[] { Util.nullAs(this.gwx, "null"), Integer.valueOf(((ah)localObject1).field_chatroomStatus) });
-      if ((!ab.Iy(this.gwx)) && (v.aTU()) && ((((ah)localObject1).field_chatroomStatus & 0x20000) != 131072L) && ((((ah)localObject1).field_chatroomStatus & 0x10000) == 65536L) && (v.aTS()))
+      Log.d("MicroMsg.ManageChatroomUI", "mRoomId:%s chatroomstatus:%s", new Object[] { Util.nullAs(this.jaK, "null"), Integer.valueOf(((ah)localObject1).field_chatroomStatus) });
+      if ((!ab.PQ(this.jaK)) && (v.bcV()) && ((((ah)localObject1).field_chatroomStatus & 0x20000) != 131072L) && ((((ah)localObject1).field_chatroomStatus & 0x10000) == 65536L) && (v.bcT()))
       {
-        this.screen.jdMethod_do("use_wework_manager_room", false);
-        this.gwv = ((NewTipPreference)this.screen.bmg("use_wework_manager_room"));
-        this.gwv.a(this.screen);
-        com.tencent.mm.plugin.newtips.a.exl().h(this.gwv);
-        com.tencent.mm.plugin.newtips.a.g.a(this.gwv);
+        this.screen.dz("use_wework_manager_room", false);
+        this.jaI = ((NewTipPreference)this.screen.byG("use_wework_manager_room"));
+        this.jaI.a(this.screen);
+        com.tencent.mm.plugin.newtips.a.fiO().h(this.jaI);
+        com.tencent.mm.plugin.newtips.a.g.a(this.jaI);
       }
-      this.gws.OZw = false;
+      this.jaF.WsF = false;
       setBackBtn(new ManageChatroomUI.3(this));
       this.screen.notifyDataSetChanged();
       AppMethodBeat.o(12659);
@@ -386,8 +367,8 @@ public class ManageChatroomUI
       break label412;
     }
     label659:
-    Object localObject2 = this.gws;
-    if (((ah)localObject1).gBv() == 2) {}
+    Object localObject2 = this.jaF;
+    if (((ah)localObject1).hxG() == 2) {}
     for (bool = true;; bool = false)
     {
       ((CheckBoxPreference)localObject2).setChecked(bool);
@@ -403,7 +384,7 @@ public class ManageChatroomUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.ManageChatroomUI
  * JD-Core Version:    0.7.0.1
  */

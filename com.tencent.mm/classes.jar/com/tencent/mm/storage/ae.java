@@ -2,11 +2,12 @@ package com.tencent.mm.storage;
 
 import android.database.Cursor;
 import android.os.Looper;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.storage.IAutoDBItem;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 import com.tencent.mm.sdk.storage.MStorageEvent;
-import com.tencent.mm.storagebase.h;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
@@ -16,10 +17,12 @@ public final class ae
 {
   public static final String[] INDEX_CREATE;
   public static final String[] SQL_CREATE;
-  private final MStorageEvent<aa.c, aa.a> NQt;
-  private final long NRt;
-  private AtomicLong NRu;
-  public final h iFy;
+  private final MStorageEvent<aa.c, aa.a> Vep;
+  int Ver;
+  private final long Vfo;
+  private AtomicLong Vfp;
+  public final com.tencent.mm.storagebase.h lvy;
+  private boolean lvz;
   
   static
   {
@@ -29,18 +32,20 @@ public final class ae
     AppMethodBeat.o(124702);
   }
   
-  public ae(h paramh)
+  public ae(com.tencent.mm.storagebase.h paramh)
   {
     super(paramh, z.info, "BizTimeLineSingleMsgInfo", INDEX_CREATE);
     AppMethodBeat.i(124691);
-    this.NQt = new MStorageEvent() {};
-    this.NRt = -50000000L;
-    this.NRu = new AtomicLong(-50000000L);
-    this.iFy = paramh;
+    this.Vep = new MStorageEvent() {};
+    this.Ver = 100;
+    this.lvz = false;
+    this.Vfo = -50000000L;
+    this.Vfp = new AtomicLong(-50000000L);
+    this.lvy = paramh;
     AppMethodBeat.o(124691);
   }
   
-  public static List<z> o(Cursor paramCursor)
+  public static List<z> r(Cursor paramCursor)
   {
     AppMethodBeat.i(124694);
     LinkedList localLinkedList = new LinkedList();
@@ -55,58 +60,77 @@ public final class ae
     return localLinkedList;
   }
   
-  public final boolean B(z paramz)
+  public final boolean F(z paramz)
   {
     AppMethodBeat.i(124692);
     boolean bool = super.insertNotify(paramz, false);
     aa.a locala = new aa.a();
     locala.talker = paramz.field_talker;
-    locala.psm = paramz;
-    locala.NQE = aa.b.NQG;
+    locala.sBt = paramz;
+    locala.VeB = aa.b.VeD;
     a(locala);
+    if (!this.lvz)
+    {
+      this.lvz = true;
+      com.tencent.e.h.ZvG.a(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(207368);
+          ae localae = ae.this;
+          long l = System.currentTimeMillis();
+          int i = localae.getCount();
+          if (i > 2000)
+          {
+            String str = String.format("DELETE FROM %s WHERE %s IN ( SELECT %s FROM %s ORDER BY %s LIMIT %d )", new Object[] { "BizTimeLineSingleMsgInfo", "msgSvrId", "msgSvrId", "BizTimeLineSingleMsgInfo", "createTime", Integer.valueOf(100) });
+            localae.lvy.execSQL("BizTimeLineSingleMsgInfo", str);
+            Log.i("MicroMsg.BizTimeLineSingleMsgStorage", "deleteTooOldData delete cost: %d, count: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(i) });
+          }
+          for (;;)
+          {
+            ae.b(ae.this);
+            AppMethodBeat.o(207368);
+            return;
+            Log.i("MicroMsg.BizTimeLineSingleMsgStorage", "deleteTooOldData count: %d", new Object[] { Integer.valueOf(i) });
+          }
+        }
+      }, 1000L, "BizTimeLineInfoStorageThread");
+    }
     AppMethodBeat.o(124692);
     return bool;
   }
   
-  public final boolean C(z paramz)
+  public final boolean G(z paramz)
   {
     AppMethodBeat.i(124693);
     boolean bool = super.updateNotify(paramz, false, new String[] { "msgSvrId" });
     aa.a locala = new aa.a();
     locala.talker = paramz.field_talker;
-    locala.psm = paramz;
-    locala.NQE = aa.b.NQI;
+    locala.sBt = paramz;
+    locala.VeB = aa.b.VeF;
     a(locala);
     AppMethodBeat.o(124693);
     return bool;
   }
   
-  public final z MM(long paramLong)
-  {
-    AppMethodBeat.i(258700);
-    z localz = R(paramLong, "msgId");
-    AppMethodBeat.o(258700);
-    return localz;
-  }
-  
-  public final void MX(long paramLong)
+  public final void UI(long paramLong)
   {
     AppMethodBeat.i(124700);
     Object localObject = new z();
     ((z)localObject).field_msgId = paramLong;
     super.delete((IAutoDBItem)localObject, false, new String[] { "msgId" });
     localObject = new aa.a();
-    ((aa.a)localObject).NQE = aa.b.NQH;
+    ((aa.a)localObject).VeB = aa.b.VeE;
     a((aa.a)localObject);
     AppMethodBeat.o(124700);
   }
   
-  public final int Ne(long paramLong)
+  public final int UQ(long paramLong)
   {
     int i = 0;
     AppMethodBeat.i(124698);
     Object localObject = "SELECT count(*) FROM BizTimeLineSingleMsgInfo where status != 4 and talkerId = " + paramLong + " ";
-    localObject = this.iFy.rawQuery((String)localObject, null);
+    localObject = this.lvy.rawQuery((String)localObject, null);
     if (((Cursor)localObject).moveToFirst()) {
       i = ((Cursor)localObject).getInt(0);
     }
@@ -115,28 +139,19 @@ public final class ae
     return i;
   }
   
-  public final z R(long paramLong, String paramString)
+  public final z Uw(long paramLong)
   {
-    AppMethodBeat.i(212370);
-    z localz = new z();
-    paramString = this.iFy.query("BizTimeLineSingleMsgInfo", null, paramString + "=?", new String[] { String.valueOf(paramLong) }, null, null, null, 2);
-    if (paramString.moveToFirst())
-    {
-      localz.convertFrom(paramString);
-      paramString.close();
-      AppMethodBeat.o(212370);
-      return localz;
-    }
-    paramString.close();
-    AppMethodBeat.o(212370);
-    return null;
+    AppMethodBeat.i(292874);
+    z localz = ad(paramLong, "msgId");
+    AppMethodBeat.o(292874);
+    return localz;
   }
   
   public final void a(aa.a parama)
   {
     AppMethodBeat.i(124688);
-    if (this.NQt.event(parama)) {
-      this.NQt.doNotify();
+    if (this.Vep.event(parama)) {
+      this.Vep.doNotify();
     }
     AppMethodBeat.o(124688);
   }
@@ -144,18 +159,18 @@ public final class ae
   public final void a(aa.c paramc)
   {
     AppMethodBeat.i(124690);
-    this.NQt.remove(paramc);
+    this.Vep.remove(paramc);
     AppMethodBeat.o(124690);
   }
   
   public final void a(aa.c paramc, Looper paramLooper)
   {
     AppMethodBeat.i(124689);
-    this.NQt.add(paramc, paramLooper);
+    this.Vep.add(paramc, paramLooper);
     AppMethodBeat.o(124689);
   }
   
-  public final boolean aEn(String paramString)
+  public final boolean aOx(String paramString)
   {
     AppMethodBeat.i(124699);
     z localz = new z();
@@ -163,18 +178,35 @@ public final class ae
     boolean bool = super.delete(localz, false, new String[] { "talker" });
     paramString = new aa.a();
     paramString.talker = localz.field_talker;
-    paramString.psm = localz;
-    paramString.NQE = aa.b.NQH;
+    paramString.sBt = localz;
+    paramString.VeB = aa.b.VeE;
     a(paramString);
     AppMethodBeat.o(124699);
     return bool;
   }
   
-  public final int ctM()
+  public final z ad(long paramLong, String paramString)
+  {
+    AppMethodBeat.i(209811);
+    z localz = new z();
+    paramString = this.lvy.query("BizTimeLineSingleMsgInfo", null, paramString + "=?", new String[] { String.valueOf(paramLong) }, null, null, null, 2);
+    if (paramString.moveToFirst())
+    {
+      localz.convertFrom(paramString);
+      paramString.close();
+      AppMethodBeat.o(209811);
+      return localz;
+    }
+    paramString.close();
+    AppMethodBeat.o(209811);
+    return null;
+  }
+  
+  public final int cHo()
   {
     int i = 0;
     AppMethodBeat.i(124697);
-    Cursor localCursor = this.iFy.rawQuery("SELECT count(*) FROM BizTimeLineSingleMsgInfo where status != 4", null);
+    Cursor localCursor = this.lvy.rawQuery("SELECT count(*) FROM BizTimeLineSingleMsgInfo where status != 4", null);
     if (localCursor.moveToFirst()) {
       i = localCursor.getInt(0);
     }
@@ -183,11 +215,11 @@ public final class ae
     return i;
   }
   
-  public final z gAM()
+  public final z hwU()
   {
     z localz = null;
     AppMethodBeat.i(124695);
-    Cursor localCursor = this.iFy.rawQuery("SELECT * FROM BizTimeLineSingleMsgInfo order by createTime DESC limit 1", null);
+    Cursor localCursor = this.lvy.rawQuery("SELECT * FROM BizTimeLineSingleMsgInfo order by createTime DESC limit 1", null);
     if (localCursor.moveToFirst())
     {
       localz = new z();
@@ -198,11 +230,40 @@ public final class ae
     return localz;
   }
   
-  public final z gBn()
+  public final void hxa()
+  {
+    AppMethodBeat.i(209818);
+    com.tencent.e.h.ZvG.a(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(207109);
+        int i = ae.this.getCount();
+        if (i > 0)
+        {
+          Object localObject = ae.this;
+          int j = ((ae)localObject).Ver;
+          ((ae)localObject).Ver = (j - 1);
+          if (j > 0)
+          {
+            Log.i("MicroMsg.BizTimeLineSingleMsgStorage", "deleteTable start");
+            localObject = String.format("DELETE FROM %s WHERE %s IN ( SELECT %s FROM %s ORDER BY %s LIMIT %d )", new Object[] { "BizTimeLineSingleMsgInfo", "msgSvrId", "msgSvrId", "BizTimeLineSingleMsgInfo", "createTime", Integer.valueOf(100) });
+            Log.i("MicroMsg.BizTimeLineSingleMsgStorage", "deleteTable end ret=%b", new Object[] { Boolean.valueOf(ae.a(ae.this).execSQL("BizTimeLineSingleMsgInfo", (String)localObject)) });
+            ae.this.hxa();
+          }
+        }
+        Log.i("MicroMsg.BizTimeLineSingleMsgStorage", "deleteTable count: %d", new Object[] { Integer.valueOf(i) });
+        AppMethodBeat.o(207109);
+      }
+    }, 10L, "BizTimeLineInfoStorageDeleteThread");
+    AppMethodBeat.o(209818);
+  }
+  
+  public final z hxy()
   {
     z localz = null;
     AppMethodBeat.i(124696);
-    Cursor localCursor = this.iFy.rawQuery("SELECT * FROM BizTimeLineSingleMsgInfo where status != 4 order by createTime DESC limit 1", null);
+    Cursor localCursor = this.lvy.rawQuery("SELECT * FROM BizTimeLineSingleMsgInfo where status != 4 order by createTime DESC limit 1", null);
     if (localCursor.moveToFirst())
     {
       localz = new z();
@@ -213,15 +274,15 @@ public final class ae
     return localz;
   }
   
-  public final long gBo()
+  public final long hxz()
   {
     z localz = null;
     try
     {
-      AppMethodBeat.i(212371);
-      if (this.NRu.longValue() == -50000000L)
+      AppMethodBeat.i(209819);
+      if (this.Vfp.longValue() == -50000000L)
       {
-        Cursor localCursor = this.iFy.rawQuery("SELECT * FROM BizTimeLineSingleMsgInfo where type=10100 or type=318767153 order by createTime DESC limit 1", null);
+        Cursor localCursor = this.lvy.rawQuery("SELECT * FROM BizTimeLineSingleMsgInfo where type=10100 or type=318767153 order by createTime DESC limit 1", null);
         if (localCursor.moveToFirst())
         {
           localz = new z();
@@ -229,11 +290,11 @@ public final class ae
         }
         localCursor.close();
         if (localz != null) {
-          this.NRu.set(localz.field_msgId);
+          this.Vfp.set(localz.field_msgId);
         }
       }
-      long l = this.NRu.incrementAndGet();
-      AppMethodBeat.o(212371);
+      long l = this.Vfp.incrementAndGet();
+      AppMethodBeat.o(209819);
       return l;
     }
     finally {}
@@ -241,7 +302,7 @@ public final class ae
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.storage.ae
  * JD-Core Version:    0.7.0.1
  */

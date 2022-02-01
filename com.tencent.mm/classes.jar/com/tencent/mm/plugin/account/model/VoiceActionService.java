@@ -11,6 +11,7 @@ import android.provider.ContactsContract.DataUsageFeedback;
 import com.google.android.search.verification.client.SearchActionVerificationClientService;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.ab;
+import com.tencent.mm.plugin.account.friend.a.a;
 import com.tencent.mm.plugin.messenger.a.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -29,9 +30,9 @@ public class VoiceActionService
     }
     Object localObject = paramIntent.getStringExtra("com.google.android.voicesearch.extra.RECIPIENT_CONTACT_CHAT_ID");
     String str1 = paramIntent.getStringExtra("android.intent.extra.TEXT");
-    String str2 = com.tencent.mm.b.g.getMessageDigest(com.tencent.mm.pluginsdk.b.Ts((String)localObject).getBytes());
-    str2 = com.tencent.mm.plugin.account.a.getAddrUploadStg().SU(str2).getUsername();
-    com.tencent.mm.plugin.messenger.a.g.eir().ad(str2, str1, ab.JG(str2));
+    String str2 = com.tencent.mm.b.g.getMessageDigest(com.tencent.mm.pluginsdk.b.aaY((String)localObject).getBytes());
+    str2 = com.tencent.mm.plugin.account.b.getAddrUploadStg().aaA(str2).getUsername();
+    com.tencent.mm.plugin.messenger.a.g.eRW().ai(str2, str1, ab.QZ(str2));
     for (;;)
     {
       try
@@ -60,7 +61,7 @@ public class VoiceActionService
       return true;
       paramIntent = "";
       continue;
-      if (!com.tencent.mm.pluginsdk.permission.b.n(this, "android.permission.READ_CONTACTS"))
+      if (!com.tencent.mm.pluginsdk.permission.b.o(this, "android.permission.READ_CONTACTS"))
       {
         Log.e("MicroMsg.VoiceActionService", "no contacts permission");
       }
@@ -94,7 +95,7 @@ public class VoiceActionService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.account.model.VoiceActionService
  * JD-Core Version:    0.7.0.1
  */

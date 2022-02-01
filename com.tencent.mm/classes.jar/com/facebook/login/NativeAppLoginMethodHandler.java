@@ -4,7 +4,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcel;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import com.facebook.AccessTokenSource;
 import com.facebook.FacebookException;
 import com.facebook.internal.ServerProtocol;
@@ -143,7 +143,7 @@ abstract class NativeAppLoginMethodHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.login.NativeAppLoginMethodHandler
  * JD-Core Version:    0.7.0.1
  */

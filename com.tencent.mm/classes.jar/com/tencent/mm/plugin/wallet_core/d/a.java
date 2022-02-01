@@ -25,7 +25,7 @@ public final class a
     this.db = paramISQLiteDatabase;
   }
   
-  public final boolean bnU()
+  public final boolean byd()
   {
     AppMethodBeat.i(70580);
     boolean bool = this.db.execSQL("LoanEntryInfo", "delete from LoanEntryInfo");
@@ -33,7 +33,7 @@ public final class a
     return bool;
   }
   
-  public final n fSm()
+  public final n gKR()
   {
     n localn = null;
     AppMethodBeat.i(70579);

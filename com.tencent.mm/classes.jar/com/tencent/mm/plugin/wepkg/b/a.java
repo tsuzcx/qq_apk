@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.wepkg.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.hm;
+import com.tencent.mm.f.c.ht;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends hm
+  extends ht
 {
-  public static final IAutoDBItem.MAutoDBInfo iBg;
+  public static final IAutoDBItem.MAutoDBInfo lqK;
   
   static
   {
@@ -52,18 +52,18 @@ public final class a
     localStringBuilder.append(" downloadNetType INTEGER");
     localMAutoDBInfo.columns[8] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
-    iBg = localMAutoDBInfo;
+    lqK = localMAutoDBInfo;
     AppMethodBeat.o(110557);
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    return iBg;
+    return lqK;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.b.a
  * JD-Core Version:    0.7.0.1
  */

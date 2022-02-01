@@ -86,8 +86,8 @@ public class MyKeyboardWindow
       {
         AppMethodBeat.i(130946);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tenpay/android/wechat/MyKeyboardWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tenpay/android/wechat/MyKeyboardWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (MyKeyboardWindow.this.mInputEditText == null)
         {
           a.a(this, "com/tenpay/android/wechat/MyKeyboardWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -180,7 +180,7 @@ public class MyKeyboardWindow
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(256167);
+    AppMethodBeat.i(204856);
     try
     {
       if (this.mOnTouchListener != null) {
@@ -188,7 +188,7 @@ public class MyKeyboardWindow
       }
       label24:
       boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(256167);
+      AppMethodBeat.o(204856);
       return bool;
     }
     catch (Throwable localThrowable)

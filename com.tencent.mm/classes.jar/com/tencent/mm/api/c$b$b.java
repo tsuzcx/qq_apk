@@ -8,11 +8,11 @@ import org.json.JSONObject;
 
 public final class c$b$b
 {
-  public int dif;
-  public int dig;
-  public int dih;
+  public int eZM;
+  public int eZN;
+  public int eZO;
   
-  public static b fr(String paramString)
+  public static b gc(String paramString)
   {
     AppMethodBeat.i(116357);
     Log.i("MicroMsg.BizInfo", "HardwareBizInfo = ".concat(String.valueOf(paramString)));
@@ -25,9 +25,9 @@ public final class c$b$b
     try
     {
       paramString = new JSONObject(paramString);
-      localb.dif = paramString.optInt("hardware_flag");
-      localb.dig = paramString.optInt("connect_status_display_mode");
-      localb.dih = paramString.optInt("special_internal_brand_type");
+      localb.eZM = paramString.optInt("hardware_flag");
+      localb.eZN = paramString.optInt("connect_status_display_mode");
+      localb.eZO = paramString.optInt("special_internal_brand_type");
       AppMethodBeat.o(116357);
       return localb;
     }
@@ -40,9 +40,9 @@ public final class c$b$b
     }
   }
   
-  public final boolean Vi()
+  public final boolean ZA()
   {
-    return (this.dif & 0x1) > 0;
+    return (this.eZM & 0x1) > 0;
   }
 }
 

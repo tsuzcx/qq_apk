@@ -11,29 +11,30 @@ import android.graphics.PathEffect;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.plugin.recordvideo.b.b;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorFrameView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "mBoundaryColor", "mMaskColor", "mPaint", "Landroid/graphics/Paint;", "mPath", "Landroid/graphics/Path;", "mPosition", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorFramePosition;", "init", "", "onDraw", "canvas", "Landroid/graphics/Canvas;", "setMaskColor", "maskColor", "setPosition", "position", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorFrameView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "mBoundaryColor", "mMaskColor", "mPaint", "Landroid/graphics/Paint;", "mPath", "Landroid/graphics/Path;", "mPosition", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorFramePosition;", "init", "", "onDraw", "canvas", "Landroid/graphics/Canvas;", "setMaskColor", "maskColor", "setPosition", "position", "plugin-recordvideo_release"})
 public final class EditorFrameView
   extends View
 {
-  private int CcE;
-  private int CcF;
-  private c CcG;
+  private int HYT;
+  private int HYU;
+  private c HYV;
+  private Path auD;
   private Paint mPaint;
-  private Path xT;
   
   public EditorFrameView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(75980);
-    this.CcE = -1;
-    this.CcF = -1;
-    this.CcG = c.Ccz;
+    this.HYT = -1;
+    this.HYU = -1;
+    this.HYV = c.HYO;
     this.mPaint = new Paint();
-    this.xT = new Path();
+    this.auD = new Path();
     init();
     AppMethodBeat.o(75980);
   }
@@ -42,11 +43,11 @@ public final class EditorFrameView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(75981);
-    this.CcE = -1;
-    this.CcF = -1;
-    this.CcG = c.Ccz;
+    this.HYT = -1;
+    this.HYU = -1;
+    this.HYV = c.HYO;
     this.mPaint = new Paint();
-    this.xT = new Path();
+    this.auD = new Path();
     init();
     AppMethodBeat.o(75981);
   }
@@ -55,11 +56,11 @@ public final class EditorFrameView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(75982);
-    this.CcE = -1;
-    this.CcF = -1;
-    this.CcG = c.Ccz;
+    this.HYT = -1;
+    this.HYU = -1;
+    this.HYV = c.HYO;
     this.mPaint = new Paint();
-    this.xT = new Path();
+    this.auD = new Path();
     init();
     AppMethodBeat.o(75982);
   }
@@ -68,13 +69,13 @@ public final class EditorFrameView
   {
     AppMethodBeat.i(75977);
     Context localContext = getContext();
-    p.g(localContext, "context");
-    this.CcE = localContext.getResources().getColor(2131101197);
+    p.j(localContext, "context");
+    this.HYT = localContext.getResources().getColor(b.b.story_editor_frame_mask_color);
     int i = a.fromDPToPix(getContext(), 1);
     this.mPaint.setStyle(Paint.Style.STROKE);
     this.mPaint.setAntiAlias(true);
     this.mPaint.setStrokeWidth(2.0F * i);
-    this.mPaint.setColor(this.CcF);
+    this.mPaint.setColor(this.HYU);
     this.mPaint.setPathEffect((PathEffect)new DashPathEffect(new float[] { i * 4.0F, i * 4.0F }, 0.0F));
     AppMethodBeat.o(75977);
   }
@@ -87,9 +88,9 @@ public final class EditorFrameView
       paramCanvas.save();
     }
     if (paramCanvas != null) {
-      paramCanvas.drawColor(this.CcE);
+      paramCanvas.drawColor(this.HYT);
     }
-    c localc = this.CcG;
+    c localc = this.HYV;
     switch (d.$EnumSwitchMapping$0[localc.ordinal()])
     {
     }
@@ -98,28 +99,28 @@ public final class EditorFrameView
       paramCanvas.restore();
       AppMethodBeat.o(75979);
       return;
-      this.xT.moveTo(getWidth(), 0.0F);
-      this.xT.lineTo(getWidth(), getHeight());
+      this.auD.moveTo(getWidth(), 0.0F);
+      this.auD.lineTo(getWidth(), getHeight());
       if (paramCanvas != null)
       {
-        paramCanvas.drawPath(this.xT, this.mPaint);
+        paramCanvas.drawPath(this.auD, this.mPaint);
         continue;
-        this.xT.moveTo(0.0F, getHeight());
-        this.xT.lineTo(getWidth(), getHeight());
+        this.auD.moveTo(0.0F, getHeight());
+        this.auD.lineTo(getWidth(), getHeight());
         if (paramCanvas != null)
         {
-          paramCanvas.drawPath(this.xT, this.mPaint);
+          paramCanvas.drawPath(this.auD, this.mPaint);
           continue;
-          this.xT.moveTo(0.0F, 0.0F);
-          this.xT.lineTo(0.0F, getHeight());
+          this.auD.moveTo(0.0F, 0.0F);
+          this.auD.lineTo(0.0F, getHeight());
           if (paramCanvas != null)
           {
-            paramCanvas.drawPath(this.xT, this.mPaint);
+            paramCanvas.drawPath(this.auD, this.mPaint);
             continue;
-            this.xT.moveTo(0.0F, 0.0F);
-            this.xT.lineTo(getWidth(), 0.0F);
+            this.auD.moveTo(0.0F, 0.0F);
+            this.auD.lineTo(getWidth(), 0.0F);
             if (paramCanvas != null) {
-              paramCanvas.drawPath(this.xT, this.mPaint);
+              paramCanvas.drawPath(this.auD, this.mPaint);
             }
           }
         }
@@ -130,20 +131,20 @@ public final class EditorFrameView
   
   public final void setMaskColor(int paramInt)
   {
-    this.CcE = paramInt;
+    this.HYT = paramInt;
   }
   
   public final void setPosition(c paramc)
   {
     AppMethodBeat.i(75978);
-    p.h(paramc, "position");
-    this.CcG = paramc;
+    p.k(paramc, "position");
+    this.HYV = paramc;
     AppMethodBeat.o(75978);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.EditorFrameView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/jyf" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/jy7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <RelativeLayout android:id="@id/jye" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb">
+        <ImageView android:id="@id/jy6" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:id="@id/jyc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:singleLine="true" android:layout_below="@id/jy6" android:layout_centerHorizontal="true" android:layout_marginStart="@dimen/ce" android:layout_marginEnd="@dimen/ce" />
+        <org.libpag.PAGView android:id="@id/jyg" android:visibility="gone" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:layout_marginTop="2.0dip" android:layout_alignTop="@id/jyc" android:layout_marginStart="-20.0dip" android:layout_toEndOf="@id/jyc" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:id="@id/kxn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:layout_marginBottom="@dimen/ct" android:singleLine="true" android:layout_below="@id/jyc" android:layout_centerHorizontal="true" android:layout_marginStart="@dimen/ce" android:layout_marginEnd="@dimen/ce" />
+    </RelativeLayout>
+</RelativeLayout>

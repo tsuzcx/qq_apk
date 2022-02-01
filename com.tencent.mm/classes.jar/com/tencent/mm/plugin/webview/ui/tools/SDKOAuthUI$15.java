@@ -16,12 +16,12 @@ final class SDKOAuthUI$15
   {
     AppMethodBeat.i(79747);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/webview/ui/tools/SDKOAuthUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    paramView = new Intent(this.Jfk, CreateAvatarUI.class);
-    paramView.putExtra("0", SDKOAuthUI.a(this.Jfk));
-    paramView.putExtra("default_fileid", SDKOAuthUI.m(this.Jfk));
-    this.Jfk.startActivityForResult(paramView, 6);
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/webview/ui/tools/SDKOAuthUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    paramView = new Intent(this.Qcn, CreateAvatarUI.class);
+    paramView.putExtra("0", SDKOAuthUI.a(this.Qcn));
+    paramView.putExtra("default_fileid", SDKOAuthUI.m(this.Qcn));
+    this.Qcn.startActivityForResult(paramView, 6);
     a.a(this, "com/tencent/mm/plugin/webview/ui/tools/SDKOAuthUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(79747);
   }

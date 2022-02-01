@@ -11,7 +11,7 @@ public class SetTextAlignActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetTextAlignActionArg> CREATOR;
-  public String kZR;
+  public String nUc;
   
   static
   {
@@ -51,7 +51,7 @@ public class SetTextAlignActionArg
       return false;
     }
     paramObject = (SetTextAlignActionArg)paramObject;
-    boolean bool = Objects.equals(this.kZR, paramObject.kZR);
+    boolean bool = Objects.equals(this.nUc, paramObject.nUc);
     AppMethodBeat.o(145244);
     return bool;
   }
@@ -59,7 +59,7 @@ public class SetTextAlignActionArg
   public int hashCode()
   {
     AppMethodBeat.i(145245);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.kZR });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.nUc });
     AppMethodBeat.o(145245);
     return i;
   }
@@ -68,7 +68,7 @@ public class SetTextAlignActionArg
   {
     AppMethodBeat.i(145241);
     super.i(paramParcel);
-    this.kZR = paramParcel.readString();
+    this.nUc = paramParcel.readString();
     AppMethodBeat.o(145241);
   }
   
@@ -76,7 +76,7 @@ public class SetTextAlignActionArg
   {
     AppMethodBeat.i(145242);
     super.parse(paramJSONObject);
-    this.kZR = paramJSONObject.optJSONArray("data").optString(0);
+    this.nUc = paramJSONObject.optJSONArray("data").optString(0);
     AppMethodBeat.o(145242);
   }
   
@@ -84,13 +84,13 @@ public class SetTextAlignActionArg
   {
     AppMethodBeat.i(145243);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.kZR);
+    paramParcel.writeString(this.nUc);
     AppMethodBeat.o(145243);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetTextAlignActionArg
  * JD-Core Version:    0.7.0.1
  */

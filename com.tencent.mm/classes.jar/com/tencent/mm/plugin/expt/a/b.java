@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.expt.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.h.a;
 import com.tencent.mm.plugin.expt.h.d;
-import com.tencent.mm.protocal.protobuf.aki;
+import com.tencent.mm.protocal.protobuf.all;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -13,37 +13,37 @@ import java.util.List;
 public final class b
 {
   static String TAG = "MicroMsg.ExptIdMMKV";
-  private static b rNJ;
+  private static b vtt;
   private String name = null;
   
-  public static b cMz()
+  public static b dbn()
   {
-    AppMethodBeat.i(220253);
-    if (rNJ == null) {
-      rNJ = new b();
+    AppMethodBeat.i(250831);
+    if (vtt == null) {
+      vtt = new b();
     }
-    b localb = rNJ;
-    AppMethodBeat.o(220253);
+    b localb = vtt;
+    AppMethodBeat.o(250831);
     return localb;
   }
   
   private String info()
   {
-    AppMethodBeat.i(220257);
+    AppMethodBeat.i(250839);
     String str = hashCode();
-    AppMethodBeat.o(220257);
+    AppMethodBeat.o(250839);
     return str;
   }
   
-  public final MultiProcessMMKV aTI()
+  public final MultiProcessMMKV bcJ()
   {
-    AppMethodBeat.i(220254);
-    d.cRY();
+    AppMethodBeat.i(250833);
+    d.dgX();
     int i = d.getUin();
     if (i == 0)
     {
       Log.e(TAG, "uin err [%d]", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(220254);
+      AppMethodBeat.o(250833);
       return null;
     }
     Object localObject = i + "_WxExptIdmmkv";
@@ -53,15 +53,15 @@ public final class b
       this.name = ((String)localObject);
     }
     localObject = MultiProcessMMKV.getMMKV(this.name);
-    AppMethodBeat.o(220254);
+    AppMethodBeat.o(250833);
     return localObject;
   }
   
-  public final List<aki> cMA()
+  public final List<all> dbo()
   {
-    AppMethodBeat.i(220255);
+    AppMethodBeat.i(250836);
     LinkedList localLinkedList = new LinkedList();
-    MultiProcessMMKV localMultiProcessMMKV = aTI();
+    MultiProcessMMKV localMultiProcessMMKV = bcJ();
     if (localMultiProcessMMKV != null)
     {
       String[] arrayOfString = localMultiProcessMMKV.allKeys();
@@ -71,26 +71,26 @@ public final class b
         int i = 0;
         while (i < arrayOfString.length)
         {
-          aki localaki = new aki();
-          a locala = com.tencent.mm.plugin.expt.h.b.cRI().HA(Util.getInt(arrayOfString[i], 0));
+          all localall = new all();
+          a locala = com.tencent.mm.plugin.expt.h.b.dgG().Lk(Util.getInt(arrayOfString[i], 0));
           if (locala != null)
           {
-            localaki.Ltq = locala.sLf;
-            localaki.Ltr = locala.adT;
-            localaki.Lts = locala.sLg;
-            localaki.count = localMultiProcessMMKV.decodeInt(arrayOfString[i]);
-            localLinkedList.add(localaki);
+            localall.SvO = locala.wrb;
+            localall.SvP = locala.ka;
+            localall.SvQ = locala.wrc;
+            localall.count = localMultiProcessMMKV.decodeInt(arrayOfString[i]);
+            localLinkedList.add(localall);
           }
           i += 1;
         }
       }
     }
-    AppMethodBeat.o(220255);
+    AppMethodBeat.o(250836);
     return localLinkedList;
   }
   
   /* Error */
-  final void cMB()
+  final void dbp()
   {
     // Byte code:
     //   0: aload_0
@@ -98,7 +98,7 @@ public final class b
     //   2: ldc 171
     //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: invokevirtual 110	com/tencent/mm/plugin/expt/a/b:aTI	()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;
+    //   8: invokevirtual 110	com/tencent/mm/plugin/expt/a/b:bcJ	()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;
     //   11: astore_1
     //   12: aload_1
     //   13: ifnonnull +11 -> 24
@@ -133,7 +133,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.a.b
  * JD-Core Version:    0.7.0.1
  */

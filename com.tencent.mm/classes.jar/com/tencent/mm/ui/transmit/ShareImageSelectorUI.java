@@ -10,7 +10,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
@@ -25,10 +24,18 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cz;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.k;
+import com.tencent.mm.R.l;
+import com.tencent.mm.f.a.dd;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.platformtools.u;
+import com.tencent.mm.pluginsdk.model.j;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
@@ -40,28 +47,29 @@ import com.tencent.mm.ui.MMImageView;
 import com.tencent.mm.ui.base.h.d;
 import com.tencent.mm.ui.chatting.ChattingUI;
 import com.tencent.mm.ui.contact.SelectContactUI;
+import com.tencent.mm.ui.contact.w;
 import java.util.ArrayList;
 
 public class ShareImageSelectorUI
   extends MMActivity
   implements AdapterView.OnItemClickListener
 {
-  private static int QAo = 1;
-  private int PYv;
-  private a QAp;
-  private Dialog QAq;
-  private View.OnClickListener QAr;
-  private String QxF;
-  private ImageView cIN;
+  private static int XYN = 1;
+  private String BrW;
+  private a XYO;
+  private Dialog XYP;
+  private View.OnClickListener XYQ;
+  private int Xvq;
+  private ImageView cJr;
   private MMHandler mHandler;
   private ListView mListView;
-  private View rhx;
+  private View uKG;
   
   public ShareImageSelectorUI()
   {
     AppMethodBeat.i(39464);
-    this.PYv = 2;
-    this.QAr = new ShareImageSelectorUI.1(this);
+    this.Xvq = 2;
+    this.XYQ = new ShareImageSelectorUI.1(this);
     this.mHandler = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
@@ -74,10 +82,10 @@ public class ShareImageSelectorUI
     AppMethodBeat.o(39464);
   }
   
-  private void edw()
+  private void ehJ()
   {
     AppMethodBeat.i(39470);
-    com.tencent.mm.ui.base.h.a(getContext(), getString(2131758224), getString(2131758226), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    com.tencent.mm.ui.base.h.a(getContext(), getString(R.l.eAE), getString(R.l.eAG), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -90,7 +98,7 @@ public class ShareImageSelectorUI
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(39458);
-        if (ShareImageSelectorUI.Tp() == 1) {
+        if (ShareImageSelectorUI.Yx() == 1) {
           ShareImageSelectorUI.c(ShareImageSelectorUI.this);
         }
         AppMethodBeat.o(39458);
@@ -99,22 +107,22 @@ public class ShareImageSelectorUI
     AppMethodBeat.o(39470);
   }
   
-  private void gYs()
+  private void hZf()
   {
     AppMethodBeat.i(39471);
-    if ((this.QAq != null) && (this.QAq.isShowing()))
+    if ((this.XYP != null) && (this.XYP.isShowing()))
     {
       AppMethodBeat.o(39471);
       return;
     }
-    String str1 = getString(2131758228);
-    String str2 = getString(2131758229);
-    String str3 = getString(2131758227);
+    String str1 = getString(R.l.eAI);
+    String str2 = getString(R.l.eAJ);
+    String str3 = getString(R.l.eAH);
     AppCompatActivity localAppCompatActivity = getContext();
-    String str4 = getString(2131763030);
+    String str4 = getString(R.l.eLT);
     h.d local6 = new h.d()
     {
-      public final void oj(int paramAnonymousInt)
+      public final void qy(int paramAnonymousInt)
       {
         AppMethodBeat.i(39459);
         switch (paramAnonymousInt)
@@ -143,43 +151,43 @@ public class ShareImageSelectorUI
         AppMethodBeat.o(39460);
       }
     };
-    this.QAq = com.tencent.mm.ui.base.h.c(localAppCompatActivity, str4, new String[] { str1, str2, str3 }, null, local6);
+    this.XYP = com.tencent.mm.ui.base.h.c(localAppCompatActivity, str4, new String[] { str1, str2, str3 }, null, local6);
     AppMethodBeat.o(39471);
   }
   
-  private void gYt()
+  private void hZg()
   {
     AppMethodBeat.i(39472);
     Intent localIntent = new Intent(this, SelectContactUI.class);
-    localIntent.putExtra("list_attr", com.tencent.mm.ui.contact.u.PWZ);
-    localIntent.putExtra("titile", getString(2131755264));
+    localIntent.putExtra("list_attr", w.XtR);
+    localIntent.putExtra("titile", getString(R.l.enT));
     localIntent.putExtra("list_type", 11);
     localIntent.putExtra("shareImage", true);
-    localIntent.putExtra("shareImagePath", this.QxF);
+    localIntent.putExtra("shareImagePath", this.BrW);
     startActivityForResult(localIntent, 1001);
     AppMethodBeat.o(39472);
   }
   
-  private void gYu()
+  private void hZh()
   {
     AppMethodBeat.i(39473);
     Intent localIntent = new Intent();
     localIntent.putExtra("Ksnsupload_type", 0);
-    localIntent.putExtra("sns_kemdia_path", this.QxF);
+    localIntent.putExtra("sns_kemdia_path", this.BrW);
     localIntent.putExtra("need_result", true);
-    com.tencent.mm.br.c.b(getContext(), "sns", ".ui.SnsUploadUI", localIntent, 1002);
+    com.tencent.mm.by.c.b(getContext(), "sns", ".ui.SnsUploadUI", localIntent, 1002);
     AppMethodBeat.o(39473);
   }
   
-  private void gYv()
+  private void hZi()
   {
     AppMethodBeat.i(39474);
-    cz localcz = new cz();
-    com.tencent.mm.pluginsdk.model.h.a(localcz, 6, this.QxF);
-    localcz.dFZ.activity = this;
-    localcz.dFZ.dGf = 52;
-    EventCenter.instance.publish(localcz);
-    com.tencent.mm.plugin.report.service.h.CyF.a(11048, new Object[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0) });
+    dd localdd = new dd();
+    j.a(localdd, 6, this.BrW);
+    localdd.fyI.activity = this;
+    localdd.fyI.fyP = 52;
+    EventCenter.instance.publish(localdd);
+    com.tencent.mm.plugin.report.service.h.IzE.a(11048, new Object[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0) });
     if (this.mHandler != null) {
       this.mHandler.sendEmptyMessageDelayed(0, 800L);
     }
@@ -193,7 +201,7 @@ public class ShareImageSelectorUI
   
   public int getLayoutId()
   {
-    return 2131496297;
+    return R.i.elf;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -217,10 +225,10 @@ public class ShareImageSelectorUI
         {
           paramIntent = new Intent(this, ChattingUI.class);
           paramIntent.putExtra("Chat_User", (String)localArrayList.get(0));
-          paramIntent = new com.tencent.mm.hellhoundlib.b.a().bl(paramIntent);
-          com.tencent.mm.hellhoundlib.a.a.a(this, paramIntent.axQ(), "com/tencent/mm/ui/transmit/ShareImageSelectorUI", "onActivityResult", "(IILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          startActivity((Intent)paramIntent.pG(0));
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/transmit/ShareImageSelectorUI", "onActivityResult", "(IILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramIntent = new com.tencent.mm.hellhoundlib.b.a().bm(paramIntent);
+          com.tencent.mm.hellhoundlib.a.a.b(this, paramIntent.aFh(), "com/tencent/mm/ui/transmit/ShareImageSelectorUI", "onActivityResult", "(IILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          startActivity((Intent)paramIntent.sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/ui/transmit/ShareImageSelectorUI", "onActivityResult", "(IILandroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
         finish();
         AppMethodBeat.o(39468);
@@ -232,7 +240,7 @@ public class ShareImageSelectorUI
     }
     if (paramInt2 == -1)
     {
-      Toast.makeText(getContext(), 2131757788, 0).show();
+      Toast.makeText(getContext(), R.l.confirm_dialog_sent, 0).show();
       finish();
       AppMethodBeat.o(39468);
       return;
@@ -244,7 +252,7 @@ public class ShareImageSelectorUI
   public void onBackPressed()
   {
     AppMethodBeat.i(39469);
-    edw();
+    ehJ();
     AppMethodBeat.o(39469);
   }
   
@@ -252,16 +260,16 @@ public class ShareImageSelectorUI
   {
     AppMethodBeat.i(39465);
     super.onCreate(paramBundle);
-    bg.aVF();
-    paramBundle = com.tencent.mm.model.c.azQ().get(229635, null);
+    bh.beI();
+    paramBundle = com.tencent.mm.model.c.aHp().b(229635, null);
     if ((paramBundle instanceof Integer))
     {
       i = ((Integer)paramBundle).intValue();
       if ((i == 0) || (i == 1)) {
-        QAo = i;
+        XYN = i;
       }
     }
-    setMMTitle(2131763030);
+    setMMTitle(R.l.eLT);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -272,33 +280,33 @@ public class ShareImageSelectorUI
         return false;
       }
     });
-    this.PYv = getIntent().getIntExtra("Select_Conv_Type", 2);
-    this.QxF = getIntent().getStringExtra("intent_extra_image_path");
-    this.rhx = findViewById(2131304318);
-    this.cIN = ((ImageView)findViewById(2131302526));
-    this.cIN.setOnClickListener(this.QAr);
-    this.mListView = ((ListView)findViewById(2131303226));
-    this.QAp = new a();
-    this.mListView.setAdapter(this.QAp);
+    this.Xvq = getIntent().getIntExtra("Select_Conv_Type", 2);
+    this.BrW = getIntent().getStringExtra("intent_extra_image_path");
+    this.uKG = findViewById(R.h.dLQ);
+    this.cJr = ((ImageView)findViewById(R.h.image));
+    this.cJr.setOnClickListener(this.XYQ);
+    this.mListView = ((ListView)findViewById(R.h.list));
+    this.XYO = new a();
+    this.mListView.setAdapter(this.XYO);
     this.mListView.setOnItemClickListener(this);
-    Log.d("MicroMsg.ShareImageSelectorUI", "mSelectType:%s ImagePath:%s", new Object[] { this.PYv, this.QxF });
-    if (QAo == 1)
+    Log.d("MicroMsg.ShareImageSelectorUI", "mSelectType:%s ImagePath:%s", new Object[] { this.Xvq, this.BrW });
+    if (XYN == 1)
     {
       setTitleVisibility(8);
       this.mListView.setVisibility(8);
-      this.cIN.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
-      this.cIN.setPadding(0, 0, 0, 0);
-      this.cIN.setOnClickListener(null);
-      this.rhx.setBackgroundColor(getResources().getColor(2131100231));
-      gYs();
+      this.cJr.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
+      this.cJr.setPadding(0, 0, 0, 0);
+      this.cJr.setOnClickListener(null);
+      this.uKG.setBackgroundColor(getResources().getColor(R.e.dark_bg_color));
+      hZf();
     }
     long l = System.currentTimeMillis();
-    paramBundle = com.tencent.mm.platformtools.u.Sq(this.QxF);
-    int i = BackwardSupportUtil.ExifHelper.getExifOrientation(this.QxF);
+    paramBundle = u.ZS(this.BrW);
+    int i = BackwardSupportUtil.ExifHelper.getExifOrientation(this.BrW);
     Log.d("MicroMsg.ShareImageSelectorUI", "cpan [onCreate]degree:%d", new Object[] { Integer.valueOf(i) });
     paramBundle = BitmapUtil.rotate(paramBundle, i);
     if ((paramBundle != null) && (!paramBundle.isRecycled())) {
-      this.cIN.setImageBitmap(paramBundle);
+      this.cJr.setImageBitmap(paramBundle);
     }
     Log.d("MicroMsg.ShareImageSelectorUI", "cpan[onCreate] Read Bitmap Time:%s", new Object[] { System.currentTimeMillis() - l + "'" });
     AppMethodBeat.o(39465);
@@ -308,11 +316,11 @@ public class ShareImageSelectorUI
   {
     AppMethodBeat.i(39467);
     b localb = new b();
-    localb.bm(paramAdapterView);
-    localb.bm(paramView);
-    localb.pH(paramInt);
-    localb.zo(paramLong);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/transmit/ShareImageSelectorUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
+    localb.bn(paramAdapterView);
+    localb.bn(paramView);
+    localb.sg(paramInt);
+    localb.Fs(paramLong);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/transmit/ShareImageSelectorUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
     switch (paramInt)
     {
     default: 
@@ -323,11 +331,11 @@ public class ShareImageSelectorUI
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/transmit/ShareImageSelectorUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
       AppMethodBeat.o(39467);
       return;
-      gYt();
+      hZg();
       continue;
-      gYu();
+      hZh();
       continue;
-      gYv();
+      hZi();
     }
   }
   
@@ -335,8 +343,8 @@ public class ShareImageSelectorUI
   {
     AppMethodBeat.i(39466);
     super.onResume();
-    if ((QAo == 1) && ((this.QAq == null) || (!this.QAq.isShowing()))) {
-      gYs();
+    if ((XYN == 1) && ((this.XYP == null) || (!this.XYP.isShowing()))) {
+      hZf();
     }
     AppMethodBeat.o(39466);
   }
@@ -350,12 +358,12 @@ public class ShareImageSelectorUI
   final class a
     extends BaseAdapter
   {
-    public a[] QAt;
+    public a[] XYS;
     
     a()
     {
       AppMethodBeat.i(39461);
-      this.QAt = new a[] { new a(2131758228, 2131691477), new a(2131758229, 2131690222), new a(2131758227, 2131691131) };
+      this.XYS = new a[] { new a(R.l.eAI, R.k.share_to_friend_icon), new a(R.l.eAJ, R.k.find_more_friend_photograph_icon), new a(R.l.eAH, R.k.more_my_favorite) };
       AppMethodBeat.o(39461);
     }
     
@@ -373,15 +381,15 @@ public class ShareImageSelectorUI
     {
       AppMethodBeat.i(39462);
       if ((paramView == null) || (paramView.getTag() == null)) {
-        paramView = LayoutInflater.from(ShareImageSelectorUI.this.getContext()).inflate(2131496298, null);
+        paramView = LayoutInflater.from(ShareImageSelectorUI.this.getContext()).inflate(R.i.elg, null);
       }
       for (paramViewGroup = new ShareImageSelectorUI.b(ShareImageSelectorUI.this, paramView);; paramViewGroup = (ShareImageSelectorUI.b)paramView.getTag())
       {
-        a locala = this.QAt[paramInt];
+        a locala = this.XYS[paramInt];
         if (locala != null)
         {
-          paramViewGroup.QAx.setText(locala.QAu);
-          paramViewGroup.thK.setImageResource(locala.QAv);
+          paramViewGroup.XYW.setText(locala.XYT);
+          paramViewGroup.wOb.setImageResource(locala.XYU);
         }
         AppMethodBeat.o(39462);
         return paramView;
@@ -390,34 +398,34 @@ public class ShareImageSelectorUI
     
     final class a
     {
-      int QAu;
-      int QAv;
+      int XYT;
+      int XYU;
       
       public a(int paramInt1, int paramInt2)
       {
-        this.QAu = paramInt1;
-        this.QAv = paramInt2;
+        this.XYT = paramInt1;
+        this.XYU = paramInt2;
       }
     }
   }
   
   final class b
   {
-    TextView QAx;
-    MMImageView thK;
+    TextView XYW;
+    MMImageView wOb;
     
     public b(View paramView)
     {
       AppMethodBeat.i(39463);
-      this.thK = ((MMImageView)paramView.findViewById(2131302812));
-      this.QAx = ((TextView)paramView.findViewById(2131302867));
+      this.wOb = ((MMImageView)paramView.findViewById(R.h.item_icon));
+      this.XYW = ((TextView)paramView.findViewById(R.h.dKo));
       AppMethodBeat.o(39463);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.ShareImageSelectorUI
  * JD-Core Version:    0.7.0.1
  */

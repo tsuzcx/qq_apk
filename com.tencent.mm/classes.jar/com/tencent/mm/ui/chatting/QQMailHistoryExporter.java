@@ -2,19 +2,21 @@ package com.tencent.mm.ui.chatting;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.b;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.g.a.ly;
-import com.tencent.mm.g.a.ly.b;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.g.c.eo;
+import com.tencent.mm.R.l;
+import com.tencent.mm.aj.k.b;
+import com.tencent.mm.ci.a;
+import com.tencent.mm.f.a.mp;
+import com.tencent.mm.f.a.mp.b;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.f.c.et;
 import com.tencent.mm.model.aa;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.bp;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.bq;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.v;
-import com.tencent.mm.modelvideo.t;
+import com.tencent.mm.model.z;
+import com.tencent.mm.modelvideo.s;
+import com.tencent.mm.modelvideo.x;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.h;
@@ -26,7 +28,8 @@ import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.ca;
 import com.tencent.mm.storage.ca.a;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
@@ -35,18 +38,18 @@ import java.util.List;
 public final class QQMailHistoryExporter
 {
   private static final char[] INVALID;
-  private static final String Pke;
   private static final String[] VALID;
-  private List<ca> PgD;
-  private String Pkb = null;
+  private static final String WDM;
+  private String WDJ = null;
+  private List<ca> WzW;
   private Context context;
-  private as dSh = null;
+  private as fLE = null;
   private float textSize = 1.0F;
   
   static
   {
     AppMethodBeat.i(34858);
-    Pke = "<img id=\"%s\" src=\"%s\" height=\"100\" onclick=\"" + com.tencent.mm.pluginsdk.ui.tools.z.mH("weixin://img_onclick/", "this.id + '@@' + this.src") + "\"></img>";
+    WDM = "<img id=\"%s\" src=\"%s\" height=\"100\" onclick=\"" + com.tencent.mm.pluginsdk.ui.tools.ab.nx("weixin://img_onclick/", "this.id + '@@' + this.src") + "\"></img>";
     INVALID = new char[] { 60, 62, 34, 39, 38, 10 };
     VALID = new String[] { "&lt;", "&gt;", "&quot;", "&apos;", "&amp;", "<br />" };
     AppMethodBeat.o(34858);
@@ -55,11 +58,11 @@ public final class QQMailHistoryExporter
   public QQMailHistoryExporter(Context paramContext, List<ca> paramList, as paramas)
   {
     this.context = paramContext;
-    this.PgD = paramList;
-    this.dSh = paramas;
+    this.WzW = paramList;
+    this.fLE = paramas;
   }
   
-  private static String Ns(long paramLong)
+  private static String VA(long paramLong)
   {
     AppMethodBeat.i(34857);
     String str = new SimpleDateFormat("yyyy-MM-dd").format(new Date(paramLong));
@@ -67,71 +70,71 @@ public final class QQMailHistoryExporter
     return str;
   }
   
-  private String bD(ca paramca)
+  private String bX(ca paramca)
   {
     AppMethodBeat.i(34854);
     Object localObject = null;
-    if (paramca.gAy()) {
-      localObject = String.format("[%s]", new Object[] { this.context.getString(2131758491) });
+    if (paramca.hwF()) {
+      localObject = String.format("[%s]", new Object[] { this.context.getString(R.l.eCe) });
     }
     for (;;)
     {
       Log.d("MicroMsg.QQMailHistoryExporter", "formatOtherMsg, msgStr = %s", new Object[] { localObject });
-      paramca = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bE(paramca), Float.valueOf(this.textSize), localObject });
+      paramca = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bY(paramca), Float.valueOf(this.textSize), localObject });
       AppMethodBeat.o(34854);
       return paramca;
-      if (paramca.gDh())
+      if (paramca.hzu())
       {
         if (paramca.field_isSend == 1) {
-          localObject = this.context.getString(2131758489);
+          localObject = this.context.getString(R.l.eCc);
         } else {
-          localObject = this.context.getString(2131758488);
+          localObject = this.context.getString(R.l.eCb);
         }
       }
-      else if (paramca.dOS())
+      else if (paramca.erm())
       {
-        localObject = new ly();
-        ((ly)localObject).dRv.dRq = 1;
-        ((ly)localObject).dRv.dCM = paramca;
+        localObject = new mp();
+        ((mp)localObject).fKL.fKG = 1;
+        ((mp)localObject).fKL.fvt = paramca;
         EventCenter.instance.publish((IEvent)localObject);
-        localObject = String.format("[%s]", new Object[] { ((ly)localObject).dRw.dNk });
+        localObject = String.format("[%s]", new Object[] { ((mp)localObject).fKM.fGw });
       }
-      else if (paramca.dOQ())
+      else if (paramca.erk())
       {
-        localObject = bF(paramca);
+        localObject = bZ(paramca);
       }
-      else if (paramca.gDl())
+      else if (paramca.hzy())
       {
-        bg.aVF();
-        localObject = c.aSQ().aEK(paramca.field_content).nickname;
-        localObject = String.format("[%s: %s]", new Object[] { this.context.getString(2131758483), localObject });
+        bh.beI();
+        localObject = c.bbO().aOU(paramca.field_content).nickname;
+        localObject = String.format("[%s: %s]", new Object[] { this.context.getString(R.l.eBW), localObject });
       }
-      else if (paramca.cWJ())
+      else if (paramca.dlR())
       {
-        localObject = this.context.getString(2131758490);
-        com.tencent.mm.modelvideo.o.bhj();
-        localObject = String.format("[%s: %s(%s)]", new Object[] { localObject, new com.tencent.mm.vfs.o(t.Qw(paramca.field_imgPath)).getName(), this.context.getString(2131758482) });
+        localObject = this.context.getString(R.l.eCd);
+        s.bqB();
+        localObject = String.format("[%s: %s(%s)]", new Object[] { localObject, new q(x.XT(paramca.field_imgPath)).getName(), this.context.getString(R.l.eBV) });
       }
-      else if ((paramca.gDn()) || (paramca.gDo()))
+      else if ((paramca.hzB()) || (paramca.hzC()))
       {
-        localObject = String.format("[%s]", new Object[] { this.context.getString(2131758484) });
+        localObject = String.format("[%s]", new Object[] { this.context.getString(R.l.eBX) });
       }
     }
   }
   
-  private String bE(ca paramca)
+  private String bY(ca paramca)
   {
     AppMethodBeat.i(34856);
     String str = null;
-    if (!ab.Eq(this.dSh.field_username)) {
-      str = aa.getDisplayName(paramca.field_talker);
+    if (!com.tencent.mm.model.ab.Lj(this.fLE.field_username)) {
+      str = aa.PJ(paramca.field_talker);
     }
     for (;;)
     {
       if (paramca.field_isSend == 1)
       {
         Log.i("MicroMsg.QQMailHistoryExporter", "isSend");
-        str = com.tencent.mm.model.z.aUa();
+        str = z.bdb();
       }
       long l = paramca.field_createTime;
       paramca = new SimpleDateFormat("HH:mm").format(new Date(l));
@@ -143,32 +146,32 @@ public final class QQMailHistoryExporter
       AppMethodBeat.o(34856);
       return paramca;
       localObject = paramca.field_content;
-      int i = bp.Kp((String)localObject);
+      int i = bq.RI((String)localObject);
       if (i != -1) {
-        str = aa.getDisplayName(((String)localObject).substring(0, i).trim());
+        str = aa.PJ(((String)localObject).substring(0, i).trim());
       }
     }
   }
   
-  private String bF(ca paramca)
+  private String bZ(ca paramca)
   {
     AppMethodBeat.i(34855);
     Object localObject2 = paramca.field_content;
     Object localObject1 = localObject2;
-    if (ab.Eq(this.dSh.field_username))
+    if (com.tencent.mm.model.ab.Lj(this.fLE.field_username))
     {
       Log.d("MicroMsg.QQMailHistoryExporter", "chatroom msg, parse it");
-      int i = bp.Kp(paramca.field_content);
+      int i = bq.RI(paramca.field_content);
       localObject1 = localObject2;
       if (i != -1) {
         localObject1 = paramca.field_content.substring(i + 1).trim();
       }
     }
-    localObject2 = k.b.HD(Util.processXml((String)localObject1));
+    localObject2 = k.b.OQ(Util.processXml((String)localObject1));
     if (localObject2 == null)
     {
       Log.w("MicroMsg.QQMailHistoryExporter", "appmsg content is null");
-      paramca = String.format("[%s]", new Object[] { this.context.getString(2131758481) });
+      paramca = String.format("[%s]", new Object[] { this.context.getString(R.l.eBU) });
       AppMethodBeat.o(34855);
       return paramca;
     }
@@ -177,8 +180,8 @@ public final class QQMailHistoryExporter
     {
       localObject1 = ((k.b)localObject2).appName;
       localObject1 = h.a(this.context, localg, (String)localObject1);
-      if (!paramca.gDq()) {
-        break label232;
+      if (!paramca.hzE()) {
+        break label233;
       }
       if (!Util.isNullOrNil((String)localObject1)) {
         break label204;
@@ -194,15 +197,15 @@ public final class QQMailHistoryExporter
       label204:
       paramca = String.format("[%s: %s]", new Object[] { localObject1, escapeStringForXml(((k.b)localObject2).title) });
       continue;
-      label232:
-      if (paramca.gDr())
+      label233:
+      if (paramca.hzF())
       {
-        paramca = ad.b(paramca, (k.b)localObject2);
+        paramca = ad.c(paramca, (k.b)localObject2);
         if (!Util.isNullOrNil(paramca))
         {
           localObject1 = "file://".concat(String.valueOf(paramca));
-          localObject2 = new com.tencent.mm.vfs.o(paramca);
-          paramca = String.format(Pke, new Object[] { ((com.tencent.mm.vfs.o)localObject2).getName(), localObject1, paramca });
+          localObject2 = new q(paramca);
+          paramca = String.format(WDM, new Object[] { ((q)localObject2).getName(), localObject1, paramca });
         }
       }
       else
@@ -211,34 +214,34 @@ public final class QQMailHistoryExporter
         {
         case 7: 
         default: 
-          paramca = String.format("[%s]", new Object[] { this.context.getString(2131758481) });
+          paramca = String.format("[%s]", new Object[] { this.context.getString(R.l.eBU) });
           break;
         case 3: 
           if (Util.isNullOrNil(((k.b)localObject2).description))
           {
-            paramca = String.format("[%s: %s]", new Object[] { this.context.getString(2131758487), escapeStringForXml(((k.b)localObject2).title) });
+            paramca = String.format("[%s: %s]", new Object[] { this.context.getString(R.l.eCa), escapeStringForXml(((k.b)localObject2).title) });
             continue;
           }
-          paramca = String.format("[%s: %s-%s]", new Object[] { this.context.getString(2131758487), escapeStringForXml(((k.b)localObject2).title), escapeStringForXml(((k.b)localObject2).description) });
+          paramca = String.format("[%s: %s-%s]", new Object[] { this.context.getString(R.l.eCa), escapeStringForXml(((k.b)localObject2).title), escapeStringForXml(((k.b)localObject2).description) });
           break;
         case 8: 
-          paramca = String.format("[%s]", new Object[] { this.context.getString(2131758484) });
+          paramca = String.format("[%s]", new Object[] { this.context.getString(R.l.eBX) });
           break;
         case 6: 
           if (Util.isNullOrNil(((k.b)localObject2).description))
           {
-            paramca = String.format("[%s: %s]", new Object[] { this.context.getString(2131758485), escapeStringForXml(((k.b)localObject2).title) });
+            paramca = String.format("[%s: %s]", new Object[] { this.context.getString(R.l.eBY), escapeStringForXml(((k.b)localObject2).title) });
             continue;
           }
-          paramca = String.format("[%s: %s-%s(%s)]", new Object[] { this.context.getString(2131758485), escapeStringForXml(((k.b)localObject2).title), escapeStringForXml(((k.b)localObject2).description), this.context.getString(2131758482) });
+          paramca = String.format("[%s: %s-%s(%s)]", new Object[] { this.context.getString(R.l.eBY), escapeStringForXml(((k.b)localObject2).title), escapeStringForXml(((k.b)localObject2).description), this.context.getString(R.l.eBV) });
           break;
         case 2: 
-          paramca = ad.b(paramca, (k.b)localObject2);
+          paramca = ad.c(paramca, (k.b)localObject2);
           if (!Util.isNullOrNil(paramca))
           {
             localObject1 = "file://".concat(String.valueOf(paramca));
-            localObject2 = new com.tencent.mm.vfs.o(paramca);
-            paramca = String.format(Pke, new Object[] { ((com.tencent.mm.vfs.o)localObject2).getName(), localObject1, paramca });
+            localObject2 = new q(paramca);
+            paramca = String.format(WDM, new Object[] { ((q)localObject2).getName(), localObject1, paramca });
           }
           break;
         case 1: 
@@ -302,137 +305,137 @@ public final class QQMailHistoryExporter
     return paramString;
   }
   
-  private String gOm()
+  private String hNw()
   {
     AppMethodBeat.i(34853);
     Object localObject;
-    if (!ab.Eq(this.dSh.field_username))
+    if (!com.tencent.mm.model.ab.Lj(this.fLE.field_username))
     {
-      str1 = this.context.getString(2131765211);
-      localObject = this.dSh.arI();
-      bg.aVF();
-      str1 = String.format(str1, new Object[] { localObject, c.azQ().get(4, null) });
+      str1 = this.context.getString(R.l.eSe);
+      localObject = this.fLE.ayr();
+      bh.beI();
+      str1 = String.format(str1, new Object[] { localObject, c.aHp().b(4, null) });
       AppMethodBeat.o(34853);
       return str1;
     }
-    if (Util.isNullOrNil(this.dSh.field_nickname))
+    if (Util.isNullOrNil(this.fLE.field_nickname))
     {
-      localObject = v.Ic(this.dSh.field_username).iterator();
+      localObject = v.Ps(this.fLE.field_username).iterator();
       String str2;
       for (str1 = ""; ((Iterator)localObject).hasNext(); str1 = str1 + str2 + ", ") {
-        str2 = aa.getDisplayName((String)((Iterator)localObject).next());
+        str2 = aa.PJ((String)((Iterator)localObject).next());
       }
     }
-    for (String str1 = str1.substring(0, str1.length() - 2);; str1 = this.dSh.arI())
+    for (String str1 = str1.substring(0, str1.length() - 2);; str1 = this.fLE.ayr())
     {
-      str1 = String.format(this.context.getString(2131765210), new Object[] { str1 });
+      str1 = String.format(this.context.getString(R.l.eSd), new Object[] { str1 });
       break;
     }
   }
   
-  public final String gOl()
+  public final String hNv()
   {
     AppMethodBeat.i(34852);
-    Log.i("MicroMsg.QQMailHistoryExporter", "selectItems.size = %d", new Object[] { Integer.valueOf(this.PgD.size()) });
-    if (a.jk(this.context)) {
+    Log.i("MicroMsg.QQMailHistoryExporter", "selectItems.size = %d", new Object[] { Integer.valueOf(this.WzW.size()) });
+    if (a.ko(this.context)) {
       this.textSize = a.ez(this.context);
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("<div id=\"history\">\n");
-    localStringBuilder.append(String.format("<p style=\"font-size:%fem;\">Dear:</p> <br> <p style=\"text-indent:2em; font-size:%fem;\">%s</p> <br>", new Object[] { Float.valueOf(this.textSize), Float.valueOf(this.textSize), gOm() }));
-    Iterator localIterator = this.PgD.iterator();
+    localStringBuilder.append(String.format("<p style=\"font-size:%fem;\">Dear:</p> <br> <p style=\"text-indent:2em; font-size:%fem;\">%s</p> <br>", new Object[] { Float.valueOf(this.textSize), Float.valueOf(this.textSize), hNw() }));
+    Iterator localIterator = this.WzW.iterator();
     ca localca;
     label200:
     Object localObject;
     if (localIterator.hasNext())
     {
       localca = (ca)localIterator.next();
-      if (this.Pkb == null)
+      if (this.WDJ == null)
       {
-        this.Pkb = Ns(localca.field_createTime);
-        localStringBuilder.append(String.format("<p style=\"text-align:center; font-size:%fem;\"><span style=\"color:#b8b8b8;\">—————  %s  —————</span></p>\n \n", new Object[] { Float.valueOf(this.textSize), this.Pkb }));
-        if (!localca.isText()) {
+        this.WDJ = VA(localca.field_createTime);
+        localStringBuilder.append(String.format("<p style=\"text-align:center; font-size:%fem;\"><span style=\"color:#b8b8b8;\">—————  %s  —————</span></p>\n \n", new Object[] { Float.valueOf(this.textSize), this.WDJ }));
+        if (!localca.hwH()) {
           break label510;
         }
-        if (!localca.isText()) {
+        if (!localca.hwH()) {
           break label504;
         }
         if (localca.field_isSend != 1) {
           break label360;
         }
-        localObject = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bE(localca), Float.valueOf(this.textSize), escapeStringForXml(localca.field_content) });
+        localObject = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bY(localca), Float.valueOf(this.textSize), escapeStringForXml(localca.field_content) });
       }
     }
     for (;;)
     {
       localStringBuilder.append((String)localObject);
       break;
-      localObject = Ns(localca.field_createTime);
-      if (((String)localObject).equals(this.Pkb)) {
+      localObject = VA(localca.field_createTime);
+      if (((String)localObject).equals(this.WDJ)) {
         break label200;
       }
-      this.Pkb = ((String)localObject);
+      this.WDJ = ((String)localObject);
       localStringBuilder.append("<br>");
-      localStringBuilder.append(String.format("<p style=\"text-align:center; font-size:%fem;\"><span style=\"color:#b8b8b8;\">—————  %s  —————</span></p>\n \n", new Object[] { Float.valueOf(this.textSize), this.Pkb }));
+      localStringBuilder.append(String.format("<p style=\"text-align:center; font-size:%fem;\"><span style=\"color:#b8b8b8;\">—————  %s  —————</span></p>\n \n", new Object[] { Float.valueOf(this.textSize), this.WDJ }));
       break label200;
       label360:
-      if (!ab.Eq(this.dSh.field_username))
+      if (!com.tencent.mm.model.ab.Lj(this.fLE.field_username))
       {
-        localObject = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bE(localca), Float.valueOf(this.textSize), escapeStringForXml(localca.field_content) });
+        localObject = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bY(localca), Float.valueOf(this.textSize), escapeStringForXml(localca.field_content) });
       }
       else
       {
-        int i = bp.Kp(localca.field_content);
+        int i = bq.RI(localca.field_content);
         if (i != -1)
         {
-          localObject = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bE(localca), Float.valueOf(this.textSize), escapeStringForXml(localca.field_content.substring(i + 1).trim()) });
+          localObject = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bY(localca), Float.valueOf(this.textSize), escapeStringForXml(localca.field_content.substring(i + 1).trim()) });
           continue;
           label504:
           localObject = null;
           continue;
           label510:
-          if (localca.gAz())
+          if (localca.hwG())
           {
-            if (localca.gAz())
+            if (localca.hwG())
             {
               long l1 = localca.field_msgId;
               long l2 = localca.field_msgSvrId;
-              String str = ad.cf(localca.field_talker, l1);
+              String str = ad.cm(localca.field_talker, l1);
               localObject = str;
               if (Util.isNullOrNil(str)) {
-                localObject = ad.cg(localca.field_talker, l2);
+                localObject = ad.cn(localca.field_talker, l2);
               }
-              localObject = s.k((String)localObject, false);
+              localObject = u.n((String)localObject, false);
               Log.i("MicroMsg.QQMailHistoryExporter", "hdPath[%s]", new Object[] { localObject });
               if (!Util.isNullOrNil((String)localObject))
               {
                 str = "file://".concat(String.valueOf(localObject));
-                com.tencent.mm.vfs.o localo = new com.tencent.mm.vfs.o((String)localObject);
-                localObject = String.format(Pke, new Object[] { localo.getName(), str, localObject });
+                q localq = new q((String)localObject);
+                localObject = String.format(WDM, new Object[] { localq.getName(), str, localObject });
               }
             }
-            for (localObject = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bE(localca), Float.valueOf(this.textSize), localObject });; localObject = null)
+            for (localObject = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bY(localca), Float.valueOf(this.textSize), localObject });; localObject = null)
             {
               localStringBuilder.append((String)localObject);
               break;
             }
           }
-          if (localca.dOQ())
+          if (localca.erk())
           {
-            localObject = k.b.HD(localca.field_content);
+            localObject = k.b.OQ(localca.field_content);
             if ((localObject != null) && ((((k.b)localObject).type == 53) || (((k.b)localObject).type == 57)))
             {
               if ((localObject != null) && ((((k.b)localObject).type == 53) || (((k.b)localObject).type == 57))) {}
-              for (localObject = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bE(localca), Float.valueOf(this.textSize), escapeStringForXml(((k.b)localObject).title) });; localObject = null)
+              for (localObject = String.format("<p style=\"font-size:%fem;\"><b>%s</b></p>\n  <p style=\"font-size:%fem;\">%s</p>\n <p style=\"line-height:1.5em;\"></p>\n", new Object[] { Float.valueOf(this.textSize), bY(localca), Float.valueOf(this.textSize), escapeStringForXml(((k.b)localObject).title) });; localObject = null)
               {
                 localStringBuilder.append((String)localObject);
                 break;
               }
             }
-            localStringBuilder.append(bD(localca));
+            localStringBuilder.append(bX(localca));
             break;
           }
-          localStringBuilder.append(bD(localca));
+          localStringBuilder.append(bX(localca));
           break;
           localStringBuilder.append("\n</div>\n");
           localObject = localStringBuilder.toString();
@@ -446,7 +449,7 @@ public final class QQMailHistoryExporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.QQMailHistoryExporter
  * JD-Core Version:    0.7.0.1
  */

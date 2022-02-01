@@ -1,254 +1,112 @@
 package com.tencent.mm.vfs;
 
-import android.os.CancellationSignal;
-import android.os.ParcelFileDescriptor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.a.a.a;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.channels.ByteChannel;
-import java.nio.channels.ReadableByteChannel;
-import java.nio.channels.WritableByteChannel;
-import java.util.HashSet;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public abstract class c
-  extends a
+final class c
 {
-  public void a(CancellationSignal paramCancellationSignal)
+  private static final String[] YBw = { "${sdFrom}/MicroMsg/xlog", "${sdTo}/MicroMsg/${accountSalt}/bizmsg", "${sdFrom}/MicroMsg/${accountSalt}/bizmsg", "${sdFrom}/MicroMsg/${accountSalt}/sfs", "${sdTo}/MicroMsg/${accountSalt}/sfs", "${sdFrom}/MicroMsg/wxavideocache", "${sdTo}/MicroMsg/wxavideocache", "${sdFrom}/MicroMsg/wxvideocache", "${sdTo}/MicroMsg/wxvideocache", "${sdTo}/MicroMsg/${accountSalt}/backup", "${sdFrom}/MicroMsg/${accountSalt}/backup", "${dataCache}/cpsafe" };
+  
+  static void a(h.a parama)
   {
-    Iterator localIterator = hdS().iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(206719);
+    Object localObject1 = new FileSystem[YBw.length];
+    int i = 0;
+    while (i < localObject1.length)
     {
-      FileSystem.b localb = (FileSystem.b)localIterator.next();
-      paramCancellationSignal.throwIfCanceled();
-      localb.a(paramCancellationSignal);
+      localObject1[i] = new DeleteAllFileSystem(new NativeFileSystem(YBw[i]));
+      i += 1;
     }
-  }
-  
-  protected final boolean b(String paramString1, FileSystem.b paramb, String paramString2)
-  {
-    throw new AssertionError();
-  }
-  
-  public ReadableByteChannel boI(String paramString)
-  {
-    FileSystem.b localb = ho(paramString, 1);
-    if (localb == null) {
-      throw new FileNotFoundException("Path not found on any filesystems: ".concat(String.valueOf(paramString)));
-    }
-    return localb.boI(paramString);
-  }
-  
-  public ByteChannel boJ(String paramString)
-  {
-    FileSystem.b localb = ho(paramString, 3);
-    if (localb == null) {
-      throw new FileNotFoundException("Path not found on any filesystems: ".concat(String.valueOf(paramString)));
-    }
-    return localb.boJ(paramString);
-  }
-  
-  public FileSystem.a boK(String paramString)
-  {
-    FileSystem.b localb = ho(paramString, 0);
-    if (localb == null) {
-      throw new RuntimeException("Cannot delegate path to filesystem: ".concat(String.valueOf(paramString)));
-    }
-    return localb.boK(paramString);
-  }
-  
-  public boolean boL(String paramString)
-  {
-    FileSystem.b localb = ho(paramString, 1);
-    return (localb != null) && (localb.boL(paramString));
-  }
-  
-  public e boM(String paramString)
-  {
-    FileSystem.b localb = ho(paramString, 1);
-    if (localb == null) {
-      return null;
-    }
-    return localb.boM(paramString);
-  }
-  
-  public boolean boN(String paramString)
-  {
-    FileSystem.b localb = ho(paramString, 2);
-    return (localb != null) && (localb.boN(paramString));
-  }
-  
-  public final boolean ck(String paramString, long paramLong)
-  {
-    FileSystem.b localb = ho(paramString, 3);
-    return (localb != null) && (localb.ck(paramString, paramLong));
-  }
-  
-  protected final long d(String paramString1, FileSystem.b paramb, String paramString2)
-  {
-    throw new AssertionError();
-  }
-  
-  public WritableByteChannel dv(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    FileSystem.b localb;
-    for (int i = 3;; i = 2)
+    parama.b("@CleanRubbish", new MaintenanceGroup((FileSystem[])localObject1));
+    Pattern localPattern = Pattern.compile("[0-9a-f]{32}(temp[0-9]+)?");
+    Object localObject2;
+    try
     {
-      localb = ho(paramString, i);
-      if (localb != null) {
-        break;
+      localObject2 = new NativeFileSystem("${sdFrom}/MicroMsg").cp(h.iWH().iWM()).dJ("", false);
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = Collections.emptyList();
       }
-      throw new FileNotFoundException("Path not found on any filesystems: ".concat(String.valueOf(paramString)));
-    }
-    return localb.dv(paramString, paramBoolean);
-  }
-  
-  public OutputStream dw(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    FileSystem.b localb;
-    for (int i = 3;; i = 2)
-    {
-      localb = ho(paramString, i);
-      if (localb != null) {
-        break;
+      localObject2 = new ArrayList();
+      localObject1 = ((Iterable)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        f localf = (f)((Iterator)localObject1).next();
+        if (localf.YCj)
+        {
+          Object localObject3 = localPattern.matcher(localf.name);
+          if (((Matcher)localObject3).matches())
+          {
+            localObject3 = ((Matcher)localObject3).group(1);
+            if (((localObject3 != null) && (!((String)localObject3).isEmpty())) || (ab.YFr))
+            {
+              ((ArrayList)localObject2).add(new DeleteAllFileSystem(new NativeFileSystem("${sdFrom}/MicroMsg/" + localf.name)));
+              continue;
+              b(parama);
+            }
+          }
+        }
       }
-      throw new FileNotFoundException("Path not found on any filesystems: ".concat(String.valueOf(paramString)));
     }
-    return localb.dw(paramString, paramBoolean);
-  }
-  
-  public Iterable<e> dx(String paramString, boolean paramBoolean)
-  {
-    Object localObject = hdS();
-    int i = ((List)localObject).size();
-    if (i == 1) {
-      paramString = ((FileSystem.b)((List)localObject).get(0)).dx(paramString, paramBoolean);
-    }
-    do
+    catch (Exception localException)
     {
-      return paramString;
-      if (i == 0) {
-        return null;
-      }
-      localObject = new com.tencent.mm.vfs.a.c(new com.tencent.mm.vfs.a.a(hdS(), new b(paramString)), new c((byte)0));
-      paramString = (String)localObject;
-    } while (!paramBoolean);
-    return new com.tencent.mm.vfs.a.a((Iterable)localObject, new a(hdS()));
-  }
-  
-  public final boolean dy(String paramString, boolean paramBoolean)
-  {
-    Iterator localIterator = hdS().iterator();
-    for (boolean bool = false; localIterator.hasNext(); bool = ((FileSystem.b)localIterator.next()).dy(paramString, paramBoolean) | bool) {}
-    return bool;
-  }
-  
-  public final String dz(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    FileSystem.b localb;
-    for (int i = 2;; i = 1)
-    {
-      localb = ho(paramString, i);
-      if (localb != null) {
-        break;
-      }
-      return null;
+      Log.printErrStackTrace("VFS.CleanRubbish", localException, "Failed installing wild account cleaner", new Object[0]);
     }
-    return localb.dz(paramString, paramBoolean);
-  }
-  
-  public final boolean gC(String paramString)
-  {
-    Iterator localIterator = hdS().iterator();
-    for (boolean bool = false; localIterator.hasNext(); bool = ((FileSystem.b)localIterator.next()).gC(paramString) | bool) {}
-    return bool;
-  }
-  
-  public int hdR()
-  {
-    return ho("", 0).hdR();
-  }
-  
-  public abstract List<FileSystem.b> hdS();
-  
-  public abstract FileSystem.b ho(String paramString, int paramInt);
-  
-  public ParcelFileDescriptor nr(String paramString1, String paramString2)
-  {
-    int i;
-    if (paramString2.contains("rw")) {
-      i = 3;
-    }
-    FileSystem.b localb;
     for (;;)
     {
-      localb = ho(paramString1, i);
-      if (localb != null) {
-        break;
-      }
-      throw new FileNotFoundException("Path not found on any filesystems: ".concat(String.valueOf(paramString1)));
-      if (paramString2.contains("w")) {
-        i = 2;
-      } else {
-        i = 1;
+      AppMethodBeat.o(206719);
+      return;
+      if (!((ArrayList)localObject2).isEmpty()) {
+        parama.b("@CleanAbandon", new MaintenanceGroup((Collection)localObject2));
       }
     }
-    return localb.nr(paramString1, paramString2);
   }
   
-  public InputStream openRead(String paramString)
+  private static void b(h.a parama)
   {
-    FileSystem.b localb = ho(paramString, 1);
-    if (localb == null) {
-      throw new FileNotFoundException("Path not found on any filesystems: ".concat(String.valueOf(paramString)));
-    }
-    return localb.openRead(paramString);
-  }
-  
-  static final class a
-    implements a.a<e, e>
-  {
-    private final Iterable<FileSystem.b> Rbm;
-    
-    a(Iterable<FileSystem.b> paramIterable)
+    AppMethodBeat.i(206724);
+    Pattern localPattern = Pattern.compile("old_org\\.chromium\\.android_webview_[0-9]+");
+    Object localObject2;
+    try
     {
-      this.Rbm = paramIterable;
+      localObject2 = new NativeFileSystem("${dataCache}").cp(h.iWH().iWM()).dJ("", false);
+      Object localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = Collections.emptyList();
+      }
+      localObject2 = new ArrayList();
+      localObject1 = ((Iterable)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        f localf = (f)((Iterator)localObject1).next();
+        if ((localf.YCj) && (localPattern.matcher(localf.name).matches())) {
+          ((ArrayList)localObject2).add(new DeleteAllFileSystem(new NativeFileSystem("${dataCache}/" + localf.name)));
+        }
+      }
+      if (((ArrayList)localObject2).isEmpty()) {
+        break label189;
+      }
     }
-  }
-  
-  static final class b
-    implements a.a<FileSystem.b, e>
-  {
-    private final String mPrefix;
-    
-    b(String paramString)
+    catch (Exception parama)
     {
-      this.mPrefix = paramString;
+      Log.printErrStackTrace("VFS.CleanRubbish", parama, "Failed installing old WebView cache cleaner", new Object[0]);
+      AppMethodBeat.o(206724);
+      return;
     }
-  }
-  
-  static final class c
-    implements com.tencent.mm.vfs.a.c.a<e>
-  {
-    private final HashSet<String> Rbn;
-    
-    private c()
-    {
-      AppMethodBeat.i(187636);
-      this.Rbn = new HashSet();
-      AppMethodBeat.o(187636);
-    }
+    parama.b("@CleanOldWebViewCache", new MaintenanceGroup((Collection)localObject2));
+    label189:
+    AppMethodBeat.o(206724);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vfs.c
  * JD-Core Version:    0.7.0.1
  */

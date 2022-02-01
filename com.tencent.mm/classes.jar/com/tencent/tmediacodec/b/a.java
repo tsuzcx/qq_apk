@@ -14,29 +14,29 @@ public final class a
   
   public final a.b a(e parame)
   {
-    AppMethodBeat.i(190099);
+    AppMethodBeat.i(224223);
     if (com.tencent.tmediacodec.e.a.a(this, parame))
     {
-      parame = a.b.SmE;
-      AppMethodBeat.o(190099);
+      parame = a.b.ZPp;
+      AppMethodBeat.o(224223);
       return parame;
     }
-    parame = a.b.SmB;
-    AppMethodBeat.o(190099);
+    parame = a.b.ZPm;
+    AppMethodBeat.o(224223);
     return parame;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(190100);
+    AppMethodBeat.i(224226);
     String str = "AudioCodecWrapper[" + hashCode() + ']';
-    AppMethodBeat.o(190100);
+    AppMethodBeat.o(224226);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tmediacodec.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.ipcinvoker.o;
+import com.tencent.mm.ipcinvoker.r;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 
@@ -24,15 +24,15 @@ public class IpcProxyUI
     AppMethodBeat.i(78490);
     super.onCreate(paramBundle);
     Log.i("MicroMsg.IpcProxyUI", "onCreate");
-    if (d.oD(21)) {
+    if (d.qV(21)) {
       getWindow().setStatusBarColor(0);
     }
-    paramBundle = (c)o.b(getIntent().getStringExtra("task_class_name"), c.class);
+    paramBundle = (c)r.b(getIntent().getStringExtra("task_class_name"), c.class);
     if (paramBundle != null)
     {
       paramBundle.a(this, getIntent().getBundleExtra("input_data"), new a()
       {
-        public final void v(Bundle paramAnonymousBundle)
+        public final void C(Bundle paramAnonymousBundle)
         {
           AppMethodBeat.i(78489);
           Intent localIntent = new Intent();

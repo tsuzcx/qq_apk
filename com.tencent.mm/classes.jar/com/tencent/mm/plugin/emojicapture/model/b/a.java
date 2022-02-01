@@ -15,32 +15,32 @@ import java.util.List;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameRetriever;", "preViewRect", "Landroid/graphics/RectF;", "(Landroid/graphics/RectF;)V", "bitmap", "Landroid/graphics/Bitmap;", "canvas", "Landroid/graphics/Canvas;", "currFrameTime", "", "drawer", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorFrameDrawer;", "editorItems", "", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "getEditorItems", "()Ljava/util/List;", "setEditorItems", "(Ljava/util/List;)V", "height", "", "paint", "Landroid/graphics/Paint;", "preViewMatrix", "Landroid/graphics/Matrix;", "width", "addItem", "", "item", "requestNextFrame", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameInfo;", "start", "stop", "plugin-emojicapture_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameRetriever;", "preViewRect", "Landroid/graphics/RectF;", "(Landroid/graphics/RectF;)V", "bitmap", "Landroid/graphics/Bitmap;", "canvas", "Landroid/graphics/Canvas;", "currFrameTime", "", "drawer", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorFrameDrawer;", "editorItems", "", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "getEditorItems", "()Ljava/util/List;", "setEditorItems", "(Ljava/util/List;)V", "height", "", "paint", "Landroid/graphics/Paint;", "preViewMatrix", "Landroid/graphics/Matrix;", "width", "addItem", "", "item", "requestNextFrame", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameInfo;", "start", "stop", "plugin-emojicapture_release"})
 public final class a
   implements com.tencent.mm.plugin.recordvideo.ui.editor.b.b
 {
-  private final Canvas aTi;
+  private final Canvas aBC;
   private final Bitmap bitmap;
   private int height;
   private final Paint paint;
-  private final com.tencent.mm.plugin.recordvideo.ui.editor.b rpA;
-  List<com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a> rpx;
-  private long rpy;
-  private final Matrix rpz;
+  List<com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a> uVd;
+  private long uVe;
+  private final Matrix uVf;
+  private final com.tencent.mm.plugin.recordvideo.ui.editor.b uVg;
   private int width;
   
   public a(RectF paramRectF)
   {
     AppMethodBeat.i(262);
-    Object localObject = d.roA;
-    this.width = d.cIG();
-    localObject = d.roA;
-    this.height = d.cIG();
-    this.rpx = ((List)new ArrayList());
-    this.rpz = new Matrix();
+    Object localObject = d.uUg;
+    this.width = d.cXp();
+    localObject = d.uUg;
+    this.height = d.cXp();
+    this.uVd = ((List)new ArrayList());
+    this.uVf = new Matrix();
     this.paint = new Paint();
-    this.rpA = new com.tencent.mm.plugin.recordvideo.ui.editor.b(this.rpx);
-    localObject = this.rpz;
+    this.uVg = new com.tencent.mm.plugin.recordvideo.ui.editor.b(this.uVd);
+    localObject = this.uVf;
     float f1 = paramRectF.left;
     float f2 = paramRectF.top;
     float f3 = paramRectF.right;
@@ -51,43 +51,43 @@ public final class a
     this.paint.setAntiAlias(true);
     this.paint.setFilterBitmap(true);
     paramRectF = Bitmap.createBitmap(this.width, this.height, Bitmap.Config.ARGB_8888);
-    p.g(paramRectF, "Bitmap.createBitmap(widt… Bitmap.Config.ARGB_8888)");
+    p.j(paramRectF, "Bitmap.createBitmap(widt… Bitmap.Config.ARGB_8888)");
     this.bitmap = paramRectF;
-    this.aTi = new Canvas(this.bitmap);
+    this.aBC = new Canvas(this.bitmap);
     AppMethodBeat.o(262);
   }
   
   public final void a(com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a parama)
   {
-    AppMethodBeat.i(256431);
+    AppMethodBeat.i(201181);
     if (parama != null) {
-      this.rpx.add(parama);
+      this.uVd.add(parama);
     }
-    AppMethodBeat.o(256431);
+    AppMethodBeat.o(201181);
   }
   
-  public final com.tencent.mm.plugin.recordvideo.ui.editor.b.a cJu()
+  public final com.tencent.mm.plugin.recordvideo.ui.editor.b.a cYc()
   {
-    AppMethodBeat.i(256430);
-    if (this.rpx.size() <= 0)
+    AppMethodBeat.i(201179);
+    if (this.uVd.size() <= 0)
     {
-      AppMethodBeat.o(256430);
+      AppMethodBeat.o(201179);
       return null;
     }
-    int i = this.aTi.save();
-    this.aTi.drawColor(0, PorterDuff.Mode.MULTIPLY);
-    this.aTi.concat(this.rpz);
-    this.rpy = this.rpA.a(this.aTi, this.paint);
-    this.aTi.restoreToCount(i);
-    com.tencent.mm.plugin.recordvideo.ui.editor.b.a locala = new com.tencent.mm.plugin.recordvideo.ui.editor.b.a(this.bitmap, this.rpy);
-    AppMethodBeat.o(256430);
+    int i = this.aBC.save();
+    this.aBC.drawColor(0, PorterDuff.Mode.MULTIPLY);
+    this.aBC.concat(this.uVf);
+    this.uVe = this.uVg.a(this.aBC, this.paint);
+    this.aBC.restoreToCount(i);
+    com.tencent.mm.plugin.recordvideo.ui.editor.b.a locala = new com.tencent.mm.plugin.recordvideo.ui.editor.b.a(this.bitmap, this.uVe);
+    AppMethodBeat.o(201179);
     return locala;
   }
   
   public final void stop()
   {
     AppMethodBeat.i(260);
-    Iterator localIterator = this.rpx.iterator();
+    Iterator localIterator = this.uVd.iterator();
     while (localIterator.hasNext()) {
       ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a)localIterator.next()).destroy();
     }
@@ -96,7 +96,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.b.a
  * JD-Core Version:    0.7.0.1
  */

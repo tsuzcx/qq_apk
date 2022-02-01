@@ -7,24 +7,24 @@ import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Map;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "map", "", "", "kotlin.jvm.PlatformType", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeContact;", "", "onDone"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "map", "", "", "kotlin.jvm.PlatformType", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeContact;", "", "onDone"})
 final class g$b
   implements b.c
 {
-  public static final b ycd;
+  public static final b DhJ;
   
   static
   {
-    AppMethodBeat.i(241376);
-    ycd = new b();
-    AppMethodBeat.o(241376);
+    AppMethodBeat.i(203872);
+    DhJ = new b();
+    AppMethodBeat.o(203872);
   }
   
-  public final void aj(Map<String, a> paramMap)
+  public final void ac(Map<String, a> paramMap)
   {
-    AppMethodBeat.i(241375);
+    AppMethodBeat.i(203870);
     Log.i("GameLife.ConversationUpdateCallback", "contact prefetch result: ".concat(String.valueOf(paramMap)));
-    AppMethodBeat.o(241375);
+    AppMethodBeat.o(203870);
   }
 }
 

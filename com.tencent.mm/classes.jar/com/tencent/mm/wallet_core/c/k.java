@@ -2,7 +2,7 @@ package com.tencent.mm.wallet_core.c;
 
 public abstract interface k
 {
-  public abstract void hhl();
+  public abstract void iiN();
   
   public abstract void onDestroy();
 }

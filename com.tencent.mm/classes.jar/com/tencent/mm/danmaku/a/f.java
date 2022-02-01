@@ -7,17 +7,17 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public final class f
 {
-  com.tencent.mm.danmaku.c.a gNt;
-  final SparseArray<BlockingQueue<com.tencent.mm.danmaku.b.a>> gOp;
-  private final BlockingQueue<com.tencent.mm.danmaku.b.a> gOq;
+  com.tencent.mm.danmaku.c.a jxO;
+  final SparseArray<BlockingQueue<com.tencent.mm.danmaku.b.a>> jyK;
+  private final BlockingQueue<com.tencent.mm.danmaku.b.a> jyL;
   
   public f(com.tencent.mm.danmaku.c.a parama)
   {
-    AppMethodBeat.i(241643);
-    this.gOp = new SparseArray();
-    this.gOq = new LinkedBlockingQueue();
-    this.gNt = parama;
-    AppMethodBeat.o(241643);
+    AppMethodBeat.i(266100);
+    this.jyK = new SparseArray();
+    this.jyL = new LinkedBlockingQueue();
+    this.jxO = parama;
+    AppMethodBeat.o(266100);
   }
 }
 

@@ -1,94 +1,110 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import g.a.a.b;
+import com.tencent.mm.cd.b;
 import java.util.LinkedList;
 
 public final class biq
-  extends dpc
+  extends dyl
 {
-  public int KCD;
-  public String KCE;
-  public dyj KCF;
-  public int KCN;
-  public int KCz;
-  public ih wRL;
+  public b SQZ;
+  public b SSL;
+  public b SSM;
+  public String fIY;
+  public int offset;
+  public String query;
+  public int scene;
+  public b xHE;
+  public aqe yjp;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32220);
+    AppMethodBeat.i(169048);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
+      if (this.BaseRequest != null)
       {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(32220);
-        throw paramVarArgs;
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.BaseResponse != null)
+      if (this.query != null) {
+        paramVarArgs.f(2, this.query);
+      }
+      paramVarArgs.aY(3, this.offset);
+      if (this.xHE != null) {
+        paramVarArgs.c(4, this.xHE);
+      }
+      paramVarArgs.aY(5, this.scene);
+      if (this.fIY != null) {
+        paramVarArgs.f(6, this.fIY);
+      }
+      if (this.yjp != null)
       {
-        paramVarArgs.ni(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+        paramVarArgs.oE(7, this.yjp.computeSize());
+        this.yjp.writeFields(paramVarArgs);
       }
-      paramVarArgs.aM(2, this.KCD);
-      paramVarArgs.aM(3, this.KCN);
-      if (this.KCE != null) {
-        paramVarArgs.e(4, this.KCE);
+      if (this.SSL != null) {
+        paramVarArgs.c(8, this.SSL);
       }
-      if (this.KCF != null)
-      {
-        paramVarArgs.ni(5, this.KCF.computeSize());
-        this.KCF.writeFields(paramVarArgs);
+      if (this.SQZ != null) {
+        paramVarArgs.c(9, this.SQZ);
       }
-      if (this.wRL != null)
-      {
-        paramVarArgs.ni(6, this.wRL.computeSize());
-        this.wRL.writeFields(paramVarArgs);
+      if (this.SSM != null) {
+        paramVarArgs.c(10, this.SSM);
       }
-      paramVarArgs.aM(7, this.KCz);
-      AppMethodBeat.o(32220);
+      AppMethodBeat.o(169048);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label875;
+      if (this.BaseRequest == null) {
+        break label878;
       }
     }
-    label875:
-    for (paramInt = g.a.a.a.nh(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label878:
+    for (paramInt = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.bu(2, this.KCD) + g.a.a.b.b.a.bu(3, this.KCN);
+      int i = paramInt;
+      if (this.query != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.query);
+      }
+      i += g.a.a.b.b.a.bM(3, this.offset);
       paramInt = i;
-      if (this.KCE != null) {
-        paramInt = i + g.a.a.b.b.a.f(4, this.KCE);
+      if (this.xHE != null) {
+        paramInt = i + g.a.a.b.b.a.b(4, this.xHE);
+      }
+      i = paramInt + g.a.a.b.b.a.bM(5, this.scene);
+      paramInt = i;
+      if (this.fIY != null) {
+        paramInt = i + g.a.a.b.b.a.g(6, this.fIY);
       }
       i = paramInt;
-      if (this.KCF != null) {
-        i = paramInt + g.a.a.a.nh(5, this.KCF.computeSize());
+      if (this.yjp != null) {
+        i = paramInt + g.a.a.a.oD(7, this.yjp.computeSize());
       }
       paramInt = i;
-      if (this.wRL != null) {
-        paramInt = i + g.a.a.a.nh(6, this.wRL.computeSize());
+      if (this.SSL != null) {
+        paramInt = i + g.a.a.b.b.a.b(8, this.SSL);
       }
-      i = g.a.a.b.b.a.bu(7, this.KCz);
-      AppMethodBeat.o(32220);
-      return paramInt + i;
+      i = paramInt;
+      if (this.SQZ != null) {
+        i = paramInt + g.a.a.b.b.a.b(9, this.SQZ);
+      }
+      paramInt = i;
+      if (this.SSM != null) {
+        paramInt = i + g.a.a.b.b.a.b(10, this.SSM);
+      }
+      AppMethodBeat.o(169048);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dpc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dpc.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        if (this.BaseResponse == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(32220);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(32220);
+        AppMethodBeat.o(169048);
         return 0;
       }
       if (paramInt == 3)
@@ -97,82 +113,84 @@ public final class biq
         biq localbiq = (biq)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         Object localObject2;
-        boolean bool;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32220);
+          AppMethodBeat.o(169048);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localbiq.BaseResponse = ((BaseResponse)localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new jg();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((jg)localObject2).parseFrom((byte[])localObject1);
+            }
+            localbiq.BaseRequest = ((jg)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(32220);
+          AppMethodBeat.o(169048);
           return 0;
         case 2: 
-          localbiq.KCD = ((g.a.a.a.a)localObject1).UbS.zi();
-          AppMethodBeat.o(32220);
+          localbiq.query = ((g.a.a.a.a)localObject1).abFh.readString();
+          AppMethodBeat.o(169048);
           return 0;
         case 3: 
-          localbiq.KCN = ((g.a.a.a.a)localObject1).UbS.zi();
-          AppMethodBeat.o(32220);
+          localbiq.offset = ((g.a.a.a.a)localObject1).abFh.AK();
+          AppMethodBeat.o(169048);
           return 0;
         case 4: 
-          localbiq.KCE = ((g.a.a.a.a)localObject1).UbS.readString();
-          AppMethodBeat.o(32220);
+          localbiq.xHE = ((g.a.a.a.a)localObject1).abFh.iUw();
+          AppMethodBeat.o(169048);
           return 0;
         case 5: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new dyj();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((dyj)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localbiq.KCF = ((dyj)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(32220);
+          localbiq.scene = ((g.a.a.a.a)localObject1).abFh.AK();
+          AppMethodBeat.o(169048);
           return 0;
         case 6: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          localbiq.fIY = ((g.a.a.a.a)localObject1).abFh.readString();
+          AppMethodBeat.o(169048);
+          return 0;
+        case 7: 
+          paramVarArgs = ((g.a.a.a.a)localObject1).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new ih();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((ih)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localbiq.wRL = ((ih)localObject1);
+            localObject1 = (byte[])paramVarArgs.get(paramInt);
+            localObject2 = new aqe();
+            if ((localObject1 != null) && (localObject1.length > 0)) {
+              ((aqe)localObject2).parseFrom((byte[])localObject1);
+            }
+            localbiq.yjp = ((aqe)localObject2);
             paramInt += 1;
           }
-          AppMethodBeat.o(32220);
+          AppMethodBeat.o(169048);
+          return 0;
+        case 8: 
+          localbiq.SSL = ((g.a.a.a.a)localObject1).abFh.iUw();
+          AppMethodBeat.o(169048);
+          return 0;
+        case 9: 
+          localbiq.SQZ = ((g.a.a.a.a)localObject1).abFh.iUw();
+          AppMethodBeat.o(169048);
           return 0;
         }
-        localbiq.KCz = ((g.a.a.a.a)localObject1).UbS.zi();
-        AppMethodBeat.o(32220);
+        localbiq.SSM = ((g.a.a.a.a)localObject1).abFh.iUw();
+        AppMethodBeat.o(169048);
         return 0;
       }
-      AppMethodBeat.o(32220);
+      AppMethodBeat.o(169048);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.biq
  * JD-Core Version:    0.7.0.1
  */

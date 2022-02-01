@@ -15,23 +15,23 @@ import kotlin.a.v;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/SubscribeMsgExecutor;", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/ISubscribeMsgCGIExecutor;", "username", "", "eventListener", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/SubscribeMsgExecutor$EventListener;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/SubscribeMsgExecutor$EventListener;)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "(Ljava/lang/String;)V", "buffers", "", "getBuffers", "()[B", "setBuffers", "([B)V", "dispatcher", "Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IDispatcher;", "getDispatcher", "()Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IDispatcher;", "setDispatcher", "(Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IDispatcher;)V", "getEventListener", "()Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/SubscribeMsgExecutor$EventListener;", "setEventListener", "(Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/SubscribeMsgExecutor$EventListener;)V", "value", "", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "subscribeMsgTmpItems", "getSubscribeMsgTmpItems", "()Ljava/util/List;", "setSubscribeMsgTmpItems", "(Ljava/util/List;)V", "uIData", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData;", "getUIData", "()Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData;", "setUIData", "(Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData;)V", "dealWithCgiResult", "", "context", "Landroid/content/Context;", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "describeContents", "", "onNetSceneEndCallback", "errType", "errCode", "errMsg", "requestCgi", "writeToParcel", "dest", "flags", "Companion", "EventListener", "luggage-wechat-full-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/SubscribeMsgExecutor;", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/ISubscribeMsgCGIExecutor;", "username", "", "eventListener", "Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/SubscribeMsgExecutor$EventListener;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/SubscribeMsgExecutor$EventListener;)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "(Ljava/lang/String;)V", "buffers", "", "getBuffers", "()[B", "setBuffers", "([B)V", "dispatcher", "Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IDispatcher;", "getDispatcher", "()Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IDispatcher;", "setDispatcher", "(Lcom/tencent/mm/msgsubscription/util/CompatNetSceneBase$IDispatcher;)V", "getEventListener", "()Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/SubscribeMsgExecutor$EventListener;", "setEventListener", "(Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/SubscribeMsgExecutor$EventListener;)V", "value", "", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "subscribeMsgTmpItems", "getSubscribeMsgTmpItems", "()Ljava/util/List;", "setSubscribeMsgTmpItems", "(Ljava/util/List;)V", "uIData", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData;", "getUIData", "()Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData;", "setUIData", "(Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestDialogUiData;)V", "dealWithCgiResult", "", "context", "Landroid/content/Context;", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "describeContents", "", "onNetSceneEndCallback", "errType", "errCode", "errMsg", "requestCgi", "writeToParcel", "dest", "flags", "Companion", "EventListener", "luggage-wechat-full-sdk_release"})
 public final class SubscribeMsgExecutor
   implements ISubscribeMsgCGIExecutor
 {
   public static final Parcelable.Creator<SubscribeMsgExecutor> CREATOR;
-  public static final SubscribeMsgExecutor.a mfU;
-  SubscribeMsgRequestDialogUiData jzq;
-  c mfR;
-  byte[] mfS;
-  List<SubscribeMsgTmpItem> mfT;
-  a.a mfx;
+  public static final SubscribeMsgExecutor.a peb;
+  SubscribeMsgRequestDialogUiData moW;
+  a.a pdD;
+  c pdY;
+  byte[] pdZ;
+  List<SubscribeMsgTmpItem> pea;
   final String username;
   
   static
   {
     AppMethodBeat.i(50627);
-    mfU = new SubscribeMsgExecutor.a((byte)0);
+    peb = new SubscribeMsgExecutor.a((byte)0);
     CREATOR = (Parcelable.Creator)new SubscribeMsgExecutor.b();
     AppMethodBeat.o(50627);
   }
@@ -40,15 +40,15 @@ public final class SubscribeMsgExecutor
   {
     this(String.valueOf(paramParcel.readString()));
     AppMethodBeat.i(50626);
-    List localList = this.mfT;
+    List localList = this.pea;
     Object localObject = paramParcel.createTypedArrayList(SubscribeMsgTmpItem.CREATOR);
     if (localObject != null) {}
-    for (localObject = (Collection)localObject;; localObject = (Collection)v.SXr)
+    for (localObject = (Collection)localObject;; localObject = (Collection)v.aaAd)
     {
       localList.addAll((Collection)localObject);
-      this.mfS = new byte[paramParcel.readInt()];
-      paramParcel.readByteArray(this.mfS);
-      this.jzq = ((SubscribeMsgRequestDialogUiData)paramParcel.readParcelable(SubscribeMsgRequestDialogUiData.class.getClassLoader()));
+      this.pdZ = new byte[paramParcel.readInt()];
+      paramParcel.readByteArray(this.pdZ);
+      this.moW = ((SubscribeMsgRequestDialogUiData)paramParcel.readParcelable(SubscribeMsgRequestDialogUiData.class.getClassLoader()));
       AppMethodBeat.o(50626);
       return;
     }
@@ -58,8 +58,8 @@ public final class SubscribeMsgExecutor
   {
     AppMethodBeat.i(50624);
     this.username = paramString;
-    this.mfT = ((List)new ArrayList());
-    this.mfx = ((a.a)a.mfw);
+    this.pea = ((List)new ArrayList());
+    this.pdD = ((a.a)a.pdC);
     AppMethodBeat.o(50624);
   }
   
@@ -67,15 +67,15 @@ public final class SubscribeMsgExecutor
   {
     this(paramString);
     AppMethodBeat.i(50625);
-    this.mfR = paramc;
+    this.pdY = paramc;
     AppMethodBeat.o(50625);
   }
   
   public final void a(int paramInt1, int paramInt2, String paramString, SubscribeMsgRequestResult paramSubscribeMsgRequestResult)
   {
     AppMethodBeat.i(50622);
-    p.h(paramString, "errMsg");
-    c localc = this.mfR;
+    p.k(paramString, "errMsg");
+    c localc = this.pdY;
     if (localc != null)
     {
       localc.a(paramInt1, paramInt2, paramString, paramSubscribeMsgRequestResult);
@@ -97,12 +97,12 @@ public final class SubscribeMsgExecutor
       paramParcel.writeString(this.username);
     }
     if (paramParcel != null) {
-      paramParcel.writeTypedList(this.mfT);
+      paramParcel.writeTypedList(this.pea);
     }
     Object localObject;
     if (paramParcel != null)
     {
-      localObject = this.mfS;
+      localObject = this.pdZ;
       if (localObject == null) {
         break label105;
       }
@@ -113,7 +113,7 @@ public final class SubscribeMsgExecutor
       paramParcel.writeInt(i);
       if (paramParcel != null)
       {
-        byte[] arrayOfByte = this.mfS;
+        byte[] arrayOfByte = this.pdZ;
         localObject = arrayOfByte;
         if (arrayOfByte == null) {
           localObject = new byte[0];
@@ -123,14 +123,14 @@ public final class SubscribeMsgExecutor
       if (paramParcel == null) {
         break;
       }
-      paramParcel.writeParcelable((Parcelable)this.jzq, paramInt);
+      paramParcel.writeParcelable((Parcelable)this.moW, paramInt);
       AppMethodBeat.o(50623);
       return;
     }
     AppMethodBeat.o(50623);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/SubscribeMsgExecutor$EventListener;", "", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "onSubscribeMsgDone", "luggage-wechat-full-sdk_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/msgsubscription/SubscribeMsgExecutor$EventListener;", "", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "onSubscribeMsgDone", "luggage-wechat-full-sdk_release"})
   public static abstract interface c
   {
     public abstract void a(int paramInt1, int paramInt2, String paramString, SubscribeMsgRequestResult paramSubscribeMsgRequestResult);

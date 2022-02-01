@@ -7,28 +7,28 @@ import kotlin.l.b.a.b.b.a.g;
 public final class q
   extends ay
 {
-  public static final a TNI;
-  private final ay TNG;
-  private final ay TNH;
+  public static final a abqk;
+  private final ay abqi;
+  private final ay abqj;
   
   static
   {
     AppMethodBeat.i(60647);
-    TNI = new a((byte)0);
+    abqk = new a((byte)0);
     AppMethodBeat.o(60647);
   }
   
   private q(ay paramay1, ay paramay2)
   {
-    this.TNG = paramay1;
-    this.TNH = paramay2;
+    this.abqi = paramay1;
+    this.abqj = paramay2;
   }
   
   public static final ay a(ay paramay1, ay paramay2)
   {
     AppMethodBeat.i(60648);
-    p.h(paramay1, "first");
-    p.h(paramay2, "second");
+    p.k(paramay1, "first");
+    p.k(paramay2, "second");
     if (paramay1.isEmpty())
     {
       AppMethodBeat.o(60648);
@@ -47,11 +47,11 @@ public final class q
   public final av N(ab paramab)
   {
     AppMethodBeat.i(60642);
-    p.h(paramab, "key");
-    av localav2 = this.TNG.N(paramab);
+    p.k(paramab, "key");
+    av localav2 = this.abqi.N(paramab);
     av localav1 = localav2;
     if (localav2 == null) {
-      localav1 = this.TNH.N(paramab);
+      localav1 = this.abqj.N(paramab);
     }
     AppMethodBeat.o(60642);
     return localav1;
@@ -60,9 +60,9 @@ public final class q
   public final ab a(ab paramab, bh parambh)
   {
     AppMethodBeat.i(60643);
-    p.h(paramab, "topLevelType");
-    p.h(parambh, "position");
-    paramab = this.TNH.a(this.TNG.a(paramab, parambh), parambh);
+    p.k(paramab, "topLevelType");
+    p.k(parambh, "position");
+    paramab = this.abqj.a(this.abqi.a(paramab, parambh), parambh);
     AppMethodBeat.o(60643);
     return paramab;
   }
@@ -70,16 +70,16 @@ public final class q
   public final g h(g paramg)
   {
     AppMethodBeat.i(60646);
-    p.h(paramg, "annotations");
-    paramg = this.TNH.h(this.TNG.h(paramg));
+    p.k(paramg, "annotations");
+    paramg = this.abqj.h(this.abqi.h(paramg));
     AppMethodBeat.o(60646);
     return paramg;
   }
   
-  public final boolean hKG()
+  public final boolean iOW()
   {
     AppMethodBeat.i(60645);
-    if ((this.TNG.hKG()) || (this.TNH.hKG()))
+    if ((this.abqi.iOW()) || (this.abqj.iOW()))
     {
       AppMethodBeat.o(60645);
       return true;
@@ -88,10 +88,10 @@ public final class q
     return false;
   }
   
-  public final boolean hLy()
+  public final boolean iPR()
   {
     AppMethodBeat.i(60644);
-    if ((this.TNG.hLy()) || (this.TNH.hLy()))
+    if ((this.abqi.iPR()) || (this.abqj.iPR()))
     {
       AppMethodBeat.o(60644);
       return true;
@@ -109,7 +109,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.q
  * JD-Core Version:    0.7.0.1
  */

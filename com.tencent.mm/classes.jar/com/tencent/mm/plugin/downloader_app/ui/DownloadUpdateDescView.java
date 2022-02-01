@@ -12,24 +12,26 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.downloader_app.a.i;
+import com.tencent.mm.plugin.downloader_app.e.e;
+import com.tencent.mm.plugin.downloader_app.e.h;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public class DownloadUpdateDescView
   extends FrameLayout
 {
-  private TextView ljh;
-  private TextView qMw;
-  private i qMx;
+  private TextView odQ;
+  private TextView unI;
+  private i unJ;
   
   public DownloadUpdateDescView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  private void cCn()
+  private void cQS()
   {
     AppMethodBeat.i(183819);
-    this.qMw.post(new Runnable()
+    this.unI.post(new Runnable()
     {
       public final void run()
       {
@@ -49,7 +51,7 @@ public class DownloadUpdateDescView
           String str1 = str2.substring(j, j * 2);
           i = (int)localTextPaint.measureText(str1);
           int k = (int)localTextPaint.measureText(".");
-          int m = (int)localTextPaint.measureText(DownloadUpdateDescView.this.getResources().getString(2131758933));
+          int m = (int)localTextPaint.measureText(DownloadUpdateDescView.this.getResources().getString(e.h.ulc));
           while ((i + k * 3 + m > localLayout.getEllipsizedWidth()) && (str1.length() > 0))
           {
             str1 = str1.substring(0, str1.length() - 1);
@@ -69,21 +71,21 @@ public class DownloadUpdateDescView
   {
     AppMethodBeat.i(183817);
     super.onFinishInflate();
-    this.qMw = ((TextView)findViewById(2131309603));
-    this.ljh = ((TextView)findViewById(2131309602));
-    this.ljh.setOnClickListener(new View.OnClickListener()
+    this.unI = ((TextView)findViewById(e.e.ukv));
+    this.odQ = ((TextView)findViewById(e.e.uku));
+    this.odQ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(183815);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/downloader_app/ui/DownloadUpdateDescView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        if (DownloadUpdateDescView.a(DownloadUpdateDescView.this).getText().equals(DownloadUpdateDescView.this.getResources().getString(2131758933)))
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/downloader_app/ui/DownloadUpdateDescView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        if (DownloadUpdateDescView.a(DownloadUpdateDescView.this).getText().equals(DownloadUpdateDescView.this.getResources().getString(e.h.ulc)))
         {
           DownloadUpdateDescView.b(DownloadUpdateDescView.this).setMaxLines(2147483647);
-          DownloadUpdateDescView.b(DownloadUpdateDescView.this).setText(DownloadUpdateDescView.c(DownloadUpdateDescView.this).qLg);
-          DownloadUpdateDescView.a(DownloadUpdateDescView.this).setText(2131763806);
+          DownloadUpdateDescView.b(DownloadUpdateDescView.this).setText(DownloadUpdateDescView.c(DownloadUpdateDescView.this).ums);
+          DownloadUpdateDescView.a(DownloadUpdateDescView.this).setText(e.h.ulo);
         }
         for (;;)
         {
@@ -92,7 +94,7 @@ public class DownloadUpdateDescView
           AppMethodBeat.o(183815);
           return;
           DownloadUpdateDescView.b(DownloadUpdateDescView.this).setMaxLines(2);
-          DownloadUpdateDescView.a(DownloadUpdateDescView.this).setText(2131758933);
+          DownloadUpdateDescView.a(DownloadUpdateDescView.this).setText(e.h.ulc);
           DownloadUpdateDescView.d(DownloadUpdateDescView.this);
         }
       }
@@ -103,14 +105,14 @@ public class DownloadUpdateDescView
   public void setData(i parami)
   {
     AppMethodBeat.i(183818);
-    this.qMx = parami;
-    if (!Util.isNullOrNil(this.qMx.qLg))
+    this.unJ = parami;
+    if (!Util.isNullOrNil(this.unJ.ums))
     {
       setVisibility(0);
-      this.qMw.setMaxLines(2);
-      this.ljh.setVisibility(8);
-      this.qMw.setText(this.qMx.qLg);
-      cCn();
+      this.unI.setMaxLines(2);
+      this.odQ.setVisibility(8);
+      this.unI.setText(this.unJ.ums);
+      cQS();
       AppMethodBeat.o(183818);
       return;
     }
@@ -120,7 +122,7 @@ public class DownloadUpdateDescView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.ui.DownloadUpdateDescView
  * JD-Core Version:    0.7.0.1
  */

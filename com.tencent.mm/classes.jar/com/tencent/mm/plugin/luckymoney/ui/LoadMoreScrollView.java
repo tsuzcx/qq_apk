@@ -9,7 +9,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class LoadMoreScrollView
   extends ScrollView
 {
-  private a zbs;
+  private a EFP;
   
   public LoadMoreScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,14 +31,14 @@ public class LoadMoreScrollView
   
   public void setOnLoadMoreListener(a parama)
   {
-    this.zbs = parama;
+    this.EFP = parama;
   }
   
   public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LoadMoreScrollView
  * JD-Core Version:    0.7.0.1
  */

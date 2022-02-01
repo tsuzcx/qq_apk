@@ -15,22 +15,27 @@ import android.view.Choreographer;
 import android.view.Choreographer.FrameCallback;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.dynamicbackground.model.DynamicBackgroundNative;
-import com.tencent.mm.dynamicbackground.view.DynamicBackgroundGLSurfaceView;
-import com.tencent.mm.dynamicbackground.view.DynamicBackgroundGLSurfaceView.b;
+import com.tencent.mm.ah.a.d;
+import com.tencent.mm.compatible.util.g;
 import com.tencent.mm.dynamicbackground.view.GradientColorBackgroundView;
-import com.tencent.mm.g.a.dq;
+import com.tencent.mm.f.a.dv;
+import com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopContainerView;
 import com.tencent.mm.plugin.multitask.ui.bg.DynamicBgContainer;
 import com.tencent.mm.plugin.taskbar.api.GyroView;
-import com.tencent.mm.plugin.taskbar.api.HeaderContainer;
+import com.tencent.mm.plugin.taskbar.d.a;
+import com.tencent.mm.plugin.taskbar.d.d;
+import com.tencent.mm.plugin.taskbar.d.g;
 import com.tencent.mm.plugin.taskbar.e;
-import com.tencent.mm.plugin.taskbar.ui.b.d;
+import com.tencent.mm.plugin.taskbar.ui.b.c;
 import com.tencent.mm.plugin.taskbar.ui.b.d.1;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -39,202 +44,572 @@ import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.PlaySound;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
-import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.ax;
 import java.util.HashMap;
-import java.util.Timer;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-public final class a
-  extends com.tencent.mm.plugin.taskbar.api.b
+public class a
+  implements View.OnTouchListener, AbsListView.OnScrollListener
 {
-  private int DBe;
-  private boolean FSA;
-  private boolean FSB;
-  private boolean FSC;
-  private View FSD;
-  private boolean FSE;
-  private int FSF;
-  private int FSG;
-  private int FSH;
-  private Runnable FSI;
-  private Runnable FSJ;
-  private com.tencent.f.i.b FSK;
-  private com.tencent.f.i.b FSL;
-  private boolean FSM;
-  private boolean FSN;
-  private boolean FSO;
-  private boolean FSP;
-  private boolean FSQ;
-  private int FSR;
-  private boolean FSS;
-  private boolean FST;
-  private boolean FSU;
-  private boolean FSV;
-  private boolean FSW;
-  private int FSX;
-  private int FSY;
-  private int FSZ;
-  private float FSs;
-  private float FSt;
-  private int FSu;
-  private int FSv;
-  private com.tencent.mm.plugin.taskbar.api.a FSw;
-  private DynamicBgContainer FSx;
-  private DynamicBackgroundGLSurfaceView FSy;
-  private View FSz;
-  private int FTa;
-  private int FTb;
-  private com.tencent.mm.plugin.appbrand.widget.c.a FTc;
-  private boolean FTd;
-  private Runnable FTe;
-  private boolean FTf;
-  private boolean FTg;
-  private boolean FTh;
-  private Runnable FTi;
-  private PointF FTj;
-  private PointF FTk;
-  private boolean FTl;
-  private Runnable FTm;
-  private boolean FTn;
-  private GyroView FTo;
-  private View FTp;
-  private View FTq;
-  private boolean FTr;
-  private boolean FTs;
-  private boolean FTt;
-  private int Fgj;
-  private View azm;
+  private boolean BNw;
+  public int JMP;
+  private int LuO;
+  public boolean Lue;
+  private List<a> MnA;
+  public com.tencent.mm.plugin.taskbar.api.a MnB;
+  private DynamicBgContainer MnC;
+  public View MnD;
+  private boolean MnE;
+  private boolean MnF;
+  private View MnG;
+  private int MnH;
+  private int MnI;
+  private int MnJ;
+  public Runnable MnK;
+  public Runnable MnL;
+  private com.tencent.e.i.b MnM;
+  private com.tencent.e.i.b MnN;
+  public boolean MnO;
+  private boolean MnP;
+  private boolean MnQ;
+  private boolean MnR;
+  private boolean MnS;
+  private int MnT;
+  private boolean MnU;
+  private boolean MnV;
+  public boolean MnW;
+  private boolean MnX;
+  public boolean MnY;
+  private boolean MnZ;
+  public TaskBarContainer Mnv;
+  private float Mnw;
+  private float Mnx;
+  private int Mny;
+  private int Mnz;
+  int Moa;
+  private int Mob;
+  private int Moc;
+  private int Mod;
+  private com.tencent.mm.plugin.appbrand.widget.d.a Moe;
+  private boolean Mof;
+  public Runnable Mog;
+  public boolean Moh;
+  private boolean Moi;
+  private boolean Moj;
+  private Runnable Mok;
+  private int Mol;
+  private PointF Mom;
+  private PointF Mon;
+  private boolean Moo;
+  private Runnable Mop;
+  private boolean Moq;
+  private GyroView Mor;
+  private View Mos;
+  private AppBrandDesktopContainerView Mot;
+  private boolean Mou;
+  private boolean Mov;
+  private boolean Mow;
   private Context mContext;
-  private ListView mListView;
-  private View nZg;
-  private HeaderContainer onh;
-  private Vibrator ooM;
-  private boolean pJi;
-  private int vaf;
-  private boolean xbw;
+  public ListView mListView;
+  public View raR;
+  private Vibrator rqy;
+  public int wYT;
+  public View xp;
   
-  public a(Context paramContext, ListView paramListView, HeaderContainer paramHeaderContainer)
+  public a(Context paramContext, ListView paramListView, TaskBarContainer paramTaskBarContainer)
   {
-    AppMethodBeat.i(238118);
-    this.FSs = 0.2F;
-    this.FSt = 0.05F;
-    this.FSu = 0;
-    this.FSv = 0;
-    this.FSA = true;
-    this.FSB = false;
-    this.FSC = false;
-    this.FSE = true;
-    this.FSF = 0;
-    this.FSG = 0;
-    this.FSH = 0;
-    this.FSI = null;
-    this.FSJ = null;
-    this.FSK = null;
-    this.FSL = null;
-    this.FSM = false;
-    this.FSN = false;
-    this.FSO = true;
-    this.FSP = false;
-    this.FSQ = false;
-    this.FSR = 0;
-    this.FSS = false;
-    this.FST = true;
-    this.FSU = true;
-    this.FSV = false;
-    this.FSW = false;
-    this.Fgj = -2;
-    this.FSX = 0;
-    this.FSY = 0;
-    this.FSZ = 0;
-    this.FTa = 0;
-    this.FTb = 0;
-    this.vaf = 0;
-    this.FTd = false;
-    this.FTf = true;
-    this.FTg = false;
-    this.FTh = false;
-    this.FTj = new PointF();
-    this.FTk = new PointF();
-    this.pJi = false;
-    this.FTl = false;
-    this.FTm = new Runnable()
+    AppMethodBeat.i(215354);
+    this.Mnw = 0.2F;
+    this.Mnx = 0.05F;
+    this.Mny = 0;
+    this.Mnz = 0;
+    this.MnA = new LinkedList();
+    this.MnE = true;
+    this.MnF = false;
+    this.MnH = 0;
+    this.MnI = 0;
+    this.MnJ = 0;
+    this.MnK = null;
+    this.MnL = null;
+    this.MnM = null;
+    this.MnN = null;
+    this.MnO = false;
+    this.MnP = false;
+    this.MnQ = true;
+    this.MnR = false;
+    this.MnS = false;
+    this.MnT = 0;
+    this.MnU = false;
+    this.MnV = true;
+    this.MnW = true;
+    this.MnX = true;
+    this.MnY = false;
+    this.MnZ = false;
+    this.LuO = -2;
+    this.Moa = 0;
+    this.Mob = 0;
+    this.Moc = 0;
+    this.Mod = 0;
+    this.wYT = 0;
+    this.Mof = false;
+    this.Moh = true;
+    this.Moi = false;
+    this.Moj = false;
+    this.Mol = 0;
+    this.Mom = new PointF();
+    this.Mon = new PointF();
+    this.Lue = false;
+    this.Moo = false;
+    this.Mop = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(238112);
-        a.k(a.this);
-        AppMethodBeat.o(238112);
+        AppMethodBeat.i(214688);
+        a.j(a.this);
+        AppMethodBeat.o(214688);
       }
     };
-    this.FTn = true;
-    this.FTr = true;
-    this.FTs = false;
-    this.FTt = false;
+    this.Moq = true;
+    this.Mou = true;
+    this.Mov = false;
+    this.Mow = false;
     this.mContext = paramContext;
     this.mListView = paramListView;
-    this.onh = paramHeaderContainer;
-    this.ooM = ((Vibrator)paramContext.getSystemService("vibrator"));
-    this.DBe = (au.eu(this.mContext) + au.getStatusBarHeight(this.mContext));
+    this.Mnv = paramTaskBarContainer;
+    this.rqy = ((Vibrator)paramContext.getSystemService("vibrator"));
+    this.JMP = (ax.ew(this.mContext) + ax.getStatusBarHeight(this.mContext));
     boolean bool = paramListView.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(238105);
-        a.a(a.this, au.eu(a.a(a.this)) + au.getStatusBarHeight(a.a(a.this)));
-        Log.i("MicroMsg.AppBrandDesktopAnimController", "[run] mScrollOffset:%d UIUtilsStatusBar:%d WeUIToolHelperStatusBar:%d", new Object[] { Integer.valueOf(a.b(a.this)), Integer.valueOf(ao.getStatusBarHeight(a.a(a.this))), Integer.valueOf(au.getStatusBarHeight(a.a(a.this))) });
-        AppMethodBeat.o(238105);
+        AppMethodBeat.i(214808);
+        a.a(a.this, ax.ew(a.a(a.this)) + ax.getStatusBarHeight(a.a(a.this)));
+        Log.i("MicroMsg.TaskBarAnimController", "[run] mScrollOffset:%d UIUtilsStatusBar:%d WeUIToolHelperStatusBar:%d", new Object[] { Integer.valueOf(a.b(a.this)), Integer.valueOf(ar.getStatusBarHeight(a.a(a.this))), Integer.valueOf(ax.getStatusBarHeight(a.a(a.this))) });
+        AppMethodBeat.o(214808);
       }
     });
-    e.fur();
-    this.FSU = e.atB();
-    Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo init AppBrandDesktopAnimController isEnableDynamicBackground: %b mScrollOffset:%s ret:%s", new Object[] { Boolean.valueOf(this.FSU), Integer.valueOf(this.DBe), Boolean.valueOf(bool) });
-    fuH();
-    fuI();
-    cMc();
-    fuz();
-    this.FTc = new com.tencent.mm.plugin.appbrand.widget.c.a(this.mContext.getResources().getColor(2131099746), ar.fj(this.mContext.getResources().getColor(2131099679), 60));
-    AppMethodBeat.o(238118);
+    e.giT();
+    this.MnX = e.aAt();
+    Log.i("MicroMsg.TaskBarAnimController", "alvinluo init AppBrandDesktopAnimController isEnableDynamicBackground: %b mScrollOffset:%s ret:%s", new Object[] { Boolean.valueOf(this.MnX), Integer.valueOf(this.JMP), Boolean.valueOf(bool) });
+    gjk();
+    gjl();
+    daP();
+    giY();
+    this.Moe = new com.tencent.mm.plugin.appbrand.widget.d.a(this.mContext.getResources().getColor(d.a.FG_0), au.fG(this.mContext.getResources().getColor(d.a.BW_100_Alpha_0_8), 60));
+    AppMethodBeat.o(215354);
   }
   
-  private void aby(int paramInt)
+  private void aiQ(int paramInt)
   {
-    AppMethodBeat.i(238128);
-    Log.v("MicroMsg.AppBrandDesktopAnimController", "alvinluo setActionBarVisible: %d", new Object[] { Integer.valueOf(paramInt) });
-    if ((this.nZg != null) && (this.nZg.getVisibility() != paramInt)) {
-      this.nZg.setVisibility(paramInt);
+    AppMethodBeat.i(215374);
+    Log.i("MicroMsg.TaskBarAnimController", "alvinluo setActionBarVisible: %d", new Object[] { Integer.valueOf(paramInt) });
+    if ((this.raR != null) && (this.raR.getVisibility() != paramInt)) {
+      this.raR.setVisibility(paramInt);
     }
-    AppMethodBeat.o(238128);
+    AppMethodBeat.o(215374);
   }
   
-  private void cMc()
+  private void cl(float paramFloat)
   {
-    AppMethodBeat.i(238120);
-    try
+    AppMethodBeat.i(215402);
+    Log.d("MicroMsg.TaskBarAnimController", "alvinluo updateActionBarFgColor ratio: %f", new Object[] { Float.valueOf(paramFloat) });
+    int i = this.Moe.aY(1.0F - paramFloat);
+    if (this.MnB != null) {
+      this.MnB.g(paramFloat, i, i);
+    }
+    if (this.Mnv != null) {
+      this.Mnv.ks(i, i);
+    }
+    AppMethodBeat.o(215402);
+  }
+  
+  private int gja()
+  {
+    AppMethodBeat.i(215369);
+    if (this.Mnv.getMeasuredHeight() == 0)
     {
-      this.FSF = ((int)(this.mContext.getResources().getDisplayMetrics().heightPixels * 0.2F));
-      this.FSG = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 16);
-      if (this.FSF < this.FSG) {
-        this.FSG = 0;
-      }
-      this.FSH = this.FSF;
-      this.FSZ = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 100);
-      Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo configAnim mStartAlphaAnimDisFromBottom: %d, mAlphaAnimationDistance: %d, mGyroViewAnimateAlphaDistance: %d", new Object[] { Integer.valueOf(this.FSF), Integer.valueOf(this.FSH), Integer.valueOf(this.FSZ) });
-      AppMethodBeat.o(238120);
+      AppMethodBeat.o(215369);
+      return 0;
+    }
+    int i = this.Mnv.getBottom();
+    int j = this.JMP;
+    AppMethodBeat.o(215369);
+    return i - j;
+  }
+  
+  private void gjb()
+  {
+    AppMethodBeat.i(215382);
+    this.MnT = 0;
+    this.MnY = true;
+    if ((this.MnG != null) && (this.MnG.getVisibility() == 0)) {
+      this.MnG.invalidate();
+    }
+    Log.i("MicroMsg.TaskBarAnimController", "alvinluo onOpenHeader isToClose: %b, isEnableDynamicBackgroud: %b", new Object[] { Boolean.valueOf(this.MnS), Boolean.valueOf(this.MnX) });
+    if (this.xp == null)
+    {
+      AppMethodBeat.o(215382);
       return;
     }
-    catch (Exception localException)
+    if (this.MnS)
     {
-      AppMethodBeat.o(238120);
+      gjd();
+      AppMethodBeat.o(215382);
+      return;
+    }
+    if (!gjg())
+    {
+      Log.i("MicroMsg.TaskBarAnimController", "alvinluo onOpen header not visible");
+      this.xp.setTranslationY(0.0F);
+      AppMethodBeat.o(215382);
+      return;
+    }
+    this.xp.animate().translationY(this.xp.getHeight()).setDuration(260L).setListener(new Animator.AnimatorListener()
+    {
+      public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
+      
+      public final void onAnimationEnd(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(215544);
+        a.k(a.this).setVisibility(4);
+        a.k(a.this).animate().setListener(null);
+        AppMethodBeat.o(215544);
+      }
+      
+      public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
+      
+      public final void onAnimationStart(Animator paramAnonymousAnimator) {}
+    }).start();
+    gjc();
+    AppMethodBeat.o(215382);
+  }
+  
+  private void gjc()
+  {
+    AppMethodBeat.i(215383);
+    this.Mof = true;
+    if (this.Mog != null) {
+      this.mListView.removeCallbacks(this.Mog);
+    }
+    ListView localListView = this.mListView;
+    Runnable local9 = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(215302);
+        Log.i("MicroMsg.TaskBarAnimController", "alvinluo setIgnoreInLayout false");
+        a.l(a.this);
+        AppMethodBeat.o(215302);
+      }
+    };
+    this.Mog = local9;
+    localListView.postDelayed(local9, 500L);
+    AppMethodBeat.o(215383);
+  }
+  
+  private void gje()
+  {
+    AppMethodBeat.i(215385);
+    this.MnY = false;
+    gjl();
+    gjf();
+    if (this.xp == null)
+    {
+      AppMethodBeat.o(215385);
+      return;
+    }
+    this.xp.setVisibility(0);
+    ViewPropertyAnimator localViewPropertyAnimator = this.xp.animate().translationY(0.0F);
+    if (this.xp.getTranslationY() == 0.0F) {}
+    for (long l = 130L;; l = 260L)
+    {
+      localViewPropertyAnimator.setDuration(l).setListener(new Animator.AnimatorListener()
+      {
+        public final void onAnimationCancel(Animator paramAnonymousAnimator)
+        {
+          AppMethodBeat.i(215678);
+          a.k(a.this).animate().setListener(null);
+          a.k(a.this).setTranslationY(0.0F);
+          AppMethodBeat.o(215678);
+        }
+        
+        public final void onAnimationEnd(Animator paramAnonymousAnimator)
+        {
+          AppMethodBeat.i(215677);
+          a.k(a.this).animate().setListener(null);
+          a.k(a.this).setTranslationY(0.0F);
+          AppMethodBeat.o(215677);
+        }
+        
+        public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
+        
+        public final void onAnimationStart(Animator paramAnonymousAnimator) {}
+      }).start();
+      gjc();
+      AppMethodBeat.o(215385);
+      return;
     }
   }
   
-  private void cb(float paramFloat)
+  private void gjf()
   {
-    AppMethodBeat.i(238146);
-    int j = com.tencent.mm.plugin.taskbar.ui.c.a.d(paramFloat, this.mContext.getResources().getColor(2131099648));
+    AppMethodBeat.i(215386);
+    if (this.MnK != null) {
+      MMHandlerThread.removeRunnable(this.MnK);
+    }
+    if (this.MnQ)
+    {
+      Runnable local11 = new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(215466);
+          Log.i("MicroMsg.TaskBarAnimController", "virbg: delayHideBackgroundView");
+          a.m(a.this);
+          AppMethodBeat.o(215466);
+        }
+      };
+      this.MnK = local11;
+      MMHandlerThread.postToMainThreadDelayed(local11, 500L);
+      AppMethodBeat.o(215386);
+      return;
+    }
+    gjm();
+    AppMethodBeat.o(215386);
+  }
+  
+  private boolean gjh()
+  {
+    AppMethodBeat.i(215391);
+    if ((Math.abs(this.Mon.y - this.Mom.y) <= 5.0F) || (this.Mon.y <= this.Mom.y))
+    {
+      AppMethodBeat.o(215391);
+      return true;
+    }
+    AppMethodBeat.o(215391);
+    return false;
+  }
+  
+  private int gji()
+  {
+    AppMethodBeat.i(215392);
+    if (this.Mny == 0) {
+      this.Mny = ((int)(this.Mnv.getHeight() * this.Mnw));
+    }
+    int i = this.Mny;
+    AppMethodBeat.o(215392);
+    return i;
+  }
+  
+  private int gjj()
+  {
+    AppMethodBeat.i(215394);
+    if (this.Mnz == 0) {
+      this.Mnz = ((int)(this.Mnv.getHeight() * this.Mnx));
+    }
+    int i = this.Mnz;
+    AppMethodBeat.o(215394);
+    return i;
+  }
+  
+  private void gjk()
+  {
+    this.Mow = true;
+    this.Mou = true;
+  }
+  
+  private void gjl()
+  {
+    AppMethodBeat.i(215395);
+    if (this.Mor != null)
+    {
+      this.Mor.f(0.0F, gji());
+      this.Mor.setTranslationY(0.0F);
+    }
+    AppMethodBeat.o(215395);
+  }
+  
+  private void gjm()
+  {
+    AppMethodBeat.i(215396);
+    boolean bool = this.MnX;
+    this.MnX = e.aAt();
+    Log.i("MicroMsg.TaskBarAnimController", "virbg: hideBackgroundView refresh isEnableDynamicBackground: %b, lastEnable: %b", new Object[] { Boolean.valueOf(this.MnX), Boolean.valueOf(bool) });
+    if ((this.MnQ) && (gjg()))
+    {
+      AppMethodBeat.o(215396);
+      return;
+    }
+    if ((bool) && (this.MnX) && (!this.MnE))
+    {
+      Log.i("MicroMsg.TaskBarAnimController", "virbg: hideBackgroundView SurfaceView onPause and set GONE");
+      this.MnC.fbE();
+      this.MnE = true;
+    }
+    AppMethodBeat.o(215396);
+  }
+  
+  public final void DC(final int paramInt)
+  {
+    AppMethodBeat.i(215360);
+    Log.i("MicroMsg.TaskBarAnimController", "alvinluo closeHeader isVisibleHeader: %b, reason: %d", new Object[] { Boolean.valueOf(gjg()), Integer.valueOf(paramInt) });
+    Object localObject = this.Mnv;
+    if ((paramInt == 11) && (((TaskBarContainer)localObject).MoV.cnm())) {
+      ((TaskBarContainer)localObject).MoV.cnl();
+    }
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(215360);
+      return;
+    }
+    this.MnS = true;
+    this.Lue = false;
+    aiQ(0);
+    if (!gjg())
+    {
+      gje();
+      AppMethodBeat.o(215360);
+      return;
+    }
+    this.Moi = true;
+    this.mListView.removeCallbacks(this.Mok);
+    localObject = this.mListView;
+    Runnable local5 = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(215039);
+        int j = a.c(a.this).getBottom() - a.b(a.this);
+        Log.i("MicroMsg.TaskBarAnimController", "alvinluo closeHeader distance: %d, bottom: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(a.c(a.this).getBottom()) });
+        int i;
+        if (a.f(a.this))
+        {
+          i = 10;
+          a.d(a.this).smoothScrollBy(j, i);
+          a.g(a.this);
+          a.a(a.this, false);
+          if (a.h(a.this) == 0) {
+            break label149;
+          }
+          j = a.h(a.this);
+          a.i(a.this);
+        }
+        for (;;)
+        {
+          a.this.a(false, false, j, i);
+          AppMethodBeat.o(215039);
+          return;
+          i = 600;
+          break;
+          label149:
+          j = paramInt;
+        }
+      }
+    };
+    this.Mok = local5;
+    ((ListView)localObject).post(local5);
+    AppMethodBeat.o(215360);
+  }
+  
+  public final void a(a parama)
+  {
+    AppMethodBeat.i(215361);
+    if (!this.MnA.contains(parama)) {
+      this.MnA.add(parama);
+    }
+    AppMethodBeat.o(215361);
+  }
+  
+  protected final void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(215365);
+    Log.i("MicroMsg.TaskBarAnimController", "alvinluo notifyCallback isOpen: %b, isDrag: %b, reason: %d", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(paramInt1) });
+    Iterator localIterator;
+    if (paramBoolean1)
+    {
+      gjb();
+      if ((this.Mol & 0x2) != 0)
+      {
+        AppMethodBeat.o(215365);
+        return;
+      }
+      this.Mol |= 0x2;
+      this.Mol &= 0xFFFFFFFB;
+      localIterator = this.MnA.iterator();
+    }
+    for (;;)
+    {
+      if (!localIterator.hasNext()) {
+        break label218;
+      }
+      a locala = (a)localIterator.next();
+      if (paramBoolean1)
+      {
+        if (paramBoolean2)
+        {
+          locala.gjo();
+          continue;
+          gje();
+          if ((this.Mol & 0x4) != 0)
+          {
+            AppMethodBeat.o(215365);
+            return;
+          }
+          this.Mol |= 0x4;
+          this.Mol &= 0xFFFFFFFD;
+          break;
+        }
+        locala.gjn();
+        continue;
+      }
+      if (paramBoolean2) {
+        locala.aiS(paramInt1);
+      } else {
+        locala.kr(paramInt1, paramInt2);
+      }
+    }
+    label218:
+    AppMethodBeat.o(215365);
+  }
+  
+  protected final void aJ(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(215363);
+    a(paramBoolean1, paramBoolean2, 0, 0);
+    AppMethodBeat.o(215363);
+  }
+  
+  public final void aiR(int paramInt)
+  {
+    AppMethodBeat.i(215387);
+    Log.i("MicroMsg.TaskBarAnimController", "updateScrollOffset %d", new Object[] { Integer.valueOf(paramInt) });
+    this.JMP = paramInt;
+    AppMethodBeat.o(215387);
+  }
+  
+  public final void al(MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(215371);
+    Log.i("MicroMsg.TaskBarAnimController", "alvinluo setActionDownEvent %d, x: %f, y: %f", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Float.valueOf(paramMotionEvent.getRawX()), Float.valueOf(paramMotionEvent.getRawY()) });
+    this.mListView.removeCallbacks(this.Mok);
+    this.mListView.removeCallbacks(this.MnL);
+    this.Mom.set(paramMotionEvent.getRawX(), paramMotionEvent.getRawY());
+    this.Moj = false;
+    this.Mof = false;
+    this.Lue = true;
+    AppMethodBeat.o(215371);
+  }
+  
+  public final void ck(float paramFloat)
+  {
+    AppMethodBeat.i(215399);
+    int j = com.tencent.mm.plugin.taskbar.ui.c.a.g(paramFloat, this.mContext.getResources().getColor(d.a.BG_0));
     int i;
-    if ((Build.VERSION.SDK_INT >= 23) && (!com.tencent.mm.compatible.util.g.isMIUIV8())) {
+    if ((Build.VERSION.SDK_INT >= 23) && (!g.isMIUIV8())) {
       i = j;
     }
     for (;;)
@@ -242,736 +617,407 @@ public final class a
       if (this.mListView != null) {
         this.mListView.setBackgroundColor(j);
       }
-      if (this.FSz != null) {
-        this.FSz.setBackgroundColor(i);
+      if (this.MnD != null) {
+        this.MnD.setBackgroundColor(i);
       }
-      AppMethodBeat.o(238146);
+      AppMethodBeat.o(215399);
       return;
       if (Build.VERSION.SDK_INT >= 21) {
-        i = com.tencent.mm.plugin.taskbar.ui.c.a.d(paramFloat, ar.v(this.mContext.getResources().getColor(2131101173), this.mContext.getResources().getColor(2131099648)));
+        i = com.tencent.mm.plugin.taskbar.ui.c.a.g(paramFloat, au.A(this.mContext.getResources().getColor(a.d.statusbar_fg_drak_color), this.mContext.getResources().getColor(d.a.BG_0)));
       } else {
         i = j;
       }
     }
   }
   
-  private void cc(float paramFloat)
+  public final void daP()
   {
-    AppMethodBeat.i(238148);
-    Log.d("MicroMsg.AppBrandDesktopAnimController", "alvinluo updateActionBarFgColor ratio: %f", new Object[] { Float.valueOf(paramFloat) });
-    int i = this.FTc.aW(1.0F - paramFloat);
-    if (this.FSw != null) {
-      this.FSw.g(paramFloat, i, i);
-    }
-    if (this.onh != null) {
-      this.onh.ji(i, i);
-    }
-    AppMethodBeat.o(238148);
-  }
-  
-  private void f(float paramFloat, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(238147);
-    Log.d("MicroMsg.AppBrandDesktopAnimController", "alvinluo updateActionBarBgColor ratio: %f, scrollOffset: %d", new Object[] { Float.valueOf(paramFloat), Integer.valueOf(paramInt2) });
-    paramInt1 = com.tencent.mm.plugin.taskbar.ui.c.a.d(paramFloat, paramInt1);
-    if (this.FSw != null) {
-      this.FSw.f(paramFloat, paramInt1, paramInt2);
-    }
-    if (this.onh != null) {
-      this.onh.abx(paramInt1);
-    }
-    AppMethodBeat.o(238147);
-  }
-  
-  private int fuB()
-  {
-    AppMethodBeat.i(238124);
-    if (this.onh.getMeasuredHeight() == 0)
+    AppMethodBeat.i(215357);
+    try
     {
-      AppMethodBeat.o(238124);
-      return 0;
-    }
-    int i = this.onh.getBottom();
-    int j = this.DBe;
-    AppMethodBeat.o(238124);
-    return i - j;
-  }
-  
-  private void fuC()
-  {
-    AppMethodBeat.i(238131);
-    this.FTd = true;
-    if (this.FTe != null) {
-      this.mListView.removeCallbacks(this.FTe);
-    }
-    ListView localListView = this.mListView;
-    Runnable local9 = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(238114);
-        Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo setIgnoreInLayout false");
-        a.m(a.this);
-        AppMethodBeat.o(238114);
+      this.MnH = ((int)(this.mContext.getResources().getDisplayMetrics().heightPixels * 0.2F));
+      this.MnI = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 16);
+      if (this.MnH < this.MnI) {
+        this.MnI = 0;
       }
-    };
-    this.FTe = local9;
-    localListView.postDelayed(local9, 500L);
-    AppMethodBeat.o(238131);
-  }
-  
-  private void fuD()
-  {
-    AppMethodBeat.i(238134);
-    Log.i("MicroMsg.AppBrandDesktopAnimController", "virbg: request delayHideBackgroundView %b", new Object[] { Boolean.valueOf(this.FSO) });
-    if (this.FSI != null) {
-      MMHandlerThread.removeRunnable(this.FSI);
-    }
-    if (this.FSO)
-    {
-      Runnable local11 = new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(238117);
-          Log.i("MicroMsg.AppBrandDesktopAnimController", "virbg: delayHideBackgroundView");
-          a.n(a.this);
-          AppMethodBeat.o(238117);
-        }
-      };
-      this.FSI = local11;
-      MMHandlerThread.postToMainThreadDelayed(local11, 500L);
-      AppMethodBeat.o(238134);
+      this.MnJ = this.MnH;
+      this.Moc = com.tencent.mm.ci.a.fromDPToPix(this.mContext, 100);
+      Log.i("MicroMsg.TaskBarAnimController", "alvinluo configAnim mStartAlphaAnimDisFromBottom: %d, mAlphaAnimationDistance: %d, mGyroViewAnimateAlphaDistance: %d", new Object[] { Integer.valueOf(this.MnH), Integer.valueOf(this.MnJ), Integer.valueOf(this.Moc) });
+      AppMethodBeat.o(215357);
       return;
     }
-    fuJ();
-    AppMethodBeat.o(238134);
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(215357);
+    }
   }
   
-  private boolean fuE()
+  public final void f(float paramFloat, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(238140);
-    if ((Math.abs(this.FTk.y - this.FTj.y) <= 5.0F) || (this.FTk.y <= this.FTj.y))
+    AppMethodBeat.i(215400);
+    Log.d("MicroMsg.TaskBarAnimController", "alvinluo updateActionBarBgColor ratio: %f, scrollOffset: %d", new Object[] { Float.valueOf(paramFloat), Integer.valueOf(paramInt2) });
+    paramInt1 = com.tencent.mm.plugin.taskbar.ui.c.a.g(paramFloat, paramInt1);
+    if (this.MnB != null) {
+      this.MnB.f(paramFloat, paramInt1, paramInt2);
+    }
+    if (this.Mnv != null) {
+      this.Mnv.aiV(paramInt1);
+    }
+    AppMethodBeat.o(215400);
+  }
+  
+  public final boolean fcH()
+  {
+    AppMethodBeat.i(215389);
+    if ((gjg()) && (this.MnY))
     {
-      AppMethodBeat.o(238140);
+      AppMethodBeat.o(215389);
       return true;
     }
-    AppMethodBeat.o(238140);
+    AppMethodBeat.o(215389);
     return false;
   }
   
-  private int fuF()
+  public final void giY()
   {
-    AppMethodBeat.i(238141);
-    if (this.FSu == 0) {
-      this.FSu = ((int)(this.onh.getHeight() * this.FSs));
-    }
-    int i = this.FSu;
-    AppMethodBeat.o(238141);
-    return i;
+    AppMethodBeat.i(215356);
+    this.wYT = this.mContext.getResources().getColor(d.a.BG_0);
+    AppMethodBeat.o(215356);
   }
   
-  private int fuG()
+  public final void giZ()
   {
-    AppMethodBeat.i(238142);
-    if (this.FSv == 0) {
-      this.FSv = ((int)(this.onh.getHeight() * this.FSt));
-    }
-    int i = this.FSv;
-    AppMethodBeat.o(238142);
-    return i;
-  }
-  
-  private void fuH()
-  {
-    this.FTt = true;
-    this.FTr = true;
-  }
-  
-  private void fuI()
-  {
-    AppMethodBeat.i(238143);
-    if (this.FTo != null)
+    AppMethodBeat.i(215358);
+    Log.i("MicroMsg.TaskBarAnimController", "alvinluo openHeader isVisibleHeader: %b, headerOpen: %b", new Object[] { Boolean.valueOf(gjg()), Boolean.valueOf(this.MnY) });
+    if (!gjg())
     {
-      this.FTo.c(0.0F, fuF());
-      this.FTo.setTranslationY(0.0F);
-    }
-    AppMethodBeat.o(238143);
-  }
-  
-  private void fuJ()
-  {
-    AppMethodBeat.i(238144);
-    boolean bool2 = this.FSU;
-    if ((e.atB()) && (this.FSy != null)) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      this.FSU = bool1;
-      Log.i("MicroMsg.AppBrandDesktopAnimController", "virbg: hideBackgroundView refresh isEnableDynamicBackground: %b, lastEnable: %b", new Object[] { Boolean.valueOf(this.FSU), Boolean.valueOf(bool2) });
-      if ((!this.FSO) || (!fuw())) {
-        break;
-      }
-      AppMethodBeat.o(238144);
+      AppMethodBeat.o(215358);
       return;
     }
-    if (bool2)
-    {
-      if ((this.FSy != null) && (!this.FSA))
-      {
-        Log.i("MicroMsg.AppBrandDesktopAnimController", "virbg: hideBackgroundView SurfaceView onPause and set GONE");
-        this.FSx.ery();
-        this.FSA = true;
-        this.FSB = true;
-        AppMethodBeat.o(238144);
-      }
+    if ((this.Mou) && (this.Mov)) {
+      PlaySound.play(this.mContext, d.g.app_brand_recent_view_down_sound_path, 3);
     }
-    else if (this.FSy != null)
-    {
-      Log.i("MicroMsg.AppBrandDesktopAnimController", "virbg: hideBackgroundView SurfaceView set GONE");
-      this.FSy.setVisibility(8);
-    }
-    AppMethodBeat.o(238144);
-  }
-  
-  public final void abu(final int paramInt)
-  {
-    AppMethodBeat.i(238122);
-    Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo closeHeader isVisibleHeader: %b, reason: %d", new Object[] { Boolean.valueOf(fuw()), Integer.valueOf(paramInt) });
-    if (this.onh.abw(paramInt))
-    {
-      AppMethodBeat.o(238122);
-      return;
-    }
-    this.FSQ = true;
-    this.pJi = false;
-    aby(0);
-    if (!fuw())
-    {
-      wm(false);
-      AppMethodBeat.o(238122);
-      return;
-    }
-    this.FTg = true;
-    this.mListView.removeCallbacks(this.FTi);
-    ListView localListView = this.mListView;
-    Runnable local5 = new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(238110);
-        int j = a.c(a.this).getBottom() - a.b(a.this);
-        Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo closeHeader distance: %d, bottom: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(a.c(a.this).getBottom()) });
-        int i;
-        if (a.g(a.this))
-        {
-          i = 10;
-          a.d(a.this).smoothScrollBy(j, i);
-          a.h(a.this);
-          a.a(a.this, false);
-          if (a.i(a.this) == 0) {
-            break label147;
-          }
-          j = a.i(a.this);
-          a.j(a.this);
-        }
-        for (;;)
-        {
-          a.a(a.this, j, i);
-          AppMethodBeat.o(238110);
-          return;
-          i = 600;
-          break;
-          label147:
-          j = paramInt;
-        }
-      }
-    };
-    this.FTi = local5;
-    localListView.post(local5);
-    AppMethodBeat.o(238122);
-  }
-  
-  public final void abv(int paramInt)
-  {
-    AppMethodBeat.i(238135);
-    Log.i("MicroMsg.AppBrandDesktopAnimController", "updateScrollOffset %d", new Object[] { Integer.valueOf(paramInt) });
-    this.DBe = paramInt;
-    AppMethodBeat.o(238135);
-  }
-  
-  public final void ac(MotionEvent paramMotionEvent)
-  {
-    AppMethodBeat.i(238126);
-    Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo setActionDownEvent %d, x: %f, y: %f", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Float.valueOf(paramMotionEvent.getRawX()), Float.valueOf(paramMotionEvent.getRawY()) });
-    this.mListView.removeCallbacks(this.FTi);
-    this.mListView.removeCallbacks(this.FSJ);
-    this.FTj.set(paramMotionEvent.getRawX(), paramMotionEvent.getRawY());
-    this.FTh = false;
-    this.FTd = false;
-    this.pJi = true;
-    AppMethodBeat.o(238126);
-  }
-  
-  public final boolean esy()
-  {
-    AppMethodBeat.i(238138);
-    if ((fuw()) && (this.FSV))
-    {
-      AppMethodBeat.o(238138);
-      return true;
-    }
-    AppMethodBeat.o(238138);
-    return false;
-  }
-  
-  public final boolean fuw()
-  {
-    AppMethodBeat.i(238139);
-    Log.v("MicroMsg.AppBrandDesktopAnimController", "alvinluo isVisibleHeader bottom: %d, scrollOffset: %d, firstVisiblePosition: %d HeaderOpen:%b", new Object[] { Integer.valueOf(this.onh.getBottom()), Integer.valueOf(this.DBe), Integer.valueOf(this.mListView.getFirstVisiblePosition()), Boolean.valueOf(this.FSV) });
-    if ((this.onh.getBottom() >= this.DBe + 10) && (this.mListView.getFirstVisiblePosition() == 0))
-    {
-      AppMethodBeat.o(238139);
-      return true;
-    }
-    AppMethodBeat.o(238139);
-    return false;
-  }
-  
-  public final void fux()
-  {
-    AppMethodBeat.i(238121);
-    Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo openHeader isVisibleHeader: %b, headerOpen: %b", new Object[] { Boolean.valueOf(fuw()), Boolean.valueOf(this.FSV) });
-    if (!fuw())
-    {
-      AppMethodBeat.o(238121);
-      return;
-    }
-    if ((this.FTr) && (this.FTs)) {
-      PlaySound.play(this.mContext, 2131755659, 3);
-    }
-    this.FTg = true;
-    this.FSQ = false;
-    this.mListView.removeCallbacks(this.FTi);
+    this.Moi = true;
+    this.MnS = false;
+    this.mListView.removeCallbacks(this.Mok);
     Object localObject = this.mListView;
     Runnable local4 = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(238109);
-        Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo doOpenHeader");
+        AppMethodBeat.i(215118);
+        Log.i("MicroMsg.TaskBarAnimController", "alvinluo doOpenHeader");
         int i = a.c(a.this).getTop();
         a.d(a.this).smoothScrollBy(i, 600);
         a.e(a.this);
-        a.f(a.this);
-        AppMethodBeat.o(238109);
+        a.this.aJ(true, false);
+        AppMethodBeat.o(215118);
       }
     };
-    this.FTi = local4;
+    this.Mok = local4;
     ((ListView)localObject).post(local4);
-    if (!this.FSU)
+    if (!this.MnX)
     {
-      Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo checkAndStartPerformanceMonitor not enableNativeBackground not need to monitor");
-      AppMethodBeat.o(238121);
+      Log.i("MicroMsg.TaskBarAnimController", "alvinluo checkAndStartPerformanceMonitor not enableNativeBackground not need to monitor");
+      AppMethodBeat.o(215358);
       return;
     }
-    localObject = com.tencent.mm.plugin.taskbar.ui.a.a.FUZ;
-    if (!com.tencent.mm.plugin.taskbar.ui.a.a.fuZ())
+    localObject = com.tencent.mm.plugin.taskbar.ui.a.a.Mqu;
+    if (!com.tencent.mm.plugin.taskbar.ui.a.a.gjX())
     {
-      Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo checkAndStartPerformanceMonitor no need to check");
-      AppMethodBeat.o(238121);
+      Log.i("MicroMsg.TaskBarAnimController", "alvinluo checkAndStartPerformanceMonitor no need to check");
+      AppMethodBeat.o(215358);
       return;
     }
-    Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo checkAndStartPerformanceMonitor hasStartMonitor: %b, hasDelayStopMonitor: %b", new Object[] { Boolean.valueOf(this.FSM), Boolean.valueOf(this.FSN) });
-    if ((!this.FSM) && (!this.FSN))
+    Log.i("MicroMsg.TaskBarAnimController", "alvinluo checkAndStartPerformanceMonitor hasStartMonitor: %b, hasDelayStopMonitor: %b", new Object[] { Boolean.valueOf(this.MnO), Boolean.valueOf(this.MnP) });
+    if ((!this.MnO) && (!this.MnP))
     {
-      this.FSM = true;
-      if (this.FSK != null) {
-        this.FSK.cancel();
+      this.MnO = true;
+      if (this.MnM != null) {
+        this.MnM.cancel();
       }
-      this.FSK = new com.tencent.f.i.b()
+      this.MnM = new com.tencent.e.i.b()
       {
         public final String getKey()
         {
-          return "MicroMsg.AppBrandDesktopAnimController#startMonitorRunnable";
+          return "MicroMsg.TaskBarAnimController#startMonitorRunnable";
         }
         
         public final void run()
         {
-          AppMethodBeat.i(238106);
-          d locald;
-          if (!com.tencent.mm.plugin.taskbar.ui.b.c.FVi.hki)
+          AppMethodBeat.i(215005);
+          com.tencent.mm.plugin.taskbar.ui.b.d locald;
+          if (!c.MqD.jVR)
           {
-            Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo doStart performanceMonitor");
-            ??? = com.tencent.mm.plugin.taskbar.ui.b.c.FVi;
-            if (!((com.tencent.mm.plugin.taskbar.ui.b.c)???).hki)
+            Log.i("MicroMsg.TaskBarAnimController", "alvinluo doStart performanceMonitor");
+            ??? = c.MqD;
+            if (!((c)???).jVR)
             {
-              ((com.tencent.mm.plugin.taskbar.ui.b.c)???).hki = true;
+              ((c)???).jVR = true;
               Log.i("MicroMsg.Metronome", "[start] stack:%s", new Object[] { Util.getStack() });
-              ((com.tencent.mm.plugin.taskbar.ui.b.c)???).axF().postFrameCallback((Choreographer.FrameCallback)???);
+              ((c)???).aEX().postFrameCallback((Choreographer.FrameCallback)???);
             }
-            locald = d.FVl;
+            locald = com.tencent.mm.plugin.taskbar.ui.b.d.MqG;
           }
-          synchronized (locald.hkp)
+          synchronized (locald.jVY)
           {
             if (locald.isRunning)
             {
               Log.w("MicroMsg.PerformanceMonitor", "alvinluo already running and ignore this requestStartMonitor. If you want run a new one, stop first.");
-              a.o(a.this);
-              AppMethodBeat.o(238106);
+              a.n(a.this);
+              AppMethodBeat.o(215005);
               return;
             }
-            if (locald.mTimer != null) {
-              locald.mTimer.cancel();
+            if (locald.FpU != null) {
+              locald.FpU.cancel(false);
             }
             System.gc();
-            locald.mTimer = new Timer("Handle_Monitor_mem_cpu", true);
-            locald.hkn.clear();
-            locald.hkn.put(Integer.valueOf(1), new com.tencent.mm.plugin.taskbar.ui.b.a());
-            locald.mTimer.scheduleAtFixedRate(new d.1(locald), 0L, 5L);
+            locald.jVW.clear();
+            locald.jVW.put(Integer.valueOf(1), new com.tencent.mm.plugin.taskbar.ui.b.a());
+            locald.FpU = h.ZvG.b(new d.1(locald), 0L, 5L);
             locald.isRunning = true;
           }
         }
       };
-      Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo execute startMonitorRunnable");
-      h.RTc.b(this.FSK, "AppBrandDesktopPerformanceMonitor");
+      Log.i("MicroMsg.TaskBarAnimController", "alvinluo execute startMonitorRunnable");
+      h.ZvG.d(this.MnM, "AppBrandDesktopPerformanceMonitor");
     }
-    AppMethodBeat.o(238121);
+    AppMethodBeat.o(215358);
   }
   
-  public final void fuy()
+  public final void gjd()
   {
-    AppMethodBeat.i(238132);
-    if (this.azm != null)
+    AppMethodBeat.i(215384);
+    if (this.xp != null)
     {
-      this.FSQ = true;
-      this.azm.setTranslationY(0.0F);
+      this.MnS = true;
+      this.xp.setTranslationY(0.0F);
     }
-    AppMethodBeat.o(238132);
+    AppMethodBeat.o(215384);
   }
   
-  public final void fuz()
+  public final boolean gjg()
   {
-    AppMethodBeat.i(238119);
-    this.vaf = this.mContext.getResources().getColor(2131099648);
-    AppMethodBeat.o(238119);
-  }
-  
-  public final int getAnimationScrollOffset()
-  {
-    return this.FTb;
+    AppMethodBeat.i(215390);
+    Log.v("MicroMsg.TaskBarAnimController", "alvinluo isVisibleHeader bottom: %d, scrollOffset: %d, firstVisiblePosition: %d HeaderOpen:%b", new Object[] { Integer.valueOf(this.Mnv.getBottom()), Integer.valueOf(this.JMP), Integer.valueOf(this.mListView.getFirstVisiblePosition()), Boolean.valueOf(this.MnY) });
+    if ((this.Mnv.getBottom() >= this.JMP + 10) && (this.mListView.getFirstVisiblePosition() == 0))
+    {
+      AppMethodBeat.o(215390);
+      return true;
+    }
+    AppMethodBeat.o(215390);
+    return false;
   }
   
   public final void i(long paramLong, final int paramInt, final boolean paramBoolean)
   {
-    AppMethodBeat.i(238123);
-    super.i(paramLong, paramInt, paramBoolean);
-    Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo closeHeader delay: %d, type: %d fast:%s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
-    if (this.FSJ != null) {
-      this.mListView.removeCallbacks(this.FSJ);
+    AppMethodBeat.i(215368);
+    Log.i("MicroMsg.TaskBarAnimController", "alvinluo closeHeader delay: %d, type: %d fast:%s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    if (this.MnL != null) {
+      this.mListView.removeCallbacks(this.MnL);
     }
     ListView localListView = this.mListView;
     Runnable local6 = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(238111);
+        AppMethodBeat.i(214380);
         a.a(a.this, paramBoolean);
-        a.this.abu(paramInt);
-        AppMethodBeat.o(238111);
+        a.this.DC(paramInt);
+        AppMethodBeat.o(214380);
       }
     };
-    this.FSJ = local6;
+    this.MnL = local6;
     localListView.postDelayed(local6, paramLong);
-    AppMethodBeat.o(238123);
-  }
-  
-  public final void iE()
-  {
-    AppMethodBeat.i(238136);
-    cMc();
-    f(1.0F, this.vaf, 0);
-    cb(1.0F);
-    this.FST = false;
-    AppMethodBeat.o(238136);
+    AppMethodBeat.o(215368);
   }
   
   public final void o(View paramView1, View paramView2)
   {
-    AppMethodBeat.i(238145);
-    this.FSx = ((DynamicBgContainer)paramView1);
-    if (e.atB())
-    {
-      this.FSy = ((DynamicBackgroundGLSurfaceView)((com.tencent.mm.plugin.taskbar.api.c)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.taskbar.api.c.class)).ho(paramView1.getContext()));
-      paramView1 = com.tencent.mm.plugin.multitask.ui.bg.a.erA();
-      this.FSy.setColor(paramView1.gRQ, paramView1.gRR, paramView1.gRS, paramView1.gRT, paramView1.gRU);
-    }
-    if (this.FSy == null) {
-      this.FSU = false;
-    }
-    this.FSD = paramView2;
-    this.FSx.setGradientBgView((GradientColorBackgroundView)this.FSD);
-    if ((this.FSy != null) && ((this.FSD instanceof GradientColorBackgroundView))) {
-      this.FSx.erx();
-    }
-    AppMethodBeat.o(238145);
+    AppMethodBeat.i(215397);
+    Log.i("MicroMsg.TaskBarAnimController", "setBackgroundView");
+    this.MnC = ((DynamicBgContainer)paramView1);
+    this.MnX = e.aAt();
+    this.MnG = paramView2;
+    this.MnC.setGradientBgView((GradientColorBackgroundView)this.MnG);
+    AppMethodBeat.o(215397);
   }
   
-  public final void onDestroy()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(238151);
-    Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo DesktopAnimController onDestroy");
-    if (this.mListView != null)
+    AppMethodBeat.i(215379);
+    if ((!this.Mof) && (paramAbsListView.isInLayout()) && (!this.MnS) && (this.Mnv.getBottom() < this.Mnv.getHeight() - 5) && (this.MnY))
     {
-      if (this.FSJ != null)
-      {
-        this.mListView.removeCallbacks(this.FSJ);
-        this.FSJ = null;
-      }
-      if (this.FSI != null)
-      {
-        this.mListView.removeCallbacks(this.FSI);
-        this.FSI = null;
-      }
-      if (this.FTe != null)
-      {
-        this.mListView.removeCallbacks(this.FTe);
-        this.FTe = null;
-      }
-    }
-    h.RTc.bqo("AppBrandDesktopPerformanceMonitor");
-    d.FVl.axH();
-    d.FVl.release();
-    this.FSM = false;
-    if (this.FSy != null)
-    {
-      DynamicBackgroundGLSurfaceView.b localb = this.FSy.gRw;
-      if (localb != null) {
-        try
-        {
-          com.tencent.mm.dynamicbackground.a.c.i("MicroMsg.DynamicBgSurfaceView", "alvinluo NativeRender release", new Object[0]);
-          DynamicBackgroundNative localDynamicBackgroundNative = localb.gRA;
-          if (localDynamicBackgroundNative != null) {
-            localDynamicBackgroundNative.nativeRelease();
-          }
-          com.tencent.mm.dynamicbackground.a.c.i("MicroMsg.DynamicBgSurfaceView", "alvinluo SurfaceView reset and nativeRelease", new Object[0]);
-          localb.gRD = 0;
-          localb.gRE = 0;
-          localb.gRM = false;
-          AppMethodBeat.o(238151);
-          return;
-        }
-        catch (Throwable localThrowable)
-        {
-          com.tencent.mm.dynamicbackground.a.c.printErrStackTrace("MicroMsg.DynamicBgSurfaceView", localThrowable, "alvinluo nativeRelease exception", new Object[0]);
-          AppMethodBeat.o(238151);
-          return;
-        }
-      }
-    }
-    AppMethodBeat.o(238151);
-  }
-  
-  public final void onResume()
-  {
-    AppMethodBeat.i(238150);
-    super.onResume();
-    Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo onResume isVisibleHeader: %b, bottom: %d, height: %d, isCurrentMainUI: %b", new Object[] { Boolean.valueOf(fuw()), Integer.valueOf(this.onh.getBottom()), Integer.valueOf(this.onh.getHeight()), Boolean.valueOf(this.FTf) });
-    if ((fuw()) && (this.onh.getBottom() < this.onh.getHeight()))
-    {
-      Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo onResume fastCloseHeader");
-      i(0L, 0, true);
-    }
-    if (!this.FSV)
-    {
-      Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo onResume enableBottomTabSwitch true");
-      wk(true);
-      AppMethodBeat.o(238150);
+      Log.i("MicroMsg.TaskBarAnimController", "isInLayout");
+      DC(0);
+      AppMethodBeat.o(215379);
       return;
     }
-    if (!this.FTf)
+    if ((this.Moj) && (!this.Moi) && (this.BNw) && (paramInt1 <= 0) && (gjg()))
     {
-      Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo onResume not main ui and header open, then close header");
-      i(0L, 0, true);
-    }
-    AppMethodBeat.o(238150);
-  }
-  
-  public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(238129);
-    if ((!this.FTd) && (paramAbsListView.isInLayout()) && (!this.FSQ) && (this.onh.getBottom() < this.onh.getHeight() - 5) && (this.FSV))
-    {
-      Log.i("MicroMsg.AppBrandDesktopAnimController", "isInLayout");
-      abu(0);
-      AppMethodBeat.o(238129);
-      return;
-    }
-    if ((this.FTh) && (!this.FTg) && (this.xbw) && (paramInt1 <= 0) && (fuw()))
-    {
-      Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo [onScroll] stop fling!");
+      Log.i("MicroMsg.TaskBarAnimController", "alvinluo [onScroll] stop fling!");
       this.mListView.scrollBy(0, 0);
-      abu(4);
+      DC(4);
     }
-    if ((this.onh != null) && (this.onh.getHeight() != this.FTa))
+    if ((this.Mnv != null) && (this.Mnv.getHeight() != this.Mod))
     {
-      this.FTb = ((int)(this.onh.getHeight() * this.FSs) + 60);
-      this.FSX = ((int)(this.onh.getHeight() * this.FSs) + 60);
-      this.FSY = (this.onh.getHeight() - this.DBe);
-      this.FSu = ((int)(this.onh.getHeight() * this.FSs));
-      this.FSv = ((int)(this.onh.getHeight() * this.FSt));
-      Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo initAnimationOffset headerContainer height: %d, old: %d, listBgStartAlphaOffset: %d, startAlphaOffset: %d, endAlphaOffset: %d, openLimit: %d, closeLimit: %d", new Object[] { Integer.valueOf(this.onh.getHeight()), Integer.valueOf(this.FTa), Integer.valueOf(this.FTb), Integer.valueOf(this.FSX), Integer.valueOf(this.FSY), Integer.valueOf(this.FSu), Integer.valueOf(this.FSv) });
-      this.FTa = this.onh.getHeight();
+      this.Moa = ((int)(this.Mnv.getHeight() * this.Mnw) + 60);
+      this.Mob = (this.Mnv.getHeight() - this.JMP);
+      this.Mny = ((int)(this.Mnv.getHeight() * this.Mnw));
+      this.Mnz = ((int)(this.Mnv.getHeight() * this.Mnx));
+      Log.i("MicroMsg.TaskBarAnimController", "alvinluo initAnimationOffset headerContainer height: %d, old: %d, startAlphaOffset: %d, endAlphaOffset: %d, openLimit: %d, closeLimit: %d", new Object[] { Integer.valueOf(this.Mnv.getHeight()), Integer.valueOf(this.Mod), Integer.valueOf(this.Moa), Integer.valueOf(this.Mob), Integer.valueOf(this.Mny), Integer.valueOf(this.Mnz) });
+      this.Mod = this.Mnv.getHeight();
     }
-    Log.v("MicroMsg.AppBrandDesktopAnimController", "alvinluo onScroll isFling: %b, firstVisibleItem: %d, visibleItemCount: %d, totalItemCount: %d, isNeedCheckStopFling: %b, listBgStartAlphaOffset: %d", new Object[] { Boolean.valueOf(this.xbw), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.valueOf(this.FTh), Integer.valueOf(this.FSX) });
-    label814:
-    label831:
+    Log.v("MicroMsg.TaskBarAnimController", "alvinluo onScroll isFling: %b, firstVisibleItem: %d, visibleItemCount: %d, totalItemCount: %d, isNeedCheckStopFling: %b, listBgStartAlphaOffset: %d", new Object[] { Boolean.valueOf(this.BNw), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.valueOf(this.Moj), Integer.valueOf(this.Moa) });
+    label742:
+    label759:
     int i;
     float f1;
-    label986:
-    int j;
-    label1158:
     Object localObject;
-    if ((!this.FTh) && (paramInt1 == 0) && (this.onh != null))
+    label927:
+    int j;
+    if ((!this.Moj) && (paramInt1 == 0) && (this.Mnv != null))
     {
-      Log.d("MicroMsg.AppBrandDesktopAnimController", "alvinluo onDragHeader disX: %d, disY: %d, mScrollOffset: %d, headerContainer height: %d, headerContainer bottom: %d, canShowSurfaceView: %b", new Object[] { Integer.valueOf(0), Integer.valueOf(this.onh.getBottom()), Integer.valueOf(this.DBe), Integer.valueOf(this.onh.getHeight()), Integer.valueOf(this.onh.getBottom()), Boolean.valueOf(this.FSC) });
-      if ((this.FSy != null) || (this.FSD != null))
+      Log.d("MicroMsg.TaskBarAnimController", "alvinluo onDragHeader disX: %d, disY: %d, mScrollOffset: %d, headerContainer height: %d, headerContainer bottom: %d, canShowSurfaceView: %b", new Object[] { Integer.valueOf(0), Integer.valueOf(this.Mnv.getBottom()), Integer.valueOf(this.JMP), Integer.valueOf(this.Mnv.getHeight()), Integer.valueOf(this.Mnv.getBottom()), Boolean.valueOf(this.MnF) });
+      if ((this.MnX) || (this.MnG != null))
       {
-        if (!this.FSU) {
-          break label1315;
+        if (!this.MnX) {
+          break label1256;
         }
-        if ((fuw()) && (this.FSA) && (this.FSC))
+        if ((gjg()) && (this.MnE) && (this.MnF))
         {
-          this.FSA = false;
-          this.FSD.setVisibility(0);
-          this.FSx.erz();
-          if ((this.FSB) && (this.FSy != null))
-          {
-            Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo showSurfaceView onResume");
-            this.FSy.onResume();
-            this.FSB = false;
-          }
+          this.MnE = false;
+          this.MnG.setVisibility(0);
+          this.MnC.fbF();
         }
       }
-      if (this.FST) {
-        break label1403;
+      if (this.MnW) {
+        break label1316;
       }
-      Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo onDragHeader disableUpdateListAlpha");
+      Log.i("MicroMsg.TaskBarAnimController", "alvinluo onDragHeader disableUpdateListAlpha");
     }
     else
     {
-      if ((this.mListView != null) && ((Build.VERSION.SDK_INT < 23) || (com.tencent.mm.compatible.util.g.isMIUIV8())) && (Build.VERSION.SDK_INT >= 21) && (!esy()) && (this.onh != null) && (this.onh.getBottom() <= this.DBe + 20))
+      if ((this.mListView != null) && ((Build.VERSION.SDK_INT < 23) || (g.isMIUIV8())) && (Build.VERSION.SDK_INT >= 21) && (!fcH()) && (this.Mnv != null) && (this.Mnv.getBottom() <= this.JMP + 20))
       {
-        if (this.FSD != null) {
-          this.FSD.setVisibility(8);
+        if (this.MnG != null) {
+          this.MnG.setVisibility(8);
         }
-        if (this.FSy != null)
+        if (this.MnX)
         {
-          this.FSA = true;
-          this.FSB = true;
-          this.FSx.ery();
+          this.MnE = true;
+          this.MnC.fbE();
         }
       }
-      if (fuw()) {
-        break label1724;
+      if (gjg()) {
+        break label1682;
       }
-      this.FTh = true;
-      paramInt2 = fuB() - 60;
-      Log.i("MicroMsg.AppBrandDesktopAnimController", "checkClose moveUp:%b offset:%d closeLimit:%d", new Object[] { Boolean.valueOf(fuE()), Integer.valueOf(paramInt2), Integer.valueOf(fuG()) });
-      if (((this.onh != null) && (this.onh.getBottom() <= 0)) || (!fuE())) {
-        break label1696;
+      this.Moj = true;
+      paramInt2 = gja() - 60;
+      Log.i("MicroMsg.TaskBarAnimController", "checkClose moveUp:%b offset:%d closeLimit:%d", new Object[] { Boolean.valueOf(gjh()), Integer.valueOf(paramInt2), Integer.valueOf(gjj()) });
+      if (((this.Mnv != null) && (this.Mnv.getBottom() <= 0)) || (!gjh())) {
+        break label1654;
       }
-      if (paramInt2 >= fuG()) {
-        break label1691;
+      if (paramInt2 >= gjj()) {
+        break label1649;
       }
       paramInt2 = 1;
-      if ((paramInt2 == 0) || (!this.FSW)) {
-        break label1701;
+      if ((paramInt2 == 0) || (!this.MnZ)) {
+        break label1659;
       }
-      ax(false, true);
-      if (this.FTo == null) {
-        this.FTo = ((GyroView)this.onh.findViewById(2131302234));
+      aJ(false, true);
+      if (this.Mor == null) {
+        this.Mor = ((GyroView)this.Mnv.findViewById(d.d.gyro_view));
       }
-      if (this.FTp == null) {
-        this.FTp = this.onh.findViewById(2131296790);
+      if (this.Mos == null) {
+        this.Mos = this.Mnv.findViewById(d.d.app_brand_desktop_root_layout);
       }
-      if (this.FTq == null) {
-        this.FTq = this.onh.findViewById(2131299537);
+      if (this.Mot == null) {
+        this.Mot = this.Mnv.getDesktopContainerView();
       }
       if (paramInt1 <= 0)
       {
-        paramInt1 = fuF();
-        paramInt2 = this.onh.getBottom();
-        paramInt3 = fuB();
-        i = this.FSY - this.FSX;
-        f1 = 1.0F * (paramInt3 - this.FSX) / i;
-        this.FTp.setAlpha(f1);
-        this.FTq.setAlpha(f1);
-        if (f1 >= 0.2F) {
-          break label1732;
+        paramInt1 = gji();
+        paramInt2 = this.Mnv.getBottom();
+        paramInt3 = gja();
+        i = this.Mob - this.Moa;
+        f1 = 1.0F * (paramInt3 - this.Moa) / i;
+        this.Mos.setAlpha(f1);
+        localObject = this.Mot;
+        if (!((AppBrandDesktopContainerView)localObject).isAnimating)
+        {
+          ((AppBrandDesktopContainerView)localObject).rpp.setAlpha(f1);
+          if (f1 >= 0.2F) {
+            break label1690;
+          }
+          ((AppBrandDesktopContainerView)localObject).rpq.setAlpha(5.0F * f1);
         }
-        this.onh.setBlurAlpha(5.0F * f1);
         j = paramInt3 - 60;
-        Log.v("MicroMsg.AppBrandDesktopAnimController", "alvinluo handleGyroView dis: %d, totalDis: %d, offsetY: %d, percent: %f, start: %d, end: %d, isFling: %b, limit: %d, bottom: %d, headerContainerHeight: %d, gyroView height: %d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(i), Integer.valueOf(j), Float.valueOf(f1), Integer.valueOf(this.FSX), Integer.valueOf(this.FSY), Boolean.valueOf(this.xbw), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.onh.getHeight()), Integer.valueOf(this.FTo.getHeight()) });
-        if (((!this.xbw) && (paramInt2 >= 5)) || (this.FSP))
+        Log.v("MicroMsg.TaskBarAnimController", "alvinluo handleGyroView dis: %d, totalDis: %d, offsetY: %d, percent: %f, start: %d, end: %d, isFling: %b, limit: %d, bottom: %d, headerContainerHeight: %d, gyroView height: %d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(i), Integer.valueOf(j), Float.valueOf(f1), Integer.valueOf(this.Moa), Integer.valueOf(this.Mob), Boolean.valueOf(this.BNw), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.Mnv.getHeight()), Integer.valueOf(this.Mor.getHeight()) });
+        if (((!this.BNw) && (paramInt2 >= 5)) || (this.MnR))
         {
           if (paramInt1 < j) {
-            break label1743;
+            break label1702;
           }
-          this.FTo.c(j, paramInt1);
-          this.FTo.setAlpha(1.0F);
+          this.Mor.f(j, paramInt1);
+          this.Mor.setAlpha(1.0F);
         }
-        f1 = 1.0F * (j - paramInt1) / this.FSZ;
-        localObject = this.FTo;
+        label1099:
+        f1 = 1.0F * (j - paramInt1) / this.Moc;
+        localObject = this.Mor;
         ((GyroView)localObject).setTranslationY(-(paramInt3 - ((GyroView)localObject).getHeight()) / 2.0F);
-        this.FTo.setAlpha(1.0F - f1);
-        if ((j >= paramInt1) && (this.FTt) && (fuw()) && (!paramAbsListView.isInLayout()))
+        this.Mor.setAlpha(1.0F - f1);
+        if ((j >= paramInt1) && (this.Mow) && (gjg()) && (!paramAbsListView.isInLayout()))
         {
-          this.ooM.vibrate(10L);
-          this.FTt = false;
+          this.rqy.vibrate(10L);
+          this.Mow = false;
         }
-        if (paramInt2 < this.DBe + 10) {
-          fuH();
+        if (paramInt2 < this.JMP + 10) {
+          gjk();
         }
       }
-      this.FTl = fuw();
-      if ((!fuw()) || (!this.pJi)) {
-        break label1756;
+      this.Moo = gjg();
+      if ((!gjg()) || (!this.Lue)) {
+        break label1715;
       }
-      wk(false);
+      zR(false);
     }
     for (;;)
     {
-      MMHandlerThread.removeRunnable(this.FTm);
-      MMHandlerThread.postToMainThreadDelayed(this.FTm, 60L);
-      AppMethodBeat.o(238129);
+      MMHandlerThread.removeRunnable(this.Mop);
+      MMHandlerThread.postToMainThreadDelayed(this.Mop, 60L);
+      AppMethodBeat.o(215379);
       return;
-      label1315:
-      this.FSA = true;
-      this.FSB = true;
-      if (this.FSy != null)
-      {
-        this.FSy.setVisibility(8);
-        this.FSy.onPause();
-      }
-      if ((!fuw()) || (this.FSD == null) || ((this.FSD.getVisibility() == 0) && (this.FSD.getAlpha() == 1.0F))) {
+      label1256:
+      this.MnE = true;
+      if ((!gjg()) || (this.MnG == null) || ((this.MnG.getVisibility() == 0) && (this.MnG.getAlpha() == 1.0F))) {
         break;
       }
-      this.FSD.setAlpha(1.0F);
-      this.FSD.setVisibility(0);
+      this.MnG.setAlpha(1.0F);
+      this.MnG.setVisibility(0);
       break;
-      label1403:
-      paramInt3 = fuB();
-      f1 = 1.0F - Math.min(1.0F, Math.max(0.0F, 1.0F * (paramInt3 - this.FTb) / (this.onh.getMeasuredHeight() - this.DBe - this.FTb)));
-      cb(f1);
-      i = this.onh.getHeight() - this.DBe - this.FSF;
-      j = fuB() - i;
-      float f2 = Math.min(1.0F, Math.max(0.0F, 1.0F * j / (this.FSF - this.FSG)));
-      Log.v("MicroMsg.AppBrandDesktopAnimController", "alvinluo onDragHeader scrollOffset: %d, percent: %f, diff: %d, fromOffset: %d, actionBarAlpha: %f", new Object[] { Integer.valueOf(paramInt3), Float.valueOf(f1), Integer.valueOf(j), Integer.valueOf(i), Float.valueOf(f2) });
-      if ((paramInt3 < this.FTb) || (paramInt3 < this.FSX))
+      label1316:
+      paramInt3 = gja();
+      f1 = 1.0F - Math.min(1.0F, Math.max(0.0F, 1.0F * (paramInt3 - this.Moa) / (this.Mnv.getMeasuredHeight() - this.JMP - this.Moa)));
+      ck(f1);
+      i = this.Mnv.getHeight() - this.JMP - this.MnH;
+      j = gja() - i;
+      float f2 = Math.min(1.0F, Math.max(0.0F, 1.0F * j / (this.MnH - this.MnI)));
+      Log.v("MicroMsg.TaskBarAnimController", "alvinluo onDragHeader scrollOffset: %d, percent: %f, diff: %d, fromOffset: %d, actionBarAlpha: %f", new Object[] { Integer.valueOf(paramInt3), Float.valueOf(f1), Integer.valueOf(j), Integer.valueOf(i), Float.valueOf(f2) });
+      if (paramInt3 < this.Moa / 2)
       {
-        aby(0);
-        f(1.0F, this.vaf, paramInt3);
-        cc(1.0F);
+        if (this.MnV)
+        {
+          this.MnV = false;
+          this.Mnv.zS(false);
+        }
+        label1507:
+        if (paramInt3 >= this.Moa) {
+          break label1605;
+        }
+        aiQ(0);
+        f(1.0F, this.wYT, paramInt3);
+        cl(1.0F);
       }
       for (;;)
       {
@@ -985,280 +1031,173 @@ public final class a
           paramInt3 += 1;
         }
         break;
+        if (this.MnV) {
+          break label1507;
+        }
+        this.MnV = true;
+        this.Mnv.zS(true);
+        break label1507;
+        label1605:
         if (f2 >= 0.0F)
         {
-          aby(4);
-          f(f2, this.mContext.getResources().getColor(2131099949), paramInt3);
-          cc(1.0F - f2);
+          aiQ(4);
+          f(f2, this.mContext.getResources().getColor(d.a.app_brand_desktop_bottom_action_bar_color), paramInt3);
+          cl(1.0F - f2);
         }
       }
-      label1691:
+      label1649:
       paramInt2 = 0;
-      break label814;
-      label1696:
+      break label742;
+      label1654:
       paramInt2 = 0;
-      break label814;
-      label1701:
-      if ((!this.FTl) || (!this.FSW)) {
-        break label831;
+      break label742;
+      label1659:
+      if ((!this.Moo) || (!this.MnZ)) {
+        break label759;
       }
-      ax(false, true);
-      break label831;
-      label1724:
-      this.FTh = false;
-      break label831;
-      label1732:
-      this.onh.setBlurAlpha(1.0F);
-      break label986;
-      label1743:
-      this.FTo.c(paramInt1, paramInt1);
-      break label1158;
-      label1756:
-      if (!this.FSV) {
-        wk(true);
-      } else if (this.FSV) {
-        wk(false);
+      aJ(false, true);
+      break label759;
+      label1682:
+      this.Moj = false;
+      break label759;
+      label1690:
+      ((AppBrandDesktopContainerView)localObject).rpq.setAlpha(1.0F);
+      break label927;
+      label1702:
+      this.Mor.f(paramInt1, paramInt1);
+      break label1099;
+      label1715:
+      if (!this.MnY) {
+        zR(true);
+      } else if (this.MnY) {
+        zR(false);
       }
     }
   }
   
-  public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    AppMethodBeat.i(238127);
-    Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo onScrollStateChanged scrollState: %d, isMoveUp: %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(fuE()) });
-    this.FSC = true;
-    this.Fgj = paramInt;
+    AppMethodBeat.i(215372);
+    Log.i("MicroMsg.TaskBarAnimController", "alvinluo onScrollStateChanged scrollState: %d, isMoveUp: %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(gjh()) });
+    this.MnF = true;
+    this.LuO = paramInt;
     if ((paramInt == 0) || (paramInt == -1))
     {
-      this.FSW = false;
-      if ((this.FTg) && (paramInt == 0))
+      this.MnZ = false;
+      if ((this.Moi) && (paramInt == 0))
       {
-        Log.i("MicroMsg.AppBrandDesktopAnimController", "isScrollingByAnim True!!!");
-        this.FTg = false;
-        AppMethodBeat.o(238127);
+        Log.i("MicroMsg.TaskBarAnimController", "isScrollingByAnim True!!!");
+        this.Moi = false;
+        AppMethodBeat.o(215372);
         return;
       }
-      int i = fuB() - 60;
-      Log.i("MicroMsg.AppBrandDesktopAnimController", "checkOpen moveUp:%b offset:%d openLimit:%d", new Object[] { Boolean.valueOf(fuE()), Integer.valueOf(i), Integer.valueOf(fuF()) });
-      if (((this.onh == null) || (this.onh.getBottom() > 0)) && (!fuE())) {
-        if (i > fuF()) {
+      int i = gja() - 60;
+      Log.i("MicroMsg.TaskBarAnimController", "checkOpen moveUp:%b offset:%d openLimit:%d", new Object[] { Boolean.valueOf(gjh()), Integer.valueOf(i), Integer.valueOf(gji()) });
+      if (((this.Mnv == null) || (this.Mnv.getBottom() > 0)) && (!gjh())) {
+        if (i > gji()) {
           i = 1;
         }
       }
       while (i != 0)
       {
-        fux();
-        AppMethodBeat.o(238127);
+        giZ();
+        AppMethodBeat.o(215372);
         return;
         i = 0;
         continue;
         i = 0;
       }
-      if ((fuE()) && (paramInt == -1))
+      if ((gjh()) && (paramInt == -1))
       {
-        Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo onScrollStateChanged closeHeader");
-        abu(4);
-        AppMethodBeat.o(238127);
+        Log.i("MicroMsg.TaskBarAnimController", "alvinluo onScrollStateChanged closeHeader");
+        DC(4);
+        AppMethodBeat.o(215372);
         return;
       }
       if (paramInt == -1)
       {
-        Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo onScrollStateChanged closeHeader auto");
-        abu(0);
-        this.FSP = true;
-        AppMethodBeat.o(238127);
+        Log.i("MicroMsg.TaskBarAnimController", "alvinluo onScrollStateChanged closeHeader auto");
+        DC(0);
+        this.MnR = true;
+        AppMethodBeat.o(215372);
       }
     }
     else
     {
       if (paramInt == 2)
       {
-        this.xbw = true;
-        this.FSW = true;
-        AppMethodBeat.o(238127);
+        this.BNw = true;
+        this.MnZ = true;
+        AppMethodBeat.o(215372);
         return;
       }
       if (paramInt == 1)
       {
-        this.xbw = false;
-        this.FST = true;
-        this.FSW = true;
-        if (fuE())
+        this.BNw = false;
+        this.MnW = true;
+        this.MnZ = true;
+        if (gjh())
         {
-          this.xbw = false;
-          this.FSR = 4;
+          this.BNw = false;
+          this.MnT = 4;
         }
       }
     }
-    AppMethodBeat.o(238127);
+    AppMethodBeat.o(215372);
   }
   
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(238125);
+    AppMethodBeat.i(215370);
     if (paramMotionEvent.getAction() == 0) {
-      ac(paramMotionEvent);
+      al(paramMotionEvent);
     }
     for (;;)
     {
-      AppMethodBeat.o(238125);
+      AppMethodBeat.o(215370);
       return false;
       if ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1))
       {
-        this.pJi = false;
-        this.FTk.set(paramMotionEvent.getRawX(), paramMotionEvent.getRawY());
-        if ((this.onh != null) && (this.onh.getBackUpFooterRect().contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY())) && (fuE()))
+        this.Lue = false;
+        this.Mon.set(paramMotionEvent.getRawX(), paramMotionEvent.getRawY());
+        if ((this.Mnv != null) && (this.Mnv.getBackUpFooterRect().contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY())) && (gjh()))
         {
-          if (this.FSR == 0) {
-            this.FSR = 12;
+          if (this.MnT == 0) {
+            this.MnT = 12;
           }
-          Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo onTouch ActionUp reason: %d", new Object[] { Integer.valueOf(this.FSR) });
+          Log.i("MicroMsg.TaskBarAnimController", "alvinluo onTouch ActionUp reason: %d", new Object[] { Integer.valueOf(this.MnT) });
         }
-        Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo onTouch ActionUp");
+        Log.i("MicroMsg.TaskBarAnimController", "alvinluo onTouch ActionUp");
         onScrollStateChanged(this.mListView, -1);
       }
     }
   }
   
-  public final void setActionBar(View paramView)
+  public final void zR(boolean paramBoolean)
   {
-    this.nZg = paramView;
-  }
-  
-  public final void setActionBarUpdateCallback(com.tencent.mm.plugin.taskbar.api.a parama)
-  {
-    this.FSw = parama;
-  }
-  
-  public final void setIsCurrentMainUI(boolean paramBoolean)
-  {
-    AppMethodBeat.i(238149);
-    this.FTf = paramBoolean;
-    if ((!paramBoolean) && (this.FSV))
-    {
-      Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo setIsCurrentMainUI and header open, close");
-      i(0L, 0, true);
-    }
-    AppMethodBeat.o(238149);
-  }
-  
-  public final void setStatusBarMaskView(View paramView)
-  {
-    this.FSz = paramView;
-  }
-  
-  public final void setTabView(View paramView)
-  {
-    this.azm = paramView;
-  }
-  
-  public final void wk(boolean paramBoolean)
-  {
-    AppMethodBeat.i(238137);
-    if ((this.onh.isFullScreen()) && (paramBoolean != this.FTn))
+    AppMethodBeat.i(215388);
+    if (paramBoolean != this.Moq)
     {
       if (WeChatEnvironment.hasDebugger()) {
-        Log.v("MicroMsg.AppBrandDesktopAnimController", "alvinluo enableBottomTabSwitch enable: %b, last: %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.FTn) });
+        Log.v("MicroMsg.TaskBarAnimController", "alvinluo enableBottomTabSwitch enable: %b, last: %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.Moq) });
       }
-      this.FTn = paramBoolean;
-      dq localdq = new dq();
-      localdq.dGE.enable = paramBoolean;
-      EventCenter.instance.publish(localdq);
+      this.Moq = paramBoolean;
+      dv localdv = new dv();
+      localdv.fzp.enable = paramBoolean;
+      EventCenter.instance.publish(localdv);
     }
-    AppMethodBeat.o(238137);
+    AppMethodBeat.o(215388);
   }
   
-  public final void wl(boolean paramBoolean)
+  public static abstract interface a
   {
-    AppMethodBeat.i(238130);
-    super.wl(paramBoolean);
-    this.FSR = 0;
-    this.FSV = true;
-    if ((this.FSD != null) && (this.FSD.getVisibility() == 0)) {
-      this.FSD.invalidate();
-    }
-    Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo onOpenHeader isToClose: %b, isEnableDynamicBackgroud: %b", new Object[] { Boolean.valueOf(this.FSQ), Boolean.valueOf(this.FSU) });
-    if (this.azm == null)
-    {
-      AppMethodBeat.o(238130);
-      return;
-    }
-    if (this.FSQ)
-    {
-      fuy();
-      AppMethodBeat.o(238130);
-      return;
-    }
-    if (!fuw())
-    {
-      Log.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo onOpen header not visible");
-      this.azm.setTranslationY(0.0F);
-      AppMethodBeat.o(238130);
-      return;
-    }
-    this.azm.animate().translationY(this.azm.getHeight()).setDuration(260L).setListener(new Animator.AnimatorListener()
-    {
-      public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
-      
-      public final void onAnimationEnd(Animator paramAnonymousAnimator)
-      {
-        AppMethodBeat.i(238113);
-        a.l(a.this).setVisibility(4);
-        a.l(a.this).animate().setListener(null);
-        AppMethodBeat.o(238113);
-      }
-      
-      public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
-      
-      public final void onAnimationStart(Animator paramAnonymousAnimator) {}
-    }).start();
-    fuC();
-    AppMethodBeat.o(238130);
-  }
-  
-  public final void wm(boolean paramBoolean)
-  {
-    AppMethodBeat.i(238133);
-    super.wm(paramBoolean);
-    this.FSV = false;
-    fuI();
-    fuD();
-    if (this.azm == null)
-    {
-      AppMethodBeat.o(238133);
-      return;
-    }
-    this.azm.setVisibility(0);
-    ViewPropertyAnimator localViewPropertyAnimator = this.azm.animate().translationY(0.0F);
-    if (this.azm.getTranslationY() == 0.0F) {}
-    for (long l = 130L;; l = 260L)
-    {
-      localViewPropertyAnimator.setDuration(l).setListener(new Animator.AnimatorListener()
-      {
-        public final void onAnimationCancel(Animator paramAnonymousAnimator)
-        {
-          AppMethodBeat.i(238116);
-          a.l(a.this).animate().setListener(null);
-          a.l(a.this).setTranslationY(0.0F);
-          AppMethodBeat.o(238116);
-        }
-        
-        public final void onAnimationEnd(Animator paramAnonymousAnimator)
-        {
-          AppMethodBeat.i(238115);
-          a.l(a.this).animate().setListener(null);
-          a.l(a.this).setTranslationY(0.0F);
-          AppMethodBeat.o(238115);
-        }
-        
-        public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
-        
-        public final void onAnimationStart(Animator paramAnonymousAnimator) {}
-      }).start();
-      fuC();
-      AppMethodBeat.o(238133);
-      return;
-    }
+    public abstract void aiS(int paramInt);
+    
+    public abstract void gjn();
+    
+    public abstract void gjo();
+    
+    public abstract void kr(int paramInt1, int paramInt2);
   }
 }
 

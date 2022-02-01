@@ -2,8 +2,11 @@ package com.tencent.mm.plugin.finder.storage;
 
 import android.content.ContentValues;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.hs;
-import com.tencent.mm.g.c.cd;
+import com.tencent.mm.ae.g;
+import com.tencent.mm.f.a.ib;
+import com.tencent.mm.f.c.ce;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
@@ -14,43 +17,44 @@ import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 import java.util.Collection;
 import java.util.List;
+import kotlin.a.e;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderActionStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderAction;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "DB_SELECT", "", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "cleanCanRemoveFeed", "", "getAllFailedCommentFeedIds", "", "Lcom/tencent/mm/plugin/finder/storage/FinderActionStorage$FeedAndNonceId;", "getAllFailedCommentsByFeedId", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "feedId", "", "getAllUnsentCommentsByFeedId", "getByLocalCommentId", "localCommentId", "getRecentAction", "actionType", "", "insertNewAction", "action", "markUnsentCommentsCanRemove", "postEvent", "commentId", "opType", "commentInfo", "removeUnsentComment", "", "removeUnsentCommentByFeedId", "feedid", "testDB", "sql", "updateByLocal", "comment", "notify", "Companion", "FeedAndNonceId", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderActionStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderAction;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "DB_SELECT", "", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "cleanCanRemoveFeed", "", "getAllFailedCommentFeedIds", "", "Lcom/tencent/mm/plugin/finder/storage/FinderActionStorage$FeedAndNonceId;", "getAllFailedCommentsByFeedId", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "feedId", "", "getAllUnsentCommentsByFeedId", "getByLocalCommentId", "localCommentId", "getRecentAction", "actionType", "", "insertNewAction", "action", "markUnsentCommentsCanRemove", "postEvent", "commentId", "opType", "commentInfo", "removeUnsentComment", "", "removeUnsentCommentByFeedId", "feedid", "testDB", "sql", "updateByLocal", "comment", "notify", "Companion", "FeedAndNonceId", "plugin-finder_release"})
 public final class a
-  extends MAutoStorage<am>
+  extends MAutoStorage<al>
 {
+  private static final int AdM = 1;
+  private static final int AdN = 2;
+  private static final int AdO = 3;
+  public static final a AdP;
   private static final String[] INDEX_CREATE;
   private static final String[] SQL_CREATE;
   public static final String TAG = "Finder.FinderActionStorage";
-  private static final int vwn = 1;
-  private static final int vwo = 2;
-  private static final int vwp = 3;
-  public static final a vwq;
+  private final String AdL;
   public final ISQLiteDatabase db;
-  private final String vwm;
   
   static
   {
     AppMethodBeat.i(166896);
-    vwq = new a((byte)0);
+    AdP = new a((byte)0);
     TAG = "Finder.FinderActionStorage";
-    vwn = 1;
-    vwo = 2;
-    vwp = 3;
-    Object localObject = am.vFs;
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(am.access$getInfo$cp(), "FinderAction") };
-    localObject = cd.INDEX_CREATE;
-    p.g(localObject, "BaseFinderAction.INDEX_CREATE");
-    localObject = kotlin.a.e.X((Object[])localObject);
+    AdM = 1;
+    AdN = 2;
+    AdO = 3;
+    Object localObject = al.AmK;
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(al.access$getInfo$cp(), "FinderAction") };
+    localObject = ce.INDEX_CREATE;
+    p.j(localObject, "BaseFinderAction.INDEX_CREATE");
+    localObject = e.ab((Object[])localObject);
     StringBuilder localStringBuilder = new StringBuilder("CREATE INDEX IF NOT EXISTS ");
-    am.a locala = am.vFs;
-    ((List)localObject).add(am.dxZ() + " ON FinderAction ( actionType,state,postTime )");
+    al.a locala = al.AmK;
+    ((List)localObject).add(al.dYW() + " ON FinderAction ( actionType,state,postTime )");
     localStringBuilder = new StringBuilder("CREATE INDEX IF NOT EXISTS ");
-    locala = am.vFs;
-    ((List)localObject).add(am.dya() + " ON FinderAction (actionType,feedId, postTime)");
+    locala = al.AmK;
+    ((List)localObject).add(al.dYX() + " ON FinderAction (actionType,feedId, postTime)");
     localObject = ((Collection)localObject).toArray(new String[0]);
     if (localObject == null)
     {
@@ -64,29 +68,29 @@ public final class a
   
   public a(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, am.access$getInfo$cp(), "FinderAction", INDEX_CREATE);
+    super(paramISQLiteDatabase, al.access$getInfo$cp(), "FinderAction", INDEX_CREATE);
     AppMethodBeat.i(166895);
     this.db = paramISQLiteDatabase;
-    this.vwm = "SELECT * FROM FinderAction";
+    this.AdL = "SELECT * FROM FinderAction";
     AppMethodBeat.o(166895);
   }
   
-  public static void a(long paramLong1, long paramLong2, long paramLong3, int paramInt, an paraman)
+  public static void a(long paramLong1, long paramLong2, long paramLong3, int paramInt, am paramam)
   {
     AppMethodBeat.i(166894);
-    hs localhs = new hs();
-    localhs.dMm.feedId = paramLong1;
-    localhs.dMm.commentId = paramLong2;
-    localhs.dMm.dMn = paramLong3;
-    localhs.dMm.opType = paramInt;
-    localhs.dMm.dMo = ((cd)paraman);
+    ib localib = new ib();
+    localib.fFf.feedId = paramLong1;
+    localib.fFf.commentId = paramLong2;
+    localib.fFf.fFg = paramLong3;
+    localib.fFf.opType = paramInt;
+    localib.fFf.fFh = ((ce)paramam);
     Log.i(TAG, "postEvent, feedId:" + paramLong1 + ", commentId:" + paramLong2 + ", localId:" + paramLong3 + ", opType:" + paramInt);
-    EventCenter.instance.publish((IEvent)localhs);
+    EventCenter.instance.publish((IEvent)localib);
     AppMethodBeat.o(166894);
   }
   
   /* Error */
-  public final List<an> Ft(long paramLong)
+  public final List<am> MC(long paramLong)
   {
     // Byte code:
     //   0: aconst_null
@@ -97,7 +101,7 @@ public final class a
     //   12: dup
     //   13: invokespecial 268	java/lang/StringBuilder:<init>	()V
     //   16: aload_0
-    //   17: getfield 195	com/tencent/mm/plugin/finder/storage/a:vwm	Ljava/lang/String;
+    //   17: getfield 195	com/tencent/mm/plugin/finder/storage/a:AdL	Ljava/lang/String;
     //   20: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: ldc_w 270
     //   26: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -137,13 +141,13 @@ public final class a
     //   106: aload_3
     //   107: invokeinterface 294 1 0
     //   112: ifeq +35 -> 147
-    //   115: new 296	com/tencent/mm/plugin/finder/storage/an
+    //   115: new 296	com/tencent/mm/plugin/finder/storage/am
     //   118: dup
-    //   119: invokespecial 297	com/tencent/mm/plugin/finder/storage/an:<init>	()V
+    //   119: invokespecial 297	com/tencent/mm/plugin/finder/storage/am:<init>	()V
     //   122: astore 7
     //   124: aload 7
     //   126: aload_3
-    //   127: invokevirtual 301	com/tencent/mm/plugin/finder/storage/an:convertFrom	(Landroid/database/Cursor;)V
+    //   127: invokevirtual 301	com/tencent/mm/plugin/finder/storage/am:convertFrom	(Landroid/database/Cursor;)V
     //   130: aload 6
     //   132: aload 7
     //   134: invokevirtual 302	java/util/LinkedList:add	(Ljava/lang/Object;)Z
@@ -151,7 +155,7 @@ public final class a
     //   138: aload_3
     //   139: invokeinterface 305 1 0
     //   144: ifne -29 -> 115
-    //   147: getstatic 311	kotlin/x:SXb	Lkotlin/x;
+    //   147: getstatic 311	kotlin/x:aazN	Lkotlin/x;
     //   150: astore_3
     //   151: aload 5
     //   153: aconst_null
@@ -189,7 +193,7 @@ public final class a
     //   171	15	4	localThrowable	Throwable
     //   42	142	5	localObject5	Object
     //   98	60	6	localLinkedList	java.util.LinkedList
-    //   122	11	7	localan	an
+    //   122	11	7	localam	am
     // Exception table:
     //   from	to	target	type
     //   106	115	171	java/lang/Throwable
@@ -202,7 +206,7 @@ public final class a
   }
   
   /* Error */
-  public final List<an> Fu(long paramLong)
+  public final List<am> MD(long paramLong)
   {
     // Byte code:
     //   0: aconst_null
@@ -213,7 +217,7 @@ public final class a
     //   12: dup
     //   13: invokespecial 268	java/lang/StringBuilder:<init>	()V
     //   16: aload_0
-    //   17: getfield 195	com/tencent/mm/plugin/finder/storage/a:vwm	Ljava/lang/String;
+    //   17: getfield 195	com/tencent/mm/plugin/finder/storage/a:AdL	Ljava/lang/String;
     //   20: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: ldc_w 270
     //   26: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -240,13 +244,13 @@ public final class a
     //   73: aload 7
     //   75: invokeinterface 294 1 0
     //   80: ifeq +37 -> 117
-    //   83: new 296	com/tencent/mm/plugin/finder/storage/an
+    //   83: new 296	com/tencent/mm/plugin/finder/storage/am
     //   86: dup
-    //   87: invokespecial 297	com/tencent/mm/plugin/finder/storage/an:<init>	()V
+    //   87: invokespecial 297	com/tencent/mm/plugin/finder/storage/am:<init>	()V
     //   90: astore 8
     //   92: aload 8
     //   94: aload 7
-    //   96: invokevirtual 301	com/tencent/mm/plugin/finder/storage/an:convertFrom	(Landroid/database/Cursor;)V
+    //   96: invokevirtual 301	com/tencent/mm/plugin/finder/storage/am:convertFrom	(Landroid/database/Cursor;)V
     //   99: aload 6
     //   101: aload 8
     //   103: invokevirtual 302	java/util/LinkedList:add	(Ljava/lang/Object;)Z
@@ -254,7 +258,7 @@ public final class a
     //   107: aload 7
     //   109: invokeinterface 305 1 0
     //   114: ifne -31 -> 83
-    //   117: getstatic 311	kotlin/x:SXb	Lkotlin/x;
+    //   117: getstatic 311	kotlin/x:aazN	Lkotlin/x;
     //   120: astore 7
     //   122: aload 5
     //   124: aconst_null
@@ -310,7 +314,7 @@ public final class a
     //   71	127	5	localCloseable	java.io.Closeable
     //   64	108	6	localLinkedList	java.util.LinkedList
     //   55	66	7	localObject5	Object
-    //   90	12	8	localan	an
+    //   90	12	8	localam	am
     // Exception table:
     //   from	to	target	type
     //   73	83	185	java/lang/Throwable
@@ -323,7 +327,7 @@ public final class a
   }
   
   /* Error */
-  public final an Fv(long paramLong)
+  public final am ME(long paramLong)
   {
     // Byte code:
     //   0: aconst_null
@@ -334,7 +338,7 @@ public final class a
     //   12: dup
     //   13: invokespecial 268	java/lang/StringBuilder:<init>	()V
     //   16: aload_0
-    //   17: getfield 195	com/tencent/mm/plugin/finder/storage/a:vwm	Ljava/lang/String;
+    //   17: getfield 195	com/tencent/mm/plugin/finder/storage/a:AdL	Ljava/lang/String;
     //   20: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: ldc_w 334
     //   26: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -368,15 +372,15 @@ public final class a
     //   91: aload_3
     //   92: invokeinterface 294 1 0
     //   97: ifeq +23 -> 120
-    //   100: new 296	com/tencent/mm/plugin/finder/storage/an
+    //   100: new 296	com/tencent/mm/plugin/finder/storage/am
     //   103: dup
-    //   104: invokespecial 297	com/tencent/mm/plugin/finder/storage/an:<init>	()V
+    //   104: invokespecial 297	com/tencent/mm/plugin/finder/storage/am:<init>	()V
     //   107: aload_3
-    //   108: invokevirtual 301	com/tencent/mm/plugin/finder/storage/an:convertFrom	(Landroid/database/Cursor;)V
+    //   108: invokevirtual 301	com/tencent/mm/plugin/finder/storage/am:convertFrom	(Landroid/database/Cursor;)V
     //   111: aload_3
     //   112: invokeinterface 305 1 0
     //   117: ifne -17 -> 100
-    //   120: getstatic 311	kotlin/x:SXb	Lkotlin/x;
+    //   120: getstatic 311	kotlin/x:aazN	Lkotlin/x;
     //   123: astore_3
     //   124: aload 5
     //   126: aconst_null
@@ -421,7 +425,7 @@ public final class a
     //   120	124	165	finally
   }
   
-  public final boolean Fw(long paramLong)
+  public final boolean MF(long paramLong)
   {
     boolean bool = true;
     AppMethodBeat.i(166891);
@@ -435,37 +439,37 @@ public final class a
     }
   }
   
-  public final long a(an paraman)
+  public final long a(am paramam)
   {
     AppMethodBeat.i(166886);
-    p.h(paraman, "action");
-    Object localObject = com.tencent.mm.kernel.g.aAh();
-    p.g(localObject, "MMKernel.storage()");
-    long l1 = ((com.tencent.mm.kernel.e)localObject).azQ().a(ar.a.OjF, 1L);
-    localObject = com.tencent.mm.kernel.g.aAh();
-    p.g(localObject, "MMKernel.storage()");
-    ((com.tencent.mm.kernel.e)localObject).azQ().set(ar.a.OjF, Long.valueOf(1L + l1));
-    paraman.field_localCommentId = l1;
-    localObject = paraman.convertTo();
+    p.k(paramam, "action");
+    Object localObject = h.aHG();
+    p.j(localObject, "MMKernel.storage()");
+    long l1 = ((f)localObject).aHp().a(ar.a.VxW, 1L);
+    localObject = h.aHG();
+    p.j(localObject, "MMKernel.storage()");
+    ((f)localObject).aHp().set(ar.a.VxW, Long.valueOf(1L + l1));
+    paramam.field_localCommentId = l1;
+    localObject = paramam.convertTo();
     long l2 = this.db.insert("FinderAction", "localCommentId", (ContentValues)localObject);
-    Log.i(TAG, "new feed action rowId " + l2 + ' ' + com.tencent.mm.ac.g.bN(paraman) + " localID: " + l1);
-    a(paraman.field_feedId, paraman.dyb().commentId, paraman.field_localCommentId, vwp, paraman);
+    Log.i(TAG, "new feed action rowId " + l2 + ' ' + g.bN(paramam) + " localID: " + l1);
+    a(paramam.field_feedId, paramam.dYY().commentId, paramam.field_localCommentId, AdO, paramam);
     AppMethodBeat.o(166886);
     return l1;
   }
   
-  public final boolean a(long paramLong, an paraman, boolean paramBoolean)
+  public final boolean a(long paramLong, am paramam, boolean paramBoolean)
   {
     AppMethodBeat.i(166892);
-    p.h(paraman, "comment");
-    ContentValues localContentValues = paraman.convertTo();
+    p.k(paramam, "comment");
+    ContentValues localContentValues = paramam.convertTo();
     localContentValues.remove("rowid");
     if (this.db.update("FinderAction", localContentValues, "localCommentId=?", new String[] { String.valueOf(paramLong) }) > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      int i = vwp;
+      int i = AdO;
       if (paramBoolean) {
-        a(paraman.field_feedId, paraman.dyb().commentId, paraman.field_localCommentId, i, paraman);
+        a(paramam.field_feedId, paramam.dYY().commentId, paramam.field_localCommentId, i, paramam);
       }
       AppMethodBeat.o(166892);
       return bool;
@@ -473,23 +477,23 @@ public final class a
   }
   
   /* Error */
-  public final an dqh()
+  public final am dRs()
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore_2
     //   2: ldc_w 443
     //   5: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: new 445	com/tencent/mm/ac/c
+    //   8: new 445	com/tencent/mm/ae/c
     //   11: dup
     //   12: ldc_w 446
-    //   15: invokespecial 447	com/tencent/mm/ac/c:<init>	(Ljava/lang/String;)V
+    //   15: invokespecial 447	com/tencent/mm/ae/c:<init>	(Ljava/lang/String;)V
     //   18: astore_1
     //   19: new 135	java/lang/StringBuilder
     //   22: dup
     //   23: invokespecial 268	java/lang/StringBuilder:<init>	()V
     //   26: aload_0
-    //   27: getfield 195	com/tencent/mm/plugin/finder/storage/a:vwm	Ljava/lang/String;
+    //   27: getfield 195	com/tencent/mm/plugin/finder/storage/a:AdL	Ljava/lang/String;
     //   30: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   33: ldc_w 449
     //   36: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -521,17 +525,17 @@ public final class a
     //   95: aload 4
     //   97: invokeinterface 294 1 0
     //   102: ifeq +88 -> 190
-    //   105: new 296	com/tencent/mm/plugin/finder/storage/an
+    //   105: new 296	com/tencent/mm/plugin/finder/storage/am
     //   108: dup
-    //   109: invokespecial 297	com/tencent/mm/plugin/finder/storage/an:<init>	()V
+    //   109: invokespecial 297	com/tencent/mm/plugin/finder/storage/am:<init>	()V
     //   112: astore_1
     //   113: aload_1
     //   114: aload 4
-    //   116: invokevirtual 301	com/tencent/mm/plugin/finder/storage/an:convertFrom	(Landroid/database/Cursor;)V
+    //   116: invokevirtual 301	com/tencent/mm/plugin/finder/storage/am:convertFrom	(Landroid/database/Cursor;)V
     //   119: aload 4
     //   121: invokeinterface 305 1 0
     //   126: ifne -21 -> 105
-    //   129: getstatic 311	kotlin/x:SXb	Lkotlin/x;
+    //   129: getstatic 311	kotlin/x:aazN	Lkotlin/x;
     //   132: astore 4
     //   134: aload_3
     //   135: aconst_null
@@ -587,7 +591,7 @@ public final class a
   }
   
   /* Error */
-  public final List<a.b> dqi()
+  public final List<a.b> dRt()
   {
     // Byte code:
     //   0: aconst_null
@@ -598,7 +602,7 @@ public final class a
     //   11: dup
     //   12: invokespecial 268	java/lang/StringBuilder:<init>	()V
     //   15: aload_0
-    //   16: getfield 195	com/tencent/mm/plugin/finder/storage/a:vwm	Ljava/lang/String;
+    //   16: getfield 195	com/tencent/mm/plugin/finder/storage/a:AdL	Ljava/lang/String;
     //   19: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   22: ldc_w 463
     //   25: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -621,27 +625,27 @@ public final class a
     //   61: aload 5
     //   63: invokeinterface 294 1 0
     //   68: ifeq +52 -> 120
-    //   71: new 296	com/tencent/mm/plugin/finder/storage/an
+    //   71: new 296	com/tencent/mm/plugin/finder/storage/am
     //   74: dup
-    //   75: invokespecial 297	com/tencent/mm/plugin/finder/storage/an:<init>	()V
+    //   75: invokespecial 297	com/tencent/mm/plugin/finder/storage/am:<init>	()V
     //   78: astore 6
     //   80: aload 6
     //   82: aload 5
-    //   84: invokevirtual 301	com/tencent/mm/plugin/finder/storage/an:convertFrom	(Landroid/database/Cursor;)V
+    //   84: invokevirtual 301	com/tencent/mm/plugin/finder/storage/am:convertFrom	(Landroid/database/Cursor;)V
     //   87: aload 4
     //   89: new 10	com/tencent/mm/plugin/finder/storage/a$b
     //   92: dup
     //   93: aload 6
-    //   95: getfield 418	com/tencent/mm/plugin/finder/storage/an:field_feedId	J
+    //   95: getfield 418	com/tencent/mm/plugin/finder/storage/am:field_feedId	J
     //   98: aload 6
-    //   100: invokevirtual 466	com/tencent/mm/plugin/finder/storage/an:getObjectNonceId	()Ljava/lang/String;
+    //   100: invokevirtual 466	com/tencent/mm/plugin/finder/storage/am:getObjectNonceId	()Ljava/lang/String;
     //   103: invokespecial 469	com/tencent/mm/plugin/finder/storage/a$b:<init>	(JLjava/lang/String;)V
     //   106: invokevirtual 302	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   109: pop
     //   110: aload 5
     //   112: invokeinterface 305 1 0
     //   117: ifne -46 -> 71
-    //   120: getstatic 311	kotlin/x:SXb	Lkotlin/x;
+    //   120: getstatic 311	kotlin/x:aazN	Lkotlin/x;
     //   123: astore 5
     //   125: aload_3
     //   126: aconst_null
@@ -693,7 +697,7 @@ public final class a
     //   60	132	3	localCloseable	java.io.Closeable
     //   53	115	4	localLinkedList	java.util.LinkedList
     //   44	80	5	localObject5	Object
-    //   78	21	6	localan	an
+    //   78	21	6	localam	am
     // Exception table:
     //   from	to	target	type
     //   61	71	181	java/lang/Throwable
@@ -705,7 +709,7 @@ public final class a
     //   120	125	204	finally
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderActionStorage$Companion;", "", "()V", "ACTION_TYPE_COMMENT", "", "ACTION_TYPE_LIKE", "ACTION_TYPE_LIKE_COMMENT", "INDEX_CREATE", "", "", "kotlin.jvm.PlatformType", "getINDEX_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "OpType_Add", "getOpType_Add", "()I", "OpType_Del", "getOpType_Del", "OpType_Mod", "getOpType_Mod", "SQL_CREATE", "getSQL_CREATE", "TABLE_NAME", "TAG", "getTAG", "()Ljava/lang/String;", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/FinderActionStorage$Companion;", "", "()V", "ACTION_TYPE_COMMENT", "", "ACTION_TYPE_LIKE", "ACTION_TYPE_LIKE_COMMENT", "INDEX_CREATE", "", "", "kotlin.jvm.PlatformType", "getINDEX_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "OpType_Add", "getOpType_Add", "()I", "OpType_Del", "getOpType_Del", "OpType_Mod", "getOpType_Mod", "SQL_CREATE", "getSQL_CREATE", "TABLE_NAME", "TAG", "getTAG", "()Ljava/lang/String;", "plugin-finder_release"})
   public static final class a {}
 }
 

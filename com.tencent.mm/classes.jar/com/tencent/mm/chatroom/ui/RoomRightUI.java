@@ -14,26 +14,22 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
 import com.tencent.mm.chatroom.d.o;
-import com.tencent.mm.contact.c;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.kernel.c;
 import com.tencent.mm.model.aa;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.pluginsdk.ui.applet.aa.a;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.pluginsdk.ui.applet.aa.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.base.preference.f;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -43,32 +39,34 @@ public class RoomRightUI
   extends MMPreference
   implements i
 {
-  private ProgressDialog gtM = null;
-  private String gyA = "";
-  private int gyB = 0;
-  private f screen;
+  private ProgressDialog iXX = null;
+  private String jiD = "";
+  private int jiE = 0;
+  private com.tencent.mm.ui.base.preference.f screen;
   
   private void a(final LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(12763);
     if (paramLinkedList.size() > 0) {}
     String str;
+    int i;
     LinkedList localLinkedList;
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      str = MMApplicationContext.getContext().getString(2131757307);
+      str = MMApplicationContext.getContext().getString(a.i.chatroom_sys_msg_invite_split);
       paramLinkedList.size();
+      i = a.i.jgw;
       localLinkedList = new LinkedList();
-      if (!g.aAc()) {
+      if (!com.tencent.mm.kernel.h.aHB()) {
         break;
       }
       Iterator localIterator = paramLinkedList.iterator();
       while (localIterator.hasNext()) {
-        localLinkedList.add(aa.getDisplayName((String)localIterator.next()));
+        localLinkedList.add(aa.PJ((String)localIterator.next()));
       }
     }
-    h.d(this, getString(2131764768, new Object[] { Util.listToString(localLinkedList, str) }), getString(2131755998), new DialogInterface.OnClickListener()
+    com.tencent.mm.ui.base.h.d(this, getString(i, new Object[] { Util.listToString(localLinkedList, str) }), getString(a.i.app_tip), new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -80,70 +78,70 @@ public class RoomRightUI
     AppMethodBeat.o(12763);
   }
   
-  private void amX()
+  private void asY()
   {
     AppMethodBeat.i(12756);
-    int i = Util.nullAs((Integer)g.aAh().azQ().get(135175, null), 0);
-    Object localObject1 = this.screen.bmg("settings_room_size");
+    int i = Util.nullAs((Integer)com.tencent.mm.kernel.h.aHG().aHp().b(135175, null), 0);
+    Object localObject1 = this.screen.byG("settings_room_size");
     int j;
     if ((localObject1 != null) && (i > 0))
     {
-      ((Preference)localObject1).setSummary(getResources().getQuantityString(2131623964, i, new Object[] { Integer.valueOf(i) }));
+      ((Preference)localObject1).aF(getResources().getQuantityString(a.g.jew, i, new Object[] { Integer.valueOf(i) }));
       ((Preference)localObject1).setEnabled(false);
-      this.screen.bmg("room_right_max_tip").setTitle(getString(2131764767, new Object[] { Integer.valueOf(i) }));
-      j = Util.nullAs((Integer)g.aAh().azQ().get(135176, null), 0);
-      localObject1 = (RoomGrantPreference)this.screen.bmg("settings_room_grant");
+      this.screen.byG("room_right_max_tip").setTitle(getString(a.i.jgv, new Object[] { Integer.valueOf(i) }));
+      j = Util.nullAs((Integer)com.tencent.mm.kernel.h.aHG().aHp().b(135176, null), 0);
+      localObject1 = (RoomGrantPreference)this.screen.byG("settings_room_grant");
       if ((localObject1 == null) || (j > 0)) {
-        break label295;
+        break label297;
       }
-      this.screen.e((Preference)localObject1);
+      this.screen.d((Preference)localObject1);
     }
     Preference localPreference;
     Object localObject2;
     for (;;)
     {
-      localPreference = this.screen.bmg("room_right_tip");
-      localObject2 = this.screen.bmg("room_right_grant_tip");
+      localPreference = this.screen.byG("room_right_tip");
+      localObject2 = this.screen.byG("room_right_grant_tip");
       if (j > 0) {
-        break label361;
+        break label364;
       }
       if (localPreference != null) {
-        this.screen.e(localPreference);
+        this.screen.d(localPreference);
       }
       if (localObject2 != null) {
-        this.screen.e((Preference)localObject2);
+        this.screen.d((Preference)localObject2);
       }
-      localObject2 = this.screen.bmg("room_grant_to_friend");
+      localObject2 = this.screen.byG("room_grant_to_friend");
       if (localObject2 != null) {
-        this.screen.e((Preference)localObject2);
+        this.screen.d((Preference)localObject2);
       }
       if (localObject1 != null) {
-        this.screen.e((Preference)localObject1);
+        this.screen.d((Preference)localObject1);
       }
       AppMethodBeat.o(12756);
       return;
       if (localObject1 == null) {
         break;
       }
-      this.screen.e((Preference)localObject1);
+      this.screen.d((Preference)localObject1);
       break;
-      label295:
+      label297:
       if (localObject1 != null)
       {
         ((RoomGrantPreference)localObject1).setEnabled(false);
-        localObject2 = getString(2131764770, new Object[] { Integer.valueOf(j) });
+        localObject2 = getString(a.i.jgx, new Object[] { Integer.valueOf(j) });
         ((RoomGrantPreference)localObject1).num = ((String)localObject2);
-        if (((RoomGrantPreference)localObject1).gyt != null) {
-          ((RoomGrantPreference)localObject1).gyt.setText((CharSequence)localObject2);
+        if (((RoomGrantPreference)localObject1).jiw != null) {
+          ((RoomGrantPreference)localObject1).jiw.setText((CharSequence)localObject2);
         }
       }
     }
-    label361:
-    localObject1 = getString(2131764771, new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+    label364:
+    localObject1 = getString(a.i.jgy, new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
     if (localPreference != null) {
       localPreference.setTitle((CharSequence)localObject1);
     }
-    localObject1 = getString(2131764764, new Object[] { Integer.valueOf(this.gyB) });
+    localObject1 = getString(a.i.jgu, new Object[] { Integer.valueOf(this.jiE) });
     if (localObject2 != null) {
       ((Preference)localObject2).setTitle((CharSequence)localObject1);
     }
@@ -152,14 +150,14 @@ public class RoomRightUI
   
   public int getResourceId()
   {
-    return 2132017250;
+    return a.k.jhG;
   }
   
   public void initView()
   {
     AppMethodBeat.i(12761);
     this.screen = getPreferenceScreen();
-    setMMTitle(2131765572);
+    setMMTitle(a.i.jhb);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -197,10 +195,11 @@ public class RoomRightUI
         AppMethodBeat.o(12762);
         return;
       }
-      this.gyA = paramIntent;
-      paramIntent = this.gyA;
-      String str = getString(2131764699, new Object[] { ((l)g.af(l.class)).aSN().Kn(paramIntent).arJ(), Integer.valueOf(this.gyB) });
-      h.a(getContext(), str, "", new DialogInterface.OnClickListener()
+      this.jiD = paramIntent;
+      paramIntent = this.jiD;
+      Object localObject = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().RG(paramIntent);
+      localObject = getString(a.i.jfY, new Object[] { ((d)localObject).ays(), Integer.valueOf(this.jiE) });
+      com.tencent.mm.ui.base.h.a(getContext(), (String)localObject, "", new DialogInterface.OnClickListener()
       {
         public final void onClick(final DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -208,17 +207,17 @@ public class RoomRightUI
           paramAnonymousDialogInterface = new o(paramIntent);
           RoomRightUI localRoomRightUI1 = RoomRightUI.this;
           RoomRightUI localRoomRightUI2 = RoomRightUI.this;
-          RoomRightUI.this.getString(2131755998);
-          RoomRightUI.a(localRoomRightUI1, h.a(localRoomRightUI2, "", true, new DialogInterface.OnCancelListener()
+          RoomRightUI.this.getString(a.i.app_tip);
+          RoomRightUI.a(localRoomRightUI1, com.tencent.mm.ui.base.h.a(localRoomRightUI2, "", true, new DialogInterface.OnCancelListener()
           {
             public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
             {
               AppMethodBeat.i(12753);
-              g.aAg().hqi.a(paramAnonymousDialogInterface);
+              com.tencent.mm.kernel.h.aHF().kcd.a(paramAnonymousDialogInterface);
               AppMethodBeat.o(12753);
             }
           }));
-          g.aAg().hqi.a(paramAnonymousDialogInterface, 0);
+          com.tencent.mm.kernel.h.aHF().kcd.a(paramAnonymousDialogInterface, 0);
           AppMethodBeat.o(12754);
         }
       }, null);
@@ -229,10 +228,10 @@ public class RoomRightUI
   {
     AppMethodBeat.i(12757);
     super.onCreate(paramBundle);
-    this.gyB = Util.nullAs((Integer)g.aAh().azQ().get(135177, null), 0);
-    g.aAg().hqi.a(339, this);
-    g.aAg().hqi.a(30, this);
-    g.aAh().azQ().set(135184, Boolean.FALSE);
+    this.jiE = Util.nullAs((Integer)com.tencent.mm.kernel.h.aHG().aHp().b(135177, null), 0);
+    com.tencent.mm.kernel.h.aHF().kcd.a(339, this);
+    com.tencent.mm.kernel.h.aHF().kcd.a(30, this);
+    com.tencent.mm.kernel.h.aHG().aHp().i(135184, Boolean.FALSE);
     initView();
     AppMethodBeat.o(12757);
   }
@@ -241,12 +240,12 @@ public class RoomRightUI
   {
     AppMethodBeat.i(12760);
     super.onDestroy();
-    g.aAg().hqi.b(339, this);
-    g.aAg().hqi.b(30, this);
+    com.tencent.mm.kernel.h.aHF().kcd.b(339, this);
+    com.tencent.mm.kernel.h.aHF().kcd.b(30, this);
     AppMethodBeat.o(12760);
   }
   
-  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
     AppMethodBeat.i(12759);
     if (paramPreference.mKey.equals("room_grant_to_friend"))
@@ -271,7 +270,7 @@ public class RoomRightUI
   {
     AppMethodBeat.i(12758);
     super.onResume();
-    amX();
+    asY();
     this.screen.notifyDataSetChanged();
     AppMethodBeat.o(12758);
   }
@@ -280,22 +279,22 @@ public class RoomRightUI
   {
     AppMethodBeat.i(12764);
     Log.i("MicroMsg.RoomRightUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (this.gtM != null) {
-      this.gtM.dismiss();
+    if (this.iXX != null) {
+      this.iXX.dismiss();
     }
     if (paramq.getType() != 339)
     {
       AppMethodBeat.o(12764);
       return;
     }
-    paramString = ((l)g.af(l.class)).aSN().Kn(this.gyA);
-    if ((paramString == null) || ((int)paramString.gMZ == 0)) {}
-    for (paramString = this.gyA; (paramInt1 == 0) && (paramInt2 == 0); paramString = paramString.arJ())
+    paramString = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().RG(this.jiD);
+    if ((paramString == null) || ((int)paramString.jxt == 0)) {}
+    for (paramString = this.jiD; (paramInt1 == 0) && (paramInt2 == 0); paramString = paramString.ays())
     {
-      h.c(this, getString(2131764702, new Object[] { paramString }), getString(2131755998), true);
+      com.tencent.mm.ui.base.h.c(this, getString(a.i.jgb, new Object[] { paramString }), getString(a.i.app_tip), true);
       if (this.screen != null)
       {
-        amX();
+        asY();
         this.screen.notifyDataSetChanged();
       }
       AppMethodBeat.o(12764);
@@ -303,21 +302,21 @@ public class RoomRightUI
     }
     if (paramInt2 == -251)
     {
-      h.c(this, getString(2131764700, new Object[] { paramString, Integer.valueOf(this.gyB) }), getString(2131755998), true);
+      com.tencent.mm.ui.base.h.c(this, getString(a.i.jfZ, new Object[] { paramString, Integer.valueOf(this.jiE) }), getString(a.i.app_tip), true);
       AppMethodBeat.o(12764);
       return;
     }
     if (paramInt2 == -44)
     {
       paramString = new LinkedList();
-      paramString.add(this.gyA);
+      paramString.add(this.jiD);
       a(paramString);
       AppMethodBeat.o(12764);
       return;
     }
     if (paramInt2 == -22)
     {
-      h.c(this, getString(2131764701, new Object[] { paramString }), getString(2131755998), true);
+      com.tencent.mm.ui.base.h.c(this, getString(a.i.jga, new Object[] { paramString }), getString(a.i.app_tip), true);
       AppMethodBeat.o(12764);
       return;
     }

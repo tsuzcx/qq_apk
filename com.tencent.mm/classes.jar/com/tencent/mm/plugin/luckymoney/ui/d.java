@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.luckymoney.ui;
 
 public abstract interface d
 {
-  public abstract String PA(int paramInt);
+  public abstract String VJ(int paramInt);
   
-  public abstract int eeH();
+  public abstract int eOc();
   
   public abstract int getInputViewId();
   
@@ -14,7 +14,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.d
  * JD-Core Version:    0.7.0.1
  */

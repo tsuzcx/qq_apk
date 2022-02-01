@@ -2,20 +2,23 @@ package com.tencent.mm.plugin.offline.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.zx;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.an.t;
+import com.tencent.mm.f.a.abe;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.offline.c.a;
+import com.tencent.mm.plugin.offline.g;
 import com.tencent.mm.plugin.offline.i;
 import com.tencent.mm.plugin.offline.k;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
-import com.tencent.mm.plugin.wallet_core.model.an;
+import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
-import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -26,19 +29,19 @@ import java.util.Set;
 
 public final class s
 {
-  public ArrayList<Long> AHb;
-  public b AKa;
-  private HashSet<String> AKb;
-  private List<WeakReference<a>> pQG;
+  public ArrayList<Long> GAk;
+  public b GDh;
+  private HashSet<String> GDi;
+  private List<WeakReference<a>> cSF;
   
   public s()
   {
     AppMethodBeat.i(66322);
-    this.pQG = new ArrayList();
-    this.AKa = null;
-    this.AHb = new ArrayList();
-    this.AKb = new HashSet();
-    Object localObject = a.eAu();
+    this.cSF = new ArrayList();
+    this.GDh = null;
+    this.GAk = new ArrayList();
+    this.GDi = new HashSet();
+    Object localObject = a.flY();
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       localObject = XmlParser.parseXml((String)localObject, "sysmsg", null);
@@ -48,94 +51,94 @@ public final class s
         if ((i >= 0) && (i == 4))
         {
           Log.i("MicroMsg.WalletOfflineMsgManager", "msg type is 4 ");
-          b(au((Map)localObject));
+          b(ao((Map)localObject));
         }
       }
     }
-    this.AHb.clear();
+    this.GAk.clear();
     AppMethodBeat.o(66322);
   }
   
-  private d at(Map<String, String> paramMap)
+  private d an(Map<String, String> paramMap)
   {
     AppMethodBeat.i(66327);
     d locald = new d();
-    locald.AKh = Util.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
-    locald.dNQ = ((String)paramMap.get(".sysmsg.paymsg.req_key"));
+    locald.GDo = Util.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
+    locald.fHb = ((String)paramMap.get(".sysmsg.paymsg.req_key"));
     AppMethodBeat.o(66327);
     return locald;
   }
   
-  private b au(Map<String, String> paramMap)
+  private b ao(Map<String, String> paramMap)
   {
     AppMethodBeat.i(66328);
-    if (this.AKa == null) {
-      this.AKa = new b();
+    if (this.GDh == null) {
+      this.GDh = new b();
     }
-    this.AKa.AKh = Util.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
-    this.AKa.AKe = ((String)paramMap.get(".sysmsg.paymsg.isfreeze"));
-    this.AKa.AKf = ((String)paramMap.get(".sysmsg.paymsg.freezetype"));
-    this.AKa.AKg = ((String)paramMap.get(".sysmsg.paymsg.freezemsg"));
-    paramMap = this.AKa;
+    this.GDh.GDo = Util.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
+    this.GDh.GDl = ((String)paramMap.get(".sysmsg.paymsg.isfreeze"));
+    this.GDh.GDm = ((String)paramMap.get(".sysmsg.paymsg.freezetype"));
+    this.GDh.GDn = ((String)paramMap.get(".sysmsg.paymsg.freezemsg"));
+    paramMap = this.GDh;
     AppMethodBeat.o(66328);
     return paramMap;
   }
   
-  private e av(Map<String, String> paramMap)
+  private e ap(Map<String, String> paramMap)
   {
     AppMethodBeat.i(66329);
     e locale = new e();
-    locale.AKh = Util.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
-    locale.AKi = ((String)paramMap.get(".sysmsg.paymsg.cftretcode"));
-    locale.AKj = ((String)paramMap.get(".sysmsg.paymsg.cftretmsg"));
-    locale.AKk = ((String)paramMap.get(".sysmsg.paymsg.wxretcode"));
-    locale.AKl = ((String)paramMap.get(".sysmsg.paymsg.wxretmsg"));
-    locale.AKm = ((String)paramMap.get(".sysmsg.paymsg.error_detail_url"));
-    locale.AKn = true;
+    locale.GDo = Util.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
+    locale.GDp = ((String)paramMap.get(".sysmsg.paymsg.cftretcode"));
+    locale.GDq = ((String)paramMap.get(".sysmsg.paymsg.cftretmsg"));
+    locale.GDr = ((String)paramMap.get(".sysmsg.paymsg.wxretcode"));
+    locale.GDs = ((String)paramMap.get(".sysmsg.paymsg.wxretmsg"));
+    locale.GDt = ((String)paramMap.get(".sysmsg.paymsg.error_detail_url"));
+    locale.GDu = true;
     AppMethodBeat.o(66329);
     return locale;
   }
   
-  private f aw(Map<String, String> paramMap)
+  private f aq(Map<String, String> paramMap)
   {
     AppMethodBeat.i(66330);
     f localf = new f();
-    localf.AKh = Util.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
-    localf.AKo = ((String)paramMap.get(".sysmsg.paymsg.transid"));
-    localf.AKp = a.az(paramMap);
-    if (localf.AKp.HZd.size() > 0) {
-      a.aJu(((Orders.Commodity)localf.AKp.HZd.get(0)).dDM);
+    localf.GDo = Util.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
+    localf.GDv = ((String)paramMap.get(".sysmsg.paymsg.transid"));
+    localf.GDw = a.at(paramMap);
+    if (localf.GDw.ORd.size() > 0) {
+      a.aTQ(((Orders.Commodity)localf.GDw.ORd.get(0)).fww);
     }
     if (paramMap.containsKey(".sysmsg.paymsg.real_name_info")) {
-      localf.egD = new h(paramMap);
+      localf.gaT = new h(paramMap);
     }
     AppMethodBeat.o(66330);
     return localf;
   }
   
-  private d ax(Map<String, String> paramMap)
+  private d ar(Map<String, String> paramMap)
   {
     AppMethodBeat.i(66331);
     d locald = new d();
-    locald.AKh = Util.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
-    locald.dNQ = ((String)paramMap.get(".sysmsg.paymsg.req_key"));
+    locald.GDo = Util.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
+    locald.fHb = ((String)paramMap.get(".sysmsg.paymsg.req_key"));
     AppMethodBeat.o(66331);
     return locald;
   }
   
-  private g ay(Map<String, String> paramMap)
+  private g as(Map<String, String> paramMap)
   {
     AppMethodBeat.i(66332);
     g localg = new g();
-    localg.AKh = Util.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
-    localg.AKq = ((String)paramMap.get(".sysmsg.paymsg.good_name"));
-    localg.AKr = ((String)paramMap.get(".sysmsg.paymsg.total_fee"));
-    localg.dNQ = ((String)paramMap.get(".sysmsg.paymsg.req_key"));
+    localg.GDo = Util.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
+    localg.GDx = ((String)paramMap.get(".sysmsg.paymsg.good_name"));
+    localg.GDy = ((String)paramMap.get(".sysmsg.paymsg.total_fee"));
+    localg.fHb = ((String)paramMap.get(".sysmsg.paymsg.req_key"));
     localg.id = ((String)paramMap.get(".sysmsg.paymsg.id"));
     paramMap = (String)paramMap.get(".sysmsg.paymsg.confirm_type");
-    Log.i("MicroMsg.WalletOfflineMsgManager", "msg confirm_type is" + localg.qGa);
+    Log.i("MicroMsg.WalletOfflineMsgManager", "msg confirm_type is" + localg.ufc);
     if ((!TextUtils.isEmpty(paramMap)) && (paramMap.equals("1"))) {}
-    for (localg.qGa = 1;; localg.qGa = 0)
+    for (localg.ufc = 1;; localg.ufc = 0)
     {
       AppMethodBeat.o(66332);
       return localg;
@@ -145,15 +148,15 @@ public final class s
   private void b(c paramc)
   {
     AppMethodBeat.i(66323);
-    if (this.pQG == null)
+    if (this.cSF == null)
     {
       AppMethodBeat.o(66323);
       return;
     }
     int i = 0;
-    while (i < this.pQG.size())
+    while (i < this.cSF.size())
     {
-      Object localObject = (WeakReference)this.pQG.get(i);
+      Object localObject = (WeakReference)this.cSF.get(i);
       if (localObject != null)
       {
         localObject = (a)((WeakReference)localObject).get();
@@ -169,19 +172,19 @@ public final class s
   public final void a(a parama)
   {
     AppMethodBeat.i(66324);
-    if (this.pQG == null) {
-      this.pQG = new ArrayList();
+    if (this.cSF == null) {
+      this.cSF = new ArrayList();
     }
-    this.pQG.add(new WeakReference(parama));
+    this.cSF.add(new WeakReference(parama));
     AppMethodBeat.o(66324);
   }
   
-  public final void aJc(String arg1)
+  public final void aTy(String arg1)
   {
     AppMethodBeat.i(66326);
-    a.aJs("");
-    a.aJu("");
-    a.aJt("");
+    a.aTO("");
+    a.aTQ("");
+    a.aTP("");
     Object localObject = XmlParser.parseXml(???, "sysmsg", null);
     if (localObject == null)
     {
@@ -191,16 +194,16 @@ public final class s
     int j = Util.getInt((String)((Map)localObject).get(".sysmsg.paymsg.PayMsgType"), -1);
     int i = Util.getInt((String)((Map)localObject).get(".sysmsg.paymsg.pay_cmd"), -1);
     String str = (String)((Map)localObject).get(".sysmsg.paymsg.req_key");
-    a.aJs((String)((Map)localObject).get(".sysmsg.paymsg.ack_key"));
-    a.Ug(j);
-    a.aJt(str);
+    a.aTO((String)((Map)localObject).get(".sysmsg.paymsg.ack_key"));
+    a.aaR(j);
+    a.aTP(str);
     j = Util.getInt((String)((Map)localObject).get(".sysmsg.paymsg.PayMsgType"), -1);
     Log.i("MicroMsg.WalletOfflineMsgManager", "msg type is ".concat(String.valueOf(j)));
     Log.v("MicroMsg.WalletOfflineMsgManager", "msg type is type %d xml %s", new Object[] { Integer.valueOf(j), ??? });
     if ((j >= 0) && (j == 4))
     {
-      b(au((Map)localObject));
-      a.aJj(???);
+      b(ao((Map)localObject));
+      a.aTF(???);
       AppMethodBeat.o(66326);
       return;
     }
@@ -210,14 +213,14 @@ public final class s
         break label640;
       }
       Log.i("MicroMsg.WalletOfflineMsgManager", "payCmd is PAY_CMD_OFFLINE_PAY_REFRESH_TOKEN (value is 1), refresh offline token");
-      k.ezn();
-      k.ezq().hE(4, 4);
+      k.fkT();
+      k.fkW().iJ(4, 4);
     }
     label640:
     for (boolean bool = false;; bool = true)
     {
-      ??? = av((Map)localObject);
-      ???.AKn = bool;
+      ??? = ap((Map)localObject);
+      ???.GDu = bool;
       b(???);
       AppMethodBeat.o(66326);
       return;
@@ -227,53 +230,53 @@ public final class s
         Log.i("helios", "MSG_TYPE_ORDER trasid=".concat(String.valueOf(str)));
         if (!Util.isNullOrNil(str))
         {
-          com.tencent.mm.kernel.g.aAi();
-          com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NYK, Boolean.TRUE);
+          h.aHH();
+          h.aHG().aHp().set(ar.a.VmK, Boolean.TRUE);
         }
         Log.i("MicroMsg.WalletOfflineMsgManager", "orders xml: %s", new Object[] { ??? });
-        b(aw((Map)localObject));
+        b(aq((Map)localObject));
         AppMethodBeat.o(66326);
         return;
       }
       if ((j >= 0) && (j == 7))
       {
-        com.tencent.mm.plugin.wallet_core.model.t.fQI().and();
+        u.gJo().ate();
         AppMethodBeat.o(66326);
         return;
       }
       if ((j >= 0) && (j == 8))
       {
-        b(ay((Map)localObject));
+        b(as((Map)localObject));
         AppMethodBeat.o(66326);
         return;
       }
       if ((j >= 0) && (j == 10))
       {
-        k.ezn();
-        k.ezq().hE(4, 4);
+        k.fkT();
+        k.fkW().iJ(4, 4);
         AppMethodBeat.o(66326);
         return;
       }
       if ((j >= 0) && (j == 20))
       {
-        ??? = new zx();
-        ???.egC.egD = new h((Map)localObject);
+        ??? = new abe();
+        ???.gaS.gaT = new h((Map)localObject);
         EventCenter.instance.publish(???);
         AppMethodBeat.o(66326);
         return;
       }
       if ((j >= 0) && (j == 23))
       {
-        localObject = ax((Map)localObject);
-        synchronized (this.AKb)
+        localObject = ar((Map)localObject);
+        synchronized (this.GDi)
         {
-          if (this.AKb.contains(((d)localObject).dNQ))
+          if (this.GDi.contains(((d)localObject).fHb))
           {
-            Log.i("MicroMsg.WalletOfflineMsgManager", "pass this msg %s", new Object[] { ((d)localObject).dNQ });
+            Log.i("MicroMsg.WalletOfflineMsgManager", "pass this msg %s", new Object[] { ((d)localObject).fHb });
             AppMethodBeat.o(66326);
             return;
           }
-          this.AKb.add(((d)localObject).dNQ);
+          this.GDi.add(((d)localObject).fHb);
           b((c)localObject);
           AppMethodBeat.o(66326);
           return;
@@ -281,7 +284,7 @@ public final class s
       }
       if ((j >= 0) && (j == 24))
       {
-        b(at(localMap));
+        b(an(localMap));
         AppMethodBeat.o(66326);
         return;
       }
@@ -290,25 +293,25 @@ public final class s
     }
   }
   
-  public final void aJd(String paramString)
+  public final void aTz(String paramString)
   {
     AppMethodBeat.i(66333);
     int i = Util.getInt((String)XmlParser.parseXml(paramString, "sysmsg", null).get(".sysmsg.paymsg.PayMsgType"), -1);
     paramString = new HashSet();
-    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.AIr));
-    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.AIq));
-    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.AIs));
-    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.AIp));
-    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.AIm));
+    paramString.add(Integer.valueOf(g.GBA));
+    paramString.add(Integer.valueOf(g.GBz));
+    paramString.add(Integer.valueOf(g.GBB));
+    paramString.add(Integer.valueOf(g.GBy));
+    paramString.add(Integer.valueOf(g.GBv));
     if (paramString.contains(Integer.valueOf(i))) {
-      com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
+      h.aHJ().postToWorker(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(66320);
           Log.v("MicroMsg.WalletOfflineMsgManager", "DO NetSceneOfflineAckMsg");
-          com.tencent.mm.kernel.g.aAi();
-          com.tencent.mm.kernel.g.aAg().hqi.a(new b(this.AKc), 0);
+          h.aHH();
+          h.aHF().kcd.a(new b(this.GDj), 0);
           AppMethodBeat.o(66320);
         }
       });
@@ -319,21 +322,21 @@ public final class s
   public final void b(a parama)
   {
     AppMethodBeat.i(66325);
-    if (this.pQG == null)
+    if (this.cSF == null)
     {
       AppMethodBeat.o(66325);
       return;
     }
     int i = 0;
-    while (i < this.pQG.size())
+    while (i < this.cSF.size())
     {
-      WeakReference localWeakReference = (WeakReference)this.pQG.get(i);
+      WeakReference localWeakReference = (WeakReference)this.cSF.get(i);
       if (localWeakReference != null)
       {
         a locala = (a)localWeakReference.get();
         if ((locala != null) && (locala.equals(parama)))
         {
-          this.pQG.remove(localWeakReference);
+          this.cSF.remove(localWeakReference);
           AppMethodBeat.o(66325);
           return;
         }
@@ -351,9 +354,9 @@ public final class s
   public final class b
     extends s.c
   {
-    public String AKe;
-    public String AKf;
-    public String AKg;
+    public String GDl;
+    public String GDm;
+    public String GDn;
     
     public b()
     {
@@ -363,7 +366,7 @@ public final class s
   
   public class c
   {
-    public int AKh;
+    public int GDo;
     
     public c() {}
   }
@@ -371,7 +374,7 @@ public final class s
   public final class d
     extends s.c
   {
-    public String dNQ;
+    public String fHb;
     
     public d()
     {
@@ -382,12 +385,12 @@ public final class s
   public final class e
     extends s.c
   {
-    public String AKi;
-    public String AKj;
-    public String AKk;
-    public String AKl;
-    public String AKm;
-    public boolean AKn = true;
+    public String GDp;
+    public String GDq;
+    public String GDr;
+    public String GDs;
+    public String GDt;
+    public boolean GDu = true;
     
     public e()
     {
@@ -398,9 +401,9 @@ public final class s
   public final class f
     extends s.c
   {
-    public String AKo;
-    public Orders AKp;
-    public s.h egD;
+    public String GDv;
+    public Orders GDw;
+    public s.h gaT;
     
     public f()
     {
@@ -411,11 +414,11 @@ public final class s
   public final class g
     extends s.c
   {
-    public String AKq;
-    public String AKr;
-    public String dNQ;
+    public String GDx;
+    public String GDy;
+    public String fHb;
     public String id;
-    public int qGa;
+    public int ufc;
     
     public g()
     {
@@ -425,26 +428,26 @@ public final class s
   
   public final class h
   {
-    public boolean AKs;
-    public String egd;
-    public String ege;
-    public String egf;
-    public String egg;
-    public String egh;
+    public boolean GDz;
+    public String gat;
+    public String gau;
+    public String gav;
+    public String gaw;
+    public String gax;
     
     public h()
     {
       AppMethodBeat.i(66321);
       Object localObject;
-      this.egd = ((String)localObject.get(".sysmsg.paymsg.guide_flag"));
-      this.ege = ((String)localObject.get(".sysmsg.paymsg.guide_wording"));
-      this.egf = ((String)localObject.get(".sysmsg.paymsg.left_button_wording"));
-      this.egg = ((String)localObject.get(".sysmsg.paymsg.right_button_wording"));
-      this.egh = ((String)localObject.get(".sysmsg.paymsg.upload_credit_url"));
+      this.gat = ((String)localObject.get(".sysmsg.paymsg.guide_flag"));
+      this.gau = ((String)localObject.get(".sysmsg.paymsg.guide_wording"));
+      this.gav = ((String)localObject.get(".sysmsg.paymsg.left_button_wording"));
+      this.gaw = ((String)localObject.get(".sysmsg.paymsg.right_button_wording"));
+      this.gax = ((String)localObject.get(".sysmsg.paymsg.upload_credit_url"));
       if ("1".equals(localObject.get(".sysmsg.paymsg.guide_block"))) {}
       for (boolean bool = true;; bool = false)
       {
-        this.AKs = bool;
+        this.GDz = bool;
         AppMethodBeat.o(66321);
         return;
       }

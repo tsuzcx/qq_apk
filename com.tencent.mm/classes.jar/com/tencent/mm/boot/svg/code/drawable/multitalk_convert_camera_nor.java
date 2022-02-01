@@ -127,7 +127,7 @@ public class multitalk_convert_camera_nor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.boot.svg.code.drawable.multitalk_convert_camera_nor
  * JD-Core Version:    0.7.0.1
  */

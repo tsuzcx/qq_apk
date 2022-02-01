@@ -4,20 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.rh;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.a.sh;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.aa;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.multitalk.b.p.23;
+import com.tencent.mm.plugin.multitalk.b.o.23;
 import com.tencent.mm.plugin.multitalk.c.b;
 import com.tencent.mm.plugin.multitalk.c.c;
 import com.tencent.mm.plugin.multitalk.ui.widget.n;
 import com.tencent.mm.plugin.voip.model.v2protocal;
-import com.tencent.mm.protocal.protobuf.eri;
-import com.tencent.mm.protocal.protobuf.esc;
-import com.tencent.mm.protocal.protobuf.esd;
+import com.tencent.mm.protocal.protobuf.fbt;
+import com.tencent.mm.protocal.protobuf.fcn;
+import com.tencent.mm.protocal.protobuf.fco;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -25,76 +24,77 @@ import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.an;
 import com.tencent.mm.storage.ao;
-import com.tencent.pb.common.b.a.a.a.bb;
-import com.tencent.pb.common.b.a.a.a.bh;
+import com.tencent.pb.common.b.a.a.a.ba;
+import com.tencent.pb.common.b.a.a.a.bg;
 import com.tencent.pb.talkroom.sdk.MultiTalkGroup;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.g.b.p;
 
 public final class s
   implements d
 {
+  private LinkedList<String> FsS;
+  private LinkedList<String> FsT;
+  private LinkedList<String> FsU;
   private MMHandler handler;
   private List<d.a> listeners;
-  private LinkedList<String> zNv;
-  private LinkedList<String> zNw;
-  private LinkedList<String> zNx;
   
   public s()
   {
     AppMethodBeat.i(114541);
     this.listeners = new ArrayList();
-    this.zNv = null;
-    this.zNw = new LinkedList();
-    this.zNx = new LinkedList();
+    this.FsS = null;
+    this.FsT = new LinkedList();
+    this.FsU = new LinkedList();
     this.handler = new MMHandler(Looper.getMainLooper());
     AppMethodBeat.o(114541);
   }
   
-  private void aGi(String paramString)
+  private void aQw(String paramString)
   {
     AppMethodBeat.i(114570);
     Log.i("MicroMsg.MultiTalkRoomListMsg", "addwxGroupIdInMap:".concat(String.valueOf(paramString)));
-    if (this.zNv != null)
+    if (this.FsS != null)
     {
-      if (!this.zNv.contains(paramString))
+      if (!this.FsS.contains(paramString))
       {
-        this.zNv.add(paramString);
+        this.FsS.add(paramString);
         AppMethodBeat.o(114570);
       }
     }
     else
     {
-      enU();
-      if (this.zNv != null) {
-        this.zNv.add(paramString);
+      eXK();
+      if (this.FsS != null) {
+        this.FsS.add(paramString);
       }
     }
     AppMethodBeat.o(114570);
   }
   
-  public static boolean b(String paramString, eri parameri)
+  public static boolean b(String paramString, fbt paramfbt)
   {
-    AppMethodBeat.i(239425);
+    AppMethodBeat.i(202740);
     boolean bool3 = true;
     boolean bool1 = true;
-    Object localObject3 = parameri.NoY;
+    Object localObject3 = paramfbt.UBU;
     LinkedList localLinkedList1 = new LinkedList();
     Object localObject1 = ((LinkedList)localObject3).iterator();
     while (((Iterator)localObject1).hasNext()) {
-      localLinkedList1.add(((esd)((Iterator)localObject1).next()).Npo.username);
+      localLinkedList1.add(((fco)((Iterator)localObject1).next()).UCk.username);
     }
-    String str = (String)g.aAh().azQ().get(2, null);
+    String str = (String)h.aHG().aHp().b(2, null);
     if (str == null)
     {
       Log.i("MicroMsg.MultiTalkRoomListMsg", "myUserName is null , go save delete all logic.");
-      d(paramString, parameri);
-      AppMethodBeat.o(239425);
+      d(paramString, paramfbt);
+      AppMethodBeat.o(202740);
       return true;
     }
-    Object localObject2 = ac.eoj().aGq(paramString);
+    Object localObject2 = ad.eXZ().aQE(paramString);
     LinkedList localLinkedList2 = new LinkedList();
     localObject1 = null;
     Object localObject4 = ((List)localObject2).iterator();
@@ -124,35 +124,35 @@ public final class s
             if (!((Iterator)localObject2).hasNext()) {
               break;
             }
-            localObject4 = (esd)((Iterator)localObject2).next();
+            localObject4 = (fco)((Iterator)localObject2).next();
             int i = 20;
-            if (((esd)localObject4).status == 1) {
+            if (((fco)localObject4).status == 1) {
               i = 10;
             }
-            if ((((esd)localObject4).status == 2) || (((esd)localObject4).status == 3)) {
+            if ((((fco)localObject4).status == 2) || (((fco)localObject4).status == 3)) {
               i = 1;
             }
             bool2 = bool1;
-            if (((esd)localObject4).Npo.username != null)
+            if (((fco)localObject4).UCk.username != null)
             {
               bool2 = bool1;
-              if (((esd)localObject4).Npo.username.equals(str))
+              if (((fco)localObject4).UCk.username.equals(str))
               {
                 bool2 = bool1;
-                if (((esd)localObject4).status != ((b)localObject1).field_status)
+                if (((fco)localObject4).status != ((b)localObject1).field_status)
                 {
                   b localb = new b();
                   localb.field_wxGroupId = paramString;
-                  localb.field_inviteUserName = parameri.Npb;
+                  localb.field_inviteUserName = paramfbt.UBX;
                   localb.field_memberUuid = 0L;
-                  localb.field_userName = ((esd)localObject4).Npo.username;
+                  localb.field_userName = ((fco)localObject4).UCk.username;
                   localb.field_status = i;
-                  if (!ac.eoj().b(localb))
+                  if (!ad.eXZ().b(localb))
                   {
-                    Log.e("MicroMsg.MultiTalkRoomListMsg", "updateMultiTalkMembers update myself failure! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s", new Object[] { paramString, ((esd)localObject4).Npo.username, Long.valueOf(localb.field_memberUuid), localb.field_inviteUserName });
+                    Log.e("MicroMsg.MultiTalkRoomListMsg", "updateMultiTalkMembers update myself failure! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s", new Object[] { paramString, ((fco)localObject4).UCk.username, Long.valueOf(localb.field_memberUuid), localb.field_inviteUserName });
                     bool1 = false;
                   }
-                  Log.i("MicroMsg.MultiTalkRoomListMsg", "updateMultiTalkMembers update myself success! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s, status=%d", new Object[] { paramString, ((esd)localObject4).Npo.username, Long.valueOf(localb.field_memberUuid), localb.field_inviteUserName, Integer.valueOf(localb.field_status) });
+                  Log.i("MicroMsg.MultiTalkRoomListMsg", "updateMultiTalkMembers update myself success! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s, status=%d", new Object[] { paramString, ((fco)localObject4).UCk.username, Long.valueOf(localb.field_memberUuid), localb.field_inviteUserName, Integer.valueOf(localb.field_status) });
                   bool2 = bool1;
                 }
               }
@@ -164,35 +164,35 @@ public final class s
       localObject1 = ((LinkedList)localObject3).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (esd)((Iterator)localObject1).next();
-        if (!localLinkedList2.contains(((esd)localObject2).Npo.username))
+        localObject2 = (fco)((Iterator)localObject1).next();
+        if (!localLinkedList2.contains(((fco)localObject2).UCk.username))
         {
           localObject3 = new b();
           ((b)localObject3).field_wxGroupId = paramString;
-          ((b)localObject3).field_inviteUserName = parameri.Npb;
+          ((b)localObject3).field_inviteUserName = paramfbt.UBX;
           ((b)localObject3).field_memberUuid = 0L;
-          ((b)localObject3).field_userName = ((esd)localObject2).Npo.username;
+          ((b)localObject3).field_userName = ((fco)localObject2).UCk.username;
           ((b)localObject3).field_status = 20;
-          if (((esd)localObject2).status == 1) {
+          if (((fco)localObject2).status == 1) {
             ((b)localObject3).field_status = 10;
           }
-          if ((((esd)localObject2).status == 2) || (((esd)localObject2).status == 3)) {
+          if ((((fco)localObject2).status == 2) || (((fco)localObject2).status == 3)) {
             ((b)localObject3).field_status = 1;
           }
-          if (!ac.eoj().b((b)localObject3))
+          if (!ad.eXZ().b((b)localObject3))
           {
-            Log.e("MicroMsg.MultiTalkRoomListMsg", "updateMultiTalkMembers save multiTalkMember failure! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s", new Object[] { paramString, ((esd)localObject2).Npo.username, Long.valueOf(((b)localObject3).field_memberUuid), ((b)localObject3).field_inviteUserName });
+            Log.e("MicroMsg.MultiTalkRoomListMsg", "updateMultiTalkMembers save multiTalkMember failure! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s", new Object[] { paramString, ((fco)localObject2).UCk.username, Long.valueOf(((b)localObject3).field_memberUuid), ((b)localObject3).field_inviteUserName });
             bool2 = false;
           }
-          Log.i("MicroMsg.MultiTalkRoomListMsg", "updateMultiTalkMembers save multiTalkMember success! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s, status=%d", new Object[] { paramString, ((esd)localObject2).Npo.username, Long.valueOf(((b)localObject3).field_memberUuid), ((b)localObject3).field_inviteUserName, Integer.valueOf(((b)localObject3).field_status) });
+          Log.i("MicroMsg.MultiTalkRoomListMsg", "updateMultiTalkMembers save multiTalkMember success! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s, status=%d", new Object[] { paramString, ((fco)localObject2).UCk.username, Long.valueOf(((b)localObject3).field_memberUuid), ((b)localObject3).field_inviteUserName, Integer.valueOf(((b)localObject3).field_status) });
         }
       }
-      parameri = localLinkedList2.iterator();
-      while (parameri.hasNext())
+      paramfbt = localLinkedList2.iterator();
+      while (paramfbt.hasNext())
       {
-        localObject1 = (String)parameri.next();
+        localObject1 = (String)paramfbt.next();
         if (!localLinkedList1.contains(localObject1)) {
-          if (ac.eoj().fr(paramString, (String)localObject1))
+          if (ad.eXZ().fF(paramString, (String)localObject1))
           {
             Log.i("MicroMsg.MultiTalkRoomListMsg", "updateMultiTalkMembers delete success for wxGroupId = " + paramString + ", username = " + (String)localObject1);
           }
@@ -203,190 +203,190 @@ public final class s
           }
         }
       }
-      AppMethodBeat.o(239425);
+      AppMethodBeat.o(202740);
       return bool2;
     }
   }
   
-  private static boolean b(String paramString, a.bh parambh)
+  private static boolean b(String paramString, a.bg parambg)
   {
     int i = 0;
-    AppMethodBeat.i(239422);
-    if (parambh == null)
+    AppMethodBeat.i(202717);
+    if (parambg == null)
     {
-      AppMethodBeat.o(239422);
+      AppMethodBeat.o(202717);
       return false;
     }
-    com.tencent.mm.bh.f localf = new com.tencent.mm.bh.f();
+    com.tencent.mm.bj.f localf = new com.tencent.mm.bj.f();
     localf.field_wxGroupId = paramString;
-    localf.field_groupId = parambh.groupId;
-    localf.field_roomId = parambh.GXO;
-    localf.field_roomKey = parambh.GXP;
-    localf.field_routeId = parambh.RDt;
-    localf.field_inviteUserName = parambh.RGL;
-    parambh = parambh.REK;
-    if (parambh.length > 0) {
-      i = parambh.length;
+    localf.field_groupId = parambg.groupId;
+    localf.field_roomId = parambg.NOc;
+    localf.field_roomKey = parambg.NOd;
+    localf.field_routeId = parambg.ZeV;
+    localf.field_inviteUserName = parambg.Zir;
+    parambg = parambg.Zgp;
+    if (parambg.length > 0) {
+      i = parambg.length;
     }
     localf.field_memberCount = i;
     localf.field_createTime = System.currentTimeMillis();
     localf.field_ilinkRoomId = 0L;
-    if (ac.eoi().aFI(paramString) == null)
+    if (ad.eXY().aPU(paramString) == null)
     {
-      bool = ac.eoi().a(localf);
-      AppMethodBeat.o(239422);
+      bool = ad.eXY().a(localf);
+      AppMethodBeat.o(202717);
       return bool;
     }
-    boolean bool = ac.eoi().b(localf);
-    AppMethodBeat.o(239422);
+    boolean bool = ad.eXY().b(localf);
+    AppMethodBeat.o(202717);
     return bool;
   }
   
-  private static boolean c(String paramString, eri parameri)
+  private static boolean c(String paramString, fbt paramfbt)
   {
-    AppMethodBeat.i(239426);
-    if (parameri == null)
+    AppMethodBeat.i(202749);
+    if (paramfbt == null)
     {
-      AppMethodBeat.o(239426);
+      AppMethodBeat.o(202749);
       return false;
     }
-    Object localObject = parameri.NoY;
+    Object localObject = paramfbt.UBU;
     if ((localObject != null) && (((LinkedList)localObject).size() > 0))
     {
-      ac.eoj().gC(paramString);
+      ad.eXZ().ho(paramString);
       localObject = ((LinkedList)localObject).iterator();
       boolean bool = true;
       while (((Iterator)localObject).hasNext())
       {
-        esd localesd = (esd)((Iterator)localObject).next();
+        fco localfco = (fco)((Iterator)localObject).next();
         b localb = new b();
         localb.field_wxGroupId = paramString;
-        localb.field_inviteUserName = parameri.Npb;
+        localb.field_inviteUserName = paramfbt.UBX;
         localb.field_memberUuid = 0L;
-        localb.field_userName = localesd.Npo.username;
-        localb.field_status = localesd.status;
+        localb.field_userName = localfco.UCk.username;
+        localb.field_status = localfco.status;
         localb.field_status = 20;
-        if (localesd.status == 1) {
+        if (localfco.status == 1) {
           localb.field_status = 10;
         }
-        if ((localesd.status == 2) || (localesd.status == 3)) {
+        if ((localfco.status == 2) || (localfco.status == 3)) {
           localb.field_status = 1;
         }
-        if (!ac.eoj().b(localb))
+        if (!ad.eXZ().b(localb))
         {
-          Log.e("MicroMsg.MultiTalkRoomListMsg", "save multiTalkMember failure! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s", new Object[] { paramString, localesd.Npo.username, Long.valueOf(localb.field_memberUuid), localb.field_inviteUserName });
+          Log.e("MicroMsg.MultiTalkRoomListMsg", "save multiTalkMember failure! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s", new Object[] { paramString, localfco.UCk.username, Long.valueOf(localb.field_memberUuid), localb.field_inviteUserName });
           bool = false;
         }
-        Log.i("MicroMsg.MultiTalkRoomListMsg", "save multiTalkMember success! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s, status=%d", new Object[] { paramString, localesd.Npo.username, Long.valueOf(localb.field_memberUuid), localb.field_inviteUserName, Integer.valueOf(localb.field_status) });
+        Log.i("MicroMsg.MultiTalkRoomListMsg", "save multiTalkMember success! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s, status=%d", new Object[] { paramString, localfco.UCk.username, Long.valueOf(localb.field_memberUuid), localb.field_inviteUserName, Integer.valueOf(localb.field_status) });
       }
-      AppMethodBeat.o(239426);
+      AppMethodBeat.o(202749);
       return bool;
     }
-    AppMethodBeat.o(239426);
+    AppMethodBeat.o(202749);
     return true;
   }
   
-  private static boolean c(String paramString, a.bh parambh)
+  private static boolean c(String paramString, a.bg parambg)
   {
-    AppMethodBeat.i(239423);
-    if (parambh == null)
+    AppMethodBeat.i(202722);
+    if (parambg == null)
     {
-      AppMethodBeat.o(239423);
+      AppMethodBeat.o(202722);
       return false;
     }
     boolean bool = true;
-    parambh = parambh.REK;
-    if ((parambh != null) && (parambh.length > 0))
+    parambg = parambg.Zgp;
+    if ((parambg != null) && (parambg.length > 0))
     {
-      ac.eoj().gC(paramString);
-      int j = parambh.length;
+      ad.eXZ().ho(paramString);
+      int j = parambg.length;
       int i = 0;
       while (i < j)
       {
-        Object localObject = parambh[i];
+        Object localObject = parambg[i];
         b localb = new b();
         localb.field_wxGroupId = paramString;
-        localb.field_inviteUserName = localObject.RGr;
-        localb.field_memberUuid = localObject.KBb;
-        localb.field_userName = localObject.dLN;
+        localb.field_inviteUserName = localObject.ZhX;
+        localb.field_memberUuid = localObject.RCR;
+        localb.field_userName = localObject.fEC;
         localb.field_status = localObject.status;
-        if (!ac.eoj().a(localb))
+        if (!ad.eXZ().a(localb))
         {
-          Log.e("MicroMsg.MultiTalkRoomListMsg", "save multiTalkMember failure! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s", new Object[] { paramString, localObject.dLN, Long.valueOf(localb.field_memberUuid), localb.field_inviteUserName });
+          Log.e("MicroMsg.MultiTalkRoomListMsg", "save multiTalkMember failure! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s", new Object[] { paramString, localObject.fEC, Long.valueOf(localb.field_memberUuid), localb.field_inviteUserName });
           bool = false;
         }
-        Log.i("MicroMsg.MultiTalkRoomListMsg", "save multiTalkMember success! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s", new Object[] { paramString, localObject.dLN, Long.valueOf(localb.field_memberUuid), localb.field_inviteUserName });
+        Log.i("MicroMsg.MultiTalkRoomListMsg", "save multiTalkMember success! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s", new Object[] { paramString, localObject.fEC, Long.valueOf(localb.field_memberUuid), localb.field_inviteUserName });
         i += 1;
       }
-      AppMethodBeat.o(239423);
+      AppMethodBeat.o(202722);
       return bool;
     }
-    AppMethodBeat.o(239423);
+    AppMethodBeat.o(202722);
     return true;
   }
   
-  private static boolean d(String paramString, eri parameri)
+  private static boolean d(String paramString, fbt paramfbt)
   {
     int i = 0;
-    AppMethodBeat.i(239427);
-    if (parameri == null)
+    AppMethodBeat.i(202750);
+    if (paramfbt == null)
     {
-      AppMethodBeat.o(239427);
+      AppMethodBeat.o(202750);
       return false;
     }
-    com.tencent.mm.bh.f localf = new com.tencent.mm.bh.f();
+    com.tencent.mm.bj.f localf = new com.tencent.mm.bj.f();
     localf.field_wxGroupId = paramString;
-    localf.field_groupId = parameri.NoX;
-    localf.field_roomId = ((int)parameri.Lnw);
+    localf.field_groupId = paramfbt.UBT;
+    localf.field_roomId = ((int)paramfbt.SoR);
     localf.field_roomKey = 0L;
     localf.field_routeId = 0;
-    localf.field_inviteUserName = parameri.Npb;
-    localf.field_ilinkRoomId = parameri.Lnw;
-    parameri = parameri.NoY;
-    if (parameri.size() > 0) {
-      i = parameri.size();
+    localf.field_inviteUserName = paramfbt.UBX;
+    localf.field_ilinkRoomId = paramfbt.SoR;
+    paramfbt = paramfbt.UBU;
+    if (paramfbt.size() > 0) {
+      i = paramfbt.size();
     }
     localf.field_memberCount = i;
     localf.field_createTime = System.currentTimeMillis();
-    if (ac.eoi().aFI(paramString) == null)
+    if (ad.eXY().aPU(paramString) == null)
     {
-      bool = ac.eoi().a(localf);
-      AppMethodBeat.o(239427);
+      bool = ad.eXY().a(localf);
+      AppMethodBeat.o(202750);
       return bool;
     }
-    boolean bool = ac.eoi().b(localf);
-    AppMethodBeat.o(239427);
+    boolean bool = ad.eXY().b(localf);
+    AppMethodBeat.o(202750);
     return bool;
   }
   
-  static boolean d(String paramString, a.bh parambh)
+  static boolean d(String paramString, a.bg parambg)
   {
-    AppMethodBeat.i(239424);
-    if (parambh == null)
+    AppMethodBeat.i(202734);
+    if (parambg == null)
     {
-      AppMethodBeat.o(239424);
+      AppMethodBeat.o(202734);
       return false;
     }
-    a.bb[] arrayOfbb = parambh.REK;
+    a.ba[] arrayOfba = parambg.Zgp;
     LinkedList localLinkedList1 = new LinkedList();
-    int j = arrayOfbb.length;
+    int j = arrayOfba.length;
     int i = 0;
     while (i < j)
     {
-      localLinkedList1.add(arrayOfbb[i].dLN);
+      localLinkedList1.add(arrayOfba[i].fEC);
       i += 1;
     }
-    String str = (String)g.aAh().azQ().get(2, null);
+    String str = (String)h.aHG().aHp().b(2, null);
     if (str == null)
     {
       Log.i("MicroMsg.MultiTalkRoomListMsg", "myUserName is null , go save delete all logic.");
-      b(paramString, parambh);
-      AppMethodBeat.o(239424);
+      b(paramString, parambg);
+      AppMethodBeat.o(202734);
       return true;
     }
-    Object localObject1 = ac.eoj().aGq(paramString);
+    Object localObject1 = ad.eXZ().aQE(paramString);
     LinkedList localLinkedList2 = new LinkedList();
-    parambh = null;
+    parambg = null;
     Object localObject2 = ((List)localObject1).iterator();
     if (((Iterator)localObject2).hasNext())
     {
@@ -395,15 +395,15 @@ public final class s
       if (!((b)localObject1).field_userName.equals(str)) {
         break label785;
       }
-      parambh = (a.bh)localObject1;
+      parambg = (a.bg)localObject1;
     }
     label785:
     for (;;)
     {
       break;
-      if ((parambh != null) && (localLinkedList1.contains(str)))
+      if ((parambg != null) && (localLinkedList1.contains(str)))
       {
-        j = arrayOfbb.length;
+        j = arrayOfba.length;
         i = 0;
         for (bool1 = true;; bool1 = bool2)
         {
@@ -411,28 +411,28 @@ public final class s
           if (i >= j) {
             break;
           }
-          localObject1 = arrayOfbb[i];
+          localObject1 = arrayOfba[i];
           bool2 = bool1;
-          if (((a.bb)localObject1).dLN != null)
+          if (((a.ba)localObject1).fEC != null)
           {
             bool2 = bool1;
-            if (((a.bb)localObject1).dLN.equals(str))
+            if (((a.ba)localObject1).fEC.equals(str))
             {
               bool2 = bool1;
-              if (((a.bb)localObject1).status != parambh.field_status)
+              if (((a.ba)localObject1).status != parambg.field_status)
               {
                 localObject2 = new b();
                 ((b)localObject2).field_wxGroupId = paramString;
-                ((b)localObject2).field_inviteUserName = ((a.bb)localObject1).RGr;
-                ((b)localObject2).field_memberUuid = ((a.bb)localObject1).KBb;
-                ((b)localObject2).field_userName = ((a.bb)localObject1).dLN;
-                ((b)localObject2).field_status = ((a.bb)localObject1).status;
-                if (!ac.eoj().a((b)localObject2))
+                ((b)localObject2).field_inviteUserName = ((a.ba)localObject1).ZhX;
+                ((b)localObject2).field_memberUuid = ((a.ba)localObject1).RCR;
+                ((b)localObject2).field_userName = ((a.ba)localObject1).fEC;
+                ((b)localObject2).field_status = ((a.ba)localObject1).status;
+                if (!ad.eXZ().a((b)localObject2))
                 {
-                  Log.e("MicroMsg.MultiTalkRoomListMsg", "updateMultiTalkMembers update myself failure! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s", new Object[] { paramString, ((a.bb)localObject1).dLN, Long.valueOf(((b)localObject2).field_memberUuid), ((b)localObject2).field_inviteUserName });
+                  Log.e("MicroMsg.MultiTalkRoomListMsg", "updateMultiTalkMembers update myself failure! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s", new Object[] { paramString, ((a.ba)localObject1).fEC, Long.valueOf(((b)localObject2).field_memberUuid), ((b)localObject2).field_inviteUserName });
                   bool1 = false;
                 }
-                Log.i("MicroMsg.MultiTalkRoomListMsg", "updateMultiTalkMembers update myself success! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s", new Object[] { paramString, ((a.bb)localObject1).dLN, Long.valueOf(((b)localObject2).field_memberUuid), ((b)localObject2).field_inviteUserName });
+                Log.i("MicroMsg.MultiTalkRoomListMsg", "updateMultiTalkMembers update myself success! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s", new Object[] { paramString, ((a.ba)localObject1).fEC, Long.valueOf(((b)localObject2).field_memberUuid), ((b)localObject2).field_inviteUserName });
                 bool2 = bool1;
               }
             }
@@ -441,38 +441,38 @@ public final class s
         }
       }
       boolean bool2 = true;
-      j = arrayOfbb.length;
+      j = arrayOfba.length;
       i = 0;
       for (boolean bool1 = bool2; i < j; bool1 = bool2)
       {
-        parambh = arrayOfbb[i];
+        parambg = arrayOfba[i];
         bool2 = bool1;
-        if (!localLinkedList2.contains(parambh.dLN))
+        if (!localLinkedList2.contains(parambg.fEC))
         {
           localObject1 = new b();
           ((b)localObject1).field_wxGroupId = paramString;
-          ((b)localObject1).field_inviteUserName = parambh.RGr;
-          ((b)localObject1).field_memberUuid = parambh.KBb;
-          ((b)localObject1).field_userName = parambh.dLN;
-          ((b)localObject1).field_status = parambh.status;
-          if (!ac.eoj().a((b)localObject1))
+          ((b)localObject1).field_inviteUserName = parambg.ZhX;
+          ((b)localObject1).field_memberUuid = parambg.RCR;
+          ((b)localObject1).field_userName = parambg.fEC;
+          ((b)localObject1).field_status = parambg.status;
+          if (!ad.eXZ().a((b)localObject1))
           {
-            Log.e("MicroMsg.MultiTalkRoomListMsg", "updateMultiTalkMembers save multiTalkMember failure! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s", new Object[] { paramString, parambh.dLN, Long.valueOf(((b)localObject1).field_memberUuid), ((b)localObject1).field_inviteUserName });
+            Log.e("MicroMsg.MultiTalkRoomListMsg", "updateMultiTalkMembers save multiTalkMember failure! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s", new Object[] { paramString, parambg.fEC, Long.valueOf(((b)localObject1).field_memberUuid), ((b)localObject1).field_inviteUserName });
             bool1 = false;
           }
-          Log.i("MicroMsg.MultiTalkRoomListMsg", "updateMultiTalkMembers save multiTalkMember success! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s", new Object[] { paramString, parambh.dLN, Long.valueOf(((b)localObject1).field_memberUuid), ((b)localObject1).field_inviteUserName });
+          Log.i("MicroMsg.MultiTalkRoomListMsg", "updateMultiTalkMembers save multiTalkMember success! wxGroupId = %s,userName = %s,field_memberUuid = %d,multiTalkMember.field_inviteUserName = %s", new Object[] { paramString, parambg.fEC, Long.valueOf(((b)localObject1).field_memberUuid), ((b)localObject1).field_inviteUserName });
           bool2 = bool1;
         }
         i += 1;
       }
-      parambh = localLinkedList2.iterator();
-      while (parambh.hasNext())
+      parambg = localLinkedList2.iterator();
+      while (parambg.hasNext())
       {
-        localObject1 = (String)parambh.next();
+        localObject1 = (String)parambg.next();
         bool2 = bool1;
         if (!localLinkedList1.contains(localObject1))
         {
-          if (ac.eoj().fr(paramString, (String)localObject1))
+          if (ad.eXZ().fF(paramString, (String)localObject1))
           {
             Log.i("MicroMsg.MultiTalkRoomListMsg", "updateMultiTalkMembers delete success for wxGroupId = " + paramString + ", username = " + (String)localObject1);
           }
@@ -486,9 +486,17 @@ public final class s
           bool1 = bool2;
         }
       }
-      AppMethodBeat.o(239424);
+      AppMethodBeat.o(202734);
       return bool1;
     }
+  }
+  
+  public final String PJ(String paramString)
+  {
+    AppMethodBeat.i(114556);
+    paramString = aa.PJ(paramString);
+    AppMethodBeat.o(114556);
+    return paramString;
   }
   
   public final void a(d.a parama)
@@ -507,51 +515,51 @@ public final class s
     }
   }
   
-  public final void a(String paramString, eri parameri)
+  public final void a(String paramString, fbt paramfbt)
   {
-    AppMethodBeat.i(239420);
+    AppMethodBeat.i(202708);
     Log.i("MicroMsg.MultiTalkRoomListMsg", "showBanner  wxGroupId = %s", new Object[] { paramString });
-    c(paramString, parameri);
-    if (d(paramString, parameri)) {
-      aGi(paramString);
+    c(paramString, paramfbt);
+    if (d(paramString, paramfbt)) {
+      aQw(paramString);
     }
-    aGh(paramString);
-    AppMethodBeat.o(239420);
+    aQv(paramString);
+    AppMethodBeat.o(202708);
   }
   
-  public final void a(String paramString, a.bh parambh)
+  public final void a(String paramString, a.bg parambg)
   {
-    AppMethodBeat.i(239419);
+    AppMethodBeat.i(202707);
     Log.i("MicroMsg.MultiTalkRoomListMsg", "showBanner  wxGroupId = %s", new Object[] { paramString });
-    c(paramString, parambh);
-    if (b(paramString, parambh)) {
-      aGi(paramString);
+    c(paramString, parambg);
+    if (b(paramString, parambg)) {
+      aQw(paramString);
     }
-    aGh(paramString);
-    AppMethodBeat.o(239419);
+    aQv(paramString);
+    AppMethodBeat.o(202707);
   }
   
-  public final void aFG(final String paramString)
+  public final void aPS(final String paramString)
   {
     AppMethodBeat.i(114544);
-    if ((ab.Eq(paramString)) && (aFJ(paramString)))
+    if ((ab.Lj(paramString)) && (aPV(paramString)))
     {
       Log.i("MicroMsg.MultiTalkRoomListMsg", "isKicked! now clean banner and check if i am in multitalk.");
-      g.aAh().azQ().get(2, null);
-      if ((ac.eom().zME != null) && (ac.eom().zME.zHE.equals(paramString)))
+      h.aHG().aHp().b(2, null);
+      if ((ad.eYc().FrY != null) && (ad.eYc().FrY.FmP.equals(paramString)))
       {
         Log.i("MicroMsg.MultiTalkRoomListMsg", "yes i am now in multitalk so i exit now!");
-        ac.eom().j(false, false, false);
+        ad.eYc().i(false, false, false);
       }
       this.handler.postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(114538);
-          s.this.aFO(paramString);
-          rh localrh = new rh();
-          localrh.dXY.type = 2;
-          EventCenter.instance.publish(localrh);
+          s.this.aQa(paramString);
+          sh localsh = new sh();
+          localsh.fRP.type = 2;
+          EventCenter.instance.publish(localsh);
           AppMethodBeat.o(114538);
         }
       }, 2000L);
@@ -559,16 +567,16 @@ public final class s
     AppMethodBeat.o(114544);
   }
   
-  public final boolean aFH(String paramString)
+  public final boolean aPT(String paramString)
   {
     AppMethodBeat.i(114545);
-    com.tencent.mm.bh.f localf = ac.eoi().aFI(paramString);
+    com.tencent.mm.bj.f localf = ad.eXY().aPU(paramString);
     if ((localf != null) && (localf.field_wxGroupId != null) && (localf.field_wxGroupId.equals(paramString)))
     {
       if (System.currentTimeMillis() - localf.field_createTime > 21600000L)
       {
         Log.i("MicroMsg.MultiTalkRoomListMsg", "wxGroupId:" + paramString + ",is out of time 6 hours..");
-        aFO(paramString);
+        aQa(paramString);
         AppMethodBeat.o(114545);
         return false;
       }
@@ -579,21 +587,21 @@ public final class s
     return false;
   }
   
-  public final com.tencent.mm.bh.f aFI(String paramString)
+  public final com.tencent.mm.bj.f aPU(String paramString)
   {
-    AppMethodBeat.i(258689);
-    paramString = ac.eoi().aFI(paramString);
-    AppMethodBeat.o(258689);
+    AppMethodBeat.i(292872);
+    paramString = ad.eXY().aPU(paramString);
+    AppMethodBeat.o(292872);
     return paramString;
   }
   
-  public final boolean aFJ(String paramString)
+  public final boolean aPV(String paramString)
   {
     AppMethodBeat.i(114546);
-    if (this.zNv == null) {
-      enU();
+    if (this.FsS == null) {
+      eXK();
     }
-    if ((this.zNv != null) && (this.zNv.contains(paramString)))
+    if ((this.FsS != null) && (this.FsS.contains(paramString)))
     {
       AppMethodBeat.o(114546);
       return true;
@@ -602,10 +610,10 @@ public final class s
     return false;
   }
   
-  public final List<String> aFK(String paramString)
+  public final List<String> aPW(String paramString)
   {
     AppMethodBeat.i(114547);
-    Object localObject = ac.eoj().aGq(paramString);
+    Object localObject = ad.eXZ().aQE(paramString);
     paramString = new LinkedList();
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
@@ -615,10 +623,10 @@ public final class s
     return paramString;
   }
   
-  public final boolean aFL(String paramString)
+  public final boolean aPX(String paramString)
   {
     AppMethodBeat.i(114553);
-    Object localObject2 = ac.eon();
+    Object localObject2 = ad.eYd();
     if (paramString != null)
     {
       if (((n)localObject2).intent != null)
@@ -627,8 +635,8 @@ public final class s
         if (localObject1 != null) {}
         for (localObject1 = ((Intent)localObject1).getStringExtra("enterMainUiWxGroupId");; localObject1 = null)
         {
-          localObject2 = ((n)localObject2).zTM;
-          if ((com.tencent.pb.common.c.f.eP((String)localObject1)) || (!kotlin.g.b.p.j(paramString, localObject1)) || (!(localObject2 instanceof com.tencent.mm.plugin.multitalk.ui.widget.m))) {
+          localObject2 = ((n)localObject2).Fzo;
+          if ((com.tencent.pb.common.c.f.fK((String)localObject1)) || (!p.h(paramString, localObject1)) || (!(localObject2 instanceof com.tencent.mm.plugin.multitalk.ui.widget.m))) {
             break label93;
           }
           if (((com.tencent.mm.plugin.multitalk.ui.widget.m)localObject2).getVisibility() != 0) {
@@ -646,12 +654,12 @@ public final class s
       AppMethodBeat.o(114553);
       return false;
     }
-    if (((n)localObject2).zTM != null)
+    if (((n)localObject2).Fzo != null)
     {
-      paramString = ((n)localObject2).zTM;
+      paramString = ((n)localObject2).Fzo;
       if ((paramString != null) && (paramString.getVisibility() == 0))
       {
-        paramString = ((n)localObject2).zTM;
+        paramString = ((n)localObject2).Fzo;
         if ((paramString != null) && (paramString.isShown() == true))
         {
           AppMethodBeat.o(114553);
@@ -663,13 +671,13 @@ public final class s
     return false;
   }
   
-  public final boolean aFM(String paramString)
+  public final boolean aPY(String paramString)
   {
     AppMethodBeat.i(114560);
-    paramString = ac.eoi().aFI(paramString);
+    paramString = ad.eXY().aPU(paramString);
     if (paramString != null)
     {
-      boolean bool = ac.eol().zMd.aFM(paramString.field_groupId);
+      boolean bool = ad.eYb().Frw.aPY(paramString.field_groupId);
       AppMethodBeat.o(114560);
       return bool;
     }
@@ -677,15 +685,15 @@ public final class s
     return false;
   }
   
-  public final boolean aFN(String paramString)
+  public final boolean aPZ(String paramString)
   {
     AppMethodBeat.i(114561);
-    Object localObject1 = ac.eoi().aFI(paramString);
+    Object localObject1 = ad.eXY().aPU(paramString);
     if (localObject1 != null)
     {
-      Log.i("MicroMsg.MultiTalkRoomListMsg", "enterMultiTalk, roomid:" + ((com.tencent.mm.bh.f)localObject1).field_roomId + " ilinkroomid:" + ((com.tencent.mm.bh.f)localObject1).field_ilinkRoomId + " wxgroupid:" + paramString + " wifigateway:" + v2protocal.fJa());
-      boolean bool2 = ac.eom().aFW(paramString);
-      if (((com.tencent.mm.bh.f)localObject1).field_ilinkRoomId != 0L)
+      Log.i("MicroMsg.MultiTalkRoomListMsg", "enterMultiTalk, roomid:" + ((com.tencent.mm.bj.f)localObject1).field_roomId + " ilinkroomid:" + ((com.tencent.mm.bj.f)localObject1).field_ilinkRoomId + " wxgroupid:" + paramString + " wifigateway:" + v2protocal.gBp());
+      boolean bool2 = ad.eYc().aQj(paramString);
+      if (((com.tencent.mm.bj.f)localObject1).field_ilinkRoomId != 0L)
       {
         bool1 = true;
         if ((!bool2) && (!bool1)) {
@@ -695,25 +703,25 @@ public final class s
       label248:
       for (bool2 = true;; bool2 = false)
       {
-        Log.i("MicroMsg.MultiTalkRoomListMsg", "enterMultiTalk:isILink:%b, isILinkCallFromBanner:%b,  groupid:%s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), ((com.tencent.mm.bh.f)localObject1).field_groupId });
+        Log.i("MicroMsg.MultiTalkRoomListMsg", "enterMultiTalk:isILink:%b, isILinkCallFromBanner:%b,  groupid:%s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), ((com.tencent.mm.bj.f)localObject1).field_groupId });
         if (!bool2) {
           break label253;
         }
-        com.tencent.mm.plugin.multitalk.b.p.zHS.y(Util.nullAsNil((Integer)g.aAh().hqB.get(1)), z.aTY());
-        ac.eom().eM(paramString, 2);
-        localObject2 = com.tencent.mm.plugin.multitalk.b.p.zHS;
-        localObject1 = ((com.tencent.mm.bh.f)localObject1).field_groupId;
+        com.tencent.mm.plugin.multitalk.b.o.Fne.F(Util.nullAsNil((Integer)h.aHG().kcw.get(1)), z.bcZ());
+        ad.eYc().fn(paramString, 2);
+        localObject2 = com.tencent.mm.plugin.multitalk.b.o.Fne;
+        localObject1 = ((com.tencent.mm.bj.f)localObject1).field_groupId;
         Log.i("MicroMsg.Multitalk.ILinkService", "steve:  enter newMultiTalkJoinRoom. %s, %s", new Object[] { localObject1, paramString });
-        ((com.tencent.mm.plugin.multitalk.b.p)localObject2).aj(new p.23((com.tencent.mm.plugin.multitalk.b.p)localObject2, paramString, (String)localObject1));
+        ((com.tencent.mm.plugin.multitalk.b.o)localObject2).am(new o.23((com.tencent.mm.plugin.multitalk.b.o)localObject2, paramString, (String)localObject1));
         AppMethodBeat.o(114561);
         return true;
         bool1 = false;
         break;
       }
       label253:
-      Object localObject2 = com.tencent.mm.plugin.multitalk.d.d.zZa;
+      Object localObject2 = com.tencent.mm.plugin.multitalk.d.d.FEN;
       com.tencent.mm.plugin.multitalk.d.d.reset();
-      boolean bool1 = ac.eol().zMd.a(((com.tencent.mm.bh.f)localObject1).field_groupId, ((com.tencent.mm.bh.f)localObject1).field_roomId, ((com.tencent.mm.bh.f)localObject1).field_roomKey, ((com.tencent.mm.bh.f)localObject1).field_routeId, paramString, v2protocal.fJa());
+      boolean bool1 = ad.eYb().Frw.a(((com.tencent.mm.bj.f)localObject1).field_groupId, ((com.tencent.mm.bj.f)localObject1).field_roomId, ((com.tencent.mm.bj.f)localObject1).field_roomKey, ((com.tencent.mm.bj.f)localObject1).field_routeId, paramString, v2protocal.gBp());
       AppMethodBeat.o(114561);
       return bool1;
     }
@@ -721,7 +729,7 @@ public final class s
     return false;
   }
   
-  public final void aFO(String paramString)
+  public final void aQa(String paramString)
   {
     AppMethodBeat.i(114563);
     if (com.tencent.pb.common.c.f.isNullOrEmpty(paramString))
@@ -731,26 +739,27 @@ public final class s
       return;
     }
     Log.i("MicroMsg.MultiTalkRoomListMsg", "cleanBanner  wxGroupId = %s", new Object[] { paramString });
-    gC(paramString);
-    ac.eoj().gC(paramString);
-    aGh(paramString);
+    ho(paramString);
+    ad.eXZ().ho(paramString);
+    aQv(paramString);
     AppMethodBeat.o(114563);
   }
   
-  public final boolean aFP(String paramString)
+  public final boolean aQb(String paramString)
   {
     AppMethodBeat.i(114558);
-    com.tencent.mm.bh.f localf = ac.eoi().aFI(paramString);
+    com.tencent.mm.bj.f localf = ad.eXY().aPU(paramString);
     if (localf != null)
     {
-      if (ac.eom().aFW(paramString))
+      if (ad.eYc().aQj(paramString))
       {
         Log.i("MicroMsg.MultiTalkRoomListMsg", "ilink reject call, roomid:" + localf.field_roomId + " wxgroupid:" + paramString + " ilinkroomid:" + localf.field_ilinkRoomId);
-        com.tencent.mm.plugin.multitalk.b.p.zHS.Rb(1);
+        com.tencent.mm.plugin.multitalk.b.o.Fne.Xp(1);
+        ad.eYc().i(true, false, false);
         AppMethodBeat.o(114558);
         return true;
       }
-      boolean bool = com.tencent.wecall.talkroom.model.a.hqJ().c(localf.field_groupId, localf.field_roomId, localf.field_roomKey, 1);
+      boolean bool = com.tencent.wecall.talkroom.model.a.iut().c(localf.field_groupId, localf.field_roomId, localf.field_roomKey, 1);
       AppMethodBeat.o(114558);
       return bool;
     }
@@ -758,59 +767,67 @@ public final class s
     return false;
   }
   
-  public final void aFQ(String paramString)
+  public final void aQc(String paramString)
   {
     AppMethodBeat.i(114559);
-    if (this.zNw == null)
+    if (this.FsT == null)
     {
-      this.zNw = new LinkedList();
-      if (!this.zNw.contains(paramString))
+      this.FsT = new LinkedList();
+      if (!this.FsT.contains(paramString))
       {
-        this.zNw.add(paramString);
+        this.FsT.add(paramString);
         AppMethodBeat.o(114559);
       }
     }
-    else if (!this.zNw.contains(paramString))
+    else if (!this.FsT.contains(paramString))
     {
-      this.zNw.add(paramString);
+      this.FsT.add(paramString);
     }
     AppMethodBeat.o(114559);
   }
   
-  public final void aGf(String paramString)
+  public final void aQt(String paramString)
   {
     AppMethodBeat.i(114565);
-    if (this.zNw == null)
+    if (this.FsT == null)
     {
-      this.zNw = new LinkedList();
+      this.FsT = new LinkedList();
       AppMethodBeat.o(114565);
       return;
     }
-    this.zNw.remove(paramString);
+    this.FsT.remove(paramString);
     AppMethodBeat.o(114565);
   }
   
-  public final boolean aGg(String paramString)
+  public final boolean aQu(String paramString)
   {
     AppMethodBeat.i(114566);
-    if (this.zNw == null)
+    if (this.FsT == null)
     {
       AppMethodBeat.o(114566);
       return false;
     }
-    boolean bool = this.zNw.contains(paramString);
+    boolean bool = this.FsT.contains(paramString);
     AppMethodBeat.o(114566);
     return bool;
   }
   
-  public final void aGh(String paramString)
+  public final void aQv(final String paramString)
   {
     AppMethodBeat.i(114567);
     Iterator localIterator = this.listeners.iterator();
     while (localIterator.hasNext())
     {
-      d.a locala = (d.a)localIterator.next();
-      this.handler.post(new s.2(this, locala, paramString));
+      final d.a locala = (d.a)localIterator.next();
+      this.handler.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(114539);
+          locala.aQd(paramString);
+          AppMethodBeat.o(114539);
+        }
+      });
     }
     AppMethodBeat.o(114567);
   }
@@ -831,18 +848,18 @@ public final class s
     }
   }
   
-  public final boolean cC(Context paramContext)
+  public final boolean cy(Context paramContext)
   {
     AppMethodBeat.i(114557);
-    boolean bool = com.tencent.mm.q.a.cC(paramContext);
+    boolean bool = com.tencent.mm.q.a.cy(paramContext);
     AppMethodBeat.o(114557);
     return bool;
   }
   
-  public final boolean emp()
+  public final boolean eWd()
   {
     AppMethodBeat.i(114552);
-    if ((ac.eom().ems()) && ((ac.eom().zMD == com.tencent.mm.plugin.multitalk.ui.widget.o.zUf) || (ac.eom().zMD == com.tencent.mm.plugin.multitalk.ui.widget.o.zUe)))
+    if ((ad.eYc().eWg()) && ((ad.eYc().FrX == com.tencent.mm.plugin.multitalk.ui.widget.o.FzI) || (ad.eYc().FrX == com.tencent.mm.plugin.multitalk.ui.widget.o.FzH)))
     {
       AppMethodBeat.o(114552);
       return true;
@@ -851,10 +868,10 @@ public final class s
     return false;
   }
   
-  public final boolean emq()
+  public final boolean eWe()
   {
     AppMethodBeat.i(114554);
-    if ((com.tencent.mm.plugin.voip.b.m.isVoipStarted()) || (ac.eom().emr()) || (ac.eom().ems()) || (ac.eom().ent()))
+    if ((com.tencent.mm.plugin.voip.c.m.isVoipStarted()) || (ad.eYc().eWf()) || (ad.eYc().eWg()) || (ad.eYc().eXh()))
     {
       AppMethodBeat.o(114554);
       return true;
@@ -863,80 +880,72 @@ public final class s
     return false;
   }
   
-  public final boolean emr()
+  public final boolean eWf()
   {
     AppMethodBeat.i(114551);
-    boolean bool = ac.eom().emr();
+    boolean bool = ad.eYc().eWf();
     AppMethodBeat.o(114551);
     return bool;
   }
   
-  public final boolean ems()
+  public final boolean eWg()
   {
     AppMethodBeat.i(114550);
-    boolean bool = ac.eom().ems();
+    boolean bool = ad.eYc().eWg();
     AppMethodBeat.o(114550);
     return bool;
   }
   
-  public final LinkedList<String> enT()
+  public final LinkedList<String> eXJ()
   {
     AppMethodBeat.i(114540);
-    if (this.zNx == null) {
-      this.zNx = new LinkedList();
+    if (this.FsU == null) {
+      this.FsU = new LinkedList();
     }
-    LinkedList localLinkedList = this.zNx;
+    LinkedList localLinkedList = this.FsU;
     AppMethodBeat.o(114540);
     return localLinkedList;
   }
   
-  public final void enU()
+  public final void eXK()
   {
     AppMethodBeat.i(114569);
-    Object localObject = ac.eoi().eot();
+    Object localObject = ad.eXY().eYj();
     Log.i("MicroMsg.MultiTalkRoomListMsg", "setMultitalkingwxGroupIdMap reset!");
-    this.zNv = new LinkedList();
+    this.FsS = new LinkedList();
     localObject = ((LinkedList)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      com.tencent.mm.bh.f localf = (com.tencent.mm.bh.f)((Iterator)localObject).next();
-      this.zNv.add(localf.field_wxGroupId);
+      com.tencent.mm.bj.f localf = (com.tencent.mm.bj.f)((Iterator)localObject).next();
+      this.FsS.add(localf.field_wxGroupId);
     }
-    localObject = new rh();
-    ((rh)localObject).dXY.type = 1;
+    localObject = new sh();
+    ((sh)localObject).fRP.type = 1;
     EventCenter.instance.publish((IEvent)localObject);
     AppMethodBeat.o(114569);
   }
   
-  public final boolean gC(String paramString)
+  public final boolean ho(String paramString)
   {
     AppMethodBeat.i(114549);
-    if (this.zNv != null)
+    if (this.FsS != null)
     {
       Log.i("MicroMsg.MultiTalkRoomListMsg", "removewxGroupIdInMap:".concat(String.valueOf(paramString)));
-      this.zNv.remove(paramString);
+      this.FsS.remove(paramString);
     }
     for (;;)
     {
-      boolean bool = ac.eoi().gC(paramString);
+      boolean bool = ad.eXY().ho(paramString);
       AppMethodBeat.o(114549);
       return bool;
-      enU();
+      eXK();
     }
   }
   
-  public final String getDisplayName(String paramString)
-  {
-    AppMethodBeat.i(114556);
-    paramString = aa.getDisplayName(paramString);
-    AppMethodBeat.o(114556);
-    return paramString;
-  }
-  
-  public final boolean iL(String paramString1, String paramString2)
+  public final boolean iW(String paramString1, String paramString2)
   {
     AppMethodBeat.i(114548);
-    if (ac.eoj().iP(paramString1, paramString2) != null)
+    if (ad.eXZ().ja(paramString1, paramString2) != null)
     {
       AppMethodBeat.o(114548);
       return true;
@@ -945,10 +954,10 @@ public final class s
     return false;
   }
   
-  public final int iM(String paramString1, String paramString2)
+  public final int iX(String paramString1, String paramString2)
   {
     AppMethodBeat.i(114562);
-    paramString1 = ac.eoj().iP(paramString1, paramString2);
+    paramString1 = ad.eXZ().ja(paramString1, paramString2);
     if (paramString1 != null)
     {
       int i = paramString1.field_status;
@@ -959,10 +968,10 @@ public final class s
     return 30;
   }
   
-  public final String iN(String paramString1, String paramString2)
+  public final String iY(String paramString1, String paramString2)
   {
     AppMethodBeat.i(114555);
-    paramString1 = ac.eoj().iP(paramString1, paramString2);
+    paramString1 = ad.eXZ().ja(paramString1, paramString2);
     if (paramString1 != null)
     {
       paramString1 = paramString1.field_inviteUserName;
@@ -975,7 +984,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.s
  * JD-Core Version:    0.7.0.1
  */

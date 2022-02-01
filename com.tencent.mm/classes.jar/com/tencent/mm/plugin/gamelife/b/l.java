@@ -2,44 +2,44 @@ package com.tencent.mm.plugin.gamelife.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class l
-  extends com.tencent.mm.bw.a
+public class l
+  extends com.tencent.mm.cd.a
 {
-  public String pTL;
-  public int uSc;
+  public int jump_type;
+  public String jump_url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(225899);
+    AppMethodBeat.i(203955);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.uSc);
-      if (this.pTL != null) {
-        paramVarArgs.e(2, this.pTL);
+      paramVarArgs.aY(1, this.jump_type);
+      if (this.jump_url != null) {
+        paramVarArgs.f(2, this.jump_url);
       }
-      AppMethodBeat.o(225899);
+      AppMethodBeat.o(203955);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = g.a.a.b.b.a.bu(1, this.uSc) + 0;
+      int i = g.a.a.b.b.a.bM(1, this.jump_type) + 0;
       paramInt = i;
-      if (this.pTL != null) {
-        paramInt = i + g.a.a.b.b.a.f(2, this.pTL);
+      if (this.jump_url != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.jump_url);
       }
-      AppMethodBeat.o(225899);
+      AppMethodBeat.o(203955);
       return paramInt;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      AppMethodBeat.o(225899);
+      AppMethodBeat.o(203955);
       return 0;
     }
     if (paramInt == 3)
@@ -49,18 +49,18 @@ public final class l
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(225899);
+        AppMethodBeat.o(203955);
         return -1;
       case 1: 
-        locall.uSc = locala.UbS.zi();
-        AppMethodBeat.o(225899);
+        locall.jump_type = locala.abFh.AK();
+        AppMethodBeat.o(203955);
         return 0;
       }
-      locall.pTL = locala.UbS.readString();
-      AppMethodBeat.o(225899);
+      locall.jump_url = locala.abFh.readString();
+      AppMethodBeat.o(203955);
       return 0;
     }
-    AppMethodBeat.o(225899);
+    AppMethodBeat.o(203955);
     return -1;
   }
 }

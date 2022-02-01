@@ -19,17 +19,22 @@ import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.tencent.luggage.a.c;
+import com.tencent.luggage.a.d;
+import com.tencent.luggage.a.e;
+import com.tencent.luggage.a.f;
+import com.tencent.luggage.a.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.keylogger.base.IKeyStepAnalyser.StepLogInfo;
-import com.tencent.mm.plugin.appbrand.keylogger.base.a;
 import com.tencent.mm.plugin.appbrand.keylogger.base.h;
 import com.tencent.mm.plugin.appbrand.keylogger.base.h.b;
 import com.tencent.mm.plugin.appbrand.keylogger.base.j;
 import com.tencent.mm.plugin.appbrand.keylogger.stepview.VerticalStepView;
 import com.tencent.mm.plugin.appbrand.keylogger.stepview.VerticalStepViewIndicator;
+import com.tencent.mm.plugin.appbrand.keylogger.stepview.b;
 import com.tencent.mm.plugin.appbrand.keylogger.stepview.c;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.av;
+import com.tencent.mm.ui.ay;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -43,52 +48,52 @@ import java.util.Map;
 public class KeyStepAnalyserDetailActivity
   extends KeyStepBaseActivity
 {
-  private static int mOI;
-  private static SimpleDateFormat mOJ;
-  private Class mOB;
-  private String mOC;
-  private View mOK;
-  private View mOL;
-  private LinearLayout mOM;
-  private float mON;
-  private float mOO;
-  private float mOP;
-  private float mOQ;
-  private float mOR;
-  private float mOS;
-  private boolean mOT;
-  private Map<String, c> mOU;
-  private Map<String, Boolean> mOV;
-  private ScaleGestureDetector.OnScaleGestureListener mOW;
+  private static int pPB;
+  private static SimpleDateFormat pPC;
   private ScaleGestureDetector mScaleGestureDetector;
+  private View pPD;
+  private View pPE;
+  private LinearLayout pPF;
+  private float pPG;
+  private float pPH;
+  private float pPI;
+  private float pPJ;
+  private float pPK;
+  private float pPL;
+  private boolean pPM;
+  private Map<String, c> pPN;
+  private Map<String, Boolean> pPO;
+  private ScaleGestureDetector.OnScaleGestureListener pPP;
+  private Class pPu;
+  private String pPv;
   
   static
   {
-    AppMethodBeat.i(221270);
-    mOI = 3;
-    mOJ = new SimpleDateFormat("HH:mm:ss");
-    AppMethodBeat.o(221270);
+    AppMethodBeat.i(207922);
+    pPB = 3;
+    pPC = new SimpleDateFormat("HH:mm:ss");
+    AppMethodBeat.o(207922);
   }
   
   public KeyStepAnalyserDetailActivity()
   {
-    AppMethodBeat.i(221265);
-    this.mOR = 1.0F;
-    this.mOS = 1.0F;
-    this.mOW = new ScaleGestureDetector.SimpleOnScaleGestureListener()
+    AppMethodBeat.i(207889);
+    this.pPK = 1.0F;
+    this.pPL = 1.0F;
+    this.pPP = new ScaleGestureDetector.SimpleOnScaleGestureListener()
     {
       public final boolean onScale(ScaleGestureDetector paramAnonymousScaleGestureDetector)
       {
-        AppMethodBeat.i(221264);
+        AppMethodBeat.i(210053);
         if (KeyStepAnalyserDetailActivity.c(KeyStepAnalyserDetailActivity.this) == null)
         {
-          AppMethodBeat.o(221264);
+          AppMethodBeat.o(210053);
           return true;
         }
         KeyStepAnalyserDetailActivity.e(KeyStepAnalyserDetailActivity.this, paramAnonymousScaleGestureDetector.getScaleFactor() * KeyStepAnalyserDetailActivity.j(KeyStepAnalyserDetailActivity.this));
         if ((KeyStepAnalyserDetailActivity.g(KeyStepAnalyserDetailActivity.this) > 5.0F) || (KeyStepAnalyserDetailActivity.g(KeyStepAnalyserDetailActivity.this) < 0.1F))
         {
-          AppMethodBeat.o(221264);
+          AppMethodBeat.o(210053);
           return true;
         }
         KeyStepAnalyserDetailActivity.c(KeyStepAnalyserDetailActivity.this).setTranslationX(KeyStepAnalyserDetailActivity.b(KeyStepAnalyserDetailActivity.this));
@@ -98,26 +103,26 @@ public class KeyStepAnalyserDetailActivity
         KeyStepAnalyserDetailActivity.c(KeyStepAnalyserDetailActivity.this).setScaleX(KeyStepAnalyserDetailActivity.g(KeyStepAnalyserDetailActivity.this));
         KeyStepAnalyserDetailActivity.c(KeyStepAnalyserDetailActivity.this).setScaleY(KeyStepAnalyserDetailActivity.g(KeyStepAnalyserDetailActivity.this));
         KeyStepAnalyserDetailActivity.f(KeyStepAnalyserDetailActivity.this, KeyStepAnalyserDetailActivity.g(KeyStepAnalyserDetailActivity.this));
-        AppMethodBeat.o(221264);
+        AppMethodBeat.o(210053);
         return false;
       }
     };
-    AppMethodBeat.o(221265);
+    AppMethodBeat.o(207889);
   }
   
-  private void bMN()
+  private void bZe()
   {
-    AppMethodBeat.i(221267);
+    AppMethodBeat.i(207897);
     Object localObject1 = getIntent().getParcelableArrayListExtra("steps");
     Object localObject2 = new LinkedList((Collection)localObject1);
     Collections.sort((List)localObject2, new Comparator() {});
-    this.mOV = new HashMap();
+    this.pPO = new HashMap();
     int i = 0;
-    while ((i < ((List)localObject2).size()) && (i <= mOI))
+    while ((i < ((List)localObject2).size()) && (i <= pPB))
     {
       localObject3 = (IKeyStepAnalyser.StepLogInfo)((List)localObject2).get(i);
-      if ((((IKeyStepAnalyser.StepLogInfo)localObject3).cCv > 0L) && (!((IKeyStepAnalyser.StepLogInfo)localObject3).bMX())) {
-        this.mOV.put(((IKeyStepAnalyser.StepLogInfo)((List)localObject2).get(i)).mPw, Boolean.TRUE);
+      if ((((IKeyStepAnalyser.StepLogInfo)localObject3).cCY > 0L) && (!((IKeyStepAnalyser.StepLogInfo)localObject3).bZo())) {
+        this.pPO.put(((IKeyStepAnalyser.StepLogInfo)((List)localObject2).get(i)).pQp, Boolean.TRUE);
       }
       i += 1;
     }
@@ -126,35 +131,35 @@ public class KeyStepAnalyserDetailActivity
     while (i < ((List)localObject1).size())
     {
       localObject2 = (IKeyStepAnalyser.StepLogInfo)((List)localObject1).get(i);
-      ((Map)localObject3).put(((IKeyStepAnalyser.StepLogInfo)localObject2).mPw, localObject2);
+      ((Map)localObject3).put(((IKeyStepAnalyser.StepLogInfo)localObject2).pQp, localObject2);
       i += 1;
     }
-    List localList = f.g(this.mOB, this.mOC);
-    this.mOU = new HashMap();
+    List localList = f.f(this.pPu, this.pPv);
+    this.pPN = new HashMap();
     ArrayList localArrayList = new ArrayList();
     int j = 0;
     if (j < localList.size())
     {
-      a locala = ((j)localList.get(j)).mPG;
+      com.tencent.mm.plugin.appbrand.keylogger.base.a locala = ((j)localList.get(j)).pQz;
       IKeyStepAnalyser.StepLogInfo localStepLogInfo = (IKeyStepAnalyser.StepLogInfo)((Map)localObject3).get(locala.name());
       i = 0;
       if (localStepLogInfo == null)
       {
-        if (locala.FI())
+        if (locala.Ho())
         {
           i = -2;
           label294:
-          if (!Util.isNullOrNil(locala.bMW())) {
+          if (!Util.isNullOrNil(locala.bZn())) {
             break label378;
           }
         }
         label378:
-        for (localObject1 = locala.name();; localObject1 = locala.bMW())
+        for (localObject1 = locala.name();; localObject1 = locala.bZn())
         {
           localObject1 = new SpannableString((CharSequence)localObject1);
           localObject1 = new c((SpannableString)localObject1, i);
           localArrayList.add(localObject1);
-          this.mOU.put(locala.name(), localObject1);
+          this.pPN.put(locala.name(), localObject1);
           j += 1;
           break;
           i = -1;
@@ -163,33 +168,33 @@ public class KeyStepAnalyserDetailActivity
       }
       if (!localStepLogInfo.errMsg.equals("ok"))
       {
-        if (locala.bMV()) {
+        if (locala.bZm()) {
           i = 1;
         }
       }
       else
       {
         label416:
-        localObject2 = mOJ.format(Long.valueOf(localStepLogInfo.time));
-        if (!Util.isNullOrNil(locala.bMW())) {
+        localObject2 = pPC.format(Long.valueOf(localStepLogInfo.time));
+        if (!Util.isNullOrNil(locala.bZn())) {
           break label625;
         }
       }
       label625:
-      for (localObject1 = locala.name();; localObject1 = locala.bMW())
+      for (localObject1 = locala.name();; localObject1 = locala.bZn())
       {
-        localObject2 = String.format("%s %s:%s %s", new Object[] { localObject2, localObject1, localStepLogInfo.errMsg, localStepLogInfo.mPy });
+        localObject2 = String.format("%s %s:%s %s", new Object[] { localObject2, localObject1, localStepLogInfo.errMsg, localStepLogInfo.pQr });
         int m = ((String)localObject2).length();
         int k = 0;
         localObject1 = localObject2;
-        if (localStepLogInfo.cCv > 0L)
+        if (localStepLogInfo.cCY > 0L)
         {
-          localObject1 = String.format(" cost:%d ms", new Object[] { Long.valueOf(localStepLogInfo.cCv) });
+          localObject1 = String.format(" cost:%d ms", new Object[] { Long.valueOf(localStepLogInfo.cCY) });
           k = ((String)localObject1).length();
           localObject1 = (String)localObject2 + (String)localObject1;
         }
         localObject1 = new SpannableString((CharSequence)localObject1);
-        if (this.mOV.containsKey(localStepLogInfo.mPw)) {
+        if (this.pPO.containsKey(localStepLogInfo.pQp)) {
           ((SpannableString)localObject1).setSpan(new ForegroundColorSpan(-65536), m, k + m, 33);
         }
         break;
@@ -197,72 +202,72 @@ public class KeyStepAnalyserDetailActivity
         break label416;
       }
     }
-    localObject1 = (VerticalStepView)findViewById(2131308413);
-    ((VerticalStepView)localObject1).mPM = localArrayList;
-    ((VerticalStepView)localObject1).mPL.setSteps(localArrayList);
-    AppMethodBeat.o(221267);
+    localObject1 = (VerticalStepView)findViewById(a.e.stepView);
+    ((VerticalStepView)localObject1).pQF = localArrayList;
+    ((VerticalStepView)localObject1).pQE.setSteps(localArrayList);
+    AppMethodBeat.o(207897);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(221268);
-    if ((this.mScaleGestureDetector != null) && (this.mOK.getVisibility() == 0))
+    AppMethodBeat.i(207899);
+    if ((this.mScaleGestureDetector != null) && (this.pPD.getVisibility() == 0))
     {
       super.dispatchTouchEvent(paramMotionEvent);
       bool = this.mScaleGestureDetector.onTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(221268);
+      AppMethodBeat.o(207899);
       return bool;
     }
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(221268);
+    AppMethodBeat.o(207899);
     return bool;
   }
   
   protected final int getLayoutId()
   {
-    return 2131492958;
+    return a.f.activity_key_step_analyser_detail;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(221266);
+    AppMethodBeat.i(207891);
     super.onCreate(paramBundle);
-    this.mOK = findViewById(2131299616);
-    this.mOL = findViewById(2131309102);
-    this.mOB = ((Class)getIntent().getSerializableExtra("key_process_class"));
-    this.mOC = getIntent().getStringExtra("key_process_category");
-    setTitle(getString(2131762046));
-    TextView localTextView = (TextView)findViewById(2131302943);
-    paramBundle = findViewById(2131299617);
+    this.pPD = findViewById(a.e.diagram_container);
+    this.pPE = findViewById(a.e.timeline_container);
+    this.pPu = ((Class)getIntent().getSerializableExtra("key_process_class"));
+    this.pPv = getIntent().getStringExtra("key_process_category");
+    setTitle(getString(a.g.key_step_logger_analyser_detail_title));
+    TextView localTextView = (TextView)findViewById(a.e.keyInfo);
+    paramBundle = findViewById(a.e.diagram_switch);
     localTextView.setText(getIntent().getStringExtra("key_info"));
-    int i = getResources().getDimensionPixelSize(2131165491);
-    localTextView = (TextView)findViewById(2131302489);
-    Object localObject4 = getString(2131762052) + " ";
-    Object localObject2 = getString(2131762050) + " ";
-    Object localObject1 = getString(2131762051) + " ";
-    Object localObject3 = getString(2131762053);
+    int i = getResources().getDimensionPixelSize(a.c.KeyStepLoggerStateIconDescSize);
+    localTextView = (TextView)findViewById(a.e.icon_desc);
+    Object localObject4 = getString(a.g.key_step_logger_icon_ok) + " ";
+    Object localObject2 = getString(a.g.key_step_logger_icon_error) + " ";
+    Object localObject1 = getString(a.g.key_step_logger_icon_error_not_fatal) + " ";
+    Object localObject3 = getString(a.g.key_step_logger_icon_optional);
     Object localObject5 = new StringBuilder();
     ((StringBuilder)localObject5).append((String)localObject4).append((String)localObject2).append((String)localObject1).append((String)localObject3);
     localObject3 = new SpannableString(((StringBuilder)localObject5).toString());
-    localObject5 = android.support.v4.content.b.l(this, 2131235053);
+    localObject5 = androidx.core.content.a.m(this, a.d.step_ok);
     ((Drawable)localObject5).setBounds(0, 0, i, i);
     ((SpannableString)localObject3).setSpan(new ImageSpan((Drawable)localObject5, 0), 0, 1, 17);
     int j = ((String)localObject4).length() + 0;
-    localObject4 = android.support.v4.content.b.l(this, 2131235052);
+    localObject4 = androidx.core.content.a.m(this, a.d.step_error);
     ((Drawable)localObject4).setBounds(0, 0, i, i);
     ((SpannableString)localObject3).setSpan(new ImageSpan((Drawable)localObject4, 0), j, j + 1, 17);
     j += ((String)localObject2).length();
-    localObject2 = android.support.v4.content.b.l(this, 2131235050);
+    localObject2 = androidx.core.content.a.m(this, a.d.step_attention);
     ((Drawable)localObject2).setBounds(0, 0, i, i);
     ((SpannableString)localObject3).setSpan(new ImageSpan((Drawable)localObject2, 0), j, j + 1, 17);
     j += ((String)localObject1).length();
-    localObject1 = android.support.v4.content.b.l(this, 2131235054);
+    localObject1 = androidx.core.content.a.m(this, a.d.step_optional);
     ((Drawable)localObject1).setBounds(0, 0, i, i);
     ((SpannableString)localObject3).setSpan(new ImageSpan((Drawable)localObject1, 0), j, j + 1, 17);
     localTextView.setText((CharSequence)localObject3);
     paramBundle.setOnClickListener(new KeyStepAnalyserDetailActivity.1(this));
-    bMN();
-    AppMethodBeat.o(221266);
+    bZe();
+    AppMethodBeat.o(207891);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -273,7 +278,7 @@ public class KeyStepAnalyserDetailActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.KeyStepAnalyserDetailActivity
  * JD-Core Version:    0.7.0.1
  */

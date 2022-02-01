@@ -182,8 +182,8 @@ public class Log
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
     if ((logImp != null) && (logImp.getLogLevel(0L) <= 1)) {
-      if (paramVarArgs != null) {
-        break label69;
+      if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
+        break label74;
       }
     }
     for (;;)
@@ -194,7 +194,7 @@ public class Log
       }
       logImp.logD(0L, paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramVarArgs);
       return;
-      label69:
+      label74:
       paramString2 = String.format(paramString2, paramVarArgs);
     }
   }
@@ -207,8 +207,8 @@ public class Log
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
     if ((logImp != null) && (logImp.getLogLevel(0L) <= 4)) {
-      if (paramVarArgs != null) {
-        break label69;
+      if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
+        break label74;
       }
     }
     for (;;)
@@ -219,7 +219,7 @@ public class Log
       }
       logImp.logE(0L, paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramVarArgs);
       return;
-      label69:
+      label74:
       paramString2 = String.format(paramString2, paramVarArgs);
     }
   }
@@ -232,15 +232,15 @@ public class Log
   public static void f(String paramString1, String paramString2, Object... paramVarArgs)
   {
     if ((logImp != null) && (logImp.getLogLevel(0L) <= 5)) {
-      if (paramVarArgs != null) {
-        break label60;
+      if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
+        break label65;
       }
     }
     for (;;)
     {
       logImp.logF(0L, paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramString2);
       return;
-      label60:
+      label65:
       paramString2 = String.format(paramString2, paramVarArgs);
     }
   }
@@ -284,8 +284,8 @@ public class Log
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
     if ((logImp != null) && (logImp.getLogLevel(0L) <= 2)) {
-      if (paramVarArgs != null) {
-        break label69;
+      if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
+        break label74;
       }
     }
     for (;;)
@@ -296,7 +296,7 @@ public class Log
       }
       logImp.logI(0L, paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramVarArgs);
       return;
-      label69:
+      label74:
       paramString2 = String.format(paramString2, paramVarArgs);
     }
   }
@@ -326,8 +326,8 @@ public class Log
   public static void printDebugStack(String paramString1, String paramString2, Object... paramVarArgs)
   {
     if ((logImp != null) && (logImp.getLogLevel(0L) <= 1)) {
-      if (paramVarArgs != null) {
-        break label96;
+      if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
+        break label101;
       }
     }
     for (;;)
@@ -339,7 +339,7 @@ public class Log
       paramString2 = paramVarArgs + "  " + Util.getStack();
       logImp.logI(0L, paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramString2);
       return;
-      label96:
+      label101:
       paramString2 = String.format(paramString2, paramVarArgs);
     }
   }
@@ -347,8 +347,8 @@ public class Log
   public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
     if ((logImp != null) && (logImp.getLogLevel(0L) <= 4)) {
-      if (paramVarArgs != null) {
-        break label97;
+      if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
+        break label102;
       }
     }
     for (;;)
@@ -360,7 +360,7 @@ public class Log
       paramThrowable = paramVarArgs + "  " + android.util.Log.getStackTraceString(paramThrowable);
       logImp.logE(0L, paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramThrowable);
       return;
-      label97:
+      label102:
       paramString2 = String.format(paramString2, paramVarArgs);
     }
   }
@@ -368,8 +368,8 @@ public class Log
   public static void printInfoStack(String paramString1, String paramString2, Object... paramVarArgs)
   {
     if ((logImp != null) && (logImp.getLogLevel(0L) <= 2)) {
-      if (paramVarArgs != null) {
-        break label96;
+      if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
+        break label101;
       }
     }
     for (;;)
@@ -381,7 +381,7 @@ public class Log
       paramString2 = paramVarArgs + "  " + Util.getStack();
       logImp.logI(0L, paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramString2);
       return;
-      label96:
+      label101:
       paramString2 = String.format(paramString2, paramVarArgs);
     }
   }
@@ -411,8 +411,8 @@ public class Log
   public static void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
     if ((logImp != null) && (logImp.getLogLevel(0L) <= 0)) {
-      if (paramVarArgs != null) {
-        break label68;
+      if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
+        break label73;
       }
     }
     for (;;)
@@ -423,7 +423,7 @@ public class Log
       }
       logImp.logV(0L, paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramVarArgs);
       return;
-      label68:
+      label73:
       paramString2 = String.format(paramString2, paramVarArgs);
     }
   }
@@ -436,8 +436,8 @@ public class Log
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
     if ((logImp != null) && (logImp.getLogLevel(0L) <= 3)) {
-      if (paramVarArgs != null) {
-        break label69;
+      if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
+        break label74;
       }
     }
     for (;;)
@@ -448,7 +448,7 @@ public class Log
       }
       logImp.logW(0L, paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramVarArgs);
       return;
-      label69:
+      label74:
       paramString2 = String.format(paramString2, paramVarArgs);
     }
   }
@@ -523,8 +523,8 @@ public class Log
     public void d(String paramString1, String paramString2, Object... paramVarArgs)
     {
       if ((Log.logImp != null) && (getLogLevel() <= 1) && (this.mLogInstancePtr != -1L)) {
-        if (paramVarArgs != null) {
-          break label78;
+        if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
+          break label83;
         }
       }
       for (;;)
@@ -535,7 +535,7 @@ public class Log
         }
         Log.logImp.logD(this.mLogInstancePtr, paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramVarArgs);
         return;
-        label78:
+        label83:
         paramString2 = String.format(paramString2, paramVarArgs);
       }
     }
@@ -543,8 +543,8 @@ public class Log
     public void e(String paramString1, String paramString2, Object... paramVarArgs)
     {
       if ((Log.logImp != null) && (getLogLevel() <= 4) && (this.mLogInstancePtr != -1L)) {
-        if (paramVarArgs != null) {
-          break label78;
+        if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
+          break label83;
         }
       }
       for (;;)
@@ -555,7 +555,7 @@ public class Log
         }
         Log.logImp.logE(this.mLogInstancePtr, paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramVarArgs);
         return;
-        label78:
+        label83:
         paramString2 = String.format(paramString2, paramVarArgs);
       }
     }
@@ -563,15 +563,15 @@ public class Log
     public void f(String paramString1, String paramString2, Object... paramVarArgs)
     {
       if ((Log.logImp != null) && (getLogLevel() <= 5) && (this.mLogInstancePtr != -1L)) {
-        if (paramVarArgs != null) {
-          break label69;
+        if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
+          break label74;
         }
       }
       for (;;)
       {
         Log.logImp.logF(this.mLogInstancePtr, paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramString2);
         return;
-        label69:
+        label74:
         paramString2 = String.format(paramString2, paramVarArgs);
       }
     }
@@ -587,8 +587,8 @@ public class Log
     public void i(String paramString1, String paramString2, Object... paramVarArgs)
     {
       if ((Log.logImp != null) && (getLogLevel() <= 2) && (this.mLogInstancePtr != -1L)) {
-        if (paramVarArgs != null) {
-          break label78;
+        if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
+          break label83;
         }
       }
       for (;;)
@@ -599,7 +599,7 @@ public class Log
         }
         Log.logImp.logI(this.mLogInstancePtr, paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramVarArgs);
         return;
-        label78:
+        label83:
         paramString2 = String.format(paramString2, paramVarArgs);
       }
     }
@@ -624,8 +624,8 @@ public class Log
     public void printDebugStack(String paramString1, String paramString2, Object... paramVarArgs)
     {
       if ((Log.logImp != null) && (getLogLevel() <= 1) && (this.mLogInstancePtr != -1L)) {
-        if (paramVarArgs != null) {
-          break label104;
+        if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
+          break label109;
         }
       }
       for (;;)
@@ -637,7 +637,7 @@ public class Log
         paramString2 = paramVarArgs + "  " + Util.getStack();
         Log.logImp.logI(this.mLogInstancePtr, paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramString2);
         return;
-        label104:
+        label109:
         paramString2 = String.format(paramString2, paramVarArgs);
       }
     }
@@ -645,8 +645,8 @@ public class Log
     public void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
     {
       if ((Log.logImp != null) && (getLogLevel() <= 4) && (this.mLogInstancePtr != -1L)) {
-        if (paramVarArgs != null) {
-          break label109;
+        if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
+          break label115;
         }
       }
       for (;;)
@@ -658,7 +658,7 @@ public class Log
         paramThrowable = paramVarArgs + "  " + android.util.Log.getStackTraceString(paramThrowable);
         Log.logImp.logE(this.mLogInstancePtr, paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramThrowable);
         return;
-        label109:
+        label115:
         paramString2 = String.format(paramString2, paramVarArgs);
       }
     }
@@ -666,8 +666,8 @@ public class Log
     public void printInfoStack(String paramString1, String paramString2, Object... paramVarArgs)
     {
       if ((Log.logImp != null) && (getLogLevel() <= 2) && (this.mLogInstancePtr != -1L)) {
-        if (paramVarArgs != null) {
-          break label104;
+        if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
+          break label109;
         }
       }
       for (;;)
@@ -679,7 +679,7 @@ public class Log
         paramString2 = paramVarArgs + "  " + Util.getStack();
         Log.logImp.logI(this.mLogInstancePtr, paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramString2);
         return;
-        label104:
+        label109:
         paramString2 = String.format(paramString2, paramVarArgs);
       }
     }
@@ -694,8 +694,8 @@ public class Log
     public void v(String paramString1, String paramString2, Object... paramVarArgs)
     {
       if ((Log.logImp != null) && (getLogLevel() <= 0) && (this.mLogInstancePtr != -1L)) {
-        if (paramVarArgs != null) {
-          break label77;
+        if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
+          break label82;
         }
       }
       for (;;)
@@ -706,7 +706,7 @@ public class Log
         }
         Log.logImp.logV(this.mLogInstancePtr, paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramVarArgs);
         return;
-        label77:
+        label82:
         paramString2 = String.format(paramString2, paramVarArgs);
       }
     }
@@ -714,8 +714,8 @@ public class Log
     public void w(String paramString1, String paramString2, Object... paramVarArgs)
     {
       if ((Log.logImp != null) && (getLogLevel() <= 3) && (this.mLogInstancePtr != -1L)) {
-        if (paramVarArgs != null) {
-          break label78;
+        if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
+          break label83;
         }
       }
       for (;;)
@@ -726,7 +726,7 @@ public class Log
         }
         Log.logImp.logW(this.mLogInstancePtr, paramString1, "", "", Process.myTid(), Process.myPid(), Thread.currentThread().getId(), Looper.getMainLooper().getThread().getId(), paramVarArgs);
         return;
-        label78:
+        label83:
         paramString2 = String.format(paramString2, paramVarArgs);
       }
     }
@@ -734,7 +734,7 @@ public class Log
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.Log
  * JD-Core Version:    0.7.0.1
  */

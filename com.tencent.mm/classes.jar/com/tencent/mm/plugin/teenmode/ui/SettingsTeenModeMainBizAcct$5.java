@@ -11,9 +11,9 @@ final class SettingsTeenModeMainBizAcct$5
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(187419);
-    this.FWO.onBackPressed();
-    AppMethodBeat.o(187419);
+    AppMethodBeat.i(259339);
+    this.Mud.onBackPressed();
+    AppMethodBeat.o(259339);
     return true;
   }
 }

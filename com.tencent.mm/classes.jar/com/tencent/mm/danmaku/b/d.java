@@ -6,8 +6,8 @@ import com.tencent.mm.danmaku.c.m;
 public abstract class d<DATA, CONFIG extends i>
   extends a<DATA, CONFIG>
 {
-  private float[] gPi = null;
-  public float gPj;
+  private float[] jzB = null;
+  public float jzC;
   public float mLeft = 0.0F;
   public float mTop = -1.0F;
   
@@ -16,18 +16,55 @@ public abstract class d<DATA, CONFIG extends i>
     super(parama);
   }
   
-  private float zf(long paramLong)
+  private float Fj(long paramLong)
   {
-    long l = this.gOK;
-    return com.tencent.mm.danmaku.c.a.asO().mScreenWidth - (float)(paramLong - l) * this.gPj;
+    long l = this.jze;
+    return com.tencent.mm.danmaku.c.a.azC().mScreenWidth - (float)(paramLong - l) * this.jzC;
+  }
+  
+  public final void Ff(long paramLong)
+  {
+    this.mLeft = Fj(paramLong);
+  }
+  
+  public final float[] Fg(long paramLong)
+  {
+    if (!azl()) {
+      return null;
+    }
+    float f = Fj(paramLong);
+    if (this.jzB == null) {
+      this.jzB = new float[4];
+    }
+    this.jzB[0] = (f - com.tencent.mm.danmaku.c.a.azC().jAd);
+    this.jzB[1] = this.mTop;
+    this.jzB[2] = (f + this.jzj + this.jzl);
+    this.jzB[3] = (this.mTop + this.jzk);
+    return this.jzB;
+  }
+  
+  public final float[] Fh(long paramLong)
+  {
+    if (!azl()) {
+      return null;
+    }
+    float f = Fj(paramLong);
+    if (this.jzB == null) {
+      this.jzB = new float[4];
+    }
+    this.jzB[0] = f;
+    this.jzB[1] = this.mTop;
+    this.jzB[2] = (f + this.jzj);
+    this.jzB[3] = (this.mTop + this.jzk);
+    return this.jzB;
   }
   
   public final void a(float paramFloat, long paramLong1, long paramLong2)
   {
-    if (!yY(paramLong1))
+    if (!Fc(paramLong1))
     {
       com.tencent.mm.danmaku.e.e.d("BaseDanmaku", "onLayout, Y = " + paramFloat + ", danmaku = " + toString());
-      this.mLeft = zf(paramLong2);
+      this.mLeft = Fj(paramLong2);
       if (!isShown())
       {
         this.mTop = paramFloat;
@@ -38,20 +75,20 @@ public abstract class d<DATA, CONFIG extends i>
     setVisibility(false);
   }
   
-  public final float asv()
+  public final float azj()
   {
-    return -this.gPj;
+    return -this.jzC;
   }
   
-  public final void asy()
+  public final void azm()
   {
-    super.asy();
-    this.gPj = ((int)(com.tencent.mm.danmaku.c.a.asO().mScreenWidth + this.gOP) / (float)this.gOL.mValue);
+    super.azm();
+    this.jzC = ((int)(com.tencent.mm.danmaku.c.a.azC().mScreenWidth + this.jzj) / (float)this.jzf.mValue);
   }
   
   public final float getBottom()
   {
-    return this.mTop + this.gOQ;
+    return this.mTop + this.jzk;
   }
   
   public final float getLeft()
@@ -61,49 +98,12 @@ public abstract class d<DATA, CONFIG extends i>
   
   public final float getRight()
   {
-    return this.mLeft + this.gOP;
+    return this.mLeft + this.jzj;
   }
   
   public final float getTop()
   {
     return this.mTop;
-  }
-  
-  public final void zb(long paramLong)
-  {
-    this.mLeft = zf(paramLong);
-  }
-  
-  public final float[] zc(long paramLong)
-  {
-    if (!asx()) {
-      return null;
-    }
-    float f = zf(paramLong);
-    if (this.gPi == null) {
-      this.gPi = new float[4];
-    }
-    this.gPi[0] = (f - com.tencent.mm.danmaku.c.a.asO().gPK);
-    this.gPi[1] = this.mTop;
-    this.gPi[2] = (f + this.gOP + this.gOR);
-    this.gPi[3] = (this.mTop + this.gOQ);
-    return this.gPi;
-  }
-  
-  public final float[] zd(long paramLong)
-  {
-    if (!asx()) {
-      return null;
-    }
-    float f = zf(paramLong);
-    if (this.gPi == null) {
-      this.gPi = new float[4];
-    }
-    this.gPi[0] = f;
-    this.gPi[1] = this.mTop;
-    this.gPi[2] = (f + this.gOP);
-    this.gPi[3] = (this.mTop + this.gOQ);
-    return this.gPi;
   }
 }
 

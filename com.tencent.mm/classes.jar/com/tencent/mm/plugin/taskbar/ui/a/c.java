@@ -9,50 +9,34 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class c
 {
-  private static boolean FVb;
-  private static boolean FVc;
-  private static boolean FVd;
+  private static boolean Mqw;
+  private static boolean Mqx;
+  private static boolean Mqy;
   private static SharedPreferences sp;
   
   static
   {
-    AppMethodBeat.i(238312);
+    AppMethodBeat.i(214361);
     sp = MMApplicationContext.getDefaultPreference();
-    FVb = false;
-    FVc = false;
-    FVd = true;
-    AppMethodBeat.o(238312);
+    Mqw = false;
+    Mqx = false;
+    Mqy = true;
+    AppMethodBeat.o(214361);
   }
   
-  public static void atF()
+  public static boolean aAA()
   {
-    AppMethodBeat.i(238307);
-    Log.i("MicroMsg.DynamicBgCrashHelper", "alvinluo markWillCrash");
-    if (sp == null) {
-      sp = MMApplicationContext.getDefaultPreference();
-    }
-    if (sp != null)
-    {
-      e.wj(false);
-      sp.edit().putBoolean("dynamic_bg_will_crash", true).apply();
-    }
-    FVb = true;
-    AppMethodBeat.o(238307);
+    return Mqx;
   }
   
-  public static boolean atI()
+  public static boolean aAB()
   {
-    return FVc;
+    return Mqy;
   }
   
-  public static boolean atJ()
+  public static void aAC()
   {
-    return FVd;
-  }
-  
-  public static void atK()
-  {
-    AppMethodBeat.i(238310);
+    AppMethodBeat.i(214359);
     if (sp == null) {
       sp = MMApplicationContext.getDefaultPreference();
     }
@@ -62,52 +46,68 @@ public final class c
       Log.i("MicroMsg.DynamicBgCrashHelper", "alvinluo markDrawStartPoint current: %d", new Object[] { Integer.valueOf(i) });
       if (i > 2)
       {
-        e.wj(false);
+        e.zP(false);
         sp.edit().putBoolean("dynamic_bg_will_crash", true).apply();
       }
       sp.edit().putInt("dynamic_bg_draw_start_point_count", i + 1).apply();
     }
-    AppMethodBeat.o(238310);
+    AppMethodBeat.o(214359);
   }
   
-  public static void atL()
+  public static void aAD()
   {
-    AppMethodBeat.i(238311);
+    AppMethodBeat.i(214360);
     Log.i("MicroMsg.DynamicBgCrashHelper", "alvinluo markDrawEndPoint");
     sp.edit().putInt("dynamic_bg_draw_start_point_count", 0).apply();
     sp.edit().putBoolean("dynamic_bg_will_crash", false).apply();
-    e.wj(true);
-    FVd = false;
-    AppMethodBeat.o(238311);
+    e.zP(true);
+    Mqy = false;
+    AppMethodBeat.o(214360);
   }
   
-  public static boolean fvb()
+  public static void aAx()
   {
-    AppMethodBeat.i(238304);
+    AppMethodBeat.i(214356);
+    Log.i("MicroMsg.DynamicBgCrashHelper", "alvinluo markWillCrash");
+    if (sp == null) {
+      sp = MMApplicationContext.getDefaultPreference();
+    }
+    if (sp != null)
+    {
+      e.zP(false);
+      sp.edit().putBoolean("dynamic_bg_will_crash", true).apply();
+    }
+    Mqw = true;
+    AppMethodBeat.o(214356);
+  }
+  
+  public static boolean gjZ()
+  {
+    AppMethodBeat.i(214352);
     if (sp != null)
     {
       int i = sp.getInt("dynamic_bg_init_start_point_count", 0);
       int j = sp.getInt("dynamic_bg_draw_start_point_count", 0);
       boolean bool = sp.getBoolean("dynamic_bg_init_crash", false);
-      FVc = bool;
+      Mqx = bool;
       if ((bool) || (i >= 2) || (j >= 2))
       {
-        FVb = true;
+        Mqw = true;
         sp.edit().putBoolean("dynamic_bg_will_crash", true).apply();
-        AppMethodBeat.o(238304);
+        AppMethodBeat.o(214352);
         return true;
       }
-      FVb = false;
-      AppMethodBeat.o(238304);
+      Mqw = false;
+      AppMethodBeat.o(214352);
       return false;
     }
-    AppMethodBeat.o(238304);
+    AppMethodBeat.o(214352);
     return false;
   }
   
-  public static void fvc()
+  public static void gka()
   {
-    AppMethodBeat.i(238305);
+    AppMethodBeat.i(214354);
     if (sp != null)
     {
       SharedPreferences.Editor localEditor = sp.edit();
@@ -120,29 +120,29 @@ public final class c
         localEditor.apply();
       }
     }
-    FVc = false;
-    FVb = false;
-    AppMethodBeat.o(238305);
+    Mqx = false;
+    Mqw = false;
+    AppMethodBeat.o(214354);
   }
   
-  public static void fvd()
+  public static void gkb()
   {
-    AppMethodBeat.i(238306);
+    AppMethodBeat.i(214355);
     Log.i("MicroMsg.DynamicBgCrashHelper", "alvinluo markInitCrash");
-    e.wj(false);
+    e.zP(false);
     if (sp == null) {
       sp = MMApplicationContext.getDefaultPreference();
     }
     if (sp != null) {
       sp.edit().putBoolean("dynamic_bg_init_crash", true).apply();
     }
-    FVc = true;
-    AppMethodBeat.o(238306);
+    Mqx = true;
+    AppMethodBeat.o(214355);
   }
   
-  public static void fve()
+  public static void gkc()
   {
-    AppMethodBeat.i(238308);
+    AppMethodBeat.i(214357);
     if (sp == null) {
       sp = MMApplicationContext.getDefaultPreference();
     }
@@ -152,30 +152,30 @@ public final class c
       Log.i("MicroMsg.DynamicBgCrashHelper", "alvinluo markInitStartPoint current: %d", new Object[] { Integer.valueOf(i) });
       if (i > 2)
       {
-        e.wj(false);
+        e.zP(false);
         sp.edit().putBoolean("dynamic_bg_will_crash", true).apply();
       }
       sp.edit().putInt("dynamic_bg_init_start_point_count", i + 1).apply();
     }
-    AppMethodBeat.o(238308);
+    AppMethodBeat.o(214357);
   }
   
-  public static void fvf()
+  public static void gkd()
   {
-    AppMethodBeat.i(238309);
+    AppMethodBeat.i(214358);
     Log.i("MicroMsg.DynamicBgCrashHelper", "alvinluo markInitEndPoint");
     sp.edit().putInt("dynamic_bg_init_start_point_count", 0).apply();
     sp.edit().putBoolean("dynamic_bg_will_crash", false).apply();
     sp.edit().putBoolean("dynamic_bg_init_crash", false).apply();
-    FVb = false;
-    FVc = false;
-    e.wj(true);
-    AppMethodBeat.o(238309);
+    Mqw = false;
+    Mqx = false;
+    e.zP(true);
+    AppMethodBeat.o(214358);
   }
   
-  public static boolean fvg()
+  public static boolean gke()
   {
-    return FVb;
+    return Mqw;
   }
 }
 

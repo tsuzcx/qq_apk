@@ -7,11 +7,11 @@ public abstract interface c
 {
   public abstract void a(d.a parama);
   
-  public abstract void l(Application paramApplication);
+  public abstract void o(Application paramApplication);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.c
  * JD-Core Version:    0.7.0.1
  */

@@ -10,6 +10,6 @@
         <LinearLayout android:id="@id/hhv" android:background="@drawable/aro" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginRight="@dimen/hv" android:layout_marginBottom="@dimen/hw" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
             <com.tencent.mm.ui.widget.imageview.WeImageView android:padding="@dimen/ir" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@raw/icons_filled_album" app:iconColor="@color/BW_100_Alpha_0_9" />
         </LinearLayout>
-        <TextView android:textSize="28.0dip" android:textColor="@color/am" android:id="@id/har" android:paddingBottom="@dimen/ai8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gbo" android:includeFontPadding="false" android:shadowColor="@color/ab" android:shadowRadius="10.0" android:layout_centerInParent="true" />
+        <TextView android:textSize="28.0dip" android:textColor="@color/am" android:id="@id/har" android:paddingBottom="@dimen/ai8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gbo" android:includeFontPadding="false" android:shadowColor="@color/UN_BW_0_Alpha_0_2" android:shadowRadius="10.0" android:layout_centerInParent="true" />
     </RelativeLayout>
 </merge>

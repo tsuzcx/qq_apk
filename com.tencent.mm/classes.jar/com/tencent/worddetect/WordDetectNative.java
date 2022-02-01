@@ -53,13 +53,15 @@ public class WordDetectNative
   public int init(ConfigParam paramConfigParam)
   {
     AppMethodBeat.i(40071);
-    if (this.handleId < 0) {
-      this.handleId = Init(paramConfigParam);
-    }
     if (this.handleId < 0)
     {
-      AppMethodBeat.o(40071);
-      return -1;
+      int i = Init(paramConfigParam);
+      if (i < 0)
+      {
+        AppMethodBeat.o(40071);
+        return i;
+      }
+      this.handleId = i;
     }
     AppMethodBeat.o(40071);
     return 0;
@@ -68,10 +70,15 @@ public class WordDetectNative
   public int release()
   {
     AppMethodBeat.i(40073);
-    int i = Release(this.handleId);
-    this.handleId = -1;
+    if (this.handleId >= 0)
+    {
+      int i = Release(this.handleId);
+      this.handleId = -1;
+      AppMethodBeat.o(40073);
+      return i;
+    }
     AppMethodBeat.o(40073);
-    return i;
+    return 0;
   }
   
   public int scanImage(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
@@ -98,7 +105,7 @@ public class WordDetectNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.worddetect.WordDetectNative
  * JD-Core Version:    0.7.0.1
  */

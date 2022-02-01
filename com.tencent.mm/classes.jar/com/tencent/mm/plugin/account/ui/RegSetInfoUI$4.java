@@ -1,0 +1,40 @@
+package com.tencent.mm.plugin.account.ui;
+
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+
+final class RegSetInfoUI$4
+  implements View.OnKeyListener
+{
+  RegSetInfoUI$4(RegSetInfoUI paramRegSetInfoUI) {}
+  
+  public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    AppMethodBeat.i(128671);
+    b localb = new b();
+    localb.bn(paramView);
+    localb.sg(paramInt);
+    localb.bn(paramKeyEvent);
+    a.c("com/tencent/mm/plugin/account/ui/RegSetInfoUI$12", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.aFi());
+    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0))
+    {
+      RegSetInfoUI.p(this.njA);
+      a.a(true, this, "com/tencent/mm/plugin/account/ui/RegSetInfoUI$12", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
+      AppMethodBeat.o(128671);
+      return true;
+    }
+    a.a(false, this, "com/tencent/mm/plugin/account/ui/RegSetInfoUI$12", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
+    AppMethodBeat.o(128671);
+    return false;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+ * Qualified Name:     com.tencent.mm.plugin.account.ui.RegSetInfoUI.4
+ * JD-Core Version:    0.7.0.1
+ */

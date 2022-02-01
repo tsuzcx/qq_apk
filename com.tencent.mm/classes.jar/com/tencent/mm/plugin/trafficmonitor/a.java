@@ -2,84 +2,84 @@ package com.tencent.mm.plugin.trafficmonitor;
 
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class a
 {
-  private static Map<Integer, Long> Gsk;
-  private static Map<Integer, Long> Gsl;
-  private static Map<Integer, Long> Gsm;
-  private static Map<Integer, Long> Gsn;
-  private static Map<Integer, Long> Gso;
-  private static Map<Integer, Long> Gsp;
-  private static Map<Integer, Long> Gsq;
-  private static Map<Integer, Long> Gsr;
-  private static Map<Integer, Long> Gss;
-  private static Map<Integer, Long> Gst;
-  private static Map<Integer, Long> Gsu;
-  private static Map<Integer, Long> Gsv;
-  private static Map<Integer, Long> Gsw;
-  private static Map<Integer, Long> Gsx;
-  private static Map<Integer, Long> Gsy;
-  private static Map<Integer, Long> Gsz;
-  private static final o NET_DEV_FILE;
-  private static final o XT_STATS_FILE;
+  private static final q NET_DEV_FILE;
+  private static Map<Integer, Long> NeV;
+  private static Map<Integer, Long> NeW;
+  private static Map<Integer, Long> NeX;
+  private static Map<Integer, Long> NeY;
+  private static Map<Integer, Long> NeZ;
+  private static Map<Integer, Long> Nfa;
+  private static Map<Integer, Long> Nfb;
+  private static Map<Integer, Long> Nfc;
+  private static Map<Integer, Long> Nfd;
+  private static Map<Integer, Long> Nfe;
+  private static Map<Integer, Long> Nff;
+  private static Map<Integer, Long> Nfg;
+  private static Map<Integer, Long> Nfh;
+  private static Map<Integer, Long> Nfi;
+  private static Map<Integer, Long> Nfj;
+  private static Map<Integer, Long> Nfk;
+  private static final q XT_STATS_FILE;
   
   static
   {
     Object localObject2 = null;
     AppMethodBeat.i(123887);
-    Gss = new HashMap();
-    Gst = new HashMap();
-    Gsu = new HashMap();
-    Gsv = new HashMap();
-    Gsw = new HashMap();
-    Gsx = new HashMap();
-    Gsy = new HashMap();
-    Gsz = new HashMap();
-    Gsk = new HashMap();
-    Gsl = new HashMap();
-    Gsm = new HashMap();
-    Gsn = new HashMap();
-    Gso = new HashMap();
-    Gsp = new HashMap();
-    Gsq = new HashMap();
-    Gsr = new HashMap();
-    Object localObject1 = new o("/proc/" + Process.myPid() + "/net/dev");
-    if (((o)localObject1).isFile()) {}
+    Nfd = new HashMap();
+    Nfe = new HashMap();
+    Nff = new HashMap();
+    Nfg = new HashMap();
+    Nfh = new HashMap();
+    Nfi = new HashMap();
+    Nfj = new HashMap();
+    Nfk = new HashMap();
+    NeV = new HashMap();
+    NeW = new HashMap();
+    NeX = new HashMap();
+    NeY = new HashMap();
+    NeZ = new HashMap();
+    Nfa = new HashMap();
+    Nfb = new HashMap();
+    Nfc = new HashMap();
+    Object localObject1 = new q("/proc/" + Process.myPid() + "/net/dev");
+    if (((q)localObject1).ifH()) {}
     for (;;)
     {
-      NET_DEV_FILE = (o)localObject1;
-      o localo = new o("/proc/net/xt_qtaguid/stats");
+      NET_DEV_FILE = (q)localObject1;
+      q localq = new q("/proc/net/xt_qtaguid/stats");
       localObject1 = localObject2;
-      if (localo.isFile()) {
-        localObject1 = localo;
+      if (localq.ifH()) {
+        localObject1 = localq;
       }
-      XT_STATS_FILE = (o)localObject1;
+      XT_STATS_FILE = (q)localObject1;
       AppMethodBeat.o(123887);
       return;
       localObject1 = null;
     }
   }
   
-  public static long ach(int paramInt)
+  public static long ajN(int paramInt)
   {
     AppMethodBeat.i(123879);
-    if (Gso == null)
+    if (NeZ == null)
     {
       AppMethodBeat.o(123879);
       return 0L;
     }
-    if (Gso.get(Integer.valueOf(paramInt)) == null)
+    if (NeZ.get(Integer.valueOf(paramInt)) == null)
     {
       AppMethodBeat.o(123879);
       return 0L;
     }
-    if (((Long)Gso.get(Integer.valueOf(paramInt))).longValue() > 0L)
+    if (((Long)NeZ.get(Integer.valueOf(paramInt))).longValue() > 0L)
     {
-      long l = ((Long)Gso.get(Integer.valueOf(paramInt))).longValue();
+      long l = ((Long)NeZ.get(Integer.valueOf(paramInt))).longValue();
       AppMethodBeat.o(123879);
       return l;
     }
@@ -87,22 +87,22 @@ public final class a
     return 0L;
   }
   
-  public static long aci(int paramInt)
+  public static long ajO(int paramInt)
   {
     AppMethodBeat.i(123880);
-    if (Gsp == null)
+    if (Nfa == null)
     {
       AppMethodBeat.o(123880);
       return 0L;
     }
-    if (Gsp.get(Integer.valueOf(paramInt)) == null)
+    if (Nfa.get(Integer.valueOf(paramInt)) == null)
     {
       AppMethodBeat.o(123880);
       return 0L;
     }
-    if (((Long)Gsp.get(Integer.valueOf(paramInt))).longValue() > 0L)
+    if (((Long)Nfa.get(Integer.valueOf(paramInt))).longValue() > 0L)
     {
-      long l = ((Long)Gsp.get(Integer.valueOf(paramInt))).longValue();
+      long l = ((Long)Nfa.get(Integer.valueOf(paramInt))).longValue();
       AppMethodBeat.o(123880);
       return l;
     }
@@ -110,22 +110,22 @@ public final class a
     return 0L;
   }
   
-  public static long acj(int paramInt)
+  public static long ajP(int paramInt)
   {
     AppMethodBeat.i(123881);
-    if (Gsy == null)
+    if (Nfj == null)
     {
       AppMethodBeat.o(123881);
       return 0L;
     }
-    if (Gsy.get(Integer.valueOf(paramInt)) == null)
+    if (Nfj.get(Integer.valueOf(paramInt)) == null)
     {
       AppMethodBeat.o(123881);
       return 0L;
     }
-    if (((Long)Gsy.get(Integer.valueOf(paramInt))).longValue() > 0L)
+    if (((Long)Nfj.get(Integer.valueOf(paramInt))).longValue() > 0L)
     {
-      long l = ((Long)Gsy.get(Integer.valueOf(paramInt))).longValue();
+      long l = ((Long)Nfj.get(Integer.valueOf(paramInt))).longValue();
       AppMethodBeat.o(123881);
       return l;
     }
@@ -133,22 +133,22 @@ public final class a
     return 0L;
   }
   
-  public static long ack(int paramInt)
+  public static long ajQ(int paramInt)
   {
     AppMethodBeat.i(123882);
-    if (Gsz == null)
+    if (Nfk == null)
     {
       AppMethodBeat.o(123882);
       return 0L;
     }
-    if (Gsz.get(Integer.valueOf(paramInt)) == null)
+    if (Nfk.get(Integer.valueOf(paramInt)) == null)
     {
       AppMethodBeat.o(123882);
       return 0L;
     }
-    if (((Long)Gsz.get(Integer.valueOf(paramInt))).longValue() > 0L)
+    if (((Long)Nfk.get(Integer.valueOf(paramInt))).longValue() > 0L)
     {
-      long l = ((Long)Gsz.get(Integer.valueOf(paramInt))).longValue();
+      long l = ((Long)Nfk.get(Integer.valueOf(paramInt))).longValue();
       AppMethodBeat.o(123882);
       return l;
     }
@@ -156,22 +156,22 @@ public final class a
     return 0L;
   }
   
-  public static long acl(int paramInt)
+  public static long ajR(int paramInt)
   {
     AppMethodBeat.i(123883);
-    if (Gsw == null)
+    if (Nfh == null)
     {
       AppMethodBeat.o(123883);
       return 0L;
     }
-    if (Gsw.get(Integer.valueOf(paramInt)) == null)
+    if (Nfh.get(Integer.valueOf(paramInt)) == null)
     {
       AppMethodBeat.o(123883);
       return 0L;
     }
-    if (((Long)Gsw.get(Integer.valueOf(paramInt))).longValue() > 0L)
+    if (((Long)Nfh.get(Integer.valueOf(paramInt))).longValue() > 0L)
     {
-      long l = ((Long)Gsw.get(Integer.valueOf(paramInt))).longValue();
+      long l = ((Long)Nfh.get(Integer.valueOf(paramInt))).longValue();
       AppMethodBeat.o(123883);
       return l;
     }
@@ -179,22 +179,22 @@ public final class a
     return 0L;
   }
   
-  public static long acm(int paramInt)
+  public static long ajS(int paramInt)
   {
     AppMethodBeat.i(123884);
-    if (Gsx == null)
+    if (Nfi == null)
     {
       AppMethodBeat.o(123884);
       return 0L;
     }
-    if (Gsx.get(Integer.valueOf(paramInt)) == null)
+    if (Nfi.get(Integer.valueOf(paramInt)) == null)
     {
       AppMethodBeat.o(123884);
       return 0L;
     }
-    if (((Long)Gsx.get(Integer.valueOf(paramInt))).longValue() > 0L)
+    if (((Long)Nfi.get(Integer.valueOf(paramInt))).longValue() > 0L)
     {
-      long l = ((Long)Gsx.get(Integer.valueOf(paramInt))).longValue();
+      long l = ((Long)Nfi.get(Integer.valueOf(paramInt))).longValue();
       AppMethodBeat.o(123884);
       return l;
     }
@@ -202,41 +202,41 @@ public final class a
     return 0L;
   }
   
+  public static void fs(int paramInt)
+  {
+    AppMethodBeat.i(123885);
+    Nfe.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+    Nfd.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+    Nfg.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+    Nff.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+    NeW.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+    NeV.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+    NeY.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+    NeX.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
+    update(paramInt);
+    AppMethodBeat.o(123885);
+  }
+  
   public static void init(int paramInt)
   {
     AppMethodBeat.i(123878);
-    Gss.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    Gst.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    Gsu.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    Gsv.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    Gsw.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    Gsx.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    Gsy.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    Gsz.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    Gsk.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    Gsl.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    Gsm.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    Gsn.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    Gso.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    Gsp.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    Gsq.put(Integer.valueOf(paramInt), Long.valueOf(0L));
-    Gsr.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    Nfd.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    Nfe.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    Nff.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    Nfg.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    Nfh.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    Nfi.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    Nfj.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    Nfk.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    NeV.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    NeW.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    NeX.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    NeY.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    NeZ.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    Nfa.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    Nfb.put(Integer.valueOf(paramInt), Long.valueOf(0L));
+    Nfc.put(Integer.valueOf(paramInt), Long.valueOf(0L));
     AppMethodBeat.o(123878);
-  }
-  
-  public static void reset(int paramInt)
-  {
-    AppMethodBeat.i(123885);
-    Gst.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
-    Gss.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
-    Gsv.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
-    Gsu.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
-    Gsl.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
-    Gsk.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
-    Gsn.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
-    Gsm.put(Integer.valueOf(paramInt), Long.valueOf(-1L));
-    update(paramInt);
-    AppMethodBeat.o(123885);
   }
   
   /* Error */
@@ -259,14 +259,14 @@ public final class a
     //   20: lstore 12
     //   22: aconst_null
     //   23: astore 16
-    //   25: getstatic 106	com/tencent/mm/plugin/trafficmonitor/a:NET_DEV_FILE	Lcom/tencent/mm/vfs/o;
+    //   25: getstatic 106	com/tencent/mm/plugin/trafficmonitor/a:NET_DEV_FILE	Lcom/tencent/mm/vfs/q;
     //   28: ifnull +1020 -> 1048
     //   31: new 166	java/io/BufferedReader
     //   34: dup
-    //   35: new 168	com/tencent/mm/vfs/u
+    //   35: new 168	com/tencent/mm/vfs/x
     //   38: dup
-    //   39: getstatic 106	com/tencent/mm/plugin/trafficmonitor/a:NET_DEV_FILE	Lcom/tencent/mm/vfs/o;
-    //   42: invokespecial 171	com/tencent/mm/vfs/u:<init>	(Lcom/tencent/mm/vfs/o;)V
+    //   39: getstatic 106	com/tencent/mm/plugin/trafficmonitor/a:NET_DEV_FILE	Lcom/tencent/mm/vfs/q;
+    //   42: invokespecial 171	com/tencent/mm/vfs/x:<init>	(Lcom/tencent/mm/vfs/q;)V
     //   45: invokespecial 174	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   48: astore 18
     //   50: aload 18
@@ -409,7 +409,7 @@ public final class a
     //   301: astore 16
     //   303: aload 18
     //   305: astore 17
-    //   307: getstatic 57	com/tencent/mm/plugin/trafficmonitor/a:Gsk	Ljava/util/Map;
+    //   307: getstatic 57	com/tencent/mm/plugin/trafficmonitor/a:NeV	Ljava/util/Map;
     //   310: iload_0
     //   311: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   314: invokeinterface 129 2 0
@@ -422,18 +422,18 @@ public final class a
     //   332: astore 16
     //   334: aload 18
     //   336: astore 17
-    //   338: getstatic 57	com/tencent/mm/plugin/trafficmonitor/a:Gsk	Ljava/util/Map;
+    //   338: getstatic 57	com/tencent/mm/plugin/trafficmonitor/a:NeV	Ljava/util/Map;
     //   341: iload_0
     //   342: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   345: lload 6
-    //   347: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   350: invokeinterface 154 3 0
+    //   347: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   350: invokeinterface 156 3 0
     //   355: pop
     //   356: aload 18
     //   358: astore 16
     //   360: aload 18
     //   362: astore 17
-    //   364: getstatic 59	com/tencent/mm/plugin/trafficmonitor/a:Gsl	Ljava/util/Map;
+    //   364: getstatic 59	com/tencent/mm/plugin/trafficmonitor/a:NeW	Ljava/util/Map;
     //   367: iload_0
     //   368: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   371: invokeinterface 129 2 0
@@ -446,18 +446,18 @@ public final class a
     //   389: astore 16
     //   391: aload 18
     //   393: astore 17
-    //   395: getstatic 59	com/tencent/mm/plugin/trafficmonitor/a:Gsl	Ljava/util/Map;
+    //   395: getstatic 59	com/tencent/mm/plugin/trafficmonitor/a:NeW	Ljava/util/Map;
     //   398: iload_0
     //   399: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   402: lload 4
-    //   404: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   407: invokeinterface 154 3 0
+    //   404: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   407: invokeinterface 156 3 0
     //   412: pop
     //   413: aload 18
     //   415: astore 16
     //   417: aload 18
     //   419: astore 17
-    //   421: getstatic 61	com/tencent/mm/plugin/trafficmonitor/a:Gsm	Ljava/util/Map;
+    //   421: getstatic 61	com/tencent/mm/plugin/trafficmonitor/a:NeX	Ljava/util/Map;
     //   424: iload_0
     //   425: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   428: invokeinterface 129 2 0
@@ -470,18 +470,18 @@ public final class a
     //   446: astore 16
     //   448: aload 18
     //   450: astore 17
-    //   452: getstatic 61	com/tencent/mm/plugin/trafficmonitor/a:Gsm	Ljava/util/Map;
+    //   452: getstatic 61	com/tencent/mm/plugin/trafficmonitor/a:NeX	Ljava/util/Map;
     //   455: iload_0
     //   456: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   459: lload 8
-    //   461: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   464: invokeinterface 154 3 0
+    //   461: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   464: invokeinterface 156 3 0
     //   469: pop
     //   470: aload 18
     //   472: astore 16
     //   474: aload 18
     //   476: astore 17
-    //   478: getstatic 63	com/tencent/mm/plugin/trafficmonitor/a:Gsn	Ljava/util/Map;
+    //   478: getstatic 63	com/tencent/mm/plugin/trafficmonitor/a:NeY	Ljava/util/Map;
     //   481: iload_0
     //   482: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   485: invokeinterface 129 2 0
@@ -494,25 +494,25 @@ public final class a
     //   503: astore 16
     //   505: aload 18
     //   507: astore 17
-    //   509: getstatic 63	com/tencent/mm/plugin/trafficmonitor/a:Gsn	Ljava/util/Map;
+    //   509: getstatic 63	com/tencent/mm/plugin/trafficmonitor/a:NeY	Ljava/util/Map;
     //   512: iload_0
     //   513: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   516: lload_2
-    //   517: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   520: invokeinterface 154 3 0
+    //   517: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   520: invokeinterface 156 3 0
     //   525: pop
     //   526: aload 18
     //   528: astore 16
     //   530: aload 18
     //   532: astore 17
-    //   534: getstatic 65	com/tencent/mm/plugin/trafficmonitor/a:Gso	Ljava/util/Map;
+    //   534: getstatic 65	com/tencent/mm/plugin/trafficmonitor/a:NeZ	Ljava/util/Map;
     //   537: astore 19
     //   539: aload 18
     //   541: astore 16
     //   543: aload 18
     //   545: astore 17
     //   547: lload 6
-    //   549: getstatic 57	com/tencent/mm/plugin/trafficmonitor/a:Gsk	Ljava/util/Map;
+    //   549: getstatic 57	com/tencent/mm/plugin/trafficmonitor/a:NeV	Ljava/util/Map;
     //   552: iload_0
     //   553: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   556: invokeinterface 129 2 0
@@ -525,7 +525,7 @@ public final class a
     //   575: aload 18
     //   577: astore 17
     //   579: lload 6
-    //   581: getstatic 57	com/tencent/mm/plugin/trafficmonitor/a:Gsk	Ljava/util/Map;
+    //   581: getstatic 57	com/tencent/mm/plugin/trafficmonitor/a:NeV	Ljava/util/Map;
     //   584: iload_0
     //   585: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   588: invokeinterface 129 2 0
@@ -541,21 +541,21 @@ public final class a
     //   612: iload_0
     //   613: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   616: lload 10
-    //   618: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   621: invokeinterface 154 3 0
+    //   618: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   621: invokeinterface 156 3 0
     //   626: pop
     //   627: aload 18
     //   629: astore 16
     //   631: aload 18
     //   633: astore 17
-    //   635: getstatic 67	com/tencent/mm/plugin/trafficmonitor/a:Gsp	Ljava/util/Map;
+    //   635: getstatic 67	com/tencent/mm/plugin/trafficmonitor/a:Nfa	Ljava/util/Map;
     //   638: astore 19
     //   640: aload 18
     //   642: astore 16
     //   644: aload 18
     //   646: astore 17
     //   648: lload 4
-    //   650: getstatic 59	com/tencent/mm/plugin/trafficmonitor/a:Gsl	Ljava/util/Map;
+    //   650: getstatic 59	com/tencent/mm/plugin/trafficmonitor/a:NeW	Ljava/util/Map;
     //   653: iload_0
     //   654: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   657: invokeinterface 129 2 0
@@ -568,7 +568,7 @@ public final class a
     //   676: aload 18
     //   678: astore 17
     //   680: lload 4
-    //   682: getstatic 59	com/tencent/mm/plugin/trafficmonitor/a:Gsl	Ljava/util/Map;
+    //   682: getstatic 59	com/tencent/mm/plugin/trafficmonitor/a:NeW	Ljava/util/Map;
     //   685: iload_0
     //   686: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   689: invokeinterface 129 2 0
@@ -584,21 +584,21 @@ public final class a
     //   713: iload_0
     //   714: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   717: lload 10
-    //   719: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   722: invokeinterface 154 3 0
+    //   719: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   722: invokeinterface 156 3 0
     //   727: pop
     //   728: aload 18
     //   730: astore 16
     //   732: aload 18
     //   734: astore 17
-    //   736: getstatic 69	com/tencent/mm/plugin/trafficmonitor/a:Gsq	Ljava/util/Map;
+    //   736: getstatic 69	com/tencent/mm/plugin/trafficmonitor/a:Nfb	Ljava/util/Map;
     //   739: astore 19
     //   741: aload 18
     //   743: astore 16
     //   745: aload 18
     //   747: astore 17
     //   749: lload 8
-    //   751: getstatic 61	com/tencent/mm/plugin/trafficmonitor/a:Gsm	Ljava/util/Map;
+    //   751: getstatic 61	com/tencent/mm/plugin/trafficmonitor/a:NeX	Ljava/util/Map;
     //   754: iload_0
     //   755: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   758: invokeinterface 129 2 0
@@ -611,7 +611,7 @@ public final class a
     //   777: aload 18
     //   779: astore 17
     //   781: lload 8
-    //   783: getstatic 61	com/tencent/mm/plugin/trafficmonitor/a:Gsm	Ljava/util/Map;
+    //   783: getstatic 61	com/tencent/mm/plugin/trafficmonitor/a:NeX	Ljava/util/Map;
     //   786: iload_0
     //   787: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   790: invokeinterface 129 2 0
@@ -627,21 +627,21 @@ public final class a
     //   814: iload_0
     //   815: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   818: lload 10
-    //   820: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   823: invokeinterface 154 3 0
+    //   820: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   823: invokeinterface 156 3 0
     //   828: pop
     //   829: aload 18
     //   831: astore 16
     //   833: aload 18
     //   835: astore 17
-    //   837: getstatic 71	com/tencent/mm/plugin/trafficmonitor/a:Gsr	Ljava/util/Map;
+    //   837: getstatic 71	com/tencent/mm/plugin/trafficmonitor/a:Nfc	Ljava/util/Map;
     //   840: astore 19
     //   842: aload 18
     //   844: astore 16
     //   846: aload 18
     //   848: astore 17
     //   850: lload_2
-    //   851: getstatic 63	com/tencent/mm/plugin/trafficmonitor/a:Gsn	Ljava/util/Map;
+    //   851: getstatic 63	com/tencent/mm/plugin/trafficmonitor/a:NeY	Ljava/util/Map;
     //   854: iload_0
     //   855: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   858: invokeinterface 129 2 0
@@ -654,7 +654,7 @@ public final class a
     //   877: aload 18
     //   879: astore 17
     //   881: lload_2
-    //   882: getstatic 63	com/tencent/mm/plugin/trafficmonitor/a:Gsn	Ljava/util/Map;
+    //   882: getstatic 63	com/tencent/mm/plugin/trafficmonitor/a:NeY	Ljava/util/Map;
     //   885: iload_0
     //   886: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   889: invokeinterface 129 2 0
@@ -670,52 +670,52 @@ public final class a
     //   913: iload_0
     //   914: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   917: lload 10
-    //   919: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   922: invokeinterface 154 3 0
+    //   919: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   922: invokeinterface 156 3 0
     //   927: pop
     //   928: aload 18
     //   930: astore 16
     //   932: aload 18
     //   934: astore 17
-    //   936: getstatic 57	com/tencent/mm/plugin/trafficmonitor/a:Gsk	Ljava/util/Map;
+    //   936: getstatic 57	com/tencent/mm/plugin/trafficmonitor/a:NeV	Ljava/util/Map;
     //   939: iload_0
     //   940: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   943: lload 6
-    //   945: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   948: invokeinterface 154 3 0
+    //   945: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   948: invokeinterface 156 3 0
     //   953: pop
     //   954: aload 18
     //   956: astore 16
     //   958: aload 18
     //   960: astore 17
-    //   962: getstatic 59	com/tencent/mm/plugin/trafficmonitor/a:Gsl	Ljava/util/Map;
+    //   962: getstatic 59	com/tencent/mm/plugin/trafficmonitor/a:NeW	Ljava/util/Map;
     //   965: iload_0
     //   966: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   969: lload 4
-    //   971: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   974: invokeinterface 154 3 0
+    //   971: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   974: invokeinterface 156 3 0
     //   979: pop
     //   980: aload 18
     //   982: astore 16
     //   984: aload 18
     //   986: astore 17
-    //   988: getstatic 61	com/tencent/mm/plugin/trafficmonitor/a:Gsm	Ljava/util/Map;
+    //   988: getstatic 61	com/tencent/mm/plugin/trafficmonitor/a:NeX	Ljava/util/Map;
     //   991: iload_0
     //   992: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   995: lload 8
-    //   997: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1000: invokeinterface 154 3 0
+    //   997: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1000: invokeinterface 156 3 0
     //   1005: pop
     //   1006: aload 18
     //   1008: astore 16
     //   1010: aload 18
     //   1012: astore 17
-    //   1014: getstatic 63	com/tencent/mm/plugin/trafficmonitor/a:Gsn	Ljava/util/Map;
+    //   1014: getstatic 63	com/tencent/mm/plugin/trafficmonitor/a:NeY	Ljava/util/Map;
     //   1017: iload_0
     //   1018: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1021: lload_2
-    //   1022: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1025: invokeinterface 154 3 0
+    //   1022: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1025: invokeinterface 156 3 0
     //   1030: pop
     //   1031: aload 18
     //   1033: astore 16
@@ -727,16 +727,16 @@ public final class a
     //   1046: astore 16
     //   1048: aload 16
     //   1050: astore 17
-    //   1052: getstatic 110	com/tencent/mm/plugin/trafficmonitor/a:XT_STATS_FILE	Lcom/tencent/mm/vfs/o;
+    //   1052: getstatic 110	com/tencent/mm/plugin/trafficmonitor/a:XT_STATS_FILE	Lcom/tencent/mm/vfs/q;
     //   1055: ifnull +974 -> 2029
     //   1058: invokestatic 215	android/os/Process:myUid	()I
     //   1061: istore_1
     //   1062: new 166	java/io/BufferedReader
     //   1065: dup
-    //   1066: new 168	com/tencent/mm/vfs/u
+    //   1066: new 168	com/tencent/mm/vfs/x
     //   1069: dup
-    //   1070: getstatic 110	com/tencent/mm/plugin/trafficmonitor/a:XT_STATS_FILE	Lcom/tencent/mm/vfs/o;
-    //   1073: invokespecial 171	com/tencent/mm/vfs/u:<init>	(Lcom/tencent/mm/vfs/o;)V
+    //   1070: getstatic 110	com/tencent/mm/plugin/trafficmonitor/a:XT_STATS_FILE	Lcom/tencent/mm/vfs/q;
+    //   1073: invokespecial 171	com/tencent/mm/vfs/x:<init>	(Lcom/tencent/mm/vfs/q;)V
     //   1076: invokespecial 174	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   1079: astore 18
     //   1081: aload 18
@@ -844,7 +844,7 @@ public final class a
     //   1282: astore 16
     //   1284: aload 18
     //   1286: astore 17
-    //   1288: getstatic 43	com/tencent/mm/plugin/trafficmonitor/a:Gst	Ljava/util/Map;
+    //   1288: getstatic 43	com/tencent/mm/plugin/trafficmonitor/a:Nfe	Ljava/util/Map;
     //   1291: iload_0
     //   1292: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1295: invokeinterface 129 2 0
@@ -857,18 +857,18 @@ public final class a
     //   1313: astore 16
     //   1315: aload 18
     //   1317: astore 17
-    //   1319: getstatic 43	com/tencent/mm/plugin/trafficmonitor/a:Gst	Ljava/util/Map;
+    //   1319: getstatic 43	com/tencent/mm/plugin/trafficmonitor/a:Nfe	Ljava/util/Map;
     //   1322: iload_0
     //   1323: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1326: lload 6
-    //   1328: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1331: invokeinterface 154 3 0
+    //   1328: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1331: invokeinterface 156 3 0
     //   1336: pop
     //   1337: aload 18
     //   1339: astore 16
     //   1341: aload 18
     //   1343: astore 17
-    //   1345: getstatic 41	com/tencent/mm/plugin/trafficmonitor/a:Gss	Ljava/util/Map;
+    //   1345: getstatic 41	com/tencent/mm/plugin/trafficmonitor/a:Nfd	Ljava/util/Map;
     //   1348: iload_0
     //   1349: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1352: invokeinterface 129 2 0
@@ -881,18 +881,18 @@ public final class a
     //   1370: astore 16
     //   1372: aload 18
     //   1374: astore 17
-    //   1376: getstatic 41	com/tencent/mm/plugin/trafficmonitor/a:Gss	Ljava/util/Map;
+    //   1376: getstatic 41	com/tencent/mm/plugin/trafficmonitor/a:Nfd	Ljava/util/Map;
     //   1379: iload_0
     //   1380: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1383: lload 4
-    //   1385: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1388: invokeinterface 154 3 0
+    //   1385: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1388: invokeinterface 156 3 0
     //   1393: pop
     //   1394: aload 18
     //   1396: astore 16
     //   1398: aload 18
     //   1400: astore 17
-    //   1402: getstatic 47	com/tencent/mm/plugin/trafficmonitor/a:Gsv	Ljava/util/Map;
+    //   1402: getstatic 47	com/tencent/mm/plugin/trafficmonitor/a:Nfg	Ljava/util/Map;
     //   1405: iload_0
     //   1406: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1409: invokeinterface 129 2 0
@@ -905,18 +905,18 @@ public final class a
     //   1427: astore 16
     //   1429: aload 18
     //   1431: astore 17
-    //   1433: getstatic 47	com/tencent/mm/plugin/trafficmonitor/a:Gsv	Ljava/util/Map;
+    //   1433: getstatic 47	com/tencent/mm/plugin/trafficmonitor/a:Nfg	Ljava/util/Map;
     //   1436: iload_0
     //   1437: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1440: lload_2
-    //   1441: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1444: invokeinterface 154 3 0
+    //   1441: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1444: invokeinterface 156 3 0
     //   1449: pop
     //   1450: aload 18
     //   1452: astore 16
     //   1454: aload 18
     //   1456: astore 17
-    //   1458: getstatic 45	com/tencent/mm/plugin/trafficmonitor/a:Gsu	Ljava/util/Map;
+    //   1458: getstatic 45	com/tencent/mm/plugin/trafficmonitor/a:Nff	Ljava/util/Map;
     //   1461: iload_0
     //   1462: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1465: invokeinterface 129 2 0
@@ -929,25 +929,25 @@ public final class a
     //   1483: astore 16
     //   1485: aload 18
     //   1487: astore 17
-    //   1489: getstatic 45	com/tencent/mm/plugin/trafficmonitor/a:Gsu	Ljava/util/Map;
+    //   1489: getstatic 45	com/tencent/mm/plugin/trafficmonitor/a:Nff	Ljava/util/Map;
     //   1492: iload_0
     //   1493: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1496: lload 8
-    //   1498: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1501: invokeinterface 154 3 0
+    //   1498: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1501: invokeinterface 156 3 0
     //   1506: pop
     //   1507: aload 18
     //   1509: astore 16
     //   1511: aload 18
     //   1513: astore 17
-    //   1515: getstatic 49	com/tencent/mm/plugin/trafficmonitor/a:Gsw	Ljava/util/Map;
+    //   1515: getstatic 49	com/tencent/mm/plugin/trafficmonitor/a:Nfh	Ljava/util/Map;
     //   1518: astore 19
     //   1520: aload 18
     //   1522: astore 16
     //   1524: aload 18
     //   1526: astore 17
     //   1528: lload 4
-    //   1530: getstatic 41	com/tencent/mm/plugin/trafficmonitor/a:Gss	Ljava/util/Map;
+    //   1530: getstatic 41	com/tencent/mm/plugin/trafficmonitor/a:Nfd	Ljava/util/Map;
     //   1533: iload_0
     //   1534: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1537: invokeinterface 129 2 0
@@ -960,7 +960,7 @@ public final class a
     //   1556: aload 18
     //   1558: astore 17
     //   1560: lload 4
-    //   1562: getstatic 41	com/tencent/mm/plugin/trafficmonitor/a:Gss	Ljava/util/Map;
+    //   1562: getstatic 41	com/tencent/mm/plugin/trafficmonitor/a:Nfd	Ljava/util/Map;
     //   1565: iload_0
     //   1566: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1569: invokeinterface 129 2 0
@@ -976,21 +976,21 @@ public final class a
     //   1593: iload_0
     //   1594: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1597: lload 10
-    //   1599: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1602: invokeinterface 154 3 0
+    //   1599: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1602: invokeinterface 156 3 0
     //   1607: pop
     //   1608: aload 18
     //   1610: astore 16
     //   1612: aload 18
     //   1614: astore 17
-    //   1616: getstatic 51	com/tencent/mm/plugin/trafficmonitor/a:Gsx	Ljava/util/Map;
+    //   1616: getstatic 51	com/tencent/mm/plugin/trafficmonitor/a:Nfi	Ljava/util/Map;
     //   1619: astore 19
     //   1621: aload 18
     //   1623: astore 16
     //   1625: aload 18
     //   1627: astore 17
     //   1629: lload 6
-    //   1631: getstatic 43	com/tencent/mm/plugin/trafficmonitor/a:Gst	Ljava/util/Map;
+    //   1631: getstatic 43	com/tencent/mm/plugin/trafficmonitor/a:Nfe	Ljava/util/Map;
     //   1634: iload_0
     //   1635: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1638: invokeinterface 129 2 0
@@ -1003,7 +1003,7 @@ public final class a
     //   1657: aload 18
     //   1659: astore 17
     //   1661: lload 6
-    //   1663: getstatic 43	com/tencent/mm/plugin/trafficmonitor/a:Gst	Ljava/util/Map;
+    //   1663: getstatic 43	com/tencent/mm/plugin/trafficmonitor/a:Nfe	Ljava/util/Map;
     //   1666: iload_0
     //   1667: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1670: invokeinterface 129 2 0
@@ -1019,21 +1019,21 @@ public final class a
     //   1694: iload_0
     //   1695: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1698: lload 10
-    //   1700: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1703: invokeinterface 154 3 0
+    //   1700: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1703: invokeinterface 156 3 0
     //   1708: pop
     //   1709: aload 18
     //   1711: astore 16
     //   1713: aload 18
     //   1715: astore 17
-    //   1717: getstatic 53	com/tencent/mm/plugin/trafficmonitor/a:Gsy	Ljava/util/Map;
+    //   1717: getstatic 53	com/tencent/mm/plugin/trafficmonitor/a:Nfj	Ljava/util/Map;
     //   1720: astore 19
     //   1722: aload 18
     //   1724: astore 16
     //   1726: aload 18
     //   1728: astore 17
     //   1730: lload 8
-    //   1732: getstatic 45	com/tencent/mm/plugin/trafficmonitor/a:Gsu	Ljava/util/Map;
+    //   1732: getstatic 45	com/tencent/mm/plugin/trafficmonitor/a:Nff	Ljava/util/Map;
     //   1735: iload_0
     //   1736: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1739: invokeinterface 129 2 0
@@ -1046,7 +1046,7 @@ public final class a
     //   1758: aload 18
     //   1760: astore 17
     //   1762: lload 8
-    //   1764: getstatic 45	com/tencent/mm/plugin/trafficmonitor/a:Gsu	Ljava/util/Map;
+    //   1764: getstatic 45	com/tencent/mm/plugin/trafficmonitor/a:Nff	Ljava/util/Map;
     //   1767: iload_0
     //   1768: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1771: invokeinterface 129 2 0
@@ -1062,21 +1062,21 @@ public final class a
     //   1795: iload_0
     //   1796: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1799: lload 10
-    //   1801: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1804: invokeinterface 154 3 0
+    //   1801: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1804: invokeinterface 156 3 0
     //   1809: pop
     //   1810: aload 18
     //   1812: astore 16
     //   1814: aload 18
     //   1816: astore 17
-    //   1818: getstatic 55	com/tencent/mm/plugin/trafficmonitor/a:Gsz	Ljava/util/Map;
+    //   1818: getstatic 55	com/tencent/mm/plugin/trafficmonitor/a:Nfk	Ljava/util/Map;
     //   1821: astore 19
     //   1823: aload 18
     //   1825: astore 16
     //   1827: aload 18
     //   1829: astore 17
     //   1831: lload_2
-    //   1832: getstatic 47	com/tencent/mm/plugin/trafficmonitor/a:Gsv	Ljava/util/Map;
+    //   1832: getstatic 47	com/tencent/mm/plugin/trafficmonitor/a:Nfg	Ljava/util/Map;
     //   1835: iload_0
     //   1836: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1839: invokeinterface 129 2 0
@@ -1089,7 +1089,7 @@ public final class a
     //   1858: aload 18
     //   1860: astore 17
     //   1862: lload_2
-    //   1863: getstatic 47	com/tencent/mm/plugin/trafficmonitor/a:Gsv	Ljava/util/Map;
+    //   1863: getstatic 47	com/tencent/mm/plugin/trafficmonitor/a:Nfg	Ljava/util/Map;
     //   1866: iload_0
     //   1867: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1870: invokeinterface 129 2 0
@@ -1105,52 +1105,52 @@ public final class a
     //   1894: iload_0
     //   1895: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1898: lload 10
-    //   1900: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1903: invokeinterface 154 3 0
+    //   1900: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1903: invokeinterface 156 3 0
     //   1908: pop
     //   1909: aload 18
     //   1911: astore 16
     //   1913: aload 18
     //   1915: astore 17
-    //   1917: getstatic 41	com/tencent/mm/plugin/trafficmonitor/a:Gss	Ljava/util/Map;
+    //   1917: getstatic 41	com/tencent/mm/plugin/trafficmonitor/a:Nfd	Ljava/util/Map;
     //   1920: iload_0
     //   1921: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1924: lload 4
-    //   1926: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1929: invokeinterface 154 3 0
+    //   1926: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1929: invokeinterface 156 3 0
     //   1934: pop
     //   1935: aload 18
     //   1937: astore 16
     //   1939: aload 18
     //   1941: astore 17
-    //   1943: getstatic 43	com/tencent/mm/plugin/trafficmonitor/a:Gst	Ljava/util/Map;
+    //   1943: getstatic 43	com/tencent/mm/plugin/trafficmonitor/a:Nfe	Ljava/util/Map;
     //   1946: iload_0
     //   1947: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1950: lload 6
-    //   1952: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1955: invokeinterface 154 3 0
+    //   1952: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1955: invokeinterface 156 3 0
     //   1960: pop
     //   1961: aload 18
     //   1963: astore 16
     //   1965: aload 18
     //   1967: astore 17
-    //   1969: getstatic 45	com/tencent/mm/plugin/trafficmonitor/a:Gsu	Ljava/util/Map;
+    //   1969: getstatic 45	com/tencent/mm/plugin/trafficmonitor/a:Nff	Ljava/util/Map;
     //   1972: iload_0
     //   1973: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1976: lload 8
-    //   1978: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1981: invokeinterface 154 3 0
+    //   1978: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1981: invokeinterface 156 3 0
     //   1986: pop
     //   1987: aload 18
     //   1989: astore 16
     //   1991: aload 18
     //   1993: astore 17
-    //   1995: getstatic 47	com/tencent/mm/plugin/trafficmonitor/a:Gsv	Ljava/util/Map;
+    //   1995: getstatic 47	com/tencent/mm/plugin/trafficmonitor/a:Nfg	Ljava/util/Map;
     //   1998: iload_0
     //   1999: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   2002: lload_2
-    //   2003: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   2006: invokeinterface 154 3 0
+    //   2003: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   2006: invokeinterface 156 3 0
     //   2011: pop
     //   2012: aload 18
     //   2014: astore 16
@@ -1182,75 +1182,75 @@ public final class a
     //   2070: astore 17
     //   2072: aload 17
     //   2074: astore 16
-    //   2076: getstatic 49	com/tencent/mm/plugin/trafficmonitor/a:Gsw	Ljava/util/Map;
+    //   2076: getstatic 49	com/tencent/mm/plugin/trafficmonitor/a:Nfh	Ljava/util/Map;
     //   2079: iload_0
     //   2080: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   2083: lconst_0
-    //   2084: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   2087: invokeinterface 154 3 0
+    //   2084: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   2087: invokeinterface 156 3 0
     //   2092: pop
     //   2093: aload 17
     //   2095: astore 16
-    //   2097: getstatic 51	com/tencent/mm/plugin/trafficmonitor/a:Gsx	Ljava/util/Map;
+    //   2097: getstatic 51	com/tencent/mm/plugin/trafficmonitor/a:Nfi	Ljava/util/Map;
     //   2100: iload_0
     //   2101: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   2104: lconst_0
-    //   2105: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   2108: invokeinterface 154 3 0
+    //   2105: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   2108: invokeinterface 156 3 0
     //   2113: pop
     //   2114: aload 17
     //   2116: astore 16
-    //   2118: getstatic 53	com/tencent/mm/plugin/trafficmonitor/a:Gsy	Ljava/util/Map;
+    //   2118: getstatic 53	com/tencent/mm/plugin/trafficmonitor/a:Nfj	Ljava/util/Map;
     //   2121: iload_0
     //   2122: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   2125: lconst_0
-    //   2126: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   2129: invokeinterface 154 3 0
+    //   2126: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   2129: invokeinterface 156 3 0
     //   2134: pop
     //   2135: aload 17
     //   2137: astore 16
-    //   2139: getstatic 55	com/tencent/mm/plugin/trafficmonitor/a:Gsz	Ljava/util/Map;
+    //   2139: getstatic 55	com/tencent/mm/plugin/trafficmonitor/a:Nfk	Ljava/util/Map;
     //   2142: iload_0
     //   2143: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   2146: lconst_0
-    //   2147: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   2150: invokeinterface 154 3 0
+    //   2147: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   2150: invokeinterface 156 3 0
     //   2155: pop
     //   2156: aload 17
     //   2158: astore 16
-    //   2160: getstatic 41	com/tencent/mm/plugin/trafficmonitor/a:Gss	Ljava/util/Map;
+    //   2160: getstatic 41	com/tencent/mm/plugin/trafficmonitor/a:Nfd	Ljava/util/Map;
     //   2163: iload_0
     //   2164: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2167: ldc2_w 157
-    //   2170: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   2173: invokeinterface 154 3 0
+    //   2167: ldc2_w 148
+    //   2170: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   2173: invokeinterface 156 3 0
     //   2178: pop
     //   2179: aload 17
     //   2181: astore 16
-    //   2183: getstatic 43	com/tencent/mm/plugin/trafficmonitor/a:Gst	Ljava/util/Map;
+    //   2183: getstatic 43	com/tencent/mm/plugin/trafficmonitor/a:Nfe	Ljava/util/Map;
     //   2186: iload_0
     //   2187: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2190: ldc2_w 157
-    //   2193: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   2196: invokeinterface 154 3 0
+    //   2190: ldc2_w 148
+    //   2193: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   2196: invokeinterface 156 3 0
     //   2201: pop
     //   2202: aload 17
     //   2204: astore 16
-    //   2206: getstatic 45	com/tencent/mm/plugin/trafficmonitor/a:Gsu	Ljava/util/Map;
+    //   2206: getstatic 45	com/tencent/mm/plugin/trafficmonitor/a:Nff	Ljava/util/Map;
     //   2209: iload_0
     //   2210: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2213: ldc2_w 157
-    //   2216: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   2219: invokeinterface 154 3 0
+    //   2213: ldc2_w 148
+    //   2216: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   2219: invokeinterface 156 3 0
     //   2224: pop
     //   2225: aload 17
     //   2227: astore 16
-    //   2229: getstatic 47	com/tencent/mm/plugin/trafficmonitor/a:Gsv	Ljava/util/Map;
+    //   2229: getstatic 47	com/tencent/mm/plugin/trafficmonitor/a:Nfg	Ljava/util/Map;
     //   2232: iload_0
     //   2233: invokestatic 123	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2236: ldc2_w 157
-    //   2239: invokestatic 150	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   2242: invokeinterface 154 3 0
+    //   2236: ldc2_w 148
+    //   2239: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   2242: invokeinterface 156 3 0
     //   2247: pop
     //   2248: aload 17
     //   2250: invokestatic 212	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
@@ -1504,7 +1504,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.trafficmonitor.a
  * JD-Core Version:    0.7.0.1
  */

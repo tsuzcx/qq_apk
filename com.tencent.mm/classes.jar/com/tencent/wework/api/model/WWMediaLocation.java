@@ -6,8 +6,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class WWMediaLocation
   extends WWMediaMessage.WWMediaObject
 {
-  public double Sxv;
-  public String iUO;
+  public double ZYv;
+  public String lLg;
   public double latitude;
   public double longitude;
   
@@ -19,7 +19,7 @@ public class WWMediaLocation
       AppMethodBeat.o(106544);
       return false;
     }
-    if ((this.iUO != null) && (this.iUO.length() != 0) && (this.iUO.length() <= 10240))
+    if ((this.lLg != null) && (this.lLg.length() != 0) && (this.lLg.length() <= 10240))
     {
       AppMethodBeat.o(106544);
       return true;
@@ -30,29 +30,29 @@ public class WWMediaLocation
   
   public final void fromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(199008);
-    this.iUO = paramBundle.getString("_wwlocobject_address");
+    AppMethodBeat.i(233401);
+    this.lLg = paramBundle.getString("_wwlocobject_address");
     this.longitude = paramBundle.getDouble("_wwlocobject_longitude");
     this.latitude = paramBundle.getDouble("_wwlocobject_latitude");
-    this.Sxv = paramBundle.getDouble("_wwlocobject_zoom");
+    this.ZYv = paramBundle.getDouble("_wwlocobject_zoom");
     super.fromBundle(paramBundle);
-    AppMethodBeat.o(199008);
+    AppMethodBeat.o(233401);
   }
   
   public final void toBundle(Bundle paramBundle)
   {
     AppMethodBeat.i(106545);
-    paramBundle.putString("_wwlocobject_address", this.iUO);
+    paramBundle.putString("_wwlocobject_address", this.lLg);
     paramBundle.putDouble("_wwlocobject_longitude", this.longitude);
     paramBundle.putDouble("_wwlocobject_latitude", this.latitude);
-    paramBundle.putDouble("_wwlocobject_zoom", this.Sxv);
+    paramBundle.putDouble("_wwlocobject_zoom", this.ZYv);
     super.toBundle(paramBundle);
     AppMethodBeat.o(106545);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.wework.api.model.WWMediaLocation
  * JD-Core Version:    0.7.0.1
  */

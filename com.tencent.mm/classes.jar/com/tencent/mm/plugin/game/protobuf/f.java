@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.game.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int xIH;
-  public int xII;
+  public int CMM;
+  public int CMN;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -14,24 +14,24 @@ public final class f
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aM(1, this.xIH);
-      paramVarArgs.aM(2, this.xII);
+      paramVarArgs.aY(1, this.CMM);
+      paramVarArgs.aY(2, this.CMN);
       AppMethodBeat.o(149405);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.bu(1, this.xIH);
-      int i = g.a.a.b.b.a.bu(2, this.xII);
+      paramInt = g.a.a.b.b.a.bM(1, this.CMM);
+      int i = g.a.a.b.b.a.bM(2, this.CMN);
       AppMethodBeat.o(149405);
       return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
       AppMethodBeat.o(149405);
@@ -47,11 +47,11 @@ public final class f
         AppMethodBeat.o(149405);
         return -1;
       case 1: 
-        localf.xIH = locala.UbS.zi();
+        localf.CMM = locala.abFh.AK();
         AppMethodBeat.o(149405);
         return 0;
       }
-      localf.xII = locala.UbS.zi();
+      localf.CMN = locala.abFh.AK();
       AppMethodBeat.o(149405);
       return 0;
     }
@@ -61,7 +61,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.protobuf.f
  * JD-Core Version:    0.7.0.1
  */

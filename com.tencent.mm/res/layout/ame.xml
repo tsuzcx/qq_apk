@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v7.widget.RecyclerView android:id="@id/ecm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/ecm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <TextView android:textSize="@dimen/cb" android:textColor="@color/BW_0_Alpha_0_5" android:id="@id/c35" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c6" android:text="@string/dh4" />
     <ProgressBar android:id="@id/ep6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c6" style="@style/a61" />
 </LinearLayout>

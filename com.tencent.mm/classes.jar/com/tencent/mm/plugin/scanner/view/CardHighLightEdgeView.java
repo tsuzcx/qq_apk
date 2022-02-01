@@ -11,6 +11,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.f.a;
+import com.tencent.mm.plugin.aj.a.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.util.Arrays;
@@ -18,21 +19,21 @@ import java.util.Arrays;
 public class CardHighLightEdgeView
   extends View
 {
-  private boolean[] CUR;
-  private boolean[] CUS;
-  private Rect CUT;
-  private long CUU;
-  private MMHandler CUV;
-  private int tHg;
-  private Paint xY;
+  private boolean[] Jaq;
+  private boolean[] Jar;
+  private Rect Jas;
+  private long Jat;
+  private MMHandler Jau;
+  private Paint auH;
+  private int xpS;
   
   public CardHighLightEdgeView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(118369);
-    this.CUR = new boolean[4];
-    this.CUS = new boolean[4];
-    this.CUV = new MMHandler()
+    this.Jaq = new boolean[4];
+    this.Jar = new boolean[4];
+    this.Jau = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -51,9 +52,9 @@ public class CardHighLightEdgeView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(118370);
-    this.CUR = new boolean[4];
-    this.CUS = new boolean[4];
-    this.CUV = new MMHandler()
+    this.Jaq = new boolean[4];
+    this.Jar = new boolean[4];
+    this.Jau = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -72,9 +73,9 @@ public class CardHighLightEdgeView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(118371);
-    this.CUR = new boolean[4];
-    this.CUS = new boolean[4];
-    this.CUV = new MMHandler()
+    this.Jaq = new boolean[4];
+    this.Jar = new boolean[4];
+    this.Jau = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -92,12 +93,12 @@ public class CardHighLightEdgeView
   private void init()
   {
     AppMethodBeat.i(118372);
-    this.tHg = (a.decodeResource(getResources(), 2131234738).getWidth() / 4);
-    this.xY = new Paint();
-    this.xY.setColor(6676738);
-    this.xY.setAlpha(255);
-    this.xY.setStrokeWidth(this.tHg);
-    this.xY.setStyle(Paint.Style.STROKE);
+    this.xpS = (a.decodeResource(getResources(), a.c.scanqr1).getWidth() / 4);
+    this.auH = new Paint();
+    this.auH.setColor(508256);
+    this.auH.setAlpha(255);
+    this.auH.setStrokeWidth(this.xpS);
+    this.auH.setStyle(Paint.Style.STROKE);
     AppMethodBeat.o(118372);
   }
   
@@ -105,19 +106,19 @@ public class CardHighLightEdgeView
   {
     AppMethodBeat.i(118375);
     super.onDraw(paramCanvas);
-    if (this.CUT != null)
+    if (this.Jas != null)
     {
-      if (this.CUR[0] != 0) {
-        paramCanvas.drawLine(this.CUT.left + this.tHg / 2, this.CUT.top, this.CUT.left + this.tHg / 2, this.CUT.bottom, this.xY);
+      if (this.Jaq[0] != 0) {
+        paramCanvas.drawLine(this.Jas.left + this.xpS / 2, this.Jas.top, this.Jas.left + this.xpS / 2, this.Jas.bottom, this.auH);
       }
-      if (this.CUR[1] != 0) {
-        paramCanvas.drawLine(this.CUT.right - this.tHg / 2, this.CUT.top, this.CUT.right - this.tHg / 2, this.CUT.bottom, this.xY);
+      if (this.Jaq[1] != 0) {
+        paramCanvas.drawLine(this.Jas.right - this.xpS / 2, this.Jas.top, this.Jas.right - this.xpS / 2, this.Jas.bottom, this.auH);
       }
-      if (this.CUR[2] != 0) {
-        paramCanvas.drawLine(this.CUT.left, this.CUT.top + this.tHg / 2, this.CUT.right, this.CUT.top + this.tHg / 2, this.xY);
+      if (this.Jaq[2] != 0) {
+        paramCanvas.drawLine(this.Jas.left, this.Jas.top + this.xpS / 2, this.Jas.right, this.Jas.top + this.xpS / 2, this.auH);
       }
-      if (this.CUR[3] != 0) {
-        paramCanvas.drawLine(this.CUT.left, this.CUT.bottom - this.tHg / 2, this.CUT.right, this.CUT.bottom - this.tHg / 2, this.xY);
+      if (this.Jaq[3] != 0) {
+        paramCanvas.drawLine(this.Jas.left, this.Jas.bottom - this.xpS / 2, this.Jas.right, this.Jas.bottom - this.xpS / 2, this.auH);
       }
     }
     AppMethodBeat.o(118375);
@@ -126,7 +127,7 @@ public class CardHighLightEdgeView
   public void setCardRect(Rect paramRect)
   {
     AppMethodBeat.i(118373);
-    this.CUT = new Rect(paramRect);
+    this.Jas = new Rect(paramRect);
     AppMethodBeat.o(118373);
   }
   
@@ -142,7 +143,7 @@ public class CardHighLightEdgeView
       if (i >= 4) {
         break label146;
       }
-      if (this.CUR[i] == 0) {
+      if (this.Jaq[i] == 0) {
         break label139;
       }
       i = j;
@@ -154,11 +155,11 @@ public class CardHighLightEdgeView
     label139:
     label146:
     label157:
-    for (long l = 600L - (System.currentTimeMillis() - this.CUU);; l = 0L)
+    for (long l = 600L - (System.currentTimeMillis() - this.Jat);; l = 0L)
     {
-      this.CUS = Arrays.copyOf(paramArrayOfBoolean, 4);
-      this.CUV.removeMessages(1);
-      paramArrayOfBoolean = this.CUV;
+      this.Jar = Arrays.copyOf(paramArrayOfBoolean, 4);
+      this.Jau.removeMessages(1);
+      paramArrayOfBoolean = this.Jau;
       if (l > 0L) {}
       for (;;)
       {
@@ -176,7 +177,7 @@ public class CardHighLightEdgeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.view.CardHighLightEdgeView
  * JD-Core Version:    0.7.0.1
  */

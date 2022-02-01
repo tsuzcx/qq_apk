@@ -1,235 +1,176 @@
 package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.msgsubscription.SubscribeMsgTmpItem;
-import com.tencent.mm.msgsubscription.api.ISubscribeMsgService;
+import com.tencent.mm.ad.i;
+import com.tencent.mm.ipcinvoker.j;
+import com.tencent.mm.ipcinvoker.m;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.plugin.brandservice.a.f.a;
 import com.tencent.mm.plugin.webview.d.c.a;
-import com.tencent.mm.plugin.webview.d.f;
-import com.tencent.mm.plugin.webview.d.h;
-import com.tencent.mm.plugin.webview.d.n;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMActivity.a;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.t;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiRequestSubscribeMessage;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "Lcom/tencent/mm/ui/MMActivity$IMMOnActivityResult;", "()V", "REQUEST_CODE_SUBSCRIBE_MSG", "", "TAG", "", "controlByte", "getControlByte", "()I", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "funcName", "getFuncName", "()Ljava/lang/String;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "callbackJsApi", "", "errCode", "errMsg", "retMap", "", "", "handleMsg", "", "mmOnActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "requestSubscribeMessage", "plugin-webview_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOnWebPageUrlExposed;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "BIZ_TYPE_PREFETCH_WEB_PAGE", "", "BIZ_TYPE_PRELOAD_VIDEO", "TAG", "", "controlByte", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "WebPrefetchTask", "plugin-webview_release"})
 public final class s
   extends a
-  implements MMActivity.a
 {
-  private static final int CDJ = 395;
-  private static n JsF;
-  private static f JxI;
-  public static final s JxJ;
-  private static final String edq = "requestSubscribeMessage";
+  public static final s Qvv;
   
   static
   {
-    AppMethodBeat.i(210665);
-    JxJ = new s();
-    CDJ = 395;
-    edq = "requestSubscribeMessage";
-    AppMethodBeat.o(210665);
+    AppMethodBeat.i(218543);
+    Qvv = new s();
+    AppMethodBeat.o(218543);
   }
   
-  private static void a(f paramf, n paramn, int paramInt, String paramString, Map<String, ? extends Object> paramMap)
+  public final boolean a(com.tencent.mm.plugin.webview.d.f paramf, com.tencent.mm.plugin.webview.d.n paramn)
   {
-    int i = 1;
-    AppMethodBeat.i(210664);
-    p.h(paramString, "errMsg");
-    if (paramf == null)
+    AppMethodBeat.i(218542);
+    p.k(paramf, "env");
+    p.k(paramn, "msg");
+    String str = (String)paramn.params.get("urlList");
+    if (Util.isNullOrNil(str))
     {
-      AppMethodBeat.o(210664);
-      return;
+      com.tencent.d.f.h.ioq();
+      paramf.PNo.h(paramn.POu, paramn.function + ":fail", null);
+      AppMethodBeat.o(218542);
+      return true;
     }
-    if (paramn == null)
-    {
-      AppMethodBeat.o(210664);
-      return;
-    }
-    Map localMap = (Map)new LinkedHashMap();
-    localMap.put("err_code", Integer.valueOf(paramInt));
-    if (paramMap != null) {
-      localMap.putAll(paramMap);
-    }
-    if (paramInt == 0) {
-      if (((CharSequence)paramString).length() > 0)
-      {
-        paramInt = i;
-        if (paramInt == 0) {
-          break label147;
-        }
-      }
-    }
-    label147:
-    label180:
-    for (;;)
-    {
-      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":" + paramString, localMap);
-      AppMethodBeat.o(210664);
-      return;
-      paramInt = 0;
-      break;
-      paramString = "ok";
-      continue;
-      if (((CharSequence)paramString).length() > 0) {}
-      for (paramInt = 1;; paramInt = 0)
-      {
-        if (paramInt != 0) {
-          break label180;
-        }
-        paramString = "unknown error";
-        break;
-      }
-    }
-  }
-  
-  public final boolean a(f paramf, n paramn)
-  {
-    AppMethodBeat.i(210662);
-    p.h(paramf, "env");
-    p.h(paramn, "msg");
-    Log.i("MicroMsg.JsApiRequestSubscribeMessage", "alvinluo requestSubscribeMessage");
-    JxI = paramf;
-    JsF = paramn;
-    String str = (String)paramn.params.get("appId");
-    Object localObject1 = (String)paramn.params.get("extInfo");
-    Object localObject3 = (String)paramn.params.get("templateIdList");
-    Object localObject2 = new ArrayList();
-    int i;
-    int j;
-    if (localObject3 != null)
-    {
-      localObject3 = new JSONArray((String)localObject3);
-      i = 0;
-      j = ((JSONArray)localObject3).length();
+    Object localObject = paramn.params.get("bizType");
+    if (localObject == null) {
+      localObject = "";
     }
     for (;;)
     {
-      Object localObject4;
-      if (i < j)
+      Bundle localBundle = new Bundle();
+      localBundle.putString("urlList", str);
+      if (p.h(localObject, "1"))
       {
-        localObject4 = ((JSONArray)localObject3).get(i);
-        if (!(localObject4 instanceof String)) {
-          a(paramf, paramn, 10004, ":fail templateId invalid", null);
+        localBundle.putInt("bizType", 1);
+        if (!((Bundle)j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)localBundle, a.class)).getBoolean("ret")) {
+          break label215;
         }
+        paramf.PNo.h(paramn.POu, paramn.function + ":ok", null);
       }
-      else
+      for (;;)
       {
-        if (!((ArrayList)localObject2).isEmpty()) {
-          break;
-        }
-        a(paramf, paramn, 10001, ":fail templateIdList empty", null);
-        AppMethodBeat.o(210662);
+        AppMethodBeat.o(218542);
         return true;
+        localBundle.putInt("bizType", 0);
+        break;
+        label215:
+        paramf.PNo.h(paramn.POu, paramn.function + ":fail", null);
       }
-      ((ArrayList)localObject2).add(localObject4);
-      i += 1;
     }
-    if ((paramf.context instanceof MMActivity))
+  }
+  
+  public final String fCm()
+  {
+    return "onWebPageUrlExposed";
+  }
+  
+  public final int fCn()
+  {
+    return 373;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOnWebPageUrlExposed$WebPrefetchTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Landroid/os/Bundle;", "()V", "invoke", "data", "plugin-webview_release"})
+  public static final class a
+    implements m<Bundle, Bundle>
+  {
+    private static Bundle P(Bundle paramBundle)
     {
-      paramn = paramf.context;
-      if (paramn == null)
+      AppMethodBeat.i(242582);
+      Bundle localBundle = new Bundle();
+      if (paramBundle == null)
       {
-        paramf = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
-        AppMethodBeat.o(210662);
-        throw paramf;
+        localBundle.putBoolean("ret", false);
+        AppMethodBeat.o(242582);
+        return localBundle;
       }
-      ((MMActivity)paramn).mmSetOnActivityResultCallback((MMActivity.a)this);
-    }
-    paramn = new Bundle();
-    paramn.putString("key_extra_info", (String)localObject1);
-    paramn.putBoolean("key_need_result", true);
-    paramn.putStringArrayList("key_template_id_list", (ArrayList)localObject2);
-    localObject1 = (ISubscribeMsgService)g.af(ISubscribeMsgService.class);
-    localObject2 = paramf.context;
-    paramf = str;
-    if (str == null) {
-      paramf = "";
-    }
-    ((ISubscribeMsgService)localObject1).a((Context)localObject2, 2, 1000, paramf, paramn);
-    AppMethodBeat.o(210662);
-    return true;
-  }
-  
-  public final void d(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    AppMethodBeat.i(210663);
-    Object localObject1 = new StringBuilder("alvinluo requestSubscribeMessage onActivityResult requestCode: ").append(paramInt1).append(", resultCode: ").append(paramInt2).append(", data: ");
-    boolean bool;
-    if (paramIntent == null)
-    {
-      bool = true;
-      Log.d("MicroMsg.JsApiRequestSubscribeMessage", bool);
-      if ((paramIntent == null) || (paramInt1 != 1000)) {
-        break label335;
-      }
-      localObject3 = paramIntent.getParcelableArrayListExtra("key_result_data");
-      paramInt1 = paramIntent.getIntExtra("key_result_err_code", -1);
-      localObject2 = paramIntent.getStringExtra("key_result_err_msg");
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = "unknown error";
-      }
-      localObject2 = paramIntent.getStringExtra("key_result_ext_data");
-      paramIntent = (Intent)localObject2;
-      if (localObject2 == null) {
-        paramIntent = "";
-      }
-      if (localObject3 == null) {
-        break label279;
-      }
-    }
-    label279:
-    for (Object localObject2 = Integer.valueOf(((ArrayList)localObject3).size());; localObject2 = null)
-    {
-      Log.i("MicroMsg.JsApiRequestSubscribeMessage", "alvinluo requestSubscribeMessage onActivityResult errCode: %s, errMsg: %s, template size: %s, extData: %s", new Object[] { Integer.valueOf(paramInt1), localObject1, localObject2, paramIntent });
-      localObject2 = new JSONObject();
-      if (localObject3 == null) {
-        break label285;
-      }
-      localObject3 = ((Iterable)localObject3).iterator();
-      while (((Iterator)localObject3).hasNext())
+      ArrayList localArrayList = new ArrayList();
+      for (;;)
       {
-        SubscribeMsgTmpItem localSubscribeMsgTmpItem = (SubscribeMsgTmpItem)((Iterator)localObject3).next();
-        String str = localSubscribeMsgTmpItem.ixM;
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("status", localSubscribeMsgTmpItem.jyE);
-        ((JSONObject)localObject2).put(str, localJSONObject.toString());
+        try
+        {
+          str = paramBundle.getString("urlList");
+          i = paramBundle.getInt("bizType", 0);
+        }
+        catch (Exception paramBundle)
+        {
+          String str;
+          int k;
+          int j;
+          Object localObject;
+          int m;
+          int i = 0;
+          continue;
+          continue;
+          j += 1;
+          continue;
+        }
+        try
+        {
+          paramBundle = new com.tencent.mm.ad.f(str);
+          if (paramBundle.length() <= 0)
+          {
+            com.tencent.d.f.h.ioq();
+            localBundle.putBoolean("ret", false);
+            AppMethodBeat.o(242582);
+            return localBundle;
+          }
+          k = paramBundle.length();
+          j = 0;
+          if (j >= k) {
+            continue;
+          }
+          localObject = paramBundle.sy(j);
+          str = ((i)localObject).optString("url");
+          m = ((i)localObject).optInt("bizScene");
+          if ((str != null) && (kotlin.n.n.ba((CharSequence)str) == true))
+          {
+            com.tencent.d.f.h.ioq();
+          }
+          else
+          {
+            localObject = ((i)localObject).optString("extInfo");
+            f.a locala = new f.a();
+            locala.url = str;
+            locala.extInfo = ((String)localObject);
+            locala.svv = 176;
+            locala.svw = m;
+            localArrayList.add(locala);
+          }
+        }
+        catch (Exception paramBundle) {}
       }
-      bool = false;
-      break;
+      com.tencent.d.f.h.ioq();
+      if (localArrayList.isEmpty())
+      {
+        com.tencent.d.f.h.ioq();
+        localBundle.putBoolean("ret", false);
+        AppMethodBeat.o(242582);
+        return localBundle;
+      }
+      localBundle.putBoolean("ret", true);
+      "WebPrefetchTask  bizType:".concat(String.valueOf(i));
+      com.tencent.d.f.h.ioq();
+      if (i == 1) {
+        ((com.tencent.mm.plugin.brandservice.a.f)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.brandservice.a.f.class)).cr((List)localArrayList);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(242582);
+        return localBundle;
+        ((com.tencent.mm.plugin.brandservice.a.f)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.brandservice.a.f.class)).cq((List)localArrayList);
+      }
     }
-    label285:
-    Object localObject3 = new HashMap();
-    ((HashMap)localObject3).put("templatesDetail", ((JSONObject)localObject2).toString());
-    ((HashMap)localObject3).put("ext_info", paramIntent);
-    a(JxI, JsF, paramInt1, (String)localObject1, (Map)localObject3);
-    label335:
-    AppMethodBeat.o(210663);
-  }
-  
-  public final int ePA()
-  {
-    return CDJ;
-  }
-  
-  public final String ePz()
-  {
-    return edq;
   }
 }
 

@@ -2,41 +2,41 @@ package com.tencent.mm.plugin.emoji.a.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.EmotionBannerSet;
-import com.tencent.mm.protocal.protobuf.EmotionSummary;
+import com.tencent.mm.protocal.protobuf.ajw;
+import com.tencent.mm.protocal.protobuf.akh;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.bh;
 
 public final class f
 {
-  public int HH;
+  public int IB;
   public int mStatus;
-  public a qYk;
-  public EmotionSummary qYl;
-  public EmotionBannerSet qYm;
-  public int qYn;
-  public String qYo;
-  public boolean qYp;
-  public boolean qYq = true;
-  public boolean qYr = false;
+  public a uAZ;
+  public akh uBa;
+  public ajw uBb;
+  public int uBc;
+  public String uBd;
+  public boolean uBe;
+  public boolean uBf = true;
+  public boolean uBg = false;
   
-  public f(EmotionBannerSet paramEmotionBannerSet)
+  public f(ajw paramajw)
   {
-    this.qYm = paramEmotionBannerSet;
-    this.qYk = a.qYt;
+    this.uBb = paramajw;
+    this.uAZ = a.uBi;
   }
   
-  public f(EmotionSummary paramEmotionSummary)
+  public f(akh paramakh)
   {
-    this.qYl = paramEmotionSummary;
-    this.qYk = a.qYs;
+    this.uBa = paramakh;
+    this.uAZ = a.uBh;
   }
   
   public final void a(boolean paramBoolean1, bh parambh, boolean paramBoolean2)
   {
     AppMethodBeat.i(108382);
-    EmotionSummary localEmotionSummary = this.qYl;
-    if (localEmotionSummary == null)
+    akh localakh = this.uBa;
+    if (localakh == null)
     {
       AppMethodBeat.o(108382);
       return;
@@ -47,20 +47,20 @@ public final class f
       AppMethodBeat.o(108382);
       return;
     }
-    paramBoolean2 = e.a(localEmotionSummary);
-    boolean bool1 = e.b(localEmotionSummary);
-    boolean bool2 = e.e(localEmotionSummary);
-    boolean bool3 = TextUtils.isEmpty(localEmotionSummary.PackPrice);
+    paramBoolean2 = e.a(localakh);
+    boolean bool1 = e.b(localakh);
+    boolean bool2 = e.e(localakh);
+    boolean bool3 = TextUtils.isEmpty(localakh.Tex);
     if ((bool2) && (bool1)) {
       setStatus(8);
     }
     for (;;)
     {
-      if ((paramBoolean1) && (parambh != null) && (!Util.isNullOrNil(parambh.OpB)))
+      if ((paramBoolean1) && (parambh != null) && (!Util.isNullOrNil(parambh.VFu)))
       {
-        this.qYl.PackPrice = parambh.OpB;
-        this.qYl.PriceNum = parambh.OpA;
-        this.qYl.PriceType = parambh.Opz;
+        this.uBa.Tex = parambh.VFu;
+        this.uBa.VHC = parambh.VFt;
+        this.uBa.SuH = parambh.VFs;
       }
       AppMethodBeat.o(108382);
       return;
@@ -68,24 +68,24 @@ public final class f
       {
         setStatus(3);
         if ((bool1) || ((!paramBoolean1) && (bool3))) {
-          this.qYn = 0;
+          this.uBc = 0;
         } else {
-          this.qYn = 1;
+          this.uBc = 1;
         }
       }
       else if ((bool1) || ((!paramBoolean1) && (bool3)))
       {
         setStatus(3);
-        this.qYn = 0;
+        this.uBc = 0;
       }
       else
       {
-        this.qYn = 1;
+        this.uBc = 1;
         if ((paramBoolean1) && (parambh != null)) {}
-        switch (parambh.Opx)
+        switch (parambh.VFq)
         {
         default: 
-          if ((parambh.Opv != 7) && (parambh.Opv != 6) && (parambh.Opv != 3)) {
+          if ((parambh.VFo != 7) && (parambh.VFo != 6) && (parambh.VFo != 3)) {
             setStatus(10);
           }
           break;
@@ -108,8 +108,8 @@ public final class f
   
   public final void setStatus(int paramInt)
   {
-    if ((paramInt == 7) && (this.mStatus == 6) && (this.qYq)) {
-      this.qYp = true;
+    if ((paramInt == 7) && (this.mStatus == 6) && (this.uBf)) {
+      this.uBe = true;
     }
     this.mStatus = paramInt;
   }
@@ -119,9 +119,9 @@ public final class f
     static
     {
       AppMethodBeat.i(108381);
-      qYs = new a("summary", 0);
-      qYt = new a("cellset", 1);
-      qYu = new a[] { qYs, qYt };
+      uBh = new a("summary", 0);
+      uBi = new a("cellset", 1);
+      uBj = new a[] { uBh, uBi };
       AppMethodBeat.o(108381);
     }
     
@@ -130,7 +130,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.a.f
  * JD-Core Version:    0.7.0.1
  */

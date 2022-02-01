@@ -12,7 +12,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,17 +24,23 @@ import android.widget.Gallery.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.bf;
-import com.tencent.mm.g.a.bf.b;
-import com.tencent.mm.g.b.a.ep;
-import com.tencent.mm.g.c.fx;
+import com.tencent.mm.f.a.bk;
+import com.tencent.mm.f.a.bk.b;
+import com.tencent.mm.f.b.a.fo;
+import com.tencent.mm.f.c.ge;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.platformtools.p.a;
+import com.tencent.mm.plugin.al.a.a;
+import com.tencent.mm.plugin.al.a.b;
+import com.tencent.mm.plugin.al.a.d;
+import com.tencent.mm.plugin.al.a.e;
+import com.tencent.mm.plugin.al.a.g;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.scanner.e;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.scanner.f;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
@@ -45,13 +50,13 @@ import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.thread.ThreadPool;
 import com.tencent.mm.storage.ca;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.base.MultiTouchImageView;
-import com.tencent.mm.ui.t;
 import com.tencent.mm.ui.tools.MMGestureGallery;
 import com.tencent.mm.ui.tools.MMGestureGallery.b;
 import com.tencent.mm.ui.tools.MMGestureGallery.f;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.ui.w;
+import com.tencent.mm.vfs.u;
 import com.tencent.mm.view.AnimationLayout;
 import com.tencent.mm.view.ViewAnimHelper.ViewInfo;
 
@@ -59,39 +64,39 @@ import com.tencent.mm.view.ViewAnimHelper.ViewInfo;
 public class TranslationResultUI
   extends MMActivity
 {
-  private Bitmap CMJ;
-  private MMGestureGallery CMM;
-  private String COH;
-  private fx COI;
-  private a COJ;
-  private View COK;
-  private TextView COL;
-  private Rect COM;
+  private float GB;
+  private float GC;
+  private Bitmap ISj;
+  private MMGestureGallery ISm;
+  private String IUj;
+  private ge IUk;
+  private a IUl;
+  private View IUm;
+  private TextView IUn;
+  private Rect IUo;
   private String aesKey;
   private String fileId;
-  private View gvQ;
-  private AnimationLayout jUD;
-  private boolean jUE;
-  private ImageView jUG;
-  private MultiTouchImageView lTJ;
+  private View jac;
+  private AnimationLayout mLQ;
+  private boolean mLR;
+  private ImageView mLT;
   private long msgId;
+  private MultiTouchImageView oQr;
   private float scaleX;
   private float scaleY;
   private int source;
-  private float translationX;
-  private float translationY;
   
-  private void bms()
+  private void bwA()
   {
     AppMethodBeat.i(120942);
-    if (this.jUE)
+    if (this.mLR)
     {
       AppMethodBeat.o(120942);
       return;
     }
-    this.jUE = true;
-    Log.i("MicroMsg.TranslationResultUI", "runExitAnimation, thumbRect %s", new Object[] { this.COM });
-    this.jUD.a(this.jUG, this.gvQ, new ViewAnimHelper.ViewInfo(this.COM), new Animator.AnimatorListener()new ValueAnimator.AnimatorUpdateListener
+    this.mLR = true;
+    Log.i("MicroMsg.TranslationResultUI", "runExitAnimation, thumbRect %s", new Object[] { this.IUo });
+    this.mLQ.a(this.mLT, this.jac, new ViewAnimHelper.ViewInfo(this.IUo), new Animator.AnimatorListener()new ValueAnimator.AnimatorUpdateListener
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
       
@@ -99,7 +104,9 @@ public class TranslationResultUI
       {
         AppMethodBeat.i(120935);
         TranslationResultUI.this.finish();
-        TranslationResultUI.this.overridePendingTransition(2130771986, 2130771986);
+        paramAnonymousAnimator = TranslationResultUI.this;
+        int i = a.a.anim_not_change;
+        paramAnonymousAnimator.overridePendingTransition(i, i);
         AppMethodBeat.o(120935);
       }
       
@@ -111,7 +118,7 @@ public class TranslationResultUI
         if (TranslationResultUI.i(TranslationResultUI.this) != null)
         {
           if (TranslationResultUI.i(TranslationResultUI.this).getScale() > 1.0F) {
-            TranslationResultUI.i(TranslationResultUI.this).gKy();
+            TranslationResultUI.i(TranslationResultUI.this).hJx();
           }
           TranslationResultUI.a(TranslationResultUI.this, TranslationResultUI.i(TranslationResultUI.this).getTranslationX());
           TranslationResultUI.b(TranslationResultUI.this, TranslationResultUI.i(TranslationResultUI.this).getTranslationY());
@@ -142,14 +149,15 @@ public class TranslationResultUI
   private void goBack()
   {
     AppMethodBeat.i(120941);
-    if (this.COM != null)
+    if (this.IUo != null)
     {
-      bms();
+      bwA();
       AppMethodBeat.o(120941);
       return;
     }
     finish();
-    overridePendingTransition(2130771986, 2130771986);
+    int i = a.a.anim_not_change;
+    overridePendingTransition(i, i);
     AppMethodBeat.o(120941);
   }
   
@@ -160,50 +168,50 @@ public class TranslationResultUI
   
   public int getLayoutId()
   {
-    return 2131495070;
+    return a.e.image_translation_result;
   }
   
   public void initView()
   {
     AppMethodBeat.i(120939);
-    this.gvQ = findViewById(2131307160);
-    this.COK = findViewById(2131307216);
-    this.jUG = ((ImageView)findViewById(2131301854));
-    this.jUD = ((AnimationLayout)findViewById(2131296763));
-    this.COL = ((TextView)findViewById(2131309406));
-    this.COH = getIntent().getStringExtra("original_file_path");
+    this.jac = findViewById(a.d.root_container);
+    this.IUm = findViewById(a.d.save_translate_btn);
+    this.mLT = ((ImageView)findViewById(a.d.gallery_bg));
+    this.mLQ = ((AnimationLayout)findViewById(a.d.animation_layout));
+    this.IUn = ((TextView)findViewById(a.d.translate_manufacture));
+    this.IUj = getIntent().getStringExtra("original_file_path");
     this.msgId = getIntent().getLongExtra("msg_id", -1L);
     this.source = getIntent().getIntExtra("translate_source", 0);
-    this.COM = ((Rect)getIntent().getParcelableExtra("thumb_location"));
+    this.IUo = ((Rect)getIntent().getParcelableExtra("thumb_location"));
     this.fileId = getIntent().getStringExtra("fileid");
     this.aesKey = getIntent().getStringExtra("aeskey");
-    Log.i("MicroMsg.TranslationResultUI", "file path %s", new Object[] { this.COH });
-    if (!s.YS(this.COH)) {
+    Log.i("MicroMsg.TranslationResultUI", "file path %s", new Object[] { this.IUj });
+    if (!u.agG(this.IUj)) {
       Log.e("MicroMsg.TranslationResultUI", "translation original file not exist!");
     }
-    Object localObject1 = findViewById(2131307210);
+    Object localObject1 = findViewById(a.d.save_container);
     Object localObject2 = (FrameLayout.LayoutParams)((View)localObject1).getLayoutParams();
-    ((FrameLayout.LayoutParams)localObject2).bottomMargin += ao.aD(this);
+    ((FrameLayout.LayoutParams)localObject2).bottomMargin += ar.aB(this);
     ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
     getSupportActionBar().hide();
-    getController().p(this, getResources().getColor(2131101287));
-    getController().setNavigationbarColor(getResources().getColor(2131101287));
-    this.CMM = ((MMGestureGallery)findViewById(2131309410));
-    this.COJ = new a((byte)0);
-    this.CMM.setAdapter(this.COJ);
-    this.CMM.setSingleClickOverListener(new MMGestureGallery.f()
+    getController().q(this, getResources().getColor(a.b.transparent));
+    getController().setNavigationbarColor(getResources().getColor(a.b.transparent));
+    this.ISm = ((MMGestureGallery)findViewById(a.d.translation_gallery));
+    this.IUl = new a((byte)0);
+    this.ISm.setAdapter(this.IUl);
+    this.ISm.setSingleClickOverListener(new MMGestureGallery.f()
     {
-      public final void bmt()
+      public final void bwB()
       {
         AppMethodBeat.i(120929);
         TranslationResultUI.a(TranslationResultUI.this);
         AppMethodBeat.o(120929);
       }
     });
-    this.COI = ((e)g.ah(e.class)).getTranslationResult(this.COH);
-    if (this.COI != null)
+    this.IUk = ((f)h.ag(f.class)).getTranslationResult(this.IUj);
+    if (this.IUk != null)
     {
-      if (this.CMJ == null) {
+      if (this.ISj == null) {
         ThreadPool.postAtFront(new Runnable()
         {
           public final void run()
@@ -228,34 +236,34 @@ public class TranslationResultUI
       }
       for (;;)
       {
-        if (!Util.isNullOrNil(this.COI.field_brand))
+        if (!Util.isNullOrNil(this.IUk.field_brand))
         {
-          this.COL.setText(this.COI.field_brand);
-          this.COL.setVisibility(0);
+          this.IUn.setText(this.IUk.field_brand);
+          this.IUn.setVisibility(0);
         }
-        this.COK.setOnClickListener(new View.OnClickListener()
+        this.IUm.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(120932);
             b localb = new b();
-            localb.bm(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/TranslationResultUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-            paramAnonymousView = new ep();
-            paramAnonymousView.ejA = 7L;
-            paramAnonymousView.eDV = TranslationResultUI.e(TranslationResultUI.this);
-            paramAnonymousView.rK(TranslationResultUI.f(TranslationResultUI.this));
-            paramAnonymousView.rL(TranslationResultUI.g(TranslationResultUI.this));
-            paramAnonymousView.bfK();
+            localb.bn(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/scanner/ui/TranslationResultUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+            paramAnonymousView = new fo();
+            paramAnonymousView.gef = 7L;
+            paramAnonymousView.gBe = TranslationResultUI.e(TranslationResultUI.this);
+            paramAnonymousView.uU(TranslationResultUI.f(TranslationResultUI.this));
+            paramAnonymousView.uV(TranslationResultUI.g(TranslationResultUI.this));
+            paramAnonymousView.bpa();
             TranslationResultUI.a(TranslationResultUI.this, TranslationResultUI.b(TranslationResultUI.this).field_resultFile);
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/ui/TranslationResultUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(120932);
           }
         });
-        this.COK.setVisibility(0);
-        this.CMM.setGalleryScaleListener(new MMGestureGallery.b()
+        this.IUm.setVisibility(0);
+        this.ISm.setGalleryScaleListener(new MMGestureGallery.b()
         {
-          public final void S(float paramAnonymousFloat1, float paramAnonymousFloat2)
+          public final void U(float paramAnonymousFloat1, float paramAnonymousFloat2)
           {
             float f1 = 1.0F;
             AppMethodBeat.i(120933);
@@ -292,24 +300,24 @@ public class TranslationResultUI
             AppMethodBeat.o(120933);
           }
           
-          public final void T(float paramAnonymousFloat1, float paramAnonymousFloat2) {}
+          public final void V(float paramAnonymousFloat1, float paramAnonymousFloat2) {}
         });
-        localObject1 = ((l)g.af(l.class)).eiy().Hb(this.msgId);
+        localObject1 = ((n)h.ae(n.class)).eSe().Oq(this.msgId);
         if (this.msgId != -1L)
         {
-          localObject2 = new bf();
-          ((bf)localObject2).dEo.dCM = ((ca)localObject1);
+          localObject2 = new bk();
+          ((bk)localObject2).fxc.fvt = ((ca)localObject1);
           EventCenter.instance.publish((IEvent)localObject2);
-          this.COM = new Rect();
-          this.COM.left = ((bf)localObject2).dEp.dEq;
-          this.COM.top = ((bf)localObject2).dEp.dEr;
-          this.COM.right = (((bf)localObject2).dEp.dEs + this.COM.left);
-          this.COM.bottom = (((bf)localObject2).dEp.dEt + this.COM.top);
+          this.IUo = new Rect();
+          this.IUo.left = ((bk)localObject2).fxd.fxe;
+          this.IUo.top = ((bk)localObject2).fxd.fxf;
+          this.IUo.right = (((bk)localObject2).fxd.fxg + this.IUo.left);
+          this.IUo.bottom = (((bk)localObject2).fxd.fxh + this.IUo.top);
         }
         AppMethodBeat.o(120939);
         return;
-        this.COJ.bitmap = this.CMJ;
-        this.COJ.notifyDataSetChanged();
+        this.IUl.bitmap = this.ISj;
+        this.IUl.notifyDataSetChanged();
       }
     }
     Log.e("MicroMsg.TranslationResultUI", "translation result not found!");
@@ -330,7 +338,7 @@ public class TranslationResultUI
   {
     AppMethodBeat.i(120944);
     super.onDestroy();
-    this.CMJ = null;
+    this.ISj = null;
     AppMethodBeat.o(120944);
   }
   
@@ -398,12 +406,12 @@ public class TranslationResultUI
       {
         TranslationResultUI.a(TranslationResultUI.this, new MultiTouchImageView(TranslationResultUI.this, 0, 0, (byte)0));
         TranslationResultUI.i(TranslationResultUI.this).setLayoutParams(new Gallery.LayoutParams(-1, -1));
-        TranslationResultUI.i(TranslationResultUI.this).gKy();
+        TranslationResultUI.i(TranslationResultUI.this).hJx();
       }
       if (this.bitmap != null)
       {
         TranslationResultUI.i(TranslationResultUI.this).setImageBitmap(this.bitmap);
-        TranslationResultUI.i(TranslationResultUI.this).cN(this.bitmap.getWidth(), this.bitmap.getHeight());
+        TranslationResultUI.i(TranslationResultUI.this).di(this.bitmap.getWidth(), this.bitmap.getHeight());
       }
       paramView = TranslationResultUI.i(TranslationResultUI.this);
       AppMethodBeat.o(120937);
@@ -413,7 +421,7 @@ public class TranslationResultUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.TranslationResultUI
  * JD-Core Version:    0.7.0.1
  */

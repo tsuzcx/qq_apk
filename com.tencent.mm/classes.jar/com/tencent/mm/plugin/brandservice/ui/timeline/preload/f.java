@@ -19,19 +19,19 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"bundleToString", "", "bundle", "Landroid/os/Bundle;", "findProcess", "", "context", "Landroid/content/Context;", "predicate", "Lkotlin/Function1;", "Landroid/app/ActivityManager$RunningAppProcessInfo;", "getNetWorkType", "isExpire", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "key", "duration", "", "isNullOrEmpty", "", "putNow", "", "toDebugString", "Landroid/content/Intent;", "toInt", "", "plugin-brandservice_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"bundleToString", "", "bundle", "Landroid/os/Bundle;", "findProcess", "", "context", "Landroid/content/Context;", "predicate", "Lkotlin/Function1;", "Landroid/app/ActivityManager$RunningAppProcessInfo;", "getNetWorkType", "isExpire", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "key", "duration", "", "isNullOrEmpty", "", "putNow", "", "toDebugString", "Landroid/content/Intent;", "toInt", "", "plugin-brandservice_release"})
 public final class f
 {
-  private static final String W(Bundle paramBundle)
+  private static final String Y(Bundle paramBundle)
   {
     AppMethodBeat.i(6581);
     StringBuilder localStringBuilder = new StringBuilder("Bundle[");
     if (paramBundle == null)
     {
-      p.g(localStringBuilder.append("null"), "out.append(\"null\")");
+      p.j(localStringBuilder.append("null"), "out.append(\"null\")");
       localStringBuilder.append("]");
       paramBundle = localStringBuilder.toString();
-      p.g(paramBundle, "out.toString()");
+      p.j(paramBundle, "out.toString()");
       AppMethodBeat.o(6581);
       return paramBundle;
     }
@@ -54,7 +54,7 @@ public final class f
         if ((localObject instanceof Object[])) {
           localStringBuilder.append(Arrays.toString((Object[])localObject));
         } else if ((localObject instanceof Bundle)) {
-          localStringBuilder.append(W((Bundle)localObject));
+          localStringBuilder.append(Y((Bundle)localObject));
         }
       }
       catch (Exception paramBundle)
@@ -70,18 +70,18 @@ public final class f
   public static final boolean a(MultiProcessMMKV paramMultiProcessMMKV, String paramString, long paramLong)
   {
     AppMethodBeat.i(6577);
-    p.h(paramMultiProcessMMKV, "$this$isExpire");
-    p.h(paramString, "key");
+    p.k(paramMultiProcessMMKV, "$this$isExpire");
+    p.k(paramString, "key");
     boolean bool = MMSlotKt.isExpire(paramMultiProcessMMKV.getLong(paramString, 0L), paramLong);
     AppMethodBeat.o(6577);
     return bool;
   }
   
-  public static final String ag(Intent paramIntent)
+  public static final String ae(Intent paramIntent)
   {
     AppMethodBeat.i(6580);
-    p.h(paramIntent, "$this$toDebugString");
-    paramIntent = paramIntent.toString() + " " + W(paramIntent.getExtras());
+    p.k(paramIntent, "$this$toDebugString");
+    paramIntent = paramIntent.toString() + " " + Y(paramIntent.getExtras());
     AppMethodBeat.o(6580);
     return paramIntent;
   }
@@ -89,8 +89,8 @@ public final class f
   public static final void b(MultiProcessMMKV paramMultiProcessMMKV, String paramString)
   {
     AppMethodBeat.i(6576);
-    p.h(paramMultiProcessMMKV, "$this$putNow");
-    p.h(paramString, "key");
+    p.k(paramMultiProcessMMKV, "$this$putNow");
+    p.k(paramString, "key");
     paramMultiProcessMMKV.putLong(paramString, MMSlotKt.now());
     AppMethodBeat.o(6576);
   }
@@ -98,8 +98,8 @@ public final class f
   public static final boolean c(Context paramContext, b<? super ActivityManager.RunningAppProcessInfo, Boolean> paramb)
   {
     AppMethodBeat.i(6578);
-    p.h(paramContext, "context");
-    p.h(paramb, "predicate");
+    p.k(paramContext, "context");
+    p.k(paramb, "predicate");
     paramContext = paramContext.getSystemService("activity");
     if (paramContext == null)
     {
@@ -111,7 +111,7 @@ public final class f
     while (paramContext.hasNext())
     {
       ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-      p.g(localRunningAppProcessInfo, "info");
+      p.j(localRunningAppProcessInfo, "info");
       if (((Boolean)paramb.invoke(localRunningAppProcessInfo)).booleanValue())
       {
         AppMethodBeat.o(6578);

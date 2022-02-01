@@ -2,35 +2,35 @@ package com.tencent.pb.talkroom.sdk;
 
 public abstract interface e
 {
-  public abstract boolean H(int paramInt, String paramString1, String paramString2);
+  public abstract boolean K(int paramInt, String paramString1, String paramString2);
   
   public abstract int a(int paramInt1, int paramInt2, b paramb);
   
   public abstract int a(int paramInt1, int paramInt2, c paramc);
   
-  public abstract int aon();
+  public abstract int aus();
   
   public abstract boolean d(int paramInt1, int paramInt2, byte[] paramArrayOfByte);
   
-  public abstract boolean emM();
+  public abstract boolean eWB();
   
-  public abstract int emN();
+  public abstract int eWC();
   
-  public abstract int emO();
+  public abstract int eWD();
   
-  public abstract boolean emP();
+  public abstract boolean eWE();
   
-  public abstract boolean emQ();
+  public abstract boolean eWF();
   
-  public abstract int emR();
+  public abstract int eWG();
   
-  public abstract int emS();
+  public abstract int eWH();
   
-  public abstract int emT();
+  public abstract int eWI();
   
-  public abstract int emU();
+  public abstract int eWJ();
   
-  public abstract boolean rB(boolean paramBoolean);
+  public abstract boolean uE(boolean paramBoolean);
 }
 
 

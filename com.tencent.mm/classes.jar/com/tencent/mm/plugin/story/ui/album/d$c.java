@@ -9,7 +9,7 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class d$c
   implements View.OnClickListener
 {
@@ -19,12 +19,12 @@ final class d$c
   {
     AppMethodBeat.i(119824);
     Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-    a.b("com/tencent/mm/plugin/story/ui/album/StoryAlbumItemAdapter$onCreateViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-    p.g(paramView, "view");
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
+    a.c("com/tencent/mm/plugin/story/ui/album/StoryAlbumItemAdapter$onCreateViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+    p.j(paramView, "view");
     if ((paramView.getTag() != null) && ((paramView.getTag() instanceof h)))
     {
-      localObject = this.FyU.FyG;
+      localObject = this.LSW.LSI;
       if (localObject != null)
       {
         paramView = paramView.getTag();

@@ -1,7 +1,7 @@
 package com.tencent.mm.sdk.storage;
 
 import android.os.Looper;
-import com.tencent.f.j.a;
+import com.tencent.e.j.a;
 
 public abstract interface IStorageEx
 {
@@ -17,7 +17,7 @@ public abstract interface IStorageEx
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.storage.IStorageEx
  * JD-Core Version:    0.7.0.1
  */

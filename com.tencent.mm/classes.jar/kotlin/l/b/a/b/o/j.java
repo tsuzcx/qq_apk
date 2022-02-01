@@ -5,53 +5,53 @@ import kotlin.g.b.p;
 
 public final class j
 {
-  public static volatile boolean TSh;
-  private static final Object TbD;
+  private static final Object aaEx;
+  public static volatile boolean abuG;
   
   static
   {
     AppMethodBeat.i(61411);
-    TbD = new Object()
+    aaEx = new Object()
     {
       public final String toString()
       {
         return "NULL_VALUE";
       }
     };
-    TSh = false;
+    abuG = false;
     AppMethodBeat.o(61411);
   }
   
-  public static <V> Object fH(V paramV)
+  public static <V> Object fN(V paramV)
   {
     AppMethodBeat.i(61407);
     if (paramV == null)
     {
-      paramV = TbD;
+      paramV = aaEx;
       if (paramV == null) {
-        atM(1);
+        aDG(1);
       }
       AppMethodBeat.o(61407);
       return paramV;
     }
     if (paramV == null) {
-      atM(2);
+      aDG(2);
     }
     AppMethodBeat.o(61407);
     return paramV;
   }
   
-  public static <V> V fI(Object paramObject)
+  public static <V> V fO(Object paramObject)
   {
     AppMethodBeat.i(61409);
     if (paramObject == null) {
-      atM(4);
+      aDG(4);
     }
-    paramObject = fJ(paramObject);
+    paramObject = fP(paramObject);
     if (paramObject == null) {
-      atM(0);
+      aDG(0);
     }
-    if (paramObject == TbD)
+    if (paramObject == aaEx)
     {
       AppMethodBeat.o(61409);
       return null;
@@ -60,19 +60,19 @@ public final class j
     return paramObject;
   }
   
-  public static <V> V fJ(Object paramObject)
+  public static <V> V fP(Object paramObject)
   {
     AppMethodBeat.i(61410);
     if ((paramObject instanceof a))
     {
       paramObject = ((a)paramObject).getThrowable();
-      if ((TSh) && (c.u(paramObject)))
+      if ((abuG) && (c.u(paramObject)))
       {
         paramObject = new b(paramObject);
         AppMethodBeat.o(61410);
         throw paramObject;
       }
-      p.h(paramObject, "e");
+      p.k(paramObject, "e");
       AppMethodBeat.o(61410);
       throw paramObject;
     }
@@ -104,7 +104,7 @@ public final class j
       AppMethodBeat.i(61404);
       Throwable localThrowable = this.throwable;
       if (localThrowable == null) {
-        atM(1);
+        aDG(1);
       }
       AppMethodBeat.o(61404);
       return localThrowable;
@@ -130,7 +130,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.o.j
  * JD-Core Version:    0.7.0.1
  */

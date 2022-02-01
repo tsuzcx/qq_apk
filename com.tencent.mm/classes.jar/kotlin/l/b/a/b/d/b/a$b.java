@@ -8,12 +8,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   {
     AppMethodBeat.i(58144);
     b localb1 = new b("PROPERTY", 0);
-    TuY = localb1;
+    aaXS = localb1;
     b localb2 = new b("BACKING_FIELD", 1);
-    TuZ = localb2;
+    aaXT = localb2;
     b localb3 = new b("DELEGATE_FIELD", 2);
-    Tva = localb3;
-    Tvb = new b[] { localb1, localb2, localb3 };
+    aaXU = localb3;
+    aaXV = new b[] { localb1, localb2, localb3 };
     AppMethodBeat.o(58144);
   }
   

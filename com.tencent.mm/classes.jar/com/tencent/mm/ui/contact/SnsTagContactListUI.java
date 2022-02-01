@@ -17,14 +17,21 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.f.c.ax;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.plugin.sns.b.i;
-import com.tencent.mm.plugin.sns.b.o;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.plugin.sns.b.j;
+import com.tencent.mm.plugin.sns.b.m;
+import com.tencent.mm.plugin.sns.b.p;
 import com.tencent.mm.pluginsdk.ui.a.b;
+import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
@@ -42,28 +49,28 @@ import org.xmlpull.v1.XmlPullParserException;
 public class SnsTagContactListUI
   extends MMActivity
 {
-  private a PZS;
-  private List<Long> PZT;
-  private ListView yCT;
+  private ListView Een;
+  private a XwP;
+  private List<Long> XwQ;
   
   public SnsTagContactListUI()
   {
     AppMethodBeat.i(38084);
-    this.PZT = new ArrayList();
+    this.XwQ = new ArrayList();
     AppMethodBeat.o(38084);
   }
   
   public int getLayoutId()
   {
-    return 2131492980;
+    return R.i.address;
   }
   
   public void initView()
   {
     AppMethodBeat.i(38086);
-    setMMTitle(2131766254);
-    findViewById(2131303716).setVisibility(8);
-    this.yCT = ((ListView)findViewById(2131296545));
+    setMMTitle(R.l.sns_tag_see);
+    findViewById(R.h.loading_tips_area).setVisibility(8);
+    this.Een = ((ListView)findViewById(R.h.address_contactlist));
     long[] arrayOfLong = getIntent().getLongArrayExtra("sns_tag_list");
     if (arrayOfLong == null)
     {
@@ -74,30 +81,30 @@ public class SnsTagContactListUI
     int i = 0;
     while (i < arrayOfLong.length)
     {
-      this.PZT.add(Long.valueOf(arrayOfLong[i]));
+      this.XwQ.add(Long.valueOf(arrayOfLong[i]));
       i += 1;
     }
-    ((TextView)findViewById(2131300081)).setVisibility(8);
-    findViewById(2131296563).setVisibility(8);
-    this.yCT.setBackgroundColor(getResources().getColor(2131101424));
-    ((View)this.yCT.getParent()).setBackgroundColor(getResources().getColor(2131101424));
-    this.PZS = new a(this, this.PZT);
-    this.yCT.setAdapter(this.PZS);
-    this.yCT.setVisibility(0);
-    this.yCT.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    ((TextView)findViewById(R.h.dFv)).setVisibility(8);
+    findViewById(R.h.dqz).setVisibility(8);
+    this.Een.setBackgroundColor(getResources().getColor(R.e.white));
+    ((View)this.Een.getParent()).setBackgroundColor(getResources().getColor(R.e.white));
+    this.XwP = new a(this, this.XwQ);
+    this.Een.setAdapter(this.XwP);
+    this.Een.setVisibility(0);
+    this.Een.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(38077);
         Object localObject = new b();
-        ((b)localObject).bm(paramAnonymousAdapterView);
-        ((b)localObject).bm(paramAnonymousView);
-        ((b)localObject).pH(paramAnonymousInt);
-        ((b)localObject).zo(paramAnonymousLong);
-        a.b("com/tencent/mm/ui/contact/SnsTagContactListUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((b)localObject).axR());
+        ((b)localObject).bn(paramAnonymousAdapterView);
+        ((b)localObject).bn(paramAnonymousView);
+        ((b)localObject).sg(paramAnonymousInt);
+        ((b)localObject).Fs(paramAnonymousLong);
+        a.c("com/tencent/mm/ui/contact/SnsTagContactListUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((b)localObject).aFi());
         paramAnonymousAdapterView = new Intent();
-        paramAnonymousView = (com.tencent.mm.contact.c)SnsTagContactListUI.a(SnsTagContactListUI.this).getItem(paramAnonymousInt);
-        localObject = o.DCR;
+        paramAnonymousView = (d)SnsTagContactListUI.a(SnsTagContactListUI.this).getItem(paramAnonymousInt);
+        localObject = p.JPh;
         if (localObject == null)
         {
           SnsTagContactListUI.this.finish();
@@ -105,7 +112,7 @@ public class SnsTagContactListUI
           AppMethodBeat.o(38077);
           return;
         }
-        paramAnonymousAdapterView = ((i)localObject).g(paramAnonymousAdapterView, paramAnonymousView.field_username);
+        paramAnonymousAdapterView = ((j)localObject).f(paramAnonymousAdapterView, paramAnonymousView.field_username);
         if (paramAnonymousAdapterView == null)
         {
           SnsTagContactListUI.this.finish();
@@ -114,7 +121,7 @@ public class SnsTagContactListUI
           return;
         }
         paramAnonymousAdapterView.putExtra("sns_adapter_type", 1);
-        com.tencent.mm.br.c.b(SnsTagContactListUI.this.getContext(), "sns", ".ui.SnsTimeLineUserPagerUI", paramAnonymousAdapterView);
+        com.tencent.mm.by.c.b(SnsTagContactListUI.this.getContext(), "sns", ".ui.SnsTimeLineUserPagerUI", paramAnonymousAdapterView);
         a.a(this, "com/tencent/mm/ui/contact/SnsTagContactListUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(38077);
       }
@@ -152,8 +159,8 @@ public class SnsTagContactListUI
   {
     AppMethodBeat.i(38087);
     super.onResume();
-    if (this.PZS != null) {
-      this.PZS.notifyDataSetChanged();
+    if (this.XwP != null) {
+      this.XwP.notifyDataSetChanged();
     }
     AppMethodBeat.o(38087);
   }
@@ -167,36 +174,36 @@ public class SnsTagContactListUI
   static final class a
     extends BaseAdapter
   {
-    private bv EBg;
-    private ColorStateList Fxn;
-    private ColorStateList Fxo;
-    private Map<Integer, com.tencent.mm.contact.c> PZQ;
-    private Map<Integer, String> PZV;
+    private bv KOY;
+    private ColorStateList LRp;
+    private ColorStateList LRq;
+    private Map<Integer, d> XwN;
+    private Map<Integer, String> XwS;
     private Context context;
     
     public a(Context paramContext, List<Long> paramList)
     {
       AppMethodBeat.i(38079);
       this.context = null;
-      this.PZQ = new HashMap();
-      this.PZV = new HashMap();
-      this.EBg = null;
+      this.XwN = new HashMap();
+      this.XwS = new HashMap();
+      this.KOY = null;
       this.context = paramContext;
-      this.PZQ.clear();
-      this.PZV.clear();
-      bg.aVF();
-      this.EBg = com.tencent.mm.model.c.aSN();
+      this.XwN.clear();
+      this.XwS.clear();
+      bh.beI();
+      this.KOY = com.tencent.mm.model.c.bbL();
       paramList = paramList.iterator();
       Object localObject;
       int j;
       for (int i = 0; paramList.hasNext(); i = j)
       {
         long l = ((Long)paramList.next()).longValue();
-        localObject = o.DCP;
+        localObject = p.JPf;
         j = i;
         if (localObject != null)
         {
-          Iterator localIterator = ((com.tencent.mm.plugin.sns.b.l)localObject).IZ(l).iterator();
+          Iterator localIterator = ((m)localObject).Qs(l).iterator();
           for (;;)
           {
             j = i;
@@ -204,20 +211,20 @@ public class SnsTagContactListUI
               break;
             }
             String str = (String)localIterator.next();
-            com.tencent.mm.contact.c localc = new com.tencent.mm.contact.c();
-            localc.setUsername(str);
-            this.PZV.put(Integer.valueOf(this.PZQ.size()), ((com.tencent.mm.plugin.sns.b.l)localObject).Ja(l));
-            this.PZQ.put(Integer.valueOf(i), localc);
+            d locald = new d();
+            locald.setUsername(str);
+            this.XwS.put(Integer.valueOf(this.XwN.size()), ((m)localObject).Qt(l));
+            this.XwN.put(Integer.valueOf(i), locald);
             i += 1;
           }
         }
       }
       try
       {
-        paramList = paramContext.getResources().getXml(2131100808);
-        localObject = paramContext.getResources().getXml(2131100809);
-        this.Fxn = ColorStateList.createFromXml(paramContext.getResources(), paramList);
-        this.Fxo = ColorStateList.createFromXml(paramContext.getResources(), (XmlPullParser)localObject);
+        paramList = paramContext.getResources().getXml(R.e.mm_list_textcolor_one);
+        localObject = paramContext.getResources().getXml(R.e.mm_list_textcolor_spuser);
+        this.LRp = ColorStateList.createFromXml(paramContext.getResources(), paramList);
+        this.LRq = ColorStateList.createFromXml(paramContext.getResources(), (XmlPullParser)localObject);
         AppMethodBeat.o(38079);
         return;
       }
@@ -234,15 +241,15 @@ public class SnsTagContactListUI
       }
     }
     
-    private String anL(int paramInt)
+    private String awQ(int paramInt)
     {
       AppMethodBeat.i(38083);
-      if (!this.PZV.containsKey(Integer.valueOf(paramInt)))
+      if (!this.XwS.containsKey(Integer.valueOf(paramInt)))
       {
         AppMethodBeat.o(38083);
         return "";
       }
-      String str = (String)this.PZV.get(Integer.valueOf(paramInt));
+      String str = (String)this.XwS.get(Integer.valueOf(paramInt));
       AppMethodBeat.o(38083);
       return str;
     }
@@ -250,7 +257,7 @@ public class SnsTagContactListUI
     public final int getCount()
     {
       AppMethodBeat.i(38080);
-      int i = this.PZQ.size();
+      int i = this.XwN.size();
       AppMethodBeat.o(38080);
       return i;
     }
@@ -263,15 +270,15 @@ public class SnsTagContactListUI
         AppMethodBeat.o(38081);
         return null;
       }
-      com.tencent.mm.contact.c localc = (com.tencent.mm.contact.c)this.PZQ.get(Integer.valueOf(paramInt));
-      Object localObject = localc;
-      if (localc.field_showHead == 0)
+      d locald = (d)this.XwN.get(Integer.valueOf(paramInt));
+      Object localObject = locald;
+      if (locald.field_showHead == 0)
       {
-        as localas = this.EBg.Kn(localc.field_username);
-        localObject = localc;
+        as localas = this.KOY.RG(locald.field_username);
+        localObject = locald;
         if (localas != null)
         {
-          this.PZQ.put(Integer.valueOf(paramInt), localas);
+          this.XwN.put(Integer.valueOf(paramInt), localas);
           localObject = localas;
         }
       }
@@ -287,76 +294,76 @@ public class SnsTagContactListUI
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(38082);
-      label103:
-      com.tencent.mm.contact.c localc;
-      label148:
+      label108:
+      d locald;
+      label153:
       TextView localTextView;
       if (paramView == null)
       {
-        paramView = View.inflate(this.context, 2131493774, null);
+        paramView = View.inflate(this.context, R.i.efr, null);
         paramViewGroup = new SnsTagContactListUI.b((byte)0);
-        paramViewGroup.yuS = ((TextView)paramView.findViewById(2131299162));
-        paramViewGroup.gAN = ((MaskLayout)paramView.findViewById(2131299159));
-        paramViewGroup.gwR = ((TextView)paramView.findViewById(2131299167));
-        paramViewGroup.Fxp = ((TextView)paramView.findViewById(2131299157));
+        paramViewGroup.DUW = ((TextView)paramView.findViewById(R.h.dCx));
+        paramViewGroup.jkT = ((MaskLayout)paramView.findViewById(R.h.dCv));
+        paramViewGroup.jbe = ((TextView)paramView.findViewById(R.h.dCB));
+        paramViewGroup.LRr = ((TextView)paramView.findViewById(R.h.dCt));
         paramView.setTag(paramViewGroup);
-        if ((com.tencent.mm.contact.c)getItem(paramInt - 1) != null) {
-          break label265;
+        if ((d)getItem(paramInt - 1) != null) {
+          break label270;
         }
         localObject = "";
-        localc = (com.tencent.mm.contact.c)getItem(paramInt);
+        locald = (d)getItem(paramInt);
         if (paramInt != 0) {
-          break label277;
+          break label282;
         }
-        paramViewGroup.yuS.setVisibility(0);
-        paramViewGroup.yuS.setText(anL(paramInt));
-        paramViewGroup.yuS.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-        localTextView = paramViewGroup.gwR;
-        if (ab.JE(localc.field_username)) {
-          break label340;
+        paramViewGroup.DUW.setVisibility(0);
+        paramViewGroup.DUW.setText(awQ(paramInt));
+        paramViewGroup.DUW.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+        localTextView = paramViewGroup.jbe;
+        if (ab.QX(locald.field_username)) {
+          break label345;
         }
       }
-      label265:
-      label277:
-      label340:
-      for (Object localObject = this.Fxn;; localObject = this.Fxo)
+      label270:
+      label282:
+      label345:
+      for (Object localObject = this.LRp;; localObject = this.LRq)
       {
         localTextView.setTextColor((ColorStateList)localObject);
-        a.b.A((ImageView)paramViewGroup.gAN.getContentView(), localc.field_username);
-        paramViewGroup.Fxp.setVisibility(8);
-        paramViewGroup.gAN.setVisibility(0);
-        paramViewGroup.gwR.setText(com.tencent.mm.pluginsdk.ui.span.l.b(this.context, localc.arJ(), paramViewGroup.gwR.getTextSize()));
-        paramViewGroup.gwR.setVisibility(0);
+        a.b.C((ImageView)paramViewGroup.jkT.getContentView(), locald.field_username);
+        paramViewGroup.LRr.setVisibility(8);
+        paramViewGroup.jkT.setVisibility(0);
+        paramViewGroup.jbe.setText(l.b(this.context, locald.ays(), paramViewGroup.jbe.getTextSize()));
+        paramViewGroup.jbe.setVisibility(0);
         AppMethodBeat.o(38082);
         return paramView;
         paramViewGroup = (SnsTagContactListUI.b)paramView.getTag();
         break;
-        localObject = anL(paramInt - 1);
-        break label103;
-        if ((paramInt > 0) && (!anL(paramInt).equals(localObject)))
+        localObject = awQ(paramInt - 1);
+        break label108;
+        if ((paramInt > 0) && (!awQ(paramInt).equals(localObject)))
         {
-          paramViewGroup.yuS.setVisibility(0);
-          paramViewGroup.yuS.setText(anL(paramInt));
-          paramViewGroup.yuS.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-          break label148;
+          paramViewGroup.DUW.setVisibility(0);
+          paramViewGroup.DUW.setText(awQ(paramInt));
+          paramViewGroup.DUW.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+          break label153;
         }
-        paramViewGroup.yuS.setVisibility(8);
-        break label148;
+        paramViewGroup.DUW.setVisibility(8);
+        break label153;
       }
     }
   }
   
   static final class b
   {
-    TextView Fxp;
-    MaskLayout gAN;
-    TextView gwR;
-    TextView yuS;
+    TextView DUW;
+    TextView LRr;
+    TextView jbe;
+    MaskLayout jkT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.SnsTagContactListUI
  * JD-Core Version:    0.7.0.1
  */

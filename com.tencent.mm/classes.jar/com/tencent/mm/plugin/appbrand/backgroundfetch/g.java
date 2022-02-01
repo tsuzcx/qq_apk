@@ -8,21 +8,21 @@ import com.tencent.mm.sdk.storage.MAutoStorage;
 public class g
   extends MAutoStorage<f>
 {
-  public static final String[] iBh;
+  public static final String[] lqL;
   
   static
   {
     AppMethodBeat.i(44743);
-    iBh = new String[] { MAutoStorage.getCreateSQLs(f.iBg, "AppBrandBackgroundFetchDataToken") };
+    lqL = new String[] { MAutoStorage.getCreateSQLs(f.lqK, "AppBrandBackgroundFetchDataToken") };
     AppMethodBeat.o(44743);
   }
   
   public g(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, f.iBg, "AppBrandBackgroundFetchDataToken", null);
+    super(paramISQLiteDatabase, f.lqK, "AppBrandBackgroundFetchDataToken", null);
   }
   
-  public final AppBrandBackgroundFetchDataTokenParcel Wy(String paramString)
+  public final AppBrandBackgroundFetchDataTokenParcel aek(String paramString)
   {
     AppMethodBeat.i(44741);
     if (Util.isNullOrNil(paramString))
@@ -44,7 +44,7 @@ public class g
     return null;
   }
   
-  public final boolean cN(String paramString1, String paramString2)
+  public final boolean cW(String paramString1, String paramString2)
   {
     AppMethodBeat.i(44740);
     if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
@@ -72,7 +72,7 @@ public class g
     return bool;
   }
   
-  public final boolean gC(String paramString)
+  public final boolean ho(String paramString)
   {
     AppMethodBeat.i(44742);
     if (Util.isNullOrNil(paramString))
@@ -89,7 +89,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundfetch.g
  * JD-Core Version:    0.7.0.1
  */

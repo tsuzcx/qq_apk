@@ -11,23 +11,23 @@ import org.json.JSONObject;
 public final class a
   extends m
 {
-  private Map<String, String> AJV;
-  public boolean JPE;
-  public String dSf;
-  public boolean efW;
+  private Map<String, String> ECl;
+  public boolean QNW;
+  public String fLC;
+  public boolean gam;
   public String token;
   
   public a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(72296);
-    this.efW = true;
-    this.JPE = false;
-    this.AJV = new HashMap();
-    this.AJV.put("session_key", paramString3);
-    this.AJV.put("bank_type", paramString4);
-    this.AJV.put("name", paramString1);
-    this.AJV.put("cre_id", paramString2);
-    setRequestData(this.AJV);
+    this.gam = true;
+    this.QNW = false;
+    this.ECl = new HashMap();
+    this.ECl.put("session_key", paramString3);
+    this.ECl.put("bank_type", paramString4);
+    this.ECl.put("name", paramString1);
+    this.ECl.put("cre_id", paramString2);
+    setRequestData(this.ECl);
     AppMethodBeat.o(72296);
   }
   
@@ -48,9 +48,9 @@ public final class a
     try
     {
       this.token = paramJSONObject.optString("session_key");
-      this.efW = "1".equals(paramJSONObject.getString("need_bind"));
-      this.JPE = "1".equals(paramJSONObject.getString("bank_user"));
-      this.dSf = paramJSONObject.optString("mobile_no");
+      this.gam = "1".equals(paramJSONObject.getString("need_bind"));
+      this.QNW = "1".equals(paramJSONObject.getString("bank_user"));
+      this.fLC = paramJSONObject.optString("mobile_no");
       AppMethodBeat.o(72298);
       return;
     }
@@ -65,8 +65,8 @@ public final class a
   {
     AppMethodBeat.i(72297);
     super.resend();
-    this.AJV.put("retry", "1");
-    setRequestData(this.AJV);
+    this.ECl.put("retry", "1");
+    setRequestData(this.ECl);
     AppMethodBeat.o(72297);
     return true;
   }

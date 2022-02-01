@@ -1,59 +1,39 @@
 package com.tencent.mm.plugin.appbrand.u.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.g;
-import com.tencent.mm.ab.i;
-import com.tencent.mm.plugin.appbrand.u.a.b;
+import com.tencent.mm.ad.i;
+import com.tencent.mm.plugin.appbrand.s.j;
 import com.tencent.mm.plugin.appbrand.u.a.c;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.plugin.appbrand.u.a.d;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class f
-  extends b
+  extends d
 {
-  public final void a(i parami, c paramc)
+  public final String b(i parami, c paramc)
   {
-    AppMethodBeat.i(147397);
-    for (;;)
+    AppMethodBeat.i(147394);
+    parami = (String)j.akW(parami.optString("url")).get("host");
+    HashMap localHashMap = new HashMap();
+    if (j.akY(parami) == 2) {}
+    for (boolean bool = true;; bool = false)
     {
-      try
-      {
-        int i = parami.getInt("level");
-        parami = parami.optString("message");
-        switch (i)
-        {
-        case 2: 
-          Log.d("MicroMsg.NodeJs", parami);
-          AppMethodBeat.o(147397);
-          return;
-        }
-      }
-      catch (g parami)
-      {
-        Log.e("MicroMsg.NodeToXLog", "execute exception : %s", new Object[] { parami });
-        paramc.bPU();
-        AppMethodBeat.o(147397);
-        return;
-      }
-      Log.i("MicroMsg.NodeJs", parami);
-      AppMethodBeat.o(147397);
-      return;
-      Log.w("MicroMsg.NodeJs", parami);
-      AppMethodBeat.o(147397);
-      return;
-      Log.e("MicroMsg.NodeJs", parami);
-      AppMethodBeat.o(147397);
-      return;
+      localHashMap.put("isLANIp", Boolean.valueOf(bool));
+      parami = paramc.R(localHashMap);
+      AppMethodBeat.o(147394);
+      return parami;
     }
   }
   
-  public final int bPT()
+  public final int ccB()
   {
-    return 4;
+    return 6;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.u.c.f
  * JD-Core Version:    0.7.0.1
  */

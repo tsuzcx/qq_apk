@@ -2,44 +2,37 @@ package com.tencent.mm.pluginsdk.ui.tools;
 
 import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.multitask.b.a;
-import com.tencent.mm.plugin.multitask.b.c;
-import com.tencent.mm.plugin.multitask.g;
-import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
-import com.tencent.mm.protocal.protobuf.ach;
-import com.tencent.mm.protocal.protobuf.aoe;
+import com.tencent.mm.plugin.ball.f.d;
+import com.tencent.mm.plugin.ball.model.BallInfo;
+import com.tencent.mm.plugin.ball.service.FloatBallHelper;
+import com.tencent.mm.plugin.ball.ui.FloatBallProxyUI;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.PlaySound;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.sdk.platformtools.Util;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public final class h
-  extends c
+  extends FloatBallHelper
 {
-  private static h Kvk;
-  public boolean CB = false;
-  String mFileName = "";
-  public String mFilePath = "";
-  String nhr = "";
-  public int qpr = 0;
+  private static h Rww;
+  private String mFileName = "";
+  private String mFilePath = "";
+  private String qia = "";
+  public int tOb = 0;
   
   static
   {
-    AppMethodBeat.i(204781);
-    Kvk = new h();
-    AppMethodBeat.o(204781);
+    AppMethodBeat.i(109560);
+    Rww = new h();
+    AppMethodBeat.o(109560);
   }
   
-  public h()
+  private static String bkf(String paramString)
   {
-    super((byte)0);
-  }
-  
-  private static String aYk(String paramString)
-  {
-    AppMethodBeat.i(204780);
+    AppMethodBeat.i(109557);
     try
     {
       int j = paramString.lastIndexOf('/') + 1;
@@ -53,114 +46,37 @@ public final class h
     {
       for (;;)
       {
-        Log.e("MicroMsg.FilesFloatBall.FilesMultiTaskHelper", "get file name error " + paramString.getMessage());
+        Log.e("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "get file name error " + paramString.getMessage());
         paramString = " ";
         continue;
         int i = 0;
       }
     }
     paramString = paramString.substring(i, paramString.length());
-    AppMethodBeat.o(204780);
+    AppMethodBeat.o(109557);
     return paramString;
   }
   
-  public static String akC(String paramString)
+  public static h hny()
   {
-    AppMethodBeat.i(204779);
-    paramString = s.akC(aYk(paramString));
-    AppMethodBeat.o(204779);
-    return paramString;
+    return Rww;
   }
   
-  private void gsu()
+  public final void D(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(204777);
-    this.Abp.erh().gCr = this.nhr;
-    this.Abp.erh().title = this.mFileName;
-    eqX();
-    AppMethodBeat.o(204777);
-  }
-  
-  public static h gsv()
-  {
-    return Kvk;
-  }
-  
-  public final void I(String paramString1, String paramString2, int paramInt)
-  {
-    AppMethodBeat.i(204775);
-    b(paramString1, paramString2, "", paramInt, this.Abq);
-    AppMethodBeat.o(204775);
-  }
-  
-  public final boolean O(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(204778);
-    paramBoolean = super.O(paramInt, this.CB);
-    AppMethodBeat.o(204778);
-    return paramBoolean;
-  }
-  
-  public final void b(String paramString1, String paramString2, String paramString3, int paramInt, ach paramach)
-  {
-    AppMethodBeat.i(204776);
-    Log.i("MicroMsg.FilesFloatBall.FilesMultiTaskHelper", "onCreate, filePath:%s fileExt:%s fileName:%s sence:%s", new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(paramInt) });
-    super.G(4, g.aGI(paramString1));
-    this.mFilePath = paramString1;
-    this.nhr = paramString2;
-    this.mFileName = paramString3;
-    if (TextUtils.isEmpty(this.mFileName)) {
-      this.mFileName = aYk(paramString1);
-    }
-    this.CB = false;
-    this.qpr = paramInt;
-    a(paramach);
-    paramString3 = new aoe();
-    paramString3.LzL = false;
-    paramString3.filePath = paramString1;
-    paramString3.gCr = paramString2;
-    paramString3.LzM = s.boW(paramString1);
-    paramString3.qoX = paramInt;
-    try
-    {
-      this.Abp.field_data = paramString3.toByteArray();
-      eqX();
-      gsu();
-      AppMethodBeat.o(204776);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      for (;;)
-      {
-        Log.printErrStackTrace("MicroMsg.FilesFloatBall.FilesMultiTaskHelper", paramString1, "", new Object[0]);
-      }
-    }
-  }
-  
-  public final boolean bPp()
-  {
-    return false;
-  }
-  
-  public final boolean bPq()
-  {
-    return false;
-  }
-  
-  public final long eqU()
-  {
-    return 1500L;
-  }
-  
-  public final void ib(boolean paramBoolean)
-  {
-    AppMethodBeat.i(204774);
+    AppMethodBeat.i(246689);
     if (paramBoolean)
     {
-      Log.i("MicroMsg.FilesFloatBall.FilesMultiTaskHelper", "onMenuFloatBallSelected, enter float ball");
-      b(null, true);
-      PlaySound.play(MMApplicationContext.getContext(), 2131768604);
+      Log.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "onMenuFloatBallSelected, enter float ball");
+      le(false);
+      if (!cvB())
+      {
+        FloatBallProxyUI.a(MMApplicationContext.getContext(), 1, this.rYE, bOb(), this.rYH);
+        AppMethodBeat.o(246689);
+        return;
+      }
+      cvF();
+      cvb();
       Context localContext = MMApplicationContext.getContext();
       Intent localIntent = new Intent("com.tencent.QQBrowser.action.sdk.document.receiver");
       localIntent.setPackage("com.tencent.mtt");
@@ -168,20 +84,141 @@ public final class h
       try
       {
         localContext.sendBroadcast(localIntent);
-        AppMethodBeat.o(204774);
+        AppMethodBeat.o(246689);
         return;
       }
       catch (Exception localException)
       {
-        Log.e("MicroMsg.FilesFloatBall.FilesMultiTaskHelper", "closeQb() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+        Log.e("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "closeQb() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+        AppMethodBeat.o(246689);
+        return;
       }
     }
-    AppMethodBeat.o(204774);
+    Log.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "onMenuFloatBallSelected, exit float ball");
+    cvE();
+    AppMethodBeat.o(246689);
+  }
+  
+  public final void M(String paramString1, String paramString2, int paramInt)
+  {
+    AppMethodBeat.i(109551);
+    Log.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "onCreate, filePath:%s fileExt:%s fileName:%s sence:%s", new Object[] { paramString1, paramString2, "", Integer.valueOf(paramInt) });
+    super.I(4, com.tencent.mm.plugin.ball.f.b.aoC(paramString1));
+    this.mFilePath = paramString1;
+    this.qia = paramString2;
+    this.mFileName = "";
+    this.tOb = paramInt;
+    cvL().kqZ = 4;
+    cvL().rYx = this.tOb;
+    cvG();
+    if (this.rYE.mab != null)
+    {
+      this.rYE.mab.putBoolean("ifAppAttachDownloadUI", false);
+      this.rYE.mab.putString("filePath", paramString1);
+      this.rYE.mab.putString("fileExt", paramString2);
+      this.rYE.mab.putInt("sence", paramInt);
+      cvG();
+    }
+    paramString2 = d.aoD(this.qia);
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = d.aoD("unknown");
+    }
+    this.rYE.qpN = paramString1.intValue();
+    if (Util.isNullOrNil(this.rYE.name))
+    {
+      if (Util.isNullOrNil(this.mFileName)) {
+        this.mFileName = bkf(this.mFilePath);
+      }
+      this.rYE.name = this.mFileName;
+    }
+    cvG();
+    AppMethodBeat.o(109551);
+  }
+  
+  public final boolean aOg()
+  {
+    return false;
+  }
+  
+  public final boolean aOh()
+  {
+    return true;
+  }
+  
+  public final void aOi()
+  {
+    AppMethodBeat.i(109549);
+    Log.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "onReceivedFinishWhenSwitchBallEvent, filePath:%s", new Object[] { this.mFilePath });
+    super.aOi();
+    AppMethodBeat.o(109549);
+  }
+  
+  public final void bNW()
+  {
+    AppMethodBeat.i(109550);
+    Log.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "onReceivedBallInfoRemovedEvent, filePath:%s", new Object[] { this.mFilePath });
+    super.bNW();
+    Context localContext = MMApplicationContext.getContext();
+    Intent localIntent = new Intent("com.tencent.QQBrowser.action.sdk.document.receiver");
+    localIntent.setPackage("com.tencent.mtt");
+    try
+    {
+      JSONArray localJSONArray = new JSONArray();
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("id", 1);
+      localJSONObject.put("isShow", true);
+      localJSONArray.put(localJSONObject);
+      localJSONObject = new JSONObject();
+      localJSONObject.put("id", 2);
+      localJSONObject.put("isShow", false);
+      localJSONArray.put(localJSONObject);
+      localIntent.putExtra("menuItems", localJSONArray.toString());
+      localContext.sendBroadcast(localIntent);
+      AppMethodBeat.o(109550);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "updateQbFloatBallMenu() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+      AppMethodBeat.o(109550);
+    }
+  }
+  
+  public final boolean bOb()
+  {
+    return true;
+  }
+  
+  public final void hnz()
+  {
+    AppMethodBeat.i(246692);
+    if ((this.rYG != null) && (this.rYE != null) && (this.rYE.aOl == 4))
+    {
+      Log.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "alvinluo checkAndAddMessageBall qbFileViewPage: %b, contentType: %d", new Object[] { Boolean.valueOf(this.rYG.cuY()), Integer.valueOf(this.rYE.aOl) });
+      long l1 = this.rYG.cuZ();
+      long l2 = System.currentTimeMillis();
+      this.rYG.HL(0L);
+      Log.i("MicroMsg.FilesFloatBall.FilesFloatBallHelper", "alvinluo checkAndAddMessageBall enterChatting: %d, now: %d, canAddMessageBall: %b", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Boolean.valueOf(bOb()) });
+      if ((d.M(l1, l2)) && (bOb())) {
+        cvJ();
+      }
+    }
+    AppMethodBeat.o(246692);
+  }
+  
+  public final void lb(boolean paramBoolean)
+  {
+    AppMethodBeat.i(109553);
+    if (this.rYG != null) {
+      this.rYG.lb(paramBoolean);
+    }
+    AppMethodBeat.o(109553);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.h
  * JD-Core Version:    0.7.0.1
  */

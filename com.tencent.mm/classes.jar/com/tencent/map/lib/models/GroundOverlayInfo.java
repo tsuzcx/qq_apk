@@ -1,7 +1,7 @@
 package com.tencent.map.lib.models;
 
 import android.graphics.Bitmap;
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLngBounds;
 import com.tencent.tencentmap.mapsdk.maps.model.OverlayLevel;
@@ -18,6 +18,11 @@ public class GroundOverlayInfo
   protected boolean mVisibility = true;
   protected int mZIndex;
   
+  public boolean checkValid()
+  {
+    return this.mBitmap != null;
+  }
+  
   public void setAlpha(float paramFloat)
   {
     this.mAlpha = paramFloat;
@@ -25,14 +30,14 @@ public class GroundOverlayInfo
   
   public void setBitmap(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(193498);
+    AppMethodBeat.i(235974);
     this.mBitmap = paramBitmap;
     if (this.mBitmap != null)
     {
       this.mBitmapWidth = this.mBitmap.getWidth();
       this.mBitmapHeight = this.mBitmap.getHeight();
     }
-    AppMethodBeat.o(193498);
+    AppMethodBeat.o(235974);
   }
   
   public void setLatLngBounds(LatLngBounds paramLatLngBounds)
@@ -57,7 +62,7 @@ public class GroundOverlayInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.map.lib.models.GroundOverlayInfo
  * JD-Core Version:    0.7.0.1
  */

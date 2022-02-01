@@ -8,34 +8,34 @@ import java.io.IOException;
 final class a
   implements f
 {
-  final long bmy;
-  private final e boR;
-  final long boS;
-  final h boT;
-  long boU;
-  private long boV;
-  private long boW;
-  private long boX;
-  private long boY;
-  private long boZ;
+  final long aWa;
+  private long aYA;
+  private long aYB;
+  private final e aYt;
+  final long aYu;
+  final h aYv;
+  long aYw;
+  private long aYx;
+  private long aYy;
+  private long aYz;
   private long start;
   private int state;
   
   public a(long paramLong1, long paramLong2, h paramh, int paramInt, long paramLong3)
   {
     AppMethodBeat.i(92137);
-    this.boR = new e();
+    this.aYt = new e();
     if ((paramLong1 >= 0L) && (paramLong2 > paramLong1)) {}
     for (boolean bool = true;; bool = false)
     {
       com.google.android.exoplayer2.i.a.checkArgument(bool);
-      this.boT = paramh;
-      this.boS = paramLong1;
-      this.bmy = paramLong2;
+      this.aYv = paramh;
+      this.aYu = paramLong1;
+      this.aWa = paramLong2;
       if (paramInt != paramLong2 - paramLong1) {
         break;
       }
-      this.boU = paramLong3;
+      this.aYw = paramLong3;
       this.state = 3;
       AppMethodBeat.o(92137);
       return;
@@ -47,14 +47,14 @@ final class a
   private long a(com.google.android.exoplayer2.c.f paramf, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(92141);
-    this.boR.c(paramf, false);
-    while (this.boR.bpp < paramLong1)
+    this.aYt.c(paramf, false);
+    while (this.aYt.aYR < paramLong1)
     {
-      paramf.dP(this.boR.bkI + this.boR.bpu);
-      paramLong2 = this.boR.bpp;
-      this.boR.c(paramf, false);
+      paramf.ed(this.aYt.aUk + this.aYt.aYW);
+      paramLong2 = this.aYt.aYR;
+      this.aYt.c(paramf, false);
     }
-    paramf.uv();
+    paramf.sp();
     AppMethodBeat.o(92141);
     return paramLong2;
   }
@@ -63,7 +63,7 @@ final class a
   {
     int j = 2048;
     AppMethodBeat.i(92140);
-    paramLong = Math.min(3L + paramLong, this.bmy);
+    paramLong = Math.min(3L + paramLong, this.aWa);
     byte[] arrayOfByte = new byte[2048];
     for (;;)
     {
@@ -84,18 +84,18 @@ final class a
       {
         if ((arrayOfByte[j] == 79) && (arrayOfByte[(j + 1)] == 103) && (arrayOfByte[(j + 2)] == 103) && (arrayOfByte[(j + 3)] == 83))
         {
-          paramf.dP(j);
+          paramf.ed(j);
           AppMethodBeat.o(92140);
           return true;
         }
         j += 1;
       }
-      paramf.dP(i - 3);
+      paramf.ed(i - 3);
       j = i;
     }
   }
   
-  public final long R(long paramLong)
+  public final long U(long paramLong)
   {
     AppMethodBeat.i(92139);
     boolean bool;
@@ -108,15 +108,15 @@ final class a
       }
     }
     label91:
-    for (paramLong = 0L;; paramLong = this.boT.T(paramLong))
+    for (paramLong = 0L;; paramLong = this.aYv.W(paramLong))
     {
-      this.boW = paramLong;
+      this.aYy = paramLong;
       this.state = 2;
-      this.start = this.boS;
-      this.boX = this.bmy;
-      this.boY = 0L;
-      this.boZ = this.boU;
-      paramLong = this.boW;
+      this.start = this.aYu;
+      this.aYz = this.aWa;
+      this.aYA = 0L;
+      this.aYB = this.aYw;
+      paramLong = this.aYy;
       AppMethodBeat.o(92139);
       return paramLong;
       bool = false;
@@ -138,50 +138,50 @@ final class a
       AppMethodBeat.o(92138);
       return -1L;
     case 0: 
-      this.boV = paramf.getPosition();
+      this.aYx = paramf.getPosition();
       this.state = 1;
-      l1 = this.bmy - 65307L;
-      if (l1 > this.boV)
+      l1 = this.aWa - 65307L;
+      if (l1 > this.aYx)
       {
         AppMethodBeat.o(92138);
         return l1;
       }
     case 1: 
-      if (!a(paramf, this.bmy))
+      if (!a(paramf, this.aWa))
       {
         paramf = new EOFException();
         AppMethodBeat.o(92138);
         throw paramf;
       }
-      this.boR.reset();
-      while (((this.boR.type & 0x4) != 4) && (paramf.getPosition() < this.bmy))
+      this.aYt.reset();
+      while (((this.aYt.type & 0x4) != 4) && (paramf.getPosition() < this.aWa))
       {
-        this.boR.c(paramf, false);
-        paramf.dP(this.boR.bkI + this.boR.bpu);
+        this.aYt.c(paramf, false);
+        paramf.ed(this.aYt.aUk + this.aYt.aYW);
       }
-      this.boU = this.boR.bpp;
+      this.aYw = this.aYt.aYR;
       this.state = 3;
-      l1 = this.boV;
+      l1 = this.aYx;
       AppMethodBeat.o(92138);
       return l1;
     }
-    if (this.boW == 0L) {}
-    for (long l1 = 0L;; l1 = a(paramf, this.boW, -(l1 + 2L)))
+    if (this.aYy == 0L) {}
+    for (long l1 = 0L;; l1 = a(paramf, this.aYy, -(l1 + 2L)))
     {
       this.state = 3;
       l1 = -(l1 + 2L);
       AppMethodBeat.o(92138);
       return l1;
-      long l2 = this.boW;
-      if (this.start == this.boX) {
-        l1 = -(this.boY + 2L);
+      long l2 = this.aYy;
+      if (this.start == this.aYz) {
+        l1 = -(this.aYA + 2L);
       }
       while (l1 >= 0L)
       {
         AppMethodBeat.o(92138);
         return l1;
         l1 = paramf.getPosition();
-        if (!a(paramf, this.boX))
+        if (!a(paramf, this.aYz))
         {
           if (this.start == l1)
           {
@@ -193,30 +193,30 @@ final class a
         }
         else
         {
-          this.boR.c(paramf, false);
-          paramf.uv();
-          l2 -= this.boR.bpp;
-          int j = this.boR.bkI + this.boR.bpu;
+          this.aYt.c(paramf, false);
+          paramf.sp();
+          l2 -= this.aYt.aYR;
+          int j = this.aYt.aUk + this.aYt.aYW;
           if ((l2 < 0L) || (l2 > 72000L))
           {
             if (l2 < 0L)
             {
-              this.boX = l1;
-              this.boZ = this.boR.bpp;
+              this.aYz = l1;
+              this.aYB = this.aYt.aYR;
             }
             for (;;)
             {
-              if (this.boX - this.start < 100000L)
+              if (this.aYz - this.start < 100000L)
               {
-                this.boX = this.start;
+                this.aYz = this.start;
                 l1 = this.start;
                 break;
                 this.start = (paramf.getPosition() + j);
-                this.boY = this.boR.bpp;
-                if (this.boX - this.start + j < 100000L)
+                this.aYA = this.aYt.aYR;
+                if (this.aYz - this.start + j < 100000L)
                 {
-                  paramf.dP(j);
-                  l1 = -(this.boY + 2L);
+                  paramf.ed(j);
+                  l1 = -(this.aYA + 2L);
                   break;
                 }
               }
@@ -225,12 +225,12 @@ final class a
               i = 2;
             }
             l1 = i * j;
-            l1 = Math.min(Math.max(paramf.getPosition() - l1 + l2 * (this.boX - this.start) / (this.boZ - this.boY), this.start), this.boX - 1L);
+            l1 = Math.min(Math.max(paramf.getPosition() - l1 + l2 * (this.aYz - this.start) / (this.aYB - this.aYA), this.start), this.aYz - 1L);
           }
           else
           {
-            paramf.dP(j);
-            l1 = -(this.boR.bpp + 2L);
+            paramf.ed(j);
+            l1 = -(this.aYt.aYR + 2L);
           }
         }
       }
@@ -242,26 +242,26 @@ final class a
   {
     private a() {}
     
-    public final long L(long paramLong)
+    public final long O(long paramLong)
     {
       AppMethodBeat.i(92135);
       if (paramLong == 0L)
       {
-        paramLong = a.this.boS;
+        paramLong = a.this.aYu;
         AppMethodBeat.o(92135);
         return paramLong;
       }
-      paramLong = a.this.boT.T(paramLong);
+      paramLong = a.this.aYv.W(paramLong);
       a locala = a.this;
-      long l = a.this.boS;
-      l = paramLong * (locala.bmy - locala.boS) / locala.boU - 30000L + l;
+      long l = a.this.aYu;
+      l = paramLong * (locala.aWa - locala.aYu) / locala.aYw - 30000L + l;
       paramLong = l;
-      if (l < locala.boS) {
-        paramLong = locala.boS;
+      if (l < locala.aYu) {
+        paramLong = locala.aYu;
       }
       l = paramLong;
-      if (paramLong >= locala.bmy) {
-        l = locala.bmy - 1L;
+      if (paramLong >= locala.aWa) {
+        l = locala.aWa - 1L;
       }
       AppMethodBeat.o(92135);
       return l;
@@ -270,12 +270,12 @@ final class a
     public final long getDurationUs()
     {
       AppMethodBeat.i(92136);
-      long l = a.this.boT.S(a.this.boU);
+      long l = a.this.aYv.V(a.this.aYw);
       AppMethodBeat.o(92136);
       return l;
     }
     
-    public final boolean uu()
+    public final boolean so()
     {
       return true;
     }
@@ -283,7 +283,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.c.e.a
  * JD-Core Version:    0.7.0.1
  */

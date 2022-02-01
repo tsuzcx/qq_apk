@@ -5,21 +5,21 @@ import kotlin.g.b.p;
 
 public final class h
 {
-  public final g TtX;
-  public final boolean TtY;
+  public final g aaWR;
+  public final boolean aaWS;
   
   public h(g paramg, boolean paramBoolean)
   {
     AppMethodBeat.i(58040);
-    this.TtX = paramg;
-    this.TtY = paramBoolean;
+    this.aaWR = paramg;
+    this.aaWS = paramBoolean;
     AppMethodBeat.o(58040);
   }
   
   private static h a(g paramg, boolean paramBoolean)
   {
     AppMethodBeat.i(58041);
-    p.h(paramg, "qualifier");
+    p.k(paramg, "qualifier");
     paramg = new h(paramg, paramBoolean);
     AppMethodBeat.o(58041);
     return paramg;
@@ -33,7 +33,7 @@ public final class h
       if ((paramObject instanceof h))
       {
         paramObject = (h)paramObject;
-        if ((!p.j(this.TtX, paramObject.TtX)) || (this.TtY != paramObject.TtY)) {}
+        if ((!p.h(this.aaWR, paramObject.aaWR)) || (this.aaWS != paramObject.aaWS)) {}
       }
     }
     else
@@ -53,14 +53,14 @@ public final class h
   public final String toString()
   {
     AppMethodBeat.i(58043);
-    String str = "NullabilityQualifierWithMigrationStatus(qualifier=" + this.TtX + ", isForWarningOnly=" + this.TtY + ")";
+    String str = "NullabilityQualifierWithMigrationStatus(qualifier=" + this.aaWR + ", isForWarningOnly=" + this.aaWS + ")";
     AppMethodBeat.o(58043);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.f.h
  * JD-Core Version:    0.7.0.1
  */

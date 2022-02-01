@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.qmessage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ba.l;
-import com.tencent.mm.g.a.am;
-import com.tencent.mm.g.a.am.a;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.bd.l;
+import com.tencent.mm.f.a.an;
+import com.tencent.mm.f.a.an.a;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
@@ -13,42 +13,42 @@ import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
 
 final class a
-  extends IListener<am>
+  extends IListener<an>
 {
   a()
   {
     AppMethodBeat.i(161424);
-    this.__eventId = am.class.getName().hashCode();
+    this.__eventId = an.class.getName().hashCode();
     AppMethodBeat.o(161424);
   }
   
-  private static boolean a(am paramam)
+  private static boolean a(an paraman)
   {
     AppMethodBeat.i(27710);
-    if (!(paramam instanceof am))
+    if (!(paraman instanceof an))
     {
       Log.f("MicroMsg.QMsg.EventListener", "not bind qq event");
       AppMethodBeat.o(27710);
       return false;
     }
-    if (paramam.dDo.dDq == 0) {}
+    if (paraman.fvU.fvW == 0) {}
     try
     {
-      int i = z.aUl() | 0x20;
-      bg.aVF();
-      c.azQ().set(34, Integer.valueOf(i));
-      bg.aVF();
-      c.aSM().d(new l("", "", "", "", "", "", "", "", i, "", ""));
-      g.eGb();
+      int i = z.bdn() | 0x20;
+      bh.beI();
+      c.aHp().i(34, Integer.valueOf(i));
+      bh.beI();
+      c.bbK().d(new l("", "", "", "", "", "", "", "", i, "", ""));
+      g.fsc();
       Log.d("MicroMsg.QMsg.EventListener", "doClearQQOffLineMessageHelper succ ");
       AppMethodBeat.o(27710);
       return false;
     }
-    catch (Exception paramam)
+    catch (Exception paraman)
     {
       for (;;)
       {
-        Log.printErrStackTrace("MicroMsg.QMsg.EventListener", paramam, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.QMsg.EventListener", paraman, "", new Object[0]);
       }
     }
   }

@@ -2,7 +2,7 @@ package com.tencent.mm.emoji.a;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/egg/EmojiDynamicController$Companion;", "", "()V", "TAG", "", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/egg/EmojiDynamicController$Companion;", "", "()V", "TAG", "", "plugin-emojisdk_release"})
 public final class e$a {}
 
 

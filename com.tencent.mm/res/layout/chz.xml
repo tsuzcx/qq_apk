@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:padding="@dimen/cb" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="@dimen/cb" android:text="ConfigStorage" />
+    <com.tencent.mm.ui.widget.MMEditText android:id="@id/k75" android:layout_width="fill_parent" android:layout_height="@dimen/cn" android:hint="local_key" />
+    <com.tencent.mm.ui.widget.MMEditText android:id="@id/k77" android:layout_width="fill_parent" android:layout_height="@dimen/cn" android:layout_marginTop="@dimen/cb" android:hint="local_value" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb">
+        <Button android:layout_gravity="center_horizontal" android:id="@id/kfm" android:layout_width="0.0dip" android:layout_height="40.0dip" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/cb" android:text="查询" android:layout_weight="1.0" style="@style/ou" />
+        <Button android:layout_gravity="center_horizontal" android:id="@id/kfl" android:layout_width="0.0dip" android:layout_height="40.0dip" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/cb" android:text="修改" android:layout_weight="1.0" style="@style/ou" />
+    </LinearLayout>
+    <TextView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bu" android:layout_marginBottom="@dimen/cb" android:text="DynamicConfig" />
+    <com.tencent.mm.ui.widget.MMEditText android:id="@id/k4n" android:layout_width="fill_parent" android:layout_height="@dimen/cn" android:hint="dynamic_key" />
+    <com.tencent.mm.ui.widget.MMEditText android:id="@id/k4p" android:layout_width="fill_parent" android:layout_height="@dimen/cn" android:layout_marginTop="@dimen/cb" android:hint="dynamic_value" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/k4o" android:layout_width="120.0dip" android:layout_height="40.0dip" android:layout_marginTop="@dimen/cb" android:text="@string/x_" style="@style/ou" />
+</LinearLayout>

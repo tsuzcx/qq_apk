@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.vlog.ui.widget.CropOperationContainer android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.plugin.vlog.ui.plugin.timeedit.TimeEditorItemContainer android:id="@id/j4q" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.plugin.vlog.ui.timelineeditor.view.TimelineEditorDragRectView android:id="@id/big" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mm.plugin.vlog.ui.widget.CropOperationContainer>
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorInputView android:id="@id/ar2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/bxv" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</merge>

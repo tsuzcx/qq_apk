@@ -1,7 +1,7 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.h;
+import com.tencent.mm.f.c.h;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -108,7 +108,7 @@ public final class c
     this.field_netTimes = 0L;
   }
   
-  public final boolean deQ()
+  public final boolean evg()
   {
     if (this.field_totalLen <= 0L) {}
     while (this.field_offset != this.field_totalLen) {
@@ -124,7 +124,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.c
  * JD-Core Version:    0.7.0.1
  */

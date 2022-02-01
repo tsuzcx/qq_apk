@@ -2,7 +2,7 @@ package com.tencent.mm.chatroom.g;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/chatroom/process/ChatRoomAddContactProcess$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "ui-chatroom_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/chatroom/process/ChatRoomAddContactProcess$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "ui-chatroom_release"})
 public final class a$a {}
 
 

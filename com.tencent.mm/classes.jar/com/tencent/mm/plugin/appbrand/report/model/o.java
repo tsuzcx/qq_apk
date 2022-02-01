@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.appbrand.report.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.plugin.report.f;
 
 public final class o
 {
   public static void a(a parama, String paramString)
   {
     AppMethodBeat.i(48172);
-    e.Cxv.a(14750, new Object[] { Integer.valueOf(parama.value), paramString });
+    f.Iyx.a(14750, new Object[] { Integer.valueOf(parama.value), paramString });
     AppMethodBeat.o(48172);
   }
   
@@ -19,11 +19,11 @@ public final class o
     static
     {
       AppMethodBeat.i(48171);
-      nJU = new a("GUIDE_EXPOSE", 0, 1);
-      nJV = new a("GUIDE_CLOSE", 1, 2);
-      nJW = new a("TO_APP_LAUNCHER", 2, 3);
-      nJX = new a("GUIDE_CLOSE_BY_BACK", 3, 4);
-      nJY = new a[] { nJU, nJV, nJW, nJX };
+      qMh = new a("GUIDE_EXPOSE", 0, 1);
+      qMi = new a("GUIDE_CLOSE", 1, 2);
+      qMj = new a("TO_APP_LAUNCHER", 2, 3);
+      qMk = new a("GUIDE_CLOSE_BY_BACK", 3, 4);
+      qMl = new a[] { qMh, qMi, qMj, qMk };
       AppMethodBeat.o(48171);
     }
     

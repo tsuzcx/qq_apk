@@ -8,6 +8,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -16,7 +18,7 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class ZoneSelectOtherCountryPreference
   extends Preference
 {
-  a QxB;
+  a XVH;
   String text;
   
   public ZoneSelectOtherCountryPreference(Context paramContext)
@@ -33,7 +35,7 @@ public class ZoneSelectOtherCountryPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(39217);
-    setLayoutResource(2131495538);
+    setLayoutResource(R.i.mm_preference);
     AppMethodBeat.o(39217);
   }
   
@@ -41,7 +43,7 @@ public class ZoneSelectOtherCountryPreference
   {
     AppMethodBeat.i(39219);
     super.onBindView(paramView);
-    TextView localTextView = (TextView)paramView.findViewById(2131310681);
+    TextView localTextView = (TextView)paramView.findViewById(R.h.zonename);
     if (!Util.isNullOrNil(this.text)) {
       localTextView.setText(this.text);
     }
@@ -51,8 +53,8 @@ public class ZoneSelectOtherCountryPreference
       {
         AppMethodBeat.i(39216);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        a.b("com/tencent/mm/ui/tools/ZoneSelectOtherCountryPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        a.c("com/tencent/mm/ui/tools/ZoneSelectOtherCountryPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (ZoneSelectOtherCountryPreference.a(ZoneSelectOtherCountryPreference.this) != null) {
           ZoneSelectOtherCountryPreference.a(ZoneSelectOtherCountryPreference.this).onClick();
         }
@@ -68,9 +70,9 @@ public class ZoneSelectOtherCountryPreference
     AppMethodBeat.i(39218);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2131495584, localViewGroup);
+    localLayoutInflater.inflate(R.i.eja, localViewGroup);
     AppMethodBeat.o(39218);
     return paramViewGroup;
   }
@@ -82,7 +84,7 @@ public class ZoneSelectOtherCountryPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.tools.ZoneSelectOtherCountryPreference
  * JD-Core Version:    0.7.0.1
  */

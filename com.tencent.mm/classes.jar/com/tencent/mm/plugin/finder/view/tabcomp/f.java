@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.finder.view.tabcomp;
 import android.content.Context;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabViewAction;", "", "onTabClick", "", "context", "Landroid/content/Context;", "tab", "Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderBaseTab;", "onTabDoubleClick", "onTabSelected", "onTabUnSelected", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/tabcomp/IFinderTabViewAction;", "", "onTabClick", "", "context", "Landroid/content/Context;", "tab", "Lcom/tencent/mm/plugin/finder/view/tabcomp/FinderBaseTab;", "onTabDoubleClick", "onTabSelected", "onTabUnSelected", "plugin-finder_release"})
 public abstract interface f
 {
   public abstract void a(Context paramContext, a parama);

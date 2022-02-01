@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:background="@color/hl" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:background="@color/af" android:layout_width="fill_parent" android:layout_height="@dimen/jv" />
+    <TextView android:background="@color/UN_BW_93" android:layout_width="fill_parent" android:layout_height="@dimen/jv" />
     <TextView android:textSize="@dimen/hc" android:textColor="@color/hm" android:ellipsize="end" android:gravity="left" android:id="@id/bok" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/hs" android:layout_marginRight="@dimen/hs" android:singleLine="true" />
     <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/boj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/ib" android:layout_marginRight="@dimen/hs" />
     <TextView android:textSize="@dimen/hc" android:textColor="@color/hj" android:ellipsize="end" android:gravity="left" android:id="@id/boi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/r" android:layout_marginRight="@dimen/hs" android:text="@string/aok" android:singleLine="true" />

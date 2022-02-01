@@ -5,12 +5,12 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a
 {
-  public static final int GjN;
+  public static final int MWy;
   
   static
   {
     AppMethodBeat.i(125853);
-    GjN = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 56);
+    MWy = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 56);
     AppMethodBeat.o(125853);
   }
 }

@@ -7,18 +7,21 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 public class WalletIconImageView
   extends WeImageView
 {
-  private int GRb = -1;
-  private int Kxi = -1;
-  private int Kxj = 0;
-  private int Kxk = 4;
-  private int Kxl = -1;
-  private Drawable Kxm;
-  private View.OnClickListener Kxn = null;
+  private int NHm = -1;
+  private int RyW = -1;
+  private int RyX = 0;
+  private int RyY = 4;
+  private int RyZ = -1;
+  private Drawable Rza;
+  private View.OnClickListener Rzb = null;
   
   public WalletIconImageView(Context paramContext)
   {
@@ -35,33 +38,33 @@ public class WalletIconImageView
     super(paramContext, paramAttributeSet);
   }
   
-  public final void gsP()
+  public final void hoc()
   {
     AppMethodBeat.i(72413);
-    super.setVisibility(this.Kxk);
-    setImageResource(this.Kxi);
-    if (this.Kxj != -1)
+    super.setVisibility(this.RyY);
+    setImageResource(this.RyW);
+    if (this.RyX != -1)
     {
-      super.setColorFilter(this.Kxj, PorterDuff.Mode.SRC_ATOP);
-      setIconColor(this.Kxj);
+      super.setColorFilter(this.RyX, PorterDuff.Mode.SRC_ATOP);
+      setIconColor(this.RyX);
     }
-    if (this.Kxn != null) {
-      super.setOnClickListener(this.Kxn);
+    if (this.Rzb != null) {
+      super.setOnClickListener(this.Rzb);
     }
     AppMethodBeat.o(72413);
   }
   
-  public final void setClearBtnDrawableId$255f295(int paramInt)
+  public final void setClearBtnDrawableId(int paramInt1, int paramInt2)
   {
-    this.GRb = 2131690515;
-    this.Kxl = paramInt;
+    this.NHm = paramInt1;
+    this.RyZ = paramInt2;
   }
   
   public void setImageResource(int paramInt)
   {
     AppMethodBeat.i(72410);
-    this.Kxi = paramInt;
-    if (this.Kxi != -1) {
+    this.RyW = paramInt;
+    if (this.RyW != -1) {
       super.setImageResource(paramInt);
     }
     AppMethodBeat.o(72410);
@@ -69,49 +72,49 @@ public class WalletIconImageView
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.Kxn = paramOnClickListener;
+    this.Rzb = paramOnClickListener;
   }
   
   public void setToClearState(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(72412);
     super.setVisibility(0);
-    if (this.Kxm != null)
+    if (this.Rza != null)
     {
-      if (this.Kxl != -1)
+      if (this.RyZ != -1)
       {
-        super.setColorFilter(this.Kxl, PorterDuff.Mode.SRC_ATOP);
-        setIconColor(this.Kxl);
+        super.setColorFilter(this.RyZ, PorterDuff.Mode.SRC_ATOP);
+        setIconColor(this.RyZ);
       }
-      setImageDrawable(this.Kxm);
+      setImageDrawable(this.Rza);
     }
     for (;;)
     {
-      super.setContentDescription(getContext().getString(2131757636));
+      super.setContentDescription(getContext().getString(a.i.clear_btn));
       super.setOnClickListener(paramOnClickListener);
       AppMethodBeat.o(72412);
       return;
-      if (this.GRb != -1)
+      if (this.NHm != -1)
       {
-        super.setImageResource(this.GRb);
-        if (this.Kxl != -1)
+        super.setImageResource(this.NHm);
+        if (this.RyZ != -1)
         {
-          super.setColorFilter(this.Kxl, PorterDuff.Mode.SRC_ATOP);
-          setIconColor(this.Kxl);
+          super.setColorFilter(this.RyZ, PorterDuff.Mode.SRC_ATOP);
+          setIconColor(this.RyZ);
         }
       }
       else
       {
-        super.setImageResource(2131233321);
-        if (this.Kxl != -1)
+        super.setImageResource(a.e.list_clear);
+        if (this.RyZ != -1)
         {
-          super.setColorFilter(this.Kxl, PorterDuff.Mode.SRC_ATOP);
-          setIconColor(this.Kxl);
+          super.setColorFilter(this.RyZ, PorterDuff.Mode.SRC_ATOP);
+          setIconColor(this.RyZ);
         }
         else
         {
-          super.setColorFilter(getResources().getColor(2131099749), PorterDuff.Mode.SRC_ATOP);
-          setIconColor(getResources().getColor(2131099749));
+          super.setColorFilter(getResources().getColor(a.c.FG_2), PorterDuff.Mode.SRC_ATOP);
+          setIconColor(getResources().getColor(a.c.FG_2));
         }
       }
     }
@@ -120,7 +123,7 @@ public class WalletIconImageView
   public void setVisibility(int paramInt)
   {
     AppMethodBeat.i(72411);
-    this.Kxk = paramInt;
+    this.RyY = paramInt;
     super.setVisibility(paramInt);
     AppMethodBeat.o(72411);
   }
@@ -128,7 +131,7 @@ public class WalletIconImageView
   public void setmUserSetImageIconColor(int paramInt)
   {
     AppMethodBeat.i(174532);
-    this.Kxj = paramInt;
+    this.RyX = paramInt;
     if (paramInt != -1) {
       setIconColor(paramInt);
     }
@@ -137,7 +140,7 @@ public class WalletIconImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView
  * JD-Core Version:    0.7.0.1
  */

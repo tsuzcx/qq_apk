@@ -1,75 +1,76 @@
 package com.tencent.mm.plugin.appbrand.xweb_ext.a;
 
 import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.b;
-import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.l.b;
-import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.n;
-import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.n.a;
-import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.n.b;
-import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.n.c;
+import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.m;
+import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.m.b;
+import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.o;
+import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.o.a;
+import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.o.b;
+import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.o.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
+import kotlin.l;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/MakeupApplyAdapter;", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IMakeupApplyAdapter;", "weEffectManager", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IWeEffectManager;", "(Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IWeEffectManager;)V", "makeupApplyLogic", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IMakeupApplyLogic;", "getMakeupApplyLogic", "()Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IMakeupApplyLogic;", "applyBlusherStick", "", "info", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/BlusherStickInfo;", "applyEyeBrow", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/EyeBrowInfo;", "applyEyeShadow", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/EyeShadowInfo;", "applyFaceContour", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/FaceContourInfo;", "applyLipStick", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/LipStickInfo;", "applyMakeup", "", "type", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IWeEffectManager$MakeupType;", "path", "", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/xweb_ext/live/MakeupApplyAdapter;", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IMakeupApplyAdapter;", "weEffectManager", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IWeEffectManager;", "(Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IWeEffectManager;)V", "makeupApplyLogic", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IMakeupApplyLogic;", "getMakeupApplyLogic", "()Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IMakeupApplyLogic;", "applyBlusherStick", "", "info", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/BlusherStickInfo;", "applyEyeBrow", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/EyeBrowInfo;", "applyEyeShadow", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/EyeShadowInfo;", "applyFaceContour", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/FaceContourInfo;", "applyLipStick", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/LipStickInfo;", "applyMakeup", "", "type", "Lcom/tencent/luggage/xweb_ext/extendplugin/component/live/livepusher/IWeEffectManager$MakeupType;", "path", "", "plugin-appbrand-integration_release"})
 public final class h
   implements com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.e
 {
-  private final com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.f oGN;
+  private final com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.f rID;
   
-  public h(com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.l paraml)
+  public h(m paramm)
   {
-    AppMethodBeat.i(229731);
-    if ((paraml instanceof p)) {
+    AppMethodBeat.i(276461);
+    if ((paramm instanceof p)) {
       Log.w("MicroMsg.AppBrand.MakeupApplyAdapter", "weEffectManager is IWeEffectWorkaroundManager");
     }
-    for (paraml = ((p)paraml).oHv.Qd();; paraml = (com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.f)new com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.p(paraml))
+    for (paramm = ((p)paramm).rJl.TE();; paramm = (com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.f)new com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.q(paramm))
     {
-      this.oGN = paraml;
-      AppMethodBeat.o(229731);
+      this.rID = paramm;
+      AppMethodBeat.o(276461);
       return;
     }
   }
   
-  public final com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.f Qd()
+  public final com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.f TE()
   {
-    return this.oGN;
+    return this.rID;
   }
   
-  public final void a(l.b paramb, String paramString)
+  public final void a(m.b paramb, String paramString)
   {
-    AppMethodBeat.i(229725);
-    kotlin.g.b.p.h(paramb, "type");
-    kotlin.g.b.p.h(paramString, "path");
-    this.oGN.a(paramb, paramString);
-    AppMethodBeat.o(229725);
+    AppMethodBeat.i(276454);
+    kotlin.g.b.p.k(paramb, "type");
+    kotlin.g.b.p.k(paramString, "path");
+    this.rID.a(paramb, paramString);
+    AppMethodBeat.o(276454);
   }
   
   public final boolean a(com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.a parama)
   {
-    AppMethodBeat.i(229728);
-    kotlin.g.b.p.h(parama, "info");
-    Object localObject1 = i.oGO;
-    kotlin.g.b.p.h(parama, "info");
-    o localo = new o(i.a((i)localObject1), i.a((com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.h)parama));
-    if ((!localo.exists()) && (!s.boN(localo.getAbsolutePath())))
+    AppMethodBeat.i(276458);
+    kotlin.g.b.p.k(parama, "info");
+    Object localObject1 = i.rIE;
+    kotlin.g.b.p.k(parama, "info");
+    com.tencent.mm.vfs.q localq = new com.tencent.mm.vfs.q(i.a((i)localObject1), i.a((com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.h)parama));
+    if ((!localq.ifE()) && (!u.bBD(localq.bOF())))
     {
       Log.w("MicroMsg.AppBrand.MakeupApplyAdapterCoreLogic", "convert2PathImpl, create resDir fail");
       parama = null;
     }
     while (parama != null)
     {
-      this.oGN.a(l.b.cGH, parama);
-      AppMethodBeat.o(229728);
+      this.rID.a(m.b.cHn, parama);
+      AppMethodBeat.o(276458);
       return true;
       c localc = new c();
       localc.alpha = parama.alpha;
-      localc.type = parama.cFX.jsonVal;
-      localObject1 = i.c(localo, new o(parama.cFY));
+      localc.type = parama.cGD.jsonVal;
+      localObject1 = i.c(localq, new com.tencent.mm.vfs.q(parama.cGE));
       Object localObject2;
       if (localObject1 != null)
       {
-        localObject2 = ((o)localObject1).getName();
+        localObject2 = ((com.tencent.mm.vfs.q)localObject1).getName();
         localObject1 = localObject2;
         if (localObject2 != null) {}
       }
@@ -77,12 +78,12 @@ public final class h
       {
         localObject1 = "";
       }
-      kotlin.g.b.p.h(localObject1, "<set-?>");
-      localc.cFY = ((String)localObject1);
-      localObject1 = i.c(localo, new o(parama.cGa));
+      kotlin.g.b.p.k(localObject1, "<set-?>");
+      localc.cGE = ((String)localObject1);
+      localObject1 = i.c(localq, new com.tencent.mm.vfs.q(parama.cGG));
       if (localObject1 != null)
       {
-        localObject2 = ((o)localObject1).getName();
+        localObject2 = ((com.tencent.mm.vfs.q)localObject1).getName();
         localObject1 = localObject2;
         if (localObject2 != null) {}
       }
@@ -90,54 +91,54 @@ public final class h
       {
         localObject1 = "";
       }
-      kotlin.g.b.p.h(localObject1, "<set-?>");
-      localc.cGa = ((String)localObject1);
-      localc.cGc = parama.cGc;
+      kotlin.g.b.p.k(localObject1, "<set-?>");
+      localc.cGG = ((String)localObject1);
+      localc.cGI = parama.cGI;
       parama = (a)localc;
       if (!parama.isValid())
       {
         Log.w("MicroMsg.AppBrand.MakeupApplyAdapterCoreLogic", "convert2PathImpl, flattenInfo is invalid");
-        s.deleteDir(localo.getAbsolutePath());
+        u.deleteDir(localq.bOF());
         parama = null;
       }
       else
       {
-        localObject1 = new o(localo, "config.json").getAbsolutePath();
-        kotlin.g.b.p.g(localObject1, "configFile.absolutePath");
+        localObject1 = new com.tencent.mm.vfs.q(localq, "config.json").bOF();
+        kotlin.g.b.p.j(localObject1, "configFile.absolutePath");
         Log.d("MicroMsg.AppBrand.MakeupApplyAdapterCoreLogic", "convert2PathImpl, configPath: ".concat(String.valueOf(localObject1)));
-        localObject2 = com.tencent.mm.sticker.a.NMI;
+        localObject2 = com.tencent.mm.sticker.a.Vas;
         com.tencent.mm.sticker.a.a.a((com.tencent.mm.sticker.a)parama, (String)localObject1);
-        parama = localo.getAbsolutePath();
+        parama = localq.bOF();
       }
     }
-    AppMethodBeat.o(229728);
+    AppMethodBeat.o(276458);
     return false;
   }
   
   public final boolean a(b paramb)
   {
-    AppMethodBeat.i(229730);
-    kotlin.g.b.p.h(paramb, "info");
-    Object localObject1 = i.oGO;
-    kotlin.g.b.p.h(paramb, "info");
-    o localo = new o(i.a((i)localObject1), i.a((com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.h)paramb));
-    if ((!localo.exists()) && (!s.boN(localo.getAbsolutePath())))
+    AppMethodBeat.i(276460);
+    kotlin.g.b.p.k(paramb, "info");
+    Object localObject1 = i.rIE;
+    kotlin.g.b.p.k(paramb, "info");
+    com.tencent.mm.vfs.q localq = new com.tencent.mm.vfs.q(i.a((i)localObject1), i.a((com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.h)paramb));
+    if ((!localq.ifE()) && (!u.bBD(localq.bOF())))
     {
       Log.w("MicroMsg.AppBrand.MakeupApplyAdapterCoreLogic", "convert2PathImpl, create resDir fail");
       paramb = null;
     }
     while (paramb != null)
     {
-      this.oGN.a(l.b.cGJ, paramb);
-      AppMethodBeat.o(229730);
+      this.rID.a(m.b.cHp, paramb);
+      AppMethodBeat.o(276460);
       return true;
       d locald = new d();
       locald.alpha = paramb.alpha;
-      localObject1 = i.c(localo, new o(paramb.cGf));
+      localObject1 = i.c(localq, new com.tencent.mm.vfs.q(paramb.cGL));
       Object localObject2;
       if (localObject1 != null)
       {
-        localObject2 = ((o)localObject1).getName();
+        localObject2 = ((com.tencent.mm.vfs.q)localObject1).getName();
         localObject1 = localObject2;
         if (localObject2 != null) {}
       }
@@ -145,12 +146,12 @@ public final class h
       {
         localObject1 = "";
       }
-      kotlin.g.b.p.h(localObject1, "<set-?>");
-      locald.cGf = ((String)localObject1);
-      localObject1 = i.c(localo, new o(paramb.cGh));
+      kotlin.g.b.p.k(localObject1, "<set-?>");
+      locald.cGL = ((String)localObject1);
+      localObject1 = i.c(localq, new com.tencent.mm.vfs.q(paramb.cGN));
       if (localObject1 != null)
       {
-        localObject2 = ((o)localObject1).getName();
+        localObject2 = ((com.tencent.mm.vfs.q)localObject1).getName();
         localObject1 = localObject2;
         if (localObject2 != null) {}
       }
@@ -158,55 +159,55 @@ public final class h
       {
         localObject1 = "";
       }
-      kotlin.g.b.p.h(localObject1, "<set-?>");
-      locald.cGh = ((String)localObject1);
-      locald.cGc = paramb.cGc;
+      kotlin.g.b.p.k(localObject1, "<set-?>");
+      locald.cGN = ((String)localObject1);
+      locald.cGI = paramb.cGI;
       paramb = (a)locald;
       if (!paramb.isValid())
       {
         Log.w("MicroMsg.AppBrand.MakeupApplyAdapterCoreLogic", "convert2PathImpl, flattenInfo is invalid");
-        s.deleteDir(localo.getAbsolutePath());
+        u.deleteDir(localq.bOF());
         paramb = null;
       }
       else
       {
-        localObject1 = new o(localo, "config.json").getAbsolutePath();
-        kotlin.g.b.p.g(localObject1, "configFile.absolutePath");
+        localObject1 = new com.tencent.mm.vfs.q(localq, "config.json").bOF();
+        kotlin.g.b.p.j(localObject1, "configFile.absolutePath");
         Log.d("MicroMsg.AppBrand.MakeupApplyAdapterCoreLogic", "convert2PathImpl, configPath: ".concat(String.valueOf(localObject1)));
-        localObject2 = com.tencent.mm.sticker.a.NMI;
+        localObject2 = com.tencent.mm.sticker.a.Vas;
         com.tencent.mm.sticker.a.a.a((com.tencent.mm.sticker.a)paramb, (String)localObject1);
-        paramb = localo.getAbsolutePath();
+        paramb = localq.bOF();
       }
     }
-    AppMethodBeat.o(229730);
+    AppMethodBeat.o(276460);
     return false;
   }
   
   public final boolean a(com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.c paramc)
   {
     com.tencent.mm.sticker.a.a locala = null;
-    AppMethodBeat.i(229727);
-    kotlin.g.b.p.h(paramc, "info");
-    Object localObject = i.oGO;
-    kotlin.g.b.p.h(paramc, "info");
-    o localo = new o(i.a((i)localObject), i.a((com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.h)paramc));
-    if ((!localo.exists()) && (!s.boN(localo.getAbsolutePath())))
+    AppMethodBeat.i(276457);
+    kotlin.g.b.p.k(paramc, "info");
+    Object localObject = i.rIE;
+    kotlin.g.b.p.k(paramc, "info");
+    com.tencent.mm.vfs.q localq = new com.tencent.mm.vfs.q(i.a((i)localObject), i.a((com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.h)paramc));
+    if ((!localq.ifE()) && (!u.bBD(localq.bOF())))
     {
       Log.w("MicroMsg.AppBrand.MakeupApplyAdapterCoreLogic", "convert2PathImpl, create resDir fail");
       paramc = locala;
     }
     while (paramc != null)
     {
-      this.oGN.a(l.b.cGG, paramc);
-      AppMethodBeat.o(229727);
+      this.rID.a(m.b.cHm, paramc);
+      AppMethodBeat.o(276457);
       return true;
       e locale = new e();
       locale.alpha = paramc.alpha;
-      localObject = i.c(localo, new o(paramc.cGk));
+      localObject = i.c(localq, new com.tencent.mm.vfs.q(paramc.cGQ));
       String str;
       if (localObject != null)
       {
-        str = ((o)localObject).getName();
+        str = ((com.tencent.mm.vfs.q)localObject).getName();
         localObject = str;
         if (str != null) {}
       }
@@ -214,12 +215,12 @@ public final class h
       {
         localObject = "";
       }
-      kotlin.g.b.p.h(localObject, "<set-?>");
-      locale.cGk = ((String)localObject);
-      localObject = i.c(localo, new o(paramc.cGm));
+      kotlin.g.b.p.k(localObject, "<set-?>");
+      locale.cGQ = ((String)localObject);
+      localObject = i.c(localq, new com.tencent.mm.vfs.q(paramc.cGS));
       if (localObject != null)
       {
-        str = ((o)localObject).getName();
+        str = ((com.tencent.mm.vfs.q)localObject).getName();
         localObject = str;
         if (str != null) {}
       }
@@ -227,9 +228,9 @@ public final class h
       {
         localObject = "";
       }
-      kotlin.g.b.p.h(localObject, "<set-?>");
-      locale.cGm = ((String)localObject);
-      localObject = (CharSequence)paramc.cGo;
+      kotlin.g.b.p.k(localObject, "<set-?>");
+      locale.cGS = ((String)localObject);
+      localObject = (CharSequence)paramc.cGU;
       int i;
       if ((localObject == null) || (((CharSequence)localObject).length() == 0))
       {
@@ -242,23 +243,23 @@ public final class h
       }
       for (;;)
       {
-        locale.cGo = paramc;
+        locale.cGU = paramc;
         paramc = (a)locale;
         if (paramc.isValid()) {
           break label339;
         }
         Log.w("MicroMsg.AppBrand.MakeupApplyAdapterCoreLogic", "convert2PathImpl, flattenInfo is invalid");
-        s.deleteDir(localo.getAbsolutePath());
+        u.deleteDir(localq.bOF());
         paramc = locala;
         break;
         i = 0;
         break label240;
         label292:
-        paramc = paramc.cGo;
+        paramc = paramc.cGU;
         if (paramc == null) {
-          kotlin.g.b.p.hyc();
+          kotlin.g.b.p.iCn();
         }
-        paramc = i.c(localo, new o(paramc));
+        paramc = i.c(localq, new com.tencent.mm.vfs.q(paramc));
         if (paramc != null)
         {
           localObject = paramc.getName();
@@ -271,42 +272,42 @@ public final class h
         }
       }
       label339:
-      localObject = new o(localo, "config.json").getAbsolutePath();
-      kotlin.g.b.p.g(localObject, "configFile.absolutePath");
+      localObject = new com.tencent.mm.vfs.q(localq, "config.json").bOF();
+      kotlin.g.b.p.j(localObject, "configFile.absolutePath");
       Log.d("MicroMsg.AppBrand.MakeupApplyAdapterCoreLogic", "convert2PathImpl, configPath: ".concat(String.valueOf(localObject)));
-      locala = com.tencent.mm.sticker.a.NMI;
+      locala = com.tencent.mm.sticker.a.Vas;
       com.tencent.mm.sticker.a.a.a((com.tencent.mm.sticker.a)paramc, (String)localObject);
-      paramc = localo.getAbsolutePath();
+      paramc = localq.bOF();
     }
-    AppMethodBeat.o(229727);
+    AppMethodBeat.o(276457);
     return false;
   }
   
   public final boolean a(com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.d paramd)
   {
-    AppMethodBeat.i(229729);
-    kotlin.g.b.p.h(paramd, "info");
-    Object localObject1 = i.oGO;
-    kotlin.g.b.p.h(paramd, "info");
-    o localo = new o(i.a((i)localObject1), i.a((com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.h)paramd));
-    if ((!localo.exists()) && (!s.boN(localo.getAbsolutePath())))
+    AppMethodBeat.i(276459);
+    kotlin.g.b.p.k(paramd, "info");
+    Object localObject1 = i.rIE;
+    kotlin.g.b.p.k(paramd, "info");
+    com.tencent.mm.vfs.q localq = new com.tencent.mm.vfs.q(i.a((i)localObject1), i.a((com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.h)paramd));
+    if ((!localq.ifE()) && (!u.bBD(localq.bOF())))
     {
       Log.w("MicroMsg.AppBrand.MakeupApplyAdapterCoreLogic", "convert2PathImpl, create resDir fail");
       paramd = null;
     }
     while (paramd != null)
     {
-      this.oGN.a(l.b.cGI, paramd);
-      AppMethodBeat.o(229729);
+      this.rID.a(m.b.cHo, paramd);
+      AppMethodBeat.o(276459);
       return true;
       f localf = new f();
-      localf.cGt = paramd.cGt;
-      localf.cGu = paramd.cGu;
-      localObject1 = i.c(localo, new o(paramd.cGv));
+      localf.cGZ = paramd.cGZ;
+      localf.cHa = paramd.cHa;
+      localObject1 = i.c(localq, new com.tencent.mm.vfs.q(paramd.cHb));
       Object localObject2;
       if (localObject1 != null)
       {
-        localObject2 = ((o)localObject1).getName();
+        localObject2 = ((com.tencent.mm.vfs.q)localObject1).getName();
         localObject1 = localObject2;
         if (localObject2 != null) {}
       }
@@ -314,12 +315,12 @@ public final class h
       {
         localObject1 = "";
       }
-      kotlin.g.b.p.h(localObject1, "<set-?>");
-      localf.cGv = ((String)localObject1);
-      localObject1 = i.c(localo, new o(paramd.cGx));
+      kotlin.g.b.p.k(localObject1, "<set-?>");
+      localf.cHb = ((String)localObject1);
+      localObject1 = i.c(localq, new com.tencent.mm.vfs.q(paramd.cHd));
       if (localObject1 != null)
       {
-        localObject2 = ((o)localObject1).getName();
+        localObject2 = ((com.tencent.mm.vfs.q)localObject1).getName();
         localObject1 = localObject2;
         if (localObject2 != null) {}
       }
@@ -327,79 +328,79 @@ public final class h
       {
         localObject1 = "";
       }
-      kotlin.g.b.p.h(localObject1, "<set-?>");
-      localf.cGx = ((String)localObject1);
-      localf.cGc = paramd.cGc;
+      kotlin.g.b.p.k(localObject1, "<set-?>");
+      localf.cHd = ((String)localObject1);
+      localf.cGI = paramd.cGI;
       paramd = (a)localf;
       if (!paramd.isValid())
       {
         Log.w("MicroMsg.AppBrand.MakeupApplyAdapterCoreLogic", "convert2PathImpl, flattenInfo is invalid");
-        s.deleteDir(localo.getAbsolutePath());
+        u.deleteDir(localq.bOF());
         paramd = null;
       }
       else
       {
-        localObject1 = new o(localo, "config.json").getAbsolutePath();
-        kotlin.g.b.p.g(localObject1, "configFile.absolutePath");
+        localObject1 = new com.tencent.mm.vfs.q(localq, "config.json").bOF();
+        kotlin.g.b.p.j(localObject1, "configFile.absolutePath");
         Log.d("MicroMsg.AppBrand.MakeupApplyAdapterCoreLogic", "convert2PathImpl, configPath: ".concat(String.valueOf(localObject1)));
-        localObject2 = com.tencent.mm.sticker.a.NMI;
+        localObject2 = com.tencent.mm.sticker.a.Vas;
         com.tencent.mm.sticker.a.a.a((com.tencent.mm.sticker.a)paramd, (String)localObject1);
-        paramd = localo.getAbsolutePath();
+        paramd = localq.bOF();
       }
     }
-    AppMethodBeat.o(229729);
+    AppMethodBeat.o(276459);
     return false;
   }
   
-  public final boolean a(n paramn)
+  public final boolean a(o paramo)
   {
-    AppMethodBeat.i(229726);
-    kotlin.g.b.p.h(paramn, "info");
-    Object localObject1 = i.oGO;
-    kotlin.g.b.p.h(paramn, "info");
-    localObject1 = new o(i.a((i)localObject1), i.a((com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.h)paramn));
-    if ((!((o)localObject1).exists()) && (!s.boN(((o)localObject1).getAbsolutePath())))
+    AppMethodBeat.i(276456);
+    kotlin.g.b.p.k(paramo, "info");
+    Object localObject1 = i.rIE;
+    kotlin.g.b.p.k(paramo, "info");
+    localObject1 = new com.tencent.mm.vfs.q(i.a((i)localObject1), i.a((com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.h)paramo));
+    if ((!((com.tencent.mm.vfs.q)localObject1).ifE()) && (!u.bBD(((com.tencent.mm.vfs.q)localObject1).bOF())))
     {
       Log.w("MicroMsg.AppBrand.MakeupApplyAdapterCoreLogic", "convert2PathImpl, create resDir fail");
-      paramn = null;
+      paramo = null;
     }
-    while (paramn != null)
+    while (paramo != null)
     {
-      this.oGN.a(l.b.cGF, paramn);
-      AppMethodBeat.o(229726);
+      this.rID.a(m.b.cHl, paramo);
+      AppMethodBeat.o(276456);
       return true;
       Object localObject2 = new g();
-      ((g)localObject2).alpha = paramn.alpha;
-      ((g)localObject2).cGX = paramn.cGU.cGX;
-      ((g)localObject2).cGY = paramn.cGU.cGY;
-      ((g)localObject2).cGZ = paramn.cGU.cGZ;
-      ((g)localObject2).type = paramn.cGV.jsonVal;
-      ((g)localObject2).cGc = paramn.cGc;
-      ((g)localObject2).oGM = paramn.cGW.jsonVal;
-      paramn = (a)localObject2;
-      if (!paramn.isValid())
+      ((g)localObject2).alpha = paramo.alpha;
+      ((g)localObject2).cHD = paramo.cHA.cHD;
+      ((g)localObject2).cHE = paramo.cHA.cHE;
+      ((g)localObject2).cHF = paramo.cHA.cHF;
+      ((g)localObject2).type = paramo.cHB.jsonVal;
+      ((g)localObject2).cGI = paramo.cGI;
+      ((g)localObject2).rIC = paramo.cHC.jsonVal;
+      paramo = (a)localObject2;
+      if (!paramo.isValid())
       {
         Log.w("MicroMsg.AppBrand.MakeupApplyAdapterCoreLogic", "convert2PathImpl, flattenInfo is invalid");
-        s.deleteDir(((o)localObject1).getAbsolutePath());
-        paramn = null;
+        u.deleteDir(((com.tencent.mm.vfs.q)localObject1).bOF());
+        paramo = null;
       }
       else
       {
-        localObject2 = new o((o)localObject1, "config.json").getAbsolutePath();
-        kotlin.g.b.p.g(localObject2, "configFile.absolutePath");
+        localObject2 = new com.tencent.mm.vfs.q((com.tencent.mm.vfs.q)localObject1, "config.json").bOF();
+        kotlin.g.b.p.j(localObject2, "configFile.absolutePath");
         Log.d("MicroMsg.AppBrand.MakeupApplyAdapterCoreLogic", "convert2PathImpl, configPath: ".concat(String.valueOf(localObject2)));
-        com.tencent.mm.sticker.a.a locala = com.tencent.mm.sticker.a.NMI;
-        com.tencent.mm.sticker.a.a.a((com.tencent.mm.sticker.a)paramn, (String)localObject2);
-        paramn = ((o)localObject1).getAbsolutePath();
+        com.tencent.mm.sticker.a.a locala = com.tencent.mm.sticker.a.Vas;
+        com.tencent.mm.sticker.a.a.a((com.tencent.mm.sticker.a)paramo, (String)localObject2);
+        paramo = ((com.tencent.mm.vfs.q)localObject1).bOF();
       }
     }
-    AppMethodBeat.o(229726);
+    AppMethodBeat.o(276456);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.xweb_ext.a.h
  * JD-Core Version:    0.7.0.1
  */

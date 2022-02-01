@@ -18,12 +18,12 @@ public class RealSetFillStyleActionLinearArg
   extends RealSetFillStyleActionArg
 {
   public static final Parcelable.Creator<RealSetFillStyleActionLinearArg> CREATOR;
-  public float kZA;
-  public float kZB;
-  public float kZC;
-  public float kZD;
-  public int[] kZE;
-  public float[] kZF;
+  public float nTL;
+  public float nTM;
+  public float nTN;
+  public float nTO;
+  public int[] nTP;
+  public float[] nTQ;
   
   static
   {
@@ -42,12 +42,12 @@ public class RealSetFillStyleActionLinearArg
   public final boolean a(d paramd, Canvas paramCanvas)
   {
     AppMethodBeat.i(145046);
-    if ((this.kZE == null) || (this.kZF == null))
+    if ((this.nTP == null) || (this.nTQ == null))
     {
       AppMethodBeat.o(145046);
       return false;
     }
-    paramd.kZm.setShader(new LinearGradient(this.kZA, this.kZB, this.kZC, this.kZD, this.kZE, this.kZF, Shader.TileMode.CLAMP));
+    paramd.nTx.setShader(new LinearGradient(this.nTL, this.nTM, this.nTN, this.nTO, this.nTP, this.nTQ, Shader.TileMode.CLAMP));
     AppMethodBeat.o(145046);
     return true;
   }
@@ -76,7 +76,7 @@ public class RealSetFillStyleActionLinearArg
       return false;
     }
     paramObject = (RealSetFillStyleActionLinearArg)paramObject;
-    if ((Float.compare(paramObject.kZA, this.kZA) == 0) && (Float.compare(paramObject.kZB, this.kZB) == 0) && (Float.compare(paramObject.kZC, this.kZC) == 0) && (Float.compare(paramObject.kZD, this.kZD) == 0) && (Arrays.equals(this.kZE, paramObject.kZE)) && (Arrays.equals(this.kZF, paramObject.kZF)))
+    if ((Float.compare(paramObject.nTL, this.nTL) == 0) && (Float.compare(paramObject.nTM, this.nTM) == 0) && (Float.compare(paramObject.nTN, this.nTN) == 0) && (Float.compare(paramObject.nTO, this.nTO) == 0) && (Arrays.equals(this.nTP, paramObject.nTP)) && (Arrays.equals(this.nTQ, paramObject.nTQ)))
     {
       AppMethodBeat.o(145049);
       return true;
@@ -100,26 +100,26 @@ public class RealSetFillStyleActionLinearArg
       AppMethodBeat.o(145051);
       return;
     }
-    this.kZA = g.f(localJSONArray, 0);
-    this.kZB = g.f(localJSONArray, 1);
-    this.kZC = g.f(localJSONArray, 2);
-    this.kZD = g.f(localJSONArray, 3);
+    this.nTL = g.f(localJSONArray, 0);
+    this.nTM = g.f(localJSONArray, 1);
+    this.nTN = g.f(localJSONArray, 2);
+    this.nTO = g.f(localJSONArray, 3);
     paramJSONArray = paramJSONArray.optJSONArray(2);
     if ((paramJSONArray == null) || (paramJSONArray.length() == 0))
     {
       AppMethodBeat.o(145051);
       return;
     }
-    this.kZE = new int[paramJSONArray.length()];
-    this.kZF = new float[paramJSONArray.length()];
+    this.nTP = new int[paramJSONArray.length()];
+    this.nTQ = new float[paramJSONArray.length()];
     int i = 0;
     while (i < paramJSONArray.length())
     {
       localJSONArray = paramJSONArray.optJSONArray(i);
       if (localJSONArray.length() >= 2)
       {
-        this.kZF[i] = ((float)localJSONArray.optDouble(0));
-        this.kZE[i] = g.r(localJSONArray.optJSONArray(1));
+        this.nTQ[i] = ((float)localJSONArray.optDouble(0));
+        this.nTP[i] = g.r(localJSONArray.optJSONArray(1));
       }
       i += 1;
     }
@@ -129,9 +129,9 @@ public class RealSetFillStyleActionLinearArg
   public int hashCode()
   {
     AppMethodBeat.i(145050);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.kZA), Float.valueOf(this.kZB), Float.valueOf(this.kZC), Float.valueOf(this.kZD) });
-    int j = Arrays.hashCode(this.kZE);
-    int k = Arrays.hashCode(this.kZF);
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.nTL), Float.valueOf(this.nTM), Float.valueOf(this.nTN), Float.valueOf(this.nTO) });
+    int j = Arrays.hashCode(this.nTP);
+    int k = Arrays.hashCode(this.nTQ);
     AppMethodBeat.o(145050);
     return (i * 31 + j) * 31 + k;
   }
@@ -140,21 +140,21 @@ public class RealSetFillStyleActionLinearArg
   {
     AppMethodBeat.i(145047);
     super.i(paramParcel);
-    this.kZA = paramParcel.readFloat();
-    this.kZB = paramParcel.readFloat();
-    this.kZC = paramParcel.readFloat();
-    this.kZD = paramParcel.readFloat();
+    this.nTL = paramParcel.readFloat();
+    this.nTM = paramParcel.readFloat();
+    this.nTN = paramParcel.readFloat();
+    this.nTO = paramParcel.readFloat();
     int i = paramParcel.readInt();
     if (i > 0)
     {
-      this.kZE = new int[i];
-      paramParcel.readIntArray(this.kZE);
+      this.nTP = new int[i];
+      paramParcel.readIntArray(this.nTP);
     }
     i = paramParcel.readInt();
     if (i > 0)
     {
-      this.kZF = new float[i];
-      paramParcel.readFloatArray(this.kZF);
+      this.nTQ = new float[i];
+      paramParcel.readFloatArray(this.nTQ);
     }
     AppMethodBeat.o(145047);
   }
@@ -170,19 +170,19 @@ public class RealSetFillStyleActionLinearArg
   {
     AppMethodBeat.i(145048);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeFloat(this.kZA);
-    paramParcel.writeFloat(this.kZB);
-    paramParcel.writeFloat(this.kZC);
-    paramParcel.writeFloat(this.kZD);
-    if (this.kZE != null)
+    paramParcel.writeFloat(this.nTL);
+    paramParcel.writeFloat(this.nTM);
+    paramParcel.writeFloat(this.nTN);
+    paramParcel.writeFloat(this.nTO);
+    if (this.nTP != null)
     {
-      paramParcel.writeInt(this.kZE.length);
-      paramParcel.writeIntArray(this.kZE);
+      paramParcel.writeInt(this.nTP.length);
+      paramParcel.writeIntArray(this.nTP);
     }
-    while (this.kZF != null)
+    while (this.nTQ != null)
     {
-      paramParcel.writeInt(this.kZF.length);
-      paramParcel.writeFloatArray(this.kZF);
+      paramParcel.writeInt(this.nTQ.length);
+      paramParcel.writeFloatArray(this.nTQ);
       AppMethodBeat.o(145048);
       return;
       paramParcel.writeInt(0);
@@ -193,7 +193,7 @@ public class RealSetFillStyleActionLinearArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetFillStyleActionLinearArg
  * JD-Core Version:    0.7.0.1
  */

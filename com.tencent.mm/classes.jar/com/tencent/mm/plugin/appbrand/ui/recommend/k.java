@@ -9,25 +9,25 @@ import kotlin.l;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/WeAppNativeExtraDataWeUse;", "Lcom/tencent/mm/plugin/appbrand/api/IWeAppOpenNativeExtraData;", "showOrderEntrance", "", "redDotTypeList", "", "(I[I)V", "TAG", "", "getRedDotTypeList", "()[I", "getShowOrderEntrance", "()I", "component1", "component2", "copy", "equals", "", "other", "", "hashCode", "toJsonString", "toString", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/WeAppNativeExtraDataWeUse;", "Lcom/tencent/mm/plugin/appbrand/api/IWeAppOpenNativeExtraData;", "showOrderEntrance", "", "redDotTypeList", "", "(I[I)V", "TAG", "", "getRedDotTypeList", "()[I", "getShowOrderEntrance", "()I", "component1", "component2", "copy", "equals", "", "other", "", "hashCode", "toJsonString", "toString", "plugin-appbrand-integration_release"})
 public final class k
   implements d
 {
   private final String TAG = "MicroMsg.AppBrand.WeAppNativeExtraDataWeUse";
-  private final int ofY = 1;
-  private final int[] ofZ = null;
+  private final int rhJ = 1;
+  private final int[] rhK = null;
   
-  public final String bua()
+  public final String bFa()
   {
     AppMethodBeat.i(180714);
     try
     {
       localObject = new JSONObject();
-      ((JSONObject)localObject).put("showOrderEntrance", this.ofY);
-      if (this.ofZ != null)
+      ((JSONObject)localObject).put("showOrderEntrance", this.rhJ);
+      if (this.rhK != null)
       {
         JSONArray localJSONArray = new JSONArray();
-        int[] arrayOfInt = this.ofZ;
+        int[] arrayOfInt = this.rhK;
         int j = arrayOfInt.length;
         int i = 0;
         while (i < j)
@@ -38,7 +38,7 @@ public final class k
         ((JSONObject)localObject).put("redDotTypeList", localJSONArray);
       }
       localObject = ((JSONObject)localObject).toString();
-      p.g(localObject, "obj.toString()");
+      p.j(localObject, "obj.toString()");
     }
     catch (Throwable localThrowable)
     {
@@ -61,7 +61,7 @@ public final class k
       if ((paramObject instanceof k))
       {
         paramObject = (k)paramObject;
-        if ((this.ofY != paramObject.ofY) || (!p.j(this.ofZ, paramObject.ofZ))) {}
+        if ((this.rhJ != paramObject.rhJ) || (!p.h(this.rhK, paramObject.rhK))) {}
       }
     }
     else
@@ -76,8 +76,8 @@ public final class k
   public final int hashCode()
   {
     AppMethodBeat.i(180716);
-    int j = this.ofY;
-    int[] arrayOfInt = this.ofZ;
+    int j = this.rhJ;
+    int[] arrayOfInt = this.rhK;
     if (arrayOfInt != null) {}
     for (int i = Arrays.hashCode(arrayOfInt);; i = 0)
     {
@@ -89,7 +89,7 @@ public final class k
   public final String toString()
   {
     AppMethodBeat.i(180715);
-    String str = bua();
+    String str = bFa();
     AppMethodBeat.o(180715);
     return str;
   }

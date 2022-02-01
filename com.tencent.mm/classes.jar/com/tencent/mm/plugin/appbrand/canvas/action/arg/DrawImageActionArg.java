@@ -13,12 +13,12 @@ public class DrawImageActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<DrawImageActionArg> CREATOR;
-  public int aWX;
-  public int aWY;
+  public int aGp;
+  public int aGq;
   public float height;
-  public int kZx;
-  public int kZy;
-  public int kZz;
+  public int nTI;
+  public int nTJ;
+  public int nTK;
   public String url;
   public float width;
   public float x;
@@ -62,7 +62,7 @@ public class DrawImageActionArg
       return false;
     }
     paramObject = (DrawImageActionArg)paramObject;
-    if ((this.kZx == paramObject.kZx) && (Float.compare(paramObject.x, this.x) == 0) && (Float.compare(paramObject.y, this.y) == 0) && (Float.compare(paramObject.width, this.width) == 0) && (Float.compare(paramObject.height, this.height) == 0) && (this.kZy == paramObject.kZy) && (this.kZz == paramObject.kZz) && (this.aWX == paramObject.aWX) && (this.aWY == paramObject.aWY) && (Objects.equals(this.url, paramObject.url)))
+    if ((this.nTI == paramObject.nTI) && (Float.compare(paramObject.x, this.x) == 0) && (Float.compare(paramObject.y, this.y) == 0) && (Float.compare(paramObject.width, this.width) == 0) && (Float.compare(paramObject.height, this.height) == 0) && (this.nTJ == paramObject.nTJ) && (this.nTK == paramObject.nTK) && (this.aGp == paramObject.aGp) && (this.aGq == paramObject.aGq) && (Objects.equals(this.url, paramObject.url)))
     {
       AppMethodBeat.o(145019);
       return true;
@@ -74,7 +74,7 @@ public class DrawImageActionArg
   public int hashCode()
   {
     AppMethodBeat.i(145020);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Integer.valueOf(this.kZx), this.url, Float.valueOf(this.x), Float.valueOf(this.y), Float.valueOf(this.width), Float.valueOf(this.height), Integer.valueOf(this.kZy), Integer.valueOf(this.kZz), Integer.valueOf(this.aWX), Integer.valueOf(this.aWY) });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Integer.valueOf(this.nTI), this.url, Float.valueOf(this.x), Float.valueOf(this.y), Float.valueOf(this.width), Float.valueOf(this.height), Integer.valueOf(this.nTJ), Integer.valueOf(this.nTK), Integer.valueOf(this.aGp), Integer.valueOf(this.aGq) });
     AppMethodBeat.o(145020);
     return i;
   }
@@ -83,16 +83,16 @@ public class DrawImageActionArg
   {
     AppMethodBeat.i(145016);
     super.i(paramParcel);
-    this.kZx = paramParcel.readInt();
+    this.nTI = paramParcel.readInt();
     this.url = paramParcel.readString();
     this.x = paramParcel.readFloat();
     this.y = paramParcel.readFloat();
     this.width = paramParcel.readFloat();
     this.height = paramParcel.readFloat();
-    this.kZy = paramParcel.readInt();
-    this.kZz = paramParcel.readInt();
-    this.aWX = paramParcel.readInt();
-    this.aWY = paramParcel.readInt();
+    this.nTJ = paramParcel.readInt();
+    this.nTK = paramParcel.readInt();
+    this.aGp = paramParcel.readInt();
+    this.aGq = paramParcel.readInt();
     AppMethodBeat.o(145016);
   }
   
@@ -103,16 +103,16 @@ public class DrawImageActionArg
     try
     {
       paramJSONObject = paramJSONObject.optJSONArray("data");
-      this.kZx = paramJSONObject.length();
+      this.nTI = paramJSONObject.length();
       this.url = paramJSONObject.optString(0);
       this.x = g.f(paramJSONObject, 1);
       this.y = g.f(paramJSONObject, 2);
       this.width = g.f(paramJSONObject, 3);
       this.height = g.f(paramJSONObject, 4);
-      this.kZy = paramJSONObject.optInt(5);
-      this.kZz = paramJSONObject.optInt(6);
-      this.aWX = paramJSONObject.optInt(7);
-      this.aWY = paramJSONObject.optInt(8);
+      this.nTJ = paramJSONObject.optInt(5);
+      this.nTK = paramJSONObject.optInt(6);
+      this.aGp = paramJSONObject.optInt(7);
+      this.aGq = paramJSONObject.optInt(8);
       AppMethodBeat.o(145017);
       return;
     }
@@ -127,22 +127,22 @@ public class DrawImageActionArg
   {
     AppMethodBeat.i(145018);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeInt(this.kZx);
+    paramParcel.writeInt(this.nTI);
     paramParcel.writeString(this.url);
     paramParcel.writeFloat(this.x);
     paramParcel.writeFloat(this.y);
     paramParcel.writeFloat(this.width);
     paramParcel.writeFloat(this.height);
-    paramParcel.writeInt(this.kZy);
-    paramParcel.writeInt(this.kZz);
-    paramParcel.writeInt(this.aWX);
-    paramParcel.writeInt(this.aWY);
+    paramParcel.writeInt(this.nTJ);
+    paramParcel.writeInt(this.nTK);
+    paramParcel.writeInt(this.aGp);
+    paramParcel.writeInt(this.aGq);
     AppMethodBeat.o(145018);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawImageActionArg
  * JD-Core Version:    0.7.0.1
  */

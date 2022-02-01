@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  private static a hlA = null;
+  private static a jXj = null;
   
   public static void a(a.b paramb)
   {
     AppMethodBeat.i(62479);
-    int m = (int)(paramb.hla - paramb.hlg);
+    int m = (int)(paramb.jWJ - paramb.jWP);
     int i;
     int n;
     if (HardCoderJNI.isHcEnable())
     {
       i = 1;
       n = HardCoderJNI.isRunning();
-      if (m - paramb.delay > 0) {
+      if (m - paramb.fJe > 0) {
         break label172;
       }
     }
@@ -37,14 +37,14 @@ public final class e
     for (int j = 1;; j = 0)
     {
       i1 = paramb.scene;
-      l = paramb.hlf;
-      i2 = paramb.hlb;
-      i3 = paramb.hld;
-      arrayOfInt1 = paramb.hln;
-      i4 = (int)(paramb.hlh - paramb.startTime);
+      l = paramb.jWO;
+      i2 = paramb.jWK;
+      i3 = paramb.jWM;
+      arrayOfInt1 = paramb.jWW;
+      i4 = (int)(paramb.jWQ - paramb.startTime);
       i5 = HardCoderJNI.tickRate;
-      arrayOfInt2 = paramb.hll;
-      arrayOfInt3 = paramb.hlm;
+      arrayOfInt2 = paramb.jWU;
+      arrayOfInt3 = paramb.jWV;
       localStringBuilder1 = new StringBuilder();
       if (arrayOfInt1 == null) {
         break label177;
@@ -85,9 +85,9 @@ public final class e
         k += 1;
       }
     }
-    d.d("Hardcoder.HardCoderReporter", String.format("performanceReport, hash:%s, threadId:%s, enable:%s, engineStatus:%s, cancelInDelay:%s, scene:%s, action:%s, lastCpuLevel:%s, cpuLevel:%s, lastIoLevel:%s, ioLevel:%s, bindCoreIds:%s, executeTime:%s, runtime:%s, phoneHZ:%s, cpuLevelTimeArray:%s, ioLevelTimeArray:%s", new Object[] { Integer.valueOf(paramb.hashCode()), paramb.axN(), Integer.valueOf(i), Integer.valueOf(n), Integer.valueOf(j), Integer.valueOf(i1), Long.valueOf(l), Integer.valueOf(paramb.hlj), Integer.valueOf(i2), Integer.valueOf(paramb.hlk), Integer.valueOf(i3), localStringBuilder1.toString(), Integer.valueOf(i4), Integer.valueOf(m), Integer.valueOf(i5), localStringBuilder2.toString(), localStringBuilder3.toString() }));
-    if (hlA != null) {
-      hlA.a(paramb.hle, i, n, j, i1, l, i2, i3, arrayOfInt1, i4, m, i5, arrayOfInt2, arrayOfInt3);
+    d.d("Hardcoder.HardCoderReporter", String.format("performanceReport, hash:%s, threadId:%s, enable:%s, engineStatus:%s, cancelInDelay:%s, scene:%s, action:%s, lastCpuLevel:%s, cpuLevel:%s, lastIoLevel:%s, ioLevel:%s, bindCoreIds:%s, executeTime:%s, runtime:%s, phoneHZ:%s, cpuLevelTimeArray:%s, ioLevelTimeArray:%s", new Object[] { Integer.valueOf(paramb.hashCode()), paramb.aFe(), Integer.valueOf(i), Integer.valueOf(n), Integer.valueOf(j), Integer.valueOf(i1), Long.valueOf(l), Integer.valueOf(paramb.jWS), Integer.valueOf(i2), Integer.valueOf(paramb.jWT), Integer.valueOf(i3), localStringBuilder1.toString(), Integer.valueOf(i4), Integer.valueOf(m), Integer.valueOf(i5), localStringBuilder2.toString(), localStringBuilder3.toString() }));
+    if (jXj != null) {
+      jXj.a(paramb.jWN, i, n, j, i1, l, i2, i3, arrayOfInt1, i4, m, i5, arrayOfInt2, arrayOfInt3);
     }
     AppMethodBeat.o(62479);
   }
@@ -95,10 +95,10 @@ public final class e
   public static void a(a parama)
   {
     AppMethodBeat.i(62478);
-    if (hlA == null)
+    if (jXj == null)
     {
       d.i("Hardcoder.HardCoderReporter", String.format("setReporter[%s]", new Object[] { parama }));
-      hlA = parama;
+      jXj = parama;
     }
     AppMethodBeat.o(62478);
   }
@@ -110,7 +110,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.hardcoder.e
  * JD-Core Version:    0.7.0.1
  */

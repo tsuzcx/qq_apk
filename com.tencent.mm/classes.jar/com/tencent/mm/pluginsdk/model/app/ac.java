@@ -1,17 +1,17 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.g.c.y;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.f.c.y;
 import com.tencent.mm.network.s;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.r.a;
-import com.tencent.mm.protocal.protobuf.bid;
-import com.tencent.mm.protocal.protobuf.bie;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.protocal.protobuf.nf;
+import com.tencent.mm.plugin.ab.a;
+import com.tencent.mm.protocal.protobuf.bpo;
+import com.tencent.mm.protocal.protobuf.bpp;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.mw;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -22,104 +22,104 @@ import java.util.List;
 public final class ac
   extends aa
 {
-  private static final String[] JWy = { "wxf109da3e26cf89f1", "wxc56bba830743541e", "wx41dd4f6ef137bd0b" };
+  private static final String[] QWR = { "wxf109da3e26cf89f1", "wxc56bba830743541e", "wx41dd4f6ef137bd0b" };
   
   public ac(List<String> paramList)
   {
     AppMethodBeat.i(151807);
     paramList = new LinkedList(paramList);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new bid();
-    ((d.a)localObject).iLO = new bie();
+    ((d.a)localObject).lBU = new bpo();
+    ((d.a)localObject).lBV = new bpp();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getappinfolist";
     ((d.a)localObject).funcId = 451;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.hhm = ((d.a)localObject).aXF();
-    localObject = (bid)this.hhm.iLK.iLR;
-    LinkedList localLinkedList = is(paramList);
-    ((bid)localObject).LSt = localLinkedList;
-    ((bid)localObject).oTz = localLinkedList.size();
-    ((bid)localObject).LSv = ir(paramList);
-    if (((bid)localObject).LSv != null) {
-      i = ((bid)localObject).LSv.size();
+    this.jTk = ((d.a)localObject).bgN();
+    localObject = (bpo)d.b.b(this.jTk.lBR);
+    LinkedList localLinkedList = jj(paramList);
+    ((bpo)localObject).Tbf = localLinkedList;
+    ((bpo)localObject).rVx = localLinkedList.size();
+    ((bpo)localObject).Tbh = ji(paramList);
+    if (((bpo)localObject).Tbh != null) {
+      i = ((bpo)localObject).Tbh.size();
     }
-    ((bid)localObject).LSu = i;
+    ((bpo)localObject).Tbg = i;
     AppMethodBeat.o(151807);
   }
   
-  private static void a(g paramg, nf paramnf)
+  private static void a(g paramg, mw parammw)
   {
     int k = 0;
     AppMethodBeat.i(151811);
     if (paramg == null)
     {
       paramg = new g();
-      paramg.field_appId = paramnf.jfi;
+      paramg.field_appId = parammw.lVG;
     }
     for (int i = 1;; i = 0)
     {
-      Log.i("MicroMsg.NetSceneGetAppInfoList", "appid:[%s], appinfoflag:[%d] AppSupportContentType:%d", new Object[] { paramnf.jfi, Integer.valueOf(paramnf.xIN), Long.valueOf(paramnf.KSe) });
+      Log.i("MicroMsg.NetSceneGetAppInfoList", "appid:[%s], appinfoflag:[%d] AppSupportContentType:%d", new Object[] { parammw.lVG, Integer.valueOf(parammw.CMT), Long.valueOf(parammw.RTf) });
       Log.i("MicroMsg.NetSceneGetAppInfoList", "appId=%s, appName=%s, status=%s, appInfoFlag=%s", new Object[] { paramg.field_appId, paramg.field_appName, Integer.valueOf(paramg.field_status), Integer.valueOf(paramg.field_appInfoFlag) });
-      if ((!paramg.gmR()) || (Util.isNullOrNil(paramg.field_appName))) {
-        paramg.field_appName = paramnf.Name;
+      if ((!paramg.hhs()) || (Util.isNullOrNil(paramg.field_appName))) {
+        paramg.field_appName = parammw.CMP;
       }
-      if ((!paramg.gmR()) || (Util.isNullOrNil(paramg.field_appName_en))) {
-        paramg.field_appName_en = paramnf.KRP;
+      if ((!paramg.hhs()) || (Util.isNullOrNil(paramg.field_appName_en))) {
+        paramg.field_appName_en = parammw.RSQ;
       }
-      if ((!paramg.gmR()) || (Util.isNullOrNil(paramg.field_appName_tw))) {
-        paramg.field_appName_tw = paramnf.KRR;
+      if ((!paramg.hhs()) || (Util.isNullOrNil(paramg.field_appName_tw))) {
+        paramg.field_appName_tw = parammw.RSS;
       }
-      paramg.field_appDiscription = paramnf.KHk;
-      paramg.field_appDiscription_en = paramnf.KRQ;
-      paramg.field_appDiscription_tw = paramnf.KRS;
-      paramg.field_appWatermarkUrl = paramnf.KRW;
-      paramg.field_packageName = paramnf.KFu;
-      Object localObject = paramnf.KRX;
+      paramg.field_appDiscription = parammw.RIC;
+      paramg.field_appDiscription_en = parammw.RSR;
+      paramg.field_appDiscription_tw = parammw.RST;
+      paramg.field_appWatermarkUrl = parammw.RSX;
+      paramg.field_packageName = parammw.RGL;
+      Object localObject = parammw.RSY;
       int j;
       if ((localObject == null) || (((String)localObject).length() == 0))
       {
         Log.e("MicroMsg.AppUtil", "getDbSignature, svrSign is null");
         localObject = null;
         paramg.field_signature = ((String)localObject);
-        Log.i("MicroMsg.NetSceneGetAppInfoList", "get signature, server sig : %s, gen sig: %s pkd: %s", new Object[] { paramnf.KRX, paramg.field_signature, paramnf.KFu });
-        paramg.field_appType = paramnf.KRY;
+        Log.i("MicroMsg.NetSceneGetAppInfoList", "get signature, server sig : %s, gen sig: %s pkd: %s", new Object[] { parammw.RSY, paramg.field_signature, parammw.RGL });
+        paramg.field_appType = parammw.RSZ;
         if ((!Util.isNullOrNil(paramg.field_appType)) && ((paramg.field_appType.startsWith("1")) || (paramg.field_appType.startsWith("6")))) {
           paramg.field_appType = ("," + paramg.field_appType);
         }
-        paramg.field_appInfoFlag = paramnf.xIN;
-        paramg.field_appVersion = paramnf.KSa;
-        paramg.Bk(paramnf.KRZ);
-        paramg.field_appWatermarkUrl = paramnf.KRW;
-        if ((!Util.isNullOrNil(paramnf.xuc)) && (!Util.isNullOrNil(paramnf.KSd)))
+        paramg.field_appInfoFlag = parammw.CMT;
+        paramg.field_appVersion = parammw.RTb;
+        paramg.HY(parammw.RTa);
+        paramg.field_appWatermarkUrl = parammw.RSX;
+        if ((!Util.isNullOrNil(parammw.Cqt)) && (!Util.isNullOrNil(parammw.RTe)))
         {
-          Log.i("MicroMsg.NetSceneGetAppInfoList", "get app download url and download md5 : [%s], [%s], [%s]", new Object[] { paramg.field_appName, paramnf.xuc, paramnf.KSd });
-          paramg.Bl(paramnf.xuc);
-          paramg.Bo(paramnf.KSd);
+          Log.i("MicroMsg.NetSceneGetAppInfoList", "get app download url and download md5 : [%s], [%s], [%s]", new Object[] { paramg.field_appName, parammw.Cqt, parammw.RTe });
+          paramg.HZ(parammw.Cqt);
+          paramg.Ic(parammw.RTe);
         }
-        paramg.Bp(paramnf.KFv);
-        paramg.field_svrAppSupportContentType = paramnf.KSe;
-        if (paramnf.KSb > paramg.fmF)
+        paramg.Id(parammw.RGM);
+        paramg.field_svrAppSupportContentType = parammw.RTf;
+        if (parammw.RTc > paramg.hrE)
         {
-          paramg.fmG = 1;
-          paramg.fma = true;
+          paramg.hrF = 1;
+          paramg.hqZ = true;
         }
-        paramg.fmF = paramnf.KSb;
-        paramg.fma = true;
-        localObject = paramnf.KFu;
-        String str = paramnf.KFu;
+        paramg.hrE = parammw.RTc;
+        paramg.hqZ = true;
+        localObject = parammw.RGL;
+        String str = parammw.RGL;
         if ((localObject != null) && (((String)localObject).length() != 0) && (str != null) && (str.length() != 0)) {
           break label716;
         }
         j = 1;
         label553:
         if (j != 0) {
-          Log.e("MicroMsg.NetSceneGetAppInfoList", "no android app, packageName = " + paramnf.KFu + "appid: " + paramg.field_appId);
+          Log.e("MicroMsg.NetSceneGetAppInfoList", "no android app, packageName = " + parammw.RGL + "appid: " + paramg.field_appId);
         }
-        if (paramg.NA()) {
-          com.tencent.mm.pluginsdk.ui.tools.d.bfo(paramg.field_appId);
+        if (paramg.Qv()) {
+          com.tencent.mm.pluginsdk.ui.tools.d.brJ(paramg.field_appId);
         }
-        localObject = a.eAS();
+        localObject = a.fmz();
         if (i == 0) {
           break label794;
         }
@@ -130,16 +130,16 @@ public final class ac
         label625:
         paramg.field_status = i;
         paramg.field_modifyTime = System.currentTimeMillis();
-        paramg.field_appIconUrl = paramnf.KRU;
+        paramg.field_appIconUrl = parammw.RSV;
         if (paramg.field_appId != null) {
           i = k;
         }
       }
       for (;;)
       {
-        if (i < JWy.length)
+        if (i < QWR.length)
         {
-          if (paramg.field_appId.equals(JWy[i])) {
+          if (paramg.field_appId.equals(QWR[i])) {
             paramg.field_status = -1;
           }
         }
@@ -151,7 +151,7 @@ public final class ac
           Log.e("MicroMsg.NetSceneGetAppInfoList", "onGYNetEnd : insert fail");
           AppMethodBeat.o(151811);
           return;
-          localObject = r.bdM((String)localObject);
+          localObject = r.bqi((String)localObject);
           break;
           label716:
           j = 0;
@@ -163,11 +163,11 @@ public final class ac
         i += 1;
       }
       label733:
-      a.eAQ().gD(paramg.field_appId, 1);
-      a.eAQ().gD(paramg.field_appId, 2);
-      a.eAQ().gD(paramg.field_appId, 3);
-      a.eAQ().gD(paramg.field_appId, 4);
-      a.eAQ().gD(paramg.field_appId, 5);
+      a.fmx().hm(paramg.field_appId, 1);
+      a.fmx().hm(paramg.field_appId, 2);
+      a.fmx().hm(paramg.field_appId, 3);
+      a.fmx().hm(paramg.field_appId, 4);
+      a.fmx().hm(paramg.field_appId, 5);
       AppMethodBeat.o(151811);
       return;
       label794:
@@ -181,9 +181,9 @@ public final class ac
         if (paramg.field_appId != null)
         {
           i = 0;
-          if (i < JWy.length)
+          if (i < QWR.length)
           {
-            if (!paramg.field_appId.equals(JWy[i])) {
+            if (!paramg.field_appId.equals(QWR[i])) {
               break label1020;
             }
             paramg.field_status = -1;
@@ -196,18 +196,18 @@ public final class ac
         if (i == 0) {
           break label1077;
         }
-        Log.i("MicroMsg.NetSceneGetAppInfoList", "oldIcon = %s, newIcon = %s", new Object[] { paramg.field_appIconUrl, paramnf.KRU });
-        paramg.field_appIconUrl = paramnf.KRU;
+        Log.i("MicroMsg.NetSceneGetAppInfoList", "oldIcon = %s, newIcon = %s", new Object[] { paramg.field_appIconUrl, parammw.RSV });
+        paramg.field_appIconUrl = parammw.RSV;
         bool = ((j)localObject).a(paramg, new String[0]);
-        a.eAQ().gD(paramg.field_appId, 1);
-        a.eAQ().gD(paramg.field_appId, 2);
-        a.eAQ().gD(paramg.field_appId, 3);
-        a.eAQ().gD(paramg.field_appId, 4);
-        a.eAQ().gD(paramg.field_appId, 5);
+        a.fmx().hm(paramg.field_appId, 1);
+        a.fmx().hm(paramg.field_appId, 2);
+        a.fmx().hm(paramg.field_appId, 3);
+        a.fmx().hm(paramg.field_appId, 4);
+        a.fmx().hm(paramg.field_appId, 5);
       }
       for (;;)
       {
-        Log.i("MicroMsg.NetSceneGetAppInfoList", "update appinfo " + bool + ", appid = " + paramnf.jfi);
+        Log.i("MicroMsg.NetSceneGetAppInfoList", "update appinfo " + bool + ", appid = " + parammw.lVG);
         AppMethodBeat.o(151811);
         return;
         i = paramg.field_status;
@@ -216,12 +216,12 @@ public final class ac
         i += 1;
         break label814;
         label1027:
-        if ((paramnf == null) || (paramnf.KSc == null) || (paramnf.KSc.length() == 0))
+        if ((parammw == null) || (parammw.RTd == null) || (parammw.RTd.length() == 0))
         {
           i = 0;
           break label865;
         }
-        if (!paramg.field_appIconUrl.equals(paramnf.KRU))
+        if (!paramg.field_appIconUrl.equals(parammw.RSV))
         {
           i = 1;
           break label865;
@@ -234,7 +234,7 @@ public final class ac
     }
   }
   
-  private static LinkedList<dqi> ir(List<String> paramList)
+  private static LinkedList<eaf> ji(List<String> paramList)
   {
     AppMethodBeat.i(151808);
     LinkedList localLinkedList1 = new LinkedList();
@@ -268,13 +268,13 @@ public final class ac
         AppMethodBeat.o(151808);
         return localLinkedList2;
       }
-      paramList = is(localLinkedList1);
+      paramList = jj(localLinkedList1);
       AppMethodBeat.o(151808);
       return paramList;
     }
   }
   
-  private static LinkedList<dqi> is(List<String> paramList)
+  private static LinkedList<eaf> jj(List<String> paramList)
   {
     AppMethodBeat.i(151810);
     LinkedList localLinkedList = new LinkedList();
@@ -286,7 +286,7 @@ public final class ac
     {
       paramList = arrayOfString[i];
       if (!Util.isNullOrNil(paramList)) {
-        localLinkedList.add(z.Su(paramList));
+        localLinkedList.add(z.ZW(paramList));
       }
       i += 1;
     }
@@ -294,7 +294,7 @@ public final class ac
     return localLinkedList;
   }
   
-  public final void cB(byte[] paramArrayOfByte)
+  public final void cS(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151813);
     if (paramArrayOfByte == null)
@@ -305,7 +305,7 @@ public final class ac
     }
     try
     {
-      this.hhm.iLL.fromProtoBuf(paramArrayOfByte);
+      this.jTk.lBS.fromProtoBuf(paramArrayOfByte);
       AppMethodBeat.o(151813);
       return;
     }
@@ -322,12 +322,12 @@ public final class ac
     return 7;
   }
   
-  public final byte[] gmB()
+  public final byte[] hha()
   {
     AppMethodBeat.i(151812);
     try
     {
-      byte[] arrayOfByte = ((d.b)this.hhm.getReqObj()).toProtoBuf();
+      byte[] arrayOfByte = ((d.b)this.jTk.getReqObj()).toProtoBuf();
       AppMethodBeat.o(151812);
       return arrayOfByte;
     }
@@ -349,15 +349,15 @@ public final class ac
       AppMethodBeat.o(151809);
       return;
     }
-    paramString = ((bie)this.hhm.iLL.iLR).LSw;
+    paramString = ((bpp)d.c.b(this.jTk.lBS)).Tbi;
     if ((paramString != null) && (!paramString.isEmpty()))
     {
       paramString = paramString.iterator();
       while (paramString.hasNext())
       {
-        params = (nf)paramString.next();
+        params = (mw)paramString.next();
         if (params != null) {
-          a(h.o(params.jfi, false, false), params);
+          a(h.o(params.lVG, false, false), params);
         }
       }
     }
@@ -366,7 +366,7 @@ public final class ac
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.ac
  * JD-Core Version:    0.7.0.1
  */

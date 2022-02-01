@@ -1,15 +1,14 @@
 package com.tencent.mm.plugin.finder.extension.reddot;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cl;
-import com.tencent.mm.model.z;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.cm;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.storage.c;
-import com.tencent.mm.plugin.finder.storage.config.b;
-import com.tencent.mm.protocal.protobuf.bbi;
-import com.tencent.mm.protocal.protobuf.bdo;
+import com.tencent.mm.plugin.finder.storage.d;
+import com.tencent.mm.plugin.findersdk.a.ak;
+import com.tencent.mm.plugin.findersdk.d.a.a.b;
+import com.tencent.mm.protocal.protobuf.bhw;
+import com.tencent.mm.protocal.protobuf.bkn;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
@@ -18,51 +17,51 @@ import java.util.LinkedList;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotTransform;", "", "manager", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "(Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;)V", "addNearbyFootRedDot", "", "addNearbyNewRedDot", "addNearbyUnreadRedDot", "unreadCount", "", "addPostRedDot", "addWelcomeNewRedDot", "checkPostRedDot", "getLocalRedDotDefault", "handleOldRedDot", "isShowPostRedDot", "", "isShowRedDot", "local", "flag", "setLocalRedDot", "unset", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotTransform;", "", "manager", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "(Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;)V", "addFinderLiveEntryNewRedDot", "", "addNearbyFootRedDot", "addNearbyNewRedDot", "addNearbyUnreadRedDot", "unreadCount", "", "addPostRedDot", "addWelcomeNewRedDot", "checkPostRedDot", "getLocalRedDotDefault", "handleOldRedDot", "isShowPostRedDot", "", "isShowRedDot", "local", "flag", "setLocalRedDot", "unset", "Companion", "plugin-finder_release"})
 public final class j
 {
-  public static final a tLj;
-  final f tJh;
+  public static final a xuH;
+  final f xsq;
   
   static
   {
     AppMethodBeat.i(178193);
-    tLj = new a((byte)0);
+    xuH = new a((byte)0);
     AppMethodBeat.o(178193);
   }
   
   public j(f paramf)
   {
     AppMethodBeat.i(178192);
-    this.tJh = paramf;
+    this.xsq = paramf;
     AppMethodBeat.o(178192);
   }
   
-  private static boolean IC(int paramInt)
+  private static boolean Mt(int paramInt)
   {
     return (paramInt & 0x2) > 0;
   }
   
-  private static boolean dbu()
+  private static boolean drD()
   {
     boolean bool2 = true;
-    AppMethodBeat.i(243630);
+    AppMethodBeat.i(278985);
     boolean bool1;
     int i;
-    if (!Util.isNullOrNil(z.aUg()))
+    if (!Util.isNullOrNil(com.tencent.mm.model.z.bdh()))
     {
       bool1 = true;
-      e locale = g.aAh();
-      p.g(locale, "MMKernel.storage()");
-      i = locale.azQ().getInt(ar.a.OlI, dbv());
-      if ((!((PluginFinder)g.ah(PluginFinder.class)).showPostEntry()) || (!IC(i)) || (bool1)) {
+      com.tencent.mm.kernel.f localf = h.aHG();
+      p.j(localf, "MMKernel.storage()");
+      i = localf.aHp().getInt(ar.a.VAD, drE());
+      if ((!((PluginFinder)h.ag(PluginFinder.class)).showPostEntry()) || (!Mt(i)) || (bool1)) {
         break label118;
       }
     }
     for (;;)
     {
       Log.i("Finder.RedDotTransform", "[isShowLocalRedDot] ret=" + bool2 + " local=" + i + " hasCreatedIdentity=" + bool1);
-      AppMethodBeat.o(243630);
+      AppMethodBeat.o(278985);
       return bool2;
       bool1 = false;
       break;
@@ -71,17 +70,17 @@ public final class j
     }
   }
   
-  private static int dbv()
+  private static int drE()
   {
     AppMethodBeat.i(178191);
-    e locale = g.aAh();
-    p.g(locale, "MMKernel.storage()");
-    int j = locale.azQ().getInt(ar.a.OlI, -1);
+    com.tencent.mm.kernel.f localf = h.aHG();
+    p.j(localf, "MMKernel.storage()");
+    int j = localf.aHp().getInt(ar.a.VAD, -1);
     int i = j;
     if (j == -1)
     {
-      boolean bool = ((PluginFinder)g.ah(PluginFinder.class)).showPostEntry();
-      if (Util.isNullOrNil(z.aUg())) {
+      boolean bool = ((PluginFinder)h.ag(PluginFinder.class)).showPostEntry();
+      if (Util.isNullOrNil(com.tencent.mm.model.z.bdh())) {
         break label74;
       }
       i = 1;
@@ -100,160 +99,183 @@ public final class j
     }
   }
   
-  private static void dbw()
+  private static void drF()
   {
-    AppMethodBeat.i(243631);
-    e locale = g.aAh();
-    p.g(locale, "MMKernel.storage()");
-    int i = locale.azQ().getInt(ar.a.OlI, dbv());
+    AppMethodBeat.i(278987);
+    com.tencent.mm.kernel.f localf = h.aHG();
+    p.j(localf, "MMKernel.storage()");
+    int i = localf.aHp().getInt(ar.a.VAD, drE());
     int j = i & 0xFFFFFFFD;
     if (j != i)
     {
-      locale = g.aAh();
-      p.g(locale, "MMKernel.storage()");
-      locale.azQ().set(ar.a.OlI, Integer.valueOf(j));
+      localf = h.aHG();
+      p.j(localf, "MMKernel.storage()");
+      localf.aHp().set(ar.a.VAD, Integer.valueOf(j));
     }
     Log.i("Finder.RedDotTransform", "[setLocalRedDot] flag=2 unset=true newLocal=" + j + " local=" + i);
-    AppMethodBeat.o(243631);
+    AppMethodBeat.o(278987);
   }
   
-  public final void IB(int paramInt)
+  public final void Ms(int paramInt)
   {
-    AppMethodBeat.i(243628);
-    bbi localbbi = new bbi();
-    localbbi.LKM = String.valueOf(cl.aWA());
-    localbbi.priority = 10021000;
-    localbbi.type = 1013;
-    bdo localbdo1 = new bdo();
-    localbdo1.xGz = 2;
-    localbdo1.LNm = 2;
-    localbdo1.count = paramInt;
-    localbdo1.path = "NearbyEntrance";
-    localbbi.GaM.add(localbdo1);
-    localbdo1 = new bdo();
-    localbdo1.xGz = 2;
-    localbdo1.LNm = 2;
-    localbdo1.count = paramInt;
-    localbdo1.path = "NearbyPeopleTab";
-    localbdo1.Bvg = "NearbyEntrance";
-    localbbi.GaM.add(localbdo1);
-    bdo localbdo2 = new bdo();
-    localbdo2.xGz = 2;
-    localbdo2.LNm = 1;
-    localbdo1.count = paramInt;
-    localbdo2.Bvg = "NearbyPeopleTab";
-    localbdo2.path = "NearbyPeopleBubble";
-    localbbi.GaM.add(localbdo2);
-    this.tJh.a(localbbi, "addNearByUnreadRedDot");
-    AppMethodBeat.o(243628);
-  }
-  
-  public final void dbq()
-  {
-    AppMethodBeat.i(243625);
-    if (dbu())
+    AppMethodBeat.i(278983);
+    bhw localbhw = new bhw();
+    localbhw.SQm = String.valueOf(cm.bfE());
+    localbhw.priority = 10021000;
+    localbhw.type = 1013;
+    Object localObject = h.ag(ak.class);
+    p.j(localObject, "MMKernel.plugin(IPluginFinder::class.java)");
+    localObject = ((ak)localObject).getRedDotManager();
+    p.j(localObject, "MMKernel.plugin(IPluginF…class.java).redDotManager");
+    boolean bool = ((com.tencent.mm.plugin.findersdk.a.z)localObject).dqJ();
+    if (bool)
     {
-      dbr();
-      dbw();
-      Log.i("Finder.RedDotTransform", "[transformPostRedDot] done");
+      localObject = new bkn();
+      ((bkn)localObject).CKC = 2;
+      ((bkn)localObject).SVs = 2;
+      ((bkn)localObject).count = paramInt;
+      ((bkn)localObject).path = "NearbyEntrance";
+      localbhw.MFx.add(localObject);
     }
-    c localc = c.vCb;
-    if (((Number)c.dtX().value()).intValue() != 0)
+    bkn localbkn = new bkn();
+    localbkn.CKC = 2;
+    int i;
+    if (bool)
     {
-      this.tJh.Iy(-1);
-      Log.i("Finder.RedDotTransform", "[checkPostRedDot] clear TIMELINE_CAMERA");
+      i = 2;
+      localbkn.SVs = i;
+      localbkn.count = paramInt;
+      localbkn.path = "NearbyPeopleTab";
+      if (!bool) {
+        break label272;
+      }
     }
-    AppMethodBeat.o(243625);
+    label272:
+    for (localObject = "NearbyEntrance";; localObject = "")
+    {
+      localbkn.HpB = ((String)localObject);
+      localbhw.MFx.add(localbkn);
+      localObject = new bkn();
+      ((bkn)localObject).CKC = 2;
+      ((bkn)localObject).SVs = 1;
+      localbkn.count = paramInt;
+      ((bkn)localObject).HpB = "NearbyPeopleTab";
+      ((bkn)localObject).path = "NearbyPeopleBubble";
+      localbhw.MFx.add(localObject);
+      this.xsq.a(localbhw, "addNearByUnreadRedDot");
+      AppMethodBeat.o(278983);
+      return;
+      i = 1;
+      break;
+    }
   }
   
-  final void dbr()
+  final void drA()
   {
-    AppMethodBeat.i(243626);
-    Object localObject = c.vCb;
-    if (((Number)c.dtX().value()).intValue() == 0)
+    AppMethodBeat.i(278981);
+    Object localObject = d.AjH;
+    if (((Number)d.dVg().aSr()).intValue() == 0)
     {
-      localObject = new bbi();
-      ((bbi)localObject).LKM = String.valueOf(cl.aWA());
-      ((bbi)localObject).priority = 100000;
-      ((bbi)localObject).type = 1002;
-      bdo localbdo = new bdo();
-      localbdo.xGz = 1;
-      localbdo.LNm = 1;
-      localbdo.path = "FinderEntrance";
-      ((bbi)localObject).GaM.add(localbdo);
-      localbdo = new bdo();
-      localbdo.xGz = 1;
-      localbdo.LNm = 1;
-      localbdo.path = "TLPersonalCenter";
-      localbdo.Bvg = "FinderEntrance";
-      ((bbi)localObject).GaM.add(localbdo);
-      localbdo = new bdo();
-      localbdo.xGz = 1;
-      localbdo.LNm = 1;
-      localbdo.path = "TLCamera";
-      localbdo.Bvg = "TLPersonalCenter";
-      ((bbi)localObject).GaM.add(localbdo);
-      f.a(this.tJh, (bbi)localObject, "checkPostRedDot", null, true, null, 20);
+      localObject = new bhw();
+      ((bhw)localObject).SQm = String.valueOf(cm.bfE());
+      ((bhw)localObject).priority = 100000;
+      ((bhw)localObject).type = 1002;
+      bkn localbkn = new bkn();
+      localbkn.CKC = 1;
+      localbkn.SVs = 1;
+      localbkn.path = "FinderEntrance";
+      ((bhw)localObject).MFx.add(localbkn);
+      localbkn = new bkn();
+      localbkn.CKC = 1;
+      localbkn.SVs = 1;
+      localbkn.path = "TLPersonalCenter";
+      localbkn.HpB = "FinderEntrance";
+      ((bhw)localObject).MFx.add(localbkn);
+      localbkn = new bkn();
+      localbkn.CKC = 1;
+      localbkn.SVs = 1;
+      localbkn.path = "TLCamera";
+      localbkn.HpB = "TLPersonalCenter";
+      ((bhw)localObject).MFx.add(localbkn);
+      f.a(this.xsq, (bhw)localObject, "checkPostRedDot", null, true, null, null, 52);
     }
-    AppMethodBeat.o(243626);
+    AppMethodBeat.o(278981);
   }
   
-  public final void dbs()
+  public final void drB()
   {
-    AppMethodBeat.i(243627);
-    if (this.tJh.asX("NearbyPeopleFooterprintClear") != null)
+    AppMethodBeat.i(278982);
+    if (this.xsq.aBf("NearbyPeopleFooterprintClear") != null)
     {
       Log.i("Finder.RedDotTransform", "addNearbyFootRedDot: duplicate red dot");
-      AppMethodBeat.o(243627);
+      AppMethodBeat.o(278982);
       return;
     }
-    bbi localbbi = new bbi();
-    localbbi.LKM = String.valueOf(cl.aWA());
-    localbbi.priority = 300000;
-    localbbi.type = 1014;
-    bdo localbdo = new bdo();
-    localbdo.xGz = 101;
-    localbdo.LNm = 2;
-    localbdo.path = "NearbyEntrance";
-    localbbi.GaM.add(localbdo);
-    localbdo = new bdo();
-    localbdo.xGz = 101;
-    localbdo.LNm = 2;
-    localbdo.Bvg = "NearbyEntrance";
-    localbdo.path = "NearbyPeopleTab";
-    localbbi.GaM.add(localbdo);
-    localbdo = new bdo();
-    localbdo.xGz = 101;
-    localbdo.LNm = 1;
-    localbdo.Bvg = "NearbyPeopleTab";
-    localbdo.path = "NearbyPeopleFooterprintClear";
-    localbbi.GaM.add(localbdo);
-    this.tJh.a(localbbi, "addNearByFootRedDot");
-    AppMethodBeat.o(243627);
+    bhw localbhw = new bhw();
+    localbhw.SQm = String.valueOf(cm.bfE());
+    localbhw.priority = 300000;
+    localbhw.type = 1014;
+    bkn localbkn = new bkn();
+    localbkn.CKC = 101;
+    localbkn.SVs = 2;
+    localbkn.path = "NearbyEntrance";
+    localbhw.MFx.add(localbkn);
+    localbkn = new bkn();
+    localbkn.CKC = 101;
+    localbkn.SVs = 2;
+    localbkn.HpB = "NearbyEntrance";
+    localbkn.path = "NearbyPeopleTab";
+    localbhw.MFx.add(localbkn);
+    localbkn = new bkn();
+    localbkn.CKC = 101;
+    localbkn.SVs = 1;
+    localbkn.HpB = "NearbyPeopleTab";
+    localbkn.path = "NearbyPeopleFooterprintClear";
+    localbhw.MFx.add(localbkn);
+    this.xsq.a(localbhw, "addNearByFootRedDot");
+    AppMethodBeat.o(278982);
   }
   
-  public final void dbt()
+  public final void drC()
   {
-    AppMethodBeat.i(243629);
-    bbi localbbi = new bbi();
-    localbbi.LKM = String.valueOf(cl.aWA());
-    localbbi.priority = 300000;
-    localbbi.type = 1011;
-    bdo localbdo = new bdo();
-    localbdo.xGz = 6;
-    localbdo.LNm = 1;
-    localbdo.path = "NearbyEntrance";
-    localbbi.GaM.add(localbdo);
-    this.tJh.a(localbbi, "addNearbyNewRedDot");
-    AppMethodBeat.o(243629);
+    AppMethodBeat.i(278984);
+    bhw localbhw = new bhw();
+    localbhw.SQm = String.valueOf(cm.bfE());
+    localbhw.priority = 100000;
+    localbhw.type = 1011;
+    bkn localbkn = new bkn();
+    localbkn.CKC = 6;
+    localbkn.SVs = 1;
+    localbkn.path = "NearbyEntrance";
+    localbhw.MFx.add(localbkn);
+    this.xsq.a(localbhw, "addNearbyNewRedDot");
+    AppMethodBeat.o(278984);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotTransform$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public final void drz()
+  {
+    AppMethodBeat.i(278980);
+    if (drD())
+    {
+      drA();
+      drF();
+      Log.i("Finder.RedDotTransform", "[transformPostRedDot] done");
+    }
+    d locald = d.AjH;
+    if (((Number)d.dVg().aSr()).intValue() != 0)
+    {
+      this.xsq.Mp(-1);
+      Log.i("Finder.RedDotTransform", "[checkPostRedDot] clear TIMELINE_CAMERA");
+    }
+    AppMethodBeat.o(278980);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotTransform$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.extension.reddot.j
  * JD-Core Version:    0.7.0.1
  */

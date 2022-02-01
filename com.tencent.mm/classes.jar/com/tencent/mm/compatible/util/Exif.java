@@ -1,10 +1,10 @@
 package com.tencent.mm.compatible.util;
 
-import androidx.a.a.a;
+import androidx.e.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.text.ParseException;
@@ -77,34 +77,34 @@ public class Exif
       AppMethodBeat.o(155896);
       return;
     }
-    this.imageDescription = this.mExif.getAttribute("ImageDescription");
-    this.make = this.mExif.getAttribute("Make");
-    this.model = this.mExif.getAttribute("Model");
-    this.orientation = ((short)this.mExif.getAttributeInt("Orientation", 0));
-    this.bitsPerSample = ((short)this.mExif.getAttributeInt("BitsPerSample", 0));
-    this.software = this.mExif.getAttribute("Software");
-    this.dateTime = this.mExif.getAttribute("DateTime");
-    this.dateTimeOriginal = this.mExif.getAttribute("DateTimeOriginal");
-    this.dateTimeDigitized = this.mExif.getAttribute("DateTimeDigitized");
-    this.subSecTimeOriginal = this.mExif.getAttribute("SubSecTimeOriginal");
-    this.copyright = this.mExif.getAttribute("Copyright");
-    this.exposureTime = this.mExif.getAttributeDouble("ExposureTime", 0.0D);
-    this.fNumber = this.mExif.getAttributeDouble("FNumber", 0.0D);
-    this.isoSpeedRatings = ((short)this.mExif.getAttributeInt("ISOSpeedRatings", 0));
-    this.flash = ((byte)this.mExif.getAttributeInt("Flash", 0));
-    this.imageWidth = this.mExif.getAttributeInt("ImageWidth", 0);
-    this.imageHeight = this.mExif.getAttributeInt("ImageLength", 0);
-    this.fileSource = this.mExif.getAttributeInt("FileSource", 0);
-    this.sceneType = this.mExif.getAttributeInt("SceneType", 0);
-    Object localObject = this.mExif.nu();
+    this.imageDescription = this.mExif.I("ImageDescription");
+    this.make = this.mExif.I("Make");
+    this.model = this.mExif.I("Model");
+    this.orientation = ((short)this.mExif.i("Orientation", 0));
+    this.bitsPerSample = ((short)this.mExif.i("BitsPerSample", 0));
+    this.software = this.mExif.I("Software");
+    this.dateTime = this.mExif.I("DateTime");
+    this.dateTimeOriginal = this.mExif.I("DateTimeOriginal");
+    this.dateTimeDigitized = this.mExif.I("DateTimeDigitized");
+    this.subSecTimeOriginal = this.mExif.I("SubSecTimeOriginal");
+    this.copyright = this.mExif.I("Copyright");
+    this.exposureTime = this.mExif.a("ExposureTime", 0.0D);
+    this.fNumber = this.mExif.a("FNumber", 0.0D);
+    this.isoSpeedRatings = ((short)this.mExif.i("ISOSpeedRatings", 0));
+    this.flash = ((byte)this.mExif.i("Flash", 0));
+    this.imageWidth = this.mExif.i("ImageWidth", 0);
+    this.imageHeight = this.mExif.i("ImageLength", 0);
+    this.fileSource = this.mExif.i("FileSource", 0);
+    this.sceneType = this.mExif.i("SceneType", 0);
+    Object localObject = this.mExif.jdMethod_if();
     if (localObject != null)
     {
       this.latitude = localObject[0];
       this.longitude = localObject[1];
     }
     localObject = this.mExif;
-    double d = ((a)localObject).getAttributeDouble("GPSAltitude", -1.0D);
-    int j = ((a)localObject).getAttributeInt("GPSAltitudeRef", -1);
+    double d = ((a)localObject).a("GPSAltitude", -1.0D);
+    int j = ((a)localObject).i("GPSAltitudeRef", -1);
     if ((d >= 0.0D) && (j >= 0)) {
       if (j != 1) {}
     }
@@ -136,7 +136,7 @@ public class Exif
     AppMethodBeat.i(155897);
     if (this.mExif != null)
     {
-      switch (this.mExif.getAttributeInt("Orientation", 1))
+      switch (this.mExif.i("Orientation", 1))
       {
       default: 
         AppMethodBeat.o(155897);
@@ -218,7 +218,7 @@ public class Exif
     Object localObject1 = null;
     try
     {
-      InputStream localInputStream = s.openRead(paramString);
+      InputStream localInputStream = u.Tf(paramString);
       localObject1 = localInputStream;
       localObject2 = localInputStream;
       this.mExif = new a(localInputStream);
@@ -258,7 +258,7 @@ public class Exif
     return -1;
   }
   
-  public static final class a
+  public static class a
   {
     public double altitude;
     public double latitude;
@@ -274,7 +274,7 @@ public class Exif
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.compatible.util.Exif
  * JD-Core Version:    0.7.0.1
  */

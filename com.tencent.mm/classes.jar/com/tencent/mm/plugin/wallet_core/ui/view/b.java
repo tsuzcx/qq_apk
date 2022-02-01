@@ -16,31 +16,34 @@ import com.tencent.mm.model.z;
 import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.e;
-import com.tencent.mm.plugin.wallet_core.model.t;
+import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.plugin.wallet_core.utils.a;
+import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.WeChatHosts;
 
 public final class b
 {
-  private static final String HCA;
-  private static final String HCB;
-  private static final String HCC;
-  private static final String HCD;
-  private static final String HCE;
-  private static final String HCz;
+  private static final String Ous;
+  private static final String Out;
+  private static final String Ouu;
+  private static final String Ouv;
+  private static final String Ouw;
+  private static final String Oux;
   
   static
   {
-    AppMethodBeat.i(214249);
-    HCz = "http://" + WeChatHosts.domainString(2131761736) + "/zh_CN/htmledition/images/mmpaybanklogo/wallet_bankcard_bule_bg.9_v2.png";
-    HCA = "http://" + WeChatHosts.domainString(2131761736) + "/zh_CN/htmledition/images/mmpaybanklogo/wallet_bankcard_red_bg.9_v2.png";
-    HCB = "http://" + WeChatHosts.domainString(2131761736) + "/zh_CN/htmledition/images/mmpaybanklogo/wallet_bankcard_yellow_bg.9_v2.png";
-    HCC = "http://" + WeChatHosts.domainString(2131761736) + "/zh_CN/htmledition/images/mmpaybanklogo/wallet_bankcard_hbule_bg.9_v2.png";
-    HCD = "http://" + WeChatHosts.domainString(2131761736) + "/zh_CN/htmledition/images/mmpaybanklogo/wallet_bankcard_green_bg.9_v2.png";
-    HCE = "http://" + WeChatHosts.domainString(2131761736) + "/zh_CN/htmledition/images/mmpaybanklogo/wallet_bankcard_purple_bg.9_v2.png";
-    AppMethodBeat.o(214249);
+    AppMethodBeat.i(187049);
+    Ous = "http://" + WeChatHosts.domainString(a.i.host_res_wx_qq_com) + "/zh_CN/htmledition/images/mmpaybanklogo/wallet_bankcard_bule_bg.9_v2.png";
+    Out = "http://" + WeChatHosts.domainString(a.i.host_res_wx_qq_com) + "/zh_CN/htmledition/images/mmpaybanklogo/wallet_bankcard_red_bg.9_v2.png";
+    Ouu = "http://" + WeChatHosts.domainString(a.i.host_res_wx_qq_com) + "/zh_CN/htmledition/images/mmpaybanklogo/wallet_bankcard_yellow_bg.9_v2.png";
+    Ouv = "http://" + WeChatHosts.domainString(a.i.host_res_wx_qq_com) + "/zh_CN/htmledition/images/mmpaybanklogo/wallet_bankcard_hbule_bg.9_v2.png";
+    Ouw = "http://" + WeChatHosts.domainString(a.i.host_res_wx_qq_com) + "/zh_CN/htmledition/images/mmpaybanklogo/wallet_bankcard_green_bg.9_v2.png";
+    Oux = "http://" + WeChatHosts.domainString(a.i.host_res_wx_qq_com) + "/zh_CN/htmledition/images/mmpaybanklogo/wallet_bankcard_purple_bg.9_v2.png";
+    AppMethodBeat.o(187049);
   }
   
   public static View a(Context paramContext, View paramView, Bankcard paramBankcard, int paramInt, a parama, boolean paramBoolean)
@@ -52,131 +55,94 @@ public final class b
     {
       localView = View.inflate(paramContext, paramInt, null);
       paramView = new a();
-      paramView.HCR = ((ImageView)localView.findViewById(2131297265));
-      paramView.HCN = ((TextView)localView.findViewById(2131297274));
-      paramView.HCO = ((TextView)localView.findViewById(2131297321));
-      paramView.HCM = ((TextView)localView.findViewById(2131297303));
-      paramView.HCM.setTextSize(1, 32.0F);
-      paramView.HCS = ((TextView)localView.findViewById(2131297302));
-      paramView.HCP = ((ViewGroup)localView.findViewById(2131310148));
-      paramView.HCQ = ((ImageView)localView.findViewById(2131297312));
-      paramView.HCT = ((TextView)localView.findViewById(2131297297));
-      paramView.ImN = ((ViewGroup)localView.findViewById(2131297299));
-      paramView.ImO = ((TextView)localView.findViewById(2131297284));
-      paramView.ImP = ((ImageView)localView.findViewById(2131297313));
-      paramView.ImQ = ((TextView)localView.findViewById(2131297317));
+      paramView.OuK = ((ImageView)localView.findViewById(a.f.bank_logo));
+      paramView.OuG = ((TextView)localView.findViewById(a.f.bank_name));
+      paramView.OuH = ((TextView)localView.findViewById(a.f.bankcard_type));
+      paramView.OuF = ((TextView)localView.findViewById(a.f.bankcard_id));
+      paramView.OuF.setTextSize(1, 32.0F);
+      paramView.OuL = ((TextView)localView.findViewById(a.f.bankcard_expired));
+      paramView.OuI = ((ViewGroup)localView.findViewById(a.f.wallet_bankcard_rl));
+      paramView.OuJ = ((ImageView)localView.findViewById(a.f.bankcard_mask));
+      paramView.OuM = ((TextView)localView.findViewById(a.f.bankcard_default));
+      paramView.Pff = ((ViewGroup)localView.findViewById(a.f.bankcard_desc_ll));
+      paramView.Pfg = ((TextView)localView.findViewById(a.f.bankcard_bottom_desc_tv));
+      paramView.Pfh = ((ImageView)localView.findViewById(a.f.bankcard_new));
+      paramView.Pfi = ((TextView)localView.findViewById(a.f.bankcard_state_tv));
       localView.setTag(paramView);
       localObject = paramView;
       if (paramBankcard.field_bankcardState != 1) {
-        break label432;
-      }
-      ((a)localObject).HCS.setVisibility(0);
-      label236:
-      if (!paramBoolean) {
         break label445;
       }
-      ((a)localObject).ImQ.setText(paramContext.getString(2131767506));
-      ((a)localObject).ImQ.setVisibility(0);
-      label264:
-      ((a)localObject).HCN.setVisibility(0);
-      ((a)localObject).HCN.setText(paramBankcard.field_bankName);
-      if (!z.aUo()) {
-        break label492;
+      ((a)localObject).OuL.setVisibility(0);
+      label248:
+      if (!paramBoolean) {
+        break label458;
       }
-      ((a)localObject).HCO.setVisibility(8);
-      label301:
-      if (((a)localObject).HCM != null) {
-        ((a)localObject).HCM.setText(paramBankcard.field_bankcardTail);
+      ((a)localObject).Pfi.setText(paramContext.getString(a.i.wallet_bankcard_new_icon));
+      ((a)localObject).Pfi.setVisibility(0);
+      label277:
+      ((a)localObject).OuG.setVisibility(0);
+      ((a)localObject).OuG.setText(paramBankcard.field_bankName);
+      if (!z.bdq()) {
+        break label505;
       }
-      if ((Util.isNullOrNil(paramBankcard.field_card_bottom_wording)) || (((a)localObject).ImO == null)) {
-        break label570;
+      ((a)localObject).OuH.setVisibility(8);
+      label314:
+      if (((a)localObject).OuF != null) {
+        ((a)localObject).OuF.setText(paramBankcard.field_bankcardTail);
       }
-      ((a)localObject).ImO.setText(paramBankcard.field_card_bottom_wording);
-      ((a)localObject).ImN.setVisibility(0);
+      if ((Util.isNullOrNil(paramBankcard.field_card_bottom_wording)) || (((a)localObject).Pfg == null)) {
+        break label586;
+      }
+      ((a)localObject).Pfg.setText(paramBankcard.field_card_bottom_wording);
+      ((a)localObject).Pff.setVisibility(0);
     }
     for (;;)
     {
-      parama.a(paramContext, paramBankcard, ((a)localObject).HCR, ((a)localObject).HCP, ((a)localObject).HCQ, ((a)localObject).ImQ);
-      if (((a)localObject).HCT != null)
+      parama.a(paramContext, paramBankcard, ((a)localObject).OuK, ((a)localObject).OuI, ((a)localObject).OuJ, ((a)localObject).Pfi);
+      if (((a)localObject).OuM != null)
       {
-        t.fQI();
-        ((a)localObject).HCT.setVisibility(8);
+        u.gJo();
+        ((a)localObject).OuM.setVisibility(8);
       }
       AppMethodBeat.o(71478);
       return localView;
       localObject = (a)paramView.getTag();
       localView = paramView;
       break;
-      label432:
-      ((a)localObject).HCS.setVisibility(8);
-      break label236;
       label445:
+      ((a)localObject).OuL.setVisibility(8);
+      break label248;
+      label458:
       if (!Util.isNullOrNil(paramBankcard.field_card_state_name))
       {
-        ((a)localObject).ImQ.setText(paramBankcard.field_card_state_name);
-        ((a)localObject).ImQ.setVisibility(0);
-        break label264;
+        ((a)localObject).Pfi.setText(paramBankcard.field_card_state_name);
+        ((a)localObject).Pfi.setVisibility(0);
+        break label277;
       }
-      ((a)localObject).ImQ.setVisibility(8);
-      break label264;
-      label492:
+      ((a)localObject).Pfi.setVisibility(8);
+      break label277;
+      label505:
       if (!Util.isNullOrNil(paramBankcard.field_bankcardTypeName))
       {
-        ((a)localObject).HCO.setText(paramBankcard.field_bankcardTypeName);
-        break label301;
+        ((a)localObject).OuH.setText(paramBankcard.field_bankcardTypeName);
+        break label314;
       }
-      if (paramBankcard.fQa())
+      if (paramBankcard.gIG())
       {
-        ((a)localObject).HCO.setText(2131768450);
-        break label301;
+        ((a)localObject).OuH.setText(a.i.wallet_wxcredit_card);
+        break label314;
       }
-      if (paramBankcard.fQd())
+      if (paramBankcard.gIJ())
       {
-        ((a)localObject).HCO.setText(2131767664);
-        break label301;
+        ((a)localObject).OuH.setText(a.i.wallet_credit_card);
+        break label314;
       }
-      ((a)localObject).HCO.setText(2131767684);
-      break label301;
-      label570:
-      ((a)localObject).ImN.setVisibility(8);
+      ((a)localObject).OuH.setText(a.i.wallet_deposit_card);
+      break label314;
+      label586:
+      ((a)localObject).Pff.setVisibility(8);
     }
-  }
-  
-  public static int aVW(String paramString)
-  {
-    AppMethodBeat.i(214248);
-    if (HCz.equals(paramString))
-    {
-      AppMethodBeat.o(214248);
-      return 2131235580;
-    }
-    if (HCD.equals(paramString))
-    {
-      AppMethodBeat.o(214248);
-      return 2131235584;
-    }
-    if (HCC.equals(paramString))
-    {
-      AppMethodBeat.o(214248);
-      return 2131235586;
-    }
-    if (HCE.equals(paramString))
-    {
-      AppMethodBeat.o(214248);
-      return 2131235592;
-    }
-    if (HCA.equals(paramString))
-    {
-      AppMethodBeat.o(214248);
-      return 2131235593;
-    }
-    if (HCB.equals(paramString))
-    {
-      AppMethodBeat.o(214248);
-      return 2131235599;
-    }
-    AppMethodBeat.o(214248);
-    return -1;
   }
   
   public static Drawable b(Context paramContext, Bitmap paramBitmap)
@@ -210,23 +176,67 @@ public final class b
     return null;
   }
   
+  public static int bhF(String paramString)
+  {
+    AppMethodBeat.i(187047);
+    int i;
+    if (Ous.equals(paramString))
+    {
+      i = a.e.wallet_bankcard_bule_bg;
+      AppMethodBeat.o(187047);
+      return i;
+    }
+    if (Ouw.equals(paramString))
+    {
+      i = a.e.wallet_bankcard_green_bg;
+      AppMethodBeat.o(187047);
+      return i;
+    }
+    if (Ouv.equals(paramString))
+    {
+      i = a.e.wallet_bankcard_hbule_bg;
+      AppMethodBeat.o(187047);
+      return i;
+    }
+    if (Oux.equals(paramString))
+    {
+      i = a.e.wallet_bankcard_purple_bg;
+      AppMethodBeat.o(187047);
+      return i;
+    }
+    if (Out.equals(paramString))
+    {
+      i = a.e.wallet_bankcard_red_bg;
+      AppMethodBeat.o(187047);
+      return i;
+    }
+    if (Ouu.equals(paramString))
+    {
+      i = a.e.wallet_bankcard_yellow_bg;
+      AppMethodBeat.o(187047);
+      return i;
+    }
+    AppMethodBeat.o(187047);
+    return -1;
+  }
+  
   static final class a
     implements u.a
   {
-    public TextView HCM = null;
-    public TextView HCN = null;
-    public TextView HCO = null;
-    public ViewGroup HCP = null;
-    public ImageView HCQ = null;
-    public ImageView HCR = null;
-    public TextView HCS = null;
-    public TextView HCT = null;
-    public TextView HCU = null;
-    public e ImM;
-    public ViewGroup ImN = null;
-    public TextView ImO = null;
-    public ImageView ImP = null;
-    public TextView ImQ = null;
+    public TextView OuF = null;
+    public TextView OuG = null;
+    public TextView OuH = null;
+    public ViewGroup OuI = null;
+    public ImageView OuJ = null;
+    public ImageView OuK = null;
+    public TextView OuL = null;
+    public TextView OuM = null;
+    public TextView OuN = null;
+    public e Pfe;
+    public ViewGroup Pff = null;
+    public TextView Pfg = null;
+    public ImageView Pfh = null;
+    public TextView Pfi = null;
     
     public final void k(String paramString, final Bitmap paramBitmap)
     {
@@ -236,31 +246,31 @@ public final class b
       for (boolean bool = true;; bool = false)
       {
         Log.d("MicroMsg.BankcardListAdapter", bool);
-        if (this.ImM != null) {
+        if (this.Pfe != null) {
           break;
         }
         AppMethodBeat.o(71477);
         return;
       }
-      if (paramString.equals(this.ImM.AAU)) {
-        this.HCR.post(new Runnable()
+      if (paramString.equals(this.Pfe.GtW)) {
+        this.OuK.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(71475);
-            b.a.this.HCR.setImageBitmap(paramBitmap);
-            b.a.this.HCP.invalidate();
+            b.a.this.OuK.setImageBitmap(paramBitmap);
+            b.a.this.OuI.invalidate();
             AppMethodBeat.o(71475);
           }
         });
       }
-      if ((paramString.equals(this.ImM.HWd)) && (this.HCQ != null)) {
-        this.HCQ.post(new Runnable()
+      if ((paramString.equals(this.Pfe.OOd)) && (this.OuJ != null)) {
+        this.OuJ.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(71476);
-            b.a.this.HCQ.setImageBitmap(paramBitmap);
+            b.a.this.OuJ.setImageBitmap(paramBitmap);
             AppMethodBeat.o(71476);
           }
         });

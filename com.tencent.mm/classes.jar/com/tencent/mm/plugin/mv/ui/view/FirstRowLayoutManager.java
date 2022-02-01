@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.mv.ui.view;
 
 import android.content.Context;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.s;
-import android.support.v7.widget.ae;
 import android.util.DisplayMetrics;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.s;
+import androidx.recyclerview.widget.p;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class FirstRowLayoutManager
@@ -18,15 +18,15 @@ public class FirstRowLayoutManager
   
   public void smoothScrollToPosition(RecyclerView paramRecyclerView, RecyclerView.s params, int paramInt)
   {
-    AppMethodBeat.i(256706);
+    AppMethodBeat.i(229266);
     paramRecyclerView = new a(paramRecyclerView.getContext());
-    paramRecyclerView.atO = paramInt;
+    paramRecyclerView.alG = paramInt;
     startSmoothScroll(paramRecyclerView);
-    AppMethodBeat.o(256706);
+    AppMethodBeat.o(229266);
   }
   
   static final class a
-    extends ae
+    extends p
   {
     a(Context paramContext)
     {
@@ -46,7 +46,7 @@ public class FirstRowLayoutManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mv.ui.view.FirstRowLayoutManager
  * JD-Core Version:    0.7.0.1
  */

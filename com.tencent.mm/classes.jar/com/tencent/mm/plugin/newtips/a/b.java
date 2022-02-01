@@ -1,46 +1,46 @@
 package com.tencent.mm.plugin.newtips.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dgf;
-import com.tencent.mm.protocal.protobuf.dgg;
+import com.tencent.mm.protocal.protobuf.dpz;
+import com.tencent.mm.protocal.protobuf.dqa;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
   extends q
   implements m
 {
-  boolean ACX;
-  int ACY;
+  boolean Gwb;
+  int Gwc;
   private i callback;
   private d rr;
   
   @Deprecated
   public b(int paramInt1, int paramInt2, String paramString)
   {
-    AppMethodBeat.i(188557);
-    this.ACX = false;
-    this.ACY = 0;
+    AppMethodBeat.i(186285);
+    this.Gwb = false;
+    this.Gwc = 0;
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new dgf();
-    ((d.a)localObject).iLO = new dgg();
+    ((d.a)localObject).lBU = new dpz();
+    ((d.a)localObject).lBV = new dqa();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/pushnewtips";
     ((d.a)localObject).funcId = 597;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (dgf)this.rr.iLK.iLR;
-    ((dgf)localObject).MKR = paramInt1;
-    ((dgf)localObject).MKS = 1;
-    ((dgf)localObject).xMX = paramString;
-    this.ACY = paramInt1;
-    AppMethodBeat.o(188557);
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (dpz)d.b.b(this.rr.lBR);
+    ((dpz)localObject).TWM = paramInt1;
+    ((dpz)localObject).TWN = 1;
+    ((dpz)localObject).CRg = paramString;
+    this.Gwc = paramInt1;
+    AppMethodBeat.o(186285);
   }
   
   public final int doScene(g paramg, i parami)
@@ -68,14 +68,14 @@ public final class b
       AppMethodBeat.o(127210);
       return;
     }
-    this.ACX = ((dgg)((d)params).iLL.iLR).MKT;
+    this.Gwb = ((dqa)d.c.b(((d)params).lBS)).TWO;
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(127210);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.newtips.a.b
  * JD-Core Version:    0.7.0.1
  */

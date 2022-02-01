@@ -7,38 +7,38 @@ import java.util.LinkedList;
 
 public final class f
 {
-  boolean xzG;
-  boolean xzH;
-  LinkedList<d> xzI;
-  LinkedList<g> xzJ;
-  com.tencent.luggage.d.f xzo;
+  boolean CDL;
+  boolean CDM;
+  LinkedList<d> CDN;
+  LinkedList<g> CDO;
+  com.tencent.luggage.d.f CDt;
   
   public f(com.tencent.luggage.d.f paramf)
   {
-    AppMethodBeat.i(187021);
-    this.xzI = new LinkedList();
-    this.xzJ = new LinkedList();
-    this.xzo = paramf;
-    AppMethodBeat.o(187021);
+    AppMethodBeat.i(231727);
+    this.CDN = new LinkedList();
+    this.CDO = new LinkedList();
+    this.CDt = paramf;
+    AppMethodBeat.o(231727);
   }
   
   public final void b(d paramd)
   {
-    AppMethodBeat.i(187022);
-    Log.i("MicroMsg.Page2JsCoreMsgDispatch", "dispatchEvent, hasDestroyed = %b, hasReady = %b", new Object[] { Boolean.valueOf(this.xzH), Boolean.valueOf(this.xzG) });
-    if (this.xzH)
+    AppMethodBeat.i(231728);
+    Log.i("MicroMsg.Page2JsCoreMsgDispatch", "dispatchEvent, hasDestroyed = %b, hasReady = %b", new Object[] { Boolean.valueOf(this.CDM), Boolean.valueOf(this.CDL) });
+    if (this.CDM)
     {
-      AppMethodBeat.o(187022);
+      AppMethodBeat.o(231728);
       return;
     }
-    if (!this.xzG)
+    if (!this.CDL)
     {
-      this.xzI.add(paramd);
-      AppMethodBeat.o(187022);
+      this.CDN.add(paramd);
+      AppMethodBeat.o(231728);
       return;
     }
-    this.xzo.a(paramd);
-    AppMethodBeat.o(187022);
+    this.CDt.a(paramd);
+    AppMethodBeat.o(231728);
   }
 }
 

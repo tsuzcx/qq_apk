@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.talkroom.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ajy;
-import com.tencent.mm.protocal.protobuf.ajz;
+import com.tencent.mm.protocal.protobuf.alb;
+import com.tencent.mm.protocal.protobuf.alc;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
@@ -26,18 +26,18 @@ public final class b
     AppMethodBeat.i(29554);
     this.sceneType = paramInt2;
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new ajy();
-    ((d.a)localObject).iLO = new ajz();
+    ((d.a)localObject).lBU = new alb();
+    ((d.a)localObject).lBV = new alc();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/exittalkroom";
     ((d.a)localObject).funcId = 333;
-    ((d.a)localObject).iLP = 148;
+    ((d.a)localObject).lBW = 148;
     ((d.a)localObject).respCmdId = 1000000148;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (ajy)this.rr.iLK.iLR;
-    ((ajy)localObject).LsY = paramString;
-    ((ajy)localObject).LsZ = paramInt1;
-    ((ajy)localObject).Lta = paramLong;
-    ((ajy)localObject).Scene = paramInt2;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (alb)d.b.b(this.rr.lBR);
+    ((alb)localObject).Svt = paramString;
+    ((alb)localObject).Svu = paramInt1;
+    ((alb)localObject).Svv = paramLong;
+    ((alb)localObject).CPw = paramInt2;
     AppMethodBeat.o(29554);
   }
   

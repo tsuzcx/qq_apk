@@ -1,73 +1,74 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.wy;
-import com.tencent.mm.protocal.protobuf.wz;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.wallet_core.b.a.a;
+import com.tencent.mm.wallet_core.c.j;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
 
 public final class t
-  extends q
-  implements m
+  extends a
+  implements j
 {
-  public wz CoT;
-  private i callback;
-  private d hJu;
+  public String IlQ;
   
-  public t(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong, String paramString5)
+  public t(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(67877);
-    Object localObject = new d.a();
-    ((d.a)localObject).iLN = new wy();
-    ((d.a)localObject).iLO = new wz();
-    ((d.a)localObject).funcId = 1779;
-    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/transferoldpaycheck";
-    ((d.a)localObject).iLP = 0;
-    ((d.a)localObject).respCmdId = 0;
-    this.hJu = ((d.a)localObject).aXF();
-    localObject = (wy)this.hJu.iLK.iLR;
-    ((wy)localObject).dNQ = paramString1;
-    ((wy)localObject).CpQ = paramString2;
-    ((wy)localObject).CpP = paramString3;
-    ((wy)localObject).CpJ = paramString4;
-    ((wy)localObject).CrW = paramLong;
-    ((wy)localObject).Lhy = paramString5;
-    Log.i("MicroMsg.NetSceneRemittancePayCheck", "reqKey: %s, transfer: %s, fee: %s", new Object[] { paramString1, paramString2, Long.valueOf(paramLong) });
-    AppMethodBeat.o(67877);
+    AppMethodBeat.i(67873);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("amount", String.valueOf(paramLong));
+    localHashMap.put("recv_username", paramString1);
+    localHashMap.put("recv_nickname", paramString2);
+    localHashMap.put("qrcodeid", paramString5);
+    try
+    {
+      if (!Util.isNullOrNil(paramString3)) {
+        localHashMap.put("desc", URLEncoder.encode(paramString3, "UTF-8"));
+      }
+      if (!Util.isNullOrNil(paramString4)) {
+        localHashMap.put("message", URLEncoder.encode(paramString4, "UTF-8"));
+      }
+    }
+    catch (UnsupportedEncodingException paramString5)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.NetSceneH5F2fTransferPay", paramString5, "", new Object[0]);
+      }
+    }
+    localHashMap.put("currency", String.valueOf(paramInt1));
+    localHashMap.put("set_amount", String.valueOf(paramInt2));
+    setRequestData(localHashMap);
+    Log.i("MicroMsg.NetSceneH5F2fTransferPay", "username: %s, nickname: %s, amount: %s, desc: %s, msg: %s, currency: %s", new Object[] { paramString1, paramString2, Long.valueOf(paramLong), paramString3, paramString4, Integer.valueOf(paramInt1) });
+    AppMethodBeat.o(67873);
   }
   
-  public final int doScene(g paramg, i parami)
+  public final String cOd()
   {
-    AppMethodBeat.i(67878);
-    this.callback = parami;
-    int i = dispatch(paramg, this.hJu, this);
-    AppMethodBeat.o(67878);
-    return i;
+    return "/cgi-bin/mmpay-bin/h5f2ftransferpay";
+  }
+  
+  public final int cOe()
+  {
+    return 1529;
   }
   
   public final int getType()
   {
-    return 1779;
+    return 1529;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(67879);
-    Log.i("MicroMsg.NetSceneRemittancePayCheck", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.CoT = ((wz)((d)params).iLL.iLR);
-    Log.i("MicroMsg.NetSceneRemittancePayCheck", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.CoT.dDN), this.CoT.qwn });
-    if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
-    AppMethodBeat.o(67879);
+    AppMethodBeat.i(67874);
+    this.IlQ = paramJSONObject.optString("payurl", "");
+    Log.i("MicroMsg.NetSceneH5F2fTransferPay", "payurl: %s", new Object[] { this.IlQ });
+    AppMethodBeat.o(67874);
   }
 }
 

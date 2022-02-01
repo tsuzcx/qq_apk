@@ -5,20 +5,20 @@ import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.l;
 import com.tencent.mm.protocal.l.b;
 import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.cfv;
+import com.tencent.mm.protocal.protobuf.cor;
+import com.tencent.mm.protocal.protobuf.eae;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class c$a
   extends l.d
   implements l.b
 {
-  public cfv CxL;
+  public cor IyN;
   
   public c$a()
   {
     AppMethodBeat.i(143787);
-    this.CxL = new cfv();
+    this.IyN = new cor();
     AppMethodBeat.o(143787);
   }
   
@@ -35,17 +35,17 @@ public final class c$a
   public final byte[] toProtoBuf()
   {
     AppMethodBeat.i(143788);
-    setRsaInfo(ac.gtS());
-    this.CxL.KPW = new SKBuiltinBuffer_t().setBuffer(Util.getUuidRandom());
-    this.CxL.setBaseRequest(l.a(this));
-    byte[] arrayOfByte = this.CxL.toByteArray();
+    setRsaInfo(ac.hpi());
+    this.IyN.RQU = new eae().dc(Util.getUuidRandom());
+    this.IyN.setBaseRequest(l.a(this));
+    byte[] arrayOfByte = this.IyN.toByteArray();
     AppMethodBeat.o(143788);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.report.b.c.a
  * JD-Core Version:    0.7.0.1
  */

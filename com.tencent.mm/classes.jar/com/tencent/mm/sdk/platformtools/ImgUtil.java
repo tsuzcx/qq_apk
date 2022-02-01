@@ -3,7 +3,7 @@ package com.tencent.mm.sdk.platformtools;
 import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.MMBitmapFactory;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,11 +15,11 @@ public class ImgUtil
   
   public static int[] getImgWdithAndHeightFromStream(InputStream paramInputStream)
   {
-    AppMethodBeat.i(215367);
+    AppMethodBeat.i(261720);
     if (paramInputStream == null)
     {
       Log.w("MicroMsg.ImgUtil", "hy: the input stream is null");
-      AppMethodBeat.o(215367);
+      AppMethodBeat.o(261720);
       return null;
     }
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
@@ -27,7 +27,7 @@ public class ImgUtil
     MMBitmapFactory.decodeStream(paramInputStream, null, localOptions);
     int i = localOptions.outWidth;
     int j = localOptions.outHeight;
-    AppMethodBeat.o(215367);
+    AppMethodBeat.o(261720);
     return new int[] { i, j };
   }
   
@@ -42,7 +42,7 @@ public class ImgUtil
     //   8: aconst_null
     //   9: astore_3
     //   10: aload_0
-    //   11: invokestatic 68	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   11: invokestatic 68	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
     //   14: astore 5
     //   16: aload 5
     //   18: astore_3
@@ -206,7 +206,7 @@ public class ImgUtil
   
   private static int getSampleRate(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(215368);
+    AppMethodBeat.i(261723);
     paramInt1 = Math.max(paramInt1, paramInt2);
     paramInt2 = 1;
     while (paramInt1 > 64)
@@ -214,7 +214,7 @@ public class ImgUtil
       paramInt2 *= 2;
       paramInt1 /= paramInt2;
     }
-    AppMethodBeat.o(215368);
+    AppMethodBeat.o(261723);
     return paramInt2;
   }
   
@@ -226,7 +226,7 @@ public class ImgUtil
       AppMethodBeat.o(156188);
       return "";
     }
-    paramString = identifyImgType(s.aW(paramString, 0, 2));
+    paramString = identifyImgType(u.aY(paramString, 0, 2));
     AppMethodBeat.o(156188);
     return paramString;
   }
@@ -347,7 +347,7 @@ public class ImgUtil
     //   8: aconst_null
     //   9: astore_3
     //   10: aload_0
-    //   11: invokestatic 68	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   11: invokestatic 68	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
     //   14: astore_0
     //   15: aload_0
     //   16: astore_3
@@ -596,7 +596,7 @@ public class ImgUtil
     //   72: aload 7
     //   74: astore 4
     //   76: aload_0
-    //   77: invokestatic 201	com/tencent/mm/vfs/s:YS	(Ljava/lang/String;)Z
+    //   77: invokestatic 201	com/tencent/mm/vfs/u:agG	(Ljava/lang/String;)Z
     //   80: istore_3
     //   81: iload_3
     //   82: ifne +14 -> 96
@@ -611,7 +611,7 @@ public class ImgUtil
     //   100: aload 7
     //   102: astore 4
     //   104: aload_0
-    //   105: invokestatic 68	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   105: invokestatic 68	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
     //   108: astore_0
     //   109: aload_0
     //   110: astore 5
@@ -706,7 +706,7 @@ public class ImgUtil
     //   8: aconst_null
     //   9: astore_3
     //   10: aload_0
-    //   11: invokestatic 68	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   11: invokestatic 68	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
     //   14: astore_0
     //   15: aload_0
     //   16: astore_3
@@ -874,7 +874,7 @@ public class ImgUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.ImgUtil
  * JD-Core Version:    0.7.0.1
  */

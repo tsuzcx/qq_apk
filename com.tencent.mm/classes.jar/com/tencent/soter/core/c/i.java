@@ -12,25 +12,25 @@ import org.json.JSONObject;
 
 public final class i
 {
-  public String FhU;
-  long RPO;
-  private String RPP;
-  public String RPQ;
-  private ArrayList<String> RPR;
+  public String Lwz;
+  long Zst;
+  private String Zsu;
+  public String Zsv;
+  private ArrayList<String> Zsw;
   public String signature;
   public int uid;
   
   public i(String paramString1, String paramString2)
   {
     AppMethodBeat.i(88673);
-    this.RPO = -1L;
+    this.Zst = -1L;
     this.uid = -1;
-    this.FhU = "";
-    this.RPP = "";
-    this.RPQ = "";
-    this.RPR = null;
+    this.Lwz = "";
+    this.Zsu = "";
+    this.Zsv = "";
+    this.Zsw = null;
     this.signature = "";
-    this.RPQ = paramString1;
+    this.Zsv = paramString1;
     for (;;)
     {
       try
@@ -44,20 +44,20 @@ public final class i
           d.e("Soter.SoterPubKeyModel", "certificates train not enough", new Object[0]);
         }
         d.i("Soter.SoterPubKeyModel", "certs size: [%d]", new Object[] { Integer.valueOf(localJSONArray.length()) });
-        this.RPR = new ArrayList();
+        this.Zsw = new ArrayList();
         int i = 0;
         if (i < localJSONArray.length())
         {
           String str = localJSONArray.getString(i);
-          this.RPR.add(str);
+          this.Zsw.add(str);
           i += 1;
           continue;
         }
-        a((X509Certificate)CertificateFactory.getInstance("X.509").generateCertificate(new ByteArrayInputStream(((String)this.RPR.get(0)).getBytes())));
-        paramString1.put("cpu_id", this.FhU);
+        b((X509Certificate)CertificateFactory.getInstance("X.509").generateCertificate(new ByteArrayInputStream(((String)this.Zsw.get(0)).getBytes())));
+        paramString1.put("cpu_id", this.Lwz);
         paramString1.put("uid", this.uid);
-        paramString1.put("counter", this.RPO);
-        this.RPQ = paramString1.toString();
+        paramString1.put("counter", this.Zst);
+        this.Zsv = paramString1.toString();
       }
       catch (Exception paramString1)
       {
@@ -67,22 +67,22 @@ public final class i
       this.signature = paramString2;
       AppMethodBeat.o(88673);
       return;
-      this.RPO = paramString1.optLong("counter");
+      this.Zst = paramString1.optLong("counter");
       this.uid = paramString1.optInt("uid");
-      this.FhU = paramString1.optString("cpu_id");
-      this.RPP = paramString1.optString("pub_key");
+      this.Lwz = paramString1.optString("cpu_id");
+      this.Zsu = paramString1.optString("pub_key");
     }
   }
   
   public i(Certificate[] paramArrayOfCertificate)
   {
     AppMethodBeat.i(88674);
-    this.RPO = -1L;
+    this.Zst = -1L;
     this.uid = -1;
-    this.FhU = "";
-    this.RPP = "";
-    this.RPQ = "";
-    this.RPR = null;
+    this.Lwz = "";
+    this.Zsu = "";
+    this.Zsv = "";
+    this.Zsw = null;
     this.signature = "";
     if (paramArrayOfCertificate != null) {}
     try
@@ -96,19 +96,19 @@ public final class i
         Base64.encodeToString(localCertificate.getEncoded(), 2);
         String str = a.a(localCertificate);
         if (i == 0) {
-          a((X509Certificate)localCertificate);
+          b((X509Certificate)localCertificate);
         }
         localJSONArray.put(str);
         localArrayList.add(str);
         i += 1;
       }
-      this.RPR = localArrayList;
+      this.Zsw = localArrayList;
       paramArrayOfCertificate = new JSONObject();
       paramArrayOfCertificate.put("certs", localJSONArray);
-      paramArrayOfCertificate.put("cpu_id", this.FhU);
+      paramArrayOfCertificate.put("cpu_id", this.Lwz);
       paramArrayOfCertificate.put("uid", this.uid);
-      paramArrayOfCertificate.put("counter", this.RPO);
-      this.RPQ = paramArrayOfCertificate.toString();
+      paramArrayOfCertificate.put("counter", this.Zst);
+      this.Zsv = paramArrayOfCertificate.toString();
       AppMethodBeat.o(88674);
       return;
     }
@@ -119,7 +119,7 @@ public final class i
     }
   }
   
-  private void a(X509Certificate paramX509Certificate)
+  private void b(X509Certificate paramX509Certificate)
   {
     AppMethodBeat.i(88675);
     try
@@ -138,14 +138,14 @@ public final class i
   public final String toString()
   {
     AppMethodBeat.i(88672);
-    String str = "SoterPubKeyModel{counter=" + this.RPO + ", uid=" + this.uid + ", cpu_id='" + this.FhU + '\'' + ", pub_key_in_x509='" + this.RPP + '\'' + ", rawJson='" + this.RPQ + '\'' + ", signature='" + this.signature + '\'' + '}';
+    String str = "SoterPubKeyModel{counter=" + this.Zst + ", uid=" + this.uid + ", cpu_id='" + this.Lwz + '\'' + ", pub_key_in_x509='" + this.Zsu + '\'' + ", rawJson='" + this.Zsv + '\'' + ", signature='" + this.signature + '\'' + '}';
     AppMethodBeat.o(88672);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.soter.core.c.i
  * JD-Core Version:    0.7.0.1
  */

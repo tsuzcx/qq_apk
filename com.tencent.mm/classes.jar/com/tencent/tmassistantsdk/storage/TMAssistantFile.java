@@ -5,8 +5,8 @@ import android.os.Environment;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import com.tencent.tmassistantsdk.util.GlobalUtil;
 import com.tencent.tmassistantsdk.util.TMLog;
 import java.io.File;
@@ -97,10 +97,10 @@ public class TMAssistantFile
     TMLog.i("TMAssistantFile", "moveFileFromTmpToSavaPath, tmpFilePath = " + paramString1 + ", saveFilePath = " + paramString2);
     if ((paramString1 != null) && (paramString2 != null))
     {
-      paramString1 = new o(paramString1);
-      if (paramString1.exists() == true)
+      paramString1 = new q(paramString1);
+      if (paramString1.ifE() == true)
       {
-        boolean bool = paramString1.am(new o(paramString2));
+        boolean bool = paramString1.aj(new q(paramString2));
         if (bool) {
           GlobalUtil.updateFilePathAuthorized(paramString2);
         }
@@ -233,11 +233,11 @@ public class TMAssistantFile
     TMLog.i("TMAssistantFile", "deleteFile 1 tmpFilePathString: ".concat(String.valueOf(str)));
     if (!TextUtils.isEmpty(str))
     {
-      o localo = new o(str);
-      TMLog.i("TMAssistantFile", "deleteFile 2 file: ".concat(String.valueOf(localo)));
-      if (localo.exists())
+      q localq = new q(str);
+      TMLog.i("TMAssistantFile", "deleteFile 2 file: ".concat(String.valueOf(localq)));
+      if (localq.ifE())
       {
-        boolean bool = localo.delete();
+        boolean bool = localq.cFq();
         TMLog.i("TMAssistantFile", "deleteFile result:" + bool + ",filename:" + str);
         AppMethodBeat.o(102415);
         return;
@@ -270,9 +270,9 @@ public class TMAssistantFile
     if (i > 0) {
       str = paramString.substring(0, i);
     }
-    paramString = new o(str);
-    if (!paramString.exists()) {
-      bool = paramString.mkdirs();
+    paramString = new q(str);
+    if (!paramString.ifE()) {
+      bool = paramString.ifL();
     }
     if (!bool)
     {
@@ -384,15 +384,15 @@ public class TMAssistantFile
     Object localObject = getSaveFilePath(this.mFinalFileName);
     if (localObject != null)
     {
-      localObject = new o((String)localObject);
-      o localo;
-      if (!((o)localObject).exists())
+      localObject = new q((String)localObject);
+      q localq;
+      if (!((q)localObject).ifE())
       {
         localObject = getTmpFilePath(this.mTempFileName);
         if (localObject != null)
         {
-          localo = new o((String)localObject);
-          if (localo.exists()) {
+          localq = new q((String)localObject);
+          if (localq.ifE()) {
             break label83;
           }
           this.mFileDataLen = 0L;
@@ -405,9 +405,9 @@ public class TMAssistantFile
         return l;
         label83:
         TMLog.i("TMAssistantFile", (String)localObject + " exists");
-        this.mFileDataLen = localo.length();
+        this.mFileDataLen = localq.length();
         continue;
-        this.mFileDataLen = ((o)localObject).length();
+        this.mFileDataLen = ((q)localObject).length();
       }
     }
     AppMethodBeat.o(102416);
@@ -440,7 +440,7 @@ public class TMAssistantFile
           try
           {
             ensureFilePath(str);
-            this.mFileOutputStream = s.dw(str, true);
+            this.mFileOutputStream = u.dI(str, true);
             if (this.mWriteDataBuffer == null)
             {
               this.mWriteDataBuffer = new byte[16384];
@@ -485,7 +485,7 @@ public class TMAssistantFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tmassistantsdk.storage.TMAssistantFile
  * JD-Core Version:    0.7.0.1
  */

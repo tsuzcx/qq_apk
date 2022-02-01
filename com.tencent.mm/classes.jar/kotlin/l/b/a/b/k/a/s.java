@@ -13,22 +13,22 @@ public abstract interface s
   public static final class a
     implements s
   {
-    public static final a TLi;
+    public static final a abnL;
     
     static
     {
       AppMethodBeat.i(60318);
-      TLi = new a();
+      abnL = new a();
       AppMethodBeat.o(60318);
     }
     
     public final ab a(a.p paramp, String paramString, aj paramaj1, aj paramaj2)
     {
       AppMethodBeat.i(60317);
-      p.h(paramp, "proto");
-      p.h(paramString, "flexibleId");
-      p.h(paramaj1, "lowerBound");
-      p.h(paramaj2, "upperBound");
+      p.k(paramp, "proto");
+      p.k(paramString, "flexibleId");
+      p.k(paramaj1, "lowerBound");
+      p.k(paramaj2, "upperBound");
       paramp = (Throwable)new IllegalArgumentException("This method should not be used.");
       AppMethodBeat.o(60317);
       throw paramp;
@@ -37,7 +37,7 @@ public abstract interface s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.s
  * JD-Core Version:    0.7.0.1
  */

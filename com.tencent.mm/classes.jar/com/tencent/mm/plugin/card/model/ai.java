@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.cd.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dnq;
-import com.tencent.mm.protocal.protobuf.dnr;
+import com.tencent.mm.protocal.protobuf.dxi;
+import com.tencent.mm.protocal.protobuf.dxj;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class ai
@@ -25,21 +25,21 @@ public final class ai
   {
     AppMethodBeat.i(112861);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new dnq();
-    ((d.a)localObject).iLO = new dnr();
+    ((d.a)localObject).lBU = new dxi();
+    ((d.a)localObject).lBV = new dxj();
     ((d.a)localObject).uri = "/cgi-bin/card/reportlotionorbluetoothinfo";
     ((d.a)localObject).funcId = 2574;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (dnq)this.rr.iLK.iLR;
-    ((dnq)localObject).eaO = paramString;
-    ((dnq)localObject).MQK = b.cD(paramArrayOfByte);
-    ((dnq)localObject).dTj = paramFloat1;
-    ((dnq)localObject).latitude = paramFloat2;
-    ((dnq)localObject).MQJ = paramFloat3;
-    ((dnq)localObject).MQL = paramBoolean1;
-    ((dnq)localObject).MQM = paramBoolean2;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (dxi)d.b.b(this.rr.lBR);
+    ((dxi)localObject).fUL = paramString;
+    ((dxi)localObject).UcR = b.cU(paramArrayOfByte);
+    ((dxi)localObject).longitude = paramFloat1;
+    ((dxi)localObject).latitude = paramFloat2;
+    ((dxi)localObject).UcQ = paramFloat3;
+    ((dxi)localObject).UcS = paramBoolean1;
+    ((dxi)localObject).UcT = paramBoolean2;
     AppMethodBeat.o(112861);
   }
   
@@ -67,7 +67,7 @@ public final class ai
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.ai
  * JD-Core Version:    0.7.0.1
  */

@@ -5,20 +5,21 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewParent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.c.f;
 import com.tencent.mm.ui.widget.MMEditText;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$8", "Landroid/view/View$OnTouchListener;", "onTouch", "", "view", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "plugin-webview_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$8", "Landroid/view/View$OnTouchListener;", "onTouch", "", "view", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "plugin-webview_release"})
 public final class n$8
   implements View.OnTouchListener
 {
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(175690);
-    p.h(paramView, "view");
-    p.h(paramMotionEvent, "event");
-    if ((paramView.getId() == 2131304931) && (n.b(this.JzC).getLineCount() >= 5))
+    p.k(paramView, "view");
+    p.k(paramMotionEvent, "event");
+    if ((paramView.getId() == c.f.mp_video_comment_et) && (n.b(this.QxO).getLineCount() >= 5))
     {
       paramView.getParent().requestDisallowInterceptTouchEvent(true);
       if (paramMotionEvent.getAction() == 1) {
@@ -31,7 +32,7 @@ public final class n$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.n.8
  * JD-Core Version:    0.7.0.1
  */

@@ -139,13 +139,10 @@ public final class CancellationSignal
     //   from	to	target	type
     //   8	17	86	finally
     //   24	46	86	finally
-    //   87	89	86	finally
     //   68	79	97	finally
-    //   98	100	97	finally
     //   50	56	108	finally
     //   60	66	108	finally
     //   111	122	130	finally
-    //   131	133	130	finally
     //   60	66	141	android/os/RemoteException
   }
   
@@ -156,7 +153,11 @@ public final class CancellationSignal
       boolean bool = this.mIsCanceled;
       return bool;
     }
-    finally {}
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public final void setOnCancelListener(OnCancelListener paramOnCancelListener)
@@ -241,8 +242,6 @@ public final class CancellationSignal
     //   8	22	69	finally
     //   29	41	69	finally
     //   45	47	69	finally
-    //   54	56	69	finally
-    //   70	72	69	finally
     //   56	62	80	android/os/RemoteException
   }
   
@@ -285,7 +284,7 @@ public final class CancellationSignal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.wcdb.support.CancellationSignal
  * JD-Core Version:    0.7.0.1
  */

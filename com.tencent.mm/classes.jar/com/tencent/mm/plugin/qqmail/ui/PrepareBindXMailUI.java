@@ -7,8 +7,6 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -16,154 +14,129 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.br.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.qqmail.d.p;
-import com.tencent.mm.protocal.GeneralControlWrapper;
-import com.tencent.mm.protocal.JsapiPermissionWrapper;
+import com.tencent.mm.plugin.qqmail.e.c;
+import com.tencent.mm.plugin.qqmail.e.e;
+import com.tencent.mm.plugin.qqmail.e.f;
+import com.tencent.mm.plugin.qqmail.e.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.w;
 
 @com.tencent.mm.ui.base.a(3)
 public class PrepareBindXMailUI
   extends MMActivity
   implements i
 {
-  private TextView BwI;
-  private Button BwJ;
-  private TextView BwK;
-  private String BwL;
-  private String BwM;
-  private String BwN;
-  private ImageView gyr;
-  private TextView kaq;
-  private ProgressDialog klA;
+  private TextView Hrd;
+  private Button Hre;
+  private TextView Hrf;
+  private String Hrg;
+  private String Hrh;
+  private String Hri;
+  private ImageView jiu;
+  private TextView mRJ;
+  private ProgressDialog ndq;
   
-  private void aC(final String paramString1, final String paramString2, final String paramString3)
+  private void D(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(198732);
-    View localView = View.inflate(this, 2131496190, null);
-    final EditText localEditText = (EditText)localView.findViewById(2131307448);
-    h.a(this, getString(2131758010), localView, new DialogInterface.OnClickListener()
+    AppMethodBeat.i(249964);
+    paramString1 = new p(3, paramString1, paramString2, paramString3, paramString4);
+    com.tencent.mm.kernel.h.aGY().a(paramString1, 0);
+    this.ndq = com.tencent.mm.ui.base.h.a(this, getString(e.i.app_waiting), false, null);
+    AppMethodBeat.o(249964);
+  }
+  
+  private void ax(final String paramString1, final String paramString2, final String paramString3)
+  {
+    AppMethodBeat.i(249966);
+    View localView = View.inflate(this, e.f.secondpass, null);
+    final EditText localEditText = (EditText)localView.findViewById(e.e.secondpass_et);
+    com.tencent.mm.ui.base.h.a(this, getString(e.i.contact_info_qqmailhelper_secondpass), localView, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
-        AppMethodBeat.i(198725);
+        AppMethodBeat.i(250075);
         if ((localEditText.getText() != null) && (!Util.isNullOrNil(localEditText.getText()))) {
           PrepareBindXMailUI.a(PrepareBindXMailUI.this, paramString1, paramString2, paramString3, localEditText.getText().toString());
         }
-        AppMethodBeat.o(198725);
+        AppMethodBeat.o(250075);
       }
     });
-    AppMethodBeat.o(198732);
-  }
-  
-  private void y(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    AppMethodBeat.i(198731);
-    paramString1 = new p(3, paramString1, paramString2, paramString3, paramString4);
-    g.azz().a(paramString1, 0);
-    this.klA = h.a(this, getString(2131756029), false, null);
-    AppMethodBeat.o(198731);
+    AppMethodBeat.o(249966);
   }
   
   public int getLayoutId()
   {
-    return 2131495948;
+    return e.f.prepare_bind_xmail;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(198729);
+    AppMethodBeat.i(249962);
     setMMTitle("");
     showMMLogo();
     getSupportActionBar().hide();
-    getController().p(this, getContext().getResources().getColor(2131101424));
-    this.gyr = ((ImageView)findViewById(2131297134));
-    this.BwI = ((TextView)findViewById(2131310636));
-    this.BwJ = ((Button)findViewById(2131297426));
-    this.kaq = ((TextView)findViewById(2131297963));
-    this.BwK = ((TextView)findViewById(2131297414));
-    if (Util.isNullOrNil(this.BwL)) {
-      this.BwJ.setEnabled(false);
+    getController().q(this, getContext().getResources().getColor(e.c.white));
+    this.jiu = ((ImageView)findViewById(e.e.avatar_iv));
+    this.Hrd = ((TextView)findViewById(e.e.wx_mail));
+    this.Hre = ((Button)findViewById(e.e.bind_wx_mail_btn));
+    this.mRJ = ((TextView)findViewById(e.e.cancel_btn));
+    this.Hrf = ((TextView)findViewById(e.e.bind_qq_mail_btn));
+    if (Util.isNullOrNil(this.Hrg)) {
+      this.Hre.setEnabled(false);
     }
     for (;;)
     {
-      this.BwJ.setOnClickListener(new View.OnClickListener()
+      this.Hre.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(198722);
+          AppMethodBeat.i(250662);
           b localb = new b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qqmail/ui/PrepareBindXMailUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/qqmail/ui/PrepareBindXMailUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           if ((!Util.isNullOrNil(PrepareBindXMailUI.a(PrepareBindXMailUI.this))) && (!PrepareBindXMailUI.a(PrepareBindXMailUI.this).equals(PrepareBindXMailUI.b(PrepareBindXMailUI.this)))) {
-            h.a(PrepareBindXMailUI.this, PrepareBindXMailUI.this.getString(2131758008), "", new DialogInterface.OnClickListener()
+            com.tencent.mm.ui.base.h.a(PrepareBindXMailUI.this, PrepareBindXMailUI.this.getString(e.i.contact_info_qqmailhelper_rebind_tip), "", new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
               {
-                AppMethodBeat.i(198721);
+                AppMethodBeat.i(249717);
                 PrepareBindXMailUI.c(PrepareBindXMailUI.this);
-                AppMethodBeat.o(198721);
+                AppMethodBeat.o(249717);
               }
             }, null);
           }
           for (;;)
           {
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/PrepareBindXMailUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(198722);
+            AppMethodBeat.o(250662);
             return;
             PrepareBindXMailUI.c(PrepareBindXMailUI.this);
           }
         }
       });
-      this.kaq.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(198723);
-          b localb = new b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qqmail/ui/PrepareBindXMailUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          PrepareBindXMailUI.this.onBackPressed();
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/PrepareBindXMailUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(198723);
-        }
-      });
-      this.BwK.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(198724);
-          b localb = new b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qqmail/ui/PrepareBindXMailUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-          paramAnonymousView = new Intent();
-          paramAnonymousView.putExtra("rawUrl", PrepareBindXMailUI.d(PrepareBindXMailUI.this));
-          paramAnonymousView.putExtra("hardcode_jspermission", JsapiPermissionWrapper.Kzm);
-          paramAnonymousView.putExtra("hardcode_general_ctrl", GeneralControlWrapper.Kzg);
-          c.b(PrepareBindXMailUI.this, "webview", ".ui.tools.WebViewUI", paramAnonymousView, 293);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/PrepareBindXMailUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(198724);
-        }
-      });
-      com.tencent.mm.ui.g.a.a.c(this.gyr, z.aTY());
-      AppMethodBeat.o(198729);
+      this.mRJ.setOnClickListener(new PrepareBindXMailUI.2(this));
+      this.Hrf.setOnClickListener(new PrepareBindXMailUI.3(this));
+      com.tencent.mm.ui.h.a.a.c(this.jiu, z.bcZ());
+      AppMethodBeat.o(249962);
       return;
-      this.BwI.setText(this.BwL);
+      this.Hrd.setText(this.Hrg);
     }
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, final Intent paramIntent)
   {
-    AppMethodBeat.i(198733);
+    AppMethodBeat.i(249967);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if (paramInt1 == 293)
     {
@@ -184,105 +157,105 @@ public class PrepareBindXMailUI
           {
             if (!Util.isNullOrNil((String)localObject))
             {
-              if ((!Util.isNullOrNil(this.BwM)) && (!this.BwM.equals(paramIntent)))
+              if ((!Util.isNullOrNil(this.Hrh)) && (!this.Hrh.equals(paramIntent)))
               {
-                h.a(this, getString(2131758008), "", new DialogInterface.OnClickListener()
+                com.tencent.mm.ui.base.h.a(this, getString(e.i.contact_info_qqmailhelper_rebind_tip), "", new DialogInterface.OnClickListener()
                 {
                   public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
                   {
-                    AppMethodBeat.i(198726);
-                    PrepareBindXMailUI.a(PrepareBindXMailUI.this, paramIntent, str, this.Bvo);
-                    AppMethodBeat.o(198726);
+                    AppMethodBeat.i(249668);
+                    PrepareBindXMailUI.a(PrepareBindXMailUI.this, paramIntent, str, this.HpJ);
+                    AppMethodBeat.o(249668);
                   }
                 }, null);
-                AppMethodBeat.o(198733);
+                AppMethodBeat.o(249967);
                 return;
               }
-              aC(paramIntent, str, (String)localObject);
-              AppMethodBeat.o(198733);
+              ax(paramIntent, str, (String)localObject);
+              AppMethodBeat.o(249967);
               return;
             }
-            Toast.makeText(this, getString(2131765437), 1).show();
-            AppMethodBeat.o(198733);
+            Toast.makeText(this, getString(e.i.settings_mail_install_fail), 1).show();
+            AppMethodBeat.o(249967);
             return;
           }
-          if ((!Util.isNullOrNil(this.BwM)) && (!this.BwM.equals(paramIntent)))
+          if ((!Util.isNullOrNil(this.Hrh)) && (!this.Hrh.equals(paramIntent)))
           {
-            h.a(this, getString(2131758008), "", new DialogInterface.OnClickListener()
+            com.tencent.mm.ui.base.h.a(this, getString(e.i.contact_info_qqmailhelper_rebind_tip), "", new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
-                AppMethodBeat.i(198727);
+                AppMethodBeat.i(249979);
                 PrepareBindXMailUI.a(PrepareBindXMailUI.this, paramIntent, str, "", "");
-                AppMethodBeat.o(198727);
+                AppMethodBeat.o(249979);
               }
             }, null);
-            AppMethodBeat.o(198733);
+            AppMethodBeat.o(249967);
             return;
           }
-          y(paramIntent, str, "", "");
+          D(paramIntent, str, "", "");
         }
       }
     }
-    AppMethodBeat.o(198733);
+    AppMethodBeat.o(249967);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(198728);
+    AppMethodBeat.i(249960);
     super.onCreate(paramBundle);
-    this.BwL = getIntent().getStringExtra("Key_WeXin_Mail");
-    this.BwN = getIntent().getStringExtra("Key_QQMail_Login_Url");
-    this.BwM = getIntent().getStringExtra("Key_Last_Bind_Mail");
-    Log.i("MicroMsg.PrepareBindXMailUI", "wxMail %s, loginQQ %s, lastBindMail %s", new Object[] { this.BwL, this.BwN, this.BwM });
+    this.Hrg = getIntent().getStringExtra("Key_WeXin_Mail");
+    this.Hri = getIntent().getStringExtra("Key_QQMail_Login_Url");
+    this.Hrh = getIntent().getStringExtra("Key_Last_Bind_Mail");
+    Log.i("MicroMsg.PrepareBindXMailUI", "wxMail %s, loginQQ %s, lastBindMail %s", new Object[] { this.Hrg, this.Hri, this.Hrh });
     initView();
-    g.azz().a(586, this);
-    AppMethodBeat.o(198728);
+    com.tencent.mm.kernel.h.aGY().a(586, this);
+    AppMethodBeat.o(249960);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(198734);
+    AppMethodBeat.i(249969);
     super.onDestroy();
-    g.azz().b(586, this);
-    AppMethodBeat.o(198734);
+    com.tencent.mm.kernel.h.aGY().b(586, this);
+    AppMethodBeat.o(249969);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
-    AppMethodBeat.i(198730);
+    AppMethodBeat.i(249963);
     Log.i("MicroMsg.PrepareBindXMailUI", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (this.klA != null) {
-      this.klA.dismiss();
+    if (this.ndq != null) {
+      this.ndq.dismiss();
     }
-    int i = ((p)paramq).eGo();
+    int i = ((p)paramq).fsp();
     if ((paramInt1 == 0) && (paramInt2 == 0) && (i == 0))
     {
-      Toast.makeText(this, getString(2131765438), 0).show();
+      Toast.makeText(this, getString(e.i.settings_mail_install_success), 0).show();
       paramString = new Intent();
-      paramString.putExtra("Key_Bind_XMail", ((p)paramq).BrO);
+      paramString.putExtra("Key_Bind_XMail", ((p)paramq).Hmh);
       setResult(-1, paramString);
       finish();
-      AppMethodBeat.o(198730);
+      AppMethodBeat.o(249963);
       return;
     }
     if (i == -39006)
     {
       String str = paramString;
       if (Util.isNullOrNil(paramString)) {
-        str = getString(2131764103);
+        str = getString(e.i.qqmail_verify_second_pwd_error);
       }
       Toast.makeText(this, str, 0).show();
-      aC(((p)paramq).BrO, ((p)paramq).dHx, ((p)paramq).BrP);
-      AppMethodBeat.o(198730);
+      ax(((p)paramq).Hmh, ((p)paramq).fAo, ((p)paramq).Hmi);
+      AppMethodBeat.o(249963);
       return;
     }
     paramq = paramString;
     if (Util.isNullOrNil(paramString)) {
-      paramq = getString(2131765437);
+      paramq = getString(e.i.settings_mail_install_fail);
     }
     Toast.makeText(this, paramq, 1).show();
-    AppMethodBeat.o(198730);
+    AppMethodBeat.o(249963);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -293,7 +266,7 @@ public class PrepareBindXMailUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.PrepareBindXMailUI
  * JD-Core Version:    0.7.0.1
  */

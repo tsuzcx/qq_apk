@@ -38,7 +38,7 @@ public final class a
   
   public static boolean e(com.tencent.mm.loader.h.a.a parama)
   {
-    return (parama == null) || (parama.aKr() == b.ich) || (parama.aKr() == b.icg) || (parama.aKr() == b.ici);
+    return (parama == null) || (parama.aSt() == b.kQO) || (parama.aSt() == b.kQN) || (parama.aSt() == b.kQP);
   }
 }
 

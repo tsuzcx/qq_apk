@@ -1,20 +1,20 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.q.a;
-import com.tencent.mm.ak.q.b;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.q.a;
+import com.tencent.mm.an.q.b;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ddi;
-import com.tencent.mm.protocal.protobuf.dqx;
-import com.tencent.mm.protocal.protobuf.dqy;
+import com.tencent.mm.protocal.protobuf.dmy;
+import com.tencent.mm.protocal.protobuf.eat;
+import com.tencent.mm.protocal.protobuf.eau;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.XmlParser;
 import java.util.Map;
@@ -26,55 +26,55 @@ public final class x
   private i callback;
   public int errCode;
   public int errType;
-  private final long jky;
-  private Runnable jkz;
+  private Runnable maA;
+  private final long maz;
   public long msgId;
   public d rr;
   
   public x(float paramFloat1, float paramFloat2, long paramLong)
   {
     AppMethodBeat.i(150940);
-    this.jky = 60000L;
+    this.maz = 60000L;
     this.msgId = -1L;
-    ddi localddi = new ddi();
-    localddi.LbC = paramFloat1;
-    localddi.LbD = paramFloat2;
-    localddi.LuW = 1;
-    localddi.LuT = 0;
+    dmy localdmy = new dmy();
+    localdmy.ScO = paramFloat1;
+    localdmy.ScP = paramFloat2;
+    localdmy.Sxw = 1;
+    localdmy.Sxt = 0;
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new dqx();
-    ((d.a)localObject).iLO = new dqy();
+    ((d.a)localObject).lBU = new eat();
+    ((d.a)localObject).lBV = new eau();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/scanstreetview";
     ((d.a)localObject).funcId = 424;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (dqx)this.rr.iLK.iLR;
-    ((dqx)localObject).MTE = localddi;
-    ((dqx)localObject).Scene = 1;
-    ((dqx)localObject).MTF = -10000.0F;
-    ((dqx)localObject).MTG = -10000.0F;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (eat)d.b.b(this.rr.lBR);
+    ((eat)localObject).UfN = localdmy;
+    ((eat)localObject).CPw = 1;
+    ((eat)localObject).UfO = -10000.0F;
+    ((eat)localObject).UfP = -10000.0F;
     this.msgId = paramLong;
     AppMethodBeat.o(150940);
   }
   
-  public x(dqx paramdqx)
+  public x(eat parameat)
   {
     AppMethodBeat.i(150941);
-    this.jky = 60000L;
+    this.maz = 60000L;
     this.msgId = -1L;
     d.a locala = new d.a();
-    locala.iLN = paramdqx;
-    locala.iLO = new dqy();
+    locala.lBU = parameat;
+    locala.lBV = new eau();
     locala.uri = "/cgi-bin/micromsg-bin/scanstreetview";
     locala.funcId = 424;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
+    this.rr = locala.bgN();
     AppMethodBeat.o(150941);
   }
   
-  public static String PE(String paramString)
+  public static String Xc(String paramString)
   {
     AppMethodBeat.i(150945);
     paramString = XmlParser.parseXml(paramString, "streetview", null);
@@ -88,11 +88,21 @@ public final class x
     return paramString;
   }
   
-  public final dqy bfB()
+  public static int arZ()
   {
-    if ((this.rr != null) && (this.rr.iLL.iLR != null)) {
-      return (dqy)this.rr.iLL.iLR;
+    return 424;
+  }
+  
+  public final eau boR()
+  {
+    AppMethodBeat.i(205252);
+    if ((this.rr != null) && (d.c.b(this.rr.lBS) != null))
+    {
+      eau localeau = (eau)d.c.b(this.rr.lBS);
+      AppMethodBeat.o(205252);
+      return localeau;
     }
+    AppMethodBeat.o(205252);
     return null;
   }
   
@@ -126,9 +136,9 @@ public final class x
     }
     for (;;)
     {
-      Log.d("MicroMsg.NetSceneScanStreetView", "xml is %s", new Object[] { bfB().MbV });
-      if (this.jkz != null) {
-        this.jkz.run();
+      Log.d("MicroMsg.NetSceneScanStreetView", "xml is %s", new Object[] { boR().Tlx });
+      if (this.maA != null) {
+        this.maA.run();
       }
       AppMethodBeat.o(150944);
       return;
@@ -144,14 +154,14 @@ public final class x
   public final q.b securityVerificationChecked(s params)
   {
     AppMethodBeat.i(150943);
-    if (((dqx)((d)params).iLK.iLR).MTE == null)
+    if (((eat)d.b.b(((d)params).lBR)).UfN == null)
     {
       Log.e("MicroMsg.NetSceneScanStreetView", "req.rImpl.UserPos == null");
-      params = q.b.iMr;
+      params = q.b.lCy;
       AppMethodBeat.o(150943);
       return params;
     }
-    params = q.b.iMq;
+    params = q.b.lCx;
     AppMethodBeat.o(150943);
     return params;
   }
@@ -160,7 +170,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelsimple.x
  * JD-Core Version:    0.7.0.1
  */

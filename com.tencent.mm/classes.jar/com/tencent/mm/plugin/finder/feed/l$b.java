@@ -1,48 +1,52 @@
 package com.tencent.mm.plugin.finder.feed;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.bo;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.aa;
-import com.tencent.mm.view.RefreshLoadMoreLayout;
-import java.util.ArrayList;
-import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelTimelineContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "context", "Lcom/tencent/mm/ui/MMActivity;", "presenter", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelTimelineContract$Presenter;", "scene", "", "commentScene", "(Lcom/tencent/mm/ui/MMActivity;Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelTimelineContract$Presenter;II)V", "getEmptyView", "Landroid/view/View;", "initRecyclerView", "", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lkotlin/collections/ArrayList;", "onLoadInitDataError", "errCode", "errMsg", "", "onLoadMoreError", "onRefreshError", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderFeedMutualAdHandler$ExposeRecord;", "", "id", "", "isExposed", "", "(JZ)V", "getId", "()J", "()Z", "setExposed", "(Z)V", "component1", "component2", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-finder_release"})
 public final class l$b
-  extends v.b
 {
-  public l$b(MMActivity paramMMActivity, l.a parama, int paramInt)
+  private final long id;
+  boolean xpx;
+  
+  public l$b(long paramLong)
   {
-    super(paramMMActivity, (v.a)parama, paramInt, 20);
-    AppMethodBeat.i(243824);
-    AppMethodBeat.o(243824);
+    this.id = paramLong;
+    this.xpx = false;
   }
   
-  public final void aa(ArrayList<bo> paramArrayList)
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(243823);
-    p.h(paramArrayList, "data");
-    super.aa(paramArrayList);
-    paramArrayList = this.tLS;
-    View localView = aa.jQ((Context)this.gte).inflate(2131495297, null);
-    p.g(localView, "MMLayoutInflater.getInfl…t.load_more_footer, null)");
-    paramArrayList.setLoadMoreFooter(localView);
-    AppMethodBeat.o(243823);
+    if (this != paramObject)
+    {
+      if ((paramObject instanceof b))
+      {
+        paramObject = (b)paramObject;
+        if ((this.id != paramObject.id) || (this.xpx != paramObject.xpx)) {}
+      }
+    }
+    else {
+      return true;
+    }
+    return false;
   }
   
-  public final View getEmptyView()
+  public final int hashCode()
   {
-    return null;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(220493);
+    String str = "ExposeRecord(id=" + this.id + ", isExposed=" + this.xpx + ")";
+    AppMethodBeat.o(220493);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.l.b
  * JD-Core Version:    0.7.0.1
  */

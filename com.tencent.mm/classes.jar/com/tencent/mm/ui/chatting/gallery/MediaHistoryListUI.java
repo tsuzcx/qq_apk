@@ -6,9 +6,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.b;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.view.KeyEvent;
@@ -16,20 +13,30 @@ import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.ap;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.model.aq;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
+import com.tencent.mm.modelvoiceaddr.ui.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ah;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.q;
+import com.tencent.mm.ui.base.s;
 import com.tencent.mm.ui.chatting.f.b.a;
 import com.tencent.mm.ui.chatting.f.b.b;
-import com.tencent.mm.ui.chatting.k.g;
-import com.tencent.mm.ui.tools.s;
+import com.tencent.mm.ui.chatting.l.d;
+import com.tencent.mm.ui.chatting.l.g;
+import com.tencent.mm.ui.tools.e;
+import com.tencent.mm.ui.tools.t;
 import java.util.List;
 
 @com.tencent.mm.ui.base.a(3)
@@ -37,97 +44,97 @@ public class MediaHistoryListUI
   extends MMActivity
   implements b.b
 {
-  private com.tencent.mm.modelvoiceaddr.ui.b PBw;
-  private b.a Pws;
-  private String gAn;
-  private TextView gAp;
+  private b.a WQK;
+  private b WWt;
+  private String jkq;
+  private TextView jks;
   private RecyclerView mRecyclerView;
-  private ProgressDialog qoU;
+  private ProgressDialog tND;
   
-  private void ku(boolean paramBoolean)
+  private void lG(boolean paramBoolean)
   {
     AppMethodBeat.i(36391);
     Log.i("MicroMsg.MediaHistoryListUI", "[setProgress] isVisible:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      this.qoU = q.a(this, getString(2131762446), true, 0, null);
+      this.tND = s.a(this, getString(R.l.loading_tips), true, 0, null);
       AppMethodBeat.o(36391);
       return;
     }
-    if ((this.qoU != null) && (this.qoU.isShowing()))
+    if ((this.tND != null) && (this.tND.isShowing()))
     {
-      this.qoU.dismiss();
-      this.qoU = null;
+      this.tND.dismiss();
+      this.tND = null;
     }
     AppMethodBeat.o(36391);
   }
   
-  public final void D(boolean paramBoolean, int paramInt)
+  public final void H(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(36388);
-    ku(false);
+    lG(false);
     Log.i("MicroMsg.MediaHistoryListUI", "[onDataLoaded] isFirst:%s addCount:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
     if (paramInt <= 0)
     {
-      this.gAp.setVisibility(0);
+      this.jks.setVisibility(0);
       this.mRecyclerView.setVisibility(8);
-      this.gAp.setText(getString(2131757493));
+      this.jks.setText(getString(R.l.ewF));
       AppMethodBeat.o(36388);
       return;
     }
-    this.gAp.setVisibility(8);
+    this.jks.setVisibility(8);
     this.mRecyclerView.setVisibility(0);
-    this.mRecyclerView.getAdapter().atj.notifyChanged();
+    this.mRecyclerView.getAdapter().alc.notifyChanged();
     AppMethodBeat.o(36388);
   }
   
-  public final void dr(String paramString, boolean paramBoolean)
+  public final void dD(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(36390);
     if (paramBoolean)
     {
-      String str = getString(2131757497, new Object[] { paramString });
-      this.gAp.setVisibility(0);
+      String str = getString(R.l.ewH, new Object[] { paramString });
+      this.jks.setVisibility(0);
       this.mRecyclerView.setVisibility(8);
-      TextView localTextView = this.gAp;
-      this.gAp.getContext();
+      TextView localTextView = this.jks;
+      this.jks.getContext();
       localTextView.setText(com.tencent.mm.plugin.fts.a.f.b(str, paramString));
       AppMethodBeat.o(36390);
       return;
     }
-    this.gAp.setVisibility(8);
+    this.jks.setVisibility(8);
     this.mRecyclerView.setVisibility(0);
     AppMethodBeat.o(36390);
   }
   
-  public final void gSc()
-  {
-    AppMethodBeat.i(36387);
-    ku(true);
-    AppMethodBeat.o(36387);
-  }
-  
   public int getLayoutId()
   {
-    return 2131495478;
+    return R.i.eiF;
+  }
+  
+  public final void hRy()
+  {
+    AppMethodBeat.i(36387);
+    lG(true);
+    AppMethodBeat.o(36387);
   }
   
   public void initView()
   {
     AppMethodBeat.i(36380);
-    this.PBw = new com.tencent.mm.modelvoiceaddr.ui.b();
-    this.PBw.CK(false);
-    this.PBw.a(this.Pws.gSa());
-    this.PBw.jxF = false;
-    this.gAp = ((TextView)findViewById(2131307411));
-    this.mRecyclerView = ((RecyclerView)findViewById(2131302345));
-    findViewById(2131299200).setBackgroundColor(getResources().getColor(2131099650));
-    this.mRecyclerView.setBackgroundColor(getResources().getColor(2131099650));
-    this.mRecyclerView.setLayoutManager(this.Pws.gRW());
-    this.mRecyclerView.a(this.Pws.gRX());
-    this.mRecyclerView.setAdapter(this.Pws.bmS(this.gAn));
+    this.WWt = new b();
+    this.WWt.He(false);
+    this.WWt.a(this.WQK.hRw());
+    this.WWt.mni = false;
+    this.jks = ((TextView)findViewById(R.h.search_nothing_hint));
+    this.mRecyclerView = ((RecyclerView)findViewById(R.h.history_recycler_view));
+    findViewById(R.h.content_history).setBackgroundColor(getResources().getColor(R.e.BG_2));
+    this.mRecyclerView.setBackgroundColor(getResources().getColor(R.e.BG_2));
+    this.mRecyclerView.setLayoutManager(this.WQK.hRs());
+    this.mRecyclerView.a(this.WQK.hRt());
+    this.mRecyclerView.setAdapter(this.WQK.bzt(this.jkq));
     this.mRecyclerView.setHasFixedSize(true);
-    setMMTitle(this.Pws.bmB());
+    setMMTitle(this.WQK.bwJ());
     AppMethodBeat.o(36380);
   }
   
@@ -147,11 +154,11 @@ public class MediaHistoryListUI
     if (Build.VERSION.SDK_INT >= 21)
     {
       paramBundle = TransitionInflater.from(this).inflateTransition(17760258);
-      paramBundle.excludeTarget(getWindow().getDecorView().findViewById(2131296366), true);
+      paramBundle.excludeTarget(getWindow().getDecorView().findViewById(R.h.action_bar_container), true);
       paramBundle.excludeTarget(16908335, true);
       getWindow().setEnterTransition(paramBundle);
     }
-    this.gAn = getIntent().getStringExtra("kintent_talker");
+    this.jkq = getIntent().getStringExtra("kintent_talker");
     int i = getIntent().getIntExtra("key_media_type", -1);
     paramBundle = null;
     switch (i)
@@ -162,84 +169,84 @@ public class MediaHistoryListUI
       Log.e("MicroMsg.MediaHistoryListUI", "[onCreate] presenter is null!");
       AppMethodBeat.o(36379);
       return;
-      paramBundle = new com.tencent.mm.ui.chatting.k.d(this);
+      paramBundle = new d(this);
       continue;
-      paramBundle = new com.tencent.mm.ui.chatting.k.h(this);
+      paramBundle = new com.tencent.mm.ui.chatting.l.h(this);
       continue;
-      paramBundle = new com.tencent.mm.ui.chatting.k.f(this);
+      paramBundle = new com.tencent.mm.ui.chatting.l.f(this);
       continue;
       paramBundle = new g(this);
       continue;
-      paramBundle = new com.tencent.mm.ui.chatting.k.a(this);
+      paramBundle = new com.tencent.mm.ui.chatting.l.a(this);
     }
     paramBundle.a(this);
-    setActionbarColor(android.support.v4.content.b.n(getContext(), 2131100898));
+    setActionbarColor(androidx.core.content.a.w(getContext(), R.e.normal_actionbar_color));
     hideActionbarLine();
     initView();
-    this.Pws.gRY();
-    boolean bool = ab.Eq(this.gAn);
-    bg.aVF();
-    paramBundle = c.aSX().Ke(this.gAn);
+    this.WQK.hRu();
+    boolean bool = ab.Lj(this.jkq);
+    bh.beI();
+    paramBundle = c.bbV().Rx(this.jkq);
     if (bool)
     {
-      if (this.Pws.getType() == 6)
+      if (this.WQK.getType() == 6)
       {
-        com.tencent.mm.plugin.report.service.h.CyF.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramBundle.bax().size()), Integer.valueOf(1) });
+        com.tencent.mm.plugin.report.service.h.IzE.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramBundle.bjL().size()), Integer.valueOf(1) });
         AppMethodBeat.o(36379);
         return;
       }
-      if (this.Pws.getType() == -1)
+      if (this.WQK.getType() == -1)
       {
-        com.tencent.mm.plugin.report.service.h.CyF.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(paramBundle.bax().size()), Integer.valueOf(1) });
+        com.tencent.mm.plugin.report.service.h.IzE.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(paramBundle.bjL().size()), Integer.valueOf(1) });
         AppMethodBeat.o(36379);
         return;
       }
-      if (this.Pws.getType() == 3)
+      if (this.WQK.getType() == 3)
       {
-        com.tencent.mm.plugin.report.service.h.CyF.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(paramBundle.bax().size()), Integer.valueOf(1) });
+        com.tencent.mm.plugin.report.service.h.IzE.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(paramBundle.bjL().size()), Integer.valueOf(1) });
         AppMethodBeat.o(36379);
         return;
       }
-      if (this.Pws.getType() == 5)
+      if (this.WQK.getType() == 5)
       {
-        com.tencent.mm.plugin.report.service.h.CyF.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramBundle.bax().size()), Integer.valueOf(1), Integer.valueOf(1) });
+        com.tencent.mm.plugin.report.service.h.IzE.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramBundle.bjL().size()), Integer.valueOf(1), Integer.valueOf(1) });
         AppMethodBeat.o(36379);
         return;
       }
-      if (this.Pws.getType() == 33)
+      if (this.WQK.getType() == 33)
       {
-        com.tencent.mm.plugin.report.service.h.CyF.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramBundle.bax().size()), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(8) });
+        com.tencent.mm.plugin.report.service.h.IzE.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramBundle.bjL().size()), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(8) });
         AppMethodBeat.o(36379);
       }
     }
     else
     {
-      if (this.Pws.getType() == 6)
+      if (this.WQK.getType() == 6)
       {
-        com.tencent.mm.plugin.report.service.h.CyF.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+        com.tencent.mm.plugin.report.service.h.IzE.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
         AppMethodBeat.o(36379);
         return;
       }
-      if (this.Pws.getType() == -1)
+      if (this.WQK.getType() == -1)
       {
-        com.tencent.mm.plugin.report.service.h.CyF.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+        com.tencent.mm.plugin.report.service.h.IzE.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
         AppMethodBeat.o(36379);
         return;
       }
-      if (this.Pws.getType() == 3)
+      if (this.WQK.getType() == 3)
       {
-        com.tencent.mm.plugin.report.service.h.CyF.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0) });
+        com.tencent.mm.plugin.report.service.h.IzE.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0) });
         AppMethodBeat.o(36379);
         return;
       }
-      if (this.Pws.getType() == 5)
+      if (this.WQK.getType() == 5)
       {
-        com.tencent.mm.plugin.report.service.h.CyF.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
+        com.tencent.mm.plugin.report.service.h.IzE.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
         AppMethodBeat.o(36379);
         return;
       }
-      if (this.Pws.getType() == 33) {
-        com.tencent.mm.plugin.report.service.h.CyF.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(8) });
+      if (this.WQK.getType() == 33) {
+        com.tencent.mm.plugin.report.service.h.IzE.a(14569, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(8) });
       }
     }
     AppMethodBeat.o(36379);
@@ -248,13 +255,13 @@ public class MediaHistoryListUI
   public boolean onCreateOptionsMenu(Menu paramMenu)
   {
     AppMethodBeat.i(36383);
-    if (this.PBw != null)
+    if (this.WWt != null)
     {
-      this.PBw.a(this, paramMenu);
-      paramMenu = this.PBw;
-      String str = this.Pws.gSb();
-      if ((paramMenu.Qwh != null) && (!Util.isNullOrNil(str))) {
-        paramMenu.Qwh.setSelectedTag(str);
+      this.WWt.a(this, paramMenu);
+      paramMenu = this.WWt;
+      String str = this.WQK.hRx();
+      if ((paramMenu.XUk != null) && (!Util.isNullOrNil(str))) {
+        paramMenu.XUk.setSelectedTag(str);
       }
       getContentView().postDelayed(new Runnable()
       {
@@ -276,7 +283,7 @@ public class MediaHistoryListUI
   {
     AppMethodBeat.i(36381);
     super.onDestroy();
-    this.Pws.onDetach();
+    this.WQK.onDetach();
     AppMethodBeat.o(36381);
   }
   
@@ -309,7 +316,7 @@ public class MediaHistoryListUI
     AppMethodBeat.i(36382);
     super.onKeyboardStateChanged();
     if (keyboardState() == 2) {
-      this.PBw.clearFocus();
+      this.WWt.clearFocus();
     }
     AppMethodBeat.o(36382);
   }
@@ -317,7 +324,7 @@ public class MediaHistoryListUI
   public boolean onPrepareOptionsMenu(Menu paramMenu)
   {
     AppMethodBeat.i(36384);
-    this.PBw.a(this, paramMenu);
+    this.WWt.a(this, paramMenu);
     AppMethodBeat.o(36384);
     return true;
   }
@@ -330,7 +337,7 @@ public class MediaHistoryListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.MediaHistoryListUI
  * JD-Core Version:    0.7.0.1
  */

@@ -13,40 +13,56 @@ import java.util.Set;
 
 public final class a
 {
+  public int BTD;
+  public int BTE;
+  public int BTF;
+  private int BTG;
+  private int BTH;
+  private int BTI;
+  private int BTJ;
+  private int BTK;
+  private List<String> BTL;
+  private List<String> BTM;
+  private List<String> BTN;
+  private List<String> BTO;
+  private List<String> BTP;
+  private HashMap<String, Integer> BTQ;
   private int scene;
-  public List<String> xhA;
-  public List<String> xhB;
-  public List<String> xhC;
-  public HashMap<String, Integer> xhD;
-  public int xhq;
-  public int xhr;
-  public int xhs;
-  private int xht;
-  private int xhu;
-  private int xhv;
-  private int xhw;
-  private int xhx;
-  public List<String> xhy;
-  public List<String> xhz;
   
   private a()
   {
     AppMethodBeat.i(111226);
-    this.xhy = new ArrayList(9);
-    this.xhz = new ArrayList(9);
-    this.xhA = new ArrayList(9);
-    this.xhB = new ArrayList(9);
-    this.xhC = new ArrayList(9);
-    this.xhD = new HashMap(9);
+    this.BTL = new ArrayList(9);
+    this.BTM = new ArrayList(9);
+    this.BTN = new ArrayList(9);
+    this.BTO = new ArrayList(9);
+    this.BTP = new ArrayList(9);
+    this.BTQ = new HashMap(9);
     AppMethodBeat.o(111226);
   }
   
-  public static a dQq()
+  public static a esQ()
   {
-    return a.xhE;
+    return a.BTR;
   }
   
-  public final void al(String paramString, int paramInt1, int paramInt2)
+  public final void aIo(String paramString)
+  {
+    AppMethodBeat.i(243476);
+    Log.i("MicroMsg.GalleryReporter", "path: %s.", new Object[] { paramString });
+    if (!Util.isNullOrNil(paramString))
+    {
+      this.BTL.remove(paramString);
+      this.BTM.remove(paramString);
+      this.BTN.remove(paramString);
+      this.BTO.remove(paramString);
+      this.BTP.remove(paramString);
+      this.BTQ.remove(paramString);
+    }
+    AppMethodBeat.o(243476);
+  }
+  
+  public final void an(String paramString, int paramInt1, int paramInt2)
   {
     int i = 1;
     AppMethodBeat.i(173726);
@@ -63,43 +79,43 @@ public final class a
       return;
     }
     Log.i("MicroMsg.GalleryReporter", "type: %d, path: %s.", new Object[] { Integer.valueOf(paramInt1), paramString });
-    if (this.xhy.contains(paramString))
+    if (this.BTL.contains(paramString))
     {
-      this.xhy.remove(paramString);
+      this.BTL.remove(paramString);
       Log.i("MicroMsg.GalleryReporter", "sendCountFromSearchUnOCRList, remove.");
       paramInt1 = i;
     }
     for (;;)
     {
       if (paramInt1 != 0) {
-        this.xhD.remove(paramString);
+        this.BTQ.remove(paramString);
       }
       AppMethodBeat.o(173726);
       return;
-      if (this.xhz.contains(paramString))
+      if (this.BTM.contains(paramString))
       {
-        this.xhz.remove(paramString);
+        this.BTM.remove(paramString);
         Log.i("MicroMsg.GalleryReporter", "sendCountFromSearchOCRList, remove.");
         paramInt1 = i;
       }
-      else if (this.xhA.contains(paramString))
+      else if (this.BTN.contains(paramString))
       {
-        this.xhA.remove(paramString);
+        this.BTN.remove(paramString);
         Log.i("MicroMsg.GalleryReporter", "sendCountFromClassifyList, remove.");
         paramInt1 = i;
       }
-      else if (this.xhB.contains(paramString))
+      else if (this.BTO.contains(paramString))
       {
-        this.xhB.remove(paramString);
+        this.BTO.remove(paramString);
         Log.i("MicroMsg.GalleryReporter", "sendCountFromDefaultList, remove.");
         paramInt1 = i;
       }
       else
       {
-        if (!this.xhC.contains(paramString)) {
+        if (!this.BTP.contains(paramString)) {
           break;
         }
-        this.xhC.remove(paramString);
+        this.BTP.remove(paramString);
         Log.i("MicroMsg.GalleryReporter", "sendCountFromOtherList, remove.");
         paramInt1 = i;
       }
@@ -110,36 +126,36 @@ public final class a
     }
     for (;;)
     {
-      this.xhD.put(paramString, Integer.valueOf(paramInt2));
+      this.BTQ.put(paramString, Integer.valueOf(paramInt2));
       paramInt1 = 0;
       break;
-      this.xhy.add(paramString);
+      this.BTL.add(paramString);
       continue;
-      this.xhz.add(paramString);
+      this.BTM.add(paramString);
       continue;
-      this.xhA.add(paramString);
+      this.BTN.add(paramString);
       continue;
-      this.xhB.add(paramString);
+      this.BTO.add(paramString);
       continue;
-      this.xhC.add(paramString);
+      this.BTP.add(paramString);
     }
   }
   
   public final void report()
   {
     AppMethodBeat.i(173728);
-    this.xht = this.xhy.size();
-    this.xhu = this.xhz.size();
-    this.xhv = this.xhA.size();
-    this.xhw = this.xhB.size();
-    this.xhx = this.xhC.size();
+    this.BTG = this.BTL.size();
+    this.BTH = this.BTM.size();
+    this.BTI = this.BTN.size();
+    this.BTJ = this.BTO.size();
+    this.BTK = this.BTP.size();
     StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.xhD.entrySet().iterator();
+    Iterator localIterator = this.BTQ.entrySet().iterator();
     while (localIterator.hasNext()) {
       localStringBuilder.append(((Map.Entry)localIterator.next()).getValue()).append("|");
     }
     Log.d("MicroMsg.GalleryReporter", "poiStr: %s.", new Object[] { localStringBuilder });
-    h.CyF.a(18077, new Object[] { Integer.valueOf(this.scene), Integer.valueOf(this.xhq), Integer.valueOf(this.xhr), Integer.valueOf(this.xhs), Integer.valueOf(this.xht), Integer.valueOf(this.xhu), Integer.valueOf(this.xhv), Integer.valueOf(this.xhw), Integer.valueOf(this.xhx), localStringBuilder });
+    h.IzE.a(18077, new Object[] { Integer.valueOf(this.scene), Integer.valueOf(this.BTD), Integer.valueOf(this.BTE), Integer.valueOf(this.BTF), Integer.valueOf(this.BTG), Integer.valueOf(this.BTH), Integer.valueOf(this.BTI), Integer.valueOf(this.BTJ), Integer.valueOf(this.BTK), localStringBuilder });
     reset();
     AppMethodBeat.o(173728);
   }
@@ -148,20 +164,20 @@ public final class a
   {
     AppMethodBeat.i(173727);
     this.scene = 0;
-    this.xhq = 0;
-    this.xhr = 0;
-    this.xhs = 0;
-    this.xht = 0;
-    this.xhu = 0;
-    this.xhv = 0;
-    this.xhw = 0;
-    this.xhx = 0;
-    this.xhy.clear();
-    this.xhz.clear();
-    this.xhA.clear();
-    this.xhB.clear();
-    this.xhC.clear();
-    this.xhD.clear();
+    this.BTD = 0;
+    this.BTE = 0;
+    this.BTF = 0;
+    this.BTG = 0;
+    this.BTH = 0;
+    this.BTI = 0;
+    this.BTJ = 0;
+    this.BTK = 0;
+    this.BTL.clear();
+    this.BTM.clear();
+    this.BTN.clear();
+    this.BTO.clear();
+    this.BTP.clear();
+    this.BTQ.clear();
     AppMethodBeat.o(173727);
   }
   
@@ -222,19 +238,19 @@ public final class a
   
   public static final class a
   {
-    public static a xhE;
+    public static a BTR;
     
     static
     {
       AppMethodBeat.i(111225);
-      xhE = new a((byte)0);
+      BTR = new a((byte)0);
       AppMethodBeat.o(111225);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.a
  * JD-Core Version:    0.7.0.1
  */

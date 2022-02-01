@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.wepkg.utils;
 
 public final class b
 {
-  public static boolean JOe = false;
+  public static boolean QNx = false;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.utils.b
  * JD-Core Version:    0.7.0.1
  */

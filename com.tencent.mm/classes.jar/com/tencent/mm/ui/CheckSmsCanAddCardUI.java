@@ -6,19 +6,21 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.aa;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.br.c;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.R.i;
+import com.tencent.mm.R.l;
+import com.tencent.mm.an.aa;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.by.c;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.plugin.account.ui.SimpleLoginUI;
-import com.tencent.mm.protocal.protobuf.zn;
-import com.tencent.mm.protocal.protobuf.zo;
+import com.tencent.mm.protocal.protobuf.zr;
+import com.tencent.mm.protocal.protobuf.zs;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
@@ -26,21 +28,21 @@ public class CheckSmsCanAddCardUI
   extends MMActivity
   implements i
 {
-  private String OyL;
+  private String VRO;
   private d rr;
   
-  private void gGU()
+  private void hFB()
   {
     AppMethodBeat.i(32989);
-    Toast.makeText(this, getString(2131767022), 1).show();
-    LauncherUI.jI(this);
+    Toast.makeText(this, getString(R.l.eUD), 1).show();
+    LauncherUI.kH(this);
     finish();
     AppMethodBeat.o(32989);
   }
   
   protected int getLayoutId()
   {
-    return 2131495126;
+    return R.i.eik;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -48,7 +50,7 @@ public class CheckSmsCanAddCardUI
     AppMethodBeat.i(32986);
     super.onCreate(paramBundle);
     hideTitleView();
-    if ((!bg.aVG()) || (bg.azj()))
+    if ((!bh.beJ()) || (bh.aGE()))
     {
       MMWizardActivity.b(this, new Intent(this, SimpleLoginUI.class), getIntent());
       finish();
@@ -69,27 +71,27 @@ public class CheckSmsCanAddCardUI
       if (i == 0) {
         break label267;
       }
-      bg.azz().a(1038, this);
+      bh.aGY().a(1038, this);
       paramBundle = new d.a();
-      paramBundle.iLN = new zn();
-      paramBundle.iLO = new zo();
+      paramBundle.lBU = new zr();
+      paramBundle.lBV = new zs();
       paramBundle.funcId = 1038;
       paramBundle.uri = "/cgi-bin/mmbiz-bin/api/checksmscanaddcard";
-      this.rr = paramBundle.aXF();
-      ((zn)this.rr.iLK.iLR).LkQ = this.OyL;
-      Log.i("MicroMsg.CheckSmsCanAddCardUI", "encry value is %s", new Object[] { this.OyL });
+      this.rr = paramBundle.bgN();
+      ((zr)d.b.b(this.rr.lBR)).SlZ = this.VRO;
+      Log.i("MicroMsg.CheckSmsCanAddCardUI", "encry value is %s", new Object[] { this.VRO });
       this.rr = aa.d(this.rr);
       AppMethodBeat.o(32986);
       return;
       label224:
-      this.OyL = paramBundle.getQueryParameter("encrystr");
-      Log.i("MicroMsg.CheckSmsCanAddCardUI", "encryptCardInfo = %s", new Object[] { this.OyL });
-      if (Util.isNullOrNil(this.OyL)) {
+      this.VRO = paramBundle.getQueryParameter("encrystr");
+      Log.i("MicroMsg.CheckSmsCanAddCardUI", "encryptCardInfo = %s", new Object[] { this.VRO });
+      if (Util.isNullOrNil(this.VRO)) {
         break;
       }
     }
     label267:
-    gGU();
+    hFB();
     AppMethodBeat.o(32986);
   }
   
@@ -97,7 +99,7 @@ public class CheckSmsCanAddCardUI
   {
     AppMethodBeat.i(32987);
     super.onDestroy();
-    bg.azz().b(1038, this);
+    bh.aGY().b(1038, this);
     AppMethodBeat.o(32987);
   }
   
@@ -107,9 +109,9 @@ public class CheckSmsCanAddCardUI
     Log.i("MicroMsg.CheckSmsCanAddCardUI", "onSceneEnd errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramq = (zo)this.rr.iLL.iLR;
-      paramString = paramq.eaO;
-      paramq = paramq.eaP;
+      paramq = (zs)d.c.b(this.rr.lBS);
+      paramString = paramq.fUL;
+      paramq = paramq.fUM;
       Log.i("MicroMsg.CheckSmsCanAddCardUI", "onSceneEnd cardid:%s extMsg:%s", new Object[] { paramString, paramq });
       Intent localIntent = new Intent();
       localIntent.putExtra("key_card_id", paramString);
@@ -121,7 +123,7 @@ public class CheckSmsCanAddCardUI
       AppMethodBeat.o(32988);
       return;
     }
-    gGU();
+    hFB();
     AppMethodBeat.o(32988);
   }
   
@@ -133,7 +135,7 @@ public class CheckSmsCanAddCardUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.CheckSmsCanAddCardUI
  * JD-Core Version:    0.7.0.1
  */

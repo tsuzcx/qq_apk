@@ -6,33 +6,38 @@ import org.json.JSONArray;
 public abstract interface a
   extends b, com.tencent.mm.plugin.appbrand.collector.d
 {
-  public abstract void U(Runnable paramRunnable);
+  public abstract void V(Runnable paramRunnable);
   
-  public abstract void a(DrawCanvasArg paramDrawCanvasArg, a.a parama);
+  public abstract void a(DrawCanvasArg paramDrawCanvasArg, a parama);
   
-  public abstract void a(JSONArray paramJSONArray, a.a parama);
+  public abstract void a(JSONArray paramJSONArray, a parama);
   
-  public abstract void b(DrawCanvasArg paramDrawCanvasArg, a.a parama);
+  public abstract void b(DrawCanvasArg paramDrawCanvasArg, a parama);
   
-  public abstract void b(JSONArray paramJSONArray, a.a parama);
+  public abstract void b(JSONArray paramJSONArray, a parama);
   
-  public abstract void bzg();
+  public abstract void bKv();
   
-  public abstract void bzh();
+  public abstract void bKw();
   
   public abstract com.tencent.mm.plugin.appbrand.canvas.d getDrawContext();
   
   public abstract String getTraceId();
   
-  public abstract boolean o(Canvas paramCanvas);
+  public abstract boolean q(Canvas paramCanvas);
   
   public abstract void setDrawActionReportable(com.tencent.mm.plugin.appbrand.canvas.c.a parama);
   
   public abstract void setTraceId(String paramString);
+  
+  public static abstract interface a
+  {
+    public abstract void a(DrawCanvasArg paramDrawCanvasArg);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.widget.a
  * JD-Core Version:    0.7.0.1
  */

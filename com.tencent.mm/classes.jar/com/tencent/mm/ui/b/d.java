@@ -8,21 +8,6 @@ import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
-import android.support.v4.view.aa;
-import android.support.v4.view.ab;
-import android.support.v4.view.y;
-import android.support.v4.view.z;
-import android.support.v7.a.a.a;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBar.LayoutParams;
-import android.support.v7.view.b;
-import android.support.v7.view.b.a;
-import android.support.v7.view.g;
-import android.support.v7.view.menu.h.a;
-import android.support.v7.widget.ActionBarContainer;
-import android.support.v7.widget.ActionBarContextView;
-import android.support.v7.widget.ActionBarOverlayLayout.a;
-import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -34,7 +19,26 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
+import androidx.appcompat.a.a;
+import androidx.appcompat.a.j;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBar.LayoutParams;
+import androidx.appcompat.view.b;
+import androidx.appcompat.view.b.a;
+import androidx.appcompat.view.g;
+import androidx.appcompat.view.menu.h.a;
+import androidx.appcompat.widget.ActionBarContainer;
+import androidx.appcompat.widget.ActionBarContextView;
+import androidx.appcompat.widget.ActionBarOverlayLayout.a;
+import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.widget.n;
+import androidx.core.g.aa;
+import androidx.core.g.ab;
+import androidx.core.g.ac;
+import androidx.core.g.ad;
+import androidx.core.g.w;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.g;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
@@ -42,30 +46,30 @@ public final class d
   extends ActionBar
   implements ActionBarOverlayLayout.a
 {
-  private static final boolean OMf;
-  private static final Interpolator aap;
-  private static final Interpolator aaq;
-  a OMg;
-  android.support.v7.widget.u ZU;
-  private boolean ZY;
-  private ArrayList<Object> ZZ;
-  b.a aaA;
-  private int aaC;
-  private boolean aaD;
-  private boolean aaE;
-  private boolean aaF;
-  private boolean aaG;
-  private boolean aaH;
-  private android.support.v7.view.h aaI;
-  private boolean aaJ;
-  final z aaL;
-  final z aaM;
-  final ab aaN;
-  private Context aar;
-  private ActionBarContainer aat;
-  private ActionBarContextView aau;
-  private boolean aax;
-  b aaz;
+  private static final boolean WfE;
+  private static final Interpolator hO;
+  private static final Interpolator hP;
+  a WfF;
+  private Context hQ;
+  private ActionBarContainer hS;
+  private ActionBarContextView hT;
+  private boolean hX;
+  b hZ;
+  n ht;
+  private boolean hx;
+  private ArrayList<Object> hy;
+  b.a ia;
+  private int ic;
+  private boolean ie;
+  private boolean jdField_if;
+  private boolean ig;
+  private boolean ih;
+  private boolean ii;
+  private androidx.appcompat.view.h ij;
+  private boolean ik;
+  final ab im;
+  final ab in;
+  final ad io;
   private Activity mActivity;
   private View mContentView;
   private Context mContext;
@@ -73,12 +77,12 @@ public final class d
   static
   {
     AppMethodBeat.i(141577);
-    aap = new AccelerateInterpolator();
-    aaq = new DecelerateInterpolator();
+    hO = new AccelerateInterpolator();
+    hP = new DecelerateInterpolator();
     if (Build.VERSION.SDK_INT >= 14) {}
     for (boolean bool = true;; bool = false)
     {
-      OMf = bool;
+      WfE = bool;
       AppMethodBeat.o(141577);
       return;
     }
@@ -87,36 +91,36 @@ public final class d
   public d(Activity paramActivity, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(141538);
-    this.ZZ = new ArrayList();
-    this.aaC = 0;
-    this.aaD = true;
-    this.aaH = true;
-    this.aaL = new aa()
+    this.hy = new ArrayList();
+    this.ic = 0;
+    this.ie = true;
+    this.ii = true;
+    this.im = new ac()
     {
-      public final void aJ(View paramAnonymousView)
+      public final void f(View paramAnonymousView)
       {
         AppMethodBeat.i(141518);
         if ((d.a(d.this)) && (d.b(d.this) != null))
         {
-          android.support.v4.view.u.f(d.b(d.this), 0.0F);
-          android.support.v4.view.u.f(d.c(d.this), 0.0F);
+          w.d(d.b(d.this), 0.0F);
+          w.d(d.c(d.this), 0.0F);
         }
         d.c(d.this).setVisibility(8);
         d.c(d.this).setTransitioning(false);
         d.d(d.this);
         paramAnonymousView = d.this;
-        if (paramAnonymousView.aaA != null)
+        if (paramAnonymousView.ia != null)
         {
-          paramAnonymousView.aaA.a(paramAnonymousView.aaz);
-          paramAnonymousView.aaz = null;
-          paramAnonymousView.aaA = null;
+          paramAnonymousView.ia.a(paramAnonymousView.hZ);
+          paramAnonymousView.hZ = null;
+          paramAnonymousView.ia = null;
         }
         AppMethodBeat.o(141518);
       }
     };
-    this.aaM = new aa()
+    this.in = new ac()
     {
-      public final void aJ(View paramAnonymousView)
+      public final void f(View paramAnonymousView)
       {
         AppMethodBeat.i(141519);
         d.d(d.this);
@@ -124,9 +128,9 @@ public final class d
         AppMethodBeat.o(141519);
       }
     };
-    this.aaN = new ab()
+    this.io = new ad()
     {
-      public final void fH()
+      public final void bm()
       {
         AppMethodBeat.i(141520);
         ((View)d.c(d.this).getParent()).invalidate();
@@ -134,15 +138,15 @@ public final class d
       }
     };
     this.mActivity = paramActivity;
-    paramActivity = paramViewGroup.findViewById(2131296363);
-    if ((paramActivity instanceof android.support.v7.widget.u)) {}
-    for (paramActivity = (android.support.v7.widget.u)paramActivity;; paramActivity = ((Toolbar)paramActivity).getWrapper())
+    paramActivity = paramViewGroup.findViewById(a.g.action_bar);
+    if ((paramActivity instanceof n)) {}
+    for (paramActivity = (n)paramActivity;; paramActivity = ((Toolbar)paramActivity).getWrapper())
     {
-      this.ZU = paramActivity;
-      this.aau = ((ActionBarContextView)paramViewGroup.findViewById(2131296380));
-      this.aat = ((ActionBarContainer)paramViewGroup.findViewById(2131296366));
-      if ((this.ZU != null) && (this.aau != null) && (this.aat != null)) {
-        break label247;
+      this.ht = paramActivity;
+      this.hT = ((ActionBarContextView)paramViewGroup.findViewById(a.g.action_context_bar));
+      this.hS = ((ActionBarContainer)paramViewGroup.findViewById(a.g.action_bar_container));
+      if ((this.ht != null) && (this.hT != null) && (this.hS != null)) {
+        break label250;
       }
       paramActivity = new IllegalStateException(getClass().getSimpleName() + " can only be used with a compatible window decor layout");
       AppMethodBeat.o(141538);
@@ -158,20 +162,20 @@ public final class d
       AppMethodBeat.o(141538);
       throw paramActivity;
     }
-    label247:
-    this.mContext = this.ZU.getContext();
-    if ((this.ZU.getDisplayOptions() & 0x4) != 0) {}
+    label250:
+    this.mContext = this.ht.getContext();
+    if ((this.ht.aC() & 0x4) != 0) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        this.aax = true;
+        this.hX = true;
       }
-      android.support.v7.view.a.ab(this.mContext).hD();
-      paramActivity = this.mContext.obtainStyledAttributes(null, a.a.ActionBar, 2130968603, 0);
-      paramActivity.getBoolean(14, false);
-      i = paramActivity.getDimensionPixelSize(12, 0);
+      androidx.appcompat.view.a.I(this.mContext).bA();
+      paramActivity = this.mContext.obtainStyledAttributes(null, a.j.ActionBar, a.a.actionBarStyle, 0);
+      paramActivity.getBoolean(a.j.ActionBar_hideOnContentScroll, false);
+      i = paramActivity.getDimensionPixelSize(a.j.ActionBar_elevation, 0);
       if (i != 0) {
-        setElevation(i);
+        e(i);
       }
       paramActivity.recycle();
       this.mContentView = null;
@@ -180,37 +184,37 @@ public final class d
     }
   }
   
-  private void U(boolean paramBoolean)
+  private void A(boolean paramBoolean)
   {
     AppMethodBeat.i(141563);
-    if (c(this.aaE, this.aaF, this.aaG))
+    if (b(this.jdField_if, this.ig, this.ih))
     {
-      if (!this.aaH)
+      if (!this.ii)
       {
-        this.aaH = true;
-        V(paramBoolean);
+        this.ii = true;
+        B(paramBoolean);
         AppMethodBeat.o(141563);
       }
     }
-    else if (this.aaH)
+    else if (this.ii)
     {
-      this.aaH = false;
-      W(paramBoolean);
+      this.ii = false;
+      C(paramBoolean);
     }
     AppMethodBeat.o(141563);
   }
   
-  private void V(boolean paramBoolean)
+  private void B(boolean paramBoolean)
   {
     AppMethodBeat.i(141564);
-    if (this.aaI != null) {
-      this.aaI.cancel();
+    if (this.ij != null) {
+      this.ij.cancel();
     }
-    this.aat.setVisibility(0);
-    if ((this.aaC == 0) && (OMf) && ((this.aaJ) || (paramBoolean)))
+    this.hS.setVisibility(0);
+    if ((this.ic == 0) && (WfE) && ((this.ik) || (paramBoolean)))
     {
-      android.support.v4.view.u.f(this.aat, 0.0F);
-      float f2 = -this.aat.getHeight();
+      w.d(this.hS, 0.0F);
+      float f2 = -this.hS.getHeight();
       float f1 = f2;
       if (paramBoolean)
       {
@@ -220,48 +224,48 @@ public final class d
         Object tmp87_83 = tmp83_81;
         tmp87_83[1] = 0;
         tmp87_83;
-        this.aat.getLocationInWindow((int[])localObject);
+        this.hS.getLocationInWindow((int[])localObject);
         f1 = f2 - localObject[1];
       }
-      android.support.v4.view.u.f(this.aat, f1);
-      Object localObject = new android.support.v7.view.h();
-      y localy = android.support.v4.view.u.ah(this.aat).z(0.0F);
-      localy.a(this.aaN);
-      ((android.support.v7.view.h)localObject).a(localy);
-      if ((this.aaD) && (this.mContentView != null))
+      w.d(this.hS, f1);
+      Object localObject = new androidx.appcompat.view.h();
+      aa localaa = w.Q(this.hS).j(0.0F);
+      localaa.a(this.io);
+      ((androidx.appcompat.view.h)localObject).a(localaa);
+      if ((this.ie) && (this.mContentView != null))
       {
-        android.support.v4.view.u.f(this.mContentView, f1);
-        ((android.support.v7.view.h)localObject).a(android.support.v4.view.u.ah(this.mContentView).z(0.0F));
+        w.d(this.mContentView, f1);
+        ((androidx.appcompat.view.h)localObject).a(w.Q(this.mContentView).j(0.0F));
       }
-      ((android.support.v7.view.h)localObject).b(aaq);
-      ((android.support.v7.view.h)localObject).hI();
-      ((android.support.v7.view.h)localObject).b(this.aaM);
-      this.aaI = ((android.support.v7.view.h)localObject);
-      ((android.support.v7.view.h)localObject).start();
+      ((androidx.appcompat.view.h)localObject).a(hP);
+      ((androidx.appcompat.view.h)localObject).bH();
+      ((androidx.appcompat.view.h)localObject).a(this.in);
+      this.ij = ((androidx.appcompat.view.h)localObject);
+      ((androidx.appcompat.view.h)localObject).start();
       AppMethodBeat.o(141564);
       return;
     }
-    android.support.v4.view.u.g(this.aat, 1.0F);
-    android.support.v4.view.u.f(this.aat, 0.0F);
-    if ((this.aaD) && (this.mContentView != null)) {
-      android.support.v4.view.u.f(this.mContentView, 0.0F);
+    w.e(this.hS, 1.0F);
+    w.d(this.hS, 0.0F);
+    if ((this.ie) && (this.mContentView != null)) {
+      w.d(this.mContentView, 0.0F);
     }
-    this.aaM.aJ(null);
+    this.in.f(null);
     AppMethodBeat.o(141564);
   }
   
-  private void W(boolean paramBoolean)
+  private void C(boolean paramBoolean)
   {
     AppMethodBeat.i(141565);
-    if (this.aaI != null) {
-      this.aaI.cancel();
+    if (this.ij != null) {
+      this.ij.cancel();
     }
-    if ((this.aaC == 0) && (OMf) && ((this.aaJ) || (paramBoolean)))
+    if ((this.ic == 0) && (WfE) && ((this.ik) || (paramBoolean)))
     {
-      android.support.v4.view.u.g(this.aat, 1.0F);
-      this.aat.setTransitioning(true);
-      android.support.v7.view.h localh = new android.support.v7.view.h();
-      float f2 = -this.aat.getHeight();
+      w.e(this.hS, 1.0F);
+      this.hS.setTransitioning(true);
+      androidx.appcompat.view.h localh = new androidx.appcompat.view.h();
+      float f2 = -this.hS.getHeight();
       float f1 = f2;
       if (paramBoolean)
       {
@@ -271,28 +275,28 @@ public final class d
         Object tmp96_92 = tmp92_90;
         tmp96_92[1] = 0;
         tmp96_92;
-        this.aat.getLocationInWindow((int[])localObject);
+        this.hS.getLocationInWindow((int[])localObject);
         f1 = f2 - localObject[1];
       }
-      Object localObject = android.support.v4.view.u.ah(this.aat).z(f1);
-      ((y)localObject).a(this.aaN);
-      localh.a((y)localObject);
-      if ((this.aaD) && (this.mContentView != null)) {
-        localh.a(android.support.v4.view.u.ah(this.mContentView).z(f1));
+      Object localObject = w.Q(this.hS).j(f1);
+      ((aa)localObject).a(this.io);
+      localh.a((aa)localObject);
+      if ((this.ie) && (this.mContentView != null)) {
+        localh.a(w.Q(this.mContentView).j(f1));
       }
-      localh.b(aap);
-      localh.hI();
-      localh.b(this.aaL);
-      this.aaI = localh;
+      localh.a(hO);
+      localh.bH();
+      localh.a(this.im);
+      this.ij = localh;
       localh.start();
       AppMethodBeat.o(141565);
       return;
     }
-    this.aaL.aJ(null);
+    this.im.f(null);
     AppMethodBeat.o(141565);
   }
   
-  private static boolean c(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  private static boolean b(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     if (paramBoolean3) {}
     while ((!paramBoolean1) && (!paramBoolean2)) {
@@ -301,147 +305,185 @@ public final class d
     return false;
   }
   
-  private void gW()
+  private void bh()
   {
     AppMethodBeat.i(141558);
-    if (!this.aaG)
+    if (!this.ih)
     {
-      this.aaG = true;
-      U(false);
+      this.ih = true;
+      A(false);
     }
     AppMethodBeat.o(141558);
   }
   
-  private void gY()
+  private void bj()
   {
     AppMethodBeat.i(141561);
-    if (this.aaG)
+    if (this.ih)
     {
-      this.aaG = false;
-      U(false);
+      this.ih = false;
+      A(false);
     }
     AppMethodBeat.o(141561);
   }
   
-  private void setDisplayOptions(int paramInt1, int paramInt2)
+  private void f(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(141550);
-    int i = this.ZU.getDisplayOptions();
+    int i = this.ht.aC();
     if ((paramInt2 & 0x4) != 0) {
-      this.aax = true;
+      this.hX = true;
     }
-    this.ZU.setDisplayOptions(i & (paramInt2 ^ 0xFFFFFFFF) | paramInt1 & paramInt2);
+    this.ht.O(i & (paramInt2 ^ 0xFFFFFFFF) | paramInt1 & paramInt2);
     AppMethodBeat.o(141550);
   }
   
-  public final void P(boolean paramBoolean)
-  {
-    AppMethodBeat.i(141575);
-    if (!this.aax) {
-      setDisplayHomeAsUpEnabled(paramBoolean);
-    }
-    AppMethodBeat.o(141575);
-  }
-  
-  public final void Q(boolean paramBoolean)
-  {
-    AppMethodBeat.i(141541);
-    this.aaJ = paramBoolean;
-    if ((!paramBoolean) && (this.aaI != null)) {
-      this.aaI.cancel();
-    }
-    AppMethodBeat.o(141541);
-  }
-  
-  public final void R(boolean paramBoolean)
-  {
-    AppMethodBeat.i(141542);
-    if (paramBoolean == this.ZY)
-    {
-      AppMethodBeat.o(141542);
-      return;
-    }
-    this.ZY = paramBoolean;
-    int j = this.ZZ.size();
-    int i = 0;
-    while (i < j)
-    {
-      this.ZZ.get(i);
-      i += 1;
-    }
-    AppMethodBeat.o(141542);
-  }
-  
-  public final void T(boolean paramBoolean)
-  {
-    this.aaD = paramBoolean;
-  }
-  
-  public final void X(boolean paramBoolean)
+  public final void D(boolean paramBoolean)
   {
     AppMethodBeat.i(141567);
-    y localy1;
-    y localy2;
+    aa localaa1;
+    aa localaa2;
     if (paramBoolean)
     {
-      gW();
+      bh();
       if (!paramBoolean) {
         break label81;
       }
-      localy1 = this.ZU.c(8, 100L);
-      localy2 = this.aau.c(0, 200L);
+      localaa1 = this.ht.b(8, 100L);
+      localaa2 = this.hT.b(0, 200L);
     }
     for (;;)
     {
-      android.support.v7.view.h localh = new android.support.v7.view.h();
-      localh.a(localy1, localy2);
+      androidx.appcompat.view.h localh = new androidx.appcompat.view.h();
+      localh.a(localaa1, localaa2);
       localh.start();
       AppMethodBeat.o(141567);
       return;
-      gY();
+      bj();
       break;
       label81:
-      localy2 = this.ZU.c(0, 200L);
-      localy1 = this.aau.c(8, 100L);
+      localaa2 = this.ht.b(0, 200L);
+      localaa1 = this.hT.b(8, 100L);
     }
+  }
+  
+  public final void N(int paramInt)
+  {
+    AppMethodBeat.i(141543);
+    setCustomView(LayoutInflater.from(aD()).inflate(paramInt, this.ht.dE(), false));
+    AppMethodBeat.o(141543);
+  }
+  
+  public final void O(int paramInt)
+  {
+    AppMethodBeat.i(141549);
+    if ((paramInt & 0x4) != 0) {
+      this.hX = true;
+    }
+    this.ht.O(paramInt);
+    AppMethodBeat.o(141549);
   }
   
   public final b a(b.a parama)
   {
-    AppMethodBeat.i(141555);
-    if (this.OMg != null) {
-      this.OMg.finish();
+    AppMethodBeat.i(190164);
+    if (this.WfF != null) {
+      this.WfF.finish();
     }
-    this.aau.iy();
-    parama = new a(this.aau.getContext(), parama);
-    if (parama.hb())
+    this.hT.cF();
+    parama = new a(this.hT.getContext(), parama);
+    if (parama.bn())
     {
       parama.invalidate();
-      this.aau.c(parama);
-      X(true);
-      this.aau.sendAccessibilityEvent(32);
-      this.OMg = parama;
-      AppMethodBeat.o(141555);
+      this.hT.c(parama);
+      D(true);
+      this.hT.sendAccessibilityEvent(32);
+      this.WfF = parama;
+      AppMethodBeat.o(190164);
       return parama;
     }
-    AppMethodBeat.o(141555);
+    AppMethodBeat.o(190164);
     return null;
   }
   
   public final void a(View paramView, ActionBar.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(205158);
+    AppMethodBeat.i(190231);
     paramView.setLayoutParams(paramLayoutParams);
-    this.ZU.setCustomView(paramView);
-    AppMethodBeat.o(205158);
+    this.ht.setCustomView(paramView);
+    AppMethodBeat.o(190231);
+  }
+  
+  public final int aC()
+  {
+    AppMethodBeat.i(141554);
+    int i = this.ht.aC();
+    AppMethodBeat.o(141554);
+    return i;
+  }
+  
+  public final Context aD()
+  {
+    AppMethodBeat.i(141568);
+    Object localObject;
+    int i;
+    if (this.hQ == null)
+    {
+      localObject = new TypedValue();
+      this.mContext.getTheme().resolveAttribute(a.a.actionBarWidgetTheme, (TypedValue)localObject, true);
+      i = ((TypedValue)localObject).resourceId;
+      if (i == 0) {
+        break label75;
+      }
+    }
+    label75:
+    for (this.hQ = new ContextThemeWrapper(this.mContext, i);; this.hQ = this.mContext)
+    {
+      localObject = this.hQ;
+      AppMethodBeat.o(141568);
+      return localObject;
+    }
+  }
+  
+  public final void bi()
+  {
+    AppMethodBeat.i(141559);
+    if (this.ig)
+    {
+      this.ig = false;
+      A(true);
+    }
+    AppMethodBeat.o(141559);
+  }
+  
+  public final void bk()
+  {
+    AppMethodBeat.i(141562);
+    if (!this.ig)
+    {
+      this.ig = true;
+      A(true);
+    }
+    AppMethodBeat.o(141562);
+  }
+  
+  public final void bl()
+  {
+    AppMethodBeat.i(141570);
+    if (this.ij != null)
+    {
+      this.ij.cancel();
+      this.ij = null;
+    }
+    AppMethodBeat.o(141570);
   }
   
   public final boolean collapseActionView()
   {
     AppMethodBeat.i(141571);
-    if ((this.ZU != null) && (this.ZU.hasExpandedActionView()))
+    if ((this.ht != null) && (this.ht.dF()))
     {
-      this.ZU.collapseActionView();
+      this.ht.dG();
       AppMethodBeat.o(141571);
       return true;
     }
@@ -449,131 +491,44 @@ public final class d
     return false;
   }
   
-  public final void gX()
+  public final void e(float paramFloat)
   {
-    AppMethodBeat.i(141559);
-    if (this.aaF)
-    {
-      this.aaF = false;
-      U(true);
-    }
-    AppMethodBeat.o(141559);
-  }
-  
-  public final void gZ()
-  {
-    AppMethodBeat.i(141562);
-    if (!this.aaF)
-    {
-      this.aaF = true;
-      U(true);
-    }
-    AppMethodBeat.o(141562);
+    AppMethodBeat.i(141539);
+    w.j(this.hS, paramFloat);
+    AppMethodBeat.o(141539);
   }
   
   public final View getCustomView()
   {
     AppMethodBeat.i(141552);
-    View localView = this.ZU.getCustomView();
+    View localView = this.ht.getCustomView();
     AppMethodBeat.o(141552);
     return localView;
-  }
-  
-  public final int getDisplayOptions()
-  {
-    AppMethodBeat.i(141554);
-    int i = this.ZU.getDisplayOptions();
-    AppMethodBeat.o(141554);
-    return i;
   }
   
   public final int getHeight()
   {
     AppMethodBeat.i(141556);
-    int i = this.aat.getHeight();
+    int i = this.hS.getHeight();
     AppMethodBeat.o(141556);
     return i;
-  }
-  
-  public final Context getThemedContext()
-  {
-    AppMethodBeat.i(141568);
-    Object localObject;
-    int i;
-    if (this.aar == null)
-    {
-      localObject = new TypedValue();
-      this.mContext.getTheme().resolveAttribute(2130968608, (TypedValue)localObject, true);
-      i = ((TypedValue)localObject).resourceId;
-      if (i == 0) {
-        break label75;
-      }
-    }
-    label75:
-    for (this.aar = new ContextThemeWrapper(this.mContext, i);; this.aar = this.mContext)
-    {
-      localObject = this.aar;
-      AppMethodBeat.o(141568);
-      return localObject;
-    }
   }
   
   public final CharSequence getTitle()
   {
     AppMethodBeat.i(141553);
-    CharSequence localCharSequence = this.ZU.getTitle();
+    CharSequence localCharSequence = this.ht.getTitle();
     AppMethodBeat.o(141553);
     return localCharSequence;
-  }
-  
-  public final void gr()
-  {
-    AppMethodBeat.i(141573);
-    this.ZU.setIcon(2131235359);
-    AppMethodBeat.o(141573);
-  }
-  
-  public final void gs()
-  {
-    AppMethodBeat.i(141544);
-    setDisplayOptions(0, 2);
-    AppMethodBeat.o(141544);
-  }
-  
-  public final void gt()
-  {
-    AppMethodBeat.i(141546);
-    setDisplayOptions(0, 8);
-    AppMethodBeat.o(141546);
-  }
-  
-  public final void gu()
-  {
-    AppMethodBeat.i(141547);
-    setDisplayOptions(16, 16);
-    AppMethodBeat.o(141547);
-  }
-  
-  public final void gv() {}
-  
-  public final void ha()
-  {
-    AppMethodBeat.i(141570);
-    if (this.aaI != null)
-    {
-      this.aaI.cancel();
-      this.aaI = null;
-    }
-    AppMethodBeat.o(141570);
   }
   
   public final void hide()
   {
     AppMethodBeat.i(141560);
-    if (!this.aaE)
+    if (!this.jdField_if)
     {
-      this.aaE = true;
-      U(false);
+      this.jdField_if = true;
+      A(false);
     }
     AppMethodBeat.o(141560);
   }
@@ -581,8 +536,8 @@ public final class d
   public final boolean isShowing()
   {
     AppMethodBeat.i(141566);
-    int i = this.aat.getHeight();
-    if ((this.aaH) && ((i == 0) || (i > 0)))
+    int i = this.hS.getHeight();
+    if ((this.ii) && ((i == 0) || (i > 0)))
     {
       AppMethodBeat.o(141566);
       return true;
@@ -594,187 +549,253 @@ public final class d
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
     AppMethodBeat.i(141540);
-    paramConfiguration = this.ZU.jC().getLayoutParams();
+    paramConfiguration = this.ht.dE().getLayoutParams();
     if (paramConfiguration != null) {
-      paramConfiguration.height = com.tencent.mm.compatible.util.a.cy(this.mActivity);
+      paramConfiguration.height = com.tencent.mm.compatible.util.a.cu(this.mActivity);
     }
-    this.ZU.jC().setLayoutParams(paramConfiguration);
+    this.ht.dE().setLayoutParams(paramConfiguration);
     AppMethodBeat.o(141540);
   }
   
   public final void onWindowVisibilityChanged(int paramInt)
   {
-    this.aaC = paramInt;
+    this.ic = paramInt;
   }
   
-  public final void setBackgroundDrawable(Drawable paramDrawable)
+  public final void r(boolean paramBoolean)
   {
-    AppMethodBeat.i(141551);
-    this.aat.setPrimaryBackground(paramDrawable);
-    AppMethodBeat.o(141551);
+    AppMethodBeat.i(190142);
+    if (paramBoolean) {}
+    for (int i = 2;; i = 0)
+    {
+      f(i, 2);
+      AppMethodBeat.o(190142);
+      return;
+    }
   }
   
-  public final void setCustomView(int paramInt)
-  {
-    AppMethodBeat.i(141543);
-    setCustomView(LayoutInflater.from(getThemedContext()).inflate(paramInt, this.ZU.jC(), false));
-    AppMethodBeat.o(141543);
-  }
-  
-  public final void setCustomView(View paramView)
-  {
-    AppMethodBeat.i(141572);
-    this.ZU.setCustomView(paramView);
-    AppMethodBeat.o(141572);
-  }
-  
-  public final void setDisplayHomeAsUpEnabled(boolean paramBoolean)
+  public final void s(boolean paramBoolean)
   {
     AppMethodBeat.i(141545);
     if (paramBoolean) {}
     for (int i = 4;; i = 0)
     {
-      setDisplayOptions(i, 4);
+      f(i, 4);
       AppMethodBeat.o(141545);
       return;
     }
   }
   
-  public final void setDisplayOptions(int paramInt)
+  public final void setBackgroundDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(141549);
-    if ((paramInt & 0x4) != 0) {
-      this.aax = true;
-    }
-    this.ZU.setDisplayOptions(paramInt);
-    AppMethodBeat.o(141549);
+    AppMethodBeat.i(141551);
+    this.hS.setPrimaryBackground(paramDrawable);
+    AppMethodBeat.o(141551);
   }
   
-  public final void setElevation(float paramFloat)
+  public final void setCustomView(View paramView)
   {
-    AppMethodBeat.i(141539);
-    android.support.v4.view.u.l(this.aat, paramFloat);
-    AppMethodBeat.o(141539);
+    AppMethodBeat.i(141572);
+    this.ht.setCustomView(paramView);
+    AppMethodBeat.o(141572);
   }
   
-  public final void setHomeActionContentDescription(int paramInt)
+  public final void setHideOnContentScrollEnabled(boolean paramBoolean) {}
+  
+  public final void setIcon(int paramInt)
   {
-    AppMethodBeat.i(141569);
-    this.ZU.setNavigationContentDescription(paramInt);
-    AppMethodBeat.o(141569);
+    AppMethodBeat.i(190233);
+    this.ht.setIcon(paramInt);
+    AppMethodBeat.o(190233);
   }
   
   public final void setLogo(Drawable paramDrawable)
   {
     AppMethodBeat.i(141574);
-    this.ZU.setLogo(paramDrawable);
+    this.ht.setLogo(paramDrawable);
     AppMethodBeat.o(141574);
-  }
-  
-  public final void setTitle(CharSequence paramCharSequence)
-  {
-    AppMethodBeat.i(205157);
-    this.ZU.setTitle(paramCharSequence);
-    AppMethodBeat.o(205157);
   }
   
   public final void setWindowTitle(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(141548);
-    this.ZU.setWindowTitle(paramCharSequence);
+    this.ht.setWindowTitle(paramCharSequence);
     AppMethodBeat.o(141548);
   }
   
   public final void show()
   {
     AppMethodBeat.i(141557);
-    if (this.aaE)
+    if (this.jdField_if)
     {
-      this.aaE = false;
-      U(false);
+      this.jdField_if = false;
+      A(false);
     }
     AppMethodBeat.o(141557);
+  }
+  
+  public final void t(boolean paramBoolean)
+  {
+    AppMethodBeat.i(190146);
+    if (paramBoolean) {}
+    for (int i = 8;; i = 0)
+    {
+      f(i, 8);
+      AppMethodBeat.o(190146);
+      return;
+    }
+  }
+  
+  public final void u(boolean paramBoolean)
+  {
+    AppMethodBeat.i(190149);
+    if (paramBoolean) {}
+    for (int i = 16;; i = 0)
+    {
+      f(i, 16);
+      AppMethodBeat.o(190149);
+      return;
+    }
+  }
+  
+  public final void v(boolean paramBoolean)
+  {
+    AppMethodBeat.i(141575);
+    if (!this.hX) {
+      s(paramBoolean);
+    }
+    AppMethodBeat.o(141575);
+  }
+  
+  public final void w(boolean paramBoolean)
+  {
+    AppMethodBeat.i(141541);
+    this.ik = paramBoolean;
+    if ((!paramBoolean) && (this.ij != null)) {
+      this.ij.cancel();
+    }
+    AppMethodBeat.o(141541);
+  }
+  
+  public final void x(boolean paramBoolean)
+  {
+    AppMethodBeat.i(141542);
+    if (paramBoolean == this.hx)
+    {
+      AppMethodBeat.o(141542);
+      return;
+    }
+    this.hx = paramBoolean;
+    int j = this.hy.size();
+    int i = 0;
+    while (i < j)
+    {
+      this.hy.get(i);
+      i += 1;
+    }
+    AppMethodBeat.o(141542);
+  }
+  
+  public final void z(boolean paramBoolean)
+  {
+    this.ie = paramBoolean;
   }
   
   public final class a
     extends b
     implements h.a
   {
-    private final Context aaP;
-    private final android.support.v7.view.menu.h aaQ;
-    private b.a aaR;
-    private WeakReference<View> aaS;
+    private final Context ir;
+    private final androidx.appcompat.view.menu.h is;
+    private b.a it;
+    private WeakReference<View> iu;
     
     public a(Context paramContext, b.a parama)
     {
-      AppMethodBeat.i(141521);
-      this.aaP = paramContext;
-      this.aaR = parama;
-      this$1 = new android.support.v7.view.menu.h(paramContext);
-      d.this.agw = 1;
-      this.aaQ = d.this;
-      this.aaQ.a(this);
-      AppMethodBeat.o(141521);
+      AppMethodBeat.i(220328);
+      this.ir = paramContext;
+      this.it = parama;
+      this$1 = new androidx.appcompat.view.menu.h(paramContext);
+      d.this.mG = 1;
+      this.is = d.this;
+      this.is.a(this);
+      AppMethodBeat.o(220328);
     }
     
-    public final boolean a(android.support.v7.view.menu.h paramh, MenuItem paramMenuItem)
+    public final void a(androidx.appcompat.view.menu.h paramh)
     {
-      AppMethodBeat.i(141536);
-      if (this.aaR != null)
+      AppMethodBeat.i(220359);
+      if (this.it == null)
       {
-        boolean bool = this.aaR.a(this, paramMenuItem);
-        AppMethodBeat.o(141536);
-        return bool;
-      }
-      AppMethodBeat.o(141536);
-      return false;
-    }
-    
-    public final void b(android.support.v7.view.menu.h paramh)
-    {
-      AppMethodBeat.i(141537);
-      if (this.aaR == null)
-      {
-        AppMethodBeat.o(141537);
+        AppMethodBeat.o(220359);
         return;
       }
       invalidate();
-      d.g(d.this).showOverflowMenu();
-      AppMethodBeat.o(141537);
+      d.g(d.this).cC();
+      AppMethodBeat.o(220359);
+    }
+    
+    public final boolean a(androidx.appcompat.view.menu.h paramh, MenuItem paramMenuItem)
+    {
+      AppMethodBeat.i(220356);
+      if (this.it != null)
+      {
+        boolean bool = this.it.a(this, paramMenuItem);
+        AppMethodBeat.o(220356);
+        return bool;
+      }
+      AppMethodBeat.o(220356);
+      return false;
+    }
+    
+    public final boolean bn()
+    {
+      AppMethodBeat.i(141525);
+      this.is.ce();
+      try
+      {
+        boolean bool = this.it.a(this, this.is);
+        return bool;
+      }
+      finally
+      {
+        this.is.cf();
+        AppMethodBeat.o(141525);
+      }
     }
     
     public final void finish()
     {
       AppMethodBeat.i(141523);
-      if (d.this.OMg != this)
+      if (d.this.WfF != this)
       {
         AppMethodBeat.o(141523);
         return;
       }
-      if (!d.bd(d.e(d.this), d.f(d.this)))
+      if (!d.bn(d.e(d.this), d.f(d.this)))
       {
-        d.this.aaz = this;
-        d.this.aaA = this.aaR;
+        d.this.hZ = this;
+        d.this.ia = this.it;
       }
       for (;;)
       {
-        this.aaR = null;
-        d.this.X(false);
-        d.g(d.this).ix();
-        d.h(d.this).jC().sendAccessibilityEvent(32);
-        d.this.OMg = null;
+        this.it = null;
+        d.this.D(false);
+        d.g(d.this).cE();
+        d.h(d.this).dE().sendAccessibilityEvent(32);
+        d.this.WfF = null;
         AppMethodBeat.o(141523);
         return;
-        this.aaR.a(this);
+        this.it.a(this);
       }
     }
     
     public final View getCustomView()
     {
       AppMethodBeat.i(141535);
-      if (this.aaS != null)
+      if (this.iu != null)
       {
-        View localView = (View)this.aaS.get();
+        View localView = (View)this.iu.get();
         AppMethodBeat.o(141535);
         return localView;
       }
@@ -784,13 +805,13 @@ public final class d
     
     public final Menu getMenu()
     {
-      return this.aaQ;
+      return this.is;
     }
     
     public final MenuInflater getMenuInflater()
     {
       AppMethodBeat.i(141522);
-      g localg = new g(this.aaP);
+      g localg = new g(this.ir);
       AppMethodBeat.o(141522);
       return localg;
     }
@@ -811,39 +832,23 @@ public final class d
       return localCharSequence;
     }
     
-    public final boolean hb()
-    {
-      AppMethodBeat.i(141525);
-      this.aaQ.ia();
-      try
-      {
-        boolean bool = this.aaR.a(this, this.aaQ);
-        return bool;
-      }
-      finally
-      {
-        this.aaQ.ib();
-        AppMethodBeat.o(141525);
-      }
-    }
-    
     public final void invalidate()
     {
       AppMethodBeat.i(141524);
-      if (d.this.OMg != this)
+      if (d.this.WfF != this)
       {
         AppMethodBeat.o(141524);
         return;
       }
-      this.aaQ.ia();
+      this.is.ce();
       try
       {
-        this.aaR.b(this, this.aaQ);
+        this.it.b(this, this.is);
         return;
       }
       finally
       {
-        this.aaQ.ib();
+        this.is.cf();
         AppMethodBeat.o(141524);
       }
     }
@@ -851,7 +856,7 @@ public final class d
     public final boolean isTitleOptional()
     {
       AppMethodBeat.i(141534);
-      boolean bool = d.g(d.this).ahO;
+      boolean bool = d.g(d.this).oc;
       AppMethodBeat.o(141534);
       return bool;
     }
@@ -860,7 +865,7 @@ public final class d
     {
       AppMethodBeat.i(141526);
       d.g(d.this).setCustomView(paramView);
-      this.aaS = new WeakReference(paramView);
+      this.iu = new WeakReference(paramView);
       AppMethodBeat.o(141526);
     }
     
@@ -903,7 +908,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -5,11 +5,12 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.multitalk.a.h;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.system.AndroidMediaUtil;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
 public final class k$a$a
   implements Runnable
 {
@@ -17,21 +18,21 @@ public final class k$a$a
   
   public final void run()
   {
-    AppMethodBeat.i(239806);
+    AppMethodBeat.i(201136);
     String str = AndroidMediaUtil.getExportImagePath("jpg");
-    boolean bool = BitmapUtil.saveBitmapToImage(this.cKG, 100, Bitmap.CompressFormat.JPEG, str, true);
+    boolean bool = BitmapUtil.saveBitmapToImage(this.cLr, 100, Bitmap.CompressFormat.JPEG, str, true);
     if (!bool)
     {
-      Toast.makeText(this.$context, (CharSequence)this.$context.getString(2131764864), 1).show();
-      AppMethodBeat.o(239806);
+      Toast.makeText(this.$context, (CharSequence)this.$context.getString(a.h.save_image_err), 1).show();
+      AppMethodBeat.o(201136);
       return;
     }
     if (bool)
     {
       AndroidMediaUtil.refreshMediaScannerAsync(str, this.$context);
-      Toast.makeText(this.$context, (CharSequence)this.$context.getString(2131764869, new Object[] { AndroidMediaUtil.getSysCameraDirPath() }), 1).show();
+      Toast.makeText(this.$context, (CharSequence)this.$context.getString(a.h.save_screen_img_succ, new Object[] { AndroidMediaUtil.getSysCameraDirPath() }), 1).show();
     }
-    AppMethodBeat.o(239806);
+    AppMethodBeat.o(201136);
   }
 }
 

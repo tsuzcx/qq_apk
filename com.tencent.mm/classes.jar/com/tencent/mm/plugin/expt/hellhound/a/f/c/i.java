@@ -5,19 +5,19 @@ import java.util.List;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionKEntry;", "", "sessionId", "", "fromPageName", "entryPageNames", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V", "getEntryPageNames", "()Ljava/util/List;", "setEntryPageNames", "(Ljava/util/List;)V", "getFromPageName", "()Ljava/lang/String;", "setFromPageName", "(Ljava/lang/String;)V", "getSessionId", "setSessionId", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-expt_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/dao/SessionKEntry;", "", "sessionId", "", "fromPageName", "entryPageNames", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V", "getEntryPageNames", "()Ljava/util/List;", "setEntryPageNames", "(Ljava/util/List;)V", "getFromPageName", "()Ljava/lang/String;", "setFromPageName", "(Ljava/lang/String;)V", "getSessionId", "setSessionId", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-expt_release"})
 public final class i
 {
-  public String sII;
-  public List<String> sIJ;
   public String sessionId;
+  public String woF;
+  public List<String> woG;
   
   public i(String paramString1, String paramString2, List<String> paramList)
   {
     AppMethodBeat.i(122622);
     this.sessionId = paramString1;
-    this.sII = paramString2;
-    this.sIJ = paramList;
+    this.woF = paramString2;
+    this.woG = paramList;
     AppMethodBeat.o(122622);
   }
   
@@ -29,7 +29,7 @@ public final class i
       if ((paramObject instanceof i))
       {
         paramObject = (i)paramObject;
-        if ((!p.j(this.sessionId, paramObject.sessionId)) || (!p.j(this.sII, paramObject.sII)) || (!p.j(this.sIJ, paramObject.sIJ))) {}
+        if ((!p.h(this.sessionId, paramObject.sessionId)) || (!p.h(this.woF, paramObject.woF)) || (!p.h(this.woG, paramObject.woG))) {}
       }
     }
     else
@@ -50,7 +50,7 @@ public final class i
     if (localObject != null)
     {
       i = localObject.hashCode();
-      localObject = this.sII;
+      localObject = this.woF;
       if (localObject == null) {
         break label80;
       }
@@ -58,7 +58,7 @@ public final class i
     label80:
     for (int j = localObject.hashCode();; j = 0)
     {
-      localObject = this.sIJ;
+      localObject = this.woG;
       if (localObject != null) {
         k = localObject.hashCode();
       }
@@ -72,14 +72,14 @@ public final class i
   public final String toString()
   {
     AppMethodBeat.i(122623);
-    String str = "SessionKEntry(sessionId=" + this.sessionId + ", fromPageName=" + this.sII + ", entryPageNames=" + this.sIJ + ")";
+    String str = "SessionKEntry(sessionId=" + this.sessionId + ", fromPageName=" + this.woF + ", entryPageNames=" + this.woG + ")";
     AppMethodBeat.o(122623);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.c.i
  * JD-Core Version:    0.7.0.1
  */

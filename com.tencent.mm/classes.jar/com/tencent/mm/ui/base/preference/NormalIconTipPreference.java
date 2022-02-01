@@ -6,13 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.g;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public class NormalIconTipPreference
   extends NormalIconPreference
 {
-  private String OZm = "";
-  private TextView pJV = null;
+  private TextView AWF = null;
+  private String Wsv = "";
   
   public NormalIconTipPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,50 +25,50 @@ public class NormalIconTipPreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void gLP()
+  private void hKU()
   {
-    AppMethodBeat.i(205304);
-    if (this.pJV != null)
+    AppMethodBeat.i(193067);
+    if (this.AWF != null)
     {
-      if (Util.isNullOrNil(this.OZm))
+      if (Util.isNullOrNil(this.Wsv))
       {
-        this.pJV.setVisibility(8);
-        this.pJV.setText("");
-        AppMethodBeat.o(205304);
+        this.AWF.setVisibility(8);
+        this.AWF.setText("");
+        AppMethodBeat.o(193067);
         return;
       }
-      this.pJV.setVisibility(0);
-      this.pJV.setText(this.OZm);
+      this.AWF.setVisibility(0);
+      this.AWF.setText(this.Wsv);
     }
-    AppMethodBeat.o(205304);
+    AppMethodBeat.o(193067);
   }
   
-  public final void bml(String paramString)
+  public final void byK(String paramString)
   {
-    AppMethodBeat.i(205303);
-    this.OZm = paramString;
-    gLP();
-    AppMethodBeat.o(205303);
+    AppMethodBeat.i(193064);
+    this.Wsv = paramString;
+    hKU();
+    AppMethodBeat.o(193064);
   }
   
   protected final void onBindView(View paramView)
   {
-    AppMethodBeat.i(205302);
+    AppMethodBeat.i(193063);
     super.onBindView(paramView);
-    this.pJV = ((TextView)paramView.findViewById(2131302511));
-    gLP();
-    paramView = paramView.findViewById(2131307104);
+    this.AWF = ((TextView)paramView.findViewById(a.g.icon_tips_tv));
+    hKU();
+    paramView = paramView.findViewById(a.g.right_rl);
     if (paramView != null) {
       paramView.setVisibility(8);
     }
-    AppMethodBeat.o(205302);
+    AppMethodBeat.o(193063);
   }
   
   protected final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(205301);
+    AppMethodBeat.i(193058);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    AppMethodBeat.o(205301);
+    AppMethodBeat.o(193058);
     return paramViewGroup;
   }
 }

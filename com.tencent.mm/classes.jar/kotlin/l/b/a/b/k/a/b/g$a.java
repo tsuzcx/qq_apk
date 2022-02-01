@@ -8,12 +8,12 @@ public enum g$a
   {
     AppMethodBeat.i(60456);
     a locala1 = new a("COMPATIBLE", 0);
-    TMp = locala1;
+    aboR = locala1;
     a locala2 = new a("NEEDS_WRAPPER", 1);
-    TMq = locala2;
+    aboS = locala2;
     a locala3 = new a("INCOMPATIBLE", 2);
-    TMr = locala3;
-    TMs = new a[] { locala1, locala2, locala3 };
+    aboT = locala3;
+    aboU = new a[] { locala1, locala2, locala3 };
     AppMethodBeat.o(60456);
   }
   
@@ -21,7 +21,7 @@ public enum g$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.b.g.a
  * JD-Core Version:    0.7.0.1
  */

@@ -214,7 +214,6 @@ public abstract class SQLiteProgram
     //   from	to	target	type
     //   2	16	26	finally
     //   16	26	26	finally
-    //   27	29	26	finally
     //   31	33	26	finally
   }
   
@@ -289,7 +288,7 @@ public abstract class SQLiteProgram
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.wcdb.database.SQLiteProgram
  * JD-Core Version:    0.7.0.1
  */

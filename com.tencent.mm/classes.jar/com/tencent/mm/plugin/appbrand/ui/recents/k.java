@@ -15,7 +15,7 @@ final class k
     this.enable = paramBoolean;
   }
   
-  final ArrayList<AppBrandRecentTaskInfo> L(ArrayList<AppBrandRecentTaskInfo> paramArrayList)
+  final ArrayList<AppBrandRecentTaskInfo> M(ArrayList<AppBrandRecentTaskInfo> paramArrayList)
   {
     AppMethodBeat.i(49208);
     if ((!this.enable) || (Util.isNullOrNil(paramArrayList)))
@@ -28,7 +28,7 @@ final class k
     while (paramArrayList.hasNext())
     {
       AppBrandRecentTaskInfo localAppBrandRecentTaskInfo = (AppBrandRecentTaskInfo)paramArrayList.next();
-      if (!localAppBrandRecentTaskInfo.kVp) {
+      if (!localAppBrandRecentTaskInfo.nPC) {
         localArrayList.add(localAppBrandRecentTaskInfo);
       }
     }

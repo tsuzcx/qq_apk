@@ -10,16 +10,16 @@ import org.json.JSONObject;
 public final class o
   extends m
 {
-  public String RtT;
+  public String YVs;
   
   public o(String paramString)
   {
     AppMethodBeat.i(72781);
-    this.RtT = paramString;
+    this.YVs = paramString;
     HashMap localHashMap1 = new HashMap();
     HashMap localHashMap2 = new HashMap();
-    localHashMap1.put("crt_no", com.tencent.mm.compatible.util.q.encode(paramString));
-    localHashMap1.put("deviceid", com.tencent.mm.compatible.deviceinfo.q.dr(false));
+    localHashMap1.put("crt_no", com.tencent.mm.compatible.util.q.aT(paramString));
+    localHashMap1.put("deviceid", com.tencent.mm.compatible.deviceinfo.q.dR(false));
     setRequestData(localHashMap1);
     setWXRequestData(localHashMap2);
     AppMethodBeat.o(72781);

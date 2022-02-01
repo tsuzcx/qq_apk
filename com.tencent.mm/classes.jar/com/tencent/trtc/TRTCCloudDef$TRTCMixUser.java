@@ -5,6 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class TRTCCloudDef$TRTCMixUser
 {
   public int height;
+  public int inputType;
   public boolean pureAudio;
   public String roomId;
   public int streamType;
@@ -23,6 +24,7 @@ public class TRTCCloudDef$TRTCMixUser
     this.height = 0;
     this.zOrder = 0;
     this.streamType = 0;
+    this.inputType = 0;
   }
   
   public TRTCCloudDef$TRTCMixUser(TRTCMixUser paramTRTCMixUser)
@@ -36,6 +38,7 @@ public class TRTCCloudDef$TRTCMixUser
     this.zOrder = paramTRTCMixUser.zOrder;
     this.streamType = paramTRTCMixUser.streamType;
     this.pureAudio = paramTRTCMixUser.pureAudio;
+    this.inputType = paramTRTCMixUser.inputType;
   }
   
   public TRTCCloudDef$TRTCMixUser(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
@@ -47,19 +50,20 @@ public class TRTCCloudDef$TRTCMixUser
     this.height = paramInt4;
     this.zOrder = paramInt5;
     this.streamType = 0;
+    this.inputType = 0;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(222699);
-    String str = "userId=" + this.userId + ", roomId=" + this.roomId + ", x=" + this.x + ", y=" + this.y + ", width=" + this.width + ", height=" + this.height + ", zOrder=" + this.zOrder + ", streamType=" + this.streamType + ", pureAudio=" + this.pureAudio;
-    AppMethodBeat.o(222699);
+    AppMethodBeat.i(215972);
+    String str = "userId=" + this.userId + ", roomId=" + this.roomId + ", x=" + this.x + ", y=" + this.y + ", width=" + this.width + ", height=" + this.height + ", zOrder=" + this.zOrder + ", streamType=" + this.streamType + ", pureAudio=" + this.pureAudio + ", inputType=" + this.inputType;
+    AppMethodBeat.o(215972);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.trtc.TRTCCloudDef.TRTCMixUser
  * JD-Core Version:    0.7.0.1
  */

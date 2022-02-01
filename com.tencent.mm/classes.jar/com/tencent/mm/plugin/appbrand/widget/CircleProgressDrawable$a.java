@@ -6,12 +6,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class CircleProgressDrawable$a
 {
-  public static final Interpolator olo;
+  public static final Interpolator rnH;
   
   static
   {
     AppMethodBeat.i(131454);
-    olo = new LinearInterpolator();
+    rnH = new LinearInterpolator();
     AppMethodBeat.o(131454);
   }
 }

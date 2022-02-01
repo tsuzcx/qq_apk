@@ -10,8 +10,8 @@ public class CreTypeRuleInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<CreTypeRuleInfo> CREATOR;
-  public int HWK;
-  public CreExtInfo HWL;
+  public int OOK;
+  public CreExtInfo OOL;
   
   static
   {
@@ -25,19 +25,19 @@ public class CreTypeRuleInfo
   protected CreTypeRuleInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(70252);
-    this.HWK = paramParcel.readInt();
-    this.HWL = ((CreExtInfo)paramParcel.readParcelable(CreExtInfo.class.getClassLoader()));
+    this.OOK = paramParcel.readInt();
+    this.OOL = ((CreExtInfo)paramParcel.readParcelable(CreExtInfo.class.getClassLoader()));
     AppMethodBeat.o(70252);
   }
   
-  public static CreTypeRuleInfo bE(JSONObject paramJSONObject)
+  public static CreTypeRuleInfo bP(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70254);
     if (paramJSONObject != null)
     {
       CreTypeRuleInfo localCreTypeRuleInfo = new CreTypeRuleInfo();
-      localCreTypeRuleInfo.HWK = paramJSONObject.optInt("support_cre_type", 0);
-      localCreTypeRuleInfo.HWL = CreExtInfo.bD(paramJSONObject.optJSONObject("cre_need_info"));
+      localCreTypeRuleInfo.OOK = paramJSONObject.optInt("support_cre_type", 0);
+      localCreTypeRuleInfo.OOL = CreExtInfo.bO(paramJSONObject.optJSONObject("cre_need_info"));
       AppMethodBeat.o(70254);
       return localCreTypeRuleInfo;
     }
@@ -53,8 +53,8 @@ public class CreTypeRuleInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70253);
-    paramParcel.writeInt(this.HWK);
-    paramParcel.writeParcelable(this.HWL, paramInt);
+    paramParcel.writeInt(this.OOK);
+    paramParcel.writeParcelable(this.OOL, paramInt);
     AppMethodBeat.o(70253);
   }
 }

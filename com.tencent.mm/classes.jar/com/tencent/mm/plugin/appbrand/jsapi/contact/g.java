@@ -5,12 +5,12 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
-import android.support.v4.app.a.a;
-import com.tencent.luggage.h.i;
+import androidx.core.app.a.a;
+import com.tencent.luggage.k.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.o;
 import com.tencent.mm.plugin.appbrand.permission.r;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -24,12 +24,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class g
-  extends d
+  extends c
 {
   public static final int CTRL_INDEX = 414;
   public static final String NAME = "searchContacts";
   
-  private static List<String[]> dO(Context paramContext)
+  private static List<String[]> dN(Context paramContext)
   {
     AppMethodBeat.i(137503);
     LinkedList localLinkedList = new LinkedList();
@@ -85,7 +85,7 @@ public final class g
     }
   }
   
-  private static boolean dq(String paramString1, String paramString2)
+  private static boolean dz(String paramString1, String paramString2)
   {
     AppMethodBeat.i(137502);
     if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
@@ -137,27 +137,27 @@ public final class g
     return false;
   }
   
-  public final void a(final f paramf, final JSONObject paramJSONObject, final int paramInt)
+  public final void a(final e parame, final JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(137501);
     if (paramJSONObject == null)
     {
       Log.e("MicroMsg.JsApiSearchContacts", "data is null, err");
-      paramf.i(paramInt, h("fail:invalid data", null));
+      parame.j(paramInt, h("fail:invalid data", null));
       AppMethodBeat.o(137501);
       return;
     }
     Log.i("MicroMsg.JsApiSearchContacts", "JsApiSearchContacts invoke");
     Log.d("MicroMsg.JsApiSearchContacts", "data:%s", new Object[] { paramJSONObject });
-    Object localObject1 = paramf.getContext();
+    Object localObject1 = parame.getContext();
     if ((localObject1 == null) || (!(localObject1 instanceof Activity)))
     {
-      Log.e("MicroMsg.JsApiSearchContacts", "getPageContext failed, appid is %s", new Object[] { paramf.getAppId() });
-      paramf.i(paramInt, h("fail", null));
+      Log.e("MicroMsg.JsApiSearchContacts", "getPageContext failed, appid is %s", new Object[] { parame.getAppId() });
+      parame.j(paramInt, h("fail", null));
       AppMethodBeat.o(137501);
       return;
     }
-    r.b(paramf.getAppId(), new a.a()
+    r.b(parame.getAppId(), new a.a()
     {
       public final void onRequestPermissionsResult(int paramAnonymousInt, String[] paramAnonymousArrayOfString, int[] paramAnonymousArrayOfInt)
       {
@@ -169,19 +169,19 @@ public final class g
         }
         if ((paramAnonymousArrayOfInt != null) && (paramAnonymousArrayOfInt.length > 0) && (paramAnonymousArrayOfInt[0] == 0))
         {
-          g.this.a(paramf, paramJSONObject, paramInt);
+          g.this.a(parame, paramJSONObject, paramInt);
           AppMethodBeat.o(137500);
           return;
         }
-        paramf.i(paramInt, g.this.h("fail:system permission denied", null));
+        parame.j(paramInt, g.this.h("fail:system permission denied", null));
         AppMethodBeat.o(137500);
       }
     });
-    Object localObject2 = paramf.getContext();
+    Object localObject2 = parame.getContext();
     int i;
     if ((localObject2 == null) || (!(localObject2 instanceof Activity)))
     {
-      paramf.i(paramInt, h("fail", null));
+      parame.j(paramInt, h("fail", null));
       i = 0;
     }
     while (i == 0)
@@ -193,7 +193,7 @@ public final class g
       i = bool;
       if (bool)
       {
-        r.aeq(paramf.getAppId());
+        r.amk(parame.getAppId());
         i = bool;
       }
     }
@@ -203,11 +203,11 @@ public final class g
       Log.e("MicroMsg.JsApiSearchContacts", "phoneNumber is short");
       paramJSONObject = new HashMap();
       paramJSONObject.put("result", "");
-      paramf.i(paramInt, n("ok", paramJSONObject));
+      parame.j(paramInt, m("ok", paramJSONObject));
       AppMethodBeat.o(137501);
       return;
     }
-    paramJSONObject = dO((Context)localObject1);
+    paramJSONObject = dN((Context)localObject1);
     JSONArray localJSONArray = new JSONArray();
     if (!paramJSONObject.isEmpty())
     {
@@ -224,7 +224,7 @@ public final class g
           for (;;)
           {
             localObject1 = Util.nullAs(localObject3[1], "");
-            if ((Util.isNullOrNil(paramJSONObject)) || (!dq((String)localObject2, paramJSONObject))) {
+            if ((Util.isNullOrNil(paramJSONObject)) || (!dz((String)localObject2, paramJSONObject))) {
               break;
             }
             try
@@ -251,13 +251,13 @@ public final class g
     Log.d("MicroMsg.JsApiSearchContacts", "resultArray:%s", new Object[] { localJSONArray.toString() });
     paramJSONObject = new HashMap();
     paramJSONObject.put("result", localJSONArray);
-    paramf.i(paramInt, n("ok", paramJSONObject));
+    parame.j(paramInt, m("ok", paramJSONObject));
     AppMethodBeat.o(137501);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.contact.g
  * JD-Core Version:    0.7.0.1
  */

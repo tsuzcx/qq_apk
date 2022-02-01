@@ -11,14 +11,14 @@ public final class b
   extends MAutoStorage<a>
 {
   public static final String[] SQL_CREATE;
-  private static final String[] jTH;
+  private static final String[] mKU;
   private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(67618);
     SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.info, "DelayTransferRecord") };
-    jTH = new String[] { "*", "rowid" };
+    mKU = new String[] { "*", "rowid" };
     AppMethodBeat.o(67618);
   }
   
@@ -28,7 +28,7 @@ public final class b
     this.db = paramISQLiteDatabase;
   }
   
-  public final a aLV(String paramString)
+  public final a aWz(String paramString)
   {
     AppMethodBeat.i(67617);
     if (Util.isNullOrNil(paramString))
@@ -37,7 +37,7 @@ public final class b
       AppMethodBeat.o(67617);
       return null;
     }
-    paramString = this.db.query("DelayTransferRecord", jTH, "transferId=?", new String[] { paramString }, null, null, null, 2);
+    paramString = this.db.query("DelayTransferRecord", mKU, "transferId=?", new String[] { paramString }, null, null, null, 2);
     try
     {
       if (paramString.moveToFirst())
@@ -74,7 +74,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.b.b
  * JD-Core Version:    0.7.0.1
  */

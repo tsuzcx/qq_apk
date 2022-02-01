@@ -1,23 +1,28 @@
 package com.tencent.mm.plugin.fav.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.q.b;
-import com.tencent.mm.network.g;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.f.a.acf;
+import com.tencent.mm.f.a.acf.a;
+import com.tencent.mm.model.ad;
+import com.tencent.mm.model.ad.b;
+import com.tencent.mm.model.x;
+import com.tencent.mm.model.z;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.afl;
-import com.tencent.mm.protocal.protobuf.jw;
-import com.tencent.mm.protocal.protobuf.jx;
+import com.tencent.mm.protocal.protobuf.aoc;
+import com.tencent.mm.protocal.protobuf.aoi;
+import com.tencent.mm.protocal.protobuf.aor;
+import com.tencent.mm.protocal.protobuf.cw;
+import com.tencent.mm.protocal.protobuf.cx;
+import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class ah
   extends q
@@ -25,155 +30,131 @@ public final class ah
 {
   private i callback;
   private final d rr;
-  private LinkedList<Integer> tbl;
-  private int tbm;
+  public g wHp;
   
-  public ah(LinkedList<Integer> paramLinkedList)
+  public ah(g paramg)
   {
-    AppMethodBeat.i(103459);
+    AppMethodBeat.i(103456);
     this.callback = null;
-    this.tbm = 0;
+    Log.i("MicroMsg.Fav.NetSceneAddFav", "NetSceneAddFavItem %s", new Object[] { Long.valueOf(paramg.field_localId) });
     d.a locala = new d.a();
-    locala.iLN = new jw();
-    locala.iLO = new jx();
-    locala.uri = "/cgi-bin/micromsg-bin/batchdelfavitem";
-    locala.funcId = 403;
-    locala.iLP = 194;
-    locala.respCmdId = 1000000194;
-    this.rr = locala.aXF();
-    this.tbl = paramLinkedList;
-    AppMethodBeat.o(103459);
+    locala.lBU = new cw();
+    locala.lBV = new cx();
+    locala.uri = "/cgi-bin/micromsg-bin/addfavitem";
+    locala.funcId = 401;
+    locala.lBW = 193;
+    locala.respCmdId = 1000000193;
+    this.rr = locala.bgN();
+    this.wHp = paramg;
+    AppMethodBeat.o(103456);
   }
   
-  private boolean cVa()
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
-    AppMethodBeat.i(103460);
-    if ((this.tbl != null) && (this.tbm < this.tbl.size())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Log.i("MicroMsg.NetSceneBatchDelFavItem", "check need continue, indexOK %B", new Object[] { Boolean.valueOf(bool) });
-      AppMethodBeat.o(103460);
-      return bool;
-    }
-  }
-  
-  public final int doScene(g paramg, i parami)
-  {
-    AppMethodBeat.i(103461);
-    if ((this.tbl == null) || (this.tbl.isEmpty()) || (this.tbm >= this.tbl.size()))
-    {
-      Log.e("MicroMsg.NetSceneBatchDelFavItem", "klem doScene idList null, begIndex %d", new Object[] { Integer.valueOf(this.tbm) });
-      AppMethodBeat.o(103461);
-      return -1;
-    }
+    AppMethodBeat.i(103457);
+    cw localcw = (cw)d.b.b(this.rr.lBR);
+    localcw.lps = x.u(this.wHp.field_xml, System.currentTimeMillis());
+    localcw.rWu = this.wHp.field_type;
+    localcw.RIv = this.wHp.field_sourceType;
+    this.wHp.field_xml = g.t(this.wHp);
+    ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavItemInfoStorage().a(this.wHp, new String[] { "localId" });
+    localcw.RIx = this.wHp.field_xml;
+    localcw.RIw = this.wHp.field_sourceId;
+    this.wHp.azS("MicroMsg.Fav.NetSceneAddFav");
     this.callback = parami;
-    Log.i("MicroMsg.NetSceneBatchDelFavItem", "ashutest::do netscene size %d, begIndex %d, total %s", new Object[] { Integer.valueOf(this.tbl.size()), Integer.valueOf(this.tbm), this.tbl });
-    parami = (jw)this.rr.iLK.iLR;
-    parami.KOn.clear();
-    int j = this.tbm;
-    int i = 0;
-    if (j < this.tbl.size())
-    {
-      int k = ((Integer)this.tbl.get(j)).intValue();
-      if (k <= 0) {
-        break label270;
-      }
-      parami.KOn.add(Integer.valueOf(k));
-      i += 1;
-    }
-    label270:
-    for (;;)
-    {
-      if (i < 20)
-      {
-        j += 1;
-        break;
-      }
-      this.tbm = (j + 1);
-      parami.oTz = parami.KOn.size();
-      Log.i("MicroMsg.NetSceneBatchDelFavItem", "ashutest::do netscene checkd size %d, %s", new Object[] { Integer.valueOf(parami.oTz), parami.KOn });
-      i = dispatch(paramg, this.rr, this);
-      AppMethodBeat.o(103461);
-      return i;
-    }
+    Log.i("MicroMsg.Fav.NetSceneAddFav", "ADD FavItem, sourceId:%s localId:%d favId:%d", new Object[] { this.wHp.field_sourceId, Long.valueOf(this.wHp.field_localId), Integer.valueOf(this.wHp.field_id) });
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(103457);
+    return i;
   }
   
   public final int getType()
   {
-    return 403;
+    return 401;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(103462);
-    Log.i("MicroMsg.NetSceneBatchDelFavItem", "netId %d errType %d errCode %d begIndex %d idListSize %d errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(this.tbm), Integer.valueOf(this.tbl.size()), paramString });
-    if ((paramInt2 != 0) || (paramInt3 != 0))
+    AppMethodBeat.i(103458);
+    Log.i("MicroMsg.Fav.NetSceneAddFav", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    if (((paramInt2 == 0) && (paramInt3 == 0)) || (paramInt3 == -400))
     {
-      if (cVa())
+      params = (cx)d.c.b(((d)params).lBS);
+      Log.i("MicroMsg.Fav.NetSceneAddFav", "fav id %d, local id %d, itemStatus %d, update seq %d", new Object[] { Integer.valueOf(params.RIr), Long.valueOf(this.wHp.field_localId), Integer.valueOf(this.wHp.field_itemStatus), Integer.valueOf(params.RIu) });
+      this.wHp.field_id = params.RIr;
+      this.wHp.field_localSeq = params.RIu;
+      if (this.wHp.field_itemStatus == 12)
       {
-        doScene(dispatcher(), this.callback);
-        AppMethodBeat.o(103462);
-        return;
+        Log.v("MicroMsg.Fav.NetSceneAddFav", "onGYNetEnd wait server upload sent");
+        this.wHp.field_itemStatus = 13;
       }
+      if (this.wHp.field_itemStatus == 9)
+      {
+        Log.v("MicroMsg.Fav.NetSceneAddFav", "onGYNetEnd item done");
+        this.wHp.field_itemStatus = 10;
+        ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavCdnStorage().Kj(this.wHp.field_localId);
+        com.tencent.mm.plugin.report.service.h.IzE.a(10659, new Object[] { Integer.valueOf(0), Integer.valueOf(this.wHp.field_type), Integer.valueOf(0), Long.valueOf(b.b(this.wHp)), Long.valueOf(h.Kf(this.wHp.field_localId)) });
+      }
+      paramArrayOfByte = ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavItemInfoStorage().Kn(params.RIr);
+      if (paramArrayOfByte != null)
+      {
+        this.wHp.field_updateSeq = paramArrayOfByte.field_updateSeq;
+        ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavItemInfoStorage().A(paramArrayOfByte);
+        Log.i("MicroMsg.Fav.NetSceneAddFav", "onGYNetEnd aleady exist, delete old info, favId:%d", new Object[] { Integer.valueOf(paramArrayOfByte.field_id) });
+      }
+      paramArrayOfByte = ad.beh().Ro(this.wHp.field_sessionId);
+      if ((!Util.isNullOrNil(this.wHp.field_sessionId)) && (this.wHp.field_type == 5) && (paramArrayOfByte != null))
+      {
+        acf localacf = new acf();
+        localacf.gce.gcf = paramArrayOfByte.getString("prePublishId", "");
+        if ((this.wHp.field_favProto != null) && (this.wHp.field_favProto.SAB != null)) {
+          localacf.gce.url = this.wHp.field_favProto.SAB.link;
+        }
+        if ((Util.isNullOrNil(localacf.gce.url)) && (this.wHp.field_favProto != null) && (this.wHp.field_favProto.Szr != null) && (this.wHp.field_favProto.Szr.SBc != null)) {
+          localacf.gce.url = this.wHp.field_favProto.Szr.SBc;
+        }
+        if (Util.isNullOrNil(localacf.gce.url)) {
+          localacf.gce.url = paramArrayOfByte.getString("url", "");
+        }
+        localacf.gce.gch = paramArrayOfByte.getString("preUsername", "");
+        localacf.gce.gci = paramArrayOfByte.getString("preChatName", "");
+        localacf.gce.gcj = paramArrayOfByte.getInt("preMsgIndex", 0);
+        localacf.gce.gcn = paramArrayOfByte.getInt("sendAppMsgScene", 0);
+        localacf.gce.gco = paramArrayOfByte.getInt("getA8KeyScene", 0);
+        localacf.gce.gcp = paramArrayOfByte.getString("referUrl", null);
+        localacf.gce.gcq = paramArrayOfByte.getString("adExtStr", null);
+        localacf.gce.gck = "";
+        localacf.gce.gcl = "";
+        localacf.gce.gcm = 0;
+        localacf.gce.gcg = ("fav_" + z.bcZ() + "_" + this.wHp.field_id);
+        EventCenter.instance.publish(localacf);
+      }
+      this.wHp.field_sessionId = null;
+      ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavItemInfoStorage().a(this.wHp, new String[] { "localId" });
+      b.JV(params.RIy);
+    }
+    if ((paramInt2 == 4) && (paramInt3 == -401))
+    {
+      Log.i("MicroMsg.Fav.NetSceneAddFav", "fav fail, full size");
+      if (!this.wHp.djG()) {
+        break label965;
+      }
+      ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavItemInfoStorage().ag(16, this.wHp.field_localId);
+    }
+    for (;;)
+    {
+      b.d(this.wHp);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(103462);
+      AppMethodBeat.o(103458);
       return;
+      label965:
+      ((ag)com.tencent.mm.kernel.h.ag(ag.class)).getFavItemInfoStorage().ag(6, this.wHp.field_localId);
     }
-    params = ((jx)((d)params).iLL.iLR).oTA;
-    if ((params == null) || (params.size() == 0))
-    {
-      Log.e("MicroMsg.NetSceneBatchDelFavItem", "klem onGYNet resp list null");
-      if (cVa())
-      {
-        doScene(dispatcher(), this.callback);
-        AppMethodBeat.o(103462);
-        return;
-      }
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(103462);
-      return;
-    }
-    paramArrayOfByte = new ArrayList();
-    Log.i("MicroMsg.NetSceneBatchDelFavItem", "klem onGYNet respList size:%d", new Object[] { Integer.valueOf(params.size()) });
-    paramInt1 = 0;
-    if (paramInt1 < params.size())
-    {
-      afl localafl = (afl)params.get(paramInt1);
-      if (localafl.Ret < 0) {
-        Log.w("MicroMsg.NetSceneBatchDelFavItem", "klem onGYNet favId:%d, delete failed", new Object[] { Integer.valueOf(localafl.KGZ) });
-      }
-      for (;;)
-      {
-        paramInt1 += 1;
-        break;
-        paramArrayOfByte.add(Integer.valueOf(localafl.KGZ));
-        Log.i("MicroMsg.NetSceneBatchDelFavItem", "klem onGYNet favId:%d deleted", new Object[] { Integer.valueOf(localafl.KGZ) });
-      }
-    }
-    b.dC(paramArrayOfByte);
-    if (cVa())
-    {
-      doScene(dispatcher(), this.callback);
-      AppMethodBeat.o(103462);
-      return;
-    }
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(103462);
-  }
-  
-  public final int securityLimitCount()
-  {
-    return 10;
-  }
-  
-  public final q.b securityVerificationChecked(s params)
-  {
-    return q.b.iMq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.ah
  * JD-Core Version:    0.7.0.1
  */

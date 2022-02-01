@@ -1,12 +1,12 @@
 package com.tencent.magicbrush.gapid;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 
 public class MagicGAPID
 {
-  private static boolean cMI = false;
-  public static int cMJ = 25;
-  public static String cMK = "/sdcard/tencent/MicroMsg/appbrand/trace";
+  private static boolean cNv = false;
+  public static int cNw = 25;
+  public static String cNx = "/sdcard/tencent/MicroMsg/appbrand/trace";
   
   @Keep
   private static native int nativeAttach(String paramString1, String paramString2, int paramInt);

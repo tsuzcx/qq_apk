@@ -18,49 +18,55 @@ import android.view.animation.AnimationUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.api.h;
 import com.tencent.mm.api.z;
+import com.tencent.mm.bv.a.a;
+import com.tencent.mm.bv.a.b;
+import com.tencent.mm.bv.a.c;
+import com.tencent.mm.bv.a.d;
+import com.tencent.mm.bv.a.e;
+import com.tencent.mm.bv.a.g;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 
 public abstract class a
   extends View
 {
-  public static final int[] RoQ = { -1, -16777216, -707825, -17592, -16535286, -15172610, -7054596, -449092 };
-  private Bitmap RoA;
-  private Bitmap RoB;
-  private Bitmap RoC;
-  private Bitmap RoD;
-  private Bitmap RoE;
-  private Bitmap RoF;
-  protected Bitmap RoG;
-  protected Bitmap RoH;
-  protected int RoI = -1;
-  protected int RoJ = -1;
-  private Rect[] RoK;
-  private Rect[] RoL;
-  protected Rect RoM;
-  protected boolean RoN;
-  protected Paint RoO;
-  protected Paint RoP;
-  protected boolean RoR = false;
-  protected int RoS = -1;
-  protected int RoT = -1;
-  private boolean RoU = true;
-  private final float Roz = getResources().getDimension(2131166333);
-  private com.tencent.mm.bt.b drS;
-  private Paint hog;
-  protected int oEI = -1;
+  public static final int[] YQk = { -1, -16777216, -707825, -17592, -16535286, -15172610, -7054596, -449092 };
+  private final float YPT = getResources().getDimension(a.c.feature_padding);
+  private Bitmap YPU;
+  private Bitmap YPV;
+  private Bitmap YPW;
+  private Bitmap YPX;
+  private Bitmap YPY;
+  private Bitmap YPZ;
+  protected Bitmap YQa;
+  protected Bitmap YQb;
+  protected int YQc = -1;
+  protected int YQd = -1;
+  private Rect[] YQe;
+  private Rect[] YQf;
+  protected Rect YQg;
+  protected boolean YQh;
+  protected Paint YQi;
+  protected Paint YQj;
+  protected boolean YQl = false;
+  protected int YQm = -1;
+  protected int YQn = -1;
+  private boolean YQo = true;
+  private com.tencent.mm.ca.b fkE;
+  private Paint jZX;
+  protected int rGs = -1;
   
-  public a(Context paramContext, com.tencent.mm.bt.b paramb)
+  public a(Context paramContext, com.tencent.mm.ca.b paramb)
   {
     super(paramContext);
-    setId(2131297333);
-    this.drS = paramb;
-    hgh();
+    setId(a.e.base_footer_view_id);
+    this.fkE = paramb;
+    ihI();
   }
   
   private Bitmap b(h paramh, boolean paramBoolean)
   {
     Bitmap localBitmap1 = null;
-    switch (3.Kyu[paramh.ordinal()])
+    switch (3.RAi[paramh.ordinal()])
     {
     }
     for (;;)
@@ -72,74 +78,74 @@ public abstract class a
       return localBitmap2;
       if (paramBoolean)
       {
-        localBitmap1 = this.RoD;
+        localBitmap1 = this.YPX;
       }
       else
       {
-        localBitmap1 = this.RoC;
+        localBitmap1 = this.YPW;
         continue;
         if (paramBoolean)
         {
-          localBitmap1 = this.RoF;
+          localBitmap1 = this.YPZ;
         }
         else
         {
-          localBitmap1 = this.RoE;
+          localBitmap1 = this.YPY;
           continue;
           if (paramBoolean) {
-            localBitmap1 = this.RoB;
+            localBitmap1 = this.YPV;
           } else {
-            localBitmap1 = this.RoA;
+            localBitmap1 = this.YPU;
           }
         }
       }
     }
   }
   
-  private boolean hgi()
+  private boolean ihJ()
   {
     return getDetailHeight() > 0;
   }
   
-  private void hgk()
+  private void ihL()
   {
-    if (this.RoL == null) {
-      this.RoL = new Rect[RoQ.length];
+    if (this.YQf == null) {
+      this.YQf = new Rect[YQk.length];
     }
-    if (this.RoM == null) {
-      this.RoM = new Rect();
+    if (this.YQg == null) {
+      this.YQg = new Rect();
     }
-    float f1 = getResources().getDimension(2131166205);
-    float f2 = (getMeasuredWidth() - getPaddingLeftAndRight() - this.RoG.getWidth() - 2.0F * f1 * RoQ.length) / RoQ.length;
+    float f1 = getResources().getDimension(a.c.doodle_radio);
+    float f2 = (getMeasuredWidth() - getPaddingLeftAndRight() - this.YQa.getWidth() - 2.0F * f1 * YQk.length) / YQk.length;
     int k = (int)(f1 * 2.0F);
     int j = (int)(getPaddingLeftAndRight() / 2 + f1 + 5.0F);
     int m = (int)((getDetailHeight() - f1 * 2.0F) / 2.0F + f1);
     int i = 0;
-    while (i < RoQ.length)
+    while (i < YQk.length)
     {
-      this.RoL[i] = new Rect(j - k, m - k, j + k, m + k);
+      this.YQf[i] = new Rect(j - k, m - k, j + k, m + k);
       j = (int)(j + (2.0F * f1 + f2));
       i += 1;
     }
-    i = getMeasuredWidth() - getPaddingLeftAndRight() / 2 - this.RoG.getWidth() / 2;
-    this.RoM.set(i - this.RoG.getWidth(), 0, i + this.RoG.getWidth(), getDetailHeight());
+    i = getMeasuredWidth() - getPaddingLeftAndRight() / 2 - this.YQa.getWidth() / 2;
+    this.YQg.set(i - this.YQa.getWidth(), 0, i + this.YQa.getWidth(), getDetailHeight());
   }
   
-  protected void A(Canvas paramCanvas)
+  protected void D(Canvas paramCanvas)
   {
-    if (hgi())
+    if (ihJ())
     {
-      paramCanvas.drawLine(0.0F, getDetailHeight(), getMeasuredWidth(), getDetailHeight(), this.RoP);
-      B(paramCanvas);
+      paramCanvas.drawLine(0.0F, getDetailHeight(), getMeasuredWidth(), getDetailHeight(), this.YQj);
+      E(paramCanvas);
     }
-    float f1 = this.Roz;
+    float f1 = this.YPT;
     float f2 = getHeightSpacing();
     float f3 = getDetailHeight();
     int i = 0;
     if (i < getFeatureCount())
     {
       Object localObject = getPresenter().getFeatures()[i];
-      if ((this.RoS == i) || (i == this.oEI)) {}
+      if ((this.YQm == i) || (i == this.rGs)) {}
       for (boolean bool = true;; bool = false)
       {
         localObject = b((h)localObject, bool);
@@ -153,87 +159,87 @@ public abstract class a
     }
   }
   
-  protected void B(Canvas paramCanvas)
+  protected void E(Canvas paramCanvas)
   {
     Paint localPaint;
-    if (apW(this.oEI) == h.diH)
+    if (azv(this.rGs) == h.fan)
     {
-      float f4 = getResources().getDimension(2131166205);
-      float f5 = (getMeasuredWidth() - getPaddingLeftAndRight() - this.RoG.getWidth() - 2.0F * f4 * RoQ.length) / RoQ.length;
+      float f4 = getResources().getDimension(a.c.doodle_radio);
+      float f5 = (getMeasuredWidth() - getPaddingLeftAndRight() - this.YQa.getWidth() - 2.0F * f4 * YQk.length) / YQk.length;
       float f1 = getPaddingLeftAndRight() / 2;
-      float f2 = com.tencent.mm.cl.a.ao(1.5F) + (f1 + f4);
+      float f2 = com.tencent.mm.cs.a.an(1.5F) + (f1 + f4);
       float f6 = (getDetailHeight() - f4 * 2.0F) / 2.0F + f4;
       int i = 0;
-      if (i < RoQ.length)
+      if (i < YQk.length)
       {
         float f3 = 0.0F;
-        if (this.RoT == i)
+        if (this.YQn == i)
         {
-          f1 = com.tencent.mm.cl.a.ao(2.0F);
-          this.RoU = false;
+          f1 = com.tencent.mm.cs.a.an(2.0F);
+          this.YQo = false;
         }
         for (;;)
         {
-          this.hog.setColor(-1);
-          paramCanvas.drawCircle(f2, f6, com.tencent.mm.cl.a.ao(1.5F) + f4 + f1, this.hog);
-          this.hog.setColor(RoQ[i]);
-          paramCanvas.drawCircle(f2, f6, f1 + f4, this.hog);
+          this.jZX.setColor(-1);
+          paramCanvas.drawCircle(f2, f6, com.tencent.mm.cs.a.an(1.5F) + f4 + f1, this.jZX);
+          this.jZX.setColor(YQk[i]);
+          paramCanvas.drawCircle(f2, f6, f1 + f4, this.jZX);
           f2 += 2.0F * f4 + f5;
           i += 1;
           break;
           f1 = f3;
-          if (this.RoU)
+          if (this.YQo)
           {
             f1 = f3;
             if (i == 2) {
-              f1 = com.tencent.mm.cl.a.ao(2.0F);
+              f1 = com.tencent.mm.cs.a.an(2.0F);
             }
           }
         }
       }
       localPaint = new Paint();
-      if (!XX()) {
-        break label327;
+      if (!acD()) {
+        break label328;
       }
       localPaint.setAlpha(255);
-      if ((!this.RoN) || (!XX())) {
-        break label338;
+      if ((!this.YQh) || (!acD())) {
+        break label339;
       }
     }
-    label327:
-    label338:
-    for (Bitmap localBitmap = this.RoH;; localBitmap = this.RoG)
+    label328:
+    label339:
+    for (Bitmap localBitmap = this.YQb;; localBitmap = this.YQa)
     {
-      paramCanvas.drawBitmap(localBitmap, getMeasuredWidth() - getPaddingLeftAndRight() / 2 - this.RoG.getWidth(), (getDetailHeight() - this.RoG.getHeight()) / 2, localPaint);
+      paramCanvas.drawBitmap(localBitmap, getMeasuredWidth() - getPaddingLeftAndRight() / 2 - this.YQa.getWidth(), (getDetailHeight() - this.YQa.getHeight()) / 2, localPaint);
       return;
       localPaint.setAlpha(160);
       break;
     }
   }
   
-  protected final boolean XX()
+  protected abstract Bitmap a(h paramh, boolean paramBoolean);
+  
+  protected final boolean acD()
   {
     com.tencent.mm.e.b localb = getPresenter().c(getCurFeatureType());
     if (localb == null) {
       return false;
     }
-    return localb.XX();
+    return localb.acD();
   }
   
-  protected abstract Bitmap a(h paramh, boolean paramBoolean);
-  
-  protected final h apW(int paramInt)
+  protected final h azv(int paramInt)
   {
     if ((paramInt >= 0) && (paramInt < getFeatureCount())) {
       return getPresenter().getFeatures()[paramInt];
     }
-    return h.diG;
+    return h.fam;
   }
   
-  protected boolean apX(int paramInt)
+  protected boolean azw(int paramInt)
   {
-    h localh = apW(paramInt);
-    switch (3.Kyu[localh.ordinal()])
+    h localh = azv(paramInt);
+    switch (3.RAi[localh.ordinal()])
     {
     case 2: 
     case 3: 
@@ -253,12 +259,12 @@ public abstract class a
     case 2: 
     default: 
       return true;
-      if (hgi())
+      if (ihJ())
       {
-        if ((this.RoM == null) || (!this.RoM.contains(j, k))) {
+        if ((this.YQg == null) || (!this.YQg.contains(j, k))) {
           break label124;
         }
-        this.RoN = true;
+        this.YQh = true;
         postInvalidate();
       }
     case 0: 
@@ -269,91 +275,91 @@ public abstract class a
         if (i >= getFeatureCount()) {
           break;
         }
-        if (!this.RoK[i].contains(j, k)) {
+        if (!this.YQe[i].contains(j, k)) {
           break label50;
         }
-        this.RoS = i;
+        this.YQm = i;
         postInvalidate();
         return true;
         label124:
-        mc(j, k);
+        nt(j, k);
       }
     }
     i = 0;
     if (i < getFeatureCount())
     {
-      if ((!this.RoK[i].contains(j, k)) || (this.RoS != i)) {
+      if ((!this.YQe[i].contains(j, k)) || (this.YQm != i)) {
         break label360;
       }
-      if (apX(i))
+      if (azw(i))
       {
-        if (this.RoS != this.oEI) {
-          this.oEI = this.RoS;
+        if (this.YQm != this.rGs) {
+          this.rGs = this.YQm;
         }
       }
       else
       {
         label194:
-        if (this.RoR) {
+        if (this.YQl) {
           break label360;
         }
-        this.RoJ = this.RoI;
-        if (!apX(i)) {
+        this.YQd = this.YQc;
+        if (!azw(i)) {
           break label333;
         }
-        this.RoI = this.oEI;
-        getPresenter().getSelectedFeatureListener().a(apW(this.oEI));
+        this.YQc = this.rGs;
+        getPresenter().getSelectedFeatureListener().a(azv(this.rGs));
       }
     }
     else
     {
       label247:
-      if (hgi())
+      if (ihJ())
       {
-        if ((this.RoM == null) || (!this.RoM.contains(j, k)) || (!this.RoN)) {
+        if ((this.YQg == null) || (!this.YQg.contains(j, k)) || (!this.YQh)) {
           break label367;
         }
-        getPresenter().getSelectedFeatureListener().a(apW(this.oEI), -1, null);
+        getPresenter().getSelectedFeatureListener().a(azv(this.rGs), -1, null);
       }
     }
     for (;;)
     {
-      this.RoN = false;
-      this.RoS = -1;
+      this.YQh = false;
+      this.YQm = -1;
       requestLayout();
       postInvalidate();
       return true;
-      this.oEI = -1;
+      this.rGs = -1;
       break label194;
       label333:
-      this.RoI = i;
-      getPresenter().getSelectedFeatureListener().a(apW(i));
+      this.YQc = i;
+      getPresenter().getSelectedFeatureListener().a(azv(i));
       break label247;
       label360:
       i += 1;
       break;
       label367:
-      md(j, k);
+      nu(j, k);
     }
   }
   
   public int getColor(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < RoQ.length)) {
-      return RoQ[paramInt];
+    if ((paramInt >= 0) && (paramInt < YQk.length)) {
+      return YQk[paramInt];
     }
     return -65536;
   }
   
   public h getCurFeatureType()
   {
-    return apW(this.RoI);
+    return azv(this.YQc);
   }
   
   protected int getDetailHeight()
   {
-    if (apW(this.oEI) == h.diH) {
-      return (int)getResources().getDimension(2131166335);
+    if (azv(this.rGs) == h.fan) {
+      return (int)getResources().getDimension(a.c.feature_select_detail_layout_height);
     }
     return 0;
   }
@@ -370,7 +376,7 @@ public abstract class a
   
   protected float getIconWidth()
   {
-    Bitmap localBitmap = b(h.diH, false);
+    Bitmap localBitmap = b(h.fan, false);
     if (localBitmap == null) {
       return 0.0F;
     }
@@ -379,12 +385,12 @@ public abstract class a
   
   public int getPaddingLeftAndRight()
   {
-    return (int)(2.0F * this.Roz);
+    return (int)(2.0F * this.YPT);
   }
   
-  protected com.tencent.mm.bt.b getPresenter()
+  protected com.tencent.mm.ca.b getPresenter()
   {
-    return this.drS;
+    return this.fkE;
   }
   
   protected float getWidthSpacing()
@@ -392,79 +398,79 @@ public abstract class a
     return (getMeasuredWidth() - getFeatureCount() * getIconWidth() - getPaddingLeftAndRight()) / (getFeatureCount() - 1);
   }
   
-  public final boolean hgg()
+  public final boolean ihH()
   {
-    return this.RoR;
+    return this.YQl;
   }
   
-  protected void hgh()
+  protected void ihI()
   {
-    this.RoO = new Paint(1);
-    this.RoO.setColor(-16711936);
-    this.RoP = new Paint(1);
-    this.RoP.setColor(getResources().getColor(2131100287));
-    this.RoP.setStrokeWidth(0.6F);
-    this.hog = new Paint(1);
-    this.hog.setStyle(Paint.Style.FILL);
-    this.hog.setStrokeCap(Paint.Cap.ROUND);
-    this.RoH = BitmapUtil.transformDrawableToBitmap(getResources().getDrawable(2131691678));
-    this.RoG = BitmapUtil.transformDrawableToBitmap(getResources().getDrawable(2131691677));
-    this.RoA = BitmapUtil.transformDrawableToBitmap(getResources().getDrawable(2131690089));
-    this.RoB = BitmapUtil.transformDrawableToBitmap(getResources().getDrawable(2131690088));
-    this.RoC = BitmapUtil.transformDrawableToBitmap(getResources().getDrawable(2131691609));
-    this.RoD = BitmapUtil.transformDrawableToBitmap(getResources().getDrawable(2131691608));
-    this.RoE = BitmapFactory.decodeResource(getResources(), 2131232174);
-    this.RoF = BitmapFactory.decodeResource(getResources(), 2131232168);
+    this.YQi = new Paint(1);
+    this.YQi.setColor(-16711936);
+    this.YQj = new Paint(1);
+    this.YQj.setColor(getResources().getColor(a.b.divider_line_color));
+    this.YQj.setStrokeWidth(0.6F);
+    this.jZX = new Paint(1);
+    this.jZX.setStyle(Paint.Style.FILL);
+    this.jZX.setStrokeCap(Paint.Cap.ROUND);
+    this.YQb = BitmapUtil.transformDrawableToBitmap(getResources().getDrawable(a.g.undo_press));
+    this.YQa = BitmapUtil.transformDrawableToBitmap(getResources().getDrawable(a.g.undo_normal));
+    this.YPU = BitmapUtil.transformDrawableToBitmap(getResources().getDrawable(a.g.doodle_unselected));
+    this.YPV = BitmapUtil.transformDrawableToBitmap(getResources().getDrawable(a.g.doodle_selected));
+    this.YPW = BitmapUtil.transformDrawableToBitmap(getResources().getDrawable(a.g.text_unselected));
+    this.YPX = BitmapUtil.transformDrawableToBitmap(getResources().getDrawable(a.g.text_selected));
+    this.YPY = BitmapFactory.decodeResource(getResources(), a.d.emoji_unselected);
+    this.YPZ = BitmapFactory.decodeResource(getResources(), a.d.emoji_selected);
   }
   
-  protected void hgj()
+  protected void ihK()
   {
-    if (this.RoK == null) {
-      this.RoK = new Rect[getFeatureCount()];
+    if (this.YQe == null) {
+      this.YQe = new Rect[getFeatureCount()];
     }
-    int j = (int)(this.Roz + getIconWidth() / 2.0F);
+    int j = (int)(this.YPT + getIconWidth() / 2.0F);
     int k = (int)getIconWidth();
     int i = 0;
     while (i < getFeatureCount())
     {
-      this.RoK[i] = new Rect(j - k, getDetailHeight(), j + k, getDetailHeight() + getMeasuredHeight());
+      this.YQe[i] = new Rect(j - k, getDetailHeight(), j + k, getDetailHeight() + getMeasuredHeight());
       j = (int)(j + (getWidthSpacing() + getIconWidth()));
       i += 1;
     }
-    if (apW(this.oEI) == h.diH) {
-      hgk();
+    if (azv(this.rGs) == h.fan) {
+      ihL();
     }
   }
   
-  public final void hgl()
+  public final void ihM()
   {
-    this.RoJ = this.RoI;
+    this.YQd = this.YQc;
   }
   
-  public final void hgm()
+  public final void ihN()
   {
-    this.RoI = this.RoJ;
+    this.YQc = this.YQd;
     requestLayout();
     invalidate();
   }
   
-  protected void mc(int paramInt1, int paramInt2)
+  protected void nt(int paramInt1, int paramInt2)
   {
-    switch (3.Kyu[apW(this.oEI).ordinal()])
+    switch (3.RAi[azv(this.rGs).ordinal()])
     {
     }
     for (;;)
     {
       return;
-      if (this.RoL != null)
+      if (this.YQf != null)
       {
         int i = 0;
-        while (i < this.RoL.length)
+        while (i < this.YQf.length)
         {
-          if (this.RoL[i].contains(paramInt1, paramInt2))
+          if (this.YQf[i].contains(paramInt1, paramInt2))
           {
-            this.RoT = i;
-            this.RoU = false;
+            this.YQn = i;
+            this.YQo = false;
             return;
           }
           i += 1;
@@ -473,20 +479,20 @@ public abstract class a
     }
   }
   
-  protected void md(int paramInt1, int paramInt2)
+  protected void nu(int paramInt1, int paramInt2)
   {
-    switch (3.Kyu[apW(this.oEI).ordinal()])
+    switch (3.RAi[azv(this.rGs).ordinal()])
     {
     }
     for (;;)
     {
       return;
       int i = 0;
-      while ((this.RoL != null) && (i < this.RoL.length))
+      while ((this.YQf != null) && (i < this.YQf.length))
       {
-        if ((this.RoL[i].contains(paramInt1, paramInt2)) && (i == this.RoT))
+        if ((this.YQf[i].contains(paramInt1, paramInt2)) && (i == this.YQn))
         {
-          getPresenter().getSelectedFeatureListener().a(h.diH, i, null);
+          getPresenter().getSelectedFeatureListener().a(h.fan, i, null);
           return;
         }
         i += 1;
@@ -498,7 +504,7 @@ public abstract class a
   {
     super.onDraw(paramCanvas);
     paramCanvas.drawColor(0);
-    A(paramCanvas);
+    D(paramCanvas);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -506,14 +512,14 @@ public abstract class a
     int i = View.MeasureSpec.getSize(paramInt1);
     int j = getPaddingLeft();
     int k = getPaddingRight();
-    paramInt2 = (int)getResources().getDimension(2131166336);
+    paramInt2 = (int)getResources().getDimension(a.c.feature_select_layout_height);
     paramInt1 = paramInt2;
-    if (hgi()) {
+    if (ihJ()) {
       paramInt1 = paramInt2 + getDetailHeight();
     }
     paramInt1 = View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824);
     super.onMeasure(View.MeasureSpec.makeMeasureSpec(i - j - k, 1073741824), paramInt1);
-    hgj();
+    ihK();
   }
   
   public void setCurFeatureType(h paramh)
@@ -522,15 +528,15 @@ public abstract class a
     if (i < getFeatureCount()) {
       if (getPresenter().getFeatures()[i] == paramh) {
         label25:
-        if (!apX(i)) {
+        if (!azw(i)) {
           break label64;
         }
       }
     }
     label64:
-    for (this.oEI = i;; this.oEI = -1)
+    for (this.rGs = i;; this.rGs = -1)
     {
-      this.RoI = i;
+      this.YQc = i;
       requestLayout();
       invalidate();
       return;
@@ -545,7 +551,7 @@ public abstract class a
   {
     if (paramBoolean)
     {
-      localAnimation = AnimationUtils.loadAnimation(getContext(), 2130771981);
+      localAnimation = AnimationUtils.loadAnimation(getContext(), a.a.alpha_in);
       localAnimation.setAnimationListener(new Animation.AnimationListener()
       {
         public final void onAnimationEnd(Animation paramAnonymousAnimation)
@@ -562,7 +568,7 @@ public abstract class a
       startAnimation(localAnimation);
       return;
     }
-    Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130771982);
+    Animation localAnimation = AnimationUtils.loadAnimation(getContext(), a.a.alpha_out);
     localAnimation.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
@@ -581,12 +587,12 @@ public abstract class a
   
   public void setHideFooter(boolean paramBoolean)
   {
-    this.RoR = paramBoolean;
+    this.YQl = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.view.footer.a
  * JD-Core Version:    0.7.0.1
  */

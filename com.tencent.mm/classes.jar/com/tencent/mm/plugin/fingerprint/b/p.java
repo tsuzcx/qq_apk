@@ -7,17 +7,17 @@ import java.security.Signature;
 
 public enum p
 {
-  public String wFE = null;
-  String wFL = null;
-  public boolean wFM = false;
-  private Signature wFN = null;
-  public j wFO = null;
+  public String ByB = null;
+  String ByI = null;
+  public boolean ByJ = false;
+  private Signature ByK = null;
+  public j ByL = null;
   
   static
   {
     AppMethodBeat.i(64392);
-    wFK = new p("IML");
-    wFP = new p[] { wFK };
+    ByH = new p("IML");
+    ByM = new p[] { ByH };
     AppMethodBeat.o(64392);
   }
   
@@ -27,10 +27,10 @@ public enum p
   {
     AppMethodBeat.i(64391);
     Log.i("MicroMsg.WalletFingerprintVerifyManager", "hy: start reset");
-    this.wFN = null;
-    this.wFE = null;
-    this.wFM = false;
-    this.wFL = "";
+    this.ByK = null;
+    this.ByB = null;
+    this.ByJ = false;
+    this.ByI = "";
     AppMethodBeat.o(64391);
   }
 }

@@ -2,9 +2,6 @@ package com.tencent.kinda.framework.widget.base;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
@@ -18,7 +15,7 @@ import com.tencent.kinda.gen.KImage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.g;
 import java.util.ArrayList;
 
 public class MMKButton
@@ -63,25 +60,25 @@ public class MMKButton
   {
     AppMethodBeat.i(19011);
     StateListDrawable localStateListDrawable = new StateListDrawable();
-    BackgroundColorDrawable localBackgroundColorDrawable;
+    MMKButton.BackgroundColorDrawable localBackgroundColorDrawable;
     if ((this.isEnableHighlight) && (this.pressedColor >= 0L))
     {
-      localBackgroundColorDrawable = new BackgroundColorDrawable(MMKViewUtil.argbColor(this.pressedColor));
+      localBackgroundColorDrawable = new MMKButton.BackgroundColorDrawable(MMKViewUtil.argbColor(this.pressedColor));
       localStateListDrawable.addState(new int[] { 16842919 }, localBackgroundColorDrawable);
     }
     if (this.selectedColor >= 0L)
     {
-      localBackgroundColorDrawable = new BackgroundColorDrawable(MMKViewUtil.argbColor(this.selectedColor));
+      localBackgroundColorDrawable = new MMKButton.BackgroundColorDrawable(MMKViewUtil.argbColor(this.selectedColor));
       localStateListDrawable.addState(new int[] { 16842913 }, localBackgroundColorDrawable);
     }
     if (this.disabledColor >= 0L)
     {
-      localBackgroundColorDrawable = new BackgroundColorDrawable(MMKViewUtil.argbColor(this.disabledColor));
+      localBackgroundColorDrawable = new MMKButton.BackgroundColorDrawable(MMKViewUtil.argbColor(this.disabledColor));
       localStateListDrawable.addState(new int[] { -16842910 }, localBackgroundColorDrawable);
     }
     if (ColorUtil.getColorByMode(this.normalColor) >= 0L)
     {
-      localBackgroundColorDrawable = new BackgroundColorDrawable(MMKViewUtil.argbColor(ColorUtil.getColorByModeNoCompat(this.normalColor)));
+      localBackgroundColorDrawable = new MMKButton.BackgroundColorDrawable(MMKViewUtil.argbColor(ColorUtil.getColorByModeNoCompat(this.normalColor)));
       localStateListDrawable.addState(new int[0], localBackgroundColorDrawable);
     }
     setViewBackground(localStateListDrawable);
@@ -167,7 +164,7 @@ public class MMKButton
   
   private void updateTypeface()
   {
-    AppMethodBeat.i(214513);
+    AppMethodBeat.i(263180);
     int i;
     if (this.textFontName != null) {
       if (this.textFontName.equalsIgnoreCase("WeChat-Sans-SS-Light")) {
@@ -178,17 +175,17 @@ public class MMKButton
     {
       if (i != -1)
       {
-        String str = f.aqk(i);
+        String str = g.azI(i);
         try
         {
           ((KindaButtonImpl)getView()).getKButtonTextView().setTypeface(Typeface.createFromAsset(MMApplicationContext.getContext().getAssets(), str));
-          AppMethodBeat.o(214513);
+          AppMethodBeat.o(263180);
           return;
         }
         catch (Exception localException)
         {
           Log.e("MMKView.MMKButton", "setTypeface() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
-          AppMethodBeat.o(214513);
+          AppMethodBeat.o(263180);
           return;
         }
         if (this.textFontName.equalsIgnoreCase("WeChat-Sans-SS-Medium"))
@@ -210,11 +207,11 @@ public class MMKButton
       if (this.fontStyle == FontStyle.REGULAR)
       {
         ((KindaButtonImpl)getView()).getKButtonTextView().setTypeface(null, 0);
-        AppMethodBeat.o(214513);
+        AppMethodBeat.o(263180);
         return;
       }
       ((KindaButtonImpl)getView()).getKButtonTextView().setTypeface(null, 1);
-      AppMethodBeat.o(214513);
+      AppMethodBeat.o(263180);
       return;
       label203:
       i = -1;
@@ -337,10 +334,10 @@ public class MMKButton
   
   public void setFontStyle(FontStyle paramFontStyle)
   {
-    AppMethodBeat.i(214512);
+    AppMethodBeat.i(263177);
     this.fontStyle = paramFontStyle;
     updateTypeface();
-    AppMethodBeat.o(214512);
+    AppMethodBeat.o(263177);
   }
   
   public void setNormalColor(DynamicColor paramDynamicColor)
@@ -448,49 +445,10 @@ public class MMKButton
     }
     AppMethodBeat.o(19000);
   }
-  
-  static class BackgroundColorDrawable
-    extends Drawable
-  {
-    private int color;
-    
-    BackgroundColorDrawable(int paramInt)
-    {
-      this.color = paramInt;
-    }
-    
-    public void draw(Canvas paramCanvas)
-    {
-      AppMethodBeat.i(18993);
-      paramCanvas.drawColor(this.color);
-      AppMethodBeat.o(18993);
-    }
-    
-    public int getOpacity()
-    {
-      AppMethodBeat.i(18994);
-      if (this.color == 0)
-      {
-        AppMethodBeat.o(18994);
-        return -2;
-      }
-      if (Color.alpha(this.color) > 0)
-      {
-        AppMethodBeat.o(18994);
-        return -3;
-      }
-      AppMethodBeat.o(18994);
-      return -1;
-    }
-    
-    public void setAlpha(int paramInt) {}
-    
-    public void setColorFilter(ColorFilter paramColorFilter) {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKButton
  * JD-Core Version:    0.7.0.1
  */

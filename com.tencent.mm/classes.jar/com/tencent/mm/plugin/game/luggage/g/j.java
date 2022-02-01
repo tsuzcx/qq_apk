@@ -1,9 +1,11 @@
 package com.tencent.mm.plugin.game.luggage.g;
 
 import android.os.Bundle;
-import com.tencent.luggage.d.s;
+import com.tencent.luggage.d.p;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.model.a;
+import com.tencent.mm.plugin.webview.ui.tools.game.h;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.MMWebView;
@@ -13,20 +15,20 @@ import org.json.JSONObject;
 public class j
   extends i
 {
-  public j(com.tencent.luggage.d.j paramj, com.tencent.luggage.d.p paramp, Bundle paramBundle)
+  public j(com.tencent.luggage.d.j paramj, p paramp, final Bundle paramBundle)
   {
     super(paramj, paramp, paramBundle);
     AppMethodBeat.i(83212);
     Log.i("MicroMsg.PreloadGameWebPage", "create");
-    a.e(this.ITd);
-    com.tencent.mm.ipcinvoker.p.post(new Runnable()
+    a.f(this.PPv);
+    com.tencent.mm.ipcinvoker.s.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(83210);
-        j.this.ctS.a(new com.tencent.luggage.d.d()
+        j.this.crX.a(new com.tencent.luggage.d.d()
         {
-          public final JSONObject Ld()
+          public final JSONObject NU()
           {
             return null;
           }
@@ -36,35 +38,42 @@ public class j
             return "onAttachedToWindow";
           }
         });
-        j.this.cT("javascript:(function() {window.__game_center_preload_page_present__=true;})();");
+        String str = paramBundle.getString("KGamePreloadData");
+        if (!Util.isNullOrNil(str))
+        {
+          Log.i("MicroMsg.PreloadGameWebPage", "preloadData:%s", new Object[] { str });
+          str = String.format("javascript:(function() {window.__game_center_present_custom_data__=\"%s\";})();", new Object[] { str });
+          j.this.dt(str);
+        }
+        j.this.dt("javascript:(function() {window.__game_center_preload_page_present__=true;})();");
         AppMethodBeat.o(83210);
       }
     });
-    com.tencent.mm.ipcinvoker.p.z(new Runnable()
+    com.tencent.mm.ipcinvoker.s.z(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(83211);
-        if (j.this.ITd != null)
+        if (j.this.PPv != null)
         {
-          String str = j.this.ITd.getTitle();
+          String str = j.this.PPv.getTitle();
           if (!Util.isNullOrNil(str)) {
-            j.this.ec(str, 0);
+            j.this.eA(str, 0);
           }
         }
         AppMethodBeat.o(83211);
       }
     });
-    dTV();
+    exc();
     AppMethodBeat.o(83212);
   }
   
-  private void dTV()
+  private void exc()
   {
     AppMethodBeat.i(83218);
-    this.ctS.a(new com.tencent.luggage.d.d()
+    this.crX.a(new com.tencent.luggage.d.d()
     {
-      public final JSONObject Ld()
+      public final JSONObject NU()
       {
         return null;
       }
@@ -77,31 +86,31 @@ public class j
     AppMethodBeat.o(83218);
   }
   
-  public final String LJ()
+  public final String Oz()
   {
     AppMethodBeat.i(83213);
-    String str = com.tencent.mm.plugin.appbrand.ac.d.afA("preload_game_adapter.js");
+    String str = com.tencent.mm.plugin.appbrand.ac.d.anc("preload_game_adapter.js");
     AppMethodBeat.o(83213);
     return str;
   }
   
-  protected final com.tencent.mm.plugin.webview.ui.tools.game.g azK(String paramString)
+  protected final h aJw(String paramString)
   {
     AppMethodBeat.i(83219);
-    paramString = com.tencent.mm.plugin.webview.ui.tools.game.g.baK(paramString);
+    paramString = h.bmI(paramString);
     AppMethodBeat.o(83219);
     return paramString;
   }
   
-  public final boolean azL(String paramString)
+  public final boolean aJx(String paramString)
   {
     AppMethodBeat.i(83217);
-    if (paramString.equals(coX()))
+    if (paramString.equals(cDu()))
     {
       AppMethodBeat.o(83217);
       return false;
     }
-    boolean bool = super.azL(paramString);
+    boolean bool = super.aJx(paramString);
     AppMethodBeat.o(83217);
     return bool;
   }
@@ -113,18 +122,18 @@ public class j
     AppMethodBeat.o(83214);
   }
   
-  public final void cW(String paramString)
+  public final void dw(String paramString)
   {
     AppMethodBeat.i(83216);
-    super.cW(paramString);
-    dTV();
+    super.dw(paramString);
+    exc();
     AppMethodBeat.o(83216);
   }
   
-  public final void g(String paramString, Bundle paramBundle)
+  public final void l(String paramString, Bundle paramBundle)
   {
     AppMethodBeat.i(83215);
-    super.g(paramString, paramBundle);
+    super.l(paramString, paramBundle);
     AppMethodBeat.o(83215);
   }
 }

@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.shake.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.tp;
-import com.tencent.mm.protocal.protobuf.tq;
+import com.tencent.mm.protocal.protobuf.tr;
+import com.tencent.mm.protocal.protobuf.ts;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
@@ -24,16 +24,16 @@ public final class a
   {
     AppMethodBeat.i(28179);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new tp();
-    ((d.a)localObject).iLO = new tq();
+    ((d.a)localObject).lBU = new tr();
+    ((d.a)localObject).lBV = new ts();
     ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/card/cancelshakecard";
     ((d.a)localObject).funcId = 1252;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (tp)this.rr.iLK.iLR;
-    ((tp)localObject).pRX = paramString1;
-    ((tp)localObject).eaP = paramString2;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (tr)d.b.b(this.rr.lBR);
+    ((tr)localObject).tnX = paramString1;
+    ((tr)localObject).fUM = paramString2;
     AppMethodBeat.o(28179);
   }
   

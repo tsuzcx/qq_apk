@@ -6,28 +6,29 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.ro;
-import com.tencent.mm.plugin.remittance.model.z;
+import com.tencent.mm.an.q;
+import com.tencent.mm.f.a.sn;
+import com.tencent.mm.plugin.remittance.model.ah;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.t;
+import com.tencent.mm.ui.base.v;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 @a(7)
 public class RemittanceResendMsgUI
   extends WalletBaseUI
 {
-  protected void f(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  protected void g(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(68276);
-    paramString1 = new z(paramString1, paramString2, paramString3, paramInt1, paramInt2);
+    paramString1 = new ah(paramString1, paramString2, paramString3, paramInt1, paramInt2);
     paramString1.setProcessName("RemittanceProcess");
     doSceneProgress(paramString1);
     AppMethodBeat.o(68276);
@@ -51,7 +52,7 @@ public class RemittanceResendMsgUI
     int j = getIntent().getIntExtra("invalid_time", 0);
     if (!Util.isNullOrNil(str2))
     {
-      f(paramBundle, str1, str2, j, i);
+      g(paramBundle, str1, str2, j, i);
       AppMethodBeat.o(68275);
       return;
     }
@@ -63,24 +64,24 @@ public class RemittanceResendMsgUI
   {
     AppMethodBeat.i(68277);
     Log.i("MicroMsg.RemittanceResendMsgUI", "onSceneEnd() errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + " netsceneType:" + paramq.getType());
-    if ((paramq instanceof z))
+    if ((paramq instanceof ah))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        t.a(getContext().getResources().getString(2131761619), getContext(), 0, null);
+        v.a(getContext().getResources().getString(a.i.has_send), getContext(), 0, null);
         finish();
-        EventCenter.instance.publish(new ro());
+        EventCenter.instance.publish(new sn());
         AppMethodBeat.o(68277);
         return true;
       }
-      h.a(this, paramString, "", getContext().getString(2131755874), new DialogInterface.OnClickListener()
+      h.a(this, paramString, "", getContext().getString(a.i.app_i_known), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(213842);
+          AppMethodBeat.i(267979);
           Log.i("MicroMsg.RemittanceResendMsgUI", "click AlertDialog");
           RemittanceResendMsgUI.this.finish();
-          AppMethodBeat.o(213842);
+          AppMethodBeat.o(267979);
         }
       });
       AppMethodBeat.o(68277);

@@ -10,12 +10,12 @@ import java.net.URL;
 public final class g
   implements e
 {
-  public final String generate(String paramString)
+  public final String aW(String paramString)
   {
-    AppMethodBeat.i(234688);
+    AppMethodBeat.i(227672);
     if (!URLUtil.isNetworkUrl(paramString))
     {
-      AppMethodBeat.o(234688);
+      AppMethodBeat.o(227672);
       return paramString;
     }
     String str = paramString;
@@ -32,7 +32,7 @@ public final class g
       if (paramString != null)
       {
         paramString = MD5Util.getMD5String(str).substring(0, 20);
-        AppMethodBeat.o(234688);
+        AppMethodBeat.o(227672);
         return paramString;
       }
     }
@@ -43,14 +43,14 @@ public final class g
         h.log(6, "DefaultCacheKeyGenerator", h.i(paramString));
         paramString = null;
       }
-      AppMethodBeat.o(234688);
+      AppMethodBeat.o(227672);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.a.g
  * JD-Core Version:    0.7.0.1
  */

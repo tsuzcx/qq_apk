@@ -5,52 +5,52 @@ import com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c;
 
 public final class a
 {
-  public static void GQ(int paramInt)
+  public static void KA(int paramInt)
   {
     AppMethodBeat.i(121917);
-    c.cNY().szQ.GQ(paramInt);
+    c.dcQ().wfK.KA(paramInt);
     AppMethodBeat.o(121917);
   }
   
-  static void apd(String paramString)
+  static void axd(String paramString)
   {
     AppMethodBeat.i(121913);
-    c.cNY().szQ.apd(paramString);
+    c.dcQ().wfK.axd(paramString);
     AppMethodBeat.o(121913);
   }
   
-  static void ape(String paramString)
+  static void axe(String paramString)
   {
     AppMethodBeat.i(121914);
-    c.cNY().szQ.ape(paramString);
+    c.dcQ().wfK.axe(paramString);
     AppMethodBeat.o(121914);
   }
   
-  static void apf(String paramString)
+  static void axf(String paramString)
   {
     AppMethodBeat.i(121915);
-    c.cNY().szQ.apf(paramString);
+    c.dcQ().wfK.axf(paramString);
     AppMethodBeat.o(121915);
   }
   
-  static void apg(String paramString)
+  static void axg(String paramString)
   {
     AppMethodBeat.i(121916);
-    c.cNY().szQ.apg(paramString);
+    c.dcQ().wfK.axg(paramString);
     AppMethodBeat.o(121916);
   }
   
-  public static int cNT()
+  public static int dcL()
   {
-    AppMethodBeat.i(258742);
-    int i = c.cNY().szQ.cNT();
-    AppMethodBeat.o(258742);
+    AppMethodBeat.i(293124);
+    int i = c.dcQ().wfK.dcL();
+    AppMethodBeat.o(293124);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.b.a.a
  * JD-Core Version:    0.7.0.1
  */

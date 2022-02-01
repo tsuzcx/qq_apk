@@ -4,30 +4,30 @@ import android.text.SpannableString;
 import android.view.View;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberManageLogic;", "", "addPhone", "", "editPhoneNumber", "enableEdit", "", "finishEdit", "getSpanString", "Landroid/text/SpannableString;", "getView", "Landroid/view/View;", "init", "removePhone", "phoneItem", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "uninit", "updateView", "showDelete", "luggage-wechat-full-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberManageLogic;", "", "addPhone", "", "editPhoneNumber", "enableEdit", "", "finishEdit", "getSpanString", "Landroid/text/SpannableString;", "getView", "Landroid/view/View;", "init", "removePhone", "phoneItem", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "uninit", "updateView", "showDelete", "luggage-wechat-full-sdk_release"})
 public abstract interface o
 {
   public abstract void a(PhoneItem paramPhoneItem);
   
-  public abstract void bTv();
+  public abstract void cgA();
   
-  public abstract SpannableString bTw();
+  public abstract SpannableString cgB();
   
-  public abstract void bTx();
+  public abstract void cgC();
   
   public abstract View getView();
   
   public abstract void init();
   
-  public abstract void is(boolean paramBoolean);
+  public abstract void jq(boolean paramBoolean);
   
-  public abstract void it(boolean paramBoolean);
+  public abstract void jr(boolean paramBoolean);
   
   public abstract void uninit();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.o
  * JD-Core Version:    0.7.0.1
  */

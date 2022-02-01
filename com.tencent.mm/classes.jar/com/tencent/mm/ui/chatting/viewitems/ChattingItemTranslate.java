@@ -15,7 +15,9 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.qo;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.h;
+import com.tencent.mm.f.a.ro;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.pluginsdk.ui.span.h;
 import com.tencent.mm.pluginsdk.ui.span.o;
@@ -33,95 +35,95 @@ import java.lang.ref.WeakReference;
 public class ChattingItemTranslate
   extends RelativeLayout
 {
-  private boolean DMe;
-  private CharacterStyle KdC;
-  private int KdF;
-  private SpannableStringBuilder Kdz;
-  private MMNeat7extView POV;
-  private LinearLayout POW;
-  private ProgressBar POX;
-  private TextView POY;
-  private int POZ;
-  private WeakReference<com.tencent.mm.ui.chatting.e.a> PPa;
-  private NeatTextView.b PPb;
-  private CharacterStyle PPc;
-  private boolean PPd;
-  private GestureDetector PPe;
-  private long PyG;
-  private MTimerHandler cve;
+  private SpannableStringBuilder Reg;
+  private CharacterStyle Rej;
+  private int Rem;
+  private long WTf;
+  private MMNeat7extView XkX;
+  private LinearLayout XkY;
+  private ProgressBar XkZ;
+  private TextView Xla;
+  private int Xlb;
+  private WeakReference<com.tencent.mm.ui.chatting.e.a> Xlc;
+  private NeatTextView.b Xld;
+  private CharacterStyle Xle;
+  private boolean Xlf;
+  private GestureDetector Xlg;
+  private boolean animating;
+  private MTimerHandler cts;
   
   public ChattingItemTranslate(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(37428);
-    this.POZ = 0;
-    this.DMe = false;
-    this.cve = null;
-    this.PPa = null;
-    this.PyG = 0L;
-    this.Kdz = new SpannableStringBuilder();
-    this.KdF = 3;
-    this.KdC = new ForegroundColorSpan(-5066062);
-    this.PPc = new ForegroundColorSpan(getContext().getResources().getColor(2131099662));
-    this.PPe = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener()
+    this.Xlb = 0;
+    this.animating = false;
+    this.cts = null;
+    this.Xlc = null;
+    this.WTf = 0L;
+    this.Reg = new SpannableStringBuilder();
+    this.Rem = 3;
+    this.Rej = new ForegroundColorSpan(-5066062);
+    this.Xle = new ForegroundColorSpan(getContext().getResources().getColor(R.e.BW_0_Alpha_0_3));
+    this.Xlg = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener()
     {
       public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(233935);
+        AppMethodBeat.i(286173);
         b localb = new b();
-        localb.bm(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$2", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+        localb.bn(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$2", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
         boolean bool = super.onContextClick(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$2", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(233935);
+        AppMethodBeat.o(286173);
         return bool;
       }
       
       public final boolean onDoubleTap(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(233932);
+        AppMethodBeat.i(286169);
         b localb = new b();
-        localb.bm(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$2", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+        localb.bn(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$2", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
         if (ChattingItemTranslate.e(ChattingItemTranslate.this) == null)
         {
           com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$2", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
-          AppMethodBeat.o(233932);
+          AppMethodBeat.o(286169);
           return false;
         }
-        boolean bool = ChattingItemTranslate.e(ChattingItemTranslate.this).gS(ChattingItemTranslate.c(ChattingItemTranslate.this));
+        boolean bool = ChattingItemTranslate.e(ChattingItemTranslate.this).ie(ChattingItemTranslate.c(ChattingItemTranslate.this));
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$2", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(233932);
+        AppMethodBeat.o(286169);
         return bool;
       }
       
       public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(233934);
+        AppMethodBeat.i(286171);
         b localb = new b();
-        localb.bm(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$2", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.axR());
+        localb.bn(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$2", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
         super.onLongPress(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$2", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-        AppMethodBeat.o(233934);
+        AppMethodBeat.o(286171);
       }
       
       public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(233933);
+        AppMethodBeat.i(286170);
         b localb = new b();
-        localb.bm(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$2", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+        localb.bn(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$2", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
         boolean bool = super.onSingleTapUp(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate$2", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(233933);
+        AppMethodBeat.o(286170);
         return bool;
       }
     });
     AppMethodBeat.o(37428);
   }
   
-  private void Ck(boolean paramBoolean)
+  private void GF(boolean paramBoolean)
   {
     AppMethodBeat.i(37432);
     Context localContext = MMApplicationContext.getContext();
@@ -132,13 +134,13 @@ public class ChattingItemTranslate
     }
     if (paramBoolean)
     {
-      this.POV.setPadding(com.tencent.mm.cb.a.fromDPToPix(localContext, 10), com.tencent.mm.cb.a.fromDPToPix(localContext, 8), com.tencent.mm.cb.a.fromDPToPix(localContext, 10), com.tencent.mm.cb.a.fromDPToPix(localContext, 4));
-      this.POW.setVisibility(0);
+      this.XkX.setPadding(com.tencent.mm.ci.a.fromDPToPix(localContext, 10), com.tencent.mm.ci.a.fromDPToPix(localContext, 8), com.tencent.mm.ci.a.fromDPToPix(localContext, 10), com.tencent.mm.ci.a.fromDPToPix(localContext, 4));
+      this.XkY.setVisibility(0);
       AppMethodBeat.o(37432);
       return;
     }
-    this.POV.setPadding(com.tencent.mm.cb.a.fromDPToPix(localContext, 10), com.tencent.mm.cb.a.fromDPToPix(localContext, 8), com.tencent.mm.cb.a.fromDPToPix(localContext, 10), com.tencent.mm.cb.a.fromDPToPix(localContext, 8));
-    this.POW.setVisibility(8);
+    this.XkX.setPadding(com.tencent.mm.ci.a.fromDPToPix(localContext, 10), com.tencent.mm.ci.a.fromDPToPix(localContext, 8), com.tencent.mm.ci.a.fromDPToPix(localContext, 10), com.tencent.mm.ci.a.fromDPToPix(localContext, 8));
+    this.XkY.setVisibility(8);
     AppMethodBeat.o(37432);
   }
   
@@ -151,12 +153,12 @@ public class ChattingItemTranslate
       return paramSpannableStringBuilder;
     }
     int j;
-    if (paramCharSequence.length() < this.KdF) {
+    if (paramCharSequence.length() < this.Rem) {
       j = paramCharSequence.length();
     }
-    for (int i = 0;; i = j - this.KdF)
+    for (int i = 0;; i = j - this.Rem)
     {
-      paramSpannableStringBuilder.append(paramCharSequence).setSpan(this.KdC, i, j, 33);
+      paramSpannableStringBuilder.append(paramCharSequence).setSpan(this.Rej, i, j, 33);
       AppMethodBeat.o(37433);
       return paramSpannableStringBuilder;
       j = paramCharSequence.length();
@@ -165,20 +167,20 @@ public class ChattingItemTranslate
   
   private void a(final CharSequence paramCharSequence, final int paramInt, final long paramLong)
   {
-    AppMethodBeat.i(233939);
-    if (paramInt <= this.POZ) {
-      this.POZ = (paramInt - 2);
+    AppMethodBeat.i(278598);
+    if (paramInt <= this.Xlb) {
+      this.Xlb = (paramInt - 2);
     }
-    int i = this.POV.hashCode();
+    int i = this.XkX.hashCode();
     if (paramCharSequence != null) {}
     for (String str = Util.secPrint(paramCharSequence.toString());; str = "null")
     {
-      Log.i("MicroMsg.ChattingItemTranslate", "doVoiceTextAnimation(%s) %s %s %s %s", new Object[] { Integer.valueOf(i), Long.valueOf(paramLong), str, Integer.valueOf(paramInt), Integer.valueOf(this.POZ) });
-      this.cve = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
+      Log.i("MicroMsg.ChattingItemTranslate", "doVoiceTextAnimation(%s) %s %s %s %s", new Object[] { Integer.valueOf(i), Long.valueOf(paramLong), str, Integer.valueOf(paramInt), Integer.valueOf(this.Xlb) });
+      this.cts = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
       {
         public final boolean onTimerExpired()
         {
-          AppMethodBeat.i(233931);
+          AppMethodBeat.i(278619);
           ChattingItemTranslate.a(ChattingItemTranslate.this).clear();
           int j = ChattingItemTranslate.b(ChattingItemTranslate.this) + 2;
           int i = j;
@@ -187,140 +189,140 @@ public class ChattingItemTranslate
           }
           Log.d("MicroMsg.ChattingItemTranslate", "(%s)currentContentLength:%s newCurrentContentLength:%s endNum:%s animating:%s", new Object[] { Integer.valueOf(ChattingItemTranslate.c(ChattingItemTranslate.this).hashCode()), Integer.valueOf(ChattingItemTranslate.b(ChattingItemTranslate.this)), Integer.valueOf(i), Integer.valueOf(paramInt), Boolean.valueOf(ChattingItemTranslate.d(ChattingItemTranslate.this)) });
           ChattingItemTranslate.a(ChattingItemTranslate.this, i);
-          ChattingItemTranslate.c(ChattingItemTranslate.this).aw(ChattingItemTranslate.a(ChattingItemTranslate.this, ChattingItemTranslate.a(ChattingItemTranslate.this), paramCharSequence, ChattingItemTranslate.b(ChattingItemTranslate.this)));
+          ChattingItemTranslate.c(ChattingItemTranslate.this).aL(ChattingItemTranslate.a(ChattingItemTranslate.this, ChattingItemTranslate.a(ChattingItemTranslate.this), paramCharSequence, ChattingItemTranslate.b(ChattingItemTranslate.this)));
           if (paramInt == ChattingItemTranslate.b(ChattingItemTranslate.this))
           {
             if (!ChattingItemTranslate.d(ChattingItemTranslate.this))
             {
-              qo localqo = new qo();
-              localqo.dXb.msgId = paramLong;
-              EventCenter.instance.publish(localqo);
+              ro localro = new ro();
+              localro.fQN.msgId = paramLong;
+              EventCenter.instance.publish(localro);
             }
-            AppMethodBeat.o(233931);
+            AppMethodBeat.o(278619);
             return false;
           }
-          AppMethodBeat.o(233931);
+          AppMethodBeat.o(278619);
           return true;
         }
       }, true);
-      this.cve.startTimer(0L, 200L);
-      AppMethodBeat.o(233939);
+      this.cts.startTimer(0L, 200L);
+      AppMethodBeat.o(278598);
       return;
     }
   }
   
-  private void gUi()
+  private void hTW()
   {
-    AppMethodBeat.i(233940);
-    if (this.cve != null) {
-      this.cve.stopTimer();
+    AppMethodBeat.i(278599);
+    if (this.cts != null) {
+      this.cts.stopTimer();
     }
-    AppMethodBeat.o(233940);
+    AppMethodBeat.o(278599);
   }
   
   public final void a(CharSequence paramCharSequence, c paramc)
   {
     AppMethodBeat.i(37430);
-    a(paramCharSequence, paramc, false, ChattingItemTranslate.b.PPj, 0L, null);
+    a(paramCharSequence, paramc, false, ChattingItemTranslate.b.Xll, 0L, null);
     AppMethodBeat.o(37430);
   }
   
   public final void a(CharSequence paramCharSequence, c paramc, boolean paramBoolean, ChattingItemTranslate.b paramb, long paramLong, com.tencent.mm.ui.chatting.e.a parama)
   {
-    AppMethodBeat.i(233941);
+    AppMethodBeat.i(278601);
     if (!Util.isNullOrNil(paramCharSequence))
     {
       if (parama != null) {
-        this.PPa = new WeakReference(parama);
+        this.Xlc = new WeakReference(parama);
       }
-      this.POV.setMinWidth(com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 80));
-      this.POV.setMaxWidth((int)(c.kk(MMApplicationContext.getContext()) / com.tencent.mm.cc.a.gvi()) - com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 5));
-      this.POV.setVisibility(0);
-      this.POX.setVisibility(8);
-      if (paramb == ChattingItemTranslate.b.PPk)
+      this.XkX.setMinWidth(com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 80));
+      this.XkX.setMaxWidth((int)(c.li(MMApplicationContext.getContext()) / com.tencent.mm.cj.a.hrd()) - com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 5));
+      this.XkX.setVisibility(0);
+      this.XkZ.setVisibility(8);
+      if (paramb == ChattingItemTranslate.b.Xlm)
       {
-        Ck(false);
-        Log.d("MicroMsg.ChattingItemTranslate", "setContent(%s) msgId:%s currentMsgId:%s content:%s status:%s canAnimation:%s currentContentLength:%s", new Object[] { Integer.valueOf(this.POV.hashCode()), Long.valueOf(paramLong), Long.valueOf(this.PyG), Util.secPrint(paramCharSequence.toString()), paramc, Boolean.valueOf(paramBoolean), Integer.valueOf(this.POZ) });
-        if (this.PyG != paramLong)
+        GF(false);
+        Log.d("MicroMsg.ChattingItemTranslate", "setContent(%s) msgId:%s currentMsgId:%s content:%s status:%s canAnimation:%s currentContentLength:%s", new Object[] { Integer.valueOf(this.XkX.hashCode()), Long.valueOf(paramLong), Long.valueOf(this.WTf), Util.secPrint(paramCharSequence.toString()), paramc, Boolean.valueOf(paramBoolean), Integer.valueOf(this.Xlb) });
+        if (this.WTf != paramLong)
         {
-          this.POV.aw("");
-          this.POZ = 0;
-          gUi();
-          this.cve = null;
-          this.DMe = false;
+          this.XkX.aL("");
+          this.Xlb = 0;
+          hTW();
+          this.cts = null;
+          this.animating = false;
         }
-        this.PyG = paramLong;
+        this.WTf = paramLong;
         if (paramBoolean)
         {
-          this.POV.aw("");
-          this.POZ = 0;
-          gUi();
-          this.cve = null;
-          this.DMe = true;
+          this.XkX.aL("");
+          this.Xlb = 0;
+          hTW();
+          this.cts = null;
+          this.animating = true;
         }
-        if ((paramc == c.PPp) && (paramBoolean))
+        if ((paramc == c.Xlr) && (paramBoolean))
         {
-          gUi();
+          hTW();
           a(paramCharSequence, paramCharSequence.length(), paramLong);
-          this.DMe = false;
+          this.animating = false;
         }
       }
     }
     for (;;)
     {
       setVisibility(0);
-      AppMethodBeat.o(233941);
+      AppMethodBeat.o(278601);
       return;
-      if ((paramc == c.PPo) || (paramBoolean))
+      if ((paramc == c.Xlq) || (paramBoolean))
       {
-        gUi();
+        hTW();
         if (paramCharSequence.length() > 3) {
           a(paramCharSequence, paramCharSequence.length() - 3, paramLong);
         } else {
-          this.POV.aw(paramCharSequence);
+          this.XkX.aL(paramCharSequence);
         }
       }
-      else if ((paramc == c.PPp) && (this.cve != null))
+      else if ((paramc == c.Xlr) && (this.cts != null))
       {
-        if (this.POZ != paramCharSequence.length())
+        if (this.Xlb != paramCharSequence.length())
         {
-          if (this.DMe)
+          if (this.animating)
           {
-            gUi();
+            hTW();
             a(paramCharSequence, paramCharSequence.length(), paramLong);
-            this.DMe = false;
+            this.animating = false;
           }
         }
         else {
-          this.POV.aw(paramCharSequence);
+          this.XkX.aL(paramCharSequence);
         }
       }
       else
       {
-        this.POV.aw(paramCharSequence);
+        this.XkX.aL(paramCharSequence);
         continue;
-        if (paramc == c.PPo)
+        if (paramc == c.Xlq)
         {
-          this.Kdz.clear();
-          this.POV.aw(a(this.Kdz, paramCharSequence));
+          this.Reg.clear();
+          this.XkX.aL(a(this.Reg, paramCharSequence));
         }
         for (;;)
         {
-          if (paramc != c.PPp) {
+          if (paramc != c.Xlr) {
             break label493;
           }
-          Ck(true);
+          GF(true);
           break;
-          this.POV.aw(paramCharSequence);
+          this.XkX.aL(paramCharSequence);
         }
         label493:
-        Ck(false);
+        GF(false);
         continue;
-        if (paramc != c.PPm)
+        if (paramc != c.Xlo)
         {
-          this.POX.setVisibility(0);
-          this.POV.setVisibility(8);
-          Ck(false);
+          this.XkZ.setVisibility(0);
+          this.XkX.setVisibility(8);
+          GF(false);
         }
       }
     }
@@ -328,17 +330,17 @@ public class ChattingItemTranslate
   
   public MMNeat7extView getContentView()
   {
-    return this.POV;
+    return this.XkX;
   }
   
   public final void init()
   {
     AppMethodBeat.i(37429);
-    this.POV = ((MMNeat7extView)findViewById(2131298585));
-    this.POX = ((ProgressBar)findViewById(2131298586));
-    this.POW = ((LinearLayout)findViewById(2131298583));
-    this.POY = ((TextView)findViewById(2131298582));
-    this.POV.setOnTouchListener(new h(this.POV, new o(this.POV.getContext())));
+    this.XkX = ((MMNeat7extView)findViewById(R.h.dzM));
+    this.XkZ = ((ProgressBar)findViewById(R.h.dzN));
+    this.XkY = ((LinearLayout)findViewById(R.h.dzL));
+    this.Xla = ((TextView)findViewById(R.h.dzK));
+    this.XkX.setOnTouchListener(new h(this.XkX, new o(this.XkX.getContext())));
     AppMethodBeat.o(37429);
   }
   
@@ -346,7 +348,7 @@ public class ChattingItemTranslate
   {
     AppMethodBeat.i(37434);
     int j = paramMotionEvent.getAction();
-    if ((j == 1) && (this.PPd)) {}
+    if ((j == 1) && (this.Xlf)) {}
     for (int i = 1; i != 0; i = 0)
     {
       Log.d("MicroMsg.ChattingItemTranslate", "ignore Action Up Event this time");
@@ -354,17 +356,17 @@ public class ChattingItemTranslate
       return true;
     }
     if (j == 0) {
-      this.PPd = false;
+      this.Xlf = false;
     }
     GestureDetector localGestureDetector;
     com.tencent.mm.hellhoundlib.b.a locala;
-    if ((this.PPb != null) && (this.PPe != null))
+    if ((this.Xld != null) && (this.Xlg != null))
     {
-      localGestureDetector = this.PPe;
-      locala = new com.tencent.mm.hellhoundlib.b.a().bl(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, locala.axQ(), "com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      localGestureDetector = this.Xlg;
+      locala = new com.tencent.mm.hellhoundlib.b.a().bm(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.b(localGestureDetector, locala.aFh(), "com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
     }
-    for (boolean bool1 = com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.pG(0)), "com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");; bool1 = false)
+    for (boolean bool1 = com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.sf(0)), "com/tencent/mm/ui/chatting/viewitems/ChattingItemTranslate", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");; bool1 = false)
     {
       boolean bool2 = bool1;
       if (!bool1) {
@@ -378,30 +380,30 @@ public class ChattingItemTranslate
   public void setBrandWording(String paramString)
   {
     AppMethodBeat.i(37431);
-    this.POY.setText(paramString);
+    this.Xla.setText(paramString);
     AppMethodBeat.o(37431);
   }
   
   public void setOnDoubleClickListener(NeatTextView.b paramb)
   {
-    this.PPb = paramb;
+    this.Xld = paramb;
   }
   
   public void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(233942);
+    AppMethodBeat.i(278605);
     super.setVisibility(paramInt);
     if (paramInt == 8) {
-      this.POX.setVisibility(8);
+      this.XkZ.setVisibility(8);
     }
-    AppMethodBeat.o(233942);
+    AppMethodBeat.o(278605);
   }
   
   public static final class a
-    extends bq
+    extends by
   {
-    public CharSequence PPi;
-    public int qcr = 1;
+    public CharSequence Xlk;
+    public int viewType = 1;
     
     public a(ca paramca, boolean paramBoolean, int paramInt)
     {
@@ -414,11 +416,11 @@ public class ChattingItemTranslate
     static
     {
       AppMethodBeat.i(37427);
-      PPm = new c("NoTransform", 0);
-      PPn = new c("PreTransform", 1);
-      PPo = new c("Transforming", 2);
-      PPp = new c("Transformed", 3);
-      PPq = new c[] { PPm, PPn, PPo, PPp };
+      Xlo = new c("NoTransform", 0);
+      Xlp = new c("PreTransform", 1);
+      Xlq = new c("Transforming", 2);
+      Xlr = new c("Transformed", 3);
+      Xls = new c[] { Xlo, Xlp, Xlq, Xlr };
       AppMethodBeat.o(37427);
     }
     
@@ -427,7 +429,7 @@ public class ChattingItemTranslate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.ChattingItemTranslate
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,46 @@
 package com.tencent.mm.plugin.ipcall.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ewm;
-import com.tencent.mm.protocal.protobuf.ewn;
+import com.tencent.mm.protocal.protobuf.fgy;
+import com.tencent.mm.protocal.protobuf.fgz;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class j
   extends q
   implements m
 {
+  public fgy DRI;
+  public fgz DRJ;
   private i callback;
   private d rr;
-  public ewm yrG;
-  public ewn yrH;
   
   public j(String paramString)
   {
     AppMethodBeat.i(25478);
     this.rr = null;
-    this.yrG = null;
-    this.yrH = null;
+    this.DRI = null;
+    this.DRJ = null;
     this.callback = null;
     d.a locala = new d.a();
-    locala.iLN = new ewm();
-    locala.iLO = new ewn();
+    locala.lBU = new fgy();
+    locala.lBV = new fgz();
     locala.funcId = 277;
     locala.uri = "/cgi-bin/micromsg-bin/wcopurchasepackage";
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    this.yrG = ((ewm)this.rr.iLK.iLR);
-    this.yrG.ProductID = paramString;
-    Log.i("MicroMsg.NetSceneIPCallPurchasePackage", "NetSceneIPCallPurchasePackage ProductID:%s", new Object[] { this.yrG.ProductID });
+    this.rr = locala.bgN();
+    this.DRI = ((fgy)d.b.b(this.rr.lBR));
+    this.DRI.ProductID = paramString;
+    Log.i("MicroMsg.NetSceneIPCallPurchasePackage", "NetSceneIPCallPurchasePackage ProductID:%s", new Object[] { this.DRI.ProductID });
     AppMethodBeat.o(25478);
   }
   
@@ -62,7 +62,7 @@ public final class j
   {
     AppMethodBeat.i(25480);
     Log.i("MicroMsg.NetSceneIPCallPurchasePackage", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.yrH = ((ewn)((d)params).iLL.iLR);
+    this.DRJ = ((fgz)d.c.b(((d)params).lBS));
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

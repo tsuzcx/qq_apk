@@ -5,39 +5,40 @@ import com.tencent.mm.sdk.platformtools.Log;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class o
+public class o
 {
-  private s csH;
-  n csI;
-  public f csJ;
-  public p csK;
-  public ConcurrentHashMap<String, l> csL;
-  private ConcurrentHashMap<String, j> csM;
-  private ConcurrentHashMap<Integer, h> csN;
-  private AtomicInteger csO;
+  private s cqM;
+  n cqN;
+  f cqO;
+  public p cqP;
+  public ConcurrentHashMap<String, l> cqQ;
+  private ConcurrentHashMap<String, j> cqR;
+  private ConcurrentHashMap<Integer, h> cqS;
+  private AtomicInteger cqT;
   
   public o(s params)
   {
     AppMethodBeat.i(140336);
-    this.csL = new ConcurrentHashMap();
-    this.csM = new ConcurrentHashMap();
-    this.csN = new ConcurrentHashMap();
-    this.csO = new AtomicInteger(1);
-    this.csH = params;
-    this.csI = new n(this);
-    this.csJ = new f(this.csH);
-    this.csK = new q(this);
-    this.csH.addJavascriptInterface(new r(this.csI), "_luggageBridgeNative");
+    this.cqQ = new ConcurrentHashMap();
+    this.cqR = new ConcurrentHashMap();
+    this.cqS = new ConcurrentHashMap();
+    this.cqT = new AtomicInteger(1);
+    this.cqM = params;
+    this.cqN = new n(this);
+    this.cqO = new f(this.cqM);
+    this.cqP = new q(this);
+    this.cqM.addJavascriptInterface(new r(this.cqN), "_luggageBridgeNative");
     AppMethodBeat.o(140336);
   }
   
   private void a(i parami)
   {
     AppMethodBeat.i(140340);
-    if ((j)this.csM.get(parami.csx) == null)
+    if ((j)this.cqR.get(parami.cqC) == null)
     {
-      Log.e("LuggageBridge", "no listener for event: %s", new Object[] { parami.csx });
+      Log.e("LuggageBridge", "no listener for event: %s", new Object[] { parami.cqC });
       AppMethodBeat.o(140340);
       return;
     }
@@ -45,7 +46,7 @@ public final class o
   }
   
   /* Error */
-  public final void La()
+  public final void NQ()
   {
     // Byte code:
     //   0: ldc 114
@@ -60,7 +61,7 @@ public final class o
     //   21: new 119	java/io/InputStreamReader
     //   24: dup
     //   25: aload_0
-    //   26: getfield 50	com/tencent/luggage/bridge/o:csH	Lcom/tencent/luggage/bridge/s;
+    //   26: getfield 50	com/tencent/luggage/bridge/o:cqM	Lcom/tencent/luggage/bridge/s;
     //   29: invokeinterface 123 1 0
     //   34: invokevirtual 129	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   37: ldc 131
@@ -106,7 +107,7 @@ public final class o
     //   108: aload_3
     //   109: invokevirtual 153	java/io/InputStreamReader:close	()V
     //   112: aload_0
-    //   113: getfield 50	com/tencent/luggage/bridge/o:csH	Lcom/tencent/luggage/bridge/s;
+    //   113: getfield 50	com/tencent/luggage/bridge/o:cqM	Lcom/tencent/luggage/bridge/s;
     //   116: aload 4
     //   118: invokevirtual 157	java/io/StringWriter:toString	()Ljava/lang/String;
     //   121: aconst_null
@@ -204,15 +205,15 @@ public final class o
     {
       try
       {
-        paramm = new k(this.csJ, paramm, paramBoolean);
-        l locall = (l)this.csL.get(paramm.csu);
+        paramm = new k(this.cqO, paramm, paramBoolean);
+        l locall = (l)this.cqQ.get(paramm.cqz);
         if (locall != null)
         {
           locall.a(paramm);
-          if (!paramm.csA) {
+          if (!paramm.cqF) {
             break;
           }
-          paramm = paramm.KZ();
+          paramm = paramm.NP();
           AppMethodBeat.o(140338);
           return paramm;
         }
@@ -223,8 +224,8 @@ public final class o
         AppMethodBeat.o(140338);
         return null;
       }
-      Log.e("LuggageBridge", "Invoke Listener Not Found: %s", new Object[] { paramm.csu });
-      paramm.c("system:function_not_exist", null);
+      Log.e("LuggageBridge", "Invoke Listener Not Found: %s", new Object[] { paramm.cqz });
+      paramm.a("system:function_not_exist", null);
     }
     AppMethodBeat.o(140338);
     return null;
@@ -236,7 +237,7 @@ public final class o
     try
     {
       paramm = new i(paramm);
-      Log.i("LuggageBridge", "processEventFromJs, EventName = %s", new Object[] { paramm.csx });
+      Log.i("LuggageBridge", "processEventFromJs, EventName = %s", new Object[] { paramm.cqC });
       a(paramm);
       AppMethodBeat.o(140339);
       return;
@@ -248,15 +249,22 @@ public final class o
     }
   }
   
+  public final void a(String paramString, l paraml)
+  {
+    AppMethodBeat.i(209897);
+    this.cqQ.put(paramString, paraml);
+    AppMethodBeat.o(209897);
+  }
+  
   final void b(m paramm)
   {
     AppMethodBeat.i(140341);
     try
     {
       paramm = new g(paramm);
-      if ((h)this.csN.get(Integer.valueOf(paramm.csv)) == null)
+      if ((h)this.cqS.get(Integer.valueOf(paramm.cqA)) == null)
       {
-        Log.e("LuggageBridge", "no listener for callback: %d", new Object[] { Integer.valueOf(paramm.csv) });
+        Log.e("LuggageBridge", "no listener for callback: %d", new Object[] { Integer.valueOf(paramm.cqA) });
         AppMethodBeat.o(140341);
         return;
       }
@@ -267,16 +275,24 @@ public final class o
       AppMethodBeat.o(140341);
       return;
     }
-    if (!paramm.csw) {
-      this.csN.remove(Integer.valueOf(paramm.csv));
+    if (!paramm.cqB) {
+      this.cqS.remove(Integer.valueOf(paramm.cqA));
     }
     AppMethodBeat.o(140341);
   }
   
-  public final void cN(String paramString)
+  public final void b(String paramString, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(209896);
+    paramString = new d(paramString, paramJSONObject);
+    this.cqO.a(paramString);
+    AppMethodBeat.o(209896);
+  }
+  
+  public final void dl(String paramString)
   {
     AppMethodBeat.i(140337);
-    this.csH.evaluateJavascript(paramString, null);
+    this.cqM.evaluateJavascript(paramString, null);
     AppMethodBeat.o(140337);
   }
 }

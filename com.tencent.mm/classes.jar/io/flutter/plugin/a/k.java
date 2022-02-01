@@ -1,30 +1,33 @@
 package io.flutter.plugin.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import io.flutter.b;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.nio.ByteBuffer;
 
 public final class k
 {
-  final l SSe;
+  final l aauF;
+  private final c aauy;
   final String name;
-  private final c wJt;
   
   public k(c paramc, String paramString)
   {
-    this(paramc, paramString, o.SSr);
+    this(paramc, paramString, o.aauS);
   }
   
   public k(c paramc, String paramString, l paraml)
   {
-    this.wJt = paramc;
+    this.aauy = paramc;
     this.name = paramString;
-    this.SSe = paraml;
+    this.aauF = paraml;
   }
   
   public final void a(c paramc)
   {
     AppMethodBeat.i(9838);
-    c localc = this.wJt;
+    c localc = this.aauy;
     String str = this.name;
     if (paramc == null) {}
     for (paramc = null;; paramc = new a(paramc))
@@ -35,12 +38,12 @@ public final class k
     }
   }
   
-  public final void a(String paramString, Object paramObject, k.d paramd)
+  public final void a(String paramString, Object paramObject, d paramd)
   {
     AppMethodBeat.i(9837);
-    c localc = this.wJt;
+    c localc = this.aauy;
     String str = this.name;
-    paramObject = this.SSe.b(new j(paramString, paramObject));
+    paramObject = this.aauF.b(new j(paramString, paramObject));
     if (paramd == null) {}
     for (paramString = null;; paramString = new b(paramd))
     {
@@ -53,39 +56,39 @@ public final class k
   final class a
     implements c.a
   {
-    private final k.c SRi;
+    private final k.c aatH;
     
     a(k.c paramc)
     {
-      this.SRi = paramc;
+      this.aatH = paramc;
     }
     
     public final void a(ByteBuffer paramByteBuffer, final c.b paramb)
     {
       AppMethodBeat.i(9867);
-      paramByteBuffer = k.this.SSe.K(paramByteBuffer);
+      paramByteBuffer = k.this.aauF.G(paramByteBuffer);
       try
       {
-        this.SRi.a(paramByteBuffer, new k.d()
+        this.aatH.a(paramByteBuffer, new k.d()
         {
           public final void b(String paramAnonymousString1, String paramAnonymousString2, Object paramAnonymousObject)
           {
             AppMethodBeat.i(9840);
-            paramb.I(k.this.SSe.h(paramAnonymousString1, paramAnonymousString2, paramAnonymousObject));
+            paramb.E(k.this.aauF.h(paramAnonymousString1, paramAnonymousString2, paramAnonymousObject));
             AppMethodBeat.o(9840);
           }
           
-          public final void ba(Object paramAnonymousObject)
+          public final void bb(Object paramAnonymousObject)
           {
             AppMethodBeat.i(9839);
-            paramb.I(k.this.SSe.eQ(paramAnonymousObject));
+            paramb.E(k.this.aauF.eV(paramAnonymousObject));
             AppMethodBeat.o(9839);
           }
           
-          public final void dLv()
+          public final void epZ()
           {
             AppMethodBeat.i(9841);
-            paramb.I(null);
+            paramb.E(null);
             AppMethodBeat.o(9841);
           }
         });
@@ -95,7 +98,12 @@ public final class k
       catch (RuntimeException paramByteBuffer)
       {
         new StringBuilder("MethodChannel#").append(k.this.name);
-        paramb.I(k.this.SSe.h("error", paramByteBuffer.getMessage(), null));
+        b.iAi();
+        l locall = k.this.aauF;
+        String str = paramByteBuffer.getMessage();
+        StringWriter localStringWriter = new StringWriter();
+        paramByteBuffer.printStackTrace(new PrintWriter(localStringWriter));
+        paramb.E(locall.bw("error", str, localStringWriter.toString()));
         AppMethodBeat.o(9867);
       }
     }
@@ -104,15 +112,15 @@ public final class k
   final class b
     implements c.b
   {
-    private final k.d SxY;
+    private final k.d ZZf;
     
     b(k.d paramd)
     {
-      this.SxY = paramd;
+      this.ZZf = paramd;
     }
     
     /* Error */
-    public final void I(ByteBuffer paramByteBuffer)
+    public final void E(ByteBuffer paramByteBuffer)
     {
       // Byte code:
       //   0: sipush 9866
@@ -120,16 +128,16 @@ public final class k
       //   6: aload_1
       //   7: ifnonnull +19 -> 26
       //   10: aload_0
-      //   11: getfield 22	io/flutter/plugin/a/k$b:SxY	Lio/flutter/plugin/a/k$d;
+      //   11: getfield 22	io/flutter/plugin/a/k$b:ZZf	Lio/flutter/plugin/a/k$d;
       //   14: invokeinterface 40 1 0
       //   19: sipush 9866
       //   22: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   25: return
       //   26: aload_0
-      //   27: getfield 22	io/flutter/plugin/a/k$b:SxY	Lio/flutter/plugin/a/k$d;
+      //   27: getfield 22	io/flutter/plugin/a/k$b:ZZf	Lio/flutter/plugin/a/k$d;
       //   30: aload_0
-      //   31: getfield 17	io/flutter/plugin/a/k$b:SSm	Lio/flutter/plugin/a/k;
-      //   34: getfield 47	io/flutter/plugin/a/k:SSe	Lio/flutter/plugin/a/l;
+      //   31: getfield 17	io/flutter/plugin/a/k$b:aauN	Lio/flutter/plugin/a/k;
+      //   34: getfield 47	io/flutter/plugin/a/k:aauF	Lio/flutter/plugin/a/l;
       //   37: aload_1
       //   38: invokeinterface 53 2 0
       //   43: invokeinterface 57 2 0
@@ -142,43 +150,53 @@ public final class k
       //   60: ldc 61
       //   62: invokespecial 64	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
       //   65: aload_0
-      //   66: getfield 17	io/flutter/plugin/a/k$b:SSm	Lio/flutter/plugin/a/k;
+      //   66: getfield 17	io/flutter/plugin/a/k$b:aauN	Lio/flutter/plugin/a/k;
       //   69: getfield 68	io/flutter/plugin/a/k:name	Ljava/lang/String;
       //   72: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   75: pop
-      //   76: sipush 9866
-      //   79: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   82: return
-      //   83: astore_1
-      //   84: aload_0
-      //   85: getfield 22	io/flutter/plugin/a/k$b:SxY	Lio/flutter/plugin/a/k$d;
-      //   88: aload_1
-      //   89: getfield 75	io/flutter/plugin/a/e:code	Ljava/lang/String;
-      //   92: aload_1
-      //   93: invokevirtual 79	io/flutter/plugin/a/e:getMessage	()Ljava/lang/String;
-      //   96: aload_1
-      //   97: getfield 83	io/flutter/plugin/a/e:hgl	Ljava/lang/Object;
-      //   100: invokeinterface 86 4 0
-      //   105: sipush 9866
-      //   108: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   111: return
+      //   76: invokestatic 77	io/flutter/b:iAi	()V
+      //   79: sipush 9866
+      //   82: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   85: return
+      //   86: astore_1
+      //   87: aload_0
+      //   88: getfield 22	io/flutter/plugin/a/k$b:ZZf	Lio/flutter/plugin/a/k$d;
+      //   91: aload_1
+      //   92: getfield 80	io/flutter/plugin/a/e:code	Ljava/lang/String;
+      //   95: aload_1
+      //   96: invokevirtual 84	io/flutter/plugin/a/e:getMessage	()Ljava/lang/String;
+      //   99: aload_1
+      //   100: getfield 88	io/flutter/plugin/a/e:jSd	Ljava/lang/Object;
+      //   103: invokeinterface 91 4 0
+      //   108: sipush 9866
+      //   111: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   114: return
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	112	0	this	b
-      //   0	112	1	paramByteBuffer	ByteBuffer
+      //   0	115	0	this	b
+      //   0	115	1	paramByteBuffer	ByteBuffer
       // Exception table:
       //   from	to	target	type
       //   10	25	55	java/lang/RuntimeException
       //   26	48	55	java/lang/RuntimeException
       //   48	54	55	java/lang/RuntimeException
-      //   84	105	55	java/lang/RuntimeException
-      //   26	48	83	io/flutter/plugin/a/e
+      //   87	108	55	java/lang/RuntimeException
+      //   26	48	86	io/flutter/plugin/a/e
     }
   }
   
   public static abstract interface c
   {
     public abstract void a(j paramj, k.d paramd);
+  }
+  
+  public static abstract interface d
+  {
+    public abstract void b(String paramString1, String paramString2, Object paramObject);
+    
+    public abstract void bb(Object paramObject);
+    
+    public abstract void epZ();
   }
 }
 

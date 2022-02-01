@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.j.b;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -16,46 +17,46 @@ import junit.framework.Assert;
 public final class d
   extends e
 {
-  public static final String DEVICE_NAME;
-  public static int KyH;
-  public static final String KyI;
-  public static final String KyJ;
-  public static String KyK;
-  public static final String KyL;
-  public static String KyM;
-  public static long KyN;
-  public static int KyO;
-  public static boolean KyP;
-  public static boolean KyQ;
-  public static boolean KyR;
-  public static boolean KyS;
-  public static int KyT;
-  public static final byte[] KyU;
-  public static final byte[] KyV;
-  public static final byte[] KyW;
-  public static final String KyX;
-  public static final String KyY;
-  public static String ics;
+  public static String RAA;
+  public static final String RAB;
+  public static long RAC;
+  public static int RAD;
+  public static boolean RAE;
+  public static boolean RAF;
+  public static boolean RAG;
+  public static boolean RAH;
+  public static int RAI;
+  public static final byte[] RAJ;
+  public static final byte[] RAK;
+  public static final byte[] RAL;
+  public static final String RAM;
+  public static final String RAN;
+  public static int RAv;
+  public static final String RAw;
+  public static final String RAx;
+  public static String RAy;
+  public static final String RAz;
+  public static String kQZ;
   
   static
   {
     AppMethodBeat.i(133039);
-    ics = "android-" + Build.VERSION.SDK_INT;
-    KyH = 2;
-    KyI = Build.BRAND;
-    KyJ = Build.MODEL + Build.CPU_ABI;
-    KyK = "android-" + Build.VERSION.SDK_INT;
-    KyL = "android-" + Build.MANUFACTURER;
-    KyM = Build.VERSION.SDK_INT;
-    DEVICE_NAME = Build.MANUFACTURER + "-" + Build.MODEL;
-    KyN = 0L;
-    KyO = Integer.decode(BuildInfo.CLIENT_VERSION).intValue();
+    kQZ = "android-" + Build.VERSION.SDK_INT;
+    RAv = 2;
+    RAw = Build.BRAND;
+    RAx = Build.MODEL + Build.CPU_ABI;
+    RAy = "android-" + Build.VERSION.SDK_INT;
+    RAz = "android-" + Build.MANUFACTURER;
+    RAA = Build.VERSION.SDK_INT;
+    RAB = Build.MANUFACTURER + "-" + Build.MODEL;
+    RAC = 0L;
+    RAD = Integer.decode(BuildInfo.CLIENT_VERSION).intValue();
     Assert.assertNotNull(BuildInfo.CLIENT_VERSION);
     try
     {
       int i = MMApplicationContext.getContext().getPackageManager().getApplicationInfo(MMApplicationContext.getPackageName(), 128).metaData.getInt("com.tencent.mm.BuildInfo.CLIENT_VERSION");
-      if ((i > KyO) && (i - KyO < 255) && ((i & 0xFF) >= 48)) {
-        KyO = i;
+      if ((i > RAD) && (i - RAD < 255) && ((i & 0xFF) >= 48)) {
+        RAD = i;
       }
     }
     catch (Exception localException)
@@ -65,53 +66,53 @@ public final class d
         Log.printDebugStack("MicroMsg.ConstantsProtocal", "", new Object[] { localException });
       }
     }
-    KyP = gty();
-    KyQ = gtx();
-    KyR = gtv();
-    KyS = gtw();
-    KyT = 5;
-    KyU = null;
-    KyV = null;
-    KyW = null;
-    KyX = "http://" + WeChatHosts.domainString(2131761726) + "/mp/lifedetail?bid=%s&action=list#wechat_redirect";
-    KyY = "http://" + WeChatHosts.domainString(2131761726) + "/mp/lifedetail?bid=%s&tid=%s&action=list#wechat_redirect";
+    RAE = hoL();
+    RAF = hoK();
+    RAG = hoI();
+    RAH = hoJ();
+    RAI = 5;
+    RAJ = null;
+    RAK = null;
+    RAL = null;
+    RAM = "http://" + WeChatHosts.domainString(j.b.host_mp_weixin_qq_com) + "/mp/lifedetail?bid=%s&action=list#wechat_redirect";
+    RAN = "http://" + WeChatHosts.domainString(j.b.host_mp_weixin_qq_com) + "/mp/lifedetail?bid=%s&tid=%s&action=list#wechat_redirect";
     AppMethodBeat.o(133039);
   }
   
-  public static void aiV(int paramInt)
+  public static void arg(int paramInt)
   {
     AppMethodBeat.i(133038);
-    KyO = paramInt;
-    KyR = gtv();
-    KyP = gty();
-    KyQ = gtx();
-    KyS = gtw();
+    RAD = paramInt;
+    RAG = hoI();
+    RAE = hoL();
+    RAF = hoK();
+    RAH = hoJ();
     AppMethodBeat.o(133038);
   }
   
-  private static boolean gtv()
+  private static boolean hoI()
   {
-    return ((KyO & 0xFF) >= 16) && ((KyO & 0xFF) <= 47);
+    return ((RAD & 0xFF) >= 16) && ((RAD & 0xFF) <= 47);
   }
   
-  private static boolean gtw()
+  private static boolean hoJ()
   {
-    return ((KyO & 0xFF) >= 0) && ((KyO & 0xFF) <= 15);
+    return ((RAD & 0xFF) >= 0) && ((RAD & 0xFF) <= 15);
   }
   
-  private static boolean gtx()
+  private static boolean hoK()
   {
-    return ((KyO & 0xFF) >= 96) && ((KyO & 0xFF) <= 255);
+    return ((RAD & 0xFF) >= 96) && ((RAD & 0xFF) <= 255);
   }
   
-  private static boolean gty()
+  private static boolean hoL()
   {
-    return ((KyO & 0xFF) >= 48) && ((KyO & 0xFF) <= 95);
+    return ((RAD & 0xFF) >= 48) && ((RAD & 0xFF) <= 95);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.d
  * JD-Core Version:    0.7.0.1
  */

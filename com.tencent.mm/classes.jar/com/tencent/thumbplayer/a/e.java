@@ -26,186 +26,179 @@ import com.tencent.thumbplayer.utils.g;
 public final class e
   implements c.a, c.b, c.c, c.d, c.e, c.f, c.g, c.h, c.i, c.j, c.k, c.l, c.m
 {
-  private c.f RVZ;
-  private c.c RWa;
-  private c.e RWb;
-  private c.d RWc;
-  private c.g RWd;
-  private c.m RWe;
-  private c.i RWf;
-  private c.k RWg;
-  private c.a RWh;
-  private c.j RWi;
-  private c.l RWj;
-  private c.b RWk;
-  c.h RWl;
-  a RWm;
+  private c.f ZyJ;
+  private c.c ZyK;
+  private c.e ZyL;
+  private c.d ZyM;
+  private c.g ZyN;
+  private c.m ZyO;
+  private c.i ZyP;
+  private c.k ZyQ;
+  private c.a ZyR;
+  private c.j ZyS;
+  private c.l ZyT;
+  private c.b ZyU;
+  c.h ZyV;
+  a ZyW;
   private String mTag;
   
   public e(String paramString)
   {
-    AppMethodBeat.i(188707);
+    AppMethodBeat.i(218834);
     this.mTag = "TPPlayerListenerS";
-    bqx(paramString);
-    this.RWm = new a(this.mTag);
-    this.RVZ = this.RWm;
-    this.RWa = this.RWm;
-    this.RWb = this.RWm;
-    this.RWc = this.RWm;
-    this.RWd = this.RWm;
-    this.RWe = this.RWm;
-    this.RWf = this.RWm;
-    this.RWg = this.RWm;
-    this.RWh = this.RWm;
-    this.RWi = this.RWm;
-    this.RWj = this.RWm;
-    this.RWk = this.RWm;
-    AppMethodBeat.o(188707);
+    bDr(paramString);
+    this.ZyW = new a(this.mTag);
+    this.ZyJ = this.ZyW;
+    this.ZyK = this.ZyW;
+    this.ZyL = this.ZyW;
+    this.ZyM = this.ZyW;
+    this.ZyN = this.ZyW;
+    this.ZyO = this.ZyW;
+    this.ZyP = this.ZyW;
+    this.ZyQ = this.ZyW;
+    this.ZyR = this.ZyW;
+    this.ZyS = this.ZyW;
+    this.ZyT = this.ZyW;
+    this.ZyU = this.ZyW;
+    AppMethodBeat.o(218834);
   }
   
   public final TPPostProcessFrameBuffer a(TPPostProcessFrameBuffer paramTPPostProcessFrameBuffer)
   {
-    AppMethodBeat.i(188719);
-    paramTPPostProcessFrameBuffer = this.RWj.a(paramTPPostProcessFrameBuffer);
-    AppMethodBeat.o(188719);
+    AppMethodBeat.i(218849);
+    paramTPPostProcessFrameBuffer = this.ZyT.a(paramTPPostProcessFrameBuffer);
+    AppMethodBeat.o(218849);
     return paramTPPostProcessFrameBuffer;
   }
   
   public final void a(@TPCommonEnum.TPErrorType int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(188712);
-    this.RWc.a(paramInt1, paramInt2, paramLong1, paramLong2);
-    AppMethodBeat.o(188712);
+    AppMethodBeat.i(218841);
+    this.ZyM.a(paramInt1, paramInt2, paramLong1, paramLong2);
+    AppMethodBeat.o(218841);
   }
   
   public final void a(int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
-    AppMethodBeat.i(188711);
-    this.RWb.a(paramInt, paramLong1, paramLong2, paramObject);
-    AppMethodBeat.o(188711);
+    AppMethodBeat.i(218840);
+    this.ZyL.a(paramInt, paramLong1, paramLong2, paramObject);
+    AppMethodBeat.o(218840);
   }
   
   public final void a(c.c paramc)
   {
     Object localObject = paramc;
     if (paramc == null) {
-      localObject = this.RWm;
+      localObject = this.ZyW;
     }
-    this.RWa = ((c.c)localObject);
+    this.ZyK = ((c.c)localObject);
   }
   
   public final void a(c.d paramd)
   {
     Object localObject = paramd;
     if (paramd == null) {
-      localObject = this.RWm;
+      localObject = this.ZyW;
     }
-    this.RWc = ((c.d)localObject);
+    this.ZyM = ((c.d)localObject);
   }
   
   public final void a(c.e parame)
   {
     Object localObject = parame;
     if (parame == null) {
-      localObject = this.RWm;
+      localObject = this.ZyW;
     }
-    this.RWb = ((c.e)localObject);
+    this.ZyL = ((c.e)localObject);
   }
   
   public final void a(c.f paramf)
   {
     Object localObject = paramf;
     if (paramf == null) {
-      localObject = this.RWm;
+      localObject = this.ZyW;
     }
-    this.RVZ = ((c.f)localObject);
+    this.ZyJ = ((c.f)localObject);
   }
   
   public final void a(c.g paramg)
   {
     Object localObject = paramg;
     if (paramg == null) {
-      localObject = this.RWm;
+      localObject = this.ZyW;
     }
-    this.RWd = ((c.g)localObject);
+    this.ZyN = ((c.g)localObject);
   }
   
   public final void a(c.i parami)
   {
     Object localObject = parami;
     if (parami == null) {
-      localObject = this.RWm;
+      localObject = this.ZyW;
     }
-    this.RWf = ((c.i)localObject);
+    this.ZyP = ((c.i)localObject);
   }
   
   public final void a(c.j paramj)
   {
     Object localObject = paramj;
     if (paramj == null) {
-      localObject = this.RWm;
+      localObject = this.ZyW;
     }
-    this.RWi = ((c.j)localObject);
+    this.ZyS = ((c.j)localObject);
   }
   
   public final void a(c.k paramk)
   {
     Object localObject = paramk;
     if (paramk == null) {
-      localObject = this.RWm;
+      localObject = this.ZyW;
     }
-    this.RWg = ((c.k)localObject);
+    this.ZyQ = ((c.k)localObject);
   }
   
   public final void a(c.m paramm)
   {
     Object localObject = paramm;
     if (paramm == null) {
-      localObject = this.RWm;
+      localObject = this.ZyW;
     }
-    this.RWe = ((c.m)localObject);
+    this.ZyO = ((c.m)localObject);
   }
   
   public final void a(TPAudioFrameBuffer paramTPAudioFrameBuffer)
   {
-    AppMethodBeat.i(188718);
-    this.RWh.a(paramTPAudioFrameBuffer);
-    AppMethodBeat.o(188718);
+    AppMethodBeat.i(218848);
+    this.ZyR.a(paramTPAudioFrameBuffer);
+    AppMethodBeat.o(218848);
   }
   
   public final void a(TPSubtitleData paramTPSubtitleData)
   {
-    AppMethodBeat.i(188715);
-    this.RWf.a(paramTPSubtitleData);
-    AppMethodBeat.o(188715);
+    AppMethodBeat.i(218844);
+    this.ZyP.a(paramTPSubtitleData);
+    AppMethodBeat.o(218844);
   }
   
   public final void a(TPSubtitleFrameBuffer paramTPSubtitleFrameBuffer)
   {
-    AppMethodBeat.i(188716);
-    this.RWi.a(paramTPSubtitleFrameBuffer);
-    AppMethodBeat.o(188716);
+    AppMethodBeat.i(218845);
+    this.ZyS.a(paramTPSubtitleFrameBuffer);
+    AppMethodBeat.o(218845);
   }
   
   public final void a(TPVideoFrameBuffer paramTPVideoFrameBuffer)
   {
-    AppMethodBeat.i(188717);
-    this.RWg.a(paramTPVideoFrameBuffer);
-    AppMethodBeat.o(188717);
-  }
-  
-  public final void aI(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(188714);
-    this.RWe.aI(paramLong1, paramLong2);
-    AppMethodBeat.o(188714);
+    AppMethodBeat.i(218847);
+    this.ZyQ.a(paramTPVideoFrameBuffer);
+    AppMethodBeat.o(218847);
   }
   
   public final TPPostProcessFrameBuffer b(TPPostProcessFrameBuffer paramTPPostProcessFrameBuffer)
   {
-    AppMethodBeat.i(188720);
-    paramTPPostProcessFrameBuffer = this.RWk.b(paramTPPostProcessFrameBuffer);
-    AppMethodBeat.o(188720);
+    AppMethodBeat.i(218850);
+    paramTPPostProcessFrameBuffer = this.ZyU.b(paramTPPostProcessFrameBuffer);
+    AppMethodBeat.o(218850);
     return paramTPPostProcessFrameBuffer;
   }
   
@@ -213,86 +206,93 @@ public final class e
   {
     Object localObject = parama;
     if (parama == null) {
-      localObject = this.RWm;
+      localObject = this.ZyW;
     }
-    this.RWh = ((c.a)localObject);
+    this.ZyR = ((c.a)localObject);
   }
   
   public final void b(c.b paramb)
   {
     Object localObject = paramb;
     if (paramb == null) {
-      localObject = this.RWm;
+      localObject = this.ZyW;
     }
-    this.RWk = ((c.b)localObject);
+    this.ZyU = ((c.b)localObject);
   }
   
   public final void b(c.l paraml)
   {
     Object localObject = paraml;
     if (paraml == null) {
-      localObject = this.RWm;
+      localObject = this.ZyW;
     }
-    this.RWj = ((c.l)localObject);
+    this.ZyT = ((c.l)localObject);
   }
   
-  public final void bqx(String paramString)
+  public final void bDr(String paramString)
   {
-    AppMethodBeat.i(188708);
+    AppMethodBeat.i(218836);
     if (TextUtils.isEmpty(paramString)) {}
     for (this.mTag = "TPPlayerListenerS";; this.mTag = paramString)
     {
-      if (this.RWm != null) {
-        this.RWm.mTag = this.mTag;
+      if (this.ZyW != null) {
+        this.ZyW.mTag = this.mTag;
       }
-      AppMethodBeat.o(188708);
+      AppMethodBeat.o(218836);
       return;
     }
   }
   
-  public final void cJH()
+  public final void ba(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(188713);
-    this.RWd.cJH();
-    AppMethodBeat.o(188713);
+    AppMethodBeat.i(218843);
+    this.ZyO.ba(paramLong1, paramLong2);
+    AppMethodBeat.o(218843);
+  }
+  
+  public final void cYp()
+  {
+    AppMethodBeat.i(218842);
+    this.ZyN.cYp();
+    AppMethodBeat.o(218842);
   }
   
   public final void clear()
   {
-    this.RVZ = this.RWm;
-    this.RWa = this.RWm;
-    this.RWb = this.RWm;
-    this.RWc = this.RWm;
-    this.RWd = this.RWm;
-    this.RWe = this.RWm;
-    this.RWf = this.RWm;
-    this.RWg = this.RWm;
-    this.RWh = this.RWm;
-    this.RWi = this.RWm;
-    this.RWl = this.RWm;
-    this.RWj = this.RWm;
-    this.RWk = this.RWm;
+    this.ZyJ = this.ZyW;
+    this.ZyK = this.ZyW;
+    this.ZyL = this.ZyW;
+    this.ZyM = this.ZyW;
+    this.ZyN = this.ZyW;
+    this.ZyO = this.ZyW;
+    this.ZyP = this.ZyW;
+    this.ZyQ = this.ZyW;
+    this.ZyR = this.ZyW;
+    this.ZyS = this.ZyW;
+    this.ZyV = this.ZyW;
+    this.ZyT = this.ZyW;
+    this.ZyU = this.ZyW;
   }
   
   public final void onCompletion()
   {
-    AppMethodBeat.i(188710);
-    this.RWa.onCompletion();
-    AppMethodBeat.o(188710);
+    AppMethodBeat.i(218839);
+    this.ZyK.onCompletion();
+    AppMethodBeat.o(218839);
   }
   
   public final void onStateChange(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(188721);
-    this.RWl.onStateChange(paramInt1, paramInt2);
-    AppMethodBeat.o(188721);
+    AppMethodBeat.i(218853);
+    this.ZyV.onStateChange(paramInt1, paramInt2);
+    AppMethodBeat.o(218853);
   }
   
-  public final void tf()
+  public final void qX()
   {
-    AppMethodBeat.i(188709);
-    this.RVZ.tf();
-    AppMethodBeat.o(188709);
+    AppMethodBeat.i(218838);
+    this.ZyJ.qX();
+    AppMethodBeat.o(218838);
   }
   
   static final class a
@@ -307,95 +307,95 @@ public final class e
     
     public final TPPostProcessFrameBuffer a(TPPostProcessFrameBuffer paramTPPostProcessFrameBuffer)
     {
-      AppMethodBeat.i(188704);
+      AppMethodBeat.i(218828);
       g.i(this.mTag, " empty base listener , notify , onVideoProcessFrameOut");
-      AppMethodBeat.o(188704);
+      AppMethodBeat.o(218828);
       return null;
     }
     
     public final void a(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
     {
-      AppMethodBeat.i(188697);
+      AppMethodBeat.i(218818);
       g.i(this.mTag, " empty base listener , notify , onError");
-      AppMethodBeat.o(188697);
+      AppMethodBeat.o(218818);
     }
     
     public final void a(int paramInt, long paramLong1, long paramLong2, Object paramObject)
     {
-      AppMethodBeat.i(188696);
+      AppMethodBeat.i(218817);
       g.i(this.mTag, " empty base listener , notify , onInfo");
-      AppMethodBeat.o(188696);
+      AppMethodBeat.o(218817);
     }
     
     public final void a(TPAudioFrameBuffer paramTPAudioFrameBuffer)
     {
-      AppMethodBeat.i(188703);
+      AppMethodBeat.i(218827);
       g.i(this.mTag, " empty base listener , notify , onAudioFrameOut");
-      AppMethodBeat.o(188703);
+      AppMethodBeat.o(218827);
     }
     
     public final void a(TPSubtitleData paramTPSubtitleData)
     {
-      AppMethodBeat.i(188700);
+      AppMethodBeat.i(218823);
       g.i(this.mTag, " empty base listener , notify , onSubtitleData");
-      AppMethodBeat.o(188700);
+      AppMethodBeat.o(218823);
     }
     
     public final void a(TPSubtitleFrameBuffer paramTPSubtitleFrameBuffer)
     {
-      AppMethodBeat.i(188701);
+      AppMethodBeat.i(218825);
       g.i(this.mTag, " empty base listener , notify , TPSubtitleFrameBuffer");
-      AppMethodBeat.o(188701);
+      AppMethodBeat.o(218825);
     }
     
     public final void a(TPVideoFrameBuffer paramTPVideoFrameBuffer)
     {
-      AppMethodBeat.i(188702);
+      AppMethodBeat.i(218826);
       g.i(this.mTag, " empty base listener , notify , onVideoFrameOut");
-      AppMethodBeat.o(188702);
-    }
-    
-    public final void aI(long paramLong1, long paramLong2)
-    {
-      AppMethodBeat.i(188699);
-      g.i(this.mTag, " empty base listener , notify , onVideoSizeChanged");
-      AppMethodBeat.o(188699);
+      AppMethodBeat.o(218826);
     }
     
     public final TPPostProcessFrameBuffer b(TPPostProcessFrameBuffer paramTPPostProcessFrameBuffer)
     {
-      AppMethodBeat.i(188705);
+      AppMethodBeat.i(218829);
       g.i(this.mTag, " empty base listener , notify , onAudioProcessFrameOut");
-      AppMethodBeat.o(188705);
+      AppMethodBeat.o(218829);
       return null;
     }
     
-    public final void cJH()
+    public final void ba(long paramLong1, long paramLong2)
     {
-      AppMethodBeat.i(188698);
+      AppMethodBeat.i(218821);
+      g.i(this.mTag, " empty base listener , notify , onVideoSizeChanged");
+      AppMethodBeat.o(218821);
+    }
+    
+    public final void cYp()
+    {
+      AppMethodBeat.i(218820);
       g.i(this.mTag, " empty base listener , notify , onSeekComplete");
-      AppMethodBeat.o(188698);
+      AppMethodBeat.o(218820);
     }
     
     public final void onCompletion()
     {
-      AppMethodBeat.i(188695);
+      AppMethodBeat.i(218816);
       g.i(this.mTag, " empty base listener , notify , onCompletion");
-      AppMethodBeat.o(188695);
+      AppMethodBeat.o(218816);
     }
     
     public final void onStateChange(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(188706);
+      AppMethodBeat.i(218831);
       g.i(this.mTag, " empty base listener , notify , onStateChange");
-      AppMethodBeat.o(188706);
+      AppMethodBeat.o(218831);
     }
     
-    public final void tf()
+    public final void qX()
     {
-      AppMethodBeat.i(188694);
+      AppMethodBeat.i(218815);
       g.i(this.mTag, " empty base listener , notify , onPrepared");
-      AppMethodBeat.o(188694);
+      AppMethodBeat.o(218815);
     }
   }
 }

@@ -8,18 +8,18 @@ import org.b.g.d;
 
 public final class a
 {
-  public String Uib;
-  public String Uic;
-  public String Uid = "oob";
-  public org.b.a.a.a Uie;
-  public h Uif = h.Uiu;
-  public OutputStream Uig = null;
+  public h abLA = h.abLP;
+  public OutputStream abLB = null;
+  public String abLw;
+  public String abLx;
+  public String abLy = "oob";
+  public org.b.a.a.a abLz;
   public String scope;
   
-  public static org.b.a.a.a bH(Class<? extends org.b.a.a.a> paramClass)
+  public static org.b.a.a.a cg(Class<? extends org.b.a.a.a> paramClass)
   {
     AppMethodBeat.i(40502);
-    d.j(paramClass, "Api class cannot be null");
+    d.n(paramClass, "Api class cannot be null");
     try
     {
       paramClass = (org.b.a.a.a)paramClass.newInstance();
@@ -36,7 +36,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     org.b.a.a
  * JD-Core Version:    0.7.0.1
  */

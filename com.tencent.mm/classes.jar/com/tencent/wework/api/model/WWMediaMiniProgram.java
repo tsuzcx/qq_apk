@@ -6,8 +6,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class WWMediaMiniProgram
   extends WWMediaMessage.WWMediaObject
 {
-  public byte[] Sxw;
-  public int Sxx;
+  public byte[] ZYw;
+  public int ZYx;
   public String iconUrl;
   public String name;
   public String path;
@@ -29,7 +29,7 @@ public class WWMediaMiniProgram
       AppMethodBeat.o(106553);
       return false;
     }
-    if ((this.Sxw == null) || (this.Sxw.length <= 0) || (this.Sxw.length > 1048576))
+    if ((this.ZYw == null) || (this.ZYw.length <= 0) || (this.ZYw.length > 1048576))
     {
       AppMethodBeat.o(106553);
       return false;
@@ -40,18 +40,18 @@ public class WWMediaMiniProgram
   
   public final void fromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(199014);
+    AppMethodBeat.i(233426);
     this.username = paramBundle.getString("_wwwxaobject_userName");
     this.path = paramBundle.getString("_wwwxaobject_path");
     this.iconUrl = paramBundle.getString("_wwwxaobject_iconUrl");
     this.name = paramBundle.getString("_wwwxaobject_name");
     this.title = paramBundle.getString("_wwwxaobject_title");
-    this.Sxw = paramBundle.getByteArray("_wwwxaobject_hdImageData");
+    this.ZYw = paramBundle.getByteArray("_wwwxaobject_hdImageData");
     this.type = paramBundle.getInt("_wwwxaobject_type", 2);
     this.webpageUrl = paramBundle.getString("_wwwxaobject_webpageurl");
-    this.Sxx = paramBundle.getInt("_wwwxaobject_programtype", 0);
+    this.ZYx = paramBundle.getInt("_wwwxaobject_programtype", 0);
     super.fromBundle(paramBundle);
-    AppMethodBeat.o(199014);
+    AppMethodBeat.o(233426);
   }
   
   public final void toBundle(Bundle paramBundle)
@@ -80,7 +80,7 @@ public class WWMediaMiniProgram
       str = "";
       label76:
       paramBundle.putString("_wwwxaobject_title", str);
-      paramBundle.putByteArray("_wwwxaobject_hdImageData", this.Sxw);
+      paramBundle.putByteArray("_wwwxaobject_hdImageData", this.ZYw);
       paramBundle.putInt("_wwwxaobject_type", this.type);
       if (this.webpageUrl != null) {
         break label173;
@@ -93,7 +93,7 @@ public class WWMediaMiniProgram
     for (String str = "";; str = this.webpageUrl)
     {
       paramBundle.putString("_wwwxaobject_webpageurl", str);
-      paramBundle.putInt("_wwwxaobject_programtype", this.Sxx);
+      paramBundle.putInt("_wwwxaobject_programtype", this.ZYx);
       super.toBundle(paramBundle);
       AppMethodBeat.o(106554);
       return;
@@ -110,7 +110,7 @@ public class WWMediaMiniProgram
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.wework.api.model.WWMediaMiniProgram
  * JD-Core Version:    0.7.0.1
  */

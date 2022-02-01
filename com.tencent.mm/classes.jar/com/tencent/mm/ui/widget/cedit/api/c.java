@@ -23,9 +23,9 @@ import java.util.List;
 
 public abstract interface c
 {
-  public abstract void CS(boolean paramBoolean);
+  public abstract void Hm(boolean paramBoolean);
   
-  public abstract void a(a parama);
+  public abstract void a(c.a parama);
   
   public abstract void a(List<String> paramList1, List<String> paramList2, String paramString, a.e parame);
   
@@ -35,27 +35,13 @@ public abstract interface c
   
   public abstract void append(CharSequence paramCharSequence);
   
-  public abstract void bol(String paramString);
+  public abstract void bBa(String paramString);
   
   public abstract void clearComposingText();
   
   public abstract void clearFocus();
   
   public abstract void destroy();
-  
-  public abstract void gYF();
-  
-  public abstract View gYG();
-  
-  public abstract boolean gYH();
-  
-  public abstract ViewParent gYI();
-  
-  public abstract boolean gYJ();
-  
-  public abstract Context gYK();
-  
-  public abstract int gYL();
   
   public abstract CharSequence getContentDescription();
   
@@ -79,11 +65,29 @@ public abstract interface c
   
   public abstract int getSelectionStart();
   
+  public abstract boolean getSimilarPasteChange();
+  
   public abstract Editable getText();
   
   public abstract float getTextSize();
   
   public abstract int getVisibility();
+  
+  public abstract void hZA();
+  
+  public abstract boolean hZB();
+  
+  public abstract Context hZC();
+  
+  public abstract int hZD();
+  
+  public abstract void hZw();
+  
+  public abstract View hZx();
+  
+  public abstract boolean hZy();
+  
+  public abstract ViewParent hZz();
   
   public abstract int length();
   
@@ -140,15 +144,10 @@ public abstract interface c
   public abstract void setTextSize(int paramInt, float paramFloat);
   
   public abstract void setVisibility(int paramInt);
-  
-  public static abstract interface a
-  {
-    public abstract boolean ZY(int paramInt);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cedit.api.c
  * JD-Core Version:    0.7.0.1
  */

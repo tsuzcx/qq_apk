@@ -5,17 +5,17 @@ import kotlin.l.b.a.b.b.ba;
 public abstract interface r
   extends l
 {
-  public abstract boolean hCQ();
+  public abstract ba iDQ();
   
-  public abstract boolean hCR();
+  public abstract boolean iHk();
   
-  public abstract boolean hgu();
+  public abstract boolean iHl();
   
-  public abstract ba hzE();
+  public abstract boolean ihW();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.e.r
  * JD-Core Version:    0.7.0.1
  */

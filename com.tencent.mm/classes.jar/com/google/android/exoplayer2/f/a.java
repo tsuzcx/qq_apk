@@ -5,18 +5,18 @@ import android.text.Layout.Alignment;
 
 public class a
 {
-  public final Layout.Alignment bAb;
-  public final float bAc;
-  public final int bAd;
-  public final float bAe;
-  public final int bAf;
-  public final float bAg;
-  public final boolean bAh;
+  public final CharSequence LV;
   public final Bitmap bitmap;
+  public final Layout.Alignment bjC;
+  public final float bjD;
+  public final int bjE;
+  public final float bjF;
+  public final int bjG;
+  public final float bjH;
+  public final boolean bjI;
+  public final int bjJ;
   public final int lineType;
   public final float size;
-  public final CharSequence text;
-  public final int windowColor;
   
   public a(Bitmap paramBitmap, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
@@ -40,23 +40,23 @@ public class a
   
   private a(CharSequence paramCharSequence, Layout.Alignment paramAlignment, Bitmap paramBitmap, float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3, float paramFloat3, float paramFloat4, boolean paramBoolean, int paramInt4)
   {
-    this.text = paramCharSequence;
-    this.bAb = paramAlignment;
+    this.LV = paramCharSequence;
+    this.bjC = paramAlignment;
     this.bitmap = paramBitmap;
-    this.bAc = paramFloat1;
+    this.bjD = paramFloat1;
     this.lineType = paramInt1;
-    this.bAd = paramInt2;
-    this.bAe = paramFloat2;
-    this.bAf = paramInt3;
+    this.bjE = paramInt2;
+    this.bjF = paramFloat2;
+    this.bjG = paramInt3;
     this.size = paramFloat3;
-    this.bAg = paramFloat4;
-    this.bAh = paramBoolean;
-    this.windowColor = paramInt4;
+    this.bjH = paramFloat4;
+    this.bjI = paramBoolean;
+    this.bjJ = paramInt4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.f.a
  * JD-Core Version:    0.7.0.1
  */

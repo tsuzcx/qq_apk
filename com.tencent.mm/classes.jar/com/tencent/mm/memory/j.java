@@ -23,7 +23,7 @@ public final class j
     // Byte code:
     //   0: ldc 14
     //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: getstatic 26	com/tencent/mm/memory/h:itz	Lcom/tencent/mm/memory/h;
+    //   5: getstatic 26	com/tencent/mm/memory/h:liI	Lcom/tencent/mm/memory/h;
     //   8: invokevirtual 30	com/tencent/mm/memory/h:acquire	()Ljava/lang/Object;
     //   11: checkcast 32	java/nio/ByteBuffer
     //   14: astore_2
@@ -39,7 +39,7 @@ public final class j
     //   28: astore_0
     //   29: aload_2
     //   30: ifnull +99 -> 129
-    //   33: getstatic 26	com/tencent/mm/memory/h:itz	Lcom/tencent/mm/memory/h;
+    //   33: getstatic 26	com/tencent/mm/memory/h:liI	Lcom/tencent/mm/memory/h;
     //   36: aload_2
     //   37: invokevirtual 43	com/tencent/mm/memory/h:release	(Ljava/lang/Object;)Z
     //   40: pop
@@ -62,7 +62,7 @@ public final class j
     //   66: invokestatic 62	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   69: aload_0
     //   70: ifnull +54 -> 124
-    //   73: getstatic 26	com/tencent/mm/memory/h:itz	Lcom/tencent/mm/memory/h;
+    //   73: getstatic 26	com/tencent/mm/memory/h:liI	Lcom/tencent/mm/memory/h;
     //   76: aload_0
     //   77: invokevirtual 43	com/tencent/mm/memory/h:release	(Ljava/lang/Object;)Z
     //   80: pop
@@ -74,7 +74,7 @@ public final class j
     //   88: astore_0
     //   89: aload_0
     //   90: ifnull +11 -> 101
-    //   93: getstatic 26	com/tencent/mm/memory/h:itz	Lcom/tencent/mm/memory/h;
+    //   93: getstatic 26	com/tencent/mm/memory/h:liI	Lcom/tencent/mm/memory/h;
     //   96: aload_0
     //   97: invokevirtual 43	com/tencent/mm/memory/h:release	(Ljava/lang/Object;)Z
     //   100: pop
@@ -141,12 +141,12 @@ public final class j
       if (!paramBoolean) {
         break label409;
       }
-      paramOptions = (Bitmap)c.itr.e(c.f(Integer.valueOf(j * i)));
+      paramOptions = (Bitmap)c.liz.h(c.i(Integer.valueOf(j * i)));
       paramInputStream = paramOptions;
       if (paramOptions != null)
       {
         paramInputStream = paramOptions;
-        if (d.oD(19))
+        if (d.qV(19))
         {
           paramOptions.reconfigure(j, i, Bitmap.Config.ARGB_8888);
           paramInputStream = paramOptions;
@@ -185,7 +185,7 @@ public final class j
       i = paramRect.bottom - paramRect.top;
       Log.i("MicroMsg.InBitmapFactory", "region decode, width: %s, height: %s, rect: %s", new Object[] { Integer.valueOf(j), Integer.valueOf(i), paramRect });
       break;
-      paramInputStream = c.itr.g(c.f(Integer.valueOf(i * j)));
+      paramInputStream = c.liz.j(c.i(Integer.valueOf(i * j)));
       break label206;
       bool = false;
       break label220;
@@ -204,9 +204,9 @@ public final class j
     {
       try
       {
-        localInputStream = u(paramInputStream);
+        localInputStream = s(paramInputStream);
         localObject1 = localObject3;
-        v(localInputStream);
+        t(localInputStream);
         localObject1 = localObject3;
         localInputStream.mark(1048576);
         if (paramRect != null) {}
@@ -239,7 +239,7 @@ public final class j
         localObject1 = paramInputStream;
         Log.i("MicroMsg.InBitmapFactory", "decode again");
         localObject1 = paramInputStream;
-        v(localInputStream);
+        t(localInputStream);
         localObject1 = paramInputStream;
         paramOptions.inBitmap = null;
         if (paramRect == null)
@@ -319,7 +319,7 @@ public final class j
     //   3: ldc 250
     //   5: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_1
-    //   9: invokestatic 256	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   9: invokestatic 256	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
     //   12: astore_3
     //   13: aload_3
     //   14: astore_1
@@ -392,9 +392,9 @@ public final class j
     //   0: ldc_w 266
     //   3: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
-    //   7: invokestatic 256	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   7: invokestatic 256	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
     //   10: astore_1
-    //   11: getstatic 26	com/tencent/mm/memory/h:itz	Lcom/tencent/mm/memory/h;
+    //   11: getstatic 26	com/tencent/mm/memory/h:liI	Lcom/tencent/mm/memory/h;
     //   14: invokevirtual 30	com/tencent/mm/memory/h:acquire	()Ljava/lang/Object;
     //   17: checkcast 32	java/nio/ByteBuffer
     //   20: astore 4
@@ -410,7 +410,7 @@ public final class j
     //   36: astore_2
     //   37: aload 4
     //   39: ifnull +12 -> 51
-    //   42: getstatic 26	com/tencent/mm/memory/h:itz	Lcom/tencent/mm/memory/h;
+    //   42: getstatic 26	com/tencent/mm/memory/h:liI	Lcom/tencent/mm/memory/h;
     //   45: aload 4
     //   47: invokevirtual 43	com/tencent/mm/memory/h:release	(Ljava/lang/Object;)Z
     //   50: pop
@@ -439,7 +439,7 @@ public final class j
     //   85: invokestatic 62	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   88: aload_1
     //   89: ifnull +11 -> 100
-    //   92: getstatic 26	com/tencent/mm/memory/h:itz	Lcom/tencent/mm/memory/h;
+    //   92: getstatic 26	com/tencent/mm/memory/h:liI	Lcom/tencent/mm/memory/h;
     //   95: aload_1
     //   96: invokevirtual 43	com/tencent/mm/memory/h:release	(Ljava/lang/Object;)Z
     //   99: pop
@@ -455,7 +455,7 @@ public final class j
     //   113: astore_1
     //   114: aload_1
     //   115: ifnull +11 -> 126
-    //   118: getstatic 26	com/tencent/mm/memory/h:itz	Lcom/tencent/mm/memory/h;
+    //   118: getstatic 26	com/tencent/mm/memory/h:liI	Lcom/tencent/mm/memory/h;
     //   121: aload_1
     //   122: invokevirtual 43	com/tencent/mm/memory/h:release	(Ljava/lang/Object;)Z
     //   125: pop
@@ -513,18 +513,18 @@ public final class j
     //   22	37	175	java/lang/Exception
   }
   
-  public final void x(Bitmap paramBitmap)
+  public final void s(Bitmap paramBitmap)
   {
     AppMethodBeat.i(156431);
     if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
-      c.itr.f(paramBitmap);
+      c.liz.E(paramBitmap);
     }
     AppMethodBeat.o(156431);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.memory.j
  * JD-Core Version:    0.7.0.1
  */

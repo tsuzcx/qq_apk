@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.wallet_core.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.model.z;
+import com.tencent.mm.plugin.wallet_core.model.aa;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class f
-  extends MAutoStorage<z>
+  extends MAutoStorage<aa>
 {
   public static final String[] SQL_CREATE;
   public ISQLiteDatabase db;
@@ -14,27 +14,27 @@ public final class f
   static
   {
     AppMethodBeat.i(70614);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(z.info, "WalletFunciontList") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(aa.info, "WalletFunciontList") };
     AppMethodBeat.o(70614);
   }
   
   public f(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, z.info, "WalletFunciontList", null);
+    super(paramISQLiteDatabase, aa.info, "WalletFunciontList", null);
     this.db = paramISQLiteDatabase;
   }
   
   public final void b(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
   {
     AppMethodBeat.i(70613);
-    z localz = new z();
-    localz.field_wallet_region = paramInt1;
-    localz.field_function_list = paramString1;
-    localz.field_new_list = paramString2;
-    localz.field_banner_list = paramString3;
-    localz.field_type_name_list = paramString4;
-    localz.field_isShowSetting = paramInt2;
-    super.replace(localz);
+    aa localaa = new aa();
+    localaa.field_wallet_region = paramInt1;
+    localaa.field_function_list = paramString1;
+    localaa.field_new_list = paramString2;
+    localaa.field_banner_list = paramString3;
+    localaa.field_type_name_list = paramString4;
+    localaa.field_isShowSetting = paramInt2;
+    super.replace(localaa);
     AppMethodBeat.o(70613);
   }
 }

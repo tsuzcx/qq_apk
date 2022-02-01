@@ -13,67 +13,67 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/view/board/MultiTalkBoardView;", "Lcom/tencent/mm/view/board/BaseBoardView;", "context", "Landroid/content/Context;", "presenter", "Lcom/tencent/mm/presenter/IPresenter;", "(Landroid/content/Context;Lcom/tencent/mm/presenter/IPresenter;)V", "callback", "Lkotlin/Function0;", "", "isLockRefresh", "", "mBaseScale", "", "mBaseTranslateX", "mBaseTranslateY", "mFilePath", "", "mFileToken", "mSlidForbidden", "clearScreen", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "getMinScale", "isCanAdapted", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onSelfTouch", "onSizeChanged", "w", "", "h", "oldw", "oldh", "onViewStatusChange", "zoom", "transX", "transY", "refreshEditLayout", "setEnableToResponseSlid", "enable", "setScreenFileParams", "filePath", "fileToken", "Companion", "plugin-photoedit-sdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/board/MultiTalkBoardView;", "Lcom/tencent/mm/view/board/BaseBoardView;", "context", "Landroid/content/Context;", "presenter", "Lcom/tencent/mm/presenter/IPresenter;", "(Landroid/content/Context;Lcom/tencent/mm/presenter/IPresenter;)V", "callback", "Lkotlin/Function0;", "", "isLockRefresh", "", "mBaseScale", "", "mBaseTranslateX", "mBaseTranslateY", "mFilePath", "", "mFileToken", "mSlidForbidden", "clearScreen", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "getMinScale", "isCanAdapted", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onSelfTouch", "onSizeChanged", "w", "", "h", "oldw", "oldh", "onViewStatusChange", "zoom", "transX", "transY", "refreshEditLayout", "setEnableToResponseSlid", "enable", "setScreenFileParams", "filePath", "fileToken", "Companion", "plugin-photoedit-sdk_release"})
 public final class b
   extends a
 {
-  public static final b.a RnS;
-  public boolean RnM;
-  private float RnN;
-  private float RnO;
-  private float RnP;
-  private boolean RnQ;
-  private String RnR;
+  public static final a YPn;
+  public boolean YPh;
+  private float YPi;
+  private float YPj;
+  private float YPk;
+  private boolean YPl;
+  private String YPm;
   private String mFilePath;
-  public kotlin.g.a.a<x> uGD;
+  public kotlin.g.a.a<x> zoa;
   
   static
   {
-    AppMethodBeat.i(204712);
-    RnS = new b.a((byte)0);
-    AppMethodBeat.o(204712);
+    AppMethodBeat.i(260171);
+    YPn = new a((byte)0);
+    AppMethodBeat.o(260171);
   }
   
-  public b(Context paramContext, com.tencent.mm.bt.b paramb)
+  public b(Context paramContext, com.tencent.mm.ca.b paramb)
   {
     super(paramContext, paramb);
-    AppMethodBeat.i(204711);
-    this.RnN = 1.0F;
-    this.Rnv = this.drT;
-    this.RnD = false;
-    AppMethodBeat.o(204711);
+    AppMethodBeat.i(260170);
+    this.YPi = 1.0F;
+    this.YOQ = this.fkF;
+    this.YOY = false;
+    AppMethodBeat.o(260170);
   }
   
-  protected final void aA(MotionEvent paramMotionEvent)
+  protected final void aI(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(204709);
-    p.h(paramMotionEvent, "event");
-    AppMethodBeat.o(204709);
+    AppMethodBeat.i(260168);
+    p.k(paramMotionEvent, "event");
+    AppMethodBeat.o(260168);
   }
   
   public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(204705);
-    com.tencent.mm.bt.b localb = getPresenter();
-    p.g(localb, "presenter");
-    if (localb.gtn()) {
-      aB(paramMotionEvent);
+    AppMethodBeat.i(260164);
+    com.tencent.mm.ca.b localb = getPresenter();
+    p.j(localb, "presenter");
+    if (localb.hoz()) {
+      aJ(paramMotionEvent);
     }
-    getPresenter().R(paramMotionEvent);
-    if (this.RnQ) {
-      h.b(this.RnR, this.mFilePath, paramMotionEvent);
+    getPresenter().X(paramMotionEvent);
+    if (this.YPl) {
+      h.b(this.YPm, this.mFilePath, paramMotionEvent);
     }
-    boolean bool = this.RnQ;
-    AppMethodBeat.o(204705);
+    boolean bool = this.YPl;
+    AppMethodBeat.o(260164);
     return bool;
   }
   
   public final float getMinScale()
   {
-    AppMethodBeat.i(204710);
-    com.tencent.mm.e.b localb = getPresenter().gti();
-    p.g(localb, "presenter.getCurArtist<BaseArtist<*>>()");
-    if (localb.XS() == com.tencent.mm.e.a.drO)
+    AppMethodBeat.i(260169);
+    com.tencent.mm.e.b localb = getPresenter().hov();
+    p.j(localb, "presenter.getCurArtist<BaseArtist<*>>()");
+    if (localb.acy() == com.tencent.mm.e.a.fkA)
     {
       int i = getBoardRect().width() / getRawLayoutRect().width();
       int j = getBoardRect().height() / getRawLayoutRect().height();
@@ -82,69 +82,69 @@ public final class b
       {
         f1 = i;
         float f2 = getCurScale();
-        AppMethodBeat.o(204710);
+        AppMethodBeat.o(260169);
         return f1 * f2;
         i = j;
       }
     }
     float f1 = super.getMinScale();
-    AppMethodBeat.o(204710);
+    AppMethodBeat.o(260169);
     return f1;
   }
   
   public final void h(float paramFloat, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(204706);
+    AppMethodBeat.i(260165);
     Matrix localMatrix = new Matrix();
-    localMatrix.postScale(this.RnN * paramFloat, this.RnN * paramFloat, 0.0F, 0.0F);
+    localMatrix.postScale(this.YPi * paramFloat, this.YPi * paramFloat, 0.0F, 0.0F);
     localMatrix.postTranslate(paramInt1, paramInt2);
-    this.Rnv = localMatrix;
+    this.YOQ = localMatrix;
     invalidate();
-    AppMethodBeat.o(204706);
+    AppMethodBeat.o(260165);
   }
   
-  public final boolean hgb()
+  public final boolean ihB()
   {
     return true;
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(204708);
-    p.h(paramCanvas, "canvas");
-    if (this.Rnv != null)
+    AppMethodBeat.i(260167);
+    p.k(paramCanvas, "canvas");
+    if (this.YOQ != null)
     {
-      this.drT.set(this.Rnv);
-      paramCanvas.setMatrix(this.Rnv);
+      this.fkF.set(this.YOQ);
+      paramCanvas.setMatrix(this.YOQ);
     }
     for (;;)
     {
       Object localObject = getPresenter();
-      p.g(localObject, "presenter");
-      localObject = ((com.tencent.mm.bt.b)localObject).gtm();
+      p.j(localObject, "presenter");
+      localObject = ((com.tencent.mm.ca.b)localObject).hoy();
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
         paramCanvas.drawBitmap((Bitmap)localObject, 0.0F, 0.0F, null);
       }
       getPresenter().onDraw(paramCanvas);
-      if (!this.RnM) {
+      if (!this.YPh) {
         break;
       }
-      this.RnM = false;
-      paramCanvas = this.uGD;
+      this.YPh = false;
+      paramCanvas = this.zoa;
       if (paramCanvas == null) {
         break;
       }
       paramCanvas.invoke();
-      AppMethodBeat.o(204708);
+      AppMethodBeat.o(260167);
       return;
       paramCanvas.setMatrix(getMainMatrix());
     }
-    AppMethodBeat.o(204708);
+    AppMethodBeat.o(260167);
   }
   
   protected final void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(204707);
+    AppMethodBeat.i(260166);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     Log.i("MicroMsg.MultiTalkBoardView", "onSizeChanged " + getRawLayoutRect().flattenToString() + ", " + paramInt1 + ',' + paramInt3);
     Rect localRect;
@@ -153,58 +153,61 @@ public final class b
     {
       localRect = getRawLayoutRect();
       if (localRect == null) {
-        p.hyc();
+        p.iCn();
       }
       f = localRect.width();
       localRect = getRawLayoutRect();
       if (localRect == null) {
-        p.hyc();
+        p.iCn();
       }
       if (f * 1.0F / localRect.height() <= getWidth() * 1.0F / getHeight()) {
-        break label226;
+        break label227;
       }
       f = getWidth();
       localRect = getRawLayoutRect();
       if (localRect == null) {
-        p.hyc();
+        p.iCn();
       }
-      this.RnN = (f * 1.0F / (localRect.width() * 1.0F));
-      this.RnO = 0.0F;
+      this.YPi = (f * 1.0F / (localRect.width() * 1.0F));
+      this.YPj = 0.0F;
       f = getHeight();
       localRect = getRawLayoutRect();
       if (localRect == null) {
-        p.hyc();
+        p.iCn();
       }
     }
-    for (this.RnP = ((f - localRect.height() * this.RnN) / 2.0F);; this.RnP = 0.0F)
+    for (this.YPk = ((f - localRect.height() * this.YPi) / 2.0F);; this.YPk = 0.0F)
     {
       invalidate();
-      AppMethodBeat.o(204707);
+      AppMethodBeat.o(260166);
       return;
-      label226:
+      label227:
       f = getHeight();
       localRect = getRawLayoutRect();
       if (localRect == null) {
-        p.hyc();
+        p.iCn();
       }
-      this.RnN = (f * 1.0F / (localRect.height() * 1.0F));
+      this.YPi = (f * 1.0F / (localRect.height() * 1.0F));
       f = getWidth();
       localRect = getRawLayoutRect();
       if (localRect == null) {
-        p.hyc();
+        p.iCn();
       }
-      this.RnO = ((f - localRect.width() * this.RnN) / 2.0F);
+      this.YPj = ((f - localRect.width() * this.YPi) / 2.0F);
     }
   }
   
   public final void setEnableToResponseSlid(boolean paramBoolean)
   {
-    this.RnQ = paramBoolean;
+    this.YPl = paramBoolean;
   }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/board/MultiTalkBoardView$Companion;", "", "()V", "TAG", "", "plugin-photoedit-sdk_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.view.b.b
  * JD-Core Version:    0.7.0.1
  */

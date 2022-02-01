@@ -5,10 +5,10 @@ import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
-import com.tencent.mm.pluginsdk.ui.tools.j.a;
+import com.tencent.mm.pluginsdk.ui.tools.k.a;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditorVideoPlayView;", "Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "handleOnSurfaceTextureUpdated", "", "surface", "Landroid/graphics/SurfaceTexture;", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditorVideoPlayView;", "Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "handleOnSurfaceTextureUpdated", "", "surface", "Landroid/graphics/SurfaceTexture;", "plugin-recordvideo_release"})
 public class EditorVideoPlayView
   extends VideoPlayerTextureView
 {
@@ -27,14 +27,14 @@ public class EditorVideoPlayView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void l(SurfaceTexture paramSurfaceTexture)
+  public final void o(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(75716);
-    super.l(paramSurfaceTexture);
-    paramSurfaceTexture = this.rso;
+    super.o(paramSurfaceTexture);
+    paramSurfaceTexture = this.uXU;
     if (paramSurfaceTexture != null)
     {
-      paramSurfaceTexture.fh(getCurrentPosition(), getDuration());
+      paramSurfaceTexture.fE(getCurrentPosition(), getDuration());
       AppMethodBeat.o(75716);
       return;
     }

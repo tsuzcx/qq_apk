@@ -9,17 +9,35 @@ import com.tencent.mm.sdk.system.AndroidContextUtil;
 
 public final class a
 {
-  public static void T(View paramView, boolean paramBoolean)
+  public static void X(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(133798);
-    paramView = ho(paramView);
+    paramView = iD(paramView);
     if (paramView != null) {
-      paramView.CF(paramBoolean);
+      paramView.GZ(paramBoolean);
     }
     AppMethodBeat.o(133798);
   }
   
-  public static void e(View paramView, int paramInt, boolean paramBoolean)
+  public static int bz(Activity paramActivity)
+  {
+    AppMethodBeat.i(237569);
+    if (!c.XMC)
+    {
+      AppMethodBeat.o(237569);
+      return 0;
+    }
+    if (paramActivity == null)
+    {
+      AppMethodBeat.o(237569);
+      return 0;
+    }
+    int i = c.bA(paramActivity).XMF;
+    AppMethodBeat.o(237569);
+    return i;
+  }
+  
+  public static void f(View paramView, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(133797);
     if (paramView == null)
@@ -27,15 +45,15 @@ public final class a
       AppMethodBeat.o(133797);
       return;
     }
-    if (!c.Qow)
+    if (!c.XMC)
     {
       AppMethodBeat.o(133797);
       return;
     }
-    b localb = ho(paramView);
+    b localb = iD(paramView);
     if (localb != null)
     {
-      localb.S(paramInt, paramBoolean);
+      localb.T(paramInt, paramBoolean);
       AppMethodBeat.o(133797);
       return;
     }
@@ -48,7 +66,7 @@ public final class a
     AppMethodBeat.o(133797);
   }
   
-  private static b ho(View paramView)
+  private static b iD(View paramView)
   {
     AppMethodBeat.i(133796);
     if (paramView == null)

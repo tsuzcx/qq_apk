@@ -13,13 +13,13 @@ import java.lang.ref.WeakReference;
 
 public final class e
 {
-  WeakReference<Context> cMO;
+  WeakReference<Context> cNB;
   
-  public static e eNU()
+  public static e fAJ()
   {
     try
     {
-      e locale = a.CrX;
+      e locale = a.Ipv;
       return locale;
     }
     finally
@@ -33,7 +33,7 @@ public final class e
   {
     AppMethodBeat.i(67989);
     Log.w("MicroMsg.RemittanceBusiDialogMgr", "showAlert2() msg:%s, title:%s", new Object[] { Util.nullAsNil(paramString), Util.nullAsNil(null) });
-    Context localContext = (Context)this.cMO.get();
+    Context localContext = (Context)this.cNB.get();
     if (localContext == null)
     {
       Log.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
@@ -49,7 +49,7 @@ public final class e
   {
     AppMethodBeat.i(67988);
     Log.w("MicroMsg.RemittanceBusiDialogMgr", "showAlert1() msg:%s, title:%s, yes:%s, no:%s", new Object[] { Util.nullAsNil(paramString1), Util.nullAsNil(paramString2), Util.nullAsNil(paramString3), Util.nullAsNil(paramString4) });
-    Context localContext = (Context)this.cMO.get();
+    Context localContext = (Context)this.cNB.get();
     if (localContext == null)
     {
       Log.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
@@ -61,11 +61,11 @@ public final class e
     return paramString1;
   }
   
-  public final boolean eNV()
+  public final boolean fAK()
   {
     AppMethodBeat.i(163813);
     Log.i("MicroMsg.RemittanceBusiDialogMgr", "finishRemitF2fDCodeAndLMRemindUI()");
-    Context localContext = (Context)this.cMO.get();
+    Context localContext = (Context)this.cNB.get();
     if (localContext == null)
     {
       Log.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
@@ -90,11 +90,11 @@ public final class e
     return false;
   }
   
-  public final boolean eNW()
+  public final boolean fAL()
   {
     AppMethodBeat.i(163814);
     Log.i("MicroMsg.RemittanceBusiDialogMgr", "finishRemitLMRemindUI()");
-    Context localContext = (Context)this.cMO.get();
+    Context localContext = (Context)this.cNB.get();
     if (localContext == null)
     {
       Log.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
@@ -112,11 +112,11 @@ public final class e
     return false;
   }
   
-  public final boolean eNX()
+  public final boolean fAM()
   {
     AppMethodBeat.i(163815);
     Log.w("MicroMsg.RemittanceBusiDialogMgr", "showSafeProgress()");
-    Context localContext = (Context)this.cMO.get();
+    Context localContext = (Context)this.cNB.get();
     if (localContext == null)
     {
       Log.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
@@ -138,18 +138,18 @@ public final class e
     return false;
   }
   
-  public final void gS(Context paramContext)
+  public final void fB(Context paramContext)
   {
     AppMethodBeat.i(67986);
     Log.i("MicroMsg.RemittanceBusiDialogMgr", "attach() %s", new Object[] { paramContext.getClass().getSimpleName() });
-    this.cMO = new WeakReference(paramContext);
+    this.cNB = new WeakReference(paramContext);
     AppMethodBeat.o(67986);
   }
   
   public final Context getContext()
   {
     AppMethodBeat.i(163812);
-    Context localContext = (Context)this.cMO.get();
+    Context localContext = (Context)this.cNB.get();
     if (localContext == null)
     {
       Log.i("MicroMsg.RemittanceBusiDialogMgr", "getContext() == null");
@@ -162,19 +162,19 @@ public final class e
   
   static final class a
   {
-    static e CrX;
+    static e Ipv;
     
     static
     {
       AppMethodBeat.i(67985);
-      CrX = new e();
+      Ipv = new e();
       AppMethodBeat.o(67985);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.e
  * JD-Core Version:    0.7.0.1
  */

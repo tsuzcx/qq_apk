@@ -1,188 +1,24 @@
 package com.tencent.mm.plugin.appbrand.ae.b;
 
-import com.tencent.mm.plugin.appbrand.ae.d.d.a;
-import com.tencent.mm.plugin.appbrand.ae.e.c;
-import com.tencent.mm.plugin.appbrand.ae.e.e;
-import com.tencent.mm.plugin.appbrand.ae.e.f;
-import com.tencent.mm.plugin.appbrand.ae.e.h;
-import com.tencent.mm.plugin.appbrand.ae.e.i;
-import com.tencent.mm.sdk.platformtools.Log;
-import java.nio.ByteBuffer;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.video.videoview.AbstractVideoTextureView;
+import kotlin.l;
 
-public abstract class a
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/video/widget/AppBrandThumbVideoTextureView;", "Lcom/tencent/mm/plugin/appbrand/jsapi/video/videoview/AbstractVideoTextureView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "createMediaPlayer", "Lcom/tencent/mm/plugin/appbrand/video/AppBrandThumbMediaPlayer;", "plugin-appbrand-integration_release"})
+public final class a
+  extends AbstractVideoTextureView
 {
-  public static int oiP = 1000;
-  public static int oiQ = 64;
-  public static final byte[] oiR = com.tencent.mm.plugin.appbrand.ae.f.b.afS("");
-  protected d.a oiS = null;
-  protected com.tencent.mm.plugin.appbrand.ae.a.b oiy = null;
-  
-  public static List<ByteBuffer> e(f paramf)
+  public a(Context paramContext)
   {
-    return f(paramf);
-  }
-  
-  public static List<ByteBuffer> f(f paramf)
-  {
-    Object localObject1 = new StringBuilder(100);
-    if ((paramf instanceof com.tencent.mm.plugin.appbrand.ae.e.a))
-    {
-      ((StringBuilder)localObject1).append("GET ");
-      ((StringBuilder)localObject1).append(((com.tencent.mm.plugin.appbrand.ae.e.a)paramf).bZL());
-      ((StringBuilder)localObject1).append(" HTTP/1.1");
-    }
-    Object localObject2;
-    for (;;)
-    {
-      ((StringBuilder)localObject1).append("\r\n");
-      localObject2 = paramf.bZO();
-      while (((Iterator)localObject2).hasNext())
-      {
-        String str1 = (String)((Iterator)localObject2).next();
-        String str2 = paramf.afQ(str1);
-        ((StringBuilder)localObject1).append(str1);
-        ((StringBuilder)localObject1).append(": ");
-        ((StringBuilder)localObject1).append(str2);
-        ((StringBuilder)localObject1).append("\r\n");
-      }
-      if ((paramf instanceof h))
-      {
-        ((StringBuilder)localObject1).append("HTTP/1.1 101 " + ((h)paramf).bZM());
-      }
-      else
-      {
-        ((StringBuilder)localObject1).append("GET ");
-        ((StringBuilder)localObject1).append(((com.tencent.mm.plugin.appbrand.ae.e.a)paramf).bZL());
-        ((StringBuilder)localObject1).append(" HTTP/1.1");
-        Log.e("MicroMsg.AppBrandNetWork.Draft", "unknow role");
-      }
-    }
-    ((StringBuilder)localObject1).append("\r\n");
-    localObject1 = com.tencent.mm.plugin.appbrand.ae.f.b.afT(((StringBuilder)localObject1).toString());
-    paramf = paramf.getContent();
-    if (paramf == null) {}
-    for (int i = 0;; i = paramf.length)
-    {
-      localObject2 = ByteBuffer.allocate(i + localObject1.length);
-      ((ByteBuffer)localObject2).put((byte[])localObject1);
-      if (paramf != null) {
-        ((ByteBuffer)localObject2).put(paramf);
-      }
-      ((ByteBuffer)localObject2).flip();
-      return Collections.singletonList(localObject2);
-    }
-  }
-  
-  private static String w(ByteBuffer paramByteBuffer)
-  {
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(paramByteBuffer.remaining());
-    byte b;
-    for (int i = 48;; i = b) {
-      if (paramByteBuffer.hasRemaining())
-      {
-        b = paramByteBuffer.get();
-        localByteBuffer.put(b);
-        if ((i == 13) && (b == 10))
-        {
-          localByteBuffer.limit(localByteBuffer.position() - 2);
-          localByteBuffer.position(0);
-        }
-      }
-      else
-      {
-        for (paramByteBuffer = localByteBuffer; paramByteBuffer == null; paramByteBuffer = null)
-        {
-          return null;
-          paramByteBuffer.position(paramByteBuffer.position() - localByteBuffer.position());
-        }
-        return com.tencent.mm.plugin.appbrand.ae.f.b.K(paramByteBuffer.array(), paramByteBuffer.limit());
-      }
-    }
-  }
-  
-  public static int zH(int paramInt)
-  {
-    if (paramInt < 0) {
-      throw new com.tencent.mm.plugin.appbrand.ae.c.b("Negative count");
-    }
-    return paramInt;
-  }
-  
-  public abstract a.b a(com.tencent.mm.plugin.appbrand.ae.e.a parama, h paramh);
-  
-  public abstract com.tencent.mm.plugin.appbrand.ae.e.b a(com.tencent.mm.plugin.appbrand.ae.e.b paramb);
-  
-  public abstract c a(com.tencent.mm.plugin.appbrand.ae.e.a parama, i parami);
-  
-  public abstract List<com.tencent.mm.plugin.appbrand.ae.d.d> a(ByteBuffer paramByteBuffer, boolean paramBoolean);
-  
-  public final void a(com.tencent.mm.plugin.appbrand.ae.a.b paramb)
-  {
-    this.oiy = paramb;
-  }
-  
-  public abstract List<com.tencent.mm.plugin.appbrand.ae.d.d> aF(String paramString, boolean paramBoolean);
-  
-  public abstract a.a bZC();
-  
-  public abstract a bZD();
-  
-  public abstract a.b c(com.tencent.mm.plugin.appbrand.ae.e.a parama);
-  
-  public abstract ByteBuffer d(com.tencent.mm.plugin.appbrand.ae.d.d paramd);
-  
-  public abstract void reset();
-  
-  public abstract List<com.tencent.mm.plugin.appbrand.ae.d.d> x(ByteBuffer paramByteBuffer);
-  
-  public final f y(ByteBuffer paramByteBuffer)
-  {
-    Object localObject1 = this.oiy;
-    Object localObject2 = w(paramByteBuffer);
-    if (localObject2 == null) {
-      throw new com.tencent.mm.plugin.appbrand.ae.c.a(paramByteBuffer.capacity() + 128);
-    }
-    localObject2 = ((String)localObject2).split(" ", 3);
-    if (localObject2.length != 3) {
-      throw new com.tencent.mm.plugin.appbrand.ae.c.d();
-    }
-    if (localObject1 == com.tencent.mm.plugin.appbrand.ae.a.b.oij)
-    {
-      localObject1 = new e();
-      i locali = (i)localObject1;
-      locali.a(Short.parseShort(localObject2[1]));
-      locali.afP(localObject2[2]);
-    }
-    for (;;)
-    {
-      localObject2 = w(paramByteBuffer);
-      if ((localObject2 == null) || (((String)localObject2).length() <= 0)) {
-        break;
-      }
-      localObject2 = ((String)localObject2).split(":", 2);
-      if (localObject2.length != 2)
-      {
-        throw new com.tencent.mm.plugin.appbrand.ae.c.d("not an http header");
-        localObject1 = new com.tencent.mm.plugin.appbrand.ae.e.d();
-        ((com.tencent.mm.plugin.appbrand.ae.e.b)localObject1).afO(localObject2[1]);
-      }
-      else
-      {
-        ((c)localObject1).put(localObject2[0], localObject2[1].replaceFirst("^ +", ""));
-      }
-    }
-    if (localObject2 == null) {
-      throw new com.tencent.mm.plugin.appbrand.ae.c.a();
-    }
-    return localObject1;
+    super(paramContext);
+    AppMethodBeat.i(279235);
+    AppMethodBeat.o(279235);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ae.b.a
  * JD-Core Version:    0.7.0.1
  */

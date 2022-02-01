@@ -10,13 +10,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMBaseActivity;
-import com.tencent.mm.ui.base.aa;
+import com.tencent.mm.ui.base.ac;
 import com.tencent.mm.ui.widget.a.d.a;
 
 public class JDRemindDialog
   extends MMBaseActivity
 {
-  private com.tencent.mm.ui.widget.a.d jzT = null;
+  private com.tencent.mm.ui.widget.a.d mpz = null;
   
   public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
@@ -28,14 +28,14 @@ public class JDRemindDialog
     localIntent.putExtra("alertjumpurl", paramString4);
     localIntent.putExtra("alert_activityid", paramString5);
     localIntent.addFlags(805306368);
-    paramString1 = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString1.axQ(), "com/tencent/mm/plugin/subapp/jdbiz/JDRemindDialog", "showAlert", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramString1.pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/subapp/jdbiz/JDRemindDialog", "showAlert", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramString1 = new com.tencent.mm.hellhoundlib.b.a().bm(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.b(paramContext, paramString1.aFh(), "com/tencent/mm/plugin/subapp/jdbiz/JDRemindDialog", "showAlert", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramString1.sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/plugin/subapp/jdbiz/JDRemindDialog", "showAlert", "(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(28862);
   }
   
-  private void cjQ()
+  private void cxh()
   {
     AppMethodBeat.i(28861);
     if (getIntent() == null)
@@ -50,9 +50,9 @@ public class JDRemindDialog
       return;
     }
     d.a locala = new d.a(this);
-    locala.bon("");
-    locala.boo(localBundle.getString("alertcontent"));
-    locala.bou(localBundle.getString("alertconfirm")).c(new DialogInterface.OnClickListener()
+    locala.bBc("");
+    locala.bBd(localBundle.getString("alertcontent"));
+    locala.bBj(localBundle.getString("alertconfirm")).c(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -71,15 +71,15 @@ public class JDRemindDialog
             localObject1 = JDRemindDialog.this.getIntent().getExtras().getString("alert_activityid");
           }
         }
-        if (((String)localObject1).equals(d.fsQ().fsV().FJm))
+        if (((String)localObject1).equals(d.ghp().ghu().oym))
         {
-          d.fsQ();
-          if (d.fsR())
+          d.ghp();
+          if (d.ghq())
           {
-            d.fsQ();
-            d.fsU();
-            d.fsQ();
-            d.fsT();
+            d.ghp();
+            d.ght();
+            d.ghp();
+            d.ghs();
           }
         }
         if (!Util.isNullOrNil(paramAnonymousDialogInterface))
@@ -88,14 +88,14 @@ public class JDRemindDialog
           ((Intent)localObject1).putExtra("rawUrl", paramAnonymousDialogInterface);
           ((Intent)localObject1).putExtra("useJs", true);
           ((Intent)localObject1).putExtra("vertical_scroll", true);
-          com.tencent.mm.br.c.b(JDRemindDialog.this, "webview", ".ui.tools.WebViewUI", (Intent)localObject1);
-          h.CyF.a(11179, new Object[] { paramAnonymousDialogInterface, d.fsQ().fsV().FJm, Integer.valueOf(5) });
+          com.tencent.mm.by.c.b(JDRemindDialog.this, "webview", ".ui.tools.WebViewUI", (Intent)localObject1);
+          h.IzE.a(11179, new Object[] { paramAnonymousDialogInterface, d.ghp().ghu().oym, Integer.valueOf(5) });
         }
         JDRemindDialog.this.finish();
         AppMethodBeat.o(28855);
       }
     });
-    locala.bov(localBundle.getString("alert_cancel")).d(new DialogInterface.OnClickListener()
+    locala.bBk(localBundle.getString("alert_cancel")).d(new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
@@ -104,9 +104,9 @@ public class JDRemindDialog
         AppMethodBeat.o(28856);
       }
     });
-    this.jzT = locala.hbn();
-    this.jzT.setCanceledOnTouchOutside(false);
-    this.jzT.show();
+    this.mpz = locala.icu();
+    this.mpz.setCanceledOnTouchOutside(false);
+    this.mpz.show();
     AppMethodBeat.o(28861);
   }
   
@@ -115,7 +115,7 @@ public class JDRemindDialog
     AppMethodBeat.i(28857);
     super.onCreate(paramBundle);
     requestWindowFeature(1);
-    cjQ();
+    cxh();
     AppMethodBeat.o(28857);
   }
   
@@ -124,12 +124,12 @@ public class JDRemindDialog
     AppMethodBeat.i(28859);
     super.onNewIntent(paramIntent);
     setIntent(paramIntent);
-    if (this.jzT != null)
+    if (this.mpz != null)
     {
-      this.jzT.dismiss();
-      this.jzT = null;
+      this.mpz.dismiss();
+      this.mpz = null;
     }
-    cjQ();
+    cxh();
     AppMethodBeat.o(28859);
   }
   
@@ -137,7 +137,7 @@ public class JDRemindDialog
   {
     AppMethodBeat.i(28860);
     super.onPause();
-    aa.activateBroadcast(false);
+    ac.activateBroadcast(false);
     AppMethodBeat.o(28860);
   }
   
@@ -145,7 +145,7 @@ public class JDRemindDialog
   {
     AppMethodBeat.i(28858);
     super.onResume();
-    aa.activateBroadcast(true);
+    ac.activateBroadcast(true);
     AppMethodBeat.o(28858);
   }
   
@@ -157,7 +157,7 @@ public class JDRemindDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.jdbiz.JDRemindDialog
  * JD-Core Version:    0.7.0.1
  */

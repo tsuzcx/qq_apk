@@ -1,23 +1,20 @@
 package com.tencent.mm.xeffect.effect;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 15}, hxE={""}, hxF={"Lcom/tencent/mm/xeffect/effect/PAGReplacementType;", "", "(Ljava/lang/String;I)V", "Image", "Text", "renderlib_release"})
-public enum q
+@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/xeffect/effect/LutFilterEffect;", "Lcom/tencent/mm/xeffect/effect/VLogEffect;", "ptr", "", "(J)V", "setWeight", "", "weight", "", "type", "Lcom/tencent/mm/xeffect/effect/EffectType;", "renderlib_release"})
+public final class q
+  extends af
 {
-  static
+  public q(long paramLong)
   {
-    AppMethodBeat.i(237094);
-    q localq1 = new q("Image", 0);
-    RyS = localq1;
-    q localq2 = new q("Text", 1);
-    RyT = localq2;
-    RyU = new q[] { localq1, localq2 };
-    AppMethodBeat.o(237094);
+    super(paramLong);
   }
   
-  private q() {}
+  public final j ika()
+  {
+    return j.YZG;
+  }
 }
 
 

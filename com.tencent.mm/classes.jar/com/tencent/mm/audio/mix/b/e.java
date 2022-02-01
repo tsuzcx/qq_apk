@@ -5,28 +5,28 @@ import java.util.ArrayList;
 
 public class e
 {
-  private static e dun;
-  private ArrayList<com.tencent.mm.audio.mix.a.e> dud;
+  private static e fmV;
+  private ArrayList<com.tencent.mm.audio.mix.a.e> fmL;
   private Object sLock;
   
   private e()
   {
     AppMethodBeat.i(136735);
-    this.dud = new ArrayList();
+    this.fmL = new ArrayList();
     this.sLock = new Object();
     AppMethodBeat.o(136735);
   }
   
-  public static e YJ()
+  public static e adq()
   {
     AppMethodBeat.i(136736);
-    if (dun == null) {}
+    if (fmV == null) {}
     try
     {
-      if (dun == null) {
-        dun = new e();
+      if (fmV == null) {
+        fmV = new e();
       }
-      e locale = dun;
+      e locale = fmV;
       AppMethodBeat.o(136736);
       return locale;
     }
@@ -36,14 +36,14 @@ public class e
     }
   }
   
-  public final com.tencent.mm.audio.mix.a.e YI()
+  public final com.tencent.mm.audio.mix.a.e adp()
   {
     AppMethodBeat.i(136737);
     synchronized (this.sLock)
     {
-      if (this.dud.size() > 0)
+      if (this.fmL.size() > 0)
       {
-        com.tencent.mm.audio.mix.a.e locale = (com.tencent.mm.audio.mix.a.e)this.dud.remove(this.dud.size() - 1);
+        com.tencent.mm.audio.mix.a.e locale = (com.tencent.mm.audio.mix.a.e)this.fmL.remove(this.fmL.size() - 1);
         AppMethodBeat.o(136737);
         return locale;
       }
@@ -53,12 +53,12 @@ public class e
     }
   }
   
-  public final long YK()
+  public final long adr()
   {
     try
     {
       AppMethodBeat.i(136739);
-      long l = this.dud.size() * 3536;
+      long l = this.fmL.size() * 3536;
       AppMethodBeat.o(136739);
       return l;
     }
@@ -72,7 +72,7 @@ public class e
   public final void b(com.tencent.mm.audio.mix.a.e parame)
   {
     AppMethodBeat.i(136738);
-    if ((parame == null) || (parame.dtQ == null))
+    if ((parame == null) || (parame.fmy == null))
     {
       AppMethodBeat.o(136738);
       return;
@@ -80,7 +80,7 @@ public class e
     parame.reset();
     synchronized (this.sLock)
     {
-      this.dud.add(0, parame);
+      this.fmL.add(0, parame);
       AppMethodBeat.o(136738);
       return;
     }
@@ -88,7 +88,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.audio.mix.b.e
  * JD-Core Version:    0.7.0.1
  */

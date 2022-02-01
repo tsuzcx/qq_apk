@@ -15,10 +15,10 @@ final class MMFormVerifyCodeInputView$2
   {
     AppMethodBeat.i(169514);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/appbrand/phonenumber/widget/MMFormVerifyCodeInputView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    if (MMFormVerifyCodeInputView.e(this.nBM) != null) {
-      MMFormVerifyCodeInputView.e(this.nBM).onClick(paramView);
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/appbrand/phonenumber/widget/MMFormVerifyCodeInputView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    if (MMFormVerifyCodeInputView.e(this.qDX) != null) {
+      MMFormVerifyCodeInputView.e(this.qDX).onClick(paramView);
     }
     a.a(this, "com/tencent/mm/plugin/appbrand/phonenumber/widget/MMFormVerifyCodeInputView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(169514);
@@ -26,7 +26,7 @@ final class MMFormVerifyCodeInputView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.widget.MMFormVerifyCodeInputView.2
  * JD-Core Version:    0.7.0.1
  */

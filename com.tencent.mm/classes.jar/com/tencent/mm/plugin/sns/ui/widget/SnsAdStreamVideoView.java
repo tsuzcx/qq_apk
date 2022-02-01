@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelvideo.MMVideoView;
 import com.tencent.mm.plugin.sight.decode.ui.b;
+import com.tencent.mm.plugin.sns.i.g;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerSeekBar;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
@@ -13,13 +14,13 @@ import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 public class SnsAdStreamVideoView
   extends MMVideoView
 {
-  public MTimerHandler FeB;
+  public MTimerHandler Ltg;
   
   public SnsAdStreamVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(100473);
-    this.FeB = new MTimerHandler(new MTimerHandler.CallBack()
+    this.Ltg = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -36,7 +37,7 @@ public class SnsAdStreamVideoView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(100474);
-    this.FeB = new MTimerHandler(new MTimerHandler.CallBack()
+    this.Ltg = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -49,38 +50,38 @@ public class SnsAdStreamVideoView
     AppMethodBeat.o(100474);
   }
   
-  public final int dEP()
+  public final int egy()
   {
-    return 2131496405;
+    return i.g.sns_ad_stream_video_view;
   }
   
-  public final void fld()
+  public final void fZw()
   {
     AppMethodBeat.i(100475);
-    this.mEx.setVisibility(0);
+    this.pDJ.setVisibility(0);
     AppMethodBeat.o(100475);
   }
   
-  public final void fle()
+  public final void fZx()
   {
     AppMethodBeat.i(100476);
-    this.mEx.setVisibility(4);
+    this.pDJ.setVisibility(4);
     AppMethodBeat.o(100476);
   }
   
-  public final b flf()
+  public final b fZy()
   {
     AppMethodBeat.i(100477);
     b local1 = new b()
     {
-      public final void aJq()
+      public final void aRo()
       {
         AppMethodBeat.i(100470);
         SnsAdStreamVideoView.a(SnsAdStreamVideoView.this).stopTimer();
         AppMethodBeat.o(100470);
       }
       
-      public final void rk(int paramAnonymousInt)
+      public final void tY(int paramAnonymousInt)
       {
         AppMethodBeat.i(100471);
         if (SnsAdStreamVideoView.a(SnsAdStreamVideoView.this, paramAnonymousInt)) {
@@ -94,16 +95,16 @@ public class SnsAdStreamVideoView
     return local1;
   }
   
-  public final void flg()
+  public final void fZz()
   {
     AppMethodBeat.i(100478);
-    this.FeB.startTimer(5000L, 0L);
+    this.Ltg.startTimer(5000L, 0L);
     AppMethodBeat.o(100478);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.SnsAdStreamVideoView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,74 +1,55 @@
 package com.tencent.mm.ui.chatting.d;
 
-import android.app.Activity;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c.a;
-import com.tencent.mm.pluginsdk.model.app.ReportUtil;
-import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.transmit.SendAppMessageWrapperUI;
+import com.tencent.mm.f.a.np;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
 
 public class aq
   extends a
-  implements af
+  implements ag
 {
-  public final void gIk()
+  private IListener ozM;
+  
+  public aq()
   {
-    AppMethodBeat.i(35525);
-    final Intent localIntent = this.dom.Pwc.getContext().getIntent();
-    if (localIntent.getIntExtra("SendAppMessageWrapper_Scene", 0) != 3)
-    {
-      AppMethodBeat.o(35525);
-      return;
-    }
-    localIntent.setClass(this.dom.Pwc.getContext(), SendAppMessageWrapperUI.class);
-    localIntent.putExtra("Select_Conv_User", this.dom.getTalkerUserName());
-    this.dom.a(localIntent, 228, new c.a()
-    {
-      public final void onActivityResult(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
-      {
-        AppMethodBeat.i(35523);
-        localIntent.removeExtra("SendAppMessageWrapper_Scene");
-        if (paramAnonymousInt1 == 228) {
-          if (paramAnonymousInt2 == -1)
-          {
-            if ((paramAnonymousIntent != null) && (paramAnonymousIntent.getBooleanExtra("Select_stay_in_wx", false)))
-            {
-              ReportUtil.ab(false, 0);
-              AppMethodBeat.o(35523);
-              return;
-            }
-            if (!aq.this.dom.Pwc.getContext().isFinishing())
-            {
-              aq.this.dom.Pwc.getContext().finish();
-              AppMethodBeat.o(35523);
-            }
-          }
-          else
-          {
-            paramAnonymousIntent = ReportUtil.d(localIntent.getExtras(), 0);
-            ReportUtil.a(aq.this.dom.Pwc.getContext(), paramAnonymousIntent, true);
-            if (!aq.this.dom.Pwc.getContext().isFinishing()) {
-              aq.this.dom.Pwc.getContext().finish();
-            }
-          }
-        }
-        AppMethodBeat.o(35523);
-      }
-    });
-    AppMethodBeat.o(35525);
+    AppMethodBeat.i(35502);
+    this.ozM = new IListener() {};
+    AppMethodBeat.o(35502);
   }
   
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  private void hOa()
   {
-    AppMethodBeat.i(35524);
-    super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    AppMethodBeat.o(35524);
+    AppMethodBeat.i(35503);
+    EventCenter.instance.removeListener(this.ozM);
+    AppMethodBeat.o(35503);
+  }
+  
+  public final void hGW()
+  {
+    AppMethodBeat.i(35504);
+    EventCenter.instance.addListener(this.ozM);
+    AppMethodBeat.o(35504);
+  }
+  
+  public final void hGZ()
+  {
+    AppMethodBeat.i(35505);
+    hOa();
+    AppMethodBeat.o(35505);
+  }
+  
+  public final void hNZ()
+  {
+    AppMethodBeat.i(35506);
+    super.hNZ();
+    hOa();
+    AppMethodBeat.o(35506);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.aq
  * JD-Core Version:    0.7.0.1
  */

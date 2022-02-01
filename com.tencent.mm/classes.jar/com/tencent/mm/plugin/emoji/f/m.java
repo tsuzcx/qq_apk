@@ -1,15 +1,17 @@
 package com.tencent.mm.plugin.emoji.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.EmotionDetail;
-import com.tencent.mm.protocal.protobuf.GetEmotionDetailRequest;
-import com.tencent.mm.protocal.protobuf.GetEmotionDetailResponse;
+import com.tencent.mm.protocal.protobuf.akb;
+import com.tencent.mm.protocal.protobuf.buc;
+import com.tencent.mm.protocal.protobuf.bud;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -19,11 +21,11 @@ public final class m
   extends q
   implements com.tencent.mm.network.m
 {
-  private int cR;
+  private int aan;
   private i callback;
   private int mScene;
-  public String rcD;
-  private final com.tencent.mm.ak.d rr;
+  private final com.tencent.mm.an.d rr;
+  public String uFI;
   
   public m(String paramString, int paramInt)
   {
@@ -33,38 +35,38 @@ public final class m
   public m(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(108699);
-    this.rcD = paramString;
+    this.uFI = paramString;
     this.mScene = paramInt1;
-    this.cR = paramInt2;
+    this.aan = paramInt2;
     paramString = new d.a();
-    paramString.iLN = new GetEmotionDetailRequest();
-    paramString.iLO = new GetEmotionDetailResponse();
+    paramString.lBU = new buc();
+    paramString.lBV = new bud();
     paramString.uri = "/cgi-bin/micromsg-bin/getemotiondetail";
     paramString.funcId = 412;
-    paramString.iLP = 211;
+    paramString.lBW = 211;
     paramString.respCmdId = 1000000211;
-    this.rr = paramString.aXF();
+    this.rr = paramString.bgN();
     AppMethodBeat.o(108699);
   }
   
-  public final EmotionDetail cGv()
+  public final akb cVe()
   {
     AppMethodBeat.i(108702);
-    new EmotionDetail();
-    EmotionDetail localEmotionDetail = ((GetEmotionDetailResponse)this.rr.iLL.iLR).EmotionDetail;
+    new akb();
+    akb localakb = ((bud)d.c.b(this.rr.lBS)).VHU;
     AppMethodBeat.o(108702);
-    return localEmotionDetail;
+    return localakb;
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(108700);
-    Log.i("MicroMsg.emoji.NetSceneGetEmotionDetail", "ProductID:%s, Scene:%d, Version:%d", new Object[] { this.rcD, Integer.valueOf(this.mScene), Integer.valueOf(this.cR) });
+    Log.i("MicroMsg.emoji.NetSceneGetEmotionDetail", "ProductID:%s, Scene:%d, Version:%d", new Object[] { this.uFI, Integer.valueOf(this.mScene), Integer.valueOf(this.aan) });
     this.callback = parami;
-    parami = (GetEmotionDetailRequest)this.rr.iLK.iLR;
-    parami.ProductID = this.rcD;
-    parami.Scene = this.mScene;
-    parami.Version = this.cR;
+    parami = (buc)d.b.b(this.rr.lBR);
+    parami.ProductID = this.uFI;
+    parami.CPw = this.mScene;
+    parami.rWt = this.aan;
     int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(108700);
     return i;
@@ -86,7 +88,7 @@ public final class m
       return;
     }
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiStorageMgr().OpR.a(this.rcD, (GetEmotionDetailResponse)this.rr.iLL.iLR, LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext()));
+      ((com.tencent.mm.plugin.emoji.b.d)h.ag(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiStorageMgr().VFL.a(this.uFI, (bud)d.c.b(this.rr.lBS), LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext()));
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(108701);
@@ -94,7 +96,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.f.m
  * JD-Core Version:    0.7.0.1
  */

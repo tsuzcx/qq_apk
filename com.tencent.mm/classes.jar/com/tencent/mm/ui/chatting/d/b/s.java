@@ -1,15 +1,15 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import com.tencent.mm.ui.chatting.d.af;
+import com.tencent.mm.ui.chatting.d.ag;
 
 public abstract interface s
-  extends af
+  extends ag
 {
-  public abstract boolean gPN();
+  public abstract boolean hPi();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.b.s
  * JD-Core Version:    0.7.0.1
  */

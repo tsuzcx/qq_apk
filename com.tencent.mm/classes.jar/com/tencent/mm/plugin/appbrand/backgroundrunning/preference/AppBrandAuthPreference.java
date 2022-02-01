@@ -8,16 +8,18 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.au.f;
+import com.tencent.mm.plugin.appbrand.au.g;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class AppBrandAuthPreference
   extends Preference
 {
-  private boolean edw;
-  private String kYJ;
-  private TextView kYK;
-  private CheckBox kYL;
+  private boolean fXF;
+  private String nSU;
+  private TextView nSV;
+  private CheckBox nSW;
   
   public AppBrandAuthPreference(Context paramContext)
   {
@@ -33,8 +35,8 @@ public class AppBrandAuthPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(44802);
-    this.edw = false;
-    setLayoutResource(2131495538);
+    this.fXF = false;
+    setLayoutResource(au.g.mm_preference);
     AppMethodBeat.o(44802);
   }
   
@@ -42,15 +44,15 @@ public class AppBrandAuthPreference
   {
     AppMethodBeat.i(44804);
     super.onBindView(paramView);
-    this.kYL = ((CheckBox)paramView.findViewById(2131298639));
-    if (this.kYL != null) {
-      this.kYL.setChecked(this.edw);
+    this.nSW = ((CheckBox)paramView.findViewById(au.f.checkbox));
+    if (this.nSW != null) {
+      this.nSW.setChecked(this.fXF);
     }
-    this.kYK = ((TextView)paramView.findViewById(2131297088));
-    if ((this.kYK != null) && (!Util.isNullOrNil(this.kYJ))) {
-      this.kYK.setText(this.kYJ);
+    this.nSV = ((TextView)paramView.findViewById(au.f.authSummary));
+    if ((this.nSV != null) && (!Util.isNullOrNil(this.nSU))) {
+      this.nSV.setText(this.nSU);
     }
-    alO(8);
+    auO(8);
     AppMethodBeat.o(44804);
   }
   
@@ -58,9 +60,9 @@ public class AppBrandAuthPreference
   {
     AppMethodBeat.i(44803);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(au.f.content);
     localViewGroup.removeAllViews();
-    ((LayoutInflater)this.mContext.getSystemService("layout_inflater")).inflate(2131493064, localViewGroup);
+    ((LayoutInflater)this.mContext.getSystemService("layout_inflater")).inflate(au.g.app_brand_preference_auth, localViewGroup);
     AppMethodBeat.o(44803);
     return paramViewGroup;
   }
@@ -68,23 +70,23 @@ public class AppBrandAuthPreference
   public final void setChecked(boolean paramBoolean)
   {
     AppMethodBeat.i(44806);
-    this.edw = paramBoolean;
-    if (this.kYL != null) {
-      this.kYL.setChecked(paramBoolean);
+    this.fXF = paramBoolean;
+    if (this.nSW != null) {
+      this.nSW.setChecked(paramBoolean);
     }
     AppMethodBeat.o(44806);
   }
   
-  public final void wd(int paramInt)
+  public final void zo(int paramInt)
   {
     AppMethodBeat.i(44805);
-    this.kYJ = this.mContext.getString(paramInt);
+    this.nSU = this.mContext.getString(paramInt);
     AppMethodBeat.o(44805);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundrunning.preference.AppBrandAuthPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -2,66 +2,65 @@ package com.tencent.mm.plugin.recordvideo.res;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.plugin.xlabeffect.e;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/res/VideoLabelModelResLogic;", "Lcom/tencent/mm/plugin/recordvideo/res/BaseVideoResLogic;", "()V", "RES_FILE_NAME", "", "TAG", "reporter", "Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport;", "getReporter", "()Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport;", "afterUnZipRes", "", "success", "", "getFileDirName", "getFilePathKeys", "", "()[Ljava/lang/String;", "getModelFilePath", "getResParentPath", "getResType", "", "getTag", "isModelReady", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/res/VideoLabelModelResLogic;", "Lcom/tencent/mm/plugin/recordvideo/res/BaseVideoResLogic;", "()V", "RES_FILE_NAME", "", "TAG", "reporter", "Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport;", "getReporter", "()Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport;", "afterUnZipRes", "", "success", "", "getFileDirName", "getFilePathKeys", "", "()[Ljava/lang/String;", "getModelFilePath", "getResParentPath", "getResType", "", "getTag", "isModelReady", "plugin-recordvideo_release"})
 public final class g
   extends a
 {
-  private static final h BYk;
-  public static final g BYp;
+  private static final h HUY;
+  public static final g HVd;
   
   static
   {
-    AppMethodBeat.i(237499);
-    BYp = new g();
-    BYk = new h(75);
-    AppMethodBeat.o(237499);
+    AppMethodBeat.i(218659);
+    HVd = new g();
+    HUY = new h(75);
+    AppMethodBeat.o(218659);
   }
   
-  public final int eLi()
+  public final int fxB()
   {
     return 80;
   }
   
-  public final String[] eLj()
+  public final String[] fxC()
   {
     return new String[] { "path" };
   }
   
-  public final String eLk()
+  public final String fxD()
   {
-    AppMethodBeat.i(237495);
-    String str = b.aKC() + "ImageLabel/";
-    AppMethodBeat.o(237495);
+    AppMethodBeat.i(218651);
+    String str = b.aSE() + "ImageLabel/";
+    AppMethodBeat.o(218651);
     return str;
   }
   
-  public final String eLl()
+  public final String fxE()
   {
     return "ImageLabelModel/";
   }
   
-  public final String eLy()
+  public final String fxR()
   {
-    AppMethodBeat.i(237496);
-    String str = eLk() + "ImageLabel.xnet";
-    AppMethodBeat.o(237496);
+    AppMethodBeat.i(218653);
+    String str = fxD() + "ImageLabel.xnet";
+    AppMethodBeat.o(218653);
     return str;
   }
   
-  public final boolean eLz()
+  public final boolean fxS()
   {
-    AppMethodBeat.i(237497);
-    if ((this.BXZ) && (s.YS(eLy())))
+    AppMethodBeat.i(218654);
+    if ((this.HUN) && (u.agG(fxR())))
     {
-      AppMethodBeat.o(237497);
+      AppMethodBeat.o(218654);
       return true;
     }
-    AppMethodBeat.o(237497);
+    AppMethodBeat.o(218654);
     return false;
   }
   
@@ -70,26 +69,26 @@ public final class g
     return "MicroMsg.VideoLabelModelResLogic";
   }
   
-  public final void tu(boolean paramBoolean)
+  public final void wQ(boolean paramBoolean)
   {
-    AppMethodBeat.i(237498);
+    AppMethodBeat.i(218656);
     if (paramBoolean)
     {
       Log.i("MicroMsg.VideoLabelModelResLogic", "afterUnZipRes, success:".concat(String.valueOf(paramBoolean)));
       Object localObject = new StringBuilder();
-      e locale = e.JRF;
-      localObject = ((StringBuilder)localObject).append(e.glu()).append("/");
-      locale = e.JRF;
-      localObject = e.glv();
-      s.nx(eLy(), (String)localObject);
-      Log.i("MicroMsg.VideoLabelModelResLogic", "afterUnZipRes, copy image label model path, from:" + eLy() + " to " + (String)localObject);
+      com.tencent.mm.plugin.xlabeffect.h localh = com.tencent.mm.plugin.xlabeffect.h.QQH;
+      localObject = ((StringBuilder)localObject).append(com.tencent.mm.plugin.xlabeffect.h.hfj()).append("/");
+      localh = com.tencent.mm.plugin.xlabeffect.h.QQH;
+      localObject = com.tencent.mm.plugin.xlabeffect.h.hfl();
+      u.oo(fxR(), (String)localObject);
+      Log.i("MicroMsg.VideoLabelModelResLogic", "afterUnZipRes, copy image label model path, from:" + fxR() + " to " + (String)localObject);
     }
-    AppMethodBeat.o(237498);
+    AppMethodBeat.o(218656);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.res.g
  * JD-Core Version:    0.7.0.1
  */

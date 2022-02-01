@@ -12,7 +12,7 @@ public final class e
   extends MAutoStorage<d>
 {
   public static final String[] SQL_CREATE;
-  h kiO;
+  h naE;
   
   static
   {
@@ -25,9 +25,9 @@ public final class e
   {
     super(paramISQLiteDatabase, d.info, "SafeDeviceInfo", null);
     AppMethodBeat.i(125521);
-    this.kiO = null;
+    this.naE = null;
     if ((paramISQLiteDatabase instanceof h)) {
-      this.kiO = ((h)paramISQLiteDatabase);
+      this.naE = ((h)paramISQLiteDatabase);
     }
     AppMethodBeat.o(125521);
   }
@@ -40,7 +40,7 @@ public final class e
     return bool;
   }
   
-  public final List<d> boO()
+  public final List<d> byZ()
   {
     AppMethodBeat.i(125523);
     LinkedList localLinkedList = new LinkedList();
@@ -61,7 +61,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.account.security.a.e
  * JD-Core Version:    0.7.0.1
  */

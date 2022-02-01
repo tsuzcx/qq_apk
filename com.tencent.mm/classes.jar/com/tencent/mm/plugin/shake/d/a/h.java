@@ -5,19 +5,19 @@ import android.content.Context;
 import android.location.LocationManager;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.plugin.shake.b.e;
 import com.tencent.mm.plugin.shake.b.l.a;
 import com.tencent.mm.plugin.shake.b.l.b;
 import com.tencent.mm.plugin.shake.b.m;
-import com.tencent.mm.protocal.protobuf.ccl;
-import com.tencent.mm.protocal.protobuf.ccq;
+import com.tencent.mm.protocal.protobuf.cko;
+import com.tencent.mm.protocal.protobuf.ckt;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
@@ -35,30 +35,30 @@ public final class h
   extends l.b
   implements i
 {
-  public static int DiS = 3;
-  private int DgH;
-  private d DiN;
-  public Collection<h.a> DiO;
-  private int DiP;
-  private int DiQ;
-  private int DiR;
-  private b.a gmA;
-  private float gmu;
-  private float gmv;
-  private com.tencent.mm.modelgeo.d iOv;
+  public static int Joy = 3;
+  private int Jmn;
+  private d Jot;
+  public Collection<a> Jou;
+  private int Jov;
+  private int Jow;
+  private int Jox;
+  private float iQD;
+  private float iQE;
+  private b.a iQJ;
+  private com.tencent.mm.modelgeo.d lEL;
   
   public h(l.a parama)
   {
     super(parama);
     AppMethodBeat.i(28293);
-    this.DiO = null;
-    this.gmu = -85.0F;
-    this.gmv = -1000.0F;
-    this.DgH = -1000;
-    this.DiP = 10001;
-    this.DiQ = 10002;
-    this.DiR = 10003;
-    this.gmA = new b.a()
+    this.Jou = null;
+    this.iQD = -85.0F;
+    this.iQE = -1000.0F;
+    this.Jmn = -1000;
+    this.Jov = 10001;
+    this.Jow = 10002;
+    this.Jox = 10003;
+    this.iQJ = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
@@ -81,13 +81,13 @@ public final class h
   public static void a(com.tencent.mm.plugin.shake.b.d paramd)
   {
     AppMethodBeat.i(28302);
-    if ((paramd != null) && (paramd.field_sex == DiS))
+    if ((paramd != null) && (paramd.field_sex == Joy))
     {
-      bg.aVF();
-      c.azQ().set(ar.a.NWf, Boolean.TRUE);
+      bh.beI();
+      c.aHp().set(ar.a.Vkf, Boolean.TRUE);
       long l = Util.nowSecond();
-      bg.aVF();
-      c.azQ().set(ar.a.NWg, Long.valueOf(l));
+      bh.beI();
+      c.aHp().set(ar.a.Vkg, Long.valueOf(l));
     }
     try
     {
@@ -97,8 +97,8 @@ public final class h
         paramd = paramd.split(",");
         if (paramd.length == 4)
         {
-          bg.aVF();
-          c.azQ().set(ar.a.NVY, Long.valueOf(paramd[0]));
+          bh.beI();
+          c.aHp().set(ar.a.VjY, Long.valueOf(paramd[0]));
         }
       }
       AppMethodBeat.o(28302);
@@ -129,10 +129,10 @@ public final class h
           paramd = localObject[1];
           String str = localObject[2];
           localObject = localObject[3];
-          h.a locala = new h.a();
+          a locala = new a();
           locala.uuid = paramd;
-          locala.major = Util.getInt(str, 0);
-          locala.minor = Util.getInt((String)localObject, 0);
+          locala.oey = Util.getInt(str, 0);
+          locala.oez = Util.getInt((String)localObject, 0);
         }
       }
       AppMethodBeat.o(28303);
@@ -148,27 +148,27 @@ public final class h
     }
   }
   
-  private void eTP()
+  private void cFO()
   {
     AppMethodBeat.i(28299);
-    this.iOv = com.tencent.mm.modelgeo.d.bca();
-    this.iOv.a(this.gmA, true);
+    this.lEL = com.tencent.mm.modelgeo.d.blq();
+    this.lEL.a(this.iQJ, true);
     AppMethodBeat.o(28299);
   }
   
-  public final void eTQ()
+  public final void fGS()
   {
     AppMethodBeat.i(28300);
-    super.eTQ();
-    bg.azz().b(658, this);
+    super.fGS();
+    bh.aGY().b(658, this);
     AppMethodBeat.o(28300);
   }
   
   public final void init()
   {
     AppMethodBeat.i(28294);
-    bg.azz().a(658, this);
-    eTP();
+    bh.aGY().a(658, this);
+    cFO();
     AppMethodBeat.o(28294);
   }
   
@@ -181,17 +181,17 @@ public final class h
       paramString = (d)paramq;
       if ((658 == paramq.getType()) && (paramString.action == 1))
       {
-        paramString = (ccl)paramString.iUB.iLL.iLR;
-        if (paramString.Mit == null)
+        paramString = (cko)d.c.b(paramString.lKU.lBS);
+        if (paramString.Tsg == null)
         {
-          this.DgX.f(null, 3L);
+          this.JmD.e(null, 3L);
           AppMethodBeat.o(28301);
           return;
         }
-        if (paramString.Mit.LjQ == 0)
+        if (paramString.Tsg.Tsk == 0)
         {
-          Log.i("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService][shakezb]onSceneEnd :message:%s,tips:%s,result:%s", new Object[] { paramString.Mit.xJz, paramString.Mit.AZI, Integer.valueOf(paramString.Mit.LjQ) });
-          paramString = paramString.Mit.xJz;
+          Log.i("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService][shakezb]onSceneEnd :message:%s,tips:%s,result:%s", new Object[] { paramString.Tsg.CNG, paramString.Tsg.GTG, Integer.valueOf(paramString.Tsg.Tsk) });
+          paramString = paramString.Tsg.CNG;
         }
       }
     }
@@ -206,19 +206,19 @@ public final class h
         long l = paramq.getLong("channel_open_time");
         paramInt1 = paramq.getInt("shake_tab_display");
         int i = paramString.getJSONObject("gated_launch_option").getInt("tab_state");
-        bg.aVF();
-        c.azQ().set(ar.a.NVZ, Integer.valueOf(paramInt2));
-        bg.aVF();
-        c.azQ().set(ar.a.NWa, Long.valueOf(l));
-        bg.aVF();
-        c.azQ().set(ar.a.NWb, Integer.valueOf(paramInt1));
-        bg.aVF();
-        c.azQ().set(ar.a.NWk, Integer.valueOf(i));
+        bh.beI();
+        c.aHp().set(ar.a.VjZ, Integer.valueOf(paramInt2));
+        bh.beI();
+        c.aHp().set(ar.a.Vka, Long.valueOf(l));
+        bh.beI();
+        c.aHp().set(ar.a.Vkb, Integer.valueOf(paramInt1));
+        bh.beI();
+        c.aHp().set(ar.a.Vkk, Integer.valueOf(i));
         Log.i("MicroMsg.ShakeIbeaconService", "[shakezb]channel_open_method is " + paramInt2 + " ,channel_open_time is " + l + ", shake_tab_display is " + paramInt1);
         i = localJSONArray.length();
         paramString = null;
-        e locale = m.eUm();
-        locale.eUc();
+        e locale = m.fHo();
+        locale.fHe();
         if (i > 0)
         {
           paramq = new ArrayList();
@@ -248,53 +248,53 @@ public final class h
             paramString.field_province = str4;
             paramString.field_city = str1;
             if (j == 1) {
-              paramString.field_sex = DiS;
+              paramString.field_sex = Joy;
             }
             paramString.field_lvbuffer = (String.valueOf(str5) + "," + String.valueOf(str6) + "," + String.valueOf(str7) + "," + String.valueOf(localObject)).getBytes("utf-8");
             paramString.field_insertBatch = 2;
             paramString.field_reserved3 = (str8 + "," + str9 + "," + k);
             paramq.add(paramString);
             locale.a(paramString, true);
-            if ((paramString.field_sex != DiS) || (paramInt2 != 1)) {
+            if ((paramString.field_sex != Joy) || (paramInt2 != 1)) {
               break label953;
             }
             a(paramString);
             break label953;
           }
         }
-        this.DgX.f(paramString, 1L);
+        this.JmD.e(paramString, 1L);
         AppMethodBeat.o(28301);
         return;
       }
       catch (Exception paramString)
       {
         Log.e("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService][shakezb] parse error.%s", new Object[] { Util.nullAsNil(paramString.getMessage()) });
-        this.DgX.f(null, 1L);
+        this.JmD.e(null, 1L);
         AppMethodBeat.o(28301);
         return;
       }
-      if (paramString.Mit.LjQ == this.DiP)
+      if (paramString.Tsg.Tsk == this.Jov)
       {
-        this.DgX.f(null, 6L);
+        this.JmD.e(null, 6L);
         AppMethodBeat.o(28301);
         return;
       }
-      if (paramString.Mit.LjQ == this.DiQ)
+      if (paramString.Tsg.Tsk == this.Jow)
       {
-        this.DgX.f(null, 7L);
+        this.JmD.e(null, 7L);
         AppMethodBeat.o(28301);
         return;
       }
-      if (paramString.Mit.LjQ == this.DiR)
+      if (paramString.Tsg.Tsk == this.Jox)
       {
-        this.DgX.f(null, 8L);
+        this.JmD.e(null, 8L);
         AppMethodBeat.o(28301);
         return;
       }
-      this.DgX.f(null, 1L);
+      this.JmD.e(null, 1L);
       AppMethodBeat.o(28301);
       return;
-      this.DgX.f(null, 3L);
+      this.JmD.e(null, 3L);
       AppMethodBeat.o(28301);
       return;
       label953:
@@ -305,8 +305,8 @@ public final class h
   public final void pause()
   {
     AppMethodBeat.i(28297);
-    if (this.iOv != null) {
-      this.iOv.c(this.gmA);
+    if (this.lEL != null) {
+      this.lEL.b(this.iQJ);
     }
     AppMethodBeat.o(28297);
   }
@@ -314,8 +314,8 @@ public final class h
   public final void reset()
   {
     AppMethodBeat.i(28295);
-    if (this.DiN != null) {
-      bg.azz().a(this.DiN);
+    if (this.Jot != null) {
+      bh.aGY().a(this.Jot);
     }
     AppMethodBeat.o(28295);
   }
@@ -323,8 +323,8 @@ public final class h
   public final void resume()
   {
     AppMethodBeat.i(28298);
-    if (this.iOv != null) {
-      this.iOv.a(this.gmA, true);
+    if (this.lEL != null) {
+      this.lEL.a(this.iQJ, true);
     }
     AppMethodBeat.o(28298);
   }
@@ -335,10 +335,10 @@ public final class h
     Log.i("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService][shakezb]:start");
     init();
     reset();
-    if (this.iOv == null) {
-      eTP();
+    if (this.lEL == null) {
+      cFO();
     }
-    this.iOv.b(this.gmA, true);
+    this.lEL.b(this.iQJ, true);
     Object localObject;
     if ((!Build.VERSION.RELEASE.equals("6.0")) && (!Build.VERSION.RELEASE.equals("6.0.0")) && (Build.VERSION.SDK_INT >= 23))
     {
@@ -357,7 +357,7 @@ public final class h
           public final void run()
           {
             AppMethodBeat.i(28290);
-            h.a(h.this).f(null, 8L);
+            h.a(h.this).e(null, 8L);
             AppMethodBeat.o(28290);
           }
         }, 1000L);
@@ -372,7 +372,7 @@ public final class h
           public final void run()
           {
             AppMethodBeat.i(28291);
-            h.b(h.this).f(null, 9L);
+            h.b(h.this).e(null, 9L);
             AppMethodBeat.o(28291);
           }
         }, 1000L);
@@ -386,28 +386,39 @@ public final class h
           public final void run()
           {
             AppMethodBeat.i(28292);
-            h.c(h.this).f(null, 10L);
+            h.c(h.this).e(null, 10L);
             AppMethodBeat.o(28292);
           }
         }, 1000L);
         AppMethodBeat.o(28296);
         return;
       }
-      if (this.DiO != null) {}
-      for (int i = this.DiO.size();; i = 0)
+      if (this.Jou != null) {}
+      for (int i = this.Jou.size();; i = 0)
       {
         Log.i("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService][shakezb]:beaconCollection.size:%d", new Object[] { Integer.valueOf(i) });
-        this.DiN = new d(this.DiO, this.gmu, this.gmv, this.DgH);
-        bg.azz().a(this.DiN, 0);
+        this.Jot = new d(this.Jou, this.iQD, this.iQE, this.Jmn);
+        bh.aGY().a(this.Jot, 0);
         AppMethodBeat.o(28296);
         return;
       }
     }
   }
+  
+  public static final class a
+  {
+    public String JoA = "";
+    public double JoB = 0.0D;
+    public int JoC = 0;
+    public int oey = 0;
+    public int oez = 0;
+    public double paU = 0.0D;
+    public String uuid = null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.d.a.h
  * JD-Core Version:    0.7.0.1
  */

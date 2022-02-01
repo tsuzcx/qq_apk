@@ -7,16 +7,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class WebviewMpUI
   extends WebViewUI
 {
-  public final boolean cpz()
+  public final boolean cDX()
   {
     return true;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(211200);
+    AppMethodBeat.i(231415);
     super.onCreate(paramBundle);
-    AppMethodBeat.o(211200);
+    AppMethodBeat.o(231415);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

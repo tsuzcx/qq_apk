@@ -1,89 +1,155 @@
 package com.tencent.f.a;
 
-import com.tencent.f.i.j;
-import com.tencent.f.i.k;
-import com.tencent.f.j.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.Callable;
-import java.util.concurrent.TimeUnit;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class a
 {
-  private static long OD(long paramLong)
+  private Object Van;
+  private HashMap<String, Object> ZQI;
+  c ZQJ;
+  
+  public a()
   {
-    AppMethodBeat.i(183192);
-    long l = System.nanoTime();
-    if (paramLong < 4611686018427387903L) {}
+    AppMethodBeat.i(62812);
+    this.ZQI = new HashMap();
+    this.Van = new Object();
+    AppMethodBeat.o(62812);
+  }
+  
+  private void a(e parame)
+  {
+    AppMethodBeat.i(62815);
+    String str;
+    if ((parame != null) && (parame.topic != null))
+    {
+      System.currentTimeMillis();
+      str = parame.topic;
+    }
     for (;;)
     {
-      AppMethodBeat.o(183192);
-      return l + paramLong;
-      paramLong = 4611686018427387903L;
+      synchronized (this.Van)
+      {
+        localObject1 = this.ZQI.get(str);
+        if (localObject1 == null) {
+          break label171;
+        }
+        if ((localObject1 instanceof d))
+        {
+          locald = (d)localObject1;
+          localObject1 = null;
+          if (locald != null) {
+            locald.iq(str, parame.ZQL);
+          }
+          if (localObject1 != null)
+          {
+            localObject1 = ((LinkedList)localObject1).iterator();
+            if (((Iterator)localObject1).hasNext())
+            {
+              ((d)((Iterator)localObject1).next()).iq(str, parame.ZQL);
+              continue;
+            }
+          }
+        }
+        else
+        {
+          if (!(localObject1 instanceof List)) {
+            break label171;
+          }
+          localObject1 = (LinkedList)((LinkedList)localObject1).clone();
+          locald = null;
+        }
+      }
+      this.ZQJ.a(parame);
+      AppMethodBeat.o(62815);
+      return;
+      label171:
+      Object localObject1 = null;
+      d locald = null;
     }
   }
   
-  public static long a(long paramLong, TimeUnit paramTimeUnit)
+  public final void a(d paramd, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(183191);
-    if (paramTimeUnit == null)
+    AppMethodBeat.i(62813);
+    if (paramArrayOfString == null)
     {
-      paramLong = System.nanoTime();
-      AppMethodBeat.o(183191);
-      return paramLong;
+      AppMethodBeat.o(62813);
+      return;
     }
-    long l = paramLong;
-    if (paramLong < 0L) {
-      l = 0L;
+    for (;;)
+    {
+      int i;
+      Object localObject2;
+      Object localObject3;
+      synchronized (this.Van)
+      {
+        int j = paramArrayOfString.length;
+        i = 0;
+        if (i >= j) {
+          break label199;
+        }
+        localObject2 = paramArrayOfString[i];
+        if (localObject2 == null) {
+          break label208;
+        }
+        localObject3 = this.ZQI.get(localObject2);
+        if (localObject3 == null)
+        {
+          this.ZQI.put(localObject2, paramd);
+        }
+        else if ((localObject3 instanceof d))
+        {
+          localObject3 = (d)localObject3;
+          if (localObject3 == paramd)
+          {
+            AppMethodBeat.o(62813);
+            return;
+          }
+          LinkedList localLinkedList = new LinkedList();
+          localLinkedList.add(localObject3);
+          localLinkedList.add(paramd);
+          this.ZQI.put(localObject2, localLinkedList);
+        }
+      }
+      if ((localObject3 instanceof List))
+      {
+        localObject2 = (LinkedList)localObject3;
+        if (((LinkedList)localObject2).indexOf(paramd) >= 0)
+        {
+          AppMethodBeat.o(62813);
+          return;
+        }
+        ((LinkedList)localObject2).add(paramd);
+        break label208;
+        label199:
+        AppMethodBeat.o(62813);
+        return;
+      }
+      label208:
+      i += 1;
     }
-    paramLong = OD(paramTimeUnit.toNanos(l));
-    AppMethodBeat.o(183191);
-    return paramLong;
   }
   
-  public static <E> k<E> a(Callable<E> paramCallable, long paramLong, String paramString)
+  public final void b(String paramString, int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(183190);
-    if ((paramString == null) || (paramString.isEmpty()))
-    {
-      paramCallable = new k(paramCallable, a(paramLong, TimeUnit.MILLISECONDS), eC(paramCallable));
-      AppMethodBeat.o(183190);
-      return paramCallable;
-    }
-    paramCallable = new e(paramCallable, a(paramLong, TimeUnit.MILLISECONDS), paramString, eC(paramCallable));
-    AppMethodBeat.o(183190);
-    return paramCallable;
-  }
-  
-  public static k<?> d(Runnable paramRunnable, long paramLong, String paramString)
-  {
-    AppMethodBeat.i(183189);
-    if ((paramString == null) || (paramString.isEmpty()))
-    {
-      paramRunnable = new k(paramRunnable, a(paramLong, TimeUnit.MILLISECONDS), eC(paramRunnable));
-      AppMethodBeat.o(183189);
-      return paramRunnable;
-    }
-    paramRunnable = new e(paramRunnable, a(paramLong, TimeUnit.MILLISECONDS), paramString, eC(paramRunnable));
-    AppMethodBeat.o(183189);
-    return paramRunnable;
-  }
-  
-  public static boolean eC(Object paramObject)
-  {
-    AppMethodBeat.i(183193);
-    if ((paramObject instanceof j))
-    {
-      boolean bool = ((j)paramObject).axI();
-      AppMethodBeat.o(183193);
-      return bool;
-    }
-    AppMethodBeat.o(183193);
-    return true;
+    AppMethodBeat.i(62814);
+    e locale = (e)this.ZQJ.itt();
+    locale.topic = paramString;
+    locale.ZQL = paramInt;
+    locale.ZQM = 0;
+    locale.ZQN = 0;
+    locale.obj = paramObject;
+    a(locale);
+    AppMethodBeat.o(62814);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.f.a.a
  * JD-Core Version:    0.7.0.1
  */

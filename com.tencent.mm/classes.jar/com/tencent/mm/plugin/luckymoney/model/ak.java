@@ -1,118 +1,71 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.id_verify.util.RealnameGuideHelper;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class ak
-  extends ai
+  extends aj
 {
-  public int egZ;
-  public int eha;
-  public long eht;
-  public int qwe;
-  public String yQE;
-  public RealnameGuideHelper yRu;
-  public String yVb;
-  public i yVq;
-  public String yWL;
-  public String yWM;
-  public int yWN;
-  public String yWO;
-  public int yWP;
-  public String yWQ;
-  public String yWR;
-  public int yWS;
-  public q yWT;
-  
-  public ak(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  public ak(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
-    AppMethodBeat.i(65279);
-    this.yWT = null;
-    this.yQE = paramString1;
+    AppMethodBeat.i(65277);
     HashMap localHashMap = new HashMap();
-    localHashMap.put("sendId", paramString1);
-    if (!Util.isNullOrNil(paramString2)) {
-      localHashMap.put("nativeUrl", URLEncoder.encode(paramString2));
+    localHashMap.put("appId", paramString1);
+    localHashMap.put("timeStamp", paramString2);
+    localHashMap.put("nonceStr", paramString3);
+    if (paramString4 != null) {
+      localHashMap.put("package", URLEncoder.encode(paramString4));
     }
-    localHashMap.put("way", String.valueOf(paramInt));
-    localHashMap.put("channelId", "2");
-    localHashMap.put("package", paramString3);
-    localHashMap.put("sessionUserName", paramString4);
+    localHashMap.put("signType", paramString5);
+    if (paramString6 != null) {
+      localHashMap.put("paySign", URLEncoder.encode(paramString6));
+    }
+    localHashMap.put("way", "3");
+    if (paramString7 != null) {
+      localHashMap.put("jsapiH5Url", URLEncoder.encode(paramString7));
+    }
     setRequestData(localHashMap);
-    AppMethodBeat.o(65279);
+    AppMethodBeat.o(65277);
   }
   
-  public final int czE()
+  public ak(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
-    return 1;
+    AppMethodBeat.i(65278);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("appId", paramString1);
+    localHashMap.put("timeStamp", paramString2);
+    localHashMap.put("nonceStr", paramString3);
+    if (paramString4 != null) {
+      localHashMap.put("package", URLEncoder.encode(paramString4));
+    }
+    localHashMap.put("signType", paramString5);
+    if (paramString6 != null) {
+      localHashMap.put("paySign", URLEncoder.encode(paramString6));
+    }
+    localHashMap.put("way", "4");
+    if (paramString7 != null) {
+      localHashMap.put("androidSign", URLEncoder.encode(paramString7));
+    }
+    if (paramString8 != null) {
+      localHashMap.put("androidPackage", URLEncoder.encode(paramString8));
+    }
+    setRequestData(localHashMap);
+    AppMethodBeat.o(65278);
   }
   
-  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
+  public final int cOe()
   {
-    AppMethodBeat.i(65280);
-    this.yWL = paramJSONObject.optString("spidName");
-    this.egZ = paramJSONObject.optInt("hbStatus");
-    this.eha = paramJSONObject.optInt("receiveStatus");
-    this.yVb = paramJSONObject.optString("statusMess");
-    this.yWM = paramJSONObject.optString("hintMess");
-    this.eht = paramJSONObject.optLong("amount");
-    this.yWN = paramJSONObject.optInt("recNum");
-    this.qwe = paramJSONObject.optInt("totalNum");
-    this.yVq = new i();
-    paramString = paramJSONObject.optJSONObject("atomicFunc");
-    if (paramString != null)
-    {
-      this.yVq.gGn = paramString.optInt("enable");
-      this.yVq.yUH = paramString.optString("fissionContent");
-      this.yVq.yUG = paramString.optString("fissionUrl");
-    }
-    this.yWP = paramJSONObject.optInt("focusFlag");
-    this.yWQ = paramJSONObject.optString("focusWording");
-    this.yWR = paramJSONObject.optString("focusAppidUserName");
-    this.yWS = paramJSONObject.optInt("isFocus");
-    this.yWO = paramJSONObject.optString("smallHbButtonMess");
-    try
-    {
-      this.yWT = ac.aY(paramJSONObject);
-      this.yWT.yVe = paramJSONObject.optString("spidLogo");
-      this.yWT.yVd = paramJSONObject.optString("spidName");
-      this.yWT.yPK = paramJSONObject.optString("spidWishing");
-      if ((paramInt == 0) && (paramJSONObject.has("real_name_info")))
-      {
-        Object localObject = paramJSONObject.optJSONObject("real_name_info");
-        if (localObject != null)
-        {
-          paramString = ((JSONObject)localObject).optString("guide_flag");
-          paramJSONObject = ((JSONObject)localObject).optString("guide_wording");
-          String str1 = ((JSONObject)localObject).optString("left_button_wording");
-          String str2 = ((JSONObject)localObject).optString("right_button_wording");
-          localObject = ((JSONObject)localObject).optString("upload_credit_url");
-          this.yRu = new RealnameGuideHelper();
-          this.yRu.b(paramString, paramJSONObject, str1, str2, (String)localObject, 1005);
-        }
-      }
-      AppMethodBeat.o(65280);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        Log.w("MicroMsg.NetSceneLuckyMoneyBusiBase", "parse luckyMoneyDetail fail: " + paramString.getLocalizedMessage());
-      }
-    }
+    return 2;
   }
+  
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.ak
  * JD-Core Version:    0.7.0.1
  */

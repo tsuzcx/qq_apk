@@ -5,34 +5,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.multitask.b.c;
 import com.tencent.mm.plugin.multitask.f.b;
 import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
-import com.tencent.mm.protocal.protobuf.fah;
+import com.tencent.mm.protocal.protobuf.fky;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.e.p;
+import com.tencent.mm.ui.f.r;
 import java.util.HashSet;
 import java.util.Set;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/luggage/LuggageWebViewMultiTaskHelper;", "Lcom/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper;", "page", "Lcom/tencent/mm/plugin/webview/luggage/LuggageMMWebPage;", "adapter", "Lcom/tencent/mm/plugin/multitask/adapter/IMultiTaskPageAdapter;", "(Lcom/tencent/mm/plugin/webview/luggage/LuggageMMWebPage;Lcom/tencent/mm/plugin/multitask/adapter/IMultiTaskPageAdapter;)V", "iconFromJsApi", "", "isSupportMultiTaskFBMenu", "", "()Z", "isSupportSwipeToMultiTask", "webMultiTaskData", "Lcom/tencent/mm/protocal/protobuf/WebMultiTaskData;", "fillMultiTaskInfo", "", "getTaskId", "isSupportSwipeToHome", "onClose", "way", "", "ended", "onCreate", "multiTaskType", "multiTaskId", "onMenuMultiTaskSelected", "enterMultiTask", "setIconFromJsApi", "icon", "setIconFromPreverify", "Companion", "plugin-webview_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/luggage/LuggageWebViewMultiTaskHelper;", "Lcom/tencent/mm/plugin/multitask/helper/PageMultiTaskHelper;", "page", "Lcom/tencent/mm/plugin/webview/luggage/LuggageMMWebPage;", "adapter", "Lcom/tencent/mm/plugin/multitask/adapter/IMultiTaskPageAdapter;", "(Lcom/tencent/mm/plugin/webview/luggage/LuggageMMWebPage;Lcom/tencent/mm/plugin/multitask/adapter/IMultiTaskPageAdapter;)V", "iconFromJsApi", "", "isSupportMultiTaskFBMenu", "", "()Z", "isSupportSwipeToMultiTask", "webMultiTaskData", "Lcom/tencent/mm/protocal/protobuf/WebMultiTaskData;", "fillMultiTaskInfo", "", "getTaskId", "isSupportSwipeToHome", "onClose", "way", "", "ended", "onCreate", "multiTaskType", "multiTaskId", "onMenuMultiTaskSelected", "enterMultiTask", "setIconFromJsApi", "icon", "setIconFromPreverify", "Companion", "plugin-webview_release"})
 public final class t
   extends c
 {
-  private static final Set<String> IUM;
-  private static final String IVd = "wx62d9035fd4fd2059";
-  public static final t.a IVe;
+  private static final Set<String> PRd;
+  private static final String PRt = "wx62d9035fd4fd2059";
+  public static final a PRu;
   private static final String TAG = "MicroMsg.LuggageWebViewMultiTaskHelper";
-  private final g IVa;
-  private final fah IVb;
-  public String IVc;
+  private final g PRq;
+  private final fky PRr;
+  public String PRs;
   
   static
   {
-    AppMethodBeat.i(210319);
-    IVe = new t.a((byte)0);
+    AppMethodBeat.i(267918);
+    PRu = new a((byte)0);
     TAG = "MicroMsg.LuggageWebViewMultiTaskHelper";
-    IVd = "wx62d9035fd4fd2059";
+    PRt = "wx62d9035fd4fd2059";
     Set localSet = (Set)new HashSet();
-    IUM = localSet;
+    PRd = localSet;
     localSet.add("title");
     localSet.add("webpageTitle");
     localSet.add("hide_option_menu");
@@ -42,64 +42,60 @@ public final class t
     localSet.add("mode");
     localSet.add("KTemplateId");
     localSet.add("KPublisherId");
-    String str = e.p.Ozw;
-    p.g(str, "ConstantsUI.WebViewUI.KTmplScene");
+    String str = f.r.VSK;
+    p.j(str, "ConstantsUI.WebViewUI.KTmplScene");
     localSet.add(str);
-    str = e.p.Ozx;
-    p.g(str, "ConstantsUI.WebViewUI.KTmplSubScene");
+    str = f.r.VSL;
+    p.j(str, "ConstantsUI.WebViewUI.KTmplSubScene");
     localSet.add(str);
     localSet.add("pay_channel");
     localSet.add("key_download_restrict");
     localSet.add("key_wallet_region");
     localSet.add("key_function_id");
-    str = e.p.OzA;
-    p.g(str, "ConstantsUI.WebViewUI.KTmplItemShowType");
+    str = f.r.VSO;
+    p.j(str, "ConstantsUI.WebViewUI.KTmplItemShowType");
     localSet.add(str);
     localSet.add("geta8key_scene");
-    localSet.add("biz_video_msg_id");
-    localSet.add("biz_video_msg_index");
-    localSet.add("biz_video_msg_svr_id");
-    localSet.add("biz_mp_msg_info");
-    str = e.p.OzI;
-    p.g(str, "ConstantsUI.WebViewUI.KAdUxInfoForJsApiPay");
+    str = f.r.VSW;
+    p.j(str, "ConstantsUI.WebViewUI.KAdUxInfoForJsApiPay");
     localSet.add(str);
     localSet.add("key_menu_hide_expose");
     localSet.add("webviewCurrentProcess");
-    AppMethodBeat.o(210319);
+    AppMethodBeat.o(267918);
   }
   
   public t(g paramg, com.tencent.mm.plugin.multitask.a.a parama)
   {
     super(parama);
-    AppMethodBeat.i(210318);
-    this.IVa = paramg;
-    this.IVb = new fah();
-    paramg = this.Aak;
+    AppMethodBeat.i(267917);
+    this.PRq = paramg;
+    this.PRr = new fky();
+    paramg = this.FGb;
     if (paramg != null) {}
     for (paramg = paramg.getIntent();; paramg = null)
     {
       if (paramg != null)
       {
-        paramg = this.Aak;
+        paramg = this.FGb;
         if (paramg == null) {
-          p.hyc();
+          p.iCn();
         }
         paramg = paramg.getIntent();
         if (paramg == null) {
-          p.hyc();
+          p.iCn();
         }
-        b.b(paramg, this.IVb);
+        b.b(paramg, this.PRr);
       }
-      AppMethodBeat.o(210318);
+      AppMethodBeat.o(267917);
       return;
     }
   }
   
-  public final void G(int paramInt, String paramString)
+  public final void I(int paramInt, String paramString)
   {
-    AppMethodBeat.i(210312);
-    super.G(paramInt, paramString);
-    paramString = this.Aak;
+    AppMethodBeat.i(267909);
+    super.I(paramInt, paramString);
+    paramString = this.FGb;
     if (paramString != null)
     {
       paramString = paramString.getIntent();
@@ -108,87 +104,90 @@ public final class t
     for (paramString = (MultiTaskInfo)paramString.getParcelableExtra("KMutilTaskInfo");; paramString = null)
     {
       if (paramString != null) {
-        this.Abp = paramString;
+        this.FHd = paramString;
       }
-      AppMethodBeat.o(210312);
+      AppMethodBeat.o(267909);
       return;
     }
   }
   
-  public final boolean O(int paramInt, boolean paramBoolean)
+  public final boolean Q(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(210314);
-    bPu();
-    paramBoolean = super.O(paramInt, paramBoolean);
-    AppMethodBeat.o(210314);
+    AppMethodBeat.i(267912);
+    cbL();
+    paramBoolean = super.Q(paramInt, paramBoolean);
+    AppMethodBeat.o(267912);
     return paramBoolean;
   }
   
-  public final boolean bPp()
+  public final String bsL()
   {
-    AppMethodBeat.i(210315);
-    boolean bool = this.IVa.cpz();
-    AppMethodBeat.o(210315);
-    return bool;
-  }
-  
-  public final boolean bPq()
-  {
-    AppMethodBeat.i(210316);
-    boolean bool = this.IVa.cpz();
-    AppMethodBeat.o(210316);
-    return bool;
-  }
-  
-  public final void bPu()
-  {
-    AppMethodBeat.i(210317);
-    try
-    {
-      this.IVb.edo = this.IVa.coX();
-      this.IVb.title = this.IVa.getTitle();
-      MultiTaskInfo localMultiTaskInfo = this.Abp;
-      if (localMultiTaskInfo != null)
-      {
-        localMultiTaskInfo.field_data = this.IVb.toByteArray();
-        AppMethodBeat.o(210317);
-        return;
-      }
-      AppMethodBeat.o(210317);
-      return;
-    }
-    catch (Exception localException)
-    {
-      Log.e("MicroMsg.WebMultiTaskHelper", "onMenuMultiTaskSelected error, ex = " + localException.getMessage());
-      AppMethodBeat.o(210317);
-    }
-  }
-  
-  public final String bjl()
-  {
-    MultiTaskInfo localMultiTaskInfo = this.Abp;
+    MultiTaskInfo localMultiTaskInfo = this.FHd;
     if (localMultiTaskInfo != null) {
       return localMultiTaskInfo.field_id;
     }
     return null;
   }
   
-  public final boolean dki()
+  public final boolean cbG()
+  {
+    AppMethodBeat.i(267913);
+    boolean bool = this.PRq.cDX();
+    AppMethodBeat.o(267913);
+    return bool;
+  }
+  
+  public final boolean cbH()
+  {
+    AppMethodBeat.i(267915);
+    boolean bool = this.PRq.cDX();
+    AppMethodBeat.o(267915);
+    return bool;
+  }
+  
+  public final void cbL()
+  {
+    AppMethodBeat.i(267916);
+    try
+    {
+      this.PRr.fXu = this.PRq.cDu();
+      this.PRr.title = this.PRq.getTitle();
+      MultiTaskInfo localMultiTaskInfo = this.FHd;
+      if (localMultiTaskInfo != null)
+      {
+        localMultiTaskInfo.field_data = this.PRr.toByteArray();
+        AppMethodBeat.o(267916);
+        return;
+      }
+      AppMethodBeat.o(267916);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.WebMultiTaskHelper", "onMenuMultiTaskSelected error, ex = " + localException.getMessage());
+      AppMethodBeat.o(267916);
+    }
+  }
+  
+  public final boolean dJN()
   {
     return true;
   }
   
-  public final void ic(boolean paramBoolean)
+  public final void iW(boolean paramBoolean)
   {
-    AppMethodBeat.i(210313);
-    bPu();
-    super.ic(paramBoolean);
-    AppMethodBeat.o(210313);
+    AppMethodBeat.i(267911);
+    cbL();
+    super.iW(paramBoolean);
+    AppMethodBeat.o(267911);
   }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/luggage/LuggageWebViewMultiTaskHelper$Companion;", "", "()V", "GAME_APPID", "", "getGAME_APPID", "()Ljava/lang/String;", "TAG", "getTAG", "sSavedKeysForWebPage", "", "plugin-webview_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.t
  * JD-Core Version:    0.7.0.1
  */

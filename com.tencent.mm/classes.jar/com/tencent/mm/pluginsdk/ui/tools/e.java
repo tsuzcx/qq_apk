@@ -8,6 +8,7 @@ import com.tencent.mm.b.g;
 import com.tencent.mm.platformtools.s;
 import com.tencent.mm.platformtools.s.a;
 import com.tencent.mm.platformtools.s.b;
+import com.tencent.mm.plugin.comm.c.d;
 import com.tencent.mm.plugin.image.d;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
@@ -15,13 +16,13 @@ public final class e
   implements s
 {
   private int height;
-  private String tev;
   private String url;
+  private String wKH;
   private int width;
   
   public e(String paramString1, String paramString2)
   {
-    this.tev = paramString1;
+    this.wKH = paramString1;
     this.url = paramString2;
     this.width = 0;
     this.height = 0;
@@ -35,7 +36,7 @@ public final class e
     //   2: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
     //   6: astore_3
-    //   7: getstatic 45	com/tencent/mm/platformtools/s$a:jNh	Lcom/tencent/mm/platformtools/s$a;
+    //   7: getstatic 45	com/tencent/mm/platformtools/s$a:mEp	Lcom/tencent/mm/platformtools/s$a;
     //   10: aload_2
     //   11: if_acmpne +143 -> 154
     //   14: aload_1
@@ -76,23 +77,23 @@ public final class e
     //   71: astore_2
     //   72: aload_2
     //   73: astore_3
-    //   74: new 63	com/tencent/mm/vfs/o
+    //   74: new 63	com/tencent/mm/vfs/q
     //   77: dup
     //   78: aload_0
-    //   79: invokevirtual 67	com/tencent/mm/pluginsdk/ui/tools/e:blA	()Ljava/lang/String;
-    //   82: invokespecial 70	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   79: invokevirtual 67	com/tencent/mm/pluginsdk/ui/tools/e:bvq	()Ljava/lang/String;
+    //   82: invokespecial 70	com/tencent/mm/vfs/q:<init>	(Ljava/lang/String;)V
     //   85: astore 5
     //   87: aload_2
     //   88: astore_3
     //   89: aload 5
-    //   91: invokevirtual 74	com/tencent/mm/vfs/o:createNewFile	()Z
+    //   91: invokevirtual 74	com/tencent/mm/vfs/q:ifM	()Z
     //   94: pop
     //   95: aconst_null
     //   96: astore 4
     //   98: aconst_null
     //   99: astore_1
     //   100: aload 5
-    //   102: invokestatic 80	com/tencent/mm/vfs/s:ap	(Lcom/tencent/mm/vfs/o;)Ljava/io/OutputStream;
+    //   102: invokestatic 80	com/tencent/mm/vfs/u:an	(Lcom/tencent/mm/vfs/q;)Ljava/io/OutputStream;
     //   105: astore 5
     //   107: aload 5
     //   109: astore_1
@@ -197,56 +198,51 @@ public final class e
     //   165	177	210	finally
   }
   
-  public final void a(s.a parama, String paramString) {}
+  public final void a(s.a parama) {}
   
-  public final void ad(String paramString, boolean paramBoolean) {}
-  
-  public final String blA()
-  {
-    AppMethodBeat.i(152382);
-    String str = d.aSY() + "/" + g.getMessageDigest(this.url.getBytes());
-    AppMethodBeat.o(152382);
-    return str;
-  }
-  
-  public final String blB()
-  {
-    return this.url;
-  }
-  
-  public final String blC()
-  {
-    return this.tev;
-  }
-  
-  public final boolean blD()
-  {
-    return true;
-  }
-  
-  public final boolean blE()
-  {
-    return false;
-  }
-  
-  public final Bitmap blF()
-  {
-    AppMethodBeat.i(152383);
-    Bitmap localBitmap = BitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), 2131234281);
-    AppMethodBeat.o(152383);
-    return localBitmap;
-  }
-  
-  public final void blG() {}
-  
-  public final s.b blz()
+  public final s.b bvp()
   {
     return null;
   }
   
+  public final String bvq()
+  {
+    AppMethodBeat.i(152382);
+    String str = d.bbW() + "/" + g.getMessageDigest(this.url.getBytes());
+    AppMethodBeat.o(152382);
+    return str;
+  }
+  
+  public final String bvr()
+  {
+    return this.url;
+  }
+  
+  public final String bvs()
+  {
+    return this.wKH;
+  }
+  
+  public final boolean bvt()
+  {
+    return true;
+  }
+  
+  public final Bitmap bvu()
+  {
+    AppMethodBeat.i(152383);
+    Bitmap localBitmap = BitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), c.d.nosdcard_headimg);
+    AppMethodBeat.o(152383);
+    return localBitmap;
+  }
+  
+  public final void bvv() {}
+  
+  public final void bvw() {}
+  
   public final String getCacheKey()
   {
-    return this.tev;
+    return this.wKH;
   }
 }
 

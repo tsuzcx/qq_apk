@@ -5,17 +5,17 @@ import org.json.JSONObject;
 
 public final class i
 {
-  String csx;
-  private JSONObject csy;
+  String cqC;
+  private JSONObject cqD;
   
   i(m paramm)
   {
     AppMethodBeat.i(140324);
-    paramm = paramm.KX();
-    this.csx = paramm.getString("event");
-    this.csy = paramm.optJSONObject("data");
-    if (this.csy == null) {
-      this.csy = new JSONObject();
+    paramm = paramm.NN();
+    this.cqC = paramm.getString("event");
+    this.cqD = paramm.optJSONObject("data");
+    if (this.cqD == null) {
+      this.cqD = new JSONObject();
     }
     AppMethodBeat.o(140324);
   }

@@ -6,7 +6,7 @@ public abstract interface a
   
   public abstract int a(com.tencent.thumbplayer.a.b paramb, com.tencent.thumbplayer.a.b.a.b paramb1);
   
-  public abstract int[] hnd();
+  public abstract int[] iqE();
 }
 
 

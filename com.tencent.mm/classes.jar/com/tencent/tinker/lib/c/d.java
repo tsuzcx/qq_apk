@@ -41,7 +41,7 @@ public final class d
     //   60: invokevirtual 53	java/io/File:mkdirs	()Z
     //   63: pop
     //   64: aload_0
-    //   65: invokestatic 59	com/tencent/tinker/lib/e/a:lk	(Landroid/content/Context;)Lcom/tencent/tinker/lib/e/a;
+    //   65: invokestatic 59	com/tencent/tinker/lib/e/a:mi	(Landroid/content/Context;)Lcom/tencent/tinker/lib/e/a;
     //   68: astore 10
     //   70: aload_0
     //   71: invokevirtual 65	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
@@ -117,10 +117,10 @@ public final class d
     //   217: aastore
     //   218: invokestatic 42	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   221: aload 10
-    //   223: getfield 127	com/tencent/tinker/lib/e/a:SjV	Lcom/tencent/tinker/lib/d/d;
+    //   223: getfield 127	com/tencent/tinker/lib/e/a:ZMG	Lcom/tencent/tinker/lib/d/d;
     //   226: aload_3
     //   227: iconst_5
-    //   228: invokestatic 131	com/tencent/tinker/lib/c/c:asu	(I)I
+    //   228: invokestatic 131	com/tencent/tinker/lib/c/c:aCh	(I)I
     //   231: invokeinterface 137 3 0
     //   236: aload_2
     //   237: invokestatic 141	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
@@ -257,7 +257,7 @@ public final class d
     //   521: anewarray 30	java/lang/Object
     //   524: invokestatic 42	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   527: aload 10
-    //   529: getfield 127	com/tencent/tinker/lib/e/a:SjV	Lcom/tencent/tinker/lib/d/d;
+    //   529: getfield 127	com/tencent/tinker/lib/e/a:ZMG	Lcom/tencent/tinker/lib/d/d;
     //   532: aload_3
     //   533: aload 14
     //   535: aload 12
@@ -299,7 +299,7 @@ public final class d
     //   617: anewarray 30	java/lang/Object
     //   620: invokestatic 42	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   623: aload 10
-    //   625: getfield 127	com/tencent/tinker/lib/e/a:SjV	Lcom/tencent/tinker/lib/d/d;
+    //   625: getfield 127	com/tencent/tinker/lib/e/a:ZMG	Lcom/tencent/tinker/lib/d/d;
     //   628: aload_3
     //   629: aload 14
     //   631: aload 12
@@ -335,10 +335,10 @@ public final class d
     //   688: aastore
     //   689: invokestatic 42	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   692: aload 10
-    //   694: getfield 127	com/tencent/tinker/lib/e/a:SjV	Lcom/tencent/tinker/lib/d/d;
+    //   694: getfield 127	com/tencent/tinker/lib/e/a:ZMG	Lcom/tencent/tinker/lib/d/d;
     //   697: aload_3
     //   698: iconst_5
-    //   699: invokestatic 131	com/tencent/tinker/lib/c/c:asu	(I)I
+    //   699: invokestatic 131	com/tencent/tinker/lib/c/c:aCh	(I)I
     //   702: invokeinterface 137 3 0
     //   707: aload_2
     //   708: invokestatic 141	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
@@ -361,7 +361,7 @@ public final class d
     //   742: anewarray 30	java/lang/Object
     //   745: invokestatic 42	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   748: aload 10
-    //   750: getfield 127	com/tencent/tinker/lib/e/a:SjV	Lcom/tencent/tinker/lib/d/d;
+    //   750: getfield 127	com/tencent/tinker/lib/e/a:ZMG	Lcom/tencent/tinker/lib/d/d;
     //   753: aload_3
     //   754: aload 14
     //   756: aload 12
@@ -401,9 +401,9 @@ public final class d
     //   823: iconst_2
     //   824: aload 8
     //   826: aastore
-    //   827: invokestatic 231	com/tencent/tinker/loader/shareutil/ShareTinkerLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   827: invokestatic 232	com/tencent/tinker/loader/shareutil/ShareTinkerLog:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   830: aload 10
-    //   832: getfield 127	com/tencent/tinker/lib/e/a:SjV	Lcom/tencent/tinker/lib/d/d;
+    //   832: getfield 127	com/tencent/tinker/lib/e/a:ZMG	Lcom/tencent/tinker/lib/d/d;
     //   835: aload_3
     //   836: aload 14
     //   838: aload 12
@@ -424,7 +424,7 @@ public final class d
     //   868: astore_0
     //   869: aload_2
     //   870: aload 9
-    //   872: invokevirtual 235	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   872: invokevirtual 236	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   875: astore 9
     //   877: aload 8
     //   879: astore_0
@@ -432,7 +432,7 @@ public final class d
     //   882: astore 7
     //   884: aload 6
     //   886: aload 15
-    //   888: invokevirtual 235	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   888: invokevirtual 236	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   891: astore 8
     //   893: aload 8
     //   895: astore_0
@@ -441,20 +441,20 @@ public final class d
     //   900: aload 9
     //   902: aload 8
     //   904: aload 14
-    //   906: invokestatic 240	com/tencent/tinker/b/a:a	(Ljava/io/InputStream;Ljava/io/InputStream;Ljava/io/File;)I
+    //   906: invokestatic 241	com/tencent/tinker/b/a:a	(Ljava/io/InputStream;Ljava/io/InputStream;Ljava/io/File;)I
     //   909: pop
     //   910: aload 9
-    //   912: invokestatic 246	com/tencent/tinker/c/b/b:closeQuietly	(Ljava/lang/Object;)V
+    //   912: invokestatic 247	com/tencent/tinker/c/b/b:closeQuietly	(Ljava/lang/Object;)V
     //   915: aload 8
-    //   917: invokestatic 246	com/tencent/tinker/c/b/b:closeQuietly	(Ljava/lang/Object;)V
+    //   917: invokestatic 247	com/tencent/tinker/c/b/b:closeQuietly	(Ljava/lang/Object;)V
     //   920: aload 14
     //   922: aload 13
-    //   924: invokestatic 250	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:verifyFileMd5	(Ljava/io/File;Ljava/lang/String;)Z
+    //   924: invokestatic 251	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:verifyFileMd5	(Ljava/io/File;Ljava/lang/String;)Z
     //   927: ifne +80 -> 1007
     //   930: ldc 26
     //   932: new 143	java/lang/StringBuilder
     //   935: dup
-    //   936: ldc 252
+    //   936: ldc 253
     //   938: invokespecial 168	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   941: aload 14
     //   943: invokevirtual 163	java/io/File:getPath	()Ljava/lang/String;
@@ -464,7 +464,7 @@ public final class d
     //   953: anewarray 30	java/lang/Object
     //   956: invokestatic 42	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   959: aload 10
-    //   961: getfield 127	com/tencent/tinker/lib/e/a:SjV	Lcom/tencent/tinker/lib/d/d;
+    //   961: getfield 127	com/tencent/tinker/lib/e/a:ZMG	Lcom/tencent/tinker/lib/d/d;
     //   964: aload_3
     //   965: aload 14
     //   967: aload 12
@@ -472,7 +472,7 @@ public final class d
     //   972: iconst_5
     //   973: invokeinterface 203 5 0
     //   978: aload 14
-    //   980: invokestatic 256	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:safeDeleteFile	(Ljava/io/File;)Z
+    //   980: invokestatic 257	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:safeDeleteFile	(Ljava/io/File;)Z
     //   983: pop
     //   984: aload_2
     //   985: invokestatic 141	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
@@ -482,13 +482,13 @@ public final class d
     //   994: ireturn
     //   995: astore_1
     //   996: aload 7
-    //   998: invokestatic 246	com/tencent/tinker/c/b/b:closeQuietly	(Ljava/lang/Object;)V
+    //   998: invokestatic 247	com/tencent/tinker/c/b/b:closeQuietly	(Ljava/lang/Object;)V
     //   1001: aload_0
-    //   1002: invokestatic 246	com/tencent/tinker/c/b/b:closeQuietly	(Ljava/lang/Object;)V
+    //   1002: invokestatic 247	com/tencent/tinker/c/b/b:closeQuietly	(Ljava/lang/Object;)V
     //   1005: aload_1
     //   1006: athrow
     //   1007: ldc 26
-    //   1009: ldc_w 258
+    //   1009: ldc_w 259
     //   1012: iconst_2
     //   1013: anewarray 30	java/lang/Object
     //   1016: dup
@@ -501,7 +501,7 @@ public final class d
     //   1026: invokestatic 98	java/lang/System:currentTimeMillis	()J
     //   1029: lload 4
     //   1031: lsub
-    //   1032: invokestatic 263	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1032: invokestatic 264	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   1035: aastore
     //   1036: invokestatic 42	com/tencent/tinker/loader/shareutil/ShareTinkerLog:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1039: goto -913 -> 126
@@ -602,7 +602,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.lib.c.d
  * JD-Core Version:    0.7.0.1
  */

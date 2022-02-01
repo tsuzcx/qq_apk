@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.cce;
-import com.tencent.mm.protocal.protobuf.ejp;
-import com.tencent.mm.protocal.protobuf.ejq;
+import com.tencent.mm.protocal.protobuf.ckh;
+import com.tencent.mm.protocal.protobuf.ett;
+import com.tencent.mm.protocal.protobuf.etu;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class n
@@ -19,32 +19,32 @@ public final class n
   implements m
 {
   private i callback;
-  public String dGL;
-  public int rAw;
+  public String fzB;
   d rr;
+  public int vgd;
   
-  public n(cce paramcce, String paramString1, String paramString2, int paramInt)
+  public n(ckh paramckh, String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(23388);
     this.callback = null;
     this.rr = null;
-    this.dGL = null;
-    this.rAw = 0;
+    this.fzB = null;
+    this.vgd = 0;
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new ejp();
-    ((d.a)localObject).iLO = new ejq();
+    ((d.a)localObject).lBU = new ett();
+    ((d.a)localObject).lBV = new etu();
     ((d.a)localObject).uri = "/cgi-bin/mmoc-bin/hardware/transfermsgtodevice";
     ((d.a)localObject).funcId = 1717;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (ejp)this.rr.iLK.iLR;
-    ((ejp)localObject).KLO = paramString1;
-    ((ejp)localObject).Lox = paramString2;
-    ((ejp)localObject).NiV = paramcce;
-    ((ejp)localObject).NiW = paramInt;
-    this.dGL = paramString2;
-    this.rAw = paramInt;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (ett)d.b.b(this.rr.lBR);
+    ((ett)localObject).RMK = paramString1;
+    ((ett)localObject).SpT = paramString2;
+    ((ett)localObject).UvD = paramckh;
+    ((ett)localObject).UvE = paramInt;
+    this.fzB = paramString2;
+    this.vgd = paramInt;
     AppMethodBeat.o(23388);
   }
   
@@ -72,7 +72,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.n
  * JD-Core Version:    0.7.0.1
  */

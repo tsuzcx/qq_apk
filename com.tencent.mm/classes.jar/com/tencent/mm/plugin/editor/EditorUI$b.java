@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(181553);
-    qOd = new b("TYPE_THUMB", 0);
-    qOe = new b("TYPE_FILE", 1);
-    qOf = new b[] { qOd, qOe };
+    upq = new b("TYPE_THUMB", 0);
+    upr = new b("TYPE_FILE", 1);
+    ups = new b[] { upq, upr };
     AppMethodBeat.o(181553);
   }
   
@@ -17,7 +17,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.EditorUI.b
  * JD-Core Version:    0.7.0.1
  */

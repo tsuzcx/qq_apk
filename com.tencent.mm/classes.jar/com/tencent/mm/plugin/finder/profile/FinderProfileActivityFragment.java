@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.finder.profile;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.profile.uic.FinderProfileActivityUIC;
+import com.tencent.mm.plugin.finder.profile.uic.b;
 import com.tencent.mm.plugin.finder.ui.fragment.FinderHomeTabFragment;
 import com.tencent.mm.ui.component.UIComponent;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import java.util.Set;
 import kotlin.a.ak;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/profile/FinderProfileActivityFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/profile/FinderProfileActivityFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "plugin-finder_release"})
 public final class FinderProfileActivityFragment
   extends FinderHomeTabFragment
 {
@@ -17,23 +17,23 @@ public final class FinderProfileActivityFragment
   
   public FinderProfileActivityFragment()
   {
-    this.dLS = 107;
+    this.fEH = 107;
   }
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(249962);
+    AppMethodBeat.i(276498);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(249962);
+    AppMethodBeat.o(276498);
   }
   
   public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(249961);
-    Set localSet = ak.setOf(FinderProfileActivityUIC.class);
-    AppMethodBeat.o(249961);
+    AppMethodBeat.i(276496);
+    Set localSet = ak.setOf(b.class);
+    AppMethodBeat.o(276496);
     return localSet;
   }
 }

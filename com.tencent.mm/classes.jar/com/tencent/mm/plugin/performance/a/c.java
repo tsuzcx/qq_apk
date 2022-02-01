@@ -4,15 +4,15 @@ import java.util.Map;
 
 public abstract interface c
 {
-  public abstract void aA(Map<String, String> paramMap);
+  public abstract void au(Map<String, String> paramMap);
   
-  public abstract String eBC();
+  public abstract String fnm();
   
-  public abstract void eBD();
+  public abstract void fnn();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.a.c
  * JD-Core Version:    0.7.0.1
  */

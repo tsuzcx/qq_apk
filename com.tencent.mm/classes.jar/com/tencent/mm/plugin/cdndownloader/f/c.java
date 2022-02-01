@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.cdndownloader.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 
@@ -21,7 +22,12 @@ public final class c
     super(paramISQLiteDatabase, a.info, "CdnDownloadInfo", null);
   }
   
-  public final boolean akw(String paramString)
+  public c(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString, String[] paramArrayOfString)
+  {
+    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, paramArrayOfString);
+  }
+  
+  public final boolean ask(String paramString)
   {
     AppMethodBeat.i(120814);
     boolean bool = execSQL("CdnDownloadInfo", String.format("delete from %s where %s=%s", new Object[] { "CdnDownloadInfo", "downloadUrlHashCode", Integer.valueOf(paramString.hashCode()) }));
@@ -31,7 +37,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.cdndownloader.f.c
  * JD-Core Version:    0.7.0.1
  */

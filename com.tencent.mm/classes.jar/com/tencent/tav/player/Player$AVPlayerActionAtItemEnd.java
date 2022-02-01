@@ -6,12 +6,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 {
   static
   {
-    AppMethodBeat.i(218552);
+    AppMethodBeat.i(192561);
     AVPlayerActionAtItemEndAdvance = new AVPlayerActionAtItemEnd("AVPlayerActionAtItemEndAdvance", 0);
     AVPlayerActionAtItemEndPause = new AVPlayerActionAtItemEnd("AVPlayerActionAtItemEndPause", 1);
     AVPlayerActionAtItemEndNone = new AVPlayerActionAtItemEnd("AVPlayerActionAtItemEndNone", 2);
     $VALUES = new AVPlayerActionAtItemEnd[] { AVPlayerActionAtItemEndAdvance, AVPlayerActionAtItemEndPause, AVPlayerActionAtItemEndNone };
-    AppMethodBeat.o(218552);
+    AppMethodBeat.o(192561);
   }
   
   private Player$AVPlayerActionAtItemEnd() {}

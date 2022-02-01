@@ -1,51 +1,51 @@
 package com.tencent.mm.plugin.story.f.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.cd.b;
 import com.tencent.mm.plugin.recordvideo.background.c;
-import com.tencent.mm.protocal.protobuf.aio;
-import com.tencent.mm.protocal.protobuf.dlg;
-import com.tencent.mm.protocal.protobuf.edt;
-import com.tencent.mm.protocal.protobuf.epc;
+import com.tencent.mm.protocal.protobuf.ajd;
+import com.tencent.mm.protocal.protobuf.duy;
+import com.tencent.mm.protocal.protobuf.enu;
+import com.tencent.mm.protocal.protobuf.ezn;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "", "localId", "", "storyId", "", "createTime", "username", "", "(IJILjava/lang/String;)V", "getCreateTime", "()I", "setCreateTime", "(I)V", "fakeVideoData", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "getFakeVideoData", "()Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "setFakeVideoData", "(Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;)V", "getLocalId", "setLocalId", "location", "Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;", "getLocation", "()Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;", "setLocation", "(Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;)V", "media", "Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "getMedia", "()Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "setMedia", "(Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;)V", "getStoryId", "()J", "taskId", "getTaskId", "()Ljava/lang/String;", "setTaskId", "(Ljava/lang/String;)V", "getUsername", "setUsername", "videoType", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoState;", "getVideoType", "()Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoState;", "setVideoType", "(Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoState;)V", "canPlay", "", "equals", "other", "hashCode", "isFakeVideo", "isImageVideo", "isNormalVideo", "isVLogFakeVideo", "toString", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "", "localId", "", "storyId", "", "createTime", "username", "", "(IJILjava/lang/String;)V", "getCreateTime", "()I", "setCreateTime", "(I)V", "fakeVideoData", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "getFakeVideoData", "()Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "setFakeVideoData", "(Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;)V", "getLocalId", "setLocalId", "location", "Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;", "getLocation", "()Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;", "setLocation", "(Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;)V", "media", "Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "getMedia", "()Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "setMedia", "(Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;)V", "getStoryId", "()J", "taskId", "getTaskId", "()Ljava/lang/String;", "setTaskId", "(Ljava/lang/String;)V", "getUsername", "setUsername", "videoType", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoState;", "getVideoType", "()Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoState;", "setVideoType", "(Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoState;)V", "canPlay", "", "equals", "other", "hashCode", "isFakeVideo", "isImageVideo", "isNormalVideo", "isVLogFakeVideo", "toString", "plugin-story_release"})
 public final class j
 {
-  dlg BKf;
-  public k Fpc;
-  public edt Fpd;
-  public c Fpe;
-  public int ecf;
-  public final long edx;
-  public int iXu;
+  duy HGp;
+  public k LJe;
+  public enu LJf;
+  public c LJg;
+  public int createTime;
+  public int fWh;
+  public final long fXG;
   public String taskId;
   public String username;
   
   public j(int paramInt1, long paramLong, int paramInt2, String paramString)
   {
     AppMethodBeat.i(118941);
-    this.ecf = paramInt1;
-    this.edx = paramLong;
-    this.iXu = paramInt2;
+    this.fWh = paramInt1;
+    this.fXG = paramLong;
+    this.createTime = paramInt2;
     this.username = paramString;
-    this.Fpc = k.Fpi;
-    paramString = new edt();
+    this.LJe = k.LJk;
+    paramString = new enu();
     paramString.Url = "";
-    paramString.Msz = "";
+    paramString.TDF = "";
     paramString.Id = "";
-    this.Fpd = paramString;
+    this.LJf = paramString;
     this.taskId = "";
     AppMethodBeat.o(118941);
   }
   
-  private boolean foU()
+  private boolean gdo()
   {
-    return this.Fpc == k.Fpi;
+    return this.LJe == k.LJk;
   }
   
   public final boolean equals(Object paramObject)
@@ -61,17 +61,17 @@ public final class j
       AppMethodBeat.o(118936);
       return true;
     }
-    if ((this.Fpc == k.Fpf) && (((j)paramObject).Fpc == k.Fpf))
+    if ((this.LJe == k.LJh) && (((j)paramObject).LJe == k.LJh))
     {
       AppMethodBeat.o(118936);
       return true;
     }
-    if ((foV()) && (((j)paramObject).foV()) && (Util.isEqual(this.taskId, ((j)paramObject).taskId)))
+    if ((gdp()) && (((j)paramObject).gdp()) && (Util.isEqual(this.taskId, ((j)paramObject).taskId)))
     {
       AppMethodBeat.o(118936);
       return true;
     }
-    if ((foU()) && (((j)paramObject).foU()) && (this.ecf == ((j)paramObject).ecf))
+    if ((gdo()) && (((j)paramObject).gdo()) && (this.fWh == ((j)paramObject).fWh))
     {
       AppMethodBeat.o(118936);
       return true;
@@ -80,25 +80,25 @@ public final class j
     return false;
   }
   
-  public final boolean foV()
+  public final boolean gdp()
   {
-    return this.Fpc == k.Fpg;
+    return this.LJe == k.LJi;
   }
   
-  public final boolean foW()
+  public final boolean gdq()
   {
-    return this.Fpc != k.Fpf;
+    return this.LJe != k.LJh;
   }
   
-  public final boolean foX()
+  public final boolean gdr()
   {
     AppMethodBeat.i(118939);
-    if (foV())
+    if (gdp())
     {
-      Object localObject = this.Fpe;
+      Object localObject = this.LJg;
       if (localObject != null)
       {
-        localObject = ((c)localObject).eII().Lsc;
+        localObject = ((c)localObject).fuN().StE;
         if ((localObject != null) && (((LinkedList)localObject).size() > 0))
         {
           Log.i("MicroMsg.Story.StoryVideoItem", "item" + this.taskId + " is fake imageVideo");
@@ -111,13 +111,13 @@ public final class j
     return false;
   }
   
-  public final boolean foY()
+  public final boolean gds()
   {
     AppMethodBeat.i(118940);
-    if (foV())
+    if (gdp())
     {
-      Object localObject4 = (a)new aio();
-      Object localObject1 = this.Fpe;
+      Object localObject4 = (a)new ajd();
+      Object localObject1 = this.LJg;
       if (localObject1 != null) {
         localObject1 = ((c)localObject1).field_baseItemData;
       }
@@ -125,11 +125,11 @@ public final class j
       {
         ((a)localObject4).parseFrom((byte[])localObject1);
         localObject1 = localObject4;
-        localObject4 = (aio)localObject1;
-        if ((localObject4 != null) && (((aio)localObject4).Lsd != null))
+        localObject4 = (ajd)localObject1;
+        if ((localObject4 != null) && (((ajd)localObject4).StF != null))
         {
-          localObject1 = (a)new epc();
-          localObject4 = ((aio)localObject4).Lsd.toByteArray();
+          localObject1 = (a)new ezn();
+          localObject4 = ((ajd)localObject4).StF.toByteArray();
         }
       }
       catch (Exception localException1)
@@ -139,7 +139,7 @@ public final class j
           for (;;)
           {
             ((a)localObject1).parseFrom((byte[])localObject4);
-            if ((epc)localObject1 == null) {
+            if ((ezn)localObject1 == null) {
               break;
             }
             Log.i("MicroMsg.Story.StoryVideoItem", "item" + this.taskId + " is fake isVLogFakeVideo");
@@ -177,7 +177,7 @@ public final class j
   public final String toString()
   {
     AppMethodBeat.i(118938);
-    String str = "[VideoItem=" + hashCode() + ",localId=:" + this.ecf + ",storyId=" + this.edx + ",videoType:=" + this.Fpc + ", username=" + this.username + ", url=" + this.Fpd.Url + ']';
+    String str = "[VideoItem=" + hashCode() + ",localId=:" + this.fWh + ",storyId=" + this.fXG + ",videoType:=" + this.LJe + ", username=" + this.username + ", url=" + this.LJf.Url + ']';
     AppMethodBeat.o(118938);
     return str;
   }

@@ -6,24 +6,24 @@ import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/loader/EmojiGroupData;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;)V", "getGroupInfo", "()Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "isLegal", "", "uniqueValue", "", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/loader/EmojiGroupData;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;)V", "getGroupInfo", "()Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "isLegal", "", "uniqueValue", "", "plugin-emojisdk_release"})
 public final class a
   implements c
 {
-  final EmojiGroupInfo gVA;
+  final EmojiGroupInfo jGw;
   
   public a(EmojiGroupInfo paramEmojiGroupInfo)
   {
     AppMethodBeat.i(105380);
-    this.gVA = paramEmojiGroupInfo;
+    this.jGw = paramEmojiGroupInfo;
     AppMethodBeat.o(105380);
   }
   
-  public final String auA()
+  public final String aBv()
   {
     AppMethodBeat.i(105379);
-    String str = this.gVA.hRu();
-    p.g(str, "groupInfo.productID");
+    String str = this.jGw.hBl();
+    p.j(str, "groupInfo.productID");
     AppMethodBeat.o(105379);
     return str;
   }

@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class InputPanelLinearLayout
   extends LinearLayout
-  implements b.a
+  implements c.a
 {
-  private b QBN;
-  private b.a QBO;
+  private c Yam;
+  private c.a Yan;
   
   public InputPanelLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -21,40 +21,40 @@ public class InputPanelLinearLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143334);
-    this.QBN = new b(this, this);
+    this.Yam = new c(this, this);
     AppMethodBeat.o(143334);
   }
   
-  public void f(boolean paramBoolean, int paramInt)
+  public c getInputPanelHelper()
   {
-    AppMethodBeat.i(182572);
-    if (this.QBO != null) {
-      this.QBO.f(paramBoolean, paramInt);
-    }
-    AppMethodBeat.o(182572);
+    return this.Yam;
   }
   
-  public b getInputPanelHelper()
+  public void h(boolean paramBoolean, int paramInt)
   {
-    return this.QBN;
+    AppMethodBeat.i(182572);
+    if (this.Yan != null) {
+      this.Yan.h(paramBoolean, paramInt);
+    }
+    AppMethodBeat.o(182572);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(143335);
-    this.QBN.aou(paramInt2);
+    this.Yam.axC(paramInt2);
     super.onMeasure(paramInt1, paramInt2);
     AppMethodBeat.o(143335);
   }
   
-  public void setExternalListener(b.a parama)
+  public void setExternalListener(c.a parama)
   {
-    this.QBO = parama;
+    this.Yan = parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.InputPanelLinearLayout
  * JD-Core Version:    0.7.0.1
  */

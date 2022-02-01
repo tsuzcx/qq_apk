@@ -25,7 +25,7 @@ public class n
         AppMethodBeat.i(83071);
         com.tencent.mm.plugin.wepkg.model.i.a(new i.a()
         {
-          public final void aR(JSONObject paramAnonymous2JSONObject)
+          public final void aY(JSONObject paramAnonymous2JSONObject)
           {
             AppMethodBeat.i(83070);
             JSONObject localJSONObject = new JSONObject();
@@ -33,7 +33,7 @@ public class n
             {
               localJSONObject.put("wepkg_info", paramAnonymous2JSONObject);
               label21:
-              n.1.this.xwB.i(null, localJSONObject);
+              n.1.this.CAJ.i(null, localJSONObject);
               AppMethodBeat.o(83070);
               return;
             }
@@ -51,7 +51,7 @@ public class n
   
   public final void b(b.a parama) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 1;
   }

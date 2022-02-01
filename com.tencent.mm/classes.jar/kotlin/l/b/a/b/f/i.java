@@ -8,12 +8,12 @@ public enum i
   {
     AppMethodBeat.i(59338);
     i locali1 = new i("BEGINNING", 0);
-    TDi = locali1;
+    abfV = locali1;
     i locali2 = new i("MIDDLE", 1);
-    TDj = locali2;
+    abfW = locali2;
     i locali3 = new i("AFTER_DOT", 2);
-    TDk = locali3;
-    TDl = new i[] { locali1, locali2, locali3 };
+    abfX = locali3;
+    abfY = new i[] { locali1, locali2, locali3 };
     AppMethodBeat.o(59338);
   }
   
@@ -21,7 +21,7 @@ public enum i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.f.i
  * JD-Core Version:    0.7.0.1
  */

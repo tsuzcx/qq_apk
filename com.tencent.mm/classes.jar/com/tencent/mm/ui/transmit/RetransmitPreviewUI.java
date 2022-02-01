@@ -7,18 +7,20 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ce.g;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.cl.h;
 import com.tencent.mm.ui.MMActivity;
 
 public class RetransmitPreviewUI
   extends MMActivity
 {
-  private TextView Ws = null;
+  private TextView rR = null;
   private String text = null;
   
   public int getLayoutId()
   {
-    return 2131493567;
+    return R.i.edw;
   }
   
   public void onBackPressed()
@@ -34,8 +36,8 @@ public class RetransmitPreviewUI
     super.onCreate(paramBundle);
     setMMTitle("");
     this.text = getIntent().getStringExtra("Retr_Msg_content");
-    this.Ws = ((TextView)findViewById(2131301837));
-    this.Ws.setText(g.gxZ().a(getContext(), this.text, this.Ws.getTextSize()));
+    this.rR = ((TextView)findViewById(R.h.dHK));
+    this.rR.setText(h.htZ().a(getContext(), this.text, this.rR.getTextSize()));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -64,7 +66,7 @@ public class RetransmitPreviewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.RetransmitPreviewUI
  * JD-Core Version:    0.7.0.1
  */

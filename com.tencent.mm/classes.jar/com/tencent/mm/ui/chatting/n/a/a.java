@@ -1,157 +1,117 @@
 package com.tencent.mm.ui.chatting.n.a;
 
-import android.os.Bundle;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
+import android.text.Spannable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ca;
-import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.chatting.d.b.k;
-import com.tencent.mm.ui.chatting.h.b.a;
-import com.tencent.mm.ui.chatting.h.d;
-import com.tencent.mm.ui.chatting.h.d.a;
-import com.tencent.mm.ui.chatting.h.d.c;
-import com.tencent.mm.ui.chatting.h.d.d;
-import com.tencent.mm.ui.chatting.n.f;
-import com.tencent.mm.ui.chatting.view.MMChattingListView;
-import java.util.List;
-import org.xwalk.core.Log;
+import com.tencent.mm.ui.widget.MMTextView.a;
 
-public abstract class a
-  implements b.a
+public class a
 {
-  int PFA = 3;
-  long PFi;
-  long PFj;
-  public d PFv;
-  int PFw;
-  int PFx;
-  long PFy;
-  long PFz;
-  protected com.tencent.mm.ui.chatting.e.a dom;
+  private static volatile a WZP;
+  private static final MMHandler WZQ;
   
-  public a(com.tencent.mm.ui.chatting.e.a parama, d paramd)
+  static
   {
-    this.dom = parama;
-    this.PFv = paramd;
+    AppMethodBeat.i(36623);
+    WZP = null;
+    WZQ = new MMHandler("AAChattingHelper");
+    AppMethodBeat.o(36623);
   }
   
-  protected abstract f a(d.a parama, Bundle paramBundle, d.d paramd);
-  
-  public void a(final d.a parama, boolean paramBoolean, final Bundle paramBundle)
+  private a()
   {
-    Log.i("MicroMsg.ChattingLoader.AbstractDataPresenter", "[onLoad] action:" + parama + " isBlock:" + paramBoolean + " username:" + this.dom.getTalkerUserName());
-    if (Util.isNullOrNil(this.dom.getTalkerUserName()))
-    {
-      Log.w("MicroMsg.ChattingLoader.AbstractDataPresenter", "[onLoad] username is null!");
-      return;
+    AppMethodBeat.i(185017);
+    WZQ.setLogging(false);
+    AppMethodBeat.o(185017);
+  }
+  
+  public static void a(CharSequence paramCharSequence, ca paramca)
+  {
+    AppMethodBeat.i(36621);
+    a(paramCharSequence, paramca, 1);
+    AppMethodBeat.o(36621);
+  }
+  
+  private static void a(CharSequence paramCharSequence, ca paramca, int paramInt)
+  {
+    AppMethodBeat.i(36620);
+    if ((paramCharSequence instanceof Spannable)) {
+      WZQ.postToWorker(new a.b(paramCharSequence, paramca, paramInt));
     }
-    g.Wl(13);
-    ((k)this.dom.bh(k.class)).gOx();
-    this.PFv.a(parama, paramBoolean, new d.c()
-    {
-      public final f b(d.d<ca> paramAnonymousd)
+    AppMethodBeat.o(36620);
+  }
+  
+  public static a hTq()
+  {
+    AppMethodBeat.i(36619);
+    if (WZP == null) {
+      try
       {
-        AppMethodBeat.i(36654);
-        paramAnonymousd.PDK = paramBundle;
-        paramAnonymousd = a.this.a(parama, paramBundle, paramAnonymousd);
-        AppMethodBeat.o(36654);
-        return paramAnonymousd;
-      }
-      
-      public final void c(d.d<ca> paramAnonymousd)
-      {
-        AppMethodBeat.i(36655);
-        a.this.PFw = paramAnonymousd.gAZ;
-        a.this.PFx = paramAnonymousd.PDN;
-        if (paramAnonymousd.PDM.size() > 0)
-        {
-          ca localca = (ca)paramAnonymousd.PDM.get(0);
-          if (localca != null)
-          {
-            a.this.PFi = localca.field_createTime;
-            a.this.PFz = localca.field_msgSeq;
-          }
-          paramAnonymousd = (ca)paramAnonymousd.PDM.get(paramAnonymousd.PDM.size() - 1);
-          if (paramAnonymousd != null)
-          {
-            a.this.PFj = paramAnonymousd.field_createTime;
-            a.this.PFy = paramAnonymousd.field_msgSeq;
-          }
+        if (WZP == null) {
+          WZP = new a();
         }
-        AppMethodBeat.o(36655);
+        a locala1 = WZP;
+        return locala1;
       }
-    });
-  }
-  
-  public void a(MMChattingListView paramMMChattingListView, d.d<ca> paramd)
-  {
-    g.Wm(13);
-    paramMMChattingListView.getBaseAdapter().notifyDataSetChanged();
-    ((k)this.dom.bh(k.class)).gOy();
-    if (paramd.PDL == d.a.PDF) {
-      this.dom.Pwc.eGg();
-    }
-  }
-  
-  protected final void any(final int paramInt)
-  {
-    this.PFA = 3;
-    if (!this.dom.Pwg) {
-      this.dom.amm(paramInt);
-    }
-    for (;;)
-    {
-      this.dom.getListView().postDelayed(new Runnable()
+      finally
       {
-        public final void run()
-        {
-          AppMethodBeat.i(36656);
-          if ((a.this.grq().getFirstVisiblePosition() > paramInt) || (paramInt > a.this.grq().getLastVisiblePosition()))
-          {
-            Log.i("MicroMsg.ChattingLoader.AbstractDataPresenter", "[protectSetSelection] pos:" + paramInt + " reTryCount:" + a.this.PFA);
-            if (!a.this.dom.Pwg) {
-              a.this.grq().lf(paramInt, 0);
-            }
-            for (;;)
-            {
-              a locala = a.this;
-              locala.PFA -= 1;
-              if (a.this.PFA < 0) {
-                break;
-              }
-              a.this.grq().getListView().postDelayed(this, 20L);
-              AppMethodBeat.o(36656);
-              return;
-              a.this.grq().lf(paramInt, com.tencent.mm.cb.a.fromDPToPix(a.this.dom.Pwc.getContext(), 80));
-            }
-          }
-          Log.i("MicroMsg.ChattingLoader.AbstractDataPresenter", "[protectSetSelection] successfully! pos:" + paramInt);
-          AppMethodBeat.o(36656);
-        }
-      }, 200L);
-      return;
-      com.tencent.mm.ui.chatting.e.a locala = this.dom;
-      locala.lf(paramInt, com.tencent.mm.cb.a.fromDPToPix(locala.Pwc.getContext(), 80));
+        AppMethodBeat.o(36619);
+      }
     }
+    a locala2 = WZP;
+    AppMethodBeat.o(36619);
+    return locala2;
   }
   
-  public final com.tencent.mm.ui.chatting.e.a grq()
+  public static MMTextView.a hTr()
   {
-    return this.dom;
+    return a.WZR;
   }
   
-  public String toString()
+  static enum a
+    implements MMTextView.a
   {
-    return getClass().getName();
+    static
+    {
+      AppMethodBeat.i(36616);
+      WZR = new a("TEXT_CALLBACK");
+      WZS = new a[] { WZR };
+      AppMethodBeat.o(36616);
+    }
+    
+    private a() {}
+    
+    public final void a(CharSequence paramCharSequence, long paramLong)
+    {
+      AppMethodBeat.i(36615);
+      ca localca = ((n)h.ae(n.class)).eSe().Oq(paramLong);
+      if (Util.isNullOrNil(localca.field_talker))
+      {
+        Log.w("MicroMsg.AAChattingHelper", "hy: not retrieving correct msg from db. try use old one. msg id: %d", new Object[] { Long.valueOf(paramLong) });
+        AppMethodBeat.o(36615);
+        return;
+      }
+      if ((localca.field_flag & 0x10) == 0)
+      {
+        a.b(paramCharSequence, localca);
+        AppMethodBeat.o(36615);
+        return;
+      }
+      Log.v("MicroMsg.AAChattingHelper", "hy: show already checked. msg id is: %d", new Object[] { Long.valueOf(paramLong) });
+      AppMethodBeat.o(36615);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.n.a.a
  * JD-Core Version:    0.7.0.1
  */

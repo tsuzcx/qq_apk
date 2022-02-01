@@ -41,6 +41,7 @@ public class PolylineOptions
   private BitmapDescriptor mArrowTexture;
   private boolean mClickable;
   private BitmapDescriptor mCustomeColorTexture;
+  private boolean mGradientEnable;
   private IndoorInfo mIndoorInfo;
   private boolean mIsRoad;
   private PolylineOptions.Text mText;
@@ -296,14 +297,17 @@ public class PolylineOptions
   
   public int[][] getColors()
   {
-    if ((this.iColors == null) || (this.iIndexs == null)) {}
-    while (this.iColors.length != this.iIndexs.length) {
+    AppMethodBeat.i(237960);
+    if ((this.iColors == null) || (this.iIndexs == null))
+    {
+      AppMethodBeat.o(237960);
       return null;
     }
-    int i = this.iColors.length;
+    int i = Math.max(this.iColors.length, this.iIndexs.length);
     int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { 2, i });
     arrayOfInt[0] = this.iColors;
     arrayOfInt[1] = this.iIndexs;
+    AppMethodBeat.o(237960);
     return arrayOfInt;
   }
   
@@ -363,6 +367,12 @@ public class PolylineOptions
     return this.fIndex;
   }
   
+  public PolylineOptions gradient(boolean paramBoolean)
+  {
+    this.mGradientEnable = paramBoolean;
+    return this;
+  }
+  
   public PolylineOptions indoorInfo(IndoorInfo paramIndoorInfo)
   {
     if (paramIndoorInfo != null)
@@ -391,6 +401,11 @@ public class PolylineOptions
   public boolean isClickable()
   {
     return this.mClickable;
+  }
+  
+  public boolean isGradientEnable()
+  {
+    return this.mGradientEnable;
   }
   
   public boolean isRoad()
@@ -565,7 +580,7 @@ public class PolylineOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.PolylineOptions
  * JD-Core Version:    0.7.0.1
  */

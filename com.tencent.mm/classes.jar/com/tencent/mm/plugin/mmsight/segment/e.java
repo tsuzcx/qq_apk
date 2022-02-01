@@ -8,24 +8,24 @@ public abstract interface e
   
   public abstract void a(a parama);
   
-  public abstract Point bhJ();
+  public abstract Point brg();
   
-  public abstract int bhK();
+  public abstract int brh();
   
-  public abstract int n(String paramString, long paramLong1, long paramLong2);
+  public abstract int m(String paramString, long paramLong1, long paramLong2);
   
   public abstract void stop();
   
-  public abstract void uf(int paramInt);
+  public abstract void xe(int paramInt);
   
   public static abstract interface a
   {
-    public abstract void bJ(byte[] paramArrayOfByte);
+    public abstract void bZ(byte[] paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.e
  * JD-Core Version:    0.7.0.1
  */

@@ -7,85 +7,85 @@ import com.tencent.mm.ui.base.preference.MMPreferenceFragment;
 
 public abstract class AbstractTabChildPreference
   extends MMPreferenceFragment
-  implements n
+  implements o
 {
-  protected boolean OwA;
-  private boolean Owu;
-  private boolean Owv;
-  private boolean Oww;
-  private boolean Owx;
-  protected boolean Owy = false;
-  protected boolean Owz = false;
+  private boolean VPs;
+  private boolean VPt;
+  private boolean VPu;
+  private boolean VPv;
+  protected boolean VPw = false;
+  protected boolean VPx = false;
+  protected boolean VPy;
   private Bundle savedInstanceState;
   
-  private void gGG()
+  private void hFn()
   {
-    if (this.Owv)
+    if (this.VPt)
     {
-      gGu();
-      this.Owv = false;
+      hFb();
+      this.VPt = false;
     }
-    while (!this.Owu) {
+    while (!this.VPs) {
       return;
     }
-    gGz();
-    gGu();
+    hFg();
+    hFb();
     Log.v("MicroMsg.INIT", "KEVIN tab onRecreate ");
-    this.Owu = false;
+    this.VPs = false;
   }
   
-  public final void gGD()
+  protected abstract void hFb();
+  
+  protected abstract void hFc();
+  
+  protected abstract void hFd();
+  
+  protected abstract void hFe();
+  
+  protected abstract void hFf();
+  
+  protected abstract void hFg();
+  
+  public final void hFk()
   {
-    gGB();
-    this.Oww = true;
+    hFi();
+    this.VPu = true;
   }
   
-  public final void gGF()
+  public final void hFm()
   {
-    this.Owz = true;
+    this.VPx = true;
   }
   
-  public final void gGH()
+  public final void hFo()
   {
-    if (!this.Owy) {
+    if (!this.VPw) {
       return;
     }
-    gGG();
+    hFn();
     long l = System.currentTimeMillis();
-    if (this.Oww)
+    if (this.VPu)
     {
-      gGC();
-      this.Oww = false;
+      hFj();
+      this.VPu = false;
     }
-    gLO();
-    gGv();
+    hKS();
+    hFc();
     Log.d("MicroMsg.INIT", "KEVIN " + toString() + " OnTabResume last : " + (System.currentTimeMillis() - l));
-    this.Owx = true;
-    this.Owy = false;
+    this.VPv = true;
+    this.VPw = false;
   }
-  
-  protected abstract void gGu();
-  
-  protected abstract void gGv();
-  
-  protected abstract void gGw();
-  
-  protected abstract void gGx();
-  
-  protected abstract void gGy();
-  
-  protected abstract void gGz();
   
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
     this.savedInstanceState = paramBundle;
-    this.Owv = true;
+    this.VPt = true;
   }
   
   public void onDestroy()
   {
-    gGz();
+    hFg();
     super.onDestroy();
   }
   
@@ -100,57 +100,57 @@ public abstract class AbstractTabChildPreference
   public void onPause()
   {
     super.onPause();
-    this.OwA = true;
-    if (this.OwA)
+    this.VPy = true;
+    if (this.VPy)
     {
-      if (!this.Owx) {
-        this.OwA = false;
+      if (!this.VPv) {
+        this.VPy = false;
       }
     }
     else {
       return;
     }
     long l = System.currentTimeMillis();
-    gGx();
+    hFe();
     Log.d("MicroMsg.INIT", "KEVIN " + toString() + " onTabPause last : " + (System.currentTimeMillis() - l));
-    this.Owx = false;
-    this.OwA = false;
+    this.VPv = false;
+    this.VPy = false;
   }
   
   public void onResume()
   {
     super.onResume();
-    gGE();
+    hFl();
     LauncherUI localLauncherUI = LauncherUI.getInstance();
-    if ((localLauncherUI == null) || (!localLauncherUI.ODU)) {}
+    if ((localLauncherUI == null) || (!localLauncherUI.VXn)) {}
     do
     {
       return;
-      this.Owy = true;
-    } while (!this.Owz);
-    gGH();
-    this.Owz = false;
+      this.VPw = true;
+    } while (!this.VPx);
+    hFo();
+    this.VPx = false;
   }
   
   public void onStart()
   {
     super.onStart();
     LauncherUI localLauncherUI = LauncherUI.getInstance();
-    if ((localLauncherUI == null) || (!localLauncherUI.ODU)) {
+    if ((localLauncherUI == null) || (!localLauncherUI.VXn)) {
       return;
     }
-    gGw();
+    hFd();
   }
   
   public void onStop()
   {
     super.onStop();
-    gGy();
+    hFf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.AbstractTabChildPreference
  * JD-Core Version:    0.7.0.1
  */

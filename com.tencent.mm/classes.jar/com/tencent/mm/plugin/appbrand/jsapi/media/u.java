@@ -4,14 +4,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.i.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/VideoMetaData;", "", "duration", "", "size", "width", "", "height", "(JJII)V", "getDuration", "()J", "getHeight", "()I", "getSize", "getWidth", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "toString", "", "Companion", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/VideoMetaData;", "", "duration", "", "size", "width", "", "height", "(JJII)V", "getDuration", "()J", "getHeight", "()I", "getSize", "getWidth", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "toString", "", "Companion", "plugin-appbrand-integration_release"})
 public final class u
 {
-  public static final a meK;
+  public static final a pcC;
   final long duration;
   final int height;
   final long size;
@@ -20,7 +19,7 @@ public final class u
   static
   {
     AppMethodBeat.i(50581);
-    meK = new a((byte)0);
+    pcC = new a((byte)0);
     AppMethodBeat.o(50581);
   }
   
@@ -64,14 +63,14 @@ public final class u
     return str;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/VideoMetaData$Companion;", "", "()V", "TAG", "", "obtain", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/VideoMetaData;", "path", "plugin-appbrand-integration_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/VideoMetaData$Companion;", "", "()V", "TAG", "", "obtain", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/VideoMetaData;", "path", "plugin-appbrand-integration_release"})
   public static final class a
   {
-    public static u aaq(String paramString)
+    public static u aih(String paramString)
     {
       AppMethodBeat.i(50580);
-      p.h(paramString, "path");
-      if (!s.YS(paramString))
+      p.k(paramString, "path");
+      if (!com.tencent.mm.vfs.u.agG(paramString))
       {
         AppMethodBeat.o(50580);
         return null;
@@ -90,7 +89,7 @@ public final class u
             j = Util.getInt(locald.extractMetadata(18), 0);
             long l = Util.getLong(locald.extractMetadata(9), 0L);
             locald.release();
-            paramString = new u(l, s.boW(paramString), i, j);
+            paramString = new u(l, com.tencent.mm.vfs.u.bBQ(paramString), i, j);
             AppMethodBeat.o(50580);
             return paramString;
           }

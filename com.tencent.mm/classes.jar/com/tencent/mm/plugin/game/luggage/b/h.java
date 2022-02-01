@@ -14,15 +14,15 @@ public class h
   
   public final void b(b<com.tencent.luggage.d.a>.a paramb)
   {
-    AppMethodBeat.i(186855);
+    AppMethodBeat.i(231941);
     Log.i("MicroMsg.JsApiCloseJsCore", "invokeInOwn");
-    if (com.tencent.mm.plugin.game.luggage.i.a.dTW() != null) {
-      com.tencent.mm.plugin.game.luggage.i.a.dTW().dTX();
+    if (com.tencent.mm.plugin.game.luggage.i.a.exd() != null) {
+      com.tencent.mm.plugin.game.luggage.i.a.exd().exe();
     }
-    AppMethodBeat.o(186855);
+    AppMethodBeat.o(231941);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

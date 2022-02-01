@@ -1,19 +1,16 @@
 package com.tencent.mm.plugin.luckymoney.b;
 
-import com.tencent.mm.plugin.luckymoney.model.v;
-import com.tencent.mm.storagebase.h.b;
+import com.tencent.mm.cw.c;
+import com.tencent.mm.plugin.luckymoney.story.b.d;
 
 final class a$9
-  implements h.b
+  implements c<d>
 {
-  public final String[] getSQLs()
-  {
-    return v.SQL_CREATE;
-  }
+  a$9(a parama) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.b.a.9
  * JD-Core Version:    0.7.0.1
  */

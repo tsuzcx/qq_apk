@@ -294,7 +294,7 @@ public class NetManager
     
     private String urlChecking(String paramString)
     {
-      AppMethodBeat.i(193591);
+      AppMethodBeat.i(236824);
       String str = paramString;
       if (this.mForceHttps)
       {
@@ -303,7 +303,7 @@ public class NetManager
           str = paramString.replaceFirst("http://", "https://");
         }
       }
-      AppMethodBeat.o(193591);
+      AppMethodBeat.o(236824);
       return str;
     }
     
@@ -350,10 +350,10 @@ public class NetManager
     
     public NetResponse downloadTo(File paramFile)
     {
-      AppMethodBeat.i(193592);
+      AppMethodBeat.i(236828);
       onRequestStart("downloadTo[" + paramFile + "]", this);
       paramFile = file(paramFile).doGet();
-      AppMethodBeat.o(193592);
+      AppMethodBeat.o(236828);
       return paramFile;
     }
     
@@ -472,7 +472,7 @@ public class NetManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.map.tools.net.NetManager
  * JD-Core Version:    0.7.0.1
  */

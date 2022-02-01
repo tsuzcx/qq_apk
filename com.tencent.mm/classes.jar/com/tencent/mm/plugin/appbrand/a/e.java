@@ -10,12 +10,12 @@ import java.lang.ref.WeakReference;
 
 public abstract class e
 {
-  private final WeakReference<Activity> kRw;
+  private final WeakReference<Activity> nLE;
   public final BroadcastReceiver receiver = new BroadcastReceiver()
   {
-    final String kRx = "reason";
-    final String kRy = "homekey";
-    final String kRz = "recentapps";
+    final String nLF = "reason";
+    final String nLG = "homekey";
+    final String nLH = "recentapps";
     
     public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
     {
@@ -33,12 +33,12 @@ public abstract class e
           Log.i("MicroMsg.BaseAppBrandUIHomePressReceiver", "[home_pressed] action: %s, reason: %s", new Object[] { paramAnonymousIntent.getAction(), paramAnonymousContext });
           if (paramAnonymousContext.equals("homekey"))
           {
-            e.this.bxc();
+            e.this.bIk();
             AppMethodBeat.o(139837);
             return;
           }
           if (paramAnonymousContext.equals("recentapps")) {
-            e.this.bxd();
+            e.this.bIl();
           }
         }
       }
@@ -48,16 +48,16 @@ public abstract class e
   
   public e(Activity paramActivity)
   {
-    this.kRw = new WeakReference(paramActivity);
+    this.nLE = new WeakReference(paramActivity);
   }
   
-  protected abstract void bxc();
+  protected abstract void bIk();
   
-  protected abstract void bxd();
+  protected abstract void bIl();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.a.e
  * JD-Core Version:    0.7.0.1
  */

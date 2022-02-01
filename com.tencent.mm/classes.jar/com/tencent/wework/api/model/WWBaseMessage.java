@@ -11,7 +11,7 @@ public abstract class WWBaseMessage
   extends BaseMessage
 {
   public String appId;
-  public String leq;
+  public String nYD;
   
   public boolean checkArgs()
   {
@@ -22,13 +22,13 @@ public abstract class WWBaseMessage
   {
     this.transaction = paramBundle.getString("_wwapi_basereq_transaction");
     this.appId = paramBundle.getString("_wwapi_basereq_openid");
-    this.leq = paramBundle.getString("_wwapi_basereq_agentid");
+    this.nYD = paramBundle.getString("_wwapi_basereq_agentid");
     this.appName = paramBundle.getString("_wwapi_basereq_appname");
-    this.Sxp = paramBundle.getString("_wwapi_basereq_appbundle");
+    this.ZYp = paramBundle.getString("_wwapi_basereq_appbundle");
     this.sdkVer = paramBundle.getInt("_wwobject_sdkVer", 0);
-    this.Sxq = paramBundle.getString("_wwobject_sdkVername");
-    if ((Sxr != null) && (TextUtils.isEmpty(this.yOQ))) {
-      this.yOQ = Sxr.hrF();
+    this.ZYq = paramBundle.getString("_wwobject_sdkVername");
+    if ((ZYr != null) && (TextUtils.isEmpty(this.EsO))) {
+      this.EsO = ZYr.ivn();
     }
   }
   
@@ -38,7 +38,7 @@ public abstract class WWBaseMessage
     this.transaction = str;
     paramBundle.putString("_wwapi_basereq_transaction", str);
     paramBundle.putString("_wwapi_basereq_openid", this.appId);
-    paramBundle.putString("_wwapi_basereq_agentid", this.leq);
+    paramBundle.putString("_wwapi_basereq_agentid", this.nYD);
     try
     {
       paramBundle.putString("_wwapi_basereq_appbundle", this.mContext.getPackageName());
@@ -46,8 +46,8 @@ public abstract class WWBaseMessage
       label75:
       paramBundle.putInt("_wwobject_sdkVer", 4);
       paramBundle.putString("_wwobject_sdkVername", "2.0.11.21");
-      if ((Sxr != null) && (TextUtils.isEmpty(this.yOQ))) {
-        this.yOQ = Sxr.hrF();
+      if ((ZYr != null) && (TextUtils.isEmpty(this.EsO))) {
+        this.EsO = ZYr.ivn();
       }
       return;
     }
@@ -59,7 +59,7 @@ public abstract class WWBaseMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.wework.api.model.WWBaseMessage
  * JD-Core Version:    0.7.0.1
  */

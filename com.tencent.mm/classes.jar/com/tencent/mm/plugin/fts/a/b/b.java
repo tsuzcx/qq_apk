@@ -10,18 +10,43 @@ import java.util.Queue;
 
 public final class b
 {
-  private HashSet<String> wXt;
-  public c wXu;
+  private HashSet<String> BJp;
+  public c BJq;
   
   public b()
   {
     AppMethodBeat.i(131720);
-    this.wXu = new c(' ');
-    this.wXt = new HashSet();
+    this.BJq = new c(' ');
+    this.BJp = new HashSet();
     AppMethodBeat.o(131720);
   }
   
-  public final List<List<String>> ayA(String paramString)
+  public final void aHU(String paramString)
+  {
+    AppMethodBeat.i(131721);
+    if (!this.BJp.add(paramString))
+    {
+      AppMethodBeat.o(131721);
+      return;
+    }
+    c localc = this.BJq;
+    char[] arrayOfChar = paramString.toLowerCase().toCharArray();
+    int i = 0;
+    paramString = localc;
+    while (i < arrayOfChar.length)
+    {
+      int j = arrayOfChar[i] - 'a';
+      if (paramString.BJr[j] == null) {
+        paramString.BJr[j] = new c(arrayOfChar[i]);
+      }
+      paramString = paramString.BJr[j];
+      i += 1;
+    }
+    paramString.BJo = true;
+    AppMethodBeat.o(131721);
+  }
+  
+  public final List<List<String>> aHV(String paramString)
   {
     AppMethodBeat.i(131722);
     ArrayDeque localArrayDeque = new ArrayDeque();
@@ -35,33 +60,33 @@ public final class b
         break;
       }
       int i = locala.end;
-      Object localObject1 = this.wXu;
+      Object localObject1 = this.BJq;
       Object localObject2;
       while (i < arrayOfChar.length)
       {
         int j = arrayOfChar[i] - 'a';
-        if (localObject1.wXv[j] == null) {
+        if (localObject1.BJr[j] == null) {
           break;
         }
-        localObject1 = localObject1.wXv[j];
-        if ((((c)localObject1).wXs) || (i == arrayOfChar.length - 1))
+        localObject1 = localObject1.BJr[j];
+        if ((((c)localObject1).BJo) || (i == arrayOfChar.length - 1))
         {
-          if (locala.aQz == null) {
-            locala.aQz = new ArrayList();
+          if (locala.ayS == null) {
+            locala.ayS = new ArrayList();
           }
           localObject2 = new a(locala.end, i + 1, locala);
-          locala.aQz.add(localObject2);
+          locala.ayS.add(localObject2);
           if (((a)localObject2).end == arrayOfChar.length) {
-            ((a)localObject2).wXs = true;
+            ((a)localObject2).BJo = true;
           }
           localArrayDeque.offer(localObject2);
         }
         i += 1;
       }
-      if (locala.wXs)
+      if (locala.BJo)
       {
         localObject2 = new ArrayList();
-        for (localObject1 = locala; localObject1 != null; localObject1 = ((a)localObject1).wXr) {
+        for (localObject1 = locala; localObject1 != null; localObject1 = ((a)localObject1).BJn) {
           if (((a)localObject1).end > ((a)localObject1).start) {
             ((List)localObject2).add(paramString.substring(((a)localObject1).start, ((a)localObject1).end));
           }
@@ -73,35 +98,10 @@ public final class b
     AppMethodBeat.o(131722);
     return localArrayList;
   }
-  
-  public final void ayz(String paramString)
-  {
-    AppMethodBeat.i(131721);
-    if (!this.wXt.add(paramString))
-    {
-      AppMethodBeat.o(131721);
-      return;
-    }
-    c localc = this.wXu;
-    char[] arrayOfChar = paramString.toLowerCase().toCharArray();
-    int i = 0;
-    paramString = localc;
-    while (i < arrayOfChar.length)
-    {
-      int j = arrayOfChar[i] - 'a';
-      if (paramString.wXv[j] == null) {
-        paramString.wXv[j] = new c(arrayOfChar[i]);
-      }
-      paramString = paramString.wXv[j];
-      i += 1;
-    }
-    paramString.wXs = true;
-    AppMethodBeat.o(131721);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.b.b
  * JD-Core Version:    0.7.0.1
  */

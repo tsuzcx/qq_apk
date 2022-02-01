@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.exdevice.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.elx;
-import com.tencent.mm.protocal.protobuf.ely;
+import com.tencent.mm.protocal.protobuf.ewd;
+import com.tencent.mm.protocal.protobuf.ewe;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class n
@@ -19,8 +19,8 @@ public final class n
 {
   private i callback;
   public String coverUrl;
-  public String rCp;
   private d rr;
+  public String vhX;
   
   public n(String paramString1, String paramString2)
   {
@@ -28,18 +28,18 @@ public final class n
     this.callback = null;
     this.rr = null;
     this.coverUrl = paramString1;
-    this.rCp = paramString2;
+    this.vhX = paramString2;
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new elx();
-    ((d.a)localObject).iLO = new ely();
+    ((d.a)localObject).lBU = new ewd();
+    ((d.a)localObject).lBV = new ewe();
     ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/rank/updatecover";
     ((d.a)localObject).funcId = 1040;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (elx)this.rr.iLK.iLR;
-    ((elx)localObject).McL = paramString1;
-    ((elx)localObject).rCp = paramString2;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (ewd)d.b.b(this.rr.lBR);
+    ((ewd)localObject).Tmm = paramString1;
+    ((ewd)localObject).vhX = paramString2;
     AppMethodBeat.o(23537);
   }
   

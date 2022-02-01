@@ -2,42 +2,40 @@ package com.tencent.mm.plugin.wepkg.b;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.plugin.wepkg.model.WepkgPreloadFile;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.MAutoStorage;
-import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
 import java.util.List;
 
 public class d
   extends MAutoStorage<c>
 {
-  private static volatile d JLV;
+  private static volatile d QLo;
   public static final String[] SQL_CREATE;
-  private final h iFy;
-  public final boolean lsb;
+  private final com.tencent.mm.storagebase.h lvy;
+  public final boolean omY;
   
   static
   {
     AppMethodBeat.i(110569);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(c.iBg, "WepkgPreloadFiles") };
-    JLV = null;
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(c.lqK, "WepkgPreloadFiles") };
+    QLo = null;
     AppMethodBeat.o(110569);
   }
   
-  private d(h paramh)
+  private d(com.tencent.mm.storagebase.h paramh)
   {
-    super(paramh, c.iBg, "WepkgPreloadFiles", c.INDEX_CREATE);
+    super(paramh, c.lqK, "WepkgPreloadFiles", c.INDEX_CREATE);
     AppMethodBeat.i(110564);
-    this.iFy = paramh;
+    this.lvy = paramh;
     if (paramh != null) {}
     for (boolean bool = true;; bool = false)
     {
-      this.lsb = bool;
-      if (!this.lsb) {
+      this.omY = bool;
+      if (!this.omY) {
         Log.e("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "storage can not work!!!");
       }
       AppMethodBeat.o(110564);
@@ -45,23 +43,23 @@ public class d
     }
   }
   
-  public static d gkE()
+  public static d hev()
   {
     AppMethodBeat.i(110563);
     d locald;
-    if (!g.aAc())
+    if (!com.tencent.mm.kernel.h.aHB())
     {
       locald = new d(null);
       AppMethodBeat.o(110563);
       return locald;
     }
-    if (JLV == null) {}
+    if (QLo == null) {}
     try
     {
-      if ((JLV == null) || (!JLV.lsb)) {
-        JLV = new d(g.aAh().hqK);
+      if ((QLo == null) || (!QLo.omY)) {
+        QLo = new d(com.tencent.mm.kernel.h.aHG().kcF);
       }
-      locald = JLV;
+      locald = QLo;
       AppMethodBeat.o(110563);
       return locald;
     }
@@ -71,10 +69,10 @@ public class d
     }
   }
   
-  public final List<WepkgPreloadFile> bck(String paramString)
+  public final List<WepkgPreloadFile> bok(String paramString)
   {
     AppMethodBeat.i(110566);
-    if ((!this.lsb) || (Util.isNullOrNil(paramString)))
+    if ((!this.omY) || (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110566);
       return null;
@@ -110,10 +108,10 @@ public class d
     return null;
   }
   
-  public final boolean bcl(String paramString)
+  public final boolean bol(String paramString)
   {
     AppMethodBeat.i(110567);
-    if ((!this.lsb) || (Util.isNullOrNil(paramString)))
+    if ((!this.omY) || (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110567);
       return false;
@@ -126,15 +124,15 @@ public class d
     return bool;
   }
   
-  public final boolean h(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  public final boolean j(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
     AppMethodBeat.i(110568);
-    if ((!this.lsb) || (Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
+    if ((!this.omY) || (Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
     {
       AppMethodBeat.o(110568);
       return false;
     }
-    c localc = mp(paramString1, paramString2);
+    c localc = mR(paramString1, paramString2);
     if (localc == null)
     {
       AppMethodBeat.o(110568);
@@ -148,15 +146,15 @@ public class d
     return bool;
   }
   
-  public final c mp(String paramString1, String paramString2)
+  public final c mR(String paramString1, String paramString2)
   {
     AppMethodBeat.i(110565);
-    if ((!this.lsb) || (Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
+    if ((!this.omY) || (Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
     {
       AppMethodBeat.o(110565);
       return null;
     }
-    Object localObject = com.tencent.mm.plugin.wepkg.utils.d.mv(paramString1, paramString2);
+    Object localObject = com.tencent.mm.plugin.wepkg.utils.d.mY(paramString1, paramString2);
     localObject = rawQuery(String.format("select * from %s where %s=?", new Object[] { "WepkgPreloadFiles", "key" }), new String[] { localObject });
     if (((Cursor)localObject).moveToFirst())
     {
@@ -175,7 +173,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.b.d
  * JD-Core Version:    0.7.0.1
  */

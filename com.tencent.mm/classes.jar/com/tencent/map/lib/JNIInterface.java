@@ -77,7 +77,7 @@ public class JNIInterface
   
   public native long nativeAddIntersectionOverlay(long paramLong, IntersectionOverlayInfo paramIntersectionOverlayInfo);
   
-  public native int nativeAddMarker(long paramLong, String paramString, double paramDouble1, double paramDouble2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt1, int paramInt2);
+  public native int nativeAddMarker(long paramLong, String paramString, double paramDouble1, double paramDouble2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt1, int paramInt2);
   
   public native long nativeAddMarker2(long paramLong, MarkerInfo paramMarkerInfo);
   
@@ -105,7 +105,7 @@ public class JNIInterface
   
   public native AnnocationTextResult nativeCreateAnnotationText(long paramLong, AnnocationText paramAnnocationText);
   
-  public native int nativeCreateOrUpdateLine(long paramLong, int paramInt1, int[] paramArrayOfInt1, int[] paramArrayOfInt2, GeoPoint[] paramArrayOfGeoPoint, String paramString, float paramFloat1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt3, boolean paramBoolean4, int[] paramArrayOfInt3, int[] paramArrayOfInt4, float paramFloat2, int[] paramArrayOfInt5, float paramFloat3, int paramInt4, boolean paramBoolean5);
+  public native int nativeCreateOrUpdateLine(long paramLong, int paramInt1, int[] paramArrayOfInt1, int[] paramArrayOfInt2, GeoPoint[] paramArrayOfGeoPoint, String paramString, float paramFloat1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt3, boolean paramBoolean5, int[] paramArrayOfInt3, int[] paramArrayOfInt4, float paramFloat2, int[] paramArrayOfInt5, float paramFloat3, int paramInt4, boolean paramBoolean6);
   
   public native void nativeDeleteCircle(long paramLong, int paramInt);
   
@@ -314,6 +314,8 @@ public class JNIInterface
   
   public native void nativeSetMapStyle(long paramLong, int paramInt, boolean paramBoolean);
   
+  public native void nativeSetMarkerMainSubRelation(long paramLong, int paramInt1, int paramInt2);
+  
   public native void nativeSetMarkerScaleLevelRange(long paramLong, int paramInt1, int paramInt2, int paramInt3);
   
   public native void nativeSetMaxScaleLevel(long paramLong, int paramInt);
@@ -378,7 +380,7 @@ public class JNIInterface
   
   public native void nativeUpdateMarker(long paramLong, MarkerInfo paramMarkerInfo);
   
-  public native void nativeUpdateMarkerInfo(long paramLong, int paramInt1, String paramString, double paramDouble1, double paramDouble2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt2, int paramInt3);
+  public native void nativeUpdateMarkerInfo(long paramLong, int paramInt1, String paramString, double paramDouble1, double paramDouble2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt2, int paramInt3);
   
   public native void nativeUpdateMaskLayer(long paramLong, int paramInt1, int paramInt2);
   
@@ -396,14 +398,14 @@ public class JNIInterface
   
   public boolean onJniCallbackRenderMapFrame(int paramInt)
   {
-    AppMethodBeat.i(193492);
+    AppMethodBeat.i(235681);
     if (this.mCallback != null)
     {
       boolean bool = this.mCallback.onJniCallbackRenderMapFrame(paramInt);
-      AppMethodBeat.o(193492);
+      AppMethodBeat.o(235681);
       return bool;
     }
-    AppMethodBeat.o(193492);
+    AppMethodBeat.o(235681);
     return false;
   }
   
@@ -442,7 +444,7 @@ public class JNIInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.map.lib.JNIInterface
  * JD-Core Version:    0.7.0.1
  */

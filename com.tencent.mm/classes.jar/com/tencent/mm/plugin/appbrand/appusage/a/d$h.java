@@ -6,17 +6,17 @@ import kotlin.g.a.a;
 import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Ljava/util/LinkedList;", "", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Ljava/util/LinkedList;", "", "invoke"})
 final class d$h
   extends q
   implements a<LinkedList<Integer>>
 {
-  public static final h kXm;
+  public static final h nRy;
   
   static
   {
     AppMethodBeat.i(50316);
-    kXm = new h();
+    nRy = new h();
     AppMethodBeat.o(50316);
   }
   

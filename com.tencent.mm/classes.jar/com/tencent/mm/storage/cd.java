@@ -3,11 +3,11 @@ package com.tencent.mm.storage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class cd
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
   public long addTime;
-  public long lDC;
   public long msgId;
+  public long oze;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -15,26 +15,26 @@ public final class cd
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bb(1, this.msgId);
-      paramVarArgs.bb(2, this.lDC);
-      paramVarArgs.bb(3, this.addTime);
+      paramVarArgs.bm(1, this.msgId);
+      paramVarArgs.bm(2, this.oze);
+      paramVarArgs.bm(3, this.addTime);
       AppMethodBeat.o(43276);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.r(1, this.msgId);
-      int i = g.a.a.b.b.a.r(2, this.lDC);
-      int j = g.a.a.b.b.a.r(3, this.addTime);
+      paramInt = g.a.a.b.b.a.p(1, this.msgId);
+      int i = g.a.a.b.b.a.p(2, this.oze);
+      int j = g.a.a.b.b.a.p(3, this.addTime);
       AppMethodBeat.o(43276);
       return paramInt + 0 + i + j;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
       AppMethodBeat.o(43276);
@@ -50,15 +50,15 @@ public final class cd
         AppMethodBeat.o(43276);
         return -1;
       case 1: 
-        localcd.msgId = locala.UbS.zl();
+        localcd.msgId = locala.abFh.AN();
         AppMethodBeat.o(43276);
         return 0;
       case 2: 
-        localcd.lDC = locala.UbS.zl();
+        localcd.oze = locala.abFh.AN();
         AppMethodBeat.o(43276);
         return 0;
       }
-      localcd.addTime = locala.UbS.zl();
+      localcd.addTime = locala.abFh.AN();
       AppMethodBeat.o(43276);
       return 0;
     }
@@ -68,7 +68,7 @@ public final class cd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.storage.cd
  * JD-Core Version:    0.7.0.1
  */

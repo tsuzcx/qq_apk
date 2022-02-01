@@ -1,40 +1,39 @@
 package com.tencent.mm.xeffect.effect;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 15}, hxE={""}, hxF={"Lcom/tencent/mm/xeffect/effect/PagTextEffect;", "Lcom/tencent/mm/xeffect/effect/PagStickerEffect;", "Lcom/tencent/mm/xeffect/effect/TextInfoEffect;", "ptr", "", "(J)V", "defaultText", "Lcom/tencent/mm/xeffect/effect/TextInfoEffect$Default;", "getTextInfo", "Lcom/tencent/mm/xeffect/effect/EffectTextInfo;", "setTextInfo", "", "textInfo", "type", "Lcom/tencent/mm/xeffect/effect/EffectType;", "renderlib_release"})
-public final class v
+@l(iBK={1, 1, 15}, iBL={""}, iBM={"Lcom/tencent/mm/xeffect/effect/PagStickerEffect;", "Lcom/tencent/mm/xeffect/effect/PagEffect;", "Lcom/tencent/mm/xeffect/effect/LayoutInfoEffect;", "ptr", "", "(J)V", "defaultLayout", "Lcom/tencent/mm/xeffect/effect/LayoutInfoEffect$Default;", "getLayout", "Lcom/tencent/mm/xeffect/effect/EffectLayoutInfo;", "setLayout", "", "layoutInfo", "type", "Lcom/tencent/mm/xeffect/effect/EffectType;", "renderlib_release"})
+public class v
   extends t
-  implements ab
+  implements p
 {
-  private final ab.a RyX;
+  private final p.a YZw;
   
   public v(long paramLong)
   {
     super(paramLong);
-    AppMethodBeat.i(237100);
-    this.RyX = new ab.a((ad)this);
-    AppMethodBeat.o(237100);
+    AppMethodBeat.i(195848);
+    this.YZw = new p.a((af)this);
+    AppMethodBeat.o(195848);
   }
   
-  public final void a(h paramh)
+  public final void a(f paramf)
   {
-    AppMethodBeat.i(237099);
-    p.h(paramh, "textInfo");
-    this.RyX.a(paramh);
-    AppMethodBeat.o(237099);
+    AppMethodBeat.i(195846);
+    kotlin.g.b.p.k(paramf, "layoutInfo");
+    this.YZw.a(paramf);
+    AppMethodBeat.o(195846);
   }
   
-  public final j hiu()
+  public j ika()
   {
-    return j.RxX;
+    return j.YZC;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.xeffect.effect.v
  * JD-Core Version:    0.7.0.1
  */

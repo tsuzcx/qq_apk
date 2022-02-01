@@ -13,7 +13,7 @@ class NetStatUnit
   extends View
 {
   protected static long max;
-  private long CZg;
+  private long JeN;
   private long total;
   
   public NetStatUnit(Context paramContext)
@@ -31,7 +31,7 @@ class NetStatUnit
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private static void IJ(long paramLong)
+  private static void Qd(long paramLong)
   {
     paramLong = (paramLong / 1572864L + 1L) * 1572864L;
     if (94371840L > paramLong) {
@@ -52,13 +52,13 @@ class NetStatUnit
     }
   }
   
-  public final void al(long paramLong1, long paramLong2)
+  public final void au(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(173792);
-    this.CZg = paramLong1;
+    this.JeN = paramLong1;
     this.total = paramLong2;
     if (paramLong1 > 94371840L) {
-      this.CZg = 94371840L;
+      this.JeN = 94371840L;
     }
     if (paramLong2 > 94371840L) {
       this.total = 94371840L;
@@ -66,7 +66,7 @@ class NetStatUnit
     if (paramLong1 > paramLong2) {}
     for (;;)
     {
-      IJ(paramLong1);
+      Qd(paramLong1);
       AppMethodBeat.o(173792);
       return;
       paramLong1 = paramLong2;
@@ -86,7 +86,7 @@ class NetStatUnit
     Rect localRect2 = new Rect(localRect1.left, (int)(localRect1.bottom - f1), (int)(f2 * 0.6F + localRect1.left), localRect1.bottom);
     localPaint.setColor(-7829368);
     paramCanvas.drawRect(localRect2, localPaint);
-    f1 = localRect1.height() * (float)this.CZg / (float)max;
+    f1 = localRect1.height() * (float)this.JeN / (float)max;
     f2 = localRect1.width();
     localRect1 = new Rect(localRect1.left, (int)(localRect1.bottom - f1), (int)(f2 * 0.6F + localRect1.left), localRect1.bottom);
     localPaint.setColor(-16711936);

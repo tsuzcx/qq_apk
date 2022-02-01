@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.config;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.l;
+import com.tencent.mm.f.c.l;
 import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -9,7 +9,7 @@ import java.util.Map;
 public final class d
   extends l
 {
-  public static final IAutoDBItem.MAutoDBInfo iBg;
+  public static final IAutoDBItem.MAutoDBInfo lqK;
   
   static
   {
@@ -28,18 +28,18 @@ public final class d
     localStringBuilder.append(" value TEXT");
     localMAutoDBInfo.columns[2] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
-    iBg = localMAutoDBInfo;
+    lqK = localMAutoDBInfo;
     AppMethodBeat.o(146955);
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    return iBg;
+    return lqK;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.d
  * JD-Core Version:    0.7.0.1
  */

@@ -39,8 +39,8 @@ public class LuckMoneyUseCaseCallback
       {
         localIntent = new Intent();
         localIntent.putExtra("key_trans_id", paramITransmitKvData);
-        if (localPayInfo.iqp != null) {
-          bool = localPayInfo.iqp.getBoolean("isF2FHongBao", false);
+        if (localPayInfo.lfu != null) {
+          bool = localPayInfo.lfu.getBoolean("isF2FHongBao", false);
         }
         if (!bool) {
           break;

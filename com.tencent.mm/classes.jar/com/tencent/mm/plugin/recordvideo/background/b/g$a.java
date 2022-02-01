@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.recordvideo.background.b;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImagePlayer$Companion;", "", "()V", "FirstShowTime", "", "NormalAnimUnitTime", "NormalShowTime", "NormalTotalTime", "ScaleMatrix", "", "SingleImageAnimTime", "TAG", "", "ViewMatrix", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImagePlayer$Companion;", "", "()V", "FirstShowTime", "", "NormalAnimUnitTime", "NormalShowTime", "NormalTotalTime", "ScaleMatrix", "", "SingleImageAnimTime", "TAG", "", "ViewMatrix", "plugin-recordvideo_release"})
 public final class g$a {}
 
 

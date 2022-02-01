@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.appbrand.loading;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
 final class AppBrandProcessTriggerService0$a$a<T>
-  implements d<IPCVoid>
+  implements f<IPCVoid>
 {
-  public static final a mZW;
+  public static final a qal;
   
   static
   {
-    AppMethodBeat.i(228823);
-    mZW = new a();
-    AppMethodBeat.o(228823);
+    AppMethodBeat.i(275067);
+    qal = new a();
+    AppMethodBeat.o(275067);
   }
 }
 

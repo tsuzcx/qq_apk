@@ -1,33 +1,27 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.content.Intent;
-import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.h.d;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class WalletOrderInfoNewUI$10
-  implements h.d
+  implements View.OnClickListener
 {
   WalletOrderInfoNewUI$10(WalletOrderInfoNewUI paramWalletOrderInfoNewUI) {}
   
-  public final void oj(int paramInt)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(70997);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(70997);
-      return;
-      Object localObject = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + WalletOrderInfoNewUI.y(this.IhU)));
-      ((Intent)localObject).addFlags(268435456);
-      WalletOrderInfoNewUI localWalletOrderInfoNewUI = this.IhU;
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(localWalletOrderInfoNewUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoNewUI$20", "onClick", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      localWalletOrderInfoNewUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
-      com.tencent.mm.hellhoundlib.a.a.a(localWalletOrderInfoNewUI, "com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoNewUI$20", "onClick", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    }
+    AppMethodBeat.i(270628);
+    b localb = new b();
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoNewUI$20", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    Log.i("MicroMsg.WalletOrderInfoNewUI", "click activity layout");
+    WalletOrderInfoNewUI.v(this.Pah);
+    a.a(this, "com/tencent/mm/plugin/wallet_core/ui/WalletOrderInfoNewUI$20", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(270628);
   }
 }
 

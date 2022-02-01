@@ -22,21 +22,21 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLTextureView;", "Lcom/tencent/mm/plugin/video/ObservableTextureView;", "Landroid/view/TextureView$SurfaceTextureListener;", "Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "canPreview", "", "eGLEnvironment", "Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "previewCallback", "Lkotlin/Function1;", "Landroid/graphics/SurfaceTexture;", "", "previewController", "Lcom/tencent/mm/media/widget/camerarecordview/preview/controller/AbsPreviewController;", "renderHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "renderThread", "Landroid/os/HandlerThread;", "renderer", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "getRenderer", "()Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "setRenderer", "(Lcom/tencent/mm/media/render/AbsSurfaceRenderer;)V", "runnableArray", "Ljava/util/ArrayList;", "Lkotlin/Function0;", "Lkotlin/collections/ArrayList;", "surface", "Landroid/view/Surface;", "surfaceHeight", "surfaceWidth", "texture", "clearFrame", "getEGLContext", "Landroid/opengl/EGLContext;", "getFrameDataCallback", "Lcom/tencent/mm/plugin/mmsight/model/MMSightCameraFrameDataCallback;", "getPreviewTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "initHandlerThread", "onSurfaceTextureAvailable", "surfaceTexture", "width", "height", "onSurfaceTextureDestroyed", "p0", "onSurfaceTextureSizeChanged", "queueEvent", "r", "quitHandlerThread", "release", "requestRender", "setOnDrawListener", "frameDrawCallback", "Lkotlin/ParameterName;", "name", "setPreviewRenderer", "cpuCrop", "tryCameraPreview", "callback", "tryStopCameraPreview", "updateCameraConfig", "cameraConfig", "Lcom/tencent/mm/media/widget/camera/CameraConfig;", "Companion", "plugin-mediaeditor_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLTextureView;", "Lcom/tencent/mm/plugin/video/ObservableTextureView;", "Landroid/view/TextureView$SurfaceTextureListener;", "Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "canPreview", "", "eGLEnvironment", "Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "previewCallback", "Lkotlin/Function1;", "Landroid/graphics/SurfaceTexture;", "", "previewController", "Lcom/tencent/mm/media/widget/camerarecordview/preview/controller/AbsPreviewController;", "renderHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "renderThread", "Landroid/os/HandlerThread;", "renderer", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "getRenderer", "()Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "setRenderer", "(Lcom/tencent/mm/media/render/AbsSurfaceRenderer;)V", "runnableArray", "Ljava/util/ArrayList;", "Lkotlin/Function0;", "Lkotlin/collections/ArrayList;", "surface", "Landroid/view/Surface;", "surfaceHeight", "surfaceWidth", "texture", "clearFrame", "getEGLContext", "Landroid/opengl/EGLContext;", "getFrameDataCallback", "Lcom/tencent/mm/plugin/mmsight/model/MMSightCameraFrameDataCallback;", "getPreviewTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "initHandlerThread", "onSurfaceTextureAvailable", "surfaceTexture", "width", "height", "onSurfaceTextureDestroyed", "p0", "onSurfaceTextureSizeChanged", "queueEvent", "r", "quitHandlerThread", "release", "requestRender", "setOnDrawListener", "frameDrawCallback", "Lkotlin/ParameterName;", "name", "setPreviewRenderer", "cpuCrop", "tryCameraPreview", "callback", "tryStopCameraPreview", "updateCameraConfig", "cameraConfig", "Lcom/tencent/mm/media/widget/camera/CameraConfig;", "Companion", "plugin-mediaeditor_release"})
 public class CameraPreviewGLTextureView
   extends ObservableTextureView
   implements TextureView.SurfaceTextureListener, e
 {
-  public static final CameraPreviewGLTextureView.a iqH;
-  private com.tencent.mm.media.widget.camerarecordview.preview.a.a hDt;
-  private HandlerThread igZ;
-  private MMHandler iha;
-  private com.tencent.mm.media.j.a ihs;
-  private c.b ilw;
-  private SurfaceTexture ipT;
-  private ArrayList<kotlin.g.a.a<x>> iqE;
-  private kotlin.g.a.b<? super SurfaceTexture, x> iqw;
-  private boolean iqy;
+  public static final CameraPreviewGLTextureView.a lfM;
+  private HandlerThread kVN;
+  private MMHandler kVO;
+  private com.tencent.mm.media.j.a kWg;
+  private com.tencent.mm.media.widget.camerarecordview.preview.a.a krm;
+  private c.b lav;
+  private SurfaceTexture leZ;
+  private kotlin.g.a.b<? super SurfaceTexture, x> lfB;
+  private boolean lfD;
+  private ArrayList<kotlin.g.a.a<x>> lfJ;
   private Surface surface;
   private int surfaceHeight;
   private int surfaceWidth;
@@ -44,7 +44,7 @@ public class CameraPreviewGLTextureView
   static
   {
     AppMethodBeat.i(94356);
-    iqH = new CameraPreviewGLTextureView.a((byte)0);
+    lfM = new CameraPreviewGLTextureView.a((byte)0);
     AppMethodBeat.o(94356);
   }
   
@@ -52,9 +52,9 @@ public class CameraPreviewGLTextureView
   {
     super(paramContext);
     AppMethodBeat.i(94355);
-    this.iqE = new ArrayList();
+    this.lfJ = new ArrayList();
     setSurfaceTextureListener((TextureView.SurfaceTextureListener)this);
-    aQt();
+    aZl();
     AppMethodBeat.o(94355);
   }
   
@@ -62,9 +62,9 @@ public class CameraPreviewGLTextureView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(94354);
-    this.iqE = new ArrayList();
+    this.lfJ = new ArrayList();
     setSurfaceTextureListener((TextureView.SurfaceTextureListener)this);
-    aQt();
+    aZl();
     AppMethodBeat.o(94354);
   }
   
@@ -72,47 +72,47 @@ public class CameraPreviewGLTextureView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(94353);
-    this.iqE = new ArrayList();
+    this.lfJ = new ArrayList();
     setSurfaceTextureListener((TextureView.SurfaceTextureListener)this);
-    aQt();
+    aZl();
     AppMethodBeat.o(94353);
   }
   
-  private final void aQt()
+  private final void aZl()
   {
     AppMethodBeat.i(94352);
-    HandlerThread localHandlerThread = com.tencent.f.c.d.hz("CameraPreviewTextureView_renderThread", -2);
+    HandlerThread localHandlerThread = com.tencent.e.c.d.ij("CameraPreviewTextureView_renderThread", -2);
     localHandlerThread.start();
-    this.iha = new MMHandler(localHandlerThread.getLooper());
+    this.kVO = new MMHandler(localHandlerThread.getLooper());
     Object localObject = new ArrayList();
-    ((ArrayList)localObject).addAll((Collection)this.iqE);
-    this.iqE.clear();
+    ((ArrayList)localObject).addAll((Collection)this.lfJ);
+    this.lfJ.clear();
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
-      j((kotlin.g.a.a)((Iterator)localObject).next());
+      i((kotlin.g.a.a)((Iterator)localObject).next());
     }
-    this.igZ = localHandlerThread;
+    this.kVN = localHandlerThread;
     AppMethodBeat.o(94352);
   }
   
   public final void a(com.tencent.mm.media.j.a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(94347);
-    p.h(parama, "renderer");
+    p.k(parama, "renderer");
     Log.i("MicroMsg.CameraPreviewGLTextureView", "setRenderer:" + parama.hashCode() + "  cpuCrop:" + paramBoolean);
-    com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = this.hDt;
+    com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = this.krm;
     if (locala != null) {
-      locala.release();
+      locala.release(true);
     }
     if (paramBoolean) {}
     for (locala = (com.tencent.mm.media.widget.camerarecordview.preview.a.a)new com.tencent.mm.media.widget.camerarecordview.preview.a.b((e)this);; locala = (com.tencent.mm.media.widget.camerarecordview.preview.a.a)new c((f)this))
     {
-      this.hDt = locala;
-      locala = this.hDt;
+      this.krm = locala;
+      locala = this.krm;
       if (locala != null) {
         locala.b(parama);
       }
-      this.ihs = parama;
+      this.kWg = parama;
       AppMethodBeat.o(94347);
       return;
     }
@@ -121,9 +121,9 @@ public class CameraPreviewGLTextureView
   public final void a(com.tencent.mm.media.widget.a.b paramb)
   {
     AppMethodBeat.i(94339);
-    p.h(paramb, "cameraConfig");
+    p.k(paramb, "cameraConfig");
     Log.i("MicroMsg.CameraPreviewGLTextureView", "updateCameraConfig: ".concat(String.valueOf(paramb)));
-    com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = this.hDt;
+    com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = this.krm;
     if (locala != null)
     {
       locala.a(paramb);
@@ -133,21 +133,21 @@ public class CameraPreviewGLTextureView
     AppMethodBeat.o(94339);
   }
   
-  public final void aEx()
+  public final void aMM()
   {
     AppMethodBeat.i(94345);
     Log.printInfoStack("MicroMsg.CameraPreviewGLTextureView", "tryStopCameraPreview", new Object[0]);
-    this.iqw = null;
+    this.lfB = null;
     AppMethodBeat.o(94345);
   }
   
-  public final void aEy()
+  public final void aMN()
   {
     AppMethodBeat.i(94351);
-    com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = this.hDt;
+    com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = this.krm;
     if (locala != null)
     {
-      locala.aEy();
+      locala.aMN();
       AppMethodBeat.o(94351);
       return;
     }
@@ -157,12 +157,12 @@ public class CameraPreviewGLTextureView
   public final void d(kotlin.g.a.b<? super SurfaceTexture, x> paramb)
   {
     AppMethodBeat.i(94344);
-    Log.printInfoStack("MicroMsg.CameraPreviewGLTextureView", "tryCameraPreview canPreview:" + this.iqy, new Object[0]);
-    if (this.iqy)
+    Log.printInfoStack("MicroMsg.CameraPreviewGLTextureView", "tryCameraPreview canPreview:" + this.lfD, new Object[0]);
+    if (this.lfD)
     {
       if (paramb != null)
       {
-        Object localObject = this.hDt;
+        Object localObject = this.krm;
         if (localObject != null) {}
         for (localObject = ((com.tencent.mm.media.widget.camerarecordview.preview.a.a)localObject).getSurfaceTexture();; localObject = null)
         {
@@ -174,15 +174,15 @@ public class CameraPreviewGLTextureView
       AppMethodBeat.o(94344);
       return;
     }
-    this.iqw = paramb;
+    this.lfB = paramb;
     AppMethodBeat.o(94344);
   }
   
   public EGLContext getEGLContext()
   {
-    c.b localb = this.ilw;
+    c.b localb = this.lav;
     if (localb != null) {
-      return localb.ilv;
+      return localb.lau;
     }
     return null;
   }
@@ -190,7 +190,7 @@ public class CameraPreviewGLTextureView
   public g getFrameDataCallback()
   {
     AppMethodBeat.i(94350);
-    Object localObject = this.hDt;
+    Object localObject = this.krm;
     if (localObject != null)
     {
       localObject = ((com.tencent.mm.media.widget.camerarecordview.preview.a.a)localObject).getFrameDataCallback();
@@ -203,25 +203,25 @@ public class CameraPreviewGLTextureView
   
   public com.tencent.mm.media.g.d getPreviewTexture()
   {
-    com.tencent.mm.media.j.a locala = this.ihs;
+    com.tencent.mm.media.j.a locala = this.kWg;
     if (locala != null) {
-      return locala.ijq;
+      return locala.kYd;
     }
     return null;
   }
   
   protected final com.tencent.mm.media.j.a getRenderer()
   {
-    return this.ihs;
+    return this.kWg;
   }
   
-  public final void j(kotlin.g.a.a<x> parama)
+  public final void i(kotlin.g.a.a<x> parama)
   {
     AppMethodBeat.i(94349);
-    p.h(parama, "r");
-    if (this.iha != null)
+    p.k(parama, "r");
+    if (this.kVO != null)
     {
-      MMHandler localMMHandler = this.iha;
+      MMHandler localMMHandler = this.kVO;
       if (localMMHandler != null)
       {
         localMMHandler.post((Runnable)new d(parama));
@@ -231,20 +231,20 @@ public class CameraPreviewGLTextureView
       AppMethodBeat.o(94349);
       return;
     }
-    this.iqE.add(parama);
+    this.lfJ.add(parama);
     AppMethodBeat.o(94349);
   }
   
   public void onSurfaceTextureAvailable(final SurfaceTexture paramSurfaceTexture, final int paramInt1, final int paramInt2)
   {
     AppMethodBeat.i(94343);
-    Log.i("MicroMsg.CameraPreviewGLTextureView", "onSurfaceTextureAvailable, surfaceTexture:" + paramSurfaceTexture + ", width:" + paramInt1 + ", height:" + paramInt2 + ", handler: " + this.iha);
-    if (this.iha == null) {
-      aQt();
+    Log.i("MicroMsg.CameraPreviewGLTextureView", "onSurfaceTextureAvailable, surfaceTexture:" + paramSurfaceTexture + ", width:" + paramInt1 + ", height:" + paramInt2 + ", handler: " + this.kVO);
+    if (this.kVO == null) {
+      aZl();
     }
     if (paramSurfaceTexture != null)
     {
-      j((kotlin.g.a.a)new b(paramSurfaceTexture, this, paramInt1, paramInt2, paramSurfaceTexture));
+      i((kotlin.g.a.a)new b(paramSurfaceTexture, this, paramInt1, paramInt2, paramSurfaceTexture));
       AppMethodBeat.o(94343);
       return;
     }
@@ -256,8 +256,8 @@ public class CameraPreviewGLTextureView
     AppMethodBeat.i(94341);
     super.onSurfaceTextureDestroyed(paramSurfaceTexture);
     Log.i("MicroMsg.CameraPreviewGLTextureView", "onSurfaceTextureDestroyed");
-    this.iqy = false;
-    j((kotlin.g.a.a)new c(this));
+    this.lfD = false;
+    i((kotlin.g.a.a)new c(this));
     AppMethodBeat.o(94341);
     return false;
   }
@@ -267,23 +267,23 @@ public class CameraPreviewGLTextureView
     AppMethodBeat.i(94340);
     super.onSurfaceTextureSizeChanged(paramSurfaceTexture, paramInt1, paramInt2);
     Log.i("MicroMsg.CameraPreviewGLTextureView", "onSurfaceTextureSizeChanged, surfaceTexture:" + paramSurfaceTexture + ", width:" + paramInt1 + ", height:" + paramInt2);
-    j((kotlin.g.a.a)new d(this, paramInt1, paramInt2));
+    i((kotlin.g.a.a)new d(this, paramInt1, paramInt2));
     AppMethodBeat.o(94340);
   }
   
   public final void release()
   {
     AppMethodBeat.i(94342);
-    Object localObject = this.ihs;
+    Object localObject = this.kWg;
     if (localObject != null) {
       com.tencent.mm.media.j.a.a((com.tencent.mm.media.j.a)localObject);
     }
-    this.ihs = null;
+    this.kWg = null;
     setSurfaceTextureListener(null);
-    localObject = this.hDt;
+    localObject = this.krm;
     if (localObject != null)
     {
-      ((com.tencent.mm.media.widget.camerarecordview.preview.a.a)localObject).release();
+      ((com.tencent.mm.media.widget.camerarecordview.preview.a.a)localObject).release(true);
       AppMethodBeat.o(94342);
       return;
     }
@@ -293,24 +293,24 @@ public class CameraPreviewGLTextureView
   public void requestRender()
   {
     AppMethodBeat.i(94348);
-    j((kotlin.g.a.a)new e(this));
+    i((kotlin.g.a.a)new e(this));
     AppMethodBeat.o(94348);
   }
   
   public void setOnDrawListener(kotlin.g.a.b<? super com.tencent.mm.media.g.d, x> paramb)
   {
-    com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = this.hDt;
+    com.tencent.mm.media.widget.camerarecordview.preview.a.a locala = this.krm;
     if (locala != null) {
-      locala.iqL = paramb;
+      locala.lfQ = paramb;
     }
   }
   
   protected final void setRenderer(com.tencent.mm.media.j.a parama)
   {
-    this.ihs = parama;
+    this.kWg = parama;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke", "com/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLTextureView$onSurfaceTextureAvailable$1$1"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke", "com/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLTextureView$onSurfaceTextureAvailable$1$1"})
   static final class b
     extends q
     implements kotlin.g.a.a<x>
@@ -321,7 +321,7 @@ public class CameraPreviewGLTextureView
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class c
     extends q
     implements kotlin.g.a.a<x>
@@ -332,7 +332,7 @@ public class CameraPreviewGLTextureView
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class d
     extends q
     implements kotlin.g.a.a<x>
@@ -343,7 +343,7 @@ public class CameraPreviewGLTextureView
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class e
     extends q
     implements kotlin.g.a.a<x>
@@ -356,7 +356,7 @@ public class CameraPreviewGLTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.media.widget.camerarecordview.preview.CameraPreviewGLTextureView
  * JD-Core Version:    0.7.0.1
  */

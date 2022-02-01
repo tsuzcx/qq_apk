@@ -1,6 +1,6 @@
 package com.tencent.map.lib.models;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 @Keep

@@ -193,8 +193,6 @@ public class SQLiteAsyncCheckpointer
         }
       }
     }
-    paramSQLiteDatabase.acquireReference();
-    paramSQLiteDatabase = this.mHandler;
     if (paramInt != 0) {}
     for (paramInt = i;; paramInt = 0)
     {
@@ -207,7 +205,7 @@ public class SQLiteAsyncCheckpointer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.wcdb.database.SQLiteAsyncCheckpointer
  * JD-Core Version:    0.7.0.1
  */

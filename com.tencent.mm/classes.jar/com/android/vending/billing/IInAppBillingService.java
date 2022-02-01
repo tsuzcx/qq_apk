@@ -42,9 +42,9 @@ public abstract interface IInAppBillingService
       return new a(paramIBinder);
     }
     
-    public static IInAppBillingService nL()
+    public static IInAppBillingService nU()
     {
-      return a.aCf;
+      return a.awu;
     }
     
     public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
@@ -125,7 +125,7 @@ public abstract interface IInAppBillingService
     static final class a
       implements IInAppBillingService
     {
-      public static IInAppBillingService aCf;
+      public static IInAppBillingService awu;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -169,9 +169,9 @@ public abstract interface IInAppBillingService
         //   63: iconst_0
         //   64: invokeinterface 53 5 0
         //   69: ifne +42 -> 111
-        //   72: invokestatic 57	com/android/vending/billing/IInAppBillingService$a:nL	()Lcom/android/vending/billing/IInAppBillingService;
+        //   72: invokestatic 57	com/android/vending/billing/IInAppBillingService$a:nU	()Lcom/android/vending/billing/IInAppBillingService;
         //   75: ifnull +36 -> 111
-        //   78: invokestatic 57	com/android/vending/billing/IInAppBillingService$a:nL	()Lcom/android/vending/billing/IInAppBillingService;
+        //   78: invokestatic 57	com/android/vending/billing/IInAppBillingService$a:nU	()Lcom/android/vending/billing/IInAppBillingService;
         //   81: iload_1
         //   82: aload_2
         //   83: aload_3
@@ -249,9 +249,9 @@ public abstract interface IInAppBillingService
           localParcel1.writeInt(paramInt);
           localParcel1.writeString(paramString1);
           localParcel1.writeString(paramString2);
-          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (IInAppBillingService.a.nL() != null))
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (IInAppBillingService.a.nU() != null))
           {
-            paramInt = IInAppBillingService.a.nL().b(paramInt, paramString1, paramString2);
+            paramInt = IInAppBillingService.a.nU().b(paramInt, paramString1, paramString2);
             return paramInt;
           }
           localParcel2.readException();
@@ -299,9 +299,9 @@ public abstract interface IInAppBillingService
         //   56: iconst_0
         //   57: invokeinterface 53 5 0
         //   62: ifne +40 -> 102
-        //   65: invokestatic 57	com/android/vending/billing/IInAppBillingService$a:nL	()Lcom/android/vending/billing/IInAppBillingService;
+        //   65: invokestatic 57	com/android/vending/billing/IInAppBillingService$a:nU	()Lcom/android/vending/billing/IInAppBillingService;
         //   68: ifnull +34 -> 102
-        //   71: invokestatic 57	com/android/vending/billing/IInAppBillingService$a:nL	()Lcom/android/vending/billing/IInAppBillingService;
+        //   71: invokestatic 57	com/android/vending/billing/IInAppBillingService$a:nU	()Lcom/android/vending/billing/IInAppBillingService;
         //   74: iload_1
         //   75: aload_2
         //   76: aload_3
@@ -372,9 +372,9 @@ public abstract interface IInAppBillingService
           localParcel1.writeInt(paramInt);
           localParcel1.writeString(paramString1);
           localParcel1.writeString(paramString2);
-          if ((!this.mRemote.transact(5, localParcel1, localParcel2, 0)) && (IInAppBillingService.a.nL() != null))
+          if ((!this.mRemote.transact(5, localParcel1, localParcel2, 0)) && (IInAppBillingService.a.nU() != null))
           {
-            paramInt = IInAppBillingService.a.nL().c(paramInt, paramString1, paramString2);
+            paramInt = IInAppBillingService.a.nU().c(paramInt, paramString1, paramString2);
             return paramInt;
           }
           localParcel2.readException();
@@ -405,9 +405,9 @@ public abstract interface IInAppBillingService
             localParcel1.writeInt(1);
             paramBundle.writeToParcel(localParcel1, 0);
           }
-          while ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (IInAppBillingService.a.nL() != null))
+          while ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (IInAppBillingService.a.nU() != null))
           {
-            paramString1 = IInAppBillingService.a.nL().getSkuDetails(paramInt, paramString1, paramString2, paramBundle);
+            paramString1 = IInAppBillingService.a.nU().getSkuDetails(paramInt, paramString1, paramString2, paramBundle);
             return paramString1;
             localParcel1.writeInt(0);
           }
@@ -433,7 +433,7 @@ public abstract interface IInAppBillingService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.android.vending.billing.IInAppBillingService
  * JD-Core Version:    0.7.0.1
  */

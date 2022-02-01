@@ -17,23 +17,23 @@ final class VoipVideoFragment$21
   {
     AppMethodBeat.i(115416);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/voip/ui/VoipVideoFragment$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    if (System.currentTimeMillis() - VoipVideoFragment.h(this.Hfw) <= 1000L)
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/voip/ui/VoipVideoFragment$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    if (System.currentTimeMillis() - VoipVideoFragment.h(this.NWo) <= 1000L)
     {
       a.a(this, "com/tencent/mm/plugin/voip/ui/VoipVideoFragment$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(115416);
       return;
     }
-    VoipVideoFragment.a(this.Hfw, System.currentTimeMillis());
-    h.CyF.a(11618, new Object[] { Integer.valueOf(2), Integer.valueOf(1) });
-    if ((this.Hfw.Hen != null) && (this.Hfw.Hen.get() != null)) {
-      ((c)this.Hfw.Hen.get()).wX(true);
+    VoipVideoFragment.a(this.NWo, System.currentTimeMillis());
+    h.IzE.a(11618, new Object[] { Integer.valueOf(2), Integer.valueOf(1) });
+    if ((this.NWo.NVe != null) && (this.NWo.NVe.get() != null)) {
+      ((c)this.NWo.NVe.get()).AP(true);
     }
-    if (this.Hfw.HeG != null)
+    if (this.NWo.NVx != null)
     {
-      this.Hfw.fJx();
-      this.Hfw.HeG.aI(false, true);
+      this.NWo.gBT();
+      this.NWo.NVx.aU(false, true);
     }
     a.a(this, "com/tencent/mm/plugin/voip/ui/VoipVideoFragment$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(115416);
@@ -41,7 +41,7 @@ final class VoipVideoFragment$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.VoipVideoFragment.21
  * JD-Core Version:    0.7.0.1
  */

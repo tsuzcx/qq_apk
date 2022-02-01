@@ -6,45 +6,45 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class c
 {
-  private static AtomicInteger nhX;
-  public HashMap<String, b> nhY;
+  private static AtomicInteger qiG;
+  public HashMap<String, b> qiH;
   
   static
   {
     AppMethodBeat.i(144315);
-    nhX = new AtomicInteger(1);
+    qiG = new AtomicInteger(1);
     AppMethodBeat.o(144315);
   }
   
   private c()
   {
     AppMethodBeat.i(144311);
-    this.nhY = new HashMap();
+    this.qiH = new HashMap();
     AppMethodBeat.o(144311);
   }
   
-  public static int bPw()
+  public static int cbN()
   {
     AppMethodBeat.i(144312);
-    int i = nhX.incrementAndGet();
+    int i = qiG.incrementAndGet();
     AppMethodBeat.o(144312);
     return i;
   }
   
-  public static c bPx()
+  public static c cbO()
   {
     AppMethodBeat.i(144313);
-    c localc = a.bPy();
+    c localc = a.cbP();
     AppMethodBeat.o(144313);
     return localc;
   }
   
-  public final b acV(String paramString)
+  public final b akP(String paramString)
   {
     AppMethodBeat.i(144314);
-    if (this.nhY.containsKey(paramString))
+    if (this.qiH.containsKey(paramString))
     {
-      paramString = (b)this.nhY.get(paramString);
+      paramString = (b)this.qiH.get(paramString);
       AppMethodBeat.o(144314);
       return paramString;
     }
@@ -54,19 +54,19 @@ public final class c
   
   static final class a
   {
-    private static c nhZ;
+    private static c qiI;
     
     static
     {
       AppMethodBeat.i(144310);
-      nhZ = new c((byte)0);
+      qiI = new c((byte)0);
       AppMethodBeat.o(144310);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.s.c
  * JD-Core Version:    0.7.0.1
  */

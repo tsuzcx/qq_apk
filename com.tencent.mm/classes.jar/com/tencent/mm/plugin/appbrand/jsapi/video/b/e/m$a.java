@@ -6,17 +6,17 @@ final class m$a<T>
   extends FutureTask<T>
   implements Comparable<a<T>>
 {
-  volatile long mAc = 0L;
+  volatile long pyx = 0L;
   
   public m$a(Runnable paramRunnable, long paramLong)
   {
     super(paramRunnable, null);
-    this.mAc = paramLong;
+    this.pyx = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.e.m.a
  * JD-Core Version:    0.7.0.1
  */

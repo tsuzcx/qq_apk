@@ -5,11 +5,11 @@ import kotlin.l.b.a.b.a.h;
 public abstract interface u
   extends v
 {
-  public abstract h hDh();
+  public abstract h iHB();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.e.u
  * JD-Core Version:    0.7.0.1
  */

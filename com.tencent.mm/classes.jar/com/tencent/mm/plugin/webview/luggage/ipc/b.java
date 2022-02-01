@@ -22,18 +22,18 @@ public final class b
         AppMethodBeat.i(78487);
         if (paramAnonymousInt1 == 3456)
         {
-          if ((paramAnonymousIntent == null) || (this.IVt == null))
+          if ((paramAnonymousIntent == null) || (this.PRJ == null))
           {
             AppMethodBeat.o(78487);
             return;
           }
           paramAnonymousIntent = paramAnonymousIntent.getBundleExtra("input_data");
-          this.IVt.v(paramAnonymousIntent);
+          this.PRJ.C(paramAnonymousIntent);
         }
         AppMethodBeat.o(78487);
       }
     });
-    com.tencent.mm.br.c.b(paramMMActivity, "webview", ".luggage.ipc.IpcProxyUI", localIntent, 3456);
+    com.tencent.mm.by.c.b(paramMMActivity, "webview", ".luggage.ipc.IpcProxyUI", localIntent, 3456);
     AppMethodBeat.o(78488);
   }
 }

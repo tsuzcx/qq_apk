@@ -2,7 +2,7 @@ package com.tencent.mm.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.akc;
+import com.tencent.mm.protocal.protobuf.alf;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
@@ -31,7 +31,7 @@ public final class b
     this.db = paramISQLiteDatabase;
   }
   
-  public final void H(List<a> paramList, int paramInt)
+  public final void I(List<a> paramList, int paramInt)
   {
     AppMethodBeat.i(153151);
     int i = 0;
@@ -90,7 +90,7 @@ public final class b
     }
   }
   
-  public final a biB(String paramString)
+  public final a buS(String paramString)
   {
     AppMethodBeat.i(153153);
     a locala = new a();
@@ -104,24 +104,24 @@ public final class b
     return locala;
   }
   
-  public final int gO(String paramString, int paramInt)
+  public final int buT(String paramString)
   {
-    AppMethodBeat.i(153154);
-    paramString = biB(paramString);
+    AppMethodBeat.i(191035);
+    paramString = buS(paramString);
     if (paramString.isValid())
     {
-      paramInt = Util.getInt(paramString.field_value, paramInt);
-      AppMethodBeat.o(153154);
-      return paramInt;
+      int i = Util.getInt(paramString.field_value, 0);
+      AppMethodBeat.o(191035);
+      return i;
     }
-    AppMethodBeat.o(153154);
-    return paramInt;
+    AppMethodBeat.o(191035);
+    return 0;
   }
   
-  public final String getExpIdByKey(String paramString)
+  public final String buU(String paramString)
   {
     AppMethodBeat.i(153155);
-    paramString = biB(paramString);
+    paramString = buS(paramString);
     if (paramString.isValid())
     {
       if (paramString.field_expId == null)
@@ -137,7 +137,7 @@ public final class b
     return "";
   }
   
-  public final LinkedList<akc> gzx()
+  public final LinkedList<alf> hvx()
   {
     AppMethodBeat.i(153152);
     LinkedList localLinkedList = new LinkedList();
@@ -157,12 +157,12 @@ public final class b
     for (;;)
     {
       locala.convertFrom(localCursor);
-      akc localakc = new akc();
+      alf localalf = new alf();
       try
       {
-        localakc.Lqu = Util.getInt(locala.field_expId, 0);
-        localakc.priority = locala.field_prioritylevel;
-        localLinkedList.add(localakc);
+        localalf.SrR = Util.getInt(locala.field_expId, 0);
+        localalf.priority = locala.field_prioritylevel;
+        localLinkedList.add(localalf);
         if (localCursor.moveToNext()) {
           continue;
         }
@@ -180,7 +180,7 @@ public final class b
     }
   }
   
-  public final String gzy()
+  public final String hvy()
   {
     AppMethodBeat.i(153156);
     Object localObject = getAll();
@@ -214,7 +214,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.b
  * JD-Core Version:    0.7.0.1
  */

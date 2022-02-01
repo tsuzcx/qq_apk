@@ -24,7 +24,7 @@ public class a
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(67334);
-    super.bA(paramActivity);
+    super.bH(paramActivity);
     AppMethodBeat.o(67334);
   }
   
@@ -33,21 +33,21 @@ public class a
     return false;
   }
   
-  public final String dKC()
+  public final String epb()
   {
     return "RemittanceProcess";
   }
   
-  public final void g(Activity paramActivity, int paramInt)
+  public final void h(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(67335);
-    P(paramActivity);
+    Q(paramActivity);
     AppMethodBeat.o(67335);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.a.a
  * JD-Core Version:    0.7.0.1
  */

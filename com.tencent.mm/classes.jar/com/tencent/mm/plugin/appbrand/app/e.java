@@ -6,64 +6,62 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.SparseIntArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.b.h;
-import com.tencent.mm.kernel.d;
+import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.plugin.appbrand.ac.a;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.t;
 import com.tencent.mm.plugin.appbrand.task.AppBrandPreloadProfiler;
-import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI;
+import com.tencent.mm.plugin.appbrand.task.n;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 public final class e
 {
-  private static volatile boolean kIi = false;
-  private static volatile boolean kIj = false;
+  private static volatile boolean nBY = false;
+  private static volatile boolean nBZ = false;
   
-  public static void a(com.tencent.mm.plugin.appbrand.task.g paramg, AppBrandPreloadProfiler paramAppBrandPreloadProfiler, final boolean paramBoolean, final int paramInt)
+  public static void a(n paramn, AppBrandPreloadProfiler paramAppBrandPreloadProfiler, final boolean paramBoolean, final int paramInt)
   {
-    AppMethodBeat.i(226298);
-    kIj = true;
-    if ((paramg == null) || (paramg == com.tencent.mm.plugin.appbrand.task.g.nPF))
+    AppMethodBeat.i(277328);
+    nBZ = true;
+    if ((paramn == null) || (paramn == n.qRU))
     {
       Log.i("MicroMsg.AppBrandProcessProfileInit[applaunch][PreloadProfile][preload]", "dl: AppBrandProcessPreloader said I can not preload [nil] type.");
-      AppMethodBeat.o(226298);
+      AppMethodBeat.o(277328);
       return;
     }
     final AppBrandPreloadProfiler localAppBrandPreloadProfiler = paramAppBrandPreloadProfiler;
     if (paramAppBrandPreloadProfiler == null) {
       localAppBrandPreloadProfiler = new AppBrandPreloadProfiler();
     }
-    localAppBrandPreloadProfiler.nOE = SystemClock.elapsedRealtime();
-    MMHandlerThread.postToMainThread(new Runnable()
+    localAppBrandPreloadProfiler.qRo = SystemClock.elapsedRealtime();
+    MMHandlerThread.postToMainThread(new e.3(new kotlin.g.a.b()
     {
-      private Integer UH(String paramAnonymousString)
+      private Integer acr(String paramAnonymousString)
       {
-        AppMethodBeat.i(226295);
-        e.TT();
-        boolean bool = e.kIi;
-        Log.i("MicroMsg.AppBrandProcessProfileInit[applaunch][PreloadProfile][preload]", "start misc preload type[%s], aggressive[%b], reason[%s], skip[%b], level[%d]", new Object[] { this.kIl, Boolean.valueOf(paramBoolean), paramAnonymousString, Boolean.valueOf(bool), Integer.valueOf(paramInt) });
+        AppMethodBeat.i(269975);
+        e.Yy();
+        boolean bool = e.nBY;
+        Log.i("MicroMsg.AppBrandProcessProfileInit[applaunch][PreloadProfile][preload]", "start misc preload type[%s], aggressive[%b], reason[%s], skip[%b], level[%d]", new Object[] { this.nCb, Boolean.valueOf(paramBoolean), paramAnonymousString, Boolean.valueOf(bool), Integer.valueOf(paramInt) });
         if (!bool) {}
         for (;;)
         {
           try
           {
-            AppBrandMainProcessService.bDD();
+            com.tencent.mm.plugin.appbrand.ipc.b.bPe();
             if (!paramBoolean) {
               continue;
             }
-            if (com.tencent.mm.plugin.appbrand.task.e.l(this.kIl)) {
-              com.tencent.mm.plugin.appbrand.task.e.a(this.kIl, null, true, localAppBrandPreloadProfiler, paramInt);
+            if (com.tencent.mm.plugin.appbrand.task.h.k(this.nCb)) {
+              com.tencent.mm.plugin.appbrand.task.h.a(this.nCb, null, true, localAppBrandPreloadProfiler, paramInt);
             }
-            e.UG("preload aggressive before keepalive");
-            if (((h)com.tencent.mm.kernel.g.aAe().azG()).mProcessName.endsWith(":appbrand0")) {
-              com.tencent.mm.plugin.appbrand.keepalive.b.c(AppBrandPluginUI.class.getName(), new Runnable()
+            e.acq("preload aggressive before keepalive");
+            if (((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.h.aHD().aHf()).mProcessName.endsWith(":appbrand0")) {
+              com.tencent.mm.plugin.appbrand.keepalive.b.ad(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(44106);
-                  e.UG("preload aggressive after keepalive");
+                  e.acq("preload aggressive after keepalive");
                   AppMethodBeat.o(44106);
                 }
               });
@@ -71,66 +69,44 @@ public final class e
           }
           catch (Exception paramAnonymousString)
           {
-            if (!q.kDg) {
+            if (!t.nwr) {
               continue;
             }
-            AppMethodBeat.o(226295);
+            AppMethodBeat.o(269975);
             throw paramAnonymousString;
-            Log.printErrStackTrace("MicroMsg.AppBrandProcessProfileInit[applaunch][PreloadProfile][preload]", paramAnonymousString, "Preload [%s] in IdleHandler encountered Exception", new Object[] { this.kIl.name() });
+            Log.printErrStackTrace("MicroMsg.AppBrandProcessProfileInit[applaunch][PreloadProfile][preload]", paramAnonymousString, "Preload [%s] in IdleHandler encountered Exception", new Object[] { this.nCb.name() });
             continue;
           }
-          AppMethodBeat.o(226295);
+          AppMethodBeat.o(269975);
           return Integer.valueOf(0);
-          com.tencent.mm.plugin.appbrand.task.e.a(this.kIl, null, false, localAppBrandPreloadProfiler, paramInt);
+          com.tencent.mm.plugin.appbrand.task.h.a(this.nCb, null, false, localAppBrandPreloadProfiler, paramInt);
         }
       }
-    }
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(226297);
-        this.kIq.invoke("MMHandlerThread.postToMainThread");
-        AppMethodBeat.o(226297);
-      }
-    });
-    AppMethodBeat.o(226298);
+    }));
+    AppMethodBeat.o(277328);
   }
   
-  public static boolean bun()
+  public static boolean bFn()
   {
-    return kIj;
+    return nBZ;
   }
   
-  public static void gD(boolean paramBoolean)
+  public static void ho(boolean paramBoolean)
   {
     AppMethodBeat.i(44110);
     Log.i("MicroMsg.AppBrandProcessProfileInit[applaunch][PreloadProfile][preload]", "setSkipMiscPreload %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    kIi = paramBoolean;
+    nBY = paramBoolean;
     AppMethodBeat.o(44110);
   }
   
-  public static void j(Application paramApplication)
+  public static void m(Application paramApplication)
   {
     AppMethodBeat.i(44108);
     paramApplication.registerActivityLifecycleCallbacks(new a()
     {
-      private final SparseIntArray kIk;
+      private final SparseIntArray nCa;
       
       private void A(Activity paramAnonymousActivity)
-      {
-        AppMethodBeat.i(44100);
-        if (paramAnonymousActivity == null)
-        {
-          AppMethodBeat.o(44100);
-          return;
-        }
-        this.kIk.put(paramAnonymousActivity.hashCode(), 1);
-        e.gD(true);
-        buo();
-        AppMethodBeat.o(44100);
-      }
-      
-      private void B(Activity paramAnonymousActivity)
       {
         AppMethodBeat.i(44101);
         if (paramAnonymousActivity == null)
@@ -138,46 +114,60 @@ public final class e
           AppMethodBeat.o(44101);
           return;
         }
-        this.kIk.delete(paramAnonymousActivity.hashCode());
-        if (this.kIk.size() <= 0) {
-          e.gD(false);
+        this.nCa.delete(paramAnonymousActivity.hashCode());
+        if (this.nCa.size() <= 0) {
+          e.ho(false);
         }
-        buo();
+        bFo();
         AppMethodBeat.o(44101);
       }
       
-      private void buo()
+      private void bFo()
       {
-        AppMethodBeat.i(226294);
-        Log.i("MicroMsg.AppBrandProcessProfileInit[applaunch][PreloadProfile][preload]", "alive activity count %d", new Object[] { Integer.valueOf(this.kIk.size()) });
-        AppMethodBeat.o(226294);
+        AppMethodBeat.i(275529);
+        Log.i("MicroMsg.AppBrandProcessProfileInit[applaunch][PreloadProfile][preload]", "alive activity count %d", new Object[] { Integer.valueOf(this.nCa.size()) });
+        AppMethodBeat.o(275529);
+      }
+      
+      private void z(Activity paramAnonymousActivity)
+      {
+        AppMethodBeat.i(44100);
+        if (paramAnonymousActivity == null)
+        {
+          AppMethodBeat.o(44100);
+          return;
+        }
+        this.nCa.put(paramAnonymousActivity.hashCode(), 1);
+        e.ho(true);
+        bFo();
+        AppMethodBeat.o(44100);
       }
       
       public final void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(44102);
-        A(paramAnonymousActivity);
+        z(paramAnonymousActivity);
         AppMethodBeat.o(44102);
       }
       
       public final void onActivityDestroyed(Activity paramAnonymousActivity)
       {
         AppMethodBeat.i(44105);
-        B(paramAnonymousActivity);
+        A(paramAnonymousActivity);
         AppMethodBeat.o(44105);
       }
       
       public final void onActivityStarted(Activity paramAnonymousActivity)
       {
         AppMethodBeat.i(44103);
-        A(paramAnonymousActivity);
+        z(paramAnonymousActivity);
         AppMethodBeat.o(44103);
       }
       
       public final void onActivityStopped(Activity paramAnonymousActivity)
       {
         AppMethodBeat.i(44104);
-        B(paramAnonymousActivity);
+        A(paramAnonymousActivity);
         AppMethodBeat.o(44104);
       }
     });
@@ -186,7 +176,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.e
  * JD-Core Version:    0.7.0.1
  */

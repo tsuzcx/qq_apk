@@ -12,19 +12,19 @@ final class c$3
   public final void run()
   {
     AppMethodBeat.i(27074);
-    c.a(this.Bfj, 4);
-    if (c.f(this.Bfj).getIntent().getIntExtra("Kdel_from", -1) == 1)
+    c.a(this.GZh, 4);
+    if (c.f(this.GZh).getIntent().getIntExtra("Kdel_from", -1) == 1)
     {
       Intent localIntent = new Intent();
       localIntent.addFlags(67108864);
-      com.tencent.mm.br.c.b(c.f(this.Bfj), "shake", ".ui.ShakeReportUI", localIntent);
+      com.tencent.mm.by.c.b(c.f(this.GZh), "shake", ".ui.ShakeReportUI", localIntent);
     }
     AppMethodBeat.o(27074);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.c.3
  * JD-Core Version:    0.7.0.1
  */

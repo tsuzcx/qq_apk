@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.game;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.api.bucket.a;
+import com.tencent.mm.kernel.b;
 import com.tencent.mm.plugin.game.model.s;
 import com.tencent.mm.plugin.game.model.w;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.storagebase.h;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class f
-  implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.bucket.d, com.tencent.mm.plugin.game.api.f
+  implements a, com.tencent.mm.kernel.api.bucket.d, com.tencent.mm.plugin.game.api.f
 {
-  private s xtN;
-  private w xtO;
-  private com.tencent.mm.plugin.game.model.a.g xtP;
-  private com.tencent.mm.plugin.game.media.g xtQ;
-  private com.tencent.mm.plugin.game.media.d xtR;
-  private com.tencent.mm.plugin.game.c.d xtS;
+  private s Cgm;
+  private w Cgn;
+  private com.tencent.mm.plugin.game.model.a.g Cgo;
+  private com.tencent.mm.plugin.game.media.g Cgp;
+  private com.tencent.mm.plugin.game.media.d Cgq;
+  private com.tencent.mm.plugin.game.b.d Cgr;
   
   public final HashMap<Integer, h.b> collectDatabaseFactory()
   {
@@ -63,10 +63,10 @@ public final class f
     {
       public final String[] getSQLs()
       {
-        AppMethodBeat.i(204094);
-        Object localObject = com.tencent.mm.plugin.game.c.d.xvT;
-        localObject = com.tencent.mm.plugin.game.c.d.dax();
-        AppMethodBeat.o(204094);
+        AppMethodBeat.i(205722);
+        Object localObject = com.tencent.mm.plugin.game.b.d.CzN;
+        localObject = com.tencent.mm.plugin.game.b.d.dqy();
+        AppMethodBeat.o(205722);
         return localObject;
       }
     });
@@ -74,107 +74,107 @@ public final class f
     return localHashMap;
   }
   
-  public final s dSK()
+  public final s evo()
   {
     AppMethodBeat.i(40848);
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (this.xtN == null)
+    com.tencent.mm.kernel.h.aHE().aGH();
+    if (this.Cgm == null)
     {
-      com.tencent.mm.kernel.g.aAi();
-      this.xtN = new s(com.tencent.mm.kernel.g.aAh().hqK);
+      com.tencent.mm.kernel.h.aHH();
+      this.Cgm = new s(com.tencent.mm.kernel.h.aHG().kcF);
     }
-    s locals = this.xtN;
+    s locals = this.Cgm;
     AppMethodBeat.o(40848);
     return locals;
   }
   
-  public final w dSL()
+  public final w evp()
   {
     AppMethodBeat.i(40849);
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (this.xtO == null)
+    com.tencent.mm.kernel.h.aHE().aGH();
+    if (this.Cgn == null)
     {
-      com.tencent.mm.kernel.g.aAi();
-      this.xtO = new w(com.tencent.mm.kernel.g.aAh().hqK);
+      com.tencent.mm.kernel.h.aHH();
+      this.Cgn = new w(com.tencent.mm.kernel.h.aHG().kcF);
     }
-    w localw = this.xtO;
+    w localw = this.Cgn;
     AppMethodBeat.o(40849);
     return localw;
   }
   
-  public final com.tencent.mm.plugin.game.model.a.g dSM()
+  public final com.tencent.mm.plugin.game.model.a.g evq()
   {
     AppMethodBeat.i(40850);
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (this.xtP == null)
+    com.tencent.mm.kernel.h.aHE().aGH();
+    if (this.Cgo == null)
     {
-      com.tencent.mm.kernel.g.aAi();
-      this.xtP = new com.tencent.mm.plugin.game.model.a.g(com.tencent.mm.kernel.g.aAh().hqK);
+      com.tencent.mm.kernel.h.aHH();
+      this.Cgo = new com.tencent.mm.plugin.game.model.a.g(com.tencent.mm.kernel.h.aHG().kcF);
     }
-    com.tencent.mm.plugin.game.model.a.g localg = this.xtP;
+    com.tencent.mm.plugin.game.model.a.g localg = this.Cgo;
     AppMethodBeat.o(40850);
     return localg;
   }
   
-  public final com.tencent.mm.plugin.game.media.g dSN()
+  public final com.tencent.mm.plugin.game.media.g evr()
   {
     AppMethodBeat.i(40851);
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (this.xtQ == null)
+    com.tencent.mm.kernel.h.aHE().aGH();
+    if (this.Cgp == null)
     {
-      com.tencent.mm.kernel.g.aAi();
-      this.xtQ = new com.tencent.mm.plugin.game.media.g(com.tencent.mm.kernel.g.aAh().hqK);
+      com.tencent.mm.kernel.h.aHH();
+      this.Cgp = new com.tencent.mm.plugin.game.media.g(com.tencent.mm.kernel.h.aHG().kcF);
     }
-    com.tencent.mm.plugin.game.media.g localg = this.xtQ;
+    com.tencent.mm.plugin.game.media.g localg = this.Cgp;
     AppMethodBeat.o(40851);
     return localg;
   }
   
-  public final com.tencent.mm.plugin.game.media.d dSO()
+  public final com.tencent.mm.plugin.game.media.d evs()
   {
     AppMethodBeat.i(40852);
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (this.xtR == null)
+    com.tencent.mm.kernel.h.aHE().aGH();
+    if (this.Cgq == null)
     {
-      com.tencent.mm.kernel.g.aAi();
-      this.xtR = new com.tencent.mm.plugin.game.media.d(com.tencent.mm.kernel.g.aAh().hqK);
+      com.tencent.mm.kernel.h.aHH();
+      this.Cgq = new com.tencent.mm.plugin.game.media.d(com.tencent.mm.kernel.h.aHG().kcF);
     }
-    com.tencent.mm.plugin.game.media.d locald = this.xtR;
+    com.tencent.mm.plugin.game.media.d locald = this.Cgq;
     AppMethodBeat.o(40852);
     return locald;
   }
   
-  public final com.tencent.mm.plugin.game.c.d dSP()
+  public final com.tencent.mm.plugin.game.b.d evt()
   {
-    AppMethodBeat.i(204095);
-    com.tencent.mm.kernel.g.aAf().azk();
-    if (this.xtS == null)
+    AppMethodBeat.i(197823);
+    com.tencent.mm.kernel.h.aHE().aGH();
+    if (this.Cgr == null)
     {
-      com.tencent.mm.kernel.g.aAi();
-      this.xtS = new com.tencent.mm.plugin.game.c.d(com.tencent.mm.kernel.g.aAh().hqK);
+      com.tencent.mm.kernel.h.aHH();
+      this.Cgr = new com.tencent.mm.plugin.game.b.d(com.tencent.mm.kernel.h.aHG().kcF);
     }
-    com.tencent.mm.plugin.game.c.d locald = this.xtS;
-    AppMethodBeat.o(204095);
+    com.tencent.mm.plugin.game.b.d locald = this.Cgr;
+    AppMethodBeat.o(197823);
     return locald;
   }
   
-  public final void onDataBaseClosed(h paramh1, h paramh2) {}
+  public final void onDataBaseClosed(com.tencent.mm.storagebase.h paramh1, com.tencent.mm.storagebase.h paramh2) {}
   
-  public final void onDataBaseOpened(h paramh1, h paramh2)
+  public final void onDataBaseOpened(com.tencent.mm.storagebase.h paramh1, com.tencent.mm.storagebase.h paramh2)
   {
     AppMethodBeat.i(40846);
     Log.i("MicroMsg.GameStorage", "GameStorage onDataBaseOpened");
-    this.xtN = new s(paramh1);
-    this.xtP = new com.tencent.mm.plugin.game.model.a.g(paramh1);
-    this.xtQ = new com.tencent.mm.plugin.game.media.g(paramh1);
-    this.xtR = new com.tencent.mm.plugin.game.media.d(paramh1);
-    this.xtS = new com.tencent.mm.plugin.game.c.d(paramh1);
+    this.Cgm = new s(paramh1);
+    this.Cgo = new com.tencent.mm.plugin.game.model.a.g(paramh1);
+    this.Cgp = new com.tencent.mm.plugin.game.media.g(paramh1);
+    this.Cgq = new com.tencent.mm.plugin.game.media.d(paramh1);
+    this.Cgr = new com.tencent.mm.plugin.game.b.d(paramh1);
     AppMethodBeat.o(40846);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.f
  * JD-Core Version:    0.7.0.1
  */

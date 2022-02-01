@@ -3,32 +3,32 @@ package com.tencent.mm.emoji.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/report/AnimateEmojiReporter;", "", "()V", "isRecentClick", "", "()Z", "setRecentClick", "(Z)V", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/report/AnimateEmojiReporter;", "", "()V", "isRecentClick", "", "()Z", "setRecentClick", "(Z)V", "plugin-emojisdk_release"})
 public final class a
 {
-  private static boolean hbY;
-  public static final a hbZ;
+  private static boolean jNi;
+  public static final a jNj;
   
   static
   {
-    AppMethodBeat.i(199998);
-    hbZ = new a();
-    AppMethodBeat.o(199998);
+    AppMethodBeat.i(227221);
+    jNj = new a();
+    AppMethodBeat.o(227221);
   }
   
-  public static boolean avY()
+  public static boolean aCX()
   {
-    return hbY;
+    return jNi;
   }
   
-  public static void ed(boolean paramBoolean)
+  public static void eA(boolean paramBoolean)
   {
-    hbY = paramBoolean;
+    jNi = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.c.a
  * JD-Core Version:    0.7.0.1
  */

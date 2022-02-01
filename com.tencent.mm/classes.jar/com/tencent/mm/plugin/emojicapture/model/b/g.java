@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.emojicapture.model.b;
 import kotlin.g.a.a;
 import kotlin.l;
 
-@l(hxD={1, 1, 16})
+@l(iBK={1, 1, 16})
 final class g
   implements Runnable
 {
   g(a parama)
   {
-    this.cuq = parama;
+    this.csv = parama;
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.voip_cs.c.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.etd;
-import com.tencent.mm.protocal.protobuf.ete;
+import com.tencent.mm.protocal.protobuf.fdo;
+import com.tencent.mm.protocal.protobuf.fdp;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
@@ -17,23 +17,23 @@ public final class d
   implements m
 {
   private i callback;
-  public com.tencent.mm.ak.d rr;
+  public com.tencent.mm.an.d rr;
   
   public d(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(125431);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new etd();
-    ((d.a)localObject).iLO = new ete();
+    ((d.a)localObject).lBU = new fdo();
+    ((d.a)localObject).lBV = new fdp();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/csvoipredirect";
     ((d.a)localObject).funcId = 285;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (etd)this.rr.iLK.iLR;
-    ((etd)localObject).NeG = paramLong1;
-    ((etd)localObject).Lta = paramLong2;
-    ((etd)localObject).MKf = System.currentTimeMillis();
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (fdo)d.b.b(this.rr.lBR);
+    ((fdo)localObject).Urf = paramLong1;
+    ((fdo)localObject).Svv = paramLong2;
+    ((fdo)localObject).TVZ = System.currentTimeMillis();
     AppMethodBeat.o(125431);
   }
   

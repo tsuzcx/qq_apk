@@ -15,20 +15,20 @@ public final class a
   extends DeflaterOutputStream
 {
   private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
-  private static final byte[] Skx = { 0 };
-  private int SkA = 8;
-  private ByteArrayOutputStream SkB = new ByteArrayOutputStream();
-  private ZipEntry SkC;
-  private long SkD = 0L;
-  private int SkE;
-  private byte[] SkF;
-  private final int SkG = 4;
-  private byte[] Sky = EMPTY_BYTE_ARRAY;
-  private final HashSet<String> Skz = new HashSet();
-  private boolean chA = false;
+  private static final byte[] ZNi = { 0 };
+  private byte[] ZNj = EMPTY_BYTE_ARRAY;
+  private final HashSet<String> ZNk = new HashSet();
+  private int ZNl = 8;
+  private ByteArrayOutputStream ZNm = new ByteArrayOutputStream();
+  private ZipEntry ZNn;
+  private long ZNo = 0L;
+  private int ZNp;
+  private byte[] ZNq;
+  private final int ZNr = 4;
   private boolean closed = false;
   private int compressionLevel = -1;
   private final CRC32 crc = new CRC32();
+  private boolean jHM = false;
   private int offset = 0;
   private int padding = 0;
   
@@ -40,15 +40,6 @@ public final class a
   private a(OutputStream paramOutputStream, byte paramByte)
   {
     super(paramOutputStream, new Deflater(-1, true));
-  }
-  
-  private static long c(OutputStream paramOutputStream, long paramLong)
-  {
-    paramOutputStream.write((int)(0xFF & paramLong));
-    paramOutputStream.write((int)(paramLong >> 8) & 0xFF);
-    paramOutputStream.write((int)(paramLong >> 16) & 0xFF);
-    paramOutputStream.write((int)(paramLong >> 24) & 0xFF);
-    return paramLong;
   }
   
   private static void c(OutputStream paramOutputStream, int paramInt)
@@ -76,156 +67,31 @@ public final class a
     return paramInt;
   }
   
-  private void hpk()
+  private static long e(OutputStream paramOutputStream, long paramLong)
+  {
+    paramOutputStream.write((int)(0xFF & paramLong));
+    paramOutputStream.write((int)(paramLong >> 8) & 0xFF);
+    paramOutputStream.write((int)(paramLong >> 16) & 0xFF);
+    paramOutputStream.write((int)(paramLong >> 24) & 0xFF);
+    return paramLong;
+  }
+  
+  private void isM()
   {
     if (this.closed) {
       throw new IOException("Stream is closed");
     }
   }
   
-  public final void close()
-  {
-    if (!this.closed)
-    {
-      finish();
-      this.def.end();
-      this.out.close();
-      this.out = null;
-      this.closed = true;
-    }
-  }
-  
-  public final void closeEntry()
-  {
-    hpk();
-    if (this.SkC == null) {
-      return;
-    }
-    if (this.SkC.getMethod() == 8) {
-      super.finish();
-    }
-    if (this.SkC.getMethod() == 0)
-    {
-      if (this.crc.getValue() != this.SkC.getCrc()) {
-        throw new ZipException("CRC mismatch");
-      }
-      if (this.SkC.getSize() != this.SkD) {
-        throw new ZipException("Size mismatch");
-      }
-    }
-    int i = 30;
-    if (this.SkC.getMethod() != 0)
-    {
-      i = 46;
-      c(this.out, 134695760L);
-      this.SkC.setCrc(this.crc.getValue());
-      c(this.out, this.SkC.getCrc());
-      this.SkC.setCompressedSize(this.def.getTotalOut());
-      c(this.out, this.SkC.getCompressedSize());
-      this.SkC.setSize(this.def.getTotalIn());
-      c(this.out, this.SkC.getSize());
-    }
-    int j;
-    if (this.SkC.getMethod() == 0)
-    {
-      j = 0;
-      c(this.SkB, 33639248L);
-      d(this.SkB, 20);
-      d(this.SkB, 20);
-      d(this.SkB, j | 0x800);
-      d(this.SkB, this.SkC.getMethod());
-      d(this.SkB, 0);
-      d(this.SkB, 33);
-      c(this.SkB, this.crc.getValue());
-      if (this.SkC.getMethod() != 8) {
-        break label587;
-      }
-      i = (int)(i + c(this.SkB, this.def.getTotalOut()));
-      c(this.SkB, this.def.getTotalIn());
-      label360:
-      i += d(this.SkB, this.SkE);
-      if (this.SkC.getExtra() == null) {
-        break label618;
-      }
-      i += d(this.SkB, this.SkC.getExtra().length);
-    }
-    for (;;)
-    {
-      String str = this.SkC.getComment();
-      byte[] arrayOfByte = EMPTY_BYTE_ARRAY;
-      if (str != null) {
-        arrayOfByte = str.getBytes(Charset.forName("UTF-8"));
-      }
-      d(this.SkB, arrayOfByte.length);
-      d(this.SkB, 0);
-      d(this.SkB, 0);
-      c(this.SkB, 0L);
-      c(this.SkB, this.offset);
-      this.SkB.write(this.SkF);
-      this.SkF = null;
-      if (this.SkC.getExtra() != null) {
-        this.SkB.write(this.SkC.getExtra());
-      }
-      j = this.offset;
-      this.offset = (i + this.padding + j);
-      this.padding = 0;
-      if (arrayOfByte.length > 0) {
-        this.SkB.write(arrayOfByte);
-      }
-      this.SkC = null;
-      this.crc.reset();
-      this.SkD = 0L;
-      this.def.reset();
-      return;
-      j = 8;
-      break;
-      label587:
-      i = (int)(i + c(this.SkB, this.SkD));
-      c(this.SkB, this.SkD);
-      break label360;
-      label618:
-      d(this.SkB, 0);
-    }
-  }
-  
-  public final void finish()
-  {
-    hpk();
-    if (this.chA) {
-      return;
-    }
-    if (this.Skz.isEmpty()) {
-      throw new ZipException("No entries");
-    }
-    if (this.SkC != null) {
-      closeEntry();
-    }
-    int i = this.SkB.size();
-    c(this.SkB, 101010256L);
-    d(this.SkB, 0);
-    d(this.SkB, 0);
-    d(this.SkB, this.Skz.size());
-    d(this.SkB, this.Skz.size());
-    c(this.SkB, i);
-    c(this.SkB, this.offset + this.padding);
-    d(this.SkB, this.Sky.length);
-    if (this.Sky.length > 0) {
-      this.SkB.write(this.Sky);
-    }
-    this.SkB.writeTo(this.out);
-    this.SkB = null;
-    this.chA = true;
-  }
-  
-  public final void putNextEntry(ZipEntry paramZipEntry)
+  public final void a(ZipEntry paramZipEntry)
   {
     int k = 0;
-    if (this.SkC != null) {
-      closeEntry();
+    if (this.ZNn != null) {
+      isL();
     }
     int i = paramZipEntry.getMethod();
     if (i == -1) {
-      i = this.SkA;
+      i = this.ZNl;
     }
     for (;;)
     {
@@ -248,98 +114,232 @@ public final class a
           throw new ZipException("STORED entry size/compressed size mismatch");
         }
       }
-      hpk();
-      if (this.Skz.contains(paramZipEntry.getName())) {
+      isM();
+      if (this.ZNk.contains(paramZipEntry.getName())) {
         throw new ZipException("Entry already exists: " + paramZipEntry.getName());
       }
-      if (this.Skz.size() == 65535) {
+      if (this.ZNk.size() == 65535) {
         throw new ZipException("Too many entries for the zip file format's 16-bit entry count");
       }
-      this.SkF = paramZipEntry.getName().getBytes(Charset.forName("UTF-8"));
-      this.SkE = this.SkF.length;
-      if (this.SkE > 65535) {
-        throw new IllegalArgumentException("Name too long: " + this.SkE + " UTF-8 bytes");
+      this.ZNq = paramZipEntry.getName().getBytes(Charset.forName("UTF-8"));
+      this.ZNp = this.ZNq.length;
+      if (this.ZNp > 65535) {
+        throw new IllegalArgumentException("Name too long: " + this.ZNp + " UTF-8 bytes");
       }
       this.def.setLevel(this.compressionLevel);
       paramZipEntry.setMethod(i);
-      this.SkC = paramZipEntry;
-      this.Skz.add(this.SkC.getName());
+      this.ZNn = paramZipEntry;
+      this.ZNk.add(this.ZNn.getName());
       int j;
-      label454:
+      label448:
       int m;
       int n;
       if (i == 0)
       {
         j = 0;
-        c(this.out, 67324752L);
+        e(this.out, 67324752L);
         d(this.out, 20);
         d(this.out, j | 0x800);
         d(this.out, i);
-        if (this.SkC.getTime() == -1L) {
-          this.SkC.setTime(System.currentTimeMillis());
+        if (this.ZNn.getTime() == -1L) {
+          this.ZNn.setTime(System.currentTimeMillis());
         }
         d(this.out, 0);
         d(this.out, 33);
         if (i != 0) {
-          break label609;
+          break label603;
         }
-        c(this.out, this.SkC.getCrc());
-        c(this.out, this.SkC.getSize());
-        c(this.out, this.SkC.getSize());
-        d(this.out, this.SkE);
+        e(this.out, this.ZNn.getCrc());
+        e(this.out, this.ZNn.getSize());
+        e(this.out, this.ZNn.getSize());
+        d(this.out, this.ZNp);
         m = this.offset;
-        n = this.SkE;
-        if (this.SkC.getExtra() == null) {
-          break label639;
+        n = this.ZNp;
+        if (this.ZNn.getExtra() == null) {
+          break label633;
         }
-        i = this.SkC.getExtra().length;
-        label497:
+        i = this.ZNn.getExtra().length;
+        label491:
         j = k;
-        if (this.SkC.getMethod() == 0)
+        if (this.ZNn.getMethod() == 0)
         {
-          if (this.SkG != 0) {
-            break label644;
+          if (this.ZNr != 0) {
+            break label638;
           }
           j = k;
         }
-        label520:
+        label514:
         this.padding = j;
-        if (this.SkC.getExtra() == null) {
-          break label672;
+        if (this.ZNn.getExtra() == null) {
+          break label666;
         }
-        d(this.out, this.SkC.getExtra().length + this.padding);
+        d(this.out, this.ZNn.getExtra().length + this.padding);
       }
       for (;;)
       {
-        this.out.write(this.SkF);
-        if (this.SkC.getExtra() != null) {
-          this.out.write(this.SkC.getExtra());
+        this.out.write(this.ZNq);
+        if (this.ZNn.getExtra() != null) {
+          this.out.write(this.ZNn.getExtra());
         }
         c(this.out, this.padding);
         return;
         j = 8;
         break;
-        label609:
-        c(this.out, 0L);
-        c(this.out, 0L);
-        c(this.out, 0L);
-        break label454;
-        label639:
+        label603:
+        e(this.out, 0L);
+        e(this.out, 0L);
+        e(this.out, 0L);
+        break label448;
+        label633:
         i = 0;
-        break label497;
-        label644:
-        j = this.SkG;
-        j = (j - (i + (n + (m + 30))) % j) % this.SkG;
-        break label520;
-        label672:
+        break label491;
+        label638:
+        j = this.ZNr;
+        j = (j - (i + (n + (m + 30))) % j) % this.ZNr;
+        break label514;
+        label666:
         d(this.out, this.padding);
       }
     }
   }
   
+  public final void close()
+  {
+    if (!this.closed)
+    {
+      finish();
+      this.def.end();
+      this.out.close();
+      this.out = null;
+      this.closed = true;
+    }
+  }
+  
+  public final void finish()
+  {
+    isM();
+    if (this.jHM) {
+      return;
+    }
+    if (this.ZNk.isEmpty()) {
+      throw new ZipException("No entries");
+    }
+    if (this.ZNn != null) {
+      isL();
+    }
+    int i = this.ZNm.size();
+    e(this.ZNm, 101010256L);
+    d(this.ZNm, 0);
+    d(this.ZNm, 0);
+    d(this.ZNm, this.ZNk.size());
+    d(this.ZNm, this.ZNk.size());
+    e(this.ZNm, i);
+    e(this.ZNm, this.offset + this.padding);
+    d(this.ZNm, this.ZNj.length);
+    if (this.ZNj.length > 0) {
+      this.ZNm.write(this.ZNj);
+    }
+    this.ZNm.writeTo(this.out);
+    this.ZNm = null;
+    this.jHM = true;
+  }
+  
+  public final void isL()
+  {
+    isM();
+    if (this.ZNn == null) {
+      return;
+    }
+    if (this.ZNn.getMethod() == 8) {
+      super.finish();
+    }
+    if (this.ZNn.getMethod() == 0)
+    {
+      if (this.crc.getValue() != this.ZNn.getCrc()) {
+        throw new ZipException("CRC mismatch");
+      }
+      if (this.ZNn.getSize() != this.ZNo) {
+        throw new ZipException("Size mismatch");
+      }
+    }
+    int i = 30;
+    if (this.ZNn.getMethod() != 0)
+    {
+      i = 46;
+      e(this.out, 134695760L);
+      this.ZNn.setCrc(this.crc.getValue());
+      e(this.out, this.ZNn.getCrc());
+      this.ZNn.setCompressedSize(this.def.getTotalOut());
+      e(this.out, this.ZNn.getCompressedSize());
+      this.ZNn.setSize(this.def.getTotalIn());
+      e(this.out, this.ZNn.getSize());
+    }
+    int j;
+    if (this.ZNn.getMethod() == 0)
+    {
+      j = 0;
+      e(this.ZNm, 33639248L);
+      d(this.ZNm, 20);
+      d(this.ZNm, 20);
+      d(this.ZNm, j | 0x800);
+      d(this.ZNm, this.ZNn.getMethod());
+      d(this.ZNm, 0);
+      d(this.ZNm, 33);
+      e(this.ZNm, this.crc.getValue());
+      if (this.ZNn.getMethod() != 8) {
+        break label589;
+      }
+      i = (int)(i + e(this.ZNm, this.def.getTotalOut()));
+      e(this.ZNm, this.def.getTotalIn());
+      label362:
+      i += d(this.ZNm, this.ZNp);
+      if (this.ZNn.getExtra() == null) {
+        break label620;
+      }
+      i += d(this.ZNm, this.ZNn.getExtra().length);
+    }
+    for (;;)
+    {
+      String str = this.ZNn.getComment();
+      byte[] arrayOfByte = EMPTY_BYTE_ARRAY;
+      if (str != null) {
+        arrayOfByte = str.getBytes(Charset.forName("UTF-8"));
+      }
+      d(this.ZNm, arrayOfByte.length);
+      d(this.ZNm, 0);
+      d(this.ZNm, 0);
+      e(this.ZNm, 0L);
+      e(this.ZNm, this.offset);
+      this.ZNm.write(this.ZNq);
+      this.ZNq = null;
+      if (this.ZNn.getExtra() != null) {
+        this.ZNm.write(this.ZNn.getExtra());
+      }
+      j = this.offset;
+      this.offset = (i + this.padding + j);
+      this.padding = 0;
+      if (arrayOfByte.length > 0) {
+        this.ZNm.write(arrayOfByte);
+      }
+      this.ZNn = null;
+      this.crc.reset();
+      this.ZNo = 0L;
+      this.def.reset();
+      return;
+      j = 8;
+      break;
+      label589:
+      i = (int)(i + e(this.ZNm, this.ZNo));
+      e(this.ZNm, this.ZNo);
+      break label362;
+      label620:
+      d(this.ZNm, 0);
+    }
+  }
+  
   public final void write(int paramInt)
   {
-    byte[] arrayOfByte = Skx;
+    byte[] arrayOfByte = ZNi;
     arrayOfByte[0] = ((byte)(paramInt & 0xFF));
     write(arrayOfByte, 0, 1);
   }
@@ -350,16 +350,16 @@ public final class a
     if (((paramInt1 | paramInt2) < 0) || (paramInt1 > i) || (i - paramInt1 < paramInt2)) {
       throw new ArrayIndexOutOfBoundsException("length=" + i + "; regionStart=" + paramInt1 + "; regionLength=" + paramInt2);
     }
-    if (this.SkC == null) {
+    if (this.ZNn == null) {
       throw new ZipException("No active entry");
     }
-    if (this.SkC.getMethod() == 0) {
+    if (this.ZNn.getMethod() == 0) {
       this.out.write(paramArrayOfByte, paramInt1, paramInt2);
     }
     for (;;)
     {
       this.crc.update(paramArrayOfByte, paramInt1, paramInt2);
-      this.SkD += paramInt2;
+      this.ZNo += paramInt2;
       return;
       super.write(paramArrayOfByte, paramInt1, paramInt2);
     }
@@ -367,7 +367,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.d.a.a
  * JD-Core Version:    0.7.0.1
  */

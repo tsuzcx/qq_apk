@@ -1,19 +1,24 @@
 package com.tencent.f.b;
 
-import java.util.Collection;
-import java.util.Map;
-
-public abstract interface d
+public final class d
 {
-  public abstract void delete(long paramLong);
+  public String ZQO;
+  public String ZQP;
+  public String[] ZQQ;
+  public boolean ZQR;
   
-  public abstract Map<String, a.a> hml();
+  public d() {}
   
-  public abstract void q(Collection<a.a> paramCollection);
+  public d(String paramString1, String paramString2)
+  {
+    this.ZQP = paramString1;
+    this.ZQO = paramString2;
+    this.ZQQ = null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.f.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -4,15 +4,15 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
 import com.tencent.mm.model.ad.b;
-import com.tencent.mm.plugin.appbrand.jsapi.u.c;
+import com.tencent.mm.plugin.appbrand.jsapi.v.c;
 
 @SuppressLint({"AppCompatCustomView"})
 public final class e
   extends f
   implements a
 {
-  private c cEN = null;
-  private ad.b nal;
+  private c cFt = null;
+  private ad.b qaA;
   
   public e(Context paramContext)
   {
@@ -21,12 +21,12 @@ public final class e
   
   public final ad.b getKeyValueSet()
   {
-    return this.nal;
+    return this.qaA;
   }
   
   public final c getReferrerPolicy()
   {
-    return this.cEN;
+    return this.cFt;
   }
   
   public final View getView()
@@ -40,12 +40,12 @@ public final class e
   
   public final void setKeyValueSet(ad.b paramb)
   {
-    this.nal = paramb;
+    this.qaA = paramb;
   }
   
   public final void setReferrerPolicy(c paramc)
   {
-    this.cEN = paramc;
+    this.cFt = paramc;
   }
 }
 

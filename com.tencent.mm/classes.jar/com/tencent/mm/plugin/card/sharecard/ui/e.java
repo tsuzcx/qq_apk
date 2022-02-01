@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.card.a.d;
+import com.tencent.mm.plugin.card.a.e;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.sharecard.a.b;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -15,110 +17,110 @@ import com.tencent.mm.ui.MMActivity;
 
 public final class e
 {
-  private ImageView dPk;
-  private MMActivity pQZ;
-  View pXr;
-  b pXs;
-  protected LinearLayout pXt;
-  protected LinearLayout pXu;
-  private TextView pXv;
+  private ImageView fIv;
+  private MMActivity tmY;
+  View tto;
+  b ttp;
+  protected LinearLayout ttq;
+  protected LinearLayout ttr;
+  private TextView tts;
   
   public e(MMActivity paramMMActivity)
   {
-    this.pQZ = paramMMActivity;
+    this.tmY = paramMMActivity;
   }
   
-  private void cuJ()
+  private void cIl()
   {
     AppMethodBeat.i(113085);
-    this.pXt.setVisibility(8);
-    this.pXu.setVisibility(8);
+    this.ttq.setVisibility(8);
+    this.ttr.setVisibility(8);
     AppMethodBeat.o(113085);
   }
   
-  private void cuM()
+  private void cIo()
   {
     AppMethodBeat.i(113088);
-    this.pXt.setVisibility(8);
-    this.pXu.setVisibility(8);
+    this.ttq.setVisibility(8);
+    this.ttr.setVisibility(8);
     AppMethodBeat.o(113088);
   }
   
-  public final void cnh()
+  public final void cAT()
   {
     AppMethodBeat.i(113089);
-    cuM();
-    this.pXv.setVisibility(8);
+    cIo();
+    this.tts.setVisibility(8);
     AppMethodBeat.o(113089);
   }
   
-  public final void cuI()
+  public final void cIk()
   {
     AppMethodBeat.i(113084);
-    if (this.pXr == null)
+    if (this.tto == null)
     {
-      this.pXr = View.inflate(this.pQZ, 2131493418, null);
-      this.dPk = ((ImageView)this.pXr.findViewById(2131296671));
-      this.pXv = ((TextView)this.pXr.findViewById(2131307871));
-      this.pXt = ((LinearLayout)this.pXr.findViewById(2131303707));
-      this.pXu = ((LinearLayout)this.pXr.findViewById(2131303700));
-      this.pXt.setVisibility(8);
-      this.pXu.setVisibility(8);
+      this.tto = View.inflate(this.tmY, a.e.tiY, null);
+      this.fIv = ((ImageView)this.tto.findViewById(a.d.album_next_progress));
+      this.tts = ((TextView)this.tto.findViewById(a.d.tgU));
+      this.ttq = ((LinearLayout)this.tto.findViewById(a.d.loading_more_state));
+      this.ttr = ((LinearLayout)this.tto.findViewById(a.d.loading_end));
+      this.ttq.setVisibility(8);
+      this.ttr.setVisibility(8);
       RotateAnimation localRotateAnimation = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
       localRotateAnimation.setDuration(1000L);
       localRotateAnimation.setRepeatCount(-1);
       localRotateAnimation.setInterpolator(new LinearInterpolator());
-      this.dPk.startAnimation(localRotateAnimation);
+      this.fIv.startAnimation(localRotateAnimation);
     }
     updateView();
     AppMethodBeat.o(113084);
   }
   
-  public final void cuK()
+  public final void cIm()
   {
     AppMethodBeat.i(113086);
-    this.pXt.setVisibility(0);
-    this.pXu.setVisibility(8);
+    this.ttq.setVisibility(0);
+    this.ttr.setVisibility(8);
     AppMethodBeat.o(113086);
   }
   
-  public final void cuL()
+  public final void cIn()
   {
     AppMethodBeat.i(113087);
-    this.pXt.setVisibility(8);
+    this.ttq.setVisibility(8);
     AppMethodBeat.o(113087);
   }
   
   public final void updateView()
   {
     AppMethodBeat.i(113090);
-    Integer localInteger2 = (Integer)am.ctV().getValue("key_share_card_show_type");
+    Integer localInteger2 = (Integer)am.cHx().getValue("key_share_card_show_type");
     Integer localInteger1 = localInteger2;
     if (localInteger2 == null) {
       localInteger1 = Integer.valueOf(0);
     }
-    if ((this.pXs != null) && (b.cuB()) && ((localInteger1.intValue() == 1) || (localInteger1.intValue() == 4)) && (b.cuy()))
+    if ((this.ttp != null) && (b.cId()) && ((localInteger1.intValue() == 1) || (localInteger1.intValue() == 4)) && (b.cIa()))
     {
-      this.pXv.setVisibility(0);
-      cuM();
+      this.tts.setVisibility(0);
+      cIo();
     }
     do
     {
       AppMethodBeat.o(113090);
       return;
-      this.pXv.setVisibility(8);
-      if (this.pXs == null) {
+      this.tts.setVisibility(8);
+      if (this.ttp == null) {
         break;
       }
-      Log.d("MicroMsg.ShareCardFooterController", "updateView isLocalEnd %s isOtherEnd %s ", new Object[] { Boolean.valueOf(b.cuB()), Boolean.valueOf(b.cuC()) });
-      if ((!b.cuB()) || (!b.cuC()))
+      Log.d("MicroMsg.ShareCardFooterController", "updateView isLocalEnd %s isOtherEnd %s ", new Object[] { Boolean.valueOf(b.cId()), Boolean.valueOf(b.cIe()) });
+      if ((!b.cId()) || (!b.cIe()))
       {
-        cuK();
+        cIm();
         AppMethodBeat.o(113090);
         return;
       }
-    } while ((!b.cuB()) || (!b.cuC()));
-    cuJ();
+    } while ((!b.cId()) || (!b.cIe()));
+    cIl();
     AppMethodBeat.o(113090);
   }
 }

@@ -28,9 +28,9 @@ public final class f
 {
   public static final SpannableString a(String paramString1, String paramString2, CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(206893);
+    AppMethodBeat.i(243878);
     paramString1 = f(paramString1 + paramCharSequence + paramString2, paramString1.length(), paramString1.length() + paramCharSequence.length());
-    AppMethodBeat.o(206893);
+    AppMethodBeat.o(243878);
     return paramString1;
   }
   
@@ -38,37 +38,37 @@ public final class f
   {
     AppMethodBeat.i(131656);
     com.tencent.mm.plugin.fts.a.a.f localf = new com.tencent.mm.plugin.fts.a.a.f();
-    float f1 = parame.wWi - parame.iW.getTextSize() * 2.0F;
-    float f2 = parame.iW.measureText("…");
-    float f3 = parame.iW.measureText(paramSpannable, 0, paramb.wWs);
-    float f4 = parame.iW.measureText(paramSpannable, paramb.wWs, paramb.wWt);
-    float f5 = parame.iW.measureText(paramSpannable, paramb.wWt, paramSpannable.length());
+    float f1 = parame.BId - parame.bzo.getTextSize() * 2.0F;
+    float f2 = parame.bzo.measureText("…");
+    float f3 = parame.bzo.measureText(paramSpannable, 0, paramb.BIn);
+    float f4 = parame.bzo.measureText(paramSpannable, paramb.BIn, paramb.BIo);
+    float f5 = parame.bzo.measureText(paramSpannable, paramb.BIo, paramSpannable.length());
     if (f3 + f4 + f5 < f1)
     {
       paramSpannable = c(paramSpannable, paramb, parame);
       AppMethodBeat.o(131656);
       return paramSpannable;
     }
-    Object localObject2 = paramSpannable.subSequence(paramb.wWs, paramb.wWt);
+    Object localObject2 = paramSpannable.subSequence(paramb.BIn, paramb.BIo);
     Object localObject1;
-    if (parame.wWg == e.a.wWp)
+    if (parame.BIb == e.a.BIk)
     {
-      localObject1 = new SpannableString(TextUtils.concat(new CharSequence[] { parame.wWl, localObject2, parame.wWm }));
+      localObject1 = new SpannableString(TextUtils.concat(new CharSequence[] { parame.BIg, localObject2, parame.BIh }));
       if (f3 + f4 + f2 >= f1) {
         break label389;
       }
-      localObject2 = new SpannableStringBuilder(paramSpannable, 0, paramb.wWs);
+      localObject2 = new SpannableStringBuilder(paramSpannable, 0, paramb.BIn);
       ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1);
-      ((SpannableStringBuilder)localObject2).append(TextUtils.ellipsize(paramSpannable.subSequence(paramb.wWt, paramSpannable.length()), parame.iW, f1 - f3 - f4, TextUtils.TruncateAt.END));
-      localf.wWu = ((CharSequence)localObject2);
+      ((SpannableStringBuilder)localObject2).append(TextUtils.ellipsize(paramSpannable.subSequence(paramb.BIo, paramSpannable.length()), parame.bzo, f1 - f3 - f4, TextUtils.TruncateAt.END));
+      localf.BIp = ((CharSequence)localObject2);
     }
     for (;;)
     {
       localf.resultCode = 0;
       AppMethodBeat.o(131656);
       return localf;
-      if (parame.wWg == e.a.wWo) {}
-      for (localObject1 = new BackgroundColorSpan(parame.wWh);; localObject1 = new ForegroundColorSpan(parame.wWh)) {
+      if (parame.BIb == e.a.BIj) {}
+      for (localObject1 = new BackgroundColorSpan(parame.BIc);; localObject1 = new ForegroundColorSpan(parame.BIc)) {
         for (;;)
         {
           localObject2 = new SpannableString((CharSequence)localObject2);
@@ -81,7 +81,7 @@ public final class f
           {
             Log.printErrStackTrace("MicroMsg.FTS.FTSUIHLLogic", parame, "setSpan %s", new Object[] { paramb.toString() });
             localf.resultCode = -1;
-            localf.wWu = paramSpannable;
+            localf.BIp = paramSpannable;
             AppMethodBeat.o(131656);
             return localf;
           }
@@ -91,27 +91,27 @@ public final class f
       if (f2 + f4 + f5 < f1)
       {
         localObject2 = new SpannableStringBuilder();
-        ((SpannableStringBuilder)localObject2).append(TextUtils.ellipsize(paramSpannable.subSequence(0, paramb.wWs), parame.iW, f1 - f4 - f5, TextUtils.TruncateAt.START));
+        ((SpannableStringBuilder)localObject2).append(TextUtils.ellipsize(paramSpannable.subSequence(0, paramb.BIn), parame.bzo, f1 - f4 - f5, TextUtils.TruncateAt.START));
         ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1);
-        ((SpannableStringBuilder)localObject2).append(paramSpannable, paramb.wWt, paramSpannable.length());
-        localf.wWu = ((CharSequence)localObject2);
+        ((SpannableStringBuilder)localObject2).append(paramSpannable, paramb.BIo, paramSpannable.length());
+        localf.BIp = ((CharSequence)localObject2);
       }
       else if (f2 + f4 + f2 >= f1)
       {
         paramSpannable = new SpannableStringBuilder();
-        paramSpannable.append(TextUtils.ellipsize((CharSequence)localObject1, parame.iW, f1, TextUtils.TruncateAt.END));
-        localf.wWu = paramSpannable;
+        paramSpannable.append(TextUtils.ellipsize((CharSequence)localObject1, parame.bzo, f1, TextUtils.TruncateAt.END));
+        localf.BIp = paramSpannable;
       }
       else
       {
         localObject2 = new SpannableStringBuilder();
         f1 = (f1 - f4) / 2.0F;
-        CharSequence localCharSequence = paramSpannable.subSequence(0, paramb.wWs);
-        paramSpannable = paramSpannable.subSequence(paramb.wWt, paramSpannable.length());
-        ((SpannableStringBuilder)localObject2).append(TextUtils.ellipsize(localCharSequence, parame.iW, f1, TextUtils.TruncateAt.START));
+        CharSequence localCharSequence = paramSpannable.subSequence(0, paramb.BIn);
+        paramSpannable = paramSpannable.subSequence(paramb.BIo, paramSpannable.length());
+        ((SpannableStringBuilder)localObject2).append(TextUtils.ellipsize(localCharSequence, parame.bzo, f1, TextUtils.TruncateAt.START));
         ((SpannableStringBuilder)localObject2).append((CharSequence)localObject1);
-        ((SpannableStringBuilder)localObject2).append(TextUtils.ellipsize(paramSpannable, parame.iW, f1, TextUtils.TruncateAt.END));
-        localf.wWu = ((CharSequence)localObject2);
+        ((SpannableStringBuilder)localObject2).append(TextUtils.ellipsize(paramSpannable, parame.bzo, f1, TextUtils.TruncateAt.END));
+        localf.BIp = ((CharSequence)localObject2);
       }
     }
   }
@@ -121,30 +121,30 @@ public final class f
     int j = 1;
     AppMethodBeat.i(131654);
     Object localObject1 = new com.tencent.mm.plugin.fts.a.a.f();
-    SpannableString localSpannableString = new SpannableString(TextUtils.concat(new CharSequence[] { parame.wWj, parame.wWc, parame.wWk }));
+    SpannableString localSpannableString = new SpannableString(TextUtils.concat(new CharSequence[] { parame.BIe, parame.BHX, parame.BIf }));
     ((com.tencent.mm.plugin.fts.a.a.f)localObject1).resultCode = -1;
-    ((com.tencent.mm.plugin.fts.a.a.f)localObject1).wWu = localSpannableString;
-    if ((!Util.isNullOrNil(parame.wWc)) && (parame.wWd != null)) {}
+    ((com.tencent.mm.plugin.fts.a.a.f)localObject1).BIp = localSpannableString;
+    if ((!Util.isNullOrNil(parame.BHX)) && (parame.BHY != null)) {}
     for (int i = 1; i == 0; i = 0)
     {
       AppMethodBeat.o(131654);
       return localObject1;
     }
-    Object localObject4 = d.ayq(parame.wWc.toString());
+    Object localObject4 = d.aHJ(parame.BHX.toString());
     Object localObject2 = new ArrayList();
-    if (parame.wWe) {
-      localObject2 = bC((String)localObject4, parame.wWf);
+    if (parame.BHZ) {
+      localObject2 = bH((String)localObject4, parame.BIa);
     }
     for (;;)
     {
       Object localObject6;
-      if ((parame.wWd.wWF.size() == 1) || (a(localSpannableString, parame)))
+      if ((parame.BHY.BIA.size() == 1) || (a(localSpannableString, parame)))
       {
         localObject6 = new e.b();
-        if (parame.wWd.wWF.size() == 1)
+        if (parame.BHY.BIA.size() == 1)
         {
-          ((e.b)localObject6).wWr = ((h.c)parame.wWd.wWF.get(0));
-          if (parame.wWe) {
+          ((e.b)localObject6).BIm = ((h.c)parame.BHY.BIA.get(0));
+          if (parame.BHZ) {
             a((List)localObject2, (e.b)localObject6, parame);
           }
           for (;;)
@@ -163,14 +163,14 @@ public final class f
             {
               for (;;)
               {
-                ((com.tencent.mm.plugin.fts.a.a.f)localObject1).wWu = localSpannableString;
+                ((com.tencent.mm.plugin.fts.a.a.f)localObject1).BIp = localSpannableString;
                 parame = (e)localObject1;
               }
             }
           }
         }
-        ((e.b)localObject6).wWr = ((h.c)parame.wWd.wWF.get(0));
-        if (parame.wWe)
+        ((e.b)localObject6).BIm = ((h.c)parame.BHY.BIA.get(0));
+        if (parame.BHZ)
         {
           a((List)localObject2, (e.b)localObject6, parame);
           localObject2 = localObject1;
@@ -183,17 +183,17 @@ public final class f
         try
         {
           localObject2 = b(localSpannableString, (e.b)localObject6, parame);
-          localObject7 = ((com.tencent.mm.plugin.fts.a.a.f)localObject2).wWu.toString();
+          localObject7 = ((com.tencent.mm.plugin.fts.a.a.f)localObject2).BIp.toString();
           localObject1 = new ArrayList();
-          if (!parame.wWe) {
+          if (!parame.BHZ) {
             break label857;
           }
-          localObject1 = bC((String)localObject7, parame.wWf);
+          localObject1 = bH((String)localObject7, parame.BIa);
           i = j;
-          if (i < parame.wWd.wWF.size())
+          if (i < parame.BHY.BIA.size())
           {
-            ((e.b)localObject6).wWr = ((h.c)parame.wWd.wWF.get(i));
-            if (parame.wWe)
+            ((e.b)localObject6).BIm = ((h.c)parame.BHY.BIA.get(i));
+            if (parame.BHZ)
             {
               a((List)localObject1, (e.b)localObject6, parame);
               localObject4 = localObject2;
@@ -205,21 +205,21 @@ public final class f
         {
           try
           {
-            localObject4 = b((Spannable)((com.tencent.mm.plugin.fts.a.a.f)localObject2).wWu, (e.b)localObject6, parame);
+            localObject4 = b((Spannable)((com.tencent.mm.plugin.fts.a.a.f)localObject2).BIp, (e.b)localObject6, parame);
             i += 1;
             localObject2 = localObject4;
             continue;
             a((String)localObject4, (e.b)localObject6, parame);
             break;
             localException1 = localException1;
-            ((com.tencent.mm.plugin.fts.a.a.f)localObject1).wWu = localSpannableString;
+            ((com.tencent.mm.plugin.fts.a.a.f)localObject1).BIp = localSpannableString;
             localObject3 = localObject1;
             continue;
             a((String)localObject7, (e.b)localObject6, parame);
           }
           catch (Exception localException2)
           {
-            ((com.tencent.mm.plugin.fts.a.a.f)localObject3).wWu = localSpannableString;
+            ((com.tencent.mm.plugin.fts.a.a.f)localObject3).BIp = localSpannableString;
             localObject5 = localObject3;
             continue;
           }
@@ -227,12 +227,12 @@ public final class f
           return localObject3;
         }
         localObject6 = new e.b();
-        ((e.b)localObject6).wWr = new h.c();
+        ((e.b)localObject6).BIm = new h.c();
         Object localObject7 = new h.b();
-        ((h.b)localObject7).wWH = h.d.wWM;
-        ((h.b)localObject7).content = parame.wWd.wWC;
-        ((e.b)localObject6).wWr.wWJ.add(localObject7);
-        if (parame.wWe) {
+        ((h.b)localObject7).BIC = h.d.BIH;
+        ((h.b)localObject7).content = parame.BHY.BIx;
+        ((e.b)localObject6).BIm.BIE.add(localObject7);
+        if (parame.BHZ) {
           a((List)localObject3, (e.b)localObject6, parame);
         }
         for (;;)
@@ -249,27 +249,27 @@ public final class f
             {
               for (;;)
               {
-                ((com.tencent.mm.plugin.fts.a.a.f)localObject1).wWu = localSpannableString;
+                ((com.tencent.mm.plugin.fts.a.a.f)localObject1).BIp = localSpannableString;
                 parame = (e)localObject1;
               }
             }
           }
         }
         localObject6 = new ArrayList();
-        localObject7 = parame.wWd.wWF.iterator();
+        localObject7 = parame.BHY.BIA.iterator();
         Object localObject8;
         while (((Iterator)localObject7).hasNext())
         {
           localObject8 = (h.c)((Iterator)localObject7).next();
           e.b localb = new e.b();
-          localb.wWr = ((h.c)localObject8);
+          localb.BIm = ((h.c)localObject8);
           ((List)localObject6).add(localb);
         }
         localObject7 = ((List)localObject6).iterator();
         while (((Iterator)localObject7).hasNext())
         {
           localObject8 = (e.b)((Iterator)localObject7).next();
-          if (parame.wWe) {
+          if (parame.BHZ) {
             a((List)localObject3, (e.b)localObject8, parame);
           } else {
             a((String)localObject5, (e.b)localObject8, parame);
@@ -302,7 +302,7 @@ public final class f
   {
     AppMethodBeat.i(131652);
     parame = a(parame);
-    parame.wWu = TextUtils.concat(new CharSequence[] { paramString1, parame.wWu, paramString2 });
+    parame.BIp = TextUtils.concat(new CharSequence[] { paramString1, parame.BIp, paramString2 });
     AppMethodBeat.o(131652);
     return parame;
   }
@@ -319,13 +319,13 @@ public final class f
     int i = paramString.indexOf(str);
     if (i >= 0)
     {
-      paramb.wWs = i;
-      paramb.wWt = (str.length() + i);
+      paramb.BIn = i;
+      paramb.BIo = (str.length() + i);
     }
-    if ((paramb.isAvailable()) && (parame.wWj != null))
+    if ((paramb.isAvailable()) && (parame.BIe != null))
     {
-      paramb.wWs += parame.wWj.length();
-      paramb.wWt += parame.wWj.length();
+      paramb.BIn += parame.BIe.length();
+      paramb.BIo += parame.BIe.length();
     }
     AppMethodBeat.o(131659);
   }
@@ -335,16 +335,16 @@ public final class f
     AppMethodBeat.i(131660);
     Object localObject2;
     Object localObject1;
-    if (parame.wWf)
+    if (parame.BIa)
     {
-      localObject2 = paramb.wWr.wWJ.iterator();
+      localObject2 = paramb.BIm.BIE.iterator();
       do
       {
         if (!((Iterator)localObject2).hasNext()) {
           break;
         }
         localObject1 = (h.b)((Iterator)localObject2).next();
-      } while (((h.b)localObject1).wWH != h.d.wWL);
+      } while (((h.b)localObject1).BIC != h.d.BIG);
     }
     for (;;)
     {
@@ -353,36 +353,36 @@ public final class f
         AppMethodBeat.o(131660);
         return;
       }
-      int i = o(paramList, ((h.b)localObject1).wWI);
+      int i = r(paramList, ((h.b)localObject1).BID);
       if (i >= 0)
       {
-        paramb.wWs = i;
-        paramb.wWt = (((h.b)localObject1).wWI.size() + i);
+        paramb.BIn = i;
+        paramb.BIo = (((h.b)localObject1).BID.size() + i);
         break label178;
       }
       for (;;)
       {
-        if ((paramb.isAvailable()) && (parame.wWj != null))
+        if ((paramb.isAvailable()) && (parame.BIe != null))
         {
-          paramb.wWs += parame.wWj.length();
-          paramb.wWt += parame.wWj.length();
+          paramb.BIn += parame.BIe.length();
+          paramb.BIo += parame.BIe.length();
         }
         AppMethodBeat.o(131660);
         return;
-        localObject1 = paramb.wWr.wWJ.iterator();
+        localObject1 = paramb.BIm.BIE.iterator();
         label178:
         if (((Iterator)localObject1).hasNext())
         {
           localObject2 = (h.b)((Iterator)localObject1).next();
-          if (((h.b)localObject2).wWH != h.d.wWK) {
+          if (((h.b)localObject2).BIC != h.d.BIF) {
             break;
           }
-          i = o(paramList, ((h.b)localObject2).wWI);
+          i = r(paramList, ((h.b)localObject2).BID);
           if (i < 0) {
             break;
           }
-          paramb.wWs = i;
-          paramb.wWt = (((h.b)localObject2).wWI.size() + i);
+          paramb.BIn = i;
+          paramb.BIo = (((h.b)localObject2).BID.size() + i);
         }
       }
       localObject1 = null;
@@ -392,9 +392,9 @@ public final class f
   private static boolean a(Spannable paramSpannable, e parame)
   {
     AppMethodBeat.i(131655);
-    if ((parame.wWi > 0.0F) && (parame.iW != null))
+    if ((parame.BId > 0.0F) && (parame.bzo != null))
     {
-      if (parame.wWi - parame.iW.getTextSize() * 2.0F < parame.iW.measureText(paramSpannable.toString()))
+      if (parame.BId - parame.bzo.getTextSize() * 2.0F < parame.bzo.measureText(paramSpannable.toString()))
       {
         AppMethodBeat.o(131655);
         return true;
@@ -406,7 +406,7 @@ public final class f
     return false;
   }
   
-  public static CharSequence ayv(String paramString)
+  public static CharSequence aHP(String paramString)
   {
     AppMethodBeat.i(131664);
     if (Util.isNullOrNil(paramString))
@@ -424,13 +424,13 @@ public final class f
   {
     AppMethodBeat.i(131663);
     paramCharSequence = a(e.c(paramCharSequence, paramString));
-    if ((paramCharSequence.wWu instanceof Spannable))
+    if ((paramCharSequence.BIp instanceof Spannable))
     {
-      paramCharSequence = (Spannable)paramCharSequence.wWu;
+      paramCharSequence = (Spannable)paramCharSequence.BIp;
       AppMethodBeat.o(131663);
       return paramCharSequence;
     }
-    paramCharSequence = new SpannableString(paramCharSequence.wWu);
+    paramCharSequence = new SpannableString(paramCharSequence.BIp);
     AppMethodBeat.o(131663);
     return paramCharSequence;
   }
@@ -449,7 +449,7 @@ public final class f
     return paramSpannable;
   }
   
-  private static List<List<String>> bC(String paramString, boolean paramBoolean)
+  private static List<List<String>> bH(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(131662);
     ArrayList localArrayList1 = new ArrayList();
@@ -458,9 +458,9 @@ public final class f
     {
       char c = paramString.charAt(i);
       ArrayList localArrayList2 = new ArrayList(2);
-      if (g.B(c))
+      if (g.J(c))
       {
-        String[] arrayOfString = (String[])g.wVN.get(String.valueOf(c));
+        String[] arrayOfString = (String[])g.BHJ.get(String.valueOf(c));
         if ((arrayOfString != null) && (arrayOfString.length > 0) && (arrayOfString[0].length() > 0))
         {
           int k = arrayOfString.length;
@@ -497,35 +497,35 @@ public final class f
   {
     AppMethodBeat.i(131658);
     com.tencent.mm.plugin.fts.a.a.f localf = new com.tencent.mm.plugin.fts.a.a.f();
-    if (parame.wWg == e.a.wWp)
+    if (parame.BIb == e.a.BIk)
     {
       paramSpannable = paramSpannable.toString();
       StringBuffer localStringBuffer = new StringBuffer();
-      localStringBuffer.append(paramSpannable.substring(0, paramb.wWs));
-      localStringBuffer.append(parame.wWl);
-      localStringBuffer.append(paramSpannable.substring(paramb.wWs, paramb.wWt));
-      localStringBuffer.append(parame.wWm);
-      if (paramb.wWt < paramSpannable.length()) {
-        localStringBuffer.append(paramSpannable.substring(paramb.wWt, paramSpannable.length()));
+      localStringBuffer.append(paramSpannable.substring(0, paramb.BIn));
+      localStringBuffer.append(parame.BIg);
+      localStringBuffer.append(paramSpannable.substring(paramb.BIn, paramb.BIo));
+      localStringBuffer.append(parame.BIh);
+      if (paramb.BIo < paramSpannable.length()) {
+        localStringBuffer.append(paramSpannable.substring(paramb.BIo, paramSpannable.length()));
       }
-      localf.wWu = localStringBuffer.toString();
+      localf.BIp = localStringBuffer.toString();
       localf.resultCode = 0;
       AppMethodBeat.o(131658);
       return localf;
     }
-    if (parame.wWg == e.a.wWo) {}
-    for (parame = new BackgroundColorSpan(parame.wWh);; parame = new ForegroundColorSpan(parame.wWh))
+    if (parame.BIb == e.a.BIj) {}
+    for (parame = new BackgroundColorSpan(parame.BIc);; parame = new ForegroundColorSpan(parame.BIc))
     {
       try
       {
-        paramSpannable.setSpan(parame, paramb.wWs, paramb.wWt, 33);
-        localf.wWu = paramSpannable;
+        paramSpannable.setSpan(parame, paramb.BIn, paramb.BIo, 33);
+        localf.BIp = paramSpannable;
         localf.resultCode = 0;
       }
       catch (Exception parame)
       {
         Log.printErrStackTrace("MicroMsg.FTS.FTSUIHLLogic", parame, "setSpan %s", new Object[] { paramb.toString() });
-        localf.wWu = paramSpannable;
+        localf.BIp = paramSpannable;
         localf.resultCode = -1;
       }
       break;
@@ -537,14 +537,14 @@ public final class f
     AppMethodBeat.i(131653);
     paramCharSequence = new SpannableString(paramCharSequence);
     e.b localb = new e.b();
-    localb.wWs = paramInt1;
-    localb.wWt = paramInt2;
+    localb.BIn = paramInt1;
+    localb.BIo = paramInt2;
     b(paramCharSequence, localb, new e());
     AppMethodBeat.o(131653);
     return paramCharSequence;
   }
   
-  private static int o(List<List<String>> paramList, List<String> paramList1)
+  private static int r(List<List<String>> paramList, List<String> paramList1)
   {
     AppMethodBeat.i(131661);
     int j = 0;
@@ -606,7 +606,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.f
  * JD-Core Version:    0.7.0.1
  */

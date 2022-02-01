@@ -10,17 +10,17 @@ final class BinderProxyTransactNativeHook$b
   
   BinderProxyTransactNativeHook$b()
   {
-    AppMethodBeat.i(225312);
+    AppMethodBeat.i(256572);
     this.startTime = 0L;
     this.startTime = System.currentTimeMillis();
-    AppMethodBeat.o(225312);
+    AppMethodBeat.o(256572);
   }
   
   public final void run()
   {
-    AppMethodBeat.i(225313);
+    AppMethodBeat.i(256574);
     Log.e("MicroMsg.BadBinder", hashCode() + "#send_bad#");
-    AppMethodBeat.o(225313);
+    AppMethodBeat.o(256574);
   }
 }
 

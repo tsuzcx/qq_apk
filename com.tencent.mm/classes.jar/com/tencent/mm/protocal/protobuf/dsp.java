@@ -1,72 +1,87 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
+import java.util.LinkedList;
 
 public final class dsp
-  extends com.tencent.mm.bw.a
+  extends dyy
 {
-  public String KZj;
-  public String MUS;
-  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117919);
+    AppMethodBeat.i(50099);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.KZj != null) {
-        paramVarArgs.e(1, this.KZj);
+      if (this.BaseResponse == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(50099);
+        throw paramVarArgs;
       }
-      if (this.MUS != null) {
-        paramVarArgs.e(2, this.MUS);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.oE(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      AppMethodBeat.o(117919);
+      AppMethodBeat.o(50099);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.KZj == null) {
-        break label274;
+      if (this.BaseResponse == null) {
+        break label336;
       }
     }
-    label274:
-    for (paramInt = g.a.a.b.b.a.f(1, this.KZj) + 0;; paramInt = 0)
+    label336:
+    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.MUS != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.MUS);
-      }
-      AppMethodBeat.o(117919);
-      return i;
+      AppMethodBeat.o(50099);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(117919);
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(50099);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(50099);
         return 0;
       }
       if (paramInt == 3)
       {
-        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         dsp localdsp = (dsp)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(117919);
+          AppMethodBeat.o(50099);
           return -1;
-        case 1: 
-          localdsp.KZj = locala.UbS.readString();
-          AppMethodBeat.o(117919);
-          return 0;
         }
-        localdsp.MUS = locala.UbS.readString();
-        AppMethodBeat.o(117919);
+        paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject = (byte[])paramVarArgs.get(paramInt);
+          jh localjh = new jh();
+          if ((localObject != null) && (localObject.length > 0)) {
+            localjh.parseFrom((byte[])localObject);
+          }
+          localdsp.BaseResponse = localjh;
+          paramInt += 1;
+        }
+        AppMethodBeat.o(50099);
         return 0;
       }
-      AppMethodBeat.o(117919);
+      AppMethodBeat.o(50099);
       return -1;
     }
   }

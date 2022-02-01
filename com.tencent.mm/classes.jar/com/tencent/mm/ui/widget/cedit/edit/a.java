@@ -20,51 +20,51 @@ import com.tencent.mm.sdk.platformtools.Util;
 public final class a
   extends BaseInputConnection
 {
-  private final CustomTextView QIo;
-  private int QIp;
-  private InputMethodManager QIq;
+  private final CustomTextView Yhe;
+  private int Yhf;
+  private InputMethodManager Yhg;
   
   public a(CustomTextView paramCustomTextView)
   {
     super(paramCustomTextView, true);
-    this.QIo = paramCustomTextView;
+    this.Yhe = paramCustomTextView;
   }
   
   public final boolean beginBatchEdit()
   {
-    AppMethodBeat.i(205865);
+    AppMethodBeat.i(197226);
     try
     {
-      if (this.QIp >= 0)
+      if (this.Yhf >= 0)
       {
-        this.QIo.beginBatchEdit();
-        this.QIp += 1;
+        this.Yhe.ian();
+        this.Yhf += 1;
         return true;
       }
       return false;
     }
     finally
     {
-      AppMethodBeat.o(205865);
+      AppMethodBeat.o(197226);
     }
   }
   
   public final boolean clearMetaKeyStates(int paramInt)
   {
-    AppMethodBeat.i(205868);
+    AppMethodBeat.i(197238);
     Editable localEditable = getEditable();
     if (localEditable == null)
     {
-      AppMethodBeat.o(205868);
+      AppMethodBeat.o(197238);
       return false;
     }
-    KeyListener localKeyListener = this.QIo.getKeyListener();
+    KeyListener localKeyListener = this.Yhe.getKeyListener();
     if (localKeyListener != null) {}
     try
     {
-      localKeyListener.clearMetaKeyState(this.QIo, localEditable, paramInt);
+      localKeyListener.clearMetaKeyState(this.Yhe, localEditable, paramInt);
       label45:
-      AppMethodBeat.o(205868);
+      AppMethodBeat.o(197238);
       return true;
     }
     catch (AbstractMethodError localAbstractMethodError)
@@ -75,173 +75,173 @@ public final class a
   
   public final void closeConnection()
   {
-    AppMethodBeat.i(205867);
+    AppMethodBeat.i(197236);
     super.closeConnection();
     try
     {
-      while (this.QIp > 0) {
+      while (this.Yhf > 0) {
         endBatchEdit();
       }
-      this.QIp = -1;
+      this.Yhf = -1;
     }
     finally
     {
-      AppMethodBeat.o(205867);
+      AppMethodBeat.o(197236);
     }
-    AppMethodBeat.o(205867);
+    AppMethodBeat.o(197236);
   }
   
   public final boolean commitCompletion(CompletionInfo paramCompletionInfo)
   {
-    AppMethodBeat.i(205869);
+    AppMethodBeat.i(197241);
     Log.v("cmEdit.EditableInputConnection", "commitCompletion ".concat(String.valueOf(paramCompletionInfo)));
-    this.QIo.beginBatchEdit();
-    this.QIo.endBatchEdit();
-    AppMethodBeat.o(205869);
+    this.Yhe.ian();
+    this.Yhe.iao();
+    AppMethodBeat.o(197241);
     return true;
   }
   
   public final boolean commitCorrection(CorrectionInfo paramCorrectionInfo)
   {
-    AppMethodBeat.i(205870);
+    AppMethodBeat.i(197248);
     Log.v("cmEdit.EditableInputConnection", "commitCorrection".concat(String.valueOf(paramCorrectionInfo)));
-    this.QIo.beginBatchEdit();
-    Object localObject = this.QIo;
-    if (((CustomTextView)localObject).QHs != null)
+    this.Yhe.ian();
+    Object localObject = this.Yhe;
+    if (((CustomTextView)localObject).Ygi != null)
     {
-      localObject = ((CustomTextView)localObject).QHs;
-      if (((b)localObject).QIB != null) {
+      localObject = ((CustomTextView)localObject).Ygi;
+      if (((b)localObject).Yhr != null) {
         break label132;
       }
-      ((b)localObject).QIB = new b.b((b)localObject);
+      ((b)localObject).Yhr = new b.b((b)localObject);
     }
     for (;;)
     {
-      localObject = ((b)localObject).QIB;
-      ((b.b)localObject).avh = paramCorrectionInfo.getOffset();
-      ((b.b)localObject).Pc = (((b.b)localObject).avh + paramCorrectionInfo.getNewText().length());
-      ((b.b)localObject).QJA = SystemClock.uptimeMillis();
-      if ((((b.b)localObject).avh < 0) || (((b.b)localObject).Pc < 0)) {
+      localObject = ((b)localObject).Yhr;
+      ((b.b)localObject).tH = paramCorrectionInfo.getOffset();
+      ((b.b)localObject).tI = (((b.b)localObject).tH + paramCorrectionInfo.getNewText().length());
+      ((b.b)localObject).Yiq = SystemClock.uptimeMillis();
+      if ((((b.b)localObject).tH < 0) || (((b.b)localObject).tI < 0)) {
         ((b.b)localObject).stopAnimation();
       }
-      this.QIo.endBatchEdit();
-      AppMethodBeat.o(205870);
+      this.Yhe.iao();
+      AppMethodBeat.o(197248);
       return true;
       label132:
-      ((b)localObject).QIB.Da(false);
+      ((b)localObject).Yhr.Hw(false);
     }
   }
   
   public final boolean commitText(CharSequence paramCharSequence, int paramInt)
   {
-    AppMethodBeat.i(205874);
+    AppMethodBeat.i(197265);
     boolean bool;
-    if (this.QIo == null)
+    if (this.Yhe == null)
     {
       bool = super.commitText(paramCharSequence, paramInt);
-      AppMethodBeat.o(205874);
+      AppMethodBeat.o(197265);
       return bool;
     }
     try
     {
       bool = super.commitText(paramCharSequence, paramInt);
-      AppMethodBeat.o(205874);
+      AppMethodBeat.o(197265);
       return bool;
     }
     catch (Throwable paramCharSequence)
     {
       Log.e("cmEdit.EditableInputConnection", "commitText err:%s", new Object[] { Util.stackTraceToString(paramCharSequence) });
-      com.tencent.mm.ui.widget.cedit.api.b.aow(6);
-      AppMethodBeat.o(205874);
+      com.tencent.mm.ui.widget.cedit.api.b.axG(6);
+      AppMethodBeat.o(197265);
     }
     return false;
   }
   
   public final boolean endBatchEdit()
   {
-    AppMethodBeat.i(205866);
+    AppMethodBeat.i(197232);
     try
     {
-      if (this.QIp > 0)
+      if (this.Yhf > 0)
       {
-        this.QIo.endBatchEdit();
-        this.QIp -= 1;
+        this.Yhe.iao();
+        this.Yhf -= 1;
         return true;
       }
       return false;
     }
     finally
     {
-      AppMethodBeat.o(205866);
+      AppMethodBeat.o(197232);
     }
   }
   
   public final Editable getEditable()
   {
-    AppMethodBeat.i(205864);
-    Object localObject = this.QIo;
+    AppMethodBeat.i(197223);
+    Object localObject = this.Yhe;
     if (localObject != null)
     {
       localObject = ((CustomTextView)localObject).getEditableText();
-      AppMethodBeat.o(205864);
+      AppMethodBeat.o(197223);
       return localObject;
     }
-    AppMethodBeat.o(205864);
+    AppMethodBeat.o(197223);
     return null;
   }
   
   public final ExtractedText getExtractedText(ExtractedTextRequest paramExtractedTextRequest, int paramInt)
   {
-    AppMethodBeat.i(205873);
-    if (this.QIo != null)
+    AppMethodBeat.i(197262);
+    if (this.Yhe != null)
     {
       ExtractedText localExtractedText = new ExtractedText();
-      if (this.QIo.extractText(paramExtractedTextRequest, localExtractedText))
+      if (this.Yhe.a(paramExtractedTextRequest, localExtractedText))
       {
         if ((paramInt & 0x1) != 0) {
-          this.QIo.setExtracting(paramExtractedTextRequest);
+          this.Yhe.setExtracting(paramExtractedTextRequest);
         }
-        AppMethodBeat.o(205873);
+        AppMethodBeat.o(197262);
         return localExtractedText;
       }
     }
-    AppMethodBeat.o(205873);
+    AppMethodBeat.o(197262);
     return null;
   }
   
   public final boolean performContextMenuAction(int paramInt)
   {
-    AppMethodBeat.i(205872);
+    AppMethodBeat.i(197258);
     Log.v("cmEdit.EditableInputConnection", "performContextMenuAction ".concat(String.valueOf(paramInt)));
-    this.QIo.beginBatchEdit();
-    this.QIo.onTextContextMenuItem(paramInt);
-    this.QIo.endBatchEdit();
-    AppMethodBeat.o(205872);
+    this.Yhe.ian();
+    this.Yhe.onTextContextMenuItem(paramInt);
+    this.Yhe.iao();
+    AppMethodBeat.o(197258);
     return true;
   }
   
   public final boolean performEditorAction(int paramInt)
   {
-    AppMethodBeat.i(205871);
+    AppMethodBeat.i(197255);
     Log.v("cmEdit.EditableInputConnection", "performEditorAction ".concat(String.valueOf(paramInt)));
-    CustomTextView localCustomTextView = this.QIo;
+    CustomTextView localCustomTextView = this.Yhe;
     Object localObject;
-    if (localCustomTextView.QHs == null) {
+    if (localCustomTextView.Ygi == null) {
       localObject = null;
     }
     for (;;)
     {
       if (localObject != null) {
-        if ((((b.g)localObject).QKi == null) || (!((b.g)localObject).QKi.a(localCustomTextView, paramInt))) {
+        if ((((b.g)localObject).Yja == null) || (!((b.g)localObject).Yja.a(localCustomTextView, paramInt))) {
           if (paramInt == 5)
           {
             localObject = localCustomTextView.focusSearch(2);
             if ((localObject != null) && (!((View)localObject).requestFocus(2)))
             {
               localObject = new IllegalStateException("focus search returned a view that wasn't able to take focus!");
-              AppMethodBeat.o(205871);
+              AppMethodBeat.o(197255);
               throw ((Throwable)localObject);
-              localObject = localCustomTextView.QHs.QIC;
+              localObject = localCustomTextView.Ygi.Yhs;
             }
           }
           else if (paramInt == 7)
@@ -250,7 +250,7 @@ public final class a
             if ((localObject != null) && (!((View)localObject).requestFocus(1)))
             {
               localObject = new IllegalStateException("focus search returned a view that wasn't able to take focus!");
-              AppMethodBeat.o(205871);
+              AppMethodBeat.o(197255);
               throw ((Throwable)localObject);
             }
           }
@@ -269,7 +269,7 @@ public final class a
     }
     for (;;)
     {
-      AppMethodBeat.o(205871);
+      AppMethodBeat.o(197255);
       return true;
       label218:
       localObject = new com.tencent.mm.ui.widget.cedit.util.a(localCustomTextView, "getViewRootImpl", new Class[0]).invoke(new Object[0]);
@@ -289,34 +289,34 @@ public final class a
   
   public final boolean requestCursorUpdates(int paramInt)
   {
-    AppMethodBeat.i(205875);
+    AppMethodBeat.i(197268);
     Log.v("cmEdit.EditableInputConnection", "requestUpdateCursorAnchorInfo ".concat(String.valueOf(paramInt)));
     int i = paramInt & 0xFFFFFFFC;
     if (i != 0)
     {
       Log.d("cmEdit.EditableInputConnection", "Rejecting requestUpdateCursorAnchorInfo due to unknown flags. cursorUpdateMode=" + paramInt + " unknownFlags=" + i);
-      AppMethodBeat.o(205875);
+      AppMethodBeat.o(197268);
       return false;
     }
-    if (this.QIq == null) {
-      this.QIo.getContext().getSystemService("input_method");
+    if (this.Yhg == null) {
+      this.Yhe.getContext().getSystemService("input_method");
     }
-    if (this.QIq == null)
+    if (this.Yhg == null)
     {
-      AppMethodBeat.o(205875);
+      AppMethodBeat.o(197268);
       return false;
     }
     Log.i("cmEdit.EditableInputConnection", "requestCursorUpdates");
-    if (((paramInt & 0x1) != 0) && (this.QIo != null) && (!this.QIo.isInLayout())) {
-      this.QIo.requestLayout();
+    if (((paramInt & 0x1) != 0) && (this.Yhe != null) && (!this.Yhe.isInLayout())) {
+      this.Yhe.requestLayout();
     }
-    AppMethodBeat.o(205875);
+    AppMethodBeat.o(197268);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cedit.edit.a
  * JD-Core Version:    0.7.0.1
  */

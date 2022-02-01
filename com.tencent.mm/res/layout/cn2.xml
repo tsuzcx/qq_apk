@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/q0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/ksd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.finder.view.FinderPostProgressView android:id="@id/ksl" android:layout_width="@dimen/cj" android:layout_height="@dimen/cj" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/am" android:ellipsize="end" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:text="@string/xx" android:maxLines="1" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/ksc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cj" android:layout_height="@dimen/cj" android:src="@raw/icons_filled_error" app:iconColor="@color/Red" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/am" android:ellipsize="end" android:id="@id/kli" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:text="@string/jy_" android:maxLines="1" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/kv9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

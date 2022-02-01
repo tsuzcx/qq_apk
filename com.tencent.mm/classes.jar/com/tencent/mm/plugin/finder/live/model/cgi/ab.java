@@ -1,127 +1,86 @@
 package com.tencent.mm.plugin.finder.live.model.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.model.z;
-import com.tencent.mm.network.g;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.finder.cgi.am;
-import com.tencent.mm.plugin.finder.cgi.ax;
-import com.tencent.mm.protocal.protobuf.avv;
-import com.tencent.mm.protocal.protobuf.avw;
-import com.tencent.mm.protocal.protobuf.awj;
-import com.tencent.mm.protocal.protobuf.axv;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.finder.cgi.ao;
+import com.tencent.mm.protocal.protobuf.ayk;
+import com.tencent.mm.protocal.protobuf.baw;
+import com.tencent.mm.protocal.protobuf.bax;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.jh;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.LinkedList;
-import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/model/cgi/NetSceneFinderLiveLotteryHistory;", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderBase;", "scene", "", "liveId", "", "objectId", "objectNonceId", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "(IJJLjava/lang/String;Lcom/tencent/mm/protobuf/ByteString;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "pullType", "getPullType", "()I", "setPullType", "(I)V", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getLiveList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveLotteryRecord;", "kotlin.jvm.PlatformType", "getLiveListContinueFlag", "getLiveListLastBuffer", "getLotteryInfoListContinueFlag", "()Ljava/lang/Integer;", "getLotteryInfoListLastBuffer", "getType", "onCgiEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveModBackgroundMusic;", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLive;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveModBackgroundMusicResponse;", "liveId", "", "liveCookies", "", "finderUsername", "", "objectId", "musicInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveBackgroundMusicInfo;", "times", "", "callback", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveModBackgroundMusic$CallBack;", "(J[BLjava/lang/String;JLcom/tencent/mm/protocal/protobuf/FinderLiveBackgroundMusicInfo;ILcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveModBackgroundMusic$CallBack;)V", "TAG", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveModBackgroundMusicRequest;", "initReqResp", "", "isEnableReport", "Lcom/tencent/mm/plugin/findersdk/cgi/report/EnableValue;", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "plugin-finder_release"})
 public final class ab
-  extends ax
+  extends n<bax>
 {
-  public static final a uly;
-  private i callback;
-  public int pullType;
-  public d rr;
+  private final String TAG;
+  private int mgw;
+  private a yjK;
+  private baw yjL;
   
-  static
+  public ab(long paramLong1, byte[] paramArrayOfByte, String paramString, long paramLong2, ayk paramayk, int paramInt, a parama)
   {
-    AppMethodBeat.i(246362);
-    uly = new a((byte)0);
-    AppMethodBeat.o(246362);
-  }
-  
-  public ab(int paramInt, long paramLong1, long paramLong2, String paramString, b paramb)
-  {
-    AppMethodBeat.i(246361);
-    Object localObject = new d.a();
-    ((d.a)localObject).sG(getType());
-    avv localavv = new avv();
-    localavv.scene = paramInt;
-    am localam = am.tuw;
-    localavv.LAI = am.cXY();
-    localavv.finderUsername = z.aUg();
-    localavv.liveId = paramLong1;
-    localavv.hFK = paramLong2;
-    localavv.lastBuffer = paramb;
-    localavv.objectNonceId = paramString;
-    ((d.a)localObject).c((a)localavv);
-    ((d.a)localObject).d((a)new avw());
-    ((d.a)localObject).MB("/cgi-bin/micromsg-bin/finderlivegetlotteryhistory");
-    localObject = ((d.a)localObject).aXF();
-    p.g(localObject, "builder.buildInstance()");
-    this.rr = ((d)localObject);
-    Log.i("NetSceneFinderLiveLotteryHistory", "NetSceneFinderLiveLotteryHistory init, finderUsername = " + localavv.finderUsername + ", liveId = " + paramLong1 + ", objectId = " + paramLong2 + ", objectNonceId = " + paramString + ", scene = " + paramInt + ",  lastBuffer = " + paramb);
-    AppMethodBeat.o(246361);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, s params)
-  {
-    AppMethodBeat.i(246359);
-    if (this.callback != null)
+    AppMethodBeat.i(280260);
+    this.TAG = "Finder.CgiFinderLiveModBackgroundMusic";
+    this.mgw = paramInt;
+    this.yjK = parama;
+    this.yjL = new baw();
+    parama = this.yjL;
+    ao localao = ao.xcj;
+    parama.RLM = ao.dnO();
+    this.yjL.klE = paramLong1;
+    this.yjL.RLO = com.tencent.mm.cd.b.cU(paramArrayOfByte);
+    this.yjL.RLN = paramString;
+    this.yjL.object_id = paramLong2;
+    this.yjL.SEV = paramayk;
+    paramArrayOfByte = new d.a();
+    paramArrayOfByte.c((a)this.yjL);
+    paramString = new bax();
+    paramString.setBaseResponse(new jh());
+    paramString.getBaseResponse().Tef = new eaf();
+    paramArrayOfByte.d((a)paramString);
+    paramArrayOfByte.TW("/cgi-bin/micromsg-bin/finderlivemodbackgroundmusic");
+    paramArrayOfByte.vD(6813);
+    c(paramArrayOfByte.bgN());
+    paramString = this.TAG;
+    paramayk = new StringBuilder("CgiFinderLiveModBackgroundMusic init ").append(this.yjL.klE).append(',').append(this.yjL.RLN).append(", times:").append(this.mgw).append(", song_id_list:");
+    paramArrayOfByte = this.yjL.SEV;
+    if (paramArrayOfByte != null)
     {
-      params = this.callback;
-      if (params == null) {
-        p.hyc();
+      paramArrayOfByte = paramArrayOfByte.SKz;
+      paramArrayOfByte = paramayk.append(paramArrayOfByte).append(",liveCookies is null:");
+      if (this.yjL.RLO != null) {
+        break label329;
       }
-      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
     }
-    AppMethodBeat.o(246359);
-  }
-  
-  public final LinkedList<awj> dgI()
-  {
-    AppMethodBeat.i(246360);
-    Object localObject = this.rr.aYK();
-    if (localObject == null)
+    label329:
+    for (boolean bool = true;; bool = false)
     {
-      localObject = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderLiveGetLotteryHistoryResponse");
-      AppMethodBeat.o(246360);
-      throw ((Throwable)localObject);
+      Log.i(paramString, bool);
+      AppMethodBeat.o(280260);
+      return;
+      paramArrayOfByte = null;
+      break;
     }
-    localObject = ((avw)localObject).LGr;
-    if (localObject != null)
-    {
-      LinkedList localLinkedList = ((axv)localObject).LIc;
-      localObject = localLinkedList;
-      if (localLinkedList != null) {}
-    }
-    else
-    {
-      localObject = new LinkedList();
-    }
-    AppMethodBeat.o(246360);
-    return localObject;
   }
   
-  public final int doScene(g paramg, i parami)
+  public final com.tencent.mm.plugin.findersdk.b.a.b dnF()
   {
-    AppMethodBeat.i(246358);
-    this.callback = parami;
-    int i = dispatch(paramg, (s)this.rr, (m)this);
-    AppMethodBeat.o(246358);
-    return i;
+    return com.tencent.mm.plugin.findersdk.b.a.b.BvU;
   }
   
-  public final int getType()
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLiveModBackgroundMusic$CallBack;", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "times", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderLiveModBackgroundMusicResponse;", "plugin-finder_release"})
+  public static abstract interface a
   {
-    return 6484;
+    public abstract void a(int paramInt1, int paramInt2, int paramInt3, bax parambax);
   }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/live/model/cgi/NetSceneFinderLiveLotteryHistory$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.live.model.cgi.ab
  * JD-Core Version:    0.7.0.1
  */

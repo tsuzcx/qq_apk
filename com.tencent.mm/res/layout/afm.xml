@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/cyo" android:background="@drawable/zk" android:paddingTop="@dimen/ct" android:paddingBottom="@dimen/ct" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="14.0dip" android:textColor="@color/ag2" android:ellipsize="end" android:id="@id/cym" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_centerVertical="true" android:layout_marginStart="@dimen/ct" />
-    <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/cyn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="@dimen/ct" android:layout_marginEnd="@dimen/ct" android:layout_alignParentEnd="true">
-        <TextView android:textSize="14.0dip" android:textColor="@color/ag2" android:id="@id/cyl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cue" />
-        <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/cyk" android:background="@drawable/a1j" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cyj" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:src="@raw/icons_filled_call_end" android:layout_centerInParent="true" app:iconColor="@color/ag2" />
-        </RelativeLayout>
-    </RelativeLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/cr"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/hw8" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="@dimen/k" android:src="@raw/icon_volume_off" android:scaleType="centerCrop" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/hw7" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="@dimen/k5" android:layout_marginRight="@dimen/k5" android:src="@raw/icon_video_full_screen" android:scaleType="centerCrop" android:layout_toLeftOf="@id/hw8" android:layout_centerVertical="true" />
+    <com.tencent.mm.plugin.sns.ad.widget.advideo.AdLandingVideoPlayerSeekBar android:id="@id/cne" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/hw7" android:layout_centerVertical="true" />
 </RelativeLayout>

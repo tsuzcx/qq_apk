@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.hld.keyboard.S10SettingKeyboard android:orientation="vertical" android:id="@id/h8v" android:background="@color/aia" android:layout_width="fill_parent" android:layout_height="@dimen/aup"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/ce" android:layout_marginTop="12.0dip" android:layout_marginBottom="12.0dip">
+        <RelativeLayout android:id="@id/xt" android:layout_width="@dimen/cn" android:layout_height="@dimen/ce">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="10.0dip" android:layout_height="20.0dip" android:src="@raw/icons_filled_back" android:layout_centerVertical="true" android:layout_marginStart="15.0dip" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/avg" android:textColor="@color/ahz" android:id="@id/ir3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jk4" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/kbb" android:background="@drawable/cy5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/cm" android:paddingStart="@dimen/cb" android:paddingEnd="@dimen/cb" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb">
+        <TextView android:id="@id/kc1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/jht" android:layout_centerVertical="true" style="@style/mi" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kbz" android:focusable="false" android:visibility="visible" android:clickable="false" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_done" android:layout_centerVertical="true" android:layout_alignParentEnd="true" app:iconColor="@color/Brand" />
+    </RelativeLayout>
+    <View android:layout_width="fill_parent" android:layout_marginStart="@dimen/ci" android:layout_marginEnd="@dimen/cb" style="@style/hx" />
+    <RelativeLayout android:id="@id/kb5" android:background="@drawable/cy4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/cm" android:paddingStart="@dimen/cb" android:paddingEnd="@dimen/cb" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb">
+        <TextView android:id="@id/kb_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/jhs" android:layout_centerVertical="true" style="@style/mi" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/kb9" android:focusable="false" android:visibility="visible" android:clickable="false" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_done" android:layout_centerVertical="true" android:layout_alignParentEnd="true" app:iconColor="@color/Brand" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb">
+        <RelativeLayout android:id="@id/kav" android:background="@drawable/cy3" android:layout_width="fill_parent" android:layout_height="@dimen/cp" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb">
+            <com.tencent.mm.plugin.hld.view.ImeCheckBox android:id="@id/kau" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/cb" android:paddingEnd="@dimen/cb" />
+        </RelativeLayout>
+    </LinearLayout>
+</com.tencent.mm.plugin.hld.keyboard.S10SettingKeyboard>

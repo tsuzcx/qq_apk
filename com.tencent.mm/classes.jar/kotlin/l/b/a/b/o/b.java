@@ -10,23 +10,23 @@ public final class b
   {
     AppMethodBeat.i(61353);
     if (paramCollection == null) {
-      atM(7);
+      aDG(7);
     }
     if (paramb == null) {
-      atM(8);
+      aDG(8);
     }
     if (paramb1 == null) {
-      atM(9);
+      aDG(9);
     }
     paramCollection = (Boolean)a(paramCollection, paramb, new a()
     {
-      public final boolean fm(N paramAnonymousN)
+      public final boolean ft(N paramAnonymousN)
       {
         AppMethodBeat.i(61347);
-        if (((Boolean)this.TRv.invoke(paramAnonymousN)).booleanValue()) {
-          this.AFN[0] = true;
+        if (((Boolean)this.abtU.invoke(paramAnonymousN)).booleanValue()) {
+          this.GyW[0] = true;
         }
-        if (this.AFN[0] == 0)
+        if (this.GyW[0] == 0)
         {
           AppMethodBeat.o(61347);
           return true;
@@ -43,10 +43,10 @@ public final class b
   {
     AppMethodBeat.i(61352);
     if (paramCollection == null) {
-      atM(4);
+      aDG(4);
     }
     if (paramb == null) {
-      atM(5);
+      aDG(5);
     }
     paramCollection = a(paramCollection, paramb, new b.e(), paramc);
     AppMethodBeat.o(61352);
@@ -57,19 +57,19 @@ public final class b
   {
     AppMethodBeat.i(61351);
     if (paramCollection == null) {
-      atM(0);
+      aDG(0);
     }
     if (paramb == null) {
-      atM(1);
+      aDG(1);
     }
     if (paramc == null) {
-      atM(3);
+      aDG(3);
     }
     paramCollection = paramCollection.iterator();
     while (paramCollection.hasNext()) {
       a(paramCollection.next(), paramb, paramd, paramc);
     }
-    paramCollection = paramc.hAq();
+    paramCollection = paramc.iED();
     AppMethodBeat.o(61351);
     return paramCollection;
   }
@@ -78,41 +78,41 @@ public final class b
   {
     AppMethodBeat.i(61354);
     if (paramN == null) {
-      atM(22);
+      aDG(22);
     }
     if (paramb == null) {
-      atM(23);
+      aDG(23);
     }
     if (paramd == null) {
-      atM(24);
+      aDG(24);
     }
     if (paramc == null) {
-      atM(25);
+      aDG(25);
     }
-    if (!paramd.fG(paramN))
+    if (!paramd.fM(paramN))
     {
       AppMethodBeat.o(61354);
       return;
     }
-    if (!paramc.fm(paramN))
+    if (!paramc.ft(paramN))
     {
       AppMethodBeat.o(61354);
       return;
     }
-    Iterator localIterator = paramb.fl(paramN).iterator();
+    Iterator localIterator = paramb.fs(paramN).iterator();
     while (localIterator.hasNext()) {
       a(localIterator.next(), paramb, paramd, paramc);
     }
-    paramc.fA(paramN);
+    paramc.fG(paramN);
     AppMethodBeat.o(61354);
   }
   
   public static abstract class a<N, R>
     implements b.c<N, R>
   {
-    public void fA(N paramN) {}
+    public void fG(N paramN) {}
     
-    public boolean fm(N paramN)
+    public boolean ft(N paramN)
     {
       return true;
     }
@@ -120,21 +120,21 @@ public final class b
   
   public static abstract interface b<N>
   {
-    public abstract Iterable<? extends N> fl(N paramN);
+    public abstract Iterable<? extends N> fs(N paramN);
   }
   
   public static abstract interface c<N, R>
   {
-    public abstract void fA(N paramN);
+    public abstract void fG(N paramN);
     
-    public abstract boolean fm(N paramN);
+    public abstract boolean ft(N paramN);
     
-    public abstract R hAq();
+    public abstract R iED();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.o.b
  * JD-Core Version:    0.7.0.1
  */

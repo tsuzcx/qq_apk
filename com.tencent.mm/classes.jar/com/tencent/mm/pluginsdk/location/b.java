@@ -2,13 +2,13 @@ package com.tencent.mm.pluginsdk.location;
 
 public abstract interface b
 {
-  public abstract void dix();
+  public abstract void NM(int paramInt);
   
-  public abstract void diy();
+  public abstract void dFc();
   
-  public abstract void diz();
+  public abstract void dFd();
   
-  public abstract void gM(String paramString1, String paramString2);
+  public abstract void hd(String paramString1, String paramString2);
   
   public abstract void setDefaultLoadingPBarColor(int paramInt);
   
@@ -30,7 +30,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.location.b
  * JD-Core Version:    0.7.0.1
  */

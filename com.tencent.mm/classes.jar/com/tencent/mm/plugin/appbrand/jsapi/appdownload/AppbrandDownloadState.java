@@ -13,9 +13,9 @@ public class AppbrandDownloadState
 {
   public static final Parcelable.Creator<AppbrandDownloadState> CREATOR;
   public String appId;
-  public long dCa;
-  public long lCS;
-  public float lCT;
+  public long fuD;
+  public long oyu;
+  public float oyv;
   public long progress;
   public String state;
   
@@ -32,26 +32,26 @@ public class AppbrandDownloadState
   {
     AppMethodBeat.i(45723);
     this.state = paramParcel.readString();
-    this.dCa = paramParcel.readLong();
+    this.fuD = paramParcel.readLong();
     this.appId = paramParcel.readString();
     this.progress = paramParcel.readLong();
-    this.lCS = paramParcel.readLong();
-    this.lCT = paramParcel.readFloat();
+    this.oyu = paramParcel.readLong();
+    this.oyv = paramParcel.readFloat();
     AppMethodBeat.o(45723);
   }
   
-  public final JSONObject bEw()
+  public final JSONObject bPW()
   {
     AppMethodBeat.i(45724);
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("state", this.state);
-      localJSONObject.put("downloadId", this.dCa);
+      localJSONObject.put("downloadId", this.fuD);
       localJSONObject.put("appId", this.appId);
       localJSONObject.put("progress", this.progress);
-      localJSONObject.put("taskSize", this.lCS);
-      localJSONObject.put("progressFloat", this.lCT);
+      localJSONObject.put("taskSize", this.oyu);
+      localJSONObject.put("progressFloat", this.oyv);
       AppMethodBeat.o(45724);
       return localJSONObject;
     }
@@ -73,11 +73,11 @@ public class AppbrandDownloadState
   {
     AppMethodBeat.i(45722);
     paramParcel.writeString(this.state);
-    paramParcel.writeLong(this.dCa);
+    paramParcel.writeLong(this.fuD);
     paramParcel.writeString(this.appId);
     paramParcel.writeLong(this.progress);
-    paramParcel.writeLong(this.lCS);
-    paramParcel.writeFloat(this.lCT);
+    paramParcel.writeLong(this.oyu);
+    paramParcel.writeFloat(this.oyv);
     AppMethodBeat.o(45722);
   }
 }

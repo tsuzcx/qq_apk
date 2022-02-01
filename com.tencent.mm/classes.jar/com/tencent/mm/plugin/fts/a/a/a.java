@@ -6,30 +6,30 @@ import java.util.List;
 public abstract class a
   implements Comparable<a>
 {
+  public long BHK = 0L;
+  public long BHL = 0L;
+  public List<a> BHM;
+  public Object BHN;
   public boolean mCancelled = false;
   public int mPriority = 2147483647;
-  public long wVP = 0L;
-  public long wVQ = 0L;
-  public List<a> wVR;
-  public Object wVS;
   
-  protected final void ayx(String paramString)
+  public abstract boolean aEv();
+  
+  protected final void aHR(String paramString)
   {
-    if (this.wVR == null) {
-      this.wVR = new ArrayList();
+    if (this.BHM == null) {
+      this.BHM = new ArrayList();
     }
     a locala = new a();
-    locala.wVT = paramString;
+    locala.BHO = paramString;
     locala.timestamp = System.currentTimeMillis();
-    this.wVR.add(locala);
+    this.BHM.add(locala);
   }
   
-  public String bCQ()
+  public String bOl()
   {
     return "";
   }
-  
-  public abstract boolean execute();
   
   public int getId()
   {
@@ -53,15 +53,15 @@ public abstract class a
   
   public final class a
   {
+    public String BHO;
     public long timestamp;
-    public String wVT;
     
     public a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.a.a
  * JD-Core Version:    0.7.0.1
  */

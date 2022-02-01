@@ -6,65 +6,66 @@ import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.multitalk.a.h;
 import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenReadyUI;", "", "context", "Landroid/content/Context;", "statusManager", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;", "config", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;)V", "COUNT_DOWN_END", "", "COUNT_DOWN_START", "getConfig", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;", "setConfig", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;)V", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "countDownDetail", "Landroid/widget/TextView;", "countDownTv", "curCountDown", "readyUiLayout", "Landroid/view/View;", "getStatusManager", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;", "setStatusManager", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;)V", "timerHandler", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "getReadyLayout", "rootView", "Landroid/widget/FrameLayout;", "reset", "", "setTextWithAnim", "setVisible", "visible", "startCountDown", "startScreenProject", "stopCountDown", "plugin-multitalk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenReadyUI;", "", "context", "Landroid/content/Context;", "statusManager", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;", "config", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;)V", "COUNT_DOWN_END", "", "COUNT_DOWN_START", "getConfig", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;", "setConfig", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;)V", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "countDownDetail", "Landroid/widget/TextView;", "countDownTv", "curCountDown", "readyUiLayout", "Landroid/view/View;", "getStatusManager", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;", "setStatusManager", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;)V", "timerHandler", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "getReadyLayout", "rootView", "Landroid/widget/FrameLayout;", "reset", "", "setTextWithAnim", "setVisible", "visible", "startCountDown", "startScreenProject", "stopCountDown", "stopScreenProject", "plugin-multitalk_release"})
 public final class r
 {
+  View FDO;
+  TextView FDP;
+  e FvZ;
+  private a Fwg;
   private Context context;
-  final int hSo;
-  final int hSp;
-  TextView hSr;
-  int hSs;
+  final int kGL;
+  private final int kGM;
+  TextView kGO;
+  int kGP;
   MTimerHandler timerHandler;
-  private a zQD;
-  e zQw;
-  View zYc;
-  TextView zYd;
   
   public r(Context paramContext, a parama, e parame)
   {
-    AppMethodBeat.i(240063);
+    AppMethodBeat.i(199153);
     this.context = paramContext;
-    this.zQD = parama;
-    this.zQw = parame;
-    this.hSo = 4;
-    this.hSp = 1;
-    this.hSs = this.hSo;
+    this.Fwg = parama;
+    this.FvZ = parame;
+    this.kGL = 4;
+    this.kGM = 1;
+    this.kGP = this.kGL;
     this.timerHandler = new MTimerHandler((MTimerHandler.CallBack)new a(this), true);
-    AppMethodBeat.o(240063);
+    AppMethodBeat.o(199153);
   }
   
-  final void aHG()
+  final void aPE()
   {
-    AppMethodBeat.i(240062);
-    Object localObject = this.hSr;
+    AppMethodBeat.i(199149);
+    Object localObject = this.kGO;
     if (localObject != null) {
-      ((TextView)localObject).setText((CharSequence)String.valueOf(this.hSs));
+      ((TextView)localObject).setText((CharSequence)String.valueOf(this.kGP));
     }
-    TextView localTextView = this.zYd;
+    TextView localTextView = this.FDP;
     if (localTextView != null)
     {
       localObject = this.context;
       if (localObject == null) {
-        break label154;
+        break label155;
       }
     }
-    label154:
+    label155:
     for (localObject = ((Context)localObject).getResources();; localObject = null)
     {
-      localTextView.setText((CharSequence)((Resources)localObject).getString(2131764225));
-      localObject = this.hSr;
+      localTextView.setText((CharSequence)((Resources)localObject).getString(a.h.ready_detail_screen_project));
+      localObject = this.kGO;
       if (localObject != null) {
         ((TextView)localObject).setScaleX(1.5F);
       }
-      localObject = this.hSr;
+      localObject = this.kGO;
       if (localObject != null) {
         ((TextView)localObject).setScaleY(1.5F);
       }
-      localObject = this.hSr;
+      localObject = this.kGO;
       if (localObject == null) {
         break;
       }
@@ -85,20 +86,20 @@ public final class r
         break;
       }
       ((ViewPropertyAnimator)localObject).start();
-      AppMethodBeat.o(240062);
+      AppMethodBeat.o(199149);
       return;
     }
-    AppMethodBeat.o(240062);
+    AppMethodBeat.o(199149);
   }
   
-  final void epK()
+  final void eZy()
   {
-    AppMethodBeat.i(240061);
-    a.b.a(this.zQD, a.c.zVA);
-    AppMethodBeat.o(240061);
+    AppMethodBeat.i(199146);
+    a.b.a(this.Fwg, a.c.FBk);
+    AppMethodBeat.o(199146);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onTimerExpired"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "onTimerExpired"})
   static final class a
     implements MTimerHandler.CallBack
   {
@@ -106,24 +107,24 @@ public final class r
     
     public final boolean onTimerExpired()
     {
-      AppMethodBeat.i(240060);
-      if (this.zYe.hSs > this.zYe.hSp)
+      AppMethodBeat.i(202629);
+      if (r.a(this.FDQ) > r.b(this.FDQ))
       {
-        r localr = this.zYe;
-        localr.hSs -= 1;
-        this.zYe.aHG();
-        AppMethodBeat.o(240060);
+        r localr = this.FDQ;
+        r.a(localr, r.a(localr) - 1);
+        r.c(this.FDQ);
+        AppMethodBeat.o(202629);
         return true;
       }
-      this.zYe.epK();
-      AppMethodBeat.o(240060);
+      r.d(this.FDQ);
+      AppMethodBeat.o(202629);
       return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.projector.r
  * JD-Core Version:    0.7.0.1
  */

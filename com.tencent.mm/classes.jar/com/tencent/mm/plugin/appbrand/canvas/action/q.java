@@ -46,7 +46,7 @@ public final class q
       return false;
     }
     Object localObject = paramJSONArray.optString(0);
-    paramCanvas = paramd.kZm;
+    paramCanvas = paramd.nTx;
     float f1;
     float f2;
     float f3;
@@ -159,10 +159,10 @@ public final class q
         AppMethodBeat.o(144915);
         return false;
       }
-      paramd = paramd.kZr.a(paramd, (String)localObject);
+      paramd = paramd.nTC.a(paramd, (String)localObject);
     } while ((paramd == null) || (paramd.isRecycled()));
-    int j = g.zD(paramd.getWidth());
-    int k = g.zD(paramd.getHeight());
+    int j = g.Di(paramd.getWidth());
+    int k = g.Di(paramd.getHeight());
     int i = -1;
     switch (paramJSONArray.hashCode())
     {
@@ -218,7 +218,7 @@ public final class q
     }
   }
   
-  public final BaseDrawActionArg bzj()
+  public final BaseDrawActionArg bKy()
   {
     AppMethodBeat.i(144914);
     SetFillStyleActionArg localSetFillStyleActionArg = new SetFillStyleActionArg();
@@ -233,7 +233,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.q
  * JD-Core Version:    0.7.0.1
  */

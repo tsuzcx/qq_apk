@@ -1,12 +1,13 @@
 package com.tencent.mm.plugin.vlog.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.f.b.a.mk;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.plugin.sight.base.a;
-import com.tencent.mm.plugin.sight.base.e;
+import com.tencent.mm.plugin.sight.base.b;
+import com.tencent.mm.plugin.sight.base.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,77 +15,89 @@ import kotlin.a.j;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/model/MultiMediaVideoChecker;", "", "()V", "AV_PIX_FMT_YUV420P", "", "AV_PIX_FMT_YUV420P10BE", "AV_PIX_FMT_YUV420P10LE", "AV_PIX_FMT_YUV420P12BE", "AV_PIX_FMT_YUV420P12LE", "AV_PIX_FMT_YUV420P14BE", "AV_PIX_FMT_YUV420P14LE", "AV_PIX_FMT_YUV420P16BE", "AV_PIX_FMT_YUV420P16LE", "AV_PIX_FMT_YUV420P9BE", "AV_PIX_FMT_YUV420P9LE", "AV_PIX_FMT_YUVA420P", "AV_PIX_FMT_YUVA420P10BE", "AV_PIX_FMT_YUVA420P10LE", "AV_PIX_FMT_YUVA420P16BE", "AV_PIX_FMT_YUVA420P16LE", "AV_PIX_FMT_YUVA420P9BE", "AV_PIX_FMT_YUVA420P9LE", "AV_PIX_FMT_YUVJ420P", "MalformedAudioSampleRateThreshold", "TAG", "", "videoInfoCache", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/vlog/model/MultiMediaVideoChecker$VideoInfo;", "Lkotlin/collections/HashMap;", "getAudioInfoByMediaExtractor", "path", "getVideoFrameRate", "", "getVideoInfo", "fromCache", "", "getVideoInfoByMediaExtractor", "pixelFormat", "getVideoInfoBySightJNI", "isH265Video", "isYuv420pFormat", "videoFormat", "VideoInfo", "plugin-vlog_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/MultiMediaVideoChecker;", "", "()V", "AV_PIX_FMT_YUV420P", "", "AV_PIX_FMT_YUV420P10BE", "AV_PIX_FMT_YUV420P10LE", "AV_PIX_FMT_YUV420P12BE", "AV_PIX_FMT_YUV420P12LE", "AV_PIX_FMT_YUV420P14BE", "AV_PIX_FMT_YUV420P14LE", "AV_PIX_FMT_YUV420P16BE", "AV_PIX_FMT_YUV420P16LE", "AV_PIX_FMT_YUV420P9BE", "AV_PIX_FMT_YUV420P9LE", "AV_PIX_FMT_YUVA420P", "AV_PIX_FMT_YUVA420P10BE", "AV_PIX_FMT_YUVA420P10LE", "AV_PIX_FMT_YUVA420P16BE", "AV_PIX_FMT_YUVA420P16LE", "AV_PIX_FMT_YUVA420P9BE", "AV_PIX_FMT_YUVA420P9LE", "AV_PIX_FMT_YUVJ420P", "MalformedAudioSampleRateThreshold", "TAG", "", "videoInfoCache", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/vlog/model/MultiMediaVideoChecker$VideoInfo;", "Lkotlin/collections/HashMap;", "getAudioInfoByMediaExtractor", "path", "getVideoFrameRate", "", "getVideoInfo", "fromCache", "", "getVideoInfoByMediaExtractor", "pixelFormat", "getVideoInfoBySightJNI", "isH265Video", "isYuv420pFormat", "videoFormat", "VideoInfo", "plugin-vlog_release"})
 public final class MultiMediaVideoChecker
 {
-  private static final HashMap<String, a> GyX;
-  public static final MultiMediaVideoChecker GyY;
+  public static final MultiMediaVideoChecker NmA;
+  private static final HashMap<String, a> Nmz;
   private static final String TAG = "MicroMsg.MultiMediaVideoChecker";
   
   static
   {
-    AppMethodBeat.i(190628);
-    GyY = new MultiMediaVideoChecker();
+    AppMethodBeat.i(232331);
+    NmA = new MultiMediaVideoChecker();
     TAG = "MicroMsg.MultiMediaVideoChecker";
-    GyX = new HashMap();
-    AppMethodBeat.o(190628);
+    Nmz = new HashMap();
+    AppMethodBeat.o(232331);
+  }
+  
+  public static boolean ake(int paramInt)
+  {
+    AppMethodBeat.i(232329);
+    if (j.listOf(new Integer[] { Integer.valueOf(0), Integer.valueOf(12), Integer.valueOf(35), Integer.valueOf(54), Integer.valueOf(55), Integer.valueOf(69), Integer.valueOf(70), Integer.valueOf(71), Integer.valueOf(72), Integer.valueOf(72), Integer.valueOf(95), Integer.valueOf(96), Integer.valueOf(101), Integer.valueOf(102), Integer.valueOf(107), Integer.valueOf(108), Integer.valueOf(129), Integer.valueOf(130), Integer.valueOf(133), Integer.valueOf(134) }).contains(Integer.valueOf(paramInt)))
+    {
+      AppMethodBeat.o(232329);
+      return true;
+    }
+    AppMethodBeat.o(232329);
+    return false;
   }
   
   /* Error */
-  public static a aTW(String paramString)
+  public static a bft(String paramString)
   {
     // Byte code:
     //   0: iconst_0
     //   1: istore 4
-    //   3: ldc 91
+    //   3: ldc 112
     //   5: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: ldc 92
-    //   11: invokestatic 98	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   14: new 100	com/tencent/mm/media/f/a
+    //   9: ldc 113
+    //   11: invokestatic 119	kotlin/g/b/p:k	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   14: new 121	com/tencent/mm/media/f/a
     //   17: dup
     //   18: aload_0
-    //   19: invokespecial 103	com/tencent/mm/media/f/a:<init>	(Ljava/lang/String;)V
+    //   19: invokespecial 124	com/tencent/mm/media/f/a:<init>	(Ljava/lang/String;)V
     //   22: astore_0
     //   23: aload_0
-    //   24: getfield 107	com/tencent/mm/media/f/a:igi	Landroid/media/MediaFormat;
+    //   24: getfield 128	com/tencent/mm/media/f/a:kUW	Landroid/media/MediaFormat;
     //   27: astore 7
     //   29: aload 7
     //   31: ifnull +135 -> 166
     //   34: aload 7
-    //   36: ldc 109
-    //   38: invokevirtual 115	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   36: ldc 130
+    //   38: invokevirtual 136	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
     //   41: iconst_1
     //   42: if_icmpne +124 -> 166
     //   45: aload 7
-    //   47: ldc 109
-    //   49: invokevirtual 119	android/media/MediaFormat:getLong	(Ljava/lang/String;)J
+    //   47: ldc 130
+    //   49: invokevirtual 140	android/media/MediaFormat:getLong	(Ljava/lang/String;)J
     //   52: lstore 5
     //   54: lload 5
-    //   56: ldc2_w 120
+    //   56: ldc2_w 141
     //   59: ldiv
     //   60: lstore 5
     //   62: aload 7
     //   64: ifnull +108 -> 172
     //   67: aload 7
-    //   69: ldc 123
-    //   71: invokevirtual 115	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   69: ldc 144
+    //   71: invokevirtual 136	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
     //   74: iconst_1
     //   75: if_icmpne +97 -> 172
     //   78: aload 7
-    //   80: ldc 123
-    //   82: invokevirtual 127	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   80: ldc 144
+    //   82: invokevirtual 148	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
     //   85: istore_1
     //   86: aload 7
     //   88: ifnull +89 -> 177
     //   91: aload 7
-    //   93: ldc 129
-    //   95: invokevirtual 115	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   93: ldc 150
+    //   95: invokevirtual 136	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
     //   98: iconst_1
     //   99: if_icmpne +78 -> 177
     //   102: aload 7
-    //   104: ldc 129
-    //   106: invokevirtual 127	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   104: ldc 150
+    //   106: invokevirtual 148	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
     //   109: istore_2
     //   110: iload 4
     //   112: istore_3
@@ -93,13 +106,13 @@ public final class MultiMediaVideoChecker
     //   118: iload 4
     //   120: istore_3
     //   121: aload 7
-    //   123: ldc 131
-    //   125: invokevirtual 115	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   123: ldc 152
+    //   125: invokevirtual 136	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
     //   128: iconst_1
     //   129: if_icmpne +11 -> 140
     //   132: aload 7
-    //   134: ldc 131
-    //   136: invokevirtual 127	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   134: ldc 152
+    //   136: invokevirtual 148	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
     //   139: istore_3
     //   140: new 6	com/tencent/mm/plugin/vlog/model/MultiMediaVideoChecker$a
     //   143: dup
@@ -107,11 +120,11 @@ public final class MultiMediaVideoChecker
     //   146: iload_1
     //   147: iload_2
     //   148: iload_3
-    //   149: invokespecial 134	com/tencent/mm/plugin/vlog/model/MultiMediaVideoChecker$a:<init>	(JIII)V
+    //   149: invokespecial 155	com/tencent/mm/plugin/vlog/model/MultiMediaVideoChecker$a:<init>	(JIII)V
     //   152: astore 7
     //   154: aload_0
-    //   155: invokevirtual 137	com/tencent/mm/media/f/a:release	()V
-    //   158: ldc 91
+    //   155: invokevirtual 158	com/tencent/mm/media/f/a:release	()V
+    //   158: ldc 112
     //   160: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   163: aload 7
     //   165: areturn
@@ -130,8 +143,8 @@ public final class MultiMediaVideoChecker
     //   185: aload_0
     //   186: ifnull +7 -> 193
     //   189: aload_0
-    //   190: invokevirtual 137	com/tencent/mm/media/f/a:release	()V
-    //   193: ldc 91
+    //   190: invokevirtual 158	com/tencent/mm/media/f/a:release	()V
+    //   193: ldc 112
     //   195: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   198: aconst_null
     //   199: areturn
@@ -141,8 +154,8 @@ public final class MultiMediaVideoChecker
     //   204: aload_0
     //   205: ifnull +7 -> 212
     //   208: aload_0
-    //   209: invokevirtual 137	com/tencent/mm/media/f/a:release	()V
-    //   212: ldc 91
+    //   209: invokevirtual 158	com/tencent/mm/media/f/a:release	()V
+    //   212: ldc 112
     //   214: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   217: aload 7
     //   219: athrow
@@ -182,36 +195,24 @@ public final class MultiMediaVideoChecker
     //   140	154	225	java/lang/Exception
   }
   
-  public static boolean acy(int paramInt)
-  {
-    AppMethodBeat.i(190627);
-    if (j.listOf(new Integer[] { Integer.valueOf(0), Integer.valueOf(12), Integer.valueOf(35), Integer.valueOf(54), Integer.valueOf(55), Integer.valueOf(69), Integer.valueOf(70), Integer.valueOf(71), Integer.valueOf(72), Integer.valueOf(72), Integer.valueOf(95), Integer.valueOf(96), Integer.valueOf(101), Integer.valueOf(102), Integer.valueOf(107), Integer.valueOf(108), Integer.valueOf(129), Integer.valueOf(130), Integer.valueOf(133), Integer.valueOf(134) }).contains(Integer.valueOf(paramInt)))
-    {
-      AppMethodBeat.o(190627);
-      return true;
-    }
-    AppMethodBeat.o(190627);
-    return false;
-  }
-  
   /* Error */
-  private static a fS(String paramString, int paramInt)
+  private static a gB(String paramString, int paramInt)
   {
     // Byte code:
     //   0: ldc 161
     //   2: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aconst_null
     //   6: astore 13
-    //   8: new 100	com/tencent/mm/media/f/a
+    //   8: new 121	com/tencent/mm/media/f/a
     //   11: dup
     //   12: aload_0
-    //   13: invokespecial 103	com/tencent/mm/media/f/a:<init>	(Ljava/lang/String;)V
+    //   13: invokespecial 124	com/tencent/mm/media/f/a:<init>	(Ljava/lang/String;)V
     //   16: astore 12
     //   18: aload 12
-    //   20: getfield 164	com/tencent/mm/media/f/a:igh	Landroid/media/MediaFormat;
+    //   20: getfield 164	com/tencent/mm/media/f/a:kUV	Landroid/media/MediaFormat;
     //   23: astore 13
     //   25: aload 12
-    //   27: getfield 107	com/tencent/mm/media/f/a:igi	Landroid/media/MediaFormat;
+    //   27: getfield 128	com/tencent/mm/media/f/a:kUW	Landroid/media/MediaFormat;
     //   30: astore 14
     //   32: getstatic 76	com/tencent/mm/plugin/vlog/model/MultiMediaVideoChecker:TAG	Ljava/lang/String;
     //   35: new 166	java/lang/StringBuilder
@@ -230,37 +231,37 @@ public final class MultiMediaVideoChecker
     //   67: ifnull +262 -> 329
     //   70: aload 13
     //   72: ldc 189
-    //   74: invokevirtual 115	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   74: invokevirtual 136	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
     //   77: iconst_1
     //   78: if_icmpne +251 -> 329
     //   81: aload 13
     //   83: ldc 189
-    //   85: invokevirtual 127	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   85: invokevirtual 148	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
     //   88: istore_3
     //   89: aload 13
     //   91: ifnull +243 -> 334
     //   94: aload 13
     //   96: ldc 191
-    //   98: invokevirtual 115	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   98: invokevirtual 136	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
     //   101: iconst_1
     //   102: if_icmpne +232 -> 334
     //   105: aload 13
     //   107: ldc 191
-    //   109: invokevirtual 127	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   109: invokevirtual 148	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
     //   112: istore 4
     //   114: aload 13
     //   116: ifnull +224 -> 340
     //   119: aload 13
-    //   121: ldc 109
-    //   123: invokevirtual 115	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   121: ldc 130
+    //   123: invokevirtual 136	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
     //   126: iconst_1
     //   127: if_icmpne +213 -> 340
     //   130: aload 13
-    //   132: ldc 109
-    //   134: invokevirtual 119	android/media/MediaFormat:getLong	(Ljava/lang/String;)J
+    //   132: ldc 130
+    //   134: invokevirtual 140	android/media/MediaFormat:getLong	(Ljava/lang/String;)J
     //   137: lstore 10
     //   139: lload 10
-    //   141: ldc2_w 120
+    //   141: ldc2_w 141
     //   144: ldiv
     //   145: lstore 10
     //   147: aload_0
@@ -270,23 +271,23 @@ public final class MultiMediaVideoChecker
     //   155: ifnull +191 -> 346
     //   158: aload 13
     //   160: ldc 198
-    //   162: invokevirtual 115	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   162: invokevirtual 136	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
     //   165: iconst_1
     //   166: if_icmpne +180 -> 346
     //   169: aload 13
     //   171: ldc 198
-    //   173: invokevirtual 127	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   173: invokevirtual 148	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
     //   176: istore 5
     //   178: aload 13
     //   180: ifnull +172 -> 352
     //   183: aload 13
-    //   185: ldc 123
-    //   187: invokevirtual 115	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   185: ldc 144
+    //   187: invokevirtual 136	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
     //   190: iconst_1
     //   191: if_icmpne +161 -> 352
     //   194: aload 13
-    //   196: ldc 123
-    //   198: invokevirtual 127	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   196: ldc 144
+    //   198: invokevirtual 148	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
     //   201: istore_2
     //   202: iload_2
     //   203: istore 6
@@ -298,35 +299,35 @@ public final class MultiMediaVideoChecker
     //   216: aload 14
     //   218: ifnull +139 -> 357
     //   221: aload 14
-    //   223: ldc 123
-    //   225: invokevirtual 115	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   223: ldc 144
+    //   225: invokevirtual 136	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
     //   228: iconst_1
     //   229: if_icmpne +128 -> 357
     //   232: aload 14
-    //   234: ldc 123
-    //   236: invokevirtual 127	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   234: ldc 144
+    //   236: invokevirtual 148	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
     //   239: istore_2
     //   240: aload 14
     //   242: ifnull +120 -> 362
     //   245: aload 14
-    //   247: ldc 129
-    //   249: invokevirtual 115	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   247: ldc 150
+    //   249: invokevirtual 136	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
     //   252: iconst_1
     //   253: if_icmpne +109 -> 362
     //   256: aload 14
-    //   258: ldc 129
-    //   260: invokevirtual 127	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   258: ldc 150
+    //   260: invokevirtual 148	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
     //   263: istore 7
     //   265: aload 14
     //   267: ifnull +101 -> 368
     //   270: aload 14
-    //   272: ldc 131
-    //   274: invokevirtual 115	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   272: ldc 152
+    //   274: invokevirtual 136	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
     //   277: iconst_1
     //   278: if_icmpne +90 -> 368
     //   281: aload 14
-    //   283: ldc 131
-    //   285: invokevirtual 127	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   283: ldc 152
+    //   285: invokevirtual 148	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
     //   288: istore 8
     //   290: new 6	com/tencent/mm/plugin/vlog/model/MultiMediaVideoChecker$a
     //   293: dup
@@ -345,7 +346,7 @@ public final class MultiMediaVideoChecker
     //   313: invokespecial 205	com/tencent/mm/plugin/vlog/model/MultiMediaVideoChecker$a:<init>	(IIFJIIZIIII)V
     //   316: astore_0
     //   317: aload 12
-    //   319: invokevirtual 137	com/tencent/mm/media/f/a:release	()V
+    //   319: invokevirtual 158	com/tencent/mm/media/f/a:release	()V
     //   322: ldc 161
     //   324: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   327: aload_0
@@ -380,7 +381,7 @@ public final class MultiMediaVideoChecker
     //   378: aload_0
     //   379: ifnull +7 -> 386
     //   382: aload_0
-    //   383: invokevirtual 137	com/tencent/mm/media/f/a:release	()V
+    //   383: invokevirtual 158	com/tencent/mm/media/f/a:release	()V
     //   386: ldc 161
     //   388: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   391: aconst_null
@@ -391,7 +392,7 @@ public final class MultiMediaVideoChecker
     //   397: aload 12
     //   399: ifnull +8 -> 407
     //   402: aload 12
-    //   404: invokevirtual 137	com/tencent/mm/media/f/a:release	()V
+    //   404: invokevirtual 158	com/tencent/mm/media/f/a:release	()V
     //   407: ldc 161
     //   409: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   412: aload_0
@@ -450,110 +451,118 @@ public final class MultiMediaVideoChecker
   
   private final a getVideoInfoBySightJNI(String paramString)
   {
-    AppMethodBeat.i(190626);
+    AppMethodBeat.i(232328);
     try
     {
-      a locala = e.cc(paramString, true);
-      if (locala != null)
+      b localb = f.aYh(paramString);
+      if (localb != null)
       {
-        int i = SightVideoJNI.getMp4RotateVFS(paramString);
-        paramString = new a(locala.width, locala.height, locala.frameRate, locala.videoDuration, locala.videoBitrate, i, false, locala.audioBitrate, locala.audioChannel, locala.audioSampleRate, locala.pixelFormat);
-        AppMethodBeat.o(190626);
+        int j = localb.fSM;
+        int i = j;
+        if (j < 0) {
+          i = SightVideoJNI.getMp4RotateVFS(paramString);
+        }
+        paramString = new a(localb.width, localb.height, localb.frameRate, localb.videoDuration, localb.videoBitrate, i, false, localb.audioBitrate, localb.audioChannel, localb.audioSampleRate, localb.pixelFormat);
+        AppMethodBeat.o(232328);
         return paramString;
       }
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(190626);
+      AppMethodBeat.o(232328);
     }
     return null;
   }
   
-  public final a aTV(String paramString)
+  public final a bfs(String paramString)
   {
-    AppMethodBeat.i(190622);
-    p.h(paramString, "path");
-    paramString = cA(paramString, false);
-    AppMethodBeat.o(190622);
+    AppMethodBeat.i(232321);
+    p.k(paramString, "path");
+    paramString = cO(paramString, false);
+    AppMethodBeat.o(232321);
     return paramString;
   }
   
-  public final a cA(String paramString, boolean paramBoolean)
+  public final a cO(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(190623);
-    p.h(paramString, "path");
+    AppMethodBeat.i(232322);
+    p.k(paramString, "path");
     long l;
-    a locala;
+    Object localObject;
     int i;
-    if (s.YS(paramString))
+    if (u.agG(paramString))
     {
-      if ((paramBoolean) && (GyX.get(paramString) != null))
+      if ((paramBoolean) && (Nmz.get(paramString) != null))
       {
-        paramString = (a)GyX.get(paramString);
-        AppMethodBeat.o(190623);
+        paramString = (a)Nmz.get(paramString);
+        AppMethodBeat.o(232322);
         return paramString;
       }
       l = Util.currentTicks();
-      locala = getVideoInfoBySightJNI(paramString);
-      if (locala != null)
+      localObject = getVideoInfoBySightJNI(paramString);
+      if (localObject != null)
       {
-        i = locala.audioSampleRate;
+        i = ((a)localObject).audioSampleRate;
         if (i > 1000) {
-          break label214;
+          break label245;
         }
-        Log.i(TAG, "error audio sample rate:".concat(String.valueOf(locala)));
-        if (locala == null) {
+        Log.i(TAG, "error audio sample rate:".concat(String.valueOf(localObject)));
+        if (localObject == null) {
           break label186;
         }
-        i = locala.pixelFormat;
+        i = ((a)localObject).pixelFormat;
         label108:
-        locala = fS(paramString, i);
+        localObject = gB(paramString, i);
       }
     }
     label186:
-    label214:
+    label245:
     for (;;)
     {
-      Log.i(TAG, "getVideoInfo cost:" + Util.ticksToNow(l) + ", info:" + locala);
-      if (locala != null) {
-        ((Map)GyX).put(paramString, locala);
+      Log.i(TAG, "getVideoInfo cost:" + Util.ticksToNow(l) + ", info:" + localObject);
+      if (localObject != null) {
+        ((Map)Nmz).put(paramString, localObject);
       }
-      AppMethodBeat.o(190623);
-      return locala;
+      AppMethodBeat.o(232322);
+      return localObject;
       i = 0;
       break;
       i = -1;
       break label108;
+      localObject = new mk();
+      ((mk)localObject).nP(2021);
+      ((mk)localObject).CN(paramString);
+      ((mk)localObject).bpa();
       Log.i(TAG, "file not exist: ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(190623);
+      AppMethodBeat.o(232322);
       return null;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/model/MultiMediaVideoChecker$VideoInfo;", "", "width", "", "height", "fps", "", "duration", "", "bitrate", "rotate", "isH265", "", "audioBitrate", "audioChannelCount", "audioSampleRate", "pixelFormat", "(IIFJIIZIIII)V", "getAudioBitrate", "()I", "getAudioChannelCount", "getAudioSampleRate", "getBitrate", "getDuration", "()J", "getFps", "()F", "getHeight", "()Z", "getPixelFormat", "getRotate", "getWidth", "component1", "component10", "component11", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "", "plugin-vlog_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/vlog/model/MultiMediaVideoChecker$VideoInfo;", "", "width", "", "height", "fps", "", "duration", "", "bitrate", "rotate", "isH265", "", "audioBitrate", "audioChannelCount", "audioSampleRate", "pixelFormat", "(IIFJIIZIIII)V", "getAudioBitrate", "()I", "getAudioChannelCount", "getAudioSampleRate", "getBitrate", "getDuration", "()J", "getFps", "()F", "getHeight", "()Z", "getPixelFormat", "getRotate", "getWidth", "component1", "component10", "component11", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "", "plugin-vlog_release"})
   public static final class a
   {
+    public final boolean FeD;
     public final int audioBitrate;
-    final int audioChannelCount;
+    public final int audioChannelCount;
     public final int audioSampleRate;
     public final int bitrate;
-    public final float cKu;
-    public final int dYT;
+    public final float cLa;
     public final long duration;
+    public final int fSM;
     public final int height;
     public final int pixelFormat;
     public final int width;
-    public final boolean zzJ;
     
     public a(int paramInt1, int paramInt2, float paramFloat, long paramLong, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
     {
       this.width = paramInt1;
       this.height = paramInt2;
-      this.cKu = paramFloat;
+      this.cLa = paramFloat;
       this.duration = paramLong;
       this.bitrate = paramInt3;
-      this.dYT = paramInt4;
-      this.zzJ = paramBoolean;
+      this.fSM = paramInt4;
+      this.FeD = paramBoolean;
       this.audioBitrate = paramInt5;
       this.audioChannelCount = paramInt6;
       this.audioSampleRate = paramInt7;
@@ -562,21 +571,21 @@ public final class MultiMediaVideoChecker
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(190621);
+      AppMethodBeat.i(223883);
       if (this != paramObject)
       {
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if ((this.width != paramObject.width) || (this.height != paramObject.height) || (Float.compare(this.cKu, paramObject.cKu) != 0) || (this.duration != paramObject.duration) || (this.bitrate != paramObject.bitrate) || (this.dYT != paramObject.dYT) || (this.zzJ != paramObject.zzJ) || (this.audioBitrate != paramObject.audioBitrate) || (this.audioChannelCount != paramObject.audioChannelCount) || (this.audioSampleRate != paramObject.audioSampleRate) || (this.pixelFormat != paramObject.pixelFormat)) {}
+          if ((this.width != paramObject.width) || (this.height != paramObject.height) || (Float.compare(this.cLa, paramObject.cLa) != 0) || (this.duration != paramObject.duration) || (this.bitrate != paramObject.bitrate) || (this.fSM != paramObject.fSM) || (this.FeD != paramObject.FeD) || (this.audioBitrate != paramObject.audioBitrate) || (this.audioChannelCount != paramObject.audioChannelCount) || (this.audioSampleRate != paramObject.audioSampleRate) || (this.pixelFormat != paramObject.pixelFormat)) {}
         }
       }
       else
       {
-        AppMethodBeat.o(190621);
+        AppMethodBeat.o(223883);
         return true;
       }
-      AppMethodBeat.o(190621);
+      AppMethodBeat.o(223883);
       return false;
     }
     
@@ -587,16 +596,16 @@ public final class MultiMediaVideoChecker
     
     public final String toString()
     {
-      AppMethodBeat.i(190619);
-      String str = "VideoInfo(width=" + this.width + ", height=" + this.height + ", fps=" + this.cKu + ", duration=" + this.duration + ", bitrate=" + this.bitrate + ", rotate=" + this.dYT + ", isH265=" + this.zzJ + ", audioBitrate=" + this.audioBitrate + ", audioChannelCount=" + this.audioChannelCount + ", audioSampleRate=" + this.audioSampleRate + ", pixelFormat=" + this.pixelFormat + ")";
-      AppMethodBeat.o(190619);
+      AppMethodBeat.i(223868);
+      String str = "VideoInfo(width=" + this.width + ", height=" + this.height + ", fps=" + this.cLa + ", duration=" + this.duration + ", bitrate=" + this.bitrate + ", rotate=" + this.fSM + ", isH265=" + this.FeD + ", audioBitrate=" + this.audioBitrate + ", audioChannelCount=" + this.audioChannelCount + ", audioSampleRate=" + this.audioSampleRate + ", pixelFormat=" + this.pixelFormat + ")";
+      AppMethodBeat.o(223868);
       return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.MultiMediaVideoChecker
  * JD-Core Version:    0.7.0.1
  */

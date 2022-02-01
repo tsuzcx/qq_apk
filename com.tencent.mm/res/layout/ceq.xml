@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:paddingTop="@dimen/cb" android:paddingBottom="@dimen/ci" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/ce" android:paddingEnd="@dimen/ce"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/y" android:textColor="@color/FG_1" android:ellipsize="end" android:gravity="center" android:layout_gravity="center" android:id="@id/jsy" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</LinearLayout>

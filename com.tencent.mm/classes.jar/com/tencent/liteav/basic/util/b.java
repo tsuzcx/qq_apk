@@ -165,15 +165,15 @@ public class b
   {
     AppMethodBeat.i(14737);
     super.finalize();
-    c.a(this.d);
-    c.a(this.e);
+    d.a(this.d);
+    d.a(this.e);
     TXCLog.i("CpuUsageMeasurer", "measurer is released");
     AppMethodBeat.o(14737);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.basic.util.b
  * JD-Core Version:    0.7.0.1
  */

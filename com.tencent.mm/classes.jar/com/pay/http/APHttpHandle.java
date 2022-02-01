@@ -16,14 +16,14 @@ public class APHttpHandle
   
   private APHttpHandle()
   {
-    AppMethodBeat.i(193278);
+    AppMethodBeat.i(253648);
     this.observerMap = new HashMap();
-    AppMethodBeat.o(193278);
+    AppMethodBeat.o(253648);
   }
   
   public static APHttpHandle getIntanceHandel()
   {
-    AppMethodBeat.i(193279);
+    AppMethodBeat.i(253649);
     synchronized (lock)
     {
       APHttpHandle localAPHttpHandle = handle;
@@ -35,7 +35,7 @@ public class APHttpHandle
         }
         handle = new APHttpHandle();
         ??? = handle;
-        AppMethodBeat.o(193279);
+        AppMethodBeat.o(253649);
         return ???;
       }
       catch (Exception localException)
@@ -50,7 +50,7 @@ public class APHttpHandle
   
   private void runObserverOnMainThread(Message paramMessage)
   {
-    AppMethodBeat.i(193283);
+    AppMethodBeat.i(253656);
     for (;;)
     {
       IAPHttpAnsObserver localIAPHttpAnsObserver;
@@ -62,27 +62,27 @@ public class APHttpHandle
         localIAPHttpAnsObserver = (IAPHttpAnsObserver)this.observerMap.get(str);
         if (localIAPHttpAnsObserver == null)
         {
-          AppMethodBeat.o(193283);
+          AppMethodBeat.o(253656);
           return;
         }
         unregister(str);
         switch (i)
         {
         default: 
-          AppMethodBeat.o(193283);
+          AppMethodBeat.o(253656);
           return;
         }
       }
       catch (Exception paramMessage)
       {
-        AppMethodBeat.o(193283);
+        AppMethodBeat.o(253656);
         return;
       }
       localIAPHttpAnsObserver.onFinish(paramMessage);
-      AppMethodBeat.o(193283);
+      AppMethodBeat.o(253656);
       return;
       localIAPHttpAnsObserver.onError(paramMessage);
-      AppMethodBeat.o(193283);
+      AppMethodBeat.o(253656);
       return;
       localIAPHttpAnsObserver.onStop(paramMessage);
     }
@@ -90,18 +90,18 @@ public class APHttpHandle
   
   public void handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(193282);
+    AppMethodBeat.i(253654);
     runObserverOnMainThread(paramMessage);
-    AppMethodBeat.o(193282);
+    AppMethodBeat.o(253654);
   }
   
   public void register(String paramString, IAPHttpAnsObserver paramIAPHttpAnsObserver)
   {
-    AppMethodBeat.i(193280);
+    AppMethodBeat.i(253651);
     if (this.observerMap != null) {
       this.observerMap.put(paramString, paramIAPHttpAnsObserver);
     }
-    AppMethodBeat.o(193280);
+    AppMethodBeat.o(253651);
   }
   
   public void release()
@@ -111,16 +111,16 @@ public class APHttpHandle
   
   public void unregister(String paramString)
   {
-    AppMethodBeat.i(193281);
+    AppMethodBeat.i(253653);
     if (this.observerMap != null) {
       this.observerMap.remove(paramString);
     }
-    AppMethodBeat.o(193281);
+    AppMethodBeat.o(253653);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.pay.http.APHttpHandle
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,16 @@
 package com.tencent.midas.plugin;
 
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
+import android.os.Build.VERSION;
 import android.os.Environment;
+import android.os.Process;
 import android.text.TextUtils;
 import android.widget.Toast;
 import com.pay.tool.APMidasTools;
@@ -30,6 +35,8 @@ import java.io.StringWriter;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class APPluginUtils
@@ -44,18 +51,18 @@ public class APPluginUtils
   
   static
   {
-    AppMethodBeat.i(193162);
+    AppMethodBeat.i(252628);
     HEX_DIGITS = new char[] { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
     installErrMsg = null;
     emptyResList = null;
     fileList = null;
     copyFileObject = new Object();
-    AppMethodBeat.o(193162);
+    AppMethodBeat.o(252628);
   }
   
   static void backUp(boolean paramBoolean, final String paramString1, final String paramString2, final String paramString3)
   {
-    AppMethodBeat.i(193150);
+    AppMethodBeat.i(252605);
     Object localObject = null;
     try
     {
@@ -69,14 +76,14 @@ public class APPluginUtils
     }
     if (TextUtils.isEmpty(localObject))
     {
-      AppMethodBeat.o(193150);
+      AppMethodBeat.o(252605);
       return;
     }
     new Thread(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(193120);
+        AppMethodBeat.i(252636);
         synchronized (APPluginUtils.copyFileObject)
         {
           if (this.val$isNeedCheckMD5Copy)
@@ -91,40 +98,40 @@ public class APPluginUtils
             long l2 = System.currentTimeMillis();
             APLog.i("Times", "File" + str1 + "backup times:" + (l2 - l1));
           }
-          AppMethodBeat.o(193120);
+          AppMethodBeat.o(252636);
           return;
         }
       }
     }).start();
-    AppMethodBeat.o(193150);
+    AppMethodBeat.o(252605);
   }
   
   private static void callbackInMidasPluginWhenRunningInNewProcess(Context paramContext, int paramInt, String paramString)
   {
-    AppMethodBeat.i(193160);
+    AppMethodBeat.i(252618);
     try
     {
       Intent localIntent = new Intent();
       localIntent.putExtra("EXTRA_CALLBACK_RESULT_CODE", paramInt);
       localIntent.putExtra("EXTRA_CALLBACK_RESULT_MSG", paramString);
       APPluginInterfaceManager.initPluginInterface(paramContext, APMidasPayHelper.MIDAS_PLUGIN_NAME, APMidasPayHelper.PKG_DISTRIBUTE, "callbackFromMidasPay", new Object[] { paramContext, localIntent });
-      AppMethodBeat.o(193160);
+      AppMethodBeat.o(252618);
       return;
     }
     catch (Exception paramContext)
     {
       APLog.e("PluginProxyActivity", "openPlugin error:" + paramContext.toString());
-      AppMethodBeat.o(193160);
+      AppMethodBeat.o(252618);
     }
   }
   
   public static void callbackInMidasPluginWithoutCaringAboutNewProcess(Context paramContext, int paramInt, String paramString)
   {
-    AppMethodBeat.i(193159);
+    AppMethodBeat.i(252616);
     if (paramContext == null)
     {
       APLog.e("PluginUtils", "Call back in plugin without caring process fail, null context!");
-      AppMethodBeat.o(193159);
+      AppMethodBeat.o(252616);
       return;
     }
     APLog.d("PluginUtils", "Call back in plugin without caring process, context ok!");
@@ -132,7 +139,7 @@ public class APPluginUtils
     {
       APLog.d("PluginUtils", "Call back in plugin without caring process, is new process!");
       callbackInMidasPluginWhenRunningInNewProcess(paramContext, paramInt, paramString);
-      AppMethodBeat.o(193159);
+      AppMethodBeat.o(252616);
       return;
     }
     APLog.d("PluginUtils", "Call back in plugin without caring process, not new process!");
@@ -140,12 +147,12 @@ public class APPluginUtils
     paramContext.resultCode = paramInt;
     paramContext.resultMsg = paramString;
     APMidasPayHelper.midasCallBack(paramContext);
-    AppMethodBeat.o(193159);
+    AppMethodBeat.o(252616);
   }
   
   public static boolean checkFileMD5(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(193151);
+    AppMethodBeat.i(252606);
     str2 = "";
     try
     {
@@ -156,7 +163,7 @@ public class APPluginUtils
       }
       else
       {
-        AppMethodBeat.o(193151);
+        AppMethodBeat.o(252606);
         return false;
       }
       paramString1 = new FileInputStream(paramString1);
@@ -200,25 +207,25 @@ public class APPluginUtils
       if (!str1.equalsIgnoreCase(paramString2)) {
         continue;
       }
-      AppMethodBeat.o(193151);
+      AppMethodBeat.o(252606);
       return true;
       paramString1.close();
       str1 = toHexString(str1.digest());
     }
-    AppMethodBeat.o(193151);
+    AppMethodBeat.o(252606);
     return false;
   }
   
   public static void clearDirContent(File paramFile)
   {
-    AppMethodBeat.i(193129);
+    AppMethodBeat.i(252576);
     if ((paramFile != null) && ((paramFile.exists() & paramFile.isDirectory())))
     {
       APLog.d("PluginUtils", "About to clear dir, path = " + paramFile.getAbsolutePath());
       paramFile = paramFile.listFiles();
       if ((paramFile == null) || (paramFile.length == 0))
       {
-        AppMethodBeat.o(193129);
+        AppMethodBeat.o(252576);
         return;
       }
       int j = paramFile.length;
@@ -231,22 +238,22 @@ public class APPluginUtils
         }
         i += 1;
       }
-      AppMethodBeat.o(193129);
+      AppMethodBeat.o(252576);
       return;
     }
     APLog.e("PluginUtils", "call clear dir content, but parameter error!");
-    AppMethodBeat.o(193129);
+    AppMethodBeat.o(252576);
   }
   
   static void copyDirect(Context paramContext, File paramFile1, File paramFile2)
   {
-    AppMethodBeat.i(193155);
+    AppMethodBeat.i(252610);
     if ((paramFile1 != null) && (paramFile2 != null))
     {
       paramContext = paramFile1.listFiles();
       if (paramContext == null)
       {
-        AppMethodBeat.o(193155);
+        AppMethodBeat.o(252610);
         return;
       }
       int i = 0;
@@ -258,22 +265,22 @@ public class APPluginUtils
         i += 1;
       }
     }
-    AppMethodBeat.o(193155);
+    AppMethodBeat.o(252610);
   }
   
   static void copyEmtpyResAPKFromAssets(Context paramContext)
   {
     int i = 0;
-    AppMethodBeat.i(193149);
+    AppMethodBeat.i(252604);
     if (!isHasBSL())
     {
-      AppMethodBeat.o(193149);
+      AppMethodBeat.o(252604);
       return;
     }
     String[] arrayOfString = getAssetFileList(paramContext);
     if (arrayOfString == null)
     {
-      AppMethodBeat.o(193149);
+      AppMethodBeat.o(252604);
       return;
     }
     int j = arrayOfString.length;
@@ -312,7 +319,7 @@ public class APPluginUtils
           ((InputStream)localObject1).close();
         }
         catch (IOException localIOException) {}
-        AppMethodBeat.o(193149);
+        AppMethodBeat.o(252604);
         return;
       }
       i += 1;
@@ -798,26 +805,26 @@ public class APPluginUtils
   
   static void deleteBKPlugin(Context paramContext)
   {
-    AppMethodBeat.i(193131);
+    AppMethodBeat.i(252578);
     APLog.i("APPluginUtils", "deleteUpdatePlugin");
     deleteFiles(APPluginConfig.getPluginBackUpPath(paramContext));
-    AppMethodBeat.o(193131);
+    AppMethodBeat.o(252578);
   }
   
   public static void deleteDex(Context paramContext)
   {
-    AppMethodBeat.i(193134);
+    AppMethodBeat.i(252581);
     APLog.i("APPluginUtils", "deleteDex");
     deleteFiles(APPluginConfig.getOptimizedDexPath(paramContext));
-    AppMethodBeat.o(193134);
+    AppMethodBeat.o(252581);
   }
   
   public static void deleteFiles(File paramFile)
   {
-    AppMethodBeat.i(193130);
+    AppMethodBeat.i(252577);
     if (paramFile == null)
     {
-      AppMethodBeat.o(193130);
+      AppMethodBeat.o(252577);
       return;
     }
     if (paramFile.isDirectory())
@@ -825,7 +832,7 @@ public class APPluginUtils
       File[] arrayOfFile = paramFile.listFiles();
       if (arrayOfFile == null)
       {
-        AppMethodBeat.o(193130);
+        AppMethodBeat.o(252577);
         return;
       }
       int i = 0;
@@ -838,35 +845,35 @@ public class APPluginUtils
         i += 1;
       }
       paramFile.delete();
-      AppMethodBeat.o(193130);
+      AppMethodBeat.o(252577);
       return;
     }
     paramFile.delete();
-    AppMethodBeat.o(193130);
+    AppMethodBeat.o(252577);
   }
   
   public static void deleteLibs(Context paramContext)
   {
-    AppMethodBeat.i(193135);
+    AppMethodBeat.i(252582);
     APLog.i("APPluginUtils", "deleteLibs");
     deleteFiles(APPluginConfig.getLibPath(paramContext));
-    AppMethodBeat.o(193135);
+    AppMethodBeat.o(252582);
   }
   
   public static void deletePlugin(Context paramContext)
   {
-    AppMethodBeat.i(193133);
+    AppMethodBeat.i(252580);
     APLog.i("APPluginUtils", "deletePlugin");
     deleteFiles(APPluginConfig.getPluginPath(paramContext));
-    AppMethodBeat.o(193133);
+    AppMethodBeat.o(252580);
   }
   
   public static void deleteUpdatePlugin(Context paramContext)
   {
-    AppMethodBeat.i(193132);
+    AppMethodBeat.i(252579);
     APLog.d("PluginUtils", "Calling into deleteUpdatePlugin " + Thread.currentThread().getStackTrace()[3].toString());
     deleteFiles(APPluginConfig.getPluginUpdatePath(paramContext));
-    AppMethodBeat.o(193132);
+    AppMethodBeat.o(252579);
   }
   
   /* Error */
@@ -1213,7 +1220,7 @@ public class APPluginUtils
   
   private static String[] getAssetFileList(Context paramContext)
   {
-    AppMethodBeat.i(193141);
+    AppMethodBeat.i(252591);
     try
     {
       if (fileList == null)
@@ -1223,7 +1230,7 @@ public class APPluginUtils
         APPluginReportManager.getInstance().insertTimeDataEx(APMidasTools.getCurrentThreadName(Thread.currentThread()), "sdk.plugin.init.getFileListFromAssets.time", l);
       }
       paramContext = fileList;
-      AppMethodBeat.o(193141);
+      AppMethodBeat.o(252591);
       return paramContext;
     }
     catch (IOException paramContext)
@@ -1320,7 +1327,7 @@ public class APPluginUtils
   
   public static File getDataZipFile(Context paramContext)
   {
-    AppMethodBeat.i(193137);
+    AppMethodBeat.i(252585);
     paramContext = APMidasPayAPI.getPath();
     if (!TextUtils.isEmpty(paramContext))
     {
@@ -1328,24 +1335,24 @@ public class APPluginUtils
       paramContext = new File(paramContext);
       if ((paramContext.getName().startsWith("MidasPay")) && (paramContext.getName().endsWith(".zip")))
       {
-        AppMethodBeat.o(193137);
+        AppMethodBeat.o(252585);
         return paramContext;
       }
     }
-    AppMethodBeat.o(193137);
+    AppMethodBeat.o(252585);
     return null;
   }
   
   public static String getExceptionInfo(Throwable paramThrowable)
   {
-    AppMethodBeat.i(193146);
+    AppMethodBeat.i(252600);
     while (paramThrowable.getCause() != null) {
       paramThrowable = paramThrowable.getCause();
     }
     StringWriter localStringWriter = new StringWriter();
     paramThrowable.printStackTrace(new PrintWriter(localStringWriter, true));
     paramThrowable = localStringWriter.getBuffer().toString();
-    AppMethodBeat.o(193146);
+    AppMethodBeat.o(252600);
     return paramThrowable;
   }
   
@@ -1430,31 +1437,31 @@ public class APPluginUtils
   
   public static File getInstallPath(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(193128);
+    AppMethodBeat.i(252575);
     paramContext = APPluginInstallerAndUpdater.getInstallPath(paramContext, paramString);
-    AppMethodBeat.o(193128);
+    AppMethodBeat.o(252575);
     return paramContext;
   }
   
   public static String getInstallPathString(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(193125);
+    AppMethodBeat.i(252567);
     paramContext = APPluginInstallerAndUpdater.getInstallPathString(paramContext, paramString);
-    AppMethodBeat.o(193125);
+    AppMethodBeat.o(252567);
     return paramContext;
   }
   
   public static File getLibPath(Context paramContext)
   {
-    AppMethodBeat.i(193126);
+    AppMethodBeat.i(252570);
     paramContext = APPluginConfig.getLibPath(paramContext);
-    AppMethodBeat.o(193126);
+    AppMethodBeat.o(252570);
     return paramContext;
   }
   
   public static String getMD5FromPath(String paramString)
   {
-    AppMethodBeat.i(193156);
+    AppMethodBeat.i(252611);
     String str2 = "";
     String str1 = str2;
     int i;
@@ -1473,7 +1480,7 @@ public class APPluginUtils
     try
     {
       str1 = paramString.substring(j + 1, i);
-      AppMethodBeat.o(193156);
+      AppMethodBeat.o(252611);
       return str1;
     }
     catch (Exception paramString)
@@ -1487,7 +1494,7 @@ public class APPluginUtils
   
   public static String getMidasCoreVersionName(Context paramContext)
   {
-    AppMethodBeat.i(193143);
+    AppMethodBeat.i(252595);
     Object localObject1 = APPluginConfig.getPluginPath(paramContext);
     int i;
     Object localObject2;
@@ -1511,7 +1518,7 @@ public class APPluginUtils
           break label87;
         }
         paramContext = paramContext.versionName;
-        AppMethodBeat.o(193143);
+        AppMethodBeat.o(252595);
         return paramContext;
       }
       catch (IOException localIOException)
@@ -1530,7 +1537,7 @@ public class APPluginUtils
   
   public static ArrayList<String> getMidasEmptyPaht(Context paramContext)
   {
-    AppMethodBeat.i(193144);
+    AppMethodBeat.i(252596);
     int i;
     if (emptyResList == null)
     {
@@ -1558,7 +1565,7 @@ public class APPluginUtils
         i += 1;
         continue;
         paramContext = emptyResList;
-        AppMethodBeat.o(193144);
+        AppMethodBeat.o(252596);
         return paramContext;
       }
       catch (IOException localIOException)
@@ -1570,11 +1577,11 @@ public class APPluginUtils
   
   public static PackageInfo getPackageInfo(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(193145);
+    AppMethodBeat.i(252598);
     PackageManager localPackageManager = paramContext.getPackageManager();
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(193145);
+      AppMethodBeat.o(252598);
       return null;
     }
     PackageInfo localPackageInfo = (PackageInfo)APPluginInstallerAndUpdater.sPackageInfoMap.get(paramString);
@@ -1589,18 +1596,48 @@ public class APPluginUtils
         paramContext = localPackageInfo;
       }
     }
-    AppMethodBeat.o(193145);
+    AppMethodBeat.o(252598);
     return paramContext;
+  }
+  
+  public static String getProcessName(Context paramContext)
+  {
+    AppMethodBeat.i(252623);
+    if (Build.VERSION.SDK_INT >= 28)
+    {
+      paramContext = Application.getProcessName();
+      AppMethodBeat.o(252623);
+      return paramContext;
+    }
+    paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(252623);
+      return null;
+    }
+    paramContext = paramContext.iterator();
+    while (paramContext.hasNext())
+    {
+      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+      if (localRunningAppProcessInfo.pid == Process.myPid())
+      {
+        paramContext = localRunningAppProcessInfo.processName;
+        AppMethodBeat.o(252623);
+        return paramContext;
+      }
+    }
+    AppMethodBeat.o(252623);
+    return null;
   }
   
   /* Error */
   static int getZipVersionCodeWtihFileName(Context paramContext, String paramString)
   {
     // Byte code:
-    //   0: ldc_w 650
+    //   0: ldc_w 701
     //   3: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: ldc_w 652
-    //   9: ldc_w 654
+    //   6: ldc_w 703
+    //   9: ldc_w 705
     //   12: aload_1
     //   13: invokestatic 308	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   16: invokevirtual 312	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
@@ -1617,8 +1654,8 @@ public class APPluginUtils
     //   35: invokestatic 525	com/tencent/midas/plugin/APPluginUtils:getZipVersionCodeWtihStream	(Landroid/content/Context;Ljava/io/InputStream;)I
     //   38: istore_2
     //   39: aload_3
-    //   40: invokevirtual 655	java/io/FileInputStream:close	()V
-    //   43: ldc_w 650
+    //   40: invokevirtual 706	java/io/FileInputStream:close	()V
+    //   43: ldc_w 701
     //   46: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   49: iload_2
     //   50: ireturn
@@ -1633,11 +1670,11 @@ public class APPluginUtils
     //   65: aload_0
     //   66: ifnull +7 -> 73
     //   69: aload_0
-    //   70: invokevirtual 655	java/io/FileInputStream:close	()V
-    //   73: ldc_w 657
+    //   70: invokevirtual 706	java/io/FileInputStream:close	()V
+    //   73: ldc_w 708
     //   76: ldc_w 529
     //   79: invokestatic 314	com/tencent/midas/comm/APLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   82: ldc_w 650
+    //   82: ldc_w 701
     //   85: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   88: iconst_0
     //   89: ireturn
@@ -1647,8 +1684,8 @@ public class APPluginUtils
     //   93: aload_1
     //   94: ifnull +7 -> 101
     //   97: aload_1
-    //   98: invokevirtual 655	java/io/FileInputStream:close	()V
-    //   101: ldc_w 650
+    //   98: invokevirtual 706	java/io/FileInputStream:close	()V
+    //   101: ldc_w 701
     //   104: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   107: aload_0
     //   108: athrow
@@ -1692,22 +1729,22 @@ public class APPluginUtils
     //   1: istore_3
     //   2: iconst_0
     //   3: istore 4
-    //   5: ldc_w 658
+    //   5: ldc_w 709
     //   8: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   11: new 660	java/util/zip/ZipInputStream
+    //   11: new 711	java/util/zip/ZipInputStream
     //   14: dup
     //   15: aload_1
-    //   16: invokespecial 663	java/util/zip/ZipInputStream:<init>	(Ljava/io/InputStream;)V
+    //   16: invokespecial 714	java/util/zip/ZipInputStream:<init>	(Ljava/io/InputStream;)V
     //   19: astore 5
     //   21: aload 5
     //   23: astore_0
     //   24: aload 5
-    //   26: invokevirtual 667	java/util/zip/ZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
+    //   26: invokevirtual 718	java/util/zip/ZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
     //   29: astore_1
     //   30: aload 5
     //   32: astore_0
-    //   33: ldc_w 652
-    //   36: ldc_w 669
+    //   33: ldc_w 703
+    //   36: ldc_w 720
     //   39: aload_1
     //   40: invokestatic 308	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   43: invokevirtual 312	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
@@ -1723,7 +1760,7 @@ public class APPluginUtils
     //   63: astore 6
     //   65: aload 5
     //   67: astore_0
-    //   68: ldc_w 652
+    //   68: ldc_w 703
     //   71: ldc_w 448
     //   74: aload 6
     //   76: invokestatic 308	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
@@ -1732,7 +1769,7 @@ public class APPluginUtils
     //   85: aload 5
     //   87: astore_0
     //   88: aload_1
-    //   89: invokevirtual 670	java/util/zip/ZipEntry:isDirectory	()Z
+    //   89: invokevirtual 721	java/util/zip/ZipEntry:isDirectory	()Z
     //   92: ifne +17 -> 109
     //   95: aload 5
     //   97: astore_0
@@ -1743,7 +1780,7 @@ public class APPluginUtils
     //   109: aload 5
     //   111: astore_0
     //   112: aload 5
-    //   114: invokevirtual 667	java/util/zip/ZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
+    //   114: invokevirtual 718	java/util/zip/ZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
     //   117: astore_1
     //   118: goto -69 -> 49
     //   121: aload 5
@@ -1755,7 +1792,7 @@ public class APPluginUtils
     //   135: aload 5
     //   137: astore_0
     //   138: aload 6
-    //   140: ldc_w 672
+    //   140: ldc_w 723
     //   143: invokevirtual 291	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   146: ifeq +61 -> 207
     //   149: aload 5
@@ -1763,31 +1800,31 @@ public class APPluginUtils
     //   152: aload 6
     //   154: iconst_0
     //   155: aload 6
-    //   157: ldc_w 672
+    //   157: ldc_w 723
     //   160: invokevirtual 451	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
     //   163: invokevirtual 597	java/lang/String:substring	(II)Ljava/lang/String;
     //   166: ldc_w 594
-    //   169: invokevirtual 675	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   169: invokevirtual 726	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   172: iconst_2
     //   173: aaload
-    //   174: invokestatic 680	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   174: invokestatic 731	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   177: istore_2
     //   178: aload 5
-    //   180: invokevirtual 681	java/util/zip/ZipInputStream:close	()V
-    //   183: ldc_w 657
-    //   186: ldc_w 683
+    //   180: invokevirtual 732	java/util/zip/ZipInputStream:close	()V
+    //   183: ldc_w 708
+    //   186: ldc_w 734
     //   189: iload_2
-    //   190: invokestatic 685	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   190: invokestatic 736	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   193: invokevirtual 312	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   196: invokestatic 314	com/tencent/midas/comm/APLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   199: ldc_w 658
+    //   199: ldc_w 709
     //   202: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   205: iload_2
     //   206: ireturn
     //   207: aload 5
     //   209: astore_0
     //   210: aload 5
-    //   212: invokevirtual 667	java/util/zip/ZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
+    //   212: invokevirtual 718	java/util/zip/ZipInputStream:getNextEntry	()Ljava/util/zip/ZipEntry;
     //   215: astore_1
     //   216: goto -167 -> 49
     //   219: astore 6
@@ -1803,7 +1840,7 @@ public class APPluginUtils
     //   235: aload_1
     //   236: ifnull -53 -> 183
     //   239: aload_1
-    //   240: invokevirtual 681	java/util/zip/ZipInputStream:close	()V
+    //   240: invokevirtual 732	java/util/zip/ZipInputStream:close	()V
     //   243: iload_3
     //   244: istore_2
     //   245: goto -62 -> 183
@@ -1817,8 +1854,8 @@ public class APPluginUtils
     //   257: aload_0
     //   258: ifnull +7 -> 265
     //   261: aload_0
-    //   262: invokevirtual 681	java/util/zip/ZipInputStream:close	()V
-    //   265: ldc_w 658
+    //   262: invokevirtual 732	java/util/zip/ZipInputStream:close	()V
+    //   265: ldc_w 709
     //   268: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   271: aload_1
     //   272: athrow
@@ -1878,7 +1915,7 @@ public class APPluginUtils
   private static boolean isHasBSL()
   {
     boolean bool2 = true;
-    AppMethodBeat.i(193148);
+    AppMethodBeat.i(252603);
     try
     {
       Class.forName("com.tencent.theme.SkinEngine").getMethod("getInstances", new Class[0]);
@@ -1908,14 +1945,38 @@ public class APPluginUtils
           bool1 = false;
         }
       }
-      AppMethodBeat.o(193148);
+      AppMethodBeat.o(252603);
       return bool1;
     }
   }
   
+  public static boolean isInNewProcess(Context paramContext)
+  {
+    AppMethodBeat.i(252627);
+    String str = getProcessName(paramContext);
+    paramContext = paramContext.getApplicationContext().getPackageName();
+    if (TextUtils.isEmpty(str))
+    {
+      AppMethodBeat.o(252627);
+      return false;
+    }
+    if (str.startsWith(paramContext + ":"))
+    {
+      AppMethodBeat.o(252627);
+      return true;
+    }
+    if (!str.equals(paramContext))
+    {
+      AppMethodBeat.o(252627);
+      return true;
+    }
+    AppMethodBeat.o(252627);
+    return false;
+  }
+  
   static void readSingInfo(HashMap<String, String> paramHashMap, File paramFile)
   {
-    AppMethodBeat.i(193124);
+    AppMethodBeat.i(252566);
     try
     {
       BufferedReader localBufferedReader = new BufferedReader(new FileReader(paramFile.getCanonicalPath()));
@@ -1929,23 +1990,23 @@ public class APPluginUtils
         paramHashMap.put(paramFile.split("\\_")[0], localObject);
       }
       localBufferedReader.close();
-      AppMethodBeat.o(193124);
+      AppMethodBeat.o(252566);
       return;
     }
     catch (FileNotFoundException paramHashMap)
     {
-      AppMethodBeat.o(193124);
+      AppMethodBeat.o(252566);
       return;
     }
     catch (IOException paramHashMap)
     {
-      AppMethodBeat.o(193124);
+      AppMethodBeat.o(252566);
     }
   }
   
   static void readSingInfoItems(HashMap<String, APSignIniItem> paramHashMap, File paramFile)
   {
-    AppMethodBeat.i(193123);
+    AppMethodBeat.i(252564);
     try
     {
       BufferedReader localBufferedReader = new BufferedReader(new FileReader(paramFile.getCanonicalPath()));
@@ -1964,31 +2025,31 @@ public class APPluginUtils
         paramHashMap.put(str2, localAPSignIniItem);
       }
       localBufferedReader.close();
-      AppMethodBeat.o(193123);
+      AppMethodBeat.o(252564);
       return;
     }
     catch (FileNotFoundException paramHashMap)
     {
-      AppMethodBeat.o(193123);
+      AppMethodBeat.o(252564);
       return;
     }
     catch (IOException paramHashMap)
     {
-      AppMethodBeat.o(193123);
+      AppMethodBeat.o(252564);
     }
   }
   
   public static void release()
   {
-    AppMethodBeat.i(193136);
+    AppMethodBeat.i(252583);
     APPluginInstallerAndUpdater.sInstallPathMap.clear();
     APPluginInstallerAndUpdater.sPackageInfoMap.clear();
-    AppMethodBeat.o(193136);
+    AppMethodBeat.o(252583);
   }
   
   static void showLaunchPluginFail(Context paramContext, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(193158);
+    AppMethodBeat.i(252614);
     APLog.d("PluginUtils", "Calling into showLaunchPluginFail, needToPureH5Pay = " + paramBoolean + " caller = " + Thread.currentThread().getStackTrace()[3].toString());
     if (!TextUtils.isEmpty(paramString)) {
       APPluginReportManager.getInstance().reportImmediatelyOneRecord("launchpay", "sdk.plugin.launch.error", paramString);
@@ -1997,7 +2058,7 @@ public class APPluginUtils
     {
       if (APWebJSBridgeActivity.startPureH5Pay(paramContext, paramString, "showLaunchPluginFail"))
       {
-        AppMethodBeat.o(193158);
+        AppMethodBeat.o(252614);
         return;
       }
       if ((paramString == null) || ((!paramString.contains("空间")) && (!paramString.contains("Space")))) {
@@ -2008,7 +2069,7 @@ public class APPluginUtils
     for (;;)
     {
       callbackInMidasPluginWithoutCaringAboutNewProcess(paramContext, 100, "Unexpected error!");
-      AppMethodBeat.o(193158);
+      AppMethodBeat.o(252614);
       return;
       label141:
       if ((!TextUtils.isEmpty(paramString)) && ((paramString.contains("webview")) || (paramString.contains("Webview")))) {
@@ -2021,7 +2082,7 @@ public class APPluginUtils
   
   public static String toHexString(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(193152);
+    AppMethodBeat.i(252607);
     StringBuilder localStringBuilder = new StringBuilder(paramArrayOfByte.length * 2);
     int i = 0;
     while (i < paramArrayOfByte.length)
@@ -2031,35 +2092,35 @@ public class APPluginUtils
       i += 1;
     }
     paramArrayOfByte = localStringBuilder.toString();
-    AppMethodBeat.o(193152);
+    AppMethodBeat.o(252607);
     return paramArrayOfByte;
   }
   
   public static void unInstallPlugin(Context paramContext)
   {
-    AppMethodBeat.i(193127);
+    AppMethodBeat.i(252573);
     APLog.d("PluginUtils", "unInstallPlugin " + Thread.currentThread().getStackTrace()[3].toString());
     APPluginInstallerAndUpdater.unInstallPlugin(paramContext);
-    AppMethodBeat.o(193127);
+    AppMethodBeat.o(252573);
   }
   
   public static void updateLibExtendNum()
   {
-    AppMethodBeat.i(193157);
+    AppMethodBeat.i(252612);
     APPluginConfig.libExtend += 1;
     APLog.i("APPluginUtils", "updateLibExtendNum libExtend:" + APPluginConfig.libExtend);
-    AppMethodBeat.o(193157);
+    AppMethodBeat.o(252612);
   }
   
   public static HashMap<String, String> url2Map(String paramString)
   {
     int i = 0;
-    AppMethodBeat.i(193161);
+    AppMethodBeat.i(252620);
     HashMap localHashMap = new HashMap();
     Object localObject = paramString.split("\\?");
     if (localObject == null)
     {
-      AppMethodBeat.o(193161);
+      AppMethodBeat.o(252620);
       return null;
     }
     if (localObject.length == 1) {
@@ -2110,13 +2171,13 @@ public class APPluginUtils
       }
     }
     APLog.i("url2Map", "url后参数为空");
-    AppMethodBeat.o(193161);
+    AppMethodBeat.o(252620);
     return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.plugin.APPluginUtils
  * JD-Core Version:    0.7.0.1
  */

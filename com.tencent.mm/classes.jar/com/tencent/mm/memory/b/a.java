@@ -18,18 +18,18 @@ public class a
   implements i
 {
   boolean DEBUG;
-  protected final Paint iuG;
-  private final MMHandler iuH;
-  protected n iuI;
-  private Runnable iuJ;
+  protected final Paint ljP;
+  private final MMHandler ljQ;
+  protected n ljR;
+  private Runnable ljS;
   protected String tag;
   
   public a(String paramString, n paramn)
   {
     AppMethodBeat.i(156523);
-    this.iuG = new Paint();
+    this.ljP = new Paint();
     this.DEBUG = false;
-    this.iuJ = new Runnable()
+    this.ljS = new Runnable()
     {
       public final void run()
       {
@@ -40,36 +40,36 @@ public class a
       }
     };
     this.tag = paramString;
-    this.iuI = paramn;
-    this.iuG.setAntiAlias(true);
-    this.iuG.setFilterBitmap(false);
-    this.iuG.setColor(-1118482);
-    this.iuH = new MMHandler(Looper.getMainLooper());
+    this.ljR = paramn;
+    this.ljP.setAntiAlias(true);
+    this.ljP.setFilterBitmap(false);
+    this.ljP.setColor(-1118482);
+    this.ljQ = new MMHandler(Looper.getMainLooper());
     AppMethodBeat.o(156523);
   }
   
-  public final void aRW()
+  public final void baR()
   {
     AppMethodBeat.i(156525);
-    if (this.iuI != null) {
-      this.iuI.aRW();
+    if (this.ljR != null) {
+      this.ljR.baR();
     }
     AppMethodBeat.o(156525);
   }
   
-  public final void aRX()
+  public final void baS()
   {
     AppMethodBeat.i(156526);
-    if (this.iuI != null) {
-      this.iuI.aRX();
+    if (this.ljR != null) {
+      this.ljR.baS();
     }
     AppMethodBeat.o(156526);
   }
   
-  public final n aSr()
+  public final n bbo()
   {
-    if (this.iuI != null) {
-      return this.iuI;
+    if (this.ljR != null) {
+      return this.ljR;
     }
     return null;
   }
@@ -78,14 +78,14 @@ public class a
   {
     AppMethodBeat.i(156524);
     Rect localRect = getBounds();
-    n localn = this.iuI;
-    if ((localn == null) || (localn.isRecycled()))
+    n localn = this.ljR;
+    if ((localn == null) || (localn.baX()))
     {
       paramCanvas.drawColor(-1118482);
       AppMethodBeat.o(156524);
       return;
     }
-    Paint localPaint = this.iuG;
+    Paint localPaint = this.ljP;
     paramCanvas.drawBitmap(localn.bitmap, null, localRect, localPaint);
     AppMethodBeat.o(156524);
   }
@@ -93,13 +93,13 @@ public class a
   public int getIntrinsicHeight()
   {
     AppMethodBeat.i(156528);
-    if (this.iuI == null)
+    if (this.ljR == null)
     {
       AppMethodBeat.o(156528);
       return 0;
     }
-    n localn = this.iuI;
-    if ((localn != null) && (!localn.isRecycled()))
+    n localn = this.ljR;
+    if ((localn != null) && (!localn.baX()))
     {
       int i = localn.bitmap.getHeight();
       AppMethodBeat.o(156528);
@@ -112,13 +112,13 @@ public class a
   public int getIntrinsicWidth()
   {
     AppMethodBeat.i(156527);
-    if (this.iuI == null)
+    if (this.ljR == null)
     {
       AppMethodBeat.o(156527);
       return 0;
     }
-    n localn = this.iuI;
-    if ((localn != null) && (!localn.isRecycled()))
+    n localn = this.ljR;
+    if ((localn != null) && (!localn.baX()))
     {
       int i = localn.bitmap.getWidth();
       AppMethodBeat.o(156527);
@@ -144,8 +144,8 @@ public class a
     {
       String str2 = super.toString() + " code: " + hashCode();
       str1 = str2;
-      if (this.iuI != null) {
-        str1 = str2 + this.iuI;
+      if (this.ljR != null) {
+        str1 = str2 + this.ljR;
       }
       AppMethodBeat.o(156529);
       return str1;
@@ -157,7 +157,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.memory.b.a
  * JD-Core Version:    0.7.0.1
  */

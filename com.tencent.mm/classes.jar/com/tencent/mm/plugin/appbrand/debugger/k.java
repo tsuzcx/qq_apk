@@ -1,59 +1,107 @@
 package com.tencent.mm.plugin.appbrand.debugger;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.modelappbrand.LaunchParamsOptional;
-import com.tencent.mm.plugin.appbrand.app.n;
-import com.tencent.mm.plugin.appbrand.appcache.bh;
-import com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI;
-import com.tencent.mm.plugin.appbrand.launching.t;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.task.h;
-import com.tencent.mm.plugin.appbrand.task.p;
-import com.tencent.mm.plugin.messenger.foundation.a.q;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.plugin.appbrand.appcache.bj.c;
+import com.tencent.mm.plugin.appbrand.appusage.an;
+import com.tencent.mm.plugin.appbrand.config.y;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Map;
+import kotlin.l;
+import kotlin.t;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/debugger/MonkeyUpdateWxaUsageListNotify;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgPushingXmlHandler$IMessageHandler;", "()V", "SAMPLE", "", "handleMessage", "", "xml", "parsedKV", "", "nilAs", "as", "Lkotlin/Function0;", "plugin-appbrand-integration_release"})
 public final class k
-  implements q
+  implements bj.c
 {
-  public final void onNewXmlReceived(String paramString, Map<String, String> paramMap, h.a parama)
+  private final String nHz = "<sysmsg type=\"AppBrandTestUpdateWxaUsageListNotify\">\n\n<AppBrandTestUpdateWxaUsageListNotify>\n\n    <DeleteCount></DeleteCount>\n\n    <DeleteList>\n\n        <DeleteAppInfo>\n\n            <UserName>%s</UserName>\n\n            <AppID>%s</AppID>\n\n            <AppType>%d</AppType>\n\n        </DeleteAppInfo>\n\n    </DeleteList>\n\n</AppBrandTestUpdateWxaUsageListNotify></sysmsg>";
+  
+  public final void k(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(44951);
-    if (paramMap != null)
+    AppMethodBeat.i(267562);
+    if (paramMap == null)
     {
-      paramString = (String)paramMap.get(".sysmsg.DebugAppCodeUpdated.OpenAppInfo.AppID");
-      parama = (String)paramMap.get(".sysmsg.DebugAppCodeUpdated.OpenAppInfo.UserName");
-      String str1 = (String)paramMap.get(".sysmsg.DebugAppCodeUpdated.OpenAppInfo.Path");
-      Object localObject = (String)paramMap.get(".sysmsg.DebugAppCodeUpdated.OpenAppInfo.URL");
-      String str2 = (String)paramMap.get(".sysmsg.DebugAppCodeUpdated.OpenAppInfo.MD5");
-      paramMap = (String)paramMap.get(".sysmsg.DebugAppCodeUpdated.OpenAppInfo.ExtInfo");
-      Log.i("MicroMsg.RemoteDebugCodeUpdateSysCmdMsgListener", "onNewXmlReceived appId %s, userName %s, path %s, url %s, md5 %s, extInfo %s", new Object[] { paramString, parama, str1, localObject, str2, paramMap });
-      if ((Util.isNullOrNil(paramString)) || (Util.isNullOrNil(parama)) || (Util.isNullOrNil((String)localObject)))
-      {
-        Log.i("MicroMsg.RemoteDebugCodeUpdateSysCmdMsgListener", "appId = %s, username = %s, codeURL = %s, invalid, return", new Object[] { paramString, parama, localObject });
-        AppMethodBeat.o(44951);
-        return;
-      }
-      if (n.buL().a(paramString, 1, (String)localObject, str2, 0L, Util.nowSecond() + 7200L)) {
-        h.bWb().cl(paramString, 1);
-      }
-      localObject = new LaunchParamsOptional();
-      ((LaunchParamsOptional)localObject).iIt = paramMap;
-      ((t)n.W(t.class)).A(paramString, 1, paramMap);
-      paramMap = new AppBrandStatObject();
-      paramMap.scene = 1101;
-      paramMap.dCw = (paramString + ":" + parama);
-      AppBrandLaunchProxyUI.a(MMApplicationContext.getContext(), parama, str1, 1, -1, paramMap, (LaunchParamsOptional)localObject);
+      AppMethodBeat.o(267562);
+      return;
     }
-    AppMethodBeat.o(44951);
+    int k = Util.getInt((String)paramMap.get(".sysmsg.AppBrandTestUpdateWxaUsageListNotify" + ".DeleteCount"), 0);
+    if (k <= 0)
+    {
+      AppMethodBeat.o(267562);
+      return;
+    }
+    if (k >= 0)
+    {
+      int i = 0;
+      for (;;)
+      {
+        Object localObject1 = new StringBuilder().append(".sysmsg.AppBrandTestUpdateWxaUsageListNotify").append(".DeleteList.DeleteAppInfo");
+        int m;
+        if (i == 0)
+        {
+          paramString = "";
+          Object localObject2 = paramString;
+          paramString = (String)paramMap.get((String)localObject2 + ".UserName");
+          localObject1 = (String)paramMap.get((String)localObject2 + ".AppID");
+          m = Util.getInt((String)paramMap.get((String)localObject2 + ".AppType"), 0);
+          localObject2 = (CharSequence)paramString;
+          if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
+            break label325;
+          }
+          j = 1;
+          label225:
+          if (j != 0)
+          {
+            localObject2 = (CharSequence)localObject1;
+            if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
+              break label331;
+            }
+            j = 1;
+            label255:
+            if (j != 0) {
+              break label351;
+            }
+          }
+          localObject2 = (CharSequence)paramString;
+          if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
+            break label337;
+          }
+        }
+        label325:
+        label331:
+        label337:
+        for (int j = 1;; j = 0)
+        {
+          if (j != 0) {
+            paramString = y.afk((String)localObject1);
+          }
+          if (localObject1 != null) {
+            break label343;
+          }
+          paramString = new t("null cannot be cast to non-null type kotlin.String");
+          AppMethodBeat.o(267562);
+          throw paramString;
+          paramString = Integer.valueOf(i);
+          break;
+          j = 0;
+          break label225;
+          j = 0;
+          break label255;
+        }
+        label343:
+        an.x(paramString, (String)localObject1, m);
+        label351:
+        if (i == k) {
+          break;
+        }
+        i += 1;
+      }
+    }
+    AppMethodBeat.o(267562);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.k
  * JD-Core Version:    0.7.0.1
  */

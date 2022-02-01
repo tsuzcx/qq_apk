@@ -2,15 +2,15 @@ package rx;
 
 public abstract interface e<T>
 {
-  public abstract void gL(T paramT);
+  public abstract void c(Throwable paramThrowable);
   
-  public abstract void hQw();
+  public abstract void fUB();
   
-  public abstract void onError(Throwable paramThrowable);
+  public abstract void he(T paramT);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     rx.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,26 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.e;
+import com.google.b.a.b;
+import com.google.b.a.e;
 
 public final class a$s
   extends e
 {
-  public int REf = 0;
+  public int ZfM = 0;
   
   public a$s()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public final int Ig()
+  public final int JG()
   {
-    return super.Ig() + b.bC(1, this.REf);
+    return super.JG() + b.bN(1, this.ZfM);
   }
   
   public final void a(b paramb)
   {
-    paramb.bB(1, this.REf);
+    paramb.bK(1, this.ZfM);
     super.a(paramb);
   }
 }

@@ -1,17 +1,16 @@
 package com.tencent.mm.plugin.appbrand.message;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.a.c;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.b;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bp;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.h.b;
+import com.tencent.mm.f.c.et;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.bq;
 import com.tencent.mm.modelappbrand.m;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.messenger.foundation.a.p;
-import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.messenger.foundation.a.s;
+import com.tencent.mm.protocal.protobuf.db;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.az;
@@ -20,13 +19,13 @@ import com.tencent.mm.storage.ca;
 import java.util.Map;
 
 public enum d
-  implements p
+  implements s
 {
   static
   {
     AppMethodBeat.i(47714);
-    ngr = new d("INSTANCE");
-    ngs = new d[] { ngr };
+    qhb = new d("INSTANCE");
+    qhc = new d[] { qhb };
     AppMethodBeat.o(47714);
   }
   
@@ -49,7 +48,7 @@ public enum d
       return null;
     }
     Log.i("MicroMsg.WxaSubscribeSysmsgHandler", "consumeNewXml subType:%s", new Object[] { paramString });
-    paramString = ((m)g.af(m.class)).Lq(paramMap);
+    paramString = ((m)h.ae(m.class)).SJ(paramMap);
     if (paramString == null)
     {
       Log.e("MicroMsg.WxaSubscribeSysmsgHandler", "shareKey:%s wxaUpdateableMsg is null, ingore", new Object[] { paramMap });
@@ -62,55 +61,55 @@ public enum d
       AppMethodBeat.o(47713);
       return null;
     }
-    if ((parama == null) || (parama.heO == null))
+    if ((parama == null) || (parama.jQG == null))
     {
       Log.e("MicroMsg.WxaSubscribeSysmsgHandler", "addMsgInfo or addMsgInfo.addMsg is null! should not happen");
       AppMethodBeat.o(47713);
       return null;
     }
-    paramMap = parama.heO;
-    String str1 = com.tencent.mm.platformtools.z.a(paramMap.KHn);
-    String str2 = com.tencent.mm.platformtools.z.a(paramMap.KHl);
-    String str3 = com.tencent.mm.platformtools.z.a(paramMap.KHm);
-    paramString = ((l)g.af(l.class)).eiy().aJ(str2, paramMap.Brn);
+    paramMap = parama.jQG;
+    String str1 = com.tencent.mm.platformtools.z.a(paramMap.RIF);
+    String str2 = com.tencent.mm.platformtools.z.a(paramMap.RID);
+    String str3 = com.tencent.mm.platformtools.z.a(paramMap.RIE);
+    paramString = ((n)h.ae(n.class)).eSe().aL(str2, paramMap.HlH);
     int i = 0;
     if (paramString.field_msgId > 0L) {
       i = 1;
     }
-    paramString.yF(paramMap.Brn);
-    if ((!parama.iLV) || (!parama.iLX)) {
-      paramString.setCreateTime(bp.C(str2, paramMap.CreateTime));
+    paramString.EG(paramMap.HlH);
+    if ((!parama.lCc) || (!parama.lCe)) {
+      paramString.setCreateTime(bq.z(str2, paramMap.CreateTime));
     }
     paramString.setType(603979825);
     paramString.setContent(str1);
-    paramString.nv(0);
+    paramString.pJ(0);
     paramString.setStatus(3);
-    if (str2.equals(com.tencent.mm.model.z.aTY()))
+    if (str2.equals(com.tencent.mm.model.z.bcZ()))
     {
-      paramString.Cy(str3);
-      paramString.BB(paramMap.KHq);
-      bp.a(paramString, parama);
+      paramString.Jm(str3);
+      paramString.Ip(paramMap.RII);
+      bq.a(paramString, parama);
       if (i != 0) {
         break label474;
       }
-      bp.x(paramString);
+      bq.z(paramString);
       label373:
-      paramMap = ((l)g.af(l.class)).aST().bjY(paramString.field_talker);
+      paramMap = ((n)h.ae(n.class)).bbR().bwx(paramString.field_talker);
       if (paramMap == null) {
         break label500;
       }
-      paramMap.oT(33554432);
-      i = ((l)g.af(l.class)).aST().a(paramMap, paramString.field_talker);
+      paramMap.rn(33554432);
+      i = ((n)h.ae(n.class)).bbR().a(paramMap, paramString.field_talker);
       Log.d("MicroMsg.WxaSubscribeSysmsgHandler", "username:%s ok:%b", new Object[] { paramString.field_talker, Integer.valueOf(i) });
     }
     for (;;)
     {
       AppMethodBeat.o(47713);
       return null;
-      paramString.Cy(str2);
+      paramString.Jm(str2);
       break;
       label474:
-      ((l)g.af(l.class)).eiy().b(paramMap.Brn, paramString);
+      ((n)h.ae(n.class)).eSe().b(paramMap.HlH, paramString);
       break label373;
       label500:
       Log.d("MicroMsg.WxaSubscribeSysmsgHandler", "conv is null");
@@ -119,7 +118,7 @@ public enum d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.message.d
  * JD-Core Version:    0.7.0.1
  */

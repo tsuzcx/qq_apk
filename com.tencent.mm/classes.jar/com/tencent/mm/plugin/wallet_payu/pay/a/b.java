@@ -10,7 +10,7 @@ import org.json.JSONObject;
 public final class b
   extends a
 {
-  public Orders CwO;
+  public Orders Ivh;
   private String mReqKey;
   
   public b(String paramString)
@@ -21,7 +21,7 @@ public final class b
   private b(String paramString, byte paramByte)
   {
     AppMethodBeat.i(163874);
-    this.CwO = null;
+    this.Ivh = null;
     this.mReqKey = null;
     this.mReqKey = paramString;
     paramString = new HashMap();
@@ -31,7 +31,7 @@ public final class b
     AppMethodBeat.o(163874);
   }
   
-  public final int fPU()
+  public final int gIA()
   {
     return 8;
   }
@@ -39,9 +39,9 @@ public final class b
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72085);
-    this.CwO = Orders.by(paramJSONObject);
-    if (this.CwO != null) {
-      this.CwO.dDL = this.mReqKey;
+    this.Ivh = Orders.bJ(paramJSONObject);
+    if (this.Ivh != null) {
+      this.Ivh.fwv = this.mReqKey;
     }
     AppMethodBeat.o(72085);
   }

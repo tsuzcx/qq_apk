@@ -13,9 +13,8 @@ import kotlin.l.b.a.b.l.j;
 
 public abstract class b
   extends h
-  implements at
 {
-  private int aHK = 0;
+  private int aNf = 0;
   
   public b(j paramj)
   {
@@ -25,28 +24,28 @@ public abstract class b
   private static boolean d(kotlin.l.b.a.b.b.h paramh)
   {
     if (paramh == null) {
-      atM(2);
+      aDG(2);
     }
     return (!u.L(paramh)) && (!kotlin.l.b.a.b.j.c.m(paramh));
   }
   
-  protected final Collection<ab> EU(boolean paramBoolean)
+  protected final Collection<ab> JB(boolean paramBoolean)
   {
-    Object localObject2 = hzT().hzx();
+    Object localObject2 = iEg().iDJ();
     if (!(localObject2 instanceof e))
     {
       localObject1 = Collections.emptyList();
       if (localObject1 == null) {
-        atM(3);
+        aDG(3);
       }
       return localObject1;
     }
     Object localObject1 = new kotlin.l.b.a.b.o.h();
     localObject2 = (e)localObject2;
-    ((Collection)localObject1).add(((e)localObject2).hAG());
-    localObject2 = ((e)localObject2).hzA();
+    ((Collection)localObject1).add(((e)localObject2).iET());
+    localObject2 = ((e)localObject2).iDM();
     if ((paramBoolean) && (localObject2 != null)) {
-      ((Collection)localObject1).add(((e)localObject2).hAG());
+      ((Collection)localObject1).add(((e)localObject2).iET());
     }
     return localObject1;
   }
@@ -62,11 +61,11 @@ public abstract class b
     if (paramObject.hashCode() != hashCode()) {
       return false;
     }
-    if (((at)paramObject).getParameters().size() != getParameters().size()) {
+    if (((at)paramObject).iCb().size() != iCb().size()) {
       return false;
     }
-    Object localObject = hzT();
-    paramObject = ((at)paramObject).hzS();
+    Object localObject = iEg();
+    paramObject = ((at)paramObject).iEf();
     if ((!d((kotlin.l.b.a.b.b.h)localObject)) || ((paramObject != null) && (!d(paramObject)))) {
       return false;
     }
@@ -74,11 +73,11 @@ public abstract class b
     {
       localObject = (e)localObject;
       paramObject = (e)paramObject;
-      if (!((e)localObject).hAH().equals(paramObject.hAH())) {
+      if (!((e)localObject).iEU().equals(paramObject.iEU())) {
         return false;
       }
-      localObject = ((e)localObject).hzx();
-      for (paramObject = paramObject.hzx(); (localObject != null) && (paramObject != null); paramObject = paramObject.hzx())
+      localObject = ((e)localObject).iDJ();
+      for (paramObject = paramObject.iDJ(); (localObject != null) && (paramObject != null); paramObject = paramObject.iDJ())
       {
         if ((localObject instanceof y)) {
           return paramObject instanceof y;
@@ -88,7 +87,7 @@ public abstract class b
         }
         if ((localObject instanceof kotlin.l.b.a.b.b.ab))
         {
-          if (((paramObject instanceof kotlin.l.b.a.b.b.ab)) && (((kotlin.l.b.a.b.b.ab)localObject).hBk().equals(((kotlin.l.b.a.b.b.ab)paramObject).hBk()))) {
+          if (((paramObject instanceof kotlin.l.b.a.b.b.ab)) && (((kotlin.l.b.a.b.b.ab)localObject).iFy().equals(((kotlin.l.b.a.b.b.ab)paramObject).iFy()))) {
             break;
           }
           return false;
@@ -96,53 +95,53 @@ public abstract class b
         if ((paramObject instanceof kotlin.l.b.a.b.b.ab)) {
           return false;
         }
-        if (!((l)localObject).hAH().equals(paramObject.hAH())) {
+        if (!((l)localObject).iEU().equals(paramObject.iEU())) {
           return false;
         }
-        localObject = ((l)localObject).hzx();
+        localObject = ((l)localObject).iDJ();
       }
       return true;
     }
     return false;
   }
   
-  protected final ab hBX()
+  public final int hashCode()
   {
-    if (g.e(hzT())) {
-      return null;
+    int i = this.aNf;
+    if (i != 0) {
+      return i;
     }
-    return hBh().hzi();
+    e locale = iEg();
+    if (d(locale)) {}
+    for (i = kotlin.l.b.a.b.j.c.n(locale).hashCode();; i = System.identityHashCode(this))
+    {
+      this.aNf = i;
+      return i;
+    }
   }
   
-  public final g hBh()
+  public abstract e iEg();
+  
+  public final g iFv()
   {
-    g localg = a.G(hzT());
+    g localg = a.G(iEg());
     if (localg == null) {
-      atM(1);
+      aDG(1);
     }
     return localg;
   }
   
-  public final int hashCode()
+  protected final ab iGm()
   {
-    int i = this.aHK;
-    if (i != 0) {
-      return i;
+    if (g.e(iEg())) {
+      return null;
     }
-    e locale = hzT();
-    if (d(locale)) {}
-    for (i = kotlin.l.b.a.b.j.c.n(locale).hashCode();; i = System.identityHashCode(this))
-    {
-      this.aHK = i;
-      return i;
-    }
+    return iFv().iDu();
   }
-  
-  public abstract e hzT();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.b
  * JD-Core Version:    0.7.0.1
  */

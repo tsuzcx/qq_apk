@@ -31,7 +31,7 @@ public final class SQLiteConnectionPool
   private static final long CONNECTION_POOL_BUSY_MILLIS = 3000L;
   private static final int OPEN_FLAG_REOPEN_MASK = 268435473;
   private static final String TAG = "WCDB.SQLiteConnectionPool";
-  private final WeakHashMap<SQLiteConnection, AcquiredConnectionStatus> mAcquiredConnections;
+  private final WeakHashMap<SQLiteConnection, SQLiteConnectionPool.AcquiredConnectionStatus> mAcquiredConnections;
   private final ArrayList<SQLiteConnection> mAvailableNonPrimaryConnections;
   private SQLiteConnection mAvailablePrimaryConnection;
   private volatile SQLiteChangeListener mChangeListener;
@@ -170,7 +170,7 @@ public final class SQLiteConnectionPool
   private void discardAcquiredConnectionsLocked()
   {
     AppMethodBeat.i(3064);
-    markAcquiredConnectionsLocked(AcquiredConnectionStatus.DISCARD);
+    markAcquiredConnectionsLocked(SQLiteConnectionPool.AcquiredConnectionStatus.DISCARD);
     AppMethodBeat.o(3064);
   }
   
@@ -203,7 +203,7 @@ public final class SQLiteConnectionPool
       try
       {
         paramSQLiteConnection.setOnlyAllowReadOnlyOperations(bool);
-        this.mAcquiredConnections.put(paramSQLiteConnection, AcquiredConnectionStatus.NORMAL);
+        this.mAcquiredConnections.put(paramSQLiteConnection, SQLiteConnectionPool.AcquiredConnectionStatus.NORMAL);
         AppMethodBeat.o(3074);
         return;
       }
@@ -322,7 +322,7 @@ public final class SQLiteConnectionPool
     AppMethodBeat.o(3069);
   }
   
-  private void markAcquiredConnectionsLocked(AcquiredConnectionStatus paramAcquiredConnectionStatus)
+  private void markAcquiredConnectionsLocked(SQLiteConnectionPool.AcquiredConnectionStatus paramAcquiredConnectionStatus)
   {
     AppMethodBeat.i(3066);
     if (!this.mAcquiredConnections.isEmpty())
@@ -332,8 +332,8 @@ public final class SQLiteConnectionPool
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
-        AcquiredConnectionStatus localAcquiredConnectionStatus = (AcquiredConnectionStatus)localEntry.getValue();
-        if ((paramAcquiredConnectionStatus != localAcquiredConnectionStatus) && (localAcquiredConnectionStatus != AcquiredConnectionStatus.DISCARD)) {
+        SQLiteConnectionPool.AcquiredConnectionStatus localAcquiredConnectionStatus = (SQLiteConnectionPool.AcquiredConnectionStatus)localEntry.getValue();
+        if ((paramAcquiredConnectionStatus != localAcquiredConnectionStatus) && (localAcquiredConnectionStatus != SQLiteConnectionPool.AcquiredConnectionStatus.DISCARD)) {
           localArrayList.add(localEntry.getKey());
         }
       }
@@ -460,16 +460,16 @@ public final class SQLiteConnectionPool
           int i = k;
         }
       }
-      markAcquiredConnectionsLocked(AcquiredConnectionStatus.RECONFIGURE);
+      markAcquiredConnectionsLocked(SQLiteConnectionPool.AcquiredConnectionStatus.RECONFIGURE);
       AppMethodBeat.o(3065);
     }
   }
   
-  private boolean recycleConnectionLocked(SQLiteConnection paramSQLiteConnection, AcquiredConnectionStatus paramAcquiredConnectionStatus)
+  private boolean recycleConnectionLocked(SQLiteConnection paramSQLiteConnection, SQLiteConnectionPool.AcquiredConnectionStatus paramAcquiredConnectionStatus)
   {
     AppMethodBeat.i(3055);
-    AcquiredConnectionStatus localAcquiredConnectionStatus = paramAcquiredConnectionStatus;
-    if (paramAcquiredConnectionStatus == AcquiredConnectionStatus.RECONFIGURE) {}
+    SQLiteConnectionPool.AcquiredConnectionStatus localAcquiredConnectionStatus = paramAcquiredConnectionStatus;
+    if (paramAcquiredConnectionStatus == SQLiteConnectionPool.AcquiredConnectionStatus.RECONFIGURE) {}
     try
     {
       paramSQLiteConnection.reconfigure(this.mConfiguration);
@@ -480,11 +480,11 @@ public final class SQLiteConnectionPool
       for (;;)
       {
         Log.e("WCDB.SQLiteConnectionPool", "Failed to reconfigure released connection, closing it: ".concat(String.valueOf(paramSQLiteConnection)), new Object[] { paramAcquiredConnectionStatus });
-        localAcquiredConnectionStatus = AcquiredConnectionStatus.DISCARD;
+        localAcquiredConnectionStatus = SQLiteConnectionPool.AcquiredConnectionStatus.DISCARD;
       }
       AppMethodBeat.o(3055);
     }
-    if (localAcquiredConnectionStatus == AcquiredConnectionStatus.DISCARD)
+    if (localAcquiredConnectionStatus == SQLiteConnectionPool.AcquiredConnectionStatus.DISCARD)
     {
       closeConnectionAndLogExceptionsLocked(paramSQLiteConnection);
       AppMethodBeat.o(3055);
@@ -608,7 +608,7 @@ public final class SQLiteConnectionPool
   {
     // Byte code:
     //   0: sipush 3067
-    //   3: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: iload_2
     //   7: iconst_2
     //   8: iand
@@ -616,16 +616,16 @@ public final class SQLiteConnectionPool
     //   12: iconst_1
     //   13: istore 5
     //   15: aload_0
-    //   16: getfield 95	com/tencent/wcdb/database/SQLiteConnectionPool:mLock	Ljava/lang/Object;
+    //   16: getfield 94	com/tencent/wcdb/database/SQLiteConnectionPool:mLock	Ljava/lang/Object;
     //   19: astore 16
     //   21: aload 16
     //   23: monitorenter
     //   24: aload_0
-    //   25: invokespecial 241	com/tencent/wcdb/database/SQLiteConnectionPool:throwIfClosedLocked	()V
+    //   25: invokespecial 240	com/tencent/wcdb/database/SQLiteConnectionPool:throwIfClosedLocked	()V
     //   28: aload_3
     //   29: ifnull +7 -> 36
     //   32: aload_3
-    //   33: invokevirtual 537	com/tencent/wcdb/support/CancellationSignal:throwIfCanceled	()V
+    //   33: invokevirtual 536	com/tencent/wcdb/support/CancellationSignal:throwIfCanceled	()V
     //   36: aconst_null
     //   37: astore 12
     //   39: iload 5
@@ -633,7 +633,7 @@ public final class SQLiteConnectionPool
     //   44: aload_0
     //   45: aload_1
     //   46: iload_2
-    //   47: invokespecial 539	com/tencent/wcdb/database/SQLiteConnectionPool:tryAcquireNonPrimaryConnectionLocked	(Ljava/lang/String;I)Lcom/tencent/wcdb/database/SQLiteConnection;
+    //   47: invokespecial 538	com/tencent/wcdb/database/SQLiteConnectionPool:tryAcquireNonPrimaryConnectionLocked	(Ljava/lang/String;I)Lcom/tencent/wcdb/database/SQLiteConnection;
     //   50: astore 12
     //   52: aload 12
     //   54: astore 13
@@ -641,35 +641,35 @@ public final class SQLiteConnectionPool
     //   58: ifnonnull +10 -> 68
     //   61: aload_0
     //   62: iload_2
-    //   63: invokespecial 541	com/tencent/wcdb/database/SQLiteConnectionPool:tryAcquirePrimaryConnectionLocked	(I)Lcom/tencent/wcdb/database/SQLiteConnection;
+    //   63: invokespecial 540	com/tencent/wcdb/database/SQLiteConnectionPool:tryAcquirePrimaryConnectionLocked	(I)Lcom/tencent/wcdb/database/SQLiteConnection;
     //   66: astore 13
     //   68: aload 13
     //   70: ifnull +21 -> 91
     //   73: aload 16
     //   75: monitorexit
     //   76: sipush 3067
-    //   79: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   79: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   82: aload 13
     //   84: areturn
     //   85: iconst_0
     //   86: istore 5
     //   88: goto -73 -> 15
     //   91: iload_2
-    //   92: invokestatic 341	com/tencent/wcdb/database/SQLiteConnectionPool:getPriority	(I)I
+    //   92: invokestatic 340	com/tencent/wcdb/database/SQLiteConnectionPool:getPriority	(I)I
     //   95: istore 4
-    //   97: invokestatic 546	android/os/SystemClock:uptimeMillis	()J
+    //   97: invokestatic 545	android/os/SystemClock:uptimeMillis	()J
     //   100: lstore 6
     //   102: aload_0
-    //   103: invokestatic 356	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   103: invokestatic 355	java/lang/Thread:currentThread	()Ljava/lang/Thread;
     //   106: lload 6
     //   108: iload 4
     //   110: iload 5
     //   112: aload_1
     //   113: iload_2
-    //   114: invokespecial 548	com/tencent/wcdb/database/SQLiteConnectionPool:obtainConnectionWaiterLocked	(Ljava/lang/Thread;JIZLjava/lang/String;I)Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
+    //   114: invokespecial 547	com/tencent/wcdb/database/SQLiteConnectionPool:obtainConnectionWaiterLocked	(Ljava/lang/Thread;JIZLjava/lang/String;I)Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
     //   117: astore 15
     //   119: aload_0
-    //   120: getfield 144	com/tencent/wcdb/database/SQLiteConnectionPool:mConnectionWaiterQueue	Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
+    //   120: getfield 143	com/tencent/wcdb/database/SQLiteConnectionPool:mConnectionWaiterQueue	Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
     //   123: astore 12
     //   125: aconst_null
     //   126: astore 13
@@ -677,18 +677,18 @@ public final class SQLiteConnectionPool
     //   130: ifnull +20 -> 150
     //   133: iload 4
     //   135: aload 12
-    //   137: getfield 344	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mPriority	I
+    //   137: getfield 343	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mPriority	I
     //   140: if_icmple +178 -> 318
     //   143: aload 15
     //   145: aload 12
-    //   147: putfield 150	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mNext	Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
+    //   147: putfield 149	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mNext	Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
     //   150: aload 13
     //   152: ifnull +184 -> 336
     //   155: aload 13
     //   157: aload 15
-    //   159: putfield 150	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mNext	Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
+    //   159: putfield 149	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mNext	Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
     //   162: aload 15
-    //   164: getfield 501	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mNonce	I
+    //   164: getfield 500	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mNonce	I
     //   167: istore 4
     //   169: aload 16
     //   171: monitorexit
@@ -700,48 +700,48 @@ public final class SQLiteConnectionPool
     //   181: aload_0
     //   182: aload 15
     //   184: iload 4
-    //   186: invokespecial 551	com/tencent/wcdb/database/SQLiteConnectionPool$1:<init>	(Lcom/tencent/wcdb/database/SQLiteConnectionPool;Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;I)V
-    //   189: invokevirtual 555	com/tencent/wcdb/support/CancellationSignal:setOnCancelListener	(Lcom/tencent/wcdb/support/CancellationSignal$OnCancelListener;)V
-    //   192: ldc2_w 29
+    //   186: invokespecial 550	com/tencent/wcdb/database/SQLiteConnectionPool$1:<init>	(Lcom/tencent/wcdb/database/SQLiteConnectionPool;Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;I)V
+    //   189: invokevirtual 554	com/tencent/wcdb/support/CancellationSignal:setOnCancelListener	(Lcom/tencent/wcdb/support/CancellationSignal$OnCancelListener;)V
+    //   192: ldc2_w 28
     //   195: lstore 6
     //   197: aload 15
-    //   199: getfield 432	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mStartTime	J
-    //   202: ldc2_w 29
+    //   199: getfield 431	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mStartTime	J
+    //   202: ldc2_w 28
     //   205: ladd
     //   206: lstore 8
     //   208: aload_0
-    //   209: getfield 100	com/tencent/wcdb/database/SQLiteConnectionPool:mConnectionLeaked	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   209: getfield 99	com/tencent/wcdb/database/SQLiteConnectionPool:mConnectionLeaked	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   212: iconst_1
     //   213: iconst_0
-    //   214: invokevirtual 559	java/util/concurrent/atomic/AtomicBoolean:compareAndSet	(ZZ)Z
+    //   214: invokevirtual 558	java/util/concurrent/atomic/AtomicBoolean:compareAndSet	(ZZ)Z
     //   217: ifeq +19 -> 236
     //   220: aload_0
-    //   221: getfield 95	com/tencent/wcdb/database/SQLiteConnectionPool:mLock	Ljava/lang/Object;
+    //   221: getfield 94	com/tencent/wcdb/database/SQLiteConnectionPool:mLock	Ljava/lang/Object;
     //   224: astore 12
     //   226: aload 12
     //   228: monitorenter
     //   229: aload_0
-    //   230: invokespecial 166	com/tencent/wcdb/database/SQLiteConnectionPool:wakeConnectionWaitersLocked	()V
+    //   230: invokespecial 165	com/tencent/wcdb/database/SQLiteConnectionPool:wakeConnectionWaitersLocked	()V
     //   233: aload 12
     //   235: monitorexit
-    //   236: ldc2_w 560
+    //   236: ldc2_w 559
     //   239: lload 6
     //   241: lmul
-    //   242: invokestatic 565	java/util/concurrent/locks/LockSupport:parkNanos	(J)V
-    //   245: invokestatic 568	java/lang/Thread:interrupted	()Z
+    //   242: invokestatic 564	java/util/concurrent/locks/LockSupport:parkNanos	(J)V
+    //   245: invokestatic 567	java/lang/Thread:interrupted	()Z
     //   248: pop
     //   249: aload_0
-    //   250: getfield 95	com/tencent/wcdb/database/SQLiteConnectionPool:mLock	Ljava/lang/Object;
+    //   250: getfield 94	com/tencent/wcdb/database/SQLiteConnectionPool:mLock	Ljava/lang/Object;
     //   253: astore 13
     //   255: aload 13
     //   257: monitorenter
     //   258: aload_0
-    //   259: invokespecial 241	com/tencent/wcdb/database/SQLiteConnectionPool:throwIfClosedLocked	()V
+    //   259: invokespecial 240	com/tencent/wcdb/database/SQLiteConnectionPool:throwIfClosedLocked	()V
     //   262: aload 15
-    //   264: getfield 138	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mAssignedConnection	Lcom/tencent/wcdb/database/SQLiteConnection;
+    //   264: getfield 137	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mAssignedConnection	Lcom/tencent/wcdb/database/SQLiteConnection;
     //   267: astore 12
     //   269: aload 15
-    //   271: getfield 142	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mException	Ljava/lang/RuntimeException;
+    //   271: getfield 141	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mException	Ljava/lang/RuntimeException;
     //   274: astore 14
     //   276: aload 12
     //   278: ifnonnull +8 -> 286
@@ -749,7 +749,7 @@ public final class SQLiteConnectionPool
     //   283: ifnull +125 -> 408
     //   286: aload_0
     //   287: aload 15
-    //   289: invokespecial 570	com/tencent/wcdb/database/SQLiteConnectionPool:recycleConnectionWaiterLocked	(Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;)V
+    //   289: invokespecial 569	com/tencent/wcdb/database/SQLiteConnectionPool:recycleConnectionWaiterLocked	(Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;)V
     //   292: aload 12
     //   294: ifnull +93 -> 387
     //   297: aload 13
@@ -758,13 +758,13 @@ public final class SQLiteConnectionPool
     //   301: ifnull +8 -> 309
     //   304: aload_3
     //   305: aconst_null
-    //   306: invokevirtual 555	com/tencent/wcdb/support/CancellationSignal:setOnCancelListener	(Lcom/tencent/wcdb/support/CancellationSignal$OnCancelListener;)V
+    //   306: invokevirtual 554	com/tencent/wcdb/support/CancellationSignal:setOnCancelListener	(Lcom/tencent/wcdb/support/CancellationSignal$OnCancelListener;)V
     //   309: sipush 3067
-    //   312: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   312: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   315: aload 12
     //   317: areturn
     //   318: aload 12
-    //   320: getfield 150	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mNext	Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
+    //   320: getfield 149	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mNext	Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
     //   323: astore 14
     //   325: aload 12
     //   327: astore 13
@@ -773,20 +773,20 @@ public final class SQLiteConnectionPool
     //   333: goto -205 -> 128
     //   336: aload_0
     //   337: aload 15
-    //   339: putfield 144	com/tencent/wcdb/database/SQLiteConnectionPool:mConnectionWaiterQueue	Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
+    //   339: putfield 143	com/tencent/wcdb/database/SQLiteConnectionPool:mConnectionWaiterQueue	Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter;
     //   342: goto -180 -> 162
     //   345: astore_1
     //   346: aload 16
     //   348: monitorexit
     //   349: sipush 3067
-    //   352: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   352: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   355: aload_1
     //   356: athrow
     //   357: astore_1
     //   358: aload 12
     //   360: monitorexit
     //   361: sipush 3067
-    //   364: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   364: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   367: aload_1
     //   368: athrow
     //   369: astore_1
@@ -794,23 +794,23 @@ public final class SQLiteConnectionPool
     //   371: ifnull +8 -> 379
     //   374: aload_3
     //   375: aconst_null
-    //   376: invokevirtual 555	com/tencent/wcdb/support/CancellationSignal:setOnCancelListener	(Lcom/tencent/wcdb/support/CancellationSignal$OnCancelListener;)V
+    //   376: invokevirtual 554	com/tencent/wcdb/support/CancellationSignal:setOnCancelListener	(Lcom/tencent/wcdb/support/CancellationSignal$OnCancelListener;)V
     //   379: sipush 3067
-    //   382: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   382: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   385: aload_1
     //   386: athrow
     //   387: sipush 3067
-    //   390: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   390: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   393: aload 14
     //   395: athrow
     //   396: astore_1
     //   397: aload 13
     //   399: monitorexit
     //   400: sipush 3067
-    //   403: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   403: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   406: aload_1
     //   407: athrow
-    //   408: invokestatic 546	android/os/SystemClock:uptimeMillis	()J
+    //   408: invokestatic 545	android/os/SystemClock:uptimeMillis	()J
     //   411: lstore 10
     //   413: lload 10
     //   415: lload 8
@@ -828,21 +828,21 @@ public final class SQLiteConnectionPool
     //   436: ifnull +74 -> 510
     //   439: lload 10
     //   441: aload 15
-    //   443: getfield 432	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mStartTime	J
+    //   443: getfield 431	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionWaiter:mStartTime	J
     //   446: lsub
     //   447: lstore 10
     //   449: aload_0
     //   450: aload 12
     //   452: lload 10
     //   454: iload_2
-    //   455: invokespecial 572	com/tencent/wcdb/database/SQLiteConnectionPool:logConnectionPoolBusy	(Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionPoolBusyInfo;JI)V
+    //   455: invokespecial 571	com/tencent/wcdb/database/SQLiteConnectionPool:logConnectionPoolBusy	(Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionPoolBusyInfo;JI)V
     //   458: aload_0
-    //   459: getfield 117	com/tencent/wcdb/database/SQLiteConnectionPool:mDB	Ljava/lang/ref/WeakReference;
-    //   462: invokevirtual 574	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   465: checkcast 576	com/tencent/wcdb/database/SQLiteDatabase
+    //   459: getfield 116	com/tencent/wcdb/database/SQLiteConnectionPool:mDB	Ljava/lang/ref/WeakReference;
+    //   462: invokevirtual 573	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   465: checkcast 575	com/tencent/wcdb/database/SQLiteDatabase
     //   468: astore 13
     //   470: aload_0
-    //   471: getfield 578	com/tencent/wcdb/database/SQLiteConnectionPool:mTraceCallback	Lcom/tencent/wcdb/database/SQLiteTrace;
+    //   471: getfield 577	com/tencent/wcdb/database/SQLiteConnectionPool:mTraceCallback	Lcom/tencent/wcdb/database/SQLiteTrace;
     //   474: astore 14
     //   476: aload 13
     //   478: ifnull +32 -> 510
@@ -854,17 +854,17 @@ public final class SQLiteConnectionPool
     //   491: lload 10
     //   493: iload 5
     //   495: aload 12
-    //   497: getfield 326	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionPoolBusyInfo:activeSql	Ljava/util/ArrayList;
+    //   497: getfield 325	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionPoolBusyInfo:activeSql	Ljava/util/ArrayList;
     //   500: aload 12
-    //   502: getfield 316	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionPoolBusyInfo:activeTransactions	Ljava/util/ArrayList;
-    //   505: invokeinterface 584 8 0
+    //   502: getfield 315	com/tencent/wcdb/database/SQLiteConnectionPool$ConnectionPoolBusyInfo:activeTransactions	Ljava/util/ArrayList;
+    //   505: invokeinterface 583 8 0
     //   510: goto -302 -> 208
     //   513: aload_0
-    //   514: invokespecial 586	com/tencent/wcdb/database/SQLiteConnectionPool:gatherConnectionPoolBusyInfoLocked	()Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionPoolBusyInfo;
+    //   514: invokespecial 585	com/tencent/wcdb/database/SQLiteConnectionPool:gatherConnectionPoolBusyInfoLocked	()Lcom/tencent/wcdb/database/SQLiteConnectionPool$ConnectionPoolBusyInfo;
     //   517: astore 12
-    //   519: ldc2_w 29
+    //   519: ldc2_w 28
     //   522: lstore 6
-    //   524: ldc2_w 29
+    //   524: ldc2_w 28
     //   527: lload 10
     //   529: ladd
     //   530: lstore 8
@@ -896,21 +896,18 @@ public final class SQLiteConnectionPool
     //   162	172	345	finally
     //   318	325	345	finally
     //   336	342	345	finally
-    //   346	349	345	finally
     //   229	236	357	finally
-    //   358	361	357	finally
     //   197	208	369	finally
     //   208	229	369	finally
     //   236	258	369	finally
-    //   361	369	369	finally
-    //   400	408	369	finally
+    //   358	369	369	finally
+    //   397	408	369	finally
     //   439	476	369	finally
     //   486	510	369	finally
     //   258	276	396	finally
     //   286	292	396	finally
     //   297	300	396	finally
     //   387	396	396	finally
-    //   397	400	396	finally
     //   408	413	396	finally
     //   431	434	396	finally
     //   513	519	396	finally
@@ -1164,7 +1161,7 @@ public final class SQLiteConnectionPool
     while (((Iterator)localObject3).hasNext())
     {
       localObject4 = (Map.Entry)((Iterator)localObject3).next();
-      localObject1.put(((SQLiteConnection)((Map.Entry)localObject4).getKey()).dumpJSON(paramBoolean).put("status", ((AcquiredConnectionStatus)((Map.Entry)localObject4).getValue()).toString()));
+      localObject1.put(((SQLiteConnection)((Map.Entry)localObject4).getKey()).dumpJSON(paramBoolean).put("status", ((SQLiteConnectionPool.AcquiredConnectionStatus)((Map.Entry)localObject4).getValue()).toString()));
     }
     for (ConnectionWaiter localConnectionWaiter = this.mConnectionWaiterQueue; localConnectionWaiter != null; localConnectionWaiter = localConnectionWaiter.mNext)
     {
@@ -1313,10 +1310,10 @@ public final class SQLiteConnectionPool
   public final void releaseConnection(SQLiteConnection paramSQLiteConnection)
   {
     AppMethodBeat.i(3054);
-    AcquiredConnectionStatus localAcquiredConnectionStatus;
+    SQLiteConnectionPool.AcquiredConnectionStatus localAcquiredConnectionStatus;
     synchronized (this.mLock)
     {
-      localAcquiredConnectionStatus = (AcquiredConnectionStatus)this.mAcquiredConnections.remove(paramSQLiteConnection);
+      localAcquiredConnectionStatus = (SQLiteConnectionPool.AcquiredConnectionStatus)this.mAcquiredConnections.remove(paramSQLiteConnection);
       if (localAcquiredConnectionStatus == null)
       {
         paramSQLiteConnection = new IllegalStateException("Cannot perform this operation because the specified connection was not acquired from this pool or has already been released.");
@@ -1451,21 +1448,6 @@ public final class SQLiteConnectionPool
     AppMethodBeat.o(3081);
   }
   
-  static enum AcquiredConnectionStatus
-  {
-    static
-    {
-      AppMethodBeat.i(3043);
-      NORMAL = new AcquiredConnectionStatus("NORMAL", 0);
-      RECONFIGURE = new AcquiredConnectionStatus("RECONFIGURE", 1);
-      DISCARD = new AcquiredConnectionStatus("DISCARD", 2);
-      $VALUES = new AcquiredConnectionStatus[] { NORMAL, RECONFIGURE, DISCARD };
-      AppMethodBeat.o(3043);
-    }
-    
-    private AcquiredConnectionStatus() {}
-  }
-  
   static class ConnectionPoolBusyInfo
   {
     int activeConnections;
@@ -1502,7 +1484,7 @@ public final class SQLiteConnectionPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.wcdb.database.SQLiteConnectionPool
  * JD-Core Version:    0.7.0.1
  */

@@ -7,29 +7,31 @@ public final class a
   extends f<String>
 {
   public String contentType;
-  private f.a ibT;
+  private f.a kQz;
   
   private a(String paramString1, String paramString2, f.a<String> parama)
   {
     super(paramString1);
     this.contentType = paramString2;
-    this.ibT = parama;
+    this.kQz = parama;
   }
   
-  public static a az(String paramString1, String paramString2)
+  public static a aC(String paramString1, String paramString2)
   {
     new a(paramString1, paramString2, new f.a() {});
   }
   
-  public final com.tencent.mm.loader.h.b.a aKi()
+  public final com.tencent.mm.loader.h.b.a aSj()
   {
-    return this.ibT.aKj();
+    f.a locala = this.kQz;
+    aSr();
+    return locala.aSk();
   }
   
   public final void b(OutputStream paramOutputStream)
   {
-    c localc = c.hYJ;
-    c.a((String)this.data, paramOutputStream);
+    c localc = c.kNn;
+    c.a((String)aSr(), paramOutputStream);
   }
 }
 

@@ -3,7 +3,6 @@ package com.tencent.mm.plugin.brandservice.ui.timeline;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
@@ -11,7 +10,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.webkit.JavascriptInterface;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import com.tencent.magicbrush.aj;
+import androidx.fragment.app.FragmentActivity;
+import com.tencent.magicbrush.al;
 import com.tencent.magicbrush.f;
 import com.tencent.magicbrush.ui.MagicBrushView;
 import com.tencent.magicbrush.ui.MagicBrushView.h;
@@ -21,15 +21,17 @@ import com.tencent.mm.appbrand.v8.IJSRuntime;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.plugin.appbrand.m.h;
 import com.tencent.mm.plugin.appbrand.m.x;
+import com.tencent.mm.plugin.brandservice.d.e;
+import com.tencent.mm.plugin.brandservice.d.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.r;
 import java.util.HashMap;
-import kotlin.g.b.q;
+import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTestCanvasUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "getLayoutId", "", "onClick", "", "view", "Landroid/view/View;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "JsEngine", "plugin-brandservice_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTestCanvasUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "getLayoutId", "", "onClick", "", "view", "Landroid/view/View;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "JsEngine", "plugin-brandservice_release"})
 public final class BizTestCanvasUI
   extends MMActivity
 {
@@ -38,16 +40,16 @@ public final class BizTestCanvasUI
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(195167);
+    AppMethodBeat.i(258022);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(195167);
+    AppMethodBeat.o(258022);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(195166);
+    AppMethodBeat.i(258021);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -58,36 +60,36 @@ public final class BizTestCanvasUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(195166);
+    AppMethodBeat.o(258021);
     return localView1;
   }
   
   public final int getLayoutId()
   {
-    return 2131493249;
+    return d.f.stG;
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(195165);
-    kotlin.g.b.p.h(paramView, "view");
-    AppMethodBeat.o(195165);
+    AppMethodBeat.i(258020);
+    p.k(paramView, "view");
+    AppMethodBeat.o(258020);
   }
   
   public final void onCreate(final Bundle paramBundle)
   {
-    AppMethodBeat.i(195164);
+    AppMethodBeat.i(258019);
     super.onCreate(paramBundle);
     setMMTitle("调试Canvas");
     paramBundle = new a();
     paramBundle.setJsExceptionHandler((h)new b("TestCanvas", this));
     paramBundle.addJavascriptInterface(new c("TestCanvas", this), "console");
-    Object localObject1 = (FrameLayout)findViewById(2131299174);
+    Object localObject1 = (FrameLayout)findViewById(d.e.container);
     Object localObject2 = getContext();
-    kotlin.g.b.p.g(localObject2, "context");
-    localObject2 = new MagicBrushView((Context)localObject2, MagicBrushView.h.cPd);
-    com.tencent.magicbrush.e locale = paramBundle.pqH;
-    locale.Rc();
+    p.j(localObject2, "context");
+    localObject2 = new MagicBrushView((Context)localObject2, MagicBrushView.h.cPU);
+    com.tencent.magicbrush.e locale = paramBundle.szG;
+    locale.UI();
     ((MagicBrushView)localObject2).setMagicBrush(locale);
     Log.i(this.TAG, "createCanvasView " + ((MagicBrushView)localObject2).getVirtualElementId());
     ((MagicBrushView)localObject2).setOpaque(false);
@@ -95,14 +97,14 @@ public final class BizTestCanvasUI
     ((MagicBrushView)localObject2).setClipToPadding(false);
     ((MagicBrushView)localObject2).setEnableTouchEvent(true);
     ((FrameLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
-    localObject1 = new o(b.aKJ() + "jsengine/test.js");
-    if (((o)localObject1).exists()) {
-      paramBundle.evaluateJavascript(com.tencent.mm.vfs.p.an((o)localObject1), null);
+    localObject1 = new com.tencent.mm.vfs.q(b.aSL() + "jsengine/test.js");
+    if (((com.tencent.mm.vfs.q)localObject1).ifE()) {
+      paramBundle.evaluateJavascript(r.ak((com.tencent.mm.vfs.q)localObject1), null);
     }
     for (;;)
     {
       setBackBtn((MenuItem.OnMenuItemClickListener)new d(this, paramBundle));
-      AppMethodBeat.o(195164);
+      AppMethodBeat.o(258019);
       return;
       Log.e(this.TAG, "can not found ".concat(String.valueOf(localObject1)));
     }
@@ -114,37 +116,37 @@ public final class BizTestCanvasUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTestCanvasUI$JsEngine;", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandNodeJSBasedJsEngine;", "()V", "magicBrush", "Lcom/tencent/magicbrush/MagicBrush;", "getMagicBrush", "()Lcom/tencent/magicbrush/MagicBrush;", "plugin-brandservice_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTestCanvasUI$JsEngine;", "Lcom/tencent/mm/plugin/appbrand/jsruntime/AppBrandNodeJSBasedJsEngine;", "()V", "magicBrush", "Lcom/tencent/magicbrush/MagicBrush;", "getMagicBrush", "()Lcom/tencent/magicbrush/MagicBrush;", "plugin-brandservice_release"})
   public static final class a
     extends x
   {
-    final com.tencent.magicbrush.e pqH;
+    final com.tencent.magicbrush.e szG;
     
     public a()
     {
-      AppMethodBeat.i(195158);
+      AppMethodBeat.i(266829);
       Object localObject = new f();
       ((com.tencent.magicbrush.g)localObject).context = MMApplicationContext.getContext();
-      ((f)localObject).ae(com.tencent.mm.plugin.appbrand.ac.g.bZk());
-      ((com.tencent.magicbrush.g)localObject).cLK = ((kotlin.g.a.a)new a(this));
-      ((com.tencent.magicbrush.g)localObject).cLJ = ((com.tencent.magicbrush.handler.a)new b(this));
-      ((f)localObject).b(a.b.cOC);
-      String str = b.aKJ();
-      kotlin.g.b.p.g(str, "CConstants.DATAROOT_SDCARD_PATH()");
-      ((f)localObject).dY(str);
-      ((f)localObject).ct(false);
-      localObject = ((f)localObject).Rm();
+      ((f)localObject).ad(com.tencent.mm.plugin.appbrand.ac.g.clS());
+      ((com.tencent.magicbrush.g)localObject).cMv = ((kotlin.g.a.a)new a(this));
+      ((com.tencent.magicbrush.g)localObject).cMu = ((com.tencent.magicbrush.handler.a)new b(this));
+      ((f)localObject).b(a.b.cPr);
+      String str = b.aSL();
+      p.j(str, "CConstants.DATAROOT_SDCARD_PATH()");
+      ((f)localObject).ez(str);
+      ((f)localObject).cH(false);
+      localObject = ((f)localObject).UW();
       if (localObject == null) {
-        kotlin.g.b.p.hyc();
+        p.iCn();
       }
-      this.pqH = ((com.tencent.magicbrush.e)localObject);
-      AppMethodBeat.o(195158);
+      this.szG = ((com.tencent.magicbrush.e)localObject);
+      AppMethodBeat.o(266829);
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/magicbrush/V8RawPointer;", "invoke", "com/tencent/mm/plugin/brandservice/ui/timeline/BizTestCanvasUI$JsEngine$magicBrush$1$1"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/magicbrush/V8RawPointer;", "invoke", "com/tencent/mm/plugin/brandservice/ui/timeline/BizTestCanvasUI$JsEngine$magicBrush$1$1"})
     static final class a
-      extends q
-      implements kotlin.g.a.a<aj>
+      extends kotlin.g.b.q
+      implements kotlin.g.a.a<al>
     {
       a(BizTestCanvasUI.a parama)
       {
@@ -152,70 +154,70 @@ public final class BizTestCanvasUI
       }
     }
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/brandservice/ui/timeline/BizTestCanvasUI$JsEngine$magicBrush$1$2", "Lcom/tencent/magicbrush/handler/IJsThreadHandler;", "doInnerLoopTask", "", "getExecutingTaskNameForDebug", "", "isJsThreadCurrent", "post", "", "p0", "Ljava/lang/Runnable;", "p1", "resumeLoopTasks", "plugin-brandservice_release"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/brandservice/ui/timeline/BizTestCanvasUI$JsEngine$magicBrush$1$2", "Lcom/tencent/magicbrush/handler/IJsThreadHandler;", "doInnerLoopTask", "", "getExecutingTaskNameForDebug", "", "isJsThreadCurrent", "post", "", "p0", "Ljava/lang/Runnable;", "p1", "resumeLoopTasks", "plugin-brandservice_release"})
     public static final class b
       implements com.tencent.magicbrush.handler.a
     {
       b(BizTestCanvasUI.a parama) {}
       
-      public final boolean LO()
+      public final boolean OF()
       {
-        AppMethodBeat.i(195155);
-        IJSRuntime localIJSRuntime = this.pqI.bMz();
-        kotlin.g.b.p.g(localIJSRuntime, "this@JsEngine.jsRuntime");
-        boolean bool = localIJSRuntime.Xw();
-        AppMethodBeat.o(195155);
+        AppMethodBeat.i(263881);
+        IJSRuntime localIJSRuntime = this.szH.bYQ();
+        p.j(localIJSRuntime, "this@JsEngine.jsRuntime");
+        boolean bool = localIJSRuntime.abY();
+        AppMethodBeat.o(263881);
         return bool;
       }
       
-      public final String LP()
+      public final String OG()
       {
-        AppMethodBeat.i(195153);
-        String str = this.pqI.LP();
-        AppMethodBeat.o(195153);
+        AppMethodBeat.i(263879);
+        String str = this.szH.OG();
+        AppMethodBeat.o(263879);
         return str;
       }
       
       public final void a(Runnable paramRunnable, boolean paramBoolean)
       {
-        AppMethodBeat.i(195154);
-        kotlin.g.b.p.h(paramRunnable, "p0");
-        this.pqI.a(paramRunnable, paramBoolean);
-        AppMethodBeat.o(195154);
+        AppMethodBeat.i(263880);
+        p.k(paramRunnable, "p0");
+        this.szH.a(paramRunnable, paramBoolean);
+        AppMethodBeat.o(263880);
       }
       
       public final boolean doInnerLoopTask()
       {
-        AppMethodBeat.i(195157);
-        boolean bool = this.pqI.doInnerLoopTask();
-        AppMethodBeat.o(195157);
+        AppMethodBeat.i(263883);
+        boolean bool = this.szH.doInnerLoopTask();
+        AppMethodBeat.o(263883);
         return bool;
       }
       
       public final void resumeLoopTasks()
       {
-        AppMethodBeat.i(195156);
-        this.pqI.resumeLoopTasks();
-        AppMethodBeat.o(195156);
+        AppMethodBeat.i(263882);
+        this.szH.resumeLoopTasks();
+        AppMethodBeat.o(263882);
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "message", "", "kotlin.jvm.PlatformType", "stackTrace", "handleException", "com/tencent/mm/plugin/brandservice/ui/timeline/BizTestCanvasUI$onCreate$jsEngine$1$1"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "message", "", "kotlin.jvm.PlatformType", "stackTrace", "handleException", "com/tencent/mm/plugin/brandservice/ui/timeline/BizTestCanvasUI$onCreate$jsEngine$1$1"})
   static final class b
     implements h
   {
     b(String paramString, BizTestCanvasUI paramBizTestCanvasUI) {}
     
-    public final void u(String paramString1, String paramString2)
+    public final void A(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(195159);
-      Log.e(BizTestCanvasUI.a(jdField_this), "JsException[" + this.pqJ + "]:" + paramString1 + '\n' + paramString2);
-      AppMethodBeat.o(195159);
+      AppMethodBeat.i(257268);
+      Log.e(BizTestCanvasUI.a(jdField_this), "JsException[" + this.szI + "]:" + paramString1 + '\n' + paramString2);
+      AppMethodBeat.o(257268);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/brandservice/ui/timeline/BizTestCanvasUI$onCreate$jsEngine$1$2", "", "error", "", "objects", "", "([Ljava/lang/Object;)V", "info", "log", "plugin-brandservice_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/brandservice/ui/timeline/BizTestCanvasUI$onCreate$jsEngine$1$2", "", "error", "", "objects", "", "([Ljava/lang/Object;)V", "info", "log", "plugin-brandservice_release"})
   public static final class c
   {
     c(String paramString, BizTestCanvasUI paramBizTestCanvasUI) {}
@@ -223,32 +225,32 @@ public final class BizTestCanvasUI
     @JavascriptInterface
     public final void error(Object... paramVarArgs)
     {
-      AppMethodBeat.i(195162);
-      kotlin.g.b.p.h(paramVarArgs, "objects");
-      Log.e(BizTestCanvasUI.a(jdField_this), "JsError[" + this.pqJ + "]:" + kotlin.a.e.a(paramVarArgs, (CharSequence)",\n", null, null, 0, null, null, 62));
-      AppMethodBeat.o(195162);
+      AppMethodBeat.i(266058);
+      p.k(paramVarArgs, "objects");
+      Log.e(BizTestCanvasUI.a(jdField_this), "JsError[" + this.szI + "]:" + kotlin.a.e.a(paramVarArgs, (CharSequence)",\n", null, null, 0, null, null, 62));
+      AppMethodBeat.o(266058);
     }
     
     @JavascriptInterface
     public final void info(Object... paramVarArgs)
     {
-      AppMethodBeat.i(195161);
-      kotlin.g.b.p.h(paramVarArgs, "objects");
-      Log.i(BizTestCanvasUI.a(jdField_this), "JsInfo[" + this.pqJ + "]:" + kotlin.a.e.a(paramVarArgs, (CharSequence)",\n", null, null, 0, null, null, 62));
-      AppMethodBeat.o(195161);
+      AppMethodBeat.i(266057);
+      p.k(paramVarArgs, "objects");
+      Log.i(BizTestCanvasUI.a(jdField_this), "JsInfo[" + this.szI + "]:" + kotlin.a.e.a(paramVarArgs, (CharSequence)",\n", null, null, 0, null, null, 62));
+      AppMethodBeat.o(266057);
     }
     
     @JavascriptInterface
     public final void log(Object... paramVarArgs)
     {
-      AppMethodBeat.i(195160);
-      kotlin.g.b.p.h(paramVarArgs, "objects");
-      Log.d(BizTestCanvasUI.a(jdField_this), "JsLog[" + this.pqJ + "]:" + kotlin.a.e.a(paramVarArgs, (CharSequence)",\n", null, null, 0, null, null, 62));
-      AppMethodBeat.o(195160);
+      AppMethodBeat.i(266056);
+      p.k(paramVarArgs, "objects");
+      Log.d(BizTestCanvasUI.a(jdField_this), "JsLog[" + this.szI + "]:" + kotlin.a.e.a(paramVarArgs, (CharSequence)",\n", null, null, 0, null, null, 62));
+      AppMethodBeat.o(266056);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class d
     implements MenuItem.OnMenuItemClickListener
   {
@@ -256,17 +258,17 @@ public final class BizTestCanvasUI
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(195163);
+      AppMethodBeat.i(257262);
       paramBundle.destroy();
-      this.pqK.finish();
-      AppMethodBeat.o(195163);
+      this.szJ.finish();
+      AppMethodBeat.o(257262);
       return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.BizTestCanvasUI
  * JD-Core Version:    0.7.0.1
  */

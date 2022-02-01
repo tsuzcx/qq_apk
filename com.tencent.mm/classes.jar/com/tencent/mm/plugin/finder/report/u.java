@@ -1,119 +1,94 @@
 package com.tencent.mm.plugin.finder.report;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.event.base.b;
-import com.tencent.mm.plugin.finder.event.base.c;
-import com.tencent.mm.plugin.finder.event.base.f;
-import com.tencent.mm.plugin.finder.utils.y;
+import com.tencent.mm.f.b.a.ex;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.finder.storage.data.k;
+import com.tencent.mm.plugin.finder.storage.data.k.a;
+import com.tencent.mm.plugin.report.a;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Collection;
 import kotlin.g.b.p;
-import kotlin.t;
+import kotlin.l;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/report/FinderTwoFeedFlowEventSubscriber;", "Lcom/tencent/mm/plugin/finder/event/base/FinderFeedFlowEventSubscriber;", "eventDispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "(Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;)V", "TAG", "", "createEvent", "Lcom/tencent/mm/plugin/finder/event/base/TwoFeedFlowScrollEvent;", "newState", "", "handleEvent", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/report/FinderSnsPostReporter;", "", "()V", "SCENE_ENTRANCE_CLICK", "", "SCENE_ENTRANCE_EXPOSE", "SCENE_NO_ACCOUNT_EXIT", "SCENE_NO_ACCOUNT_OK", "SCENE_NO_POST_EXIT", "SCENE_NO_POST_OK", "SCENE_SELECT_EXIT", "SCENE_SELECT_FEED", "SCENE_SNS_POST_CANCEL", "SCENE_SNS_POST_SUCCESS", "reportSessionID", "", "getReportSessionID", "()Ljava/lang/String;", "setReportSessionID", "(Ljava/lang/String;)V", "report20747", "", "sessionID", "scene", "wording", "haveFinderAccount", "", "havePostFinder", "feedId", "", "shootEntranceEndType", "entranceExposeMaxTimes", "entranceExposedTimes", "snsId", "timeStamp", "exposeType", "plugin-finder_release"})
 public final class u
-  extends f
 {
-  private final String TAG = "Finder.FinderTwoFeedFlowEventSubscriber";
+  private static String zXL;
+  public static final u zXM;
   
-  public u(c paramc)
+  static
   {
-    super(paramc);
+    AppMethodBeat.i(282141);
+    zXM = new u();
+    AppMethodBeat.o(282141);
   }
   
-  public final b g(RecyclerView paramRecyclerView, int paramInt)
+  public static void a(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, long paramLong3, int paramInt5)
   {
-    int j = 0;
-    AppMethodBeat.i(250804);
-    p.h(paramRecyclerView, "recyclerView");
-    Object localObject1 = super.g(paramRecyclerView, paramInt);
-    if (localObject1 == null)
-    {
-      paramRecyclerView = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.event.base.TwoFeedFlowScrollEvent");
-      AppMethodBeat.o(250804);
-      throw paramRecyclerView;
+    AppMethodBeat.i(282140);
+    p.k(paramString1, "sessionID");
+    p.k(paramString2, "wording");
+    if (paramInt1 == 2) {
+      zXL = paramString1;
     }
-    localObject1 = (com.tencent.mm.plugin.finder.event.base.l)localObject1;
-    Object localObject2 = paramRecyclerView.getLayoutManager();
-    if (localObject2 == null)
+    ex localex = new ex();
+    localex.to(paramString1);
+    localex.ms(paramInt1);
+    localex.mt(paramLong3);
+    localex.mu(paramInt2);
+    paramString1 = n.zWF;
+    localex.tq(n.Mp(paramLong2));
+    paramString1 = n.zWF;
+    localex.tp(n.Mp(paramLong1));
+    paramString1 = z.bdh();
+    localex.mx(paramInt3);
+    localex.my(paramInt4);
+    if (Util.isNullOrNil(paramString1))
     {
-      paramRecyclerView = new t("null cannot be cast to non-null type android.support.v7.widget.StaggeredGridLayoutManager");
-      AppMethodBeat.o(250804);
-      throw paramRecyclerView;
-    }
-    Object localObject3 = (StaggeredGridLayoutManager)localObject2;
-    localObject2 = ((StaggeredGridLayoutManager)localObject3).n(null);
-    localObject3 = ((StaggeredGridLayoutManager)localObject3).o(null);
-    int i;
-    if (localObject2 != null)
-    {
-      paramInt = localObject2[0];
-      if (localObject2 == null) {
-        break label295;
+      paramLong1 = 0L;
+      localex.mv(paramLong1);
+      if (localex.akh() != 1L) {
+        break label243;
       }
-      i = localObject2[1];
-      label122:
-      ((com.tencent.mm.plugin.finder.event.base.l)localObject1).tIy = Math.min(paramInt, i);
-      if (localObject3 == null) {
-        break label300;
+      k.a locala = k.Anu;
+      p.j(paramString1, "username");
+      if (((Collection)locala.ed(paramString1, 1)).isEmpty()) {
+        break label238;
       }
-      paramInt = localObject3[0];
-      label142:
-      i = j;
-      if (localObject3 != null) {
-        i = localObject3[1];
-      }
-      ((com.tencent.mm.plugin.finder.event.base.l)localObject1).tIA = Math.max(paramInt, i);
-      localObject2 = y.vXH;
-      ((com.tencent.mm.plugin.finder.event.base.l)localObject1).tII = y.a(((com.tencent.mm.plugin.finder.event.base.l)localObject1).tIy, ((com.tencent.mm.plugin.finder.event.base.l)localObject1).tIA, paramRecyclerView);
-      if ((this.ptb != ((com.tencent.mm.plugin.finder.event.base.l)localObject1).tIy) || (this.ptc != ((com.tencent.mm.plugin.finder.event.base.l)localObject1).tIA))
-      {
-        if ((this.ptb != 2147483647) && (this.ptc != 2147483647)) {
-          break label305;
-        }
-        i = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).tIy;
-        paramInt = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).tIA;
+      paramInt1 = 1;
+      label177:
+      if (paramInt1 == 0) {
+        break label243;
       }
     }
-    for (;;)
+    label238:
+    label243:
+    for (paramLong1 = 1L;; paramLong1 = 0L)
     {
-      localObject2 = y.vXH;
-      ((com.tencent.mm.plugin.finder.event.base.l)localObject1).tIH = y.a(i, paramInt, paramRecyclerView);
-      this.ptb = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).tIy;
-      this.ptc = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).tIA;
-      paramRecyclerView = (b)localObject1;
-      AppMethodBeat.o(250804);
-      return paramRecyclerView;
-      paramInt = 0;
+      localex.mw(paramLong1);
+      localex.tr(paramString2);
+      localex.mz(paramInt5);
+      localex.bpa();
+      paramString1 = n.zWF;
+      n.a((a)localex);
+      AppMethodBeat.o(282140);
+      return;
+      paramLong1 = 1L;
       break;
-      label295:
-      i = 0;
-      break label122;
-      label300:
-      paramInt = 0;
-      break label142;
-      label305:
-      if (((com.tencent.mm.plugin.finder.event.base.l)localObject1).tIy < this.ptb) {}
-      for (paramInt = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).tIy;; paramInt = this.ptb)
-      {
-        if (((com.tencent.mm.plugin.finder.event.base.l)localObject1).tIA <= this.ptc) {
-          break label358;
-        }
-        j = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).tIA;
-        i = paramInt;
-        paramInt = j;
-        break;
-      }
-      label358:
-      j = this.ptc;
-      i = paramInt;
-      paramInt = j;
+      paramInt1 = 0;
+      break label177;
     }
+  }
+  
+  public static String dQb()
+  {
+    return zXL;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.report.u
  * JD-Core Version:    0.7.0.1
  */

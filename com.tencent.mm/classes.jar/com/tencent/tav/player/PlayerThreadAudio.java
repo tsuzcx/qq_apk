@@ -4,8 +4,8 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Message;
-import android.support.v4.e.o;
 import android.text.TextUtils;
+import androidx.b.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tav.core.AudioCompositionDecoderTrack;
 import com.tencent.tav.coremedia.CMSampleBuffer;
@@ -33,7 +33,7 @@ public class PlayerThreadAudio
   
   public PlayerThreadAudio(AudioCompositionDecoderTrack paramAudioCompositionDecoderTrack, Handler paramHandler1, Handler paramHandler2)
   {
-    AppMethodBeat.i(218675);
+    AppMethodBeat.i(193180);
     this.currentPlayingState = new CMSampleState();
     this.lastSyncMessgeId = -1L;
     this.mStatus = 1;
@@ -43,55 +43,55 @@ public class PlayerThreadAudio
     this.mMainHandler = paramHandler1;
     this.mVideoHandler = paramHandler2;
     initThread();
-    AppMethodBeat.o(218675);
+    AppMethodBeat.o(193180);
   }
   
   private void actionPrepare()
   {
-    AppMethodBeat.i(218686);
+    AppMethodBeat.i(193232);
     if (this.audioDecoderTrack != null)
     {
       updateStatus(2);
       releaseAudioTrack();
     }
-    AppMethodBeat.o(218686);
+    AppMethodBeat.o(193232);
   }
   
   private String catLog(int paramInt)
   {
-    AppMethodBeat.i(218697);
-    String str = (String)PlayerThread.map.get(paramInt, null);
-    AppMethodBeat.o(218697);
+    AppMethodBeat.i(193266);
+    String str = (String)PlayerThread.map.b(paramInt, null);
+    AppMethodBeat.o(193266);
     return str;
   }
   
   private void initThread()
   {
-    AppMethodBeat.i(218677);
+    AppMethodBeat.i(193185);
     this.mThread = new HandlerThread("PlayerAudioThread");
     this.mThread.start();
     this.mPlayHandler = new Handler(this.mThread.getLooper(), this);
-    AppMethodBeat.o(218677);
+    AppMethodBeat.o(193185);
   }
   
   private void pause()
   {
-    AppMethodBeat.i(218689);
+    AppMethodBeat.i(193242);
     if (this.mStatus == 2)
     {
       this.mLooper = false;
       this.currentPlayingState = new CMSampleState();
       removePendingMessage(new int[] { 12 });
     }
-    AppMethodBeat.o(218689);
+    AppMethodBeat.o(193242);
   }
   
   private void play(Object paramObject)
   {
-    AppMethodBeat.i(218690);
+    AppMethodBeat.i(193245);
     if (this.mStatus == 1)
     {
-      AppMethodBeat.o(218690);
+      AppMethodBeat.o(193245);
       return;
     }
     this.mLooper = true;
@@ -102,27 +102,27 @@ public class PlayerThreadAudio
       updateStatus(2);
     }
     sendMessage(12, "play", System.currentTimeMillis());
-    AppMethodBeat.o(218690);
+    AppMethodBeat.o(193245);
   }
   
   private void playerFinish()
   {
-    AppMethodBeat.i(218691);
+    AppMethodBeat.i(193246);
     this.currentPlayingState = new CMSampleState();
     this.audioDecoderTrack.seekTo(CMTime.CMTimeZero, false, true);
     this.mLooper = false;
     updateStatus(3);
     removePendingMessage(new int[] { 12 });
-    AppMethodBeat.o(218691);
+    AppMethodBeat.o(193246);
   }
   
   private void readSample()
   {
     Object localObject4 = null;
-    AppMethodBeat.i(218694);
+    AppMethodBeat.i(193261);
     if ((this.audioDecoderTrack == null) || (!this.mLooper))
     {
-      AppMethodBeat.o(218694);
+      AppMethodBeat.o(193261);
       return;
     }
     this.audioDecoderTrack.setRate(this.rate);
@@ -156,7 +156,7 @@ public class PlayerThreadAudio
           v("PlayerThreadAudio", "processFrame() called end of stream");
           playerFinish();
           this.currentPlayingState = ((CMSampleState)localObject2);
-          AppMethodBeat.o(218694);
+          AppMethodBeat.o(193261);
           return;
         }
         catch (Exception localException3)
@@ -206,7 +206,7 @@ public class PlayerThreadAudio
         v("PlayerThreadAudio", "processFrame() called run audioData length exception");
       }
       v("PlayerThreadAudio", "processFrame() not run looper");
-      AppMethodBeat.o(218694);
+      AppMethodBeat.o(193261);
       return;
     }
     if (localObject1 != null)
@@ -220,7 +220,7 @@ public class PlayerThreadAudio
       }
       v("PlayerThreadAudio", "processFrame() called run looper " + this.currentPlayingState);
       scheduleNextWork();
-      AppMethodBeat.o(218694);
+      AppMethodBeat.o(193261);
     }
   }
   
@@ -228,7 +228,7 @@ public class PlayerThreadAudio
   private void release()
   {
     // Byte code:
-    //   0: ldc_w 335
+    //   0: ldc_w 336
     //   3: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: invokespecial 79	com/tencent/tav/player/PlayerThreadAudio:releaseAudioTrack	()V
@@ -240,14 +240,14 @@ public class PlayerThreadAudio
     //   18: iconst_1
     //   19: invokespecial 76	com/tencent/tav/player/PlayerThreadAudio:updateStatus	(I)V
     //   22: ldc 10
-    //   24: ldc_w 337
+    //   24: ldc_w 338
     //   27: aload_0
     //   28: invokestatic 208	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   31: invokevirtual 212	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   34: invokestatic 339	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   34: invokestatic 340	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   37: aload_0
     //   38: getfield 106	com/tencent/tav/player/PlayerThreadAudio:mThread	Landroid/os/HandlerThread;
-    //   41: invokevirtual 343	android/os/HandlerThread:quit	()Z
+    //   41: invokevirtual 344	android/os/HandlerThread:quit	()Z
     //   44: pop
     //   45: aload_0
     //   46: aconst_null
@@ -260,7 +260,7 @@ public class PlayerThreadAudio
     //   57: aload_0
     //   58: getfield 64	com/tencent/tav/player/PlayerThreadAudio:mVideoHandler	Landroid/os/Handler;
     //   61: sipush 850
-    //   64: invokevirtual 347	android/os/Handler:sendEmptyMessage	(I)Z
+    //   64: invokevirtual 348	android/os/Handler:sendEmptyMessage	(I)Z
     //   67: pop
     //   68: aload_1
     //   69: monitorexit
@@ -270,19 +270,19 @@ public class PlayerThreadAudio
     //   75: aload_0
     //   76: aconst_null
     //   77: putfield 64	com/tencent/tav/player/PlayerThreadAudio:mVideoHandler	Landroid/os/Handler;
-    //   80: ldc_w 335
+    //   80: ldc_w 336
     //   83: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   86: return
     //   87: astore_2
     //   88: aload_1
     //   89: monitorexit
-    //   90: ldc_w 335
+    //   90: ldc_w 336
     //   93: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   96: aload_2
     //   97: athrow
     //   98: astore_1
     //   99: ldc 10
-    //   101: ldc_w 349
+    //   101: ldc_w 350
     //   104: aload_1
     //   105: invokestatic 254	com/tencent/tav/decoder/logger/Logger:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   108: aload_0
@@ -293,7 +293,7 @@ public class PlayerThreadAudio
     //   115: aload_0
     //   116: getfield 64	com/tencent/tav/player/PlayerThreadAudio:mVideoHandler	Landroid/os/Handler;
     //   119: sipush 850
-    //   122: invokevirtual 347	android/os/Handler:sendEmptyMessage	(I)Z
+    //   122: invokevirtual 348	android/os/Handler:sendEmptyMessage	(I)Z
     //   125: pop
     //   126: aload_1
     //   127: monitorexit
@@ -303,13 +303,13 @@ public class PlayerThreadAudio
     //   133: aload_0
     //   134: aconst_null
     //   135: putfield 64	com/tencent/tav/player/PlayerThreadAudio:mVideoHandler	Landroid/os/Handler;
-    //   138: ldc_w 335
+    //   138: ldc_w 336
     //   141: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   144: return
     //   145: astore_2
     //   146: aload_1
     //   147: monitorexit
-    //   148: ldc_w 335
+    //   148: ldc_w 336
     //   151: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   154: aload_2
     //   155: athrow
@@ -322,7 +322,7 @@ public class PlayerThreadAudio
     //   164: aload_0
     //   165: getfield 64	com/tencent/tav/player/PlayerThreadAudio:mVideoHandler	Landroid/os/Handler;
     //   168: sipush 850
-    //   171: invokevirtual 347	android/os/Handler:sendEmptyMessage	(I)Z
+    //   171: invokevirtual 348	android/os/Handler:sendEmptyMessage	(I)Z
     //   174: pop
     //   175: aload_1
     //   176: monitorexit
@@ -332,14 +332,14 @@ public class PlayerThreadAudio
     //   182: aload_0
     //   183: aconst_null
     //   184: putfield 64	com/tencent/tav/player/PlayerThreadAudio:mVideoHandler	Landroid/os/Handler;
-    //   187: ldc_w 335
+    //   187: ldc_w 336
     //   190: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   193: aload_2
     //   194: athrow
     //   195: astore_2
     //   196: aload_1
     //   197: monitorexit
-    //   198: ldc_w 335
+    //   198: ldc_w 336
     //   201: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   204: aload_2
     //   205: athrow
@@ -354,35 +354,32 @@ public class PlayerThreadAudio
     // Exception table:
     //   from	to	target	type
     //   57	70	87	finally
-    //   88	90	87	finally
     //   22	50	98	java/lang/Exception
     //   115	128	145	finally
-    //   146	148	145	finally
     //   22	50	156	finally
     //   99	108	156	finally
     //   164	177	195	finally
-    //   196	198	195	finally
   }
   
   private void releaseAudioTrack()
   {
-    AppMethodBeat.i(218688);
+    AppMethodBeat.i(193240);
     if (this.mAudioTrack != null)
     {
       this.mAudioTrack.stop();
       this.mAudioTrack.release();
       this.mAudioTrack = null;
     }
-    AppMethodBeat.o(218688);
+    AppMethodBeat.o(193240);
   }
   
   private void removePendingMessage(int... paramVarArgs)
   {
-    AppMethodBeat.i(218693);
+    AppMethodBeat.i(193257);
     if ((paramVarArgs == null) || (paramVarArgs.length == 0))
     {
       this.mPlayHandler.removeCallbacksAndMessages(null);
-      AppMethodBeat.o(218693);
+      AppMethodBeat.o(193257);
       return;
     }
     int j = paramVarArgs.length;
@@ -393,19 +390,19 @@ public class PlayerThreadAudio
       this.mPlayHandler.removeMessages(k);
       i += 1;
     }
-    AppMethodBeat.o(218693);
+    AppMethodBeat.o(193257);
   }
   
   private void scheduleNextWork()
   {
-    AppMethodBeat.i(218695);
+    AppMethodBeat.i(193262);
     sendMessage(12, "schedule next", System.currentTimeMillis());
-    AppMethodBeat.o(218695);
+    AppMethodBeat.o(193262);
   }
   
   private void seekTo(Object paramObject)
   {
-    AppMethodBeat.i(218683);
+    AppMethodBeat.i(193220);
     if ((paramObject instanceof PlayerMessage)) {
       paramObject = ((PlayerMessage)paramObject).bizMsg1;
     }
@@ -419,14 +416,14 @@ public class PlayerThreadAudio
       if (this.mAudioTrack != null) {
         this.mAudioTrack.flush();
       }
-      AppMethodBeat.o(218683);
+      AppMethodBeat.o(193220);
       return;
     }
   }
   
   private void setVolume(Object paramObject)
   {
-    AppMethodBeat.i(218684);
+    AppMethodBeat.i(193224);
     float f;
     if ((paramObject instanceof PlayerMessage)) {
       f = ((Float)((PlayerMessage)paramObject).bizMsg1).floatValue();
@@ -436,7 +433,7 @@ public class PlayerThreadAudio
       if ((f >= 0.0F) && (f <= 1.0F)) {
         setVolumeToAudioTrack(f);
       }
-      AppMethodBeat.o(218684);
+      AppMethodBeat.o(193224);
       return;
       if ((paramObject instanceof Float)) {
         f = ((Float)paramObject).floatValue();
@@ -448,17 +445,17 @@ public class PlayerThreadAudio
   
   private void setVolumeToAudioTrack(float paramFloat)
   {
-    AppMethodBeat.i(218685);
+    AppMethodBeat.i(193228);
     this.volume = paramFloat;
     if (this.mAudioTrack != null) {
       this.mAudioTrack.setVolume(paramFloat);
     }
-    AppMethodBeat.o(218685);
+    AppMethodBeat.o(193228);
   }
   
   private void stop(boolean paramBoolean)
   {
-    AppMethodBeat.i(218687);
+    AppMethodBeat.i(193237);
     if (paramBoolean)
     {
       removePendingMessage(new int[] { 12 });
@@ -467,7 +464,7 @@ public class PlayerThreadAudio
     }
     updateStatus(1);
     releaseAudioTrack();
-    AppMethodBeat.o(218687);
+    AppMethodBeat.o(193237);
   }
   
   private void updateStatus(int paramInt)
@@ -477,23 +474,23 @@ public class PlayerThreadAudio
   
   private void v(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(218698);
+    AppMethodBeat.i(193267);
     Logger.v(paramString1, paramString2);
-    AppMethodBeat.o(218698);
+    AppMethodBeat.o(193267);
   }
   
   public CMTime getCurrentPlayingState()
   {
-    AppMethodBeat.i(218699);
+    AppMethodBeat.i(193268);
     CMTime localCMTime = this.currentPlayingState.getTime();
-    AppMethodBeat.o(218699);
+    AppMethodBeat.o(193268);
     return localCMTime;
   }
   
   public boolean handleMessage(Message paramMessage)
   {
     Object localObject4 = null;
-    AppMethodBeat.i(218682);
+    AppMethodBeat.i(193217);
     PlayerMessage localPlayerMessage;
     if (paramMessage.obj == null)
     {
@@ -534,14 +531,14 @@ public class PlayerThreadAudio
           }
           Logger.d("PlayerThreadAudio", "handleMessage:  SyncMessageId = " + localPlayerMessage.msgId + ", what = " + paramMessage.what);
           this.lastSyncMessgeId = localPlayerMessage.msgId;
-          AppMethodBeat.o(218682);
+          AppMethodBeat.o(193217);
         }
         if ((localPlayerMessage != null) && (!TextUtils.isEmpty(localPlayerMessage.form)) && (localPlayerMessage.form.startsWith("syncAudioStatus")))
         {
           Logger.d("PlayerThreadAudio", "handleMessage:  SyncMessageId = " + localPlayerMessage.msgId + ", what = " + paramMessage.what);
           this.lastSyncMessgeId = localPlayerMessage.msgId;
         }
-        AppMethodBeat.o(218682);
+        AppMethodBeat.o(193217);
         return true;
         localPlayerMessage = (PlayerMessage)paramMessage.obj;
         break;
@@ -568,19 +565,19 @@ public class PlayerThreadAudio
   
   public boolean isFinished()
   {
-    AppMethodBeat.i(218692);
+    AppMethodBeat.i(193251);
     if ((3 == this.mStatus) && (this.currentPlayingState.isInvalid()))
     {
-      AppMethodBeat.o(218692);
+      AppMethodBeat.o(193251);
       return true;
     }
-    AppMethodBeat.o(218692);
+    AppMethodBeat.o(193251);
     return false;
   }
   
   public void sendMessage(int paramInt, Object paramObject, String paramString, long paramLong)
   {
-    AppMethodBeat.i(218679);
+    AppMethodBeat.i(193195);
     v("PlayerThreadAudio", "sendMessage() called with: what = [" + catLog(paramInt) + "], obj = [" + paramObject + "], from = [" + paramString + "]");
     if ((this.mPlayHandler != null) && (this.mThread != null))
     {
@@ -591,22 +588,22 @@ public class PlayerThreadAudio
       }
       this.mPlayHandler.obtainMessage(paramInt, new PlayerMessage(paramObject, paramString, paramLong)).sendToTarget();
     }
-    AppMethodBeat.o(218679);
+    AppMethodBeat.o(193195);
   }
   
   public void sendMessage(int paramInt, String paramString, long paramLong)
   {
-    AppMethodBeat.i(218680);
+    AppMethodBeat.i(193199);
     v("PlayerThreadAudio", "sendMessage() called with: what = [" + catLog(paramInt) + "], from = [" + paramString + "]");
     if ((this.mPlayHandler != null) && (this.mThread != null)) {
       this.mPlayHandler.obtainMessage(paramInt, new PlayerMessage(null, paramString, paramLong)).sendToTarget();
     }
-    AppMethodBeat.o(218680);
+    AppMethodBeat.o(193199);
   }
   
   public void sendMessageDelay(int paramInt, long paramLong1, String paramString, long paramLong2)
   {
-    AppMethodBeat.i(218681);
+    AppMethodBeat.i(193206);
     v("PlayerThreadAudio", "sendMessageDelay() called with: what = [" + catLog(paramInt) + "], delay = [" + paramLong1 + "], from = [" + paramString + "]");
     if (this.mPlayHandler != null)
     {
@@ -615,14 +612,14 @@ public class PlayerThreadAudio
       localMessage.obj = new PlayerMessage(null, paramString, paramLong2);
       this.mPlayHandler.sendMessageDelayed(localMessage, paramLong1);
     }
-    AppMethodBeat.o(218681);
+    AppMethodBeat.o(193206);
   }
   
   public void setRate(float paramFloat)
   {
-    AppMethodBeat.i(218676);
+    AppMethodBeat.i(193183);
     this.rate = Math.abs(paramFloat);
-    AppMethodBeat.o(218676);
+    AppMethodBeat.o(193183);
   }
   
   public void update(AudioCompositionDecoderTrack paramAudioCompositionDecoderTrack)
@@ -633,15 +630,15 @@ public class PlayerThreadAudio
   @Deprecated
   public void updateComposition(AudioCompositionDecoderTrack paramAudioCompositionDecoderTrack)
   {
-    AppMethodBeat.i(218678);
+    AppMethodBeat.i(193188);
     sendMessage(4, "updateComposition", System.currentTimeMillis());
     sendMessage(1, paramAudioCompositionDecoderTrack, "updateComposition", System.currentTimeMillis());
-    AppMethodBeat.o(218678);
+    AppMethodBeat.o(193188);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.player.PlayerThreadAudio
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,14 @@
 package com.google.a;
 
-abstract class s<T extends x.a<T>>
+import com.google.a.c.a;
+
+public abstract interface s
 {
-  abstract x<T> an(Object paramObject);
-  
-  abstract x<T> ao(Object paramObject);
-  
-  abstract void ap(Object paramObject);
-  
-  abstract boolean f(aw paramaw);
+  public abstract <T> r<T> a(e parame, a<T> parama);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.a.s
  * JD-Core Version:    0.7.0.1
  */

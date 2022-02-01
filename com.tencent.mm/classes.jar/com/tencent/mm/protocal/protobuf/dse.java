@@ -4,83 +4,103 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class dse
-  extends dop
+  extends dyl
 {
-  public String MUJ;
+  public String TNi;
+  public String appid;
+  public int offset;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32421);
+    AppMethodBeat.i(91655);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
+        paramVarArgs.oE(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.MUJ != null) {
-        paramVarArgs.e(2, this.MUJ);
+      if (this.appid != null) {
+        paramVarArgs.f(2, this.appid);
       }
-      AppMethodBeat.o(32421);
+      if (this.TNi != null) {
+        paramVarArgs.f(3, this.TNi);
+      }
+      paramVarArgs.aY(4, this.offset);
+      AppMethodBeat.o(91655);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label378;
+        break label452;
       }
     }
-    label378:
-    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label452:
+    for (int i = g.a.a.a.oD(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.MUJ != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.MUJ);
+      paramInt = i;
+      if (this.appid != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.appid);
       }
-      AppMethodBeat.o(32421);
-      return i;
+      i = paramInt;
+      if (this.TNi != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.TNi);
+      }
+      paramInt = g.a.a.b.b.a.bM(4, this.offset);
+      AppMethodBeat.o(91655);
+      return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = dyl.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyl.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(32421);
+        AppMethodBeat.o(91655);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
         dse localdse = (dse)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32421);
+          AppMethodBeat.o(91655);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localdse.BaseRequest = ((jr)localObject1);
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            jg localjg = new jg();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localjg.parseFrom((byte[])localObject);
+            }
+            localdse.BaseRequest = localjg;
             paramInt += 1;
           }
-          AppMethodBeat.o(32421);
+          AppMethodBeat.o(91655);
+          return 0;
+        case 2: 
+          localdse.appid = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(91655);
+          return 0;
+        case 3: 
+          localdse.TNi = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(91655);
           return 0;
         }
-        localdse.MUJ = ((g.a.a.a.a)localObject1).UbS.readString();
-        AppMethodBeat.o(32421);
+        localdse.offset = ((g.a.a.a.a)localObject).abFh.AK();
+        AppMethodBeat.o(91655);
         return 0;
       }
-      AppMethodBeat.o(32421);
+      AppMethodBeat.o(91655);
       return -1;
     }
   }

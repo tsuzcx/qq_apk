@@ -1,7 +1,7 @@
 package com.github.henryye.nativeiv.api;
 
 import android.graphics.Bitmap;
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.github.henryye.nativeiv.ImageDecodeConfig;
 import com.github.henryye.nativeiv.a.c.a;
 import com.github.henryye.nativeiv.a.c.b;
@@ -13,7 +13,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface IImageDecodeService
 {
   @Keep
-  public abstract void addDecodeEventListener(b paramb);
+  public abstract void addDecodeEventListener(IImageDecodeService.b paramb);
   
   @Keep
   public abstract void addImageStreamFetcher(b paramb, boolean paramBoolean);
@@ -58,7 +58,7 @@ public abstract interface IImageDecodeService
   public abstract void releaseBitmap(Bitmap paramBitmap);
   
   @Keep
-  public abstract void removeDecodeEventListener(b paramb);
+  public abstract void removeDecodeEventListener(IImageDecodeService.b paramb);
   
   @Keep
   public abstract void removeImageStreamFetcher(b paramb, boolean paramBoolean);
@@ -84,7 +84,7 @@ public abstract interface IImageDecodeService
     
     public abstract void a(IImageDecodeService.b paramb);
     
-    public abstract void aW(int paramInt1, int paramInt2);
+    public abstract void bc(int paramInt1, int paramInt2);
     
     public abstract void destroy();
     
@@ -93,40 +93,33 @@ public abstract interface IImageDecodeService
     public abstract boolean isDestroyed();
   }
   
-  public static abstract interface b
+  public static enum b$a
   {
-    public abstract void a(String paramString, a parama, a parama1);
-    
-    public abstract void a(String paramString, Object paramObject, IImageDecodeService.c paramc, ImageDecodeConfig paramImageDecodeConfig);
-    
-    public static enum a
+    static
     {
-      static
-      {
-        AppMethodBeat.i(127358);
-        baQ = new a("OK", 0);
-        baR = new a("NOT_EXIST", 1);
-        baS = new a("PRE_DECODE_ERROR", 2);
-        baT = new a("DECODE_ERROR", 3);
-        baU = new a("UNSUPPORTED_IMG_FORMAT", 4);
-        baV = new a("HUGE_SIZE", 5);
-        baW = new a("IO_ERROR", 6);
-        baX = new a("OUT_OF_MEMORY", 7);
-        baY = new a("LEGACY_MODE", 8);
-        baZ = new a("TIME_COST_HUGE", 9);
-        bba = new a("NATIVE_DECODE_ERROR", 10);
-        bbb = new a("THROW_EXCEPTION", 11);
-        bbc = new a[] { baQ, baR, baS, baT, baU, baV, baW, baX, baY, baZ, bba, bbb };
-        AppMethodBeat.o(127358);
-      }
-      
-      private a() {}
+      AppMethodBeat.i(127358);
+      aKo = new a("OK", 0);
+      aKp = new a("NOT_EXIST", 1);
+      aKq = new a("PRE_DECODE_ERROR", 2);
+      aKr = new a("DECODE_ERROR", 3);
+      aKs = new a("UNSUPPORTED_IMG_FORMAT", 4);
+      aKt = new a("HUGE_SIZE", 5);
+      aKu = new a("IO_ERROR", 6);
+      aKv = new a("OUT_OF_MEMORY", 7);
+      aKw = new a("LEGACY_MODE", 8);
+      aKx = new a("TIME_COST_HUGE", 9);
+      aKy = new a("NATIVE_DECODE_ERROR", 10);
+      aKz = new a("THROW_EXCEPTION", 11);
+      aKA = new a[] { aKo, aKp, aKq, aKr, aKs, aKt, aKu, aKv, aKw, aKx, aKy, aKz };
+      AppMethodBeat.o(127358);
     }
+    
+    private b$a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.github.henryye.nativeiv.api.IImageDecodeService
  * JD-Core Version:    0.7.0.1
  */

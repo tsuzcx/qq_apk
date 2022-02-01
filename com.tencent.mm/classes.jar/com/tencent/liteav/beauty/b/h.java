@@ -1,10 +1,11 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
+import com.tencent.liteav.basic.opengl.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class h
-  extends com.tencent.liteav.basic.c.h
+  extends j
 {
   private int r;
   private float s;
@@ -32,7 +33,7 @@ public class h
   {
     AppMethodBeat.i(15087);
     boolean bool = super.b();
-    this.r = GLES20.glGetUniformLocation(p(), "gamma");
+    this.r = GLES20.glGetUniformLocation(q(), "gamma");
     AppMethodBeat.o(15087);
     return bool;
   }
@@ -47,7 +48,7 @@ public class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.h
  * JD-Core Version:    0.7.0.1
  */

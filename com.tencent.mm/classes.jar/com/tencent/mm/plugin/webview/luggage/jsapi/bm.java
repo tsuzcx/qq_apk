@@ -7,7 +7,7 @@ import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.luggage.w;
@@ -26,19 +26,19 @@ public class bm
   {
     AppMethodBeat.i(78635);
     Log.i("MicroMsg.JsApiShareTimeLine", "invoke");
-    final MMActivity localMMActivity = (MMActivity)((g)paramb.cta).mContext;
+    final MMActivity localMMActivity = (MMActivity)((g)paramb.crg).mContext;
     if ((localMMActivity == null) || (localMMActivity.isFinishing()))
     {
       Log.w("MicroMsg.JsApiShareTimeLine", "activity is null or finish");
       AppMethodBeat.o(78635);
       return;
     }
-    Object localObject1 = paramb.ctb.csi;
+    Object localObject1 = paramb.crh.cqn;
     String str1 = ((JSONObject)localObject1).optString("link");
     if (Util.isNullOrNil(str1))
     {
       Log.e("MicroMsg.JsApiShareTimeLine", "link is null");
-      paramb.c("invalid_params", null);
+      paramb.a("invalid_params", null);
       AppMethodBeat.o(78635);
       return;
     }
@@ -80,7 +80,7 @@ public class bm
       ((Intent)localObject2).putExtra("Ksnsupload_link", str1);
       ((Intent)localObject2).putExtra("Ksnsupload_title", str4);
       ((Intent)localObject2).putExtra("Ksnsupload_imgurl", str5);
-      if (ab.IT(str6))
+      if (ab.Qm(str6))
       {
         ((Intent)localObject2).putExtra("src_username", str6);
         ((Intent)localObject2).putExtra("src_displayname", (String)localObject1);
@@ -97,8 +97,8 @@ public class bm
         ((Intent)localObject2).putExtra("Ksnsupload_appid", str2);
       }
       ((Intent)localObject2).putExtra("ShareUrlOriginal", str1);
-      ((Intent)localObject2).putExtra("ShareUrlOpen", ((g)paramb.cta).getUrl());
-      ((Intent)localObject2).putExtra("JsAppId", ((g)paramb.cta).ITw.getAppId());
+      ((Intent)localObject2).putExtra("ShareUrlOpen", ((g)paramb.crg).getUrl());
+      ((Intent)localObject2).putExtra("JsAppId", ((g)paramb.crg).PPO.getAppId());
       ((Intent)localObject2).putExtra("need_result", true);
       Log.i("MicroMsg.JsApiShareTimeLine", "doTimeline, start activity");
       localMMActivity.mmSetOnActivityResultCallback(new MMActivity.a()
@@ -111,7 +111,7 @@ public class bm
             if (paramAnonymousInt2 != -1) {
               break label48;
             }
-            paramb.c("", null);
+            paramb.a("", null);
           }
           for (;;)
           {
@@ -119,7 +119,7 @@ public class bm
             AppMethodBeat.o(78634);
             return;
             label48:
-            paramb.c("cancel", null);
+            paramb.a("cancel", null);
           }
         }
       });
@@ -133,7 +133,7 @@ public class bm
     }
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

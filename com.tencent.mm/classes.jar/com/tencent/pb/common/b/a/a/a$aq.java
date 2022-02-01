@@ -1,46 +1,46 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.c;
-import com.google.a.a.e;
+import com.google.b.a.b;
+import com.google.b.a.c;
+import com.google.b.a.e;
 
 public final class a$aq
   extends e
 {
-  private static volatile aq[] RFj;
-  public int qrD = 0;
+  private static volatile aq[] ZgP;
+  public int tQm = 0;
   
   public a$aq()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public static aq[] hjf()
+  public static aq[] ikQ()
   {
-    if (RFj == null) {}
-    synchronized (c.cbn)
+    if (ZgP == null) {}
+    synchronized (c.ccQ)
     {
-      if (RFj == null) {
-        RFj = new aq[0];
+      if (ZgP == null) {
+        ZgP = new aq[0];
       }
-      return RFj;
+      return ZgP;
     }
   }
   
-  public final int Ig()
+  public final int JG()
   {
-    int j = super.Ig();
+    int j = super.JG();
     int i = j;
-    if (this.qrD != 0) {
-      i = j + b.bC(1, this.qrD);
+    if (this.tQm != 0) {
+      i = j + b.bN(1, this.tQm);
     }
     return i;
   }
   
   public final void a(b paramb)
   {
-    if (this.qrD != 0) {
-      paramb.bB(1, this.qrD);
+    if (this.tQm != 0) {
+      paramb.bK(1, this.tQm);
     }
     super.a(paramb);
   }

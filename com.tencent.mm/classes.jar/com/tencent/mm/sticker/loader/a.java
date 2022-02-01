@@ -2,25 +2,25 @@ package com.tencent.mm.sticker.loader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.h.a.c;
-import com.tencent.mm.protocal.protobuf.chz;
+import com.tencent.mm.protocal.protobuf.cqv;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/sticker/loader/LensIconData;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "lensInfo", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "(Lcom/tencent/mm/protocal/protobuf/LensInfo;)V", "getLensInfo", "()Lcom/tencent/mm/protocal/protobuf/LensInfo;", "isLegal", "", "uniqueValue", "", "plugin-sticker_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/sticker/loader/LensIconData;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "lensInfo", "Lcom/tencent/mm/protocal/protobuf/LensInfo;", "(Lcom/tencent/mm/protocal/protobuf/LensInfo;)V", "getLensInfo", "()Lcom/tencent/mm/protocal/protobuf/LensInfo;", "isLegal", "", "uniqueValue", "", "plugin-sticker_release"})
 public final class a
   implements c
 {
-  final chz NMJ;
+  final cqv Vat;
   
-  public a(chz paramchz)
+  public a(cqv paramcqv)
   {
     AppMethodBeat.i(105912);
-    this.NMJ = paramchz;
+    this.Vat = paramcqv;
     AppMethodBeat.o(105912);
   }
   
-  public final String auA()
+  public final String aBv()
   {
-    String str2 = this.NMJ.Lso;
+    String str2 = this.Vat.LensId;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";

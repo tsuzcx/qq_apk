@@ -1,28 +1,76 @@
 package com.tencent.mm.cn;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo.WhichApp;
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Iterator;
 
-public final class a
+public final class a<T>
+  implements b.a<T>
 {
-  public static final WeChatBrands.AppInfo.WhichApp RwA;
-  public static final List<WeChatBrands.AppInfo.WhichApp> RwB;
-  public static final WeChatBrands.AppInfo.WhichApp Rwx;
-  public static final WeChatBrands.AppInfo.WhichApp Rwy;
-  public static final WeChatBrands.AppInfo.WhichApp Rwz;
+  private final Object Van;
+  private final String mName;
+  private T mValue;
+  private HashSet<Object<T>> nSN;
   
-  static
+  private a(String paramString)
   {
-    AppMethodBeat.i(200985);
-    Rwx = new WeChatBrands.AppInfo.WhichApp("com.wechat.mm", "WeChatUSApp", 3);
-    Rwy = new WeChatBrands.AppInfo.WhichApp("com.wechatus.im", "WeChatUSApp", 3);
-    WeChatBrands.AppInfo.WhichApp localWhichApp = new WeChatBrands.AppInfo.WhichApp("com.tencent.mm", "Weixin", 0);
-    Rwz = localWhichApp;
-    RwA = localWhichApp;
-    RwB = Arrays.asList(new WeChatBrands.AppInfo.WhichApp[] { Rwz, Rwx, Rwy });
-    AppMethodBeat.o(200985);
+    AppMethodBeat.i(133213);
+    this.Van = new Object();
+    this.mName = paramString;
+    this.nSN = new HashSet();
+    AppMethodBeat.o(133213);
+  }
+  
+  a(String paramString, T paramT)
+  {
+    this(paramString);
+    this.mValue = paramT;
+  }
+  
+  public final T get()
+  {
+    return this.mValue;
+  }
+  
+  public final String name()
+  {
+    return this.mName;
+  }
+  
+  final void set(T arg1)
+  {
+    AppMethodBeat.i(133214);
+    Object localObject1 = this.mValue;
+    int i;
+    if ((??? == localObject1) || ((??? != null) && (???.equals(localObject1)))) {
+      i = 1;
+    }
+    while (i == 0)
+    {
+      this.mValue = ???;
+      synchronized (this.Van)
+      {
+        localObject1 = this.nSN.iterator();
+        if (!((Iterator)localObject1).hasNext()) {
+          break label87;
+        }
+        ((Iterator)localObject1).next();
+      }
+      i = 0;
+      continue;
+      label87:
+      AppMethodBeat.o(133214);
+      return;
+    }
+    AppMethodBeat.o(133214);
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(133215);
+    String str = "Status: " + this.mName;
+    AppMethodBeat.o(133215);
+    return str;
   }
 }
 

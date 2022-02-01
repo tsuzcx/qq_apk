@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.support.v4.content.d;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m;
@@ -14,12 +13,12 @@ import com.tencent.mm.sdk.platformtools.Log;
 public abstract class a
   extends m
 {
-  public boolean DXr;
-  private boolean DXs = true;
-  private boolean DXt = false;
-  public com.tencent.mm.plugin.sns.ad.landingpage.helper.b.a DXu;
-  private volatile boolean DXv = false;
-  public boolean DXw;
+  public boolean KkA;
+  private boolean KkB = true;
+  private boolean KkC = false;
+  public com.tencent.mm.plugin.sns.ad.landingpage.helper.d.a KkD;
+  private volatile boolean KkE = false;
+  public boolean KkF;
   private BroadcastReceiver receiver = new BroadcastReceiver()
   {
     public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
@@ -34,12 +33,12 @@ public abstract class a
       {
         if ("com.tencent.mm.adlanding.close_exposure_voice".equals(paramAnonymousIntent.getAction()))
         {
-          if (a.this.fdk().DZi.equals(paramAnonymousIntent.getStringExtra("para_id"))) {
+          if (a.this.KqB.KmB.equals(paramAnonymousIntent.getStringExtra("para_id"))) {
             break label98;
           }
           paramAnonymousContext = a.this;
-          if (paramAnonymousContext.DXw) {
-            paramAnonymousContext.fcJ();
+          if (paramAnonymousContext.KkF) {
+            paramAnonymousContext.fKr();
           }
           AppMethodBeat.o(96313);
           return;
@@ -58,16 +57,16 @@ public abstract class a
     }
   };
   
-  public a(Context paramContext, z paramz, ViewGroup paramViewGroup)
+  public a(Context paramContext, aa paramaa, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramz, paramViewGroup);
+    super(paramContext, paramaa, paramViewGroup);
     try
     {
-      this.DXu = com.tencent.mm.plugin.sns.ad.landingpage.helper.b.a.eXm();
-      paramContext = d.W(this.context);
-      paramz = new IntentFilter("com.tencent.mm.adlanding.close_exposure_voice");
-      paramz.addAction("com.tencent.mm.adlanding.video.action.PAUSE_OR_RESUME");
-      paramContext.a(this.receiver, paramz);
+      this.KkD = com.tencent.mm.plugin.sns.ad.landingpage.helper.d.a.fKN();
+      paramContext = androidx.h.a.a.V(this.context);
+      paramaa = new IntentFilter("com.tencent.mm.adlanding.close_exposure_voice");
+      paramaa.addAction("com.tencent.mm.adlanding.video.action.PAUSE_OR_RESUME");
+      paramContext.a(this.receiver, paramaa);
       Log.v("AbsVideoPlayComp", "register receiver " + this.receiver);
       return;
     }
@@ -83,9 +82,9 @@ public abstract class a
       if (i != 1) {
         break label34;
       }
-      this.DXt = true;
+      this.KkC = true;
       if (isPlaying()) {
-        cWX();
+        dmf();
       }
     }
     label34:
@@ -95,75 +94,75 @@ public abstract class a
       {
         return;
       } while (i != 2);
-      this.DXt = false;
+      this.KkC = false;
     } while (isPlaying());
-    cWY();
+    dmg();
   }
   
-  protected void cWX() {}
+  protected void dmf() {}
   
-  protected void cWY() {}
+  protected void dmg() {}
   
-  public void eWZ()
+  public void fKk()
   {
-    super.eWZ();
-    this.DXw = true;
+    super.fKk();
+    this.KkF = true;
   }
   
-  public void eXa()
+  public void fKl()
   {
-    super.eXa();
-    this.DXw = false;
+    super.fKl();
+    this.KkF = false;
   }
   
-  public void eXb()
+  public void fKm()
   {
-    super.eXb();
-    if (this.DXs)
+    super.fKm();
+    if (this.KkB)
     {
-      this.DXs = false;
-      if (!fds().DZV) {
-        fcJ();
+      this.KkB = false;
+      if (!fRp().Knq) {
+        fKr();
       }
     }
     else
     {
       return;
     }
-    fcK();
+    fKs();
   }
   
-  public void eXd()
+  public void fKo()
   {
-    super.eXd();
-    d.W(this.context).unregisterReceiver(this.receiver);
-    this.DXw = true;
+    super.fKo();
+    androidx.h.a.a.V(this.context).unregisterReceiver(this.receiver);
+    this.KkF = true;
     Log.v("AbsVideoPlayComp", "unregister receiver " + this.receiver);
   }
   
-  public void eXe()
+  public void fKp()
   {
-    super.eXe();
+    super.fKp();
   }
   
-  public void fcJ()
+  public void fKr()
   {
-    this.DXr = false;
+    this.KkA = false;
   }
   
-  public void fcK()
+  public void fKs()
   {
-    this.DXr = true;
+    this.KkA = true;
   }
   
-  public final void fcL()
+  public final void fQC()
   {
     Intent localIntent = new Intent("com.tencent.mm.adlanding.close_exposure_voice");
-    localIntent.putExtra("para_id", fdk().DZi);
-    d.W(this.context).b(localIntent);
+    localIntent.putExtra("para_id", this.KqB.KmB);
+    androidx.h.a.a.V(this.context).c(localIntent);
   }
   
-  public final int fcM()
+  public final int fQD()
   {
     if (this.context != null) {
       return this.context.hashCode();
@@ -175,7 +174,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a
  * JD-Core Version:    0.7.0.1
  */

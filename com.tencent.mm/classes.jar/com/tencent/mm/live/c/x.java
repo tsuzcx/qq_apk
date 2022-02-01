@@ -11,87 +11,86 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.b.m;
-import com.tencent.mm.live.core.core.b.d;
-import com.tencent.mm.live.core.core.b.f;
-import com.tencent.mm.ui.au;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mm.live.b.e;
+import com.tencent.mm.live.b.j;
+import com.tencent.mm.live.b.u;
+import com.tencent.mm.live.core.core.model.e;
+import com.tencent.mm.live.core.core.model.g;
+import com.tencent.mm.ui.ax;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
-import kotlin.k.j;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/plugin/LiveHostRightPanelPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "lastLikeCount", "", "liveMessageCallback", "Lkotlin/Function0;", "", "micBtnLayout", "Landroid/view/View;", "kotlin.jvm.PlatformType", "micDescTv", "Landroid/widget/TextView;", "shareBtn", "Landroid/widget/ImageView;", "shareBtnClickArea", "Landroid/widget/RelativeLayout;", "shareBtnLayout", "shareDescTv", "switchBtnLayout", "switchCameraBtn", "switchCameraBtnClickArea", "switchDescTv", "checkBtnLayout", "setupConfig", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "setupForHost", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/plugin/LiveHostRightPanelPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "lastLikeCount", "", "liveMessageCallback", "Lkotlin/Function0;", "", "micBtnLayout", "Landroid/view/View;", "kotlin.jvm.PlatformType", "micDescTv", "Landroid/widget/TextView;", "shareBtn", "Landroid/widget/ImageView;", "shareBtnClickArea", "Landroid/widget/RelativeLayout;", "shareBtnLayout", "shareDescTv", "switchBtnLayout", "switchCameraBtn", "switchCameraBtnClickArea", "switchDescTv", "checkBtnLayout", "setupConfig", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "setupForHost", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
 public final class x
   extends a
 {
-  final b hOp;
-  public final View hQA;
-  final View hQB;
-  final View hQC;
-  int hQD;
-  public final ImageView hQt;
-  public final RelativeLayout hQu;
-  public final ImageView hQv;
-  public final RelativeLayout hQw;
-  public final TextView hQx;
-  private final TextView hQy;
-  private final TextView hQz;
+  private final b kCL;
+  public final ImageView kEQ;
+  public final RelativeLayout kER;
+  public final ImageView kES;
+  public final RelativeLayout kET;
+  public final TextView kEU;
+  private final TextView kEV;
+  private final TextView kEW;
+  public final View kEX;
+  private final View kEY;
+  private final View kEZ;
+  private int kFa;
   private final kotlin.g.a.a<kotlin.x> liveMessageCallback;
   
   public x(final ViewGroup paramViewGroup, b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(208034);
-    this.hOp = paramb;
-    this.hQt = ((ImageView)paramViewGroup.findViewById(2131303535));
-    this.hQu = ((RelativeLayout)paramViewGroup.findViewById(2131303536));
-    this.hQv = ((ImageView)paramViewGroup.findViewById(2131303539));
-    this.hQw = ((RelativeLayout)paramViewGroup.findViewById(2131303540));
-    this.hQx = ((TextView)paramViewGroup.findViewById(2131303537));
-    this.hQy = ((TextView)paramViewGroup.findViewById(2131303541));
-    this.hQz = ((TextView)paramViewGroup.findViewById(2131303545));
-    this.hQA = paramViewGroup.findViewById(2131303538);
-    this.hQB = paramViewGroup.findViewById(2131303542);
-    this.hQC = paramViewGroup.findViewById(2131303546);
+    AppMethodBeat.i(189406);
+    this.kCL = paramb;
+    this.kEQ = ((ImageView)paramViewGroup.findViewById(b.e.live_right_panel_btn1));
+    this.kER = ((RelativeLayout)paramViewGroup.findViewById(b.e.live_right_panel_btn1_click_area));
+    this.kES = ((ImageView)paramViewGroup.findViewById(b.e.live_right_panel_btn2));
+    this.kET = ((RelativeLayout)paramViewGroup.findViewById(b.e.live_right_panel_btn2_click_area));
+    this.kEU = ((TextView)paramViewGroup.findViewById(b.e.live_right_panel_btn1_desc));
+    this.kEV = ((TextView)paramViewGroup.findViewById(b.e.live_right_panel_btn2_desc));
+    this.kEW = ((TextView)paramViewGroup.findViewById(b.e.live_right_panel_btn4_desc));
+    this.kEX = paramViewGroup.findViewById(b.e.live_right_panel_btn1_group);
+    this.kEY = paramViewGroup.findViewById(b.e.live_right_panel_btn2_group);
+    this.kEZ = paramViewGroup.findViewById(b.e.live_right_panel_btn4_parent);
     this.liveMessageCallback = ((kotlin.g.a.a)new a(this, paramViewGroup));
-    paramb = m.hGg;
-    m.d(name(), this.liveMessageCallback);
-    if (paramViewGroup.findViewById(2131299216) != null)
+    paramb = j.kue;
+    j.d(name(), this.liveMessageCallback);
+    if (paramViewGroup.findViewById(b.e.content_root_view) != null)
     {
       paramb = new LinearLayout.LayoutParams(-1, -1);
       if (!isLandscape()) {
-        paramb.bottomMargin = au.aD(paramViewGroup.getContext());
+        paramb.bottomMargin = ax.aB(paramViewGroup.getContext());
       }
-      paramViewGroup = paramViewGroup.findViewById(2131299216);
-      p.g(paramViewGroup, "root.findViewById<Linear…>(R.id.content_root_view)");
+      paramViewGroup = paramViewGroup.findViewById(b.e.content_root_view);
+      p.j(paramViewGroup, "root.findViewById<Linear…>(R.id.content_root_view)");
       ((LinearLayout)paramViewGroup).setLayoutParams((ViewGroup.LayoutParams)paramb);
     }
-    AppMethodBeat.o(208034);
+    AppMethodBeat.o(189406);
   }
   
   public final void statusChange(b.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(208033);
-    p.h(paramc, "status");
+    AppMethodBeat.i(189393);
+    p.k(paramc, "status");
     super.statusChange(paramc, paramBundle);
     switch (y.$EnumSwitchMapping$0[paramc.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(208033);
+      AppMethodBeat.o(189393);
       return;
-      rg(8);
-      AppMethodBeat.o(208033);
+      tU(8);
+      AppMethodBeat.o(189393);
       return;
-      rg(0);
-      this.hwr.post((Runnable)new d(this));
+      tU(0);
+      this.kiF.post((Runnable)new d(this));
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class a
     extends q
     implements kotlin.g.a.a<kotlin.x>
@@ -102,7 +101,7 @@ public final class x
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   public static final class b
     implements View.OnClickListener
   {
@@ -110,17 +109,17 @@ public final class x
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(208030);
+      AppMethodBeat.i(193554);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveHostRightPanelPlugin$setupForHost$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      this.hQE.hOp.statusChange(b.c.hLF, new Bundle());
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/plugin/LiveHostRightPanelPlugin$setupForHost$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      x.a(this.kFb).statusChange(b.c.kyY, new Bundle());
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveHostRightPanelPlugin$setupForHost$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(208030);
+      AppMethodBeat.o(193554);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   public static final class c
     implements View.OnClickListener
   {
@@ -128,28 +127,28 @@ public final class x
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(208031);
+      AppMethodBeat.i(192106);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveHostRightPanelPlugin$setupForHost$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-      this.hQE.hOp.statusChange(b.c.hLE, new Bundle());
-      paramView = com.tencent.mm.live.b.x.hJf;
-      paramView = com.tencent.mm.live.b.x.aGv();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/live/plugin/LiveHostRightPanelPlugin$setupForHost$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+      x.a(this.kFb).statusChange(b.c.kyX, new Bundle());
+      paramView = u.kwz;
+      paramView = u.aOv();
       if (paramView != null)
       {
-        paramView = paramView.hzt;
+        paramView = paramView.kmp;
         if (paramView != null)
         {
-          localObject = com.tencent.mm.live.b.x.hJf;
-          localObject = com.tencent.mm.live.b.x.aGv();
+          localObject = u.kwz;
+          localObject = u.aOv();
           if (localObject == null) {
             break label132;
           }
-          localObject = ((f)localObject).hzt;
+          localObject = ((g)localObject).kmp;
           if (localObject == null) {
             break label132;
           }
-          bool = ((d)localObject).hzh;
+          bool = ((e)localObject).kme;
           if (bool) {
             break label137;
           }
@@ -159,9 +158,9 @@ public final class x
       label137:
       for (boolean bool = true;; bool = false)
       {
-        paramView.hzh = bool;
+        paramView.kme = bool;
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveHostRightPanelPlugin$setupForHost$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(208031);
+        AppMethodBeat.o(192106);
         return;
         bool = true;
         break;
@@ -169,7 +168,7 @@ public final class x
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
@@ -177,32 +176,15 @@ public final class x
     
     public final void run()
     {
-      AppMethodBeat.i(208032);
-      x localx = this.hQE;
-      Object localObject = new ArrayList();
-      ((ArrayList)localObject).add(localx.hQB);
-      ((ArrayList)localObject).add(localx.hQC);
-      View localView = localx.hQB;
-      p.g(localView, "switchBtnLayout");
-      int i = localView.getWidth();
-      localView = localx.hQC;
-      p.g(localView, "micBtnLayout");
-      i = j.mZ(i, localView.getWidth());
-      localObject = ((Iterable)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        localView = (View)((Iterator)localObject).next();
-        int j = (i - localView.getWidth()) / 2;
-        localView.setPadding(localView.getPaddingLeft(), localView.getPaddingTop(), j + localView.getPaddingRight(), localView.getPaddingBottom());
-      }
-      localx.hwr.requestLayout();
-      AppMethodBeat.o(208032);
+      AppMethodBeat.i(200138);
+      x.b(this.kFb);
+      AppMethodBeat.o(200138);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.c.x
  * JD-Core Version:    0.7.0.1
  */

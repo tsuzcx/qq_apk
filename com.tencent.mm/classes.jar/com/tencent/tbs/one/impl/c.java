@@ -30,7 +30,7 @@ public final class c
     AppMethodBeat.i(173797);
     this.c = new Object();
     a.a(paramContext);
-    f.a("[%s] Initializing %s (%s)", new Object[] { paramString, "0.0.1", "20201221152306" });
+    f.a("[%s] Initializing %s (%s)", new Object[] { paramString, "0.0.1", "20210625153133" });
     this.a = paramString;
     this.b = a.a(paramContext, paramString);
     AppMethodBeat.o(173797);
@@ -88,7 +88,7 @@ public final class c
   
   public final void installComponent(final String paramString, final Bundle paramBundle, final TBSOneCallback<File> paramTBSOneCallback)
   {
-    AppMethodBeat.i(188033);
+    AppMethodBeat.i(189350);
     f.a("[%s] Installing component %s,Options %s", new Object[] { this.a, paramString, paramBundle });
     a();
     m.a(new Runnable()
@@ -100,7 +100,7 @@ public final class c
         AppMethodBeat.o(173885);
       }
     });
-    AppMethodBeat.o(188033);
+    AppMethodBeat.o(189350);
   }
   
   public final void installComponent(String paramString, TBSOneCallback<File> paramTBSOneCallback)
@@ -120,7 +120,7 @@ public final class c
   
   public final void loadComponentAsync(final String paramString, final Bundle paramBundle, final TBSOneCallback<TBSOneComponent> paramTBSOneCallback)
   {
-    AppMethodBeat.i(188034);
+    AppMethodBeat.i(189356);
     f.a("[%s] Loading component %s asynchronously", new Object[] { this.a, paramString });
     a();
     m.a(new Runnable()
@@ -132,7 +132,7 @@ public final class c
         AppMethodBeat.o(174259);
       }
     });
-    AppMethodBeat.o(188034);
+    AppMethodBeat.o(189356);
   }
   
   public final void loadComponentAsync(String paramString, TBSOneCallback<TBSOneComponent> paramTBSOneCallback)
@@ -152,12 +152,12 @@ public final class c
   
   public final TBSOneComponent loadComponentSync(final String paramString, final Bundle paramBundle)
   {
-    AppMethodBeat.i(188035);
+    AppMethodBeat.i(189358);
     f.a("[%s] Loading component %s synchronously", new Object[] { this.a, paramString });
     if (m.b())
     {
       paramString = new RuntimeException("TBSOneManager.loadComponentSync must not be called on TBSOne thread.");
-      AppMethodBeat.o(188035);
+      AppMethodBeat.o(189358);
       throw paramString;
     }
     a();
@@ -175,11 +175,11 @@ public final class c
     if (localb.b != 0)
     {
       paramString = new TBSOneException(localb.b, localb.c);
-      AppMethodBeat.o(188035);
+      AppMethodBeat.o(189358);
       throw paramString;
     }
     paramString = (TBSOneComponent)localb.a;
-    AppMethodBeat.o(188035);
+    AppMethodBeat.o(189358);
     return paramString;
   }
   
@@ -233,7 +233,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tbs.one.impl.c
  * JD-Core Version:    0.7.0.1
  */

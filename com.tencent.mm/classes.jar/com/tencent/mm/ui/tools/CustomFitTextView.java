@@ -12,7 +12,8 @@ import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ah.a.e;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
@@ -21,25 +22,25 @@ import java.util.LinkedList;
 public class CustomFitTextView
   extends TextView
 {
-  private String Qqp;
-  private Rect Qqq;
-  private LinkedList<String> Qqr;
-  public int Qqs;
-  private Drawable Qqt;
-  public boolean Qqu;
-  private int Qqv;
-  private Paint cgU;
-  private boolean kyn;
+  private String XOC;
+  private Rect XOD;
+  private LinkedList<String> XOE;
+  public int XOF;
+  private Drawable XOG;
+  public boolean XOH;
+  private int XOI;
+  private Paint ciV;
   public int maxLines;
+  private boolean nrn;
   
   public CustomFitTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143056);
-    this.Qqq = new Rect();
-    this.Qqr = new LinkedList();
-    this.kyn = true;
-    this.Qqv = 0;
+    this.XOD = new Rect();
+    this.XOE = new LinkedList();
+    this.nrn = true;
+    this.XOI = 0;
     AppMethodBeat.o(143056);
   }
   
@@ -47,29 +48,29 @@ public class CustomFitTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143057);
-    this.Qqq = new Rect();
-    this.Qqr = new LinkedList();
-    this.kyn = true;
-    this.Qqv = 0;
+    this.XOD = new Rect();
+    this.XOE = new LinkedList();
+    this.nrn = true;
+    this.XOI = 0;
     AppMethodBeat.o(143057);
   }
   
   private void appendText(String paramString)
   {
     AppMethodBeat.i(143061);
-    if (this.Qqr != null)
+    if (this.XOE != null)
     {
       if ((paramString == null) || ("".equals(paramString)))
       {
         AppMethodBeat.o(143061);
         return;
       }
-      this.Qqr.add(paramString);
+      this.XOE.add(paramString);
     }
     AppMethodBeat.o(143061);
   }
   
-  private int f(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private int g(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(143062);
     if (paramInt2 <= paramInt1)
@@ -109,36 +110,22 @@ public class CustomFitTextView
     return paramInt1 + 1;
   }
   
-  private int gXE()
-  {
-    AppMethodBeat.i(143059);
-    Paint.FontMetrics localFontMetrics = getPaint().getFontMetrics();
-    float f1 = this.Qqr.size();
-    float f2 = localFontMetrics.bottom;
-    float f3 = localFontMetrics.top;
-    int i = (int)((localFontMetrics.leading + (f2 - f3)) * f1 + getPaddingTop() + getPaddingBottom());
-    int j = Math.max(0, this.Qqr.size() - 1);
-    int k = this.Qqv;
-    AppMethodBeat.o(143059);
-    return i + j * k;
-  }
-  
-  private boolean hk(String paramString, int paramInt)
+  private boolean hT(String paramString, int paramInt)
   {
     AppMethodBeat.i(143060);
     int k;
     int n;
     int i1;
     int i;
-    if ((this.kyn) && (paramInt > 0) && (paramString != null) && (!"".equals(paramString)))
+    if ((this.nrn) && (paramInt > 0) && (paramString != null) && (!"".equals(paramString)))
     {
-      this.Qqr.clear();
+      this.XOE.clear();
       k = 0;
       n = paramString.length();
       i1 = paramInt - getPaddingLeft() - getPaddingRight();
-      if (this.Qqu)
+      if (this.XOH)
       {
-        paramInt = this.Qqt.getIntrinsicWidth();
+        paramInt = this.XOG.getIntrinsicWidth();
         float f = getPaint().measureText(paramString, 0, n);
         f = paramInt + f;
         i = this.maxLines;
@@ -155,7 +142,7 @@ public class CustomFitTextView
       label126:
       if (j < i) {
         if (j == i - 1) {
-          appendText(paramString.substring(k, f(paramString, k, n, paramInt, i1)).trim());
+          appendText(paramString.substring(k, g(paramString, k, n, paramInt, i1)).trim());
         }
       }
       for (;;)
@@ -164,7 +151,7 @@ public class CustomFitTextView
         break label126;
         paramInt = 0;
         break;
-        int m = f(paramString, k, n, 0, i1);
+        int m = g(paramString, k, n, 0, i1);
         appendText(paramString.substring(k, m).trim());
         if (m >= n)
         {
@@ -179,45 +166,59 @@ public class CustomFitTextView
     }
   }
   
-  public final void a(String paramString, int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3)
+  private int hYq()
+  {
+    AppMethodBeat.i(143059);
+    Paint.FontMetrics localFontMetrics = getPaint().getFontMetrics();
+    float f1 = this.XOE.size();
+    float f2 = localFontMetrics.bottom;
+    float f3 = localFontMetrics.top;
+    int i = (int)((localFontMetrics.leading + (f2 - f3)) * f1 + getPaddingTop() + getPaddingBottom());
+    int j = Math.max(0, this.XOE.size() - 1);
+    int k = this.XOI;
+    AppMethodBeat.o(143059);
+    return i + j * k;
+  }
+  
+  public final void b(String paramString, int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(143058);
     this.maxLines = paramInt1;
-    this.Qqp = paramString;
-    if (this.Qqp == null)
+    this.XOC = paramString;
+    if (this.XOC == null)
     {
       Log.w("MicroMsg.CustomFitTextView", "ori text is null");
-      this.Qqp = "";
+      this.XOC = "";
     }
     if (this.maxLines <= 0)
     {
       Log.w("MicroMsg.CustomFitTextView", "maxLines is invalid");
       this.maxLines = 2;
     }
-    this.Qqv = getResources().getDimensionPixelSize(2131165190);
-    this.Qqu = paramBoolean;
-    this.Qqs = paramInt2;
-    if (this.Qqu) {
-      this.Qqt = getResources().getDrawable(this.Qqs);
+    this.XOI = getResources().getDimensionPixelSize(a.e.BasicPaddingSize);
+    this.XOH = paramBoolean;
+    this.XOF = paramInt2;
+    if (this.XOH) {
+      this.XOG = getResources().getDrawable(this.XOF);
     }
-    this.cgU = new Paint();
-    this.cgU.set(getPaint());
-    this.cgU.setAntiAlias(true);
-    this.cgU.setColor(paramInt3);
-    hk(this.Qqp, getWidth());
-    setHeight(Math.max(gXE(), a.fromDPToPix(getContext(), 32)));
+    this.ciV = new Paint();
+    this.ciV.set(getPaint());
+    this.ciV.setAntiAlias(true);
+    this.ciV.setColor(paramInt3);
+    hT(this.XOC, getWidth());
+    setHeight(Math.max(hYq(), a.fromDPToPix(getContext(), 32)));
     AppMethodBeat.o(143058);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(143063);
-    if (!this.kyn)
+    if (!this.nrn)
     {
       AppMethodBeat.o(143063);
       return;
     }
-    if ((this.Qqp == null) || ("".equals(this.Qqp)) || (this.Qqr.size() == 0))
+    if ((this.XOC == null) || ("".equals(this.XOC)) || (this.XOE.size() == 0))
     {
       AppMethodBeat.o(143063);
       return;
@@ -226,22 +227,22 @@ public class CustomFitTextView
     float f2 = localFontMetrics.descent - localFontMetrics.ascent;
     float f3 = getPaddingLeft();
     float f1 = getPaddingTop();
-    Iterator localIterator = this.Qqr.iterator();
+    Iterator localIterator = this.XOE.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
       f1 = localFontMetrics.leading + f2 + f1;
-      paramCanvas.drawText(str, f3, f1, this.cgU);
+      paramCanvas.drawText(str, f3, f1, this.ciV);
     }
-    if (this.Qqu)
+    if (this.XOH)
     {
-      getPaint().getTextBounds((String)this.Qqr.getLast(), 0, ((String)this.Qqr.getLast()).length(), this.Qqq);
-      int i = getPaddingLeft() + this.Qqq.right;
-      int j = this.Qqt.getIntrinsicWidth();
+      getPaint().getTextBounds((String)this.XOE.getLast(), 0, ((String)this.XOE.getLast()).length(), this.XOD);
+      int i = getPaddingLeft() + this.XOD.right;
+      int j = this.XOG.getIntrinsicWidth();
       int k = (int)(f1 - f2 - localFontMetrics.leading);
-      int m = this.Qqt.getIntrinsicHeight();
-      this.Qqt.setBounds(i, k, j + i, m + k);
-      this.Qqt.draw(paramCanvas);
+      int m = this.XOG.getIntrinsicHeight();
+      this.XOG.setBounds(i, k, j + i, m + k);
+      this.XOG.draw(paramCanvas);
     }
     AppMethodBeat.o(143063);
   }
@@ -253,8 +254,8 @@ public class CustomFitTextView
     int i = View.MeasureSpec.getSize(paramInt1);
     paramInt2 = a.fromDPToPix(getContext(), 32);
     paramInt1 = paramInt2;
-    if (hk(this.Qqp, i)) {
-      paramInt1 = Math.max(gXE(), paramInt2);
+    if (hT(this.XOC, i)) {
+      paramInt1 = Math.max(hYq(), paramInt2);
     }
     setMeasuredDimension(i, paramInt1);
     AppMethodBeat.o(143065);
@@ -266,9 +267,9 @@ public class CustomFitTextView
     if ((paramInt1 != paramInt3) || (paramInt2 != paramInt4)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.kyn = bool;
-      if (this.kyn) {
-        hk(this.Qqp, paramInt1);
+      this.nrn = bool;
+      if (this.nrn) {
+        hT(this.XOC, paramInt1);
       }
       AppMethodBeat.o(143064);
       return;
@@ -277,7 +278,7 @@ public class CustomFitTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.tools.CustomFitTextView
  * JD-Core Version:    0.7.0.1
  */

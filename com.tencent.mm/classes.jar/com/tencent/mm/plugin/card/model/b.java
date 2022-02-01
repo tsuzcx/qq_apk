@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.card.model;
 
-import com.tencent.mm.protocal.protobuf.vj;
+import com.tencent.mm.protocal.protobuf.vl;
 
 public final class b
-  extends vj
+  extends vl
 {
-  public boolean edw = false;
-  public String ixw;
-  public int pSi;
-  public boolean pSj = false;
-  public boolean pSk = false;
-  public boolean pSl = false;
-  public String pSm;
+  public boolean fXF = false;
+  public String lmL;
+  public int toh;
+  public boolean toi = false;
+  public boolean toj = false;
+  public boolean tok = false;
+  public String tol;
 }
 
 

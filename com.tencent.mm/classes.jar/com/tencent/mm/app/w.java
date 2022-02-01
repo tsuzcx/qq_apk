@@ -2,41 +2,40 @@ package com.tencent.mm.app;
 
 import android.os.Looper;
 import android.os.Message;
-import android.support.v4.app.Fragment;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import androidx.fragment.app.Fragment;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.cg;
+import com.tencent.mm.model.be;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.ch;
+import com.tencent.mm.model.d.a;
 import com.tencent.mm.model.d.a.1;
-import com.tencent.mm.model.d.b;
 import com.tencent.mm.model.d.b.1;
 import com.tencent.mm.model.d.c;
 import com.tencent.mm.model.d.c.1;
 import com.tencent.mm.model.d.c.a;
-import com.tencent.mm.plugin.sns.b.o;
+import com.tencent.mm.plugin.sns.b.p;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.ui.HomeUI;
 import com.tencent.mm.ui.LauncherUI;
 import com.tencent.mm.ui.MainTabUI;
 import com.tencent.mm.ui.conversation.MainUI;
-import com.tencent.mm.ui.n;
+import com.tencent.mm.ui.o;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 
 public final class w
 {
-  public static w dlV;
-  public boolean dlW;
-  public MMHandler dlX;
+  public static w fdA;
+  public boolean fdB;
+  public MMHandler fdC;
   
   public w()
   {
     AppMethodBeat.i(19458);
-    this.dlX = new MMHandler(Looper.getMainLooper())
+    this.fdC = new MMHandler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -45,26 +44,26 @@ public final class w
         Object localObject;
         if (paramAnonymousMessage.what == -1999)
         {
-          if (!w.this.dlW)
+          if (!w.this.fdB)
           {
             paramAnonymousMessage = LauncherUI.getInstance();
-            if ((paramAnonymousMessage != null) && (paramAnonymousMessage.ODT))
+            if ((paramAnonymousMessage != null) && (paramAnonymousMessage.VXm))
             {
-              paramAnonymousMessage.ODR.getMainTabUI().blU("tab_main");
+              paramAnonymousMessage.VXk.getMainTabUI().byt("tab_main");
               localObject = paramAnonymousMessage.getHomeUI();
-              if (((HomeUI)localObject).OCv) {
-                ((HomeUI)localObject).OCx = true;
+              if (((HomeUI)localObject).VVM) {
+                ((HomeUI)localObject).VVO = true;
               }
-              localObject = o.DCM;
+              localObject = p.JPc;
               if (localObject != null) {
-                ((com.tencent.mm.plugin.sns.b.g)localObject).eZk();
+                ((com.tencent.mm.plugin.sns.b.h)localObject).fNa();
               }
-              paramAnonymousMessage = paramAnonymousMessage.ODR.getMainTabUI().OIl.values().iterator();
+              paramAnonymousMessage = paramAnonymousMessage.VXk.getMainTabUI().WbG.values().iterator();
               while (paramAnonymousMessage.hasNext())
               {
                 localObject = (Fragment)paramAnonymousMessage.next();
                 if (!(localObject instanceof MainUI)) {
-                  ((n)localObject).gGD();
+                  ((o)localObject).hFk();
                 }
               }
             }
@@ -74,7 +73,7 @@ public final class w
         }
         else if (paramAnonymousMessage.what == -2999)
         {
-          if (w.this.dlW)
+          if (w.this.fdB)
           {
             AppMethodBeat.o(19457);
             return;
@@ -82,26 +81,26 @@ public final class w
           paramAnonymousMessage = LauncherUI.getInstance();
           if (paramAnonymousMessage != null)
           {
-            paramAnonymousMessage = paramAnonymousMessage.ODR.getMainTabUI();
-            if (paramAnonymousMessage.OIl.containsKey(Integer.valueOf(0))) {
-              ((n)paramAnonymousMessage.OIl.get(Integer.valueOf(0))).gGD();
+            paramAnonymousMessage = paramAnonymousMessage.VXk.getMainTabUI();
+            if (paramAnonymousMessage.WbG.containsKey(Integer.valueOf(0))) {
+              ((o)paramAnonymousMessage.WbG.get(Integer.valueOf(0))).hFk();
             }
           }
-          if (com.tencent.mm.kernel.g.aAf().azp())
+          if (com.tencent.mm.kernel.h.aHE().aGM())
           {
-            bg.aVz();
-            paramAnonymousMessage = cg.KG("plugin.emoji");
+            bh.beC();
+            paramAnonymousMessage = ch.RZ("plugin.emoji");
             if (paramAnonymousMessage != null) {
               paramAnonymousMessage.clearPluginData(0);
             }
-            paramAnonymousMessage = b.aXA();
-            localObject = com.tencent.mm.model.d.a.aXx();
-            c localc = c.aXD();
-            bg.aAk().postToWorker(new b.1(paramAnonymousMessage));
-            h.RTc.aX(new a.1((com.tencent.mm.model.d.a)localObject));
+            paramAnonymousMessage = com.tencent.mm.model.d.b.bgH();
+            localObject = a.bgE();
+            c localc = c.bgK();
+            bh.aHJ().postToWorker(new b.1(paramAnonymousMessage));
+            com.tencent.e.h.ZvG.be(new a.1((a)localObject));
             localc.a(paramAnonymousMessage);
             localc.a((c.a)localObject);
-            bg.aAk().postToWorker(new c.1(localc));
+            bh.aHJ().postToWorker(new c.1(localc));
           }
           System.gc();
         }
@@ -111,31 +110,20 @@ public final class w
     AppMethodBeat.o(19458);
   }
   
-  public static w WE()
+  public static w aaZ()
   {
     AppMethodBeat.i(19459);
-    if (dlV == null) {
-      dlV = new w();
+    if (fdA == null) {
+      fdA = new w();
     }
-    w localw = dlV;
+    w localw = fdA;
     AppMethodBeat.o(19459);
     return localw;
-  }
-  
-  public final void start()
-  {
-    AppMethodBeat.i(19460);
-    this.dlW = false;
-    this.dlX.removeMessages(-1999);
-    this.dlX.removeMessages(-2999);
-    this.dlX.sendEmptyMessageDelayed(-1999, 3000L);
-    this.dlX.sendEmptyMessageDelayed(-2999, 30000L);
-    AppMethodBeat.o(19460);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.app.w
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,39 @@
 package com.tencent.mm.plugin.finder.storage;
 
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.m;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.view.recyclerview.e;
-import com.tencent.mm.view.recyclerview.f;
-import kotlin.g.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.f.c.ce;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/IFinderLayoutConfig;", "", "()V", "getItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "extraMap", "Lkotlin/Function1;", "", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "getItemDecoration", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "context", "Landroid/content/Context;", "getViewPool", "Landroid/support/v7/widget/RecyclerView$RecycledViewPool;", "Lcom/tencent/mm/ui/MMActivity;", "plugin-finder_release"})
-public abstract class al
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/LocalFinderAction;", "Lcom/tencent/mm/autogen/table/BaseFinderAction;", "()V", "obj", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "uniqueId", "", "Companion", "plugin-finder-base_release"})
+public class al
+  extends ce
 {
-  public abstract f G(b<? super Integer, ? extends e<?>> paramb);
+  private static final String AmI = "table_index_select_1";
+  private static final String AmJ = "table_index_select_2";
+  public static final a AmK;
+  private static final IAutoDBItem.MAutoDBInfo info;
   
-  public f dcK()
+  static
   {
-    return G(null);
+    AppMethodBeat.i(167032);
+    AmK = new a((byte)0);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = ce.aoY();
+    p.j(localMAutoDBInfo, "initAutoDBInfo(LocalFinderAction::class.java)");
+    info = localMAutoDBInfo;
+    AmI = "table_index_select_1";
+    AmJ = "table_index_select_2";
+    AppMethodBeat.o(167032);
   }
   
-  public abstract RecyclerView.LayoutManager eS(Context paramContext);
+  public IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return info;
+  }
   
-  public abstract RecyclerView.m f(MMActivity paramMMActivity);
-  
-  public abstract RecyclerView.h getItemDecoration();
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/storage/LocalFinderAction$Companion;", "", "()V", "TABLEINDEX1", "", "getTABLEINDEX1", "()Ljava/lang/String;", "TABLEINDEX2", "getTABLEINDEX2", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-finder-base_release"})
+  public static final class a {}
 }
 
 

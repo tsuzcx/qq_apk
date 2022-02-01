@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 public final class s
 {
-  public static j akm(String paramString)
+  public static j arZ(String paramString)
   {
     AppMethodBeat.i(113874);
     Log.i("MicroMsg.ShareCardConsumedInfoParser", "parseShareCardConsumedInfoParser()");
@@ -26,9 +26,9 @@ public final class s
     {
       Object localObject = new JSONObject(paramString);
       paramString = new j();
-      paramString.pVW = ((JSONObject)localObject).optString("consumed_box_id");
-      paramString.pVX = ((JSONObject)localObject).optString("subscribe_wording");
-      paramString.pVY = ((JSONObject)localObject).optString("subscribe_app_username");
+      paramString.trW = ((JSONObject)localObject).optString("consumed_box_id");
+      paramString.trX = ((JSONObject)localObject).optString("subscribe_wording");
+      paramString.trY = ((JSONObject)localObject).optString("subscribe_app_username");
       localObject = ((JSONObject)localObject).optJSONArray("list");
       if ((localObject == null) || (((JSONArray)localObject).length() == 0))
       {
@@ -42,17 +42,17 @@ public final class s
       {
         JSONObject localJSONObject = ((JSONArray)localObject).optJSONObject(i);
         q localq = new q();
-        localq.eaP = localJSONObject.optString("card_ext");
-        localq.pTh = f.ay(localJSONObject.optJSONObject("card_tp_info"));
+        localq.fUM = localJSONObject.optString("card_ext");
+        localq.tpi = f.aC(localJSONObject.optJSONObject("card_tp_info"));
         localArrayList.add(localq);
         i += 1;
       }
-      paramString.dtS = localArrayList;
+      paramString.fmA = localArrayList;
       Log.i("MicroMsg.ShareCardConsumedInfoParser", "parseShareCardConsumedInfoParser() tempList size is" + localArrayList.size());
-      if (TextUtils.isEmpty(paramString.pVW)) {
+      if (TextUtils.isEmpty(paramString.trW)) {
         Log.i("MicroMsg.ShareCardConsumedInfoParser", "parseShareCardConsumedInfoParser()  consumed_box_id is empty");
       }
-      if (TextUtils.isEmpty(paramString.pVX)) {
+      if (TextUtils.isEmpty(paramString.trX)) {
         Log.i("MicroMsg.ShareCardConsumedInfoParser", "parseShareCardConsumedInfoParser()  subscribe_wording is empty");
       }
       AppMethodBeat.o(113874);

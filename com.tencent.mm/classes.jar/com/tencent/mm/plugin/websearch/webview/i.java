@@ -1,54 +1,54 @@
 package com.tencent.mm.plugin.websearch.webview;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
+import com.tencent.mm.ae.d;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Arrays;
 import kotlin.g.a.a;
-import kotlin.g.b.ae;
+import kotlin.g.b.af;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/websearch/webview/WebSearchJSApiNotifier;", "", "()V", "TAG", "", "notifyJsEvent", "", "webView", "Lcom/tencent/mm/plugin/websearch/webview/WebSearchWebView;", "funcName", "params", "ui-websearch_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/websearch/webview/WebSearchJSApiNotifier;", "", "()V", "TAG", "", "notifyJsEvent", "", "webView", "Lcom/tencent/mm/plugin/websearch/webview/WebSearchWebView;", "funcName", "params", "ui-websearch_release"})
 public final class i
 {
-  public static final i IHk;
+  public static final i PBA;
   private static final String TAG = "MicroMsg.WebSearch.WebSearchJSApiNotifier";
   
   static
   {
-    AppMethodBeat.i(198076);
-    IHk = new i();
+    AppMethodBeat.i(198825);
+    PBA = new i();
     TAG = "MicroMsg.WebSearch.WebSearchJSApiNotifier";
-    AppMethodBeat.o(198076);
+    AppMethodBeat.o(198825);
   }
   
   public static void a(WebSearchWebView paramWebSearchWebView, final String paramString1, String paramString2)
   {
-    AppMethodBeat.i(198075);
-    p.h(paramWebSearchWebView, "webView");
-    p.h(paramString1, "funcName");
-    p.h(paramString2, "params");
+    AppMethodBeat.i(198824);
+    p.k(paramWebSearchWebView, "webView");
+    p.k(paramString1, "funcName");
+    p.k(paramString2, "params");
     try
     {
       Log.i(TAG, "notifyJsEvent %s %s", new Object[] { paramString1, paramString2 });
-      ae localae = ae.SYK;
+      af localaf = af.aaBG;
       paramString1 = String.format("javascript:window['%s'] && %s(%s)", Arrays.copyOf(new Object[] { paramString1, paramString1, paramString2 }, 3));
-      p.g(paramString1, "java.lang.String.format(format, *args)");
-      d.h((a)new a(paramWebSearchWebView, paramString1));
-      AppMethodBeat.o(198075);
+      p.j(paramString1, "java.lang.String.format(format, *args)");
+      d.uiThread((a)new a(paramWebSearchWebView, paramString1));
+      AppMethodBeat.o(198824);
       return;
     }
     catch (Exception paramWebSearchWebView)
     {
       Log.printErrStackTrace(TAG, (Throwable)paramWebSearchWebView, "notifyJsEvent", new Object[0]);
-      AppMethodBeat.o(198075);
+      AppMethodBeat.o(198824);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class a
     extends q
     implements a<x>

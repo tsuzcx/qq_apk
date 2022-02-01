@@ -1,6 +1,6 @@
 package com.github.henryye.nativeiv.comm;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.github.henryye.nativeiv.bitmap.NativeBitmapStruct;
 
 @Keep
@@ -59,7 +59,7 @@ class CommNativeBitmapStruct
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.github.henryye.nativeiv.comm.CommNativeBitmapStruct
  * JD-Core Version:    0.7.0.1
  */

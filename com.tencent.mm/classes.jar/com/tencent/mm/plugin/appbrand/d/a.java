@@ -2,63 +2,61 @@ package com.tencent.mm.plugin.appbrand.d;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.page.ag;
-import com.tencent.mm.plugin.webview.model.ay;
+import com.tencent.mm.plugin.appbrand.page.ah;
+import com.tencent.mm.plugin.webview.model.az;
 import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/complaint/AppBrandComplaintHelper;", "", "()V", "TAG", "", "tryTakeScreenshot", "pageView", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/complaint/AppBrandComplaintHelper;", "", "()V", "TAG", "", "tryTakeScreenshot", "pageView", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "plugin-appbrand-integration_release"})
 public final class a
 {
-  public static final a lbv;
+  public static final a nVE;
   
   static
   {
-    AppMethodBeat.i(228152);
-    lbv = new a();
-    AppMethodBeat.o(228152);
+    AppMethodBeat.i(283915);
+    nVE = new a();
+    AppMethodBeat.o(283915);
   }
   
-  public static final String b(ag paramag)
+  public static final String b(ah paramah)
   {
-    AppMethodBeat.i(228151);
-    p.h(paramag, "pageView");
-    Log.i("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, pageView:".concat(String.valueOf(paramag)));
-    Object localObject = ((c)g.af(c.class)).getCacheDir();
+    AppMethodBeat.i(283914);
+    p.k(paramah, "pageView");
+    Log.i("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, pageView:".concat(String.valueOf(paramah)));
+    Object localObject = ((c)com.tencent.mm.kernel.h.ae(c.class)).getCacheDir();
     if (localObject == null)
     {
       Log.i("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, null image cache dir");
-      AppMethodBeat.o(228151);
+      AppMethodBeat.o(283914);
       return null;
     }
-    localObject = new o((String)localObject + '/' + paramag.getAppId() + '_' + System.currentTimeMillis() + ".jpeg");
-    paramag.NV();
-    localObject = ((o)localObject).getAbsolutePath();
-    p.g(localObject, "tempFile.absolutePath");
-    h.RTc.aX((Runnable)new a(paramag, (String)localObject));
-    paramag = ay.aYY((String)localObject);
-    Log.i("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, localId:" + paramag + ", imagePath:" + (String)localObject);
-    AppMethodBeat.o(228151);
-    return paramag;
+    localObject = new q((String)localObject + '/' + paramah.getAppId() + '_' + System.currentTimeMillis() + ".jpeg");
+    paramah.QS();
+    localObject = ((q)localObject).bOF();
+    p.j(localObject, "tempFile.absolutePath");
+    com.tencent.e.h.ZvG.be((Runnable)new a(paramah, (String)localObject));
+    paramah = az.bkS((String)localObject);
+    Log.i("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, localId:" + paramah + ", imagePath:" + (String)localObject);
+    AppMethodBeat.o(283914);
+    return paramah;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
-    a(ag paramag, String paramString) {}
+    a(ah paramah, String paramString) {}
     
     public final void run()
     {
-      AppMethodBeat.i(228150);
-      Bitmap localBitmap = this.lbw.bRB();
+      AppMethodBeat.i(277955);
+      Bitmap localBitmap = this.nyu.ces();
       Object localObject5 = null;
       Object localObject6 = null;
       Object localObject1 = null;
@@ -82,13 +80,13 @@ public final class a
           localObject4 = BitmapUtil.extractThumbNail(localBitmap, 640, 640, false, true);
           localObject2 = localObject4;
           localObject1 = localObject4;
-          BitmapUtil.saveBitmapToImage((Bitmap)localObject4, 100, Bitmap.CompressFormat.JPEG, this.lbx, true);
+          BitmapUtil.saveBitmapToImage((Bitmap)localObject4, 100, Bitmap.CompressFormat.JPEG, this.nVF, true);
           localObject2 = localObject4;
           localObject1 = localObject4;
-          Log.i("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, save bitmap to file:" + this.lbx + ", cost:" + (System.currentTimeMillis() - l));
+          Log.i("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, save bitmap to file:" + this.nVF + ", cost:" + (System.currentTimeMillis() - l));
           localObject2 = localObject4;
           localObject1 = localObject4;
-          ((c)g.af(c.class)).WT(this.lbx);
+          ((c)com.tencent.mm.kernel.h.ae(c.class)).aeG(this.nVF);
         }
         if ((localBitmap != null) && (!localBitmap.isRecycled()))
         {
@@ -100,7 +98,7 @@ public final class a
           Log.d("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, recycle thumbnail:".concat(String.valueOf(localObject4)));
           ((Bitmap)localObject4).recycle();
         }
-        AppMethodBeat.o(228150);
+        AppMethodBeat.o(277955);
         return;
       }
       catch (Exception localException)
@@ -121,7 +119,7 @@ public final class a
           Log.d("MicroMsg.AppBrandComplaintHelper", "tryTakeScreenshot, recycle thumbnail:".concat(String.valueOf(localObject1)));
           localObject1.recycle();
         }
-        AppMethodBeat.o(228150);
+        AppMethodBeat.o(277955);
       }
     }
   }

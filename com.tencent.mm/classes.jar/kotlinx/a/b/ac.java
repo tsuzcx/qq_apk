@@ -12,80 +12,80 @@ import kotlinx.a.h.a;
 import kotlinx.a.t;
 import kotlinx.a.v;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/serialization/internal/KeyValueSerializer;", "K", "V", "R", "Lkotlinx/serialization/KSerializer;", "keySerializer", "valueSerializer", "(Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/KSerializer;)V", "getKeySerializer", "()Lkotlinx/serialization/KSerializer;", "getValueSerializer", "key", "getKey", "(Ljava/lang/Object;)Ljava/lang/Object;", "value", "getValue", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Object;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "(Lkotlinx/serialization/Encoder;Ljava/lang/Object;)V", "toResult", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "Lkotlinx/serialization/internal/MapEntrySerializer;", "Lkotlinx/serialization/internal/PairSerializer;", "kotlinx-serialization-runtime"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/serialization/internal/KeyValueSerializer;", "K", "V", "R", "Lkotlinx/serialization/KSerializer;", "keySerializer", "valueSerializer", "(Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/KSerializer;)V", "getKeySerializer", "()Lkotlinx/serialization/KSerializer;", "getValueSerializer", "key", "getKey", "(Ljava/lang/Object;)Ljava/lang/Object;", "value", "getValue", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Object;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "(Lkotlinx/serialization/Encoder;Ljava/lang/Object;)V", "toResult", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;", "Lkotlinx/serialization/internal/MapEntrySerializer;", "Lkotlinx/serialization/internal/PairSerializer;", "kotlinx-serialization-runtime"})
 public abstract class ac<K, V, R>
   implements h<R>
 {
-  private final h<K> TYu;
-  private final h<V> TYv;
+  private final h<K> abBJ;
+  private final h<V> abBK;
   
   private ac(h<K> paramh, h<V> paramh1)
   {
-    this.TYu = paramh;
-    this.TYv = paramh1;
+    this.abBJ = paramh;
+    this.abBK = paramh1;
   }
+  
+  public abstract R T(K paramK, V paramV);
   
   public final R a(c paramc)
   {
-    p.h(paramc, "decoder");
-    a locala = paramc.a(fWv(), new h[] { this.TYu, this.TYv });
-    paramc = bh.hOL();
-    Object localObject = bh.hOL();
+    p.k(paramc, "decoder");
+    a locala = paramc.a(gPe(), new h[] { this.abBJ, this.abBK });
+    paramc = bh.iTS();
+    Object localObject = bh.iTS();
     int i;
     for (;;)
     {
-      i = locala.b(fWv());
+      i = locala.b(gPe());
       if (i == -1) {
         break label137;
       }
       if (i == 0)
       {
-        paramc = locala.a(fWv(), 0, (f)this.TYu);
+        paramc = locala.a(gPe(), 0, (f)this.abBJ);
       }
       else
       {
         if (i != 1) {
           break;
         }
-        localObject = locala.a(fWv(), 1, (f)this.TYv);
+        localObject = locala.a(gPe(), 1, (f)this.abBK);
       }
     }
     throw ((Throwable)new t("Invalid index: ".concat(String.valueOf(i)), (byte)0));
     label137:
-    locala.a(fWv());
-    if (paramc == bh.hOL()) {
+    locala.a(gPe());
+    if (paramc == bh.iTS()) {
       throw ((Throwable)new t("Element 'key' is missing", (byte)0));
     }
-    if (localObject == bh.hOL()) {
+    if (localObject == bh.iTS()) {
       throw ((Throwable)new t("Element 'value' is missing", (byte)0));
     }
-    return aa(paramc, localObject);
+    return T(paramc, localObject);
   }
   
   public final R a(c paramc, R paramR)
   {
-    p.h(paramc, "decoder");
+    p.k(paramc, "decoder");
     return h.a.a(this, paramc);
   }
   
   public final void a(g paramg, R paramR)
   {
-    p.h(paramg, "encoder");
-    paramg = paramg.b(fWv(), new h[] { this.TYu, this.TYv });
-    paramg.a(fWv(), 0, (v)this.TYu, go(paramR));
-    paramg.a(fWv(), 1, (v)this.TYv, getValue(paramR));
-    paramg.a(fWv());
+    p.k(paramg, "encoder");
+    paramg = paramg.b(gPe(), new h[] { this.abBJ, this.abBK });
+    paramg.a(gPe(), 0, (v)this.abBJ, gG(paramR));
+    paramg.a(gPe(), 1, (v)this.abBK, getValue(paramR));
+    paramg.a(gPe());
   }
   
-  public abstract R aa(K paramK, V paramV);
+  public abstract K gG(R paramR);
   
   public abstract V getValue(R paramR);
-  
-  public abstract K go(R paramR);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlinx.a.b.ac
  * JD-Core Version:    0.7.0.1
  */

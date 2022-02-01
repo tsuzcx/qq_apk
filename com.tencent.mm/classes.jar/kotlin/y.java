@@ -5,18 +5,18 @@ import java.io.Serializable;
 import kotlin.g.a.a;
 import kotlin.g.b.p;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/UnsafeLazyImpl;", "T", "Lkotlin/Lazy;", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "initializer", "Lkotlin/Function0;", "(Lkotlin/jvm/functions/Function0;)V", "_value", "", "value", "getValue", "()Ljava/lang/Object;", "isInitialized", "", "toString", "", "writeReplace", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/UnsafeLazyImpl;", "T", "Lkotlin/Lazy;", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "initializer", "Lkotlin/Function0;", "(Lkotlin/jvm/functions/Function0;)V", "_value", "", "value", "getValue", "()Ljava/lang/Object;", "isInitialized", "", "toString", "", "writeReplace", "kotlin-stdlib"})
 public final class y<T>
   implements Serializable, f<T>
 {
-  private a<? extends T> SWT;
-  private Object SWU;
+  private a<? extends T> aazF;
+  private Object aazG;
   
   public y(a<? extends T> parama)
   {
     AppMethodBeat.i(129284);
-    this.SWT = parama;
-    this.SWU = v.SXa;
+    this.aazF = parama;
+    this.aazG = v.aazM;
     AppMethodBeat.o(129284);
   }
   
@@ -31,16 +31,16 @@ public final class y<T>
   public final T getValue()
   {
     AppMethodBeat.i(129281);
-    if (this.SWU == v.SXa)
+    if (this.aazG == v.aazM)
     {
-      localObject = this.SWT;
+      localObject = this.aazF;
       if (localObject == null) {
-        p.hyc();
+        p.iCn();
       }
-      this.SWU = ((a)localObject).invoke();
-      this.SWT = null;
+      this.aazG = ((a)localObject).invoke();
+      this.aazF = null;
     }
-    Object localObject = this.SWU;
+    Object localObject = this.aazG;
     AppMethodBeat.o(129281);
     return localObject;
   }
@@ -48,7 +48,7 @@ public final class y<T>
   public final String toString()
   {
     AppMethodBeat.i(129282);
-    if (this.SWU != v.SXa) {}
+    if (this.aazG != v.aazM) {}
     for (int i = 1; i != 0; i = 0)
     {
       String str = String.valueOf(getValue());
@@ -61,7 +61,7 @@ public final class y<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.y
  * JD-Core Version:    0.7.0.1
  */

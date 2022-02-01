@@ -4,47 +4,47 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.br.c;
-import com.tencent.mm.g.c.do;
-import com.tencent.mm.protocal.protobuf.cat;
-import com.tencent.mm.protocal.protobuf.cau;
+import com.tencent.mm.by.c;
+import com.tencent.mm.f.c.ds;
+import com.tencent.mm.protocal.protobuf.ciu;
+import com.tencent.mm.protocal.protobuf.civ;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
 public final class f
 {
-  public static void a(com.tencent.mm.plugin.exdevice.i.b paramb, cat paramcat, cau paramcau)
+  public static void a(com.tencent.mm.plugin.exdevice.i.b paramb, ciu paramciu, civ paramciv)
   {
     AppMethodBeat.i(23316);
-    if (paramcau != null)
+    if (paramciv != null)
     {
-      paramb.field_connProto = paramcau.MfZ;
-      paramb.field_connStrategy = paramcau.Mga;
-      paramb.field_closeStrategy = paramcau.Mgb;
-      paramb.field_mac = com.tencent.mm.plugin.exdevice.k.b.anY(com.tencent.mm.plugin.exdevice.k.b.anZ(paramcau.KOS));
-      paramb.field_authKey = paramcau.KLg;
-      paramb.field_brandName = paramcau.MfY;
-      paramb.BC(paramcau.ked);
-      paramb.yE(paramcau.fMg);
-      paramb.Ct(paramcau.Mgh);
-      paramb.Cs(paramcau.Mgg);
-      paramb.Cr(paramcau.Mgf);
-      paramb.nE(paramcau.Mgi);
-      paramb.setIconUrl(paramcau.IconUrl);
-      paramb.nF(paramcau.fMf);
-      paramb.Cq(paramcau.xIy);
-      paramb.Cu(paramcau.fMh);
-      paramb.Cv(paramcau.fMi);
-      paramb.Cw(paramcau.fMj);
-      paramb.Cx(paramcau.fMk);
+      paramb.field_connProto = paramciv.TpL;
+      paramb.field_connStrategy = paramciv.TpM;
+      paramb.field_closeStrategy = paramciv.TpN;
+      paramb.field_mac = com.tencent.mm.plugin.exdevice.k.b.avW(com.tencent.mm.plugin.exdevice.k.b.avX(paramciv.RPQ));
+      paramb.field_authKey = paramciv.RMc;
+      paramb.field_brandName = paramciv.TpK;
+      paramb.Iq(paramciv.mVD);
+      paramb.EF(paramciv.idY);
+      paramb.Jh(paramciv.TpT);
+      paramb.Jg(paramciv.TpS);
+      paramb.Jf(paramciv.TpR);
+      paramb.pT(paramciv.TpU);
+      paramb.setIconUrl(paramciv.CNj);
+      paramb.pU(paramciv.idX);
+      paramb.Je(paramciv.CMD);
+      paramb.Ji(paramciv.idZ);
+      paramb.Jj(paramciv.iea);
+      paramb.Jk(paramciv.ieb);
+      paramb.Jl(paramciv.iec);
     }
-    if (paramcat != null)
+    if (paramciu != null)
     {
-      paramb.field_deviceID = paramcat.oTH;
-      paramb.field_deviceType = paramcat.KLO;
-      paramb.field_md5Str = g.getMessageDigest(new String(paramcat.KLO + paramcat.oTH).getBytes());
+      paramb.field_deviceID = paramciu.rVF;
+      paramb.field_deviceType = paramciu.RMK;
+      paramb.field_md5Str = g.getMessageDigest(new String(paramciu.RMK + paramciu.rVF).getBytes());
       if (Util.isNullOrNil(paramb.field_brandName)) {
-        paramb.field_brandName = paramcat.KLO;
+        paramb.field_brandName = paramciu.RMK;
       }
     }
     AppMethodBeat.o(23316);
@@ -68,12 +68,12 @@ public final class f
   
   public static boolean b(com.tencent.mm.plugin.exdevice.i.b paramb)
   {
-    return (paramb != null) && ((paramb.fMg & 1L) == 1L);
+    return (paramb != null) && ((paramb.idY & 1L) == 1L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.f
  * JD-Core Version:    0.7.0.1
  */

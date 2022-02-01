@@ -3,49 +3,50 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ehi
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public String NgV;
-  public String NgW;
+  public String fUL;
+  public long seq;
+  public int trS;
+  public int update_time;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(209819);
+    AppMethodBeat.i(114074);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.NgV != null) {
-        paramVarArgs.e(1, this.NgV);
+      if (this.fUL != null) {
+        paramVarArgs.f(1, this.fUL);
       }
-      if (this.NgW != null) {
-        paramVarArgs.e(2, this.NgW);
-      }
-      AppMethodBeat.o(209819);
+      paramVarArgs.aY(2, this.trS);
+      paramVarArgs.aY(3, this.update_time);
+      paramVarArgs.bm(4, this.seq);
+      AppMethodBeat.o(114074);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.NgV == null) {
-        break label274;
+      if (this.fUL == null) {
+        break label350;
       }
     }
-    label274:
-    for (paramInt = g.a.a.b.b.a.f(1, this.NgV) + 0;; paramInt = 0)
+    label350:
+    for (paramInt = g.a.a.b.b.a.g(1, this.fUL) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.NgW != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.NgW);
-      }
-      AppMethodBeat.o(209819);
-      return i;
+      int i = g.a.a.b.b.a.bM(2, this.trS);
+      int j = g.a.a.b.b.a.bM(3, this.update_time);
+      int k = g.a.a.b.b.a.p(4, this.seq);
+      AppMethodBeat.o(114074);
+      return paramInt + i + j + k;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(209819);
+        AppMethodBeat.o(114074);
         return 0;
       }
       if (paramInt == 3)
@@ -55,18 +56,26 @@ public final class ehi
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(209819);
+          AppMethodBeat.o(114074);
           return -1;
         case 1: 
-          localehi.NgV = locala.UbS.readString();
-          AppMethodBeat.o(209819);
+          localehi.fUL = locala.abFh.readString();
+          AppMethodBeat.o(114074);
+          return 0;
+        case 2: 
+          localehi.trS = locala.abFh.AK();
+          AppMethodBeat.o(114074);
+          return 0;
+        case 3: 
+          localehi.update_time = locala.abFh.AK();
+          AppMethodBeat.o(114074);
           return 0;
         }
-        localehi.NgW = locala.UbS.readString();
-        AppMethodBeat.o(209819);
+        localehi.seq = locala.abFh.AN();
+        AppMethodBeat.o(114074);
         return 0;
       }
-      AppMethodBeat.o(209819);
+      AppMethodBeat.o(114074);
       return -1;
     }
   }

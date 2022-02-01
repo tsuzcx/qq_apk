@@ -2,8 +2,8 @@ package com.tencent.mars.xlog;
 
 import android.os.Debug;
 import android.os.Process;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -70,11 +70,11 @@ public class LogLogic
   
   public static String getStringFromFile(String paramString)
   {
-    Object localObject1 = new o(paramString);
+    Object localObject1 = new q(paramString);
     paramString = null;
     try
     {
-      localObject1 = s.ao((o)localObject1);
+      localObject1 = u.al((q)localObject1);
       paramString = (String)localObject1;
       String str = convertStreamToString((InputStream)localObject1);
       if (localObject1 != null) {
@@ -141,7 +141,7 @@ public class LogLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mars.xlog.LogLogic
  * JD-Core Version:    0.7.0.1
  */

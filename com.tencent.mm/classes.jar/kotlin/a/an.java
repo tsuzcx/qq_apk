@@ -8,20 +8,20 @@ import java.util.Set;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"minus", "", "T", "element", "(Ljava/util/Set;Ljava/lang/Object;)Ljava/util/Set;", "elements", "", "(Ljava/util/Set;[Ljava/lang/Object;)Ljava/util/Set;", "", "Lkotlin/sequences/Sequence;", "minusElement", "plus", "plusElement", "kotlin-stdlib"}, hxG=1)
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"minus", "", "T", "element", "(Ljava/util/Set;Ljava/lang/Object;)Ljava/util/Set;", "elements", "", "(Ljava/util/Set;[Ljava/lang/Object;)Ljava/util/Set;", "", "Lkotlin/sequences/Sequence;", "minusElement", "plus", "plusElement", "kotlin-stdlib"}, iBN=1)
 public class an
   extends am
 {
   public static final <T> Set<T> a(Set<? extends T> paramSet, Iterable<? extends T> paramIterable)
   {
-    AppMethodBeat.i(206273);
-    p.h(paramSet, "$this$minus");
-    p.h(paramIterable, "elements");
+    AppMethodBeat.i(219101);
+    p.k(paramSet, "$this$minus");
+    p.k(paramIterable, "elements");
     paramIterable = j.a(paramIterable, (Iterable)paramSet);
     if (paramIterable.isEmpty())
     {
       paramSet = j.r((Iterable)paramSet);
-      AppMethodBeat.o(206273);
+      AppMethodBeat.o(219101);
       return paramSet;
     }
     if ((paramIterable instanceof Set))
@@ -37,26 +37,26 @@ public class an
         }
       }
       paramSet = (Set)paramSet;
-      AppMethodBeat.o(206273);
+      AppMethodBeat.o(219101);
       return paramSet;
     }
     paramSet = new LinkedHashSet((Collection)paramSet);
     paramSet.removeAll(paramIterable);
     paramSet = (Set)paramSet;
-    AppMethodBeat.o(206273);
+    AppMethodBeat.o(219101);
     return paramSet;
   }
   
   public static final <T> Set<T> b(Set<? extends T> paramSet, Iterable<? extends T> paramIterable)
   {
     AppMethodBeat.i(129005);
-    p.h(paramSet, "$this$plus");
-    p.h(paramIterable, "elements");
+    p.k(paramSet, "$this$plus");
+    p.k(paramIterable, "elements");
     Object localObject = j.d(paramIterable);
     if (localObject != null) {}
     for (int i = ((Number)localObject).intValue() + paramSet.size();; i = paramSet.size() * 2)
     {
-      localObject = new LinkedHashSet(ae.atJ(i));
+      localObject = new LinkedHashSet(ae.aDD(i));
       ((LinkedHashSet)localObject).addAll((Collection)paramSet);
       j.a((Collection)localObject, paramIterable);
       paramSet = (Set)localObject;
@@ -68,8 +68,8 @@ public class an
   public static final <T> Set<T> c(Set<? extends T> paramSet, T paramT)
   {
     AppMethodBeat.i(129004);
-    p.h(paramSet, "$this$plus");
-    LinkedHashSet localLinkedHashSet = new LinkedHashSet(ae.atJ(paramSet.size() + 1));
+    p.k(paramSet, "$this$plus");
+    LinkedHashSet localLinkedHashSet = new LinkedHashSet(ae.aDD(paramSet.size() + 1));
     localLinkedHashSet.addAll((Collection)paramSet);
     localLinkedHashSet.add(paramT);
     paramSet = (Set)localLinkedHashSet;

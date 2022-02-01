@@ -1,30 +1,30 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.e;
-import com.google.a.a.g;
+import com.google.b.a.b;
+import com.google.b.a.e;
+import com.google.b.a.g;
 import java.util.Arrays;
 
 public final class a$x
   extends e
 {
-  public a.w REH = null;
-  public byte[] body = g.cbu;
+  public a.w Zgm = null;
+  public byte[] body = g.ccX;
   
   public a$x()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public final int Ig()
+  public final int JG()
   {
-    int j = super.Ig();
+    int j = super.JG();
     int i = j;
-    if (this.REH != null) {
-      i = j + b.b(1, this.REH);
+    if (this.Zgm != null) {
+      i = j + b.b(1, this.Zgm);
     }
     j = i;
-    if (!Arrays.equals(this.body, g.cbu)) {
+    if (!Arrays.equals(this.body, g.ccX)) {
       j = i + b.c(2, this.body);
     }
     return j;
@@ -32,10 +32,10 @@ public final class a$x
   
   public final void a(b paramb)
   {
-    if (this.REH != null) {
-      paramb.a(1, this.REH);
+    if (this.Zgm != null) {
+      paramb.a(1, this.Zgm);
     }
-    if (!Arrays.equals(this.body, g.cbu)) {
+    if (!Arrays.equals(this.body, g.ccX)) {
       paramb.b(2, this.body);
     }
     super.a(paramb);

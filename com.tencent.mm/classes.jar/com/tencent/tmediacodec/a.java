@@ -15,53 +15,53 @@ import java.util.HashMap;
 
 public final class a
 {
-  private static a Sla;
-  private static boolean Sle;
-  public com.tencent.tmediacodec.e.b Slb;
-  public boolean Slc;
-  private boolean Sld;
-  private final HashMap<b, c> Slf;
-  private final com.tencent.tmediacodec.d.a Slg;
-  private final com.tencent.tmediacodec.c.a Slh;
-  private final com.tencent.tmediacodec.c.a Sli;
+  private static a ZNL;
+  private static boolean ZNP;
+  public com.tencent.tmediacodec.e.b ZNM;
+  public boolean ZNN;
+  private boolean ZNO;
+  private final HashMap<b, c> ZNQ;
+  private final com.tencent.tmediacodec.d.a ZNR;
+  private final com.tencent.tmediacodec.c.a ZNS;
+  private final com.tencent.tmediacodec.c.a ZNT;
   
   static
   {
-    AppMethodBeat.i(190079);
-    Sla = new a();
-    Sle = false;
-    AppMethodBeat.o(190079);
+    AppMethodBeat.i(224117);
+    ZNL = new a();
+    ZNP = false;
+    AppMethodBeat.o(224117);
   }
   
   public a()
   {
-    AppMethodBeat.i(190074);
-    this.Slb = com.tencent.tmediacodec.e.b.SmK;
-    this.Slc = true;
-    this.Slf = new HashMap();
-    this.Slg = new com.tencent.tmediacodec.d.a();
-    this.Slh = new com.tencent.tmediacodec.c.a();
-    this.Sli = new com.tencent.tmediacodec.c.a();
-    AppMethodBeat.o(190074);
+    AppMethodBeat.i(224093);
+    this.ZNM = com.tencent.tmediacodec.e.b.ZPv;
+    this.ZNN = true;
+    this.ZNQ = new HashMap();
+    this.ZNR = new com.tencent.tmediacodec.d.a();
+    this.ZNS = new com.tencent.tmediacodec.c.a();
+    this.ZNT = new com.tencent.tmediacodec.c.a();
+    AppMethodBeat.o(224093);
   }
   
-  public static a hpn()
+  public static a isT()
   {
-    return Sla;
+    return ZNL;
   }
   
   public final c a(MediaFormat paramMediaFormat, Surface paramSurface, MediaCrypto paramMediaCrypto, b paramb)
   {
-    AppMethodBeat.i(190076);
+    AppMethodBeat.i(224111);
     if (com.tencent.tmediacodec.g.b.isLogEnable())
     {
-      new StringBuilder("configureStart videoPoolInfo:").append(this.Slh.hpC()).append(", audioPoolInfo:").append(this.Sli.hpC());
-      com.tencent.tmediacodec.g.b.bqQ("TCodecManager");
+      new StringBuilder("configureStart videoPoolInfo:").append(this.ZNS.iti()).append(", audioPoolInfo:").append(this.ZNT.iti());
+      com.tencent.tmediacodec.g.b.bDP("TCodecManager");
     }
-    this.Sld = true;
-    boolean bool3 = this.Slc;
-    boolean bool4 = paramb.Slo;
-    boolean bool5 = com.tencent.tmediacodec.g.d.by(paramb.Slq);
+    this.ZNO = true;
+    boolean bool3 = this.ZNN;
+    boolean bool4 = paramb.ZNZ;
+    boolean bool5 = com.tencent.tmediacodec.g.d.bJ(paramb.ZOb);
     boolean bool1;
     boolean bool2;
     label109:
@@ -69,63 +69,63 @@ public final class a
     if ((bool3) && (bool4))
     {
       bool1 = true;
-      if ((Build.VERSION.SDK_INT < 23) || (com.tencent.tmediacodec.g.d.hpH())) {
+      if ((Build.VERSION.SDK_INT < 23) || (com.tencent.tmediacodec.g.d.ito())) {
         break label513;
       }
       bool2 = true;
       if (com.tencent.tmediacodec.g.b.isLogEnable())
       {
         new StringBuilder("getCodec isVideo:").append(bool5).append(" reuseEnable:").append(bool1).append(' ').append("globalReuseEnable:").append(bool3).append(" mediaCodecReuseEnable:").append(bool4).append(" canUseSetOutputSurfaceAPI:").append(bool2).append(" ,surface:").append(paramSurface);
-        com.tencent.tmediacodec.g.b.bqQ("TCodecManager");
+        com.tencent.tmediacodec.g.b.bDP("TCodecManager");
       }
       if ((!bool1) || (!bool5) || (!bool2) || (paramSurface == null)) {
         break label519;
       }
       bool1 = true;
       label211:
-      paramb.Slj = bool1;
+      paramb.ZNU = bool1;
       if (com.tencent.tmediacodec.g.b.isLogEnable())
       {
         new StringBuilder("getCodec isVideo:").append(bool5).append(" codecFinalReuseEnable:").append(bool1);
-        com.tencent.tmediacodec.g.b.bqQ("TCodecManager");
+        com.tencent.tmediacodec.g.b.bDP("TCodecManager");
       }
       if (bool1) {
         break label545;
       }
-      paramb.Slk = false;
+      paramb.ZNV = false;
       if (com.tencent.tmediacodec.g.b.isLogEnable())
       {
         new StringBuilder("getCodec return DirectCodecWrapper for mediaFormat:").append(paramMediaFormat).append(" globalReuseEnable:").append(bool3).append(' ').append("mediaCodecReuseEnable:").append(bool4).append(" surface:").append(paramSurface);
-        com.tencent.tmediacodec.g.b.bqQ("TCodecManager");
+        com.tencent.tmediacodec.g.b.bDP("TCodecManager");
       }
       if (com.tencent.tmediacodec.g.b.isLogEnable())
       {
-        new StringBuilder("createDirectCodecWrapper mediaFormat:").append(paramMediaFormat).append(" createBy:").append(paramb.Slr).append(" nameOrType:").append(paramb.Slq);
-        com.tencent.tmediacodec.g.b.bqQ("TCodecManager");
+        new StringBuilder("createDirectCodecWrapper mediaFormat:").append(paramMediaFormat).append(" createBy:").append(paramb.ZOc).append(" nameOrType:").append(paramb.ZOb);
+        com.tencent.tmediacodec.g.b.bDP("TCodecManager");
       }
-      if (paramb.Slr != b.b.Slt) {
+      if (paramb.ZOc != b.b.ZOe) {
         break label525;
       }
-      localObject1 = new com.tencent.tmediacodec.b.d(MediaCodec.createByCodecName(paramb.Slq));
+      localObject1 = new com.tencent.tmediacodec.b.d(MediaCodec.createByCodecName(paramb.ZOb));
       label403:
-      if (this.Slc)
+      if (this.ZNN)
       {
         if (!(localObject1 instanceof g)) {
           break label1101;
         }
-        this.Slh.f((f)localObject1);
+        this.ZNS.f((f)localObject1);
       }
     }
     for (;;)
     {
-      ((c)localObject1).a(paramb.Slm);
-      ((c)localObject1).configure(paramMediaFormat, paramSurface, paramMediaCrypto, 0);
+      ((c)localObject1).a(paramb.ZNX);
+      ((c)localObject1).a(paramMediaFormat, paramSurface, paramMediaCrypto, 0);
       if (com.tencent.tmediacodec.g.b.isLogEnable())
       {
-        new StringBuilder("configureEnd   videoPoolInfo:").append(this.Slh.hpC()).append(", audioPoolInfo:").append(this.Sli.hpC());
-        com.tencent.tmediacodec.g.b.bqQ("TCodecManager");
+        new StringBuilder("configureEnd   videoPoolInfo:").append(this.ZNS.iti()).append(", audioPoolInfo:").append(this.ZNT.iti());
+        com.tencent.tmediacodec.g.b.bDP("TCodecManager");
       }
-      AppMethodBeat.o(190076);
+      AppMethodBeat.o(224111);
       return localObject1;
       bool1 = false;
       break;
@@ -136,147 +136,147 @@ public final class a
       bool1 = false;
       break label211;
       label525:
-      localObject1 = new com.tencent.tmediacodec.b.d(MediaCodec.createDecoderByType(paramb.Slq));
+      localObject1 = new com.tencent.tmediacodec.b.d(MediaCodec.createDecoderByType(paramb.ZOb));
       break label403;
       label545:
-      Object localObject2 = e.i(paramMediaFormat);
+      Object localObject2 = e.g(paramMediaFormat);
       if (bool5) {}
-      for (localObject1 = this.Slh.c((e)localObject2);; localObject1 = this.Sli.c((e)localObject2))
+      for (localObject1 = this.ZNS.c((e)localObject2);; localObject1 = this.ZNT.c((e)localObject2))
       {
-        e.bA(((e)localObject2).Slz);
+        e.bL(((e)localObject2).ZOk);
         if (localObject1 == null) {
           break label725;
         }
         localObject2 = ((c)localObject1).b((e)localObject2);
-        if ((localObject2 != a.b.SmE) && (localObject2 != a.b.SmD)) {
+        if ((localObject2 != a.b.ZPp) && (localObject2 != a.b.ZPo)) {
           break label680;
         }
         if (com.tencent.tmediacodec.g.b.isLogEnable())
         {
           new StringBuilder("getCodec reuse, isVideo:").append(bool5).append(" reuseType:").append(localObject2);
-          com.tencent.tmediacodec.g.b.bqQ("TCodecManager");
+          com.tencent.tmediacodec.g.b.bDP("TCodecManager");
         }
-        ((c)localObject1).hpt();
-        ((c)localObject1).hpu();
-        paramb.Slk = true;
+        ((c)localObject1).isZ();
+        ((c)localObject1).ita();
+        paramb.ZNV = true;
         break;
       }
       label680:
-      if ((localObject2 == a.b.SmB) && (com.tencent.tmediacodec.g.b.isLogEnable()))
+      if ((localObject2 == a.b.ZPm) && (com.tencent.tmediacodec.g.b.isLogEnable()))
       {
         new StringBuilder("getCodec not reuse, isVideo:").append(bool5).append(" reuseType:").append(localObject2);
-        com.tencent.tmediacodec.g.b.bqS("TCodecManager");
+        com.tencent.tmediacodec.g.b.bDR("TCodecManager");
       }
       label725:
       if (com.tencent.tmediacodec.g.b.isLogEnable())
       {
         "getCodec not reuse, for can't find reUseAble CodecWrapper. isVideo:".concat(String.valueOf(bool5));
-        com.tencent.tmediacodec.g.b.bqQ("TCodecManager");
+        com.tencent.tmediacodec.g.b.bDP("TCodecManager");
       }
-      paramb.Slk = false;
+      paramb.ZNV = false;
       if (com.tencent.tmediacodec.g.b.isLogEnable())
       {
-        new StringBuilder("createNewReuseCodecWrapper mediaFormat:").append(paramMediaFormat).append(" createBy:").append(paramb.Slr).append(" nameOrType:").append(paramb.Slq);
-        com.tencent.tmediacodec.g.b.bqQ("TCodecManager");
+        new StringBuilder("createNewReuseCodecWrapper mediaFormat:").append(paramMediaFormat).append(" createBy:").append(paramb.ZOc).append(" nameOrType:").append(paramb.ZOb);
+        com.tencent.tmediacodec.g.b.bDP("TCodecManager");
       }
       localObject1 = paramMediaFormat.getString("mime");
-      localObject2 = e.i(paramMediaFormat);
-      com.tencent.tmediacodec.e.b localb = Sla.Slb;
-      int i = Math.max(localb.SmH, ((e)localObject2).width);
-      int j = Math.max(localb.SmI, ((e)localObject2).height);
-      if (localb.SmG)
+      localObject2 = e.g(paramMediaFormat);
+      com.tencent.tmediacodec.e.b localb = ZNL.ZNM;
+      int i = Math.max(localb.ZPs, ((e)localObject2).width);
+      int j = Math.max(localb.ZPt, ((e)localObject2).height);
+      if (localb.ZPr)
       {
-        localb.SmH = i;
-        localb.SmI = j;
+        localb.ZPs = i;
+        localb.ZPt = j;
       }
-      int k = Math.max(0, com.tencent.tmediacodec.g.d.d(((e)localObject2).bdq, i, j, false));
+      int k = Math.max(0, com.tencent.tmediacodec.g.d.d(((e)localObject2).aMQ, i, j, false));
       if (com.tencent.tmediacodec.g.b.isLogEnable())
       {
         new StringBuilder("initFormatWrapper initWidth:").append(i).append(" initHeight:").append(j).append(" initMaxInputSize:").append(k).append(' ').append("reusePolicy:").append(localb);
-        com.tencent.tmediacodec.g.b.bqQ("ReuseHelper");
+        com.tencent.tmediacodec.g.b.bDP("ReuseHelper");
       }
       ((e)localObject2).maxWidth = i;
       ((e)localObject2).maxHeight = j;
-      ((e)localObject2).bdr = k;
+      ((e)localObject2).aMR = k;
       paramMediaFormat.setInteger("max-input-size", Math.max(k, 0));
-      if ((((e)localObject2).cWJ()) && (Build.VERSION.SDK_INT >= 19))
+      if ((((e)localObject2).dlR()) && (Build.VERSION.SDK_INT >= 19))
       {
         paramMediaFormat.setInteger("max-width", i);
         paramMediaFormat.setInteger("max-height", j);
       }
-      if (paramb.Slr == b.b.Slt) {}
-      for (localObject1 = f.a(MediaCodec.createByCodecName(paramb.Slq), (String)localObject1, (e)localObject2);; localObject1 = f.a(MediaCodec.createDecoderByType((String)localObject1), (String)localObject1, (e)localObject2))
+      if (paramb.ZOc == b.b.ZOe) {}
+      for (localObject1 = f.a(MediaCodec.createByCodecName(paramb.ZOb), (String)localObject1, (e)localObject2);; localObject1 = f.a(MediaCodec.createDecoderByType((String)localObject1), (String)localObject1, (e)localObject2))
       {
-        ((c)localObject1).hpt();
-        this.Slf.put(paramb, localObject1);
+        ((c)localObject1).isZ();
+        this.ZNQ.put(paramb, localObject1);
         break;
       }
       label1101:
       if ((localObject1 instanceof com.tencent.tmediacodec.b.a)) {
-        this.Sli.f((f)localObject1);
+        this.ZNT.f((f)localObject1);
       }
     }
   }
   
   public final void a(c paramc)
   {
-    AppMethodBeat.i(190077);
-    if (this.Slc)
+    AppMethodBeat.i(224112);
+    if (this.ZNN)
     {
       if ((paramc instanceof g))
       {
-        this.Slh.g((f)paramc);
-        AppMethodBeat.o(190077);
+        this.ZNS.g((f)paramc);
+        AppMethodBeat.o(224112);
         return;
       }
       if ((paramc instanceof com.tencent.tmediacodec.b.a)) {
-        this.Sli.g((f)paramc);
+        this.ZNT.g((f)paramc);
       }
     }
-    AppMethodBeat.o(190077);
+    AppMethodBeat.o(224112);
   }
   
   public final void a(com.tencent.tmediacodec.e.b paramb)
   {
-    this.Slb = paramb;
+    this.ZNM = paramb;
   }
   
   public final void b(c paramc)
   {
-    AppMethodBeat.i(190078);
-    if (this.Slc)
+    AppMethodBeat.i(224115);
+    if (this.ZNN)
     {
       if ((paramc instanceof g))
       {
-        this.Slh.h((f)paramc);
-        AppMethodBeat.o(190078);
+        this.ZNS.h((f)paramc);
+        AppMethodBeat.o(224115);
         return;
       }
       if ((paramc instanceof com.tencent.tmediacodec.b.a)) {
-        this.Sli.h((f)paramc);
+        this.ZNT.h((f)paramc);
       }
     }
-    AppMethodBeat.o(190078);
+    AppMethodBeat.o(224115);
   }
   
-  public final void hpo()
+  public final void isU()
   {
-    AppMethodBeat.i(190075);
-    if (this.Slc != true)
+    AppMethodBeat.i(224099);
+    if (this.ZNN != true)
     {
-      this.Slc = true;
-      if ((this.Sld) && (!this.Slc))
+      this.ZNN = true;
+      if ((this.ZNO) && (!this.ZNN))
       {
-        this.Slh.hpB();
-        this.Sli.hpB();
+        this.ZNS.ith();
+        this.ZNT.ith();
       }
     }
-    AppMethodBeat.o(190075);
+    AppMethodBeat.o(224099);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tmediacodec.a
  * JD-Core Version:    0.7.0.1
  */

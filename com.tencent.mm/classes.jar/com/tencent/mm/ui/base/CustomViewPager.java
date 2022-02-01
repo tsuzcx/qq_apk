@@ -28,21 +28,21 @@ public class CustomViewPager
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(205203);
-    if ((this.mSwipeBackListener != null) && (this.mSwipeBackListener.eqF())) {
-      if (this.mSwipeBackListener.eqH())
+    AppMethodBeat.i(220101);
+    if ((this.mSwipeBackListener != null) && (this.mSwipeBackListener.fav())) {
+      if (this.mSwipeBackListener.fay())
       {
-        if (this.mSwipeBackListener.eqE() == 1)
+        if (this.mSwipeBackListener.fau() == 1)
         {
           this.mSwipeBackListener.n(paramMotionEvent);
-          AppMethodBeat.o(205203);
+          AppMethodBeat.o(220101);
           return true;
         }
-        if (this.mSwipeBackListener.j(paramMotionEvent))
+        if (this.mSwipeBackListener.i(paramMotionEvent))
         {
           paramMotionEvent.setAction(3);
           super.dispatchTouchEvent(paramMotionEvent);
-          AppMethodBeat.o(205203);
+          AppMethodBeat.o(220101);
           return true;
         }
       }
@@ -52,7 +52,7 @@ public class CustomViewPager
       }
     }
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(205203);
+    AppMethodBeat.o(220101);
     return bool;
   }
   
@@ -130,7 +130,7 @@ public class CustomViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.CustomViewPager
  * JD-Core Version:    0.7.0.1
  */

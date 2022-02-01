@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.emoji.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.c;
-import com.tencent.mm.model.cj.a;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.an.h.c;
+import com.tencent.mm.model.ck.a;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.emoji.model.k;
-import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.plugin.emoji.model.p;
+import com.tencent.mm.protocal.protobuf.db;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.platformtools.XmlParser;
@@ -15,15 +15,15 @@ import com.tencent.mm.storage.emotion.c;
 import java.util.Map;
 
 public final class e
-  implements cj.a
+  implements ck.a
 {
   public final void a(h.a parama)
   {
     AppMethodBeat.i(108736);
-    parama = parama.heO;
-    if (parama.xKb == 10002)
+    parama = parama.jQG;
+    if (parama.COi == 10002)
     {
-      parama = z.a(parama.KHn);
+      parama = z.a(parama.RIF);
       if (Util.isNullOrNil(parama))
       {
         Log.w("MicroMsg.emoji.EmojiRecommnedSysCmdMsgListener", "msg content is null");
@@ -36,9 +36,9 @@ public final class e
         localObject = (String)((Map)localObject).get(".sysmsg.$type");
         if ((!Util.isNullOrNil((String)localObject)) && (((String)localObject).equalsIgnoreCase("NewRecommendEmotion")))
         {
-          parama = d.amT(parama);
-          k.getEmojiStorageMgr().OpO.gEK();
-          k.getEmojiStorageMgr().OpO.bk(parama);
+          parama = d.auN(parama);
+          p.getEmojiStorageMgr().VFI.hBa();
+          p.getEmojiStorageMgr().VFI.bz(parama);
           AppMethodBeat.o(108736);
           return;
         }
@@ -47,7 +47,7 @@ public final class e
       AppMethodBeat.o(108736);
       return;
     }
-    Log.i("MicroMsg.emoji.EmojiRecommnedSysCmdMsgListener", "not new xml type:%d ", new Object[] { Integer.valueOf(parama.xKb) });
+    Log.i("MicroMsg.emoji.EmojiRecommnedSysCmdMsgListener", "not new xml type:%d ", new Object[] { Integer.valueOf(parama.COi) });
     AppMethodBeat.o(108736);
   }
   
@@ -55,7 +55,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.g.e
  * JD-Core Version:    0.7.0.1
  */

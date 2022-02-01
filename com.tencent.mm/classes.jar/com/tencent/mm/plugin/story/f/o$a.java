@@ -7,25 +7,25 @@ import java.util.Map;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/StoryLogic$StoryServer;", "", "()V", "timelineRespCount", "", "userRespCounts", "", "", "getFavResCount", "getHistoryResCount", "userName", "getResPCount", "getUserPageResCount", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/model/StoryLogic$StoryServer;", "", "()V", "timelineRespCount", "", "userRespCounts", "", "", "getFavResCount", "getHistoryResCount", "userName", "getResPCount", "getUserPageResCount", "plugin-story_release"})
 public final class o$a
 {
-  private Map<String, Integer> DMs;
-  public int DMv;
+  private Map<String, Integer> JZu;
+  public int JZx;
   
   public o$a()
   {
     AppMethodBeat.i(118757);
-    this.DMs = ((Map)new HashMap());
+    this.JZu = ((Map)new HashMap());
     AppMethodBeat.o(118757);
   }
   
-  public static int aSa(String paramString)
+  public static int bde(String paramString)
   {
     AppMethodBeat.i(118756);
-    p.h(paramString, "userName");
-    paramString = a.FvD;
-    int i = a.fqL();
+    p.k(paramString, "userName");
+    paramString = a.LPG;
+    int i = a.gfh();
     AppMethodBeat.o(118756);
     return i;
   }

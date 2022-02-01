@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.aa.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.y;
+import com.tencent.mm.protocal.protobuf.z;
 import com.tencent.mm.vending.h.e;
 import com.tencent.mm.vending.j.f;
 
 public final class c
   implements com.tencent.mm.vending.c.b<b>
 {
-  protected b jSj;
-  public final a jSk;
+  protected b mJw;
+  public final a mJx;
   
   public c()
   {
@@ -21,22 +21,22 @@ public final class c
   private c(b paramb)
   {
     AppMethodBeat.i(63322);
-    this.jSk = new a();
-    this.jSj = paramb;
+    this.mJx = new a();
+    this.mJw = paramb;
     AppMethodBeat.o(63322);
   }
   
-  public final b bmb()
+  public final b bwj()
   {
-    return this.jSj;
+    return this.mJw;
   }
   
   public final class a
-    implements e<y, f<String, Integer, String, String, Integer>>
+    implements e<z, f<String, Integer, String, String, Integer>>
   {
     public a() {}
     
-    public final String akn()
+    public final String aqj()
     {
       return "Vending.LOGIC";
     }
@@ -44,7 +44,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.c
  * JD-Core Version:    0.7.0.1
  */

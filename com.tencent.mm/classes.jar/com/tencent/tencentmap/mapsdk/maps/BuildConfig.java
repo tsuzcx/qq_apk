@@ -9,15 +9,15 @@ public final class BuildConfig
   public static final String FLAVOR_channel = "wechat";
   public static final String FLAVOR_searchable = "search";
   public static final String FLAVOR_sheetable = "sheetok";
-  public static final String REPO_VERSION = "3359e9135";
+  public static final String REPO_VERSION = "73a770d";
   public static final boolean SHEET_ENABLE = true;
   public static final String SHEET_PROJECT_NAME = "tms";
-  public static final int VERSION_CODE = 0;
-  public static final String VERSION_NAME = "4.4.0";
+  public static final int VERSION_CODE = 1;
+  public static final String VERSION_NAME = "4.4.1";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.BuildConfig
  * JD-Core Version:    0.7.0.1
  */

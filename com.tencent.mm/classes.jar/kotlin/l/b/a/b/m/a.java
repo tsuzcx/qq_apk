@@ -9,21 +9,21 @@ import kotlin.t;
 public final class a
   extends n
 {
-  public final aj TNh;
-  public final aj TtS;
+  public final aj aaWM;
+  public final aj abpJ;
   
   public a(aj paramaj1, aj paramaj2)
   {
     AppMethodBeat.i(60568);
-    this.TtS = paramaj1;
-    this.TNh = paramaj2;
+    this.aaWM = paramaj1;
+    this.abpJ = paramaj2;
     AppMethodBeat.o(60568);
   }
   
-  private a ET(boolean paramBoolean)
+  private a JA(boolean paramBoolean)
   {
     AppMethodBeat.i(60560);
-    a locala = new a(this.TtS.EG(paramBoolean), this.TNh.EG(paramBoolean));
+    a locala = new a(this.aaWM.Jn(paramBoolean), this.abpJ.Jn(paramBoolean));
     AppMethodBeat.o(60560);
     return locala;
   }
@@ -31,8 +31,8 @@ public final class a
   private a f(g paramg)
   {
     AppMethodBeat.i(60557);
-    p.h(paramg, "newAnnotations");
-    paramg = new a(this.TtS.d(paramg), this.TNh);
+    p.k(paramg, "newAnnotations");
+    paramg = new a(this.aaWM.d(paramg), this.abpJ);
     AppMethodBeat.o(60557);
     return paramg;
   }
@@ -40,8 +40,8 @@ public final class a
   private a h(i parami)
   {
     AppMethodBeat.i(60564);
-    p.h(parami, "kotlinTypeRefiner");
-    Object localObject = parami.aK((ab)this.TtS);
+    p.k(parami, "kotlinTypeRefiner");
+    Object localObject = parami.aK((ab)this.aaWM);
     if (localObject == null)
     {
       parami = new t("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
@@ -49,7 +49,7 @@ public final class a
       throw parami;
     }
     localObject = (aj)localObject;
-    parami = parami.aK((ab)this.TNh);
+    parami = parami.aK((ab)this.abpJ);
     if (parami == null)
     {
       parami = new t("null cannot be cast to non-null type org.jetbrains.kotlin.types.SimpleType");
@@ -61,14 +61,14 @@ public final class a
     return parami;
   }
   
-  protected final aj hDW()
+  protected final aj iIq()
   {
-    return this.TtS;
+    return this.aaWM;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.a
  * JD-Core Version:    0.7.0.1
  */

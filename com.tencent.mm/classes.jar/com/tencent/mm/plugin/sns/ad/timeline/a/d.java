@@ -2,7 +2,6 @@ package com.tencent.mm.plugin.sns.ad.timeline.a;
 
 import android.util.ArrayMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.i.c;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -11,164 +10,164 @@ import java.util.Set;
 public final class d
   implements Map<String, Object>
 {
-  private final Map<String, Object> Dxw;
+  private final Map<String, Object> JHd;
   
   public d()
   {
-    AppMethodBeat.i(202070);
-    this.Dxw = new ArrayMap();
-    AppMethodBeat.o(202070);
+    AppMethodBeat.i(210112);
+    this.JHd = new ArrayMap();
+    AppMethodBeat.o(210112);
   }
   
   public d(String paramString, Object paramObject)
   {
-    AppMethodBeat.i(202071);
-    this.Dxw = new ArrayMap();
-    this.Dxw.put(paramString, paramObject);
-    AppMethodBeat.o(202071);
+    AppMethodBeat.i(210115);
+    this.JHd = new ArrayMap();
+    this.JHd.put(paramString, paramObject);
+    AppMethodBeat.o(210115);
   }
   
   public final void clear()
   {
-    AppMethodBeat.i(202081);
-    this.Dxw.clear();
-    AppMethodBeat.o(202081);
+    AppMethodBeat.i(210137);
+    this.JHd.clear();
+    AppMethodBeat.o(210137);
   }
   
   public final boolean containsKey(Object paramObject)
   {
-    AppMethodBeat.i(202074);
+    AppMethodBeat.i(210122);
     if ((paramObject instanceof String))
     {
       paramObject = (String)paramObject;
       if (paramObject != null)
       {
-        boolean bool = this.Dxw.containsKey(paramObject);
-        AppMethodBeat.o(202074);
+        boolean bool = this.JHd.containsKey(paramObject);
+        AppMethodBeat.o(210122);
         return bool;
       }
-      AppMethodBeat.o(202074);
+      AppMethodBeat.o(210122);
       return false;
     }
-    AppMethodBeat.o(202074);
+    AppMethodBeat.o(210122);
     return false;
   }
   
   public final boolean containsValue(Object paramObject)
   {
-    AppMethodBeat.i(202075);
-    boolean bool = this.Dxw.containsValue(paramObject);
-    AppMethodBeat.o(202075);
+    AppMethodBeat.i(210125);
+    boolean bool = this.JHd.containsValue(paramObject);
+    AppMethodBeat.o(210125);
     return bool;
   }
   
   public final Set<Map.Entry<String, Object>> entrySet()
   {
-    AppMethodBeat.i(202084);
-    Set localSet = this.Dxw.entrySet();
-    AppMethodBeat.o(202084);
+    AppMethodBeat.i(210148);
+    Set localSet = this.JHd.entrySet();
+    AppMethodBeat.o(210148);
     return localSet;
   }
   
   public final Object get(Object paramObject)
   {
-    AppMethodBeat.i(202076);
+    AppMethodBeat.i(210126);
     if ((paramObject instanceof String))
     {
-      paramObject = this.Dxw.get(paramObject);
-      AppMethodBeat.o(202076);
+      paramObject = this.JHd.get(paramObject);
+      AppMethodBeat.o(210126);
       return paramObject;
     }
-    AppMethodBeat.o(202076);
+    AppMethodBeat.o(210126);
     return null;
   }
   
   public final boolean isEmpty()
   {
-    AppMethodBeat.i(202073);
-    boolean bool = this.Dxw.isEmpty();
-    AppMethodBeat.o(202073);
+    AppMethodBeat.i(210121);
+    boolean bool = this.JHd.isEmpty();
+    AppMethodBeat.o(210121);
     return bool;
   }
   
   public final Set<String> keySet()
   {
-    AppMethodBeat.i(202082);
-    Set localSet = this.Dxw.keySet();
-    AppMethodBeat.o(202082);
+    AppMethodBeat.i(210141);
+    Set localSet = this.JHd.keySet();
+    AppMethodBeat.o(210141);
     return localSet;
   }
   
   public final Object put(String paramString, Object paramObject)
   {
-    AppMethodBeat.i(202078);
+    AppMethodBeat.i(210131);
     if ((paramString == null) || (paramObject == null))
     {
-      AppMethodBeat.o(202078);
+      AppMethodBeat.o(210131);
       return null;
     }
-    paramString = this.Dxw.put(paramString, paramObject);
-    AppMethodBeat.o(202078);
+    paramString = this.JHd.put(paramString, paramObject);
+    AppMethodBeat.o(210131);
     return paramString;
   }
   
   public final void putAll(Map<? extends String, ?> paramMap)
   {
-    AppMethodBeat.i(202080);
-    if (c.aI(paramMap)) {
-      this.Dxw.putAll(paramMap);
+    AppMethodBeat.i(210135);
+    if (com.tencent.mm.plugin.sns.ad.i.d.aC(paramMap)) {
+      this.JHd.putAll(paramMap);
     }
-    AppMethodBeat.o(202080);
+    AppMethodBeat.o(210135);
   }
   
   public final Object remove(Object paramObject)
   {
-    AppMethodBeat.i(202079);
+    AppMethodBeat.i(210132);
     if ((paramObject instanceof String)) {
-      this.Dxw.remove(paramObject);
+      this.JHd.remove(paramObject);
     }
-    AppMethodBeat.o(202079);
+    AppMethodBeat.o(210132);
     return null;
   }
   
   public final int size()
   {
-    AppMethodBeat.i(202072);
-    int i = this.Dxw.size();
-    AppMethodBeat.o(202072);
+    AppMethodBeat.i(210118);
+    int i = this.JHd.size();
+    AppMethodBeat.o(210118);
     return i;
   }
   
   public final Collection<Object> values()
   {
-    AppMethodBeat.i(202083);
-    Collection localCollection = this.Dxw.values();
-    AppMethodBeat.o(202083);
+    AppMethodBeat.i(210144);
+    Collection localCollection = this.JHd.values();
+    AppMethodBeat.o(210144);
     return localCollection;
   }
   
-  public final <T> T z(String paramString, T paramT)
+  public final <T> T y(String paramString, T paramT)
   {
-    AppMethodBeat.i(202077);
+    AppMethodBeat.i(210130);
     try
     {
-      paramString = this.Dxw.get(paramString);
+      paramString = this.JHd.get(paramString);
       if (paramString != null)
       {
-        AppMethodBeat.o(202077);
+        AppMethodBeat.o(210130);
         return paramString;
       }
     }
     catch (Throwable paramString)
     {
-      AppMethodBeat.o(202077);
+      AppMethodBeat.o(210130);
     }
     return paramT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.timeline.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,347 +1,446 @@
 package com.tencent.mm.plugin.scanner.util;
 
-import android.content.Context;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.TimeInterpolator;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.graphics.PointF;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Looper;
+import android.view.View;
+import android.view.ViewPropertyAnimator;
+import android.view.animation.LinearInterpolator;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.e.h;
+import com.tencent.e.i;
+import com.tencent.e.i.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.scanner.model.b;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.XmlParser;
-import java.util.LinkedList;
-import java.util.Map;
+import com.tencent.mm.ui.base.g;
+import kotlin.g.a.a;
+import kotlin.g.a.b;
+import kotlin.g.b.aa.f;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/util/ScanViewUtils;", "", "()V", "TAG", "", "animateAlpha", "", "view", "Landroid/view/View;", "show", "", "animatorListener", "Landroid/animation/Animator$AnimatorListener;", "fromAlpha", "", "targetAlpha", "duration", "", "convertToImageCoordinate", "Landroid/graphics/PointF;", "imageView", "x", "y", "Landroid/widget/ImageView;", "imageWidth", "", "imageHeight", "filePath", "width", "height", "fitBitmapBottom", "bitmap", "Landroid/graphics/Bitmap;", "viewWidth", "viewHeight", "getBlurBitmap", "async", "callback", "Lkotlin/Function1;", "getRoundBitmap", "invertMapPoint", "matrix", "Landroid/graphics/Matrix;", "srcPoints", "", "scan-sdk_release"})
 public final class n
 {
-  public static int aMS(String paramString)
+  public static final n IZP;
+  
+  static
   {
-    AppMethodBeat.i(52064);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(52064);
-      return 0;
-    }
-    paramString = paramString.trim();
-    if (paramString.startsWith("<user"))
-    {
-      AppMethodBeat.o(52064);
-      return 1;
-    }
-    if (paramString.startsWith("<url"))
-    {
-      AppMethodBeat.o(52064);
-      return 2;
-    }
-    if (paramString.startsWith("<product"))
-    {
-      AppMethodBeat.o(52064);
-      return 3;
-    }
-    if (paramString.startsWith("<search"))
-    {
-      AppMethodBeat.o(52064);
-      return 4;
-    }
-    AppMethodBeat.o(52064);
-    return 0;
+    AppMethodBeat.i(193635);
+    IZP = new n();
+    AppMethodBeat.o(193635);
   }
   
-  public static a aMT(String paramString)
+  public static final PointF a(ImageView paramImageView, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(52066);
-    if (paramString == null)
+    AppMethodBeat.i(193634);
+    if (paramImageView == null)
     {
-      AppMethodBeat.o(52066);
+      AppMethodBeat.o(193634);
       return null;
     }
-    Map localMap = XmlParser.parseXml(paramString, "search", null);
-    if (localMap == null)
+    if ((paramInt1 <= 0) || (paramInt2 <= 0))
     {
-      AppMethodBeat.o(52066);
+      AppMethodBeat.o(193634);
       return null;
     }
-    a locala = new a();
-    locala.field_xmlType = 4;
-    locala.field_xml = paramString;
-    locala.CUx = b.o(localMap, ".search");
-    AppMethodBeat.o(52066);
-    return locala;
-  }
-  
-  public static String am(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(52063);
-    if ((paramContext == null) || (paramInt < 0))
+    float[] arrayOfFloat = new float[2];
+    arrayOfFloat[0] = paramFloat1;
+    arrayOfFloat[1] = paramFloat2;
+    Object localObject = paramImageView.getImageMatrix();
+    paramImageView = paramImageView.getDrawable();
+    int i;
+    label77:
+    int j;
+    if (paramImageView != null)
     {
-      AppMethodBeat.o(52063);
-      return "";
-    }
-    if (paramInt == 0) {
-      paramContext.getString(2131764983);
+      paramImageView = paramImageView.getBounds();
+      if (paramImageView == null) {
+        break label202;
+      }
+      i = paramImageView.width();
+      if (paramImageView == null) {
+        break label208;
+      }
+      j = paramImageView.height();
+      label87:
+      if (localObject != null) {
+        break label215;
+      }
+      paramImageView = null;
     }
     for (;;)
     {
-      paramContext = paramContext.getString(2131764983);
-      AppMethodBeat.o(52063);
-      return paramContext;
-      if (paramInt == 1) {
-        paramContext.getString(2131764976);
-      } else if (paramInt == 2) {
-        paramContext.getString(2131764982);
-      } else if (paramInt == 3) {
-        paramContext.getString(2131764977);
-      }
-    }
-  }
-  
-  public static String c(a parama)
-  {
-    AppMethodBeat.i(52067);
-    StringBuilder localStringBuilder = new StringBuilder(256);
-    if (!Util.isNullOrNil(parama.field_productid))
-    {
-      localStringBuilder.append("<productInfo><product type=\"" + parama.field_type + "\">");
-      localStringBuilder.append("<id>" + Util.escapeStringForXml(parama.field_productid) + "</id>");
-      localStringBuilder.append("<title>" + Util.escapeStringForXml(parama.field_title) + "</title>");
-      localStringBuilder.append("<subtitle>" + Util.escapeStringForXml(parama.field_subtitle) + "</subtitle>");
-      localStringBuilder.append("<thumburl>" + Util.escapeStringForXml(parama.field_thumburl) + "</thumburl>");
-      localStringBuilder.append("<source>" + Util.escapeStringForXml(parama.field_source) + "</source>");
-      localStringBuilder.append("<shareurl>" + Util.escapeStringForXml(parama.field_shareurl) + "</shareurl>");
-      localStringBuilder.append("<playurl>" + Util.escapeStringForXml(parama.field_playurl) + "</playurl>");
-      localStringBuilder.append("<extinfo>" + Util.escapeStringForXml(parama.field_extinfo) + "</extinfo>");
-      localStringBuilder.append("<getaction>" + Util.escapeStringForXml(new StringBuilder().append(parama.field_getaction).toString()) + "</getaction>");
-      localStringBuilder.append("<certification>" + Util.escapeStringForXml(new StringBuilder().append(parama.field_certification).toString()) + "</certification>");
-      localStringBuilder.append("<headerbackgroundurl>" + Util.escapeStringForXml(new StringBuilder().append(parama.field_headerbackgroundurl).toString()) + "</headerbackgroundurl>");
-      localStringBuilder.append("<headermask>" + Util.escapeStringForXml(new StringBuilder().append(parama.field_headermask).toString()) + "</headermask>");
-      localStringBuilder.append("<detailurl>" + Util.escapeStringForXml(new StringBuilder().append(parama.field_detailurl).toString()) + "</detailurl>");
-      localStringBuilder.append("<certificationurl>" + Util.escapeStringForXml(new StringBuilder().append(parama.field_certificationurl).toString()) + "</certificationurl>");
-      localStringBuilder.append("</product>");
-      localStringBuilder.append("<functionType>" + parama.field_functionType + "</functionType>");
-      localStringBuilder.append("</productInfo>");
-    }
-    for (;;)
-    {
-      parama = localStringBuilder.toString();
-      AppMethodBeat.o(52067);
-      return parama;
-      if (parama.field_xml == null)
+      if (paramImageView != null)
       {
-        Log.e("MicroMsg.Scanner.ScanXmlHelper", "product.field_xml == null in getProductInfoXml()");
-        AppMethodBeat.o(52067);
-        return "";
+        paramImageView.x /= i;
+        paramImageView.y /= j;
+        Log.i("MicroMsg.ScanViewUtils", "alvinluo convertScreenToImageCoordinate screenCoordinate x: %s, y: %s, imageCoordinate: %s, imageWidth: %s, imageHeight: %s, show: %s, %s", new Object[] { Float.valueOf(arrayOfFloat[0]), Float.valueOf(arrayOfFloat[1]), paramImageView, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i), Integer.valueOf(j) });
       }
-      if (parama.field_xml.startsWith("<productInfo"))
-      {
-        parama = parama.field_xml;
-        AppMethodBeat.o(52067);
-        return parama;
-      }
-      localStringBuilder.append("<productInfo>");
-      localStringBuilder.append(parama.field_xml);
-      localStringBuilder.append("<functionType>" + parama.field_functionType + "</functionType>");
-      localStringBuilder.append("</productInfo>");
-    }
-  }
-  
-  public static a fp(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(52065);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(52065);
-      return null;
-    }
-    String str = "";
-    Object localObject;
-    if (paramString.startsWith("<productInfo"))
-    {
-      localObject = XmlParser.parseXml(paramString, "productInfo", null);
-      str = ".productInfo";
-    }
-    for (int i = 1; localObject == null; i = 0)
-    {
-      AppMethodBeat.o(52065);
-      return null;
-      localObject = XmlParser.parseXml(paramString, "product", null);
-    }
-    a locala = new a();
-    if (!Util.isNullOrNil((String)((Map)localObject).get(str + ".product.$type")))
-    {
-      locala.field_type = Util.getInt((String)((Map)localObject).get(str + ".product.$type"), 0);
-      locala.field_productid = Util.nullAsNil((String)((Map)localObject).get(str + ".product.id"));
-      locala.field_subtitle = Util.nullAsNil((String)((Map)localObject).get(str + ".product.subtitle"));
-      locala.field_shareurl = Util.nullAsNil((String)((Map)localObject).get(str + ".product.shareurl"));
-      locala.field_playurl = Util.nullAsNil((String)((Map)localObject).get(str + ".product.playurl"));
-      locala.field_xmlType = 3;
-      locala.field_title = Util.nullAsNil((String)((Map)localObject).get(str + ".product.title"));
-      locala.field_thumburl = Util.nullAsNil((String)((Map)localObject).get(str + ".product.thumburl"));
-      locala.field_source = Util.nullAsNil((String)((Map)localObject).get(str + ".product.source"));
-      locala.field_feedbackurl = Util.nullAsNil((String)((Map)localObject).get(str + ".product.feedbackurl"));
-      locala.field_extinfo = Util.nullAsNil((String)((Map)localObject).get(str + ".product.extinfo"));
-      locala.field_introtitle = Util.nullAsNil((String)((Map)localObject).get(str + ".product.introtitle"));
-      locala.field_introlink = Util.nullAsNil((String)((Map)localObject).get(str + ".product.introlink"));
-      locala.field_getaction = Util.getInt((String)((Map)localObject).get(str + ".product.getaction"), 0);
-      locala.field_certification = Util.nullAsNil((String)((Map)localObject).get(str + ".product.certification"));
-      locala.field_headerbackgroundurl = Util.nullAsNil((String)((Map)localObject).get(str + ".product.headerbackgroundurl"));
-      locala.field_headermask = Util.nullAsNil((String)((Map)localObject).get(str + ".product.headermask"));
-      locala.field_detailurl = Util.nullAsNil((String)((Map)localObject).get(str + ".product.detailurl"));
-      locala.field_certificationurl = Util.nullAsNil((String)((Map)localObject).get(str + ".product.certificationurl"));
-      locala.field_exposeurl = Util.nullAsNil((String)((Map)localObject).get(str + ".product.exposeurl"));
-      locala.CUx = b.o((Map)localObject, str + ".product");
-      locala.q((Map)localObject, str + ".product");
-      localObject = (String)((Map)localObject).get(str + ".functionType");
-      if (Util.isNullOrNil((String)localObject)) {
-        break label982;
-      }
-      locala.field_functionType = Util.getInt((String)localObject, 0);
-      label954:
-      if (i == 0) {
-        break label991;
-      }
-    }
-    for (locala.field_xml = paramString;; locala.field_xml = ((StringBuilder)localObject).toString())
-    {
-      AppMethodBeat.o(52065);
-      return locala;
-      locala.field_type = 0;
+      AppMethodBeat.o(193634);
+      return paramImageView;
+      paramImageView = null;
       break;
-      label982:
-      locala.field_functionType = paramInt;
-      break label954;
-      label991:
-      localObject = new StringBuilder(256);
-      ((StringBuilder)localObject).append("<productInfo>");
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append("<functionType>" + locala.field_functionType + "</functionType>");
-      ((StringBuilder)localObject).append("</productInfo>");
+      label202:
+      i = paramInt1;
+      break label77;
+      label208:
+      j = paramInt2;
+      break label87;
+      label215:
+      paramImageView = new Matrix();
+      if (!((Matrix)localObject).invert(paramImageView))
+      {
+        Log.e("MicroMsg.ScanViewUtils", "invertMapPoint invert matrix failed");
+        paramImageView = null;
+      }
+      else
+      {
+        localObject = new float[2];
+        paramImageView.mapPoints((float[])localObject, arrayOfFloat);
+        paramImageView = new PointF(localObject[0], localObject[1]);
+      }
     }
   }
   
+  public static final PointF a(String paramString, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
+  {
+    AppMethodBeat.i(193629);
+    if (paramString == null)
+    {
+      paramString = new PointF(paramFloat1, paramFloat2);
+      AppMethodBeat.o(193629);
+      return paramString;
+    }
+    float f = paramFloat1;
+    if (paramInt1 > 0) {
+      f = paramFloat1 / paramInt1;
+    }
+    paramFloat1 = paramFloat2;
+    if (paramInt2 > 0) {
+      paramFloat1 = paramFloat2 / paramInt2;
+    }
+    paramString = new PointF(f, paramFloat1);
+    AppMethodBeat.o(193629);
+    return paramString;
+  }
+  
+  public static final void a(final Bitmap paramBitmap, final b<? super Bitmap, x> paramb)
+  {
+    AppMethodBeat.i(193625);
+    p.k(paramb, "callback");
+    aa.f localf = new aa.f();
+    localf.aaBC = null;
+    ((a)new b(localf, paramBitmap, paramb)).invoke();
+    AppMethodBeat.o(193625);
+  }
+  
+  public static final void a(View paramView, float paramFloat1, float paramFloat2, long paramLong, Animator.AnimatorListener paramAnimatorListener)
+  {
+    AppMethodBeat.i(193624);
+    Log.v("MicroMsg.ScanViewUtils", "alvinluo animateAlpha view: %s, fromAlpha: %s, targetAlpha: %s", new Object[] { paramView, Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
+    if (paramView != null)
+    {
+      ViewPropertyAnimator localViewPropertyAnimator = paramView.animate();
+      if (localViewPropertyAnimator != null)
+      {
+        localViewPropertyAnimator = localViewPropertyAnimator.setListener(null);
+        if (localViewPropertyAnimator != null)
+        {
+          localViewPropertyAnimator = localViewPropertyAnimator.setUpdateListener(null);
+          if (localViewPropertyAnimator != null) {
+            localViewPropertyAnimator.cancel();
+          }
+        }
+      }
+    }
+    if (paramView != null) {
+      paramView.setAlpha(paramFloat1);
+    }
+    if (paramView != null)
+    {
+      paramView = paramView.animate();
+      if (paramView != null)
+      {
+        paramView = paramView.alpha(paramFloat2);
+        if (paramView != null)
+        {
+          paramView = paramView.setDuration(paramLong);
+          if (paramView != null)
+          {
+            paramView = paramView.setInterpolator((TimeInterpolator)new LinearInterpolator());
+            if (paramView != null)
+            {
+              paramView = paramView.setListener(paramAnimatorListener);
+              if (paramView != null)
+              {
+                paramView.start();
+                AppMethodBeat.o(193624);
+                return;
+              }
+            }
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(193624);
+  }
+  
+  public static final void a(final View paramView, final boolean paramBoolean, Animator.AnimatorListener paramAnimatorListener)
+  {
+    float f2 = 1.0F;
+    AppMethodBeat.i(193623);
+    if (paramView == null)
+    {
+      AppMethodBeat.o(193623);
+      return;
+    }
+    if ((paramBoolean) && (paramView.getAlpha() != 0.0F))
+    {
+      Log.w("MicroMsg.ScanViewUtils", "alvinluo animateAlpha show ignore, view: %s", new Object[] { paramView });
+      AppMethodBeat.o(193623);
+      return;
+    }
+    if ((!paramBoolean) && (paramView.getAlpha() != 1.0F))
+    {
+      Log.w("MicroMsg.ScanViewUtils", "alvinluo animateAlpha hide ignore, view: %s", new Object[] { paramView });
+      AppMethodBeat.o(193623);
+      return;
+    }
+    Log.v("MicroMsg.ScanViewUtils", "alvinluo animateAlpha show: %b, view: %s", new Object[] { Boolean.valueOf(paramBoolean), paramView });
+    paramAnimatorListener = (Animator.AnimatorListener)new a(paramAnimatorListener, paramView, paramBoolean);
+    paramView.setVisibility(0);
+    float f1;
+    if (paramBoolean)
+    {
+      f1 = 0.0F;
+      if (!paramBoolean) {
+        break label159;
+      }
+    }
+    for (;;)
+    {
+      a(paramView, f1, f2, 200L, paramAnimatorListener);
+      AppMethodBeat.o(193623);
+      return;
+      f1 = 1.0F;
+      break;
+      label159:
+      f2 = 0.0F;
+    }
+  }
+  
+  public static boolean a(Bitmap paramBitmap, ImageView paramImageView, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(193615);
+    p.k(paramImageView, "imageView");
+    if ((paramBitmap == null) || (paramBitmap.isRecycled()))
+    {
+      paramImageView.setImageBitmap(null);
+      AppMethodBeat.o(193615);
+      return false;
+    }
+    paramImageView.setImageBitmap(paramBitmap);
+    Matrix localMatrix1 = new Matrix();
+    paramImageView.setScaleType(ImageView.ScaleType.MATRIX);
+    Matrix localMatrix2 = paramImageView.getImageMatrix();
+    float f1 = 1.0F * paramInt1 / paramBitmap.getWidth();
+    float f2 = paramInt2 - paramBitmap.getHeight() * f1;
+    Log.d("MicroMsg.ScanViewUtils", "alvinluo fitBitmapBottom bitmap: %d, %d, scale: %f, translationY: %f, width: %d, height: %d", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    localMatrix2.postScale(f1, f1);
+    localMatrix2.postTranslate(0.0F, f2);
+    localMatrix1.set(localMatrix2);
+    paramImageView.setImageMatrix(localMatrix1);
+    AppMethodBeat.o(193615);
+    return true;
+  }
+  
+  public static Bitmap ao(Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(193619);
+    if (paramBitmap != null) {}
+    try
+    {
+      if (!paramBitmap.isRecycled())
+      {
+        if (paramBitmap.getWidth() > paramBitmap.getHeight()) {}
+        for (double d = Math.floor(paramBitmap.getWidth() / 2.0D + 0.5D);; d = Math.floor(paramBitmap.getHeight() / 2.0D + 0.5D))
+        {
+          paramBitmap = BitmapUtil.getRoundedCornerBitmap(paramBitmap, false, (float)d);
+          AppMethodBeat.o(193619);
+          return paramBitmap;
+        }
+      }
+      AppMethodBeat.o(193619);
+      return paramBitmap;
+    }
+    catch (Exception paramBitmap)
+    {
+      Log.printErrStackTrace("MicroMsg.ScanViewUtils", (Throwable)paramBitmap, "alvinluo decodeRoundBitmap exception", new Object[0]);
+      AppMethodBeat.o(193619);
+    }
+    return null;
+  }
+  
+  public static final PointF g(View paramView, float paramFloat1, float paramFloat2)
+  {
+    AppMethodBeat.i(193627);
+    PointF localPointF = new PointF(paramFloat1, paramFloat2);
+    if ((paramView instanceof g))
+    {
+      paramView = ((g)paramView).d(localPointF);
+      AppMethodBeat.o(193627);
+      return paramView;
+    }
+    AppMethodBeat.o(193627);
+    return null;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/scanner/util/ScanViewUtils$animateAlpha$listener$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "scan-sdk_release"})
   public static final class a
+    implements Animator.AnimatorListener
   {
-    public LinkedList<b> CUx;
-    public a CUy;
-    public String field_certification;
-    public String field_certificationurl;
-    public String field_detailurl;
-    public String field_exposeurl;
-    public String field_extinfo;
-    public String field_feedbackurl;
-    public int field_functionType;
-    public int field_getaction;
-    public String field_headerbackgroundurl;
-    public String field_headermask;
-    public String field_introlink;
-    public String field_introtitle;
-    public String field_playurl;
-    public String field_productid;
-    public String field_shareurl;
-    public String field_source;
-    public String field_subtitle;
-    public String field_thumburl;
-    public String field_title;
-    public int field_type;
-    public String field_xml;
-    public int field_xmlType;
+    a(Animator.AnimatorListener paramAnimatorListener, View paramView, boolean paramBoolean) {}
     
-    public final void q(Map<String, String> paramMap, String paramString)
+    public final void onAnimationCancel(Animator paramAnimator)
     {
-      AppMethodBeat.i(52062);
-      if (paramMap != null)
+      AppMethodBeat.i(192686);
+      p.k(paramAnimator, "animation");
+      Animator.AnimatorListener localAnimatorListener = this.IUM;
+      if (localAnimatorListener != null)
       {
-        this.CUy = new a();
-        this.CUy.CUz = new LinkedList();
-        Object localObject2 = paramString + ".bannerlist.banner";
-        int i = 0;
-        Object localObject3;
-        if (i < 1000)
-        {
-          localObject3 = new StringBuilder().append((String)localObject2);
-          if (i > 0) {}
-          for (localObject1 = Integer.valueOf(i);; localObject1 = "")
-          {
-            localObject1 = localObject1;
-            localObject1 = (String)paramMap.get((String)localObject1 + ".link");
-            if (Util.isNullOrNil((String)localObject1)) {
-              break label182;
-            }
-            localObject3 = new n.a.a.a();
-            ((n.a.a.a)localObject3).link = ((String)localObject1);
-            this.CUy.CUz.add(localObject3);
-            i += 1;
-            break;
-          }
-        }
-        label182:
-        this.CUy.CUA = new LinkedList();
-        Object localObject1 = paramString + ".detaillist.detail";
-        i = 0;
-        if (i < 1000)
-        {
-          localObject2 = new StringBuilder().append((String)localObject1);
-          if (i > 0) {}
-          for (paramString = Integer.valueOf(i);; paramString = "")
-          {
-            localObject2 = paramString;
-            paramString = (String)paramMap.get((String)localObject2 + ".title");
-            localObject2 = (String)paramMap.get((String)localObject2 + ".desc");
-            if ((Util.isNullOrNil(paramString)) && (Util.isNullOrNil((String)localObject2))) {
-              break label384;
-            }
-            localObject3 = new n.a.a.b();
-            ((n.a.a.b)localObject3).title = paramString;
-            ((n.a.a.b)localObject3).desc = ((String)localObject2);
-            this.CUy.CUA.add(localObject3);
-            i += 1;
-            break;
-          }
-        }
+        localAnimatorListener.onAnimationCancel(paramAnimator);
+        AppMethodBeat.o(192686);
+        return;
       }
-      label384:
-      AppMethodBeat.o(52062);
+      AppMethodBeat.o(192686);
     }
     
-    public static final class a
+    public final void onAnimationEnd(Animator paramAnimator)
     {
-      public LinkedList<b> CUA;
-      public LinkedList<a> CUz;
-      
-      public static final class a
+      AppMethodBeat.i(192683);
+      p.k(paramAnimator, "animation");
+      Object localObject = paramView;
+      if (paramBoolean) {}
+      for (int i = 0;; i = 8)
       {
-        public String link;
+        ((View)localObject).setVisibility(i);
+        localObject = this.IUM;
+        if (localObject == null) {
+          break;
+        }
+        ((Animator.AnimatorListener)localObject).onAnimationEnd(paramAnimator);
+        AppMethodBeat.o(192683);
+        return;
       }
-      
-      public static final class b
+      AppMethodBeat.o(192683);
+    }
+    
+    public final void onAnimationRepeat(Animator paramAnimator)
+    {
+      AppMethodBeat.i(192687);
+      p.k(paramAnimator, "animation");
+      Animator.AnimatorListener localAnimatorListener = this.IUM;
+      if (localAnimatorListener != null)
       {
-        public String desc;
-        public String title;
+        localAnimatorListener.onAnimationRepeat(paramAnimator);
+        AppMethodBeat.o(192687);
+        return;
       }
+      AppMethodBeat.o(192687);
+    }
+    
+    public final void onAnimationStart(Animator paramAnimator)
+    {
+      AppMethodBeat.i(192680);
+      p.k(paramAnimator, "animation");
+      Animator.AnimatorListener localAnimatorListener = this.IUM;
+      if (localAnimatorListener != null)
+      {
+        localAnimatorListener.onAnimationStart(paramAnimator);
+        AppMethodBeat.o(192680);
+        return;
+      }
+      AppMethodBeat.o(192680);
     }
   }
   
-  public static final class b
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "kotlin.jvm.PlatformType", "invoke"})
+  static final class b
+    extends q
+    implements a<Object>
   {
-    public String link;
-    
-    public b(String paramString)
+    b(aa.f paramf, Bitmap paramBitmap, b paramb)
     {
-      this.link = paramString;
+      super();
     }
-  }
-  
-  public static final class c
-  {
-    public String nickname;
-    public String username;
     
-    public c(String paramString1, String paramString2)
+    public final Object invoke()
     {
-      this.username = paramString1;
-      this.nickname = paramString2;
+      Object localObject2 = null;
+      AppMethodBeat.i(193552);
+      try
+      {
+        long l = System.currentTimeMillis();
+        this.kyE.aaBC = BitmapUtil.fastBlurBitmap(paramBitmap, 0.1F, 10, true, 200L);
+        Log.i("MicroMsg.ScanViewUtils", "alvinluo blurBitmap cost: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+        Object localObject1 = (Bitmap)this.kyE.aaBC;
+        if (localObject1 != null)
+        {
+          localObject1 = Integer.valueOf(((Bitmap)localObject1).getWidth());
+          Bitmap localBitmap = (Bitmap)this.kyE.aaBC;
+          if (localBitmap != null) {
+            localObject2 = Integer.valueOf(localBitmap.getHeight());
+          }
+          Log.d("MicroMsg.ScanViewUtils", "alvinluo blurBitmap width: %s, height: %s", new Object[] { localObject1, localObject2 });
+          localObject1 = Thread.currentThread();
+          localObject2 = Looper.getMainLooper();
+          p.j(localObject2, "Looper.getMainLooper()");
+          if (!p.h(localObject1, ((Looper)localObject2).getThread())) {
+            break label205;
+          }
+          localObject1 = paramb.invoke((Bitmap)this.kyE.aaBC);
+          AppMethodBeat.o(193552);
+          return localObject1;
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          Log.printErrStackTrace("MicroMsg.ScanViewUtils", (Throwable)localException, "blurBitmap exception", new Object[0]);
+          continue;
+          locald = null;
+        }
+        label205:
+        d locald = h.ZvG.bc((Runnable)new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(193361);
+            this.IZQ.jFa.invoke((Bitmap)this.IZQ.kyE.aaBC);
+            AppMethodBeat.o(193361);
+          }
+        });
+        AppMethodBeat.o(193552);
+        return locald;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.util.n
  * JD-Core Version:    0.7.0.1
  */

@@ -17,12 +17,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.finder.b.f;
+import com.tencent.mm.plugin.finder.b.g;
+import com.tencent.mm.plugin.finder.b.j;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
 import com.tencent.mm.plugin.gallery.model.i.c;
 import com.tencent.mm.plugin.gallery.model.o;
 import com.tencent.mm.plugin.gallery.ui.a.e;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.base.q.g;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
 import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 import java.util.ArrayList;
@@ -30,33 +33,33 @@ import java.util.LinkedList;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderGridGalleryView;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/plugin/gallery/model/IMediaQuery$IQueryMediaInAlbumFinished;", "Lcom/tencent/mm/plugin/gallery/ui/AlbumAdapter$IOnSelectItemChanged;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "MediaType_QueryArray", "", "MediaType_StringArray", "TAG", "", "albumAdapter", "Lcom/tencent/mm/plugin/gallery/ui/AlbumAdapter;", "columnNum", "gridView", "Landroid/widget/GridView;", "mediaTypePopupMenu", "Lcom/tencent/mm/ui/widget/menu/MMPopupMenu;", "mediaTypeTv", "Landroid/widget/TextView;", "multiSelect", "Lcom/tencent/mm/ui/widget/MMSwitchBtn;", "multiSelectLimit", "onItemSelectListener", "Lcom/tencent/mm/plugin/finder/view/FinderGridGalleryView$OnItemSelectListener;", "queryService", "Lcom/tencent/mm/plugin/gallery/model/MediaQueryService;", "queryTicket", "", "selectLimit", "init", "", "onQueryMediaFinished", "mediaItems", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "ticket", "isFirstNotify", "", "onSelectItemChanged", "selectedCount", "position", "selectPosition", "type", "setColumnNum", "setMaxSelectLimit", "setOnItemSelectListener", "onItemSelectedListener", "Companion", "OnItemSelectListener", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/view/FinderGridGalleryView;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/plugin/gallery/model/IMediaQuery$IQueryMediaInAlbumFinished;", "Lcom/tencent/mm/plugin/gallery/ui/AlbumAdapter$IOnSelectItemChanged;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "MediaType_QueryArray", "", "MediaType_StringArray", "TAG", "", "albumAdapter", "Lcom/tencent/mm/plugin/gallery/ui/AlbumAdapter;", "columnNum", "gridView", "Landroid/widget/GridView;", "mediaTypePopupMenu", "Lcom/tencent/mm/ui/widget/menu/MMPopupMenu;", "mediaTypeTv", "Landroid/widget/TextView;", "multiSelect", "Lcom/tencent/mm/ui/widget/MMSwitchBtn;", "multiSelectLimit", "onItemSelectListener", "Lcom/tencent/mm/plugin/finder/view/FinderGridGalleryView$OnItemSelectListener;", "queryService", "Lcom/tencent/mm/plugin/gallery/model/MediaQueryService;", "queryTicket", "", "selectLimit", "init", "", "onQueryMediaFinished", "mediaItems", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "ticket", "isFirstNotify", "", "onSelectItemChanged", "selectedCount", "position", "selectPosition", "type", "setColumnNum", "setMaxSelectLimit", "setOnItemSelectListener", "onItemSelectedListener", "Companion", "OnItemSelectListener", "plugin-finder_release"})
 public final class FinderGridGalleryView
   extends LinearLayout
   implements i.c, a.e
 {
-  private static final String wnf = "selected_media_items";
-  public static final FinderGridGalleryView.a wng;
+  private static final String AYj = "selected_media_items";
+  public static final FinderGridGalleryView.a AYk;
+  private final int[] AXW;
+  private final int[] AXX;
+  private TextView AXY;
+  private GridView AXZ;
+  private MMSwitchBtn AYa;
+  private com.tencent.mm.plugin.gallery.ui.a AYb;
+  private o AYc;
+  private com.tencent.mm.ui.widget.b.a AYd;
+  private FinderGridGalleryView.b AYe;
+  private int AYf;
+  private int AYg;
+  private long AYh;
+  private int AYi;
   private final String TAG;
-  private long qVk;
-  private final int[] wmT;
-  private final int[] wmU;
-  private TextView wmV;
-  private GridView wmW;
-  private MMSwitchBtn wmX;
-  private com.tencent.mm.plugin.gallery.ui.a wmY;
-  private o wmZ;
-  private com.tencent.mm.ui.widget.b.a wna;
-  private FinderGridGalleryView.b wnb;
-  private int wnc;
-  private int wnd;
-  private int wne;
   
   static
   {
     AppMethodBeat.i(168364);
-    wng = new FinderGridGalleryView.a((byte)0);
-    wnf = "selected_media_items";
+    AYk = new FinderGridGalleryView.a((byte)0);
+    AYj = "selected_media_items";
     AppMethodBeat.o(168364);
   }
   
@@ -65,11 +68,11 @@ public final class FinderGridGalleryView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(168362);
     this.TAG = "Finder.FinderGridGalleryView";
-    this.wmT = new int[] { 2131759799, 2131759801, 2131759800 };
-    this.wmU = new int[] { 1, 2, 3 };
-    this.wnc = 4;
-    this.wnd = 1;
-    this.wne = 9;
+    this.AXW = new int[] { b.j.finder_gallery_mediaType_image, b.j.finder_gallery_mediaType_video, b.j.finder_gallery_mediaType_image_and_video };
+    this.AXX = new int[] { 1, 2, 3 };
+    this.AYf = 4;
+    this.AYg = 1;
+    this.AYi = 9;
     init();
     AppMethodBeat.o(168362);
   }
@@ -79,11 +82,11 @@ public final class FinderGridGalleryView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(168363);
     this.TAG = "Finder.FinderGridGalleryView";
-    this.wmT = new int[] { 2131759799, 2131759801, 2131759800 };
-    this.wmU = new int[] { 1, 2, 3 };
-    this.wnc = 4;
-    this.wnd = 1;
-    this.wne = 9;
+    this.AXW = new int[] { b.j.finder_gallery_mediaType_image, b.j.finder_gallery_mediaType_video, b.j.finder_gallery_mediaType_image_and_video };
+    this.AXX = new int[] { 1, 2, 3 };
+    this.AYf = 4;
+    this.AYg = 1;
+    this.AYi = 9;
     init();
     AppMethodBeat.o(168363);
   }
@@ -91,105 +94,105 @@ public final class FinderGridGalleryView
   private final void init()
   {
     AppMethodBeat.i(168357);
-    Object localObject1 = View.inflate(getContext(), 2131494338, (ViewGroup)this);
-    Object localObject2 = ((View)localObject1).findViewById(2131304575);
-    p.g(localObject2, "contentView.findViewById(R.id.media_type_tv)");
-    this.wmV = ((TextView)localObject2);
-    localObject2 = ((View)localObject1).findViewById(2131304997);
-    p.g(localObject2, "contentView.findViewById(R.id.multi_select_switch)");
-    this.wmX = ((MMSwitchBtn)localObject2);
-    localObject1 = ((View)localObject1).findViewById(2131304557);
-    p.g(localObject1, "contentView.findViewById(R.id.media_grid_view)");
-    this.wmW = ((GridView)localObject1);
-    localObject1 = this.wmW;
+    Object localObject1 = View.inflate(getContext(), b.g.finder_grid_gallery_view, (ViewGroup)this);
+    Object localObject2 = ((View)localObject1).findViewById(b.f.media_type_tv);
+    p.j(localObject2, "contentView.findViewById(R.id.media_type_tv)");
+    this.AXY = ((TextView)localObject2);
+    localObject2 = ((View)localObject1).findViewById(b.f.multi_select_switch);
+    p.j(localObject2, "contentView.findViewById(R.id.multi_select_switch)");
+    this.AYa = ((MMSwitchBtn)localObject2);
+    localObject1 = ((View)localObject1).findViewById(b.f.media_grid_view);
+    p.j(localObject1, "contentView.findViewById(R.id.media_grid_view)");
+    this.AXZ = ((GridView)localObject1);
+    localObject1 = this.AXZ;
     if (localObject1 == null) {
-      p.btv("gridView");
+      p.bGy("gridView");
     }
-    ((GridView)localObject1).setNumColumns(this.wnc);
-    localObject1 = this.wmV;
+    ((GridView)localObject1).setNumColumns(this.AYf);
+    localObject1 = this.AXY;
     if (localObject1 == null) {
-      p.btv("mediaTypeTv");
+      p.bGy("mediaTypeTv");
     }
-    ((TextView)localObject1).setText(this.wmT[0]);
-    this.wmZ = new o();
-    localObject1 = this.wmZ;
+    ((TextView)localObject1).setText(this.AXW[0]);
+    this.AYc = new o();
+    localObject1 = this.AYc;
     if (localObject1 == null) {
-      p.btv("queryService");
+      p.bGy("queryService");
     }
-    ((o)localObject1).setQueryType(this.wmU[0]);
-    localObject1 = this.wmZ;
+    ((o)localObject1).setQueryType(this.AXX[0]);
+    localObject1 = this.AYc;
     if (localObject1 == null) {
-      p.btv("queryService");
+      p.bGy("queryService");
     }
     ((o)localObject1).a((i.c)this);
-    this.qVk = System.currentTimeMillis();
-    localObject1 = this.wmZ;
+    this.AYh = System.currentTimeMillis();
+    localObject1 = this.AYc;
     if (localObject1 == null) {
-      p.btv("queryService");
+      p.bGy("queryService");
     }
-    ((o)localObject1).ax("", this.qVk);
-    this.wmY = new com.tencent.mm.plugin.gallery.ui.a(getContext(), (a.e)this);
-    localObject1 = this.wmY;
+    ((o)localObject1).ax("", this.AYh);
+    this.AYb = new com.tencent.mm.plugin.gallery.ui.a(getContext(), (a.e)this);
+    localObject1 = this.AYb;
     if (localObject1 == null) {
-      p.btv("albumAdapter");
+      p.bGy("albumAdapter");
     }
-    localObject2 = this.wmZ;
+    localObject2 = this.AYc;
     if (localObject2 == null) {
-      p.btv("queryService");
+      p.bGy("queryService");
     }
-    ((com.tencent.mm.plugin.gallery.ui.a)localObject1).setQueryType(((o)localObject2).dRq());
-    localObject1 = this.wmY;
+    ((com.tencent.mm.plugin.gallery.ui.a)localObject1).setQueryType(((o)localObject2).etS());
+    localObject1 = this.AYb;
     if (localObject1 == null) {
-      p.btv("albumAdapter");
+      p.bGy("albumAdapter");
     }
-    ((com.tencent.mm.plugin.gallery.ui.a)localObject1).setSelectLimitCount(this.wnd);
-    localObject1 = this.wmX;
+    ((com.tencent.mm.plugin.gallery.ui.a)localObject1).setSelectLimitCount(this.AYg);
+    localObject1 = this.AYa;
     if (localObject1 == null) {
-      p.btv("multiSelect");
+      p.bGy("multiSelect");
     }
     ((MMSwitchBtn)localObject1).setSwitchListener((MMSwitchBtn.a)new c(this));
     localObject1 = getContext();
-    localObject2 = this.wmV;
+    localObject2 = this.AXY;
     if (localObject2 == null) {
-      p.btv("mediaTypeTv");
+      p.bGy("mediaTypeTv");
     }
-    this.wna = new com.tencent.mm.ui.widget.b.a((Context)localObject1, (View)localObject2);
-    localObject1 = this.wna;
+    this.AYd = new com.tencent.mm.ui.widget.b.a((Context)localObject1, (View)localObject2);
+    localObject1 = this.AYd;
     if (localObject1 == null) {
-      p.btv("mediaTypePopupMenu");
+      p.bGy("mediaTypePopupMenu");
     }
     ((com.tencent.mm.ui.widget.b.a)localObject1).a((View.OnCreateContextMenuListener)new d(this));
-    localObject1 = this.wna;
+    localObject1 = this.AYd;
     if (localObject1 == null) {
-      p.btv("mediaTypePopupMenu");
+      p.bGy("mediaTypePopupMenu");
     }
-    ((com.tencent.mm.ui.widget.b.a)localObject1).a((o.g)new e(this));
-    localObject1 = this.wmV;
+    ((com.tencent.mm.ui.widget.b.a)localObject1).a((q.g)new e(this));
+    localObject1 = this.AXY;
     if (localObject1 == null) {
-      p.btv("mediaTypeTv");
+      p.bGy("mediaTypeTv");
     }
     ((TextView)localObject1).setOnClickListener((View.OnClickListener)new f(this));
-    localObject1 = this.wmW;
+    localObject1 = this.AXZ;
     if (localObject1 == null) {
-      p.btv("gridView");
+      p.bGy("gridView");
     }
     ((GridView)localObject1).setOnItemClickListener((AdapterView.OnItemClickListener)new g(this));
     AppMethodBeat.o(168357);
   }
   
-  public final void ah(int paramInt1, int paramInt2, int paramInt3)
+  public final void ak(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(168360);
     Log.i(this.TAG, "selected  " + paramInt1 + " items");
-    if (this.wnb != null)
+    if (this.AYe != null)
     {
       Bundle localBundle = new Bundle();
-      String str = wnf;
-      com.tencent.mm.plugin.gallery.ui.a locala = this.wmY;
+      String str = AYj;
+      com.tencent.mm.plugin.gallery.ui.a locala = this.AYb;
       if (locala == null) {
-        p.btv("albumAdapter");
+        p.bGy("albumAdapter");
       }
-      localBundle.putParcelableArrayList(str, locala.dRM());
+      localBundle.putParcelableArrayList(str, locala.euo());
     }
     AppMethodBeat.o(168360);
   }
@@ -203,7 +206,7 @@ public final class FinderGridGalleryView
     for (Integer localInteger = Integer.valueOf(paramLinkedList.size());; localInteger = null)
     {
       Log.i(str, localInteger + " medias");
-      if ((this.qVk == paramLong) && (paramLinkedList != null)) {
+      if ((this.AYh == paramLong) && (paramLinkedList != null)) {
         post((Runnable)new h(this, paramLinkedList));
       }
       AppMethodBeat.o(168361);
@@ -214,10 +217,10 @@ public final class FinderGridGalleryView
   public final void setColumnNum(int paramInt)
   {
     AppMethodBeat.i(168358);
-    this.wnc = paramInt;
-    GridView localGridView = this.wmW;
+    this.AYf = paramInt;
+    GridView localGridView = this.AXZ;
     if (localGridView == null) {
-      p.btv("gridView");
+      p.bGy("gridView");
     }
     localGridView.setNumColumns(paramInt);
     AppMethodBeat.o(168358);
@@ -225,18 +228,18 @@ public final class FinderGridGalleryView
   
   public final void setMaxSelectLimit(int paramInt)
   {
-    this.wne = paramInt;
+    this.AYi = paramInt;
   }
   
   public final void setOnItemSelectListener(FinderGridGalleryView.b paramb)
   {
     AppMethodBeat.i(168359);
-    p.h(paramb, "onItemSelectedListener");
-    this.wnb = paramb;
+    p.k(paramb, "onItemSelectedListener");
+    this.AYe = paramb;
     AppMethodBeat.o(168359);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "checked", "", "onStatusChange"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "checked", "", "onStatusChange"})
   static final class c
     implements MMSwitchBtn.a
   {
@@ -245,24 +248,24 @@ public final class FinderGridGalleryView
     public final void onStatusChange(boolean paramBoolean)
     {
       AppMethodBeat.i(168351);
-      FinderGridGalleryView localFinderGridGalleryView = this.wnh;
+      FinderGridGalleryView localFinderGridGalleryView = this.AYl;
       if (paramBoolean) {}
-      for (int i = FinderGridGalleryView.b(this.wnh);; i = 1)
+      for (int i = FinderGridGalleryView.b(this.AYl);; i = 1)
       {
         FinderGridGalleryView.a(localFinderGridGalleryView, i);
-        if (FinderGridGalleryView.c(this.wnh).dRO() > FinderGridGalleryView.a(this.wnh))
+        if (FinderGridGalleryView.c(this.AYl).euq() > FinderGridGalleryView.a(this.AYl))
         {
-          FinderGridGalleryView.c(this.wnh).dRM().clear();
-          FinderGridGalleryView.c(this.wnh).notifyDataSetChanged();
+          FinderGridGalleryView.c(this.AYl).euo().clear();
+          FinderGridGalleryView.c(this.AYl).notifyDataSetChanged();
         }
-        FinderGridGalleryView.c(this.wnh).setSelectLimitCount(FinderGridGalleryView.a(this.wnh));
+        FinderGridGalleryView.c(this.AYl).setSelectLimitCount(FinderGridGalleryView.a(this.AYl));
         AppMethodBeat.o(168351);
         return;
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "menu", "Landroid/view/ContextMenu;", "kotlin.jvm.PlatformType", "v", "Landroid/view/View;", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "onCreateContextMenu"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menu", "Landroid/view/ContextMenu;", "kotlin.jvm.PlatformType", "v", "Landroid/view/View;", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "onCreateContextMenu"})
   static final class d
     implements View.OnCreateContextMenuListener
   {
@@ -272,7 +275,7 @@ public final class FinderGridGalleryView
     {
       AppMethodBeat.i(168352);
       paramContextMenu.clear();
-      paramView = FinderGridGalleryView.d(this.wnh);
+      paramView = FinderGridGalleryView.d(this.AYl);
       int j = paramView.length;
       int i = 0;
       while (i < j)
@@ -284,26 +287,26 @@ public final class FinderGridGalleryView
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
   static final class e
-    implements o.g
+    implements q.g
   {
     e(FinderGridGalleryView paramFinderGridGalleryView) {}
     
     public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
     {
       AppMethodBeat.i(168353);
-      FinderGridGalleryView.e(this.wnh).setText(FinderGridGalleryView.d(this.wnh)[paramInt]);
-      FinderGridGalleryView.f(this.wnh).setQueryType(FinderGridGalleryView.g(this.wnh)[paramInt]);
-      FinderGridGalleryView.c(this.wnh).clear();
-      FinderGridGalleryView.c(this.wnh).setQueryType(FinderGridGalleryView.f(this.wnh).dRq());
-      FinderGridGalleryView.a(this.wnh, System.currentTimeMillis());
-      FinderGridGalleryView.f(this.wnh).ax("", FinderGridGalleryView.h(this.wnh));
+      FinderGridGalleryView.e(this.AYl).setText(FinderGridGalleryView.d(this.AYl)[paramInt]);
+      FinderGridGalleryView.f(this.AYl).setQueryType(FinderGridGalleryView.g(this.AYl)[paramInt]);
+      FinderGridGalleryView.c(this.AYl).clear();
+      FinderGridGalleryView.c(this.AYl).setQueryType(FinderGridGalleryView.f(this.AYl).etS());
+      FinderGridGalleryView.a(this.AYl, System.currentTimeMillis());
+      FinderGridGalleryView.f(this.AYl).ax("", FinderGridGalleryView.h(this.AYl));
       AppMethodBeat.o(168353);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class f
     implements View.OnClickListener
   {
@@ -313,15 +316,15 @@ public final class FinderGridGalleryView
     {
       AppMethodBeat.i(168354);
       b localb = new b();
-      localb.bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderGridGalleryView$init$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-      FinderGridGalleryView.i(this.wnh).gTx();
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderGridGalleryView$init$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      FinderGridGalleryView.i(this.AYl).hTd();
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/FinderGridGalleryView$init$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(168354);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "parent", "Landroid/widget/AdapterView;", "kotlin.jvm.PlatformType", "view", "Landroid/view/View;", "position", "", "id", "", "onItemClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "parent", "Landroid/widget/AdapterView;", "kotlin.jvm.PlatformType", "view", "Landroid/view/View;", "position", "", "id", "", "onItemClick"})
   static final class g
     implements AdapterView.OnItemClickListener
   {
@@ -331,20 +334,20 @@ public final class FinderGridGalleryView
     {
       AppMethodBeat.i(168355);
       b localb = new b();
-      localb.bm(paramAdapterView);
-      localb.bm(paramView);
-      localb.pH(paramInt);
-      localb.zo(paramLong);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderGridGalleryView$init$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
-      if (FinderGridGalleryView.j(this.wnh) != null) {
-        p.g(FinderGridGalleryView.c(this.wnh).dRN().get(paramInt), "albumAdapter.allMediaItems[position]");
+      localb.bn(paramAdapterView);
+      localb.bn(paramView);
+      localb.sg(paramInt);
+      localb.Fs(paramLong);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/view/FinderGridGalleryView$init$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.aFi());
+      if (FinderGridGalleryView.j(this.AYl) != null) {
+        p.j(FinderGridGalleryView.c(this.AYl).eup().get(paramInt), "albumAdapter.allMediaItems[position]");
       }
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/view/FinderGridGalleryView$init$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
       AppMethodBeat.o(168355);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run", "com/tencent/mm/plugin/finder/view/FinderGridGalleryView$onQueryMediaFinished$1$1"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/finder/view/FinderGridGalleryView$onQueryMediaFinished$1$1"})
   static final class h
     implements Runnable
   {
@@ -353,16 +356,16 @@ public final class FinderGridGalleryView
     public final void run()
     {
       AppMethodBeat.i(168356);
-      FinderGridGalleryView.c(this.wnh).clear();
-      FinderGridGalleryView.c(this.wnh).aM(paramLinkedList);
-      FinderGridGalleryView.c(this.wnh).notifyDataSetChanged();
+      FinderGridGalleryView.c(this.AYl).clear();
+      FinderGridGalleryView.c(this.AYl).bf(paramLinkedList);
+      FinderGridGalleryView.c(this.AYl).notifyDataSetChanged();
       AppMethodBeat.o(168356);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.FinderGridGalleryView
  * JD-Core Version:    0.7.0.1
  */

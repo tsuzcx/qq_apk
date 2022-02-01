@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.a.a;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
 final class RecyclerViewDrawerSquares$h$1
   implements Runnable
 {
@@ -13,7 +13,7 @@ final class RecyclerViewDrawerSquares$h$1
   public final void run()
   {
     AppMethodBeat.i(164674);
-    this.Rov.invoke();
+    this.YPP.invoke();
     AppMethodBeat.o(164674);
   }
 }

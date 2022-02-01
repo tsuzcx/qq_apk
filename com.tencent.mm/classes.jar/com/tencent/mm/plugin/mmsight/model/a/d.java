@@ -9,35 +9,35 @@ public abstract interface d
 {
   public abstract void E(Runnable paramRunnable);
   
-  public abstract void HA(String paramString);
+  public abstract void ON(String paramString);
   
-  public abstract void HB(String paramString);
+  public abstract void OO(String paramString);
   
-  public abstract void M(int paramInt1, int paramInt2, int paramInt3);
+  public abstract void P(int paramInt1, int paramInt2, int paramInt3);
   
   public abstract void a(a parama);
   
-  public abstract String aQK();
+  public abstract String aZC();
   
-  public abstract float aQL();
+  public abstract float aZD();
   
-  public abstract long aQM();
+  public abstract long aZE();
   
-  public abstract c aQN();
+  public abstract c aZF();
   
-  public abstract int aQO();
+  public abstract int aZG();
   
-  public abstract Point aQP();
+  public abstract Point aZH();
   
-  public abstract int aQQ();
+  public abstract int aZI();
   
-  public abstract boolean aQR();
+  public abstract boolean aZJ();
   
-  public abstract c.a aQS();
+  public abstract c.a aZK();
   
-  public abstract void aQT();
+  public abstract void aZL();
   
-  public abstract String aQn();
+  public abstract String aZe();
   
   public abstract void av(float paramFloat);
   
@@ -47,7 +47,7 @@ public abstract interface d
   
   public abstract void clear();
   
-  public abstract void fk(boolean paramBoolean);
+  public abstract void fU(boolean paramBoolean);
   
   public abstract String getFileName();
   
@@ -61,13 +61,7 @@ public abstract interface d
   
   public abstract void pause();
   
-  public abstract boolean rC(int paramInt);
-  
-  public abstract void rD(int paramInt);
-  
   public abstract void reset();
-  
-  public abstract void s(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
   public abstract void setFilePath(String paramString);
   
@@ -75,9 +69,15 @@ public abstract interface d
   
   public abstract void setMute(boolean paramBoolean);
   
+  public abstract void u(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract boolean uw(int paramInt);
+  
+  public abstract void ux(int paramInt);
+  
   public static abstract interface a
   {
-    public abstract void bqP();
+    public abstract void bBE();
   }
   
   public static abstract interface b {}
@@ -87,17 +87,17 @@ public abstract interface d
     static
     {
       AppMethodBeat.i(148825);
-      zvt = new c("WaitStart", 0);
-      zvu = new c("Start", 1);
-      zvv = new c("PrepareStop", 2);
-      zvw = new c("WaitStop", 3);
-      zvx = new c("Stop", 4);
-      zvy = new c("WaitSend", 5);
-      zvz = new c("Sent", 6);
-      zvA = new c("Error", 7);
-      zvB = new c("Initialized", 8);
-      zvC = new c("Pause", 9);
-      zvD = new c[] { zvt, zvu, zvv, zvw, zvx, zvy, zvz, zvA, zvB, zvC };
+      FaS = new c("WaitStart", 0);
+      FaT = new c("Start", 1);
+      FaU = new c("PrepareStop", 2);
+      FaV = new c("WaitStop", 3);
+      FaW = new c("Stop", 4);
+      FaX = new c("WaitSend", 5);
+      FaY = new c("Sent", 6);
+      FaZ = new c("Error", 7);
+      Fba = new c("Initialized", 8);
+      Fbb = new c("Pause", 9);
+      Fbc = new c[] { FaS, FaT, FaU, FaV, FaW, FaX, FaY, FaZ, Fba, Fbb };
       AppMethodBeat.o(148825);
     }
     
@@ -106,7 +106,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.a.d
  * JD-Core Version:    0.7.0.1
  */

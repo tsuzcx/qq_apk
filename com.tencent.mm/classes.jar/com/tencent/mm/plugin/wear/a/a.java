@@ -14,7 +14,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public final class a
 {
-  public static final HashMap<String, Object> fWi()
+  public static final HashMap<String, Object> gOR()
   {
     AppMethodBeat.i(131327);
     Object localObject1 = KeyPairGenerator.getInstance("RSA");
@@ -29,7 +29,7 @@ public final class a
     return localHashMap;
   }
   
-  public static final byte[] fWj()
+  public static final byte[] gOS()
   {
     AppMethodBeat.i(131329);
     try
@@ -47,7 +47,7 @@ public final class a
     return null;
   }
   
-  public static final byte[] j(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public static final byte[] l(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
     AppMethodBeat.i(131328);
     paramArrayOfByte2 = new SecretKeySpec(paramArrayOfByte2, "AES");
@@ -60,7 +60,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.a.a
  * JD-Core Version:    0.7.0.1
  */

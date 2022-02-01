@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.finder.feed.ui;
 
 import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.ui.FinderSelectDistrictUI;
 import java.util.HashMap;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/ui/SelectDistrictUI;", "Lcom/tencent/mm/plugin/finder/ui/FinderSelectDistrictUI;", "()V", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/SelectDistrictUI;", "Lcom/tencent/mm/plugin/finder/ui/FinderSelectDistrictUI;", "()V", "plugin-finder_release"})
 public final class SelectDistrictUI
   extends FinderSelectDistrictUI
 {
@@ -16,16 +16,16 @@ public final class SelectDistrictUI
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(245773);
+    AppMethodBeat.i(228454);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(245773);
+    AppMethodBeat.o(228454);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(245772);
+    AppMethodBeat.i(228452);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -36,7 +36,7 @@ public final class SelectDistrictUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(245772);
+    AppMethodBeat.o(228452);
     return localView1;
   }
   

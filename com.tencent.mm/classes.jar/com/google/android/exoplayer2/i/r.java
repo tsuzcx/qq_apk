@@ -6,32 +6,32 @@ import java.util.Comparator;
 
 public final class r
 {
-  public static final Comparator<a> bHu;
-  public static final Comparator<a> bHv;
-  public int bHA;
-  public int bHB;
-  public int bHC;
-  public final int bHw;
-  public final ArrayList<a> bHx;
-  public final a[] bHy;
-  public int bHz;
+  public static final Comparator<a> brb;
+  public static final Comparator<a> brc;
+  public final int brd;
+  public final ArrayList<a> bre;
+  public final a[] brf;
+  public int brg;
+  public int brh;
+  public int bri;
+  public int brj;
   
   static
   {
     AppMethodBeat.i(93197);
-    bHu = new Comparator() {};
-    bHv = new Comparator() {};
+    brb = new Comparator() {};
+    brc = new Comparator() {};
     AppMethodBeat.o(93197);
   }
   
   public r(int paramInt)
   {
-    AppMethodBeat.i(196069);
-    this.bHw = 2000;
-    this.bHy = new a[5];
-    this.bHx = new ArrayList();
-    this.bHz = -1;
-    AppMethodBeat.o(196069);
+    AppMethodBeat.i(200693);
+    this.brd = 2000;
+    this.brf = new a[5];
+    this.bre = new ArrayList();
+    this.brg = -1;
+    AppMethodBeat.o(200693);
   }
   
   public static final class a
@@ -43,7 +43,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.i.r
  * JD-Core Version:    0.7.0.1
  */

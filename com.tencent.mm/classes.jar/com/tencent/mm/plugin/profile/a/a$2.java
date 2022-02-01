@@ -7,8 +7,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a;
-import com.tencent.mm.av.q;
+import com.tencent.mm.R.e;
+import com.tencent.mm.ay.a.a;
+import com.tencent.mm.ay.q;
 import com.tencent.mm.openim.a.b.b;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.base.preference.KeyValuePreference;
@@ -25,21 +26,21 @@ public final class a$2
   {
     AppMethodBeat.i(26867);
     super.onBindView(paramView);
-    if (this.BfZ != null) {
-      if ((this.BcI.action != 2) && (this.BcI.action != 3)) {
-        break label113;
+    if (this.GZI != null) {
+      if ((this.GWI.action != 2) && (this.GWI.action != 3)) {
+        break label114;
       }
     }
-    label113:
+    label114:
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        this.BfZ.setTextColor(MMApplicationContext.getResources().getColorStateList(2131100927));
+        this.GZI.setTextColor(MMApplicationContext.getResources().getColorStateList(R.e.dkD));
       }
-      if ((this.OYH != null) && (!TextUtils.isEmpty(this.BcI.icon)))
+      if ((this.WrQ != null) && (!TextUtils.isEmpty(this.GWI.icon)))
       {
-        this.OYH.setVisibility(0);
-        q.bcV().loadImage(this.BcI.icon, this.OYH);
+        this.WrQ.setVisibility(0);
+        q.bml().loadImage(this.GWI.icon, this.WrQ);
       }
       AppMethodBeat.o(26867);
       return;

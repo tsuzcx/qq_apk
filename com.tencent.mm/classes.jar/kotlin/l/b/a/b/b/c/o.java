@@ -10,19 +10,19 @@ public final class o
   extends b
   implements r
 {
-  private final ah TkG;
+  private final ah aaNA;
   
   public o(g paramg, ah paramah)
   {
     super(paramg);
     AppMethodBeat.i(57099);
-    this.TkG = paramah;
+    this.aaNA = paramah;
     AppMethodBeat.o(57099);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.c.o
  * JD-Core Version:    0.7.0.1
  */

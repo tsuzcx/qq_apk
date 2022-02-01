@@ -14,46 +14,46 @@ import kotlin.l.b.a.b.m.aj;
 public final class j
   implements c
 {
-  private final kotlin.f TiG;
-  final kotlin.l.b.a.b.a.g TiH;
-  final b TiI;
-  private final Map<kotlin.l.b.a.b.f.f, kotlin.l.b.a.b.j.b.g<?>> TiJ;
+  private final kotlin.f aaLA;
+  final kotlin.l.b.a.b.a.g aaLB;
+  final b aaLC;
+  private final Map<kotlin.l.b.a.b.f.f, kotlin.l.b.a.b.j.b.g<?>> aaLD;
   
   public j(kotlin.l.b.a.b.a.g paramg, b paramb, Map<kotlin.l.b.a.b.f.f, ? extends kotlin.l.b.a.b.j.b.g<?>> paramMap)
   {
     AppMethodBeat.i(56960);
-    this.TiH = paramg;
-    this.TiI = paramb;
-    this.TiJ = paramMap;
-    this.TiG = kotlin.g.a(k.SWQ, (a)new a(this));
+    this.aaLB = paramg;
+    this.aaLC = paramb;
+    this.aaLD = paramMap;
+    this.aaLA = kotlin.g.a(k.aazC, (a)new a(this));
     AppMethodBeat.o(56960);
   }
   
-  public final Map<kotlin.l.b.a.b.f.f, kotlin.l.b.a.b.j.b.g<?>> hBO()
+  public final an iDZ()
   {
-    return this.TiJ;
+    AppMethodBeat.i(56959);
+    an localan = an.aaKE;
+    p.j(localan, "SourceElement.NO_SOURCE");
+    AppMethodBeat.o(56959);
+    return localan;
   }
   
-  public final b hBk()
-  {
-    return this.TiI;
-  }
-  
-  public final ab hBy()
+  public final ab iFN()
   {
     AppMethodBeat.i(56958);
-    ab localab = (ab)this.TiG.getValue();
+    ab localab = (ab)this.aaLA.getValue();
     AppMethodBeat.o(56958);
     return localab;
   }
   
-  public final an hzM()
+  public final b iFy()
   {
-    AppMethodBeat.i(56959);
-    an localan = an.ThK;
-    p.g(localan, "SourceElement.NO_SOURCE");
-    AppMethodBeat.o(56959);
-    return localan;
+    return this.aaLC;
+  }
+  
+  public final Map<kotlin.l.b.a.b.f.f, kotlin.l.b.a.b.j.b.g<?>> iGd()
+  {
+    return this.aaLD;
   }
   
   static final class a
@@ -68,7 +68,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.a.j
  * JD-Core Version:    0.7.0.1
  */

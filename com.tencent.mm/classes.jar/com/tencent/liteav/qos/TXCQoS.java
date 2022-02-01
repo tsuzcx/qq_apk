@@ -2,11 +2,11 @@ package com.tencent.liteav.qos;
 
 import android.os.Bundle;
 import android.os.Handler;
-import com.tencent.liteav.basic.a.c;
-import com.tencent.liteav.basic.b.b;
+import com.tencent.liteav.basic.b.c;
+import com.tencent.liteav.basic.c.b;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collections;
 import java.util.HashMap;
@@ -59,7 +59,7 @@ public class TXCQoS
     localHashMap.put(Integer.valueOf(18), c.t);
     localHashMap.put(Integer.valueOf(19), c.u);
     RESOLUTION_MAP = Collections.unmodifiableMap(localHashMap);
-    f.f();
+    h.f();
     AppMethodBeat.o(16221);
   }
   
@@ -85,13 +85,13 @@ public class TXCQoS
         Bundle localBundle;
         if (TXCQoS.this.mListener != null)
         {
-          i = TXCQoS.this.mListener.b();
-          j = TXCQoS.this.mListener.c();
-          k = TXCQoS.this.mListener.d();
-          int m = TXCQoS.this.mListener.e();
-          int n = TXCQoS.this.mListener.f();
-          int i1 = TXCQoS.this.mListener.g();
-          int i2 = TXCQoS.this.mListener.h();
+          i = TXCQoS.this.mListener.a();
+          j = TXCQoS.this.mListener.b();
+          k = TXCQoS.this.mListener.c();
+          int m = TXCQoS.this.mListener.d();
+          int n = TXCQoS.this.mListener.e();
+          int i1 = TXCQoS.this.mListener.f();
+          int i2 = TXCQoS.this.mListener.g();
           TXCQoS.access$200(TXCQoS.this, TXCQoS.this.mInstance, i);
           TXCQoS.access$300(TXCQoS.this, TXCQoS.this.mInstance, m, n, i1, k, j, i2);
           boolean bool = TXCQoS.access$400(TXCQoS.this, TXCQoS.this.mInstance);
@@ -108,7 +108,7 @@ public class TXCQoS
           }
           if ((TXCQoS.this.mAutoStrategy == 1) || (TXCQoS.this.mAutoStrategy == 5))
           {
-            TXCQoS.this.mListener.b(i, j, k);
+            TXCQoS.this.mListener.a(i, j, k);
             if (TXCQoS.this.mNotifyListener != null)
             {
               localBundle = new Bundle();
@@ -129,7 +129,7 @@ public class TXCQoS
           label446:
           if (i != TXCQoS.this.mBitrate)
           {
-            TXCQoS.this.mListener.b(i, 0, 0);
+            TXCQoS.this.mListener.a(i, 0, 0);
             if (TXCQoS.this.mNotifyListener != null)
             {
               localBundle = new Bundle();
@@ -148,10 +148,10 @@ public class TXCQoS
   
   public static c getProperResolutionByVideoBitrate(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(221785);
+    AppMethodBeat.i(248512);
     paramInt1 = nativeGetProperResolutionByVideoBitrate(paramBoolean, paramInt1, paramInt2);
     c localc = (c)RESOLUTION_MAP.get(Integer.valueOf(paramInt1));
-    AppMethodBeat.o(221785);
+    AppMethodBeat.o(248512);
     return localc;
   }
   
@@ -251,7 +251,7 @@ public class TXCQoS
   
   public void setDefaultVideoResolution(c paramc)
   {
-    AppMethodBeat.i(221784);
+    AppMethodBeat.i(248505);
     TXCLog.i("TXCQos", "DefaultVideoResolution is ".concat(String.valueOf(paramc)));
     this.mWidth = 0;
     this.mHeight = 0;
@@ -270,7 +270,7 @@ public class TXCQoS
     {
       break;
       nativeSetVideoDefaultResolution(this.mInstance, i);
-      AppMethodBeat.o(221784);
+      AppMethodBeat.o(248505);
       return;
     }
   }
@@ -330,7 +330,7 @@ public class TXCQoS
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.qos.TXCQoS
  * JD-Core Version:    0.7.0.1
  */

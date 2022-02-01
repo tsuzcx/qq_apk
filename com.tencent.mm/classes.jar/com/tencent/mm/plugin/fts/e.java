@@ -2,39 +2,38 @@ package com.tencent.mm.plugin.fts;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.plugin.fts.a.j;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
-import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class e
   implements j
 {
-  public final as ayj(String paramString)
+  public final as aHC(String paramString)
   {
     AppMethodBeat.i(52550);
-    as localas2 = ((l)g.af(l.class)).aSN().bjF(paramString);
+    as localas2 = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().bwc(paramString);
     as localas1 = localas2;
     if (localas2 == null)
     {
       localas1 = new as();
-      paramString = i("SELECT ROWID, username, alias, conRemark, nickname, verifyFlag, type, lvbuff, contactLabelIds FROM rcontact WHERE username = ? AND deleteFlag=0;", new String[] { paramString });
+      paramString = h("SELECT ROWID, username, alias, conRemark, nickname, verifyFlag, type, lvbuff, contactLabelIds FROM rcontact WHERE username = ? AND deleteFlag=0;", new String[] { paramString });
       if (paramString.moveToNext())
       {
-        localas1.gMZ = paramString.getLong(0);
+        localas1.jxt = paramString.getLong(0);
         localas1.setUsername(paramString.getString(1));
-        localas1.BC(paramString.getString(2));
-        localas1.BD(paramString.getString(3));
+        localas1.Iq(paramString.getString(2));
+        localas1.Ir(paramString.getString(3));
         localas1.setNickname(paramString.getString(4));
-        localas1.nf(paramString.getInt(5));
-        localas1.setType(paramString.getInt(6));
-        localas1.Z(paramString.getBlob(7));
-        localas1.BL(paramString.getString(8));
-        localas1.nh(0);
+        localas1.ps(paramString.getInt(5));
+        localas1.rm(paramString.getInt(6));
+        localas1.ag(paramString.getBlob(7));
+        localas1.Iz(paramString.getString(8));
+        localas1.pu(0);
       }
       paramString.close();
     }
@@ -42,10 +41,10 @@ public final class e
     return localas1;
   }
   
-  public final boolean ayk(String paramString)
+  public final boolean aHD(String paramString)
   {
     AppMethodBeat.i(52551);
-    paramString = i(String.format("SELECT 1 FROM rconversation WHERE username = ?", new Object[0]), new String[] { paramString });
+    paramString = h(String.format("SELECT 1 FROM rconversation WHERE username = ?", new Object[0]), new String[] { paramString });
     try
     {
       boolean bool = paramString.moveToNext();
@@ -60,10 +59,10 @@ public final class e
     }
   }
   
-  public final long ayl(String paramString)
+  public final long aHE(String paramString)
   {
     AppMethodBeat.i(52552);
-    paramString = i("SELECT conversationTime FROM rconversation WHERE username=?;", new String[] { paramString });
+    paramString = h("SELECT conversationTime FROM rconversation WHERE username=?;", new String[] { paramString });
     long l2 = 0L;
     long l1 = l2;
     if (paramString != null)
@@ -80,7 +79,7 @@ public final class e
     return l1;
   }
   
-  public final List<String> aym(String paramString)
+  public final List<String> aHF(String paramString)
   {
     AppMethodBeat.i(52553);
     ArrayList localArrayList = new ArrayList();
@@ -93,7 +92,7 @@ public final class e
       AppMethodBeat.o(52553);
       return localArrayList;
     }
-    paramString = i(String.format("SELECT labelName FROM ContactLabel WHERE labelID IN (%s);", new Object[] { str }), null);
+    paramString = h(String.format("SELECT labelName FROM ContactLabel WHERE labelID IN (%s);", new Object[] { str }), null);
     while (paramString.moveToNext()) {
       localArrayList.add(paramString.getString(0));
     }
@@ -102,11 +101,11 @@ public final class e
     return localArrayList;
   }
   
-  public final Cursor i(String paramString, String[] paramArrayOfString)
+  public final Cursor h(String paramString, String[] paramArrayOfString)
   {
     AppMethodBeat.i(52548);
-    g.aAi();
-    paramString = g.aAh().hqL.rawQuery(paramString, paramArrayOfString, 2);
+    com.tencent.mm.kernel.h.aHH();
+    paramString = com.tencent.mm.kernel.h.aHG().kcG.rawQuery(paramString, paramArrayOfString, 2);
     AppMethodBeat.o(52548);
     return paramString;
   }
@@ -114,8 +113,8 @@ public final class e
   public final Cursor rawQuery(String paramString, String[] paramArrayOfString)
   {
     AppMethodBeat.i(52549);
-    g.aAi();
-    paramString = g.aAh().hqL.rawQuery(paramString, paramArrayOfString);
+    com.tencent.mm.kernel.h.aHH();
+    paramString = com.tencent.mm.kernel.h.aHG().kcG.rawQuery(paramString, paramArrayOfString);
     AppMethodBeat.o(52549);
     return paramString;
   }

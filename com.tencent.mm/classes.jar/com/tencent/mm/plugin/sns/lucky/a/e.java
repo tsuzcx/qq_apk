@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  private static e DFp = null;
-  private static String DFq = "";
+  private static e JSl = null;
+  private static String JSm = "";
   public int level;
   StringBuffer sb;
   
@@ -19,7 +19,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.lucky.a.e
  * JD-Core Version:    0.7.0.1
  */

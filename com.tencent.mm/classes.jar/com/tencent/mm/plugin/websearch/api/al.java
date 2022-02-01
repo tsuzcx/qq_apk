@@ -5,8 +5,8 @@ import android.content.SharedPreferences;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.z;
-import com.tencent.mm.protocal.protobuf.dsg;
-import com.tencent.mm.protocal.protobuf.dsh;
+import com.tencent.mm.protocal.protobuf.ecc;
+import com.tencent.mm.protocal.protobuf.ecd;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.io.IOException;
@@ -17,24 +17,24 @@ import org.json.JSONObject;
 
 public final class al
 {
-  public static dsh IEV;
+  public static ecd Pzn;
   
-  public static String bKh()
+  public static String bVR()
   {
     AppMethodBeat.i(117724);
-    String str = "key_pb_history_list" + z.aTY();
+    String str = "key_pb_history_list" + z.bcZ();
     AppMethodBeat.o(117724);
     return str;
   }
   
-  public static dsh fYg()
+  public static ecd gQR()
   {
     AppMethodBeat.i(117723);
     Object localObject;
-    if (IEV == null)
+    if (Pzn == null)
     {
-      localObject = bKh();
-      IEV = new dsh();
+      localObject = bVR();
+      Pzn = new ecd();
       localObject = MMApplicationContext.getContext().getSharedPreferences("fts_history_search_sp", 0).getString((String)localObject, "");
       if (!Util.isNullOrNil((String)localObject)) {
         localObject = Base64.decode(((String)localObject).getBytes(), 0);
@@ -42,9 +42,9 @@ public final class al
     }
     try
     {
-      IEV.parseFrom((byte[])localObject);
+      Pzn.parseFrom((byte[])localObject);
       label67:
-      localObject = IEV;
+      localObject = Pzn;
       AppMethodBeat.o(117723);
       return localObject;
     }
@@ -54,11 +54,11 @@ public final class al
     }
   }
   
-  public static String fYh()
+  public static String gQS()
   {
     AppMethodBeat.i(117725);
-    dsh localdsh = fYg();
-    int j = localdsh.oTA.size();
+    ecd localecd = gQR();
+    int j = localecd.rVy.size();
     Object localObject = new JSONObject();
     try
     {
@@ -66,11 +66,11 @@ public final class al
       JSONObject localJSONObject1 = new JSONObject();
       JSONArray localJSONArray2 = new JSONArray();
       int i = 0;
-      while ((i < localdsh.oTA.size()) && (i < j))
+      while ((i < localecd.rVy.size()) && (i < j))
       {
-        dsg localdsg = (dsg)localdsh.oTA.get(i);
+        ecc localecc = (ecc)localecd.rVy.get(i);
         JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("word", localdsg.KXA);
+        localJSONObject2.put("word", localecc.RYJ);
         localJSONArray2.put(localJSONObject2);
         i += 1;
       }
@@ -93,7 +93,7 @@ public final class al
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.al
  * JD-Core Version:    0.7.0.1
  */

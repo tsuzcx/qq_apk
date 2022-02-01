@@ -15,9 +15,9 @@ import java.lang.reflect.Method;
 
 public final class b
 {
-  private static Boolean gLa = null;
+  private static Boolean jvp = null;
   
-  public static boolean api()
+  public static boolean avu()
   {
     AppMethodBeat.i(155848);
     if (!Build.MANUFACTURER.equalsIgnoreCase("meizu"))
@@ -31,7 +31,7 @@ public final class b
     }
     for (;;)
     {
-      boolean bool = oC(i);
+      boolean bool = qU(i);
       AppMethodBeat.o(155848);
       return bool;
       if (Build.VERSION.SDK_INT >= 19) {
@@ -40,7 +40,7 @@ public final class b
     }
   }
   
-  public static boolean apj()
+  public static boolean avv()
   {
     AppMethodBeat.i(155850);
     if (!Build.MANUFACTURER.equalsIgnoreCase("meizu"))
@@ -54,7 +54,7 @@ public final class b
     }
     for (;;)
     {
-      boolean bool = oC(i);
+      boolean bool = qU(i);
       AppMethodBeat.o(155850);
       return bool;
       if (Build.VERSION.SDK_INT >= 19) {
@@ -63,37 +63,37 @@ public final class b
     }
   }
   
-  public static boolean cv(Context paramContext)
+  public static boolean cr(Context paramContext)
   {
     boolean bool = false;
     AppMethodBeat.i(155849);
-    if ((gLa != null) || (paramContext == null)) {}
+    if ((jvp != null) || (paramContext == null)) {}
     for (;;)
     {
       try
       {
-        gLa = Boolean.valueOf(bool);
-        gLa = Boolean.FALSE;
+        jvp = Boolean.valueOf(bool);
+        jvp = Boolean.FALSE;
       }
       catch (Throwable paramContext)
       {
         Log.printErrStackTrace("MicroMsg.PermissionUtil", paramContext, "", new Object[0]);
-        gLa = Boolean.FALSE;
+        jvp = Boolean.FALSE;
         continue;
       }
       finally
       {
-        gLa = Boolean.FALSE;
+        jvp = Boolean.FALSE;
         AppMethodBeat.o(155849);
       }
-      bool = gLa.booleanValue();
+      bool = jvp.booleanValue();
       AppMethodBeat.o(155849);
       return bool;
       bool = paramContext.getPackageManager().hasSystemFeature("org.chromium.arc.device_management");
     }
   }
   
-  public static void cw(Context paramContext)
+  public static void cs(Context paramContext)
   {
     AppMethodBeat.i(155851);
     if (Build.MANUFACTURER.equalsIgnoreCase("meizu")) {
@@ -101,10 +101,10 @@ public final class b
       {
         Object localObject1 = new Intent();
         ((Intent)localObject1).setClassName("com.android.settings", "com.android.settings.applications.AppsCheckReadPermission");
-        localObject1 = new com.tencent.mm.hellhoundlib.b.a().bl(localObject1);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject1).axQ(), "com/tencent/mm/compatible/permission/PermissionUtil", "showPermissionSettingsOfMeizu", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/compatible/permission/PermissionUtil", "showPermissionSettingsOfMeizu", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localObject1 = new com.tencent.mm.hellhoundlib.b.a().bm(localObject1);
+        com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aFh(), "com/tencent/mm/compatible/permission/PermissionUtil", "showPermissionSettingsOfMeizu", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/compatible/permission/PermissionUtil", "showPermissionSettingsOfMeizu", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(155851);
         return;
       }
@@ -115,10 +115,10 @@ public final class b
         {
           Object localObject2 = new Intent("android.settings.APP_OPS_SETTINGS");
           ((Intent)localObject2).addCategory("android.intent.category.DEFAULT");
-          localObject2 = new com.tencent.mm.hellhoundlib.b.a().bl(localObject2);
-          com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject2).axQ(), "com/tencent/mm/compatible/permission/PermissionUtil", "showPermissionSettingsOfMeizu", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).pG(0));
-          com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/compatible/permission/PermissionUtil", "showPermissionSettingsOfMeizu", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          localObject2 = new com.tencent.mm.hellhoundlib.b.a().bm(localObject2);
+          com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aFh(), "com/tencent/mm/compatible/permission/PermissionUtil", "showPermissionSettingsOfMeizu", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).sf(0));
+          com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/compatible/permission/PermissionUtil", "showPermissionSettingsOfMeizu", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(155851);
           return;
         }
@@ -129,10 +129,10 @@ public final class b
           {
             Object localObject3 = new Intent();
             ((Intent)localObject3).setClassName("com.android.settings", "com.android.settings.Settings$AppControlSettingsActivity");
-            localObject3 = new com.tencent.mm.hellhoundlib.b.a().bl(localObject3);
-            com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject3).axQ(), "com/tencent/mm/compatible/permission/PermissionUtil", "showPermissionSettingsOfMeizu", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject3).pG(0));
-            com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/compatible/permission/PermissionUtil", "showPermissionSettingsOfMeizu", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            localObject3 = new com.tencent.mm.hellhoundlib.b.a().bm(localObject3);
+            com.tencent.mm.hellhoundlib.a.a.b(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject3).aFh(), "com/tencent/mm/compatible/permission/PermissionUtil", "showPermissionSettingsOfMeizu", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject3).sf(0));
+            com.tencent.mm.hellhoundlib.a.a.c(paramContext, "com/tencent/mm/compatible/permission/PermissionUtil", "showPermissionSettingsOfMeizu", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             AppMethodBeat.o(155851);
             return;
           }
@@ -147,7 +147,7 @@ public final class b
   }
   
   @TargetApi(19)
-  public static boolean cx(Context paramContext)
+  public static boolean ct(Context paramContext)
   {
     boolean bool2 = true;
     AppMethodBeat.i(155853);
@@ -221,41 +221,41 @@ public final class b
   }
   
   /* Error */
-  private static boolean oC(int paramInt)
+  private static boolean qU(int paramInt)
   {
     // Byte code:
-    //   0: ldc_w 277
+    //   0: ldc_w 278
     //   3: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: iload_0
     //   7: ifne +11 -> 18
-    //   10: ldc_w 277
+    //   10: ldc_w 278
     //   13: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   16: iconst_1
     //   17: ireturn
-    //   18: invokestatic 225	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
-    //   21: ldc 227
-    //   23: invokevirtual 231	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   18: invokestatic 226	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   21: ldc 228
+    //   23: invokevirtual 232	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
     //   26: astore_2
     //   27: aload_2
     //   28: ifnull +160 -> 188
-    //   31: ldc 233
-    //   33: invokestatic 237	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   36: ldc_w 279
+    //   31: ldc 234
+    //   33: invokestatic 238	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   36: ldc_w 280
     //   39: iconst_3
-    //   40: anewarray 182	java/lang/Class
+    //   40: anewarray 183	java/lang/Class
     //   43: dup
     //   44: iconst_0
-    //   45: getstatic 245	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   45: getstatic 246	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   48: aastore
     //   49: dup
     //   50: iconst_1
-    //   51: getstatic 245	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   51: getstatic 246	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   54: aastore
     //   55: dup
     //   56: iconst_2
     //   57: ldc 30
     //   59: aastore
-    //   60: invokevirtual 248	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   60: invokevirtual 249	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   63: astore_1
     //   64: aload_1
     //   65: ifnull +153 -> 218
@@ -266,82 +266,82 @@ public final class b
     //   74: dup
     //   75: iconst_0
     //   76: iload_0
-    //   77: invokestatic 251	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   77: invokestatic 252	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   80: aastore
     //   81: dup
     //   82: iconst_1
-    //   83: invokestatic 225	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
-    //   86: invokevirtual 255	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
-    //   89: getfield 260	android/content/pm/ApplicationInfo:uid	I
-    //   92: invokestatic 251	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   83: invokestatic 226	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   86: invokevirtual 256	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
+    //   89: getfield 261	android/content/pm/ApplicationInfo:uid	I
+    //   92: invokestatic 252	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   95: aastore
     //   96: dup
     //   97: iconst_2
-    //   98: invokestatic 263	com/tencent/mm/sdk/platformtools/MMApplicationContext:getPackageName	()Ljava/lang/String;
+    //   98: invokestatic 264	com/tencent/mm/sdk/platformtools/MMApplicationContext:getPackageName	()Ljava/lang/String;
     //   101: aastore
-    //   102: invokevirtual 192	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   105: checkcast 241	java/lang/Integer
-    //   108: invokevirtual 267	java/lang/Integer:intValue	()I
+    //   102: invokevirtual 193	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   105: checkcast 242	java/lang/Integer
+    //   108: invokevirtual 268	java/lang/Integer:intValue	()I
     //   111: istore_0
     //   112: iload_0
     //   113: ifeq +105 -> 218
     //   116: ldc 81
-    //   118: ldc_w 281
+    //   118: ldc_w 282
     //   121: iconst_1
     //   122: anewarray 4	java/lang/Object
     //   125: dup
     //   126: iconst_0
     //   127: iload_0
-    //   128: invokestatic 251	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   128: invokestatic 252	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   131: aastore
-    //   132: invokestatic 219	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   135: ldc_w 277
+    //   132: invokestatic 220	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   135: ldc_w 278
     //   138: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   141: iconst_0
     //   142: ireturn
     //   143: astore_1
     //   144: ldc 81
-    //   146: ldc_w 283
+    //   146: ldc_w 284
     //   149: iconst_1
     //   150: anewarray 4	java/lang/Object
     //   153: dup
     //   154: iconst_0
     //   155: aload_1
-    //   156: invokevirtual 270	java/lang/NoSuchMethodException:getMessage	()Ljava/lang/String;
+    //   156: invokevirtual 271	java/lang/NoSuchMethodException:getMessage	()Ljava/lang/String;
     //   159: aastore
-    //   160: invokestatic 219	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   160: invokestatic 220	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   163: aconst_null
     //   164: astore_1
     //   165: goto -101 -> 64
     //   168: astore_1
     //   169: ldc 81
-    //   171: ldc_w 272
+    //   171: ldc_w 273
     //   174: iconst_1
     //   175: anewarray 4	java/lang/Object
     //   178: dup
     //   179: iconst_0
     //   180: aload_1
-    //   181: invokevirtual 273	java/lang/ClassNotFoundException:getMessage	()Ljava/lang/String;
+    //   181: invokevirtual 274	java/lang/ClassNotFoundException:getMessage	()Ljava/lang/String;
     //   184: aastore
-    //   185: invokestatic 219	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   185: invokestatic 220	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   188: aconst_null
     //   189: astore_1
     //   190: goto -126 -> 64
     //   193: astore_1
     //   194: ldc 81
-    //   196: ldc_w 285
+    //   196: ldc_w 286
     //   199: iconst_1
     //   200: anewarray 4	java/lang/Object
     //   203: dup
     //   204: iconst_0
     //   205: aload_1
-    //   206: invokevirtual 209	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   206: invokevirtual 210	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   209: aastore
-    //   210: invokestatic 219	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   210: invokestatic 220	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   213: iconst_m1
     //   214: istore_0
     //   215: goto -103 -> 112
-    //   218: ldc_w 277
+    //   218: ldc_w 278
     //   221: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   224: iconst_1
     //   225: ireturn
@@ -364,7 +364,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.compatible.e.b
  * JD-Core Version:    0.7.0.1
  */

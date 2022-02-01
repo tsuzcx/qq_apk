@@ -9,21 +9,21 @@ import kotlin.l.b.a.b.e.a.v;
 
 public final class i
 {
-  private static final i TBJ;
-  public static final a TBK;
-  final List<a.u> iHg;
+  private static final i abex;
+  public static final a abey;
+  final List<a.u> lxi;
   
   static
   {
     AppMethodBeat.i(59086);
-    TBK = new a((byte)0);
-    TBJ = new i((List)v.SXr);
+    abey = new a((byte)0);
+    abex = new i((List)v.aaAd);
     AppMethodBeat.o(59086);
   }
   
   private i(List<a.u> paramList)
   {
-    this.iHg = paramList;
+    this.lxi = paramList;
   }
   
   public static final class a
@@ -31,15 +31,15 @@ public final class i
     public static i g(a.v paramv)
     {
       AppMethodBeat.i(59085);
-      p.h(paramv, "table");
-      if (paramv.TAr.size() == 0)
+      p.k(paramv, "table");
+      if (paramv.abdi.size() == 0)
       {
-        paramv = i.hIl();
+        paramv = i.iMF();
         AppMethodBeat.o(59085);
         return paramv;
       }
-      paramv = paramv.TAr;
-      p.g(paramv, "table.requirementList");
+      paramv = paramv.abdi;
+      p.j(paramv, "table.requirementList");
       paramv = new i(paramv, (byte)0);
       AppMethodBeat.o(59085);
       return paramv;
@@ -48,7 +48,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.e.b.i
  * JD-Core Version:    0.7.0.1
  */

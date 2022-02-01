@@ -10,11 +10,11 @@ import java.util.HashMap;
 public final class d
   implements a, com.tencent.mm.kernel.api.bucket.d, com.tencent.mm.plugin.downloader_app.api.d
 {
-  private c qKm;
+  private c ujr;
   
-  public final c cBU()
+  public final c cQy()
   {
-    return this.qKm;
+    return this.ujr;
   }
   
   public final HashMap<Integer, h.b> collectDatabaseFactory()
@@ -37,13 +37,13 @@ public final class d
   public final void onDataBaseOpened(h paramh1, h paramh2)
   {
     AppMethodBeat.i(8781);
-    this.qKm = new c(paramh1);
+    this.ujr = new c(paramh1);
     AppMethodBeat.o(8781);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.d
  * JD-Core Version:    0.7.0.1
  */

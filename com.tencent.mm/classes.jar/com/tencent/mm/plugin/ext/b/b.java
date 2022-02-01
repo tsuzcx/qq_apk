@@ -5,7 +5,7 @@ import com.tencent.mm.storage.ca;
 
 public final class b
 {
-  public static int av(ca paramca)
+  public static int aD(ca paramca)
   {
     AppMethodBeat.i(24370);
     if (paramca.getType() == 34)
@@ -24,7 +24,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.b.b
  * JD-Core Version:    0.7.0.1
  */

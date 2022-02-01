@@ -15,11 +15,11 @@ public class JsApiMMTask
   extends MainProcessTask
 {
   public static final Parcelable.Creator<JsApiMMTask> CREATOR;
-  public b.a IVw;
-  public String IVx;
-  public String IVy;
+  public b.a PRM;
+  public String PRN;
+  public String PRO;
   public String errMsg;
-  public String lEA;
+  public String oAb;
   
   static
   {
@@ -37,19 +37,19 @@ public class JsApiMMTask
     AppMethodBeat.o(78501);
   }
   
-  public final void bjj()
+  public final void RW()
   {
     AppMethodBeat.i(78497);
     try
     {
-      ((br)Class.forName(this.IVx).newInstance()).a(MMApplicationContext.getContext(), this.lEA, new br.a()
+      ((br)Class.forName(this.PRN).newInstance()).a(MMApplicationContext.getContext(), this.oAb, new br.a()
       {
         public final void i(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
         {
           AppMethodBeat.i(78495);
           JsApiMMTask.this.errMsg = paramAnonymousString;
           if (paramAnonymousJSONObject != null) {
-            JsApiMMTask.this.IVy = paramAnonymousJSONObject.toString();
+            JsApiMMTask.this.PRO = paramAnonymousJSONObject.toString();
           }
           JsApiMMTask.a(JsApiMMTask.this);
           AppMethodBeat.o(78495);
@@ -65,21 +65,21 @@ public class JsApiMMTask
     }
   }
   
-  public final void bjk()
+  public final void bsK()
   {
     AppMethodBeat.i(78498);
-    bDK();
-    if (this.IVw != null) {
+    bPk();
+    if (this.PRM != null) {
       try
       {
-        JSONObject localJSONObject = new JSONObject(this.IVy);
-        this.IVw.c(this.errMsg, localJSONObject);
+        JSONObject localJSONObject = new JSONObject(this.PRO);
+        this.PRM.a(this.errMsg, localJSONObject);
         AppMethodBeat.o(78498);
         return;
       }
       catch (Exception localException)
       {
-        this.IVw.c(this.errMsg, null);
+        this.PRM.a(this.errMsg, null);
         Log.printErrStackTrace("MicroMsg.JsApiMMTask", localException, "runInClientProcess fail.", new Object[0]);
       }
     }
@@ -89,20 +89,20 @@ public class JsApiMMTask
   public final void f(Parcel paramParcel)
   {
     AppMethodBeat.i(78499);
-    this.lEA = paramParcel.readString();
-    this.IVx = paramParcel.readString();
+    this.oAb = paramParcel.readString();
+    this.PRN = paramParcel.readString();
     this.errMsg = paramParcel.readString();
-    this.IVy = paramParcel.readString();
+    this.PRO = paramParcel.readString();
     AppMethodBeat.o(78499);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(78500);
-    paramParcel.writeString(this.lEA);
-    paramParcel.writeString(this.IVx);
+    paramParcel.writeString(this.oAb);
+    paramParcel.writeString(this.PRN);
     paramParcel.writeString(this.errMsg);
-    paramParcel.writeString(this.IVy);
+    paramParcel.writeString(this.PRO);
     AppMethodBeat.o(78500);
   }
 }

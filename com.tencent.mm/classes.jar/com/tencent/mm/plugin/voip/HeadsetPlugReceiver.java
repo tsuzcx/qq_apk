@@ -9,7 +9,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 public class HeadsetPlugReceiver
   extends BroadcastReceiver
 {
-  private a GSI = null;
+  private a NIT = null;
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
@@ -18,7 +18,7 @@ public class HeadsetPlugReceiver
     if ((paramIntent.getAction() != null) && (paramIntent.getAction().equals("android.intent.action.HEADSET_PLUG"))) {
       if (paramIntent.getIntExtra("state", 0) == 0)
       {
-        if (this.GSI != null) {
+        if (this.NIT != null) {
           AppMethodBeat.o(114794);
         }
       }

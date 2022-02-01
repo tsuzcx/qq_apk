@@ -7,8 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.multitalk.model.ac;
+import com.tencent.mm.plugin.multitalk.a.e;
+import com.tencent.mm.plugin.multitalk.a.f;
+import com.tencent.mm.plugin.multitalk.model.ad;
 import com.tencent.mm.plugin.multitalk.model.f;
 import com.tencent.mm.plugin.multitalk.model.q;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -19,210 +20,184 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.n.n;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenProjectAvatarUI;", "Lcom/tencent/mm/plugin/multitalk/model/IRenderTarget;", "context", "Landroid/content/Context;", "statusManager", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;)V", "avatarManager", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenProjectAvatarManager;", "getAvatarManager", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenProjectAvatarManager;", "setAvatarManager", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenProjectAvatarManager;)V", "avatarRootLayout", "Landroid/view/View;", "getAvatarRootLayout", "()Landroid/view/View;", "setAvatarRootLayout", "(Landroid/view/View;)V", "beforeOrientation", "", "getBeforeOrientation", "()I", "setBeforeOrientation", "(I)V", "cellContent", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenProjectAvatarCellLayout;", "getCellContent", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenProjectAvatarCellLayout;", "setCellContent", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenProjectAvatarCellLayout;)V", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "mRootView", "Landroid/view/ViewGroup;", "getMRootView", "()Landroid/view/ViewGroup;", "setMRootView", "(Landroid/view/ViewGroup;)V", "getStatusManager", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;", "setStatusManager", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;)V", "applyOrientation", "", "orientation", "changeRendererSpeaker", "userName", "", "checkIfReceivingVideo", "", "doShowOrHideAvatarView", "show", "drawAvatar", "drawBitmap", "bm", "Landroid/graphics/Bitmap;", "angle", "mirror", "getAvatarIv", "Landroid/widget/ImageView;", "getLastRenderSwitchTick", "", "()Ljava/lang/Long;", "getRendererSpeaker", "getScreenProjectAvatarContent", "rootView", "getUsername", "isShown", "refreshAvatar", "speakers", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "release", "resetLayoutCauseDoodle", "showSpeakerAvatar", "showSpeakerVoice", "Companion", "plugin-multitalk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenProjectAvatarUI;", "Lcom/tencent/mm/plugin/multitalk/model/IRenderTarget;", "context", "Landroid/content/Context;", "statusManager", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;)V", "avatarManager", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenProjectAvatarManager;", "getAvatarManager", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenProjectAvatarManager;", "setAvatarManager", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenProjectAvatarManager;)V", "avatarRootLayout", "Landroid/view/View;", "getAvatarRootLayout", "()Landroid/view/View;", "setAvatarRootLayout", "(Landroid/view/View;)V", "beforeOrientation", "", "getBeforeOrientation", "()I", "setBeforeOrientation", "(I)V", "cellContent", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenProjectAvatarCellLayout;", "getCellContent", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenProjectAvatarCellLayout;", "setCellContent", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenProjectAvatarCellLayout;)V", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "mRootView", "Landroid/view/ViewGroup;", "getMRootView", "()Landroid/view/ViewGroup;", "setMRootView", "(Landroid/view/ViewGroup;)V", "getStatusManager", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;", "setStatusManager", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/IProjectStatus;)V", "applyOrientation", "", "orientation", "changeRendererSpeaker", "userName", "", "checkIfReceivingVideo", "", "doShowOrHideAvatarView", "show", "drawAvatar", "drawBitmap", "bm", "Landroid/graphics/Bitmap;", "angle", "mirror", "getAvatarIv", "Landroid/widget/ImageView;", "getLastRenderSwitchTick", "", "()Ljava/lang/Long;", "getRendererSpeaker", "getScreenProjectAvatarContent", "rootView", "getUsername", "isShown", "refreshAvatar", "speakers", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "release", "resetLayoutCauseDoodle", "showSpeakerAvatar", "showSpeakerVoice", "Companion", "plugin-multitalk_release"})
 public final class j
   implements f
 {
-  public static final j.a zWG;
+  public static final j.a FCo;
+  private View FCk;
+  private h FCl;
+  public i FCm;
+  private int FCn;
+  private a Fwg;
   private Context context;
-  public ViewGroup nmW;
-  private a zQD;
-  private View zWC;
-  private h zWD;
-  public i zWE;
-  private int zWF;
+  public ViewGroup qoE;
   
   static
   {
-    AppMethodBeat.i(240007);
-    zWG = new j.a((byte)0);
-    AppMethodBeat.o(240007);
+    AppMethodBeat.i(195833);
+    FCo = new j.a((byte)0);
+    AppMethodBeat.o(195833);
   }
   
   public j(Context paramContext, a parama)
   {
-    AppMethodBeat.i(240006);
+    AppMethodBeat.i(195831);
     this.context = paramContext;
-    this.zQD = parama;
-    this.zWE = new i(this, this.zQD);
-    this.zWF = -1;
-    AppMethodBeat.o(240006);
+    this.Fwg = parama;
+    this.FCm = new i(this, this.Fwg);
+    this.FCn = -1;
+    AppMethodBeat.o(195831);
   }
   
-  private static boolean aGD(String paramString)
+  public final void G(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(240002);
-    q localq = ac.eom();
-    p.g(localq, "SubCoreMultiTalk.getMultiTalkManager()");
-    boolean bool = localq.enr().contains(paramString);
-    AppMethodBeat.o(240002);
-    return bool;
-  }
-  
-  public final void A(ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(239996);
-    p.h(paramViewGroup, "rootView");
-    this.nmW = paramViewGroup;
-    this.zWC = View.inflate(this.context, 2131495737, paramViewGroup);
-    paramViewGroup = this.zWC;
+    AppMethodBeat.i(195798);
+    p.k(paramViewGroup, "rootView");
+    this.qoE = paramViewGroup;
+    this.FCk = View.inflate(this.context, a.f.multitalk_screen_project_avatar_ui, paramViewGroup);
+    paramViewGroup = this.FCk;
     if (paramViewGroup != null) {}
-    for (paramViewGroup = (RelativeLayout)paramViewGroup.findViewById(2131297128); paramViewGroup == null; paramViewGroup = null)
+    for (paramViewGroup = (RelativeLayout)paramViewGroup.findViewById(a.e.avatar_container); paramViewGroup == null; paramViewGroup = null)
     {
       paramViewGroup = new kotlin.t("null cannot be cast to non-null type android.widget.RelativeLayout");
-      AppMethodBeat.o(239996);
+      AppMethodBeat.o(195798);
       throw paramViewGroup;
     }
-    this.zWD = new h(paramViewGroup, this.zQD);
-    AppMethodBeat.o(239996);
+    this.FCl = new h(paramViewGroup, this.Fwg);
+    AppMethodBeat.o(195798);
   }
   
-  public final void RA(int paramInt)
+  public final void XQ(int paramInt)
   {
-    AppMethodBeat.i(239997);
-    if (this.zWF != paramInt)
+    AppMethodBeat.i(195800);
+    if (this.FCn != paramInt)
     {
-      this.zWF = paramInt;
-      h localh = this.zWD;
+      this.FCn = paramInt;
+      h localh = this.FCl;
       if (localh != null)
       {
-        localh.RA(paramInt);
-        AppMethodBeat.o(239997);
+        localh.XQ(paramInt);
+        AppMethodBeat.o(195800);
         return;
       }
     }
-    AppMethodBeat.o(239997);
+    AppMethodBeat.o(195800);
   }
   
   public final void a(String paramString, Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(239999);
-    p.h(paramString, "userName");
-    p.h(paramBitmap, "bm");
-    Object localObject1 = this.zWD;
+    AppMethodBeat.i(195810);
+    p.k(paramString, "userName");
+    p.k(paramBitmap, "bm");
+    Object localObject1 = this.FCl;
     if (localObject1 != null) {}
-    for (localObject1 = ((h)localObject1).zTg; localObject1 != null; localObject1 = null)
+    for (localObject1 = ((h)localObject1).FyI; localObject1 != null; localObject1 = null)
     {
-      h localh = this.zWD;
+      h localh = this.FCl;
       localObject1 = localObject2;
       if (localh != null) {
-        localObject1 = localh.zTg;
+        localObject1 = localh.FyI;
       }
-      if (!p.j(paramString, localObject1)) {
+      if (!p.h(paramString, localObject1)) {
         break;
       }
-      localObject1 = ac.eom();
-      p.g(localObject1, "SubCoreMultiTalk.getMultiTalkManager()");
-      if (((q)localObject1).enw().aGj(paramString) != 100) {
-        break;
+      localObject1 = ad.eYc();
+      p.j(localObject1, "SubCoreMultiTalk.getMultiTalkManager()");
+      if (((q)localObject1).eXm().aQx(paramString) != 100)
+      {
+        localObject1 = ad.eYc();
+        p.j(localObject1, "SubCoreMultiTalk.getMultiTalkManager()");
+        if (((q)localObject1).eXm().aQx(paramString) != 103) {
+          break;
+        }
       }
-      localObject1 = this.zWD;
+      localObject1 = this.FCl;
       if (localObject1 == null) {
         break;
       }
       ((h)localObject1).b(paramString, paramBitmap, paramInt2, paramInt1);
-      AppMethodBeat.o(239999);
+      AppMethodBeat.o(195810);
       return;
     }
-    AppMethodBeat.o(239999);
+    AppMethodBeat.o(195810);
   }
   
-  public final boolean aD(ArrayList<String> paramArrayList)
+  public final boolean aK(ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(240005);
-    p.h(paramArrayList, "speakers");
-    i locali = this.zWE;
-    p.h(paramArrayList, "speakers");
-    Long localLong = locali.zWA.getLastRenderSwitchTick();
+    AppMethodBeat.i(195828);
+    p.k(paramArrayList, "speakers");
+    i locali = this.FCm;
+    p.k(paramArrayList, "speakers");
+    Long localLong = locali.FCi.getLastRenderSwitchTick();
     if (localLong == null) {
-      paramArrayList = i.fC((List)paramArrayList);
+      paramArrayList = i.ge((List)paramArrayList);
     }
     for (;;)
     {
-      locali.zWA.aGA(paramArrayList);
-      locali.zWA.sf(true);
-      AppMethodBeat.o(240005);
+      locali.FCi.aQP(paramArrayList);
+      locali.FCi.vh(true);
+      AppMethodBeat.o(195828);
       return true;
-      if ((Util.ticksToNow(localLong.longValue()) >= 3000L) && (!paramArrayList.contains(locali.zWA.getRendererSpeaker()))) {
-        paramArrayList = i.fC((List)paramArrayList);
+      if ((Util.ticksToNow(localLong.longValue()) >= 3000L) && (!paramArrayList.contains(locali.FCi.getRendererSpeaker()))) {
+        paramArrayList = i.ge((List)paramArrayList);
       } else {
-        paramArrayList = locali.zWA.getRendererSpeaker();
+        paramArrayList = locali.FCi.getRendererSpeaker();
       }
     }
   }
   
-  public final void aGA(String paramString)
+  public final void aQO(String paramString)
   {
-    AppMethodBeat.i(240003);
-    h localh = this.zWD;
-    if (localh != null)
+    AppMethodBeat.i(195814);
+    p.k(paramString, "userName");
+    Object localObject = this.FCl;
+    if ((localObject != null) && (((h)localObject).FBZ == 1))
     {
-      localh.aGs(paramString);
-      AppMethodBeat.o(240003);
-      return;
+      localObject = ad.eYc();
+      p.j(localObject, "SubCoreMultiTalk.getMultiTalkManager()");
+      if (((q)localObject).eXf().contains(paramString)) {}
     }
-    AppMethodBeat.o(240003);
-  }
-  
-  public final void aGz(String paramString)
-  {
-    AppMethodBeat.i(240001);
-    p.h(paramString, "userName");
-    Object localObject;
-    if (!aGD(paramString))
+    else
     {
-      localObject = this.zWD;
+      localObject = this.FCl;
       if (localObject != null)
       {
-        ((h)localObject).aGv(paramString);
-        AppMethodBeat.o(240001);
-        return;
-      }
-      AppMethodBeat.o(240001);
-      return;
-    }
-    if (aGD(paramString))
-    {
-      localObject = ac.eom();
-      p.g(localObject, "SubCoreMultiTalk.getMultiTalkManager()");
-      if (((q)localObject).enw().aGj(paramString) != 100)
-      {
-        localObject = ac.eom();
-        p.g(localObject, "SubCoreMultiTalk.getMultiTalkManager()");
-        if (((q)localObject).enw().aGj(paramString) != 103) {}
-      }
-      else
-      {
-        if ((!ac.eom().zMz) || (!p.j(z.aTY(), paramString))) {
-          break label142;
-        }
-      }
-      localObject = this.zWD;
-      if (localObject != null)
-      {
-        ((h)localObject).aGv(paramString);
-        AppMethodBeat.o(240001);
+        ((h)localObject).aQJ(paramString);
+        AppMethodBeat.o(195814);
         return;
       }
     }
-    label142:
-    AppMethodBeat.o(240001);
+    AppMethodBeat.o(195814);
   }
   
-  public final void emz() {}
-  
-  public final void epz()
+  public final void aQP(String paramString)
   {
-    AppMethodBeat.i(240004);
-    h localh = this.zWD;
+    AppMethodBeat.i(195824);
+    h localh = this.FCl;
     if (localh != null)
     {
-      localh.epz();
-      AppMethodBeat.o(240004);
+      localh.aQG(paramString);
+      AppMethodBeat.o(195824);
       return;
     }
-    AppMethodBeat.o(240004);
+    AppMethodBeat.o(195824);
+  }
+  
+  public final void eWn() {}
+  
+  public final void eZm()
+  {
+    AppMethodBeat.i(195825);
+    h localh = this.FCl;
+    if (localh != null)
+    {
+      localh.eZm();
+      AppMethodBeat.o(195825);
+      return;
+    }
+    AppMethodBeat.o(195825);
   }
   
   public final ImageView getAvatarIv()
@@ -232,19 +207,19 @@ public final class j
   
   public final Long getLastRenderSwitchTick()
   {
-    h localh = this.zWD;
+    h localh = this.FCl;
     if (localh != null) {
-      return localh.zTi;
+      return localh.FyK;
     }
     return null;
   }
   
   public final String getRendererSpeaker()
   {
-    Object localObject = this.zWD;
+    Object localObject = this.FCl;
     if (localObject != null)
     {
-      String str = ((h)localObject).zTg;
+      String str = ((h)localObject).FyI;
       localObject = str;
       if (str != null) {}
     }
@@ -257,10 +232,10 @@ public final class j
   
   public final String getUsername()
   {
-    Object localObject = this.zWD;
+    Object localObject = this.FCl;
     if (localObject != null)
     {
-      String str = ((h)localObject).zTg;
+      String str = ((h)localObject).FyI;
       localObject = str;
       if (str != null) {}
     }
@@ -271,47 +246,47 @@ public final class j
     return localObject;
   }
   
-  public final void sf(boolean paramBoolean)
+  public final void vh(boolean paramBoolean)
   {
     h localh1 = null;
     Object localObject = null;
-    AppMethodBeat.i(239998);
+    AppMethodBeat.i(195804);
     if (paramBoolean)
     {
-      localh1 = this.zWD;
+      localh1 = this.FCl;
       if (localh1 != null) {
-        localObject = localh1.eoH();
+        localObject = localh1.eYy();
       }
       if (localObject == null) {}
       while (((Integer)localObject).intValue() != 0)
       {
-        localObject = this.zWD;
+        localObject = this.FCl;
         if (localObject == null) {
           break;
         }
-        ((h)localObject).epx();
-        AppMethodBeat.o(239998);
+        ((h)localObject).eZk();
+        AppMethodBeat.o(195804);
         return;
       }
-      AppMethodBeat.o(239998);
+      AppMethodBeat.o(195804);
       return;
-      AppMethodBeat.o(239998);
+      AppMethodBeat.o(195804);
       return;
     }
-    h localh2 = this.zWD;
+    h localh2 = this.FCl;
     localObject = localh1;
     if (localh2 != null) {
-      localObject = localh2.eoH();
+      localObject = localh2.eYy();
     }
     if (localObject == null) {}
     for (;;)
     {
-      localObject = this.zWD;
+      localObject = this.FCl;
       if (localObject == null) {
         break;
       }
-      ((h)localObject).epy();
-      AppMethodBeat.o(239998);
+      ((h)localObject).eZl();
+      AppMethodBeat.o(195804);
       return;
       if (((Integer)localObject).intValue() == 4) {
         break;
@@ -319,36 +294,36 @@ public final class j
     }
   }
   
-  public final void sg(boolean paramBoolean)
+  public final void vi(boolean paramBoolean)
   {
-    AppMethodBeat.i(240000);
-    Object localObject = this.zWD;
+    AppMethodBeat.i(195811);
+    Object localObject = this.FCl;
     if (localObject != null) {}
-    for (localObject = ((h)localObject).eoH(); localObject == null; localObject = null)
+    for (localObject = ((h)localObject).eYy(); localObject == null; localObject = null)
     {
-      AppMethodBeat.o(240000);
+      AppMethodBeat.o(195811);
       return;
     }
     if (((Integer)localObject).intValue() == 0)
     {
-      if (!n.aL((CharSequence)getRendererSpeaker())) {}
+      if (!n.ba((CharSequence)getRendererSpeaker())) {}
       for (int i = 1; i != 0; i = 0)
       {
-        localObject = this.zWD;
+        localObject = this.FCl;
         if (localObject == null) {
           break;
         }
-        ((h)localObject).se(paramBoolean);
-        AppMethodBeat.o(240000);
+        ((h)localObject).vg(paramBoolean);
+        AppMethodBeat.o(195811);
         return;
       }
     }
-    AppMethodBeat.o(240000);
+    AppMethodBeat.o(195811);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.projector.j
  * JD-Core Version:    0.7.0.1
  */

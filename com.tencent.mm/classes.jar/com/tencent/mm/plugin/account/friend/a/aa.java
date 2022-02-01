@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.zu;
-import com.tencent.mm.protocal.protobuf.zv;
+import com.tencent.mm.protocal.protobuf.zy;
+import com.tencent.mm.protocal.protobuf.zz;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class aa
   extends q
   implements m
 {
-  public static int kfh = 1;
-  public static int kfi = 2;
-  public static int kfj = 3;
-  public static int kfk = 4;
+  public static int mWG = 1;
+  public static int mWH = 2;
+  public static int mWI = 3;
+  public static int mWJ = 4;
   private i callback;
   private d rr;
   
@@ -29,23 +29,23 @@ public final class aa
   {
     AppMethodBeat.i(131093);
     d.a locala = new d.a();
-    locala.iLN = new zu();
-    locala.iLO = new zv();
+    locala.lBU = new zy();
+    locala.lBV = new zz();
     locala.uri = "/cgi-bin/micromsg-bin/checkunbind";
     locala.funcId = 254;
-    locala.iLP = 131;
+    locala.lBW = 131;
     locala.respCmdId = 1000000131;
-    this.rr = locala.aXF();
-    ((zu)this.rr.iLK.iLR).Brf = paramInt;
+    this.rr = locala.bgN();
+    ((zy)d.b.b(this.rr.lBR)).Hly = paramInt;
     AppMethodBeat.o(131093);
   }
   
-  public final String bok()
+  public final String byt()
   {
     AppMethodBeat.i(131095);
     try
     {
-      String str = ((zv)this.rr.iLL.iLR).Lld;
+      String str = ((zz)d.c.b(this.rr.lBS)).Smm;
       Log.d("MicroMsg.NetSceneCheckUnBind", "getRandomPasswd() ".concat(String.valueOf(str)));
       AppMethodBeat.o(131095);
       return str;
@@ -58,9 +58,12 @@ public final class aa
     return null;
   }
   
-  public final zv bol()
+  public final zz byu()
   {
-    return (zv)this.rr.iLL.iLR;
+    AppMethodBeat.i(194157);
+    zz localzz = (zz)d.c.b(this.rr.lBS);
+    AppMethodBeat.o(194157);
+    return localzz;
   }
   
   public final int doScene(g paramg, i parami)

@@ -15,9 +15,9 @@ final class GroupSolitatireEditUI$5
   {
     AppMethodBeat.i(110431);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/groupsolitaire/ui/GroupSolitatireEditUI$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    GroupSolitatireEditUI.p(this.ygt);
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/groupsolitaire/ui/GroupSolitatireEditUI$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    GroupSolitatireEditUI.p(this.Dqv);
     a.a(this, "com/tencent/mm/plugin/groupsolitaire/ui/GroupSolitatireEditUI$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(110431);
   }

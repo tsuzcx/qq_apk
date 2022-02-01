@@ -24,29 +24,29 @@ import java.util.regex.Pattern;
 
 final class f
 {
-  public static final Pattern bDF;
-  private static final Pattern bDG;
-  private final StringBuilder bCG;
+  public static final Pattern bng;
+  private static final Pattern bnh;
+  private final StringBuilder bmi;
   
   static
   {
     AppMethodBeat.i(92907);
-    bDF = Pattern.compile("^(\\S+)\\s+-->\\s+(\\S+)(.*)?$");
-    bDG = Pattern.compile("(\\S+?):(\\S+)");
+    bng = Pattern.compile("^(\\S+)\\s+-->\\s+(\\S+)(.*)?$");
+    bnh = Pattern.compile("(\\S+?):(\\S+)");
     AppMethodBeat.o(92907);
   }
   
   public f()
   {
     AppMethodBeat.i(92899);
-    this.bCG = new StringBuilder();
+    this.bmi = new StringBuilder();
     AppMethodBeat.o(92899);
   }
   
   static void a(String paramString, e.a parama)
   {
     AppMethodBeat.i(92901);
-    Matcher localMatcher = bDG.matcher(paramString);
+    Matcher localMatcher = bnh.matcher(paramString);
     String str;
     int i;
     for (;;)
@@ -66,12 +66,12 @@ final class f
             if (i == -1) {
               break label127;
             }
-            parama.bAd = bm(paramString.substring(i + 1));
+            parama.bjE = bx(paramString.substring(i + 1));
             paramString = paramString.substring(0, i);
             if (!paramString.endsWith("%")) {
               break label136;
             }
-            parama.bAc = h.bo(paramString);
+            parama.bjD = h.bz(paramString);
             parama.lineType = 0;
           }
           catch (NumberFormatException paramString)
@@ -80,7 +80,7 @@ final class f
           }
           break;
           label127:
-          parama.bAd = -2147483648;
+          parama.bjE = -2147483648;
         }
         label136:
         int j = Integer.parseInt(paramString);
@@ -88,7 +88,7 @@ final class f
         if (j < 0) {
           i = j - 1;
         }
-        parama.bAc = i;
+        parama.bjD = i;
         parama.lineType = 1;
         continue;
         label165:
@@ -101,7 +101,7 @@ final class f
     }
     for (;;)
     {
-      parama.bAb = paramString;
+      parama.bjC = paramString;
       break;
       if (paramString.equals("start"))
       {
@@ -138,19 +138,19 @@ final class f
                     i = paramString.indexOf(',');
                     if (i != -1)
                     {
-                      parama.bAf = bm(paramString.substring(i + 1));
+                      parama.bjG = bx(paramString.substring(i + 1));
                       paramString = paramString.substring(0, i);
                     }
                     for (;;)
                     {
-                      parama.bAe = h.bo(paramString);
+                      parama.bjF = h.bz(paramString);
                       break;
-                      parama.bAf = -2147483648;
+                      parama.bjG = -2147483648;
                     }
                   }
                   if ("size".equals(str))
                   {
-                    parama.width = h.bo(paramString);
+                    parama.width = h.bz(paramString);
                     break;
                   }
                   new StringBuilder("Unknown cue setting ").append(str).append(":").append(paramString);
@@ -172,7 +172,7 @@ final class f
     }
   }
   
-  private static void a(String paramString, a parama, SpannableStringBuilder paramSpannableStringBuilder, List<d> paramList, List<b> paramList1)
+  private static void a(String paramString, f.a parama, SpannableStringBuilder paramSpannableStringBuilder, List<d> paramList, List<b> paramList1)
   {
     AppMethodBeat.i(92905);
     int k = parama.position;
@@ -232,20 +232,20 @@ final class f
     i = 0;
     if (i < n)
     {
-      paramString = ((b)paramList1.get(i)).bDJ;
+      paramString = ((b)paramList1.get(i)).bnk;
       if (paramString != null)
       {
-        if (paramString.getStyle() != -1) {
-          paramSpannableStringBuilder.setSpan(new StyleSpan(paramString.getStyle()), k, m, 33);
+        if (paramString.uv() != -1) {
+          paramSpannableStringBuilder.setSpan(new StyleSpan(paramString.uv()), k, m, 33);
         }
-        if (paramString.bCY == 1)
+        if (paramString.bmA == 1)
         {
           j = 1;
           label371:
           if (j != 0) {
             paramSpannableStringBuilder.setSpan(new StrikethroughSpan(), k, m, 33);
           }
-          if (paramString.bCZ != 1) {
+          if (paramString.bmB != 1) {
             break label505;
           }
         }
@@ -255,10 +255,10 @@ final class f
           if (j != 0) {
             paramSpannableStringBuilder.setSpan(new UnderlineSpan(), k, m, 33);
           }
-          if (!paramString.bCW) {
+          if (!paramString.bmy) {
             break label532;
           }
-          if (paramString.bCW) {
+          if (paramString.bmy) {
             break label511;
           }
           paramString = new IllegalStateException("Font color not defined");
@@ -272,11 +272,11 @@ final class f
           break label371;
         }
         label511:
-        paramSpannableStringBuilder.setSpan(new ForegroundColorSpan(paramString.bCV), k, m, 33);
+        paramSpannableStringBuilder.setSpan(new ForegroundColorSpan(paramString.bmx), k, m, 33);
         label532:
-        if (paramString.bCX)
+        if (paramString.bmz)
         {
-          if (!paramString.bCX)
+          if (!paramString.bmz)
           {
             paramString = new IllegalStateException("Background color not defined.");
             AppMethodBeat.o(92905);
@@ -287,10 +287,10 @@ final class f
         if (paramString.fontFamily != null) {
           paramSpannableStringBuilder.setSpan(new TypefaceSpan(paramString.fontFamily), k, m, 33);
         }
-        if (paramString.bDe != null) {
-          paramSpannableStringBuilder.setSpan(new AlignmentSpan.Standard(paramString.bDe), k, m, 33);
+        if (paramString.bmF != null) {
+          paramSpannableStringBuilder.setSpan(new AlignmentSpan.Standard(paramString.bmF), k, m, 33);
         }
-        switch (paramString.bDc)
+        switch (paramString.bmD)
         {
         }
       }
@@ -396,9 +396,9 @@ final class f
               if (localStack.isEmpty()) {
                 break;
               }
-              localObject = (a)localStack.pop();
-              a(paramString1, (a)localObject, localSpannableStringBuilder, paramList, localArrayList);
-            } while (!((a)localObject).name.equals(str));
+              localObject = (f.a)localStack.pop();
+              a(paramString1, (f.a)localObject, localSpannableStringBuilder, paramList, localArrayList);
+            } while (!((f.a)localObject).name.equals(str));
             i = j;
             break;
             k = 0;
@@ -447,7 +447,7 @@ final class f
           if (m != 0) {
             break label963;
           }
-          localStack.push(a.k((String)localObject, localSpannableStringBuilder.length()));
+          localStack.push(f.a.p((String)localObject, localSpannableStringBuilder.length()));
           i = j;
           break;
         case '&': 
@@ -532,10 +532,10 @@ final class f
       else
       {
         while (!localStack.isEmpty()) {
-          a(paramString1, (a)localStack.pop(), localSpannableStringBuilder, paramList, localArrayList);
+          a(paramString1, (f.a)localStack.pop(), localSpannableStringBuilder, paramList, localArrayList);
         }
-        a(paramString1, a.wx(), localSpannableStringBuilder, paramList, localArrayList);
-        parama.bDE = localSpannableStringBuilder;
+        a(paramString1, f.a.uy(), localSpannableStringBuilder, paramList, localArrayList);
+        parama.bnf = localSpannableStringBuilder;
         AppMethodBeat.o(92902);
         return;
         label963:
@@ -544,7 +544,7 @@ final class f
     }
   }
   
-  private static void a(List<d> paramList, String paramString, a parama, List<b> paramList1)
+  private static void a(List<d> paramList, String paramString, f.a parama, List<b> paramList1)
   {
     AppMethodBeat.i(92906);
     int k = paramList.size();
@@ -553,10 +553,10 @@ final class f
     {
       d locald = (d)paramList.get(j);
       String str1 = parama.name;
-      String[] arrayOfString = parama.bDI;
+      String[] arrayOfString = parama.bnj;
       String str2 = parama.voice;
       int i;
-      if ((locald.aQa.isEmpty()) && (locald.bDA.isEmpty()) && (locald.bDB.isEmpty()) && (locald.bDC.isEmpty())) {
+      if ((locald.ayt.isEmpty()) && (locald.bnb.isEmpty()) && (locald.bnc.isEmpty()) && (locald.bnd.isEmpty())) {
         if (str1.isEmpty()) {
           i = 1;
         }
@@ -570,11 +570,11 @@ final class f
         break;
         i = 0;
         continue;
-        i = d.b(d.b(d.b(0, locald.aQa, paramString, 1073741824), locald.bDA, str1, 2), locald.bDC, str2, 4);
-        if ((i == -1) || (!Arrays.asList(arrayOfString).containsAll(locald.bDB))) {
+        i = d.b(d.b(d.b(0, locald.ayt, paramString, 1073741824), locald.bnb, str1, 2), locald.bnd, str2, 4);
+        if ((i == -1) || (!Arrays.asList(arrayOfString).containsAll(locald.bnc))) {
           i = 0;
         } else {
-          i += locald.bDB.size() * 4;
+          i += locald.bnc.size() * 4;
         }
       }
     }
@@ -587,8 +587,8 @@ final class f
     AppMethodBeat.i(92903);
     try
     {
-      parama.startTime = h.bn(paramMatcher.group(1));
-      parama.endTime = h.bn(paramMatcher.group(2));
+      parama.startTime = h.by(paramMatcher.group(1));
+      parama.endTime = h.by(paramMatcher.group(2));
       a(paramMatcher.group(3), parama);
       paramStringBuilder.setLength(0);
       for (;;)
@@ -614,7 +614,7 @@ final class f
     return true;
   }
   
-  private static int bm(String paramString)
+  private static int bx(String paramString)
   {
     AppMethodBeat.i(92904);
     int i = -1;
@@ -666,11 +666,11 @@ final class f
       AppMethodBeat.o(92900);
       return false;
     }
-    Object localObject = bDF.matcher(str);
+    Object localObject = bng.matcher(str);
     boolean bool;
     if (((Matcher)localObject).matches())
     {
-      bool = a(null, (Matcher)localObject, paramm, parama, this.bCG, paramList);
+      bool = a(null, (Matcher)localObject, paramm, parama, this.bmi, paramList);
       AppMethodBeat.o(92900);
       return bool;
     }
@@ -680,10 +680,10 @@ final class f
       AppMethodBeat.o(92900);
       return false;
     }
-    localObject = bDF.matcher((CharSequence)localObject);
+    localObject = bng.matcher((CharSequence)localObject);
     if (((Matcher)localObject).matches())
     {
-      bool = a(str.trim(), (Matcher)localObject, paramm, parama, this.bCG, paramList);
+      bool = a(str.trim(), (Matcher)localObject, paramm, parama, this.bmi, paramList);
       AppMethodBeat.o(92900);
       return bool;
     }
@@ -691,79 +691,22 @@ final class f
     return false;
   }
   
-  static final class a
-  {
-    private static final String[] bDH = new String[0];
-    public final String[] bDI;
-    public final String name;
-    public final int position;
-    public final String voice;
-    
-    private a(String paramString1, int paramInt, String paramString2, String[] paramArrayOfString)
-    {
-      this.position = paramInt;
-      this.name = paramString1;
-      this.voice = paramString2;
-      this.bDI = paramArrayOfString;
-    }
-    
-    public static a k(String paramString, int paramInt)
-    {
-      AppMethodBeat.i(92897);
-      Object localObject = paramString.trim();
-      if (((String)localObject).isEmpty())
-      {
-        AppMethodBeat.o(92897);
-        return null;
-      }
-      int i = ((String)localObject).indexOf(" ");
-      String str;
-      if (i == -1)
-      {
-        paramString = "";
-        localObject = ((String)localObject).split("\\.");
-        str = localObject[0];
-        if (localObject.length <= 1) {
-          break label107;
-        }
-      }
-      label107:
-      for (localObject = (String[])Arrays.copyOfRange((Object[])localObject, 1, localObject.length);; localObject = bDH)
-      {
-        paramString = new a(str, paramInt, paramString, (String[])localObject);
-        AppMethodBeat.o(92897);
-        return paramString;
-        paramString = ((String)localObject).substring(i).trim();
-        localObject = ((String)localObject).substring(0, i);
-        break;
-      }
-    }
-    
-    public static a wx()
-    {
-      AppMethodBeat.i(92898);
-      a locala = new a("", 0, "", new String[0]);
-      AppMethodBeat.o(92898);
-      return locala;
-    }
-  }
-  
   static final class b
     implements Comparable<b>
   {
-    public final d bDJ;
+    public final d bnk;
     public final int score;
     
     public b(int paramInt, d paramd)
     {
       this.score = paramInt;
-      this.bDJ = paramd;
+      this.bnk = paramd;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.f.g.f
  * JD-Core Version:    0.7.0.1
  */

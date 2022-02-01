@@ -5,24 +5,22 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.contact.c;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ay.a;
-import com.tencent.mm.model.ay.b;
-import com.tencent.mm.model.ay.b.a;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.wallet_core.c.ae;
+import com.tencent.mm.an.q;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.model.az.a;
+import com.tencent.mm.model.az.b;
+import com.tencent.mm.model.az.b.a;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.wallet_core.c.af;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.wallet_core.d;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import java.net.URLEncoder;
 import java.util.Iterator;
@@ -32,22 +30,22 @@ import java.util.List;
 public class WalletOrderInfoUI
   extends WalletBaseUI
 {
-  private String AJn;
-  private Orders HFH;
-  protected ay.b.a Iip;
+  private String GCu;
+  private Orders OxA;
+  protected az.b.a PaG;
   
   public WalletOrderInfoUI()
   {
     AppMethodBeat.i(71094);
-    this.Iip = new WalletOrderInfoUI.1(this);
+    this.PaG = new WalletOrderInfoUI.1(this);
     AppMethodBeat.o(71094);
   }
   
   private void e(Orders paramOrders)
   {
     AppMethodBeat.i(71100);
-    Log.printInfoStack("MicroMsg.WalletOrderInfoUI", "goToOrderInfoUI, is_use_new_paid_succ_page: %d", new Object[] { Integer.valueOf(paramOrders.HZn) });
-    if (paramOrders.HZn == 1) {
+    Log.printInfoStack("MicroMsg.WalletOrderInfoUI", "goToOrderInfoUI, is_use_new_paid_succ_page: %d", new Object[] { Integer.valueOf(paramOrders.ORn) });
+    if (paramOrders.ORn == 1) {
       getProcess().b(this, WalletOrderInfoNewUI.class, getInput());
     }
     for (;;)
@@ -96,37 +94,44 @@ public class WalletOrderInfoUI
     }
   }
   
-  protected void aVQ(String paramString)
-  {
-    AppMethodBeat.i(71098);
-    doSceneProgress(new ae(paramString));
-    AppMethodBeat.o(71098);
-  }
-  
-  protected void ai(as paramas)
+  protected void ao(as paramas)
   {
     AppMethodBeat.i(71101);
-    if ((paramas != null) && ((int)paramas.gMZ != 0))
+    if ((paramas != null) && ((int)paramas.jxt != 0))
     {
-      String str = paramas.arI();
+      String str = paramas.ayr();
       Log.d("MicroMsg.WalletOrderInfoUI", "call back from contactServer nickName " + str + " username: " + paramas.field_username);
-      if ((this.HFH.HZd != null) && (this.HFH.HZd.size() > 0))
+      if ((this.OxA.ORd != null) && (this.OxA.ORd.size() > 0))
       {
-        paramas = this.HFH.HZd.iterator();
+        paramas = this.OxA.ORd.iterator();
         while (paramas.hasNext()) {
-          ((Orders.Commodity)paramas.next()).dCu = str;
+          ((Orders.Commodity)paramas.next()).fvb = str;
         }
       }
     }
     AppMethodBeat.o(71101);
   }
   
-  protected boolean eOn()
+  protected void bhz(String paramString)
+  {
+    AppMethodBeat.i(71098);
+    doSceneProgress(new af(paramString));
+    AppMethodBeat.o(71098);
+  }
+  
+  protected boolean fBc()
   {
     return true;
   }
   
-  protected Orders fSS()
+  protected void gJ(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(71099);
+    doSceneProgress(new af(paramString, paramInt));
+    AppMethodBeat.o(71099);
+  }
+  
+  protected Orders gLy()
   {
     AppMethodBeat.i(71097);
     Orders localOrders = (Orders)getInput().getParcelable("key_orders");
@@ -134,42 +139,35 @@ public class WalletOrderInfoUI
     return localOrders;
   }
   
-  protected void ga(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(71099);
-    doSceneProgress(new ae(paramString, paramInt));
-    AppMethodBeat.o(71099);
-  }
-  
   public int getLayoutId()
   {
-    return 2131496765;
+    return a.g.transparent_layout;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(71095);
     super.onCreate(paramBundle);
-    if (eOn())
+    if (fBc())
     {
-      this.HFH = fSS();
-      this.AJn = getInput().getString("key_trans_id");
+      this.OxA = gLy();
+      this.GCu = getInput().getString("key_trans_id");
       int i = getInput().getInt("key_pay_type", -1);
-      Log.i("MicroMsg.WalletOrderInfoUI", "mTransId %s", new Object[] { this.AJn });
-      if (this.AJn != null)
+      Log.i("MicroMsg.WalletOrderInfoUI", "mTransId %s", new Object[] { this.GCu });
+      if (this.GCu != null)
       {
         if (i == -1)
         {
-          aVQ(this.AJn);
+          bhz(this.GCu);
           AppMethodBeat.o(71095);
           return;
         }
-        ga(this.AJn, i);
+        gJ(this.GCu, i);
         AppMethodBeat.o(71095);
         return;
       }
-      if (this.HFH != null) {
-        e(this.HFH);
+      if (this.OxA != null) {
+        e(this.OxA);
       }
     }
     AppMethodBeat.o(71095);
@@ -179,8 +177,8 @@ public class WalletOrderInfoUI
   {
     AppMethodBeat.i(71096);
     super.onDestroy();
-    if ((this.HFH != null) && (!Util.isNullOrNil(this.HFH.username))) {
-      ay.a.iDq.JZ(this.HFH.username);
+    if ((this.OxA != null) && (!Util.isNullOrNil(this.OxA.username))) {
+      az.a.ltq.Rr(this.OxA.username);
     }
     AppMethodBeat.o(71096);
   }
@@ -188,34 +186,34 @@ public class WalletOrderInfoUI
   public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(71103);
-    if (((paramq instanceof ae)) && (paramInt1 == 0) && (paramInt2 == 0))
+    if (((paramq instanceof af)) && (paramInt1 == 0) && (paramInt2 == 0))
     {
-      this.HFH = ((ae)paramq).HQs;
-      if (this.HFH != null) {
-        if ((this.HFH.HZd != null) && (this.HFH.HZd.size() != 0))
+      this.OxA = ((af)paramq).OIB;
+      if (this.OxA != null) {
+        if ((this.OxA.ORd != null) && (this.OxA.ORd.size() != 0))
         {
-          paramString = (Orders.Commodity)this.HFH.HZd.get(0);
-          this.AJn = paramString.dDM;
+          paramString = (Orders.Commodity)this.OxA.ORd.get(0);
+          this.GCu = paramString.fww;
           Log.d("MicroMsg.WalletOrderInfoUI", "Coomdity:" + paramString.toString());
-          g.aAi();
-          paramq = ((l)g.af(l.class)).aSN().Kn(paramString.dCu);
-          if ((paramq != null) && ((int)paramq.gMZ != 0)) {
-            ai(paramq);
+          com.tencent.mm.kernel.h.aHH();
+          paramq = ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().RG(paramString.fvb);
+          if ((paramq != null) && ((int)paramq.jxt != 0)) {
+            ao(paramq);
           }
         }
         else
         {
-          e(this.HFH);
+          e(this.OxA);
         }
       }
       for (;;)
       {
         AppMethodBeat.o(71103);
         return true;
-        ay.a.iDq.a(paramString.dCu, "", this.Iip);
+        az.a.ltq.a(paramString.fvb, "", this.PaG);
         break;
         Log.e("MicroMsg.WalletOrderInfoUI", "cannot get orders");
-        h.a(getContext(), 2131767999, 0, new DialogInterface.OnClickListener()
+        com.tencent.mm.ui.base.h.a(getContext(), a.i.wallet_order_info_err, 0, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {

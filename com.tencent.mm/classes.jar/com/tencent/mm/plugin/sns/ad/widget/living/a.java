@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.sns.ad.widget.living;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.a.g;
+import com.tencent.mm.plugin.sns.ad.adxml.g;
 import com.tencent.mm.plugin.sns.storage.ADXml;
 import com.tencent.mm.plugin.sns.storage.SnsInfo;
-import com.tencent.mm.protocal.protobuf.bz;
+import com.tencent.mm.protocal.protobuf.bx;
 import org.json.JSONObject;
 
 public final class a
 {
-  public static bz[] q(SnsInfo paramSnsInfo)
+  public static bx[] q(SnsInfo paramSnsInfo)
   {
-    bz localbz = null;
-    AppMethodBeat.i(202407);
+    bx localbx = null;
+    AppMethodBeat.i(230174);
     if ((paramSnsInfo == null) || (paramSnsInfo.getAdXml() == null) || (paramSnsInfo.getAdXml().adLiveInfo == null))
     {
-      AppMethodBeat.o(202407);
+      AppMethodBeat.o(230174);
       return null;
     }
     g localg = paramSnsInfo.getAdXml().adLiveInfo;
-    paramSnsInfo = localbz;
+    paramSnsInfo = localbx;
     if (localg.liveType == 0) {
-      paramSnsInfo = new bz[1];
+      paramSnsInfo = new bx[1];
     }
     try
     {
-      localbz = new bz();
-      localbz.pTI = 2;
+      localbx = new bx();
+      localbx.tpK = 2;
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.putOpt("liveParams", localg.DrY);
-      localbz.data = localJSONObject.toString();
-      paramSnsInfo[0] = localbz;
+      localJSONObject.putOpt("liveParams", localg.Jyr);
+      localbx.data = localJSONObject.toString();
+      paramSnsInfo[0] = localbx;
     }
     catch (Throwable localThrowable)
     {
       label101:
       break label101;
     }
-    AppMethodBeat.o(202407);
+    AppMethodBeat.o(230174);
     return paramSnsInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.widget.living.a
  * JD-Core Version:    0.7.0.1
  */

@@ -8,15 +8,15 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 public final class d
   implements a
 {
-  public final boolean Mb(long paramLong)
+  public final boolean Tz(long paramLong)
   {
     AppMethodBeat.i(116666);
-    boolean bool = com.tencent.mm.plugin.websearch.widget.c.c.ak(paramLong, 0);
+    boolean bool = com.tencent.mm.plugin.websearch.widget.c.c.at(paramLong, 0);
     AppMethodBeat.o(116666);
     return bool;
   }
   
-  public final boolean aXt(String paramString)
+  public final boolean bjf(String paramString)
   {
     AppMethodBeat.i(116665);
     if (TextUtils.isEmpty(paramString))
@@ -33,10 +33,10 @@ public final class d
     return false;
   }
   
-  public final boolean aXu(String paramString)
+  public final boolean bjg(String paramString)
   {
     AppMethodBeat.i(116667);
-    if (!aXt(paramString))
+    if (!bjf(paramString))
     {
       AppMethodBeat.o(116667);
       return false;
@@ -44,14 +44,14 @@ public final class d
     Intent localIntent = new Intent();
     localIntent.putExtra("rawUrl", paramString);
     localIntent.putExtra("useJs", true);
-    com.tencent.mm.br.c.b(MMApplicationContext.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
+    com.tencent.mm.by.c.b(MMApplicationContext.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
     AppMethodBeat.o(116667);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.c.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.wallet_core.d;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.model.ad;
+import com.tencent.mm.plugin.wallet_core.model.ae;
 import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.ArrayList;
 
 public final class g
-  extends MAutoStorage<ad>
+  extends MAutoStorage<ae>
 {
   public static final String[] SQL_CREATE;
   public ISQLiteDatabase db;
@@ -16,17 +16,17 @@ public final class g
   static
   {
     AppMethodBeat.i(70616);
-    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(ad.info, "WalletKindInfo") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(ae.info, "WalletKindInfo") };
     AppMethodBeat.o(70616);
   }
   
   public g(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, ad.info, "WalletKindInfo", null);
+    super(paramISQLiteDatabase, ae.info, "WalletKindInfo", null);
     this.db = paramISQLiteDatabase;
   }
   
-  public final ArrayList<ad> fSs()
+  public final ArrayList<ae> gKX()
   {
     ArrayList localArrayList = null;
     AppMethodBeat.i(70615);
@@ -41,9 +41,9 @@ public final class g
       localArrayList = new ArrayList();
       do
       {
-        ad localad = new ad();
-        localad.convertFrom(localCursor);
-        localArrayList.add(localad);
+        ae localae = new ae();
+        localae.convertFrom(localCursor);
+        localArrayList.add(localae);
       } while (localCursor.moveToNext());
     }
     localCursor.close();

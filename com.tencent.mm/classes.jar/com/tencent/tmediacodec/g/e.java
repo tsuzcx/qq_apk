@@ -9,53 +9,53 @@ import java.util.concurrent.Executors;
 
 public final class e
 {
-  private static final ExecutorService Snd;
-  private static Handler Sne;
+  private static final ExecutorService ZPO;
+  private static Handler ZPP;
   private static final Handler mHandler;
   private static final HandlerThread mHandlerThread;
   
   static
   {
-    AppMethodBeat.i(190205);
+    AppMethodBeat.i(224715);
     mHandler = new Handler(Looper.getMainLooper());
-    Snd = Executors.newCachedThreadPool();
+    ZPO = Executors.newCachedThreadPool();
     HandlerThread localHandlerThread = new HandlerThread("com.tencent.tmediacodec-sub");
     mHandlerThread = localHandlerThread;
     localHandlerThread.start();
-    Sne = new Handler(mHandlerThread.getLooper());
-    AppMethodBeat.o(190205);
+    ZPP = new Handler(mHandlerThread.getLooper());
+    AppMethodBeat.o(224715);
   }
   
-  public static void bb(Runnable paramRunnable)
+  public static void bi(Runnable paramRunnable)
   {
-    AppMethodBeat.i(190204);
-    Sne.post(paramRunnable);
-    AppMethodBeat.o(190204);
+    AppMethodBeat.i(224712);
+    ZPP.post(paramRunnable);
+    AppMethodBeat.o(224712);
   }
   
   public static void execute(Runnable paramRunnable)
   {
-    AppMethodBeat.i(190203);
-    Snd.execute(paramRunnable);
-    AppMethodBeat.o(190203);
+    AppMethodBeat.i(224711);
+    ZPO.execute(paramRunnable);
+    AppMethodBeat.o(224711);
   }
   
   public static void runOnSubThread(Runnable paramRunnable)
   {
-    AppMethodBeat.i(190202);
+    AppMethodBeat.i(224709);
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      Snd.execute(paramRunnable);
-      AppMethodBeat.o(190202);
+      ZPO.execute(paramRunnable);
+      AppMethodBeat.o(224709);
       return;
     }
     paramRunnable.run();
-    AppMethodBeat.o(190202);
+    AppMethodBeat.o(224709);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tmediacodec.g.e
  * JD-Core Version:    0.7.0.1
  */

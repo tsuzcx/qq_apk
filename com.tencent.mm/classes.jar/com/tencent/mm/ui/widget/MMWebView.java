@@ -20,13 +20,13 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.webkit.ConsoleMessage;
 import android.webkit.GeolocationPermissions.Callback;
+import android.webkit.PermissionRequest;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient.CustomViewCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.compatible.loader.c;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.ah.a.d;
+import com.tencent.mm.cj.a;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.pluginsdk.r;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
@@ -36,10 +36,10 @@ import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.xweb.JsResult;
 import com.tencent.xweb.WebView;
 import com.tencent.xweb.WebView.c;
+import com.tencent.xweb.aa;
 import com.tencent.xweb.o;
 import com.tencent.xweb.x;
 import com.tencent.xweb.x.a;
-import com.tencent.xweb.z;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
 import java.net.URL;
@@ -53,29 +53,31 @@ import org.xwalk.core.XWalkEnvironment;
 public class MMWebView
   extends WebView
 {
-  public static final WebView.c QDR;
-  private static Vector<WeakReference<MMWebView>> QDT;
-  private View.OnTouchListener HeV;
-  private r JDX;
-  protected boolean QDS;
-  private boolean QDU;
-  private ViewGroup QDV;
-  private View.OnTouchListener QDW;
-  public e QDX;
-  private LinkedList<e> QDY;
-  private boolean QDZ;
-  private List<i> QEa;
-  public boolean gKM;
-  private boolean ltW;
+  public static final WebView.c Yct;
+  private static Vector<WeakReference<MMWebView>> Ycv;
+  private String EVx;
+  private r QCL;
+  public f YcA;
+  private LinkedList<f> YcB;
+  private boolean YcC;
+  private List<k> YcD;
+  protected boolean Ycu;
+  private boolean Ycw;
+  private boolean Ycx;
+  private ViewGroup Ycy;
+  private View.OnTouchListener Ycz;
+  public int gco;
+  public boolean jvb;
   public boolean mDestroyed;
-  private String zpY;
+  private View.OnTouchListener nan;
+  private boolean ooW;
   
   static
   {
-    AppMethodBeat.i(205438);
-    QDR = WebView.c.SAu;
-    QDT = new Vector();
-    AppMethodBeat.o(205438);
+    AppMethodBeat.i(190545);
+    Yct = WebView.c.aabn;
+    Ycv = new Vector();
+    AppMethodBeat.o(190545);
   }
   
   public MMWebView(Context paramContext)
@@ -85,26 +87,28 @@ public class MMWebView
   
   public MMWebView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 0, WebView.c.SAs);
+    this(paramContext, paramAttributeSet, 0, WebView.c.aabl);
   }
   
   public MMWebView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    this(paramContext, paramAttributeSet, paramInt, WebView.c.SAs);
+    this(paramContext, paramAttributeSet, paramInt, WebView.c.aabl);
   }
   
   public MMWebView(Context paramContext, AttributeSet paramAttributeSet, int paramInt, WebView.c paramc)
   {
     super(paramContext, paramAttributeSet, paramInt, paramc);
     AppMethodBeat.i(143424);
-    this.JDX = new r();
-    this.gKM = false;
-    this.QDS = false;
-    this.QDU = false;
-    this.QDX = null;
-    this.QDY = new LinkedList();
-    this.QDZ = false;
-    this.QEa = new ArrayList();
+    this.QCL = new r();
+    this.gco = 0;
+    this.jvb = false;
+    this.Ycu = false;
+    this.Ycw = false;
+    this.Ycx = false;
+    this.YcA = null;
+    this.YcB = new LinkedList();
+    this.YcC = false;
+    this.YcD = new ArrayList();
     if (Looper.getMainLooper().getThread() != Thread.currentThread())
     {
       Log.e("MicroMsg.MMWebView", "alvinluo MMWebView create not in main thread, stack: %s", new Object[] { Util.getStack() });
@@ -115,16 +119,16 @@ public class MMWebView
         throw paramContext;
       }
     }
-    setBackgroundColor(paramContext.getResources().getColor(2131101424));
-    gYV();
-    QDT.add(new WeakReference(this));
+    setBackgroundColor(paramContext.getResources().getColor(a.d.white));
+    hZM();
+    Ycv.add(new WeakReference(this));
     AppMethodBeat.o(143424);
   }
   
-  public static void CU(boolean paramBoolean)
+  public static void Ho(boolean paramBoolean)
   {
-    AppMethodBeat.i(205431);
-    Iterator localIterator = QDT.iterator();
+    AppMethodBeat.i(190429);
+    Iterator localIterator = Ycv.iterator();
     while (localIterator.hasNext())
     {
       MMWebView localMMWebView = (MMWebView)((WeakReference)localIterator.next()).get();
@@ -136,15 +140,15 @@ public class MMWebView
         }
       }
     }
-    AppMethodBeat.o(205431);
+    AppMethodBeat.o(190429);
   }
   
-  private static boolean b(MMWebView paramMMWebView, String paramString)
+  private static boolean c(MMWebView paramMMWebView, String paramString)
   {
     AppMethodBeat.i(143431);
     try
     {
-      paramMMWebView = new c(new c(new c(paramMMWebView, "mSysWebView", null).get(), "mProvider", null).get(), "mWebViewCore", null).get();
+      paramMMWebView = new com.tencent.mm.compatible.loader.b(new com.tencent.mm.compatible.loader.b(new com.tencent.mm.compatible.loader.b(paramMMWebView, "mSysWebView", null).get(), "mProvider", null).get(), "mWebViewCore", null).get();
       Method localMethod = paramMMWebView.getClass().getDeclaredMethod("sendMessage", new Class[] { Message.class });
       localMethod.setAccessible(true);
       localMethod.invoke(paramMMWebView, new Object[] { Message.obtain(null, 194, paramString) });
@@ -159,29 +163,31 @@ public class MMWebView
     return false;
   }
   
-  private static void gYZ()
+  private boolean hZO()
   {
-    AppMethodBeat.i(205432);
-    String str = ((b)g.af(b.class)).a(b.a.rSP, "");
-    if (!Util.isNullOrNil(str))
+    AppMethodBeat.i(190450);
+    if (this.mDestroyed)
     {
-      Log.i("MicroMsg.MMWebView", "setNewDnsHostList %s", new Object[] { str });
-      com.tencent.xweb.x5.sdk.d.setNewDnsHostList(str);
+      Log.w("MicroMsg.MMWebView", "EvaluateJavascript can not after destroy. %s", new Object[] { Util.getStack() });
+      AppMethodBeat.o(190450);
+      return false;
     }
-    AppMethodBeat.o(205432);
+    AppMethodBeat.o(190450);
+    return true;
   }
   
-  public static void kI(Context paramContext)
+  public static void lF(Context paramContext)
   {
     AppMethodBeat.i(143440);
-    SharedPreferences localSharedPreferences = paramContext.getSharedPreferences("com.tencent.mm_webview_x5_preferences", 4);
-    String str1 = localSharedPreferences.getString("tbs_webview_disable", "0");
-    String str2 = localSharedPreferences.getString("tbs_webview_min_sdk_version", null);
-    String str3 = localSharedPreferences.getString("tbs_webview_max_sdk_version", null);
+    Object localObject = paramContext.getSharedPreferences("com.tencent.mm_webview_x5_preferences", 4);
+    String str1 = ((SharedPreferences)localObject).getString("tbs_webview_disable", "0");
+    String str2 = ((SharedPreferences)localObject).getString("tbs_webview_min_sdk_version", null);
+    String str3 = ((SharedPreferences)localObject).getString("tbs_webview_max_sdk_version", null);
     Log.i("MicroMsg.MMWebView", "initTbsSettings, tbsDisable = %s, minSdkVersion = %s, maxSdkVersion = %s", new Object[] { str1, str2, str3 });
+    int i;
     if ("1".equals(str1))
     {
-      int i = Util.getInt(str2, 0);
+      i = Util.getInt(str2, 0);
       int j = Util.getInt(str3, 0);
       int k = Build.VERSION.SDK_INT;
       if ((k >= i) && ((k <= j) || (j == 0))) {
@@ -194,62 +200,65 @@ public class MMWebView
       if (!bool1) {
         com.tencent.xweb.x5.sdk.d.forceSysWebView();
       }
-      bool1 = localSharedPreferences.getBoolean("tbs_download_oversea", false);
+      bool1 = ((SharedPreferences)localObject).getBoolean("tbs_download_oversea", false);
       boolean bool2 = ChannelUtil.isGPVersion();
       Log.i("MicroMsg.MMWebView", "initTbsSettings, tbs_download_oversea = %b, isGPVersion = %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
       if ((!bool1) && (bool2)) {
         com.tencent.xweb.x5.sdk.d.forceSysWebView();
       }
-      gYZ();
-      kJ(paramContext);
+      localObject = ((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vzo, "");
+      if (!Util.isNullOrNil((String)localObject))
+      {
+        Log.i("MicroMsg.MMWebView", "setNewDnsHostList %s", new Object[] { localObject });
+        com.tencent.xweb.x5.sdk.d.setNewDnsHostList((String)localObject);
+      }
+      i = com.tencent.xweb.x5.sdk.d.getTbsVersion(paramContext);
+      if ((Build.VERSION.SDK_INT > 28) && (paramContext.getApplicationInfo().targetSdkVersion > 28) && (i > 0) && (i < 45114)) {
+        com.tencent.xweb.x5.sdk.d.forceSysWebView();
+      }
       AppMethodBeat.o(143440);
       return;
     }
   }
   
-  private static void kJ(Context paramContext)
-  {
-    AppMethodBeat.i(205433);
-    int i = com.tencent.xweb.x5.sdk.d.getTbsVersion(paramContext);
-    if ((Build.VERSION.SDK_INT > 28) && (paramContext.getApplicationInfo().targetSdkVersion > 28) && (i > 0) && (i < 45114)) {
-      com.tencent.xweb.x5.sdk.d.forceSysWebView();
-    }
-    AppMethodBeat.o(205433);
-  }
-  
-  public final void R(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final void W(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(143439);
     super.super_onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    Iterator localIterator = this.QDY.iterator();
+    Iterator localIterator = this.YcB.iterator();
     while (localIterator.hasNext()) {
-      ((e)localIterator.next()).onWebViewScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+      ((f)localIterator.next()).onWebViewScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     }
     AppMethodBeat.o(143439);
   }
   
-  public final void a(e parame)
+  public final void a(f paramf)
   {
     AppMethodBeat.i(143441);
-    this.QDY.add(parame);
+    this.YcB.add(paramf);
     AppMethodBeat.o(143441);
   }
   
-  public final void a(i parami)
+  public final void a(k paramk)
   {
-    AppMethodBeat.i(205435);
-    this.QEa.add(parami);
-    AppMethodBeat.o(205435);
+    AppMethodBeat.i(190517);
+    this.YcD.add(paramk);
+    AppMethodBeat.o(190517);
   }
   
   public void a(URL paramURL, String paramString, ValueCallback<String> paramValueCallback)
   {
     AppMethodBeat.i(143430);
+    if (!hZO())
+    {
+      AppMethodBeat.o(143430);
+      return;
+    }
     super.evaluateJavascript(paramString, paramValueCallback);
     AppMethodBeat.o(143430);
   }
   
-  public final void aG(Context paramContext)
+  public void aD(Context paramContext)
   {
     AppMethodBeat.i(182573);
     if (!(getContext() instanceof MutableContextWrapper))
@@ -267,7 +276,7 @@ public class MMWebView
     AppMethodBeat.o(182573);
   }
   
-  public final boolean am(MotionEvent paramMotionEvent)
+  public final boolean au(MotionEvent paramMotionEvent)
   {
     boolean bool1 = true;
     AppMethodBeat.i(143434);
@@ -278,7 +287,7 @@ public class MMWebView
     case 1: 
     default: 
       if (bool2) {
-        if (this.QDU) {
+        if (this.Ycw) {
           break;
         }
       }
@@ -288,17 +297,18 @@ public class MMWebView
     {
       AppMethodBeat.o(143434);
       return bool1;
-      this.QDU = false;
+      this.Ycw = false;
+      this.Ycx = false;
       break;
-      if (this.QDV == null) {
+      if (this.Ycy == null) {
         break;
       }
-      if (this.QDU)
+      if ((this.Ycw) || (this.Ycx))
       {
-        this.QDV.requestDisallowInterceptTouchEvent(false);
+        this.Ycy.requestDisallowInterceptTouchEvent(false);
         break;
       }
-      this.QDV.requestDisallowInterceptTouchEvent(true);
+      this.Ycy.requestDisallowInterceptTouchEvent(true);
       break;
       bool1 = false;
       continue;
@@ -306,7 +316,7 @@ public class MMWebView
     }
   }
   
-  public final boolean an(MotionEvent paramMotionEvent)
+  public final boolean av(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(143436);
     boolean bool = super.super_dispatchTouchEvent(paramMotionEvent);
@@ -314,7 +324,7 @@ public class MMWebView
     return bool;
   }
   
-  public final boolean ao(MotionEvent paramMotionEvent)
+  public final boolean aw(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(143437);
     boolean bool = super.super_onInterceptTouchEvent(paramMotionEvent);
@@ -323,12 +333,13 @@ public class MMWebView
   }
   
   @TargetApi(9)
-  public final boolean c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
+  public final boolean b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
   {
     AppMethodBeat.i(143433);
     paramBoolean = super.super_overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean);
+    Log.d("MicroMsg.MMWebView", "tbs_overScrollBy, deltaX: %d, deltaY: %d, scrollX: %b, scrollY: %b, r: %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Boolean.valueOf(paramBoolean) });
     if ((paramInt4 < 0) || ((paramInt4 == 0) && (paramInt2 < 0))) {
-      this.QDU = true;
+      this.Ycw = true;
     }
     AppMethodBeat.o(143433);
     return paramBoolean;
@@ -340,12 +351,12 @@ public class MMWebView
     try
     {
       super.destroy();
-      Iterator localIterator = QDT.iterator();
+      Iterator localIterator = Ycv.iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
         if ((MMWebView)localWeakReference.get() == this) {
-          QDT.remove(localWeakReference);
+          Ycv.remove(localWeakReference);
         }
       }
       return;
@@ -362,6 +373,11 @@ public class MMWebView
     }
   }
   
+  public final boolean dwQ()
+  {
+    return this.ooW;
+  }
+  
   public void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback)
   {
     AppMethodBeat.i(143429);
@@ -370,14 +386,19 @@ public class MMWebView
       AppMethodBeat.o(143429);
       return;
     }
-    if ((com.tencent.mm.compatible.util.d.oD(19)) || (this.isX5Kernel)) {}
+    if (!hZO())
+    {
+      AppMethodBeat.o(143429);
+      return;
+    }
+    if ((com.tencent.mm.compatible.util.d.qV(19)) || (this.aabd)) {}
     for (int i = 1; i != 0; i = 0)
     {
       super.evaluateJavascript(paramString, paramValueCallback);
       AppMethodBeat.o(143429);
       return;
     }
-    if ((this.QDS) && (b(this, paramString)))
+    if ((this.Ycu) && (c(this, paramString)))
     {
       AppMethodBeat.o(143429);
       return;
@@ -399,20 +420,71 @@ public class MMWebView
     }
   }
   
-  public final boolean gYU()
+  @TargetApi(9)
+  public final void g(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(205430);
+    AppMethodBeat.i(143435);
+    Log.d("MicroMsg.MMWebView", "tbs_onOverScrolled, scrollX: %d, scrollY: %d, clampedX: %b, clampedY: %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+    super.super_onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
+    AppMethodBeat.o(143435);
+  }
+  
+  public Context getActivityContextIfHas()
+  {
+    AppMethodBeat.i(190509);
+    if ((getContext() instanceof MutableContextWrapper)) {}
+    for (Context localContext = ((MutableContextWrapper)getContext()).getBaseContext();; localContext = getContext())
+    {
+      AppMethodBeat.o(190509);
+      return localContext;
+    }
+  }
+  
+  public boolean getIsX5Kernel()
+  {
+    return this.aabd;
+  }
+  
+  public float getMMDensity()
+  {
+    AppMethodBeat.i(190522);
+    float f2 = a.hrl();
+    float f1 = f2;
+    if (getWebCoreType() == WebView.c.aabm)
+    {
+      f1 = f2;
+      if (XWalkEnvironment.getUsingCustomContext()) {
+        f1 = getResources().getDisplayMetrics().density;
+      }
+    }
+    AppMethodBeat.o(190522);
+    return f1;
+  }
+  
+  public r getPerformanceHelper()
+  {
+    return this.QCL;
+  }
+  
+  public String getRandomStr()
+  {
+    return this.EVx;
+  }
+  
+  public final boolean hZL()
+  {
+    AppMethodBeat.i(190424);
     if ((isSysKernel()) || (isX5WrappedSysKernel()))
     {
-      AppMethodBeat.o(205430);
+      AppMethodBeat.o(190424);
       return true;
     }
-    AppMethodBeat.o(205430);
+    AppMethodBeat.o(190424);
     return false;
   }
   
   @TargetApi(11)
-  protected final void gYV()
+  protected final void hZM()
   {
     AppMethodBeat.i(143427);
     try
@@ -430,22 +502,22 @@ public class MMWebView
     }
   }
   
-  public final void gYW()
+  public final void hZN()
   {
     AppMethodBeat.i(143428);
     if (Build.VERSION.SDK_INT >= 5)
     {
-      new d((byte)0);
-      d.d(this);
+      new e((byte)0);
+      e.e(this);
       AppMethodBeat.o(143428);
       return;
     }
-    new c((byte)0);
+    new d((byte)0);
     setScrollBarStyle(0);
     AppMethodBeat.o(143428);
   }
   
-  public final void gYX()
+  public final void hZP()
   {
     AppMethodBeat.i(143432);
     super.setOnTouchListener(new View.OnTouchListener()
@@ -486,66 +558,11 @@ public class MMWebView
   }
   
   @TargetApi(9)
-  public final void gYY()
+  public final void hZQ()
   {
     AppMethodBeat.i(143438);
     super.super_computeScroll();
     AppMethodBeat.o(143438);
-  }
-  
-  public final boolean gZa()
-  {
-    return this.ltW;
-  }
-  
-  public Context getActivityContextIfHas()
-  {
-    AppMethodBeat.i(205434);
-    if ((getContext() instanceof MutableContextWrapper)) {}
-    for (Context localContext = ((MutableContextWrapper)getContext()).getBaseContext();; localContext = getContext())
-    {
-      AppMethodBeat.o(205434);
-      return localContext;
-    }
-  }
-  
-  public boolean getIsX5Kernel()
-  {
-    return this.isX5Kernel;
-  }
-  
-  public float getMMDensity()
-  {
-    AppMethodBeat.i(205437);
-    float f2 = a.gvp();
-    float f1 = f2;
-    if (getWebCoreType() == WebView.c.SAt)
-    {
-      f1 = f2;
-      if (XWalkEnvironment.getUsingCustomContext()) {
-        f1 = getResources().getDisplayMetrics().density;
-      }
-    }
-    AppMethodBeat.o(205437);
-    return f1;
-  }
-  
-  public r getPerformanceHelper()
-  {
-    return this.JDX;
-  }
-  
-  public String getRandomStr()
-  {
-    return this.zpY;
-  }
-  
-  @TargetApi(9)
-  public final void h(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(143435);
-    super.super_onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
-    AppMethodBeat.o(143435);
   }
   
   public final boolean isDestroyed()
@@ -563,13 +580,13 @@ public class MMWebView
   public final void onHide()
   {
     AppMethodBeat.i(143444);
-    if (this.QDZ)
+    if (this.YcC)
     {
       AppMethodBeat.o(143444);
       return;
     }
     super.onHide();
-    this.QDZ = true;
+    this.YcC = true;
     AppMethodBeat.o(143444);
   }
   
@@ -577,7 +594,7 @@ public class MMWebView
   {
     AppMethodBeat.i(143443);
     super.onShow();
-    this.QDZ = false;
+    this.YcC = false;
     AppMethodBeat.o(143443);
   }
   
@@ -585,12 +602,12 @@ public class MMWebView
   {
     AppMethodBeat.i(143442);
     super.onWebViewScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.QDX != null) {
-      this.QDX.onWebViewScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.YcA != null) {
+      this.YcA.onWebViewScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    Iterator localIterator = this.QDY.iterator();
+    Iterator localIterator = this.YcB.iterator();
     while (localIterator.hasNext()) {
-      ((e)localIterator.next()).onWebViewScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+      ((f)localIterator.next()).onWebViewScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     }
     AppMethodBeat.o(143442);
   }
@@ -599,40 +616,45 @@ public class MMWebView
   
   public void setCompetitorView(ViewGroup paramViewGroup)
   {
-    this.QDV = paramViewGroup;
+    this.Ycy = paramViewGroup;
+  }
+  
+  public void setHorizontalScrollPage(boolean paramBoolean)
+  {
+    this.Ycx = paramBoolean;
   }
   
   public void setOnCustomTouchListener(View.OnTouchListener paramOnTouchListener)
   {
-    this.QDW = paramOnTouchListener;
+    this.Ycz = paramOnTouchListener;
   }
   
   public void setOnTouchListener(View.OnTouchListener paramOnTouchListener)
   {
-    this.HeV = paramOnTouchListener;
+    this.nan = paramOnTouchListener;
   }
   
   public void setPreload(boolean paramBoolean)
   {
-    this.ltW = paramBoolean;
+    this.ooW = paramBoolean;
   }
   
   public void setRandomStr(String paramString)
   {
-    this.zpY = paramString;
+    this.EVx = paramString;
   }
   
   public void setWebChromeClient(x paramx)
   {
-    AppMethodBeat.i(205436);
-    if ((paramx instanceof b)) {
-      ((b)paramx).QEc = this.QEa;
+    AppMethodBeat.i(190520);
+    if ((paramx instanceof c)) {
+      ((c)paramx).YcF = this.YcD;
     }
     if (paramx == null) {
-      this.QEa.clear();
+      this.YcD.clear();
     }
     super.setWebChromeClient(paramx);
-    AppMethodBeat.o(205436);
+    AppMethodBeat.o(190520);
   }
   
   public static final class a
@@ -641,9 +663,9 @@ public class MMWebView
     {
       boolean bool = true;
       AppMethodBeat.i(143422);
-      MMWebView.kI(paramContext);
+      MMWebView.lF(paramContext);
       paramContext = (MMWebView)paramView.findViewById(paramInt);
-      paramContext.gKM = true;
+      paramContext.jvb = true;
       if (paramContext.getX5WebViewExtension() != null) {}
       for (;;)
       {
@@ -654,16 +676,24 @@ public class MMWebView
       }
     }
     
-    public static MMWebView kK(Context paramContext)
+    public static MMWebView eN(Context paramContext)
+    {
+      AppMethodBeat.i(293115);
+      paramContext = lH(paramContext);
+      AppMethodBeat.o(293115);
+      return paramContext;
+    }
+    
+    public static MMWebView lG(Context paramContext)
     {
       AppMethodBeat.i(143419);
       try
       {
         Log.i("MMWebView", "TRACE_ORDER:MMWebView.java");
-        WebView.initWebviewCore(paramContext, MMWebView.QDR, "tools", null);
-        MMWebView.kI(paramContext);
-        paramContext = new MMWebView(paramContext, null, 0, WebView.c.SAv);
-        paramContext.gKM = true;
+        WebView.initWebviewCore(paramContext, MMWebView.Yct, "tools", null);
+        MMWebView.lF(paramContext);
+        paramContext = new MMWebView(paramContext, null, 0, WebView.c.aabo);
+        paramContext.jvb = true;
         MMWebView.b(paramContext, paramContext.getIsX5Kernel());
         AppMethodBeat.o(143419);
         return paramContext;
@@ -675,26 +705,26 @@ public class MMWebView
       return null;
     }
     
-    public static MMWebView kL(Context paramContext)
+    public static MMWebView lH(Context paramContext)
     {
       AppMethodBeat.i(143420);
       Log.i("MMWebView", "TRACE_ORDER:MMWebView.java");
-      WebView.initWebviewCore(paramContext, MMWebView.QDR, "tools", null);
-      MMWebView.kI(paramContext);
+      WebView.initWebviewCore(paramContext, MMWebView.Yct, "tools", null);
+      MMWebView.lF(paramContext);
       paramContext = new MMWebView(paramContext);
-      paramContext.gKM = true;
+      paramContext.jvb = true;
       MMWebView.c(paramContext, paramContext.getIsX5Kernel());
       AppMethodBeat.o(143420);
       return paramContext;
     }
     
-    public static MMWebView r(Activity paramActivity, int paramInt)
+    public static MMWebView s(Activity paramActivity, int paramInt)
     {
       boolean bool = true;
       AppMethodBeat.i(143421);
-      MMWebView.kI(paramActivity);
+      MMWebView.lF(paramActivity);
       paramActivity = (MMWebView)paramActivity.findViewById(paramInt);
-      paramActivity.gKM = true;
+      paramActivity.jvb = true;
       if (paramActivity.getX5WebViewExtension() != null) {}
       for (;;)
       {
@@ -706,250 +736,277 @@ public class MMWebView
     }
   }
   
-  public static final class b
+  public static abstract interface b
+  {
+    public abstract boolean I(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  }
+  
+  public static final class c
     extends x
   {
-    private x ITc;
-    List<i> QEc;
+    private x PPu;
+    List<k> YcF;
     
-    public b(x paramx)
+    public c(x paramx)
     {
-      AppMethodBeat.i(205410);
-      this.QEc = new ArrayList();
-      this.ITc = paramx;
-      AppMethodBeat.o(205410);
+      AppMethodBeat.i(187686);
+      this.YcF = new ArrayList();
+      this.PPu = paramx;
+      AppMethodBeat.o(187686);
     }
     
     public final void a(WebView paramWebView, int paramInt)
     {
-      AppMethodBeat.i(205424);
-      Iterator localIterator = this.QEc.iterator();
+      AppMethodBeat.i(187716);
+      Iterator localIterator = this.YcF.iterator();
       while (localIterator.hasNext()) {
-        ((i)localIterator.next()).a(paramWebView, paramInt);
+        ((k)localIterator.next()).a(paramWebView, paramInt);
       }
-      this.ITc.a(paramWebView, paramInt);
-      AppMethodBeat.o(205424);
+      this.PPu.a(paramWebView, paramInt);
+      AppMethodBeat.o(187716);
     }
     
     public final boolean a(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback)
     {
-      AppMethodBeat.i(205427);
-      Iterator localIterator = this.QEc.iterator();
+      AppMethodBeat.i(187719);
+      Iterator localIterator = this.YcF.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      boolean bool = this.ITc.a(paramView, paramCustomViewCallback);
-      AppMethodBeat.o(205427);
+      boolean bool = this.PPu.a(paramView, paramCustomViewCallback);
+      AppMethodBeat.o(187719);
       return bool;
     }
     
     public final boolean a(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, x.a parama)
     {
-      AppMethodBeat.i(205423);
-      Iterator localIterator = this.QEc.iterator();
+      AppMethodBeat.i(187715);
+      Iterator localIterator = this.YcF.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      boolean bool = this.ITc.a(paramWebView, paramValueCallback, parama);
-      AppMethodBeat.o(205423);
+      boolean bool = this.PPu.a(paramWebView, paramValueCallback, parama);
+      AppMethodBeat.o(187715);
       return bool;
     }
     
     public final boolean a(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
     {
-      AppMethodBeat.i(205417);
-      Iterator localIterator = this.QEc.iterator();
+      AppMethodBeat.i(187707);
+      Iterator localIterator = this.YcF.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      boolean bool = this.ITc.a(paramWebView, paramString1, paramString2, paramJsResult);
-      AppMethodBeat.o(205417);
+      boolean bool = this.PPu.a(paramWebView, paramString1, paramString2, paramJsResult);
+      AppMethodBeat.o(187707);
       return bool;
     }
     
     public final boolean a(WebView paramWebView, String paramString1, String paramString2, String paramString3, o paramo)
     {
-      AppMethodBeat.i(205419);
-      Iterator localIterator = this.QEc.iterator();
+      AppMethodBeat.i(187710);
+      Iterator localIterator = this.YcF.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      boolean bool = this.ITc.a(paramWebView, paramString1, paramString2, paramString3, paramo);
-      AppMethodBeat.o(205419);
+      boolean bool = this.PPu.a(paramWebView, paramString1, paramString2, paramString3, paramo);
+      AppMethodBeat.o(187710);
       return bool;
     }
     
     public final void b(WebView paramWebView, int paramInt)
     {
-      AppMethodBeat.i(205422);
-      Iterator localIterator = this.QEc.iterator();
+      AppMethodBeat.i(187714);
+      Iterator localIterator = this.YcF.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      this.ITc.b(paramWebView, paramInt);
-      AppMethodBeat.o(205422);
+      this.PPu.b(paramWebView, paramInt);
+      AppMethodBeat.o(187714);
     }
     
     public final boolean b(long paramLong, String paramString1, String paramString2, String paramString3)
     {
-      AppMethodBeat.i(205412);
-      Iterator localIterator = this.QEc.iterator();
+      AppMethodBeat.i(187694);
+      Iterator localIterator = this.YcF.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      boolean bool = this.ITc.b(paramLong, paramString1, paramString2, paramString3);
-      AppMethodBeat.o(205412);
+      boolean bool = this.PPu.b(paramLong, paramString1, paramString2, paramString3);
+      AppMethodBeat.o(187694);
       return bool;
     }
     
     public final boolean b(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
     {
-      AppMethodBeat.i(205418);
-      Iterator localIterator = this.QEc.iterator();
+      AppMethodBeat.i(187709);
+      Iterator localIterator = this.YcF.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      boolean bool = this.ITc.b(paramWebView, paramString1, paramString2, paramJsResult);
-      AppMethodBeat.o(205418);
+      boolean bool = this.PPu.b(paramWebView, paramString1, paramString2, paramJsResult);
+      AppMethodBeat.o(187709);
       return bool;
     }
     
-    public final boolean bLA()
+    public final boolean bXA()
     {
-      AppMethodBeat.i(205428);
-      Iterator localIterator = this.QEc.iterator();
+      AppMethodBeat.i(187720);
+      Iterator localIterator = this.YcF.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      boolean bool = this.ITc.bLA();
-      AppMethodBeat.o(205428);
+      boolean bool = this.PPu.bXA();
+      AppMethodBeat.o(187720);
       return bool;
     }
     
     public final boolean c(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
     {
-      AppMethodBeat.i(205413);
-      Iterator localIterator = this.QEc.iterator();
+      AppMethodBeat.i(187696);
+      Iterator localIterator = this.YcF.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      boolean bool = this.ITc.c(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6);
-      AppMethodBeat.o(205413);
+      boolean bool = this.PPu.c(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6);
+      AppMethodBeat.o(187696);
       return bool;
     }
     
     public final void d(WebView paramWebView, String paramString)
     {
-      AppMethodBeat.i(205425);
-      Iterator localIterator = this.QEc.iterator();
+      AppMethodBeat.i(187717);
+      Iterator localIterator = this.YcF.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      this.ITc.d(paramWebView, paramString);
-      AppMethodBeat.o(205425);
+      this.PPu.d(paramWebView, paramString);
+      AppMethodBeat.o(187717);
     }
     
     public final View getVideoLoadingProgressView()
     {
-      AppMethodBeat.i(205420);
-      Object localObject = this.QEc.iterator();
+      AppMethodBeat.i(187711);
+      Object localObject = this.YcF.iterator();
       while (((Iterator)localObject).hasNext()) {
         ((Iterator)localObject).next();
       }
-      localObject = this.ITc.getVideoLoadingProgressView();
-      AppMethodBeat.o(205420);
+      localObject = this.PPu.getVideoLoadingProgressView();
+      AppMethodBeat.o(187711);
       return localObject;
     }
     
     public final boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
     {
-      AppMethodBeat.i(205411);
-      Iterator localIterator = this.QEc.iterator();
+      AppMethodBeat.i(187689);
+      Iterator localIterator = this.YcF.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      boolean bool = this.ITc.onConsoleMessage(paramConsoleMessage);
-      AppMethodBeat.o(205411);
+      boolean bool = this.PPu.onConsoleMessage(paramConsoleMessage);
+      AppMethodBeat.o(187689);
       return bool;
     }
     
     public final void onExitFullscreenVideo(Bitmap paramBitmap)
     {
-      AppMethodBeat.i(205429);
-      Iterator localIterator = this.QEc.iterator();
+      AppMethodBeat.i(187722);
+      Iterator localIterator = this.YcF.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      this.ITc.onExitFullscreenVideo(paramBitmap);
-      AppMethodBeat.o(205429);
+      this.PPu.onExitFullscreenVideo(paramBitmap);
+      AppMethodBeat.o(187722);
     }
     
     public final void onGeolocationPermissionsHidePrompt()
     {
-      AppMethodBeat.i(205415);
-      Iterator localIterator = this.QEc.iterator();
+      AppMethodBeat.i(187700);
+      Iterator localIterator = this.YcF.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      this.ITc.onGeolocationPermissionsHidePrompt();
-      AppMethodBeat.o(205415);
+      this.PPu.onGeolocationPermissionsHidePrompt();
+      AppMethodBeat.o(187700);
     }
     
     public final void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissions.Callback paramCallback)
     {
-      AppMethodBeat.i(205414);
-      Iterator localIterator = this.QEc.iterator();
+      AppMethodBeat.i(187698);
+      Iterator localIterator = this.YcF.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      this.ITc.onGeolocationPermissionsShowPrompt(paramString, paramCallback);
-      AppMethodBeat.o(205414);
+      this.PPu.onGeolocationPermissionsShowPrompt(paramString, paramCallback);
+      AppMethodBeat.o(187698);
     }
     
     public final void onHideCustomView()
     {
-      AppMethodBeat.i(205416);
-      Iterator localIterator = this.QEc.iterator();
+      AppMethodBeat.i(187706);
+      Iterator localIterator = this.YcF.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      this.ITc.onHideCustomView();
-      AppMethodBeat.o(205416);
+      this.PPu.onHideCustomView();
+      AppMethodBeat.o(187706);
+    }
+    
+    public final void onPermissionRequest(PermissionRequest paramPermissionRequest)
+    {
+      AppMethodBeat.i(187702);
+      Iterator localIterator = this.YcF.iterator();
+      while (localIterator.hasNext()) {
+        localIterator.next();
+      }
+      this.PPu.onPermissionRequest(paramPermissionRequest);
+      AppMethodBeat.o(187702);
+    }
+    
+    public final void onPermissionRequestCanceled(PermissionRequest paramPermissionRequest)
+    {
+      AppMethodBeat.i(187704);
+      Iterator localIterator = this.YcF.iterator();
+      while (localIterator.hasNext()) {
+        localIterator.next();
+      }
+      this.PPu.onPermissionRequestCanceled(paramPermissionRequest);
+      AppMethodBeat.o(187704);
     }
     
     public final void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback)
     {
-      AppMethodBeat.i(205426);
-      Iterator localIterator = this.QEc.iterator();
+      AppMethodBeat.i(187718);
+      Iterator localIterator = this.YcF.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      this.ITc.onShowCustomView(paramView, paramCustomViewCallback);
-      AppMethodBeat.o(205426);
+      this.PPu.onShowCustomView(paramView, paramCustomViewCallback);
+      AppMethodBeat.o(187718);
     }
     
     public final void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
     {
-      AppMethodBeat.i(205421);
-      Iterator localIterator = this.QEc.iterator();
+      AppMethodBeat.i(187712);
+      Iterator localIterator = this.YcF.iterator();
       while (localIterator.hasNext()) {
         localIterator.next();
       }
-      this.ITc.openFileChooser(paramValueCallback, paramString1, paramString2);
-      AppMethodBeat.o(205421);
+      this.PPu.openFileChooser(paramValueCallback, paramString1, paramString2);
+      AppMethodBeat.o(187712);
     }
-  }
-  
-  final class c
-  {
-    private c() {}
   }
   
   final class d
   {
     private d() {}
+  }
+  
+  final class e
+  {
+    private e() {}
     
-    public static void d(WebView paramWebView)
+    public static void e(WebView paramWebView)
     {
       AppMethodBeat.i(143423);
       paramWebView.setScrollbarFadingEnabled(true);
@@ -958,7 +1015,7 @@ public class MMWebView
     }
   }
   
-  public static abstract interface e
+  public static abstract interface f
   {
     public abstract void onWebViewScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   }

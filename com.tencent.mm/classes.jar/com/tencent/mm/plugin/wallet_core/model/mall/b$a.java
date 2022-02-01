@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.wallet_core.model.mall;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 
 public final class b$a
 {
-  public static void aVr(String paramString)
+  public static void bha(String paramString)
   {
     int k = 0;
-    AppMethodBeat.i(214204);
+    AppMethodBeat.i(269423);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(214204);
+      AppMethodBeat.o(269423);
       return;
     }
-    g.aAi();
-    String str2 = (String)g.aAh().azQ().get(ar.a.NWr, null);
+    h.aHH();
+    String str2 = (String)h.aHG().aHp().get(ar.a.Vkr, null);
     String str1;
     if (Util.isNullOrNil(str2)) {
       str1 = paramString;
     }
     for (;;)
     {
-      g.aAi();
-      g.aAh().azQ().set(ar.a.NWr, str1);
-      AppMethodBeat.o(214204);
+      h.aHH();
+      h.aHG().aHp().set(ar.a.Vkr, str1);
+      AppMethodBeat.o(269423);
       return;
       String[] arrayOfString = str2.split(",");
       str1 = paramString;
@@ -64,26 +64,26 @@ public final class b$a
     }
   }
   
-  public static boolean aVs(String paramString)
+  public static boolean bhb(String paramString)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(214205);
+    AppMethodBeat.i(269424);
     if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(214205);
+      AppMethodBeat.o(269424);
       return true;
     }
-    g.aAi();
-    Object localObject = (String)g.aAh().azQ().get(ar.a.NWr, null);
+    h.aHH();
+    Object localObject = (String)h.aHG().aHp().get(ar.a.Vkr, null);
     if (Util.isNullOrNil((String)localObject))
     {
-      AppMethodBeat.o(214205);
+      AppMethodBeat.o(269424);
       return false;
     }
     localObject = ((String)localObject).split(",");
     if ((localObject == null) || (localObject.length == 0))
     {
-      AppMethodBeat.o(214205);
+      AppMethodBeat.o(269424);
       return false;
     }
     int i = 0;
@@ -98,7 +98,7 @@ public final class b$a
       }
       else
       {
-        AppMethodBeat.o(214205);
+        AppMethodBeat.o(269424);
         return bool1;
       }
       i += 1;

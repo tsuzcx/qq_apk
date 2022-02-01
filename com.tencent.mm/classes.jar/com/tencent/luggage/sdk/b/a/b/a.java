@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.res.Configuration;
 import com.tencent.luggage.sdk.b.a.a.a;
 import com.tencent.luggage.sdk.b.a.c;
-import com.tencent.luggage.sdk.d.d;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import com.tencent.mm.plugin.appbrand.page.ae;
-import com.tencent.mm.plugin.appbrand.page.bx;
+import com.tencent.luggage.sdk.e.d;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.page.af;
+import com.tencent.mm.plugin.appbrand.page.ca;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.Collection;
@@ -16,25 +16,16 @@ import java.util.Map;
 
 public abstract class a<PAGE extends c>
   extends a.a<PAGE>
-  implements ae
+  implements af
 {
   public a(PAGE paramPAGE)
   {
     super(paramPAGE);
   }
   
-  public d NP()
+  public void PV()
   {
-    c localc = (c)NN();
-    if (localc == null) {
-      return null;
-    }
-    return localc.NP();
-  }
-  
-  public void Nd()
-  {
-    Iterator localIterator = NO().iterator();
+    Iterator localIterator = QL().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = localIterator.next();
@@ -44,9 +35,9 @@ public abstract class a<PAGE extends c>
     }
   }
   
-  public void Ne()
+  public void PW()
   {
-    Iterator localIterator = NO().iterator();
+    Iterator localIterator = QL().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = localIterator.next();
@@ -56,16 +47,25 @@ public abstract class a<PAGE extends c>
     }
   }
   
-  public final <T extends com.tencent.luggage.a.b> T T(Class<T> paramClass)
+  public d QM()
   {
-    return ((c)NN()).M(paramClass);
+    c localc = (c)QK();
+    if (localc == null) {
+      return null;
+    }
+    return localc.QM();
   }
   
-  public void a(Map<String, Object> paramMap, bx parambx) {}
+  public final <T extends com.tencent.luggage.a.b> T S(Class<T> paramClass)
+  {
+    return ((c)QK()).K(paramClass);
+  }
+  
+  public void a(Map<String, Object> paramMap, ca paramca) {}
   
   public void b(com.tencent.mm.plugin.appbrand.widget.actionbar.b paramb)
   {
-    Iterator localIterator = NO().iterator();
+    Iterator localIterator = QL().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = localIterator.next();
@@ -77,7 +77,7 @@ public abstract class a<PAGE extends c>
   
   public final void dispatchConfigurationChanged(Configuration paramConfiguration)
   {
-    Iterator localIterator = NO().iterator();
+    Iterator localIterator = QL().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = localIterator.next();
@@ -89,36 +89,33 @@ public abstract class a<PAGE extends c>
   
   public void dispatchDestroy()
   {
-    ??? = NO().iterator();
-    while (((Iterator)???).hasNext())
+    Iterator localIterator = QL().iterator();
+    while (localIterator.hasNext())
     {
-      Object localObject3 = ((Iterator)???).next();
-      if ((localObject3 instanceof com.tencent.mm.plugin.appbrand.page.a.b)) {
-        ((com.tencent.mm.plugin.appbrand.page.a.b)localObject3).onDestroy();
+      Object localObject = localIterator.next();
+      if ((localObject instanceof com.tencent.mm.plugin.appbrand.page.a.b)) {
+        ((com.tencent.mm.plugin.appbrand.page.a.b)localObject).onDestroy();
       }
     }
-    synchronized (this.czn)
-    {
-      this.czn.clear();
-    }
+    super.cleanup();
   }
   
   public void dispatchStart() {}
   
   public final String getAppId()
   {
-    f localf = NN();
-    if (localf == null)
+    e locale = QK();
+    if (locale == null)
     {
       Log.printErrStackTrace("Luggage.AbstractPageViewRenderer", new Throwable(), "getAppId", new Object[0]);
       return null;
     }
-    return localf.getAppId();
+    return locale.getAppId();
   }
   
   public final Context getContext()
   {
-    Context localContext2 = ((c)NN()).getContext();
+    Context localContext2 = ((c)QK()).getContext();
     Context localContext1 = localContext2;
     if (localContext2 == null) {
       localContext1 = MMApplicationContext.getContext();
@@ -128,7 +125,7 @@ public abstract class a<PAGE extends c>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.b.a
  * JD-Core Version:    0.7.0.1
  */

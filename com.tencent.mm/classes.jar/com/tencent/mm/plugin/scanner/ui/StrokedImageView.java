@@ -10,6 +10,7 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.scanner.l.c;
 
 public class StrokedImageView
   extends ImageView
@@ -20,7 +21,7 @@ public class StrokedImageView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(51997);
-    this.color = paramContext.getResources().getColor(2131101023);
+    this.color = paramContext.getResources().getColor(l.c.IBV);
     AppMethodBeat.o(51997);
   }
   

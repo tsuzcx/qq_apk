@@ -12,22 +12,22 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class c
 {
-  static HashMap<String, Long> SDD;
+  static HashMap<String, Long> aaeN;
   
   static
   {
-    AppMethodBeat.i(219070);
-    SDD = new HashMap();
-    AppMethodBeat.o(219070);
+    AppMethodBeat.i(197051);
+    aaeN = new HashMap();
+    AppMethodBeat.o(197051);
   }
   
-  public static void bsw(String paramString)
+  public static void bFv(String paramString)
   {
     try
     {
-      AppMethodBeat.i(219068);
+      AppMethodBeat.i(197044);
       XWalkEnvironment.getMMKVSharedPreferences("FREQUENT_LIMITER").edit().putLong(paramString, 0L).commit();
-      AppMethodBeat.o(219068);
+      AppMethodBeat.o(197044);
       return;
     }
     finally
@@ -37,7 +37,7 @@ public final class c
     }
   }
   
-  public static boolean bsx(String paramString)
+  public static boolean bFw(String paramString)
   {
     boolean bool = false;
     for (;;)
@@ -52,7 +52,7 @@ public final class c
           AppMethodBeat.o(175641);
           return bool;
         }
-        if ("true".equals(b.brJ("dis_".concat(String.valueOf(paramString)))))
+        if ("true".equals(b.bEI("dis_".concat(String.valueOf(paramString)))))
         {
           AppMethodBeat.o(175641);
           continue;
@@ -65,7 +65,7 @@ public final class c
     }
   }
   
-  public static boolean cl(String paramString, long paramLong)
+  public static boolean cv(String paramString, long paramLong)
   {
     boolean bool = false;
     for (;;)
@@ -73,7 +73,7 @@ public final class c
       try
       {
         AppMethodBeat.i(156968);
-        if ("true".equals(a.brJ("dis_".concat(String.valueOf(paramString)))))
+        if ("true".equals(a.bEI("dis_".concat(String.valueOf(paramString)))))
         {
           AppMethodBeat.o(156968);
           return bool;
@@ -95,7 +95,7 @@ public final class c
   }
   
   /* Error */
-  public static boolean of(String paramString1, String paramString2)
+  public static boolean pb(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: ldc 2
@@ -164,7 +164,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.internal.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,224 +1,311 @@
 package com.tencent.mm.live.core.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.core.core.e.c;
 import java.util.HashMap;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/render/BeautyConfig;", "", "configMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "(Ljava/util/HashMap;)V", "getConfigMap", "()Ljava/util/HashMap;", "eyeBright", "getEyeBright", "()I", "setEyeBright", "(I)V", "eyeMorph", "getEyeMorph", "setEyeMorph", "faceMorph", "getFaceMorph", "setFaceMorph", "rosy", "getRosy", "setRosy", "skinBright", "getSkinBright", "setSkinBright", "skinSmooth", "getSkinSmooth", "setSkinSmooth", "component1", "copy", "enable", "", "enableBright", "enableRosy", "enableShape", "enableSkin", "equals", "other", "hashCode", "toString", "", "plugin-core_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/render/BeautyConfig;", "", "configMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "(Ljava/util/HashMap;)V", "cheekBone", "getCheekBone", "()I", "getConfigMap", "()Ljava/util/HashMap;", "eyeBright", "getEyeBright", "eyeMorph", "getEyeMorph", "eyePouch", "getEyePouch", "faceMorph", "getFaceMorph", "jawBone", "getJawBone", "rosy", "getRosy", "sharpen", "getSharpen", "skinBright", "getSkinBright", "skinSmooth", "getSkinSmooth", "smallHead", "getSmallHead", "smileFolds", "getSmileFolds", "teethBright", "getTeethBright", "wingOfNose", "getWingOfNose", "component1", "copy", "enable", "", "enableBright", "enableRosy", "enableShape", "enableSkin", "equals", "other", "hashCode", "toString", "", "plugin-core_release"})
 public final class a
 {
-  private int hDb;
-  private int hDc;
-  private int hDd;
-  private int hDe;
-  private int hDf;
-  private int hDg;
-  public final HashMap<Integer, Integer> hDh;
+  public final HashMap<Integer, Integer> kra;
   
   private a(HashMap<Integer, Integer> paramHashMap)
   {
-    AppMethodBeat.i(196607);
-    this.hDh = paramHashMap;
-    this.hDb = -1;
-    this.hDc = -1;
-    this.hDd = -1;
-    this.hDe = -1;
-    this.hDf = -1;
-    this.hDg = -1;
-    AppMethodBeat.o(196607);
+    AppMethodBeat.i(199216);
+    this.kra = paramHashMap;
+    AppMethodBeat.o(199216);
   }
   
-  public final int aEl()
+  public final int aMA()
   {
-    AppMethodBeat.i(196597);
-    Object localObject = this.hDh;
-    e.c localc = e.c.hxm;
-    localObject = (Integer)((HashMap)localObject).get(Integer.valueOf(e.c.aCh()));
-    if (localObject != null)
+    AppMethodBeat.i(199196);
+    Integer localInteger = (Integer)this.kra.get(Integer.valueOf(8));
+    if (localInteger != null)
     {
-      int i = ((Integer)localObject).intValue();
-      AppMethodBeat.o(196597);
+      int i = localInteger.intValue();
+      AppMethodBeat.o(199196);
       return i;
     }
-    AppMethodBeat.o(196597);
+    AppMethodBeat.o(199196);
     return -1;
   }
   
-  public final int aEm()
+  public final int aMB()
   {
-    AppMethodBeat.i(196598);
-    Object localObject = this.hDh;
-    e.c localc = e.c.hxm;
-    localObject = (Integer)((HashMap)localObject).get(Integer.valueOf(e.c.aCl()));
-    if (localObject != null)
+    AppMethodBeat.i(199198);
+    Integer localInteger = (Integer)this.kra.get(Integer.valueOf(9));
+    if (localInteger != null)
     {
-      int i = ((Integer)localObject).intValue();
-      AppMethodBeat.o(196598);
+      int i = localInteger.intValue();
+      AppMethodBeat.o(199198);
       return i;
     }
-    AppMethodBeat.o(196598);
+    AppMethodBeat.o(199198);
     return -1;
   }
   
-  public final int aEn()
+  public final int aMC()
   {
-    AppMethodBeat.i(196599);
-    Object localObject = this.hDh;
-    e.c localc = e.c.hxm;
-    localObject = (Integer)((HashMap)localObject).get(Integer.valueOf(e.c.aCi()));
-    if (localObject != null)
+    AppMethodBeat.i(199200);
+    Integer localInteger = (Integer)this.kra.get(Integer.valueOf(10));
+    if (localInteger != null)
     {
-      int i = ((Integer)localObject).intValue();
-      AppMethodBeat.o(196599);
+      int i = localInteger.intValue();
+      AppMethodBeat.o(199200);
       return i;
     }
-    AppMethodBeat.o(196599);
+    AppMethodBeat.o(199200);
     return -1;
   }
   
-  public final int aEo()
+  public final int aMD()
   {
-    AppMethodBeat.i(196600);
-    Object localObject = this.hDh;
-    e.c localc = e.c.hxm;
-    localObject = (Integer)((HashMap)localObject).get(Integer.valueOf(e.c.aCj()));
-    if (localObject != null)
+    AppMethodBeat.i(199201);
+    Integer localInteger = (Integer)this.kra.get(Integer.valueOf(11));
+    if (localInteger != null)
     {
-      int i = ((Integer)localObject).intValue();
-      AppMethodBeat.o(196600);
+      int i = localInteger.intValue();
+      AppMethodBeat.o(199201);
       return i;
     }
-    AppMethodBeat.o(196600);
+    AppMethodBeat.o(199201);
     return -1;
   }
   
-  public final int aEp()
+  public final int aME()
   {
-    AppMethodBeat.i(196601);
-    Object localObject = this.hDh;
-    e.c localc = e.c.hxm;
-    localObject = (Integer)((HashMap)localObject).get(Integer.valueOf(e.c.aCm()));
-    if (localObject != null)
+    AppMethodBeat.i(199202);
+    Integer localInteger = (Integer)this.kra.get(Integer.valueOf(12));
+    if (localInteger != null)
     {
-      int i = ((Integer)localObject).intValue();
-      AppMethodBeat.o(196601);
+      int i = localInteger.intValue();
+      AppMethodBeat.o(199202);
       return i;
     }
-    AppMethodBeat.o(196601);
+    AppMethodBeat.o(199202);
     return -1;
   }
   
-  public final int aEq()
+  public final int aMF()
   {
-    AppMethodBeat.i(196602);
-    Object localObject = this.hDh;
-    e.c localc = e.c.hxm;
-    localObject = (Integer)((HashMap)localObject).get(Integer.valueOf(e.c.aCk()));
-    if (localObject != null)
+    AppMethodBeat.i(199203);
+    Integer localInteger = (Integer)this.kra.get(Integer.valueOf(13));
+    if (localInteger != null)
     {
-      int i = ((Integer)localObject).intValue();
-      AppMethodBeat.o(196602);
+      int i = localInteger.intValue();
+      AppMethodBeat.o(199203);
       return i;
     }
-    AppMethodBeat.o(196602);
+    AppMethodBeat.o(199203);
     return -1;
   }
   
-  public final boolean aEr()
+  public final boolean aMG()
   {
-    AppMethodBeat.i(196603);
-    if (aEl() >= 0)
+    AppMethodBeat.i(199204);
+    if (aMs() >= 0)
     {
-      AppMethodBeat.o(196603);
+      AppMethodBeat.o(199204);
       return true;
     }
-    AppMethodBeat.o(196603);
+    AppMethodBeat.o(199204);
     return false;
   }
   
-  public final boolean aEs()
+  public final boolean aMH()
   {
-    AppMethodBeat.i(196604);
-    if ((aEm() >= 0) || (aEn() >= 0))
+    AppMethodBeat.i(199205);
+    if ((aMt() >= 0) || (aMu() >= 0))
     {
-      AppMethodBeat.o(196604);
+      AppMethodBeat.o(199205);
       return true;
     }
-    AppMethodBeat.o(196604);
+    AppMethodBeat.o(199205);
     return false;
   }
   
-  public final boolean aEt()
+  public final boolean aMI()
   {
-    AppMethodBeat.i(196605);
-    if ((aEo() >= 0) || (aEp() >= 0))
+    AppMethodBeat.i(199206);
+    if ((aMv() >= 0) || (aMw() >= 0))
     {
-      AppMethodBeat.o(196605);
+      AppMethodBeat.o(199206);
       return true;
     }
-    AppMethodBeat.o(196605);
+    AppMethodBeat.o(199206);
     return false;
   }
   
-  public final boolean aEu()
+  public final boolean aMJ()
   {
-    AppMethodBeat.i(196606);
-    if (aEq() >= 0)
+    AppMethodBeat.i(199208);
+    if (aMx() >= 0)
     {
-      AppMethodBeat.o(196606);
+      AppMethodBeat.o(199208);
       return true;
     }
-    AppMethodBeat.o(196606);
+    AppMethodBeat.o(199208);
     return false;
+  }
+  
+  public final int aMs()
+  {
+    AppMethodBeat.i(199181);
+    Integer localInteger = (Integer)this.kra.get(Integer.valueOf(0));
+    if (localInteger != null)
+    {
+      int i = localInteger.intValue();
+      AppMethodBeat.o(199181);
+      return i;
+    }
+    AppMethodBeat.o(199181);
+    return -1;
+  }
+  
+  public final int aMt()
+  {
+    AppMethodBeat.i(199182);
+    Integer localInteger = (Integer)this.kra.get(Integer.valueOf(4));
+    if (localInteger != null)
+    {
+      int i = localInteger.intValue();
+      AppMethodBeat.o(199182);
+      return i;
+    }
+    AppMethodBeat.o(199182);
+    return -1;
+  }
+  
+  public final int aMu()
+  {
+    AppMethodBeat.i(199183);
+    Integer localInteger = (Integer)this.kra.get(Integer.valueOf(1));
+    if (localInteger != null)
+    {
+      int i = localInteger.intValue();
+      AppMethodBeat.o(199183);
+      return i;
+    }
+    AppMethodBeat.o(199183);
+    return -1;
+  }
+  
+  public final int aMv()
+  {
+    AppMethodBeat.i(199185);
+    Integer localInteger = (Integer)this.kra.get(Integer.valueOf(2));
+    if (localInteger != null)
+    {
+      int i = localInteger.intValue();
+      AppMethodBeat.o(199185);
+      return i;
+    }
+    AppMethodBeat.o(199185);
+    return -1;
+  }
+  
+  public final int aMw()
+  {
+    AppMethodBeat.i(199187);
+    Integer localInteger = (Integer)this.kra.get(Integer.valueOf(5));
+    if (localInteger != null)
+    {
+      int i = localInteger.intValue();
+      AppMethodBeat.o(199187);
+      return i;
+    }
+    AppMethodBeat.o(199187);
+    return -1;
+  }
+  
+  public final int aMx()
+  {
+    AppMethodBeat.i(199190);
+    Integer localInteger = (Integer)this.kra.get(Integer.valueOf(3));
+    if (localInteger != null)
+    {
+      int i = localInteger.intValue();
+      AppMethodBeat.o(199190);
+      return i;
+    }
+    AppMethodBeat.o(199190);
+    return -1;
+  }
+  
+  public final int aMy()
+  {
+    AppMethodBeat.i(199191);
+    Integer localInteger = (Integer)this.kra.get(Integer.valueOf(6));
+    if (localInteger != null)
+    {
+      int i = localInteger.intValue();
+      AppMethodBeat.o(199191);
+      return i;
+    }
+    AppMethodBeat.o(199191);
+    return -1;
+  }
+  
+  public final int aMz()
+  {
+    AppMethodBeat.i(199195);
+    Integer localInteger = (Integer)this.kra.get(Integer.valueOf(7));
+    if (localInteger != null)
+    {
+      int i = localInteger.intValue();
+      AppMethodBeat.o(199195);
+      return i;
+    }
+    AppMethodBeat.o(199195);
+    return -1;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(196611);
+    AppMethodBeat.i(199221);
     if (this != paramObject)
     {
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if (!p.j(this.hDh, paramObject.hDh)) {}
+        if (!p.h(this.kra, paramObject.kra)) {}
       }
     }
     else
     {
-      AppMethodBeat.o(196611);
+      AppMethodBeat.o(199221);
       return true;
     }
-    AppMethodBeat.o(196611);
+    AppMethodBeat.o(199221);
     return false;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(196610);
-    HashMap localHashMap = this.hDh;
+    AppMethodBeat.i(199219);
+    HashMap localHashMap = this.kra;
     if (localHashMap != null)
     {
       int i = localHashMap.hashCode();
-      AppMethodBeat.o(196610);
+      AppMethodBeat.o(199219);
       return i;
     }
-    AppMethodBeat.o(196610);
+    AppMethodBeat.o(199219);
     return 0;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(196609);
-    String str = "BeautyConfig(configMap=" + this.hDh + ")";
-    AppMethodBeat.o(196609);
+    AppMethodBeat.i(199214);
+    String str = "BeautyConfig(skinSmooth=" + aMs() + ", eyeMorph=" + aMt() + ", faceMorph=" + aMu() + ", skinBright=" + aMv() + ", eyeBright=" + aMw() + ", rosy=" + aMx() + ", eyePouch=" + aMy() + ", smileFolds=" + aMz() + ", sharpen=" + aMA() + ", teethBright=" + aMB() + ", smallHead=" + aMC() + ", cheekBone=" + aMD() + ", jawBone=" + aME() + ", wingOfNose=" + aMF() + ')';
+    AppMethodBeat.o(199214);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.core.b.a
  * JD-Core Version:    0.7.0.1
  */

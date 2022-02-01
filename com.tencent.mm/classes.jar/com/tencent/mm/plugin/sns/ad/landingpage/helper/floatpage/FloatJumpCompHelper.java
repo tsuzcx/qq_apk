@@ -7,24 +7,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.av;
+import com.tencent.mm.ui.ay;
 
 public final class FloatJumpCompHelper
-  extends FloatCompHelperWithLifecycle<com.tencent.mm.plugin.sns.ad.landingpage.component.b.d, com.tencent.mm.plugin.sns.ad.landingpage.component.a.d>
+  extends FloatCompHelperWithLifecycle<com.tencent.mm.plugin.sns.ad.landingpage.component.b.e, com.tencent.mm.plugin.sns.ad.landingpage.component.a.e>
 {
-  public int Duc = -1;
+  public int JDr = -1;
   
-  public FloatJumpCompHelper(com.tencent.mm.plugin.sns.ad.landingpage.component.b.d paramd, ViewGroup paramViewGroup)
+  public FloatJumpCompHelper(com.tencent.mm.plugin.sns.ad.landingpage.component.b.e parame, ViewGroup paramViewGroup)
   {
-    super(paramd, paramViewGroup);
+    super(parame, paramViewGroup);
   }
   
-  private int eXk()
+  private int fKK()
   {
     int i = 1;
-    AppMethodBeat.i(202008);
+    AppMethodBeat.i(257683);
     for (;;)
     {
       try
@@ -43,8 +43,8 @@ public final class FloatJumpCompHelper
             Log.w("SnsAd.FloatJumpCompHelper", "the width is zero!!!");
             if (i != 0)
             {
-              i = av.aD(localContext);
-              AppMethodBeat.o(202008);
+              i = ay.aB(localContext);
+              AppMethodBeat.o(257683);
               return i;
             }
           }
@@ -60,14 +60,14 @@ public final class FloatJumpCompHelper
             continue;
           }
           i = a.fromDPToPix(localContext, 12);
-          AppMethodBeat.o(202008);
+          AppMethodBeat.o(257683);
           return i;
         }
       }
       catch (Throwable localThrowable)
       {
         Log.e("SnsAd.FloatJumpCompHelper", "the getNavigationBarHeight has something wrong!!");
-        AppMethodBeat.o(202008);
+        AppMethodBeat.o(257683);
         return 0;
       }
       label159:
@@ -75,9 +75,9 @@ public final class FloatJumpCompHelper
     }
   }
   
-  protected final void eX(View paramView)
+  protected final void gc(View paramView)
   {
-    AppMethodBeat.i(202007);
+    AppMethodBeat.i(257681);
     try
     {
       paramView = paramView.getLayoutParams();
@@ -86,20 +86,20 @@ public final class FloatJumpCompHelper
         paramView = (RelativeLayout.LayoutParams)paramView;
         paramView.addRule(12);
         paramView.addRule(14);
-        paramView.bottomMargin += eXk();
+        paramView.bottomMargin += fKK();
       }
-      AppMethodBeat.o(202007);
+      AppMethodBeat.o(257681);
       return;
     }
     catch (Throwable paramView)
     {
-      AppMethodBeat.o(202007);
+      AppMethodBeat.o(257681);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.landingpage.helper.floatpage.FloatJumpCompHelper
  * JD-Core Version:    0.7.0.1
  */

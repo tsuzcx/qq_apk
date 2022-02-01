@@ -14,22 +14,22 @@ public final class c
   implements b.b
 {
   private Context context;
-  b.a gLj;
-  private AudioManager.OnAudioFocusChangeListener gLk;
+  b.a jvy;
+  private AudioManager.OnAudioFocusChangeListener jvz;
   private AudioManager mAudioManager;
   
   public c(Context paramContext)
   {
     AppMethodBeat.i(155870);
-    this.gLk = new AudioManager.OnAudioFocusChangeListener()
+    this.jvz = new AudioManager.OnAudioFocusChangeListener()
     {
       public final void onAudioFocusChange(int paramAnonymousInt)
       {
         AppMethodBeat.i(155869);
-        if (c.this.gLj != null)
+        if (c.this.jvy != null)
         {
           Log.d("MicroMsg.AudioFocusHelper", "jacks change: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-          c.this.gLj.iZ(paramAnonymousInt);
+          c.this.jvy.kp(paramAnonymousInt);
         }
         AppMethodBeat.o(155869);
       }
@@ -44,10 +44,33 @@ public final class c
   
   public final void a(b.a parama)
   {
-    this.gLj = parama;
+    this.jvy = parama;
   }
   
-  public final boolean apm()
+  public final boolean avy()
+  {
+    AppMethodBeat.i(155871);
+    if ((this.mAudioManager == null) && (this.context != null)) {
+      this.mAudioManager = ((AudioManager)this.context.getSystemService("audio"));
+    }
+    boolean bool;
+    if (this.mAudioManager != null) {
+      if (1 == this.mAudioManager.requestAudioFocus(this.jvz, 3, 2)) {
+        bool = true;
+      }
+    }
+    for (;;)
+    {
+      Log.printInfoStack("MicroMsg.AudioFocusHelper", "jacks requestFocus: %B, %x", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.jvz.hashCode()) });
+      AppMethodBeat.o(155871);
+      return bool;
+      bool = false;
+      continue;
+      bool = false;
+    }
+  }
+  
+  public final boolean avz()
   {
     AppMethodBeat.i(155872);
     if ((this.mAudioManager == null) && (this.context != null)) {
@@ -55,13 +78,13 @@ public final class c
     }
     boolean bool;
     if (this.mAudioManager != null) {
-      if (1 == this.mAudioManager.abandonAudioFocus(this.gLk)) {
+      if (1 == this.mAudioManager.abandonAudioFocus(this.jvz)) {
         bool = true;
       }
     }
     for (;;)
     {
-      Log.printInfoStack("MicroMsg.AudioFocusHelper", "jacks abandonFocus: %B, %x", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.gLk.hashCode()) });
+      Log.printInfoStack("MicroMsg.AudioFocusHelper", "jacks abandonFocus: %B, %x", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.jvz.hashCode()) });
       AppMethodBeat.o(155872);
       return bool;
       bool = false;
@@ -72,31 +95,8 @@ public final class c
   
   public final void b(b.a parama)
   {
-    if (this.gLj == parama) {
-      this.gLj = null;
-    }
-  }
-  
-  public final boolean requestFocus()
-  {
-    AppMethodBeat.i(155871);
-    if ((this.mAudioManager == null) && (this.context != null)) {
-      this.mAudioManager = ((AudioManager)this.context.getSystemService("audio"));
-    }
-    boolean bool;
-    if (this.mAudioManager != null) {
-      if (1 == this.mAudioManager.requestAudioFocus(this.gLk, 3, 2)) {
-        bool = true;
-      }
-    }
-    for (;;)
-    {
-      Log.printInfoStack("MicroMsg.AudioFocusHelper", "jacks requestFocus: %B, %x", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.gLk.hashCode()) });
-      AppMethodBeat.o(155871);
-      return bool;
-      bool = false;
-      continue;
-      bool = false;
+    if (this.jvy == parama) {
+      this.jvy = null;
     }
   }
 }

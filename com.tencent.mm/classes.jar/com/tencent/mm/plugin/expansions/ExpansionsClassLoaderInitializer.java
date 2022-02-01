@@ -5,7 +5,7 @@ import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.Application;
 import android.content.Context;
 import android.os.Process;
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.List;
@@ -19,7 +19,7 @@ public final class ExpansionsClassLoaderInitializer
   public final void initializeClassLoader(Application paramApplication, ClassLoader paramClassLoader)
   {
     AppMethodBeat.i(152965);
-    c.gj("MicroMsg.ExpansionsClassLoaderInitializer", "[+] Enter initializeClassLoader.");
+    c.gx("MicroMsg.ExpansionsClassLoaderInitializer", "[+] Enter initializeClassLoader.");
     if (paramApplication != null)
     {
       int i = Process.myPid();
@@ -33,13 +33,13 @@ public final class ExpansionsClassLoaderInitializer
           if (!paramApplication.endsWith(":push")) {
             break label123;
           }
-          c.gj("MicroMsg.ExpansionsClassLoaderInitializer", "[!] push process needn't initialize Expansions.");
+          c.gx("MicroMsg.ExpansionsClassLoaderInitializer", "[!] push process needn't initialize Expansions.");
         }
       }
     }
     for (;;)
     {
-      c.gj("MicroMsg.ExpansionsClassLoaderInitializer", "[+] Exit initializeClassLoader.");
+      c.gx("MicroMsg.ExpansionsClassLoaderInitializer", "[+] Exit initializeClassLoader.");
       AppMethodBeat.o(152965);
       return;
       paramApplication = null;
@@ -47,19 +47,19 @@ public final class ExpansionsClassLoaderInitializer
       label123:
       if (paramApplication.endsWith(":isolated_process0"))
       {
-        c.gj("MicroMsg.ExpansionsClassLoaderInitializer", "[!] tbs isolated process cannot initialize Expansions.");
+        c.gx("MicroMsg.ExpansionsClassLoaderInitializer", "[!] tbs isolated process cannot initialize Expansions.");
       }
       else
       {
-        a.cMn();
-        a.cMm();
+        a.dbb();
+        a.dba();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.expansions.ExpansionsClassLoaderInitializer
  * JD-Core Version:    0.7.0.1
  */

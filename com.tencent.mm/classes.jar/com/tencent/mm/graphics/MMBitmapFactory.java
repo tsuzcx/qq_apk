@@ -995,7 +995,7 @@ public class MMBitmapFactory
   static final class a
     extends FilterInputStream
   {
-    private long hjN = 0L;
+    private long jVw = 0L;
     
     public a(FileInputStream paramFileInputStream)
     {
@@ -1009,7 +1009,7 @@ public class MMBitmapFactory
         AppMethodBeat.i(978);
         try
         {
-          this.hjN = ((FileInputStream)this.in).getChannel().position();
+          this.jVw = ((FileInputStream)this.in).getChannel().position();
           AppMethodBeat.o(978);
         }
         catch (IOException localIOException)
@@ -1017,7 +1017,7 @@ public class MMBitmapFactory
           for (;;)
           {
             Log.e("MicroMsg.MMBitmapFactory", localIOException, "fail to mark position.");
-            this.hjN = -1L;
+            this.jVw = -1L;
             AppMethodBeat.o(978);
           }
         }
@@ -1036,15 +1036,15 @@ public class MMBitmapFactory
       try
       {
         AppMethodBeat.i(979);
-        if (this.hjN < 0L)
+        if (this.jVw < 0L)
         {
-          IOException localIOException = new IOException("Illegal marked position: " + this.hjN);
+          IOException localIOException = new IOException("Illegal marked position: " + this.jVw);
           AppMethodBeat.o(979);
           throw localIOException;
         }
       }
       finally {}
-      ((FileInputStream)this.in).getChannel().position(this.hjN);
+      ((FileInputStream)this.in).getChannel().position(this.jVw);
       AppMethodBeat.o(979);
     }
   }
@@ -1059,7 +1059,7 @@ public class MMBitmapFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.graphics.MMBitmapFactory
  * JD-Core Version:    0.7.0.1
  */

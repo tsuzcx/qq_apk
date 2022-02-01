@@ -33,7 +33,7 @@ public class KindaApp
   {
     AppMethodBeat.i(18612);
     Log.i("MicroMsg.Kinda.KindaApp", "create kinda app");
-    h.CyF.dN(782, 30);
+    h.IzE.el(782, 30);
     this.appModuleManager = new KindaAppModuleManager();
     this.appModuleManager.registerModule(new KindaBaseViewModule());
     this.appModuleManager.registerModule(new KindaBaseServiceModule());
@@ -59,7 +59,7 @@ public class KindaApp
   public static boolean isEnabled()
   {
     AppMethodBeat.i(18609);
-    boolean bool = a.cMr();
+    boolean bool = a.dbf();
     AppMethodBeat.o(18609);
     return bool;
   }
@@ -107,13 +107,13 @@ public class KindaApp
   
   public void reInitModule()
   {
-    AppMethodBeat.i(214439);
+    AppMethodBeat.i(264001);
     if (this.appModuleManager != null)
     {
       this.appModuleManager.initAllModule();
       this.kinda = IAppKinda.getInstance();
     }
-    AppMethodBeat.o(214439);
+    AppMethodBeat.o(264001);
   }
   
   public void releaseAppKinda()

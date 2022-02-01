@@ -23,9 +23,9 @@ public class BackwardSupportUtil$AnimationHelper
   
   public static void overridePendingTransition(Activity paramActivity, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(215285);
+    AppMethodBeat.i(261892);
     paramActivity.overridePendingTransition(paramInt1, paramInt2);
-    AppMethodBeat.o(215285);
+    AppMethodBeat.o(261892);
   }
   
   public static abstract interface IHelper
@@ -35,7 +35,7 @@ public class BackwardSupportUtil$AnimationHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.BackwardSupportUtil.AnimationHelper
  * JD-Core Version:    0.7.0.1
  */

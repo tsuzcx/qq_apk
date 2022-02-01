@@ -7,16 +7,16 @@ import java.util.regex.Pattern;
 
 public final class g
 {
-  public static final boolean zF;
+  public static final boolean acB;
   
   static
   {
     AppMethodBeat.i(40620);
-    zF = o(System.getProperty("java.vm.version"));
+    acB = Q(System.getProperty("java.vm.version"));
     AppMethodBeat.o(40620);
   }
   
-  private static boolean o(String paramString)
+  private static boolean Q(String paramString)
   {
     bool2 = false;
     AppMethodBeat.i(40619);

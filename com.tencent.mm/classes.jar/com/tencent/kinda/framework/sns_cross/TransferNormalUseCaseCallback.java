@@ -3,8 +3,8 @@ package com.tencent.kinda.framework.sns_cross;
 import android.content.Context;
 import com.tencent.kinda.gen.ITransmitKvData;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.as;
-import com.tencent.mm.g.a.gn;
+import com.tencent.mm.f.a.au;
+import com.tencent.mm.f.a.gu;
 import com.tencent.mm.plugin.remittance.ui.RemittanceF2fDynamicCodeUI;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
 import com.tencent.mm.sdk.event.EventCenter;
@@ -37,47 +37,48 @@ public class TransferNormalUseCaseCallback
     int j = paramITransmitKvData.getInt("retcode");
     long l = paramITransmitKvData.getLong("total_fee");
     int k = paramITransmitKvData.getInt("action");
-    gn localgn = new gn();
-    localgn.dKu.dDL = paramITransmitKvData.getString("req_key");
+    gu localgu = new gu();
+    localgu.fDj.fwv = paramITransmitKvData.getString("req_key");
     if (i == 31)
     {
-      localgn.dKu.type = 0;
+      localgu.fDj.type = 0;
       if (i != 31) {
-        break label362;
+        break label382;
       }
       if ((j != 1) || (k != 1)) {
-        break label339;
+        break label359;
       }
-      localgn.dKu.dDN = 1;
+      localgu.fDj.fwx = 1;
     }
     for (;;)
     {
-      localgn.dKu.dDM = str;
-      localgn.dKu.isKinda = true;
-      localgn.dKu.dKv = localObject.hashCode();
-      EventCenter.instance.publish(localgn);
-      localObject = new as();
-      ((as)localObject).dDK.dDL = paramITransmitKvData.getString("req_key");
-      ((as)localObject).dDK.dDM = str;
-      ((as)localObject).dDK.dDN = j;
-      ((as)localObject).dDK.dDO = (l / 100.0D);
-      ((as)localObject).dDK.isKinda = true;
-      ((as)localObject).dDK.dDP = paramITransmitKvData.getInt("pay_fail_reason");
+      localgu.fDj.fww = str;
+      localgu.fDj.isKinda = true;
+      localgu.fDj.fDk = localObject.hashCode();
+      EventCenter.instance.publish(localgu);
+      localObject = new au();
+      ((au)localObject).fwu.fwv = paramITransmitKvData.getString("req_key");
+      ((au)localObject).fwu.fww = str;
+      ((au)localObject).fwu.fwx = j;
+      ((au)localObject).fwu.fwy = (l / 100.0D);
+      ((au)localObject).fwu.isKinda = true;
+      ((au)localObject).fwu.fwz = paramITransmitKvData.getInt("pay_fail_reason");
+      ((au)localObject).fwu.fwA = paramITransmitKvData.getInt("pay_succ_action");
       EventCenter.instance.publish((IEvent)localObject);
       AppMethodBeat.o(18723);
       return;
-      if ((i != 32) && (i != 33)) {
+      if ((i != 32) && (i != 33) && (i != 65)) {
         break;
       }
-      localgn.dKu.type = 1;
+      localgu.fDj.type = 1;
       break;
-      label339:
+      label359:
       if ((j == 1) && (k == 2))
       {
-        localgn.dKu.dDN = 2;
+        localgu.fDj.fwx = 2;
         continue;
-        label362:
-        localgn.dKu.dDN = j;
+        label382:
+        localgu.fDj.fwx = j;
       }
     }
   }

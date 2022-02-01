@@ -12,7 +12,7 @@ public final class b
 {
   /* Error */
   @com.tencent.thumbplayer.api.TPCommonEnum.NativeSeekMode
-  public static int ara(@com.tencent.thumbplayer.api.TPCommonEnum.TPSeekMode int paramInt)
+  public static int aAN(@com.tencent.thumbplayer.api.TPCommonEnum.TPSeekMode int paramInt)
   {
     // Byte code:
     //   0: ldc 13
@@ -115,7 +115,7 @@ public final class b
   
   /* Error */
   @com.tencent.thumbplayer.api.TPCommonEnum.NativeSwitchDefMode
-  public static int arb(@com.tencent.thumbplayer.api.TPCommonEnum.TPSwitchDefMode int paramInt)
+  public static int aAO(@com.tencent.thumbplayer.api.TPCommonEnum.TPSwitchDefMode int paramInt)
   {
     // Byte code:
     //   0: ldc 110
@@ -218,7 +218,7 @@ public final class b
   
   /* Error */
   @com.tencent.thumbplayer.api.TPCommonEnum.TPErrorType
-  public static int arc(@com.tencent.thumbplayer.api.TPCommonEnum.NativeErrorType int paramInt)
+  public static int aAP(@com.tencent.thumbplayer.api.TPCommonEnum.NativeErrorType int paramInt)
   {
     // Byte code:
     //   0: ldc 119
@@ -322,7 +322,7 @@ public final class b
   
   /* Error */
   @com.tencent.thumbplayer.api.TPCommonEnum.TPMsgInfo
-  public static int ard(@com.tencent.thumbplayer.api.TPCommonEnum.NativeMsgInfo int paramInt)
+  public static int aAQ(@com.tencent.thumbplayer.api.TPCommonEnum.NativeMsgInfo int paramInt)
   {
     // Byte code:
     //   0: ldc 132
@@ -425,7 +425,7 @@ public final class b
   }
   
   /* Error */
-  public static c.a are(@TPCommonEnum.TPOptionalId int paramInt)
+  public static c.a aAR(@TPCommonEnum.TPOptionalId int paramInt)
   {
     // Byte code:
     //   0: ldc 145
@@ -531,56 +531,56 @@ public final class b
     //   86	108	162	java/lang/IllegalAccessException
   }
   
-  public static c.a arf(@TPCommonEnum.TPOptionalId int paramInt)
+  public static c.a aAS(@TPCommonEnum.TPOptionalId int paramInt)
   {
-    AppMethodBeat.i(189000);
-    c.a locala = arg(paramInt);
+    AppMethodBeat.i(219725);
+    c.a locala = aAT(paramInt);
     if (locala == null)
     {
-      locala = arh(paramInt);
-      AppMethodBeat.o(189000);
+      locala = aAU(paramInt);
+      AppMethodBeat.o(219725);
       return locala;
     }
-    AppMethodBeat.o(189000);
+    AppMethodBeat.o(219725);
     return locala;
   }
   
-  private static c.a arg(@TPCommonEnum.TPOptionalId int paramInt)
+  private static c.a aAT(@TPCommonEnum.TPOptionalId int paramInt)
   {
-    AppMethodBeat.i(189001);
+    AppMethodBeat.i(219726);
     try
     {
-      c.a locala = g(paramInt, Class.forName(TPOptionalID.class.getName()));
-      AppMethodBeat.o(189001);
+      c.a locala = d(paramInt, Class.forName(TPOptionalID.class.getName()));
+      AppMethodBeat.o(219726);
       return locala;
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
       g.e("TPNativeKeyMapUtil", localClassNotFoundException);
-      AppMethodBeat.o(189001);
+      AppMethodBeat.o(219726);
     }
     return null;
   }
   
-  private static c.a arh(@TPCommonEnum.TPOptionalId int paramInt)
+  private static c.a aAU(@TPCommonEnum.TPOptionalId int paramInt)
   {
-    AppMethodBeat.i(189002);
+    AppMethodBeat.i(219727);
     try
     {
-      c.a locala = g(paramInt, Class.forName(a.class.getName()));
-      AppMethodBeat.o(189002);
+      c.a locala = d(paramInt, Class.forName(a.class.getName()));
+      AppMethodBeat.o(219727);
       return locala;
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
       g.e("TPNativeKeyMapUtil", localClassNotFoundException);
-      AppMethodBeat.o(189002);
+      AppMethodBeat.o(219727);
     }
     return null;
   }
   
   /* Error */
-  public static int ari(int paramInt)
+  public static int aAV(int paramInt)
   {
     // Byte code:
     //   0: ldc 180
@@ -682,7 +682,7 @@ public final class b
   }
   
   /* Error */
-  public static int arj(int paramInt)
+  public static int aAW(int paramInt)
   {
     // Byte code:
     //   0: ldc 191
@@ -784,7 +784,7 @@ public final class b
   }
   
   /* Error */
-  public static int ark(int paramInt)
+  public static int aAX(int paramInt)
   {
     // Byte code:
     //   0: ldc 200
@@ -885,9 +885,9 @@ public final class b
     //   86	94	148	java/lang/IllegalAccessException
   }
   
-  private static c.a g(@TPCommonEnum.TPOptionalId int paramInt, Class paramClass)
+  private static c.a d(@TPCommonEnum.TPOptionalId int paramInt, Class paramClass)
   {
-    AppMethodBeat.i(189003);
+    AppMethodBeat.i(219731);
     try
     {
       Field[] arrayOfField = paramClass.getDeclaredFields();
@@ -905,7 +905,7 @@ public final class b
             if (localObject != null)
             {
               paramClass = new c.a(((a.f)localObject).type(), ((a.f)localObject).value());
-              AppMethodBeat.o(189003);
+              AppMethodBeat.o(219731);
               return paramClass;
             }
           }
@@ -918,13 +918,13 @@ public final class b
     {
       g.e("TPNativeKeyMapUtil", paramClass);
       g.w("TPNativeKeyMapUtil", "convertToNativeOptionalIdInternal, tpOptionalId: " + paramInt + " not recognition, return null");
-      AppMethodBeat.o(189003);
+      AppMethodBeat.o(219731);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.thumbplayer.a.b.b.b
  * JD-Core Version:    0.7.0.1
  */

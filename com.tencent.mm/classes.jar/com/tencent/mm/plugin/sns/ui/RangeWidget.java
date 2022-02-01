@@ -12,22 +12,26 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.contact.c;
-import com.tencent.mm.g.b.a.kb;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.f.b.a.mt;
 import com.tencent.mm.model.ab;
 import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.sns.i.c;
+import com.tencent.mm.plugin.sns.i.e;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.mm.plugin.sns.i.i;
+import com.tencent.mm.plugin.sns.i.j;
 import com.tencent.mm.plugin.sns.j.m;
-import com.tencent.mm.plugin.sns.j.n;
-import com.tencent.mm.plugin.sns.k.e;
+import com.tencent.mm.plugin.sns.k.g;
 import com.tencent.mm.plugin.sns.model.aj;
-import com.tencent.mm.plugin.sns.model.be;
+import com.tencent.mm.plugin.sns.model.bd;
+import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.au;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -38,37 +42,37 @@ import java.util.concurrent.ExecutorService;
 public class RangeWidget
   extends RelativeLayout
 {
-  private m DOH;
-  SnsUploadConfigView Eoy;
-  private TextView ErY;
-  private String EvA;
-  private String EvB;
-  private View.OnClickListener EvC;
-  private TextView Evs;
-  private LinearLayout Evt;
-  private TextView Evu;
-  private View Evv;
-  private boolean Evw;
-  private int Evx;
-  String Evy;
-  private String Evz;
+  SnsUploadConfigView KBH;
+  private TextView KFt;
+  private TextView KJj;
+  private LinearLayout KJk;
+  private TextView KJl;
+  private View KJm;
+  private boolean KJn;
+  private int KJo;
+  String KJp;
+  private String KJq;
+  private String KJr;
+  private String KJs;
+  private View.OnClickListener KJt;
+  private m KbO;
   private View contentView;
   private Activity mContext;
   public int style;
-  private ImageView uzC;
+  private ImageView yVe;
   
   public RangeWidget(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98227);
-    this.Evw = true;
-    this.Evx = 0;
-    this.Evy = "";
-    this.DOH = null;
-    this.Evz = "";
-    this.EvA = "";
-    this.EvB = "";
-    this.EvC = null;
+    this.KJn = true;
+    this.KJo = 0;
+    this.KJp = "";
+    this.KbO = null;
+    this.KJq = "";
+    this.KJr = "";
+    this.KJs = "";
+    this.KJt = null;
     this.style = 0;
     init(paramContext);
     AppMethodBeat.o(98227);
@@ -78,25 +82,25 @@ public class RangeWidget
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(98226);
-    this.Evw = true;
-    this.Evx = 0;
-    this.Evy = "";
-    this.DOH = null;
-    this.Evz = "";
-    this.EvA = "";
-    this.EvB = "";
-    this.EvC = null;
+    this.KJn = true;
+    this.KJo = 0;
+    this.KJp = "";
+    this.KbO = null;
+    this.KJq = "";
+    this.KJr = "";
+    this.KJs = "";
+    this.KJt = null;
     this.style = 0;
     init(paramContext);
     AppMethodBeat.o(98226);
   }
   
-  private static List<String> V(List<String> paramList)
+  private static List<String> S(List<String> paramList)
   {
     AppMethodBeat.i(98229);
     LinkedList localLinkedList = new LinkedList();
-    g.aAi();
-    if (!g.aAf().azp())
+    com.tencent.mm.kernel.h.aHH();
+    if (!com.tencent.mm.kernel.h.aHE().aGM())
     {
       AppMethodBeat.o(98229);
       return localLinkedList;
@@ -110,14 +114,14 @@ public class RangeWidget
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      g.aAi();
-      as localas = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn(str);
+      com.tencent.mm.kernel.h.aHH();
+      as localas = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL().RG(str);
       paramList = str;
       if (localas != null)
       {
         paramList = str;
-        if ((int)localas.gMZ != 0) {
-          paramList = localas.arJ();
+        if ((int)localas.jxt != 0) {
+          paramList = localas.ays();
         }
       }
       localLinkedList.add(paramList);
@@ -132,21 +136,21 @@ public class RangeWidget
     AppMethodBeat.i(98228);
     this.mContext = ((Activity)paramContext);
     this.contentView = View.inflate(paramContext, getLayoutResource(), this);
-    this.DOH = aj.faK().DOH;
-    this.Evs = ((TextView)this.contentView.findViewById(2131308239));
-    this.ErY = ((TextView)this.contentView.findViewById(2131303148));
-    this.uzC = ((ImageView)this.contentView.findViewById(2131306498));
-    this.Evt = ((LinearLayout)this.contentView.findViewById(2131308235));
-    this.Evu = ((TextView)this.contentView.findViewById(2131308234));
-    this.Evv = this.contentView.findViewById(2131306501);
+    this.KbO = aj.fOE().KbO;
+    this.KJj = ((TextView)this.contentView.findViewById(i.f.sns_tag_range_list));
+    this.KFt = ((TextView)this.contentView.findViewById(i.f.left_tv));
+    this.yVe = ((ImageView)this.contentView.findViewById(i.f.rang_icon));
+    this.KJk = ((LinearLayout)this.contentView.findViewById(i.f.sns_tag_last_range_list_group));
+    this.KJl = ((TextView)this.contentView.findViewById(i.f.sns_tag_last_range_list));
+    this.KJm = this.contentView.findViewById(i.f.range_content_group);
     this.contentView.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(98224);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/RangeWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/ui/RangeWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         paramAnonymousView = new Intent(RangeWidget.a(RangeWidget.this), SnsLabelUI.class);
         paramAnonymousView.putExtra("KLabel_range_index", RangeWidget.b(RangeWidget.this));
         paramAnonymousView.putExtra("Klabel_name_list", RangeWidget.c(RangeWidget.this));
@@ -154,14 +158,14 @@ public class RangeWidget
         paramAnonymousView.putExtra("Kchat_room_name_list", RangeWidget.e(RangeWidget.this));
         paramAnonymousView.putExtra("k_sns_label_ui_style", RangeWidget.this.style);
         RangeWidget.a(RangeWidget.this).startActivityForResult(paramAnonymousView, 5);
-        paramAnonymousView = e.DUQ;
-        if (paramAnonymousView.DVa != null) {
-          if (paramAnonymousView.DVa.eTe > 0) {
+        paramAnonymousView = g.Kia;
+        if (paramAnonymousView.Kik != null) {
+          if (paramAnonymousView.Kik.gVs > 0) {
             break label180;
           }
         }
         label180:
-        for (paramAnonymousView.DVa.eTe = 1;; paramAnonymousView.DVa.eTe += 1)
+        for (paramAnonymousView.Kik.gVs = 1;; paramAnonymousView.Kik.gVs += 1)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/RangeWidget$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(98224);
@@ -169,20 +173,20 @@ public class RangeWidget
         }
       }
     });
-    if ((this.Evt != null) && (this.Evu != null) && (this.Evv != null))
+    if ((this.KJk != null) && (this.KJl != null) && (this.KJm != null))
     {
-      this.Evt.setOnClickListener(new View.OnClickListener()
+      this.KJk.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(98225);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/RangeWidget$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/ui/RangeWidget$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           if (RangeWidget.f(RangeWidget.this) != null)
           {
             RangeWidget.f(RangeWidget.this).onClick(paramAnonymousView);
-            e.DUQ.DVa.eTg = 1;
+            g.Kia.Kik.gVu = 1;
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/RangeWidget$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(98225);
@@ -191,15 +195,15 @@ public class RangeWidget
       int i;
       Object localObject1;
       Iterator localIterator;
-      if (((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.sdD, 1) == 1)
+      if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vMX, 1) == 1)
       {
         i = 1;
-        this.Evv.setBackground(null);
-        this.Evt.setVisibility(8);
-        if ((i != 0) && (this.DOH != null) && (this.DOH.DSe != null) && (!this.DOH.DSe.isEmpty()))
+        this.KJm.setBackground(null);
+        this.KJk.setVisibility(8);
+        if ((i != 0) && (this.KbO != null) && (this.KbO.Kfm != null) && (!this.KbO.Kfm.isEmpty()))
         {
           localObject1 = new ArrayList();
-          localIterator = this.DOH.DSe.iterator();
+          localIterator = this.KbO.Kfm.iterator();
         }
       }
       else
@@ -207,12 +211,12 @@ public class RangeWidget
         for (;;)
         {
           if (!localIterator.hasNext()) {
-            break label430;
+            break label436;
           }
-          Object localObject2 = (n)localIterator.next();
-          if (((n)localObject2).type == 1)
+          Object localObject2 = (com.tencent.mm.plugin.sns.j.n)localIterator.next();
+          if (((com.tencent.mm.plugin.sns.j.n)localObject2).type == 1)
           {
-            localObject2 = com.tencent.mm.plugin.label.a.a.ecg().aCG(((n)localObject2).name);
+            localObject2 = com.tencent.mm.plugin.label.a.a.eLe().aMN(((com.tencent.mm.plugin.sns.j.n)localObject2).name);
             if (localObject2 == null) {
               continue;
             }
@@ -221,39 +225,39 @@ public class RangeWidget
             i = 0;
             break;
           }
-          if (((n)localObject2).type == 2)
+          if (((com.tencent.mm.plugin.sns.j.n)localObject2).type == 2)
           {
-            g.aAi();
-            as localas = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn(((n)localObject2).name);
-            if ((localas != null) && ((int)localas.gMZ != 0)) {
-              ((List)localObject1).add(((n)localObject2).name);
+            com.tencent.mm.kernel.h.aHH();
+            as localas = ((com.tencent.mm.plugin.messenger.foundation.a.n)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbL().RG(((com.tencent.mm.plugin.sns.j.n)localObject2).name);
+            if ((localas != null) && ((int)localas.jxt != 0)) {
+              ((List)localObject1).add(((com.tencent.mm.plugin.sns.j.n)localObject2).name);
             }
           }
           else
           {
-            ((List)localObject1).add(((n)localObject2).name);
+            ((List)localObject1).add(((com.tencent.mm.plugin.sns.j.n)localObject2).name);
           }
         }
-        label430:
+        label436:
         if (!Util.isNullOrNil((List)localObject1))
         {
-          this.Evv.setBackground(paramContext.getResources().getDrawable(2131233327));
-          this.Evt.setVisibility(0);
-          localObject1 = Util.listToString(V((List)localObject1), ",");
-          this.Evu.setText(com.tencent.mm.pluginsdk.ui.span.l.b(getContext(), String.format(paramContext.getResources().getString(2131766238), new Object[] { localObject1 }), this.Evu.getTextSize()));
+          this.KJm.setBackground(paramContext.getResources().getDrawable(i.e.list_item_normal));
+          this.KJk.setVisibility(0);
+          localObject1 = Util.listToString(S((List)localObject1), ",");
+          this.KJl.setText(l.b(getContext(), String.format(paramContext.getResources().getString(i.j.sns_tag_last_tip), new Object[] { localObject1 }), this.KJl.getTextSize()));
           i = j;
-          if (this.DOH.DSg) {
+          if (this.KbO.Kfo) {
             i = 2;
           }
-          e.DUQ.DVa.eTf = i;
-          aj.faB().execute(new Runnable()
+          g.Kia.Kik.gVt = i;
+          aj.fOv().execute(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(203356);
-              Object localObject1 = e.DUQ;
-              Object localObject4 = RangeWidget.g(RangeWidget.this).DSe;
-              if ((localObject4 != null) && (!((List)localObject4).isEmpty()) && (((e)localObject1).DVa != null))
+              AppMethodBeat.i(265656);
+              Object localObject1 = g.Kia;
+              Object localObject4 = RangeWidget.g(RangeWidget.this).Kfm;
+              if ((localObject4 != null) && (!((List)localObject4).isEmpty()) && (((g)localObject1).Kik != null))
               {
                 Object localObject2 = new ArrayList();
                 ArrayList localArrayList = new ArrayList();
@@ -262,19 +266,19 @@ public class RangeWidget
                 Object localObject5;
                 while (((Iterator)localObject4).hasNext())
                 {
-                  localObject5 = (n)((Iterator)localObject4).next();
-                  switch (((n)localObject5).type)
+                  localObject5 = (com.tencent.mm.plugin.sns.j.n)((Iterator)localObject4).next();
+                  switch (((com.tencent.mm.plugin.sns.j.n)localObject5).type)
                   {
                   default: 
                     break;
                   case 0: 
-                    localArrayList.add(((n)localObject5).name);
+                    localArrayList.add(((com.tencent.mm.plugin.sns.j.n)localObject5).name);
                     break;
                   case 2: 
-                    ((List)localObject2).add(((n)localObject5).name);
+                    ((List)localObject2).add(((com.tencent.mm.plugin.sns.j.n)localObject5).name);
                     break;
                   case 1: 
-                    ((List)localObject3).add(((n)localObject5).name);
+                    ((List)localObject3).add(((com.tencent.mm.plugin.sns.j.n)localObject5).name);
                   }
                 }
                 Object localObject6;
@@ -286,14 +290,14 @@ public class RangeWidget
                   while (((Iterator)localObject5).hasNext())
                   {
                     localObject6 = (String)((Iterator)localObject5).next();
-                    localObject7 = com.tencent.mm.plugin.label.a.a.ecg().aCK(com.tencent.mm.plugin.label.a.a.ecg().aCH((String)localObject6));
+                    localObject7 = com.tencent.mm.plugin.label.a.a.eLe().aMR(com.tencent.mm.plugin.label.a.a.eLe().aMO((String)localObject6));
                     if ((localObject7 != null) && (((List)localObject7).size() != 0)) {
                       ((StringBuilder)localObject4).append((String)localObject6).append("|").append(((List)localObject7).size()).append(";");
                     }
                   }
-                  ((e)localObject1).DVa.eTl = ((List)localObject3).size();
-                  localObject3 = ((e)localObject1).DVa;
-                  ((kb)localObject3).eTm = ((kb)localObject3).x("LatestTimelinePsotSettingLabelList", ((StringBuilder)localObject4).toString(), true);
+                  ((g)localObject1).Kik.gVz = ((List)localObject3).size();
+                  localObject3 = ((g)localObject1).Kik;
+                  ((mt)localObject3).gVA = ((mt)localObject3).z("LatestTimelinePsotSettingLabelList", ((StringBuilder)localObject4).toString(), true);
                 }
                 if (((List)localObject2).size() > 0)
                 {
@@ -303,29 +307,29 @@ public class RangeWidget
                   {
                     localObject5 = (String)((Iterator)localObject4).next();
                     localObject6 = new ArrayList();
-                    localObject7 = v.Id((String)localObject5);
+                    localObject7 = v.Pt((String)localObject5);
                     if (localObject7 != null)
                     {
                       localObject7 = ((List)localObject7).iterator();
                       while (((Iterator)localObject7).hasNext())
                       {
                         String str = (String)((Iterator)localObject7).next();
-                        if (ab.IS(str)) {
+                        if (ab.Ql(str)) {
                           ((List)localObject6).add(str);
                         }
                       }
                       ((StringBuilder)localObject3).append((String)localObject5).append("|").append(((List)localObject6).size()).append(";");
                     }
                   }
-                  ((e)localObject1).DVa.eTh = ((List)localObject2).size();
-                  localObject2 = ((e)localObject1).DVa;
-                  ((kb)localObject2).eTi = ((kb)localObject2).x("LatestTimelinePsotSettingGroupList", ((StringBuilder)localObject3).toString(), true);
+                  ((g)localObject1).Kik.gVv = ((List)localObject2).size();
+                  localObject2 = ((g)localObject1).Kik;
+                  ((mt)localObject2).gVw = ((mt)localObject2).z("LatestTimelinePsotSettingGroupList", ((StringBuilder)localObject3).toString(), true);
                 }
-                ((e)localObject1).DVa.eTj = localArrayList.size();
-                localObject1 = ((e)localObject1).DVa;
-                ((kb)localObject1).eTk = ((kb)localObject1).x("LatestTimelinePsotSettingUinList", Util.listToString(localArrayList, "|"), true);
+                ((g)localObject1).Kik.gVx = localArrayList.size();
+                localObject1 = ((g)localObject1).Kik;
+                ((mt)localObject1).gVy = ((mt)localObject1).z("LatestTimelinePsotSettingUinList", Util.listToString(localArrayList, "|"), true);
               }
-              AppMethodBeat.o(203356);
+              AppMethodBeat.o(265656);
             }
           });
         }
@@ -337,30 +341,30 @@ public class RangeWidget
   public boolean a(int paramInt1, int paramInt2, Intent paramIntent, AtContactWidget paramAtContactWidget)
   {
     AppMethodBeat.i(98230);
-    this.Evx = paramIntent.getIntExtra("Ktag_range_index", 0);
-    this.Evz = paramIntent.getStringExtra("Klabel_name_list");
-    this.EvA = paramIntent.getStringExtra("Kother_user_name_list");
-    this.EvB = paramIntent.getStringExtra("Kchat_room_name_list");
+    this.KJo = paramIntent.getIntExtra("Ktag_range_index", 0);
+    this.KJq = paramIntent.getStringExtra("Klabel_name_list");
+    this.KJr = paramIntent.getStringExtra("Kother_user_name_list");
+    this.KJs = paramIntent.getStringExtra("Kchat_room_name_list");
     paramInt1 = getMaxTagNameLen();
     Object localObject = "";
-    if (!Util.isNullOrNil(this.EvB))
+    if (!Util.isNullOrNil(this.KJs))
     {
-      paramIntent = Util.listToString(V(Arrays.asList(this.EvB.split(","))), ",");
+      paramIntent = Util.listToString(S(Arrays.asList(this.KJs.split(","))), ",");
       localObject = "" + paramIntent;
     }
     paramIntent = (Intent)localObject;
-    if (!Util.isNullOrNil(this.Evz))
+    if (!Util.isNullOrNil(this.KJq))
     {
       if (((String)localObject).length() > 0) {
-        paramIntent = (String)localObject + "," + this.Evz;
+        paramIntent = (String)localObject + "," + this.KJq;
       }
     }
     else
     {
       localObject = paramIntent;
-      if (!Util.isNullOrNil(this.EvA))
+      if (!Util.isNullOrNil(this.KJr))
       {
-        localObject = Util.listToString(V(Arrays.asList(this.EvA.split(","))), ",");
+        localObject = Util.listToString(S(Arrays.asList(this.KJr.split(","))), ",");
         if (paramIntent.length() <= 0) {
           break label462;
         }
@@ -379,16 +383,16 @@ public class RangeWidget
           }
         }
       }
-      paramInt1 = this.Evx;
-      paramIntent = com.tencent.mm.pluginsdk.ui.span.l.b(getContext(), paramIntent, this.Evs.getTextSize());
-      if (this.uzC != null)
+      paramInt1 = this.KJo;
+      paramIntent = l.b(getContext(), paramIntent, this.KJj.getTextSize());
+      if (this.yVe != null)
       {
-        this.uzC.setImageDrawable(ar.m(this.mContext, 2131689533, getContext().getResources().getColor(2131101414)));
-        this.ErY.setTextColor(getResources().getColor(2131100566));
-        this.Evs.setTextColor(getResources().getColor(2131100566));
+        this.yVe.setImageDrawable(au.o(this.mContext, i.i.album_group_icon_pressed, getContext().getResources().getColor(i.c.wechat_green)));
+        this.KFt.setTextColor(getResources().getColor(i.c.green_text_color));
+        this.KJj.setTextColor(getResources().getColor(i.c.green_text_color));
       }
-      if (this.Eoy != null) {
-        this.Eoy.setPrivated(false);
+      if (this.KBH != null) {
+        this.KBH.setPrivated(false);
       }
       switch (paramInt1)
       {
@@ -398,58 +402,58 @@ public class RangeWidget
     {
       AppMethodBeat.o(98230);
       return true;
-      paramIntent = (String)localObject + this.Evz;
+      paramIntent = (String)localObject + this.KJq;
       break;
       label462:
       localObject = paramIntent + (String)localObject;
       break label235;
-      if (this.uzC != null)
+      if (this.yVe != null)
       {
-        this.uzC.setImageDrawable(ar.m(this.mContext, 2131689532, getContext().getResources().getColor(2131100634)));
-        this.ErY.setTextColor(getResources().getColor(2131100904));
-        this.Evs.setTextColor(getResources().getColor(2131100594));
+        this.yVe.setImageDrawable(au.o(this.mContext, i.i.album_group_icon_normal, getContext().getResources().getColor(i.c.icon_color)));
+        this.KFt.setTextColor(getResources().getColor(i.c.normal_text_color));
+        this.KJj.setTextColor(getResources().getColor(i.c.hint_text_color));
       }
-      this.Evs.setText(2131766098);
+      this.KJj.setText(i.j.sns_label_public);
       continue;
-      if (this.Eoy != null) {
-        this.Eoy.setPrivated(true);
+      if (this.KBH != null) {
+        this.KBH.setPrivated(true);
       }
-      if ((paramAtContactWidget != null) && (this.Eoy != null) && (paramAtContactWidget.getAtList().size() > 0))
+      if ((paramAtContactWidget != null) && (this.KBH != null) && (paramAtContactWidget.getAtList().size() > 0))
       {
-        h.n(this.mContext, 2131766249, 2131755998);
-        paramAtContactWidget.ffm();
-        this.Eoy.fjD();
+        com.tencent.mm.ui.base.h.p(this.mContext, i.j.sns_tag_privacy_with_others_tip, i.j.app_tip);
+        paramAtContactWidget.fTh();
+        this.KBH.fXQ();
       }
-      this.Evs.setText(2131766096);
+      this.KJj.setText(i.j.sns_label_private);
       continue;
-      if (this.uzC != null)
+      if (this.yVe != null)
       {
-        this.uzC.setImageDrawable(ar.m(this.mContext, 2131689532, getResources().getColor(2131100566)));
-        this.ErY.setText(getResources().getString(2131766257));
-        this.ErY.setTextColor(getResources().getColor(2131100566));
-        this.Evs.setTextColor(getResources().getColor(2131100566));
+        this.yVe.setImageDrawable(au.o(this.mContext, i.i.album_group_icon_normal, getResources().getColor(i.c.green_text_color)));
+        this.KFt.setText(getResources().getString(i.j.sns_tag_visibl_range));
+        this.KFt.setTextColor(getResources().getColor(i.c.green_text_color));
+        this.KJj.setTextColor(getResources().getColor(i.c.green_text_color));
       }
-      this.Evs.setText(paramIntent);
+      this.KJj.setText(paramIntent);
       continue;
-      if (this.uzC != null)
+      if (this.yVe != null)
       {
-        this.uzC.setImageDrawable(ar.m(this.mContext, 2131689532, -65536));
-        this.ErY.setText(getResources().getString(2131766237));
-        this.ErY.setTextColor(-65536);
-        this.Evs.setTextColor(-65536);
+        this.yVe.setImageDrawable(au.o(this.mContext, i.i.album_group_icon_normal, -65536));
+        this.KFt.setText(getResources().getString(i.j.sns_tag_invisibl_range));
+        this.KFt.setTextColor(-65536);
+        this.KJj.setTextColor(-65536);
       }
-      this.Evs.setText(paramIntent);
+      this.KJj.setText(paramIntent);
     }
   }
   
   public int getLabelRange()
   {
-    return this.Evx;
+    return this.KJo;
   }
   
   protected int getLayoutResource()
   {
-    return 2131496017;
+    return i.g.rang_layout;
   }
   
   protected int getMaxTagNameLen()
@@ -459,17 +463,17 @@ public class RangeWidget
   
   public void setEnablePrivate(boolean paramBoolean)
   {
-    this.Evw = paramBoolean;
+    this.KJn = paramBoolean;
   }
   
   public void setRangeTipClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.EvC = paramOnClickListener;
+    this.KJt = paramOnClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.RangeWidget
  * JD-Core Version:    0.7.0.1
  */

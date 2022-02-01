@@ -16,12 +16,12 @@ final class j$4
   {
     AppMethodBeat.i(56150);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/location/ui/impl/TrackMapUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/location/ui/impl/TrackMapUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
     Log.d("MicroMsg.TrackMapUI", "newpoi old go back onclick");
-    this.yNO.dKf = 0;
-    this.yNO.edZ();
-    this.yNO.eel();
+    this.ErM.fCU = 0;
+    this.ErM.eNu();
+    this.ErM.eNF();
     a.a(this, "com/tencent/mm/plugin/location/ui/impl/TrackMapUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(56150);
   }

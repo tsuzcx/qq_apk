@@ -11,13 +11,13 @@ import kotlin.m;
 
 public final class s
 {
-  public static final a TvQ;
+  public static final a aaYG;
   final String signature;
   
   static
   {
     AppMethodBeat.i(58237);
-    TvQ = new a((byte)0);
+    aaYG = new a((byte)0);
     AppMethodBeat.o(58237);
   }
   
@@ -34,7 +34,7 @@ public final class s
       if ((paramObject instanceof s))
       {
         paramObject = (s)paramObject;
-        if (!p.j(this.signature, paramObject.signature)) {}
+        if (!p.h(this.signature, paramObject.signature)) {}
       }
     }
     else
@@ -73,7 +73,7 @@ public final class s
     public static s a(s params, int paramInt)
     {
       AppMethodBeat.i(58236);
-      p.h(params, "signature");
+      p.k(params, "signature");
       params = new s(params.signature + '@' + paramInt, (byte)0);
       AppMethodBeat.o(58236);
       return params;
@@ -82,9 +82,9 @@ public final class s
     public static s a(c paramc, a.b paramb)
     {
       AppMethodBeat.i(58232);
-      p.h(paramc, "nameResolver");
-      p.h(paramb, "signature");
-      paramc = ot(paramc.getString(paramb.Tyk), paramc.getString(paramb.TBX));
+      p.k(paramc, "nameResolver");
+      p.k(paramb, "signature");
+      paramc = po(paramc.getString(paramb.abbb), paramc.getString(paramb.abeL));
       AppMethodBeat.o(58232);
       return paramc;
     }
@@ -92,16 +92,16 @@ public final class s
     public static s a(e parame)
     {
       AppMethodBeat.i(58235);
-      p.h(parame, "signature");
+      p.k(parame, "signature");
       if ((parame instanceof e.b))
       {
-        parame = ot(parame.getName(), parame.getDesc());
+        parame = po(parame.getName(), parame.getDesc());
         AppMethodBeat.o(58235);
         return parame;
       }
       if ((parame instanceof e.a))
       {
-        parame = ou(parame.getName(), parame.getDesc());
+        parame = pp(parame.getName(), parame.getDesc());
         AppMethodBeat.o(58235);
         return parame;
       }
@@ -110,21 +110,21 @@ public final class s
       throw parame;
     }
     
-    public static s ot(String paramString1, String paramString2)
+    public static s po(String paramString1, String paramString2)
     {
       AppMethodBeat.i(58233);
-      p.h(paramString1, "name");
-      p.h(paramString2, "desc");
+      p.k(paramString1, "name");
+      p.k(paramString2, "desc");
       paramString1 = new s(paramString1 + paramString2, (byte)0);
       AppMethodBeat.o(58233);
       return paramString1;
     }
     
-    public static s ou(String paramString1, String paramString2)
+    public static s pp(String paramString1, String paramString2)
     {
       AppMethodBeat.i(58234);
-      p.h(paramString1, "name");
-      p.h(paramString2, "desc");
+      p.k(paramString1, "name");
+      p.k(paramString2, "desc");
       paramString1 = new s(paramString1 + '#' + paramString2, (byte)0);
       AppMethodBeat.o(58234);
       return paramString1;
@@ -133,7 +133,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.b.s
  * JD-Core Version:    0.7.0.1
  */

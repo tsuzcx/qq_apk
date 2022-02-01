@@ -2,11 +2,11 @@ package com.tencent.magicbrush.a;
 
 public abstract interface d$a
 {
-  public abstract void ik(int paramInt);
+  public abstract void jn(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.magicbrush.a.d.a
  * JD-Core Version:    0.7.0.1
  */

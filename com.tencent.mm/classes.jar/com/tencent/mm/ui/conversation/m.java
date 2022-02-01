@@ -1,617 +1,406 @@
 package com.tencent.mm.ui.conversation;
 
-import android.database.AbstractCursor;
-import android.database.ContentObserver;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.DataSetObserver;
+import android.view.View;
+import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ao.a.a;
+import com.tencent.mm.ao.af;
+import com.tencent.mm.ao.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.LinkedHashMap;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.az;
+import com.tencent.mm.storage.bw;
+import com.tencent.mm.ui.MMFragmentActivity;
+import com.tencent.mm.ui.v;
+import com.tencent.mm.ui.v.a;
 import java.util.LinkedList;
 
 public final class m
-  extends AbstractCursor
+  extends v<a>
 {
-  private a[] Qgl;
-  private int Qgm;
-  private int Qgn;
-  int Qgo;
-  LinkedList<c> Qgp;
-  private final m.b Qgq;
-  private Cursor To;
-  private DataSetObserver mObserver;
-  private int rIF;
+  private boolean XDi;
+  private n XDj;
+  final k XDk;
+  public final com.tencent.mm.ui.bizchat.b XDl;
+  private final DataSetObserver XDm;
   
-  public m(m.e parame, a... paramVarArgs)
+  public m(Context paramContext, String paramString, v.a parama)
   {
-    AppMethodBeat.i(234226);
-    this.mObserver = new DataSetObserver()
+    super(paramContext, new a());
+    AppMethodBeat.i(288433);
+    this.XDi = false;
+    this.XDm = new DataSetObserver()
     {
       public final void onChanged()
       {
-        AppMethodBeat.i(234216);
-        m.a(m.this);
-        m.this.gWb();
-        AppMethodBeat.o(234216);
+        AppMethodBeat.i(279768);
+        if (m.a(m.this) != null) {
+          m.a(m.this).hWB();
+        }
+        m.this.notifyDataSetChanged();
+        AppMethodBeat.o(279768);
       }
       
       public final void onInvalidated()
       {
-        AppMethodBeat.i(234217);
-        m.b(m.this);
-        m.this.gWb();
-        AppMethodBeat.o(234217);
+        AppMethodBeat.i(279770);
+        if (m.a(m.this) != null) {
+          m.a(m.this).hWB();
+        }
+        m.this.notifyDataSetInvalidated();
+        AppMethodBeat.o(279770);
       }
     };
-    this.rIF = -1;
-    this.Qgm = m.e.QgE.op;
-    this.Qgn = 100;
-    this.Qgo = -1;
-    this.Qgp = new LinkedList();
-    this.Qgq = new m.b();
-    this.Qgm = parame.op;
-    if (paramVarArgs.length < 2) {}
-    for (this.Qgl = paramVarArgs;; this.Qgl = new a[] { paramVarArgs[0], paramVarArgs[1] })
-    {
-      this.To = this.Qgl[0].gVZ();
-      while (i < this.Qgl.length)
-      {
-        if (anX(i) != null) {
-          anX(i).registerDataSetObserver(this.mObserver);
-        }
-        i += 1;
-      }
-    }
-    AppMethodBeat.o(234226);
-  }
-  
-  private m(a... paramVarArgs)
-  {
-    this(m.e.QgE, paramVarArgs);
-  }
-  
-  private boolean anU(int paramInt)
-  {
-    AppMethodBeat.i(234229);
-    try
-    {
-      m.b.a(this.Qgq);
-      this.To = this.Qgl[0].gVZ();
-      boolean bool = this.To.moveToPosition(paramInt);
-      AppMethodBeat.o(234229);
-      return bool;
-    }
-    catch (Throwable localThrowable)
-    {
-      Log.w("MergeSortCursorWrapper", "onMoveOneCursorOnly fail:" + localThrowable.getMessage());
-      AppMethodBeat.o(234229);
-    }
-    return false;
-  }
-  
-  private boolean anV(int paramInt)
-  {
-    AppMethodBeat.i(234230);
-    int i = this.Qgo;
-    int j = this.Qgo;
-    int k = this.Qgp.size();
-    if ((i <= paramInt) && (paramInt < j + k)) {
-      m.b.a(this.Qgq);
-    }
-    Object localObject;
+    super.Fx(false);
+    this.XDk = new k(paramContext, paramString, parama);
+    this.XDk.registerDataSetObserver(this.XDm);
+    af.bjv();
+    String str = f.Ut(paramString);
+    if (Util.isNullOrNil(str)) {}
     for (;;)
     {
-      localObject = anW(paramInt);
-      if (localObject != null) {
-        break;
-      }
-      AppMethodBeat.o(234230);
-      return false;
-      localObject = this.Qgq;
-      ((m.b)localObject).Qgw += 1L;
-      a locala1 = this.Qgl[0];
-      a locala2 = this.Qgl[1];
-      d locald;
-      LinkedList localLinkedList;
-      int m;
-      if (paramInt <= 0)
+      this.XDl = new com.tencent.mm.ui.bizchat.b(paramContext, parama, paramString);
+      this.XDl.registerDataSetObserver(this.XDm);
+      paramContext = this.XDl;
+      af.bjy().add(paramContext);
+      af.bjy().a(paramContext, paramContext.AVp.getMainLooper());
+      AppMethodBeat.o(288433);
+      return;
+      paramString = str;
+    }
+  }
+  
+  /* Error */
+  private a a(a parama, Cursor paramCursor)
+  {
+    // Byte code:
+    //   0: ldc 117
+    //   2: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_1
+    //   6: astore_3
+    //   7: aload_1
+    //   8: ifnonnull +11 -> 19
+    //   11: new 13	com/tencent/mm/ui/conversation/m$a
+    //   14: dup
+    //   15: invokespecial 29	com/tencent/mm/ui/conversation/m$a:<init>	()V
+    //   18: astore_3
+    //   19: aload_3
+    //   20: aload_0
+    //   21: getfield 119	com/tencent/mm/ui/conversation/m:XDj	Lcom/tencent/mm/ui/conversation/n;
+    //   24: invokevirtual 125	com/tencent/mm/ui/conversation/n:hWC	()Landroid/database/Cursor;
+    //   27: invokeinterface 131 1 0
+    //   32: putfield 135	com/tencent/mm/ui/conversation/m$a:XDo	I
+    //   35: aload_3
+    //   36: aconst_null
+    //   37: putfield 139	com/tencent/mm/ui/conversation/m$a:conversation	Lcom/tencent/mm/storage/az;
+    //   40: aload_3
+    //   41: aload_0
+    //   42: getfield 85	com/tencent/mm/ui/conversation/m:XDl	Lcom/tencent/mm/ui/bizchat/b;
+    //   45: aload_3
+    //   46: getfield 143	com/tencent/mm/ui/conversation/m$a:XDp	Lcom/tencent/mm/ao/a/a;
+    //   49: aload_2
+    //   50: invokevirtual 146	com/tencent/mm/ui/bizchat/b:a	(Lcom/tencent/mm/ao/a/a;Landroid/database/Cursor;)Lcom/tencent/mm/ao/a/a;
+    //   53: putfield 143	com/tencent/mm/ui/conversation/m$a:XDp	Lcom/tencent/mm/ao/a/a;
+    //   56: aload_3
+    //   57: getfield 143	com/tencent/mm/ui/conversation/m$a:XDp	Lcom/tencent/mm/ao/a/a;
+    //   60: getfield 152	com/tencent/mm/ao/a/a:field_bizChatId	J
+    //   63: lconst_0
+    //   64: lcmp
+    //   65: ifle +15 -> 80
+    //   68: aload_3
+    //   69: iconst_0
+    //   70: putfield 155	com/tencent/mm/ui/conversation/m$a:viewType	I
+    //   73: ldc 117
+    //   75: invokestatic 112	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   78: aload_3
+    //   79: areturn
+    //   80: aload_3
+    //   81: aconst_null
+    //   82: putfield 143	com/tencent/mm/ui/conversation/m$a:XDp	Lcom/tencent/mm/ao/a/a;
+    //   85: aload_3
+    //   86: aload_3
+    //   87: getfield 139	com/tencent/mm/ui/conversation/m$a:conversation	Lcom/tencent/mm/storage/az;
+    //   90: aload_2
+    //   91: invokestatic 158	com/tencent/mm/ui/conversation/k:a	(Lcom/tencent/mm/storage/az;Landroid/database/Cursor;)Lcom/tencent/mm/storage/az;
+    //   94: putfield 139	com/tencent/mm/ui/conversation/m$a:conversation	Lcom/tencent/mm/storage/az;
+    //   97: aload_3
+    //   98: iconst_1
+    //   99: putfield 155	com/tencent/mm/ui/conversation/m$a:viewType	I
+    //   102: ldc 117
+    //   104: invokestatic 112	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   107: aload_3
+    //   108: areturn
+    //   109: astore_1
+    //   110: aload_3
+    //   111: aconst_null
+    //   112: putfield 143	com/tencent/mm/ui/conversation/m$a:XDp	Lcom/tencent/mm/ao/a/a;
+    //   115: goto -30 -> 85
+    //   118: astore_1
+    //   119: aload_3
+    //   120: aconst_null
+    //   121: putfield 139	com/tencent/mm/ui/conversation/m$a:conversation	Lcom/tencent/mm/storage/az;
+    //   124: goto -22 -> 102
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	127	0	this	m
+    //   0	127	1	parama	a
+    //   0	127	2	paramCursor	Cursor
+    //   6	114	3	locala	a
+    // Exception table:
+    //   from	to	target	type
+    //   35	73	109	java/lang/Throwable
+    //   80	85	109	java/lang/Throwable
+    //   85	102	118	java/lang/Throwable
+  }
+  
+  public final void Fx(boolean paramBoolean)
+  {
+    AppMethodBeat.i(288435);
+    super.Fx(false);
+    AppMethodBeat.o(288435);
+  }
+  
+  public final void atr()
+  {
+    AppMethodBeat.i(288436);
+    this.XDk.atr();
+    this.XDl.atr();
+    this.XDj = new n(n.e.XDK, new n.a[] { new n.a()new n.a
+    {
+      protected final n.d c(Cursor paramAnonymousCursor, int paramAnonymousInt)
       {
-        i = this.Qgn;
-        j = Math.min(i * 2, getCount());
-        k = i;
-        if (j < i * 2) {
-          k = j;
+        AppMethodBeat.i(290147);
+        n.d locald = new n.d();
+        String str = paramAnonymousCursor.getString(b(paramAnonymousCursor, "username"));
+        locald.XDH = paramAnonymousCursor.getLong(b(paramAnonymousCursor, "conversationTime"));
+        if (locald.XDH == 0L) {
+          locald.XDH = (paramAnonymousCursor.getLong(b(paramAnonymousCursor, "flag")) & 0xFFFFFFFF);
         }
-        j = 0;
-        i = 0;
-        locald = locala1.anY(0);
-        localObject = locala2.anY(0);
-        localLinkedList = new LinkedList();
-        m = 0;
-        label163:
-        if ((m >= k) || ((d.QgB == locald) && (d.QgB == localObject))) {
-          break label405;
-        }
-        if (d.QgB != locald) {
-          break label254;
-        }
-        localLinkedList.add(new c(1, i, (d)localObject));
-        i += 1;
-        localObject = locala2.anY(i);
-      }
-      label373:
-      for (;;)
-      {
-        m += 1;
-        break label163;
-        i = (this.Qgn - 1 + paramInt) / this.Qgn * this.Qgn;
-        break;
-        label254:
-        if (d.QgB == localObject)
+        if (((com.tencent.mm.plugin.messenger.foundation.a.n)h.ae(com.tencent.mm.plugin.messenger.foundation.a.n.class)).bbR().bwF(str)) {}
+        for (locald.XDI = 1;; locald.XDI = 0)
         {
-          localLinkedList.add(new c(0, j, locald));
-          j += 1;
-          locald = locala1.anY(j);
+          AppMethodBeat.o(290147);
+          return locald;
         }
-        else
-        {
-          m.b localb = this.Qgq;
-          localb.Qgx += 1L;
-          if (this.Qgm * locald.a((d)localObject) <= 0) {}
-          for (int n = 1;; n = 0)
-          {
-            if (n == 0) {
-              break label373;
-            }
-            localLinkedList.add(new c(0, j, locald));
-            j += 1;
-            locald = locala1.anY(j);
-            break;
-          }
-          localLinkedList.add(new c(1, i, (d)localObject));
-          i += 1;
-          localObject = locala2.anY(i);
-        }
-      }
-      label405:
-      if (localLinkedList.size() != k) {
-        Log.w("MergeSortCursorWrapper", "fillWindow K=%d, N=%d (%d), iterator=[%d, %d]", new Object[] { Integer.valueOf(0), Integer.valueOf(localLinkedList.size()), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i) });
-      }
-      this.Qgo = 0;
-      this.Qgp = localLinkedList;
-    }
-    try
-    {
-      this.To = this.Qgl[localObject.Qgy].gVZ();
-      boolean bool = this.To.moveToPosition(((c)localObject).Qgz);
-      AppMethodBeat.o(234230);
-      return bool;
-    }
-    catch (Throwable localThrowable)
-    {
-      Log.w("MergeSortCursorWrapper", "onMoveTwoCursorMixed fail:" + localThrowable.getMessage());
-      AppMethodBeat.o(234230);
-    }
-    return false;
-  }
-  
-  private c anW(int paramInt)
-  {
-    AppMethodBeat.i(234232);
-    try
-    {
-      int i = this.Qgo;
-      c localc = (c)this.Qgp.get(paramInt - i);
-      AppMethodBeat.o(234232);
-      return localc;
-    }
-    catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
-    {
-      Log.w("MergeSortCursorWrapper", "locateElement fail:" + localIndexOutOfBoundsException.getMessage());
-      AppMethodBeat.o(234232);
-    }
-    return null;
-  }
-  
-  private Cursor anX(int paramInt)
-  {
-    AppMethodBeat.i(234250);
-    Cursor localCursor = this.Qgl[paramInt].gVZ();
-    AppMethodBeat.o(234250);
-    return localCursor;
-  }
-  
-  public static m gWa()
-  {
-    AppMethodBeat.i(234225);
-    m localm = new m(new a[] { new a()
-    {
-      protected final m.d c(Cursor paramAnonymousCursor, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(234218);
-        paramAnonymousCursor = new m.d(paramAnonymousInt);
-        AppMethodBeat.o(234218);
-        return paramAnonymousCursor;
       }
       
-      public final Cursor gVZ()
+      public final Cursor hWz()
       {
-        return null;
+        AppMethodBeat.i(290146);
+        Cursor localCursor = m.b(m.this).hK();
+        AppMethodBeat.o(290146);
+        return localCursor;
+      }
+    }, new n.a()
+    {
+      protected final n.d c(Cursor paramAnonymousCursor, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(270794);
+        n.d locald = new n.d();
+        locald.XDH = paramAnonymousCursor.getLong(b(paramAnonymousCursor, "lastMsgTime"));
+        if ((paramAnonymousCursor.getLong(b(paramAnonymousCursor, "flag")) & 0x0) != 0L) {}
+        for (locald.XDI = 1;; locald.XDI = 0)
+        {
+          AppMethodBeat.o(270794);
+          return locald;
+        }
+      }
+      
+      public final Cursor hWz()
+      {
+        AppMethodBeat.i(270793);
+        Cursor localCursor = m.this.XDl.hK();
+        AppMethodBeat.o(270793);
+        return localCursor;
       }
     } });
-    AppMethodBeat.o(234225);
-    return localm;
+    v(this.XDj);
+    AppMethodBeat.o(288436);
   }
   
-  public final void close()
+  public final void ats()
   {
-    AppMethodBeat.i(234244);
-    int j = this.Qgl.length;
-    int i = 0;
-    while (i < j)
+    AppMethodBeat.i(288437);
+    if (this.XDi)
     {
-      if (anX(i) != null) {
-        anX(i).close();
+      this.XDj = n.hWA();
+      v(this.XDj);
+      AppMethodBeat.o(288437);
+      return;
+    }
+    this.XDi = true;
+    atr();
+    this.XDi = false;
+    AppMethodBeat.o(288437);
+  }
+  
+  public final a awY(int paramInt)
+  {
+    AppMethodBeat.i(288439);
+    a locala2 = (a)super.getItem(paramInt);
+    Object localObject1 = locala2;
+    if (locala2 == null) {
+      localObject1 = locala2;
+    }
+    try
+    {
+      j = this.XDk.getCount();
+      localObject1 = locala2;
+      i = this.XDl.getCount();
+      localObject1 = locala2;
+      Log.w("MergeBizChatConversationAdapter", "getItem NULL, position=%d, size=%d, cursor.size=[%d, %d], window=[%d, %d)", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(getCount()), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.XDj.XDt), Integer.valueOf(this.XDj.XDt + this.XDj.XDu.size()) });
+      locala1 = locala2;
+      if (j > 0)
+      {
+        locala1 = locala2;
+        if (paramInt < j)
+        {
+          localObject1 = locala2;
+          locala1 = new a();
+        }
       }
-      i += 1;
     }
-    super.close();
-    AppMethodBeat.o(234244);
-  }
-  
-  public final void deactivate()
-  {
-    AppMethodBeat.i(234243);
-    int j = this.Qgl.length;
-    int i = 0;
-    while (i < j)
+    catch (Throwable localThrowable3)
     {
-      if (anX(i) != null) {
-        anX(i).deactivate();
+      int j;
+      int i;
+      a locala1;
+      label281:
+      break label281;
+    }
+    try
+    {
+      locala1.viewType = 1;
+      locala1.XDo = Math.max(0, paramInt);
+      locala1.conversation = ((az)this.XDk.getItem(locala1.XDo));
+      paramInt -= j;
+      localObject1 = locala1;
+      if (locala1 == null)
+      {
+        localObject1 = locala1;
+        if (i > 0)
+        {
+          localObject1 = locala1;
+          if (paramInt < i)
+          {
+            localObject1 = locala1;
+            locala1 = new a();
+          }
+        }
       }
-      i += 1;
     }
-    super.deactivate();
-    AppMethodBeat.o(234243);
-  }
-  
-  public final void gWb()
-  {
-    AppMethodBeat.i(234231);
-    if (this.Qgo != -1) {
-      m.b.b(this.Qgq);
-    }
-    this.Qgo = -1;
-    this.Qgp = new LinkedList();
-    AppMethodBeat.o(234231);
-  }
-  
-  final Cursor gWc()
-  {
-    AppMethodBeat.i(234251);
-    if ((this.To == null) || (this.To.isClosed())) {
-      onMove(-1, this.rIF);
-    }
-    Cursor localCursor = this.To;
-    AppMethodBeat.o(234251);
-    return localCursor;
-  }
-  
-  public final byte[] getBlob(int paramInt)
-  {
-    AppMethodBeat.i(234241);
-    byte[] arrayOfByte = gWc().getBlob(paramInt);
-    AppMethodBeat.o(234241);
-    return arrayOfByte;
-  }
-  
-  public final String[] getColumnNames()
-  {
-    AppMethodBeat.i(234242);
-    if (this.To != null)
+    catch (Throwable localThrowable1)
     {
-      String[] arrayOfString = gWc().getColumnNames();
-      AppMethodBeat.o(234242);
-      return arrayOfString;
+      Object localObject2 = localThrowable3;
+      break label281;
     }
-    AppMethodBeat.o(234242);
-    return new String[0];
+    try
+    {
+      locala1.viewType = 0;
+      locala1.XDo = Math.max(0, paramInt);
+      locala1.XDp = ((a)this.XDl.getItem(locala1.XDo));
+      localObject1 = locala1;
+    }
+    catch (Throwable localThrowable2)
+    {
+      Object localObject3 = localThrowable3;
+      break label281;
+    }
+    AppMethodBeat.o(288439);
+    return localObject1;
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(234227);
-    int m = this.Qgl.length;
-    int i = 0;
-    int k;
-    for (int j = 0; i < m; j = k)
+    AppMethodBeat.i(288442);
+    if (this.XDj != null)
     {
-      k = j;
-      if (anX(i) != null) {
-        k = j + anX(i).getCount();
-      }
-      i += 1;
+      i = this.XDj.getCount();
+      AppMethodBeat.o(288442);
+      return i;
     }
-    AppMethodBeat.o(234227);
-    return j;
+    int i = super.getCount();
+    AppMethodBeat.o(288442);
+    return i;
   }
   
-  public final double getDouble(int paramInt)
+  public final int getItemViewType(int paramInt)
   {
-    AppMethodBeat.i(234238);
-    double d = gWc().getDouble(paramInt);
-    AppMethodBeat.o(234238);
-    return d;
-  }
-  
-  public final float getFloat(int paramInt)
-  {
-    AppMethodBeat.i(234237);
-    float f = gWc().getFloat(paramInt);
-    AppMethodBeat.o(234237);
-    return f;
-  }
-  
-  public final int getInt(int paramInt)
-  {
-    AppMethodBeat.i(234235);
-    paramInt = gWc().getInt(paramInt);
-    AppMethodBeat.o(234235);
+    AppMethodBeat.i(288441);
+    a locala = awY(paramInt);
+    if (locala == null)
+    {
+      AppMethodBeat.o(288441);
+      return 0;
+    }
+    paramInt = locala.viewType;
+    AppMethodBeat.o(288441);
     return paramInt;
   }
   
-  public final long getLong(int paramInt)
+  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(234236);
-    long l = gWc().getLong(paramInt);
-    AppMethodBeat.o(234236);
-    return l;
-  }
-  
-  public final short getShort(int paramInt)
-  {
-    AppMethodBeat.i(234234);
-    short s = gWc().getShort(paramInt);
-    AppMethodBeat.o(234234);
-    return s;
-  }
-  
-  public final String getString(int paramInt)
-  {
-    AppMethodBeat.i(234233);
-    String str = gWc().getString(paramInt);
-    AppMethodBeat.o(234233);
-    return str;
-  }
-  
-  public final int getType(int paramInt)
-  {
-    AppMethodBeat.i(234239);
-    paramInt = gWc().getType(paramInt);
-    AppMethodBeat.o(234239);
-    return paramInt;
-  }
-  
-  public final boolean isNull(int paramInt)
-  {
-    AppMethodBeat.i(234240);
-    boolean bool = gWc().isNull(paramInt);
-    AppMethodBeat.o(234240);
-    return bool;
-  }
-  
-  public final boolean onMove(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(234228);
-    m.b localb = this.Qgq;
-    localb.Qgt += 1L;
-    this.rIF = paramInt2;
-    if (this.Qgl.length < 2)
+    AppMethodBeat.i(288440);
+    a locala = awY(paramInt);
+    int i = locala.viewType;
+    paramInt = 1;
+    for (;;)
     {
-      bool = anU(paramInt2);
-      AppMethodBeat.o(234228);
-      return bool;
-    }
-    boolean bool = anV(paramInt2);
-    AppMethodBeat.o(234228);
-    return bool;
-  }
-  
-  public final void registerContentObserver(ContentObserver paramContentObserver)
-  {
-    AppMethodBeat.i(234245);
-    int j = this.Qgl.length;
-    int i = 0;
-    while (i < j)
-    {
-      if (anX(i) != null) {
-        anX(i).registerContentObserver(paramContentObserver);
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(234245);
-  }
-  
-  public final void registerDataSetObserver(DataSetObserver paramDataSetObserver)
-  {
-    AppMethodBeat.i(234247);
-    int j = this.Qgl.length;
-    int i = 0;
-    while (i < j)
-    {
-      if (anX(i) != null) {
-        anX(i).registerDataSetObserver(paramDataSetObserver);
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(234247);
-  }
-  
-  public final boolean requery()
-  {
-    AppMethodBeat.i(234249);
-    int j = this.Qgl.length;
-    int i = 0;
-    while (i < j)
-    {
-      if ((anX(i) != null) && (!anX(i).requery()))
-      {
-        AppMethodBeat.o(234249);
-        return false;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(234249);
-    return true;
-  }
-  
-  public final void unregisterContentObserver(ContentObserver paramContentObserver)
-  {
-    AppMethodBeat.i(234246);
-    int j = this.Qgl.length;
-    int i = 0;
-    while (i < j)
-    {
-      if (anX(i) != null) {
-        anX(i).unregisterContentObserver(paramContentObserver);
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(234246);
-  }
-  
-  public final void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
-  {
-    AppMethodBeat.i(234248);
-    int j = this.Qgl.length;
-    int i = 0;
-    while (i < j)
-    {
-      if (anX(i) != null) {
-        anX(i).unregisterDataSetObserver(paramDataSetObserver);
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(234248);
-  }
-  
-  public static abstract class a
-  {
-    private final LinkedHashMap<String, Integer> Qgs = new LinkedHashMap();
-    
-    public final m.d anY(int paramInt)
-    {
-      Object localObject = gVZ();
-      if (localObject == null) {
-        return new m.d(paramInt);
-      }
-      if (paramInt < 0) {}
+      if (i == 1) {}
       try
       {
-        return m.d.QgB;
+        localView = this.XDk.getView(locala.XDo, paramView, paramViewGroup);
+        AppMethodBeat.o(288440);
+        return localView;
       }
-      catch (Throwable localThrowable) {}
-      ((Cursor)localObject).moveToPosition(paramInt);
-      localObject = c((Cursor)localObject, paramInt);
-      return localObject;
-      return m.d.QgB;
-    }
-    
-    protected final int b(Cursor paramCursor, String paramString)
-    {
-      Integer localInteger = (Integer)this.Qgs.get(paramString);
-      if (localInteger != null) {
-        return localInteger.intValue();
-      }
-      paramCursor = paramCursor.getColumnNames();
-      int i = 0;
-      while (i < paramCursor.length)
+      catch (ClassCastException localClassCastException)
       {
-        if (paramString.equals(paramCursor[i]))
-        {
-          this.Qgs.put(paramString, Integer.valueOf(i));
-          return i;
+        View localView;
+        if (paramView == null) {
+          break label99;
         }
-        i += 1;
+        localObject = null;
+        if (paramInt > 0) {
+          break label107;
+        }
+        AppMethodBeat.o(288440);
+        return null;
       }
-      this.Qgs.put(paramString, Integer.valueOf(-1));
-      return -1;
-    }
-    
-    protected abstract m.d c(Cursor paramCursor, int paramInt);
-    
-    protected abstract Cursor gVZ();
-  }
-  
-  public static final class c
-  {
-    public final m.d QgA;
-    public final int Qgy;
-    public final int Qgz;
-    
-    public c(int paramInt1, int paramInt2, m.d paramd)
-    {
-      this.Qgy = paramInt1;
-      this.Qgz = paramInt2;
-      this.QgA = paramd;
+      localView = paramView;
+      if (i == 0)
+      {
+        localView = this.XDl.getView(locala.XDo, paramView, paramViewGroup);
+        AppMethodBeat.o(288440);
+        return localView;
+      }
+      Object localObject;
+      label99:
+      label107:
+      paramInt -= 1;
+      paramView = localObject;
     }
   }
   
-  public static final class d
-    implements Comparable<d>
+  public final int getViewTypeCount()
   {
-    public static final d QgB;
-    public long QgC = 0L;
-    public int QgD = 0;
-    
-    static
-    {
-      AppMethodBeat.i(234221);
-      QgB = new d(0L);
-      AppMethodBeat.o(234221);
-    }
-    
-    public d() {}
-    
-    public d(long paramLong)
-    {
-      this.QgC = paramLong;
-      this.QgD = 0;
-    }
-    
-    public final int a(d paramd)
-    {
-      if (this == paramd) {}
-      long l;
-      do
-      {
-        do
-        {
-          return 0;
-          if ((paramd == null) || (QgB == paramd)) {
-            return 1;
-          }
-        } while ((this.QgD == paramd.QgD) && (this.QgC == paramd.QgC));
-        if (this.QgD != paramd.QgD) {
-          return this.QgD - paramd.QgD;
-        }
-        l = this.QgC - paramd.QgC;
-        if (l < 0L) {
-          return -1;
-        }
-      } while (l == 0L);
-      return 1;
-    }
-    
-    public final int hashCode()
-    {
-      return this.QgD << 31 | (int)this.QgC;
-    }
+    return 2;
+  }
+  
+  public static final class a
+  {
+    int XDo = 0;
+    public a XDp;
+    public az conversation;
+    int viewType = 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.m
  * JD-Core Version:    0.7.0.1
  */

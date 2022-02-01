@@ -7,7 +7,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 public final class m
   extends l
 {
-  private static int itE = -1;
+  private static int liN = -1;
   
   /* Error */
   private static Bitmap b(java.io.InputStream paramInputStream, android.graphics.Rect paramRect, android.graphics.BitmapFactory.Options paramOptions)
@@ -15,7 +15,7 @@ public final class m
     // Byte code:
     //   0: ldc 19
     //   2: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: getstatic 31	com/tencent/mm/memory/h:itz	Lcom/tencent/mm/memory/h;
+    //   5: getstatic 31	com/tencent/mm/memory/h:liI	Lcom/tencent/mm/memory/h;
     //   8: invokevirtual 35	com/tencent/mm/memory/h:acquire	()Ljava/lang/Object;
     //   11: checkcast 37	java/nio/ByteBuffer
     //   14: astore_3
@@ -73,7 +73,7 @@ public final class m
     //   111: invokestatic 89	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   114: aload_0
     //   115: ifnull +11 -> 126
-    //   118: getstatic 31	com/tencent/mm/memory/h:itz	Lcom/tencent/mm/memory/h;
+    //   118: getstatic 31	com/tencent/mm/memory/h:liI	Lcom/tencent/mm/memory/h;
     //   121: aload_0
     //   122: invokevirtual 93	com/tencent/mm/memory/h:release	(Ljava/lang/Object;)Z
     //   125: pop
@@ -109,10 +109,10 @@ public final class m
     //   182: aload 4
     //   184: invokestatic 119	com/tencent/mm/sdk/platformtools/BitmapUtil:bindlowMemeryOption	(Landroid/graphics/BitmapFactory$Options;)V
     //   187: aload_0
-    //   188: invokestatic 123	com/tencent/mm/memory/m:u	(Ljava/io/InputStream;)Ljava/io/InputStream;
+    //   188: invokestatic 123	com/tencent/mm/memory/m:s	(Ljava/io/InputStream;)Ljava/io/InputStream;
     //   191: astore_0
     //   192: aload_0
-    //   193: invokestatic 127	com/tencent/mm/memory/m:v	(Ljava/io/InputStream;)V
+    //   193: invokestatic 127	com/tencent/mm/memory/m:t	(Ljava/io/InputStream;)V
     //   196: aload_0
     //   197: aload_1
     //   198: aload 4
@@ -120,7 +120,7 @@ public final class m
     //   203: astore_0
     //   204: aload_3
     //   205: ifnull +11 -> 216
-    //   208: getstatic 31	com/tencent/mm/memory/h:itz	Lcom/tencent/mm/memory/h;
+    //   208: getstatic 31	com/tencent/mm/memory/h:liI	Lcom/tencent/mm/memory/h;
     //   211: aload_3
     //   212: invokevirtual 93	com/tencent/mm/memory/h:release	(Ljava/lang/Object;)Z
     //   215: pop
@@ -133,7 +133,7 @@ public final class m
     //   225: astore_0
     //   226: aload_0
     //   227: ifnull +11 -> 238
-    //   230: getstatic 31	com/tencent/mm/memory/h:itz	Lcom/tencent/mm/memory/h;
+    //   230: getstatic 31	com/tencent/mm/memory/h:liI	Lcom/tencent/mm/memory/h;
     //   233: aload_0
     //   234: invokevirtual 93	com/tencent/mm/memory/h:release	(Ljava/lang/Object;)Z
     //   237: pop
@@ -194,10 +194,10 @@ public final class m
     //   22: istore 4
     //   24: iload_3
     //   25: istore 5
-    //   27: getstatic 143	com/tencent/mm/memory/g:ity	Lcom/tencent/mm/memory/g;
+    //   27: getstatic 143	com/tencent/mm/memory/g:liH	Lcom/tencent/mm/memory/g;
     //   30: iload_3
     //   31: invokestatic 149	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   34: invokevirtual 153	com/tencent/mm/memory/g:d	(Ljava/lang/Integer;)Ljava/lang/Object;
+    //   34: invokevirtual 153	com/tencent/mm/memory/g:g	(Ljava/lang/Integer;)Ljava/lang/Object;
     //   37: checkcast 154	[B
     //   40: astore 6
     //   42: aload 6
@@ -240,9 +240,9 @@ public final class m
     //   107: ifle +16 -> 123
     //   110: aload 6
     //   112: ifnull +11 -> 123
-    //   115: getstatic 143	com/tencent/mm/memory/g:ity	Lcom/tencent/mm/memory/g;
+    //   115: getstatic 143	com/tencent/mm/memory/g:liH	Lcom/tencent/mm/memory/g;
     //   118: aload 6
-    //   120: invokevirtual 176	com/tencent/mm/memory/g:k	([B)V
+    //   120: invokevirtual 176	com/tencent/mm/memory/g:as	([B)V
     //   123: ldc 131
     //   125: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   128: aload_1
@@ -289,9 +289,9 @@ public final class m
     //   197: ifle -44 -> 153
     //   200: aload 6
     //   202: ifnull -49 -> 153
-    //   205: getstatic 143	com/tencent/mm/memory/g:ity	Lcom/tencent/mm/memory/g;
+    //   205: getstatic 143	com/tencent/mm/memory/g:liH	Lcom/tencent/mm/memory/g;
     //   208: aload 6
-    //   210: invokevirtual 176	com/tencent/mm/memory/g:k	([B)V
+    //   210: invokevirtual 176	com/tencent/mm/memory/g:as	([B)V
     //   213: goto -60 -> 153
     //   216: astore_1
     //   217: aconst_null
@@ -304,9 +304,9 @@ public final class m
     //   228: ifle +16 -> 244
     //   231: aload 7
     //   233: ifnull +11 -> 244
-    //   236: getstatic 143	com/tencent/mm/memory/g:ity	Lcom/tencent/mm/memory/g;
+    //   236: getstatic 143	com/tencent/mm/memory/g:liH	Lcom/tencent/mm/memory/g;
     //   239: aload 7
-    //   241: invokevirtual 176	com/tencent/mm/memory/g:k	([B)V
+    //   241: invokevirtual 176	com/tencent/mm/memory/g:as	([B)V
     //   244: ldc 131
     //   246: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   249: aload_1
@@ -360,7 +360,7 @@ public final class m
     //   0: ldc 186
     //   2: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
-    //   6: invokestatic 192	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   6: invokestatic 192	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
     //   9: astore_3
     //   10: aload_3
     //   11: astore_1
@@ -431,7 +431,7 @@ public final class m
     //   0: ldc 198
     //   2: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
-    //   6: invokestatic 192	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   6: invokestatic 192	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
     //   9: astore 4
     //   11: aload 4
     //   13: astore_1
@@ -496,7 +496,7 @@ public final class m
     //   14	22	89	java/lang/Exception
   }
   
-  public final void x(Bitmap paramBitmap)
+  public final void s(Bitmap paramBitmap)
   {
     AppMethodBeat.i(156436);
     if (paramBitmap != null) {}
@@ -519,7 +519,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.memory.m
  * JD-Core Version:    0.7.0.1
  */

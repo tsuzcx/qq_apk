@@ -17,15 +17,15 @@ public abstract interface d
   
   public abstract void a(File paramFile, boolean paramBoolean, long paramLong);
   
-  public abstract void aE(Intent paramIntent);
+  public abstract void aC(Intent paramIntent);
   
   public abstract void b(File paramFile, String paramString1, String paramString2);
   
-  public abstract void e(File paramFile, int paramInt);
+  public abstract void g(File paramFile, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.lib.d.d
  * JD-Core Version:    0.7.0.1
  */

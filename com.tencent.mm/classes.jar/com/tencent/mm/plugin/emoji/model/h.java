@@ -1,93 +1,116 @@
 package com.tencent.mm.plugin.emoji.model;
 
-import android.content.Context;
-import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.gr;
-import com.tencent.mm.sdk.event.EventCenter;
-import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.emoji.b.b.ae;
+import com.tencent.mm.emoji.b.b.af;
+import com.tencent.mm.emoji.b.b.m;
+import com.tencent.mm.emoji.b.b.u;
+import com.tencent.mm.emoji.b.b.y;
+import com.tencent.mm.emoji.b.k;
+import com.tencent.mm.emoji.sync.g;
+import com.tencent.mm.emoji.sync.g.b;
+import com.tencent.mm.emoji.sync.j;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.storage.emotion.f;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.s;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import kotlin.a.v;
+import kotlin.g.b.p;
+import kotlin.l;
 
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/emoji/model/EmojiCustomItemGroup;", "Lcom/tencent/mm/emoji/model/panel/IPanelItemGroup;", "hasEntrance", "", "(Z)V", "TAG", "", "contentList", "", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "dataCount", "", "getDataCount", "getGroupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "getItemList", "", "plugin-emoji_release"})
 public final class h
+  implements y
 {
-  private d.a rbA;
-  Set<String> rby;
-  IListener<gr> rbz;
+  private final String TAG;
+  private final List<ae> lYY;
+  private int uEg;
   
-  public h()
+  public h(boolean paramBoolean)
   {
-    AppMethodBeat.i(108591);
-    this.rbz = new IListener() {};
-    this.rbA = new d.a()
+    AppMethodBeat.i(256434);
+    this.TAG = "MicroMsg.EmojiCustomItem";
+    this.lYY = ((List)new LinkedList());
+    Object localObject1 = k.aBH().aBK();
+    if (localObject1 != null) {}
+    Object localObject2;
+    int j;
+    int k;
+    int i;
+    for (localObject1 = (List)localObject1;; localObject1 = (List)v.aaAd)
     {
-      public final void a(boolean paramAnonymousBoolean, EmojiInfo paramAnonymousEmojiInfo)
-      {
-        AppMethodBeat.i(108590);
-        if ((paramAnonymousEmojiInfo != null) && (paramAnonymousBoolean) && (!Util.isNullOrNil(paramAnonymousEmojiInfo.field_md5)) && (h.this.rby.remove(paramAnonymousEmojiInfo.getMd5())))
-        {
-          Log.i("MicroMsg.FTS.FTSEmojiLogic", "emojiServiceCallback onDownload %s", new Object[] { paramAnonymousEmojiInfo.getMd5() });
-          gr localgr = new gr();
-          localgr.dKH.dDe = 2;
-          localgr.dKH.dKJ = paramAnonymousEmojiInfo.field_designerID;
-          localgr.dKH.name = paramAnonymousEmojiInfo.field_name;
-          localgr.dKH.aeskey = paramAnonymousEmojiInfo.field_aeskey;
-          localgr.dKH.dKK = paramAnonymousEmojiInfo.field_encrypturl;
-          localgr.dKH.thumbUrl = paramAnonymousEmojiInfo.field_thumbUrl;
-          localgr.dKH.md5 = paramAnonymousEmojiInfo.field_md5;
-          localgr.dKH.productId = paramAnonymousEmojiInfo.field_groupId;
-          Object localObject = paramAnonymousEmojiInfo.hRM();
-          EmojiInfo localEmojiInfo = k.getEmojiStorageMgr().OpN.blk(paramAnonymousEmojiInfo.getMd5());
-          if ((localEmojiInfo != null) && ((localEmojiInfo.field_reserved4 & EmojiInfo.UuK) == EmojiInfo.UuK))
-          {
-            if (MMApplicationContext.getContext().getExternalCacheDir() == null)
-            {
-              AppMethodBeat.o(108590);
-              return;
-            }
-            paramAnonymousEmojiInfo = aa.z(new o(MMApplicationContext.getContext().getExternalCacheDir(), com.tencent.mm.b.g.getMessageDigest(paramAnonymousEmojiInfo.getMd5().getBytes())).her());
-            if ((s.YS((String)localObject)) && (!s.YS(paramAnonymousEmojiInfo)))
-            {
-              localObject = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().a(localEmojiInfo);
-              if (localObject == null) {
-                break label315;
-              }
-              s.e(paramAnonymousEmojiInfo, (byte[])localObject, localObject.length);
-            }
-          }
-          for (localgr.dKI.path = paramAnonymousEmojiInfo;; localgr.dKI.path = ((String)localObject))
-          {
-            EventCenter.instance.asyncPublish(localgr, Looper.getMainLooper());
-            AppMethodBeat.o(108590);
-            return;
-            label315:
-            Log.w("MicroMsg.FTS.FTSEmojiLogic", "onDownload: decrypt failed");
-            break;
-          }
-        }
-        Log.i("MicroMsg.FTS.FTSEmojiLogic", "somethings error.");
-        AppMethodBeat.o(108590);
+      this.uEg = ((List)localObject1).size();
+      if (paramBoolean) {
+        this.lYY.add(new m(0));
       }
-    };
-    this.rby = Collections.synchronizedSet(new HashSet());
-    k.cGd().rbg = this.rbA;
-    this.rbz.alive();
-    AppMethodBeat.o(108591);
+      localObject2 = g.jOs;
+      j = g.b.aDr().aDj();
+      localObject2 = g.jOs;
+      k = g.b.aDr().aDk();
+      Log.i(this.TAG, "sync: " + j + ", " + k);
+      localObject1 = ((List)localObject1).iterator();
+      i = 0;
+      for (;;)
+      {
+        if (!((Iterator)localObject1).hasNext()) {
+          break label295;
+        }
+        localObject2 = (EmojiInfo)((Iterator)localObject1).next();
+        if (((EmojiInfo)localObject2).field_catalog != EmojiGroupInfo.YCv) {
+          break;
+        }
+        this.uEg -= 1;
+      }
+    }
+    if (i < k)
+    {
+      List localList;
+      if (i >= j)
+      {
+        localList = this.lYY;
+        p.j(localObject2, "info");
+        localList.add(new com.tencent.mm.emoji.b.b.h((EmojiInfo)localObject2, 3));
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        localList = this.lYY;
+        p.j(localObject2, "info");
+        localList.add(new com.tencent.mm.emoji.b.b.h((EmojiInfo)localObject2, 0));
+      }
+    }
+    label295:
+    localObject1 = g.jOs;
+    if (g.b.aDr().aDl()) {
+      this.lYY.add(new u(0));
+    }
+    AppMethodBeat.o(256434);
+  }
+  
+  public final EmojiGroupInfo aCi()
+  {
+    AppMethodBeat.i(256425);
+    EmojiGroupInfo localEmojiGroupInfo = af.aCB();
+    AppMethodBeat.o(256425);
+    return localEmojiGroupInfo;
+  }
+  
+  public final List<ae> aCj()
+  {
+    return this.lYY;
+  }
+  
+  public final int getDataCount()
+  {
+    return this.uEg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.model.h
  * JD-Core Version:    0.7.0.1
  */

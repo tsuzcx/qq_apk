@@ -1,49 +1,70 @@
 package com.tencent.mm.plugin.finder.feed;
 
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.presenter.base.a;
-import com.tencent.mm.protocal.protobuf.atn;
-import com.tencent.mm.view.RefreshLoadMoreLayout.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
+import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
+import com.tencent.mm.plugin.finder.storage.ak;
+import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.view.recyclerview.f;
-import com.tencent.mm.view.recyclerview.g.b;
-import java.util.List;
+import java.util.ArrayList;
+import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/FinderTimelineContract$Presenter;", "Lcom/tencent/mm/plugin/finder/presenter/base/IPresenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderTimelineContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedContract;", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "checkAutoFlingToRefresh", "", "isHard", "", "isWithRefresh", "getFinderContextId", "", "getHeaderInfo", "", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "getTabType", "", "loadMoreData", "onAutoToLoadMore", "onBackPressed", "onLoadMoreEnd", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "onRefreshEnd", "onUIPause", "onUIResume", "onUserVisibleFocused", "onUserVisibleUnFocused", "refreshMsgNotify", "requestInsert", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "centerFeed", "keepUnreadSize", "hasReadFeeds", "isPrefetch", "relatedEntranceInfo", "Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedEntranceInfo;", "requestRefresh", "plugin-finder_release"})
-public abstract interface ai$a
-  extends i, a<ai.b>
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/FinderRelatedFeedUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "scene", "", "commentScene", "loader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "(Lcom/tencent/mm/ui/MMActivity;IILcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "initViewCallback", "", "loadInitData", "loadMoreData", "refreshRV", "data", "Landroid/content/Intent;", "requestRefresh", "plugin-finder_release"})
+public final class ai$a
+  extends c.a
 {
-  public abstract void M(boolean paramBoolean1, boolean paramBoolean2);
+  public ai$a(MMActivity paramMMActivity, BaseFinderFeedLoader paramBaseFinderFeedLoader)
+  {
+    super(paramMMActivity, paramBaseFinderFeedLoader);
+    AppMethodBeat.i(244550);
+    AppMethodBeat.o(244550);
+  }
   
-  public abstract void a(BaseFinderFeed paramBaseFinderFeed1, BaseFinderFeed paramBaseFinderFeed2, int paramInt, List<? extends BaseFinderFeed> paramList, boolean paramBoolean, atn paramatn);
+  public final void byN()
+  {
+    AppMethodBeat.i(244543);
+    this.xnX.requestLoadMore();
+    AppMethodBeat.o(244543);
+  }
   
-  public abstract void a(RefreshLoadMoreLayout.c<Object> paramc);
+  public final void dsF()
+  {
+    AppMethodBeat.i(244544);
+    BaseFeedLoader.requestInit$default(this.xnX, false, 1, null);
+    AppMethodBeat.o(244544);
+  }
   
-  public abstract void boE();
+  public final void dsr()
+  {
+    AppMethodBeat.i(244540);
+    c.b localb = this.xvU;
+    if (localb != null)
+    {
+      localb.ab((ArrayList)this.xnX.getDataListJustForAdapter());
+      AppMethodBeat.o(244540);
+      return;
+    }
+    AppMethodBeat.o(244540);
+  }
   
-  public abstract String cND();
+  public final f dsu()
+  {
+    AppMethodBeat.i(244547);
+    Object localObject = this.xvU;
+    if (localObject != null) {}
+    for (localObject = ((c.b)localObject).dsI();; localObject = null)
+    {
+      if (localObject == null) {
+        p.iCn();
+      }
+      localObject = ((ak)localObject).dtg();
+      AppMethodBeat.o(244547);
+      return localObject;
+    }
+  }
   
-  public abstract void dcO();
-  
-  public abstract f dce();
-  
-  public abstract List<g.b> getHeaderInfo();
-  
-  public abstract int getTabType();
-  
-  public abstract boolean onBackPressed();
-  
-  public abstract void onRefreshEnd(RefreshLoadMoreLayout.c<Object> paramc);
-  
-  public abstract void onUIPause();
-  
-  public abstract void onUIResume();
-  
-  public abstract void onUserVisibleFocused();
-  
-  public abstract void onUserVisibleUnFocused();
-  
-  public abstract void requestRefresh();
+  public final void requestRefresh() {}
 }
 
 

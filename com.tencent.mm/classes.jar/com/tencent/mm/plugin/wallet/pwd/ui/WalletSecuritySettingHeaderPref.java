@@ -7,31 +7,33 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class WalletSecuritySettingHeaderPref
   extends Preference
 {
-  private TextView HKS;
-  TextView HKT;
-  String HKU;
-  String HKV;
-  View.OnClickListener HKW;
-  View.OnClickListener HKX;
-  private MMActivity gte;
-  ImageView hTd;
-  String sUf;
-  private TextView trw;
+  private TextView OCN;
+  TextView OCO;
+  String OCP;
+  String OCQ;
+  View.OnClickListener OCR;
+  View.OnClickListener OCS;
+  private MMActivity iXq;
+  ImageView kHA;
+  String wAb;
+  private TextView wXS;
   
   public WalletSecuritySettingHeaderPref(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
     AppMethodBeat.i(69786);
-    this.gte = ((MMActivity)paramContext);
+    this.iXq = ((MMActivity)paramContext);
     AppMethodBeat.o(69786);
   }
   
@@ -39,10 +41,10 @@ public class WalletSecuritySettingHeaderPref
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(69787);
-    this.HKW = null;
-    this.HKX = null;
-    this.gte = ((MMActivity)paramContext);
-    setLayoutResource(2131497003);
+    this.OCR = null;
+    this.OCS = null;
+    this.iXq = ((MMActivity)paramContext);
+    setLayoutResource(a.g.wallet_security_header_pref);
     AppMethodBeat.o(69787);
   }
   
@@ -51,17 +53,17 @@ public class WalletSecuritySettingHeaderPref
     AppMethodBeat.i(69788);
     super.onBindView(paramView);
     Log.v("MicroMsg.WalletSecuritySettingHeaderPref", "alvinluo onBindView");
-    this.trw = ((TextView)paramView.findViewById(2131304321));
-    ao.a(this.trw.getPaint(), 0.8F);
-    this.HKS = ((TextView)paramView.findViewById(2131299495));
-    this.HKT = ((TextView)paramView.findViewById(2131299571));
-    this.hTd = ((ImageView)paramView.findViewById(2131310292));
+    this.wXS = ((TextView)paramView.findViewById(a.f.main_content));
+    ar.a(this.wXS.getPaint(), 0.8F);
+    this.OCN = ((TextView)paramView.findViewById(a.f.desc));
+    this.OCO = ((TextView)paramView.findViewById(a.f.details_text));
+    this.kHA = ((ImageView)paramView.findViewById(a.f.wallet_security_close_btn));
     updateView();
-    if ((this.HKT != null) && (this.HKW != null)) {
-      this.HKT.setOnClickListener(this.HKW);
+    if ((this.OCO != null) && (this.OCR != null)) {
+      this.OCO.setOnClickListener(this.OCR);
     }
-    if ((this.hTd != null) && (this.HKX != null)) {
-      this.hTd.setOnClickListener(this.HKX);
+    if ((this.kHA != null) && (this.OCS != null)) {
+      this.kHA.setOnClickListener(this.OCS);
     }
     AppMethodBeat.o(69788);
   }
@@ -69,23 +71,23 @@ public class WalletSecuritySettingHeaderPref
   final void updateView()
   {
     AppMethodBeat.i(69789);
-    if ((!Util.isNullOrNil(this.sUf)) && (this.trw != null))
+    if ((!Util.isNullOrNil(this.wAb)) && (this.wXS != null))
     {
-      this.trw.setText(this.sUf);
-      this.trw.setVisibility(0);
+      this.wXS.setText(this.wAb);
+      this.wXS.setVisibility(0);
     }
-    if ((!Util.isNullOrNil(this.HKU)) && (this.HKS != null))
+    if ((!Util.isNullOrNil(this.OCP)) && (this.OCN != null))
     {
-      this.HKS.setText(this.HKU);
-      this.HKS.setVisibility(0);
+      this.OCN.setText(this.OCP);
+      this.OCN.setVisibility(0);
     }
-    if ((!Util.isNullOrNil(this.HKV)) && (this.HKT != null))
+    if ((!Util.isNullOrNil(this.OCQ)) && (this.OCO != null))
     {
-      this.HKT.setText(this.HKV);
-      this.HKT.setVisibility(0);
+      this.OCO.setText(this.OCQ);
+      this.OCO.setVisibility(0);
     }
-    if ((Util.isNullOrNil(this.HKV)) && (this.HKT != null)) {
-      this.HKT.setVisibility(8);
+    if ((Util.isNullOrNil(this.OCQ)) && (this.OCO != null)) {
+      this.OCO.setVisibility(8);
     }
     AppMethodBeat.o(69789);
   }

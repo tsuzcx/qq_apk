@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class LuggageNativeViewJni
 {
   private static String TAG;
-  private long cyb = -1L;
+  private long cwE = -1L;
   
   static
   {

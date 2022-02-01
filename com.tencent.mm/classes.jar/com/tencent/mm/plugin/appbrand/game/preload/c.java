@@ -6,45 +6,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.a.d;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
-import com.tencent.mm.plugin.appbrand.appstorage.q;
-import com.tencent.mm.plugin.appbrand.jsapi.bc;
-import com.tencent.mm.plugin.appbrand.jsapi.k;
-import com.tencent.mm.plugin.appbrand.jsapi.n;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.appstorage.r;
+import com.tencent.mm.plugin.appbrand.jsapi.az;
+import com.tencent.mm.plugin.appbrand.jsapi.e.c;
+import com.tencent.mm.plugin.appbrand.jsapi.j;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.m.i;
 import com.tencent.mm.plugin.appbrand.m.o;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.Map;
 import junit.framework.Assert;
 
 public final class c
-  implements k
+  implements j
 {
-  private AppBrandRuntime kEc;
-  public final LinkedHashSet<com.tencent.mm.plugin.appbrand.jsapi.m> ltP;
+  private AppBrandRuntime nxs;
+  public final LinkedHashSet<com.tencent.mm.plugin.appbrand.jsapi.l> ooP;
   
   public c(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(45278);
-    this.kEc = paramAppBrandRuntime;
-    this.ltP = new LinkedHashSet();
+    this.nxs = paramAppBrandRuntime;
+    this.ooP = new LinkedHashSet();
     AppMethodBeat.o(45278);
   }
   
-  public final <T extends com.tencent.luggage.a.b> T M(Class<T> paramClass)
-  {
-    return null;
-  }
-  
-  public final i Oo()
-  {
-    return null;
-  }
-  
-  public final Map<String, p> Op()
+  public final <T extends com.tencent.luggage.a.b> T K(Class<T> paramClass)
   {
     return null;
   }
@@ -61,22 +50,25 @@ public final class c
     AppMethodBeat.o(45281);
   }
   
-  public final void a(bc parambc) {}
+  public final void a(az paramaz) {}
   
-  public final void a(bc parambc, o paramo) {}
+  public final void a(az paramaz, int[] paramArrayOfInt) {}
   
-  public final void a(bc parambc, int[] paramArrayOfInt) {}
-  
-  public final boolean a(n paramn)
+  public final boolean a(m paramm)
   {
     return false;
   }
   
-  public final <T extends com.tencent.mm.plugin.appbrand.jsapi.m> T av(Class<T> paramClass)
+  public final boolean a(String paramString, o paramo)
+  {
+    return false;
+  }
+  
+  public final <T extends com.tencent.mm.plugin.appbrand.jsapi.l> T au(Class<T> paramClass)
   {
     AppMethodBeat.i(45280);
     Object localObject2 = null;
-    Iterator localIterator = this.ltP.iterator();
+    Iterator localIterator = this.ooP.iterator();
     Object localObject1;
     do
     {
@@ -84,13 +76,13 @@ public final class c
       if (!localIterator.hasNext()) {
         break;
       }
-      localObject1 = (com.tencent.mm.plugin.appbrand.jsapi.m)localIterator.next();
+      localObject1 = (com.tencent.mm.plugin.appbrand.jsapi.l)localIterator.next();
     } while (!paramClass.isInstance(localObject1));
     localObject2 = localObject1;
     if (localObject1 == null) {}
     try
     {
-      localObject2 = (com.tencent.mm.plugin.appbrand.jsapi.m)paramClass.newInstance();
+      localObject2 = (com.tencent.mm.plugin.appbrand.jsapi.l)paramClass.newInstance();
       if (localObject2 != null)
       {
         bool = true;
@@ -111,40 +103,37 @@ public final class c
     }
   }
   
-  public final <T extends n> T aw(Class<T> paramClass)
+  public final <T extends m> T av(Class<T> paramClass)
   {
     return null;
   }
   
   public final void b(String paramString1, String paramString2, int[] paramArrayOfInt) {}
   
-  public final ICommLibReader bqZ()
+  public final ICommLibReader bBP()
   {
     return null;
   }
   
-  public final boolean bsV()
-  {
-    return false;
-  }
+  public final void c(String paramString1, String paramString2, int paramInt) {}
   
-  public final void co(String paramString1, String paramString2) {}
+  public final void ct(String paramString1, String paramString2) {}
   
   public final String getAppId()
   {
-    return this.kEc.mAppId;
+    return this.nxs.mAppId;
   }
   
   public final com.tencent.mm.plugin.appbrand.a.b getAppState()
   {
     AppMethodBeat.i(45279);
-    if (this.kEc == null)
+    if (this.nxs == null)
     {
-      localb = com.tencent.mm.plugin.appbrand.a.b.kQK;
+      localb = com.tencent.mm.plugin.appbrand.a.b.nKS;
       AppMethodBeat.o(45279);
       return localb;
     }
-    com.tencent.mm.plugin.appbrand.a.b localb = this.kEc.kAH.kQM.bwY();
+    com.tencent.mm.plugin.appbrand.a.b localb = this.nxs.ntR.nKU.bIg();
     AppMethodBeat.o(45279);
     return localb;
   }
@@ -164,12 +153,17 @@ public final class c
     return null;
   }
   
-  public final com.tencent.mm.plugin.appbrand.widget.dialog.m getDialogContainer()
+  public final com.tencent.mm.plugin.appbrand.widget.dialog.l getDialogContainer()
   {
     return null;
   }
   
-  public final q getFileSystem()
+  public final r getFileSystem()
+  {
+    return null;
+  }
+  
+  public final e.c getInterceptor()
   {
     return null;
   }
@@ -181,17 +175,15 @@ public final class c
   
   public final AppBrandRuntime getRuntime()
   {
-    return this.kEc;
+    return this.nxs;
   }
   
-  public final void i(int paramInt, String paramString) {}
-  
-  public final void i(Runnable paramRunnable, long paramLong)
+  public final void h(Runnable paramRunnable, long paramLong)
   {
-    AppMethodBeat.i(226632);
+    AppMethodBeat.i(272960);
     if (paramRunnable == null)
     {
-      AppMethodBeat.o(226632);
+      AppMethodBeat.o(272960);
       return;
     }
     long l = paramLong;
@@ -199,17 +191,19 @@ public final class c
       l = 0L;
     }
     MMHandlerThread.postToMainThreadDelayed(paramRunnable, l);
-    AppMethodBeat.o(226632);
+    AppMethodBeat.o(272960);
   }
   
   public final boolean isRunning()
   {
     return false;
   }
+  
+  public final void j(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.preload.c
  * JD-Core Version:    0.7.0.1
  */

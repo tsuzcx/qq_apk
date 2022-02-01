@@ -6,10 +6,12 @@ import android.os.Handler;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import com.tencent.mars.ilink.xlog.Log;
+import com.tencent.mm.hellhoundlib.b.c;
 
 public class WakerLock
 {
   private static final String TAG = "MicroMsg.WakerLock";
+  private byte _hellAccFlag_;
   private Handler mHandler = null;
   private Runnable mReleaser = new Runnable()
   {
@@ -60,12 +62,21 @@ public class WakerLock
     if (paramLong == -1L) {}
     try
     {
-      this.wakeLock.acquire();
+      localWakeLock = this.wakeLock;
+      com.tencent.mm.hellhoundlib.a.a.b(localWakeLock, "com/tencent/mars/ilink/comm/WakerLock", "lock", "(J)V", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "()V");
+      localWakeLock.acquire();
+      com.tencent.mm.hellhoundlib.a.a.c(localWakeLock, "com/tencent/mars/ilink/comm/WakerLock", "lock", "(J)V", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "()V");
       Log.w("MicroMsg.WakerLock", "acquire wakelock without timeout, msg:");
       return;
     }
     catch (Exception localException) {}
-    this.wakeLock.acquire(paramLong);
+    PowerManager.WakeLock localWakeLock = this.wakeLock;
+    com.tencent.mm.hellhoundlib.b.a locala = c.a(paramLong, new com.tencent.mm.hellhoundlib.b.a());
+    com.tencent.mm.hellhoundlib.a.a.b(localWakeLock, locala.aFh(), "com/tencent/mars/ilink/comm/WakerLock", "lock", "(J)V", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "(J)V");
+    paramLong = ((Long)c.a(locala).sf(0)).longValue();
+    c.aFj();
+    localWakeLock.acquire(paramLong);
+    com.tencent.mm.hellhoundlib.a.a.c(localWakeLock, "com/tencent/mars/ilink/comm/WakerLock", "lock", "(J)V", "android/os/PowerManager$WakeLock_EXEC_", "acquire", "(J)V");
     return;
   }
   
@@ -74,8 +85,12 @@ public class WakerLock
     try
     {
       this.mHandler.removeCallbacks(this.mReleaser);
-      if (this.wakeLock.isHeld()) {
-        this.wakeLock.release();
+      if (this.wakeLock.isHeld())
+      {
+        PowerManager.WakeLock localWakeLock = this.wakeLock;
+        com.tencent.mm.hellhoundlib.a.a.b(localWakeLock, "com/tencent/mars/ilink/comm/WakerLock", "unLock", "()V", "android/os/PowerManager$WakeLock_EXEC_", "release", "()V");
+        localWakeLock.release();
+        com.tencent.mm.hellhoundlib.a.a.c(localWakeLock, "com/tencent/mars/ilink/comm/WakerLock", "unLock", "()V", "android/os/PowerManager$WakeLock_EXEC_", "release", "()V");
       }
       return;
     }
@@ -84,7 +99,7 @@ public class WakerLock
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mars.ilink.comm.WakerLock
  * JD-Core Version:    0.7.0.1
  */

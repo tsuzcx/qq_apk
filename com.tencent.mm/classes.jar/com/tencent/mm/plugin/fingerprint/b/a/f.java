@@ -2,19 +2,19 @@ package com.tencent.mm.plugin.fingerprint.b.a;
 
 public final class f
 {
-  public String dDL;
+  public String ByB;
+  public String fwv;
   public int scene;
-  public String wFE;
   
   public f(String paramString)
   {
-    this.wFE = paramString;
+    this.ByB = paramString;
     this.scene = 1;
   }
   
   public f(String paramString, byte paramByte)
   {
-    this.dDL = paramString;
+    this.fwv = paramString;
   }
 }
 

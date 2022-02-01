@@ -9,7 +9,7 @@ import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.TXCStatus;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 import com.tencent.liteav.network.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.text.SimpleDateFormat;
@@ -22,10 +22,38 @@ import java.util.Set;
 
 public class e
 {
-  private static HashMap<String, a> A;
   private static String a;
-  private String B;
-  private String C;
+  private static HashMap<String, a> ac;
+  private long A;
+  private int B;
+  private long C;
+  private long D;
+  private long E;
+  private long F;
+  private long G;
+  private long H;
+  private long I;
+  private long J;
+  private long K;
+  private long L;
+  private long M;
+  private long N;
+  private long O;
+  private long P;
+  private long Q;
+  private long R;
+  private long S;
+  private long T;
+  private long U;
+  private long V;
+  private long W;
+  private long X;
+  private long Y;
+  private long Z;
+  private long aa;
+  private String ab;
+  private String ad;
+  private String ae;
   private HashMap b;
   private String c;
   private int d;
@@ -38,61 +66,90 @@ public class e
   private long k;
   private long l;
   private long m;
-  private boolean n;
+  private long n;
   private long o;
-  private int p;
+  private boolean p;
   private long q;
-  private long r;
-  private boolean s;
+  private int r;
+  private long s;
   private long t;
-  private long u;
+  private boolean u;
   private long v;
   private long w;
   private long x;
-  private int y;
-  private String z;
+  private long y;
+  private long z;
   
   static
   {
-    AppMethodBeat.i(222371);
+    AppMethodBeat.i(244745);
     a = "TXCDataReport";
-    A = new HashMap();
-    AppMethodBeat.o(222371);
+    ac = new HashMap();
+    AppMethodBeat.o(244745);
   }
   
   public e(Context paramContext)
   {
     AppMethodBeat.i(16559);
-    this.s = false;
+    this.s = 0L;
     this.t = 0L;
-    this.u = 0L;
+    this.u = false;
     this.v = 0L;
     this.w = 0L;
     this.x = 0L;
-    this.y = 0;
-    this.B = "";
-    this.C = "";
+    this.y = 0L;
+    this.z = 0L;
+    this.A = 0L;
+    this.B = 0;
+    this.C = 0L;
+    this.D = 0L;
+    this.E = 0L;
+    this.F = 0L;
+    this.G = 0L;
+    this.H = 0L;
+    this.I = 0L;
+    this.J = 0L;
+    this.K = 0L;
+    this.L = 0L;
+    this.M = 0L;
+    this.N = 0L;
+    this.O = 0L;
+    this.P = 0L;
+    this.Q = 0L;
+    this.R = 0L;
+    this.S = 0L;
+    this.T = 0L;
+    this.U = 0L;
+    this.V = 0L;
+    this.W = 0L;
+    this.X = 0L;
+    this.Y = 0L;
+    this.Z = 0L;
+    this.aa = 0L;
+    this.ad = "";
+    this.ae = "";
     this.b = new HashMap(100);
     this.h = paramContext.getApplicationContext();
     this.i = TXCCommonUtil.getAppVersion();
-    this.p = 5000;
-    this.x = 0L;
+    this.r = 5000;
+    this.z = 0L;
+    this.D = 0L;
     AppMethodBeat.o(16559);
   }
   
   private void a(int paramInt, String paramString)
   {
     AppMethodBeat.i(16597);
-    String str2 = TXCStatus.b(this.B, 7121);
+    String str2 = TXCStatus.b(this.ad, 7121);
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
       str1 = paramString;
     }
     this.b.put("str_session_id", str1);
-    this.b.put("u32_server_ip", TXCStatus.b(this.B, 7110));
-    if (this.s)
+    this.b.put("u32_server_ip", TXCStatus.b(this.ad, 7110));
+    if (this.u)
     {
-      this.b.put("str_stream_url", TXCStatus.b(this.B, 7116));
+      this.b.put("str_stream_url", TXCStatus.b(this.ad, 7116));
       f((String)this.b.get("str_stream_url"));
     }
     for (;;)
@@ -108,7 +165,7 @@ public class e
       TXCDRApi.txSetEventValue(paramString, paramInt, "str_stream_url", (String)this.b.get("str_stream_url"));
       AppMethodBeat.o(16597);
       return;
-      this.b.put("str_stream_url", this.c);
+      this.b.put("str_stream_url", TXCStatus.b(this.ad, 7119));
     }
   }
   
@@ -120,85 +177,85 @@ public class e
     localTXCDRExtInfo.report_common = false;
     localTXCDRExtInfo.report_status = false;
     String str = (String)this.b.get("token");
-    TXCDRApi.InitEvent(this.h, str, paramInt, com.tencent.liteav.basic.datareport.a.am, localTXCDRExtInfo);
+    TXCDRApi.InitEvent(this.h, str, paramInt, com.tencent.liteav.basic.datareport.a.an, localTXCDRExtInfo);
     a(paramInt, str);
     TXCDRApi.txSetEventIntValue(str, paramInt, "u64_timestamp", ((Long)this.b.get("u64_timestamp")).longValue());
-    long l7 = TXCStatus.a(this.B, 7107);
-    long l2 = TXCStatus.a(this.B, 7108);
+    long l6 = TXCStatus.a(this.ad, 7107);
+    long l2 = TXCStatus.a(this.ad, 7108);
     long l1 = l2;
     if (l2 != -1L) {
-      l1 = l2 - l7;
+      l1 = l2 - l6;
     }
-    label205:
+    label209:
     int i1;
-    label267:
+    label275:
     long l4;
-    label304:
+    label313:
     long l5;
-    label341:
-    long l6;
+    label353:
+    long l7;
     if (l1 < 0L)
     {
       l2 = -1L;
       TXCDRApi.txSetEventIntValue(str, paramInt, "u32_dns_time", l2);
-      l3 = TXCStatus.a(this.B, 7109);
+      l3 = TXCStatus.a(this.ad, 7109);
       l2 = l3;
       if (l3 != -1L) {
-        l2 = l3 - l7;
+        l2 = l3 - l6;
       }
       if (l2 >= 0L) {
-        break label909;
+        break label933;
       }
       l3 = -1L;
       TXCDRApi.txSetEventIntValue(str, paramInt, "u32_connect_server_time", l3);
-      i1 = TXCStatus.c(this.B, 5004);
+      i1 = TXCStatus.c(this.ad, 5004);
       TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_decode_type", i1);
-      this.j = (TXCStatus.a(this.B, 6001) - l7);
+      this.j = (TXCStatus.a(this.ad, 6001) - this.C);
       if (this.j >= 0L) {
-        break label916;
+        break label940;
       }
       l3 = -1L;
       TXCDRApi.txSetEventIntValue(str, paramInt, "u32_first_i_frame", l3);
-      l4 = TXCStatus.a(this.B, 7103) - l7;
+      l4 = TXCStatus.a(this.ad, 7103) - l6;
       if (l4 >= 0L) {
-        break label925;
+        break label949;
       }
       l3 = -1L;
       TXCDRApi.txSetEventIntValue(str, paramInt, "u32_first_frame_down", l3);
-      l5 = TXCStatus.a(this.B, 5005) - l7;
+      l5 = TXCStatus.a(this.ad, 5005) - this.C;
       if (l5 >= 0L) {
-        break label932;
+        break label956;
       }
       l3 = -1L;
       TXCDRApi.txSetEventIntValue(str, paramInt, "u32_first_video_decode_time", l3);
-      l6 = TXCStatus.a(this.B, 7104) - l7;
+      l6 = TXCStatus.a(this.ad, 7104) - l6;
       if (l6 >= 0L) {
-        break label939;
+        break label963;
       }
       l3 = -1L;
-      label378:
+      label391:
       TXCDRApi.txSetEventIntValue(str, paramInt, "u32_first_audio_frame_down", l3);
-      l7 = TXCStatus.a(this.B, 2033) - l7;
+      l7 = TXCStatus.a(this.ad, 2033) - this.C;
       if (l7 >= 0L) {
-        break label946;
+        break label970;
       }
     }
-    label909:
-    label916:
-    label925:
-    label932:
-    label939:
-    label946:
+    label933:
+    label940:
+    label949:
+    label956:
+    label963:
+    label970:
     for (long l3 = -1L;; l3 = l7)
     {
       TXCDRApi.txSetEventIntValue(str, paramInt, "u32_first_audio_render_time", l3);
-      int i2 = TXCStatus.c(this.B, 7105);
+      int i2 = TXCStatus.c(this.ad, 7105);
       TXCDRApi.txSetEventIntValue(str, paramInt, "u64_err_code", i2);
-      int i3 = TXCStatus.c(this.B, 7106);
+      int i3 = TXCStatus.c(this.ad, 7106);
       TXCDRApi.txSetEventIntValue(str, paramInt, "str_err_info", i3);
-      int i4 = TXCStatus.c(this.B, 7112);
+      int i4 = TXCStatus.c(this.ad, 7112);
       TXCDRApi.txSetEventValue(str, paramInt, "u32_link_type", String.valueOf(i4));
-      int i5 = TXCStatus.c(this.B, 7111);
+      int i5 = TXCStatus.c(this.ad, 7111);
       TXCDRApi.txSetEventValue(str, paramInt, "u32_channel_type", String.valueOf(i5));
       TXCDRApi.txSetEventValue(str, paramInt, "str_app_version", this.i);
       TXCDRApi.nativeReportEvent(str, paramInt);
@@ -208,91 +265,114 @@ public class e
       l2 = l1;
       break;
       l3 = l2;
-      break label205;
+      break label209;
       l3 = this.j;
-      break label267;
+      break label275;
       l3 = l4;
-      break label304;
+      break label313;
       l3 = l5;
-      break label341;
+      break label353;
       l3 = l6;
-      break label378;
+      break label391;
     }
   }
   
   protected static boolean c(String paramString)
   {
-    AppMethodBeat.i(222363);
+    AppMethodBeat.i(244718);
     if ((paramString != null) && (paramString.contains("myqcloud")))
     {
-      AppMethodBeat.o(222363);
+      AppMethodBeat.o(244718);
       return true;
     }
     boolean bool = com.tencent.liteav.basic.d.c.a().a(paramString);
-    AppMethodBeat.o(222363);
+    AppMethodBeat.o(244718);
     return bool;
   }
   
   private void d(int paramInt)
   {
-    AppMethodBeat.i(222368);
+    AppMethodBeat.i(244735);
     Object localObject = new TXCDRExtInfo();
     ((TXCDRExtInfo)localObject).url = this.c;
     ((TXCDRExtInfo)localObject).report_common = false;
     ((TXCDRExtInfo)localObject).report_status = false;
     String str = (String)this.b.get("token");
-    TXCDRApi.InitEvent(this.h, str, paramInt, com.tencent.liteav.basic.datareport.a.am, (TXCDRExtInfo)localObject);
+    TXCDRApi.InitEvent(this.h, str, paramInt, com.tencent.liteav.basic.datareport.a.an, (TXCDRExtInfo)localObject);
     a(paramInt, str);
     long l1 = TXCTimeUtil.getUtcTimeTick();
     TXCDRApi.txSetEventIntValue(str, paramInt, "u64_end_timestamp", l1);
     TXCDRApi.txSetEventIntValue(str, paramInt, "u64_timestamp", l1);
-    double d1 = TXCStatus.d(this.B, 9002);
+    double d1 = TXCStatus.d(this.ad, 9002);
     TXCDRApi.txSetEventValue(str, paramInt, "u32_avg_cpu_usage", String.valueOf(d1));
-    double d2 = TXCStatus.d(this.B, 9005);
+    double d2 = TXCStatus.d(this.ad, 9005);
     TXCDRApi.txSetEventValue(str, paramInt, "u32_avg_memory", String.valueOf(d2));
-    localObject = String.valueOf(this.x);
+    localObject = String.valueOf(this.z);
     TXCDRApi.txSetEventValue(str, paramInt, "u64_begin_timestamp", (String)localObject);
-    l1 = TXCStatus.a(this.B, 7107);
+    l1 = TXCStatus.a(this.ad, 7107);
     l1 = (TXCTimeUtil.getTimeTick() - l1) / 1000L;
+    long l2;
+    label229:
+    int i2;
+    int i3;
+    int i4;
+    long l3;
+    long l4;
+    long l5;
+    int i5;
+    long l6;
+    label461:
+    int i6;
+    int i7;
+    double d3;
+    long l7;
+    long l9;
+    long l8;
+    long l10;
+    int i8;
+    int i9;
+    int i10;
+    int i11;
     if (l1 < 0L)
     {
       l2 = -1L;
       TXCDRApi.txSetEventIntValue(str, paramInt, "u64_playtime", l2);
       if (l1 >= 0L) {
-        break label1380;
+        break label1997;
       }
-    }
-    label1380:
-    for (long l2 = -1L;; l2 = l1)
-    {
+      l2 = -1L;
       TXCDRApi.txSetEventIntValue(str, paramInt, "u32_result", l2);
-      int i1 = TXCStatus.c(this.B, 7105);
-      TXCDRApi.txSetEventIntValue(str, paramInt, "u64_err_code", i1);
-      int i2 = TXCStatus.c(this.B, 2004);
-      TXCDRApi.txSetEventIntValue(str, paramInt, "u32_speed_cnt", i2);
-      int i3 = TXCStatus.c(this.B, 2008);
-      TXCDRApi.txSetEventIntValue(str, paramInt, "u64_audio_cache_avg", i3);
-      TXCDRApi.txSetEventIntValue(str, paramInt, "u32_avg_cache_time", i3);
-      long l3 = TXCStatus.c(this.B, 2003);
+      i2 = TXCStatus.c(this.ad, 7105);
+      TXCDRApi.txSetEventIntValue(str, paramInt, "u64_err_code", i2);
+      i3 = TXCStatus.c(this.ad, 2004);
+      TXCDRApi.txSetEventIntValue(str, paramInt, "u32_speed_cnt", i3);
+      i4 = TXCStatus.c(this.ad, 2008);
+      TXCDRApi.txSetEventIntValue(str, paramInt, "u64_audio_cache_avg", i4);
+      TXCDRApi.txSetEventIntValue(str, paramInt, "u32_avg_cache_time", i4);
+      l3 = TXCStatus.c(this.ad, 2003);
       TXCDRApi.txSetEventValue(str, paramInt, "u32_max_load", String.valueOf(l3));
-      long l4 = TXCStatus.c(this.B, 2001);
+      l4 = TXCStatus.c(this.ad, 2001);
       TXCDRApi.txSetEventValue(str, paramInt, "u32_avg_load", String.valueOf(l4));
-      long l5 = TXCStatus.c(this.B, 2002);
+      l5 = TXCStatus.c(this.ad, 2002);
       TXCDRApi.txSetEventValue(str, paramInt, "u32_load_cnt", String.valueOf(l5));
-      int i4 = TXCStatus.c(this.B, 2005);
-      TXCDRApi.txSetEventIntValue(str, paramInt, "u32_nodata_cnt", i4);
-      long l6 = l4 * l5;
+      i5 = TXCStatus.c(this.ad, 2005);
+      TXCDRApi.txSetEventIntValue(str, paramInt, "u32_nodata_cnt", i5);
+      l6 = l4 * l5;
       TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_block_time", l6);
-      TXCDRApi.txSetEventIntValue(str, paramInt, "u32_first_i_frame", this.j);
-      int i5 = TXCStatus.c(this.B, 6015);
-      TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_width", i5);
-      int i6 = TXCStatus.c(this.B, 6016);
-      TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_height", i6);
-      double d3 = TXCStatus.d(this.B, 6017);
+      if (this.j >= 0L) {
+        break label2004;
+      }
+      l2 = -1L;
+      TXCDRApi.txSetEventIntValue(str, paramInt, "u32_first_i_frame", l2);
+      i6 = TXCStatus.c(this.ad, 6010);
+      TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_width", i6);
+      i7 = TXCStatus.c(this.ad, 6011);
+      TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_height", i7);
+      d3 = TXCStatus.d(this.ad, 6007);
       TXCDRApi.txSetEventValue(str, paramInt, "u32_video_avg_fps", String.valueOf(d3));
-      long l7 = TXCStatus.a(this.B, 6003);
-      long l9 = TXCStatus.a(this.B, 6005);
-      long l8 = TXCStatus.a(this.B, 6006);
+      l7 = TXCStatus.a(this.ad, 6003);
+      l9 = TXCStatus.a(this.ad, 6005);
+      l8 = TXCStatus.a(this.ad, 6006);
       l2 = 0L;
       if (l7 > 0L) {
         l2 = l8 / l7;
@@ -302,114 +382,363 @@ public class e
       TXCDRApi.txSetEventIntValue(str, paramInt, "u64_block_count", l7);
       TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_block_time", l8);
       TXCDRApi.txSetEventIntValue(str, paramInt, "u64_block_duration_max", l9);
-      l9 = TXCStatus.a(this.B, 6009);
+      l9 = TXCStatus.a(this.ad, 6103);
       TXCDRApi.txSetEventIntValue(str, paramInt, "u64_jitter_cache_max", l9);
-      long l10 = TXCStatus.a(this.B, 6008);
+      l10 = TXCStatus.a(this.ad, 6102);
       TXCDRApi.txSetEventIntValue(str, paramInt, "u64_jitter_cache_avg", l10);
-      TXCDRApi.txSetEventValue(str, paramInt, "u32_link_type", String.valueOf(TXCStatus.c(this.B, 7112)));
-      int i7 = TXCStatus.c(this.B, 7111);
-      TXCDRApi.txSetEventValue(str, paramInt, "u32_channel_type", String.valueOf(i7));
-      int i8 = TXCStatus.c(this.B, 7113);
-      TXCDRApi.txSetEventValue(str, paramInt, "u32_ip_count_quic", String.valueOf(i8));
-      int i9 = TXCStatus.c(this.B, 7114);
-      TXCDRApi.txSetEventValue(str, paramInt, "u32_connect_count_quic", String.valueOf(i9));
-      int i10 = TXCStatus.c(this.B, 7115);
-      TXCDRApi.txSetEventValue(str, paramInt, "u32_connect_count_tcp", String.valueOf(i10));
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_link_type", String.valueOf(TXCStatus.c(this.ad, 7112)));
+      i8 = TXCStatus.c(this.ad, 7111);
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_channel_type", String.valueOf(i8));
+      i9 = TXCStatus.c(this.ad, 7113);
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_ip_count_quic", String.valueOf(i9));
+      i10 = TXCStatus.c(this.ad, 7114);
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_connect_count_quic", String.valueOf(i10));
+      i11 = TXCStatus.c(this.ad, 7115);
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_connect_count_tcp", String.valueOf(i11));
       TXCDRApi.txSetEventValue(str, paramInt, "str_app_version", this.i);
-      TXCDRApi.txSetEventIntValue(str, paramInt, "u32_is_real_time", TXCStatus.a(this.B, 2009));
+      if (!this.u) {
+        break label2013;
+      }
+    }
+    label1997:
+    label2004:
+    label2013:
+    for (int i1 = 1;; i1 = 0)
+    {
+      TXCDRApi.txSetEventIntValue(str, paramInt, "u32_is_real_time", i1);
+      TXCDRApi.txSetEventIntValue(str, paramInt, "u32_first_frame_black", TXCStatus.a(this.ad, 6013));
+      TXCDRApi.txSetEventValue(str, paramInt, "u64_audio_receive_pkt_cnt", String.valueOf(TXCStatus.c(this.ad, 2036)));
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_audio_receive_internal_0_500ms", String.valueOf(TXCStatus.c(this.ad, 2037)));
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_audio_receive_internal_500_1000ms", String.valueOf(TXCStatus.c(this.ad, 2038)));
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_audio_receive_internal_1000_1500ms", String.valueOf(TXCStatus.c(this.ad, 2039)));
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_audio_receive_internal_1500_2000ms", String.valueOf(TXCStatus.c(this.ad, 2040)));
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_audio_receive_internal_2000_3000ms", String.valueOf(TXCStatus.c(this.ad, 2041)));
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_audio_receive_internal_3000_5000ms", String.valueOf(TXCStatus.c(this.ad, 2042)));
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_audio_receive_internal_5000_8000ms", String.valueOf(TXCStatus.c(this.ad, 2043)));
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_audio_receive_internal_8000_11000ms", String.valueOf(TXCStatus.c(this.ad, 2044)));
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_raudio_eceive_internal_11000_15000ms", String.valueOf(TXCStatus.c(this.ad, 2045)));
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_audio_receive_internal_biger_15000ms", String.valueOf(TXCStatus.c(this.ad, 2046)));
+      long l11 = TXCStatus.c(this.ad, 2047);
+      if (l11 > this.D) {
+        this.D = l11;
+      }
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_audio_max_receive_internal_inms", String.valueOf(this.D));
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_audio_total_drop_receive_pkt_cnt", String.valueOf(TXCStatus.c(this.ad, 2048)));
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_audio_block_time_0_60ms_cnt", String.valueOf(TXCStatus.c(this.ad, 2049)));
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_audio_block_time_60_200ms_cnt", String.valueOf(TXCStatus.c(this.ad, 2050)));
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_audio_block_time_200_500ms_cnt", String.valueOf(TXCStatus.c(this.ad, 2051)));
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_audio_block_time_500_1000ms_cnt", String.valueOf(TXCStatus.c(this.ad, 2052)));
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_audio_block_time_1000_2000ms_cnt", String.valueOf(TXCStatus.c(this.ad, 2053)));
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_audio_block_time_2000_5000ms_cnt", String.valueOf(TXCStatus.c(this.ad, 2054)));
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_audio_block_time_5000_10000ms_cnt", String.valueOf(TXCStatus.c(this.ad, 2055)));
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_audio_block_time_10000_20000ms_cnt", String.valueOf(TXCStatus.c(this.ad, 2056)));
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_audio_block_time_biger_20000ms_cnt", String.valueOf(TXCStatus.c(this.ad, 2057)));
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_audio_total_block_time_in_ms", String.valueOf(TXCStatus.c(this.ad, 2058)));
+      TXCDRApi.txSetEventValue(str, paramInt, "u32_audio_decode_fail_cnt", String.valueOf(TXCStatus.c(this.ad, 2059)));
       TXCDRApi.nativeReportEvent(str, paramInt);
-      TXCLog.d(a, "report evt " + paramInt + ": token=" + str + "\nstr_user_id=" + this.b.get("str_user_id") + "\ndev_uuid=" + this.b.get("dev_uuid") + "\nstr_session_id=" + this.b.get("str_session_id") + "\nstr_device_type=" + this.b.get("str_device_type") + "\nstr_os_info=" + this.b.get("str_os_info") + "\nstr_package_name=" + this.b.get("str_package_name") + "\nu32_network_type=" + this.b.get("u32_network_type") + "\nu32_server_ip=" + this.b.get("u32_server_ip") + "\nstr_stream_url=" + this.b.get("str_stream_url") + "\nu64_timestamp=" + this.b.get("u64_timestamp") + "\nu32_avg_cpu_usage=" + d1 + "\nu32_avg_memory=" + d2 + "\nu32_first_i_frame=" + this.j + "\nu32_video_width=" + i5 + "\nu32_video_height=" + i6 + "\nu32_video_avg_fps=" + d3 + "\nu32_speed_cnt=" + i2 + "\nu32_nodata_cnt=" + i4 + "\nu32_avg_cache_time=" + i3 + "\nu32_avg_block_time=" + l2 + "\nu32_avg_load=" + l4 + "\nu32_max_load=" + l3 + "\nu32_video_block_time=" + l8 + "\nu32_audio_block_time=" + l6 + "\nu32_load_cnt=" + l5 + "\nu32_result=" + l1 + "\nu64_err_code=" + i1 + "\nu32_channel_type=" + i7 + "\nu32_ip_count_quic=" + i8 + "\nu32_connect_count_quic=" + i9 + "\nu32_connect_count_tcp=" + i10 + "\nu64_block_count=" + l7 + "\nu64_jitter_cache_max=" + l9 + "\nu64_jitter_cache_avg=" + l10 + "\nu64_begin_timestamp=" + (String)localObject + "\nu32_is_real_time=" + TXCStatus.a(this.B, 2009) + "\nstr_app_version=" + this.i);
-      AppMethodBeat.o(222368);
+      TXCLog.d(a, "report evt " + paramInt + ": token=" + str + "\nstr_user_id=" + this.b.get("str_user_id") + "\ndev_uuid=" + this.b.get("dev_uuid") + "\nstr_session_id=" + this.b.get("str_session_id") + "\nstr_device_type=" + this.b.get("str_device_type") + "\nstr_os_info=" + this.b.get("str_os_info") + "\nstr_package_name=" + this.b.get("str_package_name") + "\nu32_network_type=" + this.b.get("u32_network_type") + "\nu32_server_ip=" + this.b.get("u32_server_ip") + "\nstr_stream_url=" + this.b.get("str_stream_url") + "\nu64_timestamp=" + this.b.get("u64_timestamp") + "\nu32_avg_cpu_usage=" + d1 + "\nu32_avg_memory=" + d2 + "\nu32_first_i_frame=" + this.j + "\nu32_video_width=" + i6 + "\nu32_video_height=" + i7 + "\nu32_video_avg_fps=" + d3 + "\nu32_speed_cnt=" + i3 + "\nu32_nodata_cnt=" + i5 + "\nu32_avg_cache_time=" + i4 + "\nu32_avg_block_time=" + l2 + "\nu32_avg_load=" + l4 + "\nu32_max_load=" + l3 + "\nu32_video_block_time=" + l8 + "\nu32_audio_block_time=" + l6 + "\nu32_load_cnt=" + l5 + "\nu32_result=" + l1 + "\nu64_err_code=" + i2 + "\nu32_channel_type=" + i8 + "\nu32_ip_count_quic=" + i9 + "\nu32_connect_count_quic=" + i10 + "\nu32_connect_count_tcp=" + i11 + "\nu64_block_count=" + l7 + "\nu64_jitter_cache_max=" + l9 + "\nu64_jitter_cache_avg=" + l10 + "\nu64_begin_timestamp=" + (String)localObject + "\nu32_is_real_time=" + TXCStatus.a(this.ad, 2009) + "\nstr_app_version=" + this.i);
+      AppMethodBeat.o(244735);
       return;
       l2 = l1;
       break;
+      l2 = l1;
+      break label229;
+      l2 = this.j;
+      break label461;
     }
   }
   
   private void e(int paramInt)
   {
     int i1 = 2;
-    AppMethodBeat.i(222369);
+    long l2 = 0L;
+    AppMethodBeat.i(244741);
     Object localObject = new TXCDRExtInfo();
     ((TXCDRExtInfo)localObject).url = this.c;
     ((TXCDRExtInfo)localObject).report_common = false;
     ((TXCDRExtInfo)localObject).report_status = true;
     String str = (String)this.b.get("token");
-    TXCDRApi.InitEvent(this.h, str, paramInt, com.tencent.liteav.basic.datareport.a.am, (TXCDRExtInfo)localObject);
+    TXCDRApi.InitEvent(this.h, str, paramInt, com.tencent.liteav.basic.datareport.a.an, (TXCDRExtInfo)localObject);
     a(paramInt, str);
     TXCDRApi.txSetEventIntValue(str, paramInt, "u64_timestamp", TXCTimeUtil.getUtcTimeTick());
-    localObject = f.a();
+    localObject = h.a();
     TXCDRApi.txSetEventIntValue(str, paramInt, "u32_cpu_usage", localObject[1]);
     TXCDRApi.txSetEventIntValue(str, paramInt, "u32_app_cpu_usage", localObject[0]);
-    TXCDRApi.txSetEventValue(str, paramInt, "u32_avg_cpu_usage", String.valueOf(TXCStatus.d(this.B, 9002)));
-    TXCDRApi.txSetEventValue(str, paramInt, "u32_avg_memory", String.valueOf(TXCStatus.d(this.B, 9005)));
-    TXCDRApi.txSetEventIntValue(str, paramInt, "u32_recv_av_diff_time", TXCStatus.a(this.B, 6014, 2));
-    TXCDRApi.txSetEventIntValue(str, paramInt, "u32_play_av_diff_time", TXCStatus.a(this.B, 6013, 2));
-    TXCDRApi.txSetEventValue(str, paramInt, "u64_playtime", String.valueOf((TXCTimeUtil.getUtcTimeTick() - this.x) / 1000L));
-    if (TXCStatus.c(this.B, 2015) == 0) {}
+    TXCDRApi.txSetEventValue(str, paramInt, "u32_avg_cpu_usage", String.valueOf(TXCStatus.d(this.ad, 9002)));
+    TXCDRApi.txSetEventValue(str, paramInt, "u32_avg_memory", String.valueOf(TXCStatus.d(this.ad, 9005)));
+    TXCDRApi.txSetEventIntValue(str, paramInt, "u32_recv_av_diff_time", TXCStatus.a(this.ad, 6108, 2));
+    TXCDRApi.txSetEventIntValue(str, paramInt, "u32_play_av_diff_time", TXCStatus.a(this.ad, 6107, 2));
+    TXCDRApi.txSetEventValue(str, paramInt, "u64_playtime", String.valueOf((TXCTimeUtil.getUtcTimeTick() - this.z) / 1000L));
+    if (TXCStatus.c(this.ad, 2015) == 0) {}
     for (;;)
     {
       TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_decode_type", i1);
-      long l1 = TXCStatus.a(this.B, 2002);
-      long l2;
-      if (this.m == -1L)
+      long l1 = TXCStatus.a(this.ad, 2002);
+      long l4;
+      label492:
+      label753:
+      long l3;
+      if (this.o == -1L)
       {
         TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_block_count", 0L);
-        this.m = l1;
-        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_cache_time", TXCStatus.c(this.B, 2010));
-        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_drop", TXCStatus.c(this.B, 2014));
-        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_decode_type", TXCStatus.c(this.B, 5004));
+        this.o = l1;
+        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_cache_time", TXCStatus.c(this.ad, 2010));
+        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_drop", TXCStatus.c(this.ad, 2014));
+        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_decode_type", TXCStatus.c(this.ad, 5004));
         TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_recv_fps", j());
-        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_fps", (int)TXCStatus.d(this.B, 6002));
-        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_cache_time", TXCStatus.c(this.B, 6007));
-        l1 = TXCStatus.a(this.B, 6008);
-        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_cache_count", l1);
-        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_avg_cache_count", l1);
-        l2 = TXCStatus.a(this.B, 6004);
-        if ((this.k == -1L) || (l2 < this.k)) {
-          break label725;
+        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_fps", (int)TXCStatus.d(this.ad, 6002));
+        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_cache_time", TXCStatus.c(this.ad, 6101));
+        l4 = TXCStatus.a(this.ad, 6102);
+        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_cache_count", l4);
+        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_avg_cache_count", l4);
+        l1 = TXCStatus.a(this.ad, 6004);
+        if ((this.k == -1L) || (l1 < this.k)) {
+          break label2043;
         }
-        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_block_count", l2 - this.k);
-        label481:
-        this.k = l2;
-        i1 = TXCStatus.c(this.B, 7102) + TXCStatus.c(this.B, 7101);
-        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_net_speed", i1);
-        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_avg_net_speed", i1);
-        TXCDRApi.txSetEventValue(str, paramInt, "u32_link_type", String.valueOf(TXCStatus.c(this.B, 7112)));
-        TXCDRApi.txSetEventValue(str, paramInt, "u32_channel_type", String.valueOf(TXCStatus.c(this.B, 7111)));
+        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_block_count", l1 - this.k);
+        this.k = l1;
+        i1 = TXCStatus.c(this.ad, 7102);
+        int i2 = TXCStatus.c(this.ad, 7101);
+        int i3 = i1 + i2;
+        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_net_speed", i3);
+        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_avg_net_speed", i3);
+        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_avg_audio_bitrate", i1);
+        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_avg_video_bitrate", i2);
+        TXCDRApi.txSetEventValue(str, paramInt, "u32_link_type", String.valueOf(TXCStatus.c(this.ad, 7112)));
+        TXCDRApi.txSetEventValue(str, paramInt, "u32_channel_type", String.valueOf(TXCStatus.c(this.ad, 7111)));
         TXCDRApi.txSetEventValue(str, paramInt, "str_app_version", this.i);
-        l2 = TXCStatus.a(this.B, 6021);
-        if (l2 <= this.l) {
-          break label738;
+        l1 = TXCStatus.a(this.ad, 6009);
+        if (l1 <= this.l) {
+          break label2056;
         }
-        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_light_block_count", l2 - this.l);
+        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_light_block_count", l1 - this.l);
+        label666:
+        this.l = l1;
+        l1 = TXCStatus.a(this.ad, 6003);
+        if (l1 <= this.m) {
+          break label2069;
+        }
+        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_large_block_count", l1 - this.m);
+        label710:
+        this.m = l1;
+        i1 = TXCStatus.c(this.ad, 2034);
+        if (i1 <= this.n) {
+          break label2082;
+        }
+        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_jitter_60ms_count", i1 - this.n);
+        this.n = i1;
+        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_decode_fail", TXCStatus.c(this.ad, 5006));
+        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_decode_fail", TXCStatus.c(this.ad, 2035));
+        l1 = TXCStatus.a(this.ad, 2036);
+        if (l1 < this.E) {
+          break label2095;
+        }
+        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_receive_pkt_cnt", l1 - this.E);
+        label837:
+        this.E = l1;
+        l3 = TXCTimeUtil.getUtcTimeTick();
+        if ((this.F <= 0L) || (l3 <= this.F)) {
+          break label2171;
+        }
       }
-      for (;;)
+      label2056:
+      label2069:
+      label2082:
+      label2095:
+      label2171:
+      for (l1 = l3 - this.F;; l1 = 0L)
       {
-        this.l = l2;
-        TXCDRApi.nativeReportEvent(str, paramInt);
-        if (this.s)
+        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_internal_time_in_ms", l1);
+        this.F = l3;
+        l3 = TXCStatus.a(this.ad, 2037);
+        if (l3 > this.G) {}
+        for (l1 = l3 - this.G;; l1 = 0L)
         {
-          this.w += 1L;
-          this.v += l1;
-          if (l1 > this.u) {
-            this.u = l1;
+          TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_receive_internal_0_500ms", l1);
+          this.G = l3;
+          l3 = TXCStatus.a(this.ad, 2038);
+          if (l3 > this.H) {}
+          for (l1 = l3 - this.H;; l1 = 0L)
+          {
+            TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_receive_internal_500_1000ms", l1);
+            this.H = l3;
+            l3 = TXCStatus.a(this.ad, 2039);
+            if (l3 > this.I) {}
+            for (l1 = l3 - this.I;; l1 = 0L)
+            {
+              TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_receive_internal_1000_1500ms", l1);
+              this.I = l3;
+              l3 = TXCStatus.a(this.ad, 2040);
+              if (l3 > this.J) {}
+              for (l1 = l3 - this.J;; l1 = 0L)
+              {
+                TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_receive_internal_1500_2000ms", l1);
+                this.J = l3;
+                l3 = TXCStatus.a(this.ad, 2041);
+                if (l3 > this.K) {}
+                for (l1 = l3 - this.K;; l1 = 0L)
+                {
+                  TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_receive_internal_2000_3000ms", l1);
+                  this.K = l3;
+                  l3 = TXCStatus.a(this.ad, 2042);
+                  if (l3 > this.L) {}
+                  for (l1 = l3 - this.L;; l1 = 0L)
+                  {
+                    TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_receive_internal_3000_5000ms", l1);
+                    this.L = l3;
+                    l3 = TXCStatus.a(this.ad, 2043);
+                    if (l3 > this.M) {}
+                    for (l1 = l3 - this.M;; l1 = 0L)
+                    {
+                      TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_receive_internal_5000_8000ms", l1);
+                      this.M = l3;
+                      l3 = TXCStatus.a(this.ad, 2044);
+                      if (l3 > this.N) {}
+                      for (l1 = l3 - this.N;; l1 = 0L)
+                      {
+                        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_receive_internal_8000_11000ms", l1);
+                        this.N = l3;
+                        l3 = TXCStatus.a(this.ad, 2045);
+                        if (l3 > this.O) {}
+                        for (l1 = l3 - this.O;; l1 = 0L)
+                        {
+                          TXCDRApi.txSetEventIntValue(str, paramInt, "u32_raudio_eceive_internal_11000_15000ms", l1);
+                          this.O = l3;
+                          l3 = TXCStatus.a(this.ad, 2046);
+                          if (l3 > this.P) {}
+                          for (l1 = l3 - this.P;; l1 = 0L)
+                          {
+                            TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_receive_internal_biger_15000ms", l1);
+                            this.P = l3;
+                            long l5 = TXCStatus.a(this.ad, 2049);
+                            l3 = l5 - this.Q;
+                            l1 = l3;
+                            if (l3 < 0L) {
+                              l1 = 0L;
+                            }
+                            TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_block_time_0_60ms_cnt", l1);
+                            this.Q = l5;
+                            l5 = TXCStatus.a(this.ad, 2050);
+                            l3 = l5 - this.R;
+                            l1 = l3;
+                            if (l3 < 0L) {
+                              l1 = 0L;
+                            }
+                            TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_block_time_60_200ms_cnt", l1);
+                            this.R = l5;
+                            l5 = TXCStatus.a(this.ad, 2051);
+                            l3 = l5 - this.S;
+                            l1 = l3;
+                            if (l3 < 0L) {
+                              l1 = 0L;
+                            }
+                            TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_block_time_200_500ms_cnt", l1);
+                            this.S = l5;
+                            l5 = TXCStatus.a(this.ad, 2052);
+                            l3 = l5 - this.T;
+                            l1 = l3;
+                            if (l3 < 0L) {
+                              l1 = 0L;
+                            }
+                            TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_block_time_500_1000ms_cnt", l1);
+                            this.T = l5;
+                            l5 = TXCStatus.a(this.ad, 2053);
+                            l3 = l5 - this.U;
+                            l1 = l3;
+                            if (l3 < 0L) {
+                              l1 = 0L;
+                            }
+                            TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_block_time_1000_2000ms_cnt", l1);
+                            this.U = l5;
+                            l5 = TXCStatus.a(this.ad, 2054);
+                            l3 = l5 - this.V;
+                            l1 = l3;
+                            if (l3 < 0L) {
+                              l1 = 0L;
+                            }
+                            TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_block_time_2000_5000ms_cnt", l1);
+                            this.V = l5;
+                            l5 = TXCStatus.a(this.ad, 2055);
+                            l3 = l5 - this.W;
+                            l1 = l3;
+                            if (l3 < 0L) {
+                              l1 = 0L;
+                            }
+                            TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_block_time_5000_10000ms_cnt", l1);
+                            this.W = l5;
+                            l5 = TXCStatus.a(this.ad, 2056);
+                            l3 = l5 - this.X;
+                            l1 = l3;
+                            if (l3 < 0L) {
+                              l1 = 0L;
+                            }
+                            TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_block_time_10000_20000ms_cnt", l1);
+                            this.X = l5;
+                            l5 = TXCStatus.a(this.ad, 2057);
+                            l3 = l5 - this.Y;
+                            l1 = l3;
+                            if (l3 < 0L) {
+                              l1 = 0L;
+                            }
+                            TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_block_time_biger_20000ms_cnt", l1);
+                            this.Y = l5;
+                            l5 = TXCStatus.a(this.ad, 2058);
+                            l3 = l5 - this.Z;
+                            l1 = l3;
+                            if (l3 < 0L) {
+                              l1 = 0L;
+                            }
+                            TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_total_block_time_in_ms", l1);
+                            this.Z = l5;
+                            l3 = TXCStatus.a(this.ad, 2059);
+                            l1 = l3 - this.aa;
+                            if (l1 < 0L) {
+                              l1 = l2;
+                            }
+                            for (;;)
+                            {
+                              TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_decode_fail_cnt", l1);
+                              this.aa = l3;
+                              TXCDRApi.nativeReportEvent(str, paramInt);
+                              if (this.u)
+                              {
+                                this.y += 1L;
+                                this.x += l4;
+                                if (l4 > this.w) {
+                                  this.w = l4;
+                                }
+                              }
+                              AppMethodBeat.o(244741);
+                              return;
+                              if (l1 >= this.o)
+                              {
+                                TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_block_count", l1 - this.o);
+                                break;
+                              }
+                              TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_block_count", -1L);
+                              break;
+                              label2043:
+                              TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_block_count", 0L);
+                              break label492;
+                              TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_light_block_count", 0L);
+                              break label666;
+                              TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_large_block_count", 0L);
+                              break label710;
+                              TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_jitter_60ms_count", 0L);
+                              break label753;
+                              TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_receive_pkt_cnt", 0L);
+                              break label837;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
-        AppMethodBeat.o(222369);
-        return;
-        if (l1 >= this.m)
-        {
-          TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_block_count", l1 - this.m);
-          break;
-        }
-        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_audio_block_count", -1L);
-        break;
-        label725:
-        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_block_count", 0L);
-        break label481;
-        label738:
-        TXCDRApi.txSetEventIntValue(str, paramInt, "u32_video_light_block_count", 0L);
       }
       i1 = 1;
     }
@@ -417,74 +746,70 @@ public class e
   
   private void f(String paramString)
   {
-    AppMethodBeat.i(222366);
+    AppMethodBeat.i(244731);
     if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("room://")))
     {
       paramString = paramString.split("/");
       paramString[(paramString.length - 1)].split("_");
-      TXCStatus.a(this.B, 7112, Long.valueOf(3L));
+      TXCStatus.a(this.ad, 7112, Long.valueOf(3L));
     }
-    AppMethodBeat.o(222366);
+    AppMethodBeat.o(244731);
   }
   
   private int g(String paramString)
   {
-    AppMethodBeat.i(222370);
+    AppMethodBeat.i(244743);
     paramString = (Number)this.b.get(paramString);
     if (paramString != null)
     {
       int i1 = paramString.intValue();
-      AppMethodBeat.o(222370);
+      AppMethodBeat.o(244743);
       return i1;
     }
-    AppMethodBeat.o(222370);
+    AppMethodBeat.o(244743);
     return 0;
   }
   
   private void i()
   {
     AppMethodBeat.i(16580);
-    a(6002, 6017, 6018);
-    int[] arrayOfInt = f.a();
-    TXCStatus.a(this.B, 9001, Integer.valueOf(arrayOfInt[0]));
+    a(6002, 6007, 6008);
+    int[] arrayOfInt = h.a();
+    TXCStatus.a(this.ad, 9001, Integer.valueOf(arrayOfInt[0]));
     a(9001, 9002, 9003);
-    TXCStatus.a(this.B, 9004, Integer.valueOf(f.b()));
+    TXCStatus.a(this.ad, 9004, Integer.valueOf(h.b()));
     a(9004, 9005, 9006);
     AppMethodBeat.o(16580);
   }
   
   private int j()
   {
-    AppMethodBeat.i(222367);
-    int i2 = 0;
+    AppMethodBeat.i(244733);
     long l1 = TXCTimeUtil.getTimeTick();
-    long l2 = TXCStatus.c(this.B, 6019);
-    int i1 = i2;
-    if (l2 != 0L)
-    {
-      i1 = i2;
-      if (l1 != 0L)
-      {
-        long l3 = this.q;
-        i1 = (int)((l2 - this.r) * 1000L / (l1 - l3));
-      }
+    long l2 = TXCStatus.c(this.ad, 6109);
+    long l3;
+    if (this.s != 0L) {
+      l3 = this.s;
     }
-    this.q = l1;
-    this.r = l2;
-    AppMethodBeat.o(222367);
-    return i1;
+    for (int i1 = (int)((l2 - this.t) * 1000L / (l1 - l3));; i1 = (int)(l2 * 1000L / (l1 - this.A)))
+    {
+      this.s = l1;
+      this.t = l2;
+      AppMethodBeat.o(244733);
+      return i1;
+    }
   }
   
   private void k()
   {
     AppMethodBeat.i(182276);
     Object localObject1 = new HashMap();
-    String str1 = TXCStatus.b(this.B, 7116);
-    Object localObject2 = TXCStatus.b(this.B, 7117);
-    Object localObject3 = TXCStatus.b(this.B, 7118);
-    int i1 = TXCStatus.c(this.B, 7105);
-    String str2 = TXCStatus.b(this.B, 7106);
-    int i2 = TXCStatus.c(this.B, 7111);
+    String str1 = TXCStatus.b(this.ad, 7116);
+    Object localObject2 = TXCStatus.b(this.ad, 7117);
+    Object localObject3 = TXCStatus.b(this.ad, 7118);
+    int i1 = TXCStatus.c(this.ad, 7105);
+    String str2 = TXCStatus.b(this.ad, 7106);
+    int i2 = TXCStatus.c(this.ad, 7111);
     ((Map)localObject1).put("stream_url", str1);
     ((Map)localObject1).put("stream_id", localObject2);
     ((Map)localObject1).put("bizid", localObject3);
@@ -492,27 +817,27 @@ public class e
     ((Map)localObject1).put("err_info", str2);
     ((Map)localObject1).put("channel_type", String.valueOf(i2));
     long l1 = System.currentTimeMillis();
-    long l2 = this.t;
-    ((Map)localObject1).put("start_time", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS").format(new Date(this.t)));
+    long l2 = this.v;
+    ((Map)localObject1).put("start_time", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS").format(new Date(this.v)));
     ((Map)localObject1).put("end_time", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS").format(new Date(l1)));
     ((Map)localObject1).put("total_time", String.valueOf(l1 - l2));
-    l2 = TXCStatus.a(this.B, 6003);
-    l1 = TXCStatus.a(this.B, 6006);
-    long l3 = TXCStatus.a(this.B, 6005);
+    l2 = TXCStatus.a(this.ad, 6003);
+    l1 = TXCStatus.a(this.ad, 6006);
+    long l3 = TXCStatus.a(this.ad, 6005);
     if (l2 != 0L) {}
     for (l1 /= l2;; l1 = 0L)
     {
       ((Map)localObject1).put("block_count", String.valueOf(l2));
       ((Map)localObject1).put("block_duration_max", String.valueOf(l3));
       ((Map)localObject1).put("block_duration_avg", String.valueOf(l1));
-      if (this.w != 0L) {}
-      for (l1 = this.v / this.w;; l1 = 0L)
+      if (this.y != 0L) {}
+      for (l1 = this.x / this.y;; l1 = 0L)
       {
-        ((Map)localObject1).put("jitter_cache_max", String.valueOf(this.u));
+        ((Map)localObject1).put("jitter_cache_max", String.valueOf(this.w));
         ((Map)localObject1).put("jitter_cache_avg", String.valueOf(l1));
         str1 = TXCDRApi.txCreateToken();
-        i1 = com.tencent.liteav.basic.datareport.a.af;
-        i2 = com.tencent.liteav.basic.datareport.a.al;
+        i1 = com.tencent.liteav.basic.datareport.a.ag;
+        i2 = com.tencent.liteav.basic.datareport.a.am;
         localObject2 = new TXCDRExtInfo();
         ((TXCDRExtInfo)localObject2).command_id_comment = "LINKMIC";
         TXCDRApi.InitEvent(this.h, str1, i1, i2, (TXCDRExtInfo)localObject2);
@@ -529,11 +854,11 @@ public class e
           }
         }
         TXCDRApi.nativeReportEvent(str1, i1);
-        this.s = false;
-        this.t = 0L;
-        this.w = 0L;
+        this.u = false;
         this.v = 0L;
-        this.u = 0L;
+        this.y = 0L;
+        this.x = 0L;
+        this.w = 0L;
         AppMethodBeat.o(182276);
         return;
       }
@@ -547,9 +872,9 @@ public class e
     localTXCDRExtInfo.report_common = false;
     localTXCDRExtInfo.report_status = false;
     localTXCDRExtInfo.url = this.c;
-    long l1 = TXCStatus.a(this.B, 7013);
+    long l1 = TXCStatus.a(this.ad, 7013);
     String str = (String)this.b.get("token");
-    TXCDRApi.InitEvent(this.h, str, com.tencent.liteav.basic.datareport.a.P, com.tencent.liteav.basic.datareport.a.al, localTXCDRExtInfo);
+    TXCDRApi.InitEvent(this.h, str, com.tencent.liteav.basic.datareport.a.P, com.tencent.liteav.basic.datareport.a.am, localTXCDRExtInfo);
     long l2 = TXCTimeUtil.getUtcTimeTick();
     TXCDRApi.txSetEventIntValue(str, com.tencent.liteav.basic.datareport.a.P, "u64_timestamp", TXCTimeUtil.getUtcTimeTick());
     TXCDRApi.txSetEventValue(str, com.tencent.liteav.basic.datareport.a.P, "str_device_type", (String)this.b.get("str_device_type"));
@@ -577,23 +902,23 @@ public class e
     ((TXCDRExtInfo)localObject).report_common = false;
     ((TXCDRExtInfo)localObject).report_status = false;
     ((TXCDRExtInfo)localObject).url = this.c;
-    String str1 = TXCStatus.b(this.B, 7012);
-    long l3 = TXCStatus.a(this.B, 7009);
-    long l1 = TXCStatus.a(this.B, 7010);
+    String str1 = TXCStatus.b(this.ad, 7012);
+    long l3 = TXCStatus.a(this.ad, 7009);
+    long l1 = TXCStatus.a(this.ad, 7010);
     if (l1 != -1L) {
       l1 -= l3;
     }
     for (;;)
     {
-      long l2 = TXCStatus.a(this.B, 7011);
+      long l2 = TXCStatus.a(this.ad, 7011);
       if (l2 != -1L) {
         l2 -= l3;
       }
       for (;;)
       {
-        l3 = TXCStatus.a(this.B, 7013);
+        l3 = TXCStatus.a(this.ad, 7013);
         String str2 = (String)this.b.get("token");
-        TXCDRApi.InitEvent(this.h, str2, com.tencent.liteav.basic.datareport.a.P, com.tencent.liteav.basic.datareport.a.al, (TXCDRExtInfo)localObject);
+        TXCDRApi.InitEvent(this.h, str2, com.tencent.liteav.basic.datareport.a.P, com.tencent.liteav.basic.datareport.a.am, (TXCDRExtInfo)localObject);
         long l4 = TXCTimeUtil.getUtcTimeTick();
         TXCDRApi.txSetEventIntValue(str2, com.tencent.liteav.basic.datareport.a.P, "u64_timestamp", l4);
         TXCDRApi.txSetEventValue(str2, com.tencent.liteav.basic.datareport.a.P, "str_device_type", (String)this.b.get("str_device_type"));
@@ -609,7 +934,7 @@ public class e
         TXCDRApi.txSetEventIntValue(str2, com.tencent.liteav.basic.datareport.a.P, "u32_channel_type", l3);
         TXCDRApi.txSetEventValue(str2, com.tencent.liteav.basic.datareport.a.P, "str_app_version", this.i);
         TXCDRApi.txSetEventValue(str2, com.tencent.liteav.basic.datareport.a.P, "dev_uuid", (String)this.b.get("dev_uuid"));
-        localObject = TXCStatus.b(this.B, 7019);
+        localObject = TXCStatus.b(this.ad, 7019);
         TXCDRApi.txSetEventValue(str2, com.tencent.liteav.basic.datareport.a.P, "str_nearest_ip_list", (String)localObject);
         TXCDRApi.nativeReportEvent(str2, com.tencent.liteav.basic.datareport.a.P);
         TXCLog.d(a, "report evt 40001: token=" + str2 + " str_stream_url=" + this.c + " u64_timestamp=" + l4 + " str_device_type=" + this.b.get("str_device_type") + " u32_network_type=" + g("u32_network_type") + " u32_dns_time=" + l1 + " u32_connect_server_time=" + l2 + " u32_server_ip=" + str1 + " u32_video_resolution=" + (this.d << 16 | this.e) + " u32_audio_samplerate=" + this.g + " u32_video_bitrate=" + this.f + " str_user_id=" + this.b.get("str_user_id") + " str_package_name=" + this.b.get("str_package_name") + " u32_channel_type=" + l3 + " str_app_version=" + this.b.get("dev_uuid") + " dev_uuid=" + g("u32_max_load"));
@@ -626,10 +951,10 @@ public class e
     localTXCDRExtInfo.report_common = false;
     localTXCDRExtInfo.report_status = false;
     localTXCDRExtInfo.url = this.c;
-    long l3 = TXCStatus.a(this.B, 7009);
-    long l1 = TXCStatus.a(this.B, 7013);
+    long l3 = TXCStatus.a(this.ad, 7009);
+    long l1 = TXCStatus.a(this.ad, 7013);
     String str = (String)this.b.get("token");
-    TXCDRApi.InitEvent(this.h, str, com.tencent.liteav.basic.datareport.a.R, com.tencent.liteav.basic.datareport.a.al, localTXCDRExtInfo);
+    TXCDRApi.InitEvent(this.h, str, com.tencent.liteav.basic.datareport.a.R, com.tencent.liteav.basic.datareport.a.am, localTXCDRExtInfo);
     long l2 = TXCTimeUtil.getUtcTimeTick();
     TXCDRApi.txSetEventIntValue(str, com.tencent.liteav.basic.datareport.a.R, "u64_timestamp", l2);
     l3 = (TXCTimeUtil.getTimeTick() - l3) / 1000L;
@@ -639,11 +964,11 @@ public class e
     TXCDRApi.txSetEventIntValue(str, com.tencent.liteav.basic.datareport.a.R, "u32_channel_type", l1);
     TXCDRApi.txSetEventValue(str, com.tencent.liteav.basic.datareport.a.R, "str_app_version", this.i);
     TXCDRApi.txSetEventValue(str, com.tencent.liteav.basic.datareport.a.R, "dev_uuid", (String)this.b.get("dev_uuid"));
-    int i1 = TXCStatus.c(this.B, 7016);
+    int i1 = TXCStatus.c(this.ad, 7016);
     TXCDRApi.txSetEventValue(str, com.tencent.liteav.basic.datareport.a.R, "u32_ip_count_quic", String.valueOf(i1));
-    i1 = TXCStatus.c(this.B, 7017);
+    i1 = TXCStatus.c(this.ad, 7017);
     TXCDRApi.txSetEventValue(str, com.tencent.liteav.basic.datareport.a.R, "u32_connect_count_quic", String.valueOf(i1));
-    i1 = TXCStatus.c(this.B, 7018);
+    i1 = TXCStatus.c(this.ad, 7018);
     TXCDRApi.txSetEventValue(str, com.tencent.liteav.basic.datareport.a.R, "u32_connect_count_tcp", String.valueOf(i1));
     TXCDRApi.nativeReportEvent(str, com.tencent.liteav.basic.datareport.a.R);
     TXCLog.d(a, "report evt 40002: token=" + str + " str_stream_url=" + this.c + " u64_timestamp=" + l2 + " u32_result=" + l3 + " str_user_id=" + this.b.get("str_user_id") + " str_package_name=" + this.b.get("str_package_name") + " u32_channel_type=" + l1 + " str_app_version=" + this.i + " dev_uuid=" + this.b.get("dev_uuid"));
@@ -657,27 +982,27 @@ public class e
     localTXCDRExtInfo.report_common = false;
     localTXCDRExtInfo.report_status = true;
     localTXCDRExtInfo.url = this.c;
-    Object localObject = f.a();
+    Object localObject = h.a();
     int i1 = localObject[0];
     int i2 = localObject[1];
-    int i3 = f.b();
-    long l1 = TXCStatus.a(this.B, 7013);
-    int i4 = TXCStatus.c(this.B, 7004);
-    int i5 = TXCStatus.c(this.B, 7003);
-    double d1 = TXCStatus.d(this.B, 4001);
-    int i6 = TXCStatus.c(this.B, 7005);
-    int i7 = TXCStatus.c(this.B, 7002);
-    int i8 = TXCStatus.c(this.B, 7001);
-    int i9 = TXCStatus.c(this.B, 4007);
-    localObject = TXCStatus.b(this.B, 7012);
-    String str1 = TXCStatus.b(this.B, 7014);
-    String str2 = TXCStatus.b(this.B, 7015);
-    String str3 = TXCStatus.b(this.B, 3001);
-    long l2 = TXCStatus.a(this.B, 3002);
-    double d2 = TXCStatus.d(this.B, 3003);
-    int i10 = TXCStatus.c(this.B, 7020);
+    int i3 = h.b();
+    long l1 = TXCStatus.a(this.ad, 7013);
+    int i4 = TXCStatus.c(this.ad, 7004);
+    int i5 = TXCStatus.c(this.ad, 7003);
+    double d1 = TXCStatus.d(this.ad, 4001);
+    int i6 = TXCStatus.c(this.ad, 7005);
+    int i7 = TXCStatus.c(this.ad, 7002);
+    int i8 = TXCStatus.c(this.ad, 7001);
+    int i9 = TXCStatus.c(this.ad, 4007);
+    localObject = TXCStatus.b(this.ad, 7012);
+    String str1 = TXCStatus.b(this.ad, 7014);
+    String str2 = TXCStatus.b(this.ad, 7015);
+    String str3 = TXCStatus.b(this.ad, 3001);
+    long l2 = TXCStatus.a(this.ad, 3002);
+    double d2 = TXCStatus.d(this.ad, 3003);
+    int i10 = TXCStatus.c(this.ad, 7020);
     String str4 = (String)this.b.get("token");
-    TXCDRApi.InitEvent(this.h, str4, com.tencent.liteav.basic.datareport.a.Q, com.tencent.liteav.basic.datareport.a.al, localTXCDRExtInfo);
+    TXCDRApi.InitEvent(this.h, str4, com.tencent.liteav.basic.datareport.a.Q, com.tencent.liteav.basic.datareport.a.am, localTXCDRExtInfo);
     TXCDRApi.txSetEventIntValue(str4, com.tencent.liteav.basic.datareport.a.Q, "u32_avg_audio_bitrate", i7);
     TXCDRApi.txSetEventIntValue(str4, com.tencent.liteav.basic.datareport.a.Q, "u32_avg_video_bitrate", i8);
     TXCDRApi.txSetEventIntValue(str4, com.tencent.liteav.basic.datareport.a.Q, "u32_avg_net_speed", i4 + i5);
@@ -704,28 +1029,29 @@ public class e
   private void p()
   {
     AppMethodBeat.i(16589);
-    this.n = false;
-    this.o = 0L;
-    this.y = 0;
-    Object localObject2 = this.C;
+    this.p = false;
+    this.q = 0L;
+    this.B = 0;
+    Object localObject2 = this.ae;
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = TXCCommonUtil.getUserId();
     }
     localObject2 = localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      localObject2 = f.b(this.h);
+      localObject2 = h.b(this.h);
     }
     this.b.put("str_user_id", localObject2);
-    this.b.put("str_device_type", f.c());
-    this.b.put("str_device_type", f.c());
-    this.b.put("u32_network_type", Integer.valueOf(f.e(this.h)));
-    this.b.put("token", f.e());
-    this.b.put("str_package_name", f.c(this.h));
-    this.b.put("dev_uuid", f.f(this.h));
-    this.b.put("str_os_info", f.d());
-    this.x = TXCTimeUtil.getUtcTimeTick();
-    this.b.put("u64_timestamp", Long.valueOf(this.x));
+    this.b.put("str_device_type", h.c());
+    this.b.put("str_device_type", h.c());
+    this.b.put("u32_network_type", Integer.valueOf(h.e(this.h)));
+    this.b.put("token", h.e());
+    this.b.put("str_package_name", h.c(this.h));
+    this.b.put("dev_uuid", h.f(this.h));
+    this.b.put("str_os_info", h.d());
+    this.z = TXCTimeUtil.getUtcTimeTick();
+    this.b.put("u64_timestamp", Long.valueOf(this.z));
+    this.A = TXCTimeUtil.getTimeTick();
     AppMethodBeat.o(16589);
   }
   
@@ -734,9 +1060,14 @@ public class e
     AppMethodBeat.i(16567);
     p();
     this.k = -1L;
-    this.m = -1L;
+    this.o = -1L;
     this.l = 0L;
-    this.t = System.currentTimeMillis();
+    this.m = 0L;
+    this.n = 0L;
+    this.E = -1L;
+    this.F = 0L;
+    this.v = System.currentTimeMillis();
+    this.C = TXCTimeUtil.getTimeTick();
     AppMethodBeat.o(16567);
   }
   
@@ -757,54 +1088,54 @@ public class e
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(222365);
+    AppMethodBeat.i(244726);
     if (paramInt1 == 6002)
     {
-      d2 = TXCStatus.d(this.B, paramInt1);
+      d2 = TXCStatus.d(this.ad, paramInt1);
       if (d2 < 0.001D)
       {
-        AppMethodBeat.o(222365);
+        AppMethodBeat.o(244726);
         return;
       }
-      d1 = TXCStatus.d(this.B, paramInt2);
-      paramInt1 = TXCStatus.c(this.B, paramInt3) + 1;
+      d1 = TXCStatus.d(this.ad, paramInt2);
+      paramInt1 = TXCStatus.c(this.ad, paramInt3) + 1;
       d2 = (d2 - d1) / paramInt1;
-      TXCStatus.a(this.B, paramInt2, Double.valueOf(d2 + d1));
-      TXCStatus.a(this.B, paramInt3, Integer.valueOf(paramInt1));
-      AppMethodBeat.o(222365);
+      TXCStatus.a(this.ad, paramInt2, Double.valueOf(d2 + d1));
+      TXCStatus.a(this.ad, paramInt3, Integer.valueOf(paramInt1));
+      AppMethodBeat.o(244726);
       return;
     }
-    paramInt1 = TXCStatus.c(this.B, paramInt1);
+    paramInt1 = TXCStatus.c(this.ad, paramInt1);
     if (paramInt1 < 0.001D)
     {
-      AppMethodBeat.o(222365);
+      AppMethodBeat.o(244726);
       return;
     }
-    double d1 = TXCStatus.d(this.B, paramInt2);
-    int i1 = TXCStatus.c(this.B, paramInt3) + 1;
+    double d1 = TXCStatus.d(this.ad, paramInt2);
+    int i1 = TXCStatus.c(this.ad, paramInt3) + 1;
     double d2 = (paramInt1 - d1) / i1;
-    TXCStatus.a(this.B, paramInt2, Double.valueOf(d1 + d2));
-    TXCStatus.a(this.B, paramInt3, Integer.valueOf(i1));
-    AppMethodBeat.o(222365);
+    TXCStatus.a(this.ad, paramInt2, Double.valueOf(d1 + d2));
+    TXCStatus.a(this.ad, paramInt3, Integer.valueOf(i1));
+    AppMethodBeat.o(244726);
   }
   
   public void a(String paramString)
   {
-    AppMethodBeat.i(222361);
+    AppMethodBeat.i(244709);
     this.c = paramString;
     b(paramString);
-    AppMethodBeat.o(222361);
+    AppMethodBeat.o(244709);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.s = paramBoolean;
+    this.u = paramBoolean;
   }
   
   public void b()
   {
     AppMethodBeat.i(16568);
-    if (this.n)
+    if (this.p)
     {
       n();
       AppMethodBeat.o(16568);
@@ -830,18 +1161,18 @@ public class e
       AppMethodBeat.o(16591);
       return;
     }
-    this.z = paramString;
+    this.ab = paramString;
     AppMethodBeat.o(16591);
   }
   
   public void c()
   {
-    AppMethodBeat.i(222360);
-    if (this.n) {
-      if (this.s)
+    AppMethodBeat.i(244707);
+    if (this.p) {
+      if (this.u)
       {
         e(com.tencent.liteav.basic.datareport.a.Y);
-        if (!this.s) {
+        if (!this.u) {
           break label154;
         }
         d(com.tencent.liteav.basic.datareport.a.Z);
@@ -849,15 +1180,15 @@ public class e
     }
     for (;;)
     {
-      if (this.s) {
+      if (this.u) {
         k();
       }
-      TXCStatus.a(this.B, 7107, Long.valueOf(0L));
-      TXCStatus.a(this.B, 2033, Long.valueOf(0L));
-      TXCStatus.a(this.B, 6001, Long.valueOf(0L));
-      TXCStatus.a(this.B, 7104, Long.valueOf(0L));
-      TXCStatus.a(this.B, 7108, Long.valueOf(0L));
-      AppMethodBeat.o(222360);
+      TXCStatus.a(this.ad, 7107, Long.valueOf(0L));
+      TXCStatus.a(this.ad, 2033, Long.valueOf(0L));
+      TXCStatus.a(this.ad, 6001, Long.valueOf(0L));
+      TXCStatus.a(this.ad, 7104, Long.valueOf(0L));
+      TXCStatus.a(this.ad, 7108, Long.valueOf(0L));
+      AppMethodBeat.o(244707);
       return;
       if (d() == a.c) {
         break;
@@ -868,7 +1199,7 @@ public class e
       d(com.tencent.liteav.basic.datareport.a.W);
       continue;
       TXCLog.e(a, "play " + this.c + " failed");
-      if (this.s) {
+      if (this.u) {
         c(com.tencent.liteav.basic.datareport.a.X);
       } else {
         c(com.tencent.liteav.basic.datareport.a.U);
@@ -878,62 +1209,62 @@ public class e
   
   protected a d()
   {
-    AppMethodBeat.i(222362);
+    AppMethodBeat.i(244715);
     try
     {
-      Object localObject2 = Uri.parse(this.z);
+      Object localObject2 = Uri.parse(this.ab);
       if (localObject2 == null)
       {
         localObject1 = a.a;
-        AppMethodBeat.o(222362);
+        AppMethodBeat.o(244715);
         return localObject1;
       }
       localObject1 = ((Uri)localObject2).getHost();
       if (TextUtils.isEmpty((CharSequence)localObject1))
       {
         localObject1 = a.a;
-        AppMethodBeat.o(222362);
+        AppMethodBeat.o(244715);
         return localObject1;
       }
       String str = ((Uri)localObject2).getScheme();
       if (str == null)
       {
         localObject1 = a.a;
-        AppMethodBeat.o(222362);
+        AppMethodBeat.o(244715);
         return localObject1;
       }
       if ((!str.equals("rtmp")) && (!str.equals("http")) && (!str.equals("https")))
       {
         localObject1 = a.a;
-        AppMethodBeat.o(222362);
+        AppMethodBeat.o(244715);
         return localObject1;
       }
       if (c((String)localObject1))
       {
         localObject1 = a.b;
-        AppMethodBeat.o(222362);
+        AppMethodBeat.o(244715);
         return localObject1;
       }
       localObject2 = ((Uri)localObject2).getQueryParameterNames();
       if ((localObject2 != null) && ((((Set)localObject2).contains("bizid")) || (((Set)localObject2).contains("txTime")) || (((Set)localObject2).contains("txSecret"))))
       {
         localObject1 = a.b;
-        AppMethodBeat.o(222362);
+        AppMethodBeat.o(244715);
         return localObject1;
       }
-      if (A.containsKey(localObject1))
+      if (ac.containsKey(localObject1))
       {
-        localObject1 = (a)A.get(localObject1);
-        AppMethodBeat.o(222362);
+        localObject1 = (a)ac.get(localObject1);
+        AppMethodBeat.o(244715);
         return localObject1;
       }
-      A.put(localObject1, a.a);
+      ac.put(localObject1, a.a);
       new Thread(new Runnable()
       {
         public void run()
         {
           boolean bool2 = false;
-          AppMethodBeat.i(222644);
+          AppMethodBeat.i(242509);
           try
           {
             Object localObject = com.tencent.liteav.network.a.a.a.c().a(new b(this.a, true), null);
@@ -962,7 +1293,7 @@ public class e
             {
               localHashMap.put(str, localObject);
               TXCLog.d(e.h(), this.a + " isTencent " + bool1);
-              AppMethodBeat.o(222644);
+              AppMethodBeat.o(242509);
               return;
               i += 1;
               break;
@@ -972,7 +1303,7 @@ public class e
           catch (Exception localException)
           {
             TXCLog.e(e.h(), "check dns failed.", localException);
-            AppMethodBeat.o(222644);
+            AppMethodBeat.o(242509);
           }
         }
       }).start();
@@ -986,37 +1317,37 @@ public class e
       }
     }
     localObject1 = a.a;
-    AppMethodBeat.o(222362);
+    AppMethodBeat.o(244715);
     return localObject1;
   }
   
   public void d(String paramString)
   {
-    this.B = paramString;
+    this.ad = paramString;
   }
   
   public void e()
   {
-    AppMethodBeat.i(222364);
-    if ((!this.n) && (!TextUtils.isEmpty(TXCStatus.b(this.B, 7012))))
+    AppMethodBeat.i(244723);
+    if ((!this.p) && (!TextUtils.isEmpty(TXCStatus.b(this.ad, 7012))))
     {
       m();
-      this.n = true;
+      this.p = true;
     }
-    if (this.o <= 0L) {
-      this.o = TXCTimeUtil.getTimeTick();
+    if (this.q <= 0L) {
+      this.q = TXCTimeUtil.getTimeTick();
     }
-    if ((this.n) && (TXCTimeUtil.getTimeTick() - this.o > 5000L))
+    if ((this.p) && (TXCTimeUtil.getTimeTick() - this.q > 5000L))
     {
       o();
-      this.o = TXCTimeUtil.getTimeTick();
+      this.q = TXCTimeUtil.getTimeTick();
     }
-    AppMethodBeat.o(222364);
+    AppMethodBeat.o(244723);
   }
   
   public void e(String paramString)
   {
-    this.C = paramString;
+    this.ae = paramString;
   }
   
   public void f()
@@ -1024,58 +1355,58 @@ public class e
     AppMethodBeat.i(16592);
     i();
     int i1;
-    if (!this.n)
+    if (!this.p)
     {
-      long l1 = TXCStatus.a(this.B, 6001);
-      long l2 = TXCStatus.a(this.B, 7104);
-      long l3 = TXCStatus.a(this.B, 2033);
-      long l4 = TXCStatus.a(this.B, 7108);
+      long l1 = TXCStatus.a(this.ad, 6001);
+      long l2 = TXCStatus.a(this.ad, 7104);
+      long l3 = TXCStatus.a(this.ad, 2033);
+      long l4 = TXCStatus.a(this.ad, 7108);
       if ((l1 > 0L) && (l2 > 0L) && (l4 > 0L) && (l3 > 0L))
       {
-        if (!this.s) {
+        if (!this.u) {
           break label292;
         }
         i1 = com.tencent.liteav.basic.datareport.a.X;
         c(i1);
-        this.p = 5000;
-        this.n = true;
+        this.r = 5000;
+        this.p = true;
       }
-      String str = TXCStatus.b(this.B, 7119);
+      String str = TXCStatus.b(this.ad, 7119);
       if (str != null) {
         b(str);
       }
     }
-    if ((this.y >= 3) && (!this.n))
+    if ((this.B >= 3) && (!this.p))
     {
-      if (this.s)
+      if (this.u)
       {
         i1 = com.tencent.liteav.basic.datareport.a.X;
         label168:
         c(i1);
-        this.p = 5000;
-        this.n = true;
+        this.r = 5000;
+        this.p = true;
       }
     }
     else
     {
-      this.y += 1;
-      if (this.o <= 0L) {
-        this.o = TXCTimeUtil.getTimeTick();
+      this.B += 1;
+      if (this.q <= 0L) {
+        this.q = TXCTimeUtil.getTimeTick();
       }
-      if (TXCTimeUtil.getTimeTick() > this.o + this.p)
+      if (TXCTimeUtil.getTimeTick() > this.q + this.r)
       {
-        if (!this.s) {
+        if (!this.u) {
           break label306;
         }
         e(com.tencent.liteav.basic.datareport.a.Y);
-        this.p = 5000;
+        this.r = 5000;
       }
     }
     for (;;)
     {
-      this.k = TXCStatus.a(this.B, 6004);
-      this.m = TXCStatus.c(this.B, 2002);
-      this.o = TXCTimeUtil.getTimeTick();
+      this.k = TXCStatus.a(this.ad, 6004);
+      this.o = TXCStatus.c(this.ad, 2002);
+      this.q = TXCTimeUtil.getTimeTick();
       AppMethodBeat.o(16592);
       return;
       label292:
@@ -1090,12 +1421,12 @@ public class e
         return;
       }
       e(com.tencent.liteav.basic.datareport.a.V);
-      this.p = TXCDRApi.getStatusReportInterval();
-      if (this.p < 5000) {
-        this.p = 5000;
+      this.r = TXCDRApi.getStatusReportInterval();
+      if (this.r < 5000) {
+        this.r = 5000;
       }
-      if (this.p > 300000) {
-        this.p = 300000;
+      if (this.r > 300000) {
+        this.r = 300000;
       }
     }
   }
@@ -1104,12 +1435,12 @@ public class e
   {
     static
     {
-      AppMethodBeat.i(222387);
+      AppMethodBeat.i(221733);
       a = new a("PENDING", 0);
       b = new a("CONFIRM", 1);
       c = new a("NEGATIVE", 2);
       d = new a[] { a, b, c };
-      AppMethodBeat.o(222387);
+      AppMethodBeat.o(221733);
     }
     
     private a() {}
@@ -1117,7 +1448,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.e
  * JD-Core Version:    0.7.0.1
  */

@@ -11,17 +11,19 @@ public final class a
   public String adActionExtTailUserDisplayName;
   public String adActionExtTailWording;
   public LinkedList<String> adActionExtUserList;
+  public String adExtTailWording;
+  public int adExtTailWordingExchangeValue;
   
   public a()
   {
-    AppMethodBeat.i(202579);
+    AppMethodBeat.i(200184);
     this.adActionExtUserList = new LinkedList();
-    AppMethodBeat.o(202579);
+    AppMethodBeat.o(200184);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.data.a
  * JD-Core Version:    0.7.0.1
  */

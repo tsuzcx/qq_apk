@@ -1,21 +1,10 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.storage.ca;
 
 public abstract interface j
-  extends a
 {
-  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong);
-  
-  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2);
-  
-  public abstract void a(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2);
-  
-  public abstract boolean aBf(String paramString);
-  
-  public abstract boolean aBg(String paramString);
-  
-  public abstract void b(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2);
+  public abstract String af(ca paramca);
 }
 
 

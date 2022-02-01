@@ -5,13 +5,13 @@ import java.util.regex.Pattern;
 
 public final class b
 {
-  public static final Pattern plL;
+  public static final Pattern sod;
   
   static
   {
-    AppMethodBeat.i(208694);
-    plL = Pattern.compile("(([a-zA-Z]{2}[0-9]{11,13})|([0-9]{13,15}))[0-9a-zA-Z]?");
-    AppMethodBeat.o(208694);
+    AppMethodBeat.i(207239);
+    sod = Pattern.compile("(([a-zA-Z]{2}[0-9]{11,13})|([0-9]{13,15}))[0-9a-zA-Z]?");
+    AppMethodBeat.o(207239);
   }
 }
 

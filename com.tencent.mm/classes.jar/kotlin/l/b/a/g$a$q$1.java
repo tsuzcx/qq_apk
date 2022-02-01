@@ -5,17 +5,17 @@ import kotlin.g.a.a;
 import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Ljava/lang/Class;", "", "T", "invoke"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Ljava/lang/Class;", "", "T", "invoke"})
 final class g$a$q$1
   extends q
   implements a<Class<Object>>
 {
-  public static final 1 Tas;
+  public static final 1 aaDm;
   
   static
   {
     AppMethodBeat.i(56323);
-    Tas = new 1();
+    aaDm = new 1();
     AppMethodBeat.o(56323);
   }
   

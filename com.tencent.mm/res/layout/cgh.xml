@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/k5x" android:background="@color/UN_BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/cf">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/k5y" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_filled_back2" android:layout_centerVertical="true" android:layout_marginStart="@dimen/cb" android:layout_alignParentStart="true" app:iconColor="@color/BW_100_Alpha_0_8" />
+            <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jwo" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/k5w" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/ce" android:layout_marginTop="@dimen/cr" android:layout_marginRight="@dimen/ce" android:layout_marginBottom="@dimen/cd">
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ce" layout="@layout/ckw" />
+        <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/k5v" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <TextView android:textSize="17.0dip" android:textColor="@color/UN_BW_0_Alpha_0_9" android:gravity="center" android:layout_gravity="bottom|center" android:id="@id/g3k" android:background="@drawable/cwd" android:layout_width="@dimen/c8" android:layout_height="@dimen/cl" android:layout_marginBottom="@dimen/c2" android:text="@string/x_" />
+</FrameLayout>

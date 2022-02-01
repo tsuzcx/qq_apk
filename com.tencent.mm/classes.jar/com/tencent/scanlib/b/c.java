@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qbar.QbarNative.QBarZoomInfo;
 import com.tencent.qbar.a.a;
+import com.tencent.scanlib.b;
 import com.tencent.stubs.logger.Log;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,53 +19,53 @@ import java.util.concurrent.Executors;
 
 public final class c
 {
-  private static c ROG;
-  public Object CCt;
-  private Map CDO;
-  private ExecutorService CDQ;
-  public long CDU;
-  private boolean CDW;
-  public int CDX;
-  public int[] RKg;
-  public a ROF;
-  public ExecutorService ROH;
-  private c ROI;
+  private static c Zrm;
+  public Object Brg;
+  private Map IIq;
+  private ExecutorService IIs;
+  public long IIw;
+  private boolean IIy;
+  public int IIz;
+  public int[] ZmP;
+  public a Zrl;
+  public ExecutorService Zrn;
+  private c Zro;
   
   static
   {
     AppMethodBeat.i(3563);
-    ROG = new c();
+    Zrm = new c();
     AppMethodBeat.o(3563);
   }
   
   private c()
   {
     AppMethodBeat.i(3560);
-    this.RKg = new int[] { 2, 1 };
-    this.CDO = new HashMap();
-    this.CCt = new Object();
-    this.ROH = Executors.newSingleThreadExecutor();
-    this.CDQ = Executors.newSingleThreadExecutor();
-    this.ROF = new a("ScanDecodeQueue");
+    this.ZmP = new int[] { 2, 1 };
+    this.IIq = new HashMap();
+    this.Brg = new Object();
+    this.Zrn = Executors.newSingleThreadExecutor();
+    this.IIs = Executors.newSingleThreadExecutor();
+    this.Zrl = new a("ScanDecodeQueue");
     AppMethodBeat.o(3560);
   }
   
-  public static c hld()
+  public static c ioC()
   {
-    return ROG;
+    return Zrm;
   }
   
-  public final void Iv(long paramLong)
+  public final void PP(long paramLong)
   {
     AppMethodBeat.i(3561);
-    synchronized (this.CCt)
+    synchronized (this.Brg)
     {
-      if (this.CDU == paramLong)
+      if (this.IIw == paramLong)
       {
-        this.CDU = 0L;
-        this.ROI = null;
-        this.CDX = 0;
-        this.CDO.clear();
+        this.IIw = 0L;
+        this.Zro = null;
+        this.IIz = 0;
+        this.IIq.clear();
       }
       AppMethodBeat.o(3561);
       return;
@@ -73,11 +74,11 @@ public final class c
   
   public final void a(long paramLong, c paramc)
   {
-    synchronized (this.CCt)
+    synchronized (this.Brg)
     {
-      this.CDU = paramLong;
-      this.ROI = paramc;
-      this.CDX = 0;
+      this.IIw = paramLong;
+      this.Zro = paramc;
+      this.IIz = 0;
       return;
     }
   }
@@ -85,19 +86,19 @@ public final class c
   public final class a
     implements Runnable
   {
-    private byte[] CDY;
-    private Point CDZ;
-    private long dDZ;
-    private Rect iiw;
-    private int sRI;
+    private byte[] IIA;
+    private Point IIB;
+    private long fwK;
+    private Rect kXj;
+    private int wxE;
     
     public a(long paramLong, byte[] paramArrayOfByte, Point paramPoint, int paramInt, Rect paramRect)
     {
-      this.dDZ = paramLong;
-      this.CDY = paramArrayOfByte;
-      this.CDZ = paramPoint;
-      this.sRI = paramInt;
-      this.iiw = paramRect;
+      this.fwK = paramLong;
+      this.IIA = paramArrayOfByte;
+      this.IIB = paramPoint;
+      this.wxE = paramInt;
+      this.kXj = paramRect;
     }
     
     public final void run()
@@ -107,7 +108,7 @@ public final class c
       byte[] arrayOfByte;
       synchronized (c.a(c.this))
       {
-        arrayOfByte = c.a(c.this).a(this.CDY, this.CDZ, this.sRI, this.iiw, arrayOfInt);
+        arrayOfByte = c.a(c.this).a(this.IIA, this.IIB, this.wxE, this.kXj, arrayOfInt);
         ??? = c.b(c.this);
         if (arrayOfByte == null) {}
       }
@@ -117,13 +118,13 @@ public final class c
   final class b
     implements Runnable
   {
-    private byte[] RKB;
-    private Point RKC;
-    private long dDZ;
+    private byte[] Znj;
+    private Point Znk;
+    private long fwK;
     
     b(long paramLong)
     {
-      this.dDZ = paramLong;
+      this.fwK = paramLong;
     }
     
     public final void run()
@@ -133,19 +134,19 @@ public final class c
       ArrayList localArrayList2;
       synchronized (c.b(c.this))
       {
-        if (this.dDZ == c.c(c.this))
+        if (this.fwK == c.c(c.this))
         {
           c.a(c.this, true);
           if (!c.d(c.this).isEmpty())
           {
             ??? = (byte[])c.d(c.this).get("param_gray_data");
-            this.RKB = Arrays.copyOf((byte[])???, ???.length);
-            this.RKC = new Point((Point)c.d(c.this).get("param_out_size"));
+            this.Znj = Arrays.copyOf((byte[])???, ???.length);
+            this.Znk = new Point((Point)c.d(c.this).get("param_out_size"));
             c.d(c.this).clear();
           }
           localArrayList1 = new ArrayList();
           localArrayList2 = new ArrayList();
-          if ((this.RKB == null) || (this.RKC == null)) {
+          if ((this.Znj == null) || (this.Znk == null)) {
             break label468;
           }
         }
@@ -158,12 +159,12 @@ public final class c
           if (c.a(c.this).hasInited())
           {
             c.i(c.this);
-            ??? = c.a(c.this).U(this.RKB, this.RKC.x, this.RKC.y);
-            localQBarZoomInfo = c.a(c.this).hlb();
-            c.a(c.this).H(localArrayList1, localArrayList2);
+            ??? = c.a(c.this).W(this.Znj, this.Znk.x, this.Znk.y);
+            localQBarZoomInfo = c.a(c.this).ioA();
+            c.a(c.this).N(localArrayList1, localArrayList2);
             synchronized (c.b(c.this))
             {
-              if (this.dDZ != c.c(c.this)) {
+              if (this.fwK != c.c(c.this)) {
                 break label734;
               }
               localObject5 = com.tencent.qbar.a.getVersion();
@@ -214,13 +215,13 @@ public final class c
       Log.i("ScanDecodeQueue", String.format("detect %d codes", new Object[] { Integer.valueOf(localArrayList1.size()) }));
       if (localArrayList1.size() > 0)
       {
-        localArrayList1 = com.tencent.scanlib.a.G(localArrayList1, localArrayList2);
+        localArrayList1 = b.M(localArrayList1, localArrayList2);
         if (!localArrayList1.isEmpty()) {
           ((Bundle)localObject5).putParcelableArrayList("param_detect_codes", localArrayList1);
         }
       }
       if (!((Bundle)localObject5).isEmpty()) {
-        c.g(c.this).b(this.dDZ, (Bundle)localObject5);
+        c.g(c.this).b(this.fwK, (Bundle)localObject5);
       }
       if ((localList != null) && (!localList.isEmpty()))
       {
@@ -242,7 +243,7 @@ public final class c
   
   public static abstract interface c
   {
-    public abstract void aj(long paramLong1, long paramLong2);
+    public abstract void as(long paramLong1, long paramLong2);
     
     public abstract void b(long paramLong, Bundle paramBundle);
     

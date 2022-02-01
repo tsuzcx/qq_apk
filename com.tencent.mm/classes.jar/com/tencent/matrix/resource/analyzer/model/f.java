@@ -7,20 +7,20 @@ import java.io.Serializable;
 public final class f
   implements Serializable
 {
-  public final String cWR;
-  public final File cXV;
+  public final String daR;
+  public final File dbW;
   public final String mActivityName;
   
   public f(File paramFile, String paramString1, String paramString2)
   {
-    this.cXV = ((File)b.checkNotNull(paramFile, "hprofFile"));
-    this.cWR = ((String)b.checkNotNull(paramString1, "refKey"));
-    this.mActivityName = ((String)b.checkNotNull(paramString2, "activityName"));
+    this.dbW = ((File)b.c(paramFile, "hprofFile"));
+    this.daR = ((String)b.c(paramString1, "refKey"));
+    this.mActivityName = ((String)b.c(paramString2, "activityName"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.resource.analyzer.model.f
  * JD-Core Version:    0.7.0.1
  */

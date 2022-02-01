@@ -10,33 +10,33 @@ import java.util.HashSet;
 
 public final class d
 {
-  private static String SKM;
-  private static HashSet<String> SKN;
+  private static String aamG;
+  private static HashSet<String> aamH;
   
   static
   {
     AppMethodBeat.i(3466);
-    SKN = new HashSet();
+    aamH = new HashSet();
     AppMethodBeat.o(3466);
   }
   
-  public static String hwb()
+  public static String iAa()
   {
-    if (SKM == null) {
+    if (aamG == null) {
       return "";
     }
-    return SKM;
+    return aamG;
   }
   
-  public static boolean hwc()
+  public static boolean iAb()
   {
     AppMethodBeat.i(3465);
-    if (SKM == null)
+    if (aamG == null)
     {
       AppMethodBeat.o(3465);
       return false;
     }
-    boolean bool = SKN.contains(SKM);
+    boolean bool = aamH.contains(aamG);
     AppMethodBeat.o(3465);
     return bool;
   }
@@ -80,7 +80,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tinkerboots.sdk.b.d
  * JD-Core Version:    0.7.0.1
  */

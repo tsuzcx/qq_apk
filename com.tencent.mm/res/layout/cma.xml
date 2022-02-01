@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/gwi" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:background="@color/a2r" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:orientation="vertical" android:id="@id/gwf" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:background="@drawable/azy" android:paddingLeft="@dimen/c5" android:layout_width="wrap_content" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/bt" android:layout_marginBottom="@dimen/ct" android:layout_centerHorizontal="true">
+                <ImageView android:layout_gravity="center_vertical" android:layout_width="12.0dip" android:layout_height="12.0dip" android:src="@raw/finder_live_icon" />
+                <TextView android:textSize="@dimen/bd" android:textColor="@color/FG_0_5" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/gwu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="直播中" android:singleLine="true" />
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/ct" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bt" android:layout_marginRight="@dimen/c5" android:src="@raw/icons_outlined_arrow" android:scaleType="fitCenter" android:contentDescription="@null" />
+            </LinearLayout>
+        </RelativeLayout>
+        <View android:layout_gravity="bottom" android:id="@id/gnw" android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    </LinearLayout>
+</FrameLayout>

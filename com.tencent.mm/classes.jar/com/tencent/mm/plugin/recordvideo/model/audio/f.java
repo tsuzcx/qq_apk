@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.recordvideo.model.audio;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.clj;
-import com.tencent.mm.protocal.protobuf.clk;
-import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.an.c;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.protocal.protobuf.cug;
+import com.tencent.mm.protocal.protobuf.cuh;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.jh;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/model/audio/CgiSearchMusic;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/MMSPRBgmSearchResp;", "searchRequestId", "", "query", "", "offset", "", "relatedRecId", "audioCount", "(JLjava/lang/String;IJI)V", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/model/audio/CgiSearchMusic;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/MMSPRBgmSearchResp;", "searchRequestId", "", "query", "", "offset", "", "relatedRecId", "audioCount", "(JLjava/lang/String;IJI)V", "plugin-recordvideo_release"})
 public final class f
-  extends c<clk>
+  extends c<cuh>
 {
   private f(long paramLong1, String paramString, int paramInt, long paramLong2)
   {
     AppMethodBeat.i(75423);
-    clj localclj = new clj();
-    clk localclk = new clk();
-    localclk.setBaseResponse(new BaseResponse());
-    localclk.getBaseResponse().ErrMsg = new dqi();
-    localclj.MqH = paramLong1;
-    localclj.query = paramString;
-    localclj.offset = paramInt;
-    localclj.Ler = 10;
-    localclj.MqI = paramLong2;
+    cug localcug = new cug();
+    cuh localcuh = new cuh();
+    localcuh.setBaseResponse(new jh());
+    localcuh.getBaseResponse().Tef = new eaf();
+    localcug.TBW = paramLong1;
+    localcug.query = paramString;
+    localcug.offset = paramInt;
+    localcug.SfE = 10;
+    localcug.TBX = paramLong2;
     paramString = new d.a();
-    paramString.c((a)localclj);
-    paramString.d((a)localclk);
-    paramString.MB("/cgi-bin/spr-bin/mmsprbgmsearch");
-    paramString.sG(3554);
-    c(paramString.aXF());
+    paramString.c((a)localcug);
+    paramString.d((a)localcuh);
+    paramString.TW("/cgi-bin/spr-bin/mmsprbgmsearch");
+    paramString.vD(3554);
+    c(paramString.bgN());
     AppMethodBeat.o(75423);
   }
 }

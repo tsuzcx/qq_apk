@@ -4,15 +4,13 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.jsapi.n;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
 
 public abstract interface c
-  extends n, g, Comparable<c>
+  extends m, g, Comparable<c>
 {
-  @Deprecated
-  public abstract boolean OD();
+  public abstract boolean RZ();
   
   public abstract d a(d.b paramb);
   
@@ -20,9 +18,9 @@ public abstract interface c
   
   public abstract void a(WxaWindowLayoutParams paramWxaWindowLayoutParams, AppBrandRuntime paramAppBrandRuntime);
   
-  public abstract boolean bsc();
+  public abstract boolean bCS();
   
-  public abstract boolean bsj();
+  public abstract boolean bCZ();
   
   public abstract Context getContext();
   
@@ -32,19 +30,17 @@ public abstract interface c
   
   public abstract DisplayMetrics getVDisplayMetrics();
   
-  public abstract boolean isInMultiWindowMode();
-  
   @Deprecated
   public abstract void setSoftOrientation(String paramString);
   
   public abstract void setWindowDescription(a parama);
   
-  public static final class a
+  public static class a
   {
     public final int colorPrimary;
     public final String label;
-    public final Bitmap nEk;
-    public final int noe;
+    public final Bitmap qGu;
+    public final int qpN;
     
     public a(String paramString)
     {
@@ -54,31 +50,17 @@ public abstract interface c
     public a(String paramString, Bitmap paramBitmap, int paramInt)
     {
       this.label = paramString;
-      this.nEk = paramBitmap;
-      this.noe = -1;
+      this.qGu = paramBitmap;
+      this.qpN = -1;
       this.colorPrimary = paramInt;
     }
   }
   
-  public static final class b {}
-  
-  public static final class c
-  {
-    public int height;
-    public int visibility = 0;
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(176697);
-      String str = "WindowStatusBar{height=" + this.height + ", visibility=" + this.visibility + '}';
-      AppMethodBeat.o(176697);
-      return str;
-    }
-  }
+  public static class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.platform.window.c
  * JD-Core Version:    0.7.0.1
  */

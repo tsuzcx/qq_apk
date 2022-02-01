@@ -1,50 +1,48 @@
 package com.tencent.mm.plugin.game;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.api.bucket.c;
-import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.model.b;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.game.model.r;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
   implements c, com.tencent.mm.plugin.game.api.e
 {
-  private b xtL;
-  private r xtM;
+  private com.tencent.mm.plugin.game.model.b Cgk;
+  private r Cgl;
   
-  public final b dSI()
+  public final com.tencent.mm.plugin.game.model.b evm()
   {
     AppMethodBeat.i(40843);
-    g.aAf().azk();
-    if (this.xtL == null) {
-      this.xtL = new b();
+    h.aHE().aGH();
+    if (this.Cgk == null) {
+      this.Cgk = new com.tencent.mm.plugin.game.model.b();
     }
-    b localb = this.xtL;
+    com.tencent.mm.plugin.game.model.b localb = this.Cgk;
     AppMethodBeat.o(40843);
     return localb;
   }
   
-  public final r dSJ()
+  public final r evn()
   {
     AppMethodBeat.i(40845);
-    g.aAf().azk();
-    if (this.xtM == null) {
-      this.xtM = new r();
+    h.aHE().aGH();
+    if (this.Cgl == null) {
+      this.Cgl = new r();
     }
-    r localr = this.xtM;
+    r localr = this.Cgl;
     AppMethodBeat.o(40845);
     return localr;
   }
   
-  public final void onAccountInitialized(e.c paramc)
+  public final void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(40841);
     Log.i("MicroMsg.GameService", "GameService onAccountInitialized");
-    this.xtL = new b();
-    this.xtM = new r();
+    this.Cgk = new com.tencent.mm.plugin.game.model.b();
+    this.Cgl = new r();
     AppMethodBeat.o(40841);
   }
   
@@ -57,7 +55,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.e
  * JD-Core Version:    0.7.0.1
  */

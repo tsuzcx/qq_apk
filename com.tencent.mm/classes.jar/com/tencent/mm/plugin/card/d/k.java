@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.card.d;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.va;
+import com.tencent.mm.protocal.protobuf.vc;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 import org.json.JSONArray;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 
 public final class k
 {
-  public static LinkedList<va> G(String paramString1, int paramInt, String paramString2)
+  public static LinkedList<vc> H(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(113810);
     if (TextUtils.isEmpty(paramString1))
@@ -52,15 +52,15 @@ public final class k
         try
         {
           paramString1 = new JSONObject(localJSONArray.optString(i));
-          va localva = new va();
+          vc localvc = new vc();
           if (paramInt == 26)
           {
             str = "cardId";
-            localva.pRX = paramString1.optString(str);
-            localva.code = paramString1.optString("code");
-            localva.Lfm = paramString1.optString("openCardParams");
-            localva.dNI = paramString2;
-            localLinkedList.add(localva);
+            localvc.tnX = paramString1.optString(str);
+            localvc.code = paramString1.optString("code");
+            localvc.SgA = paramString1.optString("openCardParams");
+            localvc.appid = paramString2;
+            localLinkedList.add(localvc);
           }
         }
         catch (JSONException paramString1)
@@ -88,7 +88,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.card.d.k
  * JD-Core Version:    0.7.0.1
  */

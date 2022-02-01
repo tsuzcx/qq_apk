@@ -1,79 +1,42 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.g.a.b;
 import kotlin.l;
+import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/JobImpl;", "Lkotlinx/coroutines/JobSupport;", "Lkotlinx/coroutines/CompletableJob;", "parent", "Lkotlinx/coroutines/Job;", "(Lkotlinx/coroutines/Job;)V", "handlesException", "", "getHandlesException$kotlinx_coroutines_core", "()Z", "onCancelComplete", "getOnCancelComplete$kotlinx_coroutines_core", "complete", "completeExceptionally", "exception", "", "kotlinx-coroutines-core"})
-public class bx
-  extends ca
-  implements u
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/InvokeOnCompletion;", "Lkotlinx/coroutines/JobNode;", "Lkotlinx/coroutines/Job;", "job", "handler", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "(Lkotlinx/coroutines/Job;Lkotlin/jvm/functions/Function1;)V", "invoke", "toString", "", "kotlinx-coroutines-core"})
+final class bx
+  extends cd<by>
 {
-  private final boolean TUR;
+  private final b<Throwable, x> oFZ;
   
-  public bx(bu parambu)
+  public bx(by paramby, b<? super Throwable, x> paramb)
   {
-    super(true);
-    AppMethodBeat.i(192497);
-    b(parambu);
-    Object localObject = (q)this._parentHandle;
-    parambu = (bu)localObject;
-    if (!(localObject instanceof r)) {
-      parambu = null;
-    }
-    parambu = (r)parambu;
-    boolean bool;
-    if (parambu != null)
-    {
-      localObject = (ca)parambu.TUQ;
-      parambu = (bu)localObject;
-      if (localObject != null) {}
-    }
-    else
-    {
-      bool = false;
-    }
-    for (;;)
-    {
-      this.TUR = bool;
-      AppMethodBeat.o(192497);
-      return;
-      do
-      {
-        if (parambu.hNl())
-        {
-          bool = true;
-          break;
-        }
-        localObject = (q)parambu._parentHandle;
-        parambu = (bu)localObject;
-        if (!(localObject instanceof r)) {
-          parambu = null;
-        }
-        parambu = (r)parambu;
-        if (parambu == null) {
-          break label124;
-        }
-        localObject = (ca)parambu.TUQ;
-        parambu = (bu)localObject;
-      } while (localObject != null);
-      label124:
-      bool = false;
-    }
+    super(paramby);
+    AppMethodBeat.i(118058);
+    this.oFZ = paramb;
+    AppMethodBeat.o(118058);
   }
   
-  public final boolean hNk()
+  public final String toString()
   {
-    return true;
+    AppMethodBeat.i(118057);
+    String str = "InvokeOnCompletion[" + getClass().getSimpleName() + '@' + Integer.toHexString(System.identityHashCode(this)) + ']';
+    AppMethodBeat.o(118057);
+    return str;
   }
   
-  public final boolean hNl()
+  public final void y(Throwable paramThrowable)
   {
-    return this.TUR;
+    AppMethodBeat.i(118055);
+    this.oFZ.invoke(paramThrowable);
+    AppMethodBeat.o(118055);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     kotlinx.coroutines.bx
  * JD-Core Version:    0.7.0.1
  */

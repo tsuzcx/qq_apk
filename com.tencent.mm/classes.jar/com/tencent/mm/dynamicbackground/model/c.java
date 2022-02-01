@@ -4,19 +4,19 @@ import android.content.Context;
 import android.graphics.Point;
 import kotlin.l;
 
-@l(hxD={1, 1, 11}, hxE={""}, hxF={"Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgCrashListener;", "getDisplayRealSize", "Landroid/graphics/Point;", "context", "Landroid/content/Context;", "getSleepTimeInMsPerFrame", "", "isEnableNativeDynamicBackground", "", "loadDynamicBgLibrary", "", "setEnableNativeDynamicBackground", "enable", "dynamicbg_release"})
+@l(iBK={1, 1, 11}, iBL={""}, iBM={"Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgCrashListener;", "getDisplayRealSize", "Landroid/graphics/Point;", "context", "Landroid/content/Context;", "getSleepTimeInMsPerFrame", "", "isEnableNativeDynamicBackground", "", "loadDynamicBgLibrary", "", "setEnableNativeDynamicBackground", "enable", "dynamicbg_release"})
 public abstract interface c
   extends b
 {
-  public abstract boolean atB();
+  public abstract float aAE();
   
-  public abstract void atC();
+  public abstract boolean aAt();
   
-  public abstract void atD();
+  public abstract void aAu();
   
-  public abstract float atM();
+  public abstract void aAv();
   
-  public abstract Point az(Context paramContext);
+  public abstract Point au(Context paramContext);
 }
 
 

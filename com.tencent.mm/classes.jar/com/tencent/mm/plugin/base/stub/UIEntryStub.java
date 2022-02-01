@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.an.t;
 import com.tencent.mm.booter.NotifyReceiver;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.bu;
-import com.tencent.mm.model.bu.a;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.bv;
+import com.tencent.mm.model.bv.a;
 import com.tencent.mm.network.g;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
@@ -25,17 +25,17 @@ import com.tencent.mm.ui.transmit.SendAppMessageWrapperUI;
 public class UIEntryStub
   extends HellActivity
 {
-  private String LG;
-  private Intent dRc;
-  private boolean pdv;
+  private String abY;
+  private Intent fKs;
   private int sdkVersion;
+  private boolean sfx;
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(22185);
     super.onCreate(paramBundle);
-    NotifyReceiver.akF();
-    this.pdv = false;
+    NotifyReceiver.aqB();
+    this.sfx = false;
     AppMethodBeat.o(22185);
   }
   
@@ -43,9 +43,9 @@ public class UIEntryStub
   {
     AppMethodBeat.i(22186);
     super.onNewIntent(paramIntent);
-    this.dRc = paramIntent;
-    Log.i("MicroMsg.UIEntryStub", "onNewIntent mHasHandled: %b", new Object[] { Boolean.valueOf(this.pdv) });
-    this.pdv = false;
+    this.fKs = paramIntent;
+    Log.i("MicroMsg.UIEntryStub", "onNewIntent mHasHandled: %b", new Object[] { Boolean.valueOf(this.sfx) });
+    this.sfx = false;
     AppMethodBeat.o(22186);
   }
   
@@ -53,10 +53,10 @@ public class UIEntryStub
   {
     AppMethodBeat.i(22187);
     super.onResume();
-    if (this.dRc == null) {
-      this.dRc = getIntent();
+    if (this.fKs == null) {
+      this.fKs = getIntent();
     }
-    bg.azz().a(new bu(new bu.a()
+    bh.aGY().a(new bv(new bv.a()
     {
       public final void a(g paramAnonymousg)
       {
@@ -87,7 +87,7 @@ public class UIEntryStub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.base.stub.UIEntryStub
  * JD-Core Version:    0.7.0.1
  */

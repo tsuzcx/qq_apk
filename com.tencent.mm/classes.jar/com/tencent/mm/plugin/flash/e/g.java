@@ -1,22 +1,23 @@
 package com.tencent.mm.plugin.flash.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.plugin.facedetect.b.m;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.facedetect.b.n;
 
 public final class g
   implements a
 {
   public final void a(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, float paramFloat, int paramInt2, i parami)
   {
-    AppMethodBeat.i(186706);
-    paramString1 = new m(paramLong, paramString3, paramString4, paramString1, paramString2, paramInt1, paramFloat, paramInt2);
-    com.tencent.mm.kernel.g.azz().a(paramString1, 0);
-    AppMethodBeat.o(186706);
+    AppMethodBeat.i(191118);
+    paramString1 = new n(paramLong, paramString3, paramString4, paramString1, paramString2, paramInt1, paramFloat, paramInt2);
+    h.aGY().a(paramString1, 0);
+    AppMethodBeat.o(191118);
   }
   
-  public final String getResultKey()
+  public final String epR()
   {
     return "verify_result";
   }

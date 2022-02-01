@@ -1,12 +1,12 @@
 package io.flutter.plugin.platform;
 
-final class a
+class a
 {
-  io.flutter.view.a SNs;
+  io.flutter.view.a aapq;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     io.flutter.plugin.platform.a
  * JD-Core Version:    0.7.0.1
  */

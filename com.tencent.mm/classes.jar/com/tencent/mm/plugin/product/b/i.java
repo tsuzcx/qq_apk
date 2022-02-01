@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.product.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ahl;
-import com.tencent.mm.protocal.protobuf.bsy;
-import com.tencent.mm.protocal.protobuf.bsz;
+import com.tencent.mm.protocal.protobuf.ahw;
+import com.tencent.mm.protocal.protobuf.caq;
+import com.tencent.mm.protocal.protobuf.car;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 import org.json.JSONArray;
@@ -21,8 +21,8 @@ public final class i
   extends q
   implements m
 {
-  public LinkedList<ahl> AZv;
-  private com.tencent.mm.ak.i callback;
+  public LinkedList<ahw> GTt;
+  private com.tencent.mm.an.i callback;
   public String mUrl;
   private d rr;
   
@@ -30,21 +30,21 @@ public final class i
   {
     AppMethodBeat.i(66897);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new bsy();
-    ((d.a)localObject).iLO = new bsz();
+    ((d.a)localObject).lBU = new caq();
+    ((d.a)localObject).lBV = new car();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getproductdiscount";
     ((d.a)localObject).funcId = 579;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (bsy)this.rr.iLK.iLR;
-    ((bsy)localObject).Lca = paramString1;
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (caq)d.b.b(this.rr.lBR);
+    ((caq)localObject).Sdn = paramString1;
     this.mUrl = paramString2;
-    ((bsy)localObject).Url = paramString2;
+    ((caq)localObject).Url = paramString2;
     AppMethodBeat.o(66897);
   }
   
-  public final int doScene(g paramg, com.tencent.mm.ak.i parami)
+  public final int doScene(g paramg, com.tencent.mm.an.i parami)
   {
     AppMethodBeat.i(66899);
     this.callback = parami;
@@ -61,25 +61,25 @@ public final class i
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(66898);
-    paramArrayOfByte = (bsz)((d)params).iLL.iLR;
-    if ((paramInt2 == 0) && (paramInt3 == 0) && (paramArrayOfByte.KOt == 0))
+    paramArrayOfByte = (car)d.c.b(((d)params).lBS);
+    if ((paramInt2 == 0) && (paramInt3 == 0) && (paramArrayOfByte.RPr == 0))
     {
-      Log.d("MicroMsg.NetSceneMallGetProductDiscount", "resp.ProductInfo " + paramArrayOfByte.LZC);
+      Log.d("MicroMsg.NetSceneMallGetProductDiscount", "resp.ProductInfo " + paramArrayOfByte.TiV);
       try
       {
-        params = new JSONObject(paramArrayOfByte.LZC).optJSONArray("discount_list");
+        params = new JSONObject(paramArrayOfByte.TiV).optJSONArray("discount_list");
         if (params != null)
         {
-          this.AZv = new LinkedList();
+          this.GTt = new LinkedList();
           int i = params.length();
           paramInt1 = 0;
           while (paramInt1 < i)
           {
             JSONObject localJSONObject = params.getJSONObject(paramInt1);
-            ahl localahl = new ahl();
-            localahl.Title = localJSONObject.getString("title");
-            localahl.KZx = localJSONObject.getInt("fee");
-            this.AZv.add(localahl);
+            ahw localahw = new ahw();
+            localahw.fwr = localJSONObject.getString("title");
+            localahw.SaG = localJSONObject.getInt("fee");
+            this.GTt.add(localahw);
             paramInt1 += 1;
           }
         }
@@ -92,10 +92,10 @@ public final class i
     {
       paramInt1 = paramInt3;
       params = paramString;
-      if (paramArrayOfByte.KOt != 0)
+      if (paramArrayOfByte.RPr != 0)
       {
-        paramInt1 = paramArrayOfByte.KOt;
-        params = paramArrayOfByte.KOu;
+        paramInt1 = paramArrayOfByte.RPr;
+        params = paramArrayOfByte.RPs;
       }
     }
     Log.d("MicroMsg.NetSceneMallGetProductDiscount", "errCode " + paramInt1 + ", errMsg " + params);

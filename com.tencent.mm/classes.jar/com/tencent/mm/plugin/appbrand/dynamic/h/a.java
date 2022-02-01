@@ -12,28 +12,28 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class a
 {
-  private static volatile a lpc;
-  public Map<String, List<IPCDynamicPageView>> lpd;
-  public Map<String, a> lpe;
+  private static volatile a ojM;
+  public Map<String, List<IPCDynamicPageView>> ojN;
+  public Map<String, a> ojO;
   
   private a()
   {
     AppMethodBeat.i(121420);
-    this.lpd = new ConcurrentHashMap();
-    this.lpe = new ConcurrentHashMap();
+    this.ojN = new ConcurrentHashMap();
+    this.ojO = new ConcurrentHashMap();
     AppMethodBeat.o(121420);
   }
   
-  public static a bCk()
+  public static a bNG()
   {
     AppMethodBeat.i(121421);
-    if (lpc == null) {}
+    if (ojM == null) {}
     try
     {
-      if (lpc == null) {
-        lpc = new a();
+      if (ojM == null) {
+        ojM = new a();
       }
-      a locala = lpc;
+      a locala = ojM;
       AppMethodBeat.o(121421);
       return locala;
     }
@@ -43,7 +43,7 @@ public class a
     }
   }
   
-  private static IPCDynamicPageView bs(List<IPCDynamicPageView> paramList)
+  private static IPCDynamicPageView bq(List<IPCDynamicPageView> paramList)
   {
     AppMethodBeat.i(121425);
     int i = 0;
@@ -61,7 +61,7 @@ public class a
     return null;
   }
   
-  public final IPCDynamicPageView YC(String paramString)
+  public final IPCDynamicPageView agq(String paramString)
   {
     AppMethodBeat.i(121422);
     if (paramString == null)
@@ -72,7 +72,7 @@ public class a
     IPCDynamicPageView localIPCDynamicPageView;
     do
     {
-      Iterator localIterator = this.lpd.entrySet().iterator();
+      Iterator localIterator = this.ojN.entrySet().iterator();
       Object localObject;
       while (!((Iterator)localObject).hasNext())
       {
@@ -101,7 +101,7 @@ public class a
       AppMethodBeat.o(121423);
       return false;
     }
-    List localList = (List)this.lpd.get(paramString);
+    List localList = (List)this.ojN.get(paramString);
     if (localList == null)
     {
       AppMethodBeat.o(121423);
@@ -111,7 +111,7 @@ public class a
     {
       boolean bool = localList.remove(paramIPCDynamicPageView);
       if (localList.isEmpty()) {
-        this.lpd.remove(paramString);
+        this.ojN.remove(paramString);
       }
       AppMethodBeat.o(121423);
       return bool;
@@ -130,11 +130,11 @@ public class a
       AppMethodBeat.o(121424);
       return false;
     }
-    Object localObject = (List)this.lpd.get(paramString);
+    Object localObject = (List)this.ojN.get(paramString);
     if (localObject == null)
     {
       localObject = new LinkedList();
-      this.lpd.put(paramString, localObject);
+      this.ojN.put(paramString, localObject);
     }
     for (;;)
     {
@@ -156,10 +156,10 @@ public class a
       {
         if (((List)localObject).size() > 4)
         {
-          paramIPCDynamicPageView = bs((List)localObject);
+          paramIPCDynamicPageView = bq((List)localObject);
           if (paramIPCDynamicPageView != null)
           {
-            a locala = (a)this.lpe.get(paramString);
+            a locala = (a)this.ojO.get(paramString);
             if (locala != null) {
               locala.a(paramString, paramIPCDynamicPageView);
             }
@@ -181,7 +181,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.h.a
  * JD-Core Version:    0.7.0.1
  */

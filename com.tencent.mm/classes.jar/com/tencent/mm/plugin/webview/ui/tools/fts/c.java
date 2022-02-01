@@ -22,8 +22,8 @@ public final class c
   public final void b(a.b paramb)
   {
     AppMethodBeat.i(80757);
-    if (paramb != this.JoW) {
-      switch (3.Jpg[paramb.ordinal()])
+    if (paramb != this.Qmq) {
+      switch (3.QmA[paramb.ordinal()])
       {
       }
     }
@@ -31,24 +31,24 @@ public final class c
     {
       AppMethodBeat.o(80757);
       return;
-      gha();
+      hat();
       AppMethodBeat.o(80757);
       return;
-      ghb();
+      hau();
     }
   }
   
-  protected final void gha()
+  protected final void hat()
   {
     AppMethodBeat.i(80758);
     Log.i("MicroMsg.WebSearch.SosAnimatorController", "searchToInit");
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    if (this.JoU[0][0] - this.JoK >= 0.0F) {
-      localValueAnimator.addUpdateListener(this.Jpa);
+    if (this.Qmo[0][0] - this.Qme >= 0.0F) {
+      localValueAnimator.addUpdateListener(this.Qmu);
     }
     for (;;)
     {
-      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.JoT, "alpha", new float[] { 0.0F, 1.0F });
+      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.Qmn, "alpha", new float[] { 0.0F, 1.0F });
       AnimatorSet localAnimatorSet = new AnimatorSet();
       localAnimatorSet.playTogether(new Animator[] { localValueAnimator, localObjectAnimator });
       localAnimatorSet.setInterpolator(new DecelerateInterpolator());
@@ -64,8 +64,8 @@ public final class c
         {
           AppMethodBeat.i(80753);
           c.this.isAnimating = false;
-          if (c.this.JoX != null) {
-            c.this.JoX.onAnimationEnd();
+          if (c.this.Qmr != null) {
+            c.this.Qmr.onAnimationEnd();
           }
           AppMethodBeat.o(80753);
         }
@@ -76,8 +76,8 @@ public final class c
         {
           AppMethodBeat.i(80752);
           c.this.isAnimating = true;
-          if (c.this.JoX != null) {
-            c.this.JoX.onAnimationStart();
+          if (c.this.Qmr != null) {
+            c.this.Qmr.onAnimationStart();
           }
           AppMethodBeat.o(80752);
         }
@@ -85,20 +85,20 @@ public final class c
       localAnimatorSet.start();
       AppMethodBeat.o(80758);
       return;
-      localValueAnimator.addUpdateListener(this.Jpb);
+      localValueAnimator.addUpdateListener(this.Qmv);
     }
   }
   
-  protected final void ghb()
+  protected final void hau()
   {
     AppMethodBeat.i(80759);
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    if (this.JoU[0][0] - this.JoK >= 0.0F) {
-      localValueAnimator.addUpdateListener(this.JoY);
+    if (this.Qmo[0][0] - this.Qme >= 0.0F) {
+      localValueAnimator.addUpdateListener(this.Qms);
     }
     for (;;)
     {
-      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.JoT, "alpha", new float[] { 1.0F, 0.0F });
+      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.Qmn, "alpha", new float[] { 1.0F, 0.0F });
       AnimatorSet localAnimatorSet = new AnimatorSet();
       localAnimatorSet.playTogether(new Animator[] { localValueAnimator, localObjectAnimator });
       localAnimatorSet.setInterpolator(new DecelerateInterpolator());
@@ -114,8 +114,8 @@ public final class c
         {
           AppMethodBeat.i(80755);
           c.this.isAnimating = false;
-          if (c.this.JoX != null) {
-            c.this.JoX.onAnimationEnd();
+          if (c.this.Qmr != null) {
+            c.this.Qmr.onAnimationEnd();
           }
           AppMethodBeat.o(80755);
         }
@@ -126,8 +126,8 @@ public final class c
         {
           AppMethodBeat.i(80754);
           c.this.isAnimating = true;
-          if (c.this.JoX != null) {
-            c.this.JoX.onAnimationStart();
+          if (c.this.Qmr != null) {
+            c.this.Qmr.onAnimationStart();
           }
           AppMethodBeat.o(80754);
         }
@@ -135,7 +135,7 @@ public final class c
       localAnimatorSet.start();
       AppMethodBeat.o(80759);
       return;
-      localValueAnimator.addUpdateListener(this.JoZ);
+      localValueAnimator.addUpdateListener(this.Qmt);
     }
   }
 }

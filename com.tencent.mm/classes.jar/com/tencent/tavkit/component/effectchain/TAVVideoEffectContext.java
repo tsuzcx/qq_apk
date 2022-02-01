@@ -14,32 +14,32 @@ public class TAVVideoEffectContext
   
   public TAVVideoEffectContext()
   {
-    AppMethodBeat.i(197436);
+    AppMethodBeat.i(211556);
     this.sourceVideoEffectProxy = new VideoEffectProxy();
     this.videoMixEffectProxy = new VideoMixEffectProxy();
     this.globalVideoEffectProxy = new VideoEffectProxy();
-    AppMethodBeat.o(197436);
+    AppMethodBeat.o(211556);
   }
   
   public void addGlobalFilter(TAVVideoEffect paramTAVVideoEffect)
   {
-    AppMethodBeat.i(197439);
+    AppMethodBeat.i(211562);
     this.globalVideoEffectProxy.getEffects().remove(paramTAVVideoEffect);
-    AppMethodBeat.o(197439);
+    AppMethodBeat.o(211562);
   }
   
   public void addSourceFilter(TAVVideoEffect paramTAVVideoEffect)
   {
-    AppMethodBeat.i(197437);
+    AppMethodBeat.i(211559);
     this.sourceVideoEffectProxy.getEffects().remove(paramTAVVideoEffect);
-    AppMethodBeat.o(197437);
+    AppMethodBeat.o(211559);
   }
   
   public void addVideoMixFilter(TAVVideoMixEffect paramTAVVideoMixEffect)
   {
-    AppMethodBeat.i(197438);
+    AppMethodBeat.i(211561);
     this.videoMixEffectProxy.getEffects().remove(paramTAVVideoMixEffect);
-    AppMethodBeat.o(197438);
+    AppMethodBeat.o(211561);
   }
   
   public TAVVideoEffect getGlobalVideoEffect()
@@ -59,31 +59,31 @@ public class TAVVideoEffectContext
   
   public void removeGlobalFilter(TAVVideoEffect paramTAVVideoEffect)
   {
-    AppMethodBeat.i(197442);
+    AppMethodBeat.i(211568);
     this.globalVideoEffectProxy.getEffects().remove(paramTAVVideoEffect);
     this.globalVideoEffectProxy.notifyOnEffectRemove();
-    AppMethodBeat.o(197442);
+    AppMethodBeat.o(211568);
   }
   
   public void removeSourceFilter(TAVVideoEffect paramTAVVideoEffect)
   {
-    AppMethodBeat.i(197440);
+    AppMethodBeat.i(211563);
     this.sourceVideoEffectProxy.getEffects().remove(paramTAVVideoEffect);
     this.sourceVideoEffectProxy.notifyOnEffectRemove();
-    AppMethodBeat.o(197440);
+    AppMethodBeat.o(211563);
   }
   
   public void removeVideoMixFilter(TAVVideoMixEffect paramTAVVideoMixEffect)
   {
-    AppMethodBeat.i(197441);
+    AppMethodBeat.i(211565);
     this.videoMixEffectProxy.getEffects().remove(paramTAVVideoMixEffect);
     this.videoMixEffectProxy.notifyOnEffectRemove();
-    AppMethodBeat.o(197441);
+    AppMethodBeat.o(211565);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tavkit.component.effectchain.TAVVideoEffectContext
  * JD-Core Version:    0.7.0.1
  */

@@ -13,18 +13,18 @@ public final class q
   public static final String g(c paramc)
   {
     AppMethodBeat.i(59871);
-    p.h(paramc, "$this$render");
-    paramc = paramc.hJl();
-    p.g(paramc, "pathSegments()");
-    paramc = kH(paramc);
+    p.k(paramc, "$this$render");
+    paramc = paramc.iNF();
+    p.j(paramc, "pathSegments()");
+    paramc = lE(paramc);
     AppMethodBeat.o(59871);
     return paramc;
   }
   
-  public static final String kH(List<f> paramList)
+  public static final String lE(List<f> paramList)
   {
     AppMethodBeat.i(59872);
-    p.h(paramList, "pathSegments");
+    p.k(paramList, "pathSegments");
     StringBuilder localStringBuilder = new StringBuilder();
     paramList = paramList.iterator();
     while (paramList.hasNext())
@@ -36,7 +36,7 @@ public final class q
       localStringBuilder.append(x(localf));
     }
     paramList = localStringBuilder.toString();
-    p.g(paramList, "StringBuilder().apply(builderAction).toString()");
+    p.j(paramList, "StringBuilder().apply(builderAction).toString()");
     AppMethodBeat.o(59872);
     return paramList;
   }
@@ -44,18 +44,18 @@ public final class q
   public static final String x(f paramf)
   {
     AppMethodBeat.i(59869);
-    p.h(paramf, "$this$render");
+    p.k(paramf, "$this$render");
     if (y(paramf))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      paramf = paramf.sG();
-      p.g(paramf, "asString()");
+      paramf = paramf.qu();
+      p.j(paramf, "asString()");
       paramf = "`".concat(String.valueOf(paramf)) + '`';
       AppMethodBeat.o(59869);
       return paramf;
     }
-    paramf = paramf.sG();
-    p.g(paramf, "asString()");
+    paramf = paramf.qu();
+    p.j(paramf, "asString()");
     AppMethodBeat.o(59869);
     return paramf;
   }
@@ -63,15 +63,15 @@ public final class q
   private static final boolean y(f paramf)
   {
     AppMethodBeat.i(59870);
-    if (paramf.TDa)
+    if (paramf.abfN)
     {
       AppMethodBeat.o(59870);
       return false;
     }
-    paramf = paramf.sG();
-    p.g(paramf, "asString()");
+    paramf = paramf.qu();
+    p.j(paramf, "asString()");
     int j;
-    if (!l.TGW.contains(paramf))
+    if (!l.abjA.contains(paramf))
     {
       paramf = (CharSequence)paramf;
       i = 0;
@@ -110,7 +110,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.i.q
  * JD-Core Version:    0.7.0.1
  */

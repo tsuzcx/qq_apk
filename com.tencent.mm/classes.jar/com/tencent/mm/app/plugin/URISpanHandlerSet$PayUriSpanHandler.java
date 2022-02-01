@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.je;
-import com.tencent.mm.g.a.je.a;
+import com.tencent.mm.f.a.ju;
+import com.tencent.mm.f.a.ju.a;
 import com.tencent.mm.pluginsdk.ui.span.i;
 import com.tencent.mm.sdk.event.EventCenter;
 
@@ -18,33 +18,28 @@ class URISpanHandlerSet$PayUriSpanHandler
     super(paramURISpanHandlerSet);
   }
   
-  final int[] Xp()
-  {
-    return new int[] { 28 };
-  }
-  
   final boolean a(View paramView, com.tencent.mm.pluginsdk.ui.applet.u paramu, i parami)
   {
-    AppMethodBeat.i(231443);
+    AppMethodBeat.i(278315);
     if (paramu.type == 28)
     {
       if (parami != null) {
         parami.a(paramu);
       }
-      paramView = new je();
-      paramView.dNT.actionCode = 11;
-      paramView.dNT.result = paramu.url;
-      paramView.dNT.context = URISpanHandlerSet.a(this.dnW);
-      paramView.dNT.dNV = new Bundle();
-      paramView.dNT.dNV.putInt("pay_channel", 6);
+      paramView = new ju();
+      paramView.fHe.actionCode = 11;
+      paramView.fHe.result = paramu.url;
+      paramView.fHe.context = URISpanHandlerSet.a(this.fgB);
+      paramView.fHe.fHg = new Bundle();
+      paramView.fHe.fHg.putInt("pay_channel", 6);
       EventCenter.instance.asyncPublish(paramView, Looper.myLooper());
       if (parami != null) {
         parami.b(paramu);
       }
-      AppMethodBeat.o(231443);
+      AppMethodBeat.o(278315);
       return true;
     }
-    AppMethodBeat.o(231443);
+    AppMethodBeat.o(278315);
     return false;
   }
   
@@ -53,7 +48,12 @@ class URISpanHandlerSet$PayUriSpanHandler
     return false;
   }
   
-  final com.tencent.mm.pluginsdk.ui.applet.u gx(String paramString)
+  final int[] abR()
+  {
+    return new int[] { 28 };
+  }
+  
+  final com.tencent.mm.pluginsdk.ui.applet.u hi(String paramString)
   {
     return null;
   }

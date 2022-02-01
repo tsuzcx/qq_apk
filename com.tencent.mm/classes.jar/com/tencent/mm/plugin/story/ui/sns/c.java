@@ -5,54 +5,55 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v7.app.e;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewPropertyAnimator;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
+import androidx.appcompat.app.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.story.a.d;
+import com.tencent.mm.plugin.story.a.h;
 import com.tencent.mm.plugin.story.ui.view.gallery.StoryGalleryView.b;
 import com.tencent.mm.plugin.story.ui.view.gallery.f;
 import com.tencent.mm.sdk.platformtools.MMHandler;
-import com.tencent.mm.ui.m.b;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/sns/StoryEntranceDialog;", "Landroid/support/v7/app/AppCompatDialog;", "mContext", "Landroid/content/Context;", "(Landroid/content/Context;)V", "commentScrolling", "", "galleryScale", "com/tencent/mm/plugin/story/ui/sns/StoryEntranceDialog$galleryScale$1", "Lcom/tencent/mm/plugin/story/ui/sns/StoryEntranceDialog$galleryScale$1;", "galleryScrollHelper", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollHelper;", "hasDispatchCancel", "getMContext", "()Landroid/content/Context;", "setMContext", "mIsActive", "needCancelTouch", "targetView", "Landroid/view/View;", "cancel", "", "dispatchTouchEvent", "ev", "Landroid/view/MotionEvent;", "isLandscape", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "setContentView", "view", "setTranslucentStatus", "wrapSheet", "layoutResId", "", "params", "Landroid/view/ViewGroup$LayoutParams;", "Companion", "plugin-story_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/sns/StoryEntranceDialog;", "Landroidx/appcompat/app/AppCompatDialog;", "mContext", "Landroid/content/Context;", "(Landroid/content/Context;)V", "commentScrolling", "", "galleryScale", "com/tencent/mm/plugin/story/ui/sns/StoryEntranceDialog$galleryScale$1", "Lcom/tencent/mm/plugin/story/ui/sns/StoryEntranceDialog$galleryScale$1;", "galleryScrollHelper", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollHelper;", "hasDispatchCancel", "getMContext", "()Landroid/content/Context;", "setMContext", "mIsActive", "needCancelTouch", "targetView", "Landroid/view/View;", "cancel", "", "dispatchTouchEvent", "ev", "Landroid/view/MotionEvent;", "isLandscape", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "setContentView", "view", "setTranslucentStatus", "wrapSheet", "layoutResId", "", "params", "Landroid/view/ViewGroup$LayoutParams;", "Companion", "plugin-story_release"})
 public final class c
   extends e
 {
-  public static final c.a FzU;
+  public static final a LTZ;
   private static final String TAG = "MicroMsg.StoryEntranceDialog";
-  private final b FzT;
-  private b gZR;
-  private boolean hVn;
-  private boolean hVo;
-  private boolean hVp;
+  private final b LTY;
+  private com.tencent.mm.ui.o.b jKS;
+  private View kJL;
+  private boolean kJN;
+  private boolean kJO;
+  private boolean kJP;
   private Context mContext;
-  private View targetView;
   
   static
   {
     AppMethodBeat.i(119960);
-    FzU = new c.a((byte)0);
+    LTZ = new a((byte)0);
     TAG = "MicroMsg.StoryEntranceDialog";
     AppMethodBeat.o(119960);
   }
   
   public c(Context paramContext)
   {
-    super(paramContext, 2131820868);
+    super(paramContext, a.h.CustomSheetStyle);
     AppMethodBeat.i(119959);
     this.mContext = paramContext;
-    this.FzT = new b(this);
-    gR();
+    this.LTY = new b(this);
+    bb();
     paramContext = getContext();
-    p.g(paramContext, "context");
-    this.gZR = new b(paramContext);
+    p.j(paramContext, "context");
+    this.jKS = new com.tencent.mm.ui.o.b(paramContext);
     AppMethodBeat.o(119959);
   }
   
@@ -60,7 +61,7 @@ public final class c
   {
     AppMethodBeat.i(119954);
     Resources localResources = this.mContext.getResources();
-    p.g(localResources, "mContext.resources");
+    p.j(localResources, "mContext.resources");
     if (localResources.getConfiguration().orientation == 2)
     {
       AppMethodBeat.o(119954);
@@ -73,9 +74,9 @@ public final class c
   public final void cancel()
   {
     AppMethodBeat.i(119958);
-    if ((this.targetView instanceof a))
+    if ((this.kJL instanceof a))
     {
-      Object localObject = this.targetView;
+      Object localObject = this.kJL;
       if (localObject == null)
       {
         localObject = new t("null cannot be cast to non-null type com.tencent.mm.plugin.story.ui.sns.DialogLifeStyle");
@@ -92,56 +93,56 @@ public final class c
   {
     boolean bool2 = false;
     AppMethodBeat.i(119957);
-    p.h(paramMotionEvent, "ev");
+    p.k(paramMotionEvent, "ev");
     switch (paramMotionEvent.getActionMasked())
     {
     case 2: 
     default: 
-      this.gZR.al(paramMotionEvent);
-      int i = this.gZR.QnD;
+      this.jKS.at(paramMotionEvent);
+      int i = this.jKS.XLC;
       bool1 = bool2;
       if (i != 1)
       {
         bool1 = bool2;
         if (i != 2)
         {
-          if ((this.hVo) || (this.hVn)) {
+          if ((this.kJO) || (this.kJN)) {
             break label172;
           }
-          bool1 = this.gZR.dispatchTouchEvent(paramMotionEvent);
+          bool1 = this.jKS.dispatchTouchEvent(paramMotionEvent);
         }
       }
       break;
     }
     for (;;)
     {
-      if ((!this.hVo) && (!bool1)) {
+      if ((!this.kJO) && (!bool1)) {
         break label227;
       }
-      if (!this.hVp)
+      if (!this.kJP)
       {
         paramMotionEvent = MotionEvent.obtain(paramMotionEvent);
-        p.g(paramMotionEvent, "cancelEvent");
+        p.j(paramMotionEvent, "cancelEvent");
         paramMotionEvent.setAction(3);
         super.dispatchTouchEvent(paramMotionEvent);
         paramMotionEvent.recycle();
-        this.hVp = true;
+        this.kJP = true;
       }
       AppMethodBeat.o(119957);
       return true;
-      this.hVp = false;
-      this.hVo = false;
+      this.kJP = false;
+      this.kJO = false;
       break;
       label172:
       bool1 = bool2;
-      if (!this.hVp)
+      if (!this.kJP)
       {
         MotionEvent localMotionEvent = MotionEvent.obtain(paramMotionEvent);
-        p.g(localMotionEvent, "cancelEvent");
+        p.j(localMotionEvent, "cancelEvent");
         localMotionEvent.setAction(3);
-        this.gZR.dispatchTouchEvent(localMotionEvent);
+        this.jKS.dispatchTouchEvent(localMotionEvent);
         localMotionEvent.recycle();
-        this.hVp = true;
+        this.kJP = true;
         bool1 = bool2;
       }
     }
@@ -168,58 +169,58 @@ public final class c
   public final void setContentView(View paramView)
   {
     AppMethodBeat.i(119956);
-    p.h(paramView, "view");
+    p.k(paramView, "view");
     Window localWindow = getWindow();
     WindowManager.LayoutParams localLayoutParams;
     if (isLandscape())
     {
       if (localWindow == null) {
-        p.hyc();
+        p.iCn();
       }
       localWindow.setGravity(5);
-      localWindow.setWindowAnimations(2131821287);
+      localWindow.setWindowAnimations(a.h.RightToLeftAnimation);
       localWindow.getDecorView().setPadding(0, 0, 0, 0);
       localLayoutParams = localWindow.getAttributes();
       if (!isLandscape()) {
-        break label303;
+        break label304;
       }
       localLayoutParams.width = -2;
       localLayoutParams.height = -1;
-      label75:
+      label76:
       localWindow.setAttributes(localLayoutParams);
-      paramView.findViewById(2131309368).setOnClickListener((View.OnClickListener)new c.c(this));
+      paramView.findViewById(a.d.touch_outside).setOnClickListener((View.OnClickListener)new c(this));
       super.setContentView(paramView);
-      this.targetView = paramView;
-      paramView = new f(paramView, (StoryGalleryView.b)this.FzT);
-      this.gZR.a((com.tencent.mm.ui.m.a)paramView);
+      this.kJL = paramView;
+      paramView = new f(paramView, (StoryGalleryView.b)this.LTY);
+      this.jKS.a((com.tencent.mm.ui.o.a)paramView);
       paramView = getWindow();
       if (paramView == null) {
-        p.hyc();
+        p.iCn();
       }
       paramView.setLayout(-1, -1);
       if (getWindow() != null)
       {
         if (Build.VERSION.SDK_INT < 21) {
-          break label317;
+          break label318;
         }
         paramView = getWindow();
         if (paramView == null) {
-          p.hyc();
+          p.iCn();
         }
-        p.g(paramView, "window!!");
+        p.j(paramView, "window!!");
         paramView = paramView.getDecorView();
-        p.g(paramView, "window!!.decorView");
+        p.j(paramView, "window!!.decorView");
         paramView.setSystemUiVisibility(1280);
         paramView = getWindow();
         if (paramView == null) {
-          p.hyc();
+          p.iCn();
         }
         paramView.addFlags(-2147483648);
         paramView = getWindow();
         if (paramView == null) {
-          p.hyc();
+          p.iCn();
         }
-        p.g(paramView, "window!!");
+        p.j(paramView, "window!!");
         paramView.setStatusBarColor(0);
       }
     }
@@ -227,39 +228,42 @@ public final class c
     {
       paramView = getWindow();
       if (paramView == null) {
-        p.hyc();
+        p.iCn();
       }
       paramView.setFlags(134217728, 134217728);
       AppMethodBeat.o(119956);
       return;
       if (localWindow == null) {
-        p.hyc();
+        p.iCn();
       }
       localWindow.setGravity(80);
-      localWindow.setWindowAnimations(2131820793);
+      localWindow.setWindowAnimations(a.h.BottomToTopSlowAnimation);
       break;
-      label303:
+      label304:
       localLayoutParams.width = -1;
       localLayoutParams.height = -2;
-      break label75;
-      label317:
+      break label76;
+      label318:
       paramView = getWindow();
       if (paramView == null) {
-        p.hyc();
+        p.iCn();
       }
       paramView.addFlags(67108864);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/story/ui/sns/StoryEntranceDialog$galleryScale$1", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView$IOnGalleryScale;", "onBgAlpha", "", "alpha", "", "onGalleryExitFromTop", "plugin-story_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/story/ui/sns/StoryEntranceDialog$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
+  public static final class a {}
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/story/ui/sns/StoryEntranceDialog$galleryScale$1", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView$IOnGalleryScale;", "onBgAlpha", "", "alpha", "", "onGalleryExitFromTop", "plugin-story_release"})
   public static final class b
     implements StoryGalleryView.b
   {
-    public final void aJl()
+    public final void aRj()
     {
       long l1 = 0L;
       AppMethodBeat.i(119952);
-      View localView = c.a(this.FzV);
+      View localView = c.a(this.LUa);
       long l2;
       if (localView != null)
       {
@@ -281,9 +285,9 @@ public final class c
       }
     }
     
-    public final void ca(float paramFloat) {}
+    public final void cj(float paramFloat) {}
     
-    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run", "com/tencent/mm/plugin/story/ui/sns/StoryEntranceDialog$galleryScale$1$onGalleryExitFromTop$1$1"})
+    @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run", "com/tencent/mm/plugin/story/ui/sns/StoryEntranceDialog$galleryScale$1$onGalleryExitFromTop$1$1"})
     static final class a
       implements Runnable
     {
@@ -297,8 +301,8 @@ public final class c
           public final void run()
           {
             AppMethodBeat.i(119950);
-            if (this.FzX.FzW.FzV.isShowing()) {
-              this.FzX.FzW.FzV.cancel();
+            if (this.LUc.LUb.LUa.isShowing()) {
+              this.LUc.LUb.LUa.cancel();
             }
             AppMethodBeat.o(119950);
           }
@@ -307,10 +311,30 @@ public final class c
       }
     }
   }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class c
+    implements View.OnClickListener
+  {
+    c(c paramc) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(119953);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/story/ui/sns/StoryEntranceDialog$wrapSheet$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+      if (this.LUa.isShowing()) {
+        this.LUa.cancel();
+      }
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/sns/StoryEntranceDialog$wrapSheet$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(119953);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.sns.c
  * JD-Core Version:    0.7.0.1
  */

@@ -2923,7 +2923,7 @@
     _on('sys:attach_runOn3rd_apis', function (ses) {
       if (typeof ses[_RUN_ON_3RD_APIS] === 'object') {
         _runOn3rdApiList = ses[_RUN_ON_3RD_APIS];
-        _log('_runOn3rdApiList : ' + _runOn3rdApiList);
+        //_log('_runOn3rdApiList : ' + _runOn3rdApiList);
         //alert('ses : ' + ses);
         ///alert('apis : ' + _runOn3rdApiList);
       }

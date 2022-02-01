@@ -9,17 +9,17 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.d;
+import com.tencent.mm.ae.d;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMEditText;
+import kotlin.g.b.aa.f;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
-import kotlin.g.b.z.f;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/account/ui/AccountExpiredSettingUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "plugin-account_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/account/ui/AccountExpiredSettingUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "plugin-account_release"})
 public final class AccountExpiredSettingUI
   extends MMActivity
 {
@@ -27,17 +27,17 @@ public final class AccountExpiredSettingUI
   
   public final int getLayoutId()
   {
-    return 2131492936;
+    return r.g.account_expired_setting_ui;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(196834);
+    AppMethodBeat.i(219534);
     super.onCreate(paramBundle);
-    setMMTitle(2131755136);
+    setMMTitle(r.j.account_expired_hint);
     setBackBtn((MenuItem.OnMenuItemClickListener)new a(this));
-    findViewById(2131305592).setOnClickListener((View.OnClickListener)new b(this));
-    AppMethodBeat.o(196834);
+    findViewById(r.f.ok_btn).setOnClickListener((View.OnClickListener)new b(this));
+    AppMethodBeat.o(219534);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -46,7 +46,7 @@ public final class AccountExpiredSettingUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class a
     implements MenuItem.OnMenuItemClickListener
   {
@@ -54,14 +54,14 @@ public final class AccountExpiredSettingUI
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(196831);
-      this.kjL.finish();
-      AppMethodBeat.o(196831);
+      AppMethodBeat.i(213980);
+      this.nbB.finish();
+      AppMethodBeat.o(213980);
       return false;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
@@ -69,39 +69,39 @@ public final class AccountExpiredSettingUI
     
     public final void onClick(final View paramView)
     {
-      AppMethodBeat.i(196833);
+      AppMethodBeat.i(218982);
       Object localObject = new b();
-      ((b)localObject).bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/AccountExpiredSettingUI$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
-      paramView = new z.f();
-      localObject = this.kjL.findViewById(2131296347);
-      p.g(localObject, "findViewById<MMEditText>…_expired_setting_errcode)");
-      paramView.SYG = ((MMEditText)localObject).getText().toString();
-      localObject = new z.f();
-      View localView = this.kjL.findViewById(2131296348);
-      p.g(localView, "findViewById<MMEditText>…t_expired_setting_errmsg)");
-      ((z.f)localObject).SYG = ((MMEditText)localView).getText().toString();
-      d.a(10000L, (kotlin.g.a.a)new q((z.f)localObject) {});
-      localObject = (CharSequence)((z.f)localObject).SYG;
+      ((b)localObject).bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/account/ui/AccountExpiredSettingUI$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+      paramView = new aa.f();
+      localObject = this.nbB.findViewById(r.f.account_expired_setting_errcode);
+      p.j(localObject, "findViewById<MMEditText>…_expired_setting_errcode)");
+      paramView.aaBC = ((MMEditText)localObject).getText().toString();
+      localObject = new aa.f();
+      View localView = this.nbB.findViewById(r.f.account_expired_setting_errmsg);
+      p.j(localView, "findViewById<MMEditText>…t_expired_setting_errmsg)");
+      ((aa.f)localObject).aaBC = ((MMEditText)localView).getText().toString();
+      d.a(10000L, (kotlin.g.a.a)new q((aa.f)localObject) {});
+      localObject = (CharSequence)((aa.f)localObject).aaBC;
       if ((localObject == null) || (((CharSequence)localObject).length() == 0))
       {
         i = 1;
         if (i == 0)
         {
-          paramView = (CharSequence)paramView.SYG;
+          paramView = (CharSequence)paramView.aaBC;
           if ((paramView != null) && (paramView.length() != 0)) {
-            break label231;
+            break label234;
           }
         }
       }
-      label231:
+      label234:
       for (int i = 1;; i = 0)
       {
         if (i == 0) {
-          Toast.makeText((Context)this.kjL, 2131755898, 0).show();
+          Toast.makeText((Context)this.nbB, r.j.app_modify_success, 0).show();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/AccountExpiredSettingUI$onCreate$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(196833);
+        AppMethodBeat.o(218982);
         return;
         i = 0;
         break;
@@ -111,7 +111,7 @@ public final class AccountExpiredSettingUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.AccountExpiredSettingUI
  * JD-Core Version:    0.7.0.1
  */

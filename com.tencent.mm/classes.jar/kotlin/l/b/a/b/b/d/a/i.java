@@ -10,21 +10,21 @@ import kotlin.l.b.a.b.k.a.r;
 public final class i
   implements r
 {
-  public static final i TmN;
+  public static final i aaPH;
   
   static
   {
     AppMethodBeat.i(57381);
-    TmN = new i();
+    aaPH = new i();
     AppMethodBeat.o(57381);
   }
   
   public final void a(e parame, List<String> paramList)
   {
     AppMethodBeat.i(57379);
-    p.h(parame, "descriptor");
-    p.h(paramList, "unresolvedSuperClasses");
-    parame = (Throwable)new IllegalStateException("Incomplete hierarchy for class " + parame.hAH() + ", unresolved classes " + paramList);
+    p.k(parame, "descriptor");
+    p.k(paramList, "unresolvedSuperClasses");
+    parame = (Throwable)new IllegalStateException("Incomplete hierarchy for class " + parame.iEU() + ", unresolved classes " + paramList);
     AppMethodBeat.o(57379);
     throw parame;
   }
@@ -32,7 +32,7 @@ public final class i
   public final void h(b paramb)
   {
     AppMethodBeat.i(57380);
-    p.h(paramb, "descriptor");
+    p.k(paramb, "descriptor");
     paramb = (Throwable)new IllegalStateException("Cannot infer visibility for ".concat(String.valueOf(paramb)));
     AppMethodBeat.o(57380);
     throw paramb;
@@ -40,7 +40,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.d.a.i
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ public final class a
     this.height = paramInt4;
   }
   
-  public final String Lb()
+  public final String key()
   {
     AppMethodBeat.i(134892);
     String str = String.format("Decoder_x%s_y%s_w%s_h%s", new Object[] { Integer.valueOf(this.left), Integer.valueOf(this.top), Integer.valueOf(this.width), Integer.valueOf(this.height) });
@@ -28,7 +28,7 @@ public final class a
   }
   
   /* Error */
-  public final android.graphics.Bitmap w(java.io.InputStream paramInputStream)
+  public final android.graphics.Bitmap u(java.io.InputStream paramInputStream)
   {
     // Byte code:
     //   0: ldc 60
@@ -365,7 +365,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -10,25 +10,27 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelgeo.b.a;
-import com.tencent.mm.plugin.k.b;
+import com.tencent.mm.plugin.map.a.e;
+import com.tencent.mm.plugin.map.a.f;
+import com.tencent.mm.plugin.q.b;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public class NewMyLocationButton
   extends FrameLayout
 {
+  private boolean ElA;
+  private ImageButton Elx;
+  private LinearLayout Ely;
+  private com.tencent.mm.plugin.q.d Elz;
   private Context context;
-  private b.a gmA;
-  private ImageButton yHE;
-  private LinearLayout yHF;
-  private com.tencent.mm.plugin.k.d yHG;
-  private boolean yHH;
+  private b.a iQJ;
   
   public NewMyLocationButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(55847);
-    this.yHH = true;
-    this.gmA = new b.a()
+    this.ElA = true;
+    this.iQJ = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
@@ -52,7 +54,7 @@ public class NewMyLocationButton
           public final void run()
           {
             AppMethodBeat.i(55844);
-            com.tencent.mm.modelgeo.d.bca().c(NewMyLocationButton.e(NewMyLocationButton.this));
+            com.tencent.mm.modelgeo.d.blq().b(NewMyLocationButton.e(NewMyLocationButton.this));
             AppMethodBeat.o(55844);
           }
         });
@@ -69,8 +71,8 @@ public class NewMyLocationButton
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(55846);
-    this.yHH = true;
-    this.gmA = new b.a()
+    this.ElA = true;
+    this.iQJ = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
@@ -94,7 +96,7 @@ public class NewMyLocationButton
           public final void run()
           {
             AppMethodBeat.i(55844);
-            com.tencent.mm.modelgeo.d.bca().c(NewMyLocationButton.e(NewMyLocationButton.this));
+            com.tencent.mm.modelgeo.d.blq().b(NewMyLocationButton.e(NewMyLocationButton.this));
             AppMethodBeat.o(55844);
           }
         });
@@ -110,46 +112,46 @@ public class NewMyLocationButton
   private void init()
   {
     AppMethodBeat.i(55848);
-    View localView = View.inflate(this.context, 2131495847, this);
-    this.yHE = ((ImageButton)localView.findViewById(2131305357));
-    this.yHF = ((LinearLayout)localView.findViewById(2131305366));
+    View localView = View.inflate(this.context, a.f.new_my_location_btn, this);
+    this.Elx = ((ImageButton)localView.findViewById(a.e.new_locate_btn));
+    this.Ely = ((LinearLayout)localView.findViewById(a.e.new_progress_bar));
     AppMethodBeat.o(55848);
   }
   
   public void setAnimToSelf(boolean paramBoolean)
   {
-    this.yHH = paramBoolean;
+    this.ElA = paramBoolean;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(55849);
-    this.yHE.setOnClickListener(paramOnClickListener);
+    this.Elx.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(55849);
   }
   
-  public void setProgressBar(com.tencent.mm.plugin.k.d paramd)
+  public void setProgressBar(com.tencent.mm.plugin.q.d paramd)
   {
     AppMethodBeat.i(55850);
-    this.yHG = paramd;
-    this.yHF.setVisibility(0);
-    this.yHE.setVisibility(8);
-    com.tencent.mm.modelgeo.d.bca().b(this.gmA, true);
+    this.Elz = paramd;
+    this.Ely.setVisibility(0);
+    this.Elx.setVisibility(8);
+    com.tencent.mm.modelgeo.d.blq().b(this.iQJ, true);
     AppMethodBeat.o(55850);
   }
   
   public void setSelected(boolean paramBoolean)
   {
     AppMethodBeat.i(55851);
-    if (paramBoolean != this.yHE.isSelected()) {
-      this.yHE.setSelected(paramBoolean);
+    if (paramBoolean != this.Elx.isSelected()) {
+      this.Elx.setSelected(paramBoolean);
     }
     AppMethodBeat.o(55851);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.NewMyLocationButton
  * JD-Core Version:    0.7.0.1
  */

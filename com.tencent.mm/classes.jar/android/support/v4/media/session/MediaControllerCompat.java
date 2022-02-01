@@ -5,12 +5,9 @@ import android.media.session.MediaController;
 import android.media.session.MediaSession.Token;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.IBinder;
-import android.os.Message;
 import android.os.RemoteException;
 import android.os.ResultReceiver;
-import android.support.v4.app.c;
 import android.view.KeyEvent;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -21,76 +18,76 @@ import java.util.List;
 
 public final class MediaControllerCompat
 {
-  final b Mw;
-  private final MediaSessionCompat.Token Mx;
-  private final HashSet<MediaControllerCompat.a> My = new HashSet();
+  public final b dp;
+  private final MediaSessionCompat.Token dq;
+  private final HashSet<MediaControllerCompat.a> dr = new HashSet();
   
   public MediaControllerCompat(Context paramContext, MediaSessionCompat.Token paramToken)
   {
     if (paramToken == null) {
       throw new IllegalArgumentException("sessionToken must not be null");
     }
-    this.Mx = paramToken;
+    this.dq = paramToken;
     if (Build.VERSION.SDK_INT >= 24)
     {
-      this.Mw = new d(paramContext, paramToken);
+      this.dp = new d(paramContext, paramToken);
       return;
     }
     if (Build.VERSION.SDK_INT >= 23)
     {
-      this.Mw = new c(paramContext, paramToken);
+      this.dp = new c(paramContext, paramToken);
       return;
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
-      this.Mw = new MediaControllerImplApi21(paramContext, paramToken);
+      this.dp = new MediaControllerImplApi21(paramContext, paramToken);
       return;
     }
-    this.Mw = new e(paramToken);
+    this.dp = new e(paramToken);
   }
   
   static class MediaControllerImplApi21
     implements MediaControllerCompat.b
   {
-    protected final Object MG;
-    final List<MediaControllerCompat.a> MH = new ArrayList();
-    HashMap<MediaControllerCompat.a, MediaControllerCompat.MediaControllerImplApi21.a> MI = new HashMap();
-    final MediaSessionCompat.Token MJ;
+    protected final Object dw;
+    final List<MediaControllerCompat.a> dx = new ArrayList();
+    HashMap<MediaControllerCompat.a, MediaControllerCompat.MediaControllerImplApi21.a> dy = new HashMap();
+    final MediaSessionCompat.Token dz;
     final Object mLock = new Object();
     
     public MediaControllerImplApi21(Context paramContext, MediaSessionCompat.Token paramToken)
     {
-      this.MJ = paramToken;
-      this.MG = new MediaController(paramContext, (MediaSession.Token)this.MJ.MV);
-      if (this.MG == null) {
+      this.dz = paramToken;
+      this.dw = new MediaController(paramContext, (MediaSession.Token)this.dz.dL);
+      if (this.dw == null) {
         throw new RemoteException();
       }
-      if (this.MJ.MW == null)
+      if (this.dz.dM == null)
       {
         paramContext = new ExtraBinderRequestResultReceiver(this);
-        ((MediaController)this.MG).sendCommand("android.support.v4.media.session.command.GET_EXTRA_BINDER", null, paramContext);
+        ((MediaController)this.dw).sendCommand("android.support.v4.media.session.command.GET_EXTRA_BINDER", null, paramContext);
       }
     }
     
-    public final boolean dispatchMediaButtonEvent(KeyEvent paramKeyEvent)
+    public final boolean b(KeyEvent paramKeyEvent)
     {
-      return ((MediaController)this.MG).dispatchMediaButtonEvent(paramKeyEvent);
+      return ((MediaController)this.dw).dispatchMediaButtonEvent(paramKeyEvent);
     }
     
     static class ExtraBinderRequestResultReceiver
       extends ResultReceiver
     {
-      private WeakReference<MediaControllerCompat.MediaControllerImplApi21> MK;
+      private WeakReference<MediaControllerCompat.MediaControllerImplApi21> dA;
       
       ExtraBinderRequestResultReceiver(MediaControllerCompat.MediaControllerImplApi21 paramMediaControllerImplApi21)
       {
         super();
-        this.MK = new WeakReference(paramMediaControllerImplApi21);
+        this.dA = new WeakReference(paramMediaControllerImplApi21);
       }
       
       protected void onReceiveResult(int paramInt, Bundle paramBundle)
       {
-        MediaControllerCompat.MediaControllerImplApi21 localMediaControllerImplApi21 = (MediaControllerCompat.MediaControllerImplApi21)this.MK.get();
+        MediaControllerCompat.MediaControllerImplApi21 localMediaControllerImplApi21 = (MediaControllerCompat.MediaControllerImplApi21)this.dA.get();
         if ((localMediaControllerImplApi21 == null) || (paramBundle == null)) {
           return;
         }
@@ -98,78 +95,29 @@ public final class MediaControllerCompat
         MediaControllerCompat.MediaControllerImplApi21.a locala1;
         synchronized (localMediaControllerImplApi21.mLock)
         {
-          localMediaControllerImplApi21.MJ.MW = b.a.d(c.b(paramBundle, "android.support.v4.media.session.EXTRA_BINDER"));
-          localMediaControllerImplApi21.MJ.MX = paramBundle.getBundle("android.support.v4.media.session.SESSION_TOKEN2_BUNDLE");
-          if (localMediaControllerImplApi21.MJ.MW == null) {
+          localMediaControllerImplApi21.dz.dM = b.a.d(androidx.core.app.b.b(paramBundle, "android.support.v4.media.session.EXTRA_BINDER"));
+          localMediaControllerImplApi21.dz.dN = paramBundle.getBundle("android.support.v4.media.session.SESSION_TOKEN2_BUNDLE");
+          if (localMediaControllerImplApi21.dz.dM == null) {
             break label177;
           }
-          paramBundle = localMediaControllerImplApi21.MH.iterator();
+          paramBundle = localMediaControllerImplApi21.dx.iterator();
           if (paramBundle.hasNext())
           {
             locala = (MediaControllerCompat.a)paramBundle.next();
             locala1 = new MediaControllerCompat.MediaControllerImplApi21.a(locala);
-            localMediaControllerImplApi21.MI.put(locala, locala1);
-            locala.MC = locala1;
+            localMediaControllerImplApi21.dy.put(locala, locala1);
+            locala.du = locala1;
           }
         }
-        localMediaControllerImplApi21.MH.clear();
+        localMediaControllerImplApi21.dx.clear();
         label177:
       }
     }
   }
   
-  final class a$a
-    extends Handler
+  public static abstract interface b
   {
-    boolean MD;
-    
-    public final void handleMessage(Message paramMessage)
-    {
-      if (!this.MD) {
-        return;
-      }
-      switch (paramMessage.what)
-      {
-      case 8: 
-      case 10: 
-      default: 
-        return;
-      case 1: 
-        MediaSessionCompat.d(paramMessage.getData());
-        paramMessage = paramMessage.obj;
-        return;
-      case 2: 
-        paramMessage = paramMessage.obj;
-        return;
-      case 3: 
-        paramMessage = paramMessage.obj;
-        return;
-      case 5: 
-        paramMessage = paramMessage.obj;
-        return;
-      case 6: 
-        paramMessage = paramMessage.obj;
-        return;
-      case 11: 
-        ((Boolean)paramMessage.obj).booleanValue();
-        return;
-      case 9: 
-        ((Integer)paramMessage.obj).intValue();
-        return;
-      case 12: 
-        ((Integer)paramMessage.obj).intValue();
-        return;
-      case 7: 
-        MediaSessionCompat.d((Bundle)paramMessage.obj);
-        return;
-      }
-      paramMessage = paramMessage.obj;
-    }
-  }
-  
-  static abstract interface b
-  {
-    public abstract boolean dispatchMediaButtonEvent(KeyEvent paramKeyEvent);
+    public abstract boolean b(KeyEvent paramKeyEvent);
   }
   
   static class c
@@ -193,21 +141,21 @@ public final class MediaControllerCompat
   static final class e
     implements MediaControllerCompat.b
   {
-    private b ML;
+    private b dB;
     
     public e(MediaSessionCompat.Token paramToken)
     {
-      this.ML = b.a.d((IBinder)paramToken.MV);
+      this.dB = b.a.d((IBinder)paramToken.dL);
     }
     
-    public final boolean dispatchMediaButtonEvent(KeyEvent paramKeyEvent)
+    public final boolean b(KeyEvent paramKeyEvent)
     {
       if (paramKeyEvent == null) {
         throw new IllegalArgumentException("event may not be null.");
       }
       try
       {
-        this.ML.a(paramKeyEvent);
+        this.dB.a(paramKeyEvent);
         label25:
         return false;
       }
@@ -220,7 +168,7 @@ public final class MediaControllerCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v4.media.session.MediaControllerCompat
  * JD-Core Version:    0.7.0.1
  */

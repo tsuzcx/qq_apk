@@ -8,34 +8,34 @@ import java.util.List;
 public final class e<T>
   implements Iterable<T>
 {
-  private static final a<?> ReX;
-  private final List<Iterable<? extends T>> ReW;
+  private static final a<?> YFR;
+  private final List<Iterable<? extends T>> YFQ;
   
   static
   {
-    AppMethodBeat.i(187778);
-    ReX = new a((byte)0);
-    AppMethodBeat.o(187778);
+    AppMethodBeat.i(237072);
+    YFR = new a((byte)0);
+    AppMethodBeat.o(237072);
   }
   
   private e(List<Iterable<? extends T>> paramList)
   {
-    this.ReW = paramList;
+    this.YFQ = paramList;
   }
   
   @SafeVarargs
   public e(Iterable<? extends T>... paramVarArgs)
   {
     this(Arrays.asList(paramVarArgs));
-    AppMethodBeat.i(187776);
-    AppMethodBeat.o(187776);
+    AppMethodBeat.i(237068);
+    AppMethodBeat.o(237068);
   }
   
   public final Iterator<T> iterator()
   {
-    AppMethodBeat.i(187777);
-    b localb = new b(this.ReW.iterator(), ReX);
-    AppMethodBeat.o(187777);
+    AppMethodBeat.i(237070);
+    b localb = new b(this.YFQ.iterator(), YFR);
+    AppMethodBeat.o(237070);
     return localb;
   }
   
@@ -45,7 +45,7 @@ public final class e<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vfs.a.e
  * JD-Core Version:    0.7.0.1
  */

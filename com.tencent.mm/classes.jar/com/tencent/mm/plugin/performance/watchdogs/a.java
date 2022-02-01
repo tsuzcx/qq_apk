@@ -3,15 +3,14 @@ package com.tencent.mm.plugin.performance.watchdogs;
 import android.annotation.SuppressLint;
 import android.os.Process;
 import android.text.TextUtils;
-import com.tencent.f.h;
-import com.tencent.f.i;
+import com.tencent.e.h;
+import com.tencent.e.i;
+import com.tencent.matrix.fd.FDDumpBridge;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
-import com.tencent.wxperf.fd.FDDumpBridge;
+import com.tencent.mm.vfs.q;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,82 +26,82 @@ import java.util.Set;
 public final class a
   implements Runnable
 {
-  private static final a AVV;
-  private static final Set<String> AWg;
-  private boolean AVW;
-  private boolean AVX;
-  private boolean AVY;
+  private static final Set<String> GPE;
+  private static final a GPt;
+  private final Map<String, Map<String, Integer>> GPA;
+  private final Map<String, Integer> GPB;
+  public int GPC;
+  private boolean GPD;
+  private boolean GPu;
+  private boolean GPv;
+  private boolean GPw;
   @Deprecated
-  private boolean AVZ;
-  private int AWa;
-  private int AWb;
-  private final Map<String, Map<String, Integer>> AWc;
-  private final Map<String, Integer> AWd;
-  public int AWe;
-  private boolean AWf;
+  private boolean GPx;
+  private int GPy;
+  private int GPz;
   
   static
   {
-    AppMethodBeat.i(201129);
-    AVV = new a();
+    AppMethodBeat.i(200862);
+    GPt = new a();
     HashSet localHashSet = new HashSet();
-    AWg = localHashSet;
+    GPE = localHashSet;
     localHashSet.add("anon_inode:sync_file");
-    AppMethodBeat.o(201129);
+    AppMethodBeat.o(200862);
   }
   
   private a()
   {
-    AppMethodBeat.i(201122);
-    this.AWe = 1024;
-    this.AWc = new HashMap();
-    this.AWd = new HashMap();
-    AppMethodBeat.o(201122);
+    AppMethodBeat.i(200840);
+    this.GPC = 1024;
+    this.GPA = new HashMap();
+    this.GPB = new HashMap();
+    AppMethodBeat.o(200840);
   }
   
   private int a(a parama)
   {
-    AppMethodBeat.i(201125);
-    parama = (Integer)this.AWd.get(parama.name());
+    AppMethodBeat.i(200850);
+    parama = (Integer)this.GPB.get(parama.name());
     if (parama == null)
     {
-      AppMethodBeat.o(201125);
+      AppMethodBeat.o(200850);
       return 0;
     }
     int i = parama.intValue();
-    AppMethodBeat.o(201125);
+    AppMethodBeat.o(200850);
     return i;
   }
   
-  private static boolean aJZ(String paramString)
+  private static boolean aUv(String paramString)
   {
-    AppMethodBeat.i(201128);
+    AppMethodBeat.i(200861);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(201128);
+      AppMethodBeat.o(200861);
       return true;
     }
-    Iterator localIterator = AWg.iterator();
+    Iterator localIterator = GPE.iterator();
     while (localIterator.hasNext()) {
       if (paramString.matches((String)localIterator.next()))
       {
-        AppMethodBeat.o(201128);
+        AppMethodBeat.o(200861);
         return true;
       }
     }
-    AppMethodBeat.o(201128);
+    AppMethodBeat.o(200861);
     return false;
   }
   
-  public static a eCE()
+  public static a jdMethod_for()
   {
-    return AVV;
+    return GPt;
   }
   
-  private String eCF()
+  private String fos()
   {
-    AppMethodBeat.i(201124);
-    Object localObject2 = new ArrayList(this.AWd.entrySet());
+    AppMethodBeat.i(200848);
+    Object localObject2 = new ArrayList(this.GPB.entrySet());
     Collections.sort((List)localObject2, new Comparator() {});
     Object localObject1 = new StringBuilder();
     localObject2 = ((List)localObject2).iterator();
@@ -111,7 +110,7 @@ public final class a
     {
       Object localObject3 = (Map.Entry)((Iterator)localObject2).next();
       Log.e("MicroMsg.FDWatchDog", ">>>>>>>>>>>> FD SOS: type = %s, count = %s", new Object[] { ((Map.Entry)localObject3).getKey(), ((Map.Entry)localObject3).getValue() });
-      localObject3 = (Map)this.AWc.get(((Map.Entry)localObject3).getKey());
+      localObject3 = (Map)this.GPA.get(((Map.Entry)localObject3).getKey());
       if (localObject3 != null)
       {
         localObject3 = new ArrayList(((Map)localObject3).entrySet());
@@ -135,26 +134,26 @@ public final class a
     }
     localObject1 = ((StringBuilder)localObject1).toString();
     Log.e("MicroMsg.FDWatchDog", "top path is %s", new Object[] { localObject1 });
-    AppMethodBeat.o(201124);
+    AppMethodBeat.o(200848);
     return localObject1;
   }
   
-  private int eCG()
+  private int fot()
   {
-    AppMethodBeat.i(201126);
+    AppMethodBeat.i(200854);
     long l = System.currentTimeMillis();
     int i = 0;
-    this.AWa = 0;
-    Object localObject1 = new o(String.format("/proc/%s/fd", new Object[] { Integer.valueOf(Process.myPid()) }));
-    if (!((o)localObject1).exists())
+    this.GPy = 0;
+    Object localObject1 = new q(String.format("/proc/%s/fd", new Object[] { Integer.valueOf(Process.myPid()) }));
+    if (!((q)localObject1).ifE())
     {
-      e.Cxv.idkeyStat(1031L, 255L, 1L, false);
-      Log.e("MicroMsg.FDWatchDog", "file not exists: %s", new Object[] { aa.z(((o)localObject1).mUri) });
-      AppMethodBeat.o(201126);
+      f.Iyx.idkeyStat(1031L, 255L, 1L, false);
+      Log.e("MicroMsg.FDWatchDog", "file not exists: %s", new Object[] { ((q)localObject1).getPath() });
+      AppMethodBeat.o(200854);
       return 0;
     }
-    this.AWc.clear();
-    this.AWd.clear();
+    this.GPA.clear();
+    this.GPB.clear();
     int j = i;
     for (;;)
     {
@@ -163,15 +162,15 @@ public final class a
       int k;
       try
       {
-        o[] arrayOfo = ((o)localObject1).het();
-        if (arrayOfo == null)
+        q[] arrayOfq = ((q)localObject1).ifJ();
+        if (arrayOfq == null)
         {
           j = i;
           Log.e("MicroMsg.FDWatchDog", "reading empty dir");
           return 0;
         }
         j = i;
-        m = arrayOfo.length;
+        m = arrayOfq.length;
         if (m < 896)
         {
           j = m;
@@ -179,13 +178,13 @@ public final class a
           return m;
         }
         j = m;
-        int n = arrayOfo.length;
+        int n = arrayOfq.length;
         i = 0;
         if (i >= n) {
-          break label760;
+          break label753;
         }
         j = m;
-        localObject3 = aa.z(arrayOfo[i].her());
+        localObject3 = arrayOfq[i].bOF();
         j = m;
         str = new File((String)localObject3).getCanonicalPath();
         j = m;
@@ -194,29 +193,29 @@ public final class a
           j = m;
           localObject1 = str;
           if (!TextUtils.isEmpty(str)) {
-            break label774;
+            break label767;
           }
         }
         j = m;
-        str = FDDumpBridge.brC((String)localObject3);
+        str = FDDumpBridge.fe((String)localObject3);
         j = m;
         localObject1 = str;
         if (!TextUtils.isEmpty(str)) {
-          break label774;
+          break label767;
         }
         j = m;
         Log.e("MicroMsg.FDWatchDog", "file name is empty %s", new Object[] { localObject3 });
         j = m;
-        e.Cxv.idkeyStat(1031L, 252L, 1L, false);
+        f.Iyx.idkeyStat(1031L, 252L, 1L, false);
         localObject1 = localObject3;
         j = m;
-        if (aJZ((String)localObject1))
+        if (aUv((String)localObject1))
         {
           j = m;
           Log.i("MicroMsg.FDWatchDog", "ignore %s", new Object[] { localObject1 });
           j = m;
-          this.AWa += 1;
-          break label777;
+          this.GPy += 1;
+          break label770;
         }
         j = m;
         localObject3 = a.values();
@@ -224,22 +223,22 @@ public final class a
         int i1 = localObject3.length;
         k = 0;
         if (k >= i1) {
-          break label777;
+          break label770;
         }
         str = localObject3[k];
         j = m;
         if (!((String)localObject1).matches(a.b(str))) {
-          break label753;
+          break label746;
         }
         j = m;
-        localObject3 = (Map)this.AWc.get(str.name());
+        localObject3 = (Map)this.GPA.get(str.name());
         if (localObject3 != null) {
-          break label771;
+          break label764;
         }
         j = m;
         localObject3 = new HashMap();
         j = m;
-        this.AWc.put(str.name(), localObject3);
+        this.GPA.put(str.name(), localObject3);
         j = m;
         localInteger = (Integer)((Map)localObject3).get(localObject1);
         if (localInteger != null) {
@@ -252,15 +251,15 @@ public final class a
       {
         Object localObject3;
         Integer localInteger;
-        e.Cxv.idkeyStat(1031L, 254L, 1L, false);
+        f.Iyx.idkeyStat(1031L, 254L, 1L, false);
         Log.printErrStackTrace("MicroMsg.FDWatchDog", localException, "", new Object[0]);
-        i = j - this.AWa;
+        i = j - this.GPy;
         if (i > 0) {
           continue;
         }
         Log.e("MicroMsg.FDWatchDog", "fd dump error");
-        e.Cxv.idkeyStat(1031L, 253L, 1L, false);
-        Log.i("MicroMsg.FDWatchDog", "dump cost: %d, FDCount = %d, mIgnoredCount = %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(i), Integer.valueOf(this.AWa) });
+        f.Iyx.idkeyStat(1031L, 253L, 1L, false);
+        Log.i("MicroMsg.FDWatchDog", "dump cost: %d, FDCount = %d, mIgnoredCount = %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(i), Integer.valueOf(this.GPy) });
         return i;
         j = m;
         ((Map)localObject3).put(localException, Integer.valueOf(localInteger.intValue() + 1));
@@ -268,69 +267,69 @@ public final class a
       }
       finally
       {
-        AppMethodBeat.o(201126);
+        AppMethodBeat.o(200854);
       }
       j = m;
-      localObject1 = (Integer)this.AWd.get(str.name());
+      localObject1 = (Integer)this.GPB.get(str.name());
       if (localObject1 == null)
       {
         j = m;
-        this.AWd.put(str.name(), Integer.valueOf(1));
+        this.GPB.put(str.name(), Integer.valueOf(1));
       }
       else
       {
         j = m;
-        this.AWd.put(str.name(), Integer.valueOf(localObject2.intValue() + 1));
-        break label777;
-        label753:
+        this.GPB.put(str.name(), Integer.valueOf(localObject2.intValue() + 1));
+        break label770;
+        label746:
         k += 1;
         continue;
-        label760:
-        i = m - this.AWa;
+        label753:
+        i = m - this.GPy;
         continue;
-        label771:
+        label764:
         continue;
-        label774:
+        label767:
         continue;
       }
-      label777:
+      label770:
       i += 1;
     }
   }
   
-  private void o(int paramInt1, String paramString, int paramInt2)
+  private void q(int paramInt1, String paramString, int paramInt2)
   {
-    AppMethodBeat.i(201127);
-    e.Cxv.a(17899, new Object[] { Integer.valueOf(paramInt1), Long.valueOf(System.currentTimeMillis()), MMApplicationContext.getProcessName(), Integer.valueOf(a(a.AWi)), Integer.valueOf(a(a.AWj)), Integer.valueOf(a(a.AWm)), Integer.valueOf(a(a.AWo)), Integer.valueOf(a(a.AWp)), Integer.valueOf(a(a.AWq)), Integer.valueOf(a(a.AWr)), Integer.valueOf(a(a.AWs)), Integer.valueOf(a(a.AWt)), Integer.valueOf(a(a.AWu)), Integer.valueOf(a(a.AWv)), Integer.valueOf(a(a.AWw)), Integer.valueOf(a(a.AWx)), Integer.valueOf(a(a.AWy)), Integer.valueOf(a(a.AWz)), Integer.valueOf(a(a.AWA)), Integer.valueOf(a(a.AWB)), Integer.valueOf(a(a.AWC)), Integer.valueOf(a(a.AWE)), paramString, Integer.valueOf(this.AWa), Integer.valueOf(a(a.AWk)), Integer.valueOf(a(a.AWn)), Integer.valueOf(a(a.AWl)), Integer.valueOf(paramInt2), Integer.valueOf(this.AWe), Integer.valueOf(a(a.AWD)) });
-    AppMethodBeat.o(201127);
+    AppMethodBeat.i(200860);
+    f.Iyx.a(17899, new Object[] { Integer.valueOf(paramInt1), Long.valueOf(System.currentTimeMillis()), MMApplicationContext.getProcessName(), Integer.valueOf(a(a.GPG)), Integer.valueOf(a(a.GPH)), Integer.valueOf(a(a.GPK)), Integer.valueOf(a(a.GPM)), Integer.valueOf(a(a.GPN)), Integer.valueOf(a(a.GPO)), Integer.valueOf(a(a.GPP)), Integer.valueOf(a(a.GPQ)), Integer.valueOf(a(a.GPR)), Integer.valueOf(a(a.GPT)), Integer.valueOf(a(a.GPU)), Integer.valueOf(a(a.GPV)), Integer.valueOf(a(a.GPW)), Integer.valueOf(a(a.GPX)), Integer.valueOf(a(a.GPY)), Integer.valueOf(a(a.GPZ)), Integer.valueOf(a(a.GQa)), Integer.valueOf(a(a.GQb)), Integer.valueOf(a(a.GQd)), paramString, Integer.valueOf(this.GPy), Integer.valueOf(a(a.GPI)), Integer.valueOf(a(a.GPL)), Integer.valueOf(a(a.GPJ)), Integer.valueOf(paramInt2), Integer.valueOf(this.GPC), Integer.valueOf(a(a.GQc)) });
+    AppMethodBeat.o(200860);
   }
   
   public final void run()
   {
-    AppMethodBeat.i(201123);
+    AppMethodBeat.i(200843);
     int i;
     if (MMApplicationContext.isMainProcess()) {
       i = 100;
     }
     for (;;)
     {
-      int j = eCG();
-      if ((j <= 256) && (j - this.AWb > 32))
+      int j = fot();
+      if ((j <= 256) && (j - this.GPz > 32))
       {
-        e.Cxv.idkeyStat(1031L, i - 2, 1L, false);
-        this.AWb = Math.max(j, this.AWb);
+        f.Iyx.idkeyStat(1031L, i - 2, 1L, false);
+        this.GPz = Math.max(j, this.GPz);
       }
       for (;;)
       {
-        if ((j > this.AWe * 0.9D) && (!this.AWf))
+        if ((j > this.GPC * 0.9D) && (!this.GPD))
         {
           Log.e("MicroMsg.FDWatchDog", ">>>>>>>>>>>> FD SOS: total count = %d", new Object[] { Integer.valueOf(j) });
-          this.AWf = true;
-          e.Cxv.idkeyStat(1031L, i + 4, 1L, false);
-          o(j, eCF(), 1);
+          this.GPD = true;
+          f.Iyx.idkeyStat(1031L, i + 4, 1L, false);
+          q(j, fos(), 1);
         }
-        h.RTc.o(this, 1800000L);
-        AppMethodBeat.o(201123);
+        h.ZvG.o(this, 1800000L);
+        AppMethodBeat.o(200843);
         return;
         if ((MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isToolsMpProcess()))
         {
@@ -347,27 +346,27 @@ public final class a
         }
         i = 150;
         break;
-        if ((256 < j) && (j <= 512) && (!this.AVW))
+        if ((256 < j) && (j <= 512) && (!this.GPu))
         {
-          e.Cxv.idkeyStat(1031L, i - 1, 1L, false);
-          this.AVW = true;
+          f.Iyx.idkeyStat(1031L, i - 1, 1L, false);
+          this.GPu = true;
         }
-        else if ((512 < j) && (j <= 768) && (!this.AVX))
+        else if ((512 < j) && (j <= 768) && (!this.GPv))
         {
-          e.Cxv.idkeyStat(1031L, i, 1L, false);
-          this.AVX = true;
+          f.Iyx.idkeyStat(1031L, i, 1L, false);
+          this.GPv = true;
         }
-        else if ((768 < j) && (j <= 896) && (!this.AVY))
+        else if ((768 < j) && (j <= 896) && (!this.GPw))
         {
-          e.Cxv.idkeyStat(1031L, i + 1, 1L, false);
-          this.AVY = true;
+          f.Iyx.idkeyStat(1031L, i + 1, 1L, false);
+          this.GPw = true;
         }
-        else if ((j > 896) && (!this.AVZ))
+        else if ((j > 896) && (!this.GPx))
         {
-          e.Cxv.idkeyStat(1031L, i + 2, 1L, false);
+          f.Iyx.idkeyStat(1031L, i + 2, 1L, false);
           Log.e("MicroMsg.FDWatchDog", ">>>>>>>>>>>> FD SOS: total count = %d", new Object[] { Integer.valueOf(j) });
-          o(j, eCF(), 0);
-          this.AVZ = true;
+          q(j, fos(), 0);
+          this.GPx = true;
         }
       }
       label396:
@@ -378,47 +377,47 @@ public final class a
   @SuppressLint({"SdCardPath"})
   static enum a
   {
-    private final String AWF;
+    private final String GQe;
     
     static
     {
-      AppMethodBeat.i(201121);
-      AWi = new a("FD_TYPE_ANNON_INODE_EVENT", 0, "anon_inode:\\[event.*\\]");
-      AWj = new a("FD_TYPE_ANNON_INODE_DMABUF", 1, ".*dmabuf.*");
-      AWk = new a("FD_TYPE_ANNON_INODE_GRALLOC", 2, "anon_inode:gralloc.*");
-      AWl = new a("FD_TYPE_ANNON_INODE_MALITL", 3, "anon_inode:malitl.*");
-      AWm = new a("FD_TYPE_SOCKET", 4, ".*socket:.*");
-      AWn = new a("FD_TYPE_PIPE", 5, ".*pipe:[0-9]*");
-      AWo = new a("FD_TYPE_PATH_DATA_MM_FILES_MMKV", 6, "/data/.*/" + MMApplicationContext.getApplicationId() + "/files/mmkv/.*");
-      AWp = new a("FD_TYPE_PATH_DATA_MM_FILES_KVCOMM", 7, "/data/.*/" + MMApplicationContext.getApplicationId() + "/files/kvcomm/.*");
-      AWq = new a("FD_TYPE_PATH_DATA_MM_FILES_XLOG", 8, "/data/.*/" + MMApplicationContext.getApplicationId() + "/files/xlog/.*");
-      AWr = new a("FD_TYPE_PATH_DATA_MM_FILES_OTHERS", 9, "/data/.*/" + MMApplicationContext.getApplicationId() + "/files/.*");
-      AWs = new a("FD_TYPE_PATH_DATA_MM_MICRO_MSG", 10, "/data/.*/" + MMApplicationContext.getApplicationId() + "/MicroMsg/.*");
-      AWt = new a("FD_TYPE_PATH_DATA_MM_OTHERS", 11, "/data/.*/" + MMApplicationContext.getApplicationId() + "/.*");
-      AWu = new a("FD_TYPE_PATH_EXT_AC_VOICE", 12, ".*/MicroMsg/[0-9a-eA-E]+/voice2/.*");
-      AWv = new a("FD_TYPE_PATH_EXT_AC_VIDEO", 13, ".*/MicroMsg/[0-9a-eA-E]+/video/.*");
-      AWw = new a("FD_TYPE_PATH_EXT_AC_ATTACHMENT", 14, ".*/MicroMsg/[0-9a-eA-E]+/attachment/.*");
-      AWx = new a("FD_TYPE_PATH_EXT_AC_IMAGE", 15, ".*/MicroMsg/[0-9a-eA-E]+/image[2]?/.*");
-      AWy = new a("FD_TYPE_PATH_EXT_AC_OTHERS", 16, ".*/MicroMsg/[0-9a-eA-E]+/.*");
-      AWz = new a("FD_TYPE_PATH_EXT_OTHERS", 17, ".*/MicroMsg/.*");
-      AWA = new a("FD_TYPE_PATH_SYSTEM_FRAMEWORK", 18, "/system/framework/.*");
-      AWB = new a("FD_TYPE_PATH_DEV_ASHMEM", 19, "/dev/ashmem");
-      AWC = new a("FD_TYPE_PATH_DEV_OTHERS", 20, "/dev/.*");
-      AWD = new a("FD_TYPE_RAW_PATH", 21, "/proc/[0-9]*/fd/[0-9]*");
-      AWE = new a("FD_TYPE_OTHERS", 22, ".*");
-      AWG = new a[] { AWi, AWj, AWk, AWl, AWm, AWn, AWo, AWp, AWq, AWr, AWs, AWt, AWu, AWv, AWw, AWx, AWy, AWz, AWA, AWB, AWC, AWD, AWE };
-      AppMethodBeat.o(201121);
+      AppMethodBeat.i(200629);
+      GPG = new a("FD_TYPE_ANNON_INODE_EVENT", 0, "anon_inode:\\[event.*\\]");
+      GPH = new a("FD_TYPE_ANNON_INODE_DMABUF", 1, ".*dmabuf.*");
+      GPI = new a("FD_TYPE_ANNON_INODE_GRALLOC", 2, "anon_inode:gralloc.*");
+      GPJ = new a("FD_TYPE_ANNON_INODE_MALITL", 3, "anon_inode:malitl.*");
+      GPK = new a("FD_TYPE_SOCKET", 4, ".*socket:.*");
+      GPL = new a("FD_TYPE_PIPE", 5, ".*pipe:[0-9]*");
+      GPM = new a("FD_TYPE_PATH_DATA_MM_FILES_MMKV", 6, "/data/.*/" + MMApplicationContext.getApplicationId() + "/files/mmkv/.*");
+      GPN = new a("FD_TYPE_PATH_DATA_MM_FILES_KVCOMM", 7, "/data/.*/" + MMApplicationContext.getApplicationId() + "/files/kvcomm/.*");
+      GPO = new a("FD_TYPE_PATH_DATA_MM_FILES_XLOG", 8, "/data/.*/" + MMApplicationContext.getApplicationId() + "/files/xlog/.*");
+      GPP = new a("FD_TYPE_PATH_DATA_MM_FILES_OTHERS", 9, "/data/.*/" + MMApplicationContext.getApplicationId() + "/files/.*");
+      GPQ = new a("FD_TYPE_PATH_DATA_MM_MICRO_MSG", 10, "/data/.*/" + MMApplicationContext.getApplicationId() + "/MicroMsg/.*");
+      GPR = new a("FD_TYPE_PATH_DATA_MM_OTHERS", 11, "/data/.*/" + MMApplicationContext.getApplicationId() + "/.*");
+      GPT = new a("FD_TYPE_PATH_EXT_AC_VOICE", 12, ".*/MicroMsg/[0-9a-eA-E]+/voice2/.*");
+      GPU = new a("FD_TYPE_PATH_EXT_AC_VIDEO", 13, ".*/MicroMsg/[0-9a-eA-E]+/video/.*");
+      GPV = new a("FD_TYPE_PATH_EXT_AC_ATTACHMENT", 14, ".*/MicroMsg/[0-9a-eA-E]+/attachment/.*");
+      GPW = new a("FD_TYPE_PATH_EXT_AC_IMAGE", 15, ".*/MicroMsg/[0-9a-eA-E]+/image[2]?/.*");
+      GPX = new a("FD_TYPE_PATH_EXT_AC_OTHERS", 16, ".*/MicroMsg/[0-9a-eA-E]+/.*");
+      GPY = new a("FD_TYPE_PATH_EXT_OTHERS", 17, ".*/MicroMsg/.*");
+      GPZ = new a("FD_TYPE_PATH_SYSTEM_FRAMEWORK", 18, "/system/framework/.*");
+      GQa = new a("FD_TYPE_PATH_DEV_ASHMEM", 19, "/dev/ashmem");
+      GQb = new a("FD_TYPE_PATH_DEV_OTHERS", 20, "/dev/.*");
+      GQc = new a("FD_TYPE_RAW_PATH", 21, "/proc/[0-9]*/fd/[0-9]*");
+      GQd = new a("FD_TYPE_OTHERS", 22, ".*");
+      GQf = new a[] { GPG, GPH, GPI, GPJ, GPK, GPL, GPM, GPN, GPO, GPP, GPQ, GPR, GPT, GPU, GPV, GPW, GPX, GPY, GPZ, GQa, GQb, GQc, GQd };
+      AppMethodBeat.o(200629);
     }
     
     private a(String paramString)
     {
-      this.AWF = paramString;
+      this.GQe = paramString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.watchdogs.a
  * JD-Core Version:    0.7.0.1
  */

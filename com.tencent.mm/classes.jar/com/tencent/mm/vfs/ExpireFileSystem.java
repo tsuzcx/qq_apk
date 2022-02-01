@@ -13,8 +13,8 @@ public class ExpireFileSystem
   extends AbstractFileSystem
 {
   public static final Parcelable.Creator<ExpireFileSystem> CREATOR;
-  protected final FileSystem Rbo;
-  protected final long nfE;
+  protected final FileSystem YBI;
+  protected final long qgo;
   
   static
   {
@@ -26,31 +26,31 @@ public class ExpireFileSystem
   protected ExpireFileSystem(Parcel paramParcel)
   {
     AppMethodBeat.i(13094);
-    aa.a(paramParcel, ExpireFileSystem.class, 1);
-    this.Rbo = ((FileSystem)paramParcel.readParcelable(getClass().getClassLoader()));
-    if (this.Rbo == null)
+    ad.a(paramParcel, ExpireFileSystem.class, 1);
+    this.YBI = ((FileSystem)paramParcel.readParcelable(getClass().getClassLoader()));
+    if (this.YBI == null)
     {
       paramParcel = new IllegalArgumentException("Wrong wrapped filesystem.");
       AppMethodBeat.o(13094);
       throw paramParcel;
     }
-    this.nfE = paramParcel.readLong();
+    this.qgo = paramParcel.readLong();
     AppMethodBeat.o(13094);
   }
   
   public ExpireFileSystem(FileSystem paramFileSystem, long paramLong)
   {
     AppMethodBeat.i(170151);
-    this.Rbo = paramFileSystem;
-    this.nfE = paramLong;
+    this.YBI = paramFileSystem;
+    this.qgo = paramLong;
     AppMethodBeat.o(170151);
   }
   
-  public FileSystem.b cj(Map<String, String> paramMap)
+  public FileSystem.b cp(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(187647);
-    paramMap = new a(this.Rbo.cj(paramMap));
-    AppMethodBeat.o(187647);
+    AppMethodBeat.i(236089);
+    paramMap = new a(this.YBI.cp(paramMap));
+    AppMethodBeat.o(236089);
     return paramMap;
   }
   
@@ -59,10 +59,37 @@ public class ExpireFileSystem
     return 0;
   }
   
+  public boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(236099);
+    if (!(paramObject instanceof ExpireFileSystem))
+    {
+      AppMethodBeat.o(236099);
+      return false;
+    }
+    paramObject = (ExpireFileSystem)paramObject;
+    if ((this.YBI.equals(paramObject.YBI)) && (this.qgo == paramObject.qgo))
+    {
+      AppMethodBeat.o(236099);
+      return true;
+    }
+    AppMethodBeat.o(236099);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    AppMethodBeat.i(236096);
+    int i = ExpireFileSystem.class.hashCode();
+    int j = ad.hash(new Object[] { this.YBI, Long.valueOf(this.qgo) });
+    AppMethodBeat.o(236096);
+    return i ^ j;
+  }
+  
   public String toString()
   {
     AppMethodBeat.i(170152);
-    String str = "Expire [" + this.Rbo.toString() + "]";
+    String str = "Expire [" + this.YBI.toString() + "]";
     AppMethodBeat.o(170152);
     return str;
   }
@@ -70,91 +97,113 @@ public class ExpireFileSystem
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(13096);
-    aa.b(paramParcel, ExpireFileSystem.class, 1);
-    paramParcel.writeParcelable(this.Rbo, paramInt);
-    paramParcel.writeLong(this.nfE);
+    ad.b(paramParcel, ExpireFileSystem.class, 1);
+    paramParcel.writeParcelable(this.YBI, paramInt);
+    paramParcel.writeLong(this.qgo);
     AppMethodBeat.o(13096);
   }
   
   protected class a
-    extends c
+    extends d
   {
-    protected final List<FileSystem.b> RbF;
-    protected final FileSystem.b Rbp;
+    protected final FileSystem.b YBJ;
+    protected final List<FileSystem.b> YCf;
     
     public a(FileSystem.b paramb)
     {
-      AppMethodBeat.i(187645);
-      this.Rbp = paramb;
-      this.RbF = Collections.singletonList(paramb);
-      AppMethodBeat.o(187645);
+      AppMethodBeat.i(236063);
+      this.YBJ = paramb;
+      this.YCf = Collections.singletonList(paramb);
+      AppMethodBeat.o(236063);
     }
     
     public void a(CancellationSignal paramCancellationSignal)
     {
-      AppMethodBeat.i(187646);
+      AppMethodBeat.i(236070);
       long l3 = System.currentTimeMillis();
-      long l4 = ExpireFileSystem.this.nfE;
-      Object localObject = this.Rbp.dx("", true);
+      long l4 = ExpireFileSystem.this.qgo;
+      Object localObject = this.YBJ.dJ("", true);
       long l1;
-      e locale;
+      f localf;
       long l2;
       if (localObject != null)
       {
         localObject = ((Iterable)localObject).iterator();
-        label122:
+        label123:
         for (l1 = 0L;; l1 = l2 + l1) {
           for (;;)
           {
             if (((Iterator)localObject).hasNext())
             {
-              locale = (e)((Iterator)localObject).next();
+              localf = (f)((Iterator)localObject).next();
               paramCancellationSignal.throwIfCanceled();
-              if ((!locale.RbJ) && (locale.RbI <= l3 - l4))
+              if ((!localf.YCj) && (localf.YCi <= l3 - l4))
               {
-                if (!locale.hdW()) {
-                  break label175;
+                if (!localf.HT(true)) {
+                  break label176;
                 }
-                if (locale.RbH < 0L) {
-                  l2 = locale.size;
+                if (localf.YCh < 0L) {
+                  l2 = localf.size;
                 }
               }
             }
           }
         }
       }
-      label175:
+      label176:
       for (;;)
       {
         break;
-        l2 = locale.RbH;
-        break label122;
-        ExpireFileSystem.this.l(3, new Object[] { "deleteSize", Long.valueOf(l1) });
+        l2 = localf.YCh;
+        break label123;
+        ExpireFileSystem.this.k(3, new Object[] { "deleteSize", Long.valueOf(l1) });
         super.a(paramCancellationSignal);
-        AppMethodBeat.o(187646);
+        AppMethodBeat.o(236070);
         return;
       }
     }
     
-    public final FileSystem hdQ()
+    public boolean equals(Object paramObject)
     {
-      return ExpireFileSystem.this;
+      AppMethodBeat.i(236074);
+      if (!(paramObject instanceof a))
+      {
+        AppMethodBeat.o(236074);
+        return false;
+      }
+      paramObject = (a)paramObject;
+      if ((this.YBJ.equals(paramObject.YBJ)) && (ExpireFileSystem.this.qgo == paramObject.YCg.qgo))
+      {
+        AppMethodBeat.o(236074);
+        return true;
+      }
+      AppMethodBeat.o(236074);
+      return false;
     }
     
-    public final List<FileSystem.b> hdS()
+    public final FileSystem.b hX(String paramString, int paramInt)
     {
-      return this.RbF;
+      return this.YBJ;
     }
     
-    public final FileSystem.b ho(String paramString, int paramInt)
+    public int hashCode()
     {
-      return this.Rbp;
+      AppMethodBeat.i(236072);
+      int i = a.class.hashCode();
+      int j = ad.hash(new Object[] { this.YBJ, Long.valueOf(ExpireFileSystem.this.qgo) });
+      AppMethodBeat.o(236072);
+      return i ^ j;
+    }
+    
+    public final List<FileSystem.b> ifa()
+    {
+      return this.YCf;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.vfs.ExpireFileSystem
  * JD-Core Version:    0.7.0.1
  */

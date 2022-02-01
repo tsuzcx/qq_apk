@@ -19,7 +19,7 @@ public final class p
       AppMethodBeat.o(144913);
       return false;
     }
-    paramCanvas.scale(paramd.kZA, paramd.kZB);
+    paramCanvas.scale(paramd.nTL, paramd.nTM);
     AppMethodBeat.o(144913);
     return true;
   }
@@ -37,7 +37,7 @@ public final class p
     return true;
   }
   
-  public final BaseDrawActionArg bzj()
+  public final BaseDrawActionArg bKy()
   {
     AppMethodBeat.i(144911);
     ScaleActionArg localScaleActionArg = new ScaleActionArg();
@@ -52,7 +52,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.p
  * JD-Core Version:    0.7.0.1
  */

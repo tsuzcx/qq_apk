@@ -7,14 +7,13 @@ import android.view.View;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.g.b.p;
-import kotlin.g.b.z.f;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/multitask/ui/base/MultiTaskWrapper$addMultiTaskWrapper$1", "Landroid/widget/FrameLayout;", "dispatchTouchEvent", "", "ev", "Landroid/view/MotionEvent;", "plugin-multitask_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/multitask/ui/base/MultiTaskWrapper$addMultiTaskWrapper$1", "Landroid/widget/FrameLayout;", "dispatchTouchEvent", "", "ev", "Landroid/view/MotionEvent;", "plugin-multitask_release"})
 public final class d$b
   extends FrameLayout
 {
-  public d$b(View paramView, z.f paramf, Context paramContext)
+  public d$b(View paramView1, View paramView2, Context paramContext)
   {
     super(localContext);
   }
@@ -22,15 +21,15 @@ public final class d$b
   public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     Float localFloat2 = null;
-    AppMethodBeat.i(200766);
+    AppMethodBeat.i(248539);
     if (paramMotionEvent != null) {}
     for (Float localFloat1 = Float.valueOf(paramMotionEvent.getRawX());; localFloat1 = null)
     {
       if (paramMotionEvent != null) {
         localFloat2 = Float.valueOf(paramMotionEvent.getRawY());
       }
-      Object localObject = this.Adw;
-      p.h(localObject, "view");
+      Object localObject = this.FKb;
+      p.k(localObject, "view");
       int[] arrayOfInt = new int[2];
       ((View)localObject).getLocationOnScreen(arrayOfInt);
       float f1 = arrayOfInt[0];
@@ -45,17 +44,17 @@ public final class d$b
       if (!((RectF)localObject).contains(((Number)localFloat1).floatValue(), f1)) {
         break;
       }
-      AppMethodBeat.o(200766);
+      AppMethodBeat.o(248539);
       return true;
     }
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(200766);
+    AppMethodBeat.o(248539);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.ui.base.d.b
  * JD-Core Version:    0.7.0.1
  */

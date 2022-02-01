@@ -11,8 +11,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class ClickableFrameLayout
   extends FrameLayout
 {
-  private GestureDetector mDJ;
   private View.OnClickListener mOnClickListener;
+  private GestureDetector pCU;
   
   public ClickableFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,7 +31,7 @@ public class ClickableFrameLayout
   
   public void setGestureDetector(GestureDetector paramGestureDetector)
   {
-    this.mDJ = paramGestureDetector;
+    this.pCU = paramGestureDetector;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)

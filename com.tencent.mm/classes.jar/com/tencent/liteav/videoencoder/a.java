@@ -3,6 +3,7 @@ package com.tencent.liteav.videoencoder;
 import android.annotation.TargetApi;
 import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
+import android.media.MediaCodec.CodecException;
 import android.media.MediaCodecInfo;
 import android.media.MediaCodecInfo.CodecCapabilities;
 import android.media.MediaCodecInfo.CodecProfileLevel;
@@ -14,16 +15,20 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Process;
 import android.util.Range;
 import android.view.Surface;
-import com.tencent.liteav.basic.c.b;
-import com.tencent.liteav.basic.c.h;
-import com.tencent.liteav.basic.c.k;
-import com.tencent.liteav.basic.c.l;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.Monitor;
+import com.tencent.liteav.basic.opengl.b;
+import com.tencent.liteav.basic.opengl.j;
+import com.tencent.liteav.basic.opengl.l;
+import com.tencent.liteav.basic.opengl.m;
+import com.tencent.liteav.basic.structs.TXSNALPacket;
+import com.tencent.liteav.basic.util.TXCCommonUtil;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
 import com.tencent.liteav.basic.util.g;
+import com.tencent.liteav.basic.util.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -31,42 +36,52 @@ import java.nio.IntBuffer;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Locale;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class a
-  extends c
+  extends d
 {
-  private boolean A;
-  private ByteBuffer[] B;
-  private byte[] C;
-  private volatile long D;
-  private long E;
-  private long F;
-  private int G;
-  private int H;
-  private int I;
+  private Surface A;
+  private boolean B;
+  private boolean C;
+  private boolean D;
+  private ByteBuffer[] E;
+  private byte[] F;
+  private volatile long G;
+  private long H;
+  private long I;
   private int J;
   private int K;
-  private boolean L;
-  private boolean M;
-  private boolean N;
-  private int O;
-  private int P;
-  private int Q;
-  private long R;
+  private int L;
+  private int M;
+  private int N;
+  private boolean O;
+  private boolean P;
+  private boolean Q;
+  private boolean R;
   private int S;
   private int T;
   private int U;
-  private boolean V;
-  private ArrayList<Long> W;
+  private long V;
+  private int W;
   private int X;
-  private long Y;
-  private int Z;
+  private int Y;
+  private j Z;
   private int a;
-  private int aa;
+  private final Object aa;
   private boolean ab;
-  private boolean ac;
-  private long ad;
-  private Runnable ae;
+  private ArrayList<Long> ac;
+  private int ad;
+  private boolean ae;
+  private long af;
+  private int ag;
+  private int ah;
+  private boolean ai;
+  private boolean aj;
+  private long ak;
+  private Runnable al;
   private long b;
   private double c;
   private long d;
@@ -79,19 +94,19 @@ public class a
   private long k;
   private long l;
   private long m;
-  private boolean n;
-  private long o;
-  private long p;
-  private MediaCodec q;
-  private g r;
-  private Runnable s;
-  private Runnable t;
-  private Runnable u;
-  private ArrayDeque<Long> v;
-  private Object w;
-  private Surface x;
-  private boolean y;
-  private boolean z;
+  private long n;
+  private boolean o;
+  private boolean p;
+  private long q;
+  private long r;
+  private MediaCodec s;
+  private String t;
+  private i u;
+  private Runnable v;
+  private Runnable w;
+  private Runnable x;
+  private ArrayDeque<Long> y;
+  private Object z;
   
   public a()
   {
@@ -109,84 +124,89 @@ public class a
     this.k = 0L;
     this.l = 0L;
     this.m = 0L;
-    this.o = 0L;
-    this.p = 0L;
-    this.q = null;
-    this.r = null;
-    this.s = new Runnable()
+    this.n = 0L;
+    this.q = 0L;
+    this.r = 0L;
+    this.s = null;
+    this.t = "video/avc";
+    this.u = null;
+    this.v = new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(14784);
+        AppMethodBeat.i(229070);
         a.a(a.this);
-        AppMethodBeat.o(14784);
+        AppMethodBeat.o(229070);
       }
     };
-    this.t = new Runnable()
-    {
-      public void run()
-      {
-        AppMethodBeat.i(14850);
-        a.d(a.this, 10);
-        AppMethodBeat.o(14850);
-      }
-    };
-    this.u = new Runnable()
+    this.w = new Runnable()
     {
       public void run()
       {
         AppMethodBeat.i(14789);
-        a.d(a.this, 1);
+        a.d(a.this, 10);
         AppMethodBeat.o(14789);
       }
     };
-    this.v = new ArrayDeque(10);
-    this.x = null;
-    this.y = true;
-    this.z = true;
-    this.A = false;
-    this.B = null;
-    this.C = null;
-    this.D = 0L;
-    this.E = 0L;
-    this.F = 0L;
-    this.M = true;
-    this.N = false;
-    this.O = 0;
-    this.P = 0;
-    this.Q = 0;
-    this.R = 0L;
-    this.S = 0;
-    this.T = 0;
-    this.U = -1;
-    this.V = false;
-    this.X = 0;
-    this.Y = 0L;
-    this.Z = 3;
-    this.aa = 0;
-    this.ab = false;
-    this.ac = true;
-    this.ad = 0L;
-    this.ae = new Runnable()
+    this.x = new Runnable()
     {
       public void run()
       {
         AppMethodBeat.i(14822);
+        a.d(a.this, 1);
+        AppMethodBeat.o(14822);
+      }
+    };
+    this.y = new ArrayDeque(10);
+    this.A = null;
+    this.B = true;
+    this.C = true;
+    this.D = false;
+    this.E = null;
+    this.F = null;
+    this.G = 0L;
+    this.H = 0L;
+    this.I = 0L;
+    this.P = true;
+    this.Q = false;
+    this.R = false;
+    this.S = 0;
+    this.T = 0;
+    this.U = 0;
+    this.V = 0L;
+    this.W = 0;
+    this.X = 0;
+    this.Y = -1;
+    this.aa = new Object();
+    this.ab = false;
+    this.ad = 0;
+    this.ae = true;
+    this.af = 0L;
+    this.ag = 3;
+    this.ah = 0;
+    this.ai = false;
+    this.aj = true;
+    this.ak = 0L;
+    this.al = new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(14857);
         a.b(a.this, System.currentTimeMillis());
         a.f(a.this);
         a.g(a.this);
         a.h(a.this);
-        AppMethodBeat.o(14822);
+        AppMethodBeat.o(14857);
       }
     };
-    this.r = new g("HWVideoEncoder");
+    this.u = new i("HWVideoEncoder");
     AppMethodBeat.o(14859);
   }
   
   private int a(int paramInt)
   {
     AppMethodBeat.i(14877);
-    if (this.q == null)
+    if (this.s == null)
     {
       AppMethodBeat.o(14877);
       return -1;
@@ -195,7 +215,7 @@ public class a
     int i3;
     try
     {
-      i3 = this.q.dequeueOutputBuffer(localBufferInfo, paramInt * 1000);
+      i3 = this.s.dequeueOutputBuffer(localBufferInfo, paramInt * 1000);
       if (i3 == -1)
       {
         AppMethodBeat.o(14877);
@@ -210,15 +230,23 @@ public class a
     }
     if (i3 == -3)
     {
-      this.B = this.q.getOutputBuffers();
+      this.E = this.s.getOutputBuffers();
       AppMethodBeat.o(14877);
       return 1;
     }
-    if (i3 == -2)
-    {
-      callDelegate(this.q.getOutputFormat());
-      AppMethodBeat.o(14877);
-      return 1;
+    if (i3 == -2) {
+      try
+      {
+        callDelegate(this.s.getOutputFormat());
+        AppMethodBeat.o(14877);
+        return 1;
+      }
+      catch (IllegalStateException localIllegalStateException2)
+      {
+        TXCLog.e("TXCHWVideoEncoder", "mediacodec getOutputFormat failed.".concat(String.valueOf(localIllegalStateException2)));
+        AppMethodBeat.o(14877);
+        return -1;
+      }
     }
     if (i3 < 0)
     {
@@ -226,17 +254,22 @@ public class a
       return -1;
     }
     long l4 = TXCTimeUtil.getTimeTick();
-    ByteBuffer localByteBuffer = this.B[i3];
+    ByteBuffer localByteBuffer = this.E[i3];
     if (localByteBuffer == null) {
       paramInt = -1;
     }
     try
     {
       Object localObject1;
+      label458:
+      label463:
+      long l1;
+      label809:
+      long l3;
       for (;;)
       {
-        if (this.q != null) {
-          this.q.releaseOutputBuffer(i3, false);
+        if (this.s != null) {
+          this.s.releaseOutputBuffer(i3, false);
         }
         AppMethodBeat.o(14877);
         return paramInt;
@@ -246,13 +279,13 @@ public class a
         localByteBuffer.get(arrayOfByte, 0, localBufferInfo.size);
         i1 = arrayOfByte.length;
         if ((localBufferInfo.size <= 5) || (arrayOfByte[0] != 0) || (arrayOfByte[1] != 0) || (arrayOfByte[2] != 0) || (arrayOfByte[3] != 0) || (arrayOfByte[4] != 0) || (arrayOfByte[5] != 0)) {
-          break label1340;
+          break label1686;
         }
         paramInt = 3;
         for (;;)
         {
           if (paramInt >= i1 - 4) {
-            break label1331;
+            break label1677;
           }
           if ((arrayOfByte[paramInt] == 0) && (arrayOfByte[(paramInt + 1)] == 0) && (arrayOfByte[(paramInt + 2)] == 0) && (arrayOfByte[(paramInt + 3)] == 1))
           {
@@ -262,10 +295,10 @@ public class a
             localObject1 = new byte[paramInt];
             System.arraycopy(arrayOfByte, i1, localObject1, 0, paramInt);
             if (localBufferInfo.size != 0) {
-              break label434;
+              break label463;
             }
             if ((localBufferInfo.flags & 0x4) == 0) {
-              break label429;
+              break label458;
             }
             if (this.mListener != null) {
               this.mListener.a(null, 0);
@@ -275,169 +308,228 @@ public class a
           }
           paramInt += 1;
         }
-        label429:
         paramInt = -1;
-      }
-      label434:
-      if ((localBufferInfo.flags & 0x2) == 2)
-      {
-        if (this.g) {}
-        for (this.C = ((byte[])((byte[])localObject1).clone());; this.C = a((byte[])((byte[])localObject1).clone()))
+        continue;
+        if ((localBufferInfo.flags & 0x2) == 2)
         {
-          paramInt = 1;
-          break;
-        }
-      }
-      Object localObject3;
-      long l3;
-      if ((localBufferInfo.flags & 0x1) == 1)
-      {
-        this.G = -1;
-        if (this.g)
-        {
-          localObject3 = new byte[this.C.length + localObject1.length];
-          System.arraycopy(this.C, 0, localObject3, 0, this.C.length);
-          System.arraycopy(localObject1, 0, localObject3, this.C.length, localObject1.length);
-          paramInt = 0;
-          localObject1 = localObject3;
-          if (!this.L)
+          if (this.g) {}
+          for (this.F = ((byte[])((byte[])localObject1).clone());; this.F = a((byte[])((byte[])localObject1).clone()))
           {
-            i1 = this.G + 1;
-            this.G = i1;
-            if (i1 == this.f * this.H) {
-              f();
+            paramInt = 1;
+            break;
+          }
+        }
+        Object localObject4;
+        if ((localBufferInfo.flags & 0x1) == 1)
+        {
+          this.J = -1;
+          if (this.g)
+          {
+            localObject3 = new byte[this.F.length + localObject1.length];
+            System.arraycopy(this.F, 0, localObject3, 0, this.F.length);
+            System.arraycopy(localObject1, 0, localObject3, this.F.length, localObject1.length);
+            paramInt = 0;
+            localObject1 = localObject3;
+            if (!this.O)
+            {
+              i1 = this.J + 1;
+              this.J = i1;
+              if (i1 == this.f * this.K) {
+                f();
+              }
+            }
+            l1 = a();
+            long l2 = localBufferInfo.presentationTimeUs / 1000L;
+            if ((l2 < this.n) && (!this.o))
+            {
+              this.o = true;
+              localObject4 = "[Encoder] pts error, maybe have b frames. profile:" + this.N + " device:" + TXCCommonUtil.getDeviceInfo() + " last pts:" + this.n + " current pts:" + l2;
+              localObject3 = localObject4;
+              if (this.R) {
+                localObject3 = (String)localObject4 + " hevc";
+              }
+              TXCLog.e("TXCHWVideoEncoder", (String)localObject3);
+              Monitor.a(2, (String)localObject3, "", 0);
+              if (!this.R) {
+                break label1195;
+              }
+              g.a().a("enable_hw_hevc_encode", false);
+              callDelegate(10000006);
+              TXCLog.i("TXCHWVideoEncoder", "[Encoder] hevc Got BFrame ,post ErrorCode_EncodeGotBFrame callback.");
+            }
+            this.n = l2;
+            if (this.I == 0L) {
+              this.I = l1;
+            }
+            if (this.H == 0L) {
+              this.H = l2;
+            }
+            l3 = l2 + (this.I - this.H);
+            if (l1 > this.m) {
+              break label1669;
+            }
+            l1 = this.m + 1L;
+            l2 = l1;
+            if (l1 > l3) {
+              l2 = l3;
+            }
+            this.m = l2;
+            l1 = TXCTimeUtil.getTimeTick();
+            if (paramInt != 0) {
+              break label1257;
+            }
+            if (l1 > this.d + 1000L)
+            {
+              this.b = ((this.q * 8000.0D / (l1 - this.d) / 1024.0D));
+              this.q = 0L;
+              this.d = l1;
+              g();
+            }
+            this.j += 1L;
+            if (this.j % 256L == 0L) {
+              this.j += 1L;
             }
           }
-          l2 = a();
-          l1 = localBufferInfo.presentationTimeUs / 1000L;
-          if (this.F == 0L) {
-            this.F = l2;
+        }
+        label1195:
+        label1257:
+        for (this.k = 0L;; this.k += 1L)
+        {
+          this.q += localObject1.length;
+          if (l1 <= this.e + 2000L) {
+            break label1288;
           }
-          if (this.E == 0L) {
-            this.E = l1;
-          }
-          l3 = l1 + (this.F - this.E);
-          l1 = l2;
-          if (l2 <= this.m) {
-            l1 = this.m + 1L;
-          }
-          l2 = l1;
-          if (l1 > l3) {
-            l2 = l3;
-          }
-          this.m = l2;
-          l1 = TXCTimeUtil.getTimeTick();
-          if (paramInt != 0) {
-            break label999;
-          }
-          if (l1 > this.d + 1000L)
+          this.c = (this.r * 1000.0D / (l1 - this.e));
+          this.r = 0L;
+          this.e = l1;
+          l1 = 0L;
+          localObject3 = this.ac.iterator();
+          while (((Iterator)localObject3).hasNext())
           {
-            this.b = ((this.o * 8000.0D / (l1 - this.d) / 1024.0D));
-            this.o = 0L;
-            this.d = l1;
-            g();
+            localObject4 = (Long)((Iterator)localObject3).next();
+            if (((Long)localObject4).longValue() <= l1) {
+              break label1666;
+            }
+            l1 = ((Long)localObject4).longValue();
           }
-          this.j += 1L;
-          if (this.j % 256L == 0L) {
-            this.j += 1L;
+          localObject3 = a((byte[])localObject1);
+          localObject1 = new byte[this.F.length + localObject3.length];
+          System.arraycopy(this.F, 0, localObject1, 0, this.F.length);
+          System.arraycopy(localObject3, 0, localObject1, this.F.length, localObject3.length);
+          paramInt = 0;
+          break;
+          if (this.g) {
+            break label1672;
           }
+          localObject1 = a((byte[])localObject1);
+          paramInt = 1;
+          break;
+          if (this.N != 1)
+          {
+            this.N = 1;
+            TXCLog.e("TXCHWVideoEncoder", "[Encoder] force reset profile to baseline when recv b frame.");
+          }
+          g.a().a("enable_high_profile", false);
+          TXCLog.i("TXCHWVideoEncoder", "[Encoder] post restart encoder task.");
+          if (this.u == null) {
+            break label809;
+          }
+          this.u.b(this.al);
+          break label809;
         }
-      }
-      label999:
-      for (this.k = 0L;; this.k += 1L)
-      {
-        this.o += localObject1.length;
-        if (l1 <= this.e + 2000L) {
-          break label1030;
+        this.ac.clear();
+        this.ad = ((int)(3L * l1));
+        label1288:
+        this.r += 1L;
+        localByteBuffer.position(localBufferInfo.offset);
+        this.l += 1L;
+        if (this.mListener != null) {
+          this.mListener.a(2, this.j, this.k);
         }
-        this.c = (this.p * 1000.0D / (l1 - this.e));
-        this.p = 0L;
-        this.e = l1;
-        l1 = 0L;
-        localObject3 = this.W.iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          Long localLong = (Long)((Iterator)localObject3).next();
-          if (localLong.longValue() <= l1) {
-            break label1323;
-          }
-          l1 = localLong.longValue();
-        }
-        localObject3 = a((byte[])localObject1);
-        localObject1 = new byte[this.C.length + localObject3.length];
-        System.arraycopy(this.C, 0, localObject1, 0, this.C.length);
-        System.arraycopy(localObject3, 0, localObject1, this.C.length, localObject3.length);
-        paramInt = 0;
-        break;
-        if (this.g) {
-          break label1326;
-        }
-        localObject1 = a((byte[])localObject1);
-        paramInt = 1;
-        break;
-      }
-      this.W.clear();
-      this.X = ((int)(3L * l1));
-      label1030:
-      this.p += 1L;
-      localByteBuffer.position(localBufferInfo.offset);
-      this.l += 1L;
-      if (this.mListener != null) {
-        this.mListener.a(2, this.j, this.k);
-      }
-      if (this.h)
-      {
-        l2 = this.j;
-        l5 = this.k;
-        l6 = this.l;
-        if (paramInt == 0) {}
-        for (l1 = this.k;; l1 = this.k - 1L)
-        {
-          callDelegate((byte[])localObject1, paramInt, l2, l5, l6, l1, l3, l3, 0, localByteBuffer, localBufferInfo);
-          this.P += 1;
-          if ((localBufferInfo.flags & 0x4) == 0) {
-            break label1318;
-          }
-          if (this.mListener != null) {
-            this.mListener.a(null, 0);
-          }
-          paramInt = -2;
-          l1 = TXCTimeUtil.getTimeTick();
-          this.W.add(Long.valueOf(l1 - l4));
+        if (!this.o) {
           break;
         }
+        TXCLog.w("TXCHWVideoEncoder", "[Encoder] drop all frame when find b frame.");
+        this.T += 1;
+        if ((localBufferInfo.flags & 0x4) == 0) {
+          break label1661;
+        }
+        if (this.mListener != null) {
+          this.mListener.a(null, 0);
+        }
+        paramInt = -2;
+        l1 = TXCTimeUtil.getTimeTick();
+        this.ac.add(Long.valueOf(l1 - l4));
       }
-      long l2 = this.j;
-      long l5 = this.k;
-      long l6 = this.l;
-      if (paramInt == 0) {}
-      for (long l1 = this.k;; l1 = this.k - 1L)
+      Object localObject3 = new TXSNALPacket();
+      if (this.h)
       {
-        callDelegate(arrayOfByte, paramInt, l2, l5, l6, l1, l3, l3, 0, localByteBuffer, localBufferInfo);
+        ((TXSNALPacket)localObject3).nalData = ((byte[])localObject1);
+        label1448:
+        ((TXSNALPacket)localObject3).nalType = paramInt;
+        ((TXSNALPacket)localObject3).gopIndex = this.j;
+        ((TXSNALPacket)localObject3).gopFrameIndex = this.k;
+        ((TXSNALPacket)localObject3).frameIndex = this.l;
+        if (paramInt != 0) {
+          break label1607;
+        }
+        l1 = this.k;
+        label1491:
+        ((TXSNALPacket)localObject3).refFremeIndex = l1;
+        ((TXSNALPacket)localObject3).pts = l3;
+        ((TXSNALPacket)localObject3).dts = l3;
+        if (localByteBuffer == null) {
+          break label1618;
+        }
+        localObject1 = localByteBuffer.asReadOnlyBuffer();
+        label1524:
+        ((TXSNALPacket)localObject3).buffer = ((ByteBuffer)localObject1);
+        if (!this.R) {
+          break label1624;
+        }
+      }
+      label1607:
+      label1618:
+      label1624:
+      for (paramInt = 1;; paramInt = 0)
+      {
+        ((TXSNALPacket)localObject3).codecId = paramInt;
+        localObject1 = new MediaCodec.BufferInfo();
+        ((MediaCodec.BufferInfo)localObject1).set(localBufferInfo.offset, localBufferInfo.size, localBufferInfo.presentationTimeUs, localBufferInfo.flags);
+        ((TXSNALPacket)localObject3).info = ((MediaCodec.BufferInfo)localObject1);
+        callDelegate((TXSNALPacket)localObject3, 0);
         break;
+        ((TXSNALPacket)localObject3).nalData = arrayOfByte;
+        break label1448;
+        l1 = this.k - 1L;
+        break label1491;
+        localObject1 = null;
+        break label1524;
       }
     }
-    catch (IllegalStateException localIllegalStateException2)
+    catch (IllegalStateException localIllegalStateException3)
     {
       for (;;)
       {
         byte[] arrayOfByte;
-        TXCLog.e("TXCHWVideoEncoder", "releaseOutputBuffer failed." + localIllegalStateException2.getMessage());
+        TXCLog.e("TXCHWVideoEncoder", "releaseOutputBuffer failed." + localIllegalStateException3.getMessage());
         continue;
-        label1318:
+        label1661:
         paramInt = 1;
         continue;
-        label1323:
+        label1666:
         continue;
-        label1326:
+        label1669:
+        continue;
+        label1672:
         paramInt = 1;
         continue;
-        label1331:
+        label1677:
         int i2 = 0;
         paramInt = i1;
         int i1 = i2;
         continue;
-        label1340:
+        label1686:
         Object localObject2 = arrayOfByte;
       }
     }
@@ -478,7 +570,7 @@ public class a
   private long a()
   {
     AppMethodBeat.i(182430);
-    Long localLong = (Long)this.v.poll();
+    Long localLong = (Long)this.y.poll();
     if (localLong == null)
     {
       AppMethodBeat.o(182430);
@@ -528,7 +620,7 @@ public class a
       AppMethodBeat.o(14869);
       return null;
     }
-    MediaFormat localMediaFormat = MediaFormat.createVideoFormat("video/avc", paramInt1, paramInt2);
+    MediaFormat localMediaFormat = MediaFormat.createVideoFormat(this.t, paramInt1, paramInt2);
     localMediaFormat.setInteger("bitrate", paramInt3 * 1024);
     localMediaFormat.setInteger("frame-rate", paramInt4);
     localMediaFormat.setInteger("color-format", 2130708361);
@@ -549,13 +641,13 @@ public class a
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
-      Object localObject = a("video/avc");
+      Object localObject = a(this.t);
       if (localObject == null)
       {
         AppMethodBeat.o(14870);
         return localMediaFormat;
       }
-      localObject = ((MediaCodecInfo)localObject).getCapabilitiesForType("video/avc");
+      localObject = ((MediaCodecInfo)localObject).getCapabilitiesForType(this.t);
       MediaCodecInfo.EncoderCapabilities localEncoderCapabilities = ((MediaCodecInfo.CodecCapabilities)localObject).getEncoderCapabilities();
       if (paramBoolean) {
         localMediaFormat.setInteger("bitrate-mode", paramInt6);
@@ -589,7 +681,7 @@ public class a
         }
         if (localEncoderCapabilities.isBitrateModeSupported(paramInt6)) {
           localMediaFormat.setInteger("bitrate-mode", paramInt6);
-        } else if (this.L)
+        } else if (this.O)
         {
           if (localEncoderCapabilities.isBitrateModeSupported(1)) {
             localMediaFormat.setInteger("bitrate-mode", 1);
@@ -606,10 +698,25 @@ public class a
     return localMediaFormat;
   }
   
+  private void a(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(229954);
+    TXCLog.i("TXCHWVideoEncoder", "createCopyTexture");
+    synchronized (this.aa)
+    {
+      this.Z = new j();
+      this.Z.a(true);
+      this.Z.a();
+      this.Z.a(paramInt1, paramInt2);
+      AppMethodBeat.o(229954);
+      return;
+    }
+  }
+  
   private void a(long paramLong)
   {
     AppMethodBeat.i(14872);
-    this.v.add(Long.valueOf(paramLong));
+    this.y.add(Long.valueOf(paramLong));
     AppMethodBeat.o(14872);
   }
   
@@ -623,14 +730,14 @@ public class a
     }
     TXCLog.i("TXCHWVideoEncoder", "HWVideoEncode createGL: " + this.mGLContextExternal);
     if ((this.mGLContextExternal != null) && ((this.mGLContextExternal instanceof android.opengl.EGLContext))) {}
-    for (this.w = com.tencent.liteav.basic.c.c.a(null, (android.opengl.EGLContext)this.mGLContextExternal, paramSurface, paramInt1, paramInt2); this.w == null; this.w = b.a(null, (javax.microedition.khronos.egl.EGLContext)this.mGLContextExternal, paramSurface, paramInt1, paramInt2))
+    for (this.z = com.tencent.liteav.basic.opengl.c.a(null, (android.opengl.EGLContext)this.mGLContextExternal, paramSurface, paramInt1, paramInt2); this.z == null; this.z = b.a(null, (javax.microedition.khronos.egl.EGLContext)this.mGLContextExternal, paramSurface, paramInt1, paramInt2))
     {
       AppMethodBeat.o(14874);
       return false;
     }
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
-    this.mEncodeFilter = new h();
-    this.mEncodeFilter.a(l.e, l.a(k.a, false, false));
+    this.mEncodeFilter = new j();
+    this.mEncodeFilter.a(m.e, m.a(l.a, false, false));
     if (!this.mEncodeFilter.a())
     {
       this.mEncodeFilter = null;
@@ -645,9 +752,10 @@ public class a
   @TargetApi(18)
   private boolean a(TXSVideoEncoderParam paramTXSVideoEncoderParam)
   {
+    int i2 = 2;
     AppMethodBeat.i(14876);
-    this.z = false;
-    this.y = false;
+    this.C = false;
+    this.B = false;
     this.b = 0L;
     this.c = 0.0D;
     this.d = 0L;
@@ -658,29 +766,31 @@ public class a
     this.k = 0L;
     this.l = paramTXSVideoEncoderParam.baseFrameIndex;
     this.m = 0L;
-    this.o = 0L;
-    this.p = 0L;
-    this.B = null;
-    this.C = null;
-    this.D = 0L;
-    this.G = -1;
+    this.n = 0L;
+    this.q = 0L;
+    this.r = 0L;
+    this.E = null;
+    this.F = null;
+    this.G = 0L;
+    this.J = -1;
     this.mOutputWidth = paramTXSVideoEncoderParam.width;
     this.mOutputHeight = paramTXSVideoEncoderParam.height;
-    this.H = paramTXSVideoEncoderParam.gop;
-    this.I = paramTXSVideoEncoderParam.fps;
-    TXCLog.i("TXCHWVideoEncoder", "init with fps " + this.I);
-    this.L = paramTXSVideoEncoderParam.fullIFrame;
-    this.n = paramTXSVideoEncoderParam.syncOutput;
-    this.A = paramTXSVideoEncoderParam.enableEGL14;
-    this.N = paramTXSVideoEncoderParam.forceSetBitrateMode;
-    this.v.clear();
-    this.M = paramTXSVideoEncoderParam.bLimitFps;
+    this.K = paramTXSVideoEncoderParam.gop;
+    this.L = paramTXSVideoEncoderParam.fps;
+    TXCLog.i("TXCHWVideoEncoder", "init with fps " + this.L);
+    this.O = paramTXSVideoEncoderParam.fullIFrame;
+    this.p = paramTXSVideoEncoderParam.syncOutput;
+    this.D = paramTXSVideoEncoderParam.enableEGL14;
+    this.Q = paramTXSVideoEncoderParam.forceSetBitrateMode;
+    this.y.clear();
+    this.P = paramTXSVideoEncoderParam.bLimitFps;
     if ((paramTXSVideoEncoderParam == null) || (paramTXSVideoEncoderParam.width == 0) || (paramTXSVideoEncoderParam.height == 0) || (paramTXSVideoEncoderParam.fps == 0) || (paramTXSVideoEncoderParam.gop == 0))
     {
-      this.y = true;
+      this.B = true;
       AppMethodBeat.o(14876);
       return false;
     }
+    this.R = paramTXSVideoEncoderParam.isH265EncoderEnabled;
     this.g = paramTXSVideoEncoderParam.annexb;
     this.h = paramTXSVideoEncoderParam.appendSpsPps;
     if (this.a == 0) {
@@ -688,36 +798,70 @@ public class a
     }
     this.i = this.a;
     this.f = paramTXSVideoEncoderParam.fps;
-    int i1 = 2;
+    int i1;
     switch (paramTXSVideoEncoderParam.encoderMode)
     {
+    default: 
+      i1 = 2;
+      TXCLog.i("TXCHWVideoEncoder", "[Encoder] HWEncValue: " + com.tencent.liteav.basic.d.c.a().d());
+      if (paramTXSVideoEncoderParam.encoderProfile == 2)
+      {
+        TXCLog.w("TXCHWVideoEncoder", "[Encoder] force reset profile to high. android is't support main profile.");
+        paramTXSVideoEncoderParam.encoderProfile = 3;
+      }
+      if (com.tencent.liteav.basic.d.c.a().d() == 1)
+      {
+        TXCLog.e("TXCHWVideoEncoder", "[Encoder] force reset profile to baseline. device:" + TXCCommonUtil.getDeviceInfo());
+        paramTXSVideoEncoderParam.encoderProfile = 1;
+      }
+      if (!com.tencent.liteav.basic.d.c.a().g())
+      {
+        TXCLog.e("TXCHWVideoEncoder", "[Encoder] force reset profile to baseline. this cmd from config.");
+        paramTXSVideoEncoderParam.encoderProfile = 1;
+      }
+      if (!g.a().b("enable_high_profile", true))
+      {
+        TXCLog.e("TXCHWVideoEncoder", "[Encoder] force set profile to baseline. this cmd from local.");
+        paramTXSVideoEncoderParam.encoderProfile = 1;
+      }
+      switch (paramTXSVideoEncoderParam.encoderProfile)
+      {
+      default: 
+        i2 = 1;
+      }
+      break;
     }
     for (;;)
     {
-      if (com.tencent.liteav.basic.d.c.a().d() == 1) {
-        paramTXSVideoEncoderParam.encoderProfile = 1;
+      this.M = i1;
+      this.N = i2;
+      if ((this.R) && (Build.VERSION.SDK_INT >= 21)) {
+        this.N = 1;
       }
-      this.J = i1;
-      this.K = 1;
       if (c()) {
-        break;
+        break label617;
       }
       AppMethodBeat.o(14876);
       return false;
       i1 = 2;
-      continue;
+      break;
       i1 = 1;
-      continue;
+      break;
       i1 = 0;
+      break;
+      i2 = 1;
+      continue;
+      i2 = 64;
     }
+    label617:
     this.mInit = true;
-    if (this.M)
+    if (this.P)
     {
-      this.U = -1;
-      this.r.b(this.t);
+      this.Y = -1;
+      this.u.b(this.w);
     }
-    this.W = new ArrayList();
-    this.X = 0;
+    this.ac = new ArrayList();
+    this.ad = 0;
     AppMethodBeat.o(14876);
     return true;
   }
@@ -795,15 +939,15 @@ public class a
       this.mEncodeFilter.d();
       this.mEncodeFilter = null;
     }
-    if ((this.w instanceof b))
+    if ((this.z instanceof b))
     {
-      ((b)this.w).c();
-      this.w = null;
+      ((b)this.z).c();
+      this.z = null;
     }
-    if ((this.w instanceof com.tencent.liteav.basic.c.c))
+    if ((this.z instanceof com.tencent.liteav.basic.opengl.c))
     {
-      ((com.tencent.liteav.basic.c.c)this.w).c();
-      this.w = null;
+      ((com.tencent.liteav.basic.opengl.c)this.z).d();
+      this.z = null;
     }
     AppMethodBeat.o(182431);
   }
@@ -812,67 +956,82 @@ public class a
   private void b(int paramInt)
   {
     AppMethodBeat.i(14880);
-    if ((this.y == true) || (this.w == null))
+    if ((this.B == true) || (this.z == null))
     {
       AppMethodBeat.o(14880);
       return;
     }
-    int i3 = this.U;
-    if (this.M)
+    for (;;)
     {
-      this.U = -1;
-      if (i3 == -1)
+      int i4;
+      synchronized (this.aa)
       {
-        this.V = true;
-        AppMethodBeat.o(14880);
-        return;
+        int i3 = this.Y;
+        if (this.P)
+        {
+          this.Y = -1;
+          if (i3 == -1)
+          {
+            this.ab = true;
+            AppMethodBeat.o(14880);
+            return;
+          }
+          this.X += 1;
+          this.u.a(this.w, 1000 / this.L);
+        }
+        if (i3 == -1)
+        {
+          AppMethodBeat.o(14880);
+          return;
+        }
+        a(this.G);
+        i4 = (720 - this.mRotation) % 360;
+        int i1;
+        int i2;
+        if ((i4 == 90) || (i4 == 270))
+        {
+          i1 = this.mOutputHeight;
+          break label369;
+          i2 = this.mOutputWidth;
+          this.mEncodeFilter.a(this.mInputWidth, this.mInputHeight, i4, null, i1 / i2, this.mEnableXMirror, true);
+          this.mEncodeFilter.a(i3);
+          if ((this.z instanceof com.tencent.liteav.basic.opengl.c))
+          {
+            ((com.tencent.liteav.basic.opengl.c)this.z).a(this.G * 1000000L);
+            ((com.tencent.liteav.basic.opengl.c)this.z).e();
+          }
+          if ((this.z instanceof b)) {
+            ((b)this.z).a();
+          }
+          i1 = a(paramInt);
+          if (i1 > 0) {
+            continue;
+          }
+          if ((i1 == -1) || (i1 == -2))
+          {
+            if (i1 == -1) {
+              callDelegate(10000005);
+            }
+            this.B = true;
+            e();
+            AppMethodBeat.o(14880);
+          }
+        }
+        else
+        {
+          i1 = this.mOutputWidth;
+          break label369;
+          i2 = this.mOutputHeight;
+        }
       }
-      this.T += 1;
-      this.r.a(this.t, 1000 / this.I);
-    }
-    a(this.D);
-    int i4 = (720 - this.mRotation) % 360;
-    int i1;
-    if ((i4 == 90) || (i4 == 270))
-    {
-      i1 = this.mOutputHeight;
-      if ((i4 != 90) && (i4 != 270)) {
-        break label311;
-      }
-    }
-    label311:
-    for (int i2 = this.mOutputWidth;; i2 = this.mOutputHeight)
-    {
-      this.mEncodeFilter.a(this.mInputWidth, this.mInputHeight, i4, null, i1 / i2, this.mEnableXMirror, true);
-      this.mEncodeFilter.a(i3);
-      if ((this.w instanceof com.tencent.liteav.basic.c.c))
-      {
-        ((com.tencent.liteav.basic.c.c)this.w).a(this.D * 1000000L);
-        ((com.tencent.liteav.basic.c.c)this.w).d();
-      }
-      if ((this.w instanceof b)) {
-        ((b)this.w).a();
-      }
-      do
-      {
-        i1 = a(paramInt);
-      } while (i1 > 0);
-      if ((i1 != -1) && (i1 != -2)) {
-        break label319;
-      }
-      if (i1 == -1) {
-        callDelegate(10000005);
-      }
-      this.y = true;
-      e();
+      this.S += 1;
       AppMethodBeat.o(14880);
       return;
-      i1 = this.mOutputWidth;
-      break;
+      label369:
+      if (i4 != 90) {
+        if (i4 != 270) {}
+      }
     }
-    label319:
-    this.O += 1;
-    AppMethodBeat.o(14880);
   }
   
   private void c(int paramInt)
@@ -888,420 +1047,212 @@ public class a
       AppMethodBeat.o(14884);
       return;
     }
-    if ((this.a < this.i) && (this.ac)) {
-      if (this.ab)
+    if ((this.a < this.i) && (this.aj)) {
+      if (this.ai)
       {
         paramInt = 1;
-        localObject = "restart video hw encoder when down bps。[module:" + Build.MODEL + "] [Hardware:" + Build.HARDWARE + "] [osVersion:" + Build.VERSION.RELEASE + "]";
-        TXCLog.w("TXCHWVideoEncoder", (String)localObject);
-        Monitor.a(2, (String)localObject, "", 0);
+        Monitor.a(4, "restart video hw encoder when down bps。[module:" + Build.MODEL + "] [Hardware:" + Build.HARDWARE + "] [osVersion:" + Build.VERSION.RELEASE + "]", "", 0);
       }
     }
     long l1;
     for (;;)
     {
       this.i = this.a;
-      if ((Build.VERSION.SDK_INT < 19) || (this.q == null)) {
-        break label299;
+      if ((Build.VERSION.SDK_INT < 19) || (this.s == null)) {
+        break label288;
       }
       if (paramInt == 0) {
-        break label265;
+        break label254;
       }
-      this.r.a().removeCallbacks(this.ae);
+      this.u.a().removeCallbacks(this.al);
       l1 = System.currentTimeMillis();
-      if (l1 - this.ad < 2000L) {
+      if (l1 - this.ak < 2000L) {
         break;
       }
-      this.ae.run();
+      this.al.run();
       AppMethodBeat.o(14884);
       return;
-      this.Z = 3;
-      this.Y = System.currentTimeMillis();
-      this.aa = this.a;
+      this.ag = 3;
+      this.af = System.currentTimeMillis();
+      this.ah = this.a;
       paramInt = 0;
     }
-    this.r.a(this.ae, 2000L - (l1 - this.ad));
+    this.u.a(this.al, 2000L - (l1 - this.ak));
     AppMethodBeat.o(14884);
     return;
-    label265:
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putInt("video-bitrate", this.a * 1024);
-    this.q.setParameters((Bundle)localObject);
-    label299:
+    label254:
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("video-bitrate", this.a * 1024);
+    this.s.setParameters(localBundle);
+    label288:
     AppMethodBeat.o(14884);
   }
   
-  /* Error */
   private boolean c()
   {
-    // Byte code:
-    //   0: ldc_w 815
-    //   3: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: getstatic 488	android/os/Build$VERSION:SDK_INT	I
-    //   9: bipush 18
-    //   11: if_icmpge +11 -> 22
-    //   14: ldc_w 815
-    //   17: invokestatic 218	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   20: iconst_0
-    //   21: ireturn
-    //   22: invokestatic 689	com/tencent/liteav/basic/d/c:a	()Lcom/tencent/liteav/basic/d/c;
-    //   25: ldc_w 817
-    //   28: ldc_w 819
-    //   31: invokevirtual 822	com/tencent/liteav/basic/d/c:a	(Ljava/lang/String;Ljava/lang/String;)J
-    //   34: lconst_0
-    //   35: lcmp
-    //   36: ifle +94 -> 130
-    //   39: iconst_1
-    //   40: istore_2
-    //   41: aload_0
-    //   42: iload_2
-    //   43: putfield 204	com/tencent/liteav/videoencoder/a:ac	Z
-    //   46: aload_0
-    //   47: iconst_0
-    //   48: putfield 178	com/tencent/liteav/videoencoder/a:O	I
-    //   51: aload_0
-    //   52: iconst_0
-    //   53: putfield 180	com/tencent/liteav/videoencoder/a:P	I
-    //   56: aload_0
-    //   57: lconst_0
-    //   58: putfield 184	com/tencent/liteav/videoencoder/a:R	J
-    //   61: aload_0
-    //   62: iconst_0
-    //   63: putfield 186	com/tencent/liteav/videoencoder/a:S	I
-    //   66: aload_0
-    //   67: iconst_0
-    //   68: putfield 182	com/tencent/liteav/videoencoder/a:Q	I
-    //   71: aload_0
-    //   72: iconst_0
-    //   73: putfield 188	com/tencent/liteav/videoencoder/a:T	I
-    //   76: aload_0
-    //   77: aload_0
-    //   78: getfield 630	com/tencent/liteav/videoencoder/a:mOutputWidth	I
-    //   81: aload_0
-    //   82: getfield 636	com/tencent/liteav/videoencoder/a:mOutputHeight	I
-    //   85: aload_0
-    //   86: getfield 105	com/tencent/liteav/videoencoder/a:a	I
-    //   89: aload_0
-    //   90: getfield 644	com/tencent/liteav/videoencoder/a:I	I
-    //   93: aload_0
-    //   94: getfield 327	com/tencent/liteav/videoencoder/a:H	I
-    //   97: aload_0
-    //   98: getfield 696	com/tencent/liteav/videoencoder/a:J	I
-    //   101: aload_0
-    //   102: getfield 698	com/tencent/liteav/videoencoder/a:K	I
-    //   105: aload_0
-    //   106: getfield 176	com/tencent/liteav/videoencoder/a:N	Z
-    //   109: invokespecial 824	com/tencent/liteav/videoencoder/a:a	(IIIIIIIZ)Landroid/media/MediaFormat;
-    //   112: astore_3
-    //   113: aload_3
-    //   114: ifnonnull +21 -> 135
-    //   117: aload_0
-    //   118: iconst_1
-    //   119: putfield 158	com/tencent/liteav/videoencoder/a:y	Z
-    //   122: ldc_w 815
-    //   125: invokestatic 218	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   128: iconst_0
-    //   129: ireturn
-    //   130: iconst_0
-    //   131: istore_2
-    //   132: goto -91 -> 41
-    //   135: aload_0
-    //   136: ldc_w 461
-    //   139: invokestatic 828	android/media/MediaCodec:createEncoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
-    //   142: putfield 135	com/tencent/liteav/videoencoder/a:q	Landroid/media/MediaCodec;
-    //   145: aload_0
-    //   146: getfield 832	com/tencent/liteav/videoencoder/a:mEncFmt	Lorg/json/JSONArray;
-    //   149: astore 4
-    //   151: aload 4
-    //   153: ifnull +81 -> 234
-    //   156: iconst_0
-    //   157: istore_1
-    //   158: iload_1
-    //   159: aload_0
-    //   160: getfield 832	com/tencent/liteav/videoencoder/a:mEncFmt	Lorg/json/JSONArray;
-    //   163: invokevirtual 837	org/json/JSONArray:length	()I
-    //   166: if_icmpge +68 -> 234
-    //   169: aload_0
-    //   170: getfield 832	com/tencent/liteav/videoencoder/a:mEncFmt	Lorg/json/JSONArray;
-    //   173: iload_1
-    //   174: invokevirtual 841	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   177: astore 4
-    //   179: aload_3
-    //   180: aload 4
-    //   182: ldc_w 843
-    //   185: invokevirtual 849	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   188: aload 4
-    //   190: ldc_w 850
-    //   193: invokevirtual 854	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   196: invokevirtual 473	android/media/MediaFormat:setInteger	(Ljava/lang/String;I)V
-    //   199: iload_1
-    //   200: iconst_1
-    //   201: iadd
-    //   202: istore_1
-    //   203: goto -45 -> 158
-    //   206: astore 4
-    //   208: ldc 233
-    //   210: new 235	java/lang/StringBuilder
-    //   213: dup
-    //   214: ldc_w 856
-    //   217: invokespecial 238	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   220: aload 4
-    //   222: invokevirtual 857	java/lang/Exception:toString	()Ljava/lang/String;
-    //   225: invokevirtual 246	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   228: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   231: invokestatic 779	com/tencent/liteav/basic/log/TXCLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   234: aload_0
-    //   235: getfield 135	com/tencent/liteav/videoencoder/a:q	Landroid/media/MediaCodec;
-    //   238: aload_3
-    //   239: aconst_null
-    //   240: aconst_null
-    //   241: iconst_1
-    //   242: invokevirtual 861	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
-    //   245: ldc 233
-    //   247: new 235	java/lang/StringBuilder
-    //   250: dup
-    //   251: ldc_w 863
-    //   254: invokespecial 238	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   257: aload_3
-    //   258: invokevirtual 864	android/media/MediaFormat:toString	()Ljava/lang/String;
-    //   261: invokevirtual 246	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   264: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   267: invokestatic 563	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   270: iconst_3
-    //   271: istore_1
-    //   272: aload_0
-    //   273: aload_0
-    //   274: getfield 135	com/tencent/liteav/videoencoder/a:q	Landroid/media/MediaCodec;
-    //   277: invokevirtual 868	android/media/MediaCodec:createInputSurface	()Landroid/view/Surface;
-    //   280: putfield 156	com/tencent/liteav/videoencoder/a:x	Landroid/view/Surface;
-    //   283: iconst_4
-    //   284: istore_1
-    //   285: aload_0
-    //   286: getfield 135	com/tencent/liteav/videoencoder/a:q	Landroid/media/MediaCodec;
-    //   289: invokevirtual 871	android/media/MediaCodec:start	()V
-    //   292: aload_0
-    //   293: aload_0
-    //   294: getfield 135	com/tencent/liteav/videoencoder/a:q	Landroid/media/MediaCodec;
-    //   297: invokevirtual 258	android/media/MediaCodec:getOutputBuffers	()[Ljava/nio/ByteBuffer;
-    //   300: putfield 164	com/tencent/liteav/videoencoder/a:B	[Ljava/nio/ByteBuffer;
-    //   303: aload_0
-    //   304: getfield 135	com/tencent/liteav/videoencoder/a:q	Landroid/media/MediaCodec;
-    //   307: ifnull +17 -> 324
-    //   310: aload_0
-    //   311: getfield 164	com/tencent/liteav/videoencoder/a:B	[Ljava/nio/ByteBuffer;
-    //   314: ifnull +10 -> 324
-    //   317: aload_0
-    //   318: getfield 156	com/tencent/liteav/videoencoder/a:x	Landroid/view/Surface;
-    //   321: ifnonnull +265 -> 586
-    //   324: aload_0
-    //   325: iconst_1
-    //   326: putfield 158	com/tencent/liteav/videoencoder/a:y	Z
-    //   329: ldc_w 815
-    //   332: invokestatic 218	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   335: iconst_0
-    //   336: ireturn
-    //   337: astore_3
-    //   338: aload_0
-    //   339: getfield 176	com/tencent/liteav/videoencoder/a:N	Z
-    //   342: ifeq +175 -> 517
-    //   345: aload_0
-    //   346: aload_0
-    //   347: getfield 630	com/tencent/liteav/videoencoder/a:mOutputWidth	I
-    //   350: aload_0
-    //   351: getfield 636	com/tencent/liteav/videoencoder/a:mOutputHeight	I
-    //   354: aload_0
-    //   355: getfield 105	com/tencent/liteav/videoencoder/a:a	I
-    //   358: aload_0
-    //   359: getfield 644	com/tencent/liteav/videoencoder/a:I	I
-    //   362: aload_0
-    //   363: getfield 327	com/tencent/liteav/videoencoder/a:H	I
-    //   366: aload_0
-    //   367: getfield 696	com/tencent/liteav/videoencoder/a:J	I
-    //   370: aload_0
-    //   371: getfield 698	com/tencent/liteav/videoencoder/a:K	I
-    //   374: iconst_0
-    //   375: invokespecial 824	com/tencent/liteav/videoencoder/a:a	(IIIIIIIZ)Landroid/media/MediaFormat;
-    //   378: astore_3
-    //   379: aload_0
-    //   380: getfield 135	com/tencent/liteav/videoencoder/a:q	Landroid/media/MediaCodec;
-    //   383: aload_3
-    //   384: aconst_null
-    //   385: aconst_null
-    //   386: iconst_1
-    //   387: invokevirtual 861	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
-    //   390: goto -120 -> 270
-    //   393: astore_3
-    //   394: aload_3
-    //   395: instanceof 873
-    //   398: ifne +18 -> 416
-    //   401: getstatic 488	android/os/Build$VERSION:SDK_INT	I
-    //   404: bipush 21
-    //   406: if_icmplt -136 -> 270
-    //   409: aload_3
-    //   410: instanceof 875
-    //   413: ifeq -143 -> 270
-    //   416: aload_0
-    //   417: aload_0
-    //   418: getfield 630	com/tencent/liteav/videoencoder/a:mOutputWidth	I
-    //   421: aload_0
-    //   422: getfield 636	com/tencent/liteav/videoencoder/a:mOutputHeight	I
-    //   425: aload_0
-    //   426: getfield 105	com/tencent/liteav/videoencoder/a:a	I
-    //   429: aload_0
-    //   430: getfield 644	com/tencent/liteav/videoencoder/a:I	I
-    //   433: aload_0
-    //   434: getfield 327	com/tencent/liteav/videoencoder/a:H	I
-    //   437: invokespecial 483	com/tencent/liteav/videoencoder/a:a	(IIIII)Landroid/media/MediaFormat;
-    //   440: astore_3
-    //   441: aload_0
-    //   442: getfield 135	com/tencent/liteav/videoencoder/a:q	Landroid/media/MediaCodec;
-    //   445: aload_3
-    //   446: aconst_null
-    //   447: aconst_null
-    //   448: iconst_1
-    //   449: invokevirtual 861	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
-    //   452: goto -182 -> 270
-    //   455: astore_3
-    //   456: iconst_2
-    //   457: istore_1
-    //   458: ldc 233
-    //   460: ldc_w 877
-    //   463: aload_3
-    //   464: invokestatic 880	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   467: iload_1
-    //   468: iconst_5
-    //   469: if_icmplt +17 -> 486
-    //   472: aload_0
-    //   473: getfield 135	com/tencent/liteav/videoencoder/a:q	Landroid/media/MediaCodec;
-    //   476: ifnull +10 -> 486
-    //   479: aload_0
-    //   480: getfield 135	com/tencent/liteav/videoencoder/a:q	Landroid/media/MediaCodec;
-    //   483: invokevirtual 883	android/media/MediaCodec:stop	()V
-    //   486: aload_0
-    //   487: aconst_null
-    //   488: putfield 135	com/tencent/liteav/videoencoder/a:q	Landroid/media/MediaCodec;
-    //   491: aload_0
-    //   492: getfield 156	com/tencent/liteav/videoencoder/a:x	Landroid/view/Surface;
-    //   495: ifnull +10 -> 505
-    //   498: aload_0
-    //   499: getfield 156	com/tencent/liteav/videoencoder/a:x	Landroid/view/Surface;
-    //   502: invokevirtual 888	android/view/Surface:release	()V
-    //   505: aload_0
-    //   506: aconst_null
-    //   507: putfield 156	com/tencent/liteav/videoencoder/a:x	Landroid/view/Surface;
-    //   510: goto -207 -> 303
-    //   513: astore_3
-    //   514: goto -211 -> 303
-    //   517: aload_3
-    //   518: instanceof 873
-    //   521: ifne +18 -> 539
-    //   524: getstatic 488	android/os/Build$VERSION:SDK_INT	I
-    //   527: bipush 21
-    //   529: if_icmplt +49 -> 578
-    //   532: aload_3
-    //   533: instanceof 875
-    //   536: ifeq +42 -> 578
-    //   539: aload_0
-    //   540: aload_0
-    //   541: getfield 630	com/tencent/liteav/videoencoder/a:mOutputWidth	I
-    //   544: aload_0
-    //   545: getfield 636	com/tencent/liteav/videoencoder/a:mOutputHeight	I
-    //   548: aload_0
-    //   549: getfield 105	com/tencent/liteav/videoencoder/a:a	I
-    //   552: aload_0
-    //   553: getfield 644	com/tencent/liteav/videoencoder/a:I	I
-    //   556: aload_0
-    //   557: getfield 327	com/tencent/liteav/videoencoder/a:H	I
-    //   560: invokespecial 483	com/tencent/liteav/videoencoder/a:a	(IIIII)Landroid/media/MediaFormat;
-    //   563: astore_3
-    //   564: aload_0
-    //   565: getfield 135	com/tencent/liteav/videoencoder/a:q	Landroid/media/MediaCodec;
-    //   568: aload_3
-    //   569: aconst_null
-    //   570: aconst_null
-    //   571: iconst_1
-    //   572: invokevirtual 861	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
-    //   575: goto -305 -> 270
-    //   578: ldc_w 815
-    //   581: invokestatic 218	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   584: aload_3
-    //   585: athrow
-    //   586: aload_0
-    //   587: aload_0
-    //   588: getfield 156	com/tencent/liteav/videoencoder/a:x	Landroid/view/Surface;
-    //   591: aload_0
-    //   592: getfield 630	com/tencent/liteav/videoencoder/a:mOutputWidth	I
-    //   595: aload_0
-    //   596: getfield 636	com/tencent/liteav/videoencoder/a:mOutputHeight	I
-    //   599: invokespecial 890	com/tencent/liteav/videoencoder/a:a	(Landroid/view/Surface;II)Z
-    //   602: ifne +16 -> 618
-    //   605: aload_0
-    //   606: iconst_1
-    //   607: putfield 158	com/tencent/liteav/videoencoder/a:y	Z
-    //   610: ldc_w 815
-    //   613: invokestatic 218	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   616: iconst_0
-    //   617: ireturn
-    //   618: ldc_w 815
-    //   621: invokestatic 218	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   624: iconst_1
-    //   625: ireturn
-    //   626: astore_3
-    //   627: iconst_1
-    //   628: istore_1
-    //   629: goto -171 -> 458
-    //   632: astore_3
-    //   633: goto -175 -> 458
-    //   636: astore_3
-    //   637: iconst_5
-    //   638: istore_1
-    //   639: goto -181 -> 458
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	642	0	this	a
-    //   157	482	1	i1	int
-    //   40	92	2	bool	boolean
-    //   112	146	3	localMediaFormat1	MediaFormat
-    //   337	1	3	localException1	Exception
-    //   378	6	3	localMediaFormat2	MediaFormat
-    //   393	17	3	localException2	Exception
-    //   440	6	3	localMediaFormat3	MediaFormat
-    //   455	9	3	localException3	Exception
-    //   513	20	3	localException4	Exception
-    //   563	22	3	localMediaFormat4	MediaFormat
-    //   626	1	3	localException5	Exception
-    //   632	1	3	localException6	Exception
-    //   636	1	3	localException7	Exception
-    //   149	40	4	localObject	Object
-    //   206	15	4	localException8	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   158	199	206	java/lang/Exception
-    //   234	270	337	java/lang/Exception
-    //   379	390	393	java/lang/Exception
-    //   145	151	455	java/lang/Exception
-    //   208	234	455	java/lang/Exception
-    //   338	379	455	java/lang/Exception
-    //   394	416	455	java/lang/Exception
-    //   416	452	455	java/lang/Exception
-    //   517	539	455	java/lang/Exception
-    //   539	575	455	java/lang/Exception
-    //   578	586	455	java/lang/Exception
-    //   472	486	513	java/lang/Exception
-    //   486	505	513	java/lang/Exception
-    //   505	510	513	java/lang/Exception
-    //   76	113	626	java/lang/Exception
-    //   117	122	626	java/lang/Exception
-    //   135	145	626	java/lang/Exception
-    //   272	283	632	java/lang/Exception
-    //   285	292	632	java/lang/Exception
-    //   292	303	636	java/lang/Exception
+    AppMethodBeat.i(182432);
+    if (Build.VERSION.SDK_INT < 18)
+    {
+      AppMethodBeat.o(182432);
+      return false;
+    }
+    boolean bool;
+    if (com.tencent.liteav.basic.d.c.a().a("Video", "CheckVideoEncDownBps") > 0L)
+    {
+      bool = true;
+      this.aj = bool;
+      this.o = false;
+      this.S = 0;
+      this.T = 0;
+      this.V = 0L;
+      this.W = 0;
+      this.U = 0;
+      this.X = 0;
+      if (this.R) {
+        this.t = "video/hevc";
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        MediaFormat localMediaFormat1 = a(this.mOutputWidth, this.mOutputHeight, this.a, this.L, this.K, this.M, this.N, this.Q);
+        if (localMediaFormat1 == null)
+        {
+          this.B = true;
+          AppMethodBeat.o(182432);
+          return false;
+          bool = false;
+          break;
+        }
+        this.s = MediaCodec.createEncoderByType(this.t);
+        try
+        {
+          Object localObject = this.mEncFmt;
+          if (localObject != null)
+          {
+            i1 = 0;
+            try
+            {
+              if (i1 < this.mEncFmt.length())
+              {
+                localObject = this.mEncFmt.getJSONObject(i1);
+                localMediaFormat1.setInteger(((JSONObject)localObject).optString("key"), ((JSONObject)localObject).optInt("value"));
+                i1 += 1;
+                continue;
+              }
+              try
+              {
+                this.s.configure(localMediaFormat1, null, null, 1);
+                i1 = 3;
+                localMediaFormat3 = a(this.mOutputWidth, this.mOutputHeight, this.a, this.L, this.K, this.M, this.N, false);
+              }
+              catch (Exception localException7)
+              {
+                try
+                {
+                  this.A = this.s.createInputSurface();
+                  i1 = 4;
+                  this.s.start();
+                }
+                catch (Exception localException4)
+                {
+                  MediaFormat localMediaFormat2;
+                  continue;
+                }
+                try
+                {
+                  this.E = this.s.getOutputBuffers();
+                  if ((this.s != null) && (this.E != null) && (this.A != null)) {
+                    continue;
+                  }
+                  this.B = true;
+                  AppMethodBeat.o(182432);
+                  return false;
+                }
+                catch (Exception localException5)
+                {
+                  i1 = 5;
+                  continue;
+                }
+                localException7 = localException7;
+                TXCLog.i("TXCHWVideoEncoder", "[Encoder] set fmt error. fmt:".concat(String.valueOf(localMediaFormat1)));
+                if (!this.Q) {
+                  continue;
+                }
+              }
+            }
+            catch (Exception localException6)
+            {
+              TXCLog.w("TXCHWVideoEncoder", "config custom format error " + localException6.toString());
+            }
+          }
+          else
+          {
+            try
+            {
+              MediaFormat localMediaFormat3;
+              this.s.configure(localMediaFormat3, null, null, 1);
+            }
+            catch (Exception localException8)
+            {
+              TXCLog.i("TXCHWVideoEncoder", "[Encoder] set fmt error. fmt:".concat(String.valueOf(localMediaFormat1)));
+            }
+            if ((!(localException8 instanceof IllegalArgumentException)) && ((Build.VERSION.SDK_INT < 21) || (!(localException8 instanceof MediaCodec.CodecException)))) {
+              continue;
+            }
+            localMediaFormat1 = a(this.mOutputWidth, this.mOutputHeight, this.a, this.L, this.K);
+            this.s.configure(localMediaFormat1, null, null, 1);
+            continue;
+          }
+          TXCLog.e("TXCHWVideoEncoder", "create encode format failed.", localException1);
+        }
+        catch (Exception localException1)
+        {
+          i1 = 2;
+        }
+      }
+      catch (Exception localException3)
+      {
+        i1 = 1;
+        continue;
+      }
+      if (i1 >= 5) {}
+      try
+      {
+        if (this.s != null) {
+          this.s.stop();
+        }
+        this.s = null;
+        if (this.A != null) {
+          this.A.release();
+        }
+        this.A = null;
+      }
+      catch (Exception localException2) {}
+      continue;
+      if ((!(localException8 instanceof IllegalArgumentException)) && ((Build.VERSION.SDK_INT < 21) || (!(localException8 instanceof MediaCodec.CodecException)))) {
+        continue;
+      }
+      localMediaFormat2 = a(this.mOutputWidth, this.mOutputHeight, this.a, this.L, this.K);
+      this.s.configure(localMediaFormat2, null, null, 1);
+    }
+    AppMethodBeat.o(182432);
+    throw localException8;
+    if (!a(this.A, this.mOutputWidth, this.mOutputHeight))
+    {
+      this.B = true;
+      AppMethodBeat.o(182432);
+      return false;
+    }
+    AppMethodBeat.o(182432);
+    return true;
   }
   
   private void d()
   {
     AppMethodBeat.i(182433);
-    if (this.q == null)
+    if (this.s == null)
     {
       AppMethodBeat.o(182433);
       return;
@@ -1310,7 +1261,7 @@ public class a
     {
       try
       {
-        this.q.stop();
+        this.s.stop();
       }
       catch (IllegalStateException localIllegalStateException)
       {
@@ -1318,11 +1269,11 @@ public class a
         TXCLog.e("TXCHWVideoEncoder", "stop encoder failed.", localIllegalStateException);
         try
         {
-          this.q.release();
-          if (this.x != null) {
-            this.x.release();
+          this.s.release();
+          if (this.A != null) {
+            this.A.release();
           }
-          this.x = null;
+          this.A = null;
         }
         catch (Exception localException2)
         {
@@ -1333,27 +1284,27 @@ public class a
       finally {}
       try
       {
-        this.q.release();
-        if (this.x != null) {
-          this.x.release();
+        this.s.release();
+        if (this.A != null) {
+          this.A.release();
         }
-        this.x = null;
+        this.A = null;
       }
       catch (Exception localException1)
       {
         TXCLog.e("TXCHWVideoEncoder", "release encoder failed.", localException1);
       }
     }
-    this.q = null;
+    this.s = null;
     AppMethodBeat.o(182433);
     return;
     try
     {
-      this.q.release();
-      if (this.x != null) {
-        this.x.release();
+      this.s.release();
+      if (this.A != null) {
+        this.A.release();
       }
-      this.x = null;
+      this.A = null;
     }
     catch (Exception localException3)
     {
@@ -1374,7 +1325,7 @@ public class a
       AppMethodBeat.o(14886);
       return;
     }
-    if ((paramInt == 0) || (this.I == paramInt))
+    if ((paramInt == 0) || (this.L == paramInt))
     {
       AppMethodBeat.o(14886);
       return;
@@ -1387,7 +1338,7 @@ public class a
     TXCLog.i("TXCHWVideoEncoder", "set fps " + paramInt + ", restart encoder.");
     b();
     d();
-    this.I = paramInt;
+    this.L = paramInt;
     c();
     AppMethodBeat.o(14886);
   }
@@ -1400,11 +1351,11 @@ public class a
       AppMethodBeat.o(14882);
       return;
     }
-    this.y = true;
-    this.z = true;
+    this.B = true;
+    this.C = true;
     b();
     d();
-    this.U = -1;
+    this.Y = -1;
     this.b = 0L;
     this.c = 0.0D;
     this.d = 0L;
@@ -1415,30 +1366,30 @@ public class a
     this.k = 0L;
     this.l = 0L;
     this.m = 0L;
-    this.o = 0L;
-    this.p = 0L;
+    this.q = 0L;
+    this.r = 0L;
     this.mGLContextExternal = null;
-    this.B = null;
-    this.C = null;
-    this.D = 0L;
+    this.E = null;
+    this.F = null;
+    this.G = 0L;
     this.mOutputWidth = 0;
     this.mOutputHeight = 0;
     this.mInit = false;
     this.mListener = null;
-    this.v.clear();
-    this.W.clear();
-    this.X = 0;
+    this.y.clear();
+    this.ac.clear();
+    this.ad = 0;
     AppMethodBeat.o(14882);
   }
   
   private void f()
   {
     AppMethodBeat.i(14883);
-    if ((Build.VERSION.SDK_INT >= 19) && (this.q != null))
+    if ((Build.VERSION.SDK_INT >= 19) && (this.s != null))
     {
       Bundle localBundle = new Bundle();
       localBundle.putInt("request-sync", 0);
-      this.q.setParameters(localBundle);
+      this.s.setParameters(localBundle);
     }
     AppMethodBeat.o(14883);
   }
@@ -1451,13 +1402,13 @@ public class a
     int i3;
     int i4;
     int i2;
-    if (this.Y > 0L)
+    if (this.af > 0L)
     {
-      i3 = this.I;
+      i3 = this.L;
       i4 = (int)this.c;
-      i2 = this.I / 2;
+      i2 = this.L / 2;
       if (i2 >= 5) {
-        break label287;
+        break label379;
       }
     }
     for (;;)
@@ -1465,47 +1416,77 @@ public class a
       long l3;
       long l4;
       long l2;
-      if ((i3 - i4 <= i1) && (System.currentTimeMillis() - this.Y > (3 - this.Z + 1) * 2000))
+      if ((i3 - i4 <= i1) && (System.currentTimeMillis() - this.af > (3 - this.ag + 1) * 2000))
       {
-        l3 = this.aa;
+        l3 = this.ah;
         l4 = this.b;
         l2 = this.i / 2L;
         if (l2 >= 100L) {
-          break label280;
+          break label372;
         }
       }
       for (;;)
       {
         if (l3 - l4 > l1)
         {
-          this.ab = true;
-          String str = "real bitrate is too much lower than target bitrate![targetBr:" + this.aa + "] [realBr:" + this.b + "]. restart encoder. [module:" + Build.MODEL + "] [Hardware:" + Build.HARDWARE + "] [osVersion:" + Build.VERSION.RELEASE + "]";
+          this.ai = true;
+          String str = "real bitrate is too much lower than target bitrate![current profile:" + this.N + "][targetBr:" + this.ah + "] [realBr:" + this.b + "]. restart encoder. [module:" + Build.MODEL + "] [Hardware:" + Build.HARDWARE + "] [osVersion:" + Build.VERSION.RELEASE + "]";
           TXCLog.e("TXCHWVideoEncoder", str);
           Monitor.a(3, str, "", 0);
-          if (this.r != null) {
-            this.r.b(this.ae);
+          if (this.R)
+          {
+            this.N = 1;
+            TXCLog.w("TXCHWVideoEncoder", "[Encoder] force reset hevc profile to HEVCProfileMain when restart encoder. device:" + TXCCommonUtil.getDeviceInfo());
           }
-          this.Y = 0L;
-          AppMethodBeat.o(14885);
-          return;
+          for (;;)
+          {
+            if (this.u != null) {
+              this.u.b(this.al);
+            }
+            this.af = 0L;
+            AppMethodBeat.o(14885);
+            return;
+            if (this.N != 1)
+            {
+              this.N = 1;
+              TXCLog.e("TXCHWVideoEncoder", "[Encoder] force reset profile to baseline when restart encoder. device:" + TXCCommonUtil.getDeviceInfo());
+            }
+          }
         }
-        this.Z -= 1;
-        if (this.Z <= 0) {
-          this.Y = 0L;
+        this.ag -= 1;
+        if (this.ag <= 0) {
+          this.af = 0L;
         }
         AppMethodBeat.o(14885);
         return;
-        label280:
+        label372:
         l1 = l2;
       }
-      label287:
+      label379:
       i1 = i2;
+    }
+  }
+  
+  private void h()
+  {
+    AppMethodBeat.i(14887);
+    TXCLog.i("TXCHWVideoEncoder", "destroyCopyTexture");
+    synchronized (this.aa)
+    {
+      if (this.Z != null)
+      {
+        this.Z.d();
+        this.Z = null;
+      }
+      this.Y = -1;
+      AppMethodBeat.o(14887);
+      return;
     }
   }
   
   public int getEncodeCost()
   {
-    return this.X;
+    return this.ad;
   }
   
   public long getRealBitrate()
@@ -1518,158 +1499,196 @@ public class a
     return this.c;
   }
   
+  public boolean isH265Encoder()
+  {
+    return this.R;
+  }
+  
   public long pushVideoFrame(int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
     AppMethodBeat.i(14865);
-    if (this.z)
+    if (this.C)
     {
       AppMethodBeat.o(14865);
       return 10000004L;
     }
-    GLES20.glFinish();
-    this.Q += 1;
-    this.D = paramLong;
-    this.U = paramInt1;
-    this.mInputWidth = paramInt2;
-    this.mInputHeight = paramInt3;
-    if (this.L) {
-      f();
-    }
-    if ((!this.M) || (this.V))
+    synchronized (this.aa)
     {
-      this.T += 1;
-      this.r.b(this.t);
-      this.V = false;
-    }
-    if (this.O > this.P + 30)
-    {
-      TXCLog.e("TXCHWVideoEncoder", String.format("hw encoder error when render[%d] pop[%d]", new Object[] { Integer.valueOf(this.O), Integer.valueOf(this.P) }));
-      if (this.mListener != null) {
-        this.mListener.l(this.mStreamType);
+      if (this.Z == null) {
+        a(paramInt2, paramInt3);
       }
-    }
-    if (this.R + 5000L < System.currentTimeMillis())
-    {
-      this.R = System.currentTimeMillis();
-      if ((this.S != 0) && (this.S == this.O))
+      this.Z.a(paramInt2, paramInt3);
+      GLES20.glViewport(0, 0, paramInt2, paramInt3);
+      paramInt1 = this.Z.b(paramInt1);
+      if (this.ae)
       {
-        TXCLog.i("TXCHWVideoEncoder", String.format("hw encoder error when push[%d] render task[%d] render[%d] pop[%d]", new Object[] { Integer.valueOf(this.Q), Integer.valueOf(this.T), Integer.valueOf(this.O), Integer.valueOf(this.P) }));
-        if (this.mListener != null) {
-          this.mListener.l(this.mStreamType);
+        GLES20.glFinish();
+        this.U += 1;
+        this.G = paramLong;
+        this.Y = paramInt1;
+        this.mInputWidth = paramInt2;
+        this.mInputHeight = paramInt3;
+        if (this.O) {
+          f();
         }
+        if ((!this.P) || (this.ab))
+        {
+          this.X += 1;
+          this.u.b(this.w);
+          this.ab = false;
+        }
+        if (this.S > this.T + 30)
+        {
+          TXCLog.e("TXCHWVideoEncoder", String.format("hw encoder error when render[%d] pop[%d]", new Object[] { Integer.valueOf(this.S), Integer.valueOf(this.T) }));
+          if (this.mListener != null)
+          {
+            this.mListener.l(this.mStreamType);
+            if (this.R) {
+              Monitor.a(2, String.format(Locale.getDefault(), "VideoEncoder: hevc hardware encoder error: mRendIdx= %d,mPopIdx= %d , switch to 264 hardware encoder. %s", new Object[] { Integer.valueOf(this.S), Integer.valueOf(this.T), TXCCommonUtil.getDeviceInfo() }), "", 0);
+            }
+          }
+        }
+        if (this.V + 5000L < System.currentTimeMillis())
+        {
+          this.V = System.currentTimeMillis();
+          if ((this.W != 0) && (this.W == this.S))
+          {
+            TXCLog.i("TXCHWVideoEncoder", String.format("hw encoder error when push[%d] render task[%d] render[%d] pop[%d]", new Object[] { Integer.valueOf(this.U), Integer.valueOf(this.X), Integer.valueOf(this.S), Integer.valueOf(this.T) }));
+            if (this.mListener != null)
+            {
+              this.mListener.l(this.mStreamType);
+              if (this.R) {
+                Monitor.a(2, String.format(Locale.getDefault(), "VideoEncoder: hevc hardware encoder error: timecheck , switch to 264 hardware encoder. %s", new Object[] { TXCCommonUtil.getDeviceInfo() }), "", 0);
+              }
+            }
+          }
+          this.W = this.S;
+        }
+        AppMethodBeat.o(14865);
+        return 0L;
       }
-      this.S = this.O;
+      GLES20.glFlush();
     }
-    AppMethodBeat.o(14865);
-    return 0L;
   }
   
   public long pushVideoFrameAsync(final int paramInt1, int paramInt2, int paramInt3, final long paramLong)
   {
     AppMethodBeat.i(14866);
-    if (this.z)
+    if (this.C)
     {
       AppMethodBeat.o(14866);
       return 10000004L;
     }
-    GLES20.glFinish();
-    if (this.L) {
-      f();
+    if (this.ae) {
+      GLES20.glFinish();
     }
-    this.r.a().post(new Runnable()
+    for (;;)
     {
-      public void run()
-      {
-        AppMethodBeat.i(14820);
-        if ((a.b(a.this) == true) || (a.c(a.this) == null))
-        {
-          AppMethodBeat.o(14820);
-          return;
-        }
-        int k = paramInt1;
-        long l = paramLong;
-        a.a(a.this, l);
-        int m = (720 - a.this.mRotation) % 360;
-        int i;
-        if ((m == 90) || (m == 270))
-        {
-          i = a.this.mOutputHeight;
-          if ((m != 90) && (m != 270)) {
-            break label343;
-          }
-        }
-        label343:
-        for (int j = a.this.mOutputWidth;; j = a.this.mOutputHeight)
-        {
-          a.this.mEncodeFilter.a(a.this.mInputWidth, a.this.mInputHeight, m, null, i / j, a.this.mEnableXMirror, true);
-          a.this.mEncodeFilter.a(k);
-          if ((a.c(a.this) instanceof com.tencent.liteav.basic.c.c))
-          {
-            ((com.tencent.liteav.basic.c.c)a.c(a.this)).a(1000000L * l);
-            ((com.tencent.liteav.basic.c.c)a.c(a.this)).d();
-          }
-          if ((a.c(a.this) instanceof b)) {
-            ((b)a.c(a.this)).a();
-          }
-          if (a.this.mListener != null) {
-            a.this.mListener.m(a.this.mStreamType);
-          }
-          do
-          {
-            i = a.c(a.this, 1);
-          } while (i > 0);
-          if ((i != -1) && (i != -2)) {
-            break label354;
-          }
-          if (i == -1) {
-            a.this.callDelegate(10000005);
-          }
-          a.a(a.this, true);
-          a.a(a.this);
-          AppMethodBeat.o(14820);
-          return;
-          i = a.this.mOutputWidth;
-          break;
-        }
-        label354:
-        a.d(a.this);
-        AppMethodBeat.o(14820);
+      if (this.O) {
+        f();
       }
-    });
-    AppMethodBeat.o(14866);
-    return 0L;
+      this.u.a().post(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(14784);
+          if ((a.b(a.this) == true) || (a.c(a.this) == null))
+          {
+            AppMethodBeat.o(14784);
+            return;
+          }
+          int k = paramInt1;
+          long l = paramLong;
+          a.a(a.this, l);
+          int m = (720 - a.this.mRotation) % 360;
+          int i;
+          if ((m == 90) || (m == 270))
+          {
+            i = a.this.mOutputHeight;
+            if ((m != 90) && (m != 270)) {
+              break label343;
+            }
+          }
+          label343:
+          for (int j = a.this.mOutputWidth;; j = a.this.mOutputHeight)
+          {
+            a.this.mEncodeFilter.a(a.this.mInputWidth, a.this.mInputHeight, m, null, i / j, a.this.mEnableXMirror, true);
+            a.this.mEncodeFilter.a(k);
+            if ((a.c(a.this) instanceof com.tencent.liteav.basic.opengl.c))
+            {
+              ((com.tencent.liteav.basic.opengl.c)a.c(a.this)).a(1000000L * l);
+              ((com.tencent.liteav.basic.opengl.c)a.c(a.this)).e();
+            }
+            if ((a.c(a.this) instanceof b)) {
+              ((b)a.c(a.this)).a();
+            }
+            if (a.this.mListener != null) {
+              a.this.mListener.m(a.this.mStreamType);
+            }
+            do
+            {
+              i = a.c(a.this, 1);
+            } while (i > 0);
+            if ((i != -1) && (i != -2)) {
+              break label354;
+            }
+            if (i == -1) {
+              a.this.callDelegate(10000005);
+            }
+            a.a(a.this, true);
+            a.a(a.this);
+            AppMethodBeat.o(14784);
+            return;
+            i = a.this.mOutputWidth;
+            break;
+          }
+          label354:
+          a.d(a.this);
+          AppMethodBeat.o(14784);
+        }
+      });
+      AppMethodBeat.o(14866);
+      return 0L;
+      GLES20.glFlush();
+    }
   }
   
   public long pushVideoFrameSync(int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
     AppMethodBeat.i(14867);
-    if (this.z)
+    if (this.C)
     {
       AppMethodBeat.o(14867);
       return 10000004L;
     }
-    GLES20.glFinish();
-    this.D = paramLong;
-    this.U = paramInt1;
-    if (this.L) {
-      f();
+    if (this.ae) {
+      GLES20.glFinish();
     }
-    this.r.a(this.u);
-    AppMethodBeat.o(14867);
-    return 0L;
+    for (;;)
+    {
+      this.G = paramLong;
+      this.Y = paramInt1;
+      if (this.O) {
+        f();
+      }
+      this.u.a(this.x);
+      AppMethodBeat.o(14867);
+      return 0L;
+      GLES20.glFlush();
+    }
   }
   
   public void setBitrate(final int paramInt)
   {
     AppMethodBeat.i(14863);
     this.a = paramInt;
-    this.r.b(new Runnable()
+    this.u.b(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(14851);
+        AppMethodBeat.i(14820);
         a.b(a.this, paramInt);
-        AppMethodBeat.o(14851);
+        AppMethodBeat.o(14820);
       }
     });
     AppMethodBeat.o(14863);
@@ -1679,13 +1698,13 @@ public class a
   {
     AppMethodBeat.i(14864);
     this.a = paramInt1;
-    this.r.b(new Runnable()
+    this.u.b(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(14858);
+        AppMethodBeat.i(14788);
         a.b(a.this, paramInt1);
-        AppMethodBeat.o(14858);
+        AppMethodBeat.o(14788);
       }
     });
     AppMethodBeat.o(14864);
@@ -1696,34 +1715,56 @@ public class a
   public void setFPS(final int paramInt)
   {
     AppMethodBeat.i(14862);
-    this.r.b(new Runnable()
+    this.u.b(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(14787);
+        AppMethodBeat.i(14858);
         a.a(a.this, paramInt);
-        AppMethodBeat.o(14787);
+        AppMethodBeat.o(14858);
       }
     });
     AppMethodBeat.o(14862);
   }
   
+  public void setGLFinishedTextureNeed(boolean paramBoolean)
+  {
+    this.ae = paramBoolean;
+  }
+  
+  public void setThreadPriority(final com.tencent.liteav.basic.structs.c paramc)
+  {
+    AppMethodBeat.i(229883);
+    super.setThreadPriority(paramc);
+    this.u.b(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(14785);
+        TXCLog.i("TXCHWVideoEncoder", "setThreadPriority: priority:" + paramc);
+        Process.setThreadPriority(paramc.a());
+        AppMethodBeat.o(14785);
+      }
+    });
+    AppMethodBeat.o(229883);
+  }
+  
   public void signalEOSAndFlush()
   {
     AppMethodBeat.i(14868);
-    if (this.z)
+    if (this.C)
     {
       AppMethodBeat.o(14868);
       return;
     }
-    this.r.a(new Runnable()
+    this.u.a(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(14788);
+        AppMethodBeat.i(14850);
         if (a.e(a.this) == null)
         {
-          AppMethodBeat.o(14788);
+          AppMethodBeat.o(14850);
           return;
         }
         try
@@ -1731,7 +1772,7 @@ public class a
           a.e(a.this).signalEndOfInputStream();
           while (a.c(a.this, 10) >= 0) {}
           a.a(a.this);
-          AppMethodBeat.o(14788);
+          AppMethodBeat.o(14850);
           return;
         }
         catch (Exception localException)
@@ -1758,11 +1799,11 @@ public class a
     {
       AppMethodBeat.o(14860);
       return 0;
-      this.r.b(new Runnable()
+      this.u.b(new Runnable()
       {
         public void run()
         {
-          AppMethodBeat.i(14785);
+          AppMethodBeat.i(14787);
           String str1 = "unknown";
           String str2 = "unknown";
           label80:
@@ -1772,6 +1813,9 @@ public class a
           int m;
           int n;
           int i1;
+          String str3;
+          label145:
+          int i2;
           switch (paramTXSVideoEncoderParam.encoderMode)
           {
           default: 
@@ -1784,24 +1828,32 @@ public class a
               m = paramTXSVideoEncoderParam.fps;
               n = paramTXSVideoEncoderParam.bitrate;
               i1 = paramTXSVideoEncoderParam.gop;
-              if (!paramTXSVideoEncoderParam.bMultiRef) {}
+              if (paramTXSVideoEncoderParam.bMultiRef)
+              {
+                str3 = "true";
+                i2 = paramTXSVideoEncoderParam.streamType;
+                if (!paramTXSVideoEncoderParam.isH265EncoderEnabled) {
+                  break label411;
+                }
+              }
               break;
             }
             break;
           }
-          for (String str3 = "true";; str3 = "false")
+          label411:
+          for (String str4 = "true";; str4 = "false")
           {
-            str1 = String.format("VideoEncoder[%d]: Start [type:hardware][resolution:%d*%d][fps:%d][bitrate:%dkbps][gop:%d][rateControl:%s][profile:%s][rps:%s][streamType:%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), str1, str2, str3, Integer.valueOf(paramTXSVideoEncoderParam.streamType) });
+            str1 = String.format("VideoEncoder[%d]: Start [type:hardware][resolution:%d*%d][fps:%d][bitrate:%dkbps][gop:%d][rateControl:%s][profile:%s][rps:%s][streamType:%d][enable hevc:%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), str1, str2, str3, Integer.valueOf(i2), str4 });
             Monitor.a(2, str1, "", 0);
             TXCLog.i("TXCHWVideoEncoder", "start:".concat(String.valueOf(str1)));
             if (a.this.mInit) {
               a.a(a.this);
             }
             if (!a.a(a.this, paramTXSVideoEncoderParam)) {
-              break label387;
+              break label418;
             }
             Monitor.a(2, String.format("VideoEncoder[%d]: Start successfully, streamType:%d", new Object[] { Integer.valueOf(a.this.hashCode()), Integer.valueOf(paramTXSVideoEncoderParam.streamType) }), "streamType: 2-big, 3-small, 7-sub", 0);
-            AppMethodBeat.o(14785);
+            AppMethodBeat.o(14787);
             return;
             str1 = "CBR";
             break;
@@ -1815,10 +1867,12 @@ public class a
             break label80;
             str2 = "High";
             break label80;
+            str3 = "false";
+            break label145;
           }
-          label387:
+          label418:
           a.this.callDelegate(10000004);
-          AppMethodBeat.o(14785);
+          AppMethodBeat.o(14787);
         }
       });
     }
@@ -1829,26 +1883,27 @@ public class a
   public void stop()
   {
     AppMethodBeat.i(14861);
-    this.z = true;
-    this.r.b(new Runnable()
+    this.C = true;
+    this.u.b(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(14857);
+        AppMethodBeat.i(14851);
         if (a.this.mInit)
         {
           Monitor.a(2, String.format("VideoEncoder[%d]: Stop, streamType:%d", new Object[] { Integer.valueOf(a.this.hashCode()), Integer.valueOf(a.this.mStreamType) }), "streamType: 2-big, 3-small, 7-sub", 0);
           a.a(a.this);
         }
-        AppMethodBeat.o(14857);
+        AppMethodBeat.o(14851);
       }
     });
+    h();
     AppMethodBeat.o(14861);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.videoencoder.a
  * JD-Core Version:    0.7.0.1
  */

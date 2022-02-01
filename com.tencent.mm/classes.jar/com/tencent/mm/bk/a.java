@@ -1,31 +1,30 @@
 package com.tencent.mm.bk;
 
-import android.graphics.Point;
+import java.util.LinkedList;
 
 public abstract interface a
 {
-  public abstract void J(Runnable paramRunnable);
+  public abstract LinkedList<String> Xv(String paramString);
   
-  public abstract void a(a parama);
+  public abstract boolean Xw(String paramString);
   
-  public abstract Point bhJ();
+  public abstract void a(c paramc);
   
-  public abstract int bhK();
+  public abstract void a(String paramString1, LinkedList<String> paramLinkedList, double paramDouble1, double paramDouble2, String paramString2, String paramString3, String paramString4);
   
-  public abstract int n(String paramString, long paramLong1, long paramLong2);
+  public abstract void b(c paramc);
   
-  public abstract void stop();
+  public abstract boolean bE(String paramString1, String paramString2);
   
-  public abstract void uf(int paramInt);
+  public abstract void bpI();
   
-  public static abstract interface a
-  {
-    public abstract void a(byte[] paramArrayOfByte, boolean paramBoolean, long paramLong);
-  }
+  public abstract boolean bpY();
+  
+  public abstract String bpZ();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.bk.a
  * JD-Core Version:    0.7.0.1
  */

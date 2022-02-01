@@ -6,18 +6,18 @@ public enum IDecoder$DecodeType
 {
   static
   {
-    AppMethodBeat.i(218213);
+    AppMethodBeat.i(190945);
     Video = new DecodeType("Video", 0);
     Audio = new DecodeType("Audio", 1);
     $VALUES = new DecodeType[] { Video, Audio };
-    AppMethodBeat.o(218213);
+    AppMethodBeat.o(190945);
   }
   
   private IDecoder$DecodeType() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tav.decoder.IDecoder.DecodeType
  * JD-Core Version:    0.7.0.1
  */

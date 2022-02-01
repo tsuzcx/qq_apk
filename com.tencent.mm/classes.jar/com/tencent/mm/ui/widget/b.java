@@ -1,197 +1,121 @@
 package com.tencent.mm.ui.widget;
 
-import android.app.Activity;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.View.MeasureSpec;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.KeyBoardUtil;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ao;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.os.Bundle;
+import android.view.KeyEvent;
+import com.tencent.mm.ui.MMFragmentActivity;
+import com.tencent.mm.ui.component.glocom.b.a;
+import kotlin.g.b.p;
+import kotlin.l;
 
-public final class b
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/ui/widget/IPullDownView;", "Lcom/tencent/mm/ui/component/glocom/IGloUIComponent;", "()V", "isOpen", "", "()Z", "setOpen", "(Z)V", "checkIsPullDownValid", "", "listener", "Lcom/tencent/mm/ui/widget/IPullDownView$CheckValidListener;", "getCurCycle", "", "isPauseMusic", "onJumpDetail", "onPostClose", "onPostOpen", "onPreClose", "onPreOpen", "onTransAnim", "percent", "", "CheckValidListener", "libmmui_release"})
+public abstract class b
+  implements com.tencent.mm.ui.component.glocom.b
 {
-  public boolean AxH;
-  private a QBP;
-  private boolean QBQ;
-  private int QBR;
-  private int QBS;
-  Runnable QBT;
-  Runnable QBU;
-  private int maxHeight;
-  private int oXi;
-  private int uZv;
-  private Rect vPN;
-  private View view;
+  public boolean gZ;
   
-  public b(View paramView, a parama)
+  public final void a(MMFragmentActivity paramMMFragmentActivity)
   {
-    AppMethodBeat.i(143328);
-    this.vPN = new Rect();
-    this.QBQ = false;
-    this.AxH = false;
-    this.view = paramView;
-    this.QBP = parama;
-    this.QBS = (ao.aD(paramView.getContext()) * 2);
-    this.oXi = KeyBoardUtil.getKeyBordHeightPx(paramView.getContext(), true);
-    AppMethodBeat.o(143328);
+    p.k(paramMMFragmentActivity, "activity");
+    b.a.a(this, paramMMFragmentActivity);
   }
   
-  private boolean gYB()
+  public final void b(MMFragmentActivity paramMMFragmentActivity)
   {
-    AppMethodBeat.i(143332);
-    boolean bool = KeyBoardUtil.isPortOrientation(this.view.getContext());
-    AppMethodBeat.o(143332);
-    return bool;
+    p.k(paramMMFragmentActivity, "activity");
+    b.a.b(this, paramMMFragmentActivity);
   }
   
-  private boolean isInMultiWindowMode()
+  public abstract void dDB();
+  
+  public abstract void dDC();
+  
+  public boolean dDD()
   {
-    AppMethodBeat.i(143333);
-    if ((d.oD(24)) && ((this.view.getContext() instanceof Activity)))
-    {
-      boolean bool = ((Activity)this.view.getContext()).isInMultiWindowMode();
-      AppMethodBeat.o(143333);
-      return bool;
-    }
-    AppMethodBeat.o(143333);
     return false;
   }
   
-  public final void aP(Runnable paramRunnable)
+  public void dDE()
   {
-    AppMethodBeat.i(143330);
-    this.QBT = paramRunnable;
-    this.QBU = null;
-    this.view.postDelayed(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(143326);
-        if (b.this.QBT != null)
-        {
-          Log.w("MicroMsg.InputPanelHelper", "onKeyboardShowOnce not run in measure");
-          b.this.QBT.run();
-          b.this.QBT = null;
-        }
-        AppMethodBeat.o(143326);
-      }
-    }, 200L);
-    AppMethodBeat.o(143330);
+    this.gZ = true;
   }
   
-  public final void aQ(Runnable paramRunnable)
+  public long ejq()
   {
-    AppMethodBeat.i(143331);
-    this.QBU = paramRunnable;
-    this.QBT = null;
-    this.view.postDelayed(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(143327);
-        if (b.this.QBU != null)
-        {
-          Log.w("MicroMsg.InputPanelHelper", "onKeyboardHideOnce not run in measure");
-          b.this.QBU.run();
-          b.this.QBU = null;
-        }
-        AppMethodBeat.o(143327);
-      }
-    }, 200L);
-    AppMethodBeat.o(143331);
+    return 1L;
   }
   
-  public final void aou(int paramInt)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public boolean onBackPressed()
   {
-    AppMethodBeat.i(143329);
-    if ((!gYB()) || (isInMultiWindowMode()))
-    {
-      Log.i("MicroMsg.InputPanelHelper", "onMeasure: delay call runnable");
-      AppMethodBeat.o(143329);
-      return;
-    }
-    int i = this.uZv;
-    int j = this.vPN.bottom;
-    this.uZv = View.MeasureSpec.getSize(paramInt);
-    this.view.getWindowVisibleDisplayFrame(this.vPN);
-    boolean bool;
-    if (!this.QBQ)
-    {
-      if (j != this.vPN.bottom)
-      {
-        bool = true;
-        this.QBQ = bool;
-      }
-    }
-    else
-    {
-      this.QBR = this.vPN.bottom;
-      if (this.QBR > this.maxHeight - this.QBS) {
-        this.maxHeight = this.QBR;
-      }
-      paramInt = this.maxHeight - this.QBR;
-      if (paramInt <= this.QBS) {
-        break label298;
-      }
-      bool = true;
-      label147:
-      if (bool) {
-        this.oXi = paramInt;
-      }
-      if ((this.QBQ) && (bool != this.AxH))
-      {
-        if (paramInt != this.QBS) {
-          break label304;
-        }
-        this.QBP.f(false, this.oXi - paramInt);
-      }
-    }
-    for (;;)
-    {
-      this.AxH = bool;
-      if (((!this.QBQ) || (i <= this.uZv + this.QBS)) && (i >= this.uZv - this.QBS)) {
-        break label343;
-      }
-      Log.i("MicroMsg.InputPanelHelper", "onMeasure: run, %s", new Object[] { Boolean.valueOf(bool) });
-      this.QBQ = false;
-      if (!bool) {
-        break label322;
-      }
-      if (this.QBT == null) {
-        break label343;
-      }
-      this.QBT.run();
-      this.QBT = null;
-      AppMethodBeat.o(143329);
-      return;
-      bool = false;
-      break;
-      label298:
-      bool = false;
-      break label147;
-      label304:
-      this.QBP.f(bool, this.oXi);
-    }
-    label322:
-    if (this.QBU != null)
-    {
-      this.QBU.run();
-      this.QBU = null;
-    }
-    label343:
-    AppMethodBeat.o(143329);
+    return false;
   }
   
-  public static abstract interface a
+  public void onBeforeFinish(Intent paramIntent) {}
+  
+  public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    public abstract void f(boolean paramBoolean, int paramInt);
+    p.k(paramConfiguration, "newConfig");
+    p.k(paramConfiguration, "newConfig");
+    p.k(paramConfiguration, "newConfig");
   }
+  
+  public void onCreateAfter(Bundle paramBundle) {}
+  
+  public void onCreateBefore(Bundle paramBundle) {}
+  
+  public void onDestroy() {}
+  
+  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  {
+    p.k(paramKeyEvent, "event");
+    p.k(paramKeyEvent, "event");
+    p.k(paramKeyEvent, "event");
+    return false;
+  }
+  
+  public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
+  {
+    p.k(paramKeyEvent, "event");
+    p.k(paramKeyEvent, "event");
+    p.k(paramKeyEvent, "event");
+    return false;
+  }
+  
+  public void onNewIntent(Intent paramIntent) {}
+  
+  public void onPause() {}
+  
+  public void onPostClose()
+  {
+    this.gZ = false;
+  }
+  
+  public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    p.k(paramArrayOfString, "permissions");
+    p.k(paramArrayOfInt, "grantResults");
+    p.k(paramArrayOfString, "permissions");
+    p.k(paramArrayOfInt, "grantResults");
+    p.k(paramArrayOfString, "permissions");
+    p.k(paramArrayOfInt, "grantResults");
+  }
+  
+  public void onRestoreInstanceState(Bundle paramBundle) {}
+  
+  public void onResume() {}
+  
+  public void onSaveInstanceState(Bundle paramBundle) {}
+  
+  public void onStart() {}
+  
+  public void onStop() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.b
  * JD-Core Version:    0.7.0.1
  */

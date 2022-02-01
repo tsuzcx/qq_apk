@@ -7,16 +7,16 @@ import kotlin.g.b.a.a;
 import kotlin.l;
 import kotlin.m.h;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/io/LinesSequence;", "Lkotlin/sequences/Sequence;", "", "reader", "Ljava/io/BufferedReader;", "(Ljava/io/BufferedReader;)V", "iterator", "", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/io/LinesSequence;", "Lkotlin/sequences/Sequence;", "", "reader", "Ljava/io/BufferedReader;", "(Ljava/io/BufferedReader;)V", "iterator", "", "kotlin-stdlib"})
 final class c
   implements h<String>
 {
-  final BufferedReader bzE;
+  final BufferedReader bjf;
   
   public c(BufferedReader paramBufferedReader)
   {
     AppMethodBeat.i(129277);
-    this.bzE = paramBufferedReader;
+    this.bjf = paramBufferedReader;
     AppMethodBeat.o(129277);
   }
   
@@ -28,24 +28,24 @@ final class c
     return localIterator;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"kotlin/io/LinesSequence$iterator$1", "", "", "done", "", "nextValue", "hasNext", "next", "kotlin-stdlib"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"kotlin/io/LinesSequence$iterator$1", "", "", "done", "", "nextValue", "hasNext", "next", "kotlin-stdlib"})
   public static final class a
     implements Iterator<String>, a
   {
-    private String SYf;
+    private String aaAR;
     private boolean done;
     
     public final boolean hasNext()
     {
       AppMethodBeat.i(129264);
-      if ((this.SYf == null) && (!this.done))
+      if ((this.aaAR == null) && (!this.done))
       {
-        this.SYf = this.SYg.bzE.readLine();
-        if (this.SYf == null) {
+        this.aaAR = this.aaAS.bjf.readLine();
+        if (this.aaAR == null) {
           this.done = true;
         }
       }
-      if (this.SYf != null)
+      if (this.aaAR != null)
       {
         AppMethodBeat.o(129264);
         return true;
@@ -65,7 +65,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlin.f.c
  * JD-Core Version:    0.7.0.1
  */

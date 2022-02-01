@@ -32,38 +32,38 @@ import kotlin.s;
 public abstract class k
   extends kotlin.l.b.a.b.j.f.i
 {
-  private final kotlin.l.b.a.b.l.c<kotlin.l.b.a.b.f.f, List<ah>> TkA;
-  final kotlin.l.b.a.b.l.f<Collection<kotlin.l.b.a.b.b.l>> TkB;
-  private final kotlin.l.b.a.b.l.c<kotlin.l.b.a.b.f.f, Collection<am>> Tkz;
-  final h Trn;
-  final kotlin.l.b.a.b.l.f<b> TsE;
-  private final kotlin.l.b.a.b.l.c<kotlin.l.b.a.b.f.f, Collection<am>> TsF;
-  private final kotlin.l.b.a.b.l.d<kotlin.l.b.a.b.f.f, ah> TsG;
-  private final kotlin.l.b.a.b.l.f TsH;
-  private final kotlin.l.b.a.b.l.f TsI;
-  private final kotlin.l.b.a.b.l.f TsJ;
-  final k TsK;
+  private final kotlin.l.b.a.b.l.c<kotlin.l.b.a.b.f.f, Collection<am>> aaNt;
+  private final kotlin.l.b.a.b.l.c<kotlin.l.b.a.b.f.f, List<ah>> aaNu;
+  private final kotlin.l.b.a.b.l.f<Collection<kotlin.l.b.a.b.b.l>> aaNv;
+  final h aaUh;
+  private final kotlin.l.b.a.b.l.d<kotlin.l.b.a.b.f.f, ah> aaVA;
+  private final kotlin.l.b.a.b.l.f aaVB;
+  private final kotlin.l.b.a.b.l.f aaVC;
+  private final kotlin.l.b.a.b.l.f aaVD;
+  final k aaVE;
+  final kotlin.l.b.a.b.l.f<b> aaVy;
+  private final kotlin.l.b.a.b.l.c<kotlin.l.b.a.b.f.f, Collection<am>> aaVz;
   
   public k(h paramh, k paramk)
   {
-    this.Trn = paramh;
-    this.TsK = paramk;
-    this.TkB = this.Trn.Trv.TcN.a((kotlin.g.a.a)new c(this), (List)kotlin.a.v.SXr);
-    this.TsE = this.Trn.Trv.TcN.al((kotlin.g.a.a)new g(this));
-    this.TsF = this.Trn.Trv.TcN.U((kotlin.g.a.b)new f(this));
-    this.TsG = this.Trn.Trv.TcN.V((kotlin.g.a.b)new e(this));
-    this.Tkz = this.Trn.Trv.TcN.U((kotlin.g.a.b)new i(this));
-    this.TsH = this.Trn.Trv.TcN.al((kotlin.g.a.a)new h(this));
-    this.TsI = this.Trn.Trv.TcN.al((kotlin.g.a.a)new k(this));
-    this.TsJ = this.Trn.Trv.TcN.al((kotlin.g.a.a)new d(this));
-    this.TkA = this.Trn.Trv.TcN.U((kotlin.g.a.b)new j(this));
+    this.aaUh = paramh;
+    this.aaVE = paramk;
+    this.aaNv = this.aaUh.aaUp.aaFH.a((kotlin.g.a.a)new c(this), (List)kotlin.a.v.aaAd);
+    this.aaVy = this.aaUh.aaUp.aaFH.av((kotlin.g.a.a)new g(this));
+    this.aaVz = this.aaUh.aaUp.aaFH.ak((kotlin.g.a.b)new f(this));
+    this.aaVA = this.aaUh.aaUp.aaFH.al((kotlin.g.a.b)new e(this));
+    this.aaNt = this.aaUh.aaUp.aaFH.ak((kotlin.g.a.b)new i(this));
+    this.aaVB = this.aaUh.aaUp.aaFH.av((kotlin.g.a.a)new h(this));
+    this.aaVC = this.aaUh.aaUp.aaFH.av((kotlin.g.a.a)new k(this));
+    this.aaVD = this.aaUh.aaUp.aaFH.av((kotlin.g.a.a)new d(this));
+    this.aaNu = this.aaUh.aaUp.aaFH.ak((kotlin.g.a.b)new j(this));
   }
   
   protected static b a(h paramh, t paramt, List<? extends kotlin.l.b.a.b.d.a.e.y> paramList)
   {
-    kotlin.g.b.p.h(paramh, "c");
-    kotlin.g.b.p.h(paramt, "function");
-    kotlin.g.b.p.h(paramList, "jValueParameters");
+    kotlin.g.b.p.k(paramh, "c");
+    kotlin.g.b.p.k(paramt, "function");
+    kotlin.g.b.p.k(paramList, "jValueParameters");
     Set localSet = (Set)new LinkedHashSet();
     Object localObject1 = kotlin.a.j.s((Iterable)paramList);
     Collection localCollection = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject1, 10));
@@ -81,9 +81,9 @@ public abstract class k
       j = ((kotlin.a.y)localObject1).index;
       localy = (kotlin.l.b.a.b.d.a.e.y)((kotlin.a.y)localObject1).value;
       localg = kotlin.l.b.a.b.d.a.c.f.a(paramh, (kotlin.l.b.a.b.d.a.e.d)localy);
-      locala = kotlin.l.b.a.b.d.a.c.b.d.a(kotlin.l.b.a.b.d.a.a.l.Tqv, false, null, 3);
-      localObject1 = kotlin.l.b.a.b.d.a.p.Tpv;
-      kotlin.g.b.p.g(localObject1, "JvmAnnotationNames.PARAMETER_NAME_FQ_NAME");
+      locala = kotlin.l.b.a.b.d.a.c.b.d.a(kotlin.l.b.a.b.d.a.a.l.aaTp, false, null, 3);
+      localObject1 = kotlin.l.b.a.b.d.a.p.aaSp;
+      kotlin.g.b.p.j(localObject1, "JvmAnnotationNames.PARAMETER_NAME_FQ_NAME");
       localObject1 = localg.g((kotlin.l.b.a.b.f.b)localObject1);
       if (localObject1 != null)
       {
@@ -100,9 +100,9 @@ public abstract class k
           }
         }
       }
-      while (localy.hDj())
+      while (localy.iHD())
       {
-        localObject3 = localy.hDb();
+        localObject3 = localy.iHv();
         localObject2 = localObject3;
         if (!(localObject3 instanceof kotlin.l.b.a.b.d.a.e.f)) {
           localObject2 = null;
@@ -115,24 +115,24 @@ public abstract class k
         }
         else
         {
-          localObject2 = paramh.Tru.a((kotlin.l.b.a.b.d.a.e.f)localObject2, locala, true);
-          localObject2 = s.U(localObject2, paramh.Trv.Tfp.hBh().l((ab)localObject2));
+          localObject2 = paramh.aaUo.a((kotlin.l.b.a.b.d.a.e.f)localObject2, locala, true);
+          localObject2 = s.M(localObject2, paramh.aaUp.aaIj.iFv().l((ab)localObject2));
           label323:
-          localObject3 = (ab)((o)localObject2).first;
-          localObject2 = (ab)((o)localObject2).second;
-          if ((!kotlin.g.b.p.j(paramt.hAH().sG(), "equals")) || (paramList.size() != 1) || (!kotlin.g.b.p.j(paramh.Trv.Tfp.hBh().hzj(), localObject3))) {
+          localObject3 = (ab)((o)localObject2).Mx;
+          localObject2 = (ab)((o)localObject2).My;
+          if ((!kotlin.g.b.p.h(paramt.iEU().qu(), "equals")) || (paramList.size() != 1) || (!kotlin.g.b.p.h(paramh.aaUp.aaIj.iFv().iDv(), localObject3))) {
             break label491;
           }
-          localObject1 = kotlin.l.b.a.b.f.f.btY("other");
+          localObject1 = kotlin.l.b.a.b.f.f.bHb("other");
         }
       }
     }
     for (;;)
     {
-      kotlin.g.b.p.g(localObject1, "if (function.name.asStri…(\"p$index\")\n            }");
-      localCollection.add(new aj((kotlin.l.b.a.b.b.a)paramt, null, j, localg, (kotlin.l.b.a.b.f.f)localObject1, (ab)localObject3, false, false, false, (ab)localObject2, (an)paramh.Trv.TqY.a((kotlin.l.b.a.b.d.a.e.l)localy)));
+      kotlin.g.b.p.j(localObject1, "if (function.name.asStri…(\"p$index\")\n            }");
+      localCollection.add(new aj((kotlin.l.b.a.b.b.a)paramt, null, j, localg, (kotlin.l.b.a.b.f.f)localObject1, (ab)localObject3, false, false, false, (ab)localObject2, (an)paramh.aaUp.aaTS.a((kotlin.l.b.a.b.d.a.e.l)localy)));
       break;
-      localObject2 = s.U(paramh.Tru.a(localy.hDb(), locala), null);
+      localObject2 = s.M(paramh.aaUo.a(localy.iHv(), locala), null);
       break label323;
       label491:
       if (localObject1 != null)
@@ -143,18 +143,18 @@ public abstract class k
           if ((i == 0) || (!localSet.add(localObject1))) {
             break label542;
           }
-          localObject1 = kotlin.l.b.a.b.f.f.btY((String)localObject1);
+          localObject1 = kotlin.l.b.a.b.f.f.bHb((String)localObject1);
           break;
         }
       }
       label542:
-      localObject1 = localy.hAH();
+      localObject1 = localy.iEU();
       if (localObject1 == null) {
         bool = true;
       }
       if (localObject1 == null)
       {
-        localObject1 = kotlin.l.b.a.b.f.f.btY("p".concat(String.valueOf(j)));
+        localObject1 = kotlin.l.b.a.b.f.f.bHb("p".concat(String.valueOf(j)));
         continue;
         return new b(kotlin.a.j.p((Iterable)localCollection), bool);
       }
@@ -163,87 +163,87 @@ public abstract class k
   
   protected static ab a(kotlin.l.b.a.b.d.a.e.q paramq, h paramh)
   {
-    kotlin.g.b.p.h(paramq, "method");
-    kotlin.g.b.p.h(paramh, "c");
-    boolean bool = paramq.hDc().hCO();
-    kotlin.l.b.a.b.d.a.c.b.a locala = kotlin.l.b.a.b.d.a.c.b.d.a(kotlin.l.b.a.b.d.a.a.l.Tqv, bool, null, 2);
-    return paramh.Tru.a(paramq.hDd(), locala);
+    kotlin.g.b.p.k(paramq, "method");
+    kotlin.g.b.p.k(paramh, "c");
+    boolean bool = paramq.iHw().iHh();
+    kotlin.l.b.a.b.d.a.c.b.a locala = kotlin.l.b.a.b.d.a.c.b.d.a(kotlin.l.b.a.b.d.a.a.l.aaTp, bool, null, 2);
+    return paramh.aaUo.a(paramq.iHx(), locala);
   }
   
   private static boolean a(n paramn)
   {
-    return (paramn.hCR()) && (paramn.hgu());
+    return (paramn.iHl()) && (paramn.ihW());
   }
   
   public Collection<ah> a(kotlin.l.b.a.b.f.f paramf, kotlin.l.b.a.b.c.a.a parama)
   {
-    kotlin.g.b.p.h(paramf, "name");
-    kotlin.g.b.p.h(parama, "location");
-    if (!hCb().contains(paramf)) {
-      return (Collection)kotlin.a.v.SXr;
+    kotlin.g.b.p.k(paramf, "name");
+    kotlin.g.b.p.k(parama, "location");
+    if (!iGq().contains(paramf)) {
+      return (Collection)kotlin.a.v.aaAd;
     }
-    return (Collection)this.TkA.invoke(paramf);
+    return (Collection)this.aaNu.invoke(paramf);
   }
   
   public Collection<kotlin.l.b.a.b.b.l> a(kotlin.l.b.a.b.j.f.d paramd, kotlin.g.a.b<? super kotlin.l.b.a.b.f.f, Boolean> paramb)
   {
-    kotlin.g.b.p.h(paramd, "kindFilter");
-    kotlin.g.b.p.h(paramb, "nameFilter");
-    return (Collection)this.TkB.invoke();
+    kotlin.g.b.p.k(paramd, "kindFilter");
+    kotlin.g.b.p.k(paramb, "nameFilter");
+    return (Collection)this.aaNv.invoke();
   }
   
   protected abstract Set<kotlin.l.b.a.b.f.f> a(kotlin.l.b.a.b.j.f.d paramd);
   
   protected final kotlin.l.b.a.b.d.a.b.f a(kotlin.l.b.a.b.d.a.e.q paramq)
   {
-    kotlin.g.b.p.h(paramq, "method");
-    Object localObject1 = kotlin.l.b.a.b.d.a.c.f.a(this.Trn, (kotlin.l.b.a.b.d.a.e.d)paramq);
-    kotlin.l.b.a.b.d.a.b.f localf = kotlin.l.b.a.b.d.a.b.f.a(hDS(), (kotlin.l.b.a.b.b.a.g)localObject1, paramq.hAH(), (an)this.Trn.Trv.TqY.a((kotlin.l.b.a.b.d.a.e.l)paramq));
-    kotlin.g.b.p.g(localf, "JavaMethodDescriptor.cre….source(method)\n        )");
-    h localh = kotlin.l.b.a.b.d.a.c.a.a(this.Trn, (kotlin.l.b.a.b.b.l)localf, (x)paramq, 0);
-    Object localObject2 = (Iterable)paramq.hAt();
+    kotlin.g.b.p.k(paramq, "method");
+    Object localObject1 = kotlin.l.b.a.b.d.a.c.f.a(this.aaUh, (kotlin.l.b.a.b.d.a.e.d)paramq);
+    kotlin.l.b.a.b.d.a.b.f localf = kotlin.l.b.a.b.d.a.b.f.a(iIl(), (kotlin.l.b.a.b.b.a.g)localObject1, paramq.iEU(), (an)this.aaUh.aaUp.aaTS.a((kotlin.l.b.a.b.d.a.e.l)paramq));
+    kotlin.g.b.p.j(localf, "JavaMethodDescriptor.cre….source(method)\n        )");
+    h localh = kotlin.l.b.a.b.d.a.c.a.a(this.aaUh, (kotlin.l.b.a.b.b.l)localf, (x)paramq, 0);
+    Object localObject2 = (Iterable)paramq.iEG();
     localObject1 = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (kotlin.l.b.a.b.d.a.e.w)((Iterator)localObject2).next();
-      localObject3 = localh.Trw.a((kotlin.l.b.a.b.d.a.e.w)localObject3);
+      localObject3 = localh.aaUq.a((kotlin.l.b.a.b.d.a.e.w)localObject3);
       if (localObject3 == null) {
-        kotlin.g.b.p.hyc();
+        kotlin.g.b.p.iCn();
       }
       ((Collection)localObject1).add(localObject3);
     }
     localObject1 = (List)localObject1;
-    localObject2 = a(localh, (t)localf, paramq.hAw());
-    Object localObject3 = a(paramq, (List)localObject1, a(paramq, localh), ((b)localObject2).TsM);
-    localObject1 = ((a)localObject3).Tqr;
+    localObject2 = a(localh, (t)localf, paramq.iEJ());
+    Object localObject3 = a(paramq, (List)localObject1, a(paramq, localh), ((b)localObject2).aaVG);
+    localObject1 = ((a)localObject3).aaTl;
     boolean bool1;
     if (localObject1 != null)
     {
       Object localObject4 = (kotlin.l.b.a.b.b.a)localf;
-      Object localObject5 = kotlin.l.b.a.b.b.a.g.TiC;
-      localObject1 = kotlin.l.b.a.b.j.b.a((kotlin.l.b.a.b.b.a)localObject4, (ab)localObject1, g.a.hBP());
-      localObject4 = hAs();
-      localObject5 = ((a)localObject3).Thx;
-      List localList = ((a)localObject3).Tqs;
-      ab localab = ((a)localObject3).Tmg;
-      Object localObject6 = kotlin.l.b.a.b.b.w.Tht;
-      boolean bool2 = paramq.hCQ();
-      if (paramq.hCR()) {
+      Object localObject5 = kotlin.l.b.a.b.b.a.g.aaLw;
+      localObject1 = kotlin.l.b.a.b.j.b.a((kotlin.l.b.a.b.b.a)localObject4, (ab)localObject1, g.a.iGe());
+      localObject4 = iEF();
+      localObject5 = ((a)localObject3).aaKr;
+      List localList = ((a)localObject3).aaTm;
+      ab localab = ((a)localObject3).aaPa;
+      Object localObject6 = kotlin.l.b.a.b.b.w.aaKn;
+      boolean bool2 = paramq.iHk();
+      if (paramq.iHl()) {
         break label446;
       }
       bool1 = true;
       label314:
-      localObject6 = w.a.bn(bool2, bool1);
-      ba localba = paramq.hzE();
-      if (((a)localObject3).Tqr == null) {
+      localObject6 = w.a.bx(bool2, bool1);
+      ba localba = paramq.iDQ();
+      if (((a)localObject3).aaTl == null) {
         break label451;
       }
-      paramq = ae.b(s.U(kotlin.l.b.a.b.d.a.b.f.Tqz, kotlin.a.j.ks(((b)localObject2).TsM)));
+      paramq = ae.d(s.M(kotlin.l.b.a.b.d.a.b.f.aaTt, kotlin.a.j.lo(((b)localObject2).aaVG)));
       label356:
       localf.a((ak)localObject1, (ak)localObject4, (List)localObject5, localList, localab, (kotlin.l.b.a.b.b.w)localObject6, localba, paramq);
-      localf.bo(((a)localObject3).TkV, ((b)localObject2).TsN);
-      if (((Collection)((a)localObject3).TsL).isEmpty()) {
+      localf.by(((a)localObject3).aaNP, ((b)localObject2).aaVH);
+      if (((Collection)((a)localObject3).aaVF).isEmpty()) {
         break label458;
       }
     }
@@ -253,14 +253,14 @@ public abstract class k
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        localh.Trv.TqT.a((kotlin.l.b.a.b.b.b)localf, ((a)localObject3).TsL);
+        localh.aaUp.aaTN.a((kotlin.l.b.a.b.b.b)localf, ((a)localObject3).aaVF);
       }
       return localf;
       localObject1 = null;
       break;
       bool1 = false;
       break label314;
-      paramq = ae.emptyMap();
+      paramq = ae.iBR();
       break label356;
     }
   }
@@ -271,18 +271,18 @@ public abstract class k
   
   protected boolean a(kotlin.l.b.a.b.d.a.b.f paramf)
   {
-    kotlin.g.b.p.h(paramf, "$this$isVisibleAsFunction");
+    kotlin.g.b.p.k(paramf, "$this$isVisibleAsFunction");
     return true;
   }
   
   public Collection<am> b(kotlin.l.b.a.b.f.f paramf, kotlin.l.b.a.b.c.a.a parama)
   {
-    kotlin.g.b.p.h(paramf, "name");
-    kotlin.g.b.p.h(parama, "location");
-    if (!hCa().contains(paramf)) {
-      return (Collection)kotlin.a.v.SXr;
+    kotlin.g.b.p.k(paramf, "name");
+    kotlin.g.b.p.k(parama, "location");
+    if (!iGp().contains(paramf)) {
+      return (Collection)kotlin.a.v.aaAd;
     }
-    return (Collection)this.Tkz.invoke(paramf);
+    return (Collection)this.aaNt.invoke(paramf);
   }
   
   protected abstract Set<kotlin.l.b.a.b.f.f> b(kotlin.l.b.a.b.j.f.d paramd, kotlin.g.a.b<? super kotlin.l.b.a.b.f.f, Boolean> paramb);
@@ -293,13 +293,13 @@ public abstract class k
   
   protected final List<kotlin.l.b.a.b.b.l> d(kotlin.l.b.a.b.j.f.d paramd, kotlin.g.a.b<? super kotlin.l.b.a.b.f.f, Boolean> paramb)
   {
-    kotlin.g.b.p.h(paramd, "kindFilter");
-    kotlin.g.b.p.h(paramb, "nameFilter");
-    kotlin.l.b.a.b.c.a.c localc = kotlin.l.b.a.b.c.a.c.TnO;
+    kotlin.g.b.p.k(paramd, "kindFilter");
+    kotlin.g.b.p.k(paramb, "nameFilter");
+    kotlin.l.b.a.b.c.a.c localc = kotlin.l.b.a.b.c.a.c.aaQI;
     LinkedHashSet localLinkedHashSet = new LinkedHashSet();
-    Object localObject = kotlin.l.b.a.b.j.f.d.TJQ;
+    Object localObject = kotlin.l.b.a.b.j.f.d.abms;
     kotlin.l.b.a.b.f.f localf;
-    if (paramd.avF(kotlin.l.b.a.b.j.f.d.hKW()))
+    if (paramd.aFz(kotlin.l.b.a.b.j.f.d.iPm()))
     {
       localObject = c(paramd, paramb).iterator();
       while (((Iterator)localObject).hasNext())
@@ -310,8 +310,8 @@ public abstract class k
         }
       }
     }
-    localObject = kotlin.l.b.a.b.j.f.d.TJQ;
-    if ((paramd.avF(kotlin.l.b.a.b.j.f.d.hKT())) && (!paramd.TJs.contains(c.a.TJp)))
+    localObject = kotlin.l.b.a.b.j.f.d.abms;
+    if ((paramd.aFz(kotlin.l.b.a.b.j.f.d.iPj())) && (!paramd.ablU.contains(c.a.ablR)))
     {
       localObject = b(paramd, paramb).iterator();
       while (((Iterator)localObject).hasNext())
@@ -322,8 +322,8 @@ public abstract class k
         }
       }
     }
-    localObject = kotlin.l.b.a.b.j.f.d.TJQ;
-    if ((paramd.avF(kotlin.l.b.a.b.j.f.d.hKU())) && (!paramd.TJs.contains(c.a.TJp)))
+    localObject = kotlin.l.b.a.b.j.f.d.abms;
+    if ((paramd.aFz(kotlin.l.b.a.b.j.f.d.iPk())) && (!paramd.ablU.contains(c.a.ablR)))
     {
       paramd = a(paramd).iterator();
       while (paramd.hasNext())
@@ -337,45 +337,50 @@ public abstract class k
     return kotlin.a.j.p((Iterable)localLinkedHashSet);
   }
   
-  protected abstract ak hAs();
+  protected abstract ak iEF();
   
-  public final Set<kotlin.l.b.a.b.f.f> hCa()
+  public final Set<kotlin.l.b.a.b.f.f> iGp()
   {
-    return (Set)kotlin.l.b.a.b.l.i.a(this.TsH, cLI[0]);
+    return (Set)kotlin.l.b.a.b.l.i.a(this.aaVB, cMt[0]);
   }
   
-  public final Set<kotlin.l.b.a.b.f.f> hCb()
+  public final Set<kotlin.l.b.a.b.f.f> iGq()
   {
-    return (Set)kotlin.l.b.a.b.l.i.a(this.TsI, cLI[1]);
+    return (Set)kotlin.l.b.a.b.l.i.a(this.aaVC, cMt[1]);
   }
   
-  protected abstract b hDR();
+  protected abstract b iIk();
   
-  protected abstract kotlin.l.b.a.b.b.l hDS();
+  protected abstract kotlin.l.b.a.b.b.l iIl();
+  
+  protected final kotlin.l.b.a.b.l.f<Collection<kotlin.l.b.a.b.b.l>> iIn()
+  {
+    return this.aaNv;
+  }
   
   public String toString()
   {
-    return "Lazy scope for " + hDS();
+    return "Lazy scope for " + iIl();
   }
   
   protected static final class a
   {
-    final List<as> Thx;
-    final boolean TkV;
-    final ab Tmg;
-    final ab Tqr;
-    final List<av> Tqs;
-    final List<String> TsL;
+    final List<as> aaKr;
+    final boolean aaNP;
+    final ab aaPa;
+    final ab aaTl;
+    final List<av> aaTm;
+    final List<String> aaVF;
     
     public a(ab paramab1, ab paramab2, List<? extends av> paramList, List<? extends as> paramList1, boolean paramBoolean, List<String> paramList2)
     {
       AppMethodBeat.i(57910);
-      this.Tmg = paramab1;
-      this.Tqr = paramab2;
-      this.Tqs = paramList;
-      this.Thx = paramList1;
-      this.TkV = paramBoolean;
-      this.TsL = paramList2;
+      this.aaPa = paramab1;
+      this.aaTl = paramab2;
+      this.aaTm = paramList;
+      this.aaKr = paramList1;
+      this.aaNP = paramBoolean;
+      this.aaVF = paramList2;
       AppMethodBeat.o(57910);
     }
     
@@ -387,7 +392,7 @@ public abstract class k
         if ((paramObject instanceof a))
         {
           paramObject = (a)paramObject;
-          if ((!kotlin.g.b.p.j(this.Tmg, paramObject.Tmg)) || (!kotlin.g.b.p.j(this.Tqr, paramObject.Tqr)) || (!kotlin.g.b.p.j(this.Tqs, paramObject.Tqs)) || (!kotlin.g.b.p.j(this.Thx, paramObject.Thx)) || (this.TkV != paramObject.TkV) || (!kotlin.g.b.p.j(this.TsL, paramObject.TsL))) {}
+          if ((!kotlin.g.b.p.h(this.aaPa, paramObject.aaPa)) || (!kotlin.g.b.p.h(this.aaTl, paramObject.aaTl)) || (!kotlin.g.b.p.h(this.aaTm, paramObject.aaTm)) || (!kotlin.g.b.p.h(this.aaKr, paramObject.aaKr)) || (this.aaNP != paramObject.aaNP) || (!kotlin.g.b.p.h(this.aaVF, paramObject.aaVF))) {}
         }
       }
       else
@@ -407,7 +412,7 @@ public abstract class k
     public final String toString()
     {
       AppMethodBeat.i(57911);
-      String str = "MethodSignatureData(returnType=" + this.Tmg + ", receiverType=" + this.Tqr + ", valueParameters=" + this.Tqs + ", typeParameters=" + this.Thx + ", hasStableParameterNames=" + this.TkV + ", errors=" + this.TsL + ")";
+      String str = "MethodSignatureData(returnType=" + this.aaPa + ", receiverType=" + this.aaTl + ", valueParameters=" + this.aaTm + ", typeParameters=" + this.aaKr + ", hasStableParameterNames=" + this.aaNP + ", errors=" + this.aaVF + ")";
       AppMethodBeat.o(57911);
       return str;
     }
@@ -415,14 +420,14 @@ public abstract class k
   
   protected static final class b
   {
-    final List<av> TsM;
-    final boolean TsN;
+    final List<av> aaVG;
+    final boolean aaVH;
     
     public b(List<? extends av> paramList, boolean paramBoolean)
     {
       AppMethodBeat.i(57914);
-      this.TsM = paramList;
-      this.TsN = paramBoolean;
+      this.aaVG = paramList;
+      this.aaVH = paramBoolean;
       AppMethodBeat.o(57914);
     }
   }
@@ -529,7 +534,7 @@ public abstract class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.c.a.k
  * JD-Core Version:    0.7.0.1
  */

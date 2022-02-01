@@ -1,28 +1,9 @@
 package com.tencent.mm.plugin.record;
 
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.n;
-
-public final class a
-  implements n
-{
-  public static m jRt;
-  public static l jRu;
-  
-  public final void a(l paraml)
-  {
-    jRu = paraml;
-  }
-  
-  public final void a(m paramm)
-  {
-    jRt = paramm;
-  }
-}
+public final class a {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.record.a
  * JD-Core Version:    0.7.0.1
  */

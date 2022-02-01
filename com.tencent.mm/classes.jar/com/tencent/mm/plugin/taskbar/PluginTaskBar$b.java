@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.taskbar;
 
 import android.os.Bundle;
+import com.tencent.mm.ipcinvoker.f;
 import kotlin.g.a.a;
 import kotlin.g.b.q;
-import kotlin.g.b.z.f;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/taskbar/PluginTaskBar$addOrUpdateTaskInfoByBitmap$2$1"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/taskbar/PluginTaskBar$addOrUpdateTaskInfoByBitmap$2$1"})
 final class PluginTaskBar$b
   extends q
   implements a<x>
 {
-  PluginTaskBar$b(z.f paramf, PluginTaskBar paramPluginTaskBar, String paramString, Bundle paramBundle)
+  PluginTaskBar$b(String paramString1, PluginTaskBar paramPluginTaskBar, String paramString2, Bundle paramBundle)
   {
     super(0);
   }

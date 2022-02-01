@@ -1,19 +1,15 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import kotlin.g.a.b;
-import kotlin.g.b.q;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
+import kotlin.g.a.a;
 import kotlin.l;
-import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "line", "", "invoke"})
-final class cs$b
-  extends q
-  implements b<String, x>
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/jsapi/EmptyResult;", "kotlin.jvm.PlatformType", "onReceiveResult"})
+final class cs$b<R extends AppBrandProxyUIProcessTask.ProcessResult>
+  implements AppBrandProxyUIProcessTask.b<EmptyResult>
 {
-  cs$b(String paramString)
-  {
-    super(1);
-  }
+  cs$b(a parama) {}
 }
 
 

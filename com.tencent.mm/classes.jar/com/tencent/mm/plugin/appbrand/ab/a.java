@@ -13,18 +13,18 @@ import com.tencent.mm.sdk.storage.MAutoStorage;
 public final class a
   extends MAutoStorage<a>
 {
-  public static final String[] iBh;
+  public static final String[] lqL;
   
   static
   {
     AppMethodBeat.i(48359);
-    iBh = new String[] { MAutoStorage.getCreateSQLs(a.kLR, "AppBrandCommonKVBinaryData") };
+    lqL = new String[] { MAutoStorage.getCreateSQLs(a.nFK, "AppBrandCommonKVBinaryData") };
     AppMethodBeat.o(48359);
   }
   
   public a(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramISQLiteDatabase, a.kLR, "AppBrandCommonKVBinaryData", null);
+    super(paramISQLiteDatabase, a.nFK, "AppBrandCommonKVBinaryData", null);
   }
   
   public final void clear(String paramString)
@@ -75,7 +75,7 @@ public final class a
   static final class a
     extends IAutoDBItem
   {
-    static final IAutoDBItem.MAutoDBInfo kLR;
+    static final IAutoDBItem.MAutoDBInfo nFK;
     @MAutoDBFieldAnnotation(defValue="$$invalid", primaryKey=1)
     public String field_key;
     public byte[] field_value;
@@ -83,7 +83,7 @@ public final class a
     static
     {
       AppMethodBeat.i(48354);
-      kLR = initAutoDBInfo(a.class);
+      nFK = initAutoDBInfo(a.class);
       AppMethodBeat.o(48354);
     }
     
@@ -107,13 +107,13 @@ public final class a
     
     public final IAutoDBItem.MAutoDBInfo getDBInfo()
     {
-      return kLR;
+      return nFK;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ab.a
  * JD-Core Version:    0.7.0.1
  */

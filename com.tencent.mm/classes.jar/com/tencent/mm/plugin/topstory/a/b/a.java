@@ -1,20 +1,18 @@
 package com.tencent.mm.plugin.topstory.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.topstory.a.c.c;
-import com.tencent.mm.protocal.protobuf.bln;
-import com.tencent.mm.protocal.protobuf.qq;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.protocal.protobuf.bsw;
+import com.tencent.mm.protocal.protobuf.qj;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -23,47 +21,47 @@ import java.util.List;
 public final class a
   implements i
 {
-  public static a Gjc;
-  public List<String> FjN;
-  public List<String> Gjd;
-  public long Gje;
-  public long Gjf;
-  public c Gjg;
-  public c Gjh;
-  private List<String> Gji;
-  private List<String> Gjj;
-  public a Gjk;
-  public b Gjl;
+  private static a MVN;
+  public List<String> Lyy;
+  public List<String> MVO;
+  public long MVP;
+  public long MVQ;
+  private com.tencent.mm.plugin.topstory.a.c.c MVR;
+  private com.tencent.mm.plugin.topstory.a.c.c MVS;
+  private List<String> MVT;
+  private List<String> MVU;
+  public a MVV;
+  public b MVW;
   
   public a()
   {
     AppMethodBeat.i(88471);
-    this.Gje = 1L;
-    this.Gjf = 1L;
-    String str = aee("blacklist");
-    if (s.YS(str)) {}
+    this.MVP = 1L;
+    this.MVQ = 1L;
+    String str = alY("blacklist");
+    if (u.agG(str)) {}
     try
     {
-      this.FjN = Util.stringToList(s.boY(str), ",");
-      this.Gje = g.aAh().azQ().a(ar.a.Ogb, 1L);
-      Log.i("MicroMsg.TopStory.TopStoryBlackListMgr", "black version %d", new Object[] { Long.valueOf(this.Gje) });
-      if (this.FjN == null) {
-        this.FjN = new ArrayList();
+      this.Lyy = Util.stringToList(u.bBS(str), ",");
+      this.MVP = h.aHG().aHp().a(ar.a.Vur, 1L);
+      Log.i("MicroMsg.TopStory.TopStoryBlackListMgr", "black version %d", new Object[] { Long.valueOf(this.MVP) });
+      if (this.Lyy == null) {
+        this.Lyy = new ArrayList();
       }
-      str = aee("unlikelist");
-      if (!s.YS(str)) {}
+      str = alY("unlikelist");
+      if (!u.agG(str)) {}
     }
     catch (Exception localException1)
     {
       try
       {
-        this.FjN = Util.stringToList(s.boY(str), ",");
-        this.Gjf = g.aAh().azQ().a(ar.a.Ogc, 1L);
-        Log.i("MicroMsg.TopStory.TopStoryBlackListMgr", "unlike version %d", new Object[] { Long.valueOf(this.Gjf) });
-        if (this.Gjd == null) {
-          this.Gjd = new ArrayList();
+        this.Lyy = Util.stringToList(u.bBS(str), ",");
+        this.MVQ = h.aHG().aHp().a(ar.a.Vus, 1L);
+        Log.i("MicroMsg.TopStory.TopStoryBlackListMgr", "unlike version %d", new Object[] { Long.valueOf(this.MVQ) });
+        if (this.MVO == null) {
+          this.MVO = new ArrayList();
         }
-        g.azz().a(2748, this);
+        h.aGY().a(2748, this);
         AppMethodBeat.o(88471);
         return;
         localException1 = localException1;
@@ -79,106 +77,123 @@ public final class a
     }
   }
   
-  private static final String aee(String paramString)
+  private static final String alY(String paramString)
   {
     AppMethodBeat.i(88470);
-    paramString = new StringBuilder().append(g.aAh().hqG).append("topstory/").toString() + paramString;
+    paramString = new StringBuilder().append(h.aHG().kcB).append("topstory/").toString() + paramString;
     AppMethodBeat.o(88470);
     return paramString;
   }
   
-  public static a fxV()
+  public static a gpQ()
   {
     AppMethodBeat.i(88469);
-    if (Gjc == null) {
-      Gjc = new a();
+    if (MVN == null) {
+      MVN = new a();
     }
-    a locala = Gjc;
+    a locala = MVN;
     AppMethodBeat.o(88469);
     return locala;
   }
   
-  public final void ae(long paramLong, int paramInt)
+  public static void onFinish()
+  {
+    AppMethodBeat.i(262084);
+    if (MVN != null)
+    {
+      if (MVN.MVR != null)
+      {
+        h.aGY().a(MVN.MVR);
+        MVN.MVR = null;
+      }
+      if (MVN.MVS != null)
+      {
+        h.aGY().a(MVN.MVS);
+        MVN.MVS = null;
+      }
+      h.aGY().b(2748, MVN);
+      MVN = null;
+    }
+    AppMethodBeat.o(262084);
+  }
+  
+  public final void an(long paramLong, int paramInt)
   {
     AppMethodBeat.i(88472);
-    if (this.Gjg != null) {
-      g.azz().a(this.Gjg);
+    if (this.MVR != null) {
+      h.aGY().a(this.MVR);
     }
     Log.i("MicroMsg.TopStory.TopStoryBlackListMgr", "request black version %d offset %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
-    this.Gjg = new c(1, paramLong, paramInt);
-    g.aAg().hqi.a(this.Gjg, 0);
+    this.MVR = new com.tencent.mm.plugin.topstory.a.c.c(1, paramLong, paramInt);
+    h.aHF().kcd.a(this.MVR, 0);
     AppMethodBeat.o(88472);
   }
   
-  public final void af(long paramLong, int paramInt)
+  public final void ao(long paramLong, int paramInt)
   {
     AppMethodBeat.i(88473);
-    if (this.Gjh != null) {
-      g.azz().a(this.Gjh);
+    if (this.MVS != null) {
+      h.aGY().a(this.MVS);
     }
     Log.i("MicroMsg.TopStory.TopStoryBlackListMgr", "request unlike version %d offset %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
-    this.Gjh = new c(3, paramLong, paramInt);
-    g.aAg().hqi.a(this.Gjh, 0);
+    this.MVS = new com.tencent.mm.plugin.topstory.a.c.c(3, paramLong, paramInt);
+    h.aHF().kcd.a(this.MVS, 0);
     AppMethodBeat.o(88473);
   }
   
-  public final void fxW()
+  public final void gpR()
   {
     AppMethodBeat.i(88475);
-    Object localObject = Util.listToString(this.FjN, ",");
-    String str = aee("blacklist");
-    localObject = ((String)localObject).getBytes();
-    s.f(str, (byte[])localObject, localObject.length);
+    String str = Util.listToString(this.Lyy, ",");
+    u.H(alY("blacklist"), str.getBytes());
     AppMethodBeat.o(88475);
   }
   
-  public final void fxX()
+  public final void gpS()
   {
     AppMethodBeat.i(88476);
-    Object localObject = Util.listToString(this.Gjd, ",");
-    String str = aee("unlikelist");
-    localObject = ((String)localObject).getBytes();
-    s.f(str, (byte[])localObject, localObject.length);
+    String str = Util.listToString(this.MVO, ",");
+    u.H(alY("unlikelist"), str.getBytes());
     AppMethodBeat.o(88476);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(88474);
-    qq localqq;
-    if (paramq.equals(this.Gjg))
+    qj localqj;
+    if (paramq.equals(this.MVR))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = this.Gjg.fya();
-        paramInt1 = paramString.KLm;
+        paramString = this.MVR.gpV();
+        paramInt1 = paramString.RMi;
         if (paramInt1 == 1)
         {
-          if (this.Gji == null) {
-            this.Gji = new ArrayList();
+          if (this.MVT == null) {
+            this.MVT = new ArrayList();
           }
-          paramq = paramString.KKx.iterator();
+          paramq = paramString.RLp.iterator();
           while (paramq.hasNext())
           {
-            localqq = (qq)paramq.next();
-            this.Gji.add(localqq.Username);
+            localqj = (qj)paramq.next();
+            this.MVT.add(localqj.Username);
           }
-          if (paramString.KZh == 1)
+          if (paramString.Saq == 1)
           {
-            Log.i("MicroMsg.TopStory.TopStoryBlackListMgr", "sync black size %d version %d", new Object[] { Integer.valueOf(paramString.KKx.size()), Long.valueOf(paramString.LRV) });
-            ae(paramString.LRV, paramString.KZk);
+            Log.i("MicroMsg.TopStory.TopStoryBlackListMgr", "sync black size %d version %d", new Object[] { Integer.valueOf(paramString.RLp.size()), Long.valueOf(paramString.TaE) });
+            an(paramString.TaE, paramString.Sat);
             AppMethodBeat.o(88474);
             return;
           }
-          this.FjN = this.Gji;
-          this.Gji = null;
-          this.Gje = paramString.LRV;
-          Log.i("MicroMsg.TopStory.TopStoryBlackListMgr", "update black version %d total item %d", new Object[] { Long.valueOf(this.Gje), Integer.valueOf(this.FjN.size()) });
-          g.aAh().azQ().set(ar.a.Ogb, Long.valueOf(this.Gje));
-          fxW();
-          if (this.Gjk != null)
+          this.Lyy = this.MVT;
+          this.MVT = null;
+          this.MVP = paramString.TaE;
+          Log.i("MicroMsg.TopStory.TopStoryBlackListMgr", "update black version %d total item %d", new Object[] { Long.valueOf(this.MVP), Integer.valueOf(this.Lyy.size()) });
+          h.aHG().aHp().set(ar.a.Vur, Long.valueOf(this.MVP));
+          gpR();
+          if (this.MVV != null)
           {
-            this.Gjk.awp();
+            this.MVV.bWp();
             AppMethodBeat.o(88474);
           }
         }
@@ -193,8 +208,8 @@ public final class a
           if (paramInt1 == 3)
           {
             Log.i("MicroMsg.TopStory.TopStoryBlackListMgr", "resync black list");
-            this.Gji = null;
-            ae(this.Gje, 0);
+            this.MVT = null;
+            an(this.MVP, 0);
             AppMethodBeat.o(88474);
             return;
           }
@@ -203,37 +218,37 @@ public final class a
         AppMethodBeat.o(88474);
       }
     }
-    else if ((paramq.equals(this.Gjh)) && (paramInt1 == 0) && (paramInt2 == 0))
+    else if ((paramq.equals(this.MVS)) && (paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramString = this.Gjh.fya();
-      paramInt1 = paramString.KLm;
+      paramString = this.MVS.gpV();
+      paramInt1 = paramString.RMi;
       if (paramInt1 == 1)
       {
-        if (this.Gjj == null) {
-          this.Gjj = new ArrayList();
+        if (this.MVU == null) {
+          this.MVU = new ArrayList();
         }
-        paramq = paramString.KKx.iterator();
+        paramq = paramString.RLp.iterator();
         while (paramq.hasNext())
         {
-          localqq = (qq)paramq.next();
-          this.Gjj.add(localqq.Username);
+          localqj = (qj)paramq.next();
+          this.MVU.add(localqj.Username);
         }
-        if (paramString.KZh == 1)
+        if (paramString.Saq == 1)
         {
-          Log.i("MicroMsg.TopStory.TopStoryBlackListMgr", "sync unlike size %d version", new Object[] { Integer.valueOf(paramString.KKx.size()), Long.valueOf(paramString.LRV) });
-          af(paramString.LRV, paramString.KZk);
+          Log.i("MicroMsg.TopStory.TopStoryBlackListMgr", "sync unlike size %d version", new Object[] { Integer.valueOf(paramString.RLp.size()), Long.valueOf(paramString.TaE) });
+          ao(paramString.TaE, paramString.Sat);
           AppMethodBeat.o(88474);
           return;
         }
-        this.Gjd = this.Gjj;
-        this.Gjj = null;
-        this.Gjf = paramString.LRV;
-        Log.i("MicroMsg.TopStory.TopStoryBlackListMgr", "update unlike version %d total item %d", new Object[] { Long.valueOf(this.Gjf), Integer.valueOf(this.Gjd.size()) });
-        g.aAh().azQ().set(ar.a.Ogc, Long.valueOf(this.Gjf));
-        fxX();
-        if (this.Gjl != null)
+        this.MVO = this.MVU;
+        this.MVU = null;
+        this.MVQ = paramString.TaE;
+        Log.i("MicroMsg.TopStory.TopStoryBlackListMgr", "update unlike version %d total item %d", new Object[] { Long.valueOf(this.MVQ), Integer.valueOf(this.MVO.size()) });
+        h.aHG().aHp().set(ar.a.Vus, Long.valueOf(this.MVQ));
+        gpS();
+        if (this.MVW != null)
         {
-          this.Gjl.awp();
+          this.MVW.bWp();
           AppMethodBeat.o(88474);
         }
       }
@@ -248,8 +263,8 @@ public final class a
         if (paramInt1 == 3)
         {
           Log.i("MicroMsg.TopStory.TopStoryBlackListMgr", "resync unlike list");
-          this.Gjj = null;
-          af(this.Gjf, 0);
+          this.MVU = null;
+          ao(this.MVQ, 0);
           AppMethodBeat.o(88474);
           return;
         }
@@ -261,17 +276,17 @@ public final class a
   
   public static abstract interface a
   {
-    public abstract void awp();
+    public abstract void bWp();
   }
   
   public static abstract interface b
   {
-    public abstract void awp();
+    public abstract void bWp();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.a.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -13,16 +13,16 @@ import kotlin.l.b.a.b.m.ab;
 final class a
   implements c
 {
-  public static final a TtG;
+  public static final a aaWA;
   
   static
   {
     AppMethodBeat.i(58015);
-    TtG = new a();
+    aaWA = new a();
     AppMethodBeat.o(58015);
   }
   
-  private static Void hDX()
+  private static Void iIr()
   {
     AppMethodBeat.i(58011);
     Throwable localThrowable = (Throwable)new IllegalStateException("No methods should be called on this descriptor. Only its presence matters".toString());
@@ -30,15 +30,23 @@ final class a
     throw localThrowable;
   }
   
-  public final Map<f, g<?>> hBO()
+  public final an iDZ()
   {
-    AppMethodBeat.i(58013);
-    hDX();
-    AppMethodBeat.o(58013);
+    AppMethodBeat.i(58014);
+    iIr();
+    AppMethodBeat.o(58014);
     throw null;
   }
   
-  public final b hBk()
+  public final ab iFN()
+  {
+    AppMethodBeat.i(58012);
+    iIr();
+    AppMethodBeat.o(58012);
+    throw null;
+  }
+  
+  public final b iFy()
   {
     AppMethodBeat.i(58016);
     b localb = c.a.b(this);
@@ -46,19 +54,11 @@ final class a
     return localb;
   }
   
-  public final ab hBy()
+  public final Map<f, g<?>> iGd()
   {
-    AppMethodBeat.i(58012);
-    hDX();
-    AppMethodBeat.o(58012);
-    throw null;
-  }
-  
-  public final an hzM()
-  {
-    AppMethodBeat.i(58014);
-    hDX();
-    AppMethodBeat.o(58014);
+    AppMethodBeat.i(58013);
+    iIr();
+    AppMethodBeat.o(58013);
     throw null;
   }
   
@@ -69,7 +69,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.f.a
  * JD-Core Version:    0.7.0.1
  */

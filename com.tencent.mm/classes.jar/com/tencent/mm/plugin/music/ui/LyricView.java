@@ -18,40 +18,40 @@ import java.util.ArrayList;
 public class LyricView
   extends View
 {
-  private static int AmU;
-  private static int AmV;
-  private TextPaint AmN;
-  private TextPaint AmO;
-  private Paint.Align AmP;
-  private boolean AmQ;
-  private int AmR;
-  private int AmS;
-  private int AmT;
-  private int AmW;
-  private boolean AmX;
-  private boolean AmY;
-  private int AmZ;
-  private e Amv;
-  private int[] Ana;
-  private int[] Anb;
-  private float dep;
-  private float gZZ;
-  private float haa;
+  private static int FUb;
+  private static int FUc;
+  private int DqN;
+  private e FTB;
+  private TextPaint FTU;
+  private TextPaint FTV;
+  private Paint.Align FTW;
+  private boolean FTX;
+  private int FTY;
+  private int FTZ;
+  private int FUa;
+  private int FUd;
+  private boolean FUe;
+  private boolean FUf;
+  private int FUg;
+  private int[] FUh;
+  private int[] FUi;
+  private int bCO;
+  private int bCP;
+  private float diu;
   private int height;
-  private long iGC;
-  private GestureDetector jKk;
+  private float jLa;
+  private float jLb;
+  private long lwE;
+  private GestureDetector mBn;
   private int mode;
-  private int paddingBottom;
-  private int paddingTop;
   private int textSize;
   private int width;
-  private int ygL;
   
   static
   {
     AppMethodBeat.i(63192);
-    AmU = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 16);
-    AmV = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 10);
+    FUb = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 16);
+    FUc = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 10);
     AppMethodBeat.o(63192);
   }
   
@@ -60,16 +60,16 @@ public class LyricView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(63184);
     this.mode = 1;
-    this.AmP = Paint.Align.CENTER;
-    this.AmQ = false;
-    this.paddingTop = 0;
-    this.textSize = AmU;
-    this.paddingBottom = AmV;
-    this.AmT = -1;
-    this.AmW = (this.paddingTop + this.textSize + this.paddingBottom);
-    this.ygL = this.AmW;
-    this.Ana = new int[2];
-    this.Anb = new int[2];
+    this.FTW = Paint.Align.CENTER;
+    this.FTX = false;
+    this.bCO = 0;
+    this.textSize = FUb;
+    this.bCP = FUc;
+    this.FUa = -1;
+    this.FUd = (this.bCO + this.textSize + this.bCP);
+    this.DqN = this.FUd;
+    this.FUh = new int[2];
+    this.FUi = new int[2];
     initView();
     AppMethodBeat.o(63184);
   }
@@ -79,31 +79,31 @@ public class LyricView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(63185);
     this.mode = 1;
-    this.AmP = Paint.Align.CENTER;
-    this.AmQ = false;
-    this.paddingTop = 0;
-    this.textSize = AmU;
-    this.paddingBottom = AmV;
-    this.AmT = -1;
-    this.AmW = (this.paddingTop + this.textSize + this.paddingBottom);
-    this.ygL = this.AmW;
-    this.Ana = new int[2];
-    this.Anb = new int[2];
+    this.FTW = Paint.Align.CENTER;
+    this.FTX = false;
+    this.bCO = 0;
+    this.textSize = FUb;
+    this.bCP = FUc;
+    this.FUa = -1;
+    this.FUd = (this.bCO + this.textSize + this.bCP);
+    this.DqN = this.FUd;
+    this.FUh = new int[2];
+    this.FUi = new int[2];
     initView();
     AppMethodBeat.o(63185);
   }
   
   private static float h(MotionEvent paramMotionEvent, int paramInt)
   {
-    AppMethodBeat.i(219876);
+    AppMethodBeat.i(259442);
     paramInt = paramMotionEvent.findPointerIndex(paramInt);
     if (paramInt < 0)
     {
-      AppMethodBeat.o(219876);
+      AppMethodBeat.o(259442);
       return -1.0F;
     }
     float f = paramMotionEvent.getY(paramInt);
-    AppMethodBeat.o(219876);
+    AppMethodBeat.o(259442);
     return f;
   }
   
@@ -111,46 +111,46 @@ public class LyricView
   {
     AppMethodBeat.i(63186);
     setNestedScrollingEnabled(true);
-    this.AmN = new TextPaint();
-    this.AmN.setTextSize(this.textSize);
-    this.AmN.setColor(-1);
-    this.AmN.setAntiAlias(true);
-    this.AmN.setTextAlign(this.AmP);
-    this.AmO = new TextPaint();
-    this.AmO.setTextSize(this.textSize);
-    this.AmO.setColor(-1);
-    this.AmO.setAlpha(127);
-    this.AmO.setAntiAlias(true);
-    this.AmO.setTextAlign(this.AmP);
-    this.jKk = new GestureDetector(getContext(), new LyricView.a(this, (byte)0));
-    this.jKk.setIsLongpressEnabled(false);
+    this.FTU = new TextPaint();
+    this.FTU.setTextSize(this.textSize);
+    this.FTU.setColor(-1);
+    this.FTU.setAntiAlias(true);
+    this.FTU.setTextAlign(this.FTW);
+    this.FTV = new TextPaint();
+    this.FTV.setTextSize(this.textSize);
+    this.FTV.setColor(-1);
+    this.FTV.setAlpha(127);
+    this.FTV.setAntiAlias(true);
+    this.FTV.setTextAlign(this.FTW);
+    this.mBn = new GestureDetector(getContext(), new LyricView.a(this, (byte)0));
+    this.mBn.setIsLongpressEnabled(false);
     AppMethodBeat.o(63186);
   }
   
   public final void a(Paint.Align paramAlign, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(219873);
-    this.AmQ = true;
-    this.AmP = paramAlign;
-    this.AmN.setTextAlign(paramAlign);
-    this.AmN.setFakeBoldText(false);
-    this.AmO.setTextAlign(paramAlign);
-    this.AmN.setFakeBoldText(false);
-    this.paddingTop = paramInt2;
+    AppMethodBeat.i(259432);
+    this.FTX = true;
+    this.FTW = paramAlign;
+    this.FTU.setTextAlign(paramAlign);
+    this.FTU.setFakeBoldText(false);
+    this.FTV.setTextAlign(paramAlign);
+    this.FTU.setFakeBoldText(false);
+    this.bCO = paramInt2;
     this.textSize = paramInt1;
-    this.paddingBottom = paramInt3;
-    this.AmW = (paramInt2 + paramInt1 + paramInt3);
-    this.ygL = this.AmW;
-    this.AmN.setTextSize(paramInt1);
-    this.AmO.setTextSize(paramInt1);
-    AppMethodBeat.o(219873);
+    this.bCP = paramInt3;
+    this.FUd = (paramInt2 + paramInt1 + paramInt3);
+    this.DqN = this.FUd;
+    this.FTU.setTextSize(paramInt1);
+    this.FTV.setTextSize(paramInt1);
+    AppMethodBeat.o(259432);
   }
   
   public float getTextSize()
   {
-    AppMethodBeat.i(219875);
-    float f = (int)this.AmN.getTextSize();
-    AppMethodBeat.o(219875);
+    AppMethodBeat.i(259436);
+    float f = (int)this.FTU.getTextSize();
+    AppMethodBeat.o(259436);
     return f;
   }
   
@@ -159,17 +159,17 @@ public class LyricView
     AppMethodBeat.i(63188);
     super.onDraw(paramCanvas);
     int j;
-    if ((this.Amv == null) || (this.Amv.Akn.size() <= 2))
+    if ((this.FTB == null) || (this.FTB.FRr.size() <= 2))
     {
       Log.d("MicroMsg.Music.LyricView", "lyricObj is null | no lyric");
       j = this.height;
       i = j;
       if (j > 300) {
-        i = this.AmW;
+        i = this.FUd;
       }
-      j = i / 2 + this.paddingTop - (int)(this.AmN.descent() + this.AmN.ascent()) / 2;
+      j = i / 2 + this.bCO - (int)(this.FTU.descent() + this.FTU.ascent()) / 2;
       if ((j < i) && (j > 0)) {
-        paramCanvas.drawText("", 0.0F, j, this.AmN);
+        paramCanvas.drawText("", 0.0F, j, this.FTU);
       }
       AppMethodBeat.o(63188);
       return;
@@ -179,17 +179,17 @@ public class LyricView
       this.height = getMeasuredHeight();
       this.width = getMeasuredWidth();
     }
-    if (this.AmT < 0)
+    if (this.FUa < 0)
     {
       AppMethodBeat.o(63188);
       return;
     }
-    if (Paint.Align.LEFT == this.AmP)
+    if (Paint.Align.LEFT == this.FTW)
     {
-      i = this.ygL;
-      if ((this.Amv == null) || (this.Amv.Akn.size() <= this.AmT)) {
-        if (this.AmX) {
-          if (this.ygL == 0) {
+      i = this.DqN;
+      if ((this.FTB == null) || (this.FTB.FRr.size() <= this.FUa)) {
+        if (this.FUe) {
+          if (this.DqN == 0) {
             break label960;
           }
         }
@@ -200,73 +200,73 @@ public class LyricView
     {
       if (i != 0)
       {
-        this.ygL = ((int)(this.ygL * 0.9F));
+        this.DqN = ((int)(this.DqN * 0.9F));
         invalidate();
       }
       AppMethodBeat.o(63188);
       return;
-      this.AmW = (this.paddingTop + this.textSize + this.paddingBottom);
-      if (this.AmQ)
+      this.FUd = (this.bCO + this.textSize + this.bCP);
+      if (this.FTX)
       {
-        if ((this.Amv == null) || (this.Amv.Akn.size() <= this.AmT)) {
+        if ((this.FTB == null) || (this.FTB.FRr.size() <= this.FUa)) {
           break;
         }
-        i = this.height / 2 + this.paddingTop - (int)(this.AmN.descent() + this.AmN.ascent()) / 2;
-        if ((i >= this.height) || (i <= 0) || (this.Amv.SQ(this.AmT) == null) || (this.Amv.SQ(this.AmT).isEmpty())) {
+        i = this.height / 2 + this.bCO - (int)(this.FTU.descent() + this.FTU.ascent()) / 2;
+        if ((i >= this.height) || (i <= 0) || (this.FTB.Zm(this.FUa) == null) || (this.FTB.Zm(this.FUa).isEmpty())) {
           break;
         }
-        paramCanvas.drawText(this.Amv.SQ(this.AmT).content, 0.0F, i, this.AmN);
+        paramCanvas.drawText(this.FTB.Zm(this.FUa).content, 0.0F, i, this.FTU);
         break;
       }
       j = this.height / 2;
-      j = this.paddingTop + (j - i);
-      if ((j < this.height) && (j > 0) && (this.Amv.SQ(this.AmT) != null) && (!this.Amv.SQ(this.AmT).isEmpty())) {
-        paramCanvas.drawText(this.Amv.SQ(this.AmT).content, 0.0F, j, this.AmN);
+      j = this.bCO + (j - i);
+      if ((j < this.height) && (j > 0) && (this.FTB.Zm(this.FUa) != null) && (!this.FTB.Zm(this.FUa).isEmpty())) {
+        paramCanvas.drawText(this.FTB.Zm(this.FUa).content, 0.0F, j, this.FTU);
       }
-      i = this.AmT - 1;
+      i = this.FUa - 1;
       int k;
       while (i >= 0)
       {
-        k = j - (this.AmT - i) * this.AmW;
-        if ((k > 0) && (k < this.height) && (this.Amv.SQ(i) != null) && (!this.Amv.SQ(i).isEmpty())) {
-          paramCanvas.drawText(this.Amv.SQ(i).content, 0.0F, k, this.AmO);
+        k = j - (this.FUa - i) * this.FUd;
+        if ((k > 0) && (k < this.height) && (this.FTB.Zm(i) != null) && (!this.FTB.Zm(i).isEmpty())) {
+          paramCanvas.drawText(this.FTB.Zm(i).content, 0.0F, k, this.FTV);
         }
         i -= 1;
       }
-      i = this.AmT + 1;
-      while (i < this.Amv.Akn.size())
+      i = this.FUa + 1;
+      while (i < this.FTB.FRr.size())
       {
-        k = (i - this.AmT) * this.AmW + j;
-        if ((k < this.height) && (k > 0) && (this.Amv.SQ(i) != null) && (!this.Amv.SQ(i).isEmpty())) {
-          paramCanvas.drawText(this.Amv.SQ(i).content, 0.0F, k, this.AmO);
+        k = (i - this.FUa) * this.FUd + j;
+        if ((k < this.height) && (k > 0) && (this.FTB.Zm(i) != null) && (!this.FTB.Zm(i).isEmpty())) {
+          paramCanvas.drawText(this.FTB.Zm(i).content, 0.0F, k, this.FTV);
         }
         i += 1;
       }
       break;
-      i = this.ygL;
-      if ((this.Amv == null) || (this.Amv.Akn.size() <= this.AmT)) {
+      i = this.DqN;
+      if ((this.FTB == null) || (this.FTB.FRr.size() <= this.FUa)) {
         break;
       }
       j = this.height / 2;
-      j = this.paddingTop + (j - i);
-      if ((j < this.height) && (j > 0) && (this.Amv.SQ(this.AmT) != null)) {
-        paramCanvas.drawText(this.Amv.SQ(this.AmT).content, this.width / 2, j, this.AmN);
+      j = this.bCO + (j - i);
+      if ((j < this.height) && (j > 0) && (this.FTB.Zm(this.FUa) != null)) {
+        paramCanvas.drawText(this.FTB.Zm(this.FUa).content, this.width / 2, j, this.FTU);
       }
-      i = this.AmT - 1;
+      i = this.FUa - 1;
       while (i >= 0)
       {
-        k = j - (this.AmT - i) * this.AmW;
-        if ((k > 0) && (k < this.height) && (this.Amv.SQ(i) != null)) {
-          paramCanvas.drawText(this.Amv.SQ(i).content, this.width / 2, k, this.AmO);
+        k = j - (this.FUa - i) * this.FUd;
+        if ((k > 0) && (k < this.height) && (this.FTB.Zm(i) != null)) {
+          paramCanvas.drawText(this.FTB.Zm(i).content, this.width / 2, k, this.FTV);
         }
         i -= 1;
       }
-      i = this.AmT + 1;
-      while (i < this.Amv.Akn.size())
+      i = this.FUa + 1;
+      while (i < this.FTB.FRr.size())
       {
-        k = (i - this.AmT) * this.AmW + j;
-        if ((k < this.height) && (k > 0) && (this.Amv.SQ(i) != null)) {
-          paramCanvas.drawText(this.Amv.SQ(i).content, this.width / 2, k, this.AmO);
+        k = (i - this.FUa) * this.FUd + j;
+        if ((k < this.height) && (k > 0) && (this.FTB.Zm(i) != null)) {
+          paramCanvas.drawText(this.FTB.Zm(i).content, this.width / 2, k, this.FTV);
         }
         i += 1;
       }
@@ -286,10 +286,10 @@ public class LyricView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(63190);
-    GestureDetector localGestureDetector = this.jKk;
-    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bl(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, locala.axQ(), "com/tencent/mm/plugin/music/ui/LyricView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.pG(0)), "com/tencent/mm/plugin/music/ui/LyricView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    GestureDetector localGestureDetector = this.mBn;
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bm(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b(localGestureDetector, locala.aFh(), "com/tencent/mm/plugin/music/ui/LyricView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.sf(0)), "com/tencent/mm/plugin/music/ui/LyricView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
     int k = paramMotionEvent.getPointerId(0);
     switch (paramMotionEvent.getAction())
     {
@@ -298,13 +298,13 @@ public class LyricView
     {
       AppMethodBeat.o(63190);
       return true;
-      this.haa = paramMotionEvent.getY();
-      this.gZZ = paramMotionEvent.getX();
-      this.AmZ = this.ygL;
-      this.AmY = true;
-      this.AmX = false;
-      this.dep = h(paramMotionEvent, k);
-      if (this.dep == -1.0F)
+      this.jLb = paramMotionEvent.getY();
+      this.jLa = paramMotionEvent.getX();
+      this.FUg = this.DqN;
+      this.FUf = true;
+      this.FUe = false;
+      this.diu = h(paramMotionEvent, k);
+      if (this.diu == -1.0F)
       {
         AppMethodBeat.o(63190);
         return false;
@@ -313,18 +313,18 @@ public class LyricView
       {
         startNestedScroll(2);
         continue;
-        int m = (int)(paramMotionEvent.getX() - this.gZZ);
-        int n = (int)(paramMotionEvent.getY() - this.haa);
-        int i = this.AmZ - n;
+        int m = (int)(paramMotionEvent.getX() - this.jLa);
+        int n = (int)(paramMotionEvent.getY() - this.jLb);
+        int i = this.FUg - n;
         float f1;
         if (i > 0)
         {
-          if (i > this.AmS) {}
-          for (j = this.AmS;; j = i)
+          if (i > this.FTZ) {}
+          for (j = this.FTZ;; j = i)
           {
-            this.ygL = j;
+            this.DqN = j;
             invalidate();
-            Log.d("MicroMsg.Music.LyricView", "xDistance: %d yDisntance: %d tempYOffset: %d baseYOffset: %d", new Object[] { Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i), Integer.valueOf(this.AmZ) });
+            Log.d("MicroMsg.Music.LyricView", "xDistance: %d yDisntance: %d tempYOffset: %d baseYOffset: %d", new Object[] { Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i), Integer.valueOf(this.FUg) });
             if (2 != this.mode) {
               break;
             }
@@ -336,18 +336,18 @@ public class LyricView
             return false;
           }
         }
-        if (i < -this.AmR) {}
-        for (int j = -this.AmR;; j = i)
+        if (i < -this.FTY) {}
+        for (int j = -this.FTY;; j = i)
         {
-          this.ygL = j;
+          this.DqN = j;
           break;
         }
         label394:
-        float f2 = this.dep;
-        dispatchNestedPreScroll(0, 0, this.Ana, this.Anb);
+        float f2 = this.diu;
+        dispatchNestedPreScroll(0, 0, this.FUh, this.FUi);
         dispatchNestedScroll(0, (int)(f1 - f2), 0, 0, null);
         continue;
-        this.AmY = false;
+        this.FUf = false;
       }
     }
   }
@@ -355,32 +355,32 @@ public class LyricView
   public void setCurrentTime(long paramLong)
   {
     AppMethodBeat.i(63183);
-    if (this.iGC != paramLong)
+    if (this.lwE != paramLong)
     {
-      this.iGC = paramLong;
-      if ((this.Amv == null) || (this.Amv.Akn.size() == 0))
+      this.lwE = paramLong;
+      if ((this.FTB == null) || (this.FTB.FRr.size() == 0))
       {
         AppMethodBeat.o(63183);
         return;
       }
       int j = -1;
       int i = 0;
-      while ((i < this.Amv.Akn.size()) && (this.Amv.SQ(i).timestamp < paramLong))
+      while ((i < this.FTB.FRr.size()) && (this.FTB.Zm(i).timestamp < paramLong))
       {
-        if (!this.Amv.SQ(i).Akt) {
+        if (!this.FTB.Zm(i).FRx) {
           j = i;
         }
         i += 1;
       }
-      if ((!this.AmY) && (j != this.AmT))
+      if ((!this.FUf) && (j != this.FUa))
       {
-        this.AmT = j;
-        this.AmR = (this.AmW * this.AmT);
-        this.AmS = (this.AmW * (this.Amv.Akn.size() - this.AmT - 1));
-        if (this.ygL == 0) {
-          this.ygL = (-this.AmW);
+        this.FUa = j;
+        this.FTY = (this.FUd * this.FUa);
+        this.FTZ = (this.FUd * (this.FTB.FRr.size() - this.FUa - 1));
+        if (this.DqN == 0) {
+          this.DqN = (-this.FUd);
         }
-        this.AmX = true;
+        this.FUe = true;
         invalidate();
       }
     }
@@ -390,17 +390,17 @@ public class LyricView
   public void setLyricColor(int paramInt)
   {
     AppMethodBeat.i(63187);
-    this.AmN.setColor(paramInt);
-    this.AmN.setAlpha(255);
-    this.AmO.setColor(paramInt);
-    this.AmO.setAlpha(127);
+    this.FTU.setColor(paramInt);
+    this.FTU.setAlpha(255);
+    this.FTV.setColor(paramInt);
+    this.FTV.setAlpha(127);
     AppMethodBeat.o(63187);
   }
   
   public void setLyricObj(e parame)
   {
     AppMethodBeat.i(63182);
-    this.Amv = parame;
+    this.FTB = parame;
     invalidate();
     AppMethodBeat.o(63182);
   }
@@ -412,7 +412,7 @@ public class LyricView
     if (1 == paramInt) {}
     for (;;)
     {
-      this.AmQ = bool;
+      this.FTX = bool;
       return;
       bool = false;
     }
@@ -420,10 +420,10 @@ public class LyricView
   
   public void setTextSize(float paramFloat)
   {
-    AppMethodBeat.i(219874);
-    this.AmN.setTextSize(paramFloat);
-    this.AmO.setTextSize(paramFloat);
-    AppMethodBeat.o(219874);
+    AppMethodBeat.i(259435);
+    this.FTU.setTextSize(paramFloat);
+    this.FTV.setTextSize(paramFloat);
+    AppMethodBeat.o(259435);
   }
 }
 

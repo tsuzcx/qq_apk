@@ -3,68 +3,81 @@ package com.tencent.mm.emoji.panel.a;
 import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import androidx.recyclerview.widget.RecyclerView.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.b.b.ac;
-import com.tencent.mm.emoji.b.b.h;
+import com.tencent.mm.emoji.b.b.ae;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/panel/adapter/SearchEmojiHeadViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "Lcom/tencent/mm/emoji/model/panel/EmojiItem;", "itemView", "Landroid/view/View;", "onClick", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "(Landroid/view/View;Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "searchMore", "kotlin.jvm.PlatformType", "getSearchMore", "()Landroid/view/View;", "onBind", "", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "plugin-emojisdk_release"})
-public final class s
-  extends q<h>
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "I", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "onClick", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "(Landroid/view/View;Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "getOnClick", "()Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "setOnClick", "(Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "panelItem", "getPanelItem", "()Lcom/tencent/mm/emoji/model/panel/PanelItem;", "setPanelItem", "(Lcom/tencent/mm/emoji/model/panel/PanelItem;)V", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "onBind", "", "item", "plugin-emojisdk_release"})
+public class s<I extends ae>
+  extends RecyclerView.v
 {
-  private final View hbk;
+  protected I jMr;
+  p jMs;
   
-  public s(View paramView, n paramn)
+  public s(View paramView, p paramp)
   {
-    super(paramView, paramn);
-    AppMethodBeat.i(199973);
-    this.hbk = paramView.findViewById(2131307409);
-    AppMethodBeat.o(199973);
-  }
-  
-  public final void a(ac paramac)
-  {
-    AppMethodBeat.i(199972);
-    p.h(paramac, "item");
-    super.a(paramac);
-    paramac = this.hbk;
-    p.g(paramac, "searchMore");
-    paramac.setVisibility(0);
-    this.hbk.setOnClickListener((View.OnClickListener)new a(this));
-    AppMethodBeat.o(199972);
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class a
-    implements View.OnClickListener
-  {
-    a(s params) {}
-    
-    public final void onClick(View paramView)
+    super(paramView);
+    AppMethodBeat.i(105679);
+    this.jMs = paramp;
+    paramView.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
-      AppMethodBeat.i(199971);
-      Object localObject = new b();
-      ((b)localObject).bm(paramView);
-      a.b("com/tencent/mm/emoji/panel/adapter/SearchEmojiHeadViewHolder$onBind$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
-      localObject = this.hbl.hbi;
-      if (localObject != null)
+      public final void onClick(View paramAnonymousView)
       {
-        p.g(paramView, "it");
-        Context localContext = paramView.getContext();
-        p.g(localContext, "it.context");
-        ((n)localObject).a(paramView, localContext, this.hbl.lR(), this.hbl.hbh);
+        AppMethodBeat.i(105677);
+        Object localObject = new b();
+        ((b)localObject).bn(paramAnonymousView);
+        a.c("com/tencent/mm/emoji/panel/adapter/PanelViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).aFi());
+        localObject = this.jMt.jMs;
+        if (localObject != null)
+        {
+          kotlin.g.b.p.j(paramAnonymousView, "it");
+          Context localContext = paramAnonymousView.getContext();
+          kotlin.g.b.p.j(localContext, "it.context");
+          ((p)localObject).a(paramAnonymousView, localContext, this.jMt.md(), this.jMt.jMr);
+        }
+        a.a(this, "com/tencent/mm/emoji/panel/adapter/PanelViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(105677);
       }
-      a.a(this, "com/tencent/mm/emoji/panel/adapter/SearchEmojiHeadViewHolder$onBind$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(199971);
-    }
+    });
+    paramView.setOnLongClickListener((View.OnLongClickListener)new View.OnLongClickListener()
+    {
+      public final boolean onLongClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(233999);
+        Object localObject = new b();
+        ((b)localObject).bn(paramAnonymousView);
+        a.c("com/tencent/mm/emoji/panel/adapter/PanelViewHolder$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((b)localObject).aFi());
+        localObject = this.jMt.jMs;
+        if (localObject != null)
+        {
+          kotlin.g.b.p.j(paramAnonymousView, "it");
+          Context localContext = paramAnonymousView.getContext();
+          kotlin.g.b.p.j(localContext, "it.context");
+          ((p)localObject).a(paramAnonymousView, localContext, this.jMt.md());
+        }
+        a.a(true, this, "com/tencent/mm/emoji/panel/adapter/PanelViewHolder$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+        AppMethodBeat.o(233999);
+        return true;
+      }
+    });
+    AppMethodBeat.o(105679);
+  }
+  
+  public void a(ae paramae)
+  {
+    AppMethodBeat.i(105678);
+    kotlin.g.b.p.k(paramae, "item");
+    this.jMr = paramae;
+    AppMethodBeat.o(105678);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.panel.a.s
  * JD-Core Version:    0.7.0.1
  */

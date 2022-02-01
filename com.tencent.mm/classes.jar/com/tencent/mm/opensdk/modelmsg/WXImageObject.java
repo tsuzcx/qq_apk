@@ -40,9 +40,9 @@ public class WXImageObject
   
   public WXImageObject(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(190359);
+    AppMethodBeat.i(253551);
     this.imageData = paramArrayOfByte;
-    AppMethodBeat.o(190359);
+    AppMethodBeat.o(253551);
   }
   
   private int getFileSize(String paramString)
@@ -121,7 +121,7 @@ public class WXImageObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXImageObject
  * JD-Core Version:    0.7.0.1
  */

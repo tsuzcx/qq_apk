@@ -1,53 +1,130 @@
 package com.tencent.mm.plugin.appbrand.utils;
 
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.widget.a.d;
-import com.tencent.mm.ui.widget.a.d.a;
-import com.tencent.mm.ui.widget.a.j;
+import com.tencent.mm.plugin.appbrand.report.r;
+import com.tencent.mm.sdk.statemachine.StateMachine;
+import java.util.LinkedList;
+import java.util.Queue;
 
-public final class l
+public abstract class l<Task>
+  extends StateMachine
 {
-  public static d a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  private final Queue<Task> cRj = new LinkedList();
+  private final l<Task>.b riA = new b((byte)0);
+  private final l<Task>.a riB = new a((byte)0);
+  private final String riC;
+  
+  protected l(String paramString, Looper paramLooper)
   {
-    AppMethodBeat.i(147716);
-    paramContext = new d.a(paramContext).bon(paramString2).boo(paramString1).bou(paramString3).c(paramOnClickListener1).bov(paramString4).d(paramOnClickListener2).hbn();
-    paramContext.show();
-    AppMethodBeat.o(147716);
-    return paramContext;
+    super(paramString, paramLooper);
+    this.riC = paramString;
+    addState(this.riA);
+    addState(this.riB);
+    setInitialState(this.riA);
+    start();
   }
   
-  public static ProgressDialog b(Context paramContext, CharSequence paramCharSequence)
+  protected abstract boolean bQj();
+  
+  protected abstract void cE(Task paramTask);
+  
+  public final void cR(Task paramTask)
   {
-    AppMethodBeat.i(147713);
-    paramContext = j.b(paramContext, paramCharSequence, true);
-    AppMethodBeat.o(147713);
-    return paramContext;
+    if (bQj()) {
+      return;
+    }
+    synchronized (this.cRj)
+    {
+      this.cRj.offer(paramTask);
+      sendMessage(1);
+      return;
+    }
   }
   
-  public static d b(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
+  protected final int cmg()
   {
-    AppMethodBeat.i(147715);
-    paramContext = new d.a(paramContext).bon(paramString1).bou(paramString2).c(paramOnClickListener).hbn();
-    paramContext.show();
-    AppMethodBeat.o(147715);
-    return paramContext;
+    return this.cRj.size();
   }
   
-  public static d c(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
+  public void onQuitting()
   {
-    AppMethodBeat.i(147717);
-    paramContext = new d.a(paramContext).bon(paramString2).boo(paramString1).aoV(2131762798).c(paramOnClickListener).Dk(false).hbn();
-    paramContext.show();
-    AppMethodBeat.o(147717);
-    return paramContext;
+    super.onQuitting();
+    synchronized (this.cRj)
+    {
+      this.cRj.clear();
+      return;
+    }
+  }
+  
+  final class a
+    extends r
+  {
+    private a() {}
+    
+    public final String getName()
+    {
+      AppMethodBeat.i(107819);
+      String str = l.b(l.this) + "|StateExecuting";
+      AppMethodBeat.o(107819);
+      return str;
+    }
+    
+    public final boolean processMessage(Message paramMessage)
+    {
+      AppMethodBeat.i(107818);
+      if (2 == paramMessage.what)
+      {
+        l.a(l.this, l.a(l.this));
+        AppMethodBeat.o(107818);
+        return true;
+      }
+      boolean bool = super.processMessage(paramMessage);
+      AppMethodBeat.o(107818);
+      return bool;
+    }
+  }
+  
+  final class b
+    extends r
+  {
+    private b() {}
+    
+    public final void enter()
+    {
+      AppMethodBeat.i(107820);
+      super.enter();
+      l.c(l.this);
+      AppMethodBeat.o(107820);
+    }
+    
+    public final String getName()
+    {
+      AppMethodBeat.i(107822);
+      String str = l.b(l.this) + "|StateIdle";
+      AppMethodBeat.o(107822);
+      return str;
+    }
+    
+    public final boolean processMessage(Message paramMessage)
+    {
+      AppMethodBeat.i(107821);
+      if ((1 == paramMessage.what) || (2 == paramMessage.what))
+      {
+        l.c(l.this);
+        AppMethodBeat.o(107821);
+        return true;
+      }
+      boolean bool = super.processMessage(paramMessage);
+      AppMethodBeat.o(107821);
+      return bool;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.l
  * JD-Core Version:    0.7.0.1
  */

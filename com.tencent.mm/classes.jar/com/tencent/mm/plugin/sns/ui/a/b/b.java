@@ -2,52 +2,52 @@ package com.tencent.mm.plugin.sns.ui.a.b;
 
 import android.content.Context;
 import com.tencent.mm.plugin.sns.storage.SnsInfo;
-import com.tencent.mm.plugin.sns.ui.bk;
-import com.tencent.mm.plugin.sns.ui.bl;
+import com.tencent.mm.plugin.sns.ui.bm;
+import com.tencent.mm.plugin.sns.ui.bn;
 
 public abstract class b
-  extends com.tencent.mm.vending.a.b<bl, SnsInfo>
+  extends com.tencent.mm.vending.a.b<bn, SnsInfo>
 {
   public b(SnsInfo paramSnsInfo)
   {
     super(paramSnsInfo);
   }
   
-  public abstract String JV(long paramLong);
+  public abstract String Rp(long paramLong);
   
-  public abstract String L(long paramLong, String paramString);
+  public abstract String T(long paramLong, String paramString);
   
-  public abstract void a(Context paramContext, bk parambk, String paramString);
+  public abstract void a(Context paramContext, bm parambm, String paramString);
   
-  public abstract void aRi(String paramString);
+  public abstract void aFa();
   
-  public abstract void aRj(String paramString);
+  public abstract void bck(String paramString);
   
-  public abstract void aRk(String paramString);
+  public abstract void bcl(String paramString);
   
-  public abstract void aRl(String paramString);
+  public abstract void bcm(String paramString);
   
-  public abstract void aRm(String paramString);
+  public abstract void bcn(String paramString);
   
-  public abstract void axJ();
+  public abstract void bco(String paramString);
   
-  public abstract void fiE();
+  public abstract void fWS();
   
-  public abstract String fkd();
+  public abstract String fYm();
   
-  public abstract String fke();
+  public abstract String fYn();
   
-  public abstract String fkf();
+  public abstract String fYo();
   
-  public abstract String fkg();
+  public abstract String fYp();
   
-  public abstract String fkh();
+  public abstract String fYq();
   
-  public abstract void vD(boolean paramBoolean);
+  public abstract void zh(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.a.b.b
  * JD-Core Version:    0.7.0.1
  */

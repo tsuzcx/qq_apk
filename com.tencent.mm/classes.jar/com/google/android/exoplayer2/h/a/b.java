@@ -14,57 +14,57 @@ import java.io.OutputStream;
 public final class b
   implements f
 {
-  private final a bFT;
-  private final long bFU;
-  private FileOutputStream bFV;
-  private long bFW;
-  private long bFX;
-  private q bFY;
+  private j bgL;
+  private long bpA;
+  private long bpB;
+  private q bpC;
+  private final a bpx;
+  private final long bpy;
+  private FileOutputStream bpz;
   private final int bufferSize;
-  private j bxj;
   private File file;
   private OutputStream outputStream;
   
   public b(a parama, long paramLong, int paramInt)
   {
     AppMethodBeat.i(92959);
-    this.bFT = ((a)com.google.android.exoplayer2.i.a.checkNotNull(parama));
-    this.bFU = paramLong;
+    this.bpx = ((a)com.google.android.exoplayer2.i.a.checkNotNull(parama));
+    this.bpy = paramLong;
     this.bufferSize = paramInt;
     AppMethodBeat.o(92959);
   }
   
-  private void wO()
+  private void uQ()
   {
     AppMethodBeat.i(92963);
     long l;
-    if (this.bxj.length == -1L)
+    if (this.bgL.aFL == -1L)
     {
-      l = this.bFU;
-      this.file = this.bFT.e(this.bxj.key, this.bxj.bEP + this.bFX, l);
-      this.bFV = new FileOutputStream(this.file);
+      l = this.bpy;
+      this.file = this.bpx.e(this.bgL.key, this.bgL.bos + this.bpB, l);
+      this.bpz = new FileOutputStream(this.file);
       if (this.bufferSize <= 0) {
         break label161;
       }
-      if (this.bFY != null) {
+      if (this.bpC != null) {
         break label147;
       }
-      this.bFY = new q(this.bFV, this.bufferSize);
+      this.bpC = new q(this.bpz, this.bufferSize);
     }
     label105:
-    for (this.outputStream = this.bFY;; this.outputStream = this.bFV)
+    for (this.outputStream = this.bpC;; this.outputStream = this.bpz)
     {
-      this.bFW = 0L;
+      this.bpA = 0L;
       AppMethodBeat.o(92963);
       return;
-      l = Math.min(this.bxj.length - this.bFX, this.bFU);
+      l = Math.min(this.bgL.aFL - this.bpB, this.bpy);
       break;
-      this.bFY.a(this.bFV);
+      this.bpC.a(this.bpz);
       break label105;
     }
   }
   
-  private void wP()
+  private void uR()
   {
     AppMethodBeat.i(92964);
     if (this.outputStream == null)
@@ -75,12 +75,12 @@ public final class b
     try
     {
       this.outputStream.flush();
-      this.bFV.getFD().sync();
+      this.bpz.getFD().sync();
       x.closeQuietly(this.outputStream);
       this.outputStream = null;
       File localFile1 = this.file;
       this.file = null;
-      this.bFT.w(localFile1);
+      this.bpx.r(localFile1);
       AppMethodBeat.o(92964);
       return;
     }
@@ -98,17 +98,17 @@ public final class b
   public final void b(j paramj)
   {
     AppMethodBeat.i(92960);
-    if ((paramj.length == -1L) && (!paramj.eW(2)))
+    if ((paramj.aFL == -1L) && (!paramj.fp(2)))
     {
-      this.bxj = null;
+      this.bgL = null;
       AppMethodBeat.o(92960);
       return;
     }
-    this.bxj = paramj;
-    this.bFX = 0L;
+    this.bgL = paramj;
+    this.bpB = 0L;
     try
     {
-      wO();
+      uQ();
       AppMethodBeat.o(92960);
       return;
     }
@@ -123,14 +123,14 @@ public final class b
   public final void close()
   {
     AppMethodBeat.i(92962);
-    if (this.bxj == null)
+    if (this.bgL == null)
     {
       AppMethodBeat.o(92962);
       return;
     }
     try
     {
-      wP();
+      uR();
       AppMethodBeat.o(92962);
       return;
     }
@@ -145,7 +145,7 @@ public final class b
   public final void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(92961);
-    if (this.bxj == null)
+    if (this.bgL == null)
     {
       AppMethodBeat.o(92961);
       return;
@@ -154,16 +154,16 @@ public final class b
     while (i < paramInt2) {
       try
       {
-        if (this.bFW == this.bFU)
+        if (this.bpA == this.bpy)
         {
-          wP();
-          wO();
+          uR();
+          uQ();
         }
-        int j = (int)Math.min(paramInt2 - i, this.bFU - this.bFW);
+        int j = (int)Math.min(paramInt2 - i, this.bpy - this.bpA);
         this.outputStream.write(paramArrayOfByte, paramInt1 + i, j);
         i += j;
-        this.bFW += j;
-        this.bFX += j;
+        this.bpA += j;
+        this.bpB += j;
       }
       catch (IOException paramArrayOfByte)
       {
@@ -186,7 +186,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.h.a.b
  * JD-Core Version:    0.7.0.1
  */

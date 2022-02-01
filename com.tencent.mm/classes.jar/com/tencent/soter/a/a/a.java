@@ -11,39 +11,39 @@ import junit.framework.Assert;
 
 public final class a
 {
-  public CancellationSignal NHn;
+  public CancellationSignal cRE;
   
   public a()
   {
     AppMethodBeat.i(11);
-    this.NHn = null;
+    this.cRE = null;
     if (Build.VERSION.SDK_INT >= 16) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      hlF();
+      ipe();
       AppMethodBeat.o(11);
       return;
     }
   }
   
   @SuppressLint({"NewApi"})
-  public final boolean DP(final boolean paramBoolean)
+  public final boolean Iq(final boolean paramBoolean)
   {
     AppMethodBeat.i(12);
     d.v("Soter.SoterBiometricCanceller", "soter: publishing cancellation. should publish: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (!this.NHn.isCanceled())
+    if (!this.cRE.isCanceled())
     {
       if (Build.VERSION.SDK_INT < 23) {
-        g.hlR().aj(new Runnable()
+        g.ipq().am(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(8);
             d.v("Soter.SoterBiometricCanceller", "soter: enter worker thread. perform cancel", new Object[0]);
-            a.this.NHn.cancel();
+            a.this.cRE.cancel();
             if (paramBoolean) {
-              f.hlO().hlQ();
+              f.ipn().ipp();
             }
             AppMethodBeat.o(8);
           }
@@ -53,22 +53,22 @@ public final class a
       {
         AppMethodBeat.o(12);
         return true;
-        g.hlR().aj(new Runnable()
+        g.ipq().am(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(9);
-            a.this.NHn.cancel();
+            a.this.cRE.cancel();
             AppMethodBeat.o(9);
           }
         });
-        g.hlR().m(new Runnable()
+        g.ipq().l(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(10);
             d.w("Soter.SoterBiometricCanceller", "hy: waiting for %s ms not callback to system callback. cancel manually", new Object[] { Long.valueOf(350L) });
-            f.hlO().hlQ();
+            f.ipn().ipp();
             AppMethodBeat.o(10);
           }
         }, 350L);
@@ -80,16 +80,16 @@ public final class a
   }
   
   @SuppressLint({"NewApi"})
-  public final void hlF()
+  public final void ipe()
   {
     AppMethodBeat.i(13);
-    this.NHn = new CancellationSignal();
+    this.cRE = new CancellationSignal();
     AppMethodBeat.o(13);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.soter.a.a.a
  * JD-Core Version:    0.7.0.1
  */

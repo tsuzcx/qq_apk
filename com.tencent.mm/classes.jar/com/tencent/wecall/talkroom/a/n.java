@@ -1,9 +1,9 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.a.a.e;
+import com.google.b.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.pb.common.b.a.a.a.aj;
-import com.tencent.pb.common.b.a.a.a.k;
+import com.tencent.pb.common.b.a.a.a.an;
+import com.tencent.pb.common.b.a.a.a.n;
 import com.tencent.pb.common.b.d;
 import com.tencent.pb.common.c.b;
 import com.tencent.wecall.talkroom.model.c;
@@ -11,51 +11,50 @@ import com.tencent.wecall.talkroom.model.c;
 public final class n
   extends d
 {
-  public long HgX;
-  public String xOr;
-  public int yvK;
+  public String CSB;
+  public int DVO;
+  public long NXM;
   
-  public n(String paramString, int paramInt1, long paramLong, int paramInt2)
+  public n(String paramString, int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(62524);
-    b.d("MicroMsg.Voip", new Object[] { this.TAG2, "NetSceneSwitchVideoGroup" });
-    a.k localk = new a.k();
+    AppMethodBeat.i(62547);
+    b.d("MicroMsg.Voip", new Object[] { this.TAG2, "hello", paramString, Integer.valueOf(paramInt1), Long.valueOf(paramLong) });
+    a.n localn = new a.n();
+    localn.Zfn = paramInt3;
+    localn.NOc = paramInt1;
+    this.DVO = paramInt1;
+    localn.NOd = paramLong;
+    this.NXM = paramLong;
+    localn.groupId = paramString;
+    this.CSB = paramString;
+    localn.tQm = paramInt2;
+    aAc(3);
     try
     {
-      localk.groupId = paramString;
-      this.xOr = paramString;
-      localk.roomId = paramInt1;
-      this.yvK = paramInt1;
-      localk.ypH = paramLong;
-      this.HgX = paramLong;
-      localk.action = paramInt2;
-      localk.timestamp = System.currentTimeMillis();
-      this.mNetType = 3;
-      this.RCJ = c.hqY().brj(paramString);
-      c(243, localk);
-      AppMethodBeat.o(62524);
+      aAd(c.iuI().bEi(paramString));
+      c(147, localn);
+      AppMethodBeat.o(62547);
       return;
     }
     catch (Exception paramString)
     {
       for (;;)
       {
-        b.w(this.TAG2, new Object[] { "NetSceneSwitchVideoGroup constructor", paramString });
+        b.w(this.TAG2, new Object[] { "NetSceneVoiceRoomHello constructor", paramString });
       }
     }
   }
   
-  public final Object cO(byte[] paramArrayOfByte)
+  public final Object dn(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(62525);
-    b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
+    AppMethodBeat.i(62548);
     if (paramArrayOfByte != null) {}
     for (;;)
     {
       try
       {
-        paramArrayOfByte = (a.aj)e.a(new a.aj(), paramArrayOfByte, paramArrayOfByte.length);
-        AppMethodBeat.o(62525);
+        paramArrayOfByte = (a.an)e.a(new a.an(), paramArrayOfByte, paramArrayOfByte.length);
+        AppMethodBeat.o(62548);
         return paramArrayOfByte;
       }
       catch (Exception paramArrayOfByte)
@@ -70,12 +69,12 @@ public final class n
   
   public final int getType()
   {
-    return 214;
+    return 205;
   }
   
-  public final String hiV()
+  public final String ikF()
   {
-    return "CsCmd.Cmd_V_CSSwitchVideoGroupReq";
+    return "CsCmd.Cmd_V_CSVoiceRoomHelloReq";
   }
 }
 

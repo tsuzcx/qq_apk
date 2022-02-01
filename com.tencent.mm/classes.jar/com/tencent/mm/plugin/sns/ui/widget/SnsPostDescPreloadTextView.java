@@ -9,7 +9,7 @@ import com.tencent.mm.kiss.widget.textview.PLTextView;
 import com.tencent.mm.kiss.widget.textview.a.a;
 import com.tencent.mm.kiss.widget.textview.c;
 import com.tencent.mm.kiss.widget.textview.d;
-import com.tencent.mm.plugin.sns.ui.bg;
+import com.tencent.mm.plugin.sns.ui.bi;
 import java.util.Map;
 
 public class SnsPostDescPreloadTextView
@@ -17,83 +17,83 @@ public class SnsPostDescPreloadTextView
 {
   private static int hitCount = 0;
   private static int missCount = 0;
-  private b FfA;
-  private int FfB;
-  private Map<String, Integer> FfC;
-  private a FfD;
-  private boolean Ffy;
-  private int Ffz;
+  private boolean Luc;
+  private int Lud;
+  private boolean Lue;
+  private b Luf;
+  private int Lug;
+  private Map<String, Integer> Luh;
+  private a Lui;
   private boolean isAd;
-  private boolean ooU;
-  private boolean pJi;
+  private boolean rqI;
   
   public SnsPostDescPreloadTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(204003);
-    this.Ffy = true;
-    this.Ffz = 0;
-    this.ooU = false;
-    this.pJi = false;
+    AppMethodBeat.i(265665);
+    this.Luc = true;
+    this.Lud = 0;
+    this.rqI = false;
+    this.Lue = false;
     this.isAd = false;
-    this.FfA = null;
-    this.FfB = ViewConfiguration.getLongPressTimeout();
-    this.FfD = new a();
-    AppMethodBeat.o(204003);
+    this.Luf = null;
+    this.Lug = ViewConfiguration.getLongPressTimeout();
+    this.Lui = new a();
+    AppMethodBeat.o(265665);
   }
   
   public SnsPostDescPreloadTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(204004);
-    this.Ffy = true;
-    this.Ffz = 0;
-    this.ooU = false;
-    this.pJi = false;
+    AppMethodBeat.i(265666);
+    this.Luc = true;
+    this.Lud = 0;
+    this.rqI = false;
+    this.Lue = false;
     this.isAd = false;
-    this.FfA = null;
-    this.FfB = ViewConfiguration.getLongPressTimeout();
-    this.FfD = new a();
-    AppMethodBeat.o(204004);
+    this.Luf = null;
+    this.Lug = ViewConfiguration.getLongPressTimeout();
+    this.Lui = new a();
+    AppMethodBeat.o(265666);
   }
   
   private int getPostDescWidth()
   {
     AppMethodBeat.i(100551);
-    if (this.Ffz > 0)
+    if (this.Lud > 0)
     {
-      i = this.Ffz;
+      i = this.Lud;
       AppMethodBeat.o(100551);
       return i;
     }
-    int i = f.fll().getViewWidth();
+    int i = f.fZG().getViewWidth();
     AppMethodBeat.o(100551);
     return i;
   }
   
-  public final void A(CharSequence paramCharSequence)
+  public final void G(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(100550);
     if (paramCharSequence != null) {
-      setText(paramCharSequence, true);
+      a(paramCharSequence, true);
     }
     missCount += 1;
     AppMethodBeat.o(100550);
   }
   
-  public final void B(CharSequence paramCharSequence)
+  public final void H(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(100549);
-    super.B(paramCharSequence);
+    super.H(paramCharSequence);
     hitCount += 1;
     AppMethodBeat.o(100549);
   }
   
-  public final a aBn()
+  public final a aIQ()
   {
     AppMethodBeat.i(100547);
-    this.Ffy = true;
-    a locala = f.fll().getTextViewConfig();
+    this.Luc = true;
+    a locala = f.fZG().getTextViewConfig();
     AppMethodBeat.o(100547);
     return locala;
   }
@@ -107,57 +107,57 @@ public class SnsPostDescPreloadTextView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(204005);
+    AppMethodBeat.i(265668);
     switch (paramMotionEvent.getActionMasked())
     {
     }
     for (;;)
     {
       boolean bool = super.onTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(204005);
+      AppMethodBeat.o(265668);
       return bool;
-      this.pJi = true;
-      postDelayed(this.FfD, this.FfB);
+      this.Lue = true;
+      postDelayed(this.Lui, this.Lug);
       continue;
-      bg localbg;
-      if ((!this.ooU) && (this.pJi) && (!this.isAd) && ((getTag() instanceof bg)))
+      bi localbi;
+      if ((!this.rqI) && (this.Lue) && (!this.isAd) && ((getTag() instanceof bi)))
       {
-        localbg = (bg)getTag();
-        if ((localbg != null) && (this.FfC != null) && ((!this.FfC.containsKey(localbg.dJX)) || (!((Integer)this.FfC.get(localbg.dJX)).equals(Integer.valueOf(0))))) {
+        localbi = (bi)getTag();
+        if ((localbi != null) && (this.Luh != null) && ((!this.Luh.containsKey(localbi.fCM)) || (!((Integer)this.Luh.get(localbi.fCM)).equals(Integer.valueOf(0))))) {
           break label189;
         }
       }
       for (;;)
       {
-        this.ooU = false;
-        this.pJi = false;
-        removeCallbacks(this.FfD);
+        this.rqI = false;
+        this.Lue = false;
+        removeCallbacks(this.Lui);
         break;
         label189:
-        if ((this.FfC.containsKey(localbg.dJX)) && (((Integer)this.FfC.get(localbg.dJX)).equals(Integer.valueOf(1))))
+        if ((this.Luh.containsKey(localbi.fCM)) && (((Integer)this.Luh.get(localbi.fCM)).equals(Integer.valueOf(1))))
         {
-          this.FfC.put(localbg.dJX, Integer.valueOf(2));
-          if (this.FfA != null) {
-            this.FfA.fiW();
+          this.Luh.put(localbi.fCM, Integer.valueOf(2));
+          if (this.Luf != null) {
+            this.Luf.fXj();
           }
         }
         else
         {
-          this.FfC.put(localbg.dJX, Integer.valueOf(1));
-          if (this.FfA != null) {
-            this.FfA.fiW();
+          this.Luh.put(localbi.fCM, Integer.valueOf(1));
+          if (this.Luf != null) {
+            this.Luf.fXj();
           }
         }
       }
-      this.ooU = false;
-      this.pJi = false;
-      removeCallbacks(this.FfD);
+      this.rqI = false;
+      this.Lue = false;
+      removeCallbacks(this.Lui);
     }
   }
   
   public void setCollapseibleMap(Map<String, Integer> paramMap)
   {
-    this.FfC = paramMap;
+    this.Luh = paramMap;
   }
   
   public void setIsAd(boolean paramBoolean)
@@ -174,25 +174,25 @@ public class SnsPostDescPreloadTextView
     }
     if (paramInt < 7)
     {
-      if (!this.Ffy) {
+      if (!this.Luc) {
         break label147;
       }
-      setConfig(f.fll().flm());
-      this.Ffy = false;
+      setConfig(f.fZG().fZH());
+      this.Luc = false;
       paramInt = i;
     }
     for (;;)
     {
       if (paramInt != 0)
       {
-        com.tencent.mm.kiss.widget.textview.f localf2 = c.hue.a(getConfig(), getText());
+        com.tencent.mm.kiss.widget.textview.f localf2 = c.kfZ.a(getConfig(), getText());
         com.tencent.mm.kiss.widget.textview.f localf1 = localf2;
         if (localf2 == null)
         {
           paramInt = getPostDescWidth();
           localf1 = localf2;
           if (paramInt > 0) {
-            localf1 = d.a(getText(), paramInt, getConfig()).aBl();
+            localf1 = d.a(getText(), paramInt, getConfig()).aIO();
           }
         }
         if (localf1 != null) {
@@ -201,10 +201,10 @@ public class SnsPostDescPreloadTextView
       }
       AppMethodBeat.o(100548);
       return;
-      if (!this.Ffy)
+      if (!this.Luc)
       {
-        setConfig(f.fll().getTextViewConfig());
-        this.Ffy = true;
+        setConfig(f.fZG().getTextViewConfig());
+        this.Luc = true;
         paramInt = i;
       }
       else
@@ -217,12 +217,12 @@ public class SnsPostDescPreloadTextView
   
   public void setShrinkOrSpreadListener(b paramb)
   {
-    this.FfA = paramb;
+    this.Luf = paramb;
   }
   
   public void setSpecialWidth(int paramInt)
   {
-    this.Ffz = paramInt;
+    this.Lud = paramInt;
   }
   
   final class a
@@ -232,20 +232,20 @@ public class SnsPostDescPreloadTextView
     
     public final void run()
     {
-      AppMethodBeat.i(204002);
+      AppMethodBeat.i(270398);
       SnsPostDescPreloadTextView.a(SnsPostDescPreloadTextView.this);
-      AppMethodBeat.o(204002);
+      AppMethodBeat.o(270398);
     }
   }
   
   public static abstract interface b
   {
-    public abstract void fiW();
+    public abstract void fXj();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.SnsPostDescPreloadTextView
  * JD-Core Version:    0.7.0.1
  */

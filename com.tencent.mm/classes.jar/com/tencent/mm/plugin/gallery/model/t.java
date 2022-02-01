@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.gallery.model;
 import android.annotation.TargetApi;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
-import com.tencent.f.i.h;
+import com.tencent.e.i.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.i.c;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -13,19 +13,19 @@ import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 public final class t
   implements h
 {
+  public GalleryItem.VideoMediaItem BWt;
+  public a BWu;
   public MediaFormat audioFormat;
   public String path;
   public int position;
   public MediaFormat videoFormat;
-  public GalleryItem.VideoMediaItem xjZ;
-  public t.a xka;
   
-  public t(String paramString, int paramInt, GalleryItem.VideoMediaItem paramVideoMediaItem, t.a parama)
+  public t(String paramString, int paramInt, GalleryItem.VideoMediaItem paramVideoMediaItem, a parama)
   {
     this.path = paramString;
     this.position = paramInt;
-    this.xjZ = paramVideoMediaItem;
-    this.xka = parama;
+    this.BWt = paramVideoMediaItem;
+    this.BWu = parama;
   }
   
   public final boolean equals(Object paramObject)
@@ -55,7 +55,7 @@ public final class t
       try
       {
         localc.setDataSource(this.path);
-        int j = localc.gLF.getTrackCount();
+        int j = localc.jvU.getTrackCount();
         i = 0;
         if (i < j)
         {
@@ -80,13 +80,13 @@ public final class t
             break label602;
           }
         }
-        if (this.xjZ == null) {
+        if (this.BWt == null) {
           continue;
         }
         if (this.videoFormat == null) {
           continue;
         }
-        localObject1 = this.xjZ;
+        localObject1 = this.BWt;
         if (this.videoFormat.containsKey("durationUs")) {
           continue;
         }
@@ -97,7 +97,7 @@ public final class t
         Object localObject1;
         Object localObject3;
         Log.d("VideoAnalysisTask", "Video extractor init failed. video path = [%s] e = [%s]", new Object[] { this.path, localException.getMessage() });
-        localc.gLF.release();
+        localc.jvU.release();
         continue;
         i = (int)(this.videoFormat.getLong("durationUs") / 1000L);
         continue;
@@ -118,40 +118,40 @@ public final class t
       }
       finally
       {
-        localc.gLF.release();
+        localc.jvU.release();
         AppMethodBeat.o(111378);
       }
-      ((GalleryItem.VideoMediaItem)localObject1).jkS = i;
-      localObject1 = this.xjZ;
+      ((GalleryItem.VideoMediaItem)localObject1).maT = i;
+      localObject1 = this.BWt;
       if (!this.videoFormat.containsKey("height"))
       {
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoHeight = i;
-        localObject1 = this.xjZ;
+        localObject1 = this.BWt;
         if (this.videoFormat.containsKey("width")) {
           continue;
         }
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoWidth = i;
-        localObject3 = this.xjZ;
+        localObject3 = this.BWt;
         if (this.videoFormat.containsKey("mime")) {
           continue;
         }
         localObject1 = "";
-        ((GalleryItem.VideoMediaItem)localObject3).jkQ = ((String)localObject1);
-        localObject1 = this.xjZ;
+        ((GalleryItem.VideoMediaItem)localObject3).maR = ((String)localObject1);
+        localObject1 = this.BWt;
         if (this.videoFormat.containsKey("bitrate")) {
           continue;
         }
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoBitRate = i;
-        localObject1 = this.xjZ;
+        localObject1 = this.BWt;
         if (this.videoFormat.containsKey("i-frame-interval")) {
           continue;
         }
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoIFrameInterval = i;
-        localObject1 = this.xjZ;
+        localObject1 = this.BWt;
         if (this.videoFormat.containsKey("frame-rate")) {
           continue;
         }
@@ -159,18 +159,18 @@ public final class t
         ((GalleryItem.VideoMediaItem)localObject1).videoFrameRate = i;
         if (this.audioFormat != null)
         {
-          localObject3 = this.xjZ;
+          localObject3 = this.BWt;
           if (this.audioFormat.containsKey("mime")) {
             continue;
           }
           localObject1 = "";
-          ((GalleryItem.VideoMediaItem)localObject3).jkR = ((String)localObject1);
+          ((GalleryItem.VideoMediaItem)localObject3).maS = ((String)localObject1);
         }
-        localc.gLF.release();
-        if (this.xka != null) {
+        localc.jvU.release();
+        if (this.BWu != null) {
           break label585;
         }
-        Log.d("VideoAnalysisTask", "video analysis end. observer == null, position = [%d], mediaItem = [%s]", new Object[] { Integer.valueOf(this.position), this.xjZ });
+        Log.d("VideoAnalysisTask", "video analysis end. observer == null, position = [%d], mediaItem = [%s]", new Object[] { Integer.valueOf(this.position), this.BWt });
         AppMethodBeat.o(111378);
         return;
         if ((!((String)localObject3).startsWith("audio/")) || (this.audioFormat != null)) {
@@ -179,17 +179,32 @@ public final class t
         this.audioFormat = ((MediaFormat)localObject1);
       }
       label585:
-      MMHandlerThread.postToMainThread(new t.1(this));
+      MMHandlerThread.postToMainThread(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(111377);
+          if (t.this.BWu != null) {
+            t.this.BWu.a(t.this);
+          }
+          AppMethodBeat.o(111377);
+        }
+      });
       AppMethodBeat.o(111378);
       return;
       label602:
       i += 1;
     }
   }
+  
+  public static abstract interface a
+  {
+    public abstract void a(t paramt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.t
  * JD-Core Version:    0.7.0.1
  */

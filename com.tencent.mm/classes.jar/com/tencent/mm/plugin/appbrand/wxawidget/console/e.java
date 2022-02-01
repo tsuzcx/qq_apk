@@ -14,14 +14,14 @@ import java.util.List;
 
 public final class e
 {
-  private static final List<WeakReference<ControlBoardPanel>> oFQ;
-  private static final ControlBoardPanel.a oFR;
+  private static final List<WeakReference<ControlBoardPanel>> rHF;
+  private static final ControlBoardPanel.a rHG;
   
   static
   {
     AppMethodBeat.i(121642);
-    oFQ = new LinkedList();
-    oFR = new ControlBoardPanel.a()
+    rHF = new LinkedList();
+    rHG = new ControlBoardPanel.a()
     {
       public final void a(ControlBoardPanel paramAnonymousControlBoardPanel, boolean paramAnonymousBoolean)
       {
@@ -35,7 +35,7 @@ public final class e
     AppMethodBeat.o(121642);
   }
   
-  public static void eD(Context paramContext)
+  public static void eG(Context paramContext)
   {
     AppMethodBeat.i(121640);
     int i;
@@ -43,9 +43,9 @@ public final class e
     if (paramContext != null)
     {
       i = 0;
-      if (i < oFQ.size())
+      if (i < rHF.size())
       {
-        localObject = (WeakReference)oFQ.get(i);
+        localObject = (WeakReference)rHF.get(i);
         if (localObject != null)
         {
           localObject = (ControlBoardPanel)((WeakReference)localObject).get();
@@ -56,28 +56,28 @@ public final class e
               break label242;
             }
             paramContext = new ControlBoardPanel(paramContext);
-            oFQ.add(new WeakReference(paramContext));
+            rHF.add(new WeakReference(paramContext));
           }
         }
       }
     }
     for (;;)
     {
-      localObject = oFR;
-      if (!paramContext.oGa)
+      localObject = rHG;
+      if (!paramContext.rHP)
       {
-        paramContext.oGa = true;
+        paramContext.rHP = true;
         Activity localActivity = (Activity)paramContext.getContext();
-        paramContext.oFZ = new WindowManager.LayoutParams(-2, -2, 1003, 520, -3);
-        paramContext.oFZ.y = a.u(localActivity);
-        paramContext.oFZ.token = localActivity.getWindow().getDecorView().getWindowToken();
-        paramContext.oFZ.gravity = 51;
-        paramContext.oFZ.softInputMode = 16;
-        paramContext.oFY.addView(paramContext, paramContext.oFZ);
+        paramContext.rHO = new WindowManager.LayoutParams(-2, -2, 1003, 520, -3);
+        paramContext.rHO.y = a.t(localActivity);
+        paramContext.rHO.token = localActivity.getWindow().getDecorView().getWindowToken();
+        paramContext.rHO.gravity = 51;
+        paramContext.rHO.softInputMode = 16;
+        paramContext.rHN.addView(paramContext, paramContext.rHO);
         paramContext.reset();
-        paramContext.oFR = ((ControlBoardPanel.a)localObject);
-        if (paramContext.oFR != null) {
-          paramContext.oFR.a(paramContext, true);
+        paramContext.rHG = ((ControlBoardPanel.a)localObject);
+        if (paramContext.rHG != null) {
+          paramContext.rHG.a(paramContext, true);
         }
       }
       AppMethodBeat.o(121640);
@@ -93,7 +93,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.wxawidget.console.e
  * JD-Core Version:    0.7.0.1
  */

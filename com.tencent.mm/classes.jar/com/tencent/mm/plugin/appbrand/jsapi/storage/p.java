@@ -2,57 +2,57 @@ package com.tencent.mm.plugin.appbrand.jsapi.storage;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.p.a;
+import com.tencent.mm.plugin.appbrand.appstorage.q.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 
 public final class p
 {
-  static String a(p.a parama)
+  static String a(q.a parama)
   {
-    if (parama == p.a.kSP) {
+    if (parama == q.a.nNn) {
       return "ok";
     }
-    if (parama == p.a.kST) {
+    if (parama == q.a.nNr) {
       return "fail:quota reached";
     }
     return "fail:internal error set DB data fail";
   }
   
-  public static String aaO(String paramString)
+  public static String aiG(String paramString)
   {
     AppMethodBeat.i(147300);
-    paramString = z(new o(MMApplicationContext.getContext().getCacheDir(), paramString));
+    paramString = y(new q(MMApplicationContext.getContext().getCacheDir(), paramString));
     AppMethodBeat.o(147300);
     return paramString;
   }
   
-  public static void aaP(String paramString)
+  public static void aiH(String paramString)
   {
     AppMethodBeat.i(147301);
-    boolean bool = new o(MMApplicationContext.getContext().getCacheDir(), paramString).delete();
+    boolean bool = new q(MMApplicationContext.getContext().getCacheDir(), paramString).cFq();
     Log.i("MicroMsg.JsApiStorageHelper", "deleteTmpFile: " + paramString + ":" + bool);
     AppMethodBeat.o(147301);
   }
   
   /* Error */
-  public static void g(String paramString, String... paramVarArgs)
+  public static void f(String paramString, String... paramVarArgs)
   {
     // Byte code:
     //   0: ldc 94
     //   2: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 33	com/tencent/mm/vfs/o
+    //   5: new 33	com/tencent/mm/vfs/q
     //   8: dup
     //   9: invokestatic 39	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
     //   12: invokevirtual 45	android/content/Context:getCacheDir	()Ljava/io/File;
     //   15: aload_0
-    //   16: invokespecial 49	com/tencent/mm/vfs/o:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   16: invokespecial 49	com/tencent/mm/vfs/q:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   19: astore_0
-    //   20: new 96	com/tencent/mm/vfs/v
+    //   20: new 96	com/tencent/mm/vfs/y
     //   23: dup
     //   24: aload_0
-    //   25: invokespecial 99	com/tencent/mm/vfs/v:<init>	(Lcom/tencent/mm/vfs/o;)V
+    //   25: invokespecial 99	com/tencent/mm/vfs/y:<init>	(Lcom/tencent/mm/vfs/q;)V
     //   28: astore 4
     //   30: aload_1
     //   31: arraylength
@@ -66,14 +66,14 @@ public final class p
     //   42: aload_1
     //   43: iload_2
     //   44: aaload
-    //   45: invokevirtual 102	com/tencent/mm/vfs/v:write	(Ljava/lang/String;)V
+    //   45: invokevirtual 102	com/tencent/mm/vfs/y:write	(Ljava/lang/String;)V
     //   48: iload_2
     //   49: iconst_1
     //   50: iadd
     //   51: istore_2
     //   52: goto -17 -> 35
     //   55: aload 4
-    //   57: invokevirtual 106	com/tencent/mm/vfs/v:close	()V
+    //   57: invokevirtual 106	com/tencent/mm/vfs/y:close	()V
     //   60: ldc 94
     //   62: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   65: return
@@ -87,7 +87,7 @@ public final class p
     //   76: aload_1
     //   77: ifnull +7 -> 84
     //   80: aload_1
-    //   81: invokevirtual 106	com/tencent/mm/vfs/v:close	()V
+    //   81: invokevirtual 106	com/tencent/mm/vfs/y:close	()V
     //   84: ldc 94
     //   86: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   89: aload_0
@@ -104,7 +104,7 @@ public final class p
     //   0	102	1	paramVarArgs	String[]
     //   34	18	2	i	int
     //   32	6	3	j	int
-    //   28	69	4	localv	com.tencent.mm.vfs.v
+    //   28	69	4	localy	com.tencent.mm.vfs.y
     // Exception table:
     //   from	to	target	type
     //   55	60	66	java/io/IOException
@@ -114,7 +114,7 @@ public final class p
     //   40	48	95	finally
   }
   
-  public static int p(String... paramVarArgs)
+  public static int o(String... paramVarArgs)
   {
     AppMethodBeat.i(147297);
     int m = paramVarArgs.length;
@@ -134,29 +134,29 @@ public final class p
   }
   
   /* Error */
-  private static String z(o paramo)
+  private static String y(q paramq)
   {
     // Byte code:
-    //   0: ldc 118
+    //   0: ldc 117
     //   2: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: invokevirtual 121	com/tencent/mm/vfs/o:exists	()Z
+    //   6: invokevirtual 120	com/tencent/mm/vfs/q:ifE	()Z
     //   9: ifne +11 -> 20
-    //   12: ldc 118
+    //   12: ldc 117
     //   14: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   17: ldc 123
+    //   17: ldc 122
     //   19: areturn
-    //   20: new 125	java/lang/StringBuffer
+    //   20: new 124	java/lang/StringBuffer
     //   23: dup
-    //   24: invokespecial 127	java/lang/StringBuffer:<init>	()V
+    //   24: invokespecial 126	java/lang/StringBuffer:<init>	()V
     //   27: astore_3
-    //   28: new 129	java/io/BufferedReader
+    //   28: new 128	java/io/BufferedReader
     //   31: dup
-    //   32: new 131	com/tencent/mm/vfs/u
+    //   32: new 130	com/tencent/mm/vfs/x
     //   35: dup
     //   36: aload_0
-    //   37: invokespecial 132	com/tencent/mm/vfs/u:<init>	(Lcom/tencent/mm/vfs/o;)V
-    //   40: invokespecial 135	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   37: invokespecial 131	com/tencent/mm/vfs/x:<init>	(Lcom/tencent/mm/vfs/q;)V
+    //   40: invokespecial 134	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   43: astore_2
     //   44: aload_2
     //   45: astore_0
@@ -167,7 +167,7 @@ public final class p
     //   54: astore_0
     //   55: aload_2
     //   56: aload 4
-    //   58: invokevirtual 139	java/io/BufferedReader:read	([C)I
+    //   58: invokevirtual 138	java/io/BufferedReader:read	([C)I
     //   61: istore_1
     //   62: iload_1
     //   63: iconst_m1
@@ -178,14 +178,14 @@ public final class p
     //   70: aload 4
     //   72: iconst_0
     //   73: iload_1
-    //   74: invokestatic 143	java/lang/String:valueOf	([CII)Ljava/lang/String;
-    //   77: invokevirtual 146	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   74: invokestatic 142	java/lang/String:valueOf	([CII)Ljava/lang/String;
+    //   77: invokevirtual 145	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   80: pop
     //   81: goto -28 -> 53
     //   84: astore_3
     //   85: aload_2
     //   86: astore_0
-    //   87: ldc 118
+    //   87: ldc 117
     //   89: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   92: aload_2
     //   93: astore_0
@@ -199,27 +199,27 @@ public final class p
     //   101: aload_2
     //   102: ifnull +7 -> 109
     //   105: aload_2
-    //   106: invokevirtual 147	java/io/BufferedReader:close	()V
-    //   109: ldc 118
+    //   106: invokevirtual 146	java/io/BufferedReader:close	()V
+    //   109: ldc 117
     //   111: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   114: aload_0
     //   115: athrow
     //   116: aload_2
-    //   117: invokevirtual 147	java/io/BufferedReader:close	()V
+    //   117: invokevirtual 146	java/io/BufferedReader:close	()V
     //   120: aload_3
-    //   121: invokevirtual 148	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   121: invokevirtual 147	java/lang/StringBuffer:toString	()Ljava/lang/String;
     //   124: astore_0
-    //   125: ldc 118
+    //   125: ldc 117
     //   127: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   130: aload_0
     //   131: areturn
     //   132: astore_0
-    //   133: ldc 118
+    //   133: ldc 117
     //   135: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   138: aload_0
     //   139: athrow
     //   140: astore_0
-    //   141: ldc 118
+    //   141: ldc 117
     //   143: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   146: aload_0
     //   147: athrow
@@ -233,7 +233,7 @@ public final class p
     //   157: goto -72 -> 85
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	160	0	paramo	o
+    //   0	160	0	paramq	q
     //   61	13	1	i	int
     //   43	114	2	localObject1	Object
     //   27	43	3	localStringBuffer	java.lang.StringBuffer
@@ -259,7 +259,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.p
  * JD-Core Version:    0.7.0.1
  */

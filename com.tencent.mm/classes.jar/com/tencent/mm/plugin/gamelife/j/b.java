@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.gamelife.j;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.gamelife.PluginGameLife;
 import com.tencent.mm.plugin.gamelife.a.e;
 import com.tencent.mm.plugin.gamelife.a.f.a;
@@ -16,23 +16,23 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/session/GameLifeSessionInfoService;", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeSessionInfoService;", "()V", "getSessionId", "", "selfUsername", "", "talker", "scene", "", "extInfo", "Lcom/tencent/mm/protobuf/ByteString;", "callback", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeSessionInfoService$SessionIdCallback;", "getSessionIdFromLocal", "getSessionIdFromServer", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "sessionId", "Lcom/tencent/mm/plugin/gamelife/autogen/GameLifeMsgExtInfo;", "getSessionInfoBySessionId", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeSessionInfo;", "getTalkerFromLocal", "Companion", "plugin-gamelife_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/session/GameLifeSessionInfoService;", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeSessionInfoService;", "()V", "getSessionId", "", "selfUsername", "", "talker", "scene", "", "extInfo", "Lcom/tencent/mm/protobuf/ByteString;", "callback", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeSessionInfoService$SessionIdCallback;", "getSessionIdFromLocal", "getSessionIdFromServer", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "sessionId", "Lcom/tencent/mm/plugin/gamelife/autogen/GameLifeMsgExtInfo;", "getSessionInfoBySessionId", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeSessionInfo;", "getTalkerFromLocal", "Companion", "plugin-gamelife_release"})
 public final class b
   implements com.tencent.mm.plugin.gamelife.a.f
 {
-  public static final a ycu;
+  public static final a DhZ;
   
   static
   {
-    AppMethodBeat.i(241424);
-    ycu = new a((byte)0);
-    AppMethodBeat.o(241424);
+    AppMethodBeat.i(204394);
+    DhZ = new a((byte)0);
+    AppMethodBeat.o(204394);
   }
   
-  public final void a(String paramString1, final String paramString2, int paramInt, com.tencent.mm.bw.b paramb, final f.a parama)
+  public final void a(String paramString1, final String paramString2, int paramInt, com.tencent.mm.cd.b paramb, final f.a parama)
   {
-    AppMethodBeat.i(241421);
-    p.h(parama, "callback");
+    AppMethodBeat.i(204389);
+    p.k(parama, "callback");
     Object localObject1 = (CharSequence)paramString1;
     if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0))
     {
@@ -51,17 +51,17 @@ public final class b
       if (i == 0) {
         break label132;
       }
-      parama.onDone("");
+      parama.aKD("");
       Log.e("GameLife.GameLifeSessionInfoService", "[get SessionId] self:" + paramString1 + " talker:" + paramString2 + " in invalid");
-      AppMethodBeat.o(241421);
+      AppMethodBeat.o(204389);
       return;
       i = 0;
       break;
     }
     label132:
-    p.h(paramString1, "selfUsername");
-    p.h(paramString2, "talker");
-    Object localObject3 = ((PluginGameLife)g.ah(PluginGameLife.class)).getSessionInfoStorage();
+    p.k(paramString1, "selfUsername");
+    p.k(paramString2, "talker");
+    Object localObject3 = ((PluginGameLife)h.ag(PluginGameLife.class)).getSessionInfoStorage();
     localObject1 = (CharSequence)paramString1;
     label210:
     label224:
@@ -99,14 +99,14 @@ public final class b
       if (i != 0) {
         break label475;
       }
-      parama.onDone((String)localObject1);
-      AppMethodBeat.o(241421);
+      parama.aKD((String)localObject1);
+      AppMethodBeat.o(204389);
       return;
       i = 0;
       break;
       i = 0;
       break label210;
-      localObject2 = (a)((c)localObject3).ycw.get(c.hS(paramString1, paramString2));
+      localObject2 = (a)((c)localObject3).Dib.get(c.ib(paramString1, paramString2));
       localObject1 = localObject2;
       if (localObject2 != null) {
         break label224;
@@ -125,40 +125,40 @@ public final class b
         ((Cursor)localObject3).close();
       }
       if (((a)localObject1).field_sessionId != null) {
-        ((Map)((c)localObject2).ycw).put(c.hS(paramString1, paramString2), localObject1);
+        ((Map)((c)localObject2).Dib).put(c.ib(paramString1, paramString2), localObject1);
       }
       break label224;
     }
     label475:
     parama = (m)new b(paramString1, paramString2, parama);
-    new com.tencent.mm.plugin.gamelife.c.c(paramString1, paramString2, paramInt, paramb).aYI().j((com.tencent.mm.vending.c.a)new c(parama));
-    AppMethodBeat.o(241421);
+    new com.tencent.mm.plugin.gamelife.c.c(paramString1, paramString2, paramInt, paramb).bhW().j((com.tencent.mm.vending.c.a)new c(parama));
+    AppMethodBeat.o(204389);
   }
   
-  public final e aAW(String paramString)
+  public final String aED(String paramString)
   {
-    AppMethodBeat.i(241422);
-    paramString = (e)((PluginGameLife)g.ah(PluginGameLife.class)).getSessionInfoStorage().aBc(paramString);
-    AppMethodBeat.o(241422);
-    return paramString;
-  }
-  
-  public final String avi(String paramString)
-  {
-    AppMethodBeat.i(241423);
-    String str = ((PluginGameLife)g.ah(PluginGameLife.class)).getSessionInfoStorage().aBc(paramString).field_talker;
+    AppMethodBeat.i(204391);
+    String str = ((PluginGameLife)h.ag(PluginGameLife.class)).getSessionInfoStorage().aKP(paramString).field_talker;
     paramString = str;
     if (str == null) {
       paramString = "";
     }
-    AppMethodBeat.o(241423);
+    AppMethodBeat.o(204391);
     return paramString;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/session/GameLifeSessionInfoService$Companion;", "", "()V", "TAG", "", "plugin-gamelife_release"})
+  public final e aKJ(String paramString)
+  {
+    AppMethodBeat.i(204390);
+    paramString = (e)((PluginGameLife)h.ag(PluginGameLife.class)).getSessionInfoStorage().aKP(paramString);
+    AppMethodBeat.o(204390);
+    return paramString;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/gamelife/session/GameLifeSessionInfoService$Companion;", "", "()V", "TAG", "", "plugin-gamelife_release"})
   public static final class a {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "sessionId", "", "extInfo", "Lcom/tencent/mm/plugin/gamelife/autogen/GameLifeMsgExtInfo;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "sessionId", "", "extInfo", "Lcom/tencent/mm/plugin/gamelife/autogen/GameLifeMsgExtInfo;", "invoke"})
   static final class b
     extends q
     implements m<String, com.tencent.mm.plugin.gamelife.b.c, x>
@@ -169,7 +169,7 @@ public final class b
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/plugin/gamelife/autogen/GetChatSessionIdResponse;", "kotlin.jvm.PlatformType", "call"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/plugin/gamelife/autogen/GetChatSessionIdResponse;", "kotlin.jvm.PlatformType", "call"})
   static final class c<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {

@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.sport.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.enc;
-import com.tencent.mm.protocal.protobuf.end;
+import com.tencent.mm.protocal.protobuf.exk;
+import com.tencent.mm.protocal.protobuf.exl;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
   extends q
   implements m
 {
-  private enc Fjr;
+  private exk LxQ;
   private i callback;
   private d rr;
   
@@ -28,22 +28,22 @@ public final class e
     this.rr = null;
     Log.i("MicroMsg.Sport.NetSceneUploadDeviceStep", "NetSceneUploadDeviceStep %s, %s, %s, %s, %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     d.a locala = new d.a();
-    locala.iLN = new enc();
-    locala.iLO = new end();
+    locala.lBU = new exk();
+    locala.lBV = new exl();
     locala.uri = "/cgi-bin/mmoc-bin/hardware/uploaddevicestep";
     locala.funcId = 1261;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    this.Fjr = ((enc)this.rr.iLK.iLR);
-    this.Fjr.dGL = paramString1;
-    this.Fjr.dGP = paramString2;
-    this.Fjr.NkT = paramInt1;
-    this.Fjr.NkU = paramInt2;
-    this.Fjr.cmD = paramInt3;
-    this.Fjr.NkV = String.valueOf(k.fmI());
-    this.Fjr.NkX = paramString3;
-    this.Fjr.Nla = paramInt4;
+    this.rr = locala.bgN();
+    this.LxQ = ((exk)d.b.b(this.rr.lBR));
+    this.LxQ.fzB = paramString1;
+    this.LxQ.fzF = paramString2;
+    this.LxQ.UxE = paramInt1;
+    this.LxQ.UxF = paramInt2;
+    this.LxQ.UoL = paramInt3;
+    this.LxQ.UxG = String.valueOf(n.gbb());
+    this.LxQ.UxI = paramString3;
+    this.LxQ.UxL = paramInt4;
     AppMethodBeat.o(149305);
   }
   

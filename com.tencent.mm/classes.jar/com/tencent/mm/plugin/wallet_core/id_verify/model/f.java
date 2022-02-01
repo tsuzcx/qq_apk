@@ -10,9 +10,9 @@ import org.json.JSONObject;
 public final class f
   extends m
 {
-  public int HPB;
+  public int OHJ;
+  public String cpm;
   public String desc;
-  public String jmT;
   public String title;
   
   public f(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, RealNameBundle paramRealNameBundle)
@@ -27,7 +27,7 @@ public final class f
     localHashMap.put("session_id", paramString4);
     Log.i("MicroMsg.NetSceneRealNameReg", "realname_scene=%d", new Object[] { Integer.valueOf(paramInt) });
     if (paramRealNameBundle != null) {
-      paramRealNameBundle.aY(localHashMap);
+      paramRealNameBundle.aS(localHashMap);
     }
     setRequestData(localHashMap);
     AppMethodBeat.o(174504);
@@ -54,8 +54,8 @@ public final class f
     Log.i("MicroMsg.NetSceneRealNameReg", "errCode=" + paramString + ";errMsg=" + paramString);
     this.title = paramJSONObject.optString("title");
     this.desc = paramJSONObject.optString("desc");
-    this.jmT = paramJSONObject.optString("page");
-    this.HPB = paramJSONObject.optInt("err_jump_page");
+    this.cpm = paramJSONObject.optString("page");
+    this.OHJ = paramJSONObject.optInt("err_jump_page");
     AppMethodBeat.o(70144);
   }
 }

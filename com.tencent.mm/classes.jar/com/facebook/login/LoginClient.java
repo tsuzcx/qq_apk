@@ -5,11 +5,12 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import com.facebook.AccessToken;
 import com.facebook.FacebookException;
+import com.facebook.common.R.string;
 import com.facebook.internal.CallbackManagerImpl.RequestCodeOffset;
 import com.facebook.internal.Utility;
 import com.facebook.internal.Validate;
@@ -241,8 +242,8 @@ class LoginClient
     if (checkPermission("android.permission.INTERNET") != 0)
     {
       Object localObject = getActivity();
-      String str = ((Activity)localObject).getString(2131757725);
-      localObject = ((Activity)localObject).getString(2131757724);
+      String str = ((Activity)localObject).getString(R.string.com_facebook_internet_permission_error_title);
+      localObject = ((Activity)localObject).getString(R.string.com_facebook_internet_permission_error_message);
       complete(Result.createErrorResult(this.pendingRequest, str, (String)localObject));
       AppMethodBeat.o(7847);
       return false;
@@ -301,9 +302,9 @@ class LoginClient
   
   FragmentActivity getActivity()
   {
-    AppMethodBeat.i(7840);
+    AppMethodBeat.i(223500);
     FragmentActivity localFragmentActivity = this.fragment.getActivity();
-    AppMethodBeat.o(7840);
+    AppMethodBeat.o(223500);
     return localFragmentActivity;
   }
   
@@ -407,15 +408,15 @@ class LoginClient
   
   void setFragment(Fragment paramFragment)
   {
-    AppMethodBeat.i(7839);
+    AppMethodBeat.i(223499);
     if (this.fragment != null)
     {
       paramFragment = new FacebookException("Can't set fragment once it is already set.");
-      AppMethodBeat.o(7839);
+      AppMethodBeat.o(223499);
       throw paramFragment;
     }
     this.fragment = paramFragment;
-    AppMethodBeat.o(7839);
+    AppMethodBeat.o(223499);
   }
   
   void setOnCompletedListener(OnCompletedListener paramOnCompletedListener)
@@ -887,7 +888,7 @@ class LoginClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.login.LoginClient
  * JD-Core Version:    0.7.0.1
  */

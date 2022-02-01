@@ -1,44 +1,44 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.r.a.a;
-import com.tencent.mm.plugin.r.a.a.a;
-import com.tencent.mm.protocal.protobuf.dvu;
-import com.tencent.mm.protocal.protobuf.dvv;
+import com.tencent.mm.plugin.ab.a.a;
+import com.tencent.mm.plugin.ab.a.a.a;
+import com.tencent.mm.protocal.protobuf.efw;
+import com.tencent.mm.protocal.protobuf.efx;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class ai
   extends aa
 {
-  private String JWL;
+  private String QXe;
   private int cmdId;
   
   public ai(String paramString1, String paramString2)
   {
     AppMethodBeat.i(31060);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new dvu();
-    ((d.a)localObject).iLO = new dvv();
+    ((d.a)localObject).lBU = new efw();
+    ((d.a)localObject).lBV = new efx();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/setappsetting";
     ((d.a)localObject).funcId = 396;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.hhm = ((d.a)localObject).aXF();
-    localObject = (dvu)this.hhm.iLK.iLR;
-    ((dvu)localObject).hik = paramString1;
-    ((dvu)localObject).MWF = 0;
-    ((dvu)localObject).MWG = paramString2;
+    this.jTk = ((d.a)localObject).bgN();
+    localObject = (efw)d.b.b(this.jTk.lBR);
+    ((efw)localObject).jUi = paramString1;
+    ((efw)localObject).Uja = 0;
+    ((efw)localObject).Ujb = paramString2;
     this.cmdId = 0;
-    this.JWL = paramString2;
+    this.QXe = paramString2;
     AppMethodBeat.o(31060);
   }
   
-  public final void cB(byte[] paramArrayOfByte)
+  public final void cS(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(31063);
     if (paramArrayOfByte == null)
@@ -49,7 +49,7 @@ public final class ai
     }
     try
     {
-      this.hhm.iLL.fromProtoBuf(paramArrayOfByte);
+      this.jTk.lBS.fromProtoBuf(paramArrayOfByte);
       AppMethodBeat.o(31063);
       return;
     }
@@ -66,12 +66,12 @@ public final class ai
     return 2;
   }
   
-  public final byte[] gmB()
+  public final byte[] hha()
   {
     AppMethodBeat.i(31062);
     try
     {
-      byte[] arrayOfByte = ((d.b)this.hhm.getReqObj()).toProtoBuf();
+      byte[] arrayOfByte = ((d.b)this.jTk.getReqObj()).toProtoBuf();
       AppMethodBeat.o(31062);
       return arrayOfByte;
     }
@@ -89,16 +89,16 @@ public final class ai
     Log.i("MicroMsg.NetSceneSetAppSetting", "errType = " + paramInt2 + ", errCode = " + paramInt3);
     if ((paramInt2 == 0) && (paramInt2 == 0))
     {
-      paramString = (dvv)this.hhm.iLL.iLR;
+      paramString = (efx)d.c.b(this.jTk.lBS);
       if (paramString != null)
       {
-        params = a.a.eAZ().eAX();
-        paramArrayOfByte = h.o(paramString.hik, false, false);
+        params = a.a.fmG().fmE();
+        paramArrayOfByte = h.o(paramString.jUi, false, false);
         if (paramArrayOfByte != null)
         {
-          paramArrayOfByte.field_authFlag = paramString.KKl;
+          paramArrayOfByte.field_authFlag = paramString.RLc;
           boolean bool = params.a(paramArrayOfByte, new String[0]);
-          Log.d("MicroMsg.NetSceneSetAppSetting", "onGYNetEnd, update ret = " + bool + ", appId = " + paramString.hik);
+          Log.d("MicroMsg.NetSceneSetAppSetting", "onGYNetEnd, update ret = " + bool + ", appId = " + paramString.jUi);
         }
       }
     }

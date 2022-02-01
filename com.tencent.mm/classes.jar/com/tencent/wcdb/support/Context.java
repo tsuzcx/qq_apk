@@ -17,7 +17,7 @@ public final class Context
   static
   {
     AppMethodBeat.i(3393);
-    SQLiteGlobal.loadLib();
+    SQLiteGlobal.initialize();
     AppMethodBeat.o(3393);
   }
   
@@ -155,7 +155,7 @@ public final class Context
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.wcdb.support.Context
  * JD-Core Version:    0.7.0.1
  */

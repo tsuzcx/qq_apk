@@ -1,18 +1,57 @@
 package kotlin.g.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.l;
+import java.util.ArrayList;
+import java.util.Collections;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/jvm/internal/StringCompanionObject;", "", "()V", "kotlin-stdlib"})
 public final class ae
 {
-  public static final ae SYK;
+  public final ArrayList<Object> fmA;
   
-  static
+  public ae(int paramInt)
   {
-    AppMethodBeat.i(129335);
-    SYK = new ae();
-    AppMethodBeat.o(129335);
+    AppMethodBeat.i(128982);
+    this.fmA = new ArrayList(paramInt);
+    AppMethodBeat.o(128982);
+  }
+  
+  public final void add(Object paramObject)
+  {
+    AppMethodBeat.i(128984);
+    this.fmA.add(paramObject);
+    AppMethodBeat.o(128984);
+  }
+  
+  public final void eZ(Object paramObject)
+  {
+    AppMethodBeat.i(128983);
+    if (paramObject == null)
+    {
+      AppMethodBeat.o(128983);
+      return;
+    }
+    if ((paramObject instanceof Object[]))
+    {
+      paramObject = (Object[])paramObject;
+      if (paramObject.length > 0)
+      {
+        this.fmA.ensureCapacity(this.fmA.size() + paramObject.length);
+        Collections.addAll(this.fmA, paramObject);
+      }
+      AppMethodBeat.o(128983);
+      return;
+    }
+    paramObject = new UnsupportedOperationException("Don't know how to spread " + paramObject.getClass());
+    AppMethodBeat.o(128983);
+    throw paramObject;
+  }
+  
+  public final Object[] toArray(Object[] paramArrayOfObject)
+  {
+    AppMethodBeat.i(128985);
+    paramArrayOfObject = this.fmA.toArray(paramArrayOfObject);
+    AppMethodBeat.o(128985);
+    return paramArrayOfObject;
   }
 }
 

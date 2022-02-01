@@ -6,24 +6,24 @@ import java.io.PrintStream;
 public final class a
 {
   public static boolean DEBUG = false;
-  public static boolean cgx = false;
-  public EVadNative cgv;
-  public MMVoipVadNative cgw;
+  public static boolean ciy = false;
+  public EVadNative ciw;
+  public MMVoipVadNative cix;
   public long handle;
   
   public a()
   {
     AppMethodBeat.i(74968);
     this.handle = 0L;
-    this.cgv = new EVadNative();
-    this.cgw = new MMVoipVadNative();
+    this.ciw = new EVadNative();
+    this.cix = new MMVoipVadNative();
     AppMethodBeat.o(74968);
   }
   
-  public static void bI(boolean paramBoolean)
+  public static void bW(boolean paramBoolean)
   {
     AppMethodBeat.i(74969);
-    cgx = paramBoolean;
+    ciy = paramBoolean;
     if (paramBoolean)
     {
       System.loadLibrary("MMVoipVadEmbed");
@@ -43,7 +43,7 @@ public final class a
     AppMethodBeat.o(74969);
   }
   
-  public final int IL()
+  public final int Ko()
   {
     AppMethodBeat.i(74971);
     if (this.handle == 0L)
@@ -54,13 +54,13 @@ public final class a
     if (DEBUG) {
       System.out.println("EVad Release handle = " + this.handle);
     }
-    if (cgx)
+    if (ciy)
     {
-      i = this.cgw.Release(this.handle);
+      i = this.cix.Release(this.handle);
       AppMethodBeat.o(74971);
       return i;
     }
-    int i = this.cgv.Release(this.handle);
+    int i = this.ciw.Release(this.handle);
     AppMethodBeat.o(74971);
     return i;
   }
@@ -76,20 +76,20 @@ public final class a
     if (DEBUG) {
       System.out.println("EVad AddData handle = " + this.handle);
     }
-    if (cgx)
+    if (ciy)
     {
-      paramInt = this.cgw.AddData(this.handle, paramArrayOfShort, paramInt);
+      paramInt = this.cix.AddData(this.handle, paramArrayOfShort, paramInt);
       AppMethodBeat.o(74970);
       return paramInt;
     }
-    paramInt = this.cgv.AddData(this.handle, paramArrayOfShort, paramInt);
+    paramInt = this.ciw.AddData(this.handle, paramArrayOfShort, paramInt);
     AppMethodBeat.o(74970);
     return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.qq.wx.voice.vad.a
  * JD-Core Version:    0.7.0.1
  */

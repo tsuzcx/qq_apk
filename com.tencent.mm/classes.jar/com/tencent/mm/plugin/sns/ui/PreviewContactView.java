@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.g;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,11 +22,11 @@ import java.util.Map;
 public class PreviewContactView
   extends LinearLayout
 {
-  private TableLayout EuT;
-  private final Map<Integer, View> EuU;
+  private TableLayout KIK;
+  private final Map<Integer, View> KIL;
   @SuppressLint({"UseSparseArrays"})
-  private final Map<Integer, TableRow> EuV;
-  private int EuW;
+  private final Map<Integer, TableRow> KIM;
+  private int KIN;
   private final Context context;
   private List<String> list;
   
@@ -33,11 +35,11 @@ public class PreviewContactView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98190);
     this.list = new ArrayList();
-    this.EuU = new HashMap();
-    this.EuV = new HashMap();
-    this.EuW = 5;
+    this.KIL = new HashMap();
+    this.KIM = new HashMap();
+    this.KIN = 5;
     this.context = paramContext;
-    this.EuT = ((TableLayout)LayoutInflater.from(this.context).inflate(2131496477, this, true).findViewById(2131299180));
+    this.KIK = ((TableLayout)LayoutInflater.from(this.context).inflate(i.g.sns_preview_view, this, true).findViewById(i.f.content));
     AppMethodBeat.o(98190);
   }
   
@@ -46,7 +48,7 @@ public class PreviewContactView
   public void setLineNum(int paramInt)
   {
     AppMethodBeat.i(98191);
-    this.EuW = paramInt;
+    this.KIN = paramInt;
     setList(this.list);
     AppMethodBeat.o(98191);
   }
@@ -60,7 +62,7 @@ public class PreviewContactView
       return;
     }
     this.list = paramList;
-    this.EuT.removeAllViews();
+    this.KIK.removeAllViews();
     if (paramList.size() == 0)
     {
       AppMethodBeat.o(98192);
@@ -72,29 +74,29 @@ public class PreviewContactView
     TableRow localTableRow;
     if (i < m)
     {
-      localTableRow = (TableRow)this.EuV.get(Integer.valueOf(j));
+      localTableRow = (TableRow)this.KIM.get(Integer.valueOf(j));
       if (localTableRow != null) {
-        break label284;
+        break label286;
       }
       localTableRow = new TableRow(this.context);
-      this.EuV.put(Integer.valueOf(j), localTableRow);
+      this.KIM.put(Integer.valueOf(j), localTableRow);
     }
-    label284:
+    label286:
     for (;;)
     {
       localTableRow.removeAllViews();
       int k = 0;
-      while ((k < this.EuW) && (i < m))
+      while ((k < this.KIN) && (i < m))
       {
-        Object localObject2 = (View)this.EuU.get(Integer.valueOf(i));
+        Object localObject2 = (View)this.KIL.get(Integer.valueOf(i));
         Object localObject1 = localObject2;
         if (localObject2 == null)
         {
-          localObject1 = View.inflate(this.context, 2131496476, null);
-          this.EuU.put(Integer.valueOf(i), localObject1);
+          localObject1 = View.inflate(this.context, i.g.sns_preview_contact_view, null);
+          this.KIL.put(Integer.valueOf(i), localObject1);
         }
         localObject2 = (String)paramList.get(i);
-        ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131302874);
+        ImageView localImageView = (ImageView)((View)localObject1).findViewById(i.f.iv);
         localImageView.setBackgroundDrawable(null);
         a.b.c(localImageView, (String)localObject2);
         ((View)localObject1).setTag(Integer.valueOf(0));
@@ -103,7 +105,7 @@ public class PreviewContactView
         k += 1;
         i += 1;
       }
-      this.EuT.addView(localTableRow);
+      this.KIK.addView(localTableRow);
       j += 1;
       break;
       AppMethodBeat.o(98192);
@@ -115,7 +117,7 @@ public class PreviewContactView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.PreviewContactView
  * JD-Core Version:    0.7.0.1
  */

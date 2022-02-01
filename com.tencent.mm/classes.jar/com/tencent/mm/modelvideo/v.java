@@ -1,579 +1,536 @@
 package com.tencent.mm.modelvideo;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.ak.h.b;
-import com.tencent.mm.ak.h.c;
-import com.tencent.mm.g.b.a.w;
-import com.tencent.mm.g.b.a.y;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.i.g.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bp;
-import com.tencent.mm.model.bp.b;
-import com.tencent.mm.platformtools.ac;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.de;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.NetStatusUtil;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.sdk.platformtools.XmlParser;
-import com.tencent.mm.sdk.storage.MStorageEvent;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.ca;
-import java.io.ByteArrayOutputStream;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Map;
 
 public final class v
-  implements com.tencent.mm.ak.h
 {
-  public static int a(int paramInt1, com.tencent.mm.i.d paramd, long paramLong1, s params, String paramString1, String paramString2, int paramInt2, String paramString3, long paramLong2)
+  /* Error */
+  public static boolean XI(String paramString)
   {
-    AppMethodBeat.i(127032);
-    if (paramInt1 != 0)
-    {
-      Log.e("MicroMsg.VideoMsgExtension", "getThumbByCdn failed. startRet:%d msgSvrId:%d user:%s thumbUrl:%s thumbPath:%s", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong1), params.getUser(), paramString2, paramString1 });
-      new y(com.tencent.mm.plugin.report.a.t(new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(2), Long.valueOf(paramLong2), Long.valueOf(Util.nowMilliSecond()), Integer.valueOf(com.tencent.mm.an.c.cY(MMApplicationContext.getContext())), Integer.valueOf(com.tencent.mm.i.a.MediaType_THUMBIMAGE), Integer.valueOf(paramInt2), "" })).bfK();
-      AppMethodBeat.o(127032);
-      return paramInt1;
-    }
-    if (paramd == null)
-    {
-      AppMethodBeat.o(127032);
-      return 0;
-    }
-    label215:
-    int i;
-    int j;
-    if (paramd.field_retCode != 0)
-    {
-      Log.e("MicroMsg.VideoMsgExtension", "getThumbByCdn failed. sceneResult.field_retCode:%d msgSvrId:%d user:%s thumbUrl:%s thumbPath:%s", new Object[] { Integer.valueOf(paramd.field_retCode), Long.valueOf(paramLong1), params.getUser(), paramString2, paramString1 });
-      if (paramd != null) {
-        break label853;
-      }
-      paramInt1 = -1;
-      paramLong1 = Util.nowMilliSecond();
-      i = com.tencent.mm.an.c.cY(MMApplicationContext.getContext());
-      j = com.tencent.mm.i.a.MediaType_THUMBIMAGE;
-      if (paramd != null) {
-        break label861;
-      }
-      paramString1 = "";
-      label240:
-      if (paramd != null) {
-        break label870;
-      }
-      paramString2 = "";
-      label248:
-      new y(com.tencent.mm.plugin.report.a.t(new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(2), Long.valueOf(paramLong2), Long.valueOf(paramLong1), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt2), paramString1, "", "", "", "", "", "", "", paramString2 })).bfK();
-      if ((paramd != null) && (paramd.field_retCode != 0))
-      {
-        if (paramd != null) {
-          break label879;
-        }
-        paramInt1 = -1;
-        label392:
-        paramLong1 = Util.nowMilliSecond();
-        i = com.tencent.mm.an.c.cY(MMApplicationContext.getContext());
-        j = com.tencent.mm.i.a.MediaType_THUMBIMAGE;
-        if (paramd != null) {
-          break label887;
-        }
-        paramString1 = "";
-        label417:
-        if (paramd != null) {
-          break label896;
-        }
-      }
-    }
-    label896:
-    for (paramd = "";; paramd = paramd.gqk)
-    {
-      new w(com.tencent.mm.plugin.report.a.t(new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(2), Long.valueOf(paramLong2), Long.valueOf(paramLong1), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt2), paramString1, "", "", "", "", "", "", "", paramd })).bfK();
-      paramd = o.bhj();
-      paramString1 = params.getFileName();
-      params = t.a.c.jsN;
-      if (!Util.isNullOrNil(paramString1))
-      {
-        paramString1 = paramd.Qq(paramString1);
-        if (paramString1 != null)
-        {
-          params = new t.a.a(paramString1.getFileName(), t.a.b.jsL, params, paramString1.jsu, paramString1.jqz);
-          paramd.iKx.event(params);
-          paramd.iKx.doNotify();
-        }
-      }
-      AppMethodBeat.o(127032);
-      return 0;
-      com.tencent.mm.vfs.o localo = new com.tencent.mm.vfs.o(paramString1);
-      new com.tencent.mm.vfs.o(paramString3).am(localo);
-      Log.i("MicroMsg.VideoMsgExtension", "getThumbByCdn succ. msgSvrId:%d user:%s thumbUrl:%s thumbPath:%s", new Object[] { Long.valueOf(paramLong1), params.getUser(), paramString2, paramString1 });
-      if (params.jsu == 3)
-      {
-        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(198L, 6L, paramInt2, false);
-        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(198L, 7L, 1L, false);
-        paramString1 = com.tencent.mm.plugin.report.service.h.CyF;
-        if (ab.Eq(params.getUser())) {}
-        for (paramLong1 = 9L;; paramLong1 = 8L)
-        {
-          paramString1.idkeyStat(198L, paramLong1, 1L, false);
-          break;
-        }
-      }
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(198L, 11L, paramInt2, false);
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(198L, 12L, 1L, false);
-      paramString1 = com.tencent.mm.plugin.report.service.h.CyF;
-      if (ab.Eq(params.getUser())) {}
-      for (paramLong1 = 14L;; paramLong1 = 13L)
-      {
-        paramString1.idkeyStat(198L, paramLong1, 1L, false);
-        break;
-      }
-      label853:
-      paramInt1 = paramd.field_retCode;
-      break label215;
-      label861:
-      paramString1 = paramd.field_transInfo;
-      break label240;
-      label870:
-      paramString2 = paramd.gqk;
-      break label248;
-      label879:
-      paramInt1 = paramd.field_retCode;
-      break label392;
-      label887:
-      paramString1 = paramd.field_transInfo;
-      break label417;
-    }
+    // Byte code:
+    //   0: ldc 11
+    //   2: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: ldc 19
+    //   7: ldc 21
+    //   9: aload_0
+    //   10: invokestatic 27	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   13: invokevirtual 31	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   16: invokestatic 37	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   19: aload_0
+    //   20: invokestatic 42	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   23: ifeq +10 -> 33
+    //   26: ldc 11
+    //   28: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   31: iconst_0
+    //   32: ireturn
+    //   33: aconst_null
+    //   34: astore_2
+    //   35: aconst_null
+    //   36: astore_1
+    //   37: aload_0
+    //   38: invokestatic 51	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   41: astore_0
+    //   42: aload_0
+    //   43: astore_1
+    //   44: aload_0
+    //   45: astore_2
+    //   46: bipush 10
+    //   48: newarray byte
+    //   50: astore_3
+    //   51: aload_0
+    //   52: astore_1
+    //   53: aload_0
+    //   54: astore_2
+    //   55: aload_0
+    //   56: aload_3
+    //   57: iconst_0
+    //   58: bipush 10
+    //   60: invokevirtual 57	java/io/InputStream:read	([BII)I
+    //   63: pop
+    //   64: aload_0
+    //   65: astore_1
+    //   66: aload_0
+    //   67: astore_2
+    //   68: aload_3
+    //   69: invokestatic 61	com/tencent/mm/modelvideo/v:aC	([B)Ljava/lang/String;
+    //   72: astore_3
+    //   73: aload_0
+    //   74: astore_1
+    //   75: aload_0
+    //   76: astore_2
+    //   77: aload_3
+    //   78: invokestatic 42	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   81: ifne +69 -> 150
+    //   84: aload_0
+    //   85: astore_1
+    //   86: aload_0
+    //   87: astore_2
+    //   88: aload_3
+    //   89: invokevirtual 65	java/lang/String:toUpperCase	()Ljava/lang/String;
+    //   92: astore_3
+    //   93: aload_0
+    //   94: astore_1
+    //   95: aload_0
+    //   96: astore_2
+    //   97: ldc 19
+    //   99: ldc 67
+    //   101: aload_3
+    //   102: invokestatic 27	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   105: invokevirtual 31	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   108: invokestatic 37	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   111: aload_0
+    //   112: astore_1
+    //   113: aload_0
+    //   114: astore_2
+    //   115: aload_3
+    //   116: ldc 69
+    //   118: invokevirtual 73	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   121: ifeq +29 -> 150
+    //   124: aload_0
+    //   125: astore_1
+    //   126: aload_0
+    //   127: astore_2
+    //   128: ldc 19
+    //   130: ldc 75
+    //   132: invokestatic 37	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   135: aload_0
+    //   136: ifnull +7 -> 143
+    //   139: aload_0
+    //   140: invokevirtual 79	java/io/InputStream:close	()V
+    //   143: ldc 11
+    //   145: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   148: iconst_1
+    //   149: ireturn
+    //   150: aload_0
+    //   151: ifnull +7 -> 158
+    //   154: aload_0
+    //   155: invokevirtual 79	java/io/InputStream:close	()V
+    //   158: ldc 11
+    //   160: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   163: iconst_0
+    //   164: ireturn
+    //   165: astore_0
+    //   166: aload_1
+    //   167: astore_2
+    //   168: ldc 19
+    //   170: ldc 81
+    //   172: iconst_1
+    //   173: anewarray 4	java/lang/Object
+    //   176: dup
+    //   177: iconst_0
+    //   178: aload_0
+    //   179: invokestatic 85	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   182: aastore
+    //   183: invokestatic 89	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   186: aload_1
+    //   187: ifnull -29 -> 158
+    //   190: aload_1
+    //   191: invokevirtual 79	java/io/InputStream:close	()V
+    //   194: goto -36 -> 158
+    //   197: astore_0
+    //   198: goto -40 -> 158
+    //   201: astore_0
+    //   202: aload_2
+    //   203: ifnull +7 -> 210
+    //   206: aload_2
+    //   207: invokevirtual 79	java/io/InputStream:close	()V
+    //   210: ldc 11
+    //   212: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   215: aload_0
+    //   216: athrow
+    //   217: astore_0
+    //   218: goto -75 -> 143
+    //   221: astore_0
+    //   222: goto -64 -> 158
+    //   225: astore_1
+    //   226: goto -16 -> 210
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	229	0	paramString	String
+    //   36	155	1	str	String
+    //   225	1	1	localIOException	java.io.IOException
+    //   34	173	2	localObject1	Object
+    //   50	66	3	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   37	42	165	java/lang/Exception
+    //   46	51	165	java/lang/Exception
+    //   55	64	165	java/lang/Exception
+    //   68	73	165	java/lang/Exception
+    //   77	84	165	java/lang/Exception
+    //   88	93	165	java/lang/Exception
+    //   97	111	165	java/lang/Exception
+    //   115	124	165	java/lang/Exception
+    //   128	135	165	java/lang/Exception
+    //   190	194	197	java/io/IOException
+    //   37	42	201	finally
+    //   46	51	201	finally
+    //   55	64	201	finally
+    //   68	73	201	finally
+    //   77	84	201	finally
+    //   88	93	201	finally
+    //   97	111	201	finally
+    //   115	124	201	finally
+    //   128	135	201	finally
+    //   168	186	201	finally
+    //   139	143	217	java/io/IOException
+    //   154	158	221	java/io/IOException
+    //   206	210	225	java/io/IOException
   }
   
-  public final h.b b(h.a arg1)
+  /* Error */
+  public static boolean XJ(String paramString)
   {
-    AppMethodBeat.i(127030);
-    Object localObject5 = ???.heO;
-    if (localObject5 == null)
-    {
-      Log.e("MicroMsg.VideoMsgExtension", "onPreAddMessage cmdAM is null , give up.");
-      AppMethodBeat.o(127030);
-      return null;
-    }
-    final String str1 = (String)com.tencent.mm.kernel.g.aAh().azQ().get(2, "");
-    Object localObject1 = z.a(((de)localObject5).KHm);
-    Object localObject3 = z.a(((de)localObject5).KHl);
-    boolean bool1;
-    if ((((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSW().has((String)localObject3)) || (str1.equals(localObject3)))
-    {
-      bool1 = true;
-      Log.d("MicroMsg.VideoMsgExtension", "video msg fromuser %s, toUser %s, userName %s, isSender %b", new Object[] { localObject3, localObject1, str1, Boolean.valueOf(bool1) });
-      localObject6 = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).eiy();
-      if (!str1.equals(localObject3)) {
-        break label374;
-      }
-    }
-    label374:
-    for (Object localObject4 = localObject1;; localObject4 = localObject3)
-    {
-      localObject4 = ((com.tencent.mm.plugin.messenger.foundation.a.a.i)localObject6).aJ((String)localObject4, ((de)localObject5).Brn);
-      Log.i("MicroMsg.VideoMsgExtension", "dkmsgid prepareMsgInfo svrid:%d localid:%d, flag:%d, msgseq:%d, addMsgInfo[%s]", new Object[] { Long.valueOf(((de)localObject5).Brn), Long.valueOf(((eo)localObject4).field_msgId), Integer.valueOf(((eo)localObject4).field_flag), Long.valueOf(((eo)localObject4).field_msgSeq), ??? });
-      if ((((eo)localObject4).field_msgId != 0L) && (((eo)localObject4).field_createTime + 604800000L < bp.C((String)localObject3, ((de)localObject5).CreateTime)))
-      {
-        Log.w("MicroMsg.VideoMsgExtension", "dkmsgid prepareMsgInfo msg Too Old Remove it. svrid:%d localid:%d", new Object[] { Long.valueOf(((de)localObject5).Brn), Long.valueOf(((eo)localObject4).field_msgId) });
-        bp.Ad(((eo)localObject4).field_msgId);
-        ((ca)localObject4).setMsgId(0L);
-      }
-      if (((eo)localObject4).field_msgId == 0L) {
-        break label381;
-      }
-      Log.d("MicroMsg.VideoMsgExtension", "Msgid:%d duplicate give up ", new Object[] { Long.valueOf(((de)localObject5).Brn) });
-      AppMethodBeat.o(127030);
-      return null;
-      bool1 = false;
-      break;
-    }
-    label381:
-    Object localObject6 = z.a(((de)localObject5).KHn);
-    localObject4 = new s();
-    if (bool1) {
-      localObject3 = localObject1;
-    }
-    ((s)localObject4).dWq = ((String)localObject3);
-    ((s)localObject4).createTime = ((de)localObject5).CreateTime;
-    ((s)localObject4).dTS = ((de)localObject5).Brn;
-    ((s)localObject4).jst = ((de)localObject5).KHn.MTo;
-    Log.i("MicroMsg.VideoMsgExtension", "parseVideoMsgXml [%s] msg Source[%s]", new Object[] { localObject6, ((de)localObject5).KHq });
-    Object localObject8 = XmlParser.parseXml((String)localObject6, "msg", null);
-    if (localObject8 == null)
-    {
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(111L, 216L, 1L, false);
-      AppMethodBeat.o(127030);
-      return null;
-    }
-    localObject3 = new ca();
-    ((ca)localObject3).BB(((de)localObject5).KHq);
-    Object localObject7 = bp.Ky(((de)localObject5).KHq);
-    if (localObject7 != null)
-    {
-      ((ca)localObject3).CH(((bp.b)localObject7).iEs);
-      ((ca)localObject3).nM(((bp.b)localObject7).iEt);
-    }
-    final int j;
-    String str4;
-    String str2;
-    String str3;
-    final int k;
-    int i;
-    for (;;)
-    {
-      try
-      {
-        ((s)localObject4).iKP = Util.getInt((String)((Map)localObject8).get(".msg.videomsg.$length"), 0);
-        ((s)localObject4).iFw = Util.getInt((String)((Map)localObject8).get(".msg.videomsg.$playlength"), 0);
-        Log.i("MicroMsg.VideoMsgExtension", "video msg total len %d, video len %d", new Object[] { Integer.valueOf(((s)localObject4).iKP), Integer.valueOf(((s)localObject4).iFw) });
-        ((s)localObject4).jsh = ((String)((Map)localObject8).get(".msg.videomsg.$fromusername"));
-        if (str1.equals(((s)localObject4).bhs())) {
-          ((s)localObject4).jsh = ((String)localObject1);
-        }
-        ((s)localObject4).ean = ((String)((Map)localObject8).get(".msg.statextstr"));
-        localObject1 = (String)((Map)localObject8).get(".msg.videomsg.$cdnthumbaeskey");
-        str1 = (String)((Map)localObject8).get(".msg.videomsg.$cdnthumburl");
-        j = Util.getInt((String)((Map)localObject8).get(".msg.videomsg.$cdnthumblength"), 0);
-        str4 = (String)((Map)localObject8).get(".msg.videomsg.$tpvideourl");
-        localObject7 = (String)((Map)localObject8).get(".msg.videomsg.$tpthumburl");
-        str2 = (String)((Map)localObject8).get(".msg.videomsg.$tpauthkey");
-        str3 = (String)((Map)localObject8).get(".msg.videomsg.$tpthumbaeskey");
-        k = Util.getInt((String)((Map)localObject8).get(".msg.videomsg.$tpthumblength"), 0);
-        int m = Util.getInt((String)((Map)localObject8).get(".msg.videomsg.$type"), 0);
-        Log.d("MicroMsg.VideoMsgExtension", "video msg exportType :".concat(String.valueOf(m)));
-        if (m == 44)
-        {
-          i = 1;
-          ((s)localObject4).jsr = i;
-          if (62 == ((de)localObject5).xKb)
-          {
-            ((s)localObject4).jsu = 3;
-            ((s)localObject4).a(Util.nullAs((String)((Map)localObject8).get(".msg.streamvideo.streamvideourl"), ""), Util.getInt((String)((Map)localObject8).get(".msg.streamvideo.streamvideototaltime"), 0), Util.nullAs((String)((Map)localObject8).get(".msg.streamvideo.streamvideotitle"), ""), Util.nullAs((String)((Map)localObject8).get(".msg.streamvideo.streamvideowording"), ""), Util.nullAs((String)((Map)localObject8).get(".msg.streamvideo.streamvideoweburl"), ""), Util.nullAs((String)((Map)localObject8).get(".msg.streamvideo.streamvideoaduxinfo"), ""), Util.nullAs((String)((Map)localObject8).get(".msg.streamvideo.streamvideopublishid"), ""));
-            boolean bool2 = ((s)localObject4).bhs().equals((String)com.tencent.mm.kernel.g.aAh().azQ().get(2, ""));
-            if (!bool2) {
-              break;
-            }
-            AppMethodBeat.o(127030);
-            return null;
-          }
-        }
-        else
-        {
-          i = 0;
-          continue;
-        }
-        if (m > 0) {
-          ((s)localObject4).jsu = 2;
-        } else {
-          ((s)localObject4).jsu = 1;
-        }
-      }
-      catch (Exception ???)
-      {
-        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(111L, 216L, 1L, false);
-        Log.e("MicroMsg.VideoMsgExtension", "parsing voice msg xml failed");
-        Log.e("MicroMsg.VideoMsgExtension", "exception:%s", new Object[] { Util.stackTraceToString(???) });
-        AppMethodBeat.o(127030);
-        return null;
-      }
-    }
-    localObject8 = (String)((Map)localObject8).get(".msg.commenturl");
-    Object localObject9 = XmlParser.parseXml((String)localObject6, "msgoperation", null);
-    if (localObject9 != null)
-    {
-      ((ca)localObject3).CI((String)((Map)localObject9).get(".msgoperation.expinfo.expidstr"));
-      ((ca)localObject3).nL(Util.getInt((String)((Map)localObject9).get(".msgoperation.sightmsg.downloadcontroltype"), 0));
-      Log.i("MicroMsg.VideoMsgExtension", "[chatting_exp] expidstr:%s, downloadcontroltype:%d", new Object[] { ((eo)localObject3).fRa, Integer.valueOf(((eo)localObject3).fRb) });
-    }
-    localObject9 = t.Qv(((s)localObject4).bhs());
-    ((s)localObject4).fileName = ((String)localObject9);
-    ((ca)localObject3).yF(((s)localObject4).dTS);
-    ((ca)localObject3).Cz(((s)localObject4).getFileName());
-    ((ca)localObject3).setCreateTime(bp.C(((s)localObject4).getUser(), ((s)localObject4).createTime));
-    ((ca)localObject3).Cy(((s)localObject4).getUser());
-    ((ca)localObject3).setStatus(((de)localObject5).oTW);
-    if (bool1)
-    {
-      i = 1;
-      ((ca)localObject3).nv(i);
-      if (((de)localObject5).xKb != 62) {
-        break label1460;
-      }
-      ((ca)localObject3).setType(62);
-    }
-    final long l1;
-    for (;;)
-    {
-      ((ca)localObject3).setContent(q.b(((s)localObject4).bhs(), 0L, false));
-      ((ca)localObject3).CA((String)localObject6);
-      ((ca)localObject3).CG((String)localObject8);
-      ((ca)localObject3).BB(((de)localObject5).KHq);
-      bp.a((ca)localObject3, ???);
-      l1 = bp.x((ca)localObject3);
-      if (l1 > 0L) {
-        break label1470;
-      }
-      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(111L, 215L, 1L, false);
-      Log.e("MicroMsg.VideoMsgExtension", "onPreAddMessage insert msg failed local:%d svrid:%d", new Object[] { Long.valueOf(l1), Long.valueOf(((s)localObject4).dTS) });
-      AppMethodBeat.o(127030);
-      return null;
-      i = 0;
-      break;
-      label1460:
-      ((ca)localObject3).setType(43);
-    }
-    label1470:
-    ((s)localObject4).jso = ((int)l1);
-    ((s)localObject4).jsm = Util.nowSecond();
-    ((s)localObject4).jsp = 0;
-    ((s)localObject4).status = 111;
-    Log.d("MicroMsg.VideoMsgExtension", "Insert fileName[" + ((s)localObject4).getFileName() + "] size:" + ((s)localObject4).iKP + " svrid:" + ((s)localObject4).dTS + " timelen:" + ((s)localObject4).iFw + " user:" + ((s)localObject4).getUser() + " human:" + ((s)localObject4).bhs());
-    if (!o.bhj().b((s)localObject4))
-    {
-      Log.d("MicroMsg.VideoMsgExtension", "Insert Error fileName:" + ((s)localObject4).getFileName());
-      AppMethodBeat.o(127030);
-      return null;
-    }
-    o.bhj();
-    localObject6 = t.Qx((String)localObject9);
-    ??? = z.a(((de)localObject5).KHp);
-    Log.i("MicroMsg.VideoMsgExtension", "imgBuf  :%d", new Object[] { Integer.valueOf(Util.getLength(???)) });
-    if (ac.jOI)
-    {
-      Log.w("MicroMsg.VideoMsgExtension", "Test.useCdnDownThumb  set img buf null !!!!!!!");
-      ??? = null;
-    }
-    if (!Util.isNullOrNil(???))
-    {
-      t.a((String)localObject6, 0, ???);
-      if (((ca)localObject3).cWL())
-      {
-        com.tencent.mm.modelcontrol.d.baW();
-        if (((eo)localObject3).fRb != 1) {
-          break label2363;
-        }
-        i = 1;
-        label1735:
-        if (i != 0)
-        {
-          u.QI(((eo)localObject3).field_imgPath);
-          com.tencent.mm.an.f.baQ().iRE.add("video_" + ((eo)localObject3).field_msgId);
-        }
-      }
-      j = 1;
-      if (!ab.Eq(((s)localObject4).getUser())) {
-        break label3069;
-      }
-      i = com.tencent.mm.model.v.Ie(((s)localObject4).getUser());
-      if ((!ab.JJ(((s)localObject4).getUser())) && (ab.JI(((s)localObject4).getUser()))) {
-        break label3052;
-      }
-      j = 2;
-    }
-    for (;;)
-    {
-      for (;;)
-      {
-        com.tencent.mm.plugin.report.service.h.CyF.a(14388, new Object[] { Long.valueOf(((eo)localObject3).field_msgSvrId), Integer.valueOf(j), "", Integer.valueOf(i) });
-        localObject1 = o.bhl();
-        synchronized (((i)localObject1).jra)
-        {
-          ((i)localObject1).jra.offerFirst(localObject3);
-          ((i)localObject1).startDownload();
-          ??? = new h.b((ca)localObject3, true);
-          AppMethodBeat.o(127030);
-          return ???;
-          if (!Util.isNullOrNil(str4))
-          {
-            l1 = ((s)localObject4).dTS;
-            Log.i("MicroMsg.VideoMsgExtension", "getThumbByCdn msgSvrId:%d user:%s thumbUrl:%s thumbPath:%s", new Object[] { Long.valueOf(l1), ((s)localObject4).getUser(), localObject7, localObject6 });
-            l2 = Util.nowMilliSecond();
-            ??? = (String)localObject6 + ".tmp";
-            localObject1 = new com.tencent.mm.i.g();
-            ((com.tencent.mm.i.g)localObject1).taskName = "task_VideoMsgExtension_1";
-            ((com.tencent.mm.i.g)localObject1).field_mediaId = com.tencent.mm.an.c.a("downvideothumb", ((s)localObject4).createTime, ((s)localObject4).getUser(), String.valueOf(l1));
-            ((com.tencent.mm.i.g)localObject1).field_fullpath = ???;
-            ((com.tencent.mm.i.g)localObject1).field_fileType = 19;
-            ((com.tencent.mm.i.g)localObject1).field_aesKey = str3;
-            ((com.tencent.mm.i.g)localObject1).field_authKey = str2;
-            ((com.tencent.mm.i.g)localObject1).gqB = ((String)localObject7);
-            ((com.tencent.mm.i.g)localObject1).gqy = new g.a()
-            {
-              public final int a(String paramAnonymousString, int paramAnonymousInt, com.tencent.mm.i.c paramAnonymousc, com.tencent.mm.i.d paramAnonymousd, boolean paramAnonymousBoolean)
-              {
-                AppMethodBeat.i(127028);
-                paramAnonymousInt = v.a(paramAnonymousInt, paramAnonymousd, l1, this.jsS, this.iYw, k, parama, l2, this.val$startTime);
-                AppMethodBeat.o(127028);
-                return paramAnonymousInt;
-              }
-              
-              public final void a(String paramAnonymousString, ByteArrayOutputStream paramAnonymousByteArrayOutputStream) {}
-              
-              public final byte[] f(String paramAnonymousString, byte[] paramAnonymousArrayOfByte)
-              {
-                return new byte[0];
-              }
-            };
-            com.tencent.mm.an.f.baQ().b((com.tencent.mm.i.g)localObject1, -1);
-            break;
-          }
-          l1 = ((s)localObject4).dTS;
-          Log.i("MicroMsg.VideoMsgExtension", "getThumbByCdn msgSvrId:%d user:%s thumbUrl:%s thumbPath:%s", new Object[] { Long.valueOf(l1), ((s)localObject4).getUser(), str1, localObject6 });
-          final long l2 = Util.nowMilliSecond();
-          ??? = (String)localObject6 + ".tmp";
-          localObject5 = new com.tencent.mm.i.g();
-          ((com.tencent.mm.i.g)localObject5).taskName = "task_VideoMsgExtension_2";
-          ((com.tencent.mm.i.g)localObject5).field_mediaId = com.tencent.mm.an.c.a("downvideothumb", ((s)localObject4).createTime, ((s)localObject4).getUser(), String.valueOf(l1));
-          ((com.tencent.mm.i.g)localObject5).field_fullpath = ???;
-          ((com.tencent.mm.i.g)localObject5).field_fileType = com.tencent.mm.i.a.MediaType_THUMBIMAGE;
-          ((com.tencent.mm.i.g)localObject5).field_totalLen = j;
-          ((com.tencent.mm.i.g)localObject5).field_aesKey = ((String)localObject1);
-          ((com.tencent.mm.i.g)localObject5).field_fileId = str1;
-          ((com.tencent.mm.i.g)localObject5).field_priority = com.tencent.mm.i.a.gpN;
-          if (ab.Eq(((s)localObject4).getUser())) {}
-          for (i = 1;; i = 0)
-          {
-            ((com.tencent.mm.i.g)localObject5).field_chattype = i;
-            Log.d("MicroMsg.VideoMsgExtension", "get thumb by cdn [video] chatType[%d] user[%s] ", new Object[] { Integer.valueOf(((com.tencent.mm.i.g)localObject5).field_chattype), ((s)localObject4).getUser() });
-            ((com.tencent.mm.i.g)localObject5).gqy = new g.a()
-            {
-              public final int a(String paramAnonymousString, int paramAnonymousInt, com.tencent.mm.i.c paramAnonymousc, com.tencent.mm.i.d paramAnonymousd, boolean paramAnonymousBoolean)
-              {
-                AppMethodBeat.i(127029);
-                paramAnonymousInt = v.a(paramAnonymousInt, paramAnonymousd, l1, this.jsS, str1, j, parama, l2, this.val$startTime);
-                AppMethodBeat.o(127029);
-                return paramAnonymousInt;
-              }
-              
-              public final void a(String paramAnonymousString, ByteArrayOutputStream paramAnonymousByteArrayOutputStream) {}
-              
-              public final byte[] f(String paramAnonymousString, byte[] paramAnonymousArrayOfByte)
-              {
-                return null;
-              }
-            };
-            com.tencent.mm.an.f.baQ().b((com.tencent.mm.i.g)localObject5, -1);
-            break;
-          }
-          label2363:
-          if (((eo)localObject3).fRb == 2)
-          {
-            i = 0;
-            break label1735;
-          }
-          if (!com.tencent.mm.modelcontrol.d.T((ca)localObject3))
-          {
-            Log.i("MicroMsg.SubCoreAutoDownload", "this message need control, do not auto download C2C short video.");
-            i = 0;
-            break label1735;
-          }
-          ??? = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getValue("C2CSightNotAutoDownloadTimeRange");
-          Log.i("MicroMsg.BusyTimeControlLogic", "C2CSightNotAutoDownloadTimeRange value: ".concat(String.valueOf(???)));
-          if (com.tencent.mm.modelcontrol.b.Of(???))
-          {
-            Log.i("MicroMsg.SubCoreAutoDownload", "it is busy time now , do not auto download C2C short video.");
-            i = 0;
-            break label1735;
-          }
-          ??? = ((eo)localObject3).field_talker;
-          Log.d("MicroMsg.SubCoreAutoDownload", "isC2CSightAutoDownload msg talker: ".concat(String.valueOf(???)));
-          i = Util.getInt(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getValue("SIGHTSessionAutoLoadNetwork"), 1);
-          if (i == 3)
-          {
-            Log.i("MicroMsg.SubCoreAutoDownload", "setting is not download sight automate, %d, %d", new Object[] { Long.valueOf(((eo)localObject3).field_msgId), Long.valueOf(((eo)localObject3).field_msgSvrId) });
-            i = 0;
-            break label1735;
-          }
-          if (NetStatusUtil.isWifi(MMApplicationContext.getContext()))
-          {
-            Log.i("MicroMsg.SubCoreAutoDownload", "match wifi, do auto download short video [msgid-%d-%d] [%s]", new Object[] { Long.valueOf(((eo)localObject3).field_msgId), Long.valueOf(((eo)localObject3).field_msgSvrId), ((eo)localObject3).field_imgPath });
-            localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn(???);
-            if ((localObject1 != null) && ((int)((com.tencent.mm.contact.c)localObject1).gMZ > 0) && (((ab.Eq(???)) && (((ax)localObject1).fuH == 0)) || (((as)localObject1).Zx()))) {
-              break label3038;
-            }
-            i = 1;
-            break label1735;
-          }
-          if (NetStatusUtil.is2G(MMApplicationContext.getContext()))
-          {
-            Log.i("MicroMsg.SubCoreAutoDownload", "match edge, do not auto download short video [msgid-%d-%d] [%s]", new Object[] { Long.valueOf(((eo)localObject3).field_msgId), Long.valueOf(((eo)localObject3).field_msgSvrId), ((eo)localObject3).field_imgPath });
-            i = 0;
-            break label1735;
-          }
-          ??? = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn(((eo)localObject3).field_talker);
-          if (ab.Eq(((eo)localObject3).field_talker))
-          {
-            if (???.fuH == 0)
-            {
-              Log.i("MicroMsg.SubCoreAutoDownload", "match muted chatroom and not wifi, do not auto download short video [msgid-%d-%d] [%s]", new Object[] { Long.valueOf(((eo)localObject3).field_msgId), Long.valueOf(((eo)localObject3).field_msgSvrId), ((eo)localObject3).field_imgPath });
-              i = 0;
-              break label1735;
-            }
-            if (((NetStatusUtil.is3G(MMApplicationContext.getContext())) || (NetStatusUtil.is4G(MMApplicationContext.getContext()))) && (i == 1))
-            {
-              Log.i("MicroMsg.SubCoreAutoDownload", "match 3G/4G and unmuted chatroom, do auto download short video [msgid-%d-%d] [%s]", new Object[] { Long.valueOf(((eo)localObject3).field_msgId), Long.valueOf(((eo)localObject3).field_msgSvrId), ((eo)localObject3).field_imgPath });
-              i = 1;
-              break label1735;
-            }
-            Log.i("MicroMsg.SubCoreAutoDownload", "unknown auto download short video step A");
-            i = 0;
-            break label1735;
-          }
-          if (???.Zx())
-          {
-            Log.i("MicroMsg.SubCoreAutoDownload", "match muted and not wifi, do not auto download short video [msgid-%d-%d] [%s]", new Object[] { Long.valueOf(((eo)localObject3).field_msgId), Long.valueOf(((eo)localObject3).field_msgSvrId), ((eo)localObject3).field_imgPath });
-            i = 0;
-            break label1735;
-          }
-          if (((NetStatusUtil.is3G(MMApplicationContext.getContext())) || (NetStatusUtil.is4G(MMApplicationContext.getContext()))) && (i == 1))
-          {
-            Log.i("MicroMsg.SubCoreAutoDownload", "match 3G/4G and unmuted, do auto download short video [msgid-%d-%d] [%s]", new Object[] { Long.valueOf(((eo)localObject3).field_msgId), Long.valueOf(((eo)localObject3).field_msgSvrId), ((eo)localObject3).field_imgPath });
-            i = 1;
-            break label1735;
-          }
-          Log.i("MicroMsg.SubCoreAutoDownload", "unknown auto download short video step B");
-          i = 0;
-          break label1735;
-          label3038:
-          Log.i("MicroMsg.SubCoreAutoDownload", "default can not auto download C2C short video.");
-          i = 0;
-          break label1735;
-          label3052:
-          j = 3;
-        }
-      }
-      label3069:
-      i = 0;
-    }
+    // Byte code:
+    //   0: ldc 92
+    //   2: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: invokestatic 95	com/tencent/mm/vfs/u:agG	(Ljava/lang/String;)Z
+    //   9: ifne +10 -> 19
+    //   12: ldc 92
+    //   14: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   17: iconst_0
+    //   18: ireturn
+    //   19: aconst_null
+    //   20: astore_3
+    //   21: aconst_null
+    //   22: astore_2
+    //   23: aload_0
+    //   24: invokestatic 51	com/tencent/mm/vfs/u:Tf	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   27: astore_0
+    //   28: aload_0
+    //   29: astore_2
+    //   30: aload_0
+    //   31: astore_3
+    //   32: bipush 32
+    //   34: newarray byte
+    //   36: astore 4
+    //   38: aload_0
+    //   39: astore_2
+    //   40: aload_0
+    //   41: astore_3
+    //   42: aload_0
+    //   43: aload 4
+    //   45: iconst_0
+    //   46: bipush 32
+    //   48: invokevirtual 57	java/io/InputStream:read	([BII)I
+    //   51: pop
+    //   52: aload_0
+    //   53: astore_2
+    //   54: aload_0
+    //   55: astore_3
+    //   56: aload 4
+    //   58: invokestatic 61	com/tencent/mm/modelvideo/v:aC	([B)Ljava/lang/String;
+    //   61: astore 4
+    //   63: aload_0
+    //   64: astore_2
+    //   65: aload_0
+    //   66: astore_3
+    //   67: aload 4
+    //   69: invokestatic 42	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   72: ifne +37 -> 109
+    //   75: aload_0
+    //   76: astore_2
+    //   77: aload_0
+    //   78: astore_3
+    //   79: aload 4
+    //   81: invokevirtual 65	java/lang/String:toUpperCase	()Ljava/lang/String;
+    //   84: ldc 97
+    //   86: invokevirtual 73	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   89: istore_1
+    //   90: iload_1
+    //   91: ifeq +18 -> 109
+    //   94: aload_0
+    //   95: ifnull +7 -> 102
+    //   98: aload_0
+    //   99: invokevirtual 79	java/io/InputStream:close	()V
+    //   102: ldc 92
+    //   104: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   107: iconst_1
+    //   108: ireturn
+    //   109: aload_0
+    //   110: ifnull +7 -> 117
+    //   113: aload_0
+    //   114: invokevirtual 79	java/io/InputStream:close	()V
+    //   117: ldc 92
+    //   119: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   122: iconst_0
+    //   123: ireturn
+    //   124: astore_0
+    //   125: aload_2
+    //   126: astore_3
+    //   127: ldc 19
+    //   129: ldc 81
+    //   131: iconst_1
+    //   132: anewarray 4	java/lang/Object
+    //   135: dup
+    //   136: iconst_0
+    //   137: aload_0
+    //   138: invokestatic 85	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   141: aastore
+    //   142: invokestatic 89	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   145: aload_2
+    //   146: ifnull -29 -> 117
+    //   149: aload_2
+    //   150: invokevirtual 79	java/io/InputStream:close	()V
+    //   153: goto -36 -> 117
+    //   156: astore_0
+    //   157: goto -40 -> 117
+    //   160: astore_0
+    //   161: aload_3
+    //   162: ifnull +7 -> 169
+    //   165: aload_3
+    //   166: invokevirtual 79	java/io/InputStream:close	()V
+    //   169: ldc 92
+    //   171: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   174: aload_0
+    //   175: athrow
+    //   176: astore_0
+    //   177: goto -75 -> 102
+    //   180: astore_0
+    //   181: goto -64 -> 117
+    //   184: astore_2
+    //   185: goto -16 -> 169
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	188	0	paramString	String
+    //   89	2	1	bool	boolean
+    //   22	128	2	str	String
+    //   184	1	2	localIOException	java.io.IOException
+    //   20	146	3	localObject1	Object
+    //   36	44	4	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   23	28	124	java/lang/Exception
+    //   32	38	124	java/lang/Exception
+    //   42	52	124	java/lang/Exception
+    //   56	63	124	java/lang/Exception
+    //   67	75	124	java/lang/Exception
+    //   79	90	124	java/lang/Exception
+    //   149	153	156	java/io/IOException
+    //   23	28	160	finally
+    //   32	38	160	finally
+    //   42	52	160	finally
+    //   56	63	160	finally
+    //   67	75	160	finally
+    //   79	90	160	finally
+    //   127	145	160	finally
+    //   98	102	176	java/io/IOException
+    //   113	117	180	java/io/IOException
+    //   165	169	184	java/io/IOException
   }
   
-  public final void b(h.c paramc)
+  private static String aC(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(127031);
-    paramc = paramc.dTX;
-    if (paramc == null)
+    AppMethodBeat.i(133566);
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramArrayOfByte.length <= 0)
     {
-      AppMethodBeat.o(127031);
-      return;
+      AppMethodBeat.o(133566);
+      return null;
     }
-    u.QM(paramc.field_imgPath);
-    AppMethodBeat.o(127031);
+    int i = 0;
+    while (i < paramArrayOfByte.length)
+    {
+      String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
+      if (str.length() < 2) {
+        localStringBuilder.append(0);
+      }
+      localStringBuilder.append(str);
+      i += 1;
+    }
+    paramArrayOfByte = localStringBuilder.toString();
+    AppMethodBeat.o(133566);
+    return paramArrayOfByte;
+  }
+  
+  /* Error */
+  public static boolean isH265Video(String paramString)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: ldc 127
+    //   5: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_0
+    //   9: invokestatic 95	com/tencent/mm/vfs/u:agG	(Ljava/lang/String;)Z
+    //   12: ifne +10 -> 22
+    //   15: ldc 127
+    //   17: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   20: iconst_0
+    //   21: ireturn
+    //   22: ldc 19
+    //   24: ldc 129
+    //   26: iconst_1
+    //   27: anewarray 4	java/lang/Object
+    //   30: dup
+    //   31: iconst_0
+    //   32: aload_0
+    //   33: aastore
+    //   34: invokestatic 131	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   37: ldc 133
+    //   39: invokestatic 139	com/tencent/mm/kernel/h:ae	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+    //   42: checkcast 133	com/tencent/mm/plugin/expt/b/b
+    //   45: getstatic 145	com/tencent/mm/plugin/expt/b/b$a:vTW	Lcom/tencent/mm/plugin/expt/b/b$a;
+    //   48: iconst_1
+    //   49: invokeinterface 149 3 0
+    //   54: ifne +204 -> 258
+    //   57: new 151	com/tencent/mm/compatible/i/c
+    //   60: dup
+    //   61: invokespecial 152	com/tencent/mm/compatible/i/c:<init>	()V
+    //   64: astore 5
+    //   66: aload 5
+    //   68: aload_0
+    //   69: invokevirtual 156	com/tencent/mm/compatible/i/c:setDataSource	(Ljava/lang/String;)V
+    //   72: aload 5
+    //   74: getfield 160	com/tencent/mm/compatible/i/c:jvU	Landroid/media/MediaExtractor;
+    //   77: invokevirtual 165	android/media/MediaExtractor:getTrackCount	()I
+    //   80: istore_2
+    //   81: iconst_0
+    //   82: istore_1
+    //   83: iload_1
+    //   84: iload_2
+    //   85: if_icmpge +99 -> 184
+    //   88: aload 5
+    //   90: iload_1
+    //   91: invokevirtual 169	com/tencent/mm/compatible/i/c:getTrackFormat	(I)Landroid/media/MediaFormat;
+    //   94: ldc 171
+    //   96: invokevirtual 176	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   99: astore 4
+    //   101: ldc 178
+    //   103: aload 4
+    //   105: invokevirtual 181	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   108: istore_3
+    //   109: iload_3
+    //   110: ifeq +40 -> 150
+    //   113: aload 5
+    //   115: getfield 160	com/tencent/mm/compatible/i/c:jvU	Landroid/media/MediaExtractor;
+    //   118: invokevirtual 184	android/media/MediaExtractor:release	()V
+    //   121: ldc 127
+    //   123: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   126: iconst_1
+    //   127: ireturn
+    //   128: astore 6
+    //   130: aconst_null
+    //   131: astore 4
+    //   133: ldc 19
+    //   135: aload 6
+    //   137: ldc 129
+    //   139: iconst_1
+    //   140: anewarray 4	java/lang/Object
+    //   143: dup
+    //   144: iconst_0
+    //   145: aload_0
+    //   146: aastore
+    //   147: invokestatic 188	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   150: ldc 178
+    //   152: aload 4
+    //   154: invokevirtual 181	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   157: istore_3
+    //   158: iload_3
+    //   159: ifeq +18 -> 177
+    //   162: aload 5
+    //   164: getfield 160	com/tencent/mm/compatible/i/c:jvU	Landroid/media/MediaExtractor;
+    //   167: invokevirtual 184	android/media/MediaExtractor:release	()V
+    //   170: ldc 127
+    //   172: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   175: iconst_1
+    //   176: ireturn
+    //   177: iload_1
+    //   178: iconst_1
+    //   179: iadd
+    //   180: istore_1
+    //   181: goto -98 -> 83
+    //   184: aload 5
+    //   186: getfield 160	com/tencent/mm/compatible/i/c:jvU	Landroid/media/MediaExtractor;
+    //   189: invokevirtual 184	android/media/MediaExtractor:release	()V
+    //   192: ldc 127
+    //   194: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   197: iconst_0
+    //   198: ireturn
+    //   199: astore 5
+    //   201: ldc 19
+    //   203: aload 5
+    //   205: ldc 129
+    //   207: iconst_1
+    //   208: anewarray 4	java/lang/Object
+    //   211: dup
+    //   212: iconst_0
+    //   213: aload_0
+    //   214: aastore
+    //   215: invokestatic 188	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   218: aload 4
+    //   220: ifnull -28 -> 192
+    //   223: aload 4
+    //   225: getfield 160	com/tencent/mm/compatible/i/c:jvU	Landroid/media/MediaExtractor;
+    //   228: invokevirtual 184	android/media/MediaExtractor:release	()V
+    //   231: goto -39 -> 192
+    //   234: astore_0
+    //   235: aconst_null
+    //   236: astore 4
+    //   238: aload 4
+    //   240: ifnull +11 -> 251
+    //   243: aload 4
+    //   245: getfield 160	com/tencent/mm/compatible/i/c:jvU	Landroid/media/MediaExtractor;
+    //   248: invokevirtual 184	android/media/MediaExtractor:release	()V
+    //   251: ldc 127
+    //   253: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   256: aload_0
+    //   257: athrow
+    //   258: aload_0
+    //   259: invokestatic 193	com/tencent/mm/plugin/sight/base/SightVideoJNI:isH265VideoVFS	(Ljava/lang/String;)Z
+    //   262: istore_3
+    //   263: ldc 127
+    //   265: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   268: iload_3
+    //   269: ireturn
+    //   270: astore_0
+    //   271: aload 5
+    //   273: astore 4
+    //   275: goto -37 -> 238
+    //   278: astore_0
+    //   279: goto -41 -> 238
+    //   282: astore 6
+    //   284: aload 5
+    //   286: astore 4
+    //   288: aload 6
+    //   290: astore 5
+    //   292: goto -91 -> 201
+    //   295: astore 6
+    //   297: goto -164 -> 133
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	300	0	paramString	String
+    //   82	99	1	i	int
+    //   80	6	2	j	int
+    //   108	161	3	bool	boolean
+    //   1	286	4	localObject1	Object
+    //   64	121	5	localc	com.tencent.mm.compatible.i.c
+    //   199	86	5	localThrowable1	java.lang.Throwable
+    //   290	1	5	localObject2	Object
+    //   128	8	6	localThrowable2	java.lang.Throwable
+    //   282	7	6	localThrowable3	java.lang.Throwable
+    //   295	1	6	localThrowable4	java.lang.Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   88	101	128	java/lang/Throwable
+    //   57	66	199	java/lang/Throwable
+    //   57	66	234	finally
+    //   66	81	270	finally
+    //   88	101	270	finally
+    //   101	109	270	finally
+    //   133	150	270	finally
+    //   150	158	270	finally
+    //   201	218	278	finally
+    //   66	81	282	java/lang/Throwable
+    //   133	150	282	java/lang/Throwable
+    //   150	158	282	java/lang/Throwable
+    //   101	109	295	java/lang/Throwable
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelvideo.v
  * JD-Core Version:    0.7.0.1
  */

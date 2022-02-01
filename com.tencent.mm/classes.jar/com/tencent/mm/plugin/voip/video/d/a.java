@@ -3,21 +3,21 @@ package com.tencent.mm.plugin.voip.video.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/voip/video/videoprocessing/STFitlerMotionNoiseData;", "", "motion", "", "noise", "", "(IF)V", "reset", "", "Companion", "STFitlerMotionNoiseData", "plugin-voip_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/voip/video/videoprocessing/STFitlerMotionNoiseData;", "", "motion", "", "noise", "", "(IF)V", "reset", "", "Companion", "STFitlerMotionNoiseData", "plugin-voip_release"})
 public final class a
 {
-  public static final a HpC;
-  public int HpA = 0;
-  public float HpB = 0.012F;
+  public static final a Ogv;
+  public int Ogt = 0;
+  public float Ogu = 0.012F;
   
   static
   {
-    AppMethodBeat.i(236375);
-    HpC = new a((byte)0);
-    AppMethodBeat.o(236375);
+    AppMethodBeat.i(237918);
+    Ogv = new a((byte)0);
+    AppMethodBeat.o(237918);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/voip/video/videoprocessing/STFitlerMotionNoiseData$Companion;", "", "()V", "STFILTER_NOSCREENOUT", "", "STFILTER_NOUSE", "STFILTER_SCREENOUT", "STFILTER_USE", "TYPE_DEFAULT", "plugin-voip_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/voip/video/videoprocessing/STFitlerMotionNoiseData$Companion;", "", "()V", "STFILTER_NOSCREENOUT", "", "STFILTER_NOUSE", "STFILTER_SCREENOUT", "STFILTER_USE", "TYPE_DEFAULT", "plugin-voip_release"})
   public static final class a {}
 }
 

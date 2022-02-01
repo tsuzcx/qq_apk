@@ -1,7 +1,7 @@
 package com.tencent.mm.emoji.loader.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.f;
+import com.tencent.mm.aq.f;
 import com.tencent.mm.i.c;
 import com.tencent.mm.i.g;
 import com.tencent.mm.i.g.a;
@@ -12,71 +12,71 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/loader/fetcher/EmojiCdnFetcher;", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcher;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "success", "", "cdnCallback", "com/tencent/mm/emoji/loader/fetcher/EmojiCdnFetcher$cdnCallback$1", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiCdnFetcher$cdnCallback$1;", "fetcherConfig", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfig;", "createCdnTask", "Lcom/tencent/mm/cdn/keep_TaskInfo;", "fetch", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/loader/fetcher/EmojiCdnFetcher;", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcher;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "success", "", "cdnCallback", "com/tencent/mm/emoji/loader/fetcher/EmojiCdnFetcher$cdnCallback$1", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiCdnFetcher$cdnCallback$1;", "fetcherConfig", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfig;", "createCdnTask", "Lcom/tencent/mm/cdn/keep_TaskInfo;", "fetch", "plugin-emojisdk_release"})
 public final class a
   implements d
 {
   final String TAG;
   private kotlin.g.a.b<? super Boolean, x> callback;
-  private e gVV;
-  private final a gVW;
+  private e jGR;
+  private final a jGS;
   
   public a()
   {
     AppMethodBeat.i(105420);
     this.TAG = "MicroMsg.EmojiLoader.EmojiFetcher";
-    this.gVW = new a(this);
+    this.jGS = new a(this);
     AppMethodBeat.o(105420);
   }
   
   public final void a(e parame, kotlin.g.a.b<? super Boolean, x> paramb)
   {
     AppMethodBeat.i(105419);
-    p.h(parame, "fetcherConfig");
-    this.gVV = parame;
+    p.k(parame, "fetcherConfig");
+    this.jGR = parame;
     this.callback = paramb;
-    parame = f.baQ();
+    parame = f.bkg();
     paramb = new g();
     paramb.taskName = "task_EmojiCdnFetcher";
-    Object localObject = this.gVV;
+    Object localObject = this.jGR;
     if (localObject == null) {
-      p.btv("fetcherConfig");
+      p.bGy("fetcherConfig");
     }
     paramb.field_authKey = ((e)localObject).authKey;
     paramb.field_fileType = 19;
-    localObject = new StringBuilder().append(d.a.auE());
-    e locale = this.gVV;
+    localObject = new StringBuilder().append(d.a.aBz());
+    e locale = this.jGR;
     if (locale == null) {
-      p.btv("fetcherConfig");
+      p.bGy("fetcherConfig");
     }
-    paramb.field_mediaId = locale.gWm.getMd5();
-    localObject = this.gVV;
+    paramb.field_mediaId = locale.jHh.getMd5();
+    localObject = this.jGR;
     if (localObject == null) {
-      p.btv("fetcherConfig");
+      p.bGy("fetcherConfig");
     }
     paramb.field_fullpath = ((e)localObject).path;
-    localObject = this.gVV;
+    localObject = this.jGR;
     if (localObject == null) {
-      p.btv("fetcherConfig");
+      p.bGy("fetcherConfig");
     }
-    paramb.gqB = ((e)localObject).url;
-    paramb.gqy = ((g.a)this.gVW);
+    paramb.iUJ = ((e)localObject).url;
+    paramb.iUG = ((g.a)this.jGS);
     parame.e(paramb);
     AppMethodBeat.o(105419);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/emoji/loader/fetcher/EmojiCdnFetcher$cdnCallback$1", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskCallback;", "callback", "", "mediaId", "", "startRet", "progressInfo", "Lcom/tencent/mm/cdn/keep_ProgressInfo;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onlyCheckExist", "", "decodePrepareResponse", "", "inbuf", "getCdnAuthInfo", "", "buff", "Ljava/io/ByteArrayOutputStream;", "plugin-emojisdk_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/emoji/loader/fetcher/EmojiCdnFetcher$cdnCallback$1", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskCallback;", "callback", "", "mediaId", "", "startRet", "progressInfo", "Lcom/tencent/mm/cdn/keep_ProgressInfo;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onlyCheckExist", "", "decodePrepareResponse", "", "inbuf", "getCdnAuthInfo", "", "buff", "Ljava/io/ByteArrayOutputStream;", "plugin-emojisdk_release"})
   public static final class a
     implements g.a
   {
     public final int a(String paramString, int paramInt, c paramc, com.tencent.mm.i.d paramd, boolean paramBoolean)
     {
       AppMethodBeat.i(105418);
-      Log.i(this.gVX.TAG, "callback " + paramInt + ' ' + paramc + ' ' + paramd);
+      Log.i(this.jGT.TAG, "callback " + paramInt + ' ' + paramc + ' ' + paramd);
       if ((paramInt == 0) && (paramd != null) && (paramd.field_retCode == 0))
       {
-        Log.i(this.gVX.TAG, "download " + a.a(this.gVX).gWm.getMd5() + " finish");
-        paramString = a.b(this.gVX);
+        Log.i(this.jGT.TAG, "download " + a.a(this.jGT).jHh.getMd5() + " finish");
+        paramString = a.b(this.jGT);
         if (paramString != null) {
           paramString.invoke(Boolean.TRUE);
         }
@@ -85,7 +85,7 @@ public final class a
       }
       if ((paramInt != 0) || ((paramd != null) && (paramd.field_retCode != 0)))
       {
-        paramString = a.b(this.gVX);
+        paramString = a.b(this.jGT);
         if (paramString != null) {
           paramString.invoke(Boolean.FALSE);
         }
@@ -104,7 +104,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -20,54 +20,55 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public final class c
+@Deprecated
+public class c
   implements m, m.a, m.b, m.d, m.e, m.f
 {
-  private FlutterNativeView SMd;
-  public FlutterView SMe;
-  public final PlatformViewsController SMf;
-  private final Map<String, Object> SMg;
-  private final List<m.d> SMh;
-  private final List<m.a> SMi;
-  private final List<m.b> SMj;
-  private final List<m.e> SMk;
-  private final List<m.f> SMl;
+  private FlutterNativeView aaoc;
+  public FlutterView aaod;
+  public final PlatformViewsController aaoe;
+  private final Map<String, Object> aaof;
+  private final List<m.d> aaog;
+  private final List<m.a> aaoh;
+  private final List<m.b> aaoi;
+  private final List<m.e> aaoj;
+  private final List<m.f> aaok;
   public Activity mActivity;
   private Context mAppContext;
   
   public c(Context paramContext)
   {
     AppMethodBeat.i(9596);
-    this.SMg = new LinkedHashMap(0);
-    this.SMh = new ArrayList(0);
-    this.SMi = new ArrayList(0);
-    this.SMj = new ArrayList(0);
-    this.SMk = new ArrayList(0);
-    this.SMl = new ArrayList(0);
+    this.aaof = new LinkedHashMap(0);
+    this.aaog = new ArrayList(0);
+    this.aaoh = new ArrayList(0);
+    this.aaoi = new ArrayList(0);
+    this.aaoj = new ArrayList(0);
+    this.aaok = new ArrayList(0);
     this.mAppContext = paramContext;
-    this.SMf = new PlatformViewsController();
+    this.aaoe = new PlatformViewsController();
     AppMethodBeat.o(9596);
   }
   
   public c(FlutterNativeView paramFlutterNativeView, Context paramContext)
   {
     AppMethodBeat.i(9595);
-    this.SMg = new LinkedHashMap(0);
-    this.SMh = new ArrayList(0);
-    this.SMi = new ArrayList(0);
-    this.SMj = new ArrayList(0);
-    this.SMk = new ArrayList(0);
-    this.SMl = new ArrayList(0);
-    this.SMd = paramFlutterNativeView;
+    this.aaof = new LinkedHashMap(0);
+    this.aaog = new ArrayList(0);
+    this.aaoh = new ArrayList(0);
+    this.aaoi = new ArrayList(0);
+    this.aaoj = new ArrayList(0);
+    this.aaok = new ArrayList(0);
+    this.aaoc = paramFlutterNativeView;
     this.mAppContext = paramContext;
-    this.SMf = new PlatformViewsController();
+    this.aaoe = new PlatformViewsController();
     AppMethodBeat.o(9595);
   }
   
   public final boolean a(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(9599);
-    Iterator localIterator = this.SMh.iterator();
+    Iterator localIterator = this.aaog.iterator();
     while (localIterator.hasNext()) {
       if (((m.d)localIterator.next()).a(paramInt, paramArrayOfString, paramArrayOfInt))
       {
@@ -82,7 +83,7 @@ public final class c
   public final boolean a(FlutterNativeView paramFlutterNativeView)
   {
     AppMethodBeat.i(9603);
-    Iterator localIterator = this.SMl.iterator();
+    Iterator localIterator = this.aaok.iterator();
     boolean bool = false;
     if (localIterator.hasNext())
     {
@@ -100,24 +101,24 @@ public final class c
     }
   }
   
-  public final boolean bsW(String paramString)
+  public final boolean bFX(String paramString)
   {
     AppMethodBeat.i(9597);
-    boolean bool = this.SMg.containsKey(paramString);
+    boolean bool = this.aaof.containsKey(paramString);
     AppMethodBeat.o(9597);
     return bool;
   }
   
-  public final m.c bsX(String paramString)
+  public final m.c bFY(String paramString)
   {
     AppMethodBeat.i(9598);
-    if (this.SMg.containsKey(paramString))
+    if (this.aaof.containsKey(paramString))
     {
       paramString = new IllegalStateException("Plugin key " + paramString + " is already in use");
       AppMethodBeat.o(9598);
       throw paramString;
     }
-    this.SMg.put(paramString, null);
+    this.aaof.put(paramString, null);
     paramString = new a(paramString);
     AppMethodBeat.o(9598);
     return paramString;
@@ -126,7 +127,7 @@ public final class c
   public final boolean onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(9600);
-    Iterator localIterator = this.SMi.iterator();
+    Iterator localIterator = this.aaoh.iterator();
     while (localIterator.hasNext()) {
       if (((m.a)localIterator.next()).onActivityResult(paramInt1, paramInt2, paramIntent))
       {
@@ -141,7 +142,7 @@ public final class c
   public final boolean onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(9601);
-    Iterator localIterator = this.SMj.iterator();
+    Iterator localIterator = this.aaoi.iterator();
     while (localIterator.hasNext()) {
       if (((m.b)localIterator.next()).onNewIntent(paramIntent))
       {
@@ -156,7 +157,7 @@ public final class c
   public final void onUserLeaveHint()
   {
     AppMethodBeat.i(9602);
-    Iterator localIterator = this.SMk.iterator();
+    Iterator localIterator = this.aaoj.iterator();
     while (localIterator.hasNext()) {
       ((m.e)localIterator.next()).onUserLeaveHint();
     }
@@ -166,11 +167,11 @@ public final class c
   final class a
     implements m.c
   {
-    private final String SMm;
+    private final String aaol;
     
     a(String paramString)
     {
-      this.SMm = paramString;
+      this.aaol = paramString;
     }
   }
 }

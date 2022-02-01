@@ -5,10 +5,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
-import com.tencent.mm.ab.i;
+import com.tencent.mm.ad.i;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.z;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aa;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONException;
@@ -17,65 +17,65 @@ import org.json.JSONObject;
 public abstract class p
   extends m
 {
-  protected g.a Edn;
+  protected g.a KqQ;
   int clickCount = 0;
   
-  public p(Context paramContext, z paramz, ViewGroup paramViewGroup)
+  public p(Context paramContext, aa paramaa, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramz, paramViewGroup);
-    Object localObject = fds();
-    paramContext = Util.nullAsNil(((ah)localObject).uxInfo);
-    int i = ((ah)localObject).DZU;
-    int j = ((ah)localObject).source;
-    long l = Util.safeParseLong(((ah)localObject).lAN);
-    int k = paramz.subType;
-    paramViewGroup = Util.nullAsNil(((ah)localObject).getViewId());
-    localObject = Util.nullAsNil(((ah)localObject).fcN());
-    String str = Util.nullAsNil(paramz.DZi);
-    paramz = Util.nullAsNil(paramz.DZv);
-    this.Edn = new g.a(paramContext, j, i, l, k, paramViewGroup, (String)localObject);
-    ku(str, paramz);
+    super(paramContext, paramaa, paramViewGroup);
+    Object localObject = fRp();
+    paramContext = Util.nullAsNil(((ai)localObject).uxInfo);
+    int i = ((ai)localObject).Knp;
+    int j = ((ai)localObject).source;
+    long l = Util.safeParseLong(((ai)localObject).owd);
+    int k = paramaa.subType;
+    paramViewGroup = Util.nullAsNil(((ai)localObject).getViewId());
+    localObject = Util.nullAsNil(((ai)localObject).fQF());
+    String str = Util.nullAsNil(paramaa.KmB);
+    paramaa = Util.nullAsNil(paramaa.KmP);
+    this.KqQ = new g.a(paramContext, j, i, l, k, paramViewGroup, (String)localObject);
+    kP(str, paramaa);
   }
   
-  private void ku(String paramString1, String paramString2)
+  private void kP(String paramString1, String paramString2)
   {
-    if (this.Edn != null)
+    if (this.KqQ != null)
     {
-      this.Edn.kv("cid", paramString1);
-      this.Edn.kv("jumpExtInfo", paramString2);
+      this.KqQ.kQ("cid", paramString1);
+      this.KqQ.kQ("jumpExtInfo", paramString2);
     }
   }
   
-  public final void a(z paramz, ah paramah)
+  public final void a(aa paramaa, ai paramai)
   {
-    if ((paramah == null) || (paramz == null) || (this.Edn == null)) {
+    if ((paramai == null) || (paramaa == null) || (this.KqQ == null)) {
       return;
     }
-    String str1 = Util.nullAsNil(paramah.uxInfo);
-    int i = paramah.DZU;
-    int j = paramah.source;
-    long l = Util.safeParseLong(paramah.lAN);
-    int k = paramz.subType;
-    String str2 = Util.nullAsNil(paramah.getViewId());
-    String str3 = Util.nullAsNil(paramah.fcN());
-    paramah = Util.nullAsNil(paramz.DZi);
-    paramz = Util.nullAsNil(paramz.DZv);
-    g.a locala = this.Edn;
+    String str1 = Util.nullAsNil(paramai.uxInfo);
+    int i = paramai.Knp;
+    int j = paramai.source;
+    long l = Util.safeParseLong(paramai.owd);
+    int k = paramaa.subType;
+    String str2 = Util.nullAsNil(paramai.getViewId());
+    String str3 = Util.nullAsNil(paramai.fQF());
+    paramai = Util.nullAsNil(paramaa.KmB);
+    paramaa = Util.nullAsNil(paramaa.KmP);
+    g.a locala = this.KqQ;
     try
     {
-      locala.Ecy.h("uxinfo", str1);
-      locala.Ecy.U("scene", j);
-      locala.Ecy.U("originScene", i);
-      locala.Ecy.v("canvasId", l);
-      locala.Ecy.U("type", 21);
-      locala.Ecy.U("subType", k);
-      locala.Ecy.U("action", 1);
+      locala.Kqa.g("uxinfo", str1);
+      locala.Kqa.al("scene", j);
+      locala.Kqa.al("originScene", i);
+      locala.Kqa.s("canvasId", l);
+      locala.Kqa.al("type", 21);
+      locala.Kqa.al("subType", k);
+      locala.Kqa.al("action", 1);
       if (!Util.isNullOrNil(new String[] { str2, str3 }))
       {
-        locala.Ecy.h("viewid", str2);
-        locala.Ecy.h("commInfo", str3);
+        locala.Kqa.g("viewid", str2);
+        locala.Kqa.g("commInfo", str3);
       }
-      ku(paramah, paramz);
+      kP(paramai, paramaa);
       return;
     }
     catch (Exception localException)
@@ -87,17 +87,17 @@ public abstract class p
     }
   }
   
-  public final boolean bp(JSONObject paramJSONObject)
+  public final boolean by(JSONObject paramJSONObject)
   {
-    if (!super.bp(paramJSONObject)) {
+    if (!super.by(paramJSONObject)) {
       return false;
     }
     try
     {
       paramJSONObject.put("clickCount", this.clickCount);
-      z localz = this.EcX;
-      if (localz != null) {}
-      for (int i = localz.subType;; i = 0)
+      aa localaa = this.KqB;
+      if (localaa != null) {}
+      for (int i = localaa.subType;; i = 0)
       {
         paramJSONObject.putOpt("subType", Integer.valueOf(i));
         return true;
@@ -110,28 +110,28 @@ public abstract class p
     }
   }
   
-  protected final void eWX()
+  protected final void fKi()
   {
     ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
     if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.EcX.paddingLeft, (int)this.EcX.paddingTop, (int)this.EcX.paddingRight, (int)this.EcX.paddingBottom);
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.KqB.paddingLeft, (int)this.KqB.paddingTop, (int)this.KqB.paddingRight, (int)this.KqB.paddingBottom);
     }
     this.contentView.setLayoutParams(localLayoutParams);
   }
   
-  protected void fdf()
+  protected void fRc()
   {
-    this.Edn.report("13387");
+    this.KqQ.report("13387");
   }
   
-  protected final void fdw()
+  protected final void fRt()
   {
     this.clickCount += 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.p
  * JD-Core Version:    0.7.0.1
  */

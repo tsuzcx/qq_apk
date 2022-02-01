@@ -17,37 +17,37 @@ import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserIconLoadTask;", "Landroid/os/AsyncTask;", "Landroid/content/pm/ResolveInfo;", "Ljava/lang/Void;", "Landroid/graphics/drawable/Drawable;", "context", "Landroid/content/Context;", "key", "", "callback", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserIconLoadTask$BrowserIconLoadCallback;", "(Landroid/content/Context;Ljava/lang/String;Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserIconLoadTask$BrowserIconLoadCallback;)V", "convertDrawableToRoundedBitmap", "Landroid/graphics/Bitmap;", "drawable", "doInBackground", "params", "", "([Landroid/content/pm/ResolveInfo;)Landroid/graphics/drawable/Drawable;", "getRoundedBitmapDrawable", "Landroid/graphics/drawable/BitmapDrawable;", "bitmap", "recycleBitmap", "", "onPostExecute", "", "result", "BrowserIconLoadCallback", "Companion", "plugin-webview_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserIconLoadTask;", "Landroid/os/AsyncTask;", "Landroid/content/pm/ResolveInfo;", "Ljava/lang/Void;", "Landroid/graphics/drawable/Drawable;", "context", "Landroid/content/Context;", "key", "", "callback", "Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserIconLoadTask$BrowserIconLoadCallback;", "(Landroid/content/Context;Ljava/lang/String;Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserIconLoadTask$BrowserIconLoadCallback;)V", "convertDrawableToRoundedBitmap", "Landroid/graphics/Bitmap;", "drawable", "doInBackground", "params", "", "([Landroid/content/pm/ResolveInfo;)Landroid/graphics/drawable/Drawable;", "getRoundedBitmapDrawable", "Landroid/graphics/drawable/BitmapDrawable;", "bitmap", "recycleBitmap", "", "onPostExecute", "", "result", "BrowserIconLoadCallback", "Companion", "plugin-webview_release"})
 public final class e
   extends AsyncTask<ResolveInfo, Void, Drawable>
 {
-  public static final e.b JlM;
-  private final e.a JlL;
+  public static final b Qje;
+  private final a Qjd;
   private final Context context;
   private final String key;
   
   static
   {
-    AppMethodBeat.i(210440);
-    JlM = new e.b((byte)0);
-    AppMethodBeat.o(210440);
+    AppMethodBeat.i(221611);
+    Qje = new b((byte)0);
+    AppMethodBeat.o(221611);
   }
   
-  public e(Context paramContext, String paramString, e.a parama)
+  public e(Context paramContext, String paramString, a parama)
   {
-    AppMethodBeat.i(210439);
+    AppMethodBeat.i(221610);
     this.context = paramContext;
     this.key = paramString;
-    this.JlL = parama;
-    AppMethodBeat.o(210439);
+    this.Qjd = parama;
+    AppMethodBeat.o(221610);
   }
   
   private Drawable a(ResolveInfo... paramVarArgs)
   {
     Object localObject = null;
     Rect localRect = null;
-    AppMethodBeat.i(210435);
-    p.h(paramVarArgs, "params");
+    AppMethodBeat.i(221597);
+    p.k(paramVarArgs, "params");
     paramVarArgs = paramVarArgs[0];
     for (;;)
     {
@@ -97,7 +97,7 @@ public final class e
         continue;
         j = paramVarArgs.getIntrinsicHeight();
       }
-      AppMethodBeat.o(210435);
+      AppMethodBeat.o(221597);
       return paramVarArgs;
       continue;
       if ((Build.VERSION.SDK_INT < 26) || (!(paramVarArgs instanceof AdaptiveIconDrawable))) {
@@ -120,7 +120,7 @@ public final class e
       else
       {
         localRect = paramVarArgs.getBounds();
-        p.g(localRect, "drawable.bounds");
+        p.j(localRect, "drawable.bounds");
         if (!localRect.isEmpty())
         {
           i = localRect.width();
@@ -141,21 +141,30 @@ public final class e
   
   private final BitmapDrawable f(Bitmap paramBitmap, boolean paramBoolean)
   {
-    AppMethodBeat.i(210438);
+    AppMethodBeat.i(221606);
     if (paramBitmap == null)
     {
-      AppMethodBeat.o(210438);
+      AppMethodBeat.o(221606);
       return null;
     }
     paramBitmap = BitmapUtil.getRoundedCornerBitmap(paramBitmap, paramBoolean, Math.min(paramBitmap.getWidth(), paramBitmap.getHeight()) * 0.1666667F);
     paramBitmap = new BitmapDrawable(this.context.getResources(), paramBitmap);
-    AppMethodBeat.o(210438);
+    AppMethodBeat.o(221606);
     return paramBitmap;
   }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserIconLoadTask$BrowserIconLoadCallback;", "", "onLoadFinish", "", "drawable", "Landroid/graphics/drawable/Drawable;", "plugin-webview_release"})
+  public static abstract interface a
+  {
+    public abstract void H(Drawable paramDrawable);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/browser/BrowserIconLoadTask$Companion;", "", "()V", "ROUND_CORNER_SIZE_FACTOR", "", "TAG", "", "plugin-webview_release"})
+  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.browser.e
  * JD-Core Version:    0.7.0.1
  */

@@ -12,15 +12,15 @@ final class MobileFriendUI$3
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(110147);
-    this.kdk.hideVKB();
-    this.kdk.finish();
+    this.mUK.hideVKB();
+    this.mUK.finish();
     AppMethodBeat.o(110147);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.MobileFriendUI.3
  * JD-Core Version:    0.7.0.1
  */

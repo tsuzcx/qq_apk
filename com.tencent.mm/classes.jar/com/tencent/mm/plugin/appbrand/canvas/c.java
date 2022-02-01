@@ -43,12 +43,12 @@ import org.json.JSONObject;
 
 public final class c
 {
-  public Map<String, com.tencent.mm.plugin.appbrand.canvas.action.d> kZk;
+  public Map<String, com.tencent.mm.plugin.appbrand.canvas.action.d> nTv;
   
   public c()
   {
     AppMethodBeat.i(144845);
-    this.kZk = new HashMap();
+    this.nTv = new HashMap();
     a(new ae());
     a(new q());
     a(new af());
@@ -91,7 +91,7 @@ public final class c
   private void a(com.tencent.mm.plugin.appbrand.canvas.action.d paramd)
   {
     AppMethodBeat.i(144847);
-    this.kZk.put(paramd.getMethod(), paramd);
+    this.nTv.put(paramd.getMethod(), paramd);
     AppMethodBeat.o(144847);
   }
   
@@ -100,7 +100,7 @@ public final class c
     AppMethodBeat.i(144846);
     Object localObject = paramJSONObject.optString("method");
     paramJSONObject = paramJSONObject.optJSONArray("data");
-    localObject = (com.tencent.mm.plugin.appbrand.canvas.action.d)this.kZk.get(localObject);
+    localObject = (com.tencent.mm.plugin.appbrand.canvas.action.d)this.nTv.get(localObject);
     if (localObject == null)
     {
       AppMethodBeat.o(144846);
@@ -113,7 +113,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.c
  * JD-Core Version:    0.7.0.1
  */

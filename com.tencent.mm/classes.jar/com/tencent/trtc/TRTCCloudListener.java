@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public abstract class TRTCCloudListener
 {
+  @Deprecated
   public void onAudioEffectFinished(int paramInt1, int paramInt2) {}
   
   public void onAudioRouteChanged(int paramInt1, int paramInt2) {}
@@ -29,6 +30,12 @@ public abstract class TRTCCloudListener
   public void onFirstAudioFrame(String paramString) {}
   
   public void onFirstVideoFrame(String paramString, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onLocalRecordBegin(int paramInt, String paramString) {}
+  
+  public void onLocalRecordComplete(int paramInt, String paramString) {}
+  
+  public void onLocalRecording(long paramLong, String paramString) {}
   
   public void onMicDidReady() {}
   
@@ -72,6 +79,8 @@ public abstract class TRTCCloudListener
   
   public void onSwitchRole(int paramInt, String paramString) {}
   
+  public void onSwitchRoom(int paramInt, String paramString) {}
+  
   public void onTryToReconnect() {}
   
   public void onUserAudioAvailable(String paramString, boolean paramBoolean) {}
@@ -96,9 +105,16 @@ public abstract class TRTCCloudListener
     
     public abstract void onLocalProcessedAudioFrame(TRTCCloudDef.TRTCAudioFrame paramTRTCAudioFrame);
     
+    public abstract void onMixedAllAudioFrame(TRTCCloudDef.TRTCAudioFrame paramTRTCAudioFrame);
+    
     public abstract void onMixedPlayAudioFrame(TRTCCloudDef.TRTCAudioFrame paramTRTCAudioFrame);
     
     public abstract void onRemoteUserAudioFrame(TRTCCloudDef.TRTCAudioFrame paramTRTCAudioFrame, String paramString);
+  }
+  
+  public static abstract class TRTCLogListener
+  {
+    public abstract void onLog(String paramString1, int paramInt, String paramString2);
   }
   
   public static abstract interface TRTCSnapshotListener
@@ -106,14 +122,18 @@ public abstract class TRTCCloudListener
     public abstract void onSnapshotComplete(Bitmap paramBitmap);
   }
   
-  public static abstract interface TRTCVideoRenderListener
+  public static abstract interface TRTCVideoFrameListener
   {
-    public abstract void onRenderVideoFrame(String paramString, int paramInt, TRTCCloudDef.TRTCVideoFrame paramTRTCVideoFrame);
+    public abstract void onGLContextCreated();
+    
+    public abstract void onGLContextDestory();
+    
+    public abstract int onProcessVideoFrame(TRTCCloudDef.TRTCVideoFrame paramTRTCVideoFrame1, TRTCCloudDef.TRTCVideoFrame paramTRTCVideoFrame2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.trtc.TRTCCloudListener
  * JD-Core Version:    0.7.0.1
  */

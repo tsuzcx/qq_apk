@@ -1,91 +1,82 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.platform.window.e.a;
-import com.tencent.mm.plugin.appbrand.platform.window.e.b;
-import kotlin.g.a.a;
-import kotlin.g.b.q;
-import kotlin.l;
-import kotlin.x;
+import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.kernel.c.c;
+import com.tencent.mm.kernel.c.d;
+import com.tencent.mm.kernel.c.d.a;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/DefaultWindowOrientationHandlerViewImpl;", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler;", "mView", "Landroid/view/View;", "(Landroid/view/View;)V", "LANDSCAPE_ENUMS", "", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler$Orientation;", "[Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler$Orientation;", "getCurrentOrientation", "hasExecutingOrPendingRequests", "", "requestDeviceOrientation", "", "reqOrientation", "listener", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler$OnOrientationChangedListener;", "luggage-wxa-app_release"})
 public final class ad
-  implements com.tencent.mm.plugin.appbrand.platform.window.e
+  extends d
 {
-  private final e.b[] kEN;
-  private final View mView;
+  private final Set<Class<? extends a>> nyj;
+  private volatile d.a nyk;
   
-  public ad(View paramView)
+  public ad()
   {
-    AppMethodBeat.i(219647);
-    this.mView = paramView;
-    this.kEN = new e.b[] { e.b.nEn, e.b.nEo, e.b.nEp, e.b.nEq };
-    AppMethodBeat.o(219647);
-  }
-  
-  public final void a(e.b paramb, e.a parama)
-  {
-    AppMethodBeat.i(219645);
-    if (paramb == null)
+    AppMethodBeat.i(134622);
+    this.nyj = Collections.newSetFromMap(new ConcurrentHashMap());
+    super.a(new d.a()
     {
-      ((a)new a(parama)).invoke();
-      AppMethodBeat.o(219645);
-      return;
-    }
-    if (paramb == e.b.nEl)
-    {
-      if (parama != null)
+      public final void a(Class<? extends a> paramAnonymousClass, a paramAnonymousa)
       {
-        e.b localb = btm();
-        if (btm() == paramb) {}
-        for (boolean bool = true;; bool = false)
-        {
-          parama.a(localb, bool);
-          AppMethodBeat.o(219645);
-          return;
+        AppMethodBeat.i(134621);
+        d.a locala = ad.b(ad.this);
+        if (locala != null) {
+          locala.a(paramAnonymousClass, paramAnonymousa);
         }
+        AppMethodBeat.o(134621);
       }
-      AppMethodBeat.o(219645);
-      return;
-    }
-    if ((kotlin.a.e.contains(this.kEN, paramb)) && (parama != null))
-    {
-      parama.a(btm(), kotlin.a.e.contains(this.kEN, btm()));
-      AppMethodBeat.o(219645);
-      return;
-    }
-    AppMethodBeat.o(219645);
+      
+      public final void a(Class<? extends a> paramAnonymousClass, c paramAnonymousc)
+      {
+        AppMethodBeat.i(134619);
+        ad.a(ad.this).add(paramAnonymousClass);
+        d.a locala = ad.b(ad.this);
+        if (locala != null) {
+          locala.a(paramAnonymousClass, paramAnonymousc);
+        }
+        AppMethodBeat.o(134619);
+      }
+      
+      public final void b(Class<? extends a> paramAnonymousClass, c paramAnonymousc)
+      {
+        AppMethodBeat.i(134620);
+        d.a locala = ad.b(ad.this);
+        if (locala != null) {
+          locala.b(paramAnonymousClass, paramAnonymousc);
+        }
+        AppMethodBeat.o(134620);
+      }
+    });
+    AppMethodBeat.o(134622);
   }
   
-  public final e.b btm()
+  public final void a(d.a parama)
   {
-    AppMethodBeat.i(219646);
-    if (this.mView.getHeight() >= this.mView.getWidth())
-    {
-      localb = e.b.nEl;
-      AppMethodBeat.o(219646);
-      return localb;
-    }
-    e.b localb = e.b.nEo;
-    AppMethodBeat.o(219646);
-    return localb;
+    this.nyk = parama;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements a<x>
+  public final void unregisterAll()
   {
-    a(e.a parama)
-    {
-      super();
+    AppMethodBeat.i(134623);
+    Object localObject = new HashSet(this.nyj);
+    this.nyj.clear();
+    localObject = ((Set)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      super.af((Class)((Iterator)localObject).next());
     }
+    AppMethodBeat.o(134623);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ad
  * JD-Core Version:    0.7.0.1
  */

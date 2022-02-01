@@ -3,6 +3,7 @@ package org.xwalk.core;
 public class XWalkFeature
 {
   public static final int INTERFACE_CUSTOM_CONTEXT = 1020;
+  public static final int INTERFACE_EXTEND_PLUGIN_INPUT = 1041;
   public static final int INTERFACE_EXTEND_PLUGIN_MAP = 1011;
   public static final int INTERFACE_EXTEND_PLUGIN_NATIVE_VIEW = 1013;
   public static final int INTERFACE_EXTEND_PLUGIN_TEXTAREA = 1012;
@@ -10,6 +11,7 @@ public class XWalkFeature
   public static final int INTERFACE_FORCE_DARK_MODE = 1021;
   public static final int INTERFACE_GEO_LOCATION_PERMISSION = 1000;
   public static final int INTERFACE_MANUAL_PROFILE = 1030;
+  public static final int INTERFACE_SET_WEB_CONTENTS_SIZE = 1042;
   public static final int INTERFACE_SHOW_HIDE = 1040;
   public static final int INTERNAL_LONG_SCREENSHOT = 2;
   public static final int INTERNAL_ON_HTTP_ERROR = 3;

@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.wallet_ecard.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.dha;
-import com.tencent.mm.protocal.protobuf.dhb;
+import com.tencent.mm.protocal.protobuf.dqv;
+import com.tencent.mm.protocal.protobuf.dqw;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.c.r;
 
 public final class g
   extends r
 {
-  public dhb IpY;
+  public dqw PiG;
   private i callback;
   private d rr;
   
@@ -23,14 +23,14 @@ public final class g
   {
     AppMethodBeat.i(71701);
     d.a locala = new d.a();
-    locala.iLN = new dha();
-    locala.iLO = new dhb();
+    locala.lBU = new dqv();
+    locala.lBV = new dqw();
     locala.funcId = getType();
     locala.uri = "/cgi-bin/mmpay-bin/qrycancelecarddesc";
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    ((dha)this.rr.iLK.iLR).MLx = 1L;
+    this.rr = locala.bgN();
+    ((dqv)d.b.b(this.rr.lBR)).TXs = 1L;
     AppMethodBeat.o(71701);
   }
   
@@ -38,8 +38,8 @@ public final class g
   {
     AppMethodBeat.i(71702);
     Log.i("MicroMsg.NetSceneQryECardLogout", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.IpY = ((dhb)((d)params).iLL.iLR);
-    Log.i("MicroMsg.NetSceneQryECardLogout", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.IpY.pTZ), this.IpY.pUa });
+    this.PiG = ((dqw)d.c.b(((d)params).lBS));
+    Log.i("MicroMsg.NetSceneQryECardLogout", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.PiG.tqa), this.PiG.tqb });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
@@ -55,11 +55,13 @@ public final class g
     return i;
   }
   
-  public final void e(s params)
+  public final void f(s params)
   {
-    params = (dhb)((d)params).iLL.iLR;
-    this.RtZ = params.pTZ;
-    this.Rua = params.pUa;
+    AppMethodBeat.i(264728);
+    params = (dqw)d.c.b(((d)params).lBS);
+    this.YVy = params.tqa;
+    this.YVz = params.tqb;
+    AppMethodBeat.o(264728);
   }
   
   public final int getType()

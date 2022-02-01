@@ -15,47 +15,17 @@ public abstract interface b
   
   public abstract boolean b(FaceCharacteristicsResult paramFaceCharacteristicsResult);
   
-  public abstract boolean cTq();
+  public abstract boolean div();
   
-  public abstract boolean cTr();
+  public abstract boolean diw();
   
-  public abstract void cTs();
+  public abstract void dix();
   
-  public abstract b cTt();
+  public abstract b.b diy();
   
-  public abstract a cTu();
+  public abstract b.a diz();
   
   public abstract void setBusinessTip(String paramString);
-  
-  public static final class a
-  {
-    public String errMsg;
-    public int sRX;
-    public int sRY;
-    
-    a()
-    {
-      this.sRX = 1;
-    }
-    
-    a(String paramString)
-    {
-      this.sRY = 7;
-      this.errMsg = paramString;
-    }
-  }
-  
-  public static final class b
-  {
-    public int errCode;
-    public String errMsg;
-    
-    public b(int paramInt, String paramString)
-    {
-      this.errCode = paramInt;
-      this.errMsg = paramString;
-    }
-  }
   
   public static final class c
   {
@@ -72,12 +42,12 @@ public abstract interface b
       if (parama.type == 4)
       {
         Log.i(TAG, "hy: is read number");
-        parama = new d(parama.sQY);
+        parama = new d(parama.wwU);
         AppMethodBeat.o(103815);
         return parama;
       }
       Log.i(TAG, "hy: is normal");
-      parama = new c(parama.ktN, parama.sQV);
+      parama = new c(parama.nlB, parama.wwR);
       AppMethodBeat.o(103815);
       return parama;
     }
